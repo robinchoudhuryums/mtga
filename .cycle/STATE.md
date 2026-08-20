@@ -6,6 +6,152 @@
 > For "which command answers X, and why do two of them disagree", read
 > **`docs/systems-map.md`** — that is now a live reference, not a cycle artifact.
 
+## Session — broad scan #6, Batch 4 + follow-ons + ROADMAP (2026-08-19)
+
+Gates green: all invariants, ZERO soft warnings; 1362 tests (+13). Block:
+`.cycle/blocks/2026-08-broad-scan6-batch4-broad-implement.md`.
+
+Seven small fixes and a roadmap regeneration. The one with real content is the `+N/-M`
+LETHAL-SHRINK hole, found while measuring the previous batch: `target creature gets -N/-N`
+was covered and `gets +N/-N` was not. **The permanence rule from the neutralization batch
+does not transfer, which is why it is a separate pattern** — a `-4/-4 until end of turn`
+still KILLS, and a dead creature does not come back at cleanup, so the temporary version
+does permanent work. Auger Spree is removal in a way Merfolk Trickster is not, despite both
+saying "until end of turn". Graded on LETHALITY, scoped to the targeted spell (23 of the 29
+`+N/-M` cards are firebreathing self-pumps). K-14: 0 decks, 0 floors.
+
+The rest are shape fixes rather than live bugs, taken because these are shapes the repo has
+been burned by repeatedly: a memo that never invalidated (BS6-08 — and its silent case is
+the bad one, an empty model pinned for the process lifetime), a falsy-zero inside the one
+function that can raise a tier band (BS6-12), truthiness standing in for membership so an
+owned-0 card read "NOT IN LIBRARY" (BS6-07), two in-pass `setdefault` aliases routed
+through the shared helper and registered (BS6-09), the last hand-rolled copy of the alias
+loop (wishlist), and `card.py:_find` deleted.
+
+**Worth recording because it nearly landed:** my first BS6-07 fix inlined the front-face
+split, which re-implements `lib.owned_qty` and is exactly the A3/A4/F6 bypass `check_dfc`
+statically bans. Caught before commit. The correct shape keeps the COUNT coming from the
+shared helper and computes only the membership flag locally.
+
+**ROADMAP.md regenerated** — it was measured against 2,186 printings / 103 decks / 1,253
+tests / 9 matches against a live 2,368 / 111 / 1,362 / 15. Two honest non-outcomes recorded:
+`import_collection.py` has been top of the handoff for FOUR cycles, and the launchd archive
+still carries the only real deadline. Tier 3.4 is marked advanced **by a route the file did
+not predict** — it budgeted L/1–2mo for a structural classifier fix, and what actually
+worked was reading corpora and adding a disagreement gate. The strategic bet is unchanged
+but sharpened: matches went 9 → 15 while PROVISIONAL decks went 41 → 51, so play volume is
+LOSING GROUND, which is why coarser outcome aggregation now sits beside the bet rather than
+behind it.
+
+**Where I left off:** one bullet of doc drift — G-67 names `+N/-N` as the open residual and
+it is now closed (the AURA form and the 143-entry worklist are what remain). Everything
+else is carried in the regenerated ROADMAP. Tier 1.1 (one `import_collection.py` run) is
+still the highest-value item and still blocked on an export only you can produce.
+
+## Session — broad scan #6, Batch 1 + the neutralization bucket (2026-08-19)
+
+Gates green: all invariants hold with **ZERO soft warnings**; full pytest suite green
+(+22 tests). Block: `.cycle/blocks/2026-08-broad-scan6-batch1-broad-implement.md`.
+
+**The taxonomy question is answered, and the answer was already in the code.** Magic
+answers a creature three ways — kill it, exile it, turn it off — and `_ROLE_PATTERNS` read
+only the first two, while Pacifism's `can't attack or block` had been sitting in the
+Removal bucket the whole time. So the repo had already decided a neutralizing effect IS
+spot removal; only half the templatings were ever written. Four patterns close it: tap-down
+(37 cards), ability-strip as an Aura (19), targeted (6), and one anaphor case that exists
+purely to stop two cards with the same effect landing on opposite sides of the line.
+**The line is PERMANENCE** — `NEXT untap step` and `until end of turn` are tempo, not
+answers, and stay out. K-14: **6 decks moved interaction, 0 tier floors, 0 letters to
+re-grade**, exactly the six predicted. Deck 38 moved off the B floor it sat exactly on.
+
+**The real payoff is upstream.** Blue's removal is mostly neutralization, so it was
+invisible to the recommender: `suggest 47 --interaction` now surfaces Sleep Magic, Charmed
+Sleep and Witness Protection — and the last one is already OWNED.
+
+**I did not build the gate I proposed in the scan, and measuring is why.** Stage 3 said
+"baseline the role classifier against the POOL"; `check_roles` explicitly refuses that and
+is right — 5,368 pool cards score no role, 33% of the pool, unreadable. The DISAGREEMENT
+set is 143. So the sweep asks the narrow question instead: where does `tag_synergies` call
+a card `removal` from its TEXT while `classify_roles` scores no interaction role? Scoped by
+CONSTRUCTION — it reads the tagger's own `MECHANIC_RULES` rather than a copy, and the
+deathtouch keyword path is excluded because it lives in a different table, which is 250 of
+the 388 raw hits that an allowlist would otherwise have had to enumerate.
+
+**Widening `check_dfc` found a live bug within minutes, which is the argument for it.**
+The builder scan was pool-scoped while every ownership index reads card-library.csv — the
+reason a gate built for BS6-01's bug class missed four instances of it. Widened, it flagged
+`verify_ingest.library_index` as the 4th, still unaliased: a paste naming a Room card by its
+front face verified as ABSENT, from the tool whose only job is confirming an ingest landed.
+Two second-order fixes were needed to make the widening honest — a tuple-key discriminator
+(3 of the first 8 hits were printing indexes, and a scan with that false-positive rate stops
+being read) and a LIBRARY probe, because the pool probe made every new registration pass
+**vacuously**.
+
+Also: the committed dashboard has a freshness contract now (BS6-04). It watches DATA and
+not code, deliberately — hashing deck.py wholesale is what made the pool read stale every
+cycle in BS4-37, and a signal that cries wolf is one you wave through. It compares CONTENT
+HASHES stored in the page's own data island, **not mtime**: the first version compared
+mtimes against the `generated` stamp and so read every fresh clone as permanently stale,
+failing CI on its own PR. F-04's "content, not mtime" is not a rule about backups — it is
+a rule about mtime, and it was re-broken one directory over from where it is written down.
+
+**Found and deliberately NOT fixed:** Nameless Inversion scores zero roles — a
+toughness-reducing PUMP (`+N/-N`) is removal and the covered shape needs a leading minus.
+Different family, out of scope, and it is sitting in the new disagreement baseline rather
+than being lost.
+
+**Where I left off:** docs need a `/sync-docs` pass — G-67's live residual now describes
+work that is done, K-09 and G-63 have both moved, and the two new soft sweeps plus
+`tag_role_baseline.txt` are not in the Cycle Workflow Config inventory. Batch 2.2 (one
+`import_collection.py` run against a tracker export) is still the highest-value item and
+is still blocked on you.
+
+## Session — broad scan #6, top 5 (2026-08-19) — IMPLEMENTED
+
+Sixth broad scan; the top 5 findings by production impact were implemented in one pass.
+Gates green: all invariants hold with **ZERO soft warnings** (the deck-73 unverified-printing
+warning is cleared), 1333 pytest passed / 1 skipped (+9 new). Block:
+`.cycle/blocks/2026-08-broad-scan6-top5-broad-implement.md`.
+
+**The headline finding was a classifier hole, not a code bug.** Four removal templatings scored
+ZERO interaction — the axis `tier_band` grades: the removal AURA (`enchanted creature gets
+-N/-N`, 20 cards incl. Dead Weight), and three coordinated-qualifier shapes the two-adjective
+run could not reach ("attacking or blocking", "green or white", "non-A, non-B, non-C", 11 cards).
+Both were found by reading the zero-role backlog corpus-wide rather than waiting for a card to
+surface one. The Aura half is also a live **K-09** violation and that is how it was caught:
+`tag_synergies` tags Dead Weight `removal` while `classify_roles` returned nothing, so the two
+models disagreed about the same text. The K-14 roster diff moved **0 decks and 0 tier floors** —
+no deck runs one of the 29 — so the whole value is in the recommender's candidate set:
+`suggest 38 --interaction` says "SHORT (3 < 5)" and now offers a 1-mana common instead of only
+mythics.
+
+**BS6-01 is the more instructive one.** `lib.owned_qty` resolves full → front, and nothing
+resolved front → full — while EIGHT library rows are stored under the full `A // B` name. So
+`deck.owned` answered "NOT IN LIBRARY" for an owned card, the exact string G-10 sends you to
+`reconcile_crafts.py` about. **Both gates were structurally blind**: `check_agreement`'s
+ownership pair compared two implementations that agreed on the same wrong 0, and `check_dfc`'s
+completeness scan only walks card-pool.csv builders while every ownership index reads
+card-library.csv. Fixed in all four library-side builders via `lib.alias_front`. CLAUDE.md had
+asserted the front-only convention as fact; README had it right. **When two writers
+(`reconcile_crafts`, `import_collection`) each work around a documented rule locally, the rule
+is what is wrong** — that is the transferable lesson, and the reason the doc fix shipped with
+the code fix.
+
+Also landed: the dashboard's mana tokens got light-mode values (BS5-10 one file over — the
+gallery fixed the identical pastel-on-white bug and wrote the rule down; the sibling was never
+brought along); `attachHover` now takes an explicit focus host, because `focus` does not fire on
+a bare span and the S-7 keyboard-preview fix had therefore reached only ONE of its three call
+sites — and Scenario 7 walks exactly that one, so the check passed over an inert feature; and
+deck 73's six hand-written collector numbers were replaced with resolved ones (its own variant
+73a already had them right, which is what confirmed the G-65 diagnosis).
+
+**Deliberately NOT taken:** the taxonomy half of the classifier hole — 128 pool cards that
+neutralize rather than destroy (83 tap-down, 45 "loses all abilities"). Six decks under-count
+interaction today because of it (15 by 2; 16/27/32/38a/38 by 1); none crosses a band right now,
+but deck 38 sits at interaction 3, exactly the B floor. Adding a bucket re-scores every deck
+running the type, so it stays a deliberate decision, alongside the Equipment question already on
+the handoff.
+
 ## Session — broad scan #4, Batch E (2026-08-12) — SCAN CLOSED
 
 Fourth and final implementation pass. Gates green: all invariants hold, ZERO soft warnings,

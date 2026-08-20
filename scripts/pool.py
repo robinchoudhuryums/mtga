@@ -30,7 +30,8 @@ import os
 import sys
 import textwrap
 
-from lib import DEFAULT_CSV, REPO_ROOT, load_rows, eprint, owned_qty, color_matches
+from lib import (DEFAULT_CSV, REPO_ROOT, load_rows, eprint, owned_qty, color_matches,
+                 alias_front)
 
 
 def classify_roles(text):
@@ -91,7 +92,14 @@ def print_full(rows, owned, kwmap):
 
 
 def owned_counts():
-    """name_lower -> total quantity owned across all printings."""
+    """name_lower (full AND DFC front) -> total quantity owned across all printings.
+
+    Front-face aliased in a SECOND pass, matching `deck.load_collection` and
+    `wishlist.owned_index`. `owned_qty` resolves full -> front, which is the right
+    direction for the library's stated front-only convention — but eight rows are
+    actually stored under the FULL `A // B` name, so a lookup by the FRONT name found
+    nothing and an owned card read as a craft target (broad-scan BS6-01, G-63).
+    """
     counts = {}
     try:
         _, rows = load_rows(DEFAULT_CSV)
@@ -103,7 +111,7 @@ def owned_counts():
             continue
         q = (r.get("Quantity Owned") or "").strip()
         counts[name] = counts.get(name, 0) + (int(q) if q.isdigit() else 0)
-    return counts
+    return alias_front(counts)
 
 
 def owned_of(owned, name):

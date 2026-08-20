@@ -367,8 +367,40 @@ def main():
             soft.append(f"role baseline: {len(rstale)} STALE entr(ies) masking nothing "
                         f"(e.g. {ex}" + (", …" if len(rstale) > 4 else "")
                         + ") — review `check_roles.py`, then --update-baseline to prune")
+        # The POOL-scoped half (BS6-10 follow-up). The radar above is roster-scoped, which
+        # is right for "cards in my decks" and is exactly why it could not see the removal
+        # Auras: they are cards you do NOT own, and unowned cards are the recommender's
+        # candidate set. This asks the narrower question that IS readable pool-wide —
+        # where `tag_synergies` and `classify_roles` disagree about the same text (K-09).
+        tflags = cr.check_tags()
+        if tflags:
+            ex = ", ".join(n for n, _t, _x in tflags[:4])
+            soft.append(f"tag/role disagreement: {len(tflags)} pool card(s) are tagged "
+                        f"`removal` from their TEXT but score NO interaction role "
+                        f"(e.g. {ex}" + (", …" if len(tflags) > 4 else "")
+                        + ") — read `check_roles.py --tags`, then fix the pattern or run "
+                          "--update-tag-baseline")
     except Exception as e:
         soft.append(f"role coverage check skipped ({e})")
+
+    # Soft: is the COMMITTED dashboard describing the current roster? `make postedit`
+    # rebuilds it after every deck edit and skipping that step is silent — the page keeps
+    # its old numbers, this gate stays green, and the only symptom is a human reading a
+    # roster that moved (BS6-04). INV-03 gives gallery.html a content contract; the
+    # dashboard had none. Soft, because a stale snapshot breaks no invariant and the
+    # DEPLOYED copy is rebuilt from data on every push to main.
+    try:
+        import build_dashboard as bdash
+        st = bdash.dashboard_staleness()
+        if st:
+            n, newest = st
+            more = f" (+{n - 1} more)" if n > 1 else ""
+            soft.append(f"dashboard.html is STALE — {newest}{more} changed since it was "
+                        f"built. Its numbers describe an older roster; run "
+                        f"`make dashboard` (or `make postedit`) to refresh the committed "
+                        f"snapshot. The published page is rebuilt on push and is fine.")
+    except Exception as e:
+        soft.append(f"dashboard freshness check skipped ({e})")
 
     # Soft: THEME coverage — owned cards whose text plays a theme they aren't tagged with
     # (the theme analog of role_coverage_flags); distorts every tag-based recommendation.

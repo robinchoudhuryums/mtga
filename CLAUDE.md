@@ -96,9 +96,21 @@ docs. This file is the source of truth for the workflow commands in
   owned 1× in two sets counts as 2) — never count a single printing in isolation.
   The pool-facing ownership joins (`pool.py`, `deck.py suggest`) fall back to a
   DFC's **front** face, since the pool keys the full `Front // Back` name but the
-  library stores the front only — else an owned DFC would read as `craft` (audit F6).
+  library MOSTLY stores the front — else an owned DFC would read as `craft` (audit F6).
   Route every such join through `lib.owned_qty` (front-face aware); `check_dfc.py`
   hard-gates this (behavioral anchor + a static scan for raw lookups that bypass it).
+  **"MOSTLY" is load-bearing — the library holds BOTH spellings, and this file claimed
+  otherwise (BS6-01).** Eight rows are stored under the full name (the DSK Rooms + two
+  DFCs), so the fallback only ran one way: `owned_qty` resolves full → front, nothing
+  resolved front → full, and `deck.owned` answered **"NOT IN LIBRARY" for an owned
+  card** — the exact string G-10 sends you to `reconcile_crafts.py` about. Both gates
+  were blind: `check_agreement`'s ownership pair got the same wrong 0 from both sides,
+  and `check_dfc`'s completeness scan walks only **card-pool.csv** builders while every
+  ownership index reads card-library.csv. **All four library-side builders now alias
+  through `lib.alias_front`** (`deck.load_collection`, `pool.owned_counts`,
+  `card._owned_index`, `wishlist.owned_index`). `reconcile_crafts` and
+  `import_collection` had each worked around this locally for years: when two writers
+  route around a documented rule, the RULE is the thing that is wrong.
   **`card.py` belongs in that list too, and was the violation**: it read `Quantity Owned`
   off the FIRST matching row, so every card owned in two sets under-reported (Rugged
   Highlands showed 1 against a real 3) — on the surface G-01 makes the mandated
@@ -731,17 +743,17 @@ directions.
 - **THE FRONT FACE AND THE STORED METADATA DISAGREE — ON EVERY COLUMN, AND IN EVERY
   INDEX.** G-02 is one member of a class that has produced bugs on five COLUMNS — cost,
   colour (identity hid 55 castable red cards — G-58), TYPE (deck 49 read 26 lands holding
-  25; `suggest --lands` offered 81 back-face lands — the fix `wishlist._is_land` already
-  had, G-37), name twice, rarity — plus the 2026-08 scan's five and the ingest WRITE side.
+  25; `suggest --lands` offered 81 back-face lands, G-37), name twice, rarity — plus the
   **Ask which face a column describes; alias an INDEX via `lib.alias_front` in a SECOND
   pass — NEVER in-pass with `setdefault`, which lets a DFC seen early claim the bare front
   key a distinct card owns (BS4-18 closed the last four, three of them indexing Scryfall
   RESPONSES and so invisible to the pool-reading scan) — key every name JOIN, a writer's
   too, on `_ms_key`, and read a `#:` header's card names through
   `deck._header_card_keys`.** Gated by `check_dfc`'s registry, its AST scan for name-index
-  BUILDERS, and its editor-payload scan (every CONSUMER since BS4-14, not just the
-  helper). The header consumers closed on a "zero live instances" count deck 66
-  invalidated four days later — **a fact about a moment, not a property of the code.** [G-63]
+  BUILDERS and its editor-payload scan. That scan was POOL-scoped — hiding FOUR
+  library-side indexes from a gate built for its own bug class (BS6-01) — and now covers
+  both files; **a gate whose scope excludes the file the bug lives in is absent, not
+  narrow.** It also needs a probe the index can HOLD: a pool-only probe passed VACUOUSLY. [G-63]
 
 - **A reanimator's uncastable bombs need `#: uncastable-ok:`, and everything else's do
   not.** The castability lint and `tier_band` both model "you cannot cast this" as a build
@@ -774,16 +786,16 @@ directions.
   matches PHRASINGS, and Magic templates one effect several ways — so a card worded a way no
   pattern anticipates scores ZERO roles, and the tier floor, `cuts`, the quality guard and
   `check_all` inherit that as fact. Never an error; the DEFAULT failure is a silent
-  UNDER-count — but a too-broad pattern OVER-counts just as silently (BS2-06). Nine holes
-  surfaced across 2026-08, each found by a HUMAN reading one card; **2026-08-19 found FOUR
-  MORE by reading the zero-role backlog end to end** — the largest being that the anthem
-  pattern hard-coded the noun `creatures`, so EVERY TRIBAL LORD (146 cards) scored none,
-  hidden because anthem is not an axis `tier_band` grades. Treat that list as a WORKLIST;
-  its leftovers are mostly TAXONOMY (11 of 26 are Equipment, which has no bucket).
-  **`check_roles.py` + `role_baseline.txt` make the population visible** (soft, baselined);
-  read it as a DELTA, not a target. Two habits: write a fixture from the CARD'S REAL TEXT,
-  never a paraphrase — that is how you write a pattern for a card that does not exist — and
-  check for a TEST DOUBLE encoding the old behaviour (`check_suggest` anchor 15). [G-67]
+  UNDER-count — but a too-broad pattern OVER-counts just as silently (BS2-06). Twenty holes
+  closed in 2026-08, incl. NEUTRALIZATION — you answer a creature by killing, exiling or
+  TURNING IT OFF, and only the first two were written. **Ask which rule a family takes
+  before reusing one**: the line for neutralization is PERMANENCE, and permanence INVERTS
+  for a lethal shrink, since `-4/-4 until end of turn` still KILLS. **`check_roles.py` makes
+  the population visible** — `role_baseline.txt` for zero-role ROSTER cards, `--tags` for
+  POOL cards the two models disagree about, which is the sweep that catches a hole in an
+  UNOWNED card, i.e. the recommender's candidate set. Read both as a DELTA. **Live residual:
+  the 138-entry worklist + the AURA `+N/-M`** (Immolation vs Mogis's Favor, a curse and a
+  pump one shape cannot separate). Fixtures from REAL TEXT; check for a TEST DOUBLE. [G-67]
 
 - **A `#:` HEADER THAT LISTS CARD NAMES GOES STALE, AND UNTIL 2026-08-07 NOTHING CHECKED
   ONE.** `#: protect:` and `#: uncastable-ok:` are read by the tooling as INSTRUCTIONS, so
@@ -841,18 +853,19 @@ directions.
   pinned behaviourally now (`TestMemoizedTablesAreNotMutated`), because a source scan is
   what failed. [G-71]
 - **A CONTROL BUILT IN JAVASCRIPT IS A CONTROL ONLY IF IT GOES THROUGH `a11y()`.** Four
-  times now a click handler has been bound to a non-interactive node — the collection
-  pips (I-01), the deck-editor analysis tabs (S-2), and in 2026-08 the dashboard's
-  roster-triage Deck cell (an `<a>` with NO href, so not focusable) and the card finder's
-  `<span>` chips. **All three 2026-08 interface defects were in the GENERATED pages**
-  (`build_dashboard.py`, `build_gallery.py`), because `tests/test_templates.py` pins
-  `templates/` plus a few NAMED dashboard controls and cannot see a new one. When
-  a11y-ing a node inside a table, apply it in `sortableTable`'s `onRowExtra` — the
-  internal `redraw()` rebuilds `<tbody>` on every sort, discarding attributes set once.
-  The same files hide hardcoded colours (`gallery.html`'s light mode painted a literal
-  `#0f1115` track on a white panel). **A STATIC GATE WAS MEASURED UNBUILDABLE — do not
-  restart it**: three designs, every flag FALSE, since the controls are a11y'd at RUNTIME
-  and JS scoping defeats regex. **Scenario 7's keyboard walk is the only coverage.** [G-72]
+  times a click handler has been bound to a non-interactive node (collection pips I-01,
+  editor tabs S-2, the triage Deck cell and card-finder chips in 2026-08). **All of them
+  were in the GENERATED pages**, because `tests/test_templates.py` pins `templates/` plus a
+  few NAMED dashboard controls and cannot see a new one. When a11y-ing a node inside a table,
+  apply it in `sortableTable`'s `onRowExtra` — `redraw()` rebuilds `<tbody>` on every sort,
+  discarding attributes set once. The same files hide hardcoded colours (`gallery.html`'s
+  literal `#0f1115` track; the dashboard's mana tokens had no light value at all, BS6-02).
+  **AN A11Y'D NODE IS NOT A11Y'D BEHAVIOUR**: `attachHover`'s focus listeners sat on bare
+  spans at 2 of 3 call sites, and `focus` neither fires on a non-focusable node nor bubbles,
+  so the preview followed focus at ONE site for months — and Scenario 7 named that site, so
+  the walk passed over an inert feature (BS6-03). **Write a scenario step from the FEATURE,
+  not from the fix.** **A STATIC GATE WAS MEASURED UNBUILDABLE — do not restart it**: three
+  designs, every flag FALSE. Scenario 7 is the only coverage. [G-72]
 - **A DECK'S REPO NAME AND ITS ARENA NAME ARE DIFFERENT STRINGS, and NEITHER is
   authoritative — so never gate anything on their agreeing.** Of 22 CORRECT `#: arena:`
   mappings, **8 DISAGREED** ("49 Big Draco" was repo deck 49 "Scaleforge"): the Arena names
@@ -922,8 +935,16 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   clear the one-card noise floor without a second card existing. [K-08]
 - **`tags_for` and `classify_roles` must agree on the same text.** Three phrases
   disagreed, each leaving a card with a blank Synergies cell and therefore invisible to
-  every tag-based recommendation. **Residual: ~384 pool blanks remain — a genuine long
-  tail of un-themeable effects, and a new theme for four cards is not the fix.** [K-09]
+  every tag-based recommendation. **The 2026-08-19 instance runs the OTHER way and is
+  worse, because nothing is blank**: Dead Weight is tagged `removal` by the tagger and
+  scored ZERO roles by the classifier, so it was a removal card to one model and roleless
+  to the other — and it is the ROLE model that feeds `tier_band` (BS6-10). Comparing the
+  two is cheap, and is a GATE now, not a one-off: `check_roles.py --tags` sweeps the pool
+  for it, baselined at 138 and soft in `check_all`. It reads the tagger's own
+  `MECHANIC_RULES` live (never a copy) and excludes the deathtouch KEYWORD path by
+  construction — 250 of the 388 raw hits, which an allowlist would have had to enumerate.
+  A worklist, not a defect count. **Residual: 380 pool blanks —
+  a long tail of un-themeable effects, and a new theme for four cards is not the fix.** [K-09]
 - **After editing a tag pattern, regenerate BOTH derived tag stores** —
   `tag_synergies.py --merge` for the LIBRARY and **`build_pool.py --all` for the pool**,
   which re-derives every pool row's `Synergies` through the same `tags_for()`. Skipping
@@ -995,9 +1016,10 @@ exits non-zero on any hard invariant break. INV-01…04 plus **fourteen model-sa
 gates** (`check_rankings`, `check_colors`, `check_dfc`, `check_suggest`, `check_engines`,
 `check_tier`, `check_patterns`, `check_commands`, `check_agreement`, `check_docs`, and the
 soft `check_keywords` / `check_roles` / `check_themes` / rationale-and-flex sweeps) — plus
-FOUR further SOFT roster sweeps this list used to omit: wishlist target drift, the G-68
-card-name-header staleness pass, the tier-mismatch pass, and (2026-08-11) the `#~ note:`
-figure sweep. Two things to know
+SIX further SOFT roster sweeps this list used to omit: wishlist target drift, the G-68
+card-name-header staleness pass, the tier-mismatch pass, (2026-08-11) the `#~ note:`
+figure sweep, and (2026-08-19) the tag/role disagreement sweep (`check_roles --tags`) and
+the committed-dashboard freshness check. Two things to know
 before touching it: it imports `deck` as a MODULE and calls `cmd_*` directly, so it never
 builds an argparse tree — the CLI surface is covered by `tests/test_cli.py` and a CI smoke
 step — and the reference-table loaders are memoized, which is what makes a roster-wide
@@ -1027,7 +1049,8 @@ earned it: [C-01]
   scripts/sheets_sync.py, scripts/scryfall.py, scripts/lib.py [C-04]
 - Analysis: scripts/deck.py, scripts/query.py, scripts/card.py, scripts/pool.py,
   scripts/wishlist.py, scripts/validate.py, scripts/check_all.py + the thirteen
-  `check_*.py` gates, scripts/keyword_baseline.txt, scripts/role_baseline.txt [C-05]
+  `check_*.py` gates, scripts/keyword_baseline.txt, scripts/role_baseline.txt,
+  scripts/tag_role_baseline.txt [C-05]
 - Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json,
   scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml,
   scripts/app.py, templates/, Makefile [C-06]
@@ -1090,6 +1113,8 @@ format.
      - Look at a deck card's build badge (buildable / N missing / N short)
      - Expand "Recently edited" — the +added / −removed delta lines
      - Paste any deck into the stale-deck panel — the in-sync / drifted text
+     - Still in light mode, open a two-or-three-colour DECK: the Stats tab's "Color
+       identity" bars and the Mana tab's "Strict color requirements" pip bars
      - Then `gallery.html` in a LIGHT OS scheme (it has no toggle — it follows the OS):
        the "Collection overview" bar tracks, each colour bar, and a card's ×N badge /
        set-code label
@@ -1104,7 +1129,11 @@ format.
    the `#0f1115` literal they carried until BS5-10), every colour bar must be visible
    against that track (`--W…--C` are mid-tone in light mode — the dark pastels vanish on
    it), and the ×N / set-code plates stay deliberately DARK because they sit on card ART,
-   so check their ink is still light-on-dark rather than dark-on-dark.
+   so check their ink is still light-on-dark rather than dark-on-dark. **The DECK-tab leg
+   is the same bug one file over** (BS6-02): the dashboard's `--W…--Cc` had no light value
+   at all while their bar track flips near-white, so those two panels painted cream on
+   white. Both pages now use the SAME mid-tone values — if one looks right and the other
+   does not, one of them drifted off the shared set.
 6. Phone width — dashboard AND editor | Subsystem: Presentation & Interface
    Steps:
      - Open `dashboard.html` at 390×844 (or a real phone); scroll top to bottom
@@ -1123,13 +1152,17 @@ format.
    quick-filter pill, a roster-table sort header, **a Triage row's DECK NAME and a Card
    finder CHIP** (both mouse-only until BS5-02/03), a section header (collapse it with
    Enter or Space) and a deck's ⤢ opener; open the modal, Tab through it, press Escape.
-   On a deck card's tab strip try ← / →, and focus a wishlist card NAME to check the
-   card image appears. Then the EDITOR (`make app`, `templates/collection.html`) colour
+   On a deck card's tab strip try ← / →, then check the card image appears on focus at
+   **ALL THREE** preview surfaces — a wishlist card NAME, a card name in the roster
+   CRAFT-PLAN table, and a card in the IMPACT grid ("cards that advance the most decks");
+   re-Tab to the craft table after clicking a sort header. Then the EDITOR (`make app`, `templates/collection.html`) colour
    pips, and the DECK editor's (`templates/deck.html`) Analysis tab strip; remove a card
    line with its ✕ and watch where focus lands.
    Expected: every control reachable with a VISIBLE focus ring; Enter and Space both
    activate; ← / → move along a tab strip (S-2 made them real tablists); the card
-   preview follows FOCUS, not just the mouse (S-7); removing a row leaves focus on the
+   preview follows FOCUS, not just the mouse, **at all three surfaces — this step used to
+   name only the wishlist one, which is the single site where it worked, so the walk passed
+   over a feature inert at the other two for months (S-7, fixed BS6-03)**; removing a row leaves focus on the
    next row's ✕, never on `<body>` (S-6); Tab inside the modal never reaches the page
    behind; Escape returns focus to the ⤢ that opened it. The Triage deck name and the
    Card finder chip must BOTH filter the deck list on Enter AND on Space, and the Triage

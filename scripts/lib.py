@@ -473,15 +473,35 @@ def _creature_subtypes(tline):
 
 
 def pool_ability_model(_cache={}):
-    """Cached pool ability-rarity model. Returns (idf, tribe_tags, n):
+    """Pool ability-rarity model, memoized on the pool file's (mtime_ns, size).
+    Returns (idf, tribe_tags, n):
       idf         {tag: log(N/(1+df))} over the full pool — a tag on FEW cards scores high.
       tribe_tags  capitalized creature SUBTYPES seen anywhere in the pool (Human, Ape,
                   Otter, …) — identity, not ability, so a niche tribe doesn't read as a
                   distinctive MECHANIC.
       n           pool card count.
     Empty model ({}, set(), 0) if the pool is missing — callers degrade to a neutral 0.0.
+
+    KEYED, not held forever (broad-scan BS6-08). It used to memoize on a bare `if
+    _cache:`, so the FIRST call won permanently: a `build_pool.py` run inside a
+    long-lived process served the old model afterwards, and — worse — a first call made
+    before the pool existed pinned the empty model for the life of the process, which is
+    a SILENT degradation rather than a visible one. `card_distinctiveness` then returns
+    the structural term alone and `cuts`' `Uq` co-signal quietly flattens, with nothing
+    printed. Every other reference-table loader here keys on (mtime_ns, size) — the same
+    reasoning `deck._file_memo` documents, including why ns beats getmtime's float
+    seconds — and this was the one that did not.
+
+    `cache_clear()` is exposed for the same reason `_file_memo` exposes it: a test that
+    repoints `_POOL_CSV` needs to invalidate deterministically rather than hope the
+    stat key differs.
     """
-    if _cache:
+    try:
+        st = os.stat(_POOL_CSV)
+        key = (_POOL_CSV, st.st_mtime_ns, st.st_size)
+    except OSError:
+        key = (_POOL_CSV, None, None)
+    if _cache.get("key") == key:
         return _cache["idf"], _cache["tribes"], _cache["n"]
     import math
     df, tribes, n = {}, set(), 0
@@ -495,8 +515,16 @@ def pool_ability_model(_cache={}):
                         df[t] = df.get(t, 0) + 1
                 tribes |= _creature_subtypes(r.get("Type") or "")
     idf = {t: math.log(n / (1 + c)) for t, c in df.items()} if n else {}
-    _cache.update(idf=idf, tribes=tribes, n=n)
+    _cache.update(key=key, idf=idf, tribes=tribes, n=n)
     return idf, tribes, n
+
+
+def _pool_model_cache_clear(_cache=None):
+    """Drop the memoized pool ability model (see `pool_ability_model`)."""
+    pool_ability_model.__defaults__[0].clear()
+
+
+pool_ability_model.cache_clear = _pool_model_cache_clear
 
 
 def distinctiveness_score(tags, idf, tribe_tags, n, *, k=2):

@@ -221,6 +221,166 @@ class TestClassifyRoles:
             "Whenever this creature blocks or becomes blocked by a creature, this "
             "creature deals 1 damage to that creature.")
 
+    # ── Coordinated qualifier LISTS before the permanent type (broad-scan BS6-10).
+    # The main removal pattern allows at most two adjective words, so a three-or-four
+    # word qualifier list matched nothing. Fixtures are verbatim card text (G-67).
+
+    QUALIFIER_LIST_REMOVAL = [
+        # "attacking or blocking" — three words. Divine Verdict, Sudden Strike,
+        # Protective Response, Farm // Market, Puncturing Light, Devouring Light.
+        "Destroy target attacking or blocking creature.",
+        "Exile target attacking or blocking creature.",
+        "Destroy target attacking or blocking creature with power 3 or less.",
+        # Colour-restricted removal — Deathmark.
+        "Destroy target green or white creature.",
+        # An exclusion LIST, with commas `[a-z-]+ ` cannot cross — Power Word Kill.
+        "Destroy target non-Angel, non-Demon, non-Devil, non-Dragon creature.",
+        # Mixed type-and-colour list — Nissa's Defeat, Thraben Exorcism.
+        "Destroy target Forest, green enchantment, or green planeswalker.",
+        "Exile target Spirit, creature with disturb, or enchantment.",
+    ]
+
+    def test_qualifier_list_removal_counts(self):
+        for text in self.QUALIFIER_LIST_REMOVAL:
+            assert "Removal (spot)" in deck.classify_roles(text), text
+
+    def test_exiling_a_card_from_a_graveyard_is_not_removal(self):
+        # `land` and `creature` are in _PERM_TYPE, so without the zone guard both of
+        # these read as removal. Kotose is graveyard HATE and Offspring's Revenge is a
+        # recursion cost — neither answers a permanent. They were the only two false
+        # positives when the qualifier-list pattern was measured against the whole pool.
+        assert "Removal (spot)" not in deck.classify_roles(
+            "When Kotose, the Silent Spider enters, exile target card other than a "
+            "basic land card from an opponent's graveyard.")
+        assert "Removal (spot)" not in deck.classify_roles(
+            "At the beginning of combat on your turn, exile target red, white, or "
+            "black creature card from your graveyard.")
+
+    # ── The removal AURA (broad-scan BS6-10). Pacifism's "can't attack or block" was
+    # already in this bucket; the Aura that SHRINKS the creature was never written, so
+    # 20 cards scored zero roles — including Dead Weight, which `tag_synergies` tags
+    # `removal`, making it a live K-09 tagger/classifier disagreement.
+
+    AURA_REMOVAL = [
+        "Enchant creature\nEnchanted creature gets -2/-2.",              # Dead Weight
+        "Enchant creature\nEnchanted creature gets -3/-3.",              # Mire's Grasp
+        "Enchant creature\nEnchanted creature gets -6/-0 and loses flying.",
+        "Flash\nEnchant creature\nEnchanted creature gets -2/-0 and loses all abilities.",
+        # A steal effect that also shrinks — Duskmourn's Domination. "You control
+        # enchanted creature" is the OTHER word order and must not trip the guard below.
+        "Enchant creature\nYou control enchanted creature.\nEnchanted creature gets "
+        "-3/-0 and loses all abilities.",
+    ]
+
+    def test_shrinking_aura_is_removal(self):
+        for text in self.AURA_REMOVAL:
+            assert "Removal (spot)" in deck.classify_roles(text), text
+
+    def test_buff_aura_on_your_own_creature_is_not_removal(self):
+        # Craving of Yeenoghu — a BUFF Aura whose recursion clause perpetually gains
+        # "Enchanted creature gets -1/-1". The only measured false positive, and the
+        # reason the pattern guards on `enchant creature you control`.
+        assert "Removal (spot)" not in deck.classify_roles(
+            "Enchant creature you control\nEnchanted creature gets +3/+2, has haste, "
+            "and attacks each combat if able.\n{R}: Return Craving of Yeenoghu from "
+            "your graveyard to the battlefield attached to target creature you "
+            "control. Craving of Yeenoghu perpetually gains \"Enchanted creature gets "
+            "-1/-1.\" Activate only as a sorcery.")
+
+    # ── LETHAL SHRINK in the +N/-M shape. `target creature gets -N/-N` was covered and
+    # its twin was not. The permanence rule the neutralization block below rests on does
+    # NOT transfer: a `-4/-4 until end of turn` still KILLS, so this family is graded on
+    # LETHALITY. Fixtures verbatim (G-67).
+
+    LETHAL_SHRINK = [
+        "Target creature gets +4/-4 until end of turn.",                # Auger Spree
+        "Target creature gets +2/-2 until end of turn.",                # Lash of Malice
+        "Changeling (This card is every creature type.)\nTarget creature gets +3/-3 "
+        "and loses all creature types until end of turn.",              # Nameless Inversion
+    ]
+
+    def test_lethal_shrink_is_removal(self):
+        for text in self.LETHAL_SHRINK:
+            assert "Removal (spot)" in deck.classify_roles(text), text
+
+    def test_a_firebreathing_self_pump_is_not_removal(self):
+        """23 of the 29 pool cards carrying a `+N/-M` clause pump their OWN body. That is
+        the same drawback-vs-answer split `its controller's` handles for tap-down."""
+        for text in ["{U}: This creature gets +1/-1 until end of turn.",
+                     "Discard a card: This creature gets +2/-2 until end of turn.",
+                     "Target creature you control gets +2/-2 until end of turn."]:
+            assert "Removal (spot)" not in deck.classify_roles(text), text
+
+    # ── NEUTRALIZATION: the answer that leaves the permanent on the battlefield.
+    # Magic answers a creature three ways — kill it, exile it, turn it off — and this
+    # bucket read only the first two, even though Pacifism's `can't attack or block` was
+    # already in it. The line is PERMANENCE: a one-turn effect is tempo, not an answer.
+    # Fixtures verbatim (G-67).
+
+    NEUTRALIZATION = [
+        # Tap-down, permanent — Waterknot / Capture Sphere / Frozen in Ice shape.
+        "Enchant creature\nWhen this Aura enters, tap enchanted creature.\nEnchanted "
+        "creature doesn't untap during its controller's untap step.",
+        # Dungeon Geists — the same lock on a body.
+        "Flying\nWhen this creature enters, tap target creature an opponent controls. "
+        "That creature doesn't untap during its controller's untap step for as long as "
+        "you control this creature.",
+        # Ability-strip, Aura form — Frogify / Kasmina's Transmutation / Witness Protection.
+        "Enchant creature\nEnchanted creature loses all abilities and is a blue Frog "
+        "creature with base power and toughness 1/1.",
+        # Ability-strip, targeted and permanent — Abigale, Eloquent First-Year.
+        "Flying, first strike, lifelink\nWhen Abigale enters, up to one other target "
+        "creature loses all abilities. Put a flying counter, a first strike counter, and "
+        "a lifelink counter on that creature.",
+        # The ANAPHOR twin — The Wondrous Wasp. Its effect is identical in shape to Ty
+        # Lee's tap-lock above, and the two must not land on opposite sides of the line.
+        "Flash\nFlying\nWasp's Sting — When The Wondrous Wasp enters, tap up to one "
+        "target creature. It loses all abilities for as long as The Wondrous Wasp "
+        "remains on the battlefield.",
+    ]
+
+    def test_permanent_neutralization_is_removal(self):
+        for text in self.NEUTRALIZATION:
+            assert "Removal (spot)" in deck.classify_roles(text), text
+
+    ONE_TURN_TEMPO = [
+        # Frost Lynx — `NEXT untap step` is one turn of tempo, not an answer.
+        "When this creature enters, tap target creature an opponent controls. That "
+        "creature doesn't untap during its controller's next untap step.",
+        # Merfolk Trickster — ability-strip that wears off at end of turn.
+        "Flash\nWhen this creature enters, tap target creature an opponent controls. It "
+        "loses all abilities until end of turn.",
+        # Azure Beastbinder — `until your next turn` is the same class one word over.
+        "Vigilance\nWhenever this creature attacks, up to one target artifact, creature, "
+        "or planeswalker an opponent controls loses all abilities until your next turn.",
+        # Mercurial Transformation — the duration leads the sentence, so a trailing
+        # lookahead alone would miss it.
+        "Until end of turn, target nonland permanent loses all abilities and becomes "
+        "your choice of a blue Frog creature with base power and toughness 1/1 or a "
+        "blue Octopus creature with base power and toughness 4/4.",
+    ]
+
+    def test_one_turn_tempo_is_not_removal(self):
+        for text in self.ONE_TURN_TEMPO:
+            assert "Removal (spot)" not in deck.classify_roles(text), text
+
+    def test_self_referential_untap_drawback_is_not_removal(self):
+        # Colossus of Sardia: the SAME clause as the tap-down pattern, but pointed at
+        # your own card as a drawback. `its controller's` is what separates them, and 11
+        # pool cards ride on that word.
+        assert "Removal (spot)" not in deck.classify_roles(
+            "Trample\nColossus of Sardia doesn't untap during your untap step.\n"
+            "{9}: Untap Colossus of Sardia.")
+
+    def test_stripping_only_mana_abilities_off_a_land_is_not_removal(self):
+        # Town-Razer Tyrant punishes a land; it does not answer a threat, and it is the
+        # reason the targeted pattern guards on `except `.
+        assert "Removal (spot)" not in deck.classify_roles(
+            "Flying\nWhen this creature enters the battlefield, target nonbasic land you "
+            "don't control loses all abilities except mana abilities and gains \"At the "
+            "beginning of your upkeep, this permanent deals 2 damage to you unless you "
+            "sacrifice it.\"")
+
     def test_combat_on_your_turn_draw_is_card_advantage(self):
         # Magic templates this trigger as "at the beginning of combat ON YOUR TURN", so
         # the possessive lands AFTER the phase and defeats the `(?:your|each|the)` group
@@ -947,6 +1107,73 @@ Deck
         hits = [(d["id"], h, n) for d in deck.roster_decks()
                 for h, n in deck.header_card_staleness(d["path"])]
         assert hits == [], f"stale card-name header(s): {hits}"
+
+
+class TestOwnershipResolvesAFrontNameAgainstAFullNameRow:
+    """BS6-01. `lib.owned_qty` resolves the full `A // B` name DOWN to a front key,
+    which is the right direction for the library's stated front-only convention — and
+    that convention is not what the data holds. Eight rows are stored under the FULL
+    name (the DSK Rooms plus two DFCs), so a query by the FRONT name resolved to
+    nothing and `deck.owned` answered "NOT IN LIBRARY" for an owned card.
+
+    `check_agreement`'s ownership pair could not see it: `lib.owned_qty` and
+    `deck.owned` agreed on the same wrong answer (0). `check_dfc`'s registry could not
+    either — its completeness scan only walks builders that read `card-pool.csv`, and
+    every one of these reads `card-library.csv`. So the property is pinned here, across
+    all four builders at once, which is the shape that would have caught it."""
+
+    ROWS = [{"Card Name": "Funeral Room // Awakening Hall", "Set Code": "DSK",
+             "Collector #": "100", "Quantity Owned": "1"},
+            {"Card Name": "Llanowar Elves", "Set Code": "DOM",
+             "Collector #": "168", "Quantity Owned": "4"}]
+
+    def _index(self):
+        idx = {}
+        for r in self.ROWS:
+            idx[r["Card Name"].lower()] = int(r["Quantity Owned"])
+        return lib.alias_front(idx)
+
+    def test_owned_resolves_the_front_name(self):
+        assert deck.owned(self._index(), "Funeral Room") == (1, True)
+
+    def test_owned_still_resolves_the_full_name(self):
+        assert deck.owned(self._index(), "Funeral Room // Awakening Hall") == (1, True)
+
+    def test_owned_qty_agrees_with_owned_on_the_front_name(self):
+        """The pair `check_agreement` registers — it must agree on the RIGHT answer."""
+        idx = self._index()
+        assert lib.owned_qty(idx, "Funeral Room") == deck.owned(idx, "Funeral Room")[0] == 1
+
+    def test_a_real_card_is_not_shadowed_by_a_dfc_front_alias(self):
+        """`Life` is a card as well as the front of `Life // Death`, so the alias pass
+        must never overwrite a real row — the reason it is a SECOND pass and not a
+        `setdefault` inside the build loop (G-63)."""
+        idx = lib.alias_front({"life // death": 2, "life": 5})
+        assert idx["life"] == 5
+
+    def test_every_library_side_builder_aliases(self):
+        """Behavioural, against the real collection: the four surfaces that answer "how
+        many do I own" must give the SAME answer for a front name whose library row is
+        stored under the full name. Skips cleanly if the collection holds no such row."""
+        import csv as _csv
+        import card as cardmod
+        import pool as poolmod
+        import wishlist as wishmod
+        with open(lib.DEFAULT_CSV, newline="", encoding="utf-8") as fh:
+            rows = [dict(r) for r in _csv.DictReader(fh)]
+        full = next((r["Card Name"] for r in rows if " // " in (r["Card Name"] or "")), None)
+        if not full:
+            pytest.skip("no full-name library row to exercise the alias with")
+        front = full.split(" // ")[0]
+        _, _, qty = deck.load_collection()
+        answers = {
+            "deck.load_collection": lib.owned_qty(qty, front),
+            "pool.owned_counts": lib.owned_qty(poolmod.owned_counts(), front),
+            "card._owned_index": lib.owned_qty(cardmod._owned_index(rows), front),
+            "wishlist.owned_index": lib.owned_qty(wishmod.owned_index(), front),
+        }
+        assert all(v > 0 for v in answers.values()), answers
+        assert len(set(answers.values())) == 1, answers
 
 
 class TestBuildabilityIsPerNameNotPerLine:
@@ -3922,3 +4149,51 @@ class TestFormatNormalization:
         rep = deck.legality_report({"commander": ""}, cards, "historic-brawl", {})
         assert not any("minimum is 60" in p for p in rep["problems"])
         assert rep["min_size"] == 100 and rep["copy_limit"] == 1
+
+
+class TestOwnedDistinguishesZeroFromAbsent:
+    """BS6-07. `owned()` ended `return (qty, True) if qty else (0, False)` — truthiness,
+    not membership — so a stored count of a real 0 read as NOT IN LIBRARY, the exact
+    string G-10 sends you to reconcile_crafts.py about, pointing at a row already there.
+    No library row carries 0 today, but `import_collection --zero-missing` writes them
+    and INV-01 permits them."""
+
+    IDX = {"shock": 0, "bolt": 2, "fable of the mirror-breaker": 3}
+
+    def test_a_zero_count_is_in_the_library(self):
+        assert deck.owned(self.IDX, "Shock") == (0, True)
+
+    def test_an_absent_card_is_not(self):
+        assert deck.owned(self.IDX, "Nonexistent Card") == (0, False)
+
+    def test_a_normal_count_is_unchanged(self):
+        assert deck.owned(self.IDX, "Bolt") == (2, True)
+
+    def test_the_dfc_fallback_still_delegates(self):
+        """The count must still come from lib.owned_qty — inlining the front-face split
+        here would be the A3/A4/F6 bypass check_dfc statically bans."""
+        assert deck.owned(self.IDX, "Fable of the Mirror-Breaker // Reflection of "
+                                    "Kiki-Rikki") == (3, True)
+
+    def test_basics_are_still_unlimited(self):
+        assert deck.owned({}, "Island") == (99, True)
+
+
+class TestClockScoreHandlesAMeasuredZeroCurve:
+    """BS6-12. `vec.get("avg_mv") or 99.0` turned a measured 0.0 curve into the
+    no-data sentinel — the falsy-zero trap, inside the one function that can RAISE a
+    tier band. Conservative in effect, but the shape must not be copied."""
+
+    FAST = {"early_drops": 20, "reach": 20}
+
+    def test_a_zero_curve_is_a_measurement_not_missing_data(self):
+        assert deck._clock_score({**self.FAST, "avg_mv": 0.0}) > \
+               deck._clock_score({**self.FAST})
+
+    def test_missing_avg_mv_still_scores_no_curve_credit(self):
+        assert deck._clock_score({**self.FAST}) == deck._clock_score(
+            {**self.FAST, "avg_mv": 99.0})
+
+    def test_bounds_hold(self):
+        for v in ({**self.FAST, "avg_mv": 0.0}, {"avg_mv": 9.0, "early_drops": 0, "reach": 0}):
+            assert 0 <= deck._clock_score(v) <= 7

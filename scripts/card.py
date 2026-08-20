@@ -20,7 +20,8 @@ import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from lib import REPO_ROOT, front_face_cost, mana_value, owned_qty  # noqa: E402
+from lib import (REPO_ROOT, front_face_cost, mana_value, owned_qty,  # noqa: E402
+                 alias_front)
 
 LIBRARY = os.path.join(REPO_ROOT, "card-library.csv")
 POOL = os.path.join(REPO_ROOT, "card-pool.csv")
@@ -76,20 +77,13 @@ def _exact(query, rows):
             or _front(r.get("Card Name") or "") == nl]
 
 
-def _find(query, rows):
-    """(best_row, distinct_matches) WITHIN one source. An exact hit (case-insensitive,
-    including a DFC front face) wins outright; otherwise substring matches are ranked
-    closest-first and deduped by name, so both the pick and the "N cards match" count
-    are honest. Cross-SOURCE resolution lives in `_resolve` — exactness must outrank
-    source there, so don't chain two `_find`s with `or`."""
-    exact = _exact(query, rows)
-    if exact:
-        return exact[0], _distinct(exact)
-    subs = _rank(query, [r for r in rows
-                         if query.strip().lower() in (r.get("Card Name") or "").lower()])
-    return (subs[0] if subs else None), _distinct(subs)
-
-
+# NOTE: a single-source `_find(query, rows)` used to live here and was deleted as dead
+# code in 2026-08 (broad-scan BS6-05). Nothing had called it since `_resolve` replaced
+# it, and its docstring ended with a warning not to chain two of them with `or` — i.e.
+# it survived as a documented invitation to re-introduce the exact shadowing bug BS-02
+# fixed. If you find yourself wanting a per-source lookup, read `_resolve` first: the
+# reason it exists is that exactness has to outrank SOURCE, which a per-source helper
+# structurally cannot express.
 def _resolve(query, lib, pool):
     """(best_row, distinct_matches, is_exact) across BOTH sources.
 
@@ -122,7 +116,15 @@ def _owned_index(rows):
 
     `deck.py` (`load_collection`), `pool.py` (`owned_counts`) and `wishlist.py` all build
     this same summed index; the lookup goes through `lib.owned_qty` so the DFC front-face
-    fallback is shared rather than re-implemented (the A3/A4/F6 rule)."""
+    fallback is shared rather than re-implemented (the A3/A4/F6 rule).
+
+    Front-face aliased in a SECOND pass, like those three. `owned_qty` resolves the full
+    `A // B` name DOWN to a front key — the direction the library's stated convention
+    calls for — but eight rows are stored under the FULL name (the DSK Rooms and two
+    DFCs), so a query by the FRONT name resolved to nothing and this surface reported
+    OWNED: 0 for a card in the collection (broad-scan BS6-01). `alias_front` adds a
+    front key only where no real row claims it, so a distinct card named `Front` is
+    never shadowed (G-63)."""
     idx = {}
     for r in rows:
         n = (r.get("Card Name") or "").strip().lower()
@@ -130,7 +132,7 @@ def _owned_index(rows):
             continue
         q = (r.get("Quantity Owned") or "").strip()
         idx[n] = idx.get(n, 0) + (int(q) if q.isdigit() else 0)
-    return idx
+    return alias_front(idx)
 
 
 def _owned_printings(rows, name):

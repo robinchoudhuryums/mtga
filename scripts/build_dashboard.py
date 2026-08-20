@@ -32,6 +32,86 @@ import wishlist
 
 OUT = os.path.join(REPO_ROOT, "dashboard.html")
 
+# The files the dashboard is DERIVED from. If any has CHANGED since the page was
+# built, the page describes a roster that no longer exists.
+_SOURCES = ("card-library.csv", "card-mana.csv", "card-pool.csv", "card-wishlist.csv")
+
+
+def _source_files():
+    """Every file the dashboard is derived FROM, repo-relative, in a total order."""
+    out = [rel for rel in _SOURCES if os.path.exists(os.path.join(REPO_ROOT, rel))]
+    for root, _dirs, files in os.walk(os.path.join(REPO_ROOT, "decks")):
+        out += [os.path.relpath(os.path.join(root, f), REPO_ROOT)
+                for f in files if f.endswith(".txt")]
+    return sorted(out)
+
+
+def source_fingerprints():
+    """{repo-relative path: short content hash} over every dashboard input.
+
+    CONTENT, NOT MTIME — the F-04 rule, and this function exists because the FIRST
+    version of this check broke it. It compared `os.path.getmtime` of each source
+    against the page's `generated` stamp, which is right in a working tree and wrong
+    everywhere else: a fresh `git clone` (or a CI checkout) stamps every file with
+    checkout time, so the sources always read NEWER than the committed page and the
+    check reported a permanent, unfixable STALE. It failed CI on the very PR that
+    added it. mtime records when a file was WRITTEN, not what it CONTAINS — the same
+    trap `lib.latest_backup` documents one directory over, one layer up: there a
+    `.bak` inherits its SOURCE's mtime, here a checkout invents one.
+
+    A hash answers the question actually being asked ("did an input change?") and is
+    identical in a clone, in CI and on the machine that built the page. Hashing all
+    117 inputs measures at 15ms, which is why the whole-file read is affordable."""
+    import hashlib
+    out = {}
+    for rel in _source_files():
+        try:
+            with open(os.path.join(REPO_ROOT, rel), "rb") as fh:
+                out[rel] = hashlib.sha256(fh.read()).hexdigest()[:12]
+        except OSError:
+            continue
+    return out
+
+
+def dashboard_staleness(out=None):
+    """(n_changed, first_changed_source) if the committed dashboard's inputs have moved
+    since it was built, else None. `None` also for "no dashboard yet", "no readable data
+    island" and "a page built before fingerprints existed" — absence is not staleness,
+    and a missing page is INV-03's business for the gallery and nobody's for this one.
+
+    WHY THIS EXISTS (BS6-04). `make postedit` rebuilds this page after every deck edit,
+    and skipping it is silent: the committed page keeps its old numbers, `check_all`
+    stays green, and the only symptom is a human reading a roster that moved. It was
+    three days and two cycles stale when the broad scan found it.
+
+    The DEPLOYED copy is not at risk: pages.yml rebuilds from committed data on every
+    push to main. This guards the local snapshot, which is the one people open.
+
+    STATED RESIDUAL: it watches DATA, not code. A `_ROLE_PATTERNS` edit re-scores every
+    deck without touching a single file in `_SOURCES`, so this check stays quiet for it.
+    That is deliberate, and it is the lesson `tagger_fingerprint` paid for twice: hashing
+    deck.py wholesale made the pool read stale after almost every session (BS4-37, undone
+    by BS5-06), and a signal that cries wolf every cycle is one an operator waves
+    through. Data staleness is the case that actually recurs — a deck edit without a
+    rebuild — so that is the case this catches."""
+    import json
+    import re as _re
+    path = out or OUT
+    if not os.path.exists(path):
+        return None
+    try:
+        with open(path, encoding="utf-8") as fh:
+            src = fh.read()
+        m = _re.search(r'<script id="data"[^>]*>(.*?)</script>', src, _re.S)
+        stored = json.loads(m.group(1)).get("sources") if m else None
+    except (OSError, ValueError, KeyError, TypeError, json.JSONDecodeError):
+        return None
+    if not isinstance(stored, dict) or not stored:
+        return None
+    live = source_fingerprints()
+    changed = sorted(k for k in set(live) | set(stored) if live.get(k) != stored.get(k))
+    return (len(changed), changed[0]) if changed else None
+
 
 def _no_network():
     """Neutralize deck.py's live-Scryfall fallbacks so the build stays offline
@@ -320,6 +400,10 @@ def collect():
 
     return {
         "generated": time.strftime("%Y-%m-%d %H:%M"),
+        # Content hashes of every input, so `dashboard_staleness` can ask "did a
+        # source CHANGE" instead of "is a source newer" — a question a fresh clone
+        # can answer and mtime cannot. See `source_fingerprints`.
+        "sources": source_fingerprints(),
         "totals": {"printings": len(rows), "decks": len(decks), "buildable": buildable},
         "roster_plan": _capture(deckmod.cmd_wildcards, SimpleNamespace()),
         "decks": decks,
@@ -379,6 +463,26 @@ TEMPLATE = r"""<!DOCTYPE html>
     --font-mono:'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     --W:#efe4bf; --U:#5aa9ec; --B:#b9a6d6; --R:#ec7a63; --G:#6cc684; --Cc:#b9c0cc;
     --Wf:#2a2618; --Uf:#06263d; --Bf:#241833; --Rf:#350e08; --Gf:#06280f; --Ccf:#1c2129;
+  }
+  /* MANA COLOURS IN LIGHT MODE (broad-scan BS6-02). The six above are pastels tuned to
+     glow against #0a0c0f, and they live in a bare `:root` with no `[data-theme="light"]`
+     twin — but they are used two ways, and only one of them survives the flip. As a PIP
+     background they are fine either way (a coloured chip with dark ink). As a BAR FILL
+     they sit on `.hbar .track`, which is `--fill2` — and `--fill2` flips to
+     rgba(18,24,34,.02) over a white panel, so the deck detail's "Color identity" bars
+     (renderStats) and "Strict color requirements" pip bars (renderMana) painted cream on
+     near-white: two panels carrying no readable information in light mode.
+
+     This is BS5-10 one file over. build_gallery.py hit the identical bug, fixed it by
+     giving the mana tokens mid-tone light values, and wrote the rule down — "a pastel
+     fill on a light track is invisible" — and the dashboard sibling was never brought
+     along. Same VALUES as the gallery's light block, deliberately, so the two pages
+     cannot drift into disagreeing about what white looks like.
+
+     The `-f` ink twins need no override: they are dark inks used only as pip TEXT on
+     the coloured chip above, which stays coloured in both schemes. */
+  [data-theme="light"] {
+    --W:#d9c88a; --U:#5f9fd6; --B:#9a86b4; --R:#d4705c; --G:#63a877; --Cc:#a8adb8;
   }
   * { box-sizing:border-box; }
   body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--font-body);
@@ -1234,19 +1338,38 @@ function tablist(strip, panel, label, pid){
   });
 }
 
-function attachHover(node, name){
+function attachHover(node, name, focusHost){
   node.addEventListener('mouseenter', e => showPreview(name, e.clientX, e.clientY));
   node.addEventListener('mousemove', e => { if (previewOn) positionPreview(e.clientX, e.clientY); });
   node.addEventListener('mouseleave', hidePreview);
   // Keyboard parity (Batch E / S-7): I-01 made these nodes focusable and announced,
   // but the card image — the EVIDENCE for a craft decision (G-52 in interface form)
   // — only appeared on mouse hover. Mirror it on focus/blur, positioned from the
-  // node's own box since there is no cursor.
-  node.addEventListener('focus', () => {
-    const r = node.getBoundingClientRect();
+  // focused element's own box since there is no cursor.
+  //
+  // THE FIX ONLY EVER REACHED ONE OF ITS THREE CALL SITES (broad-scan BS6-03). `focus`
+  // does not fire on a non-focusable element and does not bubble, and two of the three
+  // nodes handed to this function are bare <span>s: `craftNameCell`'s `.hovname` in the
+  // roster craft table, and the `.nm` in the "cards that advance the most decks" grid.
+  // Only the wishlist site passes an a11y'd node, so the S-7 guarantee held there and
+  // silently did not elsewhere — and Scenario 7 walks exactly that one, so the check
+  // passed while two thirds of the feature was inert. This is G-40's shape in the
+  // interface layer: a working primitive nobody asked.
+  //
+  // So the focus host is explicit. By default it is the node itself, MADE focusable —
+  // which is what a bare span needs. A call site whose node already sits inside a
+  // focusable control passes that control instead, so no nested tab stop is created
+  // inside a role="button" (the leverage card, where the whole card is the control).
+  const host = focusHost || node;
+  if (host === node && !node.hasAttribute('tabindex')){
+    node.tabIndex = 0;
+    if (!node.hasAttribute('aria-label')) node.setAttribute('aria-label', name + ' — show card image');
+  }
+  host.addEventListener('focus', () => {
+    const r = host.getBoundingClientRect();
     showPreview(name, r.right, r.top + r.height / 2);
   });
-  node.addEventListener('blur', hidePreview);
+  host.addEventListener('blur', hidePreview);
 }
 
 // ---------- generic sortable table ----------
@@ -1666,7 +1789,10 @@ renderRecent(); renderRotation();
       const cnt = el('div','cnt', lv.decks.length); card.appendChild(cnt);
       const body = el('div','body');
       const nmrow = el('div'); nmrow.style.display='flex'; nmrow.style.alignItems='center'; nmrow.style.gap='6px';
-      const nm = el('span','nm', lv.name); attachHover(nm, lv.name); nmrow.appendChild(nm);
+      // Focus host is the CARD, not this span: the card is already the a11y'd control
+      // (below), so a second tab stop inside it would nest a focusable node in a
+      // role="button". Mouse behaviour is unchanged — hover still keys off the name.
+      const nm = el('span','nm', lv.name); attachHover(nm, lv.name, card); nmrow.appendChild(nm);
       nmrow.appendChild(wcPill(lv.rarity));
       const a = el('a','scry','↗'); a.href = scryUrl(lv.name); a.target='_blank'; a.rel='noopener'; nmrow.appendChild(a);
       body.appendChild(nmrow);

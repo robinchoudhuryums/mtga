@@ -43,6 +43,39 @@ shrinks, and that a NEW zero gets looked at once.
   python3 scripts/check_roles.py                  # new-since-baseline
   python3 scripts/check_roles.py --all            # every zero-role card, ignore baseline
   python3 scripts/check_roles.py --update-baseline # acknowledge the current set
+
+SECOND SWEEP — WHERE THE TWO MODELS DISAGREE (BS6-10 follow-up).
+
+The zero-role radar above is ROSTER-scoped, and that scope is deliberate: the pool is
+16k cards, 5,368 of them nonland with no role, so a pool-wide zero list is 33% of the
+pool and unreadable as a worklist. But roster scope is also why the radar could not see
+BS6-10 — the removal Auras it missed are cards you do not own, and unowned cards are
+exactly the recommender's candidate set.
+
+`tag_role_disagreements()` is the pool-scoped sweep that IS readable, because it asks a
+narrower question: which cards does `tag_synergies` call `removal` on the strength of
+their TEXT, while `deck.classify_roles` gives them no interaction role at all? Two
+models, one question, different answers — K-09's rule, and the shape that surfaced Dead
+Weight (tagged `removal`, scored nothing, and it is the ROLE model that feeds
+`tier_band`).
+
+Scoped by CONSTRUCTION, not by an allowlist:
+
+  · It reads the tagger's OWN `MECHANIC_RULES` predicates rather than a copy of them, so
+    a third text rule added there is swept automatically and the two cannot drift.
+  · The KEYWORD path (`deathtouch` → removal, `fight` → removal) is excluded because it
+    lives in KEYWORD_THEMES, not MECHANIC_RULES. That matters: deathtouch is a fair claim
+    about a BODY and not about spot removal, and it is 250 of the 388 raw disagreements —
+    an allowlist would have had to enumerate them, and this does not.
+
+Baselined like its sibling, and read the same way: a DELTA, not a target. A large share
+of what remains is legitimate divergence — the tagger's `"exile target"` substring also
+fires on graveyard hate, and its `gets -N/-N` also fires on a self-shrink. The job is
+that the set only ever shrinks, and that a NEW disagreement gets looked at once.
+
+  python3 scripts/check_roles.py --tags           # new-since-baseline disagreements
+  python3 scripts/check_roles.py --tags --all     # every disagreement
+  python3 scripts/check_roles.py --update-tag-baseline
 """
 import argparse
 import glob
@@ -53,14 +86,26 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from lib import REPO_ROOT, eprint  # noqa: E402
 
 BASELINE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "role_baseline.txt")
+TAG_BASELINE = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                            "tag_role_baseline.txt")
+
+
+def _load(path):
+    """Lowercased set of acknowledged card names from a baseline file."""
+    if not os.path.exists(path):
+        return set()
+    with open(path, encoding="utf-8") as fh:
+        return {ln.strip().lower() for ln in fh if ln.strip() and not ln.startswith("#")}
 
 
 def load_baseline():
     """Lowercased set of acknowledged zero-role card names."""
-    if not os.path.exists(BASELINE):
-        return set()
-    with open(BASELINE, encoding="utf-8") as fh:
-        return {ln.strip().lower() for ln in fh if ln.strip() and not ln.startswith("#")}
+    return _load(BASELINE)
+
+
+def load_tag_baseline():
+    """Lowercased set of acknowledged tagger-vs-classifier disagreements."""
+    return _load(TAG_BASELINE)
 
 
 def _roster_cards():
@@ -110,6 +155,72 @@ def check(include_baselined=False):
     """[(name, type, text)] of zero-role cards NOT in the baseline; empty == healthy."""
     base = set() if include_baselined else load_baseline()
     return [r for r in zero_role_cards() if r[0].lower() not in base]
+
+
+def _removal_text_rules():
+    """The tagger's OWN text predicates for the `removal` tag, read live from
+    `tag_synergies.MECHANIC_RULES` — never a copy.
+
+    A copy is the drift this repo keeps paying for: the point of this sweep is that two
+    models disagree, so re-implementing one of them here would compare a model against a
+    stale imitation of itself. Reading the rules live also means a third text rule added
+    to the tagger is swept on arrival rather than when someone remembers.
+
+    Returns [] if tag_synergies is unavailable, which the caller turns into an explicit
+    skip rather than a silent clean bill."""
+    from tag_synergies import MECHANIC_RULES
+    return [pred for tag, pred in MECHANIC_RULES if tag == "removal"]
+
+
+def tag_role_disagreements():
+    """[(name, type, text)] — pool cards the TAGGER calls `removal` on the strength of
+    their text, while `classify_roles` gives them no interaction role at all.
+
+    The KEYWORD path is excluded by construction, not by an allowlist: `deathtouch` and
+    `fight` map to `removal` through `KEYWORD_THEMES`, which this never touches. That is
+    250 of the 388 raw disagreements, and every one is a fair claim about a BODY rather
+    than about spot removal — enumerating them would have been an allowlist that rots.
+
+    Sorted by NAME (G-54: this feeds a diffed file, so the key must be a total order)."""
+    import csv as _csv
+    import deck as D
+    rules = _removal_text_rules()
+    pool = os.path.join(REPO_ROOT, "card-pool.csv")
+    if not rules or not os.path.exists(pool):
+        return []
+    interaction = D._INTERACTION_ROLES
+    out, seen = [], set()
+    with open(pool, newline="", encoding="utf-8") as fh:
+        for r in _csv.DictReader(fh):
+            name = (r.get("Card Name") or "").strip()
+            text = (r.get("Card Text") or "").strip()
+            key = name.lower()
+            if not name or not text or key in seen:
+                continue
+            tline = (r.get("Type") or "")
+            if not any(_safe(p, tline.lower(), text.lower()) for p in rules):
+                continue
+            if D.classify_roles(text) & interaction:
+                continue
+            seen.add(key)
+            out.append((name, tline, text))
+    return sorted(out, key=lambda x: x[0].lower())
+
+
+def _safe(pred, tline, text):
+    """Run a tagger predicate the way `tags_for` does — swallowing a bad regex rather
+    than letting one malformed rule take the whole sweep down."""
+    import re as _re
+    try:
+        return bool(pred(tline, text))
+    except _re.error:
+        return False
+
+
+def check_tags(include_baselined=False):
+    """[(name, type, text)] of disagreements NOT in the tag baseline; empty == healthy."""
+    base = set() if include_baselined else load_tag_baseline()
+    return [r for r in tag_role_disagreements() if r[0].lower() not in base]
 
 
 def stale_baseline_entries():
@@ -174,6 +285,41 @@ def _write_baseline():
     return len(rows)
 
 
+def tag_baseline_delta():
+    """(newly_acknowledged, pruned) for the disagreement baseline — the same delta its
+    sibling exposes, and for the same reason (G-69): an acknowledge step that does not
+    NAME what it is acknowledging cannot tell one new card from a pattern regression
+    that just re-flagged fifty."""
+    base = load_tag_baseline()
+    rows = tag_role_disagreements()
+    cur = {r[0].lower() for r in rows}
+    return (sorted((r[0] for r in rows if r[0].lower() not in base), key=str.lower),
+            sorted(n for n in base if n not in cur))
+
+
+def _write_tag_baseline():
+    rows = tag_role_disagreements()
+    with open(TAG_BASELINE, "w", encoding="utf-8") as fh:
+        fh.write("# Pool cards that tag_synergies calls `removal` on the strength of their\n")
+        fh.write("# TEXT, while deck.classify_roles() gives them NO interaction role.\n")
+        fh.write("# K-09's rule — the two models must agree on the same text — held as a\n")
+        fh.write("# baselined worklist rather than a hard gate, because a large share of\n")
+        fh.write("# this list is LEGITIMATE divergence: the tagger's \"exile target\"\n")
+        fh.write("# substring also fires on graveyard hate, and its `gets -N/-N` also\n")
+        fh.write("# fires on a self-shrink. Neither is spot removal.\n")
+        fh.write("#\n")
+        fh.write("# The deathtouch/fight KEYWORD path is not in here at all — it is\n")
+        fh.write("# excluded by construction, since this sweep reads MECHANIC_RULES only.\n")
+        fh.write("#\n")
+        fh.write("# Read as a DELTA, not a target. This list should only ever SHRINK; a\n")
+        fh.write("# NEW entry means a pattern regressed or a set introduced a templating\n")
+        fh.write("# one model reads and the other does not. That is how BS6-10 was found.\n")
+        fh.write("# `check_roles.py --update-tag-baseline` to acknowledge the current set.\n")
+        for name, _t, _x in rows:
+            fh.write(name + "\n")
+    return len(rows)
+
+
 def main():
     ap = argparse.ArgumentParser(description="Radar for cards with no detected functional role.")
     ap.add_argument("--all", action="store_true", help="show every zero-role card (ignore baseline)")
@@ -186,7 +332,57 @@ def main():
     ap.add_argument("--show-delta", action="store_true",
                     help="with --update-baseline, print exactly which cards were newly "
                          "acknowledged and which stale entries were pruned")
+    ap.add_argument("--tags", action="store_true",
+                    help="run the TAGGER-vs-CLASSIFIER sweep instead: pool cards "
+                         "tag_synergies calls `removal` from their text while "
+                         "classify_roles gives them no interaction role (K-09)")
+    ap.add_argument("--update-tag-baseline", action="store_true",
+                    help="acknowledge the current disagreement set (--tags baseline)")
     args = ap.parse_args()
+    if args.update_tag_baseline:
+        # Same G-69 discipline as its sibling: name what is being acknowledged, and
+        # refuse a jump big enough to be a pattern regression rather than new cards.
+        new, pruned = tag_baseline_delta()
+        if args.max_new and len(new) > args.max_new:
+            eprint(f"REFUSING to update the tag baseline: {len(new)} NEW disagreement(s) "
+                   f"exceeds --max-new {args.max_new}. Review them first:")
+            for nm in new[:20]:
+                eprint(f"    + {nm}")
+            if len(new) > 20:
+                eprint(f"    … and {len(new) - 20} more")
+            return 1
+        n = _write_tag_baseline()
+        print(f"Tag baseline updated: {n} acknowledged disagreement(s) written to "
+              f"{os.path.basename(TAG_BASELINE)}.")
+        if new or pruned:
+            print(f"  {len(new)} newly acknowledged, {len(pruned)} stale entr(ies) pruned.")
+            show = args.show_delta or len(new) <= 10
+            for nm in (new if show else new[:10]):
+                print(f"    + {nm}   (NEW — read the card; the two models disagree on it)")
+            if not show and len(new) > 10:
+                print(f"    … and {len(new) - 10} more (--show-delta for all)")
+            if args.show_delta:
+                for nm in pruned:
+                    print(f"    - {nm}   (pruned)")
+        else:
+            print("  No change to the acknowledged set.")
+        return 0
+    if args.tags:
+        res = check_tags(include_baselined=args.all)
+        if not res:
+            print("No new tagger-vs-classifier disagreements (pool, vs baseline).")
+            return 0
+        scope = "disagreement" if args.all else "NEW disagreement (since baseline)"
+        print(f"{len(res)} {scope}(s) — tag_synergies reads these as `removal` from their\n"
+              f"text while classify_roles scores no interaction role. Some are legitimate\n"
+              f"(graveyard hate, a self-shrink); the rest are _ROLE_PATTERNS holes.\n")
+        shown = res if args.limit == 0 else res[:args.limit]
+        for name, ctype, text in shown:
+            print(f"  {name}   [{ctype[:34]}]")
+            print(f"      {text.splitlines()[0][:96]}")
+        if len(res) > len(shown):
+            print(f"  … and {len(res) - len(shown)} more (--limit 0 for all)")
+        return 0
     if args.update_baseline:
         # ALWAYS compute the delta first. A bulk rewrite that prints only a total is
         # indistinguishable from a mask (BS4-02): the count moves, nobody reads which

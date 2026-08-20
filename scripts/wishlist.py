@@ -124,16 +124,17 @@ def owned_index():
         # printings). The front-face alias is a SECOND pass below.
         counts[n] = counts.get(n, 0) + c
     # A front alias is added only where NO real row already claims that name — the rule
-    # `lib.alias_front` exists to enforce. The previous loop added the count to BOTH keys
-    # unconditionally, so a distinct real card sharing a DFC's front name ("Life" vs
-    # "Life // Death") had the DFC's copies ADDED to its own total. Inert today because
-    # the library stores DFCs front-only, but BS2-02's whole history is ingest writers
-    # appending full-name rows, and this is the read that would then over-count (BS4-20).
-    for name in list(counts):
-        front = name.split(" // ")[0]
-        if front != name and front not in counts:
-            counts[front] = counts[name]
-    return counts
+    # `lib.alias_front` exists to enforce. The predecessor loop added the count to BOTH
+    # keys unconditionally, so a distinct real card sharing a DFC's front name ("Life" vs
+    # "Life // Death") had the DFC's copies ADDED to its own total (BS4-20).
+    #
+    # Now the shared helper rather than a fourth private copy of it. The copy was
+    # behaviourally identical, which is exactly why it was worth removing: G-63 gives
+    # aliasing ONE home so a future correction reaches every caller, and a loop that
+    # merely happens to agree today is the drift shape this repo keeps paying for. Its
+    # three siblings (`deck.load_collection`, `pool.owned_counts`, `card._owned_index`)
+    # were routed through `alias_front` in BS6-01; this was the last hold-out.
+    return alias_front(counts)
 
 
 def _owned_of(owned, name):

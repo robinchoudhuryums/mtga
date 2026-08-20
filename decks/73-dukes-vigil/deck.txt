@@ -105,13 +105,13 @@
 1 Surveillance Room (MSH) 274
 1 Sunbillow Verge (DFT) 264
 1 Thornspire Verge (DSK) 270
-1 Hushwood Verge (DSK) 262
+1 Hushwood Verge (DSK) 261
 2 Mystic Monastery (TDM) 262
-1 Blossoming Sands (TDM) 249
-1 Kyoshi Village (TLA) 273
-1 Rugged Highlands (TDM) 258
-1 Gongaga, Reactor Town (FIN) 281
-1 Restless Ridgeline (LCI) 276
+1 Blossoming Sands (M21) 244
+1 Kyoshi Village (TLA) 271
+1 Rugged Highlands (FDN) 265
+1 Gongaga, Reactor Town (FIN) 280
+1 Restless Ridgeline (LCI) 283
 4 Plains (TRK) 317
 5 Forest (TRK) 325
 2 Mountain (TRK) 323

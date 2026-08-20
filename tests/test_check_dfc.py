@@ -158,8 +158,14 @@ class TestGateFires:
         kept = tuple(e for e in cd._ALIASED_LOADERS
                      if (e[0], e[1]) != ("deck", "_legality_of"))
         monkeypatch.setattr(cd, "_ALIASED_LOADERS", kept)
+        # EXTEND the real allowlist, don't replace it. Replacing it encoded the
+        # assumption that `_BUILDER_ALLOW` is empty, which was true only while the scan
+        # was pool-scoped; widening it to library-shaped indexes (BS6-01) gave the
+        # allowlist three justified entries and this test started failing on THEM
+        # rather than on the behaviour it is about.
         monkeypatch.setattr(cd, "_BUILDER_ALLOW",
-                            {("deck", "_legality_of"): "exempt for this test only"})
+                            {**cd._BUILDER_ALLOW,
+                             ("deck", "_legality_of"): "exempt for this test only"})
         assert cd._registry_completeness_flags() == []
 
     def test_an_args_factory_entry_is_actually_invoked(self):
@@ -178,3 +184,56 @@ class TestScanSkips:
         assert {"lib.py", "check_dfc.py"} <= cd._BUILDER_SCAN_SKIP
         files = {fn for _m, _f, fn, _ln in cd._pool_index_builders()}
         assert not any(f.startswith("check_") for f in files)
+
+
+class TestScanReachesLibraryShapedIndexes:
+    """BS6-01. The builder scan was POOL-scoped — `DictReader` plus a card-pool.csv cue —
+    and every OWNERSHIP index reads card-library.csv through `lib.load_rows`. So all four
+    sat outside a scan written to find exactly the bug they had, and `deck.owned` reported
+    an owned card as "NOT IN LIBRARY" with this gate green throughout."""
+
+    def test_the_four_library_side_loaders_are_registered(self):
+        reg = {(m, a) for m, a, *_ in cd._ALIASED_LOADERS}
+        for entry in [("deck", "load_collection"), ("pool", "owned_counts"),
+                      ("card", "_owned_index"), ("verify_ingest", "library_index"),
+                      ("wishlist", "owned_index")]:
+            assert entry in reg, entry
+
+    def test_the_scan_finds_them(self):
+        found = {(m, f) for m, f, _fn, _ln in cd._pool_index_builders()}
+        for entry in [("deck", "load_collection"), ("pool", "owned_counts"),
+                      ("card", "_owned_index"), ("verify_ingest", "library_index")]:
+            assert entry in found, f"{entry} is invisible to the widened scan"
+
+    def test_a_printing_tuple_key_is_not_a_name_index(self):
+        """`app.save`, `validate.validate` and `import_arena.merge` key on
+        `(name, set, collector)`. A front-face alias is meaningless for a printing key,
+        and without the tuple rejection they were 3 false positives out of 8 — the rate
+        at which a scan stops being read."""
+        found = {(m, f) for m, f, _fn, _ln in cd._pool_index_builders()}
+        assert ("app", "save") not in found
+        assert ("validate", "validate") not in found
+
+    def test_the_registry_is_clean_and_not_vacuous(self):
+        """The probe half. A pool-only probe made every library loader pass VACUOUSLY:
+        the check is `full in idx and front not in idx`, and the pool's first DFC is not
+        in the collection at all, so `full in idx` was False and nothing was exercised."""
+        assert cd._index_alias_flags() == []
+        import deck as D
+        D.load_collection.cache_clear()
+        _bk, _bn, qty = D.load_collection()
+        full = next((n for n in qty if " // " in n), None)
+        assert full, "no full-name library row — the library probe cannot fire"
+        assert full.split(" // ")[0] in qty
+
+    def test_it_fires_when_a_library_index_loses_its_alias(self, monkeypatch):
+        import deck as D
+        orig = D.load_collection
+        def broken():
+            by_key, by_name, qty = orig()
+            q = dict(qty)          # COPY — G-71: never mutate a memoized table in place
+            for k in [n for n in q if " // " in n]:
+                q.pop(k.split(" // ")[0], None)
+            return by_key, by_name, q
+        monkeypatch.setattr(D, "load_collection", broken)
+        assert any("load_collection" in e for e in cd._index_alias_flags())

@@ -225,7 +225,7 @@ from your owned inventory. `card-library.csv` stays exactly your collection.
 
 ```
 python3 scripts/build_pool.py            # (re)build card-pool.csv — Standard-legal Arena cards
-python3 scripts/build_pool.py --all      # every Arena-craftable card (~15.8k) instead
+python3 scripts/build_pool.py --all      # every Arena-craftable card (~16.1k) instead
 python3 scripts/build_pool.py --allow-shrink   # permit an empty / far-smaller result to overwrite
 ```
 
@@ -1367,10 +1367,12 @@ modifiers, power never overrides theme fit), the **engine classifier**
 non-aggro grades unchanged, the aggro clock only ever raises a band),
 **role coverage** (`check_roles.py` — a card in a deck that classifies to NO functional
 role at all, baselined; `_ROLE_PATTERNS` is a whitelist of phrasings, so its misses are
-silent under-counts the tier floor inherits as fact), and
+silent under-counts the tier floor inherits as fact — plus `--tags`, a pool-scoped sweep
+for cards `tag_synergies` calls `removal` from their text while `classify_roles` scores
+no interaction role, which is the half that can see a hole in a card you don't own), and
 **dead patterns** (`check_patterns.py`). That last one guards this project's
 signature bug: a regex that *compiles fine and can never fire*. Every card-text
-pattern must match at least one card in the ~15.8k-card pool, and no pattern source
+pattern must match at least one card in the ~16.1k-card pool, and no pattern source
 may contain a Python tuple repr like `(0, 2)` — which is what a `{0,2}` quantifier
 becomes when an f-string eats it. Both historical instances of that bug (the `{0,2}`
 one, and `(?:owner|their) hand` demanding the text "owner hand" while Magic writes

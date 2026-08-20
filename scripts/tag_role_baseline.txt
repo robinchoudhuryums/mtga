@@ -1,0 +1,153 @@
+# Pool cards that tag_synergies calls `removal` on the strength of their
+# TEXT, while deck.classify_roles() gives them NO interaction role.
+# K-09's rule — the two models must agree on the same text — held as a
+# baselined worklist rather than a hard gate, because a large share of
+# this list is LEGITIMATE divergence: the tagger's "exile target"
+# substring also fires on graveyard hate, and its `gets -N/-N` also
+# fires on a self-shrink. Neither is spot removal.
+#
+# The deathtouch/fight KEYWORD path is not in here at all — it is
+# excluded by construction, since this sweep reads MECHANIC_RULES only.
+#
+# Read as a DELTA, not a target. This list should only ever SHRINK; a
+# NEW entry means a pattern regressed or a set introduced a templating
+# one model reads and the other does not. That is how BS6-10 was found.
+# `check_roles.py --update-tag-baseline` to acknowledge the current set.
+A-Skemfar Elderhall
+Aetherling
+Agatha's Soul Cauldron
+Aim for the Head
+Angel of Finality
+Ant-Man, Reformed Rogue
+Anthropede
+Apostle of Purifying Light
+Arcane Proxy
+Argivian Avenger
+Armored Scrapgorger
+Ashiok's Erasure
+Ashnod's Harvester
+Aven Interrupter
+Baneblade Scoundrel // Baneclaw Marauder
+Barbed Batterfist
+Blood Operative
+Boggart Trawler // Boggart Bog
+Boiling Rock Rioter
+Bojuka Bog
+Callous Bloodmage
+Canyon Crab
+Carrion Locust
+Charix, the Raging Isle
+Chatterfang, Squirrel General
+Clawing Torment
+Cling to Dust
+Craving of Yeenoghu
+Davriel's Withering
+Davriel, Soul Broker
+Dawnhand Dissident
+Death's Approach
+Death's Shadow
+Deathgorge Scavenger
+Die Young
+Diminished Returner
+Dire Fleet Daredevil
+Disposal Mummy
+Disruptor Wanderglyph
+Disturbing Conversion
+Endling
+Enemy of Enlightenment
+Fear of Death
+Fear of Falling
+Fierce Retribution
+Flowstone Kavu
+Founding the Third Path
+Frostburn Weird
+Gale's Redirection
+General's Enforcer
+Geralf's Masterpiece
+Ghost Vacuum
+Gift of Fangs
+Gitaxian Raptor
+Gnawing Vermin
+Gravestone Strider
+Hackrobat
+Hermitic Nautilus
+Hive of the Eye Tyrant
+Honored Heirloom
+Hook Horror
+Howler's Heavy
+Ignis Scientia
+Immolation
+Ingenious Skaab
+Intrepid Paleontologist
+Jace, Architect of Thought
+Jirina, Dauntless General
+Keen-Eyed Curator
+Klothys, God of Destiny
+Kotose, the Silent Spider
+Kraul Whipcracker
+Kutzil's Flanker
+Lazav, Wearer of Faces
+Leonin of the Lost Pride
+Lion Sash
+Magic Pot
+Merfolk Coralsmith
+Metropolis Sprite
+Mistwalker
+Mizzix's Mastery
+Mogis's Favor
+Narset, Enlightened Exile
+Nita, Forum Conciliator
+Nyxathid
+Offspring's Revenge
+Order of the Mirror // Order of the Alabaster Host
+Penregon Besieged
+Phoenix Down
+Plague Wight
+Practiced Scrollsmith
+Quintorius, Loremaster
+Rampaging Cyclops
+Ravenous Bloodseeker
+Reenact the Crime
+Release to Memory
+Remorseful Cleric
+Retrieval Agent
+Rona, Disciple of Gix
+Rooting Moloch
+Ruin Rat
+Scavenger Regent // Exude Toxin
+Scavenging Harpy
+Scavenging Ooze
+Scion of Glaciers
+Scrabbling Claws
+Sea Legs
+Sentinel of Lost Lore
+Sewer Plague
+Shackles of Treachery
+Shattering Finale
+Shiko, Paragon of the Way
+Shipwreck Moray
+Short Circuit
+Skemfar Elderhall
+Song of Stupefaction
+Soul-Guide Lantern
+Spell Queller
+Spontaneous Mutation
+Spring Splasher
+Stingerback Terror
+Stone of Erech
+Surge Mare
+Tamiyo Meets the Story Circle
+Tamiyo, Inquisitive Student // Tamiyo, Seasoned Scholar
+Tezzeret the Schemer
+The Last Ride
+The Ooze
+Titania's Command
+Tormod's Crypt
+Urborg Scavengers
+Viconia, Nightsinger's Disciple
+Victor Mancha, Runaway
+Vona de Iedo, the Antifex
+Water Weird
+Winter, Cursed Rider
+Wizard's Spellbook
+Wizened Githzerai

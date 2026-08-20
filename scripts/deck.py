@@ -312,6 +312,22 @@ def load_collection():
     by_key/by_name map to a representative row (for type/printing lookups);
     by_name_qty sums Quantity Owned across every printing of a name, since Arena
     copies are fungible across sets (see owned()).
+
+    FRONT-FACE ALIASED, in a second pass (G-63). `lib.owned_qty` resolves the full
+    `A // B` name down to a front-face key, which is the right direction for the
+    library's stated convention — and that convention is not what the data actually
+    holds. Eight rows are stored under the FULL name (the DSK Rooms, plus two DFCs),
+    so a query by the FRONT name resolved to nothing and `deck.owned` reported an
+    owned card as "NOT IN LIBRARY" — the exact string G-10 trains you to fix with
+    `reconcile_crafts.py`, pointing at a card that is already there (broad-scan
+    BS6-01). `import_collection.plan` and `reconcile_crafts` each discovered the
+    exception and handled it locally; the SHARED join never did, and
+    `check_agreement`'s ownership pair could not see it because both implementations
+    agreed on the same wrong answer (0).
+
+    `alias_front` adds a front key only where no real row already claims it, so a
+    distinct card named `Front` is never shadowed by a DFC — the reason this is a
+    second pass and not a `setdefault` inside the loop.
     """
     _, rows = load_rows(DEFAULT_CSV)
     by_key, by_name, by_name_qty = {}, {}, {}
@@ -326,7 +342,7 @@ def load_collection():
         by_name.setdefault(nl, r)
         q = (r.get("Quantity Owned") or "").strip()
         by_name_qty[nl] = by_name_qty.get(nl, 0) + (int(q) if q.isdigit() else 0)
-    return by_key, by_name, by_name_qty
+    return by_key, alias_front(by_name), alias_front(by_name_qty)
 
 
 _PIP_DEPTH_MIN = 2          # 2 pips are checked too, but against a STRICTER bar (below)
@@ -437,8 +453,15 @@ def owned(by_name_qty, name):
     # said that about Norman Osborn the moment it was opened, while `lib.owned_qty`
     # resolved it correctly the whole time. Route through the shared helper rather
     # than re-implement the split — that is the A3/A4/F6 rule.
+    # The front-face fallback, via the shared helper (the A3/A4/F6 rule). Membership,
+    # NOT truthiness (BS6-07): `if qty` treated a stored count of a real 0 as ABSENT and
+    # answered "not in library" for a card that IS in it — the exact string G-10 sends
+    # you to `reconcile_crafts.py` about, pointing at a row already there. No library row
+    # carries 0 today, but `import_collection --zero-missing` writes them and INV-01
+    # permits them, at which point a single-faced 0 read "short" while a front/full 0
+    # read "missing" — two spellings of one state. Same trap as `owned_qty`'s own `or`.
     qty = owned_qty(by_name_qty, name)
-    return (qty, True) if qty else (0, False)
+    return qty, (nl in by_name_qty or nl.split(" // ")[0] in by_name_qty)
 
 
 # --------------------------------------------------------------------------- #
@@ -1049,8 +1072,14 @@ def load_mana():
                 # them and only corrects the split/Room shape.
                 mv = mana_value(front_face_cost(cost))
             out[n] = (cost, mv)
-            out.setdefault(n.split(" // ")[0], out[n])
-    return out
+    # SECOND pass through the shared helper (BS6-09). This aliased in-pass with
+    # `setdefault`, the shape G-63 bans. It happened to be SAFE — a real card's own row
+    # is a direct assignment, so it always wins over a DFC's setdefault whatever the file
+    # order — but "safe by accident of assignment order" is a property nobody verified
+    # and nothing gated: this reads card-mana.csv, so `check_dfc`'s builder scan (even
+    # widened to the library) did not reach it. Registered now, and routed through the
+    # one home so a future correction to aliasing lands here too.
+    return alias_front(out)
 
 
 def fetch_missing_mana(names, mana):
@@ -1080,9 +1109,12 @@ def fetch_missing_mana(names, mana):
                 mv = mana_value(front_face_cost(cost))
             full = card.get("name", "").lower()
             mana[full] = (cost or "", mv)
-            mana.setdefault(full.split(" // ")[0], mana[full])
         time.sleep(0.1)
-    return mana
+    # Second pass, like `load_mana` above (BS6-09) — and note this one MUTATES the dict
+    # it was handed, which is why the alias runs after the whole batch rather than per
+    # card: `alias_front` only adds a front key when nothing already claims it, so
+    # aliasing mid-batch could let an early DFC claim a key a later real card owns.
+    return alias_front(mana)
 
 
 SYMBOL_RE = re.compile(r"\{([^}]+)\}")
@@ -1292,6 +1324,123 @@ _ROLE_PATTERNS = {
         # the collection stopped matching and 46 decks lost interaction. Caught only by
         # the roster-wide before/after diff, which is why that diff is worth running.
         rf"(?:destroy|exile) (?:up to \w+ )?target (?:[a-z-]+ ){{0,2}}?{_PERM_TYPE_LIST}",
+        # COORDINATED QUALIFIER LIST before the type. The run above allows at most TWO
+        # adjective words, which covers "target TAPPED creature" but not the qualifier
+        # LISTS Magic templates constantly — "attacking or blocking" and "green or white"
+        # are three words, and "non-Angel, non-Demon, non-Devil, non-Dragon" is four with
+        # commas that `[a-z-]+ ` cannot cross. So an entire family of plain removal scored
+        # ZERO roles: Divine Verdict, Sudden Strike, Puncturing Light, Protective Response,
+        # Devouring Light, Farm // Market (attacking-or-blocking), Deathmark (colour), Power
+        # Word Kill (the exclusion list), Nissa's Defeat, Thraben Exorcism, Sigrid. Eleven
+        # cards, all of them unambiguous spot removal, on the axis the tier floor grades
+        # (G-67; broad-scan BS6-10).
+        #
+        # A SEPARATE pattern rather than widening the run above, deliberately: raising
+        # `{0,2}` to `{0,5}` would re-score every removal card in the pool at once, and
+        # BS2-06 is the record of what a silent OVER-count costs. Requiring at least THREE
+        # qualifier words makes this strictly additive — anything the existing run already
+        # reaches is out of scope here — so the roster diff attributes every change to it.
+        #
+        # The zone guard is load-bearing and was measured, not assumed: `land` and
+        # `creature` are in `_PERM_TYPE`, so without it "exile target card other than a
+        # basic land card from an opponent's graveyard" (Kotose) and "exile target red,
+        # white, or black creature card from your graveyard" (Offspring's Revenge) both
+        # read as removal — graveyard hate and a recursion cost, neither an answer to a
+        # permanent. `[^.]` keeps the lookahead inside the same sentence, so "Destroy
+        # target creature." is untouched. With it: 11 matches, zero false positives.
+        rf"(?:destroy|exile) (?:up to \w+ )?target (?:[a-z-]+,? ){{3,5}}?{_PERM_TYPE_LIST}"
+        rf"(?![^.]{{0,40}}?\bgraveyard\b)",
+        # REMOVAL AURA. `enchanted creature can't attack or block` (Pacifism) is already
+        # in this bucket a few lines down, which settles the design question: this repo
+        # counts a neutralizing Aura as spot removal. Its twin — the Aura that shrinks the
+        # creature instead of taxing it — was never written, so Dead Weight, Debilitating
+        # Injury, Mire's Grasp, Stab Wound, Failed Conversion and 15 more scored ZERO
+        # roles. The non-Aura templating of the identical effect (`target creature gets
+        # -N/-N`) is fully covered — 120 pool cards, no misses — which is G-67's exact
+        # signature: same effect, one noun covered and its sibling not.
+        #
+        # It is also a live K-09 violation, and that is how it was found: `tag_synergies`
+        # tags Dead Weight `removal` while `classify_roles` returned nothing, so the two
+        # models disagreed about the same text on the axis `tier_band` grades.
+        #
+        # `-N/-0` counts alongside `-N/-N` for the Pacifism reason: a -6/-0 creature has
+        # been answered as an attacker. The `enchant creature you control` guard is the
+        # one measured false positive — Craving of Yeenoghu is a BUFF Aura on your own
+        # creature whose recursion clause perpetually gains "-1/-1". Note it must not
+        # catch Duskmourn's Domination, whose "You control enchanted creature" is a
+        # Control-Magic steal (a real answer) and reads in the other word order. Guarded:
+        # 20 matches, zero false positives.
+        r"(?s)\A(?!.*enchant creature you control).*?enchanted creature gets -\d+/-\d+",
+        # LETHAL SHRINK in the +N/-M shape. `target creature gets -N/-N` is covered (120
+        # cards) and its twin `gets +N/-N` was not, so Auger Spree, Nameless Inversion,
+        # Lash of Malice, Flowstone Infusion and Desperate Measures scored zero roles.
+        #
+        # DO NOT reach for the PERMANENCE rule the neutralization block below rests on —
+        # it INVERTS here, and that is the whole point of writing this separately. A
+        # `-4/-4 until end of turn` still KILLS, and a dead creature does not come back at
+        # cleanup, so the temporary version does permanent work. Auger Spree is a removal
+        # spell in a way Merfolk Trickster is not, despite both saying "until end of turn".
+        # This family is graded on LETHALITY, not duration.
+        #
+        # Scoped to the TARGETED spell. 29 pool cards carry a `+N/-M` clause and 23 of
+        # them are firebreathing-style self-pumps on your own body ("{U}: This creature
+        # gets +1/-1") — the same drawback-vs-answer split `its controller's` handles for
+        # tap-down. `target … creature` plus a `you control` guard isolates the 5 real
+        # ones with no false positives. The AURA form (+N/-M) is deliberately LEFT OUT:
+        # Immolation reads as removal and Mogis's Favor (+2/-1) reads as a pump, two cards
+        # that a shape test genuinely cannot separate — the leading-minus Aura pattern
+        # below already covers the unambiguous half.
+        r"target (?:[a-z-]+ ){0,2}?creature (?!you control)[^.]{0,20}?gets \+\d+/-\d",
+        # ── NEUTRALIZATION: the answer that leaves the permanent on the battlefield ──
+        # Magic answers a creature three ways — kill it, exile it, or turn it off — and this
+        # bucket read only the first two. The third was 124 pool cards of nothing (G-67's
+        # standing TAXONOMY residual), even though `enchanted creature can't attack or block`
+        # (Pacifism) has been in this bucket all along, which is the repo already deciding
+        # that a neutralizing Aura IS spot removal. These three patterns finish that thought.
+        #
+        # THE LINE IS PERMANENCE, and it is drawn deliberately. A one-turn effect is TEMPO,
+        # not an answer, so `doesn't untap during its controller's NEXT untap step` (Frost
+        # Lynx, White Dragon — 35 cards) and `loses all abilities UNTIL end of turn / until
+        # your next turn` (Merfolk Trickster, Azure Beastbinder) are all EXCLUDED. That
+        # matches how the rest of this file treats a one-shot, and it is the conservative
+        # direction: a tempo card read as removal would inflate the axis the tier floor
+        # grades on, which is the BS2-06 failure.
+        #
+        # (1) TAP-DOWN, permanent. `its controller's` is doing real work: the same clause
+        # appears as a DRAWBACK on your own card ("Colossus of Sardia doesn't untap during
+        # YOUR untap step"), and 11 such cards would otherwise read as removal. With it:
+        # 37 matches — Waterknot, Capture Sphere, Frozen in Ice, Dungeon Geists, Tidebinder
+        # Mage, Tamiyo's Compleation — and zero false positives.
+        r"doesn't untap during its controller's untap step",
+        # (2) ABILITY-STRIP, Aura form. Same `enchant creature you control` guard as the
+        # removal-Aura pattern above and for the same reason (a bestow/buff Aura on your own
+        # creature is not an answer), plus the permanence rule. 19 matches — Frogify,
+        # Kasmina's Transmutation, Witness Protection, Ichthyomorphosis, Reprobation — and
+        # zero false positives. Trickster's Elk is a TRUE positive despite being a bestow
+        # creature: cast as an Aura on a bomb it strips the bomb, which is the play.
+        r"(?s)\A(?!.*enchant creature you control)"
+        r"(?!.*until end of turn[^.]{0,50}loses all abilities)"
+        r".*?enchanted (?:creature|permanent|artifact)[^.]{0,60}?loses all abilities",
+        # (3) ABILITY-STRIP, targeted form. `except ` excludes Town-Razer Tyrant's "loses all
+        # abilities EXCEPT mana abilities" — land punishment, not an answer to a threat.
+        # 6 matches: Oko, Patriar's Humiliation, Resolute Rejection, Curious Colossus,
+        # Abigale, Lizard. All permanent, all true positives.
+        r"(?s)\A(?!.*until (?:end of turn|your next turn)[^.]{0,50}loses all abilities)"
+        r".*?(?:target|each creature target opponent controls)[^.]{0,70}?"
+        r"loses all abilities(?![^.]{0,40}(?:until |except ))",
+        # (4) ABILITY-STRIP, ANAPHOR form — the target is named in one sentence and the
+        # strip lands in the next, pointing back with "It". Matches exactly ONE card today
+        # (The Wondrous Wasp), and a pattern for one card is normally a smell — this one
+        # earns its place because it closes an INCONSISTENCY rather than adding coverage.
+        # The Wasp taps a creature and strips it "for as long as The Wondrous Wasp remains
+        # on the battlefield"; Ty Lee, Chi Blocker does the identical thing one clause over
+        # ("for as long as you control Ty Lee") and IS counted by pattern (1). Two cards
+        # with one effect shape were landing on opposite sides of the line. Anchored the
+        # same way the file's other anaphor patterns are (an explicit upstream `target`, a
+        # sentence boundary, and both duration guards), so it cannot drift onto a
+        # self-referential "It loses all abilities" on your own card.
+        r"(?s)\A(?!.*until (?:end of turn|your next turn)[^.]{0,50}loses all abilities)"
+        r".*?target [^.]{0,60}\.\s*it loses all abilities(?![^.]{0,40}(?:until |except ))",
         # SPLIT TEMPLATE: the target is named in one sentence and the destroy verb lands
         # in a later one, with an anaphor standing in for the target — Quag Feast reads
         # "CHOOSE target creature, planeswalker, or Vehicle. Mill two cards, then destroy
@@ -9142,7 +9291,14 @@ def _clock_score(vec):
     """Aggressive 'clock' proxy (0–7): a low curve + cheap threats + reach to close.
     Substitutes for interaction in `tier_band` ONLY for an aggro plan — a fast deck's
     resilience is its speed, not its removal count. Bounded so it can't wildly inflate."""
-    mv = vec.get("avg_mv") or 99.0
+    # NOT `vec.get("avg_mv") or 99.0` (BS6-12): a deck whose nonland cards all lack cost
+    # data has avg_mv 0.0, and `0.0 or 99.0` is 99.0 — the falsy-zero trap `card_power`
+    # and `owned_qty` each carry a paragraph about, sitting in the one function that can
+    # RAISE a tier band. The effect was conservative (no clock credit) so nothing was
+    # mis-graded, but the shape must not be copied. `None` is the real "no data" case and
+    # is what deserves the sentinel; a measured 0.0 curve is a fact about the deck.
+    mv = vec.get("avg_mv")
+    mv = 99.0 if mv is None else mv
     early = vec.get("early_drops", 0)
     reach = vec.get("reach", 0)
     c = 3 if mv <= 2.2 else 2 if mv <= 2.6 else 1 if mv <= 3.0 else 0
