@@ -1,5 +1,6 @@
 #: name: Blood Price — Orzhov Aristocrats
 #: format: Standard
+#: arena: 42a Bloody Bodies, d4eb209b-5fd2-473f-a0be-367febaeedb6
 #: colors: WB
 #: plan: midrange
 #: archetype: 42 variant — Orzhov (W/B) ARISTOCRATS. Same Orzhov attrition shell as the

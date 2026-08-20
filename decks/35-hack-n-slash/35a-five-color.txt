@@ -1,5 +1,6 @@
 #: name: Hack n Slash — 5-Color (Route B)
 #: format: Standard
+#: arena: 35a Ninja Avatar, 0d8e35d1-82c4-4bbe-b175-98b12c0ddd94
 #: tier: B (PROVISIONAL) — re-graded C -> B with the 2026-08 tune, at the user's
 #: tier: call, still one band under the A metrics floor. What changed: the manabase
 #: tier: was the whole C argument, and the tune addressed it directly — 22 -> 24

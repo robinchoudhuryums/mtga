@@ -1,5 +1,6 @@
 #: name: Void Demons
 #: format: Standard
+#: arena: 52 Void Demons, 87b2d0ff-cb92-4665-9606-bad230e9d0c3
 #: colors: B
 #: plan: midrange
 #: tier: B — PROVISIONAL, GRADED 2026-08 on an UNBUILT list (9 craft targets, zero games).

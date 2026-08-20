@@ -1,5 +1,6 @@
 #: name: Bloodbending
 #: format: Standard
+#: arena: 22 Bloodbending, 6904238a-f5a2-49d9-967c-547167fecec2
 #: tier: B — Dimir mill / graveyard-value control. RE-GRADED UP from C: the C rested on
 #: tier: "thin interaction (2)", and that 2 was a classifier under-read, not the deck —
 #: tier: the bounce and edict patterns were broken, so the live count is interaction 4

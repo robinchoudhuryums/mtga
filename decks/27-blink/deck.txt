@@ -1,5 +1,6 @@
 #: name: Blink
 #: format: Standard
+#: arena: 27 Blink, 11789d14-ed99-489e-9ad7-52a30549dbc7
 #: tier: B — Azorius blink value (strong B); strong ETB engine, now with repeatable tempo interaction the engine abuses (Floodpits Drowner tap+shuffle-away, Sharae tap-lockdown-that-draws) + a card-advantage engine (Cloudblazer draw-2 on every blink). NOTE: the old "interaction total (3)" figure is stale — the count now
 #: tier: reads 6, and library-tuck answers (Floodpits Drowner's shuffle-away) are
 #: tier: credited since the classifier fix, so tap/stun tempo is no longer invisible.

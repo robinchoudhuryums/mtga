@@ -5,12 +5,55 @@ Date,Match ID,Deck,Arena Deck,Arena Deck ID,My Avatar,Event,Result,Games Won,Gam
 2026-08-07,b48ecdfd-60a1-49a2-940b-96e673182aa5,7,07 Earth’s Mightiest,e3a6c595-914d-4809-bd6d-630b3758ca89,Avatar_Basic_CaptainMarvel_MSH,Play,L,0,1,Avatar_Basic_CaptainAmerica_MSH,Success,
 2026-08-07,f2b4a84a-b1f3-4d74-98bd-e26e32d8f10a,19,19 Bird Brain- Bant,f0fd0577-3e62-4786-b7c2-0ce8b8b0ef05,Avatar_Basic_Galactus_MSH,Play,L,0,1,Avatar_Basic_Kaito_NEO,Success,
 2026-08-09,6184e330-e976-486b-b80f-274a83f45c18,45,45 The Exiles,994ff050-0f38-4c7c-b187-eef8d44e5ec2,Avatar_Basic_Galactus_MSH,Play,W,1,0,Avatar_Basic_Ashiok_WAR,Success,
+2026-08-09,7e345d6a-7306-4e66-8590-16062f24aca5,45,45 The Exiles,994ff050-0f38-4c7c-b187-eef8d44e5ec2,Avatar_Basic_Galactus_MSH,Play,W,0,0,Avatar_Basic_Zoraline_BLB,Success,Game
+2026-08-09,846bf07e-2b80-4cc3-87ed-00b2a5618c7c,66,66  Lethal Protector,7d5bedba-fb3a-474e-9fbc-97859ffc47df,Avatar_Basic_Galactus_MSH,Play,W,0,0,Avatar_Basic_Adventurer,Success,Concede
+2026-08-09,85bb62c5-ced4-4c60-afeb-eee0a929b262,52,52 Void Demons,87b2d0ff-cb92-4665-9606-bad230e9d0c3,Avatar_Basic_ScarletWitch_MSH,Play,W,0,0,Avatar_Basic_JaceBeleren,Success,Concede
+2026-08-09,94654681-0ccd-442d-ac48-be4b11bde229,45,45 The Exiles,994ff050-0f38-4c7c-b187-eef8d44e5ec2,Avatar_Basic_Galactus_MSH,Ladder,L,0,0,Avatar_Basic_LilianaVess,Success,Game
+2026-08-09,a1d24478-b9b9-48a3-92e6-f2a8e91068b2,45,45 The Exiles,994ff050-0f38-4c7c-b187-eef8d44e5ec2,Avatar_Basic_Galactus_MSH,Ladder,L,0,0,Avatar_Basic_Yshtola_FIN,Success,Timeout
 2026-08-09,a9c0cec2-bd63-4736-927f-e0e9a239f94c,45,45 The Exiles,994ff050-0f38-4c7c-b187-eef8d44e5ec2,Avatar_Basic_Galactus_MSH,Ladder,L,0,1,Avatar_Basic_Kaito_NEO,Success,
 2026-08-09,cfffd1b8-5161-4f8b-9b30-a4d41b5954c5,45,45 The Exiles,994ff050-0f38-4c7c-b187-eef8d44e5ec2,Avatar_Basic_Galactus_MSH,Play,W,1,0,Avatar_Basic_IronMan_MSH,Success,
+2026-08-09,ddc55aaa-bd4a-4025-9fc0-58a02cdb4159,45,45 The Exiles,994ff050-0f38-4c7c-b187-eef8d44e5ec2,Avatar_Basic_Galactus_MSH,Ladder,L,0,0,Avatar_Basic_JaceBeleren,Success,Game
+2026-08-09,e2ce8cfb-86a0-4625-97b3-27e088681ed7,42,42 Blood Price,4b5c7dca-1167-4175-b39e-86ac3f4087a6,Avatar_Basic_Ashiok_WAR,Play,L,0,0,Avatar_Basic_LilianaVess,Success,Game
 2026-08-09,eeb55562-4b25-443d-b800-ac86a1ad5985,45,45 The Exiles,994ff050-0f38-4c7c-b187-eef8d44e5ec2,Avatar_Basic_Galactus_MSH,Ladder,L,0,1,Avatar_Basic_Tidus_FIN,Success,
+2026-08-12,5c907eab-3a22-47b3-a899-373084879994,56a,56a Executioner’s Song,7a0ece97-a9a8-43f3-bc6e-5ae56484bda3,Avatar_Basic_Galactus_MSH,Play,W,0,0,Avatar_Basic_Wolverine_MSH,Success,Concede
+2026-08-12,fe353ea2-1276-4ef4-9d34-33067171f4ae,28,28 Triceraton,aa9d46c9-e751-42c2-b063-3d987ef76b6c,Avatar_Basic_Galactus_MSH,Play,L,0,0,Avatar_Basic_AjaniGoldmane,Success,Game
+2026-08-13,1e896aff-0bb8-4408-b0cf-237228e5ca3e,22,22 Bloodbending,6904238a-f5a2-49d9-967c-547167fecec2,Avatar_Basic_ScarletWitch_MSH,Play,L,0,0,Avatar_Basic_Bilbo_HOB,Success,Game
 2026-08-13,c65e485a-d84a-45f5-92dd-89e949737407,7,07 Earth’s Mightiest,e3a6c595-914d-4809-bd6d-630b3758ca89,Avatar_Basic_CaptainMarvel_MSH,Ladder,L,0,1,Avatar_Basic_JaceBeleren,Success,Concede
+2026-08-13,e842d0de-bfd0-4e14-8f9c-62b74a44f01a,32,32 Mimicry,27b30e8a-7114-44f4-8b4c-df5056758f86,Avatar_Basic_Galactus_MSH,Play,W,0,0,Avatar_Basic_Chandra_FDN,Success,Game
 2026-08-14,42e74d53-b355-4a31-8549-9d98b9cf2039,54b,54b Grand Lotus- Comet,bc4d5b7d-1298-4c3d-bb38-247dab5a070b,Avatar_Basic_Galactus_MSH,Play,W,1,0,Avatar_Basic_GideonJura,Success,Game
 2026-08-14,69611cd1-82b1-493d-9acc-fcb7b5959554,54b,54b Grand Lotus- Comet,bc4d5b7d-1298-4c3d-bb38-247dab5a070b,Avatar_Basic_Galactus_MSH,Play,L,0,1,Avatar_Basic_Krang_TMT,Success,Game
 2026-08-14,772dc70f-5249-4d53-9843-9656f016f490,15,15 Air Nomads,8dc84eb5-b2e3-450c-9a00-b2d6a7ec516d,Avatar_Basic_ShangChi_MSH,Play,W,1,0,Avatar_Basic_ScarletWitch_MSH,Success,Concede
 2026-08-14,884de5ba-cb80-4162-ba26-a461057de55a,54b,54b Grand Lotus- Comet,bc4d5b7d-1298-4c3d-bb38-247dab5a070b,Avatar_Basic_Galactus_MSH,Play,L,0,1,Avatar_Basic_AjaniGoldmane,Success,Game
 2026-08-14,ca8bd230-fa7b-4cd4-abea-91594325baab,15,15 Air Nomads,8dc84eb5-b2e3-450c-9a00-b2d6a7ec516d,Avatar_Basic_ShangChi_MSH,Play,W,1,0,Avatar_Basic_AjaniGoldmane,Success,Concede
+2026-08-15,1fc5a289-cabb-4b3c-9ae3-e9303080d36a,15,15 Air Nomads,8dc84eb5-b2e3-450c-9a00-b2d6a7ec516d,Avatar_Basic_ShangChi_MSH,Ladder,W,0,0,Avatar_Basic_AjaniGoldmane,Success,Game
+2026-08-15,ab1975bd-c78a-4386-a590-9a0c5e1c3805,42,42 Blood Price,4b5c7dca-1167-4175-b39e-86ac3f4087a6,Avatar_Basic_Ashiok_WAR,Play,L,0,0,Avatar_Basic_Smaug_HOB,Success,Game
+2026-08-15,c2088f12-7e4e-40f8-ab5b-62c96ab61ada,42a,42a Bloody Bodies,d4eb209b-5fd2-473f-a0be-367febaeedb6,Avatar_Basic_Galactus_MSH,Play,L,0,0,Avatar_Basic_AjaniGoldmane,Success,Concede
+2026-08-16,3707cf9b-42c0-4cb8-81bc-0ff347c73174,35a,35a Ninja Avatar,0d8e35d1-82c4-4bbe-b175-98b12c0ddd94,Avatar_Basic_Galactus_MSH,Play,L,0,0,Avatar_Basic_CaseyJones_TMT,Success,Game
+2026-08-16,39c82520-04c7-46dc-a64f-61ff5f5aa7d2,35a,35a Ninja Avatar,0d8e35d1-82c4-4bbe-b175-98b12c0ddd94,Avatar_Basic_Galactus_MSH,Play,L,0,0,Avatar_Basic_Bard_HOB,Success,Game
+2026-08-16,4ebf31fa-b3c4-40f2-b0e4-a0990a3256a1,35a,35a Ninja Avatar,0d8e35d1-82c4-4bbe-b175-98b12c0ddd94,Avatar_Basic_Galactus_MSH,Play,L,0,0,Avatar_Basic_JaceBeleren,Success,Timeout
+2026-08-16,5eb6bb74-34a1-4a60-8118-ab0866cb6652,68a,68a Frog Sage: Seer,1073648b-ed2c-4078-a7c9-940b8ebb49a9,Avatar_Basic_Galactus_MSH,Play,L,0,0,Avatar_Basic_Elspeth_MOM,Success,Concede
+2026-08-16,69bdd493-302d-41c7-b1a1-72512cc14b76,27,27 Blink,11789d14-ed99-489e-9ad7-52a30549dbc7,Avatar_Basic_JaceBeleren,Play,L,0,0,Avatar_Basic_ShangChi_MSH,Success,Game
+2026-08-16,858ead8e-1a97-4d04-998e-8a9b1060c54e,74a,74a Smaug's Vault,1bc4e2ad-0f0c-46fd-b304-701f89d327b0,Avatar_Basic_Galactus_MSH,Play,L,0,0,Avatar_Basic_AjaniGoldmane,Success,Game
+2026-08-16,cee46207-d3ff-470a-b21c-5761d273e7ab,68a,68a Frog Sage: Seer,1073648b-ed2c-4078-a7c9-940b8ebb49a9,Avatar_Basic_Galactus_MSH,Play,W,0,0,Avatar_Basic_Basri_M21,Success,Concede
+2026-08-16,e130f746-e0d6-4a51-a1ae-0eeb1a6cac9c,16,16 Moon Spirit,697e3fd9-7143-4ef4-af0f-fda0b908eb1f,Avatar_Basic_ScarletWitch_MSH,Play,W,0,0,Avatar_Basic_Gandalf_HOB,Success,Concede
+2026-08-16,e71b007e-83f8-4197-843c-8b29b269fcbd,27,27 Blink,11789d14-ed99-489e-9ad7-52a30549dbc7,Avatar_Basic_JaceBeleren,Play,W,0,0,Avatar_Basic_Squall_FIN,Success,Concede
+2026-08-17,42e3a035-7176-4c7a-8fb9-f56b9fe5c343,37a,37a Wiz-Khalifa,a3d75fc7-4c52-4e4d-9385-e9728952458b,Avatar_Basic_Galactus_MSH,Play,W,0,0,Avatar_Basic_Gollum_HOB,Success,Concede
+2026-08-17,54db21b4-8c65-4f72-80c9-095ed79a0534,37a,37a Wiz-Khalifa,a3d75fc7-4c52-4e4d-9385-e9728952458b,Avatar_Basic_Galactus_MSH,Play,W,0,0,Avatar_Basic_Killian_SOS,Success,Concede
+2026-08-17,c5408e5d-d3e1-4e4a-93ff-40adec592e31,37a,37a Wiz-Khalifa,a3d75fc7-4c52-4e4d-9385-e9728952458b,Avatar_Basic_Galactus_MSH,Play,W,0,0,Avatar_Basic_VivienReid,Success,Game
+2026-08-18,234dc3ad-d427-4d3b-b01b-fcef9b28a54e,19,19 Bird Brain,f0fd0577-3e62-4786-b7c2-0ce8b8b0ef05,Avatar_Basic_Galactus_MSH,Play,W,0,0,Avatar_Basic_Eshki_TDM,Success,Concede
+2026-08-18,3fa211bf-949a-4c7e-a72a-23446fe576d7,37a,37a Wiz-Khalifa,a3d75fc7-4c52-4e4d-9385-e9728952458b,Avatar_Basic_Galactus_MSH,Play,L,0,0,Avatar_Basic_AjaniGoldmane,Success,Game
+2026-08-18,ad5889c2-5fee-448f-9c17-c18902feaa2d,19,19 Bird Brain,f0fd0577-3e62-4786-b7c2-0ce8b8b0ef05,Avatar_Basic_Galactus_MSH,Play,W,0,0,Avatar_Basic_Ashiok_WAR,Success,Game
+2026-08-18,ee11df34-9957-4265-84b0-97dea7ed3294,72,72 Goblin Kamikaze,d8c2de92-daad-4a45-a81d-3d78cf53cdcc,Avatar_Basic_Galactus_MSH,Play,L,0,0,Avatar_Basic_LilianaVess,Success,Game
+2026-08-19,0cce0f98-a946-42a1-bc32-313fe9833fe8,55a,55a Imperial Storm,a0a64a8b-6fbe-4809-85af-afce093d96f2,Avatar_Basic_Galactus_MSH,Play,W,0,0,Avatar_Basic_AjaniGoldmane,Success,Game
+2026-08-19,1cef49b3-6164-4b14-ba9e-e23326cb9c15,42a,42a Bloody Bodies,d4eb209b-5fd2-473f-a0be-367febaeedb6,Avatar_Basic_Galactus_MSH,Play,L,0,0,Avatar_Basic_BilboRiddles_HOB,Success,Concede
+2026-08-19,2e67b001-c2da-487b-a020-7f32856585dd,42a,42a Bloody Bodies,d4eb209b-5fd2-473f-a0be-367febaeedb6,Avatar_Basic_Galactus_MSH,Play,W,0,0,Avatar_Basic_JaceBeleren,Success,Concede
+2026-08-19,3dcf7d57-b1f0-428b-897f-c3c1d6cee206,42a,42a Bloody Bodies,d4eb209b-5fd2-473f-a0be-367febaeedb6,Avatar_Basic_Galactus_MSH,Play,W,0,0,Avatar_Basic_Finneas_BLB,Success,Concede
+2026-08-19,7abd3a27-b8bd-49c7-8fe8-e30f7412d755,72,72 Goblin Kamikaze,d8c2de92-daad-4a45-a81d-3d78cf53cdcc,Avatar_Basic_Galactus_MSH,Play,W,0,0,Avatar_Basic_Ugluk_LTR,Success,Concede
+2026-08-19,8ec5117d-3728-401f-b71d-f523c008e5f4,42a,42a Bloody Bodies,d4eb209b-5fd2-473f-a0be-367febaeedb6,Avatar_Basic_Galactus_MSH,Play,L,0,0,Avatar_Basic_JaceBeleren,Success,Game
+2026-08-19,f38ea250-7f8a-446c-a982-09fde4c685cc,42a,42a Bloody Bodies,d4eb209b-5fd2-473f-a0be-367febaeedb6,Avatar_Basic_Galactus_MSH,Play,W,0,0,Avatar_Basic_Michelangelo_TMT,Success,Game
+2026-08-20,326d2d4d-168f-452e-bf52-04894e8d1e03,74a,74a Smaug's Vault,1bc4e2ad-0f0c-46fd-b304-701f89d327b0,Avatar_Basic_Galactus_MSH,Play,W,0,0,Avatar_Basic_VivienReid,Success,Game
+2026-08-20,48a17b2a-9ef3-4b40-866b-02263ff2885b,,,,Avatar_Basic_Galactus_MSH,PremierDraft_HOB_20260811,W,0,0,Avatar_Basic_Phelddagrif,Success,Concede
+2026-08-20,823823d0-0b62-4225-bf3a-65e20438e01d,63,63 Heirloom,08090a22-f52e-44aa-9aaa-fea0088c1532,Avatar_Basic_Galactus_MSH,Play,L,0,0,Avatar_Basic_Atraxa_MOM,Success,Game
+2026-08-20,9b748108-9e55-4f7a-a9cc-0fa0a604f06d,59,59 Stampede,ad82fe6f-4d38-458d-9563-087499c190bf,Avatar_Basic_Galactus_MSH,Play,W,0,0,Avatar_Basic_MilesMorales_SPM,Success,Game
+2026-08-20,b4f3a3b1-4485-4032-835f-10a7202c01e7,74a,74a Smaug's Vault,1bc4e2ad-0f0c-46fd-b304-701f89d327b0,Avatar_Basic_Galactus_MSH,Play,L,0,0,Avatar_Basic_CaseyJones_TMT,Success,Game
+2026-08-20,fa496712-064f-42e7-8780-3101dec74e07,,,,Avatar_Basic_Galactus_MSH,PremierDraft_HOB_20260811,L,0,0,Avatar_Basic_Helga_BLB,Success,Game
