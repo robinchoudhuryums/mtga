@@ -1179,3 +1179,179 @@ class TestResolveDeck:
 
     def test_a_leading_year_is_not_a_deck_id(self):
         assert pm.resolve_deck("2026 Ladder Pile", "", {}, self.KNOWN) == ("", "")
+
+
+class TestManualEntry:
+    """`--add`: the hand-entered path for matches Player.log cannot see — a phone game,
+    the opponent's archetype, play/draw, why a loss happened."""
+
+    def test_the_minimal_line_is_deck_and_result(self):
+        rows, warns = pm.parse_manual("49 W", deck_ids={"49"}, today="2026-08-20")
+        assert warns == []
+        assert rows[0]["Deck"] == "49" and rows[0]["Result"] == "W"
+        assert rows[0]["Date"] == "2026-08-20"
+        assert rows[0]["Event"] == "Play"
+
+    def test_every_optional_field_round_trips(self):
+        rows, warns = pm.parse_manual(
+            '19 L opp="Azorius Control" why=slow play=draw note="kept a 2-lander"',
+            deck_ids={"19"}, today="2026-08-20")
+        assert warns == []
+        r = rows[0]
+        assert r["Opponent Archetype"] == "azorius-control"
+        assert r["Loss Reason"] == "slow"
+        assert r["On Play"] == "draw"
+        assert r["Note"] == "kept a 2-lander"
+
+    def test_archetype_spellings_collapse_to_one_key(self):
+        """The whole reason to normalize: three spellings of one deck must COUNT as one,
+        or each lands under the read floor and the breakdown says nothing."""
+        rows, _ = pm.parse_manual("49 W opp='Mono Red'\n49 L opp=mono-red\n49 W opp='MONO  RED'",
+                                  deck_ids={"49"}, today="2026-08-20")
+        assert {r["Opponent Archetype"] for r in rows} == {"mono-red"}
+
+    def test_an_unknown_deck_is_refused(self):
+        """A phantom deck id would appear in --report as a deck no file backs."""
+        rows, warns = pm.parse_manual("99 W", deck_ids={"49"}, today="2026-08-20")
+        assert rows == []
+        assert any("no deck '99'" in w for w in warns)
+
+    def test_a_loss_reason_on_a_win_is_refused(self):
+        rows, warns = pm.parse_manual("49 W why=flood", deck_ids={"49"}, today="2026-08-20")
+        assert rows == []
+        assert any("has no reading" in w for w in warns)
+
+    def test_an_unknown_reason_is_warned_but_still_recorded(self):
+        """Asymmetric on purpose: the vocabulary is a guess, and losing a real match to
+        protect it is the worse trade."""
+        rows, warns = pm.parse_manual("49 L why=banana", deck_ids={"49"}, today="2026-08-20")
+        assert len(rows) == 1 and rows[0]["Loss Reason"] == "banana"
+        assert any("not in the vocabulary" in w for w in warns)
+
+    def test_ids_are_unique_against_the_existing_record(self):
+        """Dedup for the LOG path is by Arena matchId; a hand row has none, so the
+        generated id must not collide with one already stored."""
+        rows, _ = pm.parse_manual("49 W\n49 L", deck_ids={"49"}, today="2026-08-20",
+                                  existing_ids={"manual-20260820-01"})
+        ids = [r["Match ID"] for r in rows]
+        assert ids == ["manual-20260820-02", "manual-20260820-03"]
+        assert len(set(ids)) == 2
+
+    def test_blank_lines_and_comments_are_skipped(self):
+        rows, warns = pm.parse_manual("\n# a session\n\n49 W\n", deck_ids={"49"},
+                                      today="2026-08-20")
+        assert len(rows) == 1 and warns == []
+
+    def test_a_manual_row_fills_only_columns_the_log_cannot(self):
+        """The four hand columns must never masquerade as log-derived data: a manual row
+        leaves the Arena-sourced cells BLANK rather than inventing them."""
+        rows, _ = pm.parse_manual("49 W opp=mono-red", deck_ids={"49"}, today="2026-08-20")
+        r = rows[0]
+        for col in ("Arena Deck", "Arena Deck ID", "My Avatar", "Opponent Avatar",
+                    "Games Won", "Games Lost", "Reason", "Ended By"):
+            assert r[col] == "", f"{col} should be blank on a hand-entered row"
+        assert set(r) == set(pm.HEADER)
+
+
+class TestTheDashboardFormAndTheCliAgree:
+    """The published page emits `--add` lines and the CLI parses them. Nothing else
+    connects the two, so the SHAPE of that line is a contract — and it is exactly the
+    kind that rots silently, because the page is built by a different module and a
+    malformed line only shows up as a warning on someone's next paste."""
+
+    def test_the_line_the_form_builds_parses_with_no_warnings(self):
+        """Byte-for-byte the string `logLine()` produces for a fully-populated match."""
+        line = ('49 L opp="Mono Red" why=flood play=draw date=2026-08-20 '
+                'note="kept a greedy 3-lander"')
+        rows, warns = pm.parse_manual(line, deck_ids={"49"})
+        assert warns == []
+        r = rows[0]
+        assert (r["Deck"], r["Result"], r["Opponent Archetype"], r["Loss Reason"],
+                r["On Play"], r["Date"]) == ("49", "L", "mono-red", "flood", "draw",
+                                             "2026-08-20")
+        assert r["Note"] == "kept a greedy 3-lander"
+
+    def test_the_forms_dropdown_reads_the_cli_vocabulary_not_a_copy(self):
+        import build_dashboard
+        assert build_dashboard._loss_reasons() == pm.LOSS_REASONS
+        assert "flood" in build_dashboard._loss_reasons()
+
+
+class TestAnnotation:
+    """`--annotate`: fill the hand-only columns on matches the LOG already recorded.
+
+    The reason this exists rather than reusing `--add`: a match Arena logged already has
+    a row. Adding it again would DOUBLE-COUNT exactly the matches you cared enough to
+    annotate, and `--add` cannot dedupe because a hand row has no Arena matchId."""
+
+    def _rows(self):
+        return [dict(zip(pm.HEADER, ["2026-08-20", "abc123", "49", "", "", "", "Play",
+                                     "L", "", "", "", "", "", "", "", "", ""]))]
+
+    def test_it_updates_in_place_and_never_appends(self, tmp_path):
+        csvp = tmp_path / "m.csv"
+        pm.write_matches(self._rows(), str(csvp))
+        pm.annotate('abc123 opp="Mono Red" why=flood play=draw', str(csvp), apply=True)
+        out = pm.load_matches(str(csvp))
+        assert len(out) == 1, "annotate must UPDATE the row, not add a second one"
+        assert out[0]["Opponent Archetype"] == "mono-red"
+        assert out[0]["Loss Reason"] == "flood"
+        assert out[0]["On Play"] == "draw"
+
+    def test_it_leaves_every_log_sourced_column_alone(self, tmp_path):
+        csvp = tmp_path / "m.csv"
+        pm.write_matches(self._rows(), str(csvp))
+        pm.annotate("abc123 opp=mono-red", str(csvp), apply=True)
+        r = pm.load_matches(str(csvp))[0]
+        assert (r["Deck"], r["Result"], r["Date"], r["Event"]) == ("49", "L", "2026-08-20", "Play")
+
+    def test_it_is_idempotent(self, tmp_path):
+        csvp = tmp_path / "m.csv"
+        pm.write_matches(self._rows(), str(csvp))
+        pm.annotate("abc123 why=flood", str(csvp), apply=True)
+        first = pm.load_matches(str(csvp))
+        pm.annotate("abc123 why=flood", str(csvp), apply=True)
+        assert pm.load_matches(str(csvp)) == first
+
+    def test_an_unknown_id_changes_nothing(self, tmp_path):
+        """A mistyped id must not report success having done nothing."""
+        csvp = tmp_path / "m.csv"
+        pm.write_matches(self._rows(), str(csvp))
+        pm.annotate("nope opp=mono-red", str(csvp), apply=True)
+        assert pm.load_matches(str(csvp))[0]["Opponent Archetype"] == ""
+
+    def test_a_why_on_a_non_loss_is_dropped_but_the_rest_lands(self, tmp_path):
+        csvp = tmp_path / "m.csv"
+        rows = self._rows()
+        rows[0]["Result"] = "W"
+        pm.write_matches(rows, str(csvp))
+        pm.annotate("abc123 opp=mono-red why=flood", str(csvp), apply=True)
+        r = pm.load_matches(str(csvp))[0]
+        assert r["Loss Reason"] == "" and r["Opponent Archetype"] == "mono-red"
+
+    def test_an_empty_value_clears_the_field(self, tmp_path):
+        """Correcting a wrong annotation must be possible without editing the CSV."""
+        csvp = tmp_path / "m.csv"
+        pm.write_matches(self._rows(), str(csvp))
+        pm.annotate("abc123 opp=mono-red why=flood", str(csvp), apply=True)
+        pm.annotate("abc123 opp= why=", str(csvp), apply=True)
+        r = pm.load_matches(str(csvp))[0]
+        assert r["Opponent Archetype"] == "" and r["Loss Reason"] == ""
+
+    def test_deck_result_and_date_are_not_annotatable(self, tmp_path):
+        """They come from the log. Accepting them here would create a second, silent
+        way to state a result — two writers for one fact."""
+        pairs, warns = pm.parse_annotations("abc123 deck=12 result=W")
+        assert pairs == []
+        assert any("not editable here" in w for w in warns)
+
+    def test_the_line_the_page_emits_parses_exactly(self):
+        """Byte-for-byte what `annoLine()` produces. Nothing else connects the published
+        page to this parser, so the line's SHAPE is a contract that rots silently."""
+        line = 'b48ecdfd-60a1-49a2-940b-96e673182aa5 opp="Mono Red" why=flood play=draw'
+        pairs, warns = pm.parse_annotations(line)
+        assert warns == []
+        mid, fields = pairs[0]
+        assert mid == "b48ecdfd-60a1-49a2-940b-96e673182aa5"
+        assert fields == {"Opponent Archetype": "mono-red", "Loss Reason": "flood",
+                          "On Play": "draw"}

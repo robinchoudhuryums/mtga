@@ -1,5 +1,6 @@
 #: name: Mardu Spellstorm
 #: format: Standard
+#: arena: 55a Imperial Storm, a0a64a8b-6fbe-4809-85af-afce093d96f2
 #: colors: RWB
 #: plan: midrange
 #: archetype: MARDU SPELLS-VELOCITY with a graveyard half — the C2+D+E merge from the

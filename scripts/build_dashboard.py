@@ -113,6 +113,27 @@ def dashboard_staleness(out=None):
     return (len(changed), changed[0]) if changed else None
 
 
+def _loss_reasons():
+    """{token: gloss} from parse_matches — never a copy. Empty if it cannot be imported,
+    which degrades the form's dropdown to free text rather than to a stale list."""
+    try:
+        import parse_matches as pm
+        return dict(pm.LOSS_REASONS)
+    except Exception:
+        return {}
+
+
+def _known_archetypes():
+    """Opponent archetypes already recorded, for the form's suggestion list."""
+    try:
+        import parse_matches as pm
+        seen = {(r.get("Opponent Archetype") or "").strip()
+                for r in pm.load_matches()}
+        return sorted(x for x in seen if x)
+    except Exception:
+        return []
+
+
 def _no_network():
     """Neutralize deck.py's live-Scryfall fallbacks so the build stays offline
     and can't hang/crash on a slow or blocked Scryfall (the audit's F1)."""
@@ -404,6 +425,14 @@ def collect():
         # source CHANGE" instead of "is a source newer" — a question a fresh clone
         # can answer and mtime cannot. See `source_fingerprints`.
         "sources": source_fingerprints(),
+        # For the match-logging form. `loss_reasons` comes from parse_matches' own
+        # LOSS_REASONS rather than a copy, so the page's dropdown cannot drift from the
+        # vocabulary the CLI validates against — the K-09 "two models, same question"
+        # shape, avoided by having one definition. `archetypes` seeds the opponent
+        # datalist from what has already been recorded, so a second device reuses the
+        # existing spelling instead of minting `mono-red` beside `Mono Red`.
+        "loss_reasons": _loss_reasons(),
+        "archetypes": _known_archetypes(),
         "totals": {"printings": len(rows), "decks": len(decks), "buildable": buildable},
         "roster_plan": _capture(deckmod.cmd_wildcards, SimpleNamespace()),
         "decks": decks,
@@ -867,6 +896,42 @@ TEMPLATE = r"""<!DOCTYPE html>
   section.collapsed > *:not(h2.sec) { display:none; }
   section.collapsed h2.sec { margin-bottom:0; border-bottom-color:transparent; }
   /* sticky section-nav strip inside the header */
+  /* ---- match logger. Phone-first: the form is a single column under 640px and every
+     control clears the 44px touch target, because this is the one panel meant to be
+     used one-handed on a couch rather than at a desk. Colours come from the same
+     tokens as every other panel so the light-mode leg of Scenario 5 covers it. ---- */
+  .logform { max-width:1180px; margin:10px auto 0; display:grid; gap:10px;
+             grid-template-columns:repeat(auto-fit, minmax(210px, 1fr)); }
+  .logfield { display:flex; flex-direction:column; gap:5px; min-width:0; }
+  .logfield > span { font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--dim); }
+  .logfield select, .logfield input { min-height:44px; padding:8px 10px; font:inherit;
+      color:var(--fg); background:var(--panel2, var(--panel)); border:1px solid var(--line);
+      border-radius:8px; min-width:0; }
+  .logfield select:focus-visible, .logfield input:focus-visible { outline:2px solid var(--acc); outline-offset:1px; }
+  .logwide { grid-column:1 / -1; }
+  .segbar { display:flex; gap:6px; }
+  .segbtn { flex:1; min-height:44px; display:flex; align-items:center; justify-content:center;
+      border:1px solid var(--line); border-radius:8px; background:var(--panel2, var(--panel));
+      color:var(--dim); font-weight:600; cursor:pointer; user-select:none; }
+  .segbtn.on { color:var(--fg); border-color:var(--acc);
+               background:color-mix(in srgb, var(--acc) 18%, transparent); }
+  .segbtn:focus-visible { outline:2px solid var(--acc); outline-offset:1px; }
+  .logrow { display:flex; align-items:center; gap:8px; padding:7px 10px; border-bottom:1px solid var(--line); font-size:13px; }
+  .logrow .lx { margin-left:auto; cursor:pointer; color:var(--dim); padding:4px 8px; border-radius:6px; }
+  .logrow .lx:hover, .logrow .lx:focus-visible { color:var(--bad); outline:2px solid var(--acc); outline-offset:1px; }
+  .logw { color:var(--ok); font-weight:700; } .logl { color:var(--bad); font-weight:700; }
+  .logd { color:var(--warn); font-weight:700; }
+  .logsub { max-width:1180px; margin:22px auto 0; font-size:14px; font-weight:600; color:var(--fg);
+            border-top:1px solid var(--line); padding-top:16px; }
+  .annocard { max-width:1180px; margin:10px auto 0; border:1px solid var(--line); border-radius:10px;
+              padding:10px 12px; background:var(--panel); }
+  .annohead { display:flex; align-items:center; gap:8px; flex-wrap:wrap; font-size:13px; margin-bottom:8px; }
+  .annohead .mid { color:var(--dim); font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:11px; }
+  .annogrid { display:grid; gap:8px; grid-template-columns:repeat(auto-fit, minmax(190px, 1fr)); }
+  @media (max-width:640px){ .annogrid { grid-template-columns:1fr; } }
+  .logout { min-height:76px; margin-top:10px; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:12px; }
+  #logqueue:empty + .logout { display:none; }
+  @media (max-width:640px){ .logform { grid-template-columns:1fr; } }
   .secnav { max-width:1180px; margin:12px auto 0; display:flex; gap:7px; overflow-x:auto; scrollbar-width:none; padding-bottom:1px; }
   .secnav::-webkit-scrollbar { display:none; }
   .navchip { flex:0 0 auto; font-size:11.5px; font-weight:600; padding:4px 11px; border-radius:999px; border:1px solid var(--line2); background:var(--fill2); color:var(--ink2); cursor:pointer; white-space:nowrap; transition:color .15s,border-color .15s,background .15s,opacity .15s; }
@@ -987,6 +1052,29 @@ TEMPLATE = r"""<!DOCTYPE html>
     <textarea id="staletext" class="staletext" aria-label="Paste an Arena deck export to compare against the stored deck" placeholder="Deck&#10;1 Y'shtola Rhul (FIN) 86&#10;…"></textarea>
     <div class="staleactions"><button class="cta" id="stalego">Compare</button><button class="ghostbtn" id="staleclear">Clear</button></div>
     <div id="staleout"></div>
+  </section>
+
+  <section id="sec-log">
+    <h2 class="sec"><span class="tick"></span>Log a match — phone-friendly, queues locally</h2>
+    <p class="auditnote">Arena's log records the deck you submitted and the raw result, and <b>nothing about what you faced, whether you were on the play, or why you lost</b> — and a phone game never reaches the desktop log at all. Log those here. This page is static, so nothing is uploaded and nothing is written to the repo: matches queue in <b>this browser</b> until you copy them out. Then run <code>parse_matches.py &lt;file&gt; --add --apply</code>, or just paste the block into a session.</p>
+    <div class="logform">
+      <label class="logfield"><span>Deck</span><select id="logdeck" aria-label="Deck you played"></select></label>
+      <div class="logfield"><span>Result</span><div class="segbar" id="logresult" role="group" aria-label="Match result"></div></div>
+      <div class="logfield"><span>On the</span><div class="segbar" id="logplay" role="group" aria-label="On the play or the draw"></div></div>
+      <label class="logfield"><span>Opponent</span><input id="logopp" list="logopplist" autocomplete="off" placeholder="mono-red" aria-label="Opponent archetype"><datalist id="logopplist"></datalist></label>
+      <label class="logfield" id="logwhywrap"><span>Why lost</span><select id="logwhy" aria-label="Reason for the loss"></select></label>
+      <label class="logfield logwide"><span>Note</span><input id="lognote" placeholder="optional — kept a greedy 3-lander" aria-label="Free-text note"></label>
+    </div>
+    <div class="staleactions"><button class="cta" id="logadd">Add match</button><button class="ghostbtn" id="logcopy">Copy all</button><button class="ghostbtn" id="logclear">Clear queue</button></div>
+    <div id="logqueue"></div>
+    <textarea id="logout" class="staletext logout" readonly aria-label="Queued matches, ready to copy"></textarea>
+
+    <h3 class="logsub">…or annotate matches Arena already logged</h3>
+    <p class="auditnote">Paste a <code>Player.log</code> block (the same one <code>make matches</code> extracts) to list its matches and add the parts the log cannot see. These <b>update</b> the rows the log created — they join on Arena's match id, so they can never double-count a match you already ingested. Ingest the log first; annotate after.</p>
+    <textarea id="annotext" class="staletext" aria-label="Paste a Player.log block to annotate its matches" placeholder="[UnityCrossThreadLogger]8/20/2026 7:44:21 AM: Match to ABC…: MatchGameRoomStateChangedEvent&#10;{ &quot;timestamp&quot;: …"></textarea>
+    <div class="staleactions"><button class="cta" id="annogo">Find matches</button><button class="ghostbtn" id="annocopy">Copy annotations</button><button class="ghostbtn" id="annoclear">Clear</button></div>
+    <div id="annoout"></div>
+    <textarea id="annoline" class="staletext logout" readonly aria-label="Annotation lines, ready to copy"></textarea>
   </section>
 
   <section id="sec-rotation">
@@ -2203,12 +2291,285 @@ function syncLive(silent){
 
 $('foot').innerHTML = 'Live snapshot from committed data — hit ⟳ to re-sync from GitHub Pages, or regenerate with <code>python3 scripts/build_dashboard.py</code>. Card previews &amp; links via Scryfall. The judgment calls (craft X or Y, tuning) still live in the chat — this shows state, not decisions.';
 
+// ---------- match logger ----------
+// The page is STATIC (GitHub Pages), so this cannot write matches.csv and does not try.
+// It queues rows in localStorage under its own key and hands back the exact `--add`
+// lines. localStorage is the load-bearing part, not a nicety: the intended use is
+// logging a game on a phone mid-session, and without it a tab reload or a backgrounded
+// browser silently discards an evening's matches — which is the failure mode that makes
+// someone stop trusting the tool.
+const LOGKEY = 'mtga-matchlog';
+let LOGQ = [];
+try { LOGQ = JSON.parse(localStorage.getItem(LOGKEY) || '[]') || []; } catch(e){ LOGQ = []; }
+const LOGSEL = { result:'W', play:'' };
+
+function logPersist(){ try { localStorage.setItem(LOGKEY, JSON.stringify(LOGQ)); } catch(e){} }
+
+function logLine(m){
+  // Must round-trip through parse_manual's shlex split, so anything with a space is
+  // quoted and an embedded quote is stripped rather than escaped — a stray quote would
+  // make the whole line unparseable, and losing a note beats losing the match.
+  const q = v => { const t = String(v).replace(/"/g,''); return /\s/.test(t) ? '"'+t+'"' : t; };
+  let out = m.deck + ' ' + m.result;
+  if (m.opp)  out += ' opp=' + q(m.opp);
+  if (m.why)  out += ' why=' + m.why;
+  if (m.play) out += ' play=' + m.play;
+  if (m.date) out += ' date=' + m.date;
+  if (m.note) out += ' note=' + q(m.note);
+  return out;
+}
+
+function logRender(){
+  const box = $('logqueue'); if (!box) return;
+  box.innerHTML = '';
+  LOGQ.forEach((m, i) => {
+    const row = el('div','logrow');
+    const cls = m.result === 'W' ? 'logw' : (m.result === 'L' ? 'logl' : 'logd');
+    const bits = [esc(m.deck)];
+    if (m.opp) bits.push('vs ' + esc(m.opp));
+    if (m.play) bits.push('on the ' + esc(m.play));
+    if (m.why) bits.push('· ' + esc(m.why));
+    if (m.note) bits.push('— ' + esc(m.note));
+    row.innerHTML = '<span class="' + cls + '">' + esc(m.result) + '</span> <span>' + bits.join(' ') + '</span>';
+    // Removing a row leaves focus on the NEXT row's ✕, never on <body> (S-6).
+    const x = a11y(el('span','lx','✕'), {label:'Remove this queued match'});
+    x.onclick = () => {
+      LOGQ.splice(i,1); logPersist(); logRender();
+      const next = box.querySelectorAll('.lx');
+      (next[Math.min(i, next.length-1)] || $('logadd')).focus();
+      toast('Removed — ' + LOGQ.length + ' queued');
+    };
+    row.appendChild(x);
+    box.appendChild(row);
+  });
+  const out = $('logout');
+  if (out) out.value = LOGQ.map(logLine).join('\n');
+}
+
+(function initMatchLog(){
+  const sec = $('sec-log'); if (!sec) return;
+  const dsel = $('logdeck');
+  (D.decks || []).slice().sort((a,b) => String(a.id).localeCompare(String(b.id), undefined, {numeric:true}))
+    .forEach(d => { const o = document.createElement('option'); o.value = d.id; o.textContent = d.id + ' · ' + d.name; dsel.appendChild(o); });
+  const dl = $('logopplist');
+  (D.archetypes || []).forEach(a => { const o = document.createElement('option'); o.value = a; dl.appendChild(o); });
+  const wsel = $('logwhy');
+  wsel.appendChild(new Option('— not recorded —',''));
+  Object.entries(D.loss_reasons || {}).forEach(([k,v]) => wsel.appendChild(new Option(k + ' — ' + v, k)));
+
+  function seg(host, values, key){
+    host.innerHTML = '';
+    values.forEach(([val,label]) => {
+      const b = a11y(el('span','segbtn', label), {label:label, pressed:LOGSEL[key] === val});
+      b.onclick = () => {
+        LOGSEL[key] = (LOGSEL[key] === val && key === 'play') ? '' : val;   // play/draw is clearable
+        seg(host, values, key);
+        if (key === 'result') syncWhy();
+      };
+      host.appendChild(b);
+    });
+  }
+  // `why` is meaningless on a non-loss and the CLI REFUSES it there, so the control is
+  // disabled rather than left to produce a line that gets rejected on the far side.
+  function syncWhy(){
+    const isLoss = LOGSEL.result === 'L';
+    wsel.disabled = !isLoss;
+    if (!isLoss) wsel.value = '';
+    $('logwhywrap').style.opacity = isLoss ? '1' : '.45';
+  }
+  seg($('logresult'), [['W','Win'],['L','Loss'],['D','Draw']], 'result');
+  seg($('logplay'), [['play','Play'],['draw','Draw']], 'play');
+  syncWhy();
+
+  $('logadd').addEventListener('click', () => {
+    if (!dsel.value){ toast('Pick a deck first'); return; }
+    LOGQ.push({ deck:dsel.value, result:LOGSEL.result, play:LOGSEL.play,
+                opp:$('logopp').value.trim(), why:wsel.disabled ? '' : wsel.value,
+                note:$('lognote').value.trim(), date:new Date().toISOString().slice(0,10) });
+    logPersist(); logRender();
+    $('lognote').value = '';           // the note is per-match; deck and opponent usually repeat
+    toast(LOGQ.length + ' match(es) queued');
+  });
+  $('logcopy').addEventListener('click', async () => {
+    if (!LOGQ.length){ toast('Nothing queued yet'); return; }
+    const text = LOGQ.map(logLine).join('\n');
+    // Clipboard needs a secure context; the published page is HTTPS but a local file://
+    // open is not, so failure is expected rather than exceptional — fall back to
+    // selecting the textarea so the copy is still one gesture.
+    try { await navigator.clipboard.writeText(text); toast('Copied ' + LOGQ.length + ' line(s)'); }
+    catch(e){ const o = $('logout'); o.focus(); o.select(); toast('Select-and-copy the box below'); }
+  });
+  $('logclear').addEventListener('click', () => {
+    if (!LOGQ.length){ toast('Queue is already empty'); return; }
+    // Confirm, because the queue is the ONLY copy — nothing has reached the repo yet.
+    if (!confirm('Discard ' + LOGQ.length + ' queued match(es)? They have not been copied anywhere.')) return;
+    LOGQ = []; logPersist(); logRender(); toast('Queue cleared');
+  });
+  logRender();
+})();
+
+// ---------- annotate matches the LOG already recorded ----------
+// The paste is read ONLY to identify matches and label them for the human. Every
+// annotation this emits is keyed on Arena's matchId and carries no deck, result or
+// date — so if this parser got the seat wrong, the worst case is a confusing LABEL,
+// never a wrong W/L in matches.csv. The Python parser stays the single source of truth
+// for everything the log can answer; this supplies only what it cannot.
+const ANNOKEY = 'mtga-annotations';
+let ANNO = {};
+try { ANNO = JSON.parse(localStorage.getItem(ANNOKEY) || '{}') || {}; } catch(e){ ANNO = {}; }
+let ANNOFOUND = [];
+function annoPersist(){ try { localStorage.setItem(ANNOKEY, JSON.stringify(ANNO)); } catch(e){} }
+
+function parseLogBlock(text){
+  const out = [];
+  let me = null, deck = '';
+  (text || '').split(/\r?\n/).forEach(raw => {
+    const m = raw.match(/Match to ([A-Za-z0-9_\-]+)\s*:/);
+    if (m) me = m[1];
+    if (raw.indexOf('EventSetDeckV3') >= 0){
+      const n = raw.replace(/\\/g,'').match(/"Name":"([^"]*)"/);
+      if (n && n[1]) deck = n[1];
+    }
+    if (raw.indexOf('matchGameRoomStateChangedEvent') < 0) return;
+    const i = raw.indexOf('{'); if (i < 0) return;
+    let d; try { d = JSON.parse(raw.slice(i)); } catch(e){ return; }
+    try {
+      const info = d.matchGameRoomStateChangedEvent.gameRoomInfo;
+      const players = info.gameRoomConfig.reservedPlayers;
+      const fin = info.finalMatchResult;
+      if (!fin || !fin.matchId) return;
+      // No `Match to` header means the local seat is UNKNOWN. Python skips the match
+      // outright there; here the row is still useful for annotating, so it is kept with
+      // the result shown as '?' — displayed as unknown, never guessed.
+      const mine = me ? players.find(p => p.userId === me) : null;
+      const winner = (fin.resultList || []).filter(r => r.scope === 'MatchScope_Match').pop();
+      const res = (mine && winner) ? (mine.teamId === winner.winningTeamId ? 'W' : 'L') : '?';
+      const opp = players.find(p => !mine || p.userId !== me);
+      out.push({ id: fin.matchId, result: res, deck: deck,
+                 date: d.timestamp ? new Date(+d.timestamp).toISOString().slice(0,10) : '',
+                 oppAvatar: (opp && opp.courseId) ? String(opp.courseId).replace(/^Avatar_Basic_/,'') : '' });
+    } catch(e){ /* a state change that is not a completed match */ }
+  });
+  const seen = new Set();
+  return out.filter(m => !seen.has(m.id) && seen.add(m.id));
+}
+
+function annoLine(m){
+  const a = ANNO[m.id] || {};
+  const q = v => { const t = String(v).replace(/"/g,''); return /\s/.test(t) ? '"'+t+'"' : t; };
+  const bits = [];
+  if (a.opp)  bits.push('opp=' + q(a.opp));
+  if (a.why)  bits.push('why=' + a.why);
+  if (a.play) bits.push('play=' + a.play);
+  if (a.note) bits.push('note=' + q(a.note));
+  return bits.length ? m.id + ' ' + bits.join(' ') : '';
+}
+function annoSync(){
+  const box = $('annoline'); if (box) box.value = ANNOFOUND.map(annoLine).filter(Boolean).join('\n');
+}
+
+function annoRender(){
+  const host = $('annoout'); if (!host) return;
+  host.innerHTML = '';
+  if (!ANNOFOUND.length){ annoSync(); return; }
+  const head = el('div','metaline2', ANNOFOUND.length + ' match(es) found. Fill in what the log could not see — blanks are simply not written.');
+  host.appendChild(head);
+  ANNOFOUND.forEach(m => {
+    const a = ANNO[m.id] = ANNO[m.id] || {};
+    const card = el('div','annocard');
+    const h = el('div','annohead');
+    const cls = m.result === 'W' ? 'logw' : (m.result === 'L' ? 'logl' : 'logd');
+    h.innerHTML = '<span class="' + cls + '">' + esc(m.result) + '</span>' +
+                  '<b>' + esc(m.deck || 'deck unknown') + '</b>' +
+                  '<span class="mid">' + esc(m.date) + ' · ' + esc(m.id.slice(0,8)) + '</span>' +
+                  (m.oppAvatar ? '<span class="mid">their avatar: ' + esc(m.oppAvatar) + '</span>' : '');
+    card.appendChild(h);
+    const g = el('div','annogrid');
+
+    const oppL = el('label','logfield'); oppL.innerHTML = '<span>Opponent</span>';
+    const oppI = document.createElement('input');
+    oppI.setAttribute('list','logopplist'); oppI.value = a.opp || '';
+    oppI.placeholder = 'mono-red'; oppI.setAttribute('aria-label','Opponent archetype for this match');
+    oppI.oninput = () => { a.opp = oppI.value.trim(); annoPersist(); annoSync(); };
+    oppL.appendChild(oppI); g.appendChild(oppL);
+
+    const whyL = el('label','logfield'); whyL.innerHTML = '<span>Why lost</span>';
+    const whyS = document.createElement('select');
+    whyS.setAttribute('aria-label','Reason for the loss');
+    whyS.appendChild(new Option('— not recorded —',''));
+    Object.entries(D.loss_reasons || {}).forEach(([k,v]) => whyS.appendChild(new Option(k + ' — ' + v, k)));
+    whyS.value = a.why || '';
+    // Same rule the CLI enforces: a loss reason on a non-loss is refused there, so it is
+    // not offerable here. '?' counts as non-loss — an unknown result must not invite one.
+    whyS.disabled = m.result !== 'L';
+    if (whyS.disabled) whyL.style.opacity = '.45';
+    whyS.onchange = () => { a.why = whyS.value; annoPersist(); annoSync(); };
+    whyL.appendChild(whyS); g.appendChild(whyL);
+
+    const playL = el('div','logfield'); playL.innerHTML = '<span>On the</span>';
+    const bar = el('div','segbar'); bar.setAttribute('role','group');
+    bar.setAttribute('aria-label','On the play or the draw for this match');
+    [['play','Play'],['draw','Draw']].forEach(([val,label]) => {
+      const b = a11y(el('span','segbtn', label), {label:label, pressed:a.play === val});
+      if (a.play === val) b.classList.add('on');
+      b.onclick = () => {
+        a.play = (a.play === val) ? '' : val; annoPersist();
+        bar.querySelectorAll('.segbtn').forEach((n,i) => {
+          const v = i === 0 ? 'play' : 'draw';
+          n.classList.toggle('on', a.play === v);
+          n.setAttribute('aria-pressed', String(a.play === v));
+        });
+        annoSync();
+      };
+      bar.appendChild(b);
+    });
+    playL.appendChild(bar); g.appendChild(playL);
+
+    const noteL = el('label','logfield logwide'); noteL.innerHTML = '<span>Note</span>';
+    const noteI = document.createElement('input');
+    noteI.value = a.note || ''; noteI.placeholder = 'optional';
+    noteI.setAttribute('aria-label','Free-text note for this match');
+    noteI.oninput = () => { a.note = noteI.value.trim(); annoPersist(); annoSync(); };
+    noteL.appendChild(noteI); g.appendChild(noteL);
+
+    card.appendChild(g);
+    host.appendChild(card);
+  });
+  annoSync();
+}
+
+(function initAnnotate(){
+  if (!$('annogo')) return;
+  $('annogo').addEventListener('click', () => {
+    const found = parseLogBlock($('annotext').value);
+    if (!found.length){
+      $('annoout').innerHTML = '<div class="metaline2">No completed matches in that paste. It needs the <code>matchGameRoomStateChangedEvent</code> lines — see <code>make matches</code>.</div>';
+      ANNOFOUND = []; annoSync(); return;
+    }
+    ANNOFOUND = found;
+    annoRender();
+    const unknown = found.filter(m => m.result === '?').length;
+    toast(found.length + ' match(es)' + (unknown ? ' · ' + unknown + ' with an unknown seat' : ''));
+  });
+  $('annocopy').addEventListener('click', async () => {
+    const text = ANNOFOUND.map(annoLine).filter(Boolean).join('\n');
+    if (!text){ toast('Nothing annotated yet'); return; }
+    try { await navigator.clipboard.writeText(text); toast('Copied ' + text.split('\n').length + ' line(s)'); }
+    catch(e){ const o = $('annoline'); o.focus(); o.select(); toast('Select-and-copy the box below'); }
+  });
+  $('annoclear').addEventListener('click', () => {
+    if (!confirm('Clear the paste and every annotation typed against it? They have not been copied anywhere.')) return;
+    ANNOFOUND.forEach(m => { delete ANNO[m.id]; });
+    ANNOFOUND = []; $('annotext').value = ''; annoPersist(); annoRender(); toast('Cleared');
+  });
+})();
+
 // ---------- collapsible sections + section-nav strip (progressive disclosure) ----------
 // DOM order; 3rd field = default-collapsed. The utility/lookup sections start CLOSED so
 // the page opens on the planning views, not a wall of every tool at once.
 const SECTIONS = [
   ['sec-find','Finder',true], ['sec-triage','Triage',false], ['sec-recent','Recent',true],
-  ['sec-stale','Stale',true], ['sec-rotation','Rotation',true], ['sec-decks','Decks',false],
+  ['sec-stale','Stale',true], ['sec-log','Log match',true], ['sec-rotation','Rotation',true], ['sec-decks','Decks',false],
   ['sec-leverage','Leverage',false], ['sec-wishlist','Wishlist',false], ['sec-plan','Craft plan',false],
 ];
 function secIsCollapsed(id, def){ return (STATE.secCollapsed && id in STATE.secCollapsed) ? !!STATE.secCollapsed[id] : def; }

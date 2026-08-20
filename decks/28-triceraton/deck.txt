@@ -1,6 +1,6 @@
 #: name: Triceraton
 #: format: Standard
-#: arena: 28 Triceraton, 0c12490d-6f0f-4603-80a2-8b86422d9e7e
+#: arena: 28 Triceraton, aa9d46c9-e751-42c2-b063-3d987ef76b6c
 #: tier: A — Naya Dinosaurs; aggressive dino midrange. Graded on the LIST (legal 60, ownership-independent per the tiering rubric — build-state is tracked by check/audit). Re-graded B→A after the interaction package (+Bushwhack / +Clash of the Eikons fight removal / +Auspicious Arrival investigate-draw, cutting off-tribe Soldier chaff) took interaction to 5, then the 2026-08 rotation-proofing pass (Gishath/Palani's Hatcher/Rampaging Ceratops/Hulking Raptor were CUT for Etali/Thrashing Brontodon, plus a Savage Land Dinosaur and a Spider-Rex that have since been CUT themselves, 2026-08-11) moved it to interaction 6 and card advantage 3 → A-floor. The 2026-08-11 pass then took interaction to 5 and card advantage to 4, which sat EXACTLY on the A minimum; Boros Charm in over Nurturing Bristleback later that same day restored interaction to 6, so the deck clears the floor with one card of margin rather than none. A here is a clean, resilient fair-creature A (not a bomb-driven one). The fully-owned playable version is variant 28a.
 #: colors: RGW
 #: archetype: Naya (R/G/W) Dinosaur tribal with a Soldier secondary — Triceraton Commander token engine into big dinos (Ghalta, Etali cheating spells off the top). WIP brew, rotation-proofed 2026-08: every unowned card now survives the ~Q4 2026 rotation.

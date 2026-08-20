@@ -468,8 +468,8 @@ directions.
   Abzan deck" claim against FOUR WBG decks. And KEY scores THEME OVERLAP ALONE, so for a
   structurally-valued card it says little: Chandra rated KEY in 14 of 42 decks, nearly all
   on the generic red trio, while the counts that decided placement were unseen. [G-31]
-- **`suggest` and `suggest-homes` read castability as an identity SUBSET, which says
-  nothing about whether you can pay the PIPS.** A `{W}{W}{W}{W}{W}` card was rated KEY for
+- **Castability reads the PRINTED COST (`suggest-homes`, the last identity-subset holdout,
+  converted 2026-08-20 — G-58) and says nothing about PIPS.** A `{W}{W}{W}{W}{W}` was KEY for
   decks with 10–11 white sources, roughly a 1% chance on turn five. `pip_depth_warning`
   prints `⚠⚠ 5x{W} vs 10 sources` from the same hypergeometric model `consistency` uses.
   It is a FLAG, never a score change. **Two 2026-08-13 fixes, and both are the G-40 shape
@@ -670,10 +670,10 @@ directions.
   **`EventSetDeckV3`**, joined on TIMESTAMP and resolved `--deck` → `#: arena:` header →
   the name's leading NUMBER, with the run PRINTING the route AND the two integers behind
   each W/L (G-52). **Two reason fields and only one carries information**: `Reason`
-  (`matchCompletedReason`) is `Success` for every match that COMPLETED — 15 of 15 — while
+  (`matchCompletedReason`) is `Success` for every match that COMPLETED — 58 of 58 — while
   `Ended By` (Game vs Concede) varies and is most of the signal at low n. **Read with
   restraint** — under 20 matches `--report` refuses a percentage. The per-deck split
-  CANNOT reach that floor at 106 decks (best row n=4), so it also POOLS, which answers a
+  CANNOT reach that floor at 111 decks (best row n=8), so it also POOLS, which answers a
   different question: whether YOU are winning, never whether a deck is good. [G-57]
 - **NEVER widen `#: colors:` for a HYBRID card, and never reject a card for a widening you
   do not need.** Both halves were violated in one cycle: 26b's header was widened to UBR
@@ -881,6 +881,21 @@ directions.
   agreement is a snapshot, not a reason to add the gate — docs cite it with examples that
   now read as agreements *because* the sync ran. Re-measure first. [G-73]
 
+- **THE LOG CANNOT SEE WHAT YOU FACED, WHETHER YOU WERE ON THE PLAY, OR WHY YOU LOST — and
+  a PHONE GAME never reaches the desktop log at all** (`Player.log` is written by the
+  install that played the match). Four hand-only columns fill that gap. **Which writer
+  depends on whether Arena logged the match**: `--add` (`<deck> <W|L|D>` + `opp= why=
+  play= note=`) for one it never saw; **`--annotate` (`<matchId> …`) for one it DID** —
+  it joins on Arena's id and UPDATES, where `--add` would append a SECOND row, because a
+  hand row has no matchId to dedupe on. `deck`/`result`/`date` are refused by `--annotate`;
+  the log owns them. The **loss vocabulary is CLOSED so it can be COUNTED** (`flood screw
+  slow answer removed keep misplay outclassed`) — free text cannot answer "which decks
+  flood out". Validation is asymmetric: an unknown DECK or matchId is REFUSED (it would
+  invent or silently skip a row), an unknown `why` is warned about and RECORDED. The
+  dashboard's **"Log a match"** panel does both from a phone — the page is STATIC, so it
+  queues in `localStorage` and hands back lines; it parses a pasted log only to LABEL
+  rows, and emits only the id, so a misparse there cannot corrupt a stored W/L. [G-74]
+
 ## Known Issues
 
 Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
@@ -908,10 +923,11 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   under `selection`/`tokens` (cast-from-top → `card advantage`; spend-as-any-color and
   `land token` → `ramp`; all-basic-land-types → `mana`). **Residual: a fixer whose value
   scales with colour count but whose text carries no explicit any-colour / basic-land-type
-  cue is still invisible — grade those from full text. Same shape one theme over: a card
-  whose text names a CARD TYPE it never casts or equips (Gilgamesh digs for "Equipment
-  cards") carries no tag for that type, so `suggest-homes` never surfaced his real home,
-  the roster's 13-Equipment deck. A "what does this card look for" read beats the tags.** [K-03]
+  cue is still invisible — grade those from full text. The type-naming half is CLOSED
+  (2026-08-20): a card whose text names a CARD TYPE it interacts with but never is —
+  Gilgamesh digging for "Equipment cards" — now carries that tag via
+  `_TYPE_MATTERS_RES`, 196 tags across 180 pool cards, nothing lost. A "what does this
+  card look for" read still beats the tags for the fixer half.** [K-03]
 - **Never gate a predicate on a derived TAG — it inherits every hole in the tagger.**
   `_is_color_fixer` did, so the roster's two best fixers (keying off unindexed Vivid) read
   as non-fixers and `suggest-homes` proposed cutting the BETTER fixer. Read TEXT, in
@@ -1039,8 +1055,9 @@ earned it: [C-01]
 
 **Subsystems:**
 - Data: card-library.csv, card-pool.csv, card-mana.csv, card-wishlist.csv, matches.csv
-  (LIVE since 2026-08-10 — 15 matches, 14 attributed to decks 7/15/19/45/54b; still under
-  the 20-match read floor per deck, which is why `--report` also POOLS), recommendations.csv [C-02]
+  (LIVE since 2026-08-10 — 58 matches, 55 attributed across 23 decks, pooled 28-30; the
+  best per-deck row is n=8 against the 20-match floor, which is why `--report` also POOLS,
+  and why the four HAND columns exist at all — G-74), recommendations.csv [C-02]
 - Outcomes: scripts/parse_matches.py, recommendations.csv + `deck.py feedback` — the only
   subsystems that have seen a real game or a real decision [C-03]
 - Ingest & Enrich: scripts/import_arena.py, scripts/import_collection.py,
@@ -1187,7 +1204,10 @@ format.
    end-to-end path is covered by nobody else.
    Steps: paste (or `cat`) an archive → `parse_matches.py <file>` (dry run) →
    `--apply` → `--report`; then rename a deck in the Arena client, play once, and
-   re-run.
+   re-run. Then the HAND path, which no log can exercise: `make log-match DECK=<id>
+   R=L WHY=flood` (dry run, then `APPLY=1`), and the dashboard's "Log a match" panel
+   on a PHONE — queue two matches, reload the page, confirm the queue survived, copy
+   the block and feed it to `--add`.
    Expected: the dry run prints a `Deck attribution` block naming every Arena deck and
    the ROUTE that resolved it; re-running is idempotent (dedup by matchId); the rename
    re-maps in the SAME run, because header sync precedes the mapping. A match whose

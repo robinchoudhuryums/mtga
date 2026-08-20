@@ -12,8 +12,9 @@ Two figures do most of the work below:
 - **Tier spread: A 39 / B 65 / C 3 / ungraded 3 — of which 51 are PROVISIONAL.** Every one
   says the same thing in its file: unplayed. That count has GROWN (41 → 51) since the last
   roadmap, because decks are being added faster than they are being played.
-- **`matches.csv` holds 15 matches**, 14 attributed to a deck; `--report` refuses a
-  percentage under 20. The best per-deck row is n=4 against a floor of 20.
+- **`matches.csv` holds 58 matches** (15 → 58 on 2026-08-20, from one log ingest), 55
+  attributed across 23 decks; `--report` refuses a percentage under 20. The best per-deck
+  row is n=8 against a floor of 20. Pooled: 28-30, 48% (95% CI 36–61%).
 - Buildability: 66 decks fully owned, 45 craft-gated. Rotation exposure: **171**
   card-instances ~2026, 693 ~2027, 1,715 ~2028.
 
@@ -80,12 +81,16 @@ Stated because a roadmap that never records its own outcomes is a wishlist.
 
 ## Tier 2 — Medium-term (weeks–months)
 
-1. **Get 3–4 decks past 20 matches.** Unchanged from the last roadmap and still the item
-   everything in Tier 3 is gated on. It has moved backwards in relative terms: matches went
-   9 → 15 while PROVISIONAL decks went 41 → 51, so the roster is outrunning the record.
-   **The arithmetic will not resolve itself** — at 111 decks a per-deck read of 20 is
-   unreachable by play volume alone, which is why item 2 below now sits beside it rather
-   than waiting behind it. — **M, owner-paced**
+1. **Get 3–4 decks past 20 matches.** Still the item everything in Tier 3 is gated on,
+   but the framing from the last roadmap is now WRONG and worth correcting rather than
+   quietly dropping: it read "play volume is losing ground to deck creation" off a 9 → 15
+   trend. Matches then went **15 → 58 in a single ingest**, and the deficit turned out to
+   be extraction, not play — the games had been played and were sitting unparsed in
+   `Player.log`, which is overwritten on every launch. **The lesson generalizes: a metric
+   that only moves when someone runs a manual step measures the step, not the thing.**
+   The arithmetic is still unforgiving — at 111 decks the best row is n=8 — so item 2
+   sits beside this rather than behind it, and the launchd rolling archive (Tier 1) is
+   what stops the next batch being lost. — **M, owner-paced**
 2. **Aggregate outcomes at a unit the sample can support.** New this cycle, and the honest
    response to item 1's arithmetic. Per-deck at n=4 will not become readable; per COLOUR
    PAIR, per `#: plan:` or per swap-batch would put a dozen matches behind each row instead

@@ -492,7 +492,7 @@ influence on you. It splits each deck's record at its **first recorded swap** �
 never per swap, because a deck accumulates many swaps whose windows overlap almost
 completely and pinning a result on one of four changes made the same week is a story, not a
 measurement. **It refuses to report a rate below ~20 games on one side**, which is where
-the record sits today (365 swaps against 9 logged matches), so what it prints is the
+the record sits today (502 swaps against 58 logged matches, best deck n=8), so what it prints is the
 COVERAGE — how far the record is from being readable — rather than a number. That refusal
 is the honest output; the analysis exists now so it is ready when the games are. Like every
 other read of the match record, it never feeds back into a score, and
@@ -1246,10 +1246,14 @@ cycle. The Makefile is the one place it is defined. Slow, and needs Scryfall.
 ### Matches — record what actually happened (optional)
 
 ```
-python3 scripts/parse_matches.py session.log            # dry run
-python3 scripts/parse_matches.py session.log --apply    # write matches.csv
-python3 scripts/parse_matches.py --report               # win/loss per deck
+make matches                                           # extract from Player.log + dry run
+make matches APPLY=1                                   # …and write matches.csv
+python3 scripts/parse_matches.py session.log --apply   # or point it at a paste yourself
+python3 scripts/parse_matches.py --report              # win/loss per deck
 ```
+
+`make matches` wraps the grep below so neither it nor the log path has to be
+remembered; `MTGA_LOGS=…` overrides the location for Windows or a non-default install.
 
 Every other tool here grades a deck on its **list**. This one records **games**.
 Turn on Arena → Settings → Account → **Detailed Logs (Plugin Support)**, restart
@@ -1313,6 +1317,54 @@ Two Arena decks claiming one repo deck (an old copy left in the client) write
 **nothing** and are reported for a hand call — a header naming the wrong one of
 the two is worse than no header, because matches would then attribute to it with
 full confidence.
+
+#### The four things the log cannot see — and the one platform it misses
+
+Arena records the deck you submitted and the raw outcome. It records **nothing about the
+opponent's archetype, whether you were on the play, or why you lost** — and a **phone
+game never reaches the desktop log at all**, because `Player.log` is written by the
+install that played the match. Four optional columns fill that gap: `On Play`,
+`Opponent Archetype`, `Loss Reason`, `Note`. They are blank on every log-parsed row, so
+blank always means "not recorded", never a value.
+
+**Which writer depends on whether Arena logged the match.**
+
+```
+make log-match DECK=49 R=L OPP=mono-red WHY=flood        # one match, dry run
+make log-match DECK=49 R=W APPLY=1                       # …and write it
+
+python3 scripts/parse_matches.py lines.txt --add --apply       # a whole session
+python3 scripts/parse_matches.py notes.txt --annotate --apply  # matches already logged
+```
+
+`--add` takes `<deck> <W|L|D>` plus `opp= why= play= event= date= note=` and **appends**.
+`--annotate` takes `<matchId> opp= why= play= note=` and **updates in place**. Use the
+right one: a match Arena already logged has a row, and `--add` cannot dedupe (a hand row
+has no Arena match id), so pushing logged matches through it would double-count exactly
+the ones you cared enough to annotate. `--annotate` refuses `deck`, `result` and `date` —
+the log owns those — and an empty value clears a field, so a wrong annotation is fixable
+without editing the CSV.
+
+The loss vocabulary is **closed so it can be counted**: `flood screw slow answer removed
+keep misplay outclassed`, with free-text `note=` beside it. Free text cannot answer "which
+of my decks flood out", which is the only reason to record a reason at all. An unknown
+deck or match id is refused; an unknown reason is warned about and **recorded anyway**,
+because the vocabulary is a guess someone will outgrow and losing a real match to protect
+it is the worse trade. Archetypes are slug-normalized, so `Mono Red`, `mono-red` and
+`MONO  RED` count as one instead of splitting into three rows that each fall under the
+read floor.
+
+**From a phone: the dashboard's "Log a match" panel.** The published page is static, so it
+writes nothing — it queues matches in that browser's `localStorage` and hands back these
+exact lines to copy. Paste a `Player.log` block into its second box and it lists every
+match with date, deck, result and the opponent's avatar, ready to annotate. It parses that
+block **only to label the rows for you**: every line it emits carries the match id and your
+four fields, never a deck or a result, so a parsing error there cannot put a wrong W/L into
+`matches.csv`.
+
+`--report` then breaks the record down by opponent archetype and by play/draw under the
+same 20-match floor, and tallies loss reasons as **counts, never rates** — "6 of my losses
+were flood" is a tally of things that happened, not an estimate of a probability.
 
 Deck **names** are reconciled separately. A repo deck's name and its Arena name are
 different strings and neither is authoritative — of 22 correct mappings, 8 disagreed

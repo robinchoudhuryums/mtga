@@ -227,6 +227,10 @@ def _pattern_groups():
         out.append((f"lib.{name}", getattr(lib, name), "norm"))
     out += [("tag_synergies._TRIBAL_PAYOFF_RES", p, "raw")
             for p in tag_synergies._TRIBAL_PAYOFF_RES]
+    # Same corpus form and the same reason: a card TYPE the text builds around is
+    # capitalized in oracle text ("crews a Vehicle"), so these run on the raw form.
+    out += [("tag_synergies._TYPE_MATTERS_RES", p, "raw")
+            for p in tag_synergies._TYPE_MATTERS_RES]
     for name in ("_HEIST_CAST_LOOSE", "_HEIST_CAST_STRICT", "_HEIST_OPP_ZONE",
                  "_EXILE_CAST_ENABLE", "_EXILE_CAST_PAYOFF"):
         out.append((f"tag_synergies.{name}", getattr(tag_synergies, name), "norm"))

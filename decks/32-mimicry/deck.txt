@@ -1,5 +1,6 @@
 #: name: Mimicry
 #: format: Standard
+#: arena: 32 Mimicry, 27b30e8a-7114-44f4-8b4c-df5056758f86
 #: colors: UB
 #: tier: A — Dimir (UB) copy-creatures value/midrange (low A); the UB conversion fixed the two structural holes: added HARD removal (Bitter Triumph / Heartless Act / Feed the Swarm / Gravkill) on top of the soft tempo suite (Tishana / Frozen in Ice / Exclusion Mage / Spider-Woman) — real interaction ~8-9 (heuristic undercounts) — and smoothed the curve. Deep card advantage + a coherent Impostor Syndrome clone engine + Multiversal Incursion finisher. Residual (low-A): singleton variance + a 6-tapped-dual manabase; a clean A would add 2-ofs of the key engines and/or untapped duals.
 #: archetype: Dimir (UB) copy-creatures value/midrange — clone bodies + strong ETB creatures worth copying, now with a black hard-removal splash.

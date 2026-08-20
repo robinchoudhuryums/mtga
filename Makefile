@@ -18,6 +18,10 @@ help:
 	@echo "make refresh REFETCH=1   same, but re-price every card from scratch (slow)"
 	@echo "make dashboard       rebuild the committed dashboard.html (offline, ~2 min; pages.yml also rebuilds it on every push to main)"
 	@echo "make postedit        the after-every-deck-edit tail: re-baseline roles, rebuild dashboard, run the gate"
+	@echo "make matches         extract Arena match results from Player.log (run on the Arena machine)"
+	@echo "make matches APPLY=1 same, but write them into matches.csv"
+	@echo "make log-match DECK=49 R=W [OPP=mono-red WHY=flood PLAY=play NOTE=...]  hand-log one match"
+	@echo "make log-match ... APPLY=1   same, but write it (dry run otherwise)"
 	@echo "make clean-venv      remove the local .venv"
 
 # Launch the editor. Depends on the venv sentinel so deps install on first run
@@ -81,6 +85,40 @@ verify: check test-units
 # That is a FLAG on this one target, not a second target: the order is the thing that must
 # have a single definition, and a separate "quick refresh" recipe is how it drifts.
 REFETCH ?=
+
+# Pull match results out of Arena's Player.log. Run this ON THE MACHINE RUNNING ARENA.
+# The grep is the whole trick and the two lines AROUND the result JSON are load-bearing
+# (G-57): `finalMatchResult` carries the outcome but NOT which seat is yours — only the
+# `Match to <userId>:` prefix does — and the deck you played is in `EventSetDeckV3`. A
+# paste missing either is unparseable, and the parser SKIPS rather than guessing.
+# The sed drops the deck card lists, which are 92% of an EventSetDeckV3 line.
+# Needs Arena → Settings → Account → "Detailed Logs (Plugin Support)", then a restart.
+# PREREQUISITE THIS TARGET CANNOT CHECK: the Arena machine must have this repo cloned.
+# It often does not — Arena on a Mac, the repo only ever opened in Claude sessions — and
+# then this target does not exist to run. `/log-matches` carries a ~/.zshrc function that
+# needs no checkout; that is the right shortcut for that setup.
+MTGA_LOGS ?= $(HOME)/Library/Logs/Wizards Of The Coast/MTGA
+MATCHES_OUT ?= /tmp/mtga-matches.log
+matches:
+	@echo "==> reading $(MTGA_LOGS)"
+	@grep -hE 'Match to .*MatchGameRoomStateChangedEvent|"finalMatchResult"|==> EventSetDeckV3' \
+	    "$(MTGA_LOGS)"/Player*.log \
+	  | sed -E 's/\\"(MainDeck|Sideboard)\\":\[[^]]*\]/\\"\1\\":[]/g' > $(MATCHES_OUT)
+	@echo "==> wrote $(MATCHES_OUT) ($$(wc -l < $(MATCHES_OUT)) lines)"
+	python3 scripts/parse_matches.py $(MATCHES_OUT) $(if $(APPLY),--apply,)
+	@$(if $(APPLY),,echo "";echo "DRY RUN — nothing written. Re-run with: make matches APPLY=1")
+
+# Hand-log ONE match — a phone game, or anything Player.log cannot see (the opponent's
+# archetype, play/draw, why you lost). For a whole session use the dashboard's "Log a
+# match" panel, which queues on your phone and hands back these same lines in a block.
+# Dry run unless APPLY=1, like every other writer here.
+log-match:
+	@test -n "$(DECK)" || { echo "usage: make log-match DECK=<id> R=<W|L|D> [OPP=… WHY=… PLAY=play|draw NOTE=…] [APPLY=1]"; exit 2; }
+	@test -n "$(R)" || { echo "R= is required (W, L or D)"; exit 2; }
+	@printf '%s %s%s%s%s%s\n' "$(DECK)" "$(R)" \
+	  "$(if $(OPP), opp=\"$(OPP)\",)" "$(if $(WHY), why=$(WHY),)" \
+	  "$(if $(PLAY), play=$(PLAY),)" "$(if $(NOTE), note=\"$(NOTE)\",)" \
+	  | python3 scripts/parse_matches.py - --add $(if $(APPLY),--apply,)
 
 refresh:
 	@echo "==> 1/6 enrich.py            (fill blank Type/Text/Color/Collector #)"

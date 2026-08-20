@@ -4197,3 +4197,50 @@ class TestClockScoreHandlesAMeasuredZeroCurve:
     def test_bounds_hold(self):
         for v in ({**self.FAST, "avg_mv": 0.0}, {"avg_mv": 9.0, "early_drops": 0, "reach": 0}):
             assert 0 <= deck._clock_score(v) <= 7
+
+
+class TestSuggestHomesReadsCastabilityFromCost:
+    """`suggest-homes` gated on an IDENTITY subset while every sibling recommender
+    (`suggest`, `--lands`, `--ramp`, `--interaction`) read the printed COST. So
+    `{2}{G/U}{G/U}` Thranduil, Sindarin Liege — identity {G,U}, both pips payable off
+    green alone — was withheld from a BG deck holding 16 Elves and 16 green sources.
+    That is G-58 failing inside the tool that exists to apply it; measured at 138 owned
+    cards hidden roster-wide, 87 of them true multicolor hybrids."""
+
+    def test_a_true_hybrid_is_castable_off_either_half(self):
+        ok, note = deck._candidate_castability("{2}{G/U}{G/U}", {"G", "U"}, {"B", "G"})
+        assert ok and "hybrid" in note
+        ok, _ = deck._candidate_castability("{2}{G/U}{G/U}", {"G", "U"}, {"B", "U"})
+        assert ok, "the other half must work too"
+
+    def test_a_gold_card_is_still_refused(self):
+        ok, why = deck._candidate_castability("{1}{G}{U}", {"G", "U"}, {"B", "G"})
+        assert not ok and "U" in why
+
+    def test_a_costless_card_falls_back_to_identity(self):
+        """THE REGRESSION THIS FIX ALMOST SHIPPED. `_candidate_castability("")` reports
+        castable-with-a-note, which is right for triaging a PILE and wrong for a
+        recommender GATE: a LAND carries no cost, so the bare cost-aware test offered
+        WUR Mystic Monastery to decks in none of those colours. A land's whole value is
+        the colours it produces. `wishlist._castable_in` resolves this the same way."""
+        assert deck._candidate_castability("", {"W", "U", "R"}, {"B", "G"})[0], (
+            "the primitive itself still says castable — the CALLER must not use it bare")
+
+    def test_the_CALLER_asks_and_asks_with_the_fallback(self):
+        """A pure-function anchor cannot see whether a caller asks — the recurring
+        failure shape here (G-40), so the caller needs its own pin.
+
+        AST, NOT SOURCE TEXT. The first version of this test grepped the function's
+        source for "_candidate_castability" and PASSED with the fix reverted, because
+        the COMMENT above the call still named it — the same trap G-53 records for the
+        Makefile scan that matched comments for a year. A comment is not a call."""
+        import ast
+        import inspect
+        tree = ast.parse(inspect.getsource(deck.cmd_suggest_homes).lstrip())
+        called = {n.func.id for n in ast.walk(tree)
+                  if isinstance(n, ast.Call) and isinstance(n.func, ast.Name)}
+        assert "_candidate_castability" in called, (
+            "cmd_suggest_homes no longer CALLS the cost-aware castability test — "
+            "an identity-subset gate here is the Thranduil bug")
+        attrs = {n.attr for n in ast.walk(tree) if isinstance(n, ast.Attribute)}
+        assert "issubset" in attrs, "the costless-card identity fallback is gone"

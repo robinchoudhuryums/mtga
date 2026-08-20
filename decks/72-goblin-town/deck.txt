@@ -1,5 +1,6 @@
 #: name: Goblin-town
 #: format: Standard
+#: arena: 72 Goblin Kamikaze, d8c2de92-daad-4a45-a81d-3d78cf53cdcc
 #: colors: BR
 #: tier: B (PROVISIONAL) — graded UNDER the A metrics floor (interaction 7 after the
 #: tier: Stadium Headliner / Goblin Negotiation swaps, against card advantage 4 that

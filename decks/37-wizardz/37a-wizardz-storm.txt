@@ -1,5 +1,6 @@
 #: name: Wizardz — Value/Storm (copy + draw-two)
 #: format: Standard
+#: arena: 37a Wiz-Khalifa, a3d75fc7-4c52-4e4d-9385-e9728952458b
 #: colors: UBR
 #: tier: A (re-graded up from B on 2026-08-17, at the user's call, after the tune below) — a
 #: tier: grindier, value-leaning cousin of the aggressive base (37). Same Grixis Wizard

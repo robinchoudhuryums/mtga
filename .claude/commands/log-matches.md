@@ -65,7 +65,41 @@ own dedupe. If the paste is still too big and no decks were renamed, additionall
 through a rename, so prefer the sed.
 
 **Without the archive**, grab the log before relaunching Arena. Ask the user to run
-this on the machine running Arena and paste the output:
+this on the machine running Arena and paste the output.
+
+**Two shortcuts, and WHICH ONE APPLIES DEPENDS ON WHETHER THE ARENA MACHINE HAS THIS
+REPO.** That is the question to ask first, and it is easy to get wrong from inside a
+session: the repo is checked out wherever *you* are reading this, which says nothing
+about the Mac running Arena. Measured the hard way — `make matches` was added, handed
+over, and failed with "No rule to make target", because the machine playing Arena had
+never cloned the repo at all.
+
+**Repo IS on the Arena machine** → `make matches` (dry run) / `make matches APPLY=1`
+(writes). It wraps the extraction below plus the parse. `MTGA_LOGS=...` overrides the
+path for Windows or a non-default install.
+
+**Repo is NOT on the Arena machine** (the common case — Arena on a Mac, this repo only in
+Claude sessions) → a shell function in `~/.zshrc`, which needs nothing checked out:
+
+```sh
+mtga-matches() {
+  local p="$HOME/Library/Logs/Wizards Of The Coast/MTGA"
+  grep -hE 'Match to .*MatchGameRoomStateChangedEvent|"finalMatchResult"|==> EventSetDeckV3' \
+      "$HOME/mtga-logs/arena.log" "$p"/Player*.log 2>/dev/null \
+    | sed -E 's/\\"(MainDeck|Sideboard)\\":\[[^]]*\]/\\"\1\\":[]/g' \
+    | pbcopy
+  echo "copied $(pbpaste | wc -l | tr -d ' ') lines to the clipboard"
+}
+```
+
+`mtga-matches` then puts a pasteable export on the clipboard. It reads the rolling
+archive first and the live `Player.log` second, so it covers history Arena has already
+overwritten.
+
+**NEVER pipe either form through `sort`/`sort -u`.** `resolve_matches` walks the log IN
+ORDER and pairs each result with the most recent `Match to <userId>` header — the only
+place your seat appears — so sorting silently mis-attributes every W/L. Duplicate lines
+are harmless: the parser dedups by matchId.
 
 ```
 # macOS
@@ -170,6 +204,88 @@ Report the plan to the user and let them choose. Renaming is editorial: when the
 was first reconciled (2026-08-14, 12 decks) `Stampede Engine` → `Stampede` and
 `Jeskai Tempest` → `Tempest` each dropped a word that was doing work, and only the owner
 knows whether Arena's name or the repo's is the one they meant.
+
+## Stage 1b — Hand-entered matches (`--add`)
+
+**The log cannot see four things that matter, and one whole platform.** Arena records the
+deck you submitted and the raw outcome; it records nothing about the opponent's
+archetype, whether you were on the play, or why you lost. And a **phone game never
+reaches the desktop `Player.log` at all** — that log is written by the install that
+played the match, so a couch session on iOS is invisible to Stage 1 no matter how you
+extract it. `--add` is the path for both.
+
+One match per line, `<deck> <W|L|D>` plus optional `key=value`:
+
+```
+49 W opp="Mono Red" play=play
+49 L opp=mono-red why=flood note="kept a greedy 3-lander"
+19 L opp=azorius-control why=slow play=draw
+```
+
+```
+python3 scripts/parse_matches.py <file> --add            # dry run — always first
+python3 scripts/parse_matches.py <file> --add --apply    # append
+make log-match DECK=49 R=L OPP=mono-red WHY=flood        # one match, same dry-run rule
+make log-match DECK=49 R=W APPLY=1
+```
+
+Keys: `opp`, `why`, `play` (play/draw), `event`, `date`, `note`. The loss vocabulary is
+`flood screw slow answer removed keep misplay outclassed` — **closed so it can be
+COUNTED**, since free text cannot answer "which decks flood out", which is the reason to
+record it at all.
+
+**Three validation rules, and their asymmetry is deliberate.** An unknown DECK id is a
+hard reject (it would show in `--report` as a deck no file backs). A `why` on a non-loss
+is refused (a loss reason on a win has no reading). An unknown `why` is warned about and
+**recorded anyway** — the vocabulary is a guess, and losing a real match to protect a list
+someone invented is the worse trade. Add a key to `LOSS_REASONS` when a warning recurs.
+
+**`--add` only appends, and cannot dedupe.** The log path is idempotent because Arena
+supplies a `matchId`; a hand row has none, so re-pasting lines already entered creates
+duplicates. That is why the dry run prints every row — it is the only guard, and it
+cannot distinguish a repeat from a genuine second game against the same deck that day.
+
+**From a phone: the dashboard's "Log a match" panel.** The published page is static and
+writes nothing — it queues matches in that browser's `localStorage` and hands back these
+exact lines to copy. Log during a session, copy the block afterwards, then `--add`. The
+queue survives a reload, which is the load-bearing part: without it, backgrounding the
+browser would discard an evening's matches.
+
+## Stage 1c — Annotate matches the log DID record (`--annotate`)
+
+Stage 1b is for matches Arena never saw. This is the other half: a match Arena *did*
+log already has a row with a real deck, result and date — what it lacks is the four
+things only you know. **Do not re-enter those through `--add`.** `--add` cannot dedupe
+(no Arena `matchId` on a hand row), so it would append a second row for a match already
+recorded — double-counting precisely the matches you cared enough to annotate.
+
+`--annotate` joins on the match id and UPDATES in place:
+
+```
+b48ecdfd-60a1-49a2-940b-96e673182aa5 opp="Mono Red" why=flood play=draw
+```
+
+```
+python3 scripts/parse_matches.py <file> --annotate            # dry run
+python3 scripts/parse_matches.py <file> --annotate --apply
+```
+
+Takes `opp`, `why`, `play`, `note` only. **`deck`, `result` and `date` are refused** —
+they come from the log, and accepting them here would be a second, silent way to state a
+result. An **unknown id is a hard reject**, not a no-op, so a truncated id cannot report
+success having changed nothing. An **empty value clears** the field, which is how you fix
+a wrong annotation without hand-editing the CSV. Re-running is idempotent.
+
+**Getting the ids without reading a log by hand: the dashboard.** Paste a `Player.log`
+block into the "…or annotate matches Arena already logged" box; the page lists every
+match it finds with date, deck, result and the opponent's avatar, gives each one the same
+four fields, and hands back these lines. It parses the block **only to label the rows for
+you** — every line it emits carries the match id and nothing else, so even a parsing error
+on that side cannot put a wrong W/L into `matches.csv`. (Cross-checked at build time on
+the 57-match sample: the page's seat read agreed with the parser's on all 57.)
+
+The normal order is: ingest the log (Stage 1) → annotate (here). Annotating first fails
+loudly, because the ids are not in `matches.csv` yet.
 
 ## Stage 2 — Report
 
