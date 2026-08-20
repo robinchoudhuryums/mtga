@@ -287,7 +287,6 @@ Plot {2}{R} (You may pay {2}{R} and exile this card from your hand. Cast it as a
 Aloe Alchemist,Creature — Plant Warlock,"Trample
 When this card becomes plotted, target creature gets +3/+2 and gains trample until end of turn.
 Plot {1}{G} (You may pay {1}{G} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)",G,Plant; Warlock; exile cast; pump; plot; tempo; cost-reduction; trample; evasion,OTJ,152,Uncommon,50,,4.0,seed
-Deepmuck Desperado,Creature — Homarid Mercenary,"Whenever you commit a crime, each opponent mills three cards. This ability triggers only once each turn. (Targeting opponents, anything they control, and/or cards in their graveyards is a crime.)",U,Homarid; Mercenary; graveyard; mill,OTJ,42,Uncommon,51a,"Deck 51a: mills 3 (7 with Crystal) whenever you commit a crime, once a turn - and nearly every counterspell and bounce spell in the deck is a crime.",5.8,hand
 Intrepid Stablemaster,Creature — Human Scout,"Reach
 {T}: Add {G}.
 {T}: Add two mana of any one color. Spend this mana only to cast Mount or Vehicle spells.",G,Human; Scout; mana; reach; defense,OTJ,169,Uncommon,50,,5.5,hand

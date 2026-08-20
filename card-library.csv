@@ -5037,3 +5037,43 @@ Whenever you discard a card, this Class deals 2 damage to each opponent.
 When this Class becomes level 3, search your library for a card, put it into your hand, shuffle, then discard a card at random.",R,Class; card draw; burn; noncombat damage,TMT,89,1
 "Captain Howler, Sea Scourge",Legendary Creature — Shark Pirate,"Ward—{2}, Pay 2 life.
 Whenever you discard one or more cards, target creature gets +2/+0 until end of turn for each card discarded this way. Whenever that creature deals combat damage to a player this turn, you draw a card.",U/R,Shark; Pirate; pay life; card draw; pump; ward; protection,DFT,194,1
+Gila Courser,Creature — Lizard Mount,"Whenever this creature attacks while saddled, exile the top card of your library. Until the end of your next turn, you may play that card.
+Saddle 1 (Tap any number of other creatures you control with total power 1 or more: This Mount becomes saddled until end of turn. Saddle only as a sorcery.)",R,Lizard; Mount; impulse; saddle; go-wide; combat,OTJ,124,1
+Take for a Ride,Sorcery,"Take for a Ride has flash as long as you've committed a crime this turn. (Targeting opponents, anything they control, and/or cards in their graveyards is a crime.)
+Gain control of target creature until end of turn. Untap that creature. It gains haste until end of turn.",R,graveyard; theft,OTJ,148,1
+Redrock Sentinel,Artifact Creature — Golem,"Defender
+{2}, {T}, Sacrifice a land: Draw a card and create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")",Colorless,Golem; card draw; sacrifice; tokens; treasure; defender; defense,OTJ,247,1
+Deepmuck Desperado,Creature — Homarid Mercenary,"Whenever you commit a crime, each opponent mills three cards. This ability triggers only once each turn. (Targeting opponents, anything they control, and/or cards in their graveyards is a crime.)",U,Homarid; Mercenary; graveyard; mill,OTJ,42,1
+Hollow Marauder,Creature — Specter Rogue,"This spell costs {1} less to cast for each creature card in your graveyard.
+Flying
+When this creature enters, any number of target opponents each discard a card. For each of those opponents who didn't discard a card with mana value 4 or greater, draw a card.",B,Specter; Rogue; graveyard; cost-reduction; card draw; etb; discard; flying; evasion,OTJ,90,1
+"Jem Lightfoote, Sky Explorer",Legendary Creature — Human Scout,"Flying, vigilance
+At the beginning of your end step, if you haven't cast a spell from your hand this turn, draw a card.",W/U,Human; Scout; card draw; flying; evasion; vigilance; combat,OTJ,209,1
+Reckless Lackey,Creature — Goblin Pirate,"First strike, haste
+{2}{R}, Sacrifice this creature: Draw a card and create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")",R,Goblin; Pirate; card draw; sacrifice; tokens; treasure; first strike; combat; haste; aggro,OTJ,140,1
+Steer Clear,Instant,Steer Clear deals 2 damage to target attacking or blocking creature. Steer Clear deals 4 damage to that creature instead if you controlled a Mount as you cast this spell.,W,burn,OTJ,31,1
+"Thranduil, Sindarin Liege",Legendary Creature — Elf Noble // Sorcery — Adventure,"Other Elves you control get +1/+1.
+Landfall — Whenever a land you control enters, create a 1/1 green Elf creature token. // Mill four cards, then put up to two land cards from among them into your hand. (Then exile this card. You may cast the creature later from exile.)",U/G,Elf; Noble; Adventure; Elve; mill; exile cast; tokens; landfall; pump; graveyard; lands; ramp,HOB,166,1
+Whirlwing Stormbrood,Creature — Dragon // Sorcery — Omen,"Flash
+Flying
+You may cast sorcery spells and Dragon spells as though they had flash. // Put three +1/+1 counters on target creature you control. (Then shuffle this card into its owner's library.)",U/G,Dragon; Omen; counters; flying; evasion; flash; tempo,TDM,234,1
+Thranduil's Decree,Instant,"Counter target spell. If a permanent spell is countered this way, exile it instead of putting it into its owner's graveyard. You may cast that card without paying its mana cost for as long as it remains exiled.",U,counterspell; graveyard,HOB,56,1
+Kishla Trawlers,Creature — Human Citizen,"When this creature enters, you may exile a creature card from your graveyard. When you do, return target instant or sorcery card from your graveyard to your hand.",U,Human; Citizen; graveyard; etb,TDM,50,1
+Surgical Suite,Enchantment — Room // Enchantment — Room,"When you unlock this door, return target creature card with mana value 3 or less from your graveyard to the battlefield.
+(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.) // Whenever you attack, put a +1/+1 counter on target attacking creature.
+(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",W,Room; counters; reanimator; graveyard,DSK,34,1
+Kíli the Resourceful,Legendary Creature — Dwarf Scout,"Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.)
+As long as you have an enduring story, you may pay {0} rather than pay the equip cost of the first equip ability you activate each turn.
+Whenever another Dwarf or Equipment you control enters, draw a card. This ability triggers only once each turn.",W,Dwarf; Scout; card draw; equipment,HOB,17,1
+Overlord of the Mistmoors,Enchantment Creature — Avatar Horror,"Impending 4—{2}{W}{W} (If you cast this spell for its impending cost, it enters with four time counters and isn't a creature until the last is removed. At the beginning of your end step, remove a time counter from it.)
+Whenever this permanent enters or attacks, create two 2/1 white Insect creature tokens with flying.",W,Avatar; Horror; tokens; impending; tempo; cost-reduction,DSK,23,1
+Hardlight Containment,Enchantment — Aura,"Enchant artifact you control
+When this Aura enters, exile target creature an opponent controls until this Aura leaves the battlefield.
+Enchanted permanent has ward {1}.",W,Aura; removal; etb; aura; enchant,EOE,20,1
+Canyon Vaulter,Creature — Kor Pilot,"Whenever this creature saddles a Mount or crews a Vehicle during your main phase, that Mount or Vehicle gains flying until end of turn.",W,Kor; Pilot,DFT,8,1
+Travel the Overworld,Sorcery,"Affinity for Towns (This spell costs {1} less to cast for each Town you control.)
+Draw four cards.",U,cost-reduction; card draw; affinity; artifacts,FIN,82,1
+Cantankerous Keepers,Creature — Elf Soldier,"Affinity for Elves (This spell costs {1} less to cast for each Elf you control.)
+When this creature enters, mill four cards, then put all Elf cards from among them into your hand.",G,Elf; Soldier; mill; cost-reduction; etb; affinity; artifacts; graveyard,HOB,122,1
+Last Light of Durin's Day,Enchantment,"Whenever a Mountain you control enters, put a quest counter on this enchantment. If it has six or more quest counters on it, sacrifice it. If you do, search your hand and/or library for a Dragon card and put it onto the battlefield. If you search your library this way, shuffle.
+Mountaincycling {2} ({2}, Discard this card: Search your library for a Mountain card, reveal it, put it into your hand, then shuffle.)",R,counters; sacrifice; mountaincycling; card draw; lands; landcycling; typecycling; cycling,HOB,103,1

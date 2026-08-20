@@ -2356,6 +2356,33 @@ Simulacrum Synthesizer,{2}{U},3,Scry
 Jailbreak Scheme,{U},1,Spree
 Double Down,{3}{U},4,
 Hobbit Hole,,0,
+Explosive Derailment,{R},1,Spree
+Great Train Heist,{R},1,Treasure;Spree
+Krang & Shredder,{4}{U/B}{U/B},6,Disappear
+Nexus of Becoming,{6},6,
+Racers' Scoreboard,{4},4,Max speed;Start your engines!
+Cool but Rude,{1}{R},2,
+"Captain Howler, Sea Scourge",{2}{U}{R},4,Ward
+Gila Courser,{2}{R},3,Saddle
+Take for a Ride,{2}{R},3,
+Redrock Sentinel,{3},3,Treasure;Defender
+Deepmuck Desperado,{2}{U},3,Mill
+Hollow Marauder,{6}{B},7,Flying
+"Jem Lightfoote, Sky Explorer",{2}{W}{U},4,Flying;Vigilance
+Reckless Lackey,{R},1,First strike;Treasure;Haste
+Steer Clear,{W},1,
+"Thranduil, Sindarin Liege",{2}{G/U}{G/U} // {1}{G/U}{G/U},4,Mill;Landfall
+Whirlwing Stormbrood,{4}{U} // {2}{G},5,Flying;Flash
+Thranduil's Decree,{4}{U}{U},6,
+Kishla Trawlers,{2}{U},3,
+Surgical Suite,{1}{W} // {3}{W},6,
+Kíli the Resourceful,{1}{W},2,
+Overlord of the Mistmoors,{5}{W}{W},7,Impending
+Hardlight Containment,{W},1,Enchant
+Canyon Vaulter,{1}{W},2,
+Travel the Overworld,{5}{U}{U},7,Affinity
+Cantankerous Keepers,{5}{G},6,Affinity;Mill
+Last Light of Durin's Day,{1}{R},2,Mountaincycling;Landcycling;Typecycling;Cycling
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -3032,7 +3059,6 @@ Vaultborn Tyrant,{5}{G}{G},7,Trample
 "Loot, the Key to Everything",{G}{U}{R},3,Ward
 Lost Jitte,{1},1,Equip
 Lotus Ring,{3},3,Indestructible;Equip
-Nexus of Becoming,{6},6,
 Sword of Wealth and Power,{3},3,Treasure;Equip
 Torpor Orb,{2},2,
 Transmutation Font,{5},5,Food
@@ -3550,7 +3576,6 @@ Air Response Unit,{2}{W},3,Flying;Vigilance;Crew
 Brightfield Glider,{W},1,Saddle;Vigilance
 Brightfield Mustang,{3}{W},4,Saddle
 Broadcast Rambler,{4}{W},5,Crew
-Canyon Vaulter,{1}{W},2,
 Detention Chariot,{4}{W}{W},6,Crew;Cycling
 Gallant Strike,{1}{W},2,Cycling
 Gloryheath Lynx,{1}{W},2,Lifelink;Saddle
@@ -3654,7 +3679,6 @@ Boom Scholar,{1}{R}{G},3,Exhaust
 Boosted Sloop,{1}{U}{R},3,Crew;Menace
 Broadside Barrage,{1}{U}{R},3,
 Broodheart Engine,{B}{G},2,Surveil
-"Captain Howler, Sea Scourge",{2}{U}{R},4,Ward
 Cloudspire Coordinator,{R}{W},2,Scry
 Cloudspire Skycycle,{2}{R}{W},4,Flying;Crew
 Debris Beetle,{2}{B}{G},4,Crew;Trample
@@ -3681,7 +3705,6 @@ Aetherjacket,{3},3,Flying;Vigilance
 Camera Launcher,{3},3,Exhaust
 Marketback Walker,{X}{X},0,
 Marshals' Pathcruiser,{3},3,Crew;Exhaust
-Racers' Scoreboard,{4},4,Max speed;Start your engines!
 Skybox Ferry,{5},5,Flying;Crew;Cycling
 Starting Column,{3},3,Max speed;Start your engines!
 Ticket Tortoise,{2},2,Treasure;Defender
@@ -4209,7 +4232,6 @@ Leyline of Hope,{2}{W}{W},4,
 Lionheart Glimmer,{3}{W}{W},5,Ward
 Optimistic Scavenger,{W},1,Eerie
 Orphans of the Wheat,{1}{W},2,
-Overlord of the Mistmoors,{5}{W}{W},7,Impending
 Patched Plaything,{2}{W},3,Double strike
 Possessed Goat,{W},1,
 Reluctant Role Model,{1}{W},2,Lifelink;Survival
@@ -4856,7 +4878,6 @@ Dockworker Drone,{1}{W},2,
 Emergency Eject,{2}{W},3,
 Exosuit Savior,{2}{W},3,Flying
 Flight-Deck Coordinator,{2}{W},3,
-Hardlight Containment,{W},1,Enchant
 Honor,{W},1,
 Lightstall Inquisitor,{W},1,Vigilance
 Lumen-Class Frigate,{1}{W},2,Station
@@ -5330,7 +5351,6 @@ Stolen Uniform,{U},1,
 Stuck in Summoner's Sanctum,{2}{U},3,Enchant;Flash
 Swallowed by Leviathan,{2}{U},3,Surveil
 Thief's Knife,{2}{U},3,Job select;Equip
-Travel the Overworld,{5}{U}{U},7,Affinity
 Valkyrie Aerial Unit,{5}{U}{U},7,Flying;Surveil;Affinity
 The Water Crystal,{2}{U}{U},4,Mill
 "Cecil, Dark Knight // Cecil, Redeemed Paladin",{B},1,Lifelink;Protect;Transform;Darkness;Deathtouch
@@ -6020,7 +6040,6 @@ Dwarven Provisioner,{1}{W},2,
 Esgaroth Garrison,{4}{W},5,
 Fíli the Pathfinder,{3}{W},4,
 Iron Hills Blacksmith,{1}{W},2,Double strike
-Kíli the Resourceful,{1}{W},2,
 Lake-town Lookout,{W},1,
 Lake-town Toymaker,{3}{W},4,
 Settle the Wreckage,{2}{W}{W},4,
@@ -6038,7 +6057,6 @@ Most Decrepit Old Bird // Speak Secrets,{U} // {1}{U},1,Flying;Threshold;Mill
 Ravenhill Flock,{3}{U},4,Flying
 Riddles in the Dark,{2}{U},3,
 Sound the Trumpets,{1}{U}{U},3,
-Thranduil's Decree,{4}{U}{U},6,
 Uneasy Partings,{3}{U},4,
 Wizard's Staff,{1}{U},2,Equip
 Desolation Prowler,{1}{B},2,
@@ -6068,7 +6086,6 @@ Desolation of Smaug,{2}{R}{R},4,
 Getaway Barrel,{3}{R},4,
 Glóin the Mighty // Easy Pickings,{3}{R} // {2}{R},4,
 Gundabad Opportunist,{3}{R},4,
-Last Light of Durin's Day,{1}{R},2,Mountaincycling;Landcycling;Typecycling;Cycling
 Óin the Brave,{1}{R},2,
 Ragged Short Spear,{1}{R},2,Equip
 "Smaug, the Great Calamity // Spew Flame",{5}{R}{R} // {4}{R},7,Flying
@@ -6077,7 +6094,6 @@ Snowslope Hunter,{2}{R},3,
 Stone-Giant of High Pass,{5}{R}{R},7,
 Tidings of War,{R},1,Amass;Flashback
 "Beorn, Reluctant Host // Till and Tend",{4}{G} // {1}{G},5,Trample
-Cantankerous Keepers,{5}{G},6,Affinity;Mill
 Gigantic Big Bear,{5}{G}{G},7,Hexproof;Haste
 Guardian of the Halls,{1}{G},2,Trample
 Little Bear,{2}{G},3,Flash
@@ -11465,13 +11481,11 @@ Outlaw Medic,{1}{W},2,Lifelink
 Prairie Dog,{1}{W},2,Lifelink
 Prosperity Tycoon,{3}{W},4,
 Shepherd of the Clouds,{4}{W},5,Flying;Vigilance
-Steer Clear,{W},1,
 Thunder Lasso,{2}{W},3,Equip
 Trained Arynx,{1}{W},2,Saddle;Scry
 Wanted Griffin,{3}{W},4,Flying
 Canyon Crab,{1}{U},2,
 Daring Thunder-Thief,{3}{U},4,Flash
-Deepmuck Desperado,{2}{U},3,Mill
 Duelist of the Mind,{1}{U},2,Flying;Vigilance
 Emergent Haunting,{1}{U},2,Surveil
 "Fblthp, Lost on the Range",{1}{U}{U},3,Plot;Ward
@@ -11499,7 +11513,6 @@ Corrupted Conviction,{B},1,
 Desert's Due,{1}{B},2,
 Forsaken Miner,{B},1,
 "Gisa, the Hellraiser",{3}{B}{B},5,Ward
-Hollow Marauder,{6}{B},7,Flying
 Insatiable Avarice,{B},1,Spree
 "Kaervek, the Punisher",{1}{B}{B},3,
 Neutralize the Guards,{2}{B},3,Surveil
@@ -11521,22 +11534,17 @@ Brimstone Roundup,{1}{R},2,Plot
 "Calamity, Galloping Inferno",{4}{R}{R},6,Saddle;Haste
 Caught in the Crossfire,{R}{R},2,Spree
 Cunning Coyote,{1}{R},2,Plot;Haste
-Explosive Derailment,{R},1,Spree
-Gila Courser,{2}{R},3,Saddle
-Great Train Heist,{R},1,Treasure;Spree
 Hellspur Brute,{4}{R},5,Affinity;Trample
 Hellspur Posse Boss,{2}{R}{R},4,
 Irascible Wolverine,{2}{R},3,Plot
 Mine Raider,{2}{R},3,Treasure;Trample
 Quick Draw,{R},1,
 Quilled Charger,{3}{R},4,Saddle
-Reckless Lackey,{R},1,First strike;Treasure;Haste
 Resilient Roadrunner,{1}{R},2,Protection;Haste
 Rodeo Pyromancers,{3}{R},4,
 Scorching Shot,{R}{R},2,
 Slickshot Show-Off,{1}{R},2,Flying;Plot;Haste
 Stingerback Terror,{2}{R}{R},4,Flying;Plot;Trample
-Take for a Ride,{2}{R},3,
 Terror of the Peaks,{3}{R}{R},5,Flying
 Trick Shot,{4}{R},5,
 Aloe Alchemist,{1}{G},2,Plot;Trample
@@ -11579,7 +11587,6 @@ At Knifepoint,{1}{B}{R},3,
 Form a Posse,{X}{R}{W},2,
 "Ghired, Mirror of the Wilds",{R}{G}{W},3,Haste
 Honest Rutstein,{1}{B}{G},3,
-"Jem Lightfoote, Sky Explorer",{2}{W}{U},4,Flying;Vigilance
 "Jolene, Plundering Pugilist",{1}{R}{G},3,Treasure
 "Kambal, Profiteering Mayor",{1}{W}{B},3,
 Kellan Joins Up,{G}{W}{U},3,Plot
@@ -11606,7 +11613,6 @@ Gold Pan,{2},2,Treasure;Equip
 Lavaspur Boots,{1},1,Equip
 Luxurious Locomotive,{5},5,Treasure;Crew
 Mobile Homestead,{2},2,Crew
-Redrock Sentinel,{3},3,Treasure;Defender
 Silver Deputy,{2},2,
 Sterling Hound,{3},3,Surveil
 Arid Archway,,0,Surveil
@@ -13574,7 +13580,6 @@ Dragonstorm Forecaster,{U},1,
 Focus the Mind,{4}{U},5,
 Highspire Bell-Ringer,{2}{U},3,Flying
 Iceridge Serpent,{4}{U},5,
-Kishla Trawlers,{2}{U},3,
 Marang River Regent // Coil and Catch,{4}{U}{U} // {3}{U},6,Flying
 Naga Fleshcrafter,{3}{U},4,Renew
 Riverwalk Technique,{3}{U},4,
@@ -14235,7 +14240,6 @@ Foot Mystic,{3}{B},4,Disappear;Lifelink
 Splinter's Technique,{3}{B},4,Sneak
 Squirrelanoids,{B},1,Deathtouch
 "Casey Jones, Vigilante",{1}{R}{R},3,
-Cool but Rude,{1}{R},2,
 Mouser Attack!,{1}{R},2,
 Raphael's Technique,{4}{R}{R},6,Sneak
 Ravenous Robots,{1}{R},2,
@@ -14247,7 +14251,6 @@ Transdimensional Bovine,{2}{G},3,Flying
 Turtle Power!,{2}{G},3,Flash
 Bebop & Rocksteady,{1}{B/G}{B/G},3,
 "Don & Raph, Hard Science",{1}{U/R}{U/R},3,Menace
-Krang & Shredder,{4}{U/B}{U/B},6,Disappear
 Lessons from Life,{2}{G}{U},4,
 "Mikey & Don, Party Planners",{2}{G/U}{G/U},4,Ward
 "Raph & Mikey, Troublemakers",{5}{R/G}{R/G},7,Haste;Trample
