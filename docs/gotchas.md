@@ -3064,6 +3064,31 @@ Weight. If a pool-scoped radar is ever built, build it on disagreement, not on z
 The pool-blank residual stands at **380** and is still the long tail the rule describes
 (Oust, Exploration, Wish). A new theme for four cards is still not the fix.
 
+### It is a STANDING GATE now, not a measurement someone ran once (2026-08-19)
+
+The comparison above was run by hand to find Dead Weight. `check_roles.py --tags` makes it
+permanent: a pool-scoped sweep for cards the tagger calls `removal` from their TEXT while
+`classify_roles` scores no interaction role, baselined at 143, folded into `check_all` as
+a soft warning, with `--update-tag-baseline`, `--max-new` and the G-69 delta report.
+
+**Two design choices are the whole reason it is readable.**
+
+First, it is scoped by CONSTRUCTION rather than by an allowlist. It reads the tagger's own
+`MECHANIC_RULES` predicates live — never a copy, because comparing a model against a stale
+imitation of itself is precisely the drift this sweep exists to detect — and the KEYWORD
+path is excluded because `deathtouch`/`fight` map to `removal` through `KEYWORD_THEMES`,
+a different table this never touches. That exclusion is **250 of the 388** raw
+disagreements; an allowlist would have had to enumerate them and would have rotted.
+
+Second, it asks the NARROW question. The obvious design — a pool-scoped zero-role radar,
+which is what the broad scan originally proposed — was measured and rejected:
+`check_roles._roster_cards` already refuses pool scope in its docstring, and the numbers
+back it. **5,368 nonland pool cards score no role, 33% of the pool.** The disagreement set
+is 143. Build a radar on disagreement, not on zero.
+
+Watched failing at introduction: removing the pattern that fixed BS6-10 brings back 16
+disagreements, Dead Weight among them.
+
 ## [K-10] `tag_synergies.py` also text-tags MECHANICAL-SYNERGY payoffs the keyword map missed (tagging-mis
 
 **`tag_synergies.py` also text-tags MECHANICAL-SYNERGY payoffs the keyword map missed
@@ -4080,6 +4105,75 @@ deliberately with a K-14 diff, not slipped in as a pattern fix.
 
 Nine tests pin the behaviour, every fixture verbatim from the card.
 
+### The neutralization bucket, closed 2026-08-19 — and the line that closes it
+
+The BS6-10 pair above fixed two ways of writing "destroy". This is the THIRD way Magic
+answers a creature, and it was the standing TAXONOMY residual this rule carried for a
+cycle: you can kill it, exile it, or **turn it off**, and `_ROLE_PATTERNS` read only the
+first two — while `enchanted creature can't attack or block` (Pacifism) had been sitting
+in the Removal bucket the entire time. The repo had already decided a neutralizing effect
+IS spot removal. Only half the templatings were ever written.
+
+| templating | example | closed |
+|---|---|---|
+| tap-down, permanent | Waterknot, Capture Sphere, Dungeon Geists, Tidebinder Mage | 37 |
+| ability-strip, Aura | Frogify, Kasmina's Transmutation, Witness Protection | 19 |
+| ability-strip, targeted | Oko, Patriar's Humiliation, Resolute Rejection | 6 |
+| ability-strip, anaphor | The Wondrous Wasp | 1 |
+
+**THE LINE IS PERMANENCE, and it is the durable part of this entry.** A one-turn effect
+is TEMPO, not an answer, so `doesn't untap during its controller's NEXT untap step` (Frost
+Lynx, White Dragon — 35 cards) and `loses all abilities UNTIL end of turn / until your
+next turn` (Merfolk Trickster, Azure Beastbinder) are excluded. That is the conservative
+direction: a tempo card read as removal inflates the axis the tier floor grades on, which
+is the BS2-06 failure this rule already records.
+
+Two guards carry the same weight as the patterns:
+
+- **`its controller's`.** The identical clause is a DRAWBACK on your own card — "Colossus
+  of Sardia doesn't untap during YOUR untap step" — and 11 pool cards ride on that one
+  word. Without it a vanilla drawback reads as removal.
+- **`except `.** Town-Razer Tyrant's "loses all abilities EXCEPT mana abilities" punishes
+  a land; it does not answer a threat.
+
+The fourth pattern matches exactly ONE card, which is normally a smell. It earns its place
+by closing an INCONSISTENCY rather than adding coverage: The Wondrous Wasp strips "for as
+long as this remains on the battlefield" and Ty Lee, Chi Blocker does the identical thing
+one clause over and was already counted by the tap-down pattern. Two cards with one effect
+shape were landing on opposite sides of the line.
+
+### The measured result, and where the value actually landed
+
+K-14 over 113 decks: **6 decks moved interaction, ZERO tier floors moved, ZERO letters to
+re-grade** — deck 15 by 2, decks 16/27/32/38a/38 by 1, exactly the six the audit predicted.
+Deck 38 moved 3 → 4, off the B floor it had been sitting exactly on. All six `#: tier:`
+rationales audited clean afterwards. `role_baseline.txt` lost two entries the fix un-zeroed
+(Frozen in Ice, The Wondrous Wasp), surfaced by the baseline's own stale-entry sweep.
+
+**The payoff is upstream, in what the recommender can see, and that is the general lesson.**
+Blue's removal is largely neutralization, so it was invisible to the one command that
+exists to fix an interaction deficit: `deck.py suggest 47 --interaction` now surfaces Sleep
+Magic, Charmed Sleep and Witness Protection — and the last of those is already OWNED. A
+whitelist hole on an axis costs you the recommendation long before it costs you a grade.
+
+### THE NEW RESIDUAL, and why the permanence rule does NOT transfer to it
+
+`target creature gets -N/-N` is covered (120 cards). `target creature gets **+N/-N**` is
+not: **5 pool cards** — Nameless Inversion, Auger Spree, Lash of Malice, Flowstone
+Infusion, Desperate Measures — score no interaction role at all.
+
+Do not fix this by extending the permanence rule, because the rule inverts here. A
+toughness reduction that lasts "until end of turn" still KILLS, and a dead creature does
+not come back at cleanup — so unlike an ability-strip, the temporary version does
+permanent work. `Auger Spree` is a removal spell in a way `Merfolk Trickster` is not,
+despite both saying "until end of turn". Any pattern for this family has to be written
+against LETHALITY, not duration.
+
+All five are already sitting in `tag_role_baseline.txt` — the tagger's `gets [+-]?N/-N`
+rule catches them, the classifier does not, so the disagreement sweep is carrying them as
+a worklist entry rather than losing them. That is the sweep doing its job on the first
+hole discovered after it was built.
+
 ## [G-68] A `#:` header that lists card names goes stale, and nothing checked one
 
 Two deck headers are a semicolon-separated list of CARD NAMES rather than prose:
@@ -4296,6 +4390,37 @@ write, runs the real `cmd_*`, and asserts the shared table came back unchanged) 
 by a second source scan — because a source scan is precisely what failed. All four pins
 fail with `assert not True` against the unfixed module.
 
+
+### The scan's SCOPE was the bug (BS6-01, closed 2026-08-19)
+
+Guard (4) exists because every G-63 index bug so far was a loader nobody had listed. It
+still missed four at once, and the reason was not the registry — it was the SCAN. It
+looked for `csv.DictReader` plus a `card-pool.csv` cue, and every OWNERSHIP index reads
+**card-library.csv**, through `lib.load_rows`. So all four sat outside a scan written to
+find exactly the bug they had, while the gate reported OK.
+
+A gate whose scope excludes the file the bug lives in is not a narrow gate, it is an
+absent one. The cue sets now cover both files and both readers.
+
+**Widening it needed two second-order fixes to stay honest, and both are reusable.**
+
+- **A tuple-key discriminator.** The first widened run reported 8 unregistered builders,
+  3 of them printing indexes keyed by `(name, set, collector)` — `app.save`,
+  `validate.validate`, `import_arena.merge`. A front-face alias is meaningless for a
+  printing key: that identifies one physical printing, which is INV-01's business, not
+  G-63's. `_tuple_bound_names` rejects tuple keys, literal or via a tuple-bound local. A
+  scan with a 3-in-8 false-positive rate is a scan that stops being read.
+- **A second PROBE.** The behavioural check is `full in idx and front not in idx`, and the
+  probe was the pool's first DFC — "Life // Death", which is not in the collection at all.
+  So `full in idx` was False for every library-shaped loader and all four passed
+  **VACUOUSLY**: registered, green, never exercised. There is now a LIBRARY probe as well,
+  and a loud "alias NOT exercised" line when neither probe reaches a registered loader,
+  because silence was the entire failure.
+
+It found a live bug within minutes of being widened, which is the argument for it:
+`verify_ingest.library_index` was the FOURTH library-side ownership index and was still
+unaliased — the other three had been fixed by hand — so a paste naming a Room card by its
+FRONT face verified as ABSENT, from the tool whose only job is confirming an ingest landed.
 
 ## [G-72] A control built in JavaScript is a control only if it goes through a11y()
 

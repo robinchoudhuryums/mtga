@@ -292,7 +292,7 @@ Ingest & Enrich: scripts/import_arena.py, scripts/import_collection.py (authorit
 
 ## [C-05] Subsystem: Analysis
 
-Analysis: scripts/deck.py, scripts/query.py, scripts/card.py, scripts/pool.py, scripts/wishlist.py, scripts/validate.py, scripts/check_all.py, scripts/check_rankings.py, scripts/check_keywords.py, scripts/check_colors.py, scripts/check_dfc.py, scripts/check_suggest.py, scripts/check_engines.py, scripts/check_tier.py, scripts/check_themes.py, scripts/check_patterns.py, scripts/check_commands.py, scripts/check_agreement.py, scripts/check_docs.py, scripts/keyword_baseline.txt (acknowledged-but-unindexed mechanics, read by check_keywords.py), scripts/check_roles.py, scripts/role_baseline.txt (acknowledged zero-role cards, read by check_roles.py — see G-67)
+Analysis: scripts/deck.py, scripts/query.py, scripts/card.py, scripts/pool.py, scripts/wishlist.py, scripts/validate.py, scripts/check_all.py, scripts/check_rankings.py, scripts/check_keywords.py, scripts/check_colors.py, scripts/check_dfc.py, scripts/check_suggest.py, scripts/check_engines.py, scripts/check_tier.py, scripts/check_themes.py, scripts/check_patterns.py, scripts/check_commands.py, scripts/check_agreement.py, scripts/check_docs.py, scripts/keyword_baseline.txt (acknowledged-but-unindexed mechanics, read by check_keywords.py), scripts/check_roles.py, scripts/role_baseline.txt (acknowledged zero-role cards, read by check_roles.py — see G-67), scripts/tag_role_baseline.txt (acknowledged tagger-vs-classifier disagreements, read by `check_roles.py --tags` — the POOL-scoped half, which is the one that can see a whitelist hole in a card you do not own; see K-09/G-67)
 
 
 ## [C-06] Subsystem: Presentation

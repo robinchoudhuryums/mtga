@@ -750,10 +750,10 @@ directions.
   RESPONSES and so invisible to the pool-reading scan) — key every name JOIN, a writer's
   too, on `_ms_key`, and read a `#:` header's card names through
   `deck._header_card_keys`.** Gated by `check_dfc`'s registry, its AST scan for name-index
-  BUILDERS and its editor-payload scan — **but that scan is POOL-scoped, so every
-  card-library.csv index is outside it, which is how BS6-01 hid.** The header consumers closed
-  on a "zero live instances" count deck 66 invalidated four days later — **a fact about a
-  moment, not a property of the code.** [G-63]
+  BUILDERS and its editor-payload scan. That scan was POOL-scoped — hiding FOUR
+  library-side indexes from a gate built for its own bug class (BS6-01) — and now covers
+  both files; **a gate whose scope excludes the file the bug lives in is absent, not
+  narrow.** It also needs a probe the index can HOLD: a pool-only probe passed VACUOUSLY. [G-63]
 
 - **A reanimator's uncastable bombs need `#: uncastable-ok:`, and everything else's do
   not.** The castability lint and `tier_band` both model "you cannot cast this" as a build
@@ -786,16 +786,16 @@ directions.
   matches PHRASINGS, and Magic templates one effect several ways — so a card worded a way no
   pattern anticipates scores ZERO roles, and the tier floor, `cuts`, the quality guard and
   `check_all` inherit that as fact. Never an error; the DEFAULT failure is a silent
-  UNDER-count — but a too-broad pattern OVER-counts just as silently (BS2-06). Fifteen holes
-  in 2026-08. **`check_roles.py`+`role_baseline.txt` make the population visible** (soft,
-  baselined) — a DELTA, not a target — **but it is ROSTER-scoped while the
-  recommender's candidate set is the POOL**, so sweeping all 16k rows found two more, both on
-  the GRADED interaction axis (29 removal cards, incl. the Aura whose non-Aura twin was
-  already covered on 120 — BS6-10). Prefer ADDITIVE patterns to a widening; measure the false
-  positives first. **The live residual is TAXONOMY, not phrasings**: 124 pool cards
-  neutralize rather than destroy (83 tap-down, 41 `loses all abilities`), six decks
-  under-count today, and deck 38 sits at interaction 3 — exactly the B floor. Write fixtures
-  from the CARD'S REAL TEXT; check for a TEST DOUBLE encoding the old behaviour. [G-67]
+  UNDER-count — but a too-broad pattern OVER-counts just as silently (BS2-06). Nineteen holes
+  closed in 2026-08, the last four being NEUTRALIZATION — you answer a creature by killing,
+  exiling or TURNING IT OFF, and only the first two were written. **The line there is
+  PERMANENCE**: a one-turn effect is tempo, not an answer. **`check_roles.py` makes the
+  population visible** — `role_baseline.txt` for zero-role ROSTER cards, and (BS6-10)
+  `--tags` for POOL cards the tagger and the classifier disagree about, which is the sweep
+  that catches a hole in an UNOWNED card, i.e. the recommender's candidate set. Read both as
+  a DELTA. **Live residual: `target creature gets +N/-N`** (5 cards) — and do NOT fix it with
+  the permanence rule, which inverts here: a `-4/-4 until end of turn` still KILLS. Write
+  fixtures from the CARD'S REAL TEXT; check for a TEST DOUBLE encoding the old behaviour. [G-67]
 
 - **A `#:` HEADER THAT LISTS CARD NAMES GOES STALE, AND UNTIL 2026-08-07 NOTHING CHECKED
   ONE.** `#: protect:` and `#: uncastable-ok:` are read by the tooling as INSTRUCTIONS, so
@@ -939,9 +939,11 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   worse, because nothing is blank**: Dead Weight is tagged `removal` by the tagger and
   scored ZERO roles by the classifier, so it was a removal card to one model and roleless
   to the other — and it is the ROLE model that feeds `tier_band` (BS6-10). Comparing the
-  two is cheap: "tagged `removal`, no interaction role" returns 388 pool cards, of which 250
-  are deathtouch BODIES (a fair claim about a body, not about spot removal) — so **138 remain
-  to read**. A worklist, not a defect count. **Residual: 380 pool blanks —
+  two is cheap, and is a GATE now, not a one-off: `check_roles.py --tags` sweeps the pool
+  for it, baselined at 143 and soft in `check_all`. It reads the tagger's own
+  `MECHANIC_RULES` live (never a copy) and excludes the deathtouch KEYWORD path by
+  construction — 250 of the 388 raw hits, which an allowlist would have had to enumerate.
+  A worklist, not a defect count. **Residual: 380 pool blanks —
   a long tail of un-themeable effects, and a new theme for four cards is not the fix.** [K-09]
 - **After editing a tag pattern, regenerate BOTH derived tag stores** —
   `tag_synergies.py --merge` for the LIBRARY and **`build_pool.py --all` for the pool**,
@@ -1014,9 +1016,10 @@ exits non-zero on any hard invariant break. INV-01…04 plus **fourteen model-sa
 gates** (`check_rankings`, `check_colors`, `check_dfc`, `check_suggest`, `check_engines`,
 `check_tier`, `check_patterns`, `check_commands`, `check_agreement`, `check_docs`, and the
 soft `check_keywords` / `check_roles` / `check_themes` / rationale-and-flex sweeps) — plus
-FOUR further SOFT roster sweeps this list used to omit: wishlist target drift, the G-68
-card-name-header staleness pass, the tier-mismatch pass, and (2026-08-11) the `#~ note:`
-figure sweep. Two things to know
+SIX further SOFT roster sweeps this list used to omit: wishlist target drift, the G-68
+card-name-header staleness pass, the tier-mismatch pass, (2026-08-11) the `#~ note:`
+figure sweep, and (2026-08-19) the tag/role disagreement sweep (`check_roles --tags`) and
+the committed-dashboard freshness check. Two things to know
 before touching it: it imports `deck` as a MODULE and calls `cmd_*` directly, so it never
 builds an argparse tree — the CLI surface is covered by `tests/test_cli.py` and a CI smoke
 step — and the reference-table loaders are memoized, which is what makes a roster-wide
@@ -1046,7 +1049,8 @@ earned it: [C-01]
   scripts/sheets_sync.py, scripts/scryfall.py, scripts/lib.py [C-04]
 - Analysis: scripts/deck.py, scripts/query.py, scripts/card.py, scripts/pool.py,
   scripts/wishlist.py, scripts/validate.py, scripts/check_all.py + the thirteen
-  `check_*.py` gates, scripts/keyword_baseline.txt, scripts/role_baseline.txt [C-05]
+  `check_*.py` gates, scripts/keyword_baseline.txt, scripts/role_baseline.txt,
+  scripts/tag_role_baseline.txt [C-05]
 - Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json,
   scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml,
   scripts/app.py, templates/, Makefile [C-06]
