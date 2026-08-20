@@ -89,7 +89,11 @@ being read) and a LIBRARY probe, because the pool probe made every new registrat
 
 Also: the committed dashboard has a freshness contract now (BS6-04). It watches DATA and
 not code, deliberately — hashing deck.py wholesale is what made the pool read stale every
-cycle in BS4-37, and a signal that cries wolf is one you wave through.
+cycle in BS4-37, and a signal that cries wolf is one you wave through. It compares CONTENT
+HASHES stored in the page's own data island, **not mtime**: the first version compared
+mtimes against the `generated` stamp and so read every fresh clone as permanently stale,
+failing CI on its own PR. F-04's "content, not mtime" is not a rule about backups — it is
+a rule about mtime, and it was re-broken one directory over from where it is written down.
 
 **Found and deliberately NOT fixed:** Nameless Inversion scores zero roles — a
 toughness-reducing PUMP (`+N/-N`) is removal and the covered shape needs a leading minus.

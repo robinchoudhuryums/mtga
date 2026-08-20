@@ -256,25 +256,81 @@ class TestDashboardFreshnessFires:
     and skipping it is silent: the page keeps its old numbers and check_all stays green.
     INV-03 gives gallery.html a content contract; the dashboard had none."""
 
-    def test_quiet_when_the_page_is_current(self):
-        import build_dashboard
-        assert build_dashboard.dashboard_staleness() is None
+    def test_the_committed_page_carries_fingerprints(self):
+        """Non-vacuity, not freshness. `dashboard_staleness` returns None for a page
+        built before fingerprints existed, so a committed page missing the `sources`
+        key would silence the check permanently while every test still passed.
 
-    def test_it_fires_when_a_deck_file_is_newer(self, tmp_path, monkeypatch):
-        import glob
+        It deliberately does NOT assert the page is CURRENT: staleness is a SOFT
+        check_all warning by design (the deployed copy is rebuilt on push), and a
+        pytest hard-fail the moment someone edits a deck would contradict that — the
+        author would learn to skip the suite rather than run `make dashboard`."""
+        import json
+        import re
+        import build_dashboard
+        src = open(build_dashboard.OUT, encoding="utf-8").read()
+        m = re.search(r'<script id="data"[^>]*>(.*?)</script>', src, re.S)
+        assert m, "dashboard.html has no data island — INV-03's business, but fatal here too"
+        stored = json.loads(m.group(1)).get("sources")
+        assert isinstance(stored, dict) and stored, "no source fingerprints — check is inert"
+        assert any(k.endswith(".txt") for k in stored), "deck files are not fingerprinted"
+        assert all(k in stored for k in build_dashboard._SOURCES)
+
+    def test_it_fires_when_a_source_changes(self, tmp_path, monkeypatch):
+        """CONTENT, not mtime. The first version of this test touched a deck file's
+        mtime, which is what the first version of the CHECK read — and mtime is
+        invented by `git checkout`, so the check reported every fresh clone as
+        permanently stale and failed CI. Mutating bytes is the real trigger."""
+        import json
+        import build_dashboard
+        monkeypatch.setattr(build_dashboard, "REPO_ROOT", str(tmp_path))
+        (tmp_path / "decks" / "7-scratch").mkdir(parents=True)
+        deckf = tmp_path / "decks" / "7-scratch" / "deck.txt"
+        deckf.write_text("1 Island (FDN) 1\n", encoding="utf-8")
+        (tmp_path / "card-library.csv").write_text("Card Name\n", encoding="utf-8")
+
+        page = tmp_path / "dashboard.html"
+
+        def _write_page():
+            payload = json.dumps({"generated": "2026-01-01 00:00",
+                                  "sources": build_dashboard.source_fingerprints()})
+            page.write_text(f'<script id="data" type="application/json">{payload}</script>',
+                            encoding="utf-8")
+
+        _write_page()
+        assert build_dashboard.dashboard_staleness(str(page)) is None
+
+        # Same length, different bytes — so this cannot pass on a size comparison either.
+        deckf.write_text("1 Forest (FDN) 2\n", encoding="utf-8")
+        res = build_dashboard.dashboard_staleness(str(page))
+        assert res is not None
+        assert res[0] == 1 and res[1].endswith(".txt")
+
+        # And a NEW source file counts as a change, not just an edited one.
+        _write_page()
+        (tmp_path / "decks" / "8-scratch").mkdir()
+        (tmp_path / "decks" / "8-scratch" / "deck.txt").write_text("1 Swamp (FDN) 3\n",
+                                                                  encoding="utf-8")
+        assert build_dashboard.dashboard_staleness(str(page))[0] == 1
+
+    def test_mtime_alone_is_not_staleness(self, tmp_path, monkeypatch):
+        """The regression pin for the CI failure this class caused: rewriting a source
+        with IDENTICAL bytes moves its mtime and must stay quiet."""
+        import json
         import os
         import time
         import build_dashboard
-        target = glob.glob(os.path.join(build_dashboard.REPO_ROOT, "decks", "*", "*.txt"))[0]
-        st = os.stat(target)
-        try:
-            os.utime(target, (st.st_atime, time.time() + 7200))
-            res = build_dashboard.dashboard_staleness()
-            assert res is not None
-            assert res[0] > 0 and res[1].endswith(".txt")
-        finally:
-            os.utime(target, (st.st_atime, st.st_mtime))
-        assert build_dashboard.dashboard_staleness() is None
+        monkeypatch.setattr(build_dashboard, "REPO_ROOT", str(tmp_path))
+        (tmp_path / "decks" / "7-scratch").mkdir(parents=True)
+        deckf = tmp_path / "decks" / "7-scratch" / "deck.txt"
+        deckf.write_text("1 Island (FDN) 1\n", encoding="utf-8")
+        page = tmp_path / "dashboard.html"
+        payload = json.dumps({"generated": "2026-01-01 00:00",
+                              "sources": build_dashboard.source_fingerprints()})
+        page.write_text(f'<script id="data" type="application/json">{payload}</script>',
+                        encoding="utf-8")
+        os.utime(deckf, (time.time() + 7200, time.time() + 7200))
+        assert build_dashboard.dashboard_staleness(str(page)) is None
 
     def test_a_missing_or_unstamped_page_is_not_reported_as_stale(self, tmp_path):
         """Absence is not staleness — a missing page is INV-03's business for the

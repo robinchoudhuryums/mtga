@@ -32,22 +32,57 @@ import wishlist
 
 OUT = os.path.join(REPO_ROOT, "dashboard.html")
 
-# The files the dashboard is DERIVED from. If any is newer than the committed page, the
-# page describes a roster that no longer exists.
+# The files the dashboard is DERIVED from. If any has CHANGED since the page was
+# built, the page describes a roster that no longer exists.
 _SOURCES = ("card-library.csv", "card-mana.csv", "card-pool.csv", "card-wishlist.csv")
 
 
+def _source_files():
+    """Every file the dashboard is derived FROM, repo-relative, in a total order."""
+    out = [rel for rel in _SOURCES if os.path.exists(os.path.join(REPO_ROOT, rel))]
+    for root, _dirs, files in os.walk(os.path.join(REPO_ROOT, "decks")):
+        out += [os.path.relpath(os.path.join(root, f), REPO_ROOT)
+                for f in files if f.endswith(".txt")]
+    return sorted(out)
+
+
+def source_fingerprints():
+    """{repo-relative path: short content hash} over every dashboard input.
+
+    CONTENT, NOT MTIME — the F-04 rule, and this function exists because the FIRST
+    version of this check broke it. It compared `os.path.getmtime` of each source
+    against the page's `generated` stamp, which is right in a working tree and wrong
+    everywhere else: a fresh `git clone` (or a CI checkout) stamps every file with
+    checkout time, so the sources always read NEWER than the committed page and the
+    check reported a permanent, unfixable STALE. It failed CI on the very PR that
+    added it. mtime records when a file was WRITTEN, not what it CONTAINS — the same
+    trap `lib.latest_backup` documents one directory over, one layer up: there a
+    `.bak` inherits its SOURCE's mtime, here a checkout invents one.
+
+    A hash answers the question actually being asked ("did an input change?") and is
+    identical in a clone, in CI and on the machine that built the page. Hashing all
+    117 inputs measures at 15ms, which is why the whole-file read is affordable."""
+    import hashlib
+    out = {}
+    for rel in _source_files():
+        try:
+            with open(os.path.join(REPO_ROOT, rel), "rb") as fh:
+                out[rel] = hashlib.sha256(fh.read()).hexdigest()[:12]
+        except OSError:
+            continue
+    return out
+
+
 def dashboard_staleness(out=None):
-    """(stale_by_seconds, newest_source) if the committed dashboard predates its inputs,
-    else None. `None` also for "no dashboard yet" and "no readable stamp" — absence is
-    not staleness, and a missing page is INV-03's business for the gallery and nobody's
-    for this one.
+    """(n_changed, first_changed_source) if the committed dashboard's inputs have moved
+    since it was built, else None. `None` also for "no dashboard yet", "no readable data
+    island" and "a page built before fingerprints existed" — absence is not staleness,
+    and a missing page is INV-03's business for the gallery and nobody's for this one.
 
     WHY THIS EXISTS (BS6-04). `make postedit` rebuilds this page after every deck edit,
     and skipping it is silent: the committed page keeps its old numbers, `check_all`
     stays green, and the only symptom is a human reading a roster that moved. It was
-    three days and two cycles stale when the broad scan found it — by reading the
-    `generated` stamp out of the data island, which is what this does.
+    three days and two cycles stale when the broad scan found it.
 
     The DEPLOYED copy is not at risk: pages.yml rebuilds from committed data on every
     push to main. This guards the local snapshot, which is the one people open.
@@ -68,32 +103,14 @@ def dashboard_staleness(out=None):
         with open(path, encoding="utf-8") as fh:
             src = fh.read()
         m = _re.search(r'<script id="data"[^>]*>(.*?)</script>', src, _re.S)
-        built = json.loads(m.group(1))["generated"] if m else None
-        stamp = time.mktime(time.strptime(built, "%Y-%m-%d %H:%M")) if built else None
+        stored = json.loads(m.group(1)).get("sources") if m else None
     except (OSError, ValueError, KeyError, TypeError, json.JSONDecodeError):
         return None
-    if stamp is None:
+    if not isinstance(stored, dict) or not stored:
         return None
-    newest, newest_name = 0.0, None
-    for rel in _SOURCES:
-        p = os.path.join(REPO_ROOT, rel)
-        if os.path.exists(p) and os.path.getmtime(p) > newest:
-            newest, newest_name = os.path.getmtime(p), rel
-    decks_dir = os.path.join(REPO_ROOT, "decks")
-    for root, _dirs, files in os.walk(decks_dir):
-        for f in files:
-            if not f.endswith(".txt"):
-                continue
-            p = os.path.join(root, f)
-            try:
-                mt = os.path.getmtime(p)
-            except OSError:
-                continue
-            if mt > newest:
-                newest, newest_name = mt, os.path.relpath(p, REPO_ROOT)
-    # A minute of slack: the stamp has minute resolution, so a rebuild and the write that
-    # triggered it legitimately land in the same minute.
-    return (newest - stamp, newest_name) if newest - stamp > 60 else None
+    live = source_fingerprints()
+    changed = sorted(k for k in set(live) | set(stored) if live.get(k) != stored.get(k))
+    return (len(changed), changed[0]) if changed else None
 
 
 def _no_network():
@@ -383,6 +400,10 @@ def collect():
 
     return {
         "generated": time.strftime("%Y-%m-%d %H:%M"),
+        # Content hashes of every input, so `dashboard_staleness` can ask "did a
+        # source CHANGE" instead of "is a source newer" — a question a fresh clone
+        # can answer and mtime cannot. See `source_fingerprints`.
+        "sources": source_fingerprints(),
         "totals": {"printings": len(rows), "decks": len(decks), "buildable": buildable},
         "roster_plan": _capture(deckmod.cmd_wildcards, SimpleNamespace()),
         "decks": decks,

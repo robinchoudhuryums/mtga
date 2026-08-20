@@ -393,9 +393,10 @@ def main():
         import build_dashboard as bdash
         st = bdash.dashboard_staleness()
         if st:
-            hours, newest = st[0] / 3600.0, st[1]
-            soft.append(f"dashboard.html is STALE — built {hours:.0f}h before "
-                        f"{newest} changed. Its numbers describe an older roster; run "
+            n, newest = st
+            more = f" (+{n - 1} more)" if n > 1 else ""
+            soft.append(f"dashboard.html is STALE — {newest}{more} changed since it was "
+                        f"built. Its numbers describe an older roster; run "
                         f"`make dashboard` (or `make postedit`) to refresh the committed "
                         f"snapshot. The published page is rebuilt on push and is fine.")
     except Exception as e:

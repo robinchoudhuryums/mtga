@@ -88,9 +88,16 @@ CHANGES:
   failing: stripping `load_collection`'s alias now fires the gate.
 
 1.3 | scripts/build_dashboard.py, scripts/check_all.py, tests/test_gates_fire.py |
-  `dashboard_staleness()` reads the `generated` stamp out of the committed page's data
-  island and compares it against the newest mtime among the four card CSVs and every
-  deck file; `check_all` reports it as a soft warning. INV-03 gives gallery.html a
+  `dashboard_staleness()` compares CONTENT HASHES of the four card CSVs and every deck
+  file against the fingerprints the page stored in its own data island when it was
+  built; `check_all` reports a mismatch as a soft warning.
+  **CORRECTED AFTER THIS BLOCK SHIPPED — the first version compared MTIME** against the
+  page's `generated` stamp, which is right in a working tree and wrong everywhere else:
+  a fresh clone or CI checkout stamps every file with checkout time, so the sources
+  always read newer than the committed page. It reported a permanent, unfixable STALE
+  and failed CI on the very PR that added it. That is the F-04 trap — mtime records when
+  a file was WRITTEN, not what it CONTAINS — reintroduced one directory over from the
+  rule that documents it. Hashing 117 inputs measures at 15ms. INV-03 gives gallery.html a
   content contract and the dashboard had none, so skipping `make postedit` was silent.
   **It watches DATA, not code, and that is deliberate** — a `_ROLE_PATTERNS` edit
   re-scores every deck without touching a watched file, so this stays quiet for that. It
