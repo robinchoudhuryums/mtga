@@ -20,6 +20,8 @@ help:
 	@echo "make postedit        the after-every-deck-edit tail: re-baseline roles, rebuild dashboard, run the gate"
 	@echo "make matches         extract Arena match results from Player.log (run on the Arena machine)"
 	@echo "make matches APPLY=1 same, but write them into matches.csv"
+	@echo "make log-match DECK=49 R=W [OPP=mono-red WHY=flood PLAY=play NOTE=...]  hand-log one match"
+	@echo "make log-match ... APPLY=1   same, but write it (dry run otherwise)"
 	@echo "make clean-venv      remove the local .venv"
 
 # Launch the editor. Depends on the venv sentinel so deps install on first run
@@ -105,6 +107,18 @@ matches:
 	@echo "==> wrote $(MATCHES_OUT) ($$(wc -l < $(MATCHES_OUT)) lines)"
 	python3 scripts/parse_matches.py $(MATCHES_OUT) $(if $(APPLY),--apply,)
 	@$(if $(APPLY),,echo "";echo "DRY RUN — nothing written. Re-run with: make matches APPLY=1")
+
+# Hand-log ONE match — a phone game, or anything Player.log cannot see (the opponent's
+# archetype, play/draw, why you lost). For a whole session use the dashboard's "Log a
+# match" panel, which queues on your phone and hands back these same lines in a block.
+# Dry run unless APPLY=1, like every other writer here.
+log-match:
+	@test -n "$(DECK)" || { echo "usage: make log-match DECK=<id> R=<W|L|D> [OPP=… WHY=… PLAY=play|draw NOTE=…] [APPLY=1]"; exit 2; }
+	@test -n "$(R)" || { echo "R= is required (W, L or D)"; exit 2; }
+	@printf '%s %s%s%s%s%s\n' "$(DECK)" "$(R)" \
+	  "$(if $(OPP), opp=\"$(OPP)\",)" "$(if $(WHY), why=$(WHY),)" \
+	  "$(if $(PLAY), play=$(PLAY),)" "$(if $(NOTE), note=\"$(NOTE)\",)" \
+	  | python3 scripts/parse_matches.py - --add $(if $(APPLY),--apply,)
 
 refresh:
 	@echo "==> 1/6 enrich.py            (fill blank Type/Text/Color/Collector #)"

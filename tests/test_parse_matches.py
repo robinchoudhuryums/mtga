@@ -1179,3 +1179,99 @@ class TestResolveDeck:
 
     def test_a_leading_year_is_not_a_deck_id(self):
         assert pm.resolve_deck("2026 Ladder Pile", "", {}, self.KNOWN) == ("", "")
+
+
+class TestManualEntry:
+    """`--add`: the hand-entered path for matches Player.log cannot see — a phone game,
+    the opponent's archetype, play/draw, why a loss happened."""
+
+    def test_the_minimal_line_is_deck_and_result(self):
+        rows, warns = pm.parse_manual("49 W", deck_ids={"49"}, today="2026-08-20")
+        assert warns == []
+        assert rows[0]["Deck"] == "49" and rows[0]["Result"] == "W"
+        assert rows[0]["Date"] == "2026-08-20"
+        assert rows[0]["Event"] == "Play"
+
+    def test_every_optional_field_round_trips(self):
+        rows, warns = pm.parse_manual(
+            '19 L opp="Azorius Control" why=slow play=draw note="kept a 2-lander"',
+            deck_ids={"19"}, today="2026-08-20")
+        assert warns == []
+        r = rows[0]
+        assert r["Opponent Archetype"] == "azorius-control"
+        assert r["Loss Reason"] == "slow"
+        assert r["On Play"] == "draw"
+        assert r["Note"] == "kept a 2-lander"
+
+    def test_archetype_spellings_collapse_to_one_key(self):
+        """The whole reason to normalize: three spellings of one deck must COUNT as one,
+        or each lands under the read floor and the breakdown says nothing."""
+        rows, _ = pm.parse_manual("49 W opp='Mono Red'\n49 L opp=mono-red\n49 W opp='MONO  RED'",
+                                  deck_ids={"49"}, today="2026-08-20")
+        assert {r["Opponent Archetype"] for r in rows} == {"mono-red"}
+
+    def test_an_unknown_deck_is_refused(self):
+        """A phantom deck id would appear in --report as a deck no file backs."""
+        rows, warns = pm.parse_manual("99 W", deck_ids={"49"}, today="2026-08-20")
+        assert rows == []
+        assert any("no deck '99'" in w for w in warns)
+
+    def test_a_loss_reason_on_a_win_is_refused(self):
+        rows, warns = pm.parse_manual("49 W why=flood", deck_ids={"49"}, today="2026-08-20")
+        assert rows == []
+        assert any("has no reading" in w for w in warns)
+
+    def test_an_unknown_reason_is_warned_but_still_recorded(self):
+        """Asymmetric on purpose: the vocabulary is a guess, and losing a real match to
+        protect it is the worse trade."""
+        rows, warns = pm.parse_manual("49 L why=banana", deck_ids={"49"}, today="2026-08-20")
+        assert len(rows) == 1 and rows[0]["Loss Reason"] == "banana"
+        assert any("not in the vocabulary" in w for w in warns)
+
+    def test_ids_are_unique_against_the_existing_record(self):
+        """Dedup for the LOG path is by Arena matchId; a hand row has none, so the
+        generated id must not collide with one already stored."""
+        rows, _ = pm.parse_manual("49 W\n49 L", deck_ids={"49"}, today="2026-08-20",
+                                  existing_ids={"manual-20260820-01"})
+        ids = [r["Match ID"] for r in rows]
+        assert ids == ["manual-20260820-02", "manual-20260820-03"]
+        assert len(set(ids)) == 2
+
+    def test_blank_lines_and_comments_are_skipped(self):
+        rows, warns = pm.parse_manual("\n# a session\n\n49 W\n", deck_ids={"49"},
+                                      today="2026-08-20")
+        assert len(rows) == 1 and warns == []
+
+    def test_a_manual_row_fills_only_columns_the_log_cannot(self):
+        """The four hand columns must never masquerade as log-derived data: a manual row
+        leaves the Arena-sourced cells BLANK rather than inventing them."""
+        rows, _ = pm.parse_manual("49 W opp=mono-red", deck_ids={"49"}, today="2026-08-20")
+        r = rows[0]
+        for col in ("Arena Deck", "Arena Deck ID", "My Avatar", "Opponent Avatar",
+                    "Games Won", "Games Lost", "Reason", "Ended By"):
+            assert r[col] == "", f"{col} should be blank on a hand-entered row"
+        assert set(r) == set(pm.HEADER)
+
+
+class TestTheDashboardFormAndTheCliAgree:
+    """The published page emits `--add` lines and the CLI parses them. Nothing else
+    connects the two, so the SHAPE of that line is a contract — and it is exactly the
+    kind that rots silently, because the page is built by a different module and a
+    malformed line only shows up as a warning on someone's next paste."""
+
+    def test_the_line_the_form_builds_parses_with_no_warnings(self):
+        """Byte-for-byte the string `logLine()` produces for a fully-populated match."""
+        line = ('49 L opp="Mono Red" why=flood play=draw date=2026-08-20 '
+                'note="kept a greedy 3-lander"')
+        rows, warns = pm.parse_manual(line, deck_ids={"49"})
+        assert warns == []
+        r = rows[0]
+        assert (r["Deck"], r["Result"], r["Opponent Archetype"], r["Loss Reason"],
+                r["On Play"], r["Date"]) == ("49", "L", "mono-red", "flood", "draw",
+                                             "2026-08-20")
+        assert r["Note"] == "kept a greedy 3-lander"
+
+    def test_the_forms_dropdown_reads_the_cli_vocabulary_not_a_copy(self):
+        import build_dashboard
+        assert build_dashboard._loss_reasons() == pm.LOSS_REASONS
+        assert "flood" in build_dashboard._loss_reasons()

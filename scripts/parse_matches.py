@@ -112,7 +112,31 @@ from lib import (MATCHES_CSV, REPO_ROOT, atomic_write,  # noqa: E402,F401
                  csv_schema_error, eprint)
 HEADER = ["Date", "Match ID", "Deck", "Arena Deck", "Arena Deck ID", "My Avatar",
           "Event", "Result", "Games Won", "Games Lost", "Opponent Avatar", "Reason",
-          "Ended By"]
+          "Ended By",
+          # HAND-ENTERED, appended 2026-08-20 (`--add`). The log cannot supply any of
+          # these: Arena records the deck YOU submitted and the raw outcome, and nothing
+          # about what you faced, whether you were on the play, or why you lost. They are
+          # also the only fields that answer "what should I change", which is why they
+          # exist. All four are OPTIONAL and blank on every log-parsed row by
+          # construction — a reader must treat blank as "not recorded", never as a value.
+          "On Play", "Opponent Archetype", "Loss Reason", "Note"]
+
+# The loss-reason vocabulary. CLOSED so it can be COUNTED — free text cannot answer
+# "which decks flood out", which is the whole reason to record it. An unrecognized value
+# is still WRITTEN (with a warning naming the known ones): the vocabulary is a starting
+# point someone will outgrow, and refusing the entry would cost a real match to protect a
+# list I guessed at. Add a key here when a warning keeps recurring.
+LOSS_REASONS = {
+    "flood":      "too many lands",
+    "screw":      "too few lands / colour screw",
+    "slow":       "outraced — curve too high or clock too slow",
+    "answer":     "no answer to their threat",
+    "removed":    "my threat or engine got killed",
+    "keep":       "bad mulligan or bad keep",
+    "misplay":    "my own error",
+    "outclassed": "they were simply stronger",
+}
+_ON_PLAY = {"play", "draw"}
 
 # TWO reason fields, and for a year only the uninformative one was stored.
 #   `Reason`   = `matchCompletedReason`, which is `Success` for every match that
@@ -908,6 +932,120 @@ def fresh_rows(rows, existing):
     return out
 
 
+def _slug(text):
+    """An archetype label normalized so two spellings of one deck COUNT AS ONE.
+
+    `Mono Red`, `mono-red` and `Mono  Red ` all key `mono-red`. Without this the
+    breakdown splits one archetype across three rows and each lands under the read
+    floor — the same saturation-by-fragmentation that makes a free-text field
+    uncountable. Display keeps the slug, so what you type back next time matches."""
+    out = "-".join((text or "").strip().lower().split())
+    return "".join(ch for ch in out if ch.isalnum() or ch in "-/+").strip("-")
+
+
+def parse_manual(text, existing_ids=(), deck_ids=None, today=None):
+    """([row, ...], [warning, ...]) from the compact hand-entry syntax.
+
+    One match per line:
+
+        <deck> <W|L|D> [opp=<archetype>] [why=<reason>] [play=play|draw]
+                       [event=<name>] [date=YYYY-MM-DD] [note="free text"]
+
+    Blank lines and `#` comments are skipped. Keys are order-independent; `note` may be
+    quoted. Every field after the result is optional.
+
+    WHY A SEPARATE ENTRY PATH rather than editing the CSV by hand: a hand-written row
+    has no `Match ID`, and the ID is what makes re-running the log parser idempotent
+    (dedup is by ID). Rows entered here get `manual-YYYYMMDD-NN`, unique against
+    `existing_ids`, so the two writers cannot collide or double-count.
+
+    VALIDATION IS ASYMMETRIC ON PURPOSE. An unknown DECK id is a hard reject — it would
+    silently create a phantom deck row in `--report` that no deck file backs. An unknown
+    `why` is a WARNING that still records: the vocabulary is a guess, and losing a real
+    match to protect it is the worse trade. `why` on a WIN is refused outright, because a
+    loss reason attached to a win is not a typo with a sensible reading."""
+    import datetime as _dt
+    import shlex
+    rows, warnings = [], []
+    used = set(existing_ids)
+    day = today or _dt.date.today().isoformat()
+    seq = {}
+    for lineno, raw in enumerate((text or "").splitlines(), 1):
+        line = raw.strip()
+        if not line or line.startswith("#"):
+            continue
+        try:
+            parts = shlex.split(line)
+        except ValueError as e:
+            warnings.append(f"line {lineno}: unbalanced quotes ({e}) — skipped: {line!r}")
+            continue
+        if len(parts) < 2:
+            warnings.append(f"line {lineno}: need at least `<deck> <W|L|D>` — skipped: {line!r}")
+            continue
+        deck, result, rest = parts[0], parts[1].upper(), parts[2:]
+        if result not in ("W", "L", "D"):
+            warnings.append(f"line {lineno}: result {parts[1]!r} is not W, L or D — skipped")
+            continue
+        if deck_ids is not None and deck not in deck_ids:
+            warnings.append(f"line {lineno}: no deck {deck!r} in decks/ — skipped. An "
+                            f"unknown id would appear in --report as a deck that does "
+                            f"not exist.")
+            continue
+        kv, bad = {}, False
+        for tok in rest:
+            if "=" not in tok:
+                warnings.append(f"line {lineno}: {tok!r} is not key=value — skipped")
+                bad = True
+                break
+            k, v = tok.split("=", 1)
+            kv[k.strip().lower()] = v.strip()
+        if bad:
+            continue
+        unknown = set(kv) - {"opp", "why", "play", "event", "date", "note"}
+        if unknown:
+            warnings.append(f"line {lineno}: unknown key(s) {sorted(unknown)} — skipped. "
+                            f"Known: opp, why, play, event, date, note.")
+            continue
+        why = (kv.get("why") or "").strip().lower()
+        if why and result != "L":
+            warnings.append(f"line {lineno}: why={why!r} on a {result} — skipped. A loss "
+                            f"reason on a non-loss has no reading; drop it or use note=.")
+            continue
+        if why and why not in LOSS_REASONS:
+            warnings.append(f"line {lineno}: why={why!r} is not in the vocabulary — "
+                            f"RECORDED ANYWAY so the match is not lost, but it will not "
+                            f"group with the known ones: {', '.join(sorted(LOSS_REASONS))}.")
+        on_play = (kv.get("play") or "").strip().lower()
+        if on_play and on_play not in _ON_PLAY:
+            warnings.append(f"line {lineno}: play={on_play!r} is not play/draw — dropped")
+            on_play = ""
+        date = (kv.get("date") or "").strip() or day
+        try:
+            _dt.date.fromisoformat(date)
+        except ValueError:
+            warnings.append(f"line {lineno}: date={date!r} is not YYYY-MM-DD — skipped")
+            continue
+        stamp = date.replace("-", "")
+        n = seq.get(stamp, 0)
+        while True:
+            n += 1
+            mid = f"manual-{stamp}-{n:02d}"
+            if mid not in used:
+                break
+        seq[stamp] = n
+        used.add(mid)
+        rows.append({
+            "Date": date, "Match ID": mid, "Deck": deck, "Arena Deck": "",
+            "Arena Deck ID": "", "My Avatar": "",
+            "Event": (kv.get("event") or "Play").strip(), "Result": result,
+            "Games Won": "", "Games Lost": "", "Opponent Avatar": "",
+            "Reason": "", "Ended By": "",
+            "On Play": on_play, "Opponent Archetype": _slug(kv.get("opp")),
+            "Loss Reason": why, "Note": (kv.get("note") or "").strip(),
+        })
+    return rows, warnings
+
+
 def load_matches(path=MATCHES_CSV):
     """Rows from matches.csv, with the pre-attribution column names migrated in.
 
@@ -1074,6 +1212,112 @@ def _print_pooled(rows):
           "per-deck\n  rows, once they fill, to judge a deck.")
 
 
+def add_manual(text, out=MATCHES_CSV, apply=False, report_after=False):
+    """`--add`: append hand-entered matches. DRY RUN by default, like every writer here.
+
+    Existing rows are never touched — this only appends — so a re-paste of lines already
+    entered creates DUPLICATES (they get fresh ids; there is no Arena matchId to dedupe
+    on). The dry run prints every row so that is visible before it is written, which is
+    the only guard available: `--add` cannot tell a repeat from a genuine second game
+    against the same deck on the same day, and those are indistinguishable by design."""
+    existing = load_matches(out)
+    rows, warnings = parse_manual(text, existing_ids={r.get("Match ID") for r in existing},
+                                  deck_ids=deck_ids() or None)
+    for w in warnings:
+        eprint(f"WARN:  {w}")
+    if not rows:
+        eprint("Nothing to add — no line parsed into a match.")
+        return 1
+    print(f"{len(rows)} match(es) to add:")
+    for r in rows:
+        bits = [f"{r['Date']}  {r['Result']}  deck {r['Deck']:<4}"]
+        if r["Opponent Archetype"]:
+            bits.append(f"vs {r['Opponent Archetype']}")
+        if r["On Play"]:
+            bits.append(f"on the {r['On Play']}")
+        if r["Loss Reason"]:
+            bits.append(f"lost to {r['Loss Reason']}")
+        if r["Note"]:
+            bits.append(f"— {r['Note']}")
+        print("   " + "  ".join(bits))
+    if not apply:
+        print(f"\n(dry run — pass --apply to append to {os.path.basename(out)})")
+        return 0
+    # WRITE BEFORE NARRATING (G-10): a script that reports success and then writes can
+    # die on a BrokenPipeError mid-report having written nothing, which is exactly how
+    # two batches were lost in 2026-08.
+    write_matches(existing + rows, out)
+    print(f"\nAppended {len(rows)} match(es) to {os.path.basename(out)} "
+          f"({len(existing) + len(rows)} total).")
+    if report_after:
+        print()
+        report(load_matches(out))
+    return 0
+
+
+def _print_manual_axes(rows):
+    """The hand-entered axes: what you faced, whether you were on the play, why you lost.
+
+    Each obeys the SAME read floor as the per-deck table, and for the same reason — these
+    columns are the newest and therefore the thinnest, so they are the likeliest place to
+    read a story into four games. Loss reasons are the exception to the floor and are
+    shown as COUNTS, never a rate: "6 of my losses were flood" is a tally of a thing that
+    happened, not an estimate of a probability, so a small n makes it thin rather than
+    wrong. Sections print only when something was recorded, so a log-only record shows
+    none of this rather than three empty tables."""
+    def _tally(key):
+        by = {}
+        for r in rows:
+            v = (r.get(key) or "").strip()
+            res = (r.get("Result") or "").strip().upper()
+            if not v or res not in ("W", "L", "D"):
+                continue
+            b = by.setdefault(v, {"W": 0, "L": 0, "D": 0})
+            b[res] += 1
+        return by
+
+    opp = _tally("Opponent Archetype")
+    if opp:
+        print(f"\n  {'Opponent archetype':32}  {'W':>3} {'L':>3} {'D':>3}   Read")
+        print("  " + "-" * 68)
+        for k in sorted(opp, key=lambda k: -(opp[k]["W"] + opp[k]["L"] + opp[k]["D"])):
+            b = opp[k]
+            n = b["W"] + b["L"]
+            read = (f"n={n} — too few to read (need ~{_MIN_SAMPLE})" if n < _MIN_SAMPLE
+                    else f"{100*b['W']/n:.0f}%  (95% CI %.0f–%.0f%%)"
+                    % _wilson(b["W"], n))
+            print(f"  {k[:32]:32}  {b['W']:>3} {b['L']:>3} {b['D']:>3}   {read}")
+
+    play = _tally("On Play")
+    if play:
+        print(f"\n  {'On the play / draw':32}  {'W':>3} {'L':>3} {'D':>3}   Read")
+        print("  " + "-" * 68)
+        for k in ("play", "draw"):
+            b = play.get(k)
+            if not b:
+                continue
+            n = b["W"] + b["L"]
+            read = (f"n={n} — too few to read (need ~{_MIN_SAMPLE})" if n < _MIN_SAMPLE
+                    else f"{100*b['W']/n:.0f}%  (95% CI %.0f–%.0f%%)" % _wilson(b["W"], n))
+            print(f"  {k[:32]:32}  {b['W']:>3} {b['L']:>3} {b['D']:>3}   {read}")
+
+    why = {}
+    for r in rows:
+        v = (r.get("Loss Reason") or "").strip()
+        if v:
+            why.setdefault(v, []).append(r.get("Deck") or "?")
+    if why:
+        total = sum(len(v) for v in why.values())
+        print(f"\n  Why {total} loss(es) happened — COUNTS, not rates")
+        print("  " + "-" * 68)
+        for k in sorted(why, key=lambda k: -len(why[k])):
+            decks = ", ".join(sorted(set(why[k])))
+            gloss = LOSS_REASONS.get(k, "(not in the vocabulary)")
+            print(f"  {k[:14]:14} {len(why[k]):>3}   {gloss[:30]:30} decks: {decks[:24]}")
+        print("  A reason is your judgement AFTER the fact, and the losses you bother to"
+              "\n  explain are not a random sample of your losses. Read the big bars.")
+
+
 def report(rows):
     """Win/loss per deck, with an explicit refusal to read a small sample.
 
@@ -1117,6 +1361,7 @@ def report(rows):
             read = f"{100*b['W']/n:.0f}%  (95% CI {lo:.0f}–{hi:.0f}%)"
         print(f"  {key[:32]:32}  {b['W']:>3} {b['L']:>3} {b['D']:>3}   {read}")
     _print_pooled(rows)
+    _print_manual_axes(rows)
     if unreadable:
         print(f"\n⚠ {len(unreadable)} row(s) have an unreadable Result and are in NO "
               f"column above — the per-deck totals therefore do not sum to "
@@ -1157,9 +1402,19 @@ def main():
     ap.add_argument("--sync-names", action="store_true",
                     help="adopt Arena's deck names into the repo `#: name:` headers "
                          "(GUID-matched decks only; reported without this flag)")
+    ap.add_argument("--add", action="store_true",
+                    help="record HAND-ENTERED matches (phone games, or anything the log "
+                         "cannot see) from `<deck> <W|L|D> [opp= why= play= note=]` "
+                         "lines given as the source file or on stdin")
     ap.add_argument("--out", default=MATCHES_CSV)
     args = ap.parse_args()
 
+    if args.add:
+        if not args.source:
+            ap.error("--add needs the lines: a file, or '-' for stdin")
+        text = sys.stdin.read() if args.source == "-" else \
+            open(args.source, encoding="utf-8", errors="replace").read()
+        return add_manual(text, args.out, apply=args.apply, report_after=args.report)
     if args.report and not args.source:
         return report(load_matches(args.out))
     if args.sync_names and not args.source:

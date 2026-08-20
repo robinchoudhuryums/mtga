@@ -205,6 +205,52 @@ was first reconciled (2026-08-14, 12 decks) `Stampede Engine` → `Stampede` and
 `Jeskai Tempest` → `Tempest` each dropped a word that was doing work, and only the owner
 knows whether Arena's name or the repo's is the one they meant.
 
+## Stage 1b — Hand-entered matches (`--add`)
+
+**The log cannot see four things that matter, and one whole platform.** Arena records the
+deck you submitted and the raw outcome; it records nothing about the opponent's
+archetype, whether you were on the play, or why you lost. And a **phone game never
+reaches the desktop `Player.log` at all** — that log is written by the install that
+played the match, so a couch session on iOS is invisible to Stage 1 no matter how you
+extract it. `--add` is the path for both.
+
+One match per line, `<deck> <W|L|D>` plus optional `key=value`:
+
+```
+49 W opp="Mono Red" play=play
+49 L opp=mono-red why=flood note="kept a greedy 3-lander"
+19 L opp=azorius-control why=slow play=draw
+```
+
+```
+python3 scripts/parse_matches.py <file> --add            # dry run — always first
+python3 scripts/parse_matches.py <file> --add --apply    # append
+make log-match DECK=49 R=L OPP=mono-red WHY=flood        # one match, same dry-run rule
+make log-match DECK=49 R=W APPLY=1
+```
+
+Keys: `opp`, `why`, `play` (play/draw), `event`, `date`, `note`. The loss vocabulary is
+`flood screw slow answer removed keep misplay outclassed` — **closed so it can be
+COUNTED**, since free text cannot answer "which decks flood out", which is the reason to
+record it at all.
+
+**Three validation rules, and their asymmetry is deliberate.** An unknown DECK id is a
+hard reject (it would show in `--report` as a deck no file backs). A `why` on a non-loss
+is refused (a loss reason on a win has no reading). An unknown `why` is warned about and
+**recorded anyway** — the vocabulary is a guess, and losing a real match to protect a list
+someone invented is the worse trade. Add a key to `LOSS_REASONS` when a warning recurs.
+
+**`--add` only appends, and cannot dedupe.** The log path is idempotent because Arena
+supplies a `matchId`; a hand row has none, so re-pasting lines already entered creates
+duplicates. That is why the dry run prints every row — it is the only guard, and it
+cannot distinguish a repeat from a genuine second game against the same deck that day.
+
+**From a phone: the dashboard's "Log a match" panel.** The published page is static and
+writes nothing — it queues matches in that browser's `localStorage` and hands back these
+exact lines to copy. Log during a session, copy the block afterwards, then `--add`. The
+queue survives a reload, which is the load-bearing part: without it, backgrounding the
+browser would discard an evening's matches.
+
 ## Stage 2 — Report
 
 ```

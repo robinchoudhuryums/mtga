@@ -4630,3 +4630,62 @@ after the number is free-form. The slugs were re-pointed after the rename for re
 only; the convention is family-dir plus variant-suffix (`54-grand-lotus/54b-comet.txt` for
 "Grand Lotus — Comet"), NOT slug-equals-name, so a variant file is slugged on its
 distinguishing half alone.
+
+
+## [G-74] The log cannot see what you faced, play/draw, or why you lost — nor a phone game
+
+**The incident.** After the 2026-08-20 ingest took the record from 15 matches to 58, the
+obvious next question was what the record could actually answer. Measured across all 58
+rows: six of thirteen columns carried signal (`Date`, `Match ID`, `Deck`, `Result`,
+`Event`, `Ended By`). `Reason` was `Success` on 58 of 58 — a literal constant. `My
+Avatar` / `Opponent Avatar` are COSMETICS, not decks: `Avatar_Basic_AjaniGoldmane`
+appeared 9 times because it is a common default, and reading it as an archetype is the
+same misconception that once put an avatar value in a column called "Course ID" (G-57).
+`Games Won`/`Games Lost` reads 0-0 on 43 rows, and even intact adds nothing — Play and
+Ladder are best-of-one, so the game score restates `Result`.
+
+So the record could say deck 35a went 0-3. It could never say *why*, or against what.
+
+**The platform gap, which is the sharper half.** Every match in the sample showed
+`"platformId": "SteamMac"` for the local seat. `Player.log` is written by the install
+that played the game; a phone match writes to the phone's own sandboxed log, which Arena
+neither exposes nor syncs. There is no extraction to fix and no flag to pass — phone
+games are simply absent, and for a player who plays mostly on a phone the record would
+be a biased sample of their own play rather than a thin one.
+
+**The design, and the three decisions worth keeping.**
+
+*Closed vocabulary for the loss reason.* Free text captures nuance and can never be
+counted, and "which of my decks flood out" is the entire reason to record a reason. The
+vocabulary is eight tokens with a free-text `note=` beside it, so the countable and the
+nuanced live in different columns instead of fighting for one.
+
+*Asymmetric validation.* An unknown DECK id is a hard reject, because it would appear in
+`--report` as a deck no file backs — a phantom row reads as data. A `why` on a win is
+refused, because a loss reason attached to a win is not a typo with a sensible reading.
+An unknown `why` is warned about and **recorded anyway**: the vocabulary is a guess
+someone will outgrow, and losing a real match to protect a list is the worse trade. The
+rule generalizes — reject what would corrupt the read, warn about what merely fails to
+group.
+
+*Slug normalization on the archetype.* `Mono Red`, `mono-red` and `MONO  RED` all key
+`mono-red`. Without it one archetype splits across three rows and each lands under the
+20-match read floor, which is fragmentation producing the same nothing that a free-text
+field produces.
+
+**What `--add` cannot do, stated rather than hidden.** It only appends. The log path is
+idempotent because Arena supplies a `matchId` to dedupe on; a hand-entered row has none,
+so re-pasting lines already entered creates duplicates. The dry run printing every row is
+the only available guard, and it cannot distinguish a repeat from a genuine second game
+against the same deck on the same day — those are indistinguishable by construction.
+
+**The dashboard panel is static and says so.** GitHub Pages cannot write `matches.csv`,
+so the form queues rows in `localStorage` and hands back the exact `--add` lines. The
+persistence is the load-bearing part rather than a convenience: the intended use is
+logging a game on a phone mid-session, and without it a tab reload or a backgrounded
+browser silently discards an evening's matches — the failure that makes someone stop
+trusting the tool. The form's loss-reason dropdown reads `parse_matches.LOSS_REASONS`
+live rather than a copy, so the page and the CLI cannot drift into disagreeing about the
+vocabulary (the K-09 shape). `tests/test_parse_matches.py::TestTheDashboardFormAndTheCliAgree`
+pins the emitted line's SHAPE, because nothing else connects the two modules and a
+malformed line would surface only as a warning on someone's next paste.

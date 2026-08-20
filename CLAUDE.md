@@ -881,6 +881,21 @@ directions.
   agreement is a snapshot, not a reason to add the gate — docs cite it with examples that
   now read as agreements *because* the sync ran. Re-measure first. [G-73]
 
+- **THE LOG CANNOT SEE WHAT YOU FACED, WHETHER YOU WERE ON THE PLAY, OR WHY YOU LOST — and
+  it cannot see a PHONE GAME AT ALL.** `Player.log` is written by the install that played
+  the match, so an iOS session never reaches the desktop file however you extract it.
+  `parse_matches.py --add` takes those four axes by hand (`<deck> <W|L|D>` plus `opp= why=
+  play= note=`), `make log-match` wraps one, and the dashboard's **"Log a match"** panel
+  queues them on a phone in `localStorage` and hands back the same lines — the page is
+  STATIC and writes nothing. **The loss vocabulary is CLOSED so it can be COUNTED**
+  (`flood screw slow answer removed keep misplay outclassed`); free text cannot answer
+  "which decks flood out", which is the only reason to record a reason. Validation is
+  asymmetric on purpose: an unknown DECK is refused (it would invent a `--report` row),
+  a `why` on a non-loss is refused, an unknown `why` is warned about and RECORDED. **`--add`
+  only appends and cannot dedupe** — the log path is idempotent because Arena supplies a
+  `matchId` and a hand row has none, so the dry run printing every row is the only guard.
+  Archetypes are slug-normalized, else three spellings each land under the read floor. [G-74]
+
 ## Known Issues
 
 Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
@@ -1187,7 +1202,10 @@ format.
    end-to-end path is covered by nobody else.
    Steps: paste (or `cat`) an archive → `parse_matches.py <file>` (dry run) →
    `--apply` → `--report`; then rename a deck in the Arena client, play once, and
-   re-run.
+   re-run. Then the HAND path, which no log can exercise: `make log-match DECK=<id>
+   R=L WHY=flood` (dry run, then `APPLY=1`), and the dashboard's "Log a match" panel
+   on a PHONE — queue two matches, reload the page, confirm the queue survived, copy
+   the block and feed it to `--add`.
    Expected: the dry run prints a `Deck attribution` block naming every Arena deck and
    the ROUTE that resolved it; re-running is idempotent (dedup by matchId); the rename
    re-maps in the SAME run, because header sync precedes the mapping. A match whose
