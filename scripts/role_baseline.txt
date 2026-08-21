@@ -122,7 +122,6 @@ Duskwatch Hunter
 Dwalin, Weaponmaster
 Dwarven Mattock
 Dwarven Shortsword
-Dwynen's Elite
 Dáin Ironfoot
 Earth Kingdom General
 Earth Kingdom Soldier
@@ -361,6 +360,7 @@ Seismic Sense
 Self-Destruct
 Serra Angel
 Serra Redeemer
+Servant of the Stinger
 Shimmercreep
 Shredder, Unrelenting
 Shrike Force

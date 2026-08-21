@@ -1,7 +1,7 @@
 #: name: Pox
 #: format: Standard
 #: colors: BG
-#: tier: A — Golgari (BG) Elf go-wide x Fynn deathtouch-poison hybrid; fully built. Elf engine (Lathril drain finish + Elvish Archdruid ramp/anthem + Imperious Perfect / Morcant's Loyalist anthems + High Perfect Morcant blight), interaction 7 (was 8; Unforgiving Aim was CUT for Rattleback Apothecary 2026-08-21 — a deathtouch body whose crime trigger forces poison through with menace, an intentional interaction-for-plan-B trade; A-floor holds at 7) — Bite Down (any deathtoucher kills anything for {G}) + Bake into a Pie clearing the poison clock's blockers — plus card advantage from Morcant's Eyes surveil + token dump, on a clean 2-color base → A-floor. Re-graded B→A on corrected interaction; the only reason it's not a clearer S-conversation is the singleton dilution across two half-density plans (Elf go-wide + poison).
+#: tier: A — Golgari (BG) Elf go-wide x Fynn deathtouch-poison hybrid; fully built. Elf engine (Lathril drain finish + Elvish Archdruid ramp/anthem + Imperious Perfect / Morcant's Loyalist anthems + High Perfect Morcant blight), interaction 6 (was 8; Unforgiving Aim was CUT for Rattleback Apothecary and Grapple with Death was CUT for Maximum Overdrive, both 2026-08-21 — each an intentional interaction-for-plan trade: a crime-trigger deathtouch body with menace, and a counter+deathtouch+indestructible trick that protects the poison carrier; A-floor holds at 6 and protection rose to 2) — Bite Down (any deathtoucher kills anything for {G}) + Bake into a Pie clearing the poison clock's blockers — plus card advantage from Morcant's Eyes surveil + token dump, on a clean 2-color base → A-floor. Re-graded B→A on corrected interaction; the only reason it's not a clearer S-conversation is the singleton dilution across two half-density plans (Elf go-wide + poison).
 #: archetype: Golgari (B/G) DUAL-PLAN HYBRID, and both halves are fully armed —
 #: archetype: measured 2026-08-21 after a reword the other way over-corrected. Plan A,
 #: archetype: Elf go-wide: 19 Elf bodies, 11 Elf payoffs, Lathril drain finish, three
@@ -36,10 +36,10 @@
 1 The Serpent Society (MSH) 226
 1 Llanowar Elves (FDN) 227
 1 Fynn, the Fangbearer (FCA) 46
-1 Noxious Newt (SOS) 155
-1 Grapple with Death (SOS) 192
+1 Servant of the Stinger (OTJ) 105
+1 Maximum Overdrive (DFT) 96
 1 Sporogenic Infection (DSK) 117
-1 Dwynen's Elite (FDN) 218
+1 Venom Connoisseur (FDN) 648
 1 Lys Alana Dignitary (ECL) 180
 1 Morcant's Eyes (ECL) 185
 1 Emeritus of Abundance (SOS) 145
