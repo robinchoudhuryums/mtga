@@ -1,9 +1,11 @@
 # Wylie Duke tap-synergy pile — analysis (TEMPORARY working doc)
 
-**Status: CORE DRAFTED (deck 73 Duke's Vigil, 2026-08-15).** Doc stays live for the
-pending variants: the user wants VARIANT A next (Naya WGR, Mercenary-token emphasis —
-see §3b/§5) and possibly VARIANT C if it becomes buildable. Delete after the variants
-are drafted or declined.
+**Status: CORE DRAFTED (deck 73 Duke's Vigil, 2026-08-15). VARIANT A DRAFTED
+(73a Duke's Vigil — Hired Guns, decks/73-dukes-vigil/73a-hired-guns.txt) — this header
+claimed it was pending long after batch 5 below referenced cards "already IN 73a";
+corrected 2026-08-21 when a /draft-deck 73a nearly created a duplicate.** Doc stays
+live for VARIANT B (mono-W tap-down control, specced in §5, undrafted) and VARIANT C
+(parked — G-59 payoff count). Delete after those are drafted or declined.
 
 **Source list:** scratchpad `wylie-pile.txt` — 106 distinct names; 74 not currently in any
 deck (`wylie-remaining.txt`), 32 already in decks. **For a NEW-deck pile the 32 stay
