@@ -13,7 +13,7 @@
 #: archetype: Wrath, infusion-gated Withering Curse) resets the board; and the
 #: archetype: reanimation layer rebuys the fatties — Cauldron of Essence's
 #: archetype: repeatable sac-loop, Grim Reaper's attack trigger, Moseo's infusion
-#: archetype: end-step returns, Zombify/Prison Break/Coiling Rebirth singles, and
+#: archetype: end-step returns, Prison Break/Coiling Rebirth singles (Zombify was CUT for Hedge Shredder — the ninth reanimation route traded for a mill-to-ramp engine), and
 #: archetype: Behold the Sinister Six! as the six-body haymaker. Lifegain glue
 #: archetype: (Scavenger's Talent Food, Cauldron drain, Bake into a Pie, Jungle
 #: archetype: Hollow) turns on both infusion cards. Distinct from every deck on the
@@ -41,8 +41,7 @@
 #: notes: power. Grim Reaper's finality counter means each body reanimates ONCE by
 #: notes: that route — send the copies, keep the originals for Cauldron. Sephiroth
 #: notes: transforms on the fourth death trigger; wraths advance it four at once.
-#: notes: SHARED COPIES (fungible): Bake into a Pie/
-#: notes: Bloodthirsty Conqueror/Craterhoof also serve 25/50/60a. (Murder was CUT for
+#: notes: SHARED COPIES (fungible): Bake into a Pie/Craterhoof also serve 25/50/60a. (Murder was CUT for
 #: notes: Hauntwoods Shrieker, whose attack-manifest fills the yard AND builds a board
 #: notes: — the deck's two axes on one card, against 12 interaction it could spare.)
 #: notes: ROTATION: BLB pieces (Scavenger's Talent, Coiling Rebirth, Rottenmouth
@@ -58,10 +57,11 @@
 1 Defiant Survivor (DSK) 175
 1 Essenceknit Scholar (SOS) 187
 1 Grave Researcher // Reanimate (SOS) 85
+1 Lluwen, Imperfect Naturalist (ECL) 232
+1 Hedge Shredder (DSK) 183
 1 Scavenger's Talent (BLB) 111
 
 # Reanimation
-1 Zombify (SOA) 36
 1 Behold the Sinister Six! (SPM) 51
 1 Prison Break (SPM) 61
 1 Coiling Rebirth (BLB) 86
@@ -82,7 +82,6 @@
 1 Rottenmouth Viper (BLB) 107
 1 Craterhoof Behemoth (TDM) 138
 1 Famished Worldsire (EOE) 182
-1 Bloodthirsty Conqueror (FDN) 58
 1 The Last Ronin (TMT) 154
 1 Sephiroth, Fabled SOLDIER (FIN) 115
 
