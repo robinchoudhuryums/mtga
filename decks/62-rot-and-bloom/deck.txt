@@ -88,7 +88,7 @@
 1 Sephiroth, Fabled SOLDIER (FIN) 115
 
 # Interaction
-1 Hero's Downfall (FDN) 175
+1 Zero Point Ballad (EOE) 128
 2 Bake into a Pie (FDN) 169
 1 Withering Torment (DSK) 124
 1 Don't Make a Sound (DSK) 49
