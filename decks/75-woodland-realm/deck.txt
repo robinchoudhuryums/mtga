@@ -57,7 +57,7 @@
 1 Cantankerous Keepers (HOB) 122
 1 Champions of the Perfect (ECL) 171
 1 Silvan Reveler (HOB) 163
-1 Down in the Valley (HOB) 124
+1 Mirkwood Pathmaker (HOB) 129
 1 Morcant's Eyes (ECL) 185
 1 Trystan's Command (ECL) 247
 
@@ -102,3 +102,8 @@
 1 Terramorphic Expanse (MSC) 828
 4 Swamp (MSH) 292
 3 Island (MSH) 288
+#~ +Topiary Lecturer | OWNED — {2}{G} Elf Druid donor: from the YARD the 5/6
+#~ Elvenking taps for FIVE green ({T}: add G equal to power), paying for Tyvar's
+#~ team-pump or holding up Glen Elendra's Answer. Thin on board, which is why it
+#~ is flex, not maindeck. Comes in when games show the Elvenking sitting untapped
+#~ with sinks unspent — likeliest cut then: Llanowar Elves or Bloom Tender.
