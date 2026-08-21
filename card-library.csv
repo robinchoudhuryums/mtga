@@ -5131,7 +5131,7 @@ Glen Elendra's Answer,Instant,"This spell can't be countered.
 Counter all spells your opponents control and all abilities your opponents control. Create a 1/1 blue and black Faerie creature token with flying for each spell and ability countered this way.",U,tokens,ECL,52,1
 Aftermath Analyst,Creature — Elf Detective,"When this creature enters, mill three cards. (Put the top three cards of your library into your graveyard.)
 {3}{G}, Sacrifice this creature: Return all land cards from your graveyard to the battlefield tapped.",G,Elf; Detective; reanimator; graveyard; mill; sacrifice; etb,MKM,148,1
-Elven Passage,Land,"{T}, Pay 1 life, Sacrifice this land: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle. You may behold an Elf. If you do, untap that land. (To behold an Elf, choose an Elf you control or reveal an Elf card from your hand.)",Colorless,pay life; sacrifice; ramp; behold; dragons,HOB,181,1
+Elven Passage,Land,"{T}, Pay 1 life, Sacrifice this land: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle. You may behold an Elf. If you do, untap that land. (To behold an Elf, choose an Elf you control or reveal an Elf card from your hand.)",Colorless,pay life; sacrifice; ramp; behold; dragons,HOB,181,2
 Icetill Explorer,Creature — Insect Scout,"You may play an additional land on each of your turns.
 You may play lands from your graveyard.
 Landfall — Whenever a land you control enters, mill a card.",G,Insect; Scout; graveyard; mill; landfall; lands; ramp,EOE,192,1
@@ -5174,3 +5174,51 @@ Insidious Fungus,Creature — Fungus,"{2}, Sacrifice this creature: Choose one �
 • Draw a card. Then you may put a land card from your hand onto the battlefield tapped.",G,Fungus; card draw; sacrifice; removal,DSK,186,1
 Cryptic Caves,Land,"{T}: Add {C}.
 {1}, {T}, Sacrifice this land: Draw a card. Activate only if you control five or more lands.",Colorless,card draw; sacrifice; mana,FDN,771,1
+Rattleback Apothecary,Creature — Gorgon Warlock,"Deathtouch
+Whenever you commit a crime, target creature you control gains your choice of menace or lifelink until end of turn. (Targeting opponents, anything they control, and/or cards in their graveyards is a crime.)",B,Gorgon; Warlock; graveyard; lifegain; deathtouch; combat; removal,OTJ,100,1
+Valley Rotcaller,Creature — Squirrel Warlock,"Menace
+Whenever this creature attacks, each opponent loses X life and you gain X life, where X is the number of other Squirrels, Bats, Lizards, and Rats you control.",B,Squirrel; Warlock; Rat; Squirrels; lifegain; menace; evasion,BLB,119,1
+"Smaug, Wicked Worm",Legendary Creature — Dragon,"Flying
+When Smaug enters, create X tapped Treasure tokens, where X is the number of artifacts your opponents control.
+Whenever you cast a spell, if mana from a Treasure was spent to cast it, you draw a card and lose 1 life.",B/R,Dragon; pay life; card draw; tokens; etb; treasure; flying; evasion,HOB,164,1
+Sunstar Chaplain,Creature — Human Cleric,"At the beginning of your end step, if you control two or more tapped creatures, put a +1/+1 counter on target creature you control.
+{2}, Remove a +1/+1 counter from a creature you control: Tap target artifact or creature.",W,Human; Cleric; counters,EOE,40,1
+Belladonna Took,Legendary Creature — Halfling Citizen,"Whenever a token you control enters, you gain 1 life if this is the first time this ability has resolved this turn. If it's the second time, draw a card. If it's the third time, put a +1/+1 counter on each creature you control.",W,Halfling; Citizen; counters; lifegain; card draw,HOB,4,1
+Zero Point Ballad,Sorcery,"Destroy all creatures with toughness X or less. You lose X life. If X is 6 or more, return a creature card put into a graveyard this way to the battlefield under your control.",B,reanimator; graveyard; pay life,EOE,128,1
+The Spot's Portal,Instant,Put target creature on the bottom of its owner's library. You lose 2 life unless you control a Villain.,B,pay life,MSC,798,1
+All-Fates Stalker,Creature — Drix Assassin,"When this creature enters, exile up to one target non-Assassin creature until this creature leaves the battlefield.
+Warp {1}{W} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",W,Drix; Assassin; exile cast; etb; warp; tempo; cost-reduction,EOE,3,1
+Honor,Sorcery,"Put a +1/+1 counter on target creature.
+Draw a card.",W,counters; card draw,EOE,21,1
+Auroral Procession,Instant,Return target card from your graveyard to your hand.,U/G,graveyard,TDM,169,1
+Molten Exhale,Sorcery,"You may cast this spell as though it had flash if you behold a Dragon as an additional cost to cast it. (To behold a Dragon, choose a Dragon you control or reveal a Dragon card from your hand.)
+Molten Exhale deals 4 damage to target creature or planeswalker.",R,burn; behold; dragons,TDM,113,1
+Chief Warg's Company,Creature — Wolf,"Trample
+This creature can't attack unless you control two or more other Wolves.
+At the beginning of your upkeep, create a 2/2 green Wolf creature token.",B/G,Wolf; Wolves; tokens; trample; evasion,HOB,151,1
+"Black Cat, Cunning Thief",Legendary Creature — Human Rogue Villain,"When Black Cat enters, look at the top nine cards of target opponent's library, exile two of them face down, then put the rest on the bottom of their library in a random order. You may play the exiled cards for as long as they remain exiled. Mana of any type can be spent to cast spells this way.",B,Human; Rogue; Villain; heist; etb; selection,SPM,52,1
+"Annie Flash, the Veteran",Legendary Creature — Human Rogue,"Flash
+When Annie Flash enters, if you cast it, return target permanent card with mana value 3 or less from your graveyard to the battlefield tapped.
+Whenever Annie Flash becomes tapped, exile the top two cards of your library. You may play those cards this turn.",W/R/G,Human; Rogue; graveyard; etb; impulse; flash; tempo,OTJ,190,1
+Grand Abolisher,Creature — Human Cleric,"During your turn, your opponents can't cast spells or activate abilities of artifacts, creatures, or enchantments.",W,Human; Cleric,BIG,2,1
+Rest in Peace,Enchantment,"When this enchantment enters, exile all graveyards.
+If a card or token would be put into a graveyard from anywhere, exile it instead.",W,graveyard; etb,BIG,4,1
+"Sami, Ship's Engineer",Legendary Creature — Human Artificer,"At the beginning of your end step, if you control two or more tapped creatures, create a tapped 2/2 colorless Robot artifact creature token.",W/R,Human; Artificer; tokens,EOE,225,1
+Arid Archway,Land — Desert,"This land enters tapped.
+When this land enters, return a land you control to its owner's hand. If another Desert was returned this way, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)
+{T}: Add {C}{C}.",Colorless,Desert; graveyard; mana; etb; bounce; selection; surveil,OTJ,252,2
+Assimilation Aegis,Artifact — Equipment,"When this Equipment enters, exile up to one target creature until this Equipment leaves the battlefield.
+Whenever this Equipment becomes attached to a creature, for as long as this Equipment remains attached to it, that creature becomes a copy of a creature card exiled with this Equipment.
+Equip {2}",W/U,Equipment; etb; equipment; equip,OTJ,192,1
+"Zurgo, Thunder's Decree",Legendary Creature — Orc Warrior,"Mobilize 2 (Whenever this creature attacks, create two tapped and attacking 1/1 red Warrior creature tokens. Sacrifice them at the beginning of the next end step.)
+During your end step, Warrior tokens you control have ""This token can't be sacrificed.""",W/B/R,Orc; Warrior; sacrifice; tokens; mobilize; go-wide; aggro,TDM,237,1
+Mockingbird,Creature — Bird Bard,"Flying
+You may have this creature enter as a copy of any creature on the battlefield with mana value less than or equal to the amount of mana spent to cast this creature, except it's a Bird in addition to its other types and it has flying.",U,Bird; Bard; flying; evasion,BLB,61,1
+Stormchaser's Talent,Enchantment — Class,"(Gain the next level as a sorcery to add its ability.)
+When this Class enters, create a 1/1 blue and red Otter creature token with prowess.
+{3}{U}: Level 2
+When this Class becomes level 2, return target instant or sorcery card from your graveyard to your hand.
+{5}{U}: Level 3
+Whenever you cast an instant or sorcery spell, create a 1/1 blue and red Otter creature token with prowess.",U,Class; graveyard; tokens; etb; spellslinger,BLB,75,1
+Rise of the Varmints,Sorcery,"Create X 2/1 green Varmint creature tokens, where X is the number of creature cards in your graveyard.
+Plot {2}{G} (You may pay {2}{G} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)",G,graveyard; exile cast; tokens; plot; tempo; cost-reduction,OTJ,179,1

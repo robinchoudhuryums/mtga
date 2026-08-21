@@ -251,8 +251,6 @@ Lassoed by the Law,Enchantment,"When this enchantment enters, exile target nonla
 When this enchantment enters, create a 1/1 red Mercenary creature token with ""{T}: Target creature you control gets +1/+0 until end of turn. Activate only as a sorcery.""",W,tokens; removal; etb; pump,OTJ,18,Uncommon,3; 36a,,5.5,hand
 Outcaster Greenblade,Creature — Human Mercenary,"When this creature enters, search your library for a basic land card or a Desert card, reveal it, put it into your hand, then shuffle.
 This creature gets +1/+1 for each Desert you control.",G,Human; Mercenary; ramp; etb; pump,OTJ,172,Uncommon,50,,2.5,seed
-Rise of the Varmints,Sorcery,"Create X 2/1 green Varmint creature tokens, where X is the number of creature cards in your graveyard.
-Plot {2}{G} (You may pay {2}{G} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)",G,graveyard; exile cast; tokens; plot; tempo; cost-reduction,OTJ,179,Uncommon,50,,3.5,seed
 Thunder Lasso,Artifact — Equipment,"When this Equipment enters, attach it to target creature you control.
 Equipped creature gets +1/+1.
 Whenever equipped creature attacks, tap target creature defending player controls.
@@ -312,8 +310,6 @@ I, II — Create a 5/5 green Elephant creature token.
 III — Double the power and toughness of each creature you control until end of turn.",U/R/G,Saga; sacrifice; tokens; saga; double,TDM,220,Rare,17,Temur (URG) go-wide Saga (5/5 Elephants + team P/T double) — only castable in 5c Spectrum,5.5,hand
 Runescale Stormbrood // Chilling Screech,Creature — Dragon // Instant — Omen,"Flying
 Whenever you cast a noncreature spell or a Dragon spell, this creature gets +2/+0 until end of turn. // Counter target spell with mana value 2 or less. (Then shuffle this card into its owner's library.)",U/R,Dragon; Omen; counterspell; pump; flying; evasion,TDM,221,Uncommon,49,Deck 49: a 4-drop DRAGON that is also a Dragon payoff (+2/+0 on every noncreature or Dragon spell). Hidden from every red filter because its identity is U/R from the {1}{U} Omen half - the FRONT face is {3}{R} and mono-red castable (G-58 bulk-triage variant).,7.2,hand
-Molten Exhale,Sorcery,"You may cast this spell as though it had flash if you behold a Dragon as an additional cost to cast it. (To behold a Dragon, choose a Dragon you control or reveal a Dragon card from your hand.)
-Molten Exhale deals 4 damage to target creature or planeswalker.",R,burn; behold; dragons,TDM,113,Common,49,,6.0,hand
 Phoenix Fleet Airship,Artifact — Vehicle,"Flying
 At the beginning of your end step, if you sacrificed a permanent this turn, create a token that's a copy of this Vehicle.
 As long as you control eight or more permanents named Phoenix Fleet Airship, this Vehicle is an artifact creature.

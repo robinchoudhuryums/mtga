@@ -2420,6 +2420,29 @@ Part in Friendship,{4}{G},5,
 Warg Tactics,{1}{G},2,
 Insidious Fungus,{G},1,
 Cryptic Caves,,0,
+Rattleback Apothecary,{2}{B},3,Deathtouch
+Valley Rotcaller,{1}{B},2,Menace
+"Smaug, Wicked Worm",{3}{B}{R},5,Flying;Treasure
+Sunstar Chaplain,{1}{W},2,
+Belladonna Took,{1}{W},2,
+Zero Point Ballad,{X}{B},1,
+The Spot's Portal,{2}{B},3,
+All-Fates Stalker,{3}{W},4,Warp
+Honor,{W},1,
+Auroral Procession,{G}{U},2,
+Molten Exhale,{1}{R},2,Behold
+Chief Warg's Company,{1}{B}{G},3,Trample
+"Black Cat, Cunning Thief",{3}{B}{B},5,
+"Annie Flash, the Veteran",{3}{R}{G}{W},6,Flash
+Grand Abolisher,{W}{W},2,
+Rest in Peace,{1}{W},2,
+"Sami, Ship's Engineer",{2}{R}{W},4,
+Arid Archway,,0,Surveil
+Assimilation Aegis,{1}{W}{U},3,Equip
+"Zurgo, Thunder's Decree",{R}{W}{B},3,Mobilize
+Mockingbird,{X}{U},1,Flying
+Stormchaser's Talent,{U},1,
+Rise of the Varmints,{3}{G},4,Plot
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -3076,9 +3099,7 @@ Putrid Warrior,{W}{B},2,
 Enlisted Wurm,{4}{G}{W},6,Cascade
 Sanctum of Ugin,,0,
 Collector's Cage,{1}{W},2,Hideaway
-Grand Abolisher,{W}{W},2,
 Oltec Matterweaver,{2}{W},3,
-Rest in Peace,{1}{W},2,
 Esoteric Duplicator,{2}{U},3,
 Worldwalker Helm,{2}{U},3,Explore
 Greed's Gambit,{3}{B},4,
@@ -3130,7 +3151,6 @@ Kitnap,{2}{U}{U},4,Gift;Enchant
 Long River Lurker,{2}{U},3,Ward
 Long River's Pull,{U}{U},2,Gift
 Mindwhisker,{2}{U},3,Surveil;Threshold
-Mockingbird,{X}{U},1,Flying
 Otterball Antics,{1}{U},2,Flashback
 Plumecreed Escort,{1}{U},2,Flying;Flash
 Season of Weaving,{4}{U}{U},6,
@@ -3139,7 +3159,6 @@ Shoreline Looter,{1}{U},2,Threshold
 Spellgyre,{2}{U}{U},4,Surveil
 Splash Lasher,{3}{U},4,Offspring
 Splash Portal,{U},1,
-Stormchaser's Talent,{U},1,
 Sugar Coat,{2}{U},3,Enchant;Flash
 Thought Shucker,{1}{U},2,Threshold
 Thundertrap Trainer,{1}{U},2,Offspring
@@ -3163,7 +3182,6 @@ Ruthless Negotiation,{B},1,Flashback
 Sinister Monolith,{3}{B},4,
 Starlit Soothsayer,{2}{B},3,Flying;Surveil
 Thought-Stalker Warlock,{2}{B},3,Menace
-Valley Rotcaller,{1}{B},2,Menace
 "Wick, the Whorled Mind",{3}{B},4,
 Agate Assault,{2}{R},3,
 Alania's Pathmaker,{3}{R},4,
@@ -4898,7 +4916,6 @@ Command Tower,,0,
 "Inspirit, Flagship Vessel",{U}{R}{W},3,Station
 "Kilo, Apogee Mind",{U}{R}{W},3,Haste;Proliferate
 "Szarel, Genesis Shepherd",{2}{B}{R}{G},5,Flying
-All-Fates Stalker,{3}{W},4,Warp
 Astelli Reclaimer,{3}{W}{W},5,Flying;Warp
 Auxiliary Boosters,{4}{W},5,Equip
 Beyond the Quiet,{3}{W}{W},5,
@@ -4906,7 +4923,6 @@ Dockworker Drone,{1}{W},2,
 Emergency Eject,{2}{W},3,
 Exosuit Savior,{2}{W},3,Flying
 Flight-Deck Coordinator,{2}{W},3,
-Honor,{W},1,
 Lightstall Inquisitor,{W},1,Vigilance
 Lumen-Class Frigate,{1}{W},2,Station
 Pinnacle Starcage,{1}{W}{W},3,
@@ -4917,7 +4933,6 @@ Seam Rip,{W},1,
 The Seriema,{1}{W}{W},3,Station
 Squire's Lightblade,{W},1,Equip;Flash
 Starfighter Pilot,{1}{W},2,Surveil
-Sunstar Chaplain,{1}{W},2,
 Sunstar Expansionist,{1}{W},2,Landfall
 Sunstar Lightsmith,{3}{W},4,
 Atomic Microsizer,{U},1,Equip
@@ -4960,7 +4975,6 @@ Susurian Voidborn,{2}{B},3,Warp
 Tragic Trajectory,{B},1,Void
 Voidforged Titan,{4}{B},5,Void
 "Xu-Ifit, Osteoharmonist",{1}{B}{B},3,
-Zero Point Ballad,{X}{B},1,
 Debris Field Crusher,{4}{R},5,Station
 Drill Too Deep,{1}{R},2,
 Galvanizing Sawship,{5}{R},6,Station
@@ -5004,7 +5018,6 @@ Interceptor Mechan,{2}{B}{R},4,Flying;Void
 "Mm'menon, Uthros Exile",{1}{U}{R},3,Flying
 Mutinous Massacre,{3}{B}{B}{R}{R},7,
 Pinnacle Emissary,{1}{U}{R},3,Warp
-"Sami, Ship's Engineer",{2}{R}{W},4,
 Singularity Rupture,{3}{U}{B}{B},6,Mill
 Space-Time Anomaly,{2}{W}{U},4,Mill
 Station Monitor,{W}{U},2,
@@ -6056,7 +6069,6 @@ Mirror of Life Trapping,{4},4,
 Navigation Orb,{3},3,
 Baldur's Gate,,0,
 Long-Bodied Grey Dog,{3},3,Reach;Treasure;Flash
-Belladonna Took,{1}{W},2,
 Bilbo's Gambit,{1}{W},2,Gift;Treasure
 "Bofur, Reliable Guardian // Concerted Care",{W} // {1}{W},1,Lifelink
 Dwarven Provisioner,{1}{W},2,
@@ -6126,7 +6138,6 @@ Wood Elves,{2}{G},3,
 Bard the Bowman,{1}{W}{U},3,Reach
 Bard's Company,{2}{W}{U},4,
 "Bifur, Melodic Rider",{4}{R/W}{R/W},6,
-Chief Warg's Company,{1}{B}{G},3,Trample
 Duskwatch Hunter,{2}{B/G},3,
 "Dwalin, Weaponmaster",{1}{R/W},2,First strike
 Fearsome Goblin Pair,{2}{B/R},3,Amass
@@ -6134,7 +6145,6 @@ Goblin Plate Mail,{1}{B/R},2,Amass;Equip
 The Great Goblin,{1}{B/R}{B/R},3,
 Large Bear,{3}{B/G}{B/G},5,Reach;Haste;Trample
 "Nori, Teller of Tales",{1}{R/W},2,
-"Smaug, Wicked Worm",{3}{B}{R},5,Flying;Treasure
 Thorin Oakenshield,{R}{W},2,Trample
 "Thranduil, Sindarin Liege // Silvan Rally",{2}{G/U}{G/U} // {1}{G/U}{G/U},4,Mill;Landfall
 The Arkenstone // Seek the Heart,{5} // {2}{W},5,
@@ -10838,7 +10848,6 @@ Time Warp,{3}{U}{U},5,
 Dark Ritual,{B},1,
 Doomfall,{2}{B},3,
 Doomsday,{B}{B}{B},3,
-The Spot's Portal,{2}{B},3,
 "Swarm, Being of Bees",{2}{B},3,Flying;Mayhem;Flash
 Big Score,{3}{R},4,Treasure
 Grapeshot,{1}{R},2,Storm
@@ -11530,7 +11539,6 @@ Nezumi Linkbreaker,{B},1,
 Overzealous Muscle,{4}{B},5,
 Pitiless Carnage,{3}{B},4,Plot
 Rakish Crew,{2}{B},3,
-Rattleback Apothecary,{2}{B},3,Deathtouch
 Raven of Fell Omens,{1}{B},2,Flying
 Rictus Robber,{3}{B},4,Plot
 Rooftop Assassin,{3}{B},4,Flying;Lifelink;Flash
@@ -11575,7 +11583,6 @@ Outcaster Trailblazer,{2}{G},3,Plot
 Railway Brawler,{3}{G}{G},5,Reach;Plot;Trample
 Raucous Entertainer,{1}{G},2,
 Reach for the Sky,{3}{G},4,Enchant;Flash
-Rise of the Varmints,{3}{G},4,Plot
 Smuggler's Surprise,{G},1,Spree;Mill
 Spinewoods Armadillo,{4}{G}{G},6,Reach;Ward
 Spinewoods Paladin,{4}{G},5,Plot;Trample
@@ -11584,9 +11591,7 @@ Throw from the Saddle,{1}{G},2,
 Trash the Town,{G},1,Spree
 Tumbleweed Rising,{1}{G},2,Plot
 Akul the Unrepentant,{B}{B}{R}{R},4,Flying;Trample
-"Annie Flash, the Veteran",{3}{R}{G}{W},6,Flash
 Annie Joins Up,{1}{R}{G}{W},4,
-Assimilation Aegis,{1}{W}{U},3,Equip
 At Knifepoint,{1}{B}{R},3,
 "Bonny Pall, Clearcutter",{3}{G}{U}{U},6,Reach
 "Breeches, the Blastmaker",{1}{U}{R},3,Menace
@@ -11624,7 +11629,6 @@ Luxurious Locomotive,{5},5,Treasure;Crew
 Mobile Homestead,{2},2,Crew
 Silver Deputy,{2},2,
 Sterling Hound,{3},3,Surveil
-Arid Archway,,0,Surveil
 Bristling Backwoods,,0,
 Conduit Pylons,,0,Surveil
 Creosote Heath,,0,
@@ -13203,7 +13207,6 @@ Oscorp Research Team,{3}{U},4,
 School Daze,{3}{U}{U},5,Do Homework;Fight Crime
 Secret Identity,{U},1,Conceal
 Spider-Sense,{1}{U},2,Web-slinging
-"Black Cat, Cunning Thief",{3}{B}{B},5,
 The Death of Gwen Stacy,{2}{B},3,
 "Eddie Brock // Venom, Lethal Protector",{2}{B} // {3}{B}{R}{G},3,Transform;Haste;Trample;Menace
 Merciless Enforcers,{1}{B},2,Lifelink
@@ -13625,7 +13628,6 @@ Cori-Steel Cutter,{1}{R},2,Flurry;Equip
 Fleeting Effigy,{R},1,Haste
 Iridescent Tiger,{4}{R},5,
 Magmatic Hellkite,{2}{R}{R},4,Flying
-Molten Exhale,{1}{R},2,Behold
 Narset's Rebuke,{4}{R},5,
 Rescue Leopard,{2}{R},3,
 Seize Opportunity,{2}{R},3,
@@ -13654,7 +13656,6 @@ Traveling Botanist,{1}{G},2,
 Undergrowth Leopard,{1}{G},2,Vigilance
 Warden of the Grove,{2}{G},3,Endure
 All-Out Assault,{2}{R}{W}{B},5,
-Auroral Procession,{G}{U},2,
 Awaken the Honored Dead,{B}{G}{U},3,Mill
 Barrensteppe Siege,{2}{W}{B},4,
 Bone-Cairn Butcher,{1}{R}{W}{B},4,Mobilize
@@ -13695,7 +13696,6 @@ Twinmaw Stormbrood // Charring Bite,{5}{W} // {1}{R},6,Flying
 Whirlwing Stormbrood // Dynamic Soar,{4}{U} // {2}{G},5,Flying;Flash
 Windcrag Siege,{1}{R}{W},3,
 Yathan Roadwatcher,{1}{W}{B}{G},4,Mill
-"Zurgo, Thunder's Decree",{R}{W}{B},3,Mobilize
 Abzan Monument,{2},2,
 Boulderborn Dragon,{5},5,Flying;Surveil;Vigilance
 Embermouth Sentinel,{2},2,
