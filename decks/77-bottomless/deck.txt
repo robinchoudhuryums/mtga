@@ -1,0 +1,110 @@
+#: name: Bottomless
+#: format: Standard
+#: colors: UB
+#: plan: midrange
+#: archetype: DIMIR (U/B) SELF-MILL DESCENT — the convention-breaker from the 2026-08-21
+#: archetype: playstyle-gap sweep: this deck mills ITSELF, on purpose, all the way down.
+#: archetype: The payoff is a LADDER, not a single gate, so every milestone pays: at 7+
+#: archetype: cards (threshold) the cheap bodies turn on — Nightwhorl Hermit and Cephalid
+#: archetype: Inkmage go unblockable, Crypt Feaster/Billowing Shriekmass/Most Decrepit
+#: archetype: Old Bird grow, Dreadwing Scavenger gains deathtouch; the SCALERS keep
+#: archetype: climbing with every card milled — Souls of the Lost's power, Quag Feast and
+#: archetype: Song of Stupefaction's removal reach, Swallowed by Leviathan's counter tax;
+#: archetype: at 14+ Emet-Selch transforms and the graveyard literally becomes the hand;
+#: archetype: Everflowing Well flips at descend-8; and at ZERO LIBRARY the seed pays —
+#: archetype: Living Conundrum is a 10/10 flying hexproof vigilance monster whose static
+#: archetype: SKIPS your fatal empty draws, with Stillness in Motion as both engine
+#: archetype: (upkeep mill 3) and safety valve (on empty, it recycles 5 cards back).
+#: archetype: Interaction scales with the yard by design. DISTINCTIVENESS: deck 51 mills
+#: archetype: the OPPONENT (a clock — G-62); deck 62 stocks its yard but never wants it
+#: archetype: empty (reanimator); the CLOSE neighbour is 64 Gray Goo (88% themes, 9
+#: archetype: shared cards — the generic mill-enabler shell), and the split is the
+#: archetype: payoff direction: 64 SPENDS the yard (Mimeoplasm/Scavenging Ooze exile it
+#: archetype: for counters, and an empty library would kill it), while this deck COUNTS
+#: archetype: the yard and wants the library at ZERO — no roster deck treats its own
+#: archetype: library as a resource to spend out. The G-62 rule does not apply here: self-mill is not
+#: archetype: interaction and is not counted as any — it is the deck's mana, effectively.
+#: protect: Living Conundrum; Emet-Selch, Unsundered; Stillness in Motion; The Everflowing Well; Nashi, Searcher in the Dark
+#: tier: C (PROVISIONAL) — an unplayed first draft graded under the floor it measures:
+#: tier: the deck deliberately spends its safest resource (its own library) and its
+#: tier: apex payoffs are singletons found by the very mill that endangers them; the
+#: tier: threshold bodies are small even switched on, interaction is real but
+#: tier: yard-gated (weak in the early turns the deck spends setting up), and losing
+#: tier: Living Conundrum with an empty library loses the game to the next draw —
+#: tier: Stillness in Motion is the only other valve. The Emet-Selch line (yard as
+#: tier: hand at 14+) is the realistic ceiling and it is genuinely strong. Re-grade
+#: tier: with games; a B is reachable if the clock proves faster than it reads.
+#: notes: Drafted 2026-08-21 from the repeatable-loop/convention-breaker sweep. MECHANIC
+#: notes: READS: Living Conundrum's skip-draw is a STATIC on the battlefield — if it
+#: notes: leaves with the library empty, the next draw is lethal; sequence Stillness in
+#: notes: Motion as the backup valve (its recycle-5 also re-arms Conundrum's 10/10 by
+#: notes: un-emptying the library — the two apexes fight each other slightly; empty is
+#: notes: for winning, not for its own sake). EMET-SELCH's back face EXILES future
+#: notes: yard-fills — transform when the yard is already stocked; his exile-replacement
+#: notes: also turns every later mill into exile, so flip him AFTER the threshold suite
+#: notes: is on. The Master of Lake-town is SYMMETRIC (every life loss mills that
+#: notes: player) — against another graveyard deck he feeds them; he is the first cut in
+#: notes: that matchup. Dawnhand Eulogist's Elf-in-yard drain rider is DEAD here (zero
+#: notes: Elves) — she is a 2-drop mill-3 body, graded as exactly that. Dread Summons
+#: notes: mills YOU for X (your choice of targets includes yourself) and pays a Zombie
+#: notes: per creature milled — with ~27 creatures, X=6 is ~2-3 bodies plus 6 yard cards.
+#: notes: CRAFTS (13): Overlord of the Balemurk M; Stillness in Motion / Souls of the
+#: notes: Lost / Dread Summons / The Master of Lake-town R; Cephalid Inkmage / Billowing
+#: notes: Shriekmass / Dreadwing Scavenger / Festerleech / Picklock Prankster / Swallowed
+#: notes: by Leviathan U; Crow of Dark Tidings / Daggerfang Duo C — wishlist Target 77.
+
+# The descent — apex payoffs
+1 Living Conundrum (MKM) 63
+1 Stillness in Motion (TDM) 59
+1 Emet-Selch, Unsundered (FIN) 218
+
+# Threshold and yard-count bodies
+1 Kiora, the Rising Tide (FDN) 45
+1 Nightwhorl Hermit (BLB) 62
+1 Crypt Feaster (FDN) 59
+1 Osseous Sticktwister (DSK) 112
+1 Most Decrepit Old Bird (HOB) 49
+1 Cephalid Inkmage (FDN) 32
+1 Billowing Shriekmass (FDN) 56
+1 Dreadwing Scavenger (FDN) 118
+1 Souls of the Lost (LCI) 121
+1 Festerleech (MKM) 85
+1 The Master of Lake-town (HOB) 77
+
+# Mill engines
+1 Nashi, Searcher in the Dark (DSK) 223
+1 Wick's Patrol (BLB) 121
+1 Shinra Reinforcements (FIN) 118
+1 Paramecia Coloniex (TMT) 70
+1 Venomized Cat (SPM) 72
+1 Eerie Gravestone (SPM) 163
+1 Inspiration from Beyond (FDN) 43
+1 Sokka's Haiku (TLA) 71
+1 The Everflowing Well (LCI) 56
+1 Overlord of the Balemurk (DSK) 113
+1 Picklock Prankster // Free the Fae (WOE) 64
+1 Dread Summons (FDN) 604
+1 Crow of Dark Tidings (FDN) 519
+1 Daggerfang Duo (BLB) 89
+1 Dawnhand Eulogist (ECL) 99
+
+# Interaction — scales with the yard
+1 Quag Feast (DFT) 100
+1 Song of Stupefaction (LCI) 77
+1 Swallowed by Leviathan (FIN) 79
+1 Bake into a Pie (FDN) 169
+1 Don't Make a Sound (DSK) 49
+
+# Lands (26)
+1 Watery Grave (TRK) 306
+1 Undercity Sewers (PZA) 0
+1 Gloomlake Verge (DSK) 260
+2 Dismal Backwater (FDN) 261
+1 Treno, Dark City (FIN) 290
+1 Serpent's Pass (TLA) 279
+1 Hidden Grotto (BLB) 254
+1 Hidden Lair (MSH) 269
+1 Soured Springs (OTJ) 264
+1 Eden, Seat of the Sanctum (FIN) 277
+8 Island (TRK) 319
+7 Swamp (TRK) 321

@@ -49,6 +49,7 @@ Beetle-Headed Merchants
 Benevolent River Spirit
 Bespoke Bō
 Betor, Kin to All
+Billowing Shriekmass
 Binding Negotiation
 Biogenic Upgrade
 Bitterbloom Bearer
@@ -94,9 +95,11 @@ Colossification
 Corrupt Court Official
 Crashing Wave
 Craterhoof Behemoth
+Crow of Dark Tidings
 Cruelclaw's Heist
 Crustacean Commando
 Cryogen Relic
+Daggerfang Duo
 Dark Confidant
 Darkstar Augur
 Deceit
@@ -294,6 +297,7 @@ Namazu Trader
 Nashi, Searcher in the Dark
 Needletooth Pack
 Neriv, Heart of the Storm
+Nightwhorl Hermit
 Ninja of the Hand
 North Pole Patrol
 Nurturing Bristleback
@@ -311,6 +315,7 @@ Pain for All
 Paradox Surveyor
 Pet Avengers
 Peter Parker
+Picklock Prankster // Free the Fae
 Pilfer
 Pond Prophet
 Powerful Broker
@@ -374,7 +379,9 @@ Skyward Spider
 Slick Imitator
 Slime Against Humanity
 Snow Villiers
+Song of Stupefaction
 Soul Immolation
+Souls of the Lost
 Sovereign Okinec Ahau
 Sozin's Comet
 Spider-Man, Web-Slinger
