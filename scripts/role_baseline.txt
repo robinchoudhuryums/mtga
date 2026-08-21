@@ -110,6 +110,7 @@ Diligent Zookeeper
 Donatello, Mutant Mechanic
 Donatello, Turtle Techie
 Doubling Season
+Dracogenesis
 Draconautics Engineer
 Dragon Fodder
 Dragoon's Lance
@@ -367,6 +368,7 @@ Shredder, Unrelenting
 Shrike Force
 Silent Hallcreeper
 Silvergill Mentor
+Silverquill, the Disputant
 Skyskipper Duo
 Skyward Spider
 Slick Imitator
