@@ -306,6 +306,9 @@ If a creature you control that entered this turn would deal damage, it deals twi
 Stormscale Scion,Creature — Dragon,"Flying
 Other Dragons you control get +1/+1.
 Storm (When you cast this spell, copy it for each spell cast before it this turn. Copies become tokens.)",R,Dragon; pump; flying; evasion; storm; spellslinger,TDM,123,Mythic,49,,7.0,hand
+Maelstrom of the Spirit Dragon,Land,"{T}: Add {C}.
+{T}: Add one mana of any color. Spend this mana only to cast a Dragon spell or an Omen spell.
+{4}, {T}, Sacrifice this land: Search your library for a Dragon card, reveal it, put it into your hand, then shuffle.",Colorless,sacrifice; ramp; mana,TDM,260,Rare,,,4.0,seed
 Magmatic Hellkite,Creature — Dragon,"Flying
 When this creature enters, destroy target nonbasic land an opponent controls. Its controller searches their library for a basic land card, puts it onto the battlefield tapped with a stun counter on it, then shuffles. (If a permanent with a stun counter would become untapped, remove one from it instead.)",R,Dragon; counters; removal; etb; flying; evasion,TDM,111,Rare,49,,5.5,hand
 Roar of Endless Song,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)

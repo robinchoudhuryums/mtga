@@ -1,0 +1,117 @@
+#: name: Spirit Call
+#: format: Standard
+#: colors: WUBRG
+#: plan: midrange
+#: archetype: FIVE-COLOR DRAGONS with an ALT-WIN CLOCK — built around Call the Spirit
+#: archetype: Dragons (Dragons you control have INDESTRUCTIBLE; at your upkeep, put a
+#: archetype: +1/+1 counter on a Dragon of each color — five Dragons countered this way
+#: archetype: at once wins the game on the spot). PLAN: ramp and fix into a board of
+#: archetype: multicolor Dragons, land the enchantment, and win at the next upkeep —
+#: archetype: the indestructible grant means the board that wins survives wraths while
+#: archetype: you wait. The color-coverage core is the five SOS Elder Dragons (Lorehold
+#: archetype: RW, Prismari UR, Quandrix GU, Silverquill WB, Witherbloom BG — any five
+#: archetype: of them cover WUBRG exactly) backed by the TDM Spirit Dragons (Betor WBG,
+#: archetype: Shiko URW, Ureni GRU) and Lathliss, whose 5/5 RED Dragon tokens are legal
+#: archetype: bodies for the R slot. FALLBACK: 21 mostly-evasive Dragons simply attack;
+#: archetype: Dracogenesis cheats the top end (free Dragon spells, incl. Summon:
+#: archetype: Bahamut's 9-drop saga), Breaching/Corroding Dragonstorm rebound off every
+#: archetype: Dragon ETB, and Dragonhawk converts a big board into burn and impulse.
+#: archetype: DISTINCTIVENESS: deck 49 Big Draco is MONO-RED combat Dragons — same
+#: archetype: tribe, different win condition, different manabase (the 26/26a split, one
+#: archetype: scale up). No other 4c/5c deck on the roster is tribal, and no deck in
+#: archetype: the roster wins at upkeep by a counting condition.
+#: protect: Call the Spirit Dragons; Dracogenesis; Lathliss, Dragon Queen; Sarkhan, Dragon Ascendant; Dragonstorm Globe
+#: tier: B (PROVISIONAL) — graded UNDER the A metrics floor (interaction 7, card
+#: tier: advantage 4, protection 4): an unplayed first draft whose five-color,
+#: tier: tapland-heavy manabase pays real speed for its coverage (keepable 87% but
+#: tier: cast-on-curve in the 50-70% band across the gold Dragons, and Drakuseth's
+#: tier: {R}{R}{R} reads 32% — the nonland fixers the model cannot see are what make
+#: tier: it playable), and the alt-win asks the enchantment to survive a full turn
+#: tier: cycle. The ceiling — an indestructible five-color Dragon board that wins at
+#: tier: upkeep through any wrath — is real. Re-grade with games.
+#: notes: Drafted 2026-08-21 from the playstyle-gap survey (alt-win thread): the seed
+#: notes: was owned and homeless, and the census found 28 owned Standard Dragons
+#: notes: covering all five colors. NEARLY ALL-OWNED: the only craft is 1x Maelstrom of
+#: notes: the Spirit Dragon (R land — any-color for Dragon spells + a late Dragon
+#: notes: tutor; see wishlist Target 76). MECHANIC READS: the win check counts FIVE
+#: notes: DIFFERENT Dragons, one per color — a multicolor Dragon can fill any ONE of
+#: notes: its colors, so Betor+Shiko+two gold+any R covers it with exactly five bodies;
+#: notes: Lathliss tokens are red Dragons and count. The trigger is at YOUR upkeep, so
+#: notes: the enchantment must survive one turn cycle — the Dragons are indestructible,
+#: notes: the enchantment is NOT; play it with the win already on board when possible.
+#: notes: Behold (Molten/Dispelling Exhale, Sarkhan) reads a Dragon in HAND too — the
+#: notes: removal is live from turn two. Witherbloom's affinity counts every creature;
+#: notes: Dracogenesis casts Summon: Bahamut free ({9}, MV 9 <= no cap — any Dragon).
+#: notes: CURVE IS TALL BY DESIGN (avg MV ~5 among Dragons) against 10 ramp/fixing
+#: notes: pieces and 26 lands; grade castability by consistency's cast-on-curve, not
+#: notes: the raw pip table. ROTATION: the TDM/SOS core is recent — no ~2026 cliffs.
+
+# The seed
+1 Call the Spirit Dragons (TDM) 174
+
+# Dragons — color-coverage core (the five colleges + the Spirit Dragons)
+1 Silverquill, the Disputant (SOS) 226
+1 Lorehold, the Historian (SOS) 201
+1 Prismari, the Inspiration (SOS) 212
+1 Quandrix, the Proof (SOS) 218
+1 Witherbloom, the Balancer (SOS) 245
+1 Betor, Kin to All (TDM) 172
+1 Shiko, Paragon of the Way (TDM) 223
+1 Ureni, the Song Unending (TDM) 233
+1 Armament Dragon (TDM) 168
+1 Jeskai Shrinekeeper (TDM) 197
+
+# Dragons — bodies, engines, beef
+1 Dragonfly Swarm (TLA) 215
+1 Pet Avengers (MSH) 178
+1 Nova Hellkite (EOE) 148
+1 Smaug, Wicked Worm (HOB) 164
+1 Dragonhawk, Fate's Tempest (BLB) 132
+1 Twinflame Tyrant (FDN) 97
+1 Lathliss, Dragon Queen (FDN) 627
+1 Ancestor Dragon (FDN) 489
+1 Niv-Mizzet, Visionary (FDN) 123
+1 Drakuseth, Maw of Flames (FDN) 760
+1 Summon: Bahamut (FIN) 1
+
+# Ramp / fixing / tribal engine
+1 Llanowar Elves (FDN) 227
+1 Sarkhan, Dragon Ascendant (TDM) 118
+2 Dragonstorm Globe (TDM) 241
+1 Dragonbroods' Relic (TDM) 140
+1 A Realm Reborn (FIN) 196
+1 Breaching Dragonstorm (TDM) 101
+1 Corroding Dragonstorm (TDM) 75
+1 Dracogenesis (TDM) 105
+
+# Interaction (behold-powered)
+1 Molten Exhale (TDM) 113
+1 Dispelling Exhale (TDM) 41
+1 Bite Down (FDN) 212
+
+# Lands (26)
+2 Mystic Monastery (TDM) 262
+1 Nomad Outpost (TDM) 263
+1 Opulent Palace (TDM) 264
+1 Sandsteppe Citadel (TDM) 266
+1 Blood Crypt (ECL) 262
+1 Breeding Pool (EOE) 251
+1 Hallowed Fountain (ECL) 265
+1 Overgrown Tomb (TRK) 289
+1 Watery Grave (TRK) 306
+1 Capital City (FIN) 274
+1 Captivating Cave (LCI) 268
+1 Daily Bugle Building (SPM) 179
+1 Maelstrom of the Spirit Dragon (TDM) 260
+1 Rugged Highlands (M21) 249
+1 Gongaga, Reactor Town (FIN) 280
+1 Thornwood Falls (FDN) 269
+1 Wind-Scarred Crag (FDN) 271
+1 Sun-Blessed Peak (TLA) 280
+1 Temple of Triumph (FDN) 705
+1 Birnin Zana Plaza (MSH) 262
+1 Kyoshi Village (TLA) 271
+1 Swiftwater Cliffs (MOM) 273
+1 Bloodfell Caves (TDM) 250
+1 Scoured Barrens (M21) 250
+1 Dismal Backwater (FDN) 261
