@@ -2404,6 +2404,22 @@ Elven Raft-Steerer,{2}{U},3,Landfall
 Glen Elendra's Answer,{2}{U}{U},4,
 Aftermath Analyst,{1}{G},2,Mill
 Elven Passage,,0,Behold
+Icetill Explorer,{2}{G}{G},4,Mill;Landfall
+Tifa Lockhart,{1}{G},2,Trample;Double;Landfall
+"Ojer Kaslem, Deepest Growth",{3}{G}{G},5,Transform;Trample
+Sledge-Class Seedship,{2}{G},3,Station
+Groundchuck & Dirtbag,{4}{G}{G},6,Trample
+The Skullspore Nexus,{6}{G}{G},8,Double
+Vastlands Scavenger,{1}{G}{G} // {4}{G},3,Prepared;Mill;Deathtouch
+Little Bear,{2}{G},3,Flash
+Walk-In Closet,{2}{G} // {3}{G}{G},8,
+Rainveil Rejuvenator,{3}{G},4,Mill
+Kraven's Last Hunt,{3}{G},4,Mill
+Through the Forest Gate,{6}{G}{G},8,
+Part in Friendship,{4}{G},5,
+Warg Tactics,{1}{G},2,
+Insidious Fungus,{G},1,
+Cryptic Caves,,0,
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -4380,7 +4396,6 @@ Greenhouse // Rickety Gazebo,{2}{G} // {3}{G},7,Mill
 Hedge Shredder,{2}{G}{G},4,Crew;Mill
 Horrid Vigor,{1}{G},2,
 House Cartographer,{1}{G},2,Survival
-Insidious Fungus,{G},1,
 Manifest Dread,{1}{G},2,Manifest;Manifest dread
 Moldering Gym // Weight Room,{2}{G} // {5}{G},9,Manifest;Manifest dread
 Monstrous Emergence,{1}{G},2,
@@ -4973,12 +4988,10 @@ Eumidian Terrabotanist,{1}{G},2,Landfall
 Frenzied Baloth,{G}{G},2,Haste;Trample
 Fungal Colossus,{6}{G},7,
 Gene Pollinator,{G},1,
-Icetill Explorer,{2}{G}{G},4,Mill;Landfall
 Larval Scoutlander,{2}{G},3,Station
 Lashwhip Predator,{4}{G}{G},6,Reach
 Meltstrider's Resolve,{G},1,Fight;Enchant
 Sami's Curiosity,{G},1,
-Sledge-Class Seedship,{2}{G},3,Station
 Terrasymbiosis,{2}{G},3,
 "Alpharael, Dreaming Acolyte",{1}{U}{B},3,
 Biomechan Engineer,{G}{U},2,
@@ -5308,7 +5321,6 @@ Pelakka Wurm,{4}{G}{G}{G},7,Trample
 Primal Might,{X}{G},1,Fight
 Springbloom Druid,{2}{G},3,
 "Surrak, the Hunt Caller",{2}{G}{G},4,Formidable
-Cryptic Caves,,0,
 Goblin Grenade,{R},1,
 "Celes, Rune Knight",{1}{R}{W}{B},4,
 "Cloud, Ex-SOLDIER",{2}{R}{G}{W},5,Treasure;Haste
@@ -5416,7 +5428,6 @@ Prishe's Wanderings,{2}{G},3,
 Reach the Horizon,{3}{G},4,
 Sazh Katzroy,{3}{G},4,Double
 Sidequest: Raise a Chocobo // Black Chocobo,{1}{G},2,Transform;Landfall
-Tifa Lockhart,{1}{G},2,Trample;Double;Landfall
 "Torgal, A Fine Hound",{1}{G},2,
 Balthier and Fran,{1}{R}{G},3,Reach
 "Emet-Selch, Unsundered // Hades, Sorcerer of Eld",{1}{U}{B},3,Vigilance;Echo of the Lost;Transform
@@ -6107,13 +6118,9 @@ Tidings of War,{R},1,Amass;Flashback
 "Beorn, Reluctant Host // Till and Tend",{4}{G} // {1}{G},5,Trample
 Gigantic Big Bear,{5}{G}{G},7,Hexproof;Haste
 Guardian of the Halls,{1}{G},2,Trample
-Little Bear,{2}{G},3,Flash
 Nasty Little Rabbit,{G},1,Ferocious
 Ordinary Bear,{3}{G},4,
-Part in Friendship,{4}{G},5,
 Quarrel,{1}{G},2,
-Through the Forest Gate,{6}{G}{G},8,
-Warg Tactics,{1}{G},2,
 Wargling,{1}{G},2,Ferocious
 Wood Elves,{2}{G},3,
 Bard the Bowman,{1}{W}{U},3,Reach
@@ -8321,7 +8328,6 @@ Pugnacious Hammerskull,{2}{G},3,
 River Herald Guide,{2}{G},3,Vigilance;Explore
 Seeker of Sunlight,{G},1,Explore
 Sentinel of the Nameless City,{2}{G},3,Vigilance;Explore
-The Skullspore Nexus,{6}{G}{G},8,Double
 Spelunking,{2}{G},3,
 Staggering Size,{1}{G},2,
 Tendril of the Mycotyrant,{1}{G},2,
@@ -13206,7 +13212,6 @@ Parker Luck,{2}{B},3,
 Gwen Stacy // Ghost-Spider,{1}{R} // {2}{U}{R}{W},2,Flying;Vigilance;Transform;Haste
 Maximum Carnage,{4}{R},5,
 "Shocker, Unshakable",{4}{R}{R},6,Vibro-Shock Gauntlets
-Kraven's Last Hunt,{3}{G},4,Mill
 "Lizard, Connors's Curse",{2}{G}{G},4,Lizard Formula;Trample
 Miles Morales // Ultimate Spider-Man,{1}{G} // {3}{R}{G}{W},2,Camouflage;Transform;First strike;Haste;Double
 Professional Wrestler,{3}{G},4,Treasure
@@ -13641,7 +13646,6 @@ Krotiq Nestguard,{2}{G},3,Defender
 Lasyd Prowler,{2}{G}{G},4,Renew;Mill
 Nature's Rhythm,{X}{G}{G},2,Harmonize
 Piercing Exhale,{1}{G},2,Surveil;Behold
-Rainveil Rejuvenator,{3}{G},4,Mill
 Rite of Renewal,{3}{G},4,
 Roamer's Routine,{2}{G},3,Harmonize
 Sagu Pummeler,{3}{G},4,Reach;Renew
@@ -14246,7 +14250,6 @@ Mouser Attack!,{1}{R},2,
 Raphael's Technique,{4}{R}{R},6,Sneak
 Ravenous Robots,{1}{R},2,
 "Slash, Reptile Rampager",{3}{R}{R},5,Alliance
-Groundchuck & Dirtbag,{4}{G}{G},6,Trample
 Michelangelo's Technique,{4}{G},5,Sneak
 Saved by the Shell,{1}{G},2,
 Turtle Power!,{2}{G},3,Flash

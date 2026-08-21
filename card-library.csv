@@ -2913,7 +2913,7 @@ Thaumaton Torpedo,Artifact,"{6}, {T}, Sacrifice this artifact: Destroy target no
 {5}, {T}: Mill two cards. Then you may sacrifice this land. When you do, return another target permanent card from your graveyard to your hand.",Colorless,Town; graveyard; mill; sacrifice; mana,FIN,277,1
 Crossroads Village,Land — Town,"This land enters tapped. As it enters, choose a color.
 {T}: Add one mana of the chosen color.",Colorless,Town; mana,FIN,276,1
-Evolving Wilds,Land,"{T}, Sacrifice this land: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.",Colorless,sacrifice; ramp,ECL,264,1
+Evolving Wilds,Land,"{T}, Sacrifice this land: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.",Colorless,sacrifice; ramp,ECL,264,2
 Gingerbrute,Artifact Creature — Food Golem,"Haste (This creature can attack and {T} as soon as it comes under your control.)
 {1}: This creature can't be blocked this turn except by creatures with haste.
 {2}, {T}, Sacrifice this creature: You gain 3 life.",Colorless,Food; Golem; lifegain; sacrifice; haste; aggro,ELD,219,1
@@ -5132,3 +5132,45 @@ Counter all spells your opponents control and all abilities your opponents contr
 Aftermath Analyst,Creature — Elf Detective,"When this creature enters, mill three cards. (Put the top three cards of your library into your graveyard.)
 {3}{G}, Sacrifice this creature: Return all land cards from your graveyard to the battlefield tapped.",G,Elf; Detective; reanimator; graveyard; mill; sacrifice; etb,MKM,148,1
 Elven Passage,Land,"{T}, Pay 1 life, Sacrifice this land: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle. You may behold an Elf. If you do, untap that land. (To behold an Elf, choose an Elf you control or reveal an Elf card from your hand.)",Colorless,pay life; sacrifice; ramp; behold; dragons,HOB,181,1
+Icetill Explorer,Creature — Insect Scout,"You may play an additional land on each of your turns.
+You may play lands from your graveyard.
+Landfall — Whenever a land you control enters, mill a card.",G,Insect; Scout; graveyard; mill; landfall; lands; ramp,EOE,192,1
+Tifa Lockhart,Legendary Creature — Human Monk,"Trample
+Landfall — Whenever a land you control enters, double Tifa Lockhart's power until end of turn.",G,Human; Monk; landfall; trample; evasion; double; lands; ramp,FIN,206,1
+"Ojer Kaslem, Deepest Growth",Legendary Creature — God // Land,"Trample
+Whenever Ojer Kaslem deals combat damage to a player, reveal that many cards from the top of your library. You may put a creature card and/or a land card from among them onto the battlefield. Put the rest on the bottom in a random order.
+When Ojer Kaslem dies, return it to the battlefield tapped and transformed under its owner's control. // (Transforms from Ojer Kaslem, Deepest Growth.)
+{T}: Add {G}.
+{2}{G}, {T}: Transform this land. Activate only if you control ten or more permanents and only as a sorcery.",G,God; card advantage; mana; transform; trample; evasion,LCI,204,1
+Sledge-Class Seedship,Artifact — Spacecraft,"Station (Tap another creature you control: Put charge counters equal to its power on this Spacecraft. Station only as a sorcery. It's an artifact creature at 7+.)
+7+ | Flying
+Whenever this Spacecraft attacks, you may put a creature card from your hand onto the battlefield.",G,Spacecraft; station; counters; artifacts,EOE,208,1
+Groundchuck & Dirtbag,Legendary Creature — Ox Mole Mutant,"Trample
+Whenever you tap a land for mana, add {G}.",G,Ox; Mole; Mutant; trample; evasion,TMT,115,1
+The Skullspore Nexus,Legendary Artifact,"This spell costs {X} less to cast, where X is the greatest power among creatures you control.
+Whenever one or more nontoken creatures you control die, create a green Fungus Dinosaur creature token with base power and toughness each equal to the total power of those creatures.
+{2}, {T}: Double target creature's power until end of turn.",G,cost-reduction; tokens; double,LCI,212,1
+Vastlands Scavenger,Creature — Bear Druid // Instant,"Deathtouch
+This creature enters prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.) // Mill seven cards. Then put a creature card from among them onto the battlefield.",G,Bear; Druid; mill; prepared; spellslinger; tempo; graveyard; deathtouch; combat; removal,SOS,166,1
+Little Bear,Creature — Bear,"Flash
+When this creature enters, untap another target creature you control. If that creature is a Bear, put a +1/+1 counter on it.",G,Bear; counters; etb; flash; tempo,HOB,128,1
+Walk-In Closet,Enchantment — Room // Enchantment — Room,"You may play lands from your graveyard.
+(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.) // When you unlock this door, you may cast spells from your graveyard this turn, and if a card would be put into your graveyard from anywhere this turn, exile it instead.
+(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",G,Room; graveyard,DSK,205,1
+Rainveil Rejuvenator,Creature — Elephant Druid,"When this creature enters, you may mill three cards. (You may put the top three cards of your library into your graveyard.)
+{T}: Add an amount of {G} equal to this creature's power.",G,Elephant; Druid; graveyard; mill; mana; etb,TDM,152,1
+Kraven's Last Hunt,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
+I — Mill five cards. When you do, this Saga deals damage equal to the greatest power among creature cards in your graveyard to target creature.
+II — Target creature you control gets +2/+2 until end of turn.
+III — Return target creature card from your graveyard to your hand.",G,Saga; graveyard; mill; sacrifice; saga; pump,SPM,105,1
+Through the Forest Gate,Sorcery,"Look at the top twenty cards of your library, put any number of land cards from among them onto the battlefield tapped, then shuffle. You gain 8 life.",G,lifegain; selection,HOB,137,1
+Part in Friendship,Enchantment,"Whenever a nontoken creature you control dies, reveal cards from the top of your library until you reveal a creature card. If its mana value is less than or equal to the number of lands you control, put it onto the battlefield. Otherwise, put it into your hand. Put the rest on the bottom of your library in a random order. This ability triggers only once each turn.",G,,HOB,134,1
+Warg Tactics,Instant,"Choose one —
+• Destroy target creature with flying.
+• Put a +1/+1 counter on target creature you control. It gains trample and hexproof until end of turn. (It can't be the target of spells or abilities your opponents control.)",G,counters; removal,HOB,139,1
+Insidious Fungus,Creature — Fungus,"{2}, Sacrifice this creature: Choose one —
+• Destroy target artifact.
+• Destroy target enchantment.
+• Draw a card. Then you may put a land card from your hand onto the battlefield tapped.",G,Fungus; card draw; sacrifice; removal,DSK,186,1
+Cryptic Caves,Land,"{T}: Add {C}.
+{1}, {T}, Sacrifice this land: Draw a card. Activate only if you control five or more lands.",Colorless,card draw; sacrifice; mana,FDN,771,1

@@ -81,12 +81,6 @@ Archenemy's Charm,Instant,"Choose one —
 • Exile target creature or planeswalker.
 • Return one or two target creature and/or planeswalker cards from your graveyard to your hand.
 • Put two +1/+1 counters on target creature you control. It gains lifelink until end of turn.",B,counters; graveyard; lifegain; removal,EOE,88,Rare,52a,,6.0,seed
-Icetill Explorer,Creature — Insect Scout,"You may play an additional land on each of your turns.
-You may play lands from your graveyard.
-Landfall — Whenever a land you control enters, mill a card.",G,Insect; Scout; graveyard; mill; landfall; lands; ramp,EOE,192,Rare,50a,,7.0,hand
-Sledge-Class Seedship,Artifact — Spacecraft,"Station (Tap another creature you control: Put charge counters equal to its power on this Spacecraft. Station only as a sorcery. It's an artifact creature at 7+.)
-7+ | Flying
-Whenever this Spacecraft attacks, you may put a creature card from your hand onto the battlefield.",G,Spacecraft; station; counters; artifacts,EOE,208,Rare,50a,,5.5,seed
 The Eternity Elevator,Legendary Artifact — Spacecraft,"{T}: Add {C}{C}{C}.
 Station (Tap another creature you control: Put charge counters equal to its power on this Spacecraft. Station only as a sorcery.)
 20+ | {T}: Add X mana of any one color, where X is the number of charge counters on The Eternity Elevator.",Colorless,Spacecraft; mana; station; counters; artifacts,EOE,241,Rare,51,,5.5,hand
@@ -160,8 +154,6 @@ Machina — Equip {4} ({4}: Attach to target creature you control. Equip only as
 The Water Crystal,Legendary Artifact,"Blue spells you cast cost {1} less to cast.
 If an opponent would mill one or more cards, they mill that many cards plus four instead.
 {4}{U}{U}, {T}: Each opponent mills cards equal to the number of cards in your hand.",U,mill; cost-reduction; graveyard,FIN,85,Rare,51,,5.5,seed
-Tifa Lockhart,Legendary Creature — Human Monk,"Trample
-Landfall — Whenever a land you control enters, double Tifa Lockhart's power until end of turn.",G,Human; Monk; landfall; trample; evasion; double; lands; ramp,FIN,206,Rare,50a,,6.5,hand
 Vincent Valentine // Galian Beast,Legendary Creature — Assassin // Legendary Creature — Werewolf Beast,"Whenever a creature an opponent controls dies, put a number of +1/+1 counters on Vincent Valentine equal to that creature's power.
 Whenever Vincent Valentine attacks, you may transform it. // Trample, lifelink
 When Galian Beast dies, return it to the battlefield tapped (front face up).",B,Assassin; Werewolf; Beast; counters; lifegain; lifelink; transform; trample; evasion,FIN,125,Rare,52,,6.0,seed
@@ -186,14 +178,6 @@ If a red source you control would deal an amount of noncombat damage less than O
 When Ojer Axonil dies, return it to the battlefield tapped and transformed under its owner's control. // (Transforms from Ojer Axonil, Deepest Might.)
 {T}: Add {R}.
 {2}{R}, {T}: Transform this land. Activate only if red sources you controlled dealt 4 or more noncombat damage this turn and only as a sorcery.",R,God; mana; noncombat damage; transform; trample; evasion,LCI,158,Mythic,49,"Deck 49: upgrades ELEVEN noncombat damage sources to 4 apiece (Firespitter Whelp 1->4, Nova Hellkite 1->4, Nebula Dragon 3->4, Realm-Scorcher's repeatable ping, Plasma Bolt, Dracosaur Auxiliary, both Drakuseth halves). A 4-drop with trample that returns transformed on death - the closest red gets to protection-by-revive. NOT a Dragon.",8.4,hand
-"Ojer Kaslem, Deepest Growth // Temple of Cultivation",Legendary Creature — God // Land,"Trample
-Whenever Ojer Kaslem deals combat damage to a player, reveal that many cards from the top of your library. You may put a creature card and/or a land card from among them onto the battlefield. Put the rest on the bottom in a random order.
-When Ojer Kaslem dies, return it to the battlefield tapped and transformed under its owner's control. // (Transforms from Ojer Kaslem, Deepest Growth.)
-{T}: Add {G}.
-{2}{G}, {T}: Transform this land. Activate only if you control ten or more permanents and only as a sorcery.",G,God; card advantage; mana; transform; trample; evasion,LCI,204,Mythic,50a,,7.0,hand
-The Skullspore Nexus,Legendary Artifact,"This spell costs {X} less to cast, where X is the greatest power among creatures you control.
-Whenever one or more nontoken creatures you control die, create a green Fungus Dinosaur creature token with base power and toughness each equal to the total power of those creatures.
-{2}, {T}: Double target creature's power until end of turn.",G,cost-reduction; tokens; double,LCI,212,Mythic,50a,,7.0,hand
 "Matzalantli, the Great Door // The Core",Legendary Artifact // Legendary Land,"{T}: Draw a card, then discard a card.
 {4}, {T}: Transform Matzalantli. Activate only if there are four or more permanent types among cards in your graveyard. (Artifact, battle, creature, enchantment, land, and planeswalker are permanent types.) // (Transforms from Matzalantli.)
 Fathomless descent — {T}: Add X mana of any one color, where X is the number of permanent cards in your graveyard.",Colorless,graveyard; card draw; mana; transform; fathomless descent,LCI,256,Rare,51,,4.0,seed
@@ -303,8 +287,6 @@ Sundown Pass,Land,"This land enters tapped unless you control two or more other 
 {T}: Add {R} or {W}.",W/R,mana,SOS,264,Rare,general,"WR fixing land — generic fixing, not earthbend-specific",5.0,hand
 Together as One,Sorcery,"Converge — Target player draws X cards, Together as One deals X damage to any target, and you gain X life, where X is the number of colors of mana spent to cast this spell.",Colorless,burn; converge; multicolor,SOS,4,Rare,17,Converge payoff (draw/burn/gain X = colors spent) — rewards the 5-color manabase,4.5,hand
 Traumatic Critique,Instant,"Traumatic Critique deals X damage to any target. Draw two cards, then discard a card.",U/R,card draw; burn,SOS,239,Rare,general,UR X-burn + card advantage — good in any UR/spellslinger shell (cf. Prismari concept),5.5,hand
-Vastlands Scavenger // Bind to Life,Creature — Bear Druid // Instant,"Deathtouch
-This creature enters prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.) // Mill seven cards. Then put a creature card from among them onto the battlefield.",G,Bear; Druid; mill; prepared; spellslinger; tempo; graveyard; deathtouch; combat; removal,SOS,166,Rare,6; 31,"best 6 (Dead or Alive); also 5,20b,8 | Also deck 31 (Pox) — 10-Druid go-wide shell; strong Druid fit.",5.5,hand
 Multiversal Passage,Land,"As this land enters, choose a basic land type. Then you may pay 2 life. If you don't, it enters tapped.
 This land is the chosen type.",Colorless,,SPM,180,Rare,general,basic-type fixing land — any deck,6.0,hand
 Radioactive Spider,Creature — Spider,"Reach, deathtouch
@@ -361,8 +343,6 @@ As long as Zhao has a conqueror counter on him, nonbasic lands are Mountains. (T
 Bebop & Rocksteady,Legendary Creature — Boar Rhino Mutant,"Whenever Bebop & Rocksteady attack or block, sacrifice a permanent unless you discard a card.",B/G,Boar; Rhino; Mutant; sacrifice,TMT,140,Rare,8,"best 8 (Sacrifices); also 21,21a,5",3.5,hand
 "Don & Raph, Hard Science",Legendary Creature — Mutant Ninja Turtle,"Menace
 Whenever Don & Raph attack, the next noncreature spell you cast this turn has affinity for artifacts. (It costs {1} less to cast for each artifact you control.)",U/R,Mutant; Ninja; Turtle; menace; evasion,TMT,144,Rare,47,TMNT UR-artifacts legend — new-deck focal point (menace + artifact-affinity payoff),5.0,hand
-Groundchuck & Dirtbag,Legendary Creature — Ox Mole Mutant,"Trample
-Whenever you tap a land for mana, add {G}.",G,Ox; Mole; Mutant; trample; evasion,TMT,115,Rare,13,mono-G ramp payoff: tap a land adds an extra {G}; accelerates Earth Kingdom's ramp (TMNT flavor),4.5,hand
 "Madame Null, Power Broker",Legendary Creature — Demon Advisor,"Deathtouch
 Whenever another creature you control enters, you may pay life equal to its power. If you do, put that many +1/+1 counters on it.",B,Demon; Advisor; counters; deathtouch; combat; removal,TMT,66,Rare,20b,"broadly useful — best 20b (Honor Among Thieves — Abzan Toughness Ramp); also 11,8,21",5.5,hand
 Michelangelo's Technique,Sorcery,"Sneak {3}{G} (You may cast this spell for {3}{G} if you also return an unblocked attacker you control to hand during the declare blockers step.)
