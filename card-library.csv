@@ -5222,3 +5222,7 @@ When this Class becomes level 2, return target instant or sorcery card from your
 Whenever you cast an instant or sorcery spell, create a 1/1 blue and red Otter creature token with prowess.",U,Class; graveyard; tokens; etb; spellslinger,BLB,75,1
 Rise of the Varmints,Sorcery,"Create X 2/1 green Varmint creature tokens, where X is the number of creature cards in your graveyard.
 Plot {2}{G} (You may pay {2}{G} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)",G,graveyard; exile cast; tokens; plot; tempo; cost-reduction,OTJ,179,1
+Persuasive Interrogators,Creature — Gorgon Detective,"When this creature enters, investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")
+Whenever you sacrifice a Clue, target opponent gets two poison counters. (A player with ten or more poison counters loses the game.)",B,Gorgon; Detective; card draw; sacrifice; tokens; etb; clue; investigate,MKM,98,1
+"June, Bounty Hunter",Legendary Creature — Human Mercenary,"June can't be blocked as long as you've drawn two or more cards this turn.
+{1}, Sacrifice another creature: Create a Clue token. Activate only during your turn. (It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",B,Human; Mercenary; card draw; sacrifice; tokens; clue,TLA,106,1

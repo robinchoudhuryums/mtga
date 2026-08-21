@@ -218,8 +218,6 @@ To solve — You control three or more artifacts. (If unsolved, solve at the beg
 Solved — {2}{U}, Sacrifice this Case: Put four +1/+1 counters on target noncreature artifact. It becomes a 0/0 Bird creature with flying in addition to its other types.",U,Case; counters; card draw; sacrifice; tokens; etb; clue; investigate; solved,MKM,44,Uncommon,26,,3.5,hand
 Magnetic Snuffler,Artifact Creature — Construct,"When this creature enters, return target Equipment card from your graveyard to the battlefield attached to this creature.
 Whenever you sacrifice an artifact, put a +1/+1 counter on this creature.",Colorless,Construct; counters; reanimator; graveyard; sacrifice; etb,MKM,254,Uncommon,38,,4.0,hand
-Persuasive Interrogators,Creature — Gorgon Detective,"When this creature enters, investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")
-Whenever you sacrifice a Clue, target opponent gets two poison counters. (A player with ten or more poison counters loses the game.)",B,Gorgon; Detective; card draw; sacrifice; tokens; etb; clue; investigate,MKM,98,Uncommon,,,4.0,seed
 Soul Enervation,Enchantment,"Flash
 When this enchantment enters, target creature gets -4/-4 until end of turn.
 Whenever one or more creature cards leave your graveyard, each opponent loses 1 life and you gain 1 life.",B,graveyard; lifegain; etb; removal; flash; tempo,MKM,106,Uncommon,37,,5.5,hand
@@ -338,8 +336,6 @@ At the beginning of your end step, earthbend 2. (Target land you control becomes
 Nonbasic lands enter tapped.
 {7}: Put a conqueror counter on Zhao.
 As long as Zhao has a conqueror counter on him, nonbasic lands are Mountains. (They lose all other land types and abilities and have ""{T}: Add {R}."")",R,Human; Soldier; counters; mana; menace; evasion,TLA,162,Rare,14,"Fire Nation flavor (heuristic top 13 on counters/mana) | fits: 13,17",4.0,hand
-"June, Bounty Hunter",Legendary Creature — Human Mercenary,"June can't be blocked as long as you've drawn two or more cards this turn.
-{1}, Sacrifice another creature: Create a Clue token. Activate only during your turn. (It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",B,Human; Mercenary; card draw; sacrifice; tokens; clue,TLA,106,Uncommon,,,4.0,seed
 Bebop & Rocksteady,Legendary Creature — Boar Rhino Mutant,"Whenever Bebop & Rocksteady attack or block, sacrifice a permanent unless you discard a card.",B/G,Boar; Rhino; Mutant; sacrifice,TMT,140,Rare,8,"best 8 (Sacrifices); also 21,21a,5",3.5,hand
 "Don & Raph, Hard Science",Legendary Creature — Mutant Ninja Turtle,"Menace
 Whenever Don & Raph attack, the next noncreature spell you cast this turn has affinity for artifacts. (It costs {1} less to cast for each artifact you control.)",U/R,Mutant; Ninja; Turtle; menace; evasion,TMT,144,Rare,47,TMNT UR-artifacts legend — new-deck focal point (menace + artifact-affinity payoff),5.0,hand

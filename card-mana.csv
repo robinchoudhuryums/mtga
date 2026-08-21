@@ -2443,6 +2443,8 @@ Assimilation Aegis,{1}{W}{U},3,Equip
 Mockingbird,{X}{U},1,Flying
 Stormchaser's Talent,{U},1,
 Rise of the Varmints,{3}{G},4,Plot
+Persuasive Interrogators,{4}{B}{B},6,Investigate
+"June, Bounty Hunter",{1}{B},2,
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -10137,7 +10139,6 @@ Macabre Reconstruction,{3}{B},4,
 "Massacre Girl, Known Killer",{2}{B}{B},4,Menace
 Nightdrinker Moroii,{3}{B},4,Flying;Disguise
 Outrageous Robbery,{X}{B}{B},2,
-Persuasive Interrogators,{4}{B}{B},6,Investigate
 Polygraph Orb,{4}{B},5,Collect evidence
 Repeat Offender,{1}{B},2,Suspect
 Slice from the Shadows,{X}{B},1,
@@ -13973,7 +13974,6 @@ Boiling Rock Rioter,{2}{B},3,Firebending
 Dai Li Indoctrination,{1}{B},2,Earthbend
 The Fire Nation Drill,{2}{B}{B},4,Crew;Trample
 Fire Nation Engineer,{2}{B},3,Raid
-"June, Bounty Hunter",{1}{B},2,
 "Lo and Li, Twin Tutors",{4}{B},5,
 Phoenix Fleet Airship,{2}{B}{B},4,Flying;Crew
 The Rise of Sozin // Fire Lord Sozin,{4}{B}{B},6,Transform;Firebending;Menace
