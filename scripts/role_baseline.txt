@@ -122,7 +122,6 @@ Duskwatch Hunter
 Dwalin, Weaponmaster
 Dwarven Mattock
 Dwarven Shortsword
-Dwynen's Elite
 Dáin Ironfoot
 Earth Kingdom General
 Earth Kingdom Soldier
@@ -198,6 +197,7 @@ Hawkeye, Young Avenger
 Head of the Homestead
 Head of the Hunt
 Hecteyes
+Hedge Shredder
 Hei Bai, Spirit of Balance
 Herald of Eternal Dawn
 Heroes' Hangout
@@ -361,6 +361,7 @@ Seismic Sense
 Self-Destruct
 Serra Angel
 Serra Redeemer
+Servant of the Stinger
 Shimmercreep
 Shredder, Unrelenting
 Shrike Force

@@ -7,13 +7,13 @@
 #: archetype: the namesake Death Begets Life: fill both graveyards, wrath the board,
 #: archetype: and be the only player who treats the graveyard as a second hand. The
 #: archetype: self-mill layer (Nashi's combat mill with legendary/enchantment
-#: archetype: recovery, Lumra, Wick's Patrol, Stargaze, surveil bodies, Lively
+#: archetype: recovery, Lumra, Wick's Patrol, surveil bodies, Lively
 #: archetype: Dirge's entomb mode) stocks the yard; the wrath layer (Death Begets
 #: archetype: Life drawing per permanent destroyed, The Rise of Sozin, Villainous
 #: archetype: Wrath, infusion-gated Withering Curse) resets the board; and the
 #: archetype: reanimation layer rebuys the fatties — Cauldron of Essence's
 #: archetype: repeatable sac-loop, Grim Reaper's attack trigger, Moseo's infusion
-#: archetype: end-step returns, Zombify/Prison Break/Coiling Rebirth singles, and
+#: archetype: end-step returns, Prison Break/Coiling Rebirth singles (Zombify was CUT for Hedge Shredder — the ninth reanimation route traded for a mill-to-ramp engine), and
 #: archetype: Behold the Sinister Six! as the six-body haymaker. Lifegain glue
 #: archetype: (Scavenger's Talent Food, Cauldron drain, Bake into a Pie, Jungle
 #: archetype: Hollow) turns on both infusion cards. Distinct from every deck on the
@@ -31,19 +31,17 @@
 #: notes: G-42 AUDIT, the one this archetype demands: Death Begets Life destroys
 #: notes: our own enchantments (Scavenger's Talent, Rise of Sozin, Forum's ward
 #: notes: fodder) — accepted, because each destroyed permanent DRAWS a card and the
-#: notes: yard is our second hand; sequence Talents as expendable. Withering
-#: notes: Torment / Bake into a Pie hit our own creatures never — they target
-#: notes: opponents'. No graveyard-EXILE effects were included (Agatha's Soul
+#: notes: yard is our second hand; sequence Talents as expendable. Bake into a
+#: notes: Pie hits our own creatures never — it targets opponents'. No graveyard-EXILE effects were included (Agatha's Soul
 #: notes: Cauldron was deliberately NOT included — its exile cost eats the
 #: notes: reanimation fuel). MECHANIC READS: Coiling Rebirth's copy mode needs a
-#: notes: NONLEGENDARY target — Massacre Wurm, Tolarian Terror, Craterhoof,
+#: notes: NONLEGENDARY target — Massacre Wurm, Craterhoof, Rise of the Varmints tokens,
 #: notes: Worldsire qualify; the legends don't. Famished Worldsire reanimated skips
 #: notes: devour (no lands paid) but its ETB top-X refill still fires off its base
 #: notes: power. Grim Reaper's finality counter means each body reanimates ONCE by
 #: notes: that route — send the copies, keep the originals for Cauldron. Sephiroth
 #: notes: transforms on the fourth death trigger; wraths advance it four at once.
-#: notes: SHARED COPIES (fungible): Hero's Downfall/Bake into a Pie/Tolarian Terror/
-#: notes: Bloodthirsty Conqueror/Craterhoof also serve 25/50/60a. (Murder was CUT for
+#: notes: SHARED COPIES (fungible): Bake into a Pie/Craterhoof also serve 25/50/60a. (Murder was CUT for
 #: notes: Hauntwoods Shrieker, whose attack-manifest fills the yard AND builds a board
 #: notes: — the deck's two axes on one card, against 12 interaction it could spare.)
 #: notes: ROTATION: BLB pieces (Scavenger's Talent, Coiling Rebirth, Rottenmouth
@@ -54,15 +52,16 @@
 1 Hauntwoods Shrieker (DSK) 182
 1 Nashi, Searcher in the Dark (DSK) 223
 1 Wick's Patrol (BLB) 121
-1 Stargaze (SOA) 34
+1 Teacher's Pest (SOS) 238
 1 Lumra, Bellow of the Woods (BLB) 183
 1 Defiant Survivor (DSK) 175
-1 Wary Watchdog (DSK) 206
+1 Essenceknit Scholar (SOS) 187
 1 Grave Researcher // Reanimate (SOS) 85
+1 Lluwen, Imperfect Naturalist (ECL) 232
+1 Hedge Shredder (DSK) 183
 1 Scavenger's Talent (BLB) 111
 
 # Reanimation
-1 Zombify (SOA) 36
 1 Behold the Sinister Six! (SPM) 51
 1 Prison Break (SPM) 61
 1 Coiling Rebirth (BLB) 86
@@ -83,17 +82,16 @@
 1 Rottenmouth Viper (BLB) 107
 1 Craterhoof Behemoth (TDM) 138
 1 Famished Worldsire (EOE) 182
-1 Bloodthirsty Conqueror (FDN) 58
-1 Tolarian Terror (FDN) 167
+1 The Last Ronin (TMT) 154
 1 Sephiroth, Fabled SOLDIER (FIN) 115
 
 # Interaction
-1 Hero's Downfall (FDN) 175
+1 Zero Point Ballad (EOE) 128
 2 Bake into a Pie (FDN) 169
-1 Withering Torment (DSK) 124
 1 Don't Make a Sound (DSK) 49
 
 # Glue
+1 Rise of the Varmints (OTJ) 179
 1 Supper for Spiders (HOB) 86
 1 Forum Necroscribe (SOS) 84
 
@@ -111,7 +109,6 @@
 6 Swamp (HOB) 191
 5 Forest (HOB) 193
 2 Island (HOB) 190
-#~ -Withering Torment | +Diresight | OWNED (BLB, 2026-08-13 ingest): fit 38. Surveil 2 then
-#~   draw two — graveyard stocking plus card advantage on one {2}{B} sorcery. Cut from the
-#~   removal block only if you can spare it: `cuts` ranks Villainous Wrath and Hero's
-#~   Downfall above it and the deck runs 11 interaction pieces, so there is room.
+#~ note: applied — Rise of the Varmints in for Withering Torment (the standing
+#~   Diresight-for-Torment flex was retired by this swap; Diresight remains an owned
+#~   0-wildcard option if a future tune wants surveil-2-draw-2 yard stocking).

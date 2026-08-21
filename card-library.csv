@@ -1970,7 +1970,7 @@ Enchant creature
 Enchanted creature gets +2/+2 and has trample.",G,Aura; aura; pump; enchant; flash; tempo,DSK,179,1
 Garruk's Uprising,Enchantment,"When this enchantment enters, if you control a creature with power 4 or greater, draw a card.
 Creatures you control have trample. (Each of those creatures can deal excess combat damage to the player or planeswalker it's attacking.)
-Whenever a creature you control with power 4 or greater enters, draw a card.",G,card draw; etb,M21,186,1
+Whenever a creature you control with power 4 or greater enters, draw a card.",G,card draw; etb,M21,186,2
 "Hercules, Prince of Power",Legendary Creature — Demigod Warrior Hero,"Power-up — {4}{G}: Put a +1/+1 counter on Hercules. He gains vigilance, indestructible, and haste until end of turn. (Activate each power-up ability only once. Reduce the cost by his mana cost if he entered this turn.)",G,Demigod; Warrior; Hero; counters; power-up; payoff,MSH,171,1
 "Hulkling, Burgeoning Bruiser",Legendary Creature — Kree Skrull Hero,"Vigilance
 Whenever another creature you control enters, if it has greater power or toughness than Hulkling, put a +1/+1 counter on Hulkling.",G,Kree; Skrull; Hero; counters; vigilance; combat,MSH,173,1
@@ -2913,7 +2913,7 @@ Thaumaton Torpedo,Artifact,"{6}, {T}, Sacrifice this artifact: Destroy target no
 {5}, {T}: Mill two cards. Then you may sacrifice this land. When you do, return another target permanent card from your graveyard to your hand.",Colorless,Town; graveyard; mill; sacrifice; mana,FIN,277,1
 Crossroads Village,Land — Town,"This land enters tapped. As it enters, choose a color.
 {T}: Add one mana of the chosen color.",Colorless,Town; mana,FIN,276,1
-Evolving Wilds,Land,"{T}, Sacrifice this land: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.",Colorless,sacrifice; ramp,ECL,264,1
+Evolving Wilds,Land,"{T}, Sacrifice this land: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.",Colorless,sacrifice; ramp,ECL,264,2
 Gingerbrute,Artifact Creature — Food Golem,"Haste (This creature can attack and {T} as soon as it comes under your control.)
 {1}: This creature can't be blocked this turn except by creatures with haste.
 {2}, {T}, Sacrifice this creature: You gain 3 life.",Colorless,Food; Golem; lifegain; sacrifice; haste; aggro,ELD,219,1
@@ -4183,7 +4183,7 @@ Rot-Curse Rakshasa,Creature — Demon,"Trample
 Decayed (This creature can't block. When it attacks, sacrifice it at end of combat.)
 Renew — {X}{B}{B}, Exile this card from your graveyard: Put a decayed counter on each of X target creatures. Activate only as a sorcery.",B,Demon; counters; graveyard; sacrifice; renew; trample; evasion,TDM,87,1
 Craterhoof Behemoth,Creature — Beast,"Haste
-When this creature enters, creatures you control gain trample and get +X/+X until end of turn, where X is the number of creatures you control.",G,Beast; etb; pump; haste; aggro,TDM,138,1
+When this creature enters, creatures you control gain trample and get +X/+X until end of turn, where X is the number of creatures you control.",G,Beast; etb; pump; haste; aggro,TDM,138,2
 Jeskai Revelation,Instant,Return target spell or permanent to its owner's hand. Jeskai Revelation deals 4 damage to any target. Create two 1/1 white Monk creature tokens with prowess. Draw two cards. You gain 4 life.,W/U/R,lifegain; card draw; tokens; burn; bounce,TDM,196,1
 "Ureni, the Song Unending",Legendary Creature — Spirit Dragon,"Flying, protection from white and from black
 When Ureni enters, it deals X damage divided as you choose among any number of target creatures and/or planeswalkers your opponents control, where X is the number of lands you control.",U/R/G,Spirit; Dragon; burn; etb; flying; evasion; protection,TDM,233,1
@@ -5080,3 +5080,149 @@ Mountaincycling {2} ({2}, Discard this card: Search your library for a Mountain 
 Woodland Weavemaster,Creature — Elf Druid,"Vigilance
 Whenever another Elf you control enters, this creature gets +1/+1 until end of turn.
 {T}: Add X mana of any one color, where X is this creature's power. Spend this mana only to cast Elf spells and activate abilities of Elf sources.",G,Elf; Druid; mana; pump; vigilance; combat,HOB,143,1
+Transdimensional Bovine,Creature — Ox Avatar,"Flying
+{T}: Add two mana of any one color.",G,Ox; Avatar; mana; flying; evasion,TMT,134,1
+Summoner's Grimoire,Artifact — Book Equipment,"Job select
+Equipped creature is a Shaman in addition to its other types and has ""Whenever this creature attacks, you may put a creature card from your hand onto the battlefield. If that card is an enchantment card, it enters tapped and attacking.""
+Abraxas — Equip {3}",G,Book; Equipment; equipment; job select; tokens; equip,FIN,205,1
+Aloe Alchemist,Creature — Plant Warlock,"Trample
+When this card becomes plotted, target creature gets +3/+2 and gains trample until end of turn.
+Plot {1}{G} (You may pay {1}{G} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)",G,Plant; Warlock; exile cast; pump; plot; tempo; cost-reduction; trample; evasion,OTJ,152,1
+Colossification,Enchantment — Aura,"Enchant creature
+When this Aura enters, tap enchanted creature.
+Enchanted creature gets +20/+20.",G,Aura; etb; aura; pump; enchant,BLB,392,1
+Hard-Hitting Question,Sorcery,Target creature you control deals damage equal to its power to target creature or planeswalker you don't control.,G,removal,MKM,164,1
+Pawpatch Formation,Instant,"Choose one —
+• Destroy target creature with flying.
+• Destroy target enchantment.
+• Draw a card. Create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")",G,lifegain; card draw; sacrifice; tokens; removal; food,BLB,186,1
+Inspiring Call,Instant,"Draw a card for each creature you control with a +1/+1 counter on it. Those creatures gain indestructible until end of turn. (Damage and effects that say ""destroy"" don't destroy them.)",G,counters; card draw,TLE,168,1
+Plow Through,Sorcery,"Choose one —
+• Target creature you control fights target creature an opponent controls. (Each deals damage equal to its power to the other.)
+• Destroy target Vehicle.",G,Vehicle; removal; fight; combat,DFT,174,1
+Three Tree City,Legendary Land,"As Three Tree City enters, choose a creature type.
+{T}: Add {C}.
+{2}, {T}: Choose a color. Add an amount of mana of that color equal to the number of creatures you control of the chosen type.",Colorless,mana,BLB,260,1
+Rogue's Passage,Land,"{T}: Add {C}.
+{4}, {T}: Target creature can't be blocked this turn.",Colorless,mana,HOC,212,1
+"Maralen, Fae Ascendant",Legendary Creature — Elf Faerie Noble,"Flying
+Whenever Maralen or another Elf or Faerie you control enters, exile the top two cards of target opponent's library.
+Once each turn, you may cast a spell with mana value less than or equal to the number of Elves and Faeries you control from among cards exiled with Maralen this turn without paying its mana cost.",U/B/G,Elf; Faerie; Noble; heist; flying; evasion,ECL,233,1
+"Trystan, Callous Cultivator",Legendary Creature — Elf Druid // Legendary Creature — Elf Warlock,"Deathtouch
+Whenever this creature enters or transforms into Trystan, Callous Cultivator, mill three cards. Then if there is an Elf card in your graveyard, you gain 2 life.
+At the beginning of your first main phase, you may pay {B}. If you do, transform Trystan. // Deathtouch
+Whenever this creature transforms into Trystan, Penitent Culler, mill three cards, then you may exile an Elf card from your graveyard. If you do, each opponent loses 2 life.
+At the beginning of your first main phase, you may pay {G}. If you do, transform Trystan.",B/G,Elf; Druid; Warlock; graveyard; mill; lifegain; transform; deathtouch; combat; removal,ECL,199,1
+"Tyvar, the Pummeler",Legendary Creature — Elf Warrior,"Tap another untapped creature you control: Tyvar gains indestructible until end of turn. Tap it.
+{3}{G}{G}: Creatures you control get +X/+X until end of turn, where X is the greatest power among creatures you control.",G,Elf; Warrior; pump,DSK,202,1
+Silvan Reveler,Creature — Elf Citizen,"When this creature enters, draw a card, then discard a card. If you discard a land card this way, put it from your graveyard onto the battlefield tapped.
+Landfall — Whenever a land you control enters, you may pay {1}{G}{U}. If you do, return this card from your graveyard to your hand.",U/G,Elf; Citizen; reanimator; graveyard; card draw; etb; landfall; lands; ramp,HOB,163,1
+Trystan's Command,Kindred Sorcery — Elf,"Choose two —
+• Create a token that's a copy of target Elf you control.
+• Return one or two target permanent cards from your graveyard to your hand.
+• Destroy target creature or enchantment.
+• Creatures target player controls get +3/+3 until end of turn. Untap them.",B/G,Elf; graveyard; tokens; removal; pump,ECL,247,1
+Thranduil's Company,Creature — Elf Soldier,"As long as you control another Elf, you may play an additional land on each of your turns.
+Landfall — Whenever a land you control enters, put two +1/+1 counters on target creature you control. It gains vigilance until end of turn.",U/G,Elf; Soldier; counters; landfall; lands; ramp,HOB,168,1
+Elven Raft-Steerer,Creature — Elf Pilot,"Landfall — Whenever a land you control enters, choose one —
+• Tap target creature an opponent controls.
+• Untap target creature you control.",U,Elf; Pilot; landfall; lands; ramp,HOB,37,1
+Glen Elendra's Answer,Instant,"This spell can't be countered.
+Counter all spells your opponents control and all abilities your opponents control. Create a 1/1 blue and black Faerie creature token with flying for each spell and ability countered this way.",U,tokens,ECL,52,1
+Aftermath Analyst,Creature — Elf Detective,"When this creature enters, mill three cards. (Put the top three cards of your library into your graveyard.)
+{3}{G}, Sacrifice this creature: Return all land cards from your graveyard to the battlefield tapped.",G,Elf; Detective; reanimator; graveyard; mill; sacrifice; etb,MKM,148,1
+Elven Passage,Land,"{T}, Pay 1 life, Sacrifice this land: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle. You may behold an Elf. If you do, untap that land. (To behold an Elf, choose an Elf you control or reveal an Elf card from your hand.)",Colorless,pay life; sacrifice; ramp; behold; dragons,HOB,181,2
+Icetill Explorer,Creature — Insect Scout,"You may play an additional land on each of your turns.
+You may play lands from your graveyard.
+Landfall — Whenever a land you control enters, mill a card.",G,Insect; Scout; graveyard; mill; landfall; lands; ramp,EOE,192,1
+Tifa Lockhart,Legendary Creature — Human Monk,"Trample
+Landfall — Whenever a land you control enters, double Tifa Lockhart's power until end of turn.",G,Human; Monk; landfall; trample; evasion; double; lands; ramp,FIN,206,1
+"Ojer Kaslem, Deepest Growth",Legendary Creature — God // Land,"Trample
+Whenever Ojer Kaslem deals combat damage to a player, reveal that many cards from the top of your library. You may put a creature card and/or a land card from among them onto the battlefield. Put the rest on the bottom in a random order.
+When Ojer Kaslem dies, return it to the battlefield tapped and transformed under its owner's control. // (Transforms from Ojer Kaslem, Deepest Growth.)
+{T}: Add {G}.
+{2}{G}, {T}: Transform this land. Activate only if you control ten or more permanents and only as a sorcery.",G,God; card advantage; mana; transform; trample; evasion,LCI,204,1
+Sledge-Class Seedship,Artifact — Spacecraft,"Station (Tap another creature you control: Put charge counters equal to its power on this Spacecraft. Station only as a sorcery. It's an artifact creature at 7+.)
+7+ | Flying
+Whenever this Spacecraft attacks, you may put a creature card from your hand onto the battlefield.",G,Spacecraft; station; counters; artifacts,EOE,208,1
+Groundchuck & Dirtbag,Legendary Creature — Ox Mole Mutant,"Trample
+Whenever you tap a land for mana, add {G}.",G,Ox; Mole; Mutant; trample; evasion,TMT,115,1
+The Skullspore Nexus,Legendary Artifact,"This spell costs {X} less to cast, where X is the greatest power among creatures you control.
+Whenever one or more nontoken creatures you control die, create a green Fungus Dinosaur creature token with base power and toughness each equal to the total power of those creatures.
+{2}, {T}: Double target creature's power until end of turn.",G,cost-reduction; tokens; double,LCI,212,1
+Vastlands Scavenger,Creature — Bear Druid // Instant,"Deathtouch
+This creature enters prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.) // Mill seven cards. Then put a creature card from among them onto the battlefield.",G,Bear; Druid; mill; prepared; spellslinger; tempo; graveyard; deathtouch; combat; removal,SOS,166,1
+Little Bear,Creature — Bear,"Flash
+When this creature enters, untap another target creature you control. If that creature is a Bear, put a +1/+1 counter on it.",G,Bear; counters; etb; flash; tempo,HOB,128,1
+Walk-In Closet,Enchantment — Room // Enchantment — Room,"You may play lands from your graveyard.
+(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.) // When you unlock this door, you may cast spells from your graveyard this turn, and if a card would be put into your graveyard from anywhere this turn, exile it instead.
+(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",G,Room; graveyard,DSK,205,1
+Rainveil Rejuvenator,Creature — Elephant Druid,"When this creature enters, you may mill three cards. (You may put the top three cards of your library into your graveyard.)
+{T}: Add an amount of {G} equal to this creature's power.",G,Elephant; Druid; graveyard; mill; mana; etb,TDM,152,1
+Kraven's Last Hunt,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
+I — Mill five cards. When you do, this Saga deals damage equal to the greatest power among creature cards in your graveyard to target creature.
+II — Target creature you control gets +2/+2 until end of turn.
+III — Return target creature card from your graveyard to your hand.",G,Saga; graveyard; mill; sacrifice; saga; pump,SPM,105,1
+Through the Forest Gate,Sorcery,"Look at the top twenty cards of your library, put any number of land cards from among them onto the battlefield tapped, then shuffle. You gain 8 life.",G,lifegain; selection,HOB,137,1
+Part in Friendship,Enchantment,"Whenever a nontoken creature you control dies, reveal cards from the top of your library until you reveal a creature card. If its mana value is less than or equal to the number of lands you control, put it onto the battlefield. Otherwise, put it into your hand. Put the rest on the bottom of your library in a random order. This ability triggers only once each turn.",G,,HOB,134,1
+Warg Tactics,Instant,"Choose one —
+• Destroy target creature with flying.
+• Put a +1/+1 counter on target creature you control. It gains trample and hexproof until end of turn. (It can't be the target of spells or abilities your opponents control.)",G,counters; removal,HOB,139,1
+Insidious Fungus,Creature — Fungus,"{2}, Sacrifice this creature: Choose one —
+• Destroy target artifact.
+• Destroy target enchantment.
+• Draw a card. Then you may put a land card from your hand onto the battlefield tapped.",G,Fungus; card draw; sacrifice; removal,DSK,186,1
+Cryptic Caves,Land,"{T}: Add {C}.
+{1}, {T}, Sacrifice this land: Draw a card. Activate only if you control five or more lands.",Colorless,card draw; sacrifice; mana,FDN,771,1
+Rattleback Apothecary,Creature — Gorgon Warlock,"Deathtouch
+Whenever you commit a crime, target creature you control gains your choice of menace or lifelink until end of turn. (Targeting opponents, anything they control, and/or cards in their graveyards is a crime.)",B,Gorgon; Warlock; graveyard; lifegain; deathtouch; combat; removal,OTJ,100,1
+Valley Rotcaller,Creature — Squirrel Warlock,"Menace
+Whenever this creature attacks, each opponent loses X life and you gain X life, where X is the number of other Squirrels, Bats, Lizards, and Rats you control.",B,Squirrel; Warlock; Rat; Squirrels; lifegain; menace; evasion,BLB,119,1
+"Smaug, Wicked Worm",Legendary Creature — Dragon,"Flying
+When Smaug enters, create X tapped Treasure tokens, where X is the number of artifacts your opponents control.
+Whenever you cast a spell, if mana from a Treasure was spent to cast it, you draw a card and lose 1 life.",B/R,Dragon; pay life; card draw; tokens; etb; treasure; flying; evasion,HOB,164,1
+Sunstar Chaplain,Creature — Human Cleric,"At the beginning of your end step, if you control two or more tapped creatures, put a +1/+1 counter on target creature you control.
+{2}, Remove a +1/+1 counter from a creature you control: Tap target artifact or creature.",W,Human; Cleric; counters,EOE,40,1
+Belladonna Took,Legendary Creature — Halfling Citizen,"Whenever a token you control enters, you gain 1 life if this is the first time this ability has resolved this turn. If it's the second time, draw a card. If it's the third time, put a +1/+1 counter on each creature you control.",W,Halfling; Citizen; counters; lifegain; card draw,HOB,4,1
+Zero Point Ballad,Sorcery,"Destroy all creatures with toughness X or less. You lose X life. If X is 6 or more, return a creature card put into a graveyard this way to the battlefield under your control.",B,reanimator; graveyard; pay life,EOE,128,1
+The Spot's Portal,Instant,Put target creature on the bottom of its owner's library. You lose 2 life unless you control a Villain.,B,pay life,MSC,798,1
+All-Fates Stalker,Creature — Drix Assassin,"When this creature enters, exile up to one target non-Assassin creature until this creature leaves the battlefield.
+Warp {1}{W} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",W,Drix; Assassin; exile cast; etb; warp; tempo; cost-reduction,EOE,3,1
+Honor,Sorcery,"Put a +1/+1 counter on target creature.
+Draw a card.",W,counters; card draw,EOE,21,1
+Auroral Procession,Instant,Return target card from your graveyard to your hand.,U/G,graveyard,TDM,169,1
+Molten Exhale,Sorcery,"You may cast this spell as though it had flash if you behold a Dragon as an additional cost to cast it. (To behold a Dragon, choose a Dragon you control or reveal a Dragon card from your hand.)
+Molten Exhale deals 4 damage to target creature or planeswalker.",R,burn; behold; dragons,TDM,113,1
+Chief Warg's Company,Creature — Wolf,"Trample
+This creature can't attack unless you control two or more other Wolves.
+At the beginning of your upkeep, create a 2/2 green Wolf creature token.",B/G,Wolf; Wolves; tokens; trample; evasion,HOB,151,1
+"Black Cat, Cunning Thief",Legendary Creature — Human Rogue Villain,"When Black Cat enters, look at the top nine cards of target opponent's library, exile two of them face down, then put the rest on the bottom of their library in a random order. You may play the exiled cards for as long as they remain exiled. Mana of any type can be spent to cast spells this way.",B,Human; Rogue; Villain; heist; etb; selection,SPM,52,1
+"Annie Flash, the Veteran",Legendary Creature — Human Rogue,"Flash
+When Annie Flash enters, if you cast it, return target permanent card with mana value 3 or less from your graveyard to the battlefield tapped.
+Whenever Annie Flash becomes tapped, exile the top two cards of your library. You may play those cards this turn.",W/R/G,Human; Rogue; graveyard; etb; impulse; flash; tempo,OTJ,190,1
+Grand Abolisher,Creature — Human Cleric,"During your turn, your opponents can't cast spells or activate abilities of artifacts, creatures, or enchantments.",W,Human; Cleric,BIG,2,1
+Rest in Peace,Enchantment,"When this enchantment enters, exile all graveyards.
+If a card or token would be put into a graveyard from anywhere, exile it instead.",W,graveyard; etb,BIG,4,1
+"Sami, Ship's Engineer",Legendary Creature — Human Artificer,"At the beginning of your end step, if you control two or more tapped creatures, create a tapped 2/2 colorless Robot artifact creature token.",W/R,Human; Artificer; tokens,EOE,225,1
+Arid Archway,Land — Desert,"This land enters tapped.
+When this land enters, return a land you control to its owner's hand. If another Desert was returned this way, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)
+{T}: Add {C}{C}.",Colorless,Desert; graveyard; mana; etb; bounce; selection; surveil,OTJ,252,2
+Assimilation Aegis,Artifact — Equipment,"When this Equipment enters, exile up to one target creature until this Equipment leaves the battlefield.
+Whenever this Equipment becomes attached to a creature, for as long as this Equipment remains attached to it, that creature becomes a copy of a creature card exiled with this Equipment.
+Equip {2}",W/U,Equipment; etb; equipment; equip,OTJ,192,1
+"Zurgo, Thunder's Decree",Legendary Creature — Orc Warrior,"Mobilize 2 (Whenever this creature attacks, create two tapped and attacking 1/1 red Warrior creature tokens. Sacrifice them at the beginning of the next end step.)
+During your end step, Warrior tokens you control have ""This token can't be sacrificed.""",W/B/R,Orc; Warrior; sacrifice; tokens; mobilize; go-wide; aggro,TDM,237,1
+Mockingbird,Creature — Bird Bard,"Flying
+You may have this creature enter as a copy of any creature on the battlefield with mana value less than or equal to the amount of mana spent to cast this creature, except it's a Bird in addition to its other types and it has flying.",U,Bird; Bard; flying; evasion,BLB,61,1
+Stormchaser's Talent,Enchantment — Class,"(Gain the next level as a sorcery to add its ability.)
+When this Class enters, create a 1/1 blue and red Otter creature token with prowess.
+{3}{U}: Level 2
+When this Class becomes level 2, return target instant or sorcery card from your graveyard to your hand.
+{5}{U}: Level 3
+Whenever you cast an instant or sorcery spell, create a 1/1 blue and red Otter creature token with prowess.",U,Class; graveyard; tokens; etb; spellslinger,BLB,75,1
+Rise of the Varmints,Sorcery,"Create X 2/1 green Varmint creature tokens, where X is the number of creature cards in your graveyard.
+Plot {2}{G} (You may pay {2}{G} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)",G,graveyard; exile cast; tokens; plot; tempo; cost-reduction,OTJ,179,1
+Persuasive Interrogators,Creature — Gorgon Detective,"When this creature enters, investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")
+Whenever you sacrifice a Clue, target opponent gets two poison counters. (A player with ten or more poison counters loses the game.)",B,Gorgon; Detective; card draw; sacrifice; tokens; etb; clue; investigate,MKM,98,1
+"June, Bounty Hunter",Legendary Creature — Human Mercenary,"June can't be blocked as long as you've drawn two or more cards this turn.
+{1}, Sacrifice another creature: Create a Clue token. Activate only during your turn. (It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",B,Human; Mercenary; card draw; sacrifice; tokens; clue,TLA,106,1

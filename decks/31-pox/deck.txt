@@ -1,14 +1,20 @@
 #: name: Pox
 #: format: Standard
 #: colors: BG
-#: tier: A — Golgari (BG) Elf go-wide x Fynn deathtouch-poison hybrid; fully built. Elf engine (Lathril drain finish + Elvish Archdruid ramp/anthem + Imperious Perfect / Morcant's Loyalist anthems + High Perfect Morcant blight), interaction 8 (the count now credits the bounce/edict lines the old classifier missed; The Serpent Society / Sporogenic Infection still read as interaction on top of that) — Bite Down (any deathtoucher kills anything for {G}) + Bake into a Pie clearing the poison clock's blockers — plus card advantage from Morcant's Eyes surveil + token dump, on a clean 2-color base → A-floor. Re-graded B→A on corrected interaction; the only reason it's not a clearer S-conversation is the singleton dilution across two half-density plans (Elf go-wide + poison).
-#: archetype: Golgari (B/G) ELF TRIBAL GO-WIDE — Lathril drain finish, Archdruid
-#: archetype: ramp, three anthem effects — with a deathtouch sub-package that Fynn
-#: archetype: turns into poison reach (2 poison cards, 11 deathtouch sources; the
-#: archetype: old header called this a poison hybrid, which the list stopped being).
+#: tier: A — Golgari (BG) Elf go-wide x Fynn deathtouch-poison hybrid; fully built. Elf engine (Lathril drain finish + Elvish Archdruid ramp/anthem + Imperious Perfect / Morcant's Loyalist anthems + High Perfect Morcant blight), interaction 6 (was 8; Unforgiving Aim was CUT for Rattleback Apothecary and Grapple with Death was CUT for Maximum Overdrive, both 2026-08-21 — each an intentional interaction-for-plan trade: a crime-trigger deathtouch body with menace, and a counter+deathtouch+indestructible trick that protects the poison carrier; A-floor holds at 6 and protection rose to 2) — Bite Down (any deathtoucher kills anything for {G}) + Bake into a Pie clearing the poison clock's blockers — plus card advantage from Morcant's Eyes surveil + token dump, on a clean 2-color base → A-floor. Re-graded B→A on corrected interaction; the only reason it's not a clearer S-conversation is the singleton dilution across two half-density plans (Elf go-wide + poison).
+#: archetype: Golgari (B/G) DUAL-PLAN HYBRID — remeasured 2026-08-21 after the Clue
+#: archetype: package landed. Plan A, Elf go-wide: 13 Elf bodies (was 19; the package's
+#: archetype: four cuts were all Elves), Lathril drain finish, three anthems, Archdruid
+#: archetype: ramp — thinner but intact. Plan B, deathtouch-poison, now DEEPER: three
+#: archetype: poison payoffs (Fynn, Serpent Society, Persuasive Interrogators) fueled by
+#: archetype: ~11 native deathtouch bodies PLUS a Clue engine — June's {1}-sac-a-token,
+#: archetype: Raven Eagle's enter/attack yard-exile, Interrogators' ETB investigate —
+#: archetype: where every Clue cracked is a draw AND 2 poison. The package moved card
+#: archetype: advantage 2->5, the deck's old worst axis (G-61: count the property the
+#: archetype: value depends on).
 #: protect: Fynn, the Fangbearer; Lathril, Blade of the Elves; The Serpent Society; Elvish Archdruid
 #: notes: Two reinforcing plans: go-wide Elves (Lathril/Imperious Perfect/Elvish Archdruid
-#: notes: engine — CRAFT targets — + Dwynen's Elite/Elfsworn Giant tokens, Druid ramp) AND a
+#: notes: engine — CRAFT targets — + Imperious Perfect / Morcant's Eyes token dumps, Druid ramp) AND a
 #: notes: Fynn deathtouch-poison kill (~14 deathtouchers incl. flying Vampire Nighthawk; The
 #: notes: Serpent Society is a 2nd poison payoff + deathtouch sac-engine). Bridge: the
 #: notes: deathtouch grant on Scarblade's Malice turns a go-wide body into a poison carrier
@@ -24,27 +30,31 @@
 #: notes: RESULT, not a loss: Human was coincidental and counters was already incidental
 #: notes: (engines: 4 enablers, no payoff); both still have 4 copies, just below centrality.
 #: notes: Professor Dellian Fel in for Gran Pulse Ochu: the 0-ability is a REPEATABLE draw,
-#: notes: which role_tally deliberately does not count (single-draw cantrip rule), so the
-#: notes: card-advantage axis still reads 1 — read it as 2-3 on a text read (Dellian's 0,
-#: notes: Derelict Attic's draw-2, Wardens of the Cycle's morbid draw).
+#: notes: which role_tally deliberately does not count (single-draw cantrip rule) — the
+#: notes: measured CA 5 (Clue package) still under-reads by ~1 on a text read (Dellian's 0).
+#: notes: CLUE PACKAGE 2026-08-21: Tinybones/Interrogators/June/Raven Eagle in for
+#: notes: Emeritus/Wardens/Lys Alana/Lluwen Exchange Student. Loop: Elf token -> June sac
+#: notes: ({1}) -> Clue -> crack ({2}) -> draw + 2 poison + Arnyn drain 2. ROTATION:
+#: notes: Persuasive Interrogators (MKM) rotates ~2027 — a legality fact, not a build
+#: notes: constraint; the slot has a year-plus of Standard play first.
 
 # Nonland
 1 The Serpent Society (MSH) 226
 1 Llanowar Elves (FDN) 227
 1 Fynn, the Fangbearer (FCA) 46
-1 Noxious Newt (SOS) 155
-1 Grapple with Death (SOS) 192
+1 Servant of the Stinger (OTJ) 105
+1 Maximum Overdrive (DFT) 96
 1 Sporogenic Infection (DSK) 117
-1 Dwynen's Elite (FDN) 218
-1 Lys Alana Dignitary (ECL) 180
+1 Venom Connoisseur (FDN) 648
+1 June, Bounty Hunter (TLA) 106
 1 Morcant's Eyes (ECL) 185
-1 Emeritus of Abundance (SOS) 145
-1 Unforgiving Aim (ECL) 200
+1 Tinybones, the Pickpocket (OTJ) 109
+1 Rattleback Apothecary (OTJ) 100
 1 Topiary Lecturer (SOS) 165
 1 Cantankerous Keepers (HOB) 122
 1 Thranduil, Sindarin Liege (HOB) 166
-1 Lluwen, Exchange Student (SOS) 199
-1 Wardens of the Cycle (FDN) 125
+1 Raven Eagle (TLA) 116
+1 Persuasive Interrogators (MKM) 98
 1 Bite Down (FDN) 212
 1 Dawnhand Eulogist (ECL) 99
 1 Gloom Ripper (ECL) 102
