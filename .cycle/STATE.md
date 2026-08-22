@@ -1825,3 +1825,38 @@ rather than guessing, which is the behaviour to trust.
 warnings, all K-11 vanilla-creature blanks — the expected baseline). Dashboard rebuilt.
 PR #127 merged; the ingest/swap/flex work is a NEW change on the same branch and needs
 its own PR.
+
+
+## 2026-08-22 — tooling findings from drafting decks 76 (Spirit Call) and 77 (Bottomless)
+
+Candidate findings for the next /broad-scan, each verified live during the two
+/draft-deck runs (not hypotheses):
+
+- **DD-1 `resolve` printing choice ignores the library and Standard.** Llanowar
+  Elves resolved to (M19) 314 while the owned, Standard printing (FDN) 227 sits in
+  the library (deck 31 uses it). Preference order should be: owned printing >
+  format-legal printing > anything.
+- **DD-2 No gate verifies a deck file's printings against `resolve`.** Eleven
+  hand-written land printings across the two drafts were wrong (7 in 76, 4 in 77) —
+  real sets, wrong collector numbers, i.e. exactly G-65's SOFT-warning class that
+  ships silently. Caught only by a manual `diff` against resolver output. A
+  `resolve --check <deckfile>` mode (or piping resolver output into the file as
+  the skill intends) would close it.
+- **DD-3 `targets` gate-pattern hole, G-66/G-67 shape.** Dawnhand Eulogist's "if
+  there is an Elf card in your graveyard" gate is INVISIBLE to `deck.py targets 77`
+  (0 Elves in deck — a dead rider, reported by nothing), while the same shape on
+  Dragonfly Swarm ("Lesson card in your graveyard") WAS caught in deck 76. The
+  card-type-in-yard pattern coverage is inconsistent.
+- **DD-4 `pool.py --color` cannot ask the draft question.** `color_matches` is
+  documented SUPERSET semantics (identity CONTAINS the filter), so `--color WRG`
+  returns 5-color cards and there is no way to ask "castable within Naya"
+  (identity SUBSET). Both drafts needed raw-Python subset loops for the survey the
+  /draft-deck skill's Stage 1 prescribes. A `--within` flag is the fix; the
+  existing semantics are correct for their own question and should stay.
+- **DD-5 `similar`'s ⚠-closest headline picked 51a (93%, 2 shared cards) over the
+  true neighbour 64 (88%, 9 shared cards)** for deck 77 — the documented G-47
+  theme-vs-cards divergence; the shared-cards column did surface 64. Not a bug;
+  noted because the headline steers the distinctiveness read.
+- **DD-6 duplicate deck-id silence** (from the adjacent 73a incident): two files
+  can claim one deck id — `find_deck` picks one silently and no gate objects. A
+  hard INV-04-class duplicate-id check would have stopped the near-duplicate 73a.
