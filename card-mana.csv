@@ -2445,6 +2445,52 @@ Stormchaser's Talent,{U},1,
 Rise of the Varmints,{3}{G},4,Plot
 Persuasive Interrogators,{4}{B}{B},6,Investigate
 "June, Bounty Hunter",{1}{B},2,
+Emergent Haunting,{1}{U},2,Surveil
+Bandit's Haul,{3},3,
+Conduit Pylons,,0,Surveil
+Curious Colossus,{5}{W}{W},7,
+Gnarlbark Elm,{2}{B},3,
+Bristlebane Outrider,{3}{G},4,
+Nameless Inversion,{1}{B},2,Changeling
+Rimekin Recluse,{2}{U},3,
+Meanders Guide,{2}{W},3,
+Unbury,{1}{B},2,
+Thoughtweft Lieutenant,{G}{W},2,
+Harvester of Misery,{3}{B}{B},5,Menace
+Full Steam Ahead,{3}{G}{G},5,
+Beastbond Outcaster,{2}{G},3,Plot
+Brimstone Roundup,{1}{R},2,Plot
+Eclipsed Realms,,0,
+Brambleback Brute,{2}{R},3,
+Collector's Cage,{1}{W},2,Hideaway
+"Inti, Seneschal of the Sun",{1}{R},2,
+Overlord of the Boilerbilges,{4}{R}{R},6,Impending
+The Clone Saga,{3}{U},4,Surveil
+Slagstorm,{1}{R}{R},3,
+"Susur Secundi, Void Altar",,0,Station
+Swallowed by Leviathan,{2}{U},3,Surveil
+Smile at Death,{3}{W}{W},5,
+Rangers' Refueler,{1}{U},2,Crew;Exhaust
+Gearseeker Serpent,{5}{U}{U},7,Affinity
+Brambleguard Veteran,{1}{G}{G},3,
+Starlit Soothsayer,{2}{B},3,Flying;Surveil
+Carrot Cake,{1}{W},2,Scry
+"Arabella, Abandoned Doll",{R}{W},2,
+Friendly Teddy,{2},2,
+Fanatic of the Harrowing,{3}{B},4,
+Innocuous Rat,{1}{B},2,Manifest;Manifest dread
+Hardened Escort,{2}{W},3,
+Cautious Survivor,{3}{G},4,Survival
+Final Vengeance,{B},1,
+Etched Cornfield,,0,
+Bounding Felidar,{5}{W},6,Saddle
+Intrepid Stablemaster,{1}{G},2,Reach
+Esoteric Duplicator,{2}{U},3,
+Raucous Entertainer,{1}{G},2,
+Outlaw Stitcher,{3}{U},4,Plot
+Vault Plunderer,{2}{B},3,
+Drover Grizzly,{2}{G},3,Saddle
+Hellish Sideswipe,{B},1,
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -3100,12 +3146,9 @@ Sentinel Spider,{3}{G}{G},5,Reach;Vigilance
 Putrid Warrior,{W}{B},2,
 Enlisted Wurm,{4}{G}{W},6,Cascade
 Sanctum of Ugin,,0,
-Collector's Cage,{1}{W},2,Hideaway
 Oltec Matterweaver,{2}{W},3,
-Esoteric Duplicator,{2}{U},3,
 Worldwalker Helm,{2}{U},3,Explore
 Greed's Gambit,{3}{B},4,
-Harvester of Misery,{3}{B}{B},5,Menace
 Hostile Investigator,{3}{B},4,Investigate
 Generous Plunderer,{1}{R},2,Treasure;Menace
 Memory Vessel,{3}{R}{R},5,
@@ -3127,7 +3170,6 @@ Tarnation Vista,,0,
 A-Heartfire Hero,{R},1,Valiant
 Brightblade Stoat,{1}{W},2,Lifelink;First strike
 Caretaker's Talent,{2}{W},3,
-Carrot Cake,{1}{W},2,Scry
 Dawn's Truce,{1}{W},2,Gift
 Dewdrop Cure,{2}{W},3,Gift
 Driftgloom Coyote,{3}{W}{W},5,
@@ -3182,7 +3224,6 @@ Osteomancer Adept,{1}{B},2,Deathtouch
 Persistent Marshstalker,{1}{B},2,Threshold
 Ruthless Negotiation,{B},1,Flashback
 Sinister Monolith,{3}{B},4,
-Starlit Soothsayer,{2}{B},3,Flying;Surveil
 Thought-Stalker Warlock,{2}{B},3,Menace
 "Wick, the Whorled Mind",{3}{B},4,
 Agate Assault,{2}{R},3,
@@ -3209,7 +3250,6 @@ Take Out the Trash,{1}{R},2,
 Teapot Slinger,{3}{R},4,Menace
 Valley Rally,{2}{R},3,Gift;Food
 Bark-Knuckle Boxer,{1}{G},2,
-Brambleguard Veteran,{1}{G}{G},3,
 Bushy Bodyguard,{1}{G},2,Forage;Offspring
 Cache Grab,{1}{G},2,Food;Mill
 Clifftop Lookout,{2}{G},3,Reach
@@ -3649,14 +3689,12 @@ Swiftwing Assailant,{3}{W},4,Flying;Max speed;Start your engines!
 Tune Up,{3}{W},4,
 Voyager Quickwelder,{2}{W},3,
 Flood the Engine,{2}{U},3,Enchant
-Gearseeker Serpent,{5}{U}{U},7,Affinity
 Guidelight Optimizer,{1}{U},2,
 Hulldrifter,{3}{U}{U},5,Flying;Crew
 Keen Buccaneer,{2}{U},3,Vigilance;Exhaust
 Memory Guardian,{4}{U},5,Flying;Affinity
 Nimble Thopterist,{3}{U},4,
 Possession Engine,{3}{U}{U},5,Crew
-Rangers' Refueler,{1}{U},2,Crew;Exhaust
 Repurposing Bay,{2}{U},3,
 Riverchurn Monument,{1}{U},2,Exhaust;Mill
 Sabotage Strategist,{2}{U}{U},4,Flying;Vigilance;Exhaust
@@ -3677,7 +3715,6 @@ Gastal Raider,{2}{B},3,Max speed;Start your engines!
 "Gonti, Night Minister",{2}{B}{B},4,Treasure
 Grim Bauble,{B},1,Surveil
 Grim Javelineer,{2}{B},3,Surveil
-Hellish Sideswipe,{B},1,
 Hour of Victory,{2}{B},3,Max speed;Start your engines!
 "Kalakscion, Hunger Tyrant",{1}{B}{B},3,
 Mutant Surveyor,{2}{B},3,Max speed;Start your engines!
@@ -4279,7 +4316,6 @@ Friendly Ghost,{3}{W},4,Flying
 Ghostly Dancers,{3}{W}{W},5,Flying;Eerie
 Glimmer Seeker,{2}{W},3,Survival
 Grand Entryway // Elegant Rotunda,{1}{W} // {2}{W},5,
-Hardened Escort,{2}{W},3,
 Jump Scare,{W},1,
 Leyline of Hope,{2}{W}{W},4,
 Lionheart Glimmer,{3}{W}{W},5,Ward
@@ -4343,13 +4379,10 @@ Dashing Bloodsucker,{3}{B},4,Eerie
 Defiled Crypt // Cadaver Lab,{3}{B} // {B},5,
 Demonic Counsel,{1}{B},2,Delirium
 Doomsday Excruciator,{B}{B}{B}{B}{B}{B},6,Flying
-Fanatic of the Harrowing,{3}{B},4,
 Fear of Lost Teeth,{B},1,
 Fear of the Dark,{4}{B},5,
-Final Vengeance,{B},1,
 Give In to Violence,{1}{B},2,
 Grievous Wound,{3}{B}{B},5,Enchant
-Innocuous Rat,{1}{B},2,Manifest;Manifest dread
 Killer's Mask,{2}{B},3,Manifest;Manifest dread;Equip
 Let's Play a Game,{3}{B},4,Delirium
 Leyline of the Void,{2}{B}{B},4,
@@ -4383,7 +4416,6 @@ Irreverent Gremlin,{1}{R},2,Menace
 Leyline of Resonance,{2}{R}{R},4,
 Most Valuable Slayer,{3}{R},4,
 "Norin, Swift Survivalist",{R},1,
-Overlord of the Boilerbilges,{4}{R}{R},6,Impending
 Painter's Studio // Defaced Gallery,{2}{R} // {1}{R},5,
 Piggy Bank,{1}{R},2,Treasure
 Pyroclasm,{1}{R},2,
@@ -4407,7 +4439,6 @@ Balustrade Wurm,{3}{G}{G},5,Delirium;Haste;Trample
 Bashful Beastie,{4}{G},5,Manifest;Manifest dread
 Break Down the Door,{2}{G},3,Manifest;Manifest dread
 Cathartic Parting,{1}{G},2,
-Cautious Survivor,{3}{G},4,Survival
 Coordinated Clobbering,{G},1,
 Cryptid Inspector,{2}{G},3,Vigilance
 Fear of Exposure,{2}{G},3,Trample
@@ -4430,7 +4461,6 @@ Under the Skin,{2}{G},3,Manifest;Manifest dread
 Valgavoth's Onslaught,{X}{X}{G},1,Manifest;Manifest dread
 Walk-In Closet // Forgotten Cellar,{2}{G} // {3}{G}{G},8,
 Wickerfolk Thresher,{3}{G},4,Delirium
-"Arabella, Abandoned Doll",{R}{W},2,
 Baseball Bat,{G}{W},2,Equip
 Beastie Beatdown,{R}{G},2,Delirium
 Broodspinner,{B}{G},2,Surveil;Reach
@@ -4463,7 +4493,6 @@ Bear Trap,{1},1,Flash
 Conductive Machete,{4},4,Manifest;Manifest dread;Equip
 Dissection Tools,{5},5,Manifest;Manifest dread;Equip
 Found Footage,{1},1,Surveil
-Friendly Teddy,{2},2,
 Ghost Vacuum,{1},1,
 Haunted Screen,{3},3,
 Keys to the House,{1},1,
@@ -4472,7 +4501,6 @@ Malevolent Chandelier,{6},6,Flying
 Saw,{2},2,Equip
 Abandoned Campground,,0,
 Bleeding Woods,,0,
-Etched Cornfield,,0,
 Lakeside Shack,,0,
 Murky Sewer,,0,
 Neglected Manor,,0,
@@ -4541,7 +4569,6 @@ Appeal to Eirdu,{3}{W},4,Convoke
 "Brigid, Clachan's Heart // Brigid, Doun's Mind",{2}{W},3,Transform
 Burdened Stoneback,{1}{W},2,
 Champion of the Clachan,{3}{W},4,Behold;Flash
-Curious Colossus,{5}{W}{W},7,
 Evershrike's Gift,{W},1,Blight;Enchant
 Flock Impostor,{2}{W},3,Changeling;Flying;Flash
 Gallant Fowlknight,{3}{W},4,
@@ -4549,7 +4576,6 @@ Keep Out,{1}{W},2,
 Kinbinding,{3}{W}{W},5,
 Kinsbaile Aspirant,{W},1,Behold
 Kithkeeper,{6}{W},7,Vivid
-Meanders Guide,{2}{W},3,
 Protective Response,{2}{W},3,Convoke
 "Rhys, the Evermore",{1}{W},2,Flash
 Slumbering Walker,{3}{W}{W},5,
@@ -4564,7 +4590,6 @@ Loch Mare,{1}{U},2,
 Lofty Dreams,{3}{U}{U},5,Enchant;Convoke
 "Oko, Lorwyn Liege // Oko, Shadowmoor Scion",{2}{U},3,Transform;Mill
 Rime Chill,{6}{U},7,Vivid
-Rimekin Recluse,{2}{U},3,
 Shinestriker,{4}{U}{U},6,Flying;Vivid
 Spell Snare,{U},1,
 Summit Sentinel,{1}{U},2,
@@ -4578,7 +4603,6 @@ Boggart Mischief,{2}{B},3,Blight
 Champion of the Weird,{3}{B},4,Blight;Behold
 Dawnhand Dissident,{B},1,Blight;Surveil
 Dose of Dawnglow,{4}{B},5,Blight
-Gnarlbark Elm,{2}{B},3,
 "Grub, Storied Matriarch // Grub, Notorious Auntie",{2}{B},3,Blight;Transform;Menace
 Gutsplitter Gang,{3}{B},4,Blight
 Heirloom Auntie,{2}{B},3,Surveil
@@ -4586,17 +4610,14 @@ Iron-Shield Elf,{1}{B},2,
 Moonglove Extractor,{2}{B},3,
 Mornsong Aria,{1}{B}{B},3,
 Mudbutton Cursetosser,{B},1,Behold
-Nameless Inversion,{1}{B},2,Changeling
 Nightmare Sower,{3}{B},4,Flying;Lifelink
 Perfect Intimidation,{3}{B},4,
 Scarblade Scout,{1}{B},2,Lifelink;Mill
 Taster of Wares,{2}{B},3,
 Twilight Diviner,{2}{B},3,Surveil
-Unbury,{1}{B},2,
 "Ashling, Rekindled // Ashling, Rimebound",{1}{R},2,Transform
 Boneclub Berserker,{3}{R},4,
 Boulder Dash,{1}{R},2,
-Brambleback Brute,{2}{R},3,
 Champion of the Path,{3}{R},4,Behold
 Collective Inferno,{3}{R}{R},5,Double;Convoke
 Elder Auntie,{2}{R},3,
@@ -4620,7 +4641,6 @@ Warren Torchmaster,{1}{R},2,Blight
 Assert Perfection,{1}{G},2,
 Blossoming Defense,{G},1,
 Bristlebane Battler,{1}{G},2,Trample;Ward
-Bristlebane Outrider,{3}{G},4,
 Celestial Reunion,{X}{G},1,Behold
 Crossroads Watcher,{2}{G},3,Trample
 Dundoolin Weaver,{1}{G},2,
@@ -4654,7 +4674,6 @@ Raiding Schemes,{3}{R}{G},5,
 Reaping Willow,{1}{W/B}{W/B}{W/B},4,Lifelink
 Shadow Urchin,{2}{B/R},3,Blight
 "Tam, Mindful First-Year",{1}{G/U},2,
-Thoughtweft Lieutenant,{G}{W},2,
 Twinflame Travelers,{2}{U}{R},4,Flying
 Wary Farmer,{1}{G/W}{G/W},3,Surveil
 Dawn-Blessed Pennant,{1},1,
@@ -4662,7 +4681,6 @@ Firdoch Core,{3},3,Changeling
 Gathering Stone,{4},4,
 Puca's Eye,{2},2,
 Springleaf Drum,{1},1,
-Eclipsed Realms,,0,
 A-Cauldron Familiar,{B},1,
 Acclaimed Contender,{2}{W},3,
 All That Glitters,{1}{W},2,Enchant
@@ -5035,7 +5053,6 @@ Thrumming Hivepool,{6},6,Affinity
 "Adagia, Windswept Bastion",,0,Station
 Command Bridge,,0,
 Secluded Starforge,,0,
-"Susur Secundi, Void Altar",,0,Station
 Blinkmoth Nexus,,0,
 Cascading Cataracts,,0,Indestructible
 Cathedral of War,,0,Exalted
@@ -5152,7 +5169,6 @@ Rise of the Dark Realms,{7}{B}{B},9,
 Rune-Scarred Demon,{5}{B}{B},7,Flying
 Flamewake Phoenix,{1}{R}{R},3,Flying;Ferocious;Haste
 Involuntary Employment,{3}{R},4,Treasure
-Slagstorm,{1}{R}{R},3,
 Spitfire Lagac,{3}{R},4,Landfall
 Thrill of Possibility,{1}{R},2,
 Genesis Wave,{X}{G}{G}{G},3,
@@ -5389,7 +5405,6 @@ Sidequest: Card Collection // Magicked Card,{3}{U},4,Flying;Transform;Crew
 Sleep Magic,{U},1,Enchant
 Stolen Uniform,{U},1,
 Stuck in Summoner's Sanctum,{2}{U},3,Enchant;Flash
-Swallowed by Leviathan,{2}{U},3,Surveil
 Thief's Knife,{2}{U},3,Job select;Equip
 Valkyrie Aerial Unit,{5}{U}{U},7,Flying;Surveil;Affinity
 The Water Crystal,{2}{U}{U},4,Mill
@@ -8289,7 +8304,6 @@ Geological Appraiser,{2}{R}{R},4,Discover
 Goblin Tomb Raider,{R},1,
 Hit the Mother Lode,{4}{R}{R}{R},7,Treasure;Discover
 Idol of the Deep King // Sovereign's Macuahuitl,{2}{R},3,Craft;Transform;Equip;Flash
-"Inti, Seneschal of the Sun",{1}{R},2,
 Magmatic Galleon,{3}{R}{R},5,Treasure;Crew
 "Ojer Axonil, Deepest Might // Temple of Power",{2}{R}{R},4,Transform;Trample
 Panicked Altisaur,{4}{R},5,Reach
@@ -10844,7 +10858,6 @@ Selfless Police Captain,{1}{W},2,
 Spider-UK,{3}{W},4,Web-slinging
 "Starling, Aerial Ally",{4}{W},5,Flying
 Wild Pack Squad,{2}{W},3,
-The Clone Saga,{3}{U},4,Surveil
 Time Warp,{3}{U}{U},5,
 Dark Ritual,{B},1,
 Doomfall,{2}{B},3,
@@ -11487,7 +11500,6 @@ Evolutionary Leap,{1}{G},2,
 "Olivia, Opulent Outlaw",{1}{R}{W}{B},4,Flying;Lifelink;Treasure
 "Stella Lee, Wild Card",{1}{U}{R},3,
 "Yuma, Proud Protector",{5}{R}{G}{W},8,
-Bounding Felidar,{5}{W},6,Saddle
 Claim Jumper,{2}{W},3,Vigilance
 Dust Animus,{1}{W},2,Flying;Plot
 Eriette's Lullaby,{1}{W},2,
@@ -11507,7 +11519,6 @@ Wanted Griffin,{3}{W},4,Flying
 Canyon Crab,{1}{U},2,
 Daring Thunder-Thief,{3}{U},4,Flash
 Duelist of the Mind,{1}{U},2,Flying;Vigilance
-Emergent Haunting,{1}{U},2,Surveil
 "Fblthp, Lost on the Range",{1}{U}{U},3,Plot;Ward
 Fleeting Reflection,{1}{U},2,
 Harrier Strix,{U},1,Flying
@@ -11515,7 +11526,6 @@ The Key to the Vault,{1}{U},2,Equip
 Loan Shark,{3}{U},4,Plot
 Marauding Sphinx,{3}{U}{U},5,Flying;Surveil;Vigilance;Ward
 Metamorphic Blast,{U},1,Spree
-Outlaw Stitcher,{3}{U},4,Plot
 Peerless Ropemaster,{4}{U},5,
 Shackle Slinger,{2}{U},3,
 Shifting Grift,{U}{U},2,Spree
@@ -11548,8 +11558,6 @@ Shoot the Sheriff,{1}{B},2,
 Tinybones Joins Up,{B},1,Mill
 Unfortunate Accident,{B},1,Spree
 "Vadmir, New Blood",{1}{B},2,
-Vault Plunderer,{2}{B},3,
-Brimstone Roundup,{1}{R},2,Plot
 "Calamity, Galloping Inferno",{4}{R}{R},6,Saddle;Haste
 Caught in the Crossfire,{R}{R},2,Spree
 Cunning Coyote,{1}{R},2,Plot;Haste
@@ -11566,23 +11574,18 @@ Slickshot Show-Off,{1}{R},2,Flying;Plot;Haste
 Stingerback Terror,{2}{R}{R},4,Flying;Plot;Trample
 Terror of the Peaks,{3}{R}{R},5,Flying
 Trick Shot,{4}{R},5,
-Beastbond Outcaster,{2}{G},3,Plot
 Betrayal at the Vault,{4}{G}{G},6,
 Bristlepack Sentry,{1}{G},2,Defender
 Cactarantula,{4}{G}{G},6,Reach
 Colossal Rattlewurm,{2}{G}{G},4,Trample
 Dance of the Tumbleweeds,{1}{G},2,Spree
-Drover Grizzly,{2}{G},3,Saddle
 Freestrider Commando,{2}{G},3,Plot
 Freestrider Lookout,{2}{G},3,Reach
-Full Steam Ahead,{3}{G}{G},5,
-Intrepid Stablemaster,{1}{G},2,Reach
 Map the Frontier,{3}{G},4,
 Ornery Tumblewagg,{2}{G},3,Saddle;Double
 Outcaster Greenblade,{2}{G},3,
 Outcaster Trailblazer,{2}{G},3,Plot
 Railway Brawler,{3}{G}{G},5,Reach;Plot;Trample
-Raucous Entertainer,{1}{G},2,
 Reach for the Sky,{3}{G},4,Enchant;Flash
 Smuggler's Surprise,{G},1,Spree;Mill
 Spinewoods Armadillo,{4}{G}{G},6,Reach;Ward
@@ -11623,7 +11626,6 @@ Slick Sequence,{U}{R},2,
 "Vial Smasher, Gleeful Grenadier",{B}{R},2,
 Vraska Joins Up,{B}{G},2,
 "Wylie Duke, Atiin Hero",{1}{G}{W},3,Vigilance
-Bandit's Haul,{3},3,
 Gold Pan,{2},2,Treasure;Equip
 Lavaspur Boots,{1},1,Equip
 Luxurious Locomotive,{5},5,Treasure;Crew
@@ -11631,7 +11633,6 @@ Mobile Homestead,{2},2,Crew
 Silver Deputy,{2},2,
 Sterling Hound,{3},3,Surveil
 Bristling Backwoods,,0,
-Conduit Pylons,,0,Surveil
 Creosote Heath,,0,
 Eroded Canyon,,0,
 Forlorn Flats,,0,
@@ -13574,7 +13575,6 @@ Loxodon Battle Priest,{4}{W},5,
 Osseous Exhale,{1}{W},2,Behold
 Poised Practitioner,{2}{W},3,Flurry;Scry
 Riling Dawnbreaker // Signaling Roar,{4}{W} // {1}{W},5,Flying;Vigilance
-Smile at Death,{3}{W}{W},5,
 Starry-Eyed Skyrider,{2}{W},3,Flying
 Stormbeacon Blade,{1}{W},2,Equip
 Teeming Dragonstorm,{3}{W},4,
