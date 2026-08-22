@@ -30,6 +30,8 @@ Starforged Sword,Artifact — Equipment,"Gift a tapped Fish (You may promise an 
 When this Equipment enters, if the gift was promised, attach this Equipment to target creature you control.
 Equipped creature gets +3/+3 and loses flying.
 Equip {3}",Colorless,Equipment; tokens; etb; equipment; pump; gift; value; equip,BLB,249,Uncommon,38,,3.0,hand
+Daggerfang Duo,Creature — Rat Squirrel,"Deathtouch
+When this creature enters, you may mill two cards. (You may put the top two cards of your library into your graveyard.)",B,Rat; Squirrel; graveyard; mill; etb; deathtouch; combat; removal,BLB,89,Common,,,1.0,seed
 Sunshower Druid,Creature — Frog Druid,"When this creature enters, put a +1/+1 counter on target creature and you gain 1 life.",G,Frog; Druid; counters; lifegain; etb,BLB,195,Common,50,,1.5,seed
 Full Throttle,Sorcery,"After this main phase, there are two additional combat phases.
 At the beginning of each combat this turn, untap all creatures that attacked this turn.",R,,DFT,127,Rare,,,3.0,seed
@@ -114,6 +116,7 @@ Other creatures you control have trample.",G,Elephant; trample; evasion,FDN,551,
 Whenever Arahbo or another nontoken Cat you control enters, create a 1/1 white Cat creature token.",W,Cat; Avatar; tokens; pump,FDN,2,Rare,36,,5.5,hand
 Desecration Demon,Creature — Demon,"Flying
 At the beginning of each combat, any opponent may sacrifice a creature of their choice. If a player does, tap this creature and put a +1/+1 counter on it.",B,Demon; counters; sacrifice; flying; evasion,FDN,603,Rare,general,efficient 6/6 flying B beater (opp-sac edict) — any black midrange,5.5,hand
+Dread Summons,Sorcery,"Each player mills X cards. For each creature card put into a graveyard this way, you create a tapped 2/2 black Zombie creature token. (To mill a card, a player puts the top card of their library into their graveyard.)",B,graveyard; mill; tokens,FDN,604,Rare,,,3.0,seed
 Felidar Retreat,Enchantment,"Landfall — Whenever a land you control enters, choose one —
 • Create a 2/2 white Cat Beast creature token.
 • Put a +1/+1 counter on each creature you control. Those creatures gain vigilance until end of turn.",W,counters; tokens; landfall; lands; ramp,FDN,574,Rare,36,,6.0,hand
@@ -134,7 +137,15 @@ Regal Caracal,Creature — Cat,"Other Cats you control get +1/+1 and have lifeli
 When this creature enters, create two 1/1 white Cat creature tokens with lifelink.",W,Cat; lifegain; tokens; etb; pump,FDN,579,Rare,36,,5.0,hand
 Rite of Replication,Sorcery,"Kicker {5} (You may pay an additional {5} as you cast this spell.)
 Create a token that's a copy of target creature. If this spell was kicked, create five of those tokens instead.",U,tokens; kicker; value,FDN,711,Rare,25,Copy engine for Spellstorm (25): clone your best creature (kicker = 5 copies) — payoff redundancy,6.5,hand
+Billowing Shriekmass,Creature — Spirit,"Flying
+When this creature enters, mill three cards. (Put the top three cards of your library into your graveyard.)
+Threshold — This creature gets +2/+1 as long as there are seven or more cards in your graveyard.",B,Spirit; graveyard; mill; etb; pump; flying; evasion; threshold,FDN,56,Uncommon,,,2.0,seed
+Cephalid Inkmage,Creature — Octopus Wizard,"When this creature enters, surveil 3. (Look at the top three cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)
+Threshold — This creature can't be blocked as long as there are seven or more cards in your graveyard.",U,Octopus; Wizard; graveyard; etb; selection; surveil; threshold,FDN,32,Uncommon,,,2.0,seed
 Dragonlord's Servant,Creature — Goblin Shaman,Dragon spells you cast cost {1} less to cast.,R,Goblin; Shaman; cost-reduction,FDN,536,Uncommon,49,,7.0,hand
+Dreadwing Scavenger,Creature — Nightmare Bird,"Flying
+Whenever this creature enters or attacks, draw a card, then discard a card.
+Threshold — This creature gets +1/+1 and has deathtouch as long as there are seven or more cards in your graveyard.",U/B,Nightmare; Bird; graveyard; card draw; pump; flying; evasion; threshold,FDN,118,Uncommon,,,4.0,seed
 Good-Fortune Unicorn,Creature — Unicorn,"Whenever another creature you control enters, put a +1/+1 counter on that creature.",W/G,Unicorn; counters,FDN,240,Uncommon,36a,,5.0,hand
 Hoarding Dragon,Creature — Dragon,"Flying
 When this creature enters, you may search your library for an artifact card, exile it, then shuffle.
@@ -142,6 +153,8 @@ When this creature dies, you may put the exiled card into its owner's hand.",R,D
 Ingenious Leonin,Creature — Cat Soldier,"{3}{W}: Put a +1/+1 counter on another target attacking creature you control. If that creature is a Cat, it gains first strike until end of turn. (It deals combat damage before creatures without first strike.)",W,Cat; Soldier; counters,FDN,495,Uncommon,36,,2.0,hand
 Savage Ventmaw,Creature — Dragon,"Flying
 Whenever this creature attacks, add {R}{R}{R}{G}{G}{G}. Until end of turn, you don't lose this mana as steps and phases end.",R/G,Dragon; flying; evasion,FDN,631,Uncommon,,,2.0,seed
+Crow of Dark Tidings,Creature — Zombie Bird,"Flying
+When this creature enters or dies, mill two cards. (Put the top two cards of your library into your graveyard.)",B,Zombie; Bird; graveyard; mill; etb; flying; evasion,FDN,519,Common,,,1.0,seed
 Rapacious Dragon,Creature — Dragon,"Flying
 When this creature enters, create two Treasure tokens. (They're artifacts with ""{T}, Sacrifice this token: Add one mana of any color."")",R,Dragon; sacrifice; tokens; etb; treasure; flying; evasion,FDN,544,Common,49,,5.5,hand
 Tolarian Terror,Creature — Serpent,"This spell costs {1} less to cast for each instant and sorcery card in your graveyard.
@@ -171,9 +184,13 @@ Equipped creature gets +2/+1.
 Equip {2}",Colorless,Equipment; burn; etb; equipment; pump; equip,FIN,261,Uncommon,38,,4.5,hand
 "Ragnarok, Divine Deliverance",Legendary Creature — Beast Avatar,"Vigilance, menace, trample, reach, haste
 When Ragnarok dies, destroy target permanent and return target nonlegendary permanent card from your graveyard to the battlefield.",B/G,Beast; Avatar; graveyard; removal; reach; defense; vigilance; combat; haste; aggro; trample; evasion; menace,FIN,99b,Uncommon,31,,6.0,hand
+Swallowed by Leviathan,Instant,"Choose target spell. Surveil 2, then counter the chosen spell unless its controller pays {1} for each card in your graveyard. (To surveil 2, look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)",U,graveyard; selection; surveil,FIN,79,Uncommon,,,3.5,seed
 Balamb T-Rexaur,Creature — Dinosaur,"Trample
 When this creature enters, you gain 3 life.
 Forestcycling {2} ({2}, Discard this card: Search your library for a Forest card, reveal it, put it into your hand, then shuffle.)",G,Dinosaur; lifegain; etb; landcycling; card draw; lands; trample; evasion; forestcycling; typecycling; cycling,FIN,173,Common,28,,2.0,hand
+The Master of Lake-town,Legendary Creature — Human Advisor,"Deathtouch
+Whenever a player loses life, that player mills that many cards. (Damage causes loss of life.)
+When The Master of Lake-town dies, draw a card for each graveyard with seven or more cards in it.",B,Human; Advisor; graveyard; mill; card draw; deathtouch; combat; removal,HOB,77,Rare,,,5.5,seed
 Bonehoard Dracosaur,Creature — Dinosaur Dragon,"Flying, first strike
 At the beginning of your upkeep, exile the top two cards of your library. You may play them this turn. If you exiled a land card this way, create a 3/1 red Dinosaur creature token. If you exiled a nonland card this way, create a Treasure token.",R,Dinosaur; Dragon; tokens; treasure; impulse; flying; evasion; first strike; combat,LCI,134,Mythic,49,,7.5,hand
 "Ojer Axonil, Deepest Might // Temple of Power",Legendary Creature — God // Land,"Trample
@@ -188,6 +205,8 @@ Roaming Throne,Artifact Creature — Golem,"Ward {2}
 As this creature enters, choose a creature type.
 This creature is the chosen type in addition to its other types.
 If a triggered ability of another creature you control of the chosen type triggers, it triggers an additional time.",Colorless,Golem; ward; protection,LCI,258,Rare,49,"Deck 49: doubles the triggered ability of every chosen-type creature, and SIXTEEN of the deck's Dragons have one - Terror of the Peaks fires twice per creature, Lathliss makes two 5/5s per Dragon, Drakuseth deals 4+3+3 twice per attack. Ward {2} is also the only protection red offers. Found via the K-13 effect-shape search; it never says 'Dragon'.",8.8,hand
+Souls of the Lost,Creature — Spirit,"As an additional cost to cast this spell, discard a card or sacrifice a permanent.
+Fathomless descent — Souls of the Lost's power is equal to the number of permanent cards in your graveyard and its toughness is equal to that number plus 1.",B,Spirit; graveyard; sacrifice; fathomless descent,LCI,121,Rare,,,3.0,seed
 "Captain Storm, Cosmium Raider",Legendary Creature — Human Pirate,"Whenever an artifact you control enters, put a +1/+1 counter on target Pirate you control.",U/R,Human; Pirate; counters,LCI,227,Uncommon,26b,,4.5,seed
 Ixalli's Lorekeeper,Creature — Human Druid,{T}: Add one mana of any color. Spend this mana only to cast a Dinosaur spell or activate an ability of a Dinosaur source.,G,Human; Druid; mana,LCI,194,Uncommon,50,,2.5,seed
 Hidden Necropolis,Land — Cave,"This land enters tapped.
@@ -219,6 +238,8 @@ When this land enters, surveil 1. (Look at the top card of your library. You may
 Case of the Filched Falcon,Enchantment — Case,"When this Case enters, investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")
 To solve — You control three or more artifacts. (If unsolved, solve at the beginning of your end step.)
 Solved — {2}{U}, Sacrifice this Case: Put four +1/+1 counters on target noncreature artifact. It becomes a 0/0 Bird creature with flying in addition to its other types.",U,Case; counters; card draw; sacrifice; tokens; etb; clue; investigate; solved,MKM,44,Uncommon,26,,3.5,hand
+Festerleech,Creature — Zombie Leech,"Whenever this creature deals combat damage to a player, you mill two cards.
+{1}{B}: This creature gets +2/+2 until end of turn. Activate only once each turn.",B,Zombie; Leech; mill; pump; graveyard,MKM,85,Uncommon,,,2.5,seed
 Magnetic Snuffler,Artifact Creature — Construct,"When this creature enters, return target Equipment card from your graveyard to the battlefield attached to this creature.
 Whenever you sacrifice an artifact, put a +1/+1 counter on this creature.",Colorless,Construct; counters; reanimator; graveyard; sacrifice; etb,MKM,254,Uncommon,38,,4.0,hand
 Soul Enervation,Enchantment,"Flash
@@ -314,6 +335,7 @@ When this creature enters, destroy target nonbasic land an opponent controls. It
 Roar of Endless Song,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
 I, II — Create a 5/5 green Elephant creature token.
 III — Double the power and toughness of each creature you control until end of turn.",U/R/G,Saga; sacrifice; tokens; saga; double,TDM,220,Rare,17,Temur (URG) go-wide Saga (5/5 Elephants + team P/T double) — only castable in 5c Spectrum,5.5,hand
+Stillness in Motion,Enchantment,"At the beginning of your upkeep, mill three cards. Then if your library has no cards in it, exile this enchantment and put five cards from your graveyard on top of your library in any order.",U,graveyard; mill,TDM,59,Rare,,,4.0,seed
 Runescale Stormbrood // Chilling Screech,Creature — Dragon // Instant — Omen,"Flying
 Whenever you cast a noncreature spell or a Dragon spell, this creature gets +2/+0 until end of turn. // Counter target spell with mana value 2 or less. (Then shuffle this card into its owner's library.)",U/R,Dragon; Omen; counterspell; pump; flying; evasion,TDM,221,Uncommon,49,Deck 49: a 4-drop DRAGON that is also a Dragon payoff (+2/+0 on every noncreature or Dragon spell). Hidden from every red filter because its identity is U/R from the {1}{U} Omen half - the FRONT face is {3}{R} and mono-red castable (G-58 bulk-triage variant).,7.2,hand
 Phoenix Fleet Airship,Artifact — Vehicle,"Flying
@@ -377,6 +399,7 @@ When this creature enters, if it was bargained, add four mana in any combination
 {1}{R}: This creature deals 1 damage to any target.",R,Dragon; sacrifice; burn; etb; noncombat damage; flying; evasion; haste; aggro; bargain; value,WOE,145,Mythic,49,,6.5,hand
 Decadent Dragon // Expensive Taste,Creature — Dragon // Instant — Adventure,"Flying, trample
 Whenever this creature attacks, create a Treasure token. // Exile the top two cards of target opponent's library face down. You may look at and play those cards for as long as they remain exiled.",B/R,Dragon; Adventure; exile cast; heist; tokens; treasure; flying; evasion; trample,WOE,223,Rare,49,,5.5,seed
+Picklock Prankster // Free the Fae,Creature — Faerie Rogue // Instant — Adventure,"Flying, vigilance // Mill four cards. Then put an instant, sorcery, or Faerie card from among the milled cards into your hand.",U,Faerie; Rogue; Adventure; mill; exile cast; flying; evasion; vigilance; combat; graveyard,WOE,64,Uncommon,,,2.0,seed
 Flick a Coin,Instant,"Flick a Coin deals 1 damage to any target. You create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")
 Draw a card.",R,card draw; sacrifice; tokens; burn; treasure,WOE,128,Common,49,,2.5,seed
 Rootrider Faun,Creature — Satyr Scout,"{T}: Add {G}.
