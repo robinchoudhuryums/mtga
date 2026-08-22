@@ -322,11 +322,16 @@ Enchanted creature gets +2/+2 for each Aura and Equipment attached to it.
 All damage that would be dealt to you is dealt to enchanted creature instead.",W,Aura; aura; pump; enchant,SPM,24,Rare,38,,3.5,hand
 "Green Goblin, Revenant",Legendary Creature — Goblin Human Villain,"Flying, deathtouch
 Whenever Green Goblin attacks, discard a card. Then draw a card for each card you've discarded this turn.",B/R,Goblin; Human; Villain; card draw; deathtouch; combat; removal; flying; evasion,SPM,130,Uncommon,10,,4.5,hand
+Dragonback Assault,Enchantment,"When this enchantment enters, it deals 3 damage to each creature and each planeswalker.
+Landfall — Whenever a land you control enters, create a 4/4 red Dragon creature token with flying.",U/R/G,tokens; burn; etb; landfall; lands; ramp,TDM,179,Mythic,,,8.5,seed
+Mox Jasper,Legendary Artifact,{T}: Add one mana of any color. Activate only if you control a Dragon.,Colorless,mana,TDM,246,Mythic,,,5.5,seed
 "Neriv, Heart of the Storm",Legendary Creature — Spirit Dragon,"Flying
 If a creature you control that entered this turn would deal damage, it deals twice that much damage instead.",W/B/R,Spirit; Dragon; flying; evasion,TDM,210,Mythic,concept: Mardu,Lost its home when deck 14 converted Mardu->Rakdos (BR) for consistency; needs a Mardu (WBR) shell — no current deck. Build-around concept.,6.5,hand
 Stormscale Scion,Creature — Dragon,"Flying
 Other Dragons you control get +1/+1.
 Storm (When you cast this spell, copy it for each spell cast before it this turn. Copies become tokens.)",R,Dragon; pump; flying; evasion; storm; spellslinger,TDM,123,Mythic,49,,7.0,hand
+Bloomvine Regent // Claim Territory,Creature — Dragon // Sorcery — Omen,"Flying
+Whenever this creature or another Dragon you control enters, you gain 3 life. // Search your library for up to two basic Forest cards, reveal them, put one onto the battlefield tapped and the other into your hand, then shuffle. (Also shuffle this card.)",G,Dragon; Omen; lifegain; flying; evasion,TDM,136,Rare,,,3.5,seed
 Maelstrom of the Spirit Dragon,Land,"{T}: Add {C}.
 {T}: Add one mana of any color. Spend this mana only to cast a Dragon spell or an Omen spell.
 {4}, {T}, Sacrifice this land: Search your library for a Dragon card, reveal it, put it into your hand, then shuffle.",Colorless,sacrifice; ramp; mana,TDM,260,Rare,,,4.0,seed
