@@ -5261,7 +5261,7 @@ Eclipsed Realms,Land,"As this land enters, choose Elemental, Elf, Faerie, Giant,
 Brambleback Brute,Creature — Giant Warrior,"This creature enters with two -1/-1 counters on it.
 {1}{R}, Remove a counter from this creature: Target creature can't block this turn. Activate only as a sorcery.",R,Giant; Warrior; counters,ECL,128,1
 Collector's Cage,Artifact,"Hideaway 5 (When this artifact enters, look at the top five cards of your library, exile one face down, then put the rest on the bottom in a random order.)
-{1}, {T}: Put a +1/+1 counter on target creature you control. Then if you control three or more creatures with different powers, you may play the exiled card without paying its mana cost.",W,counters; etb; selection; hideaway,BIG,1,1
+{1}, {T}: Put a +1/+1 counter on target creature you control. Then if you control three or more creatures with different powers, you may play the exiled card without paying its mana cost.",W,counters; etb; selection; hideaway; exile cast; card advantage,BIG,1,1
 "Inti, Seneschal of the Sun",Legendary Creature — Human Knight,"Whenever you attack, you may discard a card. When you do, put a +1/+1 counter on target attacking creature. It gains trample until end of turn.
 Whenever you discard one or more cards, exile the top card of your library. You may play that card until your next end step.",R,Human; Knight; counters; impulse,LCI,156,1
 Overlord of the Boilerbilges,Enchantment Creature — Avatar Horror,"Impending 4—{2}{R}{R} (If you cast this spell for its impending cost, it enters with four time counters and isn't a creature until the last is removed. At the beginning of your end step, remove a time counter from it.)

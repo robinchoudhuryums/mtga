@@ -186,6 +186,14 @@ KEYWORD_THEMES = {
     # exiled cards is exactly K-07's `exile cast`, and a free recurring copy is
     # repeatable card advantage. 5 cards, all on one template.
     "paradigm": ["exile cast", "card advantage"],
+    # Hideaway — "look at the top N, exile one FACE DOWN, then you may play THAT card
+    # (without paying its cost) once the card's condition is met." Casting your own
+    # exiled card is K-07's `exile cast` exactly, same as paradigm/plot/foretell, and
+    # the free cast is card advantage. Arrived on an OWNED card with the 2026-08-22
+    # ingest (Collector's Cage) and the count is honest — 8 cards in card-mana.csv,
+    # all carrying the real mechanic, not the Scryfall source artifact K-01 warns
+    # about with `jump`.
+    "hideaway": ["exile cast", "card advantage"],
     # NOT MAPPED, and the reasons are the point of triaging one at a time:
     #   * `tiered` (6) — a COST SHAPE ("choose one additional cost"), not a resource.
     #     Its six cards span burn / bounce / lifegain / pump / protection and the

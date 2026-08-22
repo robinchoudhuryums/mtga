@@ -97,6 +97,7 @@ Landfall — Whenever a land you control enters, this creature gets +1/+0 until 
 "Ajani, Caller of the Pride",Legendary Planeswalker — Ajani,"+1: Put a +1/+1 counter on up to one target creature.
 −3: Target creature gains flying and double strike until end of turn.
 −8: Create X 2/2 white Cat creature tokens, where X is your life total.",W,Ajani; Planeswalker; counters; tokens; planeswalker,FDN,134,Mythic,36,,6.5,hand
+"Muldrotha, the Gravetide",Legendary Creature — Elemental Avatar,"During each of your turns, you may play a land and cast a permanent spell of each permanent type from your graveyard. (If a card has multiple permanent types, choose one as you play it.)",U/B/G,Elemental; Avatar; graveyard,FDN,243,Mythic,,,5.5,seed
 Omniscience,Enchantment,You may cast spells from your hand without paying their mana costs.,U,,FDN,161,Mythic,51,,8.0,hand
 Omniscience,Enchantment,You may cast spells from your hand without paying their mana costs.,U,,FDN,208,Mythic,,,4.5,seed
 "Ramos, Dragon Engine",Legendary Artifact Creature — Dragon,"Flying
@@ -250,6 +251,9 @@ Spider-UK,Legendary Creature — Spider Human Hero,"Web-slinging {2}{W} (You may
 At the beginning of your end step, if two or more creatures entered the battlefield under your control this turn, you draw a card and gain 2 life.",W,Spider; Human; Hero; lifegain; card draw; bounce; web-slinging; evasion; tempo,MSC,777,Uncommon,23,,3.5,hand
 Kang the Conqueror,Legendary Creature — Human Villain,"Flying
 Power-up — {5}{U}{U}{U}: Put a +1/+1 counter on Kang. Take an extra turn after this one. During that turn, power-up abilities can't be activated. (Activate each power-up ability only once. Reduce the cost by his mana cost if he entered this turn.)",U,Human; Villain; counters; flying; evasion; power-up; payoff,MSH,62,Mythic,12,blue control finisher — evasive body + extra-turn power-up; UUU castable in Dimir,6.5,hand
+Railway Brawler,Creature — Rhino Warrior,"Reach, trample
+Whenever another creature you control enters, put X +1/+1 counters on it, where X is its power.
+Plot {3}{G} (You may pay {3}{G} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)",G,Rhino; Warrior; counters; exile cast; reach; defense; plot; tempo; cost-reduction; trample; evasion,OTJ,175,Mythic,,,8.0,seed
 Terror of the Peaks,Creature — Dragon,"Flying
 Spells your opponents cast that target this creature cost an additional 3 life to cast.
 Whenever another creature you control enters, this creature deals damage equal to that creature's power to any target.",R,Dragon; flying; evasion,OTJ,149,Mythic,49,,8.0,hand
@@ -257,6 +261,12 @@ Blooming Marsh,Land,"This land enters tapped unless you control two or fewer oth
 {T}: Add {B} or {G}.",B/G,mana,OTJ,266,Rare,21; 6,Manabase upgrade: de-tapland Gastromancer (21) B->A; reusable across WB/BG/GW decks. Also firms deck 8's thin green (Killmonger/Ygra) — fungible. | Also Abzan reanimator deck 6 (Dead or Alive) — same WBG fixing; fungible craft.,6.5,hand
 Concealed Courtyard,Land,"This land enters tapped unless you control two or fewer other lands.
 {T}: Add {W} or {B}.",W/B,mana,OTJ,268,Rare,21; 6,Manabase upgrade: de-tapland Gastromancer (21) B->A; reusable across WB/BG/GW decks. Also de-taplands + firms black in deck 20 (Honor Among Thieves) — fungible. | Also Abzan reanimator deck 6 (Dead or Alive) — same WBG fixing; fungible craft.,6.5,hand
+"Fblthp, Lost on the Range",Legendary Creature — Homunculus,"Ward {2}
+You may look at the top card of your library any time.
+The top card of your library has plot. The plot cost is equal to its mana cost.
+You may plot nonland cards from the top of your library.",U,Homunculus; exile cast; selection; plot; tempo; cost-reduction; ward; protection,OTJ,48,Rare,,,3.5,seed
+Kellan Joins Up,Legendary Enchantment,"When Kellan Joins Up enters, you may exile a nonland card with mana value 3 or less from your hand. If you do, it becomes plotted. (You may cast it as a sorcery on a later turn without paying its mana cost.)
+Whenever a legendary creature you control enters, put a +1/+1 counter on each creature you control.",W/U/G,counters; etb; plot; tempo; cost-reduction,OTJ,212,Rare,,,7.0,seed
 "Lilah, Undefeated Slickshot",Legendary Creature — Human Rogue,"Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
 Whenever you cast a multicolored instant or sorcery spell from your hand, exile that spell instead of putting it into your graveyard as it resolves. If you do, it becomes plotted. (You may cast it as a sorcery on a later turn without paying its mana cost.)",U/R,Human; Rogue; graveyard; pump; plot; tempo; cost-reduction; prowess; spellslinger,OTJ,217,Rare,25,prowess 3-drop that impulses off your spells,6.5,hand
 "Malcolm, the Eyes",Legendary Creature — Siren Pirate,"Flying, haste
@@ -266,6 +276,7 @@ This creature gets -1/-1 for each card in your hand.
 Plot {2}{R} (You may pay {2}{R} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)",R,Scorpion; Dragon; exile cast; removal; flying; evasion; plot; tempo; cost-reduction; trample,OTJ,147,Rare,49,,5.0,hand
 Lassoed by the Law,Enchantment,"When this enchantment enters, exile target nonland permanent an opponent controls until this enchantment leaves the battlefield.
 When this enchantment enters, create a 1/1 red Mercenary creature token with ""{T}: Target creature you control gets +1/+0 until end of turn. Activate only as a sorcery.""",W,tokens; removal; etb; pump,OTJ,18,Uncommon,3; 36a,,5.5,hand
+Make Your Own Luck,Sorcery,"Look at the top three cards of your library. You may exile a nonland card from among them. If you do, it becomes plotted. Put the rest into your hand. (You may cast it as a sorcery on a later turn without paying its mana cost.)",U/G,selection; plot; tempo; cost-reduction,OTJ,218,Uncommon,,,3.5,seed
 Outcaster Greenblade,Creature — Human Mercenary,"When this creature enters, search your library for a basic land card or a Desert card, reveal it, put it into your hand, then shuffle.
 This creature gets +1/+1 for each Desert you control.",G,Human; Mercenary; ramp; etb; pump,OTJ,172,Uncommon,50,,2.5,seed
 Thunder Lasso,Artifact — Equipment,"When this Equipment enters, attach it to target creature you control.

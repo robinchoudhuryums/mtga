@@ -39,10 +39,13 @@
 #: notes: Pie hits our own creatures never — it targets opponents'. No graveyard-EXILE effects were included (Agatha's Soul
 #: notes: Cauldron was deliberately NOT included — its exile cost eats the
 #: notes: reanimation fuel). MECHANIC READS: Coiling Rebirth's copy mode needs a
-#: notes: NONLEGENDARY target — Massacre Wurm, Craterhoof, Rise of the Varmints tokens,
-#: notes: Worldsire qualify; the legends don't. Famished Worldsire reanimated skips
-#: notes: devour (no lands paid) but its ETB top-X refill still fires off its base
-#: notes: power. Sephiroth
+#: notes: NONLEGENDARY target — Massacre Wurm, Craterhoof and Rise of the Varmints
+#: notes: tokens qualify; the legends (Muldrotha, Last Ronin, Sephiroth) don't.
+#: notes: MULDROTHA replaced Famished Worldsire 2026-08-22: a permanent-of-each-type
+#: notes: rebuy ENGINE in place of a sixth reanimation TARGET — she plays a land, a
+#: notes: creature, an enchantment and an artifact from the yard every turn, which is
+#: notes: the same argument that retired Zombify, Prison Break and Grim Reaper.
+#: notes: Sephiroth
 #: notes: transforms on the fourth death trigger; wraths advance it four at once.
 #: notes: SHARED COPIES (fungible): Bake into a Pie/Craterhoof also serve 25/50/60a. (Murder was CUT for
 #: notes: Hauntwoods Shrieker, whose attack-manifest fills the yard AND builds a board
@@ -85,7 +88,7 @@
 1 Massacre Wurm (FDN) 714
 1 Rottenmouth Viper (BLB) 107
 1 Craterhoof Behemoth (TDM) 138
-1 Famished Worldsire (EOE) 182
+1 Muldrotha, the Gravetide (FDN) 243
 1 The Last Ronin (TMT) 154
 1 Sephiroth, Fabled SOLDIER (FIN) 115
 
