@@ -32,7 +32,7 @@
 1 Rayblade Trooper (EOE) 30
 1 Starfield Shepherd (EOE) 37
 1 Sphinx of Forgotten Lore (FDN) 51
-1 Sinister Cryologist (EOE) 75
+1 Outlaw Stitcher (OTJ) 59
 1 The Lord of the Eagles (HOB) 46
 1 Quantum Riddler (EOE) 72
 1 Starbreach Whale (EOE) 77
