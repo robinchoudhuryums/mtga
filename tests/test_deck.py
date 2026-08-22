@@ -3605,6 +3605,24 @@ class TestTargetCounts:
         every discard outlet in a 60-card deck, i.e. "you have a hand"."""
         assert not any(kind == "any" for _rx, _lbl, kind in deck._TARGET_GATES)
 
+    def test_gy_type_gate_reads_both_copula_spellings(self):
+        """DD-3: "there is an Elf card" (Dawnhand Eulogist, REAL text) was invisible while
+        "there's a Lesson card" (Dragonfly Swarm) was caught — the gate only knew the
+        contraction, so deck 77 shipped a fully dead Elf rider unreported."""
+        cd = {"dawnhand eulogist": {"name": "Dawnhand Eulogist",
+                                    "type": "Creature — Elf Cleric",
+                                    "text": "When this creature enters, mill three cards. "
+                                            "Then if there is an Elf card in your "
+                                            "graveyard, each opponent loses 1 life and "
+                                            "you gain 1 life.", "colors": "B"},
+              "notanelf": {"name": "NotAnElf", "type": "Creature — Human", "text": "",
+                           "colors": "B"}}
+        mana = {"dawnhand eulogist": ("{1}{B}", "2"), "notanelf": ("{B}", "1")}
+        rows = deck.target_counts([(1, "Dawnhand Eulogist", "", ""),
+                                   (1, "NotAnElf", "", "")], cd, mana)
+        elf = [r for r in rows if "Elf cards in the yard" in r[1]]
+        assert len(elf) == 1 and elf[0][2] == 0      # the gate is SEEN, and it is unmet
+
 
 class TestRationaleAuditMisses:
     """F-03: the audit reported "rationale is current" on prose that was stale twice."""
@@ -3947,6 +3965,81 @@ class TestNeedsFmtNormalization:
     def test_an_untracked_format_warns_instead_of_silently_not_filtering(self, capsys):
         deck._needs_fmt(self._ns(fmt="foo"), {"format": ""})
         assert "not tracked" in capsys.readouterr().out
+
+
+class TestResolveCheck:
+    """DD-2: eleven hand-written collector numbers shipped wrong across two consecutive
+    from-scratch drafts — real sets, wrong numbers, the class check_all keeps SOFT
+    (G-65) — and only a hand-run diff against resolver output caught them. `resolve
+    --check` is that diff as a command: strict on a drafted file, basics exempt."""
+
+    def _run(self, tmp_path, monkeypatch, body, problems):
+        p = tmp_path / "deck.txt"
+        p.write_text(body, encoding="utf-8")
+        monkeypatch.setattr(deck, "find_deck", lambda t: None)
+        monkeypatch.setattr(deck, "printing_problems", lambda cards: problems)
+        return deck._resolve_check(str(p), {"shock": ("Shock", "M21", "159")})
+
+    def test_a_clean_file_passes(self, tmp_path, monkeypatch, capsys):
+        rc = self._run(tmp_path, monkeypatch, "4 Shock (M21) 159\n", ([], []))
+        assert rc == 0 and "✓" in capsys.readouterr().out
+
+    def test_an_unheld_printing_fails_hard_and_names_the_fix(self, tmp_path, monkeypatch, capsys):
+        rc = self._run(tmp_path, monkeypatch, "4 Shock (M21) 999\n",
+                       ([], [("Shock", "M21", "999", [("m21", "159")])]))
+        out = capsys.readouterr().out
+        assert rc == 1 and "resolver has: (M21) 159" in out
+
+    def test_a_nonexistent_set_fails_hard(self, tmp_path, monkeypatch, capsys):
+        rc = self._run(tmp_path, monkeypatch, "4 Shock (ZZZ) 1\n",
+                       ([("Shock", "ZZZ", "1")], []))
+        assert rc == 1 and "NOWHERE" in capsys.readouterr().out
+
+
+class TestPrintingIndexPreference:
+    """DD-1: `resolve`'s printing pick was "last library row wins", so a card owned in
+    two sets resolved to whichever printing happened to sit later in the CSV — even
+    when the OTHER owned printing was the pool's format-canonical one (Lightning
+    Strike, Scout the City, Spider-Rex on the live data). Preference is now
+    owned∩pool > owned > pool."""
+
+    def _csvs(self, tmp_path, monkeypatch, pool_rows, lib_rows):
+        header = "Card Name,Set Code,Collector #\n"
+        pool = tmp_path / "pool.csv"
+        pool.write_text(header + "".join(f"{n},{s},{c}\n" for n, s, c in pool_rows),
+                        encoding="utf-8")
+        libf = tmp_path / "lib.csv"
+        libf.write_text(header + "".join(f"{n},{s},{c}\n" for n, s, c in lib_rows),
+                        encoding="utf-8")
+        monkeypatch.setattr(deck, "POOL_CSV", str(pool))
+        monkeypatch.setattr(deck, "DEFAULT_CSV", str(libf))
+
+    def test_owned_pool_canonical_printing_beats_a_later_library_row(self, tmp_path, monkeypatch):
+        self._csvs(tmp_path, monkeypatch,
+                   pool_rows=[("Strike", "MSH", "142")],
+                   lib_rows=[("Strike", "MSH", "142"), ("Strike", "TLA", "146")])
+        assert deck._printing_index()["strike"][1:] == ("MSH", "142")
+
+    def test_owned_only_printing_still_beats_the_pools(self, tmp_path, monkeypatch):
+        # Single owned printing not in the pool: "matches what you actually have" holds.
+        self._csvs(tmp_path, monkeypatch,
+                   pool_rows=[("Elves", "FDN", "227")],
+                   lib_rows=[("Elves", "M19", "314")])
+        assert deck._printing_index()["elves"][1:] == ("M19", "314")
+
+    def test_pool_only_card_uses_the_pool_printing(self, tmp_path, monkeypatch):
+        self._csvs(tmp_path, monkeypatch,
+                   pool_rows=[("Craft Target", "TDM", "59")], lib_rows=[])
+        assert deck._printing_index()["craft target"][1:] == ("TDM", "59")
+
+    def test_front_face_alias_does_not_clobber_a_real_card(self, tmp_path, monkeypatch):
+        # G-63: a DFC's front alias must never shadow a distinct card named like its front.
+        self._csvs(tmp_path, monkeypatch,
+                   pool_rows=[("Front", "AAA", "1"), ("Front // Back", "BBB", "2")],
+                   lib_rows=[])
+        idx = deck._printing_index()
+        assert idx["front"][1:] == ("AAA", "1")
+        assert idx["front // back"][1:] == ("BBB", "2")
 
 
 class TestSyncSameDeckClaim:

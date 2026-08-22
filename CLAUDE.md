@@ -763,7 +763,11 @@ directions.
   `#: protect:`) — most uncastable cards really are mistakes, so the default stays a hard
   FAIL. An exempt card is still PRINTED by `mana` and counted in `preflight` as
   "(+N intended, exempt)"; it leaves the failure list, not the page. [G-64]
-- **Never hand-write a deck line's `(SET) COLLECTOR#` — get it from `deck.py resolve`.**
+- **Never hand-write a deck line's `(SET) COLLECTOR#` — get it from `deck.py resolve`,
+  and verify a freshly WRITTEN file with `deck.py resolve --check <id>`** (strict: an
+  unheld printing FAILS there, where check_all keeps it soft — eleven hand-written
+  numbers shipped wrong across the two 2026-08-21 drafts and only a hand-run diff
+  caught them; /draft-deck Stage 4 now runs it).
   Those fields were validated by NOTHING: `1 Eaten Alive (ZZZ) 172` passed `legal`, passed
   `check` (which reported it OWNED, because ownership joins on the NAME), passed
   `preflight` READY and passed `check_all`. A deck file could be integrity-clean and

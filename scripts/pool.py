@@ -31,7 +31,7 @@ import sys
 import textwrap
 
 from lib import (DEFAULT_CSV, REPO_ROOT, load_rows, eprint, owned_qty, color_matches,
-                 alias_front)
+                 color_within, alias_front)
 
 
 def classify_roles(text):
@@ -136,6 +136,11 @@ def matches(card, args, owned):
     # "colorless", so the substring test swept in all 1,116 Colorless cards (BS-10).
     if not color_matches(card.get("Color(s)"), args.color):
         return False
+    # SUBSET filter (DD-4): --within WRG keeps cards whose identity FITS a deck of
+    # those colors (colorless included) — the from-scratch draft survey question that
+    # --color's superset semantics cannot ask. Identity, not cost: see lib.color_within.
+    if not color_within(card.get("Color(s)"), getattr(args, "within", None)):
+        return False
     if args.rarity:
         rarities = [r.strip().lower() for r in args.rarity.split(",")]
         if (card.get("Rarity") or "").lower() not in rarities:
@@ -188,7 +193,10 @@ def main():
     ap = argparse.ArgumentParser(description="Search the Arena card pool with ownership.")
     ap.add_argument("--pool", default=POOL_PATH)
     ap.add_argument("--name"); ap.add_argument("--type"); ap.add_argument("--text")
-    ap.add_argument("--color"); ap.add_argument("--synergy")
+    ap.add_argument("--color", help="identity CONTAINS these colors (superset; 'c' = colorless only)")
+    ap.add_argument("--within", help="identity FITS a deck of these colors (subset; colorless passes) "
+                    "— the castable-in-my-deck survey filter")
+    ap.add_argument("--synergy")
     ap.add_argument("--role", help="functional role(s), comma-separated: removal, sweeper, "
                     "counter, draw, ramp, cheat, payoff (survey the pool by what a card DOES)")
     ap.add_argument("--rarity", help="comma-separated: common,uncommon,rare,mythic")

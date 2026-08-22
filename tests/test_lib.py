@@ -60,6 +60,37 @@ class TestColorMatches:
         assert lib.card_colors("Colorless").issubset({"W", "U"})
 
 
+class TestColorWithin:
+    """The --within SUBSET filter (DD-4) — "castable in a deck of these colors", the
+    from-scratch draft survey question color_matches' superset semantics cannot ask:
+    `--color WRG` returned five-color cards on both 2026-08-21 drafts."""
+
+    def test_five_color_card_does_not_fit_naya(self):
+        assert not lib.color_within("W/U/B/R/G", "WRG")
+
+    def test_mono_and_guild_cards_fit_their_shard(self):
+        assert lib.color_within("R", "WRG")
+        assert lib.color_within("W/R", "WRG")
+        assert lib.color_within("W/R/G", "WRG")
+
+    def test_off_color_card_does_not_fit(self):
+        assert not lib.color_within("U", "WRG")
+        assert not lib.color_within("B/G", "WRG")
+
+    def test_colorless_fits_any_deck(self):
+        assert lib.color_within("Colorless", "WRG")
+        assert lib.color_within("Colorless", "U")
+
+    def test_the_naive_substring_trap_stays_dead(self):
+        # "colorless" contains the letter r — set semantics, never substring (BS-10).
+        assert lib.color_within("Colorless", "R")
+        assert not lib.color_within("R", "colorless")
+
+    def test_no_needle_is_no_filter(self):
+        assert lib.color_within("B/R", None)
+        assert lib.color_within("B/R", "")
+
+
 class TestOwnedQty:
     IDX = {"fable of the mirror-breaker": 2, "llanowar elves": 4}
 

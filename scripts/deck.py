@@ -8284,6 +8284,12 @@ def cmd_similar(args):
         for sim, colj, did, name, shared, spec, ncards, cardnames in rows[:limit]:
             print(f"    {did:6} ({ncards}) {', '.join(cardnames) if cardnames else '—'}")
     top = rows[0] if rows else None
+    # The deck with the most shared CARDS, computed up front so the ⚠ headline can name
+    # it (DD-5): for deck 77 the headline named 51a (93% themes, 2 shared cards) while
+    # the true neighbour 64 (88%, NINE shared cards) sat one row down — the ▸ line below
+    # carried the truth, but the headline is what a distinctiveness read acts on.
+    by_cards = sorted(rows, key=lambda r: (-r[6], -r[1], r[2]))
+    cards_top = by_cards[0] if by_cards and by_cards[0][6] else None
     if top and top[0] >= 0.60 and top[5]:
         # Temper the warning with the card count: a high cosine on few shared CARDS is a
         # both-are-value-decks signal, not a duplicate.
@@ -8291,6 +8297,9 @@ def cmd_similar(args):
                 f"the decks TAG as, not what they play — grade the win-cons from "
                 f"`deck.py text`." if top[6] <= 5 else
                 f" They also share {top[6]} nonland cards — check that list first.")
+        if top[6] <= 5 and cards_top and cards_top[2] != top[2] and cards_top[6] > top[6]:
+            tail += (f" The closer CARD neighbour is deck {cards_top[2]} "
+                     f"({cards_top[6]} shared) — check that one too.")
         print(f"\n⚠ Closest is #{top[2]} {top[3]} at {top[0]*100:.0f}% and shares a SPECIFIC theme "
               f"({', '.join(top[5][:3])}).{tail}")
     elif top and top[0] >= 0.60:
@@ -8299,9 +8308,8 @@ def cmd_similar(args):
     elif top:
         print(f"\nClosest is #{top[2]} {top[3]} at {top[0]*100:.0f}% — comfortably distinct.")
     # The deck you share the most CARDS with, when the theme ranking does not put it first.
-    by_cards = sorted(rows, key=lambda r: (-r[6], -r[1], r[2]))
-    if by_cards and by_cards[0][6] and by_cards[0][2] != rows[0][2]:
-        top = by_cards[0]
+    if cards_top and rows and cards_top[2] != rows[0][2]:
+        top = cards_top
         rank = next(i for i, r in enumerate(rows, 1) if r[2] == top[2])
         print(f"  ▸ Most shared CARDS: deck {top[2]} ({top[6]} nonland card(s), "
               f"{top[1] * 100:.0f}% colours) — it ranks #{rank} by theme. Theme similarity "
@@ -8413,11 +8421,21 @@ def _candidate_castability(cost, ident, declared):
 
 
 def _printing_index():
-    """name_lower (full AND DFC front) -> (display, set_code, collector). The OWNED printing
-    (card-library.csv) wins over the pool's representative printing, so a resolved line
-    matches what you actually have. Used by `deck.py resolve`."""
-    idx = {}
-    for path in (POOL_CSV, DEFAULT_CSV):        # library LAST so it overrides the pool
+    """name_lower (full AND DFC front) -> (display, set_code, collector), preferring
+    owned∩pool > owned > pool (DD-1). Used by `deck.py resolve`.
+
+    "Owned printing wins" alone was the old rule, and when you own SEVERAL printings the
+    arbitrary last library row won: Llanowar Elves resolved to its (M19) printing while
+    the owned (FDN) one — the pool's format-canonical printing, the one deck 31 already
+    plays — sat one row earlier. The pool keys ONE printing per card from the format
+    query (G-18), so an owned printing that MATCHES the pool's is both "what you have"
+    and "what the format knows"; prefer it, then any owned printing (last row wins, as
+    before, so single-printing behaviour is unchanged), then the pool's.
+
+    Front faces are aliased in a SECOND pass (G-63) — never in-pass with setdefault,
+    which let a DFC seen early claim the bare front key a distinct card owns (BS4-18)."""
+    pool_info, lib_rows = {}, {}
+    for path, store in ((POOL_CSV, "pool"), (DEFAULT_CSV, "lib")):
         if not os.path.exists(path):
             continue
         with open(path, newline="", encoding="utf-8") as fh:
@@ -8427,8 +8445,20 @@ def _printing_index():
                 if not nl:
                     continue
                 info = (disp, (r.get("Set Code") or "").strip(), (r.get("Collector #") or "").strip())
-                idx[nl] = info
-                idx.setdefault(nl.split(" // ")[0], info)   # DFC front fallback (don't clobber a full name)
+                if store == "pool":
+                    pool_info[nl] = info
+                else:
+                    lib_rows.setdefault(nl, []).append(info)
+    idx = dict(pool_info)
+    for nl, infos in lib_rows.items():
+        pool = pool_info.get(nl)
+        # Compare on (set, collector) only — display capitalisation may differ per row.
+        if pool and any(i[1:] == pool[1:] for i in infos):
+            idx[nl] = pool                       # owned AND the pool's canonical printing
+        else:
+            idx[nl] = infos[-1]                  # any owned printing (last row, as before)
+    for nl in list(idx):                         # second-pass front aliasing (G-63)
+        idx.setdefault(nl.split(" // ")[0], idx[nl])
     return idx
 
 
@@ -8745,6 +8775,46 @@ def cmd_screen(args):
     return 0
 
 
+def _resolve_check(target, idx):
+    """`resolve --check <deck>`: verify an existing deck file's `(SET) COLLECTOR#`
+    fields against known printings, STRICTLY (DD-2).
+
+    Eleven hand-written collector numbers shipped wrong across two consecutive
+    from-scratch drafts (7 in deck 76, 4 in deck 77) — every one a real set with a
+    wrong number, i.e. exactly the class `check_all` keeps SOFT (G-65: the pool keys
+    one printing per card, so a legitimate alternate printing is indistinguishable
+    there). They were caught only by a hand-run diff against resolver output. In a
+    freshly DRAFTED file the lines are supposed to COME from `resolve`, so an unheld
+    printing here is presumed a typo and fails hard; basics stay exempt (several
+    arts per set). Prints the resolver's preferred printing beside each flagged line
+    so the fix is a paste."""
+    d = find_deck(target)
+    path = d["path"] if d else target
+    if not os.path.exists(path):
+        eprint(f"--check: no deck id or file {target!r}.")
+        return 1
+    _meta, cards = parse_deck_file(path)
+    if not cards:
+        eprint(f"--check: no parseable card lines in {path}.")
+        return 1
+    bad_set, unverified = printing_problems(cards)
+    label = d["id"] if d else os.path.relpath(path, REPO_ROOT)
+    if not bad_set and not unverified:
+        print(f"✓ {label}: every stated printing is a known one "
+              f"({len(cards)} line(s); basics exempt).")
+        return 0
+    for n, s, c in bad_set:
+        print(f"✗ {n} ({s}) {c} — set code exists NOWHERE in pool or library.")
+    for n, s, c, known in unverified:
+        pref = idx.get(n.lower()) or idx.get(n.split(' // ')[0].lower())
+        hint = f"resolver has: ({pref[1]}) {pref[2]}" if pref else \
+               f"known: {', '.join(f'({ks.upper()}) {kc}' for ks, kc in known)}"
+        print(f"✗ {n} ({s}) {c} — not a printing this repo holds; {hint}.")
+    print(f"\n{len(bad_set) + len(unverified)} bad printing(s) in {label}. Replace each "
+          "line with `deck.py resolve` output — never hand-write `(SET) #` (G-65).")
+    return 1
+
+
 def cmd_resolve(args):
     """Turn card NAMES into ready-to-paste deck lines `<qty> <Name> (<SET>) <#>` with a valid
     printing (exact → DFC front → unique substring; owned printing preferred, else the pool's).
@@ -8755,6 +8825,8 @@ def cmd_resolve(args):
     if not idx:
         eprint("No card data — build card-pool.csv (build_pool.py) / card-library.csv first.")
         return 1
+    if getattr(args, "check", None):
+        return _resolve_check(args.check, idx)
     raw = list(args.names or [])
     if not raw or raw == ["-"]:
         raw = [ln for ln in sys.stdin.read().splitlines()]
@@ -11212,7 +11284,12 @@ _TARGET_GATES = [
      "{1} cards in the yard (needs {0})", "gy_type"),
     (re.compile(r"number of (?!permanent)([A-Za-z]+) cards? in (?:your|all) graveyards?", re.I),
      "{0} cards in the yard", "gy_type"),
-    (re.compile(r"there'?s an? (?!permanent)([A-Za-z]+) card in (?:your|a) graveyard", re.I),
+    # Both spellings of the copula: Dragonfly Swarm writes "if there's a Lesson card in
+    # your graveyard" and Dawnhand Eulogist writes "if there is an Elf card in your
+    # graveyard" — the contraction-only form saw the first and was BLIND to the second,
+    # so deck 77 shipped Eulogist with a fully dead Elf rider (zero Elves) and `targets`
+    # reported nothing (DD-3; the G-67 phrasing-whitelist shape).
+    (re.compile(r"there(?:'s| is) an? (?!permanent)([A-Za-z]+) card in (?:your|a) graveyard", re.I),
      "{0} cards in the yard (needs 1)", "gy_type"),
     # NO generic "cards to discard" rule. It was written, and it reported 35 for every
     # discard outlet in a 60-card deck — i.e. "you have a hand", which is true of every
@@ -11641,6 +11718,13 @@ def main():
     p.add_argument("--expect", type=int, default=None,
                    help="fail unless the resolved quantities total exactly this many "
                         "cards (e.g. --expect 60 for a from-scratch draft)")
+    p.add_argument("--check", metavar="DECK",
+                   help="verify an EXISTING deck file's (SET) COLLECTOR# fields against "
+                        "known printings instead of resolving names — deck id or path. "
+                        "STRICT: an unheld printing fails here (G-65 keeps it soft in "
+                        "check_all because a legitimate alternate printing exists; a "
+                        "drafted file's lines should come from resolve, so here it is "
+                        "presumed a typo). Run it after writing a from-scratch deck.")
     p = sub.add_parser("screen",
                        help="re-score candidate cards against a deck's CURRENT list; "
                             "flags strict upgrades of cards already in it")

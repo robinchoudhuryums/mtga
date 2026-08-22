@@ -1829,8 +1829,13 @@ its own PR.
 
 ## 2026-08-22 — tooling findings from drafting decks 76 (Spirit Call) and 77 (Bottomless)
 
-Candidate findings for the next /broad-scan, each verified live during the two
-/draft-deck runs (not hypotheses):
+**ALL SIX IMPLEMENTED 2026-08-22** via /broad-implement — see
+`.cycle/blocks/2026-08-draft-tooling-dd1-6-broad-implement.md` for the full summary.
+DD-1's Llanowar premise was OVERTURNED under measurement (the FDN printing was never
+owned; the real flaw was last-library-row arbitrariness, fixed as owned∩pool > owned >
+pool). Follow-ons recorded in the block: --within for query/wishlist, a --prefer-pool
+resolve mode, and the variant-directory rule's coupling to the current convention.
+Original findings, kept for the record:
 
 - **DD-1 `resolve` printing choice ignores the library and Standard.** Llanowar
   Elves resolved to (M19) 314 while the owned, Standard printing (FDN) 227 sits in
