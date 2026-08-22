@@ -106,7 +106,8 @@
 1 Gloomlake Verge (DSK) 260
 1 Undercity Sewers (PZA) 0
 1 Dismal Backwater (FDN) 261
-6 Swamp (HOB) 191
+5 Swamp (HOB) 191
+1 Susur Secundi, Void Altar (EOE) 259
 5 Forest (HOB) 193
 2 Island (HOB) 190
 #~ note: applied — Rise of the Varmints in for Withering Torment (the standing
