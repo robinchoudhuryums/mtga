@@ -235,6 +235,28 @@ def color_matches(cell, needle):
     return want <= have if want else not have
 
 
+def color_within(cell, needle):
+    """Does a ``Color(s)`` identity cell fit WITHIN a deck of the given colors?
+
+    The SUBSET complement of ``color_matches`` (DD-4). ``color_matches`` asks "does
+    this card's identity CONTAIN the filter's colors" — right for "show me red cards",
+    wrong for the question every from-scratch draft asks: "which cards are castable in
+    a Naya deck". Under superset semantics ``--color WRG`` returned five-color cards,
+    and both 2026-08-21 drafts fell back to hand-written subset loops for the Stage-1
+    pool survey. Here the card's identity must be a SUBSET of the filter's colors, and
+    a COLORLESS card always passes — it is castable in any deck. Same set discipline
+    as ``color_matches``: through ``card_colors`` on both sides, never a substring.
+    Note this reads IDENTITY, so a hybrid stays castable-broader than it looks and an
+    ability-only off-color identity reads stricter than the printed cost (G-58) —
+    a review filter, not a castability verdict.
+    """
+    if needle is None or not str(needle).strip():
+        return True
+    want = card_colors(needle)
+    have = card_colors(cell)
+    return have <= want
+
+
 def owned_qty(index, name):
     """Quantity owned for a card name from a name→count index, DFC-aware.
 

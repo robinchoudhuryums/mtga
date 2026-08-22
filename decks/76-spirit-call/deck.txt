@@ -12,17 +12,21 @@
 #: archetype: RW, Prismari UR, Quandrix GU, Silverquill WB, Witherbloom BG — any five
 #: archetype: of them cover WUBRG exactly) backed by the TDM Spirit Dragons (Betor WBG,
 #: archetype: Shiko URW, Ureni GRU) and Lathliss, whose 5/5 RED Dragon tokens are legal
-#: archetype: bodies for the R slot. FALLBACK: 21 mostly-evasive Dragons simply attack;
+#: archetype: bodies for the R slot, joined by Dragonback Assault's landfall 4/4 red
+#: archetype: Dragon tokens. FALLBACK: 19 mostly-evasive Dragons simply attack;
 #: archetype: Dracogenesis cheats the top end (free Dragon spells, incl. Summon:
 #: archetype: Bahamut's 9-drop saga), Breaching/Corroding Dragonstorm rebound off every
-#: archetype: Dragon ETB, and Dragonhawk converts a big board into burn and impulse.
+#: archetype: Dragon ETB, Whirlwing Stormbrood gives every Dragon spell flash (land the
+#: archetype: win bodies at end step, one turn before the upkeep check), and Dragonhawk
+#: archetype: converts a big board into burn and impulse.
 #: archetype: DISTINCTIVENESS: deck 49 Big Draco is MONO-RED combat Dragons — same
 #: archetype: tribe, different win condition, different manabase (the 26/26a split, one
 #: archetype: scale up). No other 4c/5c deck on the roster is tribal, and no deck in
 #: archetype: the roster wins at upkeep by a counting condition.
 #: protect: Call the Spirit Dragons; Dracogenesis; Lathliss, Dragon Queen; Sarkhan, Dragon Ascendant; Dragonstorm Globe
-#: tier: B (PROVISIONAL) — graded UNDER the A metrics floor (interaction 7, card
-#: tier: advantage 4, protection 4): an unplayed first draft whose five-color,
+#: tier: B (PROVISIONAL) — graded UNDER the A metrics floor (interaction 8, card
+#: tier: advantage 4, protection 3 — ward left with Dragonfly Swarm; interaction rose 7->8 in the 2026-08-22 pile pass,
+#: tier: Dragonclaw Strike and Dragonback Assault in for filler bodies): an unplayed first draft whose five-color,
 #: tier: tapland-heavy manabase pays real speed for its coverage (keepable 87% but
 #: tier: cast-on-curve in the 50-70% band across the gold Dragons, and Drakuseth's
 #: tier: {R}{R}{R} reads 32% — the nonland fixers the model cannot see are what make
@@ -31,9 +35,10 @@
 #: tier: upkeep through any wrath — is real. Re-grade with games.
 #: notes: Drafted 2026-08-21 from the playstyle-gap survey (alt-win thread): the seed
 #: notes: was owned and homeless, and the census found 28 owned Standard Dragons
-#: notes: covering all five colors. NEARLY ALL-OWNED: the only craft is 1x Maelstrom of
-#: notes: the Spirit Dragon (R land — any-color for Dragon spells + a late Dragon
-#: notes: tutor; see wishlist Target 76). MECHANIC READS: the win check counts FIVE
+#: notes: covering all five colors. CRAFTS (4, after the 2026-08-22 pile pass): Mox
+#: notes: Jasper M ({0} any-color, gated on a Dragon), Dragonback Assault M (sweeper +
+#: notes: landfall Dragon tokens), Bloomvine Regent R (modal ramp-early / Dragon-late),
+#: notes: Maelstrom of the Spirit Dragon R land — see wishlist Target 76. MECHANIC READS: the win check counts FIVE
 #: notes: DIFFERENT Dragons, one per color — a multicolor Dragon can fill any ONE of
 #: notes: its colors, so Betor+Shiko+two gold+any R covers it with exactly five bodies;
 #: notes: Lathliss tokens are red Dragons and count. The trigger is at YOUR upkeep, so
@@ -62,14 +67,14 @@
 1 Jeskai Shrinekeeper (TDM) 197
 
 # Dragons — bodies, engines, beef
-1 Dragonfly Swarm (TLA) 215
-1 Pet Avengers (MSH) 178
-1 Nova Hellkite (EOE) 148
+1 Mox Jasper (TDM) 246
+1 Dragonclaw Strike (TDM) 180
+1 Whirlwing Stormbrood (TDM) 234
 1 Smaug, Wicked Worm (HOB) 164
 1 Dragonhawk, Fate's Tempest (BLB) 132
-1 Twinflame Tyrant (FDN) 97
+1 Dragonback Assault (TDM) 179
 1 Lathliss, Dragon Queen (FDN) 627
-1 Ancestor Dragon (FDN) 489
+1 Bloomvine Regent // Claim Territory (TDM) 136
 1 Niv-Mizzet, Visionary (FDN) 123
 1 Drakuseth, Maw of Flames (FDN) 760
 1 Summon: Bahamut (FIN) 1

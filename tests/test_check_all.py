@@ -149,6 +149,32 @@ class TestInv04Decks:
         errs, warns, info, n = ca.check_decks()
         assert errs == [] and n == 1
 
+    def test_a_duplicate_deck_id_is_a_hard_error_naming_both_files(self, tmp_path, monkeypatch):
+        # DD-6: two files CAN claim one id (two NN-* dirs sharing a number; two NNa-*.txt
+        # variants in a parent) and find_deck picks one silently — every by-id command
+        # then validates/edits one file while the other exists unchecked.
+        a, b = tmp_path / "a.txt", tmp_path / "b.txt"
+        _write(a, "4 Shock (M21) 159\n")
+        _write(b, "4 Shock (M21) 159\n")
+        monkeypatch.setattr(ca.deckmod, "discover_decks",
+                            lambda: [{"id": "31", "name": "A", "path": str(a)},
+                                     {"id": "31", "name": "B", "path": str(b)}])
+        monkeypatch.setattr(ca.deckmod, "load_collection", lambda: ({}, {}, {}))
+        monkeypatch.setattr(ca.deckmod, "printing_problems", lambda cards: ([], []))
+        monkeypatch.setattr(ca.deckmod, "DECKS_DIR", str(tmp_path))
+        errs, _, _, _ = ca.check_decks()
+        assert any("duplicate deck id" in e and "a.txt" in e and "b.txt" in e for e in errs)
+
+    def test_a_variant_shaped_top_level_directory_is_a_hard_error(self, tmp_path, monkeypatch):
+        # DD-6's near-miss shape: decks/73a-posse/ created while 73a lived inside the
+        # parent dir — different ids, so the duplicate check can't see it, and preflight
+        # validated the OTHER file. Variants live inside the parent's directory.
+        (tmp_path / "73a-posse").mkdir()
+        self._world(tmp_path, monkeypatch, "4 Shock (M21) 159\n")
+        monkeypatch.setattr(ca.deckmod, "DECKS_DIR", str(tmp_path))
+        errs, _, _, _ = ca.check_decks()
+        assert any("variant-shaped directory" in e and "73a-posse" in e for e in errs)
+
     def test_a_bad_set_code_is_hard_and_an_unheld_number_is_soft(self, tmp_path, monkeypatch):
         self._world(tmp_path, monkeypatch, "4 Shock (M21) 159\n")
         monkeypatch.setattr(ca.deckmod, "printing_problems",

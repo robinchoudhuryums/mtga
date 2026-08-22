@@ -15,7 +15,10 @@ Tiering rubric — never auto-write an inflated tier).
 ## Stage 1 — Survey the pool by what cards DO (not just tags)
 For the concept's colors + format, list the owned (and craftable) options by
 FUNCTIONAL role, so the skeleton is built from real cards:
-`python3 scripts/pool.py --owned --color <C> --legal <fmt> --role <ramp|draw|removal|counter|sweeper|payoff|cheat>`
+`python3 scripts/pool.py --owned --within <COLORS> --legal <fmt> --role <ramp|draw|removal|counter|sweeper|payoff|cheat>`
+(`--within` is the SUBSET filter — identity fits a deck of those colors, colorless
+included — the castable-in-my-deck question; `--color` is the superset filter and
+returns five-color cards for a three-color query)
 (repeat per role; add `--unowned` for craft targets, `--synergy <theme>` for the
 concept's signature theme, `--full` to read a card's text before including it).
 `deck.py suggest --lands --owned <existing-deck-in-colors>` is a quick owned-manabase
@@ -38,6 +41,12 @@ signature cards the tooling must never propose cutting). **Leave `#: tier:` unti
 Stage 5** — grade it from the floor, don't guess.
 
 ## Stage 4 — Read it, then validate
+0. `python3 scripts/deck.py resolve --check NN` — verify every `(SET) COLLECTOR#`
+   in the file you just wrote against known printings, STRICTLY. This exists
+   because eleven hand-written collector numbers shipped wrong across two
+   consecutive drafts (decks 76/77) — real sets, wrong numbers, the class
+   `check_all` keeps soft — and only a hand-run diff caught them. Any ✗ line:
+   paste the resolver's printing it shows. Do not proceed on a non-zero exit.
 1. `python3 scripts/deck.py text NN` — read the FULL oracle text of the whole deck
    once now (cheapest time): catches mistyped/mismatched names (a wrong printing
    reads blank/wrong), off-color cards, and hidden `⚠` effects.

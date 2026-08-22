@@ -20,7 +20,7 @@ def _qargs(**kw):
 
 
 def _pargs(**kw):
-    base = dict(name=None, type=None, text=None, color=None, synergy=None,
+    base = dict(name=None, type=None, text=None, color=None, within=None, synergy=None,
                 rarity=None, legal=None, role=None, owned=False, unowned=False,
                 _roles=set())
     base.update(kw)
@@ -76,6 +76,13 @@ class TestPoolFilters:
         assert pool.matches(_GOLD, _pargs(color="R"), {})
         assert not pool.matches(_ROCK, _pargs(color="R"), {})
         assert pool.matches(_ROCK, _pargs(color="colorless"), {})
+
+    def test_within_subset_filter_answers_the_draft_question(self):
+        # DD-4: --color WRG returned five-color cards on both 2026-08-21 drafts; --within
+        # is the subset complement ("castable in a deck of these colors"), colorless in.
+        assert pool.matches(_GOLD, _pargs(within="BR"), {})       # B/R fits a BR deck
+        assert not pool.matches(_GOLD, _pargs(within="R"), {})    # B/R does not fit mono-R
+        assert pool.matches(_ROCK, _pargs(within="R"), {})        # colorless fits any deck
 
     def test_rarity_filter(self):
         assert pool.matches(_ROCK, _pargs(rarity="uncommon"), {})

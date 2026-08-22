@@ -23,6 +23,7 @@ Usage:
 import argparse
 import csv
 import os
+import re
 import sys
 
 from lib import DEFAULT_CSV, REPO_ROOT, load_rows, eprint
@@ -131,6 +132,32 @@ def check_decks():
     card by construction. See `deck.printing_problems` for why basics are exempt."""
     errs, warns, info = [], [], []
     decks = deckmod.discover_decks()
+    # DUPLICATE DECK IDS ARE A HARD FAILURE (DD-6). Two files CAN claim one id — two
+    # `NN-*` directories sharing a number, or two `NNa-*.txt` variants inside a parent —
+    # and `find_deck` returns whichever `discover_decks` lists first, silently: every
+    # by-id command then reads/validates/EDITS one file while the other exists unchecked.
+    seen_ids = {}
+    for d in decks:
+        key = d["id"].lower()
+        if key in seen_ids:
+            errs.append(f"duplicate deck id {d['id']!r}: "
+                        f"{os.path.relpath(seen_ids[key], REPO_ROOT)} AND "
+                        f"{os.path.relpath(d['path'], REPO_ROOT)} — every by-id command "
+                        "silently picks one; rename or renumber one of them")
+        else:
+            seen_ids[key] = d["path"]
+    # A VARIANT-SHAPED TOP-LEVEL DIRECTORY is the same wound one step earlier: a
+    # /draft-deck run created decks/73a-posse/ while 73a already lived inside
+    # 73-dukes-vigil/ as 73a-hired-guns.txt — the ids differed ('73a-posse' vs '73a'),
+    # so the duplicate check above cannot see it, `deck.py preflight 73a` validated the
+    # OTHER file, and the near-duplicate was caught by a human. The convention is that
+    # variants live INSIDE the parent's directory as `<id>-<slug>.txt`; a top-level dir
+    # whose name starts `<number><letters>-` breaks it and is almost certainly this
+    # mistake being made again.
+    for entry in sorted(os.listdir(deckmod.DECKS_DIR)) if os.path.isdir(deckmod.DECKS_DIR) else []:
+        if os.path.isdir(os.path.join(deckmod.DECKS_DIR, entry)) and re.match(r"^\d+[a-z]+-", entry):
+            errs.append(f"variant-shaped directory decks/{entry}/ — variants live inside "
+                        "the parent deck's directory as <id>-<slug>.txt (see decks/73-dukes-vigil/)")
     _, _, by_name_qty = deckmod.load_collection()
     for d in decks:
         _, cards = deckmod.parse_deck_file(d["path"])
