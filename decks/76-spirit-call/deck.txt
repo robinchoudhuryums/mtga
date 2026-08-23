@@ -44,11 +44,13 @@
 #: tier: upkeep through any wrath — is real. Re-grade with games.
 #: notes: Drafted 2026-08-21 from the playstyle-gap survey (alt-win thread): the seed
 #: notes: was owned and homeless, and the census found 28 owned Standard Dragons
-#: notes: covering all five colors. CRAFTS (8, after the 2026-08-23 pass): Mox Jasper M
-#: notes: ({0} any-color, gated on a Dragon), Dragonback Assault M (sweeper + landfall
-#: notes: Dragon tokens), Ramos M, Neriv M, Bloomvine Regent R (modal ramp-early /
-#: notes: Dragon-late), Maelstrom of the Spirit Dragon R land, Karakyk Guardian U,
-#: notes: Savage Ventmaw U — see wishlist Target 76.
+#: notes: covering all five colors. CRAFTS (8, after the 2026-08-23 pass): Dragonback
+#: notes: Assault M (sweeper + landfall Dragon tokens), Ramos M, Neriv M, Bloomvine
+#: notes: Regent R (modal ramp-early / Dragon-late), Maelstrom of the Spirit Dragon R
+#: notes: land, Karakyk Guardian U, Savage Ventmaw U, Encroaching Dragonstorm U (two
+#: notes: basics the Leyline then turns into every basic type; Mox Jasper was CUT for it
+#: notes: — its {0} fixing was redundant once three any-color permanents landed, and it
+#: notes: is dead in an opening hand with no Dragon) — see wishlist Target 76.
 #: notes: LEYLINE OF THE GUILDPACT IS THE BIGGEST MECHANIC READ IN THE DECK, and read it
 #: notes: PRECISELY: it makes every nonland permanent ALL COLORS, not all TYPES. The win
 #: notes: trigger trades on both — "for each color, put a +1/+1 counter on a Dragon you
@@ -58,9 +60,9 @@
 #: notes: spread) and does NOTHING for the BODY half: you still need five Dragons on the
 #: notes: battlefield. Lathliss tokens and Dragonback Assault tokens are the cheap way to
 #: notes: get there.
-#: notes: MECHANIC READS: the win check counts FIVE
-#: notes: DIFFERENT Dragons, one per color — a multicolor Dragon can fill any ONE of
-#: notes: its colors, so Betor+Shiko+two gold+any R covers it with exactly five bodies;
+#: notes: MECHANIC READS (these govern the games where the Leyline is NOT out): the win
+#: notes: check counts FIVE DIFFERENT Dragons, one per color — a multicolor Dragon can
+#: notes: fill any ONE of its colors, so Betor+Shiko+two gold+any R covers it in five;
 #: notes: Lathliss tokens are red Dragons and count. The trigger is at YOUR upkeep, so
 #: notes: the enchantment must survive one turn cycle — the Dragons are indestructible,
 #: notes: the enchantment is NOT; play it with the win already on board when possible.
@@ -87,7 +89,6 @@
 1 Jeskai Shrinekeeper (TDM) 197
 
 # Dragons — bodies, engines, beef
-1 Mox Jasper (TDM) 246
 1 Dragonclaw Strike (TDM) 180
 1 Whirlwing Stormbrood (TDM) 234
 1 Smaug, Wicked Worm (HOB) 164
@@ -108,6 +109,7 @@
 1 Dragonbroods' Relic (TDM) 140
 1 Savage Ventmaw (FDN) 665
 1 Breaching Dragonstorm (TDM) 101
+1 Encroaching Dragonstorm (TDM) 142
 1 Dracogenesis (TDM) 105
 
 # Interaction (behold-powered)
