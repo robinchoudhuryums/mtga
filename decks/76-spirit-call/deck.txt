@@ -15,15 +15,21 @@
 #: archetype: bodies for the R slot, joined by Dragonback Assault's landfall 4/4 red
 #: archetype: Dragon tokens. FALLBACK: 19 mostly-evasive Dragons simply attack;
 #: archetype: Dracogenesis cheats the top end (free Dragon spells, incl. Summon:
-#: archetype: Bahamut's 9-drop saga), Breaching/Corroding Dragonstorm rebound off every
-#: archetype: Dragon ETB, Whirlwing Stormbrood gives every Dragon spell flash (land the
-#: archetype: win bodies at end step, one turn before the upkeep check), and Dragonhawk
-#: archetype: converts a big board into burn and impulse.
+#: archetype: Bahamut's 9-drop saga), Breaching Dragonstorm rebounds off every Dragon ETB
+#: archetype: (Corroding Dragonstorm was CUT for Ramos 2026-08-23), Whirlwing Stormbrood
+#: archetype: gives every Dragon spell flash (land the win bodies at end step, one turn
+#: archetype: before the upkeep check), and Dragonhawk converts a big board into burn and
+#: archetype: impulse. FIXING is the deck's real constraint and the 2026-08-23 pass
+#: archetype: rebuilt it around permanents rather than lands: Leyline of the Guildpact
+#: archetype: (free from the opening hand — every land becomes every basic type AND every
+#: archetype: nonland permanent becomes ALL COLORS), Enduring Vitality (every creature
+#: archetype: taps for any color, and it recurs itself), Bloom Tender (one mana per color
+#: archetype: among your permanents), Savage Ventmaw (six mana per attack) and Ramos.
 #: archetype: DISTINCTIVENESS: deck 49 Big Draco is MONO-RED combat Dragons — same
 #: archetype: tribe, different win condition, different manabase (the 26/26a split, one
 #: archetype: scale up). No other 4c/5c deck on the roster is tribal, and no deck in
 #: archetype: the roster wins at upkeep by a counting condition.
-#: protect: Call the Spirit Dragons; Dracogenesis; Lathliss, Dragon Queen; Sarkhan, Dragon Ascendant; Dragonstorm Globe
+#: protect: Call the Spirit Dragons; Dracogenesis; Lathliss, Dragon Queen; Leyline of the Guildpact; Enduring Vitality
 #: tier: B (PROVISIONAL) — graded UNDER the A metrics floor (interaction 8, card
 #: tier: advantage 3, protection 4 (the 2026-08-23 pass traded Niv-Mizzet Visionary's
 #: tier: draw engine for Neriv's damage doubler, and Armament Dragon was CUT for
@@ -38,10 +44,21 @@
 #: tier: upkeep through any wrath — is real. Re-grade with games.
 #: notes: Drafted 2026-08-21 from the playstyle-gap survey (alt-win thread): the seed
 #: notes: was owned and homeless, and the census found 28 owned Standard Dragons
-#: notes: covering all five colors. CRAFTS (4, after the 2026-08-22 pile pass): Mox
-#: notes: Jasper M ({0} any-color, gated on a Dragon), Dragonback Assault M (sweeper +
-#: notes: landfall Dragon tokens), Bloomvine Regent R (modal ramp-early / Dragon-late),
-#: notes: Maelstrom of the Spirit Dragon R land — see wishlist Target 76. MECHANIC READS: the win check counts FIVE
+#: notes: covering all five colors. CRAFTS (8, after the 2026-08-23 pass): Mox Jasper M
+#: notes: ({0} any-color, gated on a Dragon), Dragonback Assault M (sweeper + landfall
+#: notes: Dragon tokens), Ramos M, Neriv M, Bloomvine Regent R (modal ramp-early /
+#: notes: Dragon-late), Maelstrom of the Spirit Dragon R land, Karakyk Guardian U,
+#: notes: Savage Ventmaw U — see wishlist Target 76.
+#: notes: LEYLINE OF THE GUILDPACT IS THE BIGGEST MECHANIC READ IN THE DECK, and read it
+#: notes: PRECISELY: it makes every nonland permanent ALL COLORS, not all TYPES. The win
+#: notes: trigger trades on both — "for each color, put a +1/+1 counter on a Dragon you
+#: notes: control of that color", then you win if five DRAGONS got counters. So the
+#: notes: Leyline solves the COLOUR half completely (every Dragon is now every colour, so
+#: notes: any five Dragons cover WUBRG — no more assembling a specific five-colour
+#: notes: spread) and does NOTHING for the BODY half: you still need five Dragons on the
+#: notes: battlefield. Lathliss tokens and Dragonback Assault tokens are the cheap way to
+#: notes: get there.
+#: notes: MECHANIC READS: the win check counts FIVE
 #: notes: DIFFERENT Dragons, one per color — a multicolor Dragon can fill any ONE of
 #: notes: its colors, so Betor+Shiko+two gold+any R covers it with exactly five bodies;
 #: notes: Lathliss tokens are red Dragons and count. The trigger is at YOUR upkeep, so
@@ -50,7 +67,7 @@
 #: notes: Behold (Molten/Dispelling Exhale, Sarkhan) reads a Dragon in HAND too — the
 #: notes: removal is live from turn two. Witherbloom's affinity counts every creature;
 #: notes: Dracogenesis casts Summon: Bahamut free ({9}, MV 9 <= no cap — any Dragon).
-#: notes: CURVE IS TALL BY DESIGN (avg MV ~5 among Dragons) against 10 ramp/fixing
+#: notes: CURVE IS TALL BY DESIGN (avg MV 4.88) against 9 ramp/fixing
 #: notes: pieces and 26 lands; grade castability by consistency's cast-on-curve, not
 #: notes: the raw pip table. ROTATION: the TDM/SOS core is recent — no ~2026 cliffs.
 
@@ -81,15 +98,16 @@
 1 Neriv, Heart of the Storm (TDM) 210
 1 Drakuseth, Maw of Flames (FDN) 760
 1 Summon: Bahamut (FIN) 1
+1 Ramos, Dragon Engine (FDN) 678
 
 # Ramp / fixing / tribal engine
-1 Llanowar Elves (FDN) 227
+1 Bloom Tender (ECL) 166
 1 Sarkhan, Dragon Ascendant (TDM) 118
-2 Dragonstorm Globe (TDM) 241
+1 Enduring Vitality (DSK) 176
+1 Leyline of the Guildpact (MKM) 217
 1 Dragonbroods' Relic (TDM) 140
-1 A Realm Reborn (FIN) 196
+1 Savage Ventmaw (FDN) 665
 1 Breaching Dragonstorm (TDM) 101
-1 Corroding Dragonstorm (TDM) 75
 1 Dracogenesis (TDM) 105
 
 # Interaction (behold-powered)
