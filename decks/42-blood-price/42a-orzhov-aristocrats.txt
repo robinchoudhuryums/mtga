@@ -192,7 +192,8 @@ Deck
 1 Temple of Silence (FDN) 704
 4 Scoured Barrens (M21) 250
 1 Fountainport (BLB) 253
-9 Swamp (MSH) 291
+8 Swamp (MSH) 291
+1 Susur Secundi, Void Altar (EOE) 259
 7 Plains (MSH) 287
 
 #~ note: applied — Treasure Dredger in for Dwarven Castle Guard.

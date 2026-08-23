@@ -2,9 +2,17 @@
 #: format: Standard
 #: colors: GWU
 #: plan: midrange
-#: tier: B (PROVISIONAL) — graded UNDER the A metrics floor (interaction 7 / card-adv 3;
-#: tier: Spell Pierce was CUT 2026-08-17 for Djinn of Fool's Fall, trading a conditional
-#: tier: counter for a plotted flier)
+#: tier: B (PROVISIONAL) — graded UNDER the A metrics floor (interaction 5 / card-adv 3,
+#: tier: which UNDER-reads by at least 1: Fblthp scores ZERO roles — "the top card of
+#: tier: your library has plot" is a one-card template no _ROLE_PATTERNS entry can
+#: tier: earn (K-09), and it is repeatable card advantage the metric cannot see, the
+#: tier: same shape as the CONNIVE under-count in K-12;
+#: tier: the axis has been traded down THREE times on purpose — Spell Pierce was CUT
+#: tier: 2026-08-17 for Djinn of Fool's Fall, Sinister Cryologist was CUT 2026-08-22 for
+#: tier: Outlaw Stitcher, and Syncopate was CUT the same day for Bilbo, Thief in the
+#: tier: Night: each traded a conditional counter for a plot/exile-cast engine piece.
+#: tier: Interaction 5 is now the deck's thinnest axis and the first thing a tune should
+#: tier: buy back)
 #: tier: deliberately: the floor can't see that this is an untested v1 whose three-piece
 #: tier: engine (Kellan / Appa / Aurlock) has ZERO protection effects behind it, a
 #: tier: 9-tapland tri-color manabase, and heavy singleton variance. Re-grade after
@@ -13,8 +21,11 @@
 #: protect: Kellan, the Kid; Appa, Steadfast Guardian; Doc Aurlock, Grizzled Genius
 #: archetype: Bant CAST-FROM-EXILE engine built around Kellan, the Kid — every spell cast
 #: archetype: from anywhere but hand free-casts a cheaper permanent or drops a land. The
-#: archetype: engine is WARP (12 bodies cast cheap now, self-exile, recast from exile
-#: archetype: later = ETB again + Kellan trigger), PLOT (4 pre-paid exile casts), and
+#: archetype: engine is WARP (11 bodies cast cheap now, self-exile, recast from exile
+#: archetype: later = ETB again + Kellan trigger), PLOT (9 pre-paid exile casts after the
+#: archetype: 2026-08-22 package added Outlaw Stitcher, Kellan Joins Up, Fblthp, Railway
+#: archetype: Brawler and Make Your Own Luck — Fblthp plots off the LIBRARY TOP, turning
+#: archetype: every spare mana into a future Kellan trigger), and
 #: archetype: PARADIGM Lessons (2 that recast copies from exile every turn). Appa is the
 #: archetype: second payoff — a token per exile-cast, doubled by Exalted Sunborn — and
 #: archetype: his airbend re-exiles any ETB body for a {2} recast. Doc Aurlock discounts
@@ -28,15 +39,16 @@
 1 Doc Aurlock, Grizzled Genius (OTJ) 201
 1 Exalted Sunborn (EOE) 15
 1 Haliya, Guided by Light (EOE) 19
-2 Knight Luminary (EOE) 23
+1 Fblthp, Lost on the Range (OTJ) 48
+1 Kellan Joins Up (OTJ) 212
 1 Rayblade Trooper (EOE) 30
 1 Starfield Shepherd (EOE) 37
 1 Sphinx of Forgotten Lore (FDN) 51
-1 Sinister Cryologist (EOE) 75
+1 Outlaw Stitcher (OTJ) 59
 1 The Lord of the Eagles (HOB) 46
 1 Quantum Riddler (EOE) 72
-1 Starbreach Whale (EOE) 77
-1 Drix Fatemaker (EOE) 178
+1 Railway Brawler (OTJ) 175
+1 Make Your Own Luck (OTJ) 218
 1 Mightform Harmonizer (EOE) 200
 1 Broodguard Elite (EOE) 175
 1 Eusocial Engineering (EOE) 181
@@ -54,7 +66,7 @@
 1 Salvation Swan (BLB) 28
 1 Into the Flood Maw (BLB) 52
 1 Djinn of Fool's Fall (OTJ) 43
-1 Syncopate (FIN) 80
+1 Bilbo, Thief in the Night (HOB) 33
 1 Webstrike Elite (DFT) 186
 1 Willowrush Verge (DFT) 270
 1 Gleaming Bastion (MSH) 267

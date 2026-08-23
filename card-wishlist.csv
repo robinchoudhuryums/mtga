@@ -50,6 +50,9 @@ Whenever this permanent enters or attacks, mill four cards, then you may return 
 Central Elevator // Promising Stairs,Enchantment — Room // Enchantment — Room,"When you unlock this door, search your library for a Room card that doesn't have the same name as a Room you control, reveal it, put it into your hand, then shuffle.
 (You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.) // At the beginning of your upkeep, surveil 1. You win the game if there are eight or more different names among unlocked doors of Rooms you control.
 (You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",U,Room; surveil; graveyard,DSK,44,Rare,51,,5.5,hand
+Grievous Wound,Enchantment — Aura,"Enchant player
+Enchanted player can't gain life.
+Whenever enchanted player is dealt damage, they lose half their life, rounded up.",B,Aura; aura; enchant,DSK,102,Rare,,,3.0,seed
 Hedge Shredder,Artifact — Vehicle,"Whenever this Vehicle attacks, you may mill two cards.
 Whenever one or more land cards are put into your graveyard from your library, put them onto the battlefield tapped.
 Crew 1 (Tap any number of creatures you control with total power 1 or more: This Vehicle becomes an artifact creature until end of turn.)",G,Vehicle; reanimator; graveyard; mill; vehicle; crew; vehicles,DSK,183,Rare,,,3.0,seed
@@ -78,10 +81,6 @@ Delirium — This creature gets +1/+2 and has vigilance as long as there are fou
 End-Blaze Epiphany,Instant,"End-Blaze Epiphany deals X damage to target creature. When that creature dies this turn, exile a number of cards from the top of your library equal to its power, then choose a card exiled this way. Until the end of your next turn, you may play that card.",R,burn,ECL,134,Rare,24,X-burn removal + impulse; Quintorius/exile payoff,6.0,hand
 Iron-Shield Elf,Creature — Elf Warrior,"Discard a card: This creature gains indestructible until end of turn. Tap it. (Damage and effects that say ""destroy"" don't destroy it. If its toughness is 0 or less, it still dies.)",B,Elf; Warrior,ECL,108,Uncommon,52a,,2.5,seed
 Spell Snare,Instant,Counter target spell with mana value 2.,U,counterspell,ECL,71,Uncommon,51,,3.0,seed
-"Susur Secundi, Void Altar",Land — Planet,"This land enters tapped.
-{T}: Add {B}.
-Station (Tap another creature you control: Put charge counters equal to its power on this Planet. Station only as a sorcery.)
-12+ | {1}{B}, {T}, Pay 2 life, Sacrifice a creature: Draw cards equal to the sacrificed creature's power. Activate only as a sorcery.",B,Planet; pay life; card draw; sacrifice; mana; station; counters; artifacts,EOE,259,Mythic,,dropped from deck 52 2026-08 (mythic wildcard deferred); still a candidate for 52a,7.0,seed
 Archenemy's Charm,Instant,"Choose one —
 • Exile target creature or planeswalker.
 • Return one or two target creature and/or planeswalker cards from your graveyard to your hand.
@@ -101,6 +100,7 @@ Landfall — Whenever a land you control enters, this creature gets +1/+0 until 
 "Ajani, Caller of the Pride",Legendary Planeswalker — Ajani,"+1: Put a +1/+1 counter on up to one target creature.
 −3: Target creature gains flying and double strike until end of turn.
 −8: Create X 2/2 white Cat creature tokens, where X is your life total.",W,Ajani; Planeswalker; counters; tokens; planeswalker,FDN,134,Mythic,36,,6.5,hand
+"Muldrotha, the Gravetide",Legendary Creature — Elemental Avatar,"During each of your turns, you may play a land and cast a permanent spell of each permanent type from your graveyard. (If a card has multiple permanent types, choose one as you play it.)",U/B/G,Elemental; Avatar; graveyard,FDN,243,Mythic,,,5.5,seed
 Omniscience,Enchantment,You may cast spells from your hand without paying their mana costs.,U,,FDN,161,Mythic,51,,8.0,hand
 Omniscience,Enchantment,You may cast spells from your hand without paying their mana costs.,U,,FDN,208,Mythic,,,4.5,seed
 "Ramos, Dragon Engine",Legendary Artifact Creature — Dragon,"Flying
@@ -153,6 +153,8 @@ When this creature dies, you may put the exiled card into its owner's hand.",R,D
 Ingenious Leonin,Creature — Cat Soldier,"{3}{W}: Put a +1/+1 counter on another target attacking creature you control. If that creature is a Cat, it gains first strike until end of turn. (It deals combat damage before creatures without first strike.)",W,Cat; Soldier; counters,FDN,495,Uncommon,36,,2.0,hand
 Savage Ventmaw,Creature — Dragon,"Flying
 Whenever this creature attacks, add {R}{R}{R}{G}{G}{G}. Until end of turn, you don't lose this mana as steps and phases end.",R/G,Dragon; flying; evasion,FDN,631,Uncommon,,,2.0,seed
+Savage Ventmaw,Creature — Dragon,"Flying
+Whenever this creature attacks, add {R}{R}{R}{G}{G}{G}. Until end of turn, you don't lose this mana as steps and phases end.",R/G,Dragon; flying; evasion,FDN,665,Uncommon,,,2.0,seed
 Crow of Dark Tidings,Creature — Zombie Bird,"Flying
 When this creature enters or dies, mill two cards. (Put the top two cards of your library into your graveyard.)",B,Zombie; Bird; graveyard; mill; etb; flying; evasion,FDN,519,Common,,,1.0,seed
 Rapacious Dragon,Creature — Dragon,"Flying
@@ -184,7 +186,6 @@ Equipped creature gets +2/+1.
 Equip {2}",Colorless,Equipment; burn; etb; equipment; pump; equip,FIN,261,Uncommon,38,,4.5,hand
 "Ragnarok, Divine Deliverance",Legendary Creature — Beast Avatar,"Vigilance, menace, trample, reach, haste
 When Ragnarok dies, destroy target permanent and return target nonlegendary permanent card from your graveyard to the battlefield.",B/G,Beast; Avatar; graveyard; removal; reach; defense; vigilance; combat; haste; aggro; trample; evasion; menace,FIN,99b,Uncommon,31,,6.0,hand
-Swallowed by Leviathan,Instant,"Choose target spell. Surveil 2, then counter the chosen spell unless its controller pays {1} for each card in your graveyard. (To surveil 2, look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)",U,graveyard; selection; surveil,FIN,79,Uncommon,,,3.5,seed
 Balamb T-Rexaur,Creature — Dinosaur,"Trample
 When this creature enters, you gain 3 life.
 Forestcycling {2} ({2}, Discard this card: Search your library for a Forest card, reveal it, put it into your hand, then shuffle.)",G,Dinosaur; lifegain; etb; landcycling; card draw; lands; trample; evasion; forestcycling; typecycling; cycling,FIN,173,Common,28,,2.0,hand
@@ -217,6 +218,7 @@ Poison Dart Frog,Creature — Frog,"Reach
 {2}: This creature gains deathtouch until end of turn.",G,Frog; mana; reach; defense,LCI,207,Common,50,,1.5,seed
 Druid of the Cowl,Creature — Elf Druid,{T}: Add {G}.,G,Elf; Druid; mana,M19,177,Common,50,,1.5,seed
 Llanowar Elves,Creature — Elf Druid,{T}: Add {G}.,G,Elf; Druid; mana,M19,314,Common,50,,1.5,seed
+Undergrowth Recon,Enchantment,"At the beginning of your upkeep, return target land card from your graveyard to the battlefield tapped.",G,graveyard,MKM,181,Mythic,,,7.5,seed
 Ill-Timed Explosion,Sorcery,"Draw two cards. Then you may discard two cards. When you do, Ill-Timed Explosion deals X damage to each creature, where X is the greatest mana value among cards discarded this way.",U/R,card draw; burn,MKM,207,Rare,25,draw two + scalable board sweep/burn,7.0,hand
 "Izoni, Center of the Web",Legendary Creature — Elf Detective,"Menace
 Whenever Izoni enters or attacks, you may collect evidence 4. If you do, create two 2/1 black and green Spider creature tokens with menace and reach.
@@ -254,6 +256,9 @@ Spider-UK,Legendary Creature — Spider Human Hero,"Web-slinging {2}{W} (You may
 At the beginning of your end step, if two or more creatures entered the battlefield under your control this turn, you draw a card and gain 2 life.",W,Spider; Human; Hero; lifegain; card draw; bounce; web-slinging; evasion; tempo,MSC,777,Uncommon,23,,3.5,hand
 Kang the Conqueror,Legendary Creature — Human Villain,"Flying
 Power-up — {5}{U}{U}{U}: Put a +1/+1 counter on Kang. Take an extra turn after this one. During that turn, power-up abilities can't be activated. (Activate each power-up ability only once. Reduce the cost by his mana cost if he entered this turn.)",U,Human; Villain; counters; flying; evasion; power-up; payoff,MSH,62,Mythic,12,blue control finisher — evasive body + extra-turn power-up; UUU castable in Dimir,6.5,hand
+Railway Brawler,Creature — Rhino Warrior,"Reach, trample
+Whenever another creature you control enters, put X +1/+1 counters on it, where X is its power.
+Plot {3}{G} (You may pay {3}{G} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)",G,Rhino; Warrior; counters; exile cast; reach; defense; plot; tempo; cost-reduction; trample; evasion,OTJ,175,Mythic,,,8.0,seed
 Terror of the Peaks,Creature — Dragon,"Flying
 Spells your opponents cast that target this creature cost an additional 3 life to cast.
 Whenever another creature you control enters, this creature deals damage equal to that creature's power to any target.",R,Dragon; flying; evasion,OTJ,149,Mythic,49,,8.0,hand
@@ -261,6 +266,12 @@ Blooming Marsh,Land,"This land enters tapped unless you control two or fewer oth
 {T}: Add {B} or {G}.",B/G,mana,OTJ,266,Rare,21; 6,Manabase upgrade: de-tapland Gastromancer (21) B->A; reusable across WB/BG/GW decks. Also firms deck 8's thin green (Killmonger/Ygra) — fungible. | Also Abzan reanimator deck 6 (Dead or Alive) — same WBG fixing; fungible craft.,6.5,hand
 Concealed Courtyard,Land,"This land enters tapped unless you control two or fewer other lands.
 {T}: Add {W} or {B}.",W/B,mana,OTJ,268,Rare,21; 6,Manabase upgrade: de-tapland Gastromancer (21) B->A; reusable across WB/BG/GW decks. Also de-taplands + firms black in deck 20 (Honor Among Thieves) — fungible. | Also Abzan reanimator deck 6 (Dead or Alive) — same WBG fixing; fungible craft.,6.5,hand
+"Fblthp, Lost on the Range",Legendary Creature — Homunculus,"Ward {2}
+You may look at the top card of your library any time.
+The top card of your library has plot. The plot cost is equal to its mana cost.
+You may plot nonland cards from the top of your library.",U,Homunculus; exile cast; selection; plot; tempo; cost-reduction; ward; protection,OTJ,48,Rare,,,3.5,seed
+Kellan Joins Up,Legendary Enchantment,"When Kellan Joins Up enters, you may exile a nonland card with mana value 3 or less from your hand. If you do, it becomes plotted. (You may cast it as a sorcery on a later turn without paying its mana cost.)
+Whenever a legendary creature you control enters, put a +1/+1 counter on each creature you control.",W/U/G,counters; etb; plot; tempo; cost-reduction,OTJ,212,Rare,,,7.0,seed
 "Lilah, Undefeated Slickshot",Legendary Creature — Human Rogue,"Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
 Whenever you cast a multicolored instant or sorcery spell from your hand, exile that spell instead of putting it into your graveyard as it resolves. If you do, it becomes plotted. (You may cast it as a sorcery on a later turn without paying its mana cost.)",U/R,Human; Rogue; graveyard; pump; plot; tempo; cost-reduction; prowess; spellslinger,OTJ,217,Rare,25,prowess 3-drop that impulses off your spells,6.5,hand
 "Malcolm, the Eyes",Legendary Creature — Siren Pirate,"Flying, haste
@@ -268,11 +279,9 @@ Whenever you cast your second spell each turn, investigate. (Create a Clue token
 Stingerback Terror,Creature — Scorpion Dragon,"Flying, trample
 This creature gets -1/-1 for each card in your hand.
 Plot {2}{R} (You may pay {2}{R} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)",R,Scorpion; Dragon; exile cast; removal; flying; evasion; plot; tempo; cost-reduction; trample,OTJ,147,Rare,49,,5.0,hand
-Intrepid Stablemaster,Creature — Human Scout,"Reach
-{T}: Add {G}.
-{T}: Add two mana of any one color. Spend this mana only to cast Mount or Vehicle spells.",G,Human; Scout; mana; reach; defense,OTJ,169,Uncommon,50,,5.5,hand
 Lassoed by the Law,Enchantment,"When this enchantment enters, exile target nonland permanent an opponent controls until this enchantment leaves the battlefield.
 When this enchantment enters, create a 1/1 red Mercenary creature token with ""{T}: Target creature you control gets +1/+0 until end of turn. Activate only as a sorcery.""",W,tokens; removal; etb; pump,OTJ,18,Uncommon,3; 36a,,5.5,hand
+Make Your Own Luck,Sorcery,"Look at the top three cards of your library. You may exile a nonland card from among them. If you do, it becomes plotted. Put the rest into your hand. (You may cast it as a sorcery on a later turn without paying its mana cost.)",U/G,selection; plot; tempo; cost-reduction,OTJ,218,Uncommon,,,3.5,seed
 Outcaster Greenblade,Creature — Human Mercenary,"When this creature enters, search your library for a basic land card or a Desert card, reveal it, put it into your hand, then shuffle.
 This creature gets +1/+1 for each Desert you control.",G,Human; Mercenary; ramp; etb; pump,OTJ,172,Uncommon,50,,2.5,seed
 Thunder Lasso,Artifact — Equipment,"When this Equipment enters, attach it to target creature you control.
@@ -341,6 +350,10 @@ Roar of Endless Song,Enchantment — Saga,"(As this Saga enters and after your d
 I, II — Create a 5/5 green Elephant creature token.
 III — Double the power and toughness of each creature you control until end of turn.",U/R/G,Saga; sacrifice; tokens; saga; double,TDM,220,Rare,17,Temur (URG) go-wide Saga (5/5 Elephants + team P/T double) — only castable in 5c Spectrum,5.5,hand
 Stillness in Motion,Enchantment,"At the beginning of your upkeep, mill three cards. Then if your library has no cards in it, exile this enchantment and put five cards from your graveyard on top of your library in any order.",U,graveyard; mill,TDM,59,Rare,,,4.0,seed
+Encroaching Dragonstorm,Enchantment,"When this enchantment enters, search your library for up to two basic land cards, put them onto the battlefield tapped, then shuffle.
+When a Dragon you control enters, return this enchantment to its owner's hand.",G,etb; bounce,TDM,142,Uncommon,,,2.5,seed
+Karakyk Guardian,Creature — Dragon,"Flying, vigilance, trample
+This creature has hexproof as long as it hasn't dealt damage yet. (It can't be the target of spells or abilities your opponents control.)",U/R/G,Dragon; flying; evasion; vigilance; combat; trample,TDM,198,Uncommon,,,2.5,seed
 Runescale Stormbrood // Chilling Screech,Creature — Dragon // Instant — Omen,"Flying
 Whenever you cast a noncreature spell or a Dragon spell, this creature gets +2/+0 until end of turn. // Counter target spell with mana value 2 or less. (Then shuffle this card into its owner's library.)",U/R,Dragon; Omen; counterspell; pump; flying; evasion,TDM,221,Uncommon,49,Deck 49: a 4-drop DRAGON that is also a Dragon payoff (+2/+0 on every noncreature or Dragon spell). Hidden from every red filter because its identity is U/R from the {1}{U} Omen half - the FRONT face is {3}{R} and mono-red castable (G-58 bulk-triage variant).,7.2,hand
 Phoenix Fleet Airship,Artifact — Vehicle,"Flying

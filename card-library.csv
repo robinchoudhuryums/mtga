@@ -5226,3 +5226,91 @@ Persuasive Interrogators,Creature — Gorgon Detective,"When this creature enter
 Whenever you sacrifice a Clue, target opponent gets two poison counters. (A player with ten or more poison counters loses the game.)",B,Gorgon; Detective; card draw; sacrifice; tokens; etb; clue; investigate,MKM,98,1
 "June, Bounty Hunter",Legendary Creature — Human Mercenary,"June can't be blocked as long as you've drawn two or more cards this turn.
 {1}, Sacrifice another creature: Create a Clue token. Activate only during your turn. (It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",B,Human; Mercenary; card draw; sacrifice; tokens; clue,TLA,106,1
+Emergent Haunting,Enchantment,"At the beginning of your end step, if you haven't cast a spell from your hand this turn and this enchantment isn't a creature, it becomes a 3/3 Spirit creature with flying in addition to its other types.
+{2}{U}: Surveil 1. (Look at the top card of your library. You may put it into your graveyard.)",U,graveyard; selection; surveil,OTJ,46,1
+Bandit's Haul,Artifact,"Whenever you commit a crime, put a loot counter on this artifact. This ability triggers only once each turn. (Targeting opponents, anything they control, and/or cards in their graveyards is a crime.)
+{T}: Add one mana of any color.
+{2}, {T}, Remove two loot counters from this artifact: Draw a card.",Colorless,counters; graveyard; card draw; mana,OTJ,240,1
+Conduit Pylons,Land — Desert,"When this land enters, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)
+{T}: Add {C}.
+{1}, {T}: Add one mana of any color.",Colorless,Desert; graveyard; mana; etb; selection; surveil,OTJ,254,1
+Curious Colossus,Creature — Giant Warrior,"When this creature enters, each creature target opponent controls loses all abilities, becomes a Coward in addition to its other types, and has base power and toughness 1/1.",W,Giant; Warrior; etb,ECL,12,1
+Gnarlbark Elm,Creature — Treefolk Warlock,"This creature enters with two -1/-1 counters on it.
+{2}{B}, Remove two counters from this creature: Target creature gets -2/-2 until end of turn. Activate only as a sorcery.",B,Treefolk; Warlock; counters; removal,ECL,103,1
+Bristlebane Outrider,Creature — Kithkin Knight,"This creature can't be blocked by creatures with power 2 or less.
+As long as another creature entered the battlefield under your control this turn, this creature gets +2/+0.",G,Kithkin; Knight; pump,ECL,169,1
+Nameless Inversion,Kindred Instant — Shapeshifter,"Changeling (This card is every creature type.)
+Target creature gets +3/-3 and loses all creature types until end of turn.",B,Shapeshifter; pump; removal; changeling; tribal,ECL,113,1
+Rimekin Recluse,Creature — Elemental Wizard,"When this creature enters, return up to one other target creature to its owner's hand.",U,Elemental; Wizard; etb; bounce,ECL,66,1
+Meanders Guide,Creature — Merfolk Scout,"Whenever this creature attacks, you may tap another untapped Merfolk you control. When you do, return target creature card with mana value 3 or less from your graveyard to the battlefield.",W,Merfolk; Scout; reanimator; graveyard,ECL,25,1
+Unbury,Instant,"Choose one —
+• Return target creature card from your graveyard to your hand.
+• Return two target creature cards that share a creature type from your graveyard to your hand.",B,graveyard,ECL,123,1
+Thoughtweft Lieutenant,Creature — Kithkin Soldier,"Whenever this creature or another Kithkin you control enters, target creature you control gets +1/+1 and gains trample until end of turn.",W/G,Kithkin; Soldier; pump,ECL,246,1
+Harvester of Misery,Creature — Spirit,"Menace
+When this creature enters, other creatures get -2/-2 until end of turn.
+{1}{B}, Discard this card: Target creature gets -2/-2 until end of turn.",B,Spirit; etb; removal; menace; evasion,BIG,9,1
+Full Steam Ahead,Sorcery,"Until end of turn, each creature you control gets +2/+2 and gains trample and ""This creature can't be blocked by more than one creature.""",G,pump,OTJ,164,1
+Beastbond Outcaster,Creature — Human Druid,"When this creature enters, if you control a creature with power 4 or greater, draw a card.
+Plot {1}{G} (You may pay {1}{G} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)",G,Human; Druid; exile cast; card draw; etb; plot; tempo; cost-reduction,OTJ,154,1
+Brimstone Roundup,Enchantment,"Whenever you cast your second spell each turn, create a 1/1 red Mercenary creature token with ""{T}: Target creature you control gets +1/+0 until end of turn. Activate only as a sorcery.""
+Plot {2}{R} (You may pay {2}{R} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)",R,exile cast; tokens; pump; plot; tempo; cost-reduction,OTJ,115,1
+Eclipsed Realms,Land,"As this land enters, choose Elemental, Elf, Faerie, Giant, Goblin, Kithkin, Merfolk, or Treefolk.
+{T}: Add {C}.
+{T}: Add one mana of any color. Spend this mana only to cast a spell of the chosen type or activate an ability of a source of the chosen type.",Colorless,mana,ECL,263,1
+Brambleback Brute,Creature — Giant Warrior,"This creature enters with two -1/-1 counters on it.
+{1}{R}, Remove a counter from this creature: Target creature can't block this turn. Activate only as a sorcery.",R,Giant; Warrior; counters,ECL,128,1
+Collector's Cage,Artifact,"Hideaway 5 (When this artifact enters, look at the top five cards of your library, exile one face down, then put the rest on the bottom in a random order.)
+{1}, {T}: Put a +1/+1 counter on target creature you control. Then if you control three or more creatures with different powers, you may play the exiled card without paying its mana cost.",W,counters; etb; selection; hideaway; exile cast; card advantage,BIG,1,1
+"Inti, Seneschal of the Sun",Legendary Creature — Human Knight,"Whenever you attack, you may discard a card. When you do, put a +1/+1 counter on target attacking creature. It gains trample until end of turn.
+Whenever you discard one or more cards, exile the top card of your library. You may play that card until your next end step.",R,Human; Knight; counters; impulse,LCI,156,1
+Overlord of the Boilerbilges,Enchantment Creature — Avatar Horror,"Impending 4—{2}{R}{R} (If you cast this spell for its impending cost, it enters with four time counters and isn't a creature until the last is removed. At the beginning of your end step, remove a time counter from it.)
+Whenever this permanent enters or attacks, it deals 4 damage to any target.",R,Avatar; Horror; burn; noncombat damage; impending; tempo; cost-reduction,DSK,146,1
+The Clone Saga,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
+I — Surveil 3.
+II — When you next cast a creature spell this turn, copy it, except the copy isn't legendary.
+III — Choose a card name. Whenever a creature with the chosen name deals combat damage to a player this turn, draw a card.",U,Saga; card draw; sacrifice; saga; surveil; graveyard,MSC,782,1
+Slagstorm,Sorcery,"Choose one —
+• Slagstorm deals 3 damage to each creature.
+• Slagstorm deals 3 damage to each player.",R,burn,FDN,207,1
+"Susur Secundi, Void Altar",Land — Planet,"This land enters tapped.
+{T}: Add {B}.
+Station (Tap another creature you control: Put charge counters equal to its power on this Planet. Station only as a sorcery.)
+12+ | {1}{B}, {T}, Pay 2 life, Sacrifice a creature: Draw cards equal to the sacrificed creature's power. Activate only as a sorcery.",B,Planet; pay life; card draw; sacrifice; mana; station; counters; artifacts,EOE,259,1
+Swallowed by Leviathan,Instant,"Choose target spell. Surveil 2, then counter the chosen spell unless its controller pays {1} for each card in your graveyard. (To surveil 2, look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)",U,graveyard; selection; surveil,FIN,79,1
+Smile at Death,Enchantment,"At the beginning of your upkeep, return up to two target creature cards with power 2 or less from your graveyard to the battlefield. Put a +1/+1 counter on each of those creatures.",W,counters; reanimator; graveyard,TDM,24,1
+Rangers' Refueler,Artifact — Vehicle,"Whenever you activate an exhaust ability, draw a card.
+Exhaust — {4}: This Vehicle becomes an artifact creature. Put a +1/+1 counter on it. (Activate each exhaust ability only once.)
+Crew 2",U,Vehicle; counters; card draw; vehicle; crew; vehicles; exhaust; payoff,DFT,55,1
+Gearseeker Serpent,Creature — Serpent,"Affinity for artifacts (This spell costs {1} less to cast for each artifact you control.)
+{5}{U}: This creature can't be blocked this turn.",U,Serpent; cost-reduction; affinity; artifacts,DFT,43,1
+Brambleguard Veteran,Creature — Raccoon Warrior,"Whenever you expend 4, Raccoons you control get +1/+1 and gain vigilance until end of turn. (You expend 4 as you spend your fourth total mana to cast spells during a turn.)",G,Raccoon; Warrior; pump,BLB,165,1
+Starlit Soothsayer,Creature — Bat Cleric,"Flying
+At the beginning of your end step, if you gained or lost life this turn, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)",B,Bat; Cleric; graveyard; lifegain; selection; flying; evasion; surveil,BLB,115,1
+Carrot Cake,Artifact — Food,"When this artifact enters and when you sacrifice it, create a 1/1 white Rabbit creature token and scry 1. (Look at the top card of your library. You may put that card on the bottom.)
+{2}, {T}, Sacrifice this artifact: You gain 3 life.",W,Food; lifegain; sacrifice; tokens; etb; scry; selection,BLB,7,1
+"Arabella, Abandoned Doll",Legendary Artifact Creature — Toy,"Whenever Arabella attacks, it deals X damage to each opponent and you gain X life, where X is the number of creatures you control with power 2 or less.",W/R,Toy; lifegain; burn; noncombat damage,DSK,208,1
+Friendly Teddy,Artifact Creature — Bear Toy,"When this creature dies, each player draws a card.",Colorless,Bear; Toy,DSK,247,1
+Fanatic of the Harrowing,Creature — Human Cleric,"When this creature enters, each player discards a card. If you discarded a card this way, draw a card.",B,Human; Cleric; card draw; etb; discard,DSK,96,1
+Innocuous Rat,Creature — Rat,"When this creature dies, manifest dread. (Look at the top two cards of your library. Put one onto the battlefield face down as a 2/2 creature and the other into your graveyard. Turn it face up any time for its mana cost if it's a creature card.)",B,Rat; reanimator; graveyard; selection; manifest; tokens; manifest dread,DSK,103,1
+Hardened Escort,Creature — Human Soldier,"Whenever this creature attacks, another target creature you control gets +1/+0 and gains indestructible until end of turn. (Damage and effects that say ""destroy"" don't destroy it.)",W,Human; Soldier; pump,DSK,16,1
+Cautious Survivor,Creature — Elf Survivor,"Survival — At the beginning of your second main phase, if this creature is tapped, you gain 2 life.",G,Elf; Survivor; lifegain; survival,DSK,172,1
+Final Vengeance,Sorcery,"As an additional cost to cast this spell, sacrifice a creature or enchantment.
+Exile target creature.",B,sacrifice; removal,DSK,99,1
+Etched Cornfield,Land,"This land enters tapped unless a player has 13 or less life.
+{T}: Add {G} or {W}.",W/G,mana,DSK,258,1
+Bounding Felidar,Creature — Cat Beast Mount,"Whenever this creature attacks while saddled, put a +1/+1 counter on each other creature you control. You gain 1 life for each of those creatures.
+Saddle 2 (Tap any number of other creatures you control with total power 2 or more: This Mount becomes saddled until end of turn. Saddle only as a sorcery.)",W,Cat; Beast; Mount; counters; lifegain; saddle; go-wide; combat,OTJ,5,1
+Intrepid Stablemaster,Creature — Human Scout,"Reach
+{T}: Add {G}.
+{T}: Add two mana of any one color. Spend this mana only to cast Mount or Vehicle spells.",G,Human; Scout; mana; reach; defense,OTJ,169,1
+Esoteric Duplicator,Artifact — Clue,"Whenever you sacrifice this artifact or another artifact, you may pay {2}. If you do, at the beginning of the next end step, create a token that's a copy of that artifact.
+{2}, Sacrifice this artifact: Draw a card.",U,Clue; card draw; sacrifice; tokens,BIG,5,1
+Raucous Entertainer,Creature — Plant Bard,"{1}, {T}: Put a +1/+1 counter on each creature you control that entered this turn.",G,Plant; Bard; counters,OTJ,177,1
+Outlaw Stitcher,Creature — Human Warlock,"When this creature enters, create a 2/2 blue and black Zombie Rogue creature token, then put two +1/+1 counters on that token for each spell you've cast this turn other than the first.
+Plot {4}{U} (You may pay {4}{U} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)",U,Human; Warlock; counters; exile cast; tokens; etb; plot; tempo; cost-reduction,OTJ,59,1
+Vault Plunderer,Creature — Human Rogue,"When this creature enters, target player draws a card and loses 1 life.",B,Human; Rogue; etb,OTJ,114,1
+Drover Grizzly,Creature — Bear Mount,"Whenever this creature attacks while saddled, creatures you control gain trample until end of turn.
+Saddle 1 (Tap any number of other creatures you control with total power 1 or more: This Mount becomes saddled until end of turn. Saddle only as a sorcery.)",G,Bear; Mount; saddle; go-wide; combat,OTJ,161,1
+Hellish Sideswipe,Sorcery,"As an additional cost to cast this spell, sacrifice an artifact or creature.
+Destroy target creature or Vehicle. If the sacrificed permanent was a Vehicle, draw a card.",B,Vehicle; card draw; sacrifice; removal,DFT,90,1

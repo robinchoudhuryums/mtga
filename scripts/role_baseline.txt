@@ -141,11 +141,13 @@ End of the Hunt
 Enigma Drake
 Enter the Enigma
 Entropic Battlecruiser
+Esoteric Duplicator
 Extravagant Replication
 Faerie Slumber Party
 Falcon's Wing Harness
 Falcon, Winged Wonder
 Fated Firepower
+Fblthp, Lost on the Range
 Fearsome Goblin Pair
 Felonious Rage
 Fire Sages
@@ -187,6 +189,7 @@ Gold Rush
 Goldvein Hydra
 Gravelgill Scoundrel
 Great Ugly-Looking Goblin
+Grievous Wound
 Groundchuck & Dirtbag
 Growth Curve
 Guardian Sunmare

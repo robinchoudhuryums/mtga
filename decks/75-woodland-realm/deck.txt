@@ -107,3 +107,9 @@
 #~ team-pump or holding up Glen Elendra's Answer. Thin on board, which is why it
 #~ is flex, not maindeck. Comes in when games show the Elvenking sitting untapped
 #~ with sinks unspent — likeliest cut then: Llanowar Elves or Bloom Tender.
+#~ +Sandman, Shifting Scoundrel | -Mirkwood Pathmaker | OWNED — screen's ★ STRICT
+#~ UPGRADE fired (rare): the identical lands-count */* body at the same MV, plus
+#~ can't-be-blocked-by-power-2-or-less, plus {3}{G}{G} self-recursion with a land
+#~ from the yard. Tribal cost is one Elf body (26 -> 25, negligible at that
+#~ density; Pathmaker carries no Elf payoff). Parked 2026-08-23 at the user's
+#~ call — take it whenever a tune opens the slot.

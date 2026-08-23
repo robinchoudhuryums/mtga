@@ -54,7 +54,8 @@
 1 Baxter Building (MSH) 261
 1 Villainous Hideout (MSH) 276
 3 Jungle Hollow (M21) 247
-12 Swamp (MSH) 292
+11 Swamp (MSH) 292
+1 Susur Secundi, Void Altar (EOE) 259
 
 # Flex — STANDARD-LEGAL craft targets, weighted so you don't waste wildcards. See: deck.py flex 8
 #~ -Fire Navy Trebuchet | +Deep-Cavern Bat | CRAFT (U) ★ MARKED UPGRADE: {1}{B} flying lifelink + Thoughtseize-on-a-body hand disruption — a unique effect the deck lacks

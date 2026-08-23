@@ -12,8 +12,12 @@
 #: archetype: Life drawing per permanent destroyed, The Rise of Sozin, Villainous
 #: archetype: Wrath, infusion-gated Withering Curse) resets the board; and the
 #: archetype: reanimation layer rebuys the fatties — Cauldron of Essence's
-#: archetype: repeatable sac-loop, Grim Reaper's attack trigger, Moseo's infusion
-#: archetype: end-step returns, Prison Break/Coiling Rebirth singles (Zombify was CUT for Hedge Shredder — the ninth reanimation route traded for a mill-to-ramp engine), and
+#: archetype: repeatable sac-loop, Moseo's infusion end-step returns, Coiling Rebirth,
+#: archetype: Walk-In Closet's unlocked door (a one-turn cast-from-the-yard burst; its
+#: archetype: front plays lands from the yard, as does Undergrowth Recon's upkeep
+#: archetype: return — Grim Reaper and Prison Break were CUT for the two of them
+#: archetype: 2026-08-22, one-shot routes traded for repeatable land-and-spell
+#: archetype: engines; Zombify was CUT for Hedge Shredder earlier, same argument), and
 #: archetype: Behold the Sinister Six! as the six-body haymaker. Lifegain glue
 #: archetype: (Scavenger's Talent Food, Cauldron drain, Bake into a Pie, Jungle
 #: archetype: Hollow) turns on both infusion cards. Distinct from every deck on the
@@ -35,11 +39,13 @@
 #: notes: Pie hits our own creatures never — it targets opponents'. No graveyard-EXILE effects were included (Agatha's Soul
 #: notes: Cauldron was deliberately NOT included — its exile cost eats the
 #: notes: reanimation fuel). MECHANIC READS: Coiling Rebirth's copy mode needs a
-#: notes: NONLEGENDARY target — Massacre Wurm, Craterhoof, Rise of the Varmints tokens,
-#: notes: Worldsire qualify; the legends don't. Famished Worldsire reanimated skips
-#: notes: devour (no lands paid) but its ETB top-X refill still fires off its base
-#: notes: power. Grim Reaper's finality counter means each body reanimates ONCE by
-#: notes: that route — send the copies, keep the originals for Cauldron. Sephiroth
+#: notes: NONLEGENDARY target — Massacre Wurm, Craterhoof and Rise of the Varmints
+#: notes: tokens qualify; the legends (Muldrotha, Last Ronin, Sephiroth) don't.
+#: notes: MULDROTHA replaced Famished Worldsire 2026-08-22: a permanent-of-each-type
+#: notes: rebuy ENGINE in place of a sixth reanimation TARGET — she plays a land, a
+#: notes: creature, an enchantment and an artifact from the yard every turn, which is
+#: notes: the same argument that retired Zombify, Prison Break and Grim Reaper.
+#: notes: Sephiroth
 #: notes: transforms on the fourth death trigger; wraths advance it four at once.
 #: notes: SHARED COPIES (fungible): Bake into a Pie/Craterhoof also serve 25/50/60a. (Murder was CUT for
 #: notes: Hauntwoods Shrieker, whose attack-manifest fills the yard AND builds a board
@@ -59,13 +65,14 @@
 1 Grave Researcher // Reanimate (SOS) 85
 1 Lluwen, Imperfect Naturalist (ECL) 232
 1 Hedge Shredder (DSK) 183
+1 Dredger's Insight (DFT) 159
+1 Undergrowth Recon (MKM) 181
 1 Scavenger's Talent (BLB) 111
 
 # Reanimation
+1 Walk-In Closet (DSK) 205
 1 Behold the Sinister Six! (SPM) 51
-1 Prison Break (SPM) 61
 1 Coiling Rebirth (BLB) 86
-1 Grim Reaper, Lethal Legionnaire (MSH) 98
 1 Ral Zarek, Guest Lecturer (SOS) 97
 1 Lively Dirge (OTJ) 93
 1 Cauldron of Essence (SOS) 179
@@ -81,14 +88,13 @@
 1 Massacre Wurm (FDN) 714
 1 Rottenmouth Viper (BLB) 107
 1 Craterhoof Behemoth (TDM) 138
-1 Famished Worldsire (EOE) 182
+1 Muldrotha, the Gravetide (FDN) 243
 1 The Last Ronin (TMT) 154
 1 Sephiroth, Fabled SOLDIER (FIN) 115
 
 # Interaction
 1 Zero Point Ballad (EOE) 128
 2 Bake into a Pie (FDN) 169
-1 Don't Make a Sound (DSK) 49
 
 # Glue
 1 Rise of the Varmints (OTJ) 179
@@ -106,7 +112,8 @@
 1 Gloomlake Verge (DSK) 260
 1 Undercity Sewers (PZA) 0
 1 Dismal Backwater (FDN) 261
-6 Swamp (HOB) 191
+5 Swamp (HOB) 191
+1 Susur Secundi, Void Altar (EOE) 259
 5 Forest (HOB) 193
 2 Island (HOB) 190
 #~ note: applied — Rise of the Varmints in for Withering Torment (the standing
