@@ -4,8 +4,9 @@
 #: colors: UR
 #: plan: midrange
 #: tier: B — and deliberately ONE BAND BELOW the measurable floor, which reads A on
-#: tier: interaction 9 (4 instant-speed, 6 able to answer a noncreature permanent) plus card
-#: tier: advantage 4 on a 3.25 curve (Viv Vision was CUT 2026-08-18 for Simulacrum
+#: tier: interaction 8 (4 instant-speed, 6 able to answer a noncreature permanent) plus card
+#: tier: advantage 4 on a 3.28 curve (Abrade was CUT 2026-08-23 for Esoteric Duplicator,
+#: tier: taking interaction 9 -> 8; Viv Vision was CUT 2026-08-18 for Simulacrum
 #: tier: Synthesizer — her conditional attack-draw for a Construct engine off 14 MV-3+
 #: tier: artifacts). The guard will soft-flag this as possibly under-graded;
 #: tier: that is intentional and should not be "fixed". The rubric's A wants a coherent engine,
@@ -97,7 +98,7 @@
 #: notes: CASTLE DOOM x3 IS DELIBERATE and legal — it is a plain Land, not legendary. Three
 #: notes: copies means the Doombot engine is a manabase slot rather than a spell slot, and each
 #: notes: also taps for any colour toward artifact spells, which quietly fixes the UR base.
-#: notes: MEASURED: interaction 8, card advantage 2, avg MV 3.25, 14 early drops. Card advantage
+#: notes: MEASURED: interaction 8, card advantage 2, avg MV 3.28, 14 early drops. Card advantage
 #: notes: reads 2 and that UNDERSTATES it — Chronicle of Victory draws on every chosen-type
 #: notes: spell, and after Leyline resolves that is every creature spell in the deck. role_tally
 #: notes: cannot see a conditional like that.
@@ -129,7 +130,7 @@
 #: notes: that card belongs in 47) · Ultron Drone (only ability costs {6}) · Red Tiger Mechan ·
 #: notes: Super-Adaptoid (its power counts LEGENDS, not Robots, so it is off-plan in a Robot
 #: notes: deck) · Metalhead · Baxter Stockman · Mechan Assembler.
-#: notes: MEASURED: interaction 8 -> 10, card advantage held at 2, avg MV 3.25 -> 3.14.
+#: notes: MEASURED: interaction 8 -> 10, card advantage held at 2, avg MV 3.28 -> 3.14.
 #: notes: PASS 3 — BAXTER STOCKMAN AND MECHAN ASSEMBLER BACK IN, reversing the two pass-2 cuts
 #: notes: above. The archetype prose had gone on naming Baxter Stockman twice as a card the
 #: notes: deck ran, which is what a cut made on slot pressure rather than on fit looks like
@@ -239,7 +240,7 @@
 1 Brilliance Unleashed (TMT) 141
 
 # Interaction
-1 Abrade (FDN) 188
+1 Esoteric Duplicator (BIG) 5
 1 Plasma Bolt (EOE) 152
 1 Untimely Malfunction (DSK) 161
 1 Into the Flood Maw (BLB) 52
