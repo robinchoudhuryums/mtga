@@ -234,7 +234,7 @@
 1 Gleaming Geardrake (MKM) 205
 1 Nexus of Becoming (BIG) 25
 1 Scrounging Skyray (DFT) 60
-1 Cryogen Relic (EOE) 52
+1 Esoteric Duplicator (BIG) 5
 1 Krang & Shredder (TMT) 153
 
 # Repeatable loot — every activation is a drain trigger

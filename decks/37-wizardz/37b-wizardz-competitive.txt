@@ -66,6 +66,7 @@
 1 Shipwreck Dowser (FDN) 596
 
 # Noncreature — token / ping enablers
+1 Grievous Wound (DSK) 102
 1 Cornered by Black Mages (FIN) 93
 1 Black Mage's Rod (FIN) 90
 1 Astrologian's Planisphere (FIN) 46
@@ -74,7 +75,6 @@
 
 # Noncreature — cantrips / card advantage
 1 Think Twice (FDN) 165
-1 Portent of Calamity (BLB) 66
 1 Hawkeye, Young Avenger (MSH) 131
 
 # Noncreature — removal / counters (light interaction package)

@@ -50,6 +50,9 @@ Whenever this permanent enters or attacks, mill four cards, then you may return 
 Central Elevator // Promising Stairs,Enchantment — Room // Enchantment — Room,"When you unlock this door, search your library for a Room card that doesn't have the same name as a Room you control, reveal it, put it into your hand, then shuffle.
 (You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.) // At the beginning of your upkeep, surveil 1. You win the game if there are eight or more different names among unlocked doors of Rooms you control.
 (You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",U,Room; surveil; graveyard,DSK,44,Rare,51,,5.5,hand
+Grievous Wound,Enchantment — Aura,"Enchant player
+Enchanted player can't gain life.
+Whenever enchanted player is dealt damage, they lose half their life, rounded up.",B,Aura; aura; enchant,DSK,102,Rare,,,3.0,seed
 Hedge Shredder,Artifact — Vehicle,"Whenever this Vehicle attacks, you may mill two cards.
 Whenever one or more land cards are put into your graveyard from your library, put them onto the battlefield tapped.
 Crew 1 (Tap any number of creatures you control with total power 1 or more: This Vehicle becomes an artifact creature until end of turn.)",G,Vehicle; reanimator; graveyard; mill; vehicle; crew; vehicles,DSK,183,Rare,,,3.0,seed
