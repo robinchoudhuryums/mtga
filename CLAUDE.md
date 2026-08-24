@@ -786,6 +786,19 @@ directions.
   deck 58's artifact-sac gates reported "1 artifact" against 14 token producers; a deck
   whose resource is tokens must say so in its `#: notes:` or the flag invites a bad cut. [G-66]
 
+- **A TUTOR IS WORTH THE NUMBER OF THINGS IT CAN FIND IN *THIS* DECK, and that number was
+  checked by nothing.** Deck 76 ran ZERO basics while TWO cards searched for them
+  (Bloomvine Regent's Omen half, Encroaching Dragonstorm) — found by the USER IN PLAY, by
+  no gate, and the second had been ADDED the day before *on the fetched basics as its
+  stated rationale*. `deck.py targets` now counts library searches and `check_all` sweeps
+  the ZERO case. **Three build-earned constraints, all still live:** the gate is
+  ZERO-ONLY (a thin count is editorial, an empty one is dead text); it SKIPS the
+  saturating searches — an unconditional "search your library for a card" is always
+  satisfiable, as are the creature/land/artifact type-wide ones; and it must NOT skip
+  LANDS, which is where fetches live (its own test caught that omission, and the fix
+  immediately found two more). **Read a hit as a claim about the SEARCH, never the CARD:**
+  Hobbit Hole's basic fetch works in the decks where only its Halflingcycling rider
+  whiffs, and The Masters of Evil is still a Villain anthem. [G-75]
 - **A PATTERN SET IS A WHITELIST, AND A WHITELIST'S MISSES ARE INVISIBLE.** `_ROLE_PATTERNS`
   matches PHRASINGS, and Magic templates one effect several ways — so a card worded a way no
   pattern anticipates scores ZERO roles, and the tier floor, `cuts`, the quality guard and

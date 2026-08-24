@@ -11291,6 +11291,43 @@ _TARGET_GATES = [
     # reported nothing (DD-3; the G-67 phrasing-whitelist shape).
     (re.compile(r"there(?:'s| is) an? (?!permanent)([A-Za-z]+) card in (?:your|a) graveyard", re.I),
      "{0} cards in the yard (needs 1)", "gy_type"),
+    # LIBRARY SEARCHES — a tutor is worth exactly the number of things it can FIND in
+    # THIS deck, and that count is invisible to every model here: each grades the search
+    # card's own text, where "search your library for two basic Forests" reads as ramp.
+    # Deck 76 ran ZERO basics while TWO cards searched for them (Bloomvine Regent's Omen
+    # half and Encroaching Dragonstorm) — found by the user IN PLAY, by no gate, and the
+    # second had been ADDED the day before on the reasoning that a Leyline of the
+    # Guildpact would upgrade the fetched basics (its basic-land-type clause reads lands
+    # you CONTROL, never lands in your library). A dead tutor is the purest form of the
+    # G-61 failure: a card whose value is a number in the LIST, not in its own text.
+    #
+    # NARROW BY CONSTRUCTION, per the saturation rule this table already states: fire
+    # only where the resource can genuinely be SHORT. An unconditional "search your
+    # library for a card" (Lively Dirge, Servant of the Stinger, Hour of Victory) is
+    # always satisfiable and never fires; so are the broad "creature card" / "land card"
+    # / "nonland permanent card" searches, which in a 60-card deck report "you have a
+    # deck" — the same non-signal the discard rule below was deleted for.
+    (re.compile(r"search your library for (?:up to \w+ |a |an |two |three |that many |X )?"
+                r"basic (Forest|Island|Swamp|Mountain|Plains) cards?", re.I),
+     "basic {0} cards in the deck", "basic_named"),
+    (re.compile(r"search your library for (?:up to \w+ |a |an |two |three |that many |X )?"
+                r"basic land cards?", re.I),
+     "basic lands in the deck", "basic_any"),
+    # A named SUBTYPE (capitalised, so "a card" and "an artifact card" cannot match).
+    # Land types count every land carrying the subtype, not just basics — a shock IS an
+    # Island card — which is why this reads the TYPE LINE rather than the name.
+    # Case-INSENSITIVE with an explicit exclusion list, not a capital-letter test: the
+    # `[A-Z]` guard worked at runtime but `check_patterns` proves every gate against the
+    # LOWERCASED corpus, where it could never match — a pattern that is dead to its own
+    # gate is dead (the hard failure that caught this). The exclusions are the nouns that
+    # would saturate: an unconditional "search your library for a card", and the
+    # type-wide searches (creature / land / artifact / permanent) that in a 60-card deck
+    # report "you have a deck".
+    (re.compile(r"search your library for (?:up to \w+ |a |an |two |three )?"
+                r"(?!card\b|creature|land|artifact|permanent|nonland|instant|sorcery|"
+                r"enchantment|planeswalker|colorless|basic)([A-Za-z]{3,}) cards?", re.I),
+     "{0} cards in the deck", "lib_type"),
+
     # NO generic "cards to discard" rule. It was written, and it reported 35 for every
     # discard outlet in a 60-card deck — i.e. "you have a hand", which is true of every
     # deck and decides nothing. Same saturation failure this file already documents for
@@ -11324,7 +11361,14 @@ def target_counts(cards, carddata, mana):
                      "text": cd.get("text") or "", "mv": mv})
     out, seen = [], set()
     for c in pool:
-        if c["n"] in seen or "land" in c["type"] and "creature" not in c["type"]:
+        # Lands are skipped as GATE SOURCES (a sacrifice outlet is not its own fodder,
+        # and land text would clutter every other row) — with one exception, found by
+        # this module's own test: the fetch-lands are exactly where library searches
+        # live (Evolving Wilds, Terramorphic Expanse, Hobbit Hole all search for a basic
+        # land), so a land whose text searches your library would otherwise be the one
+        # dead tutor this gate structurally could not see.
+        is_land = "land" in c["type"] and "creature" not in c["type"]
+        if c["n"] in seen or (is_land and "search your library" not in c["text"].lower()):
             continue
         seen.add(c["n"])
         for rx, label, kind in _TARGET_GATES:
@@ -11360,6 +11404,17 @@ def target_counts(cards, carddata, mana):
                 continue
             elif kind == "perm":
                 hits = [o for o in others if not {"instant", "sorcery"} & set(o["type"].split())]
+            elif kind == "basic_any":
+                hits = [o for o in others if o["n"].lower().replace("snow-covered ", "") in BASICS]
+            elif kind == "basic_named":
+                want = groups[-1].lower()
+                hits = [o for o in others
+                        if o["n"].lower().replace("snow-covered ", "") == want]
+            elif kind == "lib_type":
+                # TYPE LINE, not name: "an Island card" is satisfied by any land with the
+                # Island subtype (a shock, a triland), not only by the basic.
+                want = groups[-1].lower()
+                hits = [o for o in others if want in o["type"].lower()]
             elif kind == "gy_type":
                 # The captured word is a TYPE or SUBTYPE ("Lesson", "creature", "artifact"),
                 # so match the type LINE. Case-insensitive: Magic capitalizes a real subtype
@@ -11379,6 +11434,22 @@ def target_counts(cards, carddata, mana):
                 shown = label
             out.append((c["n"], shown, sum(o["q"] for o in hits),
                         num if kind in ("perm", "gy_type") else None))
+    return out
+
+
+def dead_library_searches(cards, carddata, mana):
+    """[(card, gate_label)] for library SEARCHES in this deck that can find NOTHING —
+    the deck 76 bug class (G-61).
+
+    Report-only and deliberately ZERO-only: a thin count is an editorial judgement, an
+    empty one is a dead line of text. Read it as a claim about the SEARCH, not the CARD:
+    the first roster run turned up Hobbit Hole in decks 50a/69a, where its basic-land
+    fetch works fine and only the Halflingcycling rider whiffs, and The Masters of Evil
+    in 20a/20b, which is still a Villain anthem with a dead tutor ability."""
+    out = []
+    for name, label, count, _need in target_counts(cards, carddata, mana):
+        if count == 0 and "in the deck" in label:
+            out.append((name, label))
     return out
 
 

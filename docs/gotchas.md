@@ -4716,3 +4716,55 @@ Measured anyway on the 57-match sample: the page's result agreed with the stored
 result on 57 of 57, with 0 ids found by one and not the other. Re-measure if either
 parser's seat logic is touched — the containment is what makes a disagreement survivable,
 not acceptable.
+
+## [G-75] A tutor is worth the number of things it can find in THIS deck
+
+**The incident.** Deck 76 (Spirit Call, five-colour Dragons) ran **zero basic lands**
+while **two** cards searched for them: Bloomvine Regent's Omen half ("search your library
+for up to two basic Forest cards") and Encroaching Dragonstorm ("...up to two basic land
+cards"). The user found it by PLAYING A GAME and noticing the Omen did nothing. No gate
+could see it, and the reason generalises: every model in this repo grades a card's OWN
+TEXT, where "search for two basic Forests" reads as ramp. The number that decides whether
+it is ramp or a blank lives in the LIST — the same G-61 shape as the four dismissals that
+rule was written for.
+
+**The aggravating half.** Encroaching Dragonstorm had been added the day before, and the
+fetched basics were its *stated rationale* — the claim being that Leyline of the Guildpact
+would upgrade them. That is a misread: the Leyline's "lands you control are every basic
+land type" applies to lands you CONTROL, never to lands in your library, and there were no
+basics to fetch in any case. So the swap traded a functional Mox Jasper for a blank, and
+the reasoning was checked by nothing either.
+
+**The fix.** `_TARGET_GATES` gained three library-search kinds — `basic_any` (basic land),
+`basic_named` (basic Forest/Island/…), and `lib_type` (a named subtype: Equipment, Room,
+Dragon, Plan, Halfling, or a land type where a shock counts as an Island card because the
+match reads the TYPE LINE, not the name). `deck.dead_library_searches` is the zero-only
+filter, and `check_all` runs it as a soft roster sweep — because the bug shipped precisely
+BECAUSE nobody ran `targets` after the swap, which is the G-53 "capability that is never
+reached" shape.
+
+**Three constraints the build earned, each from something that went wrong:**
+
+1. **ZERO-ONLY.** A thin count is an editorial judgement; an empty one is dead text. The
+   roster measured 0 dead when written, so any hit is new rather than a backlog.
+2. **SKIP THE SATURATING SEARCHES.** An unconditional "search your library for a card"
+   (Lively Dirge, Servant of the Stinger, Hour of Victory) is always satisfiable, and the
+   type-wide creature / land / artifact / nonland-permanent searches report "you have a
+   deck" in a 60. Excluded by name — the same saturation rule that deleted the generic
+   discard gate (G-66).
+3. **DO NOT SKIP LANDS.** `target_counts` skips lands as gate sources by design, and that
+   made the fetch-lands — Evolving Wilds, Terramorphic Expanse, Hobbit Hole, the exact
+   place basic-fetching lives — structurally invisible. Caught by this module's own test,
+   not by review. The fix immediately found two more dead searches.
+
+**A fourth thing, caught by an existing gate.** The first `lib_type` pattern required a
+capital-letter subtype to avoid matching "a card". It worked at runtime and `check_patterns`
+failed it hard: that gate proves every pattern against the LOWERCASED corpus, where a
+`[A-Z]` guard can never match. A pattern that is dead to its own gate is dead. Replaced
+with a case-insensitive pattern plus the explicit exclusion list above.
+
+**Read a hit as a claim about the SEARCH, not the CARD.** The first roster run found four:
+The Masters of Evil in decks 20a/20b (searches for a Plan card; those decks run none — but
+it is still a Villain anthem) and Hobbit Hole in 50a/69a (its basic-land fetch works fine;
+only the Halflingcycling rider finds nothing).
+
