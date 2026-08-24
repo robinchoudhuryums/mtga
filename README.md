@@ -445,6 +445,7 @@ python3 scripts/deck.py cuts 1a       # rank the deck's weakest-fit cards as cut
 python3 scripts/deck.py screen 1a <names>    # re-score candidate cards against the deck AS IT IS NOW (★ strict upgrade, ✱ multiplier)
 python3 scripts/deck.py flex 1a       # suggested swaps (#~ lines) + stale ones: dead -Out, already-run +In, contradicted note figures
 python3 scripts/deck.py swap 1a --cut A --add B   # preview deltas + FULL oracle text of both; --apply writes (.bak) + auto-retires stale #~ flex lines
+python3 scripts/deck.py swap 1a --cut A --add B --apply --section Removal   # ...and file the new line under `# Removal` (verbatim; never hand-move a card line)
 python3 scripts/deck.py apply-flex 1a 2      # promote flex swap #2 into the 60 (--apply writes)
 python3 scripts/deck.py feedback             # how cuts/suggest scored against the swaps you applied (report-only)
 pbpaste | python3 scripts/deck.py verify 1a  # diff a pasted Arena export against the stored deck
@@ -584,6 +585,17 @@ with full confidence and rewrite the stored deck down to the fragment (`--force`
 a deliberate cut).
 Before this, spotting drift and repairing it were separate jobs: you read a diff, then
 hand-edited each file.
+
+**`swap --section "<header substring>"`** places the added line under a named
+`# section` instead of inheriting the cut card's slot. Use it whenever the swap's
+section-mismatch warning fires, and **never move the line by hand**: relocating four
+lines that way in one session invented two collector numbers, because a hand edit
+retypes the `(SET) COLLECTOR#` fields that only `resolve` is allowed to produce. The
+flag moves the line verbatim as part of the same write, and refuses an absent or
+ambiguous header *before* writing — so a mistyped section aborts the swap rather than
+leaving a misfiled line with an error printed after the fact. Ambiguity refuses rather
+than guessing, because filing a card under a header you did not choose is the same lie
+the warning is about.
 
 `verify` reconciles a decklist you've edited in Arena against the repo: pipe or pass
 its **Arena export** (`<qty> <Name> (SET) <#>`) and it reports **identical** or a

@@ -251,7 +251,9 @@ directions.
   line is a human note, so nothing edits one. [G-04]
 - **A swap inherits the cut card's `# section` comment**, so the file then lies to the
   next reader. `swap --apply` warns via `section_mismatch`, on UNAMBIGUOUS headers only.
-  Advisory: moving the line is a human editorial call. [G-05]
+  The WARNING is advisory (where a line belongs is editorial) but the REMEDY is
+  mechanical since G-77: pass **`--section "<header>"`** in the same command and never
+  hand-move a card line, which retypes the printing fields G-65 governs. [G-05]
 - **Preview every swap with `deck.py swap <id> --cut A --add B`** — it prints the FULL
   oracle text of BOTH cards plus the deltas. **Always grade a cut from that text, never
   from a role or fit label, and grade it against THIS deck's engine**: a cost that reads
