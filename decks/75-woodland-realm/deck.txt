@@ -87,8 +87,8 @@
 1 Evolving Wilds (ECL) 264
 1 Elven Passage (HOB) 181
 1 Breeding Pool (EOE) 251
-1 Overgrown Tomb (TRK) 289
-1 Watery Grave (TRK) 306
+1 Overgrown Tomb (ECL) 266
+1 Watery Grave (EOE) 261
 1 Gloomlake Verge (DSK) 260
 1 Wastewood Verge (DFT) 268
 1 Willowrush Verge (DFT) 270

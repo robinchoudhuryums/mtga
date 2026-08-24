@@ -94,8 +94,8 @@
 1 Temple of Malice (FDN) 701
 1 Razortrap Gorge (DSK) 267
 2 Bloodfell Caves (TDM) 250
-9 Swamp (TRK) 321
-9 Mountain (TRK) 323
+9 Swamp (HOB) 191
+9 Mountain (HOB) 192
 
 # Flex — options (comments; not part of the 60). See: deck.py flex 72
 #~ note: applied — Buzzard-Wasp Colony in for the 2nd Gathering of Darkness (Army insurance: a dying Army's counters jump to the Wasp), and Sidequest: Hunt the Mark in for the 2nd Tidings of War (removal on the short axis).

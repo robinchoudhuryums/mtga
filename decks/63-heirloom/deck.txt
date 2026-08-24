@@ -116,7 +116,7 @@
 1 Long Goodbye (MKM) 92
 
 # Lands
-1 Overgrown Tomb (TRK) 289
+1 Overgrown Tomb (ECL) 266
 1 Temple of Malady (FDN) 700
 1 Temple of Silence (FDN) 704
 1 Bleachbone Verge (DFT) 250

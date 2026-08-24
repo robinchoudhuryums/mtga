@@ -3920,6 +3920,44 @@ def rotation_risk(released, years=3, set_code=""):
     return bool(yr) and yr <= datetime.date.today().year
 
 
+def unreleased_pool_cards(pool_path=None):
+    """[(name, set_code, released)] for pool rows whose set has NOT been released yet.
+
+    The 2026-08-24 Ingest audit found `Released` was read in exactly ONE direction —
+    `rotation_risk` and the ⚠rot flags, which answer "when does this LEAVE Standard".
+    Nothing anywhere asked "is this available YET", so 114 pool rows dated in the future
+    were fully recommendable: `suggest` (and its --lands/--ramp/--interaction siblings),
+    `tier --to`'s craft fillers and `wishlist --rank/--budget` would all price a wildcard
+    for a card that cannot be crafted.
+
+    `build_pool`'s `date<=now` bound (A1) keeps them out at the source, so this is the
+    backstop for the two cases that bound cannot cover: a pool built with a custom
+    `--query`, and a pool built before that bound existed. Deliberately a POOL-level
+    check rather than a flag threaded through five recommenders — the exposure is a
+    property of the file, so one report covers every surface at once and, being
+    report-only, it re-ranks nothing (no K-12 roster diff needed).
+
+    Empty/unparseable dates are skipped, like `rotation_risk` — graceful before a rebuild
+    captures the column."""
+    import datetime
+    path = pool_path or POOL_CSV
+    today = datetime.date.today().isoformat()
+    out = []
+    try:
+        with open(path, newline="", encoding="utf-8") as fh:
+            rdr = csv.DictReader(fh)
+            if "Released" not in (rdr.fieldnames or []):
+                return []
+            for r in rdr:
+                rel = (r.get("Released") or "").strip()
+                if len(rel) == 10 and rel > today:
+                    out.append(((r.get("Card Name") or "").strip(),
+                                (r.get("Set Code") or "").strip(), rel))
+    except OSError:
+        return []
+    return out
+
+
 def craft_rot_note(name, pool_rot):
     """'⚠rot~YYYY' if `name`'s pool printing is Standard-legal but its set rotates
     this year or next, else ''. The CRAFT-TARGET views (`check`, `wildcards`) join
@@ -8879,6 +8917,98 @@ def _resolve_check(target, idx):
     return 1
 
 
+def _resolve_fix(target, idx, apply):
+    """`resolve --fix <deck>`: rewrite a deck file's bad `(SET) COLLECTOR#` fields to the
+    resolver's printing, in place, preserving everything else on the line VERBATIM.
+
+    `--check` (DD-2) reports these and tells you to replace each line with `resolve`
+    output — which, done by hand across many lines, is exactly the operation G-65 forbids
+    and G-77 was written about: relocating four lines by hand in one session invented two
+    collector numbers. A gate whose only remedy is a forbidden edit produces a second,
+    quieter error class, so the repair has to be mechanical.
+
+    Earned by the 2026-08-24 Ingest audit: `build_pool` recorded printings from spoiled
+    but UNRELEASED sets, so 109 lines across 47 decks named a set three months out. That
+    is too many to retype safely, and every one of them passes `--check` today because the
+    set and number are both real — they are simply not available yet.
+
+    Only the printing fields are touched. The quantity, the card name and any trailing
+    comment are carried over from the original line, so a rewrite cannot restructure the
+    file. Dry-run by default; `--apply` goes through `_safe_write_lines`, so the INV-04
+    parse and the copy-count guard both run before anything replaces the file."""
+    d = find_deck(target)
+    path = d["path"] if d else target
+    if not os.path.exists(path):
+        eprint(f"--fix: no deck id or file {target!r}.")
+        return 1
+    _meta, cards = parse_deck_file(path)
+    if not cards:
+        eprint(f"--fix: no parseable card lines in {path}.")
+        return 1
+    label = d["id"] if d else os.path.relpath(path, REPO_ROOT)
+    bad_set, unverified = printing_problems(cards)
+    # Key on (name, stated set, stated collector) so only the exact lines `--check`
+    # objects to are considered — a card correctly listed twice under two printings must
+    # not have its good line rewritten because its bad twin matched by name.
+    wanted = {(n, s, c) for n, s, c in bad_set} | {(n, s, c) for n, s, c, _k in unverified}
+    # BASICS: `printing_problems` exempts them, correctly — Arena prints several arts per
+    # set and the pool carries one, so their collector numbers cannot be validated. But a
+    # basic whose SET CODE exists nowhere is wrong for exactly the same reason a nonbasic
+    # is, and it is equally unimportable. 76 of the 109 lines the 2026-08-24 audit found
+    # were basics pointing at an unreleased set, invisible to the check that was supposed
+    # to catch them. Only the set-code half is applied here; a basic's number stays exempt.
+    _known_sets = known_printings()[1]
+    for _q, n, sc, cl in cards:
+        if n.lower() in BASICS and sc and sc.lower() not in _known_sets:
+            wanted.add((n, sc, cl or ""))
+    if not wanted:
+        print(f"✓ {label}: every stated printing is a known one — nothing to fix.")
+        return 0
+
+    with open(path, encoding="utf-8") as fh:
+        lines = fh.read().split("\n")
+    fixed, unresolved = [], []
+    for i, ln in enumerate(lines):
+        # Strip the inline comment BEFORE matching, the way every other line-rewriting
+        # site here does (`_swap_edit_lines`, `reconcile_lines`): LINE_RE anchors on `$`,
+        # so a trailing `# note` otherwise swallows the printing into the name group and
+        # the line silently fails to match.
+        m = LINE_RE.match(ln.split("#", 1)[0].strip())
+        if not m or ln.strip().startswith("#"):
+            continue
+        qty, name, setc, coll = m.group(1), m.group(2).strip(), m.group(3), m.group(4)
+        if (name, setc or "", coll or "") not in wanted:
+            continue
+        pref = idx.get(name.lower()) or idx.get(name.split(" // ")[0].lower())
+        if not pref:
+            unresolved.append(name)
+            continue
+        comment = _line_comment(ln)
+        new = f"{qty} {pref[0]} ({pref[1]}) {pref[2]}" + (f"  {comment}" if comment else "")
+        if new != ln:
+            fixed.append((ln.strip(), new.strip()))
+            lines[i] = new
+    for old, new in fixed:
+        print(f"  {old}\n    -> {new}")
+    for n in unresolved:
+        print(f"  ⚠ {n}: no printing in the pool or library — left unchanged.")
+    if not fixed:
+        print(f"{label}: nothing rewritten.")
+        return 0 if not unresolved else 1
+    if not apply:
+        print(f"\n{len(fixed)} line(s) would change in {label} (dry run — pass --apply).")
+        return 0
+    total = sum(q for q, *_ in cards)
+    try:
+        bak = _safe_write_lines(path, lines, total)
+    except ValueError as e:
+        eprint(f"Not saved: {e}")
+        return 1
+    print(f"\nFixed {len(fixed)} line(s) in {label}; wrote "
+          f"{os.path.relpath(path, REPO_ROOT)} (backup: {os.path.basename(bak)}).")
+    return 1 if unresolved else 0
+
+
 def cmd_resolve(args):
     """Turn card NAMES into ready-to-paste deck lines `<qty> <Name> (<SET>) <#>` with a valid
     printing (exact → DFC front → unique substring; owned printing preferred, else the pool's).
@@ -8891,6 +9021,8 @@ def cmd_resolve(args):
         return 1
     if getattr(args, "check", None):
         return _resolve_check(args.check, idx)
+    if getattr(args, "fix", None):
+        return _resolve_fix(args.fix, idx, bool(getattr(args, "apply", False)))
     raw = list(args.names or [])
     if not raw or raw == ["-"]:
         raw = [ln for ln in sys.stdin.read().splitlines()]
@@ -12045,6 +12177,15 @@ def main():
                         "check_all because a legitimate alternate printing exists; a "
                         "drafted file's lines should come from resolve, so here it is "
                         "presumed a typo). Run it after writing a from-scratch deck.")
+    p.add_argument("--fix", metavar="DECK",
+                   help="REPAIR what --check reports: rewrite each bad (SET) COLLECTOR# "
+                        "to the resolver's printing, in place, preserving the quantity, "
+                        "name and any trailing comment verbatim. Dry-run unless --apply. "
+                        "Exists because --check's only remedy was a hand edit, which is "
+                        "the operation G-65 forbids and G-77 was written about.")
+    p.add_argument("--apply", action="store_true",
+                   help="with --fix, write the change (with a .bak and the INV-04 "
+                        "re-check); default is a dry-run preview")
     p = sub.add_parser("screen",
                        help="re-score candidate cards against a deck's CURRENT list; "
                             "flags strict upgrades of cards already in it")

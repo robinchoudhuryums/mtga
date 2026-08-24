@@ -226,6 +226,8 @@ from your owned inventory. `card-library.csv` stays exactly your collection.
 ```
 python3 scripts/build_pool.py            # (re)build card-pool.csv — Standard-legal Arena cards
 python3 scripts/build_pool.py --all      # every Arena-craftable card (~16.1k) instead
+                                         #   both defaults carry `date<=now`: a set that is
+                                         #   SPOILED but unreleased must not supply printings
 python3 scripts/build_pool.py --allow-shrink   # permit an empty / far-smaller result to overwrite
 ```
 
@@ -427,6 +429,7 @@ python3 scripts/deck.py audit         # roster triage: one line per deck — whi
 python3 scripts/deck.py similar 40    # decks most alike by central-theme overlap (is it distinct?)
 python3 scripts/deck.py resolve "Bloom Tender" "2 Island"   # names → deck lines `<qty> Name (SET) #`
 python3 scripts/deck.py resolve --check 76   # verify a WRITTEN deck's (SET) COLLECTOR# fields (strict)
+python3 scripts/deck.py resolve --fix 76 --apply   # ...and REPAIR the bad ones in place (never by hand)
 python3 scripts/deck.py check 1a      # owned vs needed + a castability lint (off-color cards)
 python3 scripts/deck.py diff 1 1a     # what variant 1a changes vs base deck 1
 python3 scripts/deck.py arena 1a      # emit an Arena-importable decklist to paste back

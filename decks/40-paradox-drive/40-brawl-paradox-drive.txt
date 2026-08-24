@@ -95,7 +95,7 @@ Deck
 1 Unforgiving Aim (ECL) 200
 
 # Lands — 26, Simic; owned untapped duals over straight basics
-1 Breeding Pool (TRK) 279
+1 Breeding Pool (EOE) 251
 1 Willowrush Verge (DFT) 270
 1 Dreamroot Cascade (SOS) 254
 1 Thornwood Falls (TDM) 269

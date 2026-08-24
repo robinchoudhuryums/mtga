@@ -91,7 +91,7 @@
 1 Spectacle Summit (SOS) 262
 1 Temple of Epiphany (FDN) 699
 1 Temple of Malice (FDN) 701
-1 Watery Grave (TRK) 306
+1 Watery Grave (EOE) 261
 1 Hidden Lair (MSH) 269
 2 Swiftwater Cliffs (MOM) 273
 1 Bloodfell Caves (TDM) 250

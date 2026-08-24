@@ -4589,3 +4589,92 @@ class TestSharingClaimsAreNotComparisons:
 
     def teardown_method(self):
         self._tmpdir.cleanup()
+
+
+class TestResolveFix:
+    """`resolve --check` reported bad printings and told you to replace each line with
+    resolver output — by hand, which is the operation G-65 forbids and G-77 was written
+    about. 109 lines across 47 decks needed it after the Ingest audit; that is far past
+    what anyone retypes safely."""
+
+    def _deck(self, tmp_path, body):
+        p = tmp_path / "deck.txt"
+        p.write_text(body, encoding="utf-8")
+        return str(p)
+
+    IDX = {"shock": ("Shock", "M21", "159"), "forest": ("Forest", "HOB", "193")}
+
+    def test_a_bad_printing_is_rewritten_and_the_rest_of_the_line_survives(self, tmp_path, monkeypatch):
+        p = self._deck(tmp_path, "#: name: T\n\n# Burn\n4 Shock (ZZZ) 999  # the good one\n")
+        monkeypatch.setattr(deck, "printing_problems",
+                            lambda cards: ([("Shock", "ZZZ", "999")], []))
+        assert deck._resolve_fix(p, self.IDX, True) == 0
+        out = open(p, encoding="utf-8").read()
+        assert "4 Shock (M21) 159" in out
+        assert "# the good one" in out, "the trailing comment must survive verbatim"
+        assert "# Burn" in out and "#: name: T" in out
+
+    def test_a_dry_run_writes_nothing(self, tmp_path, monkeypatch):
+        p = self._deck(tmp_path, "4 Shock (ZZZ) 999\n")
+        before = open(p, encoding="utf-8").read()
+        monkeypatch.setattr(deck, "printing_problems",
+                            lambda cards: ([("Shock", "ZZZ", "999")], []))
+        deck._resolve_fix(p, self.IDX, False)
+        assert open(p, encoding="utf-8").read() == before
+
+    def test_a_GOOD_twin_line_of_the_same_card_is_left_alone(self, tmp_path, monkeypatch):
+        """Keyed on (name, set, collector), not name — a card legitimately listed under
+        two printings must not have its good line rewritten because its bad twin matched."""
+        p = self._deck(tmp_path, "1 Shock (ZZZ) 999\n1 Shock (FDN) 1\n")
+        monkeypatch.setattr(deck, "printing_problems",
+                            lambda cards: ([("Shock", "ZZZ", "999")], []))
+        deck._resolve_fix(p, self.IDX, True)
+        out = open(p, encoding="utf-8").read()
+        assert "1 Shock (FDN) 1" in out and "ZZZ" not in out
+
+    def test_a_BASIC_with_a_nonexistent_set_code_is_fixed_too(self, tmp_path, monkeypatch):
+        """printing_problems exempts basics — correctly, since Arena prints several arts
+        per set. But a basic whose SET CODE exists nowhere is equally unimportable, and 76
+        of the audit's 109 lines were exactly that: invisible to the check meant to catch
+        them."""
+        p = self._deck(tmp_path, "5 Forest (ZZZ) 1\n")
+        monkeypatch.setattr(deck, "printing_problems", lambda cards: ([], []))
+        monkeypatch.setattr(deck, "known_printings", lambda: ({}, {"hob", "m21"}))
+        assert deck._resolve_fix(p, self.IDX, True) == 0
+        assert "5 Forest (HOB) 193" in open(p, encoding="utf-8").read()
+
+    def test_a_basic_whose_set_code_DOES_exist_is_untouched(self, tmp_path, monkeypatch):
+        """The collector-number exemption must survive: Swamp MSH 291 and 292 are both
+        real, so a basic in a known set is never second-guessed."""
+        p = self._deck(tmp_path, "5 Forest (M21) 999\n")
+        monkeypatch.setattr(deck, "printing_problems", lambda cards: ([], []))
+        monkeypatch.setattr(deck, "known_printings", lambda: ({}, {"hob", "m21"}))
+        deck._resolve_fix(p, self.IDX, True)
+        assert "5 Forest (M21) 999" in open(p, encoding="utf-8").read()
+
+
+class TestUnreleasedPoolCards:
+    """`Released` was read in exactly ONE direction — rotation, i.e. when a card LEAVES
+    Standard. Nothing asked whether it had arrived, so 114 uncraftable cards were
+    recommendable by every craft surface."""
+
+    def _pool(self, tmp_path, rows):
+        p = tmp_path / "card-pool.csv"
+        p.write_text("Card Name,Set Code,Released\n" + "".join(rows), encoding="utf-8")
+        return str(p)
+
+    def test_a_future_dated_row_is_reported(self, tmp_path):
+        p = self._pool(tmp_path, ["Foo,TRK,2099-01-01\n", "Bar,M21,2020-01-01\n"])
+        assert deck.unreleased_pool_cards(p) == [("Foo", "TRK", "2099-01-01")]
+
+    def test_a_released_pool_is_silent(self, tmp_path):
+        p = self._pool(tmp_path, ["Bar,M21,2020-01-01\n"])
+        assert deck.unreleased_pool_cards(p) == []
+
+    def test_a_pool_with_no_Released_column_degrades_to_empty(self, tmp_path):
+        p = tmp_path / "card-pool.csv"
+        p.write_text("Card Name,Set Code\nBar,M21\n", encoding="utf-8")
+        assert deck.unreleased_pool_cards(str(p)) == []
+
+    def test_a_missing_pool_degrades_to_empty(self, tmp_path):
+        assert deck.unreleased_pool_cards(str(tmp_path / "absent.csv")) == []

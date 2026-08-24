@@ -84,7 +84,7 @@
 1 Phyrexian Arena (FDN) 180
 
 # Lands — 24, mono-black
-24 Swamp (TRK) 321
+24 Swamp (HOB) 191
 
 # Flex — options (comments; not part of the 60). See: deck.py flex 70
 #~ -Pilfer | +Ego Drain | owned: a mana cheaper for the same effect, but screen's ★ strict-upgrade call is WRONG — "exile a card from your hand unless you control a Faerie" is a real cost (Dream Seizer is the only Faerie here). Play it only if the meta rewards the tempo.

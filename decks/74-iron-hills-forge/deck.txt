@@ -103,8 +103,8 @@
 1 Abraded Bluffs (OTJ) 251
 1 Sun-Blessed Peak (TLA) 280
 1 Temple of Triumph (FDN) 705
-9 Plains (TRK) 317
-9 Mountain (TRK) 323
+9 Plains (HOB) 189
+9 Mountain (HOB) 192
 
 # Flex — options (comments; not part of the 60). See: deck.py flex 74
 #~ note: applied — Thorin's Last Stand in for Coral Sword (the modal artifact/enchantment answer closes the G-24 noncreature-answer hole).

@@ -98,8 +98,8 @@
 1 Blossoming Sands (M21) 244
 1 Birnin Zana Plaza (MSH) 262
 1 Kyoshi Village (TLA) 271
-9 Forest (TRK) 325
-8 Plains (TRK) 317
+9 Forest (HOB) 193
+8 Plains (HOB) 189
 1 Curious Forager (BLB) 169
 1 Thornvault Forager (BLB) 197
 1 Claim Jumper (OTJ) 8

@@ -4937,3 +4937,90 @@ run, and the audit's own design note is explicit that a noisy audit gets ignored
 is worse than no audit. **The floor stays at 9.** Short single-word card citations are a
 known blind spot; re-measure before changing it, and expect to fix the sentence-start and
 punctuation-variant cases first if you want the floor to come down.
+
+## [G-79] A previewed set is in Scryfall months before you can play it
+
+`build_pool.py` fetches with `unique=cards`, which returns exactly one printing per card
+— the newest. Scryfall indexes previewed cards the moment they are spoiled, weeks or
+months ahead of release. Put those together and a reprint in a spoiled set silently
+becomes the **only** printing the repo holds.
+
+Measured on 2026-08-24, with Star Trek (TRK) dated three months out:
+
+```
+q = game:arena legal:standard !"Watery Grave", unique=cards
+  → TRK 306, released 2026-11-13
+  discarded: EOE 261 (2025-08-01), GRN 259 (2018-10-05)
+```
+
+That matters because `deck.py resolve` is the *mandated* source of deck-line printings
+(G-65) — you are explicitly told never to hand-write one. So the pool's choice propagated:
+
+- **114 pool rows** carried a future release date (TRK 91, FRA 20, MBC 3).
+- **109 deck lines across 47 files** named an unreleased set — 33 shocklands and 76
+  basics.
+- **Two round-tripped into ownership.** A deck line went into an Arena export, came back
+  through `import_arena` (which correctly records the set code it is given), and
+  `card-library.csv` then listed Overgrown Tomb and Watery Grave as owned *in TRK*. Since
+  `_printing_index` prefers an owned printing, those two kept resolving to TRK even after
+  the pool was fixed — the corruption outlived its cause.
+
+None of it was catchable by the existing gates. `resolve --check` passes a real set with a
+real collector number, because the line is structurally valid; it is simply not importable
+yet. `check_all`'s INV-04 found the set code present in the library. The deck files were
+integrity-clean and un-importable at once, which is exactly the shape G-65 exists for, one
+layer out.
+
+### The fix, and the trap inside the obvious version
+
+`date<=now` on both default queries. The literal token `now` is load-bearing, and this is
+the part worth remembering: `build_pool` gates its freshness reuse on
+`stamp_query == query`, so a query string carrying today's formatted date would differ on
+every run, never match the stamp, and force a full ~4-minute refetch on every
+`make refresh`. A correctness fix would have become a permanent tax — and a cost paid
+every cycle is one an operator learns to wave through, the same failure K-01 records for
+standing warnings nobody acts on. Verified that Scryfall accepts `now`; `-is:future` and
+`not:future` were tested and do **not** work.
+
+A caller-supplied `--query` is deliberately not rewritten. It is an explicit request for a
+scope, and silently editing it would defeat the reason to pass one.
+
+Impact of the rebuild: `game:arena` 16,067 → 15,973. 94 genuinely-unreleased cards
+dropped, ~20 reprints re-picked to their newest *released* printing.
+
+### The repair half, and why it had to exist
+
+Fixing 109 lines by hand is the operation G-77 was written about — relocating four lines
+by hand in one session invented two collector numbers. So `resolve --fix <deck>` rewrites
+only the printing fields, carrying the quantity, name and any trailing comment over
+verbatim; dry-run by default, and `--apply` goes through `_safe_write_lines` so the INV-04
+parse and copy-count guard both run.
+
+Two details it needed:
+
+- **Keyed on (name, set, collector), not name.** A card legitimately listed under two
+  printings must not have its good line rewritten because its bad twin matched.
+- **Basics are included, for the set code only.** `printing_problems` exempts basics
+  correctly — Arena prints several arts per set and the pool carries one — but a basic
+  whose set code exists *nowhere* is equally unimportable, and 76 of the 109 lines were
+  exactly that: invisible to the check meant to catch them.
+
+A third detail was a real bug the new tests caught: the rewrite loop matched `LINE_RE`
+against the raw line, and since that pattern anchors on `$`, a trailing `# comment`
+swallowed the printing into the name group and the line silently failed to match. Every
+other line-rewriting site here strips the comment first; this one now does too.
+
+### Backstop and residual
+
+`check_all` gained a soft sweep reporting unreleased rows in the pool. It is deliberately
+**pool-level** rather than a flag threaded through the five craft-recommending surfaces:
+the exposure is a property of the file, so one report covers `suggest` (and its
+`--lands`/`--ramp`/`--interaction` siblings), `tier --to`'s craft fillers and
+`wishlist --rank/--budget` at once — and being report-only it re-ranks nothing, so no
+K-12 roster diff was needed.
+
+**Live residual:** `Released` is still consumed in only one direction everywhere else —
+`rotation_risk` and the ⚠rot flags, which answer *when does this leave Standard*. No
+per-card surface asks *is this out yet*. A pool built with a custom `--query`, or one
+built before this bound existed, re-opens the whole failure; the soft sweep is what tells
+you.

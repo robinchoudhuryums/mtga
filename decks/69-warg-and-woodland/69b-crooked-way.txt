@@ -116,15 +116,15 @@
 1 Fell (BLB) 95
 1 Warg Tactics (HOB) 139
 1 Doubling Season (FDN) 216
-4 Overgrown Tomb (TRK) 289
-4 Temple Garden (TRK) 301
+4 Overgrown Tomb (ECL) 266
+4 Temple Garden (ECL) 268
 4 Deathcap Glade (SOS) 253
 3 Sandsteppe Citadel (TDM) 266
 1 Gathering Place (MSH) 266
 1 Bleachbone Verge (DFT) 250
-4 Forest (TRK) 325
-2 Swamp (TRK) 321
-2 Plains (TRK) 317
+4 Forest (HOB) 193
+2 Swamp (HOB) 191
+2 Plains (HOB) 189
 #~ -Fell | +Azog, Moria's Ruin | OWNED (HOB, ingested 2026-08-13): fit 27. Weaker on theme overlap
 #~   than in the parent, but the AMASS is the point here — Along the Crooked Way already amasses off
 #~   the graveyard, and Azog adds a second, larger source. Fell is generic unconditional removal at

@@ -111,6 +111,6 @@
 1 Temple of Enlightenment (FDN) 698
 1 Gathering Place (MSH) 266
 1 Gleaming Bastion (MSH) 267
-5 Forest (TRK) 325
-5 Plains (TRK) 317
-4 Island (TRK) 319
+5 Forest (HOB) 193
+5 Plains (HOB) 189
+4 Island (HOB) 190

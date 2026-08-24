@@ -3990,7 +3990,7 @@ This enchantment enters with X fire counters on it.
 If a source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus an amount of damage equal to the number of fire counters on this enchantment instead.",R,flash; tempo,TLA,132,1
 Jumbo Cactuar,Creature — Plant,"10,000 Needles — Whenever this creature attacks, it gets +9999/+0 until end of turn.",G,Plant; pump,FIN,191,1
 Overgrown Tomb,Land — Swamp Forest,"({T}: Add {B} or {G}.)
-As this land enters, you may pay 2 life. If you don't, it enters tapped.",B/G,Swamp; Forest; pay life; mana,TRK,289,1
+As this land enters, you may pay 2 life. If you don't, it enters tapped.",B/G,Swamp; Forest; pay life; mana,ECL,266,1
 Vicious Rivalry,Sorcery,"As an additional cost to cast this spell, pay X life.
 Destroy all artifacts and creatures with mana value X or less.",B/G,pay life,SOS,241,1
 The Endstone,Legendary Artifact,"Whenever you play a land or cast a spell, draw a card.
@@ -4958,7 +4958,7 @@ Equip {3} ({3}: Attach to target creature you control. Equip only as a sorcery.)
 Old Thrush,Creature — Bird,"Flying
 When this creature enters, you gain 2 life. You may search your library for a basic land card, reveal it, then shuffle and put that card on top.",Colorless,Bird; lifegain; ramp; etb; flying; evasion,HOB,2,1
 Watery Grave,Land — Island Swamp,"({T}: Add {U} or {B}.)
-As this land enters, you may pay 2 life. If you don't, it enters tapped.",U/B,Island; Swamp; pay life; mana,TRK,306,1
+As this land enters, you may pay 2 life. If you don't, it enters tapped.",U/B,Island; Swamp; pay life; mana,EOE,261,1
 Rakdos Joins Up,Legendary Enchantment,"When Rakdos Joins Up enters, return target creature card from your graveyard to the battlefield with two additional +1/+1 counters on it.
 Whenever a legendary creature you control dies, Rakdos Joins Up deals damage equal to that creature's power to target opponent.",B/R,counters; reanimator; graveyard; etb,OTJ,225,1
 The Lord of the Eagles,Legendary Creature — Bird Noble,"Flash
