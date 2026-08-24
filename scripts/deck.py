@@ -7079,6 +7079,48 @@ def cut_keep_score(ctx, tline, text, tags, rarity="", qty=1):
                   "mult": (mult_axis, mult_support)}
 
 
+def _cut_feeds_axis(cut_row, axis):
+    """Does this cut candidate itself supply the axis the tune plan is trying to RAISE?
+    `cut_row` is a `rank_cut_candidates` row: index 3 is the role set, index 8 the
+    once-per-card interaction flag `role_tally` computes."""
+    if axis == "interaction":
+        return bool(cut_row[8])
+    return "Card advantage" in (cut_row[3] or set())
+
+
+def pair_adds_with_cuts(adds, cut_pool):
+    """Pair each tune-plan filler with the weakest-fit cut that does NOT feed that
+    filler's own axis. Returns [(add, cut)].
+
+    This was `zip(adds, cut_pool)` — a positional pairing blind to what the cut does. So
+    a plan closing an INTERACTION gap could propose cutting an interaction card: the two
+    cancel, the projected floor comes back short, and the reader is told to "pick another
+    cut" for a choice the tool had all the information to make itself. Measured
+    2026-08-24: 3 of the 11 decks with an assembled `--to A` plan contained such a pair
+    (22, 43, 61), and deck 43's was hit live — it offered −Bitter Triumph / +An Offer You
+    Can't Refuse, both interaction, a net zero.
+
+    A cut is consumed once, so the two axes cannot both claim the same card. When nothing
+    axis-neutral is left the weakest remaining cut is used anyway, preserving the old
+    behaviour AND its warning: a plan with a flagged compromise is more useful than a
+    silently truncated one, and this is exactly where the human judgement the command
+    reserves belongs.
+
+    The RAMP warning is deliberately NOT filtered on. Losing a mana source is an
+    editorial trade-off, not an arithmetic contradiction — the plan does not get more
+    correct by avoiding it, so it stays a warning."""
+    remaining = list(cut_pool)
+    out = []
+    for a in adds:
+        if not remaining:
+            break
+        axis = a[0]
+        idx = next((i for i, c in enumerate(remaining)
+                    if not _cut_feeds_axis(c, axis)), 0)
+        out.append((a, remaining.pop(idx)))
+    return out
+
+
 def rank_cut_candidates(d):
     """Rank a deck's nonland cards most→least cuttable and return
     (rows_sorted, central, prot_present, deck_int). Each row is
@@ -11178,7 +11220,7 @@ def cmd_tier(args):
         # would be surfaced as a cut otherwise).
         add_names = {a[3].lower() for a in adds}
         cut_pool = [r for r in cut_rows if r[1].lower() not in add_names]
-        pairs = list(zip(adds, cut_pool))
+        pairs = pair_adds_with_cuts(adds, cut_pool)
         if pairs:
             print(f"\n── Assembled tune plan → {gapinfo['target']} (starting point; grade & "
                   "protect signature/spice) ──")

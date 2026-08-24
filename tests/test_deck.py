@@ -4678,3 +4678,64 @@ class TestUnreleasedPoolCards:
 
     def test_a_missing_pool_degrades_to_empty(self, tmp_path):
         assert deck.unreleased_pool_cards(str(tmp_path / "absent.csv")) == []
+
+
+class TestTunePlanCutSelection:
+    """`tier --to` paired fillers with cuts by positional `zip`, blind to what the cut
+    DOES — so a plan closing an interaction gap could propose cutting an interaction
+    card. The two cancel, the projected floor comes back short, and the reader is told to
+    "pick another cut" for a decision the tool had the information to make.
+
+    Measured 2026-08-24: 3 of the 11 decks with an assembled `--to A` plan (22, 43, 61).
+    Deck 43's was hit live — −Bitter Triumph / +An Offer You Can't Refuse, both
+    interaction, a net zero; after the fix that deck's plan reaches the A floor."""
+
+    # (keep, name, mv, roles, fit, reasons, ctx, text, is_int, power)
+    def _cut(self, name, *, is_int=False, ca=False):
+        roles = {"Card advantage"} if ca else set()
+        return (0.0, name, 2, roles, 0, [], {}, "", is_int, 0.0)
+
+    # (axis, kind, mv, name, ident, tag)
+    ADD_INT = ("interaction", "owned", 1, "Negate", "U", "0 WC")
+    ADD_CA = ("card advantage", "owned", 2, "Deduce", "U", "0 WC")
+
+    def test_an_interaction_add_does_not_cut_an_interaction_card(self):
+        pool = [self._cut("Removal Spell", is_int=True), self._cut("Vanilla Bear")]
+        pairs = deck.pair_adds_with_cuts([self.ADD_INT], pool)
+        assert pairs[0][1][1] == "Vanilla Bear", pairs
+
+    def test_a_card_advantage_add_does_not_cut_a_draw_spell(self):
+        pool = [self._cut("Draw Two", ca=True), self._cut("Vanilla Bear")]
+        pairs = deck.pair_adds_with_cuts([self.ADD_CA], pool)
+        assert pairs[0][1][1] == "Vanilla Bear", pairs
+
+    def test_the_weakest_neutral_cut_still_wins_ties(self):
+        """The cut ranking's ORDER must survive: skipping is the only change, so among
+        axis-neutral candidates the weakest-fit one is still taken first."""
+        pool = [self._cut("Weakest"), self._cut("Stronger")]
+        pairs = deck.pair_adds_with_cuts([self.ADD_INT], pool)
+        assert pairs[0][1][1] == "Weakest"
+
+    def test_a_cut_is_consumed_so_two_adds_never_share_one(self):
+        pool = [self._cut("A"), self._cut("B")]
+        pairs = deck.pair_adds_with_cuts([self.ADD_INT, self.ADD_CA], pool)
+        assert [p[1][1] for p in pairs] == ["A", "B"]
+
+    def test_with_nothing_neutral_left_it_falls_back_rather_than_truncating(self):
+        """A plan carrying a flagged compromise is more useful than a silently shorter
+        one — and the ⚠ line is exactly where the human judgement this command reserves
+        belongs."""
+        pool = [self._cut("Only Removal", is_int=True)]
+        pairs = deck.pair_adds_with_cuts([self.ADD_INT], pool)
+        assert len(pairs) == 1 and pairs[0][1][1] == "Only Removal"
+
+    def test_an_empty_cut_pool_yields_no_pairs(self):
+        assert deck.pair_adds_with_cuts([self.ADD_INT], []) == []
+
+    def test_a_CROSS_axis_trade_is_allowed_and_left_to_the_warning(self):
+        """Deliberate: raising interaction by spending card advantage is correct when the
+        sum has slack, so only the axis being RAISED is protected. Deck 22 is the live
+        case — its plan reaches the A floor with card-adv 8->7."""
+        pool = [self._cut("Draw Two", ca=True)]
+        pairs = deck.pair_adds_with_cuts([self.ADD_INT], pool)
+        assert pairs[0][1][1] == "Draw Two"

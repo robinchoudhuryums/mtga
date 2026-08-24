@@ -643,9 +643,11 @@ directions.
   It sits in PYTEST, not `check_all`, for G-55's reason — it needs separate interpreters —
   so `make check` alone misses this class and `make verify` catches it. [G-54]
 - **NO GATE BUILT AN ARGPARSE TREE, so a broken `--help` was invisible** for four days
-  with three green workflows. `check_all` imports `deck` as a MODULE and calls `cmd_*`
-  directly, so the CLI surface is covered separately by `tests/test_cli.py` and a CI
-  smoke step. Note argparse renders help through `help % params`, so **a bare `%` in a
+  with three green workflows. `check_all` imports `deck` as a MODULE and calls its MODEL
+  functions — 16 of them, and **zero `cmd_*`**, which this rule claimed for a year: the
+  untested surface is therefore the whole COMMAND layer, not just the argparse tree.
+  `tier --to` pairing a filler with a cut that undid its own gap (2026-08-24) lived
+  exactly there. The CLI is covered by `tests/test_cli.py` and a CI smoke step. Note argparse renders help through `help % params`, so **a bare `%` in a
   help string raises — write `%%`** — and the top-level help expands every subaction, so
   one bad string takes the whole `--help` down. [G-55]
 - **`swap --apply` records the decision to `recommendations.csv`** — where `cuts` ranked
@@ -891,7 +893,7 @@ directions.
   (after every deck edit) the radar was built for. `--update-baseline` rewrites the file
   from the CURRENT set, so it cannot tell one genuinely roleless new card from a
   `_ROLE_PATTERNS` edit that just re-zeroed fifty; the only residual signal was an unread
-  diff of a 425-line file. It now NAMES every card it acknowledges and REFUSES a jump over
+  diff of a 425-line file (498 today). It now NAMES every card it acknowledges and REFUSES a jump over
   `--max-new` (postedit passes `MAXNEW`, default 8 — `make postedit MAXNEW=40` for a
   deliberate bulk pass). `check_keywords.py --update-baseline` got the same delta report
   and `--max-new` (BS4-10) — it has no automated caller, so it was never MUTED, but K-01's
@@ -1008,7 +1010,7 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   whether it encodes the intent or merely the old implementation. (Vivid has since been
   themed — which does not retire the rule, it demonstrates it: reading TEXT is what made
   the fixer overlay survive the keyword being unindexed, and will again.) [K-04]
-- **`pay life` is a tagged theme** (351 pool cards, 2.2% — specific enough to build
+- **`pay life` is a tagged theme** (357 pool cards, 2.2% — specific enough to build
   around): YOU losing life as a cost, plus the cards that only CARE. "Each opponent loses
   2 life" is a DRAIN effect — the opposite card, deliberately not tagged. [K-05]
 - **CHECK `MECHANIC_RULES` FOR THE NAME BEFORE ADDING A THEME.** `heist` (cast a card
@@ -1017,7 +1019,7 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   and destroyed the specificity that makes an idf theme useful, **with `check_all` green
   throughout, because a tag collision breaks no invariant.** [K-06]
 - **`exile cast` is the SIBLING of `heist` and stays separate** — casting your OWN exiled
-  cards (impulse / Warp / Plot / Foretell / Adventure, 266 pool cards). The two only look
+  cards (impulse / Warp / Plot / Foretell / Adventure, 291 pool cards). The two only look
   alike; a deck built on one gets nothing from the other. [K-07]
 - **`keyword_frequencies()` counts DISTINCT CARDS, not rows** — the mana file keys a DFC
   under its full `Front // Back` name, so a two-faced card could contribute two rows and
@@ -1029,10 +1031,10 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   scored ZERO roles by the classifier, so it was a removal card to one model and roleless
   to the other — and it is the ROLE model that feeds `tier_band` (BS6-10). Comparing the
   two is cheap, and is a GATE now, not a one-off: `check_roles.py --tags` sweeps the pool
-  for it, baselined at 138 and soft in `check_all`. It reads the tagger's own
+  for it, baselined at 153 and soft in `check_all`. It reads the tagger's own
   `MECHANIC_RULES` live (never a copy) and excludes the deathtouch KEYWORD path by
   construction — 250 of the 388 raw hits, which an allowlist would have had to enumerate.
-  A worklist, not a defect count. **Residual: 380 pool blanks —
+  A worklist, not a defect count. **Residual: 371 pool blanks —
   a long tail of un-themeable effects, and a new theme for four cards is not the fix.** [K-09]
 - **After editing a tag pattern, regenerate BOTH derived tag stores** —
   `tag_synergies.py --merge` for the LIBRARY and **`build_pool.py --all` for the pool**,
@@ -1110,7 +1112,8 @@ card-name-header staleness pass, the tier-mismatch pass, (2026-08-11) the `#~ no
 figure sweep, (2026-08-19) the tag/role disagreement sweep (`check_roles --tags`) and
 the committed-dashboard freshness check, and (2026-08-24) the G-75 dead-library-search
 sweep — a tutor whose named resource the deck holds ZERO of. Two things to know
-before touching it: it imports `deck` as a MODULE and calls `cmd_*` directly, so it never
+before touching it: it imports `deck` as a MODULE and calls its MODEL functions (no
+`cmd_*` at all), so it never
 builds an argparse tree — the CLI surface is covered by `tests/test_cli.py` and a CI smoke
 step — and the reference-table loaders are memoized, which is what makes a roster-wide
 sweep affordable enough to run automatically. What each gate guards, and the bug that
@@ -1129,7 +1132,7 @@ earned it: [C-01]
 
 **Subsystems:**
 - Data: card-library.csv, card-pool.csv, card-mana.csv, card-wishlist.csv, matches.csv
-  (LIVE since 2026-08-10 — 58 matches, 55 attributed across 23 decks, pooled 28-30; the
+  (LIVE since 2026-08-10 — 62 matches, 55+ attributed across 23+ decks, pooled 28-30; the
   best per-deck row is n=8 against the 20-match floor, which is why `--report` also POOLS,
   and why the four HAND columns exist at all — G-74), recommendations.csv [C-02]
 - Outcomes: scripts/parse_matches.py, recommendations.csv + `deck.py feedback` — the only

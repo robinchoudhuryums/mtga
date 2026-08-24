@@ -56,8 +56,9 @@ are exempt, is measured in gotchas.md under [G-65]. Roster at the time of the ch
 0 hard, 27 soft across 15 decks — all pre-existing and silent until the check existed.
 
 (deterministic integrity gate; exits non-zero on any hard invariant break —
-NOTE it imports `deck` as a MODULE and calls `cmd_*` directly, so it never builds an
-argparse tree — the CLI surface is covered separately by `tests/test_cli.py` and a
+NOTE it imports `deck` as a MODULE and calls its MODEL functions — 16 of them, and no
+`cmd_*` whatsoever — so it never builds an argparse tree, and the untested surface is the
+whole COMMAND layer rather than just argparse — the CLI surface is covered separately by `tests/test_cli.py` and a
 dependency-free smoke step in `.github/workflows/integrity.yml`; see the CLI gotcha
 above —
 INV-01…04 plus a **ranking-model sanity check** (`check_rankings.py`) that guards

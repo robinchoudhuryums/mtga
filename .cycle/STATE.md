@@ -1950,3 +1950,25 @@ Paste-test deck 76.
 **Where I left off:** all green, 1436 tests. Next in the recommended audit sequence is
 Analysis, then Presentation (which holds the biggest untested surface: app.py's Flask
 tests skip here, and build_dashboard.py has no dedicated test file).
+
+## 2026-08-24 — /targeted-audit + /targeted-implement: Analysis (B1–B4)
+
+Analysis is the most hardened subsystem in the repo — a 1,740-combination crash sweep (15
+commands × 116 decks) found zero exceptions, and the mechanical scans for this project's
+own documented bug shapes (falsy-zero `or`, blanket excepts, tier_band purity, G-70's
+single definition, G-01 keys, G-63 DFC fronts, G-71 memo copies) all came back clean.
+Three findings, all now fixed:
+
+- **B1 — `tier --to` proposed a cut that undid its own gap.** Fillers were paired with
+  cuts by positional `zip`, blind to what the cut does. 3 of 11 plans were self-defeating;
+  deck 43's was hit live. Now skips a cut feeding the add's own axis. Plans reaching the A
+  floor: 8 → 10 of 11. The 2 remaining ⚠ are CROSS-axis trades and correct.
+- **B3 — `check_all` calls no `cmd_*` at all**, which CLAUDE.md and cycle-config both
+  claimed for a year. The untested surface is the whole command layer, not just argparse
+  — and B1's bug lived exactly there.
+- **B2 — CLAUDE.md's measured figures drift with nothing checking them.** 6 of 10 sampled
+  claims were stale. New SOFT `figure_drift` check in check_docs (a dead regex is itself
+  reported), and the six corrected.
+
+**Where I left off:** all green, 1443 tests. Presentation is the last unaudited subsystem
+and holds the biggest untested surface.
