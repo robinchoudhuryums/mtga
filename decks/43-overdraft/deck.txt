@@ -12,8 +12,12 @@
 #: archetype: repeatable cantrip; Cloudblazer draws four; the gain-1 lands cantrip), and
 #: archetype: hoards the result behind Ms. Marvel / Vnwxt / the Grimoire, whose
 #: archetype: no-maximum-hand-size clauses are what keep the hand deep enough to absorb
-#: archetype: the Grimoire's discards (Healer's Hawk was CUT 2026-08-24; The Ten Rings
-#: archetype: was cut and RESTORED in the same pass, for Feed the Cauldron). Bard, King
+#: archetype: the Grimoire's discards. The MAX-HAND-SIZE SETTERS ARE GONE and that was
+#: archetype: deliberate: The Ten Rings and Doctor Octopus were CUT 2026-08-24 (Healer's
+#: archetype: Hawk went the same day) because each SETS a ceiling — ten and eight — which
+#: archetype: resolves in timestamp order and can CAP the hand in the deck whose clock is
+#: archetype: Ms. Marvel's power = cards in hand. What is left says no MAXIMUM, which is
+#: archetype: the clause the deck actually wants. Bard, King
 #: archetype: of Dale DOUBLES every draw past the first each
 #: archetype: turn, so the Grimoire's gain-N-draw-N reads 2N and the second-card cluster
 #: archetype: fires off the first extra draw. Ms. Marvel's power equals cards in hand, so the
@@ -36,23 +40,25 @@
 #: archetype: draw decks: 12 Drawn Conclusions is a UB control deck that draws to find
 #: archetype: answers, 22 Bloodbending mills; here the drawing IS the deck and white is a
 #: archetype: real color rather than a splash. It is the roster's only Esper deck.
-#: tier: B — Esper hand-size control, held ONE BAND ABOVE a C metrics floor, PROVISIONAL
-#: tier: (unplayed brew). READ THE FLOOR CHANGE BEFORE TRUSTING THE LETTER: the
-#: tier: 2026-08-24 HOB pass took interaction 5 -> 2 and dropped the floor A -> C. Three
-#: tier: of the five pieces left in one pass — Exclusion Mage (one-shot bounce) and
-#: tier: Floodpits Drowner for Confusticate and Bebother and Bard the Bowman, then
-#: tier: Tishana's Tidebinder for Lake-town Toymaker, and Feed the Cauldron was CUT for
-#: tier: The Ten Rings. What remains is Confusticate and Bebother and Stroke of Midnight: both
-#: tier: instant-speed, both able to answer a noncreature permanent, and that is the
-#: tier: whole suite. A CONTROL deck answering two things is the deck's largest open
-#: tier: question and the first thing games should test. Against it stands card
-#: tier: advantage 16 on a 3.20 curve, a number that is real rather than a pile of
+#: tier: B — Esper hand-size control, ON the B metrics floor, PROVISIONAL (barely
+#: tier: played: 0-1). THE INTERACTION AXIS DIPPED AND WAS REPAIRED IN ONE DAY, and the
+#: tier: shape of the repair is the argument: the 2026-08-24 HOB pass took interaction
+#: tier: 5 -> 2 and the floor A -> C: Exclusion Mage's one-shot bounce was CUT, Floodpits
+#: tier: Drowner was CUT, Tishana's Tidebinder was CUT, and Feed the Cauldron was CUT,
+#: tier: against only Confusticate and Bebother coming back the other way. A same-day
+#: tier: corrective bought the axis back at a better
+#: tier: rate — Battle Menu and Bitter Triumph in for the deck's two 7-and-8-drops —
+#: tier: putting interaction at 4, ALL of it instant-speed, three of it able to answer a
+#: tier: noncreature permanent, and dropping avg MV 3.20 -> 2.89 with 17 early drops.
+#: tier: Card advantage paid for it, 16 -> 14, which is the honest cost: both cards cut
+#: tier: were end-step refill engines. Against that stands card
+#: tier: advantage 14 on a 2.89 curve, a number that is real rather than a pile of
 #: tier: cantrips — Cloudblazer draws two, Chart a Course draws two, Spirit Water Revival
 #: tier: draws seven when waterbent, the Grimoire draws five on cast, and Bard, King of
-#: tier: Dale doubles every one of them past the first each turn. B is a judgment that
-#: tier: the engine and the ceiling outweigh the answer count; it is one band over the
-#: tier: floor, which the rubric permits, and it is the band to revisit first if games
-#: tier: show the deck losing to resolved threats. Three structural risks the floor
+#: tier: Dale doubles every one of them past the first each turn. B now MATCHES the
+#: tier: floor rather than sitting over it, so the letter needs no intangibles credit —
+#: tier: revisit it upward only if games show the engine closing faster than a
+#: tier: four-answer control deck has any right to. Three structural risks the floor
 #: tier: cannot see, which is one more than an A tolerates:
 #: tier: 1. RELIABILITY OF THE NAMED ENGINE. Marina Vendrell's Grimoire is a single
 #: tier:    unowned rare (~22% to be seen by turn 7), and Mister Negative and King
@@ -128,13 +134,17 @@
 #: notes: making Clues and stops triggering Ketramose (RIP replaces the only enabler it
 #: notes: was added to help), and Spirit Water Revival's waterbent shuffle-back does
 #: notes: nothing. Moonstone does the job while feeding the deck instead of fighting it.
-#: notes: DOCTOR OCTOPUS IS ON NOTICE for the same reason The Ten Rings was cut: both
-#: notes: SET a maximum hand size (8 and 10), which resolves in TIMESTAMP order — so
-#: notes: landing him after the Grimoire / Ms. Marvel / Vnwxt CAPS the hand at eight, in
-#: notes: the deck whose clock is Ms. Marvel's power = cards in hand. His refill clause
-#: notes: is independent of the cap, but it reads "if you have FEWER than eight cards",
-#: notes: which is rare here by design. He survived this pass only because the user
-#: notes: preferred keeping Marauding Blight-Priest; he is the next cut.
+#: notes: THE MAX-HAND-SIZE TRAP, resolved 2026-08-24 by cutting both offenders.
+#: notes: Doctor Octopus and The Ten Rings each SET a maximum hand size (8 and 10). A
+#: notes: set competes with "you have no maximum hand size" in TIMESTAMP order, so
+#: notes: landing either AFTER the Grimoire / Ms. Marvel / Vnwxt CAPPED the hand — in
+#: notes: the deck whose clock is literally Ms. Marvel's power = cards in hand. Their
+#: notes: refill clauses are independent of the cap and read "if you have FEWER than
+#: notes: eight/ten cards", which is rare here BY DESIGN, so the good half mostly slept
+#: notes: while the bad half woke up when you were ahead. Battle Menu and Bitter Triumph
+#: notes: replaced them: 15 mana of top end for 4, and the interaction axis back to 4.
+#: notes: DO NOT RE-ADD A CARD THAT SETS A HAND-SIZE CEILING — read for "your maximum
+#: notes: hand size is N", which looks like an upgrade over seven and is not one here.
 #: notes: Craft targets: Marina Vendrell's Grimoire (R), Mister Negative (M), King
 #: notes: T'Challa (M), Restoration Magic (U), Wolfbat (U). Everything else is owned.
 #: notes: The gain-1 lands (Tranquil Cove, Scoured Barrens, Dismal Backwater) are
@@ -145,13 +155,11 @@ Deck
 # Hand size — the spine
 1 Ketramose, the New Dawn (DFT) 209
 1 Sunpearl Kirin (TDM) 29
-1 Doctor Octopus, Master Planner (SPM) 128
 1 Marina Vendrell's Grimoire (DSK) 64
 1 Ms. Marvel, Kamala Khan (MSH) 67
 1 Vnwxt, Verbose Host (DFT) 73
 1 Spirit Water Revival (TLA) 73
 1 Bard, King of Dale (HOB) 144
-1 The Ten Rings (MSH) 251
 
 # Second card each turn — the engine that works without the Grimoire
 1 King T'Challa // Black Panther, Hope Enduring (MSH) 219
@@ -188,6 +196,8 @@ Deck
 1 Moonstone, Harsh Mistress (MSH) 107
 
 # Removal
+1 Bitter Triumph (SOA) 26
+1 Battle Menu (FIN) 9
 1 Confusticate and Bebother (HOB) 35
 1 Stroke of Midnight (FDN) 148
 
@@ -219,4 +229,9 @@ Deck
 #~   Toymaker in for Tishana's Tidebinder, and The Ten Rings RESTORED in for Feed the
 #~   Cauldron. Net across all eight: interaction 5 -> 2, card advantage 14 -> 16,
 #~   avg MV 3.03 -> 3.20. Crafts owed: Bard the Bowman (U), Lake-town Toymaker (U).
+#~ note: applied 2026-08-24 (same day, the corrective) — Battle Menu in for The Ten
+#~   Rings and Bitter Triumph in for Doctor Octopus, Master Planner. Both cuts SET a
+#~   max hand size and were the deck's only 7-and-8-drops; both adds are owned
+#~   2-mana instants. Interaction 2 -> 4 (all instant-speed), card advantage 16 -> 14,
+#~   avg MV 3.20 -> 2.89, early drops 15 -> 17, metrics floor C -> B.
 #~ note: applied — Osseous Sticktwister in for Radiant Strike.
