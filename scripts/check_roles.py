@@ -151,6 +151,42 @@ def zero_role_cards():
     return sorted(out, key=lambda r: r[0].lower())
 
 
+def role_coverage():
+    """(n_zero, n_total) — how much of the roster `classify_roles` can see AT ALL.
+
+    The radar above reports a DELTA ("no new zero-role cards") and never a LEVEL, and a
+    delta-only report reads as a clean bill for a number nobody has looked at. Broad-scan
+    S1-04 had to be measured with a throwaway script to learn that 491 of 1,873 distinct
+    nonland roster cards — 26% — score no functional role, and that the acknowledged set
+    had grown 425 -> 498 across the window CLAUDE.md itself records. Both facts were
+    derivable from data this module already loads; neither was printed anywhere.
+
+    This matters because `role_tally` is the ONE canonical counter and its bare integers
+    feed `tier_band`. K-12 already tells a reader to read the per-deck uncertainty
+    (`7`, `3 +2?`, `8 +4? (3 unclassified)`) rather than the bare count; this is the same
+    honesty one level up, for the roster. It is REPORT-ONLY by construction — it returns
+    two integers and nothing consumes them for scoring, exactly as the protection axis
+    (G-25) and the X-cost advisory (G-60) are reported and kept out of `tier_band`, since
+    a new term there would silently re-grade the roster.
+
+    NOT a defect count. Some of these are genuinely roleless — vanilla bodies, pure
+    combat tricks, build-arounds whose value sits on another card — and the split between
+    those and classifier holes is exactly what nobody has done. Read it as a trend."""
+    total = len(_roster_cards())
+    return len(zero_role_cards()), total
+
+
+def _coverage_line():
+    """The one-line level report, or '' when the roster is unreadable (0 cards)."""
+    zero, total = role_coverage()
+    if not total:
+        return ""
+    return (f"Role coverage: {total - zero}/{total} roster card(s) score at least one "
+            f"functional role — {zero} ({100.0 * zero / total:.0f}%) score NONE. "
+            f"`role_tally` feeds `tier_band`, so read a tier floor against this "
+            f"(report-only; a trend, not a defect count).")
+
+
 def check(include_baselined=False):
     """[(name, type, text)] of zero-role cards NOT in the baseline; empty == healthy."""
     base = set() if include_baselined else load_baseline()
@@ -259,6 +295,15 @@ def baseline_delta():
     postedit` ran it unconditionally, BEFORE `check_all`, so the radar's warning was
     consumed by the same command that was supposed to surface it (BS4-02). Exposing the
     delta is what lets the caller show its work instead of absorbing it.
+
+    The delta closed the BULK case; the ORDER stayed wrong for the ordinary one
+    until broad-scan S2-02. `check()` is "zero-role cards NOT in the baseline", so
+    rewriting the baseline first made it return 0 by construction and `check_all`'s
+    soft sweep had nothing to say about the cards a tune had just added (measured:
+    490 zero-role, 490 baselined, sweep silent). `make postedit` now acknowledges
+    LAST, after `check_all` has reported them, so both halves of G-69 hold: the
+    delta names them, AND the gate that reads the baseline runs before the step
+    that rewrites it.
 
     `newly_acknowledged` carries DISPLAY names — a human is supposed to read these and
     go look the card up, and the lowercased comparison key is worse at both."""
@@ -416,6 +461,12 @@ def main():
                     print(f"    - {nm}   (pruned)")
         else:
             print("  No change to the acknowledged set.")
+        # The LEVEL, beside the delta (broad-scan S1-04). `make postedit` runs this step
+        # LAST now, after check_all, so this is the final line an operator reads after a
+        # deck edit — which is where the number that bounds every tier floor belongs.
+        line = _coverage_line()
+        if line:
+            print("  " + line)
         return 0
     stale = stale_baseline_entries()
     if stale:
@@ -429,6 +480,11 @@ def main():
     if not res:
         print("No new zero-role cards (roster, vs baseline)."
               + (" (stale entries above still need pruning)" if stale else ""))
+        # A delta-only clean bill reads as "the role model sees everything" — the reading
+        # S1-04 had to disprove with a throwaway script. Print the LEVEL too.
+        line = _coverage_line()
+        if line:
+            print(line)
         return 0
     scope = "zero-role" if args.all else "NEW zero-role (since baseline)"
     print(f"{len(res)} {scope} card(s) in decks/ — each is either genuinely roleless or a\n"

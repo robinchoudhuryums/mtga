@@ -6,6 +6,95 @@
 > For "which command answers X, and why do two of them disagree", read
 > **`docs/systems-map.md`** — that is now a live reference, not a cycle artifact.
 
+## Session — broad scan #7, top 5 (2026-08-24)
+
+Gates green: all invariants hold, **one soft warning** (the four ACCEPTED dead tutors —
+unchanged, not a regression); **1477 tests, 0 skipped** (+15 instances). Regression
+Scenario 2 walked by hand, 30 invocations, 0 tracebacks. Block:
+`.cycle/blocks/2026-08-broad-scan7-top5-broad-implement.md`.
+
+**The one that was live for users: three CSS custom properties no theme defines.** The
+"Log a match" panel read `--acc` / `--dim` / `--fg` against the design system's
+`--accent` / `--ink2` / `--ink`. Both themes define all 27 real tokens, so this was never
+a light/dark gap — the three names existed in neither. Nothing errored, because an
+undefined custom property is invalid at computed-value time rather than a parse error, and
+each failed differently: `.segbtn.on` fed `--acc` to `color-mix()`, which made the whole
+`background` an invalid VALUE, so the SELECTED W/L/D button shipped with no fill; four
+`outline:2px solid` rules fell back to `currentColor` and, being MORE SPECIFIC than the
+page's global `:focus-visible`, overrode a working rule with a broken one. It reached the
+deployed page — pages.yml checks byte size and the `#data` island, neither of which a token
+gap touches, and `tests/test_templates.py` pinned `templates/` (which has zero undefined
+tokens) and could not see the generated page at all.
+
+**The gate that catches it is worth distinguishing from the one G-72 refused.** G-72
+measured a static a11y gate as unbuildable — three designs, every flag false — and that
+verdict is about BEHAVIOUR ("is this node really a control"), which a file cannot answer.
+"Does this page define the variable it reads" is REFERENTIAL and has no legitimate negative
+form, so it cannot false-positive. Do not read G-72 as closing this one too. Caveat found
+while writing it: the scan reads raw source, so PROSE quoting `var(--undefined)` trips it —
+the incident comment therefore names tokens bare, and says why.
+
+**A handoff that IS read and is wrong is worse than one that is not read.**
+`.cycle/NEXT-SESSION.md` §0-current still carried "UNRESOLVED AND RECORDED NOWHERE ELSE:
+the TRK printing question" with a manual next action ("paste one affected deck into
+Arena"), a week after commit `e269b5e` closed it in the same cycle. Measured: 0 `(TRK)`
+lines under decks/ (was 109 across 47 files), 0 TRK library rows, 0 future-dated pool rows.
+CLAUDE.md orders a fresh session to read that file FIRST and declares it authoritative, so
+a stale open item there spends the next session's first hour on finished work *with the
+handoff's authority behind it*. Fixed the section and added **step 4 to
+`docs/verify-commit-tail.md`** — close what you closed in §0-current, in the same commit —
+because that tail is what every writing skill already runs and nothing gates a doc CLAIM
+(`check_docs` proves anchors resolve, not that a statement is true).
+
+**G-69 was still the counter-example to its own rule.** `make postedit` ran
+`--update-baseline` FIRST. `check_roles.check()` is "zero-role cards NOT in the baseline",
+so rewriting the baseline first made it return 0 by construction: 490 zero-role, 490
+baselined, sweep silent. The BS4-02 fix (name every card, refuse a jump over MAXNEW) closed
+the bulk case and left the ordinary one open. Reordered to dashboard → check_all →
+acknowledge. **The old order's rationale was real and is preserved in the comment** —
+consuming the warning is what the step is for — what changed is that the gate now runs
+before the rewrite. Side benefit: a failing check_all aborts before the baseline is touched.
+
+Also: `_relocate_card_line` and `_do_swap`'s advisory lookup routed through `_ms_key`
+(G-63). `_swap_edit_lines` has matched that way since BS2-21 precisely because 59 roster
+lines carry a full `Front // Back` name; its two siblings in the same code path did not, so
+a front-face `add` whose line is stored full raised "appears on 0 card line(s)" and —
+because relocation runs inside the write `try` — **aborted the whole swap**. Reproduced
+against deck 53. 0 `_ms_key` clashes across 116 decks, so the stricter refusal costs
+nothing.
+
+### The decision that was NOT taken, and the numbers for taking it
+
+S1-04 said 26% of the roster's distinct nonland cards (491 of 1873) score no functional
+role, and `role_tally`'s bare integers feed `tier_band`. **Only the report-only half was
+taken** — `check_roles` now prints the LEVEL beside the delta, kept out of `tier_band` on
+the same rule as the protection axis (G-25) and the X-cost advisory (G-60). The taxonomy
+half is a human call and CLAUDE.md says so; here is the K-14 diff it needs:
+
+- The 491 are **not one bucket**. 400 are a long tail (291 creature / 109 noncreature).
+  Named blocks: Equipment 31, hand-attack 31, Aura 9, tap-down 8, ability-strip 6,
+  extra-combat 5, vanilla 1.
+- **Neutralization is already closed** — decks that would gain interaction from a
+  "doesn't untap / loses all abilities" bucket: **zero**. §0-latest's open item ("six decks
+  under-count interaction: 15 by 2; 16, 27, 32, 38a, 38 by 1") looks stale; confirm and
+  close it. Same shape as the TRK item, one file over.
+- **Hand-attack is the risky one**: bucketed as interaction it re-scores 27 decks and moves
+  **3 tier floors** — 22 (4→5, B→A), 22-brawl (4→5, B→A), 73 (5→6, B→A). That is a
+  re-grade, not a pattern fix.
+- **Equipment maps to neither graded axis**, so it moves no floor — the lowest-risk bucket
+  if one is wanted.
+
+### Where I left off
+
+All five findings done; working tree has 10 modified files, nothing staged or committed —
+the user has not asked for a commit. No CSV and no deck file was written (the role baseline
+was rewritten once as a verified byte-identical no-op). Two operator actions outstanding,
+neither blocking: walk the new Regression Scenario 10 (the S2-01 palette has never been
+rendered by a person with the tokens correct), and decide the S1-04 taxonomy question.
+Doc drift the block enumerates — CLAUDE.md G-69 and README ~1305 still describe the old
+postedit order, and the two new scenarios plus the token gate are unregistered — is
+`/sync-docs` work, deliberately not done here.
+
 ## Session — broad scan #6, Batch 4 + follow-ons + ROADMAP (2026-08-19)
 
 Gates green: all invariants, ZERO soft warnings; 1362 tests (+13). Block:

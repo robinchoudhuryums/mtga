@@ -55,7 +55,28 @@ git checkout -B <branch> origin/main
 If the branch already carries unmerged commits beyond the merged history, keep
 them (rebase onto the new base) rather than discarding them.
 
-## 4. Do not open a PR unless asked
+## 4. Close what you closed in `.cycle/NEXT-SESSION.md`
+
+If this work resolves something §0-current of `.cycle/NEXT-SESSION.md` names as open —
+an UNRESOLVED section, a "what is NOT known", an item under "Where the session left
+off" — **edit that file in the same commit.** Say it is closed, keep the reasoning and
+any live residual, and record the measurement that proves it.
+
+This is not tidiness. CLAUDE.md orders a fresh session to read that file FIRST and
+declares it authoritative over everything below it, so an item left open there is not
+merely unhelpful — it sends the next session to redo finished work with the handoff's
+full authority behind it. It has already happened: the TRK/unreleased-printing section
+was fixed by commit `e269b5e` in the same cycle that wrote the handoff, and stayed
+marked "UNRESOLVED AND RECORDED NOWHERE ELSE — cheapest next step: paste one affected
+deck into Arena" for a week, complete with a manual next action (broad-scan S1-01).
+
+The project's standing lesson is that *a handoff nobody is told to read is invisible*.
+The mirror is that **a handoff that IS read and is wrong is worse than one that is not
+read**, because it is trusted. Nothing gates this — `check_docs` proves the `[G-nn]`
+anchors resolve, not that a claim is still true — so it lives here, in the tail every
+writing skill already runs.
+
+## 5. Do not open a PR unless asked
 
 Creating a pull request requires an explicit request from the user. Committing
 and pushing to the working branch is the default end state.

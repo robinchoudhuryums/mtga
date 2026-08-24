@@ -145,28 +145,42 @@ dashboard:
 	python3 scripts/build_dashboard.py
 
 # The after-every-deck-edit tail, as ONE command. Every deck edit in the 2026-08
-# sessions ended with this same three-step chain typed by hand (re-baseline any new
-# roleless engine cards, rebuild the committed dashboard, run the full gate), and at
+# sessions ended with this same three-step chain typed by hand (rebuild the committed
+# dashboard, run the full gate, re-baseline any new roleless engine cards), and at
 # ~2 min it outlives a foreground shell window — a recurring ceremony is exactly the
-# thing that gets skipped under time pressure (broad-implement #8). Order matters:
-# the baseline must update BEFORE check_all or the gate warns about the cards the
-# baseline was about to acknowledge.
+# thing that gets skipped under time pressure (broad-implement #8).
 #
-# THAT ORDERING IS ALSO HOW THE RADAR GOT MUTED (BS4-02). Consuming
-# the warning is the point of step 1, but consuming it SILENTLY meant a _ROLE_PATTERNS
-# edit that re-zeroed fifty cards was acknowledged wholesale, with an unread diff of a
-# 425-line file as the only trace. So step 1 now (a) names every card it acknowledges
-# and (b) REFUSES a jump bigger than MAXNEW, which is a pattern regression rather than
-# a batch of genuinely roleless new cards. Raise it deliberately for a real bulk
-# acknowledge: `make postedit MAXNEW=40`.
+# THE ORDER IS THE WHOLE POINT, AND IT IS THE OPPOSITE OF WHAT IT USED TO BE.
+# `--update-baseline` ran FIRST, on the rationale that consuming the warning about the
+# cards you just added is what step 1 is FOR — otherwise the gate nags about them until
+# someone baselines them next run. That rationale is real, and it is also how the radar
+# got muted twice. BS4-02 was the loud half: a bulk rewrite acknowledged fifty re-zeroed
+# cards wholesale, leaving an unread diff of a 425-line file as the only trace. The fix
+# there — name every card, and REFUSE a jump bigger than MAXNEW — closed the bulk case
+# and left the ordinary one open, which broad-scan S2-02 measured: `check_roles.check()`
+# is defined as "zero-role cards NOT in the baseline", so rewriting the baseline first
+# made it return 0 by construction, and `check_all`'s soft roster sweep had nothing to
+# report for the cards a tune had just introduced. 490 zero-role cards, 490 baselined,
+# sweep silent. G-69 states exactly this shape ("when an acknowledge step and a warn
+# step run in one command, the ORDER decides whether the warning exists at all") and
+# this recipe was still the counter-example to its own rule.
+#
+# So: acknowledge LAST. `check_all` now sees the un-baselined cards and warns about them
+# (soft, non-gating — nothing breaks), and the acknowledgement still happens inside the
+# same command, so the original convenience is kept. It is also now the LAST thing
+# printed rather than the first, which is where a line you are meant to read belongs.
+# The cost is one soft warning per run that introduced a roleless card — that warning
+# existing is the feature, and it is TRUE rather than the permanent false noise G-78
+# refuses. Raise the cap deliberately for a real bulk acknowledge:
+# `make postedit MAXNEW=40`.
 MAXNEW ?= 8
 postedit:
-	@echo "==> 1/3 check_roles.py --update-baseline  (acknowledge new zero-role cards)"
-	python3 scripts/check_roles.py --update-baseline --max-new $(MAXNEW)
-	@echo "==> 2/3 build_dashboard.py               (committed snapshot; ~2 min)"
+	@echo "==> 1/3 build_dashboard.py               (committed snapshot; ~2 min)"
 	python3 scripts/build_dashboard.py
-	@echo "==> 3/3 check_all.py                     (invariants + soft sweeps)"
+	@echo "==> 2/3 check_all.py                     (invariants + soft sweeps)"
 	python3 scripts/check_all.py
+	@echo "==> 3/3 check_roles.py --update-baseline  (acknowledge what step 2 just reported)"
+	python3 scripts/check_roles.py --update-baseline --max-new $(MAXNEW)
 
 clean-venv:
 	rm -rf $(VENV)
