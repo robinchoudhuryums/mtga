@@ -4768,3 +4768,78 @@ The Masters of Evil in decks 20a/20b (searches for a Plan card; those decks run 
 it is still a Villain anthem) and Hobbit Hole in 50a/69a (its basic-land fetch works fine;
 only the Halflingcycling rider finds nothing).
 
+
+## [G-76] A gate the deck meets for free is not a cost, and every model read it as one
+
+G-66 gave the project `deck.py targets`, and its whole question is *"does this deck
+CONTAIN N cards of shape X"*. All thirteen `_TARGET_GATES` entries count cards in the
+list — MV caps, sacrifice fodder, graveyard types, library searches. That leaves a
+second family of gated cards completely unmodelled: the ones gated on a **game state**
+the deck has to reach. One 2026-08-24 session on deck 43 hit both ends of it.
+
+**The dead end.** Ketramose, the New Dawn reads *"can't attack or block unless there are
+seven or more cards in exile."* Deck 43 fielded three exile sources. The 4/4 menace
+lifelink indestructible body was mostly a wall, and `targets` reported the deck clean —
+its gate patterns read MV caps and sacrifice costs, not zone counts. That miss was
+noticed by hand, in the same pass that noticed the card's *draw* trigger is ungated and
+had exactly one repeatable enabler.
+
+**The free end, which is the new thing.** Lake-town Toymaker reads *"At the beginning of
+combat on your turn, if you've drawn two or more cards this turn, another target
+creature you control gets +3/+0 and gains first strike."* Deck 43's entire second engine
+is the "whenever you draw your second card each turn" cluster, turned on every turn by
+Kitsa's free `{T}` loot. The condition is not a condition in that deck — the pump is
+unconditional and repeatable. Every model here disagreed: `cuts` scored it **fit 17,
+power 2, uniqueness 0, and no detected functional role at all**, `screen` called it
+tangential on "Human, pump", and it was listed as a cut candidate in three consecutive
+proposals before the user pushed back and it was re-read. The value was entirely in an
+interaction between three other cards (the draw engine that frees the gate, the six
+lifelink bodies that turn +3/+0 into +3 cards under Marina Vendrell's Grimoire, and Bard
+the Bowman granting lifelink each turn), and a card-in-isolation grader cannot see any
+of it.
+
+So the fix reports **both ends** — `✗ CANNOT turn on`, `⚠ thin`, `✓ free`. That is the
+asymmetry worth naming: every gate model in this repo asks whether a gate is DEAD and
+none asks whether it is FREE, yet a free gate raises a card's grade exactly as much as a
+dead one lowers it.
+
+### What the measurement deleted
+
+Six families were written. Four were removed after a sweep of all 116 decks, because
+every instance returned the same verdict and a flag that never varies is not a flag —
+the G-07 saturation lesson that already cost `suggest`'s Decks column and the `review`
+audit flag.
+
+| family | roster rows | counts | why dropped |
+|---|---|---|---|
+| lifegain | 10 | 10–18 | never below the band; a "gained life this turn" card is only played in a lifegain deck |
+| artifacts | 9 | 8–9 vs a stated need of 3 | same structural reason |
+| drain | 1 | 6 | not saturated — simply no evidence, and a band guessed off n=1 is a guess |
+| delirium | 7 | 5–6 | **mis-proxied**, see below |
+
+Delirium is the instructive failure. It is not merely saturated: the proxy measures the
+wrong thing. The card asks for four card types **in your graveyard**, which depends on
+self-mill and discard; counting types in the **deck** is an upper bound that any
+60-card list clears by construction, since creature + instant + sorcery + land is
+already four. Fixing it means modelling yard-fill, which is a different piece of work.
+`descended` was never written at all — 11 pool cards and a condition nearly every deck
+meets.
+
+The temptation at this point is to lower a band until the saturated family varies. That
+manufactures a signal instead of finding one, and the resulting flag is worse than no
+flag because it looks like information.
+
+### Live residuals
+
+- The two shipped families are **n=4 and n=1** across the roster. The `draw` band
+  (thin ≤2, free ≥8) is measured but thin evidence; treat it as provisional and
+  re-measure when more gated cards enter the collection.
+- The exile proxy counts anything that puts a card into exile, because the gate it feeds
+  counts the **zone** and does not care who filled it. That is deliberately broader than
+  Ketramose's own draw trigger, which fires only on exile from a graveyard or the
+  battlefield. Two different questions about one card; conflating them is what made the
+  deck 43 hand-count hard to reproduce.
+- `_STATE_GATES` is registered in `check_patterns` so a pattern that silently matches
+  nothing fails the build — without that, a dead state-gate pattern reads as "this deck
+  has no gated cards", which is indistinguishable from a clean result. That is exactly
+  how the digit-only descend gate hid for months.

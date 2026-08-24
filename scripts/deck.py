@@ -11437,6 +11437,138 @@ def target_counts(cards, carddata, mana):
     return out
 
 
+# ── STATE gates: conditions on the GAME STATE, not on cards in the deck ─────────────
+#
+# `_TARGET_GATES` above answers one question: "does this deck CONTAIN N cards of shape
+# X". Every one of its 13 entries counts cards in the list. That leaves a whole second
+# family unanswered — a card gated on a STATE the deck has to reach ("if you've drawn
+# two or more cards this turn", "unless there are seven or more cards in exile") — and
+# both of this session's misreads were in it, one in each direction:
+#
+#   Ketramose, the New Dawn  — "can't attack or block unless there are seven or more
+#     cards in exile" in a deck with ONE repeatable exile effect. A near-blank body,
+#     reported by nothing.
+#   Lake-town Toymaker — "if you've drawn two or more cards this turn" in a deck whose
+#     entire second engine is drawing your second card every turn. An UNCONDITIONAL
+#     repeatable pump, and it was nearly cut as a conditional one: `cuts` scored it fit
+#     17 / power 2 / uniqueness 0 / NO detected role.
+#
+# So this table reports BOTH ENDS, which is the point. Every gate model here is
+# one-sided — it asks whether a gate is DEAD and never whether a gate is FREE — and a
+# free gate raises a card's grade exactly as much as a dead one lowers it. `✓ free` is
+# the half that had no tool.
+#
+# The proxy for "can the deck reach this state" is a COUNT of the sources that produce
+# it, and wherever a role already measures that, the proxy is `role_tally` — the
+# canonical counter — so these numbers cannot drift from the ones `stats` prints.
+#
+# Thresholds are MEASURED, not chosen: see `tests/test_deck.py` and the roster sweep in
+# the commit that added this. A band that fires on nearly every deck is a non-signal
+# (the G-07 saturation lesson), so a family that saturated was dropped rather than
+# shipped with a threshold tuned to hide it — `descended` went that way at 11 pool cards
+# and ~100% satisfaction, and "unless you control a creature" was never written.
+_STATE_GATES = [
+    (re.compile(r"you'?ve drawn (?:your )?(?:a |two|three|second)"
+                r"(?:\w+)? ?(?:or more )?cards? this turn", re.I),
+     "draws per turn (needs 2+)", "draw"),
+    (re.compile(r"(\d+|one|two|three|four|five|six|seven|eight|nine|ten) or more "
+                r"cards in exile", re.I),
+     "exile sources (needs {0} cards)", "exile"),
+]
+
+# FOUR MORE FAMILIES WERE BUILT, MEASURED AND DROPPED, and the measurements are the
+# reason this table is short. A gate earns a row only if a real deck can FAIL it; one
+# whose every roster instance reads the same is a non-signal, and tuning its threshold
+# until it varies is manufacturing a signal rather than finding one (the G-07 saturation
+# lesson, which cost `suggest`'s Decks column and the `review` audit flag before it).
+#   • lifegain   ("if you gained life this turn") — 10 roster instances, counts 10..18,
+#     never once below the band. A card gated on having gained life is only ever played
+#     in a lifegain deck, so the gate has no failure mode.
+#   • artifacts  ("you control three or more artifacts") — 9 instances, counts 8..9
+#     against a stated need of 3. Same structural reason.
+#   • drain      ("an opponent lost life this turn") — 1 instance. Not saturated;
+#     simply no evidence either way, and a band guessed off n=1 is a guess.
+#   • delirium   ("four or more card types among cards in your graveyard") — 7
+#     instances, counts 5..6, always over. This one is the instructive failure: it is
+#     not merely saturated, the PROXY MEASURES THE WRONG THING. Delirium asks about
+#     types in the GRAVEYARD, which depends on self-mill and discard; counting types in
+#     the DECK is a weak upper bound that any 60-card list clears by construction
+#     (creature + instant + sorcery + land is already four). Fixing it means modelling
+#     yard-fill, which is a different piece of work.
+# `descended` was never written: 11 pool cards and a condition nearly every deck meets.
+
+# A gate with no stated number is graded against a band; one that states its own number
+# (exile) self-calibrates and needs none. Bands measured across the 116-deck roster.
+_STATE_BANDS = {           # kind: (thin_at_or_below, free_at_or_above)
+    "draw": (2, 8),
+}
+
+
+def _state_axis_counts(cards, carddata, mana):
+    """The per-deck counts the state gates are graded against. `role_tally` is reused
+    wherever a role already measures the axis, so a state gate and `stats` can never
+    report different numbers for the same question."""
+    tally = role_tally(cards, carddata)
+    exile = 0
+    for q, n, _s, _c in cards:
+        if n.lower() in BASICS:
+            continue
+        cd = carddata.get(n.lower()) or carddata.get(n.lower().split(" // ")[0]) or {}
+        # An exile SOURCE here is anything that puts a card into the exile zone, because
+        # the gate this feeds ("seven or more cards in exile") counts the ZONE and does
+        # not care who filled it or from where. That is deliberately broader than
+        # Ketramose's own DRAW trigger, which fires only on exile from a graveyard or
+        # the battlefield — the two are different questions about the same card, and
+        # conflating them is what made the deck 43 hand-count hard to reproduce.
+        text = (cd.get("text") or "").lower()
+        if re.search(r"exile (?:it|them|that card|target|up to|all|each)|exile this", text):
+            exile += q
+    return {"draw": tally.get("Card advantage", 0), "exile": exile}
+
+
+def state_gate_counts(cards, carddata, mana):
+    """[(card, label, count, need, verdict)] — for each card gated on a GAME STATE, the
+    deck's count on the axis that produces it, and whether the gate is dead, thin or
+    free.
+
+    Report-only and heuristic, like every model here. `verdict` is one of "dead",
+    "thin", "ok", "free". Read the list, not the number: a free gate says the CONDITION
+    is cheap, never that the card is good, and a dead one says the same in reverse."""
+    axes = _state_axis_counts(cards, carddata, mana)
+    out, seen = [], set()
+    for q, n, _s, _c in cards:
+        if n in seen or n.lower() in BASICS:
+            continue
+        seen.add(n)
+        cd = carddata.get(n.lower()) or carddata.get(n.lower().split(" // ")[0]) or {}
+        text = cd.get("text") or ""
+        for rx, label, kind in _STATE_GATES:
+            m = rx.search(text)
+            if not m:
+                continue
+            groups = [g for g in (m.groups() or ()) if g is not None]
+            need = None
+            if groups:
+                g0 = groups[0].lower()
+                need = int(g0) if g0.isdigit() else _TARGET_WORD_NUM.get(g0)
+            count = axes[kind]
+            if need is not None:
+                verdict = "dead" if count == 0 else ("thin" if count < need else "ok")
+            else:
+                low, high = _STATE_BANDS[kind]
+                verdict = ("dead" if count == 0 else "thin" if count <= low
+                           else "free" if count >= high else "ok")
+            disp = list(groups)
+            if disp and need is not None and not disp[0].isdigit():
+                disp[0] = str(need)
+            try:
+                shown = label.format(*disp) if disp else label
+            except (IndexError, KeyError):
+                shown = label
+            out.append((n, shown, count, need, verdict))
+    return out
+
+
 def dead_library_searches(cards, carddata, mana):
     """[(card, gate_label)] for library SEARCHES in this deck that can find NOTHING —
     the deck 76 bug class (G-61).
@@ -11466,6 +11598,7 @@ def cmd_targets(args):
     if not rows:
         print("  No gated effects detected (no MV cap, sacrifice cost or count threshold "
               "in this list's text).")
+        _print_state_gates(cards)
         return 0
     print(f"  {'Card':32} {'What its text needs':42} {'in deck':>7}")
     print("  " + "-" * 84)
@@ -11485,7 +11618,34 @@ def cmd_targets(args):
     print(f"\n  {len(rows)} gated effect(s); {thin} thin or unmet. A gate with nothing "
           "behind it is a dead card, and a card graded in isolation cannot show you that "
           "(G-61). Counts exclude the card itself; read the list, not just the number.")
+    _print_state_gates(cards)
     return 0
+
+
+_STATE_FLAG = {"dead": "  ✗ CANNOT turn on", "thin": "  ⚠ thin",
+               "free": "  ✓ free (deck always meets it)", "ok": ""}
+
+
+def _print_state_gates(cards):
+    """The second half of the targets report: gates on GAME STATE rather than on cards
+    in the list. Prints both ends — a gate the deck cannot reach AND one it meets for
+    free — because a free condition is not a condition, and reading one as a drawback is
+    what nearly cut Lake-town Toymaker out of deck 43."""
+    rows = state_gate_counts(cards, load_card_data(), load_mana())
+    if not rows:
+        return
+    order = {"dead": 0, "thin": 1, "ok": 2, "free": 3}
+    print(f"\n  {'Card':32} {'State its text needs':42} {'in deck':>7}")
+    print("  " + "-" * 84)
+    for name, label, count, _need, verdict in sorted(rows, key=lambda r: (order[r[4]], r[0])):
+        print(f"  {name[:32]:32} {label[:42]:42} {count:>7}{_STATE_FLAG[verdict]}")
+    nfree = sum(1 for r in rows if r[4] == "free")
+    nbad = sum(1 for r in rows if r[4] in ("dead", "thin"))
+    print(f"\n  {len(rows)} STATE gate(s): {nbad} the deck struggles to meet, {nfree} it "
+          "meets for free. The free ones are the point — every other model here grades a "
+          "gated card as if the gate were a cost, and in the deck built to satisfy it it "
+          "is not one. Proxy counts come from `role_tally`, the same counter `stats` "
+          "prints. Report-only; read the card.")
 
 
 def cmd_engines(args):

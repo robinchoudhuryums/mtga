@@ -4406,3 +4406,92 @@ class TestSuggestHomesReadsCastabilityFromCost:
             "an identity-subset gate here is the Thranduil bug")
         attrs = {n.attr for n in ast.walk(tree) if isinstance(n, ast.Attribute)}
         assert "issubset" in attrs, "the costless-card identity fallback is gone"
+
+
+class TestStateGateCounts:
+    """The gate family `_TARGET_GATES` structurally could not answer: a card gated on a
+    GAME STATE rather than on cards in the list.
+
+    Both of the 2026-08-24 misreads live here, one at each end, which is why this model
+    reports BOTH:
+      * Ketramose, the New Dawn — "can't attack or block unless there are seven or more
+        cards in exile" in a deck with three exile sources. A near-blank body.
+      * Lake-town Toymaker — "if you've drawn two or more cards this turn" in a deck
+        whose second engine draws a second card every turn. An UNCONDITIONAL pump that
+        `cuts` scored fit 17 / power 2 / uniqueness 0 / NO detected role, and that was
+        one confirmation away from being cut as a conditional one.
+    Every other gate model here asks only whether a gate is DEAD. A FREE gate raises a
+    card's grade exactly as much as a dead one lowers it, and had no tool at all."""
+
+    DRAWER = {"name": "Drawer", "type": "Instant", "text": "Draw two cards.", "colors": "U"}
+    PUMP = {"name": "Toymaker", "type": "Creature — Human",
+            "text": "At the beginning of combat on your turn, if you've drawn two or more "
+                    "cards this turn, another target creature you control gets +3/+0.",
+            "colors": "W"}
+    GOD = {"name": "God", "type": "Creature — God",
+           "text": "God can't attack or block unless there are seven or more cards in exile.",
+           "colors": "W"}
+    EXILER = {"name": "Exiler", "type": "Creature — Bird",
+              "text": "When this creature enters, exile target card from a graveyard.",
+              "colors": "W"}
+    MANA = {"drawer": ("{U}", "1"), "toymaker": ("{3}{W}", "4"), "god": ("{1}{W}", "2"),
+            "exiler": ("{W}", "1")}
+
+    def _cd(self):
+        return {"drawer": self.DRAWER, "toymaker": self.PUMP, "god": self.GOD,
+                "exiler": self.EXILER}
+
+    def _rows(self, cards):
+        return deck.state_gate_counts(cards, self._cd(), self.MANA)
+
+    def test_a_condition_the_deck_always_meets_reads_FREE(self):
+        # The Toymaker case. 10 copies of a draw spell is a deck that has drawn its
+        # second card by combat every turn; the gate is not a cost here.
+        rows = self._rows([(1, "Toymaker", "", ""), (10, "Drawer", "", "")])
+        row = [r for r in rows if r[0] == "Toymaker"][0]
+        assert row[4] == "free", row
+
+    def test_the_same_card_in_a_deck_that_cannot_draw_reads_THIN(self):
+        # Same card, same text, opposite verdict — which is the whole point: the gate is
+        # a property of the DECK, and no card-in-isolation model can see that.
+        rows = self._rows([(1, "Toymaker", "", ""), (1, "Drawer", "", "")])
+        assert [r for r in rows if r[0] == "Toymaker"][0][4] == "thin"
+
+    def test_a_stated_need_is_compared_against_the_deck_and_self_calibrates(self):
+        # The Ketramose case: needs seven cards in exile, deck fields three sources.
+        rows = self._rows([(1, "God", "", ""), (3, "Exiler", "", "")])
+        name, label, count, need, verdict = [r for r in rows if r[0] == "God"][0]
+        assert need == 7 and count == 3 and verdict == "thin"
+        assert "needs 7" in label
+
+    def test_zero_sources_for_a_stated_need_is_DEAD_not_merely_thin(self):
+        rows = self._rows([(1, "God", "", "")])
+        assert [r for r in rows if r[0] == "God"][0][4] == "dead"
+
+    def test_the_saturated_families_stay_dropped(self):
+        """Four families were built, MEASURED across the roster and removed because every
+        instance read the same — a flag that never varies is not a flag (G-07). This pins
+        that decision so re-adding one is a deliberate act with a new measurement behind
+        it, not a quiet re-import. Delirium is the one to be most careful with: it was not
+        merely saturated, its proxy counted card types in the DECK when the card asks about
+        the GRAVEYARD."""
+        cd = {"gainer": {"name": "Gainer", "type": "Creature — Cleric",
+                         "text": "Whenever you attack, if you gained life this turn, draw a card.",
+                         "colors": "W"},
+              "delirious": {"name": "Delirious", "type": "Creature — Scarecrow",
+                            "text": "Delirium — At the beginning of your end step, if there "
+                                    "are four or more card types among cards in your "
+                                    "graveyard, this deals 2 damage.", "colors": "B"}}
+        mana = {"gainer": ("{W}", "1"), "delirious": ("{B}", "1")}
+        rows = deck.state_gate_counts([(1, "Gainer", "", ""), (1, "Delirious", "", "")],
+                                      cd, mana)
+        assert rows == [], rows
+
+    def test_the_draw_proxy_is_role_tally_so_it_cannot_drift_from_stats(self):
+        """The count a state gate grades against must be the same number `stats` prints,
+        or the two surfaces answer one question differently — the drift `role_tally` was
+        made canonical to stop."""
+        cards = [(1, "Toymaker", "", ""), (4, "Drawer", "", "")]
+        cd = self._cd()
+        assert deck._state_axis_counts(cards, cd, self.MANA)["draw"] == \
+            deck.role_tally(cards, cd).get("Card advantage", 0)

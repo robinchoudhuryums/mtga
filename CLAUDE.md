@@ -786,6 +786,21 @@ directions.
   deck 58's artifact-sac gates reported "1 artifact" against 14 token producers; a deck
   whose resource is tokens must say so in its `#: notes:` or the flag invites a bad cut. [G-66]
 
+- **A GATE THE DECK MEETS FOR FREE IS NOT A COST, AND EVERY MODEL HERE READ IT AS ONE.**
+  G-66's `targets` asks only "does the deck CONTAIN N cards of shape X" — all 13
+  `_TARGET_GATES` count cards in the list — so a card gated on a GAME STATE was invisible
+  in **both directions**, and one 2026-08-24 session hit each end: Ketramose needs seven
+  cards in exile against **three** sources, and Lake-town Toymaker needs "drawn two or more
+  cards this turn" in the deck whose second engine draws one **every turn**, so its pump is
+  UNCONDITIONAL — it was one confirmation from being cut as a conditional one, having scored
+  fit 17 / power 2 / uniqueness 0 / **no detected role**. `deck.py targets` now prints a
+  STATE GATES section reporting both ends (`CANNOT turn on` / `thin` / `free`), with
+  proxies from `role_tally` so a gate and `stats` cannot answer one question differently.
+  **Only 2 of 6 families shipped**: a roster sweep found lifegain, artifacts and drain
+  structurally always satisfied, and delirium MIS-PROXIED — it asks about the GRAVEYARD,
+  and counting types in the DECK is a bound any 60-card list clears. **Residual: the two
+  live families are n=4 and n=1 on the roster** — read a band as provisional. [G-76]
+
 - **A TUTOR IS WORTH THE NUMBER OF THINGS IT CAN FIND IN *THIS* DECK, and that number was
   checked by nothing.** Deck 76 ran ZERO basics while TWO cards searched for them
   (Bloomvine Regent's Omen half, Encroaching Dragonstorm) — found by the USER IN PLAY, by

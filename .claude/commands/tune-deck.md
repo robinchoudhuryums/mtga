@@ -50,6 +50,13 @@ Read the actual card text — never judge by mana value or a single subtype:
    it lives in the LIST, not in the card. Read this before cutting a gated card as
    weak — and before adding one. It is the automated half of the "state the count,
    then decide" discipline that overturned four dismissals.
+   Its second block, STATE GATES, answers the mirror question and is the one that
+   catches a bad CUT: a card gated on a game state the deck always reaches ("if you've
+   drawn two or more cards this turn" in a deck built to draw two) is marked `free`,
+   and a free condition is not a condition. Deck 43's Lake-town Toymaker was one
+   confirmation from being cut as conditional while scoring fit 17 / power 2 / no
+   detected role — its whole value was an interaction between three other cards. When
+   a row says `free`, re-grade the card as if the clause were not there.
 
 2d. `python3 scripts/deck.py engines <id>` — enabler ↔ payoff balance (dead
    payoffs / under-enabled engine), and `python3 scripts/deck.py shape <id>` for
