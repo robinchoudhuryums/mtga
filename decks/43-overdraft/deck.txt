@@ -1,5 +1,6 @@
 #: name: Overdraft
 #: format: Standard
+#: arena: 43 Uatu The Watcher, 40651353-dd7e-4c43-b718-832d478c69f7
 #: colors: WUB
 #: plan: control
 #: archetype: Esper (W/U/B, U-primary) HAND-SIZE control — the deck where your life
@@ -7,16 +8,25 @@
 #: archetype: resources into one: every point of life gained draws a card, every point
 #: archetype: lost discards one, you have no maximum hand size, and you DON'T LOSE THE
 #: archetype: GAME at 0 or less life. You only lose with an empty hand. So the deck
-#: archetype: plays lifelink and incidental lifegain as CARD DRAW (Healer's Hawk is a
+#: archetype: plays lifelink and incidental lifegain as CARD DRAW (Ruin-Lurker Bat is a
 #: archetype: repeatable cantrip; Cloudblazer draws four; the gain-1 lands cantrip), and
-#: archetype: hoards the result behind Ms. Marvel / Vnwxt / The Ten Rings, whose
+#: archetype: hoards the result behind Ms. Marvel / Vnwxt / the Grimoire, whose
 #: archetype: no-maximum-hand-size clauses are what keep the hand deep enough to absorb
-#: archetype: the Grimoire's discards. Ms. Marvel's power equals cards in hand, so the
+#: archetype: the Grimoire's discards. The MAX-HAND-SIZE SETTERS ARE GONE and that was
+#: archetype: deliberate: The Ten Rings and Doctor Octopus were CUT 2026-08-24 (Healer's
+#: archetype: Hawk went the same day) because each SETS a ceiling — ten and eight — which
+#: archetype: resolves in timestamp order and can CAP the hand in the deck whose clock is
+#: archetype: Ms. Marvel's power = cards in hand. What is left says no MAXIMUM, which is
+#: archetype: the clause the deck actually wants. Bard, King
+#: archetype: of Dale DOUBLES every draw past the first each
+#: archetype: turn, so the Grimoire's gain-N-draw-N reads 2N and the second-card cluster
+#: archetype: fires off the first extra draw. Ms. Marvel's power equals cards in hand, so the
 #: archetype: hoard is also the win-con.
 #: archetype: THE DECK MUST FUNCTION WITHOUT THE GRIMOIRE — it is one unowned rare, ~22%
 #: archetype: to be seen by turn 7 — so the second engine is the "whenever you draw your
 #: archetype: SECOND card each turn" cluster (King T'Challa, Kang, Raven Eagle, Foggy
-#: archetype: Swamp Spirit Keeper, Mischievous Mystic, Knowledge Seeker, Wolfbat), turned
+#: archetype: Swamp Spirit Keeper, Mischievous Mystic, Knowledge Seeker, The Queen of
+#: archetype: Dale, Bard the Bowman; Wolfbat was CUT 2026-08-24), turned
 #: archetype: on every turn by Kitsa's free loot and a pile of cheap draw. That plan wins
 #: archetype: by chip drain and evasive bodies with no Grimoire in sight.
 #: archetype: Mister Negative is the haymaker and is deliberately pointed the ONE way
@@ -31,13 +41,28 @@
 #: archetype: draw decks: 12 Drawn Conclusions is a UB control deck that draws to find
 #: archetype: answers, 22 Bloodbending mills; here the drawing IS the deck and white is a
 #: archetype: real color rather than a splash. It is the roster's only Esper deck.
-#: tier: B — Esper hand-size control, one band BELOW the A metrics floor, PROVISIONAL
-#: tier: (unplayed brew). The floor reads A on interaction 5 (four of it instant-speed,
-#: tier: three able to answer a noncreature permanent) plus card advantage 14 on a 3.03
-#: tier: curve, and that card-advantage number is real rather than a pile of cantrips —
-#: tier: Cloudblazer draws two, Chart a Course draws two, Spirit Water Revival draws
-#: tier: seven when waterbent, and the Grimoire draws five on cast. Held at B by three
-#: tier: structural risks the floor cannot see, which is one more than an A tolerates:
+#: tier: B — Esper hand-size control, ON the B metrics floor, PROVISIONAL (barely
+#: tier: played: 0-1). THE INTERACTION AXIS DIPPED AND WAS REPAIRED IN ONE DAY, and the
+#: tier: shape of the repair is the argument: the 2026-08-24 HOB pass took interaction
+#: tier: 5 -> 2 and the floor A -> C: Exclusion Mage's one-shot bounce was CUT, Floodpits
+#: tier: Drowner was CUT, Tishana's Tidebinder was CUT, and Feed the Cauldron was CUT,
+#: tier: against only Confusticate and Bebother coming back the other way. A same-day
+#: tier: corrective bought the axis back at a better
+#: tier: rate — Battle Menu and Bitter Triumph in for the deck's two 7-and-8-drops —
+#: tier: putting interaction at 4, ALL of it instant-speed, three of it able to answer a
+#: tier: noncreature permanent. The two refill engines were then RESTORED against
+#: tier: Deduce and Marauding Blight-Priest once their real role was understood (see
+#: tier: notes: they fix the hand, they do not merely cap it), so the axis held at 4
+#: tier: while card advantage came back to 15 on a 3.17 curve with 16 early drops.
+#: tier: Against the thin answer count stands card
+#: tier: advantage 15 on a 3.17 curve, a number that is real rather than a pile of
+#: tier: cantrips — Cloudblazer draws two, Chart a Course draws two, Spirit Water Revival
+#: tier: draws seven when waterbent, the Grimoire draws five on cast, and Bard, King of
+#: tier: Dale doubles every one of them past the first each turn. B now MATCHES the
+#: tier: floor rather than sitting over it, so the letter needs no intangibles credit —
+#: tier: revisit it upward only if games show the engine closing faster than a
+#: tier: four-answer control deck has any right to. Three structural risks the floor
+#: tier: cannot see, which is one more than an A tolerates:
 #: tier: 1. RELIABILITY OF THE NAMED ENGINE. Marina Vendrell's Grimoire is a single
 #: tier:    unowned rare (~22% to be seen by turn 7), and Mister Negative and King
 #: tier:    T'Challa are single mythics. The build is arranged so a Grimoire-less draw is
@@ -51,10 +76,13 @@
 #: tier:    (one double pip in the whole deck; 86% keepable; the worst cast-on-curve is
 #: tier:    Spirit Water Revival at 68%, and it is happy to be cast late) — but three
 #: tier:    colors of singletons is variance the floor does not price.
-#: tier: NOTE ON `deck.py similar`: this reads 91% against 42 Blood Price, its highest
-#: tier: overlap. That number is the tag model hitting its limit, not a duplicate deck —
-#: tier: only FIVE nonland cards are shared (Erode, Healer's Hawk, Starscape Cleric,
-#: tier: Stroke of Midnight and Mister Negative, three of them commodity removal), and
+#: tier: NOTE ON `deck.py similar`: as of 2026-08-24 this reads 84% against 12 Drawn
+#: tier: Conclusions on ONE shared card, and 75% against 42 Blood Price on four. Those
+#: tier: numbers are the tag model hitting its limit, not a duplicate deck — 42 shares
+#: tier: only FOUR nonland cards (Leech Collector, Starscape Cleric, Stroke of Midnight
+#: tier: and Mister Negative — the list said Erode until 2026-08-24, a card deck 43 has
+#: tier: not run for some time. It hid because the citation scan ignores a single-word
+#: tier: card name under 9 characters, NOT because the clause is cross-deck), and
 #: tier: the shared themes are `lifegain` and `card draw`, which cannot distinguish a
 #: tier: deck that gains life AND draws cards from one where gaining life IS drawing
 #: tier: cards. The engines are opposite: 42's pay-life package is net-NEGATIVE here.
@@ -80,6 +108,71 @@
 #: notes: is the way this deck dies. Restoration Magic is the answer to that as well as
 #: notes: to removal — Cura gains 3 (draw 3) while making a permanent hexproof and
 #: notes: indestructible, Curaga gains 6 (draw 6) and protects the whole board.
+#: notes: KETRAMOSE IS TWO CARDS, AND ONLY ONE OF THEM WORKED (the 2026-08-24 pass).
+#: notes: Its DRAW trigger is ungated — it fires whenever cards are exiled from
+#: notes: graveyards and/or the battlefield during YOUR turn — while the 7-cards-in-exile
+#: notes: clause gates only the BODY. The count for the draw half was ONE repeatable
+#: notes: source: Raven Eagle's ETB/attack graveyard exile. (Spirit Water Revival exiles
+#: notes: itself from the STACK, which does NOT trigger it; Wolfbat's finality counter is
+#: notes: one conditional card.) Moonstone, Harsh Mistress is the fix and was added for
+#: notes: it: every discard becomes a graveyard-exile, and Kitsa's FREE {T} loot makes
+#: notes: that a trigger every turn with no combat needed. The body's gate is easier than
+#: notes: it reads — it counts ALL cards in exile, both players', so their Adventures,
+#: notes: Warp, Plot, Foretell and impulse draw all count toward the seven; you cannot
+#: notes: build on that, but a 4/4 menace lifelink indestructible gaining 4 = drawing 4
+#: notes: under the Grimoire is the payoff when it turns on.
+#: notes: THE ONE HONEST CAVEAT, and it is the same test that cut the pay-life package
+#: notes: above: Ketramose's trigger is "draw a card AND LOSE 1 LIFE", so under the
+#: notes: Grimoire that is draw 1 / discard 1 = NET ZERO — exactly the arithmetic that
+#: notes: cut Phyrexian Arena. It is a +1 in the ~78% of games with no Grimoire and a
+#: notes: wash in the rest. Kept on the body and the exile-count payoff, not the trigger.
+#: notes: With Grimoire + Ketramose + Moonstone all out, it LOOPS on your turn (lose life
+#: notes: -> discard -> Moonstone exiles -> Ketramose draws and loses 1 -> discard ...),
+#: notes: card-neutral each iteration but banking every discard as playable-from-exile
+#: notes: and adding one to the exile count. Moonstone's "may" is the off-switch; stop
+#: notes: before decking. A three-card combo in a singleton deck — a bonus, not a plan.
+#: notes: REST IN PEACE WAS CONSIDERED AND REJECTED, the G-42 audit this deck needed: it
+#: notes: is the stronger raw Ketramose enabler and costs four cards here — Wolfbat's
+#: notes: graveyard return and Osseous Sticktwister's delirium go DEAD, Raven Eagle stops
+#: notes: making Clues and stops triggering Ketramose (RIP replaces the only enabler it
+#: notes: was added to help), and Spirit Water Revival's waterbent shuffle-back does
+#: notes: nothing. Moonstone does the job while feeding the deck instead of fighting it.
+#: notes: THE HAND-SIZE SETTERS ARE A DEFENSIVE ENGINE, NOT A CAP — this note argued
+#: notes: the OPPOSITE on 2026-08-24 and was WRONG; both cards were cut on it and
+#: notes: restored the same day. Doctor Octopus and The Ten Rings each SET a maximum
+#: notes: hand size (8 and 10), and a SET is a floor as well as a ceiling: the end step
+#: notes: precedes the cleanup step, so the trigger draws you UP to the number and the
+#: notes: cleanup discards you DOWN to it. Your hand is EXACTLY 8 (or 10) at the end of
+#: notes: every one of your turns. Under the Grimoire, hand size IS your life — you do
+#: notes: not lose at 0 or less, you lose only on an empty hand — so that reads RESET TO
+#: notes: 8 LIFE EVERY TURN. You cannot be ground down; an opponent must deal 8+ in ONE
+#: notes: window, from your end step to your next end step, or the damage evaporates.
+#: notes: The error was grading the refill clause by how often it fires and calling it
+#: notes: asleep because the deck is usually above eight cards. Wrong state: it fires
+#: notes: precisely when you are BELOW eight, which is precisely when you have been
+#: notes: taking damage. It is not a drawback that shows up when you are winning, it is
+#: notes: insurance that shows up when you are losing.
+#: notes: TWO REAL COSTS, both kept: the ceiling half loses to BURST, since a hoarded
+#: notes: 20-card hand survives a 15-point swing where a fixed 8 dies — the pair trades
+#: notes: "variable, potentially huge, never resets" for "exactly 8, resets every turn",
+#: notes: which beats being ground out and loses to one enormous swing. And Ms.
+#: notes: Marvel's power = cards in hand, so the clock is capped at 8/10 too.
+#: notes: PLAY ORDER MATTERS AND THEY DO NOT STACK: two setters resolve in TIMESTAMP
+#: notes: order and only the later one's number applies. Both refill triggers still
+#: notes: fire, so with both out you refill to 10 and then discard to whichever landed
+#: notes: later. LAND THE TEN RINGS AFTER DOCTOR OCTOPUS to keep the 10.
+#: notes: LAKE-TOWN TOYMAKER IS NOT A CONDITIONAL COMBAT PUMP HERE, and was nearly cut
+#: notes: as one. "If you've drawn two or more cards this turn" is the deck's whole
+#: notes: second engine — Kitsa's free {T} loot alone guarantees it every turn — so the
+#: notes: pump is UNCONDITIONAL and repeatable. And +3/+0 on a LIFELINK body is +3 CARDS
+#: notes: under the Grimoire: 6 native lifelink creatures (Ketramose, Foggy Swamp Spirit
+#: notes: Keeper, Ruin-Lurker Bat, Night Nurse, Osseous Sticktwister, Mister Negative)
+#: notes: plus Bard the Bowman GRANTING lifelink each turn on the same trigger = seven
+#: notes: routes, across 10 evasive bodies incl. unblockable Bilbo. First strike also
+#: notes: turns a lifelink blocker into a free life-gaining trade, and the 3/4 body
+#: notes: blocks. Every model here scored it near-zero (fit 17, power 2, uniqueness 0,
+#: notes: NO detected role) because its entire value is an interaction between three
+#: notes: other cards, which a card-in-isolation grader cannot see.
 #: notes: Craft targets: Marina Vendrell's Grimoire (R), Mister Negative (M), King
 #: notes: T'Challa (M), Restoration Magic (U), Wolfbat (U). Everything else is owned.
 #: notes: The gain-1 lands (Tranquil Cove, Scoured Barrens, Dismal Backwater) are
@@ -87,14 +180,15 @@
 #: notes: they would otherwise lose to.
 
 Deck
-# Hand size — the spine
+# Hand size — the spine (the two SETTERS reset the hand every turn — see notes)
 1 Ketramose, the New Dawn (DFT) 209
 1 Sunpearl Kirin (TDM) 29
-1 Doctor Octopus, Master Planner (SPM) 128
 1 Marina Vendrell's Grimoire (DSK) 64
 1 Ms. Marvel, Kamala Khan (MSH) 67
 1 Vnwxt, Verbose Host (DFT) 73
 1 Spirit Water Revival (TLA) 73
+1 Bard, King of Dale (HOB) 144
+1 Doctor Octopus, Master Planner (SPM) 128
 1 The Ten Rings (MSH) 251
 
 # Second card each turn — the engine that works without the Grimoire
@@ -104,37 +198,36 @@ Deck
 1 Foggy Swamp Spirit Keeper (TLA) 222
 1 Mischievous Mystic (FDN) 47
 1 Knowledge Seeker (TLA) 60
-1 Wolfbat (TLA) 122
+1 The Queen of Dale (HOB) 24
+1 Bard the Bowman (HOB) 145
+1 Bilbo, Luckwearer (HOB) 32
+1 Lake-town Toymaker (HOB) 19
 
 # Draw / second-card enablers
 1 Kitsa, Otterball Elite (BLB) 54
 1 Cloudblazer (FDN) 653
-1 Deduce (SOA) 16
 1 Chart a Course (FDN) 586
 1 Thirst for Knowledge (MSH) 79
 
 # Lifegain = card draw
-1 Healer's Hawk (FDN) 142
 1 Ruin-Lurker Bat (LCI) 33
 1 Night Nurse, Healer of Heroes (MSH) 26
 1 Starscape Cleric (BLB) 116
-1 Marauding Blight-Priest (FDN) 178
 1 Osseous Sticktwister (DSK) 112
+1 Leech Collector (SOS) 88
 1 Restoration Magic (FIN) 30
 
 # Top end
 1 Mister Negative (SPM) 135
 
-# Lifegain = card draw (cont.)
-1 Stirring Hopesinger (SOS) 35
-1 Leech Collector (SOS) 88
+# Discard payoff / recursion
+1 Moonstone, Harsh Mistress (MSH) 107
 
 # Removal
-1 Tishana's Tidebinder (LCI) 81
-1 Floodpits Drowner (DSK) 59
-1 Exclusion Mage (FDN) 508
+1 Bitter Triumph (SOA) 26
+1 Battle Menu (FIN) 9
+1 Confusticate and Bebother (HOB) 35
 1 Stroke of Midnight (FDN) 148
-1 Feed the Cauldron (WOE) 91
 
 # Lands — 25, Esper
 1 Hallowed Fountain (ECL) 265
@@ -155,5 +248,25 @@ Deck
 3 Plains (MSH) 287
 3 Swamp (MSH) 291
 
-#~ -The Ten Rings | +Drogskol Reaver | The Ten Rings is the deliberate spice and the flagship hand-size card, but `cuts` ranks it the deck's weakest fit (MV 8, fit 0) and it is the third card above five mana. If the curve plays too heavy, this is the first cut. Drogskol Reaver (craft, R) is a second Grimoire on a body — flying/double strike/lifelink plus "whenever you gain life, draw a card" — but it costs 7, so swapping one 8-drop for one 7-drop only helps if you also want the lifelink clock.
+#~ note: applied 2026-08-24 — HOB pass (5 swaps): Bard, King of Dale in for The Ten
+#~   Rings; Bard the Bowman in for Floodpits Drowner; Bilbo, Luckwearer in for
+#~   Healer's Hawk; Confusticate and Bebother in for Exclusion Mage; Moonstone,
+#~   Harsh Mistress in for Stirring Hopesinger. Marauding Blight-Priest was proposed
+#~   as the Bowman's cut and KEPT at the user's call — Floodpits Drowner went
+#~   instead. THEN three more, same day: The Queen of Dale in for Wolfbat, Lake-town
+#~   Toymaker in for Tishana's Tidebinder, and The Ten Rings RESTORED in for Feed the
+#~   Cauldron. Net across all eight: interaction 5 -> 2, card advantage 14 -> 16,
+#~   avg MV 3.03 -> 3.20. Crafts owed: Bard the Bowman (U), Lake-town Toymaker (U).
+#~ note: applied 2026-08-24 (same day, the corrective) — Battle Menu in for The Ten
+#~   Rings and Bitter Triumph in for Doctor Octopus, Master Planner. Both cuts SET a
+#~   max hand size and were the deck's only 7-and-8-drops; both adds are owned
+#~   2-mana instants. Interaction 2 -> 4 (all instant-speed), card advantage 16 -> 14,
+#~   avg MV 3.20 -> 2.89, early drops 15 -> 17, metrics floor C -> B.
+#~ note: applied 2026-08-24 (third pass, the RETRACTION) — The Ten Rings in for
+#~   Deduce and Doctor Octopus in for Marauding Blight-Priest. The cut two turns
+#~   earlier rested on a WRONG read of "your maximum hand size is N" (see notes);
+#~   they are a per-turn hand RESET, which under the Grimoire is a per-turn life
+#~   reset. Blight-Priest is the redundant half of a pair with Starscape Cleric,
+#~   which drains identically at one mana less with flying and offspring. Final:
+#~   interaction 4, card advantage 15, avg MV 3.17, floor B = claimed B.
 #~ note: applied — Osseous Sticktwister in for Radiant Strike.

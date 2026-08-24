@@ -96,6 +96,9 @@ _EXCLUDED = {
                                "suppression scoping); unit-tested in test_deck.py",
     ("deck", "_OTHER_DECK_RE"): "tier-RATIONALE prose (a 'deck N' reference marks a "
                                 "cross-deck clause); unit-tested in test_deck.py",
+    ("deck", "_SHARING_CUES"): "tier-RATIONALE prose (a SHARING claim asserts the card "
+                               "is in THIS deck, so the cross-deck suppression is "
+                               "skipped there); unit-tested in test_deck.py",
     ("deck", "_POPULATION_SUBJECT_RE"): "tier/archetype-RATIONALE prose (a figure whose "
                                         "subject is the card POPULATION, not this list); "
                                         "unit-tested in test_deck.py",
@@ -178,6 +181,11 @@ def _pattern_groups():
     # digit-only and matched nothing at all. Registered explicitly so the live-corpus
     # check proves each one still matches a real card.
     out += [(f"target-gate:{kind}", rx, "norm") for rx, _label, kind in deck._TARGET_GATES]
+    # Same treatment for the STATE gates, and for the same reason one layer over: they
+    # are the family that answers "can this deck REACH the condition", so a pattern that
+    # quietly matches nothing reads as "this deck has no gated cards" — indistinguishable
+    # from a clean result, which is precisely how the digit-only descend gate hid.
+    out += [(f"state-gate:{kind}", rx, "norm") for rx, _label, kind in deck._STATE_GATES]
     for name in ("_INT_CUES", "_CA_CUES", "_LOOT_RE", "_PROTECTION_RE",
                  "_POWER_THRESHOLD_RE", "_MANA_PRODUCE_RE", "_RESTRICT_RE",
                  "_INT_COUNT_RE", "_INT_FIGHT_RE",

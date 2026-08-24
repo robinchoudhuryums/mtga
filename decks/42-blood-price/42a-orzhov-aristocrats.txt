@@ -18,7 +18,7 @@
 #: archetype: THE OUTLETS ARE THE POINT — unlike the core 42, which still runs
 #: archetype: Vengeful Bloodwitch with NOTHING to feed it on demand, so it only fires
 #: archetype: when the opponent obliges. Baron Bertram Graywater (a token engine that is also a
-#: archetype: sacrifice-for-draw outlet), Vampiric Rites and Ahriman are what convert those
+#: archetype: sacrifice-for-draw outlet) and Vampiric Rites are what convert those
 #: archetype: passive triggers into an engine you control. Umbral Collar Zealot was CUT for
 #: archetype: Ayli, Eternal Pilgrim, a free-ish outlet that also blocks on deathtouch;
 #: archetype: Kingpin's Enforcers was CUT for Tragedy Feaster.
@@ -69,7 +69,7 @@
 #: tier: Held at B by three further things the floor cannot see:
 #: tier: 1. CARD ADVANTAGE 8 IS REAL BUT CONDITIONAL, which is the part the number still
 #: tier:    cannot express. Treacherous Greed's draw-three clears the bar outright;
-#: tier:    Vampiric Rites, Ahriman, Baron Bertram and Agent Venom each draw exactly ONE
+#: tier:    Vampiric Rites, Baron Bertram and Agent Venom each draw exactly ONE
 #: tier:    card off a sacrifice, and that is a WASH when the fodder is a card from hand.
 #: tier:    It is advantage only when the fodder is a TOKEN, which is why the token base is
 #: tier:    built to recur. So the engine has to be online first — a metric cannot see that

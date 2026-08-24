@@ -435,7 +435,7 @@ python3 scripts/deck.py mana 1a       # hybrid-aware color requirements + castab
 python3 scripts/deck.py consistency 1a # opening-hand keepable %, land drops, P(cast on curve) + source fix
 python3 scripts/deck.py tribes 1a     # creature-subtype breakdown + type-matters synergies
 python3 scripts/deck.py engines 1a    # enabler ↔ payoff balance for the deck's engine themes
-python3 scripts/deck.py targets 1a    # does the deck hold TARGETS for its own gated effects (MV caps, sac costs, thresholds)?
+python3 scripts/deck.py targets 1a    # TARGETS for its own gated effects (MV caps, sac costs) + STATE gates (dead / free)
 python3 scripts/deck.py suggest 1a --owned   # pool cards that fit; --owned = 0-wildcard upgrades
 python3 scripts/deck.py suggest 1a --lands --owned  # MANABASE recommender: owned lands that fix your colors (fixing + synergy + scarce-color nudges)
 python3 scripts/deck.py suggest 1a --needs   # STRUCTURAL needs the theme model can't see: fixing · acceleration (--ramp) · interaction (--interaction, board-scalers flagged)
@@ -445,6 +445,7 @@ python3 scripts/deck.py cuts 1a       # rank the deck's weakest-fit cards as cut
 python3 scripts/deck.py screen 1a <names>    # re-score candidate cards against the deck AS IT IS NOW (★ strict upgrade, ✱ multiplier)
 python3 scripts/deck.py flex 1a       # suggested swaps (#~ lines) + stale ones: dead -Out, already-run +In, contradicted note figures
 python3 scripts/deck.py swap 1a --cut A --add B   # preview deltas + FULL oracle text of both; --apply writes (.bak) + auto-retires stale #~ flex lines
+python3 scripts/deck.py swap 1a --cut A --add B --apply --section Removal   # ...and file the new line under `# Removal` (verbatim; never hand-move a card line)
 python3 scripts/deck.py apply-flex 1a 2      # promote flex swap #2 into the 60 (--apply writes)
 python3 scripts/deck.py feedback             # how cuts/suggest scored against the swaps you applied (report-only)
 pbpaste | python3 scripts/deck.py verify 1a  # diff a pasted Arena export against the stored deck
@@ -584,6 +585,17 @@ with full confidence and rewrite the stored deck down to the fragment (`--force`
 a deliberate cut).
 Before this, spotting drift and repairing it were separate jobs: you read a diff, then
 hand-edited each file.
+
+**`swap --section "<header substring>"`** places the added line under a named
+`# section` instead of inheriting the cut card's slot. Use it whenever the swap's
+section-mismatch warning fires, and **never move the line by hand**: relocating four
+lines that way in one session invented two collector numbers, because a hand edit
+retypes the `(SET) COLLECTOR#` fields that only `resolve` is allowed to produce. The
+flag moves the line verbatim as part of the same write, and refuses an absent or
+ambiguous header *before* writing — so a mistyped section aborts the swap rather than
+leaving a misfiled line with an error printed after the fact. Ambiguity refuses rather
+than guessing, because filing a card under a header you did not choose is the same lie
+the warning is about.
 
 `verify` reconciles a decklist you've edited in Arena against the repo: pipe or pass
 its **Arena export** (`<qty> <Name> (SET) <#>`) and it reports **identical** or a
@@ -737,6 +749,28 @@ many creatures" (nearly all of them) but how many are MV 5+, i.e. big enough tha
 them into play gains real mana. Deck 52's concept pile turned out to hold **24 ways to
 return a creature against 8 worth returning**, which redirected the whole build; before
 this command that number had to be derived by hand.
+
+**And the second half of that report answers the mirror question: is a gate FREE?**
+Every gate model here asks whether a condition is *unmet* and none asked whether it is
+*trivially met* — yet a card whose gate the deck always satisfies is not a conditional
+card at all, and reading it as one is how a genuinely good card gets cut. `targets` now
+prints a **STATE GATES** section for cards gated on a game state rather than on cards in
+the list, flagging `CANNOT turn on` / `thin` / `free`. Both ends showed up on one deck in
+one session: Ketramose, the New Dawn needs seven cards in exile against three sources
+(a near-blank 4/4), while Lake-town Toymaker needs "drawn two or more cards this turn" in
+the deck whose whole second engine draws a second card every turn — an unconditional
+repeatable pump that `cuts` had scored fit 17, power 2, uniqueness 0 and **no functional
+role at all**, because its value lives entirely in an interaction between three other
+cards. Proxy counts come from `role_tally`, the same canonical counter `stats` prints.
+
+Only **two of six** gate families survived measurement, and that is the more useful part
+of the story. A roster sweep found lifegain (10 rows, counts 10–18) and artifact (9 rows,
+counts 8–9 against a stated need of 3) gates structurally always satisfied — you only
+play those cards in the deck that feeds them — so the flag never varied and carried no
+information. Delirium was worse than saturated: its proxy counted card types in the
+*deck* when the card asks about the *graveyard*, a bound any 60-card list clears. Lowering
+a band until a saturated family varies manufactures a signal rather than finding one, so
+those families were dropped instead.
 
 **A deck line's printing is now checked.** `(SET)` and `COLLECTOR #` used to be read by
 nothing — a line naming a set code that does not exist passed `legal`, passed `check`

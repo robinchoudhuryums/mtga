@@ -4768,3 +4768,172 @@ The Masters of Evil in decks 20a/20b (searches for a Plan card; those decks run 
 it is still a Villain anthem) and Hobbit Hole in 50a/69a (its basic-land fetch works fine;
 only the Halflingcycling rider finds nothing).
 
+
+## [G-76] A gate the deck meets for free is not a cost, and every model read it as one
+
+G-66 gave the project `deck.py targets`, and its whole question is *"does this deck
+CONTAIN N cards of shape X"*. All thirteen `_TARGET_GATES` entries count cards in the
+list — MV caps, sacrifice fodder, graveyard types, library searches. That leaves a
+second family of gated cards completely unmodelled: the ones gated on a **game state**
+the deck has to reach. One 2026-08-24 session on deck 43 hit both ends of it.
+
+**The dead end.** Ketramose, the New Dawn reads *"can't attack or block unless there are
+seven or more cards in exile."* Deck 43 fielded three exile sources. The 4/4 menace
+lifelink indestructible body was mostly a wall, and `targets` reported the deck clean —
+its gate patterns read MV caps and sacrifice costs, not zone counts. That miss was
+noticed by hand, in the same pass that noticed the card's *draw* trigger is ungated and
+had exactly one repeatable enabler.
+
+**The free end, which is the new thing.** Lake-town Toymaker reads *"At the beginning of
+combat on your turn, if you've drawn two or more cards this turn, another target
+creature you control gets +3/+0 and gains first strike."* Deck 43's entire second engine
+is the "whenever you draw your second card each turn" cluster, turned on every turn by
+Kitsa's free `{T}` loot. The condition is not a condition in that deck — the pump is
+unconditional and repeatable. Every model here disagreed: `cuts` scored it **fit 17,
+power 2, uniqueness 0, and no detected functional role at all**, `screen` called it
+tangential on "Human, pump", and it was listed as a cut candidate in three consecutive
+proposals before the user pushed back and it was re-read. The value was entirely in an
+interaction between three other cards (the draw engine that frees the gate, the six
+lifelink bodies that turn +3/+0 into +3 cards under Marina Vendrell's Grimoire, and Bard
+the Bowman granting lifelink each turn), and a card-in-isolation grader cannot see any
+of it.
+
+So the fix reports **both ends** — `✗ CANNOT turn on`, `⚠ thin`, `✓ free`. That is the
+asymmetry worth naming: every gate model in this repo asks whether a gate is DEAD and
+none asks whether it is FREE, yet a free gate raises a card's grade exactly as much as a
+dead one lowers it.
+
+### What the measurement deleted
+
+Six families were written. Four were removed after a sweep of all 116 decks, because
+every instance returned the same verdict and a flag that never varies is not a flag —
+the G-07 saturation lesson that already cost `suggest`'s Decks column and the `review`
+audit flag.
+
+| family | roster rows | counts | why dropped |
+|---|---|---|---|
+| lifegain | 10 | 10–18 | never below the band; a "gained life this turn" card is only played in a lifegain deck |
+| artifacts | 9 | 8–9 vs a stated need of 3 | same structural reason |
+| drain | 1 | 6 | not saturated — simply no evidence, and a band guessed off n=1 is a guess |
+| delirium | 7 | 5–6 | **mis-proxied**, see below |
+
+Delirium is the instructive failure. It is not merely saturated: the proxy measures the
+wrong thing. The card asks for four card types **in your graveyard**, which depends on
+self-mill and discard; counting types in the **deck** is an upper bound that any
+60-card list clears by construction, since creature + instant + sorcery + land is
+already four. Fixing it means modelling yard-fill, which is a different piece of work.
+`descended` was never written at all — 11 pool cards and a condition nearly every deck
+meets.
+
+The temptation at this point is to lower a band until the saturated family varies. That
+manufactures a signal instead of finding one, and the resulting flag is worse than no
+flag because it looks like information.
+
+### Live residuals
+
+- The two shipped families are **n=4 and n=1** across the roster. The `draw` band
+  (thin ≤2, free ≥8) is measured but thin evidence; treat it as provisional and
+  re-measure when more gated cards enter the collection.
+- The exile proxy counts anything that puts a card into exile, because the gate it feeds
+  counts the **zone** and does not care who filled it. That is deliberately broader than
+  Ketramose's own draw trigger, which fires only on exile from a graveyard or the
+  battlefield. Two different questions about one card; conflating them is what made the
+  deck 43 hand-count hard to reproduce.
+- `_STATE_GATES` is registered in `check_patterns` so a pattern that silently matches
+  nothing fails the build — without that, a dead state-gate pattern reads as "this deck
+  has no gated cards", which is indistinguishable from a clean result. That is exactly
+  how the digit-only descend gate hid for months.
+
+## [G-77] An advisory you can only act on by a forbidden edit is a hazard
+
+`section_mismatch` (G-05) does its job well: when a swap's added card inherits the cut
+card's `# section` comment, it says so, and it stays quiet on ambiguous or absent
+headers. What it did not do was give you any way to *act* on the warning. The card line
+was already written at the cut card's position, so resolving the warning meant opening
+the deck file and moving a line by hand.
+
+G-65 forbids exactly that. Deck-line `(SET) COLLECTOR#` fields must come from
+`deck.py resolve`, never be typed, because nothing else validates them: a wrong number
+passes `legal`, passes `check` (ownership joins on the name), passes `preflight` READY
+and passes `check_all`, leaving a deck file that is integrity-clean and un-importable at
+once.
+
+On 2026-08-24 the two rules collided. Eight swaps into deck 43, `section_mismatch` fired
+four times, and each fix was a hand relocation of the line. Two of the four invented a
+collector number — `(HOB) 26` for The Queen of Dale's real 24, `(HOB) 21` for Lake-town
+Toymaker's real 19. Both were caught, but only because `deck.py resolve --check` was run
+afterwards out of habit; nothing in the pipeline would have failed on them.
+
+So the fix is `swap --section "<header substring>"`. It relocates the added line as part
+of the same write, moving the line text verbatim so the printing fields cannot be
+retyped, and it validates the header *before* writing — an absent or ambiguous substring
+aborts the swap entirely rather than leaving a misfiled line with an error printed after
+the fact. The advisory now names the flag.
+
+The transferable rule: **when a warning's only remedy is a manual edit of a file the
+project's own rules say never to edit manually, the tool owes you the mechanical form of
+that edit.** A warning that pushes the reader toward a forbidden operation is worse than
+silence, because it produces a second, quieter error class while looking like diligence.
+
+### Design notes
+
+- Ambiguity refuses rather than guessing. Filing a card under a header the author did
+  not choose is the same lie the warning is about, one step removed.
+- Relocation runs inside the existing `try` and before `_safe_write_lines`, so the
+  card-total guard still applies. A move preserves the total by construction.
+- A card already in the target section is a no-op, so the flag is safe to pass
+  speculatively.
+
+## [G-78] A sharing claim is not a comparison, and short card names are invisible
+
+Two findings from one investigation, and the residual is larger than the fix.
+
+### The fix
+
+`_cites_as_history` suppresses a card citation when the surrounding clause names another
+deck, on the reasoning that a distinctness passage cites another deck's cards to contrast
+with them. That is right for *"where deck 42 spends its splash on two one-shot ETB
+thefts"* and wrong for *"only FIVE nonland cards are shared (Erode, Healer's Hawk, …)"* —
+because a **sharing** claim asserts the named cards are in **this** deck too. It is a
+statement about the current list wearing the grammar of a comparison.
+
+Deck 43's tier block carried such a list naming a card the deck had not run in a long
+time. A narrow `_SHARING_CUES` carve-out (`share`/`shared`/`sharing`/`in common`/`both
+run`/`both play`/`overlap`) skips the other-deck suppression inside those clauses only;
+every other cross-deck citation suppresses exactly as before. The roster sweep returned
+zero new hits, and a control test pins that an ordinary comparison still suppresses —
+without it the carve-out would simply be a disabled suppression.
+
+### The residual, measured
+
+The carve-out did **not** catch the deck 43 instance that started this. That prose wrote
+*"against 42 Blood Price"* rather than *"deck 42"*, so `_OTHER_DECK_RE` never fired; the
+real suppressor was `_RATIONALE_MIN_LEN = 9`, which skips any single-word card name
+shorter than nine characters. `Erode` is five.
+
+Lowering the floor was tried and measured across the whole roster:
+
+| floor | hits | real | false |
+|---|---|---|---|
+| 9 (current) | 0 | 0 | 0 |
+| 7 | 5 | 3 | 2 |
+| 5 | 7 | 3 | 4 |
+
+The three real ones were found and fixed on discovery: deck 43's archetype prose still
+listed **Wolfbat** as a live member of its second-card cluster after it was cut, and deck
+42a's tier and archetype prose both cited **Ahriman** as an active engine piece — a card
+42a does not run.
+
+The false positives are structural, not tuning noise. `Pacifism` sits next to the word
+"over" ("+Summon: Bahamut over Pacifism"), and a bare "over" is deliberately excluded
+from the history cues because it is the house phrasing for a quality vector ("card
+advantage 9 over a 2.86 curve"). `Impulse` is a mechanic name capitalized at a sentence
+start, which defeats the case-sensitivity rule that keeps ordinary vocabulary out.
+`Rescue` matches inside *"Kona Rescue Beastie"* — the prose drops the comma the real card
+name has, so masking by exact in-deck name does not blank it.
+
+Either rate would put permanent false warnings into `check_all`'s soft output on every
+run, and the audit's own design note is explicit that a noisy audit gets ignored, which
+is worse than no audit. **The floor stays at 9.** Short single-word card citations are a
+known blind spot; re-measure before changing it, and expect to fix the sentence-start and
+punctuation-variant cases first if you want the floor to come down.

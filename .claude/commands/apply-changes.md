@@ -35,6 +35,14 @@ For each `−cut / +add`:
    **auto-retires `#~` flex lines** the swap made stale (a line proposing the
    card you just maindecked, or cutting one you just removed).
 
+   If the add belongs under a different `# section` than the cut card's slot,
+   pass **`--section "<header substring>"`** in the SAME command. Never move the
+   line by hand afterwards: relocating four lines that way in one session
+   invented two collector numbers, because a hand edit retypes the `(SET)
+   COLLECTOR#` fields that G-65 says must come from the resolver. `--section`
+   moves the line verbatim and refuses an absent or ambiguous header before
+   writing anything.
+
    It also appends a row to `recommendations.csv` scoring the recommenders against
    this decision — where `cuts` ranked the card you cut, and whether `suggest`
    surfaced the card you added. **Report the line it prints** when the models

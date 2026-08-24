@@ -5695,6 +5695,59 @@ def section_mismatch(lines, idx, add_name, carddata):
     return None
 
 
+def _section_headers(lines):
+    """[(index, header_text)] for the `# section` comments that group card lines.
+    Metadata (`#:`) and flex (`#~`) lines are not sections."""
+    out = []
+    for i, ln in enumerate(lines):
+        s = ln.strip()
+        if s.startswith("#") and not s.startswith("#:") and not s.startswith("#~"):
+            out.append((i, s.lstrip("# ").strip()))
+    return out
+
+
+def _relocate_card_line(lines, card_name, needle):
+    """Move `card_name`'s line under the section whose header contains `needle`,
+    preserving the line VERBATIM. Returns new lines; raises ValueError if the card or
+    the section is missing or ambiguous.
+
+    This exists because of the bug the WARNING caused. `section_mismatch` correctly
+    flags an add that inherited the cut card's `# section`, but the only way to act on
+    it was to hand-edit the file — and hand-editing deck lines is exactly what G-65
+    forbids: relocating four lines that way in one session produced two invented
+    collector numbers (`(HOB) 26` for a real 24, `(HOB) 21` for a real 19), caught only
+    because `resolve --check` happened to be run afterwards. An advisory that can only
+    be resolved by a forbidden edit is a hazard, not a warning. Moving the exact line
+    text keeps the printing fields untouched by construction."""
+    key = (card_name or "").strip().lower()
+    idxs = [i for i, ln in enumerate(lines)
+            if (_card_line_name(ln) or "").strip().lower() == key]
+    if len(idxs) != 1:
+        raise ValueError(f"{card_name!r} appears on {len(idxs)} card line(s) — expected "
+                         "exactly one to move.")
+    src = idxs[0]
+    heads = _section_headers(lines)
+    hits = [(i, h) for i, h in heads if needle.strip().lower() in h.lower()]
+    if not hits:
+        avail = "; ".join(h for _i, h in heads) or "(none)"
+        raise ValueError(f"no `# section` header contains {needle!r}. Headers: {avail}")
+    if len(hits) > 1:
+        raise ValueError(f"{needle!r} matches {len(hits)} headers "
+                         f"({'; '.join(h for _i, h in hits)}) — be more specific.")
+    hidx = hits[0][0]
+    # End of that section's card block: the last card line before the next header.
+    nxt = next((i for i, _h in heads if i > hidx), len(lines))
+    last = max((i for i in range(hidx + 1, min(nxt, len(lines)))
+                if _card_line_name(lines[i])), default=hidx)
+    if hidx < src <= last:
+        return list(lines)                      # already in the target section
+    line = lines[src]
+    rest = lines[:src] + lines[src + 1:]
+    # Re-find the insertion point in the shortened list.
+    dest = last - 1 if src < last else last
+    return rest[:dest + 1] + [line] + rest[dest + 1:]
+
+
 def _line_comment(ln):
     """The trailing inline `# …` comment on a card line, or '' — so a line rewrite
     (quantity bump/decrement here, `reconcile_lines`) re-attaches it instead of
@@ -6330,7 +6383,7 @@ def cmd_feedback(args):
     return 0
 
 
-def _do_swap(d, cut, add, apply, flex_entry=None):
+def _do_swap(d, cut, add, apply, flex_entry=None, section=None):
     """Shared engine for `swap` and `apply-flex`: preview deltas, and on --apply
     perform the edit with a .bak + INV-04 re-check."""
     add_disp, add_set, add_cn = _printing_of(add)
@@ -6435,6 +6488,12 @@ def _do_swap(d, cut, add, apply, flex_entry=None):
         # because a skill REFERENCES it, and no test drives the write path.
         new_lines = _swap_edit_lines(lines, cut, add, (add_set, add_cn),
                                      drop_flex=flex_entry)
+        # Relocation happens BEFORE the write and inside the same try, so a bad
+        # `--section` aborts the swap entirely rather than leaving the line misfiled
+        # with an error printed after the fact. `_safe_write_lines`' card-total guard
+        # still applies — a move preserves the total by construction.
+        if section:
+            new_lines = _relocate_card_line(new_lines, add, section)
         bak = _safe_write_lines(d["path"], new_lines, before_s["total"])
     except ValueError as e:
         eprint(f"Not saved: {e}")
@@ -6452,6 +6511,10 @@ def _do_swap(d, cut, add, apply, flex_entry=None):
         warn = section_mismatch(new_lines, ai, add.strip(), load_card_data())
         if warn:
             print(f"  ⚠ section comment: {warn}")
+            print(f'     Move it mechanically (never by hand — G-65): '
+                  f'deck.py swap {d["id"]} --cut "{add}" --add "{add}" is a no-op, so '
+                  f'redo this swap with --section "<header substring>", or move the '
+                  f'line with an editor that preserves the (SET) COLLECTOR# fields.')
     # Record how the recommenders scored this decision. Written AFTER the edit lands, so
     # a rejected write leaves no phantom row; announced rather than silent, because a
     # command that writes a second file should say so.
@@ -6481,7 +6544,8 @@ def cmd_swap(args):
     if not d:
         eprint(f"No deck with id {args.id!r}. Try: deck.py list")
         return 1
-    return _do_swap(d, args.cut, args.add, args.apply)
+    return _do_swap(d, args.cut, args.add, args.apply,
+                    section=getattr(args, "section", None))
 
 
 def cmd_apply_flex(args):
@@ -10150,6 +10214,21 @@ _CLAUSE_BREAK = re.compile(r"[.;!?](?=\s)")
 # "deck 56" / "deck 40a" — an explicit reference to a deck by id. Requires the word
 # `deck` so a bare count ("16 Birds") can never read as one.
 _OTHER_DECK_RE = re.compile(r"\bdeck\s+(\d+[a-z]?)\b", re.I)
+# A SHARING claim is not a comparison, and treating it as one is how a false card
+# citation survived for months. Deck 43's tier block read "only FIVE nonland cards are
+# shared (Erode, Healer's Hawk, Starscape Cleric, Stroke of Midnight and Mister
+# Negative)" — a sentence that names deck 42, so `_OTHER_DECK_RE` suppressed the whole
+# clause as comparison context. But deck 43 had not run Erode for a long time, and a
+# sharing claim ASSERTS THE CARD IS IN BOTH LISTS: it is a statement about this deck,
+# not merely about the other one. Found by hand, 2026-08-24, while looking for
+# interaction to add.
+#
+# So the other-deck suppression is skipped inside a sharing clause. This is a carve-out,
+# not a loosening: every other cross-deck citation still suppresses exactly as before,
+# and the cue list is kept NARROW on purpose (G-26 — a false positive is noisy and gets
+# noticed, a false negative is silent). Measured across the roster when it landed.
+_SHARING_CUES = re.compile(
+    r"\b(?:share[sd]?|sharing|in common|both run|both play|overlap(?:s|ping)?)\b", re.I)
 # A figure whose SUBJECT is the card POPULATION rather than this list. Deck 49's
 # archetype prose argues "Standard's Dragons average MV 5.30, so a deck that wants to
 # field several must SOLVE ITS OWN MANA" — a true statement about the format that the
@@ -10208,6 +10287,10 @@ def _cites_as_history(prose, pos, length):
     prev_lo = max(_clause_bounds(prose, max(0, clo - 2), max(0, clo - 2))[0],
                   pos - _HISTORY_WINDOW)
     frame = prose[prev_lo:pos] + " " + prose[pos + length:hi]
+    if _SHARING_CUES.search(prose[clo:chi]):
+        # A sharing claim names cards this deck is asserted to RUN, so the other-deck
+        # reference in it is not comparison context. Everything else still suppresses.
+        return bool(_COMPARISON_CUES.search(prose[prev_lo:clo]))
     return bool(_COMPARISON_CUES.search(prose[prev_lo:clo])
                 or _OTHER_DECK_RE.search(frame))
 
@@ -11437,6 +11520,138 @@ def target_counts(cards, carddata, mana):
     return out
 
 
+# ── STATE gates: conditions on the GAME STATE, not on cards in the deck ─────────────
+#
+# `_TARGET_GATES` above answers one question: "does this deck CONTAIN N cards of shape
+# X". Every one of its 13 entries counts cards in the list. That leaves a whole second
+# family unanswered — a card gated on a STATE the deck has to reach ("if you've drawn
+# two or more cards this turn", "unless there are seven or more cards in exile") — and
+# both of this session's misreads were in it, one in each direction:
+#
+#   Ketramose, the New Dawn  — "can't attack or block unless there are seven or more
+#     cards in exile" in a deck with ONE repeatable exile effect. A near-blank body,
+#     reported by nothing.
+#   Lake-town Toymaker — "if you've drawn two or more cards this turn" in a deck whose
+#     entire second engine is drawing your second card every turn. An UNCONDITIONAL
+#     repeatable pump, and it was nearly cut as a conditional one: `cuts` scored it fit
+#     17 / power 2 / uniqueness 0 / NO detected role.
+#
+# So this table reports BOTH ENDS, which is the point. Every gate model here is
+# one-sided — it asks whether a gate is DEAD and never whether a gate is FREE — and a
+# free gate raises a card's grade exactly as much as a dead one lowers it. `✓ free` is
+# the half that had no tool.
+#
+# The proxy for "can the deck reach this state" is a COUNT of the sources that produce
+# it, and wherever a role already measures that, the proxy is `role_tally` — the
+# canonical counter — so these numbers cannot drift from the ones `stats` prints.
+#
+# Thresholds are MEASURED, not chosen: see `tests/test_deck.py` and the roster sweep in
+# the commit that added this. A band that fires on nearly every deck is a non-signal
+# (the G-07 saturation lesson), so a family that saturated was dropped rather than
+# shipped with a threshold tuned to hide it — `descended` went that way at 11 pool cards
+# and ~100% satisfaction, and "unless you control a creature" was never written.
+_STATE_GATES = [
+    (re.compile(r"you'?ve drawn (?:your )?(?:a |two|three|second)"
+                r"(?:\w+)? ?(?:or more )?cards? this turn", re.I),
+     "draws per turn (needs 2+)", "draw"),
+    (re.compile(r"(\d+|one|two|three|four|five|six|seven|eight|nine|ten) or more "
+                r"cards in exile", re.I),
+     "exile sources (needs {0} cards)", "exile"),
+]
+
+# FOUR MORE FAMILIES WERE BUILT, MEASURED AND DROPPED, and the measurements are the
+# reason this table is short. A gate earns a row only if a real deck can FAIL it; one
+# whose every roster instance reads the same is a non-signal, and tuning its threshold
+# until it varies is manufacturing a signal rather than finding one (the G-07 saturation
+# lesson, which cost `suggest`'s Decks column and the `review` audit flag before it).
+#   • lifegain   ("if you gained life this turn") — 10 roster instances, counts 10..18,
+#     never once below the band. A card gated on having gained life is only ever played
+#     in a lifegain deck, so the gate has no failure mode.
+#   • artifacts  ("you control three or more artifacts") — 9 instances, counts 8..9
+#     against a stated need of 3. Same structural reason.
+#   • drain      ("an opponent lost life this turn") — 1 instance. Not saturated;
+#     simply no evidence either way, and a band guessed off n=1 is a guess.
+#   • delirium   ("four or more card types among cards in your graveyard") — 7
+#     instances, counts 5..6, always over. This one is the instructive failure: it is
+#     not merely saturated, the PROXY MEASURES THE WRONG THING. Delirium asks about
+#     types in the GRAVEYARD, which depends on self-mill and discard; counting types in
+#     the DECK is a weak upper bound that any 60-card list clears by construction
+#     (creature + instant + sorcery + land is already four). Fixing it means modelling
+#     yard-fill, which is a different piece of work.
+# `descended` was never written: 11 pool cards and a condition nearly every deck meets.
+
+# A gate with no stated number is graded against a band; one that states its own number
+# (exile) self-calibrates and needs none. Bands measured across the 116-deck roster.
+_STATE_BANDS = {           # kind: (thin_at_or_below, free_at_or_above)
+    "draw": (2, 8),
+}
+
+
+def _state_axis_counts(cards, carddata, mana):
+    """The per-deck counts the state gates are graded against. `role_tally` is reused
+    wherever a role already measures the axis, so a state gate and `stats` can never
+    report different numbers for the same question."""
+    tally = role_tally(cards, carddata)
+    exile = 0
+    for q, n, _s, _c in cards:
+        if n.lower() in BASICS:
+            continue
+        cd = carddata.get(n.lower()) or carddata.get(n.lower().split(" // ")[0]) or {}
+        # An exile SOURCE here is anything that puts a card into the exile zone, because
+        # the gate this feeds ("seven or more cards in exile") counts the ZONE and does
+        # not care who filled it or from where. That is deliberately broader than
+        # Ketramose's own DRAW trigger, which fires only on exile from a graveyard or
+        # the battlefield — the two are different questions about the same card, and
+        # conflating them is what made the deck 43 hand-count hard to reproduce.
+        text = (cd.get("text") or "").lower()
+        if re.search(r"exile (?:it|them|that card|target|up to|all|each)|exile this", text):
+            exile += q
+    return {"draw": tally.get("Card advantage", 0), "exile": exile}
+
+
+def state_gate_counts(cards, carddata, mana):
+    """[(card, label, count, need, verdict)] — for each card gated on a GAME STATE, the
+    deck's count on the axis that produces it, and whether the gate is dead, thin or
+    free.
+
+    Report-only and heuristic, like every model here. `verdict` is one of "dead",
+    "thin", "ok", "free". Read the list, not the number: a free gate says the CONDITION
+    is cheap, never that the card is good, and a dead one says the same in reverse."""
+    axes = _state_axis_counts(cards, carddata, mana)
+    out, seen = [], set()
+    for q, n, _s, _c in cards:
+        if n in seen or n.lower() in BASICS:
+            continue
+        seen.add(n)
+        cd = carddata.get(n.lower()) or carddata.get(n.lower().split(" // ")[0]) or {}
+        text = cd.get("text") or ""
+        for rx, label, kind in _STATE_GATES:
+            m = rx.search(text)
+            if not m:
+                continue
+            groups = [g for g in (m.groups() or ()) if g is not None]
+            need = None
+            if groups:
+                g0 = groups[0].lower()
+                need = int(g0) if g0.isdigit() else _TARGET_WORD_NUM.get(g0)
+            count = axes[kind]
+            if need is not None:
+                verdict = "dead" if count == 0 else ("thin" if count < need else "ok")
+            else:
+                low, high = _STATE_BANDS[kind]
+                verdict = ("dead" if count == 0 else "thin" if count <= low
+                           else "free" if count >= high else "ok")
+            disp = list(groups)
+            if disp and need is not None and not disp[0].isdigit():
+                disp[0] = str(need)
+            try:
+                shown = label.format(*disp) if disp else label
+            except (IndexError, KeyError):
+                shown = label
+            out.append((n, shown, count, need, verdict))
+    return out
+
+
 def dead_library_searches(cards, carddata, mana):
     """[(card, gate_label)] for library SEARCHES in this deck that can find NOTHING —
     the deck 76 bug class (G-61).
@@ -11466,6 +11681,7 @@ def cmd_targets(args):
     if not rows:
         print("  No gated effects detected (no MV cap, sacrifice cost or count threshold "
               "in this list's text).")
+        _print_state_gates(cards)
         return 0
     print(f"  {'Card':32} {'What its text needs':42} {'in deck':>7}")
     print("  " + "-" * 84)
@@ -11485,7 +11701,34 @@ def cmd_targets(args):
     print(f"\n  {len(rows)} gated effect(s); {thin} thin or unmet. A gate with nothing "
           "behind it is a dead card, and a card graded in isolation cannot show you that "
           "(G-61). Counts exclude the card itself; read the list, not just the number.")
+    _print_state_gates(cards)
     return 0
+
+
+_STATE_FLAG = {"dead": "  ✗ CANNOT turn on", "thin": "  ⚠ thin",
+               "free": "  ✓ free (deck always meets it)", "ok": ""}
+
+
+def _print_state_gates(cards):
+    """The second half of the targets report: gates on GAME STATE rather than on cards
+    in the list. Prints both ends — a gate the deck cannot reach AND one it meets for
+    free — because a free condition is not a condition, and reading one as a drawback is
+    what nearly cut Lake-town Toymaker out of deck 43."""
+    rows = state_gate_counts(cards, load_card_data(), load_mana())
+    if not rows:
+        return
+    order = {"dead": 0, "thin": 1, "ok": 2, "free": 3}
+    print(f"\n  {'Card':32} {'State its text needs':42} {'in deck':>7}")
+    print("  " + "-" * 84)
+    for name, label, count, _need, verdict in sorted(rows, key=lambda r: (order[r[4]], r[0])):
+        print(f"  {name[:32]:32} {label[:42]:42} {count:>7}{_STATE_FLAG[verdict]}")
+    nfree = sum(1 for r in rows if r[4] == "free")
+    nbad = sum(1 for r in rows if r[4] in ("dead", "thin"))
+    print(f"\n  {len(rows)} STATE gate(s): {nbad} the deck struggles to meet, {nfree} it "
+          "meets for free. The free ones are the point — every other model here grades a "
+          "gated card as if the gate were a cost, and in the deck built to satisfy it it "
+          "is not one. Proxy counts come from `role_tally`, the same counter `stats` "
+          "prints. Report-only; read the card.")
 
 
 def cmd_engines(args):
@@ -11744,6 +11987,12 @@ def main():
     p.add_argument("--add", required=True, help="card to add")
     p.add_argument("--apply", action="store_true",
                    help="write the change (with a .bak); default is a dry-run preview")
+    p.add_argument("--section", metavar="HEADER",
+                   help="place the added line under the `# section` whose header "
+                        "contains this substring, instead of inheriting the cut card's "
+                        "slot (G-05). Moves the line VERBATIM, so the (SET) COLLECTOR# "
+                        "fields cannot be mistyped the way a hand edit can (G-65). "
+                        "Refuses an absent or ambiguous header without writing.")
     p = sub.add_parser("feedback",
                        help="how the recommenders scored against the swaps you applied")
     p.add_argument("id", nargs="?", help="limit to one deck (default: the whole roster)")
