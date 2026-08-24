@@ -1217,8 +1217,15 @@ analysis tabs (the same `deck.py` output, in-browser), and **＋ New deck** to
 create a fresh numbered deck.
 
 Flask is the only part of the toolkit with a dependency; it's isolated in
-`requirements-app.txt`, and the core scripts (and `check_all.py` / CI) never
-import it.
+`requirements-app.txt`, and the core scripts and `check_all.py` never import it —
+the zero-dependency guarantee is about the *tooling*, not the test run. **CI does
+install it**, and has since 2026-08-24: `tests/test_app_editor.py` importorskips
+Flask, so installing only `requirements-dev.txt` meant its six write-safety pins on
+the editor — the code that writes `card-library.csv` and your deck files — skipped on
+every push and every PR, visible only as an unremarkable `1 skipped`. The workflow now
+installs both files and sets `PYTEST_NO_SKIPS=1`, under which any skip is a failure, so
+the next optional dependency cannot quietly take a module out of coverage. Locally a
+skip is still fine: running without Flask is the same split `make app` draws.
 
 ### Sheets sync — round-trip with Google Sheets (optional)
 

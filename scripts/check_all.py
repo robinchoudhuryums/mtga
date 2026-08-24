@@ -33,6 +33,7 @@ import deck as deckmod
 MANA_CSV = os.path.join(REPO_ROOT, "card-mana.csv")
 POOL_CSV = os.path.join(REPO_ROOT, "card-pool.csv")
 GALLERY = os.path.join(REPO_ROOT, "gallery.html")
+DASHBOARD = os.path.join(REPO_ROOT, "dashboard.html")
 
 
 def check_mana_coverage():
@@ -78,8 +79,15 @@ def check_derived_files():
 
     Returns (hard_errors, soft_warnings)."""
     errs, warns = [], []
+    # dashboard.html sits here for the same reason gallery.html does. BS4-27 hardened
+    # the gallery leg because existence alone passed a truncated build, and wrote the fix
+    # GENERICALLY (`endswith(".html")` below) — but the second generated page was never
+    # added to the list. It is committed, tracked, and carries the same `#data` island, so
+    # a gutted dashboard.html passed every gate: the only other check on it asks whether
+    # it is CURRENT (`dashboard_staleness`), never whether it is INTACT. A gate whose
+    # scope excludes the file the bug lives in is absent, not narrow (G-63).
     for path, name in [(MANA_CSV, "card-mana.csv"), (POOL_CSV, "card-pool.csv"),
-                       (GALLERY, "gallery.html")]:
+                       (GALLERY, "gallery.html"), (DASHBOARD, "dashboard.html")]:
         if not os.path.exists(path):
             errs.append(f"{name} missing")
             continue

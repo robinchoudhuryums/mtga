@@ -73,9 +73,13 @@ class TestInv03DerivedSchema:
         # did. The stub is padded past the size floor and carries the island.
         _write(gal, '<html><body><script id="data" type="application/json">[]</script>'
                     + "<!-- " + ("x" * 1200) + " -->" + "</body></html>")
+        dash = tmp_path / "dashboard.html"
+        _write(dash, '<html><body><script id="data" type="application/json">[]</script>'
+                     + "<!-- " + ("x" * 1200) + " -->" + "</body></html>")
         monkeypatch.setattr(ca, "MANA_CSV", str(mana))
         monkeypatch.setattr(ca, "POOL_CSV", str(pool))
         monkeypatch.setattr(ca, "GALLERY", str(gal))
+        monkeypatch.setattr(ca, "DASHBOARD", str(dash))
 
     FULL = ("Card Name,Type,Card Text,Color(s),Synergies,Set Code,Collector #,"
             "Rarity,Legalities,Released,Power,Toughness")
@@ -114,6 +118,28 @@ class TestInv03DerivedSchema:
         _write(tmp_path / "gallery.html", "<html>" + ("x" * 4000) + "</html>")
         errs, _ = ca.check_derived_files()
         assert any("data island MISSING" in e for e in errs)
+
+    def test_a_gutted_DASHBOARD_is_hard_too(self, tmp_path, monkeypatch):
+        """The same BS4-27 shape, one file over. `dashboard.html` is committed, tracked
+        and carries the same `#data` island, but was never added to INV-03's list — so a
+        truncated one passed every gate, the staleness sweep included (it asks whether the
+        page is CURRENT, never whether it is INTACT)."""
+        self._world(tmp_path, monkeypatch, self.FULL)
+        _write(tmp_path / "dashboard.html", "")
+        errs, _ = ca.check_derived_files()
+        assert any("dashboard.html" in e and "no usable content" in e for e in errs), errs
+
+    def test_a_dashboard_that_lost_its_data_island_is_hard(self, tmp_path, monkeypatch):
+        self._world(tmp_path, monkeypatch, self.FULL)
+        _write(tmp_path / "dashboard.html", "<html>" + ("x" * 4000) + "</html>")
+        errs, _ = ca.check_derived_files()
+        assert any("dashboard.html" in e and "data island MISSING" in e for e in errs), errs
+
+    def test_a_missing_dashboard_is_hard(self, tmp_path, monkeypatch):
+        self._world(tmp_path, monkeypatch, self.FULL)
+        monkeypatch.setattr(ca, "DASHBOARD", str(tmp_path / "absent.html"))
+        errs, _ = ca.check_derived_files()
+        assert any("dashboard.html missing" in e for e in errs), errs
 
     def test_a_missing_derived_file_is_hard(self, tmp_path, monkeypatch):
         self._world(tmp_path, monkeypatch, self.FULL)

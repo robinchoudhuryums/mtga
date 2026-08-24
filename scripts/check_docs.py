@@ -197,10 +197,87 @@ def check():
     return errs
 
 
+# ── Measured-figure drift ────────────────────────────────────────────────────────────
+#
+# CLAUDE.md's rules cite MEASUREMENTS as their evidence — "266 pool cards", "baselined at
+# 138" — and the whole documentation contract is that a reader can reproduce them. Deck
+# prose already has this check: `rationale_staleness` flags a `#: tier:` figure the live
+# quality vector contradicts, and G-78 exists entirely about stale citations. CLAUDE.md's
+# own numbers had no equivalent, and a 2026-08-24 sample of ten mechanically-derivable
+# claims found SIX had drifted (K-09 138->153, G-69 425->498, K-07 266->291, K-05
+# 351->357, K-09 blanks 380->371, C-02 58->62).
+#
+# SOFT by design, and that is not timidity. These figures are historical statements as
+# much as live ones — "baselined at 138" was true when written — so a hard failure would
+# make an ordinary tagger edit break the build, which is how a gate gets routed around.
+# The warning names the live value so correcting it is a one-line edit.
+#
+# Each entry is (label, regex over CLAUDE.md, callable -> live int). The regex must
+# capture the figure in group 1 and be specific enough that it cannot match a different
+# sentence; a pattern matching nothing is itself reported, since a silently-dead check
+# here reads exactly like a clean one (the failure mode check_patterns exists for).
+def _live_figures():
+    import csv as _csv
+
+    def _lines(p):
+        return sum(1 for _ in open(os.path.join(REPO_ROOT, p), encoding="utf-8"))
+
+    def _pool_tag(tag):
+        path = os.path.join(REPO_ROOT, "card-pool.csv")
+        with open(path, newline="", encoding="utf-8") as fh:
+            return sum(1 for r in _csv.DictReader(fh)
+                       if tag in (r.get("Synergies") or ""))
+
+    def _pool_blank():
+        path = os.path.join(REPO_ROOT, "card-pool.csv")
+        with open(path, newline="", encoding="utf-8") as fh:
+            return sum(1 for r in _csv.DictReader(fh)
+                       if not (r.get("Synergies") or "").strip())
+
+    return [
+        ("K-09 tag/role baseline",
+         r"baselined at (\d+) and soft in", lambda: _lines("scripts/tag_role_baseline.txt")),
+        ("K-07 `exile cast` pool cards",
+         r"Foretell / Adventure, (\d+) pool cards", lambda: _pool_tag("exile cast")),
+        ("K-05 `pay life` pool cards",
+         r"\((\d+) pool cards, [\d.]+% —", lambda: _pool_tag("pay life")),
+        ("K-09 pool blanks",
+         r"Residual: (\d+) pool blanks", _pool_blank),
+        ("C-02 matches.csv rows",
+         r"LIVE since 2026-08-10 — (\d+) matches",
+         lambda: _lines("matches.csv") - 1),
+    ]
+
+
+def figure_drift():
+    """[(label, stated, live)] for CLAUDE.md figures that no longer match the data, plus
+    ('<label> (pattern matched nothing)', …) for a claim whose regex went stale."""
+    text = _read(CLAUDE_MD)
+    out = []
+    for label, pat, live_fn in _live_figures():
+        m = re.search(pat, text)
+        if not m:
+            out.append((label + " — PATTERN MATCHED NOTHING", "?", "?"))
+            continue
+        try:
+            live = live_fn()
+        except Exception as e:                      # missing data file: skip, don't crash
+            out.append((label + f" — could not measure ({type(e).__name__})", m.group(1), "?"))
+            continue
+        if str(live) != m.group(1):
+            out.append((label, m.group(1), str(live)))
+    return out
+
+
+
 def main():
     errs = check()
     for e in errs:
         print(f"FAIL: {e}")
+    # SOFT, and printed whether or not the structural check passed: a stale figure is a
+    # trust problem, not a build break (see the note at `_live_figures`).
+    for label, stated, live in figure_drift():
+        print(f"~ figure drift: {label} — CLAUDE.md says {stated}, live is {live}")
     if not errs:
         claude = _read(CLAUDE_MD).split("\n")
         n = len(set(ANCHOR_RE.findall(_read(CLAUDE_MD))))
