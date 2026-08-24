@@ -39,7 +39,8 @@
 #: tier: tapland-heavy manabase pays real speed for its coverage (keepable 87% but
 #: tier: cast-on-curve in the 50-70% band across the gold Dragons, and Drakuseth's
 #: tier: {R}{R}{R} reads 32% — the nonland fixers the model cannot see are what make
-#: tier: it playable), and the alt-win asks the enchantment to survive a full turn
+#: tier: it playable — and 17 of the 26 lands still enter tapped after the 2026-08-24
+#: tier: basics pass, which is the real speed tax), and the alt-win asks the enchantment to survive a full turn
 #: tier: cycle. The ceiling — an indestructible five-color Dragon board that wins at
 #: tier: upkeep through any wrath — is real. Re-grade with games.
 #: notes: Drafted 2026-08-21 from the playstyle-gap survey (alt-win thread): the seed
@@ -47,10 +48,21 @@
 #: notes: covering all five colors. CRAFTS (8, after the 2026-08-23 pass): Dragonback
 #: notes: Assault M (sweeper + landfall Dragon tokens), Ramos M, Neriv M, Bloomvine
 #: notes: Regent R (modal ramp-early / Dragon-late), Maelstrom of the Spirit Dragon R
-#: notes: land, Karakyk Guardian U, Savage Ventmaw U, Encroaching Dragonstorm U (two
-#: notes: basics the Leyline then turns into every basic type; Mox Jasper was CUT for it
-#: notes: — its {0} fixing was redundant once three any-color permanents landed, and it
-#: notes: is dead in an opening hand with no Dragon) — see wishlist Target 76.
+#: notes: land, Karakyk Guardian U, Savage Ventmaw U, Encroaching Dragonstorm U (Mox
+#: notes: Jasper was CUT for it) — see wishlist Target 76.
+#: notes: BASICS ARE A REQUIREMENT, NOT A DEFAULT — the 2026-08-24 land pass. The deck
+#: notes: ran ZERO basics while TWO cards searched for them, so Bloomvine Regent's Omen
+#: notes: half was dead (found in PLAY, not by any gate) and Encroaching Dragonstorm was
+#: notes: dead on arrival — it had been added the day before on the false reasoning that
+#: notes: the Leyline would upgrade the fetched basics, but the Leyline's basic-land-type
+#: notes: clause applies to lands you CONTROL, never to lands in your library. Four
+#: notes: tapped gainlands (Wind-Scarred Crag, Scoured Barrens, Birnin Zana Plaza, Dismal
+#: notes: Backwater) became 2 Mountain + 2 Forest: both searches turn on, four untapped
+#: notes: coloured sources appear where the deck had none that did not cost life, and the
+#: notes: weighting finally matches the pips (R 23 and G 16 are the demand; sources went
+#: notes: W 11/U 9/B 9/R 11/G 9 -> W 8/U 8/B 7/R 12/G 10). KEEP AT LEAST 2 FORESTS while
+#: notes: Bloomvine is in the list. Under the Leyline a basic is every basic type, so
+#: notes: these are perfect duals in exactly the games the deck wants to win.
 #: notes: LEYLINE OF THE GUILDPACT IS THE BIGGEST MECHANIC READ IN THE DECK, and read it
 #: notes: PRECISELY: it makes every nonland permanent ALL COLORS, not all TYPES. The win
 #: notes: trigger trades on both — "for each color, put a +1/+1 counter on a Dragon you
@@ -134,12 +146,10 @@
 1 Rugged Highlands (M21) 249
 1 Gongaga, Reactor Town (FIN) 280
 1 Thornwood Falls (FDN) 269
-1 Wind-Scarred Crag (FDN) 271
+2 Mountain (TRK) 323
 1 Sun-Blessed Peak (TLA) 280
 1 Temple of Triumph (FDN) 705
-1 Birnin Zana Plaza (MSH) 262
+2 Forest (TRK) 325
 1 Kyoshi Village (TLA) 271
 1 Swiftwater Cliffs (MOM) 273
 1 Bloodfell Caves (TDM) 250
-1 Scoured Barrens (M21) 250
-1 Dismal Backwater (FDN) 261
