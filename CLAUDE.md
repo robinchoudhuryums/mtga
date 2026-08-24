@@ -802,6 +802,20 @@ directions.
   structurally always satisfied, and delirium MIS-PROXIED — it asks about the GRAVEYARD,
   and counting types in the DECK is a bound any 60-card list clears. **Residual: the two
   live families are n=4 and n=1 on the roster** — read a band as provisional. [G-76]
+- **A PREVIEWED SET IS IN SCRYFALL MONTHS BEFORE YOU CAN PLAY IT, and the pool took its
+  printings.** Scryfall indexes spoiled cards immediately and `unique=cards` returns the
+  NEWEST printing, so a reprint in an unreleased set became the ONLY printing the pool
+  held — and `deck.py resolve`, the MANDATED source of deck-line printings (G-65), emitted
+  it. Measured 2026-08-24: 114 pool rows dated in the future, **109 deck lines across 47
+  files**, and two round-tripped through an Arena export into `card-library.csv`, so
+  OWNERSHIP recorded an unreleased printing too. `build_pool`'s defaults now carry
+  **`date<=now`** — the literal token `now` is load-bearing, since the freshness reuse
+  compares `stamp_query == query` and a formatted date would refetch daily. A custom
+  `--query` is NOT rewritten. **`resolve --fix <deck> --apply` is the repair half**
+  (G-77: `--check`'s only remedy was a hand edit). Backstop: a `check_all` soft sweep on
+  the POOL, since one report covers every craft recommender at once. **Residual:
+  `Released` is still read only for rotation elsewhere — no per-card surface asks "is this
+  out yet", so a stale or custom-query pool re-opens it.** [G-79]
 
 - **AN ADVISORY YOU CAN ONLY ACT ON BY A FORBIDDEN EDIT IS A HAZARD, NOT A WARNING.**
   G-05's `section_mismatch` correctly flags an add that inherited the cut card's

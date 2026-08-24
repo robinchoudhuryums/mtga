@@ -137,8 +137,8 @@
 1 Blood Crypt (ECL) 262
 1 Breeding Pool (EOE) 251
 1 Hallowed Fountain (ECL) 265
-1 Overgrown Tomb (TRK) 289
-1 Watery Grave (TRK) 306
+1 Overgrown Tomb (ECL) 266
+1 Watery Grave (EOE) 261
 1 Capital City (FIN) 274
 1 Captivating Cave (LCI) 268
 1 Daily Bugle Building (SPM) 179
@@ -146,10 +146,10 @@
 1 Rugged Highlands (M21) 249
 1 Gongaga, Reactor Town (FIN) 280
 1 Thornwood Falls (FDN) 269
-2 Mountain (TRK) 323
+2 Mountain (HOB) 192
 1 Sun-Blessed Peak (TLA) 280
 1 Temple of Triumph (FDN) 705
-2 Forest (TRK) 325
+2 Forest (HOB) 193
 1 Kyoshi Village (TLA) 271
 1 Swiftwater Cliffs (MOM) 273
 1 Bloodfell Caves (TDM) 250

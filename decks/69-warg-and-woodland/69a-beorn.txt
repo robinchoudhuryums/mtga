@@ -160,7 +160,7 @@
 1 Hobbit Hole (HOB) 184
 1 Terramorphic Expanse (MSC) 828
 1 Cryptic Caves (FDN) 771
-21 Forest (TRK) 325
+21 Forest (HOB) 193
 
 #~ craft: Planar Engineering {3}{G} — sac two lands, fetch four basics. The two
 #~ craft: sacrificed lands go to the GRAVEYARD, which Lumra / Summon: Titan / Aftermath

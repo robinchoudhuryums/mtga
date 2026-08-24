@@ -92,7 +92,7 @@ Deck
 
 # Lands — 26, Simic; owned untapped duals over straight basics (Opulent Palace cut —
 # it always entered tapped and its {B} was a dead color here)
-1 Breeding Pool (TRK) 279
+1 Breeding Pool (EOE) 251
 1 Willowrush Verge (DFT) 270
 1 Dreamroot Cascade (SOS) 254
 1 Thornwood Falls (TDM) 269

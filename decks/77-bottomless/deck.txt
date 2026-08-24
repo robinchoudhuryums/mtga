@@ -96,7 +96,7 @@
 1 Don't Make a Sound (DSK) 49
 
 # Lands (26)
-1 Watery Grave (TRK) 306
+1 Watery Grave (EOE) 261
 1 Undercity Sewers (PZA) 0
 1 Gloomlake Verge (DSK) 260
 2 Dismal Backwater (FDN) 261
@@ -106,5 +106,5 @@
 1 Hidden Lair (MSH) 269
 1 Soured Springs (OTJ) 264
 1 Eden, Seat of the Sanctum (FIN) 277
-8 Island (TRK) 319
-7 Swamp (TRK) 321
+8 Island (HOB) 190
+7 Swamp (HOB) 191

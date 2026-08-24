@@ -86,6 +86,6 @@
 1 Rugged Highlands (FDN) 265
 1 Gongaga, Reactor Town (FIN) 280
 1 Restless Ridgeline (LCI) 283
-6 Plains (TRK) 317
-4 Forest (TRK) 325
-5 Mountain (TRK) 323
+6 Plains (HOB) 189
+4 Forest (HOB) 193
+5 Mountain (HOB) 192

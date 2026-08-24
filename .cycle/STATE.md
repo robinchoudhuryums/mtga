@@ -1920,3 +1920,33 @@ Preceding commit in the same session added G-76 (state gates: report the FREE en
 just the dead one) after the Lake-town Toymaker misread.
 
 **Where I left off:** all green — 1423 tests, check_all clean. /sync-docs next, then PR.
+
+## 2026-08-24 — /targeted-audit + /targeted-implement: Ingest & Enrich (A1–A5)
+
+The TRK question from the handoff turned out to be a real, currently-firing bug with a
+three-step blast radius, all fixed:
+
+- **Root (A1):** Scryfall indexes spoiled cards immediately and `unique=cards` returns the
+  NEWEST printing, so an unreleased set's reprint became the only printing the pool held.
+  `build_pool`'s defaults now carry `date<=now` — the literal token, because a formatted
+  date would defeat the `stamp_query == query` freshness reuse and refetch daily.
+  Rebuilt 16,067 → 15,973.
+- **Laundered into ownership (A2):** two library rows recorded TRK because a deck line
+  round-tripped through an Arena export. They outlived the pool fix, since
+  `_printing_index` prefers an owned printing. Corrected via `lib.write_rows`.
+- **Repair (A3):** new `resolve --fix <deck> --apply`. `--check` reported these and its
+  only remedy was a hand edit — G-77's exact hazard, at 109 lines. 64 card lines rewritten
+  across 28 decks; 0 TRK references remain; all 116 decks pass strict `resolve --check`.
+- **Backstop (A4):** a POOL-level `check_all` soft sweep, not a flag threaded through five
+  recommenders — the exposure is a property of the file, and report-only means no
+  re-ranking and no K-12 diff.
+
+Recorded as **G-79**. Residual: `Released` is still read only for rotation elsewhere, so a
+custom-`--query` pool re-opens it; the sweep is what tells you.
+
+**The one thing the repo still cannot answer:** whether Arena accepts the repaired lines.
+Paste-test deck 76.
+
+**Where I left off:** all green, 1436 tests. Next in the recommended audit sequence is
+Analysis, then Presentation (which holds the biggest untested surface: app.py's Flask
+tests skip here, and build_dashboard.py has no dedicated test file).

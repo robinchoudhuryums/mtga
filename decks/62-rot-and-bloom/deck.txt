@@ -103,7 +103,7 @@
 
 # Lands
 1 Opulent Palace (TDM) 264
-1 Overgrown Tomb (TRK) 289
+1 Overgrown Tomb (ECL) 266
 1 Breeding Pool (EOE) 251
 1 Wastewood Verge (DFT) 268
 1 Willowrush Verge (DFT) 270

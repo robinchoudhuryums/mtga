@@ -3339,7 +3339,7 @@ Counter target spell.",U,counterspell; pay life,DMR,50,Mythic,legacy;vintage;tim
 0: Pay any amount of mana. Look at that many cards from the top of your library, then put one of those cards into your hand and the rest on the bottom of your library in a random order.
 −6: You get an emblem with ""Tap an untapped artifact you control: This emblem deals 1 damage to any target.""",Colorless,Karn; Planeswalker; card advantage; tokens; burn; mana; planeswalker; noncombat damage,DMU,A-1,Mythic,historic;brawl,2024-01-12,,
 A-Meria's Outrider,Creature — Elf Archer,"Reach
-Domain — When Meria's Outrider enters, it deals damage equal to the number of basic land types among lands you control to any target.",R,Elf; Archer; etb; reach; defense; domain; lands,DMU,A-138,Common,historic;brawl,2024-01-12,4,4
+Domain — When Meria's Outrider enters, it deals damage equal to the number of basic land types among lands you control to any target.",R,Elf; Archer; etb; reach; defense; domain; lands,DMU,A-138,Common,historic;brawl,2024-01-12,5,5
 A-Radha's Firebrand,Creature — Human Warrior,"Whenever Radha's Firebrand attacks, target creature defending player controls with power less than or equal to Radha's Firebrand's power can't block this turn.
 Domain — {5}{R}: Radha's Firebrand gets +2/+2 until end of turn. This ability costs {1} less to activate for each basic land type among lands you control. Activate only once each turn.",R,Human; Warrior; cost-reduction; mana; pump; domain; lands,DMU,A-141,Rare,historic;brawl,2024-01-12,3,1
 A-Sprouting Goblin,Creature — Goblin Druid,"Kicker {G} (You may pay an additional {G} as you cast this spell.)
@@ -5576,10 +5576,20 @@ Springleaf Drum,Artifact,"{T}, Tap an untapped creature you control: Add one man
 Stalactite Dagger,Artifact — Equipment,"When this Equipment enters, create a 1/1 colorless Shapeshifter creature token with changeling. (It's every creature type.)
 Equipped creature gets +1/+1 and is all creature types.
 Equip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)",Colorless,Equipment; tokens; etb; equipment; pump; equip,ECL,261,Common,standard;pioneer;modern;legacy;vintage;pauper;historic;timeless;alchemy;brawl,2026-01-23,,
+Blood Crypt,Land — Swamp Mountain,"({T}: Add {B} or {R}.)
+As this land enters, you may pay 2 life. If you don't, it enters tapped.",B/R,Swamp; Mountain; pay life; mana,ECL,262,Rare,standard;pioneer;modern;legacy;vintage;historic;timeless;alchemy;brawl,2026-01-23,,
 Eclipsed Realms,Land,"As this land enters, choose Elemental, Elf, Faerie, Giant, Goblin, Kithkin, Merfolk, or Treefolk.
 {T}: Add {C}.
 {T}: Add one mana of any color. Spend this mana only to cast a spell of the chosen type or activate an ability of a source of the chosen type.",Colorless,mana,ECL,263,Uncommon,standard;pioneer;modern;legacy;vintage;historic;timeless;alchemy;brawl,2026-01-23,,
 Evolving Wilds,Land,"{T}, Sacrifice this land: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.",Colorless,sacrifice; ramp,ECL,264,Common,standard;pioneer;modern;legacy;vintage;pauper;historic;timeless;alchemy;brawl,2026-01-23,,
+Hallowed Fountain,Land — Plains Island,"({T}: Add {W} or {U}.)
+As this land enters, you may pay 2 life. If you don't, it enters tapped.",W/U,Plains; Island; pay life; mana,ECL,265,Rare,standard;pioneer;modern;legacy;vintage;historic;timeless;alchemy;brawl,2026-01-23,,
+Overgrown Tomb,Land — Swamp Forest,"({T}: Add {B} or {G}.)
+As this land enters, you may pay 2 life. If you don't, it enters tapped.",B/G,Swamp; Forest; pay life; mana,ECL,266,Rare,standard;pioneer;modern;legacy;vintage;historic;timeless;alchemy;brawl,2026-01-23,,
+Steam Vents,Land — Island Mountain,"({T}: Add {U} or {R}.)
+As this land enters, you may pay 2 life. If you don't, it enters tapped.",U/R,Island; Mountain; pay life; mana,ECL,267,Rare,standard;pioneer;modern;legacy;vintage;historic;timeless;alchemy;brawl,2026-01-23,,
+Temple Garden,Land — Forest Plains,"({T}: Add {G} or {W}.)
+As this land enters, you may pay 2 life. If you don't, it enters tapped.",W/G,Forest; Plains; pay life; mana,ECL,268,Rare,standard;pioneer;modern;legacy;vintage;historic;timeless;alchemy;brawl,2026-01-23,,
 A-Cauldron Familiar,Creature — Cat,"A-Cauldron Familiar can't block.
 When Cauldron Familiar enters, each opponent loses 1 life and you gain 1 life.
 Sacrifice a Food: Return Cauldron Familiar from your graveyard to the battlefield.",B,Cat; graveyard; lifegain; sacrifice; etb; food,ELD,A-81,Uncommon,historic;brawl,2022-07-07,1,1
@@ -6562,6 +6572,8 @@ Station (Tap another creature you control: Put charge counters equal to its powe
 {T}: Add {W}.
 Station (Tap another creature you control: Put charge counters equal to its power on this Planet. Station only as a sorcery.)
 12+ | {3}{W}, {T}: Create a token that's a copy of target artifact or enchantment you control, except it's legendary. Activate only as a sorcery.",W,Planet; tokens; mana; station; counters; artifacts,EOE,250,Mythic,standard;pioneer;modern;legacy;vintage;historic;timeless;alchemy;brawl,2025-08-01,,
+Breeding Pool,Land — Forest Island,"({T}: Add {G} or {U}.)
+As this land enters, you may pay 2 life. If you don't, it enters tapped.",U/G,Forest; Island; pay life; mana,EOE,251,Rare,standard;pioneer;modern;legacy;vintage;historic;timeless;alchemy;brawl,2025-08-01,,
 Command Bridge,Land,"This land enters tapped.
 When this land enters, sacrifice it unless you tap an untapped permanent you control.
 {T}: Add one mana of any color.",Colorless,sacrifice; mana; etb,EOE,252,Common,standard;pioneer;modern;legacy;vintage;pauper;historic;timeless;alchemy;brawl,2025-08-01,,
@@ -6569,13 +6581,19 @@ When this land enters, sacrifice it unless you tap an untapped permanent you con
 {T}: Add {G}.
 Station (Tap another creature you control: Put charge counters equal to its power on this Planet. Station only as a sorcery.)
 12+ | {G}, {T}: Add {G} for each creature you control.",G,Planet; mana; station; counters; artifacts,EOE,253,Mythic,standard;pioneer;modern;legacy;vintage;historic;timeless;alchemy;brawl,2025-08-01,,
+Godless Shrine,Land — Plains Swamp,"({T}: Add {W} or {B}.)
+As this land enters, you may pay 2 life. If you don't, it enters tapped.",W/B,Plains; Swamp; pay life; mana,EOE,254,Rare,standard;pioneer;modern;legacy;vintage;historic;timeless;alchemy;brawl,2025-08-01,,
 "Kavaron, Memorial World",Land — Planet,"This land enters tapped.
 {T}: Add {R}.
 Station (Tap another creature you control: Put charge counters equal to its power on this Planet. Station only as a sorcery.)
 12+ | {1}{R}, {T}, Sacrifice a land: Create a 2/2 colorless Robot artifact creature token, then creatures you control get +1/+0 and gain haste until end of turn.",R,Planet; sacrifice; tokens; mana; pump; station; counters; artifacts,EOE,255,Mythic,standard;pioneer;modern;legacy;vintage;historic;timeless;alchemy;brawl,2025-08-01,,
+Sacred Foundry,Land — Mountain Plains,"({T}: Add {R} or {W}.)
+As this land enters, you may pay 2 life. If you don't, it enters tapped.",W/R,Mountain; Plains; pay life; mana,EOE,256,Rare,standard;pioneer;modern;legacy;vintage;historic;timeless;alchemy;brawl,2025-08-01,,
 Secluded Starforge,Land,"{T}: Add {C}.
 {2}, {T}, Tap X untapped artifacts you control: Target creature gets +X/+0 until end of turn. Activate only as a sorcery.
 {5}, {T}: Create a 2/2 colorless Robot artifact creature token.",Colorless,tokens; mana; pump,EOE,257,Rare,standard;pioneer;modern;legacy;vintage;historic;timeless;alchemy;brawl,2025-08-01,,
+Stomping Ground,Land — Mountain Forest,"({T}: Add {R} or {G}.)
+As this land enters, you may pay 2 life. If you don't, it enters tapped.",R/G,Mountain; Forest; pay life; mana,EOE,258,Rare,standard;pioneer;modern;legacy;vintage;historic;timeless;alchemy;brawl,2025-08-01,,
 "Susur Secundi, Void Altar",Land — Planet,"This land enters tapped.
 {T}: Add {B}.
 Station (Tap another creature you control: Put charge counters equal to its power on this Planet. Station only as a sorcery.)
@@ -6584,6 +6602,8 @@ Station (Tap another creature you control: Put charge counters equal to its powe
 {T}: Add {U}.
 Station (Tap another creature you control: Put charge counters equal to its power on this Planet. Station only as a sorcery.)
 12+ | {U}, {T}: Add {U} for each artifact you control.",U,Planet; mana; station; counters; artifacts,EOE,260,Mythic,standard;pioneer;modern;legacy;vintage;historic;timeless;alchemy;brawl,2025-08-01,,
+Watery Grave,Land — Island Swamp,"({T}: Add {U} or {B}.)
+As this land enters, you may pay 2 life. If you don't, it enters tapped.",U/B,Island; Swamp; pay life; mana,EOE,261,Rare,standard;pioneer;modern;legacy;vintage;historic;timeless;alchemy;brawl,2025-08-01,,
 Blinkmoth Nexus,Land,"{T}: Add {C}.
 {1}: This land becomes a 1/1 Blinkmoth artifact creature with flying until end of turn. It's still a land.
 {1}, {T}: Target Blinkmoth creature gets +1/+1 until end of turn.",Colorless,mana; pump,EOS,3,Rare,modern;legacy;vintage;historic;timeless;brawl,2025-08-01,,
@@ -7543,7 +7563,7 @@ Kitesail Corsair,Creature — Human Pirate,This creature has flying as long as i
 Mocking Sprite,Creature — Faerie Rogue,"Flying
 Instant and sorcery spells you cast cost {1} less to cast.",U,Faerie; Rogue; cost-reduction; spellslinger; flying; evasion,FDN,744,Common,standard;pioneer;modern;legacy;vintage;pauper;historic;timeless;alchemy;brawl,2026-04-24,2,1
 Rune-Sealed Wall,Artifact Creature — Wall,"Defender
-{T}: Surveil 1. (Look at the top card of your library. You may put it into your graveyard.)",U,Wall; graveyard; selection; surveil; defender; defense,FDN,745,Uncommon,standard;pioneer;modern;legacy;vintage;historic;timeless;alchemy;brawl,2026-04-24,0,6
+{T}: Surveil 1. (Look at the top card of your library. You may put it into your graveyard.)",U,Wall; graveyard; selection; defender; defense; surveil,FDN,745,Uncommon,standard;pioneer;modern;legacy;vintage;historic;timeless;alchemy;brawl,2026-04-24,0,6
 Spectral Sailor,Creature — Spirit Pirate,"Flash (You may cast this spell any time you could cast an instant.)
 Flying
 {3}{U}: Draw a card.",U,Spirit; Pirate; card draw; flying; evasion; flash; tempo,FDN,746,Uncommon,standard;pioneer;modern;legacy;vintage;historic;timeless;alchemy;brawl,2026-04-24,1,1
@@ -8362,58 +8382,6 @@ Equip {2}",Colorless,Equipment; etb; equipment; pump; equip,FIN,562,Rare,standar
 Ultima Weapon,Legendary Artifact — Equipment,"Whenever equipped creature attacks, destroy target creature an opponent controls.
 Equipped creature gets +7/+7.
 Equip {7}",Colorless,Equipment; removal; equipment; pump; equip,FIN,563,Rare,standard;pioneer;modern;legacy;vintage;historic;timeless;alchemy;brawl,2025-06-13,,
-Enlightened Confidant,Creature — Kor Cleric,"Lifelink
-At the beginning of your end step, if you gained life this turn, surveil 1. If you put a card with mana value less than or equal to the amount of life you gained this turn into your graveyard this way, put that card into your hand.",W,Kor; Cleric; graveyard; lifegain; surveil; lifelink,FRA,5,Mythic,,2026-10-02,2,1
-"The Theorist, Jace Beleren",Legendary Planeswalker — Jace,"At the beginning of each opponent's draw step, you draw a card.
-+1: Create a 1/1 blue Illusion creature token.
-−2: For each opponent, return up to one target artifact or creature that player controls to its owner's hand.
-−6: Draw three cards. Then put X +1/+1 counters on each creature you control, where X is the number of cards in your hand.",U,Jace; Planeswalker; counters; card draw; tokens; planeswalker; bounce,FRA,43,Mythic,,2026-10-02,,
-Bloodline Recollector // Ancestral Craving,Creature — Vampire Warlock // Instant,"At the beginning of each end step, if three or more creatures died this turn, this creature becomes prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.) // Target player draws three cards and loses 3 life.",B,Vampire; Warlock; prepared; spellslinger; tempo,FRA,49,Mythic,,2026-10-02,2,2
-Craterclaw Colossus,Artifact Creature — Beast Construct,"Haste
-When this creature enters, creatures you control gain trample and get +X/+0 until end of turn, where X is the number of artifacts you control.",R,Beast; Construct; etb; pump; haste; aggro,FRA,78,Mythic,,2026-10-02,5,5
-Stingcaster Mage,Creature — Human Wizard,"Haste
-When this creature enters, target instant or sorcery card in your graveyard gains flashback until end of turn. The flashback cost is equal to its mana cost.",R,Human; Wizard; graveyard; etb; haste; aggro,FRA,93,Mythic,,2026-10-02,2,1
-Paradox Shaper // Omit Variables,Creature — Octopus Wizard // Sorcery,"At the beginning of your upkeep, if this creature isn't prepared, it becomes prepared.
-{2}: Put target card from your graveyard on the bottom of your library. // Mill three cards. (Put the top three cards of your library into your graveyard.)",U/B,Octopus; Wizard; graveyard; mill; prepared; spellslinger; tempo,FRA,143,Uncommon,,2026-10-02,1,3
-Prudent Fateseer // Peer Review,Creature — Dwarf Wizard // Sorcery,"This creature enters prepared.
-Whenever you scry or surveil, creatures you control get +1/+0 until end of turn. This ability triggers only once each turn. // Create a 2/2 colorless Wizard Soldier creature token named Cadet. Surveil 1.",W/U,Dwarf; Wizard; tokens; scry; pump; surveil; graveyard; prepared; spellslinger; tempo,FRA,146,Uncommon,,2026-10-02,1,4
-Stingerquill Voxmancer // Vicious Verse,Creature — Goblin Sorcerer // Sorcery,"At the beginning of your upkeep, if this creature isn't prepared, it becomes prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.) // Vicious Verse deals 1 damage to target opponent.",B/R,Goblin; Sorcerer; burn; prepared; spellslinger; tempo,FRA,151,Uncommon,,2026-10-02,1,2
-Vigorbloom Vanguard // Seed Suture,Creature — Troll Druid // Sorcery,"This creature enters prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.)
-Each creature you control with a +1/+1 counter on it has vigilance. // Put a +1/+1 counter on target creature. You gain 1 life.",W/G,Troll; Druid; counters; lifegain; prepared; spellslinger; tempo,FRA,161,Uncommon,,2026-10-02,2,2
-Woodwork Prodigy // Soul Tether,Creature — Cat Druid // Sorcery,"At the beginning of your upkeep, if this creature isn't prepared, it becomes prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.) // Create a Heartwood token. (It's a red and green artifact with ""{T}: Add {R} or {G}."")",R/G,Cat; Druid; tokens; mana; prepared; spellslinger; tempo,FRA,165,Uncommon,,2026-10-02,3,3
-Ajani Resolute,Legendary Planeswalker — Ajani,"Whenever you gain life, put a loyalty counter on Ajani.
-0: You gain 1 life.
-−4: Create a 2/2 white Cat Soldier creature token named Ajani's Pridemate with ""Whenever you gain life, put a +1/+1 counter on this token.""
-−10: You get an emblem with ""Creatures you control get +2/+2.""",W,Ajani; Planeswalker; counters; lifegain; tokens; planeswalker; pump,FRA,195,Mythic,,2026-10-02,,
-Liliana the Faultless,Legendary Creature — Human Cleric,"Whenever another creature or planeswalker you control enters, you gain 1 life.
-{1}, {T}, Discard a card: Another target creature or planeswalker you control gains hexproof until end of turn.",W,Human; Cleric; lifegain,FRA,200,Rare,,2026-10-02,1,1
-"Chandra, Chill of Compliance",Legendary Planeswalker — Chandra,"+1: Surveil 1. If you put a noncreature, nonland card into your graveyard this way, put that card into your hand.
-+1: Add {U}. Spend this mana only to cast a noncreature spell.
-−X: Tap target artifact or creature. Put X stun counters on it.
-−6: You get an emblem with ""Whenever you cast a spell, draw a card.""",U,Chandra; Planeswalker; counters; graveyard; card draw; planeswalker; surveil,FRA,212,Mythic,,2026-10-02,,
-"Garruk, Veiled Butcher",Legendary Planeswalker — Garruk,"If a creature an opponent controls would die, exile it instead.
-+2: Up to one target creature gets -4/-1 until your next turn.
-−2: Each player sacrifices a creature of their choice. If you sacrificed a creature this way, create a 4/4 green Beast creature token with trample.
-−3: Each opponent discards two cards. For each opponent who didn't discard two nonland cards this way, you draw a card.",B,Garruk; Planeswalker; card draw; sacrifice; tokens; planeswalker; removal; discard,FRA,229,Mythic,,2026-10-02,,
-Liliana the Repentant,Legendary Creature — Human Warlock,"Whenever another creature or planeswalker you control enters, mill two cards.
-Exhaust — {5}{B}: Return target creature or planeswalker card from your graveyard to the battlefield. Put a +1/+1 counter on Liliana. Activate only as a sorcery. (Activate each exhaust ability only once.)",B,Human; Warlock; counters; reanimator; graveyard; mill; exhaust; payoff,FRA,231,Rare,,2026-10-02,2,2
-"Tinybones, Pocket Nuisance",Legendary Creature — Skeleton Rogue,"When Tinybones enters, each opponent discards a card.
-Whenever a player discards one or more cards, Tinybones deals 1 damage to each opponent.",B,Skeleton; Rogue; burn; etb; discard; noncombat damage,FRA,237,Uncommon,,2026-10-02,2,1
-Ajani Unrelenting,Legendary Planeswalker — Ajani,"Whenever you activate a loyalty ability, create a 2/2 colorless Wizard Soldier creature token named Cadet.
-+1: Creatures you control get +1/+0 and gain haste until end of turn.
-−2: Discard your hand, then draw a card for each creature you control.
-−3: Ajani deals 4 damage to each creature except for tokens you control.",R,Ajani; Planeswalker; card draw; tokens; burn; planeswalker; pump,FRA,242,Mythic,,2026-10-02,,
-"Chandra, Torch of Defiance",Legendary Planeswalker — Chandra,"+1: Exile the top card of your library. You may cast that card. If you don't, Chandra deals 2 damage to each opponent.
-+1: Add {R}{R}.
-−3: Chandra deals 4 damage to target creature.
-−7: You get an emblem with ""Whenever you cast a spell, this emblem deals 5 damage to any target.""",R,Chandra; Planeswalker; burn; planeswalker; noncombat damage,FRA,244,Mythic,pioneer;modern;legacy;vintage;historic;timeless;brawl,2026-10-02,,
-"Garruk, Curse Breaker",Legendary Planeswalker — Garruk,"Whenever a creature you control with power 4 or greater enters, draw a card.
-+2: Untap up to two target lands.
-−3: Create a 4/4 green Beast creature token with trample.
-−4: Until your next turn, whenever one or more creatures attack one of your opponents, those creatures get +2/+2 and gain trample until end of turn.",G,Garruk; Planeswalker; card draw; tokens; planeswalker; pump,FRA,259,Mythic,,2026-10-02,,
-"Titanbones, Towering Heart",Legendary Creature — Skeleton Druid,"Reach
-Whenever you gain life, put two +1/+1 counters on Titanbones.
-When you discard this card, you gain 3 life.",G,Skeleton; Druid; counters; lifegain; reach; defense,FRA,266,Uncommon,,2026-10-02,4,3
 Coalition Relic,Artifact,"{T}: Add one mana of any color.
 {T}: Put a charge counter on this artifact.
 At the beginning of your first main phase, remove all charge counters from this artifact. Add one mana of any color for each charge counter removed this way.",Colorless,counters; mana,FUT,161,Rare,modern;legacy;vintage;historic;timeless;brawl,2007-05-04,,
@@ -9824,6 +9792,11 @@ This land enters tapped unless you control an Equipment.
 Mirkwood,Land,"This land enters tapped.
 {T}: Add {B} or {G}.
 {2}{B}{G}, {T}, Sacrifice this land: Put two +1/+1 counters on target Bear, Spider, or Wolf you control. Activate only as a sorcery.",B/G,counters; sacrifice; mana,HOB,188,Common,standard;pioneer;modern;legacy;vintage;pauper;historic;timeless;brawl,2026-08-14,,
+Plains,Basic Land — Plains,({T}: Add {W}.),W,Plains; mana,HOB,189,Common,standard;pioneer;modern;legacy;vintage;pauper;historic;timeless;alchemy;brawl,2026-08-14,,
+Island,Basic Land — Island,({T}: Add {U}.),U,Island; mana,HOB,190,Common,standard;pioneer;modern;legacy;vintage;pauper;historic;timeless;alchemy;brawl,2026-08-14,,
+Swamp,Basic Land — Swamp,({T}: Add {B}.),B,Swamp; mana,HOB,191,Common,standard;pioneer;modern;legacy;vintage;pauper;historic;timeless;alchemy;brawl,2026-08-14,,
+Mountain,Basic Land — Mountain,({T}: Add {R}.),R,Mountain; mana,HOB,192,Common,standard;pioneer;modern;legacy;vintage;pauper;historic;timeless;alchemy;brawl,2026-08-14,,
+Forest,Basic Land — Forest,({T}: Add {G}.),G,Forest; mana,HOB,193,Common,standard;pioneer;modern;legacy;vintage;pauper;historic;timeless;alchemy;brawl,2026-08-14,,
 "Fíli and Kíli, Joyous",Legendary Creature — Dwarf Bard,"Haste
 {T}: Add {R}{R}. Spend this mana only to cast Dwarf, Equipment, and Saga spells.",R,Dwarf; Bard; mana; haste; aggro,HOC,1,Rare,legacy;vintage;historic;timeless;brawl,2026-08-14,3,3
 "Gandalf, Party Guest",Legendary Creature — Avatar Wizard,"At the beginning of combat on your turn, you may cast an instant or sorcery spell with mana value X or less from your hand without paying its mana cost, where X is twice the number of legendary Wizards you control.",W/U/R,Avatar; Wizard,HOC,2,Rare,legacy;vintage;historic;timeless;brawl,2026-08-14,3,4
@@ -12902,6 +12875,10 @@ Aethertorch Renegade,Creature — Human Rogue,"When this creature enters, you ge
 {T}, Pay {E}{E}: This creature deals 1 damage to target creature.
 {T}, Pay eight {E}: This creature deals 6 damage to target player or planeswalker.",R,Human; Rogue; burn; etb; energy; noncombat damage,KLR,114,Uncommon,pioneer;modern;legacy;vintage;historic;timeless;brawl,2020-11-12,1,2
 Built to Smash,Instant,"Target attacking creature gets +3/+3 until end of turn. If it's an artifact creature, it gains trample until end of turn.",R,pump,KLR,115,Common,pioneer;modern;legacy;vintage;pauper;historic;timeless;brawl,2020-11-12,,
+"Chandra, Torch of Defiance",Legendary Planeswalker — Chandra,"+1: Exile the top card of your library. You may cast that card. If you don't, Chandra deals 2 damage to each opponent.
++1: Add {R}{R}.
+−3: Chandra deals 4 damage to target creature.
+−7: You get an emblem with ""Whenever you cast a spell, this emblem deals 5 damage to any target.""",R,Chandra; Planeswalker; burn; planeswalker; noncombat damage,KLR,117,Mythic,pioneer;modern;legacy;vintage;historic;timeless;brawl,2020-11-12,,
 Chandra's Revolution,Sorcery,Chandra's Revolution deals 4 damage to target creature. Tap target land. That land doesn't untap during its controller's next untap step.,R,burn,KLR,119,Common,pioneer;modern;legacy;vintage;pauper;historic;timeless;brawl,2020-11-12,,
 Combustible Gearhulk,Artifact Creature — Construct,"First strike
 When this creature enters, target opponent may have you draw three cards. If the player doesn't, you mill three cards, then this creature deals damage to that player equal to the total mana value of those cards.",R,Construct; mill; card draw; etb; noncombat damage; first strike; combat; graveyard,KLR,120,Mythic,pioneer;modern;legacy;vintage;historic;timeless;brawl,2020-11-12,6,6
@@ -16030,14 +16007,6 @@ Each creature you control has ""Whenever a mana ability of this creature resolve
 At the beginning of your upkeep, add {C} for each artifact you control. This mana can't be spent to cast nonartifact spells. Until end of turn, you don't lose this mana as steps and phases end.",Colorless,Golem,MAT,49,Mythic,pioneer;modern;legacy;vintage;historic;timeless;brawl,2023-05-12,*,*
 Drannith Ruins,Land,"{T}: Add {C}.
 {2}, {T}: Put two +1/+1 counters on target non-Human creature that entered this turn.",Colorless,counters; mana,MAT,50,Rare,pioneer;modern;legacy;vintage;historic;timeless;brawl,2023-05-12,,
-Case of the Lost Witness,Enchantment — Case,"When this Case enters, conjure four cards named Fblthp, the Lost into your library, then shuffle. Draw a card.
-To solve — You control a legendary Homunculus.
-Solved — You may look at the top card of your library any time and you may play lands and cast spells from the top of your library.",U,Case; card draw; card advantage; etb; selection; solved; conjure,MBC,62,Uncommon,historic;timeless;brawl,2026-11-09,,
-Oracle of the Alpha,Creature — Bird Wizard,"Flying
-When Oracle of the Alpha enters the battlefield, conjure the Power Nine into your library, then shuffle.
-Whenever Oracle of the Alpha attacks, scry 1.",U,Bird; Wizard; etb; scry; selection; flying; evasion; conjure,MBC,64,Uncommon,historic;timeless;brawl,2026-11-09,2,3
-Perforator Crocodile,Creature — Crocodile,"When Perforator Crocodile enters, for each creature your opponents control, conjure a card named Stab Wound onto the battlefield attached to that creature.
-Cycling {1}{B}",B,Crocodile; etb; cycling; card draw; conjure,MBC,66,Uncommon,historic;timeless;brawl,2026-11-09,6,5
 Leonin Relic-Warder,Creature — Cat Cleric,"When this creature enters, you may exile target artifact or enchantment.
 When this creature leaves the battlefield, return the exiled card to the battlefield under its owner's control.",W,Cat; Cleric; removal; etb; blink,MBS,10,Uncommon,modern;legacy;vintage;historic;timeless;brawl,2011-02-04,2,2
 Green Sun's Zenith,Sorcery,"Search your library for a green creature card with mana value X or less, put it onto the battlefield, then shuffle. Shuffle Green Sun's Zenith into its owner's library.",G,,MBS,81,Rare,modern;legacy;vintage;historic;timeless;brawl,2011-02-04,,
@@ -28543,182 +28512,6 @@ When this land enters, you gain 1 life.
 Turtle Lair,Land,"{T}: Add {C}.
 {T}: Add one mana of any color. Spend this mana only to cast a Ninja or Turtle spell.
 {3}, {T}: Target Ninja or Turtle can't be blocked this turn.",Colorless,mana,TMT,190,Uncommon,standard;pioneer;modern;legacy;vintage;historic;timeless;alchemy;brawl,2026-03-06,,
-"70,000 Light-Years from Home",Sorcery,"Exile target creature or Spacecraft. Its controller may search their library for a basic land card, reveal it, put it into their hand, then shuffle.",W,removal,TRK,1,Uncommon,,2026-11-13,,
-"Brad Boimler, Eager Ensign",Legendary Creature — Human Officer,"Lifelink
-Whenever Brad Boimler becomes tapped, until end of turn, if one or more counters would be put on a permanent you control, that many plus one of each of those kinds of counters are put on that permanent instead.",W,Human; Officer; lifegain; lifelink,TRK,5,Uncommon,,2026-11-13,2,2
-Command Decision,Sorcery,"Choose one —
-• Destroy target creature with power 4 or greater.
-• Draw a card.",W,card draw; removal,TRK,8,Common,,2026-11-13,,
-DOT-7 Repair Squad,Artifact Creature — Robot,"Flying
-{1}{W}: Untap target creature. Activate only as a sorcery and only once each turn.",W,Robot; flying; evasion,TRK,12,Common,,2026-11-13,3,3
-Dr. Beverly Crusher,Legendary Creature — Human Doctor,"If you gaining life causes a triggered ability of a permanent you control to trigger, that ability triggers an additional time.
-Whenever you gain life, put a +1/+1 counter on Dr. Crusher.",W,Human; Doctor; counters; lifegain,TRK,13,Mythic,,2026-11-13,2,2
-Emergency Medical Hologram,Artifact Creature — Illusion Doctor,"When this creature enters, put a +1/+1 counter on target creature. You gain 1 life.",W,Illusion; Doctor; counters; lifegain; etb,TRK,15,Common,,2026-11-13,0,1
-Federation Field Medic,Creature — Human Doctor,"Vigilance
-When this creature enters, choose one —
-• Put a +1/+1 counter on target creature. It gains vigilance until end of turn.
-• Draw a card if you control a permanent with a counter on it.",W,Human; Doctor; counters; card draw; etb; vigilance; combat,TRK,17,Common,,2026-11-13,3,2
-Free Borg Revolutionaries,Artifact Creature — Borg Rebel,"When this creature enters, creatures you control get +1/+1 until end of turn.
-Basic landcycling {2} ({2}, Discard this card: Search your library for a basic land card, reveal it, put it into your hand, then shuffle.)",W,Borg; Rebel; ramp; etb; pump; landcycling; card draw; lands; basic landcycling; typecycling; cycling,TRK,19,Common,,2026-11-13,4,5
-Malfunctioning Holodeck,Artifact,"Ward {2} (Whenever this artifact becomes the target of a spell or ability an opponent controls, counter it unless that player pays {2}.)
-When this artifact enters, exile target nonland permanent an opponent controls until this artifact leaves the battlefield.",W,removal; etb; ward; protection,TRK,22,Common,,2026-11-13,,
-"Picard, Leading by Example",Legendary Creature — Human Officer,"{1}, {T}: Another target creature gets +X/+X until end of turn, where X is Picard's power. Activate only as a sorcery.",W,Human; Officer; pump,TRK,29,Uncommon,,2026-11-13,2,2
-"Saavik, Stoic Student",Legendary Creature — Vulcan Advisor,"Flash
-Federation — When Saavik enters, she deals X damage to target attacking or blocking creature an opponent controls, where X is the number of creature types among non-Borg creatures you control.",W,Vulcan; Advisor; Borg; burn; etb; flash; tempo,TRK,33,Uncommon,,2026-11-13,2,2
-Set Phasers to . . .,Instant,"Choose one —
-• Stun — Tap target creature and put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)
-• Kill — This spell deals 3 damage to target attacking creature.",W,counters; burn,TRK,34,Common,,2026-11-13,,
-Shields Up!,Instant,"Target artifact or creature you control gains hexproof and indestructible until end of turn. If it's a creature, put a +1/+1 counter on it. (It can't be the target of spells or abilities your opponents control. Damage and effects that say ""destroy"" don't destroy it.)",W,counters,TRK,35,Common,,2026-11-13,,
-Shuttle Ace,Creature — Kelpien Pilot,"During your turn, this creature has flying.
-Whenever this creature becomes tapped, you gain 2 life.",W,Kelpien; Pilot; lifegain,TRK,36,Common,,2026-11-13,4,4
-Tactical Officer,Creature — Human Officer,"Whenever you attack while creatures you control have total power 8 or greater, put a +1/+1 counter on this creature. Untap it.",W,Human; Officer; counters,TRK,38,Common,,2026-11-13,2,1
-Cloistered Telepath,Creature — Talosian Advisor,"Flash
-When this creature enters, draw a card, then discard a card.",U,Talosian; Advisor; card draw; etb; flash; tempo,TRK,50,Common,,2026-11-13,2,1
-Consider the Prime Directive,Instant,"Choose one —
-• Interfere — Counter target spell unless its controller pays {3}.
-• Observe — Tap up to one target creature and put a stun counter on it. Draw a card. (If a permanent with a stun counter would become untapped, remove one from it instead.)",U,counters; counterspell; card draw,TRK,51,Common,,2026-11-13,,
-Dominion Saboteur,Creature — Shapeshifter,"You may have this creature enter as a copy of any artifact or creature on the battlefield, except it isn't legendary. If you do, it enters with additional counters on it equal to the same number and kinds of counters the copied permanent has on it.",U,Shapeshifter,TRK,54,Uncommon,,2026-11-13,3,3
-Federation Probe,Artifact Creature — Construct,"Flying
-When this creature enters, choose one —
-• Target creature gets +1/+1 until end of turn.
-• Surveil 1. (Look at the top card of your library. You may put it into your graveyard.)",U,Construct; graveyard; etb; pump; selection; flying; evasion; surveil,TRK,59,Common,,2026-11-13,1,1
-Guidance Failure,Instant,"This spell costs {1} less to cast if it targets an attacking creature.
-Target creature or Spacecraft's owner puts it on their choice of the top or bottom of their library.",U,cost-reduction,TRK,60,Common,,2026-11-13,,
-Highly Illogical,Instant,"Kicker {1}{U} (You may pay an additional {1}{U} as you cast this spell.)
-Counter target spell with mana value 2 or less. If this spell was kicked, instead counter target spell.",U,counterspell; kicker; value,TRK,62,Uncommon,,2026-11-13,,
-"Hoshi Sato, Exolinguist",Legendary Creature — Human Scientist,"Federation — When Hoshi Sato enters, look at the top X cards of your library, where X is the number of creature types among non-Borg creatures you control. Put one of them into your hand and the rest on the bottom of your library in a random order.",U,Human; Scientist; Borg; etb; selection,TRK,64,Uncommon,,2026-11-13,3,3
-Humpback Whales,Creature — Whale,"Vigilance, ward {2} (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {2}.)
-Basic landcycling {2} ({2}, Discard this card: Search your library for a basic land card, reveal it, put it into your hand, then shuffle.)",U,Whale; ramp; vigilance; combat; landcycling; card draw; lands; basic landcycling; ward; protection; typecycling; cycling,TRK,65,Common,,2026-11-13,5,6
-Marooned,Enchantment — Aura,"Enchant artifact or creature
-When this Aura enters, you may pay {3}. If you do, tap enchanted permanent.
-Enchanted permanent doesn't untap during its controller's untap step and can't be beamed up.",U,Aura; etb; aura; enchant,TRK,72,Common,,2026-11-13,,
-Open Communications,Sorcery,"Draw a card.
-Beam me up {2}{U} (You may cast this card from your graveyard for {2}{U} if you also return a creature you control to its owner's hand. Then exile this spell.)",U,graveyard; card draw; bounce,TRK,76,Common,,2026-11-13,,
-"V'Ger, the Intruder",Legendary Artifact Creature — Construct,"Flying
-Whenever V'Ger enters or attacks, choose one —
-• Look at target opponent's hand, then draw a card.
-• Creatures your opponents control get -1/-0 until your next turn.",U,Construct; card draw; flying; evasion,TRK,87,Uncommon,,2026-11-13,5,7
-Assault Drone,Artifact Creature — Borg,Artifact creatures you control get +1/+0.,B,Borg; pump,TRK,92,Common,,2026-11-13,2,4
-Automated Warfare System,Artifact Creature — Construct,"Flying
-Whenever this creature attacks, you may sacrifice another creature or artifact. If you do, draw a card.",B,Construct; card draw; sacrifice; flying; evasion,TRK,93,Common,,2026-11-13,2,2
-Bat'leth,Artifact — Equipment,"When this Equipment enters, target creature an opponent controls gets -2/-2 until end of turn.
-Equipped creature gets +2/+0.
-Equip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)",B,Equipment; etb; equipment; pump; removal; equip,TRK,94,Uncommon,,2026-11-13,,
-Battle-Scarred Survivalist,Creature — Klingon Scout,"Menace (This creature can't be blocked except by two or more creatures.)
-Whenever another creature dies, put a +1/+1 counter on this creature. This ability triggers only once each turn.",B,Klingon; Scout; counters; menace; evasion,TRK,95,Common,,2026-11-13,1,1
-Cha'DIch Investigator,Creature — Klingon Warrior,"When this creature enters, create a 2/1 red Klingon Warrior creature token with haste.",B,Klingon; Warrior; tokens; etb,TRK,97,Common,,2026-11-13,4,4
-Collective Drone,Artifact Creature — Borg,Collective Drone's power is equal to the number of artifact creatures you control.,B,Borg,TRK,99,Uncommon,,2026-11-13,*,2
-Eject the Warp Core,Instant,"Kicker—Sacrifice an artifact or creature. (You may sacrifice an artifact or creature in addition to any other costs as you cast this spell.)
-Target creature gets -2/-2 until end of turn. If this spell was kicked, that creature gets -6/-6 until end of turn instead.",B,sacrifice; removal; kicker; value,TRK,105,Common,,2026-11-13,,
-"General Chang, Cold Warrior",Legendary Creature — Klingon Warrior Officer,"{1}, Sacrifice a creature: Put a +1/+1 counter on each Klingon you control.",B,Klingon; Warrior; Officer; counters; sacrifice,TRK,109,Rare,,2026-11-13,1,2
-A Good Day to Die,Instant,"Target creature gets +2/+0 until end of turn. When that creature dies this turn, you draw a card.",B,card draw; pump,TRK,111,Common,,2026-11-13,,
-"He's Dead, Jim",Instant,Destroy target creature. Surveil 1. (Look at the top card of your library. You may put it into your graveyard.),B,graveyard; removal; selection; surveil,TRK,114,Common,,2026-11-13,,
-Hive Mind Coprocessor,Artifact Creature — Borg,"Artifact creatures you control have ""Whenever this creature deals combat damage to a player, you may pay 1 life. If you do, draw a card.""",B,Borg; pay life; card draw,TRK,115,Uncommon,,2026-11-13,4,4
-In the Pale Moonlight,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
-I — Each opponent sacrifices a nontoken creature of their choice.
-II — Investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")
-III — You may sacrifice an artifact or creature. If you do, create two 2/2 black Romulan creature tokens.",B,Saga; card draw; sacrifice; tokens; clue; saga; investigate,TRK,117,Uncommon,,2026-11-13,,
-Organic Avulsion Unit,Artifact Creature — Borg,{2}: Artifact creatures you control gain menace until end of turn. (A creature with menace can't be blocked except by two or more creatures.),B,Borg,TRK,121,Uncommon,,2026-11-13,2,3
-Relentless Drednok,Artifact Creature — Robot,"Lifelink
-{2}{B}, Exile this card from your graveyard: You draw a card and lose 1 life.",B,Robot; graveyard; lifegain; pay life; card draw; lifelink,TRK,124,Common,,2026-11-13,1,1
-Resistance Is Futile,Sorcery,"Choose one —
-• Destroy target nonartifact creature.
-• Return target artifact creature card with mana value 3 or less from your graveyard to the battlefield.",B,reanimator; graveyard; removal,TRK,125,Uncommon,,2026-11-13,,
-Rogue Artificial Intelligence,Artifact Creature — Construct,"When this creature enters, choose one —
-• You gain 3 life.
-• Surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)
-Basic landcycling {2} ({2}, Discard this card: Search your library for a basic land card, reveal it, put it into your hand, then shuffle.)",B,Construct; graveyard; lifegain; ramp; etb; selection; surveil; landcycling; card draw; lands; basic landcycling; typecycling; cycling,TRK,126,Common,,2026-11-13,6,5
-Salt Vampire,Creature — Vampire Shapeshifter,"Lifelink
-When this creature enters, look at target opponent's hand. You may choose a nonland card from it. If you do, that player exiles that card, then draws a card.",B,Vampire; Shapeshifter; lifegain; etb; lifelink,TRK,127,Rare,,2026-11-13,2,2
-"Beckett Mariner, Impetuous Ensign",Legendary Creature — Human Officer,"First strike
-Reckless Behavior — Whenever Beckett Mariner becomes tapped, put a promotion counter on her. Then if there are three or more promotion counters on her, remove those counters and she deals 2 damage to each opponent.",R,Human; Officer; counters; burn; noncombat damage; first strike; combat,TRK,138,Uncommon,,2026-11-13,2,1
-Cantankerous Captain,Creature — Tellarite Officer,"At the beginning of combat on your turn, target creature you control gets +1/+0 until end of turn. Then that creature gains menace until end of turn if creatures you control have total power 8 or greater. (It can't be blocked except by two or more creatures.)",R,Tellarite; Officer; pump,TRK,141,Common,,2026-11-13,2,3
-Captain James T. Kirk,Legendary Creature — Human Officer,"Whenever Captain Kirk enters or attacks, choose one. If you have no cards in hand, choose one or more instead.
-• Discard a card, then draw a card.
-• Create a 1/1 red Officer creature token.
-• Creatures you control get +1/+0 until end of turn.",R,Human; Officer; card draw; tokens; pump,TRK,142,Mythic,,2026-11-13,2,2
-Captain's Tutelage,Enchantment — Aura,"Flash
-Enchant creature
-When this Aura enters, enchanted creature gains first strike until end of turn.
-Enchanted creature gets +2/+0.",R,Aura; etb; aura; pump; enchant; flash; tempo,TRK,144,Common,,2026-11-13,,
-Horta,Creature — Elemental,"Trample
-Basic landcycling {2} ({2}, Discard this card: Search your library for a basic land card, reveal it, put it into your hand, then shuffle.)",R,Elemental; ramp; landcycling; card draw; lands; trample; evasion; basic landcycling; typecycling; cycling,TRK,152,Common,,2026-11-13,7,6
-Khaaaaaaaaaaaannn!,Instant,"Khaaaaaaaaaaaannn! deals twice X damage to target creature. If that creature would die this turn, exile it instead.",R,,TRK,154,Uncommon,,2026-11-13,,
-"La'An Noonien-Singh, Security",Legendary Creature — Human Soldier,"Whenever you attack while creatures you control have total power 8 or greater, target creature can't block this turn.",R,Human; Soldier,TRK,156,Uncommon,,2026-11-13,4,3
-Munitions Enthusiast,Creature — Klingon Warrior,"Trample
-When this creature dies, it deals 1 damage to any target.",R,Klingon; Warrior; burn; noncombat damage; trample; evasion,TRK,158,Uncommon,,2026-11-13,3,2
-Perils of the Past,Instant,"Choose one —
-• Use the Relic — Target creature gets +3/+2 until end of turn.
-• Destroy the Relic — Destroy target artifact.",R,removal; pump,TRK,161,Common,,2026-11-13,,
-Planetary Patrol,Creature — Scout,"Landfall — Whenever a land you control enters, this creature gets +1/+1 until end of turn.",R,Scout; landfall; pump; lands; ramp,TRK,163,Common,,2026-11-13,2,2
-Plasma Cascade,Instant,"Plasma Cascade deals 3 damage to any target. You may discard a card. If you do, draw a card.",R,card draw; burn,TRK,164,Common,,2026-11-13,,
-Reckless Impulse,Sorcery,"Exile the top two cards of your library. Until the end of your next turn, you may play those cards.",R,impulse,TRK,168,Common,pioneer;modern;legacy;vintage;pauper;historic;timeless;brawl,2026-11-13,,
-Silicate Surveyor,Creature — Tholian Scout,"Reach
-When this creature enters, exile the top card of your library. Until the end of your next turn, you may play that card.",R,Tholian; Scout; etb; impulse; reach; defense,TRK,172,Common,,2026-11-13,4,4
-Amok Time,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
-I — Target creature you control fights up to one target creature an opponent controls.
-II — You gain 3 life.
-III — Return target creature card from your graveyard to your hand.",G,Saga; graveyard; lifegain; sacrifice; saga; fight; removal; combat,TRK,183,Uncommon,,2026-11-13,,
-Captain Kathryn Janeway,Legendary Creature — Human Officer,"You may play an additional land on each of your turns.
-Whenever Captain Janeway or another creature you control enters, that creature explores. (Reveal the top card of your library. Put that card into your hand if it's a land. Otherwise, put a +1/+1 counter on the creature, then put the card back or put it into your graveyard.)",G,Human; Officer; counters; graveyard; explore; selection,TRK,187,Mythic,,2026-11-13,2,3
-Cold-Blooded Crew,Creature — Gorn Warrior,"When this creature enters, put two +1/+1 counters on target creature.
-This creature can't be blocked by creatures with power 2 or less.
-Basic landcycling {2} ({2}, Discard this card: Search your library for a basic land card, reveal it, put it into your hand, then shuffle.)",G,Gorn; Warrior; counters; ramp; etb; landcycling; card draw; lands; basic landcycling; typecycling; cycling,TRK,189,Common,,2026-11-13,4,4
-Common Goal,Sorcery,One or two target creatures you control each deal damage equal to their power to target creature an opponent controls.,G,,TRK,190,Common,,2026-11-13,,
-Dathon and Picard at El-Adrel,Instant,"Choose one —
-• Temba, His Arms Wide — Target creature gets +3/+3 and gains trample until end of turn.
-• Shaka, When the Walls Fell — Each opponent sacrifices a nontoken artifact or enchantment of their choice.",G,sacrifice; pump,TRK,192,Common,,2026-11-13,,
-Dominion Supervisor,Creature — Vorta Doctor,"When this creature enters, put a +1/+1 counter on target creature.
-Creatures you control with counters on them have trample.",G,Vorta; Doctor; counters; etb,TRK,195,Common,,2026-11-13,3,1
-First Contact,Instant,"Mill four cards. You may put a permanent card from among them into your hand. If this spell is the first spell you've cast this game, you gain 2 life. (To mill four cards, put the top four cards of your library into your graveyard.)",G,graveyard; mill; lifegain,TRK,199,Common,,2026-11-13,,
-"I'm a Doctor, Not a . . .",Instant,"Put a +1/+1 counter on target creature you control. Untap it. Until end of turn, it gets +1/+1 and becomes a Doctor. (It loses all other creature types.)",G,counters; pump,TRK,203,Common,,2026-11-13,,
-Moopsy,Creature — Beast,"Deathtouch
-{2}: This creature gains reach until end of turn.",G,Beast; deathtouch; combat; removal,TRK,207,Common,,2026-11-13,1,1
-Mugato,Creature — Ape Beast,"Reach, vigilance, deathtouch",G,Ape; Beast; reach; defense; vigilance; combat; deathtouch; removal,TRK,208,Uncommon,,2026-11-13,6,6
-Saurian Explorer,Creature — Dinosaur Scout,"Landfall — Whenever a land you control enters, this creature gets +2/+2 until end of turn.
-{6}: Create a tapped Planet land token named New Planet with ""{T}: Add one mana of any color."" Activate only as a sorcery.",G,Dinosaur; Scout; tokens; mana; ramp; landfall; pump; lands,TRK,213,Common,,2026-11-13,4,3
-Support Mission,Enchantment,"Whenever a creature you control enters, put a quest counter on this enchantment. Put a +1/+1 counter on that creature. If this enchantment has five or more quest counters on it, instead put two +1/+1 counters on that creature.",G,counters,TRK,216,Uncommon,,2026-11-13,,
-Syndicate Liquidators,Creature — Orion Pirate,"Trample
-Landfall — Whenever a land you control enters, put two +1/+1 counters on target creature you control.",G,Orion; Pirate; counters; landfall; trample; evasion; lands; ramp,TRK,218,Uncommon,,2026-11-13,4,4
-Xenobotanist,Creature — Vulcan Scientist,{T}: Add one mana of any color.,G,Vulcan; Scientist; mana,TRK,224,Common,,2026-11-13,1,3
-Xindi Surveyors,Creature — Xindi Scientist,"Landfall — Whenever a land you control enters, put a +1/+1 counter on this creature.",G,Xindi; Scientist; counters; landfall; lands; ramp,TRK,225,Common,,2026-11-13,3,2
-The City on the Edge of Forever,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
-I — All artifacts and creatures phase out. Create a 0/1 white Human creature token with ""Permanents can't phase in."" (Treat phased-out permanents and anything attached to them as though they don't exist.)
-II — You draw two cards and each player loses 2 life.
-III — Sacrifice a creature token. If you do, you gain 5 life.",W/B,Saga; lifegain; card draw; sacrifice; tokens; saga,TRK,228,Rare,,2026-11-13,,
-Seven of Nine,Legendary Artifact Creature — Human Scientist,"Whenever you face a dilemma, draw a card. (You face a dilemma as you choose one or more modes for a spell or ability.)",U/B,Human; Scientist; card draw,TRK,252,Uncommon,,2026-11-13,2,4
-Crystalline Entity,Artifact Creature — Elemental,"Flying
-When this creature enters, if you cast it, destroy all nonartifact creatures.",Colorless,Elemental; etb; flying; evasion,TRK,261,Mythic,,2026-11-13,7,7
-Cybernetic Specialist,Artifact Creature — Human Scientist,"When this creature enters, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)
-{1}, {T}: Put target card from your graveyard on the bottom of your library.",Colorless,Human; Scientist; graveyard; etb; selection; surveil,TRK,262,Common,,2026-11-13,2,1
-"U.S.S. Enterprise-D, Galaxy-Class",Legendary Artifact — Spacecraft,"Whenever one or more charge counters are put on U.S.S. Enterprise-D for the first time each turn, exile the top card of your library. You may play that card this turn.
-Station (Tap another creature you control: Put charge counters equal to its power on this Spacecraft. Station only as a sorcery. It's an artifact creature at 7+.)
-7+ | Flying, vigilance",Colorless,Spacecraft; impulse; station; counters; artifacts,TRK,273,Rare,,2026-11-13,4,5
-Blood Crypt,Land — Swamp Mountain,"({T}: Add {B} or {R}.)
-As this land enters, you may pay 2 life. If you don't, it enters tapped.",B/R,Swamp; Mountain; pay life; mana,TRK,278,Rare,standard;pioneer;modern;legacy;vintage;historic;timeless;alchemy;brawl,2026-11-13,,
-Breeding Pool,Land — Forest Island,"({T}: Add {G} or {U}.)
-As this land enters, you may pay 2 life. If you don't, it enters tapped.",U/G,Forest; Island; pay life; mana,TRK,279,Rare,standard;pioneer;modern;legacy;vintage;historic;timeless;alchemy;brawl,2026-11-13,,
-Godless Shrine,Land — Plains Swamp,"({T}: Add {W} or {B}.)
-As this land enters, you may pay 2 life. If you don't, it enters tapped.",W/B,Plains; Swamp; pay life; mana,TRK,285,Rare,standard;pioneer;modern;legacy;vintage;historic;timeless;alchemy;brawl,2026-11-13,,
-Hallowed Fountain,Land — Plains Island,"({T}: Add {W} or {U}.)
-As this land enters, you may pay 2 life. If you don't, it enters tapped.",W/U,Plains; Island; pay life; mana,TRK,286,Rare,standard;pioneer;modern;legacy;vintage;historic;timeless;alchemy;brawl,2026-11-13,,
-Overgrown Tomb,Land — Swamp Forest,"({T}: Add {B} or {G}.)
-As this land enters, you may pay 2 life. If you don't, it enters tapped.",B/G,Swamp; Forest; pay life; mana,TRK,289,Rare,standard;pioneer;modern;legacy;vintage;historic;timeless;alchemy;brawl,2026-11-13,,
-Sacred Foundry,Land — Mountain Plains,"({T}: Add {R} or {W}.)
-As this land enters, you may pay 2 life. If you don't, it enters tapped.",W/R,Mountain; Plains; pay life; mana,TRK,295,Rare,standard;pioneer;modern;legacy;vintage;historic;timeless;alchemy;brawl,2026-11-13,,
-Steam Vents,Land — Island Mountain,"({T}: Add {U} or {R}.)
-As this land enters, you may pay 2 life. If you don't, it enters tapped.",U/R,Island; Mountain; pay life; mana,TRK,298,Rare,standard;pioneer;modern;legacy;vintage;historic;timeless;alchemy;brawl,2026-11-13,,
-Stomping Ground,Land — Mountain Forest,"({T}: Add {R} or {G}.)
-As this land enters, you may pay 2 life. If you don't, it enters tapped.",R/G,Mountain; Forest; pay life; mana,TRK,299,Rare,standard;pioneer;modern;legacy;vintage;historic;timeless;alchemy;brawl,2026-11-13,,
-Temple Garden,Land — Forest Plains,"({T}: Add {G} or {W}.)
-As this land enters, you may pay 2 life. If you don't, it enters tapped.",W/G,Forest; Plains; pay life; mana,TRK,301,Rare,standard;pioneer;modern;legacy;vintage;historic;timeless;alchemy;brawl,2026-11-13,,
-Watery Grave,Land — Island Swamp,"({T}: Add {U} or {B}.)
-As this land enters, you may pay 2 life. If you don't, it enters tapped.",U/B,Island; Swamp; pay life; mana,TRK,306,Rare,standard;pioneer;modern;legacy;vintage;historic;timeless;alchemy;brawl,2026-11-13,,
-Plains,Basic Land — Plains,({T}: Add {W}.),W,Plains; mana,TRK,317,Common,standard;pioneer;modern;legacy;vintage;pauper;historic;timeless;alchemy;brawl,2026-11-13,,
-Island,Basic Land — Island,({T}: Add {U}.),U,Island; mana,TRK,319,Common,standard;pioneer;modern;legacy;vintage;pauper;historic;timeless;alchemy;brawl,2026-11-13,,
-Swamp,Basic Land — Swamp,({T}: Add {B}.),B,Swamp; mana,TRK,321,Common,standard;pioneer;modern;legacy;vintage;pauper;historic;timeless;alchemy;brawl,2026-11-13,,
-Mountain,Basic Land — Mountain,({T}: Add {R}.),R,Mountain; mana,TRK,323,Common,standard;pioneer;modern;legacy;vintage;pauper;historic;timeless;alchemy;brawl,2026-11-13,,
-Forest,Basic Land — Forest,({T}: Add {G}.),G,Forest; mana,TRK,325,Common,standard;pioneer;modern;legacy;vintage;pauper;historic;timeless;alchemy;brawl,2026-11-13,,
 Magmaw,Creature — Elemental,"{1}, Sacrifice a nonland permanent: This creature deals 1 damage to any target.",R,Elemental; sacrifice; burn; noncombat damage,UMA,138,Uncommon,modern;legacy;vintage;historic;timeless;brawl,2018-12-07,4,4
 "Leovold, Emissary of Trest",Legendary Creature — Elf Advisor,"Each opponent can't draw more than one card each turn.
 Whenever you or a permanent you control becomes the target of a spell or ability an opponent controls, you may draw a card.",U/B/G,Elf; Advisor; card draw,UMA,202,Mythic,legacy;vintage;historic;timeless;brawl,2018-12-07,3,3
@@ -29148,6 +28941,7 @@ Olivia's Attendants,Creature — Vampire,"Menace
 Whenever this creature deals damage, create that many Blood tokens. (They're artifacts with ""{1}, {T}, Discard a card, Sacrifice this token: Draw a card."")
 {2}{R}: This creature deals 1 damage to any target.",R,Vampire; card draw; sacrifice; tokens; burn; noncombat damage; menace; evasion,VOW,172,Rare,pioneer;modern;legacy;vintage;historic;timeless;brawl,2021-11-19,6,6
 Pyre Spawn,Creature — Elemental,"When this creature dies, it deals 3 damage to any target.",R,Elemental; burn; noncombat damage,VOW,173,Common,pioneer;modern;legacy;vintage;pauper;historic;timeless;brawl,2021-11-19,6,4
+Reckless Impulse,Sorcery,"Exile the top two cards of your library. Until the end of your next turn, you may play those cards.",R,impulse,VOW,174,Common,pioneer;modern;legacy;vintage;pauper;historic;timeless;brawl,2021-11-19,,
 Rending Flame,Instant,"Rending Flame deals 5 damage to target creature or planeswalker. If that permanent is a Spirit, Rending Flame also deals 2 damage to that permanent's controller.",R,burn,VOW,175,Uncommon,pioneer;modern;legacy;vintage;historic;timeless;brawl,2021-11-19,,
 Runebound Wolf,Creature — Wolf,"{3}{R}, {T}: This creature deals damage equal to the number of Wolves and Werewolves you control to target opponent.",R,Wolf; Werewolve,VOW,176,Uncommon,pioneer;modern;legacy;vintage;historic;timeless;brawl,2021-11-19,2,2
 Sanguine Statuette,Artifact,"When this artifact enters, create a Blood token. (It's an artifact with ""{1}, {T}, Discard a card, Sacrifice this token: Draw a card."")
@@ -30880,6 +30674,9 @@ Priest of Possibility,Creature — Kor Cleric,"When Priest of Possibility enters
 Pull of the Mist Moon,Enchantment,"Kicker {1}{U}
 When Pull of the Mist Moon enters, exile target nonland permanent an opponent controls until Pull of the Mist Moon leaves the battlefield.
 When Pull of the Mist Moon enters, if it was kicked, choose a nonland permanent card in your hand. It perpetually gains ""When this permanent enters, exile target nonland permanent an opponent controls until this permanent leaves the battlefield.""",W/U,removal; etb; kicker; value,YDMU,3,Uncommon,historic;timeless;brawl,2022-10-05,,
+Oracle of the Alpha,Creature — Bird Wizard,"Flying
+When Oracle of the Alpha enters the battlefield, conjure the Power Nine into your library, then shuffle.
+Whenever Oracle of the Alpha attacks, scry 1.",U,Bird; Wizard; etb; scry; selection; flying; evasion; conjure,YDMU,4,Mythic,historic;timeless;brawl,2022-10-05,2,3
 Skywriter Djinn,Creature — Djinn,"Flying
 Domain — When Skywriter Djinn enters, conjure a random card from Skywriter Djinn's spellbook into your hand. Then if you have fewer cards in hand than the number of basic land types among lands you control, repeat this process.",U,Djinn; etb; flying; evasion; domain; lands; conjure,YDMU,5,Rare,historic;timeless;brawl,2022-10-05,3,4
 Trove Mage,Creature — Human Wizard,"When Trove Mage enters, seek an artifact card from among the top ten cards of your library, then shuffle.",U,Human; Wizard; etb; seek,YDMU,6,Uncommon,historic;timeless;brawl,2022-10-05,2,2
@@ -31027,8 +30824,8 @@ Circadian Struggle,Instant,"Vivid — Seek X cards that each share a color with 
 Elvish Elegy,Kindred Sorcery — Elf,"Mill three cards, then each creature card in your graveyard perpetually gets +1/+1. You may put an Elf or land card from among the milled cards into your hand.",B/G,Elf; graveyard; mill; pump,YECL,19,Uncommon,historic;timeless;alchemy;brawl,2026-02-03,,
 The Grand Goatnapper,Legendary Creature — Goblin Rogue,"Spells you cast have affinity for Goats.
 {T}: Another target non-Goat creature perpetually becomes a Goat in addition to its other types. Then conjure a card named Goatnap into your hand. Activate only as a sorcery.",B/R,Goblin; Rogue; conjure,YECL,20,Rare,historic;timeless;alchemy;brawl,2026-02-03,3,4
-Kithkin Brinefarer,Creature — Kithkin Warrior,"Whenever a Kithkin card is put into your hand from your library, conjure a duplicate of that card into your hand.
-Whenever you attack, Kithkin creature cards in your hand perpetually get +1/+1.",W/G,Kithkin; Warrior; pump; conjure,YECL,21,Rare,historic;timeless;alchemy;brawl,2026-02-03,3,3
+Kithkin Brinefarer,Creature — Kithkin Warrior Bard,"Whenever a Kithkin card is put into your hand from your library, conjure a duplicate of that card into your hand.
+Whenever you attack, Kithkin creature cards in your hand perpetually get +1/+1.",W/G,Kithkin; Warrior; Bard; pump; conjure,YECL,21,Rare,historic;timeless;alchemy;brawl,2026-02-03,3,3
 "Oura, the Imitator",Legendary Creature — Faerie Noble,"Flash
 Flying, Lifelink
 As long as the top card of your library is a Faerie or instant card, you may look at it any time and you may cast it.
@@ -31313,6 +31110,9 @@ Whenever Sleuth Instructor or another permanent you control is turned face up, s
 Spotlight Falcon,Artifact Creature — Bird,"As an additional cost to cast this spell, you may collect evidence 5.
 Flying
 When Spotlight Falcon enters, if evidence was collected, conjure a card named Spotlight Falcon into your hand.",W,Bird; etb; flying; evasion; collect evidence; graveyard; conjure,YMKM,3,Rare,historic;timeless;brawl,2024-03-05,4,3
+Case of the Lost Witness,Enchantment — Case,"When this Case enters, conjure four cards named Fblthp, the Lost into your library, then shuffle. Draw a card.
+To solve — You control a legendary Homunculus.
+Solved — You may look at the top card of your library any time and you may play lands and cast spells from the top of your library.",U,Case; card draw; card advantage; etb; selection; solved; conjure,YMKM,4,Mythic,historic;timeless;brawl,2024-03-05,,
 Emporium Thopterist,Creature — Vedalken Artificer,"Thopters you control get +2/+0.
 At the beginning of your upkeep, conjure a card named Ornithopter into your hand.",U,Vedalken; Artificer; Thopter; pump; conjure,YMKM,5,Uncommon,historic;timeless;brawl,2024-03-05,1,1
 Excogitator Sphinx,Creature — Sphinx Detective,"Flying
@@ -31327,6 +31127,8 @@ When Cackling Observer enters, target opponent reveals each nonland card in thei
 When Cackling Observer leaves the battlefield, the exiled card's owner seeks a nonland card with lesser mana value than the exiled card.",B,Imp; etb; flying; evasion; seek,YMKM,9,Rare,historic;timeless;brawl,2024-03-05,3,1
 Lurking Spinecrawler,Creature — Horror,"When Lurking Spinecrawler enters, you may choose a nonland card in your hand. If you do, that card perpetually incorporates {1}{B} and gains ""When you cast this spell, each opponent sacrifices a creature. Each opponent who can't discards a card.""
 Whenever you cast a multicolored spell, for each of that spell's colors, each opponent loses 1 life and you gain 1 life.",B,Horror; lifegain; sacrifice; etb; discard; incorporate,YMKM,10,Uncommon,historic;timeless;brawl,2024-03-05,5,4
+Perforator Crocodile,Creature — Crocodile,"When Perforator Crocodile enters, for each creature your opponents control, conjure a card named Stab Wound onto the battlefield attached to that creature.
+Cycling {1}{B}",B,Crocodile; etb; cycling; card draw; conjure,YMKM,11,Mythic,historic;timeless;brawl,2024-03-05,6,5
 Snarlfang Vermin,Creature — Rat,"Whenever Snarlfang Vermin deals combat damage to a creature, if that creature is still on the battlefield, suspect that creature. It perpetually gains this ability.
 Whenever a suspected creature an opponent controls dies while Snarlfang Vermin is in your graveyard, that opponent loses 1 life.",B,Rat; graveyard; suspect; aristocrats,YMKM,12,Uncommon,historic;timeless;brawl,2024-03-05,2,1
 Case of the Market Melee,Enchantment — Case,"When this Case enters, it deals 1 damage to any target.

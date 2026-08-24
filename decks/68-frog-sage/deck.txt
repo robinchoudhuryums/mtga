@@ -104,16 +104,16 @@
 1 Oakhollow Village (BLB) 258
 1 Mudflat Village (BLB) 257
 1 Breeding Pool (EOE) 251
-1 Overgrown Tomb (TRK) 289
+1 Overgrown Tomb (ECL) 266
 1 Willowrush Verge (DFT) 270
 1 Wastewood Verge (DFT) 268
 1 Gloomlake Verge (DSK) 260
 1 Opulent Palace (TDM) 264
 1 Undercity Sewers (PZA) 0
 1 Dreamroot Cascade (SOS) 254
-6 Forest (TRK) 325
-4 Island (TRK) 319
-3 Swamp (TRK) 321
+6 Forest (HOB) 193
+4 Island (HOB) 190
+3 Swamp (HOB) 191
 #~ -Withering Torment | +Run Away Together | OWNED (ECL, 2026-08-13 ingest): owner's pick, and the
 #~   TAG FIT IS LOW — 5 in 68a, and it does not rank for 68 or 68b at all, because the
 #~   tagger sees only `bounce`. Grade it from the text instead: "{1}{U} Choose two target

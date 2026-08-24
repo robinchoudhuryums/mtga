@@ -16,6 +16,7 @@ the shrink guard catches a shrink but cannot see that the file answers a differe
 import csv
 import datetime
 import os
+import re
 
 import build_pool
 import pytest
@@ -106,46 +107,46 @@ class TestReadStamp:
 
 class TestFreshnessSkip:
     def test_a_fresh_pool_for_the_same_query_is_reused(self, env):
-        _stamp(env["stamp"], 0, "game:arena")
+        _stamp(env["stamp"], 0, build_pool.QUERY_ALL)
         assert _run(env) == 0
         assert env["calls"] == [], "a fresh pool must not be re-fetched"
 
     def test_a_stale_pool_is_rebuilt(self, env):
-        _stamp(env["stamp"], build_pool.FRESH_DAYS + 1, "game:arena")
+        _stamp(env["stamp"], build_pool.FRESH_DAYS + 1, build_pool.QUERY_ALL)
         _run(env)
-        assert env["calls"] == ["game:arena"]
+        assert env["calls"] == [build_pool.QUERY_ALL]
 
     def test_a_DIFFERENT_query_is_never_reused(self, env):
         """Reusing a Standard-scoped pool for an --all request would freeze the wrong
         scope, and the shrink guard cannot see that."""
-        _stamp(env["stamp"], 0, "game:arena legal:standard")
+        _stamp(env["stamp"], 0, build_pool.QUERY_STANDARD)
         _run(env)
-        assert env["calls"] == ["game:arena"]
+        assert env["calls"] == [build_pool.QUERY_ALL]
 
     def test_a_legacy_stamp_with_no_query_is_never_reused(self, env):
         """Without a recorded query the scope cannot be proven, so rebuild."""
         _stamp(env["stamp"], 0, None)
         _run(env)
-        assert env["calls"] == ["game:arena"]
+        assert env["calls"] == [build_pool.QUERY_ALL]
 
     def test_a_stamp_with_no_tag_fingerprint_rebuilds_once(self, env):
         """BS3-02. A pre-BS2-23 two-line stamp cannot say whether the pool's Synergies
         match the current tags_for(), and the reuse path returns BEFORE writing a
         stamp — so treating unknown as "reuse" meant the fingerprint could never be
         recorded and no tag edit would ever defeat the reuse again. Unknown rebuilds."""
-        _stamp(env["stamp"], 0, "game:arena", tags=None)
+        _stamp(env["stamp"], 0, build_pool.QUERY_ALL, tags=None)
         _run(env)
-        assert env["calls"] == ["game:arena"]
+        assert env["calls"] == [build_pool.QUERY_ALL]
 
     def test_a_changed_tag_fingerprint_rebuilds(self, env):
-        _stamp(env["stamp"], 0, "game:arena", tags="stale00000000000")
+        _stamp(env["stamp"], 0, build_pool.QUERY_ALL, tags="stale00000000000")
         _run(env)
-        assert env["calls"] == ["game:arena"]
+        assert env["calls"] == [build_pool.QUERY_ALL]
 
     def test_the_rebuild_records_the_fingerprint_so_the_next_run_reuses(self, env):
         """The half that makes it rebuild ONCE rather than every time: after a build
         the stamp carries the fingerprint, and a second run reuses."""
-        _stamp(env["stamp"], 0, "game:arena", tags=None)
+        _stamp(env["stamp"], 0, build_pool.QUERY_ALL, tags=None)
         # --allow-shrink so the stubbed empty fetch is permitted to land; the point
         # here is the STAMP it writes, not the rows.
         assert _run(env, "--allow-shrink") == 0
@@ -155,23 +156,23 @@ class TestFreshnessSkip:
         assert env["calls"] == [], "the fingerprint was recorded but not honoured"
 
     def test_refetch_overrides_freshness(self, env):
-        _stamp(env["stamp"], 0, "game:arena")
+        _stamp(env["stamp"], 0, build_pool.QUERY_ALL)
         _run(env, "--refetch")
-        assert env["calls"] == ["game:arena"]
+        assert env["calls"] == [build_pool.QUERY_ALL]
 
     def test_max_age_zero_always_rebuilds(self, env):
-        _stamp(env["stamp"], 0, "game:arena")
+        _stamp(env["stamp"], 0, build_pool.QUERY_ALL)
         _run(env, "--max-age", "0")
-        assert env["calls"] == ["game:arena"]
+        assert env["calls"] == [build_pool.QUERY_ALL]
 
     def test_a_missing_pool_file_is_rebuilt(self, env):
-        _stamp(env["stamp"], 0, "game:arena")
+        _stamp(env["stamp"], 0, build_pool.QUERY_ALL)
         os.unlink(env["out"])
         _run(env)
-        assert env["calls"] == ["game:arena"]
+        assert env["calls"] == [build_pool.QUERY_ALL]
 
     def test_the_skip_leaves_the_file_untouched(self, env):
-        _stamp(env["stamp"], 0, "game:arena")
+        _stamp(env["stamp"], 0, build_pool.QUERY_ALL)
         before = os.path.getmtime(env["out"])
         assert _run(env) == 0
         assert os.path.getmtime(env["out"]) == before
@@ -206,7 +207,7 @@ class TestStampContract:
         env["mp"].setattr(deck, "POOL_BUILD_STAMP", str(env["stamp"]))
         assert deck.pool_staleness_days() == 0, \
             "build_pool must write the DATE on line 1 — deck reads stamp[:10]"
-        assert build_pool.read_stamp()[1] == "game:arena"
+        assert build_pool.read_stamp()[1] == build_pool.QUERY_ALL
 
     def test_the_live_stamp_is_readable_by_both(self):
         """Whatever shape the committed stamp is in, BOTH readers must cope.
@@ -223,3 +224,39 @@ class TestStampContract:
         date, query, _tags = build_pool.read_stamp()
         assert date, "the date must always be readable — deck reads stamp[:10]"
         assert query is None or isinstance(query, str)
+
+
+class TestUnreleasedPrintingsStayOutOfThePool:
+    """The 2026-08-24 Ingest audit. Scryfall indexes previewed cards immediately and
+    `unique=cards` returns the NEWEST printing, so a reprint in a spoiled set became the
+    only printing card-pool.csv held — and `deck.py resolve`, the MANDATED source of
+    deck-line printings (G-65), emitted it. 114 pool rows carried a future release date;
+    109 deck lines across 47 decks named a set three months out; two round-tripped through
+    an Arena export into card-library.csv, so ownership recorded it too."""
+
+    def test_both_default_queries_bound_the_release_date(self):
+        assert build_pool.RELEASED_ONLY in build_pool.QUERY_ALL
+        assert build_pool.RELEASED_ONLY in build_pool.QUERY_STANDARD
+
+    def test_the_bound_is_the_STABLE_now_token_not_a_formatted_date(self):
+        """Load-bearing, and the reason the obvious fix is wrong. The freshness reuse
+        compares `stamp_query == query`, so a query carrying today's date would differ
+        every day and force a full ~4-minute refetch on every `make refresh` — a
+        correctness fix turned into a permanent tax, which is how a signal becomes one an
+        operator waves through."""
+        assert build_pool.RELEASED_ONLY == "date<=now"
+        for q in (build_pool.QUERY_ALL, build_pool.QUERY_STANDARD):
+            assert not re.search(r"\d{4}-\d{2}-\d{2}", q), q
+
+    def test_a_custom_query_is_NOT_rewritten(self, env, monkeypatch):
+        """`--query` is an explicit request for a scope; silently editing it would defeat
+        the reason to pass one. Documented at RELEASED_ONLY, pinned here."""
+        _stamp(env["stamp"], 0, "whatever")
+        _run(env, "--query", "game:arena set:eoe", "--allow-shrink")
+        assert env["calls"] == ["game:arena set:eoe"]
+
+    def test_the_default_query_reaching_the_fetcher_carries_the_bound(self, env):
+        _stamp(env["stamp"], build_pool.FRESH_DAYS + 1, build_pool.QUERY_ALL)
+        _run(env, "--allow-shrink")
+        assert env["calls"] == [build_pool.QUERY_ALL]
+        assert "date<=now" in env["calls"][0]

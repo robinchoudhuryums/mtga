@@ -88,7 +88,7 @@
 
 # Lands
 1 Breeding Pool (EOE) 251
-1 Overgrown Tomb (TRK) 289
+1 Overgrown Tomb (ECL) 266
 1 Gloomlake Verge (DSK) 260
 1 Willowrush Verge (DFT) 270
 1 Wastewood Verge (DFT) 268
@@ -97,9 +97,9 @@
 1 Opulent Palace (TDM) 264
 1 Lilypad Village (BLB) 255
 1 Surveillance Room (MSH) 274
-6 Forest (TRK) 325
-4 Island (TRK) 319
-4 Swamp (TRK) 321
+6 Forest (HOB) 193
+4 Island (HOB) 190
+4 Swamp (HOB) 191
 #~ -Slick Imitator | +Gathering of Darkness | OWNED (HOB, ingested 2026-08-13): fit 57. Returns a
 #~   creature card from the graveyard to hand AND amasses Goblins 3 — a graveyard payoff that also
 #~   builds a body, in a deck whose currency is the graveyard. Slick Imitator is `cuts` #1 here and

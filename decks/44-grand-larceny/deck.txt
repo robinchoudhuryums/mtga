@@ -119,7 +119,7 @@
 # Lands
 1 Gloomlake Verge (DSK) 260
 1 Hidden Lair (MSH) 269
-1 Watery Grave (TRK) 306
+1 Watery Grave (EOE) 261
 1 Undercity Sewers (MKM) 270
 1 Temple of Deceit (FDN) 697
 1 Treno, Dark City (FIN) 290

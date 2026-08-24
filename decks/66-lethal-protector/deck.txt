@@ -133,7 +133,7 @@
 # Lands
 1 Dark Fortress (MSH) 264
 1 Blood Crypt (ECL) 262
-1 Overgrown Tomb (TRK) 289
+1 Overgrown Tomb (ECL) 266
 1 Blazemire Verge (DSK) 256
 1 Thornspire Verge (DSK) 270
 1 Wastewood Verge (DFT) 268
@@ -141,9 +141,9 @@
 1 Temple of Malice (FDN) 701
 1 Ominous Asylum (SPM) 181
 1 Foggy Bottom Swamp (TLA) 269
-5 Swamp (TRK) 321
-5 Mountain (TRK) 323
-5 Forest (TRK) 325
+5 Swamp (HOB) 191
+5 Mountain (HOB) 192
+5 Forest (HOB) 193
 
 # Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 66
 #~ -Grub's Command | +Spider-Man, To the Rescue | OWNED, castable on {G/W} hybrid: flash indestructible for the invested body (Gwenom/Venom) — protection is this deck's thinnest axis (2). Take it if Grub's one-Goblin copy mode keeps disappointing

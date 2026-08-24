@@ -114,9 +114,9 @@
 1 Sunbillow Verge (DFT) 264
 1 Abraded Bluffs (OTJ) 251
 1 Wind-Scarred Crag (FDN) 271
-10 Mountain (TRK) 323
+10 Mountain (HOB) 192
 1 Fountainport (BLB) 253
-6 Plains (TRK) 317
+6 Plains (HOB) 189
 1 Daily Bugle Building (SPM) 179
 
 # Flex — options (comments; not part of the 60). See: deck.py flex 74a

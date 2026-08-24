@@ -544,6 +544,33 @@ def main():
     except Exception as e:
         soft.append(f"dead-library-search check skipped ({e})")
 
+    # Soft: UNRELEASED CARDS IN THE POOL. Scryfall indexes previewed cards immediately
+    # and `unique=cards` returns the NEWEST printing, so before build_pool grew its
+    # `date<=now` bound a spoiled set's reprint became the ONLY printing this repo held —
+    # 114 rows on 2026-08-24, and `deck.py resolve` (the mandated source of deck-line
+    # printings, G-65) emitted them into 109 lines across 47 decks. `Released` was read in
+    # exactly one direction until then: rotation, i.e. when a card LEAVES Standard.
+    # Nothing asked whether it had arrived.
+    #
+    # Pool-level rather than a flag threaded through the five craft-recommending surfaces:
+    # the exposure is a property of the FILE, so one report covers `suggest` (and
+    # --lands/--ramp/--interaction), `tier --to` and `wishlist --rank/--budget` at once,
+    # and being report-only it re-ranks nothing.
+    try:
+        unrel = deckmod.unreleased_pool_cards()
+        if unrel:
+            sets = sorted({s for _n, s, _r in unrel})
+            soonest = min(r for _n, _s, r in unrel)
+            soft.append(f"card-pool.csv holds {len(unrel)} card(s) from UNRELEASED set(s) "
+                        f"({', '.join(sets)}; earliest release {soonest}) — every craft "
+                        f"recommender can price a wildcard for a card that cannot be "
+                        f"crafted, and `deck.py resolve` can emit an unimportable "
+                        f"printing. Rebuild: `python3 scripts/build_pool.py --all` (its "
+                        f"default query bounds the release date; a custom --query does "
+                        f"not).")
+    except Exception as e:
+        soft.append(f"unreleased-pool check skipped ({e})")
+
     # Soft: STALE TIER RATIONALE — a `#: tier:` argument citing a card the deck no
     # longer runs, or a figure that no longer matches the live quality vector.
     #

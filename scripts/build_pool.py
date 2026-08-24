@@ -46,6 +46,29 @@ POOL_HEADER = ["Card Name", "Type", "Card Text", "Color(s)", "Synergies",
                "Power", "Toughness"]
 SEARCH_URL = "https://api.scryfall.com/cards/search"
 
+# A PRINTING FROM A SET THAT HAS NOT BEEN RELEASED MUST NOT ENTER THE POOL.
+# Scryfall indexes previewed cards the moment they are spoiled, and `unique=cards`
+# returns the NEWEST printing — so a reprint in a spoiled set silently became the only
+# printing this file holds. Measured 2026-08-24: `!"Watery Grave"` resolved to TRK
+# (released 2026-11-13) while its EOE and GRN printings were discarded, and since
+# `deck.py resolve` is the MANDATED source of deck-line printings (G-65), 109 deck lines
+# across 47 decks were written against a set three months out. Two of them round-tripped
+# through an Arena export into `card-library.csv`, so ownership recorded an unreleased
+# printing too.
+#
+# `date<=now` is load-bearing as the literal token `now`, NOT a formatted date. The
+# freshness reuse below compares `stamp_query == query`, so a query string carrying
+# today's date would differ every day and force a full ~4-minute refetch on every
+# `make refresh` — turning a correctness fix into a permanent tax, which is how a
+# useful signal becomes one an operator waves through (the K-01 shape).
+#
+# Scope note: a caller-supplied `--query` is NOT rewritten. It is an explicit request
+# for a specific scope, and silently editing it would defeat the reason to pass one;
+# `--query` owns its own date bound.
+RELEASED_ONLY = "date<=now"
+QUERY_ALL = f"game:arena {RELEASED_ONLY}"
+QUERY_STANDARD = f"game:arena legal:standard {RELEASED_ONLY}"
+
 # Formats worth tracking for deck-building (Arena formats + the major paper
 # ones). The Legalities column stores a `;`-joined subset of these in which the
 # card is legal, so tools can filter a suggestion to a deck's format.
@@ -235,7 +258,7 @@ def main():
         eprint(f"ERROR: {problem}")
         return 1
 
-    query = args.query or ("game:arena" if args.all else "game:arena legal:standard")
+    query = args.query or (QUERY_ALL if args.all else QUERY_STANDARD)
 
     # FRESHNESS SKIP — the whole cost of this tool is the paginated fetch: measured
     # 222.5s of a 224.3s run (99%), 91 pages at ~2.4s each, against 1.8s to derive every
