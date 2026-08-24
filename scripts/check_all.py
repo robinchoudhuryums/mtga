@@ -511,6 +511,39 @@ def main():
     except Exception as e:
         soft.append(f"stale-header check skipped ({e})")
 
+    # Soft: DEAD LIBRARY SEARCHES — a tutor whose target the deck does not run.
+    #
+    # Deck 76 ran ZERO basic lands while TWO cards searched for basics: Bloomvine
+    # Regent's Omen half and Encroaching Dragonstorm. The USER found it in a game. No
+    # gate could: every model here grades a card's own text, where "search for two basic
+    # Forests" reads as ramp, and the number that decides it lives in the LIST. Worse,
+    # the second card had been ADDED the day before with the fetched basics as its
+    # stated rationale — so the reasoning was checked by nothing either.
+    #
+    # `deck.py targets` can find these per deck, on demand; this is the sweep, because
+    # the bug shipped precisely BECAUSE nobody ran targets after the swap (the G-53
+    # "capability that is never reached" shape, and the same argument that put the
+    # rationale audit below into check_all). ZERO-only by construction — a thin count is
+    # an editorial judgement, an empty one is a dead card — and it measured 0 across the
+    # roster when written, so any hit is new rather than a backlog to triage.
+    try:
+        dead_tutors = []
+        _cd, _mn = deckmod.load_card_data(), deckmod.load_mana()
+        for d in deckmod.roster_decks():
+            _m, _cards = deckmod.parse_deck_file(d["path"])
+            for name, label in deckmod.dead_library_searches(_cards, _cd, _mn):
+                dead_tutors.append(f"deck {d['id']}: {name} needs {label}, which is 0")
+        if dead_tutors:
+            soft.append(f"dead library search(es): {len(dead_tutors)} search(es) can find "
+                        f"NOTHING — {'; '.join(dead_tutors[:3])}"
+                        + (" …" if len(dead_tutors) > 3 else "")
+                        + " (add the resource, or accept it — the SEARCH is dead, which "
+                          "need not mean the CARD is: Hobbit Hole's basic-land fetch works "
+                          "in decks where its Halflingcycling rider finds nothing, and The "
+                          "Masters of Evil is still a Villain anthem)")
+    except Exception as e:
+        soft.append(f"dead-library-search check skipped ({e})")
+
     # Soft: STALE TIER RATIONALE — a `#: tier:` argument citing a card the deck no
     # longer runs, or a figure that no longer matches the live quality vector.
     #

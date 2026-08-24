@@ -254,11 +254,18 @@ python3 scripts/pool.py --color U --text "counter target"    # all blue counters
 python3 scripts/pool.py --color G --synergy ramp --unowned   # green ramp you'd need to craft
 python3 scripts/pool.py --synergy removal --rarity rare,mythic --unowned
 python3 scripts/pool.py --type Merfolk --count               # how many exist vs. how many you own
+python3 scripts/pool.py --within WUBRG --role ramp --unowned # anything a five-colour deck could CAST
 ```
 
 `--color` matches the identity set, as in `query.py` (`--color R` excludes
-Colorless; `--color colorless` for colorless cards); the other filters are
-substrings. Each row shows `×N` (copies owned) or `craft`, plus rarity; the
+Colorless; `--color colorless` for colorless cards). **`--within` is its
+complement and the one to reach for when surveying for a DECK**: `--color` asks
+"does this card's identity CONTAIN these colours" (a superset test, so `--color G`
+on a WUBRG deck returns mono-green cards and misses every gold one), while
+`--within WUBRG` asks "does this card FIT a deck of these colours" — a subset
+test, colourless passes. Drafting a three-colour deck and filtering with `--color`
+is how a survey silently excludes most of the cards it was run to find. The other
+filters are substrings. Each row shows `×N` (copies owned) or `craft`, plus rarity; the
 summary totals the wildcard cost of the craftable results. Rebuild the pool after a new set
 releases. For formats outside the stored pool (e.g. a one-off Historic card),
 just ask Claude Code — it can query Scryfall live and cross-check your library.
@@ -419,6 +426,7 @@ python3 scripts/deck.py audit         # roster triage: one line per deck — whi
                                       #   (incl. Pld = matches played, report-only)
 python3 scripts/deck.py similar 40    # decks most alike by central-theme overlap (is it distinct?)
 python3 scripts/deck.py resolve "Bloom Tender" "2 Island"   # names → deck lines `<qty> Name (SET) #`
+python3 scripts/deck.py resolve --check 76   # verify a WRITTEN deck's (SET) COLLECTOR# fields (strict)
 python3 scripts/deck.py check 1a      # owned vs needed + a castability lint (off-color cards)
 python3 scripts/deck.py diff 1 1a     # what variant 1a changes vs base deck 1
 python3 scripts/deck.py arena 1a      # emit an Arena-importable decklist to paste back
@@ -647,7 +655,14 @@ it serves and a `⚠rot~YEAR` flag, ranked by decks-served then rarity — the "
 efficient next N crafts" view. `check` marks rotating craft targets the same way, so
 a wildcard about to leave Standard is flagged wherever the spend decision happens.
 `resolve --expect 60` fails a from-scratch draft that doesn't total 60 (it always
-prints the total).
+prints the total). **`resolve --check <deck>` is the other half — run it on any
+freshly written deck file.** It re-reads an existing file's `(SET)` and
+`COLLECTOR #` fields against known printings instead of resolving names, and it is
+STRICT where `check_all` is soft: an unheld printing FAILS here, because a drafted
+file's lines were supposed to come from `resolve` in the first place, so a mismatch
+there is a typo rather than a legitimate alternate art. Eleven hand-written land
+numbers shipped wrong across two from-scratch drafts and only a hand-run diff caught
+them; `/draft-deck` Stage 4 now runs this first.
 
 **Split, Room and Adventure cards are read on their FRONT face.** Scryfall stores both
 halves joined by `" // "` (Funeral Room is `{2}{B} // {6}{B}{B}`) and you never pay both,
@@ -729,7 +744,17 @@ nothing — a line naming a set code that does not exist passed `legal`, passed 
 passed `check_all`. A nonexistent set code is now a hard INV-04 failure; an unheld
 collector number inside a real set is a soft warning, because the pool keys one printing
 per card so a legitimate alternate art lands there too. Basic lands are exempt — Arena
-prints several arts per set. Get printings from **`deck.py resolve`**, never by hand.
+prints several arts per set. Get printings from **`deck.py resolve`**, never by hand,
+and verify a freshly written file with `deck.py resolve --check <id>`.
+
+**A deck id must be unambiguous, and that is now checked too.** Two files can claim
+one id — two `NN-*` directories sharing a number, or two `NNa-*.txt` variants in a
+parent — and `find_deck` picks one silently, so every by-id command validates or
+edits one file while the other sits unchecked. A duplicate id is a hard INV-04
+failure, as is a top-level `decks/` directory with a variant-shaped name (`73a-…`):
+a variant lives inside its parent deck's directory, and the near-miss shape — a new
+`decks/73a-posse/` created while `73a` already existed inside the parent — has
+different ids, so the duplicate check cannot see it.
 
 **`#: uncastable-ok: Card A; Card B`** exempts named cards from the castability failure and
 from the tier floor's uncastable cap. It exists for reanimator decks, where a bomb you
@@ -1461,8 +1486,12 @@ unchecked until 2026-08-11 and found seven more; basics are exempt, since `+Isla
 a deck running Islands proposes a 25th land rather than a duplicate); **stale `#~ note:`
 figures** — a number written into a flex note that the live quality vector contradicts,
 figures only, because a build log naming an absent card is correct by construction;
-and **stale tier rationales** — a `#: tier:` argument citing a card the deck no longer
-runs, or quoting a figure the live quality vector contradicts. That last one is the
+**stale tier rationales** — a `#: tier:` argument citing a card the deck no longer
+runs, or quoting a figure the live quality vector contradicts; and **dead library
+searches** — a card that searches your library for a resource the deck holds ZERO of
+(a basic-land fetch in a deck with no basics, a tribal tutor with nothing to find).
+That last one came from a game: deck 76 ran zero basics while two cards searched for
+them, and no gate could see it because every model here grades a card in isolation. That last one is the
 cautionary tale: the check EXISTED for a long time and nothing ran it. `deck.py tier
 <id> --audit-rationale` could always find these, but only one deck at a time, on
 demand, and the instruction to run it after every edit lived in prose no script

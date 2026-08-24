@@ -60,8 +60,10 @@ resolve two answers by hand. Everything else is context for those.
 | # | Command | Returns | Cost |
 |---|---|---|---|
 | 1 | `pool.py --owned --role <role>` (×7 roles) | owned cards by what they DO | ~0.5s each |
+| 1b | `pool.py --within <colors> …` | the same survey scoped to what the deck can CAST (subset test — `--color` is a SUPERSET test and silently drops the gold cards) | ~0.5s |
 | 2 | `deck.py resolve <names…>` | pasteable `<qty> Name (SET) #` lines | 0.4s |
 | 3 | `deck.py text NN` | full oracle text of the draft | 0.3s |
+| 3b | `deck.py resolve --check NN` | verify the WRITTEN file's `(SET) #` fields (strict; 11 hand-written numbers shipped wrong before this existed) | 0.4s |
 | 4 | `deck.py legal NN` → `preflight NN` | construction lint → one-call gate | 0.3s → **6.4s** |
 | 5 | `deck.py mana NN` + `consistency NN` | pip demand → cast probabilities | 0.9s |
 | 6 | `deck.py similar NN` | is it a duplicate of an existing deck? | 0.5s |

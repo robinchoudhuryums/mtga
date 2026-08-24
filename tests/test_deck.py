@@ -3605,6 +3605,75 @@ class TestTargetCounts:
         every discard outlet in a 60-card deck, i.e. "you have a hand"."""
         assert not any(kind == "any" for _rx, _lbl, kind in deck._TARGET_GATES)
 
+    def test_a_tutor_that_can_find_nothing_is_reported(self):
+        """The deck 76 bug, from REAL text: the deck ran ZERO basics while Bloomvine
+        Regent's Omen half searched for basic Forests and Encroaching Dragonstorm for
+        basic lands. Every model grades the search card's own text, where this reads as
+        ramp; the number that decides it is in the LIST. Found by the user IN PLAY."""
+        cd = {"bloomvine regent // claim territory": {
+                  "name": "Bloomvine Regent // Claim Territory", "type": "Creature — Dragon",
+                  "text": "Search your library for up to two basic Forest cards, reveal "
+                          "them, put one onto the battlefield tapped and the other into "
+                          "your hand, then shuffle.", "colors": "G"},
+              "encroaching dragonstorm": {
+                  "name": "Encroaching Dragonstorm", "type": "Enchantment",
+                  "text": "When this enchantment enters, search your library for up to two "
+                          "basic land cards, put them onto the battlefield tapped, then "
+                          "shuffle.", "colors": "G"},
+              "mystic monastery": {"name": "Mystic Monastery", "type": "Land", "text": "",
+                                   "colors": ""}}
+        mana = {"bloomvine regent // claim territory": ("{3}{G}{G}", "5"),
+                "encroaching dragonstorm": ("{3}{G}", "4"), "mystic monastery": ("", "")}
+        cards = [(1, "Bloomvine Regent // Claim Territory", "", ""),
+                 (1, "Encroaching Dragonstorm", "", ""), (4, "Mystic Monastery", "", "")]
+        dead = dict(deck.dead_library_searches(cards, cd, mana))
+        assert "Bloomvine Regent // Claim Territory" in dead
+        assert "Encroaching Dragonstorm" in dead
+        # ...and adding basics silences BOTH.
+        cd["forest"] = {"name": "Forest", "type": "Basic Land — Forest", "text": "",
+                        "colors": ""}
+        mana["forest"] = ("", "")
+        cards.append((2, "Forest", "", ""))
+        assert deck.dead_library_searches(cards, cd, mana) == []
+
+    def test_an_unconditional_tutor_never_fires(self):
+        """Saturation guard, the rule this table already states: "search your library for
+        a card" (Lively Dirge, Servant of the Stinger, Hour of Victory) is ALWAYS
+        satisfiable, so a row for it would be the non-signal the discard rule was deleted
+        for. Same for the type-wide creature/land/artifact searches."""
+        cd = {"lively dirge": {"name": "Lively Dirge", "type": "Sorcery",
+                               "text": "Search your library for a card, put it into your "
+                                       "graveyard, then shuffle.", "colors": "B"},
+              "evolving wilds": {"name": "Evolving Wilds", "type": "Land",
+                                 "text": "Search your library for a basic land card, put "
+                                         "it onto the battlefield tapped, then shuffle.",
+                                 "colors": ""},
+              "guardian sunmare": {"name": "Guardian Sunmare", "type": "Creature — Horse",
+                                   "text": "search your library for a nonland permanent "
+                                           "card with mana value 3 or less, put it onto "
+                                           "the battlefield, then shuffle.", "colors": "W"}}
+        mana = {k: ("{1}", "1") for k in cd}
+        rows = deck.target_counts([(1, "Lively Dirge", "", ""),
+                                   (1, "Guardian Sunmare", "", "")], cd, mana)
+        assert not [r for r in rows if "in the deck" in r[1]]
+        # the BASIC search is a real gate and does still fire
+        rows2 = deck.target_counts([(1, "Evolving Wilds", "", "")], cd, mana)
+        assert [r for r in rows2 if "basic lands in the deck" in r[1]]
+
+    def test_a_land_type_search_counts_the_type_line_not_the_name(self):
+        """"an Island card" is satisfied by ANY land carrying the Island subtype — a
+        shock, a triland — not only by the basic. Counting names would under-read it."""
+        cd = {"giant koi": {"name": "Giant Koi", "type": "Creature — Fish",
+                            "text": "Search your library for an Island card, reveal it, "
+                                    "put it into your hand, then shuffle.", "colors": "U"},
+              "breeding pool": {"name": "Breeding Pool",
+                                "type": "Land — Forest Island", "text": "", "colors": ""}}
+        mana = {"giant koi": ("{3}{U}", "4"), "breeding pool": ("", "")}
+        rows = deck.target_counts([(1, "Giant Koi", "", ""), (1, "Breeding Pool", "", "")],
+                                  cd, mana)
+        isl = [r for r in rows if "Island cards in the deck" in r[1]]
+        assert len(isl) == 1 and isl[0][2] == 1     # the shock counts
+
     def test_gy_type_gate_reads_both_copula_spellings(self):
         """DD-3: "there is an Elf card" (Dawnhand Eulogist, REAL text) was invisible while
         "there's a Lesson card" (Dragonfly Swarm) was caught — the gate only knew the

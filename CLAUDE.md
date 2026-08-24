@@ -786,6 +786,19 @@ directions.
   deck 58's artifact-sac gates reported "1 artifact" against 14 token producers; a deck
   whose resource is tokens must say so in its `#: notes:` or the flag invites a bad cut. [G-66]
 
+- **A TUTOR IS WORTH THE NUMBER OF THINGS IT CAN FIND IN *THIS* DECK, and that number was
+  checked by nothing.** Deck 76 ran ZERO basics while TWO cards searched for them
+  (Bloomvine Regent's Omen half, Encroaching Dragonstorm) — found by the USER IN PLAY, by
+  no gate, and the second had been ADDED the day before *on the fetched basics as its
+  stated rationale*. `deck.py targets` now counts library searches and `check_all` sweeps
+  the ZERO case. **Three build-earned constraints, all still live:** the gate is
+  ZERO-ONLY (a thin count is editorial, an empty one is dead text); it SKIPS the
+  saturating searches — an unconditional "search your library for a card" is always
+  satisfiable, as are the creature/land/artifact type-wide ones; and it must NOT skip
+  LANDS, which is where fetches live (its own test caught that omission, and the fix
+  immediately found two more). **Read a hit as a claim about the SEARCH, never the CARD:**
+  Hobbit Hole's basic fetch works in the decks where only its Halflingcycling rider
+  whiffs, and The Masters of Evil is still a Villain anthem. [G-75]
 - **A PATTERN SET IS A WHITELIST, AND A WHITELIST'S MISSES ARE INVISIBLE.** `_ROLE_PATTERNS`
   matches PHRASINGS, and Magic templates one effect several ways — so a card worded a way no
   pattern anticipates scores ZERO roles, and the tier floor, `cuts`, the quality guard and
@@ -1036,10 +1049,11 @@ exits non-zero on any hard invariant break. INV-01…04 plus **fourteen model-sa
 gates** (`check_rankings`, `check_colors`, `check_dfc`, `check_suggest`, `check_engines`,
 `check_tier`, `check_patterns`, `check_commands`, `check_agreement`, `check_docs`, and the
 soft `check_keywords` / `check_roles` / `check_themes` / rationale-and-flex sweeps) — plus
-SIX further SOFT roster sweeps this list used to omit: wishlist target drift, the G-68
+SEVEN further SOFT roster sweeps this list used to omit: wishlist target drift, the G-68
 card-name-header staleness pass, the tier-mismatch pass, (2026-08-11) the `#~ note:`
-figure sweep, and (2026-08-19) the tag/role disagreement sweep (`check_roles --tags`) and
-the committed-dashboard freshness check. Two things to know
+figure sweep, (2026-08-19) the tag/role disagreement sweep (`check_roles --tags`) and
+the committed-dashboard freshness check, and (2026-08-24) the G-75 dead-library-search
+sweep — a tutor whose named resource the deck holds ZERO of. Two things to know
 before touching it: it imports `deck` as a MODULE and calls `cmd_*` directly, so it never
 builds an argparse tree — the CLI surface is covered by `tests/test_cli.py` and a CI smoke
 step — and the reference-table loaders are memoized, which is what makes a roster-wide
@@ -1091,7 +1105,7 @@ earned it: [C-01]
 - INV-01 | card-library.csv has the canonical 8-column header, every row has 8 fields, no duplicate (Card Name, Set Code, Collector #) printing, and Quantity Owned is blank or a non-negative integer | Subsystem: Data | Verify: scripts/check_all.py (via validate.py)
 - INV-02 | Every Card Name in card-library.csv has a row in card-mana.csv | Subsystem: Data | Verify: scripts/check_all.py
 - INV-03 | Derived reference files exist AND keep their own schema: card-mana.csv (Card Name/Mana Cost/Mana Value/Keywords), card-pool.csv (…/Rarity; Legalities+Released+Power+Toughness warn if absent), gallery.html (has usable CONTENT — non-trivial size + the `#data` island — since existence alone passed a truncated build) | Subsystem: Data/Presentation | Verify: scripts/check_all.py
-- INV-04 | Every deck file under decks/ parses with no malformed card lines, AND every line's `(SET)` code exists in the pool or library (an unheld COLLECTOR # within a real set is a soft warning, since the pool keys one printing per card) | Subsystem: Decks | Verify: scripts/check_all.py
+- INV-04 | Every deck file under decks/ parses with no malformed card lines, AND every line's `(SET)` code exists in the pool or library (an unheld COLLECTOR # within a real set is a soft warning, since the pool keys one printing per card), AND the roster's ids are unambiguous — no two files claim one deck id, and no top-level decks/ directory is variant-shaped (`73a-…`), both of which let a by-id command silently validate one file while editing another | Subsystem: Decks | Verify: scripts/check_all.py
 - INV-05 | Color(s) stores color identity; actual mana cost lives only in card-mana.csv | Subsystem: Data | Verify: design/manual
 - INV-06 | Synergy tags are keyword-aware — regenerate via build_mana.py then tag_synergies.py --merge after imports (--merge preserves hand-curated tags; --force replaces them) | Subsystem: Ingest | Verify: manual
 

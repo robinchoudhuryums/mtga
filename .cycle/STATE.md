@@ -1865,3 +1865,34 @@ Original findings, kept for the record:
 - **DD-6 duplicate deck-id silence** (from the adjacent 73a incident): two files
   can claim one deck id — `find_deck` picks one silently and no gate objects. A
   hard INV-04-class duplicate-id check would have stopped the near-duplicate 73a.
+
+## 2026-08-24 — /sync-docs pass (docs only; DD-1..DD-6 + G-75 already implemented)
+
+Four drift checks run against the tree. **Confirmed accurate, no edit:** 14
+`check_*.py` files = 13 gates + `check_all.py`; 30 test files + conftest; matches.csv
+at 58 rows / 55 attributed / 23 decks; three live `.cycle/*-analysis.md` working docs.
+
+**Stale, fixed:**
+- CLAUDE.md `[C-01]` said **SIX** further soft roster sweeps — the G-75
+  dead-library-search sweep added this cycle made it seven, and an undercount in the
+  gate inventory is the shape that lets a sweep exist unreached (G-53).
+- CLAUDE.md **INV-04** described only malformed lines + `(SET)` existence; DD-6 added
+  two HARD error classes (duplicate deck id, variant-shaped top-level `decks/` dir)
+  that the invariant text did not mention. An invariant nobody can read from the
+  library is enforced by accident.
+- README documented neither `pool.py --within` (DD-4) nor `deck.py resolve --check`
+  (DD-2) — the two new flags a from-scratch draft is now supposed to route through,
+  so /draft-deck mandated a step the user docs did not describe. `--within` gets the
+  superset-vs-subset explanation, because reaching for `--color` on a multicolour
+  survey is the actual failure mode.
+- README's soft-warning inventory and printing-validation paragraph gained the
+  dead-library-search sweep and the duplicate-id/variant-dir rules.
+- `docs/systems-map.md` draft table gained steps 1b (`pool.py --within`) and 3b
+  (`resolve --check`).
+- decks/31-pox: two `#~` prose figures quoted **card-adv 2** against a live 5 (one
+  flagged by the G-04 sweep, one not — the unflagged twin sat in a `#~ note:` line
+  that reads present-tense). Both re-dated as history rather than deleted.
+
+Dashboard rebuilt (the deck-31 edit staled the committed snapshot).
+
+**Where I left off:** docs in sync; check_all green (soft: 4 accepted dead searches).
