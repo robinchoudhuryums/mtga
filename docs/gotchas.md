@@ -4843,3 +4843,97 @@ flag because it looks like information.
   nothing fails the build — without that, a dead state-gate pattern reads as "this deck
   has no gated cards", which is indistinguishable from a clean result. That is exactly
   how the digit-only descend gate hid for months.
+
+## [G-77] An advisory you can only act on by a forbidden edit is a hazard
+
+`section_mismatch` (G-05) does its job well: when a swap's added card inherits the cut
+card's `# section` comment, it says so, and it stays quiet on ambiguous or absent
+headers. What it did not do was give you any way to *act* on the warning. The card line
+was already written at the cut card's position, so resolving the warning meant opening
+the deck file and moving a line by hand.
+
+G-65 forbids exactly that. Deck-line `(SET) COLLECTOR#` fields must come from
+`deck.py resolve`, never be typed, because nothing else validates them: a wrong number
+passes `legal`, passes `check` (ownership joins on the name), passes `preflight` READY
+and passes `check_all`, leaving a deck file that is integrity-clean and un-importable at
+once.
+
+On 2026-08-24 the two rules collided. Eight swaps into deck 43, `section_mismatch` fired
+four times, and each fix was a hand relocation of the line. Two of the four invented a
+collector number — `(HOB) 26` for The Queen of Dale's real 24, `(HOB) 21` for Lake-town
+Toymaker's real 19. Both were caught, but only because `deck.py resolve --check` was run
+afterwards out of habit; nothing in the pipeline would have failed on them.
+
+So the fix is `swap --section "<header substring>"`. It relocates the added line as part
+of the same write, moving the line text verbatim so the printing fields cannot be
+retyped, and it validates the header *before* writing — an absent or ambiguous substring
+aborts the swap entirely rather than leaving a misfiled line with an error printed after
+the fact. The advisory now names the flag.
+
+The transferable rule: **when a warning's only remedy is a manual edit of a file the
+project's own rules say never to edit manually, the tool owes you the mechanical form of
+that edit.** A warning that pushes the reader toward a forbidden operation is worse than
+silence, because it produces a second, quieter error class while looking like diligence.
+
+### Design notes
+
+- Ambiguity refuses rather than guessing. Filing a card under a header the author did
+  not choose is the same lie the warning is about, one step removed.
+- Relocation runs inside the existing `try` and before `_safe_write_lines`, so the
+  card-total guard still applies. A move preserves the total by construction.
+- A card already in the target section is a no-op, so the flag is safe to pass
+  speculatively.
+
+## [G-78] A sharing claim is not a comparison, and short card names are invisible
+
+Two findings from one investigation, and the residual is larger than the fix.
+
+### The fix
+
+`_cites_as_history` suppresses a card citation when the surrounding clause names another
+deck, on the reasoning that a distinctness passage cites another deck's cards to contrast
+with them. That is right for *"where deck 42 spends its splash on two one-shot ETB
+thefts"* and wrong for *"only FIVE nonland cards are shared (Erode, Healer's Hawk, …)"* —
+because a **sharing** claim asserts the named cards are in **this** deck too. It is a
+statement about the current list wearing the grammar of a comparison.
+
+Deck 43's tier block carried such a list naming a card the deck had not run in a long
+time. A narrow `_SHARING_CUES` carve-out (`share`/`shared`/`sharing`/`in common`/`both
+run`/`both play`/`overlap`) skips the other-deck suppression inside those clauses only;
+every other cross-deck citation suppresses exactly as before. The roster sweep returned
+zero new hits, and a control test pins that an ordinary comparison still suppresses —
+without it the carve-out would simply be a disabled suppression.
+
+### The residual, measured
+
+The carve-out did **not** catch the deck 43 instance that started this. That prose wrote
+*"against 42 Blood Price"* rather than *"deck 42"*, so `_OTHER_DECK_RE` never fired; the
+real suppressor was `_RATIONALE_MIN_LEN = 9`, which skips any single-word card name
+shorter than nine characters. `Erode` is five.
+
+Lowering the floor was tried and measured across the whole roster:
+
+| floor | hits | real | false |
+|---|---|---|---|
+| 9 (current) | 0 | 0 | 0 |
+| 7 | 5 | 3 | 2 |
+| 5 | 7 | 3 | 4 |
+
+The three real ones were found and fixed on discovery: deck 43's archetype prose still
+listed **Wolfbat** as a live member of its second-card cluster after it was cut, and deck
+42a's tier and archetype prose both cited **Ahriman** as an active engine piece — a card
+42a does not run.
+
+The false positives are structural, not tuning noise. `Pacifism` sits next to the word
+"over" ("+Summon: Bahamut over Pacifism"), and a bare "over" is deliberately excluded
+from the history cues because it is the house phrasing for a quality vector ("card
+advantage 9 over a 2.86 curve"). `Impulse` is a mechanic name capitalized at a sentence
+start, which defeats the case-sensitivity rule that keeps ordinary vocabulary out.
+`Rescue` matches inside *"Kona Rescue Beastie"* — the prose drops the comma the real card
+name has, so masking by exact in-deck name does not blank it.
+
+Either rate would put permanent false warnings into `check_all`'s soft output on every
+run, and the audit's own design note is explicit that a noisy audit gets ignored, which
+is worse than no audit. **The floor stays at 9.** Short single-word card citations are a
+known blind spot; re-measure before changing it, and expect to fix the sentence-start and
+punctuation-variant cases first if you want the floor to come down.

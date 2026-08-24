@@ -1896,3 +1896,27 @@ at 58 rows / 55 attributed / 23 decks; three live `.cycle/*-analysis.md` working
 Dashboard rebuilt (the deck-31 edit staled the committed snapshot).
 
 **Where I left off:** docs in sync; check_all green (soft: 4 accepted dead searches).
+
+## 2026-08-24 — session-hole broad-implement (H-1, H-2; H-3 declined)
+
+Three tooling holes surfaced during the deck 43 work; two fixed, one declined.
+
+- **H-1 `swap --section`.** G-05's section-mismatch advisory could only be acted on by
+  hand-editing a deck line, which G-65 forbids — and doing it four times in one session
+  invented two collector numbers. The flag moves the line verbatim inside the same
+  write and refuses an absent/ambiguous header before writing. G-77.
+- **H-2 sharing-claim carve-out.** The citation audit suppressed "only FIVE nonland
+  cards are shared (…)" as a cross-deck comparison, when a sharing claim asserts the
+  card is in THIS deck. G-78. **It did not catch the case that started it** — that was
+  `_RATIONALE_MIN_LEN = 9`, measured and declined (see the block).
+- **Three REAL stale citations found and fixed** along the way: deck 43 still listed
+  Wolfbat as a live cluster member after cutting it, and deck 42a cited Ahriman twice
+  as an active engine piece without running it.
+- **H-3 declined:** the G-27 same-clause requirement cost three rewrites this session,
+  but that is the rule working as designed. Loosening it trades a visible cost for a
+  silent one (G-26).
+
+Preceding commit in the same session added G-76 (state gates: report the FREE end, not
+just the dead one) after the Lake-town Toymaker misread.
+
+**Where I left off:** all green — 1423 tests, check_all clean. /sync-docs next, then PR.

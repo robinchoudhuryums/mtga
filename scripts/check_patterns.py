@@ -96,6 +96,9 @@ _EXCLUDED = {
                                "suppression scoping); unit-tested in test_deck.py",
     ("deck", "_OTHER_DECK_RE"): "tier-RATIONALE prose (a 'deck N' reference marks a "
                                 "cross-deck clause); unit-tested in test_deck.py",
+    ("deck", "_SHARING_CUES"): "tier-RATIONALE prose (a SHARING claim asserts the card "
+                               "is in THIS deck, so the cross-deck suppression is "
+                               "skipped there); unit-tested in test_deck.py",
     ("deck", "_POPULATION_SUBJECT_RE"): "tier/archetype-RATIONALE prose (a figure whose "
                                         "subject is the card POPULATION, not this list); "
                                         "unit-tested in test_deck.py",

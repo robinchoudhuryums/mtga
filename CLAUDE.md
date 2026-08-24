@@ -801,6 +801,31 @@ directions.
   and counting types in the DECK is a bound any 60-card list clears. **Residual: the two
   live families are n=4 and n=1 on the roster** — read a band as provisional. [G-76]
 
+- **AN ADVISORY YOU CAN ONLY ACT ON BY A FORBIDDEN EDIT IS A HAZARD, NOT A WARNING.**
+  G-05's `section_mismatch` correctly flags an add that inherited the cut card's
+  `# section`, but the only way to act on it was to hand-edit the deck file — and G-65
+  forbids exactly that. Relocating four lines by hand in one 2026-08-24 session invented
+  two collector numbers (`(HOB) 26` for a real 24, `(HOB) 21` for a real 19), caught only
+  because `resolve --check` happened to be run after. **`swap --section "<header
+  substring>"`** now moves the line VERBATIM as part of the same write, so the printing
+  fields cannot be retyped; it refuses an absent or ambiguous header BEFORE writing, and
+  the warning now names it. **When a warning's only remedy is a manual edit of a file the
+  rules say never to edit manually, the tool owes you the mechanical form of that edit.**
+  [G-77]
+
+- **A SHARING CLAIM IS NOT A COMPARISON, and the citation audit suppressed it as one.**
+  `_cites_as_history` treats any clause naming another deck as comparison context, which
+  is right for "where deck 42 spends its splash on X" and WRONG for "only FIVE nonland
+  cards are shared (X, …)" — the second asserts X is in THIS deck. Deck 43's tier block
+  named a card it had not run in months. Narrow `_SHARING_CUES` carve-out; roster sweep
+  returned 0 new hits. **The residual is bigger than the fix and is MEASURED, not
+  guessed: `_RATIONALE_MIN_LEN = 9` hides every single-word card name shorter than that**,
+  which is what actually hid `Erode` — lowering it to 5 surfaces 7 roster hits of which
+  only 3 are real (43 Wolfbat, 42a Ahriman ×2 — all three fixed on discovery), and to 7
+  gives 3 real against 2 false. Both rates would put permanent false warnings in
+  `check_all`, which trains you to ignore the sweep, so **the floor stays at 9 and short
+  single-word citations remain invisible**. Re-measure before changing it. [G-78]
+
 - **A TUTOR IS WORTH THE NUMBER OF THINGS IT CAN FIND IN *THIS* DECK, and that number was
   checked by nothing.** Deck 76 ran ZERO basics while TWO cards searched for them
   (Bloomvine Regent's Omen half, Encroaching Dragonstorm) — found by the USER IN PLAY, by

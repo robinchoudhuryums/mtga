@@ -25,7 +25,8 @@
 #: archetype: THE DECK MUST FUNCTION WITHOUT THE GRIMOIRE — it is one unowned rare, ~22%
 #: archetype: to be seen by turn 7 — so the second engine is the "whenever you draw your
 #: archetype: SECOND card each turn" cluster (King T'Challa, Kang, Raven Eagle, Foggy
-#: archetype: Swamp Spirit Keeper, Mischievous Mystic, Knowledge Seeker, Wolfbat), turned
+#: archetype: Swamp Spirit Keeper, Mischievous Mystic, Knowledge Seeker, The Queen of
+#: archetype: Dale, Bard the Bowman; Wolfbat was CUT 2026-08-24), turned
 #: archetype: on every turn by Kitsa's free loot and a pile of cheap draw. That plan wins
 #: archetype: by chip drain and evasive bodies with no Grimoire in sight.
 #: archetype: Mister Negative is the haymaker and is deliberately pointed the ONE way
@@ -79,9 +80,9 @@
 #: tier: Conclusions on ONE shared card, and 75% against 42 Blood Price on four. Those
 #: tier: numbers are the tag model hitting its limit, not a duplicate deck — 42 shares
 #: tier: only FOUR nonland cards (Leech Collector, Starscape Cleric, Stroke of Midnight
-#: tier: and Mister Negative — the list said Erode until 2026-08-24, which deck 43 has
-#: tier: not run for some time; a cross-deck comparison is outside the rationale audit's
-#: tier: scope, so it went unchecked), and
+#: tier: and Mister Negative — the list said Erode until 2026-08-24, a card deck 43 has
+#: tier: not run for some time. It hid because the citation scan ignores a single-word
+#: tier: card name under 9 characters, NOT because the clause is cross-deck), and
 #: tier: the shared themes are `lifegain` and `card draw`, which cannot distinguish a
 #: tier: deck that gains life AND draws cards from one where gaining life IS drawing
 #: tier: cards. The engines are opposite: 42's pay-life package is net-NEGATIVE here.

@@ -5695,6 +5695,59 @@ def section_mismatch(lines, idx, add_name, carddata):
     return None
 
 
+def _section_headers(lines):
+    """[(index, header_text)] for the `# section` comments that group card lines.
+    Metadata (`#:`) and flex (`#~`) lines are not sections."""
+    out = []
+    for i, ln in enumerate(lines):
+        s = ln.strip()
+        if s.startswith("#") and not s.startswith("#:") and not s.startswith("#~"):
+            out.append((i, s.lstrip("# ").strip()))
+    return out
+
+
+def _relocate_card_line(lines, card_name, needle):
+    """Move `card_name`'s line under the section whose header contains `needle`,
+    preserving the line VERBATIM. Returns new lines; raises ValueError if the card or
+    the section is missing or ambiguous.
+
+    This exists because of the bug the WARNING caused. `section_mismatch` correctly
+    flags an add that inherited the cut card's `# section`, but the only way to act on
+    it was to hand-edit the file — and hand-editing deck lines is exactly what G-65
+    forbids: relocating four lines that way in one session produced two invented
+    collector numbers (`(HOB) 26` for a real 24, `(HOB) 21` for a real 19), caught only
+    because `resolve --check` happened to be run afterwards. An advisory that can only
+    be resolved by a forbidden edit is a hazard, not a warning. Moving the exact line
+    text keeps the printing fields untouched by construction."""
+    key = (card_name or "").strip().lower()
+    idxs = [i for i, ln in enumerate(lines)
+            if (_card_line_name(ln) or "").strip().lower() == key]
+    if len(idxs) != 1:
+        raise ValueError(f"{card_name!r} appears on {len(idxs)} card line(s) — expected "
+                         "exactly one to move.")
+    src = idxs[0]
+    heads = _section_headers(lines)
+    hits = [(i, h) for i, h in heads if needle.strip().lower() in h.lower()]
+    if not hits:
+        avail = "; ".join(h for _i, h in heads) or "(none)"
+        raise ValueError(f"no `# section` header contains {needle!r}. Headers: {avail}")
+    if len(hits) > 1:
+        raise ValueError(f"{needle!r} matches {len(hits)} headers "
+                         f"({'; '.join(h for _i, h in hits)}) — be more specific.")
+    hidx = hits[0][0]
+    # End of that section's card block: the last card line before the next header.
+    nxt = next((i for i, _h in heads if i > hidx), len(lines))
+    last = max((i for i in range(hidx + 1, min(nxt, len(lines)))
+                if _card_line_name(lines[i])), default=hidx)
+    if hidx < src <= last:
+        return list(lines)                      # already in the target section
+    line = lines[src]
+    rest = lines[:src] + lines[src + 1:]
+    # Re-find the insertion point in the shortened list.
+    dest = last - 1 if src < last else last
+    return rest[:dest + 1] + [line] + rest[dest + 1:]
+
+
 def _line_comment(ln):
     """The trailing inline `# …` comment on a card line, or '' — so a line rewrite
     (quantity bump/decrement here, `reconcile_lines`) re-attaches it instead of
@@ -6330,7 +6383,7 @@ def cmd_feedback(args):
     return 0
 
 
-def _do_swap(d, cut, add, apply, flex_entry=None):
+def _do_swap(d, cut, add, apply, flex_entry=None, section=None):
     """Shared engine for `swap` and `apply-flex`: preview deltas, and on --apply
     perform the edit with a .bak + INV-04 re-check."""
     add_disp, add_set, add_cn = _printing_of(add)
@@ -6435,6 +6488,12 @@ def _do_swap(d, cut, add, apply, flex_entry=None):
         # because a skill REFERENCES it, and no test drives the write path.
         new_lines = _swap_edit_lines(lines, cut, add, (add_set, add_cn),
                                      drop_flex=flex_entry)
+        # Relocation happens BEFORE the write and inside the same try, so a bad
+        # `--section` aborts the swap entirely rather than leaving the line misfiled
+        # with an error printed after the fact. `_safe_write_lines`' card-total guard
+        # still applies — a move preserves the total by construction.
+        if section:
+            new_lines = _relocate_card_line(new_lines, add, section)
         bak = _safe_write_lines(d["path"], new_lines, before_s["total"])
     except ValueError as e:
         eprint(f"Not saved: {e}")
@@ -6452,6 +6511,10 @@ def _do_swap(d, cut, add, apply, flex_entry=None):
         warn = section_mismatch(new_lines, ai, add.strip(), load_card_data())
         if warn:
             print(f"  ⚠ section comment: {warn}")
+            print(f'     Move it mechanically (never by hand — G-65): '
+                  f'deck.py swap {d["id"]} --cut "{add}" --add "{add}" is a no-op, so '
+                  f'redo this swap with --section "<header substring>", or move the '
+                  f'line with an editor that preserves the (SET) COLLECTOR# fields.')
     # Record how the recommenders scored this decision. Written AFTER the edit lands, so
     # a rejected write leaves no phantom row; announced rather than silent, because a
     # command that writes a second file should say so.
@@ -6481,7 +6544,8 @@ def cmd_swap(args):
     if not d:
         eprint(f"No deck with id {args.id!r}. Try: deck.py list")
         return 1
-    return _do_swap(d, args.cut, args.add, args.apply)
+    return _do_swap(d, args.cut, args.add, args.apply,
+                    section=getattr(args, "section", None))
 
 
 def cmd_apply_flex(args):
@@ -10150,6 +10214,21 @@ _CLAUSE_BREAK = re.compile(r"[.;!?](?=\s)")
 # "deck 56" / "deck 40a" — an explicit reference to a deck by id. Requires the word
 # `deck` so a bare count ("16 Birds") can never read as one.
 _OTHER_DECK_RE = re.compile(r"\bdeck\s+(\d+[a-z]?)\b", re.I)
+# A SHARING claim is not a comparison, and treating it as one is how a false card
+# citation survived for months. Deck 43's tier block read "only FIVE nonland cards are
+# shared (Erode, Healer's Hawk, Starscape Cleric, Stroke of Midnight and Mister
+# Negative)" — a sentence that names deck 42, so `_OTHER_DECK_RE` suppressed the whole
+# clause as comparison context. But deck 43 had not run Erode for a long time, and a
+# sharing claim ASSERTS THE CARD IS IN BOTH LISTS: it is a statement about this deck,
+# not merely about the other one. Found by hand, 2026-08-24, while looking for
+# interaction to add.
+#
+# So the other-deck suppression is skipped inside a sharing clause. This is a carve-out,
+# not a loosening: every other cross-deck citation still suppresses exactly as before,
+# and the cue list is kept NARROW on purpose (G-26 — a false positive is noisy and gets
+# noticed, a false negative is silent). Measured across the roster when it landed.
+_SHARING_CUES = re.compile(
+    r"\b(?:share[sd]?|sharing|in common|both run|both play|overlap(?:s|ping)?)\b", re.I)
 # A figure whose SUBJECT is the card POPULATION rather than this list. Deck 49's
 # archetype prose argues "Standard's Dragons average MV 5.30, so a deck that wants to
 # field several must SOLVE ITS OWN MANA" — a true statement about the format that the
@@ -10208,6 +10287,10 @@ def _cites_as_history(prose, pos, length):
     prev_lo = max(_clause_bounds(prose, max(0, clo - 2), max(0, clo - 2))[0],
                   pos - _HISTORY_WINDOW)
     frame = prose[prev_lo:pos] + " " + prose[pos + length:hi]
+    if _SHARING_CUES.search(prose[clo:chi]):
+        # A sharing claim names cards this deck is asserted to RUN, so the other-deck
+        # reference in it is not comparison context. Everything else still suppresses.
+        return bool(_COMPARISON_CUES.search(prose[prev_lo:clo]))
     return bool(_COMPARISON_CUES.search(prose[prev_lo:clo])
                 or _OTHER_DECK_RE.search(frame))
 
@@ -11904,6 +11987,12 @@ def main():
     p.add_argument("--add", required=True, help="card to add")
     p.add_argument("--apply", action="store_true",
                    help="write the change (with a .bak); default is a dry-run preview")
+    p.add_argument("--section", metavar="HEADER",
+                   help="place the added line under the `# section` whose header "
+                        "contains this substring, instead of inheriting the cut card's "
+                        "slot (G-05). Moves the line VERBATIM, so the (SET) COLLECTOR# "
+                        "fields cannot be mistyped the way a hand edit can (G-65). "
+                        "Refuses an absent or ambiguous header without writing.")
     p = sub.add_parser("feedback",
                        help="how the recommenders scored against the swaps you applied")
     p.add_argument("id", nargs="?", help="limit to one deck (default: the whole roster)")

@@ -4495,3 +4495,97 @@ class TestStateGateCounts:
         cd = self._cd()
         assert deck._state_axis_counts(cards, cd, self.MANA)["draw"] == \
             deck.role_tally(cards, cd).get("Card advantage", 0)
+
+
+class TestRelocateCardLine:
+    """`swap --section`, and the reason it exists is the bug the WARNING caused.
+
+    `section_mismatch` correctly flags an add that inherited the cut card's `# section`
+    comment (G-05), but the only way to act on the warning was to hand-edit the deck
+    file — and hand-editing card lines is exactly what G-65 forbids. Relocating four
+    lines that way in one 2026-08-24 session produced two invented collector numbers
+    ((HOB) 26 for a real 24, (HOB) 21 for a real 19), caught only because
+    `resolve --check` happened to be run afterwards. An advisory that can only be
+    resolved by a forbidden edit is a hazard, not a warning."""
+
+    LINES = ["#: name: T", "", "# Ramp", "1 Llanowar Elves (M21) 168", "",
+             "# Removal", "1 Shock (M21) 159", "1 Murder (M21) 109", ""]
+
+    def test_the_line_moves_VERBATIM_so_the_printing_cannot_be_retyped(self):
+        out = deck._relocate_card_line(self.LINES, "Llanowar Elves", "Removal")
+        assert "1 Llanowar Elves (M21) 168" in out          # byte-identical, set + number
+        assert out.index("1 Llanowar Elves (M21) 168") > out.index("# Removal")
+        assert sorted(x for x in out if x.strip()) == sorted(x for x in self.LINES if x.strip())
+
+    def test_an_absent_section_refuses_and_names_the_real_headers(self):
+        try:
+            deck._relocate_card_line(self.LINES, "Llanowar Elves", "Nope")
+        except ValueError as e:
+            assert "Ramp" in str(e) and "Removal" in str(e)
+        else:
+            raise AssertionError("expected a refusal")
+
+    def test_an_AMBIGUOUS_section_refuses_rather_than_guessing(self):
+        # "R" matches both Ramp and Removal. Picking one silently would file the card
+        # under a header the author did not choose — the same lie the warning is about.
+        try:
+            deck._relocate_card_line(self.LINES, "Llanowar Elves", "R")
+        except ValueError as e:
+            assert "matches 2 headers" in str(e)
+        else:
+            raise AssertionError("expected a refusal")
+
+    def test_a_card_already_in_the_target_section_is_a_no_op(self):
+        assert deck._relocate_card_line(self.LINES, "Shock", "Removal") == self.LINES
+
+    def test_a_card_on_two_lines_refuses(self):
+        lines = self.LINES + ["1 Shock (FDN) 1"]
+        try:
+            deck._relocate_card_line(lines, "Shock", "Ramp")
+        except ValueError as e:
+            assert "2 card line(s)" in str(e)
+        else:
+            raise AssertionError("expected a refusal")
+
+
+class TestSharingClaimsAreNotComparisons:
+    """A SHARING claim asserts the card is in THIS deck, so the cross-deck suppression
+    is wrong there — deck 43's tier block named a card it had not run in months inside
+    "only FIVE nonland cards are shared (…)".
+
+    Scoped narrowly on purpose (G-26: keep the cue lists NARROW, and let a roster sweep
+    be the check — it returned 0 new hits when this landed). Note the deck 43 instance
+    was ALSO hidden by `_RATIONALE_MIN_LEN`, which is a separate, measured, declined
+    residual: this carve-out fixes the suppression half only."""
+
+    def _probe(self, tmp_path, prose):
+        p = tmp_path / "deck.txt"
+        p.write_text("#: name: P\n#: format: Standard\n#: colors: WUB\n"
+                     + "".join(f"#: tier: {ln}\n" for ln in prose)
+                     + "\n# Spells\n1 Starscape Cleric (BLB) 116\n"
+                       "1 Mister Negative (SPM) 135\n", encoding="utf-8")
+        return deck.rationale_staleness({"id": "p", "name": "P", "path": str(p)})[0]
+
+    def test_a_card_named_as_SHARED_but_absent_is_reported(self):
+        stale = self._probe(__import__("pathlib").Path(self._tmp),
+                            ["B — this deck and deck 42 Blood Price share only three",
+                             "nonland cards (Healer's Hawk, Starscape Cleric and Mister",
+                             "Negative), so the overlap is thin."])
+        assert any(n == "Healer's Hawk" for n, _h in stale), stale
+
+    def test_an_ordinary_cross_deck_COMPARISON_still_suppresses(self):
+        # The control. Deck 26's prose cites another deck's cards to contrast with them;
+        # those are not claims about this list and must stay silent, or the carve-out has
+        # simply disabled a working suppression.
+        stale = self._probe(__import__("pathlib").Path(self._tmp),
+                            ["B — where deck 42 Blood Price spends its splash on",
+                             "Healer's Hawk, this deck does not."])
+        assert not any(n == "Healer's Hawk" for n, _h in stale), stale
+
+    def setup_method(self):
+        import tempfile
+        self._tmpdir = tempfile.TemporaryDirectory()
+        self._tmp = self._tmpdir.name
+
+    def teardown_method(self):
+        self._tmpdir.cleanup()
