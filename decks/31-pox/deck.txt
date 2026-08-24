@@ -92,13 +92,14 @@
 1 Adventurer's Inn (FIN) 271
 #~ note: applied — Elf engine deepened (owned Uncommon crafts): Morcant's Loyalist (-Melancholic Poet) non-legendary Elf anthem + dies->recur an Elf; Morcant's Eyes (-Lys Alana Informant) upkeep surveil + late {4}{G}{G} sac for X Elf tokens. Adds anthem redundancy + card advantage/recursion.
 #~ note: applied — Killmonger, Scourge of Wakanda (-Putrid Pals): owned. ETB may sac a creature -> destroy target nonland permanent (the noncreature answer the deck lacked; 2->raises noncreature-answer count) AND the sac cost feeds the death-trigger payoffs (Arnyn/South Wind/Serpent Society); +2/+1 with 2+ creatures in yard is self-fed by combat deaths.
-#~ +Izoni, Center of the Web | CRAFT (Rare, R wildcard) — Standard-legal Elf Detective card-advantage engine. Menace; enter/attack collect evidence 4 -> two 2/1 Spiders; sac four tokens: surveil 2, draw 2, gain 2. On-theme card advantage (Elf/tokens/graveyard/sac), but DOWNGRADED to a sidegrade: Professor Dellian Fel now supplies a repeatable draw for 0 wildcards at MV 4 vs Izoni's MV 6 + a Rare. Owned-first rule — skip unless you want a second engine. Note role_tally under-counts this axis because it does not score a single-draw ability; the deck reads card-adv 2. See wishlist Target 31.
+#~ +Izoni, Center of the Web | CRAFT (Rare, R wildcard) — Standard-legal Elf Detective card-advantage engine. Menace; enter/attack collect evidence 4 -> two 2/1 Spiders; sac four tokens: surveil 2, draw 2, gain 2. On-theme card advantage (Elf/tokens/graveyard/sac), but DOWNGRADED to a sidegrade: Professor Dellian Fel now supplies a repeatable draw for 0 wildcards at MV 4 vs Izoni's MV 6 + a Rare. Owned-first rule — skip unless you want a second engine. Note role_tally under-counts this axis because it does not score a single-draw ability (it read card-adv 2 when this was written 2026-08; the live axis is 5 after the Elf-package and Killmonger passes). See wishlist Target 31.
 #~ note: applied — Virulent Emissary in for Serpent Specialist.
 #~ note: applied 2026-08-20 — HOB Elf package: Thranduil, Sindarin Liege in for
 #~ note: Elfsworn Giant (same landfall Elf-token job at MV 4 hybrid, green-payable,
 #~ note: plus an Elves-anthem); Cantankerous Keepers in for Vinebred Brawler (card
 #~ note: advantage in a tribal body — affinity makes it a 2-3 mana 4/3; its mill-4
-#~ note: -take-Elves does not classify, so the CA axis still reads 2 — K-12);
+#~ note: -take-Elves does not classify, so the CA axis read 2 AT THE TIME — K-12;
+#~ note: it reads 5 today, so do not re-cite that figure);
 #~ note: Woodland Weavemaster in for Scarblade's Malice (1-drop scaling Elf-only
 #~ note: ramp). Malice's deathtouch grant left with it — the poison bridge the
 #~ note: notes above describe is now carried by the ~11 NATIVE deathtouchers alone.
