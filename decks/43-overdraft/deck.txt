@@ -69,8 +69,10 @@
 #: tier: NOTE ON `deck.py similar`: as of 2026-08-24 this reads 84% against 12 Drawn
 #: tier: Conclusions on ONE shared card, and 75% against 42 Blood Price on four. Those
 #: tier: numbers are the tag model hitting its limit, not a duplicate deck — 42 shares
-#: tier: only FOUR nonland cards (Erode, Starscape Cleric, Stroke of Midnight and
-#: tier: Mister Negative, three of them commodity removal), and
+#: tier: only FOUR nonland cards (Leech Collector, Starscape Cleric, Stroke of Midnight
+#: tier: and Mister Negative — the list said Erode until 2026-08-24, which deck 43 has
+#: tier: not run for some time; a cross-deck comparison is outside the rationale audit's
+#: tier: scope, so it went unchecked), and
 #: tier: the shared themes are `lifegain` and `card draw`, which cannot distinguish a
 #: tier: deck that gains life AND draws cards from one where gaining life IS drawing
 #: tier: cards. The engines are opposite: 42's pay-life package is net-NEGATIVE here.
