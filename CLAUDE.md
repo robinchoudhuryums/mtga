@@ -1107,11 +1107,13 @@ exits non-zero on any hard invariant break. INV-01…04 plus **fourteen model-sa
 gates** (`check_rankings`, `check_colors`, `check_dfc`, `check_suggest`, `check_engines`,
 `check_tier`, `check_patterns`, `check_commands`, `check_agreement`, `check_docs`, and the
 soft `check_keywords` / `check_roles` / `check_themes` / rationale-and-flex sweeps) — plus
-SEVEN further SOFT roster sweeps this list used to omit: wishlist target drift, the G-68
+EIGHT further SOFT roster sweeps this list used to omit: wishlist target drift, the G-68
 card-name-header staleness pass, the tier-mismatch pass, (2026-08-11) the `#~ note:`
 figure sweep, (2026-08-19) the tag/role disagreement sweep (`check_roles --tags`) and
-the committed-dashboard freshness check, and (2026-08-24) the G-75 dead-library-search
-sweep — a tutor whose named resource the deck holds ZERO of. Two things to know
+the committed-dashboard freshness check, and (2026-08-24) TWO more — the G-75
+dead-library-search sweep (a tutor whose named resource the deck holds ZERO of) and the
+G-79 unreleased-pool sweep (a card-pool row from a set that is not out yet, which every
+craft recommender would price a wildcard for). Two things to know
 before touching it: it imports `deck` as a MODULE and calls its MODEL functions (no
 `cmd_*` at all), so it never
 builds an argparse tree — the CLI surface is covered by `tests/test_cli.py` and a CI smoke
@@ -1168,7 +1170,7 @@ earned it: [C-01]
 **Invariant Library:**
 - INV-01 | card-library.csv has the canonical 8-column header, every row has 8 fields, no duplicate (Card Name, Set Code, Collector #) printing, and Quantity Owned is blank or a non-negative integer | Subsystem: Data | Verify: scripts/check_all.py (via validate.py)
 - INV-02 | Every Card Name in card-library.csv has a row in card-mana.csv | Subsystem: Data | Verify: scripts/check_all.py
-- INV-03 | Derived reference files exist AND keep their own schema: card-mana.csv (Card Name/Mana Cost/Mana Value/Keywords), card-pool.csv (…/Rarity; Legalities+Released+Power+Toughness warn if absent), gallery.html (has usable CONTENT — non-trivial size + the `#data` island — since existence alone passed a truncated build) | Subsystem: Data/Presentation | Verify: scripts/check_all.py
+- INV-03 | Derived reference files exist AND keep their own schema: card-mana.csv (Card Name/Mana Cost/Mana Value/Keywords), card-pool.csv (…/Rarity; Legalities+Released+Power+Toughness warn if absent), gallery.html AND dashboard.html (each has usable CONTENT — non-trivial size + the `#data` island — since existence alone passed a truncated build) | Subsystem: Data/Presentation | Verify: scripts/check_all.py
 - INV-04 | Every deck file under decks/ parses with no malformed card lines, AND every line's `(SET)` code exists in the pool or library (an unheld COLLECTOR # within a real set is a soft warning, since the pool keys one printing per card), AND the roster's ids are unambiguous — no two files claim one deck id, and no top-level decks/ directory is variant-shaped (`73a-…`), both of which let a by-id command silently validate one file while editing another | Subsystem: Decks | Verify: scripts/check_all.py
 - INV-05 | Color(s) stores color identity; actual mana cost lives only in card-mana.csv | Subsystem: Data | Verify: design/manual
 - INV-06 | Synergy tags are keyword-aware — regenerate via build_mana.py then tag_synergies.py --merge after imports (--merge preserves hand-curated tags; --force replaces them) | Subsystem: Ingest | Verify: manual
@@ -1300,7 +1302,10 @@ format.
 **Frozen Subsystems:** none.
 
 **Deploy Command:** Data + local tooling ship by commit/push (no build/release step). The
-one deployed artifact is the roster **dashboard**: `.github/workflows/pages.yml` rebuilds
+one deployed artifact is the roster **dashboard**, and since 2026-08-24 the workflow
+INSPECTS the page it is about to publish (non-trivial size + the `#data` island, the same
+two facts INV-03 checks on the committed copy) — nothing looked at it before:
+`.github/workflows/pages.yml` rebuilds
 `build_dashboard.py` offline and publishes it to GitHub Pages on every push to `main`.
 `build_dashboard.py` restyles are **template-only** — the data pipeline feeding the
 `#data` island is the source of truth and must stay untouched by any restyle. The
