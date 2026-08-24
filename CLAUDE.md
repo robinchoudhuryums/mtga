@@ -1148,7 +1148,8 @@ earned it: [C-01]
 - Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json,
   scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml,
   scripts/app.py, templates/, Makefile [C-06]
-- Testing: tests/ (30 test files + conftest: the markup-contract, CLI-entry-point, analysis-model,
+- Testing: tests/ (30 test files + conftest: the markup-contract, CLI-entry-point and
+  command-output, analysis-model,
   gate-pinning, shared-primitive and ingest layers, the 2026-08 ingest-writer /
   sync-guard / resilience-layer / CLI-filter coverage of the formerly untested
   scripts, plus test_check_all.py, the gate runner's own mutation layer;

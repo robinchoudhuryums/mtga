@@ -1972,3 +1972,24 @@ Three findings, all now fixed:
 
 **Where I left off:** all green, 1443 tests. Presentation is the last unaudited subsystem
 and holds the biggest untested surface.
+
+## 2026-08-24 — /broad-implement: the cmd_* command layer
+
+The Analysis audit's follow-on. `check_all` reaches ZERO `cmd_*` (F3), and `test_cli.py`
+only proved entry points START — so everything the command functions do at RENDER time
+was ungated, which is exactly where B1's self-cancelling tune plan lived.
+
+Added a command-output layer to `tests/test_cli.py`: every subcommand run for real,
+asserting no traceback, a clean exit and OUTPUT. Plus a tune-plan output contract that
+catches B1 at the CLI level. `_ARGS` is exhaustive — a new subcommand with no invocation
+FAILS rather than being skipped (G-53's discipline).
+
+Two things the new layer found immediately, both my test data rather than code: `diff`
+was given a variant (`1a`) that does not exist, and `sync` an empty pipe. Both commands
+were behaving correctly. `sync` now gets a real `arena` export via stdin, so it exercises
+matching instead of its empty-input guard.
+
+Also corrected test_cli.py's own docstring, which repeated the stale "calls cmd_*
+directly" claim — a test double encoding the old understanding of the gap it covers.
+
+**Where I left off:** all green, 1449 tests. Presentation is the last unaudited subsystem.

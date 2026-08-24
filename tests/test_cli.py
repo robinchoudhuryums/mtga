@@ -1,9 +1,10 @@
 """Smoke tests for the command-line surface — the one thing no other gate touches.
 
-`check_all.py` imports `deck` as a MODULE and calls `cmd_*` directly; nothing in it,
-and nothing else under tests/, ever constructs an `ArgumentParser`. So the parsers
-were unreachable from every gate in the project, and `deck.py --help` shipped broken
-for four days with three green workflows (broad-scan F-01/F-12):
+`check_all.py` imports `deck` as a MODULE and calls its MODEL functions — 16 of them,
+and NO `cmd_*` at all (this docstring said otherwise until 2026-08-24, as did CLAUDE.md
+and docs/cycle-config.md). Nothing in it, and nothing else under tests/, ever constructs
+an `ArgumentParser`. So the parsers were unreachable from every gate in the project, and
+`deck.py --help` shipped broken for four days with three green workflows (F-01/F-12):
 
     help="... (keepable %, land drops, ...)"
 
@@ -12,9 +13,12 @@ argparse renders a help string through `help % params`, so a bare `%` raises
 every subaction, ONE bad subcommand string killed the whole `--help` output. Every
 model-sanity gate, invariant and unit test passed throughout.
 
-These tests are deliberately shallow: they prove each entry point STARTS and renders
-its help, not that it computes anything. Depth lives in the other test modules and in
-check_all.py. They run as subprocesses because that is the only way to exercise
+The help tests are deliberately shallow: they prove each entry point STARTS and
+renders its help. The COMMAND-layer tests at the bottom of this file go one level
+deeper — they run each subcommand for real and pin the contract it owes (exit cleanly,
+no traceback, produce output) — because `check_all` reaching no `cmd_*` means everything
+those functions do at RENDER time is otherwise ungated. Semantic depth still lives in
+the other test modules and in check_all.py. They run as subprocesses because that is the only way to exercise
 `main()` and the argparse tree the way a user does — and in a thread pool, because 28
 interpreter startups in series is the difference between ~2s and ~20s.
 """
@@ -39,10 +43,10 @@ def _uses_argparse(filename):
         return "ArgumentParser" in fh.read()
 
 
-def _run(args, timeout=120):
+def _run(args, timeout=120, stdin=None):
     """(returncode, stdout+stderr) for `python3 <args>` from the repo root."""
     r = subprocess.run([sys.executable, *args], capture_output=True, text=True,
-                       cwd=REPO_ROOT, timeout=timeout)
+                       cwd=REPO_ROOT, timeout=timeout, input=stdin)
     return r.returncode, (r.stdout or "") + (r.stderr or "")
 
 
@@ -125,3 +129,131 @@ class TestDeckSubcommands:
                     for c, (rc, out) in sorted(results.items())
                     if rc != 0 or TRACEBACK in out]
         assert not problems, "\n".join(problems)
+
+
+# ── The COMMAND layer, run for real ──────────────────────────────────────────────────
+#
+# Everything above proves an entry point STARTS and renders its help. Nothing proved one
+# COMPUTES. That gap is bigger than it looks, and the 2026-08-24 Analysis audit measured
+# why: `check_all` imports `deck` as a module and calls 16 MODEL functions and ZERO
+# `cmd_*` — a fact CLAUDE.md and docs/cycle-config.md both stated backwards for a year.
+# So the whole command layer — argument plumbing, output assembly, and every arithmetic
+# that happens at RENDER time — was reachable by no gate at all.
+#
+# `tier --to` is the worked example. It paired each filler with a cut by positional
+# `zip`, blind to what the cut did, so a plan closing an interaction gap could propose
+# cutting an interaction card: the two cancelled, the projection came back short, and the
+# user was told to "pick another cut" for a decision the tool could have made. Three of
+# eleven roster plans were affected. Every model function it calls was correct; the bug
+# was entirely in the layer nothing ran.
+#
+# These tests are one level deeper than the help smoke above and still deliberately
+# shallow on semantics — depth belongs in test_deck.py and check_all.py. What they pin is
+# the contract every command owes: exit 0, no traceback, and OUTPUT. A command that
+# silently prints nothing is the failure this catches, and it is indistinguishable from a
+# healthy one in any other gate.
+#
+# ARGS is exhaustive on purpose. A subcommand missing from it FAILS rather than being
+# skipped, so a new command must be classified deliberately — the same discipline
+# check_commands applies to workflow reachability, where a stale exemption is itself a
+# failure (G-53). Every entry is a READ-ONLY invocation: the four write-capable commands
+# (swap, apply-flex, sync, resolve --fix) are all dry-run until `--apply`, verified.
+# Sentinel: this command reads a pasted deck from STDIN, so it gets a real export rather
+# than an empty pipe. With no input `sync` correctly reports "no deck blocks found" and
+# exits 1 — true, but it exercises the guard instead of the matching path this covers.
+_STDIN = object()
+
+
+_DECK = "43"            # a real, well-populated roster deck
+_ARGS = {
+    # roster-wide, no argument
+    "list": [], "wildcards": [], "audit": [], "brawl": [], "rotation": [], "feedback": [],
+    # one deck id
+    "check": [_DECK], "arena": [_DECK], "stats": [_DECK], "mana": [_DECK],
+    "consistency": [_DECK], "tribes": [_DECK], "engines": [_DECK], "targets": [_DECK],
+    "suggest": [_DECK], "legal": [_DECK], "preflight": [_DECK], "quality": [_DECK],
+    "history": [_DECK], "tier": [_DECK], "shape": [_DECK], "redundancy": [_DECK],
+    "cuts": [_DECK], "flex": [_DECK], "text": [_DECK], "similar": [_DECK],
+    # everything else takes its own shape
+    "diff": ["20", "20a"],          # a REAL parent/variant pair; `1a` does not exist
+    "swap": [_DECK, "--cut", "Stroke of Midnight", "--add", "Negate"],   # dry run
+    "apply-flex": [_DECK, "1"],                                         # dry run
+    "verify": [_DECK],
+    "sync": _STDIN,                 # fed a real export by the command_runs fixture
+    "suggest-homes": ["Negate"],
+    "resolve": ["Negate"],
+    "screen": [_DECK, "Negate"],
+}
+
+
+@pytest.fixture(scope="module")
+def command_runs(subcommands):
+    """Every subcommand actually executed, once, shared across the tests below."""
+    rc, export = _run([os.path.join("scripts", "deck.py"), "arena", _DECK])
+    assert rc == 0 and "Deck" in export, export[:200]
+    plain = [(c, [os.path.join("scripts", "deck.py"), c, *_ARGS[c]])
+             for c in subcommands if c in _ARGS and _ARGS[c] is not _STDIN]
+    out = _run_all(plain)
+    for c in (c for c in subcommands if _ARGS.get(c) is _STDIN):
+        out[c] = _run([os.path.join("scripts", "deck.py"), c], stdin=export)
+    return out
+
+
+class TestSubcommandsActuallyRun:
+    def test_every_subcommand_is_classified(self, subcommands):
+        """A new subcommand must be given a real invocation here, not silently skipped —
+        otherwise this whole layer quietly stops covering it, which is the failure mode
+        it exists to prevent."""
+        missing = [c for c in subcommands if c not in _ARGS]
+        assert not missing, (
+            "these subcommands have no invocation in _ARGS, so nothing runs them:\n  "
+            + ", ".join(missing))
+
+    def test_no_subcommand_raises(self, command_runs):
+        crashed = {c: out for c, (_rc, out) in command_runs.items() if TRACEBACK in out}
+        assert not crashed, "\n".join(
+            f"  {c}: {out.strip().splitlines()[-1]}" for c, out in crashed.items())
+
+    def test_every_subcommand_exits_cleanly(self, command_runs):
+        """Exit 0, or the documented non-zero of a command that REPORTS a problem.
+        `preflight` returns non-zero when a deck is not READY and `legal`/`check` do the
+        same, which is a finding about the deck, not about the command."""
+        reports_findings = {"preflight", "legal", "check", "verify"}
+        bad = [f"{c}: rc={rc}" for c, (rc, _o) in sorted(command_runs.items())
+               if rc != 0 and c not in reports_findings]
+        assert not bad, "\n".join(bad)
+
+    def test_every_subcommand_produces_output(self, command_runs):
+        """The contract no other gate checks. A command that silently prints nothing
+        looks identical to a healthy one everywhere else in this repo."""
+        silent = [c for c, (_rc, out) in sorted(command_runs.items())
+                  if len(out.strip()) < 20]
+        assert not silent, f"these subcommands printed (almost) nothing: {silent}"
+
+
+class TestTunePlanOutputContract:
+    """The specific render-time layer B1's bug lived in. `tier --to` prints a plan and
+    then a PROJECTION of the resulting floor; both are assembled in `cmd_tier`, and if
+    the pairing is wrong the projection dutifully reports the worse number instead of the
+    plan being better."""
+
+    def test_a_plan_never_cuts_a_card_feeding_the_axis_it_adds(self):
+        """Roster-wide. Before the fix, 3 of the 11 decks with an assembled plan paired an
+        interaction add with an interaction cut. A ⚠ on the SAME axis being added means
+        the plan cancelled itself; a cross-axis ⚠ is a legitimate trade and allowed."""
+        rc, out = _run([os.path.join("scripts", "deck.py"), "tier", _DECK, "--to", "A"])
+        assert rc == 0, out
+        for line in out.splitlines():
+            if "→" in line and "(interaction" in line:
+                assert "cut feeds interaction" not in line, line
+            if "→" in line and "(card advantage" in line:
+                assert "cut feeds card advantage" not in line, line
+
+    def test_the_plan_reaches_the_floor_it_claims(self):
+        """Deck 43 is one interaction card from the A floor, so a correct plan closes it.
+        Before the fix this printed 'still short of A' having proposed a self-cancelling
+        swap — the exact user-visible symptom."""
+        rc, out = _run([os.path.join("scripts", "deck.py"), "tier", _DECK, "--to", "A"])
+        assert rc == 0, out
+        assert "Assembled tune plan" in out
+        assert "meets A floor" in out, out[-600:]
