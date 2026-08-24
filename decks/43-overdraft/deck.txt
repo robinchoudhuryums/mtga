@@ -49,10 +49,12 @@
 #: tier: corrective bought the axis back at a better
 #: tier: rate — Battle Menu and Bitter Triumph in for the deck's two 7-and-8-drops —
 #: tier: putting interaction at 4, ALL of it instant-speed, three of it able to answer a
-#: tier: noncreature permanent, and dropping avg MV 3.20 -> 2.89 with 17 early drops.
-#: tier: Card advantage paid for it, 16 -> 14, which is the honest cost: both cards cut
-#: tier: were end-step refill engines. Against that stands card
-#: tier: advantage 14 on a 2.89 curve, a number that is real rather than a pile of
+#: tier: noncreature permanent. The two refill engines were then RESTORED against
+#: tier: Deduce and Marauding Blight-Priest once their real role was understood (see
+#: tier: notes: they fix the hand, they do not merely cap it), so the axis held at 4
+#: tier: while card advantage came back to 15 on a 3.17 curve with 16 early drops.
+#: tier: Against the thin answer count stands card
+#: tier: advantage 15 on a 3.17 curve, a number that is real rather than a pile of
 #: tier: cantrips — Cloudblazer draws two, Chart a Course draws two, Spirit Water Revival
 #: tier: draws seven when waterbent, the Grimoire draws five on cast, and Bard, King of
 #: tier: Dale doubles every one of them past the first each turn. B now MATCHES the
@@ -134,17 +136,42 @@
 #: notes: making Clues and stops triggering Ketramose (RIP replaces the only enabler it
 #: notes: was added to help), and Spirit Water Revival's waterbent shuffle-back does
 #: notes: nothing. Moonstone does the job while feeding the deck instead of fighting it.
-#: notes: THE MAX-HAND-SIZE TRAP, resolved 2026-08-24 by cutting both offenders.
-#: notes: Doctor Octopus and The Ten Rings each SET a maximum hand size (8 and 10). A
-#: notes: set competes with "you have no maximum hand size" in TIMESTAMP order, so
-#: notes: landing either AFTER the Grimoire / Ms. Marvel / Vnwxt CAPPED the hand — in
-#: notes: the deck whose clock is literally Ms. Marvel's power = cards in hand. Their
-#: notes: refill clauses are independent of the cap and read "if you have FEWER than
-#: notes: eight/ten cards", which is rare here BY DESIGN, so the good half mostly slept
-#: notes: while the bad half woke up when you were ahead. Battle Menu and Bitter Triumph
-#: notes: replaced them: 15 mana of top end for 4, and the interaction axis back to 4.
-#: notes: DO NOT RE-ADD A CARD THAT SETS A HAND-SIZE CEILING — read for "your maximum
-#: notes: hand size is N", which looks like an upgrade over seven and is not one here.
+#: notes: THE HAND-SIZE SETTERS ARE A DEFENSIVE ENGINE, NOT A CAP — this note argued
+#: notes: the OPPOSITE on 2026-08-24 and was WRONG; both cards were cut on it and
+#: notes: restored the same day. Doctor Octopus and The Ten Rings each SET a maximum
+#: notes: hand size (8 and 10), and a SET is a floor as well as a ceiling: the end step
+#: notes: precedes the cleanup step, so the trigger draws you UP to the number and the
+#: notes: cleanup discards you DOWN to it. Your hand is EXACTLY 8 (or 10) at the end of
+#: notes: every one of your turns. Under the Grimoire, hand size IS your life — you do
+#: notes: not lose at 0 or less, you lose only on an empty hand — so that reads RESET TO
+#: notes: 8 LIFE EVERY TURN. You cannot be ground down; an opponent must deal 8+ in ONE
+#: notes: window, from your end step to your next end step, or the damage evaporates.
+#: notes: The error was grading the refill clause by how often it fires and calling it
+#: notes: asleep because the deck is usually above eight cards. Wrong state: it fires
+#: notes: precisely when you are BELOW eight, which is precisely when you have been
+#: notes: taking damage. It is not a drawback that shows up when you are winning, it is
+#: notes: insurance that shows up when you are losing.
+#: notes: TWO REAL COSTS, both kept: the ceiling half loses to BURST, since a hoarded
+#: notes: 20-card hand survives a 15-point swing where a fixed 8 dies — the pair trades
+#: notes: "variable, potentially huge, never resets" for "exactly 8, resets every turn",
+#: notes: which beats being ground out and loses to one enormous swing. And Ms.
+#: notes: Marvel's power = cards in hand, so the clock is capped at 8/10 too.
+#: notes: PLAY ORDER MATTERS AND THEY DO NOT STACK: two setters resolve in TIMESTAMP
+#: notes: order and only the later one's number applies. Both refill triggers still
+#: notes: fire, so with both out you refill to 10 and then discard to whichever landed
+#: notes: later. LAND THE TEN RINGS AFTER DOCTOR OCTOPUS to keep the 10.
+#: notes: LAKE-TOWN TOYMAKER IS NOT A CONDITIONAL COMBAT PUMP HERE, and was nearly cut
+#: notes: as one. "If you've drawn two or more cards this turn" is the deck's whole
+#: notes: second engine — Kitsa's free {T} loot alone guarantees it every turn — so the
+#: notes: pump is UNCONDITIONAL and repeatable. And +3/+0 on a LIFELINK body is +3 CARDS
+#: notes: under the Grimoire: 6 native lifelink creatures (Ketramose, Foggy Swamp Spirit
+#: notes: Keeper, Ruin-Lurker Bat, Night Nurse, Osseous Sticktwister, Mister Negative)
+#: notes: plus Bard the Bowman GRANTING lifelink each turn on the same trigger = seven
+#: notes: routes, across 10 evasive bodies incl. unblockable Bilbo. First strike also
+#: notes: turns a lifelink blocker into a free life-gaining trade, and the 3/4 body
+#: notes: blocks. Every model here scored it near-zero (fit 17, power 2, uniqueness 0,
+#: notes: NO detected role) because its entire value is an interaction between three
+#: notes: other cards, which a card-in-isolation grader cannot see.
 #: notes: Craft targets: Marina Vendrell's Grimoire (R), Mister Negative (M), King
 #: notes: T'Challa (M), Restoration Magic (U), Wolfbat (U). Everything else is owned.
 #: notes: The gain-1 lands (Tranquil Cove, Scoured Barrens, Dismal Backwater) are
@@ -152,7 +179,7 @@
 #: notes: they would otherwise lose to.
 
 Deck
-# Hand size — the spine
+# Hand size — the spine (the two SETTERS reset the hand every turn — see notes)
 1 Ketramose, the New Dawn (DFT) 209
 1 Sunpearl Kirin (TDM) 29
 1 Marina Vendrell's Grimoire (DSK) 64
@@ -160,6 +187,8 @@ Deck
 1 Vnwxt, Verbose Host (DFT) 73
 1 Spirit Water Revival (TLA) 73
 1 Bard, King of Dale (HOB) 144
+1 Doctor Octopus, Master Planner (SPM) 128
+1 The Ten Rings (MSH) 251
 
 # Second card each turn — the engine that works without the Grimoire
 1 King T'Challa // Black Panther, Hope Enduring (MSH) 219
@@ -176,7 +205,6 @@ Deck
 # Draw / second-card enablers
 1 Kitsa, Otterball Elite (BLB) 54
 1 Cloudblazer (FDN) 653
-1 Deduce (SOA) 16
 1 Chart a Course (FDN) 586
 1 Thirst for Knowledge (MSH) 79
 
@@ -184,7 +212,6 @@ Deck
 1 Ruin-Lurker Bat (LCI) 33
 1 Night Nurse, Healer of Heroes (MSH) 26
 1 Starscape Cleric (BLB) 116
-1 Marauding Blight-Priest (FDN) 178
 1 Osseous Sticktwister (DSK) 112
 1 Leech Collector (SOS) 88
 1 Restoration Magic (FIN) 30
@@ -234,4 +261,11 @@ Deck
 #~   max hand size and were the deck's only 7-and-8-drops; both adds are owned
 #~   2-mana instants. Interaction 2 -> 4 (all instant-speed), card advantage 16 -> 14,
 #~   avg MV 3.20 -> 2.89, early drops 15 -> 17, metrics floor C -> B.
+#~ note: applied 2026-08-24 (third pass, the RETRACTION) — The Ten Rings in for
+#~   Deduce and Doctor Octopus in for Marauding Blight-Priest. The cut two turns
+#~   earlier rested on a WRONG read of "your maximum hand size is N" (see notes);
+#~   they are a per-turn hand RESET, which under the Grimoire is a per-turn life
+#~   reset. Blight-Priest is the redundant half of a pair with Starscape Cleric,
+#~   which drains identically at one mana less with flying and offspring. Final:
+#~   interaction 4, card advantage 15, avg MV 3.17, floor B = claimed B.
 #~ note: applied — Osseous Sticktwister in for Radiant Strike.
