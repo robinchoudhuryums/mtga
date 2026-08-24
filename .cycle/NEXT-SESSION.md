@@ -1,8 +1,8 @@
 # Handoff — start the next session here
 
 Rewritten 2026-08-09 after the **broad-scan-3** cycle closed, updated 2026-08-12 for the
-**broad-scan-4** cycle, and refreshed 2026-08-19 (**§0-latest is the current state and
-supersedes anything under it where they disagree**; the numbered sections below it are
+**broad-scan-4** cycle, refreshed 2026-08-19, and again 2026-08-24 (**§0-current is the
+current state and supersedes anything under it where they disagree**; the numbered sections below it are
 dated records, kept because their reasoning is still worth reading). Written for a session with none of this one's context. Read it before
 CLAUDE.md's Common Gotchas, not instead of them. The broad-scan-2 cycle it previously
 described is in `.cycle/blocks/2026-08-broad-scan2-*.md` if you need it.
@@ -14,6 +14,93 @@ deleted; open the long form before deciding a rule looks arbitrary.
 
 **Also live: `docs/systems-map.md`** — which command answers a question, and why two
 commands disagree.
+
+---
+
+## 0-current. THE 2026-08-24 SESSION (READ THIS FIRST — supersedes §0-latest below)
+
+Gates: `check_all` all invariants hold with **ONE soft warning** (see below — it is
+expected, not a regression); **1423 pytest passed / 1 skipped**. Merged as PR #150 and
+#151. §0-latest's "ZERO soft warnings / 1333 tests" is the 2026-08-19 state.
+
+**The one soft warning is the G-75 sweep reporting four ACCEPTED dead tutors** — The
+Masters of Evil in decks 20a/20b (needs Plan cards, deck holds 0) and Hobbit Hole in
+50a/69a (its Halflingcycling rider finds nothing). Both cards are still worth their slot;
+the SEARCH is dead, not the card. Do not "fix" these by editing decks — the flag is doing
+its job. A FIFTH hit would be new and worth reading.
+
+### Four rules landed, and one of them came from a real game
+
+- **G-75 dead library searches.** Deck 76 ran ZERO basics while TWO cards searched for
+  them; the user found it IN PLAY, no gate could see it, and the second card had been
+  added the day before *on the fetched basics as its stated rationale*. `deck.py targets`
+  counts library searches now and `check_all` sweeps the zero case.
+- **G-76 state gates — report the FREE end, not just the dead one.** All 13
+  `_TARGET_GATES` count cards in the LIST, so a card gated on a GAME STATE was invisible
+  both ways. Ketramose needs 7 cards in exile against 3 sources; Lake-town Toymaker needs
+  "drawn two or more cards this turn" in the deck that draws two every turn, so its pump
+  is UNCONDITIONAL — and it scored fit 17 / power 2 / uniqueness 0 / **no detected role**
+  and was three proposals from being cut. **Only 2 of 6 families shipped**; four were
+  measured across the roster and deleted as saturated, delirium because its proxy counted
+  types in the DECK when the card asks about the GRAVEYARD.
+- **G-77 `swap --section`.** G-05's advisory could only be acted on by hand-editing a deck
+  line, which G-65 forbids — and doing it four times in one session invented two collector
+  numbers. Pass `--section "<header>"` in the same swap; never hand-move a card line.
+- **G-78 sharing claims + a MEASURED residual.** A "cards shared with deck N" clause
+  asserts the card is in THIS deck, so the cross-deck suppression was wrong there.
+  **The residual is bigger than the fix and is settled, do not re-litigate it without new
+  measurements:** `_RATIONALE_MIN_LEN = 9` hides every single-word card name shorter than
+  nine characters, which is what actually hid the bug. Lowering to 7 gives 3 real / 2
+  false roster-wide, to 5 gives 3 real / 4 false; both would put permanent false warnings
+  in `check_all`. The floor STAYS at 9. Three real citations were found and fixed on the
+  way (43 Wolfbat, 42a Ahriman ×2).
+
+### UNRESOLVED AND RECORDED NOWHERE ELSE: the TRK printing question
+
+**109 deck lines across 47 decks carry `(TRK)` printings, and Star Trek is dated
+2026-11-13** — roughly three months out from this session. 76 are basic lands; **33 are
+shocklands** (Overgrown Tomb ×17, Watery Grave ×12, Breeding Pool ×3, Temple Garden ×1).
+
+The cause is visible in the data: `card-pool.csv` holds ONLY the TRK printing for those
+shocklands, because the pool build picked up previewed Star Trek reprints and the pool
+keys one printing per card (G-30). So `resolve` returns TRK as the only option, and
+`card-library.csv` even records Watery Grave and Overgrown Tomb *as* TRK — almost
+certainly an `enrich` artifact rather than what Arena shows.
+
+**What is NOT known:** whether Arena accepts those lines today. Nobody has paste-tested
+one. `resolve --check` will not catch it — TRK is a real set with real collector numbers,
+so the lines are structurally valid and merely possibly un-importable. **Cheapest next
+step: paste one affected deck into Arena and see.** If it fails, the fix is a pool rebuild
+after 2026-11-13, or pinning those cards to older printings. This is the shape G-65 exists
+for, one layer out: a printing that validates and still does not work.
+
+### Deck work this session (all merged)
+
+- **Deck 43 Overdraft — ten swaps**, the HOB pass plus two correctives. Final: interaction
+  4, card advantage 15, avg MV 3.17, floor **B = claimed B**, preflight READY. Two
+  uncommon crafts owed (Bard the Bowman, Lake-town Toymaker), both wishlisted.
+- **The mechanic worth not re-deriving:** Doctor Octopus and The Ten Rings each SET a
+  maximum hand size (8 / 10). A set is a FLOOR as well as a ceiling — the end step
+  precedes cleanup, so the trigger draws you UP and cleanup discards you DOWN, leaving the
+  hand at exactly N every turn. Under Marina Vendrell's Grimoire hand size IS life, so
+  that is a per-turn life reset. **Both cards were cut on the opposite reading and
+  restored the same day.** Costs: burst beats a fixed 8, and Ms. Marvel's clock is capped.
+  Two setters do NOT stack — land The Ten Rings after Doc Ock to keep the 10.
+- **Deck 43's path to the A floor is ONE CARD**, measured: `+1 interaction (4→5)`, card
+  advantage already 15. Adding Makeshift Binding / Erode / Negate over a non-interaction
+  cut each lands the floor on A (tested, then reverted). The user chose to leave it as is
+  for now. Note `tier --to`'s own plan proposes cutting Bitter Triumph, which IS
+  interaction, and flags that itself — read its add list as "cheap", not "good".
+
+### Where the session left off
+
+Nothing in flight. Working tree clean, HEAD == origin/main. The three `.cycle/*-analysis.md`
+working docs (prune, wylie-tap, hob-followup) are still live and still awaiting the user's
+calls. Standing items the user has explicitly deferred: the Endstone shell, Wylie Variant
+B, the Army/amass deck, 26a near-mono-blue rebuild, deck 76 second-wave crafts, and the
+unexamined fit-pass leads (Innocuous Rat → 62, Graveshifter → 77, Carrot Cake → 42a,
+Fanatic of the Harrowing → 70, six deck 31 suitors). Deck 8 still carries a pre-existing
+pip-intensive flag (16 B / 1 R / 3 G against thin R–G splashes) — noted, never actioned.
 
 ---
 
@@ -53,7 +140,7 @@ Plus three variant FILES: `26b-scrapyard-tithe` → `26b-ancient-decay`, `52a-da
 
 ---
 
-## 0-latest. BROAD SCAN #6 — the top 5 landed 2026-08-19 (READ THIS FIRST)
+## 0-latest. BROAD SCAN #6 — the top 5 landed 2026-08-19 (superseded by §0-current)
 
 **Supersedes §0-newest below where they disagree.** Gates: all invariants hold with **ZERO
 soft warnings**; **1333 pytest passed / 1 skipped**. Full block:
@@ -103,7 +190,7 @@ it deliberately with a K-14 diff, not as a pattern slip-in.
 
 ---
 
-## 0-newest. THE 2026-08-16 → 2026-08-19 SESSIONS (read this first — newest state)
+## 0-newest. THE 2026-08-16 → 2026-08-19 SESSIONS (superseded by §0-current)
 
 **Everything below this section predates 2026-08-16.** §0-now's "Library 2254 → 2275
 printings" is four days stale: the roster is now **2362 cards / 113 decks** (the
