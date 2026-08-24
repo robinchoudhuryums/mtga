@@ -1148,7 +1148,7 @@ earned it: [C-01]
 - Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json,
   scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml,
   scripts/app.py, templates/, Makefile [C-06]
-- Testing: tests/ (30 test files + conftest: the markup-contract, CLI-entry-point and
+- Testing: tests/ (31 test files + conftest: the markup-contract, CLI-entry-point and
   command-output, analysis-model,
   gate-pinning, shared-primitive and ingest layers, the 2026-08 ingest-writer /
   sync-guard / resilience-layer / CLI-filter coverage of the formerly untested
@@ -1158,7 +1158,11 @@ earned it: [C-01]
   feeds; test_writer_mutations.py, which runs each write-safety property against a
   mutant writer so the property is proven load-bearing; and test_gates_fire.py, the
   watched-it-fail layer for the seven gates that had none — so all fourteen now have
-  one), requirements-dev.txt, pytest.ini, .github/workflows/tests.yml [C-07]
+  one; and test_dashboard_js.py, the CROSS-LANGUAGE layer running the dashboard's JS
+  matcher under Node against `match_paste`), requirements-dev.txt + requirements-app.txt
+  (CI installs BOTH, and sets PYTEST_NO_SKIPS so a skip FAILS — installing only -dev
+  silently skipped the editor's six write-safety pins on every run),
+  pytest.ini, .github/workflows/tests.yml [C-07]
 - Decks: decks/
 
 **Invariant Library:**

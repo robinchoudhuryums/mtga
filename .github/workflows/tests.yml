@@ -18,8 +18,17 @@ jobs:
         with:
           python-version: "3.11"
       - name: Install test deps
-        run: pip install -r requirements-dev.txt
+        # requirements-app.txt too, NOT just -dev: tests/test_app_editor.py importorskips
+        # Flask, so installing only the dev pin silently skipped its six write-safety pins
+        # on app.py — 1,035 lines that write card-library.csv and deck files — on every
+        # push and PR since they were written. They pass; nothing automated ran them.
+        run: pip install -r requirements-dev.txt -r requirements-app.txt
       - name: Unit tests (pytest)
+        # PYTEST_NO_SKIPS turns a skip into a failure HERE only (see tests/conftest.py).
+        # Fixing the Flask instance leaves the class open; this closes it, so the next
+        # optional dependency cannot quietly take a module out of CI coverage.
+        env:
+          PYTEST_NO_SKIPS: "1"
         run: pytest
       - name: Integrity gate (check_all)
         run: python3 scripts/check_all.py

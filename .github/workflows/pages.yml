@@ -43,6 +43,28 @@ jobs:
         run: |
           mkdir -p _site
           python3 scripts/build_dashboard.py --out _site/index.html
+      # Look at the artifact before publishing it. The build writes through
+      # `lib.atomic_write`, so a CRASH fails the step above rather than leaving a partial
+      # file — the reachable case is a build that SUCCEEDS with degraded content (an empty
+      # or header-only source CSV yields a page with no decks, and validate.py permits a
+      # zero-row library by design). This is the one deployed artifact in the project, and
+      # nothing inspected it. Same two structural facts INV-03 checks on the committed
+      # copy: non-trivial size, and the `#data` island every deck on the page is read from.
+      - name: Verify the built page before publishing
+        run: |
+          python3 - <<'PY'
+          import sys
+          blob = open("_site/index.html", encoding="utf-8").read()
+          # Computed OUTSIDE the f-string: a backslash inside an f-string EXPRESSION is a
+          # SyntaxError before Python 3.12, so inlining the quoted marker made this step
+          # fail every deploy. Fail-closed, so nothing bad would have shipped — but
+          # nothing at all would have.
+          island = 'id="data"' in blob
+          if len(blob) < 1024 or not island:
+              sys.exit(f"Refusing to deploy: _site/index.html is {len(blob)} bytes, "
+                       f"data island present={island}")
+          print(f"OK: {len(blob)} bytes, data island present")
+          PY
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

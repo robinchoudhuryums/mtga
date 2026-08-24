@@ -1993,3 +1993,27 @@ Also corrected test_cli.py's own docstring, which repeated the stale "calls cmd_
 directly" claim — a test double encoding the old understanding of the gap it covers.
 
 **Where I left off:** all green, 1449 tests. Presentation is the last unaudited subsystem.
+
+## 2026-08-24 — /targeted-audit + /targeted-implement: Presentation & Interface (C1–C5)
+
+The subsystem's CODE was in better shape than its COVERAGE — no security defect and no
+live logic bug in app.py (loopback default, rebinding guard, CSRF origin check, escaped
+reflection, serialized mutations, atomic writes), pages.yml correct, build_dashboard
+reusing deck.py primitives rather than re-deriving. Four findings, all coverage-shaped:
+
+- **C1 (High, live):** `test_app_editor.py` importorskips Flask, and CI installed only
+  `requirements-dev.txt` — so the editor's SIX write-safety pins on the 1,035 lines that
+  write card-library.csv skipped on every push and PR. Verified they pass with Flask
+  first, then made CI install it, then closed the CLASS: `PYTEST_NO_SKIPS=1` turns any
+  skip into a failure in CI only. Suite now 1462 passed / ZERO skipped.
+- **C2/C3:** INV-03's exists-but-gutted check covered gallery.html and not dashboard.html
+  — the fix was already written generically and the second file was never added.
+- **C4:** the Pages deploy never looked at the page it published. **My first version of
+  that check would have failed every deploy** (backslash in an f-string expression,
+  SyntaxError pre-3.12) — caught only because I extracted the step and ran it.
+- **C5:** the dashboard reimplements deck matching in JS; "change both or neither" was a
+  comment, and it had already broken once (F-08). Now executed under Node against
+  `match_paste`. Skips without Node, which C1's guard makes a CI failure.
+
+**Where I left off:** all green, 1462 tests, zero skips. All seven subsystems now audited
+this cycle except Data and Outcomes, both judged low-yield in the audit-order analysis.
