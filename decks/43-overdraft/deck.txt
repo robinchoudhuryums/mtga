@@ -1,4 +1,4 @@
-#: name: Overdraft
+#: name: Uatu The Watcher
 #: format: Standard
 #: arena: 43 Uatu The Watcher, 40651353-dd7e-4c43-b718-832d478c69f7
 #: colors: WUB

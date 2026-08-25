@@ -1,4 +1,4 @@
-#: name: Iron Hills Forge — Hoard Under the Mountain
+#: name: Iron Hills Forge — Smaug's Vault
 #: format: Standard
 #: arena: 74a Smaug's Vault, 1bc4e2ad-0f0c-46fd-b304-701f89d327b0
 #: colors: WR

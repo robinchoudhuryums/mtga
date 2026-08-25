@@ -1,4 +1,4 @@
-#: name: Bird Brain — Bant
+#: name: Bird Brain
 #: format: Standard
 #: arena: 19 Bird Brain, f0fd0577-3e62-4786-b7c2-0ce8b8b0ef05
 #: tier: B — Bant (effectively GW go-wide + a trivial 3-pip U splash) Bird tribal /

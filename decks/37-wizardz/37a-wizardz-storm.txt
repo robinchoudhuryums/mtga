@@ -1,4 +1,4 @@
-#: name: Wizardz — Value/Storm (copy + draw-two)
+#: name: Wizardz — Wiz-Khalifa
 #: format: Standard
 #: arena: 37a Wiz-Khalifa, a3d75fc7-4c52-4e4d-9385-e9728952458b
 #: colors: UBR

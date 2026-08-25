@@ -1,4 +1,4 @@
-#: name: Blood Price — Orzhov Aristocrats
+#: name: Blood Price — Bloody Bodies
 #: format: Standard
 #: arena: 42a Bloody Bodies, d4eb209b-5fd2-473f-a0be-367febaeedb6
 #: colors: WB
