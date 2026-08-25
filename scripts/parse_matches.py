@@ -1065,6 +1065,86 @@ def load_matches(path=MATCHES_CSV):
         return rows
 
 
+def ingest_watermark(path=MATCHES_CSV):
+    """(newest_ingested_date, n_known_ids) for matches ALREADY recorded from a log.
+
+    The transport problem this answers: `Player.log` and the rolling `arena.log` archive
+    are never consumed — deliberately, because they are the full-fidelity record that
+    makes re-ingest and `--annotate` possible (G-57's dedup is what makes re-pasting
+    safe). So every extraction re-emits the entire history. Measured: a 280-line paste
+    whose large majority was matches from 08/07-08/23, all long since recorded, and a
+    6-match paste of which 2 were already in the CSV. Nothing was wrong with the DATA —
+    the parser deduped correctly both times — the cost is purely that the lines are
+    carried, read and discarded.
+
+    DERIVED FROM matches.csv, never from a second stamp file. The CSV already stores the
+    Date and the Match ID; a sidecar recording the same fact is a second source of truth
+    for it, and this repo's recurring failure is two places that can disagree. There is
+    nothing to keep in sync because there is nothing else.
+
+    ONLY rows carrying a Match ID count. A hand-entered row (`--add`, for a phone game
+    the desktop log never saw) has no matchId and a user-supplied date, so letting one
+    set the watermark could advance it PAST log matches that were never ingested — and
+    those would then be filtered out of every future paste, silently. The filter must
+    only ever be as confident as the log-derived rows make it."""
+    dates, ids = [], set()
+    for r in load_matches(path):
+        mid = (r.get("Match ID") or "").strip()
+        if not mid:
+            continue                      # hand row — see the docstring
+        ids.add(mid)
+        d = (r.get("Date") or "").strip()
+        if _ISO_DATE_RE.fullmatch(d):
+            dates.append(d)
+    return (max(dates) if dates else "", len(ids))
+
+
+_ISO_DATE_RE = re.compile(r"\d{4}-\d{2}-\d{2}")
+
+
+def filter_since(text, cutoff):
+    """(kept_text, n_lines_dropped) — log lines from `cutoff` (YYYY-MM-DD) onward.
+
+    INCLUSIVE of the cutoff DAY, and that is the whole safety margin. A day routinely
+    holds both ingested and un-ingested matches (this session's own paste did), so
+    filtering to `> cutoff` would drop a real match whose neighbours happened to be
+    recorded first. Keeping the boundary day costs a handful of lines and hands the
+    overlap to the matchId dedup, which is exactly what dedup is for.
+
+    ORDER IS PRESERVED and never sorted. `resolve_matches` walks the log in order and
+    pairs each result with the most recent `Match to <userId>` header — the only place
+    the local seat appears — so re-ordering would silently mis-attribute every W/L. This
+    filters lines out; it never moves one.
+
+    Each line is dated by the best evidence it carries, in this order:
+      * an EventSetDeckV3 line by its own `LastPlayed` (it PRECEDES the matches it
+        explains, so inheriting a neighbour's date would misfile it by a whole session);
+      * a UnityCrossThreadLogger line by its own local timestamp;
+      * anything else — notably the bare `{...finalMatchResult...}` JSON blob, which
+        carries no date prefix — INHERITS the last dated line above it, which is the
+        header it belongs to.
+
+    An UNDATABLE line before any date is known is KEPT. Dropping what cannot be dated
+    would be guessing in the destructive direction, and this whole feature is a
+    convenience over a record that is already correct."""
+    kept, dropped, current = [], 0, ""
+    for line in (text or "").splitlines():
+        stamp = ""
+        if _SETDECK_MARKER in line:
+            sel = parse_deck_selection(line)
+            if sel and sel[2] is not None:
+                stamp = sel[2].strftime("%Y-%m-%d")
+        if not stamp:
+            stamp = _local_date(line)
+        if stamp:
+            current = stamp
+        if current and current < cutoff:
+            dropped += 1
+            continue
+        kept.append(line)
+    return ("\n".join(kept) + ("\n" if kept else ""), dropped)
+
+
 # Any earlier schema must still carry these, or it is not a matches.csv at all. They are
 # the row's identity and its payload: without Match ID dedup cannot work, and without
 # Date/Result there is nothing to migrate that is worth keeping.
@@ -1521,8 +1601,33 @@ def main():
                     help="fill opp/why/play/note on matches the LOG already recorded, "
                          "from `<matchId> key=value` lines — updates rows in place "
                          "rather than appending, so it cannot double-count")
+    ap.add_argument("--since", metavar="YYYY-MM-DD",
+                    help="ignore log lines dated before this (INCLUSIVE of the day). "
+                         "The extraction never consumes Player.log, so every paste "
+                         "re-carries the whole history; this trims what is transported "
+                         "without touching what is recorded")
+    ap.add_argument("--since-last", action="store_true",
+                    help="like --since, using the newest date already ingested from a "
+                         "log (see --watermark). Safe by construction: dedup is on "
+                         "Arena's matchId, so an overlap costs nothing")
+    ap.add_argument("--watermark", action="store_true",
+                    help="print the newest ingested date and exit — the value a local "
+                         "extraction script can pass back as --since")
     ap.add_argument("--out", default=MATCHES_CSV)
     args = ap.parse_args()
+
+    # Answer --watermark before anything else: it needs no source and is meant to be
+    # captured by a shell script (`d=$(parse_matches.py --watermark)`), so it prints the
+    # bare date on stdout and everything explanatory on stderr.
+    if args.watermark:
+        mark, n = ingest_watermark(args.out)
+        if not mark:
+            eprint("No log-derived matches recorded yet — nothing to filter against.")
+            return 1
+        eprint(f"{n} match(es) recorded from logs; newest is {mark}. "
+               f"Pass --since {mark} (inclusive) to skip what is already in.")
+        print(mark)
+        return 0
 
     if args.annotate:
         if not args.source:
@@ -1564,6 +1669,25 @@ def main():
     except OSError as e:
         eprint(f"Could not read {args.source!r}: {e}")
         return 1
+
+    # Trim the paste to what is not already recorded. Applied HERE — after the read and
+    # before every consumer — so the whole log path (matches, `#: arena:` header harvest,
+    # --sync-names, --map-decks) sees one consistently filtered text rather than each
+    # deciding for itself.
+    cutoff = args.since
+    if args.since_last and not cutoff:
+        cutoff, _n = ingest_watermark(args.out)
+        if not cutoff:
+            eprint("--since-last: nothing ingested from a log yet, so there is no "
+                   "watermark to filter against — parsing the whole paste.")
+    if cutoff:
+        if not _ISO_DATE_RE.fullmatch(cutoff):
+            ap.error(f"--since expects YYYY-MM-DD, got {cutoff!r}")
+        text, dropped = filter_since(text, cutoff)
+        if dropped:
+            eprint(f"Filtered out {dropped} log line(s) dated before {cutoff} "
+                   f"(inclusive of that day). Nothing was deleted — the log still holds "
+                   f"them, and re-running without --since re-reads everything.")
 
     def _with_report(rc):
         """Run `--report` after the ingest when both were asked for (BS5-09), on every

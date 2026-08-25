@@ -84,17 +84,70 @@ Claude sessions) → a shell function in `~/.zshrc`, which needs nothing checked
 ```sh
 mtga-matches() {
   local p="$HOME/Library/Logs/Wizards Of The Coast/MTGA"
+  local cut="$1"                        # optional YYYY-MM-DD: skip what is already in
   grep -hE 'Match to .*MatchGameRoomStateChangedEvent|"finalMatchResult"|==> EventSetDeckV3' \
       "$HOME/mtga-logs/arena.log" "$p"/Player*.log 2>/dev/null \
     | sed -E 's/\\"(MainDeck|Sideboard)\\":\[[^]]*\]/\\"\1\\":[]/g' \
+    | awk -v cut="$cut" '
+        function iso(s,   a) { split(s, a, "/"); return sprintf("%04d-%02d-%02d", a[3], a[1], a[2]) }
+        cut == "" { print; next }
+        {
+          d = ""
+          if ($0 ~ /LastPlayed/) { i = index($0, "LastPlayed"); s = substr($0, i, 90)
+            if (match(s, /[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]/)) d = substr(s, RSTART, RLENGTH) }
+          else if (match($0, /\][0-9]+\/[0-9]+\/[0-9]+ /)) { d = iso(substr($0, RSTART+1, RLENGTH-2)) }
+          if (d != "") cur = d
+          if (cur == "" || cur >= cut) print
+        }' \
     | pbcopy
-  echo "copied $(pbpaste | wc -l | tr -d ' ') lines to the clipboard"
+  echo "copied $(pbpaste | wc -l | tr -d ' ') lines to the clipboard${cut:+ (since $cut)}"
 }
 ```
 
 `mtga-matches` then puts a pasteable export on the clipboard. It reads the rolling
 archive first and the live `Player.log` second, so it covers history Arena has already
 overwritten.
+
+**Pass the watermark to skip what is already recorded.** `mtga-matches 2026-08-25` emits
+only that day onward. The log is NEVER trimmed — this filters the CLIPBOARD, not the
+archive, which is the distinction that keeps re-ingest and `--annotate` working. Get the
+date from the repo side:
+
+```
+python3 scripts/parse_matches.py --watermark      # prints the newest ingested date
+```
+
+**Why this is worth doing, and why it is only a convenience.** The archive is deliberately
+never consumed, so every extraction re-emits the whole history: a real paste ran 280 lines
+of which the large majority were matches from two weeks earlier, all long since recorded.
+Nothing was WRONG — dedup is on Arena's `matchId` (G-57), so re-pasting is idempotent and
+always was. The cost is that the lines get carried, read and discarded, and a big block
+buries the handful of rows that are actually new. So: never let this filter decide
+correctness. If in doubt, drop the argument and paste everything; the parser will dedupe.
+
+The awk mirrors `parse_matches.filter_since` line for line — same date-inheritance rules,
+same inclusive boundary — and the two were verified byte-identical on a real paste. If you
+change one, change both, or the clipboard and the repo will disagree about what "since"
+means.
+
+**The boundary day is INCLUSIVE, deliberately.** A day routinely holds both ingested and
+un-ingested matches (the 2026-08-25 session did), so `> cutoff` would drop a real match
+whose neighbours happened to be recorded first. Keeping the day costs a few lines and
+hands the overlap to the matchId dedup, which is what dedup is for.
+
+**Repo-side equivalents**, for when the whole paste arrives anyway:
+
+```
+python3 scripts/parse_matches.py <file> --since-last    # filter to the stored watermark
+python3 scripts/parse_matches.py <file> --since 2026-08-25
+```
+
+`--since-last` reads the watermark from `matches.csv` itself — the Date of the newest row
+that carries a `Match ID`. There is no sidecar stamp file, because the CSV already holds
+the fact and a second copy of it is a second thing that can drift. **Hand rows are
+excluded from the watermark**: a `--add` row (a phone game the desktop log never saw) has
+no matchId and a user-supplied date, so letting one advance the mark would silently filter
+out LOG matches that were never ingested.
 
 **NEVER pipe either form through `sort`/`sort -u`.** `resolve_matches` walks the log IN
 ORDER and pairs each result with the most recent `Match to <userId>` header — the only

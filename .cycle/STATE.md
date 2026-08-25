@@ -6,6 +6,59 @@
 > For "which command answers X, and why do two of them disagree", read
 > **`docs/systems-map.md`** — that is now a live reference, not a cycle artifact.
 
+## Session — match-ingest watermark (2026-08-25)
+
+Gates green; **1493 tests** (+9). Block:
+`.cycle/blocks/2026-08-match-ingest-watermark-broad-implement.md`.
+
+**A transport bug, not a data bug — and naming that correctly is what picked the fix.**
+The user noticed `mtga-matches` re-emitting matches going back to 08/07 in a 280-line
+clipboard block, most of it long since ingested. Nothing was WRONG: dedup is on Arena's
+`matchId` (G-57), so re-pasting is idempotent and always was. The cost is that the lines
+get carried into a session, read, and discarded — burying the handful that are new.
+
+**The obvious fix was rejected: the extractor must NOT consume Player.log / arena.log.**
+That archive is what makes re-ingest possible and what `--annotate` joins against by
+matchId *after* the fact, so consuming it would permanently lose any match whose `--apply`
+failed or was never run. The waste is in the pipe, so the fix is in the pipe.
+
+Added `--since`, `--since-last`, `--watermark` to `parse_matches.py`, plus an optional
+date argument to the `mtga-matches` shell function.
+
+**Three design rules, each earned by what breaks otherwise:**
+- **The watermark comes from `matches.csv`, never a sidecar stamp.** The CSV already holds
+  Date and Match ID; a second file recording the same fact is a second thing that can
+  drift.
+- **Hand rows cannot advance it.** A `--add` row (a phone game the desktop log never saw)
+  has no matchId and a user-supplied date; letting one set the mark would silently filter
+  LOG matches that were never ingested out of every future paste.
+- **The boundary day is inclusive.** A day routinely holds both ingested and un-ingested
+  matches — this session's paste did — so `> cutoff` would drop a real match whose
+  neighbours happened to be recorded first.
+
+**Order is preserved and never sorted**, because `resolve_matches` pairs each result with
+the most recent `Match to` header — the only place the local seat appears.
+
+**Two implementations, verified not to disagree.** The Arena machine has no repo checkout,
+so the clipboard filter has to live in awk while the repo filter lives in Python. Both were
+run on the same real 24-line paste and produced byte-identical output (16 kept, 8 dropped).
+The skill says to change them together. POSIX awk only — macOS ships BWK awk, so no
+gawk three-arg `match()`.
+
+Also ingested this session: **4 new matches** (66 total, pooled 33-33) from a real drop,
+seat reads hand-verified including the one match where our seat is teamId 2. Three decks
+gained `#: arena:` headers; deck 69a is the G-73 case (Arena "Bear-Wolf: Ursa Major" vs
+repo "Warg and Woodland — Beorn" — the names disagree and that is expected).
+
+### Where I left off
+
+Committed and pushed. **Operator action outstanding, non-blocking:** the `mtga-matches`
+function in `~/.zshrc` on the Arena machine needs the new version from
+`.claude/commands/log-matches.md` — until then `--since-last` works repo-side but the
+clipboard stays full-size, which is the half that is actually felt. Two Arena deck renames
+offered and unadopted (43, 74a). **Deck 31's two swaps are still unapplied** pending the
+user's cut choice between Sporogenic Infection and Topiary Lecturer.
+
 ## Session — the granted-keyword tag gap (2026-08-25)
 
 Gates green: all invariants, one expected soft warning; **1484 tests** (+7). K-14 roster
