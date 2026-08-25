@@ -798,3 +798,71 @@ class TestBuildersAliasFrontFacesInASecondPass:
         assert set(out) == {"life // death"}
         lib.alias_front(out)
         assert "life" in out
+
+
+class TestGrantedKeywordsAreTagged:
+    """A card that GRANTS a keyword is a card ABOUT that keyword, and until now none of
+    them were tagged for it.
+
+    The keyword tags come from Scryfall's `keywords` field, which lists what a card HAS.
+    So the theme model could not see the cards a keyword deck is built to FIND. Measured
+    on the 15,973-row pool: 2,269 cards grant one of the twelve evergreen keywords and
+    carried no tag for it — indestructible 223 of 229, hexproof 155 of 156, i.e. those
+    keywords are almost always granted rather than native, so the tag was tracking the
+    rare case.
+
+    The live consequence, and why the fixtures below are the real cards: deck 31 is a
+    Fynn deathtouch-poison deck, and Venom Connoisseur ("all creatures you control gain
+    deathtouch") tagged Human/Druid/alliance/aggro/value with NO deathtouch — `cuts` fit
+    17. Maximum Overdrive tagged `counters` alone — fit 4. The two lowest-fit cards in
+    the deck were two of its engine pieces, and both were proposed as cuts. K-04 one
+    layer over: `cuts`' fit is a predicate gated on a derived tag."""
+
+    def _t(self, type_line, text, keywords=None):
+        return ts.tags_for({"Type": type_line, "Card Text": text}, keywords or [])
+
+    def test_the_card_that_produced_the_bug(self):
+        """REAL text, per G-67's trap: a paraphrased fixture passed a pattern the real
+        card refutes."""
+        tags = self._t("Creature — Human Druid",
+                       "Alliance — Whenever another creature you control enters, this "
+                       "creature gains deathtouch until end of turn. If this is the "
+                       "second time this ability has resolved this turn, all creatures "
+                       "you control gain deathtouch until end of turn.", ["Alliance"])
+        assert "deathtouch" in tags
+
+    def test_a_grant_implies_the_same_themes_as_a_native_keyword(self):
+        """Same tag AND same implied themes, through the same KEYWORD_THEMES table — the
+        drift this fix exists to close."""
+        tags = self._t("Instant", "Put a +1/+1 counter on target creature. It gains "
+                                  "deathtouch and indestructible until end of turn.")
+        assert {"deathtouch", "indestructible"} <= set(tags)
+        assert set(ts.KEYWORD_THEMES["deathtouch"]) <= set(tags)      # combat, removal
+        assert set(ts.KEYWORD_THEMES["indestructible"]) <= set(tags)  # resilience
+
+    def test_reminder_text_does_not_count_as_a_grant(self):
+        """Reminder text is parenthetical and QUOTES the keyword it explains, so a scan
+        over raw text would tag every card whose reminder names one."""
+        assert "flying" not in ts.granted_keywords(
+            "Whenever this creature attacks, scry 1. (Look at the top card of your "
+            "library. Creatures with flying can block it.)")
+
+    def test_an_opponent_facing_grant_is_the_opposite_card(self):
+        """"Creatures your opponents control gain haste" is a DRAWBACK, not a haste
+        payoff."""
+        assert "haste" not in ts.granted_keywords(
+            "Creatures your opponents control gain haste until end of turn.")
+
+    def test_a_negation_is_not_a_grant(self):
+        assert "flying" not in ts.granted_keywords(
+            "Target creature loses flying until end of turn.")
+
+    def test_the_order_is_total_so_two_runs_cannot_disagree(self):
+        """G-54: the scan iterates a TUPLE, not a set, so the tag order is stable."""
+        text = ("Creatures you control have trample and haste. They also gain "
+                "deathtouch until end of turn.")
+        assert ts.granted_keywords(text) == [
+            k for k in ts._GRANTED_KEYWORDS if k in ts.granted_keywords(text)]
+
+    def test_a_card_that_grants_nothing_is_untouched(self):
+        assert ts.granted_keywords("Draw a card.") == []

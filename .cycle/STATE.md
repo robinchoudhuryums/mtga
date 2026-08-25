@@ -6,6 +6,72 @@
 > For "which command answers X, and why do two of them disagree", read
 > **`docs/systems-map.md`** — that is now a live reference, not a cycle artifact.
 
+## Session — the granted-keyword tag gap (2026-08-25)
+
+Gates green: all invariants, one expected soft warning; **1484 tests** (+7). K-14 roster
+diff: **0 decks moved, 0 tier floors moved, 0 role counts moved.** Block:
+`.cycle/blocks/2026-08-tagger-granted-keywords-broad-implement.md`.
+
+**Found by the user, mid-conversation, and no gate could have found it.** Asked whether
+to cut Venom Connoisseur from deck 31, the user said it should not even be a suggested
+cut. It grants deathtouch to the whole board in a Fynn deathtouch-poison deck — and it
+tagged `Human; Druid; alliance; aggro; value` with NO deathtouch, scoring `cuts` fit 17.
+Maximum Overdrive ("gains deathtouch and indestructible") tagged `counters` alone, fit 4.
+**The two lowest-fit cards in that deck were two of its engine pieces**, and both had been
+put to the user as cuts.
+
+**The cause: the tagger reads what a card HAS, never what it GIVES.** The only route to a
+keyword tag was `KEYWORD_THEMES` reading Scryfall's `keywords` field. Measured across the
+pool: **2,269 cards grant one of twelve evergreen keywords and carried no tag for it.** For
+`indestructible` (223 of 229) and `hexproof` (155 of 156) the granted case is the COMMON
+one — the tag was tracking the exception. This is **K-04 one layer over**: that rule says
+never gate a predicate on a derived tag because it inherits the tagger's holes, and
+`cuts`' fit score is exactly such a predicate.
+
+Fixed with a grant pass in `tags_for` that adds the keyword AND its implied themes through
+the SAME `KEYWORD_THEMES` table, so the two paths cannot drift. Scoped three ways, each
+earned: reminder text stripped (it quotes the keyword it explains), opponent-facing grants
+rejected ("creatures your opponents control gain haste" is a drawback), negations rejected.
+
+**Scope triaged PER KEYWORD (K-01), not in bulk.** Theme frequencies after: evasion
+15.4%→19.2%, combat 6.8%→9.9%, aggro 3.8%→6.4%, everything else under 6% — nothing near
+G-28's saturation band, so all twelve are in. Re-measure before adding a thirteenth.
+
+**`check_patterns` earned its keep:** it caught all 14 new patterns unregistered on the
+first run. The 12 grant regexes live nested in a dict, invisible to the completeness scan
+— the same shape that let `_TARGET_GATES` ship a gate matching nothing. Registered per
+keyword, because the scan appends on first match, so a dead entry looks exactly like a
+keyword nobody grants.
+
+**Verification worth not re-deriving.** The K-14 diff is 0/0/0 and the REASON matters:
+tags feed `cuts`/`suggest`/`similar`/centrality, while `tier_band` grades on `role_tally`,
+which reads TEXT. A tag change cannot move a tier floor by construction. And per K-10 the
+pool was verified rather than trusted — stamp hash `e331f936` → `617ae317`, per-keyword
+counts matching the pre-change prediction card for card.
+
+Deck 31's ranking corrected: **Venom Connoisseur fit 17 → 68, Maximum Overdrive 4 → 57.**
+The tool now agrees with the from-text grading done before the fix.
+
+### The one consequence that needed judgment
+
+Adding tags raises the dominant theme's copy count and with it the 25% centrality floor,
+which can push OTHER themes below it. Four decks quoted a central-theme figure the live
+vector no longer supported. Three were arithmetic (17: 22→23, 20a: 11→13, 23: 23→24).
+**Deck 35 was not: 20 → 13, and its prose argues the B grade FROM that number** ("a
+scattered plan (20 central themes, no redundant threat)"). The figure was corrected and
+the weakened argument recorded in place rather than silently swapped. **The letter was not
+touched — deck 35 may want a re-grade, and that is a human call.**
+
+### Where I left off
+
+Working tree carries the change plus the regenerated data; nothing committed yet at the
+time of writing. **Deck 31's two swaps are still unapplied** — −Derelict Attic
++Bloodthirsty Conqueror is confirmed by the user, and Ahriman is agreed as a good add but
+its slot is undecided (the from-text grading offers Sporogenic Infection, whose "destroy
+when damaged" is redundant with the deck's own 14 deathtouchers, or Topiary Lecturer,
+which costs an Elf). A match-log drop is queued for `/log-matches`, plus a user question
+about `mtga-matches` re-emitting already-ingested matches.
+
 ## Session — broad scan #7, top 5 (2026-08-24)
 
 Gates green: all invariants hold, **one soft warning** (the four ACCEPTED dead tutors —
