@@ -4547,6 +4547,35 @@ class TestRelocateCardLine:
         else:
             raise AssertionError("expected a refusal")
 
+    # ── broad-scan S1-02: the face-spelling half ────────────────────────────────
+    # `_swap_edit_lines` matches names through `_ms_key` because a card is stored under
+    # EITHER spelling (59 roster deck lines carry a full `Front // Back` name). These two
+    # siblings used raw `.lower()`, so a front-face `add` whose line is stored full — the
+    # case that arises when the swap BUMPS an existing line rather than writing a new one
+    # — found nothing here and, because relocation runs inside `_do_swap`'s write `try`,
+    # aborted the WHOLE swap saying the card "appears on 0 card line(s)".
+    DFC = ["#: name: T", "", "# Nonland", "1 Shock (M21) 159", "",
+           "# Lands", "1 Funeral Room // Awakening Hall (DSK) 100", ""]
+
+    def test_a_FRONT_face_name_finds_a_line_stored_under_the_full_name(self):
+        out = deck._relocate_card_line(self.DFC, "Funeral Room", "Nonland")
+        assert "1 Funeral Room // Awakening Hall (DSK) 100" in out
+        assert out.index("1 Funeral Room // Awakening Hall (DSK) 100") < out.index("# Lands")
+
+    def test_the_FULL_name_still_works_and_gives_the_SAME_answer(self):
+        """Two spellings of one card must not be two answers — the whole point of
+        `_ms_key`, and what `_swap_edit_lines` has asserted for its own half since
+        BS2-21."""
+        assert deck._relocate_card_line(self.DFC, "Funeral Room", "Nonland") == \
+            deck._relocate_card_line(self.DFC, "Funeral Room // Awakening Hall", "Nonland")
+
+    def test_the_move_is_still_VERBATIM_for_a_DFC(self):
+        """The printing fields are exactly what a hand-move retypes wrong (G-65), and a
+        DFC line has the most to retype."""
+        out = deck._relocate_card_line(self.DFC, "Funeral Room", "Nonland")
+        assert sorted(x for x in out if x.strip()) == \
+            sorted(x for x in self.DFC if x.strip())
+
 
 class TestSharingClaimsAreNotComparisons:
     """A SHARING claim asserts the card is in THIS deck, so the cross-deck suppression

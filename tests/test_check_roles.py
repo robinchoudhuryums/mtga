@@ -100,3 +100,48 @@ class TestBaselineDelta:
         out = capsys.readouterr().out
         assert "Quag Feast" in out and "NEW" in out      # named, not just counted
         assert check_roles.load_baseline() == {"quag feast"}
+
+
+class TestRoleCoverageIsReported:
+    """Broad-scan S1-04. The radar reported a DELTA ("No new zero-role cards") and never
+    a LEVEL, so a clean bill read as "the role model sees everything" — while 26% of the
+    roster's distinct nonland cards score no functional role at all, and the acknowledged
+    set had grown 425 -> 498 unwatched. Both numbers came from data this module already
+    loads; neither was printed anywhere, and the audit had to derive them with a
+    throwaway script.
+
+    REPORT-ONLY, and it must stay so. `role_tally` is the one canonical counter and its
+    bare integers feed `tier_band`; a coverage term wired INTO that would silently
+    re-grade the roster, which is exactly why the protection axis (G-25) and the X-cost
+    advisory (G-60) are printed and kept out of the floor."""
+
+    def test_coverage_counts_the_zero_role_cards_against_the_whole_roster(self, monkeypatch):
+        monkeypatch.setattr(check_roles, "_roster_cards",
+                            lambda: {"a": ("A", "Creature", "x"), "b": ("B", "Creature", "y"),
+                                     "c": ("C", "Creature", "z"), "d": ("D", "Creature", "w")})
+        monkeypatch.setattr(check_roles, "zero_role_cards",
+                            lambda: [("A", "Creature", "x")])
+        assert check_roles.role_coverage() == (1, 4)
+
+    def test_the_line_states_both_halves_and_the_percentage(self, monkeypatch):
+        monkeypatch.setattr(check_roles, "role_coverage", lambda: (25, 100))
+        line = check_roles._coverage_line()
+        assert "75/100" in line and "25 (25%)" in line
+        # Naming tier_band is the point: the number bounds a tier floor's accuracy.
+        assert "tier_band" in line and "report-only" in line
+
+    def test_an_empty_roster_reports_nothing_rather_than_dividing_by_zero(self, monkeypatch):
+        """A fresh clone with no decks/ has no coverage to report, and a ZeroDivisionError
+        in a reporting helper would take the whole radar down with it."""
+        monkeypatch.setattr(check_roles, "role_coverage", lambda: (0, 0))
+        assert check_roles._coverage_line() == ""
+
+    def test_the_default_report_prints_the_level_not_just_the_delta(self, monkeypatch, capsys):
+        monkeypatch.setattr(check_roles, "check", lambda include_baselined=False: [])
+        monkeypatch.setattr(check_roles, "stale_baseline_entries", lambda: [])
+        monkeypatch.setattr(check_roles, "role_coverage", lambda: (7, 10))
+        monkeypatch.setattr(sys, "argv", ["check_roles.py"])
+        assert check_roles.main() == 0
+        out = capsys.readouterr().out
+        assert "No new zero-role cards" in out          # the delta, as before
+        assert "3/10" in out and "7 (70%)" in out       # and now the level

@@ -11,10 +11,17 @@ pips sat that way through six deferrals of the I-01 fix.
 Stdlib `html.parser` only, so this runs in the existing pytest layer with no new
 dependency. The behaviour behind these attributes (Enter/Space actually toggling, the
 focus ring being visible, the grid re-filtering) was verified in a real browser when the
-fix landed; this pins the contract that verification rested on."""
+fix landed; this pins the contract that verification rested on.
+
+Scope widened (broad-scan S2-01): the last class here also checks the GENERATED pages
+(dashboard.html, gallery.html) and the generator that emits the dashboard's CSS. Pinning
+only `templates/` is what let three undefined design tokens ship to the deployed page —
+the four hand-written templates had zero, and the file could not see the other three."""
 import html.parser
 import os
 import re
+
+import pytest
 
 TEMPLATES = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
                          "templates")
@@ -489,3 +496,86 @@ class TestBatch5InterfaceContracts:
         src = _read("deck.html")
         i = src.find("ArrowRight")
         assert "n.focus(); n.click();" in src[i:i + 500]
+
+
+# --------------------------------------------------------------------------- #
+# Design-token completeness — the GENERATED pages too, not just templates/
+# --------------------------------------------------------------------------- #
+REPO_ROOT = os.path.dirname(TEMPLATES)
+
+# Every page this project ships, plus the GENERATOR whose Python source carries the
+# dashboard's CSS verbatim. Both halves matter and they fail at different times: the
+# generator catches a bad token the moment it is typed, the committed artifact catches
+# a page that was never rebuilt after the fix.
+_TOKEN_TARGETS = [
+    os.path.join(REPO_ROOT, "scripts", "build_dashboard.py"),
+    os.path.join(REPO_ROOT, "dashboard.html"),
+    os.path.join(REPO_ROOT, "gallery.html"),
+    os.path.join(TEMPLATES, "collection.html"),
+    os.path.join(TEMPLATES, "deck.html"),
+    os.path.join(TEMPLATES, "decks.html"),
+]
+
+_TOKEN_USE = re.compile(r"var\((--[A-Za-z0-9-]+)")
+_TOKEN_DEF = re.compile(r"(--[A-Za-z0-9-]+)\s*:")
+
+
+def _undefined_tokens(path):
+    """CSS custom properties a page READS but never DEFINES, anywhere in the file."""
+    with open(path, encoding="utf-8") as fh:
+        src = fh.read()
+    return sorted(set(_TOKEN_USE.findall(src)) - set(_TOKEN_DEF.findall(src)))
+
+
+class TestGeneratedPagesDefineEveryTokenTheyUse:
+    """Broad-scan S2-01. The dashboard's "Log a match" panel read `var(--acc)`,
+    `var(--dim)` and `var(--fg)`; the design system's names are `--accent`, `--ink2`
+    and `--ink`, and no `:root` block in either theme defined the three it used.
+
+    Nothing errored, because an undefined custom property is invalid at computed-value
+    time rather than a parse error — so each of the three failed differently and
+    silently. `.segbtn.on`'s `color-mix(in srgb, var(--acc) 18%, transparent)` was an
+    invalid VALUE, so the whole `background` declaration was dropped and the SELECTED
+    W/L/D button lost its fill; four `outline:2px solid var(--acc)` rules fell back to
+    `currentColor` and, being more specific than the page's global `:focus-visible`,
+    OVERRODE a working rule with a broken one.
+
+    It reached the deployed page: `pages.yml` publishes on every push to main and its
+    pre-publish check verifies byte size and the `#data` island, neither of which a
+    token gap touches. `tests/test_templates.py` pinned `templates/` — where there are
+    ZERO undefined tokens — and could not see the generated page at all.
+
+    WHY THIS CHECK IS SAFE WHERE G-72's IS NOT. G-72 records that a static a11y gate was
+    measured UNBUILDABLE: three designs, every flag false. That conclusion is about
+    BEHAVIOUR ("is this node really a control"), which a file cannot answer. This asks a
+    REFERENTIAL question — does the page define the variable it reads — and that has no
+    legitimate negative form, so it cannot false-positive. Different question, different
+    verdict; do not read G-72 as closing this one too."""
+
+    @pytest.mark.parametrize("path", _TOKEN_TARGETS, ids=os.path.basename)
+    def test_no_page_reads_a_token_it_never_defines(self, path):
+        missing = _undefined_tokens(path)
+        assert not missing, (
+            f"{os.path.basename(path)} reads CSS custom propert(ies) that NOTHING in the "
+            f"file defines: {', '.join(missing)}. An undefined var() is invalid at "
+            f"computed-value time — it does not error, it silently drops the declaration "
+            f"(or the whole value, inside color-mix()). Use the page's own tokens: "
+            f"--accent / --accent-ink / --ink / --ink2 / --ink3 (broad-scan S2-01)."
+        )
+
+    def test_the_check_can_actually_fail(self, tmp_path):
+        """A completeness check that cannot fail reads as coverage. Prove the comparison
+        is real against the exact shape that shipped, so a future refactor of the regexes
+        is caught here rather than by the next person looking at the page."""
+        bad = tmp_path / "bad.html"
+        bad.write_text(":root { --accent:#fff; }\n"
+                       ".segbtn.on { background:color-mix(in srgb, var(--acc) 18%, transparent); }\n",
+                       encoding="utf-8")
+        assert _undefined_tokens(str(bad)) == ["--acc"]
+
+    def test_it_does_not_flag_a_var_fallback_chain(self):
+        """`var(--panel2, var(--panel))` reads TWO tokens and the regex must see both as
+        uses, not treat the fallback as a definition — otherwise a real miss inside a
+        fallback would pass."""
+        assert _TOKEN_USE.findall("background:var(--panel2, var(--panel));") == \
+            ["--panel2", "--panel"]

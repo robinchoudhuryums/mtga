@@ -5757,9 +5757,19 @@ def _relocate_card_line(lines, card_name, needle):
     because `resolve --check` happened to be run afterwards. An advisory that can only
     be resolved by a forbidden edit is a hazard, not a warning. Moving the exact line
     text keeps the printing fields untouched by construction."""
-    key = (card_name or "").strip().lower()
+    # `_ms_key` BOTH sides (G-63), not raw `.lower()`. `_swap_edit_lines` — the function
+    # that just wrote the line this one is asked to move — matches on `_ms_key` precisely
+    # because a card is stored under either face spelling (59 deck lines carry a full
+    # `Front // Back` name). Its two siblings in the same code path did not, so when the
+    # add already had a line under the OTHER spelling the raw comparison found zero
+    # matches and this raised — and because the relocation runs inside `_do_swap`'s write
+    # `try`, that aborted the ENTIRE swap with a message reading "appears on 0 card
+    # line(s)" about a card the deck demonstrably holds (broad-scan S1-02, reproduced
+    # against deck 53: `_relocate_card_line(lines, "Funeral Room", "Lands")` against a
+    # file storing `Funeral Room // Awakening Hall`).
+    key = _ms_key(card_name or "")
     idxs = [i for i, ln in enumerate(lines)
-            if (_card_line_name(ln) or "").strip().lower() == key]
+            if _ms_key(_card_line_name(ln) or "") == key]
     if len(idxs) != 1:
         raise ValueError(f"{card_name!r} appears on {len(idxs)} card line(s) — expected "
                          "exactly one to move.")
@@ -6543,8 +6553,13 @@ def _do_swap(d, cut, add, apply, flex_entry=None, section=None):
     # The add inherits the cut's line slot, and therefore the cut's `# section` comment.
     # Warn when that makes the file lie (advisory — the swap is already written, and
     # moving a line is a human editorial call, not something to do automatically).
+    # `_ms_key` both sides, same reason as `_relocate_card_line` above (S1-02): when the
+    # add was BUMPED onto an existing line rather than written fresh, that line keeps its
+    # own face spelling, so a raw comparison returned None and the G-05 advisory was
+    # skipped WITHOUT saying it had been skipped — a warning that silently does not run
+    # is worse than one that fires, since the file then lies to the next reader unflagged.
     ai = next((i for i, ln in enumerate(new_lines)
-               if (_card_line_name(ln) or "").lower() == add.strip().lower()), None)
+               if _ms_key(_card_line_name(ln) or "") == _ms_key(add)), None)
     if ai is not None:
         warn = section_mismatch(new_lines, ai, add.strip(), load_card_data())
         if warn:

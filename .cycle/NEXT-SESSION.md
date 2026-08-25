@@ -55,24 +55,36 @@ its job. A FIFTH hit would be new and worth reading.
   in `check_all`. The floor STAYS at 9. Three real citations were found and fixed on the
   way (43 Wolfbat, 42a Ahriman ×2).
 
-### UNRESOLVED AND RECORDED NOWHERE ELSE: the TRK printing question
+### CLOSED, and it was still open in this file for a week: the TRK printing question
 
-**109 deck lines across 47 decks carry `(TRK)` printings, and Star Trek is dated
-2026-11-13** — roughly three months out from this session. 76 are basic lands; **33 are
-shocklands** (Overgrown Tomb ×17, Watery Grave ×12, Breeding Pool ×3, Temple Garden ×1).
+**This section used to read "UNRESOLVED AND RECORDED NOWHERE ELSE" and tell you to go
+paste-test a deck in Arena. Do not. The work landed in this same cycle** — commit
+`e269b5e`, "Ingest: keep UNRELEASED printings out of the pool, and repair the 109 lines
+(G-79)" — which went in AFTER `00a6975` wrote this handoff, and nobody came back to the
+handoff. Verified 2026-08-24 (broad-scan S1-01):
 
-The cause is visible in the data: `card-pool.csv` holds ONLY the TRK printing for those
-shocklands, because the pool build picked up previewed Star Trek reprints and the pool
-keys one printing per card (G-30). So `resolve` returns TRK as the only option, and
-`card-library.csv` even records Watery Grave and Overgrown Tomb *as* TRK — almost
-certainly an `enrich` artifact rather than what Arena shows.
+    (TRK) lines under decks/      : 0        (was 109 across 47 files)
+    TRK rows in card-library.csv  : 0        (was 2 — Watery Grave, Overgrown Tomb)
+    future-dated card-pool.csv rows: 0       (was 114)
 
-**What is NOT known:** whether Arena accepts those lines today. Nobody has paste-tested
-one. `resolve --check` will not catch it — TRK is a real set with real collector numbers,
-so the lines are structurally valid and merely possibly un-importable. **Cheapest next
-step: paste one affected deck into Arena and see.** If it fails, the fix is a pool rebuild
-after 2026-11-13, or pinning those cards to older printings. This is the shape G-65 exists
-for, one layer out: a printing that validates and still does not work.
+The cause is worth keeping, because the RESIDUAL is real: Scryfall indexes spoiled cards
+immediately and `unique=cards` returns the NEWEST printing, so a reprint in an unreleased
+set becomes the only printing the pool holds — and `deck.py resolve`, the mandated source
+of deck-line printings (G-65), then emits it. `build_pool`'s defaults now carry the
+literal token `date<=now` (load-bearing as the token, not a formatted date, or the
+freshness reuse refetches daily), `resolve --fix <deck> --apply` is the repair half, and a
+`check_all` soft sweep watches the pool. **A custom `--query` is NOT rewritten**, so a
+hand-built pool can re-open this. That is G-79; read it there, not here.
+
+**THE TRANSFERABLE LESSON, which is why this section is being kept rather than deleted.**
+This file is the one CLAUDE.md orders a fresh session to read FIRST and declares
+authoritative ("supersedes anything under it where they disagree"). So a stale open item
+here does not merely fail to help — it actively spends the next session's first hour on
+finished work, with the full authority of the handoff behind it. The project already
+knows that *a handoff nobody is told to read is invisible*; the mirror is that **a handoff
+that IS read and is wrong is worse than one that is not read.** When work closes an item
+named in §0-current, close it HERE in the same commit. `docs/verify-commit-tail.md` is the
+shared tail every writing skill ends with, and it now says so.
 
 ### Deck work this session (all merged)
 

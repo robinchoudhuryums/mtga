@@ -898,35 +898,56 @@ TEMPLATE = r"""<!DOCTYPE html>
   /* sticky section-nav strip inside the header */
   /* ---- match logger. Phone-first: the form is a single column under 640px and every
      control clears the 44px touch target, because this is the one panel meant to be
-     used one-handed on a couch rather than at a desk. Colours come from the same
-     tokens as every other panel so the light-mode leg of Scenario 5 covers it. ---- */
+     used one-handed on a couch rather than at a desk.
+
+     COLOURS COME FROM THE SAME TOKENS AS EVERY OTHER PANEL, and this comment used to
+     CLAIM that while the block below used three names no theme defines: `--acc`,
+     `--dim` and `--fg`, against the design system's `--accent` / `--ink2` / `--ink`
+     (broad-scan S2-01). An undefined custom property is invalid at computed-value time,
+     so nothing errored and each one failed differently: `.segbtn.on` fed `--acc` to
+     `color-mix()`, which made the whole `background` declaration an invalid VALUE — so it
+     was dropped and the SELECTED result lost its fill; the four `outline:2px solid` rules
+     reading `--acc` fell back to `currentColor` and, being more specific, OVERRODE the
+     correct global `:focus-visible` — turning the queue row's ✕ ring red, since the same
+     rule sets its colour to `--bad`.
+
+     Note the token names are written BARE here, never as a `var(...)` call: the test
+     below scans this file's raw source, so quoting the broken form in prose would
+     re-arm the very check that catches it. The light-mode leg of
+     Scenario 5 could not cover it because the bug was not a light/dark gap: BOTH themes
+     define all 27 tokens, and these three were in neither.
+
+     `tests/test_templates.py::TestGeneratedPagesDefineEveryTokenTheyUse` now fails on a
+     `var(--x)` with no `--x:` anywhere in the page. That check is worth having where the
+     a11y one G-72 measured as unbuildable is not: "references a variable it never
+     defines" has no legitimate form, so it cannot false-positive. ---- */
   .logform { max-width:1180px; margin:10px auto 0; display:grid; gap:10px;
              grid-template-columns:repeat(auto-fit, minmax(210px, 1fr)); }
   .logfield { display:flex; flex-direction:column; gap:5px; min-width:0; }
-  .logfield > span { font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--dim); }
+  .logfield > span { font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink2); }
   .logfield select, .logfield input { min-height:44px; padding:8px 10px; font:inherit;
-      color:var(--fg); background:var(--panel2, var(--panel)); border:1px solid var(--line);
+      color:var(--ink); background:var(--panel2, var(--panel)); border:1px solid var(--line);
       border-radius:8px; min-width:0; }
-  .logfield select:focus-visible, .logfield input:focus-visible { outline:2px solid var(--acc); outline-offset:1px; }
+  .logfield select:focus-visible, .logfield input:focus-visible { outline:2px solid var(--accent); outline-offset:1px; }
   .logwide { grid-column:1 / -1; }
   .segbar { display:flex; gap:6px; }
   .segbtn { flex:1; min-height:44px; display:flex; align-items:center; justify-content:center;
       border:1px solid var(--line); border-radius:8px; background:var(--panel2, var(--panel));
-      color:var(--dim); font-weight:600; cursor:pointer; user-select:none; }
-  .segbtn.on { color:var(--fg); border-color:var(--acc);
-               background:color-mix(in srgb, var(--acc) 18%, transparent); }
-  .segbtn:focus-visible { outline:2px solid var(--acc); outline-offset:1px; }
+      color:var(--ink2); font-weight:600; cursor:pointer; user-select:none; }
+  .segbtn.on { color:var(--ink); border-color:var(--accent);
+               background:color-mix(in srgb, var(--accent) 18%, transparent); }
+  .segbtn:focus-visible { outline:2px solid var(--accent); outline-offset:1px; }
   .logrow { display:flex; align-items:center; gap:8px; padding:7px 10px; border-bottom:1px solid var(--line); font-size:13px; }
-  .logrow .lx { margin-left:auto; cursor:pointer; color:var(--dim); padding:4px 8px; border-radius:6px; }
-  .logrow .lx:hover, .logrow .lx:focus-visible { color:var(--bad); outline:2px solid var(--acc); outline-offset:1px; }
+  .logrow .lx { margin-left:auto; cursor:pointer; color:var(--ink2); padding:4px 8px; border-radius:6px; }
+  .logrow .lx:hover, .logrow .lx:focus-visible { color:var(--bad); outline:2px solid var(--accent); outline-offset:1px; }
   .logw { color:var(--ok); font-weight:700; } .logl { color:var(--bad); font-weight:700; }
   .logd { color:var(--warn); font-weight:700; }
-  .logsub { max-width:1180px; margin:22px auto 0; font-size:14px; font-weight:600; color:var(--fg);
+  .logsub { max-width:1180px; margin:22px auto 0; font-size:14px; font-weight:600; color:var(--ink);
             border-top:1px solid var(--line); padding-top:16px; }
   .annocard { max-width:1180px; margin:10px auto 0; border:1px solid var(--line); border-radius:10px;
               padding:10px 12px; background:var(--panel); }
   .annohead { display:flex; align-items:center; gap:8px; flex-wrap:wrap; font-size:13px; margin-bottom:8px; }
-  .annohead .mid { color:var(--dim); font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:11px; }
+  .annohead .mid { color:var(--ink2); font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:11px; }
   .annogrid { display:grid; gap:8px; grid-template-columns:repeat(auto-fit, minmax(190px, 1fr)); }
   @media (max-width:640px){ .annogrid { grid-template-columns:1fr; } }
   .logout { min-height:76px; margin-top:10px; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:12px; }
