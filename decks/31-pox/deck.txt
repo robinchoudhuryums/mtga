@@ -1,5 +1,6 @@
 #: name: Pox
 #: format: Standard
+#: arena: 31 Pox, c8394616-e2ae-4d34-a42c-5320ca45dd15
 #: colors: BG
 #: tier: A — Golgari (BG) Elf go-wide x Fynn deathtouch-poison hybrid; fully built. Elf engine (Lathril drain finish + Elvish Archdruid ramp/anthem + Imperious Perfect / Morcant's Loyalist anthems + High Perfect Morcant blight), interaction 6 (was 8; Unforgiving Aim was CUT for Rattleback Apothecary and Grapple with Death was CUT for Maximum Overdrive, both 2026-08-21 — each an intentional interaction-for-plan trade: a crime-trigger deathtouch body with menace, and a counter+deathtouch+indestructible trick that protects the poison carrier; A-floor holds at 6 and protection rose to 2) — Bite Down (any deathtoucher kills anything for {G}) + Bake into a Pie clearing the poison clock's blockers — plus card advantage from Morcant's Eyes surveil + token dump, on a clean 2-color base → A-floor. Re-graded B→A on corrected interaction; the only reason it's not a clearer S-conversation is the singleton dilution across two half-density plans (Elf go-wide + poison).
 #: archetype: Golgari (B/G) DUAL-PLAN HYBRID — remeasured 2026-08-21 after the Clue

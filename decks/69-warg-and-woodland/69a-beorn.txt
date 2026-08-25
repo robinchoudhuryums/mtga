@@ -1,5 +1,6 @@
 #: name: Warg and Woodland — Beorn
 #: format: Standard
+#: arena: 69a Bear-Wolf: Ursa Major, 311c203b-f355-4a56-b5a1-4cd44a9ef8ed
 #: colors: G
 #: based-on: deck.txt
 #: plan: midrange
