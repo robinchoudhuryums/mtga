@@ -119,3 +119,22 @@
 #~ note: applied — Rise of the Varmints in for Withering Torment (the standing
 #~   Diresight-for-Torment flex was retired by this swap; Diresight remains an owned
 #~   0-wildcard option if a future tune wants surveil-2-draw-2 yard stocking).
+#~ -Villainous Wrath | +Insidious Roots | UNCOMMON craft (MKM, ⚠rot~2027). The trigger
+#~   is "creature CARDS leave your graveyard" and this deck has 11 sources, 7 of them
+#~   REPEATABLE: Teacher's Pest (self-return), Scavenger's Talent, Cauldron of Essence,
+#~   Moseo, Muldrotha, The Last Ronin, Forum Necroscribe. One-shots: Behold, Coiling
+#~   Rebirth, Ral Zarek -2, Lively Dirge. So the Plant/counter half is live, not
+#~   aspirational. The MANA half is fixing, not filler — creature tokens tap for any
+#~   colour in a UBG deck (15 B / 13 G / 8 U) with Craterhoof 8 / Wurm 6 / Muldrotha 6 on
+#~   top, and it also switches on the 8 token producers already here; Craterhoof then
+#~   turns an accumulated Plant board lethal. Does NOT exile, so it never eats the
+#~   reanimation fuel the way Agatha's Soul Cauldron would (see #: notes:).
+#~   CUT: the one wrath of four that gives nothing back — Death Begets Life draws per
+#~   permanent, Rise of Sozin is a saga, Withering Curse is infusion-gated; Villainous
+#~   Wrath is `cuts`' weakest fit in the deck at fit 0. Deltas measured: interaction
+#~   10 -> 9 (A floor needs 5, unaffected), avg MV 4.00 -> 3.92 against the deck's own
+#~   "short on early drops" flag, no colour widening.
+#~   TENSION, stated rather than buried: the remaining three wraths still kill Plants and
+#~   ERASE their +1/+1 counters (a dead token is gone, so you restart at 0/1). Mild — the
+#~   Plants are incidental rather than an investment, and every reanimation trigger makes
+#~   a new one — but it is a real argument for three wraths rather than four.
