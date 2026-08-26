@@ -726,12 +726,20 @@ def _name_citations(old_name, own_id, adopted):
 def sync_deck_names(text, apply=False, out=print):
     """Adopt Arena's deck names into the repo. Returns (written, plan).
 
-    ALWAYS REPORTS, writes only under `--sync-names`. An `#: arena:` header is bookkeeping
-    the tooling owns; a deck's NAME is human-authored prose that other files cite — 50 of
-    the 106 decks are named inside another deck's header prose — so a rename is offered
-    rather than performed. Reporting unconditionally is the other half: a capability
-    behind a flag nobody runs is invisible (G-53), so the run says a rename is available
-    even when it will not make one."""
+    ALWAYS REPORTS, writes only under `--sync-names --apply`. An `#: arena:` header is
+    bookkeeping the tooling owns; a deck's NAME is human-authored prose that other files
+    cite — 50 of the 106 decks are named inside another deck's header prose — so a rename
+    is offered rather than performed. Reporting unconditionally is the other half: a
+    capability behind a flag nobody runs is invisible (G-53), so the run says a rename is
+    available even when it will not make one.
+
+    **`--sync-names` selects the operation; `--apply` writes it** — the same split every
+    other writer here uses, and it did not hold until 2026-08-26. `main()` passed
+    `apply=args.sync_names` on the paste path and a hardcoded `apply=True` on the
+    sourceless one, so the flag that reads like "show me the renames" performed them, and
+    the sourceless reconcile could not be previewed AT ALL. It adopted ten names
+    unannounced in one session. The parameter was always here and correct; no caller
+    asked — the G-40 shape, one layer up from the primitive."""
     return _report_name_plan(deck_name_plan(parse_deck_names(text)), apply=apply, out=out)
 
 
@@ -752,9 +760,13 @@ def _report_name_plan(plan, apply=False, out=print):
             out(f"        ⚠ old name cited in {len(cites)} other deck file(s): "
                 f"{', '.join(cites)}")
     if not apply:
-        out("   (reported only — pass --sync-names to adopt Arena's names. Nothing "
-            "rewrites\n    the prose in other deck files, so a ⚠ above is a citation you "
-            "fix by hand.)")
+        # Names the FULL invocation on purpose: this line prints both when no flag was
+        # given at all (an ordinary ingest, offering the capability per G-53) and when
+        # `--sync-names` was given without `--apply` (the preview). One phrasing is
+        # correct in both, where "pass --apply" would be a puzzle in the first case.
+        out("   (reported only — pass --sync-names --apply to adopt Arena's names. "
+            "Nothing rewrites\n    the prose in other deck files, so a ⚠ above is a "
+            "citation you fix by hand.)")
         return 0, plan
     written = 0
     for did, path, _current, adopted in plan:
@@ -1583,7 +1595,9 @@ def main():
     ap = argparse.ArgumentParser(
         description="Parse Arena match results from Player.log into matches.csv.")
     ap.add_argument("source", nargs="?", help="log file, or '-' for stdin")
-    ap.add_argument("--apply", action="store_true", help="write matches.csv (default: dry run)")
+    ap.add_argument("--apply", action="store_true",
+                    help="WRITE (default: dry run) — matches.csv, plus any `#: arena:` "
+                         "header or `--sync-names` rename the same run produces")
     ap.add_argument("--deck", help="tag every match in this paste with a repo deck id")
     ap.add_argument("--me", help="your Arena userId, if the paste lacks the `Match to` headers")
     ap.add_argument("--report", action="store_true", help="win/loss per deck from matches.csv")
@@ -1591,8 +1605,9 @@ def main():
                     help="learn `#: arena:` headers for the whole roster from the log's "
                          "deck summaries, instead of parsing matches")
     ap.add_argument("--sync-names", action="store_true",
-                    help="adopt Arena's deck names into the repo `#: name:` headers "
-                         "(GUID-matched decks only; reported without this flag)")
+                    help="reconcile the repo's `#: name:` headers against Arena's deck "
+                         "names (GUID-matched decks only). DRY RUN unless --apply is "
+                         "also given; the plan is reported even without this flag")
     ap.add_argument("--add", action="store_true",
                     help="record HAND-ENTERED matches (phone games, or anything the log "
                          "cannot see) from `<deck> <W|L|D> [opp= why= play= note=]` "
@@ -1651,7 +1666,10 @@ def main():
         # it. Without this the feature needs a paste covering all 106 decks to reconcile
         # a divergence that accumulated over months, which is a capability nobody
         # reaches (G-53).
-        written, plan = sync_deck_names_from_headers(apply=True)
+        # DRY RUN unless --apply. This read `apply=True` until 2026-08-26, so the one
+        # invocation whose entire purpose is the rename could not be previewed, and the
+        # command that reads like a report rewrote ten `#: name:` headers in one run.
+        written, plan = sync_deck_names_from_headers(apply=args.apply)
         if not plan:
             print("Every GUID-paired deck's `#: name:` already matches its Arena name.")
         return 0
@@ -1705,7 +1723,7 @@ def main():
         map_decks(text, apply=args.apply)
         # The roster-scale header pass is exactly where a roster-scale RENAME shows up,
         # so it offers the same adoption the match path does.
-        sync_deck_names(text, apply=args.sync_names)
+        sync_deck_names(text, apply=(args.sync_names and args.apply))
         return _with_report(0)
 
     rows, warnings = parse_log(text, me=args.me)
@@ -1720,7 +1738,13 @@ def main():
     # AFTER the header sync, which is what establishes the GUID pairing this reads. A
     # deck first seen in this paste therefore becomes eligible in the SAME run — but only
     # via the header the sync just wrote, never via the number-prefix guess that found it.
-    sync_deck_names(text, apply=args.sync_names)
+    #
+    # BOTH flags, deliberately. `--sync-names` selects the operation and `--apply` writes
+    # it, matching `sync_headers`/`map_decks`/`add_manual` on the lines around this one;
+    # it used to read `apply=args.sync_names`, which made this the only writer in the file
+    # that ignored --apply. The conjunction also means a routine `session.log --apply`
+    # ingest never renames a deck as a side effect — the rename must be asked for.
+    sync_deck_names(text, apply=(args.sync_names and args.apply))
 
     if not rows:
         if parse_deck_names(text):

@@ -6,6 +6,51 @@
 > For "which command answers X, and why do two of them disagree", read
 > **`docs/systems-map.md`** — that is now a live reference, not a cycle artifact.
 
+## Session — `--sync-names` dry run + the skill-sweep follow-ons (2026-08-26)
+
+Gates green; **1500 tests** (+7). Block:
+`.cycle/blocks/2026-08-sync-names-dry-run-broad-implement.md`.
+
+**SK-1, the one tool bug the skill sweep turned up.** `parse_matches.py --sync-names`
+wrote with no dry run: `main()` passed `apply=args.sync_names` on the paste path — the
+only writer in the file ignoring `--apply` — and a hardcoded `apply=True` on the
+sourceless path, so the invocation whose entire purpose is the rename could not be
+previewed at all. It adopted ten `#: name:` headers earlier this cycle when two had been
+shown to the user. Now `--sync-names` SELECTS and `--apply` WRITES, matching every other
+writer here; the conjunction also stops a routine `session.log --apply` ingest renaming a
+deck as a side effect of recording a match.
+
+**The shape is why the tests live where they do.** The helper `sync_deck_names(text,
+apply=…)` had taken the parameter since it was written and had tests on BOTH sides of it.
+Nothing was wrong with the primitive — the CALLER never asked. That is G-40 one layer up,
+so all five regression tests drive `main()`. Mutation-tested both ways: reverting the code
+fails exactly the two dry-run tests; writing the conjunction as `or` fails the
+routine-ingest test. Nothing in the class is vacuous.
+
+**The deck-35 follow-on resolved as a TOOL fix, not a re-grade.** Its `#: tier:` already
+argues the below-floor B in the rubric's own language — `More than the "≤1 weakness" an A
+allows` — but `_BELOW_FLOOR_ARGUMENT` matched only the long form "at most one clear
+weakness", so deck 35 and deck 17 carried a permanent "possibly UNDER-graded" nudge for
+being honest. That is precisely the failure the pattern's own comment says it exists to
+prevent, live on two decks. Widened after MEASURING (K-14): of 62 below-floor decks, 12
+were flagged, the widen suppresses exactly 2, both true positives by hand, 10 still
+flagged — plus a negative control that bare "weakness" does not suppress. **Deck 35's
+LETTER was not touched** (never auto-write a tier letter).
+
+**`check_docs` failed once mid-session and was right to.** The G-73 bullet hit 16 lines
+against its 15-line cap because I had written the incident narrative into CLAUDE.md
+instead of `docs/gotchas.md`. Evidence moved, rule trimmed. That cap is doing real work.
+
+**Recorded because it was my mistake, not the tool's:** cleaning up after the Scenario 9
+walk, `rm -f decks/16-water-spirit/*.bak` deleted a pre-existing backup from this
+morning's rename run alongside my test one. Content recoverable from `4e94a2b^`
+(verified); the other 14 `.bak` files are untouched. A glob delete in a directory I had
+not inventoried first.
+
+**Where I left off:** all green, 1500 tests. The two `check_docs` figure drifts (K-09
+371→342, C-02 62→66) are still open and belong to `/sync-docs`, deliberately not
+spot-fixed here.
+
 ## Session — the SKILL layer (2026-08-26)
 
 Gates green; **1493 tests** (unchanged — Markdown only). Block:

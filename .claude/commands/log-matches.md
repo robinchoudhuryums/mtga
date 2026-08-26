@@ -224,14 +224,23 @@ than erroring. `--map-decks` remains for the explicit roster-wide pass, but rout
 ingests need no separate upkeep step.
 
 **Deck NAMES are offered, never adopted silently.** Every run also reports any deck whose
-repo `#: name:` differs from its Arena name, and `--sync-names` adopts them:
+repo `#: name:` differs from its Arena name. `--sync-names` SELECTS the reconcile and
+`--apply` WRITES it — **preview first, always**:
 
 ```
-python3 scripts/parse_matches.py --sync-names          # reconcile from the stored headers
-python3 scripts/parse_matches.py <file> --sync-names   # …or from a fresh paste
+python3 scripts/parse_matches.py --sync-names            # PREVIEW, from the stored headers
+python3 scripts/parse_matches.py --sync-names --apply    # …adopt them
+python3 scripts/parse_matches.py <file> --sync-names --apply    # …or from a fresh paste
 ```
 
-Four things make this safe enough to be automatic, and each one is load-bearing:
+**Show the user the plan and get a confirmation before passing `--apply`.** A rename is
+prose other files cite, and the preview is the only place the ⚠ flags below appear before
+the write. Until 2026-08-26 `--sync-names` wrote on its own and the sourceless form could
+not be previewed at all; a session ran it and adopted TEN names having shown the user two.
+A routine `<file> --apply` ingest never renames anything — the rename must be asked for by
+name — so there is no reason to reach for `--sync-names` unless a rename is the task.
+
+Four things make this safe enough to offer automatically, and each one is load-bearing:
 
 - **Identity is the DeckId GUID**, never the deck number and never the card list. A GUID
   survives every edit Arena permits; a card list changes the moment you tune, so

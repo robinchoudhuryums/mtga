@@ -1442,11 +1442,18 @@ on the leading number and never on the name. `--sync-names` adopts Arena's name 
 `#: name:`, for GUID-matched decks only:
 
 ```
-python3 scripts/parse_matches.py --sync-names          # reconcile from the stored headers
-python3 scripts/parse_matches.py session.log --sync-names
+python3 scripts/parse_matches.py --sync-names            # PREVIEW, from the stored headers
+python3 scripts/parse_matches.py --sync-names --apply    # …adopt them
+python3 scripts/parse_matches.py session.log --sync-names --apply   # …or from a paste
 ```
 
-It reports on every run and writes only under the flag. Typography alone is not a rename,
+**`--sync-names` selects the reconcile; `--apply` writes it** — the same split as every
+other writer here. Without `--apply` you get the plan and nothing else. (Until 2026-08-26
+the flag wrote on its own, and the sourceless form could not be previewed at all; it
+adopted ten names unannounced in one session.) A routine `session.log --apply` ingest
+never renames a deck — the rename has to be asked for by name.
+
+It reports the plan on every run, flag or not. Typography alone is not a rename,
 a variant keeps its `<parent> — <variant>` prefix, and it flags what a rename would strand:
 prose citations in other decks, and variants left carrying the old parent name. **It is
 opt-in and needs re-running** — the divergence regrows the next time a deck is renamed in

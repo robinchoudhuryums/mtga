@@ -3823,9 +3823,30 @@ class TestBelowFloorArgument:
         assert deck._argues_below_floor(
             {"tier": "B — PROVISIONAL. One band BELOW the measurable floor, which reads A."})
 
+    def test_the_rubric_A_band_clause_is_recognised_in_shorthand(self):
+        """The clause is the RUBRIC's own wording, so decks quote it loosely. Matching
+        only "at most one clear weakness" left decks 35 (`More than the "≤1 weakness" an
+        A allows`) and 17 (`not a coherent engine with one weakness`) permanently nagged
+        for making precisely the argument this suppression honours."""
+        assert deck._argues_below_floor(
+            {"tier": 'B — More than the "≤1 weakness" an A allows; a functional B.'})
+        assert deck._argues_below_floor(
+            {"tier": "C — thin themes, not a coherent engine with one weakness."})
+        assert deck._argues_below_floor(
+            {"tier": "B — at most one clear weakness is not this deck."})
+
     def test_a_bare_letter_is_not(self):
         assert not deck._argues_below_floor({"tier": "B — Rakdos aggro, fine curve."})
         assert not deck._argues_below_floor({})
+
+    def test_the_word_weakness_alone_does_not_suppress(self):
+        """The widen must stay a RUBRIC-language match, not a topic match — the comment
+        on the pattern says narrow on purpose, and `weakness` is an ordinary word in a
+        tier rationale."""
+        assert not deck._argues_below_floor(
+            {"tier": "B — its weakness is a thin manabase and no reach."})
+        assert not deck._argues_below_floor(
+            {"tier": "A — two weaknesses, both covered by the sideboard."})
 
 
 class TestKeepableNeighbour:

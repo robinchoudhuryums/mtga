@@ -4577,10 +4577,21 @@ number stays the sole match key and the repo name is merely DISCLOSED next to a 
 prefix` route, with a warning that `--apply` makes the guess permanent. Disclosure over
 gating, the G-38 stance for a fuzzy signal.
 
-**The reconcile half: `parse_matches.py --sync-names`.** Adopting Arena's name into the
-repo removes the divergence rather than tolerating it. It reports on every run and writes
-only under the flag, because an `#: arena:` header is bookkeeping the tooling owns while a
-deck's NAME is human-authored prose other files cite. It also runs SOURCELESS — the stored
+**The reconcile half: `parse_matches.py --sync-names --apply`.** Adopting Arena's name
+into the repo removes the divergence rather than tolerating it. It reports on every run
+and writes only under BOTH flags, because an `#: arena:` header is bookkeeping the tooling
+owns while a deck's NAME is human-authored prose other files cite.
+
+**That two-flag split is a 2026-08-26 fix, and the shape is worth keeping.** The helper
+`sync_deck_names(text, apply=…)` had taken the parameter since it was written, and tests
+covered both sides of it. What was wrong was what `main()` PASSED: `apply=args.sync_names`
+on the paste path — making it the one writer in the file that ignored `--apply` — and a
+hardcoded `apply=True` on the sourceless path, so the invocation whose entire purpose is
+the rename could not be previewed at all. A flag that reads like "show me the renames"
+performed them, and it adopted ten `#: name:` headers in one session when two had been
+shown to the user. **A correct, parameterized primitive says nothing about whether its
+caller asks** — G-40 one layer up, and the reason the regression tests for this drive
+`main()` rather than the helper. It also runs SOURCELESS — the stored
 headers already hold Arena's answer, harvested by earlier runs, so a divergence built up
 over months reconciles without a paste covering all 106 decks. That is not circular: the
 header is Arena's answer recorded; the sync only asks whether `#: name:` still agrees.

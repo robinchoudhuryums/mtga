@@ -946,15 +946,15 @@ directions.
   mappings, **8 DISAGREED** ("49 Big Draco" was repo deck 49 "Scaleforge"): the Arena names
   are FLAVOUR names, so a name-agreement check on the attribution path would block a
   correct attribution 36% of the time (the G-07 saturation shape). The leading NUMBER stays
-  the only match key; the repo name is merely DISCLOSED beside a guess. `--sync-names` is
-  the RECONCILE half (ran 2026-08-14, adopting 12). Four earned rules: identity is the
-  **DeckId GUID**, never a card list (which changes the moment you tune, so it refuses
-  exactly the decks under development); **typography is not a rename**; a variant keeps its
-  `<parent> — <variant>` prefix, and renaming a PARENT orphans its variants — flagged,
-  never cascaded; and a rename **strands prose citations**, 50 of 106 decks being named in
-  another deck's prose. **The divergence REGROWS** from client-side renaming, so today's
-  agreement is a snapshot, not a reason to add the gate — docs cite it with examples that
-  now read as agreements *because* the sync ran. Re-measure first. [G-73]
+  the only match key; the repo name is merely DISCLOSED beside a guess. `--sync-names
+  --apply` is the RECONCILE half (adopted 12 on 2026-08-14) and is a **DRY RUN without
+  `--apply`** (it wrote on its own until 2026-08-26). Four earned rules: identity is the
+  **DeckId GUID**, never a card list (it changes the moment you tune); **typography is not
+  a rename**; a variant keeps its `<parent> — <variant>` prefix, and renaming a PARENT
+  orphans its variants — flagged, never cascaded; a rename **strands prose citations** (50
+  of 106 decks are named in another's prose). **The divergence REGROWS** from client-side
+  renaming, so today's agreement is a snapshot, not a reason to add the gate — docs cite it
+  with examples that now read as agreements *because* the sync ran. Re-measure first. [G-73]
 
 - **THE LOG CANNOT SEE WHAT YOU FACED, WHETHER YOU WERE ON THE PLAY, OR WHY YOU LOST — and
   a PHONE GAME never reaches the desktop log at all** (`Player.log` is written by the

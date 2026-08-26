@@ -929,7 +929,9 @@ class TestAdoptingArenaDeckNames:
         written, plan = pm.sync_deck_names(_setdeck(name="45 The Exiles", guid=self.GUID),
                                            apply=False, out=said.append)
         assert written == 0 and len(plan) == 1
-        assert "--sync-names" in "\n".join(said)
+        # The hint names the FULL invocation, since this same line prints both when no
+        # flag was given (this case) and when `--sync-names` was given without --apply.
+        assert "--sync-names --apply" in "\n".join(said)
         assert "#: name: Exile Dividend" in (d / "45-exile" / "deck.txt").read_text(
             encoding="utf-8")
 
@@ -1037,6 +1039,84 @@ class TestSourcelessNameReconcile:
         })
         assert pm.stored_arena_names() == {}
         assert pm.sync_deck_names_from_headers(out=lambda *_a: None) == (0, [])
+
+
+class TestSyncNamesIsADryRunWithoutApply:
+    """`--sync-names` SELECTS the rename; `--apply` WRITES it.
+
+    Every assertion here drives `main()`, not the helper, because the helper was never
+    the problem: `sync_deck_names(text, apply=…)` has taken the flag since it was
+    written and `TestAdoptingArenaDeckNames` proves both sides of it. What was wrong was
+    what `main()` PASSED — `apply=args.sync_names` on the paste path (the only writer in
+    the file ignoring --apply) and a hardcoded `apply=True` on the sourceless one, which
+    could therefore not be previewed at all. It rewrote ten `#: name:` headers in one
+    2026-08-25 session when two had been shown to the user.
+
+    That is the G-40 shape one layer up, and it is why these live at the CLI: a
+    parameterized primitive tells you nothing about whether its caller asks."""
+
+    GUID = "e3a6c595-914d-4809-bd6d-630b3758ca89"
+
+    def _roster(self, tmp_path, monkeypatch):
+        return TestArenaHeaderWriting._roster(self, tmp_path, monkeypatch, **{
+            "45-exile": TestAdoptingArenaDeckNames._cored(
+                TestAdoptingArenaDeckNames, "Exile Dividend", "45 The Exiles",
+                guid=self.GUID)})
+
+    def _name(self, d):
+        return [ln for ln in (d / "45-exile" / "deck.txt").read_text(
+            encoding="utf-8").splitlines() if ln.startswith("#: name:")][0]
+
+    def _run(self, tmp_path, monkeypatch, *argv):
+        monkeypatch.setattr("sys.argv", ["parse_matches.py", *argv,
+                                         "--out", str(tmp_path / "m.csv")])
+        return pm.main()
+
+    # ---- sourceless reconcile: the path that could not be previewed at all -------
+
+    def test_sourceless_sync_names_alone_writes_nothing(
+            self, tmp_path, monkeypatch, capsys):
+        d = self._roster(tmp_path, monkeypatch)
+        self._run(tmp_path, monkeypatch, "--sync-names")
+        out = capsys.readouterr().out
+        assert "'The Exiles'" in out                       # the plan IS shown…
+        assert "--apply" in out                            # …with how to take it
+        assert self._name(d) == "#: name: Exile Dividend"  # …and nothing was written
+        assert not list((d / "45-exile").glob("*.bak"))
+
+    def test_sourceless_sync_names_with_apply_writes(self, tmp_path, monkeypatch):
+        d = self._roster(tmp_path, monkeypatch)
+        self._run(tmp_path, monkeypatch, "--sync-names", "--apply")
+        assert self._name(d) == "#: name: The Exiles"
+        assert list((d / "45-exile").glob("*.bak"))
+
+    # ---- paste path -------------------------------------------------------------
+
+    def _log(self, tmp_path):
+        src = tmp_path / "s.log"
+        src.write_text("\n".join([_setdeck(name="45 The Exiles", guid=self.GUID),
+                                  _header(date="8/7/2026", time="7:33:25 AM"),
+                                  _event()]), encoding="utf-8")
+        return str(src)
+
+    def test_paste_sync_names_alone_writes_nothing(self, tmp_path, monkeypatch):
+        d = self._roster(tmp_path, monkeypatch)
+        self._run(tmp_path, monkeypatch, self._log(tmp_path), "--sync-names")
+        assert self._name(d) == "#: name: Exile Dividend"
+
+    def test_paste_sync_names_with_apply_writes(self, tmp_path, monkeypatch):
+        d = self._roster(tmp_path, monkeypatch)
+        self._run(tmp_path, monkeypatch, self._log(tmp_path), "--sync-names", "--apply")
+        assert self._name(d) == "#: name: The Exiles"
+
+    def test_a_routine_apply_ingest_never_renames_a_deck(self, tmp_path, monkeypatch):
+        """The other half of the conjunction, and the one a user hits by accident.
+        `session.log --apply` is the ordinary ingest; it must not rewrite a deck's name
+        as a side effect of recording a match, even though the paste contains the
+        Arena name that would drive the rename."""
+        d = self._roster(tmp_path, monkeypatch)
+        self._run(tmp_path, monkeypatch, self._log(tmp_path), "--apply")
+        assert self._name(d) == "#: name: Exile Dividend"
 
 
 class TestPooledReads:
