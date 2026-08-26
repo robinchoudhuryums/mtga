@@ -17,7 +17,13 @@
 #: tier: Light, both creatures that must SURVIVE to draw, and The Arkenstone is an ARTIFACT
 #: tier: that draws every end step. Measured now: avg MV 2.77 (up from 2.66 — the cost of
 #: tier: the pass, and the cheaper of the two packages considered), early drops 17,
-#: tier: protection 4, 25 lands with W15/G16, zero uncastable strays, central themes 17
+#: tier: protection 4, 25 lands with W17/G17 after the same day's land pass (three owned
+#: tier: GW duals in for 2 Forest + 1 Plains — it moved EVERY castability figure and moved
+#: tier: keepable/screw/flood by NOTHING, 86.0/12.2/1.7 before and after: Squirrel Girl
+#: tier: 53.5 -> 58.6%, Enduring Innocence 72.1 -> 79.5%, Exemplar and Warleader 78.1 ->
+#: tier: 84.7%. Caveat the model cannot price: two of the three enter TAPPED
+#: tier: unconditionally, taking the deck to 7 taplands of 11 nonbasics, and `consistency`
+#: tier: counts SOURCES, not tempo), zero uncastable strays, central themes 17
 #: tier: (was 20 — Warrior and food left with the cut Frogs/Squirrels). Re-grade after games.
 #: protect: The Unbeatable Squirrel Girl; Byrke, Long Ear of the Law; Quina, Qu Gourmet; Enduring Innocence; Spider-Ham, Peter Porker
 #: archetype: Selesnya (G/W) BURROW-WIDE — the third seat for the Frog Sage skeleton, and
@@ -107,8 +113,11 @@
 1 Blossoming Sands (M21) 244
 1 Birnin Zana Plaza (MSH) 262
 1 Kyoshi Village (TLA) 271
-9 Forest (HOB) 193
-8 Plains (HOB) 189
+7 Forest (HOB) 193
+1 Sandsteppe Citadel (TDM) 266
+1 Etched Cornfield (DSK) 258
+7 Plains (HOB) 189
+1 Urban Retreat (SPM) 187
 1 Curious Forager (BLB) 169
 1 Enduring Vitality (DSK) 176
 1 Claim Jumper (OTJ) 8
@@ -180,4 +189,3 @@
 #~   one mana of any color" and the two Frog Butlers already did it individually, so this
 #~   is the third answer to a question already answered. Craft it for deck 74a/55/69b, not
 #~   for here.
-
