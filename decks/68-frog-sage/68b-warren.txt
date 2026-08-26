@@ -15,8 +15,8 @@
 #: tier: that is the honest residual. Card advantage was 2 and is 3, and more to the point
 #: tier: is no longer entirely engine-shaped: it was Enduring Innocence and Exemplar of
 #: tier: Light, both creatures that must SURVIVE to draw, and The Arkenstone is an ARTIFACT
-#: tier: that draws every end step. Measured now: avg MV 2.77 (up from 2.66 — the cost of
-#: tier: the pass, and the cheaper of the two packages considered), early drops 17,
+#: tier: that draws every end step. Measured now: avg MV 2.83 (up from 2.66 — the cost of
+#: tier: the pass, and the cheaper of the two packages considered), early drops 16,
 #: tier: protection 4, 25 lands with W17/G17 after the same day's land pass (three owned
 #: tier: GW duals in for 2 Forest + 1 Plains — it moved EVERY castability figure and moved
 #: tier: keepable/screw/flood by NOTHING, 86.0/12.2/1.7 before and after: Squirrel Girl
@@ -89,7 +89,8 @@
 1 Quina, Qu Gourmet (FIN) 194
 1 Spider-Ham, Peter Porker (SPM) 114
 1 Valley Mightcaller (BLB) 202
-2 Frog Butler (TMT) 114
+1 Frog Butler (TMT) 114
+1 Michelangelo, Mutant BFF (TMT) 120
 1 Sunshower Druid (BLB) 195
 1 Dollmaker's Shop // Porcelain Gallery (DSK) 4
 1 The Arkenstone (HOB) 170
@@ -139,9 +140,16 @@
 #~   another creature enters. With Quina adding a Frog to every token event this is the
 #~   densest counter engine in the pool. THE COST IS COLOUR: a fourth {W}{W} card against
 #~   15 white sources, where Enduring Innocence already measures 72.1% on curve.
-#~ +Michelangelo, Mutant BFF | OWNED (U) — countered creatures can't be blocked by more
-#~   than one creature, plus a Mutagen token on enter AND attack. Evasion for a board the
-#~   deck is already loading with counters; {2}{G}{G} is the easier half of the mana.
+#~ note: applied 2026-08-26 — Michelangelo, Mutant BFF in for the 2nd Frog Butler.
+#~   Countered creatures can't be blocked by more than one creature, plus a Mutagen token
+#~   on enter AND attack. The deck's remaining bottleneck is CONVERTING a wide
+#~   counter-loaded board, and gang-blocking is how a single big attacker dies — this is
+#~   the enabler for the Burrowguard Mentor (power = creature count, trample) line that
+#~   Team Avatar keys off. RECOMMENDER DISAGREED: `cuts` ranked Frog Butler 28 of 29, i.e.
+#~   the second-STRONGEST card in the deck by fit, and it was right about what was lost —
+#~   Frog Butler is the deck's only deathtouch and, with Clifftop Lookout and Stickytongue
+#~   Sentinel gone, 2 of the 3 anti-air bodies. Anti-air is now Exemplar (flies), Finneas
+#~   (reach) and one Frog Butler ({2} reach). Deliberate trade, not an oversight.
 #~ +Suki, Kyoshi Warrior | OWNED (U) — power = creature count; attacks make a tapped
 #~   attacking token. HYBRID {G/W}{G/W}, so it eases the colour math instead of straining
 #~   it. NOTE its fit DROPPED in the re-screen: it used to share `Warrior, tokens` and now
@@ -169,7 +177,8 @@
 #~ +Eagle of the Great Shelf | OWNED (U) — a 2/5 flier that attacks for +1/+1 per other
 #~   creature. LIVE AGAIN rather than a leftover: the 2026-08-26 cuts removed 2 of the 4
 #~   reach blockers, so the anti-flier count fell from 5 bodies to 3 (Finneas, Frog Butler
-#~   x2 via its {2} reach mode). Five mana on a 2.77 curve is the objection.
+#~   x2 via its {2} reach mode; ONE Frog Butler as of the Michelangelo swap, so the count
+#~   is 3 bodies). Five mana on a curve that is now 2.83 is the objection.
 #~ +Rinoa Heartilly | OWNED (U) — WEAKEST of the ten. Five mana for a 1/1 Dog token and a
 #~   single-target attack pump; Sally Pride costs the same and hits the whole board.
 #~ +Felidar Retreat | CRAFT (R wildcard) — the craft pick if you spend one here. Landfall
