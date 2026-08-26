@@ -45,8 +45,18 @@ Stage 5** — grade it from the floor, don't guess.
    in the file you just wrote against known printings, STRICTLY. This exists
    because eleven hand-written collector numbers shipped wrong across two
    consecutive drafts (decks 76/77) — real sets, wrong numbers, the class
-   `check_all` keeps soft — and only a hand-run diff caught them. Any ✗ line:
-   paste the resolver's printing it shows. Do not proceed on a non-zero exit.
+   `check_all` keeps soft — and only a hand-run diff caught them. Do not proceed
+   on a non-zero exit.
+
+   **Repair it with `python3 scripts/deck.py resolve --fix NN` (dry run), then
+   `--fix NN --apply`** — it rewrites each bad `(SET) COLLECTOR#` to the
+   resolver's printing in place, preserving the quantity, name and any trailing
+   comment verbatim, with a `.bak` and an INV-04 re-check. **Never retype the
+   fields by hand.** That is the operation G-65 forbids and G-77 was written
+   about: relocating four lines by hand in one session invented two collector
+   numbers, which is the same failure this step is here to catch. Until
+   `--fix` existed this step's only remedy WAS the hand edit — an advisory you
+   can only act on by a forbidden edit is a hazard, not a warning.
 1. `python3 scripts/deck.py text NN` — read the FULL oracle text of the whole deck
    once now (cheapest time): catches mistyped/mismatched names (a wrong printing
    reads blank/wrong), off-color cards, and hidden `⚠` effects.

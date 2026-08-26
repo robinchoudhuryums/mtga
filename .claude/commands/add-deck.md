@@ -26,8 +26,15 @@ Steps:
    label if the guess was wrong. Note any off-color splash.
 5. If the library changed, `python3 scripts/build_gallery.py` (quantity badges).
 6. `python3 scripts/validate.py` (or `/check`) to confirm clean.
-7. Commit and push: the deck file, and card-library.csv / gallery.html if
-   reconciled. Report the roster with `python3 scripts/deck.py list`.
+7. Report the roster with `python3 scripts/deck.py list`, then commit the deck
+   file (and card-library.csv / gallery.html if step 3 reconciled) per the shared
+   **verify + commit tail** in `docs/verify-commit-tail.md` verbatim: `check_all`
+   gates the commit, the message ends with the CURRENT session's
+   `Co-Authored-By:` / `Claude-Session:` trailer and never contains the model ID,
+   the push goes to the working branch (restarted from `main` first if its PR is
+   already merged), and anything this closes in `.cycle/NEXT-SESSION.md` is
+   edited in the same commit. This step used to spell out its own one-line commit
+   instruction, which is how it missed every one of those rules.
 
 Watch for: cards that are a DIFFERENT printing of one already catalogued (new
 row, per one-row-per-printing); `//` double-faced names; the `--skip-basics`

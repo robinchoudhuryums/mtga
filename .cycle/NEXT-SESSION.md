@@ -86,6 +86,18 @@ that IS read and is wrong is worse than one that is not read.** When work closes
 named in §0-current, close it HERE in the same commit. `docs/verify-commit-tail.md` is the
 shared tail every writing skill ends with, and it now says so.
 
+**That last sentence was itself the wrong-handoff shape, corrected 2026-08-26.** It was
+true of the DOCUMENT and false of the SKILLS: the tail said so, and only 5 of 12 skills
+cited it. `/ingest` and `/refresh` rewrite `card-library.csv` and every derived file and
+had no commit step at all, so neither ever reached step 4 — the step this very paragraph
+argues for. `/add-deck` carried its own one-line commit instruction. All three cite the
+tail now, and its header carries the enumerated list of writers plus the rule that a new
+writing skill must be added there AND cite the file from itself in the same change.
+Nothing enforces that mechanically: `check_commands.py` proves a command is REACHED, not
+that the skill reaching it is right. The lesson generalizes past this file — **a
+"standardized" ending is standard only over the callers that say they use it**, and
+"and any future data-editing skill" was doing no work at all.
+
 ### Deck work this session (all merged)
 
 - **Deck 43 Overdraft — ten swaps**, the HOB pass plus two correctives. Final: interaction

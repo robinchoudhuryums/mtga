@@ -6,6 +6,58 @@
 > For "which command answers X, and why do two of them disagree", read
 > **`docs/systems-map.md`** — that is now a live reference, not a cycle artifact.
 
+## Session — the SKILL layer (2026-08-26)
+
+Gates green; **1493 tests** (unchanged — Markdown only). Block:
+`.cycle/blocks/2026-08-skill-layer-broad-implement.md`.
+
+First sweep of `.claude/commands/` itself. The user asked whether 22 files / 2,400 lines
+was too large for one pass; it is not, but only because the layers separate cleanly. The
+**mechanical** layer — every `scripts/<x>.py`, all 34 `deck.py` subcommands, every
+`--flag` against live `--help`, every `make` target, every `[G-nn]`/`[K-nn]`/`[C-nn]`
+anchor — sweeps in seconds and came back **entirely clean**, `check_commands.py` included.
+Every finding was in the **semantic** layer: the skill still names a real command and
+prescribes the wrong procedure with it. That layer does not scale as a 2,400-line read;
+what scales is "diff what the tooling gained recently, then check only the skill that owns
+that step", which is a handful of files.
+
+Three implemented (SK-2/3/4), all the same shape — **the tooling moved and the skill that
+prescribes it did not come along**:
+
+- **SK-2:** `/draft-deck` still told you to hand-fix a failed `resolve --check` by pasting
+  the printing. That is the edit G-65 forbids and G-77 was written about, and it is how
+  decks 76/77 shipped eleven wrong collector numbers. `resolve --fix … --apply` landed
+  this cycle as literally that remedy and **no skill referenced it**.
+- **SK-3:** `/ingest` and `/refresh` rewrite `card-library.csv` and every derived file and
+  had **no commit step at all** — `/ingest` ended at its report. `/add-deck` had its own
+  one-line instruction and so inherited none of the tail's four rules. CLAUDE.md said
+  "All end with the shared verify+commit tail … edit that one file to change the commit
+  discipline for all" while it covered **5 of 12**, and named `/add-cards`, which writes
+  nothing. That last part is what made the gap invisible: the sentence read as coverage.
+- **SK-4:** `/roster-review`'s craft-plan step ran `wildcards` without `--dedup`, so a card
+  three decks are short of printed three times with nothing saying it is ONE craft — the
+  exact fungibility misread CLAUDE.md calls a recurring failure. Also carried "across 63
+  decks" against 116; replaced with "the whole roster" rather than bumped, since a bare
+  present-tense figure in prose is what G-04/G-26 gate for in deck files and nothing gates
+  in skills.
+
+**Decided against / deferred:** SK-1 is a real *tool* bug and was left for the user —
+`parse_matches.py --sync-names` writes with no dry run (`:1654` hardcodes `apply=True`
+while the function's `apply=` defaults to False and nothing reaches it). It adopted 10
+renames unannounced earlier in this session. Fixing it changes the meaning of a flag the
+user already uses, so it is their call, not a silent correction.
+
+Two absences were checked and judged NOT gaps, recorded so they are not re-raised:
+`/roster-review` running no per-deck `tier` (the mismatch sweep is soft in `check_all`,
+and `audit --by-tier` covers the sort), and no skill naming the G-75/G-79 sweeps (they run
+inside `check_all`, which the skills do invoke).
+
+**Where I left off:** all green. The skill layer now has one documented gate on it —
+`docs/verify-commit-tail.md`'s header is the list, and it requires a new writing skill to
+be added there AND to cite the file from itself in the same change. Nothing enforces that
+mechanically; `check_commands.py` proves a command is REACHED, not that the skill reaching
+it is right.
+
 ## Session — match-ingest watermark (2026-08-25)
 
 Gates green; **1493 tests** (+9). Block:

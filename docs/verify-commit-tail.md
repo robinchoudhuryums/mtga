@@ -1,10 +1,22 @@
 # Shared verify + commit tail
 
-The standardized ending for any skill that writes to the repo (`add-cards`,
-`apply-changes`, and any future data-editing skill). Encoded once here so the
-skills can't drift on the discipline. This is where the avoidable mistakes live —
-a model ID leaking into a commit, a skipped integrity check, a stale flex note —
-so follow it verbatim.
+The standardized ending for **every** skill that writes to the repo — currently
+`/add-deck`, `/add-wishlist`, `/apply-changes`, `/draft-deck`, `/ingest`,
+`/log-matches`, `/pile-analysis`, `/refresh`, and any future data-editing skill.
+Encoded once here so the skills can't drift on the discipline.
+
+That list used to read "`add-cards`, `apply-changes`, and any future
+data-editing skill", and both halves were wrong in the direction that hides the
+gap. `/add-cards` writes nothing at all (it proposes; `/apply-changes` applies),
+while `/add-deck` carried its own one-line commit instruction and `/ingest` and
+`/refresh` — which rewrite `card-library.csv` and every derived file — had no
+commit step whatsoever. "Any future data-editing skill" reads as coverage and
+was doing no work: a skill only follows this file if it SAYS so. **Add the new
+skill to this list and cite this file from it in the same change** — a name here
+that no skill references is the same absent mechanism one layer over.
+
+This is where the avoidable mistakes live — a model ID leaking into a commit, a
+skipped integrity check, a stale flex note — so follow it verbatim.
 
 ## 1. Gate on integrity FIRST
 

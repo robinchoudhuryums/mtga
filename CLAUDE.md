@@ -1369,10 +1369,19 @@ swaps, run the F10 quality guard, re-ground the `#: tier:` prose via
 `--audit-rationale`, verify + commit) **orchestrate the scripts, never
 re-implement them** — the scripts stay the single source of truth so the skills
 can't drift. `add-cards` is the OWNED-card counterpart to `add-wishlist`'s unowned
-craft-target intake. All end with the shared verify+commit tail in
-`docs/verify-commit-tail.md` (check_all-first, the Co-Authored-By/Claude-Session
-trailer, no model ID, branch-restart on a merged PR) — edit that one file to change
-the commit discipline for all.
+craft-target intake. **Every skill that WRITES ends with the shared verify+commit tail
+in `docs/verify-commit-tail.md`** (check_all-first, the Co-Authored-By/Claude-Session
+trailer, no model ID, branch-restart on a merged PR, and closing what it closed in
+`.cycle/NEXT-SESSION.md`) — edit that one file to change the commit discipline for all.
+**That sentence said "All" for a year and it covered 5 of 12** (2026-08-25 skill sweep):
+`/ingest` and `/refresh` rewrite `card-library.csv` and every derived file and had NO
+commit step at all — an ingest simply ended at its report and left the repo dirty —
+while `/add-deck` carried its own one-line commit instruction and so inherited none of
+the four rules. All three cite the tail now. `/add-cards` is the one that legitimately
+does not: it writes nothing (it proposes; `/apply-changes` applies), and naming it here
+as a tail-user was the claim that made the real gaps invisible. The tail's own header
+lists the current writers — **add a new writing skill to that list and cite the file
+from the skill in the same change**, since a skill only follows it if it SAYS so.
 
 ## Session state — where to look when resuming
 
