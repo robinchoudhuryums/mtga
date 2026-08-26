@@ -4,13 +4,21 @@
 #: based-on: deck.txt
 #: plan: midrange
 #: tier: B (PROVISIONAL) — graded UNDER the A floor on the same argument as its siblings
-#: tier: (untested, singleton-heavy, the roster's heaviest craft list) plus one specific to
-#: tier: this seat: interaction 5 +1? is the thinnest of the three, and a GW deck that has
-#: tier: gone wide has no answer to a sweeper beyond Snakeskin Veil x2 and Season of the
-#: tier: Burrow's exile mode. Card advantage 2 is real but engine-shaped — it is Enduring
-#: tier: Innocence and Exemplar of Light, both of which must SURVIVE to draw. Measured:
-#: tier: avg MV 2.66 (lowest of the three), early drops 18, protection 4, 25 lands with
-#: tier: W15/G16 and zero uncastable strays. Re-grade after games.
+#: tier: (untested, singleton-heavy, the roster's heaviest craft list). The two specifics
+#: tier: that used to cap this seat were BOTH ADDRESSED by the 2026-08-26 pass, so the
+#: tier: remaining case for B is the untested/singleton one, not the axes. Interaction was
+#: tier: 5 and is now 6 (Coordinated Maneuver — which also took noncreature answers 1 -> 2,
+#: tier: the narrower and more painful of the two counts). The sweeper hole was "no answer
+#: tier: beyond Snakeskin Veil x2 and Season of the Burrow's exile mode"; Crystal Barricade
+#: tier: now blanks DAMAGE sweepers permanently rather than for one turn, which is the way
+#: tier: a 1/1 token board actually dies — destroy-based wraths are still unanswered, and
+#: tier: that is the honest residual. Card advantage was 2 and is 3, and more to the point
+#: tier: is no longer entirely engine-shaped: it was Enduring Innocence and Exemplar of
+#: tier: Light, both creatures that must SURVIVE to draw, and The Arkenstone is an ARTIFACT
+#: tier: that draws every end step. Measured now: avg MV 2.77 (up from 2.66 — the cost of
+#: tier: the pass, and the cheaper of the two packages considered), early drops 17,
+#: tier: protection 4, 25 lands with W15/G16, zero uncastable strays, central themes 17
+#: tier: (was 20 — Warrior and food left with the cut Frogs/Squirrels). Re-grade after games.
 #: protect: The Unbeatable Squirrel Girl; Byrke, Long Ear of the Law; Quina, Qu Gourmet; Enduring Innocence; Spider-Ham, Peter Porker
 #: archetype: Selesnya (G/W) BURROW-WIDE — the third seat for the Frog Sage skeleton, and
 #: archetype: the one that drops BLINK as the engine and keeps only the wide/counters half.
@@ -70,26 +78,27 @@
 1 Hop to It (SOA) 6
 1 The Unbeatable Squirrel Girl (MSH) 193
 1 Honored Dreyleader (BLB) 178
-1 Bakersbane Duo (BLB) 163
+1 Delney, Streetwise Lookout (MKM) 12
 1 Prairie Dog (OTJ) 24
 1 Quina, Qu Gourmet (FIN) 194
 1 Spider-Ham, Peter Porker (SPM) 114
 1 Valley Mightcaller (BLB) 202
 2 Frog Butler (TMT) 114
 1 Sunshower Druid (BLB) 195
-1 Three Tree Scribe (BLB) 199
-1 Stickytongue Sentinel (BLB) 193
+1 Dollmaker's Shop // Porcelain Gallery (DSK) 4
+1 The Arkenstone (HOB) 170
 1 Treeguard Duo (BLB) 200
 1 Mistbreath Elder (BLB) 184
-1 Clifftop Lookout (BLB) 168
+1 Coordinated Maneuver (TDM) 6
 1 Hinterland Sanctifier (FDN) 730
 1 Personify (ECL) 28
 1 Daydream (SOS) 9
 1 Season of the Burrow (BLB) 29
 1 Polliwallop (BLB) 189
 1 Spectacular Tactics (SPM) 15
-2 Snakeskin Veil (TDM) 159
-1 Gigantoad (FIN) 187
+1 Snakeskin Veil (TDM) 159
+1 Crystal Barricade (FDN) 7
+1 Ouroboroid (EOE) 201
 1 Oakhollow Village (BLB) 258
 1 Lupinflower Village (BLB) 256
 1 Hushwood Verge (DSK) 261
@@ -101,7 +110,7 @@
 9 Forest (HOB) 193
 8 Plains (HOB) 189
 1 Curious Forager (BLB) 169
-1 Thornvault Forager (BLB) 197
+1 Enduring Vitality (DSK) 176
 1 Claim Jumper (OTJ) 8
 #~ -Hop to It | +Run Away Together | OWNED (ECL, 2026-08-13 ingest): owner's pick, and the
 #~   TAG FIT IS LOW — 5 in 68a, and it does not rank for 68 or 68b at all, because the
@@ -112,3 +121,63 @@
 #~   speed. The symmetry is the point, not the drawback.
 #~   CAVEAT: it cannot hit two of YOUR creatures, so it is not a free double-blink; and
 #~   with no opposing creature on board it is uncastable.
+
+#~ FLEX POOL — re-screened against the post-2026-08-26 list, not the pre-swap one (the
+#~   plan changed, so a verdict graded against the old draft has expired). `screen` fires
+#~   KEY on 7 of 10 here and SAYS SO — 70% saturation, mostly on `tokens`, so read the
+#~   ORDER and the text, never the word.
+#~ +Mighty Mutanimals | OWNED (U) — ETB 2/2, then Alliance: a +1/+1 counter EVERY time
+#~   another creature enters. With Quina adding a Frog to every token event this is the
+#~   densest counter engine in the pool. THE COST IS COLOUR: a fourth {W}{W} card against
+#~   15 white sources, where Enduring Innocence already measures 72.1% on curve.
+#~ +Michelangelo, Mutant BFF | OWNED (U) — countered creatures can't be blocked by more
+#~   than one creature, plus a Mutagen token on enter AND attack. Evasion for a board the
+#~   deck is already loading with counters; {2}{G}{G} is the easier half of the mana.
+#~ +Suki, Kyoshi Warrior | OWNED (U) — power = creature count; attacks make a tapped
+#~   attacking token. HYBRID {G/W}{G/W}, so it eases the colour math instead of straining
+#~   it. NOTE its fit DROPPED in the re-screen: it used to share `Warrior, tokens` and now
+#~   shares only `tokens`, because Warrior left the central themes with the cut Frogs.
+#~ +Sally Pride, Lioness Leader | OWNED (R) — X 2/2s where X = nontoken creatures, then a
+#~   counter on each creature whenever she attacks. Five mana is the whole objection.
+#~ +Friendly Neighborhood | OWNED (R) — three 1/1 bodies for {3}{W} plus a repeatable land
+#~   pump. Three tokens is three Quina Frog triggers and an Enduring Innocence draw.
+#~ +Team Avatar | OWNED (U) — RE-GRADED UP 2026-08-26 after owner pushback, and the
+#~   strongest version of the argument is not the obvious one. "Attacks ALONE" reads as
+#~   anti-wide and is not: X counts EVERY creature you control, including the seven left
+#~   home to block. The line is BURROWGUARD MENTOR, whose power is the creature count and
+#~   who has TRAMPLE — attack alone on an 8-creature board for a 16/16 trampler that
+#~   chump-blocking does not stop, repeatable every turn. The {2}{W} discard mode is
+#~   scaling removal. Kept OUT of the maindeck only because the seven cards that went in
+#~   each closed a MEASURED deficit and this adds an angle to a deck that already wins
+#~   when unanswered — that is a priority call, not a quality one.
+#~ +Sapling Nursery | OWNED (R) — reads as 8 mana and is not: Affinity for Forests against
+#~   the deck's 9 Forests, so ~{2}{G}{G} with four out. Landfall 3/4 reach Treefolk on 25
+#~   lands, and {1}{G} exile grants Treefolk+Forests indestructible. The reach matters more
+#~   since Clifftop Lookout and Stickytongue Sentinel were cut.
+#~ +Flopsie, Bumi's Buddy | OWNED (U) — ETB counter on EACH creature, and power-4+ bodies
+#~   can't be blocked by more than one. The deck has 14 counter sources, so the power-4
+#~   gate is met rather than aspirational (G-61: the count, not the card). Six mana.
+#~ +Eagle of the Great Shelf | OWNED (U) — a 2/5 flier that attacks for +1/+1 per other
+#~   creature. LIVE AGAIN rather than a leftover: the 2026-08-26 cuts removed 2 of the 4
+#~   reach blockers, so the anti-flier count fell from 5 bodies to 3 (Finneas, Frog Butler
+#~   x2 via its {2} reach mode). Five mana on a 2.77 curve is the objection.
+#~ +Rinoa Heartilly | OWNED (U) — WEAKEST of the ten. Five mana for a 1/1 Dog token and a
+#~   single-target attack pump; Sally Pride costs the same and hits the whole board.
+#~ +Felidar Retreat | CRAFT (R wildcard) — the craft pick if you spend one here. Landfall
+#~   on 25 LANDS: a 2/2 Cat or a counter on each creature + vigilance, nearly every turn.
+#~   ROTATION is the tiebreak — FDN, so legal to 2029, where Thornvault Forager (the rare
+#~   this pass freed) was BLB and gone in 2027. Also the most REUSABLE card in the craft
+#~   shortlist: `suggest-homes` rates it KEY in 17 decks and it is already maindecked in 36.
+#~ +Moogles' Valor | CRAFT (R wildcard) — instant, a lifelink body per creature THEN team
+#~   indestructible. The complement to Crystal Barricade, not a duplicate: the Barricade
+#~   blanks DAMAGE permanently, this one answers a DESTROY wrath for a turn. `suggest-homes`
+#~   flags it top-heavy for this curve (MV 5) in five of its twelve KEY decks, including
+#~   this one.
+#~ +Brigid, Clachan's Heart // Brigid, Doun's Mind | CRAFT (R wildcard) — DOWNGRADED by
+#~   this same pass, and worth recording why: its back face taps for X mana of {G} or {W}
+#~   where X is your other creatures, which was the answer to the colour problem when the
+#~   deck ran Thornvault Forager. Enduring Vitality now gives all 27 creatures "{T}: add
+#~   one mana of any color" and the two Frog Butlers already did it individually, so this
+#~   is the third answer to a question already answered. Craft it for deck 74a/55/69b, not
+#~   for here.
+
