@@ -4287,6 +4287,16 @@ check_all or the gate warns about the cards the baseline was about to acknowledg
 sentence is correct about the mechanics and describes a muted radar. Step 1 consumed the
 warning step 3 existed to raise, on precisely the workflow the radar was built for.
 
+**FIXED in broad-scan-7 (S2-02): the order is reversed.** `postedit` now runs
+`build_dashboard.py` → `check_all.py` → `check_roles.py --update-baseline`, and its step-3
+echo says why — *"acknowledge what step 2 just reported"*. A deck edit that leaves a new
+zero-role card now produces the soft warning on the run that earned it, and the same run's
+step 3 clears it by name. Measured at the time: 490 of 490 zero-role cards already
+baselined, so the sweep is silent on a clean tree and a firing is attributable to the edit.
+The Makefile comment that justified the old order is gone with it — **that comment is the
+artifact worth remembering, because it was a correct mechanical explanation of a
+self-defeating design, and reading it as a reason is what kept the order in place.**
+
 **Why it could not self-correct.** `--update-baseline` rewrites the file from the CURRENT
 zero-role set — it is all-or-nothing, with no per-entry acknowledge. So it cannot
 distinguish:
@@ -5035,3 +5045,63 @@ K-12 roster diff was needed.
 per-card surface asks *is this out yet*. A pool built with a custom `--query`, or one
 built before this bound existed, re-opens the whole failure; the soft sweep is what tells
 you.
+
+## [G-80] A card that grants a keyword is a card about that keyword
+
+The tagger's keyword tags came from Scryfall's `keywords` field — what a card **has**.
+Nothing read what a card **gives**. So a lord handing the whole team deathtouch carried no
+`deathtouch` tag, and every model downstream of the tags saw a card with nothing to do with
+the deck built around exactly that.
+
+**The distribution is why this mattered rather than being a tidy-up.** Across
+`card-pool.csv`, **1,941 cards grant one of the twelve evergreen keywords**, and for four of
+them the granted case is the *majority*:
+
+| keyword          | granted | native |
+|------------------|--------:|-------:|
+| haste            |     366 |    359 |
+| trample          |     314 |    545 |
+| flying           |     301 |   1657 |
+| **indestructible**|    224 |     83 |
+| vigilance        |     185 |    455 |
+| lifelink         |     177 |    294 |
+| **first strike** |     172 |    145 |
+| **hexproof**     |     151 |     56 |
+| deathtouch       |     130 |    255 |
+| menace           |     126 |    290 |
+| **double strike**|     112 |     75 |
+| reach            |      53 |    304 |
+
+For indestructible and hexproof the tag was tracking the *exception*. A deck built on
+handing out hexproof was, to the tagger, a deck with no hexproof in it.
+
+**How it surfaced: the user caught it, no gate could.** Deck 31 (Golgari deathtouch-poison)
+was offered Venom Connoisseur as a cut candidate — a card whose entire text is about the
+deck's central mechanic. The user said "Venom Connoisseur should not be a suggested cut.
+Re-read it, and if you agree, then why was it suggested?" They were right, and the answer
+was upstream of the cut ranking: `cut_keep_score`'s fit term is gated on derived tags, so it
+inherited the tagger's hole. Fit went **17 → 68** once grants were read, and Maximum
+Overdrive **4 → 57**. This is K-04 one layer over — that rule says never gate a predicate on
+a derived tag; this is what it costs when you do.
+
+**The fix reads TEXT, with three exclusions taken from the failure modes, not invented.**
+`granted_keywords()` strips reminder text first (every keyword's own reminder names the
+keyword), then requires a gain/have/get verb within a bounded window, then drops the clause
+if it is scoped to an OPPONENT (`opponent`, `creatures you don't control`) or is a LOSS
+(`loses`, `can't have`) — a card that strips flying from their team is not a flying card.
+
+**The K-14 diff is the part worth carrying forward, and it is a NEGATIVE result.** Tags feed
+`cuts`, `suggest` and theme centrality. They do **not** feed the tier floor: `tier_band`
+grades on `role_tally`, which reads oracle text directly. So a change touching 1,941 pool
+cards moved **0 decks, 0 tier floors and 0 role counts**. Measure both halves before
+believing a tagger change is either safe or significant — this one was large in the
+recommenders and inert in the grading, and the two are easy to confuse.
+
+**The side effect that needed a human.** More tags raised the dominant theme's card count,
+and `_central_themes` admits a theme at 25% of that count — so the floor rose and four decks'
+quoted "N central themes" figures went stale by arithmetic. Three were mechanical
+corrections. Deck 35's was not: its `#: tier:` argued its B **from** the figure ("a scattered
+plan (20 central themes)"), and the live number is 13. The figure was corrected, the now-weaker
+argument recorded in place, and the **letter left alone** — a tier letter is a human call.
+**A tagger change that moves a centrality floor moves every prose figure derived from it**,
+and nothing sweeps deck prose for arithmetic that was true when written.

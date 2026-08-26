@@ -19,6 +19,16 @@ commands disagree.
 
 ## 0-current. THE 2026-08-24 SESSION (READ THIS FIRST — supersedes §0-latest below)
 
+> **STATE STAMP, 2026-08-26.** The rules and reasoning in this section are all still
+> current; only its FIGURES had aged. Live gates: `check_all` all invariants hold with the
+> SAME one soft warning described just below; **1500 pytest passed / 0 skipped**. Three
+> cycles have run since this section was written — the granted-keyword tagger fix, the
+> match-ingest watermark, the skill-layer sweep and the `--sync-names` dry-run fix — each
+> with its own verbatim block in `.cycle/blocks/` (newest:
+> `2026-08-sync-names-dry-run-broad-implement.md`). Read those for what changed; read this
+> section for why the rules below exist. The figures in the paragraph that follows are the
+> 2026-08-24 snapshot and are kept as a dated record.
+
 Gates: `check_all` all invariants hold with **ONE soft warning** (see below — it is
 expected, not a regression); **1423 pytest passed / 1 skipped**. Merged as PR #150 and
 #151. §0-latest's "ZERO soft warnings / 1333 tests" is the 2026-08-19 state.

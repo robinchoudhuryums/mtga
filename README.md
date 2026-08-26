@@ -179,6 +179,14 @@ green. Check `MECHANIC_RULES` for the name before adding a theme. These make `qu
 hand-editable. Rerun `build_mana.py` then `tag_synergies.py --merge` after
 importing new cards to refresh keyword-aware tags without losing curation.
 
+Keyword tags read what a card **grants**, not only what it has. Scryfall's `keywords`
+field describes the printed card, so a lord handing the whole team deathtouch used to
+carry no `deathtouch` tag at all — and for four evergreens the granted case is the
+*majority* (indestructible 224 pool cards grant it against 83 that have it; hexproof 151
+vs 56), meaning the tag was tracking the exception. `granted_keywords()` reads grants from
+oracle text, with reminder text stripped and opponent-scoped or loss clauses excluded, so
+a card that strips flying from *their* team is not a flying card.
+
 ### Query — search the collection
 
 ```
@@ -1302,8 +1310,10 @@ make refresh
 
 Runs the whole chain in dependency order: `enrich` → `build_pool --all` →
 `build_mana --pool` → `tag_synergies --merge` → `build_gallery` → `check_all`.
-(`make postedit` is the separate after-a-DECK-edit tail — re-baseline roles,
-rebuild the dashboard, run the gate — offline and independent of this chain. Its
+(`make postedit` is the separate after-a-DECK-edit tail — rebuild the dashboard,
+run the gate, THEN re-baseline roles — offline and independent of this chain. That order
+is load-bearing and used to be the reverse: acknowledging the baseline first consumed the
+warning the gate existed to raise, on the exact workflow the warning was built for. The
 re-baseline step NAMES every zero-role card it acknowledges and refuses a jump over
 `MAXNEW` (default 8), since a large jump is a `_ROLE_PATTERNS` regression rather than a
 batch of new cards; use `make postedit MAXNEW=40` for a deliberate bulk acknowledge.)
@@ -1350,6 +1360,25 @@ but not *which seat is yours* — that appears only in the `Match to <userId>:`
 header prefix — so a paste of the JSON alone is skipped with a warning rather than
 guessed at (`--me <userId>` overrides). Rows dedupe by Arena's match id, so
 re-pasting an overlapping log is safe. No userId or player name is ever stored.
+
+**Trim the paste to what is new.** Dedupe makes re-pasting *correct*; it does not make it
+cheap — the rolling archive keeps growing, so a paste is mostly matches recorded weeks
+ago, read and discarded. Three flags fix that in the pipe rather than by consuming the
+archive (which must stay intact: it is what `--annotate` joins against after the fact, and
+what makes a failed `--apply` recoverable):
+
+```
+python3 scripts/parse_matches.py --watermark              # the newest date already recorded
+python3 scripts/parse_matches.py session.log --since-last # …and filter the paste to it
+python3 scripts/parse_matches.py session.log --since 2026-08-25
+```
+
+The watermark is derived from `matches.csv` itself, never a sidecar stamp — a second file
+holding the same fact is a second thing that can drift. Hand-entered rows (`--add`, a phone
+game the log never saw) carry no match id and cannot advance it, or they would filter out
+LOG matches that were never ingested. The boundary day is **inclusive**: one day routinely
+holds both recorded and unrecorded matches, so `>` would drop a real one; the overlap costs
+nothing, because dedupe is exactly what it is for.
 
 Each new match prints **the evidence behind its verdict** — `[my team 1 · winner 1]`, the
 two integers the W/L came from — because an inverted seat read would make every row in a
