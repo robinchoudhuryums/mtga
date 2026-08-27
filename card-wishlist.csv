@@ -145,7 +145,6 @@ When this creature enters, mill three cards. (Put the top three cards of your li
 Threshold — This creature gets +2/+1 as long as there are seven or more cards in your graveyard.",B,Spirit; graveyard; mill; etb; pump; flying; evasion; threshold,FDN,56,Uncommon,,,2.0,seed
 Cephalid Inkmage,Creature — Octopus Wizard,"When this creature enters, surveil 3. (Look at the top three cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)
 Threshold — This creature can't be blocked as long as there are seven or more cards in your graveyard.",U,Octopus; Wizard; graveyard; etb; selection; surveil; threshold,FDN,32,Uncommon,,,2.0,seed
-Dragonlord's Servant,Creature — Goblin Shaman,Dragon spells you cast cost {1} less to cast.,R,Goblin; Shaman; cost-reduction,FDN,536,Uncommon,49,,7.0,hand
 Dreadwing Scavenger,Creature — Nightmare Bird,"Flying
 Whenever this creature enters or attacks, draw a card, then discard a card.
 Threshold — This creature gets +1/+1 and has deathtouch as long as there are seven or more cards in your graveyard.",U/B,Nightmare; Bird; graveyard; card draw; pump; flying; evasion; threshold,FDN,118,Uncommon,,,4.0,seed
@@ -160,8 +159,6 @@ Savage Ventmaw,Creature — Dragon,"Flying
 Whenever this creature attacks, add {R}{R}{R}{G}{G}{G}. Until end of turn, you don't lose this mana as steps and phases end.",R/G,Dragon; flying; evasion,FDN,665,Uncommon,,,2.0,seed
 Crow of Dark Tidings,Creature — Zombie Bird,"Flying
 When this creature enters or dies, mill two cards. (Put the top two cards of your library into your graveyard.)",B,Zombie; Bird; graveyard; mill; etb; flying; evasion,FDN,519,Common,,,1.0,seed
-Rapacious Dragon,Creature — Dragon,"Flying
-When this creature enters, create two Treasure tokens. (They're artifacts with ""{T}, Sacrifice this token: Add one mana of any color."")",R,Dragon; sacrifice; tokens; etb; treasure; flying; evasion,FDN,544,Common,49,,5.5,hand
 Tolarian Terror,Creature — Serpent,"This spell costs {1} less to cast for each instant and sorcery card in your graveyard.
 Ward {2} (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {2}.)",U,Serpent; graveyard; cost-reduction; ward; protection,FDN,167,Common,51,,7.0,hand
 Esper Origins // Summon: Esper Maduin,Sorcery // Enchantment Creature — Saga Elemental,"Surveil 2. You gain 2 life. If this spell was cast from a graveyard, exile it, then put it onto the battlefield transformed under its owner's control with a finality counter on it. (If a creature with a finality counter on it would die, exile it instead.)
@@ -201,11 +198,6 @@ Whenever you draw your second card each turn, put a +1/+1 counter on target crea
 Lake-town Toymaker,Creature — Human Artificer,"At the beginning of combat on your turn, if you've drawn two or more cards this turn, another target creature you control gets +3/+0 and gains first strike until end of turn.",W,Human; Artificer; pump,HOB,19,Uncommon,,,2.0,seed
 Bonehoard Dracosaur,Creature — Dinosaur Dragon,"Flying, first strike
 At the beginning of your upkeep, exile the top two cards of your library. You may play them this turn. If you exiled a land card this way, create a 3/1 red Dinosaur creature token. If you exiled a nonland card this way, create a Treasure token.",R,Dinosaur; Dragon; tokens; treasure; impulse; flying; evasion; first strike; combat,LCI,134,Mythic,49,,7.5,hand
-"Ojer Axonil, Deepest Might // Temple of Power",Legendary Creature — God // Land,"Trample
-If a red source you control would deal an amount of noncombat damage less than Ojer Axonil's power to an opponent, that source deals damage equal to Ojer Axonil's power instead.
-When Ojer Axonil dies, return it to the battlefield tapped and transformed under its owner's control. // (Transforms from Ojer Axonil, Deepest Might.)
-{T}: Add {R}.
-{2}{R}, {T}: Transform this land. Activate only if red sources you controlled dealt 4 or more noncombat damage this turn and only as a sorcery.",R,God; mana; noncombat damage; transform; trample; evasion,LCI,158,Mythic,49,"Deck 49: upgrades ELEVEN noncombat damage sources to 4 apiece (Firespitter Whelp 1->4, Nova Hellkite 1->4, Nebula Dragon 3->4, Realm-Scorcher's repeatable ping, Plasma Bolt, Dracosaur Auxiliary, both Drakuseth halves). A 4-drop with trample that returns transformed on death - the closest red gets to protection-by-revive. NOT a Dragon.",8.4,hand
 "Matzalantli, the Great Door // The Core",Legendary Artifact // Legendary Land,"{T}: Draw a card, then discard a card.
 {4}, {T}: Transform Matzalantli. Activate only if there are four or more permanent types among cards in your graveyard. (Artifact, battle, creature, enchantment, land, and planeswalker are permanent types.) // (Transforms from Matzalantli.)
 Fathomless descent — {T}: Add X mana of any one color, where X is the number of permanent cards in your graveyard.",Colorless,graveyard; card draw; mana; transform; fathomless descent,LCI,256,Rare,51,,4.0,seed
@@ -266,9 +258,6 @@ Power-up — {5}{U}{U}{U}: Put a +1/+1 counter on Kang. Take an extra turn after
 Railway Brawler,Creature — Rhino Warrior,"Reach, trample
 Whenever another creature you control enters, put X +1/+1 counters on it, where X is its power.
 Plot {3}{G} (You may pay {3}{G} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)",G,Rhino; Warrior; counters; exile cast; reach; defense; plot; tempo; cost-reduction; trample; evasion,OTJ,175,Mythic,,,8.0,seed
-Terror of the Peaks,Creature — Dragon,"Flying
-Spells your opponents cast that target this creature cost an additional 3 life to cast.
-Whenever another creature you control enters, this creature deals damage equal to that creature's power to any target.",R,Dragon; flying; evasion,OTJ,149,Mythic,49,,8.0,hand
 Blooming Marsh,Land,"This land enters tapped unless you control two or fewer other lands.
 {T}: Add {B} or {G}.",B/G,mana,OTJ,266,Rare,21; 6,Manabase upgrade: de-tapland Gastromancer (21) B->A; reusable across WB/BG/GW decks. Also firms deck 8's thin green (Killmonger/Ygra) — fungible. | Also Abzan reanimator deck 6 (Dead or Alive) — same WBG fixing; fungible craft.,6.5,hand
 Concealed Courtyard,Land,"This land enters tapped unless you control two or fewer other lands.
@@ -343,9 +332,6 @@ Landfall — Whenever a land you control enters, create a 4/4 red Dragon creatur
 Mox Jasper,Legendary Artifact,{T}: Add one mana of any color. Activate only if you control a Dragon.,Colorless,mana,TDM,246,Mythic,,,5.5,seed
 "Neriv, Heart of the Storm",Legendary Creature — Spirit Dragon,"Flying
 If a creature you control that entered this turn would deal damage, it deals twice that much damage instead.",W/B/R,Spirit; Dragon; flying; evasion,TDM,210,Mythic,concept: Mardu,Lost its home when deck 14 converted Mardu->Rakdos (BR) for consistency; needs a Mardu (WBR) shell — no current deck. Build-around concept.,6.5,hand
-Stormscale Scion,Creature — Dragon,"Flying
-Other Dragons you control get +1/+1.
-Storm (When you cast this spell, copy it for each spell cast before it this turn. Copies become tokens.)",R,Dragon; pump; flying; evasion; storm; spellslinger,TDM,123,Mythic,49,,7.0,hand
 Bloomvine Regent // Claim Territory,Creature — Dragon // Sorcery — Omen,"Flying
 Whenever this creature or another Dragon you control enters, you gain 3 life. // Search your library for up to two basic Forest cards, reveal them, put one onto the battlefield tapped and the other into your hand, then shuffle. (Also shuffle this card.)",G,Dragon; Omen; lifegain; flying; evasion,TDM,136,Rare,,,3.5,seed
 Maelstrom of the Spirit Dragon,Land,"{T}: Add {C}.
@@ -425,8 +411,6 @@ When this creature enters, if it was bargained, add four mana in any combination
 Decadent Dragon // Expensive Taste,Creature — Dragon // Instant — Adventure,"Flying, trample
 Whenever this creature attacks, create a Treasure token. // Exile the top two cards of target opponent's library face down. You may look at and play those cards for as long as they remain exiled.",B/R,Dragon; Adventure; exile cast; heist; tokens; treasure; flying; evasion; trample,WOE,223,Rare,49,,5.5,seed
 Picklock Prankster // Free the Fae,Creature — Faerie Rogue // Instant — Adventure,"Flying, vigilance // Mill four cards. Then put an instant, sorcery, or Faerie card from among the milled cards into your hand.",U,Faerie; Rogue; Adventure; mill; exile cast; flying; evasion; vigilance; combat; graveyard,WOE,64,Uncommon,,,2.0,seed
-Flick a Coin,Instant,"Flick a Coin deals 1 damage to any target. You create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")
-Draw a card.",R,card draw; sacrifice; tokens; burn; treasure,WOE,128,Common,49,,2.5,seed
 Rootrider Faun,Creature — Satyr Scout,"{T}: Add {G}.
 {1}, {T}: Add one mana of any color.",G,Satyr; Scout; mana,WOE,182,Common,50,,1.5,seed
 Stormkeld Prowler,Creature — Human Rogue,"Whenever you cast a spell with mana value 5 or greater, put two +1/+1 counters on this creature.",U,Human; Rogue; counters,WOE,71,Common,51,Deck 51: two-drop that gets +2/+2 whenever you cast MV>=5 - the deck runs 11 such. Cheap clock that scales with the top end it already had.,6.2,hand

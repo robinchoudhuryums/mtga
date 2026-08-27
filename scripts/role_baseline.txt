@@ -108,6 +108,7 @@ Deepmuck Desperado
 Deepway Navigator
 Defiant Survivor
 Delney, Streetwise Lookout
+Desert Were-Worm
 Devastating Onslaught
 Diligent Zookeeper
 Donatello, Mutant Mechanic
@@ -116,6 +117,7 @@ Doubling Season
 Dracogenesis
 Draconautics Engineer
 Dragon Fodder
+Dragonmaster Outcast
 Dragoon's Lance
 Dragoon's Wyvern
 Dread Summons

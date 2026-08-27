@@ -3,25 +3,34 @@
 #: arena: 49 Big Draco, 945769bf-ab3a-4e98-a4b2-a2a443e971b0
 #: colors: R
 #: plan: midrange
-#: tier: B — PROVISIONAL, one band below the measurable floor, which reads A on interaction 11
-#: tier: plus card advantage 3 at a 4.03 curve. Two structural weaknesses the floor cannot see:
-#: tier: 1. PROTECTION IS 1, and it is one card: Roaming Throne's ward {2}. Five named
-#: tier:    build-arounds and this deck's payoffs are the kind that must SURVIVE A TURN to
-#: tier:    matter — Lathliss only pays off on the NEXT Dragon, Terror of the Peaks only on the
-#: tier:    next creature, Dragonlord's Servant only on the next spell. Removal on any of them
-#: tier:    costs a whole turn cycle, not just a card. A sweep of red and colorless Standard for
-#: tier:    a protection grant returned essentially nothing, so this is red's cost, not an
-#: tier:    oversight. Call the Spirit Dragons was REJECTED on colour, not overlooked: it reads
-#: tier:    "Dragons you control have indestructible" and costs {W}{U}{B}{R}{G}, genuinely gold.
-#: tier: 2. IT IS SLOWISH, but much less so than it was. Avg MV 4.03 with 10 early drops (it was
-#: tier:    4.20 and 9 before the 2026-08 passes); against a fast start the deck
-#: tier:    must trade one-for-one with removal it
+#: tier: B — PROVISIONAL, one band below the measurable floor, which reads A on interaction 9
+#: tier: plus card advantage 3 at a 3.74 curve. Two structural weaknesses the floor cannot see:
+#: tier: 1. PROTECTION IS NOW ZERO. It was 1 — Roaming Throne's ward {2} — and Roaming Throne
+#: tier:    was CUT 2026-08-27 because it rotates in 2026. Four named build-arounds and this
+#: tier:    deck's payoffs are the kind that must SURVIVE A TURN to matter — Lathliss only pays
+#: tier:    off on the NEXT Dragon, Terror of the Peaks only on the next creature, Dragonlord's
+#: tier:    Servant only on the next spell. Removal on any of them costs a whole turn cycle, not
+#: tier:    just a card, and nothing now blunts it. The old sweep of red and colorless Standard
+#: tier:    for a protection grant was RE-RUN 2026-08-27 with the granted-keyword reader (G-80),
+#: tier:    which reads grants from TEXT and finds the 224 indestructible granters the old
+#: tier:    tag-based search could not see. It returned two cards, both self-grants. So this is
+#: tier:    confirmed as red's cost rather than an oversight — the conclusion survived a
+#: tier:    strictly better search. Dragonfire Blade ({1} Equipment, +2/+2 and hexproof from
+#: tier:    monocolored, equip {3} on a mono-red creature) is the ONE owned option if the zero
+#: tier:    ever needs closing; it is parked in flex, not maindecked.
+#: tier:    Call the Spirit Dragons was REJECTED on colour, not overlooked: it reads "Dragons
+#: tier:    you control have indestructible" and costs {W}{U}{B}{R}{G}, genuinely gold.
+#: tier: 2. IT IS SLOWISH, but much less so than it was. Avg MV 3.74 with 12 early drops (it was
+#: tier:    4.20/9, then 4.03/10, and the 2026-08-27 pass took it here — Dragonmaster Outcast at
+#: tier:    MV 1 and Last Light of Durin's Day at MV 2 in place of two six-drops); against a fast
+#: tier:    start the deck must trade one-for-one with removal it
 #: tier:    has plenty of, then stabilise with a five-drop. Card advantage 3 is still thin, and
 #: tier:    still an UNDER-count — Dragonhawk, Fate's Tempest impulse-exiles a batch on every
 #: tier:    entry or attack and Breaching
 #: tier:    Dragonstorm free-casts one, but both read as `impulse` to the classifier, not draw.
-#: tier: WHAT ARGUES UP, and why the letter may move after play: interaction 11 is not padding,
-#: tier: it is real removal stapled to Dragon BODIES (Realm-Scorcher, Drakuseth),
+#: tier: WHAT ARGUES UP, and why the letter may move after play: interaction 9 is not padding,
+#: tier: it is real removal stapled to Dragon BODIES (Drakuseth, Stormscale Scion; Realm-Scorcher
+#: tier: carried this too and was CUT 2026-08-27 on rotation, which is most of the 11 -> 9),
 #: tier: so the deck interacts without spending cards; the manabase is flawless, matching
 #: tier: deck 47 as the only two on the roster with zero cards
 #: tier: below 90% on curve; and the payoff stack genuinely compounds — Terror of the Peaks
@@ -37,10 +46,10 @@
 #: tier: impulse-exiles twice the cards. CHRONICLE OF VICTORY is an anthem plus a card per Dragon
 #: tier: cast. Neither contains the word Dragon.
 #: tier: PROVISIONAL because it is unplayed and 17 cards are craft targets.
-#: protect: Lathliss, Dragon Queen; Dragonlord's Servant; Terror of the Peaks; Roaming Throne; Sarkhan, Dragon Ascendant
+#: protect: Lathliss, Dragon Queen; Dragonlord's Servant; Terror of the Peaks; Sarkhan, Dragon Ascendant
 #: archetype: MONO-RED DRAGON RAMP. FIFTEEN Dragons in a sixty-card deck (it opened at 21 and the
 #: archetype: 2026-08 passes traded six for interaction, Treasures and early drops), plus token
-#: archetype: makers — Lathliss, Rite of the Dragoncaller and Magda all mint Dragons, so the board
+#: archetype: makers — Lathliss, Dragonmaster Outcast and Magda all mint Dragons, so the board
 #: archetype: count runs ahead of the card count. The idea holds: Standard's Dragons average MV
 #: archetype: 5.30, so a deck that wants to field several
 #: archetype: of them must SOLVE ITS OWN MANA, and every accelerant here is paid for by the
@@ -157,25 +166,26 @@
 1 Sunset Strikemaster (TDM) 126
 1 Magda, the Hoardmaster (OTJ) 133
 1 Draconautics Engineer (DFT) 121
+1 Dracogenesis (TDM) 105
+1 The Misty Mountains Cold (HOB) 104
 
 # Dragons — the early curve
-1 Runescale Stormbrood // Chilling Screech (TDM) 221
+1 Last Light of Durin's Day (HOB) 103
 1 Firespitter Whelp (FDN) 761
 
 # Dragons — the engine band
 1 Ran and Shaw (TLA) 150
-1 Spinerock Tyrant (ECL) 159
+1 The Legend of Roku (TLA) 145
 1 Rapacious Dragon (FDN) 544
 1 Terror of the Peaks (OTJ) 149
 1 Dragonhawk, Fate's Tempest (BLB) 132
 1 Twinflame Tyrant (FDN) 97
-1 Decadent Dragon // Expensive Taste (WOE) 223
+1 Smaug the Magnificent (HOB) 110
 
 # Damage amplifier — not a Dragon, but it upgrades ELEVEN damage sources to 4
 1 Ojer Axonil, Deepest Might // Temple of Power (LCI) 158
 
 # Tribal payoffs — the CHOOSE-A-TYPE cards a literal 'Dragon' search never finds (K-13)
-1 Roaming Throne (LCI) 258
 1 Chronicle of Victory (ECL) 253
 1 Collective Inferno (ECL) 132
 
@@ -183,13 +193,12 @@
 1 Lathliss, Dragon Queen (FDN) 627
 1 Dracosaur Auxiliary (DFT) 122
 1 Stormscale Scion (TDM) 123
-1 Realm-Scorcher Hellkite (WOE) 145
-1 Rite of the Dragoncaller (FDN) 92
+1 Dragonmaster Outcast (FDN) 622
+1 Desert Were-Worm (HOB) 92
 1 Impact Tremors (FDN) 717
 
 # Dragons — the top end the ramp is for
 1 Drakuseth, Maw of Flames (FDN) 760
-1 Summon: Bahamut (FIN) 1
 
 # Card advantage — the axis this deck measured 2 on
 1 Breaching Dragonstorm (TDM) 101
@@ -208,4 +217,4 @@
 
 # Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 49
 #~ -Draconautics Engineer | +Bonehoard Dracosaur | CRAFT (M), DEFERRED: the deck's best card-advantage engine — two cards per upkeep plus a token or Treasure, doubled by Roaming Throne to four. Card advantage is 3 and thin. Engineer holds the slot for 0 wildcards.
-#~ -Breaching Dragonstorm | +Incinerator of the Guilty | CRAFT (M), DEFERRED: screen rates it KEY and it is a real Dragon (16 -> 17). Combat damage collects evidence to wipe their board. MV 6 into a 4.03 curve is the cost, so it wants the curve to come down first.
+#~ -Breaching Dragonstorm | +Incinerator of the Guilty | CRAFT (M), DEFERRED: screen rates it KEY and it is a real Dragon (16 -> 17). Combat damage collects evidence to wipe their board. MV 6 into what is now a 3.74 curve after the 2026-08-27 pass — the curve DID come down, so this is live again; it competes with Dracogenesis for the top-end slot and rotates 2027.
