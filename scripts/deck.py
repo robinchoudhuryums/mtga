@@ -5575,6 +5575,16 @@ def _printing_of(name):
     stops the file recording the front-face shorthand instead of the real card name."""
     nl = name.strip().lower()
     best = (name.strip(), "", "")
+    # The CANONICAL display is the full `Front // Back`, and it must survive an OWNED
+    # printing that is filed under the bare front name. reconcile_crafts.py stores a
+    # crafted DFC front-name-only BY DESIGN (G-10/G-63), so the moment you own one the
+    # owned-row branch below started returning the shorthand and this function stopped
+    # doing the one thing its docstring promises. Caught by
+    # TestPrintingOfDFC::test_the_swap_writes_the_canonical_name after a 2026-08-27
+    # ingest, not by any gate on the deck files -- the 127 roster lines already written
+    # under a bare front name are the long-standing convention and parse fine, so
+    # nothing downstream complains. Resolve the printing and the DISPLAY separately.
+    canon = ""
     for path, owned_pref in ((DEFAULT_CSV, True), (POOL_CSV, False)):
         if not os.path.exists(path):
             continue
@@ -5588,16 +5598,44 @@ def _printing_of(name):
                 cn = (r.get("Collector #") or "").strip()
                 if not setc:
                     continue
+                if " // " in disp and not canon:
+                    canon = disp
                 if owned_pref:
                     try:
                         q = int(r.get("Quantity Owned") or 0)
                     except ValueError:
                         q = 0
                     if q > 0:
-                        return (disp, setc, cn)   # an owned printing wins outright
+                        # printing from the owned row, display from the canonical name
+                        owned = (disp, setc, cn)
+                        if canon:
+                            return (canon, setc, cn)
+                        best_owned = owned
+                        for r2 in _pool_rows_for(nl):
+                            d2 = (r2.get("Card Name") or "").strip()
+                            if " // " in d2:
+                                return (d2, setc, cn)
+                        return best_owned
                 if not best[1]:
                     best = (disp, setc, cn)
+    if canon and best[1]:
+        return (canon, best[1], best[2])
     return best
+
+
+def _pool_rows_for(nl):
+    """Pool rows whose name equals `nl` or fronts to it. Only reached when an OWNED
+    library row resolved first and we still need the canonical `Front // Back` display
+    (the library files a crafted DFC under its front name by design)."""
+    if not os.path.exists(POOL_CSV):
+        return []
+    out = []
+    with open(POOL_CSV, newline="", encoding="utf-8") as fh:
+        for r in csv.DictReader(fh):
+            d = (r.get("Card Name") or "").strip().lower()
+            if d == nl or d.split(" // ")[0] == nl:
+                out.append(r)
+    return out
 
 
 def _card_line_name(line):

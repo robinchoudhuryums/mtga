@@ -3438,6 +3438,35 @@ class TestPrintingOfDFC:
         out = deck._cards_after_swap([(1, "Cut Me", "AAA", "1")], "Cut Me", disp, (setc, cn))
         assert out == [(1, "Ojer Axonil, Deepest Might // Temple of Power", setc, cn)]
 
+    def test_an_OWNED_front_name_row_does_not_win_the_display(self, tmp_path, monkeypatch):
+        """The regression this class exists for, made deterministic.
+
+        `reconcile_crafts.py` files a crafted DFC under its FRONT name BY DESIGN
+        (G-10/G-63). The owned-printing branch used to `return (disp, ...)` straight
+        from that row, so the day you crafted a DFC this function silently began
+        emitting the front-face shorthand — the exact thing the docstring promises it
+        prevents. It really happened: a 2026-08-27 ingest of Ojer Axonil turned the
+        sibling test above red.
+
+        The sibling only caught it because that ingest happened to land. Pin the
+        property against a CONSTRUCTED world so it cannot pass vacuously again if the
+        live CSVs change: an owned library row under the bare front name, a pool row
+        carrying the canonical `Front // Back`, and the printing must come from the
+        OWNED row while the display comes from the canonical one."""
+        lib_csv, pool_csv = tmp_path / "lib.csv", tmp_path / "pool.csv"
+        lib_csv.write_text(
+            "Card Name,Set Code,Collector #,Quantity Owned\n"
+            "Frontface Only,OWN,11,2\n", encoding="utf-8")
+        pool_csv.write_text(
+            "Card Name,Set Code,Collector #\n"
+            "Frontface Only // Backface Half,POOL,99\n", encoding="utf-8")
+        monkeypatch.setattr(deck, "DEFAULT_CSV", str(lib_csv))
+        monkeypatch.setattr(deck, "POOL_CSV", str(pool_csv))
+
+        disp, setc, cn = deck._printing_of("Frontface Only")
+        assert disp == "Frontface Only // Backface Half", "display must be canonical"
+        assert (setc, cn) == ("OWN", "11"), "printing must come from the OWNED row"
+
 
 class TestSwapApplyWritePath:
     """`swap --apply` is the sanctioned way to edit a deck, and it had NO test.
