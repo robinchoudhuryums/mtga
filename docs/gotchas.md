@@ -511,6 +511,23 @@ The general shape is one this file already knows: a set-membership test against 
 hand-written string is only as good as its alias table, and the failure is silent in
 the permissive direction.
 
+**The third refuted fix, 2026-08-27: role-credit reweighting.** Motivated by a real
+pattern — right after a tune, the freshly added structural cards top the cut list (Delney
+fit 3; Dracogenesis ranked the #1 cut minutes after being added) — the candidate change
+was to raise `_role_credit`'s base from 3 to 6 per role. Measured before writing a line of
+production code: the tweak fixed **0 of the 7 named mis-ranks** (Delney 1→1, Dracogenesis
+1→1, Crystal Barricade 4→4, The Arkenstone 9→9; Ouroboroid moved the WRONG way) while
+changing the top-3 cut set of **28 of 116 decks**. The reason is structural, not a matter
+of weight: the worst offenders score **zero roles** (`classify_roles` reads text and their
+value lives in clauses no pattern covers — G-67's whitelist, deliberately narrow), and any
+multiplier of zero is zero. The failures that CAN be addressed were addressed elsewhere:
+G-80 fixed the granted-keyword half of thin tag profiles, and the `✚ NEWCOMER` display
+annotation names the post-tune inversion without touching a score. The keep-score's
+machinery (role credit, saturation, power/uniq/multiplier co-signals) already exists and
+is anchored by `check_suggest`; the lesson stands — measure the fix-rate against the churn
+BEFORE believing a weight change, because the plausible story ("roles don't feed fit")
+was simply false on inspection.
+
 ## [G-10] "Not in library" for a card you own is the deck-dump undercount symptom
 
 **"Not in library" for a card you own is the deck-dump undercount symptom.**

@@ -6534,6 +6534,41 @@ def _print_swap_outcomes(rows):
               "pipeline works end to end, so the only missing input is games.")
 
 
+_TUNED_UNPLAYED_FLOOR = 5     # swaps before a deck earns a most-tuned/least-played row
+
+
+def _print_tuned_vs_played(rows, deck_filter=None):
+    """Most-tuned, least-played — a PLAY QUEUE, not a scold.
+
+    Measured 2026-08-27 on the live ledger: 31 decks carried ≥5 recorded swaps and
+    ZERO recorded matches, and the eight most-tuned decks had ONE match among them —
+    so `swap_outcomes`' 20-match floor is unreachable for exactly the decks with the
+    most invested tuning, and the record structurally cannot say whether any of those
+    tunes worked. Report-only, roster-shaped (skipped under a deck filter), and read
+    with G-74's caveat built in: the match record is young and a PHONE game never
+    reaches the desktop log, so "0 matches" means unRECORDED, not necessarily
+    unplayed."""
+    if deck_filter:
+        return
+    from collections import Counter
+    tuned = Counter((r.get("Deck") or "").strip() for r in rows)
+    tuned.pop("", None)
+    played = load_match_counts()
+    heavy = [(d, c) for d, c in tuned.items() if c >= _TUNED_UNPLAYED_FLOOR]
+    if not heavy:
+        return
+    unplayed = sorted(d for d, _c in heavy if not played.get(d))
+    print("\nMost tuned vs. least played (swaps recorded / matches recorded):")
+    for d, c in sorted(heavy, key=lambda t: (-t[1], t[0]))[:8]:
+        print(f"    deck {d:<5} {c:>3} swap(s)   {played.get(d, 0):>3} match(es)")
+    if unplayed:
+        print(f"  {len(unplayed)} deck(s) with ≥{_TUNED_UNPLAYED_FLOOR} swaps and ZERO "
+              f"recorded matches: {', '.join(unplayed)}")
+    print("  A play queue, not a verdict: `swap_outcomes` needs ~20 matches per deck "
+          "before it can say whether a tune WORKED, and a phone game never reaches the "
+          "desktop log (G-74) — log those via the dashboard panel / `--add`.")
+
+
 def cmd_feedback(args):
     """Report how the recommenders scored against the swaps actually applied."""
     rows = load_recommendations()
@@ -6578,7 +6613,19 @@ def cmd_feedback(args):
         print("  EXPECTED to be high, and not on its own a model miss: `suggest` filters "
               "to cards sharing a synergy THEME, so it is structurally blind to lands "
               "and off-theme removal. That is what `suggest --lands/--interaction/--ramp` "
-              "are for. Read it as 'which fills the theme model can't reach'.\n")
+              "are for. Read it as 'which fills the theme model can't reach'.")
+        # The single health number for the recommender over time, with the same caveat
+        # as the list above it: it measures how often the theme model and the human
+        # were shopping in the same aisle, not whether either was right.
+        rated = [r for r in rows if (r.get("Add Surfaced") or "") in ("yes", "no")]
+        if len(rated) >= _RECS_MIN_SAMPLE:
+            yes = sum(1 for r in rated if r["Add Surfaced"] == "yes")
+            print(f"  Surfaced-rate over the whole ledger: {yes}/{len(rated)} chosen "
+                  f"add(s) ({100 * yes / len(rated):.0f}%) appeared in `suggest`'s top "
+                  f"{_RECS_SUGGEST_WINDOW} beforehand. Watch the TREND, not the level — "
+                  f"the level is dominated by structural picks the theme gate excludes "
+                  f"by design (G-38).")
+        print()
 
     if n < _RECS_MIN_SAMPLE:
         tail = ("The rows above are worth reading individually"
@@ -6594,6 +6641,7 @@ def cmd_feedback(args):
               "agreement rate partly measures the list's INFLUENCE, not its accuracy. "
               "The disagreements above are the part that doesn't suffer from that.")
         _print_recommendation_segments(rows)
+    _print_tuned_vs_played(rows, deck_filter=getattr(args, "id", None))
     _print_swap_outcomes(rows)
     print("\nThis ledger is REPORT-ONLY and never feeds back into a score — the ranking "
           "terms are bounded and anchored by check_suggest so they can't silently "

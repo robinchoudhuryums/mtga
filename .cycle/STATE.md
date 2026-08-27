@@ -6,6 +6,33 @@
 > For "which command answers X, and why do two of them disagree", read
 > **`docs/systems-map.md`** — that is now a live reference, not a cycle artifact.
 
+## Session — suggestions A–E: measure first, then decline or ship (2026-08-27, later)
+
+Gates green; **1523 tests** (+4). Block:
+`.cycle/blocks/2026-08-suggestions-a-e-broad-implement.md`.
+
+The headline is a REFUTATION: the proposed cuts-model change ("let roles feed the fit
+term") died on inspection — `cut_keep_score` already carries saturation-aware role
+credit, and the measured reweighting fixed 0 of 7 named mis-ranks while churning 28 of
+116 decks' top-3 sets, because the worst offenders score ZERO roles and a weight cannot
+multiply zero. Now the THIRD entry in G-09's pre-registered-and-refuted list. The real
+lever stays G-67 (per-family classifier work, measured), plus the shipped ✚ NEWCOMER
+display.
+
+Shipped: `feedback` gains the surfaced-rate aggregate (63/599 = 11%, trend not level)
+and the most-tuned/least-played play queue (31 decks with ≥5 swaps and 0 recorded
+matches — swap_outcomes' floor unreachable exactly where tuning investment is highest).
+The SessionStart hook now skips the full pytest run when scripts/tests are unchanged
+since the last green (sig in gitignored .cycle/.tests-green-sig; dirty tree always
+reruns) — the DFC-regression tripwire stays armed, the ~3 min per resume on an unchanged
+tree goes away.
+
+DECIDED AGAINST, on the owner's direction: any wildcard-balance recording. Current
+balances are out of scope for tuning entirely, factored in only when Robin raises them
+— now codified in the Player Profile itself.
+
+**Where I left off:** all green.
+
 ## Session — verdict surfaces + the tuning retrospective (2026-08-27)
 
 Gates green; **1519 tests** (+18). Block:

@@ -1,14 +1,14 @@
 {
-  "hooks": {
-    "SessionStart": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "cd \"$CLAUDE_PROJECT_DIR\" && python3 scripts/check_all.py --quiet 2>/dev/null; if python3 -c 'import pytest' 2>/dev/null; then echo \"[unit tests] $(python3 -m pytest 2>&1 | grep -aE '[0-9]+ (passed|failed|error)' | tail -1)\"; else echo '[unit tests] pytest not installed — run: make test-units'; fi; true"
-          }
+    "hooks": {
+        "SessionStart": [
+            {
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "sh \"$CLAUDE_PROJECT_DIR/scripts/session_check.sh\"; true"
+                    }
+                ]
+            }
         ]
-      }
-    ]
-  }
+    }
 }

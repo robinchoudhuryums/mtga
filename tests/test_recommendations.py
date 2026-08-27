@@ -251,6 +251,61 @@ class TestItIsReportOnly:
             assert "load_match_counts" not in src, fn.__name__
 
 
+class TestFeedbackAggregates:
+    """The two 2026-08-27 report-only additions: the surfaced-rate line (the single
+    recommender health number, watched as a TREND) and most-tuned/least-played (a
+    play queue — 31 decks had ≥5 swaps and zero recorded matches when measured, so
+    `swap_outcomes`' floor was unreachable exactly where tuning investment was
+    highest). Both display-only; the scoring-stack ban is pinned elsewhere."""
+
+    def _ledger(self, tmp_path, n_rows, deck_id="49", surfaced_yes=3):
+        import csv, datetime as dt
+        p = tmp_path / "recs.csv"
+        with open(p, "w", newline="", encoding="utf-8") as fh:
+            w = csv.DictWriter(fh, fieldnames=deck.RECS_HEADER)
+            w.writeheader()
+            for i in range(n_rows):
+                w.writerow({**{c: "" for c in deck.RECS_HEADER},
+                            "Date": dt.date.today().isoformat(), "Deck": deck_id,
+                            "Cut": f"Cut {i}", "Add": f"Add {i}",
+                            "Cut Rank": "1", "Cut Of": "30",
+                            "Add Surfaced": "yes" if i < surfaced_yes else "no"})
+        return str(p)
+
+    def test_surfaced_rate_prints_at_sample(self, tmp_path, monkeypatch, capsys):
+        monkeypatch.setattr(deck, "RECS_CSV", self._ledger(tmp_path, 25))
+        monkeypatch.setattr(deck, "load_match_counts", lambda: {})
+        deck.cmd_feedback(type("A", (), {"id": None})())
+        out = capsys.readouterr().out
+        assert "Surfaced-rate over the whole ledger: 3/25" in out
+
+    def test_tuned_vs_played_lists_the_unplayed_deck(self, tmp_path, monkeypatch, capsys):
+        monkeypatch.setattr(deck, "RECS_CSV", self._ledger(tmp_path, 25))
+        monkeypatch.setattr(deck, "load_match_counts", lambda: {})
+        deck.cmd_feedback(type("A", (), {"id": None})())
+        out = capsys.readouterr().out
+        assert "Most tuned vs. least played" in out
+        assert "ZERO recorded matches: 49" in out
+        assert "play queue, not a verdict" in out
+
+    def test_a_played_deck_shows_its_matches_and_leaves_the_zero_list(
+            self, tmp_path, monkeypatch, capsys):
+        monkeypatch.setattr(deck, "RECS_CSV", self._ledger(tmp_path, 25))
+        monkeypatch.setattr(deck, "load_match_counts", lambda: {"49": 7})
+        deck.cmd_feedback(type("A", (), {"id": None})())
+        out = capsys.readouterr().out
+        assert "7 match(es)" in out
+        assert "ZERO recorded matches" not in out
+
+    def test_a_deck_filter_suppresses_the_roster_section(
+            self, tmp_path, monkeypatch, capsys):
+        monkeypatch.setattr(deck, "RECS_CSV", self._ledger(tmp_path, 25))
+        monkeypatch.setattr(deck, "load_match_counts", lambda: {})
+        deck.cmd_feedback(type("A", (), {"id": "49"})())
+        out = capsys.readouterr().out
+        assert "Most tuned vs. least played" not in out
+
+
 class TestReportOutput:
     def test_an_empty_ledger_says_how_rows_accrue(self, capsys, tmp_path, monkeypatch):
         monkeypatch.setattr(deck, "RECS_CSV", str(tmp_path / "none.csv"))

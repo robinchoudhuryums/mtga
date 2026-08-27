@@ -27,3 +27,4 @@ credentials*.json
 
 # pytest cache (unit-test layer)
 .pytest_cache/
+.cycle/.tests-green-sig
