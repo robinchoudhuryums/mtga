@@ -68,6 +68,16 @@ answer. When an ad-hoc sweep returns zero, spot-check one card you KNOW should m
 believing it.
 
 
+**The 2026-08 variant came from the INSIDE: `card.py` piped through `sed -n '1,14p'`.**
+The command exists so a grader sees the whole card, and its output was truncated by the
+grader's own shell pipe — repeatedly, in the same sessions where cards were being graded
+from labels (Ouroboroid, Dollmaker's Shop, Crystal Barricade, all corrected by the user).
+No tool can stop its caller truncating stdout; what it CAN do is make the truncation
+visible, so `card.py` now ends every printout with `━━ end · <name> ━━`. An output without
+the closing bar was cut short — treat it as an unread card. The general rule: on a verdict
+surface, evidence must be opt-OUT, never opt-in; the same session found `screen`'s oracle
+text sitting behind a `--full` flag that no skill and no session had ever passed.
+
 ## [G-02] A split / Room / Adventure card's stored cost covers BOTH halves — read the FRONT face
 
 **A split / Room / Adventure card's stored cost covers BOTH halves — read the FRONT
@@ -4193,6 +4203,19 @@ been wrong in the other direction: it would have excluded exactly the cards that
 When a new family looks adjacent to one you have already solved, ask which rule the family
 takes before reusing the one that is to hand.
 
+**Measured 2026-08-27 and NOT taken: a "token engine" family.** Desert Were-Worm (extra
+combat at total power 12) and Dragonmaster Outcast (a 5/5 every upkeep at six lands) both
+score zero roles and landed in the baseline. Before treating that as two more whitelist
+holes, the analogous cards were run through `classify_roles` directly: Hop to It, Head of
+the Homestead and Rapacious Dragon — token MAKERS — are all zero-role too, while Lathliss
+and Sally Pride DO score, and score as *Payoff / engine* for their triggers on other
+events, not for the tokens they create. So the taxonomy is consistent: **token creation is
+a tag, not a role; a role fires when the card pays off something else happening.** Adding
+a token-engine role would not move `tier_band` (which grades interaction + card
+advantage), so per the S1-04 precedent (Equipment 31, hand-attack 31 — measured, declined)
+the family stays out. The two cards are acknowledged in `role_baseline.txt`, which is the
+mechanism built for exactly this: a deliberate zero, on the record.
+
 ## [G-68] A `#:` header that lists card names goes stale, and nothing checked one
 
 Two deck headers are a semicolon-separated list of CARD NAMES rather than prose:
@@ -4904,6 +4927,16 @@ silence, because it produces a second, quieter error class while looking like di
   card-total guard still applies. A move preserves the total by construction.
 - A card already in the target section is a no-op, so the flag is safe to pass
   speculatively.
+
+**The standalone form, 2026-08-27: `deck.py move <id> "<card>" --section "<hdr>" --apply`.**
+`swap --section` only covers relocation while a swap is happening; fixing a section noticed
+AFTER the write took a swap-out/swap-in pair, and that pair is recorded to
+recommendations.csv as if each half were a decision — one session left four such rows,
+including `cuts ranked −Dracogenesis 1/30` for a card that had been added minutes earlier
+(the ranking was "keep it", read back as a disagreement about a cut nobody proposed). The
+rows were pruned with a `.bak`, and `move` writes no ledger row at all: a relocation is not
+a decision, which is G-56's line applied one command over. Same `_relocate_card_line`
+machinery, same verbatim-line guarantee, same refuse-ambiguous-headers-before-writing.
 
 ## [G-78] A sharing claim is not a comparison, and short card names are invisible
 

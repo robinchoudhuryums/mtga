@@ -58,6 +58,7 @@ import time
 import urllib.error
 import urllib.request
 
+import lib
 from lib import (BASICS as lib_BASICS, DEFAULT_CSV, MATCHES_CSV, REPO_ROOT,
                  load_rows, eprint, card_colors, owned_qty,
                  card_distinctiveness, backup_path, card_power, front_face_cost,
@@ -610,6 +611,9 @@ def cmd_wildcards(args):
     if not decks:
         print("No decks yet. Add one under decks/<NN-name>/deck.txt.")
         return 0
+    _fresh = lib.collection_stamp_note()
+    if _fresh:
+        print(_fresh + "\n")
     _, _, by_name_qty = load_collection()
     # COPY — `fetch_missing_rarities` below mutates the dict it is given, and
     # `load_rarities` is `@_file_memo`-cached (BS5-13, same class as the `load_mana`
@@ -934,6 +938,10 @@ def cmd_check(args):
         print(f"{len(missing)} not in library: {', '.join(missing)}")
     if short:
         print(f"{len(short)} short of the deck's requirement.")
+    if missing or short:
+        _fresh = lib.collection_stamp_note()
+        if _fresh:
+            print(f"  {_fresh}")
     if rot_flagged:
         print(f"⚠ {len(rot_flagged)} craft target(s) rotate out of Standard this year or "
               f"next ({', '.join(rot_flagged)}) — see `deck.py rotation` before crafting.")
@@ -5219,6 +5227,40 @@ def _deck_source_counts(cards, by_key, by_name, carddata):
     return sources, nlands, total
 
 
+_TAPLAND_RE = re.compile(r"enters(?: the battlefield)? tapped", re.I)
+_TAPLAND_COND_RE = re.compile(r"enters(?: the battlefield)? tapped[^.\n]*\b(unless|if )", re.I)
+
+
+def tapland_profile(cards, carddata):
+    """(unconditional, conditional, nonbasic_land_total) — each a sorted [(qty, name)].
+
+    REPORT-ONLY tempo context for `consistency`, which prices color ACCESS and is
+    structurally blind to the turn a tapland costs: the 2026-08-26 deck-68b land pass
+    raised every cast-on-curve figure while taking the deck to 7 unconditional
+    taplands of 11 nonbasics, and the model's numbers moved only in the direction
+    that looked good. A conditional tapland (\"unless…\") is split out rather than
+    scored — whether its condition helps EARLY (when tempo matters) is a text read,
+    e.g. Etched Cornfield's \"unless a player has 13 or less life\" is usually tapped
+    exactly when you want it untapped. Never feeds a score (the G-25/G-60 rule:
+    a new term silently re-grades)."""
+    uncond, cond, total = [], [], 0
+    for q, n, _s, _c in cards:
+        row = carddata.get((n or "").lower()) or {}
+        typ = row.get("type") or ""
+        if "Land" not in typ or _ms_key(n) in BASICS or n in BASICS:
+            continue
+        # front-face read (G-63): a back-face land is not a land you play from hand
+        if "//" in typ and not typ.split("//")[0].strip().startswith(("Land", "Legendary Land", "Basic Land")):
+            continue
+        total += q
+        text = row.get("text") or ""
+        if _TAPLAND_COND_RE.search(text):
+            cond.append((q, n))
+        elif _TAPLAND_RE.search(text):
+            uncond.append((q, n))
+    return sorted(uncond, key=lambda t: t[1]), sorted(cond, key=lambda t: t[1]), total
+
+
 def cmd_consistency(args):
     """Manabase + opening-hand CONSISTENCY (#1/#2): the probability layer `mana` lacks.
     Given the deck's land count and per-color sources, model P(keepable opening hand),
@@ -5273,6 +5315,18 @@ def cmd_consistency(args):
     print("Land-drop consistency (P of ≥N lands by turn N):")
     print(f"  turn 2: {100*ls['hit2']:5.1f}%   turn 3: {100*ls['hit3']:5.1f}%   "
           f"turn 4: {100*ls['hit4']:5.1f}%")
+    _tl_u, _tl_c, _tl_n = tapland_profile(cards, load_card_data())
+    if _tl_u or _tl_c:
+        _tapped = sum(q for q, _ in _tl_u) + sum(q for q, _ in _tl_c)
+        bits = []
+        if _tl_u:
+            bits.append(f"{sum(q for q, _ in _tl_u)} unconditional: "
+                        + ", ".join(n for _, n in _tl_u))
+        if _tl_c:
+            bits.append("conditional: " + ", ".join(n for _, n in _tl_c))
+        print(f"  ⓘ taplands: {_tapped} of {_tl_n} nonbasic land(s) enter tapped "
+              f"({'; '.join(bits)}) — every figure here prices color ACCESS, not the "
+              f"turn a tapland costs; that tempo is invisible to this model.")
     # A gentle land-count read — the classic 17-source floor is deck-dependent, so flag
     # only clear extremes rather than prescribe a number.
     if ls["keepable"] < 0.85:
@@ -5575,6 +5629,16 @@ def _printing_of(name):
     stops the file recording the front-face shorthand instead of the real card name."""
     nl = name.strip().lower()
     best = (name.strip(), "", "")
+    # The CANONICAL display is the full `Front // Back`, and it must survive an OWNED
+    # printing that is filed under the bare front name. reconcile_crafts.py stores a
+    # crafted DFC front-name-only BY DESIGN (G-10/G-63), so the moment you own one the
+    # owned-row branch below started returning the shorthand and this function stopped
+    # doing the one thing its docstring promises. Caught by
+    # TestPrintingOfDFC::test_the_swap_writes_the_canonical_name after a 2026-08-27
+    # ingest, not by any gate on the deck files -- the 127 roster lines already written
+    # under a bare front name are the long-standing convention and parse fine, so
+    # nothing downstream complains. Resolve the printing and the DISPLAY separately.
+    canon = ""
     for path, owned_pref in ((DEFAULT_CSV, True), (POOL_CSV, False)):
         if not os.path.exists(path):
             continue
@@ -5588,16 +5652,44 @@ def _printing_of(name):
                 cn = (r.get("Collector #") or "").strip()
                 if not setc:
                     continue
+                if " // " in disp and not canon:
+                    canon = disp
                 if owned_pref:
                     try:
                         q = int(r.get("Quantity Owned") or 0)
                     except ValueError:
                         q = 0
                     if q > 0:
-                        return (disp, setc, cn)   # an owned printing wins outright
+                        # printing from the owned row, display from the canonical name
+                        owned = (disp, setc, cn)
+                        if canon:
+                            return (canon, setc, cn)
+                        best_owned = owned
+                        for r2 in _pool_rows_for(nl):
+                            d2 = (r2.get("Card Name") or "").strip()
+                            if " // " in d2:
+                                return (d2, setc, cn)
+                        return best_owned
                 if not best[1]:
                     best = (disp, setc, cn)
+    if canon and best[1]:
+        return (canon, best[1], best[2])
     return best
+
+
+def _pool_rows_for(nl):
+    """Pool rows whose name equals `nl` or fronts to it. Only reached when an OWNED
+    library row resolved first and we still need the canonical `Front // Back` display
+    (the library files a crafted DFC under its front name by design)."""
+    if not os.path.exists(POOL_CSV):
+        return []
+    out = []
+    with open(POOL_CSV, newline="", encoding="utf-8") as fh:
+        for r in csv.DictReader(fh):
+            d = (r.get("Card Name") or "").strip().lower()
+            if d == nl or d.split(" // ")[0] == nl:
+                out.append(r)
+    return out
 
 
 def _card_line_name(line):
@@ -5794,6 +5886,59 @@ def _relocate_card_line(lines, card_name, needle):
     # Re-find the insertion point in the shortened list.
     dest = last - 1 if src < last else last
     return rest[:dest + 1] + [line] + rest[dest + 1:]
+
+
+def cmd_move(args):
+    """Relocate ONE card line under a different `# section` header, VERBATIM.
+
+    The mechanical form of the edit G-65 forbids doing by hand, available OUTSIDE a
+    swap. `swap --section` covers relocation only while a real swap is happening;
+    moving an EXISTING line used to take a swap-out/swap-in pair, which wrote the
+    pair to recommendations.csv as if cutting the card you had just added were a
+    decision — four such rows landed in one 2026-08-27 session (G-56 warned about
+    exactly this shape). A relocation is not a decision, so this command writes NO
+    ledger row. Dry-run by default; `--apply` writes with a .bak and the same
+    total-preserving guard the swap path uses."""
+    d = find_deck(args.id)
+    if not d:
+        eprint(f"No deck with id {args.id!r}. Try: deck.py list")
+        return 1
+    with open(d["path"], encoding="utf-8") as fh:
+        lines = fh.read().split("\n")
+    _meta, cards = parse_deck_file(d["path"])
+    total = sum(q for q, _n, _s, _c in cards)
+    key = _ms_key(args.card or "")
+    src = next((i for i, ln in enumerate(lines)
+                if _ms_key(_card_line_name(ln) or "") == key), None)
+    cur = "(no section)"
+    if src is not None:
+        for i in range(src, -1, -1):
+            if lines[i].startswith("# ") and not lines[i].startswith("#:"):
+                cur = lines[i].lstrip("# ").strip()
+                break
+    try:
+        new_lines = _relocate_card_line(lines, args.card, args.section)
+    except ValueError as e:
+        eprint(f"Not moved: {e}")
+        return 1
+    if new_lines == lines:
+        print(f"{args.card!r} is already under a section matching {args.section!r} — "
+              "nothing to do.")
+        return 0
+    print(f"Move {args.card!r}: `# {cur}` → the header matching {args.section!r} "
+          "(line kept verbatim, printing fields untouched).")
+    if not args.apply:
+        print("(dry run — pass --apply to write the change with a .bak)")
+        return 0
+    try:
+        bak = _safe_write_lines(d["path"], new_lines, total)
+    except ValueError as e:
+        eprint(f"Not saved: {e}")
+        return 1
+    print(f"Applied. Wrote {os.path.relpath(d['path'], REPO_ROOT)} "
+          f"(backup: {os.path.basename(bak)}).")
+    print("No recommendations.csv row — a relocation is not a decision (G-56).")
+    return 0
 
 
 def _line_comment(ln):
@@ -6015,6 +6160,31 @@ def load_recommendations(path=None):
         return []
     with open(path, newline="", encoding="utf-8") as fh:
         return [dict(r) for r in csv.DictReader(fh)]
+
+
+def recent_ledger_adds(deck_id, days=14, path=None):
+    """`_ms_key` set of cards ADDED to `deck_id` by a ledger swap in the last `days`.
+
+    DISPLAY-ONLY, deliberately: `cmd_cuts` annotates a newcomer because a card added
+    for a STRUCTURAL reason (protection, removal, an artifact engine) has a thin tag
+    profile by nature, so the theme-fit term reads it as the deck's weakest card the
+    moment it arrives — Delney scored fit 3 and Dracogenesis ranked the #1 cut minutes
+    after being added (2026-08-27, both decks of that session). K-04 one layer down.
+    This function must NEVER be called from the scoring stack;
+    test_recommendations.py pins that the seven scoring functions cannot read the
+    ledger, and an annotation at the cmd layer is the report-only use G-56 permits."""
+    import datetime as _dt
+    cutoff = (_dt.date.today() - _dt.timedelta(days=days)).isoformat()
+    out = set()
+    for r in load_recommendations(path):
+        if (r.get("Deck") or "").strip() != str(deck_id):
+            continue
+        if (r.get("Date") or "") < cutoff:
+            continue
+        a = (r.get("Add") or "").strip()
+        if a:
+            out.add(_ms_key(a))
+    return out
 
 
 def append_recommendation(row, path=None):
@@ -6565,9 +6735,8 @@ def _do_swap(d, cut, add, apply, flex_entry=None, section=None):
         if warn:
             print(f"  ⚠ section comment: {warn}")
             print(f'     Move it mechanically (never by hand — G-65): '
-                  f'deck.py swap {d["id"]} --cut "{add}" --add "{add}" is a no-op, so '
-                  f'redo this swap with --section "<header substring>", or move the '
-                  f'line with an editor that preserves the (SET) COLLECTOR# fields.')
+                  f'deck.py move {d["id"]} "{add}" --section "<header substring>" '
+                  f'--apply relocates the line verbatim, with no ledger row.')
     # Record how the recommenders scored this decision. Written AFTER the edit lands, so
     # a rejected write leaves no phantom row; announced rather than silent, because a
     # command that writes a second file should say so.
@@ -7197,6 +7366,11 @@ def cmd_cuts(args):
         eprint(f"No deck with id {args.id!r}. Try: deck.py list")
         return 1
     rows, central, prot_present, deck_int = rank_cut_candidates(d)
+    # Ledger read is DISPLAY-only (see recent_ledger_adds) — never inside the ranking.
+    try:
+        _newcomers = recent_ledger_adds(d["id"])
+    except Exception:
+        _newcomers = set()
     if not rows:
         print(f"Deck {d['id']}: no nonland cards to evaluate.")
         return 0
@@ -7285,6 +7459,11 @@ def cmd_cuts(args):
         _ax = _int_scaling(text) or _deck_state_axis(text)
         if _ax:
             tail += f"   ⌁scales w/ {_ax} — graded here at its FLOOR"
+        # Right after a tune, the freshly added structural cards dominate this list —
+        # their tag profiles are thin by nature, not by weakness (K-04's shape).
+        if _ms_key(n) in _newcomers:
+            tail += ("   ✚ NEWCOMER — added by a swap in the last 14d; "
+                     "tag-fit under-reads it, not a cut signal")
         print(f"  {n[:30]:30} {mvs:>3}  {fit:>4}  {power:>3.0f}  {uniq:>3.0f}  {tail}")
 
     # Surface the actual oracle text so a cut is graded from what the card DOES,
@@ -8902,7 +9081,13 @@ def cmd_screen(args):
             print(f"       shares: {', '.join(r['shared'])}")
         for f in flags:
             print(f"       {f}")
-        if getattr(args, "full", False):
+        # Text ON BY DEFAULT (G-52): it sat behind an opt-in `--full` that no skill and
+        # no session ever passed, so the highest-volume verdict surface handed out
+        # KEY/tangential labels with no evidence — five 68b cards were mis-graded from
+        # exactly those labels in one 2026-08 session, every one corrected by the user.
+        # Evidence on a verdict surface must be opt-OUT, never opt-in (the G-40 shape:
+        # a capability nothing asks for is invisible).
+        if not getattr(args, "no_text", False):
             for line in (r["text"] or "(no text)").split("\n"):
                 print(f"         {line}")
         print()
@@ -12189,6 +12374,18 @@ def main():
                         "slot (G-05). Moves the line VERBATIM, so the (SET) COLLECTOR# "
                         "fields cannot be mistyped the way a hand edit can (G-65). "
                         "Refuses an absent or ambiguous header without writing.")
+    p = sub.add_parser("move",
+                       help="relocate one card line under a different `# section` "
+                            "header, verbatim (the mechanical form of the hand edit "
+                            "G-65 forbids; writes NO recommendations row)")
+    p.add_argument("id")
+    p.add_argument("card", help="card name (either face spelling of a DFC)")
+    p.add_argument("--section", required=True, metavar="HEADER",
+                   help="target `# section` header substring; refuses an absent or "
+                        "ambiguous header before writing anything")
+    p.add_argument("--apply", action="store_true",
+                   help="write the change (with a .bak and the total-preserving "
+                        "guard); default is a dry-run preview")
     p = sub.add_parser("feedback",
                        help="how the recommenders scored against the swaps you applied")
     p.add_argument("id", nargs="?", help="limit to one deck (default: the whole roster)")
@@ -12259,7 +12456,10 @@ def main():
     p.add_argument("--format", default=None,
                    help="legality format (default: the deck's own; 'any' disables)")
     p.add_argument("--full", action="store_true",
-                   help="print each candidate's full oracle text")
+                   help="(default since 2026-08-28; kept for compatibility)")
+    p.add_argument("--no-text", action="store_true",
+                   help="suppress the per-candidate oracle text (labels only — the "
+                        "mis-grade mode G-52 exists to prevent; know why you want this)")
     args = ap.parse_args()
 
     return {
@@ -12275,6 +12475,7 @@ def main():
         "verify": cmd_verify, "sync": cmd_sync, "text": cmd_text,
         "suggest-homes": cmd_suggest_homes,
         "similar": cmd_similar, "resolve": cmd_resolve, "screen": cmd_screen,
+        "move": cmd_move,
         "preflight": cmd_preflight, "quality": cmd_quality, "tier": cmd_tier,
         "redundancy": cmd_redundancy, "history": cmd_history,
         "feedback": cmd_feedback,

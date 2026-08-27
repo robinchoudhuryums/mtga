@@ -61,7 +61,14 @@ so it can never append a phantom printing that makes a real 4 read as 8.
 `import_collection.py` is the counterpart for a full-collection export, and the only tool
 here that can **lower** a count — which is why it is dry-run by default, refuses an export
 covering under half the library, and leaves cards absent from the export alone unless you
-pass `--zero-missing`. Columns are matched by alias against the header (so most trackers
+pass `--zero-missing`. A successful `--apply` also stamps **`collection-stamp.json`** —
+the date the counts were last *exact* (an apply that finds nothing to change still stamps:
+a verified match is a reconcile). Until that stamp exists, `deck.py check`, `deck.py
+wildcards` and `card.py` print a one-line ⓘ note that owned counts are **lower bounds**;
+once it ages past ~30 days they print its age instead. That note is the honest version of
+a mistake that actually happened: a card the owner held read `OWNED: 0` and was excluded
+from a recommendation on a wildcard cost nobody owed. Commit the stamp like any other
+data file. Columns are matched by alias against the header (so most trackers
 work unchanged) and it stops rather than guessing if it can't identify one; map them with
 `--map name=Card,qty=Have`. A **finish** column (foil/non-foil), when present, is part of
 the identity: foil and non-foil rows of one printing are separate Arena copies and their
@@ -215,6 +222,11 @@ the full set of cards you *could* play, use `pool.py` below.
 python3 scripts/card.py "morningtide"            # substring / fuzzy match
 python3 scripts/card.py "Ghalta, Primal Hunger"  # exact
 ```
+
+Every printout ends with a `━━ end · <name> ━━` bar. That is not decoration: piping this
+command through `head`/`sed` silently re-creates the partial-text read it exists to
+prevent — and it has happened, from the inside, during grading. No closing bar means you
+did not see the whole card.
 
 Prints one card's **complete, untruncated oracle text** alongside its mana cost,
 **format legality** (from the pool's `Legalities` column), owned quantity,
@@ -573,6 +585,13 @@ someone happened to re-raise, carries expired reasoning forward on everything el
 which is how four genuinely good cards stayed excluded for reasons that had stopped
 being true. Re-run it after **any** change of plan, not once.
 
+It prints each candidate's **full oracle text by default** (`--no-text` suppresses it,
+`--full` remains as a no-op). The text was implemented from the start — behind an opt-in
+flag that no skill and no session ever passed, so the highest-volume verdict surface
+handed out KEY/tangential labels bare, and five cards in one session were mis-graded from
+exactly those labels. Evidence on a verdict surface is opt-*out* now, never opt-in: a
+label is how a card gets mis-graded; the text is how it gets read.
+
 It also answers a question nothing else asked: is this candidate a **`★ STRICT
 UPGRADE`** of a card already in the 60? Prayer of Binding is Liminal Hold plus Flash —
 identical cost, identical text — and Liminal Hold was in the deck while Prayer of
@@ -607,6 +626,14 @@ ambiguous header *before* writing — so a mistyped section aborts the swap rath
 leaving a misfiled line with an error printed after the fact. Ambiguity refuses rather
 than guessing, because filing a card under a header you did not choose is the same lie
 the warning is about.
+
+**`deck.py move <id> "<card>" --section "<header substring>"`** is the standalone form,
+for a misfiled section you only notice *after* a swap has landed. Same verbatim
+relocation, same refuse-ambiguous-before-writing, dry-run until `--apply` — and it writes
+**no `recommendations.csv` row**, because a relocation is not a decision. Before it
+existed the only repair was a swap-out/swap-in pair, which recorded both halves to the
+ledger as if cutting the card you had just added were a real call; four such rows had to
+be pruned. Never fix a section with a swap pair again.
 
 `verify` reconciles a decklist you've edited in Arena against the repo: pipe or pass
 its **Arena export** (`<qty> <Name> (SET) <#>`) and it reports **identical** or a
@@ -744,9 +771,19 @@ similarity and card overlap are different questions, and some overlap between de
 expected. `deck.py cuts` prints which axis the deck is short on, so a "this removal is
 redundant" note is read in context rather than trimming cheap cards from a deck that is
 already too slow, and flags `⌁ scales w/ <axis>` for a card whose value is a count in the
-deck rather than in its own text. And `deck.py consistency` no longer prescribes a land
+deck rather than in its own text. `deck.py cuts` also flags **`✚ NEWCOMER`** on any card
+added to that deck by a swap in the last 14 days: right after a tune, the freshly added
+structural cards (protection, removal, engines) dominate the weakest-fit list because
+their *tag* profiles are thin by nature — one session ranked a card as the #1 cut minutes
+after adding it. The annotation is display-only; the ranking never reads the ledger. And
+`deck.py consistency` no longer prescribes a land
 count when moving that way makes things worse — on a low curve both directions used to
 trip, so it now says the keepable threshold is unreachable and points at cast-on-curve.
+It also prints a **tapland line** — how many nonbasics enter tapped, unconditional vs
+conditional — because every probability it computes prices color *access*, and a land
+pass once raised every castability figure while quietly taking the deck to 7 unconditional
+taplands. The tempo cost is invisible to the model; the line says so instead of implying
+the manabase got strictly better.
 
 **`deck.py targets <id>`** answers a question every other model here is structurally
 blind to: a card whose text names a RESOURCE — "return target creature card with mana

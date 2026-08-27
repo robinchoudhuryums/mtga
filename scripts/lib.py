@@ -641,3 +641,54 @@ def card_distinctiveness(tags, text=""):
 def eprint(*args, **kwargs):
     """Print to stderr (keeps machine-readable output clean on stdout)."""
     print(*args, file=sys.stderr, **kwargs)
+
+
+# ── Collection freshness (G-10's premise, made visible) ──────────────────────────────
+# `import_collection.py` is the ONLY writer that sets owned counts EXACTLY (including
+# down); everything else is a lower bound by construction. That fact lived only in
+# prose, so every craft-cost surface quoted `Quantity Owned` as if it were current —
+# and in one 2026-08-26 session a card the user owned read OWNED: 0 and was excluded
+# from a recommendation on a wildcard cost they did not owe, while a deck's craft list
+# read 19 missing against a real 4. The stamp records the one fact the CSVs cannot:
+# WHEN the counts were last exact. A sidecar is justified here for the same reason the
+# match watermark rejected one is inverted — matches.csv already stored its dates; the
+# library stores no reconcile date anywhere, and mtime is not one (F-04: backups copy
+# the source's mtime; git checkouts rewrite it).
+COLLECTION_STAMP = os.path.join(REPO_ROOT, "collection-stamp.json")
+
+
+def write_collection_stamp(rows, tool="import_collection", path=None):
+    """Record an EXACT reconcile. Called only by writers whose counts are
+    authoritative — a deck-dump import or a craft reconcile is a lower bound and must
+    NOT advance this (the watermark's hand-row rule, one subsystem over)."""
+    import datetime as _dt
+    import json as _json
+    with open(path or COLLECTION_STAMP, "w", encoding="utf-8") as fh:
+        _json.dump({"reconciled": _dt.date.today().isoformat(),
+                    "rows": int(rows), "tool": tool}, fh, indent=1)
+        fh.write("\n")
+
+
+def collection_stamp_note(max_age_days=30, path=None):
+    """One-line ⓘ note when owned counts are not trustworthy, else None.
+
+    Three states: no stamp (never exactly reconciled — the current repo's real state),
+    a stamp older than `max_age_days`, or fresh (None). Report-only; callers print it
+    beside a craft cost or an OWNED figure, never gate on it."""
+    import datetime as _dt
+    import json as _json
+    p = path or COLLECTION_STAMP
+    try:
+        with open(p, encoding="utf-8") as fh:
+            stamp = _json.load(fh)
+        when = _dt.date.fromisoformat(str(stamp.get("reconciled", "")))
+    except (OSError, ValueError):
+        return ("ⓘ owned counts are LOWER BOUNDS — the collection has never been "
+                "exactly reconciled (run import_collection.py with a tracker export; "
+                "deck-dump imports only ever raise counts, G-10)")
+    age = (_dt.date.today() - when).days
+    if age > max_age_days:
+        return (f"ⓘ owned counts last exactly reconciled {age} days ago "
+                f"({when.isoformat()}) — consider a fresh import_collection.py run "
+                f"before spending wildcards on them")
+    return None

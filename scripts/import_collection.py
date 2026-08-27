@@ -59,7 +59,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from lib import (BASICS as lib_BASICS, DEFAULT_CSV, REPO_ROOT, load_rows, write_rows,  # noqa: E402
-                 atomic_write, eprint)
+                 atomic_write, eprint, write_collection_stamp)
 
 MANA_CSV = os.path.join(REPO_ROOT, "card-mana.csv")
 MANA_HEADER = ["Card Name", "Mana Cost", "Mana Value", "Keywords"]
@@ -487,6 +487,12 @@ def main():
         return 0
     if not changed:
         print("\nNothing to write — the library already matches the export.")
+        # A no-op apply still PROVED the counts exact today — that is a reconcile,
+        # so the freshness stamp advances (else a clean collection reads as stale).
+        try:
+            write_collection_stamp(len(rows))
+        except OSError as e:
+            eprint(f"  (could not write collection-stamp.json: {e})")
         return 0
 
     for name, setc, coll, qty in result["added"]:
@@ -498,6 +504,12 @@ def main():
     # out of step with it (the ordering app.py's add()/remove() use for the same reason).
     mana_added = _ensure_mana_rows([n for n, _s, _c, _q in result["added"]])
     print(f"\nApplied to {args.library} (with a .bak).")
+    # This is the one EXACT reconcile in the toolchain, so it (alone) advances the
+    # collection-freshness stamp the craft-cost surfaces read (lib.collection_stamp_note).
+    try:
+        write_collection_stamp(len(rows))
+    except OSError as e:
+        eprint(f"  (could not write collection-stamp.json: {e})")
     if mana_added:
         print(f"Added {len(mana_added)} blank card-mana.csv row(s) to keep INV-02.")
     print("Next — new cards need their derived data rebuilt (INV-02 stays red until "

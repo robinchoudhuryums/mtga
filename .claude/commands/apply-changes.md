@@ -43,6 +43,14 @@ For each `−cut / +add`:
    moves the line verbatim and refuses an absent or ambiguous header before
    writing anything.
 
+   If you only notice the misfiled section AFTER the swap landed, use
+   **`python3 scripts/deck.py move <id> "<card>" --section "<header substring>"
+   --apply`** — the same verbatim relocation as a standalone command. Never fix
+   it with a swap-out/swap-in pair: that writes the pair to recommendations.csv
+   as if cutting the card you just added were a decision (four such rows had to
+   be pruned from the ledger on 2026-08-27). `move` writes no ledger row,
+   because a relocation is not a decision (G-56).
+
    It also appends a row to `recommendations.csv` scoring the recommenders against
    this decision — where `cuts` ranked the card you cut, and whether `suggest`
    surfaced the card you added. **Report the line it prints** when the models

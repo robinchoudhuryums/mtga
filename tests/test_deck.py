@@ -3438,6 +3438,35 @@ class TestPrintingOfDFC:
         out = deck._cards_after_swap([(1, "Cut Me", "AAA", "1")], "Cut Me", disp, (setc, cn))
         assert out == [(1, "Ojer Axonil, Deepest Might // Temple of Power", setc, cn)]
 
+    def test_an_OWNED_front_name_row_does_not_win_the_display(self, tmp_path, monkeypatch):
+        """The regression this class exists for, made deterministic.
+
+        `reconcile_crafts.py` files a crafted DFC under its FRONT name BY DESIGN
+        (G-10/G-63). The owned-printing branch used to `return (disp, ...)` straight
+        from that row, so the day you crafted a DFC this function silently began
+        emitting the front-face shorthand — the exact thing the docstring promises it
+        prevents. It really happened: a 2026-08-27 ingest of Ojer Axonil turned the
+        sibling test above red.
+
+        The sibling only caught it because that ingest happened to land. Pin the
+        property against a CONSTRUCTED world so it cannot pass vacuously again if the
+        live CSVs change: an owned library row under the bare front name, a pool row
+        carrying the canonical `Front // Back`, and the printing must come from the
+        OWNED row while the display comes from the canonical one."""
+        lib_csv, pool_csv = tmp_path / "lib.csv", tmp_path / "pool.csv"
+        lib_csv.write_text(
+            "Card Name,Set Code,Collector #,Quantity Owned\n"
+            "Frontface Only,OWN,11,2\n", encoding="utf-8")
+        pool_csv.write_text(
+            "Card Name,Set Code,Collector #\n"
+            "Frontface Only // Backface Half,POOL,99\n", encoding="utf-8")
+        monkeypatch.setattr(deck, "DEFAULT_CSV", str(lib_csv))
+        monkeypatch.setattr(deck, "POOL_CSV", str(pool_csv))
+
+        disp, setc, cn = deck._printing_of("Frontface Only")
+        assert disp == "Frontface Only // Backface Half", "display must be canonical"
+        assert (setc, cn) == ("OWN", "11"), "printing must come from the OWNED row"
+
 
 class TestSwapApplyWritePath:
     """`swap --apply` is the sanctioned way to edit a deck, and it had NO test.
@@ -4789,3 +4818,133 @@ class TestTunePlanCutSelection:
         pool = [self._cut("Draw Two", ca=True)]
         pairs = deck.pair_adds_with_cuts([self.ADD_INT], pool)
         assert pairs[0][1][1] == "Draw Two"
+
+class TestCmdMove:
+    """`move` is the standalone form of `swap --section` (G-77): verbatim relocation,
+    dry-run default, and — the property that earned the command — NO recommendations
+    row, because relocating a line is not a decision (G-56). Before it existed, fixing
+    a misfiled section took a swap-out/swap-in pair that wrote both halves to the
+    ledger; four such rows were pruned on 2026-08-27."""
+
+    BODY = ("#: name: Move Fixture\n#: format: Standard\n#: colors: R\n"
+            "# Ramp\n1 Sunset Strikemaster (TDM) 126\n\n"
+            "# Top end\n1 Lathliss, Dragon Queen (FDN) 627\n")
+
+    def _deck(self, tmp_path, monkeypatch):
+        d = tmp_path / "decks" / "91-move-fixture"
+        d.mkdir(parents=True)
+        (d / "deck.txt").write_text(self.BODY, encoding="utf-8")
+        monkeypatch.setattr(deck, "DECKS_DIR", str(tmp_path / "decks"))
+        return d / "deck.txt"
+
+    def _args(self, **kw):
+        base = {"id": "91", "card": "Sunset Strikemaster",
+                "section": "Top end", "apply": False}
+        base.update(kw)
+        return type("A", (), base)()
+
+    def test_dry_run_writes_nothing(self, tmp_path, monkeypatch, capsys):
+        path = self._deck(tmp_path, monkeypatch)
+        assert deck.cmd_move(self._args()) == 0
+        assert "dry run" in capsys.readouterr().out
+        assert path.read_text(encoding="utf-8") == self.BODY
+
+    def test_apply_moves_the_line_verbatim_with_a_bak(self, tmp_path, monkeypatch):
+        path = self._deck(tmp_path, monkeypatch)
+        assert deck.cmd_move(self._args(apply=True)) == 0
+        body = path.read_text(encoding="utf-8")
+        assert body.index("# Top end") < body.index("1 Sunset Strikemaster (TDM) 126")
+        assert "1 Sunset Strikemaster (TDM) 126" in body     # printing fields untouched
+        assert list(path.parent.glob("*.bak"))
+
+    def test_no_recommendations_row_is_written(self, tmp_path, monkeypatch):
+        """The load-bearing difference from the swap path."""
+        self._deck(tmp_path, monkeypatch)
+        recs = tmp_path / "recs.csv"
+        monkeypatch.setattr(deck, "RECS_CSV", str(recs))
+        assert deck.cmd_move(self._args(apply=True)) == 0
+        assert not recs.exists()
+
+    def test_an_ambiguous_header_refuses_before_writing(self, tmp_path, monkeypatch):
+        path = self._deck(tmp_path, monkeypatch)
+        assert deck.cmd_move(self._args(section="p", apply=True)) == 1   # matches both
+        assert path.read_text(encoding="utf-8") == self.BODY
+
+
+class TestRecentLedgerAdds:
+    """Display-only newcomer detection for `cuts` — a structural card added by a swap
+    has a thin tag profile BY NATURE, so it tops the weakest-fit list the moment it
+    lands (Delney fit 3; Dracogenesis ranked the #1 cut minutes after being added)."""
+
+    def _ledger(self, tmp_path, rows):
+        import csv as _csv
+        p = tmp_path / "recs.csv"
+        with open(p, "w", newline="", encoding="utf-8") as fh:
+            w = _csv.DictWriter(fh, fieldnames=deck.RECS_HEADER)
+            w.writeheader()
+            for r in rows:
+                w.writerow({**{c: "" for c in deck.RECS_HEADER}, **r})
+        return str(p)
+
+    def test_a_recent_add_for_the_deck_is_flagged(self, tmp_path):
+        import datetime as dt
+        path = self._ledger(tmp_path, [
+            {"Date": dt.date.today().isoformat(), "Deck": "49", "Add": "Dracogenesis"}])
+        assert deck._ms_key("Dracogenesis") in deck.recent_ledger_adds("49", path=path)
+
+    def test_other_decks_and_old_rows_are_not(self, tmp_path):
+        import datetime as dt
+        old = (dt.date.today() - dt.timedelta(days=30)).isoformat()
+        path = self._ledger(tmp_path, [
+            {"Date": dt.date.today().isoformat(), "Deck": "31", "Add": "Ahriman"},
+            {"Date": old, "Deck": "49", "Add": "Smaug the Magnificent"}])
+        assert deck.recent_ledger_adds("49", path=path) == set()
+
+    def test_absent_ledger_is_empty_not_an_error(self, tmp_path):
+        assert deck.recent_ledger_adds("49", path=str(tmp_path / "none.csv")) == set()
+
+    def test_cmd_cuts_ASKS_and_annotates_the_newcomer(self, tmp_path, monkeypatch, capsys):
+        """G-40 is the recurring failure shape here — a correct primitive nothing
+        calls. Drive the CALLER: a ledger row added today must surface as the
+        ✚ NEWCOMER annotation in the printed cut table."""
+        import datetime as dt
+        path = self._ledger(tmp_path, [
+            {"Date": dt.date.today().isoformat(), "Deck": "43",
+             "Add": "Bilbo, Luckwearer"}])
+        monkeypatch.setattr(deck, "RECS_CSV", path)
+        deck.cmd_cuts(type("A", (), {"id": "43", "limit": 0})())
+        out = capsys.readouterr().out
+        line = next(ln for ln in out.splitlines() if ln.strip().startswith("Bilbo"))
+        assert "✚ NEWCOMER" in line
+
+
+class TestTaplandProfile:
+    """Report-only tempo context for `consistency`, which prices color ACCESS and is
+    blind to the turn a tapland costs (the 68b land pass raised every castability
+    figure while adding taplands, and the model was silent)."""
+
+    DATA = {
+        "plain dual": {"type": "Land", "text": "This land enters tapped.\n{T}: Add {G} or {W}."},
+        "cond dual": {"type": "Land", "text": "This land enters tapped unless a player "
+                                              "has 13 or less life.\n{T}: Add {G} or {W}."},
+        "untapped dual": {"type": "Land", "text": "{T}: Add {G} or {W}."},
+        "old wording": {"type": "Land", "text": "This land enters the battlefield tapped."},
+        "backface land": {"type": "Creature — God // Land",
+                          "text": "Trample // {T}: Add {R}."},
+        "spell": {"type": "Instant", "text": "This land enters tapped."},
+    }
+
+    def _run(self, names):
+        cards = [(1, n, "AAA", "1") for n in names]
+        return deck.tapland_profile(cards, self.DATA)
+
+    def test_unconditional_conditional_and_untapped_split(self):
+        u, c, n = self._run(["plain dual", "cond dual", "untapped dual", "old wording"])
+        assert [x for _, x in u] == ["old wording", "plain dual"]
+        assert [x for _, x in c] == ["cond dual"]
+        assert n == 4
+
+    def test_basics_backfaces_and_nonlands_are_excluded(self):
+        u, c, n = self._run(["Forest", "backface land", "spell"])
+        assert (u, c, n) == ([], [], 0)
+

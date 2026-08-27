@@ -20,6 +20,7 @@ import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import lib as _libmod  # noqa: E402
 from lib import (REPO_ROOT, front_face_cost, mana_value, owned_qty,  # noqa: E402
                  alias_front)
 
@@ -306,6 +307,15 @@ def main():
 
     decks = _decks_using(name)
     print(f"\n  in decks: {', '.join(decks) if decks else '(none)'}")
+    note = _libmod.collection_stamp_note()
+    if note:
+        print(f"  {note}")
+    # End marker, ALWAYS last. Truncating this output re-creates the partial-text read
+    # the whole command exists to prevent (G-01) — and it happened from the inside: a
+    # 2026-08 session piped card.py through `sed -n '1,14p'` while grading, silently
+    # dropping the oracle text. An absent closing bar is the visible tell that you did
+    # not see the whole card.
+    print(f"━━ end · {name} ━━")
     return 0
 
 

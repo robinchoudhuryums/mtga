@@ -1,5 +1,6 @@
 #: name: Exponential Drive
 #: format: Standard
+#: arena: 40a ParadoXponential, 67b936ca-ebcb-4372-b35c-ce369119f41d
 #: colors: GU
 #: archetype: Simic (G/U) landfall counters-MIDRANGE — the TALL variant of 40 Paradox
 #: archetype: Drive. Shares 40's Simic ramp/lands shell, but replaces the draw-go

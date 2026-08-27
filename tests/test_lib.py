@@ -489,3 +489,33 @@ class TestPoolAbilityModelCacheIsKeyed:
     def test_cache_clear_is_exposed(self):
         lib.pool_ability_model.cache_clear()
         assert lib.pool_ability_model()[2] > 0
+
+class TestCollectionStamp:
+    """The freshness stamp behind `lib.collection_stamp_note` — the fact the CSVs
+    cannot hold (WHEN counts were last exact; mtime lies per F-04). Three states:
+    never reconciled, stale, fresh."""
+
+    def test_absent_stamp_says_never_reconciled(self, tmp_path):
+        note = lib.collection_stamp_note(path=str(tmp_path / "none.json"))
+        assert note and "never been exactly reconciled" in note
+
+    def test_fresh_stamp_is_silent(self, tmp_path):
+        p = str(tmp_path / "s.json")
+        lib.write_collection_stamp(2500, path=p)
+        assert lib.collection_stamp_note(path=p) is None
+
+    def test_old_stamp_names_its_age(self, tmp_path):
+        import datetime as dt, json
+        p = tmp_path / "s.json"
+        old = (dt.date.today() - dt.timedelta(days=45)).isoformat()
+        p.write_text(json.dumps({"reconciled": old, "rows": 1, "tool": "t"}),
+                     encoding="utf-8")
+        note = lib.collection_stamp_note(path=str(p))
+        assert note and "45 days ago" in note
+
+    def test_a_corrupt_stamp_degrades_to_never(self, tmp_path):
+        p = tmp_path / "s.json"
+        p.write_text("{not json", encoding="utf-8")
+        note = lib.collection_stamp_note(path=str(p))
+        assert note and "never been exactly reconciled" in note
+

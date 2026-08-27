@@ -5314,3 +5314,28 @@ Drover Grizzly,Creature — Bear Mount,"Whenever this creature attacks while sad
 Saddle 1 (Tap any number of other creatures you control with total power 1 or more: This Mount becomes saddled until end of turn. Saddle only as a sorcery.)",G,Bear; Mount; saddle; go-wide; combat; trample; evasion,OTJ,161,1
 Hellish Sideswipe,Sorcery,"As an additional cost to cast this spell, sacrifice an artifact or creature.
 Destroy target creature or Vehicle. If the sacrificed permanent was a Vehicle, draw a card.",B,Vehicle; card draw; sacrifice; removal,DFT,90,1
+Dragonlord's Servant,Creature — Goblin Shaman,Dragon spells you cast cost {1} less to cast.,R,Goblin; Shaman; cost-reduction,FDN,536,2
+Rapacious Dragon,Creature — Dragon,"Flying
+When this creature enters, create two Treasure tokens. (They're artifacts with ""{T}, Sacrifice this token: Add one mana of any color."")",R,Dragon; sacrifice; tokens; etb; treasure; flying; evasion,FDN,544,1
+Terror of the Peaks,Creature — Dragon,"Flying
+Spells your opponents cast that target this creature cost an additional 3 life to cast.
+Whenever another creature you control enters, this creature deals damage equal to that creature's power to any target.",R,Dragon; flying; evasion,OTJ,149,1
+Smaug the Magnificent,Legendary Creature — Dragon,"Flying, haste
+Whenever Smaug attacks, he deals damage equal to the number of Treasures you control to any target.
+At the beginning of your upkeep, create a Treasure token.",R,Dragon; Treasure; tokens; treasure; flying; evasion; haste; aggro,HOB,110,1
+"Ojer Axonil, Deepest Might",Legendary Creature — God // Land,"Trample
+If a red source you control would deal an amount of noncombat damage less than Ojer Axonil's power to an opponent, that source deals damage equal to Ojer Axonil's power instead.
+When Ojer Axonil dies, return it to the battlefield tapped and transformed under its owner's control. // (Transforms from Ojer Axonil, Deepest Might.)
+{T}: Add {R}.
+{2}{R}, {T}: Transform this land. Activate only if red sources you controlled dealt 4 or more noncombat damage this turn and only as a sorcery.",R,God; mana; noncombat damage; transform; trample; evasion,LCI,158,1
+Collective Inferno,Enchantment,"Convoke (Your creatures can help cast this spell. Each creature you tap while casting this spell pays for {1} or one mana of that creature's color.)
+As this enchantment enters, choose a creature type.
+Double all damage that sources you control of the chosen type would deal.",R,double; convoke; go-wide; ramp,ECL,132,1
+Stormscale Scion,Creature — Dragon,"Flying
+Other Dragons you control get +1/+1.
+Storm (When you cast this spell, copy it for each spell cast before it this turn. Copies become tokens.)",R,Dragon; pump; flying; evasion; storm; spellslinger,TDM,123,1
+Dragonmaster Outcast,Creature — Human Shaman,"At the beginning of your upkeep, if you control six or more lands, create a 5/5 red Dragon creature token with flying.",R,Human; Shaman; tokens,FDN,622,1
+Desert Were-Worm,Creature — Dragon Wurm,"This creature gets +2/+0 for each Mountain you control.
+Whenever you attack with creatures with total power 12 or greater for the first time each turn, untap all attacking creatures. After this phase, there is an additional combat phase.",R,Dragon; Wurm; pump,HOB,92,1
+Flick a Coin,Instant,"Flick a Coin deals 1 damage to any target. You create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")
+Draw a card.",R,card draw; sacrifice; tokens; burn; treasure,WOE,128,1

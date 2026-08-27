@@ -183,6 +183,9 @@ _ARGS = {
     "suggest-homes": ["Negate"],
     "resolve": ["Negate"],
     "screen": [_DECK, "Negate"],
+    # dry run against a card + header that exist in _DECK; `move` is the standalone
+    # G-77 relocation and must never write a recommendations row
+    "move": [_DECK, "Bilbo, Luckwearer", "--section", "Removal"],
 }
 
 
@@ -197,6 +200,38 @@ def command_runs(subcommands):
     for c in (c for c in subcommands if _ARGS.get(c) is _STDIN):
         out[c] = _run([os.path.join("scripts", "deck.py"), c], stdin=export)
     return out
+
+
+class TestVerdictSurfacesPrintEvidence:
+    """G-52 wiring, pinned at the CLI because both regressions were CALLER-shaped:
+    `screen`'s oracle text sat behind an opt-in `--full` no skill ever passed (five
+    68b cards mis-graded from bare labels in one session), and `card.py`'s complete
+    output was truncated by the grader's own `sed` pipe — invisible, because nothing
+    marked the end."""
+
+    def test_screen_prints_oracle_text_by_default(self, command_runs):
+        rc, out = command_runs["screen"]
+        assert rc == 0
+        assert "Counter target noncreature spell" in out, \
+            "screen must print the candidate's text"
+
+    def test_screen_no_text_suppresses_it(self):
+        rc, out = _run([os.path.join("scripts", "deck.py"), "screen", _DECK,
+                        "Negate", "--no-text"])
+        assert rc == 0 and "Counter target noncreature spell" not in out
+
+    def test_card_py_ends_with_the_end_marker(self):
+        rc, out = _run([os.path.join("scripts", "card.py"), "Negate"])
+        assert rc == 0
+        last = out.rstrip().splitlines()[-1]
+        assert last.startswith("━━ end · "), (
+            "the closing bar is the truncation tell (G-01); it must be the LAST line")
+
+    def test_move_writes_no_recommendations_row(self, command_runs):
+        """`move` in _ARGS is a dry run; the write-path no-ledger property is pinned
+        in test_deck.py::TestCmdMove — here just prove the dry run says so."""
+        rc, out = command_runs["move"]
+        assert rc == 0 and "dry run" in out
 
 
 class TestSubcommandsActuallyRun:
