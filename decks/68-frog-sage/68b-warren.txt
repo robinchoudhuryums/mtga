@@ -183,16 +183,31 @@
 #~   is 3 bodies). Five mana on a curve that is now 2.83 is the objection.
 #~ +Rinoa Heartilly | OWNED (U) — WEAKEST of the ten. Five mana for a 1/1 Dog token and a
 #~   single-target attack pump; Sally Pride costs the same and hits the whole board.
-#~ +Felidar Retreat | CRAFT (R wildcard) — the craft pick if you spend one here. Landfall
-#~   on 25 LANDS: a 2/2 Cat or a counter on each creature + vigilance, nearly every turn.
-#~   ROTATION is the tiebreak — FDN, so legal to 2029, where Thornvault Forager (the rare
-#~   this pass freed) was BLB and gone in 2027. Also the most REUSABLE card in the craft
-#~   shortlist: `suggest-homes` rates it KEY in 17 decks and it is already maindecked in 36.
-#~ +Moogles' Valor | CRAFT (R wildcard) — instant, a lifelink body per creature THEN team
-#~   indestructible. The complement to Crystal Barricade, not a duplicate: the Barricade
-#~   blanks DAMAGE permanently, this one answers a DESTROY wrath for a turn. `suggest-homes`
-#~   flags it top-heavy for this curve (MV 5) in five of its twelve KEY decks, including
-#~   this one.
+#~ note: applied 2026-08-26 — Felidar Retreat (-Head of the Homestead) and Moogles' Valor
+#~   (-Snakeskin Veil), the two R-wildcard crafts. Retreat replaces Homestead's job (make
+#~   bodies) and does it every land drop on 25 LANDS instead of once, for one mana less —
+#~   the only add in the whole pass that LOWERED the curve. Its counter+vigilance mode is a
+#~   second team pump to choose when ahead. Rotation was the tiebreak against Brigid: FDN,
+#~   legal to 2029, where Thornvault Forager (the rare this pass freed) was BLB and gone in
+#~   2027; it is also the most reusable, KEY in 17 decks. Moogles' Valor is the wider
+#~   Snakeskin Veil — Veil protected ONE creature for a turn, Valor makes a lifelink body
+#~   per creature then makes the board indestructible at instant speed. Complement to
+#~   Crystal Barricade, not a duplicate: Barricade blanks DAMAGE permanently, Valor answers
+#~   a DESTROY wrath once. `suggest-homes` does flag it top-heavy for this curve (MV 5).
+#~ +Full Steam Ahead | OWNED (U, {3}{G}{G}) — "Until end of turn, each creature you control
+#~   gets +2/+2 and gains trample and 'This creature can't be blocked by more than one
+#~   creature.'" A one-shot finisher that is Michelangelo's clause AND an Overrun in one
+#~   card. TRAMPLE IS THE MISSING COMPLEMENT HERE and the reason to hold this slot: the
+#~   deck already has two anti-gang-block effects (Michelangelo on countered creatures,
+#~   Flopsie on power 4+), and those stop a big attacker being SWARMED without stopping a
+#~   single 1/1 chump. It compounds hardest with Porcelain Gallery — eight creatures each
+#~   8/8 WITH trample is lethal through chumps in a way eight 8/8s without it is not.
+#~   CHEAPER PERMANENT ALTERNATIVES, all owned, if this slot earns a maindeck spot: Garruk's
+#~   Uprising ({2}{G}, unconditional team trample, and the draw clause is live off
+#~   Burrowguard Mentor entering big) and Training Regimen ({3}{G}, trample for
+#~   counter-bearing creatures AND a counter each combat, so it self-fuels its own
+#~   condition — and being an ENCHANTMENT it dodges removal and the Mistbreath bounce).
+#~   Prefer Garruk's Uprising on cost while early drops sit at 15.
 #~ +Brigid, Clachan's Heart // Brigid, Doun's Mind | CRAFT (R wildcard) — DOWNGRADED by
 #~   this same pass, and worth recording why: its back face taps for X mana of {G} or {W}
 #~   where X is your other creatures, which was the answer to the colour problem when the
