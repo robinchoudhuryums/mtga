@@ -15,8 +15,10 @@
 #: tier: that is the honest residual. Card advantage was 2 and is 3, and more to the point
 #: tier: is no longer entirely engine-shaped: it was Enduring Innocence and Exemplar of
 #: tier: Light, both creatures that must SURVIVE to draw, and The Arkenstone is an ARTIFACT
-#: tier: that draws every end step. Measured now: avg MV 2.83 (up from 2.66 — the cost of
-#: tier: the pass, and the cheaper of the two packages considered), early drops 16,
+#: tier: that draws every end step. Measured now: avg MV 2.91 (up from 2.66 — the cost of
+#: tier: the pass, paid deliberately and in three steps: 2.77 for the seven owned swaps,
+#: tier: 2.83 for Michelangelo, 2.91 for the two crafts. Early drops 18 -> 15 over the same
+#: tier: span, which is the figure to watch first if the deck plays slow),
 #: tier: protection 4, 25 lands with W17/G17 after the same day's land pass (three owned
 #: tier: GW duals in for 2 Forest + 1 Plains — it moved EVERY castability figure and moved
 #: tier: keepable/screw/flood by NOTHING, 86.0/12.2/1.7 before and after: Squirrel Girl
@@ -80,7 +82,7 @@
 1 Byrke, Long Ear of the Law (BLB) 380
 1 Burrowguard Mentor (BLB) 206
 1 Warren Warleader (BLB) 38
-1 Head of the Homestead (BLB) 216
+1 Felidar Retreat (FDN) 574
 1 Hop to It (SOA) 6
 1 The Unbeatable Squirrel Girl (MSH) 193
 1 Honored Dreyleader (BLB) 178
@@ -103,7 +105,7 @@
 1 Season of the Burrow (BLB) 29
 1 Polliwallop (BLB) 189
 1 Spectacular Tactics (SPM) 15
-1 Snakeskin Veil (TDM) 159
+1 Moogles' Valor (FIN) 27
 1 Crystal Barricade (FDN) 7
 1 Ouroboroid (EOE) 201
 1 Oakhollow Village (BLB) 258
