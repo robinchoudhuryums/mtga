@@ -259,6 +259,9 @@ def _pattern_groups():
         out.append((f"tag_synergies.{name}", getattr(tag_synergies, name), "norm"))
     for name in ("_POWER_SCOPE_MINE_RE", "_POWER_SCOPE_TOTAL_RE"):
         out.append((f"deck.{name}", getattr(deck, name), "window"))
+    # tapland_profile (G-25/G-60-style report-only tempo context in `consistency`)
+    for name in ("_TAPLAND_RE", "_TAPLAND_COND_RE"):
+        out.append((f"deck.{name}", getattr(deck, name), "norm"))
     # wishlist's oracle-text classifiers (BS-04): the flex-removal seed bonus and the
     # G-19 conditional-power (`pow~`) flag. If _FLEX_REMOVAL_RE goes dead, the seed
     # ranking's other terms keep check_rankings green, so this is the ONLY gate that

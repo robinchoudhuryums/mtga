@@ -220,7 +220,9 @@ directions.
   keys are LOWERCASED and the oracle field is `text`, not `Card Text`.** A sweep written
   as `load_card_data().get(name)["Card Text"]` matches nothing and returns a clean zero
   for every deck — which reads as a finding, not a bug. Cost a wrong "0 scry/surveil
-  sources" answer for three decks in one pass. [G-01]
+  sources" answer for three decks in one pass. **Piping `card.py` through `head`/`sed`
+  re-creates the partial read from the inside** — it happened while grading (2026-08);
+  the closing `━━ end · <name> ━━` bar is the tell that you saw the whole card. [G-01]
 - **A split / Room / Adventure card's stored cost covers BOTH halves — read the FRONT
   face.** Use `lib.front_face_cost()` / `lib.mana_value()`; `parse_pips` and `load_mana`
   already do. A **MODAL DFC** is stored the same way now — either face is castable from
@@ -842,9 +844,11 @@ directions.
   because `resolve --check` happened to be run after. **`swap --section "<header
   substring>"`** now moves the line VERBATIM as part of the same write, so the printing
   fields cannot be retyped; it refuses an absent or ambiguous header BEFORE writing, and
-  the warning now names it. **When a warning's only remedy is a manual edit of a file the
-  rules say never to edit manually, the tool owes you the mechanical form of that edit.**
-  [G-77]
+  the warning now names it. **`deck.py move <id> "<card>" --section` (2026-08-27) is the
+  standalone form** — relocating an ALREADY-written line used to take a swap-out/swap-in
+  pair, which polluted recommendations.csv with rows that were relocations, not decisions.
+  **When a warning's only remedy is a manual edit of a file the rules say never to edit
+  manually, the tool owes you the mechanical form of that edit.** [G-77]
 
 - **A SHARING CLAIM IS NOT A COMPARISON, and the citation audit suppressed it as one.**
   `_cites_as_history` treats any clause naming another deck as comparison context, which
@@ -1154,7 +1158,7 @@ earned it: [C-01]
 
 **Subsystems:**
 - Data: card-library.csv, card-pool.csv, card-mana.csv, card-wishlist.csv, matches.csv
-  (LIVE since 2026-08-10 — 66 matches, 63 attributed across 28 decks, pooled 33-33; the
+  (LIVE since 2026-08-10 — 72 matches, 69 attributed across 29 decks, pooled 37-35; the
   best per-deck row is n=8 against the 20-match floor, which is why `--report` also POOLS,
   and why the four HAND columns exist at all — G-74), recommendations.csv [C-02]
 - Outcomes: scripts/parse_matches.py, recommendations.csv + `deck.py feedback` — the only

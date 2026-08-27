@@ -6,6 +6,29 @@
 > For "which command answers X, and why do two of them disagree", read
 > **`docs/systems-map.md`** — that is now a live reference, not a cycle artifact.
 
+## Session — verdict surfaces + the tuning retrospective (2026-08-27)
+
+Gates green; **1519 tests** (+18). Block:
+`.cycle/blocks/2026-08-verdict-surfaces-broad-implement.md`.
+
+Seven findings from the deck-68b/49 tuning arc. The theme that ties them: **evidence on a
+verdict surface must be opt-OUT, never opt-in.** `screen`'s oracle text existed the whole
+time behind a `--full` flag nothing passed (G-40 shape on a G-52 surface) — now default-on.
+`card.py` gained a closing `━━ end` bar because the partial-text reads were coming from the
+INSIDE (the grader's own `sed` pipe). `deck.py move` is the standalone G-77 relocation and
+writes no ledger row; the four mechanical rows it should have prevented were pruned.
+`cuts` flags ✚ NEWCOMER on recent ledger adds (display-only — the scoring scan is
+untouched). A collection-freshness stamp makes G-10's premise visible: until
+import_collection runs, every craft surface says owned counts are lower bounds.
+
+Two findings closed as negative results, deliberately recorded: token engines are
+taxonomy-consistent zero-roles (token creation is a tag, not a role — measured against
+Lathliss/Sally Pride, who score for their triggers, not their tokens), and the five
+standard-but-not-historic pool rows are real Historic bans, verified against Scryfall live.
+
+**Where I left off:** all green. Open: the #3 model change (roles feeding cuts' fit term)
+awaits a K-14 diff; the operator seed of the freshness stamp awaits a tracker export.
+
 ## Session — `--sync-names` dry run + the skill-sweep follow-ons (2026-08-26)
 
 Gates green; **1500 tests** (+7). Block:
