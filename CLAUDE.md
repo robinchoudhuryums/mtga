@@ -1160,7 +1160,9 @@ earned it: [C-01]
 - Data: card-library.csv, card-pool.csv, card-mana.csv, card-wishlist.csv, matches.csv
   (LIVE since 2026-08-10 — 72 matches, 69 attributed across 29 decks, pooled 37-35; the
   best per-deck row is n=8 against the 20-match floor, which is why `--report` also POOLS,
-  and why the four HAND columns exist at all — G-74), recommendations.csv [C-02]
+  and why the four HAND columns exist at all — G-74), recommendations.csv,
+  collection-stamp.json (written only by `import_collection.py --apply` — the date owned
+  counts were last EXACT; absent until the first run, and the craft surfaces say so) [C-02]
 - Outcomes: scripts/parse_matches.py, recommendations.csv + `deck.py feedback` — the only
   subsystems that have seen a real game or a real decision [C-03]
 - Ingest & Enrich: scripts/import_arena.py, scripts/import_collection.py,
