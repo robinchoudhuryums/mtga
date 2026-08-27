@@ -6,6 +6,35 @@
 > For "which command answers X, and why do two of them disagree", read
 > **`docs/systems-map.md`** — that is now a live reference, not a cycle artifact.
 
+## Session — per-turn engines: the G-67 family the A–E block pointed at (2026-08-27, latest)
+
+Gates green; full suite passes (+4 fixtures). Block:
+`.cycle/blocks/2026-08-per-turn-engines-broad-implement.md`.
+
+The A–E refutation said the real path for the zero-role structural cards was G-67
+per-family classifier work with its own K-14 diff — this is that work. **Family A
+shipped:** every `Payoff / engine` pattern was `whenever`-shaped (K-14's exact failure
+one bucket over), so Ouroboroid's "at the beginning of combat on your turn, put X +1/+1
+counters on each creature" scored ZERO roles. One pattern added, scoped to YOUR phases,
+measured before shipping: +187 pool cards (14-card sample all genuine), 47 roster cards
+(19 previously zero-role), 60 of 114 decks' Payoff counts up — and interaction /
+card-advantage / tier floors moved 0 / 0 / 0; the only vector changes were 15 decks'
+"unclassified" lists shrinking. 21 role_baseline entries pruned; tag baseline (138)
+untouched. Fixtures from verbatim text incl. two negatives (Howling Mine symmetric,
+Urabrask opponent-scoped).
+
+**Family B (evasion grants, the Delney half) measured and DECLINED:** the 47 zero-role
+unblockable/menace roster cards are mostly native-evasion bodies; reach already counts
+them via _EVASION_TAGS, granted keywords feed fit since G-80, and Delney's own mis-rank
+was fixed by the G-40 multiplier. A new role bucket is a taxonomy change that
+double-counts reach — recorded under [G-67] next to the Equipment precedent.
+
+Decided AGAINST: widening the whenever catch-all's counter quantities in the same
+change (unmeasured; noted as follow-on). CLAUDE.md's G-67 bullet hit the 15-line cap
+twice while updating — evidence moved to gotchas.md, as designed.
+
+**Where I left off:** all green; work committed on `claude/peaceful-pascal-66lvxw`.
+
 ## Session — suggestions A–E: measure first, then decline or ship (2026-08-27, later)
 
 Gates green; **1523 tests** (+4). Block:

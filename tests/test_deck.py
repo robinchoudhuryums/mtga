@@ -221,6 +221,47 @@ class TestClassifyRoles:
             "Whenever this creature blocks or becomes blocked by a creature, this "
             "creature deals 1 damage to that creature.")
 
+    # ── Per-turn engine triggers (K-14's shape one bucket over, 2026-08-27). Every
+    # Payoff / engine pattern was `whenever`-shaped, so the SAME payoff on a
+    # beginning-of-phase clock scored ZERO roles — Ouroboroid ranked as a deck's
+    # weakest card while being its engine. A your-phase trigger is repeatable BY
+    # CONSTRUCTION. Fixtures are verbatim card text (G-67).
+
+    PER_TURN_ENGINES = [
+        # Ouroboroid — the motivating card ("put X +1/+1 counters" also exercises
+        # the non-"a" counter quantity the whenever catch-all still misses).
+        "At the beginning of combat on your turn, put X +1/+1 counters on each "
+        "creature you control, where X is this creature's power.",
+        # Dragonmaster Outcast — conditional upkeep token engine.
+        "At the beginning of your upkeep, if you control six or more lands, create "
+        "a 5/5 red Dragon creature token with flying.",
+        # Bitterbloom Bearer — an upkeep engine with a life cost is still an engine.
+        "Flash\nFlying\nAt the beginning of your upkeep, you lose 1 life and create "
+        "a 1/1 blue and black Faerie creature token with flying.",
+    ]
+
+    def test_per_turn_trigger_engine_is_payoff(self):
+        for text in self.PER_TURN_ENGINES:
+            assert "Payoff / engine" in deck.classify_roles(text), text
+
+    def test_symmetric_each_player_trigger_is_not_payoff(self):
+        # Howling Mine gifts every player the draw — a symmetric effect on a phase
+        # the scope alternation deliberately excludes.
+        assert "Payoff / engine" not in deck.classify_roles(
+            "At the beginning of each player's draw step, if this artifact is "
+            "untapped, that player draws an additional card.")
+
+    def test_opponent_scoped_trigger_is_not_payoff(self):
+        # Urabrask, Heretic Praetor: the "draw a card" sits in an OPPONENT-upkeep
+        # denial clause, and the your-upkeep clause's payoff is in a later sentence
+        # the [^.] window cannot cross. Neither half may count as an engine.
+        assert "Payoff / engine" not in deck.classify_roles(
+            "Haste\nAt the beginning of your upkeep, exile the top card of your "
+            "library. You may play it this turn.\nAt the beginning of each "
+            "opponent's upkeep, the next time they would draw a card this turn, "
+            "instead they exile the top card of their library and may play it "
+            "this turn.")
+
     # ── Coordinated qualifier LISTS before the permanent type (broad-scan BS6-10).
     # The main removal pattern allows at most two adjective words, so a three-or-four
     # word qualifier list matched nothing. Fixtures are verbatim card text (G-67).

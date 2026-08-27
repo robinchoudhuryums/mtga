@@ -1773,6 +1773,20 @@ _ROLE_PATTERNS = {
         r"whenever you cast",
         r"put a \+1/\+1 counter on .{0,60}?whenever",
         r"\bwhenever\b.{0,80}?(?:draw a card|put a \+1/\+1 counter|create|each opponent loses)",
+        # K-14's exact shape one bucket over: every pattern above is `whenever`-shaped,
+        # so the SAME payoff on a per-turn clock ("At the beginning of combat on your
+        # turn, put a +1/+1 counter on each creature you control" — Ouroboroid,
+        # Dragonmaster Outcast, Virtue of Loyalty) scored ZERO roles. A your-turn-only
+        # beginning-of-phase trigger is repeatable BY CONSTRUCTION — the same argument
+        # `whenever` and the activated-draw widening rested on. Scoped to YOUR phases
+        # (an opponent's-upkeep trigger is a different card), payoff list mirrors the
+        # catch-all above. Measured before shipping (2026-08-27): +187 pool cards,
+        # 47 roster cards (19 previously ZERO-role), 60 decks' Payoff counts up,
+        # interaction / card-advantage / tier floors moved: 0 / 0 / 0.
+        r"at the beginning of (?:combat on your turn|your upkeep|your end step|"
+        r"each of your turns)"
+        r"[^.]{0,60}?(?:put (?:a|an|x|\d+|two|three|one or more|that many) "
+        r"\+1/\+1 counters? on|create|draw a card|each opponent loses)",
     ],
     # Direct damage / life loss to a player — reach & finishers the fixed-number
     # removal pattern misses (Cat-Gator, drain effects).

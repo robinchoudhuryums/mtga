@@ -2750,6 +2750,41 @@ still-unclassified cards are Equipment (attach / equip / hone counters), a card 
 taxonomy has no bucket for. That is a TAXONOMY question, not a pattern question, and the
 two must not be confused: adding a bucket re-scores every deck that runs the type.
 
+### 2026-08-27: the per-turn engine family — K-14's shape, one bucket over
+
+The deck-49 and 68b tuning sessions each surfaced a card graded "no detected role" while
+being its deck's engine: **Ouroboroid** ("At the beginning of combat on your turn, put X
++1/+1 counters on each creature you control") and Dragonmaster Outcast (upkeep Dragon
+factory). Cause: every `Payoff / engine` pattern was **`whenever`-shaped**, so the same
+payoff on a per-turn clock scored zero — the literal K-14 failure (all Card-advantage
+patterns were trigger-shaped) recurring in the neighbouring bucket. The widening argument
+is also K-14's: a beginning-of-your-phase trigger is repeatable BY CONSTRUCTION.
+
+The pattern scopes to YOUR phases (`combat on your turn | your upkeep | your end step |
+each of your turns`) with the same payoff alternation as the whenever catch-all, plus the
+non-`a` counter quantities (`X`, `two`, `that many`) the catch-all still misses. Scoping
+is what keeps out the two measured negative classes: a symmetric each-player gift
+(Howling Mine) and an opponent-scoped denial clause (Urabrask, Heretic Praetor — whose
+"draw a card" sits inside an opponent-upkeep replacement).
+
+Measured before shipping, per this rule's own discipline: **+187 pool cards** (14-card
+random sample read end to end — all genuine engines, zero false positives), **47 roster
+cards** of which **19 were previously ZERO-role**, **60 of 114 decks' Payoff counts up**
+(deck 60: 0→2), and the axes that grade: **interaction 0 moved, card advantage 0 moved,
+tier floors 0 moved**. The only quality-vector changes were 15 decks' "unclassified"
+uncertainty lists shrinking — the confidence channel getting more honest, which is the
+change working as intended. 21 `role_baseline.txt` entries pruned (`--update-baseline`);
+the 138-entry tag-disagreement baseline was untouched.
+
+**Family B — evasion grants (the Delney half) — measured and DECLINED.** 47 zero-role
+roster cards mention unblockable/menace, but nearly all are native-evasion *bodies*, and
+evasion is already counted where it decides something: the quality vector's **reach** axis
+reads `_EVASION_TAGS`, and since G-80 a granted keyword lands in the tag model that feeds
+`cuts`/`suggest` fit. Delney's own mis-rank was fixed by the G-40 multiplier co-signal.
+A new "Evasion" role would be a TAXONOMY change (ROLE_ORDER + IMPACT_ROLES + every stats
+display) that double-counts reach and fixes no live mis-rank — the same
+taxonomy-vs-pattern line the 2026-08-19 pass drew for Equipment.
+
 ### Relationship to the neighbouring rules
 
 G-53 says a capability that works and is never reached is invisible to every correctness
