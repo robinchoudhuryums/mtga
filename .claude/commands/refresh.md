@@ -37,3 +37,11 @@ Notes:
   still run from cache.
 - End by reporting check_all's result. Suggest `/sync-docs` if the code/data
   changes affect the README or CLAUDE.md.
+- **Then commit what the rebuild rewrote.** Every derived file here is tracked, so a
+  refresh that stops at the report leaves the repo dirty and the next command inherits
+  it. Stage only the files that actually changed (`git status` — a reused pool per G-18
+  legitimately changes nothing) and follow the shared **verify + commit tail** in
+  `docs/verify-commit-tail.md` verbatim: `check_all` gates the commit, the CURRENT
+  session's `Co-Authored-By:` / `Claude-Session:` trailer ends the message, the model ID
+  never appears in it, and the push goes to the working branch. If nothing changed, say
+  that rather than committing an empty diff.

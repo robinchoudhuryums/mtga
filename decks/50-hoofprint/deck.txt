@@ -1,5 +1,6 @@
 #: name: Hoofprint
 #: format: Standard
+#: arena: 50 Hoofprint, a634cf3c-01e0-426e-b46a-38a89f15d7d0
 #: colors: G
 #: plan: midrange
 #: tier: B — PROVISIONAL, one band below the measurable floor, which reads A on interaction 6

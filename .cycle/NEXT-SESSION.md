@@ -19,6 +19,16 @@ commands disagree.
 
 ## 0-current. THE 2026-08-24 SESSION (READ THIS FIRST — supersedes §0-latest below)
 
+> **STATE STAMP, 2026-08-26.** The rules and reasoning in this section are all still
+> current; only its FIGURES had aged. Live gates: `check_all` all invariants hold with the
+> SAME one soft warning described just below; **1500 pytest passed / 0 skipped**. Three
+> cycles have run since this section was written — the granted-keyword tagger fix, the
+> match-ingest watermark, the skill-layer sweep and the `--sync-names` dry-run fix — each
+> with its own verbatim block in `.cycle/blocks/` (newest:
+> `2026-08-sync-names-dry-run-broad-implement.md`). Read those for what changed; read this
+> section for why the rules below exist. The figures in the paragraph that follows are the
+> 2026-08-24 snapshot and are kept as a dated record.
+
 Gates: `check_all` all invariants hold with **ONE soft warning** (see below — it is
 expected, not a regression); **1423 pytest passed / 1 skipped**. Merged as PR #150 and
 #151. §0-latest's "ZERO soft warnings / 1333 tests" is the 2026-08-19 state.
@@ -85,6 +95,18 @@ knows that *a handoff nobody is told to read is invisible*; the mirror is that *
 that IS read and is wrong is worse than one that is not read.** When work closes an item
 named in §0-current, close it HERE in the same commit. `docs/verify-commit-tail.md` is the
 shared tail every writing skill ends with, and it now says so.
+
+**That last sentence was itself the wrong-handoff shape, corrected 2026-08-26.** It was
+true of the DOCUMENT and false of the SKILLS: the tail said so, and only 5 of 12 skills
+cited it. `/ingest` and `/refresh` rewrite `card-library.csv` and every derived file and
+had no commit step at all, so neither ever reached step 4 — the step this very paragraph
+argues for. `/add-deck` carried its own one-line commit instruction. All three cite the
+tail now, and its header carries the enumerated list of writers plus the rule that a new
+writing skill must be added there AND cite the file from itself in the same change.
+Nothing enforces that mechanically: `check_commands.py` proves a command is REACHED, not
+that the skill reaching it is right. The lesson generalizes past this file — **a
+"standardized" ending is standard only over the callers that say they use it**, and
+"and any future data-editing skill" was doing no work at all.
 
 ### Deck work this session (all merged)
 

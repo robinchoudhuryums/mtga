@@ -929,7 +929,9 @@ class TestAdoptingArenaDeckNames:
         written, plan = pm.sync_deck_names(_setdeck(name="45 The Exiles", guid=self.GUID),
                                            apply=False, out=said.append)
         assert written == 0 and len(plan) == 1
-        assert "--sync-names" in "\n".join(said)
+        # The hint names the FULL invocation, since this same line prints both when no
+        # flag was given (this case) and when `--sync-names` was given without --apply.
+        assert "--sync-names --apply" in "\n".join(said)
         assert "#: name: Exile Dividend" in (d / "45-exile" / "deck.txt").read_text(
             encoding="utf-8")
 
@@ -1037,6 +1039,84 @@ class TestSourcelessNameReconcile:
         })
         assert pm.stored_arena_names() == {}
         assert pm.sync_deck_names_from_headers(out=lambda *_a: None) == (0, [])
+
+
+class TestSyncNamesIsADryRunWithoutApply:
+    """`--sync-names` SELECTS the rename; `--apply` WRITES it.
+
+    Every assertion here drives `main()`, not the helper, because the helper was never
+    the problem: `sync_deck_names(text, apply=…)` has taken the flag since it was
+    written and `TestAdoptingArenaDeckNames` proves both sides of it. What was wrong was
+    what `main()` PASSED — `apply=args.sync_names` on the paste path (the only writer in
+    the file ignoring --apply) and a hardcoded `apply=True` on the sourceless one, which
+    could therefore not be previewed at all. It rewrote ten `#: name:` headers in one
+    2026-08-25 session when two had been shown to the user.
+
+    That is the G-40 shape one layer up, and it is why these live at the CLI: a
+    parameterized primitive tells you nothing about whether its caller asks."""
+
+    GUID = "e3a6c595-914d-4809-bd6d-630b3758ca89"
+
+    def _roster(self, tmp_path, monkeypatch):
+        return TestArenaHeaderWriting._roster(self, tmp_path, monkeypatch, **{
+            "45-exile": TestAdoptingArenaDeckNames._cored(
+                TestAdoptingArenaDeckNames, "Exile Dividend", "45 The Exiles",
+                guid=self.GUID)})
+
+    def _name(self, d):
+        return [ln for ln in (d / "45-exile" / "deck.txt").read_text(
+            encoding="utf-8").splitlines() if ln.startswith("#: name:")][0]
+
+    def _run(self, tmp_path, monkeypatch, *argv):
+        monkeypatch.setattr("sys.argv", ["parse_matches.py", *argv,
+                                         "--out", str(tmp_path / "m.csv")])
+        return pm.main()
+
+    # ---- sourceless reconcile: the path that could not be previewed at all -------
+
+    def test_sourceless_sync_names_alone_writes_nothing(
+            self, tmp_path, monkeypatch, capsys):
+        d = self._roster(tmp_path, monkeypatch)
+        self._run(tmp_path, monkeypatch, "--sync-names")
+        out = capsys.readouterr().out
+        assert "'The Exiles'" in out                       # the plan IS shown…
+        assert "--apply" in out                            # …with how to take it
+        assert self._name(d) == "#: name: Exile Dividend"  # …and nothing was written
+        assert not list((d / "45-exile").glob("*.bak"))
+
+    def test_sourceless_sync_names_with_apply_writes(self, tmp_path, monkeypatch):
+        d = self._roster(tmp_path, monkeypatch)
+        self._run(tmp_path, monkeypatch, "--sync-names", "--apply")
+        assert self._name(d) == "#: name: The Exiles"
+        assert list((d / "45-exile").glob("*.bak"))
+
+    # ---- paste path -------------------------------------------------------------
+
+    def _log(self, tmp_path):
+        src = tmp_path / "s.log"
+        src.write_text("\n".join([_setdeck(name="45 The Exiles", guid=self.GUID),
+                                  _header(date="8/7/2026", time="7:33:25 AM"),
+                                  _event()]), encoding="utf-8")
+        return str(src)
+
+    def test_paste_sync_names_alone_writes_nothing(self, tmp_path, monkeypatch):
+        d = self._roster(tmp_path, monkeypatch)
+        self._run(tmp_path, monkeypatch, self._log(tmp_path), "--sync-names")
+        assert self._name(d) == "#: name: Exile Dividend"
+
+    def test_paste_sync_names_with_apply_writes(self, tmp_path, monkeypatch):
+        d = self._roster(tmp_path, monkeypatch)
+        self._run(tmp_path, monkeypatch, self._log(tmp_path), "--sync-names", "--apply")
+        assert self._name(d) == "#: name: The Exiles"
+
+    def test_a_routine_apply_ingest_never_renames_a_deck(self, tmp_path, monkeypatch):
+        """The other half of the conjunction, and the one a user hits by accident.
+        `session.log --apply` is the ordinary ingest; it must not rewrite a deck's name
+        as a side effect of recording a match, even though the paste contains the
+        Arena name that would drive the rename."""
+        d = self._roster(tmp_path, monkeypatch)
+        self._run(tmp_path, monkeypatch, self._log(tmp_path), "--apply")
+        assert self._name(d) == "#: name: Exile Dividend"
 
 
 class TestPooledReads:
@@ -1355,3 +1435,96 @@ class TestAnnotation:
         assert mid == "b48ecdfd-60a1-49a2-940b-96e673182aa5"
         assert fields == {"Opponent Archetype": "mono-red", "Loss Reason": "flood",
                           "On Play": "draw"}
+
+
+class TestIngestWatermark:
+    """The transport problem, not a data problem.
+
+    `Player.log` and the rolling `arena.log` archive are never consumed — deliberately,
+    because they are what makes re-ingest and `--annotate` possible — so every extraction
+    re-emits the whole history. Measured: a 280-line paste whose large majority was
+    already-recorded matches from 08/07-08/23, and a 6-match paste of which 2 were
+    already in. The parser deduped correctly both times; the cost is that the lines are
+    carried, read and discarded."""
+
+    def _csv(self, tmp_path, rows):
+        p = tmp_path / "m.csv"
+        with open(p, "w", newline="", encoding="utf-8") as fh:
+            fh.write(",".join(pm.HEADER) + "\n")
+            for r in rows:
+                fh.write(",".join((r.get(c) or "") for c in pm.HEADER) + "\n")
+        return str(p)
+
+    def test_the_watermark_is_the_newest_logged_date(self, tmp_path):
+        p = self._csv(tmp_path, [{"Date": "2026-08-07", "Match ID": "a", "Result": "W"},
+                                 {"Date": "2026-08-25", "Match ID": "b", "Result": "L"},
+                                 {"Date": "2026-08-19", "Match ID": "c", "Result": "W"}])
+        assert pm.ingest_watermark(p) == ("2026-08-25", 3)
+
+    def test_a_HAND_row_can_never_advance_the_watermark(self, tmp_path):
+        """A `--add` row (a phone game the desktop log never saw) has no matchId and a
+        user-supplied date. Letting one set the watermark would filter out LOG matches
+        that were never ingested — silently, and forever."""
+        p = self._csv(tmp_path, [{"Date": "2026-08-07", "Match ID": "a", "Result": "W"},
+                                 {"Date": "2026-12-31", "Match ID": "", "Result": "L"}])
+        assert pm.ingest_watermark(p) == ("2026-08-07", 1)
+
+    def test_no_logged_rows_yet_reports_no_watermark(self, tmp_path):
+        assert pm.ingest_watermark(self._csv(tmp_path, [])) == ("", 0)
+
+
+class TestFilterSince:
+    def test_it_keeps_the_cutoff_DAY(self):
+        """Inclusive on purpose: a day routinely holds both ingested and un-ingested
+        matches, so `> cutoff` would drop a real match whose neighbours happened to be
+        recorded first. The overlap costs nothing — dedup is on matchId."""
+        text = "\n".join([_header(date="8/24/2026"), _event(match_id="old"),
+                          _header(date="8/25/2026"), _event(match_id="new")])
+        kept, dropped = pm.filter_since(text, "2026-08-25")
+        assert "new" in kept and "old" not in kept
+        assert dropped == 2
+
+    def test_the_undated_JSON_blob_follows_its_header(self):
+        """The `{...finalMatchResult...}` line carries no date prefix. It must inherit the
+        `Match to` header above it — the header it belongs to — or a kept match loses its
+        result and a dropped one keeps it."""
+        text = "\n".join([_header(date="8/24/2026"), _event(match_id="old")])
+        kept, _ = pm.filter_since(text, "2026-08-25")
+        assert "old" not in kept and kept.strip() == ""
+
+    def test_a_setdeck_line_is_dated_by_its_OWN_LastPlayed(self):
+        """EventSetDeckV3 PRECEDES the matches it explains, so inheriting a neighbour's
+        date would misfile it by a whole session — and losing it un-attributes every
+        match in that session."""
+        old = _setdeck(name="07 Old", when="2026-08-07T07:33:23.850462-05:00")
+        new = _setdeck(name="31 New", when="2026-08-25T07:43:01.617881-05:00")
+        kept, _ = pm.filter_since(old + "\n" + new, "2026-08-25")
+        assert "31 New" in kept and "07 Old" not in kept
+
+    def test_order_is_preserved_and_never_sorted(self):
+        """`resolve_matches` walks the log IN ORDER and pairs each result with the most
+        recent `Match to` header — the only place the seat appears. Re-ordering would
+        mis-attribute every W/L, so this filters lines out and never moves one."""
+        lines = [_header(date="8/25/2026"), _event(match_id="m1"),
+                 _header(date="8/25/2026"), _event(match_id="m2")]
+        kept, dropped = pm.filter_since("\n".join(lines), "2026-08-25")
+        assert dropped == 0
+        assert kept.splitlines() == lines
+
+    def test_an_undatable_line_before_any_date_is_KEPT(self):
+        """Dropping what cannot be dated would be guessing in the destructive direction,
+        and this is a convenience over a record that is already correct."""
+        kept, dropped = pm.filter_since("some preamble\n" + _header(date="8/25/2026"),
+                                        "2026-08-25")
+        assert "some preamble" in kept and dropped == 0
+
+    def test_filtering_does_not_change_what_survives(self):
+        """The whole safety claim: a filtered paste parses to the SAME matches as the
+        unfiltered one, minus the ones already recorded."""
+        text = "\n".join([_header(date="8/25/2026"), _event(match_id="keep", my_team=2,
+                                                            winner=1)])
+        kept, _ = pm.filter_since(text, "2026-08-25")
+        a, _wa = pm.parse_log(text)
+        b, _wb = pm.parse_log(kept)
+        assert [r["Match ID"] for r in a] == [r["Match ID"] for r in b] == ["keep"]
+        assert a[0]["Result"] == b[0]["Result"]

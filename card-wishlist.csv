@@ -120,6 +120,9 @@ Dread Summons,Sorcery,"Each player mills X cards. For each creature card put int
 Felidar Retreat,Enchantment,"Landfall — Whenever a land you control enters, choose one —
 • Create a 2/2 white Cat Beast creature token.
 • Put a +1/+1 counter on each creature you control. Those creatures gain vigilance until end of turn.",W,counters; tokens; landfall; lands; ramp,FDN,574,Rare,36,,6.0,hand
+Felidar Retreat,Enchantment,"Landfall — Whenever a land you control enters, choose one —
+• Create a 2/2 white Cat Beast creature token.
+• Put a +1/+1 counter on each creature you control. Those creatures gain vigilance until end of turn.",W,counters; tokens; landfall; lands; ramp; vigilance; combat,FDN,20,Rare,,,5.5,seed
 Genesis Wave,Sorcery,Reveal the top X cards of your library. You may put any number of permanent cards with mana value X or less from among them onto the battlefield. Then put all cards revealed this way that weren't put onto the battlefield into your graveyard.,G,graveyard,FDN,165,Rare,40a,"FLEX (see 40a #~). 83% permanents here; each land it drops re-triggers landfall, so X=6 with 3 lands doubles Mossborn Hydra x8. GGG is castable off G-primary mana + Great Divide Guide.",7.5,hand
 "Ghalta, Primal Hunger",Legendary Creature — Elder Dinosaur,"This spell costs {X} less to cast, where X is the total power of creatures you control.
 Trample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)",G,Elder; Dinosaur; trample; evasion,FDN,222,Rare,28,,6.5,hand
@@ -169,6 +172,7 @@ III — Other creatures you control get +2/+2 and gain trample until end of turn
 Machinist's Arsenal,Artifact — Equipment,"Job select (When this Equipment enters, create a 1/1 colorless Hero creature token, then attach this to it.)
 Equipped creature gets +2/+2 for each artifact you control and is an Artificer in addition to its other types.
 Machina — Equip {4} ({4}: Attach to target creature you control. Equip only as a sorcery.)",W,Equipment; tokens; etb; equipment; pump; machina; job select; equip,FIN,23,Rare,21a,"artifact payoff — +2/+2 per artifact, Job-select token; fits the big-artifact goodstuff shell",5.0,hand
+Moogles' Valor,Instant,"For each creature you control, create a 1/2 white Moogle creature token with lifelink. Then creatures you control gain indestructible until end of turn.",W,Then; lifegain; tokens; indestructible; resilience,FIN,27,Rare,,,4.0,seed
 The Water Crystal,Legendary Artifact,"Blue spells you cast cost {1} less to cast.
 If an opponent would mill one or more cards, they mill that many cards plus four instead.
 {4}{U}{U}, {T}: Each opponent mills cards equal to the number of cards in your hand.",U,mill; cost-reduction; graveyard,FIN,85,Rare,51,,5.5,seed

@@ -242,6 +242,21 @@ def _pattern_groups():
     for name in ("_HEIST_CAST_LOOSE", "_HEIST_CAST_STRICT", "_HEIST_OPP_ZONE",
                  "_EXILE_CAST_ENABLE", "_EXILE_CAST_PAYOFF"):
         out.append((f"tag_synergies.{name}", getattr(tag_synergies, name), "norm"))
+    # GRANTED-keyword scan. One pattern per evergreen keyword, nested in a dict rather
+    # than bound as module attributes, so the completeness check cannot see them
+    # individually — the same shape that let `_TARGET_GATES` ship a gate matching nothing.
+    # Registered per keyword so a single dead one is named, not averaged away: these run
+    # in a loop that appends on the FIRST match, so a dead entry looks exactly like a
+    # keyword nobody grants.
+    out += [(f"tag_synergies._GRANT_RES[{kw}]", rx, "norm")
+            for kw, rx in tag_synergies._GRANT_RES.items()]
+    # The two REJECTION filters for that scan. They are not classifiers — they decide
+    # what the scan throws AWAY — but a dead rejection filter fails silently and in the
+    # expensive direction: it stops rejecting, and opponent-facing grants ("creatures your
+    # opponents control gain haste") start tagging as if they were yours. A live-corpus
+    # check proves each still matches real oracle text.
+    for name in ("_GRANT_OPP_RE", "_GRANT_NEG_RE"):
+        out.append((f"tag_synergies.{name}", getattr(tag_synergies, name), "norm"))
     for name in ("_POWER_SCOPE_MINE_RE", "_POWER_SCOPE_TOTAL_RE"):
         out.append((f"deck.{name}", getattr(deck, name), "window"))
     # wishlist's oracle-text classifiers (BS-04): the flex-removal seed bonus and the

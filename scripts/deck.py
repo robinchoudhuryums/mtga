@@ -9659,10 +9659,17 @@ def _clock_score(vec):
 # UNDER-graded" nudge for being honest, and a standing warning is one nobody reads.
 # Narrow on purpose: the prose must name the floor or the rubric's own language, not just
 # be long.
+# The weakness clause is the rubric's OWN A-band wording ("at most one clear weakness"),
+# so decks cite it in shorthand — deck 35 writes `More than the "≤1 weakness" an A allows`
+# and deck 17 `not a coherent engine with one weakness`. Matching only the long form left
+# both nagged for making exactly the argument this suppression exists to honour, which is
+# the failure the paragraph above describes, unfixed on two decks. Measured before
+# widening (K-14): of the 62 decks sitting below their floor, 12 were flagged and the
+# widen suppresses exactly these 2, both true positives — 10 still flagged.
 _BELOW_FLOOR_ARGUMENT = re.compile(
     r"(?:below the (?:measurable |metrics )?floor|band BELOW|deliberately (?:one )?band|"
     r"conservative (?:read|grade)|fails? (?:the )?(?:fourth|two|three)|"
-    r"at most one clear weakness|PROVISIONAL)", re.I)
+    r"(?:≤\s*1|at most one|one) (?:clear )?weakness|PROVISIONAL)", re.I)
 
 
 def _argues_below_floor(meta):

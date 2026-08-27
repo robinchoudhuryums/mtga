@@ -145,3 +145,18 @@ the swaps once the user confirms.
 - Then suggest the natural follow-up: `/apply-changes <id>` to perform any swap the user
   confirms, or `/roster-review` if a lot changed (rotation exposure, craft plan, Arena
   drift — the roster-level questions this command deliberately does not answer).
+
+## Stage 5 — Commit
+
+An ingest REWRITES the source of truth (`card-library.csv`) and everything the rebuild
+chain derives from it, so it cannot end at a report: this command had no commit step at
+all and left the repo dirty for whoever ran it next. Commit the library plus whatever
+Stage 2's rebuild actually changed (`card-mana.csv`, `card-pool.csv`, `gallery.html`,
+`card-wishlist.csv` if `reconcile_crafts.py` pruned a row) per the shared **verify +
+commit tail** in `docs/verify-commit-tail.md` verbatim — `check_all` gates the commit,
+the CURRENT session's `Co-Authored-By:` / `Claude-Session:` trailer ends the message, the
+model ID never appears in it, the push goes to the working branch, and anything this
+closes in `.cycle/NEXT-SESSION.md` is edited in the same commit.
+
+The Stage 3 fit pass is deliberately NOT part of this: it proposes swaps and writes no
+deck file, so there is nothing of its to commit until `/apply-changes` runs.

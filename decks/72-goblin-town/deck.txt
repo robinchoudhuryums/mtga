@@ -1,4 +1,4 @@
-#: name: Goblin-town
+#: name: Goblin Kamikaze
 #: format: Standard
 #: arena: 72 Goblin Kamikaze, d8c2de92-daad-4a45-a81d-3d78cf53cdcc
 #: colors: BR

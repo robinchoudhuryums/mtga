@@ -657,6 +657,70 @@ def is_heist_text(x):
                for m in _HEIST_CAST_LOOSE.finditer(x))
 
 
+# ── GRANTED keywords: a card that GIVES a keyword is a card ABOUT that keyword ──────
+#
+# The keyword tags below come from Scryfall's `keywords` field, which lists only what a
+# card HAS. So a card that GRANTS a keyword carried no tag for it, and the theme model
+# could not see the cards a keyword deck is built to find. Measured on the 15,973-row
+# pool: 2,269 cards grant one of the twelve evergreen keywords here and were untagged for
+# it — deathtouch 121 of 139, indestructible 223 of 229, hexproof 155 of 156. Those last
+# two nearly INVERT: the keyword is almost always granted rather than native, so the tag
+# was tracking the rare case and missing the common one.
+#
+# It shipped a live mis-ranking. Deck 31 is a Fynn deathtouch-poison deck. Venom
+# Connoisseur ("all creatures you control gain deathtouch") tagged Human/Druid/alliance/
+# aggro/value with NO deathtouch and scored `cuts` fit 17; Maximum Overdrive ("gains
+# deathtouch and indestructible") tagged `counters` alone and scored fit 4 — so the two
+# LOWEST-fit cards in that deck were two of its own engine pieces, and both were proposed
+# as cuts. This is K-04 one layer over: that rule says never gate a predicate on a derived
+# TAG because it inherits every hole in the tagger, and `cuts`' fit score is exactly such
+# a predicate.
+#
+# SCOPE WAS TRIAGED PER KEYWORD (K-01), not adopted in bulk. Theme frequencies after the
+# change: evasion 15.4% -> 19.2%, combat 6.8% -> 9.9%, aggro 3.8% -> 6.4%, everything else
+# under 6%. Nothing approaches the band where a theme stops carrying information (G-28's
+# saturation rule), so all twelve are in — but re-measure before adding a thirteenth.
+_GRANTED_KEYWORDS = ("deathtouch", "flying", "trample", "lifelink", "menace",
+                     "vigilance", "hexproof", "indestructible", "first strike",
+                     "double strike", "reach", "haste")
+
+# Reminder text is parenthetical and QUOTES the keyword it explains, so a scan over raw
+# text would tag every card whose reminder happens to name one. Stripped for THIS pass
+# only — every other rule keeps the corpus it was written against.
+_GRANT_REMINDER_RE = re.compile(r"\([^)]*\)")
+# An OPPONENT-facing grant is the opposite card ("creatures your opponents control gain
+# haste" is a drawback), and a negation inverts it outright. Both are judged on the CLAUSE
+# around the match, not the whole text, so an opponent clause elsewhere on a card cannot
+# suppress a real grant.
+_GRANT_OPP_RE = re.compile(r"opponent|creatures you don't control", re.I)
+_GRANT_NEG_RE = re.compile(r"\b(lose|loses|losing|can't have|don't have|doesn't have)\b",
+                           re.I)
+_GRANT_RES = {
+    kw: re.compile(rf"\b(?:gains?|have|has|gets?)\b[^.;]{{0,40}}?\b{re.escape(kw)}\b", re.I)
+    for kw in _GRANTED_KEYWORDS
+}
+_GRANT_CLAUSE_BACK = 90
+_GRANT_CLAUSE_FWD = 40
+
+
+def granted_keywords(text):
+    """Evergreen keywords a card GIVES, read from its oracle text.
+
+    Returned in `_GRANTED_KEYWORDS` order — a TUPLE, so the output is a total order and
+    two runs cannot disagree about it (G-54)."""
+    stripped = _GRANT_REMINDER_RE.sub(" ", text or "")
+    out = []
+    for kw in _GRANTED_KEYWORDS:
+        m = _GRANT_RES[kw].search(stripped)
+        if not m:
+            continue
+        clause = stripped[max(0, m.start() - _GRANT_CLAUSE_BACK):m.end() + _GRANT_CLAUSE_FWD]
+        if _GRANT_OPP_RE.search(clause) or _GRANT_NEG_RE.search(clause):
+            continue
+        out.append(kw)
+    return out
+
+
 # Card types that make useful tags on their own.
 TYPE_TAGS = ["Planeswalker", "Battle", "Saga", "Vehicle", "Equipment"]
 
@@ -714,6 +778,19 @@ def tags_for(row, keywords=None):
         if k not in tags:
             tags.append(k)
         for theme in KEYWORD_THEMES.get(k, []):
+            if theme not in tags:
+                tags.append(theme)
+    # A GRANTED keyword tags exactly like a native one — same tag, same implied themes,
+    # through the SAME `KEYWORD_THEMES` table, so the two paths cannot drift apart. That
+    # drift is the whole bug: `keywords` above is what the card HAS, this is what it
+    # GIVES, and a keyword deck wants both. Deliberately NOT filtered by
+    # `is_noise_keyword` — that filter exists for artifacts of Scryfall's keyword LIST
+    # (Jump reported on every jump-start card, K-01), and a card whose text literally
+    # reads "gains flying" is not that.
+    for kw in granted_keywords(text):
+        if kw not in tags:
+            tags.append(kw)
+        for theme in KEYWORD_THEMES.get(kw, []):
             if theme not in tags:
                 tags.append(theme)
     return tags

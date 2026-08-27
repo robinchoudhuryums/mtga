@@ -1,4 +1,4 @@
-#: name: Water Spirit
+#: name: Moon Spirit
 #: format: Standard
 #: arena: 16 Moon Spirit, 697e3fd9-7143-4ef4-af0f-fda0b908eb1f
 #: tier: A — Azorius (WU) tempo; evasive threats + genuine interaction on a clean 2-color base. Re-graded B→A: the earlier "(3) interaction" was a classifier undercount — the real count is 6 (bounce/counters/removal), and Into the Flood Maw / The Legend of Yangchen / Benevolent River Spirit read as more still. Coherent tempo shell, 9 payoffs; A-floor on the corrected counts.

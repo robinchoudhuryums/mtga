@@ -4681,6 +4681,8 @@ Firdoch Core,{3},3,Changeling
 Gathering Stone,{4},4,
 Puca's Eye,{2},2,
 Springleaf Drum,{1},1,
+Steam Vents,,0,
+Temple Garden,,0,
 A-Cauldron Familiar,{B},1,
 Acclaimed Contender,{2}{W},3,
 All That Glitters,{1}{W},2,Enchant
@@ -5052,7 +5054,10 @@ Survey Mechan,{4},4,Flying;Hexproof
 Thrumming Hivepool,{6},6,Affinity
 "Adagia, Windswept Bastion",,0,Station
 Command Bridge,,0,
+Godless Shrine,,0,
+Sacred Foundry,,0,
 Secluded Starforge,,0,
+Stomping Ground,,0,
 Blinkmoth Nexus,,0,
 Cascading Cataracts,,0,Indestructible
 Cathedral of War,,0,Exalted
@@ -5515,26 +5520,6 @@ Judgment Bolt,{3}{R},4,
 "Xande, Dark Mage",{2}{U}{B},4,Menace
 Magitek Scythe,{4},4,Equip;A Test of Your Reflexes!
 Ultima Weapon,{7},7,Equip
-Enlightened Confidant,{1}{W},2,Surveil;Lifelink
-"The Theorist, Jace Beleren",{2}{U}{U},4,
-Bloodline Recollector // Ancestral Craving,{1}{B} // {B},2,Prepared
-Craterclaw Colossus,{4}{R}{R}{R},7,Haste
-Stingcaster Mage,{1}{R},2,Haste
-Paradox Shaper // Omit Variables,{1}{U/B} // {U/B},2,Prepared;Mill
-Prudent Fateseer // Peer Review,{1}{W/U}{W/U} // {2}{W/U},3,Surveil;Prepared
-Stingerquill Voxmancer // Vicious Verse,{B/R} // {B/R},1,Prepared
-Vigorbloom Vanguard // Seed Suture,{1}{G/W} // {G/W},2,Prepared
-Woodwork Prodigy // Soul Tether,{2}{R/G} // {2}{R/G},3,Prepared
-Ajani Resolute,{1}{W},2,
-Liliana the Faultless,{W},1,
-"Chandra, Chill of Compliance",{1}{U}{U},3,Surveil
-"Garruk, Veiled Butcher",{3}{B}{B},5,
-Liliana the Repentant,{1}{B},2,Exhaust;Mill
-"Tinybones, Pocket Nuisance",{2}{B},3,
-Ajani Unrelenting,{4}{R}{R},6,
-"Chandra, Torch of Defiance",{2}{R}{R},4,
-"Garruk, Curse Breaker",{3}{G}{G},5,
-"Titanbones, Towering Heart",{3}{G},4,Reach
 Coalition Relic,{3},3,
 Angler Turtle,{5}{U}{U},7,Hexproof
 Vengeant Vampire,{4}{B}{B},6,Lifelink
@@ -6175,6 +6160,11 @@ Goblin-town,,0,
 Iron Hills,,0,
 Lake-town,,0,
 Mirkwood,,0,
+Plains,,0,
+Island,,0,
+Swamp,,0,
+Mountain,,0,
+Forest,,0,
 "Fíli and Kíli, Joyous",{2}{R},3,Haste
 "Gandalf, Party Guest",{1}{U}{R}{W},4,
 "Thorin, King of Durin's Folk",{3}{R}{W},5,Treasure
@@ -7833,6 +7823,7 @@ Yahenni's Expertise,{2}{B}{B},4,
 Aether Chaser,{1}{R},2,First strike
 Aethertorch Renegade,{2}{R},3,
 Built to Smash,{R},1,
+"Chandra, Torch of Defiance",{2}{R}{R},4,
 Chandra's Revolution,{3}{R},4,
 Combustible Gearhulk,{4}{R}{R},6,First strike;Mill
 Enraged Giant,{5}{R},6,Improvise;Haste;Trample
@@ -9476,9 +9467,6 @@ Rebuild the City,{3}{B}{R}{G},6,
 Tyvar the Bellicose,{2}{B}{G},4,
 "Karn, Legacy Reforged",{5},5,
 Drannith Ruins,,0,
-Case of the Lost Witness,{1}{U},2,Solved;Conjure
-Oracle of the Alpha,{2}{U},3,Scry;Flying;Conjure
-Perforator Crocodile,{3}{B}{B}{B},6,Cycling;Conjure
 Leonin Relic-Warder,{W}{W},2,
 Green Sun's Zenith,{X}{G},1,
 Ranger-Captain of Eos,{1}{W}{W},3,
@@ -14268,92 +14256,6 @@ Escape Tunnel,,0,
 Foot Headquarters,,0,
 Northampton Farm,,0,
 TCRI Building,,0,
-"70,000 Light-Years from Home",{1}{W},2,
-"Brad Boimler, Eager Ensign",{1}{W},2,Lifelink
-Command Decision,{1}{W},2,
-DOT-7 Repair Squad,{3}{W},4,Flying
-Dr. Beverly Crusher,{2}{W},3,
-Emergency Medical Hologram,{W},1,
-Federation Field Medic,{3}{W},4,Vigilance
-Free Borg Revolutionaries,{3}{W}{W},5,Landcycling;Basic landcycling;Typecycling;Cycling
-Malfunctioning Holodeck,{2}{W},3,Ward
-"Picard, Leading by Example",{1}{W},2,
-"Saavik, Stoic Student",{4}{W},5,Flash
-Set Phasers to . . .,{W},1,
-Shields Up!,{1}{W},2,
-Shuttle Ace,{4}{W},5,
-Tactical Officer,{1}{W},2,
-Cloistered Telepath,{1}{U},2,Flash
-Consider the Prime Directive,{2}{U},3,
-Dominion Saboteur,{4}{U},5,
-Federation Probe,{U},1,Flying;Surveil
-Guidance Failure,{3}{U},4,
-Highly Illogical,{1}{U},2,Kicker
-"Hoshi Sato, Exolinguist",{4}{U},5,
-Humpback Whales,{4}{U}{U},6,Vigilance;Landcycling;Basic landcycling;Ward;Typecycling;Cycling
-Marooned,{U},1,Enchant
-Open Communications,{U},1,
-"V'Ger, the Intruder",{6}{U},7,Flying
-Assault Drone,{3}{B},4,
-Automated Warfare System,{2}{B},3,Flying
-Bat'leth,{2}{B},3,Equip
-Battle-Scarred Survivalist,{1}{B},2,Menace
-Cha'DIch Investigator,{4}{B},5,
-Collective Drone,{1}{B},2,
-Eject the Warp Core,{1}{B},2,Kicker
-"General Chang, Cold Warrior",{B},1,
-A Good Day to Die,{B},1,
-"He's Dead, Jim",{3}{B},4,Surveil
-Hive Mind Coprocessor,{4}{B},5,
-In the Pale Moonlight,{3}{B}{B},5,Investigate
-Organic Avulsion Unit,{2}{B},3,
-Relentless Drednok,{B},1,Lifelink
-Resistance Is Futile,{1}{B},2,
-Rogue Artificial Intelligence,{4}{B}{B},6,Surveil;Landcycling;Basic landcycling;Typecycling;Cycling
-Salt Vampire,{1}{B},2,Lifelink
-"Beckett Mariner, Impetuous Ensign",{1}{R},2,First strike
-Cantankerous Captain,{2}{R},3,
-Captain James T. Kirk,{2}{R},3,
-Captain's Tutelage,{1}{R},2,Enchant;Flash
-Horta,{4}{R}{R},6,Landcycling;Trample;Basic landcycling;Typecycling;Cycling
-Khaaaaaaaaaaaannn!,{X}{R},1,
-"La'An Noonien-Singh, Security",{2}{R}{R},4,
-Munitions Enthusiast,{1}{R},2,Trample
-Perils of the Past,{1}{R},2,
-Planetary Patrol,{1}{R},2,Landfall
-Plasma Cascade,{2}{R},3,
-Reckless Impulse,{1}{R},2,
-Silicate Surveyor,{4}{R},5,Reach
-Amok Time,{2}{G},3,Fight
-Captain Kathryn Janeway,{3}{G},4,Explore
-Cold-Blooded Crew,{4}{G}{G},6,Landcycling;Basic landcycling;Typecycling;Cycling
-Common Goal,{1}{G},2,
-Dathon and Picard at El-Adrel,{2}{G},3,
-Dominion Supervisor,{2}{G},3,
-First Contact,{1}{G},2,Mill
-"I'm a Doctor, Not a . . .",{G},1,
-Moopsy,{G},1,Deathtouch
-Mugato,{3}{G}{G},5,Reach;Vigilance;Deathtouch
-Saurian Explorer,{3}{G},4,Landfall
-Support Mission,{2}{G},3,
-Syndicate Liquidators,{4}{G},5,Trample;Landfall
-Xenobotanist,{1}{G},2,
-Xindi Surveyors,{2}{G},3,Landfall
-The City on the Edge of Forever,{3}{W}{B},5,
-Seven of Nine,{2}{U}{B},4,Face a dilemma
-Crystalline Entity,{8},8,Flying
-Cybernetic Specialist,{2},2,Surveil
-"U.S.S. Enterprise-D, Galaxy-Class",{3},3,Station
-Godless Shrine,,0,
-Sacred Foundry,,0,
-Steam Vents,,0,
-Stomping Ground,,0,
-Temple Garden,,0,
-Plains,,0,
-Island,,0,
-Swamp,,0,
-Mountain,,0,
-Forest,,0,
 Magmaw,{3}{R}{R},5,
 "Leovold, Emissary of Trest",{B}{G}{U},3,
 Ancient Tomb,,0,
@@ -14540,6 +14442,7 @@ Manaform Hellkite,{2}{R}{R},4,Flying
 Markov Retribution,{2}{R},3,
 Olivia's Attendants,{4}{R}{R},6,Menace
 Pyre Spawn,{4}{R}{R},6,
+Reckless Impulse,{1}{R},2,
 Rending Flame,{2}{R},3,
 Runebound Wolf,{1}{R},2,
 Sanguine Statuette,{1}{R},2,
@@ -15449,6 +15352,7 @@ Rising Chicane,,0,Max speed;Start your engines!
 Benalish Knight-Counselor,{W},1,Enlist
 Priest of Possibility,{1}{W},2,
 Pull of the Mist Moon,{1}{W}{W},3,Kicker
+Oracle of the Alpha,{2}{U},3,Scry;Flying;Conjure
 Skywriter Djinn,{3}{U},4,Flying;Domain;Conjure
 Trove Mage,{2}{U},3,Seek
 Vesuvan Mist,{1}{U},2,Conjure;Kicker
@@ -15661,12 +15565,14 @@ Forsaken Crossroads,,0,Scry
 Scrutiny of the Guildpact,{1}{W},2,Incorporate
 Sleuth Instructor,{1}{W},2,Seek;Cloak;Disguise
 Spotlight Falcon,{2}{W}{W},4,Flying;Collect evidence;Conjure
+Case of the Lost Witness,{1}{U},2,Solved;Conjure
 Emporium Thopterist,{1}{U},2,Conjure
 Excogitator Sphinx,{2}{U}{U},4,Flying;Investigate;Seek
 Mapping the Maze,{1}{U},2,Incorporate
 Ominous Lockbox,{1}{U},2,
 Cackling Observer,{1}{B}{B},3,Flying;Seek
 Lurking Spinecrawler,{3}{B},4,Incorporate
+Perforator Crocodile,{3}{B}{B}{B},6,Cycling;Conjure
 Snarlfang Vermin,{B},1,Suspect
 Case of the Market Melee,{1}{R},2,Solved
 Concert Kaboomist,{1}{R}{R},3,Trample;Disguise

@@ -185,9 +185,10 @@ header sync that used to be step `--map-decks`, so routine logging has no upkeep
   READ, not a receipt. Names legitimately diverge — when measured, Arena's "45 The Exiles"
   was repo deck 45 "Exile Dividend", 8 of 22 the same way — which is exactly why a
   name-similarity check would be wrong here. `parse_matches.py --sync-names` is the
-  RECONCILE half: it adopts Arena's name into `#: name:` for GUID-paired decks only,
-  reports without the flag, and flags both the citations and the variant names a rename
-  would strand. Divergence regrows on the next client-side rename; the sync is opt-in.
+  RECONCILE half: with `--apply` it adopts Arena's name into `#: name:` for GUID-paired
+  decks only; without it you get the plan, and without `--sync-names` at all the plan is
+  still reported. It flags both the citations and the variant names a rename would
+  strand. Divergence regrows on the next client-side rename; the sync is opt-in.
 - ⚖ **An unattributed match is a gap; a wrongly attributed one is a fabricated record.**
   The 12h bound and the conflict refusal both resolve toward BLANK. When `--report` says
   "N match(es) have no Arena deck at all", the honest response is usually to accept it —

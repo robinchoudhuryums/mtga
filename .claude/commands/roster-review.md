@@ -1,7 +1,7 @@
 Survey the whole collection — what to tune, what rotates, what drifted, what to craft.
 
 This is the ROSTER loop. `/tune-deck` and `/apply-changes` cover one deck deeply;
-nothing covered the question "across 63 decks, what should I work on?", so five
+nothing covered the question "across the whole roster, what should I work on?", so five
 genuinely useful commands (`audit`, `rotation`, `brawl`, `verify`, `sync`) existed
 and were only ever run when someone remembered them. `check_commands.py` now fails
 the build if that happens again.
@@ -34,11 +34,22 @@ prompt, the pool predates the `Released` column — run `/refresh` first.
 
 ## 3. Craft plan — where the wildcards go
 
-`python3 scripts/deck.py wildcards`
+`python3 scripts/deck.py wildcards --dedup`
 `python3 scripts/wishlist.py --rank`
 
-`wildcards` is the roster-wide "what finishes a deck" view; `--rank` is the
-value-per-wildcard ranking. If you have a specific budget, prefer
+`wildcards` is the roster-wide "what finishes a deck" view. Run it **`--dedup`**
+here: plain `wildcards` reports per deck, so a card three decks are short of
+appears three times and nothing tells you that. `--dedup` is the cross-deck UNION
+ranked by decks-served per copy, which is the question this section's heading
+actually asks. Read the two columns as different things: **Decks** is how many
+decks that one card unblocks (copies are fungible — a `Decks 3` card is one
+craft serving all three simultaneously, never three crafts), while **Copies** is
+what you must still craft — the most any *single* deck needs, minus what you
+already own across every printing. Drop `--dedup` only when you want the per-deck
+breakdown of a specific deck's gap.
+Both views carry the `⚠rot` flag.
+
+`--rank` is the value-per-wildcard ranking. If you have a specific budget, prefer
 `wishlist.py --budget "9M 10R 38U 48C"`, which is the SPEND view and is the only
 one that shows every check — including the `⚠rot` flag on a card about to rotate.
 

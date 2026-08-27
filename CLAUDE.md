@@ -819,6 +819,21 @@ directions.
   `Released` is still read only for rotation elsewhere — no per-card surface asks "is this
   out yet", so a stale or custom-query pool re-opens it.** [G-79]
 
+- **A CARD THAT GRANTS A KEYWORD IS A CARD ABOUT THAT KEYWORD, and the tagger only read
+  what a card HAS.** Keyword tags came from Scryfall's `keywords` field, so a lord handing
+  the team deathtouch carried no `deathtouch` tag and looked like a card with nothing to do
+  with the deck built on it. **1,941 pool cards grant one of the twelve evergreens**, and
+  for FOUR the granted case is the MAJORITY (indestructible 224 vs 83 native, hexproof 151
+  vs 56, first strike 172 vs 145, double strike 112 vs 75), so the tag tracked the
+  exception. `tags_for` reads grants from TEXT now (`granted_keywords`, reminder text
+  stripped, opponent- and loss-scoped clauses excluded). **What it moved and what it did
+  NOT is the useful half:** tags feed `cuts` / `suggest` / centrality, so deck 31's Venom
+  Connoisseur went fit 17 → 68 and stopped being offered as a cut (a real, user-caught
+  mis-suggestion), while `tier_band` grades on `role_tally`, which reads TEXT — K-14 diff
+  **0 decks, 0 tier floors, 0 role counts**. One SIDE EFFECT needed a human: more tags
+  raised the dominant theme's count and with it the 25% centrality floor, so four decks'
+  quoted central-theme figures went stale, one load-bearing in a `#: tier:`. [G-80]
+
 - **AN ADVISORY YOU CAN ONLY ACT ON BY A FORBIDDEN EDIT IS A HAZARD, NOT A WARNING.**
   G-05's `section_mismatch` correctly flags an add that inherited the cut card's
   `# section`, but the only way to act on it was to hand-edit the deck file — and G-65
@@ -890,16 +905,17 @@ directions.
 - **A BASELINE UPDATED BEFORE THE GATE THAT READS IT IS A MUTED GATE.** `make postedit`
   ran `check_roles.py --update-baseline` unconditionally and FIRST, so every new zero-role
   card was acknowledged before `check_all` could warn about it — on the exact workflow
-  (after every deck edit) the radar was built for. `--update-baseline` rewrites the file
-  from the CURRENT set, so it cannot tell one genuinely roleless new card from a
-  `_ROLE_PATTERNS` edit that just re-zeroed fifty; the only residual signal was an unread
-  diff of a 425-line file (498 today). It now NAMES every card it acknowledges and REFUSES a jump over
-  `--max-new` (postedit passes `MAXNEW`, default 8 — `make postedit MAXNEW=40` for a
-  deliberate bulk pass). `check_keywords.py --update-baseline` got the same delta report
-  and `--max-new` (BS4-10) — it has no automated caller, so it was never MUTED, but K-01's
-  rule that a keyword's reported COUNT is not its population makes naming the entries
-  matter there too. **The shape generalizes: when an acknowledge step and a warn step run
-  in one command, the ORDER decides whether the warning exists at all.** [G-69]
+  (after every deck edit) the radar was built for. **FIXED broad-scan-7: the acknowledge
+  step now runs LAST** (dashboard → `check_all` → `--update-baseline`), so the warning
+  fires on the run that earns it and step 3 clears it. `--update-baseline` rewrites the
+  file from the CURRENT set, so it cannot tell one genuinely roleless new card from a
+  `_ROLE_PATTERNS` edit that just re-zeroed fifty; it therefore NAMES every card it
+  acknowledges and REFUSES a jump over `--max-new` (postedit passes `MAXNEW`, default 8 —
+  `make postedit MAXNEW=40` for a deliberate bulk pass). `check_keywords.py
+  --update-baseline` got the same delta report and `--max-new` (BS4-10); it has no
+  automated caller, so it was never MUTED. **The shape generalizes: when an acknowledge
+  step and a warn step run in one command, the ORDER decides whether the warning exists at
+  all** — and the convenience of automating the pair is what hides it. [G-69]
 
 - **BUILDABILITY IS PER CARD NAME, NEVER PER LINE — one definition, `deck_requirements` /
   `deck_build_gap`.** A deck may list the same card on two lines, and owned counts are
@@ -939,22 +955,23 @@ directions.
   spans at 2 of 3 call sites, and `focus` neither fires on a non-focusable node nor bubbles,
   so the preview followed focus at ONE site for months — and Scenario 7 named that site, so
   the walk passed over an inert feature (BS6-03). **Write a scenario step from the FEATURE,
-  not from the fix.** **A STATIC GATE WAS MEASURED UNBUILDABLE — do not restart it**: three
-  designs, every flag FALSE. Scenario 7 is the only coverage. [G-72]
+  not from the fix.** **A STATIC A11Y GATE WAS MEASURED UNBUILDABLE — do not restart it**
+  (three designs, every flag FALSE). The COLOUR half IS gated since 2026-08-26: a page must
+  define every `var(--x)` it emits. Scenario 7 stays the a11y half's only coverage. [G-72]
 - **A DECK'S REPO NAME AND ITS ARENA NAME ARE DIFFERENT STRINGS, and NEITHER is
   authoritative — so never gate anything on their agreeing.** Of 22 CORRECT `#: arena:`
   mappings, **8 DISAGREED** ("49 Big Draco" was repo deck 49 "Scaleforge"): the Arena names
   are FLAVOUR names, so a name-agreement check on the attribution path would block a
   correct attribution 36% of the time (the G-07 saturation shape). The leading NUMBER stays
-  the only match key; the repo name is merely DISCLOSED beside a guess. `--sync-names` is
-  the RECONCILE half (ran 2026-08-14, adopting 12). Four earned rules: identity is the
-  **DeckId GUID**, never a card list (which changes the moment you tune, so it refuses
-  exactly the decks under development); **typography is not a rename**; a variant keeps its
-  `<parent> — <variant>` prefix, and renaming a PARENT orphans its variants — flagged,
-  never cascaded; and a rename **strands prose citations**, 50 of 106 decks being named in
-  another deck's prose. **The divergence REGROWS** from client-side renaming, so today's
-  agreement is a snapshot, not a reason to add the gate — docs cite it with examples that
-  now read as agreements *because* the sync ran. Re-measure first. [G-73]
+  the only match key; the repo name is merely DISCLOSED beside a guess. `--sync-names
+  --apply` is the RECONCILE half (adopted 12 on 2026-08-14) and is a **DRY RUN without
+  `--apply`** (it wrote on its own until 2026-08-26). Four earned rules: identity is the
+  **DeckId GUID**, never a card list (it changes the moment you tune); **typography is not
+  a rename**; a variant keeps its `<parent> — <variant>` prefix, and renaming a PARENT
+  orphans its variants — flagged, never cascaded; a rename **strands prose citations** (50
+  of 106 decks are named in another's prose). **The divergence REGROWS** from client-side
+  renaming, so today's agreement is a snapshot, not a reason to add the gate — docs cite it
+  with examples that now read as agreements *because* the sync ran. Re-measure first. [G-73]
 
 - **THE LOG CANNOT SEE WHAT YOU FACED, WHETHER YOU WERE ON THE PLAY, OR WHY YOU LOST — and
   a PHONE GAME never reaches the desktop log at all** (`Player.log` is written by the
@@ -1009,7 +1026,10 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   mana/land-type context, and exclude reminder text. When a gate blocks a fix, check
   whether it encodes the intent or merely the old implementation. (Vivid has since been
   themed — which does not retire the rule, it demonstrates it: reading TEXT is what made
-  the fixer overlay survive the keyword being unindexed, and will again.) [K-04]
+  the fixer overlay survive the keyword being unindexed, and will again.) **G-80 is this
+  rule one layer over and the costliest instance:** `cuts`' fit term is gated on derived
+  tags, so when the tagger read only the keywords a card HAS, a deck-31 engine piece
+  scored fit 17 and was offered as a cut. The user caught it; no gate could. [K-04]
 - **`pay life` is a tagged theme** (357 pool cards, 2.2% — specific enough to build
   around): YOU losing life as a cost, plus the cards that only CARE. "Each opponent loses
   2 life" is a DRAIN effect — the opposite card, deliberately not tagged. [K-05]
@@ -1034,7 +1054,7 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   for it, baselined at 153 and soft in `check_all`. It reads the tagger's own
   `MECHANIC_RULES` live (never a copy) and excludes the deathtouch KEYWORD path by
   construction — 250 of the 388 raw hits, which an allowlist would have had to enumerate.
-  A worklist, not a defect count. **Residual: 371 pool blanks —
+  A worklist, not a defect count. **Residual: 342 pool blanks —
   a long tail of un-themeable effects, and a new theme for four cards is not the fix.** [K-09]
 - **After editing a tag pattern, regenerate BOTH derived tag stores** —
   `tag_synergies.py --merge` for the LIBRARY and **`build_pool.py --all` for the pool**,
@@ -1134,7 +1154,7 @@ earned it: [C-01]
 
 **Subsystems:**
 - Data: card-library.csv, card-pool.csv, card-mana.csv, card-wishlist.csv, matches.csv
-  (LIVE since 2026-08-10 — 62 matches, 55+ attributed across 23+ decks, pooled 28-30; the
+  (LIVE since 2026-08-10 — 66 matches, 63 attributed across 28 decks, pooled 33-33; the
   best per-deck row is n=8 against the 20-match floor, which is why `--report` also POOLS,
   and why the four HAND columns exist at all — G-74), recommendations.csv [C-02]
 - Outcomes: scripts/parse_matches.py, recommendations.csv + `deck.py feedback` — the only
@@ -1146,15 +1166,17 @@ earned it: [C-01]
 - Analysis: scripts/deck.py, scripts/query.py, scripts/card.py, scripts/pool.py,
   scripts/wishlist.py, scripts/validate.py, scripts/check_all.py + the thirteen
   `check_*.py` gates, scripts/keyword_baseline.txt, scripts/role_baseline.txt,
-  scripts/tag_role_baseline.txt [C-05]
+  scripts/tag_role_baseline.txt, **.github/workflows/integrity.yml** — the zero-dependency
+  CI half: `check_all.py` plus the `--help` CLI smoke step that exists because check_all
+  builds no argparse tree (G-55). Named here since 2026-08-26; it had lived only in
+  `docs/cycle-config.md` prose, so the file list said CI ran pytest and nothing else [C-05]
 - Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json,
   scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml,
   scripts/app.py, templates/, Makefile [C-06]
 - Testing: tests/ (31 test files + conftest: the markup-contract, CLI-entry-point and
-  command-output, analysis-model,
-  gate-pinning, shared-primitive and ingest layers, the 2026-08 ingest-writer /
-  sync-guard / resilience-layer / CLI-filter coverage of the formerly untested
-  scripts, plus test_check_all.py, the gate runner's own mutation layer;
+  command-output, analysis-model, gate-pinning, shared-primitive and ingest layers, the
+  2026-08 ingest-writer / sync-guard / resilience-layer / CLI-filter coverage of the
+  formerly untested scripts, plus test_check_all.py, the gate runner's own mutation layer;
   test_app_editor.py, the editor's write-safety pins (importorskip'd on Flask);
   test_check_dfc.py, which pins the G-63 builder SCAN rather than the registry it
   feeds; test_writer_mutations.py, which runs each write-safety property against a
@@ -1164,7 +1186,8 @@ earned it: [C-01]
   matcher under Node against `match_paste`), requirements-dev.txt + requirements-app.txt
   (CI installs BOTH, and sets PYTEST_NO_SKIPS so a skip FAILS — installing only -dev
   silently skipped the editor's six write-safety pins on every run),
-  pytest.ini, .github/workflows/tests.yml [C-07]
+  pytest.ini, .github/workflows/tests.yml, + test_templates.py's TOKEN gate (a GENERATED
+  page must define every `var(--x)` it emits — G-72 one file over) [C-07]
 - Decks: decks/
 
 **Invariant Library:**
@@ -1298,6 +1321,30 @@ format.
    deck selection is missing stays blank rather than borrowing a neighbour's, and
    `--report` refuses a percentage under 20 matches. Full steps + the launchd archive
    setup: `.claude/commands/log-matches.md`. [C-12]
+10. Log-a-match panel — selected state and focus ring | Subsystem: Presentation & Interface
+    Steps: open `dashboard.html`, expand "Log a match" (starts collapsed); click W, L, D
+    and then Play / Draw; Tab into the Deck select, the Opponent input, each segment
+    button and a queued row's ✕; repeat in the other theme (press `t`).
+    Expected: the selected segment has a visible tinted FILL and an accent border, clearly
+    distinct from its neighbours — not just a colour change in the label. Field labels
+    (DECK, RESULT, ON THE, …) read as muted against the value. Every focus ring is the
+    accent purple used elsewhere, and the ✕ ring is accent, **NOT red**. A fill-less "on"
+    segment or a red ring means the panel regressed off the shared tokens. **This palette
+    has never been rendered by a person with the tokens correct** — the panel was built
+    against token names that did not exist (`--acc`, `--dim`, `--fg` for `--accent`,
+    `--ink2`, `--ink`), so every one of them silently fell back to the browser default;
+    `tests/test_templates.py` now fails the build on an undefined token, but what the
+    corrected palette LOOKS like is perceptual and unverified.
+11. Log-a-match end to end on a phone | Subsystem: Presentation & Interface / Outcomes
+    Steps: at 390×844 queue two matches with different decks, a `why` and a note; RELOAD;
+    confirm the queue survived; Copy all; feed the block to `parse_matches.py --add`
+    (dry run, then `APPLY=1`); then `--report`.
+    Expected: no sideways body scroll, one column, the queue survives the reload; Copy all
+    either copies or focuses-and-selects the textarea with the "Select-and-copy the box
+    below" toast (a `file://` open is not a secure context, so the fallback is the
+    EXPECTED path, not a failure); `--report`'s manual-axis section shows a non-empty Loss
+    Reason tally for the first time. The four hand-only columns (G-74) are empty in all 66
+    rows today, so this scenario is the only thing that can prove the loop closes at all.
 
 **Frozen Subsystems:** none.
 
@@ -1369,10 +1416,19 @@ swaps, run the F10 quality guard, re-ground the `#: tier:` prose via
 `--audit-rationale`, verify + commit) **orchestrate the scripts, never
 re-implement them** — the scripts stay the single source of truth so the skills
 can't drift. `add-cards` is the OWNED-card counterpart to `add-wishlist`'s unowned
-craft-target intake. All end with the shared verify+commit tail in
-`docs/verify-commit-tail.md` (check_all-first, the Co-Authored-By/Claude-Session
-trailer, no model ID, branch-restart on a merged PR) — edit that one file to change
-the commit discipline for all.
+craft-target intake. **Every skill that WRITES ends with the shared verify+commit tail
+in `docs/verify-commit-tail.md`** (check_all-first, the Co-Authored-By/Claude-Session
+trailer, no model ID, branch-restart on a merged PR, and closing what it closed in
+`.cycle/NEXT-SESSION.md`) — edit that one file to change the commit discipline for all.
+**That sentence said "All" for a year and it covered 5 of 12** (2026-08-25 skill sweep):
+`/ingest` and `/refresh` rewrite `card-library.csv` and every derived file and had NO
+commit step at all — an ingest simply ended at its report and left the repo dirty —
+while `/add-deck` carried its own one-line commit instruction and so inherited none of
+the four rules. All three cite the tail now. `/add-cards` is the one that legitimately
+does not: it writes nothing (it proposes; `/apply-changes` applies), and naming it here
+as a tail-user was the claim that made the real gaps invisible. The tail's own header
+lists the current writers — **add a new writing skill to that list and cite the file
+from the skill in the same change**, since a skill only follows it if it SAYS so.
 
 ## Session state — where to look when resuming
 

@@ -6,6 +6,222 @@
 > For "which command answers X, and why do two of them disagree", read
 > **`docs/systems-map.md`** — that is now a live reference, not a cycle artifact.
 
+## Session — `--sync-names` dry run + the skill-sweep follow-ons (2026-08-26)
+
+Gates green; **1500 tests** (+7). Block:
+`.cycle/blocks/2026-08-sync-names-dry-run-broad-implement.md`.
+
+**SK-1, the one tool bug the skill sweep turned up.** `parse_matches.py --sync-names`
+wrote with no dry run: `main()` passed `apply=args.sync_names` on the paste path — the
+only writer in the file ignoring `--apply` — and a hardcoded `apply=True` on the
+sourceless path, so the invocation whose entire purpose is the rename could not be
+previewed at all. It adopted ten `#: name:` headers earlier this cycle when two had been
+shown to the user. Now `--sync-names` SELECTS and `--apply` WRITES, matching every other
+writer here; the conjunction also stops a routine `session.log --apply` ingest renaming a
+deck as a side effect of recording a match.
+
+**The shape is why the tests live where they do.** The helper `sync_deck_names(text,
+apply=…)` had taken the parameter since it was written and had tests on BOTH sides of it.
+Nothing was wrong with the primitive — the CALLER never asked. That is G-40 one layer up,
+so all five regression tests drive `main()`. Mutation-tested both ways: reverting the code
+fails exactly the two dry-run tests; writing the conjunction as `or` fails the
+routine-ingest test. Nothing in the class is vacuous.
+
+**The deck-35 follow-on resolved as a TOOL fix, not a re-grade.** Its `#: tier:` already
+argues the below-floor B in the rubric's own language — `More than the "≤1 weakness" an A
+allows` — but `_BELOW_FLOOR_ARGUMENT` matched only the long form "at most one clear
+weakness", so deck 35 and deck 17 carried a permanent "possibly UNDER-graded" nudge for
+being honest. That is precisely the failure the pattern's own comment says it exists to
+prevent, live on two decks. Widened after MEASURING (K-14): of 62 below-floor decks, 12
+were flagged, the widen suppresses exactly 2, both true positives by hand, 10 still
+flagged — plus a negative control that bare "weakness" does not suppress. **Deck 35's
+LETTER was not touched** (never auto-write a tier letter).
+
+**`check_docs` failed once mid-session and was right to.** The G-73 bullet hit 16 lines
+against its 15-line cap because I had written the incident narrative into CLAUDE.md
+instead of `docs/gotchas.md`. Evidence moved, rule trimmed. That cap is doing real work.
+
+**Recorded because it was my mistake, not the tool's:** cleaning up after the Scenario 9
+walk, `rm -f decks/16-water-spirit/*.bak` deleted a pre-existing backup from this
+morning's rename run alongside my test one. Content recoverable from `4e94a2b^`
+(verified); the other 14 `.bak` files are untouched. A glob delete in a directory I had
+not inventoried first.
+
+**Where I left off:** all green, 1500 tests. The two `check_docs` figure drifts (K-09
+371→342, C-02 62→66) are still open and belong to `/sync-docs`, deliberately not
+spot-fixed here.
+
+## Session — the SKILL layer (2026-08-26)
+
+Gates green; **1493 tests** (unchanged — Markdown only). Block:
+`.cycle/blocks/2026-08-skill-layer-broad-implement.md`.
+
+First sweep of `.claude/commands/` itself. The user asked whether 22 files / 2,400 lines
+was too large for one pass; it is not, but only because the layers separate cleanly. The
+**mechanical** layer — every `scripts/<x>.py`, all 34 `deck.py` subcommands, every
+`--flag` against live `--help`, every `make` target, every `[G-nn]`/`[K-nn]`/`[C-nn]`
+anchor — sweeps in seconds and came back **entirely clean**, `check_commands.py` included.
+Every finding was in the **semantic** layer: the skill still names a real command and
+prescribes the wrong procedure with it. That layer does not scale as a 2,400-line read;
+what scales is "diff what the tooling gained recently, then check only the skill that owns
+that step", which is a handful of files.
+
+Three implemented (SK-2/3/4), all the same shape — **the tooling moved and the skill that
+prescribes it did not come along**:
+
+- **SK-2:** `/draft-deck` still told you to hand-fix a failed `resolve --check` by pasting
+  the printing. That is the edit G-65 forbids and G-77 was written about, and it is how
+  decks 76/77 shipped eleven wrong collector numbers. `resolve --fix … --apply` landed
+  this cycle as literally that remedy and **no skill referenced it**.
+- **SK-3:** `/ingest` and `/refresh` rewrite `card-library.csv` and every derived file and
+  had **no commit step at all** — `/ingest` ended at its report. `/add-deck` had its own
+  one-line instruction and so inherited none of the tail's four rules. CLAUDE.md said
+  "All end with the shared verify+commit tail … edit that one file to change the commit
+  discipline for all" while it covered **5 of 12**, and named `/add-cards`, which writes
+  nothing. That last part is what made the gap invisible: the sentence read as coverage.
+- **SK-4:** `/roster-review`'s craft-plan step ran `wildcards` without `--dedup`, so a card
+  three decks are short of printed three times with nothing saying it is ONE craft — the
+  exact fungibility misread CLAUDE.md calls a recurring failure. Also carried "across 63
+  decks" against 116; replaced with "the whole roster" rather than bumped, since a bare
+  present-tense figure in prose is what G-04/G-26 gate for in deck files and nothing gates
+  in skills.
+
+**Decided against / deferred:** SK-1 is a real *tool* bug and was left for the user —
+`parse_matches.py --sync-names` writes with no dry run (`:1654` hardcodes `apply=True`
+while the function's `apply=` defaults to False and nothing reaches it). It adopted 10
+renames unannounced earlier in this session. Fixing it changes the meaning of a flag the
+user already uses, so it is their call, not a silent correction.
+
+Two absences were checked and judged NOT gaps, recorded so they are not re-raised:
+`/roster-review` running no per-deck `tier` (the mismatch sweep is soft in `check_all`,
+and `audit --by-tier` covers the sort), and no skill naming the G-75/G-79 sweeps (they run
+inside `check_all`, which the skills do invoke).
+
+**Where I left off:** all green. The skill layer now has one documented gate on it —
+`docs/verify-commit-tail.md`'s header is the list, and it requires a new writing skill to
+be added there AND to cite the file from itself in the same change. Nothing enforces that
+mechanically; `check_commands.py` proves a command is REACHED, not that the skill reaching
+it is right.
+
+## Session — match-ingest watermark (2026-08-25)
+
+Gates green; **1493 tests** (+9). Block:
+`.cycle/blocks/2026-08-match-ingest-watermark-broad-implement.md`.
+
+**A transport bug, not a data bug — and naming that correctly is what picked the fix.**
+The user noticed `mtga-matches` re-emitting matches going back to 08/07 in a 280-line
+clipboard block, most of it long since ingested. Nothing was WRONG: dedup is on Arena's
+`matchId` (G-57), so re-pasting is idempotent and always was. The cost is that the lines
+get carried into a session, read, and discarded — burying the handful that are new.
+
+**The obvious fix was rejected: the extractor must NOT consume Player.log / arena.log.**
+That archive is what makes re-ingest possible and what `--annotate` joins against by
+matchId *after* the fact, so consuming it would permanently lose any match whose `--apply`
+failed or was never run. The waste is in the pipe, so the fix is in the pipe.
+
+Added `--since`, `--since-last`, `--watermark` to `parse_matches.py`, plus an optional
+date argument to the `mtga-matches` shell function.
+
+**Three design rules, each earned by what breaks otherwise:**
+- **The watermark comes from `matches.csv`, never a sidecar stamp.** The CSV already holds
+  Date and Match ID; a second file recording the same fact is a second thing that can
+  drift.
+- **Hand rows cannot advance it.** A `--add` row (a phone game the desktop log never saw)
+  has no matchId and a user-supplied date; letting one set the mark would silently filter
+  LOG matches that were never ingested out of every future paste.
+- **The boundary day is inclusive.** A day routinely holds both ingested and un-ingested
+  matches — this session's paste did — so `> cutoff` would drop a real match whose
+  neighbours happened to be recorded first.
+
+**Order is preserved and never sorted**, because `resolve_matches` pairs each result with
+the most recent `Match to` header — the only place the local seat appears.
+
+**Two implementations, verified not to disagree.** The Arena machine has no repo checkout,
+so the clipboard filter has to live in awk while the repo filter lives in Python. Both were
+run on the same real 24-line paste and produced byte-identical output (16 kept, 8 dropped).
+The skill says to change them together. POSIX awk only — macOS ships BWK awk, so no
+gawk three-arg `match()`.
+
+Also ingested this session: **4 new matches** (66 total, pooled 33-33) from a real drop,
+seat reads hand-verified including the one match where our seat is teamId 2. Three decks
+gained `#: arena:` headers; deck 69a is the G-73 case (Arena "Bear-Wolf: Ursa Major" vs
+repo "Warg and Woodland — Beorn" — the names disagree and that is expected).
+
+### Where I left off
+
+Committed and pushed. **Operator action outstanding, non-blocking:** the `mtga-matches`
+function in `~/.zshrc` on the Arena machine needs the new version from
+`.claude/commands/log-matches.md` — until then `--since-last` works repo-side but the
+clipboard stays full-size, which is the half that is actually felt. Two Arena deck renames
+offered and unadopted (43, 74a). **Deck 31's two swaps are still unapplied** pending the
+user's cut choice between Sporogenic Infection and Topiary Lecturer.
+
+## Session — the granted-keyword tag gap (2026-08-25)
+
+Gates green: all invariants, one expected soft warning; **1484 tests** (+7). K-14 roster
+diff: **0 decks moved, 0 tier floors moved, 0 role counts moved.** Block:
+`.cycle/blocks/2026-08-tagger-granted-keywords-broad-implement.md`.
+
+**Found by the user, mid-conversation, and no gate could have found it.** Asked whether
+to cut Venom Connoisseur from deck 31, the user said it should not even be a suggested
+cut. It grants deathtouch to the whole board in a Fynn deathtouch-poison deck — and it
+tagged `Human; Druid; alliance; aggro; value` with NO deathtouch, scoring `cuts` fit 17.
+Maximum Overdrive ("gains deathtouch and indestructible") tagged `counters` alone, fit 4.
+**The two lowest-fit cards in that deck were two of its engine pieces**, and both had been
+put to the user as cuts.
+
+**The cause: the tagger reads what a card HAS, never what it GIVES.** The only route to a
+keyword tag was `KEYWORD_THEMES` reading Scryfall's `keywords` field. Measured across the
+pool: **2,269 cards grant one of twelve evergreen keywords and carried no tag for it.** For
+`indestructible` (223 of 229) and `hexproof` (155 of 156) the granted case is the COMMON
+one — the tag was tracking the exception. This is **K-04 one layer over**: that rule says
+never gate a predicate on a derived tag because it inherits the tagger's holes, and
+`cuts`' fit score is exactly such a predicate.
+
+Fixed with a grant pass in `tags_for` that adds the keyword AND its implied themes through
+the SAME `KEYWORD_THEMES` table, so the two paths cannot drift. Scoped three ways, each
+earned: reminder text stripped (it quotes the keyword it explains), opponent-facing grants
+rejected ("creatures your opponents control gain haste" is a drawback), negations rejected.
+
+**Scope triaged PER KEYWORD (K-01), not in bulk.** Theme frequencies after: evasion
+15.4%→19.2%, combat 6.8%→9.9%, aggro 3.8%→6.4%, everything else under 6% — nothing near
+G-28's saturation band, so all twelve are in. Re-measure before adding a thirteenth.
+
+**`check_patterns` earned its keep:** it caught all 14 new patterns unregistered on the
+first run. The 12 grant regexes live nested in a dict, invisible to the completeness scan
+— the same shape that let `_TARGET_GATES` ship a gate matching nothing. Registered per
+keyword, because the scan appends on first match, so a dead entry looks exactly like a
+keyword nobody grants.
+
+**Verification worth not re-deriving.** The K-14 diff is 0/0/0 and the REASON matters:
+tags feed `cuts`/`suggest`/`similar`/centrality, while `tier_band` grades on `role_tally`,
+which reads TEXT. A tag change cannot move a tier floor by construction. And per K-10 the
+pool was verified rather than trusted — stamp hash `e331f936` → `617ae317`, per-keyword
+counts matching the pre-change prediction card for card.
+
+Deck 31's ranking corrected: **Venom Connoisseur fit 17 → 68, Maximum Overdrive 4 → 57.**
+The tool now agrees with the from-text grading done before the fix.
+
+### The one consequence that needed judgment
+
+Adding tags raises the dominant theme's copy count and with it the 25% centrality floor,
+which can push OTHER themes below it. Four decks quoted a central-theme figure the live
+vector no longer supported. Three were arithmetic (17: 22→23, 20a: 11→13, 23: 23→24).
+**Deck 35 was not: 20 → 13, and its prose argues the B grade FROM that number** ("a
+scattered plan (20 central themes, no redundant threat)"). The figure was corrected and
+the weakened argument recorded in place rather than silently swapped. **The letter was not
+touched — deck 35 may want a re-grade, and that is a human call.**
+
+### Where I left off
+
+Working tree carries the change plus the regenerated data; nothing committed yet at the
+time of writing. **Deck 31's two swaps are still unapplied** — −Derelict Attic
++Bloodthirsty Conqueror is confirmed by the user, and Ahriman is agreed as a good add but
+its slot is undecided (the from-text grading offers Sporogenic Infection, whose "destroy
+when damaged" is redundant with the deck's own 14 deathtouchers, or Topiary Lecturer,
+which costs an Elf). A match-log drop is queued for `/log-matches`, plus a user question
+about `mtga-matches` re-emitting already-ingested matches.
+
 ## Session — broad scan #7, top 5 (2026-08-24)
 
 Gates green: all invariants hold, **one soft warning** (the four ACCEPTED dead tutors —

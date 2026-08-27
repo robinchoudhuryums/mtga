@@ -1,4 +1,4 @@
-#: name: Mardu Spellstorm
+#: name: Mardu Waves — Imperial Storm
 #: format: Standard
 #: arena: 55a Imperial Storm, a0a64a8b-6fbe-4809-85af-afce093d96f2
 #: colors: RWB

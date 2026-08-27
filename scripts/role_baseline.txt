@@ -177,7 +177,6 @@ Ghost, Spectral Saboteur
 Ghostly Keybearer
 Giant Cindermaw
 Giant Koi
-Gigantoad
 Glamer Gifter
 Glarb, Calamity's Augur
 Glen Elendra's Answer
@@ -201,7 +200,6 @@ Harmonious Grovestrider
 Hauntwoods Shrieker
 Hawkeye, Master Marksman
 Hawkeye, Young Avenger
-Head of the Homestead
 Head of the Hunt
 Hecteyes
 Hedge Shredder
