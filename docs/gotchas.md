@@ -511,6 +511,23 @@ The general shape is one this file already knows: a set-membership test against 
 hand-written string is only as good as its alias table, and the failure is silent in
 the permissive direction.
 
+**The third refuted fix, 2026-08-27: role-credit reweighting.** Motivated by a real
+pattern — right after a tune, the freshly added structural cards top the cut list (Delney
+fit 3; Dracogenesis ranked the #1 cut minutes after being added) — the candidate change
+was to raise `_role_credit`'s base from 3 to 6 per role. Measured before writing a line of
+production code: the tweak fixed **0 of the 7 named mis-ranks** (Delney 1→1, Dracogenesis
+1→1, Crystal Barricade 4→4, The Arkenstone 9→9; Ouroboroid moved the WRONG way) while
+changing the top-3 cut set of **28 of 116 decks**. The reason is structural, not a matter
+of weight: the worst offenders score **zero roles** (`classify_roles` reads text and their
+value lives in clauses no pattern covers — G-67's whitelist, deliberately narrow), and any
+multiplier of zero is zero. The failures that CAN be addressed were addressed elsewhere:
+G-80 fixed the granted-keyword half of thin tag profiles, and the `✚ NEWCOMER` display
+annotation names the post-tune inversion without touching a score. The keep-score's
+machinery (role credit, saturation, power/uniq/multiplier co-signals) already exists and
+is anchored by `check_suggest`; the lesson stands — measure the fix-rate against the churn
+BEFORE believing a weight change, because the plausible story ("roles don't feed fit")
+was simply false on inspection.
+
 ## [G-10] "Not in library" for a card you own is the deck-dump undercount symptom
 
 **"Not in library" for a card you own is the deck-dump undercount symptom.**
@@ -2732,6 +2749,84 @@ found in nine. What remains after this pass is mostly not holes at all — 11 of
 still-unclassified cards are Equipment (attach / equip / hone counters), a card class this
 taxonomy has no bucket for. That is a TAXONOMY question, not a pattern question, and the
 two must not be confused: adding a bucket re-scores every deck that runs the type.
+
+### 2026-08-27: the per-turn engine family — K-14's shape, one bucket over
+
+The deck-49 and 68b tuning sessions each surfaced a card graded "no detected role" while
+being its deck's engine: **Ouroboroid** ("At the beginning of combat on your turn, put X
++1/+1 counters on each creature you control") and Dragonmaster Outcast (upkeep Dragon
+factory). Cause: every `Payoff / engine` pattern was **`whenever`-shaped**, so the same
+payoff on a per-turn clock scored zero — the literal K-14 failure (all Card-advantage
+patterns were trigger-shaped) recurring in the neighbouring bucket. The widening argument
+is also K-14's: a beginning-of-your-phase trigger is repeatable BY CONSTRUCTION.
+
+The pattern scopes to YOUR phases (`combat on your turn | your upkeep | your end step |
+each of your turns`) with the same payoff alternation as the whenever catch-all, plus the
+non-`a` counter quantities (`X`, `two`, `that many`) the catch-all still misses. Scoping
+is what keeps out the two measured negative classes: a symmetric each-player gift
+(Howling Mine) and an opponent-scoped denial clause (Urabrask, Heretic Praetor — whose
+"draw a card" sits inside an opponent-upkeep replacement).
+
+Measured before shipping, per this rule's own discipline: **+187 pool cards** (14-card
+random sample read end to end — all genuine engines, zero false positives), **47 roster
+cards** of which **19 were previously ZERO-role**, **60 of 114 decks' Payoff counts up**
+(deck 60: 0→2), and the axes that grade: **interaction 0 moved, card advantage 0 moved,
+tier floors 0 moved**. The only quality-vector changes were 15 decks' "unclassified"
+uncertainty lists shrinking — the confidence channel getting more honest, which is the
+change working as intended. 21 `role_baseline.txt` entries pruned (`--update-baseline`);
+the 138-entry tag-disagreement baseline was untouched.
+
+**Family B — evasion grants (the Delney half) — measured and DECLINED.** 47 zero-role
+roster cards mention unblockable/menace, but nearly all are native-evasion *bodies*, and
+evasion is already counted where it decides something: the quality vector's **reach** axis
+reads `_EVASION_TAGS`, and since G-80 a granted keyword lands in the tag model that feeds
+`cuts`/`suggest` fit. Delney's own mis-rank was fixed by the G-40 multiplier co-signal.
+A new "Evasion" role would be a TAXONOMY change (ROLE_ORDER + IMPACT_ROLES + every stats
+display) that double-counts reach and fixes no live mis-rank — the same
+taxonomy-vs-pattern line the 2026-08-19 pass drew for Equipment.
+
+### 2026-08-28: the backlog triaged as FAMILIES, and two more holes closed
+
+The per-turn pass left two follow-ons; both landed the next day, plus a structured triage
+of the whole 463-entry zero-role baseline — grouped by effect shape (K-13: search the
+shape, not the noun) instead of read card by card.
+
+**Closed — the whenever catch-all's counter quantity.** The catch-all read the literal
+`put a +1/+1 counter`, but "put **two** / **X** / **that many** +1/+1 counters" is how
+Magic templates every scaling counter payoff — Serra Redeemer, Woodland Champion, 34 pool
+cards, none matched. The quantity alternation the per-turn pattern shipped with now sits
+in the catch-all too (a strict superset of the old pattern). Measured: 25 decks' Payoff
+counts up, graded axes 0, floors 0, vectors 0.
+
+**Closed — `ward` joins the Protection / trick role.** The role counted bare `hexproof`
+and `indestructible` but not their modern replacement, while `_PROTECTION_RE` (the G-25
+axis) always counted ward — the K-09 two-models shape, on the same text. **259 pool
+cards** gained the role, **131 of them otherwise ZERO-role** — the largest single family
+since the lord anthem (146). Measured: 58 decks' Protection / trick counts up, the
+protection AXIS unchanged everywhere (it already counted ward), interaction /
+card-advantage / floors 0 / 0 / 0 — the role is in neither `_INTERACTION_ROLES` nor
+`IMPACT_ROLES`, so the diff confirms what the wiring implies. The negative fixture is the
+devotion reminder ("counts **toward** your devotion" — embedded `ward` the word boundary
+must keep out, live on 30+ pool cards).
+
+**Triaged and left, with reasons** (the families the probe sweep surfaced, sized on the
+then-463-entry baseline):
+
+| family | n | verdict |
+|---|---|---|
+| equip / attach | 38 | taxonomy — no bucket; parked by the 2026-08-19 pass, unchanged |
+| one-shot ETB token makers | 29 | correct zero — one-shot is not an engine (the repeatability rule) |
+| scry / surveil / explore | 28 | taxonomy — a Selection bucket would be a new axis, not a pattern |
+| sacrifice outlets | 15 | taxonomy — an outlet is an ENABLER; `engine_roles` owns that side |
+| opponent discards | 15 | taxonomy — hand attack has no bucket; adding one to `_INTERACTION_ROLES` would re-grade the roster, a tier_band change this rule forbids making silently |
+| tap-downs | 7 | correct zero — the neutralization family's PERMANENCE line, working |
+| blind mill | 6 | correct zero BY POLICY — G-62: a clock, not interaction |
+| treasure/food one-shots | 5 | correct zero — same one-shot rule |
+
+The distinction that organizes the whole table: a **pattern** hole is a phrasing an
+existing bucket missed (fix it, measure, ship); a **taxonomy** hole needs a new bucket
+and re-scores every deck that runs the type (a design decision, not a fix). The backlog
+after both closures is 445, and the residual is now mostly taxonomy by count.
 
 ### Relationship to the neighbouring rules
 

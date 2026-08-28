@@ -5339,3 +5339,22 @@ Desert Were-Worm,Creature — Dragon Wurm,"This creature gets +2/+0 for each Mou
 Whenever you attack with creatures with total power 12 or greater for the first time each turn, untap all attacking creatures. After this phase, there is an additional combat phase.",R,Dragon; Wurm; pump,HOB,92,1
 Flick a Coin,Instant,"Flick a Coin deals 1 damage to any target. You create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")
 Draw a card.",R,card draw; sacrifice; tokens; burn; treasure,WOE,128,1
+Iridescent Tiger,Creature — Cat,"When this creature enters, if you cast it, add {W}{U}{B}{R}{G}.",W/U/B/R/G,Cat; etb,TDM,109,1
+Rakish Crew,Enchantment,"When this enchantment enters, create a 1/1 red Mercenary creature token with ""{T}: Target creature you control gets +1/+0 until end of turn. Activate only as a sorcery.""
+Whenever an outlaw you control dies, each opponent loses 1 life and you gain 1 life. (Assassins, Mercenaries, Pirates, Rogues, and Warlocks are outlaws.)",B,lifegain; tokens; etb; pump,OTJ,99,1
+My Precious,Legendary Artifact — Equipment // Instant — Adventure,"Equipped creature has hexproof and can't be blocked.
+Equip—{2}, Pay 2 life. // As an additional cost to cast this spell, sacrifice a creature.
+Draw two cards.",B,Equipment; Adventure; pay life; exile cast; card draw; sacrifice; equipment; equip; hexproof; protection,HOB,176,1
+Prosperity Tycoon,Creature — Human Noble,"When this creature enters, create a 1/1 red Mercenary creature token with ""{T}: Target creature you control gets +1/+0 until end of turn. Activate only as a sorcery.""
+{2}, Sacrifice a token: This creature gains indestructible until end of turn. Tap it. (Damage and effects that say ""destroy"" don't destroy it.)",W,Human; Noble; sacrifice; tokens; etb; pump; indestructible; resilience,OTJ,25,1
+Dáin Ironfoot,Legendary Creature — Dwarf Warrior,"When Dáin enters, create a colorless Equipment artifact token named Axe with ""Equipped creature gets +1/+0"" and equip {2}. When you do, attach it to target creature you control.
+Whenever Dáin attacks, each equipped attacking creature gains double strike until end of turn.",R,Dwarf; Warrior; tokens; etb; equipment; pump; double strike; combat; aggro,HOB,91,1
+Rodeo Pyromancers,Creature — Human Mercenary,"Whenever you cast your first spell each turn, add {R}{R}.",R,Human; Mercenary,OTJ,143,1
+Twinmaw Stormbrood,Creature — Dragon // Sorcery — Omen,"Flying
+When this creature enters, you gain 5 life. // Charring Bite deals 5 damage to target creature without flying. (Then shuffle this card into its owner's library.)",W/R,Dragon; Omen; lifegain; burn; etb; flying; evasion,TDM,232,1
+Abzan Monument,Artifact,"When this artifact enters, search your library for a basic Plains, Swamp, or Forest card, reveal it, put it into your hand, then shuffle.
+{1}{W}{B}{G}, {T}, Sacrifice this artifact: Create an X/X white Spirit creature token, where X is the greatest toughness among creatures you control. Activate only as a sorcery.",W/B/G,sacrifice; tokens; etb,TDM,238,1
+Dreaded Bat-Cloud,Creature — Bat,"This spell costs {3} less to cast if a creature died this turn.
+Flying, deathtouch",B,Bat; cost-reduction; deathtouch; combat; removal; flying; evasion,HOB,66,1
+Alchemist's Assistant,Creature — Monkey,"Lifelink
+Renew — {1}{B}, Exile this card from your graveyard: Put a lifelink counter on target creature. Activate only as a sorcery.",B,Monkey; counters; graveyard; lifegain; lifelink; renew,TDM,71,1

@@ -6,6 +6,85 @@
 > For "which command answers X, and why do two of them disagree", read
 > **`docs/systems-map.md`** — that is now a live reference, not a cycle artifact.
 
+## Session — role-backlog triage: two pattern holes closed, the rest sorted (2026-08-28, latest)
+
+Gates green; full suite passes (+5 fixtures). Block:
+`.cycle/blocks/2026-08-role-backlog-triage-broad-implement.md`.
+
+The per-turn block's two follow-ons. **Item 1 shipped:** the whenever catch-all's
+counter quantity widened from the literal "a" to the same alternation the per-turn
+pattern carries (X / two / that many …) — 34 pool cards, 25 decks' Payoff counts up,
+axes/floors 0/0. **Item 2 became a family triage** of the 463-entry zero-role baseline,
+grouped by effect shape (K-13) instead of read card by card. It surfaced ONE pattern
+hole, which shipped: **ward joins Protection / trick** — the role counted hexproof/
+indestructible but not their modern replacement while the G-25 axis always counted ward
+(K-09's two-models shape); 259 pool cards, 131 otherwise zero-role, 58 decks' counts up,
+axes/floors/axis-protection all unchanged. Everything else in the backlog sorted into
+TAXONOMY questions (Equipment 38, selection 28, sac outlets 15, hand attack 15 — no
+bucket exists; adding one re-scores the roster, a design decision) or CORRECT ZEROS
+(one-shot ETB tokens 29, tap-downs 7 by the permanence line, blind mill 6 by G-62,
+treasure one-shots 5). That pattern-vs-taxonomy line is now in the CLAUDE.md G-67
+bullet as the triage rule. Baseline 463 → 445; tag baseline untouched at 138.
+
+**Where I left off:** all green; work committed on `claude/peaceful-pascal-66lvxw`.
+The residual backlog is mostly taxonomy by count — per-card triage is low-yield now.
+
+## Session — per-turn engines: the G-67 family the A–E block pointed at (2026-08-27)
+
+Gates green; full suite passes (+4 fixtures). Block:
+`.cycle/blocks/2026-08-per-turn-engines-broad-implement.md`.
+
+The A–E refutation said the real path for the zero-role structural cards was G-67
+per-family classifier work with its own K-14 diff — this is that work. **Family A
+shipped:** every `Payoff / engine` pattern was `whenever`-shaped (K-14's exact failure
+one bucket over), so Ouroboroid's "at the beginning of combat on your turn, put X +1/+1
+counters on each creature" scored ZERO roles. One pattern added, scoped to YOUR phases,
+measured before shipping: +187 pool cards (14-card sample all genuine), 47 roster cards
+(19 previously zero-role), 60 of 114 decks' Payoff counts up — and interaction /
+card-advantage / tier floors moved 0 / 0 / 0; the only vector changes were 15 decks'
+"unclassified" lists shrinking. 21 role_baseline entries pruned; tag baseline (138)
+untouched. Fixtures from verbatim text incl. two negatives (Howling Mine symmetric,
+Urabrask opponent-scoped).
+
+**Family B (evasion grants, the Delney half) measured and DECLINED:** the 47 zero-role
+unblockable/menace roster cards are mostly native-evasion bodies; reach already counts
+them via _EVASION_TAGS, granted keywords feed fit since G-80, and Delney's own mis-rank
+was fixed by the G-40 multiplier. A new role bucket is a taxonomy change that
+double-counts reach — recorded under [G-67] next to the Equipment precedent.
+
+Decided AGAINST: widening the whenever catch-all's counter quantities in the same
+change (unmeasured; noted as follow-on). CLAUDE.md's G-67 bullet hit the 15-line cap
+twice while updating — evidence moved to gotchas.md, as designed.
+
+**Where I left off:** all green; work committed on `claude/peaceful-pascal-66lvxw`.
+
+## Session — suggestions A–E: measure first, then decline or ship (2026-08-27, later)
+
+Gates green; **1523 tests** (+4). Block:
+`.cycle/blocks/2026-08-suggestions-a-e-broad-implement.md`.
+
+The headline is a REFUTATION: the proposed cuts-model change ("let roles feed the fit
+term") died on inspection — `cut_keep_score` already carries saturation-aware role
+credit, and the measured reweighting fixed 0 of 7 named mis-ranks while churning 28 of
+116 decks' top-3 sets, because the worst offenders score ZERO roles and a weight cannot
+multiply zero. Now the THIRD entry in G-09's pre-registered-and-refuted list. The real
+lever stays G-67 (per-family classifier work, measured), plus the shipped ✚ NEWCOMER
+display.
+
+Shipped: `feedback` gains the surfaced-rate aggregate (63/599 = 11%, trend not level)
+and the most-tuned/least-played play queue (31 decks with ≥5 swaps and 0 recorded
+matches — swap_outcomes' floor unreachable exactly where tuning investment is highest).
+The SessionStart hook now skips the full pytest run when scripts/tests are unchanged
+since the last green (sig in gitignored .cycle/.tests-green-sig; dirty tree always
+reruns) — the DFC-regression tripwire stays armed, the ~3 min per resume on an unchanged
+tree goes away.
+
+DECIDED AGAINST, on the owner's direction: any wildcard-balance recording. Current
+balances are out of scope for tuning entirely, factored in only when Robin raises them
+— now codified in the Player Profile itself.
+
+**Where I left off:** all green.
+
 ## Session — verdict surfaces + the tuning retrospective (2026-08-27)
 
 Gates green; **1519 tests** (+18). Block:

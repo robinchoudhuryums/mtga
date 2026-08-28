@@ -24,7 +24,12 @@ docs. This file is the source of truth for the workflow commands in
   three of decks 52/52a/53. **What stays:** report the craft cost as INFORMATION at the
   end (it is useful for sequencing), keep decks WIP/aspirational so `check` tracks the
   gap, and keep flagging ROTATION — a card leaving Standard is a legality fact about the
-  deck's future, not a resource constraint, and those are different questions.
+  deck's future, not a resource constraint, and those are different questions. **And the
+  2026-08-27 sharpening: current WILDCARD BALANCES are out of scope for tuning entirely —
+  never ask about them, never weigh them, never build a stamp for them; factor them in
+  ONLY when Robin raises them in that conversation.** (A balance-stamp tool was proposed
+  and declined for exactly this reason: any recorded balance invites the gating this
+  paragraph exists to prevent.)
 
 ## Key Design Decisions
 
@@ -288,16 +293,16 @@ directions.
   for Alchemy and Brawl (a Brawl deck also validates `#: commander:` and every card's
   colour identity). **ARENA'S BRAWL LABELS ARE INVERTED HERE**: Arena's "Brawl" is
   100-card = `#: format: Historic Brawl`; Arena's "Standard Brawl" is 60-card =
-  `#: format: Brawl`. `normalize_format` aliases the spellings — `historic-brawl` used
-  to match NEITHER set, giving a 100-card deck a 60-card floor and no copy limit. A pool-absent card is *unverified*, not illegal. `deck.py brawl` is
+  `#: format: Brawl` (`normalize_format` aliases the spellings — `historic-brawl` once
+  matched NEITHER set). A pool-absent card is *unverified*, not illegal. `deck.py brawl` is
   the roster-wide counterpart. **`deck.py cuts <id>` ranks weakest-fit cards and is a
   SHORTLIST, not a GRADE** — it cannot see raw power or spice, and on a creature-heavy
-  deck it is a coin flip (50% vs 86% noncreature, at n=31 and n=103). **Two fixes were
-  pre-registered and REFUTED** (body quality, tag-count normalization) — don't derive a
-  third from the tag-count asymmetry. Read the oracle text, preview with `swap`, and
-  hard-protect signature cards with a `#: protect:` header, whose keep-boost reads the
-  STRICT spine. `cuts` prints the axis the deck is SHORT on and flags `⌁scales w/
-  <axis>`. Both REPORT-only. [G-09]
+  deck it is a coin flip (50% vs 86% noncreature, at n=31 and n=103). **Three fixes were
+  pre-registered and REFUTED** (body quality, tag-count normalization, role-credit
+  reweighting — 0 of 7 mis-ranks fixed, 28 of 116 top-3 sets churned; the worst offenders
+  are ZERO-role cards a weight cannot help) — don't derive a fourth. Read the oracle
+  text, preview with `swap`, and hard-protect signature cards via `#: protect:`. `cuts`
+  prints the axis the deck is SHORT on and flags `⌁scales w/ <axis>`. REPORT-only. [G-09]
 - **"Not in library" for a card you own is the deck-dump undercount symptom.** Fastest
   fix: `reconcile_crafts.py <arena-export>` — it adds the library row, adds a blank
   `card-mana.csv` row so INV-02 always holds, drops the card from the wishlist, and
@@ -880,16 +885,16 @@ directions.
   matches PHRASINGS, and Magic templates one effect several ways — so a card worded a way no
   pattern anticipates scores ZERO roles, and the tier floor, `cuts`, the quality guard and
   `check_all` inherit that as fact. Never an error; the DEFAULT failure is a silent
-  UNDER-count — but a too-broad pattern OVER-counts just as silently (BS2-06). Twenty holes
-  closed in 2026-08, incl. NEUTRALIZATION — you answer a creature by killing, exiling or
-  TURNING IT OFF, and only the first two were written. **Ask which rule a family takes
-  before reusing one**: the line for neutralization is PERMANENCE, and permanence INVERTS
-  for a lethal shrink, since `-4/-4 until end of turn` still KILLS. **`check_roles.py` makes
-  the population visible** — `role_baseline.txt` for zero-role ROSTER cards, `--tags` for
-  POOL cards the two models disagree about, which is the sweep that catches a hole in an
-  UNOWNED card, i.e. the recommender's candidate set. Read both as a DELTA. **Live residual:
-  the 138-entry worklist + the AURA `+N/-M`** (Immolation vs Mogis's Favor, a curse and a
-  pump one shape cannot separate). Fixtures from REAL TEXT; check for a TEST DOUBLE. [G-67]
+  UNDER-count — but a too-broad pattern OVER-counts just as silently (BS2-06). 23 holes
+  closed in 2026-08 — NEUTRALIZATION (**ask which rule a family takes before reusing
+  one**), PER-TURN ENGINES (K-14's shape one bucket over), WARD (K-09's two-models shape
+  vs the G-25 axis) among them. **A PATTERN hole is fixed and measured; a TAXONOMY hole
+  (Equipment, selection, hand attack — no bucket exists) is a design decision that
+  re-scores the roster — triage the backlog by that line.** **`check_roles.py` makes the
+  population visible** — `role_baseline.txt` for zero-role ROSTER cards, `--tags` for
+  POOL cards the two models disagree about. Read both as a DELTA. **Live residual: the
+  138-entry worklist + the AURA `+N/-M`** (a curse and a pump one shape cannot
+  separate). Fixtures from REAL TEXT; check for a TEST DOUBLE. [G-67]
 
 - **A `#:` HEADER THAT LISTS CARD NAMES GOES STALE, AND UNTIL 2026-08-07 NOTHING CHECKED
   ONE.** `#: protect:` and `#: uncastable-ok:` are read by the tooling as INSTRUCTIONS, so

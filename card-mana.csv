@@ -2501,6 +2501,16 @@ Stormscale Scion,{4}{R}{R},6,Flying;Storm
 Dragonmaster Outcast,{R},1,
 Desert Were-Worm,{4}{R}{R},6,
 Flick a Coin,{2}{R},3,Treasure
+Iridescent Tiger,{4}{R},5,
+Rakish Crew,{2}{B},3,
+My Precious,{3} // {1}{B},3,Equip
+Prosperity Tycoon,{3}{W},4,
+Dáin Ironfoot,{2}{R},3,
+Rodeo Pyromancers,{3}{R},4,
+Twinmaw Stormbrood,{5}{W} // {1}{R},6,Flying
+Abzan Monument,{2},2,
+Dreaded Bat-Cloud,{4}{B},5,Deathtouch;Flying
+Alchemist's Assistant,{1}{B},2,Lifelink;Renew
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -6102,7 +6112,6 @@ Sound the Trumpets,{1}{U}{U},3,
 Uneasy Partings,{3}{U},4,
 Wizard's Staff,{1}{U},2,Equip
 Desolation Prowler,{1}{B},2,
-Dreaded Bat-Cloud,{4}{B},5,Deathtouch;Flying
 Gnashing of Teeth,{1}{B}{B},3,
 "Gollum, Silent Slinker // Meager Meal",{3}{B} // {B},4,Menace
 Gollum the Abandoned,{1}{B},2,
@@ -6120,7 +6129,6 @@ Stir Up Trouble,{B},1,
 "Bombur, Gentle Dreamer",{2}{R},3,
 Bothersome Noisemaker,{1}{R},2,Amass
 "Burn, Burn, Tree and Fern",{3}{R},4,
-Dáin Ironfoot,{2}{R},3,
 Desolation of Smaug,{2}{R}{R},4,
 "Dori, Bearer of Friends",{2}{R},3,Treasure;Trample
 "Gandalf, Goblins' Bane // Flameshape",{2}{R} // {1}{R},3,
@@ -11503,7 +11511,6 @@ Mystical Tether,{2}{W},3,
 One Last Job,{2}{W},3,Spree
 Outlaw Medic,{1}{W},2,Lifelink
 Prairie Dog,{1}{W},2,Lifelink
-Prosperity Tycoon,{3}{W},4,
 Shepherd of the Clouds,{4}{W},5,Flying;Vigilance
 Thunder Lasso,{2}{W},3,Equip
 Trained Arynx,{1}{W},2,Saddle;Scry
@@ -11541,7 +11548,6 @@ Neutralize the Guards,{2}{B},3,Surveil
 Nezumi Linkbreaker,{B},1,
 Overzealous Muscle,{4}{B},5,
 Pitiless Carnage,{3}{B},4,Plot
-Rakish Crew,{2}{B},3,
 Raven of Fell Omens,{1}{B},2,Flying
 Rictus Robber,{3}{B},4,Plot
 Rooftop Assassin,{3}{B},4,Flying;Lifelink;Flash
@@ -11560,7 +11566,6 @@ Mine Raider,{2}{R},3,Treasure;Trample
 Quick Draw,{R},1,
 Quilled Charger,{3}{R},4,Saddle
 Resilient Roadrunner,{1}{R},2,Protection;Haste
-Rodeo Pyromancers,{3}{R},4,
 Scorching Shot,{R}{R},2,
 Slickshot Show-Off,{1}{R},2,Flying;Plot;Haste
 Stingerback Terror,{2}{R}{R},4,Flying;Plot;Trample
@@ -13595,7 +13600,6 @@ Ureni's Rebuff,{1}{U},2,Harmonize
 Wingspan Stride,{U},1,Enchant
 Winternight Stories,{2}{U},3,Harmonize
 Adorned Crocodile,{4}{B},5,Renew
-Alchemist's Assistant,{1}{B},2,Lifelink;Renew
 Alesha's Legacy,{1}{B},2,
 Avenger of the Fallen,{2}{B},3,Mobilize;Deathtouch
 Caustic Exhale,{B},1,Behold
@@ -13618,7 +13622,6 @@ Yathan Tombguard,{2}{B},3,Menace
 Channeled Dragonfire,{R},1,Harmonize
 Cori-Steel Cutter,{1}{R},2,Flurry;Equip
 Fleeting Effigy,{R},1,Haste
-Iridescent Tiger,{4}{R},5,
 Magmatic Hellkite,{2}{R}{R},4,Flying
 Narset's Rebuke,{4}{R},5,
 Rescue Leopard,{2}{R},3,
@@ -13687,7 +13690,6 @@ Twinmaw Stormbrood // Charring Bite,{5}{W} // {1}{R},6,Flying
 Whirlwing Stormbrood // Dynamic Soar,{4}{U} // {2}{G},5,Flying;Flash
 Windcrag Siege,{1}{R}{W},3,
 Yathan Roadwatcher,{1}{W}{B}{G},4,Mill
-Abzan Monument,{2},2,
 Boulderborn Dragon,{5},5,Flying;Surveil;Vigilance
 Embermouth Sentinel,{2},2,
 Jade-Cast Sentinel,{4},4,Reach

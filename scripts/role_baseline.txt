@@ -10,7 +10,6 @@ A.I.M. Synthoids
 Aang's Iceberg
 Absorbing Man
 Accumulate Wisdom
-Additive Evolution
 Aerial Doombot
 Aettir and Priwen
 Agent Phil Coulson
@@ -18,9 +17,6 @@ Agents of HYDRA
 Ainok Wayfarer
 Airbending Lesson
 Ajani, Caller of the Pride
-Alien Invasion
-Alpharael, Stonechosen
-Ancient Adamantoise
 Angel of Vitality
 Angelic Destiny
 Another Round
@@ -46,13 +42,11 @@ Baseball Bat
 Baxter Stockman
 Become Brutes
 Beetle-Headed Merchants
-Benevolent River Spirit
 Bespoke Bō
 Betor, Kin to All
 Billowing Shriekmass
 Binding Negotiation
 Biogenic Upgrade
-Bitterbloom Bearer
 Black Cat, Cunning Thief
 Black Widow, Super Spy
 Blacksmith's Talent
@@ -77,7 +71,6 @@ Byrke, Long Ear of the Law
 Calamity, Galloping Inferno
 Callous Sell-Sword // Burn Together
 Captain America, Living Legend
-Captain America, Wings of Freedom
 Captain Mar-Vell, Space-Born
 Caradora, Heart of Alacria
 Case of the Stashed Skeleton
@@ -87,8 +80,6 @@ Central Elevator // Promising Stairs
 Cephalid Inkmage
 Champions of the Shoal
 Charging Strifeknight
-Chief Warg's Company
-Child of the Volcano
 Claim Jumper
 Cloud, Midgar Mercenary
 Colossification
@@ -117,7 +108,6 @@ Doubling Season
 Dracogenesis
 Draconautics Engineer
 Dragon Fodder
-Dragonmaster Outcast
 Dragoon's Lance
 Dragoon's Wyvern
 Dread Summons
@@ -126,10 +116,8 @@ Dream Seizer
 Drix Fatemaker
 Duskwatch Hunter
 Dwalin, Weaponmaster
-Dwarven Mattock
 Dwarven Shortsword
 Dáin Ironfoot
-Earth Kingdom General
 Earth Kingdom Soldier
 Earthbending Lesson
 Earthen Ally
@@ -144,12 +132,9 @@ Enigma Drake
 Enter the Enigma
 Entropic Battlecruiser
 Esoteric Duplicator
-Extravagant Replication
 Faerie Slumber Party
-Falcon's Wing Harness
 Falcon, Winged Wonder
 Fated Firepower
-Fblthp, Lost on the Range
 Fearsome Goblin Pair
 Felonious Rage
 Fire Sages
@@ -193,12 +178,9 @@ Great Ugly-Looking Goblin
 Grievous Wound
 Groundchuck & Dirtbag
 Growth Curve
-Guardian Sunmare
 Guidelight Matrix
-Halana and Alena, Partners
 Hama, the Bloodbender
 Hard-Won Jitte
-Harmonious Grovestrider
 Hauntwoods Shrieker
 Hawkeye, Master Marksman
 Hawkeye, Young Avenger
@@ -239,7 +221,6 @@ Jennifer Walters
 Jeong Jeong, the Deserter
 Joo Dee, One of Many
 K'un-Lun Warrior
-Katara, Bending Prodigy
 Katara, Water Tribe's Hope
 Kavaron Skywarden
 Kirol, Attentive First-Year
@@ -267,7 +248,6 @@ Living Brain, Mechanical Marvel
 Loading Zone
 Loki Laufeyson
 Long Feng, Grand Secretariat
-Long River Lurker
 Loot, Exuberant Explorer
 Lorehold, the Historian
 Lys Alana Informant
@@ -288,7 +268,6 @@ Mirkwood Pathmaker
 Mirror Room // Fractured Realm
 Mirrormind Crown
 Mistbreath Elder
-Misty Mountains Raider
 Mob Lookout
 Mobile Homestead
 Molten Man, Inferno Incarnate
@@ -299,7 +278,6 @@ Most Decrepit Old Bird
 Multiversal Incursion
 Namazu Trader
 Nashi, Searcher in the Dark
-Needletooth Pack
 Neriv, Heart of the Storm
 Nightwhorl Hermit
 Ninja of the Hand
@@ -309,9 +287,7 @@ Okoye, Dora Milaje Leader
 Omniscience
 Omnivorous Flytrap
 Ori, Keeper of Songs
-Ornery Tumblewagg
 Ostrich-Horse
-Ouroboroid
 Outrageous Robbery
 Ozai's Cruelty
 Pain 101
@@ -348,10 +324,8 @@ Restorative Technique
 Return the Favor
 Rhovanion Rampager
 Ripclaw Wrangler
-Risen Necroregent
 River's Rebuke
 Riverchurn Monument
-Roaming Throne
 Rough Rhino Cavalry
 Rush of Dread
 Rustler Rampage
@@ -362,15 +336,12 @@ Savage Ventmaw
 Sawblade Skinripper
 Scarlet Spider, Ben Reilly
 Scrabbling Skullcrab
-Scrounging Skyray
-Searslicer Goblin
 Season of Weaving
 Secret of Bloodbending
 Seedglaive Mentor
 Seismic Sense
 Self-Destruct
 Serra Angel
-Serra Redeemer
 Servant of the Stinger
 Shimmercreep
 Shredder, Unrelenting
@@ -379,18 +350,15 @@ Silent Hallcreeper
 Silvergill Mentor
 Silverquill, the Disputant
 Skyskipper Duo
-Skyward Spider
 Slick Imitator
 Slime Against Humanity
 Snow Villiers
 Song of Stupefaction
 Soul Immolation
 Souls of the Lost
-Sovereign Okinec Ahau
 Sozin's Comet
 Spider-Man, Web-Slinger
 Spider-Punk
-Spider-Rex, Daring Dino
 Spider-Suit
 Spider-Woman, Secret Agent
 Splash Lasher
@@ -409,12 +377,9 @@ Sultai Devotee
 Sun Warriors
 Sun-Spider, Nimble Webber
 Sunpearl Kirin
-Sunstar Chaplain
-Super Strength
 Super-Soldier Serum
 Surrak, Elusive Hunter
 Swiftblade Vindicator
-Sylvan Scavenging
 Taii Wakeen, Perfect Shot
 Tangle Tumbler
 Tannuk, Steadfast Second
@@ -422,7 +387,6 @@ Tapestry Warden
 Taskmaster, Mercenary Mimic
 Team Tactics
 Terra, Magical Adept
-Tezzeret, Cruel Captain
 Thawbringer
 The Boulder, Ready to Rumble
 The Cave of Two Lovers
@@ -430,18 +394,13 @@ The Infamous Cruelclaw
 The Jolly Balloon Man
 The Last Ronin's Technique
 The Mindskinner
-The Thing, Ben Grimm
-Thorin Oakenshield
 Three Tree Scribe
 Thunderous Velocipede
 Tiger-Dillo
 Tinybones, Bauble Burglar
 Tinybones, the Pickpocket
-Titania, Rugged Rumbler
 Toph, the Blind Bandit
 Trade the Helm
-Tragedy Feaster
-Training Regimen
 Transit Mage
 Traveling Botanist
 Traveling Chocobo
@@ -462,10 +421,7 @@ Unstable Experiment
 Unstoppable Slasher
 Utrom Scientists
 Venomized Cat
-Venus, Torn Between Worlds
 Veteran Ice Climber
-Virtue of Loyalty
-Virtue of Loyalty // Ardenvale Fealty
 Virulent Silencer
 Virus Beetle
 Vision Quest
@@ -494,5 +450,4 @@ Wild Hypothesis
 Wisecrack
 Wonder Man, Hollywood Hero
 Wrench
-Zimone, Paradox Sculptor
 Zog, Triceraton Castaway

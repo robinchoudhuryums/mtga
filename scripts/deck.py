@@ -1772,7 +1772,28 @@ _ROLE_PATTERNS = {
         r"whenever you gain life",
         r"whenever you cast",
         r"put a \+1/\+1 counter on .{0,60}?whenever",
-        r"\bwhenever\b.{0,80}?(?:draw a card|put a \+1/\+1 counter|create|each opponent loses)",
+        # The counter quantity is an alternation, not the literal "a": "put two /
+        # X / that many +1/+1 counters" is how Magic templates every scaling
+        # counter payoff (Serra Redeemer, Woodland Champion), and the bare-"a"
+        # form missed all 34 of them. Strict superset of the old catch-all;
+        # measured 2026-08-28: 25 decks' Payoff counts up, axes/floors 0/0.
+        r"\bwhenever\b.{0,80}?(?:draw a card|put (?:a|an|x|\d+|two|three|"
+        r"one or more|that many) \+1/\+1 counters?|create|each opponent loses)",
+        # K-14's exact shape one bucket over: every pattern above is `whenever`-shaped,
+        # so the SAME payoff on a per-turn clock ("At the beginning of combat on your
+        # turn, put a +1/+1 counter on each creature you control" — Ouroboroid,
+        # Dragonmaster Outcast, Virtue of Loyalty) scored ZERO roles. A your-turn-only
+        # beginning-of-phase trigger is repeatable BY CONSTRUCTION — the same argument
+        # `whenever` and the activated-draw widening rested on. Scoped to YOUR phases
+        # (an opponent's-upkeep trigger is a different card); payoff list and counter
+        # quantities mirror the catch-all above, which gained the same quantity
+        # alternation a day later. Measured before shipping (2026-08-27): +187 pool cards,
+        # 47 roster cards (19 previously ZERO-role), 60 decks' Payoff counts up,
+        # interaction / card-advantage / tier floors moved: 0 / 0 / 0.
+        r"at the beginning of (?:combat on your turn|your upkeep|your end step|"
+        r"each of your turns)"
+        r"[^.]{0,60}?(?:put (?:a|an|x|\d+|two|three|one or more|that many) "
+        r"\+1/\+1 counters? on|create|draw a card|each opponent loses)",
     ],
     # Direct damage / life loss to a player — reach & finishers the fixed-number
     # removal pattern misses (Cat-Gator, drain effects).
@@ -1818,7 +1839,13 @@ _ROLE_PATTERNS = {
         # the choose-a-type category K-13 warns never contains the type name.
         r"creatures you control (?:of the chosen type |with [^.]{0,30}?)get \+",
     ],
+    # `ward` mirrors _PROTECTION_RE (which always counted it): the role counted bare
+    # hexproof/indestructible but not their modern replacement, so the AXIS and the
+    # ROLE answered the same text differently (the K-09 shape) — 259 pool cards, 131
+    # of them otherwise ZERO-role. Measured 2026-08-28: 58 decks' Protection counts
+    # up, interaction / card-advantage / tier floors 0 / 0 / 0.
     "Protection / trick": [r"\bhexproof\b", r"\bindestructible\b", r"protection from",
+                           r"\bward\b",
                            r"gets \+\d+/\+\d+ until end of turn"],
     "Recursion": [r"from your graveyard", r"card in your graveyard",
                   r"return .{0,40}?to your hand"],
@@ -6534,6 +6561,41 @@ def _print_swap_outcomes(rows):
               "pipeline works end to end, so the only missing input is games.")
 
 
+_TUNED_UNPLAYED_FLOOR = 5     # swaps before a deck earns a most-tuned/least-played row
+
+
+def _print_tuned_vs_played(rows, deck_filter=None):
+    """Most-tuned, least-played — a PLAY QUEUE, not a scold.
+
+    Measured 2026-08-27 on the live ledger: 31 decks carried ≥5 recorded swaps and
+    ZERO recorded matches, and the eight most-tuned decks had ONE match among them —
+    so `swap_outcomes`' 20-match floor is unreachable for exactly the decks with the
+    most invested tuning, and the record structurally cannot say whether any of those
+    tunes worked. Report-only, roster-shaped (skipped under a deck filter), and read
+    with G-74's caveat built in: the match record is young and a PHONE game never
+    reaches the desktop log, so "0 matches" means unRECORDED, not necessarily
+    unplayed."""
+    if deck_filter:
+        return
+    from collections import Counter
+    tuned = Counter((r.get("Deck") or "").strip() for r in rows)
+    tuned.pop("", None)
+    played = load_match_counts()
+    heavy = [(d, c) for d, c in tuned.items() if c >= _TUNED_UNPLAYED_FLOOR]
+    if not heavy:
+        return
+    unplayed = sorted(d for d, _c in heavy if not played.get(d))
+    print("\nMost tuned vs. least played (swaps recorded / matches recorded):")
+    for d, c in sorted(heavy, key=lambda t: (-t[1], t[0]))[:8]:
+        print(f"    deck {d:<5} {c:>3} swap(s)   {played.get(d, 0):>3} match(es)")
+    if unplayed:
+        print(f"  {len(unplayed)} deck(s) with ≥{_TUNED_UNPLAYED_FLOOR} swaps and ZERO "
+              f"recorded matches: {', '.join(unplayed)}")
+    print("  A play queue, not a verdict: `swap_outcomes` needs ~20 matches per deck "
+          "before it can say whether a tune WORKED, and a phone game never reaches the "
+          "desktop log (G-74) — log those via the dashboard panel / `--add`.")
+
+
 def cmd_feedback(args):
     """Report how the recommenders scored against the swaps actually applied."""
     rows = load_recommendations()
@@ -6578,7 +6640,19 @@ def cmd_feedback(args):
         print("  EXPECTED to be high, and not on its own a model miss: `suggest` filters "
               "to cards sharing a synergy THEME, so it is structurally blind to lands "
               "and off-theme removal. That is what `suggest --lands/--interaction/--ramp` "
-              "are for. Read it as 'which fills the theme model can't reach'.\n")
+              "are for. Read it as 'which fills the theme model can't reach'.")
+        # The single health number for the recommender over time, with the same caveat
+        # as the list above it: it measures how often the theme model and the human
+        # were shopping in the same aisle, not whether either was right.
+        rated = [r for r in rows if (r.get("Add Surfaced") or "") in ("yes", "no")]
+        if len(rated) >= _RECS_MIN_SAMPLE:
+            yes = sum(1 for r in rated if r["Add Surfaced"] == "yes")
+            print(f"  Surfaced-rate over the whole ledger: {yes}/{len(rated)} chosen "
+                  f"add(s) ({100 * yes / len(rated):.0f}%) appeared in `suggest`'s top "
+                  f"{_RECS_SUGGEST_WINDOW} beforehand. Watch the TREND, not the level — "
+                  f"the level is dominated by structural picks the theme gate excludes "
+                  f"by design (G-38).")
+        print()
 
     if n < _RECS_MIN_SAMPLE:
         tail = ("The rows above are worth reading individually"
@@ -6594,6 +6668,7 @@ def cmd_feedback(args):
               "agreement rate partly measures the list's INFLUENCE, not its accuracy. "
               "The disagreements above are the part that doesn't suffer from that.")
         _print_recommendation_segments(rows)
+    _print_tuned_vs_played(rows, deck_filter=getattr(args, "id", None))
     _print_swap_outcomes(rows)
     print("\nThis ledger is REPORT-ONLY and never feeds back into a score — the ranking "
           "terms are bounded and anchored by check_suggest so they can't silently "
