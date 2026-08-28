@@ -2511,6 +2511,7 @@ Twinmaw Stormbrood,{5}{W} // {1}{R},6,Flying
 Abzan Monument,{2},2,
 Dreaded Bat-Cloud,{4}{B},5,Deathtouch;Flying
 Alchemist's Assistant,{1}{B},2,Lifelink;Renew
+Sazh Katzroy,{3}{G},4,Double
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -5477,7 +5478,6 @@ Loporrit Scout,{2}{G},3,
 Prishe's Wanderings,{2}{G},3,
 "Quina, Qu Gourmet",{2}{G},3,
 Reach the Horizon,{3}{G},4,
-Sazh Katzroy,{3}{G},4,Double
 Sidequest: Raise a Chocobo // Black Chocobo,{1}{G},2,Transform;Landfall
 "Torgal, A Fine Hound",{1}{G},2,
 Balthier and Fran,{1}{R}{G},3,Reach
