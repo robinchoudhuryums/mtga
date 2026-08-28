@@ -885,16 +885,16 @@ directions.
   matches PHRASINGS, and Magic templates one effect several ways — so a card worded a way no
   pattern anticipates scores ZERO roles, and the tier floor, `cuts`, the quality guard and
   `check_all` inherit that as fact. Never an error; the DEFAULT failure is a silent
-  UNDER-count — but a too-broad pattern OVER-counts just as silently (BS2-06). 21 holes
-  closed in 2026-08, incl. NEUTRALIZATION (**ask which rule a family takes before reusing
-  one**: permanence INVERTS for a lethal shrink) and PER-TURN ENGINES (every `Payoff /
-  engine` pattern was `whenever`-shaped — K-14's shape one bucket over; evasion grants
-  measured and DECLINED). **`check_roles.py` makes
-  the population visible** — `role_baseline.txt` for zero-role ROSTER cards, `--tags` for
-  POOL cards the two models disagree about, which is the sweep that catches a hole in an
-  UNOWNED card, i.e. the recommender's candidate set. Read both as a DELTA. **Live residual:
-  the 138-entry worklist + the AURA `+N/-M`** (Immolation vs Mogis's Favor, a curse and a
-  pump one shape cannot separate). Fixtures from REAL TEXT; check for a TEST DOUBLE. [G-67]
+  UNDER-count — but a too-broad pattern OVER-counts just as silently (BS2-06). 23 holes
+  closed in 2026-08 — NEUTRALIZATION (**ask which rule a family takes before reusing
+  one**), PER-TURN ENGINES (K-14's shape one bucket over), WARD (K-09's two-models shape
+  vs the G-25 axis) among them. **A PATTERN hole is fixed and measured; a TAXONOMY hole
+  (Equipment, selection, hand attack — no bucket exists) is a design decision that
+  re-scores the roster — triage the backlog by that line.** **`check_roles.py` makes the
+  population visible** — `role_baseline.txt` for zero-role ROSTER cards, `--tags` for
+  POOL cards the two models disagree about. Read both as a DELTA. **Live residual: the
+  138-entry worklist + the AURA `+N/-M`** (a curse and a pump one shape cannot
+  separate). Fixtures from REAL TEXT; check for a TEST DOUBLE. [G-67]
 
 - **A `#:` HEADER THAT LISTS CARD NAMES GOES STALE, AND UNTIL 2026-08-07 NOTHING CHECKED
   ONE.** `#: protect:` and `#: uncastable-ok:` are read by the tooling as INSTRUCTIONS, so

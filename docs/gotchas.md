@@ -2785,6 +2785,49 @@ A new "Evasion" role would be a TAXONOMY change (ROLE_ORDER + IMPACT_ROLES + eve
 display) that double-counts reach and fixes no live mis-rank — the same
 taxonomy-vs-pattern line the 2026-08-19 pass drew for Equipment.
 
+### 2026-08-28: the backlog triaged as FAMILIES, and two more holes closed
+
+The per-turn pass left two follow-ons; both landed the next day, plus a structured triage
+of the whole 463-entry zero-role baseline — grouped by effect shape (K-13: search the
+shape, not the noun) instead of read card by card.
+
+**Closed — the whenever catch-all's counter quantity.** The catch-all read the literal
+`put a +1/+1 counter`, but "put **two** / **X** / **that many** +1/+1 counters" is how
+Magic templates every scaling counter payoff — Serra Redeemer, Woodland Champion, 34 pool
+cards, none matched. The quantity alternation the per-turn pattern shipped with now sits
+in the catch-all too (a strict superset of the old pattern). Measured: 25 decks' Payoff
+counts up, graded axes 0, floors 0, vectors 0.
+
+**Closed — `ward` joins the Protection / trick role.** The role counted bare `hexproof`
+and `indestructible` but not their modern replacement, while `_PROTECTION_RE` (the G-25
+axis) always counted ward — the K-09 two-models shape, on the same text. **259 pool
+cards** gained the role, **131 of them otherwise ZERO-role** — the largest single family
+since the lord anthem (146). Measured: 58 decks' Protection / trick counts up, the
+protection AXIS unchanged everywhere (it already counted ward), interaction /
+card-advantage / floors 0 / 0 / 0 — the role is in neither `_INTERACTION_ROLES` nor
+`IMPACT_ROLES`, so the diff confirms what the wiring implies. The negative fixture is the
+devotion reminder ("counts **toward** your devotion" — embedded `ward` the word boundary
+must keep out, live on 30+ pool cards).
+
+**Triaged and left, with reasons** (the families the probe sweep surfaced, sized on the
+then-463-entry baseline):
+
+| family | n | verdict |
+|---|---|---|
+| equip / attach | 38 | taxonomy — no bucket; parked by the 2026-08-19 pass, unchanged |
+| one-shot ETB token makers | 29 | correct zero — one-shot is not an engine (the repeatability rule) |
+| scry / surveil / explore | 28 | taxonomy — a Selection bucket would be a new axis, not a pattern |
+| sacrifice outlets | 15 | taxonomy — an outlet is an ENABLER; `engine_roles` owns that side |
+| opponent discards | 15 | taxonomy — hand attack has no bucket; adding one to `_INTERACTION_ROLES` would re-grade the roster, a tier_band change this rule forbids making silently |
+| tap-downs | 7 | correct zero — the neutralization family's PERMANENCE line, working |
+| blind mill | 6 | correct zero BY POLICY — G-62: a clock, not interaction |
+| treasure/food one-shots | 5 | correct zero — same one-shot rule |
+
+The distinction that organizes the whole table: a **pattern** hole is a phrasing an
+existing bucket missed (fix it, measure, ship); a **taxonomy** hole needs a new bucket
+and re-scores every deck that runs the type (a design decision, not a fix). The backlog
+after both closures is 445, and the residual is now mostly taxonomy by count.
+
 ### Relationship to the neighbouring rules
 
 G-53 says a capability that works and is never reached is invisible to every correctness

@@ -229,7 +229,7 @@ class TestClassifyRoles:
 
     PER_TURN_ENGINES = [
         # Ouroboroid — the motivating card ("put X +1/+1 counters" also exercises
-        # the non-"a" counter quantity the whenever catch-all still misses).
+        # the non-"a" counter quantity, which the whenever catch-all now shares).
         "At the beginning of combat on your turn, put X +1/+1 counters on each "
         "creature you control, where X is this creature's power.",
         # Dragonmaster Outcast — conditional upkeep token engine.
@@ -243,6 +243,46 @@ class TestClassifyRoles:
     def test_per_turn_trigger_engine_is_payoff(self):
         for text in self.PER_TURN_ENGINES:
             assert "Payoff / engine" in deck.classify_roles(text), text
+
+    # The whenever catch-all's counter QUANTITY is an alternation too (2026-08-28):
+    # "put two / that many +1/+1 counters" is how every scaling counter payoff is
+    # templated, and the bare-"a" form missed all 34 pool cards of them. Verbatim text.
+
+    SCALING_WHENEVER_COUNTERS = [
+        # Serra Redeemer — fixed "two".
+        "Flying\nWhenever another creature you control with power 2 or less enters, "
+        "put two +1/+1 counters on that creature.",
+        # Woodland Champion — "that many".
+        "Whenever one or more tokens you control enter, put that many +1/+1 "
+        "counters on this creature.",
+    ]
+
+    def test_scaling_whenever_counter_payoff_counts(self):
+        for text in self.SCALING_WHENEVER_COUNTERS:
+            assert "Payoff / engine" in deck.classify_roles(text), text
+
+    # Ward joins the Protection / trick role (2026-08-28): the role counted bare
+    # hexproof/indestructible but not their modern replacement, so protection_effects
+    # (the axis) and classify_roles (the role) answered the same text differently —
+    # the K-09 two-models shape. Verbatim card text.
+
+    def test_ward_is_protection_trick(self):
+        # Skyward Spider — keyword with reminder text.
+        assert "Protection / trick" in deck.classify_roles(
+            "Reach\nWard {2} (Whenever this creature becomes the target of a spell "
+            "or ability an opponent controls, counter it unless that player pays "
+            "{2}.)")
+        # A-Armory Veteran — the cost-worded form, no reminder.
+        assert "Protection / trick" in deck.classify_roles(
+            "Ward—Pay 2 life.")
+
+    def test_embedded_ward_word_is_not_protection(self):
+        # Nylea's Disciple: devotion reminder text says "counts TOWARD your
+        # devotion" — the word-boundary must keep embedded 'ward' out.
+        assert "Protection / trick" not in deck.classify_roles(
+            "When this creature enters, you gain life equal to your devotion to "
+            "green. (Each {G} in the mana costs of permanents you control counts "
+            "toward your devotion to green.)")
 
     def test_symmetric_each_player_trigger_is_not_payoff(self):
         # Howling Mine gifts every player the draw — a symmetric effect on a phase

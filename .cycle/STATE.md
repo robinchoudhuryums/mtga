@@ -6,7 +6,30 @@
 > For "which command answers X, and why do two of them disagree", read
 > **`docs/systems-map.md`** — that is now a live reference, not a cycle artifact.
 
-## Session — per-turn engines: the G-67 family the A–E block pointed at (2026-08-27, latest)
+## Session — role-backlog triage: two pattern holes closed, the rest sorted (2026-08-28, latest)
+
+Gates green; full suite passes (+5 fixtures). Block:
+`.cycle/blocks/2026-08-role-backlog-triage-broad-implement.md`.
+
+The per-turn block's two follow-ons. **Item 1 shipped:** the whenever catch-all's
+counter quantity widened from the literal "a" to the same alternation the per-turn
+pattern carries (X / two / that many …) — 34 pool cards, 25 decks' Payoff counts up,
+axes/floors 0/0. **Item 2 became a family triage** of the 463-entry zero-role baseline,
+grouped by effect shape (K-13) instead of read card by card. It surfaced ONE pattern
+hole, which shipped: **ward joins Protection / trick** — the role counted hexproof/
+indestructible but not their modern replacement while the G-25 axis always counted ward
+(K-09's two-models shape); 259 pool cards, 131 otherwise zero-role, 58 decks' counts up,
+axes/floors/axis-protection all unchanged. Everything else in the backlog sorted into
+TAXONOMY questions (Equipment 38, selection 28, sac outlets 15, hand attack 15 — no
+bucket exists; adding one re-scores the roster, a design decision) or CORRECT ZEROS
+(one-shot ETB tokens 29, tap-downs 7 by the permanence line, blind mill 6 by G-62,
+treasure one-shots 5). That pattern-vs-taxonomy line is now in the CLAUDE.md G-67
+bullet as the triage rule. Baseline 463 → 445; tag baseline untouched at 138.
+
+**Where I left off:** all green; work committed on `claude/peaceful-pascal-66lvxw`.
+The residual backlog is mostly taxonomy by count — per-card triage is low-yield now.
+
+## Session — per-turn engines: the G-67 family the A–E block pointed at (2026-08-27)
 
 Gates green; full suite passes (+4 fixtures). Block:
 `.cycle/blocks/2026-08-per-turn-engines-broad-implement.md`.

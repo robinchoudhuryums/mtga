@@ -17,8 +17,6 @@ Agents of HYDRA
 Ainok Wayfarer
 Airbending Lesson
 Ajani, Caller of the Pride
-Alpharael, Stonechosen
-Ancient Adamantoise
 Angel of Vitality
 Angelic Destiny
 Another Round
@@ -44,7 +42,6 @@ Baseball Bat
 Baxter Stockman
 Become Brutes
 Beetle-Headed Merchants
-Benevolent River Spirit
 Bespoke Bō
 Betor, Kin to All
 Billowing Shriekmass
@@ -74,7 +71,6 @@ Byrke, Long Ear of the Law
 Calamity, Galloping Inferno
 Callous Sell-Sword // Burn Together
 Captain America, Living Legend
-Captain America, Wings of Freedom
 Captain Mar-Vell, Space-Born
 Caradora, Heart of Alacria
 Case of the Stashed Skeleton
@@ -120,10 +116,8 @@ Dream Seizer
 Drix Fatemaker
 Duskwatch Hunter
 Dwalin, Weaponmaster
-Dwarven Mattock
 Dwarven Shortsword
 Dáin Ironfoot
-Earth Kingdom General
 Earth Kingdom Soldier
 Earthbending Lesson
 Earthen Ally
@@ -139,10 +133,8 @@ Enter the Enigma
 Entropic Battlecruiser
 Esoteric Duplicator
 Faerie Slumber Party
-Falcon's Wing Harness
 Falcon, Winged Wonder
 Fated Firepower
-Fblthp, Lost on the Range
 Fearsome Goblin Pair
 Felonious Rage
 Fire Sages
@@ -186,11 +178,9 @@ Great Ugly-Looking Goblin
 Grievous Wound
 Groundchuck & Dirtbag
 Growth Curve
-Guardian Sunmare
 Guidelight Matrix
 Hama, the Bloodbender
 Hard-Won Jitte
-Harmonious Grovestrider
 Hauntwoods Shrieker
 Hawkeye, Master Marksman
 Hawkeye, Young Avenger
@@ -258,7 +248,6 @@ Living Brain, Mechanical Marvel
 Loading Zone
 Loki Laufeyson
 Long Feng, Grand Secretariat
-Long River Lurker
 Loot, Exuberant Explorer
 Lorehold, the Historian
 Lys Alana Informant
@@ -279,7 +268,6 @@ Mirkwood Pathmaker
 Mirror Room // Fractured Realm
 Mirrormind Crown
 Mistbreath Elder
-Misty Mountains Raider
 Mob Lookout
 Mobile Homestead
 Molten Man, Inferno Incarnate
@@ -338,7 +326,6 @@ Rhovanion Rampager
 Ripclaw Wrangler
 River's Rebuke
 Riverchurn Monument
-Roaming Throne
 Rough Rhino Cavalry
 Rush of Dread
 Rustler Rampage
@@ -349,14 +336,12 @@ Savage Ventmaw
 Sawblade Skinripper
 Scarlet Spider, Ben Reilly
 Scrabbling Skullcrab
-Scrounging Skyray
 Season of Weaving
 Secret of Bloodbending
 Seedglaive Mentor
 Seismic Sense
 Self-Destruct
 Serra Angel
-Serra Redeemer
 Servant of the Stinger
 Shimmercreep
 Shredder, Unrelenting
@@ -365,18 +350,15 @@ Silent Hallcreeper
 Silvergill Mentor
 Silverquill, the Disputant
 Skyskipper Duo
-Skyward Spider
 Slick Imitator
 Slime Against Humanity
 Snow Villiers
 Song of Stupefaction
 Soul Immolation
 Souls of the Lost
-Sovereign Okinec Ahau
 Sozin's Comet
 Spider-Man, Web-Slinger
 Spider-Punk
-Spider-Rex, Daring Dino
 Spider-Suit
 Spider-Woman, Secret Agent
 Splash Lasher
@@ -395,7 +377,6 @@ Sultai Devotee
 Sun Warriors
 Sun-Spider, Nimble Webber
 Sunpearl Kirin
-Super Strength
 Super-Soldier Serum
 Surrak, Elusive Hunter
 Swiftblade Vindicator
@@ -413,17 +394,13 @@ The Infamous Cruelclaw
 The Jolly Balloon Man
 The Last Ronin's Technique
 The Mindskinner
-The Thing, Ben Grimm
-Thorin Oakenshield
 Three Tree Scribe
 Thunderous Velocipede
 Tiger-Dillo
 Tinybones, Bauble Burglar
 Tinybones, the Pickpocket
-Titania, Rugged Rumbler
 Toph, the Blind Bandit
 Trade the Helm
-Tragedy Feaster
 Transit Mage
 Traveling Botanist
 Traveling Chocobo
@@ -444,7 +421,6 @@ Unstable Experiment
 Unstoppable Slasher
 Utrom Scientists
 Venomized Cat
-Venus, Torn Between Worlds
 Veteran Ice Climber
 Virulent Silencer
 Virus Beetle

@@ -1772,15 +1772,22 @@ _ROLE_PATTERNS = {
         r"whenever you gain life",
         r"whenever you cast",
         r"put a \+1/\+1 counter on .{0,60}?whenever",
-        r"\bwhenever\b.{0,80}?(?:draw a card|put a \+1/\+1 counter|create|each opponent loses)",
+        # The counter quantity is an alternation, not the literal "a": "put two /
+        # X / that many +1/+1 counters" is how Magic templates every scaling
+        # counter payoff (Serra Redeemer, Woodland Champion), and the bare-"a"
+        # form missed all 34 of them. Strict superset of the old catch-all;
+        # measured 2026-08-28: 25 decks' Payoff counts up, axes/floors 0/0.
+        r"\bwhenever\b.{0,80}?(?:draw a card|put (?:a|an|x|\d+|two|three|"
+        r"one or more|that many) \+1/\+1 counters?|create|each opponent loses)",
         # K-14's exact shape one bucket over: every pattern above is `whenever`-shaped,
         # so the SAME payoff on a per-turn clock ("At the beginning of combat on your
         # turn, put a +1/+1 counter on each creature you control" — Ouroboroid,
         # Dragonmaster Outcast, Virtue of Loyalty) scored ZERO roles. A your-turn-only
         # beginning-of-phase trigger is repeatable BY CONSTRUCTION — the same argument
         # `whenever` and the activated-draw widening rested on. Scoped to YOUR phases
-        # (an opponent's-upkeep trigger is a different card), payoff list mirrors the
-        # catch-all above. Measured before shipping (2026-08-27): +187 pool cards,
+        # (an opponent's-upkeep trigger is a different card); payoff list and counter
+        # quantities mirror the catch-all above, which gained the same quantity
+        # alternation a day later. Measured before shipping (2026-08-27): +187 pool cards,
         # 47 roster cards (19 previously ZERO-role), 60 decks' Payoff counts up,
         # interaction / card-advantage / tier floors moved: 0 / 0 / 0.
         r"at the beginning of (?:combat on your turn|your upkeep|your end step|"
@@ -1832,7 +1839,13 @@ _ROLE_PATTERNS = {
         # the choose-a-type category K-13 warns never contains the type name.
         r"creatures you control (?:of the chosen type |with [^.]{0,30}?)get \+",
     ],
+    # `ward` mirrors _PROTECTION_RE (which always counted it): the role counted bare
+    # hexproof/indestructible but not their modern replacement, so the AXIS and the
+    # ROLE answered the same text differently (the K-09 shape) — 259 pool cards, 131
+    # of them otherwise ZERO-role. Measured 2026-08-28: 58 decks' Protection counts
+    # up, interaction / card-advantage / tier floors 0 / 0 / 0.
     "Protection / trick": [r"\bhexproof\b", r"\bindestructible\b", r"protection from",
+                           r"\bward\b",
                            r"gets \+\d+/\+\d+ until end of turn"],
     "Recursion": [r"from your graveyard", r"card in your graveyard",
                   r"return .{0,40}?to your hand"],
