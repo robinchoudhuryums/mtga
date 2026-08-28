@@ -52,7 +52,8 @@
 1 Kyoshi Village (TLA) 271
 1 Hushwood Verge (DSK) 261
 1 Bleachbone Verge (DFT) 250
-4 Forest (MSH) 295
+3 Forest (MSH) 295
+1 Foggy Bottom Swamp (TLA) 269
 1 Birnin Zana Plaza (MSH) 262
 1 Wastewood Verge (DFT) 268
 1 Blossoming Sands (M21) 244
