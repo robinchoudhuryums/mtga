@@ -1,6 +1,6 @@
 #: name: Bird Brain — GW Chocobo
 #: format: Standard
-#: tier: A — Bird Brain GW Chocobo variant; graded on the LIST ignoring ownership (legal 60). Re-graded C→A after the green-fight interaction package (+Bushwhack / +Clash of the Eikons / +Erode, cutting off-tribe chaff) took interaction 2→4, then +Season of Gathering back over Dazzling Angel (its destroy-all mode = interaction, draw mode = card advantage) reached interaction 5 / card advantage 2 → A-floor. A distinctness-preserving fork of the GWU primary 19 — leans green fights + a Selesnya go-wide creature-count package (Suki/Rinoa/Earth King/Spider-Ham), sharing only Bushwhack with the primary.
+#: tier: A — Bird Brain GW Chocobo variant; graded on the LIST ignoring ownership (legal 60). Interaction 7 / card advantage 2 → clears the A-floor with margin. It got here in two passes: the green-fight package (+Bushwhack / +Clash of the Eikons / +Erode, cutting off-tribe chaff) re-graded it C→A by taking interaction from 2 to 4, and Season of Gathering was ADDED back over Dazzling Angel (its destroy-all mode = interaction, draw mode = card advantage) to reach five. The 2026-08-29 pass then CUT Sunbird Standard, Summon: Choco/Mog and Eagle's Rescue for Bartz and Boko, Elspeth Storm Slayer and Sazh Katzroy — Sunbird Standard was REMOVED because its craft half caps at a 2/2 in a two-colour deck, and cutting Eagle's Rescue took out the list's only off-colour identity stray, so this is cleanly GW now. A distinctness-preserving fork of the GWU primary 19 — leans green fights + a Selesnya go-wide creature-count package (Suki/Rinoa/Earth King/Spider-Ham), sharing only Bushwhack with the primary.
 #: colors: GW
 #: based-on: deck.txt
 #: archetype: 19 variant — Selesnya (G/W) sibling of the promoted Bant primary; drops blue for more green token-makers.
@@ -33,6 +33,7 @@
 1 Suki, Kyoshi Warrior (TLA) 243
 1 Rinoa Heartilly (FIN) 237
 1 Spider-Ham, Peter Porker (SPM) 114
+1 Elspeth, Storm Slayer (TDM) 11
 
 # Birds / flyers / anthems
 1 Jackdaw Savior (BLB) 18
@@ -41,17 +42,16 @@
 1 Ambrosia Whiteheart (FIN) 6
 1 Erode (SOS) 15
 1 Season of Gathering (BLB) 192
-1 Eagle's Rescue (HOB) 155
 1 Momo, Friendly Flier (TLA) 29
-1 Sunbird Standard (LCI) 262
+1 Bartz and Boko (FIN) 175
 1 Shrike Force (BLB) 31
 1 Aven Interrupter (OTJ) 4
-1 Summon: Choco/Mog (FIN) 35
 
 # Ramp / support / fun
 1 Earthbender Ascension (TLA) 175
 1 The Earth King (TLA) 172
 1 The Legend of Kyoshi (TLA) 186
+1 Sazh Katzroy (FIN) 199
 
 # Lands (GW — 10 nonbasic + 14 basics; 3 sac-fetches double every landfall trigger)
 1 Birnin Zana Plaza (MSH) 262
