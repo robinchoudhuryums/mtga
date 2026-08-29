@@ -2512,6 +2512,7 @@ Abzan Monument,{2},2,
 Dreaded Bat-Cloud,{4}{B},5,Deathtouch;Flying
 Alchemist's Assistant,{1}{B},2,Lifelink;Renew
 Sazh Katzroy,{3}{G},4,Double
+Bartz and Boko,{3}{G}{G},5,Affinity
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -5469,7 +5470,6 @@ Unexpected Request,{2}{R},3,
 Zell Dincht,{2}{R},3,
 Airship Crash,{2}{G},3,Cycling
 Balamb T-Rexaur,{4}{G}{G},6,Landcycling;Trample;Forestcycling;Typecycling;Cycling
-Bartz and Boko,{3}{G}{G},5,Affinity
 Cactuar,{G},1,Trample
 Coliseum Behemoth,{5}{G}{G},7,Trample
 Esper Origins // Summon: Esper Maduin,{1}{G},2,Surveil;Transform;Flashback

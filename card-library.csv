@@ -5360,3 +5360,5 @@ Alchemist's Assistant,Creature — Monkey,"Lifelink
 Renew — {1}{B}, Exile this card from your graveyard: Put a lifelink counter on target creature. Activate only as a sorcery.",B,Monkey; counters; graveyard; lifegain; lifelink; renew,TDM,71,1
 Sazh Katzroy,Legendary Creature — Human Pilot,"When Sazh Katzroy enters, you may search your library for a Bird or basic land card, reveal it, put it into your hand, then shuffle.
 Whenever Sazh Katzroy attacks, put a +1/+1 counter on target creature, then double the number of +1/+1 counters on that creature.",G,Human; Pilot; counters; ramp; etb; double,FIN,199,1
+Bartz and Boko,Legendary Creature — Human Bird,"Affinity for Birds (This spell costs {1} less to cast for each Bird you control.)
+When Bartz and Boko enters, each other Bird you control deals damage equal to its power to target creature an opponent controls.",G,Human; Bird; cost-reduction; etb; removal; affinity; artifacts,FIN,175,1
