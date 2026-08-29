@@ -3947,12 +3947,24 @@ def rotation_year(released, years=3, set_code=""):
 
 def rotation_risk(released, years=3, set_code=""):
     """True if a card is past ~`years` of Standard life — so a still-`standard`-marked
-    pick may have rotated (stale pool) or rotates soon. Routed through `rotation_year`
-    so an announced long-legality set (Foundations) can't be false-flagged. Empty or
-    unparseable `released` → False (graceful before a pool rebuild captures the column)."""
+    pick may have rotated (stale pool) or rotates THIS YEAR OR NEXT. Routed through
+    `rotation_year` so an announced long-legality set (Foundations) can't be
+    false-flagged. Empty or unparseable `released` → False (graceful before a pool
+    rebuild captures the column).
+
+    The window is `year + 1`, matching `craft_rot_note` and `wishlist`'s ⚠rot. It read
+    `<= year` until 2026-08-28, one year STRICTER than every other craft surface, while
+    `craft_rot_note`'s docstring asserted the two "cannot disagree" — a claim about
+    agreement is not agreement. `cmd_suggest` was the sole remaining caller, so the
+    format's whole craft recommender under-flagged by a year: a deck-44a tune was
+    offered Valgavoth (DSK, rotates ~2027) with no ⚠rot in the same session that
+    `check` warned about OTJ/BLB/MKM cards rotating in that same wave. Measured at the
+    fix: Standard-legal pool flag rate 11% → 34%, which is simply the share of Standard
+    that rotates within ~15 months and is the rate the other four surfaces already
+    showed (G-30)."""
     import datetime
     yr = rotation_year(released, years, set_code)
-    return bool(yr) and yr <= datetime.date.today().year
+    return bool(yr) and yr <= datetime.date.today().year + 1
 
 
 def unreleased_pool_cards(pool_path=None):
@@ -4274,6 +4286,18 @@ def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_form
         name = (r.get("Card Name") or "").strip()
         nl = name.lower()
         if not name or nl.split(" // ")[0] in deck_names or nl in BASICS:
+            continue
+        # LANDS ARE NOT CANDIDATES HERE — `suggest --lands` is the manabase recommender
+        # (G-37), and this theme path cannot grade one. The guard is load-bearing rather
+        # than tidy: castability below reads the PRINTED COST (G-58), and a land HAS no
+        # cost, so `_candidate_castability` passes every land unconditionally — an
+        # off-colour one included. That is how a U/G Town (Balamb Garden, SeeD Academy)
+        # was offered to Rakdos deck 44a, whose fixing it cannot provide. Front-face
+        # typed via `_primary_type`, since a `// Land` BACK face is not a land you cast
+        # (the same read `wishlist._is_land` and `suggest --lands` were fixed to use).
+        # `functional_theme_options` already carried this exact guard; this caller did
+        # not — a working primitive one caller does not reach (G-40).
+        if "Land" in _primary_type(r.get("Type") or ""):
             continue
         # CASTABILITY IS READ FROM THE PRINTED COST, not from color identity. The block
         # above is careful to derive the DECK's colors from costs "never color identity";

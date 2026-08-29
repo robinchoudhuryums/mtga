@@ -1854,6 +1854,29 @@ class TestRotation:
         assert deck.rotation_risk("", 3) is False
         assert deck.rotation_risk(None, 3) is False
 
+    def test_rotation_risk_covers_next_year_too(self):
+        # The window is "this year or NEXT" (G-30). It read `<= year` until
+        # 2026-08-28 — one year stricter than every other craft surface — so a set
+        # rotating next year was silently unflagged on `suggest --unowned`, the
+        # format's craft recommender. A release 2 years ago rotates in year+1.
+        two_yrs = (date.today() - timedelta(days=365 * 2 + 30)).isoformat()
+        assert deck.rotation_year(two_yrs, 3) == date.today().year + 1
+        assert deck.rotation_risk(two_yrs, 3) is True
+
+    def test_rotation_risk_agrees_with_craft_rot_note(self):
+        """The property `craft_rot_note`'s docstring ASSERTED and did not have: the two
+        craft-facing rotation surfaces must use the same window. A claim about agreement
+        is not agreement, so it is pinned behaviourally here."""
+        pool_rot = {"probe": ((date.today() - timedelta(days=365 * 2 + 30)).isoformat(),
+                              {"standard"}, "PRB")}
+        for yrs_ago in (1, 2, 3, 4):
+            rel = (date.today() - timedelta(days=365 * yrs_ago + 30)).isoformat()
+            pool_rot["probe"] = (rel, {"standard"}, "PRB")
+            note = deck.craft_rot_note("probe", pool_rot)
+            assert bool(note) == deck.rotation_risk(rel, set_code="PRB"), (
+                f"{yrs_ago}y ago: craft_rot_note={note!r} vs rotation_risk="
+                f"{deck.rotation_risk(rel, set_code='PRB')}")
+
 
 def _vec(plan, inter, ca, uncast=0, avg_mv=3.0, early=0, reach=0):
     return {"plan": plan, "interaction": inter, "card_advantage": ca,
@@ -4538,8 +4561,41 @@ class TestSuggestHomesReadsCastabilityFromCost:
         attrs = {n.attr for n in ast.walk(tree) if isinstance(n, ast.Attribute)}
         assert "issubset" in attrs, "the costless-card identity fallback is gone"
 
+    def test_plain_suggest_never_returns_a_land(self):
+        """The SIBLING caller, unfixed until 2026-08-28. `suggest-homes` resolved the
+        costless-land hole with an identity fallback (above); `suggest_scored` had
+        neither that nor a land guard, so `_candidate_castability("")` passed every land
+        unconditionally and a U/G Town (Balamb Garden, SeeD Academy) was offered to
+        Rakdos deck 44a. Plain `suggest` is the THEME path and structurally cannot grade
+        a manabase — `suggest --lands` is the recommender (G-37) — so exclusion is the
+        right answer, which is what `functional_theme_options` already did.
 
-class TestStateGateCounts:
+        BEHAVIOURAL, not AST. The first version of this test asserted that
+        `suggest_scored` calls `_primary_type`, and PASSED with the guard deleted,
+        because the function ALREADY called it once on the deck's own cards. An AST
+        scan that cannot tell two call sites apart is the G-53 trap one layer in —
+        so this drives the real function and reads the real picks."""
+        carddata = deck.load_card_data()
+        for deck_id in ("44a", "6"):
+            d = deck.find_deck(deck_id)
+            if not d:
+                continue
+            res = deck.suggest_scored(d, unowned=True, limit=25)
+            if not res.get("ok"):
+                continue
+            for p in res.get("picks", []):
+                cd = carddata.get((p["name"] or "").lower())
+                tline = (cd or {}).get("type") or ""
+                assert "Land" not in deck._primary_type(tline), (
+                    f"deck {deck_id}: suggest offered the LAND {p['name']!r} — plain "
+                    f"suggest cannot grade a manabase; that is `suggest --lands`")
+
+    def test_no_land_survives_the_suggest_filter(self):
+        """Behavioural half: the guard must actually reject a land row. Uses the real
+        pool type line for a Town whose FRONT face is a land and whose back face is not,
+        so `_primary_type` is doing the front-face read (G-63), not a substring match."""
+        assert "Land" in deck._primary_type("Land — Town // Legendary Artifact — Vehicle")
+        assert "Land" not in deck._primary_type("Creature — Bird // Land")
     """The gate family `_TARGET_GATES` structurally could not answer: a card gated on a
     GAME STATE rather than on cards in the list.
 
