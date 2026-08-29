@@ -2246,6 +2246,16 @@ _GY_HATE_CHOOSE_RE = re.compile(
 # The escape / delve / flashback COST family — a graveyard USER, never hate.
 _GY_OWN_SCOPE_RE = re.compile(r"\byour graveyard\b|\byour own graveyard\b", re.I)
 # Needs the OPPONENT's yard populated (casting or stealing from it).
+# CONSUMES their yard: turns cards in an opponent's graveyard into YOUR resources.
+# Split out of `_GY_NEED_OPP_RE` (2026-08-28) because "needs their yard populated" and
+# "converts their yard into your resources" are different questions and only the second
+# is an engine PAYOFF. Riverchurn Monument mills "cards equal to the number of cards in
+# their graveyard" — it genuinely wants their yard full (so it belongs in the broad
+# predicate, which the zone-conflict flag reads) while being an ENABLER that fills yards,
+# so counting it as a payoff inverted its role.
+_GY_CONSUME_OPP_RE = re.compile(
+    r"(?:cast|play|return|exile)[^.]{0,60}?from (?:an? opponent'?s?|target player'?s?|that player'?s?|their) graveyard",
+    re.I)
 _GY_NEED_OPP_RE = re.compile(
     r"(?:cast|play|return|exile)[^.]{0,60}?from (?:an? opponent'?s?|target player'?s?|that player'?s?|their) graveyard"
     r"|in your opponents'? graveyards"
@@ -2289,7 +2299,15 @@ def graveyard_dependent(text, type_line=""):
     trustworthy half of that classifier) rather than adding a second model."""
     t = text or ""
     needs = set()
-    if _GY_NEED_OPP_RE.search(_norm_role_text(t)):
+    # REMINDER TEXT STRIPPED FIRST. The crime reminder — "Targeting opponents, anything
+    # they control, and/or cards in their graveyards is a crime" — contains the literal
+    # phrase this regex's third branch looks for, so EVERY crime card read as needing an
+    # opponent's graveyard populated. Measured 2026-08-28 on four: Servant of the
+    # Stinger, Rattleback Apothecary, Riverchurn Monument and Deepmuck Desperado, none
+    # of which consume a yard (the last two FILL one — they are enablers). This is the
+    # exact trap `role_coverage_flags` records one screen up, where Ward's reminder
+    # tripped the Counter cue and reported every warded creature as missed interaction.
+    if _GY_NEED_OPP_RE.search(_REMINDER_RE.sub(" ", _norm_role_text(t))):
         needs.add("opponent")
     try:
         if "payoff" in engine_roles(t).get("graveyard", set()):
@@ -3060,6 +3078,23 @@ def engine_balance(cards, carddata, central, signature=frozenset(), weights=None
         if "Creature" in _primary_type(cd.get("type") or ""):   # FRONT face (BS4-34)
             creatures += q
         roles = engine_roles(cd.get("text") or "")
+        # THE GRAVEYARD ENGINE HAS TWO OWNERS AND THE TWO SIDES DISAGREED ABOUT WHICH.
+        # ENGINE_THEMES' graveyard ENABLER cues are ownership-BLIND (`\bmill\b`,
+        # `discard[^.]*card` match "each opponent discards a card" / "target opponent
+        # mills three"), while its PAYOFF cues are own-scoped (`from your graveyard`,
+        # `cards? in your graveyard`). So a deck that fills THEIR yard and casts from it
+        # counted every enabler and no payoff: deck 44a, whose plan is exactly that, read
+        # "12 enablers, no payoff — your engine has no reward" while fielding four working
+        # payoffs (both Tinybones, Shark Shredder, Hama — each "from THAT PLAYER's
+        # graveyard"). Fixed HERE rather than in ENGINE_THEMES on purpose: that dict's
+        # VALUE is hashed into the pool build stamp (G-18/K-10), so editing it would
+        # defeat the freshness reuse and force a full pool refetch for a reporting bug.
+        # `graveyard_dependent` already answers "whose yard does this card need" — it was
+        # written for the zone-conflict flag and no other caller asked (G-40).
+        if "graveyard" in {t.lower() for t in central_engines}:
+            if _GY_CONSUME_OPP_RE.search(
+                    _REMINDER_RE.sub(" ", _norm_role_text(cd.get("text") or ""))):
+                roles.setdefault("graveyard", set()).add("payoff")
         for theme in central_engines:
             r = roles.get(theme.lower(), set())
             if "enabler" in r:
@@ -10434,6 +10469,11 @@ def cmd_redundancy(args):
         return 1
     carddata = load_card_data()
     rar = load_rarities()
+    # For the gate check on each PROPOSED add (`unmet_gate_note`) — this command did not
+    # otherwise need the card list, which is exactly why nobody asked `target_counts`
+    # about a recommendation.
+    _rmeta, _rcards = parse_deck_file(d["path"])
+    _rmana = load_mana()
     target = getattr(args, "target", None) or _REDUNDANCY_TARGET
     buckets = effect_redundancy(d)
     if not buckets:
@@ -10470,7 +10510,9 @@ def cmd_redundancy(args):
             print("    ✓ add virtual copies (distinct cards — keeps it singleton):")
             for pw, nm in plan["functional"]:
                 tag = "owned" if own_of.get(nm) else "craft"
-                print(f"        + {nm[:34]:34} [{tag}]  pw~{pw:.1f}")
+                gate = unmet_gate_note(nm, _rcards, carddata, _rmana)
+                print(f"        + {nm[:34]:34} [{tag}]  pw~{pw:.1f}"
+                      + (f"   {gate}" if gate else ""))
         if plan["duplicates"]:
             strongest = max(b["cards"], key=lambda c: _card_power(c.lower(), carddata, rar))
             print(f"    ⚠ then run {plan['duplicates']} true duplicate(s) — {plan['reason']}:")
@@ -11897,6 +11939,35 @@ _TARGET_GATES = [
     # `suggest`'s Decks column and `cuts`' protect boost: a signal that fires on
     # everything is not a signal. A gate earns a row only when the resource can be SHORT.
 ]
+
+
+def unmet_gate_note(cand_name, cards, carddata, mana):
+    """``'⚠ gate: <label> — 0 in this deck'`` if adding `cand_name` would bring a GATE
+    this deck cannot satisfy, else ``''``.
+
+    `target_counts` already answers "does this deck hold what this card's text asks
+    for" — but only for cards ALREADY in the list. Nothing asked it about a card being
+    RECOMMENDED, so `redundancy`'s virtual-copy planner proposed Party Dude (draws only
+    when an OPPONENT's artifact dies) and Agent Maria Hill (needs a teamwork cost the
+    deck has none of) as card-advantage copies for deck 6 — two of four picks, each
+    drawing exactly zero. A working primitive one caller does not reach (G-40).
+
+    Report-only, and inherits every limit of `target_counts`: a heuristic over card
+    text, so read the card, not the flag."""
+    cd = carddata.get((cand_name or "").lower())
+    if not cd:
+        return ""
+    probe = list(cards) + [(1, cand_name, "", "")]
+    try:
+        rows = target_counts(probe, carddata, mana)
+    except Exception:
+        return ""
+    for card, label, count, need in rows:
+        if card != cand_name:
+            continue
+        if count == 0:
+            return f"⚠ gate: {label} — 0 in this deck"
+    return ""
 
 
 def target_counts(cards, carddata, mana):

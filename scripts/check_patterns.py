@@ -201,7 +201,7 @@ def _pattern_groups():
                  # gate exists for, and the reason the detector's own patterns were
                  # built by surveying real pool text rather than invented strings.
                  "_GY_HATE_OPP_RE", "_GY_HATE_ALL_RE", "_GY_HATE_CHOOSE_RE",
-                 "_GY_OWN_SCOPE_RE", "_GY_NEED_OPP_RE",
+                 "_GY_OWN_SCOPE_RE", "_GY_NEED_OPP_RE", "_GY_CONSUME_OPP_RE",
                  # The rainbow-fixer detector behind suggest-homes' colour-count
                  # overlay. A dead pattern here is silent in BOTH directions: the
                  # broad half going dead demotes every real manabase fixer to a

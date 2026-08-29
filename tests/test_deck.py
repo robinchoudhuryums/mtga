@@ -4596,6 +4596,97 @@ class TestSuggestHomesReadsCastabilityFromCost:
         so `_primary_type` is doing the front-face read (G-63), not a substring match."""
         assert "Land" in deck._primary_type("Land — Town // Legendary Artifact — Vehicle")
         assert "Land" not in deck._primary_type("Creature — Bird // Land")
+
+
+class TestOpponentGraveyardEngines:
+    """A graveyard engine has two owners and the two sides of ENGINE_THEMES disagreed
+    about which. Its ENABLER cues are ownership-blind (`mill`, `discard[^.]*card` match
+    "each opponent discards a card"); its PAYOFF cues are own-scoped (`from your
+    graveyard`). So a deck that fills THEIR yard and casts from it counted every enabler
+    and no payoff — decks 44 and 44a both read "12 enablers, no payoff — your engine has
+    no reward" while fielding four working payoffs."""
+
+    def test_reminder_text_is_not_a_dependency(self):
+        """The crime reminder — "Targeting opponents, anything they control, and/or
+        cards in their graveyards is a crime" — contains the exact phrase the broad
+        predicate looks for, so EVERY crime card read as needing their yard populated.
+        Same trap `role_coverage_flags` records for Ward's reminder tripping Counter."""
+        crime = ("Whenever you commit a crime, target creature you control gains your "
+                 "choice of menace or lifelink until end of turn. (Targeting opponents, "
+                 "anything they control, and/or cards in their graveyards is a crime.)")
+        assert "opponent" not in deck.graveyard_dependent(crime)
+
+    def test_a_real_opponent_yard_payoff_still_counts(self):
+        tiny = ("Deathtouch\nWhenever Tinybones deals combat damage to a player, you may "
+                "cast target nonland permanent card from that player's graveyard, and "
+                "mana of any type can be spent to cast that spell.")
+        assert "opponent" in deck.graveyard_dependent(tiny)
+        assert deck._GY_CONSUME_OPP_RE.search(deck._norm_role_text(tiny))
+
+    def test_needing_their_yard_is_not_consuming_it(self):
+        """Riverchurn Monument mills "cards equal to the number of cards in their
+        graveyard" — it genuinely WANTS their yard full, so the broad predicate (which
+        the zone-conflict flag reads) keeps it, while the engine PAYOFF side must not:
+        it FILLS yards, which is the enabler role. Counting it as a payoff inverted its
+        role, which is why the two predicates are split."""
+        mill = ("Exhaust — {2}{U}{U}, {T}: Any number of target players each mill cards "
+                "equal to the number of cards in their graveyard.")
+        assert "opponent" in deck.graveyard_dependent(mill), "broad predicate keeps it"
+        assert not deck._GY_CONSUME_OPP_RE.search(deck._norm_role_text(mill)), (
+            "a mill effect FILLS a yard — it is an enabler, never a payoff")
+
+    def test_the_CALLER_counts_opponent_yard_payoffs(self):
+        """A pure-function anchor cannot see whether a caller asks (G-40) — and the
+        first version of the tests above did not, so swapping the engine caller back to
+        the BROAD predicate passed them all. Deck 44a's whole plan is casting from an
+        opponent's graveyard; its verdict must not read "no payoff"."""
+        cd, cmeta = deck.load_card_data(), deck.load_card_meta()
+        d = deck.find_deck("44a")
+        meta, cards = deck.parse_deck_file(d["path"])
+        w = deck._deck_central_weights(meta, cards, cmeta)
+        central = deck._central_themes(w)
+        sig = deck._signature_themes(meta, cards, cmeta)
+        verdict = deck.engine_balance(cards, cd, central, sig, w).get(
+            "graveyard", {}).get("verdict", "")
+        assert verdict, "deck 44a should report a graveyard engine at all"
+        assert "no payoff" not in verdict, (
+            f"44a casts from THEIR yard four ways; got {verdict!r}")
+        # And the count must be the CONSUME-only one. 44a scores the same under either
+        # predicate, so it cannot tell them apart — deck 51a can: the broad predicate
+        # also matches opponent-MILL cards (Riverchurn Monument, Deepmuck Desperado),
+        # which are enablers, and inflated it from 9 payoffs to 12.
+        d2 = deck.find_deck("51a")
+        meta2, cards2 = deck.parse_deck_file(d2["path"])
+        w2 = deck._deck_central_weights(meta2, cards2, cmeta)
+        v2 = deck.engine_balance(cards2, cd, deck._central_themes(w2),
+                                 deck._signature_themes(meta2, cards2, cmeta), w2)
+        assert "/ 9 payoff" in v2.get("graveyard", {}).get("verdict", ""), (
+            "51a's opponent-mill cards are ENABLERS — counting them as payoffs is the "
+            f"broad-predicate bug: {v2.get('graveyard', {}).get('verdict', '')!r}")
+
+
+class TestProposedAddGateCheck:
+    """`target_counts` answers "does this deck hold what this card's text asks for" —
+    but only for cards ALREADY in the list. Nothing asked it about a card being
+    RECOMMENDED, so `redundancy` proposed cards whose gate the deck cannot satisfy."""
+
+    def test_an_unmet_gate_on_a_proposed_add_is_reported(self):
+        cd, mana = deck.load_card_data(), deck.load_mana()
+        d = deck.find_deck("6")
+        _meta, cards = deck.parse_deck_file(d["path"])
+        # Hobbit Hole searches for a Halfling; deck 6 (Abzan reanimator) runs none.
+        note = deck.unmet_gate_note("Hobbit Hole", cards, cd, mana)
+        assert note and "0 in this deck" in note, note
+
+    def test_a_card_with_no_gate_is_silent(self):
+        cd, mana = deck.load_card_data(), deck.load_mana()
+        d = deck.find_deck("6")
+        _meta, cards = deck.parse_deck_file(d["path"])
+        assert deck.unmet_gate_note("Swamp", cards, cd, mana) == ""
+        assert deck.unmet_gate_note("No Such Card At All", cards, cd, mana) == ""
+
+
+class TestStateGateCounts:
     """The gate family `_TARGET_GATES` structurally could not answer: a card gated on a
     GAME STATE rather than on cards in the list.
 
