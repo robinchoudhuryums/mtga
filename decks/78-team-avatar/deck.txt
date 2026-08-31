@@ -16,16 +16,20 @@
 #: archetype: be full of Allies (18 and 15 bodies against ONE and two payoffs), where
 #: archetype: this deck is built on the payoff half and splashes green for it.
 #: tier: B (PROVISIONAL) — an unplayed first draft, graded one band UNDER its A metrics
-#: tier: floor on purpose. The floor reads A on interaction 8 and card advantage 4 at a
-#: tier: 3.03 curve, and both numbers are honest as far as they go. What holds it at B is
+#: tier: floor on purpose. The floor reads A on interaction 7 and card advantage 4 at a
+#: tier: 3.06 curve, and both numbers are honest as far as they go. What holds it at B is
 #: tier: a single point of failure the metrics cannot price: the whole engine is one
 #: tier: legendary 3/3. Katara, the Fearless is what turns a pile of small Allies into a
 #: tier: draw engine, and against 2 protection effects one removal spell ends that. She is
 #: tier: also the deck's worst castability row — {G}{W}{U} on turn three prices at ~51%
 #: tier: against 13/8/8 sources, so realistically she lands turn four or five and the
-#: tier: deck spends its first three turns deploying bodies that do not yet loop. Second
+#: tier: deck spends its first three turns deploying bodies that do not yet loop. Delney,
+#: tier: Streetwise Lookout was ADDED 2026-08-31 as the partial answer — a {2}{W} second
+#: tier: doubler covering the 14 of 22 trigger-holding creature copies at power 2 or less,
+#: tier: which is every core engine piece — so the plan no longer needs Bant mana to work,
+#: tier: only to work fully. Second
 #: tier: cap: the interaction count is 8 but its composition is cheap tricks and auras
-#: tier: (Sonar Strike, Into the Flood Maw, Path to Redemption) rather than a removal
+#: tier: (Into the Flood Maw, Path to Redemption, Crib Swap) rather than a removal
 #: tier: suite, and `stats` flags zero answers to a noncreature permanent — that flag is
 #: tier: itself a classifier under-read, since Earth Kingdom Jailer exiles an artifact or
 #: tier: enchantment and Aang airbends any nonland permanent, so call the real figure two.
@@ -43,6 +47,23 @@
 #: notes: piece. Gather the White Lotus counts PLAINS, which is why the basics are 7
 #: notes: Plains rather than an even split (G-75: a card that names a resource is worth
 #: notes: the number of them in THIS deck).
+#: notes: THE TWO DOUBLERS DO NOT COVER THE SAME CARDS. Katara reads ALLY and ignores
+#: notes: power; Delney reads POWER 2 OR LESS and ignores type. They overlap on 14 of the
+#: notes: 22 trigger-holding creature copies, and with both out a small Ally's trigger
+#: notes: fires THREE times (base plus one each). The eight Delney misses are the bigger
+#: notes: bodies: Earth Kingdom Jailer, Toph, both Appas, Suki Kyoshi Warrior, Kyoshi
+#: notes: Warriors and Aang.
+#: notes: LIVE TENSION, MEASURED, NOT YET RESOLVED (G-42 shape): this deck's own anthems
+#: notes: push creatures OUT of Delney's range. White Lotus Reinforcements (+1/+1 to other
+#: notes: Allies) and Suki, Courageous Rescuer (+1/+0 to other creatures) each take South
+#: notes: Pole Voyager and Avatar Enthusiasts from 2 power to 3, and United Front puts a
+#: notes: counter on every creature. TEN of the fourteen sit at EXACTLY power 2, so they
+#: notes: are one anthem trigger from falling off; only Haru, Invasion Reinforcements,
+#: notes: Jeong Jeong's Deserters and Forecasting Fortune Teller have headroom. Whether
+#: notes: the anthems are a liability depends on how often a doubler is actually out,
+#: notes: which is a play question — do not cut them on this note alone.
+#: notes: Sonar Strike was CUT for Delney: its damage is conditional (attacking, blocking
+#: notes: or tapped only) and its lifegain rider needs a Bat, of which this deck runs zero.
 
 # Engine — the doubler and what it doubles
 1 Great Divide Guide (TLA) 181
@@ -63,6 +84,7 @@
 1 Toph, the Blind Bandit (TLA) 198
 1 Ty Lee, Chi Blocker (TLA) 76
 1 Sokka, Lateral Strategist (TLA) 241
+1 Delney, Streetwise Lookout (MKM) 12
 
 # Ally bodies and token makers
 2 Appa, Steadfast Guardian (TLA) 10
@@ -79,7 +101,6 @@
 
 # Interaction
 1 Parting Gust (BLB) 24
-1 Sonar Strike (BLB) 32
 1 Sheltered by Ghosts (DSK) 30
 1 Into the Flood Maw (BLB) 52
 1 Crib Swap (ECL) 11
