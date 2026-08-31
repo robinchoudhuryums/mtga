@@ -7551,7 +7551,7 @@ def cmd_cuts(args):
     if _vec["card_advantage"] < 3:
         _short.append(f"card advantage {_vec['card_advantage']}")
     if _vec.get("early_drops", 99) < 18:
-        _short.append(f"early drops {_vec['early_drops']} (avg MV {_vec['avg_mv']})")
+        _short.append(f"early drops {_early_drops_note(_vec)} (avg MV {_vec['avg_mv']})")
     if _short:
         print(f"  ⓘ This deck is short on {', '.join(_short)} — weigh a `⚠interaction` note "
               "against that before cutting a cheap card from an axis you are not long on.")
@@ -9689,6 +9689,14 @@ def cmd_suggest_homes(args):
     return 0
 
 
+def _early_drops_note(vec):
+    """`early_drops` rendered with the share of it that only makes MANA. The bare int
+    still feeds `tier_band` and the F10 guard; this is what a human should read, the
+    same split `count_conf` makes for the role counts (G-48)."""
+    n, m = vec.get("early_drops", 0), vec.get("early_mana", 0)
+    return f"{n} ({m} mana source{'s' if m != 1 else ''})" if m else str(n)
+
+
 def deck_quality_vector(d):
     """A deck's measurable QUALITY vector (F10), from the same primitives the CLI
     uses — so a cut/swap can be checked for regression before/after: buildable,
@@ -9705,6 +9713,7 @@ def deck_quality_vector(d):
     # need no special case: `owned()` already reports them unlimited.
     missing, short = deck_build_gap(cards, qty)
     theme_w, mvs, early = {}, [], 0
+    early_mana = 0
     creatures = reach = 0
     for q, n, s, c in cards:
         nl = n.lower()
@@ -9720,6 +9729,14 @@ def deck_quality_vector(d):
                 mvs += [entry[1]] * q
                 if entry[1] <= 2:
                     early += q
+                    # A cheap MANA SOURCE is not a cheap THREAT, and `early_drops`
+                    # counts them alike — which is how a curve argument gets made from
+                    # a number that does not support it (deck 59, 2026-08-31: four of
+                    # its nine "early drops" tap for mana, so "nine early drops" read
+                    # as a fast start it does not have). Reminder text is stripped
+                    # first, the way every other text predicate here reads a card.
+                    if _MANA_SOURCE_RE.search(_REMINDER_RE.sub(" ", cd.get("text") or "")):
+                        early_mana += q
         if "Creature" in _primary_type(tline):
             creatures += q
         # Reach = ability to CLOSE a game (the aggro axis): burn/drain reach, or an
@@ -9753,6 +9770,10 @@ def deck_quality_vector(d):
         "interaction_conf": count_conf(_tally, "interaction"),
         "card_advantage_conf": count_conf(_tally, "card_advantage"),
         "avg_mv": round(sum(mvs) / len(mvs), 2) if mvs else 0.0, "early_drops": early,
+        # How many of those early drops only make MANA. Reported beside the count so a
+        # human reading it for a CURVE argument sees what it is made of, and subtracted
+        # from the aggro `_clock_score` where "cheap threat" is what the term means.
+        "early_mana": early_mana,
         "creatures": creatures, "reach": reach,
         # The deck's game PLAN drives which axes its tier floor weights (#4): an aggro
         # deck is graded on its clock, not an interaction suite it doesn't want.
@@ -9834,7 +9855,7 @@ def cmd_quality(args):
     print(f"Quality — deck {d['id']}: {d['name'] or d['path']}")
     for k in ("buildable", "uncastable", "interaction", "card_advantage",
               "avg_mv", "early_drops", "central_themes"):
-        print(f"  {k:15}: {vec[k]}")
+        print(f"  {k:15}: {_early_drops_note(vec) if k == 'early_drops' else vec[k]}")
 
     regressions = []
     if getattr(args, "vs", None):
@@ -9952,6 +9973,12 @@ def deck_plan(meta, avg_mv=None, interaction=None, early=None):
     return "midrange"
 
 
+# A mana ability, read off the text the same way `granted_keywords` reads a grant:
+# "{T}: Add {G}", "Add one mana of any color". Reminder text is stripped by the caller.
+_MANA_SOURCE_RE = re.compile(r"\badds?\s+(?:\{|one mana|two mana|three mana|X mana|"
+                             r"that much|mana of any)", re.I)
+
+
 def _clock_score(vec):
     """Aggressive 'clock' proxy (0–7): a low curve + cheap threats + reach to close.
     Substitutes for interaction in `tier_band` ONLY for an aggro plan — a fast deck's
@@ -9964,7 +9991,12 @@ def _clock_score(vec):
     # is what deserves the sentinel; a measured 0.0 curve is a fact about the deck.
     mv = vec.get("avg_mv")
     mv = 99.0 if mv is None else mv
-    early = vec.get("early_drops", 0)
+    # THREATS, not bodies: a turn-two mana dork does not shorten the clock, and this
+    # term is the substitute for interaction that lets an aggro deck float its floor.
+    # Measured before shipping (K-14): 0 of 114 decks change band, and no deck on an
+    # aggro plan has a mana-dense early curve today — so this is a correction that
+    # buys nothing now and stops a future ramp deck buying a band it has not earned.
+    early = max(0, vec.get("early_drops", 0) - vec.get("early_mana", 0))
     reach = vec.get("reach", 0)
     c = 3 if mv <= 2.2 else 2 if mv <= 2.6 else 1 if mv <= 3.0 else 0
     c += 2 if early >= 12 else 1 if early >= 8 else 0
@@ -9988,12 +10020,41 @@ def _clock_score(vec):
 _BELOW_FLOOR_ARGUMENT = re.compile(
     r"(?:below the (?:measurable |metrics )?floor|band BELOW|deliberately (?:one )?band|"
     r"conservative (?:read|grade)|fails? (?:the )?(?:fourth|two|three)|"
-    r"(?:≤\s*1|at most one|one) (?:clear )?weakness|PROVISIONAL)", re.I)
+    r"(?:≤\s*1|at most one|one) (?:clear )?weakness|PROVISIONAL|"
+    # The HELD-BY family, measured 2026-08-31. The cue list above spells the rubric's
+    # own vocabulary; what the roster actually writes is "held at B by <reason>",
+    # "Residual cap: <reason>", "WHAT CAPS IT IS <reason>" and a weakness COUNT above
+    # the one an A allows. Seven of the ten decks the guard was nagging make exactly
+    # the argument the suppression exists to honour — a 70% false-positive rate on a
+    # standing warning, which is the saturation shape G-07 measured on `audit`'s
+    # review flag and the reason nobody reads it.
+    r"held (?:at|below)\b|\bletter (?:stays|is held)\b|"
+    r"\bresidual cap\b|\bwhat caps it\b|\bcaps it\b|\bcapped\b|"
+    # The weakness COUNT must be related to a BAND to count, not merely stated: the
+    # roster writes "Three weaknesses, where A allows one" and "Two clear weaknesses is
+    # past what B tolerates", while a bare "two weaknesses, both covered" is a topic
+    # match the pattern's own "narrow on purpose" note forbids.
+    r"(?:two|three|four|\d+) (?:clear )?weakness(?:es)?"
+    r"[^.]{0,40}?(?:where|than|past what|allows?|tolerat))", re.I)
+# ...and the OVERRIDE, because three of those ten decks ASK for the flag in the same
+# breath as they argue the cap: 7 opens "RE-GRADE CANDIDATE, and the argument for B has
+# now expired", 19 says "the letter stays B pending the human call the flag asks for",
+# 23 "HELD at B pending a human re-grade". A rationale that defers the call wants the
+# nudge; one that makes the call does not. This is checked AFTER the argument cues, so
+# a deck can hold at B by a stated reason and still be flagged while it says the reason
+# is provisional.
+_WANTS_UNDER_GRADE_FLAG = re.compile(
+    r"(?:re-?grade candidate|pending (?:a|the) (?:human )?(?:re-?grade|call|judgment))",
+    re.I)
 
 
 def _argues_below_floor(meta):
-    """True when `#: tier:` explicitly argues for grading under the metrics floor."""
-    return bool(_BELOW_FLOOR_ARGUMENT.search((meta or {}).get("tier", "") or ""))
+    """True when `#: tier:` explicitly argues for grading under the metrics floor —
+    and does not, in the same block, defer the call to a human it wants prompted."""
+    prose = (meta or {}).get("tier", "") or ""
+    if _WANTS_UNDER_GRADE_FLAG.search(prose):
+        return False
+    return bool(_BELOW_FLOOR_ARGUMENT.search(prose))
 
 
 def _keepable_at(nlands, deck_size, hand=7):

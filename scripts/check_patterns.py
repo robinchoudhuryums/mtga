@@ -124,6 +124,10 @@ _EXCLUDED = {
     ("deck", "_BELOW_FLOOR_ARGUMENT"): "tier-RATIONALE prose (F-07: does the header argue "
                                        "for grading UNDER the metrics floor); unit-tested "
                                        "in test_deck.py",
+    ("deck", "_WANTS_UNDER_GRADE_FLAG"): "tier-RATIONALE prose (the override on "
+                                         "_BELOW_FLOOR_ARGUMENT: does the header defer "
+                                         "the call to a human it wants prompted); "
+                                         "unit-tested in test_deck.py",
     ("deck", "_TRAILING_NOTE_RE"): "hand-typed card NAME normalization (strips a pile's "
                                    "'(needs Lessons)' note), not card text; unit-tested "
                                    "in test_deck.py::TestNameResolution",
@@ -202,6 +206,10 @@ def _pattern_groups():
                  # built by surveying real pool text rather than invented strings.
                  "_GY_HATE_OPP_RE", "_GY_HATE_ALL_RE", "_GY_HATE_CHOOSE_RE",
                  "_GY_OWN_SCOPE_RE", "_GY_NEED_OPP_RE", "_GY_CONSUME_OPP_RE",
+                 # The mana-ability detector behind the early-drop threat/mana split. It
+                 # goes dead in the quiet direction — every early drop reads as a threat
+                 # again, which is exactly the pre-fix behaviour.
+                 "_MANA_SOURCE_RE",
                  # The rainbow-fixer detector behind suggest-homes' colour-count
                  # overlay. A dead pattern here is silent in BOTH directions: the
                  # broad half going dead demotes every real manabase fixer to a

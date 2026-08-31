@@ -1402,6 +1402,51 @@ you WIDEN a scan.** Two-thirds of the new reports were false, and the fix for th
 naming convention away from silently deleting the only true one.
 
 
+### Re-measured and re-declined: scanning `#: notes:` (2026-08-31)
+
+`#: notes:` has always been out of the staleness scan on a DESIGN argument — it is a
+build log, and naming an absent card there is correct. Two live misses in one session put
+the argument to the test: deck 59's notes listed **Ancestors' Aid** among the sinks that
+"must be castable in combat" after it was cut, and described **Famished Worldsire**'s
+devour-land as opt-in after that card was gone. Both are claims about the current list
+sitting in a header full of claims about the past.
+
+The shape that looked separable was **enumeration**: a card named in the same clause as
+cards the deck DOES run is being listed as part of the current list, while a build-log
+citation stands alone or beside other absent cards. Implemented as `_notes_live_claim`,
+reusing every existing suppression.
+
+**Measured, in two rounds:**
+
+| variant | roster hits | precision (graded on the first 60) |
+|---|---:|---|
+| clause co-lists a live card | 81 across 34 decks | ~27 real / ~33 false (**45%**) |
+| …plus a clause-wide history cue | 61 across 24 decks | fewer false, and it also drops real hits (deck 21's "~4 red-capable sources (…)", deck 26's Fin Fang Foom trigger count) |
+
+The false positives are not noise to be tuned away; they are the header working as
+intended. `OUT: A · B · C · …`, `IN: …`, `Craft targets: …`, `THE TOKEN-MAKERS
+DELIBERATELY EXCLUDED: …` — deck 26a's notes *say* the exclusion list lives there
+"because --audit-rationale audits that block for cards the deck does not run", so the fix
+would break a contract the data itself documents. The second round exists because those
+list headers sit hundreds of characters from their last item, past
+`_cites_as_history`'s ±140 window — G-27's documented proximity residual, one header over.
+
+**What settles it is that neither variant catches the motivating case.** The pre-fix
+deck-59 clause was:
+
+> …its sinks must be castable in combat: Bolt Bend (…), The Last Agni Kai and Ancestors'
+> Aid — Rough Rhino Cavalry and its {8} exhaust **were CUT** 2026-08-31 for Hugs.
+
+The change-cue for a *different* card sits ~45 characters after the stale citation, inside
+the same clause. Run against a reconstructed pre-fix file, both variants return `[]`. The
+suppression that makes the tier/archetype scan trustworthy is exactly what blinds it here,
+because `#: notes:` is where change-language and live claims are most densely interleaved
+— that is what a build log *is*.
+
+Declined, and reverted rather than shipped behind a flag. The residual stands: **a live
+claim in `#: notes:` goes stale silently**, and the only thing that finds it is reading
+the header after a swap. Re-measure before trying again; the numbers above are the bar.
+
 ## [G-28] `deck.py suggest` shows a cross-deck reuse count (`Decks` column)
 
 **`deck.py suggest` shows a cross-deck reuse count (`Decks` column).** For each
@@ -5331,3 +5376,60 @@ plan (20 central themes)"), and the live number is 13. The figure was corrected,
 argument recorded in place, and the **letter left alone** — a tier letter is a human call.
 **A tagger change that moves a centrality floor moves every prose figure derived from it**,
 and nothing sweeps deck prose for arithmetic that was true when written.
+
+## [G-81] An early drop that only makes mana is not a clock
+
+`deck_quality_vector` counts `early_drops` as "nonland cards with mana value 2 or less,
+quantity-weighted". A turn-two Llanowar Elves and a turn-two 3/1 beater are the same
+number to it. They are not the same card, and two different consumers of that number
+were reading it as though they were.
+
+**The consumer that shows up in chat.** Deck 59 (2026-08-31) was being argued about — was
+Nasty Little Rabbit worth a slot over Flopsie? — and I leaned on "nine early drops" as
+evidence the curve was already fast enough. Then I went and read what the nine *are*:
+Fire Sages, Ruby, Raucous Audience and Spider Manifestation all tap or firebend for mana.
+Four of nine. For a combat-ramp deck "make mana on turn two" genuinely is the early game,
+so the count was not wrong — but it was not the number the argument needed, and nothing
+on the surface said so. I reversed my own recommendation on the strength of the recount.
+
+**The consumer that grades.** `_clock_score` (G-45 / the archetype-aware floor, #4) is the
+term that lets an **aggro** plan substitute speed for the interaction the resilience floor
+otherwise demands, and it read `early_drops` whole:
+
+```
+c += 2 if early >= 12 else 1 if early >= 8 else 0
+```
+
+A ramp deck declaring `#: plan: aggro` with twelve cheap mana sources and no threats would
+have collected the full clock credit for a board that does nothing. That is the same shape
+as the `#: plan:` header buying deck 56a a band (see the rubric section) — an input to the
+floor that looks like a description and behaves like a grade.
+
+**The fix, and its measured cost.** `_MANA_SOURCE_RE` reads a mana ability off the card
+text with reminder text stripped (`add {`, `add one mana of any color`, …), the same way
+`granted_keywords` reads a grant rather than trusting a field. `deck_quality_vector` now
+carries `early_mana` beside `early_drops`; `_clock_score` subtracts it; `quality` and
+`tier --to` render `9 (4 mana sources)`.
+
+K-14 diff before shipping: **0 of 114 decks change tier band.** No deck currently on an
+aggro plan has a mana-dense early curve, so the `_clock_score` half buys nothing today —
+it is there so a future ramp deck cannot buy a band it has not earned. What the *display*
+half changes is visible on six decks:
+
+| deck | plan     | early drops | of which mana |
+|------|----------|------------:|--------------:|
+| 17   | midrange |          12 |             6 |
+| 69b  | midrange |          10 |             4 |
+| 59   | midrange |           9 |             4 |
+| 75   | midrange |           8 |             4 |
+| 20b  | midrange |           7 |             4 |
+| 76   | midrange |           6 |             2 |
+
+Deck 17 is the one to look at: "12 early drops" and "6 early drops plus 6 mana sources"
+describe very different decks, and only the second is true.
+
+**The bare int still feeds `tier_band` and the F10 quality guard**, exactly as `role_tally`
+keeps bare ints while `count_conf` renders the uncertainty for a human (G-48). The
+rationale-figure audit also still compares a quoted "N early drops" against the total,
+because that is what the prose means.
+

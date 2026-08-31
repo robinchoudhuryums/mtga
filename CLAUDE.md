@@ -192,7 +192,7 @@ castability · curve · central-theme density), with the intangibles moving a de
 - **The guard** — `deck.py tier <id>` shows claimed-vs-floor and flags a mismatch
   (≥2 bands over) or a possibly-under-graded deck (claimed *below* the under-rating
   floor) — **unless the `#: tier:` prose argues for grading under it**, which the rubric
-  permits and which three decks were being nagged about. A roster pass is a **soft, non-gating** `check_all` warning, so an
+  permits. **That suppression spelled the RUBRIC's vocabulary while the roster writes its own**: on 2026-08-31 SEVEN of the ten decks still nagged argued the cap in the held-by idiom ("held at B by", "Residual cap:", "WHAT CAPS IT IS", a weakness COUNT against what a band allows) — a 70% false-positive rate on a standing warning, the G-07 saturation shape. Widened, and the **OVERRIDE is the load-bearing half**: the other three (7/19/23) argue the cap *and* defer the call ("RE-GRADE CANDIDATE", "pending the human call the flag asks for"), so a rationale that defers still gets the nudge. 10 flagged → 3, all seven flips one-directional, none the other way. A roster pass is a **soft, non-gating** `check_all` warning, so an
   inflated/stale letter can't hide. It never assigns — it says "re-grade this, or
   justify the bombs/meta in the `#: tier:` rationale." **Run it after any deck edit**
   (the `/apply-changes` skill does) so a tune that moves the metrics re-grounds the
@@ -444,13 +444,9 @@ directions.
   loop read `tier` alone, so an archetype figure could contradict the vector indefinitely.
   Widening it needed two clause-scoped suppressions — a figure about another deck named by
   NAME, and one whose subject is the card POPULATION ("Standard's Dragons average MV 5.30")
-  — plus the rule that a name forming part of THIS deck's own name is not another deck,
-  since the variant convention makes 26a "Iron Forge — Virulent". `#: notes:` stays out of
-  the STALENESS scan — a build log may name an absent card — but an EXCLUSION claim in it
-  is checked. Same split for `#~ note:` prose since 2026-08-11 (G-04). Report-only. A rationale naming a card it cut must put the change-cue in the
-  SAME clause. **Residual: the EXCLUSION check has a proximity window and misses a name
-  several lines into a wrapped list** — deck 52 named Zemo under "Deliberately NOT
-  included" while running him, and `wrong_exclusion_claims` returned empty. [G-27]
+  — plus the rule that a name forming part of THIS deck's own name is not another deck, since
+  the variant convention makes 26a "Iron Forge — Virulent". `#: notes:` stays out of the STALENESS scan (a build log may name an absent card) but an EXCLUSION claim in it IS checked; same split for `#~ note:` prose since 2026-08-11 (G-04). Report-only, and a rationale naming a card it cut must put the change-cue in the SAME clause.
+  **TWO RESIDUALS, ONE SHAPE — a proximity window loses a long list.** The EXCLUSION check misses a name several lines into a wrapped one (deck 52 named Zemo under "Deliberately NOT included" while running him; `wrong_exclusion_claims` returned empty). And SCANNING `#: notes:` for staleness was re-measured and re-DECLINED 2026-08-31: 81 roster hits at ~45% precision, 61 with a clause-wide history cue, and deck 59's cut Ancestors' Aid is caught by NEITHER — its own clause said another card "were CUT … for Hugs", so the suppressions that make this scan trustworthy are exactly what blind it in a build log. [G-27]
 - **`suggest`'s `Decks` column is cross-deck BREADTH, not curated fit** — castable and
   sharing a *central* theme that is also SPECIFIC, with variants collapsed to their core
   deck. Both gates are load-bearing: centrality alone left the column saturated at 99%,
@@ -1006,6 +1002,21 @@ directions.
   dashboard's **"Log a match"** panel does both from a phone — the page is STATIC, so it
   queues in `localStorage` and hands back lines; it parses a pasted log only to LABEL
   rows, and emits only the id, so a misparse there cannot corrupt a stored W/L. [G-74]
+
+- **AN EARLY DROP THAT ONLY MAKES MANA IS NOT A CLOCK, and `early_drops` counted them
+  alike.** A turn-two mana dork and a turn-two beater are one number to
+  `deck_quality_vector`, so "nine early drops" was leaned on in chat as a curve argument
+  for deck 59 where FOUR of the nine tap for mana — the misread came from the tool's own
+  figure and reversed on a hand recount. Worse one layer down: `_clock_score`, the term
+  that lets an **aggro** plan substitute speed for the interaction the floor demands, read
+  the count WHOLE — a ramp deck declaring `#: plan: aggro` would collect full clock credit
+  for a board that does nothing (the deck-56a shape: an input that looks like a description
+  and behaves like a grade). `_MANA_SOURCE_RE` splits them off the card TEXT; `quality` /
+  `tier --to` render `9 (4 mana sources)` and the clock counts THREATS. K-14 diff: **0 of
+  114 decks change band** — no aggro-plan deck is mana-dense today, so this buys nothing
+  now and stops a future one buying a band. SIX decks read mana-dense; deck 17 is 12 early
+  drops of which **6** are mana, a different deck than "12". The bare int still feeds
+  `tier_band` and the F10 guard, like `count_conf` (G-48). [G-81]
 
 ## Known Issues
 

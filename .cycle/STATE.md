@@ -2460,3 +2460,35 @@ reusing deck.py primitives rather than re-deriving. Four findings, all coverage-
 
 **Where I left off:** all green, 1462 tests, zero skips. All seven subsystems now audited
 this cycle except Data and Outcomes, both judged low-yield in the audit-order analysis.
+
+## 2026-08-31 — /broad-implement: the tier under-grade guard, and mana in the early curve
+
+Two of the three tooling holes the deck-59 session left open. Block:
+`.cycle/blocks/2026-08-tier-guard-and-early-drops-broad-implement.md`.
+
+- **The under-grade suppression was nagging 7 of the 10 decks it flagged.**
+  `_BELOW_FLOOR_ARGUMENT` spelled the RUBRIC's vocabulary while the roster writes its own
+  held-by idiom ("Held at B, not A, by…", "Residual cap:", "WHAT CAPS IT IS…", a weakness
+  count against what a band allows). 70% false positives on a standing warning is the
+  G-07 saturation shape. Widened — and the OVERRIDE is what makes it safe: decks 7, 19
+  and 23 argue the cap AND defer the call in the same block, so a rationale that says
+  "pending a human re-grade" still gets the nudge. 10 → 3, every flip one-directional.
+- **`early_drops` counted a mana dork as a cheap threat.** It misled ME, in chat, on deck
+  59 ("nine early drops" — four tap for mana), and one layer down `_clock_score` read the
+  count whole, so a ramp deck on `#: plan: aggro` would have collected full clock credit
+  for a board that does nothing. Split off the card TEXT; K-14 diff **0 of 114 bands**.
+  Six decks read mana-dense — deck 17 is 12 early drops of which SIX are mana.
+- **`#: notes:` staleness: BUILT, MEASURED, REVERTED.** 81 roster hits at ~45% precision,
+  and neither variant catches the motivating case — deck 59's pre-fix clause named the
+  cut card ~45 chars from a change-cue about a DIFFERENT card. The suppressions that make
+  the tier/archetype scan trustworthy are what blind it in a build log. Numbers in [G-27];
+  do not re-derive them, and treat them as the bar for a future attempt.
+
+**Decided AGAINST (do not re-propose without new evidence):** scanning `#: notes:` for
+stale card citations. **Left open for a HUMAN, not a tool:** decks 7, 19 and 23 are still
+flagged possibly under-graded because their own rationales ask to be — each needs the
+tiering call it defers.
+
+**Where I left off:** all green — full pytest exit 0, `check_all` all invariants hold (the
+two pre-existing soft warnings: stale committed dashboard, four known dead searches),
+check_patterns 288 live, check_docs OK.

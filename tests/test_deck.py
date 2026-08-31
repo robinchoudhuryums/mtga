@@ -3982,6 +3982,99 @@ class TestBelowFloorArgument:
             {"tier": "A — two weaknesses, both covered by the sideboard."})
 
 
+class TestUnderGradeSuppressionReadsTheRosterVocabulary:
+    """The guard was nagging 7 of the 10 below-floor decks it flagged for making exactly
+    the argument the suppression exists to honour — a 70% false-positive rate on a
+    STANDING warning, which is the saturation shape G-07 measured on `audit`'s review
+    flag. The cue list spelled the rubric's vocabulary; the roster writes "held at B by
+    <reason>" instead. Measured 2026-08-31: 10 flagged → 3, all 7 flips one-directional
+    and every one a true positive, no deck moving the other way."""
+
+    HELD_BY = [
+        # deck 6
+        "B — Abzan reanimator. Residual cap: singleton inconsistency (redundancy is the "
+        "only A-lever, and it trades away the singleton character).",
+        # deck 20a
+        "B — Held at B, not A, by the real gap: card advantage 2 and a 3.64 curve.",
+        # deck 34
+        "B — a glass cannon held below A by that fragility and rainbow-singleton variance.",
+        # deck 37
+        "B — held at B by three-color singleton variance and a fragile go-wide board.",
+        # deck 26b
+        "B — WHAT CAPS IT IS THE ZERO-PROTECTION FLAG. 'Coherent but capped' fits.",
+        # deck 48a
+        "B — Three weaknesses, where A allows one: the interaction is lopsided by speed.",
+        # deck 20b
+        "C — The letter STAYS at C. Two clear weaknesses is past what B tolerates.",
+    ]
+
+    def test_the_held_by_family_suppresses(self):
+        for prose in self.HELD_BY:
+            assert deck._argues_below_floor({"tier": prose}), prose[:40]
+
+    DEFERS = [
+        # deck 7
+        "B — RE-GRADE CANDIDATE, and the argument for B has now expired. Held at B "
+        "pending a HUMAN call only because the deck is UNPLAYED.",
+        # deck 19
+        "B — The letter stays B pending the human call the flag asks for. WHAT ACTUALLY "
+        "CAPS IT, measured: the white manabase.",
+        # deck 23
+        "B — Letter HELD at B pending a human re-grade; the case for B is card advantage.",
+    ]
+
+    def test_a_rationale_that_defers_the_call_still_gets_the_nudge(self):
+        """The override is the load-bearing half. All three of these ALSO argue the cap
+        — 19 in the same sentence — so widening without it would have silenced the three
+        decks that are explicitly asking to be prompted."""
+        for prose in self.DEFERS:
+            assert not deck._argues_below_floor({"tier": prose}), prose[:40]
+
+    def test_a_weakness_COUNT_needs_a_band_to_be_rubric_language(self):
+        """Watched-it-fail companion to the existing bare-`weaknesses` negative: the
+        count only argues the cap when it is related to what a band ALLOWS."""
+        assert deck._argues_below_floor(
+            {"tier": "B — Two weaknesses, where A allows one."})
+        assert not deck._argues_below_floor(
+            {"tier": "B — two weaknesses, both covered by the sideboard."})
+
+
+class TestEarlyDropsSeparatesThreatsFromMana:
+    """`early_drops` counted a turn-two mana dork and a turn-two beatdown creature
+    alike, and `_clock_score` — the term that lets an AGGRO deck's floor float above its
+    interaction — read the total. Deck 59 (2026-08-31): four of its nine early drops tap
+    for mana, and "nine early drops" was leaned on as a curve argument it does not
+    support. K-14 diff before shipping: 0 of 114 decks change band."""
+
+    def test_a_mana_ability_is_read_off_the_text(self):
+        for t in ("{T}: Add {G}.", "{T}: Add one mana of any color.",
+                  "Whenever this attacks, add {R}{R}."):
+            assert deck._MANA_SOURCE_RE.search(t), t
+
+    def test_adding_something_that_is_not_mana_is_not_a_mana_source(self):
+        for t in ("Put a +1/+1 counter on target creature.",
+                  "Add its power to your life total.", "Adamant — if three mana was spent"):
+            assert not deck._MANA_SOURCE_RE.search(t), t
+
+    def test_the_clock_counts_threats_not_bodies(self):
+        """The mutation this pins: `_clock_score` reading `early_drops` whole. Ten cheap
+        cards of which nine only make mana is not a clock."""
+        fast = {"avg_mv": 2.0, "early_drops": 12, "reach": 0, "early_mana": 0}
+        assert deck._clock_score(fast) > deck._clock_score({**fast, "early_mana": 11})
+
+    def test_a_vector_without_the_key_is_unchanged(self):
+        """`tier_band` is called on hand-built vectors by check_tier.py and on snapshots
+        written before this key existed — absent must mean 'no mana drops', not a crash."""
+        assert deck._clock_score({"avg_mv": 2.0, "early_drops": 12, "reach": 0}) == \
+               deck._clock_score({"avg_mv": 2.0, "early_drops": 12, "reach": 0,
+                                  "early_mana": 0})
+
+    def test_the_human_render_carries_the_split(self):
+        assert deck._early_drops_note({"early_drops": 9, "early_mana": 4}) == "9 (4 mana sources)"
+        assert deck._early_drops_note({"early_drops": 8, "early_mana": 1}) == "8 (1 mana source)"
+        assert deck._early_drops_note({"early_drops": 8, "early_mana": 0}) == "8"
+
+
 class TestKeepableNeighbour:
     """F-08: the land advisory reversed direction and could not be satisfied — deck 52 at
     24 lands read "consider FEWER", the same list at 23 read "consider MORE" at a WORSE
