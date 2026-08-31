@@ -9,7 +9,7 @@
 #: archetype: one, Jolene's Treasure per power-4 attack, Roxanne
 #: archetype: doubling every token tap); the sink layer spends it on monsters
 #: archetype: (Ghalta costs {X} less for total power, Goldvein Hydra eats any X,
-#: archetype: Famished Worldsire, Vaultborn Tyrant, Web of Life and Destiny cheating
+#: archetype: Hugs' impulse-X, Vaultborn Tyrant, Web of Life and Destiny cheating
 #: archetype: a creature in every combat); and the power-4 payoff lattice (Garruk's
 #: archetype: Uprising and Outcaster Trailblazer draws, The Earth King's lands, The
 #: archetype: Boulder's earthbend, Scalestorm's Dinos, Tiger-Dillo) rewards the
@@ -33,7 +33,7 @@
 #: notes: VENTMAW mana is different — it lasts
 #: notes: until end of TURN ("you don't lose this mana as steps and phases end"),
 #: notes: so it reaches main phase 2 and pays for the sorcery-speed monsters
-#: notes: (Goldvein Hydra's X, Ghalta, Worldsire). Sequencing: declare attackers,
+#: notes: (Goldvein Hydra's X, Ghalta, Hugs' X). Sequencing: declare attackers,
 #: notes: spend firebending mana DURING combat (instants/activations), spend
 #: notes: Ventmaw mana + Treasures in main 2 on the monsters. Jolene's Treasures
 #: notes: and Roxanne's Meteorites persist across turns — the engine banks.
@@ -42,9 +42,13 @@
 #: notes: exists (trivial here). The Boulder's earthbent land RETURNS on death —
 #: notes: removal insurance the deck otherwise lacks. Tiger-Dillo and Scalestorm
 #: notes: carry their power-4 gates from the 55-pile parked list — this deck meets
-#: notes: them by design (~14 bodies reach power 4). G-42 audit: nothing here
-#: notes: empties our own board or graveyard; Worldsire's devour-land is OPT-IN —
-#: notes: never sac lands you need, its ETB refills from the top anyway.
+#: notes: them by design (~19 bodies reach power 4, and Wilderland Scrounger's
+#: notes: per-attack counters promote the rest). G-42 audit: nothing here empties
+#: notes: our own board or graveyard. Famished Worldsire was CUT 2026-08-31 for
+#: notes: Cactusfolk Sureshot: its devour-land was described here as OPT-IN, but it
+#: notes: is printed 0/0, so sacrificing NO lands means it enters and dies on the
+#: notes: spot — the choice is how many, not whether, and this deck wants the lands
+#: notes: (The Earth King fetches them, The Boulder earthbends one).
 
 # Attack-mana engine
 2 Savage Ventmaw (FDN) 665
@@ -67,7 +71,6 @@
 # Monster sinks
 1 Ghalta, Primal Hunger (FDN) 222
 1 Goldvein Hydra (OTJ) 167
-1 Famished Worldsire (EOE) 182
 1 Vaultborn Tyrant (BIG) 20
 1 Web of Life and Destiny (SPM) 122
 1 Red Hulk (MSH) 149
@@ -86,6 +89,7 @@
 1 Halana and Alena, Partners (VOW) 239
 1 Bitter Work (TLA) 210
 1 Wilderland Scrounger (HOB) 141
+1 Cactusfolk Sureshot (OTJ) 199
 
 # Interaction (combat-mana sinks)
 1 The Last Agni Kai (TLA) 144
