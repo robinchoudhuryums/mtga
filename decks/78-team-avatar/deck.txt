@@ -1,0 +1,102 @@
+#: name: Team Avatar
+#: format: Standard
+#: colors: GWU
+#: archetype: BANT ALLY TRIBAL, and the plan is a TRIGGER-DOUBLING engine rather than
+#: archetype: an anthem pile. Katara, the Fearless makes every triggered ability of every
+#: archetype: Ally fire twice, so the deck is built out of two halves that feed each
+#: archetype: other: cards that put Allies onto the battlefield (five token makers plus
+#: archetype: fourteen Ally bodies), and cards that TRIGGER when an Ally enters (South
+#: archetype: Pole Voyager, Avatar Enthusiasts, Haru). South Pole Voyager is the reason
+#: archetype: this is a deck and not a theme — its ability draws a card the SECOND time
+#: archetype: it resolves in a turn, so with Katara out every single Ally that enters
+#: archetype: draws. The ETB Allies are chosen to be worth doubling: Earth Kingdom Jailer
+#: archetype: exiles TWO permanents, The Earth King makes TWO 4/4 Bears, Ty Lee taps down
+#: archetype: two blockers, Toph earthbends 4. Distinct from the roster's other Avatar
+#: archetype: decks by axis, not just colour: 15 and 16 are WU tempo decks that happen to
+#: archetype: be full of Allies (18 and 15 bodies against ONE and two payoffs), where
+#: archetype: this deck is built on the payoff half and splashes green for it.
+#: tier: B (PROVISIONAL) — an unplayed first draft, graded one band UNDER its A metrics
+#: tier: floor on purpose. The floor reads A on interaction 8 and card advantage 4 at a
+#: tier: 3.03 curve, and both numbers are honest as far as they go. What holds it at B is
+#: tier: a single point of failure the metrics cannot price: the whole engine is one
+#: tier: legendary 3/3. Katara, the Fearless is what turns a pile of small Allies into a
+#: tier: draw engine, and against 2 protection effects one removal spell ends that. She is
+#: tier: also the deck's worst castability row — {G}{W}{U} on turn three prices at ~51%
+#: tier: against 13/8/8 sources, so realistically she lands turn four or five and the
+#: tier: deck spends its first three turns deploying bodies that do not yet loop. Second
+#: tier: cap: the interaction count is 8 but its composition is cheap tricks and auras
+#: tier: (Sonar Strike, Into the Flood Maw, Path to Redemption) rather than a removal
+#: tier: suite, and `stats` flags zero answers to a noncreature permanent — that flag is
+#: tier: itself a classifier under-read, since Earth Kingdom Jailer exiles an artifact or
+#: tier: enchantment and Aang airbends any nonland permanent, so call the real figure two.
+#: tier: Third: 46 distinct nonland cards is heavy singleton variance for a deck that
+#: tier: wants a specific 3-drop. Re-grade after it is played — if Katara survives even
+#: tier: half the time the A case is real, and that is a question no model here answers.
+#: protect: Katara, the Fearless; South Pole Voyager; Avatar Enthusiasts; Haru, Hidden Talent; Suki, Kyoshi Warrior
+#: notes: THE DOUBLER'S SCOPE is the thing to get right and it is narrower than "doubles
+#: notes: Ally effects": Katara doubles TRIGGERED abilities only. White Lotus
+#: notes: Reinforcements' anthem and Suki, Courageous Rescuer's +1/+0 are STATIC and are
+#: notes: not doubled; Kyoshi Battle Fan's equip is an ACTIVATED ability and is not
+#: notes: doubled (its ETB token is). Suki, Courageous Rescuer's token trigger reads
+#: notes: "This ability triggers only once each turn", which caps it at one even with
+#: notes: Katara out — she is in the list for the anthem and the body, not as an engine
+#: notes: piece. Gather the White Lotus counts PLAINS, which is why the basics are 7
+#: notes: Plains rather than an even split (G-75: a card that names a resource is worth
+#: notes: the number of them in THIS deck).
+
+# Engine — the doubler and what it doubles
+1 Great Divide Guide (TLA) 181
+1 Haru, Hidden Talent (TLA) 182
+1 South Pole Voyager (TLA) 35
+1 Invasion Reinforcements (TLA) 24
+1 Jeong Jeong's Deserters (TLA) 25
+1 Forecasting Fortune Teller (TLA) 51
+1 Kyoshi Battle Fan (TLA) 257
+1 Compassionate Healer (TLA) 13
+1 Path to Redemption (TLA) 31
+1 Katara, the Fearless (TLA) 230
+1 Avatar Enthusiasts (TLA) 11
+1 White Lotus Reinforcements (TLA) 251
+1 Suki, Courageous Rescuer (TLA) 37
+1 Earth Kingdom Jailer (TLA) 16
+1 Glider Kids (TLA) 21
+1 Toph, the Blind Bandit (TLA) 198
+1 Ty Lee, Chi Blocker (TLA) 76
+1 Sokka, Lateral Strategist (TLA) 241
+
+# Ally bodies and token makers
+2 Appa, Steadfast Guardian (TLA) 10
+1 Suki, Kyoshi Warrior (TLA) 243
+1 Kyoshi Warriors (TLA) 26
+1 Hakoda, Selfless Commander (TLA) 23
+1 Aang, the Last Airbender (TLA) 4
+1 The Earth King (TLA) 172
+2 Earth Kingdom General (TLA) 173
+1 United Front (TLA) 39
+1 Invasion Tactics (TLA) 183
+1 Gather the White Lotus (TLA) 20
+1 Appa, Loyal Sky Bison (TLA) 9
+
+# Interaction
+1 Parting Gust (BLB) 24
+1 Sonar Strike (BLB) 32
+1 Sheltered by Ghosts (DSK) 30
+1 Into the Flood Maw (BLB) 52
+1 Crib Swap (ECL) 11
+
+# Lands (24)
+1 Hushwood Verge (DSK) 261
+1 Etched Cornfield (DSK) 258
+1 Birnin Zana Plaza (MSH) 262
+1 Floodfarm Verge (DSK) 259
+1 Hallowed Fountain (ECL) 265
+1 Temple of Enlightenment (FDN) 698
+1 Azorius Guildgate (FDN) 683
+1 Willowrush Verge (DFT) 270
+1 Breeding Pool (EOE) 251
+2 Evolving Wilds (ECL) 264
+1 Terramorphic Expanse (MSC) 828
+6 Plains (HOB) 189
+1 Three Tree City (BLB) 260
+3 Forest (HOB) 193
+2 Island (HOB) 190

@@ -2521,3 +2521,41 @@ check_patterns 288 live, check_docs OK.
 
 **Where I left off:** all green — `check_all` all invariants hold, `resolve --check` clean,
 role baseline pruned 445→444 (G-69's acknowledge-last order).
+
+## 2026-08-31 — /draft-deck 78 "Team Avatar" (Bant Ally tribal around Katara, the Fearless)
+
+Answered "do I have an Ally deck" with NO, then built one. The finding that justified
+it: **52 decks run Ally-typed creatures and none is an Ally deck** — the type is what
+nearly every Avatar character is (127 in the pool), so a body count carries no
+information. Deck 15 has 18 Ally bodies against ONE payoff; deck 16 is 15/2. Every one
+of the roster's Ally payoffs was being played for a non-Ally reason (Great Divide Guide
+as a rainbow fixer, Hakoda as a top-of-library caster), and FIVE owned payoffs sat in no
+deck at all. G-59's inversion, exactly.
+
+- **Built fully owned — zero craft targets, preflight READY.** 60 cards, 24 lands,
+  interaction 8, card advantage 4, avg MV 3.03, early drops 14 (1 mana source).
+  Metrics floor **A**; letter set to **B (PROVISIONAL)** with the argument stated.
+- **The engine is a trigger DOUBLER, not an anthem pile.** Katara doubles triggered
+  abilities of Allies only — South Pole Voyager draws on the second resolution, so with
+  her out every Ally that enters draws a card. Earth Kingdom Jailer exiles two, The
+  Earth King makes two 4/4 Bears, Toph earthbends 4 (which makes a 4/4 land creature,
+  which then turns on The Earth King's attack trigger).
+- **The manabase is the real cap and does not fix by shuffling sources.** Katara is
+  {G}{W}{U} at ~51% on turn three; four configurations were measured (W/U/G at
+  14/8/8, 13/9/8, 13/7/9, 13/8/8) and she moved 50.5–54.2% across all of them. 28 W
+  pips against 10 G and 5 U in three colours is the structural cost, not the land mix.
+- **`screen` on the 16-card rejected pile saturated at 100% KEY** and the tool said so.
+  Grading from text instead: four candidates (First-Time Flyer, Guru Pathik, Master
+  Pakku, Walltop Sentries) are gated on **Lesson cards**, of which this deck runs ZERO;
+  Diligent Zookeeper scales with NON-Human creatures in a deck of Human Allies. None
+  earned a slot. Katara, Water Tribe's Hope is the one real loss — {2}{W}{U}{U} on 8
+  blue sources would have been the worst castability row in the deck.
+- **Distinctness: 81% against deck 15, 15 shared nonland cards** — the shared half is
+  the generically-good white Avatar Allies; all ten engine pieces are unique to 78.
+  Copies are fungible so the overlap costs nothing, but it is the honest caveat.
+- Three cards baselined as zero-role (Katara herself, Kyoshi Warriors, Jeong Jeong's
+  Deserters). A trigger-doubler has no role bucket — that is a TAXONOMY hole per G-67,
+  not a pattern hole, so it was acknowledged rather than patched.
+
+**Where I left off:** all green — `check_all` all invariants hold, `resolve --check` 49
+lines clean, dashboard rebuilt.
