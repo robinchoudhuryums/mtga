@@ -103,8 +103,8 @@
 1 Training Compound (MSH) 275
 1 Commercial District (MKM) 259
 2 Fire Nation Palace (TLA) 268
-8 Mountain (MSH) 293
-9 Forest (MSH) 296
+7 Mountain (MSH) 293
+10 Forest (MSH) 296
 
 # Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 59
 #~ +Nasty Little Rabbit | CRAFT (U): {G} 1/2 whose Ferocious puts a +1/+1 COUNTER on itself at the beginning of combat while you control a power-4 creature — it reaches power 4 on the third combat and joins the lattice permanently, off a ONE-mana investment. Wanted because the 2026-08-31 passes cut three 2-drops and took early drops 12 -> 9; it ticks at BEGINNING OF COMBAT, not on attack, so it still grows on turns you hold the board back.
