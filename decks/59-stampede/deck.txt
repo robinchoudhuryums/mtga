@@ -105,3 +105,8 @@
 2 Fire Nation Palace (TLA) 268
 8 Mountain (MSH) 293
 9 Forest (MSH) 296
+
+# Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 59
+#~ +Nasty Little Rabbit | CRAFT (U): {G} 1/2 whose Ferocious puts a +1/+1 COUNTER on itself at the beginning of combat while you control a power-4 creature — it reaches power 4 on the third combat and joins the lattice permanently, off a ONE-mana investment. Wanted because the 2026-08-31 passes cut three 2-drops and took early drops 12 -> 9; it ticks at BEGINNING OF COMBAT, not on attack, so it still grows on turns you hold the board back.
+#~ note: LANDS, measured 2026-08-31. G is the more-demanded colour (31 pips / 24 cards) on FEWER sources (14) than R (25 pips / 21 cards, 15 sources) — a leftover from Molten Man, the only card that cared about Mountain count, now cut. Moving ONE basic (8 Mountain/9 Forest -> 7/10) measures +3.6 to +4.3 cast-on-curve for six green-hungry cards against -3.6 for three red ones, with nothing below 79.5%. Going further (6/11) OVERSHOOTS: the {R}{R} five-drops fall to 75.3% and Hugs REGRESSES, red becoming its bottleneck.
+#~ note: Do NOT cut Fire Nation Palace to fix the mana — it reads as a mono-R tapland but grants firebending 4 to any creature ({1}{R}, {T}), which is this deck's whole archetype, and it enters UNTAPPED while you control a basic (17 of them).
