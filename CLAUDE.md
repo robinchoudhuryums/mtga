@@ -403,7 +403,16 @@ directions.
 - **`deck.py engines <id>` grades a deck's two-sided ENGINES** (enabler ↔ payoff): a
   synergy tag says "sacrifice" is present, not which cards FEED the engine and which PAY
   IT OFF. The ⚠ fires only off the trustworthy PAYOFF side, since enabler cues are broad.
-  A shortlist that prints the card lists — read them. [G-23]
+  A shortlist that prints the card lists — read them. **A GRAVEYARD ENGINE HAS TWO
+  OWNERS**: the enabler cues are ownership-blind (opponent-discard/mill match) and the
+  payoff cues were own-scoped, so a deck that fills THEIR yard and casts from it read
+  "N enablers, no payoff" — decks 44/44a, four real payoffs each. `_GY_CONSUME_OPP_RE`
+  (consumes their yard) is now separate from `_GY_NEED_OPP_RE` (merely wants it full —
+  an opponent-MILL card is an ENABLER), and reminder text is stripped before either:
+  "cards in their graveyards is a crime" made every crime card read as yard-dependent.
+  **Nothing gate-checked a PROPOSED add either** — `unmet_gate_note` runs `targets`
+  against a recommendation now (partial: an opponent-BOARD condition is outside that
+  model). [G-23]
 - **`deck.py stats` prints an INTERACTION PROFILE** — the raw count treats all removal
   alike, so it splits by SPEED and by whether anything answers a NONCREATURE permanent,
   flagging "all sorcery-speed" or "no noncreature answer". [G-24]
@@ -452,14 +461,15 @@ directions.
 - **The pool's `Legalities` is a build-time SNAPSHOT — Standard rotates.** `suggest`
   marks an aging pick `⚠rot` from the `Released` date, `deck.py rotation` is the
   roster-wide view, and `wishlist --rank` flags a craft target rotating this year or
-  next. **EVERY craft view carries the flag now**: `deck.py check` marks each
-  missing/short card `⚠rot~YEAR` inline, `wildcards` (incl. `--dedup`, the cross-deck
-  union ranked by decks-served per copy) flags its leverage list, and since BS4-11 so do
-  `suggest --lands/--ramp/--interaction` and `tier --to`'s craft fillers — the surfaces
-  whose whole purpose is spending wildcards, and the last ones still silent. Owned rows
-  are exempt by design: an owned card costs no wildcard. Deck 28's plan bought four
-  rotating cards past unflagged views, and deck 49 held five more.
-  `rotation_risk` is calendar-YEAR based, since rotation happens annually.
+  next. **EVERY craft view carries the flag** — `check` inline per missing/short card,
+  `wildcards` (incl. `--dedup`), `suggest --lands/--ramp/--interaction`, `tier --to`'s
+  fillers. Owned rows are exempt: an owned card costs no wildcard. **The windows must
+  MATCH and did not**: `rotation_risk` read `<= year` until 2026-08-28, one year
+  stricter than every sibling, while a docstring asserted they "cannot disagree" —
+  `suggest --unowned` was its last caller, so the craft recommender under-flagged by a
+  full rotation. **A claim that two implementations agree is not agreement.** Plain
+  `suggest` also excludes LANDS now: a land has no cost, so the printed-cost castability
+  gate (G-58) passed an off-colour one unconditionally.
   **Reprint caveat, partly encoded:** the pool keys ONE printing, so a card reprinted
   into a long-legality set inherited the wrong date — `_SET_ROTATION_OVERRIDE` fixes the
   announced ones, and the residual is real: verify against the official schedule. [G-30]

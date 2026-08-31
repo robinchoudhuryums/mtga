@@ -6,6 +6,42 @@
 > For "which command answers X, and why do two of them disagree", read
 > **`docs/systems-map.md`** — that is now a live reference, not a cycle artifact.
 
+## Session — four craft-surface holes, found by USING the tools (2026-08-28, latest)
+
+Gates green; full suite passes (+9 tests). Block:
+`.cycle/blocks/2026-08-craft-surface-holes-broad-implement.md`.
+
+Different provenance from the recent blocks: these were not found by a scan, they were
+found by running `/tune-deck` on 6, 53 and 44a and noticing the tools disagreeing with
+the cards. Three of four are one shape — **a correct primitive one caller does not
+reach** (G-40).
+
+**Shipped.** (1) `rotation_risk` read `<= year` while every sibling read `<= year + 1`,
+with a docstring asserting they agree; `suggest --unowned` was its last caller, so the
+craft recommender under-flagged by a full rotation (Valgavoth, ~2027, offered clean).
+Pool flag rate 11% → 34%, which is just the true share. (4) Plain `suggest` excluded no
+LANDS, and a land has no cost so the printed-cost castability gate passes an off-colour
+one — a U/G Town reached Rakdos 44a. (2) `engines` read an opponent-graveyard engine as
+payoff-less (decks 44/44a: "12 enablers, no payoff" against four real payoffs); fixed at
+the caller, not in ENGINE_THEMES, whose value is hashed into the pool stamp. (3)
+`unmet_gate_note` runs `targets` against a PROPOSED add — partial, and the residual is
+recorded rather than papered over.
+
+**The two corrections inside (2) are the interesting part**, both caught by measuring the
+first version instead of shipping it: the crime REMINDER TEXT was matching ("cards in
+their graveyards is a crime"), so every crime card read as yard-dependent; and "needs
+their yard" ≠ "consumes their yard" — an opponent-MILL card wants their yard full while
+being an ENABLER, so counting it as a payoff inverted its role.
+
+Decided AGAINST: a teamwork gate family (n=1 in the whole pool); touching ENGINE_THEMES
+(pool refetch cost); the tier-suppression cue widening (spurious-nag direction, measure
+first).
+
+**Where I left off:** all green; committed on `claude/peaceful-pascal-66lvxw`. Two
+test-authoring traps worth remembering, both caught by mutation and written into the
+block: an AST test that passed with its guard deleted, and a caller test on a deck that
+scored identically under both predicates.
+
 ## Session — role-backlog triage: two pattern holes closed, the rest sorted (2026-08-28, latest)
 
 Gates green; full suite passes (+5 fixtures). Block:

@@ -1854,6 +1854,29 @@ class TestRotation:
         assert deck.rotation_risk("", 3) is False
         assert deck.rotation_risk(None, 3) is False
 
+    def test_rotation_risk_covers_next_year_too(self):
+        # The window is "this year or NEXT" (G-30). It read `<= year` until
+        # 2026-08-28 — one year stricter than every other craft surface — so a set
+        # rotating next year was silently unflagged on `suggest --unowned`, the
+        # format's craft recommender. A release 2 years ago rotates in year+1.
+        two_yrs = (date.today() - timedelta(days=365 * 2 + 30)).isoformat()
+        assert deck.rotation_year(two_yrs, 3) == date.today().year + 1
+        assert deck.rotation_risk(two_yrs, 3) is True
+
+    def test_rotation_risk_agrees_with_craft_rot_note(self):
+        """The property `craft_rot_note`'s docstring ASSERTED and did not have: the two
+        craft-facing rotation surfaces must use the same window. A claim about agreement
+        is not agreement, so it is pinned behaviourally here."""
+        pool_rot = {"probe": ((date.today() - timedelta(days=365 * 2 + 30)).isoformat(),
+                              {"standard"}, "PRB")}
+        for yrs_ago in (1, 2, 3, 4):
+            rel = (date.today() - timedelta(days=365 * yrs_ago + 30)).isoformat()
+            pool_rot["probe"] = (rel, {"standard"}, "PRB")
+            note = deck.craft_rot_note("probe", pool_rot)
+            assert bool(note) == deck.rotation_risk(rel, set_code="PRB"), (
+                f"{yrs_ago}y ago: craft_rot_note={note!r} vs rotation_risk="
+                f"{deck.rotation_risk(rel, set_code='PRB')}")
+
 
 def _vec(plan, inter, ca, uncast=0, avg_mv=3.0, early=0, reach=0):
     return {"plan": plan, "interaction": inter, "card_advantage": ca,
@@ -4537,6 +4560,130 @@ class TestSuggestHomesReadsCastabilityFromCost:
             "an identity-subset gate here is the Thranduil bug")
         attrs = {n.attr for n in ast.walk(tree) if isinstance(n, ast.Attribute)}
         assert "issubset" in attrs, "the costless-card identity fallback is gone"
+
+    def test_plain_suggest_never_returns_a_land(self):
+        """The SIBLING caller, unfixed until 2026-08-28. `suggest-homes` resolved the
+        costless-land hole with an identity fallback (above); `suggest_scored` had
+        neither that nor a land guard, so `_candidate_castability("")` passed every land
+        unconditionally and a U/G Town (Balamb Garden, SeeD Academy) was offered to
+        Rakdos deck 44a. Plain `suggest` is the THEME path and structurally cannot grade
+        a manabase — `suggest --lands` is the recommender (G-37) — so exclusion is the
+        right answer, which is what `functional_theme_options` already did.
+
+        BEHAVIOURAL, not AST. The first version of this test asserted that
+        `suggest_scored` calls `_primary_type`, and PASSED with the guard deleted,
+        because the function ALREADY called it once on the deck's own cards. An AST
+        scan that cannot tell two call sites apart is the G-53 trap one layer in —
+        so this drives the real function and reads the real picks."""
+        carddata = deck.load_card_data()
+        for deck_id in ("44a", "6"):
+            d = deck.find_deck(deck_id)
+            if not d:
+                continue
+            res = deck.suggest_scored(d, unowned=True, limit=25)
+            if not res.get("ok"):
+                continue
+            for p in res.get("picks", []):
+                cd = carddata.get((p["name"] or "").lower())
+                tline = (cd or {}).get("type") or ""
+                assert "Land" not in deck._primary_type(tline), (
+                    f"deck {deck_id}: suggest offered the LAND {p['name']!r} — plain "
+                    f"suggest cannot grade a manabase; that is `suggest --lands`")
+
+    def test_no_land_survives_the_suggest_filter(self):
+        """Behavioural half: the guard must actually reject a land row. Uses the real
+        pool type line for a Town whose FRONT face is a land and whose back face is not,
+        so `_primary_type` is doing the front-face read (G-63), not a substring match."""
+        assert "Land" in deck._primary_type("Land — Town // Legendary Artifact — Vehicle")
+        assert "Land" not in deck._primary_type("Creature — Bird // Land")
+
+
+class TestOpponentGraveyardEngines:
+    """A graveyard engine has two owners and the two sides of ENGINE_THEMES disagreed
+    about which. Its ENABLER cues are ownership-blind (`mill`, `discard[^.]*card` match
+    "each opponent discards a card"); its PAYOFF cues are own-scoped (`from your
+    graveyard`). So a deck that fills THEIR yard and casts from it counted every enabler
+    and no payoff — decks 44 and 44a both read "12 enablers, no payoff — your engine has
+    no reward" while fielding four working payoffs."""
+
+    def test_reminder_text_is_not_a_dependency(self):
+        """The crime reminder — "Targeting opponents, anything they control, and/or
+        cards in their graveyards is a crime" — contains the exact phrase the broad
+        predicate looks for, so EVERY crime card read as needing their yard populated.
+        Same trap `role_coverage_flags` records for Ward's reminder tripping Counter."""
+        crime = ("Whenever you commit a crime, target creature you control gains your "
+                 "choice of menace or lifelink until end of turn. (Targeting opponents, "
+                 "anything they control, and/or cards in their graveyards is a crime.)")
+        assert "opponent" not in deck.graveyard_dependent(crime)
+
+    def test_a_real_opponent_yard_payoff_still_counts(self):
+        tiny = ("Deathtouch\nWhenever Tinybones deals combat damage to a player, you may "
+                "cast target nonland permanent card from that player's graveyard, and "
+                "mana of any type can be spent to cast that spell.")
+        assert "opponent" in deck.graveyard_dependent(tiny)
+        assert deck._GY_CONSUME_OPP_RE.search(deck._norm_role_text(tiny))
+
+    def test_needing_their_yard_is_not_consuming_it(self):
+        """Riverchurn Monument mills "cards equal to the number of cards in their
+        graveyard" — it genuinely WANTS their yard full, so the broad predicate (which
+        the zone-conflict flag reads) keeps it, while the engine PAYOFF side must not:
+        it FILLS yards, which is the enabler role. Counting it as a payoff inverted its
+        role, which is why the two predicates are split."""
+        mill = ("Exhaust — {2}{U}{U}, {T}: Any number of target players each mill cards "
+                "equal to the number of cards in their graveyard.")
+        assert "opponent" in deck.graveyard_dependent(mill), "broad predicate keeps it"
+        assert not deck._GY_CONSUME_OPP_RE.search(deck._norm_role_text(mill)), (
+            "a mill effect FILLS a yard — it is an enabler, never a payoff")
+
+    def test_the_CALLER_counts_opponent_yard_payoffs(self):
+        """A pure-function anchor cannot see whether a caller asks (G-40) — and the
+        first version of the tests above did not, so swapping the engine caller back to
+        the BROAD predicate passed them all. Deck 44a's whole plan is casting from an
+        opponent's graveyard; its verdict must not read "no payoff"."""
+        cd, cmeta = deck.load_card_data(), deck.load_card_meta()
+        d = deck.find_deck("44a")
+        meta, cards = deck.parse_deck_file(d["path"])
+        w = deck._deck_central_weights(meta, cards, cmeta)
+        central = deck._central_themes(w)
+        sig = deck._signature_themes(meta, cards, cmeta)
+        verdict = deck.engine_balance(cards, cd, central, sig, w).get(
+            "graveyard", {}).get("verdict", "")
+        assert verdict, "deck 44a should report a graveyard engine at all"
+        assert "no payoff" not in verdict, (
+            f"44a casts from THEIR yard four ways; got {verdict!r}")
+        # And the count must be the CONSUME-only one. 44a scores the same under either
+        # predicate, so it cannot tell them apart — deck 51a can: the broad predicate
+        # also matches opponent-MILL cards (Riverchurn Monument, Deepmuck Desperado),
+        # which are enablers, and inflated it from 9 payoffs to 12.
+        d2 = deck.find_deck("51a")
+        meta2, cards2 = deck.parse_deck_file(d2["path"])
+        w2 = deck._deck_central_weights(meta2, cards2, cmeta)
+        v2 = deck.engine_balance(cards2, cd, deck._central_themes(w2),
+                                 deck._signature_themes(meta2, cards2, cmeta), w2)
+        assert "/ 9 payoff" in v2.get("graveyard", {}).get("verdict", ""), (
+            "51a's opponent-mill cards are ENABLERS — counting them as payoffs is the "
+            f"broad-predicate bug: {v2.get('graveyard', {}).get('verdict', '')!r}")
+
+
+class TestProposedAddGateCheck:
+    """`target_counts` answers "does this deck hold what this card's text asks for" —
+    but only for cards ALREADY in the list. Nothing asked it about a card being
+    RECOMMENDED, so `redundancy` proposed cards whose gate the deck cannot satisfy."""
+
+    def test_an_unmet_gate_on_a_proposed_add_is_reported(self):
+        cd, mana = deck.load_card_data(), deck.load_mana()
+        d = deck.find_deck("6")
+        _meta, cards = deck.parse_deck_file(d["path"])
+        # Hobbit Hole searches for a Halfling; deck 6 (Abzan reanimator) runs none.
+        note = deck.unmet_gate_note("Hobbit Hole", cards, cd, mana)
+        assert note and "0 in this deck" in note, note
+
+    def test_a_card_with_no_gate_is_silent(self):
+        cd, mana = deck.load_card_data(), deck.load_mana()
+        d = deck.find_deck("6")
+        _meta, cards = deck.parse_deck_file(d["path"])
+        assert deck.unmet_gate_note("Swamp", cards, cd, mana) == ""
+        assert deck.unmet_gate_note("No Such Card At All", cards, cd, mana) == ""
 
 
 class TestStateGateCounts:

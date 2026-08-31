@@ -1004,6 +1004,64 @@ longer reads as "payoffs sit dead" — the deck-31 misfire); and **`graveyard` s
 e.g. many "N cards in your graveyard" *value* payoffs with few active fillers — still flags,
 because combat fills the yard only slowly there (unlike an immediate death trigger).
 
+### 2026-08-28: a graveyard engine has TWO OWNERS, and the two sides disagreed about which
+
+`ENGINE_THEMES["graveyard"]`'s **enabler** cues are ownership-BLIND — `\bmill\b` and
+`discard[^.]*card` match "each opponent discards a card" and "target opponent mills three"
+— while its **payoff** cues are own-scoped: `from your graveyard`, `cards? in your
+graveyard`. A card paying off from *their* yard ("cast … from that player's graveyard")
+matches nothing. So a deck built to fill the OPPONENT's graveyard and cast out of it
+counted every enabler and zero payoffs: decks **44 and 44a both read "12 enablers, no
+payoff — your engine has no reward"** while fielding four working payoffs apiece (both
+Tinybones, Shark Shredder, Hama).
+
+Fixed at the `engine_balance` caller, deliberately **not** in `ENGINE_THEMES`: that dict's
+VALUE is hashed into the pool build stamp (G-18/K-10), so editing it defeats the freshness
+reuse and forces a full pool refetch — too high a price for a reporting bug.
+
+**Two corrections the first version needed, both found by measuring instead of shipping:**
+
+1. **The crime reminder text was matching.** "Targeting opponents, anything they control,
+   and/or **cards in their graveyards** is a crime" contains the literal phrase
+   `_GY_NEED_OPP_RE`'s third branch looks for, so every crime card read as needing an
+   opponent's yard populated — measured on four (Servant of the Stinger, Rattleback
+   Apothecary, Riverchurn Monument, Deepmuck Desperado). This is precisely the trap
+   `role_coverage_flags` already records for Ward's reminder tripping the Counter cue, and
+   `_REMINDER_RE` already existed to strip it. Side benefit: one spurious zone-conflict ⛔
+   disappears roster-wide (3 → 2 — deck 31's Raven Eagle was firing on three reminder-text
+   "dependents").
+2. **"Needs their yard" ≠ "consumes their yard", and only the second is a payoff.**
+   Riverchurn Monument mills "cards equal to the number of cards in their graveyard": it
+   genuinely wants their yard full — so the broad predicate keeps it, and the zone-conflict
+   flag is right to — while it FILLS yards, which is the enabler role. Counting it as a
+   payoff inverted its role. Hence the split into `_GY_CONSUME_OPP_RE` (cast/play/return/
+   exile **from** their graveyard) alongside the broad `_GY_NEED_OPP_RE`.
+
+Roster diff: **10 verdicts move, all graveyard, all upward**, with the two heist decks
+flipping off the false "no payoff". `engines` is report-only, so no graded axis moves.
+
+**The caller pin needed a specific deck.** 44a scores 4 payoffs under *either* predicate,
+so a test written against it passed with the broad version restored; deck **51a** (9 vs 12)
+is the one that can tell them apart. A pure-function anchor cannot see whether a caller
+asks (G-40) — and neither can a caller test on a deck where the two answers coincide.
+
+### The mirror gap, same session: nothing gate-checked a PROPOSED add
+
+`target_counts` (G-66) answers "does this deck hold what this card's text asks for" — for
+cards **already in the list**. Nothing ran it on a card being *recommended*, so
+`redundancy`'s virtual-copy planner offered **Party Dude** (draws only when an OPPONENT's
+artifact dies) and **Agent Maria Hill** (needs a teamwork cost the deck has none of) as
+card-advantage copies for deck 6 — two of four picks, each drawing exactly zero.
+`unmet_gate_note` closes the wiring.
+
+**It is a PARTIAL fix and the residual is the interesting half.** Neither motivating card
+is caught, for two different and defensible reasons: "pay a teamwork cost" triggers are
+**n=1 in the entire pool** (a gate family for one card is the over-fitting the 2026-08-19
+triage declined), and Party Dude's condition is about the **opponent's board**, which no
+deck-content gate can answer — it is outside `target_counts`' model, not a hole in it. The
+wiring was verified live rather than left as dead code (G-53): it reports Hobbit Hole's
+Halfling gate as 0 against deck 6.
+
 
 ## [G-24] `deck.py stats` also prints an INTERACTION PROFILE
 
@@ -1425,6 +1483,46 @@ copies-short under shared-collection math, rarity, decks-served and the rot flag
 ranked by decks-served then rarity) formalizes the craft-efficiency question that four
 2026-08 ingest cycles answered by hand. First run of the flag found deck 49 holding
 FIVE 2026-rotating craft targets nothing had reported.
+
+### 2026-08-28: the two windows were a year apart, and the docstring said they weren't
+
+The sentence above — "same this-year-or-next window as the wishlist flag, so the surfaces
+cannot disagree" — was a CLAIM, not a mechanism, and it was false. `craft_rot_note`
+(`check`, `wildcards`, `tier --to`) and `wishlist --rank/--budget` tested
+`yr <= today.year + 1`; **`rotation_risk` tested `yr <= today.year`**, one year stricter.
+Its last remaining caller was `suggest --unowned` — the format's craft recommender — so
+that one surface under-flagged by a full rotation.
+
+Found while tuning deck 44a: `suggest --unowned` offered **Valgavoth, Terror Eater** (DSK,
+rotates ~2027) with no ⚠rot, in the same session `deck.py check` warned about OTJ/BLB/MKM
+craft targets rotating in that same 2027 wave. Fixed at the primitive rather than the
+caller, so any future caller inherits it. Measured: the Standard-legal pool flag rate goes
+**11% → 34%**, which is not inflation — it is the share of Standard that rotates within
+~15 months, and the rate the other four surfaces had been showing all along. Both existing
+`rotation_risk` test boundaries were unaffected (a release 3 years ago still flags, 1 year
+ago still doesn't); only the 2-years-ago band moved, which is exactly the gap.
+
+**The transferable half:** a docstring asserting that two implementations agree is worth
+nothing — `check_agreement` exists for this shape, and this pair was not in it. The
+property is now pinned behaviourally: a test sweeps four release ages and asserts
+`bool(craft_rot_note(...)) == rotation_risk(...)` at each.
+
+### The same session, one surface over: plain `suggest` offered a LAND
+
+Castability reads the PRINTED COST (G-58) and **a land has no cost**, so
+`_candidate_castability("")` returns castable for every land — an off-colour one included.
+That is how a U/G Town (Balamb Garden, SeeD Academy) was recommended to Rakdos deck 44a,
+whose fixing it cannot provide. `suggest-homes` had already solved this with an identity
+fallback and `functional_theme_options` carried an outright land exclusion;
+`suggest_scored` had neither. Plain `suggest` is the THEME path and structurally cannot
+grade a manabase — `suggest --lands` is the recommender (G-37) — so it excludes lands,
+front-face typed per G-63.
+
+**The test for it was wrong first, in the instructive way.** The first version asserted via
+AST that `suggest_scored` calls `_primary_type`, and PASSED with the guard deleted, because
+the function already called it once on the deck's own cards. An AST scan that cannot
+distinguish two call sites is G-53's comment-vs-call trap one layer in; the test drives the
+real function and reads the real picks now.
 
 
 ## [G-31] `deck.py suggest-homes <card>` automates the "which of my decks does this new card improve" fit 
