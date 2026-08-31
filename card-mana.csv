@@ -2513,6 +2513,18 @@ Dreaded Bat-Cloud,{4}{B},5,Deathtouch;Flying
 Alchemist's Assistant,{1}{B},2,Lifelink;Renew
 Sazh Katzroy,{3}{G},4,Double
 Bartz and Boko,{3}{G}{G},5,Affinity
+Savage Ventmaw,{4}{R}{G},6,Flying
+"Jolene, Plundering Pugilist",{1}{R}{G},3,Treasure
+"Roxanne, Starfall Savant",{3}{R}{G},5,
+Outcaster Trailblazer,{2}{G},3,Plot
+Tiger-Dillo,{1}{R},2,
+"Ghalta, Primal Hunger",{10}{G}{G},12,Trample
+Vaultborn Tyrant,{5}{G}{G},7,Trample
+Quaketusk Boar,{3}{R}{R},5,Reach;Haste;Trample
+Bitter Work,{1}{R}{G},3,Exhaust;Earthbend
+Rabid Gnaw,{1}{R},2,
+Bolt Bend,{3}{R},4,
+Commercial District,,0,Surveil
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -3180,7 +3192,6 @@ Ancient Cornucopia,{2}{G},3,
 Bristlebud Farmer,{2}{G}{G},4,Food;Trample;Mill
 Omenpath Journey,{3}{G},4,
 Sandstorm Salvager,{2}{G},3,
-Vaultborn Tyrant,{5}{G}{G},7,Trample
 "Loot, the Key to Everything",{G}{U}{R},3,Ward
 Lost Jitte,{1},1,Equip
 Lotus Ring,{3},3,Indestructible;Equip
@@ -3261,8 +3272,6 @@ Hearthborn Battler,{2}{R},3,Haste
 Hired Claw,{R},1,
 Hoarder's Overflow,{1}{R},2,
 Manifold Mouse,{1}{R},2,Offspring
-Quaketusk Boar,{3}{R}{R},5,Reach;Haste;Trample
-Rabid Gnaw,{1}{R},2,
 Reptilian Recruiter,{3}{R}{R},5,Trample
 Roughshod Duo,{2}{R},3,Trample
 Sazacap's Brew,{1}{R},2,Gift
@@ -5198,7 +5207,6 @@ Involuntary Employment,{3}{R},4,Treasure
 Spitfire Lagac,{3}{R},4,Landfall
 Thrill of Possibility,{1}{R},2,
 Genesis Wave,{X}{G}{G}{G},3,
-"Ghalta, Primal Hunger",{10}{G}{G},12,Trample
 Mild-Mannered Librarian,{G},1,
 Nessian Hornbeetle,{1}{G},2,
 Scavenging Ooze,{1}{G},2,
@@ -5319,7 +5327,6 @@ Immersturm Predator,{2}{B}{R},4,Flying
 Maelstrom Pulse,{1}{B}{G},3,
 Mortify,{1}{W}{B},3,
 Prime Speaker Zegana,{2}{G}{G}{U}{U},6,
-Savage Ventmaw,{4}{R}{G},6,Flying
 Teach by Example,{U/R}{U/R},2,
 Trygon Predator,{1}{G}{U},3,Flying
 Wilt-Leaf Liege,{1}{G/W}{G/W}{G/W},4,
@@ -10287,7 +10294,6 @@ Magnifying Glass,{3},3,Investigate
 Sanitation Automaton,{2},2,Surveil
 Thinking Cap,{1},1,Equip
 Branch of Vitu-Ghazi,,0,Disguise
-Commercial District,,0,Surveil
 Elegant Parlor,,0,Surveil
 Hedge Maze,,0,Surveil
 Lush Portico,,0,Surveil
@@ -11580,7 +11586,6 @@ Freestrider Lookout,{2}{G},3,Reach
 Map the Frontier,{3}{G},4,
 Ornery Tumblewagg,{2}{G},3,Saddle;Double
 Outcaster Greenblade,{2}{G},3,
-Outcaster Trailblazer,{2}{G},3,Plot
 Railway Brawler,{3}{G}{G},5,Reach;Plot;Trample
 Reach for the Sky,{3}{G},4,Enchant;Flash
 Smuggler's Surprise,{G},1,Spree;Mill
@@ -11601,7 +11606,6 @@ At Knifepoint,{1}{B}{R},3,
 Form a Posse,{X}{R}{W},2,
 "Ghired, Mirror of the Wilds",{R}{G}{W},3,Haste
 Honest Rutstein,{1}{B}{G},3,
-"Jolene, Plundering Pugilist",{1}{R}{G},3,Treasure
 "Kambal, Profiteering Mayor",{1}{W}{B},3,
 Kellan Joins Up,{G}{W}{U},3,Plot
 Laughing Jasper Flint,{1}{B}{R},3,
@@ -11615,7 +11619,6 @@ Make Your Own Luck,{3}{G}{U},5,Plot
 Pillage the Bog,{B}{G},2,Plot
 "Rakdos, the Muscle",{2}{B}{B}{R},5,Flying;Trample
 Riku of Many Paths,{G}{U}{R},3,
-"Roxanne, Starfall Savant",{3}{R}{G},5,
 Seraphic Steed,{G}{W},2,Lifelink;Saddle;First strike
 Slick Sequence,{U}{R},2,
 "Taii Wakeen, Perfect Shot",{R}{W},2,
@@ -13971,7 +13974,6 @@ Phoenix Fleet Airship,{2}{B}{B},4,Flying;Crew
 The Rise of Sozin // Fire Lord Sozin,{4}{B}{B},6,Transform;Firebending;Menace
 Fire Nation Attacks,{4}{R},5,Flashback
 The Legend of Roku // Avatar Roku,{2}{R}{R},4,Transform;Firebending
-Tiger-Dillo,{1}{R},2,
 "Zhao, the Moon Slayer",{1}{R},2,Menace
 Earth Rumble,{3}{G},4,Fight;Earthbend
 The Legend of Kyoshi // Avatar Kyoshi,{4}{G}{G},6,Transform;Earthbend
@@ -13980,7 +13982,6 @@ Rocky Rebuke,{1}{G},2,
 "Aang, Swift Savior // Aang and La, Ocean's Fury",{1}{W}{U},3,Flying;Reach;Airbend;Transform;Trample;Flash;Waterbend
 "Avatar Aang // Aang, Master of Elements",{R}{G}{W}{U},4,Flying;Transform;Firebending
 "Azula, Cunning Usurper",{2}{U}{B}{B},5,Firebending
-Bitter Work,{1}{R}{G},3,Exhaust;Earthbend
 Earth King's Lieutenant,{G}{W},2,Trample
 "Iroh, Tea Master",{1}{R}{W},3,Food
 "Jet, Freedom Fighter",{2}{R/W}{R/W}{R/W},5,
@@ -14132,7 +14133,6 @@ Dramatic Reversal,{1}{U},2,
 Frantic Search,{2}{U},3,
 Bastion of Remembrance,{2}{B},3,
 Dark Deal,{2}{B},3,
-Bolt Bend,{3}{R},4,
 Cathartic Reunion,{1}{R},2,
 Fiery Confluence,{2}{R}{R},4,
 Fists of Flame,{1}{R},2,
