@@ -5,8 +5,8 @@
 #: plan: midrange
 #: archetype: GRUUL COMBAT-RAMP — the roster-gap concept found after Savage Ventmaw:
 #: archetype: attacking IS the ramp, and the mana buys CREATURES. The engine layer
-#: archetype: makes mana by turning sideways (Ventmaw's six, Zuko's three, Rough Rhino
-#: archetype: Cavalry's two apiece, Jolene's Treasure per power-4 attack, Roxanne
+#: archetype: makes mana by turning sideways (Ventmaw's six, Zuko's three, Fire Sages'
+#: archetype: one, Jolene's Treasure per power-4 attack, Roxanne
 #: archetype: doubling every token tap); the sink layer spends it on monsters
 #: archetype: (Ghalta costs {X} less for total power, Goldvein Hydra eats any X,
 #: archetype: Famished Worldsire, Vaultborn Tyrant, Web of Life and Destiny cheating
@@ -27,8 +27,9 @@
 #: notes: TIMING SPINE the tooling can't see: FIREBENDING mana (Zuko, Rhinos, Fire
 #: notes: Sages) lasts only UNTIL END OF COMBAT — its sinks must be castable in
 #: notes: combat: Bolt Bend ({R} with power-4 out — redirects a removal spell, the
-#: notes: deck's one protection trick), The Last Agni Kai, Ancestors' Aid, and
-#: notes: Rough Rhino's own {8} exhaust. VENTMAW mana is different — it lasts
+#: notes: deck's one protection trick), The Last Agni Kai and Ancestors' Aid —
+#: notes: Rough Rhino Cavalry and its {8} exhaust were CUT 2026-08-31 for Hugs.
+#: notes: VENTMAW mana is different — it lasts
 #: notes: until end of TURN ("you don't lose this mana as steps and phases end"),
 #: notes: so it reaches main phase 2 and pays for the sorcery-speed monsters
 #: notes: (Goldvein Hydra's X, Ghalta, Worldsire). Sequencing: declare attackers,
@@ -47,7 +48,6 @@
 # Attack-mana engine
 2 Savage Ventmaw (FDN) 665
 2 Jolene, Plundering Pugilist (OTJ) 210
-1 Rough Rhino Cavalry (TLA) 152
 1 Zuko, Exiled Prince (TLA) 163
 1 Fire Sages (TLA) 136
 1 Roxanne, Starfall Savant (OTJ) 228
@@ -59,7 +59,8 @@
 1 Outcaster Trailblazer (OTJ) 173
 
 # Early bodies that reach power 4
-2 Molten Man, Inferno Incarnate (SPM) 84
+1 Hazoret, Godseeker (DFT) 133
+1 Surrak, Elusive Hunter (TDM) 161
 1 Tiger-Dillo (TLA) 155
 
 # Monster sinks
@@ -70,6 +71,7 @@
 1 Web of Life and Destiny (SPM) 122
 1 Red Hulk (MSH) 149
 1 Quaketusk Boar (BLB) 146
+1 Hugs, Grisly Guardian (BLB) 218
 
 # Power-4 payoff lattice
 1 Garruk's Uprising (M21) 186
