@@ -428,8 +428,10 @@ into its deck file: 2nd Appa, 2nd Sokka, 2nd Craterhoof, 2nd Ashroot, 2nd Gas Gu
 2nd Vnwxt. **The pattern that held across all eleven: a LEGEND's second copy almost never
 survived scrutiny (it cannot share a battlefield with the first), while the duplicates
 worth keeping were non-legends doing engine work, or cards with no functional cousin in
-the format.** The Last Agni Kai is the priority craft — 56, 56a and 59 are short the same
-copy, so one rare completes three decks.
+the format.** The Last Agni Kai is the priority craft — 56 and 56a are each short their
+SECOND copy, and since copies are fungible one more rare completes both. (It was three
+decks until 2026-08-31, when deck 59's crafts were ingested; 59 wants one copy and now
+owns it.)
 
 **But the ownership data was wrong four times during that pass** — see `[G-10]`. Two decks
 were graded against counts that turned out false, and one recommendation used a craft cost

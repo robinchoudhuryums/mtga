@@ -2492,3 +2492,32 @@ tiering call it defers.
 **Where I left off:** all green — full pytest exit 0, `check_all` all invariants hold (the
 two pre-existing soft warnings: stale committed dashboard, four known dead searches),
 check_patterns 288 live, check_docs OK.
+
+## 2026-08-31 — Deck 59 crafts ingested; deck 28a takes two of the power-4 package
+
+- **Ingest.** `reconcile_crafts.py` against an export built from deck 59's own
+  resolver-verified lines (G-65 — no retyped printings). 12 names / 14 copies added,
+  Savage Ventmaw and Ghalta pruned from the wishlist, no mana rows needed.
+  `verify_ingest` 12/12. **Deck 59 preflight READY — fully owned.** None of the eight
+  other decks referencing a reconciled card flipped to buildable.
+- **The cross-deck finding.** The gate on these cards is "power 4 or greater", which
+  `_TARGET_GATES` does not model (G-66's residual — it counts cards, not board states),
+  so it had to be counted by hand. Deck 59 is 20 of 29 creatures; **deck 28a is 15 of 35
+  and nothing else on the roster is above 8.** That killed the fit-115
+  Outcaster Trailblazer → deck 67 row, which is theme overlap scoring a card whose value
+  is a count (G-31).
+- **Applied to 28a (2 of 4 proposed):** −Terrian, World Tyrant / +Roxanne, Starfall
+  Savant and −Nurturing Bristleback / +Vaultborn Tyrant. Interaction 4→5, card advantage
+  3→4, curve unchanged at 3.86, quality guard net improvement, preflight READY.
+  **The metrics floor moved B→A**; the letter is held at B and the rewritten `#: tier:`
+  block now defers the call, so the guard correctly nudges rather than suppressing.
+- **NOT taken:** Super-Soldier Serum→Outcaster Trailblazer and Ragamuffin
+  Raptor→Jolene. Still on the table; both would add card advantage. Also still true:
+  Super-Soldier Serum's "attach any number of target Equipment" clause is DEAD — 28a
+  runs zero Equipment, and no gate sees it (G-75 covers library searches, not attach).
+- **Measured cost of the Terrian cut:** he was the deck's largest Dinosaur at power 9,
+  so Triumphant Chomp's ceiling drops 9→7. Small, because that ceiling only applied on
+  the turns a 38%-on-curve `{2}{G}{G}{G}` had actually resolved.
+
+**Where I left off:** all green — `check_all` all invariants hold, `resolve --check` clean,
+role baseline pruned 445→444 (G-69's acknowledge-last order).
