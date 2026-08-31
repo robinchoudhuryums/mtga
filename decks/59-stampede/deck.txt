@@ -27,8 +27,9 @@
 #: notes: TIMING SPINE the tooling can't see: FIREBENDING mana (Zuko, Rhinos, Fire
 #: notes: Sages) lasts only UNTIL END OF COMBAT — its sinks must be castable in
 #: notes: combat: Bolt Bend ({R} with power-4 out — redirects a removal spell, the
-#: notes: deck's one protection trick), The Last Agni Kai and Ancestors' Aid —
-#: notes: Rough Rhino Cavalry and its {8} exhaust were CUT 2026-08-31 for Hugs.
+#: notes: deck's one protection trick) and The Last Agni Kai. Ancestors' Aid was CUT
+#: notes: 2026-08-31 for Bitter Work, and Rough Rhino Cavalry with its {8} exhaust
+#: notes: was CUT the same day for Hugs — the in-combat sink list is thinner now.
 #: notes: VENTMAW mana is different — it lasts
 #: notes: until end of TURN ("you don't lose this mana as steps and phases end"),
 #: notes: so it reaches main phase 2 and pays for the sorcery-speed monsters
@@ -53,7 +54,7 @@
 1 Roxanne, Starfall Savant (OTJ) 228
 
 # Ramp bodies / fixers
-2 Ruby, Daring Tracker (FDN) 245
+1 Ruby, Daring Tracker (FDN) 245
 1 Raucous Audience (TLA) 190
 1 Spider Manifestation (SPM) 148
 1 Outcaster Trailblazer (OTJ) 173
@@ -72,6 +73,7 @@
 1 Red Hulk (MSH) 149
 1 Quaketusk Boar (BLB) 146
 1 Hugs, Grisly Guardian (BLB) 218
+1 Dragonhawk, Fate's Tempest (BLB) 132
 
 # Power-4 payoff lattice
 1 Garruk's Uprising (M21) 186
@@ -82,12 +84,13 @@
 1 Sylvan Scavenging (FDN) 113
 1 Flopsie, Bumi's Buddy (TLA) 179
 1 Halana and Alena, Partners (VOW) 239
+1 Bitter Work (TLA) 210
+1 Wilderland Scrounger (HOB) 141
 
 # Interaction (combat-mana sinks)
-2 The Last Agni Kai (TLA) 144
+1 The Last Agni Kai (TLA) 144
 1 Rabid Gnaw (BLB) 147
 1 Bolt Bend (TLE) 163
-1 Ancestors' Aid (LCI) 132
 
 # Lands
 1 Thornspire Verge (DSK) 270
