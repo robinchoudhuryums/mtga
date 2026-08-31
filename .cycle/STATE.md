@@ -2460,3 +2460,64 @@ reusing deck.py primitives rather than re-deriving. Four findings, all coverage-
 
 **Where I left off:** all green, 1462 tests, zero skips. All seven subsystems now audited
 this cycle except Data and Outcomes, both judged low-yield in the audit-order analysis.
+
+## 2026-08-31 — /broad-implement: the tier under-grade guard, and mana in the early curve
+
+Two of the three tooling holes the deck-59 session left open. Block:
+`.cycle/blocks/2026-08-tier-guard-and-early-drops-broad-implement.md`.
+
+- **The under-grade suppression was nagging 7 of the 10 decks it flagged.**
+  `_BELOW_FLOOR_ARGUMENT` spelled the RUBRIC's vocabulary while the roster writes its own
+  held-by idiom ("Held at B, not A, by…", "Residual cap:", "WHAT CAPS IT IS…", a weakness
+  count against what a band allows). 70% false positives on a standing warning is the
+  G-07 saturation shape. Widened — and the OVERRIDE is what makes it safe: decks 7, 19
+  and 23 argue the cap AND defer the call in the same block, so a rationale that says
+  "pending a human re-grade" still gets the nudge. 10 → 3, every flip one-directional.
+- **`early_drops` counted a mana dork as a cheap threat.** It misled ME, in chat, on deck
+  59 ("nine early drops" — four tap for mana), and one layer down `_clock_score` read the
+  count whole, so a ramp deck on `#: plan: aggro` would have collected full clock credit
+  for a board that does nothing. Split off the card TEXT; K-14 diff **0 of 114 bands**.
+  Six decks read mana-dense — deck 17 is 12 early drops of which SIX are mana.
+- **`#: notes:` staleness: BUILT, MEASURED, REVERTED.** 81 roster hits at ~45% precision,
+  and neither variant catches the motivating case — deck 59's pre-fix clause named the
+  cut card ~45 chars from a change-cue about a DIFFERENT card. The suppressions that make
+  the tier/archetype scan trustworthy are what blind it in a build log. Numbers in [G-27];
+  do not re-derive them, and treat them as the bar for a future attempt.
+
+**Decided AGAINST (do not re-propose without new evidence):** scanning `#: notes:` for
+stale card citations. **Left open for a HUMAN, not a tool:** decks 7, 19 and 23 are still
+flagged possibly under-graded because their own rationales ask to be — each needs the
+tiering call it defers.
+
+**Where I left off:** all green — full pytest exit 0, `check_all` all invariants hold (the
+two pre-existing soft warnings: stale committed dashboard, four known dead searches),
+check_patterns 288 live, check_docs OK.
+
+## 2026-08-31 — Deck 59 crafts ingested; deck 28a takes two of the power-4 package
+
+- **Ingest.** `reconcile_crafts.py` against an export built from deck 59's own
+  resolver-verified lines (G-65 — no retyped printings). 12 names / 14 copies added,
+  Savage Ventmaw and Ghalta pruned from the wishlist, no mana rows needed.
+  `verify_ingest` 12/12. **Deck 59 preflight READY — fully owned.** None of the eight
+  other decks referencing a reconciled card flipped to buildable.
+- **The cross-deck finding.** The gate on these cards is "power 4 or greater", which
+  `_TARGET_GATES` does not model (G-66's residual — it counts cards, not board states),
+  so it had to be counted by hand. Deck 59 is 20 of 29 creatures; **deck 28a is 15 of 35
+  and nothing else on the roster is above 8.** That killed the fit-115
+  Outcaster Trailblazer → deck 67 row, which is theme overlap scoring a card whose value
+  is a count (G-31).
+- **Applied to 28a (2 of 4 proposed):** −Terrian, World Tyrant / +Roxanne, Starfall
+  Savant and −Nurturing Bristleback / +Vaultborn Tyrant. Interaction 4→5, card advantage
+  3→4, curve unchanged at 3.86, quality guard net improvement, preflight READY.
+  **The metrics floor moved B→A**; the letter is held at B and the rewritten `#: tier:`
+  block now defers the call, so the guard correctly nudges rather than suppressing.
+- **NOT taken:** Super-Soldier Serum→Outcaster Trailblazer and Ragamuffin
+  Raptor→Jolene. Still on the table; both would add card advantage. Also still true:
+  Super-Soldier Serum's "attach any number of target Equipment" clause is DEAD — 28a
+  runs zero Equipment, and no gate sees it (G-75 covers library searches, not attach).
+- **Measured cost of the Terrian cut:** he was the deck's largest Dinosaur at power 9,
+  so Triumphant Chomp's ceiling drops 9→7. Small, because that ceiling only applied on
+  the turns a 38%-on-curve `{2}{G}{G}{G}` had actually resolved.
+
+**Where I left off:** all green — `check_all` all invariants hold, `resolve --check` clean,
+role baseline pruned 445→444 (G-69's acknowledge-last order).

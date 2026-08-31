@@ -1,12 +1,27 @@
 #: name: Triceraton — Owned Build
 #: format: Standard
-#: tier: B — Triceraton owned build. Re-graded C->B: interaction is 3, not 2 (plus an
-#: tier: under-read Spider-Rex), and 12 central themes on a fully BUILT, castable Naya Dino
-#: tier: shell is a coherent tribe, so the C hard-cap (near-zero interaction / thin themes)
-#: tier: no longer fits. Metrics floor is B. Held at B by thin interaction and a 3.86 curve
-#: tier: with no rare tribal payoff. NOTE: 10 of its cards leave Standard at the 2026
-#: tier: rotation — that doesn't change the letter (tier rates the list) but it does mean a
-#: tier: tune should wait for the post-rotation pool.
+#: tier: B — Triceraton owned build. The old C hard-cap (near-zero interaction /
+#: tier: thin themes) stopped fitting once the classifier read the removal it had
+#: tier: been missing; the live figures are interaction 5 and 14 central themes on a
+#: tier: fully BUILT, castable Naya Dino shell. 2026-08-31 swaps, both from the
+#: tier: power-4 package crafted for deck 59 (copies are fungible, so they cost no
+#: tier: wildcards): Terrian, World Tyrant was CUT for Roxanne, Starfall Savant — a
+#: tier: vanilla 9/9 whose {2}{G}{G}{G} priced at 38% on turn five, traded for an
+#: tier: enters-AND-attacks engine making Meteorites that each deal 2 damage and tap
+#: tier: for any colour; and Nurturing Bristleback was CUT for Vaultborn Tyrant, a
+#: tier: like-for-like MV7 {5}{G}{G} upgrade that triggers on itself and dies into a
+#: tier: copy. Together they took interaction 4->5 and card advantage 3->4.
+#: tier: THE METRICS FLOOR IS NOW A AND THE LETTER IS HELD AT B PENDING A HUMAN
+#: tier: RE-GRADE. The argument that capped this was thin interaction, and that
+#: tier: argument has weakened rather than expired. What is left: a 3.86 curve that
+#: tier: UNDER-reads (two X-cost cards book as MV 1), no rare tribal payoff — the
+#: tier: shell still has no lord, so the tribe is a body count rather than an engine
+#: tier: — and singleton variance across a 36-card spell base. Also measured: cutting
+#: tier: Terrian lowers Triumphant Chomp's ceiling from 9 to 7, since he was the
+#: tier: largest Dinosaur here; that is a real cost and a small one, because the
+#: tier: ceiling only applies on the turns he actually resolved. NOTE: 5 of its cards
+#: tier: leave Standard at the 2026 rotation — that does not change the letter (tier
+#: tier: rates the list) but a further tune should wait for the post-rotation pool.
 #: colors: RGW
 #: based-on: 28
 #: archetype: 28 variant built from owned cards — Naya Dinosaurs + Soldier go-wide. Now with the crafted removal (Itzquinth, Triumphant Chomp) and more Dinos (Scalestorm, Dracosaur, Belligerent) swapped in over the off-plan filler. Still missing the rare/mythic tribal payoffs (Regal Imperiosaur lord, Gishath), so it's a solid Dino midrange, not yet full tribal.
@@ -29,11 +44,11 @@
 1 The Sentry, Golden Guardian (MSH) 35
 1 Super-Soldier Serum (MSH) 38
 1 Earthshaker Dreadmaw (LCI) 183
-1 Nurturing Bristleback (LCI) 203
+1 Vaultborn Tyrant (BIG) 20
 1 Ragamuffin Raptor (TMT) 130
 1 Savage Land Dinosaur (MSH) 185
 1 Spider-Rex, Daring Dino (MSC) 818
-1 Terrian, World Tyrant (DFT) 182
+1 Roxanne, Starfall Savant (OTJ) 228
 1 Glacier Godmaw (EOE) 188
 1 Etali, Primal Storm (FDN) 194
 1 Stegron the Dinosaur Man (MSC) 810
