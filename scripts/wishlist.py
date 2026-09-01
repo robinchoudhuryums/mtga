@@ -276,7 +276,29 @@ def _try_seed_power(row, _warned=[]):
         return None
 
 
-def cmd_add(path):
+def cmd_add(path, target=None, note=None):
+    """Append a batch, optionally stamping every NEW row's Target / Note.
+
+    `--target` / `--note` are query FILTERS on --rank/--budget/--by-set, and argparse
+    shares them across modes, so passing them here used to be a silent no-op: the add
+    reported success and wrote BLANK cells (found 2026-09-01 while wishlisting Pinnacle
+    Starcage for deck 6). That is worse than an error, because /add-wishlist's own recipe
+    says to "set the home Target" and no flag did it — a documented step with no tool
+    behind it, the G-53 shape. Only NEW rows are stamped: a re-add must not clobber a
+    Target somebody set by hand.
+
+    An unknown deck id is REFUSED here, BEFORE any Scryfall work, rather than written as
+    a dangling Target — the same asymmetry parse_matches uses (G-74) and the same
+    refuse-before-network-work shape as the builders' --out schema guards.
+    """
+    if target is not None:
+        target = target.strip()
+        if target:
+            import deck as dk
+            known = {d["id"].lower() for d in dk.discover_decks()}
+            if target.lower() not in known:
+                eprint(f"--target {target!r}: no deck with that id. Try: deck.py list")
+                return 1
     if path == "-":
         text = sys.stdin.read()
     else:
@@ -359,6 +381,16 @@ def cmd_add(path):
         by_key[key] = row
         added += 1
 
+    # Stamp the batch annotations onto the rows this run actually added.
+    stamped = 0
+    for row in new_rows:
+        if target:
+            row["Target"] = target
+        if note:
+            row["Note"] = note
+        if target or note:
+            stamped += 1
+
     # Auto-seed a first-pass Power estimate for the newly-added rows so they don't
     # rank at 0.0 (which repeatedly buried real cards until hand-graded). It's an
     # ESTIMATE — the printed reminder says to hand-adjust bombs the heuristic misses.
@@ -378,6 +410,13 @@ def cmd_add(path):
     if reenriched:
         print(f"Re-enriched {reenriched} previously name-only row(s) (added during an "
               "earlier Scryfall outage) now that their details resolved.")
+    if stamped:
+        bits = []
+        if target:
+            bits.append(f"Target={target}")
+        if note:
+            bits.append("Note")
+        print(f"Set {' and '.join(bits)} on {stamped} new row(s).")
     if seeded:
         print(f"Auto-seeded a heuristic Power estimate for {seeded} new card(s) — "
               "REVIEW and hand-adjust (the classifier undersells bombs); see `--rank`.")
@@ -1522,7 +1561,7 @@ def main():
     args = ap.parse_args()
 
     if args.add:
-        return cmd_add(args.add)
+        return cmd_add(args.add, target=args.target, note=args.note)
 
     rows = load_wishlist()
     if not rows:

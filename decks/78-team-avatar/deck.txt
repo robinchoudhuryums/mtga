@@ -1,0 +1,151 @@
+#: name: Team Avatar
+#: format: Standard
+#: colors: GWU
+#: archetype: BANT ALLY TRIBAL, and the plan is a TRIGGER-DOUBLING engine rather than
+#: archetype: an anthem pile. Katara, the Fearless makes every triggered ability of every
+#: archetype: Ally fire twice, so the deck is built out of two halves that feed each
+#: archetype: other: cards that put Allies onto the battlefield (five token makers plus
+#: archetype: fourteen Ally bodies), and cards that TRIGGER when an Ally enters (South
+#: archetype: Pole Voyager, Avatar Enthusiasts, Haru). South Pole Voyager is the reason
+#: archetype: this is a deck and not a theme — its ability draws a card the SECOND time
+#: archetype: it resolves in a turn, so with Katara out every single Ally that enters
+#: archetype: draws. The ETB Allies are chosen to be worth doubling: Earth Kingdom Jailer
+#: archetype: exiles TWO permanents, The Earth King makes TWO 4/4 Bears, Ty Lee taps down
+#: archetype: two blockers, Toph earthbends 4. Distinct from the roster's other Avatar
+#: archetype: decks by axis, not just colour: 15 and 16 are WU tempo decks that happen to
+#: archetype: be full of Allies (18 and 15 bodies against ONE and two payoffs), where
+#: archetype: this deck is built on the payoff half and splashes green for it.
+#: tier: B (PROVISIONAL) — still unplayed, and still graded one band UNDER its A metrics
+#: tier: floor. The floor reads A on interaction 9 and card advantage 3 at a 3.28 curve.
+#: tier: INTERACTION IS NOW HONEST AND CARD ADVANTAGE IS THE ONE TO WATCH. The 9 counts
+#: tier: Allies at Last for the first time: the removal patterns all read "dealS damage"
+#: tier: while the card says "each DEAL damage", so it scored zero interaction until the
+#: tier: pattern was widened 2026-09-01 -- every interaction figure this deck quoted
+#: tier: before that date read one LOW. Starfield Vocalist still scores zero roles,
+#: tier: because a trigger-doubler has no bucket at all; and
+#: tier: the card-advantage 3 is a floor, not a count -- Hakoda casts Ally spells off the
+#: tier: top of the library and does not classify, Celebrate the Mountain-king's recruit
+#: tier: is a loot the bucket does not read, and Elspeth's 0 refills the board rather than
+#: tier: the hand. Mister Fantastic was traded for that interaction on 2026-09-01 and sits
+#: tier: in the flex block; if the axis reads thin in play he is the way to buy it back.
+#: tier: WHAT USED TO HOLD IT AT B WAS A SINGLE POINT OF FAILURE: the whole engine was one
+#: tier: legendary 3/3, and protection WAS 2 back then, so one removal spell ended it.
+#: tier: THAT IS LARGELY GONE. Starfield Vocalist was ADDED as a second doubler that reads
+#: tier: neither Ally nor power, so it doubles every enters-caused trigger in the list
+#: tier: including the four on noncreature permanents Katara cannot reach; and protection
+#: tier: went 2 -> 4, one of which is a ONE-MANA hexproof (Enter the Avatar State) pointed
+#: tier: straight at the removal spell this paragraph is about.
+#: tier: WHAT STILL ARGUES FOR B, honestly: Katara remains the deck's worst castability
+#: tier: row — {G}{W}{U} on turn three prices at ~51% against 13/8/8 sources, so she lands
+#: tier: turn four or five; the interaction is still cheap tricks rather than a suite and
+#: tier: the deck has NO sweeper. Delney was cut once it was measured to double nothing
+#: tier: the trigger-doublers miss, and Elspeth, Storm Slayer replaced Rally the Monastery
+#: tier: as a third doubler on a DIFFERENT axis, so the redundancy argument is stronger
+#: tier: than it was without being a fourth copy of the same effect. THIS IS
+#: tier: A RE-GRADE CANDIDATE and the call is deferred to a human — play it first, because
+#: tier: whether two doublers is enough redundancy is exactly the question no model here
+#: tier: answers.
+#: protect: Katara, the Fearless; South Pole Voyager; Avatar Enthusiasts; Haru, Hidden Talent; Suki, Kyoshi Warrior
+#: notes: THE DOUBLER'S SCOPE is the thing to get right and it is narrower than "doubles
+#: notes: Ally effects": Katara doubles TRIGGERED abilities only. White Lotus
+#: notes: Reinforcements' anthem and Suki, Courageous Rescuer's +1/+0 are STATIC and are
+#: notes: not doubled; Kyoshi Battle Fan's equip is an ACTIVATED ability and is not
+#: notes: doubled (its ETB token is). Suki, Courageous Rescuer's token trigger reads
+#: notes: "This ability triggers only once each turn", which caps it at one even with
+#: notes: Katara out — she is in the list for the anthem and the body, not as an engine
+#: notes: piece. Gather the White Lotus counts PLAINS, which is why the basics are
+#: notes: Plains-heavy rather than an even split (G-75: a card that names a resource is worth
+#: notes: the number of them in THIS deck). The count is SEVEN Plains-TYPED lands, not six
+#: notes: basics — Hallowed Fountain is a Plains Island and counts. What that card is
+#: notes: actually worth is smaller than seven either way, because the clause reads Plains
+#: notes: you CONTROL: at 7 of 24 lands, turn five expects ~1.5 on the battlefield, and the
+#: notes: three fetches raise it to roughly 2-3. Grade it as a 2-3 token card with scry 2.
+#: notes: THE THREE DOUBLERS DIVIDE THE LIST CLEANLY, AND ELSPETH MULTIPLIES WITH THE
+#: notes: OTHER TWO RATHER THAN OVERLAPPING THEM: Katara and Starfield double the
+#: notes: TRIGGER, Elspeth doubles the token OUTPUT, so Kyoshi Warriors under Katara plus
+#: notes: Elspeth is two triggers times two tokens = FOUR Ally tokens plus the 3/3 body.
+#: notes: United Front becomes 2X, and Belladonna Took's gain-then-draw-then-counter ladder
+#: notes: climbs twice as fast. Katara reads ALLY and ignores power;
+#: notes: Starfield Vocalist reads any PERMANENT and ignores type, but only for
+#: notes: ENTERS-caused triggers. Katara therefore owns the attack- and death-triggered
+#: notes: Allies that Starfield cannot see, and Starfield owns the four noncreature
+#: notes: permanents (Invasion Tactics, Sheltered by Ghosts, Birnin Zana Plaza, Temple of
+#: notes: Enlightenment) plus the non-Ally creatures. With both out an Ally's ETB fires
+#: notes: THREE times.
+#: notes: DELNEY WAS CUT 2026-09-01 ON A MEASUREMENT, not a hunch: of the twelve copies in
+#: notes: his power-2-or-less range, Suki Courageous Rescuer's own cap blocks one, leaving
+#: notes: eleven — and every one of those eleven is already covered by Katara (the nine
+#: notes: Allies) or by Starfield (the two enters-caused non-Allies). He doubled nothing
+#: notes: uniquely. His real contribution was the evasion clause, and the anthem tension
+#: notes: he created went with him: White Lotus Reinforcements and Suki, Courageous
+#: notes: Rescuer each pushed South Pole Voyager and Avatar Enthusiasts from 2 power to 3,
+#: notes: so ten of the fourteen sat one anthem trigger from falling out of his range.
+#: notes: Starry-Eyed Skyrider replaces the evasion on the half that matters most here —
+#: notes: attacking TOKENS have flying, and the deck makes ten of them.
+#: notes: Sonar Strike was CUT earlier for its conditional damage (attacking, blocking or
+#: notes: tapped only) and a lifegain rider that needs a Bat, of which this deck runs zero.
+
+# Engine — the doubler and what it doubles
+1 Great Divide Guide (TLA) 181
+1 Haru, Hidden Talent (TLA) 182
+1 South Pole Voyager (TLA) 35
+1 Sheriff of Safe Passage (OTJ) 29
+1 Starfield Vocalist (EOE) 78
+1 Belladonna Took (HOB) 4
+1 Katara, the Fearless (TLA) 230
+1 Avatar Enthusiasts (TLA) 11
+1 Dazzling Theater // Prop Room (DSK) 3
+1 Suki, Courageous Rescuer (TLA) 37
+1 Earth Kingdom Jailer (TLA) 16
+1 Toph, the Blind Bandit (TLA) 198
+1 Ty Lee, Chi Blocker (TLA) 76
+1 Sokka, Lateral Strategist (TLA) 241
+1 Niko, Light of Hope (DSK) 224
+1 Elspeth, Storm Slayer (TDM) 11
+
+# Ally bodies and token makers
+1 Appa, Steadfast Guardian (TLA) 10
+1 Suki, Kyoshi Warrior (TLA) 243
+1 Kyoshi Warriors (TLA) 26
+1 Hakoda, Selfless Commander (TLA) 23
+1 Aang, Swift Savior // Aang and La, Ocean's Fury (TLA) 204
+1 The Earth King (TLA) 172
+1 Earth Kingdom General (TLA) 173
+1 Earth King's Lieutenant (TLA) 217
+1 United Front (TLA) 39
+1 Invasion Tactics (TLA) 183
+1 Aang, at the Crossroads // Aang, Destined Savior (TLA) 203
+1 Appa, Loyal Sky Bison (TLA) 9
+1 Starry-Eyed Skyrider (TDM) 25
+
+# Interaction
+1 Sheltered by Ghosts (DSK) 30
+1 Enter the Avatar State (TLA) 18
+1 Allies at Last (TLA) 164
+1 Duty Beyond Death (TDM) 10
+1 Jet, Freedom Fighter (TLA) 229
+1 The Eagles Are Coming! (HOB) 12
+1 Celebrate the Mountain-king (HOB) 7
+
+# Lands (24)
+1 Hushwood Verge (DSK) 261
+1 Etched Cornfield (DSK) 258
+1 Birnin Zana Plaza (MSH) 262
+1 Floodfarm Verge (DSK) 259
+1 Hallowed Fountain (ECL) 265
+1 Temple of Enlightenment (FDN) 698
+1 Gleaming Bastion (MSH) 267
+1 Willowrush Verge (DFT) 270
+1 Breeding Pool (EOE) 251
+2 Evolving Wilds (ECL) 264
+1 Terramorphic Expanse (MSC) 828
+6 Plains (HOB) 189
+1 Three Tree City (BLB) 260
+3 Forest (HOB) 193
+2 Island (HOB) 190
+#~ -Invasion Tactics | +Katara, Water Tribe's Hope | SIDEGRADE (owned): Human Warrior Ally, vigilance, ETB Ally token (doubled by BOTH Katara the Fearless and Starfield), and waterbend {X} is a real finisher on a ten-token board -- creatures get BASE power/toughness X/X, so existing +1/+1 counters still stack on top, and the tap-to-help clause lets vigilance bodies attack AND pay. MV 5 for MV 5, so the curve does not move; it costs card advantage 4 -> 3 (Invasion Tactics draws whenever Allies connect, and Starfield doubles its +2/+2 ETB to +4/+4).
+#~ note: Katara, Water Tribe's Hope is PARKED, not rejected, and the number to re-check is the manabase. Measured 2026-09-01: {2}{W}{U}{U} against 8 blue sources is 43% on curve at turn five -- it would become the deck's worst castability row, below Katara the Fearless at 51%, which is the row the tier block already names as what holds this deck at B. Great Divide Guide (every land AND Ally taps for any colour) and Dazzling Theater (convoke pays a coloured pip off a blue body) both rescue her, but P(drawing either by turn five) is only 33.6%, before either resolves or survives. She comes in when blue sources go up -- roughly 18 are needed for a 90% double pip -- not when a slot opens.
+#~ -Kyoshi Warriors | +Mister Fantastic, Reed Richards | SIDEGRADE (owned): {3}{U} reach body that draws whenever one or more tokens you control enter. He was CUT 2026-09-01 for Celebrate the Mountain-king, which took interaction 7 -> 8 at the cost of card advantage 4 -> 3; he is the way to buy that draw back if the axis reads too thin in play. Cut listed as Kyoshi Warriors because both are MV 4 and the 4-slot is the curve's fat point.
+#~ note: TWO THINGS TO KNOW BEFORE BRINGING MISTER FANTASTIC BACK. His trigger reads "one or more tokens", so ELSPETH DOES NOT MULTIPLY HIM -- doubling a single creation event enters them simultaneously, which is one trigger, not two. Katara and Starfield DO, because doubling the trigger produces two separate token events. And he is a {3}{U} pip against 8 blue sources in a deck whose worst castability rows are already blue; he is also a non-Ally, so Katara doubles nothing of his own.
+#~ -Sheriff of Safe Passage | +Orcrist, Goblin-cleaver | SIDEGRADE (owned M): {3} Equipment, +2/+2 and trample, and on combat damage to a player it makes a Treasure for EACH creature you control of a chosen type -- 24 Humans and 21 Allies here, so 5-6 off a normal board and 10-12 once Elspeth doubles them. Belladonna Took triggers PER token ("whenever A token enters"), so one connect completes her whole gain-then-draw-then-counters ladder. Sheriff is the cut because he is the one creature left that BOTH doublers are blind to: "enters with a +1/+1 counter for each other creature" is a replacement effect, not a triggered ability, and he is a Human Knight rather than an Ally.
+#~ note: WHY ORCRIST IS PARKED RATHER THAN PLAYED, so the case is not re-derived: it is SIX mana before it does anything ({3} cast plus equip {3}) and it still has to connect, and the payoff is MANA this deck cannot spend -- avg MV 3.28, top end 5-6, and Great Divide Guide already turns every land AND every Ally into any-colour mana. United Front is the only {X} sink in the list. It is also the only Equipment, so there is no equip discount and nothing to tutor it. What WOULD change the answer: more {X} sinks or a real top end. The evasion objection is already answered -- Starry-Eyed Skyrider grants flying to an attacking creature and Enter the Avatar State grants flying plus hexproof for {W} -- so do not cut EITHER of those to make room for it.

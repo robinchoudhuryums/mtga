@@ -250,8 +250,11 @@ def discover_decks():
                     if fmv:
                         did = f"{int(fmv.group(1))}-{fmv.group(2).lower()}"
                     else:
-                        vm = re.match(r"^(\d+[a-z]+)-", fn)
-                        did = vm.group(1) if vm else os.path.splitext(fn)[0]
+                        vm = re.match(r"^(\d+)([a-z]+)-", fn)
+                        # `str(int(...))` matches the core-id normalization above, so a
+                        # zero-padded variant file cannot carry an id its core does not.
+                        did = (f"{int(vm.group(1))}{vm.group(2)}" if vm
+                               else os.path.splitext(fn)[0])
                     decks.append(_record(did, core, p, core, True))
         elif entry.endswith(".txt"):
             did = os.path.splitext(entry)[0]
@@ -265,9 +268,26 @@ def _record(did, core, path, core_id, variant):
             "core": core_id, "variant": variant, "meta": meta}
 
 
+def _norm_deck_id(raw):
+    """Canonical form of a deck id: strip a ZERO-PADDED numeric prefix.
+
+    `discover_decks` derives a core id with `str(int(...))`, so the directory
+    `06-dead-or-alive` yields id `6` — but ten deck directories are zero-padded ON DISK,
+    so the id you read off an `ls` is exactly the one every by-id command rejected
+    (`deck.py stats 06` -> "No deck with id '06'", while `6` works). Found 2026-09-01.
+    Variant ids are normalized the same way, closing a latent asymmetry: the variant
+    branch takes its digits RAW, so a file named `06a-….txt` would have carried id `06a`
+    against a core of `6`. No such file exists today, which is why nothing caught it.
+    """
+    t = (raw or "").strip().lower()
+    m = re.match(r"^0+(\d.*)$", t)
+    return m.group(1) if m else t
+
+
 def find_deck(deck_id):
+    want = _norm_deck_id(deck_id)
     for d in discover_decks():
-        if d["id"].lower() == deck_id.lower():
+        if _norm_deck_id(d["id"]) == want:
             return d
     return None
 
@@ -1488,7 +1508,7 @@ _ROLE_PATTERNS = {
         # any "fight" is removal (Novel Nunchaku "fights up to one target", Longstalk
         # Brawl "fight each other") — the old pattern only caught "fights target".
         r"\bfights?\b|creatures? fight",
-        r"deals damage equal to (?:twice )?.{0,20}?power to target (?:creature|creature or planeswalker|attacking)",
+        r"deals? damage equal to (?:twice )?.{0,20}?power to target (?:creature|creature or planeswalker|attacking)",
         # SCALING damage whose size is anything OTHER than a power reference. The pattern
         # above hard-codes "power", so Combustion Technique — "deals damage equal to 2 plus
         # the number of Lesson cards in your graveyard to target creature" — matched
@@ -1500,7 +1520,7 @@ _ROLE_PATTERNS = {
         # to target PLAYER" (Gravitic Punch, Sif's Spearmaster, Runebound Wolf) is reach,
         # not an answer, and a roster sweep of the first draft showed that was the ONLY
         # false-positive class among 116 newly-matched cards.
-        r"deals damage equal to [^.]{0,80}?to (?:any target|target (?!player|opponent)\w+)",
+        r"deals? damage equal to [^.]{0,80}?to (?:any target|(?:another )?target (?!player|opponent)\w+)",
         # "UP TO ONE target" — the optional-target templating. Both scaling-damage patterns
         # above require "to target" or "to any target" immediately after the size clause,
         # and the fixed-damage half has carried its `up to \w+ target` twin since the
@@ -1510,7 +1530,7 @@ _ROLE_PATTERNS = {
         # Measured against the whole pool: 8 matches, zero false positives — the player
         # guard is kept anyway, since "to up to one target player" is the same reach the
         # sibling patterns exclude.
-        r"deals damage equal to [^.]{0,80}?to up to \w+ target (?!player|opponent)\w+",
+        r"deals? damage equal to [^.]{0,80}?to up to \w+ (?:another )?target (?!player|opponent)\w+",
         # TARGET-FIRST word order. The two patterns above both assume "equal to X"
         # precedes "to target"; Magic also templates it the other way round, and that
         # half was a whitelist hole (G-67). Triumphant Chomp — "deals damage to target
@@ -1798,7 +1818,7 @@ _ROLE_PATTERNS = {
     # Direct damage / life loss to a player — reach & finishers the fixed-number
     # removal pattern misses (Cat-Gator, drain effects).
     "Burn / drain": [
-        r"deals damage equal to .{0,60}?(?:any target|a player|target player|each opponent|that player)",
+        r"deals? damage equal to .{0,60}?(?:any target|a player|target player|each opponent|that player)",
         r"(?:each opponent|target opponent|any opponent|that player|each player) loses \d",
         r"deals? \d+ damage to each opponent",
         r"loses life equal to",

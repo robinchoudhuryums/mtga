@@ -2,7 +2,7 @@
 #: format: Standard
 #: arena: 72 Goblin Kamikaze, d8c2de92-daad-4a45-a81d-3d78cf53cdcc
 #: colors: BR
-#: tier: B (PROVISIONAL) — graded UNDER the A metrics floor (interaction 7 after the
+#: tier: B (PROVISIONAL) — graded UNDER the A metrics floor (interaction 8 after the
 #: tier: Stadium Headliner / Goblin Negotiation swaps, against card advantage 4 that
 #: tier: under-reads: The Great Goblin's death-impulse, Vampiric Rites, Corrupted
 #: tier: Conviction and Sackville-Bagginses all draw through sacrifice). A coherent

@@ -2521,3 +2521,86 @@ check_patterns 288 live, check_docs OK.
 
 **Where I left off:** all green — `check_all` all invariants hold, `resolve --check` clean,
 role baseline pruned 445→444 (G-69's acknowledge-last order).
+
+## 2026-08-31 — /draft-deck 78 "Team Avatar" (Bant Ally tribal around Katara, the Fearless)
+
+Answered "do I have an Ally deck" with NO, then built one. The finding that justified
+it: **52 decks run Ally-typed creatures and none is an Ally deck** — the type is what
+nearly every Avatar character is (127 in the pool), so a body count carries no
+information. Deck 15 has 18 Ally bodies against ONE payoff; deck 16 is 15/2. Every one
+of the roster's Ally payoffs was being played for a non-Ally reason (Great Divide Guide
+as a rainbow fixer, Hakoda as a top-of-library caster), and FIVE owned payoffs sat in no
+deck at all. G-59's inversion, exactly.
+
+- **Built fully owned — zero craft targets, preflight READY.** 60 cards, 24 lands,
+  interaction 8, card advantage 4, avg MV 3.03, early drops 14 (1 mana source).
+  Metrics floor **A**; letter set to **B (PROVISIONAL)** with the argument stated.
+- **The engine is a trigger DOUBLER, not an anthem pile.** Katara doubles triggered
+  abilities of Allies only — South Pole Voyager draws on the second resolution, so with
+  her out every Ally that enters draws a card. Earth Kingdom Jailer exiles two, The
+  Earth King makes two 4/4 Bears, Toph earthbends 4 (which makes a 4/4 land creature,
+  which then turns on The Earth King's attack trigger).
+- **The manabase is the real cap and does not fix by shuffling sources.** Katara is
+  {G}{W}{U} at ~51% on turn three; four configurations were measured (W/U/G at
+  14/8/8, 13/9/8, 13/7/9, 13/8/8) and she moved 50.5–54.2% across all of them. 28 W
+  pips against 10 G and 5 U in three colours is the structural cost, not the land mix.
+- **`screen` on the 16-card rejected pile saturated at 100% KEY** and the tool said so.
+  Grading from text instead: four candidates (First-Time Flyer, Guru Pathik, Master
+  Pakku, Walltop Sentries) are gated on **Lesson cards**, of which this deck runs ZERO;
+  Diligent Zookeeper scales with NON-Human creatures in a deck of Human Allies. None
+  earned a slot. Katara, Water Tribe's Hope is the one real loss — {2}{W}{U}{U} on 8
+  blue sources would have been the worst castability row in the deck.
+- **Distinctness: 81% against deck 15, 15 shared nonland cards** — the shared half is
+  the generically-good white Avatar Allies; all ten engine pieces are unique to 78.
+  Copies are fungible so the overlap costs nothing, but it is the honest caveat.
+- Three cards baselined as zero-role (Katara herself, Kyoshi Warriors, Jeong Jeong's
+  Deserters). A trigger-doubler has no role bucket — that is a TAXONOMY hole per G-67,
+  not a pattern hole, so it was acknowledged rather than patched.
+
+**Where I left off:** all green — `check_all` all invariants hold, `resolve --check` 49
+lines clean, dashboard rebuilt.
+
+---
+
+## 2026-09-01 — broad-implement: three tooling flaws found while tuning deck 78
+
+Three flaws surfaced during a long deck-78 tuning session and were fixed together.
+Block: `.cycle/blocks/2026-09-role-verb-wishlist-target-deck-id-broad-implement.md`.
+
+- **T-01 `_ROLE_PATTERNS` verb + templating hole (G-67).** `Allies at Last` says "each
+  DEAL damage", the three damage-equal-to patterns all said "dealS damage" — zero
+  interaction. Measuring the verb fix surfaced the bigger half: `to ANOTHER target
+  creature`, which the TARGET-FIRST sibling pattern three lines below had always handled.
+  5 cards → **15**, zero false positives across the pool. K-12 diff: 4 decks moved
+  interaction (28a 5→6, 28 7→8, 72 7→8, 78 8→9), **0 tier floors**.
+- **T-02 `wishlist.py --add` dropped `--target`/`--note` (new G-82).** Silent no-op —
+  reported success, wrote blanks. `/add-wishlist`'s own Stage 2 named setting the Target
+  as a step no flag performed. Now stamped on the rows that run adds only, with an
+  unknown deck id refused before any Scryfall work.
+- **T-03 zero-padded deck ids rejected (new G-82).** `deck.py stats 06` failed for
+  `decks/06-dead-or-alive/`. `_norm_deck_id` on both sides of `find_deck`; the variant
+  branch normalized too (latent: `06a-….txt` would have carried id `06a`); **INV-04's
+  duplicate-id gate re-keyed to the same normalization** so it can still see the
+  collision.
+
+**Decisions worth not re-litigating:**
+- The `#: tier:` prose of deck 78 ARGUED the T-01 hole as its reason for under-reading.
+  Closing the hole made that sentence false; it was rewritten as history with the fix
+  date. A model change stales a rationale exactly as a swap does — run
+  `tier --audit-rationale` after a pattern edit, not just after a deck edit.
+- `suggest-homes` rating 14 decks KEY for Pinnacle Starcage was NOT treated as a bug —
+  it is G-31's documented saturation for a structurally-valued card. Narrowing it is a
+  scoring change that re-ranks every card; declined.
+- One mutant survived the first pass (the stored-id half of `find_deck`), because
+  `discover_decks` already canonicalizes core ids. Covered with a monkeypatched-discovery
+  test rather than dropped. **A test written against the live roster only covers the
+  paths the roster happens to use.**
+
+**Deck 78 (Team Avatar) state:** interaction 9, card advantage 3, protection 4, avg MV
+3.28, floor A, claimed B (PROVISIONAL), preflight READY, 5 craft targets. Flex block holds
+Katara Water Tribe's Hope (parked on castability — 43% on curve at 8 blue sources), Mister
+Fantastic and Orcrist. **Open with the user:** `−Sheriff of Safe Passage / +Ojer Taq` and
+`−Kyoshi Warriors / +Byrke` were measured and offered; no decision yet.
+
+**Where I left off:** all green — `check_all` all invariants hold, full pytest suite
+passes, `check_docs`/`check_patterns`/`check_commands` OK, dashboard rebuilt.

@@ -101,7 +101,7 @@
 #~ note: gained the target-first shape, so this deck's measured interaction rose 6 -> 7 and
 #~ note: the number below is no longer a floor-edge warning. Roster impact of that pattern was
 #~ note: two decks (28 and 28a) and ZERO tier floors moved. Read the live vector, not this note.
-#~ note: THE MARGIN, restated after the fix: interaction 7 + card advantage 4 = 11 against a
+#~ note: THE MARGIN, restated after the fix: interaction 8 + card advantage 4 = 12 against a
 #~ note: required 7, so the deck no longer sits on the A-floor minimum. Red Guardian was the
 #~ note: counted removal spent
 #~ note: here; his ETB only killed a creature that had already DEALT DAMAGE that turn, which is

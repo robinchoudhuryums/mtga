@@ -258,6 +258,58 @@ class TestBudgetPlanner:
         assert len(wishlist._rank_scores(rows)) == 3
 
 
+class TestAddStampsTargetAndNote:
+    """`--target` / `--note` are query FILTERS, and argparse shares them across modes, so
+    passing them with `--add` was a SILENT no-op: the command reported success and wrote
+    blank cells (found 2026-09-01 wishlisting Pinnacle Starcage for deck 6). Worse than an
+    error, because /add-wishlist's recipe says to "set the home Target" and no flag did
+    it — a documented step with no tool behind it (G-53)."""
+
+    def _world(self, tmp_path, monkeypatch):
+        monkeypatch.setattr(wishlist, "WISHLIST_CSV", str(tmp_path / "wl.csv"))
+        monkeypatch.setattr(wishlist, "POOL_CSV", str(tmp_path / "pool.csv"))
+        monkeypatch.setattr(wishlist, "DEFAULT_CSV", str(tmp_path / "lib.csv"))
+        batch = tmp_path / "batch.txt"
+        batch.write_text("1 Test Bomb (SET) 9\n", encoding="utf-8")
+
+        def _enrich(name, set_code, collector, pool):
+            return ({"Card Name": name, "Type": "Creature — Demon",
+                     "Card Text": "Destroy target creature.", "Color(s)": "B",
+                     "Synergies": "removal", "Rarity": "Rare", "Set Code": set_code,
+                     "Collector #": collector, "Target": "", "Note": ""}, "scryfall")
+        monkeypatch.setattr(wishlist, "enrich", _enrich)
+        return str(batch)
+
+    def test_target_and_note_reach_the_written_row(self, tmp_path, monkeypatch):
+        batch = self._world(tmp_path, monkeypatch)
+        assert wishlist.cmd_add(batch, target="6", note="home deck") == 0
+        row = wishlist.load_wishlist()[0]
+        assert row["Target"] == "6" and row["Note"] == "home deck"
+
+    def test_an_unknown_target_is_refused_and_writes_nothing(self, tmp_path, monkeypatch):
+        # Asymmetric validation, as parse_matches uses (G-74): a bad deck id would write a
+        # DANGLING Target, so it is refused BEFORE any Scryfall work rather than after.
+        batch = self._world(tmp_path, monkeypatch)
+        assert wishlist.cmd_add(batch, target="999") == 1
+        assert wishlist.load_wishlist() == []
+
+    def test_a_re_add_does_not_clobber_a_hand_set_target(self, tmp_path, monkeypatch):
+        # Only NEW rows are stamped — a second add must not overwrite a Target a human set.
+        batch = self._world(tmp_path, monkeypatch)
+        wishlist.cmd_add(batch, target="6")
+        rows = wishlist.load_wishlist()
+        rows[0]["Target"] = "42"
+        wishlist.write_wishlist(rows)
+        wishlist.cmd_add(batch, target="6")
+        assert wishlist.load_wishlist()[0]["Target"] == "42"
+
+    def test_add_without_the_flags_is_unchanged(self, tmp_path, monkeypatch):
+        batch = self._world(tmp_path, monkeypatch)
+        assert wishlist.cmd_add(batch) == 0
+        row = wishlist.load_wishlist()[0]
+        assert row["Target"] == "" and row["Note"] == ""
+
+
 class TestOutageReseed:
     """The F20 + BS-17 path end to end: a card added during a Scryfall outage gets a
     2.0 Power seed computed from BLANK data; the re-add backfills the card's fields

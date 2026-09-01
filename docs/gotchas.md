@@ -4454,6 +4454,88 @@ advantage), so per the S1-04 precedent (Equipment 31, hand-attack 31 — measure
 the family stays out. The two cards are acknowledged in `role_baseline.txt`, which is the
 mechanism built for exactly this: a deliberate zero, on the record.
 
+**The 2026-09-01 instance, and the reported half was the SMALLER half.** Deck 78's
+`Allies at Last` — "Up to two target creatures you control each **deal** damage equal to
+their power to target creature an opponent controls" — scored `['Cost reduction / cheat']`
+and no interaction at all. All three damage-equal-to removal patterns were written
+`dealS damage`, singular, so the PLURAL-subject templating matched nothing. It was found
+by hand while grading a deck, not by a gate, and it had been quietly making every
+interaction figure that deck quoted read one LOW.
+
+Widening the verb to `deals?` moved **5** pool cards. But measuring the widening is what
+surfaced the bigger hole: **`to ANOTHER target creature`**, the commonest bite/fight
+templating in Magic, was excluded by both scaling patterns, which required `to target`
+immediately after the size clause. The TARGET-FIRST sibling pattern one clause below had
+carried `(?:another )?` since the day it was written — so the family disagreed with itself,
+and the two members that were wrong were the two nobody had re-measured. Adding it took the
+change from 5 cards to **15**, with **zero false positives** across the whole pool (each of
+the fifteen points power-scaled damage at a target creature; the `(?!player|opponent)` guard
+that keeps reach out is retained and is now pinned by its own test):
+
+| verb only | Coordinated Clobbering, Friendly Rivalry, Terrific Team-Up, Allies at Last, Graceful Takedown |
+|---|---|
+| + another-target | Bolg of the North, Itzquinth Firstborn of Gishath, Breaking of the Fellowship, Garruk Savage Herald, Cosmic Hunger, Tandem Takedown, Fall of the Hammer, Mutiny, Markov Retribution, Band Together |
+
+**K-12 diff: 4 decks moved interaction (28a 5→6, 28 7→8, 72 7→8, 78 8→9), and ZERO tier
+floors moved** — which is what made the widening safe to take, and is the measurement to
+run before touching a role bucket, per K-14.
+
+Two things worth carrying forward. First, **the fix's own prose went stale by
+construction**: deck 78's `#: tier:` block ARGUED this hole ("Allies at Last is removal the
+classifier cannot see") as the reason its interaction figure under-read, and closing the
+hole made that sentence false. The rationale audit caught it, and it was rewritten to
+record the hole as history with its fix date. A model change stales a rationale exactly the
+way a swap does. Second, **when a pattern family has several members, diff them against
+each other** — the sibling that already handled `another` is the evidence the other two
+were incomplete, and it had been sitting three lines away for as long as they had.
+
+## [G-82] A tool that rejects the form the project itself writes down
+
+Two independent bugs found within an hour of each other on 2026-09-01, both the same
+shape: **the interface disagreed with an artifact the project produces**, and in both cases
+the tool reported success rather than complaining.
+
+**`wishlist.py --add` silently dropped `--target` and `--note`.** They are query FILTERS on
+`--rank` / `--budget` / `--by-set` (G-19), and argparse shares flags across modes, so
+passing them with `--add` was accepted, the command printed "Added 1 card(s)", and both
+cells were written BLANK. Found while wishlisting Pinnacle Starcage for deck 6 — and only
+because the row was read back afterwards. What makes this a tool flaw rather than a
+misuse: **`/add-wishlist`'s own recipe has "Stage 2 — Set the Target (home deck)" as a
+named step, and the only ways to do it were `--suggest-targets --write` (which picks
+heuristically) or "edit the CSV directly".** A documented step with no tool behind it is
+the G-53 shape one layer up: not a capability nothing reaches, but a capability that was
+never built while the docs described using it. `cmd_add` now stamps both onto the rows
+**that run added** — never a re-add, so a hand-set Target survives — and REFUSES an unknown
+deck id *before any Scryfall work*, which is parse_matches' asymmetric validation (G-74)
+plus the builders' refuse-before-network-work rule. Silent no-op → written value or a
+clean error; there is no third state.
+
+**Ten deck directories are zero-padded on disk and no by-id command accepted the padded
+id.** `discover_decks` derives a core id with `str(int(...))`, so `decks/06-dead-or-alive/`
+yields id `6`, while `find_deck` matched exactly — so `deck.py stats 06` answered "No deck
+with id '06'" for a directory whose name is literally `06-…`. The id you read off an `ls`
+was the one form the tool rejected, across `check`, `legal`, `stats`, `tier`, `cuts` and
+`arena` alike. `_norm_deck_id` now strips a padded numeric prefix on BOTH sides of the
+comparison, and the variant branch of `discover_decks` normalizes its digits with `int()`
+like the core branch — closing a LATENT asymmetry where a file named `06a-….txt` would have
+carried id `06a` against a core of `6` (no such file exists, which is exactly why nothing
+caught it).
+
+**INV-04's duplicate-id gate had to move with it.** It keyed on the raw id, so `06` and
+`6` — which now resolve to the same deck — would have read as two distinct ids: the gate
+built to catch "two files claim one id" would have been blind to the one new way of
+creating that collision. It is re-keyed on `_norm_deck_id`, so the check and the resolver
+answer the same question. **When you widen what a resolver accepts, widen the gate that
+guards it in the same change**, or the gate silently narrows.
+
+**And one mutation-testing lesson, because the first pass shipped an untested line.**
+Reverting the STORED-id half of `find_deck` (`_norm_deck_id(d["id"])` → `d["id"].lower()`)
+left every roster test GREEN — because `discover_decks` already canonicalizes core ids, so
+that half only matters for the top-level `<name>.txt` branch, which takes its id raw. The
+test that was supposed to pin the fix pinned only half of it. A monkeypatched-discovery
+test now exercises the stored side. **A test written against the live roster can only
+cover the paths the roster happens to use.**
+
 ## [G-68] A `#:` header that lists card names goes stale, and nothing checked one
 
 Two deck headers are a semicolon-separated list of CARD NAMES rather than prose:

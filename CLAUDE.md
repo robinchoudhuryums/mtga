@@ -890,17 +890,32 @@ directions.
 - **A PATTERN SET IS A WHITELIST, AND A WHITELIST'S MISSES ARE INVISIBLE.** `_ROLE_PATTERNS`
   matches PHRASINGS, and Magic templates one effect several ways — so a card worded a way no
   pattern anticipates scores ZERO roles, and the tier floor, `cuts`, the quality guard and
-  `check_all` inherit that as fact. Never an error; the DEFAULT failure is a silent
-  UNDER-count — but a too-broad pattern OVER-counts just as silently (BS2-06). 23 holes
-  closed in 2026-08 — NEUTRALIZATION (**ask which rule a family takes before reusing
-  one**), PER-TURN ENGINES (K-14's shape one bucket over), WARD (K-09's two-models shape
-  vs the G-25 axis) among them. **A PATTERN hole is fixed and measured; a TAXONOMY hole
-  (Equipment, selection, hand attack — no bucket exists) is a design decision that
-  re-scores the roster — triage the backlog by that line.** **`check_roles.py` makes the
-  population visible** — `role_baseline.txt` for zero-role ROSTER cards, `--tags` for
-  POOL cards the two models disagree about. Read both as a DELTA. **Live residual: the
-  138-entry worklist + the AURA `+N/-M`** (a curse and a pump one shape cannot
-  separate). Fixtures from REAL TEXT; check for a TEST DOUBLE. [G-67]
+  `check_all` inherit that as fact. The DEFAULT failure is a silent UNDER-count; a too-broad
+  pattern OVER-counts just as silently (BS2-06). 23 holes closed in 2026-08, NEUTRALIZATION
+  (**ask which rule a family takes before reusing one**) among them. **2026-09-01 adds the
+  family-disagreement shape, and the REPORTED half was the smaller one**: all three
+  damage-equal-to patterns said "dealS damage", so the plural "each DEAL damage" scored
+  nothing (5 cards) — and measuring that surfaced
+  `to ANOTHER target creature`, which the TARGET-FIRST sibling three lines below had always
+  handled (10 more, 0 false positives, 4 decks +1 interaction, **0 tier floors**). **When a
+  pattern family has several members, diff them against each other.** **A PATTERN hole is
+  fixed and measured; a TAXONOMY hole (Equipment, selection, hand attack) re-scores the
+  roster — triage by that line.** `check_roles.py` makes it visible: read
+  `role_baseline.txt` and `--tags` as a DELTA. Real-text fixtures. [G-67]
+- **A TOOL THAT REJECTS THE FORM THE PROJECT ITSELF WRITES DOWN.** Two bugs an hour apart on
+  2026-09-01, one shape: the interface disagreed with an artifact the repo produces, and
+  REPORTED SUCCESS. `wishlist.py --add` silently dropped `--target`/`--note` — they are
+  `--rank`/`--budget` FILTERS and argparse shares flags across modes, so the add printed
+  "Added 1 card(s)" and wrote BLANK cells, while **`/add-wishlist`'s own recipe names
+  "Stage 2 — Set the Target" as a step no flag performed** (G-53 one layer up: documented,
+  never built). It now stamps only the rows THAT RUN added — a re-add must not clobber a
+  hand-set Target — and REFUSES an unknown deck id before any Scryfall work (G-74's
+  asymmetry). And ten deck dirs are ZERO-PADDED on disk while `find_deck` matched exactly,
+  so `deck.py stats 06` failed for `decks/06-dead-or-alive/`: the id you read off an `ls`
+  was the one form every by-id command rejected. `_norm_deck_id` normalizes BOTH sides, and
+  **INV-04's duplicate-id gate was re-keyed to it in the same change** — `06` and `6` now
+  collide, so the raw-keyed gate would have been blind to the one new way of making the
+  collision it exists to catch. **Widen a resolver, widen its gate.** [G-82]
 
 - **A `#:` HEADER THAT LISTS CARD NAMES GOES STALE, AND UNTIL 2026-08-07 NOTHING CHECKED
   ONE.** `#: protect:` and `#: uncastable-ok:` are read by the tooling as INSTRUCTIONS, so
