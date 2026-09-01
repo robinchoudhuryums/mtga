@@ -16,11 +16,16 @@
 #: archetype: be full of Allies (18 and 15 bodies against ONE and two payoffs), where
 #: archetype: this deck is built on the payoff half and splashes green for it.
 #: tier: B (PROVISIONAL) — still unplayed, and still graded one band UNDER its A metrics
-#: tier: floor. The floor reads A on interaction 7 and card advantage 4 at a 3.28 curve.
-#: tier: Both figures UNDER-read: Allies at Last is removal the classifier cannot see (its
-#: tier: patterns all say "deals damage" and the card says "each DEAL damage"), so the
-#: tier: real interaction is 8; and Starfield Vocalist scores zero roles because a
-#: tier: trigger-doubler has no bucket at all.
+#: tier: floor. The floor reads A on interaction 8 and card advantage 3 at a 3.28 curve.
+#: tier: BOTH FIGURES UNDER-READ, and card advantage is now the one to watch. Allies at
+#: tier: Last is removal the classifier cannot see (its patterns all say "deals damage"
+#: tier: and the card says "each DEAL damage"), so the real interaction is 9; Starfield
+#: tier: Vocalist scores zero roles because a trigger-doubler has no bucket at all; and
+#: tier: the card-advantage 3 is a floor, not a count -- Hakoda casts Ally spells off the
+#: tier: top of the library and does not classify, Celebrate the Mountain-king's recruit
+#: tier: is a loot the bucket does not read, and Elspeth's 0 refills the board rather than
+#: tier: the hand. Mister Fantastic was traded for that interaction on 2026-09-01 and sits
+#: tier: in the flex block; if the axis reads thin in play he is the way to buy it back.
 #: tier: WHAT USED TO HOLD IT AT B WAS A SINGLE POINT OF FAILURE: the whole engine was one
 #: tier: legendary 3/3, and protection WAS 2 back then, so one removal spell ended it.
 #: tier: THAT IS LARGELY GONE. Starfield Vocalist was ADDED as a second doubler that reads
@@ -109,7 +114,6 @@
 1 Invasion Tactics (TLA) 183
 1 Aang, at the Crossroads // Aang, Destined Savior (TLA) 203
 1 Appa, Loyal Sky Bison (TLA) 9
-1 Mister Fantastic, Reed Richards (MSH) 66
 1 Starry-Eyed Skyrider (TDM) 25
 
 # Interaction
@@ -119,6 +123,7 @@
 1 Duty Beyond Death (TDM) 10
 1 Jet, Freedom Fighter (TLA) 229
 1 The Eagles Are Coming! (HOB) 12
+1 Celebrate the Mountain-king (HOB) 7
 
 # Lands (24)
 1 Hushwood Verge (DSK) 261
@@ -138,3 +143,5 @@
 2 Island (HOB) 190
 #~ -Invasion Tactics | +Katara, Water Tribe's Hope | SIDEGRADE (owned): Human Warrior Ally, vigilance, ETB Ally token (doubled by BOTH Katara the Fearless and Starfield), and waterbend {X} is a real finisher on a ten-token board -- creatures get BASE power/toughness X/X, so existing +1/+1 counters still stack on top, and the tap-to-help clause lets vigilance bodies attack AND pay. MV 5 for MV 5, so the curve does not move; it costs card advantage 4 -> 3 (Invasion Tactics draws whenever Allies connect, and Starfield doubles its +2/+2 ETB to +4/+4).
 #~ note: Katara, Water Tribe's Hope is PARKED, not rejected, and the number to re-check is the manabase. Measured 2026-09-01: {2}{W}{U}{U} against 8 blue sources is 43% on curve at turn five -- it would become the deck's worst castability row, below Katara the Fearless at 51%, which is the row the tier block already names as what holds this deck at B. Great Divide Guide (every land AND Ally taps for any colour) and Dazzling Theater (convoke pays a coloured pip off a blue body) both rescue her, but P(drawing either by turn five) is only 33.6%, before either resolves or survives. She comes in when blue sources go up -- roughly 18 are needed for a 90% double pip -- not when a slot opens.
+#~ -Kyoshi Warriors | +Mister Fantastic, Reed Richards | SIDEGRADE (owned): {3}{U} reach body that draws whenever one or more tokens you control enter. He was CUT 2026-09-01 for Celebrate the Mountain-king, which took interaction 7 -> 8 at the cost of card advantage 4 -> 3; he is the way to buy that draw back if the axis reads too thin in play. Cut listed as Kyoshi Warriors because both are MV 4 and the 4-slot is the curve's fat point.
+#~ note: TWO THINGS TO KNOW BEFORE BRINGING MISTER FANTASTIC BACK. His trigger reads "one or more tokens", so ELSPETH DOES NOT MULTIPLY HIM -- doubling a single creation event enters them simultaneously, which is one trigger, not two. Katara and Starfield DO, because doubling the trigger produces two separate token events. And he is a {3}{U} pip against 8 blue sources in a deck whose worst castability rows are already blue; he is also a non-Ally, so Katara doubles nothing of his own.
