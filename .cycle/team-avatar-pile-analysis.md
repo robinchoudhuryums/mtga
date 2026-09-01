@@ -59,6 +59,17 @@ Read text; treat `cuts`/`screen` order as a hint and their labels as noise.
 (c) tapping creatures for mana (Great Divide Guide, convoke, waterbend) competes with
     attacking — only the 4 vigilance bodies do both.
 
+## 2a. TOOLING HOLE FOUND WHILE GRADING (Stage 4) — not fixed here
+**`_ROLE_PATTERNS["Removal (spot)"]` misses a PLURAL-SUBJECT fight effect.** All three
+damage-equal-to-power patterns are written `deals damage` (singular). **Allies at Last**
+reads *"Up to two target creatures you control each **deal** damage equal to their power
+to target creature an opponent controls"* and scores `['Cost reduction / cheat']` — the
+affinity clause matches, the removal does not. Verified: Rabid Bite classifies fine, and
+an "its power / you don't control" rewrite of Allies at Last still fails, so the plural
+VERB is the break, not the targeting language. Consequence: **every interaction figure in
+the plan below reads one LOWER than the truth.** Left unfixed on purpose — a pattern widen
+costs a roster-wide `#: tier:` prose sweep (K-12), so batch it with any others.
+
 ## 2. Standing error list
 - (seed) Do NOT grade a TLA card's Lesson clause as live. Zero Lessons in the deck. R5.
 - (seed) Do NOT read `Color(s)` as castability. G-58. Use the printed cost, R3.
@@ -202,6 +213,47 @@ fourteen Delney-eligible copies sit at exactly power 2 (R2). The deck can be
 They are not equally supported: **A is what the current 60 already is**, and B needs the
 anthems the deck runs to be joined by four or five more. Pick A unless the user wants the
 rebuild. Everything below is ranked for A, with B-only cards marked.
+
+### ✅ THE RECOMMENDED 8 SWAPS (all owned · 0 wildcards · measured)
+
+Four are SPELL-FOR-SPELL and cost the engine nothing. Four are creature upgrades and each
+costs one Ally body — that is the real price and it is stated below.
+
+| out | in | why |
+|---|---|---|
+| Into the Flood Maw `{U}` | **Enter the Avatar State** `{W}` | a bounce for a **one-mana hexproof** on the doubler the deck dies without. Also drops a blue pip (R3). |
+| Crib Swap `{2}{W}` | **Allies at Last** `{2}{G}` | 3-mana exile that gifts them a body → **often-free** double-fight removal. Affinity for Allies WANTS the board this deck builds, and taps nothing (R7c). |
+| Path to Redemption `{1}{W}` | **Rally the Monastery** `{3}{W}` | an aura that stops one attacker → instant removal, `{2}` cheaper after a first spell. |
+| Kyoshi Battle Fan `{2}` | **Duty Beyond Death** `{1}{W}` | a 1/1 and an equip → team indestructible + counters at instant speed. |
+| Forecasting Fortune Teller `{1}{U}` | **Starfield Vocalist** `{3}{U}` | **the third doubler.** |
+| Compassionate Healer `{1}{W}` | **Belladonna Took** `{1}{W}` | tap-to-scry → a token engine that escalates to three, Delney-doubled. |
+| Glider Kids `{2}{W}` | **Mister Fantastic** `{3}{U}` | ETB scry 1 → a card per token wave, Delney-doubled. |
+| 1× Appa, Steadfast Guardian | **Echo, Perceptive Prodigy** `{2}{U}` | the 2nd Appa → a repeatable manual doubler. Airbend goes 4 → 3. |
+
+**MEASURED (deck.py quality):** interaction 7 → 6 *(really 7 — see §2a)* · card advantage
+4 → 4 *(under-read: Vocalist and Echo score zero roles, R6)* · **protection 2 → 4** ·
+avg MV 3.06 → 3.17 · early drops 13 → 11 · **tier floor stays A**.
+
+**THE COST, STATED PLAINLY: Ally copies 26 → 22.** Six of the eight cuts are Allies and
+none of the adds is one, so Katara, South Pole Voyager, Avatar Enthusiasts and Haru all
+get ~15% less fuel. What pays for it: **Starfield Vocalist does not read the Ally type at
+all**, so the deck shifts from "many Ally triggers" to "fewer triggers, each worth more,
+and a doubler that no longer depends on the tribe." That is a more robust engine, not just
+a stronger one — but it IS a change of plan, so say no to the creature half if you want to
+keep the tribal density.
+
+**NOT taken, and why:** Bard, King of Dale (MV 6 on a 3.06 curve) · Captain America
+(a fifth blue-ish card against 8 U sources, R3) · Sally Pride / Earth King's Lieutenant /
+Leader's Talent / Virtue of Loyalty (all Fork B — their counters switch Delney off, R2).
+**Aang, the Last Airbender and both Earth Kingdom Generals are deliberately KEPT** even
+though you offered them: they are the airbend and earthbend sub-engines (3 and 4 sources
+after this plan), which nothing else in the pile replaces.
+
+### CRAFT UPGRADES, as information (Player Profile: reported, not budgeted)
+- **Winnowing** `{4}{W}{W}` R — the deck's only possible sweeper, and one-sided here.
+- **Dazzling Theater // Prop Room** `{3}{W}` R — convoke on all 27 creature spells, then
+  a team untap on their turn.
+- **Starry-Eyed Skyrider** `{2}{W}` U — attacking tokens gain flying; the actual closer.
 
 ### TIER 1 — take, all OWNED, no wildcards
 1. **Starfield Vocalist** `{3}{U}` — third doubler, broadest of the three, warp {1}{U}.
