@@ -99,7 +99,7 @@
 1 Earth King's Lieutenant (TLA) 217
 1 United Front (TLA) 39
 1 Invasion Tactics (TLA) 183
-1 Gather the White Lotus (TLA) 20
+1 Aang, at the Crossroads // Aang, Destined Savior (TLA) 203
 1 Appa, Loyal Sky Bison (TLA) 9
 1 Mister Fantastic, Reed Richards (MSH) 66
 1 Starry-Eyed Skyrider (TDM) 25
@@ -120,7 +120,7 @@
 1 Floodfarm Verge (DSK) 259
 1 Hallowed Fountain (ECL) 265
 1 Temple of Enlightenment (FDN) 698
-1 Azorius Guildgate (FDN) 683
+1 Gleaming Bastion (MSH) 267
 1 Willowrush Verge (DFT) 270
 1 Breeding Pool (EOE) 251
 2 Evolving Wilds (ECL) 264
