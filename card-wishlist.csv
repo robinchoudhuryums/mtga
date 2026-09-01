@@ -88,6 +88,8 @@ Archenemy's Charm,Instant,"Choose one —
 • Exile target creature or planeswalker.
 • Return one or two target creature and/or planeswalker cards from your graveyard to your hand.
 • Put two +1/+1 counters on target creature you control. It gains lifelink until end of turn.",B,counters; graveyard; lifegain; removal,EOE,88,Rare,52a,,6.0,seed
+Pinnacle Starcage,Artifact,"When this artifact enters, exile all artifacts and creatures with mana value 2 or less until this artifact leaves the battlefield.
+{6}{W}{W}: Put each card exiled with this artifact into its owner's graveyard, then create a 2/2 colorless Robot artifact creature token for each card put into a graveyard this way. Sacrifice this artifact.",W,reanimator; graveyard; sacrifice; tokens; etb,EOE,33,Rare,6,,6,hand
 The Eternity Elevator,Legendary Artifact — Spacecraft,"{T}: Add {C}{C}{C}.
 Station (Tap another creature you control: Put charge counters equal to its power on this Spacecraft. Station only as a sorcery.)
 20+ | {T}: Add X mana of any one color, where X is the number of charge counters on The Eternity Elevator.",Colorless,Spacecraft; mana; station; counters; artifacts,EOE,241,Rare,51,,5.5,hand
