@@ -32,12 +32,18 @@ two HUMAN-JUDGMENT steps that are easy to skip: setting the **Target** and the
 
 ## Stage 2 — Set the Target (home deck)
 
-`--add` leaves Target blank. Set it to the deck the card is a craft target *for*:
+`--add` leaves Target blank unless you say otherwise. Set it to the deck the card is a
+craft target *for*:
 
 - **If the cards came from specific decks** (e.g. "the craft targets of deck 36"),
-  set Target to that deck id directly — a core deck for cards shared by its
-  variants (`36`), the variant id for a variant-only card (`36a`). Edit the CSV
-  directly or script it; it's the authoritative "which deck is this for" field.
+  pass **`--target <id>`** (and optionally `--note "…"`) on the SAME `--add` run — a core
+  deck for cards shared by its variants (`36`), the variant id for a variant-only card
+  (`36a`). It stamps only the rows that run adds, so a re-add never clobbers a Target you
+  set by hand, and an unknown deck id is refused before any Scryfall work rather than
+  written as a dangling reference. Until 2026-09-01 those two flags were silently DROPPED
+  on `--add` (they are `--rank`/`--budget` filters, and argparse shares them across modes),
+  so this stage said to edit the CSV by hand — a documented step with no tool behind it
+  (G-82). Don't hand-edit it now; the flag is the mechanical form.
 - **If it's a loose batch** with no obvious home, run
   `python3 scripts/wishlist.py --suggest-targets` (idf-weighted theme fit; add
   `--write` to fill blank Targets with its STRONG/ok picks) and text-review the

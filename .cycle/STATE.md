@@ -2559,3 +2559,48 @@ deck at all. G-59's inversion, exactly.
 
 **Where I left off:** all green — `check_all` all invariants hold, `resolve --check` 49
 lines clean, dashboard rebuilt.
+
+---
+
+## 2026-09-01 — broad-implement: three tooling flaws found while tuning deck 78
+
+Three flaws surfaced during a long deck-78 tuning session and were fixed together.
+Block: `.cycle/blocks/2026-09-role-verb-wishlist-target-deck-id-broad-implement.md`.
+
+- **T-01 `_ROLE_PATTERNS` verb + templating hole (G-67).** `Allies at Last` says "each
+  DEAL damage", the three damage-equal-to patterns all said "dealS damage" — zero
+  interaction. Measuring the verb fix surfaced the bigger half: `to ANOTHER target
+  creature`, which the TARGET-FIRST sibling pattern three lines below had always handled.
+  5 cards → **15**, zero false positives across the pool. K-12 diff: 4 decks moved
+  interaction (28a 5→6, 28 7→8, 72 7→8, 78 8→9), **0 tier floors**.
+- **T-02 `wishlist.py --add` dropped `--target`/`--note` (new G-82).** Silent no-op —
+  reported success, wrote blanks. `/add-wishlist`'s own Stage 2 named setting the Target
+  as a step no flag performed. Now stamped on the rows that run adds only, with an
+  unknown deck id refused before any Scryfall work.
+- **T-03 zero-padded deck ids rejected (new G-82).** `deck.py stats 06` failed for
+  `decks/06-dead-or-alive/`. `_norm_deck_id` on both sides of `find_deck`; the variant
+  branch normalized too (latent: `06a-….txt` would have carried id `06a`); **INV-04's
+  duplicate-id gate re-keyed to the same normalization** so it can still see the
+  collision.
+
+**Decisions worth not re-litigating:**
+- The `#: tier:` prose of deck 78 ARGUED the T-01 hole as its reason for under-reading.
+  Closing the hole made that sentence false; it was rewritten as history with the fix
+  date. A model change stales a rationale exactly as a swap does — run
+  `tier --audit-rationale` after a pattern edit, not just after a deck edit.
+- `suggest-homes` rating 14 decks KEY for Pinnacle Starcage was NOT treated as a bug —
+  it is G-31's documented saturation for a structurally-valued card. Narrowing it is a
+  scoring change that re-ranks every card; declined.
+- One mutant survived the first pass (the stored-id half of `find_deck`), because
+  `discover_decks` already canonicalizes core ids. Covered with a monkeypatched-discovery
+  test rather than dropped. **A test written against the live roster only covers the
+  paths the roster happens to use.**
+
+**Deck 78 (Team Avatar) state:** interaction 9, card advantage 3, protection 4, avg MV
+3.28, floor A, claimed B (PROVISIONAL), preflight READY, 5 craft targets. Flex block holds
+Katara Water Tribe's Hope (parked on castability — 43% on curve at 8 blue sources), Mister
+Fantastic and Orcrist. **Open with the user:** `−Sheriff of Safe Passage / +Ojer Taq` and
+`−Kyoshi Warriors / +Byrke` were measured and offered; no decision yet.
+
+**Where I left off:** all green — `check_all` all invariants hold, full pytest suite
+passes, `check_docs`/`check_patterns`/`check_commands` OK, dashboard rebuilt.

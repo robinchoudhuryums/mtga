@@ -16,11 +16,13 @@
 #: archetype: be full of Allies (18 and 15 bodies against ONE and two payoffs), where
 #: archetype: this deck is built on the payoff half and splashes green for it.
 #: tier: B (PROVISIONAL) — still unplayed, and still graded one band UNDER its A metrics
-#: tier: floor. The floor reads A on interaction 8 and card advantage 3 at a 3.28 curve.
-#: tier: BOTH FIGURES UNDER-READ, and card advantage is now the one to watch. Allies at
-#: tier: Last is removal the classifier cannot see (its patterns all say "deals damage"
-#: tier: and the card says "each DEAL damage"), so the real interaction is 9; Starfield
-#: tier: Vocalist scores zero roles because a trigger-doubler has no bucket at all; and
+#: tier: floor. The floor reads A on interaction 9 and card advantage 3 at a 3.28 curve.
+#: tier: INTERACTION IS NOW HONEST AND CARD ADVANTAGE IS THE ONE TO WATCH. The 9 counts
+#: tier: Allies at Last for the first time: the removal patterns all read "dealS damage"
+#: tier: while the card says "each DEAL damage", so it scored zero interaction until the
+#: tier: pattern was widened 2026-09-01 -- every interaction figure this deck quoted
+#: tier: before that date read one LOW. Starfield Vocalist still scores zero roles,
+#: tier: because a trigger-doubler has no bucket at all; and
 #: tier: the card-advantage 3 is a floor, not a count -- Hakoda casts Ally spells off the
 #: tier: top of the library and does not classify, Celebrate the Mountain-king's recruit
 #: tier: is a loot the bucket does not read, and Elspeth's 0 refills the board rather than

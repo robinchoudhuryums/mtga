@@ -54,7 +54,6 @@ Blasphemous Edict
 Blitzball Shot
 Bloodthirsty Conqueror
 Bloodtithe Collector
-Bolg of the North
 Bolg's Company
 Boneclub Berserker
 Boneyard Desecrator
@@ -214,7 +213,6 @@ Iron Man Armor
 Iron Man, Master of Machines
 Ironpaw Aspirant
 Item Shopkeep
-Itzquinth, Firstborn of Gishath
 Jadelight Spelunker
 Jecht, Reluctant Guardian
 Jennifer Walters

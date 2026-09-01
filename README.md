@@ -306,6 +306,7 @@ below, which blends it with theme fit).
 
 ```
 python3 scripts/wishlist.py --add batch.txt   # append a batch (enriches + AUTO-seeds a Power estimate)
+python3 scripts/wishlist.py --add batch.txt --target 6 --note "why"   # ...stamping the home deck + note onto the NEW rows (an unknown deck id is refused before any Scryfall work)
 python3 scripts/wishlist.py                    # browse the whole wishlist
 python3 scripts/wishlist.py --set SOS --rarity rare,mythic   # filter (substring, AND-ed)
 python3 scripts/wishlist.py --color R --synergy firebending  # by color/theme (--color is set-matched, like query.py)
@@ -836,7 +837,12 @@ edits one file while the other sits unchecked. A duplicate id is a hard INV-04
 failure, as is a top-level `decks/` directory with a variant-shaped name (`73a-…`):
 a variant lives inside its parent deck's directory, and the near-miss shape — a new
 `decks/73a-posse/` created while `73a` already existed inside the parent — has
-different ids, so the duplicate check cannot see it.
+different ids, so the duplicate check cannot see it. **A zero-padded id resolves to
+the same deck** — ten deck directories are padded on disk (`decks/06-dead-or-alive/`)
+while the id is `6`, and `find_deck` used to reject the padded form, so the id you read
+off an `ls` was the one every by-id command refused. `deck.py stats 06` and `… 6` are
+now the same deck, and the duplicate-id check is keyed on that same normalization, so
+`06` and `6` in two different files read as the collision they are.
 
 **`#: uncastable-ok: Card A; Card B`** exempts named cards from the castability failure and
 from the tier floor's uncastable cap. It exists for reanimator decks, where a bomb you

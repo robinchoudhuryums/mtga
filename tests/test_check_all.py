@@ -191,6 +191,22 @@ class TestInv04Decks:
         errs, _, _, _ = ca.check_decks()
         assert any("duplicate deck id" in e and "a.txt" in e and "b.txt" in e for e in errs)
 
+    def test_ids_differing_only_by_zero_padding_are_a_duplicate(self, tmp_path, monkeypatch):
+        # Since find_deck normalizes a zero-padded id (2026-09-01), `06` and `6` resolve
+        # to the same deck — so they are the same collision DD-6 exists to catch. Keying
+        # this gate on the RAW id would have left exactly that case invisible.
+        a, b = tmp_path / "a.txt", tmp_path / "b.txt"
+        _write(a, "4 Shock (M21) 159\n")
+        _write(b, "4 Shock (M21) 159\n")
+        monkeypatch.setattr(ca.deckmod, "discover_decks",
+                            lambda: [{"id": "06", "name": "A", "path": str(a)},
+                                     {"id": "6", "name": "B", "path": str(b)}])
+        monkeypatch.setattr(ca.deckmod, "load_collection", lambda: ({}, {}, {}))
+        monkeypatch.setattr(ca.deckmod, "printing_problems", lambda cards: ([], []))
+        monkeypatch.setattr(ca.deckmod, "DECKS_DIR", str(tmp_path))
+        errs, _, _, _ = ca.check_decks()
+        assert any("duplicate deck id" in e and "a.txt" in e and "b.txt" in e for e in errs)
+
     def test_a_variant_shaped_top_level_directory_is_a_hard_error(self, tmp_path, monkeypatch):
         # DD-6's near-miss shape: decks/73a-posse/ created while 73a lived inside the
         # parent dir — different ids, so the duplicate check can't see it, and preflight

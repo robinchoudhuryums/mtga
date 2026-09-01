@@ -144,8 +144,8 @@ swap-out/swap-in pair**, which records both halves to recommendations.csv as dec
 
 | # | Command | Returns | Cost |
 |---|---|---|---|
-| 1 | `wishlist.py --add <export>` | rows + auto-seeded Power | ~1s |
-| 2 | `wishlist.py --suggest-targets [--write]` | idf-weighted home deck | ~1s |
+| 1 | `wishlist.py --add <export> [--target <id> --note "…"]` | rows + auto-seeded Power, home deck stamped | ~1s |
+| 2 | `wishlist.py --suggest-targets [--write]` | idf-weighted home deck (when step 1 had no obvious one) | ~1s |
 | 3 | `deck.py suggest-homes "<card>"` per card | genuine second homes | 3.1s |
 | 4 | `wishlist.py --rank` / `--budget "9M 10R …"` | ranked picks / a wildcard plan | 0.7s |
 | 5 | `wishlist.py --audit-targets` | target a deck can no longer cast | <1s |
@@ -160,6 +160,11 @@ swap-out/swap-in pair**, which records both halves to recommendations.csv as dec
 - ⚖ **Breadth (`use`) vs a specific second home.** `--rank` already credits reach; the
   human step is recording only a GENUINE specific second home in `Target`, not stuffing
   every fit into it.
+- ⚖ **Setting the FIRST Target stopped being a reconciliation point on 2026-09-01.** When
+  the batch has a known home, `--add --target <id>` writes it directly; step 2's
+  heuristic is for a loose batch with no obvious home. Until then the two flags were
+  silently dropped on `--add` and the skill told you to edit the CSV by hand (G-82), so
+  the hand edit read as a required human step when it was a missing tool.
 
 ---
 

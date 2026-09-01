@@ -2,7 +2,7 @@
 #: format: Standard
 #: tier: B — Triceraton owned build. The old C hard-cap (near-zero interaction /
 #: tier: thin themes) stopped fitting once the classifier read the removal it had
-#: tier: been missing; the live figures are interaction 5 and 14 central themes on a
+#: tier: been missing; the live figures are interaction 6 and 14 central themes on a
 #: tier: fully BUILT, castable Naya Dino shell. 2026-08-31 swaps, both from the
 #: tier: power-4 package crafted for deck 59 (copies are fungible, so they cost no
 #: tier: wildcards): Terrian, World Tyrant was CUT for Roxanne, Starfall Savant — a

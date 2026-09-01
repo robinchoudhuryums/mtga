@@ -570,6 +570,41 @@ class TestClassifyRoles:
         ]:
             assert "Removal (spot)" not in deck.classify_roles(text), text
 
+    def test_plural_deal_damage_is_removal(self):
+        # The three scaling-damage patterns were all written "dealS damage", so the plural
+        # subject templating — "up to two target creatures you control EACH DEAL damage
+        # equal to their power" — matched nothing. Allies at Last scored only
+        # ['Cost reduction / cheat'] while being the cheapest removal in deck 78, so every
+        # interaction figure that deck quoted read one low (G-67 whitelist hole).
+        assert "Removal (spot)" in deck.classify_roles(
+            "Affinity for Allies. Up to two target creatures you control each deal damage "
+            "equal to their power to target creature an opponent controls.")
+        assert "Removal (spot)" in deck.classify_roles(
+            "Tap one or two target untapped creatures you control. They each deal damage "
+            "equal to their power to target creature an opponent controls.")
+
+    def test_damage_to_another_target_creature_is_removal(self):
+        # "to ANOTHER target creature" is the commonest bite/fight templating and was the
+        # BIGGER half of the same hole: the two scaling patterns required "to target"
+        # immediately, while the TARGET-FIRST sibling had carried `(?:another )?` since it
+        # was written. Ten pool cards, zero false positives on a full-pool sweep.
+        for text in [
+            "Target creature you control deals damage equal to its power to another "
+            "target creature.",
+            "-2: Target creature you control deals damage equal to its power to another "
+            "target creature.",
+            "Up to two target creatures you control each deal damage equal to their power "
+            "to another target creature.",
+        ]:
+            assert "Removal (spot)" in deck.classify_roles(text), text
+
+    def test_damage_to_another_target_player_is_still_not_removal(self):
+        # The guard on the widening above: admitting `(?:another )?` must not admit a
+        # PLAYER, which is the one false-positive class the sibling patterns exclude.
+        assert "Removal (spot)" not in deck.classify_roles(
+            "Target creature you control deals damage equal to its power to another "
+            "target player.")
+
     def test_divided_damage_is_removal(self):
         # Every fixed-damage pattern expects "to target"/"to any target" right after the
         # number; the Fiery Confluence template says "divided as you choose among" instead.
@@ -1421,6 +1456,53 @@ Deck
             return
         _rows, _central, prot_present, _int = deck.rank_cut_candidates(d)
         assert any(p.startswith("Eddie Brock") for p in prot_present), prot_present
+
+
+class TestDeckIdNormalization:
+    """Ten deck directories are zero-padded ON DISK (`decks/06-dead-or-alive/`), but
+    `discover_decks` derives the core id with `str(int(...))`, so the id is `6` — and
+    `find_deck` matched exactly, so the id you read off an `ls` was rejected by every
+    by-id command while the unpadded form worked. Found 2026-09-01."""
+
+    def test_a_zero_padded_id_resolves_to_the_same_deck(self):
+        for padded, bare in (("06", "6"), ("6", "6"), ("006", "6")):
+            d = deck.find_deck(padded)
+            assert d is not None, padded
+            assert d["id"] == bare, (padded, d["id"])
+
+    def test_normalization_does_not_swallow_variants_or_format_ids(self):
+        # The padding strip must touch the NUMERIC prefix only: a variant suffix and a
+        # game-type variant id have to survive it intact.
+        assert deck._norm_deck_id("52a") == "52a"
+        assert deck._norm_deck_id("3-brawl") == "3-brawl"
+        assert deck._norm_deck_id("0a") == "0a"
+        assert deck._norm_deck_id("0") == "0"
+
+    def test_a_padded_variant_file_would_carry_its_core_s_numbering(self):
+        # The latent half: the variant branch took its digits RAW, so `06a-….txt` would
+        # have had id `06a` against a core of `6`. No such file exists, which is exactly
+        # why nothing caught it.
+        assert deck._norm_deck_id("06a") == "6a"
+
+    def test_a_non_canonical_stored_id_is_still_resolvable(self, monkeypatch):
+        # BOTH sides of the comparison are normalized, and this is the half the roster
+        # cannot exercise: the directory branch canonicalizes core ids, but the top-level
+        # `<name>.txt` branch takes its id RAW, so a file named `06.txt` would be stored
+        # padded. Without normalizing the STORED id too, `deck.py check 6` could not
+        # reach it. Caught by a mutation run: reverting this half left the roster tests
+        # green (broad-implement 2026-09-01).
+        monkeypatch.setattr(deck, "discover_decks",
+                            lambda: [{"id": "06", "name": "Padded", "path": "/x/06.txt",
+                                      "core": "06", "variant": False}])
+        assert deck.find_deck("6") is not None
+        assert deck.find_deck("06") is not None
+        assert deck.find_deck("7") is None
+
+    def test_every_discovered_id_is_already_canonical(self):
+        # Normalizing at the resolver is a safety net; discovery should not be emitting
+        # a non-canonical id in the first place.
+        for d in deck.discover_decks():
+            assert deck._norm_deck_id(d["id"]) == d["id"].lower(), d
 
 
 class TestLifegainRoleAlignment:

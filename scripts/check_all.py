@@ -144,9 +144,13 @@ def check_decks():
     # `NN-*` directories sharing a number, or two `NNa-*.txt` variants inside a parent —
     # and `find_deck` returns whichever `discover_decks` lists first, silently: every
     # by-id command then reads/validates/EDITS one file while the other exists unchecked.
+    # Keyed on the NORMALIZED id, which is what `find_deck` resolves on: since
+    # 2026-09-01 a zero-padded id is accepted (`deck.py stats 06` == `6`), so two ids
+    # differing only by padding collide in the resolver. Keying the gate on the raw id
+    # would leave exactly that collision invisible to the check built to catch it.
     seen_ids = {}
     for d in decks:
-        key = d["id"].lower()
+        key = deckmod._norm_deck_id(d["id"])
         if key in seen_ids:
             errs.append(f"duplicate deck id {d['id']!r}: "
                         f"{os.path.relpath(seen_ids[key], REPO_ROOT)} AND "
