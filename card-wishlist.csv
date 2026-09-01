@@ -82,8 +82,6 @@ Valgavoth's Faithful,Creature — Human Cleric,"{3}{B}, Sacrifice this creature:
 Spineseeker Centipede,Creature — Insect,"When this creature enters, search your library for a basic land card, reveal it, put it into your hand, then shuffle.
 Delirium — This creature gets +1/+2 and has vigilance as long as there are four or more card types among cards in your graveyard.",G,Insect; graveyard; ramp; etb; pump; delirium,DSK,199,Common,50,,1.5,seed
 End-Blaze Epiphany,Instant,"End-Blaze Epiphany deals X damage to target creature. When that creature dies this turn, exile a number of cards from the top of your library equal to its power, then choose a card exiled this way. Until the end of your next turn, you may play that card.",R,burn,ECL,134,Rare,24,X-burn removal + impulse; Quintorius/exile payoff,6.0,hand
-Winnowing,Sorcery,"Convoke (Your creatures can help cast this spell. Each creature you tap while casting this spell pays for {1} or one mana of that creature's color.)
-For each player, you choose a creature that player controls. Then each player sacrifices all other creatures they control that don't share a creature type with the chosen creature they control.",W,sacrifice; convoke; go-wide; ramp,ECL,43,Rare,,,7.0,seed
 Iron-Shield Elf,Creature — Elf Warrior,"Discard a card: This creature gains indestructible until end of turn. Tap it. (Damage and effects that say ""destroy"" don't destroy it. If its toughness is 0 or less, it still dies.)",B,Elf; Warrior,ECL,108,Uncommon,52a,,2.5,seed
 Spell Snare,Instant,Counter target spell with mana value 2.,U,counterspell,ECL,71,Uncommon,51,,3.0,seed
 Archenemy's Charm,Instant,"Choose one —
@@ -374,10 +372,6 @@ At the beginning of your end step, earthbend 2. (Target land you control becomes
 Nonbasic lands enter tapped.
 {7}: Put a conqueror counter on Zhao.
 As long as Zhao has a conqueror counter on him, nonbasic lands are Mountains. (They lose all other land types and abilities and have ""{T}: Add {R}."")",R,Human; Soldier; counters; mana; menace; evasion,TLA,162,Rare,14,"Fire Nation flavor (heuristic top 13 on counters/mana) | fits: 13,17",4.0,hand
-Earth Kingdom Protectors,Creature — Human Soldier Ally,"Vigilance
-Sacrifice this creature: Another target Ally you control gains indestructible until end of turn. (Damage and effects that say ""destroy"" don't destroy it.)",W,Human; Soldier; Ally; sacrifice; vigilance; combat; indestructible; resilience,TLA,17,Uncommon,,,2.5,seed
-"Jet, Freedom Fighter",Legendary Creature — Human Rebel Ally,"When Jet enters, he deals damage equal to the number of creatures you control to target creature an opponent controls.
-When Jet dies, put a +1/+1 counter on each of up to two target creatures.",W/R,Human; Rebel; Ally; counters; etb,TLA,229,Uncommon,,,4.0,seed
 Bebop & Rocksteady,Legendary Creature — Boar Rhino Mutant,"Whenever Bebop & Rocksteady attack or block, sacrifice a permanent unless you discard a card.",B/G,Boar; Rhino; Mutant; sacrifice,TMT,140,Rare,8,"best 8 (Sacrifices); also 21,21a,5",3.5,hand
 "Don & Raph, Hard Science",Legendary Creature — Mutant Ninja Turtle,"Menace
 Whenever Don & Raph attack, the next noncreature spell you cast this turn has affinity for artifacts. (It costs {1} less to cast for each artifact you control.)",U/R,Mutant; Ninja; Turtle; menace; evasion,TMT,144,Rare,47,TMNT UR-artifacts legend — new-deck focal point (menace + artifact-affinity payoff),5.0,hand
