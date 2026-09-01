@@ -158,7 +158,69 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | Torgal, A Fine Hound | △ | craft U. Counters scale with **Dogs and Wolves** — the deck has 0 (R5). One of only two Human payoffs in Bant, and it still does not work here. |
 | Fuss // Bother | ✗ | **off-colour (RUW)** — R3. |
 
+### Batch 4 (five late additions)
+| card | v | note |
+|---|---|---|
+| Leader's Talent | ★★ | OWNED. Level 3 is *"whenever you cast a spell, put a +1/+1 counter on each creature you control"* — enormous on a wide board. No doubler sees it (enchantment, and the trigger is a cast, not a permanent entering). Maximum R2 tension. |
+| Duty Beyond Death | ★★ | OWNED. Team indestructible + counters at instant speed for a creature — protection is the short axis (R4 says 2), and the sacrifice feeds Suki's leaves-play trigger. |
+| Kykar, Zephyr Awakener | ★★ | craft R. The blink mode re-triggers an ETB and feeds Suki; the Spirit mode is a flier. Gated on **9 noncreature spells** (R5). **G-42 warning: blinking your own creature ERASES its +1/+1 counters** — bad on Avatar Enthusiasts, which is the deck's counter sink. |
+| Group Project | ★ | craft U. Two 2/2s across a game, and the flashback cost is **tap three creatures** — the convoke-shaped cost you asked about, on a card cheap enough to want it. |
+| Anafenza, Unyielding Lineage | ◇ | OWNED. Delney doubles endure, but it needs your NONTOKEN creatures to die and nothing here sacrifices them (Duty Beyond Death would). |
+
 ## 5. Consolidated plan (live)
-_(populated from batch 1 onward)_
+
+### THE FORK THIS PILE EXPOSED — decide before picking adds
+A third of the pile pumps the team with +1/+1 counters (Leader's Talent, Virtue of
+Loyalty, Sally Pride, Earth King's Lieutenant, United Front, Cosmogrand Zenith, Duty
+Beyond Death…). **Every one of them turns Delney off** as it resolves: ten of the
+fourteen Delney-eligible copies sit at exactly power 2 (R2). The deck can be
+
+- **A. SMALL AND EVASIVE** — keep the team at power ≤2, add Delney-doubled triggers and
+  evasion (Starry-Eyed Skyrider, Voice of Victory, Mister Fantastic, Belladonna Took).
+  Delney's first line then makes the whole board unblockable by anything real.
+- **B. WIDE AND PUMPED** — accept Delney as a fair 3-drop that sometimes doubles, and
+  take the counter payoffs. Katara and Starfield Vocalist still work; Delney degrades.
+
+They are not equally supported: **A is what the current 60 already is**, and B needs the
+anthems the deck runs to be joined by four or five more. Pick A unless the user wants the
+rebuild. Everything below is ranked for A, with B-only cards marked.
+
+### TIER 1 — take, all OWNED, no wildcards
+1. **Starfield Vocalist** `{3}{U}` — third doubler, broadest of the three, warp {1}{U}.
+2. **Mister Fantastic, Reed Richards** `{3}{U}` — a card per token wave, Delney-doubled.
+3. **Belladonna Took** `{1}{W}` — the token analogue of South Pole Voyager, escalating.
+4. **Sally Pride, Lioness Leader** `{3}{W}{W}` — Delney doubles both halves. (Half B.)
+5. **Echo, Perceptive Prodigy** `{2}{U}` — copy the best trigger each turn, repeatably.
+
+### TIER 2 — owned, strong, situational on the fork
+6. **Bard, King of Dale** `{4}{W}{U}` — doubles tokens AND extra draws. MV 6.
+7. **Aang, at the Crossroads** `{2}{G}{W}{U}` — Katara doubles the tutor; back face is the
+   earthbend engine. R3's worst cost band.
+8. **Captain America, Living Legend** `{1}{W}{U}` — board-wide untap; doubles Great Divide
+   Guide's mana and gives the team pseudo-vigilance.
+9. **Rally the Monastery** `{3}{W}` ×2 — the only removal in the pile for the short axis.
+10. **Duty Beyond Death** / **Grand Abolisher** — protection, the other short axis.
+
+### TIER 3 — the crafts worth the wildcards
+- **Starry-Eyed Skyrider** `{2}{W}` U — attacking tokens have flying. The closer.
+- **Voice of Victory** `{1}{W}` R — Delney makes mobilize 2 into four attacking tokens.
+- **Oltec Matterweaver** `{2}{W}` M — triggers on 27 creature spells, Delney-doubled.
+- **Earth King's Lieutenant** `{G}{W}` R — the only both-doublers-both-triggers card. (B.)
+- **The Wandering Rescuer** `{3}{W}{W}` M — flash convoke, hexproof for tapped creatures.
+
+### CUT CANDIDATES (from `deck.py cuts`, re-read against this pile)
+Gather the White Lotus (spell-effect tokens no doubler sees; 6 Plains) · Into the Flood
+Maw · Crib Swap · Path to Redemption · Kyoshi Battle Fan · United Front (B-only) ·
+Invasion Tactics (its draw trigger is on an enchantment — no doubler).
+
+### PROTECT — what `cuts` structurally cannot see
+**Katara, the Fearless · Delney, Streetwise Lookout · South Pole Voyager · Avatar
+Enthusiasts · Haru, Hidden Talent · Suki, Kyoshi Warrior.** The first three score ZERO
+detected roles (R6) — a trigger-doubler has no bucket — so the ranking puts the deck's
+engine at the top of its own cut list.
+
+### HARD NO
+**Pinnacle Starcage** — exiles your own board (R7). **Tolls of War, Jet, Fuss // Bother**
+— off-colour (R3).
 
 Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ marginal · ✗ out`
