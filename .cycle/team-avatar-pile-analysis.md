@@ -98,6 +98,36 @@ costs a roster-wide `#: tier:` prose sweep (K-12), so batch it with any others.
    dismissed BY CATEGORY (rule 6 of this skill, violated): his −5 copies every other
    nonland permanent, which on this board wins.
 
+## 2c. SECOND RE-READ SWEEP (2026-09-01) — six more under-reads found
+Prompted by the user after the first six corrections. Same failure shapes recur: a
+capped half read as capping the whole card, and a trigger condition read narrower than
+printed.
+- **Great Gilded Boat ◇ → ★★ — the biggest one.** *"**Whenever you attack**, recruit"* is
+  a trigger on YOU attacking, not on the Vehicle attacking. **Crew 2 is never required for
+  it.** So it is a free loot-plus-token every combat for `{2}{U}`, and the token feeds
+  Belladonna Took. I rejected it on the crew cost (R7c) that the relevant ability does not
+  charge.
+- **Orcrist, Goblin-cleaver ◇ → ★★.** *"choose a creature type. Create a Treasure token
+  for each creature you control of that type."* Name Ally with fifteen bodies out and that
+  is fifteen Treasures. I flagged it as a K-13 choose-a-type card and then failed to do
+  the count that K-13 exists to force. Delney's unblockable clause is how it connects.
+- **Niko, Light of Hope ◇ → ★★.** Two Shard tokens on ETB (two Belladonna triggers,
+  doubled), and the activated ability BLINKS your own creature — re-triggering its ETB
+  through three doublers — while the Shards become copies of it. G-42 caveat: the blink
+  erases +1/+1 counters.
+- **Wingblade Disciple ◇ → ★★.** Power 2, so Delney doubles Flurry: two flying Birds per
+  turn, each feeding Belladonna.
+- **Sage of the Skies ◇ → ★★.** *"When you CAST this spell, if you've cast another spell
+  this turn, copy this spell"* — two 2/3 flying lifelink bodies for `{2}{W}`, and the copy
+  is a token.
+- **Homunculus Horde ◇ → ★.** The second-draw gate is now realistic: South Pole Voyager
+  draws on every Ally ETB with a doubler out, and Mister Fantastic draws per token wave.
+- Holding: Esgaroth Garrison, Bard the Bowman, Anafenza (Duty Beyond Death is now a
+  sacrifice outlet, but one card is not a theme), Descendant of Storms, Syr Alin, Linden
+  (R3: `{W}{W}{W}` on 13 sources), Vengeful Townsfolk, Wild Pack Squad, Orphans of the
+  Wheat, Sapling Nursery, The Notary Hobbits, Sound the Trumpets, Chameleon, Dawnstrike
+  Vanguard, Season of Weaving, Informed Inkwright.
+
 ## 2. Standing error list
 - (seed) Do NOT grade a TLA card's Lesson clause as live. Zero Lessons in the deck. R5.
 - (seed) Do NOT read `Color(s)` as castability. G-58. Use the printed cost, R3.
