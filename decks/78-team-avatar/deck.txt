@@ -46,8 +46,11 @@
 #: notes: Katara out — she is in the list for the anthem and the body, not as an engine
 #: notes: piece. Gather the White Lotus counts PLAINS, which is why the basics are
 #: notes: Plains-heavy rather than an even split (G-75: a card that names a resource is worth
-#: notes: the number of them in THIS deck) — that count is 6 Plains today, so read Gather the
-#: notes: White Lotus as a six-Plains card, not a seven.
+#: notes: the number of them in THIS deck). The count is SEVEN Plains-TYPED lands, not six
+#: notes: basics — Hallowed Fountain is a Plains Island and counts. What that card is
+#: notes: actually worth is smaller than seven either way, because the clause reads Plains
+#: notes: you CONTROL: at 7 of 24 lands, turn five expects ~1.5 on the battlefield, and the
+#: notes: three fetches raise it to roughly 2-3. Grade it as a 2-3 token card with scry 2.
 #: notes: THE TWO DOUBLERS DIVIDE THE LIST CLEANLY. Katara reads ALLY and ignores power;
 #: notes: Starfield Vocalist reads any PERMANENT and ignores type, but only for
 #: notes: ENTERS-caused triggers. Katara therefore owns the attack- and death-triggered
