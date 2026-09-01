@@ -167,6 +167,24 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | Group Project | ★ | craft U. Two 2/2s across a game, and the flashback cost is **tap three creatures** — the convoke-shaped cost you asked about, on a card cheap enough to want it. |
 | Anafenza, Unyielding Lineage | ◇ | OWNED. Delney doubles endure, but it needs your NONTOKEN creatures to die and nothing here sacrifices them (Duty Beyond Death would). |
 
+### Batch 5 (seven late additions — the convoke follow-up)
+| card | v | note |
+|---|---|---|
+| **Winnowing** | **★★★★** | craft R, convoke. *"For each player, you choose a creature that player controls. Then each player sacrifices all other creatures they control that don't share a creature type with the chosen creature."* **A ONE-SIDED SWEEPER IN THIS DECK SPECIFICALLY.** 26 of 27 creature copies are Allies and 24 are Human, so naming a Human Ally keeps ~24 and leaves the opponent whatever shares a type with the one creature you pick for them. R4 says the deck has no sweeper at all. |
+| **Allies at Last** | **★★★** | OWNED. **Affinity for Allies** — {1} less per Ally, so it is free at five Allies — and it is REMOVAL: two of your creatures each deal damage equal to power to one of theirs. Interaction is the short axis (R4: 7). Unlike convoke it taps NOTHING, so it dodges R7c entirely. |
+| **Enter the Avatar State** | **★★★** | OWNED. `{W}` instant: flying, first strike, lifelink **and hexproof**. A one-mana answer to the deck's stated single point of failure — a removal spell aimed at Katara or Delney. Protection measures 2 (R4). Also a **Lesson**, which turns on Aang's currently-dead Lesson clause (R5). |
+| **Dazzling Theater // Prop Room** | **★★★** | craft R. G-02: MV reads 7 as the COMBINED cost — the front face is `{3}{W}`. Front gives **all 27 creature spells convoke**; back **untaps your team during each opponent's untap step**, which is pseudo-vigilance AND keeps Great Divide Guide's mana available on their turn. Both halves are on-plan. |
+| Protective Response | ★★ | craft U. Convoke instant, destroys an attacking or blocking creature. Conditional but nearly free on a wide board. |
+| Web of Life and Destiny | ★★ | OWNED (in 50a, 59 — fungible). Convoke, and a free creature onto the battlefield every combat = a free ETB every turn for the doublers. MV 8 base and `{G}{G}` against 8 green sources (R3); convoke's coloured-mana clause helps, but tapping fights attacking (R7c). |
+| Crystal Fragments // Summon: Alexander | △ | craft U. Equip +1/+1 (R2 tension), and `{5}{W}{W}` to transform is far too slow for this curve. |
+
+**Cross-batch note added here:** this batch answers the earlier convoke question properly.
+The best "tap-cost" card in the whole pile is **Allies at Last**, which is not convoke at
+all — **affinity for Allies** reduces the cost without tapping anything, so it is strictly
+better than convoke in a deck that wants to attack (R7c). Search the effect shape, not the
+keyword (K-13): a cost reducer that counts your board is what this deck wanted, and
+"convoke" was the wrong noun for it.
+
 ## 5. Consolidated plan (live)
 
 ### THE FORK THIS PILE EXPOSED — decide before picking adds
@@ -187,10 +205,12 @@ rebuild. Everything below is ranked for A, with B-only cards marked.
 
 ### TIER 1 — take, all OWNED, no wildcards
 1. **Starfield Vocalist** `{3}{U}` — third doubler, broadest of the three, warp {1}{U}.
-2. **Mister Fantastic, Reed Richards** `{3}{U}` — a card per token wave, Delney-doubled.
-3. **Belladonna Took** `{1}{W}` — the token analogue of South Pole Voyager, escalating.
-4. **Sally Pride, Lioness Leader** `{3}{W}{W}` — Delney doubles both halves. (Half B.)
-5. **Echo, Perceptive Prodigy** `{2}{U}` — copy the best trigger each turn, repeatably.
+2. **Allies at Last** `{2}{G}` — affinity for Allies; free removal at five Allies, taps nothing.
+3. **Enter the Avatar State** `{W}` — one mana of hexproof for the doubler that wins the game.
+4. **Mister Fantastic, Reed Richards** `{3}{U}` — a card per token wave, Delney-doubled.
+5. **Belladonna Took** `{1}{W}` — the token analogue of South Pole Voyager, escalating.
+6. **Sally Pride, Lioness Leader** `{3}{W}{W}` — Delney doubles both halves. (Half B.)
+7. **Echo, Perceptive Prodigy** `{2}{U}` — copy the best trigger each turn, repeatably.
 
 ### TIER 2 — owned, strong, situational on the fork
 6. **Bard, King of Dale** `{4}{W}{U}` — doubles tokens AND extra draws. MV 6.
@@ -202,6 +222,8 @@ rebuild. Everything below is ranked for A, with B-only cards marked.
 10. **Duty Beyond Death** / **Grand Abolisher** — protection, the other short axis.
 
 ### TIER 3 — the crafts worth the wildcards
+- **Winnowing** `{4}{W}{W}` R — a one-sided wipe here, and the deck's only sweeper.
+- **Dazzling Theater // Prop Room** `{3}{W}` R — convoke for every creature, then a team untap.
 - **Starry-Eyed Skyrider** `{2}{W}` U — attacking tokens have flying. The closer.
 - **Voice of Victory** `{1}{W}` R — Delney makes mobilize 2 into four attacking tokens.
 - **Oltec Matterweaver** `{2}{W}` M — triggers on 27 creature spells, Delney-doubled.
