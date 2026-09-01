@@ -70,6 +70,34 @@ VERB is the break, not the targeting language. Consequence: **every interaction 
 the plan below reads one LOWER than the truth.** Left unfixed on purpose — a pattern widen
 costs a roster-wide `#: tier:` prose sweep (K-12), so batch it with any others.
 
+## 2b. CORRECTIONS — six verdicts overturned on a user-prompted re-read (2026-09-01)
+1. **Jet, Freedom Fighter — I made the exact error G-58 documents.** Cost is
+   `{2}{R/W}{R/W}{R/W}`, payable as `{2}{W}{W}{W}`. I printed that cost in my own batch-1
+   pull and binned the card anyway off the `Color(s)` identity column. `deck.py screen`
+   says it outright: *"identity has R (hybrid — paid on-color)"*. **Never bin on identity;
+   R3 says read the printed cost.** Re-graded ★★★ — an Ally whose ETB deals damage equal
+   to your creature count, DOUBLED by Katara.
+2. **Pinnacle Starcage — overstated.** I called it actively harmful without reading the
+   second ability. It exiles only **6 nontoken cards** here, all MV 2, and NONE of the
+   three doublers (MV 3/3/4); and `{6}{W}{W}` turns every exiled CARD — theirs included —
+   into a 2/2 Robot under YOUR control. The real objection is narrower: your TOKENS are
+   MV 0, cease to exist on exile, and yield no Robot. ✗ → ◇.
+3. **The Eagles Are Coming! — the miss that matters.** A token returned to hand ceases to
+   exist but still counts as "returned to your hand this way", so **each of your 1/1 Ally
+   tokens becomes a 4/4 flier**, and nontoken creatures return to be recast (re-triggering
+   ETBs). 10 token makers in the deck. The 4/4s also satisfy The Earth King. ◇ → ★★★.
+4. **Sheriff of Safe Passage — Plot is the point.** Casting from exile triggers **Appa,
+   Steadfast Guardian** (a 1/1 Ally token), and FOUR cards here care about exile-casting.
+   Plot for `{1}{W}` on turn 2, cast free later as a 9/9. ★ → ★★★.
+5. **Shang-Chi — the Great Divide Guide line.** Guide gives every land AND Ally
+   `{T}: Add one mana of any color`; Shang-Chi removes summoning sickness from those
+   abilities, so every Ally taps the turn it lands. ★ → ★★.
+6. **The Queen of Dale / Ant-Man / Oko — all under-read.** Queen is power 2, so Delney
+   doubles it: two recruits per opponent turn, feeding Belladonna Took. Ant-Man's "once
+   each turn" cap is on the TOKEN half only; Delney doubles the attack trigger. Oko was
+   dismissed BY CATEGORY (rule 6 of this skill, violated): his −5 copies every other
+   nonland permanent, which on this board wins.
+
 ## 2. Standing error list
 - (seed) Do NOT grade a TLA card's Lesson clause as live. Zero Lessons in the deck. R5.
 - (seed) Do NOT read `Color(s)` as castability. G-58. Use the printed cost, R3.
