@@ -16,7 +16,7 @@
 #: archetype: be full of Allies (18 and 15 bodies against ONE and two payoffs), where
 #: archetype: this deck is built on the payoff half and splashes green for it.
 #: tier: B (PROVISIONAL) — still unplayed, and still graded one band UNDER its A metrics
-#: tier: floor. The floor reads A on interaction 7 and card advantage 4 at a 3.25 curve.
+#: tier: floor. The floor reads A on interaction 7 and card advantage 4 at a 3.28 curve.
 #: tier: Both figures UNDER-read: Allies at Last is removal the classifier cannot see (its
 #: tier: patterns all say "deals damage" and the card says "each DEAL damage"), so the
 #: tier: real interaction is 8; and Starfield Vocalist scores zero roles because a
@@ -31,8 +31,10 @@
 #: tier: WHAT STILL ARGUES FOR B, honestly: Katara remains the deck's worst castability
 #: tier: row — {G}{W}{U} on turn three prices at ~51% against 13/8/8 sources, so she lands
 #: tier: turn four or five; the interaction is still cheap tricks rather than a suite and
-#: tier: the deck has NO sweeper; and the redundancy is TWO doublers, not three, since
-#: tier: Delney was cut once it was measured to double nothing the other two miss. THIS IS
+#: tier: the deck has NO sweeper. Delney was cut once it was measured to double nothing
+#: tier: the trigger-doublers miss, and Elspeth, Storm Slayer replaced Rally the Monastery
+#: tier: as a third doubler on a DIFFERENT axis, so the redundancy argument is stronger
+#: tier: than it was without being a fourth copy of the same effect. THIS IS
 #: tier: A RE-GRADE CANDIDATE and the call is deferred to a human — play it first, because
 #: tier: whether two doublers is enough redundancy is exactly the question no model here
 #: tier: answers.
@@ -51,7 +53,12 @@
 #: notes: actually worth is smaller than seven either way, because the clause reads Plains
 #: notes: you CONTROL: at 7 of 24 lands, turn five expects ~1.5 on the battlefield, and the
 #: notes: three fetches raise it to roughly 2-3. Grade it as a 2-3 token card with scry 2.
-#: notes: THE TWO DOUBLERS DIVIDE THE LIST CLEANLY. Katara reads ALLY and ignores power;
+#: notes: THE THREE DOUBLERS DIVIDE THE LIST CLEANLY, AND ELSPETH MULTIPLIES WITH THE
+#: notes: OTHER TWO RATHER THAN OVERLAPPING THEM: Katara and Starfield double the
+#: notes: TRIGGER, Elspeth doubles the token OUTPUT, so Kyoshi Warriors under Katara plus
+#: notes: Elspeth is two triggers times two tokens = FOUR Ally tokens plus the 3/3 body.
+#: notes: United Front becomes 2X, and Belladonna Took's gain-then-draw-then-counter ladder
+#: notes: climbs twice as fast. Katara reads ALLY and ignores power;
 #: notes: Starfield Vocalist reads any PERMANENT and ignores type, but only for
 #: notes: ENTERS-caused triggers. Katara therefore owns the attack- and death-triggered
 #: notes: Allies that Starfield cannot see, and Starfield owns the four noncreature
@@ -87,6 +94,7 @@
 1 Ty Lee, Chi Blocker (TLA) 76
 1 Sokka, Lateral Strategist (TLA) 241
 1 Niko, Light of Hope (DSK) 224
+1 Elspeth, Storm Slayer (TDM) 11
 
 # Ally bodies and token makers
 1 Appa, Steadfast Guardian (TLA) 10
@@ -109,7 +117,6 @@
 1 Enter the Avatar State (TLA) 18
 1 Allies at Last (TLA) 164
 1 Duty Beyond Death (TDM) 10
-1 Rally the Monastery (TDM) 19
 1 Jet, Freedom Fighter (TLA) 229
 1 The Eagles Are Coming! (HOB) 12
 
