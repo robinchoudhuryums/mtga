@@ -16,28 +16,26 @@
 #: archetype: be full of Allies (18 and 15 bodies against ONE and two payoffs), where
 #: archetype: this deck is built on the payoff half and splashes green for it.
 #: tier: B (PROVISIONAL) — still unplayed, and still graded one band UNDER its A metrics
-#: tier: floor, but the case for B is now MEASURABLY WEAKER than when it was written.
-#: tier: The floor reads A on interaction 7 and card advantage 4 at a 3.25 curve. Both
-#: tier: figures UNDER-read: Allies at Last is removal the classifier cannot see (its
+#: tier: floor. The floor reads A on interaction 7 and card advantage 4 at a 3.25 curve.
+#: tier: Both figures UNDER-read: Allies at Last is removal the classifier cannot see (its
 #: tier: patterns all say "deals damage" and the card says "each DEAL damage"), so the
 #: tier: real interaction is 8; and Starfield Vocalist scores zero roles because a
 #: tier: trigger-doubler has no bucket at all.
 #: tier: WHAT USED TO HOLD IT AT B WAS A SINGLE POINT OF FAILURE: the whole engine was one
 #: tier: legendary 3/3, and protection WAS 2 back then, so one removal spell ended it.
-#: tier: THREE ROUNDS OF SWAPS HAVE EATEN INTO THAT. Delney, Streetwise Lookout was ADDED
-#: tier: 2026-08-31 as a {2}{W} second doubler reaching every core engine piece; Starfield
-#: tier: Vocalist was ADDED as a third that reads neither Ally nor power, so it doubles all
-#: tier: nineteen ETB triggers; and protection went 2 -> 4, one of which is a ONE-MANA
-#: tier: hexproof (Enter the Avatar State) pointed straight at the removal spell this
-#: tier: paragraph is about. Three doublers is not a single point of failure.
+#: tier: THAT IS LARGELY GONE. Starfield Vocalist was ADDED as a second doubler that reads
+#: tier: neither Ally nor power, so it doubles every enters-caused trigger in the list
+#: tier: including the four on noncreature permanents Katara cannot reach; and protection
+#: tier: went 2 -> 4, one of which is a ONE-MANA hexproof (Enter the Avatar State) pointed
+#: tier: straight at the removal spell this paragraph is about.
 #: tier: WHAT STILL ARGUES FOR B, honestly: Katara remains the deck's worst castability
 #: tier: row — {G}{W}{U} on turn three prices at ~51% against 13/8/8 sources, so she lands
 #: tier: turn four or five; the interaction is still cheap tricks rather than a suite and
-#: tier: the deck has NO sweeper; and 46 distinct nonland cards is heavy singleton
-#: tier: variance for a deck that wants specific three-drops. Set against that, the engine
-#: tier: is now redundant where it was fragile. THIS IS A RE-GRADE CANDIDATE and the call
-#: tier: is deferred to a human — play it first, because whether three doublers is enough
-#: tier: redundancy is exactly the question no model here answers.
+#: tier: the deck has NO sweeper; and the redundancy is TWO doublers, not three, since
+#: tier: Delney was cut once it was measured to double nothing the other two miss. THIS IS
+#: tier: A RE-GRADE CANDIDATE and the call is deferred to a human — play it first, because
+#: tier: whether two doublers is enough redundancy is exactly the question no model here
+#: tier: answers.
 #: protect: Katara, the Fearless; South Pole Voyager; Avatar Enthusiasts; Haru, Hidden Talent; Suki, Kyoshi Warrior
 #: notes: THE DOUBLER'S SCOPE is the thing to get right and it is narrower than "doubles
 #: notes: Ally effects": Katara doubles TRIGGERED abilities only. White Lotus
@@ -46,26 +44,29 @@
 #: notes: doubled (its ETB token is). Suki, Courageous Rescuer's token trigger reads
 #: notes: "This ability triggers only once each turn", which caps it at one even with
 #: notes: Katara out — she is in the list for the anthem and the body, not as an engine
-#: notes: piece. Gather the White Lotus counts PLAINS, which is why the basics are 7
-#: notes: Plains rather than an even split (G-75: a card that names a resource is worth
-#: notes: the number of them in THIS deck).
-#: notes: THE TWO DOUBLERS DO NOT COVER THE SAME CARDS. Katara reads ALLY and ignores
-#: notes: power; Delney reads POWER 2 OR LESS and ignores type. They overlap on 14 of the
-#: notes: 22 trigger-holding creature copies, and with both out a small Ally's trigger
-#: notes: fires THREE times (base plus one each). The eight Delney misses are the bigger
-#: notes: bodies: Earth Kingdom Jailer, Toph, both Appas, Suki Kyoshi Warrior, Kyoshi
-#: notes: Warriors and Aang.
-#: notes: LIVE TENSION, MEASURED, NOT YET RESOLVED (G-42 shape): this deck's own anthems
-#: notes: push creatures OUT of Delney's range. White Lotus Reinforcements (+1/+1 to other
-#: notes: Allies) and Suki, Courageous Rescuer (+1/+0 to other creatures) each take South
-#: notes: Pole Voyager and Avatar Enthusiasts from 2 power to 3, and United Front puts a
-#: notes: counter on every creature. TEN of the fourteen sit at EXACTLY power 2, so they
-#: notes: are one anthem trigger from falling off; only Haru, Invasion Reinforcements,
-#: notes: Jeong Jeong's Deserters and Forecasting Fortune Teller have headroom. Whether
-#: notes: the anthems are a liability depends on how often a doubler is actually out,
-#: notes: which is a play question — do not cut them on this note alone.
-#: notes: Sonar Strike was CUT for Delney: its damage is conditional (attacking, blocking
-#: notes: or tapped only) and its lifegain rider needs a Bat, of which this deck runs zero.
+#: notes: piece. Gather the White Lotus counts PLAINS, which is why the basics are
+#: notes: Plains-heavy rather than an even split (G-75: a card that names a resource is worth
+#: notes: the number of them in THIS deck) — that count is 6 Plains today, so read Gather the
+#: notes: White Lotus as a six-Plains card, not a seven.
+#: notes: THE TWO DOUBLERS DIVIDE THE LIST CLEANLY. Katara reads ALLY and ignores power;
+#: notes: Starfield Vocalist reads any PERMANENT and ignores type, but only for
+#: notes: ENTERS-caused triggers. Katara therefore owns the attack- and death-triggered
+#: notes: Allies that Starfield cannot see, and Starfield owns the four noncreature
+#: notes: permanents (Invasion Tactics, Sheltered by Ghosts, Birnin Zana Plaza, Temple of
+#: notes: Enlightenment) plus the non-Ally creatures. With both out an Ally's ETB fires
+#: notes: THREE times.
+#: notes: DELNEY WAS CUT 2026-09-01 ON A MEASUREMENT, not a hunch: of the twelve copies in
+#: notes: his power-2-or-less range, Suki Courageous Rescuer's own cap blocks one, leaving
+#: notes: eleven — and every one of those eleven is already covered by Katara (the nine
+#: notes: Allies) or by Starfield (the two enters-caused non-Allies). He doubled nothing
+#: notes: uniquely. His real contribution was the evasion clause, and the anthem tension
+#: notes: he created went with him: White Lotus Reinforcements and Suki, Courageous
+#: notes: Rescuer each pushed South Pole Voyager and Avatar Enthusiasts from 2 power to 3,
+#: notes: so ten of the fourteen sat one anthem trigger from falling out of his range.
+#: notes: Starry-Eyed Skyrider replaces the evasion on the half that matters most here —
+#: notes: attacking TOKENS have flying, and the deck makes ten of them.
+#: notes: Sonar Strike was CUT earlier for its conditional damage (attacking, blocking or
+#: notes: tapped only) and a lifegain rider that needs a Bat, of which this deck runs zero.
 
 # Engine — the doubler and what it doubles
 1 Great Divide Guide (TLA) 181
@@ -82,7 +83,7 @@
 1 Toph, the Blind Bandit (TLA) 198
 1 Ty Lee, Chi Blocker (TLA) 76
 1 Sokka, Lateral Strategist (TLA) 241
-1 Delney, Streetwise Lookout (MKM) 12
+1 Niko, Light of Hope (DSK) 224
 
 # Ally bodies and token makers
 1 Appa, Steadfast Guardian (TLA) 10
@@ -91,15 +92,16 @@
 1 Hakoda, Selfless Commander (TLA) 23
 1 Aang, Swift Savior // Aang and La, Ocean's Fury (TLA) 204
 1 The Earth King (TLA) 172
-2 Earth Kingdom General (TLA) 173
+1 Earth Kingdom General (TLA) 173
+1 Earth King's Lieutenant (TLA) 217
 1 United Front (TLA) 39
 1 Invasion Tactics (TLA) 183
 1 Gather the White Lotus (TLA) 20
 1 Appa, Loyal Sky Bison (TLA) 9
 1 Mister Fantastic, Reed Richards (MSH) 66
+1 Starry-Eyed Skyrider (TDM) 25
 
 # Interaction
-1 Parting Gust (BLB) 24
 1 Sheltered by Ghosts (DSK) 30
 1 Enter the Avatar State (TLA) 18
 1 Allies at Last (TLA) 164

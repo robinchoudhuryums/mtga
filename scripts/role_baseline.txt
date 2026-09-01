@@ -218,7 +218,6 @@ Itzquinth, Firstborn of Gishath
 Jadelight Spelunker
 Jecht, Reluctant Guardian
 Jennifer Walters
-Jeong Jeong's Deserters
 Jeong Jeong, the Deserter
 Joo Dee, One of Many
 K'un-Lun Warrior
@@ -371,6 +370,7 @@ Starbreach Whale
 Starfield Shepherd
 Starfield Vocalist
 Stargaze
+Starry-Eyed Skyrider
 Stature, Size Shifter
 Stegron the Dinosaur Man
 Stickytongue Sentinel
