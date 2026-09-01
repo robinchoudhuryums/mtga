@@ -17,10 +17,10 @@
 #: archetype: this deck is built on the payoff half and splashes green for it.
 #: tier: B (PROVISIONAL) — still unplayed, and still graded one band UNDER its A metrics
 #: tier: floor, but the case for B is now MEASURABLY WEAKER than when it was written.
-#: tier: The floor reads A on interaction 6 and card advantage 4 at a 3.17 curve. Both
+#: tier: The floor reads A on interaction 7 and card advantage 4 at a 3.25 curve. Both
 #: tier: figures UNDER-read: Allies at Last is removal the classifier cannot see (its
 #: tier: patterns all say "deals damage" and the card says "each DEAL damage"), so the
-#: tier: real interaction is 7; and Starfield Vocalist and Echo score zero roles because a
+#: tier: real interaction is 8; and Starfield Vocalist scores zero roles because a
 #: tier: trigger-doubler has no bucket at all.
 #: tier: WHAT USED TO HOLD IT AT B WAS A SINGLE POINT OF FAILURE: the whole engine was one
 #: tier: legendary 3/3, and protection WAS 2 back then, so one removal spell ended it.
@@ -71,8 +71,7 @@
 1 Great Divide Guide (TLA) 181
 1 Haru, Hidden Talent (TLA) 182
 1 South Pole Voyager (TLA) 35
-1 Invasion Reinforcements (TLA) 24
-1 Jeong Jeong's Deserters (TLA) 25
+1 Sheriff of Safe Passage (OTJ) 29
 1 Starfield Vocalist (EOE) 78
 1 Belladonna Took (HOB) 4
 1 Katara, the Fearless (TLA) 230
@@ -84,7 +83,6 @@
 1 Ty Lee, Chi Blocker (TLA) 76
 1 Sokka, Lateral Strategist (TLA) 241
 1 Delney, Streetwise Lookout (MKM) 12
-1 Echo, Perceptive Prodigy (MSH) 51
 
 # Ally bodies and token makers
 1 Appa, Steadfast Guardian (TLA) 10
@@ -107,6 +105,8 @@
 1 Allies at Last (TLA) 164
 1 Duty Beyond Death (TDM) 10
 1 Rally the Monastery (TDM) 19
+1 Jet, Freedom Fighter (TLA) 229
+1 The Eagles Are Coming! (HOB) 12
 
 # Lands (24)
 1 Hushwood Verge (DSK) 261
