@@ -50,9 +50,6 @@ Whenever this permanent enters or attacks, mill four cards, then you may return 
 Central Elevator // Promising Stairs,Enchantment — Room // Enchantment — Room,"When you unlock this door, search your library for a Room card that doesn't have the same name as a Room you control, reveal it, put it into your hand, then shuffle.
 (You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.) // At the beginning of your upkeep, surveil 1. You win the game if there are eight or more different names among unlocked doors of Rooms you control.
 (You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",U,Room; surveil; graveyard,DSK,44,Rare,51,,5.5,hand
-Dazzling Theater // Prop Room,Enchantment — Room // Enchantment — Room,"Creature spells you cast have convoke. (Your creatures can help cast those spells. Each creature you tap while casting a creature spell pays for {1} or one mana of that creature's color.)
-(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.) // Untap each creature you control during each other player's untap step.
-(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",W,Room,DSK,3,Rare,,,5.5,seed
 Grievous Wound,Enchantment — Aura,"Enchant player
 Enchanted player can't gain life.
 Whenever enchanted player is dealt damage, they lose half their life, rounded up.",B,Aura; aura; enchant,DSK,102,Rare,,,3.0,seed
@@ -197,9 +194,6 @@ Whenever you draw your second card each turn, put a +1/+1 counter on target crea
 Lake-town Toymaker,Creature — Human Artificer,"At the beginning of combat on your turn, if you've drawn two or more cards this turn, another target creature you control gets +3/+0 and gains first strike until end of turn.",W,Human; Artificer; pump,HOB,19,Uncommon,,,2.0,seed
 Bonehoard Dracosaur,Creature — Dinosaur Dragon,"Flying, first strike
 At the beginning of your upkeep, exile the top two cards of your library. You may play them this turn. If you exiled a land card this way, create a 3/1 red Dinosaur creature token. If you exiled a nonland card this way, create a Treasure token.",R,Dinosaur; Dragon; tokens; treasure; impulse; flying; evasion; first strike; combat,LCI,134,Mythic,49,,7.5,hand
-The Millennium Calendar,Legendary Artifact,"Whenever you untap one or more permanents during your untap step, put that many time counters on The Millennium Calendar.
-{2}, {T}: Double the number of time counters on The Millennium Calendar.
-When there are 1,000 or more time counters on The Millennium Calendar, sacrifice it and each opponent loses 1,000 life.",Colorless,mill; sacrifice; double,LCI,257,Mythic,78,"Alt win-con for the go-wide Ally deck: ~15 permanents untapping is a 6-turn solo clock at {2}/turn, 3 turns with Doubling Season. Cut Enter the Avatar State (MV 1 for MV 1).",6,hand
 "Matzalantli, the Great Door // The Core",Legendary Artifact // Legendary Land,"{T}: Draw a card, then discard a card.
 {4}, {T}: Transform Matzalantli. Activate only if there are four or more permanent types among cards in your graveyard. (Artifact, battle, creature, enchantment, land, and planeswalker are permanent types.) // (Transforms from Matzalantli.)
 Fathomless descent — {T}: Add X mana of any one color, where X is the number of permanent cards in your graveyard.",Colorless,graveyard; card draw; mana; transform; fathomless descent,LCI,256,Rare,51,,4.0,seed
@@ -360,9 +354,6 @@ White Lotus Tile,Artifact,"This artifact enters tapped.
 "Azula, Cunning Usurper",Legendary Creature — Human Noble Rogue,"Firebending 2 (Whenever this creature attacks, add {R}{R}. This mana lasts until end of combat.)
 When Azula enters, target opponent exiles a nontoken creature they control, then they exile a nonland card from their graveyard.
 During your turn, you may cast cards exiled with Azula and you may cast them as though they had flash. Mana of any type can be spent to cast those spells.",U/B,Human; Noble; Rogue; graveyard; etb; firebending; bending,TLA,208,Rare,22,"best 22 (Bloodbending); also 17,12",6.0,hand
-Earth King's Lieutenant,Creature — Human Soldier Ally,"Trample
-When this creature enters, put a +1/+1 counter on each other Ally creature you control.
-Whenever another Ally you control enters, put a +1/+1 counter on this creature.",W/G,Human; Soldier; Ally; counters; etb; trample; evasion,TLA,217,Rare,13,Ally +1/+1 anthem — Earth Kingdom flavor + its Ally/counters theme,4.5,hand
 The Fire Nation Drill,Legendary Artifact — Vehicle,"Trample
 When The Fire Nation Drill enters, you may tap it. When you do, destroy target creature with power 4 or less.
 {1}: Permanents your opponents control lose hexproof and indestructible until end of turn.

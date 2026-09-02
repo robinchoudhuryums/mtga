@@ -22495,7 +22495,7 @@ Wear // Tear,Instant // Instant,"Destroy target artifact.
 Fuse (You may cast one or both halves of this card from your hand.) // Destroy target enchantment.
 Fuse (You may cast one or both halves of this card from your hand.)",W/R,removal; fuse,PIO,398,Uncommon,pioneer;modern;legacy;vintage;historic;timeless;brawl,2024-12-10,,
 Echo of Eons,Sorcery,"Each player shuffles their hand and graveyard into their library, then draws seven cards.
-Flashback {2}{U} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",U,graveyard; flashback; recursion; spellslinger,PRM,95469,Rare,modern;legacy;vintage;historic;timeless;brawl,2024-12-02,,
+Flashback {2}{U} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",U,graveyard; flashback; recursion; spellslinger,PRM,95469,Rare,modern;legacy;vintage;historic;timeless;brawl,2024-12-03,,
 Trouble in Pairs,Enchantment,"If an opponent would begin an extra turn, that player skips that turn instead.
 Whenever an opponent attacks you with two or more creatures, draws their second card each turn, or casts their second spell each turn, you draw a card.",W,card draw,PZA,3,Mythic,legacy;vintage;historic;timeless;brawl,2026-03-06,,
 Cytoplast Manipulator,Creature — Human Wizard Mutant,"Graft 2 (This creature enters with two +1/+1 counters on it. Whenever another creature enters, you may move a +1/+1 counter from this creature onto it.)

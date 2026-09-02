@@ -5389,3 +5389,19 @@ When this land enters, surveil 1. (Look at the top card of your library. You may
 Secluded Courtyard,Land,"As this land enters, choose a creature type.
 {T}: Add {C}.
 {T}: Add one mana of any color. Spend this mana only to cast a creature spell of the chosen type or activate an ability of a creature source of the chosen type.",Colorless,mana,FDN,267,3
+Dazzling Theater,Enchantment — Room // Enchantment — Room,"Creature spells you cast have convoke. (Your creatures can help cast those spells. Each creature you tap while casting a creature spell pays for {1} or one mana of that creature's color.)
+(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.) // Untap each creature you control during each other player's untap step.
+(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",W,Room,DSK,3,1
+"Niko, Light of Hope",Legendary Creature — Human Wizard,"When Niko enters, create two Shard tokens. (They're enchantments with ""{2}, Sacrifice this token: Scry 1, then draw a card."")
+{2}, {T}: Exile target nonlegendary creature you control. Shards you control become copies of it until the next end step. Return it to the battlefield under its owner's control at the beginning of the next end step.",W/U,Human; Wizard; Shard; card draw; sacrifice; tokens; removal; etb; scry; blink; selection,DSK,224,1
+The Millennium Calendar,Legendary Artifact,"Whenever you untap one or more permanents during your untap step, put that many time counters on The Millennium Calendar.
+{2}, {T}: Double the number of time counters on The Millennium Calendar.
+When there are 1,000 or more time counters on The Millennium Calendar, sacrifice it and each opponent loses 1,000 life.",Colorless,mill; sacrifice; double,LCI,257,1
+Earth King's Lieutenant,Creature — Human Soldier Ally,"Trample
+When this creature enters, put a +1/+1 counter on each other Ally creature you control.
+Whenever another Ally you control enters, put a +1/+1 counter on this creature.",W/G,Human; Soldier; Ally; counters; etb; trample; evasion,TLA,217,1
+Starry-Eyed Skyrider,Creature — Human Scout,"Flying
+Whenever this creature attacks, another target creature you control gains flying until end of turn.
+Attacking tokens you control have flying.",W,Human; Scout; flying; evasion,TDM,25,1
+"Jet, Freedom Fighter",Legendary Creature — Human Rebel Ally,"When Jet enters, he deals damage equal to the number of creatures you control to target creature an opponent controls.
+When Jet dies, put a +1/+1 counter on each of up to two target creatures.",W/R,Human; Rebel; Ally; counters; etb,TLA,229,1
