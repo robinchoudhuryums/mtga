@@ -1,5 +1,6 @@
 #: name: Team Avatar
 #: format: Standard
+#: arena: 78 Team Avatar, 354e2dd0-561f-469e-af48-2f9bc4e6f5f4
 #: colors: GWU
 #: archetype: BANT ALLY TRIBAL, and the plan is a TRIGGER-DOUBLING engine rather than
 #: archetype: an anthem pile. Katara, the Fearless makes every triggered ability of every
@@ -80,10 +81,20 @@
 #: notes: Starfield Vocalist reads any PERMANENT and ignores type, but only for
 #: notes: ENTERS-caused triggers. Katara therefore owns the attack- and death-triggered
 #: notes: Allies that Starfield cannot see, and Starfield owns the noncreature permanents
-#: notes: (Sheltered by Ghosts, Birnin Zana Plaza, Temple of Enlightenment, and Overlord
-#: notes: of the Mistmoors while impending -- Invasion Tactics was one until it was CUT
-#: notes: 2026-09-02 for Bard) plus the non-Ally creatures. With both out an Ally's ETB fires
-#: notes: THREE times.
+#: notes: plus the non-Ally creatures. With both out an Ally's ETB fires THREE times.
+#: notes: THAT NONCREATURE LIST IS NOW TWO, AND THE MANABASE REBUILD IS WHY -- corrected
+#: notes: 2026-09-02 after this paragraph was found naming two lands the same day's rebuild
+#: notes: had already removed. Live: Sheltered by Ghosts, and Overlord of the Mistmoors
+#: notes: while impending. Gone with the rebuild: Birnin Zana Plaza (gain 1 life on enter,
+#: notes: so gain 2) and Temple of Enlightenment (scry 1, so scry 2); their replacements
+#: notes: Gathering Place and Urban Retreat have NO triggered ability at all, only mana and
+#: notes: activated ones, so Starfield sees nothing from either. Invasion Tactics was a
+#: notes: third until it was CUT 2026-09-02 for Bard. THE TRADE WAS STILL RIGHT -- two
+#: notes: doubled cantrip-scale triggers against G 8 -> 10 and hard taplands 4 -> 1 -- but
+#: notes: it was made without noticing this cost, so record it: a manabase swap can quietly
+#: notes: cut a doubler's fodder, and nothing checks that (G-27 keeps `#: notes:` out of
+#: notes: the staleness scan on purpose, because a build log may legitimately name an
+#: notes: absent card).
 #: notes: DELNEY WAS CUT 2026-09-01 ON A MEASUREMENT, not a hunch: of the twelve copies in
 #: notes: his power-2-or-less range, Suki Courageous Rescuer's own cap blocks one, leaving
 #: notes: eleven — and every one of those eleven is already covered by Katara (the nine
@@ -175,4 +186,4 @@
 #~ note: applied — The Astonishing Ant-Man in for Suki, Courageous Rescuer.
 #~ -Toph, the Blind Bandit | +Orcrist, Goblin-cleaver | SIDEGRADE (owned M): re-parked 2026-09-02 a second time -- its listed cut (Suki) left for The Astonishing Ant-Man. Toph is now the listed cut as the last role-neutral Ally that makes no tokens; note Doubling Season made him BETTER (earthbend 2 -> 4, and his power is the counters on your lands), so this is the softest slot, not a dead one.
 #~ -Toph, the Blind Bandit | +Suki, Courageous Rescuer | SIDEGRADE (owned): Human Warrior Ally, {1}{W}{W}. Static +1/+0 to other creatures (never doubled) and a token whenever another permanent of yours leaves during your turn -- but "This ability triggers only once each turn", which is why she was the cut for Ant-Man 2026-09-02: the one token maker four multipliers cannot scale past one event. She comes back if the anthem is missed in play, or if a doubler is cut.
-#~ note: WHY ORCRIST IS PARKED RATHER THAN PLAYED, so the case is not re-derived: it is SIX mana before it does anything ({3} cast plus equip {3}) and it still has to connect, and the payoff is MANA this deck cannot spend -- avg MV 3.33, top end 5-6, and Great Divide Guide already turns every land AND every Ally into any-colour mana. The {X} sinks are United Front and now The Millennium Calendar's {2} activation, which is the one thing that has moved in its favour. It is also the only Equipment, so there is no equip discount and nothing to tutor it. The evasion objection is answered by Starry-Eyed Skyrider (flying to an attacking creature) -- Enter the Avatar State was CUT 2026-09-02, so Skyrider is now the ONLY evasion granter; do not cut it to make room for this.
+#~ note: WHY ORCRIST IS PARKED RATHER THAN PLAYED, so the case is not re-derived: it is SIX mana before it does anything ({3} cast plus equip {3}) and it still has to connect, and the payoff is MANA this deck cannot spend -- avg MV 3.42, top end 5-6, and Great Divide Guide already turns every land AND every Ally into any-colour mana. The {X} sinks are United Front and now The Millennium Calendar's {2} activation, which is the one thing that has moved in its favour. It is also the only Equipment, so there is no equip discount and nothing to tutor it. The evasion objection is answered by Starry-Eyed Skyrider (flying to an attacking creature) -- Enter the Avatar State was CUT 2026-09-02, so Skyrider is now the ONLY evasion granter; do not cut it to make room for this.

@@ -445,7 +445,8 @@ directions.
   Widening it needed two clause-scoped suppressions — a figure about another deck named by
   NAME, and one whose subject is the card POPULATION ("Standard's Dragons average MV 5.30")
   — plus the rule that a name forming part of THIS deck's own name is not another deck, since
-  the variant convention makes 26a "Iron Forge — Virulent". `#: notes:` stays out of the STALENESS scan (a build log may name an absent card) but an EXCLUSION claim in it IS checked; same split for `#~ note:` prose since 2026-08-11 (G-04). Report-only, and a rationale naming a card it cut must put the change-cue in the SAME clause.
+  the variant convention makes 26a "Iron Forge — Virulent". **THAT RULE MAKES A RENAME A SUPPRESSION CHANGE (measured 2026-09-02):** `_other_deck_ids` returns EMPTY for a bare `40a Some Name` — the id route needs the literal word *deck* or a possessive — so the roster-NAME mask carries the commonest cross-deck citation, and adopting `Paradox Drive — ParadoXponential` made 40a's name contain its parent's, stopping "Paradox Drive" masking inside 40a's own prose. A tightening here; **re-run the audit on both decks after any rename.**
+  **THE MANABASE AXIS WAS OUTSIDE THE SCAN ALTOGETHER until 2026-09-02** — every figure family resolves against `deck_quality_vector`, which has no colour-source term, so deck 78 claimed "~51% against 13/8/8 sources" through a rebuild to 13/8/10 and the audit said CURRENT. Fixed by widening the LOOKUP (`_figure_lookup` adds `sources_W`…`sources_G`) so one pattern per colour reuses every existing suppression instead of a parallel pass. Guards measured, not invented: a DELTA ("+8 white sources") and a WANT (`consistency` prints "want 13 G sources") are not claims. It also exposed a bigger hole — `_OTHER_DECK_RE` needs the word *deck*, but the prose's commoner idiom is the POSSESSIVE (`68a's 12 green sources`, **35 roster occurrences**), so a cross-deck claim flagged against the citing deck; `_other_deck_ids` reads both, gating the possessive on a REAL roster id. Roster: 4 flags → 3, the suppressed one exactly that false positive.
   **TWO RESIDUALS, ONE SHAPE — a proximity window loses a long list.** The EXCLUSION check misses a name several lines into a wrapped one (deck 52 named Zemo under "Deliberately NOT included" while running him; `wrong_exclusion_claims` returned empty). And SCANNING `#: notes:` for staleness was re-measured and re-DECLINED 2026-08-31: 81 roster hits at ~45% precision, 61 with a clause-wide history cue, and deck 59's cut Ancestors' Aid is caught by NEITHER — its own clause said another card "were CUT … for Hugs", so the suppressions that make this scan trustworthy are exactly what blind it in a build log. [G-27]
 - **`suggest`'s `Decks` column is cross-deck BREADTH, not curated fit** — castable and
   sharing a *central* theme that is also SPECIFIC, with variants collapsed to their core
@@ -571,7 +572,9 @@ directions.
   returns as a new object), so a flicker package in a counters deck resets the
   investment it is meant to protect — the question was asked of deck 63 and the answer
   came from measuring ETB density (7 of 35 nonland cards) against the erasure, not from
-  the cards' own text. Before adding blink, count what the blink would DISCARD. [G-42]
+  the cards' own text. Before adding blink, count what the blink would DISCARD.
+  **A MANABASE SWAP IS THE SAME SHAPE AND LOOKS LIKE PURE UPSIDE**: deck 78's green rebuild traded two lands with enters triggers (gain 1 life; scry 1) for two with NO triggered ability at all, halving what Starfield Vocalist could double in a deck whose thesis IS trigger multiplication — 2026-09-02, and the trade was still right; the blindness was the problem.
+  Every tool here scores a land on FIXING and none asks what trigger it was carrying, so **before a land swap in a doubler deck, diff the ETB text of both sides**. Nothing catches this: G-27 keeps `#: notes:` out of the staleness scan on purpose. [G-42]
 - **Grade a modal / split / adventure card by the FACE YOU CAST, not the half you want.**
   Decadent Dragon was drafted for its `{2}{B}` adventure half and cut once `consistency`
   priced its `{2}{R}{R}` FRONT face at 53% on turn four. [G-43]
@@ -836,16 +839,16 @@ directions.
   what a card HAS.** Keyword tags came from Scryfall's `keywords` field, so a lord handing
   the team deathtouch carried no `deathtouch` tag and looked like a card with nothing to do
   with the deck built on it. **1,941 pool cards grant one of the twelve evergreens**, and
-  for FOUR the granted case is the MAJORITY (indestructible 224 vs 83 native, hexproof 151
-  vs 56, first strike 172 vs 145, double strike 112 vs 75), so the tag tracked the
-  exception. `tags_for` reads grants from TEXT now (`granted_keywords`, reminder text
-  stripped, opponent- and loss-scoped clauses excluded). **What it moved and what it did
-  NOT is the useful half:** tags feed `cuts` / `suggest` / centrality, so deck 31's Venom
-  Connoisseur went fit 17 → 68 and stopped being offered as a cut (a real, user-caught
-  mis-suggestion), while `tier_band` grades on `role_tally`, which reads TEXT — K-14 diff
-  **0 decks, 0 tier floors, 0 role counts**. One SIDE EFFECT needed a human: more tags
-  raised the dominant theme's count and with it the 25% centrality floor, so four decks'
-  quoted central-theme figures went stale, one load-bearing in a `#: tier:`. [G-80]
+  for FOUR the granted case is the MAJORITY, so the tag tracked the exception (haste has since crossed to a FIFTH at 366 grant vs 359 have — a 7-card margin that can flip on any pool rebuild, so do not harden the count). `tags_for`
+  reads grants from TEXT now (`granted_keywords`, reminder text stripped, opponent- and
+  loss-scoped clauses excluded). Tags feed `cuts` / `suggest` / centrality (deck 31's Venom
+  Connoisseur went fit 17 → 68) while `tier_band` grades on `role_tally`, which reads
+  TEXT — K-14 diff **0 decks, 0 tier floors**. **The LIST itself was the evergreen set, so
+  the same asymmetry stayed open one keyword over until 2026-09-02**: a card that HAD
+  convoke was tagged, one that
+  GAVE it was not. Five added (ward/convoke/affinity/prowess/flash) on two measured tests:
+  already a live pool tag, and real granted instances. `cascade` passed the first, failed
+  the second, LEFT OUT. 55 cards, 0 floors — re-run that diff on any addition. [G-80]
 
 - **AN ADVISORY YOU CAN ONLY ACT ON BY A FORBIDDEN EDIT IS A HAZARD, NOT A WARNING.**
   G-05's `section_mismatch` correctly flags an add that inherited the cut card's
@@ -1099,7 +1102,7 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   for it, baselined at 153 and soft in `check_all`. It reads the tagger's own
   `MECHANIC_RULES` live (never a copy) and excludes the deathtouch KEYWORD path by
   construction — 250 of the 388 raw hits, which an allowlist would have had to enumerate.
-  A worklist, not a defect count. **Residual: 342 pool blanks —
+  A worklist, not a defect count. **Residual: 340 pool blanks —
   a long tail of un-themeable effects, and a new theme for four cards is not the fix.** [K-09]
 - **After editing a tag pattern, regenerate BOTH derived tag stores** —
   `tag_synergies.py --merge` for the LIBRARY and **`build_pool.py --all` for the pool**,
@@ -1199,9 +1202,11 @@ earned it: [C-01]
 
 **Subsystems:**
 - Data: card-library.csv, card-pool.csv, card-mana.csv, card-wishlist.csv, matches.csv
-  (LIVE since 2026-08-10 — 72 matches, 69 attributed across 29 decks, pooled 37-35; the
-  best per-deck row is n=8 against the 20-match floor, which is why `--report` also POOLS,
-  and why the four HAND columns exist at all — G-74), recommendations.csv,
+  (LIVE since 2026-08-10 — 82 matches, 79 attributed across 30 decks, pooled 44-38; the
+  best per-deck row is STILL n=8 against the 20-match floor after a month, which is why
+  `--report` also POOLS, and why the four HAND columns exist at all — G-74; all four are
+  still EMPTY in all 82 rows, so scenario 11 remains the only thing that can prove that
+  loop closes), recommendations.csv,
   collection-stamp.json (written only by `import_collection.py --apply` — the date owned
   counts were last EXACT; absent until the first run, and the craft surfaces say so) [C-02]
 - Outcomes: scripts/parse_matches.py, recommendations.csv + `deck.py feedback` — the only

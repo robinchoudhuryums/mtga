@@ -2604,3 +2604,88 @@ Fantastic and Orcrist. **Open with the user:** `−Sheriff of Safe Passage / +Oj
 
 **Where I left off:** all green — `check_all` all invariants hold, full pytest suite
 passes, `check_docs`/`check_patterns`/`check_commands` OK, dashboard rebuilt.
+
+---
+
+## 2026-09-02 — broad-implement: granted keywords + the manabase figure axis
+
+Two holes found while tuning decks 78 and 27. Block:
+`.cycle/blocks/2026-09-granted-keywords-and-manabase-figures-broad-implement.md`.
+
+- **H1 `granted_keywords` was evergreen-only (G-80).** A card that HAS convoke was tagged,
+  one that GIVES it was not. Five keywords added on two measured tests — already a live
+  pool tag, and real granted instances. **`cascade` passed the first, failed the second,
+  and was deliberately left out**; do not re-add it without granting cards to point at.
+  55 pool cards newly tagged, **0 role counts and 0 tier floors moved**.
+- **H2 `--audit-rationale` had no manabase axis (G-27).** Fixed by widening the LOOKUP
+  (`_figure_lookup`) rather than adding a parallel scan, so every existing suppression is
+  reused. It exposed a bigger hole: `_OTHER_DECK_RE` needs the word *deck*, but the
+  prose's commoner idiom is the POSSESSIVE (`68a's 12 green sources`, 35 roster
+  occurrences). `_other_deck_ids` reads both. Roster 4 flags → 3, all three real and
+  re-grounded (decks 26, 40a, 68b).
+
+**Decisions worth not re-litigating:**
+- H3 was MEASURED and declined: 272 deck craft targets are absent from the 186-row
+  wishlist, but the wishlist is curated and deck files include aspirational builds. The
+  only real finding is the missing deck→wishlist direction of `--audit-targets`, which is
+  a design call for the user, not a defect.
+- The three-way duplication of the colour-source computation (`cmd_mana`,
+  `cmd_consistency`, `deck_color_sources`) was noted and left alone — they agree today.
+
+**Two process failures, both caught before shipping and both worth remembering:**
+1. H1's first mutation run SURVIVED — the existing grant tests are shape/order tests that
+   pass with the old list. **A green suite is not evidence a new behaviour is covered.**
+2. Inserting test classes mid-file re-parented 16 methods of `TestClassifyRoles` into the
+   new class. **Insert at a class boundary, never before an arbitrary method.**
+3. Related, from the scan that produced these findings: TWO first-pass measurements were
+   confidently wrong from broken joins (card-pool.csv has no Mana Cost column;
+   `deck_color_sources` wants `load_card_meta()`, not the deck's `#:` header meta). Both
+   read as findings, not bugs. **Sanity-check a sweep against a value you already know.**
+
+**Where I left off:** all green — full pytest suite passes, `check_all` all invariants
+hold, `check_patterns`/`check_commands`/`check_docs`/`check_roles` OK, dashboard rebuilt.
+
+
+---
+
+## 2026-09-02 (later) — first matches logged, deck 40a renamed, pile doc closed
+
+Three small pieces of housekeeping, one of which turned up a real find.
+
+**Ten Arena matches ingested** (`parse_matches.py --apply`), 72 -> 82 rows. **Deck 78 went
+5-2 in its first seven games ever** — the deck was built and tuned in the same two days, so
+this is the outcome loop closing on work that had none. Deck 59 went 2-1. Per G-57 no
+per-deck rate is readable (best row n=8 against the 20-match floor); pooled is 44-38, 54%,
+95% CI 43-64%. The run also wrote deck 78's first `#: arena:` header — attribution had been
+resolving through the leading-number `name prefix` guess, and the GUID now pins it.
+
+**Deck 40a adopted Arena's name**, `Exponential Drive` -> `Paradox Drive — ParadoXponential`,
+with deck 40's `#: archetype:` citation re-pointed and the file renamed
+`40a-exponential-drive.txt` -> `40a-paradoxponential.txt` (the `19b-gw-chocobo.txt` /
+`51-unlocked` convention). One consequence CHECKED rather than assumed: the rationale audit
+masks a roster deck name only when it is not a substring of THIS deck's own name (G-27's
+26a case), so 40a's name now containing "Paradox Drive" means that name stops masking inside
+40a's prose — a TIGHTENING. Audits clean on 40 and 40a before and after, roster sweep gained
+no flag. Also learned in passing: `_other_deck_ids` returns empty for a bare `40a` with no
+literal word *deck*, so it was the roster-NAME mask carrying that citation all along, in
+both versions.
+
+**THE FIND — a manabase swap can quietly cut a doubler's fodder.** Checking the pile doc's
+deletion condition surfaced deck 78's `#: notes:` claiming Starfield Vocalist saw four
+noncreature permanents, while naming two lands (Birnin Zana Plaza, Temple of Enlightenment)
+that the SAME DAY's manabase rebuild had already removed. Worse than a name swap: both had
+real enters triggers (gain 1 life; scry 1) and their replacements Gathering Place and Urban
+Retreat have no triggered ability at all — only mana and activated ones — so the true count
+is TWO (Sheltered by Ghosts, and Overlord of the Mistmoors while impending). The trade was
+still right (two cantrip-scale doubled triggers against G 8 -> 10 and hard taplands 4 -> 1)
+but it was made without seeing the cost. **No gate catches this and that is deliberate**:
+G-27 keeps `#: notes:` out of the staleness scan because a build log may legitimately name
+an absent card. Corrected in the deck file with the reasoning kept.
+
+**`.cycle/team-avatar-pile-analysis.md` deleted**, its contract satisfied — the swaps landed
+and its findings are in deck 78's 57 `#: notes:` lines.
+
+**Where I left off:** all green, and the day's eight commits merged to `main` as PR #162
+(a `/sync-docs` pass went in with them: G-42 gained the manabase instance, G-27 the
+rename-is-a-suppression-change note, G-80 the four-becomes-five margin, and three README
+figures were corrected against live data).

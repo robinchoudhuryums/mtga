@@ -10735,6 +10735,49 @@ _RATIONALE_FIGURES = [
     (re.compile(_FIG_NUM + r"[  ]+(?:early|cheap) drops?", re.I), "early_drops"),
     (re.compile(_FIG_NUM + r"[- ]one[- ]two[- ]drops?", re.I), "early_drops"),
 ]
+
+# COLOUR SOURCES — the manabase axis, which every pattern above is blind to because it is
+# not in `deck_quality_vector`. Deck 78's tier block claimed "~51% against 13/8/8
+# sources", the manabase was rebuilt to 13/8/10 (56.6%), and `--audit-rationale` still
+# reported the rationale CURRENT (2026-09-02): a colour-source claim could rot forever.
+#
+# One pattern per colour, so the existing single-capture-group shape holds and EVERY
+# suppression the figure loop already applies (other-deck id, roster deck name,
+# population subject, history, percent/draw misreads) is reused rather than
+# reimplemented by a parallel pass.
+#
+# Two guards, both measured against the roster rather than invented:
+#   DELTAS — prose writes a change as often as a count ("wanting roughly +8 white
+#   sources", deck 19), and a delta is not a claim about the current list.
+#   WANTS  — `deck.py consistency` prints "want 13 G sources (have 8, +5)" and that line
+#   gets pasted into rationales verbatim; the target is not the holding.
+# Case-SENSITIVE on purpose: the single-letter alternative would otherwise let a stray
+# lowercase "g"/"r" before "sources" match.
+_FIG_COLOR_WORDS = (("W", "white"), ("U", "blue"), ("B", "black"),
+                    ("R", "red"), ("G", "green"))
+_FIG_SOURCE_WANT = re.compile(r"\bwants?\b[^.;]{0,20}$", re.I)
+_RATIONALE_FIGURES += [
+    (re.compile(rf"(?<![+\-\d])\b(\d{{1,2}})[  ]+(?:{_c}|{_w})[  ]+sources?\b"),
+     f"sources_{_c}")
+    for _c, _w in _FIG_COLOR_WORDS
+]
+
+
+def _figure_lookup(vec, cards, carddata):
+    """The quality vector PLUS the deck's colour-source counts, keyed `sources_W` etc.
+
+    One lookup so the figure loop stays single-pass. `deck_color_sources` is the same
+    rule `deck.py mana` prints — and it wants `load_card_meta()`, NOT the deck's `#:`
+    header meta: passing the latter counts basics only and reports almost every claim
+    stale, which is how this fix was nearly mis-measured on the day it was written."""
+    out = dict(vec)
+    try:
+        src = deck_color_sources(cards, load_card_meta(), carddata)
+    except Exception:
+        return out          # a figure we cannot price is skipped, never guessed
+    for col, n in src.items():
+        out[f"sources_{col}"] = n
+    return out
 # Words that are also real card names ("Negate", "Rest in Peace", …). Requiring a
 # multi-word name or a long single word keeps the scan quiet; a citation of a one-word
 # card is rare in prose and not worth a false positive on every "Opt" or "Duress".
@@ -10816,7 +10859,32 @@ _COMPARISON_CUES = re.compile(
 _CLAUSE_BREAK = re.compile(r"[.;!?](?=\s)")
 # "deck 56" / "deck 40a" — an explicit reference to a deck by id. Requires the word
 # `deck` so a bare count ("16 Birds") can never read as one.
+# `deck 42` is one way the prose cites a sibling; the POSSESSIVE `42's` is the other, and
+# it is the commoner one — 35 occurrences roster-wide against a handful of the explicit
+# form. Deck 68b's archetype says "{1}{G}{G}{G} on 68a's 12 green sources measured 31.6%",
+# a claim about ANOTHER deck that the word-anchored pattern could not see, so it flagged
+# against 68b's own 17 (2026-09-02, found by the colour-source scan below — the first
+# figure family where bare-id citation is normal prose). Requiring the id to be a REAL
+# roster id keeps it from eating ordinary possessives like "the 4's slot".
 _OTHER_DECK_RE = re.compile(r"\bdeck\s+(\d+[a-z]?)\b", re.I)
+# The POSSESSIVE form — `42's`, `68a's` — is the commoner idiom here: 35 occurrences
+# roster-wide against a handful of the explicit `deck 42`. It is kept as a SEPARATE
+# pattern gated on the id being a real roster id, because a bare `\d+[a-z]?'s` would
+# otherwise eat ordinary prose ("the 4's slot", "a 2's worth of mana").
+_OTHER_DECK_POSS_RE = re.compile(r"\b(\d{1,3}[a-z]?)'s\b")
+
+
+def _other_deck_ids(clause):
+    """Deck ids a clause CITES, lowercased. Both idioms, flattened, roster-checked.
+
+    `_OTHER_DECK_RE.findall` returns plain strings for the word-anchored form; the
+    possessive form is matched separately and filtered against the live roster so it
+    cannot suppress on a number that merely looks like an id."""
+    ids = {g.lower() for g in _OTHER_DECK_RE.findall(clause)}
+    poss = {g.lower() for g in _OTHER_DECK_POSS_RE.findall(clause)}
+    if poss:
+        ids |= poss & {str(x["id"]).lower() for x in discover_decks()}
+    return ids
 # A SHARING claim is not a comparison, and treating it as one is how a false card
 # citation survived for months. Deck 43's tier block read "only FIVE nonland cards are
 # shared (Erode, Healer's Hawk, Starscape Cleric, Stroke of Midnight and Mister
@@ -11283,6 +11351,7 @@ def rationale_staleness(d, carddata=None):
     if stale_cards:
         stale_cards = sorted(set(stale_cards))
     vec = deck_quality_vector(d)
+    figure_values = _figure_lookup(vec, cards, carddata)
     own_id = str(d.get("id") or "").lower()
     # The FIGURE half sweeps the SAME two headers as the CARD half above. It read
     # `#: tier:` alone, so a figure in `#: archetype:` could contradict the live vector
@@ -11298,8 +11367,11 @@ def rationale_staleness(d, carddata=None):
             continue
         for rx, key in _RATIONALE_FIGURES:
             for m in rx.finditer(prose):
-                quoted, actual = m.group(1), vec.get(key)
+                quoted, actual = m.group(1), figure_values.get(key)
                 if actual is None:
+                    continue
+                if key.startswith("sources_") and _FIG_SOURCE_WANT.search(
+                        prose[max(0, m.start() - 24):m.start()]):
                     continue
                 # A figure quoted about ANOTHER DECK is not a claim about this one. 56a's
                 # block compared itself to its parent — "deck 56 core is a genuine aggro
@@ -11309,7 +11381,7 @@ def rationale_staleness(d, carddata=None):
                 # suppresses, so a rationale citing its own number by id still audits.
                 clo, chi = _clause_bounds(prose, m.start(), m.end())
                 clause = prose[clo:chi]
-                ids = {g.lower() for g in _OTHER_DECK_RE.findall(clause)}
+                ids = _other_deck_ids(clause)
                 if ids - {own_id}:
                     continue
                 # The same rule by NAME, which is how the prose usually writes it. Deck
@@ -11388,6 +11460,10 @@ def note_figure_staleness(d, vec=None, meta_cards=None):
     """
     meta, cards = parse_deck_file(d["path"])
     vec = vec if vec is not None else deck_quality_vector(d)
+    # Same combined lookup as the tier/archetype scan, so a colour-source claim in a
+    # `#~ note:` is checked by exactly the rules that check one in `#: tier:` — the
+    # deck-78 Orcrist note quoted an avg MV and the two scans must not drift apart.
+    figure_values = _figure_lookup(vec, cards, load_card_data())
     own_id = str(d.get("id") or "").lower()
     own_name = (meta or {}).get("name", "").strip()
     out = []
@@ -11397,8 +11473,11 @@ def note_figure_staleness(d, vec=None, meta_cards=None):
             continue
         for rx, key in _RATIONALE_FIGURES:
             for m in rx.finditer(note):
-                quoted, actual = m.group(1), vec.get(key)
+                quoted, actual = m.group(1), figure_values.get(key)
                 if actual is None:
+                    continue
+                if key.startswith("sources_") and _FIG_SOURCE_WANT.search(
+                        note[max(0, m.start() - 24):m.start()]):
                     continue
                 if _figure_is_history(note, m.start(), m.end()):
                     continue
@@ -11406,7 +11485,7 @@ def note_figure_staleness(d, vec=None, meta_cards=None):
                     continue
                 lo, hi = _clause_bounds(note, m.start(), m.end())
                 clause = note[lo:hi]
-                if {g.lower() for g in _OTHER_DECK_RE.findall(clause)} - {own_id}:
+                if _other_deck_ids(clause) - {own_id}:
                     continue
                 if any(nm in clause for nm in _roster_deck_names()
                        if nm and nm not in own_name):

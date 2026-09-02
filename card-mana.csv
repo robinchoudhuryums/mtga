@@ -2525,6 +2525,13 @@ Bitter Work,{1}{R}{G},3,Exhaust;Earthbend
 Rabid Gnaw,{1}{R},2,
 Bolt Bend,{3}{R},4,
 Commercial District,,0,Surveil
+Secluded Courtyard,,0,
+Dazzling Theater,{3}{W} // {2}{W},7,
+"Niko, Light of Hope",{2}{W}{U},4,Scry
+The Millennium Calendar,{1},1,Double
+Earth King's Lieutenant,{G}{W},2,Trample
+Starry-Eyed Skyrider,{2}{W},3,Flying
+"Jet, Freedom Fighter",{2}{R/W}{R/W}{R/W},5,
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -4504,7 +4511,6 @@ Inquisitive Glimmer,{W}{U},2,
 Intruding Soulrager,{U}{R},2,Vigilance
 The Jolly Balloon Man,{1}{R}{W},3,Haste
 Midnight Mayhem,{2}{R}{W},4,
-"Niko, Light of Hope",{2}{W}{U},4,Scry
 Oblivious Bookworm,{G}{U},2,
 Peer Past the Veil,{2}{R}{G},4,
 Restricted Office // Lecture Hall,{2}{W}{W} // {5}{U}{U},11,
@@ -5219,7 +5225,6 @@ Burnished Hart,{3},3,
 Campus Guide,{2},2,
 Juggernaut,{4},4,
 Meteor Golem,{7},7,
-Secluded Courtyard,,0,
 Adamant Will,{1}{W},2,
 Bishop's Soldier,{1}{W},2,Lifelink
 Deadly Riposte,{1}{W},2,
@@ -8403,7 +8408,6 @@ Disruptor Wanderglyph,{4},4,
 Hoverstone Pilgrim,{5},5,Flying;Ward
 Hunter's Blowgun,{1},1,Equip
 "Matzalantli, the Great Door // The Core",{3},3,Transform;Fathomless descent
-The Millennium Calendar,{1},1,Double
 Roaming Throne,{4},4,Ward
 Runaway Boulder,{6},6,Flash;Cycling
 Scampering Surveyor,{4},4,
@@ -13574,7 +13578,6 @@ Loxodon Battle Priest,{4}{W},5,
 Osseous Exhale,{1}{W},2,Behold
 Poised Practitioner,{2}{W},3,Flurry;Scry
 Riling Dawnbreaker // Signaling Roar,{4}{W} // {1}{W},5,Flying;Vigilance
-Starry-Eyed Skyrider,{2}{W},3,Flying
 Stormbeacon Blade,{1}{W},2,Equip
 Teeming Dragonstorm,{3}{W},4,
 Tempest Hawk,{2}{W},3,Flying
@@ -13982,9 +13985,7 @@ Rocky Rebuke,{1}{G},2,
 "Aang, Swift Savior // Aang and La, Ocean's Fury",{1}{W}{U},3,Flying;Reach;Airbend;Transform;Trample;Flash;Waterbend
 "Avatar Aang // Aang, Master of Elements",{R}{G}{W}{U},4,Flying;Transform;Firebending
 "Azula, Cunning Usurper",{2}{U}{B}{B},5,Firebending
-Earth King's Lieutenant,{G}{W},2,Trample
 "Iroh, Tea Master",{1}{R}{W},3,Food
-"Jet, Freedom Fighter",{2}{R/W}{R/W}{R/W},5,
 The Lion-Turtle,{1}{G}{U},3,Reach;Vigilance
 "Toph, the First Metalbender",{1}{R}{G}{W},4,Earthbend
 Fire Nation Warship,{3},3,Reach;Crew
