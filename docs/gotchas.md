@@ -1447,6 +1447,38 @@ Declined, and reverted rather than shipped behind a flag. The residual stands: *
 claim in `#: notes:` goes stale silently**, and the only thing that finds it is reading
 the header after a swap. Re-measure before trying again; the numbers above are the bar.
 
+**THE MANABASE AXIS WAS OUTSIDE THE FIGURE SCAN ENTIRELY, and that is a different kind of
+gap from a missed phrasing.** Every family in `_RATIONALE_FIGURES` resolves against
+`deck_quality_vector`, which has no colour-source term — so a colour-source claim could
+not be checked by any pattern, however well written. Deck 78's tier block said "~51%
+against 13/8/8 sources", the manabase was rebuilt to 13/8/10 (56.6%), and
+`--audit-rationale` reported the rationale **current** (2026-09-02).
+
+Fixed by widening the LOOKUP rather than adding a parallel pass: `_figure_lookup` returns
+the vector plus `sources_W`…`sources_G`, so one pattern per colour reuses every
+suppression the loop already applies. A second scan would have had to reimplement them,
+which is the drift this file warns about everywhere else.
+
+Two guards, both measured on the roster rather than invented. **DELTAS** — prose writes a
+change as often as a count ("wanting roughly +8 white sources", deck 19) and a delta is
+not a holding. **WANTS** — `deck.py consistency` prints "want 13 G sources (have 8, +5)"
+and that line gets pasted into rationales verbatim.
+
+**The sweep found a false positive the existing suppressions could not see, and fixing it
+was the larger half.** `_OTHER_DECK_RE` requires the literal word *deck* before an id, but
+the prose's commoner idiom is the POSSESSIVE — `42's`, `68a's` — **35 occurrences
+roster-wide** against a handful of the explicit form. Deck 68b's archetype reads
+"{1}{G}{G}{G} on 68a's 12 green sources", a claim about another deck that flagged against
+68b's own 17. `_other_deck_ids` now reads both idioms, gating the possessive on the id
+being a REAL roster id so it cannot eat ordinary prose. Roster diff: **4 flags → 3, the
+one suppressed being exactly that false positive, and nothing else moved.**
+
+Colour sources were the first figure family where bare-id citation is normal prose, which
+is why the hole surfaced here and not in five years of interaction figures. **Residual,
+small and honest:** a possessive of a single-digit number that happens to be a deck id
+("the 4's slot") would suppress. Measured at **1 roster occurrence, itself a genuine deck
+reference**, so the hazard is theoretical rather than observed.
+
 ## [G-28] `deck.py suggest` shows a cross-deck reuse count (`Decks` column)
 
 **`deck.py suggest` shows a cross-deck reuse count (`Decks` column).** For each
@@ -5458,6 +5490,32 @@ plan (20 central themes)"), and the live number is 13. The figure was corrected,
 argument recorded in place, and the **letter left alone** — a tier letter is a human call.
 **A tagger change that moves a centrality floor moves every prose figure derived from it**,
 and nothing sweeps deck prose for arithmetic that was true when written.
+
+**2026-09-02: the reader's own list was the evergreen set, so the asymmetry it exists to
+close was still open one keyword over.** `_GRANTED_KEYWORDS` shipped as the twelve
+evergreens. Every OTHER keyword a card grants stayed invisible — a card that HAS convoke
+was tagged, a card that GIVES it was not. Found the ordinary way: `check_themes` flagged
+Dazzling Theater ("Creature spells you cast **have convoke**") and `tags_for` returned
+only `['Room']`.
+
+Five keywords added, chosen by two measured criteria rather than by sweeping in
+everything Scryfall names: each is **already a live pool tag** (so no new theme is
+introduced and the grant resolves through the same `KEYWORD_THEMES` table as a native
+keyword), and each has **measurable granted instances**. `cascade` met the first test and
+failed the second — zero pool cards grant it — and was left out, because an unexercised
+whitelist entry is one nobody can check.
+
+**55 pool cards newly tagged** (ward 34, convoke 8, affinity 5, flash 5, prowess 3). Every
+one was read back: all are genuine grants. Exactly **one** is the *cares-about* rather
+than *grants* shape — Joyful Stormsculptor's "whenever you cast a spell that **has
+convoke**" — and tagging a convoke payoff `convoke` is the same call K-03 makes elsewhere.
+That shape is a property of the existing `(gains?|have|has|gets?)` reader, not of the
+widening.
+
+**K-14 diff: 0 decks moved a role count, 0 moved a central-theme count, 0 tier floors
+moved** — as predicted, because `role_tally` reads TEXT and only `cuts` / `suggest` /
+centrality consume tags. That is the measurement that made the change safe to take, and
+it is the one to re-run on any future addition to this list.
 
 ## [G-81] An early drop that only makes mana is not a clock
 

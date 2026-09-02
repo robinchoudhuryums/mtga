@@ -864,5 +864,37 @@ class TestGrantedKeywordsAreTagged:
         assert ts.granted_keywords(text) == [
             k for k in ts._GRANTED_KEYWORDS if k in ts.granted_keywords(text)]
 
+    def test_a_granted_NON_evergreen_keyword_is_read_too(self):
+        """The list shipped as the twelve evergreens, so a card that GRANTED any other
+        keyword was invisible while a card that HAD it was tagged — G-80's own asymmetry,
+        one keyword over. Found 2026-09-02: `check_themes` flagged Dazzling Theater
+        ("Creature spells you cast have convoke") and `tags_for` returned only ['Room']."""
+        assert "convoke" in ts.granted_keywords(
+            "Creature spells you cast have convoke.")
+        assert "ward" in ts.granted_keywords(
+            "Each other Human you control gets +1/+0 and has ward {1}.")
+        assert "affinity" in ts.granted_keywords(
+            "Spells you cast have affinity for artifacts.")
+        assert "prowess" in ts.granted_keywords("Creatures you control have prowess.")
+
+    def test_the_added_keywords_are_ones_the_project_already_tags(self):
+        """The widening introduces no new THEME: every added keyword already resolves
+        through `KEYWORD_THEMES`, which is what makes a granted one tag exactly like a
+        native one. A keyword with no theme mapping would tag a bare string nothing reads."""
+        for kw in ("ward", "convoke", "affinity", "prowess", "flash"):
+            assert kw in ts._GRANTED_KEYWORDS
+            assert ts.KEYWORD_THEMES.get(kw), kw
+
+    def test_cascade_was_considered_and_left_out(self):
+        """Zero pool cards grant it, and an unexercised whitelist entry is one nobody can
+        check. Recorded as a decision so it is not silently re-added."""
+        assert "cascade" not in ts._GRANTED_KEYWORDS
+
+    def test_the_new_keywords_keep_the_opponent_and_negation_guards(self):
+        assert "ward" not in ts.granted_keywords(
+            "Creatures your opponents control have ward {2}.")
+        assert "convoke" not in ts.granted_keywords(
+            "Creature spells you cast lose convoke.")
+
     def test_a_card_that_grants_nothing_is_untouched(self):
         assert ts.granted_keywords("Draw a card.") == []

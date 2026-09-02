@@ -96,6 +96,14 @@ _EXCLUDED = {
                                "suppression scoping); unit-tested in test_deck.py",
     ("deck", "_OTHER_DECK_RE"): "tier-RATIONALE prose (a 'deck N' reference marks a "
                                 "cross-deck clause); unit-tested in test_deck.py",
+    ("deck", "_OTHER_DECK_POSS_RE"): "tier-RATIONALE prose (the POSSESSIVE sibling of "
+                                     "_OTHER_DECK_RE — \"68a's 12 green sources\" is a "
+                                     "cross-deck clause the word-anchored form cannot "
+                                     "see); unit-tested in test_deck.py",
+    ("deck", "_FIG_SOURCE_WANT"): "tier-RATIONALE prose (a 'want N sources' target is "
+                                  "not a claim about the current list — `deck.py "
+                                  "consistency` prints that line and it gets pasted in "
+                                  "verbatim); unit-tested in test_deck.py",
     ("deck", "_SHARING_CUES"): "tier-RATIONALE prose (a SHARING claim asserts the card "
                                "is in THIS deck, so the cross-deck suppression is "
                                "skipped there); unit-tested in test_deck.py",

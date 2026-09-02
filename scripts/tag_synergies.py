@@ -680,9 +680,21 @@ def is_heist_text(x):
 # change: evasion 15.4% -> 19.2%, combat 6.8% -> 9.9%, aggro 3.8% -> 6.4%, everything else
 # under 6%. Nothing approaches the band where a theme stops carrying information (G-28's
 # saturation rule), so all twelve are in — but re-measure before adding a thirteenth.
+# The twelve EVERGREENS this reader shipped with (G-80), plus the NON-evergreen keywords
+# the project already tags natively. The original list was the evergreen set, so a card
+# that GRANTED any other keyword was invisible to the tagger while a card that HAD it was
+# tagged — the same asymmetry G-80 exists to close, one keyword over. Found 2026-09-02 when
+# `check_themes` flagged Dazzling Theater ("Creature spells you cast have convoke") and
+# `tags_for` returned only ['Room'].
+#
+# The added five are exactly those that (a) are already live tags on the pool, so this
+# introduces no new theme, and (b) have measurable granted instances. `cascade` was
+# considered and LEFT OUT: zero pool cards grant it, and an unexercised pattern is a
+# whitelist entry nobody can check.
 _GRANTED_KEYWORDS = ("deathtouch", "flying", "trample", "lifelink", "menace",
                      "vigilance", "hexproof", "indestructible", "first strike",
-                     "double strike", "reach", "haste")
+                     "double strike", "reach", "haste",
+                     "ward", "convoke", "affinity", "prowess", "flash")
 
 # Reminder text is parenthetical and QUOTES the keyword it explains, so a scan over raw
 # text would tag every card whose reminder happens to name one. Stripped for THIS pass

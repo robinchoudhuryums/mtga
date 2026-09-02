@@ -5351,3 +5351,78 @@ class TestTaplandProfile:
         u, c, n = self._run(["Forest", "backface land", "spell"])
         assert (u, c, n) == ([], [], 0)
 
+
+class TestColourSourceFiguresAreAudited:
+    """The rationale audit's figure families all resolve against `deck_quality_vector`,
+    which has no manabase axis — so a colour-source claim could rot indefinitely. Deck 78
+    said "~51% against 13/8/8 sources", the manabase was rebuilt to 13/8/10, and the audit
+    reported the rationale CURRENT (2026-09-02)."""
+
+    def _deck(self, tmp_path, header_block, name="Probe"):
+        p = tmp_path / "deck.txt"
+        p.write_text(f"#: name: {name}\n#: colors: WUG\n{header_block}\n\nDeck\n"
+                     "10 Plains (HOB) 189\n8 Island (HOB) 190\n6 Forest (HOB) 193\n",
+                     encoding="utf-8")
+        return {"id": "zz", "path": str(p), "name": name, "variant": None}
+
+    def _no_vec(self, monkeypatch):
+        # Isolate the manabase axis: an empty vector means every OTHER figure family
+        # resolves to None and is skipped, so a flag can only come from the new patterns.
+        monkeypatch.setattr(deck, "deck_quality_vector", lambda d: {})
+
+    def test_a_stale_colour_source_claim_is_flagged(self, tmp_path, monkeypatch):
+        self._no_vec(monkeypatch)
+        d = self._deck(tmp_path, "#: tier: castability is thin against 8 white sources.")
+        assert ("sources_W", "8", 10) in deck.rationale_staleness(d, carddata={})[1]
+
+    def test_a_matching_colour_source_claim_is_not_flagged(self, tmp_path, monkeypatch):
+        self._no_vec(monkeypatch)
+        d = self._deck(tmp_path, "#: tier: comfortable on 10 white sources.")
+        assert deck.rationale_staleness(d, carddata={})[1] == []
+
+    def test_both_spellings_are_read(self, tmp_path, monkeypatch):
+        self._no_vec(monkeypatch)
+        for probe in ["8 white sources", "8 W sources", "8 blue sources", "6 G sources"]:
+            keys = [k for rx, k in deck._RATIONALE_FIGURES if rx.search(probe)]
+            assert any(k.startswith("sources_") for k in keys), probe
+
+    def test_a_DELTA_is_not_a_claim_about_the_current_list(self, tmp_path, monkeypatch):
+        """Prose writes a change as often as a count — deck 19's "wanting roughly +8 white
+        sources" is a prescription, not a holding."""
+        self._no_vec(monkeypatch)
+        d = self._deck(tmp_path, "#: tier: it wants roughly +8 white sources to be safe.")
+        assert deck.rationale_staleness(d, carddata={})[1] == []
+
+    def test_a_WANT_is_not_a_claim_either(self, tmp_path, monkeypatch):
+        """`deck.py consistency` prints "want 13 G sources (have 8, +5)" and that line gets
+        pasted into rationales verbatim; the target is not the holding."""
+        self._no_vec(monkeypatch)
+        d = self._deck(tmp_path, "#: tier: Karsten wants 13 G sources for the double pip.")
+        assert deck.rationale_staleness(d, carddata={})[1] == []
+
+
+class TestPossessiveDeckCitationSuppression:
+    """`deck 42` is one way the prose cites a sibling; `42's` is the commoner one — 35
+    occurrences roster-wide. Deck 68b's archetype reads "{1}{G}{G}{G} on 68a's 12 green
+    sources", a claim about ANOTHER deck, and the word-anchored pattern could not see it.
+    Surfaced by the colour-source scan, the first figure family where bare-id citation is
+    ordinary prose."""
+
+    def test_both_idioms_are_returned_flat(self):
+        assert deck._other_deck_ids("as deck 42 does") == {"42"}
+        assert "68a" in deck._other_deck_ids("on 68a's 12 green sources")
+
+    def test_a_possessive_that_is_not_a_roster_id_is_ignored(self):
+        # The gate that keeps this from eating ordinary prose: 999 is not a deck.
+        assert deck._other_deck_ids("the 999's slot") == set()
+
+    def test_a_possessive_citation_suppresses_the_figure(self, tmp_path, monkeypatch):
+        monkeypatch.setattr(deck, "deck_quality_vector", lambda d: {"interaction": 9})
+        monkeypatch.setattr(deck, "discover_decks",
+                            lambda: [{"id": "68a", "name": "Sib", "path": "/x"}])
+        p = tmp_path / "deck.txt"
+        p.write_text("#: name: Probe\n#: colors: B\n"
+                     "#: tier: 68a's interaction 3 is the seat it argues against.\n"
+                     "\nDeck\n4 Swamp (MSH) 291\n", encoding="utf-8")
+        d = {"id": "zz", "path": str(p), "name": "Probe", "variant": None}
+        assert deck.rationale_staleness(d, carddata={})[1] == []

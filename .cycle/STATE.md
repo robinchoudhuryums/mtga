@@ -2604,3 +2604,43 @@ Fantastic and Orcrist. **Open with the user:** `−Sheriff of Safe Passage / +Oj
 
 **Where I left off:** all green — `check_all` all invariants hold, full pytest suite
 passes, `check_docs`/`check_patterns`/`check_commands` OK, dashboard rebuilt.
+
+---
+
+## 2026-09-02 — broad-implement: granted keywords + the manabase figure axis
+
+Two holes found while tuning decks 78 and 27. Block:
+`.cycle/blocks/2026-09-granted-keywords-and-manabase-figures-broad-implement.md`.
+
+- **H1 `granted_keywords` was evergreen-only (G-80).** A card that HAS convoke was tagged,
+  one that GIVES it was not. Five keywords added on two measured tests — already a live
+  pool tag, and real granted instances. **`cascade` passed the first, failed the second,
+  and was deliberately left out**; do not re-add it without granting cards to point at.
+  55 pool cards newly tagged, **0 role counts and 0 tier floors moved**.
+- **H2 `--audit-rationale` had no manabase axis (G-27).** Fixed by widening the LOOKUP
+  (`_figure_lookup`) rather than adding a parallel scan, so every existing suppression is
+  reused. It exposed a bigger hole: `_OTHER_DECK_RE` needs the word *deck*, but the
+  prose's commoner idiom is the POSSESSIVE (`68a's 12 green sources`, 35 roster
+  occurrences). `_other_deck_ids` reads both. Roster 4 flags → 3, all three real and
+  re-grounded (decks 26, 40a, 68b).
+
+**Decisions worth not re-litigating:**
+- H3 was MEASURED and declined: 272 deck craft targets are absent from the 186-row
+  wishlist, but the wishlist is curated and deck files include aspirational builds. The
+  only real finding is the missing deck→wishlist direction of `--audit-targets`, which is
+  a design call for the user, not a defect.
+- The three-way duplication of the colour-source computation (`cmd_mana`,
+  `cmd_consistency`, `deck_color_sources`) was noted and left alone — they agree today.
+
+**Two process failures, both caught before shipping and both worth remembering:**
+1. H1's first mutation run SURVIVED — the existing grant tests are shape/order tests that
+   pass with the old list. **A green suite is not evidence a new behaviour is covered.**
+2. Inserting test classes mid-file re-parented 16 methods of `TestClassifyRoles` into the
+   new class. **Insert at a class boundary, never before an arbitrary method.**
+3. Related, from the scan that produced these findings: TWO first-pass measurements were
+   confidently wrong from broken joins (card-pool.csv has no Mana Cost column;
+   `deck_color_sources` wants `load_card_meta()`, not the deck's `#:` header meta). Both
+   read as findings, not bugs. **Sanity-check a sweep against a value you already know.**
+
+**Where I left off:** all green — full pytest suite passes, `check_all` all invariants
+hold, `check_patterns`/`check_commands`/`check_docs`/`check_roles` OK, dashboard rebuilt.
