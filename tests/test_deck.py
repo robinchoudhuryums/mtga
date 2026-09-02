@@ -1966,17 +1966,34 @@ def _vec(plan, inter, ca, uncast=0, avg_mv=3.0, early=0, reach=0):
 
 
 class TestTierBand:
+    """The bands read `deck.TIER_FLOOR_REQ` (BS8-06) — pinned at the table's own edges
+    so the test says what the table says, not a second copy of the numbers."""
+
     def test_a_floor(self):
-        assert deck.tier_band(_vec("midrange", 5, 3)) == "A"
+        ai, ar = deck.TIER_FLOOR_REQ["A"]
+        assert deck.tier_band(_vec("midrange", ai, ar - ai)) == "A"
+        assert deck.tier_band(_vec("midrange", ai - 1, ar)) != "A"
 
     def test_b_floor(self):
-        assert deck.tier_band(_vec("midrange", 3, 1)) == "B"
+        bi, br = deck.TIER_FLOOR_REQ["B"]
+        assert deck.tier_band(_vec("midrange", bi, br - bi)) == "B"
+        assert deck.tier_band(_vec("midrange", bi - 1, br)) != "B"
 
     def test_d_floor(self):
         assert deck.tier_band(_vec("midrange", 0, 0)) == "D"
 
     def test_uncastable_caps_at_c(self):
-        assert deck.tier_band(_vec("midrange", 5, 3, uncast=1)) == "C"
+        ai, ar = deck.TIER_FLOOR_REQ["A"]
+        assert deck.tier_band(_vec("midrange", ai, ar - ai, uncast=1)) == "C"
+
+    def test_the_floor_is_not_saturated_on_the_roster(self):
+        """The distribution check behind the check_all warning: on synthetic vectors
+        spread across the table, no band may hold more than the max share."""
+        vecs = [_vec("midrange", i, c) for i in range(0, 13) for c in range(0, 9)]
+        import collections
+        bands = collections.Counter(deck.tier_band(v) for v in vecs)
+        assert max(bands.values()) / sum(bands.values()) <= deck.TIER_SPREAD_MAX_SHARE
+        assert set(bands) == {"A", "B", "C", "D"}
 
     def test_aggro_clock_only_raises(self):
         fast = deck.tier_band(_vec("aggro", 2, 0, avg_mv=2.0, early=16, reach=10))
@@ -3161,6 +3178,35 @@ class TestPipDepthWarning:
 
 
 class TestDeckColorSources:
+    def test_any_colour_lands_are_sources_and_the_profile_says_which(self):
+        """BS8-01: a `{T}: Add one mana of any color` land is identity Colorless and read
+        as ZERO sources by every count; an extra-cost one is counted and labelled; a
+        spend-only one is listed and NOT counted; a fetch counts the deck's basics."""
+        cards = [(3, "Swamp", "X", "1"), (2, "Rainbow Field", "X", "2"),
+                 (1, "Toll Gate", "X", "3"), (1, "Village Green", "X", "4"),
+                 (1, "Wild Passage", "X", "5")]
+        cd = {"rainbow field": {"type": "Land", "colors": "Colorless",
+                                "text": "{T}: Add one mana of any color."},
+              "toll gate": {"type": "Land", "colors": "Colorless",
+                            "text": "{T}: Add {C}.\n{1}, {T}: Add one mana of any color."},
+              "village green": {"type": "Land", "colors": "G",
+                                "text": "{T}: Add {G}. Spend this mana only to cast a "
+                                        "creature spell."},
+              "wild passage": {"type": "Land", "colors": "Colorless",
+                               "text": "{T}, Sacrifice this land: Search your library for "
+                                       "a basic land card, put it onto the battlefield "
+                                       "tapped, then shuffle."}}
+        src, nlands, total, notes = deck.deck_source_profile(cards, {}, {}, cd)
+        assert nlands == 8 and total == 8
+        assert src["B"] == 3 + 2 + 1 + 1, "basics + free any + extra-cost any + fetch"
+        assert src["W"] == 2 + 1, "any-colour lands count for colours the deck has no basic of"
+        assert src["G"] == 3, "spend-only {G} is NOT counted; the fetch has no Forest"
+        assert [n for _q, n in notes["any"]] == ["Rainbow Field"]
+        assert [n for _q, n in notes["any-cost"]] == ["Toll Gate"]
+        assert [n for _q, n in notes["restricted"]] == ["Village Green"]
+        assert [n for _q, n in notes["fetch"]] == ["Wild Passage"]
+        assert deck.deck_color_sources(cards, {}, cd) == src, "one count, two names"
+
     def test_counts_basics_and_nonbasic_lands_only(self):
         cards = [(4, "Plains", "X", "1"), (2, "Sacred Foundry", "X", "2"),
                  (1, "Llanowar Elves", "X", "3")]
@@ -5426,3 +5472,65 @@ class TestPossessiveDeckCitationSuppression:
                      "\nDeck\n4 Swamp (MSH) 291\n", encoding="utf-8")
         d = {"id": "zz", "path": str(p), "name": "Probe", "variant": None}
         assert deck.rationale_staleness(d, carddata={})[1] == []
+
+
+
+class TestPoolFormatKey:
+    """BS8-04: the pool's Legalities keys are Scryfall's, whose `brawl` is Historic
+    Brawl; the repo's 60-card `Brawl` (G-08) is checked against `standard`."""
+
+    def test_sixty_card_brawl_reads_standard(self):
+        assert deck.pool_format_key("Brawl") == "standard"
+        assert deck.pool_format_key("standard-brawl") == "standard"
+
+    def test_historic_brawl_reads_scryfalls_brawl(self):
+        assert deck.pool_format_key("Historic Brawl") == "brawl"
+        assert deck.pool_format_key("historic-brawl") == "brawl"
+
+    def test_plain_formats_pass_through_and_untracked_is_blank(self):
+        assert deck.pool_format_key("Standard") == "standard"
+        assert deck.pool_format_key("Commander") == ""
+        assert deck.pool_format_key("") == ""
+
+    def test_legality_report_uses_the_key(self):
+        meta = {"format": "Brawl"}
+        cards = [(1, "Historic Only Card", "X", "1")]
+        leg = {"historic only card": {"brawl", "historic"}}
+        rep = deck.legality_report(meta, cards, "Brawl", leg)
+        assert any("Historic Only Card" in p for p in rep["problems"])
+
+
+class TestFillerCastability:
+    """BS8-05: the `tier --to` / `redundancy` fillers read the PRINTED COST, like every
+    other G-58 surface; identity is only the fallback for a card with no cost on file."""
+
+    def test_a_hybrid_is_castable_in_either_colour(self):
+        assert deck._filler_castable("{2}{B/R}", {"B", "R"}, {"B"})
+        assert deck._filler_castable("{2}{B/R}", {"B", "R"}, {"R"})
+
+    def test_a_gold_card_is_not(self):
+        assert not deck._filler_castable("{B}{R}", {"B", "R"}, {"B"})
+
+    def test_no_cost_falls_back_to_identity(self):
+        assert deck._filler_castable("", {"B"}, {"B"})
+        assert not deck._filler_castable("", {"B", "R"}, {"B"})
+
+
+class TestTierFloorSpread:
+    """BS8-06: the roster-distribution check behind the check_all warning."""
+
+    def _deck(self, i, c):
+        return {"interaction": i, "card_advantage": c, "uncastable": 0, "plan": "midrange"}
+
+    def test_a_collapsed_roster_warns_and_a_spread_one_does_not(self, monkeypatch):
+        monkeypatch.setattr(deck, "deck_quality_vector", lambda d: d)
+        flat = [self._deck(12, 8)] * 30
+        bands, msg = deck.tier_floor_spread(flat)
+        assert bands == {"A": 30} and msg and "collapsed" in msg
+        spread = [self._deck(12, 8)] * 10 + [self._deck(5, 3)] * 10 + [self._deck(1, 1)] * 10
+        bands, msg = deck.tier_floor_spread(spread)
+        assert set(bands) == {"A", "B", "C"} and msg is None
+
+    def test_a_tiny_roster_never_warns(self, monkeypatch):
+        monkeypatch.setattr(deck, "deck_quality_vector", lambda d: d)
+        assert deck.tier_floor_spread([self._deck(12, 8)] * 5)[1] is None

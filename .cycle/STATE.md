@@ -2689,3 +2689,27 @@ and its findings are in deck 78's 57 `#: notes:` lines.
 (a `/sync-docs` pass went in with them: G-42 gained the manabase instance, G-27 the
 rename-is-a-suppression-change note, G-80 the four-becomes-five margin, and three README
 figures were corrected against live data).
+
+
+## 2026-09-02 — broad-scan #8, batch 1 (BS8-01..06) — broad-implement
+
+Completed: BS8-01 (text-derived colour sources, one implementation `deck_source_profile`
+behind mana/consistency/deck_color_sources/pip flags/rationale figures), BS8-02
+(`suggest --lands` + `_land_value` on the same reader), BS8-03 (watermark excludes
+`manual-` rows), BS8-04 (`pool_format_key`: Brawl→standard, Historic Brawl→brawl on every
+legality/recommender site), BS8-05 (fillers read printed cost via `_filler_castable`),
+BS8-06 (`TIER_FLOOR_REQ` re-derived to A (7,11) / B (4,7); `tier_band` and
+`check_tier` read the one table; `tier_floor_spread` soft warning in check_all).
+Block: `.cycle/blocks/2026-09-broad-scan-8-bs8-01-06-broad-implement.md`.
+
+Decisions: an EXTRA-COST any-colour land ("{1},{T}: Add one mana of any color") COUNTS
+as a source and is labelled; spend-only mana does NOT count and is listed. The scan's
+"seven unconditional in 21a" was wrong (one free, six extra-cost, two restricted).
+Thresholds chosen at the roster median (A) and 10th percentile (B): floor spread
+64 A / 43 B / 8 C, zero ≥2-band mismatches.
+
+Not finished from the scan: everything BS8-07 onward (prioritised batch plan given in
+chat at the end of this session; the full report is the scan's attachment).
+
+Where I left off: batch 1 committed and pushed on `claude/broad-scan-6kxevb`; gates green
+(one expected G-75 soft warning); full pytest green. Next: the user picks batch 2.

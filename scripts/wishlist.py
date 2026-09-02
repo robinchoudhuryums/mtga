@@ -44,7 +44,7 @@ import sys
 
 from lib import (DEFAULT_CSV, REPO_ROOT, load_rows, eprint, atomic_write, owned_qty,
                  alias_front, card_colors, card_distinctiveness, color_matches,
-                 primary_type)
+                 primary_type, land_production)
 from scryfall import ScryfallUnavailable
 
 WISHLIST_CSV = os.path.join(REPO_ROOT, "card-wishlist.csv")
@@ -699,35 +699,35 @@ def _land_value(row, deck_colors):
     require the deck to span >=2 of the land's colors for a dual to matter, and
     prize untapped fixing. Colorless/utility or unknown-deck lands score neutral."""
     txt = (row.get("Card Text") or "")
-    prod = card_colors(row.get("Color(s)"))
-    # Only an ADD clause is color PRODUCTION: a bare `{W}` anywhere in the text
-    # counted an ACTIVATION COST as fixing ("{W}: …" read as producing white),
-    # inflating a land's manabase score (broad-scan batch 5).
+    # Production is read by `lib.land_production` — the same reader `deck.py`'s source
+    # counts and `suggest --lands` use, so the recommender cannot price a land the
+    # counter would not count (BS8-02). It handles the three shapes the old inline scan
+    # could not: "Add one mana of any color" (produces all five; scored as fully
+    # matching the deck), a basic-land FETCH (produces whichever basics the deck runs —
+    # scored as a full match, never untapped, since the fetched land enters tapped or a
+    # turn later), and an EXTRA-COST any-colour ability ("{1}, {T}: …"), which is treated
+    # like restricted mana below — a real source, a filter on curve.
     #
     # RESTRICTED production is tracked separately. A Village cycle land reads
     # "{T}: Add {B}. Spend this mana only to cast a creature spell." — that {B} is a real
     # black source for creatures and NOTHING for a removal spell, so scoring it as plain
     # fixing over-rates it. Mudflat Village ranked #1 of deck 52's land suggestions on
-    # exactly this (G-37's live scoring miss). The restriction is detected PER LINE,
-    # because that is how Magic prints it: the qualifying sentence follows the Add
-    # sentence inside one ability, and the `[^.\n]*` clause scan deliberately stops at
-    # the period before it.
-    restricted_only = set()
-    free = set()
-    for line in txt.splitlines():
-        limited = "spend this mana only" in line.lower()
-        for m in re.finditer(r"[Aa]dd\b[^.\n]*", line):
-            cols = {c for c in "WUBRG" if "{" + c + "}" in m.group(0)}
-            prod |= cols
-            (restricted_only if limited else free).update(cols)
-    restricted_only -= free                       # a color also added freely is free
+    # exactly this (G-37's live scoring miss).
+    lp = land_production(txt, row.get("Color(s)"))
+    free = set(lp["free"])
+    restricted_only = (set(lp["restricted"]) | set(lp["conditional"])) - free
+    fetch = bool(lp["fetch"])
+    if fetch and deck_colors:
+        free |= set(deck_colors)
+    prod = free | restricted_only
     if not prod or not deck_colors:
         return 3.5  # colorless/utility land, or no known target — neutral
     used = prod & deck_colors
     match = len(used) / len(prod)                 # fraction of its colors the deck uses
     multi = 1.0 if len(used) >= 2 else 0.5 if len(used) == 1 else 0.0
     base = 3.5 + 4.5 * match * multi              # ~3.5..8 by color usefulness
-    if "enters tapped" not in txt.lower() and "enters the battlefield tapped" not in txt.lower():
+    if (not fetch and "enters tapped" not in txt.lower()
+            and "enters the battlefield tapped" not in txt.lower()):
         base += 1.5                               # untapped fixing is premium
     # Halve the fixing PREMIUM (never the 3.5 neutral floor) when every color this deck
     # wants from the land is restricted. Bounded and one-directional: it can only lower a

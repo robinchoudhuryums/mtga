@@ -1041,7 +1041,7 @@ def parse_manual(text, existing_ids=(), deck_ids=None, today=None):
         n = seq.get(stamp, 0)
         while True:
             n += 1
-            mid = f"manual-{stamp}-{n:02d}"
+            mid = f"{MANUAL_ID_PREFIX}{stamp}-{n:02d}"
             if mid not in used:
                 break
         seq[stamp] = n
@@ -1077,6 +1077,16 @@ def load_matches(path=MATCHES_CSV):
         return rows
 
 
+MANUAL_ID_PREFIX = "manual-"
+
+
+def is_manual_id(match_id):
+    """True for a hand-entered row's id (`manual-YYYYMMDD-NN`, stamped by
+    `parse_manual`). The ONE definition, read by the watermark and by `--watermark`'s
+    "recorded from logs" count — a second prefix literal is how the two would drift."""
+    return (match_id or "").startswith(MANUAL_ID_PREFIX)
+
+
 def ingest_watermark(path=MATCHES_CSV):
     """(newest_ingested_date, n_known_ids) for matches ALREADY recorded from a log.
 
@@ -1094,15 +1104,22 @@ def ingest_watermark(path=MATCHES_CSV):
     for it, and this repo's recurring failure is two places that can disagree. There is
     nothing to keep in sync because there is nothing else.
 
-    ONLY rows carrying a Match ID count. A hand-entered row (`--add`, for a phone game
-    the desktop log never saw) has no matchId and a user-supplied date, so letting one
-    set the watermark could advance it PAST log matches that were never ingested — and
-    those would then be filtered out of every future paste, silently. The filter must
-    only ever be as confident as the log-derived rows make it."""
+    ONLY rows carrying a LOG Match ID count. A hand-entered row (`--add`, for a phone
+    game the desktop log never saw) carries a user-supplied date, so letting one set the
+    watermark could advance it PAST log matches that were never ingested — and those
+    would then be filtered out of every future paste, silently. The filter must only
+    ever be as confident as the log-derived rows make it.
+
+    A hand row is NOT id-less: `parse_manual` stamps every one `manual-YYYYMMDD-NN` so
+    `--annotate` and dedup have something to key on. This guard used to test for a
+    BLANK id — a shape the writer never produces — so a phone game logged today advanced
+    the watermark to today and `--since-last` dropped every older un-ingested desktop
+    line as "already recorded" (broad-scan BS8-03; the test fixture had the blank id
+    too, which is why it passed). Hand rows are recognised by their prefix."""
     dates, ids = [], set()
     for r in load_matches(path):
         mid = (r.get("Match ID") or "").strip()
-        if not mid:
+        if not mid or is_manual_id(mid):
             continue                      # hand row — see the docstring
         ids.add(mid)
         d = (r.get("Date") or "").strip()

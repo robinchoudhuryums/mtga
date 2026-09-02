@@ -2761,6 +2761,17 @@ pastes were hand-trimmed in an editor, which is JSON surgery on the one line the
 attribution chain depends on.
 
 
+### BS8-03 (2026-09-02): the hand-row guard never fired
+
+`ingest_watermark` skipped rows with a BLANK Match ID, describing them as hand rows —
+but `parse_manual` stamps every `--add` row `manual-YYYYMMDD-NN` so `--annotate` and
+dedup have a key. The guard therefore matched nothing the writer produces, and a phone
+game logged today advanced the watermark to today; `--since-last` then dropped every
+older un-ingested desktop line as "already recorded". The test that pinned the guard
+used a blank id too, which is why it passed. Hand rows are now recognised by
+`parse_matches.is_manual_id` (one prefix constant, `MANUAL_ID_PREFIX`), and the fixture
+uses the writer's real id shape.
+
 ## [G-58] Never widen `#: colors:` for a HYBRID card — and never reject a card for a widening you don't need
 
 **Never widen `#: colors:` for a HYBRID card, and never reject a card for a widening you
@@ -2806,6 +2817,19 @@ re-derived wrongly.
 
 # Known Issues
 
+
+### BS8-05 (2026-09-02): the fillers were three more holdouts
+
+The "last identity-subset holdout converted 2026-08-20" claim was false for a year:
+`owned_role_fillers`, `craft_role_fillers` and `functional_theme_options` (the
+`tier --to` planner and `redundancy`'s virtual copies) still tested `ident <= declared`.
+Measured: Bullseye, Death Dealer (`{2}{B/R}`, the card this rule names) was excluded from
+mono-black 52a, and 10–17 castable owned interaction cards per deck were hidden from the
+wildcard-spend planner (deck 42: 17, deck 1: 13). All three now go through
+`_filler_castable`, which reads the printed cost via `_candidate_castability` and keeps
+identity only as the fallback for a card with no cost on file. The lesson is the audit
+shape, not the fix: a claim that a family is closed is checked by grepping the
+predicate (`<= declared`), not by remembering which functions were converted.
 
 ## [G-67] A pattern set is a whitelist, and a whitelist's misses are invisible
 

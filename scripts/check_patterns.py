@@ -85,6 +85,9 @@ _EXCLUDED = {
     ("deck", "_DECK_MARKER_RE"): "Arena paste `Deck` marker, not card text",
     ("deck", "SYMBOL_RE"): "mana-symbol syntax ({W}), not card text",
     ("lib", "_MANA_SYMBOL_RE"): "mana-symbol syntax ({W}), not card text",
+    ("lib", "_EXTRA_MANA_COST_RE"): ("runs against the COST half of one ability line "
+                                     "(before the colon) inside `land_production`, never "
+                                     "whole card text; exercised by test_lib.py"),
     ("deck", "_HISTORY_CUES"): "tier-RATIONALE prose; unit-tested in test_deck.py",
     ("deck", "_COMPARISON_CUES"): "tier-RATIONALE prose; unit-tested in test_deck.py",
     ("deck", "_FIGURE_PAST"): "tier-RATIONALE prose; unit-tested in test_deck.py",
@@ -249,6 +252,12 @@ def _pattern_groups():
     for name in ("_STRUCT_NONETB_TRIGGER_RE", "_STRUCT_ACTIVATED_RE",
                  "_STRUCT_RULEBEND_RE", "_STRUCT_MODAL_RE", "_STRUCT_REMINDER_RE"):
         out.append((f"lib.{name}", getattr(lib, name), "norm"))
+    # `lib.land_production` (BS8-01/02): the ONE reader behind every colour-source count
+    # and `suggest --lands`. Every one of these going dead is the quiet direction — an
+    # any-colour land back to zero sources, a fetch back to invisible. Raw form: the Add
+    # clause and the fetch clause are read from ORIGINAL-case oracle text, per line.
+    for name in ("_ADD_CLAUSE_RE", "_ANY_COLOR_RE", "_FETCH_BASIC_RE", "_LAND_REMINDER_RE"):
+        out.append((f"lib.{name}", getattr(lib, name), "raw"))
     out += [("tag_synergies._TRIBAL_PAYOFF_RES", p, "raw")
             for p in tag_synergies._TRIBAL_PAYOFF_RES]
     # Same corpus form and the same reason: a card TYPE the text builds around is

@@ -1462,12 +1462,23 @@ class TestIngestWatermark:
         assert pm.ingest_watermark(p) == ("2026-08-25", 3)
 
     def test_a_HAND_row_can_never_advance_the_watermark(self, tmp_path):
-        """A `--add` row (a phone game the desktop log never saw) has no matchId and a
-        user-supplied date. Letting one set the watermark would filter out LOG matches
-        that were never ingested — silently, and forever."""
+        """A `--add` row (a phone game the desktop log never saw) carries the id
+        `parse_manual` stamps (`manual-YYYYMMDD-NN`) and a user-supplied date. Letting one
+        set the watermark would filter out LOG matches that were never ingested —
+        silently, and forever. The fixture uses the WRITER's real id shape: the old one
+        used a blank id, which the writer never produces, so the guard it pinned never
+        fired on a real row (BS8-03)."""
         p = self._csv(tmp_path, [{"Date": "2026-08-07", "Match ID": "a", "Result": "W"},
-                                 {"Date": "2026-12-31", "Match ID": "", "Result": "L"}])
+                                 {"Date": "2026-12-31", "Match ID": "manual-20261231-01",
+                                  "Result": "L"}])
         assert pm.ingest_watermark(p) == ("2026-08-07", 1)
+
+    def test_the_fixture_uses_the_id_shape_the_writer_stamps(self):
+        """Pins the fixture to the writer: if `parse_manual`'s prefix ever changes, this
+        fails rather than letting the watermark test go vacuous again."""
+        assert pm.is_manual_id(f"{pm.MANUAL_ID_PREFIX}20261231-01")
+        assert not pm.is_manual_id("a1b2c3")
+        assert not pm.is_manual_id("")
 
     def test_no_logged_rows_yet_reports_no_watermark(self, tmp_path):
         assert pm.ingest_watermark(self._csv(tmp_path, [])) == ("", 0)

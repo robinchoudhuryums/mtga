@@ -622,6 +622,18 @@ def main():
     except Exception as e:
         soft.append(f"tier robustness check skipped ({e})")
 
+    # Soft: TIER FLOOR SPREAD — the mismatch sweep above compares each letter to the
+    # floor, and says nothing when the floor itself has stopped discriminating. It had:
+    # the (5, 7) thresholds read A for 104 of 117 decks, so the guard was vacuous and
+    # every "0 tier floors moved" measurement was guaranteed (BS8-06). A one-band roster
+    # is a reason to re-derive `deck.TIER_FLOOR_REQ`, not a deck defect — never gating.
+    try:
+        _bands, spread_msg = deckmod.tier_floor_spread()
+        if spread_msg:
+            soft.append(spread_msg)
+    except Exception as e:
+        soft.append(f"tier floor spread check skipped ({e})")
+
     if args.quiet:
         state = "OK" if not hard else f"{len(hard)} ISSUE(S)"
         # Carry the crashed-radar promotion onto the hook path too (Batch C small

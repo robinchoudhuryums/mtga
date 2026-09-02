@@ -153,10 +153,20 @@ castability · curve · central-theme density), with the intangibles moving a de
   tier letter** — it's a human competitive judgment (design constraint).
 - **The measurable FLOOR** (`deck.py tier <id>` → "metrics floor", via
   `tier_band`): interaction + card-advantage = the resilience axis. Roughly:
-  **A-floor** interaction ≥5 and (interaction+card-adv) ≥7; **B-floor** interaction
-  ≥3 and sum ≥4; **C-floor** sum ≥2; **D** below that; any uncastable stray caps at
-  C. The floor is blind to raw card power / bombs / meta (an idf+role model can't
-  see those), so it **under-rates by design.** An uncastable stray CAPS the floor at C
+  **A-floor** interaction ≥7 and (interaction+card-adv) ≥11; **B-floor** interaction
+  ≥4 and sum ≥7; **C-floor** sum ≥2; **D** below that; any uncastable stray caps at
+  C. **The numbers live in ONE table, `deck.TIER_FLOOR_REQ`, and were RE-DERIVED from
+  the roster distribution on 2026-09-02 (BS8-06)**: the original (5, 7)/(3, 4) had been
+  outgrown as the role patterns widened — with a median interaction of 8 the floor read
+  A for 104 of 117 decks and C/D for none, so the ≥2-band guard could only fire on an S
+  claim, the under-grade nudge fired on every claimed B, `tier --to A` answered "already
+  meets" for 90% of the roster, and every "0 tier floors moved" measurement in the
+  pattern-widening commits was guaranteed by the saturation, not by conservatism. A ≈
+  the roster median on both axes, B ≈ its 10th percentile. `check_all` now warns when
+  one band holds more than 85% of the roster (`tier_floor_spread`) — that warning is a
+  reason to re-derive the table, never a deck defect; `check_tier` pins the SHAPE and
+  reads the same table. The floor is blind to raw card power / bombs / meta (an idf+role
+  model can't see those), so it **under-rates by design.** An uncastable stray CAPS the floor at C
   rather than SETTING it, so a dead card can no longer RAISE a D-floor deck, and a card
   the deck's `#: uncastable-ok:` header declares intentional is not counted at all.
 - **The floor is ARCHETYPE-aware** (#4): an aggro deck closes on a fast clock, not an
@@ -287,7 +297,11 @@ directions.
   deck's total is flagged **TRUNCATED** and skipped too — a partial paste is a strict
   SUBSET, so the shared-card floor alone read it as a full-confidence match and
   `--apply` would have rewritten the 60 down to the fragment (`--force` overrides,
-  for a deliberate cut). [G-08]
+  for a deliberate cut). **The pool's `Legalities` keys are SCRYFALL's, and Scryfall's
+  `brawl` is the 100-card Historic Brawl — so every legality/recommender surface reads
+  the deck's format through `deck.pool_format_key` (60-card `Brawl` → `standard`,
+  `Historic Brawl` → `brawl`), never the raw string: until BS8-04 a Historic-only card
+  passed `legal` in 3-brawl and `suggest` on it returned 2,238 non-Standard picks.** [G-08]
 - **`check` answers "do I own this deck"; `legal <id>` answers "is it a LEGAL deck"** —
   size, copy limit and each nonbasic's legality in the deck's `#: format:`, format-aware
   for Alchemy and Brawl (a Brawl deck also validates `#: commander:` and every card's
@@ -514,7 +528,15 @@ directions.
 - **`deck.py mana` also lints color SOURCES, not just pip demand** — it flags cards whose
   strict pips look thin against the deck's actual sources (`△ Pip-intensive`), catching
   the "wants UU but this is really a U-splash" problem the identity-subset castability
-  check cannot see. A review signal; it doesn't gate `check_all`. [G-35]
+  check cannot see. A review signal; it doesn't gate `check_all`. **Sources are read
+  from the land's TEXT through `lib.land_production` (BS8-01) — ONE count,
+  `deck.deck_source_profile`, behind `mana`, `consistency`, `deck_color_sources`,
+  `pip_depth_warning`, `suggest --lands` and the rationale audit's colour figures.**
+  Identity alone read every "Add one mana of any color" land as ZERO sources (deck 21a:
+  B 5 against a real 12), three copies agreed with each other, and 30 of the 40
+  pip-intensive flags on the roster were artefacts. An extra-cost any-colour land
+  ("{1}, {T}: …") IS counted and labelled; spend-only mana is NOT counted and is
+  listed; a basic fetch counts for each colour the deck runs a basic of. [G-35]
 - **`deck.py consistency <id>` is the PROBABILITY layer `mana` lacks** — keepable %,
   screw/flood, land-drop consistency and per-card P(cast on curve), with a Karsten-style
   source recommendation. Run it whenever a splash, a double pip or a top-end bomb is in
@@ -694,7 +716,8 @@ directions.
   `Ended By` (Game vs Concede) varies and is most of the signal at low n. **Read with
   restraint** — under 20 matches `--report` refuses a percentage. The per-deck split
   CANNOT reach that floor at 111 decks (best row n=8), so it also POOLS, which answers a
-  different question: whether YOU are winning, never whether a deck is good. [G-57]
+  different question: whether YOU are winning, never whether a deck is good. **Hand
+  rows carry `manual-` ids; the watermark excludes them by `is_manual_id` (BS8-03).** [G-57]
 - **NEVER widen `#: colors:` for a HYBRID card, and never reject a card for a widening you
   do not need.** Both halves were violated in one cycle: 26b's header was widened to UBR
   for `{B/R}` Bullseye, and Don & Raph was kept OUT of mono-blue 47 because its R identity
@@ -709,7 +732,7 @@ directions.
   MANA ABILITY) and `{U}` Bruce Banner / `{1}{U}` Norman Osborn (identity from a TRANSFORM
   cost); only Iroh was truly gold. The one-card rule is easy to hold and a 111-row filter is
   where it breaks. **`deck.py screen <id> <pile>` is the tool** — it prints the cost and
-  reads castability from it; `/add-cards` now requires it for a pile over ~10. [G-58]
+  reads castability from it; `/add-cards` requires it over ~10; the `tier --to`/`redundancy` fillers joined at BS8-05. [G-58]
 - **A TRIBE'S VIABILITY IS ITS PAYOFF COUNT, NOT ITS BODY COUNT, and changelings cannot fix
   the missing half.** Measured across eight tribes: Dragon 71 bodies / 20 payoffs (built as
   deck 49), Dinosaur 52/11, Vampire 69/3, Mutant 79/**2**, Demon 28/1, Plant 27/1, God 21/**0**,

@@ -141,7 +141,7 @@
 #~ +Mighty Mutanimals | OWNED (U) — ETB 2/2, then Alliance: a +1/+1 counter EVERY time
 #~   another creature enters. With Quina adding a Frog to every token event this is the
 #~   densest counter engine in the pool. THE COST IS COLOUR: a fourth {W}{W} card against
-#~   17 white sources, where Enduring Innocence already measures 72.1% on curve.
+#~   16 white sources (the two Villages' spend-only white stopped counting at BS8-01), where Enduring Innocence already measures 72.1% on curve.
 #~ note: applied 2026-08-26 — Michelangelo, Mutant BFF in for the 2nd Frog Butler.
 #~   Countered creatures can't be blocked by more than one creature, plus a Mutagen token
 #~   on enter AND attack. The deck's remaining bottleneck is CONVERTING a wide

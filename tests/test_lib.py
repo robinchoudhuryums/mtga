@@ -519,3 +519,41 @@ class TestCollectionStamp:
         note = lib.collection_stamp_note(path=str(p))
         assert note and "never been exactly reconciled" in note
 
+
+
+class TestLandProduction:
+    """`lib.land_production` (BS8-01/02): what a land PRODUCES, from its text — the one
+    reader behind every colour-source count and the manabase recommender."""
+
+    def test_any_colour_no_extra_cost_is_free_in_all_five(self):
+        p = lib.land_production("{T}: Add one mana of any color.", "Colorless")
+        assert p["free"] == set("WUBRG") and p["any"] and not p["conditional"]
+
+    def test_extra_mana_cost_is_conditional_not_free(self):
+        p = lib.land_production("{T}: Add {C}.\n{1}, {T}: Add one mana of any color.",
+                                "Colorless")
+        assert p["free"] == set() and p["conditional"] == set("WUBRG") and p["any"]
+
+    def test_spend_only_is_restricted_and_identity_cannot_launder_it(self):
+        p = lib.land_production(
+            "{T}: Add {C}.\n{T}: Add {B}. Spend this mana only to cast a creature spell.", "B")
+        assert p["restricted"] == {"B"} and "B" not in p["free"]
+
+    def test_paying_life_is_a_real_source(self):
+        p = lib.land_production("{T}, Pay 1 life: Add one mana of any color.", "Colorless")
+        assert p["free"] == set("WUBRG")
+
+    def test_basic_fetch_is_flagged_and_produces_nothing_itself(self):
+        p = lib.land_production("{T}, Sacrifice this land: Search your library for a basic "
+                                "land card, put it onto the battlefield tapped, then shuffle.",
+                                "Colorless")
+        assert p["fetch"] and p["free"] == set() and not p["any"]
+
+    def test_reminder_text_does_not_make_a_treasure_maker_a_rainbow_land(self):
+        p = lib.land_production("{T}: Add {G}.\n{2}, {T}: Create a Treasure token. (It's an "
+                                "artifact with \"{T}, Sacrifice this artifact: Add one mana "
+                                "of any color.\")", "G")
+        assert p["free"] == {"G"} and not p["any"]
+
+    def test_identity_is_the_fallback_for_blank_text(self):
+        assert lib.land_production("", "R/G")["free"] == {"R", "G"}
