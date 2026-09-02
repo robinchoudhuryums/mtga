@@ -16,27 +16,32 @@
 #: archetype: be full of Allies (18 and 15 bodies against ONE and two payoffs), where
 #: archetype: this deck is built on the payoff half and splashes green for it.
 #: tier: B (PROVISIONAL) — still unplayed, and still graded one band UNDER its A metrics
-#: tier: floor. The floor reads A on interaction 9 and card advantage 3 at a 3.28 curve.
-#: tier: INTERACTION IS NOW HONEST AND CARD ADVANTAGE IS THE ONE TO WATCH. The 9 counts
+#: tier: floor. The floor reads A on interaction 8 and card advantage 3 at a 3.42 curve.
+#: tier: INTERACTION IS NOW HONEST AND CARD ADVANTAGE IS THE ONE TO WATCH. The 8 counts
 #: tier: Allies at Last for the first time: the removal patterns all read "dealS damage"
 #: tier: while the card says "each DEAL damage", so it scored zero interaction until the
 #: tier: pattern was widened 2026-09-01 -- every interaction figure this deck quoted
 #: tier: before that date read one LOW. Starfield Vocalist still scores zero roles,
 #: tier: because a trigger-doubler has no bucket at all; and
 #: tier: the card-advantage 3 is a floor, not a count -- Hakoda casts Ally spells off the
-#: tier: top of the library and does not classify, Celebrate the Mountain-king's recruit
-#: tier: is a loot the bucket does not read, and Elspeth's 0 refills the board rather than
-#: tier: the hand. Mister Fantastic was traded for that interaction on 2026-09-01 and sits
-#: tier: in the flex block; if the axis reads thin in play he is the way to buy it back.
+#: tier: top of the library and does not classify, Elspeth's 0 refills the board rather
+#: tier: than the hand, and Bard, King of Dale (ADDED 2026-09-02 for Invasion Tactics) is a
+#: tier: DOUBLER of draws the bucket counts once -- Sokka under Katara and Bard is four
+#: tier: cards a combat. Celebrate the Mountain-king was CUT the same day for Overlord of
+#: tier: the Mistmoors (removal traded for a feeder: sixteen flying 2/1s for four mana
+#: tier: under Starfield, Elspeth and Doubling Season), which is the interaction 9 -> 8.
 #: tier: WHAT USED TO HOLD IT AT B WAS A SINGLE POINT OF FAILURE: the whole engine was one
 #: tier: legendary 3/3, and protection WAS 2 back then, so one removal spell ended it.
 #: tier: THAT IS LARGELY GONE. Starfield Vocalist was ADDED as a second doubler that reads
 #: tier: neither Ally nor power, so it doubles every enters-caused trigger in the list
-#: tier: including the four on noncreature permanents Katara cannot reach; and protection
-#: tier: went 2 -> 4, one of which is a ONE-MANA hexproof (Enter the Avatar State) pointed
-#: tier: straight at the removal spell this paragraph is about.
+#: tier: including the four on noncreature permanents Katara cannot reach; Elspeth and
+#: tier: then Doubling Season (ADDED 2026-09-02) multiply the token OUTPUT the other two
+#: tier: double the TRIGGER of, so the engine is now four multipliers deep. Protection
+#: tier: went 2 -> 4 along the way and sits at 3 today: Enter the Avatar State was CUT
+#: tier: 2026-09-02 for The Millennium Calendar, because the one-mana hexproof insured a
+#: tier: single point of failure that four doublers no longer have.
 #: tier: WHAT STILL ARGUES FOR B, honestly: Katara remains the deck's worst castability
-#: tier: row — {G}{W}{U} on turn three prices at ~51% against 13/8/8 sources, so she lands
+#: tier: row — {G}{W}{U} on turn three prices at ~57% against 13/8/10 sources, so she lands
 #: tier: turn four or five; the interaction is still cheap tricks rather than a suite and
 #: tier: the deck has NO sweeper. Delney was cut once it was measured to double nothing
 #: tier: the trigger-doublers miss, and Elspeth, Storm Slayer replaced Rally the Monastery
@@ -50,16 +55,22 @@
 #: notes: Ally effects": Katara doubles TRIGGERED abilities only. White Lotus
 #: notes: Reinforcements' anthem and Suki, Courageous Rescuer's +1/+0 are STATIC and are
 #: notes: not doubled; Kyoshi Battle Fan's equip is an ACTIVATED ability and is not
-#: notes: doubled (its ETB token is). Suki, Courageous Rescuer's token trigger reads
-#: notes: "This ability triggers only once each turn", which caps it at one even with
-#: notes: Katara out — she is in the list for the anthem and the body, not as an engine
-#: notes: piece. Gather the White Lotus counts PLAINS, which is why the basics are
-#: notes: Plains-heavy rather than an even split (G-75: a card that names a resource is worth
-#: notes: the number of them in THIS deck). The count is SEVEN Plains-TYPED lands, not six
-#: notes: basics — Hallowed Fountain is a Plains Island and counts. What that card is
-#: notes: actually worth is smaller than seven either way, because the clause reads Plains
-#: notes: you CONTROL: at 7 of 24 lands, turn five expects ~1.5 on the battlefield, and the
-#: notes: three fetches raise it to roughly 2-3. Grade it as a 2-3 token card with scry 2.
+#: notes: doubled (its ETB token is). The two cards this paragraph used to be about are
+#: notes: both GONE and the reasoning is kept only as history: Suki, Courageous Rescuer was
+#: notes: CUT 2026-09-02 because "This ability triggers only once each turn" caps her token
+#: notes: at one even under four multipliers, and Gather the White Lotus was CUT earlier
+#: notes: because it counts Plains you CONTROL — ~1.5 on turn five — not Plains in the deck.
+#: notes: The basics stay Plains-heavy anyway: white is 27 pips across 22 cards, the largest
+#: notes: demand in the list by a wide margin.
+#: notes: THE MANABASE WAS REBUILT 2026-09-02 AROUND GREEN, which the doubler swaps had made
+#: notes: the binding colour: green pips went to 11 across 11 cards while sources sat at 8.
+#: notes: All THREE fetches came out for Starting Town, Secluded Courtyard and a fourth
+#: notes: Forest, Birnin Zana Plaza became Gathering Place and Temple of Enlightenment became
+#: notes: Urban Retreat — W 13 / U 8 / G 8 to W 13 / U 8 / G 10 with no white or blue row
+#: notes: losing a point, and hard taplands 4 -> 1 (Breeding Pool and Hallowed Fountain are
+#: notes: shocks you choose). TWO SOURCES THE MODEL CANNOT COUNT: Secluded Courtyard names
+#: notes: Ally and pays any colour for 20 of the 36 nonland cards — every early green row
+#: notes: above is one — and Starting Town is untapped any-colour on turns 1-3 for a life.
 #: notes: THE THREE DOUBLERS DIVIDE THE LIST CLEANLY, AND ELSPETH MULTIPLIES WITH THE
 #: notes: OTHER TWO RATHER THAN OVERLAPPING THEM: Katara and Starfield double the
 #: notes: TRIGGER, Elspeth doubles the token OUTPUT, so Kyoshi Warriors under Katara plus
@@ -68,9 +79,10 @@
 #: notes: climbs twice as fast. Katara reads ALLY and ignores power;
 #: notes: Starfield Vocalist reads any PERMANENT and ignores type, but only for
 #: notes: ENTERS-caused triggers. Katara therefore owns the attack- and death-triggered
-#: notes: Allies that Starfield cannot see, and Starfield owns the four noncreature
-#: notes: permanents (Invasion Tactics, Sheltered by Ghosts, Birnin Zana Plaza, Temple of
-#: notes: Enlightenment) plus the non-Ally creatures. With both out an Ally's ETB fires
+#: notes: Allies that Starfield cannot see, and Starfield owns the noncreature permanents
+#: notes: (Sheltered by Ghosts, Birnin Zana Plaza, Temple of Enlightenment, and Overlord
+#: notes: of the Mistmoors while impending -- Invasion Tactics was one until it was CUT
+#: notes: 2026-09-02 for Bard) plus the non-Ally creatures. With both out an Ally's ETB fires
 #: notes: THREE times.
 #: notes: DELNEY WAS CUT 2026-09-01 ON A MEASUREMENT, not a hunch: of the twelve copies in
 #: notes: his power-2-or-less range, Suki Courageous Rescuer's own cap blocks one, leaving
@@ -84,24 +96,38 @@
 #: notes: attacking TOKENS have flying, and the deck makes ten of them.
 #: notes: Sonar Strike was CUT earlier for its conditional damage (attacking, blocking or
 #: notes: tapped only) and a lifegain rider that needs a Bat, of which this deck runs zero.
+#: notes: DOUBLING SEASON STACKS MULTIPLICATIVELY, on both axes. With Elspeth it is x4
+#: notes: tokens, so Kyoshi Warriors under Katara is 2 triggers x 4 = EIGHT Ally tokens;
+#: notes: it doubles all 13 counter sources; and it doubles the loyalty Elspeth ENTERS
+#: notes: with, so she can -3 twice and live. Two things it does NOT do: it never touches
+#: notes: a static or activated ability, and it DOES double Overlord of the Mistmoors'
+#: notes: impending time counters (4 -> 8 turns to become a creature) -- irrelevant once
+#: notes: the ETB has already made sixteen fliers, but real.
+#: notes: THE MILLENNIUM CALENDAR IS A PARALLEL CLOCK, NOT A DISTRACTION, and the count
+#: notes: that decides it is permanents untapping: this deck routinely untaps 15+. At {2}
+#: notes: per turn that is 6 turns to 1,000 solo and THREE with Doubling Season out, on a
+#: notes: one-mana artifact creature removal and sweepers cannot touch. Grade it as the
+#: notes: board-stall insurance; the deck still wins by attacking most games.
 
 # Engine — the doubler and what it doubles
 1 Great Divide Guide (TLA) 181
 1 Haru, Hidden Talent (TLA) 182
 1 South Pole Voyager (TLA) 35
-1 Sheriff of Safe Passage (OTJ) 29
+1 Doubling Season (FDN) 216
 1 Starfield Vocalist (EOE) 78
 1 Belladonna Took (HOB) 4
 1 Katara, the Fearless (TLA) 230
 1 Avatar Enthusiasts (TLA) 11
 1 Dazzling Theater // Prop Room (DSK) 3
-1 Suki, Courageous Rescuer (TLA) 37
+1 The Astonishing Ant-Man (MSH) 204
 1 Earth Kingdom Jailer (TLA) 16
 1 Toph, the Blind Bandit (TLA) 198
 1 Ty Lee, Chi Blocker (TLA) 76
 1 Sokka, Lateral Strategist (TLA) 241
 1 Niko, Light of Hope (DSK) 224
 1 Elspeth, Storm Slayer (TDM) 11
+1 The Millennium Calendar (LCI) 257
+1 Bard, King of Dale (HOB) 144
 
 # Ally bodies and token makers
 1 Appa, Steadfast Guardian (TLA) 10
@@ -113,39 +139,40 @@
 1 Earth Kingdom General (TLA) 173
 1 Earth King's Lieutenant (TLA) 217
 1 United Front (TLA) 39
-1 Invasion Tactics (TLA) 183
 1 Aang, at the Crossroads // Aang, Destined Savior (TLA) 203
 1 Appa, Loyal Sky Bison (TLA) 9
 1 Starry-Eyed Skyrider (TDM) 25
+1 Overlord of the Mistmoors (DSK) 23
 
 # Interaction
 1 Sheltered by Ghosts (DSK) 30
-1 Enter the Avatar State (TLA) 18
 1 Allies at Last (TLA) 164
 1 Duty Beyond Death (TDM) 10
 1 Jet, Freedom Fighter (TLA) 229
 1 The Eagles Are Coming! (HOB) 12
-1 Celebrate the Mountain-king (HOB) 7
 
 # Lands (24)
 1 Hushwood Verge (DSK) 261
 1 Etched Cornfield (DSK) 258
-1 Birnin Zana Plaza (MSH) 262
+1 Gathering Place (MSH) 266
 1 Floodfarm Verge (DSK) 259
 1 Hallowed Fountain (ECL) 265
-1 Temple of Enlightenment (FDN) 698
+1 Urban Retreat (SPM) 187
 1 Gleaming Bastion (MSH) 267
 1 Willowrush Verge (DFT) 270
 1 Breeding Pool (EOE) 251
-2 Evolving Wilds (ECL) 264
-1 Terramorphic Expanse (MSC) 828
+1 Starting Town (FIN) 289
+1 Secluded Courtyard (FDN) 267
 6 Plains (HOB) 189
 1 Three Tree City (BLB) 260
-3 Forest (HOB) 193
+4 Forest (HOB) 193
 2 Island (HOB) 190
-#~ -Invasion Tactics | +Katara, Water Tribe's Hope | SIDEGRADE (owned): Human Warrior Ally, vigilance, ETB Ally token (doubled by BOTH Katara the Fearless and Starfield), and waterbend {X} is a real finisher on a ten-token board -- creatures get BASE power/toughness X/X, so existing +1/+1 counters still stack on top, and the tap-to-help clause lets vigilance bodies attack AND pay. MV 5 for MV 5, so the curve does not move; it costs card advantage 4 -> 3 (Invasion Tactics draws whenever Allies connect, and Starfield doubles its +2/+2 ETB to +4/+4).
+#~ note: applied — Bard, King of Dale in for Invasion Tactics.
 #~ note: Katara, Water Tribe's Hope is PARKED, not rejected, and the number to re-check is the manabase. Measured 2026-09-01: {2}{W}{U}{U} against 8 blue sources is 43% on curve at turn five -- it would become the deck's worst castability row, below Katara the Fearless at 51%, which is the row the tier block already names as what holds this deck at B. Great Divide Guide (every land AND Ally taps for any colour) and Dazzling Theater (convoke pays a coloured pip off a blue body) both rescue her, but P(drawing either by turn five) is only 33.6%, before either resolves or survives. She comes in when blue sources go up -- roughly 18 are needed for a 90% double pip -- not when a slot opens.
 #~ -Kyoshi Warriors | +Mister Fantastic, Reed Richards | SIDEGRADE (owned): {3}{U} reach body that draws whenever one or more tokens you control enter. He was CUT 2026-09-01 for Celebrate the Mountain-king, which took interaction 7 -> 8 at the cost of card advantage 4 -> 3; he is the way to buy that draw back if the axis reads too thin in play. Cut listed as Kyoshi Warriors because both are MV 4 and the 4-slot is the curve's fat point.
 #~ note: TWO THINGS TO KNOW BEFORE BRINGING MISTER FANTASTIC BACK. His trigger reads "one or more tokens", so ELSPETH DOES NOT MULTIPLY HIM -- doubling a single creation event enters them simultaneously, which is one trigger, not two. Katara and Starfield DO, because doubling the trigger produces two separate token events. And he is a {3}{U} pip against 8 blue sources in a deck whose worst castability rows are already blue; he is also a non-Ally, so Katara doubles nothing of his own.
-#~ -Sheriff of Safe Passage | +Orcrist, Goblin-cleaver | SIDEGRADE (owned M): {3} Equipment, +2/+2 and trample, and on combat damage to a player it makes a Treasure for EACH creature you control of a chosen type -- 24 Humans and 21 Allies here, so 5-6 off a normal board and 10-12 once Elspeth doubles them. Belladonna Took triggers PER token ("whenever A token enters"), so one connect completes her whole gain-then-draw-then-counters ladder. Sheriff is the cut because he is the one creature left that BOTH doublers are blind to: "enters with a +1/+1 counter for each other creature" is a replacement effect, not a triggered ability, and he is a Human Knight rather than an Ally.
-#~ note: WHY ORCRIST IS PARKED RATHER THAN PLAYED, so the case is not re-derived: it is SIX mana before it does anything ({3} cast plus equip {3}) and it still has to connect, and the payoff is MANA this deck cannot spend -- avg MV 3.28, top end 5-6, and Great Divide Guide already turns every land AND every Ally into any-colour mana. United Front is the only {X} sink in the list. It is also the only Equipment, so there is no equip discount and nothing to tutor it. What WOULD change the answer: more {X} sinks or a real top end. The evasion objection is already answered -- Starry-Eyed Skyrider grants flying to an attacking creature and Enter the Avatar State grants flying plus hexproof for {W} -- so do not cut EITHER of those to make room for it.
+#~ note: applied — Doubling Season in for Sheriff of Safe Passage.
+#~ note: applied — The Astonishing Ant-Man in for Suki, Courageous Rescuer.
+#~ -Toph, the Blind Bandit | +Orcrist, Goblin-cleaver | SIDEGRADE (owned M): re-parked 2026-09-02 a second time -- its listed cut (Suki) left for The Astonishing Ant-Man. Toph is now the listed cut as the last role-neutral Ally that makes no tokens; note Doubling Season made him BETTER (earthbend 2 -> 4, and his power is the counters on your lands), so this is the softest slot, not a dead one.
+#~ -Toph, the Blind Bandit | +Suki, Courageous Rescuer | SIDEGRADE (owned): Human Warrior Ally, {1}{W}{W}. Static +1/+0 to other creatures (never doubled) and a token whenever another permanent of yours leaves during your turn -- but "This ability triggers only once each turn", which is why she was the cut for Ant-Man 2026-09-02: the one token maker four multipliers cannot scale past one event. She comes back if the anthem is missed in play, or if a doubler is cut.
+#~ note: WHY ORCRIST IS PARKED RATHER THAN PLAYED, so the case is not re-derived: it is SIX mana before it does anything ({3} cast plus equip {3}) and it still has to connect, and the payoff is MANA this deck cannot spend -- avg MV 3.33, top end 5-6, and Great Divide Guide already turns every land AND every Ally into any-colour mana. The {X} sinks are United Front and now The Millennium Calendar's {2} activation, which is the one thing that has moved in its favour. It is also the only Equipment, so there is no equip discount and nothing to tutor it. The evasion objection is answered by Starry-Eyed Skyrider (flying to an attacking creature) -- Enter the Avatar State was CUT 2026-09-02, so Skyrider is now the ONLY evasion granter; do not cut it to make room for this.

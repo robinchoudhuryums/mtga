@@ -197,6 +197,9 @@ Whenever you draw your second card each turn, put a +1/+1 counter on target crea
 Lake-town Toymaker,Creature — Human Artificer,"At the beginning of combat on your turn, if you've drawn two or more cards this turn, another target creature you control gets +3/+0 and gains first strike until end of turn.",W,Human; Artificer; pump,HOB,19,Uncommon,,,2.0,seed
 Bonehoard Dracosaur,Creature — Dinosaur Dragon,"Flying, first strike
 At the beginning of your upkeep, exile the top two cards of your library. You may play them this turn. If you exiled a land card this way, create a 3/1 red Dinosaur creature token. If you exiled a nonland card this way, create a Treasure token.",R,Dinosaur; Dragon; tokens; treasure; impulse; flying; evasion; first strike; combat,LCI,134,Mythic,49,,7.5,hand
+The Millennium Calendar,Legendary Artifact,"Whenever you untap one or more permanents during your untap step, put that many time counters on The Millennium Calendar.
+{2}, {T}: Double the number of time counters on The Millennium Calendar.
+When there are 1,000 or more time counters on The Millennium Calendar, sacrifice it and each opponent loses 1,000 life.",Colorless,mill; sacrifice; double,LCI,257,Mythic,78,"Alt win-con for the go-wide Ally deck: ~15 permanents untapping is a 6-turn solo clock at {2}/turn, 3 turns with Doubling Season. Cut Enter the Avatar State (MV 1 for MV 1).",6,hand
 "Matzalantli, the Great Door // The Core",Legendary Artifact // Legendary Land,"{T}: Draw a card, then discard a card.
 {4}, {T}: Transform Matzalantli. Activate only if there are four or more permanent types among cards in your graveyard. (Artifact, battle, creature, enchantment, land, and planeswalker are permanent types.) // (Transforms from Matzalantli.)
 Fathomless descent — {T}: Add X mana of any one color, where X is the number of permanent cards in your graveyard.",Colorless,graveyard; card draw; mana; transform; fathomless descent,LCI,256,Rare,51,,4.0,seed
