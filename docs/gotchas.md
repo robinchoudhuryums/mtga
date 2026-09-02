@@ -1648,6 +1648,27 @@ distinguish two call sites is G-53's comment-vs-call trap one layer in; the test
 real function and reads the real picks now.
 
 
+### BS8-13 / BS8-12 (2026-09-02): the Standard year, and one rotation predicate
+
+`rotation_year` was `release year + 3`. Standard rotates ONCE a year, with the fall set,
+and a set released January–July leaves with the PREVIOUS fall's Standard year — so the
+heuristic dated every spring set a year late: MKM/OTJ/BIG (Feb–Apr 2024) rotate in 2026
+with WOE/LCI, DFT/TDM/FIN (Feb–Jun 2025) in 2027 with BLB/DSK, and the code said 2027 and
+2028; DFT/TDM craft targets carried no ⚠rot inside the promised this-year-or-next window.
+The rule is now `standard_year = year if month >= 8 else year - 1`, checked against every
+set from DMU (2022) to TLA (2025); `_SET_ROTATION_OVERRIDE` still wins for an announced
+exception (Foundations). Note the pool's `Released` is per PRINTING, so a reprint's date
+is the input — the override table is where that is corrected.
+
+`⚠rot` also had two predicates with two scopes: `craft_rot_note` (check / wildcards /
+the needs recommenders) required Standard legality; `suggest_scored` used `rotation_risk`
+bare, so it flagged OWNED rows (deck 1: Scavenger's Talent, Reckless Lackey) and printed
+⚠rot on 20–29 of 40 picks for each Brawl deck. `rotation_risk` now takes the card's
+legalities, `craft_rot_note` delegates to it, and `suggest` flags only unowned picks for
+a deck on Standard's card pool — which INCLUDES 60-card Brawl (it rotates with Standard;
+the scan's "Brawl decks should not flag" was wrong for that half) and excludes Historic
+Brawl.
+
 ## [G-31] `deck.py suggest-homes <card>` automates the "which of my decks does this new card improve" fit 
 
 **`deck.py suggest-homes <card>` automates the "which of my decks does this new
@@ -2348,6 +2369,16 @@ off-color separately) so a text-containment result never depends on the deck's c
 It misses most real upgrades by design; **its silence is not a verdict**. Driven by
 `/draft-deck` Stage 5 and `/tune-deck` step 6a.
 
+
+### BS8-32 (2026-09-02): ★ STRICT UPGRADE could not see a body
+
+`strict_upgrades` was a pure text-containment test — every clause of the incumbent
+present in the candidate, at equal or lower cost — so Lifecreed Duo (1/2, {1}{W}) was
+printed as a ★ STRICT UPGRADE of Dazzling Angel (2/3, {2}{W}) on the verdict surface
+G-47 sends a pile through; 121 pool groups shared the shape. Power and toughness are part
+of "strictly more" now: a smaller body on either axis blocks the flag, a bigger one at
+equal text and cost earns it, and a `*`/X body (`card_power` → None) neither blocks nor
+grants.
 
 ## [G-48] Every role COUNT now carries its own uncertainty
 
@@ -3502,6 +3533,24 @@ is 138. Build a radar on disagreement, not on zero.
 Watched failing at introduction: removing the pattern that fixed BS6-10 brings back 16
 disagreements, Dead Weight among them.
 
+### BS8-31 (2026-09-02): the tag rules read the card, not what it describes
+
+Five themes deck centrality cares about carried measured false positives: `sacrifice`
+609 of 2,117 (29%) from reminder or quoted text — every Blood/Clue/Mutagen maker, every
+blitz reminder and all 125 Sagas' "(… Sacrifice after III.)" — which moved 29 decks'
+central themes (deck 71 5→0, 74a 18→6); `ramp` 196 of 477 (41%) via the keyword map
+(`landfall` is a payoff, `convoke` a discount); `reanimator` 36% false plus 60 real
+reanimators missed for lacking the word "creature"; `removal` 15.6% cue-less (graveyard
+hate, self-blink, -N/-0); `spellslinger` missing the "noncreature spell" templating
+(212 cards). Fixed with the same guards the role classifier grew at BS8-27/30: a
+`_clean_text` that strips reminder AND quoted text before the `sacrifice` and `removal`
+rules, a one-clause `reanimator`, `ramp` dropped from the two keyword mappings, and the
+noncreature form. Pool (re-derived via `build_pool --all`): sacrifice 2117→1551, ramp
+477→298, reanimator 543→472, spellslinger 509→620, removal 1689→1578; 1,286 pool rows
+change a tag. **The LIBRARY keeps its stale tags**: `tag_synergies --merge` only ADDS
+(it cannot tell a hand-curated tag from a rule-added one), so an owned Saga still carries
+`sacrifice` in card-library.csv until a prune mode exists — a follow-on, not a fix here.
+
 ## [K-10] `tag_synergies.py` also text-tags MECHANICAL-SYNERGY payoffs the keyword map missed (tagging-mis
 
 **`tag_synergies.py` also text-tags MECHANICAL-SYNERGY payoffs the keyword map missed
@@ -3843,6 +3892,16 @@ literal-name search whose misses read as facts. The tribal TABLE above was
 hand-measured at the pool level and is not invalidated by this, but a payoff count
 near a viability threshold deserves a re-measure through the fixed scan.
 
+
+### BS8-33 (2026-09-02): `tribes` automated the body/payoff mistake
+
+`cmd_tribes`' "Type-matters payoffs" counted any text reference to a type the deck runs —
+including "create a 4/4 green BEAR creature token", so 320 of 902 roster payoff rows
+(35%) were token makers, deck 69 printed "The Earth King — rewards Bear (4 qualifying)"
+on a card that makes Bears, and this rule's own measure (payoffs, not bodies) was being
+inflated by bodies. A reference now has to sit outside every "create … token" clause;
+changelings qualify for every type a payoff names (they ARE every type — the rule
+above); and a payoff is no longer one of its own qualifiers.
 
 ## [G-60] An `{X}` spell is priced at MV 1, so a curve reading under-reads a deck that runs several
 
@@ -4701,6 +4760,17 @@ test that was supposed to pin the fix pinned only half of it. A monkeypatched-di
 test now exercises the stored side. **A test written against the live roster can only
 cover the paths the roster happens to use.**
 
+### BS8-17 (2026-09-02): the gate this rule added was the next instance
+
+`wishlist.py --add --target` refused `general`, `concept: …`, `21; 6` and `06` — the
+Target column's own vocabulary, in use on 13 live rows — while `deck.py stats 06` worked;
+`parse_matches.parse_manual` refused `06 L` the same way, and `deck.py feedback 06` read
+"nothing recorded" for deck 6 with an unknown id indistinguishable from an un-tuned one.
+All three normalize through `_norm_deck_id` now (`--target` also accepts the multi-id and
+concept forms), `feedback` refuses an unknown deck by name, and `_status_label` /
+`_audit_target_issues` read padded ids. The transferable point: a validator written
+against the resolver's OLD form is exactly the drift this rule describes, one file over.
+
 ## [G-68] A `#:` header that lists card names goes stale, and nothing checked one
 
 Two deck headers are a semicolon-separated list of CARD NAMES rather than prose:
@@ -5297,6 +5367,16 @@ The Masters of Evil in decks 20a/20b (searches for a Plan card; those decks run 
 it is still a Villain anthem) and Hobbit Hole in 50a/69a (its basic-land fetch works fine;
 only the Halflingcycling rider finds nothing).
 
+
+### BS8-15 (2026-09-02): the type-search gate read "two", "black" and "nonlegendary" as types
+
+`_TARGET_GATES`' `lib_type` pattern excluded `card` but not `cards`, and no colour or
+adjective, so "search your library for two CARDS" gated on a type named "two", "a black
+card" on "black" and "a nonlegendary card" on "nonlegendary" — each a false "✗ NOTHING"
+in `targets` and in this rule's `check_all` sweep the day one entered a deck (none had;
+Final Parting, Behold the Beyond, Mausoleum Secrets, Unmarked Grave were the pool cases).
+The lookahead now covers the plural, the number words, the five colours and the
+legendary / token adjectives.
 
 ## [G-76] A gate the deck meets for free is not a cost, and every model read it as one
 

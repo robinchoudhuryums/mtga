@@ -2740,3 +2740,19 @@ green; docs synced for batches 1 and 3 (batch 2's G-67/K-09/K-12 long-form notes
 README items in the batch-2/3 blocks are still owed to `/sync-docs`). Next: the user
 picks from batches 4–7 (rotation + recommender scope, tag model, interface, outcomes/
 gates/docs hygiene) — plan in chat and in the scan report attachment.
+
+## 2026-09-02 — broad-scan #8, re-grade pass + batches 4 and 5 — broad-implement
+
+Re-grade: 41/42a/55b/70 held at B with corrected arguments (41 now argues from a C floor;
+54/54a sit at a B floor; seven rationales cite the re-derived 7/11 thresholds).
+Batch 4 (rotation + recommender scope): Standard-year rotation rule, one ⚠rot predicate
+scoped to unowned Standard cards, cost-aware `Decks` breadth and wishlist castability,
+slash-form colour-source figures, normalized ids everywhere, wishlist state/STRONG fixes.
+Batch 5 (tag model): reminder/quote-stripped `sacrifice`/`removal`, strict `reanimator`,
+`ramp` off landfall/convoke, `spellslinger` noncreature; tribes token-clause rule;
+strict-upgrade P/T; lib_type gate words. Pool re-derived (network), library merged.
+Blocks: `.cycle/blocks/2026-09-broad-scan-8-batch4-*.md`, `…-batch5-*.md`.
+
+Where I left off: all of broad-scan #8 batches 1–5 on `claude/broad-scan-6kxevb`, gates
+green. Remaining from the scan: batch 6 (interface), batch 7 (outcomes/gates/docs
+hygiene), the completeness gaps, and the library tag-prune follow-on.

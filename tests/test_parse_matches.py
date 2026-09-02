@@ -1539,3 +1539,14 @@ class TestFilterSince:
         b, _wb = pm.parse_log(kept)
         assert [r["Match ID"] for r in a] == [r["Match ID"] for r in b] == ["keep"]
         assert a[0]["Result"] == b[0]["Result"]
+
+
+class TestManualDeckIdIsNormalized:
+    def test_a_zero_padded_id_is_accepted(self):
+        """BS8-17 / G-82: `06 L` was refused while `deck.py stats 06` worked."""
+        rows, warnings = pm.parse_manual("06 L", deck_ids={"6", "19b"})
+        assert warnings == [] and rows[0]["Deck"] == "06"
+
+    def test_an_unknown_id_is_still_refused(self):
+        rows, warnings = pm.parse_manual("999 L", deck_ids={"6"})
+        assert rows == [] and "no deck" in warnings[0]

@@ -294,10 +294,19 @@ def cmd_add(path, target=None, note=None):
     if target is not None:
         target = target.strip()
         if target:
+            # The Target column's own vocabulary (BS8-17): a deck id (zero-padded
+            # accepted, normalized like every by-id command — G-82), several ids
+            # separated by `;` or `,`, `general`, or `concept: …`. The first draft of
+            # this check refused `general` and `21; 6` while 13 live rows used them.
             import deck as dk
-            known = {d["id"].lower() for d in dk.discover_decks()}
-            if target.lower() not in known:
-                eprint(f"--target {target!r}: no deck with that id. Try: deck.py list")
+            known = {dk._norm_deck_id(d["id"]) for d in dk.discover_decks()}
+            toks = [t.strip() for t in re.split(r"[;,]", target) if t.strip()]
+            bad = [t for t in toks
+                   if t.lower() not in ("—", "general") and not t.lower().startswith("concept")
+                   and dk._norm_deck_id(t) not in known]
+            if bad:
+                eprint(f"--target {target!r}: no deck with id {bad[0]!r}. Try: deck.py list "
+                       "(or `general` / `concept: …`)")
                 return 1
     if path == "-":
         text = sys.stdin.read()
@@ -594,12 +603,13 @@ def cmd_suggest_targets(rows, write=False, overwrite=False):
     strong = ok = review = wrote = 0
     print(f"  {'Card':30} {'Conf':6} {'Target':9} Signal")
     print("  " + "-" * 84)
+    _mana = _mana_costs()
     for r in rows:
         ccols = card_colors(r.get("Color(s)"))
         ctags = {t.strip() for t in (r.get("Synergies") or "").split(";") if t.strip()}
         fits = []
         for did, dcols, central, twn in fps:
-            if not ccols.issubset(dcols):
+            if not _castable(_mana.get((r.get("Card Name") or "").strip().lower()), ccols, dcols):
                 continue
             shared = ctags & central
             if not shared:
@@ -627,7 +637,12 @@ def cmd_suggest_targets(rows, write=False, overwrite=False):
             spec_best = next((f for f in fits if f[2]), None)
             if best[2]:  # shares a specific (rare) theme — real signal
                 lead = len(fits) < 2 or best[0] >= fits[1][0] + 0.5
-                conf = "STRONG" if (lead or best[0] >= 1.5) else "ok"
+                # STRONG on the SAME terms `--rank` uses (specific theme AND score ≥ 1.5),
+                # plus a clear lead over the runner-up (BS8-38): the old `lead OR ≥ 1.5`
+                # made seven single-fit cards STRONG here and `ok` in --rank, and STRONG
+                # agreed with the curator's hand Target on 20 of 86 rows. A single weak
+                # fit is a proposal to judge, not a confident placement.
+                conf = "STRONG" if (lead and best[0] >= 1.5) else "ok"
                 tgt = proposal = best[1]
                 sig = f"{'/'.join(best[2][:2])}  (score {best[0]}; alts {alts or '—'})"
             elif spec_best:
@@ -761,12 +776,13 @@ def _deck_status():
     for d in dk.discover_decks():
         meta, cards = dk.parse_deck_file(d["path"])
         tier = dk._deck_tier(meta) or "·"
-        need = set()
-        for _qty, name, _s, _c in cards:
-            cnt, in_lib = dk.owned(by_name_qty, name)
-            if cnt == 0 and not in_lib and name.strip().lower() not in dk.BASICS:
-                need.add(name.strip().lower())
-        out[d["id"].lower()] = (tier, len(need))
+        # ONE definition of "do I own this deck" (G-70 / BS8-37): the inline loop this
+        # replaces counted a card as owned whenever a library row EXISTED, so a row
+        # `import_collection --zero-missing` wrote at quantity 0 read as owned and a
+        # short card (own 2, need 4) never counted — the `state` column and the ★
+        # "helps finish" marker disagreed with `deck.py check`.
+        missing, short = dk.deck_build_gap(cards, by_name_qty)
+        out[dk._norm_deck_id(d["id"])] = (tier, missing + short)
     return out
 
 
@@ -778,7 +794,7 @@ def _status_label(target, status_map):
     for tok in re.split(r"[;,]", target or ""):
         tok = tok.strip().lower()
         if tok and tok not in ("—", "general") and not tok.startswith("concept"):
-            first = tok
+            first = tok.lstrip("0") if tok[:1] == "0" and len(tok) > 1 else tok   # BS8-17
             break
     if not first or first not in status_map:
         return "—"
@@ -823,7 +839,30 @@ def _specific_themes_of(central, idf, spec_idf):
             if idf.get(t, 0) >= spec_idf and t.lower() not in NON_SIGNAL_TAGS}
 
 
-def _breadth_of(ccols, ctags, fps, idf, spec_idf):
+def _mana_costs():
+    """name_lower -> printed mana cost (front face), from card-mana.csv via deck.py; {}
+    when deck.py is unavailable. The wishlist's three castability sites read the COST
+    through this (BS8-36): `--audit-targets` was pip-aware while `--rank` and
+    `--suggest-targets` tested identity, so Don & Raph (`{1}{U/R}{U/R}`, Target 47, a
+    mono-U deck) audited clean and was re-homed to deck 33 — the G-58 incident, inside
+    one file."""
+    try:
+        import deck as dk
+        return {n: (e[0] if e else "") for n, e in dk.load_mana().items()}
+    except Exception:
+        return {}
+
+
+def _castable(cost, ident, dcols):
+    """Printed-cost castability with the identity fallback (`deck._filler_castable`)."""
+    try:
+        import deck as dk
+        return dk._filler_castable(cost or "", ident, dcols)
+    except Exception:
+        return ident.issubset(dcols)
+
+
+def _breadth_of(ccols, ctags, fps, idf, spec_idf, cost=""):
     """Cross-deck breadth for one card, via the SHARED rule in deck.cross_deck_breadth
     (castable in the deck AND shares >=1 specific theme). Falls back to a local count
     only if deck.py can't be imported, so the column degrades rather than vanishing."""
@@ -831,7 +870,7 @@ def _breadth_of(ccols, ctags, fps, idf, spec_idf):
                for did, dcols, central, _twn in fps]
     try:
         import deck as dk
-        return dk.cross_deck_breadth(ccols, ctags, trimmed)
+        return dk.cross_deck_breadth(ccols, ctags, trimmed, cost=cost)
     except Exception:
         return sum(1 for _d, dc, dt in trimmed if ccols <= dc and (ctags & dt))
 
@@ -888,13 +927,15 @@ def _rank_scores(rows, keep=None):
         eprint(f"WARN:  rotation index unavailable ({e}) — ⚠rot flags are OFF, "
                "not clear.")
     out = []
+    _mana = _mana_costs()
     for r in rows:
         ccols = card_colors(r.get("Color(s)"))
         ctags = {t.strip() for t in (r.get("Synergies") or "").split(";") if t.strip()}
+        _cost = _mana.get((r.get("Card Name") or "").strip().lower())
         best, best_specific, reuse = 0.0, [], 0
         best_spec_score, best_spec_list = 0.0, []
         for did, dcols, central, twn in fps:
-            if not ccols.issubset(dcols):
+            if not _castable(_cost, ccols, dcols):
                 continue
             shared = ctags & central
             if not shared:
@@ -925,7 +966,7 @@ def _rank_scores(rows, keep=None):
         # model's own idf-based notion of a specific theme. It used to be an inline
         # `reuse += 1` in the loop above — a second hand-written copy of the rule, which
         # is exactly how the two breadth signals drifted apart (broad-scan F-04).
-        reuse = _breadth_of(ccols, ctags, fps, idf, spec_idf)
+        reuse = _breadth_of(ccols, ctags, fps, idf, spec_idf, cost=_cost)
         if best_specific and best >= 1.5:
             conf = "STRONG"
         elif best_specific:
@@ -1455,8 +1496,8 @@ def _audit_target_issues(color_only=False):
     try:
         import deck as dk
         for d in dk.discover_decks():
-            deck_ids.add(d["id"].lower())
-            deck_cols[d["id"].lower()] = card_colors(d["meta"].get("colors"))
+            deck_ids.add(dk._norm_deck_id(d["id"]))
+            deck_cols[dk._norm_deck_id(d["id"])] = card_colors(d["meta"].get("colors"))
         mana = dk.load_mana()
     except Exception as e:
         raise TargetAuditUnavailable(
@@ -1486,6 +1527,7 @@ def _audit_target_issues(color_only=False):
             tok = tok.strip().lower()
             if not tok or tok in ("—", "general") or tok.startswith("concept"):
                 continue
+            tok = dk._norm_deck_id(tok) if dk is not None else tok
             if deck_ids and tok not in deck_ids:
                 issues.append(("target", name, f"target '{tok}' is not a known deck id"))
                 continue

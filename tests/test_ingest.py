@@ -918,3 +918,37 @@ class TestArenaAboutBlockAndSameRunPhantom:
         import_arena.merge(rows, entries, sum_mode=False)
         assert len(rows) == 1, rows
         assert rows[0]["Set Code"] == "AA1" and rows[0]["Quantity Owned"] == "3"
+
+
+class TestTagRulesReadTheCardNotItsReminder:
+    """BS8-31: the `sacrifice`, `removal`, `reanimator`, `ramp` and `spellslinger` tags."""
+
+    def _tags(self, text, keywords=None):
+        return ts.tags_for({"Type": "Creature", "Card Text": text}, keywords)
+
+    def test_a_saga_reminder_is_not_a_sacrifice_theme(self):
+        assert "sacrifice" not in self._tags(
+            "(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\nI — Draw a card.")
+        assert "sacrifice" in self._tags("Sacrifice a creature: Draw a card.")
+
+    def test_a_treasure_reminder_and_a_quoted_ability_do_not_count(self):
+        assert "sacrifice" not in self._tags(
+            'Create a Treasure token. (It\'s an artifact with "{T}, Sacrifice this artifact: Add one mana of any color.")')
+
+    def test_removal_excludes_graveyard_hate_and_self_blink(self):
+        assert "removal" not in self._tags("Exile target card from a graveyard.")
+        assert "removal" not in self._tags("Exile target creature you control, then return it to the battlefield.")
+        assert "removal" in self._tags("Destroy target creature.")
+        assert "removal" not in self._tags("Target creature gets -2/-0 until end of turn.")
+
+    def test_reanimator_needs_a_graveyard_clause_and_sees_keyword_forms(self):
+        assert "reanimator" not in self._tags("Return target creature you control to its owner's hand. Put a +1/+1 counter on a creature.")
+        assert "reanimator" in self._tags("{1}{B}: Return this card from your graveyard to the battlefield tapped.")
+        assert "reanimator" in self._tags("Return target creature card from your graveyard to the battlefield.")
+
+    def test_landfall_and_convoke_are_not_ramp(self):
+        assert "ramp" not in self._tags("Landfall — Whenever a land enters under your control, you gain 2 life.", ["landfall"])
+        assert "ramp" not in self._tags("Convoke", ["convoke"])
+
+    def test_noncreature_spell_triggers_are_spellslinger(self):
+        assert "spellslinger" in self._tags("Whenever you cast a noncreature spell, put a +1/+1 counter on this creature.")

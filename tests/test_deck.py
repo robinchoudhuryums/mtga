@@ -1684,8 +1684,9 @@ class TestRotationOverride:
         assert deck.rotation_year("2024-11-15", set_code="FDN") == 2029
         assert deck.rotation_risk("2024-11-15", set_code="FDN") is False
 
-    def test_ordinary_set_still_uses_release_plus_three(self):
-        assert deck.rotation_year("2024-02-09", set_code="MKM") == 2027
+    def test_ordinary_set_uses_the_standard_year(self):
+        # BS8-13: MKM (Feb 2024) rotates with WOE in 2026, not a year later.
+        assert deck.rotation_year("2024-02-09", set_code="MKM") == 2026
         assert deck.rotation_year("2023-09-08", set_code="WOE") == 2026
 
     def test_blank_release_is_graceful(self):
@@ -1923,7 +1924,8 @@ class TestMultisetAndDelta:
 class TestRotation:
     def test_rotation_year(self):
         assert deck.rotation_year("2023-11-17", 3) == 2026
-        assert deck.rotation_year("2024-01-01", 2) == 2026
+        # A January release belongs to the PREVIOUS fall's Standard year (BS8-13).
+        assert deck.rotation_year("2024-01-01", 2) == 2025
 
     def test_rotation_year_blank_or_bad(self):
         assert deck.rotation_year("", 3) is None
@@ -5538,3 +5540,148 @@ class TestTierFloorSpread:
     def test_a_tiny_roster_never_warns(self, monkeypatch):
         monkeypatch.setattr(deck, "deck_quality_vector", lambda d: d)
         assert deck.tier_floor_spread([self._deck(12, 8)] * 5)[1] is None
+
+
+class TestRotationYearIsTheStandardYear:
+    """BS8-13: Standard rotates once a year with the fall set; a set released January–
+    July leaves with the PREVIOUS fall's Standard year. `release year + 3` dated every
+    spring set a year late (MKM/OTJ/BIG → 2027 instead of 2026 with WOE)."""
+
+    def test_the_announced_schedule(self):
+        for released, code, year in [("2023-09-08", "WOE", 2026), ("2024-02-09", "MKM", 2026),
+                                     ("2024-04-19", "OTJ", 2026), ("2024-08-02", "BLB", 2027),
+                                     ("2024-09-27", "DSK", 2027), ("2025-02-14", "DFT", 2027),
+                                     ("2025-06-13", "FIN", 2027), ("2025-08-01", "EOE", 2028),
+                                     ("2025-11-21", "TLA", 2028), ("2024-11-15", "FDN", 2029)]:
+            assert deck.rotation_year(released, set_code=code) == year, code
+
+    def test_a_year_only_date_is_read_as_a_fall_release(self):
+        assert deck.rotation_year("2024") == 2027
+
+    def test_blank_or_garbage_is_none(self):
+        assert deck.rotation_year("") is None and deck.rotation_year("soon") is None
+
+
+class TestRotationRiskScope:
+    """BS8-12: ⚠rot is a CRAFT flag on a STANDARD card; `rotation_risk` takes the
+    card's legalities and `craft_rot_note` delegates to it, so the two cannot disagree."""
+
+    def test_a_non_standard_card_never_rotates_out_of_standard(self):
+        assert not deck.rotation_risk("2020-01-01", legal={"historic", "brawl"})
+        assert deck.rotation_risk("2023-09-08", legal={"standard", "historic"})
+
+    def test_craft_rot_note_delegates(self):
+        pool = {"old card": ("2023-09-08", {"standard"}, "WOE"),
+                "historic card": ("2023-09-08", {"historic"}, "WOE")}
+        assert "⚠rot~2026" in deck.craft_rot_note("Old Card", pool)
+        assert deck.craft_rot_note("Historic Card", pool) == ""
+
+
+class TestCrossDeckBreadthByCost:
+    """BS8-14: the `Decks` column read identity ⊆ deck colours, so a hybrid fit a third
+    of the decks it can be cast in (Bullseye 13 vs 34)."""
+
+    FPS = [("a", {"B"}, {"x"}), ("b", {"R"}, {"x"}), ("c", {"B", "R"}, {"x"}), ("d", {"W"}, {"x"})]
+
+    def test_a_hybrid_counts_every_deck_that_can_pay_either_pip(self):
+        assert deck.cross_deck_breadth({"B", "R"}, {"x"}, self.FPS, cost="{2}{B/R}") == 3
+
+    def test_no_cost_falls_back_to_identity(self):
+        assert deck.cross_deck_breadth({"B", "R"}, {"x"}, self.FPS) == 1
+
+
+class TestSlashSourceFigures:
+    """BS8-16: the colour-source audit only matched `N <colour> sources`; the idiom deck
+    78's own tier line writes is `13/8/10 sources`, checked here as a multiset."""
+
+    SRC = {"W": 13, "U": 8, "B": 0, "R": 0, "G": 10}
+
+    def test_a_matching_claim_in_any_order_is_current(self):
+        assert deck._slash_source_claims("~57% against 13/8/10 sources", self.SRC) == []
+        assert deck._slash_source_claims("on 8/10/13 sources", self.SRC) == []
+
+    def test_a_stale_claim_is_rendered_in_the_prose_order(self):
+        assert deck._slash_source_claims("against 13/8/8 sources", self.SRC, "WUG") == \
+            [("sources", "13/8/8", "13/10/8")]
+        src = {"W": 14, "U": 9, "B": 1, "R": 1, "G": 11}
+        assert deck._slash_source_claims("against 13/8/10 sources", src, "GWU") == \
+            [("sources", "13/8/10", "14/9/11")]
+
+    def test_off_colour_any_colour_counts_are_out_of_scope(self):
+        src = dict(self.SRC, B=1, R=1)   # an any-colour land counts for every colour
+        assert deck._slash_source_claims("against 13/8/10 sources", src, "WUG") == []
+
+    def test_a_want_or_delta_is_not_a_claim(self):
+        assert deck._slash_source_claims("want 13/9/10 sources", self.SRC) == []
+        assert deck._slash_source_claims("+2/1/0 sources", self.SRC) == []
+
+
+class TestFeedbackIdNormalization:
+    def test_recent_ledger_adds_reads_a_padded_id(self, tmp_path):
+        p = tmp_path / "recommendations.csv"
+        import datetime
+        today = datetime.date.today().isoformat()
+        p.write_text("Date,Deck,Cut,Add,Cut Rank,Add Suggested\n"
+                     f"{today},6,Opt,Shock,1,yes\n", encoding="utf-8")
+        assert deck.recent_ledger_adds("06", path=str(p)) == deck.recent_ledger_adds("6", path=str(p))
+
+
+class TestTribesPayoffsAreNotTokenMakers:
+    """BS8-33: a type named only inside a "create … token" clause is a body the card
+    makes, not a type it rewards; changelings qualify for every named type; the payoff
+    is not one of its own qualifiers."""
+
+    def test_token_clause_is_not_a_reference(self):
+        import re
+        txt = "When this enters, create a 4/4 green Bear creature token."
+        clauses = [c for c in re.split(r"[.\n]", txt) if c.strip()]
+        assert not any(deck._tribe_ref_re("Bear").search(c)
+                       and not re.search(r"\bcreates?\b[^.]*\btokens?\b", c, re.I)
+                       for c in clauses)
+
+    def test_a_lord_clause_is(self):
+        import re
+        txt = "Other Bears you control get +1/+1."
+        clauses = [c for c in re.split(r"[.\n]", txt) if c.strip()]
+        assert any(deck._tribe_ref_re("Bear").search(c)
+                   and not re.search(r"\bcreates?\b[^.]*\btokens?\b", c, re.I)
+                   for c in clauses)
+
+
+class TestStrictUpgradesSeePowerAndToughness:
+    """BS8-32: the text-only containment test called a 1/2 for {1}{W} a ★ STRICT UPGRADE
+    of a 2/3 for {2}{W} — 121 such pool groups."""
+
+    CARDS = [(1, "Big Angel", "X", "1")]
+    CD = {"big angel": {"name": "Big Angel", "type": "Creature — Angel", "power": "2",
+                        "toughness": "3", "text": "Flying\nLifelink"}}
+    MANA = {"big angel": ("{2}{W}", 3)}
+
+    def test_a_smaller_body_is_not_an_upgrade(self):
+        assert deck.strict_upgrades("Small Angel", "Flying\nLifelink", 2, self.CARDS,
+                                    self.CD, self.MANA, cand_pt=("1", "2")) == []
+
+    def test_a_bigger_body_at_equal_text_and_cost_is(self):
+        assert deck.strict_upgrades("Bigger Angel", "Flying\nLifelink", 3, self.CARDS,
+                                    self.CD, self.MANA, cand_pt=("3", "3")) == ["Big Angel"]
+
+    def test_unknown_power_neither_blocks_nor_grants(self):
+        assert deck.strict_upgrades("Star Angel", "Flying\nLifelink", 2, self.CARDS,
+                                    self.CD, self.MANA, cand_pt=("*", "*")) == ["Big Angel"]
+
+
+class TestLibrarySearchGateWords:
+    """BS8-15: the type-search gate read "two CARDS" / "black cards" / "nonlegendary
+    cards" as a type named "two" / "black" / "nonlegendary" and printed ✗ NOTHING."""
+
+    def _rx(self):
+        return next(g[0] for g in deck._TARGET_GATES if g[2] == "lib_type")
+
+    def test_numbers_colours_and_adjectives_are_not_types(self):
+        for t in ["Search your library for two cards.", "Search your library for a black card.",
+                  "Search your library for a nonlegendary card.",
+                  "Search your library for any number of cards."]:
+            assert not self._rx().search(t), t
+
+    def test_a_real_type_still_gates(self):
+        assert self._rx().search("Search your library for a Halfling card.").group(1) == "Halfling"

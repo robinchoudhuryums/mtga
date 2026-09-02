@@ -107,6 +107,11 @@ _EXCLUDED = {
                                   "not a claim about the current list — `deck.py "
                                   "consistency` prints that line and it gets pasted in "
                                   "verbatim); unit-tested in test_deck.py",
+    ("deck", "_FIG_SOURCE_SLASH"): "tier-RATIONALE prose (the '13/8/10 sources' idiom, BS8-16 — "
+                                   "a claim about the deck's manabase, not card text)",
+    ("tag_synergies", "_QUOTED_TEXT_RE"): "a QUOTE stripper (the ability a token or emblem "
+                                          "carries), applied before a rule reads the text — "
+                                          "BS8-31; not a card-text pattern",
     ("deck", "_SHARING_CUES"): "tier-RATIONALE prose (a SHARING claim asserts the card "
                                "is in THIS deck, so the cross-deck suppression is "
                                "skipped there); unit-tested in test_deck.py",

@@ -33,7 +33,7 @@
 #: tier: variance barely bites — only cost-reduction and reanimation are thin (2 each).
 #: tier: Manabase is clean: 26 lands, 87% keepable openers, 0 uncastable, no color stray
 #: tier: since Opulent Palace left. The one clear weakness A allows is spent on the win-con:
-#: tier: the deck leans on resolving a big X-spell behind a diffuse (good-stuff) 19-theme
+#: tier: the deck leans on resolving a big X-spell behind a diffuse (good-stuff) 20-theme
 #: tier: spine. Held from S by that slow clock and the absence of a format-warping bomb —
 #: tier: it out-resources opponents rather than closing fast. Aspirational WIP (5 craft
 #: tier: targets); per the rubric that doesn't affect the letter, only `check`/`audit`.

@@ -3598,6 +3598,9 @@ def cmd_tribes(args):
         print(f"  {st:14} {cnt:3}  {'#' * cnt}")
 
     deck_types = {st for subs in subs_by_card.values() for st in subs}
+    changelings = {n for q, n, s, c in cards
+                   if re.search(r"\bchangeling\b|is every creature type",
+                                (data.get(n.lower()) or {}).get("text") or "", re.I)}
     payoffs = []
     seen_p = set()
     for q, n, s, c in cards:
@@ -3606,11 +3609,21 @@ def cmd_tribes(args):
         d2 = data.get(n.lower())
         if not d2 or not d2["text"]:
             continue
+        # A type named only inside a "create … token" clause is a BODY the card makes,
+        # not a type it rewards (BS8-33 — 320 of 902 roster payoff rows were this: "The
+        # Earth King rewards Bear" on "create a 4/4 Bear token"). The reference has to
+        # occur outside every token-creation clause. Changelings qualify for every type a
+        # payoff names (they ARE every creature type — G-59), and the payoff card itself
+        # is not one of its own qualifiers.
+        _txt = _REMINDER_RE.sub(" ", d2["text"])
+        _clauses = [c for c in re.split(r"[.\n]", _txt) if c.strip()]
         refs = {t for t in deck_types
-                if _tribe_ref_re(t).search(d2["text"])}
+                if any(_tribe_ref_re(t).search(c) and not re.search(
+                       r"\bcreates?\b[^.]*\btokens?\b", c, re.I) for c in _clauses)}
         if refs:
             qual = sum(q2 for q2, n2, s2, c2 in cards
-                       if subs_by_card.get(n2, set()) & refs)
+                       if n2 != n and (subs_by_card.get(n2, set()) & refs
+                                       or n2 in changelings))
             seen_p.add(n)
             payoffs.append((qual, n, sorted(refs)))
     if payoffs:
@@ -3937,7 +3950,7 @@ def fit_strength(shared, theme_w, card_text, deck_int, deck_ca, signature=frozen
     return "role-player"
 
 
-def cross_deck_breadth(card_colors, card_themes, fps):
+def cross_deck_breadth(card_colors, card_themes, fps, cost=""):
     """How many decks a card is BOTH castable in AND shares ≥1 SPECIFIC theme with —
     the single definition of "cross-deck breadth" in this toolkit.
 
@@ -3953,8 +3966,12 @@ def cross_deck_breadth(card_colors, card_themes, fps):
     so `suggest`'s column saturated at 99% while the wishlist's stayed meaningful
     (broad-scan F-04). Routing both through here makes that impossible; `check_suggest`
     anchor 13 asserts the two agree on a synthetic card."""
+    # Castability by PRINTED COST when one is given (BS8-14): identity subset read
+    # Bullseye, Death Dealer (`{2}{B/R}`) as fitting 13 decks against 34 by cost, so the
+    # "value per wildcard" column under-read every hybrid by ~2.5×. Identity stays the
+    # fallback for a card with no cost on file (`_filler_castable`, G-58).
     return sum(1 for _id, dcols, dthemes in fps
-               if card_colors <= dcols and (card_themes & dthemes))
+               if _filler_castable(cost, card_colors, dcols) and (card_themes & dthemes))
 
 
 def _deck_fingerprints(meta, exclude_id=None):
@@ -4046,22 +4063,37 @@ _SET_ROTATION_OVERRIDE = {
 }
 
 
+# Standard rotates ONCE a year, with the fall set, and a set leaves with the "Standard
+# year" it was released into — the fall set and everything released before the NEXT
+# fall set go together. `release year + 3` got every spring set wrong by a year
+# (BS8-13): MKM/OTJ/BIG (Feb–Apr 2024) rotate in 2026 with WOE/LCI, and DFT/TDM/FIN
+# (Feb–Jun 2025) in 2027 with BLB/DSK, while the heuristic said 2027 and 2028. Checked
+# against the announced schedule for every set from DMU (2022) to TLA (2025): a set
+# released in August or later belongs to that year's Standard year, one released
+# January–July to the previous year's. `_SET_ROTATION_OVERRIDE` still wins for an
+# announced exception (Foundations).
+_STANDARD_YEAR_STARTS_MONTH = 8
+
+
 def rotation_year(released, years=3, set_code=""):
-    """The year a set rotates out of Standard — its release year + `years` (Standard's
-    ~3-year window), or an announced date from `_SET_ROTATION_OVERRIDE`. None if the
-    date is blank/unparseable. The single primitive behind `rotation_sweep`, the
-    wishlist ⚠rot flag and `rotation_risk`, so 'when does this rotate' is computed one
-    way everywhere."""
+    """The year a set rotates out of Standard — the STANDARD YEAR it was released into
+    (its release year, or the year before for a January–July release) + `years`, or an
+    announced date from `_SET_ROTATION_OVERRIDE`. None if the date is blank or
+    unparseable. The single primitive behind `rotation_sweep`, the wishlist ⚠rot flag
+    and `rotation_risk`, so 'when does this rotate' is computed one way everywhere."""
     override = _SET_ROTATION_OVERRIDE.get((set_code or "").strip().upper())
     if override:
         return override
     try:
-        return int((released or "")[:4]) + years
+        year = int((released or "")[:4])
+        month = int((released or "")[5:7]) if len(released or "") >= 7 else _STANDARD_YEAR_STARTS_MONTH
     except (ValueError, TypeError):
         return None
+    standard_year = year if month >= _STANDARD_YEAR_STARTS_MONTH else year - 1
+    return standard_year + years
 
 
-def rotation_risk(released, years=3, set_code=""):
+def rotation_risk(released, years=3, set_code="", legal=None):
     """True if a card is past ~`years` of Standard life — so a still-`standard`-marked
     pick may have rotated (stale pool) or rotates THIS YEAR OR NEXT. Routed through
     `rotation_year` so an announced long-legality set (Foundations) can't be
@@ -4079,6 +4111,8 @@ def rotation_risk(released, years=3, set_code=""):
     that rotates within ~15 months and is the rate the other four surfaces already
     showed (G-30)."""
     import datetime
+    if legal is not None and "standard" not in legal:
+        return False          # not in Standard — nothing to rotate out of (BS8-12)
     yr = rotation_year(released, years, set_code)
     return bool(yr) and yr <= datetime.date.today().year + 1
 
@@ -4131,17 +4165,16 @@ def craft_rot_note(name, pool_rot):
     and same this-year-or-next window as the wishlist's ⚠rot, so the two surfaces
     cannot disagree. Degrades to '' with no pool / no Released column, like
     `rotation_risk`."""
-    import datetime
     info = pool_rot.get((name or "").strip().lower())
     if not info:
         return ""
     released, legal, set_code = info
-    if "standard" not in legal:
+    # ONE predicate (BS8-12): this used to re-implement the window beside
+    # `rotation_risk`, and the two disagreed on SCOPE — `suggest` flagged owned rows
+    # and Brawl decks — while a docstring said they "cannot disagree".
+    if not rotation_risk(released, set_code=set_code, legal=legal):
         return ""
-    yr = rotation_year(released, set_code=set_code)
-    if yr and yr <= datetime.date.today().year + 1:
-        return f"  ⚠rot~{yr}"
-    return ""
+    return f"  ⚠rot~{rotation_year(released, set_code=set_code)}"
 
 
 def _pool_rotation_index():
@@ -4481,17 +4514,25 @@ def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_form
     top = suggestions if limit == 0 else suggestions[:limit]
 
     fps = _deck_fingerprints(meta, exclude_id=d["id"])
+    _mm = load_mana()
+    # ⚠rot is a CRAFT flag (G-30: an owned card costs no wildcard) and a STANDARD flag —
+    # a Brawl deck's picks do not rotate out of Brawl. Until BS8-12 it printed on owned
+    # rows and on 20–29 of 40 picks for each Brawl deck.
+    _rot_deck = pool_format_key(dmeta.get("format")) == "standard" if not any_format else False
     picks, hi_reuse = [], []
     for score, name, r, shared in top:
         h = owned_of(name.lower())
         card_cols = card_colors(r.get("Color(s)"))
         card_themes = {t.strip() for t in (r.get("Synergies") or "").split(";") if t.strip()}
-        fits = cross_deck_breadth(card_cols, card_themes, fps)
+        _me = _mm.get(name.lower())
+        fits = cross_deck_breadth(card_cols, card_themes, fps, cost=_me[0] if _me else "")
         if h == 0 and fits >= 3:
             hi_reuse.append((name, fits))
         picks.append({"name": name, "rarity": (r.get("Rarity") or "").strip(),
                       "owned": h, "decks": fits, "score": score, "matches": shared,
-                      "rotates": rotation_risk(r.get("Released") or "", set_code=r.get("Set Code") or "")})
+                      "rotates": bool(_rot_deck and h == 0 and rotation_risk(
+                          r.get("Released") or "", set_code=r.get("Set Code") or "",
+                          legal={x.strip() for x in (r.get("Legalities") or "").split(";")}))})
 
     res.update(ok=True, colors=deck_colors,
                themes=sorted(theme_w.items(), key=lambda kv: -kv[1])[:6],
@@ -6411,7 +6452,7 @@ def recent_ledger_adds(deck_id, days=14, path=None):
     cutoff = (_dt.date.today() - _dt.timedelta(days=days)).isoformat()
     out = set()
     for r in load_recommendations(path):
-        if (r.get("Deck") or "").strip() != str(deck_id):
+        if _norm_deck_id(r.get("Deck")) != _norm_deck_id(str(deck_id)):
             continue
         if (r.get("Date") or "") < cutoff:
             continue
@@ -6807,7 +6848,13 @@ def cmd_feedback(args):
     """Report how the recommenders scored against the swaps actually applied."""
     rows = load_recommendations()
     if getattr(args, "id", None):
-        rows = [r for r in rows if r.get("Deck") == args.id]
+        # Normalized both sides (G-82 / BS8-17): `feedback 06` read "nothing recorded"
+        # for deck 6, and an unknown id was indistinguishable from an un-tuned deck.
+        if not find_deck(args.id):
+            eprint(f"No deck with id {args.id!r}. Try: deck.py list")
+            return 1
+        want = _norm_deck_id(args.id)
+        rows = [r for r in rows if _norm_deck_id(r.get("Deck")) == want]
     if not rows:
         print("No recommendation outcomes recorded yet. They accrue automatically "
               "every time `deck.py swap --apply` or `apply-flex --apply` runs.")
@@ -9227,7 +9274,7 @@ def _upgrade_clauses(name, text):
     return {c.strip(" .;") for c in re.split(r"[\n.]", t) if c.strip(" .;")}
 
 
-def strict_upgrades(cand_name, cand_text, cand_mv, cards, carddata, mana):
+def strict_upgrades(cand_name, cand_text, cand_mv, cards, carddata, mana, cand_pt=(None, None)):
     """In-deck card names that `cand` STRICTLY upgrades — every clause of the incumbent's
     text is present in the candidate's, at the same or lower mana value, AND the candidate
     does strictly more (an extra clause, or the same text for less mana). Color identity
@@ -9253,7 +9300,19 @@ def strict_upgrades(cand_name, cand_text, cand_mv, cards, carddata, mana):
         imv = (mana.get(nl) or (None, None))[1]
         if cand_mv is not None and imv is not None and cand_mv > imv:
             continue                                   # costs more — not strict
-        strictly_more = len(cc) > len(ic) or (
+        # POWER / TOUGHNESS are part of "strictly more" (BS8-32): the text-only test called
+        # a 1/2 for {1}{W} a ★ STRICT UPGRADE of a 2/3 for {2}{W} with the same clause set
+        # — 121 such pool groups. A smaller body on either axis is not an upgrade; a bigger
+        # one at equal text and cost is. `card_power` returns None for `*`/X, which
+        # compares as unknown (neither blocks nor grants).
+        cp, ct = card_power(cand_pt[0]), card_power(cand_pt[1])
+        ip, it = card_power(cd.get("power")), card_power(cd.get("toughness"))
+        if (cp is not None and ip is not None and cp < ip) or \
+                (ct is not None and it is not None and ct < it):
+            continue                                   # a smaller body — not strict
+        bigger = (cp is not None and ip is not None and cp > ip) or \
+                 (ct is not None and it is not None and ct > it)
+        strictly_more = len(cc) > len(ic) or bigger or (
             cand_mv is not None and imv is not None and cand_mv < imv)
         if strictly_more:
             out.append(n)
@@ -9324,7 +9383,8 @@ def cmd_screen(args):
         roles = sorted(classify_roles(text))
         ax = doubler_axis(text)
         sup = doubler_support(ax, cards, carddata, doubler_restriction(text)) if ax else 0
-        ups = strict_upgrades(name, text, mv, cards, carddata, mana)
+        ups = strict_upgrades(name, text, mv, cards, carddata, mana,
+                              cand_pt=(cd.get("power"), cd.get("toughness")))
         legs = legal.get(nl) or legal.get(nl.split(" // ")[0]) or set()
         cast_ok, cast_note = _candidate_castability(cost, ident, declared)
         rows.append(dict(name=name, cost=cost, mv=mv, text=text, roles=roles,
@@ -10972,6 +11032,47 @@ _RATIONALE_FIGURES += [
 ]
 
 
+# The SLASH idiom — "13/8/10 sources", the shape deck 78's own tier line writes and the
+# case that motivated the per-colour patterns above, which cannot see it (BS8-16). The
+# claim is a MULTISET of the deck's non-zero source counts (the colour order is whatever
+# the prose chose), so it is checked as one: same WANT/DELTA guards as the per-colour form.
+_FIG_SOURCE_SLASH = re.compile(r"(?<![+\-\d/])(\d{1,2}(?:/\d{1,2}){1,4})[  ]+sources?\b")
+
+
+def _slash_source_claims(prose, sources, colors=None):
+    """[(key, quoted, actual)] for every "N/N/N sources" claim in `prose` whose numbers
+    do not match the deck's source counts as a multiset. `sources` is the
+    `deck_color_sources` dict; `colors` (the deck's `#: colors:`, in header order)
+    scopes the comparison to the colours the deck RUNS — an any-colour land is a real
+    source of every colour, so the off-colour counts are non-zero and are not what the
+    prose claims. `actual` is rendered in header order so a re-grounding reads
+    naturally. A claim preceded by `want`/`+` is a target or a delta, not a count, and
+    is skipped — the same rule the per-colour patterns apply."""
+    out = []
+    scope = card_colors(colors) if colors else set()
+    order = [c for c in "WUBRG" if c in scope] or [c for c in "WUBRG" if (sources or {}).get(c)]
+    live_in_order = [(sources or {}).get(c, 0) for c in order]
+    live = sorted(live_in_order)
+    for m in _FIG_SOURCE_SLASH.finditer(prose or ""):
+        before = prose[max(0, m.start() - 24):m.start()]
+        if _FIG_SOURCE_WANT.search(before):
+            continue
+        qvals = [int(x) for x in m.group(1).split("/")]
+        if sorted(qvals) != live:
+            # Render the live counts in the ORDER the prose used, matched by rank (the
+            # prose's colour order is whatever it chose; a re-grounding must not reorder
+            # its argument): "13/8/10" against live W14 U9 G11 reads back as "14/9/11".
+            by_rank = sorted(live, reverse=True)
+            qrank = sorted(range(len(qvals)), key=lambda i: -qvals[i])
+            rendered = [0] * len(qvals)
+            for pos, i in enumerate(qrank):
+                rendered[i] = by_rank[pos] if pos < len(by_rank) else 0
+            if len(qvals) != len(live):
+                rendered = live_in_order
+            out.append(("sources", m.group(1), "/".join(str(n) for n in rendered)))
+    return out
+
+
 def _figure_lookup(vec, cards, carddata):
     """The quality vector PLUS the deck's colour-source counts, keyed `sources_W` etc.
 
@@ -11629,6 +11730,14 @@ def rationale_staleness(d, carddata=None):
                         else int(quoted) == int(actual))
                 if not same and (key, quoted, actual) not in stale_figures:
                     stale_figures.append((key, quoted, actual))
+    # The slash idiom ("13/8/10 sources") is checked as a multiset (BS8-16) — the
+    # per-colour patterns above cannot see it, and it is the shape deck 78 writes.
+    _src = {k[len("sources_"):]: v for k, v in figure_values.items() if k.startswith("sources_")}
+    _cols = (meta or {}).get("colors") or ""
+    for header in ("tier", "archetype"):
+        for claim in _slash_source_claims((meta or {}).get(header, "") or "", _src, _cols):
+            if claim not in stale_figures:
+                stale_figures.append(claim)
     return stale_cards, stale_figures
 
 
@@ -11709,6 +11818,13 @@ def note_figure_staleness(d, vec=None, meta_cards=None):
                     row = (note, key, quoted, actual)
                     if row not in out:
                         out.append(row)
+        _src = {k[len("sources_"):]: v for k, v in figure_values.items()
+                if k.startswith("sources_")}
+        _cols = (meta or {}).get("colors") or ""
+        for key, quoted, actual in _slash_source_claims(note, _src, _cols):    # BS8-16
+            row = (note, key, quoted, actual)
+            if row not in out:
+                out.append(row)
     return out
 
 
@@ -12298,8 +12414,14 @@ _TARGET_GATES = [
     # type-wide searches (creature / land / artifact / permanent) that in a 60-card deck
     # report "you have a deck".
     (re.compile(r"search your library for (?:up to \w+ |a |an |two |three )?"
-                r"(?!card\b|creature|land|artifact|permanent|nonland|instant|sorcery|"
-                r"enchantment|planeswalker|colorless|basic)([A-Za-z]{3,}) cards?", re.I),
+                # `cards?` (plural — "search for two CARDS" read "cards" as a type), the
+                # colour words and the legendary/token adjectives (BS8-15): each printed a
+                # false "✗ NOTHING" (Behold the Beyond, Mausoleum Secrets, Unmarked Grave).
+                r"(?!cards?\b|creature|land|artifact|permanent|nonland|instant|sorcery|"
+                r"enchantment|planeswalker|colorless|basic|white|blue|black|red|green|"
+                r"monocolored|multicolored|legendary|nonlegendary|nontoken|historic|"
+                r"two\b|three\b|four\b|any\b|that\b)"
+                r"([A-Za-z]{3,}) cards?", re.I),
      "{0} cards in the deck", "lib_type"),
 
     # NO generic "cards to discard" rule. It was written, and it reported 35 for every

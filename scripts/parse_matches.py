@@ -430,6 +430,16 @@ def arena_deck_map():
         return {}
 
 
+def _norm_id(raw):
+    """Zero-padded ids accepted, like every by-id command (G-82 / BS8-17): `06 L` used
+    to be refused while `deck.py stats 06` worked. Delegates to deck.py when available."""
+    try:
+        import deck as dk
+        return dk._norm_deck_id(raw)
+    except Exception:
+        return (raw or "").strip().lower()
+
+
 def deck_ids():
     """Every repo deck id, for validating the name-prefix fallback. Empty on failure."""
     try:
@@ -998,7 +1008,7 @@ def parse_manual(text, existing_ids=(), deck_ids=None, today=None):
         if result not in ("W", "L", "D"):
             warnings.append(f"line {lineno}: result {parts[1]!r} is not W, L or D — skipped")
             continue
-        if deck_ids is not None and deck not in deck_ids:
+        if deck_ids is not None and _norm_id(deck) not in {_norm_id(x) for x in deck_ids}:
             warnings.append(f"line {lineno}: no deck {deck!r} in decks/ — skipped. An "
                             f"unknown id would appear in --report as a deck that does "
                             f"not exist.")

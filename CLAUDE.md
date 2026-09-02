@@ -407,7 +407,10 @@ directions.
   `wishlist.py --suggest-targets` scores fit by theme rarity (idf) so broad decks stop
   acting as catch-alls — only a *specific* theme is a confident match. Workflow: `--add`
   → `--suggest-targets --write` → text-review the `review` cards, which the tag heuristic
-  genuinely cannot place. [G-20]
+  genuinely cannot place. **STRONG means one thing in both modes since BS8-38**: a specific
+  theme, score ≥ 1.5 AND a clear lead (`--suggest-targets` took `lead OR score`). Measured
+  before the fix, STRONG matched the hand-set Target on 20 of 86 rows — a proposal with a
+  reason, never a placement. [G-20]
 - **`card-pool.csv` carries a `Legalities` column**, so `deck.py suggest` filters craft
   picks to the deck's `#: format:` by default (`--format` overrides, `--any-format`
   disables). A pool built before the column lacks it — `suggest` warns and shows all
@@ -464,7 +467,7 @@ directions.
   NAME, and one whose subject is the card POPULATION ("Standard's Dragons average MV 5.30")
   — plus the rule that a name forming part of THIS deck's own name is not another deck, since
   the variant convention makes 26a "Iron Forge — Virulent". **THAT RULE MAKES A RENAME A SUPPRESSION CHANGE (measured 2026-09-02):** `_other_deck_ids` returns EMPTY for a bare `40a Some Name` — the id route needs the literal word *deck* or a possessive — so the roster-NAME mask carries the commonest cross-deck citation, and adopting `Paradox Drive — ParadoXponential` made 40a's name contain its parent's, stopping "Paradox Drive" masking inside 40a's own prose. A tightening here; **re-run the audit on both decks after any rename.**
-  **THE MANABASE AXIS WAS OUTSIDE THE SCAN ALTOGETHER until 2026-09-02** — every figure family resolves against `deck_quality_vector`, which has no colour-source term, so deck 78 claimed "~51% against 13/8/8 sources" through a rebuild to 13/8/10 and the audit said CURRENT. Fixed by widening the LOOKUP (`_figure_lookup` adds `sources_W`…`sources_G`) so one pattern per colour reuses every existing suppression instead of a parallel pass. Guards measured, not invented: a DELTA ("+8 white sources") and a WANT (`consistency` prints "want 13 G sources") are not claims. It also exposed a bigger hole — `_OTHER_DECK_RE` needs the word *deck*, but the prose's commoner idiom is the POSSESSIVE (`68a's 12 green sources`, **35 roster occurrences**), so a cross-deck claim flagged against the citing deck; `_other_deck_ids` reads both, gating the possessive on a REAL roster id. Roster: 4 flags → 3, the suppressed one exactly that false positive.
+  **THE MANABASE AXIS WAS OUTSIDE THE SCAN ALTOGETHER until 2026-09-02** — every figure family resolves against `deck_quality_vector`, which has no colour-source term, so deck 78 claimed "~51% against 13/8/8 sources" through a rebuild to 13/8/10 and the audit said CURRENT. Fixed by widening the LOOKUP (`_figure_lookup` adds `sources_W`…`sources_G`) so one pattern per colour reuses every existing suppression instead of a parallel pass. **The per-colour patterns could not see the idiom that motivated them** — deck 78 writes `13/8/10 sources` — so `_slash_source_claims` checks the slash form as a multiset over the deck's `#: colors:` and renders the live counts in the prose's own order (BS8-16); it found deck 78 stale the day it landed, because any-colour lands are sources now. Guards measured, not invented: a DELTA ("+8 white sources") and a WANT (`consistency` prints "want 13 G sources") are not claims. It also exposed a bigger hole — `_OTHER_DECK_RE` needs the word *deck*, but the prose's commoner idiom is the POSSESSIVE (`68a's 12 green sources`, **35 roster occurrences**), so a cross-deck claim flagged against the citing deck; `_other_deck_ids` reads both, gating the possessive on a REAL roster id. Roster: 4 flags → 3, the suppressed one exactly that false positive.
   **TWO RESIDUALS, ONE SHAPE — a proximity window loses a long list.** The EXCLUSION check misses a name several lines into a wrapped one (deck 52 named Zemo under "Deliberately NOT included" while running him; `wrong_exclusion_claims` returned empty). And SCANNING `#: notes:` for staleness was re-measured and re-DECLINED 2026-08-31: 81 roster hits at ~45% precision, 61 with a clause-wide history cue, and deck 59's cut Ancestors' Aid is caught by NEITHER — its own clause said another card "were CUT … for Hugs", so the suppressions that make this scan trustworthy are exactly what blind it in a build log. [G-27]
 - **`suggest`'s `Decks` column is cross-deck BREADTH, not curated fit** — castable and
   sharing a *central* theme that is also SPECIFIC, with variants collapsed to their core
@@ -485,9 +488,9 @@ directions.
   full rotation. **A claim that two implementations agree is not agreement.** Plain
   `suggest` also excludes LANDS now: a land has no cost, so the printed-cost castability
   gate (G-58) passed an off-colour one unconditionally.
-  **Reprint caveat, partly encoded:** the pool keys ONE printing, so a card reprinted
-  into a long-legality set inherited the wrong date — `_SET_ROTATION_OVERRIDE` fixes the
-  announced ones, and the residual is real: verify against the official schedule. [G-30]
+  **The year is the STANDARD YEAR, not release + 3 (BS8-13)**: a January–July set leaves with
+  the previous fall's (MKM/OTJ/BIG → 2026). **⚠rot is a craft flag on a Standard card** (BS8-12:
+  `craft_rot_note` delegates to `rotation_risk`). Reprints: `_SET_ROTATION_OVERRIDE`; verify. [G-30]
 - **`deck.py suggest-homes <card>` is the cross-deck fit pass** — every deck where the
   card is castable, format-legal and shares a *central* theme, labelled KEY /
   role-player / tangential, strongest first, with the card's oracle text and a cut hint
@@ -736,7 +739,7 @@ directions.
   MANA ABILITY) and `{U}` Bruce Banner / `{1}{U}` Norman Osborn (identity from a TRANSFORM
   cost); only Iroh was truly gold. The one-card rule is easy to hold and a 111-row filter is
   where it breaks. **`deck.py screen <id> <pile>` is the tool** — it prints the cost and
-  reads castability from it; `/add-cards` requires it over ~10; the `tier --to`/`redundancy` fillers joined at BS8-05. [G-58]
+  reads castability from it; `/add-cards` requires it over ~10; the `tier --to`/`redundancy` fillers joined at BS8-05, `cross_deck_breadth` (Bullseye 13 → 34 decks) and the wishlist's `--rank`/`--suggest-targets` loops at BS8-14/36 — diff every `<= declared` site before calling the family closed. [G-58]
 - **A TRIBE'S VIABILITY IS ITS PAYOFF COUNT, NOT ITS BODY COUNT, and changelings cannot fix
   the missing half.** Measured across eight tribes: Dragon 71 bodies / 20 payoffs (built as
   deck 49), Dinosaur 52/11, Vampire 69/3, Mutant 79/**2**, Demon 28/1, Plant 27/1, God 21/**0**,
@@ -1128,7 +1131,10 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   two is cheap, and is a GATE now, not a one-off: `check_roles.py --tags` sweeps the pool
   for it, baselined at 188 and soft in `check_all` (a line count: 173 entries). It reads the tagger's own
   `MECHANIC_RULES` live (never a copy) and excludes the deathtouch KEYWORD path by
-  construction — 250 of the 388 raw hits, which an allowlist would have had to enumerate.
+  construction. **The tag rules read the CARD, not what it describes (BS8-31)**: `sacrifice`
+  and `removal` run on reminder- and quote-stripped text (every Saga was `sacrifice`),
+  `reanimator` needs one graveyard→battlefield clause, `landfall`/`convoke` no longer map to
+  `ramp`; `--merge` cannot REMOVE a stale library tag, so the pool is the corrected store — 250 of the 388 raw hits, which an allowlist would have had to enumerate.
   A worklist, not a defect count. **Residual: 340 pool blanks —
   a long tail of un-themeable effects, and a new theme for four cards is not the fix.** [K-09]
 - **After editing a tag pattern, regenerate BOTH derived tag stores** —
