@@ -16,7 +16,7 @@
 #: archetype: be full of Allies (18 and 15 bodies against ONE and two payoffs), where
 #: archetype: this deck is built on the payoff half and splashes green for it.
 #: tier: B (PROVISIONAL) — still unplayed, and still graded one band UNDER its A metrics
-#: tier: floor. The floor reads A on interaction 9 and card advantage 3 at a 3.28 curve.
+#: tier: floor. The floor reads A on interaction 9 and card advantage 3 at a 3.33 curve.
 #: tier: INTERACTION IS NOW HONEST AND CARD ADVANTAGE IS THE ONE TO WATCH. The 9 counts
 #: tier: Allies at Last for the first time: the removal patterns all read "dealS damage"
 #: tier: while the card says "each DEAL damage", so it scored zero interaction until the
@@ -32,9 +32,12 @@
 #: tier: legendary 3/3, and protection WAS 2 back then, so one removal spell ended it.
 #: tier: THAT IS LARGELY GONE. Starfield Vocalist was ADDED as a second doubler that reads
 #: tier: neither Ally nor power, so it doubles every enters-caused trigger in the list
-#: tier: including the four on noncreature permanents Katara cannot reach; and protection
-#: tier: went 2 -> 4, one of which is a ONE-MANA hexproof (Enter the Avatar State) pointed
-#: tier: straight at the removal spell this paragraph is about.
+#: tier: including the four on noncreature permanents Katara cannot reach; Elspeth and
+#: tier: then Doubling Season (ADDED 2026-09-02) multiply the token OUTPUT the other two
+#: tier: double the TRIGGER of, so the engine is now four multipliers deep. Protection
+#: tier: went 2 -> 4 along the way and sits at 3 today: Enter the Avatar State was CUT
+#: tier: 2026-09-02 for The Millennium Calendar, because the one-mana hexproof insured a
+#: tier: single point of failure that four doublers no longer have.
 #: tier: WHAT STILL ARGUES FOR B, honestly: Katara remains the deck's worst castability
 #: tier: row — {G}{W}{U} on turn three prices at ~51% against 13/8/8 sources, so she lands
 #: tier: turn four or five; the interaction is still cheap tricks rather than a suite and
@@ -84,12 +87,23 @@
 #: notes: attacking TOKENS have flying, and the deck makes ten of them.
 #: notes: Sonar Strike was CUT earlier for its conditional damage (attacking, blocking or
 #: notes: tapped only) and a lifegain rider that needs a Bat, of which this deck runs zero.
+#: notes: DOUBLING SEASON STACKS MULTIPLICATIVELY, on both axes. With Elspeth it is x4
+#: notes: tokens, so Kyoshi Warriors under Katara is 2 triggers x 4 = EIGHT Ally tokens;
+#: notes: it doubles all 13 counter sources; and it doubles the loyalty Elspeth ENTERS
+#: notes: with, so she can -3 twice and live. Two things it does NOT do: it never touches
+#: notes: a static or activated ability, and it would double an Impending card's time
+#: notes: counters (Overlord of the Mistmoors 4 -> 8) if one is ever added.
+#: notes: THE MILLENNIUM CALENDAR IS A PARALLEL CLOCK, NOT A DISTRACTION, and the count
+#: notes: that decides it is permanents untapping: this deck routinely untaps 15+. At {2}
+#: notes: per turn that is 6 turns to 1,000 solo and THREE with Doubling Season out, on a
+#: notes: one-mana artifact creature removal and sweepers cannot touch. Grade it as the
+#: notes: board-stall insurance; the deck still wins by attacking most games.
 
 # Engine — the doubler and what it doubles
 1 Great Divide Guide (TLA) 181
 1 Haru, Hidden Talent (TLA) 182
 1 South Pole Voyager (TLA) 35
-1 Sheriff of Safe Passage (OTJ) 29
+1 Doubling Season (FDN) 216
 1 Starfield Vocalist (EOE) 78
 1 Belladonna Took (HOB) 4
 1 Katara, the Fearless (TLA) 230
@@ -102,6 +116,7 @@
 1 Sokka, Lateral Strategist (TLA) 241
 1 Niko, Light of Hope (DSK) 224
 1 Elspeth, Storm Slayer (TDM) 11
+1 The Millennium Calendar (LCI) 257
 
 # Ally bodies and token makers
 1 Appa, Steadfast Guardian (TLA) 10
@@ -120,7 +135,6 @@
 
 # Interaction
 1 Sheltered by Ghosts (DSK) 30
-1 Enter the Avatar State (TLA) 18
 1 Allies at Last (TLA) 164
 1 Duty Beyond Death (TDM) 10
 1 Jet, Freedom Fighter (TLA) 229
@@ -147,5 +161,6 @@
 #~ note: Katara, Water Tribe's Hope is PARKED, not rejected, and the number to re-check is the manabase. Measured 2026-09-01: {2}{W}{U}{U} against 8 blue sources is 43% on curve at turn five -- it would become the deck's worst castability row, below Katara the Fearless at 51%, which is the row the tier block already names as what holds this deck at B. Great Divide Guide (every land AND Ally taps for any colour) and Dazzling Theater (convoke pays a coloured pip off a blue body) both rescue her, but P(drawing either by turn five) is only 33.6%, before either resolves or survives. She comes in when blue sources go up -- roughly 18 are needed for a 90% double pip -- not when a slot opens.
 #~ -Kyoshi Warriors | +Mister Fantastic, Reed Richards | SIDEGRADE (owned): {3}{U} reach body that draws whenever one or more tokens you control enter. He was CUT 2026-09-01 for Celebrate the Mountain-king, which took interaction 7 -> 8 at the cost of card advantage 4 -> 3; he is the way to buy that draw back if the axis reads too thin in play. Cut listed as Kyoshi Warriors because both are MV 4 and the 4-slot is the curve's fat point.
 #~ note: TWO THINGS TO KNOW BEFORE BRINGING MISTER FANTASTIC BACK. His trigger reads "one or more tokens", so ELSPETH DOES NOT MULTIPLY HIM -- doubling a single creation event enters them simultaneously, which is one trigger, not two. Katara and Starfield DO, because doubling the trigger produces two separate token events. And he is a {3}{U} pip against 8 blue sources in a deck whose worst castability rows are already blue; he is also a non-Ally, so Katara doubles nothing of his own.
-#~ -Sheriff of Safe Passage | +Orcrist, Goblin-cleaver | SIDEGRADE (owned M): {3} Equipment, +2/+2 and trample, and on combat damage to a player it makes a Treasure for EACH creature you control of a chosen type -- 24 Humans and 21 Allies here, so 5-6 off a normal board and 10-12 once Elspeth doubles them. Belladonna Took triggers PER token ("whenever A token enters"), so one connect completes her whole gain-then-draw-then-counters ladder. Sheriff is the cut because he is the one creature left that BOTH doublers are blind to: "enters with a +1/+1 counter for each other creature" is a replacement effect, not a triggered ability, and he is a Human Knight rather than an Ally.
-#~ note: WHY ORCRIST IS PARKED RATHER THAN PLAYED, so the case is not re-derived: it is SIX mana before it does anything ({3} cast plus equip {3}) and it still has to connect, and the payoff is MANA this deck cannot spend -- avg MV 3.28, top end 5-6, and Great Divide Guide already turns every land AND every Ally into any-colour mana. United Front is the only {X} sink in the list. It is also the only Equipment, so there is no equip discount and nothing to tutor it. What WOULD change the answer: more {X} sinks or a real top end. The evasion objection is already answered -- Starry-Eyed Skyrider grants flying to an attacking creature and Enter the Avatar State grants flying plus hexproof for {W} -- so do not cut EITHER of those to make room for it.
+#~ note: applied — Doubling Season in for Sheriff of Safe Passage.
+#~ -Suki, Courageous Rescuer | +Orcrist, Goblin-cleaver | SIDEGRADE (owned M): re-parked 2026-09-02 after its listed cut (Sheriff of Safe Passage) left for Doubling Season. {3} Equipment, +2/+2 trample, Treasure per creature of a chosen type on connect -- 24 Humans / 21 Allies here, now x4 under Elspeth plus Doubling Season. Suki is the listed cut because her token trigger is hard-capped once per turn (the feeder that gains least from four multipliers) and her anthem is static.
+#~ note: WHY ORCRIST IS PARKED RATHER THAN PLAYED, so the case is not re-derived: it is SIX mana before it does anything ({3} cast plus equip {3}) and it still has to connect, and the payoff is MANA this deck cannot spend -- avg MV 3.33, top end 5-6, and Great Divide Guide already turns every land AND every Ally into any-colour mana. The {X} sinks are United Front and now The Millennium Calendar's {2} activation, which is the one thing that has moved in its favour. It is also the only Equipment, so there is no equip discount and nothing to tutor it. The evasion objection is answered by Starry-Eyed Skyrider (flying to an attacking creature) -- Enter the Avatar State was CUT 2026-09-02, so Skyrider is now the ONLY evasion granter; do not cut it to make room for this.
