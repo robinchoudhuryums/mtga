@@ -209,7 +209,9 @@ def _pattern_groups():
                  # Swamps you control") reads at its floor in every model here.
                  "_DECK_STATE_AXIS_RE",
                  # Added by broad-scan F-04 — live, but previously uncovered.
-                 "_DOUBLER_POWER_RE", "_REMINDER_RE",
+                 # (`_REMINDER_RE` moved to the RAW group below at BS8-30: the norm
+                 # corpus is now reminder-stripped, so it matches nothing there BY DESIGN.)
+                 "_DOUBLER_POWER_RE",
                  # Zone-conflict detector (the mirror of cost_upside_flags): which
                  # graveyards a card EMPTIES, and which it NEEDS populated. A dead
                  # pattern here silently stops the flag firing — the failure this whole
@@ -250,8 +252,13 @@ def _pattern_groups():
     # max(tag_score, structural), so a dead pattern here drops the structural signal
     # to 0 and the max() hides it — no error, no visible count change.
     for name in ("_STRUCT_NONETB_TRIGGER_RE", "_STRUCT_ACTIVATED_RE",
-                 "_STRUCT_RULEBEND_RE", "_STRUCT_MODAL_RE", "_STRUCT_REMINDER_RE"):
+                 "_STRUCT_RULEBEND_RE", "_STRUCT_MODAL_RE"):
         out.append((f"lib.{name}", getattr(lib, name), "norm"))
+    # The two reminder-text strippers run BEFORE normalization — `_norm_role_text`
+    # applies deck._REMINDER_RE itself since BS8-30 — so the norm corpus contains no
+    # parenthetical for them to match. Raw is the form they actually see.
+    out.append(("deck._REMINDER_RE", deck._REMINDER_RE, "raw"))
+    out.append(("lib._STRUCT_REMINDER_RE", lib._STRUCT_REMINDER_RE, "raw"))
     # `lib.land_production` (BS8-01/02): the ONE reader behind every colour-source count
     # and `suggest --lands`. Every one of these going dead is the quiet direction — an
     # any-colour land back to zero sources, a fetch back to invisible. Raw form: the Add

@@ -52,9 +52,9 @@
 #: archetype: vs the parent 52: zero Void cards, zero warp, no sacrifice-outlet layer, and
 #: archetype: a curve a full mana value higher.
 #: tier: B — PROVISIONAL, GRADED 2026-08 on an UNBUILT list (3 craft targets, zero games).
-#: tier: One band BELOW the measurable floor, which reads A on interaction 12 plus card
+#: tier: One band BELOW the measurable floor, which reads A on interaction 13 plus card
 #: tier: advantage 2. Against the rubric an A needs four things and this list fails two:
-#: tier:   A-FLOOR — yes. Interaction 12 clears five; the sum of 14 clears seven.
+#: tier:   A-FLOOR — yes. Interaction 13 clears five; the sum of 14 clears seven.
 #: tier:   COHERENT ENGINE — yes. Eight enablers feed SEVEN reanimation effects feed six
 #: tier:     bombs, and the ratio is deliberate: a reanimator needs more ways to fill the
 #: tier:     yard than things to put in it. Reanimation was trimmed from ten to seven over

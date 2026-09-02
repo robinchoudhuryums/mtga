@@ -15,8 +15,8 @@
 #: tier: after the Divergent Equation / Matterbending Mage / Agna Qel'a swaps and the
 #: tier: Ooze Spill / Amazing Acrobatics counter upgrade (two conditional counters — Essence
 #: tier: Scatter's creatures-only and Reasonable Doubt's pay-{2} — became hard counters, so
-#: tier: 5 of the 6 counters are no longer situational). Metrics floor is A: interaction 11
-#: tier: + card advantage 6 on a tight 2.32 curve. The interaction is well SHAPED, not just
+#: tier: 5 of the 6 counters are no longer situational). Metrics floor is A: interaction 10
+#: tier: + card advantage 7 on a tight 2.32 curve. The interaction is well SHAPED, not just
 #: tier: numerous — most of it is instant-speed and most can answer a noncreature
 #: tier: permanent, so a resolved planeswalker or enchantment isn't a blank. (The count
 #: tier: reads 11 since the role classifier was fixed to credit artifact/enchantment

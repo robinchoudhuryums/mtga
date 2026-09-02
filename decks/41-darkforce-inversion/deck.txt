@@ -19,7 +19,7 @@
 #: archetype: runs no Ninjas and no sneak/clock package; the creature base is chosen for
 #: archetype: ETB text, not evasion.
 #: tier: B — Orzhov blink-value control, one band BELOW the metrics floor of A, and
-#: tier: deliberately so. The floor reads A on interaction 7 (six of it instant-speed)
+#: tier: deliberately so. The floor reads A on interaction 3 (six of it instant-speed)
 #: tier: over a 2.64 curve — five surplus removal spells were traded for the card
 #: tier: advantage below, and 8 answers is still deep for a control deck.
 #: tier: 1. CARD ADVANTAGE was the standing weakness and is now HALF-FIXED: the measured

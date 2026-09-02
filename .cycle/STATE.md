@@ -2713,3 +2713,16 @@ chat at the end of this session; the full report is the scan's attachment).
 
 Where I left off: batch 1 committed and pushed on `claude/broad-scan-6kxevb`; gates green
 (one expected G-75 soft warning); full pytest green. Next: the user picks batch 2.
+
+## 2026-09-02 — broad-scan #8, batch 2 (role classifier) — broad-implement
+
+Completed: BS8-27/30/10/11/29/28/13 — reminder text stripped in `_norm_role_text`, blink
+and graveyard-hate guards on targeted removal, scoped Sweeper, strict Reanimation,
+self-discount and self-pump exclusions, ~150 verified interaction/counter/CA misses, loot
+shapes at equal counts. 45 decks change a count; floor spread 63 A / 43 B / 9 C, zero
+≥2-band mismatches. 35 prose figures in 22 deck files re-numbered mechanically — the
+ARGUMENTS around them need a human read (block lists it). Baselines acknowledged as a
+deliberate bulk pass (119 new zero-role cards, sampled). Block:
+`.cycle/blocks/2026-09-broad-scan-8-batch2-roles-broad-implement.md`.
+
+Where I left off: batch 2 committed; batch 3 (green-when-red / red-when-green) next.

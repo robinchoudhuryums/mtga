@@ -4,7 +4,7 @@
 #: colors: BRG
 #: plan: midrange
 #: tier: B (PROVISIONAL — unplayed brew, graded 2026-08-08). Metrics floor is A
-#: tier: (interaction 5 + card advantage 4, protection 3, avg MV 2.77), held UNDER it:
+#: tier: (interaction 5 + card advantage 5, protection 2, avg MV 2.77), held UNDER it:
 #: tier: the deck is unplayed, both reanimation leaders are CRAFT targets (Eddie M,
 #: tier: Carnage R) so the core line is aspirational, Eddie's MV<=1 gate reads ⚠ thin
 #: tier: (2 real targets — Spinneret, Masked Meower), and the theme neighbourhood is

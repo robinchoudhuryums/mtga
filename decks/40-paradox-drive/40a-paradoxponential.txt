@@ -18,7 +18,7 @@
 #: archetype: body. (Emil is here for its trample line, not its Fractal mana sink.)
 #: tier: A — Simic landfall counters-midrange. Re-graded B->A after the Garruk's Uprising
 #: tier: / The Legend of Kyoshi pass, which closed the last of the three caps the B was
-#: tier: resting on. Metrics floor is A (interaction 7 + card-adv 7 on a 2.94 curve; the
+#: tier: resting on. Metrics floor is A (interaction 7 + card-adv 9 on a 2.94 curve; the
 #: tier: axis rose when Grappling Kraken was CUT 2026-08-18 for Bonny Pall, Clearcutter,
 #: tier: trading a landfall tap-and-stun for a landfall ENGINE — attack to draw a card and
 #: tier: put a land onto the battlefield from hand or graveyard, plus Beau, whose power

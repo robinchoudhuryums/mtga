@@ -43,7 +43,7 @@
 #: tier: a 2-drop drain payoff for the slot.
 #: tier: BE PRECISE ABOUT THE FLOOR, because "restore the interaction" was not the whole
 #: tier: fix: the A floor wants interaction >=5 AND interaction+card-advantage >=7. Both
-#: tier: clauses are now MET — interaction 5 and card advantage 8 — so the MEASURABLE
+#: tier: clauses are now MET — interaction 7 and card advantage 8 — so the MEASURABLE
 #: tier: FLOOR IS A and the claimed B is a deliberate call one band BELOW it, on the three
 #: tier: risks listed further down that no metric can see. Note how the second clause was
 #: tier: cleared: not by a swap, but by a classifier fix — TWICE now. The card advantage
@@ -205,4 +205,4 @@ Deck
 #~ note: applied — Vein Ripper in for Robot Domination.
 #~ note: SLOT MATH, closed — the three cheap bodies (Resolute Reinforcements, Agents of HYDRA, and Anafenza for the interaction fix) are spent, and Fiendish Panda was kept on a re-read. The deck is now 35 nonlands with no filler, which is the good version of 'no room': any further add has to beat an engine card, not a spare one.
 
-#~ -Krumar Initiate | +Down, Down to Goblin-town | owned: a Saga that strips a nonland card, then amasses a body, then drains twice — three things this deck wants, on one card. This is the add the SLOT MATH note above demands: Krumar Initiate is not a spare, it is the weakest engine card (sorcery-speed, pay-X-life, worst fit in the deck at 39). NOT a cut for Deadly Precision or Hero's Downfall — the first is cost-as-upside here and the second is 1 of only 5 interaction.
+#~ -Krumar Initiate | +Down, Down to Goblin-town | owned: a Saga that strips a nonland card, then amasses a body, then drains twice — three things this deck wants, on one card. This is the add the SLOT MATH note above demands: Krumar Initiate is not a spare, it is the weakest engine card (sorcery-speed, pay-X-life, worst fit in the deck at 39). NOT a cut for Deadly Precision or Hero's Downfall — the first is cost-as-upside here and the second is 1 of only 7 interaction.

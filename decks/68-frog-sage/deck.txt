@@ -2,7 +2,7 @@
 #: format: Standard
 #: colors: GUB
 #: plan: midrange
-#: tier: B (PROVISIONAL) — graded UNDER the A metrics floor (interaction 8 / card-adv 4 /
+#: tier: B (PROVISIONAL) — graded UNDER the A metrics floor (interaction 6 / card-adv 5 /
 #: tier: protection 3 / 2.86 curve) deliberately, which the rubric permits with argument:
 #: tier: this is an untested v1 whose engine is nearly all singletons (draw variance on a
 #: tier: two-payoff core — Dour Port-Mage and Three Tree Scribe are one copy each), it

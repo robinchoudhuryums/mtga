@@ -891,7 +891,11 @@ class TestCoverageNetIsSuperset:
         patterns — so a genuine under-read outside reminder text is still reported."""
         carddata = {"odd answer": {
             "name": "Odd Answer", "type": "Instant",
-            "text": "Target player sacrifices a nonland permanent of their choice.",
+            # "sacrifices an ENCHANTMENT": the cue fires on "target player sacrifices",
+            # the edict pattern wants a creature/permanent — a real under-read. (The
+            # nonland-permanent form this fixture used to carry is classified since
+            # BS8-28, which is the fix working, not the net failing.)
+            "text": "Target player sacrifices an enchantment of their choice.",
             "colors": "B", "power": "", "toughness": ""}}
         _unclassified, under_read, _no_data = deck.role_coverage_flags(
             [(1, "Odd Answer", None, None)], carddata)

@@ -15,6 +15,7 @@
 # `check_roles.py --update-tag-baseline` to acknowledge the current set.
 A-Skemfar Elderhall
 Aetherling
+Against All Odds
 Agatha's Soul Cauldron
 Aim for the Head
 Angel of Finality
@@ -24,44 +25,49 @@ Apostle of Purifying Light
 Arcane Proxy
 Argivian Avenger
 Armored Scrapgorger
-Ashiok's Erasure
 Ashnod's Harvester
-Aven Interrupter
 Baneblade Scoundrel // Baneclaw Marauder
 Barbed Batterfist
 Blood Operative
+Blur
 Boggart Trawler // Boggart Bog
 Boiling Rock Rioter
 Bojuka Bog
+Boneclad Necromancer
+Brokers' Safeguard
 Callous Bloodmage
 Canyon Crab
+Carrion Imp
 Carrion Locust
 Charix, the Raging Isle
 Chatterfang, Squirrel General
 Clawing Torment
 Cling to Dust
+Cloudshift
 Craving of Yeenoghu
 Davriel's Withering
 Davriel, Soul Broker
 Dawnhand Dissident
-Death's Approach
+Daydream
 Death's Shadow
 Deathgorge Scavenger
+Deathrite Shaman
 Die Young
 Diminished Returner
 Dire Fleet Daredevil
 Disposal Mummy
 Disruptor Wanderglyph
-Disturbing Conversion
+Endless Sands
 Endling
 Enemy of Enlightenment
-Fear of Death
+Ephemerate
+Escape Protocol
+Essence Flux
 Fear of Falling
 Fierce Retribution
 Flowstone Kavu
 Founding the Third Path
 Frostburn Weird
-Gale's Redirection
 General's Enforcer
 Geralf's Masterpiece
 Ghost Vacuum
@@ -70,6 +76,7 @@ Gitaxian Raptor
 Gnawing Vermin
 Gravestone Strider
 Hackrobat
+Heirloom Mirror // Inherited Fiend
 Hermitic Nautilus
 Hive of the Eye Tyrant
 Honored Heirloom
@@ -81,73 +88,101 @@ Ingenious Skaab
 Intrepid Paleontologist
 Jace, Architect of Thought
 Jirina, Dauntless General
+Justiciar's Portal
 Keen-Eyed Curator
 Klothys, God of Destiny
 Kotose, the Silent Spider
 Kraul Whipcracker
 Kutzil's Flanker
+Lantern of the Lost
 Lazav, Wearer of Faces
 Leonin of the Lost Pride
 Lion Sash
+Lobelia Sackville-Baggins
+Lukka, Coppercoat Outcast
 Magic Pot
 Merfolk Coralsmith
 Metropolis Sprite
 Mistwalker
 Mizzix's Mastery
 Mogis's Favor
+Momentary Blink
 Narset, Enlightened Exile
+Niko, Light of Hope
 Nita, Forum Conciliator
+Northampton Farm
 Nyxathid
 Offspring's Revenge
 Order of the Mirror // Order of the Alabaster Host
+Patchwork Crawler
+Pegasus Guardian // Rescue the Foal
 Penregon Besieged
+Personify
+Pharika, God of Affliction
 Phoenix Down
 Plague Wight
 Practiced Scrollsmith
+Quantum Entanglement
 Quintorius, Loremaster
 Rampaging Cyclops
 Ravenous Bloodseeker
 Reenact the Crime
 Release to Memory
 Remorseful Cleric
+Restoration Angel
 Retrieval Agent
 Rona, Disciple of Gix
 Rooting Moloch
 Ruin Rat
+Sauron, the Necromancer
 Scavenger Regent // Exude Toxin
 Scavenging Harpy
 Scavenging Ooze
 Scion of Glaciers
+Scour the Desert
 Scrabbling Claws
 Sea Legs
 Sentinel of Lost Lore
+Sentinel of the Pearl Trident
 Sewer Plague
 Shackles of Treachery
 Shattering Finale
 Shiko, Paragon of the Way
 Shipwreck Moray
 Short Circuit
+Siren's Ruse
 Skemfar Elderhall
+Skycoach Conductor // All Aboard
+Slip On the Ring
 Song of Stupefaction
+Soul Separator
 Soul-Guide Lantern
-Spell Queller
-Spontaneous Mutation
+Splash Portal
 Spring Splasher
+Staff of Compleation
 Stingerback Terror
 Stone of Erech
 Surge Mare
+Séance
 Tamiyo Meets the Story Circle
+Tamiyo, Compleated Sage
 Tamiyo, Inquisitive Student // Tamiyo, Seasoned Scholar
+Teachings of the Kirin // Kirin-Touched Orochi
+Teferi's Time Twist
 Tezzeret the Schemer
+The Cloning of Shredder
 The Last Ride
 The Ooze
+The Scarab God
 Titania's Command
 Tormod's Crypt
+Underworld Sentinel
 Urborg Scavengers
 Viconia, Nightsinger's Disciple
 Victor Mancha, Runaway
-Vona de Iedo, the Antifex
 Water Weird
 Winter, Cursed Rider
 Wizard's Spellbook
 Wizened Githzerai
+Y'shtola Rhul
+Zabaz, the Glimmerwasp

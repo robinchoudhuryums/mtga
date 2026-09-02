@@ -4,10 +4,10 @@
 #: colors: B
 #: plan: midrange
 #: tier: B — PROVISIONAL, GRADED 2026-08 on an UNBUILT list (9 craft targets, zero games).
-#: tier: Deliberately one band BELOW the measurable floor, which reads A on interaction 7
-#: tier: plus card advantage 4 at a 3.31 curve. Against the rubric an A needs four things
+#: tier: Deliberately one band BELOW the measurable floor, which reads A on interaction 8
+#: tier: plus card advantage 5 at a 3.31 curve. Against the rubric an A needs four things
 #: tier: and this list fails the fourth:
-#: tier:   A-FLOOR — yes. Interaction 7 clears the threshold of five, sum 10 clears seven.
+#: tier:   A-FLOOR — yes. Interaction 8 clears the threshold of five, sum 10 clears seven.
 #: tier:   COHERENT ENGINE — yes. Void condition -> sac outlets -> Void payoffs, with
 #: tier:     Repartee recursion as the card-advantage engine underneath it.
 #: tier:   TIGHT CURVE — NO LONGER, and this is the axis to watch. 3.31 average on 15

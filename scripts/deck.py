@@ -1326,6 +1326,10 @@ _PERM_TYPE = (r"(?:nonland permanent|artifact creature|artifact|enchantment|crea
               r"permanent|planeswalker|spacecraft|vehicle|land)")
 _PERM_TYPE_LIST = rf"{_PERM_TYPE}s?(?:,? (?:or |and )?{_PERM_TYPE}s?)*"
 
+# Shared tail for the targeted-removal patterns (BS8-27/28): not a permanent YOU
+# control/own (blink, self-sacrifice tricks) and not a CARD (graveyard hate).
+_NOT_OWN_OR_CARD = r"(?! cards?\b)(?![^.]{0,25}?\byou (?:control|own)\b)"
+
 _ROLE_PATTERNS = {
     "Removal (spot)": [
         # destroy / exile a targeted permanent, including a comma-or list of types, and
@@ -1339,7 +1343,15 @@ _ROLE_PATTERNS = {
         # exactly what happened on the first draft — every "destroy target creature" in
         # the collection stopped matching and 46 decks lost interaction. Caught only by
         # the roster-wide before/after diff, which is why that diff is worth running.
-        rf"(?:destroy|exile) (?:up to \w+ )?target (?:[a-z-]+ ){{0,2}}?{_PERM_TYPE_LIST}",
+        # `,?` admits the comma qualifier ("nonland, nontoken permanent" — Skyclave
+        # Apparition) the 3–5-word sibling below already allowed (BS8-28).
+        # The two lookaheads are BS8-27 and BS8-28's graveyard-hate class: "exile
+        # target creature YOU CONTROL, then return it" is BLINK (41 pool cards, seven
+        # in thirteen decks; six tier floors rested on it), and "exile target creature
+        # CARD from a graveyard" is graveyard hate (24 pool cards) — neither answers an
+        # opponent's threat, and both fed the axis the floor grades.
+        rf"(?:destroy|exile) (?:up to \w+ )?target (?:[a-z-]+,? ){{0,2}}?{_PERM_TYPE_LIST}"
+        rf"{_NOT_OWN_OR_CARD}",
         # COORDINATED QUALIFIER LIST before the type. The run above allows at most TWO
         # adjective words, which covers "target TAPPED creature" but not the qualifier
         # LISTS Magic templates constantly — "attacking or blocking" and "green or white"
@@ -1365,7 +1377,7 @@ _ROLE_PATTERNS = {
         # permanent. `[^.]` keeps the lookahead inside the same sentence, so "Destroy
         # target creature." is untouched. With it: 11 matches, zero false positives.
         rf"(?:destroy|exile) (?:up to \w+ )?target (?:[a-z-]+,? ){{3,5}}?{_PERM_TYPE_LIST}"
-        rf"(?![^.]{{0,40}}?\bgraveyard\b)",
+        rf"{_NOT_OWN_OR_CARD}(?![^.]{{0,40}}?\bgraveyard\b)",
         # REMOVAL AURA. `enchanted creature can't attack or block` (Pacifism) is already
         # in this bucket a few lines down, which settles the design question: this repo
         # counts a neutralizing Aura as spot removal. Its twin — the Aura that shrinks the
@@ -1386,7 +1398,7 @@ _ROLE_PATTERNS = {
         # catch Duskmourn's Domination, whose "You control enchanted creature" is a
         # Control-Magic steal (a real answer) and reads in the other word order. Guarded:
         # 20 matches, zero false positives.
-        r"(?s)\A(?!.*enchant creature you control).*?enchanted creature gets -\d+/-\d+",
+        r"(?s)\A(?!.*enchant creature you control).*?enchanted creature gets -[0-9x]+/-[0-9x]+",
         # LETHAL SHRINK in the +N/-M shape. `target creature gets -N/-N` is covered (120
         # cards) and its twin `gets +N/-N` was not, so Auger Spree, Nameless Inversion,
         # Lash of Malice, Flowstone Infusion and Desperate Measures scored zero roles.
@@ -1547,11 +1559,19 @@ _ROLE_PATTERNS = {
         # type is a full `_PERM_TYPE_LIST` so "nonland permanent" is covered alongside
         # "creature", and `[^.]` keeps the span inside one sentence.
         rf"return (?:up to \w+ )?target (?:[a-z-]+ ){{0,2}}?{_PERM_TYPE_LIST}"
-        rf"[^.]{{0,60}}?(?:owner'?s?|their) hand",
+        rf"[^.]{{0,60}}?(?:owner'?s?|owners'|their) hands?",
         # EDICT. Sacrifice-a-creature-of-their-choice is removal (it answers hexproof),
         # and it sat in the broad audit cue while missing from this list entirely.
-        r"(?:target|each) (?:player|opponent) sacrifices a creature",
-        r"(?:target|each) (?:player|opponent) sacrifices a permanent",
+        # EDICTS, generalized (BS8-28): the two narrow forms this replaces ("sacrifices a
+        # creature" / "a permanent") missed "sacrifices TWO creatures" (Barter in Blood),
+        # "a NONTOKEN creature", "a NONLAND permanent", "X creatures" — 29 pool cards.
+        r"(?:target|each) (?:player|opponent) sacrifices (?:a|an|two|three|four|x|half)"
+        r"(?: of)?(?: the)? (?:[a-z-]+ ){0,2}?(?:creature|permanent)s?",
+        # LIBRARY TUCK (BS8-28): "put target creature on top/bottom of its owner's
+        # library" — the pattern below requires "into", so Condemn / Run Aground /
+        # Anchor to the Aether (15 pool cards) scored nothing.
+        r"put (?:up to \w+ )?target (?:[a-z-]+ ){0,2}?(?:creature|permanent|nonland permanent)"
+        r"[^.]{0,40}?(?:on top|on the bottom|second from the top) of (?:its|their) owner'?s'? librar",
         # X-damage: the fixed patterns above require a DIGIT, so "deals X damage to target
         # creature" scored nothing (Hell to Pay).
         r"deals? x damage to (?:target|any target|up to \w+ target)",
@@ -1567,23 +1587,37 @@ _ROLE_PATTERNS = {
         r"shuffle[^.]{0,80}?target (?:creature|permanent)[^.]{0,60}?librar",
         r"target creature[^.]{0,80}?into (?:their|its) (?:owner'?s? )?librar",
     ],
-    "Sweeper": [r"destroy all", r"exile all", r"all creatures get -",
-                r"each (?:other )?creature (?:gets|deals|is|you don't control)",
+    # SCOPED since BS8-11: "exile all" matched graveyards, hands, libraries and every
+    # "End the turn" reminder (Rest in Peace, Hex Magic, Time Stop — 20 pool cards), and
+    # "all creatures get -" matched a -N/-0 power shrink that kills nothing (13). The
+    # additions further down are BS8-28's misses: "destroy/exile EACH creature" (18),
+    # "damage equal to … to each creature" (18), "each player sacrifices all/two/X" (15).
+    "Sweeper": [r"destroy all (?!(?:cards?|counters|tokens you control)\b)",
+                r"exile all (?!(?:the cards?|cards?|graveyards?|spells?|other spells|opponents'|tokens you control)\b)",
+                r"all (?:other )?creatures get -[0-9x]+/-[1-9x]",
+                r"each (?:other )?creature (?:gets -[0-9x]+/-[1-9x]|deals|is dealt|you don't control)",
                 # one-sided / opponent-only wraths ("creatures your opponents control
                 # get -2/-2" — Massacre Wurm) the "all creatures" pattern misses.
-                r"creatures (?:you don't control|your opponents control|target player controls) get -",
+                r"creatures (?:you don't control|your opponents control|target player controls) get -[0-9x]+/-[1-9x]",
                 # scalable / conditional wipes the fixed patterns above miss
                 r"creature with mana value.{0,20}?or less.{0,40}?destroy",
                 r"destroy those creatures",
-                r"deals? \d+ damage to each (?:other )?creature",
+                r"deals? (?:\d+|x) damage to each (?:other )?creature",
+                r"(?:destroy|exile) each (?:other )?(?:[a-z-]+ ){0,2}?(?:creature|nonland permanent|permanent)s?\b(?! card)",
+                r"deals? damage (?:equal to|to each (?:other )?creature equal to)[^.]{0,60}?(?:to each (?:other )?creature|for each)",
                 # "each player sacrifices all other creatures they control" (Bringer of
-                # the Last Gift) is a wrath by another name.
-                r"each player sacrifices all (?:other )?creatures"],
+                # the Last Gift) is a wrath by another name; so is "two"/"X"/"half".
+                r"each (?:player|opponent) sacrifices (?:all|two|three|four|x|half)"
+                r"(?: of)?(?: the)? (?:other )?(?:creatures|permanents)"],
     # "counter up to one target spell unless…" (Repulsive Mutation) matched neither
     # this pattern NOR the broad coverage net below, so it scored zero roles AND was
     # never flagged as an under-read — the worst case, a miss invisible to the very
     # audit that exists to catch misses (session finding).
-    "Counter": [r"counter (?:up to \w+ )?target", r"counter (?:that|the chosen) spell"],
+    "Counter": [r"counter (?:up to \w+ )?target", r"counter (?:that|the chosen) spell",
+                # BS8-28: the hard-counter ALTERNATIVES — "exile/return target spell"
+                # (Aven Interrupter, Spell Queller, Reprieve — 16 pool cards) and
+                # "counter all/each" (Summary Dismissal, Glen Elendra's Answer).
+                r"(?:exile|return) target spell", r"counter (?:all|each) (?:other )?spell"],
     # Surfaced while testing the lexicon unification: "five" and "half X" were in
     # neither the role pattern nor the audit cue, so Wan Shi Tong, Librarian ("draw
     # half X cards, rounded down") was uncounted AND unflagged — the same
@@ -1654,7 +1688,13 @@ _ROLE_PATTERNS = {
                        # 45) that the card-advantage axis could not see. `[^.]` keeps the
                        # span inside the sentence pair so an unrelated later clause cannot
                        # be swept in.
-                       r"exile the top card of your library[^.]{0,40}\. you may play (?:it|that card)",
+                       # BS8-28: the impulse phrased with the window FIRST — "Exile the top
+                       # card of your library. Until end of your next turn, you may play
+                       # that card" (Crimson Operative, Blazing Crescendo — 30 pool cards)
+                       # — and the trigger-cost draw that crosses a period: "Whenever …,
+                       # you may pay {1}. If you do, draw a card" (54, rummage excluded).
+                       r"exile the top card of your library[^.]{0,40}\. (?:until (?:the )?end of (?:turn|your next turn), )?you may (?:play|cast) (?:it|that card)",
+                       r"\bwhenever\b[^.]{0,80}?, you may (?!discard)[^.]{0,60}?\. if you do, [^.]{0,40}?draws? a card",
                        r"exile the top \w+ cards? of your library[^.]{0,60}\. (?:you may play|until )",
                        # Impulse off EACH PLAYER'S library — Etali, Primal Storm exiles
                        # the top card of every library and lets you cast them. The two
@@ -1766,10 +1806,19 @@ _ROLE_PATTERNS = {
     # to-hand recursion). Catches "in your graveyard … return … to the battlefield"
     # phrasing, which the old "from your graveyard" Recursion pattern silently missed
     # (Too Evil to Stay Dead, Bringer of the Last Gift, sagas, etc.).
+    # STRICT since BS8-10: the two bag-of-words patterns this replaces needed no
+    # graveyard at all, so 297 of 655 pool "reanimators" were land drops, blink and
+    # cheat-from-hand (Scaled Herbalist, Teleportation Circle, Champion of Rhonas) —
+    # an IMPACT role, so `cuts` protected them and `redundancy` built all-false
+    # buckets in 22 decks. A graveyard is required in the CLAUSE; the recursion
+    # keywords are reanimation templated as a keyword (unearth, embalm, escape…),
+    # which the old text patterns MISSED (60 pool cards).
     "Reanimation": [
-        r"(?:card|creature|permanent).{0,80}?in your graveyard.{0,80}?to the battlefield",
-        r"return .{0,60}?(?:creature|permanent|card).{0,40}?to the battlefield",
-        r"put .{0,50}?(?:creature|card|permanent).{0,60}?onto the battlefield",
+        r"(?:card|creature|permanent)[^.]{0,80}?(?:in|from) (?:your|a|an|any|each|their|that|target) graveyard[^.]{0,80}?(?:on)?to the battlefield",
+        r"return [^.]{0,60}?(?:creature|permanent|card)[^.]{0,40}?from (?:your|a|an|any|each|their|that|target) graveyard[^.]{0,60}?to the battlefield",
+        r"put [^.]{0,50}?(?:creature|card|permanent)[^.]{0,50}?from (?:your|a|an|any|each|their|that|target) graveyard[^.]{0,60}?onto the battlefield",
+        r"return (?:this|it|that card) from your graveyard to the battlefield",
+        r"\b(?:unearth|embalm|eternalize|encore|disturb|escape—|persist|undying)\b",
     ],
     # Repeatable/triggered engines — the death, ETB-matters, lifegain and
     # leaves-play payoffs the role map used to score as "no functional role"
@@ -1779,7 +1828,8 @@ _ROLE_PATTERNS = {
         r"whenever (?:a|another|one or more) .{0,40}?(?:enters|leave|leaves|die|dies)",
         r"whenever you gain life",
         r"whenever you cast",
-        r"put a \+1/\+1 counter on .{0,60}?whenever",
+        # (`put a +1/+1 counter on … whenever` was removed at BS8-30: its only matches
+        # crossed reminder text, which the classifier no longer reads, so it went dead.)
         # The counter quantity is an alternation, not the literal "a": "put two /
         # X / that many +1/+1 counters" is how Magic templates every scaling
         # counter payoff (Serra Redeemer, Woodland Champion), and the bare-"a"
@@ -1827,7 +1877,10 @@ _ROLE_PATTERNS = {
         # pattern below already covers every one of the 155 cards it was meant
         # for), which is exactly why it survived: a dead pattern hiding behind a
         # live one changes no count and shows up in no diff.
-        r"costs? \{[0-9x]+\} less",
+        # BS8-29: 263 of 810 hits were a card discounting ITSELF ("this spell costs {1}
+        # less to cast for each…", "this ability costs {1} less") — self-pricing, not a
+        # cost-reduction engine, and an IMPACT role worth +6 in `cuts`.
+        r"(?<!this spell )(?<!this ability )costs? (?:up to )?\{[0-9x]+\} less",
         r"\baffinity\b", r"\bconvoke\b", r"\bimprovise\b", r"\bcascade\b",
         r"without paying its mana cost",
     ],
@@ -1854,7 +1907,9 @@ _ROLE_PATTERNS = {
     # up, interaction / card-advantage / tier floors 0 / 0 / 0.
     "Protection / trick": [r"\bhexproof\b", r"\bindestructible\b", r"protection from",
                            r"\bward\b",
-                           r"gets \+\d+/\+\d+ until end of turn"],
+                           # R-13: a card pumping ITSELF (firebreathing, prowess) is not a
+                           # trick you can point at the creature you need to save.
+                           r"(?<!this creature )(?<!this permanent )gets \+\d+/\+\d+ until end of turn"],
     "Recursion": [r"from your graveyard", r"card in your graveyard",
                   r"return .{0,40}?to your hand"],
 }
@@ -1887,7 +1942,18 @@ _INTERACTION_ROLES = {"Removal (spot)", "Sweeper", "Counter"}
 _LOOT_RE = re.compile(
     r"draws? (two|three|four|five|x|that many) cards?,? (?:then )?"
     r"discards? (?:\1|that many) cards?"
-    r"|draws? a card,? (?:then )?discards? a card")
+    r"|draws? a card,? (?:then )?discards? a card"
+    # BS8-28 (R-05): the two loot shapes the comma form cannot see — DISCARD-FIRST
+    # ("discard up to two cards, then draw that many": Sokka, Seasoned Pyromancer, 33
+    # pool cards) and the PERIOD form ("Draw three cards. Then discard two": Thirst for
+    # Knowledge, 14). Both are card-neutral and scored as advantage.
+    # EQUAL counts only, like the comma form: "discard a card, then draw two" is +1 and
+    # "Draw three cards. Discard a card" is +2 — both stay advantage (pinned).
+    r"|discards? a card,? then draws? a card(?! for each)"
+    r"|discards? (?:up to )?(?P<n>two|three|four|x|that many|any number of) cards,?"
+    r" then draws? (?:(?P=n)|that many) cards(?! plus)"
+    r"|discards? your hand,? then draws? that many cards(?! plus)"
+    r"|draws? (?P<m>two|three|four|x|that many) cards\.\s*(?:then )?discards? (?:(?P=m)|that many) cards")
 
 # Real PROTECTION for a permanent you control — deliberately NARROWER than the
 # "Protection / trick" role, which lumps a combat pump ("gets +2/+2 until end of turn")
@@ -2481,10 +2547,17 @@ def role_coverage_flags(cards, carddata):
 
 
 def _norm_role_text(text):
-    """Lowercased, unicode-minus-normalized oracle text — the one form every role
-    pattern and coverage cue is matched against, so the precise classifier and its
-    audit net can't disagree about the input either."""
-    return (text or "").lower().replace("−", "-")
+    """Lowercased, unicode-minus-normalized oracle text with REMINDER TEXT removed — the
+    one form every role pattern and coverage cue is matched against, so the precise
+    classifier and its audit net can't disagree about the input either.
+
+    Reminder text is stripped HERE since BS8-30: `role_coverage_flags` stripped it and
+    `classify_roles` did not, so a Treasure maker's "(… Add one mana of any color.)"
+    read as Ramp, every Food maker as Lifegain, every delve/embalm reminder as
+    Recursion, and "End the turn" reminders as a Sweeper in five decks — the exact
+    K-09 disagreement, one layer down. A keyword's own word stays (the reminder
+    explains it; the keyword is outside the brackets)."""
+    return _REMINDER_RE.sub(" ", (text or "").lower().replace("−", "-"))
 
 
 def classify_roles(text):

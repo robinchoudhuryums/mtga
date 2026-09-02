@@ -5,7 +5,7 @@
 #: tier: Black Waltz / the 0/1 black-Wizard-token makers all deal noncombat damage on every
 #: tier: noncreature spell) backed by prowess payoffs, deep card advantage (Kefka/Niv-Mizzet/
 #: tier: Archmage) and a real removal suite. The floor is A and not marginally so —
-#: tier: interaction 9 against card advantage 7, once the bounce/edict/X-damage lines the
+#: tier: interaction 9 against card advantage 8, once the bounce/edict/X-damage lines the
 #: tier: old classifier could not read are counted (12 before three removal slots — Harbinger
 #: tier: of the Tides, then Tribute to Hunger, then Heartless Act (CUT 2026-08-17) — were
 #: tier: traded for Gandalf, Goblins' Bane, Kindlespark Duo and Stormsplitter: every point

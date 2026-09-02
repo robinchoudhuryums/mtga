@@ -2,7 +2,7 @@
 #: format: Standard
 #: colors: GWU
 #: plan: midrange
-#: tier: B (PROVISIONAL) — graded UNDER the A metrics floor (interaction 5 / card-adv 3,
+#: tier: B (PROVISIONAL) — graded UNDER the A metrics floor (interaction 4 / card-adv 3,
 #: tier: which UNDER-reads by at least 1: Fblthp scores ZERO roles — "the top card of
 #: tier: your library has plot" is a one-card template no _ROLE_PATTERNS entry can
 #: tier: earn (K-09), and it is repeatable card advantage the metric cannot see, the
@@ -11,7 +11,7 @@
 #: tier: 2026-08-17 for Djinn of Fool's Fall, Sinister Cryologist was CUT 2026-08-22 for
 #: tier: Outlaw Stitcher, and Syncopate was CUT the same day for Bilbo, Thief in the
 #: tier: Night: each traded a conditional counter for a plot/exile-cast engine piece.
-#: tier: Interaction 5 is now the deck's thinnest axis and the first thing a tune should
+#: tier: Interaction 4 is now the deck's thinnest axis and the first thing a tune should
 #: tier: buy back)
 #: tier: deliberately: the floor can't see that this is an untested v1 whose three-piece
 #: tier: engine (Kellan / Appa / Aurlock) has ZERO protection effects behind it, a

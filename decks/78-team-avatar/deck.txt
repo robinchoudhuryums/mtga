@@ -17,7 +17,7 @@
 #: archetype: be full of Allies (18 and 15 bodies against ONE and two payoffs), where
 #: archetype: this deck is built on the payoff half and splashes green for it.
 #: tier: B (PROVISIONAL) — still unplayed, and still graded one band UNDER its A metrics
-#: tier: floor. The floor reads A on interaction 8 and card advantage 3 at a 3.42 curve.
+#: tier: floor. The floor reads A on interaction 6 and card advantage 3 at a 3.42 curve.
 #: tier: INTERACTION IS NOW HONEST AND CARD ADVANTAGE IS THE ONE TO WATCH. The 8 counts
 #: tier: Allies at Last for the first time: the removal patterns all read "dealS damage"
 #: tier: while the card says "each DEAL damage", so it scored zero interaction until the

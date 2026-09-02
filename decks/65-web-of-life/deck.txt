@@ -3,7 +3,7 @@
 #: colors: GWU
 #: plan: midrange
 #: tier: B (PROVISIONAL — unplayed brew, graded 2026-08-08). Metrics floor is A
-#: tier: (interaction 7 + card advantage 3, protection 4, avg MV 2.97) and the letter is
+#: tier: (interaction 6 + card advantage 3, protection 4, avg MV 2.97) and the letter is
 #: tier: held UNDER it deliberately: the re-buy engine pays its cost in TEMPO (a
 #: tier: web-slinging cast returns a body you already paid for), which no metric here
 #: tier: prices; card advantage rests heavily on one craft target (Mary Jane); and the
