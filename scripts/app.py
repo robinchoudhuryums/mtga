@@ -205,7 +205,22 @@ def render_page():
     with open(TEMPLATE_PATH, encoding="utf-8") as fh:
         template = fh.read()
     data_json = json.dumps(build_cards(), ensure_ascii=False).replace("<", "\\u003c")
-    return template.replace("__DATA__", data_json)
+    return (template.replace("__DATA__", data_json)
+            .replace("__LIB_TOKEN__", _lib_token()))
+
+
+def _lib_token():
+    """Content hash of card-library.csv — the staleness token the collection page
+    echoes back on save (BS8-18). The deck editor has had this contract since BS2-26;
+    the CSV save never did, though its docstring and test claimed so: a stale tab that
+    edited only a card's synergies wrote its stale QUANTITY too, silently regressing a
+    count a CLI import had raised — the G-10 "count went DOWN" shape, invisible to
+    check_all. Content, not mtime (F-04)."""
+    try:
+        with open(DEFAULT_CSV, "rb") as fh:
+            return hashlib.sha1(fh.read()).hexdigest()[:16]
+    except OSError:
+        return ""
 
 
 @app.route("/")
@@ -245,6 +260,7 @@ def _safe_write(rows):
             return False, None, ["Validation failed — nothing written.", *tail]
         backup = _backup_path(target)
         shutil.copy2(target, backup)
+        shutil.copymode(target, tmp)   # BS8-42: mkstemp is 0600; keep the file's mode
         os.replace(tmp, target)
         tmp = None
         return True, os.path.basename(backup), []
@@ -389,11 +405,22 @@ def save():
          atomically os.replace() the temp file into place.
     On any failure the real CSV is left untouched and errors are returned.
     """
-    edits = request.get_json(silent=True)
+    data = request.get_json(silent=True)
+    # A bare list (the pre-token page) or {"edits": [...], "lib_token": "…"} (BS8-18).
+    edits = data.get("edits") if isinstance(data, dict) else data
     if not _list_of_objs(edits):
         return jsonify(ok=False, errors=["Malformed request: expected a JSON list of edit objects."]), 400
     if not edits:
         return jsonify(ok=True, updated=0, backup=None)
+    # Staleness gate (BS8-18) — the page sends the token it loaded; an absent token
+    # keeps the old contract for a cached pre-token page, exactly as the deck save does.
+    sent = str(data.get("lib_token") or "") if isinstance(data, dict) else ""
+    if sent and sent != _lib_token():
+        return jsonify(ok=False, errors=[
+            "card-library.csv CHANGED since this page loaded it (an import, a "
+            "reconcile, or another tab?). Saving would overwrite that change with the "
+            "values this page holds — reload the page, re-apply your edit, and save "
+            "again."]), 409
 
     # 1. Field validation with clear, per-card messages.
     problems = []
@@ -434,7 +461,7 @@ def save():
     ok, backup, errors = _safe_write(rows)
     if not ok:
         return jsonify(ok=False, errors=errors), 400
-    return jsonify(ok=True, updated=applied, backup=backup)
+    return jsonify(ok=True, updated=applied, backup=backup, lib_token=_lib_token())
 
 
 @app.route("/api/add", methods=["POST"])
@@ -524,6 +551,7 @@ def add():
                     os.close(fd)
                     try:
                         shutil.copy2(bpath, tmp)
+                        shutil.copymode(bpath, tmp)   # BS8-42
                         os.replace(tmp, target)
                         tmp = None
                     finally:
@@ -831,14 +859,39 @@ def _write_deck(path, text, expected, backup):
             return {"ok": False, "errors": [
                 "Deck didn't round-trip cleanly — " + _first_line_mismatch(parsed, expected)
                 + " Card names containing '(' or '#' aren't supported. Not saved."]}, 400
+        # The REST of INV-04 (BS8-19): the round-trip check above proves the card lines
+        # survived, and nothing else — an unknown `(SET)` code and a smuggled raw line
+        # both saved with a success toast and left `check_all` red. Same two checks
+        # `check_all` runs, called before promote so the editor's "Saved" means what the
+        # gate means. A held-but-unverified collector number is a WARNING in the
+        # payload, like the gate's soft half.
+        bad_set, unverified = deckmod.printing_problems(parsed)
+        malformed = deckmod.malformed_deck_lines(tmp)
+        errs = []
+        if bad_set:
+            errs += [f"{n}: set code ({s}) exists nowhere — this line cannot import. Not saved."
+                     for n, s, _c in bad_set[:6]]
+        if malformed:
+            errs += [f"line {ln}: {txt!r} is not a card line, a `#:` header or a comment "
+                     "— it would be silently EXCLUDED by every reader. Not saved."
+                     for ln, txt in malformed[:6]]
+        if errs:
+            return {"ok": False, "errors": errs}, 400
         bak = None
         if backup and os.path.exists(target):
             bak = _backup_path(target)
             shutil.copy2(target, bak)
+            shutil.copymode(target, tmp)   # BS8-42: mkstemp is 0600; keep the file's mode
+        else:
+            os.chmod(tmp, 0o644)
         os.replace(tmp, target)
         tmp = None
-        return {"ok": True, "backup": (os.path.basename(bak) if bak else None),
-                "cards": len(expected)}, 200
+        payload = {"ok": True, "backup": (os.path.basename(bak) if bak else None),
+                   "cards": len(expected)}
+        if unverified:
+            payload["warnings"] = [f"{n} ({s}) {c}: not a printing on file — verify with "
+                                   "`deck.py resolve --check`" for n, s, c, _k in unverified[:6]]
+        return payload, 200
     finally:
         if tmp and os.path.exists(tmp):
             os.remove(tmp)

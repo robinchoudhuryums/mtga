@@ -203,6 +203,32 @@ def check_decks():
     return errs, warns, info, len(decks)
 
 
+def check_library_printings():
+    """INV-01b: every card-library.csv row's Set Code is one some card-pool.csv row
+    carries. Returns hard-failure strings (empty when clean, or when the pool is absent —
+    INV-03 reports that on its own)."""
+    if not os.path.exists(POOL_CSV):
+        return []
+    pool_sets = set()
+    with open(POOL_CSV, newline="", encoding="utf-8") as fh:
+        for r in csv.DictReader(fh):
+            sc = (r.get("Set Code") or "").strip().lower()
+            if sc:
+                pool_sets.add(sc)
+    if not pool_sets:
+        return []
+    _, rows = load_rows(DEFAULT_CSV)
+    bad = {}
+    for r in rows:
+        sc = (r.get("Set Code") or "").strip().lower()
+        if sc and sc not in pool_sets:
+            bad.setdefault(sc, []).append((r.get("Card Name") or "?").strip())
+    return [f"card-library.csv: set code ({sc.upper()}) exists in no card-pool.csv printing "
+            f"— {len(names)} row(s), e.g. {', '.join(names[:3])} (a typo'd or fabricated "
+            f"printing became owned inventory; fix the row or rebuild the pool)"
+            for sc, names in sorted(bad.items())]
+
+
 def main():
     ap = argparse.ArgumentParser(description="Card-library integrity check.")
     ap.add_argument("--quiet", action="store_true", help="one-line summary only")
@@ -220,6 +246,17 @@ def main():
         inv01 = validate(DEFAULT_CSV)  # prints its own errors/warnings
     if inv01 != 0:
         hard.append("card-library.csv failed validate.py")
+
+    # INV-01b (BS8-34) — a LIBRARY printing whose set code exists in no pool card. The
+    # deck side has had this since G-65 (INV-04's `bad_set`); the library had no
+    # counterpart, so `2 Zzyzx (ZZZ) 999` pasted through import_arena / reconcile_crafts
+    # became owned inventory with validate, check_all and verify_ingest all green — an
+    # OVER-count, the direction every doc said this subsystem could not produce. Hard,
+    # like its deck twin: a set code nothing has ever printed is certainly a typo.
+    # The exact (set, collector) pairing is deliberately NOT checked: the pool keys ONE
+    # printing per card, so most real library printings would read "unverified".
+    lib_bad = check_library_printings()
+    hard += lib_bad
 
     # INV-02
     mana_errs, ncards, nmiss = check_mana_coverage()

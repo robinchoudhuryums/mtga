@@ -95,6 +95,11 @@ def parse(text, skip_basics=False):
             continue
         if line.startswith("#") or line.startswith("//"):
             continue
+        # The `About` block Arena prints above a modern export holds `Name <deck>` and
+        # nothing else — not a card line, and until BS8-08 every real export raised
+        # "could not parse 'Name …'" plus the flatly false "never ingested by ANY tool".
+        if section == "about":
+            continue
         m = LINE_RE.match(line)
         if not m:
             warnings.append(f"line {lineno}: could not parse {raw.strip()!r}")
@@ -206,6 +211,11 @@ def merge(rows, entries, sum_mode):
             }
             rows.append(row)
             index[k] = row
+            # Keep the per-name family CURRENT (BS8-35): `by_front` was built once before
+            # the loop, so a set-less line for a card whose printed line was appended in
+            # the SAME paste could not see it and appended a blank-set phantom — 2 (AA1)
+            # + 3 name-only read as owned 5 against a lower bound of 3.
+            by_front.setdefault(key(name, "", "")[0], []).append(row)
             added += 1
         else:
             cur = (existing.get("Quantity Owned") or "").strip()

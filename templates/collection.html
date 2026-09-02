@@ -171,7 +171,7 @@
      succeeding or failing; without a live region every failure was visually-only
      (Batch E / S-4 — the same one-attribute fix deck.html got at I-04). -->
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
-<script id="data" type="application/json">__DATA__</script>
+<script id="data" type="application/json" data-lib-token="__LIB_TOKEN__">__DATA__</script>
 <script>
   const CARDS = JSON.parse(document.getElementById('data').textContent);
   // key -> {qty, synergies} of the original values, to detect edits.
@@ -318,11 +318,16 @@
       quantity: e.quantity, synergies: e.synergies}));
     saveBtn.dataset.busy = '1'; saveBtn.textContent = 'Saving…';
     try {
+      // Echo the library token the page loaded with (BS8-18): a CLI import or another
+      // tab may have rewritten card-library.csv since, and a save that carried this
+      // page's stale quantities would silently regress it. The server answers 409.
+      const dataEl = document.getElementById('data');
       const res = await fetch('/api/save', {
         method: 'POST', headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(edits)});
+        body: JSON.stringify({edits, lib_token: dataEl.dataset.libToken || ''})});
       const data = await res.json();
       if (data.ok) {
+        if (data.lib_token) dataEl.dataset.libToken = data.lib_token;
         for (const [key, e] of staged) {
           const c = CARDS.find(x => x._key === key);
           if (c) { c.qty = e.quantity; c.synergies = e.synergies; }

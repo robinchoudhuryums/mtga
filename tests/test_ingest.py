@@ -898,3 +898,23 @@ class TestGrantedKeywordsAreTagged:
 
     def test_a_card_that_grants_nothing_is_untouched(self):
         assert ts.granted_keywords("Draw a card.") == []
+
+
+
+class TestArenaAboutBlockAndSameRunPhantom:
+    def test_the_name_line_under_about_is_not_a_parse_failure(self):
+        """BS8-08: every modern Arena export carries `About / Name <deck>` above `Deck`;
+        the Name line raised "could not parse" (and "never ingested by ANY tool")."""
+        entries, warnings = import_arena.parse("About\nName 49 Big Draco\nDeck\n1 Opt (M21) 59\n")
+        assert [e[1] for e in entries] == ["Opt"]
+        assert warnings == []
+
+    def test_a_name_only_line_after_a_printed_line_in_one_paste_does_not_phantom(self):
+        """BS8-35: `by_front` was built once before the merge loop, so a name-only line
+        for a card whose printed line was appended in the SAME paste created a blank-set
+        phantom row — 2 (AA1) + 3 name-only read as owned 5 against a lower bound of 3."""
+        rows = []
+        entries = [(2, "Champion's Helm", "AA1", "3"), (3, "Champion's Helm", "", "")]
+        import_arena.merge(rows, entries, sum_mode=False)
+        assert len(rows) == 1, rows
+        assert rows[0]["Set Code"] == "AA1" and rows[0]["Quantity Owned"] == "3"

@@ -690,6 +690,15 @@ and a non-zero exit that leaves the existing derived file unchanged, rather than
 crashing or writing a partial-blank file over good data.
 
 
+### BS8-09 (2026-09-02): `/add-deck` ended in a red gate by construction
+
+The skill's step 3 reconciled a built deck with `import_arena … --skip-basics` and then
+`enrich.py`, and its step 7 is the shared commit tail, which requires `check_all` green.
+Nothing between them ran `build_mana`, so every deck that added a new card left INV-02
+failing at the exact gate the tail demands — `import_arena` even printed the warning
+pointing at `make refresh`. The step now says `make refresh`, the one definition of the
+order this rule exists for; the gallery step that followed is folded into it.
+
 ## [G-15] The optional editing app (`scripts/app.py`) mutates `card-library.csv`
 
 **The optional editing app (`scripts/app.py`) mutates `card-library.csv`** via
@@ -701,6 +710,27 @@ derived data catches up — an added card needs `build_mana.py` for its real
 cost/keywords, `tag_synergies.py` for keyword tags, and `build_gallery.py` for
 its art (until then it shows a fallback tile).
 
+
+### BS8-18 / BS8-19 / BS8-42 (2026-09-02): the editor's gates equal the integrity gate
+
+Three findings from one live exercise of every mutating route (~80 requests, zero 500s):
+
+- **The CSV save had no staleness contract** while its docstring and
+  `tests/test_app_editor.py` both claimed "the same 409 contract the CSV save has had
+  all along". It wrote quantity AND synergies from the client, so a tab that edited only
+  synergies after a CLI import raised a quantity regressed the count silently — the G-10
+  "count went DOWN" shape, invisible to `check_all`. `/api/save` now takes
+  `{"edits": [...], "lib_token": "…"}` (a bare list still works), refuses a stale token
+  with 409, and returns the new token; the page reads it from the `#data` element.
+- **The deck save was gated on parse fidelity alone.** An unknown `(SET)` code, a
+  smuggled raw line and a header value containing a newline all returned 200 "Saved"
+  and left `check_all` red on INV-04. `_write_deck` now runs `printing_problems` and
+  `malformed_deck_lines` — the two checks the gate runs — before promote, and surfaces
+  an unverified collector number as a warning in the payload, like the gate's soft half.
+- **Three app write paths flipped the file mode to 0600** (`_safe_write`, `_write_deck`,
+  the add rollback): each did its own `mkstemp` + `os.replace` without the `copymode`
+  that `lib.atomic_write` documents fixing, and `test_writer_mutations.py` pins the
+  property on `lib.atomic_write` only. Masked locally because git ignores non-exec bits.
 
 ## [G-16] `card-pool.csv` carries printed `Power` / `Toughness`
 

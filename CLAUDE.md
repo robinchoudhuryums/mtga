@@ -354,7 +354,11 @@ directions.
   [G-14]
 - **The optional editor (`scripts/app.py`) mutates `card-library.csv`** via validated
   writes plus a timestamped `.bak`, appends a `card-mana.csv` row when you add a card
-  (INV-02), and edits deck files gated on INV-04. Run `/refresh` after an app session so
+  (INV-02), and edits deck files gated on the WHOLE of INV-04 — parse fidelity plus
+  `printing_problems` and `malformed_deck_lines`, the two checks `check_all` runs; until
+  BS8-19 only fidelity was checked, so an unknown `(SET)` saved green and the gate went
+  red. The CSV save carries a content-hash `lib_token` like the deck save (BS8-18): a stale
+  tab is refused with a 409, not silently written. Run `/refresh` after an app session so
   derived data catches up. [G-15]
 - **`card-pool.csv` carries printed `Power`/`Toughness` — parse them with
   `lib.card_power()`**, which returns `None` for the `*`/`X` printings instead of
@@ -1122,7 +1126,7 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   scored ZERO roles by the classifier, so it was a removal card to one model and roleless
   to the other — and it is the ROLE model that feeds `tier_band` (BS6-10). Comparing the
   two is cheap, and is a GATE now, not a one-off: `check_roles.py --tags` sweeps the pool
-  for it, baselined at 153 and soft in `check_all`. It reads the tagger's own
+  for it, baselined at 188 and soft in `check_all` (a line count: 173 entries). It reads the tagger's own
   `MECHANIC_RULES` live (never a copy) and excludes the deathtouch KEYWORD path by
   construction — 250 of the 388 raw hits, which an allowlist would have had to enumerate.
   A worklist, not a defect count. **Residual: 340 pool blanks —
@@ -1254,7 +1258,7 @@ earned it: [C-01]
 - Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json,
   scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml,
   scripts/app.py, templates/, Makefile [C-06]
-- Testing: tests/ (31 test files + conftest: the markup-contract, CLI-entry-point and
+- Testing: tests/ (32 test files + conftest: the markup-contract, CLI-entry-point and
   command-output, analysis-model, gate-pinning, shared-primitive and ingest layers, the
   2026-08 ingest-writer / sync-guard / resilience-layer / CLI-filter coverage of the
   formerly untested scripts, plus test_check_all.py, the gate runner's own mutation layer;
@@ -1265,7 +1269,7 @@ earned it: [C-01]
   watched-it-fail layer for the seven gates that had none — so all fourteen now have
   one; and test_dashboard_js.py, the CROSS-LANGUAGE layer running the dashboard's JS
   matcher under Node against `match_paste`), requirements-dev.txt + requirements-app.txt
-  (CI installs BOTH, and sets PYTEST_NO_SKIPS so a skip FAILS — installing only -dev
+  (CI installs BOTH, and sets PYTEST_NO_SKIPS so a skip FAILS, at collection too since BS8-07 — installing only -dev
   silently skipped the editor's six write-safety pins on every run),
   pytest.ini, .github/workflows/tests.yml, + test_templates.py's TOKEN gate (a GENERATED
   page must define every `var(--x)` it emits — G-72 one file over) [C-07]
@@ -1273,6 +1277,7 @@ earned it: [C-01]
 
 **Invariant Library:**
 - INV-01 | card-library.csv has the canonical 8-column header, every row has 8 fields, no duplicate (Card Name, Set Code, Collector #) printing, and Quantity Owned is blank or a non-negative integer | Subsystem: Data | Verify: scripts/check_all.py (via validate.py)
+- INV-01b | Every card-library.csv row's Set Code is one some card-pool.csv printing carries — the library twin of INV-04's `bad_set` (BS8-34: a fabricated `(ZZZ) 999` printing became owned inventory with every gate green; the exact collector pairing is deliberately not checked, since the pool keys one printing per card) | Subsystem: Data | Verify: scripts/check_all.py (`check_library_printings`)
 - INV-02 | Every Card Name in card-library.csv has a row in card-mana.csv | Subsystem: Data | Verify: scripts/check_all.py
 - INV-03 | Derived reference files exist AND keep their own schema: card-mana.csv (Card Name/Mana Cost/Mana Value/Keywords), card-pool.csv (…/Rarity; Legalities+Released+Power+Toughness warn if absent), gallery.html AND dashboard.html (each has usable CONTENT — non-trivial size + the `#data` island — since existence alone passed a truncated build) | Subsystem: Data/Presentation | Verify: scripts/check_all.py
 - INV-04 | Every deck file under decks/ parses with no malformed card lines, AND every line's `(SET)` code exists in the pool or library (an unheld COLLECTOR # within a real set is a soft warning, since the pool keys one printing per card), AND the roster's ids are unambiguous — no two files claim one deck id, and no top-level decks/ directory is variant-shaped (`73a-…`), both of which let a by-id command silently validate one file while editing another | Subsystem: Decks | Verify: scripts/check_all.py

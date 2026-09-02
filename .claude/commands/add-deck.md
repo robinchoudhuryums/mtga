@@ -18,13 +18,17 @@ Steps:
 3. **Determine ownership intent.** If this is a deck the user has BUILT and
    owns, reconcile the catalog from it (a built deck is ownership evidence):
    `python3 scripts/import_arena.py decks/NN-slug/deck.txt --skip-basics`
-   then `python3 scripts/enrich.py`. This adds owned-but-uncatalogued cards and
-   raises undercounted quantities. If the deck is ASPIRATIONAL / not fully owned
+   then **`make refresh`** — the ONE definition of the rebuild order (G-13): enrich,
+   pool, `build_mana` (the card-mana.csv row INV-02 demands for every new card),
+   tags, gallery, `check_all`. Never `enrich.py` alone: that left INV-02 red at the
+   commit tail this skill ends with, on every deck that added a card (BS8-09). This
+   adds owned-but-uncatalogued cards and raises undercounted quantities. If the deck is ASPIRATIONAL / not fully owned
    (a build target), do NOT reconcile — leave it as a WIP so `check` shows the
    craft targets.
 4. Confirm colors from `python3 scripts/deck.py stats NN` and fix the `#: colors`
    label if the guess was wrong. Note any off-color splash.
-5. If the library changed, `python3 scripts/build_gallery.py` (quantity badges).
+5. If the library changed, `make refresh` in step 3 already rebuilt the gallery
+   (quantity badges); nothing to run here.
 6. `python3 scripts/validate.py` (or `/check`) to confirm clean.
 7. Report the roster with `python3 scripts/deck.py list`, then commit the deck
    file (and card-library.csv / gallery.html if step 3 reconciled) per the shared

@@ -2726,3 +2726,17 @@ deliberate bulk pass (119 new zero-role cards, sampled). Block:
 `.cycle/blocks/2026-09-broad-scan-8-batch2-roles-broad-implement.md`.
 
 Where I left off: batch 2 committed; batch 3 (green-when-red / red-when-green) next.
+
+## 2026-09-02 — broad-scan #8, batch 3 (green-when-red / red-when-green) — broad-implement
+
+Completed: BS8-08/09/19/18/34/35/42/07 — verify_ingest exit gate + stored-spelling key +
+Arena About block; /add-deck runs `make refresh`; editor deck save runs the gate's two
+INV-04 checks; CSV save carries a `lib_token`; INV-01b (library set codes exist in the
+pool) hard in check_all; same-run phantom row; copymode on three app write paths;
+collection-time skip hook. Block: `.cycle/blocks/2026-09-broad-scan-8-batch3-gates-broad-implement.md`.
+
+Where I left off: batches 1–3 committed and pushed on `claude/broad-scan-6kxevb`; gates
+green; docs synced for batches 1 and 3 (batch 2's G-67/K-09/K-12 long-form notes and the
+README items in the batch-2/3 blocks are still owed to `/sync-docs`). Next: the user
+picks from batches 4–7 (rotation + recommender scope, tag model, interface, outcomes/
+gates/docs hygiene) — plan in chat and in the scan report attachment.

@@ -10,6 +10,8 @@ imported by check_all, so the core tooling keeps its zero-dependency guarantee.
 import os
 import sys
 
+import pytest
+
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "scripts"))
 
 
@@ -45,3 +47,27 @@ def pytest_runtest_makereport(item, call):
         )
         return report
     return None
+
+
+@pytest.hookimpl(hookwrapper=True)
+def pytest_make_collect_report(collector):
+    """The COLLECTION-time twin of the hook above (BS8-07). A module-level
+    `pytest.importorskip(...)` — the way an optional dependency is normally guarded, and
+    exactly how tests/test_app_editor.py guards Flask — raises during collection and is
+    reported through a CollectReport, which `pytest_runtest_makereport` never sees. So the
+    one skip shape PYTEST_NO_SKIPS was built for passed straight through it: with Flask
+    missing the run printed "1 skipped" and exited 0. A HOOKWRAPPER here rewrites the
+    report before the terminal reporter counts it (a plain `pytest_collectreport` runs
+    after the count and changes nothing — measured), so the module becomes a collection
+    ERROR and the run exits non-zero: "a skipped test is not coverage" at both stages."""
+    outcome = yield
+    if not os.environ.get("PYTEST_NO_SKIPS"):
+        return
+    report = outcome.get_result()
+    if report.skipped:
+        report.outcome = "failed"
+        report.longrepr = (
+            f"SKIPPED at collection with PYTEST_NO_SKIPS set: {report.nodeid}\n"
+            "  A module skipped at collection is not coverage. Install the missing "
+            "dependency in CI, or delete the module — see the note in tests/conftest.py."
+        )
