@@ -173,11 +173,11 @@ newly-derived tags to non-blank cells while KEEPING existing/hand-curated ones (
 safe refresh mode), and `--force` REPLACES every cell (use it only for a deliberate
 destructive regenerate). It also warns when `card-mana.csv` is older than the
 library, since new cards would otherwise get keyword-less tags. One theme worth knowing about: **`pay life`** tags a card that spends *your* life for an
-effect (351 pool cards). It's scoped to you — "each opponent loses 2 life" is a drain
+effect (357 pool cards). It's scoped to you — "each opponent loses 2 life" is a drain
 effect, the opposite card — and it exists because an entire archetype was invisible
 without it: Dark Confidant read as a *tangential* fit for the deck built around paying
 life, on a shared creature type. **`heist`** is the other one to know: it tags a card that
-lets you CAST a card out of an opponent's zone (82 pool cards, 0.52%). Keep it distinct from
+lets you CAST a card out of an opponent's zone (84 pool cards, 0.53%). Keep it distinct from
 the older **`theft`** tag, which means "gain control of" — stealing a permanent already on
 the battlefield. They are different mechanics, and naming a new theme after an existing one
 merges the two silently, since a tag collision breaks no invariant and `check_all` stays
@@ -193,6 +193,16 @@ carry no `deathtouch` tag at all — and for four evergreens the granted case is
 vs 56), meaning the tag was tracking the exception. `granted_keywords()` reads grants from
 oracle text, with reminder text stripped and opponent-scoped or loss clauses excluded, so
 a card that strips flying from *their* team is not a flying card.
+
+The list it reads is no longer evergreen-only. That was the same asymmetry one keyword
+over — a card that HAD convoke was tagged and one that GAVE it was not — so **ward,
+convoke, affinity, prowess and flash** were added on two tests a candidate has to pass
+together: it must already be a live pool tag (so no new theme is introduced and the grant
+resolves through the same `KEYWORD_THEMES` table as a native keyword), and it must have
+real granting cards in the pool. `cascade` passes the first and fails the second, and is
+deliberately left out — an unexercised whitelist entry is one nobody can check. Re-run the
+roster diff before adding a sixth: the widening moved 55 pool cards and **zero** tier
+floors, because `tier_band` grades on `role_tally`, which reads text rather than tags.
 
 ### Query — search the collection
 
@@ -525,7 +535,7 @@ influence on you. It splits each deck's record at its **first recorded swap** �
 never per swap, because a deck accumulates many swaps whose windows overlap almost
 completely and pinning a result on one of four changes made the same week is a story, not a
 measurement. **It refuses to report a rate below ~20 games on one side**, which is where
-the record sits today (502 swaps against 58 logged matches, best deck n=8), so what it prints is the
+the record sits today (651 swaps against 82 logged matches, best deck n=8), so what it prints is the
 COVERAGE — how far the record is from being readable — rather than a number. That refusal
 is the honest output; the analysis exists now so it is ready when the games are. Like every
 other read of the match record, it never feeds back into a score, and

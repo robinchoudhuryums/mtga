@@ -2088,6 +2088,43 @@ PROTECTION card (save the body, lose the counters, beat losing both), never an e
 piece. Generalised: before adding a blink, bounce or flicker package, count what it would
 DISCARD, not just what it would re-trigger.
 
+### A manabase swap is the same shape, and it looks like pure upside (2026-09-02)
+
+The blink case above is about a package you ADD. This is the same erasure arriving through
+a change nobody grades as an engine change at all.
+
+Deck 78 "Team Avatar" is built on trigger multiplication — Katara doubles an **Ally's**
+triggered ability, Starfield Vocalist doubles any **permanent's** enters-caused one. Its
+manabase was rebuilt the same week to fix a green shortfall (G 8 → 10 sources, hard
+taplands 4 → 1), which it did, and the rebuild was measured carefully on exactly those
+axes. What no one measured is that it removed **Birnin Zana Plaza** ("When this land
+enters, you gain 1 life") and **Temple of Enlightenment** ("When this land enters, scry
+1"), and that their replacements **Gathering Place** and **Urban Retreat** have no
+triggered ability whatsoever — only mana abilities and an activated one. Starfield sees
+nothing from either.
+
+So the deck's noncreature permanents that Starfield can double went from four to **two**
+(Sheltered by Ghosts; Overlord of the Mistmoors while impending), and the deck's own
+`#: notes:` went on asserting four, naming two lands the file no longer contained.
+
+Three things make this worth its own entry rather than a footnote to the blink case:
+
+- **Every model here scores a land on FIXING.** `suggest --lands` ranks on fixing value
+  with bounded synergy and scarce-colour nudges; `mana` and `consistency` price sources
+  and pips. Not one of them asks what triggered ability a land was carrying, because for
+  99% of decks a land's trigger is a rounding error. In a doubler deck it is the payoff.
+- **It reads as pure upside in every view that exists.** The rebuild improved the colour
+  rows, cut taplands, and regressed no metric the quality guard tracks. There is no
+  surface on which this shows up as a cost.
+- **No gate catches the stale claim either, and that is deliberate.** G-27 keeps
+  `#: notes:` out of the staleness scan on purpose: a build log may legitimately name a
+  card the deck no longer runs, and the measured precision of scanning it was ~45%.
+
+The trade itself was still correct — two cantrip-scale doubled triggers against the fixing
+was a good price. **Being unable to see that a price was paid is the defect.** Before a
+land swap in a deck whose engine reads triggers, diff the ETB text of both sides, and say
+in the notes what the swap cost.
+
 ## [G-43] Grade a modal / split / adventure card by the FACE YOU CAST, not the half you want
 
 **Grade a modal / split / adventure card by the FACE YOU CAST, not the half you want.**
