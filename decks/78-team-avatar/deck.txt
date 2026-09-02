@@ -41,7 +41,7 @@
 #: tier: 2026-09-02 for The Millennium Calendar, because the one-mana hexproof insured a
 #: tier: single point of failure that four doublers no longer have.
 #: tier: WHAT STILL ARGUES FOR B, honestly: Katara remains the deck's worst castability
-#: tier: row — {G}{W}{U} on turn three prices at ~51% against 13/8/8 sources, so she lands
+#: tier: row — {G}{W}{U} on turn three prices at ~57% against 13/8/10 sources, so she lands
 #: tier: turn four or five; the interaction is still cheap tricks rather than a suite and
 #: tier: the deck has NO sweeper. Delney was cut once it was measured to double nothing
 #: tier: the trigger-doublers miss, and Elspeth, Storm Slayer replaced Rally the Monastery
@@ -55,16 +55,22 @@
 #: notes: Ally effects": Katara doubles TRIGGERED abilities only. White Lotus
 #: notes: Reinforcements' anthem and Suki, Courageous Rescuer's +1/+0 are STATIC and are
 #: notes: not doubled; Kyoshi Battle Fan's equip is an ACTIVATED ability and is not
-#: notes: doubled (its ETB token is). Suki, Courageous Rescuer's token trigger reads
-#: notes: "This ability triggers only once each turn", which caps it at one even with
-#: notes: Katara out — she is in the list for the anthem and the body, not as an engine
-#: notes: piece. Gather the White Lotus counts PLAINS, which is why the basics are
-#: notes: Plains-heavy rather than an even split (G-75: a card that names a resource is worth
-#: notes: the number of them in THIS deck). The count is SEVEN Plains-TYPED lands, not six
-#: notes: basics — Hallowed Fountain is a Plains Island and counts. What that card is
-#: notes: actually worth is smaller than seven either way, because the clause reads Plains
-#: notes: you CONTROL: at 7 of 24 lands, turn five expects ~1.5 on the battlefield, and the
-#: notes: three fetches raise it to roughly 2-3. Grade it as a 2-3 token card with scry 2.
+#: notes: doubled (its ETB token is). The two cards this paragraph used to be about are
+#: notes: both GONE and the reasoning is kept only as history: Suki, Courageous Rescuer was
+#: notes: CUT 2026-09-02 because "This ability triggers only once each turn" caps her token
+#: notes: at one even under four multipliers, and Gather the White Lotus was CUT earlier
+#: notes: because it counts Plains you CONTROL — ~1.5 on turn five — not Plains in the deck.
+#: notes: The basics stay Plains-heavy anyway: white is 27 pips across 22 cards, the largest
+#: notes: demand in the list by a wide margin.
+#: notes: THE MANABASE WAS REBUILT 2026-09-02 AROUND GREEN, which the doubler swaps had made
+#: notes: the binding colour: green pips went to 11 across 11 cards while sources sat at 8.
+#: notes: All THREE fetches came out for Starting Town, Secluded Courtyard and a fourth
+#: notes: Forest, Birnin Zana Plaza became Gathering Place and Temple of Enlightenment became
+#: notes: Urban Retreat — W 13 / U 8 / G 8 to W 13 / U 8 / G 10 with no white or blue row
+#: notes: losing a point, and hard taplands 4 -> 1 (Breeding Pool and Hallowed Fountain are
+#: notes: shocks you choose). TWO SOURCES THE MODEL CANNOT COUNT: Secluded Courtyard names
+#: notes: Ally and pays any colour for 20 of the 36 nonland cards — every early green row
+#: notes: above is one — and Starting Town is untapped any-colour on turns 1-3 for a life.
 #: notes: THE THREE DOUBLERS DIVIDE THE LIST CLEANLY, AND ELSPETH MULTIPLIES WITH THE
 #: notes: OTHER TWO RATHER THAN OVERLAPPING THEM: Katara and Starfield double the
 #: notes: TRIGGER, Elspeth doubles the token OUTPUT, so Kyoshi Warriors under Katara plus
@@ -148,18 +154,18 @@
 # Lands (24)
 1 Hushwood Verge (DSK) 261
 1 Etched Cornfield (DSK) 258
-1 Birnin Zana Plaza (MSH) 262
+1 Gathering Place (MSH) 266
 1 Floodfarm Verge (DSK) 259
 1 Hallowed Fountain (ECL) 265
-1 Temple of Enlightenment (FDN) 698
+1 Urban Retreat (SPM) 187
 1 Gleaming Bastion (MSH) 267
 1 Willowrush Verge (DFT) 270
 1 Breeding Pool (EOE) 251
-2 Evolving Wilds (ECL) 264
-1 Terramorphic Expanse (MSC) 828
+1 Starting Town (FIN) 289
+1 Secluded Courtyard (FDN) 267
 6 Plains (HOB) 189
 1 Three Tree City (BLB) 260
-3 Forest (HOB) 193
+4 Forest (HOB) 193
 2 Island (HOB) 190
 #~ note: applied — Bard, King of Dale in for Invasion Tactics.
 #~ note: Katara, Water Tribe's Hope is PARKED, not rejected, and the number to re-check is the manabase. Measured 2026-09-01: {2}{W}{U}{U} against 8 blue sources is 43% on curve at turn five -- it would become the deck's worst castability row, below Katara the Fearless at 51%, which is the row the tier block already names as what holds this deck at B. Great Divide Guide (every land AND Ally taps for any colour) and Dazzling Theater (convoke pays a coloured pip off a blue body) both rescue her, but P(drawing either by turn five) is only 33.6%, before either resolves or survives. She comes in when blue sources go up -- roughly 18 are needed for a 90% double pip -- not when a slot opens.
