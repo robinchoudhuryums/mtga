@@ -1,5 +1,6 @@
 #: name: Team Avatar
 #: format: Standard
+#: arena: 78 Team Avatar, 354e2dd0-561f-469e-af48-2f9bc4e6f5f4
 #: colors: GWU
 #: archetype: BANT ALLY TRIBAL, and the plan is a TRIGGER-DOUBLING engine rather than
 #: archetype: an anthem pile. Katara, the Fearless makes every triggered ability of every
