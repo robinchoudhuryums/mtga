@@ -26,6 +26,7 @@
 1 Daydream (SOS) 9
 1 Sharae of Numbing Depths (WOE) 213
 1 Morningtide's Light (ECL) 27
+1 Niko, Light of Hope (DSK) 224
 
 # ETB value + "creature enters" payoffs
 1 Enduring Curiosity (DSK) 51
@@ -36,7 +37,6 @@
 1 Red Guardian, Super-Soldier (MSH) 34
 1 Sheriff of Safe Passage (OTJ) 29
 1 Solitary Sanctuary (WOE) 30
-1 Waxen Shapethief (DFT) 74
 1 Beza, the Bounding Spring (BLB) 2
 1 Appa, Steadfast Guardian (TLA) 10
 1 East Wind Avatar (TMT) 5
@@ -76,3 +76,5 @@
 #~ note: applied — interaction + value pass (all owned, 0 WC): Floodpits Drowner (-Triceraton Commander, whose {X}{X}{W}{W} makes 0 tokens when blinked) = repeatable tap+shuffle-away removal the blink engine re-triggers; Cloudblazer (-Luxknight Breacher) = gain 2 + draw 2 on every blink; Waxen Shapethief (-Spiritcall Enthusiast) = flash-copy your best ETB creature (re-fires its ETB), cycling {2} when dead; Sharae of Numbing Depths (-Another Round) = ETB tap+stun + draws whenever you tap an opponent's creature (pays off Floodpits/Solitary Sanctuary taps).
 #~ note: Morningtide's Light KEPT (cut Another Round instead) — full text is a mass ETB-retrigger PLUS "until your next turn, prevent all damage that would be dealt to you": a blink-wave + one-sided Fog/stabilizer, strictly more useful here than Another Round's own-creatures-only X-cost mass-blink.
 #~ note: mana confirmed — all adds are single-pip (Floodpits {1}{U}, Waxen {3}{U}, Sharae {2}{W}{U}); cutting Triceraton/Luxknight/Spiritcall DROPPED white demand. Sources W 17 / U 13; blue rises to ~14 single pips, comfortably supported.
+#~ -Niko, Light of Hope | +Waxen Shapethief | ROTATION SUCCESSOR (owned): Waxen was CUT for Niko 2026-09-02 and is parked here for the swap BACK. Niko rotates ~2027, Waxen ~2028, so Waxen outlives it by a year — bring Waxen in when Niko leaves Standard rather than re-deriving the slot. {3}{U} flash Shapeshifter: enters as a copy of an artifact or creature you control (re-firing that creature's ETB once), with cycling {2} when the board is wrong.
+#~ note: WHY NIKO BEAT IT, so the case is not re-derived: the Shapethief re-triggers an ETB ONCE, on its own arrival, which is a body that duplicates rather than a blink. Niko's {2},{T} exiles a nonlegendary creature you control and returns it EVERY TURN, and the Shards it makes become copies of that creature until end of turn — a repeatable engine on this deck's exact axis, plus two scry-and-draw sacs. It also classifies as Removal (spot), so the swap took interaction 7 -> 8.
