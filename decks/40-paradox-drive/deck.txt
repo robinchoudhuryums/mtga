@@ -8,9 +8,9 @@
 #: archetype: Temur Fractals/counters ramp deck (30 Fractalandtastic): this wins with one
 #: archetype: huge SPELL + card advantage, NOT a +1/+1-counter board — so it deliberately
 #: archetype: skips the Fractal / counter-doubler package. The counter-doubler build lives
-#: archetype: in the sibling variant 40a Exponential Drive, which shares this ramp shell
-#: archetype: but wins through one exponentially doubled creature instead. Keep them
-#: archetype: apart: 40 holds up counterspells, 40a commits a threat on turn 2-3.
+#: archetype: in the sibling variant 40a Paradox Drive — ParadoXponential, which shares
+#: archetype: this ramp shell but wins through one exponentially doubled creature instead.
+#: archetype: Keep them apart: 40 holds up counterspells, 40a commits a threat on turn 2-3.
 #: tier: A — Simic ramp-control. CONFIRMED against the rubric (was PROVISIONAL), re-checked
 #: tier: after the Divergent Equation / Matterbending Mage / Agna Qel'a swaps and the
 #: tier: Ooze Spill / Amazing Acrobatics counter upgrade (two conditional counters — Essence

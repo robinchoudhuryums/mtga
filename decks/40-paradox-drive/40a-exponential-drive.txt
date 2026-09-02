@@ -1,4 +1,4 @@
-#: name: Exponential Drive
+#: name: Paradox Drive — ParadoXponential
 #: format: Standard
 #: arena: 40a ParadoXponential, 67b936ca-ebcb-4372-b35c-ce369119f41d
 #: colors: GU
