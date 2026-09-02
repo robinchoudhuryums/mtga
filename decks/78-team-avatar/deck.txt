@@ -16,7 +16,7 @@
 #: archetype: be full of Allies (18 and 15 bodies against ONE and two payoffs), where
 #: archetype: this deck is built on the payoff half and splashes green for it.
 #: tier: B (PROVISIONAL) — still unplayed, and still graded one band UNDER its A metrics
-#: tier: floor. The floor reads A on interaction 8 and card advantage 3 at a 3.44 curve.
+#: tier: floor. The floor reads A on interaction 8 and card advantage 3 at a 3.42 curve.
 #: tier: INTERACTION IS NOW HONEST AND CARD ADVANTAGE IS THE ONE TO WATCH. The 8 counts
 #: tier: Allies at Last for the first time: the removal patterns all read "dealS damage"
 #: tier: while the card says "each DEAL damage", so it scored zero interaction until the
@@ -113,7 +113,7 @@
 1 Katara, the Fearless (TLA) 230
 1 Avatar Enthusiasts (TLA) 11
 1 Dazzling Theater // Prop Room (DSK) 3
-1 Suki, Courageous Rescuer (TLA) 37
+1 The Astonishing Ant-Man (MSH) 204
 1 Earth Kingdom Jailer (TLA) 16
 1 Toph, the Blind Bandit (TLA) 198
 1 Ty Lee, Chi Blocker (TLA) 76
@@ -166,5 +166,7 @@
 #~ -Kyoshi Warriors | +Mister Fantastic, Reed Richards | SIDEGRADE (owned): {3}{U} reach body that draws whenever one or more tokens you control enter. He was CUT 2026-09-01 for Celebrate the Mountain-king, which took interaction 7 -> 8 at the cost of card advantage 4 -> 3; he is the way to buy that draw back if the axis reads too thin in play. Cut listed as Kyoshi Warriors because both are MV 4 and the 4-slot is the curve's fat point.
 #~ note: TWO THINGS TO KNOW BEFORE BRINGING MISTER FANTASTIC BACK. His trigger reads "one or more tokens", so ELSPETH DOES NOT MULTIPLY HIM -- doubling a single creation event enters them simultaneously, which is one trigger, not two. Katara and Starfield DO, because doubling the trigger produces two separate token events. And he is a {3}{U} pip against 8 blue sources in a deck whose worst castability rows are already blue; he is also a non-Ally, so Katara doubles nothing of his own.
 #~ note: applied — Doubling Season in for Sheriff of Safe Passage.
-#~ -Suki, Courageous Rescuer | +Orcrist, Goblin-cleaver | SIDEGRADE (owned M): re-parked 2026-09-02 after its listed cut (Sheriff of Safe Passage) left for Doubling Season. {3} Equipment, +2/+2 trample, Treasure per creature of a chosen type on connect -- 24 Humans / 21 Allies here, now x4 under Elspeth plus Doubling Season. Suki is the listed cut because her token trigger is hard-capped once per turn (the feeder that gains least from four multipliers) and her anthem is static.
+#~ note: applied — The Astonishing Ant-Man in for Suki, Courageous Rescuer.
+#~ -Toph, the Blind Bandit | +Orcrist, Goblin-cleaver | SIDEGRADE (owned M): re-parked 2026-09-02 a second time -- its listed cut (Suki) left for The Astonishing Ant-Man. Toph is now the listed cut as the last role-neutral Ally that makes no tokens; note Doubling Season made him BETTER (earthbend 2 -> 4, and his power is the counters on your lands), so this is the softest slot, not a dead one.
+#~ -Toph, the Blind Bandit | +Suki, Courageous Rescuer | SIDEGRADE (owned): Human Warrior Ally, {1}{W}{W}. Static +1/+0 to other creatures (never doubled) and a token whenever another permanent of yours leaves during your turn -- but "This ability triggers only once each turn", which is why she was the cut for Ant-Man 2026-09-02: the one token maker four multipliers cannot scale past one event. She comes back if the anthem is missed in play, or if a doubler is cut.
 #~ note: WHY ORCRIST IS PARKED RATHER THAN PLAYED, so the case is not re-derived: it is SIX mana before it does anything ({3} cast plus equip {3}) and it still has to connect, and the payoff is MANA this deck cannot spend -- avg MV 3.33, top end 5-6, and Great Divide Guide already turns every land AND every Ally into any-colour mana. The {X} sinks are United Front and now The Millennium Calendar's {2} activation, which is the one thing that has moved in its favour. It is also the only Equipment, so there is no equip discount and nothing to tutor it. The evasion objection is answered by Starry-Eyed Skyrider (flying to an attacking creature) -- Enter the Avatar State was CUT 2026-09-02, so Skyrider is now the ONLY evasion granter; do not cut it to make room for this.
