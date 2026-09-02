@@ -16,18 +16,20 @@
 #: archetype: be full of Allies (18 and 15 bodies against ONE and two payoffs), where
 #: archetype: this deck is built on the payoff half and splashes green for it.
 #: tier: B (PROVISIONAL) — still unplayed, and still graded one band UNDER its A metrics
-#: tier: floor. The floor reads A on interaction 9 and card advantage 3 at a 3.33 curve.
-#: tier: INTERACTION IS NOW HONEST AND CARD ADVANTAGE IS THE ONE TO WATCH. The 9 counts
+#: tier: floor. The floor reads A on interaction 8 and card advantage 3 at a 3.44 curve.
+#: tier: INTERACTION IS NOW HONEST AND CARD ADVANTAGE IS THE ONE TO WATCH. The 8 counts
 #: tier: Allies at Last for the first time: the removal patterns all read "dealS damage"
 #: tier: while the card says "each DEAL damage", so it scored zero interaction until the
 #: tier: pattern was widened 2026-09-01 -- every interaction figure this deck quoted
 #: tier: before that date read one LOW. Starfield Vocalist still scores zero roles,
 #: tier: because a trigger-doubler has no bucket at all; and
 #: tier: the card-advantage 3 is a floor, not a count -- Hakoda casts Ally spells off the
-#: tier: top of the library and does not classify, Celebrate the Mountain-king's recruit
-#: tier: is a loot the bucket does not read, and Elspeth's 0 refills the board rather than
-#: tier: the hand. Mister Fantastic was traded for that interaction on 2026-09-01 and sits
-#: tier: in the flex block; if the axis reads thin in play he is the way to buy it back.
+#: tier: top of the library and does not classify, Elspeth's 0 refills the board rather
+#: tier: than the hand, and Bard, King of Dale (ADDED 2026-09-02 for Invasion Tactics) is a
+#: tier: DOUBLER of draws the bucket counts once -- Sokka under Katara and Bard is four
+#: tier: cards a combat. Celebrate the Mountain-king was CUT the same day for Overlord of
+#: tier: the Mistmoors (removal traded for a feeder: sixteen flying 2/1s for four mana
+#: tier: under Starfield, Elspeth and Doubling Season), which is the interaction 9 -> 8.
 #: tier: WHAT USED TO HOLD IT AT B WAS A SINGLE POINT OF FAILURE: the whole engine was one
 #: tier: legendary 3/3, and protection WAS 2 back then, so one removal spell ended it.
 #: tier: THAT IS LARGELY GONE. Starfield Vocalist was ADDED as a second doubler that reads
@@ -71,9 +73,10 @@
 #: notes: climbs twice as fast. Katara reads ALLY and ignores power;
 #: notes: Starfield Vocalist reads any PERMANENT and ignores type, but only for
 #: notes: ENTERS-caused triggers. Katara therefore owns the attack- and death-triggered
-#: notes: Allies that Starfield cannot see, and Starfield owns the four noncreature
-#: notes: permanents (Invasion Tactics, Sheltered by Ghosts, Birnin Zana Plaza, Temple of
-#: notes: Enlightenment) plus the non-Ally creatures. With both out an Ally's ETB fires
+#: notes: Allies that Starfield cannot see, and Starfield owns the noncreature permanents
+#: notes: (Sheltered by Ghosts, Birnin Zana Plaza, Temple of Enlightenment, and Overlord
+#: notes: of the Mistmoors while impending -- Invasion Tactics was one until it was CUT
+#: notes: 2026-09-02 for Bard) plus the non-Ally creatures. With both out an Ally's ETB fires
 #: notes: THREE times.
 #: notes: DELNEY WAS CUT 2026-09-01 ON A MEASUREMENT, not a hunch: of the twelve copies in
 #: notes: his power-2-or-less range, Suki Courageous Rescuer's own cap blocks one, leaving
@@ -91,8 +94,9 @@
 #: notes: tokens, so Kyoshi Warriors under Katara is 2 triggers x 4 = EIGHT Ally tokens;
 #: notes: it doubles all 13 counter sources; and it doubles the loyalty Elspeth ENTERS
 #: notes: with, so she can -3 twice and live. Two things it does NOT do: it never touches
-#: notes: a static or activated ability, and it would double an Impending card's time
-#: notes: counters (Overlord of the Mistmoors 4 -> 8) if one is ever added.
+#: notes: a static or activated ability, and it DOES double Overlord of the Mistmoors'
+#: notes: impending time counters (4 -> 8 turns to become a creature) -- irrelevant once
+#: notes: the ETB has already made sixteen fliers, but real.
 #: notes: THE MILLENNIUM CALENDAR IS A PARALLEL CLOCK, NOT A DISTRACTION, and the count
 #: notes: that decides it is permanents untapping: this deck routinely untaps 15+. At {2}
 #: notes: per turn that is 6 turns to 1,000 solo and THREE with Doubling Season out, on a
@@ -117,6 +121,7 @@
 1 Niko, Light of Hope (DSK) 224
 1 Elspeth, Storm Slayer (TDM) 11
 1 The Millennium Calendar (LCI) 257
+1 Bard, King of Dale (HOB) 144
 
 # Ally bodies and token makers
 1 Appa, Steadfast Guardian (TLA) 10
@@ -128,10 +133,10 @@
 1 Earth Kingdom General (TLA) 173
 1 Earth King's Lieutenant (TLA) 217
 1 United Front (TLA) 39
-1 Invasion Tactics (TLA) 183
 1 Aang, at the Crossroads // Aang, Destined Savior (TLA) 203
 1 Appa, Loyal Sky Bison (TLA) 9
 1 Starry-Eyed Skyrider (TDM) 25
+1 Overlord of the Mistmoors (DSK) 23
 
 # Interaction
 1 Sheltered by Ghosts (DSK) 30
@@ -139,7 +144,6 @@
 1 Duty Beyond Death (TDM) 10
 1 Jet, Freedom Fighter (TLA) 229
 1 The Eagles Are Coming! (HOB) 12
-1 Celebrate the Mountain-king (HOB) 7
 
 # Lands (24)
 1 Hushwood Verge (DSK) 261
@@ -157,7 +161,7 @@
 1 Three Tree City (BLB) 260
 3 Forest (HOB) 193
 2 Island (HOB) 190
-#~ -Invasion Tactics | +Katara, Water Tribe's Hope | SIDEGRADE (owned): Human Warrior Ally, vigilance, ETB Ally token (doubled by BOTH Katara the Fearless and Starfield), and waterbend {X} is a real finisher on a ten-token board -- creatures get BASE power/toughness X/X, so existing +1/+1 counters still stack on top, and the tap-to-help clause lets vigilance bodies attack AND pay. MV 5 for MV 5, so the curve does not move; it costs card advantage 4 -> 3 (Invasion Tactics draws whenever Allies connect, and Starfield doubles its +2/+2 ETB to +4/+4).
+#~ note: applied — Bard, King of Dale in for Invasion Tactics.
 #~ note: Katara, Water Tribe's Hope is PARKED, not rejected, and the number to re-check is the manabase. Measured 2026-09-01: {2}{W}{U}{U} against 8 blue sources is 43% on curve at turn five -- it would become the deck's worst castability row, below Katara the Fearless at 51%, which is the row the tier block already names as what holds this deck at B. Great Divide Guide (every land AND Ally taps for any colour) and Dazzling Theater (convoke pays a coloured pip off a blue body) both rescue her, but P(drawing either by turn five) is only 33.6%, before either resolves or survives. She comes in when blue sources go up -- roughly 18 are needed for a 90% double pip -- not when a slot opens.
 #~ -Kyoshi Warriors | +Mister Fantastic, Reed Richards | SIDEGRADE (owned): {3}{U} reach body that draws whenever one or more tokens you control enter. He was CUT 2026-09-01 for Celebrate the Mountain-king, which took interaction 7 -> 8 at the cost of card advantage 4 -> 3; he is the way to buy that draw back if the axis reads too thin in play. Cut listed as Kyoshi Warriors because both are MV 4 and the 4-slot is the curve's fat point.
 #~ note: TWO THINGS TO KNOW BEFORE BRINGING MISTER FANTASTIC BACK. His trigger reads "one or more tokens", so ELSPETH DOES NOT MULTIPLY HIM -- doubling a single creation event enters them simultaneously, which is one trigger, not two. Katara and Starfield DO, because doubling the trigger produces two separate token events. And he is a {3}{U} pip against 8 blue sources in a deck whose worst castability rows are already blue; he is also a non-Ally, so Katara doubles nothing of his own.
