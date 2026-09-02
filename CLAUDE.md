@@ -1200,9 +1200,11 @@ earned it: [C-01]
 
 **Subsystems:**
 - Data: card-library.csv, card-pool.csv, card-mana.csv, card-wishlist.csv, matches.csv
-  (LIVE since 2026-08-10 — 72 matches, 69 attributed across 29 decks, pooled 37-35; the
-  best per-deck row is n=8 against the 20-match floor, which is why `--report` also POOLS,
-  and why the four HAND columns exist at all — G-74), recommendations.csv,
+  (LIVE since 2026-08-10 — 82 matches, 79 attributed across 30 decks, pooled 44-38; the
+  best per-deck row is STILL n=8 against the 20-match floor after a month, which is why
+  `--report` also POOLS, and why the four HAND columns exist at all — G-74; all four are
+  still EMPTY in all 82 rows, so scenario 11 remains the only thing that can prove that
+  loop closes), recommendations.csv,
   collection-stamp.json (written only by `import_collection.py --apply` — the date owned
   counts were last EXACT; absent until the first run, and the craft surfaces say so) [C-02]
 - Outcomes: scripts/parse_matches.py, recommendations.csv + `deck.py feedback` — the only

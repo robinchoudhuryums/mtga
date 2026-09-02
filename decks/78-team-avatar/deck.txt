@@ -81,10 +81,20 @@
 #: notes: Starfield Vocalist reads any PERMANENT and ignores type, but only for
 #: notes: ENTERS-caused triggers. Katara therefore owns the attack- and death-triggered
 #: notes: Allies that Starfield cannot see, and Starfield owns the noncreature permanents
-#: notes: (Sheltered by Ghosts, Birnin Zana Plaza, Temple of Enlightenment, and Overlord
-#: notes: of the Mistmoors while impending -- Invasion Tactics was one until it was CUT
-#: notes: 2026-09-02 for Bard) plus the non-Ally creatures. With both out an Ally's ETB fires
-#: notes: THREE times.
+#: notes: plus the non-Ally creatures. With both out an Ally's ETB fires THREE times.
+#: notes: THAT NONCREATURE LIST IS NOW TWO, AND THE MANABASE REBUILD IS WHY -- corrected
+#: notes: 2026-09-02 after this paragraph was found naming two lands the same day's rebuild
+#: notes: had already removed. Live: Sheltered by Ghosts, and Overlord of the Mistmoors
+#: notes: while impending. Gone with the rebuild: Birnin Zana Plaza (gain 1 life on enter,
+#: notes: so gain 2) and Temple of Enlightenment (scry 1, so scry 2); their replacements
+#: notes: Gathering Place and Urban Retreat have NO triggered ability at all, only mana and
+#: notes: activated ones, so Starfield sees nothing from either. Invasion Tactics was a
+#: notes: third until it was CUT 2026-09-02 for Bard. THE TRADE WAS STILL RIGHT -- two
+#: notes: doubled cantrip-scale triggers against G 8 -> 10 and hard taplands 4 -> 1 -- but
+#: notes: it was made without noticing this cost, so record it: a manabase swap can quietly
+#: notes: cut a doubler's fodder, and nothing checks that (G-27 keeps `#: notes:` out of
+#: notes: the staleness scan on purpose, because a build log may legitimately name an
+#: notes: absent card).
 #: notes: DELNEY WAS CUT 2026-09-01 ON A MEASUREMENT, not a hunch: of the twelve copies in
 #: notes: his power-2-or-less range, Suki Courageous Rescuer's own cap blocks one, leaving
 #: notes: eleven — and every one of those eleven is already covered by Katara (the nine

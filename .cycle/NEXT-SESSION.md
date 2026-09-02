@@ -19,15 +19,23 @@ commands disagree.
 
 ## 0-current. THE 2026-08-24 SESSION (READ THIS FIRST — supersedes §0-latest below)
 
-> **STATE STAMP, 2026-08-26.** The rules and reasoning in this section are all still
-> current; only its FIGURES had aged. Live gates: `check_all` all invariants hold with the
-> SAME one soft warning described just below; **1500 pytest passed / 0 skipped**. Three
-> cycles have run since this section was written — the granted-keyword tagger fix, the
-> match-ingest watermark, the skill-layer sweep and the `--sync-names` dry-run fix — each
-> with its own verbatim block in `.cycle/blocks/` (newest:
-> `2026-08-sync-names-dry-run-broad-implement.md`). Read those for what changed; read this
-> section for why the rules below exist. The figures in the paragraph that follows are the
-> 2026-08-24 snapshot and are kept as a dated record.
+> **STATE STAMP, 2026-09-02 — AND ONE THING TO DO BEFORE ANYTHING ELSE (see "Where the
+> session left off" below): SIX COMMITS ARE ON `claude/peaceful-pascal-66lvxw` AND NOT ON
+> `main`, WITH NO OPEN PR.** A session that starts from `main` sees none of deck 78, none
+> of two tooling fixes, and none of the 2026-09-02 matches. Check `git log
+> origin/main..origin/claude/peaceful-pascal-66lvxw` FIRST and branch from there, or ask
+> the user to merge.
+>
+> The rules and reasoning in this section are all still current; only its FIGURES had
+> aged. Live gates: `check_all` all invariants hold with the SAME one soft warning
+> described just below; **1572 pytest passed / 0 skipped**. Five cycles have run since
+> this section was written — the granted-keyword tagger fix, the match-ingest watermark,
+> the skill-layer sweep, the `--sync-names` dry-run fix, and (2026-09-01/02) the
+> role-verb / wishlist-target / deck-id batch and the granted-non-evergreen /
+> manabase-figure batch — each with its own verbatim block in `.cycle/blocks/` (newest:
+> `2026-09-granted-keywords-and-manabase-figures-broad-implement.md`). Read those for what
+> changed; read this section for why the rules below exist. The figures in the paragraph
+> that follows are the 2026-08-24 snapshot and are kept as a dated record.
 
 Gates: `check_all` all invariants hold with **ONE soft warning** (see below — it is
 expected, not a regression); **1423 pytest passed / 1 skipped**. Merged as PR #150 and
@@ -128,13 +136,51 @@ that the skill reaching it is right. The lesson generalizes past this file — *
 
 ### Where the session left off
 
-Nothing in flight. Working tree clean, HEAD == origin/main. The three `.cycle/*-analysis.md`
-working docs (prune, wylie-tap, hob-followup) are still live and still awaiting the user's
-calls. Standing items the user has explicitly deferred: the Endstone shell, Wylie Variant
-B, the Army/amass deck, 26a near-mono-blue rebuild, deck 76 second-wave crafts, and the
-unexamined fit-pass leads (Innocuous Rat → 62, Graveshifter → 77, Carrot Cake → 42a,
+**REWRITTEN 2026-09-02 — the paragraph this replaces said "Nothing in flight. Working tree
+clean, HEAD == origin/main", which stopped being true and is exactly the failure the
+commit tail's §4 warns about: a handoff that IS read and is wrong is worse than one that
+is not read.**
+
+**Working tree clean; HEAD is `claude/peaceful-pascal-66lvxw`, SIX commits ahead of
+`origin/main`, no open PR.** Everything below lives only on that branch:
+`a3dfc9f` deck 78's craft ingest · `f7ef57a` Niko into deck 27 · `0a0904b` the granted
+non-evergreen keywords + manabase figure axis (block in `.cycle/blocks/`) ·
+`d8fb234` ten Arena matches · `d594537` deck 40a's rename · `01664ad` its file rename.
+PRs #160 and #161 (deck 78's tuning and its doubler/manabase pass) are merged and ARE on
+main. **Decide the branch question before doing anything else** — merging it is a one-line
+ask, and building on `main` instead silently discards the six.
+
+**Deck 78 "Team Avatar" is the live deck.** Built and tuned from scratch 2026-08-31 →
+09-02, fully buildable, preflight READY, floor A on a **claimed B that is still marked
+PROVISIONAL** — that is a pending HUMAN call (never auto-write a tier letter), and the
+first evidence is now in: **5-2 across its first seven games**, n=7 against the 20-match
+floor, so it is encouraging and not yet a reading. Two swaps were measured and offered and
+have no decision: `−Sheriff of Safe Passage / +Ojer Taq` and `−Kyoshi Warriors / +Byrke`.
+
+**One find from 2026-09-02 worth not re-deriving.** Deck 78's `#: notes:` claimed Starfield
+Vocalist saw four noncreature permanents while naming two lands (Birnin Zana Plaza, Temple
+of Enlightenment) that the same day's manabase rebuild had already removed — and their
+replacements (Gathering Place, Urban Retreat) have no triggered ability at all, so the
+real count is TWO. Corrected in the deck file with the reasoning. The general shape:
+**a manabase swap can quietly cut a doubler's fodder, and no gate sees it** — G-27 keeps
+`#: notes:` out of the staleness scan on purpose, because a build log may legitimately
+name an absent card.
+
+`.cycle/team-avatar-pile-analysis.md` was DELETED 2026-09-02, its contract satisfied — the
+swaps landed and its findings are folded into deck 78's 57 `#: notes:` lines. The other
+three working docs (prune, wylie-tap, hob-followup) are still live and still awaiting the
+user's calls. Standing items the user has explicitly deferred: the Endstone shell, Wylie
+Variant B, the Army/amass deck, 26a near-mono-blue rebuild, deck 76 second-wave crafts, and
+the unexamined fit-pass leads (Innocuous Rat → 62, Graveshifter → 77, Carrot Cake → 42a,
 Fanatic of the Harrowing → 70, six deck 31 suitors). Deck 8 still carries a pre-existing
 pip-intensive flag (16 B / 1 R / 3 G against thin R–G splashes) — noted, never actioned.
+
+**Two open design calls carried forward from the 2026-09 blocks, neither a defect:**
+`--audit-targets` checks wishlist→deck and nothing checks deck→wishlist (272 deck craft
+targets are outside the 186-row wishlist, which is CURATED — whether that view should
+exist is the user's call); and the colour-source computation exists three times
+(`cmd_mana`, `cmd_consistency`, `deck_color_sources`) and agrees today with nothing
+checking that it keeps agreeing.
 
 ---
 

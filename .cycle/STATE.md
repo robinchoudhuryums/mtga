@@ -2644,3 +2644,46 @@ Two holes found while tuning decks 78 and 27. Block:
 
 **Where I left off:** all green — full pytest suite passes, `check_all` all invariants
 hold, `check_patterns`/`check_commands`/`check_docs`/`check_roles` OK, dashboard rebuilt.
+
+
+---
+
+## 2026-09-02 (later) — first matches logged, deck 40a renamed, pile doc closed
+
+Three small pieces of housekeeping, one of which turned up a real find.
+
+**Ten Arena matches ingested** (`parse_matches.py --apply`), 72 -> 82 rows. **Deck 78 went
+5-2 in its first seven games ever** — the deck was built and tuned in the same two days, so
+this is the outcome loop closing on work that had none. Deck 59 went 2-1. Per G-57 no
+per-deck rate is readable (best row n=8 against the 20-match floor); pooled is 44-38, 54%,
+95% CI 43-64%. The run also wrote deck 78's first `#: arena:` header — attribution had been
+resolving through the leading-number `name prefix` guess, and the GUID now pins it.
+
+**Deck 40a adopted Arena's name**, `Exponential Drive` -> `Paradox Drive — ParadoXponential`,
+with deck 40's `#: archetype:` citation re-pointed and the file renamed
+`40a-exponential-drive.txt` -> `40a-paradoxponential.txt` (the `19b-gw-chocobo.txt` /
+`51-unlocked` convention). One consequence CHECKED rather than assumed: the rationale audit
+masks a roster deck name only when it is not a substring of THIS deck's own name (G-27's
+26a case), so 40a's name now containing "Paradox Drive" means that name stops masking inside
+40a's prose — a TIGHTENING. Audits clean on 40 and 40a before and after, roster sweep gained
+no flag. Also learned in passing: `_other_deck_ids` returns empty for a bare `40a` with no
+literal word *deck*, so it was the roster-NAME mask carrying that citation all along, in
+both versions.
+
+**THE FIND — a manabase swap can quietly cut a doubler's fodder.** Checking the pile doc's
+deletion condition surfaced deck 78's `#: notes:` claiming Starfield Vocalist saw four
+noncreature permanents, while naming two lands (Birnin Zana Plaza, Temple of Enlightenment)
+that the SAME DAY's manabase rebuild had already removed. Worse than a name swap: both had
+real enters triggers (gain 1 life; scry 1) and their replacements Gathering Place and Urban
+Retreat have no triggered ability at all — only mana and activated ones — so the true count
+is TWO (Sheltered by Ghosts, and Overlord of the Mistmoors while impending). The trade was
+still right (two cantrip-scale doubled triggers against G 8 -> 10 and hard taplands 4 -> 1)
+but it was made without seeing the cost. **No gate catches this and that is deliberate**:
+G-27 keeps `#: notes:` out of the staleness scan because a build log may legitimately name
+an absent card. Corrected in the deck file with the reasoning kept.
+
+**`.cycle/team-avatar-pile-analysis.md` deleted**, its contract satisfied — the swaps landed
+and its findings are in deck 78's 57 `#: notes:` lines.
+
+**Where I left off:** all green. **Six commits sit on `claude/peaceful-pascal-66lvxw` with
+no open PR** — see `.cycle/NEXT-SESSION.md`, which now leads with that.
