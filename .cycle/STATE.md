@@ -2685,5 +2685,7 @@ an absent card. Corrected in the deck file with the reasoning kept.
 **`.cycle/team-avatar-pile-analysis.md` deleted**, its contract satisfied — the swaps landed
 and its findings are in deck 78's 57 `#: notes:` lines.
 
-**Where I left off:** all green. **Six commits sit on `claude/peaceful-pascal-66lvxw` with
-no open PR** — see `.cycle/NEXT-SESSION.md`, which now leads with that.
+**Where I left off:** all green, and the day's eight commits merged to `main` as PR #162
+(a `/sync-docs` pass went in with them: G-42 gained the manabase instance, G-27 the
+rename-is-a-suppression-change note, G-80 the four-becomes-five margin, and three README
+figures were corrected against live data).

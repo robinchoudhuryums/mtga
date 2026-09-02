@@ -19,12 +19,12 @@ commands disagree.
 
 ## 0-current. THE 2026-08-24 SESSION (READ THIS FIRST — supersedes §0-latest below)
 
-> **STATE STAMP, 2026-09-02 — AND ONE THING TO DO BEFORE ANYTHING ELSE (see "Where the
-> session left off" below): SIX COMMITS ARE ON `claude/peaceful-pascal-66lvxw` AND NOT ON
-> `main`, WITH NO OPEN PR.** A session that starts from `main` sees none of deck 78, none
-> of two tooling fixes, and none of the 2026-09-02 matches. Check `git log
-> origin/main..origin/claude/peaceful-pascal-66lvxw` FIRST and branch from there, or ask
-> the user to merge.
+> **STATE STAMP, 2026-09-02.** Everything through 2026-09-02 is MERGED to `main` as PR
+> #162 — deck 78's craft ingest, Niko into deck 27, both tooling batches, the ten logged
+> matches, deck 40a's rename and the doc sync. `main` is the place to branch from. (This
+> paragraph spent part of the day warning that eight commits sat unmerged with no PR; it
+> is kept in this shape as the reminder that the branch state is the first thing a
+> resuming session cannot see and the first thing this file has to tell it.)
 >
 > The rules and reasoning in this section are all still current; only its FIGURES had
 > aged. Live gates: `check_all` all invariants hold with the SAME one soft warning
@@ -141,14 +141,11 @@ clean, HEAD == origin/main", which stopped being true and is exactly the failure
 commit tail's §4 warns about: a handoff that IS read and is wrong is worse than one that
 is not read.**
 
-**Working tree clean; HEAD is `claude/peaceful-pascal-66lvxw`, SIX commits ahead of
-`origin/main`, no open PR.** Everything below lives only on that branch:
-`a3dfc9f` deck 78's craft ingest · `f7ef57a` Niko into deck 27 · `0a0904b` the granted
-non-evergreen keywords + manabase figure axis (block in `.cycle/blocks/`) ·
-`d8fb234` ten Arena matches · `d594537` deck 40a's rename · `01664ad` its file rename.
-PRs #160 and #161 (deck 78's tuning and its doubler/manabase pass) are merged and ARE on
-main. **Decide the branch question before doing anything else** — merging it is a one-line
-ask, and building on `main` instead silently discards the six.
+**Working tree clean, everything merged to `main`.** PR #162 carried the day's eight
+commits: deck 78's craft ingest, Niko into deck 27, the granted-non-evergreen-keywords +
+manabase-figure-axis batch (block in `.cycle/blocks/`), ten Arena matches, deck 40a's
+rename and file rename, this handoff, and the doc sync. PRs #160 and #161 (deck 78's
+tuning and its doubler/manabase pass) landed earlier the same day. Nothing is in flight.
 
 **Deck 78 "Team Avatar" is the live deck.** Built and tuned from scratch 2026-08-31 →
 09-02, fully buildable, preflight READY, floor A on a **claimed B that is still marked
