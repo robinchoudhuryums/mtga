@@ -3,9 +3,11 @@
 #: colors: GUR
 #: plan: midrange
 #: tier: B — PROVISIONAL, GRADED 2026-08 on an UNBUILT list (5 craft targets, zero games).
-#: tier: One band BELOW the measurable floor, which reads A on interaction 7 plus card
-#: tier: advantage 2. Against the rubric an A needs four things and this list fails two:
-#: tier:   A-FLOOR — yes. Interaction 7 clears five; the sum of 12 clears seven.
+#: tier: AT the measurable floor, which reads B on interaction 7 plus card advantage 2
+#: tier: since the 2026-09-02 re-derivation. Against the rubric an A needs four things
+#: tier: and this list fails three:
+#: tier:   A-FLOOR — no. Interaction 7 meets seven but the sum of 9 is short of eleven;
+#: tier:     card advantage is the axis (the 7 unclassified cards are the K-12 caveat).
 #: tier:   COHERENT ENGINE — yes, and now MEASURED rather than asserted. `targets` finds
 #: tier:     nine gated effects and reports zero thin or unmet: every Lesson-count gate in
 #: tier:     the list — Serpent's three, Bumi's X, Combustion Technique's scaling damage,

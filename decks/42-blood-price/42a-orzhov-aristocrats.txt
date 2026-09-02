@@ -42,7 +42,8 @@
 #: tier: an ENGINE TRIGGER here rather than a drawback, which is the whole reason it beat
 #: tier: a 2-drop drain payoff for the slot.
 #: tier: BE PRECISE ABOUT THE FLOOR, because "restore the interaction" was not the whole
-#: tier: fix: the A floor wants interaction >=5 AND interaction+card-advantage >=7. Both
+#: tier: fix: the A floor wants interaction >=7 AND interaction+card-advantage >=11 (the
+#: tier: table was re-derived 2026-09-02, BS8-06; it used to read 5 and 7). Both
 #: tier: clauses are now MET — interaction 7 and card advantage 8 — so the MEASURABLE
 #: tier: FLOOR IS A and the claimed B is a deliberate call one band BELOW it, on the three
 #: tier: risks listed further down that no metric can see. Note how the second clause was

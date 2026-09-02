@@ -5,7 +5,8 @@
 #: tier: B — PROVISIONAL, GRADED 2026-08 on an UNBUILT list (17 craft targets, zero games).
 #: tier: One band BELOW the measurable floor, which reads A on interaction 8 plus card
 #: tier: advantage 3. Against the rubric an A needs four things and this list fails two:
-#: tier:   A-FLOOR — yes. Interaction 8 clears five; the sum of 11 clears seven.
+#: tier:   A-FLOOR — yes, narrowly. Interaction 8 clears seven; the sum of 11 meets
+#: tier:     eleven exactly (thresholds re-derived 2026-09-02) — one lost draw engine drops it.
 #: tier:   COHERENT ENGINE — yes, and `shape` measures it rather than taking the header's
 #: tier:     word: WIDE 10 against tall 5, on ten distinct effects that scale with creature
 #: tier:     COUNT. Tokens feed anthems, anthems make the tokens a clock, and the removal
