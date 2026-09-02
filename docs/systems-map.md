@@ -1,6 +1,9 @@
 # Systems map — task-first
 
-**Status: LIVE.** Regenerate when a cycle adds a subcommand or a skill stage.
+**Status: STALE SNAPSHOT (measured 2026-07-29 at 64 decks; roster is 117 and
+`deck.py` has 35 subcommands as of 2026-09-02 — broad-scan #8 BS8-26).** The
+reconciliation-point inventory is still the useful part; the figures are not.
+Regenerate when a cycle adds a subcommand or a skill stage.
 Measured 2026-07-29 against 64 decks, 1,853 owned cards, a 15.8k-card pool; §5b added
 2026-08-10 when match logging went from a written-but-unused tool to a live workflow.
 

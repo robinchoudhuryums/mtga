@@ -1204,7 +1204,9 @@ figure sweep, (2026-08-19) the tag/role disagreement sweep (`check_roles --tags`
 the committed-dashboard freshness check, and (2026-08-24) TWO more — the G-75
 dead-library-search sweep (a tutor whose named resource the deck holds ZERO of) and the
 G-79 unreleased-pool sweep (a card-pool row from a set that is not out yet, which every
-craft recommender would price a wildcard for). Two things to know
+craft recommender would price a wildcard for) — and (2026-09-02) a NINTH, the BS8-06
+tier-floor-spread sweep (`deck.tier_floor_spread`: one floor band holding >85% of the
+roster means the thresholds have stopped discriminating). Two things to know
 before touching it: it imports `deck` as a MODULE and calls its MODEL functions (no
 `cmd_*` at all), so it never
 builds an argparse tree — the CLI surface is covered by `tests/test_cli.py` and a CI smoke
@@ -1244,7 +1246,11 @@ earned it: [C-01]
   scripts/tag_role_baseline.txt, **.github/workflows/integrity.yml** — the zero-dependency
   CI half: `check_all.py` plus the `--help` CLI smoke step that exists because check_all
   builds no argparse tree (G-55). Named here since 2026-08-26; it had lived only in
-  `docs/cycle-config.md` prose, so the file list said CI ran pytest and nothing else [C-05]
+  `docs/cycle-config.md` prose, so the file list said CI ran pytest and nothing else;
+  **scripts/session_check.sh** + `.claude/settings.json` — the SessionStart hook: runs
+  `check_all --quiet` on every session start and the full pytest suite only when the
+  HEAD tree of scripts/ tests/ Makefile pytest.ini changed since the last green run
+  (signature in the gitignored `.cycle/.tests-green-sig`; `rm` it to force) [C-05]
 - Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json,
   scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml,
   scripts/app.py, templates/, Makefile [C-06]
@@ -1528,6 +1534,10 @@ is invisible, and a handoff nobody is told to read is the same failure one layer
   control build, still specced-but-undrafted; Variant C parked); and
   `hob-followup-analysis.md`. Each is deleted when its work lands — the 54-family doc
   went on 2026-08-05, which is the contract working as intended.
+- **The SessionStart hook** (`.claude/settings.json` → `scripts/session_check.sh`)
+  prints `[card-library] … integrity: OK, N soft` and either a pytest result or
+  "unchanged since last green run — skipped". A skip is a cached green, keyed on the
+  HEAD tree of the code paths; a deck/CSV-only change does not rerun the suite, by design.
 - **`.cycle/STATE.md`** — prose record: what was completed, decisions made, what was
   decided AGAINST (worth reading before re-proposing a rejected fix), and where the
   last session left off.

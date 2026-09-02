@@ -308,6 +308,22 @@ from it), the same consolidation `BASICS` got.
 
 ## [G-08] Stored decks drift from the real Arena decks
 
+### BS8-04 (2026-09-02): the pool's legality key for Brawl
+
+The label inversion above was fixed in `normalize_format`, and the LEGALITY lookup was
+never brought along: every surface tested the raw format string against the pool's
+`Legalities` column, whose keys are Scryfall's — and Scryfall's `brawl` is Arena's
+100-card Historic Brawl, with no `standardbrawl` key in the pool at all. So a
+`#: format: Brawl` (60-card Standard Brawl) deck was checked against the Historic card
+pool: Manamorphose passed `legal` in deck 3-brawl, `suggest` on it returned 2,238 of
+3,228 picks that were not Standard-legal, and a `Historic Brawl` deck got no legality
+check ("isn't tracked"). `check_agreement` samples exactly those decks against the same
+wrong key, so it passed. `deck.pool_format_key` maps `brawl` → `standard` and
+`historic brawl` → `brawl` and is read by `legality_report`, `brawl_readiness`, every
+`suggest` mode, `screen`, `suggest-homes` and the three fillers. The transferable shape:
+a consistent-but-wrong PAIR is invisible to an agreement gate; only an external fact
+(the format's real definition) can catch it.
+
 **Stored decks drift from the real Arena decks.** The user edits decks in the Arena
 app; the repo only updates when someone writes the deck file, so the two silently
 diverge (hit this session: deck `12` had been changed to 2× Super Intelligence / −Futurist
@@ -1838,6 +1854,32 @@ wants CC with <9 sources, or C with <4). This catches the "wants UU but this is
 really a U-splash" problem the castability lint (which only checks identity ⊆
 declared colors) can't see — e.g. a 3-source green splash flagging GG cards. A
 heuristic review signal, not a hard fail; it doesn't gate `check_all.py`.
+
+### BS8-01 (2026-09-02): sources are read from TEXT, in one place
+
+"Nonbasics by colour identity" was the bug. A `{T}: Add one mana of any color` land is
+identity Colorless, so every such land counted as ZERO sources — in `mana`, in
+`consistency`'s `_deck_source_counts`, and in `deck_color_sources` (which feeds
+`pip_depth_warning` and the rationale audit's colour figures). The three copies agreed
+with each other, so `check_agreement` could not see it. Measured on deck 21a: B read 5
+against a real 12, and `consistency` prescribed "+15 B sources"; 29 roster decks changed
+when the count was corrected, and 30 of the 40 `△ Pip-intensive` flags `mana` printed
+were artefacts.
+
+`lib.land_production` now reads a land's oracle text (reminder text stripped, one ability
+per line): colours added freely, colours added under "Spend this mana only …", colours
+added by an ability with an EXTRA mana cost or a sacrifice, an any-colour flag and a
+basic-fetch flag; identity is the fallback for the colours the text does not file under
+a restriction. `deck.deck_source_profile` is THE count — basics by name; free and
+extra-cost production counted (an extra-cost any-colour land IS a source of the colour
+from the turn after it lands; it is labelled so a reader can discount it on curve); a
+fetch counted for each colour the deck runs a basic of; spend-only mana NOT counted and
+listed. `mana` and `consistency` print the composition under the count. The judgment
+call recorded here is the extra-cost policy: counting them is optimistic by a turn on
+curve, not counting them was the original error. One direction it moved DOWN: a
+Village-cycle land's identity colour is spend-only and no longer counts (deck 34 −1 U,
+deck 68b −1 W). Note the scan's "seven unconditional in 21a" was itself wrong — one is
+free, six are extra-cost, two are restricted; read the labels, not the total.
 
 
 ## [G-36] `deck.py consistency <id>` is the PROBABILITY layer `mana` lacks

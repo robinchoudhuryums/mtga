@@ -235,7 +235,12 @@ baseline of 367 is partly legitimate. `check_roles.py --update-baseline` acknowl
 current set; and **tier mismatch**
 — `deck.py tier_consistency_issues()` flags a deck whose claimed `#: tier:` sits ≥2
 bands above the tier its measurable quality vector supports (an inflated/stale
-letter — see the Competitive Tiering rubric); and **stale flex lines** —
+letter — see the Competitive Tiering rubric); and **tier floor spread** —
+`deck.tier_floor_spread()` warns when one floor band holds more than 85% of the roster,
+which is what the mismatch sweep cannot see: with the pre-2026-09-02 thresholds the
+floor read A for 104 of 117 decks, so the guard was vacuous and every "0 tier floors
+moved" measurement was guaranteed (BS8-06); a collapsed spread means re-derive
+`deck.TIER_FLOOR_REQ`, never a deck defect; and **stale flex lines** —
 `deck.flex_staleness()` flags a `#~ -Out | +In` line whose cut card already left the deck,
 which nothing else covered; and **stale tier rationales** — `deck.rationale_staleness()`
 roster-wide. That last one is the lesson: the check EXISTED for a long time and nothing ran

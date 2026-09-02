@@ -471,7 +471,7 @@ python3 scripts/deck.py tribes 1a     # creature-subtype breakdown + type-matter
 python3 scripts/deck.py engines 1a    # enabler ↔ payoff balance for the deck's engine themes
 python3 scripts/deck.py targets 1a    # TARGETS for its own gated effects (MV caps, sac costs) + STATE gates (dead / free)
 python3 scripts/deck.py suggest 1a --owned   # pool cards that fit; --owned = 0-wildcard upgrades
-python3 scripts/deck.py suggest 1a --lands --owned  # MANABASE recommender: owned lands that fix your colors (fixing + synergy + scarce-color nudges)
+python3 scripts/deck.py suggest 1a --lands --owned  # MANABASE recommender: owned lands that fix your colors (fixing + synergy + scarce-color nudges; any-colour lands and basic fetches included)
 python3 scripts/deck.py suggest 1a --needs   # STRUCTURAL needs the theme model can't see: fixing · acceleration (--ramp) · interaction (--interaction, board-scalers flagged)
 python3 scripts/deck.py legal 1a      # construction lint: deck size, copy limits, format legality
 python3 scripts/deck.py shape 1a      # wide vs tall, fast vs slow — the structural read themes can't give
@@ -903,7 +903,10 @@ so cross-type tribal synergies aren't missed.
 `legal` is a **deck-construction lint**: it checks deck size against the format
 minimum (60, or 100 for Commander-likes), the copy limit (4 of any nonbasic — or 1
 in singleton formats like Brawl), and every nonbasic card's legality in the deck's
-`#: format:` (using the pool's `Legalities` column; `--format` overrides). Basics
+`#: format:` (using the pool's `Legalities` column; `--format` overrides). The pool's
+keys are Scryfall's, whose `brawl` is the 100-card Historic Brawl, so a 60-card `Brawl`
+deck is checked against `standard` and a `Historic Brawl` deck against `brawl`
+(`deck.pool_format_key` — every recommender applies the same mapping). Basics
 are exempt; a card absent from the pool is reported as *legality-unverified* rather
 than failed, and the command exits non-zero on a real construction violation — so a
 deck can be checked legal before you paste it into Arena. `cuts` is the counterpart
@@ -999,7 +1002,10 @@ measurable quality vector supports (interaction + card-advantage, castability), 
 flags a **mismatch** when the letter sits ≥2 bands above that floor (inflated or
 stale) or, conversely, when a deck looks **under-graded**. The floor is blind to
 raw card power / bombs / meta, so it deliberately under-rates — a letter one band
-above it is fine (that band credits the intangibles); two bands is the red flag. A
+above it is fine (that band credits the intangibles); two bands is the red flag. The
+band thresholds live in one table (`deck.TIER_FLOOR_REQ`), re-derived from the roster
+distribution on 2026-09-02 after the old ones had every deck at A or B; `check_all`
+warns when one floor band holds more than 85% of the roster again. A
 roster-wide pass is a **soft, non-gating** `check_all` warning, so an inflated or
 stale tier can't hide. The floor is **archetype-aware**: an aggro deck closes on a
 fast clock (low curve + cheap threats + reach), not an interaction suite, so for an
@@ -1428,8 +1434,8 @@ python3 scripts/parse_matches.py session.log --since 2026-08-25
 
 The watermark is derived from `matches.csv` itself, never a sidecar stamp — a second file
 holding the same fact is a second thing that can drift. Hand-entered rows (`--add`, a phone
-game the log never saw) carry no match id and cannot advance it, or they would filter out
-LOG matches that were never ingested. The boundary day is **inclusive**: one day routinely
+game the log never saw) carry a `manual-YYYYMMDD-NN` id and are excluded by that prefix, so
+they cannot advance it — or they would filter out LOG matches that were never ingested. The boundary day is **inclusive**: one day routinely
 holds both recorded and unrecorded matches, so `>` would drop a real one; the overlap costs
 nothing, because dedupe is exactly what it is for.
 
