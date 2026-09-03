@@ -2740,17 +2740,28 @@ _CUTS_MULT_MIN_SOURCES = 4      # below this, a doubler genuinely has nothing to
 _CUTS_MULT_PER_SOURCE = 0.35
 
 
-def _cuts_multiplier_adj(support):
+def _cuts_multiplier_adj(support, axis=None):
     """Keep-bias for a doubler, proportional to the magnitude it multiplies.
 
-    Bounded to 0…_CUTS_MULT_CAP and ZERO below _CUTS_MULT_MIN_SOURCES — a doubler in a
-    deck that does not feed its axis really is cuttable, which is why this only ever
-    RAISES a keep-score and never lowers one: the no-support case is already handled by
-    theme-fit, and subtracting there would punish the same card twice.
+    Bounded to 0…_CUTS_MULT_CAP and ZERO below the axis floor — a doubler in a deck that
+    does not feed its axis really is cuttable, which is why this only ever RAISES a
+    keep-score and never lowers one: the no-support case is already handled by theme-fit,
+    and subtracting there would punish the same card twice.
+
+    Density is counted ABOVE the floor, and the floor is the AXIS's (`doubler_calib`)
+    where that axis has its own, else this term's `_CUTS_MULT_MIN_SOURCES`. The rate and
+    cap stay this term's own. Without the per-axis floor this saturated even harder than
+    the `suggest-homes` boost it mirrors: at 0.35/source it pins its 3.0 cap by 9 feeders,
+    and the `triggers` axis has a roster MINIMUM of 10 — so every deck on the roster got
+    the identical maximum keep-bias for any trigger doubler, on 100% of decks rather than
+    the 92% the fit boost hit. Two terms, one bug, and the code comment beside the caller
+    promising the two models "can't disagree" was what made it worth checking both.
     """
-    if support < _CUTS_MULT_MIN_SOURCES:
+    floor = (_DOUBLER_CALIB[axis][0] if axis in _DOUBLER_CALIB
+             else _CUTS_MULT_MIN_SOURCES)
+    if support < floor:
         return 0.0
-    return min(_CUTS_MULT_CAP, support * _CUTS_MULT_PER_SOURCE)
+    return min(_CUTS_MULT_CAP, (support - floor + 1) * _CUTS_MULT_PER_SOURCE)
 
 
 # `suggest --lands` co-signals. A land's dominant value is FIXING (wishlist._land_value,
@@ -7590,7 +7601,7 @@ def cut_keep_score(ctx, tline, text, tags, rarity="", qty=1):
     keep = (fit + _role_credit(roles, ctx["deck_tally"]) + (1 if hit_central else 0)
             + (2 if sig_hit else 0) + min(tribal, 6)
             + _cuts_power_adj(power) + _cuts_uniq_adj(uniq)
-            + _cuts_multiplier_adj(mult_support))
+            + _cuts_multiplier_adj(mult_support, mult_axis))
 
     reasons = []
     if tags and not hit_central:
@@ -8618,7 +8629,7 @@ _DOUBLER_AXES = {
         re.compile(r"if you would gain life[^.]{0,60}?twice that much", re.I),
         re.compile(r"\bgains? \d+ life|\bgain that much life|\blifelink\b", re.I)),
 }
-_DOUBLER_PER_SOURCE = 1.2   # fit points per feeding card
+_DOUBLER_PER_SOURCE = 1.2   # fit points per feeding card ABOVE the axis floor
 # Ceiling chosen as a SAFETY rail, not an operating point: real decks feed an axis with
 # 4-15 cards, so at 1.2/source the term is effectively linear across that whole range and
 # the cap only bites past 15. Capping lower (12) made it saturate at 10 and stop
@@ -8628,6 +8639,44 @@ _DOUBLER_CAP = 18
 _DOUBLER_MIN_SOURCES = 5    # below this the deck does not do the thing enough to matter
 _DOUBLER_KEY_SOURCES = 10   # at this density the doubler IS a key card (mirrors the
                             # fixer overlay promoting at 4+ colours)
+
+# THE FLOOR IS THE AXIS'S ZERO POINT, AND THE BOOST USED TO MEASURE FROM ACTUAL ZERO.
+# `_DOUBLER_MIN_SOURCES` is defined as "below this the deck does not do the thing enough
+# to matter", so density ABOVE it is the quantity a doubler is worth — but `doubler_boost`
+# grew as `support * per` from 0, which double-counts the baseline every deck already has.
+# Where the baseline is small next to the range that error is harmless; where it is large
+# the term saturates and stops carrying information, and the roster says the `triggers`
+# axis is exactly that case. Feeder counts across the 115 decks:
+#
+#     axis        p10  p25  p50  p75  p90  max   at/over the old cap (15 feeders)
+#     tokens        3    5    8   11   16   29    16 decks = 14%
+#     counters      2    3    6   10   13   25     8 decks =  7%
+#     lifegain      1    3    5    8   13   30    10 decks =  9%
+#     triggers     17   20   23   25   30   35   106 decks = 92%
+#
+# The global constants are ROSTER PERCENTILES for the three healthy axes — floor 5 ~ p25,
+# key 10 ~ p75, cap reached ~ p90 — and `triggers` is the one axis whose distribution sits
+# nowhere near them: its MINIMUM is 10, so every deck cleared both the floor and the KEY
+# promotion, and 92% pinned the cap. The term was therefore constant roster-wide on the
+# axis with the most doubler cards in the pool (32 of 57). Measured consequence:
+# Wizard's Staff, a trigger doubler, collected the identical +18 in deck 37 (30 feeders),
+# 37b (35) and 57 (22), so ranking fell back to theme overlap and put the ONE-Wizard deck
+# above the two 20-Wizard decks for a card reading "Equip Wizard {1}".
+#
+# Fix is per-axis floor/key at each axis's OWN p25/p75, with `per` and `cap` left global;
+# the three healthy axes keep their existing numbers because their distributions already
+# match. Same method and same standing hazard as `TIER_FLOOR_REQ` (BS8-06): these are
+# calibrated against a roster that grows, so re-derive when a distribution moves, and
+# never treat the fact that one axis discriminates as evidence that all four do.
+_DOUBLER_CALIB = {
+    # axis -> (floor, key_sources), from that axis's roster p25 / p75
+    "triggers": (20, 25),
+}
+
+
+def doubler_calib(axis):
+    """(floor, key_sources) for an axis — its own p25/p75, else the global defaults."""
+    return _DOUBLER_CALIB.get(axis, (_DOUBLER_MIN_SOURCES, _DOUBLER_KEY_SOURCES))
 
 
 def doubler_axis(text):
@@ -8684,17 +8733,30 @@ def doubler_support(axis, cards, carddata, max_power=None):
     return n
 
 
-def doubler_boost(support, per=_DOUBLER_PER_SOURCE, cap=_DOUBLER_CAP,
-                  floor=_DOUBLER_MIN_SOURCES):
+def doubler_boost(support, axis=None, per=_DOUBLER_PER_SOURCE, cap=_DOUBLER_CAP,
+                  floor=None):
     """Bounded fit bump for a doubler, growing with the deck's density of what it doubles.
 
-    Zero below `floor` (a deck making three tokens does not want a token doubler), linear
-    after, hard-capped at `cap` so it can reorder decks that are otherwise close without
-    ever overriding a genuine theme match — the same contract as `_fixer_boost`.
+    Zero below the axis floor (a deck making three tokens does not want a token doubler),
+    linear in the density ABOVE that floor, hard-capped at `cap` so it can reorder decks
+    that are otherwise close without ever overriding a genuine theme match — the same
+    contract as `_fixer_boost`.
+
+    Growth is measured FROM THE FLOOR, not from zero. The floor is the axis's zero point
+    by definition, and counting the baseline every deck already has is what let the
+    `triggers` axis pin the cap on 92% of the roster — see `_DOUBLER_CALIB` for the
+    distributions and the measured consequence. Pass `axis` so the per-axis floor
+    applies; `floor` overrides it outright, for a caller with its own calibration.
     """
+    if floor is None:
+        floor = doubler_calib(axis)[0]
     if support < floor:
         return 0.0
-    return min(support * per, float(cap))
+    # `support - floor + 1`: the floor is the FIRST QUALIFYING level, not the zero level,
+    # so a deck sitting exactly on it still earns the minimum bump. Dropping the +1 makes
+    # the boost 0 at the floor, which is a different claim (the deck does not do the thing
+    # at all) and breaks the pinned "nonzero at the floor, rising after" contract.
+    return min((support - floor + 1) * per, float(cap))
 
 
 def _fixer_boost(ncolors, per_color=4, cap=5, rate=1.0):
@@ -9851,13 +9913,13 @@ def cmd_suggest_homes(args):
         dsupport = (doubler_support(_daxis, cards, carddata, _drestrict)
                     if _daxis else 0)
         if dsupport:
-            _dboost = doubler_boost(dsupport)
+            _dboost = doubler_boost(dsupport, _daxis)
             fit += _dboost
             # Mirrors the fixer overlay's promotion rule. A doubler in a deck that really
             # does the thing IS a key card, and the strength label sorts ahead of fit — so
             # without this the boost could not reorder anything: Exalted Sunborn stayed
             # behind every KEY row no matter how many token-makers the deck fielded.
-            if dsupport >= _DOUBLER_KEY_SOURCES:
+            if dsupport >= doubler_calib(_daxis)[1]:
                 strength = "KEY"
             elif _dboost and strength == "tangential":
                 strength = "role-player"

@@ -519,14 +519,20 @@ class TestRoleFillers:
         `suggest-homes`, reading the same primitive, scored it correctly. A doubler has no
         synergy tags and no functional role, so both halves of the cut score read it as
         filler; only the co-signal can tell it apart, and only if it is consulted."""
-        assert self._doubler_keep(world, 6) > self._doubler_keep(world, 0), (
+        # Feeder counts come from the AXIS's own calibration, never a literal. Pool
+        # Doubler is a `triggers` doubler, and when that axis was recalibrated (floor
+        # 5 -> 20, since its roster MINIMUM is 10) the hardcoded 6 fell below the floor:
+        # the anchor then could not tell "not wired" from "correctly zero", which is the
+        # bug it exists to catch wearing the fix's clothes.
+        floor = deck.doubler_calib("triggers")[0]
+        assert self._doubler_keep(world, floor + 5) > self._doubler_keep(world, 0), (
             "rank_cut_candidates is not consulting _cuts_multiplier_adj — a doubler must "
             "be harder to cut in a deck that actually feeds its axis")
 
     def test_a_doubler_with_nothing_to_double_gets_no_credit(self, world):
-        """The other half: ZERO below _CUTS_MULT_MIN_SOURCES, so a doubler in a deck that
-        barely feeds its axis stays genuinely cuttable."""
-        below = deck._CUTS_MULT_MIN_SOURCES - 1
+        """The other half: ZERO below the AXIS floor, so a doubler in a deck that barely
+        feeds its axis stays genuinely cuttable."""
+        below = deck.doubler_calib("triggers")[0] - 1
         assert self._doubler_keep(world, below) == self._doubler_keep(world, 0)
 
     def test_functional_theme_options_returns_cards_carrying_the_theme(self, world):

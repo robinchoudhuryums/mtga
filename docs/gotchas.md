@@ -1929,6 +1929,73 @@ judge. Read a `✱ multiplier` figure on a type-scoped doubler as an upper bound
 this is fixed; the fix is a second scope pattern feeding the same filter, not a second
 model.
 
+### The bounded term that was bounded to a CONSTANT (fixed 2026-09-03)
+
+`doubler_boost` is a bounded fit bump: zero below a floor, linear after, hard-capped so it
+reorders near-ties without overriding a genuine theme match. All three constants were
+GLOBAL — one floor, one KEY threshold, one cap for all four axes — and for three of the
+four they are, in effect, roster percentiles. Feeder counts across the 115 decks:
+
+    axis        p10  p25  p50  p75  p90  max   at/over the old cap (15 feeders)
+    tokens        3    5    8   11   16   29    16 decks = 14%
+    counters      2    3    6   10   13   25     8 decks =  7%
+    lifegain      1    3    5    8   13   30    10 decks =  9%
+    triggers     17   20   23   25   30   35   106 decks = 92%
+
+Floor 5 sits at tokens' p25, KEY 10 at its p75, the cap is reached around p90. Those are
+sane calibrations for a distribution that starts near zero. The `triggers` axis starts at
+**10** — its roster MINIMUM is twice the floor and its p10 exceeds the count at which the
+cap is reached — so on that axis every deck cleared the floor, every deck cleared the KEY
+promotion, and 92% pinned the cap. The term was a constant, and it was a constant on the
+axis carrying **32 of the pool's 57 doubler cards**.
+
+The reason is the feeder pattern, not the doublers. `triggers` feeds on
+`\bwhenever\b|\bwhen .{0,40}?enters\b`, which matches a large share of any 60-card deck,
+where `creates? … token` or `put a +1/+1 counter` matches a designed subset. Two axes were
+measuring different KINDS of quantity against one scale.
+
+**How it surfaced.** Wizard's Staff — `Equipped creature has prowess. If a triggered
+ability of equipped creature triggers, that ability triggers an additional time. Equip
+Wizard {1}. Equip {3}.` — is a trigger doubler, correctly identified by `doubler_axis`.
+`suggest-homes` ranked deck 57 (ONE Wizard, 22 trigger feeders) above 37b (20 Wizards, 35)
+and 37 (21 Wizards, 30). All three collected the identical +18, so ranking fell through to
+raw theme overlap, where 57's `prowess` tag — a tag the card carries because Scryfall
+lists the keyword it GRANTS — won. The user spotted the ranking as obviously wrong before
+any gate did; no gate could, because every anchor tests that the term is bounded and
+monotonic, and a constant is both.
+
+**`cut_keep_score`'s twin was worse.** `_cuts_multiplier_adj` pins its 3.0 cap at 9
+feeders against that roster minimum of 10, so it was maxed for every trigger doubler on
+**100%** of decks. It was only checked because the comment beside its caller promises the
+two models "can't disagree" — they agreed perfectly, both saturated.
+
+**The fix has two halves, and the second is the root cause.** `_DOUBLER_CALIB` gives an
+axis its own floor/key at that axis's p25/p75 (`triggers` → 20/25; the other three keep
+the globals their distributions already match). And density is now counted ABOVE the
+floor rather than from zero: the floor is the axis's zero point by definition, so growing
+from actual zero double-counts the baseline every deck already has — harmless where that
+baseline is small next to the range, saturating where it is not. `support - floor + 1`
+keeps the floor the first QUALIFYING level rather than the zero level, which is what the
+pre-existing anchor pins.
+
+**Roster diff:** 17 of 54 doubler cards re-ordered their deck list (triggers 12, tokens 3,
+counters 2), 4 changed their top pick, and **0 of 115 decks changed their `cuts` top-3** —
+the keep-bias change removes a latent saturation without churning any current ranking.
+
+**The residual, stated because the fix does not reach it.** After recalibration deck 57
+still edges 37b by a point (49 vs 48) on raw theme overlap. What would settle it is
+`Equip Wizard {1}` — a TYPE-CONDITIONAL COST REDUCTION that makes the card cost a third as
+much to move in a Wizard deck — and nothing here models that. That is a separate defect
+from this one, and the honest reading of the remaining gap.
+
+**The transferable rule: a bounded term needs its bounds checked against the DISTRIBUTION
+it will see, not against the range its author imagined.** The cap's own comment stated the
+premise — "real decks feed an axis with 4-15 cards" — and it was true of the three axes
+its author had in mind. The same shape as the tier floor reading A for 104 of 117 decks
+(BS8-06) and `suggest`'s breadth column saturating at 99% (G-28): a signal that never
+varies is indistinguishable from a signal that is working, until something it ranks is
+obviously wrong.
+
 
 ## [G-34] Before committing a deck edit, run `deck.py preflight <id>` — and grade a cut/swap with `deck.py
 

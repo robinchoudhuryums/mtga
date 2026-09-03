@@ -528,7 +528,8 @@ directions.
   restricted one isn't counted against the whole deck. **KNOWN GAP: it parses a POWER
   scope and nothing else**, so a TYPE-scoped doubler (Splinter's Ninja clause) is counted
   against the whole deck — 27 feeders in deck 20 against a correct 12. Read a
-  `✱ multiplier` figure on a tribal doubler as an upper bound until that is fixed. [G-33]
+  `✱ multiplier` figure on a tribal doubler as an upper bound until that is fixed.
+  **A BOUNDED TERM IS ONLY BOUNDED USEFULLY IF THE ROSTER SPANS ITS RANGE (fixed 2026-09-03).** The floor/key/cap were ONE set of globals for all four axes, and they are roster PERCENTILES for three of them (floor 5 ≈ p25, key 10 ≈ p75, cap ≈ p90) — but `triggers` has a roster **MINIMUM of 10** (p50 23, p90 30), so every deck cleared the floor AND the KEY promotion and **92% pinned the cap**: constant roster-wide, on the axis holding 32 of the pool's 57 doubler cards. `cut_keep_score`'s twin saturated at 9 feeders, i.e. **100%**. Measured cost: Wizard's Staff (`Equip Wizard {1}`, a trigger doubler) scored the identical +18 in deck 37 (30 feeders), 37b (35) and 57 (22), so a ONE-Wizard deck outranked two 20-Wizard decks. Fix is `_DOUBLER_CALIB` — per-axis floor/key at that axis's own p25/p75 — plus growth measured ABOVE the floor rather than from zero, since counting the baseline every deck has is what saturates. Roster diff: **17 of 54 doubler cards re-ordered, 4 changed top pick, 0 of 115 `cuts` top-3 moved.** Re-derive when a distribution moves (the `TIER_FLOOR_REQ` hazard), and never read one axis discriminating as evidence all four do. [G-33]
 - **Before committing a deck edit run `deck.py preflight <id>`, and grade a cut/swap with
   `deck.py quality`.** `preflight` folds legal + owned + castable + a full `check_all`
   into one READY/BLOCKED verdict. `quality --json` before, `--vs FILE` after, flags

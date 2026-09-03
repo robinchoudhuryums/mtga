@@ -3347,6 +3347,35 @@ class TestDoublerCoSignal:
         assert 0 < lo < hi
         assert deck.doubler_boost(9999) == deck._DOUBLER_CAP
 
+    def test_the_boost_is_calibrated_PER_AXIS_and_measures_above_the_floor(self):
+        """The `triggers` axis pinned the cap on 92% of the roster, so the term carried
+        no information on the axis with the most doubler cards in the pool.
+
+        Two causes, one fix: the boost grew from ZERO rather than from the axis floor
+        (double-counting the baseline every deck has), and every axis shared one floor
+        even though `triggers` has a roster MINIMUM of 10 against the others' medians of
+        5-8. The floor is now per-axis at that axis's own p25, and density is counted
+        above it."""
+        floor, key = deck.doubler_calib("triggers")
+        assert (floor, key) == (20, 25), "triggers calibration is its roster p25/p75"
+        assert deck.doubler_calib("tokens") == (deck._DOUBLER_MIN_SOURCES,
+                                                deck._DOUBLER_KEY_SOURCES)
+        # A count that saturated the cap on every deck must now discriminate.
+        low, mid, high = (deck.doubler_boost(n, "triggers") for n in (22, 30, 35))
+        assert 0 < low < mid < high == deck._DOUBLER_CAP
+        # …and a deck below the axis floor gets nothing, where it used to get the cap.
+        assert deck.doubler_boost(17, "triggers") == 0
+        assert deck.doubler_boost(17) > 0, "the default axis is unchanged"
+
+    def test_the_cuts_keep_bias_shares_the_axis_floor(self):
+        """`cut_keep_score` routes through the same primitives so the two models cannot
+        disagree — and it saturated HARDER, pinning its 3.0 cap by 9 feeders against a
+        roster minimum of 10, i.e. on 100% of decks rather than 92%."""
+        low, mid = (deck._cuts_multiplier_adj(n, "triggers") for n in (22, 30))
+        assert 0 < low < mid <= deck._CUTS_MULT_CAP
+        assert deck._cuts_multiplier_adj(17, "triggers") == 0
+        assert deck._cuts_multiplier_adj(17) > 0, "the default axis is unchanged"
+
     def test_restriction_is_read_off_the_doublers_own_text(self):
         assert deck.doubler_restriction(self.TRIG_DBL) == 2
         assert deck.doubler_restriction(self.TOKEN_DBL) is None
