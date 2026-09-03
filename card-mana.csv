@@ -2557,6 +2557,21 @@ Mudflat Village,,0,
 Warren Warleader,{2}{W}{W},4,Offspring
 Burrowguard Mentor,{G}{W},2,Trample
 Lupinflower Village,,0,
+The Master of Lake-town,{1}{B}{B},3,Mill;Deathtouch
+Suspend Aggression,{1}{R}{W},3,
+Lorehold Charm,{R}{W},2,
+Oracle's Restoration,{G},1,
+Phantom Train,{3}{B},4,Trample
+Shepherd of the Clouds,{4}{W},5,Flying;Vigilance
+Reverent Howl,{2}{B},3,
+Caught in the Crossfire,{R}{R},2,Spree
+Rooftop Assassin,{3}{B},4,Flying;Lifelink;Flash
+Outlaw Medic,{1}{W},2,Lifelink
+Prairie Dog,{1}{W},2,Lifelink
+Ancient Cornucopia,{2}{G},3,
+Freestrider Commando,{2}{G},3,Plot
+Unfortunate Accident,{B},1,Spree
+Wizard's Staff,{1}{U},2,Equip
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -3220,7 +3235,6 @@ Generous Plunderer,{1}{R},2,Treasure;Menace
 Memory Vessel,{3}{R}{R},5,
 Molten Duplication,{1}{R},2,
 Territory Forge,{4}{R},5,
-Ancient Cornucopia,{2}{G},3,
 Bristlebud Farmer,{2}{G}{G},4,Food;Trample;Mill
 Omenpath Journey,{3}{G},4,
 Sandstorm Salvager,{2}{G},3,
@@ -5451,7 +5465,6 @@ Evil Reawakened,{4}{B},5,
 "Fang, Fearless l'Cie",{2}{B},3,
 "Jecht, Reluctant Guardian // Braska's Final Aeon",{3}{B},4,Transform;Menace
 "Kain, Traitorous Dragoon",{2}{B},3,Jump;Treasure
-Phantom Train,{3}{B},4,Trample
 Poison the Waters,{1}{B},2,
 Reno and Rude,{1}{B},2,Menace
 "Sephiroth, Fabled SOLDIER // Sephiroth, One-Winged Angel",{2}{B},3,Flying;Transform;Super Nova
@@ -6123,7 +6136,6 @@ Ravenhill Flock,{3}{U},4,Flying
 Riddles in the Dark,{2}{U},3,
 Sound the Trumpets,{1}{U}{U},3,
 Uneasy Partings,{3}{U},4,
-Wizard's Staff,{1}{U},2,Equip
 Desolation Prowler,{1}{B},2,
 Gnashing of Teeth,{1}{B}{B},3,
 "Gollum, Silent Slinker // Meager Meal",{3}{B} // {B},4,Menace
@@ -6132,10 +6144,8 @@ Great Fierce Bee,{2}{B},3,Scry;Flying
 Great Ugly-Looking Goblin // Clap! Snap!,{5}{B} // {1}{B},6,Amass
 Head of the Hunt,{2}{B}{B},4,Flash
 Inside Information,{X}{B}{B},2,
-The Master of Lake-town,{1}{B}{B},3,Mill;Deathtouch
 Nighthowl Pursuer,{B},1,Ferocious;Menace
 Ravening Warg,{1}{B},2,Ferocious;Deathtouch
-Reverent Howl,{2}{B},3,
 Rhovanion Rampager,{2}{B},3,Amass
 Stir Up Trouble,{B},1,
 "Balin, Loremaster",{3}{R}{R},5,
@@ -11520,9 +11530,6 @@ Inventive Wingsmith,{2}{W},3,
 Lassoed by the Law,{3}{W},4,
 Mystical Tether,{2}{W},3,
 One Last Job,{2}{W},3,Spree
-Outlaw Medic,{1}{W},2,Lifelink
-Prairie Dog,{1}{W},2,Lifelink
-Shepherd of the Clouds,{4}{W},5,Flying;Vigilance
 Thunder Lasso,{2}{W},3,Equip
 Trained Arynx,{1}{W},2,Saddle;Scry
 Wanted Griffin,{3}{W},4,Flying
@@ -11561,14 +11568,11 @@ Overzealous Muscle,{4}{B},5,
 Pitiless Carnage,{3}{B},4,Plot
 Raven of Fell Omens,{1}{B},2,Flying
 Rictus Robber,{3}{B},4,Plot
-Rooftop Assassin,{3}{B},4,Flying;Lifelink;Flash
 Rush of Dread,{1}{B}{B},3,Spree
 Shoot the Sheriff,{1}{B},2,
 Tinybones Joins Up,{B},1,Mill
-Unfortunate Accident,{B},1,Spree
 "Vadmir, New Blood",{1}{B},2,
 "Calamity, Galloping Inferno",{4}{R}{R},6,Saddle;Haste
-Caught in the Crossfire,{R}{R},2,Spree
 Cunning Coyote,{1}{R},2,Plot;Haste
 Hellspur Brute,{4}{R},5,Affinity;Trample
 Hellspur Posse Boss,{2}{R}{R},4,
@@ -11586,7 +11590,6 @@ Bristlepack Sentry,{1}{G},2,Defender
 Cactarantula,{4}{G}{G},6,Reach
 Colossal Rattlewurm,{2}{G}{G},4,Trample
 Dance of the Tumbleweeds,{1}{G},2,Spree
-Freestrider Commando,{2}{G},3,Plot
 Freestrider Lookout,{2}{G},3,Reach
 Map the Frontier,{3}{G},4,
 Ornery Tumblewagg,{2}{G},3,Saddle;Double
@@ -13096,7 +13099,6 @@ Comforting Counsel,{1}{G},2,
 Emeritus of Abundance // Regrowth,{2}{G} // {1}{G},3,Vigilance;Prepared
 Infirmary Healer // Stream of Life,{1}{G} // {X}{G},2,Prepared
 Lumaret's Favor,{1}{G},2,Infusion
-Oracle's Restoration,{G},1,
 Planar Engineering,{3}{G},4,
 Slumbering Trudge,{X}{G},1,
 Studious First-Year // Rampant Growth,{G} // {1}{G},1,Prepared
@@ -13112,7 +13114,6 @@ Embrace the Paradox,{3}{G}{U},5,
 Geometer's Arthropod,{G}{U},2,
 "Kirol, History Buff // Pack a Punch",{R}{W} // {1}{R}{W},2,Prepared;Mill
 "Lluwen, Exchange Student // Pest Friend",{2}{B}{G} // {B/G},4,Prepared
-Lorehold Charm,{R}{W},2,
 Mind Roots,{1}{B}{G},3,
 Molten Note,{X}{R}{W},2,Flashback
 Moment of Reckoning,{3}{W}{W}{B}{B},7,
@@ -13126,7 +13127,6 @@ Silverquill Charm,{W}{B},2,
 Snooping Page,{1}{W}{B},3,Repartee
 Splatter Technique,{1}{U}{U}{R}{R},5,
 Stirring Honormancer,{2}{W}{W/B}{B},5,
-Suspend Aggression,{1}{R}{W},3,
 Traumatic Critique,{X}{U}{R},2,
 Diary of Dreams,{2},2,
 Mage Tower Referee,{2},2,

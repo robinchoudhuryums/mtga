@@ -186,9 +186,6 @@ When Ragnarok dies, destroy target permanent and return target nonlegendary perm
 Balamb T-Rexaur,Creature — Dinosaur,"Trample
 When this creature enters, you gain 3 life.
 Forestcycling {2} ({2}, Discard this card: Search your library for a Forest card, reveal it, put it into your hand, then shuffle.)",G,Dinosaur; lifegain; etb; landcycling; card draw; lands; trample; evasion; forestcycling; typecycling; cycling,FIN,173,Common,28,,2.0,hand
-The Master of Lake-town,Legendary Creature — Human Advisor,"Deathtouch
-Whenever a player loses life, that player mills that many cards. (Damage causes loss of life.)
-When The Master of Lake-town dies, draw a card for each graveyard with seven or more cards in it.",B,Human; Advisor; graveyard; mill; card draw; deathtouch; combat; removal,HOB,77,Rare,,,5.5,seed
 Bard the Bowman,Legendary Creature — Human Archer,"Reach
 Whenever you draw your second card each turn, put a +1/+1 counter on target creature. It gains lifelink until end of turn.",W/U,Human; Archer; counters; lifegain; reach; defense,HOB,145,Uncommon,,,4.5,seed
 Lake-town Toymaker,Creature — Human Artificer,"At the beginning of combat on your turn, if you've drawn two or more cards this turn, another target creature you control gets +3/+0 and gains first strike until end of turn.",W,Human; Artificer; pump,HOB,19,Uncommon,,,2.0,seed
@@ -280,9 +277,6 @@ Thunder Lasso,Artifact — Equipment,"When this Equipment enters, attach it to t
 Equipped creature gets +1/+1.
 Whenever equipped creature attacks, tap target creature defending player controls.
 Equip {2}",W,Equipment; etb; equipment; pump; equip,OTJ,35,Uncommon,38,,2.5,hand
-Rooftop Assassin,Creature — Vampire Assassin,"Flash
-Flying, lifelink
-When this creature enters, destroy target creature an opponent controls that was dealt damage this turn.",B,Vampire; Assassin; lifegain; removal; etb; flying; evasion; lifelink; flash; tempo,OTJ,103,Common,20,,3.5,hand
 Comforting Counsel,Enchantment,"Whenever you gain life, put a growth counter on this enchantment.
 As long as there are five or more growth counters on this enchantment, creatures you control get +3/+3.",G,counters; pump,SOS,143,Rare,7,"broadly useful — best 7 (Earth's Mightiest); also 9,19b,19a",4.0,hand
 Deathcap Glade,Land,"This land enters tapped unless you control two or more other lands.
