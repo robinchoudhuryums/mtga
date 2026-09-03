@@ -1191,6 +1191,13 @@ Once enabled, the site publishes at `https://<owner>.github.io/<repo>/` on the n
 push to `main`. Prefer not to host it? The self-contained `dashboard.html` opens
 straight from disk — no server, no setup.
 
+**Theme.** The dashboard has its own toggle (`t`), and a first visit follows your OS: the
+theme is stamped in a head script *before* the body parses, and the light palette is also
+emitted as a `prefers-color-scheme` block, so a light-OS machine paints light immediately
+and stays light even with JavaScript disabled. Section headers collapse from a button
+inside the heading, so they answer Enter/Space and announce their open/closed state while
+staying reachable by heading-jump navigation.
+
 ### Editing app — edit the collection in your browser (optional)
 
 ```

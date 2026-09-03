@@ -672,7 +672,10 @@ directions.
   sync` blindly") until BS4-09. **That last one is where the obvious fix was wrong**:
   demanding the executable shape there would have failed 27 of 34 live subcommands, since
   the skills write 30 of their references bare and only 3 sit in fenced code blocks — so a
-  caution CLAUSE is suppressed instead, which measured as costing zero coverage. [G-53]
+  caution CLAUSE is suppressed instead, which measured as costing zero coverage.
+  **MAKEFILE TARGETS joined the gate at BS8-25**, and its first run found `make postedit` —
+  G-69's after-every-deck-edit tail — reachable from NO skill: the Makefile had only ever
+  been an INPUT to the script half's proof. The commit tail runs it now. [G-53]
 - **A SET plus a sort key that can TIE is a nondeterministic output.** Tied themes left
   in set-iteration order made an unchanged build produce different output every run.
   **Before sorting anything derived from a set, ask what happens when the key ties** —
@@ -1008,17 +1011,16 @@ directions.
   what failed. [G-71]
 - **A CONTROL BUILT IN JAVASCRIPT IS A CONTROL ONLY IF IT GOES THROUGH `a11y()`.** Four
   times a click handler has been bound to a non-interactive node (collection pips I-01,
-  editor tabs S-2, the triage Deck cell and card-finder chips in 2026-08). **All of them
-  were in the GENERATED pages**, because `tests/test_templates.py` pins `templates/` plus a
-  few NAMED dashboard controls and cannot see a new one. When a11y-ing a node inside a table,
-  apply it in `sortableTable`'s `onRowExtra` — `redraw()` rebuilds `<tbody>` on every sort,
-  discarding attributes set once. The same files hide hardcoded colours (`gallery.html`'s
-  literal `#0f1115` track; the dashboard's mana tokens had no light value at all, BS6-02).
-  **AN A11Y'D NODE IS NOT A11Y'D BEHAVIOUR**: `attachHover`'s focus listeners sat on bare
-  spans at 2 of 3 call sites, and `focus` neither fires on a non-focusable node nor bubbles,
-  so the preview followed focus at ONE site for months — and Scenario 7 named that site, so
-  the walk passed over an inert feature (BS6-03). **Write a scenario step from the FEATURE,
-  not from the fix.** **A STATIC A11Y GATE WAS MEASURED UNBUILDABLE — do not restart it**
+  editor tabs S-2, the triage Deck cell and card-finder chips in 2026-08) — **all in the
+  GENERATED pages**, which `tests/test_templates.py` pins only where NAMED. Inside a table,
+  a11y in `sortableTable`'s `onRowExtra`: `redraw()` rebuilds `<tbody>` every sort. The same
+  files hide hardcoded colours (gallery's `#0f1115` track; the dashboard's mana tokens had
+  no light value at all, BS6-02).
+  **AN A11Y'D NODE IS NOT A11Y'D BEHAVIOUR** (`attachHover`'s focus listeners on bare spans
+  — `focus` neither fires on a non-focusable node nor bubbles, BS6-03) **and a node carrying
+  a STATE ITS ROLE CANNOT HOLD is not a control** (focusable `<h2>` + `aria-expanded`
+  announced "heading level 2" and nothing else; the control is a `<button>` inside the
+  heading since BS8 P-07). **Write a scenario step from the FEATURE, not from the fix.** **A STATIC A11Y GATE WAS MEASURED UNBUILDABLE — do not restart it**
   (three designs, every flag FALSE). The COLOUR half IS gated since 2026-08-26: a page must
   define every `var(--x)` it emits. Scenario 7 stays the a11y half's only coverage. [G-72]
 - **A DECK'S REPO NAME AND ITS ARENA NAME ARE DIFFERENT STRINGS, and NEITHER is
@@ -1216,7 +1218,10 @@ dead-library-search sweep (a tutor whose named resource the deck holds ZERO of) 
 G-79 unreleased-pool sweep (a card-pool row from a set that is not out yet, which every
 craft recommender would price a wildcard for) — and (2026-09-02) a NINTH, the BS8-06
 tier-floor-spread sweep (`deck.tier_floor_spread`: one floor band holding >85% of the
-roster means the thresholds have stopped discriminating). Two things to know
+roster means the thresholds have stopped discriminating), and (2026-09-03) a TENTH, the
+BS8-22 figure-drift sweep (`check_docs.figure_drift`: a MEASUREMENT a CLAUDE.md rule cites
+as its evidence that no longer matches the data — it lived inside a gate that runs and was
+itself reached by nothing but a hand run). Two things to know
 before touching it: it imports `deck` as a MODULE and calls its MODEL functions (no
 `cmd_*` at all), so it never
 builds an argparse tree — the CLI surface is covered by `tests/test_cli.py` and a CI smoke
@@ -1437,6 +1442,50 @@ format.
     EXPECTED path, not a failure); `--report`'s manual-axis section shows a non-empty Loss
     Reason tally for the first time. The four hand-only columns (G-74) are empty in all 66
     rows today, so this scenario is the only thing that can prove the loop closes at all.
+
+12. Dashboard first paint on a light-OS machine | Subsystem: Presentation & Interface
+    Steps: set the OS to light, clear the page's `localStorage` (`mtga-prefs`), hard-reload
+    `dashboard.html`; then reload once with JavaScript DISABLED; then in dark theme open
+    the Log-a-match Deck dropdown.
+    Expected: the page paints LIGHT immediately — no dark flash before the script runs, and
+    light even with scripts off (BS8 P-04 added a head-script stamp plus a build-time
+    `@media (prefers-color-scheme: light)` twin of every light token block). The native
+    dropdown popup matches the DARK theme rather than rendering light chrome (`color-scheme`).
+13. Deck-select type-ahead | Subsystem: Presentation & Interface
+    Steps: Tab into Log-a-match → Deck; type `t`, then `g` then `d`, then `/`.
+    Expected: the selection moves to matching deck names and nothing else happens. Until
+    BS8-20 `isTyping` checked INPUT/TEXTAREA only, so `t` toggled the theme, `g` armed the
+    jump prefix and `/` yanked focus to the filter — on a 115-option picker.
+14. Palette and modal with a screen reader | Subsystem: Presentation & Interface
+    Steps: with VoiceOver/NVDA, press ⌘K, arrow down twice, Escape; then open a deck's ⤢.
+    Expected: "dialog, Jump to a deck or section", then a LIST of N options with the current
+    one announced as selected as you arrow (BS8 P-06 put the rows in a `listbox` and drove
+    `aria-activedescendant`); the deck modal announces the deck's name, not "dialog".
+15. Section header — announcement AND appearance | Subsystem: Presentation & Interface
+    Steps: with a screen reader, Tab to the "Triage" section header and press Enter twice;
+    then LOOK at every section header in both themes.
+    Expected: announced as a collapsible control whose expanded state changes (BS8 P-07 —
+    the control is a `<button>` inside the `<h2>`; the heading stays a heading for
+    heading-jump navigation and is no longer itself focusable). **The visual half is what no
+    test can make**: the button is `all:unset` + flex, so the header must look exactly as it
+    did — same size, weight and spacing, caret still hard right — and the focus ring must
+    frame the header row rather than a bare word.
+16. Deck editor unsaved-changes prompt | Subsystem: Presentation & Interface
+    Steps: `make app`, open a deck, change a quantity, click "← Decks"; then repeat and
+    click Save (which reloads).
+    Expected: the first leaves a browser leave-page prompt (BS8 P-08); the SAVE reload does
+    NOT prompt — the guard is bypassed once a save succeeds, as on the collection page.
+17. Mini curve vs Stats tab | Subsystem: Presentation & Interface
+    Steps: find a deck running a 0-MV nonland card; compare the deck card's mini curve "1"
+    bar with the Stats tab's 0 and 1 columns.
+    Expected: they agree. Open item P-10 — the mini curve folds MV 0 into the 1 bar while
+    the Stats tab splits them; this scenario is what confirms a fix.
+18. Live-sync failure honesty, and a truncated paste | Subsystem: Presentation & Interface
+    Steps: open `dashboard.html` in a browser with site storage blocked (or a Safari private
+    window) and click ⟳; then paste a TRUNCATED deck export into the stale-deck panel.
+    Expected: the sync says it could not store the snapshot and does NOT reload behind a
+    "Synced live" toast (BS8 P-05); the paste reads "⚠ TRUNCATED? paste holds N of M cards
+    — a fragment, not a drift" rather than "⟳ drifted — 0 added / 44 removed" (BS8-43).
 
 **Frozen Subsystems:** none.
 

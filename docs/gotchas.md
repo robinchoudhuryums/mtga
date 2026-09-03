@@ -2480,6 +2480,29 @@ at all. **`/roster-review`** is what closed it (triage → rotation → craft pl
 → Arena drift), so those five are now driven rather than remembered.
 
 
+### BS8-25 (2026-09-03): the Makefile was an input to the proof, never a subject of it
+
+`check_commands` proved every deck.py SUBCOMMAND and every SCRIPT is reachable from a
+workflow, and read the Makefile only as one of the places a script could be invoked FROM.
+So a TARGET that nothing runs was the one shape the gate could not see: `make postedit` —
+the after-every-deck-edit tail G-69 exists to order correctly — was named by no skill at
+all (`/apply-changes` rebuilt nothing, `/draft-deck` called `build_dashboard.py` directly),
+which is why the committed dashboard went stale until a soft warning noticed. Targets are
+now covered on the same rule as scripts: a real `make <target>` in a skill or in
+`docs/verify-commit-tail.md`, or an `INTERACTIVE_ONLY` entry with a reason (the table grew a
+`make` kind, five entries — help, check, test-units, verify, clean-venv — and stale-entry
+checking to match). The gate fired on `postedit` on its first run; the commit tail runs it
+for a deck-file change now.
+
+Three skill defects were found in the same pass. `/ingest` and `/add-cards` pointed the
+crafted-cards case at each other (the 2026-08-25 refactor moved cataloging into `/ingest`
+and left the pointer behind); `/ingest` names `reconcile_crafts.py` directly now.
+`/pile-analysis`'s inline pull computed castability as `card_colors(…) <= deck colours` and
+printed ✗OFF — the exact G-58 identity-subset triage its own note two paragraphs down
+forbids — and now reads the printed cost through `deck._candidate_castability`.
+`/roster-review` runs `deck.py sync --apply`, which rewrites deck files, and had no commit
+step at all; it cites the shared tail and is named in the tail's writer list.
+
 ## [G-54] A SET plus a sort key that can TIE is a nondeterministic output
 
 **A SET plus a sort key that can TIE is a nondeterministic output.** `wishlist`'s
@@ -5134,6 +5157,39 @@ cannot inherit the bug, because the default now works.
 Note this does NOT trip the redraw trap the rule above describes: `craftNameCell` is a
 per-row `node:` factory that `sortableTable`'s internal `redraw()` re-invokes on every sort,
 so the attributes are re-applied rather than set once and discarded.
+
+### BS8 batch 6 (2026-09-03): three interface classes, one shape
+
+**A state its role cannot hold (P-07).** BS2-16 correctly stopped `a11y()` erasing the
+`<h2>` heading role on the nine section headers — and left them focusable headings
+carrying `aria-expanded`, which the heading role does not support. A screen reader
+announced "heading level 2" and no state, on what the code itself calls the page's
+primary navigation. The control is now a real `<button>` inside the heading: heading-jump
+navigation still finds the `<h2>`, the button announces its expanded state and owns
+`aria-controls`, and `a11y(…, native:true)` skips the tabindex and the synthetic Enter/Space
+handler a real button already has (binding it would fire the toggle twice). The heading
+keeps `tabIndex = -1` so it is no longer in the tab order.
+
+**Options without a listbox (P-06).** The command palette's rows were `role="option"` in a
+bare `<div>` — invalid ARIA — and the input's ↑↓ selection was announced to nobody. The
+body is a `listbox`, the input a `combobox` with `aria-activedescendant`, and both overlays
+now carry an accessible name (the deck modal names its deck rather than announcing "dialog").
+
+**A theme that only exists after 1.9 MB of JS (P-04).** The light palette lived solely in
+`[data-theme="light"]` blocks applied by `restorePrefs()` after the body parsed, so a
+light-OS visit painted dark and flipped — and stayed dark with scripts blocked. Fixed at
+both ends: a head script stamps `data-theme` before the body, and `_with_light_scheme_fallback`
+emits each light token block a second time under
+`@media (prefers-color-scheme: light) :root:not([data-theme="dark"])` **at build time,
+copied from the template's own definition**, because a hand-kept second palette is exactly
+the drift this rule records. `color-scheme` is declared for both themes so native controls
+match. The one-line `color-scheme` rule is deliberately NOT duplicated into the media query:
+it must not override an explicit dark choice.
+
+**Also in this batch:** global shortcuts no longer fire while focus is in a `<select>`
+(BS8-20 — `isTyping` checked INPUT/TEXTAREA/contentEditable, so `t` toggled the theme on a
+115-option deck picker), `syncLive` stores the payload before it claims success (P-05), and
+the deck editor guards unsaved changes (P-08).
 
 ## [G-73] A deck's repo name and its Arena name are different strings, and neither is authoritative
 
