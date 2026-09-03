@@ -10563,9 +10563,19 @@ def _keepable_at(nlands, deck_size, hand=7):
 # `_int_scaling` sibling covers removal; this covers the rest — "equal to the number of
 # Swamps you control", "for each creature card in your graveyard", "X is the number of".
 # Every scoring model here grades a card in isolation, so these read at their floor.
+# The resource class admits `+` and `/` and an optional NESTED zone ("… on lands you
+# control"), because the shapes it excluded are ordinary Magic templating rather than
+# exotica: compound resources ("artifact and/or enchantment you control", 15 clauses) and
+# counters-on-permanents ("the number of +1/+1 counters on lands you control" — Toph, the
+# Blind Bandit) both carry punctuation the original `[\w' -]` class could not cross.
+# Measured on the pool: 781 in-scope clauses, of which the old form missed 46 across 39
+# cards — 6%, every one of them compound or punctuated. Report-only, so the safe direction
+# for a widening here is a visible flag someone dismisses, never a silent score change.
 _DECK_STATE_AXIS_RE = re.compile(
     r"(?:equal to the number of|for each|where X is the number of)\s+"
-    r"([\w' -]{3,30}?)\s+(you control|in your graveyard|on the battlefield)", re.I)
+    r"([\w'+/ -]{3,44}?)"
+    r"(\s+on\s+[\w' -]{3,24}?)?"
+    r"\s+(you control|in your graveyard|on the battlefield)", re.I)
 
 
 def _deck_state_axis(text):
@@ -10576,7 +10586,9 @@ def _deck_state_axis(text):
     m = _DECK_STATE_AXIS_RE.search(text or "")
     if not m:
         return None
-    return f"{m.group(1).strip()} {m.group(2).strip()}"[:40] or None
+    nested = (m.group(2) or "").strip()
+    parts = [m.group(1).strip(), nested, m.group(3).strip()]
+    return " ".join(p for p in parts if p)[:44] or None
 
 
 def tier_band(vec):

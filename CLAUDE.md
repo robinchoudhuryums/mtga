@@ -317,7 +317,7 @@ directions.
   reweighting — 0 of 7 mis-ranks fixed, 28 of 116 top-3 sets churned; the worst offenders
   are ZERO-role cards a weight cannot help) — don't derive a fourth. Read the oracle
   text, preview with `swap`, and hard-protect signature cards via `#: protect:`. `cuts`
-  prints the axis the deck is SHORT on and flags `⌁scales w/ <axis>`. REPORT-only. [G-09]
+  prints the axis the deck is SHORT on and flags `⌁scales w/ <axis>`. REPORT-only. **A CARD WHOSE POWER OR EFFECT IS A COUNT is graded at its FLOOR by every model here, and `_deck_state_axis` is the flag that says so** (`_int_scaling` is its removal-only sibling). Widened 2026-09-03: the resource class could not cross punctuation, so a COMPOUND resource ("artifact and/or enchantment you control") and COUNTERS-ON-PERMANENTS ("the number of +1/+1 counters on lands you control" — Toph, the Blind Bandit) both fell out. Pool: **781 in-scope clauses, 46 missed across 39 cards → 1**, with +8 cards gaining an axis they wholly lacked. **The scope line is G-76's and the widening did not cross it** — cards in your HAND, creatures in your PARTY, opponents, modes chosen and mana spent stay unflagged, since a deck-list count is not what those ask. Residual: one card (Lunar Insight, "different mana values AMONG …"). Stays REPORT-ONLY for the reason its `⚠ scales w/` sibling does: the axis is fuzzy, and a score change on a fuzzy signal is what this file keeps having to undo. [G-09]
 - **"Not in library" for a card you own is the deck-dump undercount symptom.** Fastest
   fix: `reconcile_crafts.py <arena-export>` — it adds the library row, adds a blank
   `card-mana.csv` row so INV-02 always holds, drops the card from the wishlist, and

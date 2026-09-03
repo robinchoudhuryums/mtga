@@ -1393,6 +1393,45 @@ class TestArchetypeFiguresAreAudited:
         assert hits == [], f"stale rationale figure(s): {hits}"
 
 
+class TestValueThatScalesWithADeckCount:
+    """`_deck_state_axis` flags a card graded at its FLOOR because its value is a COUNT.
+
+    Report-only by design — the axis is fuzzy and a score change on a fuzzy signal is what
+    this module keeps having to undo. The resource class was `[\\w' -]`, which cannot cross
+    punctuation, so two ordinary Magic templatings fell out: a compound resource
+    ("artifact and/or enchantment you control") and counters-on-permanents ("the number of
+    +1/+1 counters on lands you control" — Toph, the Blind Bandit). Measured on the pool:
+    781 in-scope clauses, 46 missed across 39 cards.
+    """
+
+    def test_a_counters_on_permanents_resource_is_an_axis(self):
+        """Toph's own clause, and the case that prompted the widening."""
+        ax = deck._deck_state_axis(
+            "Toph's power is equal to the number of +1/+1 counters on lands you control.")
+        assert ax == "+1/+1 counters on lands you control"
+
+    def test_a_compound_resource_is_an_axis(self):
+        ax = deck._deck_state_axis(
+            "This creature gets +1/+1 for each artifact and/or enchantment you control.")
+        assert ax == "artifact and/or enchantment you control"
+
+    def test_a_plain_resource_still_reads_as_before(self):
+        assert deck._deck_state_axis(
+            "deals damage equal to the number of creatures you control.") == "creatures you control"
+
+    def test_a_GAME_STATE_count_is_still_not_an_axis(self):
+        """The widening must not cross the line the axis already drew: a deck-list count
+        is not what these ask about, and flagging them would make the signal noise."""
+        for t in ("deals damage equal to the number of cards in your hand.",
+                  "gets +1/+1 for each creature in your party.",
+                  "Draw a card for each opponent you have."):
+            assert deck._deck_state_axis(t) is None
+
+    def test_the_axis_names_the_ZONE_so_you_know_which_number_to_count(self):
+        assert deck._deck_state_axis(
+            "for each creature card in your graveyard") == "creature card in your graveyard"
+
+
 class TestCostThatScalesWithADeckCount:
     """A card whose COST falls with a count you control is worth what the deck supplies,
     and every model here prices a card at its printed cost.

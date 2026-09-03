@@ -544,6 +544,42 @@ is anchored by `check_suggest`; the lesson stands — measure the fix-rate again
 BEFORE believing a weight change, because the plausible story ("roles don't feed fit")
 was simply false on inspection.
 
+### The value that IS a count, and the punctuation that hid it (widened 2026-09-03)
+
+Every scoring model in this repo grades a card in isolation, so a card whose power or
+effect size is a COUNT of something you control reads at its FLOOR — a 7-mana 3/2 whose
+ETB deals damage equal to your Swamp count scores as a 7-mana 3/2. `_deck_state_axis` is
+the flag that says so (`⌁scales w/ <axis> — graded here at its FLOOR`), with
+`_int_scaling` as its removal-only sibling. Both are REPORT-ONLY, deliberately: the axis
+is fuzzy, and a score change on a fuzzy signal is the thing this module keeps having to
+undo.
+
+The resource class was `[\w' -]`, which cannot cross punctuation, and two ordinary Magic
+templatings sit on the far side of it:
+
+    Toph's power is equal to the number of +1/+1 counters on lands you control.
+    … gets +1/+1 for each artifact and/or enchantment you control.
+
+The first carries `+` and `/` AND a nested zone ("on lands" before "you control"); the
+second carries the `/` in "and/or". Both returned None, so the two cards most obviously
+in this family were the two the flag could not see.
+
+**Measured on the pool: 781 in-scope clauses (a count of something you control, or in
+your graveyard, or on the battlefield), of which the old form missed 46 across 39 cards —
+6%, every one compound or punctuated.** After widening, 1 clause is still missed (Lunar
+Insight, "different mana values AMONG nonland permanents", an *among*-phrasing rather
+than a punctuation problem). Only **+8 cards gained an axis they wholly lacked**; the
+other 31 already matched on a second clause, which is why the headline count moved 715 →
+723 rather than 715 → 754.
+
+**The widening did NOT cross the scope line, and that was the thing to check.** G-76's
+distinction holds: a count the DECK'S COMPOSITION decides is an axis, a GAME STATE at
+resolution time is not. Cards in your hand, creatures in your party, opponents you have,
+modes chosen, colours of mana spent — all still return None, verified by test and by a
+sweep confirming zero axis strings contain a game-state word. Widening a report-only flag
+is the safe direction anyway: a false positive is a visible line someone dismisses, where
+a false negative is silent, which is the asymmetry G-26 records for the rationale audit.
+
 ## [G-10] "Not in library" for a card you own is the deck-dump undercount symptom
 
 **"Not in library" for a card you own is the deck-dump undercount symptom.**
