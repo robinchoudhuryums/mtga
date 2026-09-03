@@ -8,6 +8,8 @@
 # `check_roles.py --update-baseline` to acknowledge the current set.
 A.I.M. Synthoids
 Aang's Iceberg
+Aang, at the Crossroads
+Aang, at the Crossroads // Aang, Destined Savior
 Absorbing Man
 Accumulate Wisdom
 Aerial Doombot
@@ -17,10 +19,15 @@ Agents of HYDRA
 Ainok Wayfarer
 Airbending Lesson
 Ajani, Caller of the Pride
+Akul the Unrepentant
+Aloe Alchemist
+Ancestors' Aid
 Angel of Vitality
 Angelic Destiny
 Another Round
+Ant-Man's Army
 Anticausal Vestige
+Antiquities on the Loose
 Anzrag, the Quake-Mole
 Appa, Loyal Sky Bison
 Applied Geometry
@@ -30,7 +37,10 @@ Arnim Zola, Bio-Fanatic
 Ashroot Animist
 Atomic Microsizer
 Aurelia, the Warleader
+Auron's Inspiration
+Aurora Awakener
 Avatar's Wrath
+Avenger of the Fallen
 Avengers: Under Siege
 Azog, Moria's Ruin
 Azula, Cunning Usurper
@@ -41,11 +51,12 @@ Barret Wallace
 Baseball Bat
 Baxter Stockman
 Become Brutes
-Beetle-Headed Merchants
+Bejeweled Warg
 Bespoke Bō
 Betor, Kin to All
 Billowing Shriekmass
 Binding Negotiation
+Bioengineered Future
 Biogenic Upgrade
 Black Cat, Cunning Thief
 Black Widow, Super Spy
@@ -55,20 +66,26 @@ Blitzball Shot
 Bloodthirsty Conqueror
 Bloodtithe Collector
 Bolg's Company
+Bolt Bend
+Bone-Cairn Butcher
 Boneclub Berserker
 Boneyard Desecrator
+Brass's Bounty
 Brazen Collector
 Brightspear Zealot
 Broodguard Elite
+Bulk Up
 Bumi, King of Three Trials
 Bumi, Unleashed
 Burning Curiosity
+Burnout Bashtronaut
 Burrowguard Mentor
 Buzz Bots
 Bygone Colossus
 Byrke, Long Ear of the Law
 Calamity, Galloping Inferno
 Callous Sell-Sword // Burn Together
+Caparocti Sunborn
 Captain America, Living Legend
 Captain Mar-Vell, Space-Born
 Caradora, Heart of Alacria
@@ -77,50 +94,67 @@ Casey Jones, Jury-Rig Justiciar
 Cat-Owl
 Central Elevator // Promising Stairs
 Cephalid Inkmage
+Chameleon, Master of Disguise
 Champions of the Shoal
 Charging Strifeknight
 Claim Jumper
+Clifftop Lookout
 Cloud, Midgar Mercenary
+Collector's Vault
 Colossification
 Corrupt Court Official
+Courier of Comestibles
 Crashing Wave
 Craterhoof Behemoth
 Crow of Dark Tidings
 Cruelclaw's Heist
 Crustacean Commando
 Cryogen Relic
+Crypt Feaster
+Cuboid Colony
 Daggerfang Duo
 Dark Confidant
 Darkstar Augur
+Daydream
 Deceit
 Deepchannel Duelist
 Deepmuck Desperado
 Deepway Navigator
 Defiant Survivor
 Delney, Streetwise Lookout
+Demonic Ruckus
 Desert Were-Worm
 Devastating Onslaught
 Diligent Zookeeper
+Djinn of Fool's Fall
+Doc Ock's Henchmen
+Don & Leo, Problem Solvers
 Donatello, Mutant Mechanic
 Donatello, Turtle Techie
+Dori, Bearer of Friends
 Doubling Season
 Dracogenesis
 Draconautics Engineer
 Dragon Fodder
+Dragonback Lancer
 Dragoon's Lance
 Dragoon's Wyvern
+Drake Hatcher
 Dread Summons
 Dream Harvest
 Dream Seizer
+Dreams of Laguna
 Drix Fatemaker
 Duskwatch Hunter
 Dwalin, Weaponmaster
 Dwarven Shortsword
 Dáin Ironfoot
 Earth Kingdom Soldier
+Earth's Mightiest Heroes
 Earthbending Lesson
 Earthen Ally
 Echo, Perceptive Prodigy
+Echocasting Symposium
 Eerie Gravestone
 Effortless Master
 Ember Island Production
@@ -136,17 +170,21 @@ Falcon, Winged Wonder
 Fated Firepower
 Fearsome Goblin Pair
 Felonious Rage
+Festerleech
 Fire Sages
 Firebender Ascension
+Firebending Student
 Fireshrieker
 Fishing Pole
 Flamehold Grappler
+Flamekin Gildweaver
 Flexible Waterbender
 Flopsie, Bumi's Buddy
 Flowerfoot Swordmaster
 Foggy Swamp Vinebender
 Foggy Swamp Visions
 Fortress Kin-Guard
+Fortune, Loyal Steed
 Frantic Strength
 Frontier Seeker
 Frontline Rush
@@ -158,24 +196,29 @@ Gas Guzzler
 Gastal Raider
 Gather the White Lotus
 Genji Glove
+Germination Practicum
+Ghalta, Primal Hunger
 Ghired, Mirror of the Wilds
 Ghost, Spectral Saboteur
 Ghostly Keybearer
 Giant Cindermaw
 Giant Koi
+Gilgamesh, Master-at-Arms
 Glamer Gifter
 Glarb, Calamity's Augur
-Glen Elendra's Answer
 Glider Kids
 Glider Staff
 Goblin Plate Mail
 Goblin-town Flunkies
+Gold Pan
 Gold Rush
 Goldvein Hydra
 Gravelgill Scoundrel
 Great Ugly-Looking Goblin
+Greedy Freebooter
 Grievous Wound
 Groundchuck & Dirtbag
+Group Project
 Growth Curve
 Guidelight Matrix
 Hama, the Bloodbender
@@ -191,6 +234,7 @@ Herald of Eternal Dawn
 Heroes' Hangout
 High Fae Trickster
 High Perfect Morcant
+Hit the Mother Lode
 Honored Knight-Captain
 Hop to It
 Hour of Victory
@@ -199,13 +243,16 @@ HYDRA Troopers
 Hylderblade
 Hymn of the Faller
 I Am Iron Man
+Iguana Parrot
 Imperious Inkmage
+Improvisation Capstone
 Improvised Arsenal
 Ingenious Leonin
 Insatiable Skittermaw
 Interface Ace
 Invasion Reinforcements
 Invasion Submersible
+Involuntary Employment
 Iron Hills Blacksmith
 Iron Hills Stalwart
 Iron Lad, Diverging Destiny
@@ -214,18 +261,25 @@ Iron Man, Master of Machines
 Ironpaw Aspirant
 Item Shopkeep
 Jadelight Spelunker
-Jecht, Reluctant Guardian
 Jennifer Walters
 Jeong Jeong, the Deserter
+Jeskai Brushmaster
 Joo Dee, One of Many
 K'un-Lun Warrior
+Kastral, the Windcrested
 Katara, the Fearless
 Katara, Water Tribe's Hope
+Kav Landseeker
 Kavaron Skywarden
+Kindle the Inner Flame
 Kirol, Attentive First-Year
+Kitsa, Otterball Elite
 Kitsune's Technique
 Klaw, Sonic Subjugator
 Knight Luminary
+Kona, Rescue Beastie
+Korvold and the Noble Thief
+Koya, Death from Above
 Kraven the Hunter
 Krenko, Baron of Tin Street
 Krenko, Mob Boss
@@ -252,12 +306,17 @@ Loot, Exuberant Explorer
 Lorehold, the Historian
 Lys Alana Informant
 Madame Web, Clairvoyant
+Magic Pot
 Magitek Armor
+Mai, Jaded Edge
 Mai, Scornful Striker
+Make Your Own Luck
 Malboro
+Mammoth Bellow
 Mardu Devotee
 Mardu Monument
 Masked Meower
+Master Pakku
 Mechanical Mobster
 Mechanized Ninja Cavalry
 Metalhead
@@ -268,30 +327,41 @@ Mirkwood Pathmaker
 Mirror Room // Fractured Realm
 Mirrormind Crown
 Mistbreath Elder
+Misty Mountains Raider
 Mob Lookout
 Mobile Homestead
 Molten Man, Inferno Incarnate
+Momo, Playful Pet
 Moonshadow
 Moonshaker Cavalry
 Morcant's Eyes
+Morningtide's Light
 Most Decrepit Old Bird
 Multiversal Incursion
+Mutable Explorer
 Namazu Trader
 Nashi, Searcher in the Dark
 Neriv, Heart of the Storm
+Nick Fury, Agent of S.H.I.E.L.D.
+Nighthowl Pursuer
 Nightwhorl Hermit
+Niko, Light of Hope
 Ninja of the Hand
 North Pole Patrol
 Okoye, Dora Milaje Leader
 Omniscience
 Omnivorous Flytrap
 Ori, Keeper of Songs
+Origin of the Avengers
+Orphans of the Wheat
 Ostrich-Horse
+Outlaw Stitcher
 Outrageous Robbery
 Ozai's Cruelty
 Pain 101
 Pain for All
 Paradox Surveyor
+Personify
 Pet Avengers
 Peter Parker
 Picklock Prankster // Free the Fae
@@ -308,8 +378,11 @@ Quicksilver, Brash Blur
 Quill-Blade Laureate
 Quina, Qu Gourmet
 Radiant Lotus
+Raft Security Officer
 Rage into the Valley
+Raging Goblinoids
 Rainveil Rejuvenator
+Rapacious Dragon
 Raph & Leo, Sibling Rivals
 Raphael, the Nightwatcher
 Reckless Velocitaur
@@ -318,30 +391,41 @@ Redirect Lightning
 Relm's Sketching
 Renet, Temporal Apprentice
 Reno and Rude
+Resentful Revelation
 Resolute Reinforcements
 Restorative Technique
+Retrieve the Esper
 Return the Favor
 Rhovanion Rampager
 Ripclaw Wrangler
+Riptide Gearhulk
+Rise of the Dark Realms
+Rise of the Varmints
 River's Rebuke
 Riverchurn Monument
+Rockalanche
 Rough Rhino Cavalry
-Rush of Dread
 Rustler Rampage
 S.H.I.E.L.D. Spy Kit
+Salvation Swan
 Samurai's Katana
 Satoru, the Infiltrator
+Savage Land Dinosaur
 Savage Ventmaw
 Sawblade Skinripper
 Scarlet Spider, Ben Reilly
+Scarlet Spider, Kaine
 Scrabbling Skullcrab
 Season of Weaving
 Secret of Bloodbending
 Seedglaive Mentor
 Seismic Sense
 Self-Destruct
+Self-Reflection
 Serra Angel
 Servant of the Stinger
+Shark Shredder, Killer Clone
+Sheriff of Safe Passage
 Shimmercreep
 Shredder, Unrelenting
 Shrike Force
@@ -349,18 +433,22 @@ Silent Hallcreeper
 Silvergill Mentor
 Silverquill, the Disputant
 Skyskipper Duo
+Sledge-Class Seedship
 Slick Imitator
 Slime Against Humanity
+Slumbering Keepguard
 Snow Villiers
 Song of Stupefaction
 Soul Immolation
 Souls of the Lost
 Sozin's Comet
+Spider-Islanders
 Spider-Man, Web-Slinger
 Spider-Punk
 Spider-Suit
 Spider-Woman, Secret Agent
 Splash Lasher
+Splash Portal
 Splinter, Radical Rat
 Stalactite Dagger
 Stalwart Successor
@@ -368,6 +456,7 @@ Starbreach Whale
 Starfield Shepherd
 Starfield Vocalist
 Stargaze
+Stark Industries Executive
 Starry-Eyed Skyrider
 Stature, Size Shifter
 Stegron the Dinosaur Man
@@ -375,36 +464,55 @@ Stickytongue Sentinel
 Sting, Bilbo's Sword
 Stony-Voiced Goblins
 Sultai Devotee
+Summoner's Grimoire
 Sun Warriors
 Sun-Spider, Nimble Webber
 Sunpearl Kirin
 Super-Soldier Serum
 Surrak, Elusive Hunter
+Sweettooth Witch
 Swiftblade Vindicator
+Synchronized Charge
 Taii Wakeen, Perfect Shot
 Tangle Tumbler
 Tannuk, Steadfast Second
 Tapestry Warden
 Taskmaster, Mercenary Mimic
 Team Tactics
+Temporal Intervention
 Terra, Magical Adept
+Terrapact Intimidator
+Tester of the Tangential
 Thawbringer
 The Boulder, Ready to Rumble
 The Cave of Two Lovers
+The Final Days
 The Infamous Cruelclaw
 The Jolly Balloon Man
+The Kingpin of Crime
 The Last Ronin's Technique
+The Lord of the Eagles
 The Mindskinner
+The Misty Mountains Cold
+The Queen of Dale
+The Regalia
+Think Twice
+Thor Odinson
 Three Tree Scribe
 Thunderous Velocipede
+Tidings of War
 Tiger-Dillo
+Time Stop
 Tinybones, Bauble Burglar
 Tinybones, the Pickpocket
+Tony Stark
 Toph, the Blind Bandit
+Topiary Lecturer
 Trade the Helm
 Transit Mage
 Traveling Botanist
 Traveling Chocobo
+Treasure Dredger
 Treeguard Duo
 Treetop Snarespinner
 Triceraton Commander
@@ -413,6 +521,7 @@ Turtle-Duck
 Turtles in Time
 Twin Blades
 Twinflame Tyrant
+Ty Lee, Artful Acrobat
 U.S.Agent, John Walker
 Ultron Drone
 Umbral Collar Zealot
@@ -421,10 +530,13 @@ United Front
 Unstable Experiment
 Unstoppable Slasher
 Utrom Scientists
+Vastlands Scavenger // Bind to Life
 Venomized Cat
 Veteran Ice Climber
+Vinereap Mentor
 Virulent Silencer
 Virus Beetle
+Visage Bandit
 Vision Quest
 Vito's Inquisitor
 Voyager Glidecar
@@ -451,4 +563,7 @@ Wild Hypothesis
 Wisecrack
 Wonder Man, Hollywood Hero
 Wrench
+Y'shtola Rhul
 Zog, Triceraton Castaway
+Zurgo's Vanguard
+Zurgo, Thunder's Decree

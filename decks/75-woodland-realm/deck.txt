@@ -3,7 +3,7 @@
 #: colors: BGU
 #: plan: midrange
 #: tier: B (PROVISIONAL) — after the 2026-08-21 pile pass the floor's A case got
-#: tier: stronger: interaction 7 counted +2 unclassified (Reclamation Sage closed the
+#: tier: stronger: interaction 8 counted +2 unclassified (Reclamation Sage closed the
 #: tier: no-artifact/enchantment-answer hole; Gloom Ripper's -0/-X scales on Elves in
 #: tier: play plus Elf cards in the yard; Glen Elendra's Answer mass-counters), card
 #: tier: advantage 4, protection 2 (Snakeskin Veil, and Tyvar in the YARD hands the

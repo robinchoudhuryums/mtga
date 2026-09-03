@@ -17,7 +17,7 @@ whether the quantities are LOWER BOUNDS or AUTHORITATIVE.**
 
 | What you have | Route | What a quantity means |
 |---|---|---|
-| Arena export of cards you just **crafted or opened** | `/add-cards` → `reconcile_crafts.py` | lower bound; takes `max(existing, line)` |
+| Arena export of cards you just **crafted or opened** | `reconcile_crafts.py` (Stage 2 below) | lower bound; takes `max(existing, line)` |
 | A **deck list** you built in Arena, to true up counts | `import_arena.py <file> --skip-basics` | lower bound — each line is what that deck plays, not what you own |
 | A **tracker's full-collection CSV/TSV** | `import_collection.py` | **authoritative** — sets exact counts, including DOWN |
 | The companion **Google Sheet** | `sheets_sync.py pull` | authoritative; needs credentials — run `sheets_sync.py check` first, it reports every missing setup part and writes nothing |

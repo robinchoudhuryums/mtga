@@ -153,10 +153,20 @@ castability · curve · central-theme density), with the intangibles moving a de
   tier letter** — it's a human competitive judgment (design constraint).
 - **The measurable FLOOR** (`deck.py tier <id>` → "metrics floor", via
   `tier_band`): interaction + card-advantage = the resilience axis. Roughly:
-  **A-floor** interaction ≥5 and (interaction+card-adv) ≥7; **B-floor** interaction
-  ≥3 and sum ≥4; **C-floor** sum ≥2; **D** below that; any uncastable stray caps at
-  C. The floor is blind to raw card power / bombs / meta (an idf+role model can't
-  see those), so it **under-rates by design.** An uncastable stray CAPS the floor at C
+  **A-floor** interaction ≥7 and (interaction+card-adv) ≥11; **B-floor** interaction
+  ≥4 and sum ≥7; **C-floor** sum ≥2; **D** below that; any uncastable stray caps at
+  C. **The numbers live in ONE table, `deck.TIER_FLOOR_REQ`, and were RE-DERIVED from
+  the roster distribution on 2026-09-02 (BS8-06)**: the original (5, 7)/(3, 4) had been
+  outgrown as the role patterns widened — with a median interaction of 8 the floor read
+  A for 104 of 117 decks and C/D for none, so the ≥2-band guard could only fire on an S
+  claim, the under-grade nudge fired on every claimed B, `tier --to A` answered "already
+  meets" for 90% of the roster, and every "0 tier floors moved" measurement in the
+  pattern-widening commits was guaranteed by the saturation, not by conservatism. A ≈
+  the roster median on both axes, B ≈ its 10th percentile. `check_all` now warns when
+  one band holds more than 85% of the roster (`tier_floor_spread`) — that warning is a
+  reason to re-derive the table, never a deck defect; `check_tier` pins the SHAPE and
+  reads the same table. The floor is blind to raw card power / bombs / meta (an idf+role
+  model can't see those), so it **under-rates by design.** An uncastable stray CAPS the floor at C
   rather than SETTING it, so a dead card can no longer RAISE a D-floor deck, and a card
   the deck's `#: uncastable-ok:` header declares intentional is not counted at all.
 - **The floor is ARCHETYPE-aware** (#4): an aggro deck closes on a fast clock, not an
@@ -287,7 +297,11 @@ directions.
   deck's total is flagged **TRUNCATED** and skipped too — a partial paste is a strict
   SUBSET, so the shared-card floor alone read it as a full-confidence match and
   `--apply` would have rewritten the 60 down to the fragment (`--force` overrides,
-  for a deliberate cut). [G-08]
+  for a deliberate cut). **The pool's `Legalities` keys are SCRYFALL's, and Scryfall's
+  `brawl` is the 100-card Historic Brawl — so every legality/recommender surface reads
+  the deck's format through `deck.pool_format_key` (60-card `Brawl` → `standard`,
+  `Historic Brawl` → `brawl`), never the raw string: until BS8-04 a Historic-only card
+  passed `legal` in 3-brawl and `suggest` on it returned 2,238 non-Standard picks.** [G-08]
 - **`check` answers "do I own this deck"; `legal <id>` answers "is it a LEGAL deck"** —
   size, copy limit and each nonbasic's legality in the deck's `#: format:`, format-aware
   for Alchemy and Brawl (a Brawl deck also validates `#: commander:` and every card's
@@ -340,7 +354,11 @@ directions.
   [G-14]
 - **The optional editor (`scripts/app.py`) mutates `card-library.csv`** via validated
   writes plus a timestamped `.bak`, appends a `card-mana.csv` row when you add a card
-  (INV-02), and edits deck files gated on INV-04. Run `/refresh` after an app session so
+  (INV-02), and edits deck files gated on the WHOLE of INV-04 — parse fidelity plus
+  `printing_problems` and `malformed_deck_lines`, the two checks `check_all` runs; until
+  BS8-19 only fidelity was checked, so an unknown `(SET)` saved green and the gate went
+  red. The CSV save carries a content-hash `lib_token` like the deck save (BS8-18): a stale
+  tab is refused with a 409, not silently written. Run `/refresh` after an app session so
   derived data catches up. [G-15]
 - **`card-pool.csv` carries printed `Power`/`Toughness` — parse them with
   `lib.card_power()`**, which returns `None` for the `*`/`X` printings instead of
@@ -389,7 +407,10 @@ directions.
   `wishlist.py --suggest-targets` scores fit by theme rarity (idf) so broad decks stop
   acting as catch-alls — only a *specific* theme is a confident match. Workflow: `--add`
   → `--suggest-targets --write` → text-review the `review` cards, which the tag heuristic
-  genuinely cannot place. [G-20]
+  genuinely cannot place. **STRONG means one thing in both modes since BS8-38**: a specific
+  theme, score ≥ 1.5 AND a clear lead (`--suggest-targets` took `lead OR score`). Measured
+  before the fix, STRONG matched the hand-set Target on 20 of 86 rows — a proposal with a
+  reason, never a placement. [G-20]
 - **`card-pool.csv` carries a `Legalities` column**, so `deck.py suggest` filters craft
   picks to the deck's `#: format:` by default (`--format` overrides, `--any-format`
   disables). A pool built before the column lacks it — `suggest` warns and shows all
@@ -446,7 +467,7 @@ directions.
   NAME, and one whose subject is the card POPULATION ("Standard's Dragons average MV 5.30")
   — plus the rule that a name forming part of THIS deck's own name is not another deck, since
   the variant convention makes 26a "Iron Forge — Virulent". **THAT RULE MAKES A RENAME A SUPPRESSION CHANGE (measured 2026-09-02):** `_other_deck_ids` returns EMPTY for a bare `40a Some Name` — the id route needs the literal word *deck* or a possessive — so the roster-NAME mask carries the commonest cross-deck citation, and adopting `Paradox Drive — ParadoXponential` made 40a's name contain its parent's, stopping "Paradox Drive" masking inside 40a's own prose. A tightening here; **re-run the audit on both decks after any rename.**
-  **THE MANABASE AXIS WAS OUTSIDE THE SCAN ALTOGETHER until 2026-09-02** — every figure family resolves against `deck_quality_vector`, which has no colour-source term, so deck 78 claimed "~51% against 13/8/8 sources" through a rebuild to 13/8/10 and the audit said CURRENT. Fixed by widening the LOOKUP (`_figure_lookup` adds `sources_W`…`sources_G`) so one pattern per colour reuses every existing suppression instead of a parallel pass. Guards measured, not invented: a DELTA ("+8 white sources") and a WANT (`consistency` prints "want 13 G sources") are not claims. It also exposed a bigger hole — `_OTHER_DECK_RE` needs the word *deck*, but the prose's commoner idiom is the POSSESSIVE (`68a's 12 green sources`, **35 roster occurrences**), so a cross-deck claim flagged against the citing deck; `_other_deck_ids` reads both, gating the possessive on a REAL roster id. Roster: 4 flags → 3, the suppressed one exactly that false positive.
+  **THE MANABASE AXIS WAS OUTSIDE THE SCAN ALTOGETHER until 2026-09-02** — every figure family resolves against `deck_quality_vector`, which has no colour-source term, so deck 78 claimed "~51% against 13/8/8 sources" through a rebuild to 13/8/10 and the audit said CURRENT. Fixed by widening the LOOKUP (`_figure_lookup` adds `sources_W`…`sources_G`) so one pattern per colour reuses every existing suppression instead of a parallel pass. **The per-colour patterns could not see the idiom that motivated them** — deck 78 writes `13/8/10 sources` — so `_slash_source_claims` checks the slash form as a multiset over the deck's `#: colors:` and renders the live counts in the prose's own order (BS8-16); it found deck 78 stale the day it landed, because any-colour lands are sources now. Guards measured, not invented: a DELTA ("+8 white sources") and a WANT (`consistency` prints "want 13 G sources") are not claims. It also exposed a bigger hole — `_OTHER_DECK_RE` needs the word *deck*, but the prose's commoner idiom is the POSSESSIVE (`68a's 12 green sources`, **35 roster occurrences**), so a cross-deck claim flagged against the citing deck; `_other_deck_ids` reads both, gating the possessive on a REAL roster id. Roster: 4 flags → 3, the suppressed one exactly that false positive.
   **TWO RESIDUALS, ONE SHAPE — a proximity window loses a long list.** The EXCLUSION check misses a name several lines into a wrapped one (deck 52 named Zemo under "Deliberately NOT included" while running him; `wrong_exclusion_claims` returned empty). And SCANNING `#: notes:` for staleness was re-measured and re-DECLINED 2026-08-31: 81 roster hits at ~45% precision, 61 with a clause-wide history cue, and deck 59's cut Ancestors' Aid is caught by NEITHER — its own clause said another card "were CUT … for Hugs", so the suppressions that make this scan trustworthy are exactly what blind it in a build log. [G-27]
 - **`suggest`'s `Decks` column is cross-deck BREADTH, not curated fit** — castable and
   sharing a *central* theme that is also SPECIFIC, with variants collapsed to their core
@@ -467,9 +488,9 @@ directions.
   full rotation. **A claim that two implementations agree is not agreement.** Plain
   `suggest` also excludes LANDS now: a land has no cost, so the printed-cost castability
   gate (G-58) passed an off-colour one unconditionally.
-  **Reprint caveat, partly encoded:** the pool keys ONE printing, so a card reprinted
-  into a long-legality set inherited the wrong date — `_SET_ROTATION_OVERRIDE` fixes the
-  announced ones, and the residual is real: verify against the official schedule. [G-30]
+  **The year is the STANDARD YEAR, not release + 3 (BS8-13)**: a January–July set leaves with
+  the previous fall's (MKM/OTJ/BIG → 2026). **⚠rot is a craft flag on a Standard card** (BS8-12:
+  `craft_rot_note` delegates to `rotation_risk`). Reprints: `_SET_ROTATION_OVERRIDE`; verify. [G-30]
 - **`deck.py suggest-homes <card>` is the cross-deck fit pass** — every deck where the
   card is castable, format-legal and shares a *central* theme, labelled KEY /
   role-player / tangential, strongest first, with the card's oracle text and a cut hint
@@ -514,7 +535,15 @@ directions.
 - **`deck.py mana` also lints color SOURCES, not just pip demand** — it flags cards whose
   strict pips look thin against the deck's actual sources (`△ Pip-intensive`), catching
   the "wants UU but this is really a U-splash" problem the identity-subset castability
-  check cannot see. A review signal; it doesn't gate `check_all`. [G-35]
+  check cannot see. A review signal; it doesn't gate `check_all`. **Sources are read
+  from the land's TEXT through `lib.land_production` (BS8-01) — ONE count,
+  `deck.deck_source_profile`, behind `mana`, `consistency`, `deck_color_sources`,
+  `pip_depth_warning`, `suggest --lands` and the rationale audit's colour figures.**
+  Identity alone read every "Add one mana of any color" land as ZERO sources (deck 21a:
+  B 5 against a real 12), three copies agreed with each other, and 30 of the 40
+  pip-intensive flags on the roster were artefacts. An extra-cost any-colour land
+  ("{1}, {T}: …") IS counted and labelled; spend-only mana is NOT counted and is
+  listed; a basic fetch counts for each colour the deck runs a basic of. [G-35]
 - **`deck.py consistency <id>` is the PROBABILITY layer `mana` lacks** — keepable %,
   screw/flood, land-drop consistency and per-card P(cast on curve), with a Karsten-style
   source recommendation. Run it whenever a splash, a double pip or a top-end bomb is in
@@ -643,7 +672,10 @@ directions.
   sync` blindly") until BS4-09. **That last one is where the obvious fix was wrong**:
   demanding the executable shape there would have failed 27 of 34 live subcommands, since
   the skills write 30 of their references bare and only 3 sit in fenced code blocks — so a
-  caution CLAUSE is suppressed instead, which measured as costing zero coverage. [G-53]
+  caution CLAUSE is suppressed instead, which measured as costing zero coverage.
+  **MAKEFILE TARGETS joined the gate at BS8-25**, and its first run found `make postedit` —
+  G-69's after-every-deck-edit tail — reachable from NO skill: the Makefile had only ever
+  been an INPUT to the script half's proof. The commit tail runs it now. [G-53]
 - **A SET plus a sort key that can TIE is a nondeterministic output.** Tied themes left
   in set-iteration order made an unchanged build produce different output every run.
   **Before sorting anything derived from a set, ask what happens when the key ties** —
@@ -694,7 +726,8 @@ directions.
   `Ended By` (Game vs Concede) varies and is most of the signal at low n. **Read with
   restraint** — under 20 matches `--report` refuses a percentage. The per-deck split
   CANNOT reach that floor at 111 decks (best row n=8), so it also POOLS, which answers a
-  different question: whether YOU are winning, never whether a deck is good. [G-57]
+  different question: whether YOU are winning, never whether a deck is good. **Hand
+  rows carry `manual-` ids; the watermark excludes them by `is_manual_id` (BS8-03).** [G-57]
 - **NEVER widen `#: colors:` for a HYBRID card, and never reject a card for a widening you
   do not need.** Both halves were violated in one cycle: 26b's header was widened to UBR
   for `{B/R}` Bullseye, and Don & Raph was kept OUT of mono-blue 47 because its R identity
@@ -709,7 +742,7 @@ directions.
   MANA ABILITY) and `{U}` Bruce Banner / `{1}{U}` Norman Osborn (identity from a TRANSFORM
   cost); only Iroh was truly gold. The one-card rule is easy to hold and a 111-row filter is
   where it breaks. **`deck.py screen <id> <pile>` is the tool** — it prints the cost and
-  reads castability from it; `/add-cards` now requires it for a pile over ~10. [G-58]
+  reads castability from it; `/add-cards` requires it over ~10; the `tier --to`/`redundancy` fillers joined at BS8-05, `cross_deck_breadth` (Bullseye 13 → 34 decks) and the wishlist's `--rank`/`--suggest-targets` loops at BS8-14/36 — diff every `<= declared` site before calling the family closed. [G-58]
 - **A TRIBE'S VIABILITY IS ITS PAYOFF COUNT, NOT ITS BODY COUNT, and changelings cannot fix
   the missing half.** Measured across eight tribes: Dragon 71 bodies / 20 payoffs (built as
   deck 49), Dinosaur 52/11, Vampire 69/3, Mutant 79/**2**, Demon 28/1, Plant 27/1, God 21/**0**,
@@ -978,17 +1011,16 @@ directions.
   what failed. [G-71]
 - **A CONTROL BUILT IN JAVASCRIPT IS A CONTROL ONLY IF IT GOES THROUGH `a11y()`.** Four
   times a click handler has been bound to a non-interactive node (collection pips I-01,
-  editor tabs S-2, the triage Deck cell and card-finder chips in 2026-08). **All of them
-  were in the GENERATED pages**, because `tests/test_templates.py` pins `templates/` plus a
-  few NAMED dashboard controls and cannot see a new one. When a11y-ing a node inside a table,
-  apply it in `sortableTable`'s `onRowExtra` — `redraw()` rebuilds `<tbody>` on every sort,
-  discarding attributes set once. The same files hide hardcoded colours (`gallery.html`'s
-  literal `#0f1115` track; the dashboard's mana tokens had no light value at all, BS6-02).
-  **AN A11Y'D NODE IS NOT A11Y'D BEHAVIOUR**: `attachHover`'s focus listeners sat on bare
-  spans at 2 of 3 call sites, and `focus` neither fires on a non-focusable node nor bubbles,
-  so the preview followed focus at ONE site for months — and Scenario 7 named that site, so
-  the walk passed over an inert feature (BS6-03). **Write a scenario step from the FEATURE,
-  not from the fix.** **A STATIC A11Y GATE WAS MEASURED UNBUILDABLE — do not restart it**
+  editor tabs S-2, the triage Deck cell and card-finder chips in 2026-08) — **all in the
+  GENERATED pages**, which `tests/test_templates.py` pins only where NAMED. Inside a table,
+  a11y in `sortableTable`'s `onRowExtra`: `redraw()` rebuilds `<tbody>` every sort. The same
+  files hide hardcoded colours (gallery's `#0f1115` track; the dashboard's mana tokens had
+  no light value at all, BS6-02).
+  **AN A11Y'D NODE IS NOT A11Y'D BEHAVIOUR** (`attachHover`'s focus listeners on bare spans
+  — `focus` neither fires on a non-focusable node nor bubbles, BS6-03) **and a node carrying
+  a STATE ITS ROLE CANNOT HOLD is not a control** (focusable `<h2>` + `aria-expanded`
+  announced "heading level 2" and nothing else; the control is a `<button>` inside the
+  heading since BS8 P-07). **Write a scenario step from the FEATURE, not from the fix.** **A STATIC A11Y GATE WAS MEASURED UNBUILDABLE — do not restart it**
   (three designs, every flag FALSE). The COLOUR half IS gated since 2026-08-26: a page must
   define every `var(--x)` it emits. Scenario 7 stays the a11y half's only coverage. [G-72]
 - **A DECK'S REPO NAME AND ITS ARENA NAME ARE DIFFERENT STRINGS, and NEITHER is
@@ -1099,9 +1131,12 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   scored ZERO roles by the classifier, so it was a removal card to one model and roleless
   to the other — and it is the ROLE model that feeds `tier_band` (BS6-10). Comparing the
   two is cheap, and is a GATE now, not a one-off: `check_roles.py --tags` sweeps the pool
-  for it, baselined at 153 and soft in `check_all`. It reads the tagger's own
+  for it, baselined at 173 and soft in `check_all`. It reads the tagger's own
   `MECHANIC_RULES` live (never a copy) and excludes the deathtouch KEYWORD path by
-  construction — 250 of the 388 raw hits, which an allowlist would have had to enumerate.
+  construction. **The tag rules read the CARD, not what it describes (BS8-31)**: `sacrifice`
+  and `removal` run on reminder- and quote-stripped text (every Saga was `sacrifice`),
+  `reanimator` needs one graveyard→battlefield clause, `landfall`/`convoke` no longer map to
+  `ramp`; `--merge` cannot REMOVE a stale library tag, so the pool is the corrected store — 250 of the 388 raw hits, which an allowlist would have had to enumerate.
   A worklist, not a defect count. **Residual: 340 pool blanks —
   a long tail of un-themeable effects, and a new theme for four cards is not the fix.** [K-09]
 - **After editing a tag pattern, regenerate BOTH derived tag stores** —
@@ -1171,7 +1206,7 @@ commands read them, so the field structure is load-bearing. Detail belongs in
 `docs/cycle-config.md` under the `[C-nn]` anchor a field carries.
 
 **Test Command:** `python3 scripts/check_all.py` — the deterministic integrity gate; it
-exits non-zero on any hard invariant break. INV-01…04 plus **fourteen model-sanity
+exits non-zero on any hard invariant break. INV-01…04 plus **thirteen model-sanity
 gates** (`check_rankings`, `check_colors`, `check_dfc`, `check_suggest`, `check_engines`,
 `check_tier`, `check_patterns`, `check_commands`, `check_agreement`, `check_docs`, and the
 soft `check_keywords` / `check_roles` / `check_themes` / rationale-and-flex sweeps) — plus
@@ -1181,7 +1216,12 @@ figure sweep, (2026-08-19) the tag/role disagreement sweep (`check_roles --tags`
 the committed-dashboard freshness check, and (2026-08-24) TWO more — the G-75
 dead-library-search sweep (a tutor whose named resource the deck holds ZERO of) and the
 G-79 unreleased-pool sweep (a card-pool row from a set that is not out yet, which every
-craft recommender would price a wildcard for). Two things to know
+craft recommender would price a wildcard for) — and (2026-09-02) a NINTH, the BS8-06
+tier-floor-spread sweep (`deck.tier_floor_spread`: one floor band holding >85% of the
+roster means the thresholds have stopped discriminating), and (2026-09-03) a TENTH, the
+BS8-22 figure-drift sweep (`check_docs.figure_drift`: a MEASUREMENT a CLAUDE.md rule cites
+as its evidence that no longer matches the data — it lived inside a gate that runs and was
+itself reached by nothing but a hand run). Two things to know
 before touching it: it imports `deck` as a MODULE and calls its MODEL functions (no
 `cmd_*` at all), so it never
 builds an argparse tree — the CLI surface is covered by `tests/test_cli.py` and a CI smoke
@@ -1221,11 +1261,15 @@ earned it: [C-01]
   scripts/tag_role_baseline.txt, **.github/workflows/integrity.yml** — the zero-dependency
   CI half: `check_all.py` plus the `--help` CLI smoke step that exists because check_all
   builds no argparse tree (G-55). Named here since 2026-08-26; it had lived only in
-  `docs/cycle-config.md` prose, so the file list said CI ran pytest and nothing else [C-05]
+  `docs/cycle-config.md` prose, so the file list said CI ran pytest and nothing else;
+  **scripts/session_check.sh** + `.claude/settings.json` — the SessionStart hook: runs
+  `check_all --quiet` on every session start and the full pytest suite only when the
+  HEAD tree of scripts/ tests/ Makefile pytest.ini changed since the last green run
+  (signature in the gitignored `.cycle/.tests-green-sig`; `rm` it to force) [C-05]
 - Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json,
   scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml,
   scripts/app.py, templates/, Makefile [C-06]
-- Testing: tests/ (31 test files + conftest: the markup-contract, CLI-entry-point and
+- Testing: tests/ (32 test files + conftest: the markup-contract, CLI-entry-point and
   command-output, analysis-model, gate-pinning, shared-primitive and ingest layers, the
   2026-08 ingest-writer / sync-guard / resilience-layer / CLI-filter coverage of the
   formerly untested scripts, plus test_check_all.py, the gate runner's own mutation layer;
@@ -1236,7 +1280,7 @@ earned it: [C-01]
   watched-it-fail layer for the seven gates that had none — so all fourteen now have
   one; and test_dashboard_js.py, the CROSS-LANGUAGE layer running the dashboard's JS
   matcher under Node against `match_paste`), requirements-dev.txt + requirements-app.txt
-  (CI installs BOTH, and sets PYTEST_NO_SKIPS so a skip FAILS — installing only -dev
+  (CI installs BOTH, and sets PYTEST_NO_SKIPS so a skip FAILS, at collection too since BS8-07 — installing only -dev
   silently skipped the editor's six write-safety pins on every run),
   pytest.ini, .github/workflows/tests.yml, + test_templates.py's TOKEN gate (a GENERATED
   page must define every `var(--x)` it emits — G-72 one file over) [C-07]
@@ -1244,6 +1288,7 @@ earned it: [C-01]
 
 **Invariant Library:**
 - INV-01 | card-library.csv has the canonical 8-column header, every row has 8 fields, no duplicate (Card Name, Set Code, Collector #) printing, and Quantity Owned is blank or a non-negative integer | Subsystem: Data | Verify: scripts/check_all.py (via validate.py)
+- INV-01b | Every card-library.csv row's Set Code is one some card-pool.csv printing carries — the library twin of INV-04's `bad_set` (BS8-34: a fabricated `(ZZZ) 999` printing became owned inventory with every gate green; the exact collector pairing is deliberately not checked, since the pool keys one printing per card) | Subsystem: Data | Verify: scripts/check_all.py (`check_library_printings`)
 - INV-02 | Every Card Name in card-library.csv has a row in card-mana.csv | Subsystem: Data | Verify: scripts/check_all.py
 - INV-03 | Derived reference files exist AND keep their own schema: card-mana.csv (Card Name/Mana Cost/Mana Value/Keywords), card-pool.csv (…/Rarity; Legalities+Released+Power+Toughness warn if absent), gallery.html AND dashboard.html (each has usable CONTENT — non-trivial size + the `#data` island — since existence alone passed a truncated build) | Subsystem: Data/Presentation | Verify: scripts/check_all.py
 - INV-04 | Every deck file under decks/ parses with no malformed card lines, AND every line's `(SET)` code exists in the pool or library (an unheld COLLECTOR # within a real set is a soft warning, since the pool keys one printing per card), AND the roster's ids are unambiguous — no two files claim one deck id, and no top-level decks/ directory is variant-shaped (`73a-…`), both of which let a by-id command silently validate one file while editing another | Subsystem: Decks | Verify: scripts/check_all.py
@@ -1398,6 +1443,50 @@ format.
     Reason tally for the first time. The four hand-only columns (G-74) are empty in all 66
     rows today, so this scenario is the only thing that can prove the loop closes at all.
 
+12. Dashboard first paint on a light-OS machine | Subsystem: Presentation & Interface
+    Steps: set the OS to light, clear the page's `localStorage` (`mtga-prefs`), hard-reload
+    `dashboard.html`; then reload once with JavaScript DISABLED; then in dark theme open
+    the Log-a-match Deck dropdown.
+    Expected: the page paints LIGHT immediately — no dark flash before the script runs, and
+    light even with scripts off (BS8 P-04 added a head-script stamp plus a build-time
+    `@media (prefers-color-scheme: light)` twin of every light token block). The native
+    dropdown popup matches the DARK theme rather than rendering light chrome (`color-scheme`).
+13. Deck-select type-ahead | Subsystem: Presentation & Interface
+    Steps: Tab into Log-a-match → Deck; type `t`, then `g` then `d`, then `/`.
+    Expected: the selection moves to matching deck names and nothing else happens. Until
+    BS8-20 `isTyping` checked INPUT/TEXTAREA only, so `t` toggled the theme, `g` armed the
+    jump prefix and `/` yanked focus to the filter — on a 115-option picker.
+14. Palette and modal with a screen reader | Subsystem: Presentation & Interface
+    Steps: with VoiceOver/NVDA, press ⌘K, arrow down twice, Escape; then open a deck's ⤢.
+    Expected: "dialog, Jump to a deck or section", then a LIST of N options with the current
+    one announced as selected as you arrow (BS8 P-06 put the rows in a `listbox` and drove
+    `aria-activedescendant`); the deck modal announces the deck's name, not "dialog".
+15. Section header — announcement AND appearance | Subsystem: Presentation & Interface
+    Steps: with a screen reader, Tab to the "Triage" section header and press Enter twice;
+    then LOOK at every section header in both themes.
+    Expected: announced as a collapsible control whose expanded state changes (BS8 P-07 —
+    the control is a `<button>` inside the `<h2>`; the heading stays a heading for
+    heading-jump navigation and is no longer itself focusable). **The visual half is what no
+    test can make**: the button is `all:unset` + flex, so the header must look exactly as it
+    did — same size, weight and spacing, caret still hard right — and the focus ring must
+    frame the header row rather than a bare word.
+16. Deck editor unsaved-changes prompt | Subsystem: Presentation & Interface
+    Steps: `make app`, open a deck, change a quantity, click "← Decks"; then repeat and
+    click Save (which reloads).
+    Expected: the first leaves a browser leave-page prompt (BS8 P-08); the SAVE reload does
+    NOT prompt — the guard is bypassed once a save succeeds, as on the collection page.
+17. Mini curve vs Stats tab | Subsystem: Presentation & Interface
+    Steps: find a deck running a 0-MV nonland card; compare the deck card's mini curve "1"
+    bar with the Stats tab's 0 and 1 columns.
+    Expected: they agree. Open item P-10 — the mini curve folds MV 0 into the 1 bar while
+    the Stats tab splits them; this scenario is what confirms a fix.
+18. Live-sync failure honesty, and a truncated paste | Subsystem: Presentation & Interface
+    Steps: open `dashboard.html` in a browser with site storage blocked (or a Safari private
+    window) and click ⟳; then paste a TRUNCATED deck export into the stale-deck panel.
+    Expected: the sync says it could not store the snapshot and does NOT reload behind a
+    "Synced live" toast (BS8 P-05); the paste reads "⚠ TRUNCATED? paste holds N of M cards
+    — a fragment, not a drift" rather than "⟳ drifted — 0 added / 44 removed" (BS8-43).
+
 **Frozen Subsystems:** none.
 
 **Deploy Command:** Data + local tooling ship by commit/push (no build/release step). The
@@ -1505,6 +1594,10 @@ is invisible, and a handoff nobody is told to read is the same failure one layer
   control build, still specced-but-undrafted; Variant C parked); and
   `hob-followup-analysis.md`. Each is deleted when its work lands — the 54-family doc
   went on 2026-08-05, which is the contract working as intended.
+- **The SessionStart hook** (`.claude/settings.json` → `scripts/session_check.sh`)
+  prints `[card-library] … integrity: OK, N soft` and either a pytest result or
+  "unchanged since last green run — skipped". A skip is a cached green, keyed on the
+  HEAD tree of the code paths; a deck/CSV-only change does not rerun the suite, by design.
 - **`.cycle/STATE.md`** — prose record: what was completed, decisions made, what was
   decided AGAINST (worth reading before re-proposing a rejected fix), and where the
   last session left off.

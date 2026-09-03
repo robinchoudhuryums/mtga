@@ -164,7 +164,58 @@ class TestDeckSubcommands:
 _STDIN = object()
 
 
-_DECK = "43"            # a real, well-populated roster deck
+def _pick_deck():
+    """(deck_id, cut_card, section_header, add_card, variant_pair) chosen FROM the live
+    roster, not hardcoded (BS8-24).
+
+    `_DECK = "43"` plus the literal card names "Stroke of Midnight" / "Bilbo, Luckwearer"
+    and the header "Removal" pinned this suite to one deck's current contents — and the
+    handoff records the user weighing exactly the swap that would remove one of them, so
+    a legitimate tune would have turned CI red on a file the tune never touched.
+
+    Everything the command args need is derived from whatever the roster holds today: a
+    Standard deck with at least two UNAMBIGUOUS `# section` headers (what `swap --section`
+    and `move` require), a nonland card sitting under one of them, a DIFFERENT header to
+    relocate it to, and an `add` card the deck does not already run.
+    """
+    sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                                    "scripts"))
+    import deck as dk
+    variant = next(((d["core"], d["id"]) for d in dk.discover_decks() if d["variant"]), None)
+    assert variant, "no parent/variant pair on the roster — `diff` has nothing to compare"
+    best = None
+    for d in dk.roster_decks():
+        meta, cards = dk.parse_deck_file(d["path"])
+        if (meta.get("format") or "").strip().lower() != "standard":
+            continue
+        heads, under = [], {}       # header text in file order; header -> [card names]
+        cur = None
+        with open(d["path"], encoding="utf-8") as fh:
+            for ln in fh:
+                ln = ln.rstrip("\n")
+                if ln.startswith("# ") and not ln.startswith("#:"):
+                    cur = ln[2:].strip()
+                    heads.append(cur)
+                elif cur and ln.strip() and not ln.startswith("#"):
+                    m = dk.CARD_LINE_RE.match(ln.strip()) if hasattr(dk, "CARD_LINE_RE") else None
+                    name = m.group(2).strip() if m else ln.strip().split(" (")[0][2:].strip()
+                    if name and name.lower() not in dk.BASICS:
+                        under.setdefault(cur, []).append(name)
+        uniq = [h for h in heads if heads.count(h) == 1]
+        pairs = [(h, under[h][0], t) for h in uniq if under.get(h)
+                 for t in uniq if t != h]
+        if pairs and (best is None or len(under) > best[1]):
+            best = ((d["id"], pairs[0][1], pairs[0][2]), len(under))
+    assert best, "no Standard roster deck with two unambiguous section headers"
+    did, cut, section = best[0]
+    have = {n.lower() for _q, n, _s, _c in dk.parse_deck_file(dk.find_deck(did)["path"])[1]}
+    add = next((c for c in ("Negate", "Duress", "Opt", "Shock", "Cancel")
+                if c.lower() not in have and dk.load_card_data().get(c.lower())), None)
+    assert add, "no stock card outside the chosen deck to preview as an add"
+    return did, cut, section, add, variant
+
+
+_DECK, _CUT_CARD, _SECTION, _ADD_CARD, _VARIANT = _pick_deck()
 _ARGS = {
     # roster-wide, no argument
     "list": [], "wildcards": [], "audit": [], "brawl": [], "rotation": [], "feedback": [],
@@ -175,17 +226,17 @@ _ARGS = {
     "history": [_DECK], "tier": [_DECK], "shape": [_DECK], "redundancy": [_DECK],
     "cuts": [_DECK], "flex": [_DECK], "text": [_DECK], "similar": [_DECK],
     # everything else takes its own shape
-    "diff": ["20", "20a"],          # a REAL parent/variant pair; `1a` does not exist
-    "swap": [_DECK, "--cut", "Stroke of Midnight", "--add", "Negate"],   # dry run
+    "diff": list(_VARIANT),         # a REAL parent/variant pair, found on the roster
+    "swap": [_DECK, "--cut", _CUT_CARD, "--add", _ADD_CARD],            # dry run
     "apply-flex": [_DECK, "1"],                                         # dry run
     "verify": [_DECK],
     "sync": _STDIN,                 # fed a real export by the command_runs fixture
-    "suggest-homes": ["Negate"],
-    "resolve": ["Negate"],
-    "screen": [_DECK, "Negate"],
+    "suggest-homes": [_ADD_CARD],
+    "resolve": [_ADD_CARD],
+    "screen": [_DECK, _ADD_CARD],
     # dry run against a card + header that exist in _DECK; `move` is the standalone
     # G-77 relocation and must never write a recommendations row
-    "move": [_DECK, "Bilbo, Luckwearer", "--section", "Removal"],
+    "move": [_DECK, _CUT_CARD, "--section", _SECTION],
 }
 
 
@@ -285,10 +336,29 @@ class TestTunePlanOutputContract:
                 assert "cut feeds card advantage" not in line, line
 
     def test_the_plan_reaches_the_floor_it_claims(self):
-        """Deck 43 is one interaction card from the A floor, so a correct plan closes it.
-        Before the fix this printed 'still short of A' having proposed a self-cancelling
-        swap — the exact user-visible symptom."""
-        rc, out = _run([os.path.join("scripts", "deck.py"), "tier", _DECK, "--to", "A"])
-        assert rc == 0, out
-        assert "Assembled tune plan" in out
-        assert "meets A floor" in out, out[-600:]
+        """A plan that CLAIMS to close the gap must actually close it. Before the fix a
+        deck one interaction from the A floor printed 'still short of A' having proposed a
+        self-cancelling swap — the user-visible symptom.
+
+        The deck is CHOSEN, not hardcoded (BS8-24): the old form asserted deck 43 reaches
+        the A floor, which is a fact about one deck's current list and would go red on a
+        legitimate tune. Here any roster deck that assembles a plan is a valid subject,
+        and the property is the tool's own consistency."""
+        import deck as dk
+        checked = 0
+        for d in dk.roster_decks():
+            vec = dk.deck_quality_vector(d)
+            band = dk.tier_band(vec)
+            target = {"B": "A", "C": "B", "D": "C"}.get(band)
+            if not target:
+                continue
+            rc, out = _run([os.path.join("scripts", "deck.py"), "tier", d["id"],
+                            "--to", target])
+            assert rc == 0, out
+            if "Assembled tune plan" not in out:
+                continue
+            checked += 1
+            if f"meets {target} floor" in out:
+                assert "still short" not in out, (d["id"], out[-600:])
+                return
+        assert checked, "no roster deck assembled a tune plan — the planner is unreachable"

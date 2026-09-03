@@ -18,10 +18,13 @@
 #: archetype: RESOURCE to convert into cards, and wins by out-carding you. Deliberately
 #: archetype: runs no Ninjas and no sneak/clock package; the creature base is chosen for
 #: archetype: ETB text, not evasion.
-#: tier: B — Orzhov blink-value control, one band BELOW the metrics floor of A, and
-#: tier: deliberately so. The floor reads A on interaction 7 (six of it instant-speed)
-#: tier: over a 2.64 curve — five surplus removal spells were traded for the card
-#: tier: advantage below, and 8 answers is still deep for a control deck.
+#: tier: B — Orzhov blink-value control, one band ABOVE the metrics floor of C, and
+#: tier: RE-GRADED 2026-09-02 (broad-scan #8): the four blink spells (Daydream, Personify,
+#: tier: Salvation Swan, Airbender Ascension) had been counted as removal, and they are
+#: tier: value, not answers. Real interaction is 3 over a 2.64 curve; the letter is held
+#: tier: at B on card advantage 8 and the blink engine, which the floor cannot see.
+#: tier: INTERACTION IS THE AXIS TO FIX — `tier --to A` wants +4 — and until it moves
+#: tier: this is the thinnest control suite on the roster, not "8 answers".
 #: tier: 1. CARD ADVANTAGE was the standing weakness and is now HALF-FIXED: the measured
 #: tier:    figure is 6, up from 2, on Circle of Power and Visions of Villainy (both real
 #: tier:    draw-twos) plus Inspiring Overseer and Raven Eagle, whose single draws the

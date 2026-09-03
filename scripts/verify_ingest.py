@@ -91,7 +91,11 @@ def library_index(path=None):
     # which is the point of widening it: three of its four siblings were fixed by hand
     # and this one was not on anybody's list.
     alias_front(qty)
-    names |= {n.split(" // ")[0] for n in list(names) if " // " in n}
+    # `names` holds STORED spellings only (BS8-08 / D-01). BS6-01 added front-face
+    # aliases here too, which made `_library_key`'s front→stored-full step unreachable:
+    # the alias satisfied the earlier `front in names` test, and the INV-02 half then
+    # looked the ALIAS up in card-mana.csv, which keys the stored spelling. The qty dict
+    # above is aliased (a count is a count under either spelling); the key set is not.
     return qty, names
 
 
@@ -122,6 +126,8 @@ def _library_key(names, name):
     front = nl.split(" // ")[0].strip()
     if front in names:
         return front
+    # Reachable since BS8-08 (D-01) — `library_index` no longer aliases `names`, so a
+    # front-named paste of a full-name row gets here and resolves to the STORED spelling.
     for n in names:
         if " // " in n and n.split(" // ")[0].strip() == front:
             return n
@@ -237,8 +243,15 @@ def report(results, warnings, *, exact=False, mana_missing=False):
     print(f"  {ok}/{len(checked)} present at the expected count "
           f"({'exactly' if exact else 'at least'} the pasted quantity).\n")
 
+    # Two kinds of warning, and only one blocks the ✓ (BS8-08 / D-02): a PARSE
+    # failure or an unreadable file means something you pasted was never checked; the
+    # informational notes ("read as a collection CSV/TSV export", a SUMMED row) describe
+    # a paste that WAS checked. Gating success on the whole list made the authoritative
+    # tracker-CSV route exit 1 on every run — "2537/2537 present … exit 1" — and
+    # `/ingest` reads non-zero as "the ingest is not finished".
+    blocking = [w for w in warnings if _blocking_warning(w)]
     for w in warnings:
-        eprint(f"WARN:  {w}")
+        eprint(f"{'WARN: ' if _blocking_warning(w) else 'NOTE: '} {w}")
     # Scoped to ACTUAL parse failures: warnings also carry informational notes now
     # (the CSV-mode banner, unreadable-quantity rows), and this claim is about lines
     # no parser matched — printing it for a successfully-read CSV export made it
@@ -296,11 +309,19 @@ def report(results, warnings, *, exact=False, mana_missing=False):
         print("  This is the step that gets skipped. Run: make refresh  "
               "(or at minimum build_mana.py --pool, then tag_synergies.py --merge)\n")
 
-    if not (absent or short or nomana or mana_missing or warnings):
+    if not (absent or short or nomana or mana_missing or blocking):
         print("✓ Everything you pasted is in the library at the expected count, with "
               "mana coverage. The ingest is complete.")
         return 0
     return 1
+
+
+def _blocking_warning(w):
+    """A warning that means a pasted line was NOT checked — the only kind that should
+    keep `report` from printing ✓ (see the note at its call site)."""
+    w = (w or "").lower()
+    return ("could not parse" in w or "not readable" in w or "unreadable" in w
+            or "no card lines" in w)
 
 
 def main():

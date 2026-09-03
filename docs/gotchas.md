@@ -308,6 +308,22 @@ from it), the same consolidation `BASICS` got.
 
 ## [G-08] Stored decks drift from the real Arena decks
 
+### BS8-04 (2026-09-02): the pool's legality key for Brawl
+
+The label inversion above was fixed in `normalize_format`, and the LEGALITY lookup was
+never brought along: every surface tested the raw format string against the pool's
+`Legalities` column, whose keys are Scryfall's — and Scryfall's `brawl` is Arena's
+100-card Historic Brawl, with no `standardbrawl` key in the pool at all. So a
+`#: format: Brawl` (60-card Standard Brawl) deck was checked against the Historic card
+pool: Manamorphose passed `legal` in deck 3-brawl, `suggest` on it returned 2,238 of
+3,228 picks that were not Standard-legal, and a `Historic Brawl` deck got no legality
+check ("isn't tracked"). `check_agreement` samples exactly those decks against the same
+wrong key, so it passed. `deck.pool_format_key` maps `brawl` → `standard` and
+`historic brawl` → `brawl` and is read by `legality_report`, `brawl_readiness`, every
+`suggest` mode, `screen`, `suggest-homes` and the three fillers. The transferable shape:
+a consistent-but-wrong PAIR is invisible to an agreement gate; only an external fact
+(the format's real definition) can catch it.
+
 **Stored decks drift from the real Arena decks.** The user edits decks in the Arena
 app; the repo only updates when someone writes the deck file, so the two silently
 diverge (hit this session: deck `12` had been changed to 2× Super Intelligence / −Futurist
@@ -674,6 +690,15 @@ and a non-zero exit that leaves the existing derived file unchanged, rather than
 crashing or writing a partial-blank file over good data.
 
 
+### BS8-09 (2026-09-02): `/add-deck` ended in a red gate by construction
+
+The skill's step 3 reconciled a built deck with `import_arena … --skip-basics` and then
+`enrich.py`, and its step 7 is the shared commit tail, which requires `check_all` green.
+Nothing between them ran `build_mana`, so every deck that added a new card left INV-02
+failing at the exact gate the tail demands — `import_arena` even printed the warning
+pointing at `make refresh`. The step now says `make refresh`, the one definition of the
+order this rule exists for; the gallery step that followed is folded into it.
+
 ## [G-15] The optional editing app (`scripts/app.py`) mutates `card-library.csv`
 
 **The optional editing app (`scripts/app.py`) mutates `card-library.csv`** via
@@ -685,6 +710,27 @@ derived data catches up — an added card needs `build_mana.py` for its real
 cost/keywords, `tag_synergies.py` for keyword tags, and `build_gallery.py` for
 its art (until then it shows a fallback tile).
 
+
+### BS8-18 / BS8-19 / BS8-42 (2026-09-02): the editor's gates equal the integrity gate
+
+Three findings from one live exercise of every mutating route (~80 requests, zero 500s):
+
+- **The CSV save had no staleness contract** while its docstring and
+  `tests/test_app_editor.py` both claimed "the same 409 contract the CSV save has had
+  all along". It wrote quantity AND synergies from the client, so a tab that edited only
+  synergies after a CLI import raised a quantity regressed the count silently — the G-10
+  "count went DOWN" shape, invisible to `check_all`. `/api/save` now takes
+  `{"edits": [...], "lib_token": "…"}` (a bare list still works), refuses a stale token
+  with 409, and returns the new token; the page reads it from the `#data` element.
+- **The deck save was gated on parse fidelity alone.** An unknown `(SET)` code, a
+  smuggled raw line and a header value containing a newline all returned 200 "Saved"
+  and left `check_all` red on INV-04. `_write_deck` now runs `printing_problems` and
+  `malformed_deck_lines` — the two checks the gate runs — before promote, and surfaces
+  an unverified collector number as a warning in the payload, like the gate's soft half.
+- **Three app write paths flipped the file mode to 0600** (`_safe_write`, `_write_deck`,
+  the add rollback): each did its own `mkstemp` + `os.replace` without the `copymode`
+  that `lib.atomic_write` documents fixing, and `test_writer_mutations.py` pins the
+  property on `lib.atomic_write` only. Masked locally because git ignores non-exec bits.
 
 ## [G-16] `card-pool.csv` carries printed `Power` / `Toughness`
 
@@ -1602,6 +1648,27 @@ distinguish two call sites is G-53's comment-vs-call trap one layer in; the test
 real function and reads the real picks now.
 
 
+### BS8-13 / BS8-12 (2026-09-02): the Standard year, and one rotation predicate
+
+`rotation_year` was `release year + 3`. Standard rotates ONCE a year, with the fall set,
+and a set released January–July leaves with the PREVIOUS fall's Standard year — so the
+heuristic dated every spring set a year late: MKM/OTJ/BIG (Feb–Apr 2024) rotate in 2026
+with WOE/LCI, DFT/TDM/FIN (Feb–Jun 2025) in 2027 with BLB/DSK, and the code said 2027 and
+2028; DFT/TDM craft targets carried no ⚠rot inside the promised this-year-or-next window.
+The rule is now `standard_year = year if month >= 8 else year - 1`, checked against every
+set from DMU (2022) to TLA (2025); `_SET_ROTATION_OVERRIDE` still wins for an announced
+exception (Foundations). Note the pool's `Released` is per PRINTING, so a reprint's date
+is the input — the override table is where that is corrected.
+
+`⚠rot` also had two predicates with two scopes: `craft_rot_note` (check / wildcards /
+the needs recommenders) required Standard legality; `suggest_scored` used `rotation_risk`
+bare, so it flagged OWNED rows (deck 1: Scavenger's Talent, Reckless Lackey) and printed
+⚠rot on 20–29 of 40 picks for each Brawl deck. `rotation_risk` now takes the card's
+legalities, `craft_rot_note` delegates to it, and `suggest` flags only unowned picks for
+a deck on Standard's card pool — which INCLUDES 60-card Brawl (it rotates with Standard;
+the scan's "Brawl decks should not flag" was wrong for that half) and excludes Historic
+Brawl.
+
 ## [G-31] `deck.py suggest-homes <card>` automates the "which of my decks does this new card improve" fit 
 
 **`deck.py suggest-homes <card>` automates the "which of my decks does this new
@@ -1838,6 +1905,32 @@ wants CC with <9 sources, or C with <4). This catches the "wants UU but this is
 really a U-splash" problem the castability lint (which only checks identity ⊆
 declared colors) can't see — e.g. a 3-source green splash flagging GG cards. A
 heuristic review signal, not a hard fail; it doesn't gate `check_all.py`.
+
+### BS8-01 (2026-09-02): sources are read from TEXT, in one place
+
+"Nonbasics by colour identity" was the bug. A `{T}: Add one mana of any color` land is
+identity Colorless, so every such land counted as ZERO sources — in `mana`, in
+`consistency`'s `_deck_source_counts`, and in `deck_color_sources` (which feeds
+`pip_depth_warning` and the rationale audit's colour figures). The three copies agreed
+with each other, so `check_agreement` could not see it. Measured on deck 21a: B read 5
+against a real 12, and `consistency` prescribed "+15 B sources"; 29 roster decks changed
+when the count was corrected, and 30 of the 40 `△ Pip-intensive` flags `mana` printed
+were artefacts.
+
+`lib.land_production` now reads a land's oracle text (reminder text stripped, one ability
+per line): colours added freely, colours added under "Spend this mana only …", colours
+added by an ability with an EXTRA mana cost or a sacrifice, an any-colour flag and a
+basic-fetch flag; identity is the fallback for the colours the text does not file under
+a restriction. `deck.deck_source_profile` is THE count — basics by name; free and
+extra-cost production counted (an extra-cost any-colour land IS a source of the colour
+from the turn after it lands; it is labelled so a reader can discount it on curve); a
+fetch counted for each colour the deck runs a basic of; spend-only mana NOT counted and
+listed. `mana` and `consistency` print the composition under the count. The judgment
+call recorded here is the extra-cost policy: counting them is optimistic by a turn on
+curve, not counting them was the original error. One direction it moved DOWN: a
+Village-cycle land's identity colour is spend-only and no longer counts (deck 34 −1 U,
+deck 68b −1 W). Note the scan's "seven unconditional in 21a" was itself wrong — one is
+free, six are extra-cost, two are restricted; read the labels, not the total.
 
 
 ## [G-36] `deck.py consistency <id>` is the PROBABILITY layer `mana` lacks
@@ -2277,6 +2370,16 @@ It misses most real upgrades by design; **its silence is not a verdict**. Driven
 `/draft-deck` Stage 5 and `/tune-deck` step 6a.
 
 
+### BS8-32 (2026-09-02): ★ STRICT UPGRADE could not see a body
+
+`strict_upgrades` was a pure text-containment test — every clause of the incumbent
+present in the candidate, at equal or lower cost — so Lifecreed Duo (1/2, {1}{W}) was
+printed as a ★ STRICT UPGRADE of Dazzling Angel (2/3, {2}{W}) on the verdict surface
+G-47 sends a pile through; 121 pool groups shared the shape. Power and toughness are part
+of "strictly more" now: a smaller body on either axis blocks the flag, a bigger one at
+equal text and cost earns it, and a `*`/X body (`card_power` → None) neither blocks nor
+grants.
+
 ## [G-48] Every role COUNT now carries its own uncertainty
 
 **Every role COUNT now carries its own uncertainty** (`lib`-free `deck.count_conf`).
@@ -2376,6 +2479,29 @@ per-deck loop had `/tune-deck` and `/apply-changes`, and the roster loop had no 
 at all. **`/roster-review`** is what closed it (triage → rotation → craft plan → Brawl
 → Arena drift), so those five are now driven rather than remembered.
 
+
+### BS8-25 (2026-09-03): the Makefile was an input to the proof, never a subject of it
+
+`check_commands` proved every deck.py SUBCOMMAND and every SCRIPT is reachable from a
+workflow, and read the Makefile only as one of the places a script could be invoked FROM.
+So a TARGET that nothing runs was the one shape the gate could not see: `make postedit` —
+the after-every-deck-edit tail G-69 exists to order correctly — was named by no skill at
+all (`/apply-changes` rebuilt nothing, `/draft-deck` called `build_dashboard.py` directly),
+which is why the committed dashboard went stale until a soft warning noticed. Targets are
+now covered on the same rule as scripts: a real `make <target>` in a skill or in
+`docs/verify-commit-tail.md`, or an `INTERACTIVE_ONLY` entry with a reason (the table grew a
+`make` kind, five entries — help, check, test-units, verify, clean-venv — and stale-entry
+checking to match). The gate fired on `postedit` on its first run; the commit tail runs it
+for a deck-file change now.
+
+Three skill defects were found in the same pass. `/ingest` and `/add-cards` pointed the
+crafted-cards case at each other (the 2026-08-25 refactor moved cataloging into `/ingest`
+and left the pointer behind); `/ingest` names `reconcile_crafts.py` directly now.
+`/pile-analysis`'s inline pull computed castability as `card_colors(…) <= deck colours` and
+printed ✗OFF — the exact G-58 identity-subset triage its own note two paragraphs down
+forbids — and now reads the printed cost through `deck._candidate_castability`.
+`/roster-review` runs `deck.py sync --apply`, which rewrites deck files, and had no commit
+step at all; it cites the shared tail and is named in the tail's writer list.
 
 ## [G-54] A SET plus a sort key that can TIE is a nondeterministic output
 
@@ -2761,6 +2887,17 @@ pastes were hand-trimmed in an editor, which is JSON surgery on the one line the
 attribution chain depends on.
 
 
+### BS8-03 (2026-09-02): the hand-row guard never fired
+
+`ingest_watermark` skipped rows with a BLANK Match ID, describing them as hand rows —
+but `parse_manual` stamps every `--add` row `manual-YYYYMMDD-NN` so `--annotate` and
+dedup have a key. The guard therefore matched nothing the writer produces, and a phone
+game logged today advanced the watermark to today; `--since-last` then dropped every
+older un-ingested desktop line as "already recorded". The test that pinned the guard
+used a blank id too, which is why it passed. Hand rows are now recognised by
+`parse_matches.is_manual_id` (one prefix constant, `MANUAL_ID_PREFIX`), and the fixture
+uses the writer's real id shape.
+
 ## [G-58] Never widen `#: colors:` for a HYBRID card — and never reject a card for a widening you don't need
 
 **Never widen `#: colors:` for a HYBRID card, and never reject a card for a widening you
@@ -2806,6 +2943,19 @@ re-derived wrongly.
 
 # Known Issues
 
+
+### BS8-05 (2026-09-02): the fillers were three more holdouts
+
+The "last identity-subset holdout converted 2026-08-20" claim was false for a year:
+`owned_role_fillers`, `craft_role_fillers` and `functional_theme_options` (the
+`tier --to` planner and `redundancy`'s virtual copies) still tested `ident <= declared`.
+Measured: Bullseye, Death Dealer (`{2}{B/R}`, the card this rule names) was excluded from
+mono-black 52a, and 10–17 castable owned interaction cards per deck were hidden from the
+wildcard-spend planner (deck 42: 17, deck 1: 13). All three now go through
+`_filler_castable`, which reads the printed cost via `_candidate_castability` and keeps
+identity only as the fallback for a card with no cost on file. The lesson is the audit
+shape, not the fix: a claim that a family is closed is checked by grepping the
+predicate (`<= declared`), not by remembering which functions were converted.
 
 ## [G-67] A pattern set is a whitelist, and a whitelist's misses are invisible
 
@@ -3406,6 +3556,24 @@ is 138. Build a radar on disagreement, not on zero.
 Watched failing at introduction: removing the pattern that fixed BS6-10 brings back 16
 disagreements, Dead Weight among them.
 
+### BS8-31 (2026-09-02): the tag rules read the card, not what it describes
+
+Five themes deck centrality cares about carried measured false positives: `sacrifice`
+609 of 2,117 (29%) from reminder or quoted text — every Blood/Clue/Mutagen maker, every
+blitz reminder and all 125 Sagas' "(… Sacrifice after III.)" — which moved 29 decks'
+central themes (deck 71 5→0, 74a 18→6); `ramp` 196 of 477 (41%) via the keyword map
+(`landfall` is a payoff, `convoke` a discount); `reanimator` 36% false plus 60 real
+reanimators missed for lacking the word "creature"; `removal` 15.6% cue-less (graveyard
+hate, self-blink, -N/-0); `spellslinger` missing the "noncreature spell" templating
+(212 cards). Fixed with the same guards the role classifier grew at BS8-27/30: a
+`_clean_text` that strips reminder AND quoted text before the `sacrifice` and `removal`
+rules, a one-clause `reanimator`, `ramp` dropped from the two keyword mappings, and the
+noncreature form. Pool (re-derived via `build_pool --all`): sacrifice 2117→1551, ramp
+477→298, reanimator 543→472, spellslinger 509→620, removal 1689→1578; 1,286 pool rows
+change a tag. **The LIBRARY keeps its stale tags**: `tag_synergies --merge` only ADDS
+(it cannot tell a hand-curated tag from a rule-added one), so an owned Saga still carries
+`sacrifice` in card-library.csv until a prune mode exists — a follow-on, not a fix here.
+
 ## [K-10] `tag_synergies.py` also text-tags MECHANICAL-SYNERGY payoffs the keyword map missed (tagging-mis
 
 **`tag_synergies.py` also text-tags MECHANICAL-SYNERGY payoffs the keyword map missed
@@ -3747,6 +3915,16 @@ literal-name search whose misses read as facts. The tribal TABLE above was
 hand-measured at the pool level and is not invalidated by this, but a payoff count
 near a viability threshold deserves a re-measure through the fixed scan.
 
+
+### BS8-33 (2026-09-02): `tribes` automated the body/payoff mistake
+
+`cmd_tribes`' "Type-matters payoffs" counted any text reference to a type the deck runs —
+including "create a 4/4 green BEAR creature token", so 320 of 902 roster payoff rows
+(35%) were token makers, deck 69 printed "The Earth King — rewards Bear (4 qualifying)"
+on a card that makes Bears, and this rule's own measure (payoffs, not bodies) was being
+inflated by bodies. A reference now has to sit outside every "create … token" clause;
+changelings qualify for every type a payoff names (they ARE every type — the rule
+above); and a payoff is no longer one of its own qualifiers.
 
 ## [G-60] An `{X}` spell is priced at MV 1, so a curve reading under-reads a deck that runs several
 
@@ -4605,6 +4783,17 @@ test that was supposed to pin the fix pinned only half of it. A monkeypatched-di
 test now exercises the stored side. **A test written against the live roster can only
 cover the paths the roster happens to use.**
 
+### BS8-17 (2026-09-02): the gate this rule added was the next instance
+
+`wishlist.py --add --target` refused `general`, `concept: …`, `21; 6` and `06` — the
+Target column's own vocabulary, in use on 13 live rows — while `deck.py stats 06` worked;
+`parse_matches.parse_manual` refused `06 L` the same way, and `deck.py feedback 06` read
+"nothing recorded" for deck 6 with an unknown id indistinguishable from an un-tuned one.
+All three normalize through `_norm_deck_id` now (`--target` also accepts the multi-id and
+concept forms), `feedback` refuses an unknown deck by name, and `_status_label` /
+`_audit_target_issues` read padded ids. The transferable point: a validator written
+against the resolver's OLD form is exactly the drift this rule describes, one file over.
+
 ## [G-68] A `#:` header that lists card names goes stale, and nothing checked one
 
 Two deck headers are a semicolon-separated list of CARD NAMES rather than prose:
@@ -4969,6 +5158,39 @@ Note this does NOT trip the redraw trap the rule above describes: `craftNameCell
 per-row `node:` factory that `sortableTable`'s internal `redraw()` re-invokes on every sort,
 so the attributes are re-applied rather than set once and discarded.
 
+### BS8 batch 6 (2026-09-03): three interface classes, one shape
+
+**A state its role cannot hold (P-07).** BS2-16 correctly stopped `a11y()` erasing the
+`<h2>` heading role on the nine section headers — and left them focusable headings
+carrying `aria-expanded`, which the heading role does not support. A screen reader
+announced "heading level 2" and no state, on what the code itself calls the page's
+primary navigation. The control is now a real `<button>` inside the heading: heading-jump
+navigation still finds the `<h2>`, the button announces its expanded state and owns
+`aria-controls`, and `a11y(…, native:true)` skips the tabindex and the synthetic Enter/Space
+handler a real button already has (binding it would fire the toggle twice). The heading
+keeps `tabIndex = -1` so it is no longer in the tab order.
+
+**Options without a listbox (P-06).** The command palette's rows were `role="option"` in a
+bare `<div>` — invalid ARIA — and the input's ↑↓ selection was announced to nobody. The
+body is a `listbox`, the input a `combobox` with `aria-activedescendant`, and both overlays
+now carry an accessible name (the deck modal names its deck rather than announcing "dialog").
+
+**A theme that only exists after 1.9 MB of JS (P-04).** The light palette lived solely in
+`[data-theme="light"]` blocks applied by `restorePrefs()` after the body parsed, so a
+light-OS visit painted dark and flipped — and stayed dark with scripts blocked. Fixed at
+both ends: a head script stamps `data-theme` before the body, and `_with_light_scheme_fallback`
+emits each light token block a second time under
+`@media (prefers-color-scheme: light) :root:not([data-theme="dark"])` **at build time,
+copied from the template's own definition**, because a hand-kept second palette is exactly
+the drift this rule records. `color-scheme` is declared for both themes so native controls
+match. The one-line `color-scheme` rule is deliberately NOT duplicated into the media query:
+it must not override an explicit dark choice.
+
+**Also in this batch:** global shortcuts no longer fire while focus is in a `<select>`
+(BS8-20 — `isTyping` checked INPUT/TEXTAREA/contentEditable, so `t` toggled the theme on a
+115-option deck picker), `syncLive` stores the payload before it claims success (P-05), and
+the deck editor guards unsaved changes (P-08).
+
 ## [G-73] A deck's repo name and its Arena name are different strings, and neither is authoritative
 
 **The measurement, 2026-08-14.** The name-prefix attribution route (`"07 Earth's
@@ -5201,6 +5423,16 @@ The Masters of Evil in decks 20a/20b (searches for a Plan card; those decks run 
 it is still a Villain anthem) and Hobbit Hole in 50a/69a (its basic-land fetch works fine;
 only the Halflingcycling rider finds nothing).
 
+
+### BS8-15 (2026-09-02): the type-search gate read "two", "black" and "nonlegendary" as types
+
+`_TARGET_GATES`' `lib_type` pattern excluded `card` but not `cards`, and no colour or
+adjective, so "search your library for two CARDS" gated on a type named "two", "a black
+card" on "black" and "a nonlegendary card" on "nonlegendary" — each a false "✗ NOTHING"
+in `targets` and in this rule's `check_all` sweep the day one entered a deck (none had;
+Final Parting, Behold the Beyond, Mausoleum Secrets, Unmarked Grave were the pool cases).
+The lookahead now covers the plural, the number words, the five colours and the
+legendary / token adjectives.
 
 ## [G-76] A gate the deck meets for free is not a cost, and every model read it as one
 

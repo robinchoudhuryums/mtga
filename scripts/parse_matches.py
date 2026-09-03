@@ -430,6 +430,16 @@ def arena_deck_map():
         return {}
 
 
+def _norm_id(raw):
+    """Zero-padded ids accepted, like every by-id command (G-82 / BS8-17): `06 L` used
+    to be refused while `deck.py stats 06` worked. Delegates to deck.py when available."""
+    try:
+        import deck as dk
+        return dk._norm_deck_id(raw)
+    except Exception:
+        return (raw or "").strip().lower()
+
+
 def deck_ids():
     """Every repo deck id, for validating the name-prefix fallback. Empty on failure."""
     try:
@@ -998,7 +1008,7 @@ def parse_manual(text, existing_ids=(), deck_ids=None, today=None):
         if result not in ("W", "L", "D"):
             warnings.append(f"line {lineno}: result {parts[1]!r} is not W, L or D — skipped")
             continue
-        if deck_ids is not None and deck not in deck_ids:
+        if deck_ids is not None and _norm_id(deck) not in {_norm_id(x) for x in deck_ids}:
             warnings.append(f"line {lineno}: no deck {deck!r} in decks/ — skipped. An "
                             f"unknown id would appear in --report as a deck that does "
                             f"not exist.")
@@ -1041,7 +1051,7 @@ def parse_manual(text, existing_ids=(), deck_ids=None, today=None):
         n = seq.get(stamp, 0)
         while True:
             n += 1
-            mid = f"manual-{stamp}-{n:02d}"
+            mid = f"{MANUAL_ID_PREFIX}{stamp}-{n:02d}"
             if mid not in used:
                 break
         seq[stamp] = n
@@ -1077,6 +1087,16 @@ def load_matches(path=MATCHES_CSV):
         return rows
 
 
+MANUAL_ID_PREFIX = "manual-"
+
+
+def is_manual_id(match_id):
+    """True for a hand-entered row's id (`manual-YYYYMMDD-NN`, stamped by
+    `parse_manual`). The ONE definition, read by the watermark and by `--watermark`'s
+    "recorded from logs" count — a second prefix literal is how the two would drift."""
+    return (match_id or "").startswith(MANUAL_ID_PREFIX)
+
+
 def ingest_watermark(path=MATCHES_CSV):
     """(newest_ingested_date, n_known_ids) for matches ALREADY recorded from a log.
 
@@ -1094,15 +1114,22 @@ def ingest_watermark(path=MATCHES_CSV):
     for it, and this repo's recurring failure is two places that can disagree. There is
     nothing to keep in sync because there is nothing else.
 
-    ONLY rows carrying a Match ID count. A hand-entered row (`--add`, for a phone game
-    the desktop log never saw) has no matchId and a user-supplied date, so letting one
-    set the watermark could advance it PAST log matches that were never ingested — and
-    those would then be filtered out of every future paste, silently. The filter must
-    only ever be as confident as the log-derived rows make it."""
+    ONLY rows carrying a LOG Match ID count. A hand-entered row (`--add`, for a phone
+    game the desktop log never saw) carries a user-supplied date, so letting one set the
+    watermark could advance it PAST log matches that were never ingested — and those
+    would then be filtered out of every future paste, silently. The filter must only
+    ever be as confident as the log-derived rows make it.
+
+    A hand row is NOT id-less: `parse_manual` stamps every one `manual-YYYYMMDD-NN` so
+    `--annotate` and dedup have something to key on. This guard used to test for a
+    BLANK id — a shape the writer never produces — so a phone game logged today advanced
+    the watermark to today and `--since-last` dropped every older un-ingested desktop
+    line as "already recorded" (broad-scan BS8-03; the test fixture had the blank id
+    too, which is why it passed). Hand rows are recognised by their prefix."""
     dates, ids = [], set()
     for r in load_matches(path):
         mid = (r.get("Match ID") or "").strip()
-        if not mid:
+        if not mid or is_manual_id(mid):
             continue                      # hand row — see the docstring
         ids.add(mid)
         d = (r.get("Date") or "").strip()
@@ -1630,6 +1657,15 @@ def main():
                          "extraction script can pass back as --since")
     ap.add_argument("--out", default=MATCHES_CSV)
     args = ap.parse_args()
+    # An unknown --deck tags the WHOLE paste to a deck that does not exist, and would then
+    # appear in --report as a deck nobody can open. `--add` / `--annotate` refuse an unknown
+    # id for exactly that reason (G-74); the log path that tags every row did not (BS8-23).
+    if getattr(args, "deck", None):
+        _known = deck_ids()
+        if _known and _norm_id(args.deck) not in {_norm_id(x) for x in _known}:
+            eprint(f"--deck {args.deck!r}: no deck with that id in decks/. "
+                   f"An unknown id would appear in --report as a deck that does not exist.")
+            return 1
 
     # Answer --watermark before anything else: it needs no source and is meant to be
     # captured by a shell script (`d=$(parse_matches.py --watermark)`), so it prints the
@@ -1761,7 +1797,7 @@ def main():
     routes = {}
     for r in rows:
         if args.deck:
-            r["Deck"] = args.deck
+            r["Deck"] = args.deck          # validated in main() before any parsing
             continue
         key = (r.get("Arena Deck", ""), r.get("Arena Deck ID", ""))
         if key not in routes:

@@ -62,7 +62,8 @@ import lib
 from lib import (BASICS as lib_BASICS, DEFAULT_CSV, MATCHES_CSV, REPO_ROOT,
                  load_rows, eprint, card_colors, owned_qty,
                  card_distinctiveness, backup_path, card_power, front_face_cost,
-                 mana_value, primary_type, atomic_write, alias_front)
+                 mana_value, primary_type, atomic_write, alias_front,
+                 land_production)
 from scryfall import post_collection, ScryfallUnavailable
 
 POOL_CSV = os.path.join(REPO_ROOT, "card-pool.csv")
@@ -384,26 +385,13 @@ _PIP_DEPTH_TARGET_BY_PIPS = {2: 0.55}
 
 
 def deck_color_sources(cards, meta, carddata):
-    """{colour: number of LANDS in the deck producing it} — basics by name, nonbasics by
-    colour identity, mana dorks NOT counted (the same rule `deck.py mana` prints).
-
-    Needs BOTH maps: card-meta carries colours, card-data carries the type line.
+    """{colour: number of LANDS in the deck producing it} — the same count `deck.py mana`
+    and `consistency` print, via `deck_source_profile` (ONE implementation since BS8-01;
+    this used to be a third copy that read colour identity alone, so every any-colour
+    land counted as zero). `meta` is accepted for signature compatibility and used only
+    as a colour fallback for a card `carddata` does not know.
     """
-    src = {c: 0 for c in "WUBRG"}
-    for q, n, _s, _c in cards:
-        nl = n.lower()
-        if nl in BASICS:
-            col = BASIC_COLOR.get(nl)
-            if col:
-                src[col] += q
-            continue
-        cd = carddata.get(nl)
-        if not cd or "Land" not in _primary_type(cd.get("type") or ""):
-            continue
-        m = meta.get(nl)
-        for col in ((m or {}).get("colors") or set()):
-            if col in src:
-                src[col] += q
+    src, _nlands, _total, _notes = deck_source_profile(cards, {}, {}, carddata, meta=meta)
     return src
 
 
@@ -1338,6 +1326,10 @@ _PERM_TYPE = (r"(?:nonland permanent|artifact creature|artifact|enchantment|crea
               r"permanent|planeswalker|spacecraft|vehicle|land)")
 _PERM_TYPE_LIST = rf"{_PERM_TYPE}s?(?:,? (?:or |and )?{_PERM_TYPE}s?)*"
 
+# Shared tail for the targeted-removal patterns (BS8-27/28): not a permanent YOU
+# control/own (blink, self-sacrifice tricks) and not a CARD (graveyard hate).
+_NOT_OWN_OR_CARD = r"(?! cards?\b)(?![^.]{0,25}?\byou (?:control|own)\b)"
+
 _ROLE_PATTERNS = {
     "Removal (spot)": [
         # destroy / exile a targeted permanent, including a comma-or list of types, and
@@ -1351,7 +1343,15 @@ _ROLE_PATTERNS = {
         # exactly what happened on the first draft — every "destroy target creature" in
         # the collection stopped matching and 46 decks lost interaction. Caught only by
         # the roster-wide before/after diff, which is why that diff is worth running.
-        rf"(?:destroy|exile) (?:up to \w+ )?target (?:[a-z-]+ ){{0,2}}?{_PERM_TYPE_LIST}",
+        # `,?` admits the comma qualifier ("nonland, nontoken permanent" — Skyclave
+        # Apparition) the 3–5-word sibling below already allowed (BS8-28).
+        # The two lookaheads are BS8-27 and BS8-28's graveyard-hate class: "exile
+        # target creature YOU CONTROL, then return it" is BLINK (41 pool cards, seven
+        # in thirteen decks; six tier floors rested on it), and "exile target creature
+        # CARD from a graveyard" is graveyard hate (24 pool cards) — neither answers an
+        # opponent's threat, and both fed the axis the floor grades.
+        rf"(?:destroy|exile) (?:up to \w+ )?target (?:[a-z-]+,? ){{0,2}}?{_PERM_TYPE_LIST}"
+        rf"{_NOT_OWN_OR_CARD}",
         # COORDINATED QUALIFIER LIST before the type. The run above allows at most TWO
         # adjective words, which covers "target TAPPED creature" but not the qualifier
         # LISTS Magic templates constantly — "attacking or blocking" and "green or white"
@@ -1377,7 +1377,7 @@ _ROLE_PATTERNS = {
         # permanent. `[^.]` keeps the lookahead inside the same sentence, so "Destroy
         # target creature." is untouched. With it: 11 matches, zero false positives.
         rf"(?:destroy|exile) (?:up to \w+ )?target (?:[a-z-]+,? ){{3,5}}?{_PERM_TYPE_LIST}"
-        rf"(?![^.]{{0,40}}?\bgraveyard\b)",
+        rf"{_NOT_OWN_OR_CARD}(?![^.]{{0,40}}?\bgraveyard\b)",
         # REMOVAL AURA. `enchanted creature can't attack or block` (Pacifism) is already
         # in this bucket a few lines down, which settles the design question: this repo
         # counts a neutralizing Aura as spot removal. Its twin — the Aura that shrinks the
@@ -1398,7 +1398,7 @@ _ROLE_PATTERNS = {
         # catch Duskmourn's Domination, whose "You control enchanted creature" is a
         # Control-Magic steal (a real answer) and reads in the other word order. Guarded:
         # 20 matches, zero false positives.
-        r"(?s)\A(?!.*enchant creature you control).*?enchanted creature gets -\d+/-\d+",
+        r"(?s)\A(?!.*enchant creature you control).*?enchanted creature gets -[0-9x]+/-[0-9x]+",
         # LETHAL SHRINK in the +N/-M shape. `target creature gets -N/-N` is covered (120
         # cards) and its twin `gets +N/-N` was not, so Auger Spree, Nameless Inversion,
         # Lash of Malice, Flowstone Infusion and Desperate Measures scored zero roles.
@@ -1559,11 +1559,19 @@ _ROLE_PATTERNS = {
         # type is a full `_PERM_TYPE_LIST` so "nonland permanent" is covered alongside
         # "creature", and `[^.]` keeps the span inside one sentence.
         rf"return (?:up to \w+ )?target (?:[a-z-]+ ){{0,2}}?{_PERM_TYPE_LIST}"
-        rf"[^.]{{0,60}}?(?:owner'?s?|their) hand",
+        rf"[^.]{{0,60}}?(?:owner'?s?|owners'|their) hands?",
         # EDICT. Sacrifice-a-creature-of-their-choice is removal (it answers hexproof),
         # and it sat in the broad audit cue while missing from this list entirely.
-        r"(?:target|each) (?:player|opponent) sacrifices a creature",
-        r"(?:target|each) (?:player|opponent) sacrifices a permanent",
+        # EDICTS, generalized (BS8-28): the two narrow forms this replaces ("sacrifices a
+        # creature" / "a permanent") missed "sacrifices TWO creatures" (Barter in Blood),
+        # "a NONTOKEN creature", "a NONLAND permanent", "X creatures" — 29 pool cards.
+        r"(?:target|each) (?:player|opponent) sacrifices (?:a|an|two|three|four|x|half)"
+        r"(?: of)?(?: the)? (?:[a-z-]+ ){0,2}?(?:creature|permanent)s?",
+        # LIBRARY TUCK (BS8-28): "put target creature on top/bottom of its owner's
+        # library" — the pattern below requires "into", so Condemn / Run Aground /
+        # Anchor to the Aether (15 pool cards) scored nothing.
+        r"put (?:up to \w+ )?target (?:[a-z-]+ ){0,2}?(?:creature|permanent|nonland permanent)"
+        r"[^.]{0,40}?(?:on top|on the bottom|second from the top) of (?:its|their) owner'?s'? librar",
         # X-damage: the fixed patterns above require a DIGIT, so "deals X damage to target
         # creature" scored nothing (Hell to Pay).
         r"deals? x damage to (?:target|any target|up to \w+ target)",
@@ -1579,23 +1587,37 @@ _ROLE_PATTERNS = {
         r"shuffle[^.]{0,80}?target (?:creature|permanent)[^.]{0,60}?librar",
         r"target creature[^.]{0,80}?into (?:their|its) (?:owner'?s? )?librar",
     ],
-    "Sweeper": [r"destroy all", r"exile all", r"all creatures get -",
-                r"each (?:other )?creature (?:gets|deals|is|you don't control)",
+    # SCOPED since BS8-11: "exile all" matched graveyards, hands, libraries and every
+    # "End the turn" reminder (Rest in Peace, Hex Magic, Time Stop — 20 pool cards), and
+    # "all creatures get -" matched a -N/-0 power shrink that kills nothing (13). The
+    # additions further down are BS8-28's misses: "destroy/exile EACH creature" (18),
+    # "damage equal to … to each creature" (18), "each player sacrifices all/two/X" (15).
+    "Sweeper": [r"destroy all (?!(?:cards?|counters|tokens you control)\b)",
+                r"exile all (?!(?:the cards?|cards?|graveyards?|spells?|other spells|opponents'|tokens you control)\b)",
+                r"all (?:other )?creatures get -[0-9x]+/-[1-9x]",
+                r"each (?:other )?creature (?:gets -[0-9x]+/-[1-9x]|deals|is dealt|you don't control)",
                 # one-sided / opponent-only wraths ("creatures your opponents control
                 # get -2/-2" — Massacre Wurm) the "all creatures" pattern misses.
-                r"creatures (?:you don't control|your opponents control|target player controls) get -",
+                r"creatures (?:you don't control|your opponents control|target player controls) get -[0-9x]+/-[1-9x]",
                 # scalable / conditional wipes the fixed patterns above miss
                 r"creature with mana value.{0,20}?or less.{0,40}?destroy",
                 r"destroy those creatures",
-                r"deals? \d+ damage to each (?:other )?creature",
+                r"deals? (?:\d+|x) damage to each (?:other )?creature",
+                r"(?:destroy|exile) each (?:other )?(?:[a-z-]+ ){0,2}?(?:creature|nonland permanent|permanent)s?\b(?! card)",
+                r"deals? damage (?:equal to|to each (?:other )?creature equal to)[^.]{0,60}?(?:to each (?:other )?creature|for each)",
                 # "each player sacrifices all other creatures they control" (Bringer of
-                # the Last Gift) is a wrath by another name.
-                r"each player sacrifices all (?:other )?creatures"],
+                # the Last Gift) is a wrath by another name; so is "two"/"X"/"half".
+                r"each (?:player|opponent) sacrifices (?:all|two|three|four|x|half)"
+                r"(?: of)?(?: the)? (?:other )?(?:creatures|permanents)"],
     # "counter up to one target spell unless…" (Repulsive Mutation) matched neither
     # this pattern NOR the broad coverage net below, so it scored zero roles AND was
     # never flagged as an under-read — the worst case, a miss invisible to the very
     # audit that exists to catch misses (session finding).
-    "Counter": [r"counter (?:up to \w+ )?target", r"counter (?:that|the chosen) spell"],
+    "Counter": [r"counter (?:up to \w+ )?target", r"counter (?:that|the chosen) spell",
+                # BS8-28: the hard-counter ALTERNATIVES — "exile/return target spell"
+                # (Aven Interrupter, Spell Queller, Reprieve — 16 pool cards) and
+                # "counter all/each" (Summary Dismissal, Glen Elendra's Answer).
+                r"(?:exile|return) target spell", r"counter (?:all|each) (?:other )?spell"],
     # Surfaced while testing the lexicon unification: "five" and "half X" were in
     # neither the role pattern nor the audit cue, so Wan Shi Tong, Librarian ("draw
     # half X cards, rounded down") was uncounted AND unflagged — the same
@@ -1666,7 +1688,13 @@ _ROLE_PATTERNS = {
                        # 45) that the card-advantage axis could not see. `[^.]` keeps the
                        # span inside the sentence pair so an unrelated later clause cannot
                        # be swept in.
-                       r"exile the top card of your library[^.]{0,40}\. you may play (?:it|that card)",
+                       # BS8-28: the impulse phrased with the window FIRST — "Exile the top
+                       # card of your library. Until end of your next turn, you may play
+                       # that card" (Crimson Operative, Blazing Crescendo — 30 pool cards)
+                       # — and the trigger-cost draw that crosses a period: "Whenever …,
+                       # you may pay {1}. If you do, draw a card" (54, rummage excluded).
+                       r"exile the top card of your library[^.]{0,40}\. (?:until (?:the )?end of (?:turn|your next turn), )?you may (?:play|cast) (?:it|that card)",
+                       r"\bwhenever\b[^.]{0,80}?, you may (?!discard)[^.]{0,60}?\. if you do, [^.]{0,40}?draws? a card",
                        r"exile the top \w+ cards? of your library[^.]{0,60}\. (?:you may play|until )",
                        # Impulse off EACH PLAYER'S library — Etali, Primal Storm exiles
                        # the top card of every library and lets you cast them. The two
@@ -1778,10 +1806,19 @@ _ROLE_PATTERNS = {
     # to-hand recursion). Catches "in your graveyard … return … to the battlefield"
     # phrasing, which the old "from your graveyard" Recursion pattern silently missed
     # (Too Evil to Stay Dead, Bringer of the Last Gift, sagas, etc.).
+    # STRICT since BS8-10: the two bag-of-words patterns this replaces needed no
+    # graveyard at all, so 297 of 655 pool "reanimators" were land drops, blink and
+    # cheat-from-hand (Scaled Herbalist, Teleportation Circle, Champion of Rhonas) —
+    # an IMPACT role, so `cuts` protected them and `redundancy` built all-false
+    # buckets in 22 decks. A graveyard is required in the CLAUSE; the recursion
+    # keywords are reanimation templated as a keyword (unearth, embalm, escape…),
+    # which the old text patterns MISSED (60 pool cards).
     "Reanimation": [
-        r"(?:card|creature|permanent).{0,80}?in your graveyard.{0,80}?to the battlefield",
-        r"return .{0,60}?(?:creature|permanent|card).{0,40}?to the battlefield",
-        r"put .{0,50}?(?:creature|card|permanent).{0,60}?onto the battlefield",
+        r"(?:card|creature|permanent)[^.]{0,80}?(?:in|from) (?:your|a|an|any|each|their|that|target) graveyard[^.]{0,80}?(?:on)?to the battlefield",
+        r"return [^.]{0,60}?(?:creature|permanent|card)[^.]{0,40}?from (?:your|a|an|any|each|their|that|target) graveyard[^.]{0,60}?to the battlefield",
+        r"put [^.]{0,50}?(?:creature|card|permanent)[^.]{0,50}?from (?:your|a|an|any|each|their|that|target) graveyard[^.]{0,60}?onto the battlefield",
+        r"return (?:this|it|that card) from your graveyard to the battlefield",
+        r"\b(?:unearth|embalm|eternalize|encore|disturb|escape—|persist|undying)\b",
     ],
     # Repeatable/triggered engines — the death, ETB-matters, lifegain and
     # leaves-play payoffs the role map used to score as "no functional role"
@@ -1791,7 +1828,8 @@ _ROLE_PATTERNS = {
         r"whenever (?:a|another|one or more) .{0,40}?(?:enters|leave|leaves|die|dies)",
         r"whenever you gain life",
         r"whenever you cast",
-        r"put a \+1/\+1 counter on .{0,60}?whenever",
+        # (`put a +1/+1 counter on … whenever` was removed at BS8-30: its only matches
+        # crossed reminder text, which the classifier no longer reads, so it went dead.)
         # The counter quantity is an alternation, not the literal "a": "put two /
         # X / that many +1/+1 counters" is how Magic templates every scaling
         # counter payoff (Serra Redeemer, Woodland Champion), and the bare-"a"
@@ -1839,7 +1877,10 @@ _ROLE_PATTERNS = {
         # pattern below already covers every one of the 155 cards it was meant
         # for), which is exactly why it survived: a dead pattern hiding behind a
         # live one changes no count and shows up in no diff.
-        r"costs? \{[0-9x]+\} less",
+        # BS8-29: 263 of 810 hits were a card discounting ITSELF ("this spell costs {1}
+        # less to cast for each…", "this ability costs {1} less") — self-pricing, not a
+        # cost-reduction engine, and an IMPACT role worth +6 in `cuts`.
+        r"(?<!this spell )(?<!this ability )costs? (?:up to )?\{[0-9x]+\} less",
         r"\baffinity\b", r"\bconvoke\b", r"\bimprovise\b", r"\bcascade\b",
         r"without paying its mana cost",
     ],
@@ -1866,7 +1907,9 @@ _ROLE_PATTERNS = {
     # up, interaction / card-advantage / tier floors 0 / 0 / 0.
     "Protection / trick": [r"\bhexproof\b", r"\bindestructible\b", r"protection from",
                            r"\bward\b",
-                           r"gets \+\d+/\+\d+ until end of turn"],
+                           # R-13: a card pumping ITSELF (firebreathing, prowess) is not a
+                           # trick you can point at the creature you need to save.
+                           r"(?<!this creature )(?<!this permanent )gets \+\d+/\+\d+ until end of turn"],
     "Recursion": [r"from your graveyard", r"card in your graveyard",
                   r"return .{0,40}?to your hand"],
 }
@@ -1899,7 +1942,18 @@ _INTERACTION_ROLES = {"Removal (spot)", "Sweeper", "Counter"}
 _LOOT_RE = re.compile(
     r"draws? (two|three|four|five|x|that many) cards?,? (?:then )?"
     r"discards? (?:\1|that many) cards?"
-    r"|draws? a card,? (?:then )?discards? a card")
+    r"|draws? a card,? (?:then )?discards? a card"
+    # BS8-28 (R-05): the two loot shapes the comma form cannot see — DISCARD-FIRST
+    # ("discard up to two cards, then draw that many": Sokka, Seasoned Pyromancer, 33
+    # pool cards) and the PERIOD form ("Draw three cards. Then discard two": Thirst for
+    # Knowledge, 14). Both are card-neutral and scored as advantage.
+    # EQUAL counts only, like the comma form: "discard a card, then draw two" is +1 and
+    # "Draw three cards. Discard a card" is +2 — both stay advantage (pinned).
+    r"|discards? a card,? then draws? a card(?! for each)"
+    r"|discards? (?:up to )?(?P<n>two|three|four|x|that many|any number of) cards,?"
+    r" then draws? (?:(?P=n)|that many) cards(?! plus)"
+    r"|discards? your hand,? then draws? that many cards(?! plus)"
+    r"|draws? (?P<m>two|three|four|x|that many) cards\.\s*(?:then )?discards? (?:(?P=m)|that many) cards")
 
 # Real PROTECTION for a permanent you control — deliberately NARROWER than the
 # "Protection / trick" role, which lumps a combat pump ("gets +2/+2 until end of turn")
@@ -2493,10 +2547,17 @@ def role_coverage_flags(cards, carddata):
 
 
 def _norm_role_text(text):
-    """Lowercased, unicode-minus-normalized oracle text — the one form every role
-    pattern and coverage cue is matched against, so the precise classifier and its
-    audit net can't disagree about the input either."""
-    return (text or "").lower().replace("−", "-")
+    """Lowercased, unicode-minus-normalized oracle text with REMINDER TEXT removed — the
+    one form every role pattern and coverage cue is matched against, so the precise
+    classifier and its audit net can't disagree about the input either.
+
+    Reminder text is stripped HERE since BS8-30: `role_coverage_flags` stripped it and
+    `classify_roles` did not, so a Treasure maker's "(… Add one mana of any color.)"
+    read as Ramp, every Food maker as Lifegain, every delve/embalm reminder as
+    Recursion, and "End the turn" reminders as a Sweeper in five decks — the exact
+    K-09 disagreement, one layer down. A keyword's own word stays (the reminder
+    explains it; the keyword is outside the brackets)."""
+    return _REMINDER_RE.sub(" ", (text or "").lower().replace("−", "-"))
 
 
 def classify_roles(text):
@@ -3537,6 +3598,9 @@ def cmd_tribes(args):
         print(f"  {st:14} {cnt:3}  {'#' * cnt}")
 
     deck_types = {st for subs in subs_by_card.values() for st in subs}
+    changelings = {n for q, n, s, c in cards
+                   if re.search(r"\bchangeling\b|is every creature type",
+                                (data.get(n.lower()) or {}).get("text") or "", re.I)}
     payoffs = []
     seen_p = set()
     for q, n, s, c in cards:
@@ -3545,11 +3609,21 @@ def cmd_tribes(args):
         d2 = data.get(n.lower())
         if not d2 or not d2["text"]:
             continue
+        # A type named only inside a "create … token" clause is a BODY the card makes,
+        # not a type it rewards (BS8-33 — 320 of 902 roster payoff rows were this: "The
+        # Earth King rewards Bear" on "create a 4/4 Bear token"). The reference has to
+        # occur outside every token-creation clause. Changelings qualify for every type a
+        # payoff names (they ARE every creature type — G-59), and the payoff card itself
+        # is not one of its own qualifiers.
+        _txt = _REMINDER_RE.sub(" ", d2["text"])
+        _clauses = [c for c in re.split(r"[.\n]", _txt) if c.strip()]
         refs = {t for t in deck_types
-                if _tribe_ref_re(t).search(d2["text"])}
+                if any(_tribe_ref_re(t).search(c) and not re.search(
+                       r"\bcreates?\b[^.]*\btokens?\b", c, re.I) for c in _clauses)}
         if refs:
             qual = sum(q2 for q2, n2, s2, c2 in cards
-                       if subs_by_card.get(n2, set()) & refs)
+                       if n2 != n and (subs_by_card.get(n2, set()) & refs
+                                       or n2 in changelings))
             seen_p.add(n)
             payoffs.append((qual, n, sorted(refs)))
     if payoffs:
@@ -3876,7 +3950,7 @@ def fit_strength(shared, theme_w, card_text, deck_int, deck_ca, signature=frozen
     return "role-player"
 
 
-def cross_deck_breadth(card_colors, card_themes, fps):
+def cross_deck_breadth(card_colors, card_themes, fps, cost=""):
     """How many decks a card is BOTH castable in AND shares ≥1 SPECIFIC theme with —
     the single definition of "cross-deck breadth" in this toolkit.
 
@@ -3892,8 +3966,12 @@ def cross_deck_breadth(card_colors, card_themes, fps):
     so `suggest`'s column saturated at 99% while the wishlist's stayed meaningful
     (broad-scan F-04). Routing both through here makes that impossible; `check_suggest`
     anchor 13 asserts the two agree on a synthetic card."""
+    # Castability by PRINTED COST when one is given (BS8-14): identity subset read
+    # Bullseye, Death Dealer (`{2}{B/R}`) as fitting 13 decks against 34 by cost, so the
+    # "value per wildcard" column under-read every hybrid by ~2.5×. Identity stays the
+    # fallback for a card with no cost on file (`_filler_castable`, G-58).
     return sum(1 for _id, dcols, dthemes in fps
-               if card_colors <= dcols and (card_themes & dthemes))
+               if _filler_castable(cost, card_colors, dcols) and (card_themes & dthemes))
 
 
 def _deck_fingerprints(meta, exclude_id=None):
@@ -3985,22 +4063,37 @@ _SET_ROTATION_OVERRIDE = {
 }
 
 
+# Standard rotates ONCE a year, with the fall set, and a set leaves with the "Standard
+# year" it was released into — the fall set and everything released before the NEXT
+# fall set go together. `release year + 3` got every spring set wrong by a year
+# (BS8-13): MKM/OTJ/BIG (Feb–Apr 2024) rotate in 2026 with WOE/LCI, and DFT/TDM/FIN
+# (Feb–Jun 2025) in 2027 with BLB/DSK, while the heuristic said 2027 and 2028. Checked
+# against the announced schedule for every set from DMU (2022) to TLA (2025): a set
+# released in August or later belongs to that year's Standard year, one released
+# January–July to the previous year's. `_SET_ROTATION_OVERRIDE` still wins for an
+# announced exception (Foundations).
+_STANDARD_YEAR_STARTS_MONTH = 8
+
+
 def rotation_year(released, years=3, set_code=""):
-    """The year a set rotates out of Standard — its release year + `years` (Standard's
-    ~3-year window), or an announced date from `_SET_ROTATION_OVERRIDE`. None if the
-    date is blank/unparseable. The single primitive behind `rotation_sweep`, the
-    wishlist ⚠rot flag and `rotation_risk`, so 'when does this rotate' is computed one
-    way everywhere."""
+    """The year a set rotates out of Standard — the STANDARD YEAR it was released into
+    (its release year, or the year before for a January–July release) + `years`, or an
+    announced date from `_SET_ROTATION_OVERRIDE`. None if the date is blank or
+    unparseable. The single primitive behind `rotation_sweep`, the wishlist ⚠rot flag
+    and `rotation_risk`, so 'when does this rotate' is computed one way everywhere."""
     override = _SET_ROTATION_OVERRIDE.get((set_code or "").strip().upper())
     if override:
         return override
     try:
-        return int((released or "")[:4]) + years
+        year = int((released or "")[:4])
+        month = int((released or "")[5:7]) if len(released or "") >= 7 else _STANDARD_YEAR_STARTS_MONTH
     except (ValueError, TypeError):
         return None
+    standard_year = year if month >= _STANDARD_YEAR_STARTS_MONTH else year - 1
+    return standard_year + years
 
 
-def rotation_risk(released, years=3, set_code=""):
+def rotation_risk(released, years=3, set_code="", legal=None):
     """True if a card is past ~`years` of Standard life — so a still-`standard`-marked
     pick may have rotated (stale pool) or rotates THIS YEAR OR NEXT. Routed through
     `rotation_year` so an announced long-legality set (Foundations) can't be
@@ -4018,6 +4111,8 @@ def rotation_risk(released, years=3, set_code=""):
     that rotates within ~15 months and is the rate the other four surfaces already
     showed (G-30)."""
     import datetime
+    if legal is not None and "standard" not in legal:
+        return False          # not in Standard — nothing to rotate out of (BS8-12)
     yr = rotation_year(released, years, set_code)
     return bool(yr) and yr <= datetime.date.today().year + 1
 
@@ -4070,17 +4165,16 @@ def craft_rot_note(name, pool_rot):
     and same this-year-or-next window as the wishlist's ⚠rot, so the two surfaces
     cannot disagree. Degrades to '' with no pool / no Released column, like
     `rotation_risk`."""
-    import datetime
     info = pool_rot.get((name or "").strip().lower())
     if not info:
         return ""
     released, legal, set_code = info
-    if "standard" not in legal:
+    # ONE predicate (BS8-12): this used to re-implement the window beside
+    # `rotation_risk`, and the two disagreed on SCOPE — `suggest` flagged owned rows
+    # and Brawl decks — while a docstring said they "cannot disagree".
+    if not rotation_risk(released, set_code=set_code, legal=legal):
         return ""
-    yr = rotation_year(released, set_code=set_code)
-    if yr and yr <= datetime.date.today().year + 1:
-        return f"  ⚠rot~{yr}"
-    return ""
+    return f"  ⚠rot~{rotation_year(released, set_code=set_code)}"
 
 
 def _pool_rotation_index():
@@ -4218,7 +4312,8 @@ def brawl_readiness(fmt_filter="standard"):
             disp.setdefault(nl, n)
         dup = sum(1 for nl, q in tot.items() if q > 1)
         notlegal = sum(1 for nl in tot
-                       if leg.get(nl) is not None and "brawl" not in leg[nl])
+                       if leg.get(nl) is not None
+                       and pool_format_key("brawl") not in leg[nl])
         idents = {nl: card_colors((carddata.get(nl) or carddata.get(nl.split(" // ")[0])
                                    or {}).get("colors", "")) for nl in tot}
 
@@ -4334,7 +4429,8 @@ def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_form
     with open(POOL_CSV, newline="", encoding="utf-8") as fh:
         pool = list(csv.DictReader(fh))
     has_leg = bool(pool) and "Legalities" in pool[0]
-    apply_fmt = bool(fmt) and fmt in POOL_FORMATS and has_leg
+    lkey = pool_format_key(fmt)          # BS8-04: the pool key, not the raw name
+    apply_fmt = bool(lkey) and has_leg
     _, _, by_name_qty = load_collection()
     suggestions = []
     for r in pool:
@@ -4370,7 +4466,7 @@ def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_form
             ccolors, deck_colors)
         if not cast_ok:
             continue  # genuinely uncastable for this deck
-        if apply_fmt and fmt not in {x.strip() for x in
+        if apply_fmt and lkey not in {x.strip() for x in
                                      (r.get("Legalities") or "").split(";")}:
             continue  # not legal in the target format
         shared = [t for t in (r.get("Synergies") or "").split(";")
@@ -4418,17 +4514,25 @@ def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_form
     top = suggestions if limit == 0 else suggestions[:limit]
 
     fps = _deck_fingerprints(meta, exclude_id=d["id"])
+    _mm = load_mana()
+    # ⚠rot is a CRAFT flag (G-30: an owned card costs no wildcard) and a STANDARD flag —
+    # a Brawl deck's picks do not rotate out of Brawl. Until BS8-12 it printed on owned
+    # rows and on 20–29 of 40 picks for each Brawl deck.
+    _rot_deck = pool_format_key(dmeta.get("format")) == "standard" if not any_format else False
     picks, hi_reuse = [], []
     for score, name, r, shared in top:
         h = owned_of(name.lower())
         card_cols = card_colors(r.get("Color(s)"))
         card_themes = {t.strip() for t in (r.get("Synergies") or "").split(";") if t.strip()}
-        fits = cross_deck_breadth(card_cols, card_themes, fps)
+        _me = _mm.get(name.lower())
+        fits = cross_deck_breadth(card_cols, card_themes, fps, cost=_me[0] if _me else "")
         if h == 0 and fits >= 3:
             hi_reuse.append((name, fits))
         picks.append({"name": name, "rarity": (r.get("Rarity") or "").strip(),
                       "owned": h, "decks": fits, "score": score, "matches": shared,
-                      "rotates": rotation_risk(r.get("Released") or "", set_code=r.get("Set Code") or "")})
+                      "rotates": bool(_rot_deck and h == 0 and rotation_risk(
+                          r.get("Released") or "", set_code=r.get("Set Code") or "",
+                          legal={x.strip() for x in (r.get("Legalities") or "").split(";")}))})
 
     res.update(ok=True, colors=deck_colors,
                themes=sorted(theme_w.items(), key=lambda kv: -kv[1])[:6],
@@ -4474,21 +4578,15 @@ def suggest_lands(d, unowned=False, owned=False, limit=20, fmt=None, any_format=
     central_w = {t: theme_w[t] for t in central}
 
     # current color sources (lands) + strict pip demand -> per-color scarcity (deficit)
-    sources = {c: 0 for c in deck_colors}
+    all_sources = deck_color_sources(cards, meta, carddata)   # ONE count (BS8-01)
+    sources = {c: all_sources.get(c, 0) for c in deck_colors}
     demand = {c: 0 for c in deck_colors}
     for q, n, _s, _c in cards:
         nl = n.lower()
         if nl in BASICS:
-            col = BASIC_COLOR.get(nl)
-            if col in sources:
-                sources[col] += q
             continue
         cd = carddata.get(nl)
         if "Land" in _primary_type((cd["type"] if cd else "") or ""):
-            m = meta.get(nl)
-            for col in (m["colors"] if m else set()):
-                if col in sources:
-                    sources[col] += q
             continue
         entry = mana_map.get(nl)
         if entry and entry[0]:
@@ -4512,7 +4610,8 @@ def suggest_lands(d, unowned=False, owned=False, limit=20, fmt=None, any_format=
     # exactly the "recommending a craft without a legality check" failure CLAUDE.md warns
     # about. Found by USING the tool to build a deck, not by any test.
     fmt = "" if any_format else (fmt or dmeta.get("format") or "").strip().lower()
-    apply_fmt = bool(fmt) and fmt in POOL_FORMATS and has_leg
+    lkey = pool_format_key(fmt)          # BS8-04: the pool key, not the raw name
+    apply_fmt = bool(lkey) and has_leg
     _, _, by_name_qty = load_collection()
     owned_of = lambda nl: owned_qty(by_name_qty, nl)
 
@@ -4532,13 +4631,20 @@ def suggest_lands(d, unowned=False, owned=False, limit=20, fmt=None, any_format=
         # is a perfectly valid card line. G-37's live residual; the G-63 TYPE-column shape.
         if _primary_type(r.get("Type") or "") != "Land":
             continue
-        if apply_fmt and fmt not in {x.strip() for x in (r.get("Legalities") or "").split(";")}:
+        if apply_fmt and lkey not in {x.strip() for x in (r.get("Legalities") or "").split(";")}:
             continue
-        prod = card_colors(r.get("Color(s)"))
         txt = (r.get("Card Text") or "")
-        for c in "WUBRG":
-            if "{" + c + "}" in txt:
-                prod.add(c)
+        # What the land PRODUCES, from its text (`lib.land_production`, BS8-02). The old
+        # test was identity plus a bare `{W}` scan, which is EMPTY for every "Add one mana
+        # of any color" land and every basic fetch — 33 Standard-legal any-colour lands
+        # and 9 fetches were skipped before scoring, so the five-colour deck 17 got 199
+        # picks holding none of them. A fetch produces whichever basics the deck runs;
+        # restricted / extra-cost production is admitted here and discounted in
+        # `_land_value`, which prints `·restricted` for the human read.
+        lp = land_production(txt, r.get("Color(s)"))
+        prod = set(lp["free"]) | set(lp["restricted"]) | set(lp["conditional"])
+        if lp["fetch"]:
+            prod |= set(deck_colors)
         on_color = prod & deck_colors
         if not on_color:
             continue  # off-color / colorless-only: doesn't fix THIS deck's manabase
@@ -4659,7 +4765,8 @@ def suggest_mana(d, needs, unowned=False, owned=False, limit=20, fmt=None):
     with open(POOL_CSV, newline="", encoding="utf-8") as fh:
         pool = list(csv.DictReader(fh))
     has_leg = bool(pool) and "Legalities" in pool[0]
-    apply_fmt = bool(fmt) and fmt in POOL_FORMATS and has_leg
+    lkey = pool_format_key(fmt)          # BS8-04: the pool key, not the raw name
+    apply_fmt = bool(lkey) and has_leg
     _, _, by_name_qty = load_collection()
     owned_of = lambda nl: owned_qty(by_name_qty, nl)
     pool_rot, _has_released = _pool_rotation_index()      # G-30 craft flag (BS4-11)
@@ -4688,7 +4795,7 @@ def suggest_mana(d, needs, unowned=False, owned=False, limit=20, fmt=None):
             card_colors(r.get("Color(s)")), dc)
         if not cast_ok:
             continue  # genuinely uncastable for this deck
-        if apply_fmt and fmt not in {x.strip() for x in (r.get("Legalities") or "").split(";")}:
+        if apply_fmt and lkey not in {x.strip() for x in (r.get("Legalities") or "").split(";")}:
             continue
         h = owned_of(nl)
         if (unowned and h > 0) or (owned and h == 0):
@@ -4732,7 +4839,8 @@ def suggest_interaction(d, needs, unowned=False, owned=False, limit=20, fmt=None
     with open(POOL_CSV, newline="", encoding="utf-8") as fh:
         pool = list(csv.DictReader(fh))
     has_leg = bool(pool) and "Legalities" in pool[0]
-    apply_fmt = bool(fmt) and fmt in POOL_FORMATS and has_leg
+    lkey = pool_format_key(fmt)          # BS8-04: the pool key, not the raw name
+    apply_fmt = bool(lkey) and has_leg
     _, _, by_name_qty = load_collection()
     owned_of = lambda nl: owned_qty(by_name_qty, nl)
     pool_rot, _has_released = _pool_rotation_index()      # G-30 craft flag (BS4-11)
@@ -4758,7 +4866,7 @@ def suggest_interaction(d, needs, unowned=False, owned=False, limit=20, fmt=None
             card_colors(r.get("Color(s)")), dc)
         if not cast_ok:
             continue
-        if apply_fmt and fmt not in {x.strip() for x in (r.get("Legalities") or "").split(";")}:
+        if apply_fmt and lkey not in {x.strip() for x in (r.get("Legalities") or "").split(";")}:
             continue
         h = owned_of(nl)
         if (unowned and h > 0) or (owned and h == 0):
@@ -4800,7 +4908,7 @@ def _needs_fmt(args, needs):
     fmt = (getattr(args, "fmt", None) or needs["format"] or "").strip().lower()
     if not fmt:
         return fmt
-    if fmt not in POOL_FORMATS:
+    if not pool_format_key(fmt):
         print(f"Format: '{fmt}' not tracked — not filtering. "
               f"(known: {', '.join(sorted(POOL_FORMATS))})")
     elif "Legalities" not in (_header_of_pool() or []):
@@ -4984,7 +5092,7 @@ def cmd_suggest(args):
     elif fmt and not res["has_leg"]:
         print(f"Format: '{fmt}' filter requested but card-pool.csv has no legality "
               "data — rebuild with build_pool.py. Showing all.")
-    elif fmt and fmt not in POOL_FORMATS:
+    elif fmt and not pool_format_key(fmt):
         print(f"Format: '{fmt}' not tracked — not filtering. "
               f"(known: {', '.join(sorted(POOL_FORMATS))})")
     stale = pool_staleness_days()
@@ -5217,11 +5325,12 @@ def cmd_mana(args):
     # Color-source adequacy: count how many lands can PRODUCE each color, then flag
     # cards whose strict colored-pip demand looks thin against those sources — the
     # "wants UU but this is a U-splash deck" check the identity lint can't make.
-    # Nonbasic lands are approximated by their color identity; mana dorks aren't
-    # counted, so read it as a review signal, not a hard failure.
+    # ONE count (`deck_source_profile`, BS8-01): this used to be an inline copy that read
+    # colour identity alone, so a "{T}: Add one mana of any color" land was zero sources
+    # and the `△ Pip-intensive` flag below fired on manabases built to fix exactly that.
+    # Mana dorks aren't counted, so read it as a review signal, not a hard failure.
     carddata = load_card_data()
-    sources = {c: 0 for c in "WUBRG"}
-    nlands = 0
+    sources, nlands, _total, source_notes = deck_source_profile(cards, by_key, by_name, carddata)
 
     def _is_land(nl, s, c):
         row = by_key.get((nl, s.lower(), c.lower())) or by_name.get(nl)
@@ -5230,23 +5339,12 @@ def cmd_mana(args):
         colid = (row.get("Color(s)") if row else "") or (cd.get("colors") if cd else "")
         return "Land" in _primary_type(tline), colid
 
-    for q, n, s, c in cards:
-        nl = n.lower()
-        if nl in BASICS:
-            col = BASIC_COLOR.get(nl)
-            if col:
-                sources[col] += q
-            nlands += q
-            continue
-        land, colid = _is_land(nl, s, c)
-        if land:
-            nlands += q
-            for col in card_colors(colid):
-                sources[col] += q
     active = [c for c in "WUBRG" if sources[c] or cards_need[c]]
     if active:
         print("\nColor sources (lands producing each color):")
         print("  " + "   ".join(f"{c} {sources[c]}" for c in active) + f"   ({nlands} lands)")
+        for line in format_source_notes(source_notes, indent="    "):
+            print(line)
         thin, seen_t = [], set()
         for q, n, s, c in cards:
             nl = n.lower()
@@ -5306,18 +5404,47 @@ def _commitment(n):
     return "<- primary color"
 
 
-def _deck_source_counts(cards, by_key, by_name, carddata):
-    """(sources{WUBRG:count}, nlands, total) for a cards list — the manabase side of
-    the consistency model. Basics by name, nonbasic lands by color identity (mana
-    dorks aren't counted as sources; they're not lands). Shared by `mana` /
-    `consistency` so the two can't disagree on what a 'source' is."""
+# Labels `deck_source_profile` files a nonbasic land under, in the order they print.
+_SOURCE_KINDS = (("any", "any colour, no extra cost"),
+                 ("any-cost", "any colour for an extra mana (counted — a real source from the turn after it lands, a filter on curve)"),
+                 ("fetch", "basic-land fetch (counted for each colour the deck runs a basic of)"),
+                 ("restricted", "spend-only mana (NOT counted — read the restriction)"))
+
+
+def deck_source_profile(cards, by_key, by_name, carddata, meta=None):
+    """(sources{WUBRG:count}, nlands, total, notes) for a cards list — THE manabase count
+    behind `mana`, `consistency`, `deck_color_sources` (and through it `pip_depth_warning`
+    and the rationale audit's colour-source figures). One implementation, because three
+    copies agreed with each other and were all wrong (BS8-01).
+
+    Basics count by name. A nonbasic land counts by what its TEXT says it produces
+    (`lib.land_production`): colours it adds freely, colours it adds for an extra mana
+    ("{1}, {T}: Add one mana of any color" — counted, since the land IS a source of that
+    colour from the turn after it lands, and labelled so a reader can discount it on
+    curve), and a basic-land fetch, counted for each colour the deck runs a basic of.
+    Spend-only mana ("Spend this mana only to cast a creature spell") is NOT counted and
+    is reported instead — whether it is a source depends on what you are casting. Mana
+    dorks are not lands and are never counted.
+
+    `notes` maps each `_SOURCE_KINDS` label to a sorted [(qty, name)] list so a surface
+    can print what the count is made of; `_deck_source_counts` drops it for callers that
+    only want the numbers.
+    """
     sources = {c: 0 for c in "WUBRG"}
     nlands = total = 0
+    basics_present = set()
+    for _q, n, _s, _c in cards:
+        nl = n.lower()
+        base = nl[len("snow-covered "):] if nl.startswith("snow-covered ") else nl
+        if base in BASICS and BASIC_COLOR.get(base):
+            basics_present.add(BASIC_COLOR[base])
+    notes = {k: [] for k, _ in _SOURCE_KINDS}
     for q, n, s, c in cards:
         total += q
         nl = n.lower()
-        if nl in BASICS:
-            col = BASIC_COLOR.get(nl)
+        base = nl[len("snow-covered "):] if nl.startswith("snow-covered ") else nl
+        if base in BASICS:
+            col = BASIC_COLOR.get(base)
             if col:
                 sources[col] += q
             nlands += q
@@ -5325,12 +5452,52 @@ def _deck_source_counts(cards, by_key, by_name, carddata):
         row = by_key.get((nl, s.lower(), c.lower())) or by_name.get(nl)
         cd = carddata.get(nl)
         tline = (row.get("Type") if row else "") or (cd["type"] if cd else "")
-        if "Land" in _primary_type(tline):
-            nlands += q
-            colid = (row.get("Color(s)") if row else "") or (cd.get("colors") if cd else "")
-            for col in card_colors(colid):
+        if "Land" not in _primary_type(tline):
+            continue
+        nlands += q
+        colid = (row.get("Color(s)") if row else "") or (cd.get("colors") if cd else "")
+        if not colid and meta and meta.get(nl):
+            colid = "".join(sorted(meta[nl].get("colors") or ()))
+        text = (cd.get("text") if cd else "") or (row.get("Card Text") if row else "") or ""
+        prod = land_production(text, colid)
+        counted = set(prod["free"]) | set(prod["conditional"])
+        if prod["fetch"]:
+            counted |= basics_present
+            notes["fetch"].append((q, n))
+        if prod["any"]:
+            if set("WUBRG") <= prod["free"]:
+                notes["any"].append((q, n))
+            elif prod["conditional"]:
+                notes["any-cost"].append((q, n))
+            elif prod["restricted"]:
+                notes["restricted"].append((q, n))
+        elif prod["restricted"]:
+            notes["restricted"].append((q, n))
+        for col in counted:
+            if col in sources:
                 sources[col] += q
+    for k in notes:
+        notes[k].sort(key=lambda t: t[1])
+    return sources, nlands, total, notes
+
+
+def _deck_source_counts(cards, by_key, by_name, carddata):
+    """(sources{WUBRG:count}, nlands, total) — `deck_source_profile` without the notes.
+    Kept as the name `consistency` and the tests call; the count lives in one place."""
+    sources, nlands, total, _notes = deck_source_profile(cards, by_key, by_name, carddata)
     return sources, nlands, total
+
+
+def format_source_notes(notes, indent="  "):
+    """Lines describing what a source count is made of — one per non-empty
+    `_SOURCE_KINDS` label, so `mana` and `consistency` print the same explanation."""
+    out = []
+    for key, label in _SOURCE_KINDS:
+        rows = notes.get(key) or []
+        if rows:
+            out.append(f"{indent}{sum(q for q, _ in rows)} {label}: "
+                       + ", ".join(f"{q}× {n}" for q, n in rows))
+    return out
 
 
 _TAPLAND_RE = re.compile(r"enters(?: the battlefield)? tapped", re.I)
@@ -5394,7 +5561,7 @@ def cmd_consistency(args):
     nonland = [n for q, n, s, c in cards if n.lower() not in BASICS]
     fetch_missing_mana(sorted(set(nonland)), mana)
 
-    sources, nlands, total = _deck_source_counts(cards, by_key, by_name, carddata)
+    sources, nlands, total, source_notes = deck_source_profile(cards, by_key, by_name, carddata)
     on_play = not getattr(args, "on_draw", False)
     # `or 0.90` made `--target 0` silently mean 0.90, and nothing range-checked the
     # value: `--target 90` (the obvious mis-read of "as a fraction") made
@@ -5466,6 +5633,8 @@ def cmd_consistency(args):
     if active:
         print("\nColor sources (lands producing each color):")
         print("  " + "   ".join(f"{c} {sources[c]}" for c in active))
+        for line in format_source_notes(source_notes, indent="    "):
+            print(line)
         if splash:
             print("  splash (≤%d sources): " % SPLASH_MAX
                   + ", ".join(f"{c} ({sources[c]})" for c in splash)
@@ -6283,7 +6452,7 @@ def recent_ledger_adds(deck_id, days=14, path=None):
     cutoff = (_dt.date.today() - _dt.timedelta(days=days)).isoformat()
     out = set()
     for r in load_recommendations(path):
-        if (r.get("Deck") or "").strip() != str(deck_id):
+        if _norm_deck_id(r.get("Deck")) != _norm_deck_id(str(deck_id)):
             continue
         if (r.get("Date") or "") < cutoff:
             continue
@@ -6679,7 +6848,13 @@ def cmd_feedback(args):
     """Report how the recommenders scored against the swaps actually applied."""
     rows = load_recommendations()
     if getattr(args, "id", None):
-        rows = [r for r in rows if r.get("Deck") == args.id]
+        # Normalized both sides (G-82 / BS8-17): `feedback 06` read "nothing recorded"
+        # for deck 6, and an unknown id was indistinguishable from an un-tuned deck.
+        if not find_deck(args.id):
+            eprint(f"No deck with id {args.id!r}. Try: deck.py list")
+            return 1
+        want = _norm_deck_id(args.id)
+        rows = [r for r in rows if _norm_deck_id(r.get("Deck")) == want]
     if not rows:
         print("No recommendation outcomes recorded yet. They accrue automatically "
               "every time `deck.py swap --apply` or `apply-flex --apply` runs.")
@@ -6969,6 +7144,25 @@ def normalize_format(fmt):
     Lowercased, whitespace-collapsed, and aliased (see `_FORMAT_ALIASES`)."""
     f = " ".join((fmt or "").strip().lower().split())
     return _FORMAT_ALIASES.get(f, f)
+
+
+# The pool's `Legalities` column carries SCRYFALL's keys, and Scryfall's `brawl` is
+# Arena's 100-card HISTORIC Brawl. The repo's `Brawl` (G-08) is Arena's 60-card Standard
+# Brawl, whose card pool is Standard's — so a `#: format: Brawl` deck must be checked and
+# recommended against `standard`, and a `Historic Brawl` deck against `brawl`. Until
+# BS8-04 every legality surface tested the raw string: a Historic-only card passed
+# `legal` in deck 3-brawl, `suggest` on it returned 2,238 of 3,228 picks that were not
+# Standard-legal, and a Historic Brawl deck got no legality check at all ("isn't
+# tracked"). ONE mapping, read by every site that asks "is this card legal here".
+_POOL_FORMAT_KEY = {"brawl": "standard", "historic brawl": "brawl"}
+
+
+def pool_format_key(fmt):
+    """The pool `Legalities` key a deck's `#: format:` is checked against, or "" when
+    the format is untracked (size/copy rules still apply — see `legality_report`)."""
+    f = normalize_format(fmt)
+    key = _POOL_FORMAT_KEY.get(f, f)
+    return key if key in POOL_FORMATS else ""
 # Formats led by a legendary creature/planeswalker commander with a color-identity lock
 # (Oathbreaker's PW-commander + signature-spell rules differ, so it's excluded here).
 _COMMANDER_FORMATS = {"brawl", "historic brawl", "commander", "duel"}
@@ -7081,16 +7275,17 @@ def legality_report(meta, cards, fmt, leg, carddata=None):
             problems.append(f"{disp[nl]}: {counts[nl]} copies (max {copy_limit}"
                             + (", singleton format" if singleton else "") + ")")
 
-    if fmt and fmt in POOL_FORMATS and leg:
+    lkey = pool_format_key(fmt)
+    if fmt and lkey and leg:
         illegal, rebalanced = [], []
         for nl in order:
             card_leg = leg.get(nl)
             if card_leg is None:
                 unknown.append(disp[nl])
-            elif fmt not in card_leg:
+            elif lkey not in card_leg:
                 # A Standard card that isn't Alchemy-legal is rebalanced (A- version),
                 # not illegal — it's still playable in Alchemy.
-                if fmt == "alchemy" and "standard" in card_leg:
+                if lkey == "alchemy" and "standard" in card_leg:
                     rebalanced.append(disp[nl])
                 else:
                     illegal.append(disp[nl])
@@ -7100,7 +7295,7 @@ def legality_report(meta, cards, fmt, leg, carddata=None):
             notes.append(f"{len(rebalanced)} card(s) are Alchemy-rebalanced — they play as "
                          f"their A- version in Alchemy (still legal): "
                          + ", ".join(rebalanced[:8]) + (" …" if len(rebalanced) > 8 else ""))
-    elif fmt and fmt not in POOL_FORMATS:
+    elif fmt and not lkey:
         notes.append(f"Format '{fmt}' isn't tracked for legality "
                      f"(known: {', '.join(sorted(POOL_FORMATS))}) — checking size/copies only.")
     elif fmt and not leg:
@@ -9079,7 +9274,7 @@ def _upgrade_clauses(name, text):
     return {c.strip(" .;") for c in re.split(r"[\n.]", t) if c.strip(" .;")}
 
 
-def strict_upgrades(cand_name, cand_text, cand_mv, cards, carddata, mana):
+def strict_upgrades(cand_name, cand_text, cand_mv, cards, carddata, mana, cand_pt=(None, None)):
     """In-deck card names that `cand` STRICTLY upgrades — every clause of the incumbent's
     text is present in the candidate's, at the same or lower mana value, AND the candidate
     does strictly more (an extra clause, or the same text for less mana). Color identity
@@ -9105,7 +9300,19 @@ def strict_upgrades(cand_name, cand_text, cand_mv, cards, carddata, mana):
         imv = (mana.get(nl) or (None, None))[1]
         if cand_mv is not None and imv is not None and cand_mv > imv:
             continue                                   # costs more — not strict
-        strictly_more = len(cc) > len(ic) or (
+        # POWER / TOUGHNESS are part of "strictly more" (BS8-32): the text-only test called
+        # a 1/2 for {1}{W} a ★ STRICT UPGRADE of a 2/3 for {2}{W} with the same clause set
+        # — 121 such pool groups. A smaller body on either axis is not an upgrade; a bigger
+        # one at equal text and cost is. `card_power` returns None for `*`/X, which
+        # compares as unknown (neither blocks nor grants).
+        cp, ct = card_power(cand_pt[0]), card_power(cand_pt[1])
+        ip, it = card_power(cd.get("power")), card_power(cd.get("toughness"))
+        if (cp is not None and ip is not None and cp < ip) or \
+                (ct is not None and it is not None and ct < it):
+            continue                                   # a smaller body — not strict
+        bigger = (cp is not None and ip is not None and cp > ip) or \
+                 (ct is not None and it is not None and ct > it)
+        strictly_more = len(cc) > len(ic) or bigger or (
             cand_mv is not None and imv is not None and cand_mv < imv)
         if strictly_more:
             out.append(n)
@@ -9176,14 +9383,15 @@ def cmd_screen(args):
         roles = sorted(classify_roles(text))
         ax = doubler_axis(text)
         sup = doubler_support(ax, cards, carddata, doubler_restriction(text)) if ax else 0
-        ups = strict_upgrades(name, text, mv, cards, carddata, mana)
+        ups = strict_upgrades(name, text, mv, cards, carddata, mana,
+                              cand_pt=(cd.get("power"), cd.get("toughness")))
         legs = legal.get(nl) or legal.get(nl.split(" // ")[0]) or set()
         cast_ok, cast_note = _candidate_castability(cost, ident, declared)
         rows.append(dict(name=name, cost=cost, mv=mv, text=text, roles=roles,
                          strength=strength, shared=shared, axis=ax, support=sup,
                          upgrades=ups, ident=ident,
                          owned=owned_qty(qty, name), rar=rar.get(nl, "?"),
-                         illegal=bool(fmt and legs and fmt not in legs),
+                         illegal=bool(fmt and legs and pool_format_key(fmt) not in legs),
                          castable=cast_ok, cast_note=cast_note,
                          # `in_deck` holds _ms_key keys while `nl` is the resolved card's
                          # FULL display name, so every pool-keyed DFC read as absent and
@@ -9584,7 +9792,7 @@ def cmd_suggest_homes(args):
                                     total=sum(q for q, *_ in cards))
         # Skip a deck whose format the card isn't legal in (see card_legals above).
         if not any_format and card_legals:
-            dfmt = (dmeta.get("format") or "").strip().lower()
+            dfmt = pool_format_key(dmeta.get("format"))
             if dfmt and dfmt not in card_legals:
                 skipped_illegal += 1
                 continue
@@ -10126,11 +10334,20 @@ def tier_band(vec):
     clock = _clock_score(vec) if vec.get("plan") == "aggro" else 0
     ir = inter + clock                    # effective pressure/interaction axis
     resil = inter + ca + clock            # grind / resilience / closing speed
-    if ir >= 5 and resil >= 7:
+    # ONE table (`TIER_FLOOR_REQ`) for the classifier and the gap diagnostic. The
+    # thresholds used to be duplicated here as literals — and were (5, 7) / (3, 4),
+    # which the roster had long outgrown: with a median interaction of 8 the floor read
+    # A for 104 of 117 decks and C/D for none, so the ≥2-band guard could only fire on
+    # an S claim, the under-grade nudge fired on every claimed B, and `tier --to A`
+    # answered "already meets" for 90% of the roster (broad-scan BS8-06). Re-derived
+    # from the roster distribution 2026-09-02: A at (7, 11) ≈ the roster median on both
+    # axes, B at (4, 7) ≈ its 10th percentile, C unchanged. `check_all` now warns when
+    # the floor collapses into one band again (`tier_floor_spread`).
+    if ir >= TIER_FLOOR_REQ["A"][0] and resil >= TIER_FLOOR_REQ["A"][1]:
         band = "A"                        # measurable ceiling; S is a human call on top
-    elif ir >= 3 and resil >= 4:
+    elif ir >= TIER_FLOOR_REQ["B"][0] and resil >= TIER_FLOOR_REQ["B"][1]:
         band = "B"
-    elif resil >= 2:
+    elif resil >= TIER_FLOOR_REQ["C"][1]:
         band = "C"
     else:
         band = "D"
@@ -10145,9 +10362,44 @@ def tier_band(vec):
 
 
 # The measurable FLOOR requirement per band: (min interaction, min interaction+ca).
-# Kept in lockstep with tier_band above — the single source for both the classifier
-# and the gap diagnostic, so they can't disagree about what a band needs.
-TIER_FLOOR_REQ = {"S": (5, 7), "A": (5, 7), "B": (3, 4), "C": (0, 2), "D": (0, 0)}
+# THE single source for the classifier (`tier_band` reads it) and the gap diagnostic
+# (`tier_gap`), so they cannot disagree about what a band needs. Re-derived from the
+# roster distribution on 2026-09-02 (BS8-06); the previous (5, 7) / (3, 4) had every
+# deck on the roster at A or B. `check_tier.py` anchors the shape, `tier_floor_spread`
+# watches the roster for the collapse that motivated the change.
+TIER_FLOOR_REQ = {"S": (7, 11), "A": (7, 11), "B": (4, 7), "C": (0, 2), "D": (0, 0)}
+
+# The share of the roster one floor band may hold before `check_all` warns that the
+# floor has stopped discriminating. 104 of 117 (89%) is where BS8-06 found it.
+TIER_SPREAD_MAX_SHARE = 0.85
+
+
+def tier_floor_spread(decks=None):
+    """{band: count} of the measurable floor across the roster, plus the check_all
+    message when one band holds more than `TIER_SPREAD_MAX_SHARE` of it, else None.
+
+    `check_tier` pins the floor's SHAPE on synthetic vectors, which cannot see the
+    roster: the thresholds were right when written and silently fell below every deck
+    as the role patterns widened, each widening reporting "0 tier floors moved" — a
+    measurement the saturation guaranteed. This is the distribution check that would
+    have shown it. Soft and roster-wide, like the mismatch sweep beside it: a collapsed
+    spread is a reason to re-derive the thresholds, not a deck defect."""
+    from collections import Counter
+    bands = Counter()
+    for d in (decks if decks is not None else roster_decks()):
+        try:
+            bands[tier_band(deck_quality_vector(d))] += 1
+        except Exception:
+            continue
+    n = sum(bands.values())
+    msg = None
+    if n >= 20:
+        band, top = max(bands.items(), key=lambda kv: (kv[1], kv[0]))
+        if top / n > TIER_SPREAD_MAX_SHARE:
+            msg = (f"tier floor has collapsed: {top} of {n} decks ({top / n:.0%}) sit at "
+                   f"the {band} floor — the thresholds in `deck.TIER_FLOOR_REQ` no longer "
+                   f"discriminate; re-derive them from the roster distribution (BS8-06)")
+    return dict(bands), msg
 
 
 def tier_gap(vec, target):
@@ -10187,6 +10439,21 @@ def tier_gap(vec, target):
             "met": not [p for p in parts if not p.startswith("(aggro:")], "summary": parts}
 
 
+def _filler_castable(cost, ident, declared):
+    """Castability for a FILLER candidate (`tier --to`, `redundancy`): the PRINTED COST
+    through `_candidate_castability`, exactly as `suggest` / `screen` / `suggest-homes`
+    read it (G-58). The three filler functions were the last identity-subset holdouts —
+    `ident <= declared` — so Bullseye, Death Dealer (`{2}{B/R}`, the card G-58 names)
+    was excluded from mono-black 52a and 10–17 castable owned interaction cards per
+    deck were hidden from the wildcard-spend planner (BS8-05). Identity stays as the
+    FALLBACK for a card with no cost on file, which is the only case where it is the
+    best evidence available."""
+    if not cost:
+        return ident <= declared
+    ok, _note = _candidate_castability(cost, ident, declared)
+    return ok
+
+
 def owned_role_fillers(d, roles, *, limit=10):
     """Owned, on-color cards NOT already in deck d that fill any role in `roles`
     (e.g. `_INTERACTION_ROLES`, or {"Card advantage"}) — the 0-wildcard fillers that
@@ -10206,7 +10473,7 @@ def owned_role_fillers(d, roles, *, limit=10):
     mana, carddata = load_mana(), load_card_data()
     _, _, qty = load_collection()
     legalities = load_legalities()
-    fmt = (meta.get("format") or "").strip().lower()
+    fmt = pool_format_key(meta.get("format"))     # BS8-04: the pool's key
     # `_ms_key` both sides (BS2-19): `carddata` keys a DFC under BOTH spellings, so a
     # raw-name `in_deck` suppressed only the spelling the deck file used — the OTHER
     # key sailed through, `owned()` resolved it via the front-face fallback, and the
@@ -10226,7 +10493,8 @@ def owned_role_fillers(d, roles, *, limit=10):
         if not found or have < 1:
             continue
         ident = card_colors(cd.get("colors"))
-        if not ident <= declared:
+        entry = mana.get(nl)
+        if not _filler_castable(entry[0] if entry else "", ident, declared):
             continue
         legs = legalities.get(nl) or legalities.get(nl.split(" // ")[0]) or set()
         if fmt and legs and fmt not in legs:
@@ -10234,7 +10502,6 @@ def owned_role_fillers(d, roles, *, limit=10):
         hit = set(classify_roles(cd.get("text") or "")) & set(roles)
         if not hit:
             continue
-        entry = mana.get(nl)
         mv = entry[1] if entry and entry[1] is not None else 99
         out.append((mv, name, "".join(sorted(ident)) or "C", sorted(hit),
                     (cd.get("text") or "").split("\n")[0][:64]))
@@ -10268,7 +10535,7 @@ def craft_role_fillers(d, roles, *, limit=8):
     # (the owned_qty skip below only masks the owned case).
     in_deck = {_ms_key(n) for q, n, s, c in cards}
     declared = set(_declared_colors(meta) or _deck_castable_colors(meta, cards, mana))
-    fmt = (meta.get("format") or "").strip().lower()
+    fmt = pool_format_key(meta.get("format"))     # BS8-04: the pool's key
     RANK = {"Common": 0, "Uncommon": 1, "Rare": 2, "Mythic": 3}
     pool_rot, _has_released = _pool_rotation_index()
     out, seen = [], set()
@@ -10287,7 +10554,8 @@ def craft_role_fillers(d, roles, *, limit=8):
             if owned_qty(qty, name) > 0:
                 continue
             ident = card_colors(r.get("Color(s)"))
-            if not ident <= declared:
+            entry = mana.get(nl)
+            if not _filler_castable(entry[0] if entry else "", ident, declared):
                 continue
             legs = {x.strip().lower() for x in (r.get("Legalities") or "").split(";") if x.strip()}
             if fmt and legs and fmt not in legs:
@@ -10377,7 +10645,7 @@ def functional_theme_options(d, theme, *, limit=8):
     _, _, qty = load_collection()
     in_deck = {_ms_key(n) for q, n, s, c in cards}   # G-63: front-face join
     declared = set(_declared_colors(meta) or _deck_castable_colors(meta, cards, mana))
-    fmt = (meta.get("format") or "").strip().lower()
+    fmt = pool_format_key(meta.get("format"))     # BS8-04: the pool's key
     out, seen = [], set()
     for nl, m in cardmeta.items():
         if nl in seen or nl in in_deck or nl in BASICS:
@@ -10388,13 +10656,14 @@ def functional_theme_options(d, theme, *, limit=8):
         if not cd or "Land" in _primary_type(cd.get("type") or ""):
             continue
         name = cd.get("name") or nl
-        if not (card_colors(cd.get("colors")) <= declared):
+        entry = mana.get(nl)
+        if not _filler_castable(entry[0] if entry else "", card_colors(cd.get("colors")),
+                                declared):
             continue
         legs = leg.get(nl)
         if fmt and legs is not None and fmt not in legs:
             continue
         seen.add(nl)
-        entry = mana.get(nl)
         mv = entry[1] if entry and entry[1] is not None else 99
         out.append((_card_power(nl, carddata, rar), name, owned_qty(qty, name) > 0, mv,
                     (rar.get(nl) or "?")))
@@ -10761,6 +11030,47 @@ _RATIONALE_FIGURES += [
      f"sources_{_c}")
     for _c, _w in _FIG_COLOR_WORDS
 ]
+
+
+# The SLASH idiom — "13/8/10 sources", the shape deck 78's own tier line writes and the
+# case that motivated the per-colour patterns above, which cannot see it (BS8-16). The
+# claim is a MULTISET of the deck's non-zero source counts (the colour order is whatever
+# the prose chose), so it is checked as one: same WANT/DELTA guards as the per-colour form.
+_FIG_SOURCE_SLASH = re.compile(r"(?<![+\-\d/])(\d{1,2}(?:/\d{1,2}){1,4})[  ]+sources?\b")
+
+
+def _slash_source_claims(prose, sources, colors=None):
+    """[(key, quoted, actual)] for every "N/N/N sources" claim in `prose` whose numbers
+    do not match the deck's source counts as a multiset. `sources` is the
+    `deck_color_sources` dict; `colors` (the deck's `#: colors:`, in header order)
+    scopes the comparison to the colours the deck RUNS — an any-colour land is a real
+    source of every colour, so the off-colour counts are non-zero and are not what the
+    prose claims. `actual` is rendered in header order so a re-grounding reads
+    naturally. A claim preceded by `want`/`+` is a target or a delta, not a count, and
+    is skipped — the same rule the per-colour patterns apply."""
+    out = []
+    scope = card_colors(colors) if colors else set()
+    order = [c for c in "WUBRG" if c in scope] or [c for c in "WUBRG" if (sources or {}).get(c)]
+    live_in_order = [(sources or {}).get(c, 0) for c in order]
+    live = sorted(live_in_order)
+    for m in _FIG_SOURCE_SLASH.finditer(prose or ""):
+        before = prose[max(0, m.start() - 24):m.start()]
+        if _FIG_SOURCE_WANT.search(before):
+            continue
+        qvals = [int(x) for x in m.group(1).split("/")]
+        if sorted(qvals) != live:
+            # Render the live counts in the ORDER the prose used, matched by rank (the
+            # prose's colour order is whatever it chose; a re-grounding must not reorder
+            # its argument): "13/8/10" against live W14 U9 G11 reads back as "14/9/11".
+            by_rank = sorted(live, reverse=True)
+            qrank = sorted(range(len(qvals)), key=lambda i: -qvals[i])
+            rendered = [0] * len(qvals)
+            for pos, i in enumerate(qrank):
+                rendered[i] = by_rank[pos] if pos < len(by_rank) else 0
+            if len(qvals) != len(live):
+                rendered = live_in_order
+            out.append(("sources", m.group(1), "/".join(str(n) for n in rendered)))
+    return out
 
 
 def _figure_lookup(vec, cards, carddata):
@@ -11420,6 +11730,14 @@ def rationale_staleness(d, carddata=None):
                         else int(quoted) == int(actual))
                 if not same and (key, quoted, actual) not in stale_figures:
                     stale_figures.append((key, quoted, actual))
+    # The slash idiom ("13/8/10 sources") is checked as a multiset (BS8-16) — the
+    # per-colour patterns above cannot see it, and it is the shape deck 78 writes.
+    _src = {k[len("sources_"):]: v for k, v in figure_values.items() if k.startswith("sources_")}
+    _cols = (meta or {}).get("colors") or ""
+    for header in ("tier", "archetype"):
+        for claim in _slash_source_claims((meta or {}).get(header, "") or "", _src, _cols):
+            if claim not in stale_figures:
+                stale_figures.append(claim)
     return stale_cards, stale_figures
 
 
@@ -11500,6 +11818,13 @@ def note_figure_staleness(d, vec=None, meta_cards=None):
                     row = (note, key, quoted, actual)
                     if row not in out:
                         out.append(row)
+        _src = {k[len("sources_"):]: v for k, v in figure_values.items()
+                if k.startswith("sources_")}
+        _cols = (meta or {}).get("colors") or ""
+        for key, quoted, actual in _slash_source_claims(note, _src, _cols):    # BS8-16
+            row = (note, key, quoted, actual)
+            if row not in out:
+                out.append(row)
     return out
 
 
@@ -12089,8 +12414,14 @@ _TARGET_GATES = [
     # type-wide searches (creature / land / artifact / permanent) that in a 60-card deck
     # report "you have a deck".
     (re.compile(r"search your library for (?:up to \w+ |a |an |two |three )?"
-                r"(?!card\b|creature|land|artifact|permanent|nonland|instant|sorcery|"
-                r"enchantment|planeswalker|colorless|basic)([A-Za-z]{3,}) cards?", re.I),
+                # `cards?` (plural — "search for two CARDS" read "cards" as a type), the
+                # colour words and the legendary/token adjectives (BS8-15): each printed a
+                # false "✗ NOTHING" (Behold the Beyond, Mausoleum Secrets, Unmarked Grave).
+                r"(?!cards?\b|creature|land|artifact|permanent|nonland|instant|sorcery|"
+                r"enchantment|planeswalker|colorless|basic|white|blue|black|red|green|"
+                r"monocolored|multicolored|legendary|nonlegendary|nontoken|historic|"
+                r"two\b|three\b|four\b|any\b|that\b)"
+                r"([A-Za-z]{3,}) cards?", re.I),
      "{0} cards in the deck", "lib_type"),
 
     # NO generic "cards to discard" rule. It was written, and it reported 35 for every

@@ -18,7 +18,7 @@
 #: archetype: body. (Emil is here for its trample line, not its Fractal mana sink.)
 #: tier: A — Simic landfall counters-midrange. Re-graded B->A after the Garruk's Uprising
 #: tier: / The Legend of Kyoshi pass, which closed the last of the three caps the B was
-#: tier: resting on. Metrics floor is A (interaction 7 + card-adv 7 on a 2.94 curve; the
+#: tier: resting on. Metrics floor is A (interaction 7 + card-adv 9 on a 2.94 curve; the
 #: tier: axis rose when Grappling Kraken was CUT 2026-08-18 for Bonny Pall, Clearcutter,
 #: tier: trading a landfall tap-and-stun for a landfall ENGINE — attack to draw a card and
 #: tier: put a land onto the battlefield from hand or graveyard, plus Beau, whose power
@@ -137,7 +137,7 @@ Deck
 
 #~ note: applied — Beast, Erudite Aerialist in for Portent of Calamity.
 #~   potential finisher, held OUT of the 60 by choice. 83% of the nonlands here are
-#~   permanents and green is the primary colour (14 G sources, and Great Divide Guide
+#~   permanents and green is the primary colour (17 G sources counting the any-colour lands since BS8-01, and Great Divide Guide
 #~   makes every land any colour), so GGG is castable. The real payoff is that every
 #~   land it puts onto the battlefield triggers LANDFALL: X=6 dropping three lands
 #~   doubles Mossborn Hydra three times (x8) and fires Bristly Bill, Seedship Agrarian,

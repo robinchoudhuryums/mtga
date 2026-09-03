@@ -15,8 +15,8 @@
 #: tier: after the Divergent Equation / Matterbending Mage / Agna Qel'a swaps and the
 #: tier: Ooze Spill / Amazing Acrobatics counter upgrade (two conditional counters — Essence
 #: tier: Scatter's creatures-only and Reasonable Doubt's pay-{2} — became hard counters, so
-#: tier: 5 of the 6 counters are no longer situational). Metrics floor is A: interaction 11
-#: tier: + card advantage 6 on a tight 2.32 curve. The interaction is well SHAPED, not just
+#: tier: 5 of the 6 counters are no longer situational). Metrics floor is A: interaction 10
+#: tier: + card advantage 7 on a tight 2.32 curve. The interaction is well SHAPED, not just
 #: tier: numerous — most of it is instant-speed and most can answer a noncreature
 #: tier: permanent, so a resolved planeswalker or enchantment isn't a blank. (The count
 #: tier: reads 11 since the role classifier was fixed to credit artifact/enchantment
@@ -33,7 +33,7 @@
 #: tier: variance barely bites — only cost-reduction and reanimation are thin (2 each).
 #: tier: Manabase is clean: 26 lands, 87% keepable openers, 0 uncastable, no color stray
 #: tier: since Opulent Palace left. The one clear weakness A allows is spent on the win-con:
-#: tier: the deck leans on resolving a big X-spell behind a diffuse (good-stuff) 19-theme
+#: tier: the deck leans on resolving a big X-spell behind a diffuse (good-stuff) 20-theme
 #: tier: spine. Held from S by that slow clock and the absence of a format-warping bomb —
 #: tier: it out-resources opponents rather than closing fast. Aspirational WIP (5 craft
 #: tier: targets); per the rubric that doesn't affect the letter, only `check`/`audit`.

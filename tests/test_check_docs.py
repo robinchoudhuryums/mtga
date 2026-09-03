@@ -154,3 +154,42 @@ def _claude_stub(rule_line, raw_bullets=None):
         "## Cycle Workflow Config\n\n"
         "**Test Command:** x\n\nSubsystems\n\nInvariant Library\n"
     )
+
+
+class TestFigureDriftIsWiredIntoTheGate:
+    """BS8-22: `figure_drift` was invoked by `check_docs.main()` alone — i.e. only when
+    someone ran the file by hand, which nothing does. It is a radar the gate CONTAINED
+    but never reached (G-53 one layer in)."""
+
+    def test_check_all_appends_drift_to_the_soft_list(self):
+        import os
+        p = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                         "scripts", "check_all.py")
+        with open(p, encoding="utf-8") as fh:
+            src = fh.read()
+        assert "from check_docs import figure_drift" in src
+        i = src.find("from check_docs import figure_drift")
+        assert "soft.append(" in src[i:i + 700]
+        # It must come AFTER `soft` exists: appending beside the hard doc check raised
+        # NameError into that block's `except` and reported a false "doc structure check
+        # errored" — a radar whose own wiring is the failure it reports.
+        assert src.find("soft = list(derived_warns)") < i
+
+    def test_the_baseline_figure_counts_entries_not_lines(self):
+        """The K-09 figure said 188 (the FILE's lines, comments included) while the
+        acknowledged set was 173 entries — the number a reader takes it to mean."""
+        import os
+        base = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                            "scripts", "tag_role_baseline.txt")
+        with open(base, encoding="utf-8") as fh:
+            lines = fh.readlines()
+        entries = [ln for ln in lines if ln.strip() and not ln.lstrip().startswith("#")]
+        assert len(entries) < len(lines), "the baseline carries comments — the two differ"
+        assert cd.figure_drift() == [] or all(
+            "tag/role baseline" not in lbl for lbl, _s, _l in cd.figure_drift())
+
+    def test_the_gate_count_is_measured_not_asserted(self):
+        """BS8-26: three documents carried three different gate counts (11 / 12 / 14)
+        against a real 13. A count of files is a measurement, so the radar holds it."""
+        assert all("model-sanity gates" not in lbl for lbl, _s, _l in cd.figure_drift()), \
+            cd.figure_drift()

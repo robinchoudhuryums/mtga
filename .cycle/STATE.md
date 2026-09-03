@@ -2689,3 +2689,94 @@ and its findings are in deck 78's 57 `#: notes:` lines.
 (a `/sync-docs` pass went in with them: G-42 gained the manabase instance, G-27 the
 rename-is-a-suppression-change note, G-80 the four-becomes-five margin, and three README
 figures were corrected against live data).
+
+
+## 2026-09-02 — broad-scan #8, batch 1 (BS8-01..06) — broad-implement
+
+Completed: BS8-01 (text-derived colour sources, one implementation `deck_source_profile`
+behind mana/consistency/deck_color_sources/pip flags/rationale figures), BS8-02
+(`suggest --lands` + `_land_value` on the same reader), BS8-03 (watermark excludes
+`manual-` rows), BS8-04 (`pool_format_key`: Brawl→standard, Historic Brawl→brawl on every
+legality/recommender site), BS8-05 (fillers read printed cost via `_filler_castable`),
+BS8-06 (`TIER_FLOOR_REQ` re-derived to A (7,11) / B (4,7); `tier_band` and
+`check_tier` read the one table; `tier_floor_spread` soft warning in check_all).
+Block: `.cycle/blocks/2026-09-broad-scan-8-bs8-01-06-broad-implement.md`.
+
+Decisions: an EXTRA-COST any-colour land ("{1},{T}: Add one mana of any color") COUNTS
+as a source and is labelled; spend-only mana does NOT count and is listed. The scan's
+"seven unconditional in 21a" was wrong (one free, six extra-cost, two restricted).
+Thresholds chosen at the roster median (A) and 10th percentile (B): floor spread
+64 A / 43 B / 8 C, zero ≥2-band mismatches.
+
+Not finished from the scan: everything BS8-07 onward (prioritised batch plan given in
+chat at the end of this session; the full report is the scan's attachment).
+
+Where I left off: batch 1 committed and pushed on `claude/broad-scan-6kxevb`; gates green
+(one expected G-75 soft warning); full pytest green. Next: the user picks batch 2.
+
+## 2026-09-02 — broad-scan #8, batch 2 (role classifier) — broad-implement
+
+Completed: BS8-27/30/10/11/29/28/13 — reminder text stripped in `_norm_role_text`, blink
+and graveyard-hate guards on targeted removal, scoped Sweeper, strict Reanimation,
+self-discount and self-pump exclusions, ~150 verified interaction/counter/CA misses, loot
+shapes at equal counts. 45 decks change a count; floor spread 63 A / 43 B / 9 C, zero
+≥2-band mismatches. 35 prose figures in 22 deck files re-numbered mechanically — the
+ARGUMENTS around them need a human read (block lists it). Baselines acknowledged as a
+deliberate bulk pass (119 new zero-role cards, sampled). Block:
+`.cycle/blocks/2026-09-broad-scan-8-batch2-roles-broad-implement.md`.
+
+Where I left off: batch 2 committed; batch 3 (green-when-red / red-when-green) next.
+
+## 2026-09-02 — broad-scan #8, batch 3 (green-when-red / red-when-green) — broad-implement
+
+Completed: BS8-08/09/19/18/34/35/42/07 — verify_ingest exit gate + stored-spelling key +
+Arena About block; /add-deck runs `make refresh`; editor deck save runs the gate's two
+INV-04 checks; CSV save carries a `lib_token`; INV-01b (library set codes exist in the
+pool) hard in check_all; same-run phantom row; copymode on three app write paths;
+collection-time skip hook. Block: `.cycle/blocks/2026-09-broad-scan-8-batch3-gates-broad-implement.md`.
+
+Where I left off: batches 1–3 committed and pushed on `claude/broad-scan-6kxevb`; gates
+green; docs synced for batches 1 and 3 (batch 2's G-67/K-09/K-12 long-form notes and the
+README items in the batch-2/3 blocks are still owed to `/sync-docs`). Next: the user
+picks from batches 4–7 (rotation + recommender scope, tag model, interface, outcomes/
+gates/docs hygiene) — plan in chat and in the scan report attachment.
+
+## 2026-09-02 — broad-scan #8, re-grade pass + batches 4 and 5 — broad-implement
+
+Re-grade: 41/42a/55b/70 held at B with corrected arguments (41 now argues from a C floor;
+54/54a sit at a B floor; seven rationales cite the re-derived 7/11 thresholds).
+Batch 4 (rotation + recommender scope): Standard-year rotation rule, one ⚠rot predicate
+scoped to unowned Standard cards, cost-aware `Decks` breadth and wishlist castability,
+slash-form colour-source figures, normalized ids everywhere, wishlist state/STRONG fixes.
+Batch 5 (tag model): reminder/quote-stripped `sacrifice`/`removal`, strict `reanimator`,
+`ramp` off landfall/convoke, `spellslinger` noncreature; tribes token-clause rule;
+strict-upgrade P/T; lib_type gate words. Pool re-derived (network), library merged.
+Blocks: `.cycle/blocks/2026-09-broad-scan-8-batch4-*.md`, `…-batch5-*.md`.
+
+Where I left off: all of broad-scan #8 batches 1–5 on `claude/broad-scan-6kxevb`, gates
+green. Remaining from the scan: batch 6 (interface), batch 7 (outcomes/gates/docs
+hygiene), the completeness gaps, and the library tag-prune follow-on.
+
+## 2026-09-03 — broad-scan #8, batches 6 and 7 — broad-implement
+
+Batch 6 (interface): shortcuts no longer fire in a `<select>`; the dashboard's JS matcher
+carries the TRUNCATED flag and labels a draw `D`; a first-paint theme stamp plus a
+build-time `prefers-color-scheme` fallback copied from the template's own light blocks;
+syncLive stores before it claims success; palette options live in a listbox and both
+overlays are named; the section collapse control is a real button inside the heading; the
+deck editor guards unsaved changes.
+
+Batch 7 (outcomes/gates/docs): `--deck` validated; `figure_drift` wired into check_all as a
+soft warning and its baseline figure measures entries; test_cli derives its deck, cards and
+section from the live roster; check_commands now gates Makefile TARGETS (it fired on
+`make postedit`, which the shared commit tail now runs); the ingest/add-cards loop, the
+pile-analysis identity-castability trap and roster-review's missing commit step fixed;
+the gate count is thirteen everywhere and is now radar-held; systems-map re-measured.
+
+Block: `.cycle/blocks/2026-09-broad-scan-8-batch6-7-interface-gates-broad-implement.md`.
+
+Where I left off: broad-scan #8 batches 1–7 all landed on `claude/broad-scan-6kxevb`;
+gates green (full suite, check_all with the one expected G-75 warning). Remaining: the
+five Low interface items (P-09..P-13), the batch-5 tag-prune follow-on, the operator
+visual checks (Scenarios 5, 7, 12–18), and the completeness gaps (tracker export through
+import_collection, a play-next surface, `standardbrawl` in the pool).

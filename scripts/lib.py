@@ -388,6 +388,93 @@ def mana_value(cost):
     return total
 
 
+# ── Land mana PRODUCTION, read from oracle text (BS8-01 / BS8-02) ────────────────────
+# Every colour-source count in the toolkit credited a nonbasic land by its colour
+# IDENTITY alone, and "{T}: Add one mana of any color" lands are identity Colorless — so
+# Surveillance Room, Rumble Arena, Starting Town, Secluded Courtyard and the rest counted
+# as ZERO sources. Deck 21a held nine copies of such lands and `consistency` reported
+# B 5, prescribing "+15 B sources" against a real deficit of a few; 28 roster decks were
+# affected and 30 of the 40 `△ Pip-intensive` flags `mana` printed were artefacts. The
+# three copies of the count agreed with each other, so `check_agreement` could not see
+# it, and `suggest --lands` skipped every any-colour land and every basic fetch before
+# scoring (`prod` was empty). ONE reader of the text, here, so the counter and the
+# recommender cannot disagree about what a land produces.
+_LAND_REMINDER_RE = re.compile(r"\([^)]*\)")
+_ADD_CLAUSE_RE = re.compile(r"\badds?\b[^.\n]*", re.I)
+_ANY_COLOR_RE = re.compile(
+    r"\b(?:one |two |three |X |that much |an amount of )?mana (?:in any combination )?of any "
+    r"(?:one )?(?:color|type)|\bany color\b|\bthe chosen color\b", re.I)
+_EXTRA_MANA_COST_RE = re.compile(r"\{[0-9XC]\}|\{[WUBRG]\}|\{[WUBRG]/[WUBRG]\}")
+_FETCH_BASIC_RE = re.compile(
+    r"search your library for (?:a|an|up to \w+|one or more) basic "
+    r"(?:land|plains|island|swamp|mountain|forest)\b", re.I)
+
+
+def land_production(text, colors_cell=None):
+    """What a LAND produces, from its oracle text plus its identity cell.
+
+    Returns a dict with four sets of WUBRG letters and two booleans:
+      free         colours it can add with no extra mana cost and no spending restriction
+                   (identity colours are included — a land's identity IS its mana
+                   symbols — plus any `Add {W}`-style clause, plus all five for an
+                   unconditional any-colour ability)
+      restricted   colours added only under "Spend this mana only …" (a Village-cycle
+                   land, Castle Doom) and not also added freely
+      conditional  colours added only by an ability with an extra MANA cost or a
+                   sacrifice in it ("{1}, {T}: Add one mana of any color" — Capital City,
+                   Captivating Cave; "{T}, Sacrifice this land: Add …") and not also free
+      any          True when some ability reads "mana of any color" (or "the chosen
+                   color"), whatever its cost or restriction
+      fetch        True when it searches for a BASIC land (Evolving Wilds, Fabled
+                   Passage, the Halflingcycling-style riders excluded because they need
+                   a creature type)
+
+    Rules, and why: reminder text is stripped first (a Treasure reminder quotes "Add one
+    mana of any color" — every Treasure maker would read as a rainbow land); each
+    ability owns its LINE, so the cost before the colon and the "spend only" rider after
+    the Add sentence are read per line, which is how Magic prints them; a paying-life
+    cost (Mana Confluence) is NOT conditional — it is a real source every turn; an extra
+    mana symbol in the cost IS, because the land is then a filter, not a source on the
+    turn you need the colour. A colour that is free on one line is free, whatever other
+    lines say. Pure (regex only), so the counters and the recommender share it.
+    """
+    txt = _LAND_REMINDER_RE.sub(" ", text or "")
+    free, restricted, conditional = set(), set(), set()
+    any_color = fetch = False
+    for line in txt.splitlines():
+        low = line.lower()
+        cost = line.split(":", 1)[0] if ":" in line else ""
+        extra_cost = bool(_EXTRA_MANA_COST_RE.search(cost)) or "sacrifice" in cost.lower()
+        limited = "spend this mana only" in low
+        cols = set()
+        for m in _ADD_CLAUSE_RE.finditer(line):
+            clause = m.group(0)
+            cols |= {c for c in "WUBRG" if "{" + c + "}" in clause}
+            if _ANY_COLOR_RE.search(clause):
+                any_color = True
+                cols |= set("WUBRG")
+        if not cols:
+            continue
+        if limited:
+            restricted |= cols
+        elif extra_cost:
+            conditional |= cols
+        else:
+            free |= cols
+    if _FETCH_BASIC_RE.search(txt):
+        fetch = True
+    restricted -= free
+    conditional -= free | restricted
+    # Identity LAST, and only where the text did not already file the colour under a
+    # restriction: a land's identity is its mana symbols, so it is the right fallback for
+    # a row whose text is blank (K-11) or unusual, but Mudflat Village's {B} is
+    # "spend only to cast a creature spell" and identity must not launder it into free.
+    ident = card_colors(colors_cell) if colors_cell else set()
+    free |= ident - restricted - conditional
+    return {"free": free, "restricted": restricted, "conditional": conditional,
+            "any": any_color, "fetch": fetch}
+
+
 class WrongSchema(Exception):
     """Refused to write a CSV that isn't the card library (see ``csv_schema_error``)."""
 

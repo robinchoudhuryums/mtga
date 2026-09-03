@@ -2,7 +2,9 @@
 
 The standardized ending for **every** skill that writes to the repo — currently
 `/add-deck`, `/add-wishlist`, `/apply-changes`, `/draft-deck`, `/ingest`,
-`/log-matches`, `/pile-analysis`, `/refresh`, and any future data-editing skill.
+`/log-matches`, `/pile-analysis`, `/refresh`, `/roster-review` (which writes deck
+files whenever `deck.py sync --apply` runs — added BS8-25), and any future
+data-editing skill.
 Encoded once here so the skills can't drift on the discipline.
 
 That list used to read "`add-cards`, `apply-changes`, and any future
@@ -20,10 +22,21 @@ skipped integrity check, a stale flex note — so follow it verbatim.
 
 ## 1. Gate on integrity FIRST
 
+**If the skill changed a DECK FILE or `card-library.csv`, run `make postedit`** —
+build_dashboard.py, then `check_all.py`, then `check_roles.py --update-baseline`, in
+that order and for that reason (G-69: acknowledging the baseline BEFORE the gate reads
+it mutes the warning on the very run that earns it). It leaves the committed dashboard
+current and the role radar honest. Otherwise run the gate alone:
+
 `python3 scripts/check_all.py` must print **"All invariants hold. ✓"** (exit 0)
 before anything is committed. A hard failure (INV-01…04, ranking sanity) blocks
 the commit — fix it first. Soft warnings (wishlist target drift, unindexed
 mechanics) do **not** block, but note any that are new.
+
+`make postedit` was reachable from no skill at all until BS8-25 — `/apply-changes`
+rebuilt nothing, `/draft-deck` called `build_dashboard.py` directly — so the committed
+snapshot went stale until a soft warning noticed. `check_commands.py` now gates every
+Makefile target the way it gates scripts and subcommands, which is what caught it.
 
 ## 2. Commit with the required trailer
 

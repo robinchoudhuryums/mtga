@@ -1462,12 +1462,23 @@ class TestIngestWatermark:
         assert pm.ingest_watermark(p) == ("2026-08-25", 3)
 
     def test_a_HAND_row_can_never_advance_the_watermark(self, tmp_path):
-        """A `--add` row (a phone game the desktop log never saw) has no matchId and a
-        user-supplied date. Letting one set the watermark would filter out LOG matches
-        that were never ingested — silently, and forever."""
+        """A `--add` row (a phone game the desktop log never saw) carries the id
+        `parse_manual` stamps (`manual-YYYYMMDD-NN`) and a user-supplied date. Letting one
+        set the watermark would filter out LOG matches that were never ingested —
+        silently, and forever. The fixture uses the WRITER's real id shape: the old one
+        used a blank id, which the writer never produces, so the guard it pinned never
+        fired on a real row (BS8-03)."""
         p = self._csv(tmp_path, [{"Date": "2026-08-07", "Match ID": "a", "Result": "W"},
-                                 {"Date": "2026-12-31", "Match ID": "", "Result": "L"}])
+                                 {"Date": "2026-12-31", "Match ID": "manual-20261231-01",
+                                  "Result": "L"}])
         assert pm.ingest_watermark(p) == ("2026-08-07", 1)
+
+    def test_the_fixture_uses_the_id_shape_the_writer_stamps(self):
+        """Pins the fixture to the writer: if `parse_manual`'s prefix ever changes, this
+        fails rather than letting the watermark test go vacuous again."""
+        assert pm.is_manual_id(f"{pm.MANUAL_ID_PREFIX}20261231-01")
+        assert not pm.is_manual_id("a1b2c3")
+        assert not pm.is_manual_id("")
 
     def test_no_logged_rows_yet_reports_no_watermark(self, tmp_path):
         assert pm.ingest_watermark(self._csv(tmp_path, [])) == ("", 0)
@@ -1528,3 +1539,39 @@ class TestFilterSince:
         b, _wb = pm.parse_log(kept)
         assert [r["Match ID"] for r in a] == [r["Match ID"] for r in b] == ["keep"]
         assert a[0]["Result"] == b[0]["Result"]
+
+
+class TestManualDeckIdIsNormalized:
+    def test_a_zero_padded_id_is_accepted(self):
+        """BS8-17 / G-82: `06 L` was refused while `deck.py stats 06` worked."""
+        rows, warnings = pm.parse_manual("06 L", deck_ids={"6", "19b"})
+        assert warnings == [] and rows[0]["Deck"] == "06"
+
+    def test_an_unknown_id_is_still_refused(self):
+        rows, warnings = pm.parse_manual("999 L", deck_ids={"6"})
+        assert rows == [] and "no deck" in warnings[0]
+
+
+class TestLogDeckFlagIsValidated:
+    """BS8-23: `--deck <id>` tags the WHOLE paste, and an unknown id would appear in
+    `--report` as a deck nobody can open. `--add` / `--annotate` refuse one for exactly
+    that reason (G-74); the log path that tags every row did not."""
+
+    def test_an_unknown_id_exits_nonzero_before_parsing(self, tmp_path):
+        import subprocess
+        import sys
+        empty = tmp_path / "log.txt"
+        empty.write_text("", encoding="utf-8")
+        r = subprocess.run([sys.executable, "scripts/parse_matches.py", "--deck", "999",
+                            str(empty)], capture_output=True, text=True, timeout=120)
+        assert r.returncode == 1
+        assert "no deck with that id" in (r.stdout + r.stderr)
+
+    def test_a_padded_real_id_is_accepted(self, tmp_path):
+        import subprocess
+        import sys
+        empty = tmp_path / "log.txt"
+        empty.write_text("", encoding="utf-8")
+        r = subprocess.run([sys.executable, "scripts/parse_matches.py", "--deck", "06",
+                            str(empty)], capture_output=True, text=True, timeout=120)
+        assert "no deck with that id" not in (r.stdout + r.stderr)

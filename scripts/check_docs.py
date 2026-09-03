@@ -222,6 +222,22 @@ def _live_figures():
     def _lines(p):
         return sum(1 for _ in open(os.path.join(REPO_ROOT, p), encoding="utf-8"))
 
+    _WORDS = {10: "ten", 11: "eleven", 12: "twelve", 13: "thirteen", 14: "fourteen",
+              15: "fifteen", 16: "sixteen", 17: "seventeen", 18: "eighteen"}
+
+    def _gate_word():
+        """The number of `check_*.py` gate modules, spelled the way CLAUDE.md writes it.
+        `check_all.py` is the runner and is not one of them."""
+        d = os.path.join(REPO_ROOT, "scripts")
+        n = len([f for f in os.listdir(d)
+                 if f.startswith("check_") and f.endswith(".py") and f != "check_all.py"])
+        return _WORDS.get(n, n)
+
+    def _entries(p):
+        """Baseline ENTRIES: neither a comment nor a blank line."""
+        with open(os.path.join(REPO_ROOT, p), encoding="utf-8") as fh:
+            return sum(1 for ln in fh if ln.strip() and not ln.lstrip().startswith("#"))
+
     def _pool_tag(tag):
         path = os.path.join(REPO_ROOT, "card-pool.csv")
         with open(path, newline="", encoding="utf-8") as fh:
@@ -235,8 +251,11 @@ def _live_figures():
                        if not (r.get("Synergies") or "").strip())
 
     return [
+        # ENTRIES, not lines (BS8-22): `_lines` counted the file's 15 comment lines, so
+        # the figure this defends described the FILE while the acknowledged set — what a
+        # reader takes "baselined at N" to mean — was 15 smaller.
         ("K-09 tag/role baseline",
-         r"baselined at (\d+) and soft in", lambda: _lines("scripts/tag_role_baseline.txt")),
+         r"baselined at (\d+) and soft in", lambda: _entries("scripts/tag_role_baseline.txt")),
         ("K-07 `exile cast` pool cards",
          r"Foretell / Adventure, (\d+) pool cards", lambda: _pool_tag("exile cast")),
         ("K-05 `pay life` pool cards",
@@ -246,6 +265,11 @@ def _live_figures():
         ("C-02 matches.csv rows",
          r"LIVE since 2026-08-10 — (\d+) matches",
          lambda: _lines("matches.csv") - 1),
+        # C-01 gate count. Three documents carried three different numbers (11 / 12 / 14)
+        # against a real 13, because a COUNT of files is a measurement nobody re-measures
+        # (BS8-26). `check_all.py` is the RUNNER, not one of the gates it runs.
+        ("C-01 model-sanity gates",
+         r"INV-01…04 plus \*\*(\w+) model-sanity", lambda: _gate_word()),
     ]
 
 

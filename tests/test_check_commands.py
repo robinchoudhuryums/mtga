@@ -41,9 +41,15 @@ class TestTheRealGatePasses:
         covering nothing, and pre-grants a pass to any future command reusing the name."""
         subs = set(cc.deck_subcommands())
         import os
+        import re
+        mk = os.path.join(os.path.dirname(cc.SCRIPTS_DIR), "Makefile")
+        with open(mk, encoding="utf-8") as fh:
+            targets = set(re.findall(r"(?m)^([a-z][a-z0-9-]*):", fh.read()))
         for kind, name in cc.INTERACTIVE_ONLY:
             if kind == "deck.py":
                 assert name in subs, name
+            elif kind == "make":          # Makefile targets joined the table at BS8-25
+                assert name in targets, name
             else:
                 assert os.path.exists(os.path.join(cc.SCRIPTS_DIR, name)), name
 
@@ -236,3 +242,44 @@ class TestIngestFrontDoorExists:
         """The one conceptual trap the router exists to prevent."""
         t = self._text().lower()
         assert "lower bound" in t and "authoritative" in t
+
+
+class TestMakefileTargetsAreReachable:
+    """BS8-25: `check_commands` proved every SCRIPT and subcommand is reachable from a
+    workflow, and read the Makefile only as an INPUT to that proof — so a TARGET nothing
+    runs was invisible. `make postedit`, the after-every-deck-edit tail G-69 describes,
+    was named by no skill at all, which is why the committed dashboard went stale until a
+    soft warning noticed."""
+
+    def test_every_target_is_named_by_a_skill_or_exempted(self):
+        assert cc.check() == [], "a Makefile target is unreachable — see the message"
+
+    def test_an_unreachable_target_is_reported(self, tmp_path, monkeypatch):
+        import os
+        mk = tmp_path / "Makefile"
+        mk.write_text("orphan:\n\techo hi\n", encoding="utf-8")
+        (tmp_path / "scripts").mkdir()
+        (tmp_path / "docs").mkdir()
+        monkeypatch.setattr(cc, "SCRIPTS_DIR", str(tmp_path / "scripts"))
+        monkeypatch.setattr(cc, "_skill_text", lambda *a, **k: "")
+        monkeypatch.setattr(cc, "deck_subcommands", lambda: [])
+        monkeypatch.setattr(cc, "runnable_scripts", lambda: [])
+        errs = cc.check()
+        assert any("`make orphan`" in e for e in errs), errs
+
+    def test_a_target_named_in_the_shared_commit_tail_counts(self, tmp_path, monkeypatch):
+        mk = tmp_path / "Makefile"
+        mk.write_text("orphan:\n\techo hi\n", encoding="utf-8")
+        (tmp_path / "scripts").mkdir()
+        (tmp_path / "docs").mkdir()
+        (tmp_path / "docs" / "verify-commit-tail.md").write_text(
+            "Run `make orphan` after a deck edit.\n", encoding="utf-8")
+        monkeypatch.setattr(cc, "SCRIPTS_DIR", str(tmp_path / "scripts"))
+        monkeypatch.setattr(cc, "_skill_text", lambda *a, **k: "")
+        monkeypatch.setattr(cc, "deck_subcommands", lambda: [])
+        monkeypatch.setattr(cc, "runnable_scripts", lambda: [])
+        assert not any("`make orphan`" in e for e in cc.check()), cc.check()
+
+    def test_a_stale_make_exemption_is_reported(self, monkeypatch):
+        monkeypatch.setitem(cc.INTERACTIVE_ONLY, ("make", "no-such-target"), "because")
+        assert any("no such Makefile target" in e for e in cc.check())

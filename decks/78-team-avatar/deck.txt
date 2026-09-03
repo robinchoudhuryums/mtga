@@ -17,7 +17,7 @@
 #: archetype: be full of Allies (18 and 15 bodies against ONE and two payoffs), where
 #: archetype: this deck is built on the payoff half and splashes green for it.
 #: tier: B (PROVISIONAL) — still unplayed, and still graded one band UNDER its A metrics
-#: tier: floor. The floor reads A on interaction 8 and card advantage 3 at a 3.42 curve.
+#: tier: floor. The floor reads A on interaction 6 and card advantage 3 at a 3.42 curve.
 #: tier: INTERACTION IS NOW HONEST AND CARD ADVANTAGE IS THE ONE TO WATCH. The 8 counts
 #: tier: Allies at Last for the first time: the removal patterns all read "dealS damage"
 #: tier: while the card says "each DEAL damage", so it scored zero interaction until the
@@ -42,7 +42,7 @@
 #: tier: 2026-09-02 for The Millennium Calendar, because the one-mana hexproof insured a
 #: tier: single point of failure that four doublers no longer have.
 #: tier: WHAT STILL ARGUES FOR B, honestly: Katara remains the deck's worst castability
-#: tier: row — {G}{W}{U} on turn three prices at ~57% against 13/8/10 sources, so she lands
+#: tier: row — {G}{W}{U} on turn three prices at ~57% against 14/9/11 sources (re-counted 2026-09-02 with any-colour lands as sources), so she lands
 #: tier: turn four or five; the interaction is still cheap tricks rather than a suite and
 #: tier: the deck has NO sweeper. Delney was cut once it was measured to double nothing
 #: tier: the trigger-doublers miss, and Elspeth, Storm Slayer replaced Rally the Monastery
@@ -179,9 +179,9 @@
 4 Forest (HOB) 193
 2 Island (HOB) 190
 #~ note: applied — Bard, King of Dale in for Invasion Tactics.
-#~ note: Katara, Water Tribe's Hope is PARKED, not rejected, and the number to re-check is the manabase. Measured 2026-09-01: {2}{W}{U}{U} against 8 blue sources is 43% on curve at turn five -- it would become the deck's worst castability row, below Katara the Fearless at 51%, which is the row the tier block already names as what holds this deck at B. Great Divide Guide (every land AND Ally taps for any colour) and Dazzling Theater (convoke pays a coloured pip off a blue body) both rescue her, but P(drawing either by turn five) is only 33.6%, before either resolves or survives. She comes in when blue sources go up -- roughly 18 are needed for a 90% double pip -- not when a slot opens.
+#~ note: Katara, Water Tribe's Hope is PARKED, not rejected, and the number to re-check is the manabase. Measured 2026-09-01: {2}{W}{U}{U} against 9 blue sources (8 by identity; BS8-01 counts the any-colour land) is 43% on curve at turn five -- it would become the deck's worst castability row, below Katara the Fearless at 51%, which is the row the tier block already names as what holds this deck at B. Great Divide Guide (every land AND Ally taps for any colour) and Dazzling Theater (convoke pays a coloured pip off a blue body) both rescue her, but P(drawing either by turn five) is only 33.6%, before either resolves or survives. She comes in when blue sources go up -- roughly 18 are needed for a 90% double pip -- not when a slot opens.
 #~ -Kyoshi Warriors | +Mister Fantastic, Reed Richards | SIDEGRADE (owned): {3}{U} reach body that draws whenever one or more tokens you control enter. He was CUT 2026-09-01 for Celebrate the Mountain-king, which took interaction 7 -> 8 at the cost of card advantage 4 -> 3; he is the way to buy that draw back if the axis reads too thin in play. Cut listed as Kyoshi Warriors because both are MV 4 and the 4-slot is the curve's fat point.
-#~ note: TWO THINGS TO KNOW BEFORE BRINGING MISTER FANTASTIC BACK. His trigger reads "one or more tokens", so ELSPETH DOES NOT MULTIPLY HIM -- doubling a single creation event enters them simultaneously, which is one trigger, not two. Katara and Starfield DO, because doubling the trigger produces two separate token events. And he is a {3}{U} pip against 8 blue sources in a deck whose worst castability rows are already blue; he is also a non-Ally, so Katara doubles nothing of his own.
+#~ note: TWO THINGS TO KNOW BEFORE BRINGING MISTER FANTASTIC BACK. His trigger reads "one or more tokens", so ELSPETH DOES NOT MULTIPLY HIM -- doubling a single creation event enters them simultaneously, which is one trigger, not two. Katara and Starfield DO, because doubling the trigger produces two separate token events. And he is a {3}{U} pip against 9 blue sources in a deck whose worst castability rows are already blue; he is also a non-Ally, so Katara doubles nothing of his own.
 #~ note: applied — Doubling Season in for Sheriff of Safe Passage.
 #~ note: applied — The Astonishing Ant-Man in for Suki, Courageous Rescuer.
 #~ -Toph, the Blind Bandit | +Orcrist, Goblin-cleaver | SIDEGRADE (owned M): re-parked 2026-09-02 a second time -- its listed cut (Suki) left for The Astonishing Ant-Man. Toph is now the listed cut as the last role-neutral Ally that makes no tokens; note Doubling Season made him BETTER (earthbend 2 -> 4, and his power is the counters on your lands), so this is the softest slot, not a dead one.

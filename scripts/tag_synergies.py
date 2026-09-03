@@ -96,7 +96,7 @@ KEYWORD_THEMES = {
     # graveyard RESOURCE, not a rebuy).
     "renew": ["graveyard", "counters"],
     # Tokens / go-wide / sacrifice
-    "convoke": ["go-wide", "ramp"], "amass": ["tokens", "go-wide"],
+    "convoke": ["go-wide"], "amass": ["tokens", "go-wide"],
     "populate": ["tokens", "go-wide"], "fabricate": ["tokens", "counters"],
     "afterlife": ["tokens", "sacrifice"], "devour": ["sacrifice", "tokens"],
     "offspring": ["tokens", "go-wide"], "role token": ["tokens", "auras"],
@@ -124,7 +124,9 @@ KEYWORD_THEMES = {
     "ward": ["protection"], "hexproof": ["protection"], "shroud": ["protection"],
     "protection": ["protection"], "changeling": ["tribal"],
     # Ramp / lands / spellslinger / modal
-    "landfall": ["lands", "ramp"], "domain": ["lands"], "converge": ["multicolor"],
+    # `ramp` dropped from landfall and convoke (BS8-31): a landfall card is a PAYOFF and
+    # convoke a DISCOUNT — together 196 of the `ramp` tag's 477 cards were neither.
+    "landfall": ["lands"], "domain": ["lands"], "converge": ["multicolor"],
     "cascade": ["value", "spellslinger"], "storm": ["spellslinger"],
     "replicate": ["spellslinger"], "buyback": ["spellslinger", "recursion"],
     "overload": ["spellslinger"], "flurry": ["spellslinger"], "prepared": ["spellslinger", "tempo"],
@@ -365,8 +367,16 @@ MECHANIC_RULES = [
     ("counters", lambda t, x: "+1/+1 counter" in x or "-1/-1 counter" in x
         or "counter on" in x or "stun counter" in x),
     ("counterspell", lambda t, x: "counter target" in x),
-    ("reanimator", lambda t, x: "graveyard" in x and "battlefield" in x
-        and ("return" in x or "put" in x) and "creature" in x),
+    # STRICT since BS8-31: the bag-of-words form ("graveyard" + "battlefield" + return/put
+    # + "creature", anywhere in the text) was 36% false (Long Feng, Rancor, a "put into a
+    # graveyard from the battlefield" trigger) and MISSED 60 real reanimators that lack the
+    # word "creature" (Reassembling Skeleton, Advanced Stitchwing). One clause, graveyard
+    # to battlefield, in either templating.
+    ("reanimator", lambda t, x: re.search(
+        r"(?:from|in) (?:your|a|an|any|each|their|that|target) graveyard[^.]{0,80}?"
+        r"(?:on)?to the battlefield"
+        r"|return (?:this|it|that card)[^.]{0,20}?from your graveyard to the battlefield"
+        r"|\b(?:unearth|embalm|eternalize|encore|disturb|escape—)\b", x) is not None),
     ("graveyard", lambda t, x: "graveyard" in x),
     ("mill", lambda t, x: "mill" in x),
     ("lifegain", lambda t, x: "lifelink" in x or re.search(
@@ -424,9 +434,17 @@ MECHANIC_RULES = [
     # Oracle of Mul Daya, Future Sight).
     ("card advantage", lambda t, x: "from the top of your library" in x
         and ("cast" in x or "play" in x)),
-    ("sacrifice", lambda t, x: "sacrifice" in x),
+    # On the REMINDER- and QUOTE-stripped text (BS8-31): 609 of 2,117 hits were a Blood /
+    # Clue / Mutagen token's reminder, a blitz reminder, or every Saga's "(… Sacrifice
+    # after III.)" — 125 Sagas tagged `sacrifice`, and 29 decks' central themes with them.
+    ("sacrifice", lambda t, x: "sacrifice" in _clean_text(x)),
     ("tokens", lambda t, x: "create" in x and "token" in x),
-    ("removal", lambda t, x: "destroy target" in x or "exile target" in x),
+    # Not graveyard hate ("exile target CARD from a graveyard") and not self-blink ("exile
+    # target creature YOU CONTROL, then return it") — the two cue-less classes of the tag's
+    # 15.6% false positives (BS8-31), the same guards the role classifier grew at BS8-27.
+    ("removal", lambda t, x: re.search(
+        r"(?:destroy|exile) target (?![^.]{0,40}?\bcards?\b)(?![^.]{0,25}?\byou (?:control|own)\b)",
+        _clean_text(x)) is not None),
     ("burn", lambda t, x: re.search(r"deals? \d+ damage|deals x damage", x) is not None),
     ("ramp", lambda t, x: "search your library for a" in x and "land" in x),
     # Color fixing — "spend mana of any type / as though it were any color" lets a deck
@@ -461,7 +479,8 @@ MECHANIC_RULES = [
     # based removal / bite, bounce, hand disruption, card selection, impulse
     # draw, theft, blink, and instant/sorcery-matters.
     ("pump", lambda t, x: re.search(r"gets? \+[\dx]+/[+-][\dx]+", x) is not None),
-    ("removal", lambda t, x: re.search(r"gets [+-]?[\dx]+/-[\dx]+|gets -[\dx]+/", x) is not None
+    # `-N/-0` excluded (BS8-31): a power shrink kills nothing.
+    ("removal", lambda t, x: re.search(r"gets [+-]?[\dx]+/-(?!0\b)[\dx]+", x) is not None
         or "deals damage equal to its power to target creature" in x),
     ("bounce", lambda t, x: re.search(r"return .*to (its|their) owner", x) is not None
         and "hand" in x),
@@ -474,7 +493,10 @@ MECHANIC_RULES = [
     ("blink", lambda t, x: "exile" in x and "return" in x
         and "to the battlefield" in x and "graveyard" not in x),
     ("spellslinger", lambda t, x: "whenever you cast an instant or sorcery" in x
-        or "instant and sorcery spell" in x),
+        or "instant and sorcery spell" in x
+        # "whenever you cast a NONCREATURE spell" is the same archetype's commonest modern
+        # templating (Spellgorger Weird, The Mechanist — 212 pool cards, BS8-31).
+        or "whenever you cast a noncreature spell" in x),
     # --- Mechanical-synergy PAYOFFS the tag model missed (tagging-misreads fix) ---
     # Toughness-matters (Doran-style): a card that assigns/deals combat damage by
     # TOUGHNESS instead of power — the payoff a "toughness swap" deck is built on
@@ -700,6 +722,14 @@ _GRANTED_KEYWORDS = ("deathtouch", "flying", "trample", "lifelink", "menace",
 # text would tag every card whose reminder happens to name one. Stripped for THIS pass
 # only — every other rule keeps the corpus it was written against.
 _GRANT_REMINDER_RE = re.compile(r"\([^)]*\)")
+_QUOTED_TEXT_RE = re.compile(r'"[^"]*"')
+
+
+def _clean_text(x):
+    """Lower-cased text with reminder text and QUOTED text (the ability a token or an
+    emblem carries) removed — the form a rule reads when the raw word would count what a
+    card merely DESCRIBES (BS8-31)."""
+    return _QUOTED_TEXT_RE.sub(" ", _GRANT_REMINDER_RE.sub(" ", x or ""))
 # An OPPONENT-facing grant is the opposite card ("creatures your opponents control gain
 # haste" is a drawback), and a negation inverts it outright. Both are judged on the CLAUSE
 # around the match, not the whole text, so an opponent clause elsewhere on a card cannot

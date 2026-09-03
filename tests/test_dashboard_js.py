@@ -54,6 +54,7 @@ const out = input.pastes.map(seg => analyzeOne(seg));
 console.log(JSON.stringify(out.map(r => r && (r.unmatched ? {unmatched: true} : {
   id: r.deck.id, added: r.added, removed: r.removed, shared: r.shared,
   sync: r.sync, lowconf: !!r.lowconf, runnerUp: r.runnerUp ? r.runnerUp.id : null,
+  truncated: !!r.truncated,
 }))));
 """
 
@@ -69,6 +70,11 @@ PASTES = [
     ["4 Shock (M21) 159", "20 Island (M21) 1", "4 Opt (M21) 2"],   # exact tie: 3 vs 10
     ["4 Shock (M21) 159", "20 Island (M21) 1", "3 Opt (M21) 2"],   # one-card drift
     ["1 Forest (M21) 1", "1 Plains (M21) 2", "1 Mountain (M21) 3"],  # matches nothing
+    # A FRAGMENT (18 of 28 cards, under the 75% floor). The fixtures held no partial
+    # paste, so the JS side's missing TRUNCATED flag — it rendered "⟳ drifted — 0 added /
+    # 10 removed", inviting a sync that would cut the deck down to the fragment — agreed
+    # with Python on every pinned field and the mirror drift stayed invisible (BS8-43).
+    ["4 Shock (M21) 159", "10 Island (M21) 1", "4 Opt (M21) 2"],
 ]
 
 
@@ -117,7 +123,8 @@ def _python_side():
         rows.append({"id": m["deck"]["id"], "added": m["added"], "removed": m["removed"],
                      "shared": m["shared"], "sync": bool(m["drift"] == 0),
                      "lowconf": bool(m.get("lowconf")),
-                     "runnerUp": (ru or {}).get("id") if m.get("lowconf") and ru else None})
+                     "runnerUp": (ru or {}).get("id") if m.get("lowconf") and ru else None,
+                     "truncated": bool(m.get("truncated"))})
     return rows
 
 
@@ -155,6 +162,15 @@ class TestDashboardMatcherAgreesWithPython:
         divergence in the low-confidence flag or the drift counts would mislead just as
         badly while naming the same deck."""
         assert js_side == _python_side(), f"\n  JS: {js_side}\n  PY: {_python_side()}"
+
+    def test_both_flag_a_truncated_paste(self, js_side):
+        """BS8-43: the JS mirror had no `truncated` field at all, so a 16-of-60 fragment
+        rendered as an ordinary drift. G-08's write-side guard is server-only; this panel
+        is read-only, which is exactly why the LABEL has to be right."""
+        assert js_side[3]["truncated"] is True, js_side[3]
+        assert [r.get("truncated") for r in js_side] == [
+            r.get("truncated") for r in _python_side()]
+        assert js_side[0]["truncated"] is False, "a full paste is not a fragment"
 
     def test_the_codepoint_tiebreak_is_what_decides_an_exact_tie(self, js_side):
         """Decks 3 and 10 are identical here, so only the id tie-break separates them.

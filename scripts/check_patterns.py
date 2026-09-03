@@ -85,6 +85,9 @@ _EXCLUDED = {
     ("deck", "_DECK_MARKER_RE"): "Arena paste `Deck` marker, not card text",
     ("deck", "SYMBOL_RE"): "mana-symbol syntax ({W}), not card text",
     ("lib", "_MANA_SYMBOL_RE"): "mana-symbol syntax ({W}), not card text",
+    ("lib", "_EXTRA_MANA_COST_RE"): ("runs against the COST half of one ability line "
+                                     "(before the colon) inside `land_production`, never "
+                                     "whole card text; exercised by test_lib.py"),
     ("deck", "_HISTORY_CUES"): "tier-RATIONALE prose; unit-tested in test_deck.py",
     ("deck", "_COMPARISON_CUES"): "tier-RATIONALE prose; unit-tested in test_deck.py",
     ("deck", "_FIGURE_PAST"): "tier-RATIONALE prose; unit-tested in test_deck.py",
@@ -104,6 +107,11 @@ _EXCLUDED = {
                                   "not a claim about the current list — `deck.py "
                                   "consistency` prints that line and it gets pasted in "
                                   "verbatim); unit-tested in test_deck.py",
+    ("deck", "_FIG_SOURCE_SLASH"): "tier-RATIONALE prose (the '13/8/10 sources' idiom, BS8-16 — "
+                                   "a claim about the deck's manabase, not card text)",
+    ("tag_synergies", "_QUOTED_TEXT_RE"): "a QUOTE stripper (the ability a token or emblem "
+                                          "carries), applied before a rule reads the text — "
+                                          "BS8-31; not a card-text pattern",
     ("deck", "_SHARING_CUES"): "tier-RATIONALE prose (a SHARING claim asserts the card "
                                "is in THIS deck, so the cross-deck suppression is "
                                "skipped there); unit-tested in test_deck.py",
@@ -206,7 +214,9 @@ def _pattern_groups():
                  # Swamps you control") reads at its floor in every model here.
                  "_DECK_STATE_AXIS_RE",
                  # Added by broad-scan F-04 — live, but previously uncovered.
-                 "_DOUBLER_POWER_RE", "_REMINDER_RE",
+                 # (`_REMINDER_RE` moved to the RAW group below at BS8-30: the norm
+                 # corpus is now reminder-stripped, so it matches nothing there BY DESIGN.)
+                 "_DOUBLER_POWER_RE",
                  # Zone-conflict detector (the mirror of cost_upside_flags): which
                  # graveyards a card EMPTIES, and which it NEEDS populated. A dead
                  # pattern here silently stops the flag firing — the failure this whole
@@ -247,8 +257,19 @@ def _pattern_groups():
     # max(tag_score, structural), so a dead pattern here drops the structural signal
     # to 0 and the max() hides it — no error, no visible count change.
     for name in ("_STRUCT_NONETB_TRIGGER_RE", "_STRUCT_ACTIVATED_RE",
-                 "_STRUCT_RULEBEND_RE", "_STRUCT_MODAL_RE", "_STRUCT_REMINDER_RE"):
+                 "_STRUCT_RULEBEND_RE", "_STRUCT_MODAL_RE"):
         out.append((f"lib.{name}", getattr(lib, name), "norm"))
+    # The two reminder-text strippers run BEFORE normalization — `_norm_role_text`
+    # applies deck._REMINDER_RE itself since BS8-30 — so the norm corpus contains no
+    # parenthetical for them to match. Raw is the form they actually see.
+    out.append(("deck._REMINDER_RE", deck._REMINDER_RE, "raw"))
+    out.append(("lib._STRUCT_REMINDER_RE", lib._STRUCT_REMINDER_RE, "raw"))
+    # `lib.land_production` (BS8-01/02): the ONE reader behind every colour-source count
+    # and `suggest --lands`. Every one of these going dead is the quiet direction — an
+    # any-colour land back to zero sources, a fetch back to invisible. Raw form: the Add
+    # clause and the fetch clause are read from ORIGINAL-case oracle text, per line.
+    for name in ("_ADD_CLAUSE_RE", "_ANY_COLOR_RE", "_FETCH_BASIC_RE", "_LAND_REMINDER_RE"):
+        out.append((f"lib.{name}", getattr(lib, name), "raw"))
     out += [("tag_synergies._TRIBAL_PAYOFF_RES", p, "raw")
             for p in tag_synergies._TRIBAL_PAYOFF_RES]
     # Same corpus form and the same reason: a card TYPE the text builds around is

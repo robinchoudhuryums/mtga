@@ -345,3 +345,45 @@ class TestCollectionCsvInput:
         res, warns = vi.verify(_paste("2 Pacifism (ANB) 16"),
                                lib=_lib([("Pacifism", 2)]), mana={"pacifism"})
         assert len(res) == 1 and not any("collection CSV" in w for w in warns)
+
+
+
+class TestLibraryKeyPrefersTheStoredSpelling:
+    """BS8-08 (D-01): `library_index` adds front-face aliases to `names`, so the
+    front→stored-full step of `_library_key` was unreachable and the INV-02 half looked
+    the ALIAS up in card-mana.csv, reporting a false "NO card-mana row" for every
+    front-named paste of a Room."""
+
+    def test_front_name_resolves_to_the_stored_full_name(self):
+        names = {"bottomless pool // locker room", "opt"}
+        assert vi._library_key(names, "Bottomless Pool") == "bottomless pool // locker room"
+        assert vi._library_key(names, "Bottomless Pool // Locker Room") == "bottomless pool // locker room"
+        assert vi._library_key(names, "Opt") == "opt"
+        assert vi._library_key(names, "Nope") is None
+
+    def test_a_real_front_named_row_is_never_shadowed_by_a_full_name_row(self):
+        """"Life" is a card as well as the front of "Life // Death" (G-63)."""
+        names = {"life", "life // death"}
+        assert vi._library_key(names, "Life") == "life"
+
+    def test_library_index_keeps_names_unaliased(self, tmp_path):
+        lib = tmp_path / "lib.csv"
+        lib.write_text("Card Name,Type,Card Text,Color(s),Synergies,Set Code,Collector #,Quantity Owned\n"
+                       "Bottomless Pool // Locker Room,,,,,DSK,48,1\n", encoding="utf-8")
+        qty, names = vi.library_index(str(lib))
+        assert names == {"bottomless pool // locker room"}
+        assert qty["bottomless pool"] == 1, "the qty dict IS aliased — a count is a count"
+
+
+class TestOnlyParseFailuresBlockTheTick:
+    """BS8-08 (D-02): the informational "read as a collection CSV/TSV export" banner
+    lived in `warnings`, and ✓ was gated on the list being empty — so the authoritative
+    tracker-CSV route could never exit 0."""
+
+    def test_informational_notes_do_not_block(self):
+        assert not vi._blocking_warning("read as a collection CSV/TSV export (3 card row(s))")
+        assert not vi._blocking_warning("Foo: 2 export rows share no set/collector column — SUMMED")
+
+    def test_parse_failures_and_unreadable_files_block(self):
+        assert vi._blocking_warning("line 3: could not parse 'garbage'")
+        assert vi._blocking_warning("not readable as a collection CSV/TSV either: boom")

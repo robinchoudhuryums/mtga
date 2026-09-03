@@ -1,8 +1,13 @@
 # Systems map — task-first
 
 **Status: LIVE.** Regenerate when a cycle adds a subcommand or a skill stage.
-Measured 2026-07-29 against 64 decks, 1,853 owned cards, a 15.8k-card pool; §5b added
-2026-08-10 when match logging went from a written-but-unused tool to a live workflow.
+Figures and the reconciliation inventory re-measured **2026-09-03** against 117 deck
+files, 2,537 owned printings, a 15,973-card pool, 35 `deck.py` subcommands and 82 logged
+matches (broad-scan #8, BS8-26 — the header had carried the 2026-07-29 measurement at 64
+decks while calling itself LIVE, which is the "a handoff that IS read and is wrong"
+shape). The WORKFLOW prose below is unchanged from 2026-07-29 and still holds; §5b was
+added 2026-08-10 when match logging went from a written-but-unused tool to a live
+workflow.
 
 This maps the five things the user actually **does**, not the modules the code is
 organised into. That choice is the point: the module structure
@@ -226,6 +231,12 @@ Every place two implementations answer one question. Measured, not asserted.
 | Derived-data rebuild order | `Makefile` | every prose copy | one definition | `tests/test_verify_ingest.py` |
 | A "specific" theme | `_theme_is_generic` denylist | wishlist idf cutoff | **deliberately different** | — |
 | A deck's signature themes | `_signature_themes` (loose) | `_strong_signature_themes` (strict) | **diverge — see §7** | — |
+| Colour sources of a deck | ~~`cmd_mana` / `_deck_source_counts` / `deck_color_sources`~~ | **one** `deck_source_profile` | n/a — retired 2026-09-02 | BS8-01 |
+| Does this card rotate? | ~~`rotation_risk` / `craft_rot_note`~~ | **one** predicate; the note delegates | n/a — retired 2026-09-02 | BS8-12 |
+| Can this deck cast this card? | `_candidate_castability` (cost) | `_filler_castable` / `wishlist._castable` delegate to it | one rule at every site | BS8-05/14/36 |
+| Which legality key is this format? | `pool_format_key` | — | one mapping (60-card Brawl → `standard`) | BS8-04 |
+| Is this deck file valid? | `check_all` INV-04 | the editor's `_write_deck` | same two checks | BS8-19 |
+| Deck ↔ paste TRUNCATION | `deck.match_paste` | the dashboard's JS | agrees since 2026-09-03 | `tests/test_dashboard_js.py` |
 
 **Negative result worth keeping:** `suggest <deck>` and `suggest-homes <card>` are
 inverse queries over the same fit question and use *different* theme gates — `suggest`
@@ -308,7 +319,7 @@ pre-registration and results: `.cycle/blocks/2026-08-creature-cut-retest.md`.
 
 ## 8. What the map says about the surface
 
-- **33 `deck.py` subcommands.** No task uses more than ~14 of them; the roster-level
+- **35 `deck.py` subcommands.** No task uses more than ~14 of them; the roster-level
   five (`audit`, `rotation`, `brawl`, `sync`, `verify`) belong to `/roster-review`
   alone, which is why they were unreachable until that skill existed.
 - **Cost is not the constraint.** The entire tune-deck gather phase is ~10s, and

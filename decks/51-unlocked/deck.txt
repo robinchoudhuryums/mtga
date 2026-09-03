@@ -6,7 +6,8 @@
 #: tier: B — GRADED 2026-07. Deliberately one band BELOW the measurable floor, which reads A on
 #: tier: interaction 7 plus card advantage 9 at a 4.03 curve. The floor is metric-only and says
 #: tier: so; against the rubric an A needs four things and this list fails two.
-#: tier:   A-FLOOR — yes, and interaction 7 now clears the threshold of five by two.
+#: tier:   A-FLOOR — yes: interaction 7 meets the (re-derived, 2026-09-02) threshold of
+#: tier:     seven exactly and the sum of 16 clears eleven.
 #: tier:   COHERENT ENGINE — yes. Rooms into Fractured Realm into Omniscience, with real doubling.
 #: tier:   TIGHT CURVE — no. 4.03 is the slowest on the roster, on 12 early drops.
 #: tier:   AT MOST ONE CLEAR WEAKNESS — no, and the two COMPOUND: a 4.03-curve deck holding seven

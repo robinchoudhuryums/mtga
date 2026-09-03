@@ -225,3 +225,34 @@ class TestInv04Decks:
         errs, warns, _, _ = ca.check_decks()
         assert any("does not exist" in e for e in errs)
         assert any("not a printing we hold" in w for w in warns)
+
+
+
+class TestInv01bLibrarySetCodes:
+    """BS8-34: a library printing whose set code exists in no pool card passed validate,
+    check_all and verify_ingest — a fabricated printing became owned inventory, the
+    OVER-count the docs said this subsystem could not produce."""
+
+    def _world(self, tmp_path, monkeypatch, lib_set):
+        lib = tmp_path / "card-library.csv"
+        pool = tmp_path / "card-pool.csv"
+        _write(lib, "Card Name,Type,Card Text,Color(s),Synergies,Set Code,Collector #,Quantity Owned\n"
+               f"Zzyzx,,,,,{lib_set},999,2\n")
+        _write(pool, "Card Name,Type,Card Text,Color(s),Synergies,Set Code,Collector #,Rarity\n"
+               "Opt,Instant,Scry 1. Draw a card.,U,,M21,59,Common\n")
+        monkeypatch.setattr(ca, "DEFAULT_CSV", str(lib))
+        monkeypatch.setattr(ca, "POOL_CSV", str(pool))
+
+    def test_a_set_code_no_pool_card_carries_is_hard(self, tmp_path, monkeypatch):
+        self._world(tmp_path, monkeypatch, "ZZZ")
+        errs = ca.check_library_printings()
+        assert len(errs) == 1 and "(ZZZ)" in errs[0] and "Zzyzx" in errs[0]
+
+    def test_a_real_set_code_is_quiet(self, tmp_path, monkeypatch):
+        self._world(tmp_path, monkeypatch, "M21")
+        assert ca.check_library_printings() == []
+
+    def test_no_pool_defers_to_inv03(self, tmp_path, monkeypatch):
+        self._world(tmp_path, monkeypatch, "ZZZ")
+        monkeypatch.setattr(ca, "POOL_CSV", str(tmp_path / "absent.csv"))
+        assert ca.check_library_printings() == []

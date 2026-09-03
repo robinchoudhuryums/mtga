@@ -30,7 +30,7 @@
 #: archetype: wins by decking; this discards to re-CAST, and the graveyard is a second hand
 #: archetype: rather than a resource to grow. Against 37 Wizardz (also UBR) the spine is
 #: archetype: different: 37 is Wizard tribal with noncombat-damage pingers.
-#: tier: B — PROVISIONAL (unplayed brew). The metrics floor reads A on interaction 10
+#: tier: B — PROVISIONAL (unplayed brew). The metrics floor reads A on interaction 11
 #: tier: across a 2.86 curve, but three things hold it a band below:
 #: tier: 1. THE PAYOFF IS THE ONE CRAFT TARGET. Norman Osborn // Green Goblin is a single
 #: tier:    unowned mythic, ~22% to be seen by turn seven, and he is what converts the
@@ -146,4 +146,4 @@
 #~   by fit alone at MV 7; the graveyard discount is what the curve reading cannot see.
 #~ note: Nightwhorl Hermit and Stargaze also read fit 30 here and are owned — lower
 #~ note: priority than the two above. Do NOT take more than two of these: `cuts` ranks four
-#~ note: removal spells at the top and the deck runs 10 interaction pieces.
+#~ note: removal spells at the top and the deck runs 11 interaction pieces.

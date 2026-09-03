@@ -36,12 +36,18 @@ def _pure_floor(inter, ca, uncast=0):
     a deck whose measurable floor was D — a dead card made a themeless, interactionless
     list look better. The cap is what the `tier_band` docstring and CLAUDE.md's rubric
     always claimed; only the code (and therefore this anchor) disagreed."""
+    # Reads the SAME table `tier_band` reads (BS8-06): the reference used to carry its
+    # own (5, 7)/(3, 4) literals, so re-deriving the thresholds would have failed this
+    # anchor for agreeing with itself. What this pins is the SHAPE — the plan-blind
+    # floor, the cap, the aggro-only substitution — not the numbers.
+    import deck
+    req = deck.TIER_FLOOR_REQ
     resil = inter + ca
-    if inter >= 5 and resil >= 7:
+    if inter >= req["A"][0] and resil >= req["A"][1]:
         band = "A"
-    elif inter >= 3 and resil >= 4:
+    elif inter >= req["B"][0] and resil >= req["B"][1]:
         band = "B"
-    elif resil >= 2:
+    elif resil >= req["C"][1]:
         band = "C"
     else:
         band = "D"

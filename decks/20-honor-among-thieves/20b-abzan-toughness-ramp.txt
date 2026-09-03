@@ -10,7 +10,7 @@
 #: tier:    four turns developing and then draws one card a turn loses every long game it
 #: tier:    was building toward, and 4 removal spells do not substitute.
 #: tier: 2. The payoff is not reliably castable. `consistency 20b` puts {G}{G}{G} Ancient
-#: tier:    Adamantoise at 44% on turn 5 (13 green sources against a want of 24), on a
+#: tier:    Adamantoise at 44% on turn 5 (16 green sources against a want of 24 — 13 by identity, before BS8-01 counted the any-colour lands), on a
 #: tier:    4.0 average mana value, with a ONE-source blue splash. The deck's plan is to
 #: tier:    resolve a specific expensive card on time and it does that half the time.
 #: tier: Two clear weaknesses is past what B tolerates. PATH TO B: a draw engine (this is

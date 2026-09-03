@@ -603,3 +603,22 @@ class TestRestrictedManaLands:
         mudflat = self._land(self.RESTRICTED)
         assert wishlist._land_value(mudflat, {"B"}) < wishlist._land_value(self._land(
             "This land enters tapped unless you control a Mount.\n{T}: Add {B}."), {"B"})
+
+
+class TestWishlistCastabilityByCost:
+    """BS8-36: `--audit-targets` was pip-aware while `--rank` / `--suggest-targets`
+    tested identity ⊆ deck colours — three answers to one question inside one file."""
+
+    def test_a_hybrid_is_castable_in_either_colour(self):
+        assert wishlist._castable("{1}{U/R}{U/R}", {"U", "R"}, {"U"})
+        assert not wishlist._castable("{U}{R}", {"U", "R"}, {"U"})
+        assert not wishlist._castable("", {"U", "R"}, {"U"}), "no cost -> identity fallback"
+
+
+class TestAddTargetVocabulary:
+    """BS8-17: `--add --target` refused `general`, `concept: …`, `21; 6` and `06` —
+    forms the Target column already carried on 13 live rows."""
+
+    def test_the_status_label_normalizes_a_padded_id(self):
+        assert wishlist._status_label("06", {"6": ("B", 0)}) == "B·0"
+        assert wishlist._status_label("general", {"6": ("B", 0)}) == "—"
