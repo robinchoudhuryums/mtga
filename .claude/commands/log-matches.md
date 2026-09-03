@@ -95,6 +95,7 @@ mtga-matches() {
       "$HOME/mtga-logs/arena.log" "$p"/Player*.log 2>/dev/null \
     | awk '!seen[$0]++' \
     | sed -E 's/\\"(MainDeck|Sideboard)\\":\[[^]]*\]/\\"\1\\":[]/g' \
+    | sed -E 's/"(playerName|platformId|systemSeatId|transactionId|requestId)"[[:space:]]*:[[:space:]]*("[^"]*"|[0-9]+)[[:space:]]*,[[:space:]]*//g; s/[[:space:]]*,[[:space:]]*"(playerName|platformId|systemSeatId|transactionId|requestId)"[[:space:]]*:[[:space:]]*("[^"]*"|[0-9]+)//g' \
     | awk -v cut="$cut" '
         function iso(s,   a) { split(s, a, "/"); return sprintf("%04d-%02d-%02d", a[3], a[1], a[2]) }
         cut == "" { print; next }
@@ -140,6 +141,28 @@ the dangerous one — an empty clipboard reads as "no new matches", not as "bad 
 so an unparseable date is now refused with a non-zero exit rather than obeyed, and a zero
 result WITH a cut says so on stderr.
 
+**The second `sed` drops five fields the parser never reads** — `playerName`,
+`platformId`, `systemSeatId`, `transactionId`, `requestId` — verified against
+`resolve_matches`, which reads only `userId` / `teamId` / `courseId` / `eventId` per seat,
+plus `matchId`, `matchCompletedReason`, `resultList` and the top-level `timestamp`. Two
+substitutions rather than one so a stripped field can sit first, middle or LAST in its
+object without leaving a dangling comma; the line must stay valid JSON, because the parser
+`json.loads` it. Measured: a `finalMatchResult` line 969 → 775 bytes spaced and 1021 → 843
+compact (~18%), a whole export 3866 → 3284, with `parse_matches.py` reporting byte-identical
+results from either. The ESCAPED `\"…\"` fields on an `EventSetDeckV3` line are untouched
+by construction (these patterns match bare quotes), verified at 603 → 603 bytes.
+
+Dropping `playerName` also stops opponents' display names riding along on the clipboard,
+which matches what the parser already does deliberately — the module docstring says it
+"stores NO userId and NO playerName".
+
+**The coupling this creates is real and is worth stating**: it puts "what the parser
+needs" in a second place, so a future parser that starts reading one of these five would
+silently get nothing from a trimmed paste. What makes that acceptable is the same rule
+that governs the existing MainDeck/Sideboard slim — **slim at PASTE time, never at
+capture time**. `snapshot.sh` keeps `arena.log` full-fidelity, so any field dropped here
+is one re-extraction away.
+
 **`pbpaste` is gone from the count.** It round-tripped the entire clipboard through the
 pasteboard a second time just to count lines, and read whatever was on the clipboard
 rather than what was just written — a race if anything else copied in between. The output
@@ -157,6 +180,15 @@ date from the repo side:
 ```
 python3 scripts/parse_matches.py --watermark      # prints the newest ingested date
 ```
+
+**THE DEDUPE DOES NOT REMEMBER PREVIOUS RUNS, and reading it that way is the easy
+mistake.** It removes lines duplicated WITHIN one invocation (the archive/Player.log
+overlap). It has no memory: a bare `mtga-matches` still emits the whole archive from the
+beginning, including every match already in `matches.csv`. Nothing on the Mac knows what
+has been ingested — the watermark lives in `matches.csv`, in the repo. So the date
+argument is still the only thing that shortens a paste across sessions, and
+`--since-last` (below) is the zero-effort alternative: paste everything and let the repo
+filter, since it reads the watermark itself.
 
 **Why this is worth doing, and why it is only a convenience.** The archive is deliberately
 never consumed, so every extraction re-emits the whole history: a real paste ran 280 lines
