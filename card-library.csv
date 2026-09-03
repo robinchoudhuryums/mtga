@@ -5405,3 +5405,59 @@ Whenever this creature attacks, another target creature you control gains flying
 Attacking tokens you control have flying.",W,Human; Scout; flying; evasion,TDM,25,1
 "Jet, Freedom Fighter",Legendary Creature — Human Rebel Ally,"When Jet enters, he deals damage equal to the number of creatures you control to target creature an opponent controls.
 When Jet dies, put a +1/+1 counter on each of up to two target creatures.",W/R,Human; Rebel; Ally; counters; etb,TLA,229,1
+Dour Port-Mage,Creature — Frog Wizard,"Whenever one or more other creatures you control leave the battlefield without dying, draw a card.
+{1}{U}, {T}: Return another target creature you control to its owner's hand.",U,Frog; Wizard; card draw; bounce,BLB,47,1
+Three Tree Scribe,Creature — Frog Druid,"Whenever this creature or another creature you control leaves the battlefield without dying, put a +1/+1 counter on target creature you control.",G,Frog; Druid; counters,BLB,199,1
+"Glarb, Calamity's Augur",Legendary Creature — Frog Wizard Noble,"Deathtouch
+You may look at the top card of your library any time.
+You may play lands and cast spells with mana value 4 or greater from the top of your library.
+{T}: Surveil 2.",U/B/G,Frog; Wizard; Noble; card advantage; selection; surveil; graveyard; deathtouch; combat; removal,BLB,215,1
+Splash Portal,Sorcery,"Exile target creature you control, then return it to the battlefield under its owner's control. If that creature is a Bird, Frog, Otter, or Rat, draw a card.",U,card draw; blink,BLB,74,1
+Lilysplash Mentor,Creature — Frog Druid,"Reach
+{1}{G}{U}: Exile another target creature you control, then return it to the battlefield under its owner's control with a +1/+1 counter on it. Activate only as a sorcery.",U/G,Frog; Druid; counters; blink; reach; defense,BLB,222,1
+Long River Lurker,Creature — Frog Scout,"Ward {1}
+Other Frogs you control have ward {1}.
+When this creature enters, target creature you control can't be blocked this turn. Whenever that creature deals combat damage this turn, you may exile it. If you do, return it to the battlefield under its owner's control.",U,Frog; Scout; etb; blink; ward; protection,BLB,57,1
+Mistbreath Elder,Creature — Frog Warrior,"At the beginning of your upkeep, return another creature you control to its owner's hand. If you do, put a +1/+1 counter on this creature. Otherwise, you may return this creature to its owner's hand.",G,Frog; Warrior; counters; bounce,BLB,184,1
+Stickytongue Sentinel,Creature — Frog Warrior,"Reach
+When this creature enters, return up to one other target permanent you control to its owner's hand.",G,Frog; Warrior; etb; bounce; reach; defense,BLB,193,1
+"Clement, the Worrywort",Legendary Creature — Frog Druid,"Vigilance
+Whenever Clement or another creature you control enters, return up to one target creature you control with lesser mana value to its owner's hand.
+Frogs you control have ""{T}: Add {G} or {U}. Spend this mana only to cast a creature spell.""",U/G,Frog; Druid; mana; bounce; vigilance; combat,BLB,209,1
+Splash Lasher,Creature — Frog Wizard,"Offspring {1}{U} (You may pay an additional {1}{U} as you cast this spell. If you do, when this creature enters, create a 1/1 token copy of it.)
+When this creature enters, tap up to one target creature and put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)",U,Frog; Wizard; counters; tokens; etb; offspring; go-wide,BLB,73,1
+Sunshower Druid,Creature — Frog Druid,"When this creature enters, put a +1/+1 counter on target creature and you gain 1 life.",G,Frog; Druid; counters; lifegain; etb,BLB,195,1
+Clifftop Lookout,Creature — Frog Scout,"Reach
+When this creature enters, reveal cards from the top of your library until you reveal a land card. Put that card onto the battlefield tapped and the rest on the bottom of your library in a random order.",G,Frog; Scout; etb; reach; defense,BLB,168,1
+Treeguard Duo,Creature — Frog Rabbit,"When this creature enters, until end of turn, target creature you control gains vigilance and gets +X/+X, where X is the number of creatures you control.",G,Frog; Rabbit; etb; pump; vigilance; combat,BLB,200,1
+"Quina, Qu Gourmet",Legendary Creature — Qu,"If one or more tokens would be created under your control, those tokens plus a 1/1 green Frog creature token are created instead.
+{2}, Sacrifice a Frog: Put a +1/+1 counter on Quina.",G,Qu; counters; sacrifice; tokens,FIN,194,1
+Valley Mightcaller,Creature — Frog Warrior,"Trample
+Whenever another Frog, Rabbit, Raccoon, or Squirrel you control enters, put a +1/+1 counter on this creature.",G,Frog; Warrior; counters; trample; evasion,BLB,202,1
+Valley Floodcaller,Creature — Otter Wizard,"Flash
+You may cast noncreature spells as though they had flash.
+Whenever you cast a noncreature spell, Birds, Frogs, Otters, and Rats you control get +1/+1 until end of turn. Untap them.",U,Otter; Wizard; Rat; pump; spellslinger; flash; tempo,BLB,79,1
+"Berta, Wise Extrapolator",Legendary Creature — Frog Druid,"Increment (Whenever you cast a spell, if the amount of mana you spent is greater than this creature's power or toughness, put a +1/+1 counter on this creature.)
+Whenever one or more +1/+1 counters are put on Berta, add one mana of any color.
+{X}, {T}: Create a 0/0 green and blue Fractal creature token and put X +1/+1 counters on it.",U/G,Frog; Druid; counters; tokens; increment; spellslinger,SOS,175,1
+Vinereap Mentor,Creature — Squirrel Druid,"When this creature enters or dies, create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")",B/G,Squirrel; Druid; lifegain; tokens; etb; food,BLB,238,1
+Oakhollow Village,Land,"{T}: Add {C}.
+{T}: Add {G}. Spend this mana only to cast a creature spell.
+{G}, {T}: Put a +1/+1 counter on each Frog, Rabbit, Raccoon, or Squirrel you control that entered the battlefield this turn.",G,counters; mana,BLB,258,1
+Mudflat Village,Land,"{T}: Add {C}.
+{T}: Add {B}. Spend this mana only to cast a creature spell.
+{1}{B}, {T}, Sacrifice this land: Return target Bat, Lizard, Rat, or Squirrel card from your graveyard to your hand.",B,graveyard; sacrifice; mana,BLB,257,1
+"Byrke, Long Ear of the Law",Legendary Creature — Rabbit Soldier,"Vigilance
+When Byrke enters, put a +1/+1 counter on each of up to two target creatures.
+Whenever a creature you control with a +1/+1 counter on it attacks, double the number of +1/+1 counters on it.",W/G,Rabbit; Soldier; counters; etb; vigilance; combat; double,BLB,380,1
+"Finneas, Ace Archer",Legendary Creature — Rabbit Archer,"Reach, vigilance
+Whenever Finneas attacks, put a +1/+1 counter on each other creature you control that's a token or a Rabbit. Then if creatures you control have total power 10 or greater, draw a card.",W/G,Rabbit; Archer; counters; card draw; reach; defense; vigilance; combat,BLB,212,1
+Warren Warleader,Creature — Rabbit Knight,"Offspring {2} (You may pay an additional {2} as you cast this spell. If you do, when this creature enters, create a 1/1 token copy of it.)
+Whenever you attack, choose one —
+• Create a 1/1 white Rabbit creature token that's tapped and attacking.
+• Attacking creatures you control get +1/+1 until end of turn.",W,Rabbit; Knight; tokens; etb; pump; offspring; go-wide,BLB,38,1
+Burrowguard Mentor,Creature — Rabbit Soldier,"Trample
+Burrowguard Mentor's power and toughness are each equal to the number of creatures you control.",W/G,Rabbit; Soldier; trample; evasion,BLB,206,1
+Lupinflower Village,Land,"{T}: Add {C}.
+{T}: Add {W}. Spend this mana only to cast a creature spell.
+{1}{W}, {T}, Sacrifice this land: Look at the top six cards of your library. You may reveal a Bat, Bird, Mouse, or Rabbit card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.",W,sacrifice; mana; selection,BLB,256,1
