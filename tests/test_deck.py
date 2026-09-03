@@ -1393,6 +1393,72 @@ class TestArchetypeFiguresAreAudited:
         assert hits == [], f"stale rationale figure(s): {hits}"
 
 
+class TestCostThatScalesWithADeckCount:
+    """A card whose COST falls with a count you control is worth what the deck supplies,
+    and every model here prices a card at its printed cost.
+
+    Found via `Equip Wizard {1}` / `Equip {3}`: `suggest-homes` ranked Wizard's Staff into
+    a ONE-Wizard deck above two 20-Wizard decks, because the printed cost is identical
+    everywhere and nothing read the scoped discount.
+    """
+
+    STAFF = ("Equipped creature has prowess.\n"
+             "If a triggered ability of equipped creature triggers, that ability triggers "
+             "an additional time.\nEquip Wizard {1}\nEquip {3}")
+
+    def test_all_three_templatings_resolve_to_a_countable_type(self):
+        assert deck.cost_scale_resource(self.STAFF) == "wizard"
+        assert deck.cost_scale_resource("Affinity for artifacts") == "artifact"
+        assert deck.cost_scale_resource(
+            "This spell costs {1} less to cast for each Equipment you control.") == "equipment"
+
+    def test_plural_resources_singularise_against_the_real_type_list(self):
+        """A naive `[:-1]` turns "Allies" into "allie" — a type no card carries, so the
+        support count comes back a silent 0 and the discount reads as absent."""
+        assert deck.cost_scale_resource("Affinity for Allies") == "ally"
+        assert deck.cost_scale_resource("Affinity for Elves") == "elf"
+        assert deck.cost_scale_resource("Affinity for Cats") == "cat"
+
+    def test_a_GAME_STATE_count_is_not_a_deck_composition_count(self):
+        """The line G-76 already draws. A deck-list count is not the quantity "for each
+        card exiled this way" asks about, so those are left alone rather than answered
+        wrongly — 55 pool instances."""
+        for t in ("This spell costs {1} less to cast for each card exiled this way.",
+                  "This spell costs {1} less to cast for each creature in your party.",
+                  "This costs {1} less to cast for each creature card in your graveyard."):
+            assert deck.cost_scale_resource(t) is None
+
+    def test_a_scoped_equip_needs_a_PLAIN_equip_to_be_cheaper_than(self):
+        """Without the pair there is no discount to price — the scoped cost IS the cost."""
+        assert deck.cost_scale_resource("Equip Knight {1}\nEquip {3}") == "knight"
+        assert deck.cost_scale_resource("Equip Knight {1}") is None
+
+    def test_boost_is_zero_below_the_floor_and_rises_then_caps(self):
+        f = deck._COST_SCALE_MIN_SOURCES
+        assert deck.cost_scale_boost(f - 1) == 0
+        assert 0 < deck.cost_scale_boost(f) < deck.cost_scale_boost(f + 6)
+        assert deck.cost_scale_boost(9999) == deck._COST_SCALE_CAP
+
+    def test_the_floor_sits_above_the_ORDINARY_number_of_copies(self):
+        """Calibrated from the measured distribution, not an imagined range — the mistake
+        `_DOUBLER_CALIB` exists to record. Across all (scaler card, deck) pairs the
+        nonzero support runs p25 2 / p50 3 / p75 10, so a couple of copies is the ordinary
+        case and a floor at or below it would fire on nearly every deck."""
+        assert deck._COST_SCALE_MIN_SOURCES > 3
+        assert deck._COST_SCALE_KEY_SOURCES >= 10
+
+    def test_support_reads_the_TYPE_LINE_not_a_synergy_tag(self):
+        """K-04: gating on a derived tag inherits every hole in the tagger. Salt Road
+        Packbeast is tagged `artifacts` off its affinity KEYWORD while its actual resource
+        is creatures — the tag would have counted the wrong thing."""
+        carddata = {"a bear": {"name": "A Bear", "type": "Creature — Bear", "text": ""},
+                    "a rock": {"name": "A Rock", "type": "Artifact", "text": ""}}
+        cards = [(3, "A Bear", "X", "1"), (2, "A Rock", "X", "2")]
+        assert deck.cost_scale_support("creature", cards, carddata) == 3
+        assert deck.cost_scale_support("artifact", cards, carddata) == 2
+        assert deck.cost_scale_support("wizard", cards, carddata) == 0
+
+
 class TestFloorBandClaimsAreAudited:
     """The floor BAND was the one structural claim the rationale audit could not price.
 

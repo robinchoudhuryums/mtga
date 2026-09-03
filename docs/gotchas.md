@@ -1997,6 +1997,67 @@ varies is indistinguishable from a signal that is working, until something it ra
 obviously wrong.
 
 
+## [G-83] A cost that SCALES with a deck count, priced by nothing
+
+Every model in this repo prices a card at its PRINTED cost. That is right for most cards
+and wrong for a family of about sixty, whose cost falls with a count of something you
+control. Three templatings, one effect:
+
+    Affinity for artifacts                                       52 pool instances
+    This spell costs {1} less to cast for each Equipment …      134 instances
+    Equip Wizard {1}  /  Equip {3}                               16 cards
+
+64 pool cards resolve to a resource a deck's composition actually decides.
+
+**How it surfaced.** `suggest-homes` ranked Wizard's Staff — `Equip Wizard {1}` against a
+plain `Equip {3}` — into deck 57, which runs ONE Wizard, above decks 37 and 37b, which run
+21 and 20. The card's printed cost is identical in all three, so nothing separated them;
+the equip is a two-thirds discount in a Wizard deck and full price in a prowess deck, and
+that fact reached no scorer. It was found the way the doubler saturation was: a person
+looked at a ranking and said it was obviously wrong.
+
+**Scope is the line G-76 already draws.** Only a count the DECK'S COMPOSITION decides is
+priced. "for each artifact you control" is a deck-building fact. "for each card exiled
+this way", "for each creature in your party", "for each creature card in your graveyard"
+are GAME STATE at cast time, and a deck-list count is not the quantity they ask about —
+55 pool instances are state-shaped and are deliberately left alone rather than answered
+wrongly. A resource is also only accepted if it names a REAL card type or a subtype the
+pool actually prints, so a phrase the patterns mis-slice fails to match instead of
+becoming a resource no card can satisfy (which would read as a silent zero).
+
+**It reads the TYPE LINE, never a synergy tag.** K-04 in its plainest form: Salt Road
+Packbeast carries the tag `artifacts`, mapped from its affinity KEYWORD, while its actual
+resource is creatures — "Affinity for creatures (This spell costs {1} less to cast for
+each creature you control.)". A tag-gated implementation would have counted the wrong
+thing and looked like it worked.
+
+**Plural resources singularise against the real type list**, as candidates rather than
+blind edits. A naive `[:-1]` turns "Allies" into "allie", a type nothing carries, so
+`cost_scale_support` returns 0 and the card reads as having no discount at all — the
+failure is invisible because zero is a legitimate answer. `_cost_scale_singulars` offers
+`ies→y`, `ves→f`, `es→`, `s→` and each is checked against the pool's own subtypes.
+
+**Calibration follows `_DOUBLER_CALIB`'s lesson rather than repeating its mistake.**
+Across all 7,360 (scaler card, deck) pairs support is nonzero on 57%, and those nonzero
+counts run **p25 2 / p50 3 / p75 10 / p90 22 / max 35**. A couple of copies of a type is
+the ORDINARY case and says nothing, so the floor has to sit above it: floor **4** (a deck
+with three artifacts is not an artifact deck), key **10** (p75, a real build-around), cap
+reached near p90. The cap is **12** against the doubler's 18, on a judgment stated so it
+can be argued with — a discount changes WHEN you cast a card, a doubler changes what the
+card DOES, and the second is worth more. Bounded either way, so neither can override a
+genuine theme match.
+
+**Roster diff:** 17 of 64 scaler cards re-ordered their deck list and 5 changed their top
+pick; on the `cuts` side 2 of 115 decks changed their top-3 and **none** changed their #1.
+Both cut moves are the intended behaviour — Claws Out ("affinity for Cats") leaves the Cat
+deck's cut list, Polliwallop ("affinity for Frogs") drops down the Frog deck's.
+
+**The residual, and it is not this defect.** After the fix deck 57 still sits second for
+Wizard's Staff, ahead of deck 37, on raw theme overlap: it shares four central themes to
+37's two, and one of them is `prowess`, which the Staff genuinely grants. The Wizard decks
+now bracket it and 37b leads. Theme overlap favouring a deck the card really does fit is
+the model working, not a further hole.
+
 ## [G-34] Before committing a deck edit, run `deck.py preflight <id>` — and grade a cut/swap with `deck.py
 
 **Before committing a deck edit, run `deck.py preflight <id>` — and grade a

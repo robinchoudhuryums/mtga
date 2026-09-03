@@ -365,6 +365,8 @@ POOL_CARDS = [
      "triggers an additional time.", "B", "", "Rare"),
     ("Pool Trigger Body", "Creature — Bear",
      "Whenever this creature attacks, you gain 1 life.", "B", "lifegain", "Common"),
+    ("Pool Scaler", "Creature — Horror",
+     "Affinity for Bears", "B", "", "Rare"),
 ]
 
 # Per-card legality overrides; anything unlisted is Standard-legal.
@@ -534,6 +536,28 @@ class TestRoleFillers:
         feeds its axis stays genuinely cuttable."""
         below = deck.doubler_calib("triggers")[0] - 1
         assert self._doubler_keep(world, below) == self._doubler_keep(world, 0)
+
+    def _scaler_keep(self, world, bodies):
+        """Pool Scaler's keep-score in a deck with `bodies` copies of the type its cost
+        scales with. Isolates the term: the scaler shares no synergy tag or role with the
+        bodies, so every other component of its keep-score is identical."""
+        lines = ["1 Pool Scaler", "20 Swamp"]
+        if bodies:
+            lines.insert(1, f"{bodies} Pool Trigger Body")
+        rows, *_ = deck.rank_cut_candidates(world(lines))
+        return {r[1]: r[0] for r in rows}["Pool Scaler"]
+
+    def test_cuts_consults_the_cost_scaling_co_signal(self, world):
+        """WIRING anchor, the twin of the multiplier one above. A card the deck makes
+        CHEAP is not filler — but both halves of the cut score price it at its printed
+        cost, so only the co-signal can tell it apart, and only if it is consulted.
+        Counts come from the calibration constant, never a literal."""
+        n = deck._COST_SCALE_MIN_SOURCES + 6
+        assert self._scaler_keep(world, n) > self._scaler_keep(world, 0)
+
+    def test_a_scaler_the_deck_does_not_supply_gets_no_credit(self, world):
+        below = deck._COST_SCALE_MIN_SOURCES - 1
+        assert self._scaler_keep(world, below) == self._scaler_keep(world, 0)
 
     def test_functional_theme_options_returns_cards_carrying_the_theme(self, world):
         d = world(["1 Bear", "20 Swamp"], owned=["Pool Counters Guy"])

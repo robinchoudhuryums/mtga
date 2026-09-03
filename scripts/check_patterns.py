@@ -109,6 +109,11 @@ _EXCLUDED = {
                                   "verbatim); unit-tested in test_deck.py",
     ("deck", "_FIG_SOURCE_SLASH"): "tier-RATIONALE prose (the '13/8/10 sources' idiom, BS8-16 — "
                                    "a claim about the deck's manabase, not card text)",
+    ("deck", "_COST_SCALE_STATE"): "runs on the EXTRACTED resource phrase, never on card "
+                                   "text — it separates a deck-composition count "
+                                   "(\"artifact you control\") from a game-state one "
+                                   "(\"card exiled this way\"), the line G-76 draws; a "
+                                   "whole-text corpus check would be meaningless for it",
     ("deck", "_FIG_FLOOR_BAND"): "tier-RATIONALE prose (the 'metrics floor is A' claim — "
                                  "a band LETTER, which is why no numeric figure pattern "
                                  "could ever price it); unit-tested in test_deck.py",
@@ -276,6 +281,13 @@ def _pattern_groups():
     # The two reminder-text strippers run BEFORE normalization — `_norm_role_text`
     # applies deck._REMINDER_RE itself since BS8-30 — so the norm corpus contains no
     # parenthetical for them to match. Raw is the form they actually see.
+    # The cost-scaling family reads ORIGINAL-case oracle text on purpose: "Equip Wizard
+    # {1}" is a type-scoped discount and "Equip {3}" is not, and the capital is the only
+    # thing separating a creature TYPE from a generic noun — the same reason the
+    # tribal-payoff scan is registered raw.
+    for name in ("_COST_SCALE_AFFINITY", "_COST_SCALE_EACH", "_COST_SCALE_EQUIP",
+                 "_COST_SCALE_PLAIN_EQUIP"):
+        out.append((f"deck.{name}", getattr(deck, name), "raw"))
     out.append(("deck._REMINDER_RE", deck._REMINDER_RE, "raw"))
     out.append(("lib._STRUCT_REMINDER_RE", lib._STRUCT_REMINDER_RE, "raw"))
     # `lib.land_production` (BS8-01/02): the ONE reader behind every colour-source count

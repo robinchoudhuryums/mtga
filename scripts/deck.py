@@ -47,6 +47,7 @@ hybrid {W/U} pips are counted as flexible rather than demanding both colors.
 
 import argparse
 import csv
+import functools
 import json
 import math
 import os
@@ -2738,6 +2739,21 @@ def _cuts_uniq_adj(uniq):
 _CUTS_MULT_CAP = 3.0
 _CUTS_MULT_MIN_SOURCES = 4      # below this, a doubler genuinely has nothing to double
 _CUTS_MULT_PER_SOURCE = 0.35
+
+
+def _cuts_cost_scale_adj(support):
+    """Keep-bias for a card whose COST falls with the deck's count of a type.
+
+    Scaled to `_cuts_multiplier_adj`'s range and zero below the same floor
+    `cost_scale_boost` uses, so the two surfaces cannot disagree about whether a deck
+    supplies a resource. Only ever RAISES a keep-score: a scaler in a deck that does not
+    supply its type is already handled by theme fit, and subtracting there would punish
+    the same card twice.
+    """
+    if support < _COST_SCALE_MIN_SOURCES:
+        return 0.0
+    return min(_CUTS_MULT_CAP,
+               (support - _COST_SCALE_MIN_SOURCES + 1) * _CUTS_MULT_PER_SOURCE)
 
 
 def _cuts_multiplier_adj(support, axis=None):
@@ -7589,6 +7605,12 @@ def cut_keep_score(ctx, tline, text, tags, rarity="", qty=1):
     mult_support = (doubler_support(mult_axis, ctx["cards"], ctx["carddata"],
                                     doubler_restriction(text))
                     if mult_axis else 0)
+    # …and the cost-scaling twin: a card the deck makes CHEAP is not filler, and both
+    # halves of the cut score price it at its printed cost. Same primitives
+    # `suggest-homes` uses, for the reason the comment above gives.
+    cscale_res = cost_scale_resource(text)
+    cscale_support = (cost_scale_support(cscale_res, ctx["cards"], ctx["carddata"])
+                      if cscale_res else 0)
 
     # keep-score: higher = keep; cut candidates sort to the top (lowest keep).
     # Role credit is impact-weighted (see _role_credit) so a strong-but-off-theme
@@ -7601,7 +7623,8 @@ def cut_keep_score(ctx, tline, text, tags, rarity="", qty=1):
     keep = (fit + _role_credit(roles, ctx["deck_tally"]) + (1 if hit_central else 0)
             + (2 if sig_hit else 0) + min(tribal, 6)
             + _cuts_power_adj(power) + _cuts_uniq_adj(uniq)
-            + _cuts_multiplier_adj(mult_support, mult_axis))
+            + _cuts_multiplier_adj(mult_support, mult_axis)
+            + _cuts_cost_scale_adj(cscale_support))
 
     reasons = []
     if tags and not hit_central:
@@ -8604,6 +8627,169 @@ _FIXER_KEY_RATE = 0.7
 # still lost the ranking. What is missing is a deck-side COUNT, so this is a scoring term
 # on the same bounded pattern as `_fixer_boost` (whose value likewise scales with a
 # deck-side quantity, the colour count).
+# ---- COST THAT SCALES WITH A DECK COUNT ------------------------------------------
+# The doubler overlay below answers "this card MULTIPLIES something — how much of it does
+# the deck do?". This is the same question one step earlier in the turn: a card whose COST
+# falls with a count you control is worth what the deck supplies, and every model here
+# prices a card's cost as printed. Three templatings, one effect:
+#
+#   Affinity for artifacts                                      (52 pool instances)
+#   This spell costs {1} less to cast for each Equipment …     (134 instances)
+#   Equip Wizard {1}  /  Equip {3}                              (16 pool cards)
+#
+# The third is why this exists: `suggest-homes` ranked Wizard's Staff into a ONE-Wizard
+# deck above two 20-Wizard decks, because "Equip Wizard {1}" is a two-thirds discount that
+# nothing read — the card's printed cost is identical in every deck.
+#
+# SCOPE IS DELIBERATELY NARROW, on the line G-76 already draws: only a resource the DECK'S
+# COMPOSITION decides is counted. "for each artifact you control" is a deck-building fact;
+# "for each card exiled this way", "for each creature in your party", "for each creature
+# card in your graveyard" are GAME STATE at cast time, and a deck-list count is not the
+# quantity those ask about. 55 pool instances are state-shaped and are left alone rather
+# than answered wrongly.
+_COST_SCALE_AFFINITY = re.compile(r"\baffinity for ([A-Za-z][\w' ]*)", re.I)
+_COST_SCALE_EACH = re.compile(r"costs? \{[^}]+\} less to cast for each ([^.,;]{1,60})", re.I)
+# A type-scoped equip is only a discount if a PLAIN equip cost also exists to be cheaper
+# than — "Equip {3}" alongside "Equip Wizard {1}". Without that pair the scoped cost IS
+# the only cost and there is no reduction to price.
+_COST_SCALE_EQUIP = re.compile(r"[Ee]quip ([A-Z][a-z]+(?: [a-z]+)?) \{")
+_COST_SCALE_PLAIN_EQUIP = re.compile(r"[Ee]quip \{")
+# A qualifier that makes the count a board/zone/timing question rather than a deck one.
+_COST_SCALE_STATE = re.compile(
+    r"\b(this way|this turn|in your (?:graveyard|hand|party)|exiled|sacrificed|died|"
+    r"drawn|attacked|among|power|toughness|counter|color|damage|life|opponent)\b", re.I)
+# Card types are countable directly; anything else must be a real subtype in the pool.
+_COST_SCALE_CARD_TYPES = {"artifact", "creature", "enchantment", "land", "instant",
+                          "sorcery", "planeswalker", "battle", "equipment", "token",
+                          "legendary creature", "commander"}
+
+
+@functools.lru_cache(maxsize=1)
+def _cost_scale_subtypes():
+    """Every creature/artifact SUBTYPE the pool actually prints, lowercased.
+
+    A resource is only countable if it names a real type — otherwise a phrase the
+    patterns mis-slice ("basic land type among lands you") becomes a resource no card can
+    ever satisfy, and the support count is a silent zero rather than a visible miss.
+
+    Memoised, and returns a FROZENSET rather than a set: this is a derived reference table
+    handed to every caller, and G-71 is the standing lesson that a shared memoised table
+    which any caller can mutate will eventually be mutated. Building it walks the whole
+    pool, so recomputing per call made a roster sweep take minutes.
+    """
+    subs = set()
+    for c in load_card_data().values():
+        tl = c.get("type") or ""
+        if "—" not in tl:
+            continue
+        for word in tl.split("—", 1)[1].replace("//", " ").split():
+            if word.isalpha():
+                subs.add(word.lower())
+    return frozenset(subs)
+
+
+def _cost_scale_singulars(word):
+    """Candidate singular forms of a plural resource name, commonest shapes first.
+
+    Magic's creature types pluralise ordinarily but not uniformly, and a naive `[:-1]`
+    turns "Allies" into "allie" — a resource no card can carry, so the support count
+    returns a silent 0 and the card reads as having no discount at all. Yielded as
+    CANDIDATES checked against the real type list rather than applied blind, so a wrong
+    guess simply fails to match instead of inventing a type.
+    """
+    out = []
+    if word.endswith("ies"):
+        out.append(word[:-3] + "y")          # Allies -> ally
+    if word.endswith("ves"):
+        out.append(word[:-3] + "f")          # Elves -> elf
+        out.append(word[:-3] + "fe")         # Knives -> knife
+    if word.endswith("es"):
+        out.append(word[:-2])                # Foxes -> fox
+    if word.endswith("s"):
+        out.append(word[:-1])                # Knights -> knight
+    return out
+
+
+def cost_scale_resource(text):
+    """The TYPE whose count in your deck lowers this card's cost, or None.
+
+    Normalised to a bare lowercase singular ("wizard", "artifact", "equipment"), so the
+    support count below can match it against a type line.
+    """
+    if not text:
+        return None
+    raw = []
+    for m in _COST_SCALE_AFFINITY.finditer(text):
+        raw.append(m.group(1))
+    for m in _COST_SCALE_EACH.finditer(text):
+        raw.append(m.group(1))
+    if _COST_SCALE_PLAIN_EQUIP.search(text):
+        for m in _COST_SCALE_EQUIP.finditer(text):
+            raw.append(m.group(1))
+    subs = _cost_scale_subtypes()
+    for phrase in raw:
+        r = phrase.strip().lower()
+        r = re.sub(r"\s+you control\b.*$", "", r).strip()
+        if _COST_SCALE_STATE.search(r) or not r:
+            continue
+        r = re.sub(r"\bcards?\b", "", r).strip()
+        known = _COST_SCALE_CARD_TYPES | subs
+        for cand in (r, *_cost_scale_singulars(r)):
+            if cand in known:
+                return cand
+    return None
+
+
+def cost_scale_support(resource, cards, carddata):
+    """Copies in the deck whose TYPE LINE carries `resource` — the discount's magnitude.
+
+    Reads the type line, never a synergy tag (K-04): the tagger's coverage is a different
+    question from whether a card is an Artifact.
+    """
+    if not resource:
+        return 0
+    n = 0
+    for q, name, _s, _c in cards:
+        nl = name.lower()
+        if nl in BASICS:
+            continue
+        cd = carddata.get(nl) or carddata.get(nl.split(" // ")[0])
+        if not cd:
+            continue
+        if resource in (cd.get("type") or "").lower():
+            n += q
+    return n
+
+
+# Calibrated from the MEASURED distribution, which is the lesson `_DOUBLER_CALIB` was
+# written to record: across all 7,360 (scaler card, deck) pairs the support is nonzero on
+# 57%, and those nonzero counts run p25 2 / p50 3 / p75 10 / p90 22 / max 35. So a couple
+# of copies of a type is the ORDINARY case and says nothing — the floor has to sit above
+# it. floor 4 (a deck with three artifacts is not an artifact deck), key 10 (p75, a real
+# build-around), cap reached at ~22 (p90).
+#
+# The cap is 12 rather than the doubler's 18 on a judgment, stated so it can be argued
+# with: a discount changes WHEN you cast a card, a doubler changes what the card DOES, and
+# the second is worth more. Bounded either way, so neither can override a theme match.
+_COST_SCALE_MIN_SOURCES = 4
+_COST_SCALE_KEY_SOURCES = 10
+_COST_SCALE_PER_SOURCE = 0.65
+_COST_SCALE_CAP = 12.0
+
+
+def cost_scale_boost(support):
+    """Bounded fit bump for a card whose COST falls with the deck's count of a type.
+
+    Zero below the floor, linear above it, hard-capped — the same contract as
+    `doubler_boost` and `_fixer_boost`, and measured from the floor for the same reason
+    (counting the baseline every deck carries is what saturates a bounded term).
+    """
+    if support < _COST_SCALE_MIN_SOURCES:
+        return 0.0
+    return min((support - _COST_SCALE_MIN_SOURCES + 1) * _COST_SCALE_PER_SOURCE,
+               _COST_SCALE_CAP)
+
+
 _DOUBLER_AXES = {
     # axis -> (what the DOUBLER's text looks like, what a deck card that FEEDS it looks like)
     "tokens": (
@@ -9814,6 +10000,11 @@ def cmd_suggest_homes(args):
     # density of that quantity, which is what the boost scales with.
     _daxis = doubler_axis(cd.get("text") or "")
     _drestrict = doubler_restriction(cd.get("text") or "") if _daxis else None
+    # …and which TYPE (if any) this card's COST falls with. Same shape one step earlier in
+    # the turn: the printed cost is what every model here prices, so a discount the deck
+    # earns is invisible without this. Wizard's Staff — "Equip Wizard {1}" against
+    # "Equip {3}" — ranked into a ONE-Wizard deck above two 20-Wizard decks.
+    _cscale = cost_scale_resource(cd.get("text") or "")
     results = []
     skipped_illegal = 0
     # Roster only (BS-14): a retired/example deck must not be rated a KEY home —
@@ -9922,6 +10113,16 @@ def cmd_suggest_homes(args):
             if dsupport >= doubler_calib(_daxis)[1]:
                 strength = "KEY"
             elif _dboost and strength == "tangential":
+                strength = "role-player"
+        # The cost-scaling overlay, same contract: bounded, only ever promotes, never
+        # demotes and never overrides a KEY already earned on theme.
+        csupport = cost_scale_support(_cscale, cards, carddata) if _cscale else 0
+        if csupport:
+            _cboost = cost_scale_boost(csupport)
+            fit += _cboost
+            if csupport >= _COST_SCALE_KEY_SOURCES:
+                strength = "KEY"
+            elif _cboost and strength == "tangential":
                 strength = "role-player"
         # Bounded curve co-signal (#5): gently sort a top-heavy card BELOW efficient fits
         # in an aggressive low-curve deck (never boosts, never relabels — see
