@@ -85,8 +85,15 @@ Claude sessions) → a shell function in `~/.zshrc`, which needs nothing checked
 mtga-matches() {
   local p="$HOME/Library/Logs/Wizards Of The Coast/MTGA"
   local cut="$1"                        # optional YYYY-MM-DD: skip what is already in
-  grep -hE 'Match to .*MatchGameRoomStateChangedEvent|"finalMatchResult"|==> EventSetDeckV3' \
+  if [ -n "$cut" ] && ! [[ "$cut" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]; then
+    echo "mtga-matches: date must be YYYY-MM-DD (got '$cut')" >&2
+    echo "  a malformed date filters SILENTLY: '2026-9-2' keeps NOTHING, '09-02-2026' keeps EVERYTHING" >&2
+    return 2
+  fi
+  local out
+  out=$(grep -hE 'Match to .*MatchGameRoomStateChangedEvent|"finalMatchResult"|==> EventSetDeckV3' \
       "$HOME/mtga-logs/arena.log" "$p"/Player*.log 2>/dev/null \
+    | awk '!seen[$0]++' \
     | sed -E 's/\\"(MainDeck|Sideboard)\\":\[[^]]*\]/\\"\1\\":[]/g' \
     | awk -v cut="$cut" '
         function iso(s,   a) { split(s, a, "/"); return sprintf("%04d-%02d-%02d", a[3], a[1], a[2]) }
@@ -98,11 +105,45 @@ mtga-matches() {
           else if (match($0, /\][0-9]+\/[0-9]+\/[0-9]+ /)) { d = iso(substr($0, RSTART+1, RLENGTH-2)) }
           if (d != "") cur = d
           if (cur == "" || cur >= cut) print
-        }' \
-    | pbcopy
-  echo "copied $(pbpaste | wc -l | tr -d ' ') lines to the clipboard${cut:+ (since $cut)}"
+        }')
+  local n=0
+  if [ -n "$out" ]; then printf '%s\n' "$out" | pbcopy; n=$(printf '%s\n' "$out" | wc -l | tr -d ' ')
+  else : | pbcopy; fi
+  echo "copied $n lines to the clipboard${cut:+ (since $cut)}"
+  if [ "$n" -eq 0 ] && [ -n "$cut" ]; then
+    echo "  nothing since $cut — re-run with no date if that looks wrong; the parser dedupes by matchId" >&2
+  fi
 }
 ```
+
+**Three things in there are not obvious, and the date `awk` is deliberately NOT one of
+them — it is byte-identical to the version this function shipped with**, because it
+mirrors `parse_matches.filter_since` line for line and the two must not drift.
+
+**`awk '!seen[$0]++'` — the paste was carrying every current-session line TWICE.**
+`snapshot.sh` merges `Player.log` into `arena.log` every 15 minutes, and this function
+greps BOTH. So every line already snapshotted is emitted once from the archive and again
+from the live log, and the whole current session is duplicated whenever a snapshot has
+run since Arena started (i.e. almost always). The dedupe is the same line-identical rule
+`snapshot.sh` already applies to build the archive, and safe for the reason recorded
+there: match headers carry timestamps and JSON payloads carry ids, so no two distinct
+events produce the same line. It runs BEFORE the `sed` so it dedupes the same raw form
+the archive does. Verified against the parser on a synthetic overlap: **12 lines → 8, and
+`parse_matches.py` reports the identical 4 new matches from either.**
+
+**The date is validated, because a malformed one fails SILENTLY IN BOTH DIRECTIONS.** The
+comparison is lexical, so `2026-9-2` — the natural thing to type, and wrong only in its
+zero-padding — sorts above every real date and keeps **nothing**, while `09-02-2026`
+sorts below every real date and keeps **everything**. Measured on an 8-line fixture: 0
+lines and 8 lines respectively, against 6 for the correct `2026-09-02`. The first case is
+the dangerous one — an empty clipboard reads as "no new matches", not as "bad argument" —
+so an unparseable date is now refused with a non-zero exit rather than obeyed, and a zero
+result WITH a cut says so on stderr.
+
+**`pbpaste` is gone from the count.** It round-tripped the entire clipboard through the
+pasteboard a second time just to count lines, and read whatever was on the clipboard
+rather than what was just written — a race if anything else copied in between. The output
+is held once and counted directly.
 
 `mtga-matches` then puts a pasteable export on the clipboard. It reads the rolling
 archive first and the live `Player.log` second, so it covers history Arena has already
