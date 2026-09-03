@@ -1525,6 +1525,58 @@ small and honest:** a possessive of a single-digit number that happens to be a d
 ("the 4's slot") would suppress. Measured at **1 roster occurrence, itself a genuine deck
 reference**, so the hazard is theoretical rather than observed.
 
+### The FLOOR BAND — the one structural claim nothing could check (2026-09-03)
+
+Every figure family this audit prices resolves through `_figure_lookup`, and everything
+it holds is a NUMBER: the quality vector plus, since BS8-16, the colour-source counts.
+But the commonest structural assertion a `#: tier:` block makes is a LETTER — "the
+metrics floor is A", "graded one band UNDER its A metrics floor" — and a letter matched
+no pattern, so it was unverifiable by construction rather than by oversight.
+
+That is not a hypothetical gap, and the cycle before had already sprung it. Re-deriving
+`TIER_FLOOR_REQ` from the roster distribution (BS8-06) moved thirty-odd floors, and the
+prose citing the OLD bands was never swept: **36 floor-band claims across the roster, 15
+of them false the same day**, every one reported CURRENT by `--audit-rationale`. Thirteen
+were stale in one direction (claiming A against a live B or C), which is what a threshold
+change looks like when nothing re-grounds the arguments that quoted the old thresholds.
+
+`_FIG_FLOOR_BAND` prices a claim against `tier_band` — a pure function of the vector, so
+unlike every figure family beside it there is no judgment in the comparison and no
+tolerance to tune. Measured on the roster at **36 raw hits → 15 reported → 15 real**.
+All fifteen were re-grounded the same day and **no tier letter was touched**: a letter is
+a human competitive judgment, and correcting the floor a block cites is a different act
+from re-grading the deck that cites it. Most of the fifteen had simply stopped being
+"one band under an A floor" and become "at a B floor" without the list changing at all.
+
+**Two calibrations, both earned by a measurement rather than chosen.**
+
+The first is a deliberate divergence from the numeric families sitting beside it. A band
+claim is NOT suppressed by the shared `_figure_is_history`. That rule keys on a change
+narrative (`4 -> 7`, `re-graded B→A`), which for a NUMBER is good evidence the figure
+next to it is the value being quoted FROM; for a BAND the same narrative means the
+opposite — "interaction 4 -> 7 … put the metrics floor at A" asserts where the change
+LANDED. Applying the shared rule dropped 3 of the 15 (decks 12/23/69a), all three real.
+What actually marks a band claim as history is the TENSE of the verb the pattern already
+captured — "the floor READ A" against "the floor READS A" — plus a narrow explicit cue
+(`used to`, `before`, `until`, `previously`, `no longer`). An earlier draft of that cue
+list carried `had`, and deck 23's innocent parenthetical "(it had zero)" suppressed a
+genuinely stale claim four words later: a retrospective cue must be about the FLOOR.
+
+The second is the roster's one false positive. Deck 75 writes "still held ONE band under
+the floor **at B**", where B is the LETTER the deck is held at, not the floor. The bare
+`at` verb is what admits it — and it cannot simply be dropped, because its sibling "put
+the metrics floor at A" needs it and is a real claim. So only the `at` form is guarded,
+and only against a band-relative preposition (`under|over|above|below` + `the|its`),
+after which the letter is where the deck is held rather than where the floor reads.
+
+A third guard came from the fix's own prose. Re-grounding fifteen blocks meant writing
+"…which moved the A bar to interaction 7" fifteen times, and `interaction\s+(\d+)` reads
+that as a claim that THIS deck's interaction is 7 — the sweep went from 0 hits to 8 on
+text written to fix it. The wording is "raised the A floor's interaction requirement to
+7" instead. **A rule's explanation lives in the same corpus the rule scans**, which is a
+hazard specific to a self-describing repo and worth remembering the next time an
+explanatory sentence has to name the number it is explaining.
+
 ## [G-28] `deck.py suggest` shows a cross-deck reuse count (`Decks` column)
 
 **`deck.py suggest` shows a cross-deck reuse count (`Decks` column).** For each

@@ -16,13 +16,22 @@
 #: archetype: decks by axis, not just colour: 15 and 16 are WU tempo decks that happen to
 #: archetype: be full of Allies (18 and 15 bodies against ONE and two payoffs), where
 #: archetype: this deck is built on the payoff half and splashes green for it.
-#: tier: B (PROVISIONAL) — still unplayed, and still graded one band UNDER its A metrics
-#: tier: floor. The floor reads A on interaction 6 and card advantage 3 at a 3.42 curve.
-#: tier: INTERACTION IS NOW HONEST AND CARD ADVANTAGE IS THE ONE TO WATCH. The 8 counts
+#: tier: B — AT its B metrics floor, and no longer PROVISIONAL for want of games: 5-2
+#: tier: across 7 matches as of 2026-09-02, the roster's best record. Read that with the
+#: tier: restraint G-57 demands — n=7 against a 20-match floor, and 5 wins in 7 has a 23%
+#: tier: chance at a coin flip, so it is one win above the 54% pooled baseline and settles
+#: tier: nothing. The floor reads B on interaction 6 and card advantage 3 at a 3.42 curve;
+#: tier: it read A until `TIER_FLOOR_REQ` was re-derived from the roster distribution
+#: tier: 2026-09-02 (BS8-06), which raised the A floor's interaction requirement to 7 and its
+#: tier: resilience sum to 11, against this deck's 6 and 9.
+#: tier: INTERACTION IS NOW HONEST AND CARD ADVANTAGE IS THE ONE TO WATCH. It counts
 #: tier: Allies at Last for the first time: the removal patterns all read "dealS damage"
 #: tier: while the card says "each DEAL damage", so it scored zero interaction until the
-#: tier: pattern was widened 2026-09-01 -- every interaction figure this deck quoted
-#: tier: before that date read one LOW. Starfield Vocalist still scores zero roles,
+#: tier: pattern was widened 2026-09-01. THE COUNT THEN WENT THE OTHER WAY IN THE SAME
+#: tier: CYCLE and reads 6 today, not the 8 this paragraph was written around: the
+#: tier: 2026-09-01 targeted-removal fix stopped counting a BLINK as spot removal, which
+#: tier: is the correction that took this deck's floor from A to B. Starfield Vocalist
+#: tier: still scores zero roles,
 #: tier: because a trigger-doubler has no bucket at all; and
 #: tier: the card-advantage 3 is a floor, not a count -- Hakoda casts Ally spells off the
 #: tier: top of the library and does not classify, Elspeth's 0 refills the board rather
@@ -30,7 +39,8 @@
 #: tier: DOUBLER of draws the bucket counts once -- Sokka under Katara and Bard is four
 #: tier: cards a combat. Celebrate the Mountain-king was CUT the same day for Overlord of
 #: tier: the Mistmoors (removal traded for a feeder: sixteen flying 2/1s for four mana
-#: tier: under Starfield, Elspeth and Doubling Season), which is the interaction 9 -> 8.
+#: tier: under Starfield, Elspeth and Doubling Season), which was the interaction 9 -> 8
+#: tier: before the blink correction above took it to 6.
 #: tier: WHAT USED TO HOLD IT AT B WAS A SINGLE POINT OF FAILURE: the whole engine was one
 #: tier: legendary 3/3, and protection WAS 2 back then, so one removal spell ended it.
 #: tier: THAT IS LARGELY GONE. Starfield Vocalist was ADDED as a second doubler that reads
@@ -48,9 +58,16 @@
 #: tier: the trigger-doublers miss, and Elspeth, Storm Slayer replaced Rally the Monastery
 #: tier: as a third doubler on a DIFFERENT axis, so the redundancy argument is stronger
 #: tier: than it was without being a fourth copy of the same effect. THIS IS
-#: tier: A RE-GRADE CANDIDATE and the call is deferred to a human — play it first, because
-#: tier: whether two doublers is enough redundancy is exactly the question no model here
-#: tier: answers.
+#: tier: A RE-GRADE CANDIDATE and the call is still deferred to a human. The games this
+#: tier: block asked for have now been played and they argue UP rather than down — but
+#: tier: seven matches cannot settle it, and the axes the floor grades are precisely the
+#: tier: ones this deck does not win on: TEN of its 36 nonland cards score no role at
+#: tier: all, Doubling Season, Starfield Vocalist and Katara among them, so the entire
+#: tier: trigger-doubling thesis is invisible to the letter by construction. That is a
+#: tier: fact about the rubric's scope, not a case for changing it (a payoff-density term
+#: tier: was simulated 2026-09-03 and moved 16 decks while leaving THIS one at B).
+#: tier: Whether four multipliers is enough redundancy is still the question no model
+#: tier: here answers.
 #: protect: Katara, the Fearless; South Pole Voyager; Avatar Enthusiasts; Haru, Hidden Talent; Suki, Kyoshi Warrior
 #: notes: THE DOUBLER'S SCOPE is the thing to get right and it is narrower than "doubles
 #: notes: Ally effects": Katara doubles TRIGGERED abilities only. White Lotus

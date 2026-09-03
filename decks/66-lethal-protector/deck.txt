@@ -3,8 +3,11 @@
 #: arena: 66  Lethal Protector, 7d5bedba-fb3a-474e-9fbc-97859ffc47df
 #: colors: BRG
 #: plan: midrange
-#: tier: B (PROVISIONAL — unplayed brew, graded 2026-08-08). Metrics floor is A
-#: tier: (interaction 5 + card advantage 5, protection 2, avg MV 2.77), held UNDER it:
+#: tier: B (PROVISIONAL — unplayed brew, graded 2026-08-08). Metrics floor is B
+#: tier: (interaction 5 + card advantage 5, protection 2, avg MV 2.77 — it read A until
+#: tier: `TIER_FLOOR_REQ` was re-derived from the roster distribution 2026-09-02, which
+#: tier: raised the A floor's interaction requirement to 7), so the letter sits AT its floor. What used to
+#: tier: hold it UNDER an A floor, and still argues against re-grading UP:
 #: tier: the deck is unplayed, both reanimation leaders are CRAFT targets (Eddie M,
 #: tier: Carnage R) so the core line is aspirational, Eddie's MV<=1 gate reads ⚠ thin
 #: tier: (2 real targets — Spinneret, Masked Meower), and the theme neighbourhood is

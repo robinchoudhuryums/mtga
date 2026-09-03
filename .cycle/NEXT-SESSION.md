@@ -166,11 +166,33 @@ rename and file rename, this handoff, and the doc sync. PRs #160 and #161 (deck 
 tuning and its doubler/manabase pass) landed earlier the same day. Nothing is in flight.
 
 **Deck 78 "Team Avatar" is the live deck.** Built and tuned from scratch 2026-08-31 →
-09-02, fully buildable, preflight READY, floor A on a **claimed B that is still marked
-PROVISIONAL** — that is a pending HUMAN call (never auto-write a tier letter), and the
-first evidence is now in: **5-2 across its first seven games**, n=7 against the 20-match
-floor, so it is encouraging and not yet a reading. Two swaps were measured and offered and
-have no decision: `−Sheriff of Safe Passage / +Ojer Taq` and `−Kyoshi Warriors / +Byrke`.
+09-02, fully buildable, preflight READY, **claimed B and now AT a B floor** — the "floor A"
+this paragraph used to state stopped being true when `TIER_FLOOR_REQ` was re-derived on
+2026-09-02, which is the exact staleness class the 2026-09-03 session then built a gate
+for. The re-grade remains a pending HUMAN call (never auto-write a tier letter). Evidence
+so far: **5-2 across its first seven games**, n=7 against the 20-match floor — one win
+above the 54% pooled baseline, so encouraging and not yet a reading. Two swaps were
+measured and offered and have no decision: `−Sheriff of Safe Passage / +Ojer Taq` and
+`−Kyoshi Warriors / +Byrke`.
+
+**THE RUBRIC WAS INVESTIGATED 2026-09-03 (deck 78 playing above its letter) AND IS NOT
+CHANGING — do not re-derive this.** What the floor grades: `tier_band` reads TWO of the
+eleven terms in `deck_quality_vector`. 21 of deck 78's 36 nonland cards contribute nothing
+to it, including its whole trigger-doubling thesis; the roster's MEDIAN deck is 71%
+invisible to the floor and 78 is 75%, rank 42 of 115, so it is not an outlier. A
+payoff-density term was SIMULATED and DECLINED: it moved 16 decks, cut the C band 9→1,
+pushed A to 62% (re-starting the BS8-06 saturation) and **left deck 78 at B anyway**. The
+record cannot arbitrate either — 79 matches, int+ca correlates with winning at **r =
+−0.03**, nothing near the ±0.22 noise band. Spread is healthy (A 63 / B 43 / C 9). The
+remedy the rubric already provides is the human letter, which may sit ONE band above the
+floor. Full measurements in `docs/gotchas.md` under G-27 and in the tiering section of
+CLAUDE.md.
+
+**A gate came out of it, and 14 deck files were re-grounded.** The rationale audit priced
+only NUMBERS, so the commonest structural claim a `#: tier:` block makes — a floor BAND
+letter — was unverifiable by construction, and re-deriving the thresholds had left **15 of
+the roster's 36 floor-band claims false**, all reported CURRENT. `_FIG_FLOOR_BAND` closes
+it; all fifteen were re-grounded and **no tier letter was touched**.
 
 **One find from 2026-09-02 worth not re-deriving.** Deck 78's `#: notes:` claimed Starfield
 Vocalist saw four noncreature permanents while naming two lands (Birnin Zana Plaza, Temple

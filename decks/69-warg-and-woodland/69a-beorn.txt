@@ -4,8 +4,10 @@
 #: colors: G
 #: based-on: deck.txt
 #: plan: midrange
-#: tier: B — PROVISIONAL, graded UNDER the A metrics floor, and for different reasons
-#: tier: than its parent. The floor reads A on interaction 5, but card advantage 2 is
+#: tier: B — PROVISIONAL, AT the B metrics floor, and held there for different reasons
+#: tier: than its parent. The floor reads B on interaction 6 (it read A on interaction 5
+#: tier: until `TIER_FLOOR_REQ` was re-derived from the roster distribution 2026-09-02,
+#: tier: which raised the A floor's interaction requirement to 7), and card advantage 3 is
 #: tier: thin and the deck is SLOW: avg MV 4.0 with few early drops, and the engine
 #: tier: wants lands in the GRAVEYARD before it does anything, so the first three turns
 #: tier: are close to blank. A sweeper mid-assembly catches it. WHAT ARGUES UP: the manabase is nearly flawless for a deck

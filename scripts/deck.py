@@ -11038,6 +11038,82 @@ _RATIONALE_FIGURES += [
 # the prose chose), so it is checked as one: same WANT/DELTA guards as the per-colour form.
 _FIG_SOURCE_SLASH = re.compile(r"(?<![+\-\d/])(\d{1,2}(?:/\d{1,2}){1,4})[  ]+sources?\b")
 
+# THE FLOOR BAND IS A CLAIM AND IT WAS THE ONE CLAIM NOTHING CHECKED. Every figure this
+# audit prices resolves through `_figure_lookup`, which holds the quality vector plus
+# the colour-source counts — all NUMBERS. A rationale's commonest structural assertion
+# is a LETTER ("the metrics floor is A", "one band UNDER its A floor"), and a letter
+# matched no pattern, so it was unverifiable by construction. That is not a hypothetical
+# gap: re-deriving `TIER_FLOOR_REQ` from the roster distribution (BS8-06) moved 30-odd
+# floors and left 15 of the roster's 36 floor-band claims false the same day, every one
+# of them reported CURRENT by this audit. The letter is cheap to check — the floor is a
+# pure function of the vector — and the claim is unambiguous, which is why this scan has
+# none of the hedging the figure families need: measured on the roster at 36 raw hits,
+# 15 stale, and ZERO false positives.
+#
+# The letter class is deliberately NOT case-folded (the words around it are): a band is
+# written uppercase in every rationale on the roster, and `re.I` on the letter would
+# read the article in "a floor of about 4 sources" as a claim of band A.
+_FIG_FLOOR_BAND = re.compile(
+    r"(?:metrics[ -]?)?floor\s+(?:reads?|is|sits\s+at|of|at)\s+(?:an?\s+)?(?P<b1>[SABCD])\b"
+    r"|one\s+band\s+(?:under|over|above|below)\s+(?:its|the)\s+(?P<b2>[SABCD])[ -]"
+    r"(?:metrics\s+)?floor\b"
+    r"|(?:reads?|sits\s+at)\s+(?:an?\s+)?(?P<b3>[SABCD])[ -]floor\b", re.I)
+
+# A claim about a floor the deck is AIMING at ("to reach an A floor", `tier --to A`) is a
+# target, not an assertion about the current list — the same rule `_FIG_SOURCE_WANT`
+# applies to a colour-source want.
+_FIG_FLOOR_WANT = re.compile(r"\b(?:wants?|to\s+reach|target(?:s|ing)?|--to|aim\w*\s+(?:at|for))"
+                             r"\b[^.;]{0,24}$", re.I)
+
+# A band claim is NOT suppressed by the shared `_figure_is_history`, and that is the one
+# place this scan deliberately parts company with the numeric families beside it. Their
+# history rule keys on a change narrative (`4 -> 7`, `re-graded B→A`), which for a NUMBER
+# means the figure next to it is probably the old value. For a BAND the same narrative
+# means the opposite: "interaction 4 -> 7 … put the metrics floor at A" is an assertion
+# about where the change LANDED, i.e. a claim about the current floor. Applying the
+# shared rule silently dropped 3 of the roster's 15 stale claims (decks 12/23/69a), all
+# three of them real. What actually marks a band claim as history is the TENSE of the
+# verb the pattern already captured — "the floor READ A" against "the floor READS A" —
+# plus an explicit retrospective cue.
+_FIG_FLOOR_PAST = re.compile(r"\b(?:used\s+to|before|until|previously|no\s+longer)\b"
+                             r"[^.;]{0,30}$", re.I)
+
+# "…held ONE band under the floor AT B" names the LETTER, not the floor — deck 75's
+# idiom, and the one false positive the roster produced. The bare `at` verb is what
+# admits it (the sibling "put the metrics floor at A" needs `at` and is a real claim), so
+# only that form is guarded, and only against a BAND-RELATIVE preposition: after
+# "under/over/above/below the", the letter following `at` is where the deck is HELD.
+_FIG_FLOOR_HELD = re.compile(r"\b(?:under|over|above|below)\s+(?:the|its)\s+$", re.I)
+
+
+def _floor_band_claims(prose, live_band):
+    """[(key, quoted, actual)] for every claim in `prose` about THIS deck's metrics floor
+    whose band letter is not the live one. `live_band` is `tier_band(vec)`.
+
+    Positional suppressions only (a want cue before the match); the CLAUSE-scoped
+    cross-deck and history rules are applied by the caller, which already computes them
+    for the figure loop, so a floor claim about another deck or a documented past floor
+    is suppressed by exactly the rules that suppress a numeric one."""
+    out = []
+    for m in _FIG_FLOOR_BAND.finditer(prose or ""):
+        band = next(g for g in (m.group("b1"), m.group("b2"), m.group("b3")) if g)
+        if not band.isupper():
+            continue
+        if _FIG_FLOOR_WANT.search(prose[max(0, m.start() - 30):m.start()]):
+            continue
+        if _FIG_FLOOR_PAST.search(prose[max(0, m.start() - 40):m.start()]):
+            continue
+        # "the floor READ A" is the past value; "the floor READS A" is the claim.
+        if re.match(r"(?:metrics[ -]?)?floor\s+read\b", m.group(0), re.I):
+            continue
+        if (re.match(r"(?:metrics[ -]?)?floor\s+at\b", m.group(0), re.I)
+                and _FIG_FLOOR_HELD.search(prose[max(0, m.start() - 30):m.start()])):
+            continue
+        if band != live_band:
+            out.append((m.start(), m.end(), band))
+    return out
+
+
 
 def _slash_source_claims(prose, sources, colors=None):
     """[(key, quoted, actual)] for every "N/N/N sources" claim in `prose` whose numbers
@@ -11736,6 +11812,30 @@ def rationale_staleness(d, carddata=None):
     _cols = (meta or {}).get("colors") or ""
     for header in ("tier", "archetype"):
         for claim in _slash_source_claims((meta or {}).get(header, "") or "", _src, _cols):
+            if claim not in stale_figures:
+                stale_figures.append(claim)
+    # …and the FLOOR BAND, the structural claim that is a letter rather than a number and
+    # so matched none of the patterns above. Same two headers, same clause suppressions
+    # as the figure loop: a floor quoted for ANOTHER deck is not a claim about this one,
+    # and a documented past floor ("the floor read A before the re-derivation") is
+    # history. Whitespace is collapsed first so a claim wrapped across two `#: tier:`
+    # continuation lines is still one match.
+    try:
+        live_band = tier_band(vec)
+    except Exception:
+        live_band = None    # a band we cannot price is skipped, never guessed
+    own_name = (meta or {}).get("name", "").strip()
+    for header in ("tier", "archetype") if live_band else ():
+        prose = re.sub(r"\s+", " ", (meta or {}).get(header, "") or "")
+        for start, end, band in _floor_band_claims(prose, live_band):
+            clo, chi = _clause_bounds(prose, start, end)
+            clause = prose[clo:chi]
+            if _other_deck_ids(clause) - {own_id}:
+                continue
+            if any(nm in clause for nm in _roster_deck_names()
+                   if nm and nm not in own_name):
+                continue
+            claim = ("metrics floor", band, live_band)
             if claim not in stale_figures:
                 stale_figures.append(claim)
     return stale_cards, stale_figures

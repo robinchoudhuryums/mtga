@@ -1393,6 +1393,87 @@ class TestArchetypeFiguresAreAudited:
         assert hits == [], f"stale rationale figure(s): {hits}"
 
 
+class TestFloorBandClaimsAreAudited:
+    """The floor BAND was the one structural claim the rationale audit could not price.
+
+    Every figure it checks resolves through `_figure_lookup`, which holds numbers; a
+    rationale's commonest structural assertion is a LETTER ("the metrics floor is A"),
+    and a letter matched no pattern. Re-deriving `TIER_FLOOR_REQ` from the roster
+    distribution (BS8-06) then left 15 of the roster's 36 floor-band claims false the
+    same day, every one reported CURRENT by this audit.
+    """
+
+    def _deck(self, tmp_path, header_block, name="Probe"):
+        p = tmp_path / "deck.txt"
+        p.write_text(f"#: name: {name}\n#: colors: B\n{header_block}\n\nDeck\n"
+                     "4 Swamp (MSH) 291\n", encoding="utf-8")
+        return {"id": "zz", "path": str(p), "name": name, "variant": None}
+
+    def _band(self, monkeypatch, band):
+        monkeypatch.setattr(deck, "deck_quality_vector", lambda d: {})
+        monkeypatch.setattr(deck, "tier_band", lambda vec: band)
+
+    def test_a_stale_floor_band_claim_is_found(self, tmp_path, monkeypatch):
+        self._band(monkeypatch, "B")
+        d = self._deck(tmp_path, "#: tier: B — the metrics floor is A and the letter "
+                                 "sits one band under it.")
+        assert ("metrics floor", "A", "B") in deck.rationale_staleness(d, carddata={})[1]
+
+    def test_a_matching_floor_band_claim_is_not_flagged(self, tmp_path, monkeypatch):
+        self._band(monkeypatch, "B")
+        d = self._deck(tmp_path, "#: tier: B — the metrics floor is B and the letter "
+                                 "sits at it.")
+        assert deck.rationale_staleness(d, carddata={})[1] == []
+
+    def test_a_floor_the_deck_is_AIMING_at_is_a_target_not_a_claim(
+            self, tmp_path, monkeypatch):
+        """`deck.py tier <id> --to A` prints the gap to a target band and the prose
+        quotes it back. A target is not an assertion about the current list — the same
+        rule `_FIG_SOURCE_WANT` applies to a colour-source want."""
+        self._band(monkeypatch, "B")
+        d = self._deck(tmp_path, "#: tier: B — the path to reach an A floor is +1 "
+                                 "removal spell.")
+        assert deck.rationale_staleness(d, carddata={})[1] == []
+
+    def test_held_one_band_under_the_floor_AT_B_names_the_LETTER(
+            self, tmp_path, monkeypatch):
+        """Deck 75's idiom, and the roster's only false positive. The bare `at` verb is
+        what admits it — its sibling "put the metrics floor at A" is a real claim — so
+        only that form is guarded, and only after a band-relative preposition."""
+        self._band(monkeypatch, "A")
+        d = self._deck(tmp_path, "#: tier: B — still held ONE band under the floor at B: "
+                                 "the engine concentrates in a single 5-drop legend.")
+        assert deck.rationale_staleness(d, carddata={})[1] == []
+
+    def test_a_CHANGE_NARRATIVE_does_not_suppress_a_band_claim(
+            self, tmp_path, monkeypatch):
+        """The deliberate divergence from the numeric families. Their shared
+        `_figure_is_history` keys on a change narrative, which for a NUMBER means the
+        figure beside it is probably the old value; for a BAND the same narrative names
+        where the change LANDED. Applying the shared rule dropped 3 of the roster's 15
+        stale claims (decks 12/23/69a), all three real."""
+        self._band(monkeypatch, "C")
+        d = self._deck(tmp_path, "#: tier: B — Re-graded C→B with the tune; the "
+                                 "measurable floor is A.")
+        assert ("metrics floor", "A", "C") in deck.rationale_staleness(d, carddata={})[1]
+
+    def test_an_explicitly_PAST_floor_is_history(self, tmp_path, monkeypatch):
+        """What DOES mark a band claim as history is the tense of the verb the pattern
+        already captured, plus an explicit retrospective cue."""
+        self._band(monkeypatch, "B")
+        d = self._deck(tmp_path, "#: tier: B — the floor read A before the thresholds "
+                                 "were re-derived.")
+        assert deck.rationale_staleness(d, carddata={})[1] == []
+
+    def test_a_floor_quoted_for_ANOTHER_DECK_is_not_a_claim_about_this_one(
+            self, tmp_path, monkeypatch):
+        self._band(monkeypatch, "C")
+        other = deck._roster_deck_names()[0]
+        d = self._deck(tmp_path, f"#: tier: B — CONSISTENT WITH THE PARENT: {other} is a "
+                                 f"genuine aggro deck and holds A at its own floor.")
+        assert deck.rationale_staleness(d, carddata={})[1] == []
+
+
 class TestHeaderConsumersJoinOnMsKey:
     """BS4-01, the last open member of the G-63 class (was BS2-07).
 

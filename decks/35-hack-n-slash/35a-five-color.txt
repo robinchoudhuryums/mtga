@@ -2,14 +2,17 @@
 #: format: Standard
 #: arena: 35a Ninja Avatar, 0d8e35d1-82c4-4bbe-b175-98b12c0ddd94
 #: tier: B (PROVISIONAL) — re-graded C -> B with the 2026-08 tune, at the user's
-#: tier: call, still one band under the A metrics floor. What changed: the manabase
+#: tier: call, and now AT the B metrics floor rather than one band under an A one: the
+#: tier: floor read A until `TIER_FLOOR_REQ` was re-derived from the roster distribution
+#: tier: 2026-09-02 (BS8-06), which raised the A floor's interaction requirement to 7 against this deck's
+#: tier: 6. The letter did not move; the yardstick did. What changed: the manabase
 #: tier: was the whole C argument, and the tune addressed it directly — 22 -> 24
 #: tier: lands (keepable was 80%, screw 19%), the two always-tapped Guildgates and
 #: tier: two weakest tricks became four any-color sources (rainbow count 3 -> 5
 #: tier: plus the dorks), and the three-source black splash is now played as a
 #: tier: late-game splash by design rather than a curve miss. Leyline of Mutation
-#: tier: and Avatar Aang give the big-spell top end two more payoffs. Held under
-#: tier: the floor for the honest residue: five-color singleton variance when the
+#: tier: and Avatar Aang give the big-spell top end two more payoffs. Held here for
+#: tier: the honest residue: five-color singleton variance when the
 #: tier: fixing doesn't show up, and the bombs are still the plan. Re-grade after
 #: tier: real games.
 #: colors: WUBRG

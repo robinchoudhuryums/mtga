@@ -12,8 +12,12 @@
 #: tier: crafted and maindecked 2026-08-10 (a counter on every attack; a card whenever
 #: tier: countered creatures connect), taking card advantage 0→2, and Valorous Stance
 #: tier: replaced Spider-Man, Brooklyn Visionary the same day for interaction 8 and
-#: tier: protection 4. The metrics floor is A and the letter is one band UNDER it, which
-#: tier: the rubric flags. Held at B pending a HUMAN call only because the deck is
+#: tier: protection 4. The metrics floor is B and the letter now sits AT it: interaction 8
+#: tier: clears the A floor's interaction bar of 7, but card advantage 2 leaves the
+#: tier: resilience sum at 10 against the 11 an A floor wants. It read A until
+#: tier: `TIER_FLOOR_REQ` was re-derived from the roster distribution 2026-09-02 (BS8-06),
+#: tier: so the under-graded flag this paragraph was written to answer is gone — the
+#: tier: letter did not move, the yardstick did. Held at B pending a HUMAN call only because the deck is
 #: tier: UNPLAYED — the thin 7-theme spine and singleton variance are the remaining
 #: tier: arguments, and neither is measured.
 #: colors: GW

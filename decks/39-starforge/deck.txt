@@ -1,8 +1,12 @@
 #: name: Starforge
 #: format: Standard
-#: tier: A — Boros (W/R) equipment aggro-midrange. Metrics floor is A on the aggro
-#: tier: plan (clock + interaction, 6 — Chainsaw replaced Agni Kai 2026-08-15 and the
-#: tier: count held): a coherent double-strike /
+#: tier: A — Boros (W/R) equipment aggro-midrange. Metrics floor is B on the aggro plan
+#: tier: and the letter is one band above it, which the rubric allows. The clock
+#: tier: substitution still does its work — clock 3 on top of interaction 6 clears the A
+#: tier: floor's pressure bar of 7 — but card advantage 1 leaves the resilience sum at 10
+#: tier: against the 11 an A floor wants (Chainsaw replaced Agni Kai 2026-08-15 and the
+#: tier: interaction count held; the floor read A until `TIER_FLOOR_REQ` was re-derived
+#: tier: from the roster distribution 2026-09-02). The A letter rests on a coherent double-strike /
 #: tier: extra-combat engine (Hard-Won Jitte, Twin Blades, Cloud Planet's Champion,
 #: tier: Raphael, Blacksmith's Talent, Sami; Aurelia + Raph & Leo add combat phases),
 #: tier: a huge legendary count that turns on Mjölnir's `worthy {1}`, and real bombs

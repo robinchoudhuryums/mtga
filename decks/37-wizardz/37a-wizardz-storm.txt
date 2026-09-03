@@ -14,9 +14,12 @@
 #: tier: the rules caveat below), while Rakdos reanimates a creature with two +1/+1
 #: tier: counters — the shortcut to the Emperor's three-counter transform — and turns each
 #: tier: legend's death into noncombat damage Niv-Mizzet redraws. Floor
-#: tier: is A on card advantage 8 + interaction 5, and interaction now sits EXACTLY on the
-#: tier: A floor's minimum — the next interaction cut drops this deck to B, so treat 5 as a
-#: tier: hard floor, not a budget. Two 2026-08-17 trades spent those points deliberately:
+#: tier: is B on card advantage 8 + interaction 5, and the LETTER is one band above it,
+#: tier: which the rubric allows. It read A until `TIER_FLOOR_REQ` was re-derived from the
+#: tier: roster distribution 2026-09-02 (BS8-06), which moved the A bar to interaction 7:
+#: tier: interaction 5 is now two short of it rather than exactly on the minimum. Treat 5
+#: tier: as a hard floor anyway, not a budget — the resilience sum has no slack either.
+#: tier: Two 2026-08-17 trades spent those points deliberately:
 #: tier: Boomerang Basics was CUT for Astrologian's Planisphere (the deck's weakest card for
 #: tier: a Wizard-making counter engine, but the bounce had been carrying an interaction
 #: tier: point), and Dark Deed was CUT for Mu Yanling, Wind Rider — Dark Deed being the

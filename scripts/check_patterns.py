@@ -109,6 +109,20 @@ _EXCLUDED = {
                                   "verbatim); unit-tested in test_deck.py",
     ("deck", "_FIG_SOURCE_SLASH"): "tier-RATIONALE prose (the '13/8/10 sources' idiom, BS8-16 — "
                                    "a claim about the deck's manabase, not card text)",
+    ("deck", "_FIG_FLOOR_BAND"): "tier-RATIONALE prose (the 'metrics floor is A' claim — "
+                                 "a band LETTER, which is why no numeric figure pattern "
+                                 "could ever price it); unit-tested in test_deck.py",
+    ("deck", "_FIG_FLOOR_WANT"): "tier-RATIONALE prose (a floor the deck is AIMING at, as "
+                                 "`tier --to A` prints, is a target not a claim); "
+                                 "unit-tested in test_deck.py",
+    ("deck", "_FIG_FLOOR_HELD"): "tier-RATIONALE prose (\"held one band under the floor "
+                                 "AT B\" names the LETTER, not the floor — deck 75's "
+                                 "idiom); unit-tested in test_deck.py",
+    ("deck", "_FIG_FLOOR_PAST"): "tier-RATIONALE prose (an explicitly retrospective floor "
+                                 "claim; deliberately NARROWER than the shared "
+                                 "_figure_is_history, which suppresses a change narrative "
+                                 "— for a BAND that narrative names where the change "
+                                 "LANDED); unit-tested in test_deck.py",
     ("tag_synergies", "_QUOTED_TEXT_RE"): "a QUOTE stripper (the ability a token or emblem "
                                           "carries), applied before a rule reads the text — "
                                           "BS8-31; not a card-text pattern",
