@@ -79,6 +79,12 @@ expensive mistake here.
 
 If the user has no export handy, say so and skip this step rather than guessing.
 
+**If `--apply` ran, this skill has WRITTEN deck files** — so it ends with the shared
+**verify + commit tail** in `docs/verify-commit-tail.md` verbatim (`make postedit` for a
+deck-file change, the CURRENT session's trailer, no model ID, the branch rule). The skill
+said "nothing is written without asking first" and then had no commit step at all, so a
+rewritten deck sat uncommitted in a dirty tree (BS8-25).
+
 ## Report
 
 Finish with a short prioritized summary — the point of this command is to end with

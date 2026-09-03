@@ -579,3 +579,113 @@ class TestGeneratedPagesDefineEveryTokenTheyUse:
         fallback would pass."""
         assert _TOKEN_USE.findall("background:var(--panel2, var(--panel));") == \
             ["--panel2", "--panel"]
+
+
+class TestDashboardInterfaceFixes:
+    """Batch 6 of broad-scan #8. The dashboard's markup is built at runtime by JS, so
+    these pin the SOURCE — the same approach `TestA11yRoleEscapeHatch` uses."""
+
+    def _src(self):
+        import os
+        p = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                         "scripts", "build_dashboard.py")
+        with open(p, encoding="utf-8") as fh:
+            return fh.read()
+
+    def test_global_shortcuts_do_not_fire_inside_a_select(self):
+        """BS8-20: `isTyping` checked INPUT/TEXTAREA/contentEditable only, so typing `t`
+        to reach "Team Avatar" in the 115-option Log-a-match picker toggled the theme."""
+        src = self._src()
+        i = src.find("function isTyping(e)")
+        assert i != -1 and "'SELECT'" in src[i:i + 260]
+
+    def test_the_section_collapse_control_is_a_real_button(self):
+        """BS8 P-07: a focusable <h2> carrying aria-expanded announces as a heading with
+        no state — the heading role does not support it. The button carries the state and
+        aria-controls; the heading stays a heading (BS2-16) and stops being focusable."""
+        src = self._src()
+        i = src.find("label:label + ' section'")
+        assert i != -1
+        window = src[max(0, i - 700):i + 400]
+        assert "createElement('button')" in window and "secbtn" in window
+        assert "h.tabIndex = -1" in window
+        assert "btn.setAttribute('aria-controls'" in window
+        assert "native:true" in window, "a real button must not get the synthetic key handler"
+
+    def test_a11y_skips_tabindex_and_keys_for_a_native_control(self):
+        src = self._src()
+        assert "if (!o.native) node.tabIndex = 0;" in src
+        assert "if (!o.native) node.addEventListener('keydown'" in src
+
+    def test_the_palette_options_live_in_a_listbox(self):
+        """BS8 P-06: `role="option"` outside a listbox is invalid ARIA and the input's
+        ↑↓ selection was announced to nobody."""
+        src = self._src()
+        assert "body.setAttribute('role', 'listbox')" in src
+        assert "aria-activedescendant" in src and "'pitem-' + i" in src
+        assert "inp.setAttribute('role', 'combobox')" in src
+
+    def test_both_overlays_are_named(self):
+        src = self._src()
+        assert "m.setAttribute('aria-label', md ?" in src, "the deck modal announces its deck"
+        i = src.find("const p = el('div','palette')")
+        assert i != -1 and "aria-label', 'Jump to a deck or section'" in src[i:i + 400]
+
+    def test_sync_stores_before_it_claims_success(self):
+        """BS8 P-05: the toast preceded the write, so a storage-blocked browser reloaded
+        onto the same stale snapshot behind "Synced live"."""
+        src = self._src()
+        i = src.find("sessionStorage.setItem('mtga-live'")
+        assert i != -1
+        window = src[i:i + 420]
+        assert "catch(e){ syncing = false; toast('Live sync failed" in window
+        assert window.find("return;") < window.find("Synced live")
+
+    def test_the_first_paint_stamps_the_theme_before_the_body(self):
+        """BS8 P-04: the light theme was applied by a script after a ~1.9 MB body, so a
+        light-OS visit painted dark and flipped; with scripts blocked it stayed dark."""
+        src = self._src()
+        head = src[src.find("<title>MTGA Roster Dashboard</title>"):]
+        assert "prefers-color-scheme: light" in head[:900]
+        assert "document.documentElement.setAttribute('data-theme', t)" in head[:900]
+        assert "color-scheme: dark light" in src
+
+    def test_the_light_palette_has_a_no_script_fallback_built_from_one_definition(self):
+        """The fallback is COPIED from the template's own `[data-theme="light"]` blocks at
+        build time — a second hand-kept palette is the drift shape G-72 records."""
+        import importlib.util
+        import os
+        p = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                         "scripts", "build_dashboard.py")
+        spec = importlib.util.spec_from_file_location("bd_probe", p)
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        out = mod._with_light_scheme_fallback(mod.TEMPLATE)
+        blocks = mod._LIGHT_BLOCK_RE.findall(mod.TEMPLATE)
+        assert len(blocks) >= 2, "the light palette lives in multi-line token blocks"
+        assert out.count("@media (prefers-color-scheme: light)") == len(blocks), (
+            "every light token block needs a no-script twin")
+        assert ':root:not([data-theme="dark"])' in out
+        assert "--bg:#eef0f4" in out.split("@media (prefers-color-scheme: light)")[1]
+        # The one-line `color-scheme` rule is deliberately NOT duplicated: the media
+        # query cannot set it for a user who has explicitly chosen dark.
+        assert "color-scheme: light" not in out.split("@media (prefers-color-scheme: light)")[1][:200]
+
+
+class TestDeckEditorUnloadGuard:
+    """BS8 P-08: a dirty deck edit was lost silently on "← Decks", a reload or a closed
+    tab — while the analysis panel's note beside that link says "Save to refresh"."""
+
+    def _src(self):
+        import os
+        p = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                         "templates", "deck.html")
+        with open(p, encoding="utf-8") as fh:
+            return fh.read()
+
+    def test_the_guard_exists_and_a_successful_save_bypasses_it(self):
+        src = self._src()
+        assert "addEventListener('beforeunload'" in src
+        assert "bypassUnloadGuard" in src
+        i = src.find("if (d.ok) {")
+        assert i != -1 and "bypassUnloadGuard = true" in src[i:i + 200]

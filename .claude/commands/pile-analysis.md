@@ -96,6 +96,7 @@ across the batch become visible.
 ```
 PYTHONPATH=scripts python3 - <<'PY'
 import csv
+import deck as dk
 from lib import card_colors
 names = [...]   # this batch
 pool = {r['Card Name']: r for r in csv.DictReader(open('card-pool.csv'))}
@@ -108,7 +109,13 @@ for n in names:
     if not p:
         print(f"\n### {n} -- NOT FOUND", [k for k in pool if n.split(',')[0].lower() in k.lower()][:3]); continue
     m = mana.get(n, {}); ci = card_colors(p.get('Color(s)', ''))
-    ok = "✓" if ci <= set("<deck colors>") else "✗OFF " + "".join(sorted(ci))
+    # CASTABILITY FROM THE PRINTED COST, never from `Color(s)` (G-58). This line used to
+    # read `ci <= set("<deck colors>")` and print ✗OFF — the exact identity-subset triage
+    # G-58 records mis-binning 9 of a 111-card pile, 8 of them castable, INSIDE the skill
+    # that tells you not to do it two paragraphs down (BS8-25).
+    cast_ok, note = dk._candidate_castability(m.get('Mana Cost', ''), ci, set("<deck colors>"))
+    ok = "✓" if cast_ok else "✗OFF " + "".join(sorted(ci))
+    if cast_ok and note: ok += "  (" + note + ")"
     std = "" if 'standard' in (p.get('Legalities') or '') else "  !!NOT-STANDARD"
     print(f"\n### {n}  {m.get('Mana Cost','?')}  MV {m.get('Mana Value','?')}  "
           f"{p.get('Rarity','')[:1]} own={lib.get(n,0)}  {ok}{std}")
@@ -128,7 +135,11 @@ Notes on that pull, each of which cost something the first time:
   cast (G-43).
 - **Off-colour by IDENTITY is not off-colour by CAST COST** (G-58). A card whose colour
   comes from a transform ability or a mana ability is castable; `deck.py screen <id>` and
-  `preflight` are the arbiters, not the `Color(s)` column.
+  `preflight` are the arbiters, not the `Color(s)` column. The pull above reads the cost
+  through `deck._candidate_castability` — the same primitive `screen` uses — so this note
+  and the code now agree. **For a pile over ~10 cards run `deck.py screen <id> <names…>`
+  anyway**: it applies the deck's format, the strict-upgrade test and the KEY-saturation
+  warning, none of which this pull has.
 
 ### Grading rules for the batch
 

@@ -1129,7 +1129,7 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   scored ZERO roles by the classifier, so it was a removal card to one model and roleless
   to the other — and it is the ROLE model that feeds `tier_band` (BS6-10). Comparing the
   two is cheap, and is a GATE now, not a one-off: `check_roles.py --tags` sweeps the pool
-  for it, baselined at 188 and soft in `check_all` (a line count: 173 entries). It reads the tagger's own
+  for it, baselined at 173 and soft in `check_all`. It reads the tagger's own
   `MECHANIC_RULES` live (never a copy) and excludes the deathtouch KEYWORD path by
   construction. **The tag rules read the CARD, not what it describes (BS8-31)**: `sacrifice`
   and `removal` run on reminder- and quote-stripped text (every Saga was `sacrifice`),
@@ -1204,7 +1204,7 @@ commands read them, so the field structure is load-bearing. Detail belongs in
 `docs/cycle-config.md` under the `[C-nn]` anchor a field carries.
 
 **Test Command:** `python3 scripts/check_all.py` — the deterministic integrity gate; it
-exits non-zero on any hard invariant break. INV-01…04 plus **fourteen model-sanity
+exits non-zero on any hard invariant break. INV-01…04 plus **thirteen model-sanity
 gates** (`check_rankings`, `check_colors`, `check_dfc`, `check_suggest`, `check_engines`,
 `check_tier`, `check_patterns`, `check_commands`, `check_agreement`, `check_docs`, and the
 soft `check_keywords` / `check_roles` / `check_themes` / rationale-and-flex sweeps) — plus

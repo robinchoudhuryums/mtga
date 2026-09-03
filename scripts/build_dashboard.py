@@ -23,6 +23,7 @@ import contextlib
 import io
 import json
 import os
+import re
 import time
 from types import SimpleNamespace
 
@@ -463,7 +464,18 @@ TEMPLATE = r"""<!DOCTYPE html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MTGA Roster Dashboard</title>
+<script>
+// FIRST-PAINT theme (BS8 P-04): the light theme existed only as a JS-applied attribute set
+// after a ~1.9 MB body parsed, so a light-OS visit painted dark and flipped. Same rule as
+// restorePrefs(): a stored choice wins, else the OS scheme.
+(function(){ try { var p = JSON.parse(localStorage.getItem('mtga-prefs') || '{}') || {};
+  var t = p.theme || (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+  document.documentElement.setAttribute('data-theme', t); } catch (e) {} })();
+</script>
 <style>
+  :root { color-scheme: dark light; }
+  :root, [data-theme="dark"] { color-scheme: dark; }
+  [data-theme="light"] { color-scheme: light; }
   :root, [data-theme="dark"] {
     --bg:#0a0c0f; --panel:#171b21; --panel2:#12151a; --elev:#141820; --elev2:#101318;
     --ink:#e6e9ef; --ink-bright:#f2f4f8; --ink-soft:#d5dae3; --ink2:#8b93a1; --ink2b:#9aa4b2; --ink3:#6b7480;
@@ -891,6 +903,12 @@ TEMPLATE = r"""<!DOCTYPE html>
 
   /* ── Progressive disclosure: collapsible sections, section nav, capped lists ── */
   h2.sec.clik { cursor:pointer; }
+  /* The collapse CONTROL is a real <button> inside the <h2> (BS8 P-07): a heading cannot
+     carry aria-expanded, so the state was announced to nobody. Styled to disappear into
+     the heading — it inherits every text property and spans the full row. */
+  h2.sec .secbtn { all:unset; cursor:pointer; display:flex; align-items:center; gap:inherit;
+    width:100%; font:inherit; color:inherit; letter-spacing:inherit; }
+  h2.sec .secbtn:focus-visible { outline:2px solid var(--accent); outline-offset:3px; border-radius:4px; }
   h2.sec .caret { margin-left:auto; font-size:11px; color:var(--ink3); font-family:var(--font-mono); font-weight:400; transition:color .15s; }
   h2.sec.clik:hover .caret { color:var(--accent-ink); }
   section.collapsed > *:not(h2.sec) { display:none; }
@@ -1225,12 +1243,14 @@ function a11y(node, opts){
   // (broad-scan BS2-16). Interactive-but-semantic elements keep their role and gain
   // focus/keys/state attributes instead.
   if (o.role !== null) node.setAttribute('role', o.role || 'button');
-  node.tabIndex = 0;
+  // `native:true` = a real <button>: it is focusable and answers Enter/Space by itself,
+  // and binding the synthetic click here would fire the toggle TWICE (BS8 P-07).
+  if (!o.native) node.tabIndex = 0;
   if (o.label) node.setAttribute('aria-label', o.label);
   if (o.pressed != null) node.setAttribute('aria-pressed', String(!!o.pressed));
   if (o.expanded != null) node.setAttribute('aria-expanded', String(!!o.expanded));
   if (o.selected != null) node.setAttribute('aria-selected', String(!!o.selected));
-  node.addEventListener('keydown', e => {
+  if (!o.native) node.addEventListener('keydown', e => {
     // Space scrolls the page by default, so both keys need preventDefault. Enter and
     // Space are what a real <button> responds to.
     if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar'){
@@ -2125,8 +2145,12 @@ renderWishlist(); renderSim();
     if (best) best.runnerUp = ranked.slice(1).find(r => r.mm === best.mm) || null;
     return best;
   }
-  function analyzeOne(seg){ const pasted = multiset(seg); const nCards = Object.values(pasted).reduce((a,v) => a+v[1], 0); if (!nCards) return null; const uniq = Object.keys(pasted).length; const m = bestMatch(pasted, formatHint(seg, nCards)); if (!m || m.shared < Math.max(3, uniq*0.3)) return {unmatched:true, nCards, uniq}; const ru = m.runnerUp; const lowconf = !!(ru && (ru.drift - m.drift) <= 2 && ru.shared >= m.shared*0.8); return {unmatched:false, deck:m.deck, sync:m.drift===0, added:m.added, removed:m.removed, diffs:m.diffs, shared:m.shared, nCards, lowconf, runnerUp:lowconf?ru.deck:null}; }
-  function stalecardEl(r){ const box = el('div','stalecard'); if (r.unmatched){ box.innerHTML = '<h4>Unmatched paste <span class="stale-nomatch">no close deck</span></h4><div class="sub2">' + r.nCards + ' cards, ' + r.uniq + ' unique — doesn’t closely match any stored deck.</div>'; return box; } const d = r.deck; const status = r.sync ? '<span class="stale-sync">✓ in sync</span>' : '<span class="stale-drift">⟳ drifted — ' + r.added + ' added / ' + r.removed + ' removed</span>'; const conf = r.lowconf && r.runnerUp ? ' · <span class="stale-nomatch">⚠ low confidence — #' + esc(r.runnerUp.id) + ' ' + esc(r.runnerUp.name) + ' is nearly as close</span>' : ''; box.innerHTML = '<h4>#' + esc(d.id) + ' ' + esc(d.name) + ' ' + status + '</h4><div class="sub2">matched by ' + r.shared + ' shared cards' + (d.variant?' · variant':'') + (r.sync?'':' · update it in Arena or in the repo') + conf + '</div>'; if (!r.sync){ const dl = el('div','difflist'); dl.innerHTML = r.diffs.map(x => '<div class="' + (x.sign==='+'?'diffadd':'diffrem') + '">' + x.sign + x.qty + '  ' + esc(x.name) + '</div>').join(''); box.appendChild(dl); const note = el('div','metaline2', '+ = your Arena paste has more · − = the stored repo deck has more'); box.appendChild(note); } return box; }
+  // `truncated` mirrors deck.match_paste (BS8-43): a paste under 75% of the matched
+  // deck's total is a FRAGMENT, and reporting it as "drifted — 0 added / 44 removed"
+  // invited a sync that would cut the sixty down to the fragment (the G-08 guard, which
+  // this panel lacked). Same threshold; change both or neither.
+  function analyzeOne(seg){ const pasted = multiset(seg); const nCards = Object.values(pasted).reduce((a,v) => a+v[1], 0); if (!nCards) return null; const uniq = Object.keys(pasted).length; const m = bestMatch(pasted, formatHint(seg, nCards)); if (!m || m.shared < Math.max(3, uniq*0.3)) return {unmatched:true, nCards, uniq}; const ru = m.runnerUp; const lowconf = !!(ru && (ru.drift - m.drift) <= 2 && ru.shared >= m.shared*0.8); const deckTotal = Object.values(m.deck.cards||{}).reduce((a,v) => a+v[1], 0); const truncated = nCards < deckTotal * 0.75; return {unmatched:false, deck:m.deck, sync:m.drift===0, added:m.added, removed:m.removed, diffs:m.diffs, shared:m.shared, nCards, deckTotal, truncated, lowconf, runnerUp:lowconf?ru.deck:null}; }
+  function stalecardEl(r){ const box = el('div','stalecard'); if (r.unmatched){ box.innerHTML = '<h4>Unmatched paste <span class="stale-nomatch">no close deck</span></h4><div class="sub2">' + r.nCards + ' cards, ' + r.uniq + ' unique — doesn’t closely match any stored deck.</div>'; return box; } const d = r.deck; const status = r.sync ? '<span class="stale-sync">✓ in sync</span>' : (r.truncated ? '<span class="stale-nomatch">⚠ TRUNCATED? paste holds ' + r.nCards + ' of ' + r.deckTotal + ' cards — a fragment, not a drift</span>' : '<span class="stale-drift">⟳ drifted — ' + r.added + ' added / ' + r.removed + ' removed</span>'); const conf = r.lowconf && r.runnerUp ? ' · <span class="stale-nomatch">⚠ low confidence — #' + esc(r.runnerUp.id) + ' ' + esc(r.runnerUp.name) + ' is nearly as close</span>' : ''; box.innerHTML = '<h4>#' + esc(d.id) + ' ' + esc(d.name) + ' ' + status + '</h4><div class="sub2">matched by ' + r.shared + ' shared cards' + (d.variant?' · variant':'') + (r.sync?'':' · update it in Arena or in the repo') + conf + '</div>'; if (!r.sync){ const dl = el('div','difflist'); dl.innerHTML = r.diffs.map(x => '<div class="' + (x.sign==='+'?'diffadd':'diffrem') + '">' + x.sign + x.qty + '  ' + esc(x.name) + '</div>').join(''); box.appendChild(dl); const note = el('div','metaline2', '+ = your Arena paste has more · − = the stored repo deck has more'); box.appendChild(note); } return box; }
   const out = $('staleout');
   $('stalego').addEventListener('click', () => { out.innerHTML = ''; const segs = splitDecks($('staletext').value); if (!segs.length){ out.innerHTML = '<div class="metaline2">Nothing to compare — paste an Arena export above.</div>'; return; } const results = segs.map(analyzeOne).filter(Boolean); if (!results.length){ out.innerHTML = '<div class="metaline2">No card lines found in the paste.</div>'; return; } if (results.length > 1){ const drifted = results.filter(r => !r.unmatched && !r.sync); const synced = results.filter(r => !r.unmatched && r.sync).length; const unm = results.filter(r => r.unmatched).length; const s = el('div','staletot'); s.innerHTML = '<b>' + results.length + '</b> decks checked · <span class="stale-sync">' + synced + ' in sync</span> · <span class="stale-drift">' + drifted.length + ' drifted</span>' + (unm?' · <span class="stale-nomatch">'+unm+' unmatched</span>':'') + (drifted.length?'<br>Update in Arena: ' + drifted.map(r => '#'+esc(r.deck.id)+' '+esc(r.deck.name)).join(', '):''); out.appendChild(s); } results.forEach(r => out.appendChild(stalecardEl(r))); });
   $('staleclear').addEventListener('click', () => { $('staletext').value = ''; out.innerHTML = ''; });
@@ -2171,6 +2195,8 @@ function openModal(id){
   if (m){
     m.setAttribute('role', 'dialog');
     m.setAttribute('aria-modal', 'true');
+    const md = modalDeckObj(id);           // an unnamed dialog announces as "dialog" — name it (P-06)
+    m.setAttribute('aria-label', md ? ('Deck #' + md.id + ' ' + md.name) : 'Deck details');
     const items = _focusables(m);
     if (items.length) items[0].focus();
   }
@@ -2243,18 +2269,24 @@ function closePalette(){ STATE.paletteOpen = false; renderOverlays(); if (_focus
 function paletteEl(){
   const ov = el('div','overlay'); ov.style.alignItems = 'flex-start'; ov.style.padding = '12vh 16px 16px'; ov.onclick = closePalette;
   const p = el('div','palette'); p.onclick = e => e.stopPropagation();
+  p.setAttribute('role', 'dialog'); p.setAttribute('aria-modal', 'true'); p.setAttribute('aria-label', 'Jump to a deck or section');
   const top = el('div','pin'); top.innerHTML = '<span style="color:var(--accent);font-size:15px">⌘</span>';
   const inp = el('input'); inp.value = STATE.paletteQuery; inp.placeholder = 'Jump to a deck or section…';
   // A placeholder is a last-resort accessible name: many AT configurations demote it,
   // and it disappears the moment the user types. This is a dialog's only control.
   inp.setAttribute('aria-label', 'Jump to a deck or section');
+  inp.setAttribute('role', 'combobox'); inp.setAttribute('aria-controls', 'palette-list'); inp.setAttribute('aria-expanded', 'true'); inp.setAttribute('aria-autocomplete', 'list');
   inp.addEventListener('input', e => { STATE.paletteQuery = e.target.value; STATE.paletteIndex = 0; drawItems(); });
   top.appendChild(inp); top.appendChild(el('span','kbd','esc')); p.appendChild(top);
   const body = el('div','body'); p.appendChild(body);
+  // `role=option` rows need a LISTBOX parent, and the input's ↑↓ selection has to be
+  // announced through aria-activedescendant — both were missing (BS8 P-06).
+  body.id = 'palette-list'; body.setAttribute('role', 'listbox'); body.setAttribute('aria-label', 'Matches');
   function drawItems(){
     const items = paletteItems(); body.innerHTML = '';
+    inp.setAttribute('aria-activedescendant', items.length ? 'pitem-' + STATE.paletteIndex : '');
     if (!items.length){ body.appendChild(el('div',null,'No matches')).style.cssText = 'padding:18px;text-align:center;color:var(--ink2);font-size:13px'; return; }
-    items.forEach((it,i) => { const row = a11y(el('div','pitem' + (i===STATE.paletteIndex?' sel':'')), {role:'option', selected:i===STATE.paletteIndex}); row.innerHTML = '<div style="display:flex;flex-direction:column;gap:1px"><span class="pt">' + esc(it.title) + '</span><span class="ps">' + esc(it.sub) + '</span></div><span class="tag">' + it.tag + '</span>'; row.onmouseenter = () => { STATE.paletteIndex = i; [...body.children].forEach(z => z.classList.remove('sel')); row.classList.add('sel'); }; row.onclick = () => { closePalette(); it.act(); }; body.appendChild(row); });
+    items.forEach((it,i) => { const row = a11y(el('div','pitem' + (i===STATE.paletteIndex?' sel':'')), {role:'option', selected:i===STATE.paletteIndex}); row.id = 'pitem-' + i; row.innerHTML = '<div style="display:flex;flex-direction:column;gap:1px"><span class="pt">' + esc(it.title) + '</span><span class="ps">' + esc(it.sub) + '</span></div><span class="tag">' + it.tag + '</span>'; row.onmouseenter = () => { STATE.paletteIndex = i; [...body.children].forEach(z => z.classList.remove('sel')); row.classList.add('sel'); }; row.onclick = () => { closePalette(); it.act(); }; body.appendChild(row); });
   }
   drawItems(); p._draw = drawItems;
   const foot = el('div','foot'); foot.innerHTML = '<span>↑↓ navigate</span><span>⏎ open</span><span>esc close</span>'; p.appendChild(foot);
@@ -2268,7 +2300,9 @@ $('btnsync').onclick = () => syncLive(false);
 a11y($('palettehint'), {label:'Open command palette'});
 $('palettehint').onclick = openPalette;
 function jumpTo(id){ const e = $(id); if (e) window.scrollTo({top:e.getBoundingClientRect().top + window.scrollY - 82, behavior:'smooth'}); }
-function isTyping(e){ const t = e.target; return t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable); }
+// SELECT included (BS8-20): the Log-a-match deck picker has 115 options and type-ahead
+// is how a keyboard user reaches one — `t` toggled the theme instead, `/` yanked focus.
+function isTyping(e){ const t = e.target; return t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.tagName === 'SELECT' || t.isContentEditable); }
 window.addEventListener('keydown', e => {
   if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k'){ e.preventDefault(); openPalette(); return; }
   if (STATE.paletteOpen){
@@ -2302,7 +2336,11 @@ function syncLive(silent){
     if (!(fresh > cur)){ syncing = false; if (!silent) toast('Already up to date — ' + esc(D.generated)); return; }
     // Stash the fresher payload and reload; the top-of-script loader prefers it, so
     // every section cleanly re-derives from the new data without a manual re-render.
-    try { sessionStorage.setItem('mtga-live', m[1]); } catch(e){}
+    // The success toast used to precede the store, so a quota / storage-blocked browser
+    // (the island is ~1.9 MB) reloaded onto the same stale snapshot behind "Synced live"
+    // (BS8 P-05). Store first; on failure say so and do NOT reload.
+    try { sessionStorage.setItem('mtga-live', m[1]); }
+    catch(e){ syncing = false; toast('Live sync failed — this browser will not store the fresh snapshot (storage blocked or full); showing last snapshot'); return; }
     syncing = false; toast('Synced live — ' + (data.totals ? data.totals.decks : D.decks.length) + ' decks · reloading');
     setTimeout(() => location.reload(), 450);
   }).catch(e => { console.warn('live sync failed', e); syncing = false; if (!silent) toast('Live sync failed — showing last snapshot'); });
@@ -2443,6 +2481,7 @@ function annoPersist(){ try { localStorage.setItem(ANNOKEY, JSON.stringify(ANNO)
 
 function parseLogBlock(text){
   const out = [];
+  parseLogBlock.dropped = 0;   // event lines that would not parse (a truncated paste) — BS8-43
   let me = null, deck = '';
   (text || '').split(/\r?\n/).forEach(raw => {
     const m = raw.match(/Match to ([A-Za-z0-9_\-]+)\s*:/);
@@ -2453,7 +2492,7 @@ function parseLogBlock(text){
     }
     if (raw.indexOf('matchGameRoomStateChangedEvent') < 0) return;
     const i = raw.indexOf('{'); if (i < 0) return;
-    let d; try { d = JSON.parse(raw.slice(i)); } catch(e){ return; }
+    let d; try { d = JSON.parse(raw.slice(i)); } catch(e){ parseLogBlock.dropped += 1; return; }
     try {
       const info = d.matchGameRoomStateChangedEvent.gameRoomInfo;
       const players = info.gameRoomConfig.reservedPlayers;
@@ -2464,7 +2503,11 @@ function parseLogBlock(text){
       // the result shown as '?' — displayed as unknown, never guessed.
       const mine = me ? players.find(p => p.userId === me) : null;
       const winner = (fin.resultList || []).filter(r => r.scope === 'MatchScope_Match').pop();
-      const res = (mine && winner) ? (mine.teamId === winner.winningTeamId ? 'W' : 'L') : '?';
+      // A DRAW has no winning team (Python: `winningTeamId in (None, 0)` → 'D'); it used to
+      // label as a LOSS here (BS8-43). The panel emits only the id, so a stored W/L was
+      // never at risk — the label the user saw was.
+      const wt = winner ? winner.winningTeamId : undefined;
+      const res = (mine && winner) ? ((wt == null || wt === 0) ? 'D' : (mine.teamId === wt ? 'W' : 'L')) : '?';
       const opp = players.find(p => !mine || p.userId !== me);
       out.push({ id: fin.matchId, result: res, deck: deck,
                  date: d.timestamp ? new Date(+d.timestamp).toISOString().slice(0,10) : '',
@@ -2563,6 +2606,7 @@ function annoRender(){
   if (!$('annogo')) return;
   $('annogo').addEventListener('click', () => {
     const found = parseLogBlock($('annotext').value);
+    if (parseLogBlock.dropped) toast(parseLogBlock.dropped + ' event line(s) looked TRUNCATED and were skipped — paste the whole line');
     if (!found.length){
       $('annoout').innerHTML = '<div class="metaline2">No completed matches in that paste. It needs the <code>matchGameRoomStateChangedEvent</code> lines — see <code>make matches</code>.</div>';
       ANNOFOUND = []; annoSync(); return;
@@ -2617,9 +2661,18 @@ function applyCollapsed(id, collapsed){
     STATE.secCollapsed[id] = collapsed;
     applyCollapsed(id, collapsed);
     // The section headers are the page's primary navigation — every section collapses
-    // through them — and they were <h2> with a bare onclick (I-01).
-    a11y(h, {label:label + ' section', expanded:!collapsed, role:null});  // keep the <h2> a heading
-    h.onclick = () => { const c = !sec.classList.contains('collapsed'); STATE.secCollapsed[id] = c; applyCollapsed(id, c); h.setAttribute('aria-expanded', String(!c)); persist(); };
+    // through them — and they were <h2> with a bare onclick (I-01). BS2-16 kept the <h2>
+    // a heading, but a focusable heading carrying aria-expanded is still not a control:
+    // the heading role does not support the state, so a screen reader announced
+    // "heading level 2" and nothing else (BS8 P-07). The CONTROL is now a real <button>
+    // inside the heading (heading-jump navigation keeps working; the button announces
+    // its expanded state); the <h2> itself is no longer focusable.
+    const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'secbtn';
+    while (h.firstChild) btn.appendChild(h.firstChild);
+    h.appendChild(btn); h.tabIndex = -1; h.removeAttribute('role');
+    a11y(btn, {label:label + ' section', expanded:!collapsed, role:null, native:true});  // keep the <h2> a heading
+    btn.setAttribute('aria-controls', id);
+    btn.onclick = () => { const c = !sec.classList.contains('collapsed'); STATE.secCollapsed[id] = c; applyCollapsed(id, c); btn.setAttribute('aria-expanded', String(!c)); persist(); };
   });
   // scroll-spy: highlight the nav chip of the last section scrolled past
   const ids = SECTIONS.map(s => s[0]).filter(id => { const e = $(id); return e && e.style.display !== 'none'; });
@@ -2648,6 +2701,26 @@ if (STATE._jump){ setTimeout(() => {
 """
 
 
+_LIGHT_BLOCK_RE = re.compile(r'\n  \[data-theme="light"\] \{\n(.*?)\n  \}', re.S)
+
+
+def _with_light_scheme_fallback(template):
+    """Emit every `[data-theme="light"] { … }` token block a second time under
+    `@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) { … } }`, so a
+    light-OS visit paints light BEFORE any script runs and with scripts blocked (BS8
+    P-04). One definition of the light palette — the template's — copied at build time,
+    never a second hand-kept block (the drift shape G-72 records for the editor pages)."""
+    blocks = _LIGHT_BLOCK_RE.findall(template)
+    if not blocks:
+        return template
+    fallback = "".join(
+        "\n  @media (prefers-color-scheme: light) {\n    :root:not([data-theme=\"dark\"]) {\n"
+        + body + "\n    }\n  }" for body in blocks)
+    marker = "\n  * { box-sizing:border-box; }"
+    assert marker in template, "light-scheme fallback anchor moved"
+    return template.replace(marker, fallback + marker, 1)
+
+
 def main():
     ap = argparse.ArgumentParser(description="Render the roster dashboard (dashboard.html).")
     ap.add_argument("--out", default=OUT)
@@ -2656,7 +2729,7 @@ def main():
     eprint("Collecting deck analysis (offline)...")
     payload = collect()
     data_json = json.dumps(payload, ensure_ascii=False).replace("<", "\\u003c")
-    html = TEMPLATE.replace("__DATA__", data_json)
+    html = _with_light_scheme_fallback(TEMPLATE).replace("__DATA__", data_json)
     # atomic_write, not a plain open() — a crash mid-write would otherwise leave a
     # truncated dashboard.html that still exists (broad-scan F-10). Matters more here
     # than for the gallery: the Pages workflow writes this straight into _site/, and a

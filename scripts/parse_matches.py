@@ -1657,6 +1657,15 @@ def main():
                          "extraction script can pass back as --since")
     ap.add_argument("--out", default=MATCHES_CSV)
     args = ap.parse_args()
+    # An unknown --deck tags the WHOLE paste to a deck that does not exist, and would then
+    # appear in --report as a deck nobody can open. `--add` / `--annotate` refuse an unknown
+    # id for exactly that reason (G-74); the log path that tags every row did not (BS8-23).
+    if getattr(args, "deck", None):
+        _known = deck_ids()
+        if _known and _norm_id(args.deck) not in {_norm_id(x) for x in _known}:
+            eprint(f"--deck {args.deck!r}: no deck with that id in decks/. "
+                   f"An unknown id would appear in --report as a deck that does not exist.")
+            return 1
 
     # Answer --watermark before anything else: it needs no source and is meant to be
     # captured by a shell script (`d=$(parse_matches.py --watermark)`), so it prints the
@@ -1788,7 +1797,7 @@ def main():
     routes = {}
     for r in rows:
         if args.deck:
-            r["Deck"] = args.deck
+            r["Deck"] = args.deck          # validated in main() before any parsing
             continue
         key = (r.get("Arena Deck", ""), r.get("Arena Deck ID", ""))
         if key not in routes:

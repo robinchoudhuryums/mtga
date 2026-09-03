@@ -50,6 +50,18 @@ DECK_PY = os.path.join(SCRIPTS_DIR, "deck.py")
 # had better be one you reach for deliberately. "I couldn't be bothered to wire it up" is
 # not a reason; wire it up instead.
 INTERACTIVE_ONLY = {
+    # ── Makefile targets (BS8-25) ──
+    ("make", "help"):
+        "prints the target list — orientation, not a workflow step",
+    ("make", "check"):
+        "the bare integrity gate; every writing skill reaches it through the shared "
+        "commit tail's `check_all` step, and /check is the skill that wraps it",
+    ("make", "test-units"):
+        "the pytest layer — a developer command; CI runs it, no data workflow does",
+    ("make", "verify"):
+        "check + test-units in one — the same developer/CI pairing as test-units",
+    ("make", "clean-venv"):
+        "removes the editor's virtualenv; maintenance, not a data step",
     ("deck.py", "history"):
         "per-deck git forensics — you run it when you want to know why a deck changed, "
         "not on a schedule; nothing downstream consumes it",
@@ -256,6 +268,29 @@ def check():
             f"workflow in .claude/commands/, or add ('script', {fn!r}) to "
             f"INTERACTIVE_ONLY with the reason it is human-driven.")
 
+    # 2b. COVERAGE — Makefile TARGETS. `check_commands` proved every SCRIPT and
+    # subcommand is reachable from a workflow, and the Makefile itself was only ever an
+    # INPUT to that proof — so a target nothing runs was invisible: `make postedit`, the
+    # after-every-deck-edit tail G-69 describes, is named by no skill at all (`/apply-changes`
+    # rebuilds nothing, `/draft-deck` calls build_dashboard.py directly), which is why the
+    # committed dashboard goes stale until a soft warning notices (BS8-25). Same rule as
+    # the script half: a real `make <target>` in a skill or in the shared commit tail, not
+    # a prose mention.
+    mk_path = os.path.join(os.path.dirname(SCRIPTS_DIR), "Makefile")
+    if os.path.exists(mk_path):
+        mk_raw = open(mk_path, encoding="utf-8").read()
+        targets = [t for t in re.findall(r"(?m)^([a-z][a-z0-9-]*):", mk_raw)
+                   if ("make", t) not in INTERACTIVE_ONLY]
+        tail = os.path.join(os.path.dirname(SCRIPTS_DIR), "docs", "verify-commit-tail.md")
+        where = skills + (open(tail, encoding="utf-8").read() if os.path.exists(tail) else "")
+        for t in sorted(set(targets)):
+            if not _cited_as_usage(where, rf"make {re.escape(t)}\b"):
+                errs.append(
+                    f"`make {t}` is INVOKED by no skill and not by the shared commit tail "
+                    f"(a prose mention is not coverage — G-53). Name it in a workflow in "
+                    f".claude/commands/ or docs/verify-commit-tail.md, or add "
+                    f"('make', {t!r}) to INTERACTIVE_ONLY with the reason it is human-driven.")
+
     # 3. STALENESS — an exemption must still name something real.
     for (kind, name), reason in sorted(INTERACTIVE_ONLY.items()):
         if not str(reason).strip():
@@ -267,9 +302,15 @@ def check():
         elif kind == "script" and not os.path.exists(os.path.join(SCRIPTS_DIR, name)):
             errs.append(f"stale INTERACTIVE_ONLY entry ('script', {name!r}): no such "
                         f"script any more. Remove it.")
-        elif kind not in ("deck.py", "script"):
+        elif kind == "make":
+            _mk = os.path.join(os.path.dirname(SCRIPTS_DIR), "Makefile")
+            _src = open(_mk, encoding="utf-8").read() if os.path.exists(_mk) else ""
+            if not re.search(rf"(?m)^{re.escape(name)}:", _src):
+                errs.append(f"stale INTERACTIVE_ONLY entry ('make', {name!r}): no such "
+                            f"Makefile target any more. Remove it.")
+        elif kind not in ("deck.py", "script", "make"):
             errs.append(f"INTERACTIVE_ONLY key {(kind, name)!r} has an unknown kind "
-                        f"{kind!r} — expected 'deck.py' or 'script'.")
+                        f"{kind!r} — expected 'deck.py', 'script' or 'make'.")
     return errs
 
 

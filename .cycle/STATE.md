@@ -2756,3 +2756,27 @@ Blocks: `.cycle/blocks/2026-09-broad-scan-8-batch4-*.md`, `…-batch5-*.md`.
 Where I left off: all of broad-scan #8 batches 1–5 on `claude/broad-scan-6kxevb`, gates
 green. Remaining from the scan: batch 6 (interface), batch 7 (outcomes/gates/docs
 hygiene), the completeness gaps, and the library tag-prune follow-on.
+
+## 2026-09-03 — broad-scan #8, batches 6 and 7 — broad-implement
+
+Batch 6 (interface): shortcuts no longer fire in a `<select>`; the dashboard's JS matcher
+carries the TRUNCATED flag and labels a draw `D`; a first-paint theme stamp plus a
+build-time `prefers-color-scheme` fallback copied from the template's own light blocks;
+syncLive stores before it claims success; palette options live in a listbox and both
+overlays are named; the section collapse control is a real button inside the heading; the
+deck editor guards unsaved changes.
+
+Batch 7 (outcomes/gates/docs): `--deck` validated; `figure_drift` wired into check_all as a
+soft warning and its baseline figure measures entries; test_cli derives its deck, cards and
+section from the live roster; check_commands now gates Makefile TARGETS (it fired on
+`make postedit`, which the shared commit tail now runs); the ingest/add-cards loop, the
+pile-analysis identity-castability trap and roster-review's missing commit step fixed;
+the gate count is thirteen everywhere and is now radar-held; systems-map re-measured.
+
+Block: `.cycle/blocks/2026-09-broad-scan-8-batch6-7-interface-gates-broad-implement.md`.
+
+Where I left off: broad-scan #8 batches 1–7 all landed on `claude/broad-scan-6kxevb`;
+gates green (full suite, check_all with the one expected G-75 warning). Remaining: the
+five Low interface items (P-09..P-13), the batch-5 tag-prune follow-on, the operator
+visual checks (Scenarios 5, 7, 12–18), and the completeness gaps (tracker export through
+import_collection, a play-next surface, `standardbrawl` in the pool).

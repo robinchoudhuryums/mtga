@@ -1550,3 +1550,28 @@ class TestManualDeckIdIsNormalized:
     def test_an_unknown_id_is_still_refused(self):
         rows, warnings = pm.parse_manual("999 L", deck_ids={"6"})
         assert rows == [] and "no deck" in warnings[0]
+
+
+class TestLogDeckFlagIsValidated:
+    """BS8-23: `--deck <id>` tags the WHOLE paste, and an unknown id would appear in
+    `--report` as a deck nobody can open. `--add` / `--annotate` refuse one for exactly
+    that reason (G-74); the log path that tags every row did not."""
+
+    def test_an_unknown_id_exits_nonzero_before_parsing(self, tmp_path):
+        import subprocess
+        import sys
+        empty = tmp_path / "log.txt"
+        empty.write_text("", encoding="utf-8")
+        r = subprocess.run([sys.executable, "scripts/parse_matches.py", "--deck", "999",
+                            str(empty)], capture_output=True, text=True, timeout=120)
+        assert r.returncode == 1
+        assert "no deck with that id" in (r.stdout + r.stderr)
+
+    def test_a_padded_real_id_is_accepted(self, tmp_path):
+        import subprocess
+        import sys
+        empty = tmp_path / "log.txt"
+        empty.write_text("", encoding="utf-8")
+        r = subprocess.run([sys.executable, "scripts/parse_matches.py", "--deck", "06",
+                            str(empty)], capture_output=True, text=True, timeout=120)
+        assert "no deck with that id" not in (r.stdout + r.stderr)

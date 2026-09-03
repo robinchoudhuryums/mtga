@@ -287,6 +287,14 @@
     const last = rowsEl.querySelector('.row.card:last-of-type .name'); if (last) last.focus();
   });
 
+  // Unsaved-changes guard (BS8 P-08): a dirty deck edit was lost silently on "← Decks",
+  // a reload or a closed tab, while the analysis note beside the header link said "Save
+  // to refresh". Same shape as collection.html's guard; the flag skips the prompt on the
+  // reload a successful save triggers.
+  let bypassUnloadGuard = false;
+  window.addEventListener('beforeunload', (e) => {
+    if (!bypassUnloadGuard && (NEW ? BODY.length : baseline() !== ORIG)) { e.preventDefault(); e.returnValue = ''; }
+  });
   saveBtn.addEventListener('click', async () => {
     if (!NEW && baseline() === ORIG) return;
     saveBtn.disabled = true; saveBtn.textContent = 'Saving…';
@@ -299,6 +307,7 @@
         body: JSON.stringify({id: DATA.id, meta: META, body: BODY, doc_token: DATA.doc_token || ''})});
       const d = await res.json();
       if (d.ok) {
+        bypassUnloadGuard = true;
         if (NEW) { location.href = '/deck/' + encodeURIComponent(d.id); }
         else { toast(`Saved ${d.cards} card lines` + (d.backup?` · backup ${d.backup}`:'')); location.reload(); }
       } else { toast('Save failed: ' + (d.errors||['unknown']).join('  |  ')); }

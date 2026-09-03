@@ -1572,7 +1572,7 @@ winning, never whether a deck is good, because it averages a tuned deck with a b
 invariants in [`CLAUDE.md`](CLAUDE.md) (CSV structure, `card-mana.csv` coverage,
 derived files present **and still carrying their own columns** — a pool that lost
 its `Rarity`/`Legalities` is a hard failure, not a silent degrade — decks parse)
-plus eleven **model-sanity checks** that keep the
+plus thirteen **model-sanity checks** that keep the
 grading/ranking models from silently drifting: the **ranking model**
 (`check_rankings.py`), **color parsing** (`check_colors.py` — also a static scan
 banning the naive inline `WUBRG` parse outside `lib.py`), the **DFC ownership-join**
@@ -1597,7 +1597,7 @@ against a string written to match it. The gate found a third on its first run.
 Then **workflow coverage** (`check_commands.py` — every subcommand and script must be
 reachable from a skill, or exempted with a reason: a capability that works and is never
 reached is invisible to every correctness gate above), and **model agreement**
-(`check_agreement.py`). That last one covers what the other eight structurally cannot:
+(`check_agreement.py`). That last one covers what the others structurally cannot:
 **two functions that are each correct and disagree with each other.** Every check above
 evaluates a model in isolation, and a divergence exists only *between* models — which is
 how `suggest-homes` came to print a "weakest card" cut hint that `deck.py cuts` did not

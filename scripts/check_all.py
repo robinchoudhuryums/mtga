@@ -378,6 +378,23 @@ def main():
     # after a retune (e.g. deck 14 Mardu->Rakdos orphaned Neriv). Informational
     # only; never fails the build.
     soft = list(derived_warns)
+
+    # Soft: FIGURE DRIFT — a MEASUREMENT a CLAUDE.md rule cites as its evidence that no
+    # longer matches the data. `check_docs.figure_drift` existed since the analysis cycle
+    # and was invoked by `check_docs.main()` alone — i.e. only when someone ran the file by
+    # hand, which nothing does (BS8-22; the G-53 shape one layer in — the GATE was
+    # reached, the radar inside it was not). A stale figure is a trust problem, not a
+    # build break, so it warns. Appended here, AFTER `soft` exists: putting it beside the
+    # hard doc check raised NameError into that block's `except`, which would have
+    # reported a false "doc structure check errored" — a radar whose own wiring is the
+    # failure it reports is worse than one nobody runs.
+    try:
+        from check_docs import figure_drift
+        for _label, _stated, _live in figure_drift():
+            soft.append(f"figure drift: {_label} — CLAUDE.md says {_stated}, live is "
+                        f"{_live} (re-measure and update the rule, or fix the data)")
+    except Exception as e:
+        soft.append(f"figure-drift check skipped ({e})")
     # Printing lines that name a real set but an unheld collector number. Soft
     # because the pool keys ONE printing per card, so a legitimate alternate art
     # lands here too — summarised, since 27 sit on the roster today.
