@@ -19,6 +19,24 @@ commands disagree.
 
 ## 0-current. THE 2026-08-24 SESSION (READ THIS FIRST — supersedes §0-latest below)
 
+> **STATE STAMP, 2026-09-03.** Broad scan #8 is MERGED as PR #163 — eight commits: seven
+> implementation batches, a deck re-grade pass and two doc syncs. `main` is the place to
+> branch from. Live gates: `check_all` all invariants hold with the SAME one soft warning
+> described below (the four accepted dead tutors); **1658 pytest passed / 0 skipped**.
+> What changed, in one line each: colour sources are read from land TEXT through one
+> primitive (any-colour lands were zero sources); the role classifier no longer counts
+> blink as removal or reads reminder text; the tier floor's thresholds were re-derived
+> from the roster (they had saturated at A for 104 of 117 decks) and a spread sweep
+> watches for it happening again; 60-card Brawl resolves to Standard's legality key;
+> rotation uses the Standard year; the editor's save gates equal `check_all`'s and the
+> CSV save carries a staleness token; INV-01b rejects a library printing that exists
+> nowhere; hand-logged matches no longer advance the ingest watermark; and
+> `check_commands` covers Makefile targets. Full detail per batch in `.cycle/blocks/`
+> (five new blocks, newest `2026-09-broad-scan-8-batch6-7-*`). Open residuals worth
+> knowing before you start: the LIBRARY still carries stale `sacrifice`/`ramp` tags
+> because `--merge` cannot remove one (the pool is corrected); five Low interface items
+> P-09..P-13; and Regression Scenarios 12–18 are written but unwalked.
+>
 > **STATE STAMP, 2026-09-02.** Everything through 2026-09-02 is MERGED to `main` as PR
 > #162 — deck 78's craft ingest, Niko into deck 27, both tooling batches, the ten logged
 > matches, deck 40a's rename and the doc sync. `main` is the place to branch from. (This
