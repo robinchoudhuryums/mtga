@@ -39,7 +39,8 @@
 #: tier: Charred Foyer // Warped Space. THE DECK IS THEREFORE NO LONGER FULLY OWNED,
 #: tier: which is a deliberate trade, not a regression -- `check` tracks the gap.
 #: tier: A 12-SWAP TUNE LANDED THE SAME DAY. Measured before -> after: interaction
-#: tier: 7 -> 8, card advantage 8 (held), protection 3 (held), avg MV 3.22 -> 3.14,
+#: tier: 7 -> 8, card advantage 8 (held), protection unchanged by that pass, avg MV
+#: tier: 3.22 -> 3.14,
 #: tier: MV-4 cards 13 -> 12, central themes 16 -> 18, floor A throughout. The
 #: tier: manabase weakness above is EASED rather than solved, and from the spell side
 #: tier: rather than the lands: no untapped dual exists owned or craftable, so the
@@ -47,6 +48,18 @@
 #: tier: {1}{W}{W}{U}{U} at 45.9% on curve, Jeskai Brushmaster {1}{U}{R}{W} at 74.3%)
 #: tier: and adding nothing that needs white -- W pips 18 -> 14 against 11 sources.
 #: tier: THE CURVE WEAKNESS IS ONLY PARTLY ADDRESSED AND THE SHORTFALL IS RECORDED
+#: tier: A LATER PASS THE SAME DAY moved it again, and these are the live figures:
+#: tier: Goliath Daydreamer came in over Spectacular Skywhale x1 (see the notes for the
+#: tier: flashback interaction), then Restoration Magic replaced Phantom Interference
+#: tier: and Pym Particles replaced Mai x1. Net from those three: interaction 8 -> 7,
+#: tier: protection 3 -> 4, avg MV 3.14 -> 3.11. THE INTERACTION DROP IS DELIBERATE AND
+#: tier: IS THE COST OF THE PHANTOM INTERFERENCE CUT -- it was the deck's only cheap
+#: tier: counter (Jeskai Revelation at MV 7 is the other), traded because its SPREE
+#: tier: minimum of +{1} means its real floor is 2 mana, not the 1 the curve books it
+#: tier: at. That under-read is the G-60 shape one mechanic over, and it left the deck
+#: tier: with exactly ONE true one-drop (Duel Tactics). Restoration Magic's Tiered
+#: tier: "Cure -- {0}" mode is a genuine 1, and it protects any PERMANENT, so it covers
+#: tier: Ral and Charred Foyer rather than only creatures.
 #: tier: HONESTLY: a tighter variant reached MV-4 = 10 and avg 3.06, but keeping
 #: tier: Effortless Master x2 and adding Charred Foyer (MV 4) traded roughly half
 #: tier: that gain back for engine density. That was the user's call with the cost
@@ -106,7 +119,8 @@
 1 Jeskai Brushmaster (TDM) 195
 1 Ral, Crackling Wit (BLB) 230
 2 Effortless Master (TDM) 181
-2 Mai, Jaded Edge (TLA) 147
+1 Mai, Jaded Edge (TLA) 147
+1 Pym Particles (MSH) 70
 1 Crackling Cyclops (FDN) 83
 1 Kitsa, Otterball Elite (BLB) 54
 1 Goliath Daydreamer (ECL) 143
@@ -125,7 +139,7 @@
 # Cheap spells (prowess fuel)
 1 Duel Tactics (SOS) 112
 1 Highway Robbery (OTJ) 129
-1 Phantom Interference (OTJ) 61
+1 Restoration Magic (FIN) 30
 1 Lightning Helix (MKM) 218
 1 Boros Charm (FDN) 721
 1 Wingblade Disciple (TDM) 65
