@@ -7,17 +7,21 @@
 #: archetype: noncreature spells across evasive prowess bodies, closing before a
 #: archetype: midrange deck stabilizes. Sokka is the engine (a 1/1 Ally per
 #: archetype: noncreature spell, and ALL Allies gain menace and prowess — the tokens
-#: archetype: he makes attack through the same spells that made them); Narset refills
-#: archetype: the hand every end step (discard, draw per spell cast); Flamehold
-#: archetype: Grappler and Shiko copy and recast the cheap suite; the prowess block
-#: archetype: (Brushmaster's double strike, Effortless Master, Mai, Crackling Cyclops,
-#: archetype: Skywhale, Equilibrium Adept's flurry) converts each cast into damage.
+#: archetype: he makes attack through the same spells that made them); The Legend of
+#: archetype: Kuruk digs on chapters I and II, then flips into a second token engine
+#: archetype: that triggers on EVERY spell, not just noncreature ones, and whose
+#: archetype: Spirits are unblockable by non-Spirits; Flamehold Grappler and Shiko
+#: archetype: copy and recast the cheap suite; Bilbo and Goliath Daydreamer each turn
+#: archetype: an attack into another cast; the prowess block (Brushmaster's double
+#: archetype: strike, Effortless Master, Mai, Crackling Cyclops, Equilibrium Adept's
+#: archetype: flurry) converts each cast into damage.
 #: archetype: Distinct from deck 25 (UR storm — magnifies ONE big-spell turn) and 55a
 #: archetype: (Mardu engine midrange — grinds value): this deck is the FAST third
 #: archetype: point of the spellslinger triangle, width + prowess + menace tempo.
 #: tier: A (PROVISIONAL) — graded at the measurable floor: real interaction that
-#: tier: doubles as prowess fuel, and genuine card advantage (Narset's wheel, the
-#: tier: impulse suite) that most aggro decks lack. Unproven in matches; the honest
+#: tier: doubles as prowess fuel, and genuine card advantage (the impulse suite,
+#: tier: Kuruk's two chapters, Ral) that most aggro decks lack. Unproven in matches;
+#: tier: the honest
 #: tier: weaknesses are the three-color manabase taxing the tri-pip engine bodies on
 #: tier: curve and a top-heavy curve for a tempo plan. THE PROTECTION WEAKNESS THIS
 #: tier: BLOCK USED TO NAME IS CLOSED (2026-09-03): protection went 1 -> 3 when
@@ -39,7 +43,7 @@
 #: tier: Charred Foyer // Warped Space. THE DECK IS THEREFORE NO LONGER FULLY OWNED,
 #: tier: which is a deliberate trade, not a regression -- `check` tracks the gap.
 #: tier: A 12-SWAP TUNE LANDED THE SAME DAY. Measured before -> after: interaction
-#: tier: 7 -> 8, card advantage 8 (held), protection unchanged by that pass, avg MV
+#: tier: 7 -> 8, card advantage 8 -> 8, protection unchanged by that pass, avg MV
 #: tier: 3.22 -> 3.14,
 #: tier: MV-4 cards 13 -> 12, central themes 16 -> 18, floor A throughout. The
 #: tier: manabase weakness above is EASED rather than solved, and from the spell side
@@ -60,10 +64,33 @@
 #: tier: with exactly ONE true one-drop (Duel Tactics). Restoration Magic's Tiered
 #: tier: "Cure -- {0}" mode is a genuine 1, and it protects any PERMANENT, so it covers
 #: tier: Ral and Charred Foyer rather than only creatures.
-#: tier: HONESTLY: a tighter variant reached MV-4 = 10 and avg 3.06, but keeping
-#: tier: Effortless Master x2 and adding Charred Foyer (MV 4) traded roughly half
+#: tier: HONESTLY: a tighter variant reached MV-4 = 10 and avg 3.06, but keeping a
+#: tier: second Effortless Master and adding Charred Foyer (MV 4) traded roughly half
 #: tier: that gain back for engine density. That was the user's call with the cost
-#: tier: stated. Re-grade after real games.
+#: tier: stated.
+#: tier: A FOURTH PASS THE SAME DAY (2026-09-04) brought in four cards and these are
+#: tier: the live figures. CUT: Jeskai Shrinekeeper, Effortless Master x1, Highway
+#: tier: Robbery and Narset, Jeskai Waymaster. ADDED: Bilbo, Thief in the Night, Gwen
+#: tier: Stacy // Ghost-Spider, Bofur, Reliable Guardian and The Legend of Kuruk.
+#: tier: Net: interaction 7 (held), protection 4 -> 5, avg MV 3.11 -> 2.97, MV-5 cards
+#: tier: 3 -> 2, floor A throughout. Three of the four adds are single-pip, so the
+#: tier: manabase weakness eased again: W pips 15 -> 15, U 17 -> 18, R 29 -> 26.
+#: tier: THE COST IS CARD ADVANTAGE AND IT IS THE LARGEST TRADE THIS DECK HAS MADE.
+#: tier: The measured axis reads 6, down from 8, because THREE of the deck's eight
+#: tier: card-advantage sources were CUT in one pass -- Shrinekeeper's draw-on-damage,
+#: tier: Highway Robbery's draw-two, and the end-step wheel that left when Narset was
+#: tier: removed -- against one that arrived (Gwen's impulse ETB). Read that 6 as a
+#: tier: FLOOR rather than the number:
+#: tier: Kuruk draws two cards and scries four across chapters I and II, and
+#: tier: `classify_roles` cannot see it because a Saga chapter is not a
+#: tier: trigger-shaped clause -- the K-12 under-count, so the honest figure is 7.
+#: tier: Even at 7 this is a real trade and it was made with the cost stated: the
+#: tier: deck bought curve, protection and castability with grind. The Narset slot
+#: tier: was cut over an explicit re-read of what she did, and the name was removed
+#: tier: from `#: protect:` in the same edit so the header cannot go stale (G-68).
+#: tier: WHAT TO WATCH IN PLAY: whether the deck runs out of cards against
+#: tier: removal-heavy midrange, which is the matchup that wheel answered.
+#: tier: Re-grade after real games.
 #: notes: GOLIATH DAYDREAMER + FLASHBACK IS ADDITIVE, NOT A CONFLICT, and this was
 #: notes: mis-called once so it is written down. Goliath's replacement is scoped to
 #: notes: spells cast "from your hand", so it only intercepts the FIRST cast. A spell
@@ -80,14 +107,14 @@
 #: notes: WIZARD'S STAFF DOUBLES IT. Goliath is a Giant WIZARD, so Equip Wizard {1},
 #: notes: and the attack trigger is a triggered ability -- the Staff makes it trigger an
 #: notes: additional time, i.e. TWO free spells per attack, each one another prowess /
-#: notes: Flurry / Sokka-token / Narset trigger. Crackling Cyclops and Kitsa are the
+#: notes: Flurry / Sokka-token / Kuruk-Spirit trigger. Crackling Cyclops and Kitsa are the
 #: notes: other two Wizards; the Staff wants Cyclops (0/4 that survives combat) when
 #: notes: Goliath is not out.
 #: notes: THE REAL COST, kept visible: if Goliath dies while cards sit in exile with
 #: notes: dream counters, those cards are STRANDED -- nothing else here can cast them.
 #: notes: Without him Duel Tactics would simply have sat in the yard with flashback
 #: notes: live, so he trades a safe second cast for a cheaper one hostage to a 4/4.
-#: protect: Sokka, Tenacious Tactician; Narset, Jeskai Waymaster; Flamehold Grappler; Mai, Jaded Edge
+#: protect: Sokka, Tenacious Tactician; Flamehold Grappler; Mai, Jaded Edge
 #: notes: BUILT from the 55-mardu addendum (concept J). The pile's known blue gap,
 #: notes: recorded honestly: the PILE contained ZERO mono-U spells, so at build time
 #: notes: blue bought bodies only and the spell suite was red/white. CLOSED (partly)
@@ -101,8 +128,9 @@
 #: notes: and no substitute exists in these colors. Chart a Course reads "discard
 #: notes: unless you attacked" — in this deck it is nearly always a clean draw-two.
 #: notes: Phantom Interference is OTJ, rotates ~2027 with the deck's LCI/OTJ tail.
-#: notes: Timing reads: Narset's end-step wheel happens AFTER attackers profit from
-#: notes: prowess — dump the hand freely on your turn, she restocks at end step.
+#: notes: Timing reads: Kuruk's flipped side triggers on EVERY spell including
+#: notes: creatures, so it is the only token maker here that Sokka's noncreature-only
+#: notes: clause does not already cover — sequence a creature cast after it flips.
 #: notes: Riverwheel Sweep and Monastery Messenger cost {2/U}{2/R}{2/W} — each pip
 #: notes: is payable with {2} OR the color, so they cast without blue at 6 mana or
 #: notes: cheaper with any mix; they count as U spells for nothing (G-58 read).
@@ -112,13 +140,14 @@
 
 # Engine
 2 Sokka, Tenacious Tactician (TLA) 242
-1 Narset, Jeskai Waymaster (TDM) 209
+1 The Legend of Kuruk // Avatar Kuruk (TLA) 61
 1 Flamehold Grappler (TDM) 185
 
 # Prowess block
 1 Jeskai Brushmaster (TDM) 195
 1 Ral, Crackling Wit (BLB) 230
-2 Effortless Master (TDM) 181
+1 Effortless Master (TDM) 181
+1 Gwen Stacy // Ghost-Spider (SPM) 78
 1 Mai, Jaded Edge (TLA) 147
 1 Pym Particles (MSH) 70
 1 Crackling Cyclops (FDN) 83
@@ -130,15 +159,15 @@
 1 Monica Rambeau // Photon, Living Light (MSH) 23
 1 The Vision (MSH) 255
 1 Bria, Riptide Rogue (BLB) 379
+1 Bilbo, Thief in the Night (HOB) 33
+1 Bofur, Reliable Guardian // Concerted Care (HOB) 6
 
 # Value top end
 1 Shiko, Paragon of the Way (TDM) 223
-1 Jeskai Shrinekeeper (TDM) 197
 1 Jeskai Revelation (TDM) 196
 
 # Cheap spells (prowess fuel)
 1 Duel Tactics (SOS) 112
-1 Highway Robbery (OTJ) 129
 1 Restoration Magic (FIN) 30
 1 Lightning Helix (MKM) 218
 1 Boros Charm (FDN) 721
@@ -164,3 +193,6 @@
 6 Mountain (MSH) 293
 5 Plains (MSH) 287
 4 Island (MSH) 290
+
+# Flex — parked, not rejected. See: deck.py flex 57
+#~ -Jeskai Brushmaster | +The Mechanist, Aerial Artisan | OWNED (x1): the card-advantage add-back if the 2026-09-04 pass reads too thin on grind. {2}{U} 1/3 that makes a Clue on every noncreature spell (14 dedicated ones here, plus Kuruk's Saga half and Bofur's adventure), and turns any artifact token into a 3/1 flier — so it draws AND supplies its own evasion. It is the deck's SECOND Ally, which is the only thing that turns on Sokka's "other Allies gain menace and prowess" clause. Measured in the pre-pass list: card advantage 8 -> 9, avg MV 3.11 -> 3.06, MV-5 cards 3 -> 2, floor A. Cut listed as Brushmaster because it is the remaining {1}{U}{R}{W} tri-pip body (74.3% on curve) with no text past its two keywords; the Mechanist's single blue pip is the point.
