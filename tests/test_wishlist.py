@@ -667,3 +667,38 @@ class TestLandBreadthAboveTwo:
         gain5 = wishlist._land_value(self._land(self.FETCH), five)
         gain3 = wishlist._land_value(self._land(self.FETCH), three)
         assert gain5 - gain3 <= wishlist._LAND_BREADTH_CAP
+
+class TestShocklandEarnsTheUntappedPremium:
+    """The THIRD surface of the 2026-09-04 tapland defect. `tapland_profile` and
+    `suggest --lands`' `·tapped?` marker were fixed to read a shockland as conditional
+    while this SCORING path still tested for the substring "enters tapped", so Hallowed
+    Fountain valued at 8.0 as though it always entered tapped. All three now call
+    `lib.tapland_kind`."""
+
+    SHOCK = ("({T}: Add {W} or {U}.)\nAs this land enters, you may pay 2 life. "
+             "If you don't, it enters tapped.")
+    UNTAPPED = "{T}: Add {W} or {U}."
+    BOARD_COND = "This land enters tapped unless you control two or more other lands.\n{T}: Add {W} or {U}."
+    FLAT = "This land enters tapped.\n{T}: Add {W} or {U}."
+
+    def _l(self, t):
+        # Identity is load-bearing here exactly as it is on the real rows: a shockland
+        # prints its mana ability in PARENTHESES, which `_LAND_REMINDER_RE` strips, so the
+        # colours come from the Color(s) cell — the documented fallback.
+        return {"Card Text": t, "Color(s)": "W/U"}
+
+    def test_a_shockland_scores_as_untapped(self):
+        """Its condition is payable AT WILL — the same reasoning that already treats a
+        pay-life cost as a real source every turn."""
+        three = {"W", "U", "R"}
+        assert (wishlist._land_value(self._l(self.SHOCK), three)
+                == wishlist._land_value(self._l(self.UNTAPPED), three))
+
+    def test_a_board_state_condition_stays_conservative(self):
+        """"unless you control two or more other lands" may simply not be met, so it keeps
+        the tapped score and prints `·tapped?` for a human to judge (G-37)."""
+        three = {"W", "U", "R"}
+        assert (wishlist._land_value(self._l(self.BOARD_COND), three)
+                == wishlist._land_value(self._l(self.FLAT), three))
+        assert (wishlist._land_value(self._l(self.BOARD_COND), three)
+                < wishlist._land_value(self._l(self.SHOCK), three))

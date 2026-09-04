@@ -44,7 +44,7 @@ import sys
 
 from lib import (DEFAULT_CSV, REPO_ROOT, load_rows, eprint, atomic_write, owned_qty,
                  alias_front, card_colors, card_distinctiveness, color_matches,
-                 primary_type, land_production)
+                 primary_type, land_production, tapland_kind)
 from scryfall import ScryfallUnavailable
 
 WISHLIST_CSV = os.path.join(REPO_ROOT, "card-wishlist.csv")
@@ -772,9 +772,15 @@ def _land_value(row, deck_colors):
     simultaneous = used - set(lp["chosen"])
     if len(simultaneous) > 2:
         base += min((len(simultaneous) - 2) * _LAND_BREADTH_PER_COLOR, _LAND_BREADTH_CAP)
-    if (not fetch and "enters tapped" not in txt.lower()
-            and "enters the battlefield tapped" not in txt.lower()):
-        base += 1.5                               # untapped fixing is premium
+    # Untapped fixing is premium. Read through `lib.tapland_kind`, the same predicate the
+    # two REPORTING surfaces use — a substring test for "enters tapped" was the third and
+    # last surface of the 2026-09-04 shockland defect: `tapland_profile` and
+    # `suggest --lands`' `·tapped?` marker were fixed to call a shockland conditional while
+    # this SCORING path still withheld the premium, so Hallowed Fountain valued at 8.0 as
+    # though it always entered tapped. A shockland's condition is payable AT WILL, so it
+    # earns the premium; a board-state condition may not be met and stays conservative.
+    if not fetch and tapland_kind(txt) in (None, "shock"):
+        base += 1.5
     # Halve the fixing PREMIUM (never the 3.5 neutral floor) when every color this deck
     # wants from the land is restricted. Bounded and one-directional: it can only lower a
     # land, never raise one, so it cannot invent a recommendation. Half rather than zero

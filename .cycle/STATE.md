@@ -2828,8 +2828,16 @@ primitive, still **88 of 115** decks change their #1 pick. New cause, identified
 cannot see an ENTRY CONDITION, so Command Bridge ("sacrifice it unless you tap an untapped
 permanent") reads as a clean untapped any-colour land. Solve that first.
 
-**Also open: `_land_value` still withholds the untapped premium from a SHOCKLAND** — the
-third surface of the P2 defect; the other two were fixed.
+**SHOCKLAND RESIDUAL FIXED** — `lib.tapland_kind` is now the ONE tapping predicate, with
+all three consumers routed through it (the regexes moved from deck.py to lib.py because
+wishlist cannot import deck). "shock" is separated from "conditional": payable AT WILL
+earns the untapped premium, board-state stays conservative.
 
-**Where I left off.** All of the above committed on `claude/broad-scan-6kxevb`. P3, P4, P5
-still open and untouched.
+**P3 and P4 DONE (report-only).** `card_advantage_split` renders
+`card advantage 6 (4 repeatable, 2 one-shot)` in `stats`; `existential_pool_claims` shows
+in `tier --audit-rationale`. **P4 is deliberately NOT in check_all** — 4 real of 5 roster
+hits, and a standing warning at that precision is the G-07 shape. The 1-3 quality SCALE
+was DECLINED with reasons recorded in docs/gotchas.md under K-12.
+
+**Where I left off.** All committed on `claude/broad-scan-6kxevb`. Still open: the `match`
+follow-on (blocked on the entry-condition gap — Command Bridge) and P5.

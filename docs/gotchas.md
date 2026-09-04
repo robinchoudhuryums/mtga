@@ -4052,6 +4052,42 @@ concluding the tune failed.** Fixing this means teaching `_ROLE_PATTERNS` the ke
 `connive` is a draw-then-discard, so it belongs in card advantage alongside the explicit
 "draw a card" texts.
 
+### CONNIVE is an unread keyword here
+
+Baron Helmut Zemo connives on every black spell and classifies as Payoff/Recursion, so
+deck 52's card advantage stayed at 3 across a ten-swap pass that genuinely moved the axis.
+A FLAT metric after a tune is not proof the tune failed.
+
+### 2026-09-04 — the count flattens repeatable and one-shot, and a 1-3 SCALE was declined
+
+`role_tally` returned **6** for a card-advantage set holding one repeating engine, one
+net-+1 planeswalker activation and four one-shots. The USER caught it; no tool did.
+`count_conf` (G-48) annotates CLASSIFICATION uncertainty, never quality dispersion inside
+the count. Two deck-57 tuning decisions leaned on the integer first.
+
+**The proposal was a 1-3 "limited / versatile" scale for the role buckets. Declined, four
+reasons in order of weight:**
+
+1. It changes the UNITS of the only two terms `tier_band` reads — not a new term, the
+   existing ones rescaled. `TIER_FLOOR_REQ` would need re-deriving (it already was,
+   BS8-06), and **110 of 117 deck files cite interaction/card-advantage figures in
+   `#: tier:` prose**; every one goes stale in a single commit.
+2. The classifier is the weak link, not the granularity: **560 of 1882 roster cards (30%)
+   score ZERO roles**. Precision on top of that grades confidence that is not there.
+3. "Versatile / strong" is exactly the fuzzy judgment this repo keeps as a FLAG rather
+   than a score (G-09's `⚠ scales w/`, G-25's protection axis, G-41's cost-as-upside).
+4. The failure was ONE structural distinction, not a missing scale.
+
+**Built instead: `card_advantage_split`, the G-81 pattern.** An orthogonal REPORT-ONLY
+split rendered beside the count — `card advantage 6 (4 repeatable, 2 one-shot)` — with the
+bare int still feeding `tier_band`. Repeatable = a permanent supplying it through a
+recurring trigger or an activated ability (K-14's argument: an activated ability is
+repeatable by construction); one-shot = an instant/sorcery or a single ETB.
+
+Note the automated split is MORE generous than a hand read: on deck 57 it calls Ral and
+Ghost-Spider repeatable (loyalty and a counter-sink genuinely are, in principle) where a
+human counting "engines" would say only Charred Foyer. Read it as a structural split, not
+a power judgment — which is the whole point of not building the scale.
 
 ## [K-13] A literal type-name search cannot see the choose-a-type category — and the false negative reads as an answer
 

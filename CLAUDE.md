@@ -548,8 +548,9 @@ directions.
   with that count until 2026-09-04. **`free` MEANT FOUR THINGS until then**:
   choose-ONCE-on-entry now sets `chosen` (counted for ACCESS, denied BREADTH);
   transform-gated, GRANTED and extra-tap-cost clauses are excluded — ten lands had read as
-  five-colour sources. **Residual: `_land_value` still withholds the untapped premium from
-  a SHOCKLAND.** [G-35]
+  five-colour sources. **`lib.tapland_kind` is the ONE tapping predicate** (the tempo
+  line, `·tapped?`, and `_land_value`'s premium): a shockland's condition is payable AT
+  WILL so it earns the premium, a board-state one stays conservative. [G-35]
 - **`deck.py consistency <id>` is the PROBABILITY layer `mana` lacks** — keepable %,
   screw/flood, land-drop consistency and per-card P(cast on curve), with a Karsten-style
   source recommendation. Run it whenever a splash, a double pip or a top-end bomb is in
@@ -1164,18 +1165,18 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   card still says enrich/build. [K-11]
 - **The functional-role breakdown and the castability lint are HEURISTIC, and they
   silently UNDER-count.** So every count carries its own uncertainty: `stats`/`tier`
-  print `7`, `3 +2?`, or `8 +4? (3 unclassified)` plus a "⚠ Possible UNDER-COUNT" list.
-  **Read the uncertainty, not just the number** — deck 40a was once graded on interaction
+  print `7`, `3 +2?`, or `8 +4? (3 unclassified)` plus a "⚠ Possible UNDER-COUNT" list,
+  and card advantage splits `(N repeatable, M one-shot)` — a 1-3 quality SCALE was
+  DECLINED, report-only. **Read the uncertainty, not just the number** — deck 40a was
+  once graded on interaction
   3 against a hand count of 7. `role_tally` is the ONE canonical counter, so the number
   `stats` shows is the number the tier floor grades on. **When editing a role pattern,
   run a roster-wide before/after diff**: three sweeps found large silent under-counts,
   and a card sorted into the WRONG bucket is harder to detect than one in no bucket at
   all. The castability lint reads the deck's `#: colors:` header, so a stale header
   manufactures phantom strays — a flag is a review signal, not a hard failure.
-  **CONNIVE is an unread keyword here**: Baron Helmut Zemo connives on every black spell
-  and classifies as Payoff/Recursion, so deck 52's card advantage stayed at 3 across a
-  ten-swap pass that genuinely moved the axis. A FLAT metric after a tune is not proof
-  the tune failed. [K-12]
+  **CONNIVE is an unread keyword here**, so a FLAT metric after a tune is not proof the
+  tune failed. [K-12]
 - **A LITERAL TYPE-NAME SEARCH CANNOT SEE THE CHOOSE-A-TYPE CATEGORY, and a false negative
   there reads as a finished answer.** A pool sweep for "Robots you control get" / "for each
   Robot" returned zero, and an entire archetype was declined in writing as "bodies without

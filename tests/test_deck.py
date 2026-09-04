@@ -5919,3 +5919,80 @@ class TestLibrarySearchGateWords:
 
     def test_a_real_type_still_gates(self):
         assert self._rx().search("Search your library for a Halfling card.").group(1) == "Halfling"
+
+
+class TestExistentialPoolClaims:
+    """P4: an EXISTENTIAL claim about the POOL is invisible to every staleness scan.
+    `rationale_staleness` prices FIGURES against the live vector and CARD citations
+    against the deck's list; "no untapped dual exists owned or craftable" is neither. That
+    sentence sat in deck 57's tier block, was FALSE (two owned, four craftable) and was the
+    stated reason two decisions went the way they did (2026-09-04)."""
+
+    def _deck(self, tmp_path, header):
+        p = tmp_path / "deck.txt"
+        p.write_text(f"#: name: Probe\n#: colors: WU\n{header}\n\nDeck\n"
+                     "10 Plains (HOB) 189\n", encoding="utf-8")
+        return {"id": "zz", "path": str(p), "name": "Probe", "variant": None}
+
+    def test_a_pool_wide_negative_is_flagged(self):
+        d = self._deck(tmp_path=self.tmp, header=(
+            "#: tier: A (PROVISIONAL). No untapped dual exists owned or craftable, so the "
+            "gain came from the spell side."))
+        assert [h for h, _ in deck.existential_pool_claims(d)] == ["tier"]
+
+    def test_a_claim_scoped_to_THIS_deck_is_not_a_pool_claim(self):
+        """"this deck has no counterspell" is a fact about the LIST, which `check` and
+        `stats` already answer — flagging it would be noise."""
+        d = self._deck(tmp_path=self.tmp, header=(
+            "#: tier: B. There is no counterspell in this deck, which caps it."))
+        assert deck.existential_pool_claims(d) == []
+
+    def test_a_negative_about_tactics_is_not_about_cards(self):
+        """The subject must be card-shaped. Without that gate the sweep also caught "there
+        is no mulligan heuristic that fixes it"."""
+        d = self._deck(tmp_path=self.tmp, header=(
+            "#: tier: B. There is no way to win the die roll."))
+        assert deck.existential_pool_claims(d) == []
+
+    @pytest.fixture(autouse=True)
+    def _tmp(self, tmp_path):
+        self.tmp = tmp_path
+
+
+class TestCardAdvantageSplit:
+    """P3: `role_tally` counts CARDS, so "card advantage 6" flattened one repeating engine,
+    one net-+1 activation and four one-shots. The USER caught that; no tool did. A 1-3
+    quality SCALE was declined (it would rescale the only two terms `tier_band` reads);
+    this is the G-81 pattern instead — an orthogonal REPORT-ONLY split beside the count."""
+
+    DATA = {
+        "engine": {"type": "Enchantment",
+                   "text": "At the beginning of your upkeep, draw a card."},
+        "activated": {"type": "Artifact", "text": "{2}, {T}: Draw a card."},
+        # Two cards, not one: a single-card ETB draw is a CANTRIP and correctly scores no
+        # Card-advantage role at all, so a one-card fixture would test nothing.
+        "etb": {"type": "Creature — Bird",
+                "text": "When this creature enters, draw two cards."},
+        "spell": {"type": "Instant", "text": "Draw two cards."},
+        "land": {"type": "Land", "text": "{T}: Add {U}."},
+    }
+
+    def _run(self, names):
+        return deck.card_advantage_split([(1, n, "AAA", "1") for n in names], self.DATA)
+
+    def test_a_recurring_trigger_or_an_activated_ability_is_repeatable(self):
+        rep, one, notes = self._run(["engine", "activated"])
+        assert (rep, one) == (2, 0)
+        assert [n for _, n in notes["repeatable"]] == ["activated", "engine"]
+
+    def test_an_etb_and_a_spell_are_one_shot(self):
+        """An ETB is one-shot even on a permanent — the distinction is how often it PAYS,
+        not whether it sits on the battlefield."""
+        rep, one, _ = self._run(["etb", "spell"])
+        assert (rep, one) == (0, 2)
+
+    def test_lands_are_skipped_and_quantities_are_weighted(self):
+        rep, one, _ = deck.card_advantage_split(
+            [(2, "engine", "A", "1"), (3, "spell", "A", "1"), (4, "land", "A", "1")],
+            self.DATA)
+        assert (rep, one) == (2, 3)

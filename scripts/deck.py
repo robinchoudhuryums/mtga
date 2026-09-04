@@ -64,7 +64,7 @@ from lib import (BASICS as lib_BASICS, DEFAULT_CSV, MATCHES_CSV, REPO_ROOT,
                  load_rows, eprint, card_colors, owned_qty,
                  card_distinctiveness, backup_path, card_power, front_face_cost,
                  mana_value, primary_type, atomic_write, alias_front,
-                 land_production)
+                 land_production, tapland_kind)
 from scryfall import post_collection, ScryfallUnavailable
 
 POOL_CSV = os.path.join(REPO_ROOT, "card-pool.csv")
@@ -3467,7 +3467,11 @@ def cmd_stats(args):
         print(f"  {'interaction total':20} {count_conf(role_counts, 'interaction'):>7}  "
               "(distinct removal/sweeper/counter cards; +N? = cards whose text reads like "
               "interaction the classifier could NOT tag)")
-        print(f"  {'card advantage':20} {count_conf(role_counts, 'card_advantage'):>7}")
+        ca_rep, ca_one, _ca_notes = card_advantage_split(cards, carddata)
+        ca_split = (f"  ({ca_rep} repeatable, {ca_one} one-shot — the integer counts CARDS, "
+                    "not how often each one pays)") if (ca_rep or ca_one) else ""
+        print(f"  {'card advantage':20} {count_conf(role_counts, 'card_advantage'):>7}"
+              f"{ca_split}")
 
     # PROTECTION axis. The role table's "Protection / trick" bucket mixes combat pumps
     # in with real answers to removal, so a deck could show a healthy trick count while
@@ -3808,6 +3812,65 @@ def role_tally(cards, carddata):
     per_role["unclassified"] = _weigh(unclassified)
     per_role["unreadable"] = _weigh(no_data)
     return per_role
+
+
+# One-shot vs repeatable card advantage (P3, 2026-09-04). `role_tally` counts CARDS, so
+# "card advantage 6" flattened one repeating engine, one net-+1 planeswalker activation and
+# four one-shots into a single integer — and TWO tuning decisions on deck 57 leaned on that
+# integer before the USER caught it; no tool did. `count_conf` (G-48) annotates
+# CLASSIFICATION uncertainty, never quality dispersion INSIDE the count.
+#
+# A 1-3 "limited / versatile" SCALE for the role buckets was proposed and DECLINED, for
+# reasons worth keeping: it changes the UNITS of the only two terms `tier_band` reads (not
+# a new term — the existing ones rescaled), so `TIER_FLOOR_REQ` would need re-deriving and
+# the 110 of 117 deck files that cite interaction/card-advantage figures in `#: tier:` prose
+# would all go stale in one commit; the classifier is the weak link rather than the
+# granularity (560 of 1882 roster cards score ZERO roles); and "versatile" is exactly the
+# fuzzy judgment this module keeps deliberately as a FLAG (G-09, G-25, G-41).
+#
+# So this is the G-81 pattern instead: an orthogonal REPORT-ONLY split, rendered beside the
+# count while the bare int still feeds `tier_band`. Same shape as `early_drops`' "9 (4 mana
+# sources)" and the interaction profile's speed split (G-24).
+_CA_ETB_RE = re.compile(r"^\s*when(?:ever)? [^,\n]{0,40}\benters\b", re.I | re.M)
+_CA_REPEATABLE_RE = re.compile(
+    r"^\s*(?:whenever\b|at the beginning of\b)"          # a trigger that fires again
+    r"|^[^:\n]{1,40}:\s",                                  # or an activated ability (K-14)
+    re.I | re.M)
+
+
+def card_advantage_split(cards, carddata):
+    """(repeatable, one_shot, notes) — quantity-weighted, REPORT-ONLY, never scored.
+
+    A card advantage source is REPEATABLE when a permanent supplies it through a recurring
+    trigger or an activated ability, and ONE-SHOT when it is an instant/sorcery or arrives
+    on a single enters-the-battlefield trigger. The distinction is structural and read off
+    the text, exactly as K-14's argument for counting activated draws in the first place —
+    an activated ability is repeatable by construction.
+    """
+    rep, one = 0, 0
+    notes = {"repeatable": [], "one_shot": []}
+    for q, n, _s, _c in cards:
+        row = carddata.get((n or "").lower()) or {}
+        typ, txt = row.get("type") or "", row.get("text") or ""
+        if "Land" in typ or _ms_key(n) in BASICS:
+            continue
+        if "Card advantage" not in classify_roles(txt):
+            continue
+        spell = ("Instant" in _primary_type(typ) or "Sorcery" in _primary_type(typ))
+        # An ETB is one-shot even on a permanent; a recurring trigger or an activated
+        # ability is not. A card with BOTH (Gwen's ETB plus Ghost-Spider's counter sink)
+        # reads repeatable, which is the honest call — the recurring half is real.
+        if not spell and _CA_REPEATABLE_RE.search(txt) and not (
+                _CA_ETB_RE.search(txt) and not _CA_REPEATABLE_RE.search(
+                    _CA_ETB_RE.sub(" ", txt))):
+            rep += q
+            notes["repeatable"].append((q, n))
+        else:
+            one += q
+            notes["one_shot"].append((q, n))
+    for k in notes:
+        notes[k].sort(key=lambda t: t[1])
+    return rep, one, notes
 
 
 def count_conf(tally, key):
@@ -4685,21 +4748,20 @@ def suggest_lands(d, unowned=False, owned=False, limit=20, fmt=None, any_format=
         syn = _land_synergy_bonus(tags, central_w)
         short = _land_shortfall_bonus(on_color, deficit)
         low = txt.lower()
-        tapped = bool(_TAPLAND_RE.search(txt))
+        tapped = tapland_kind(txt) is not None
         # CONDITIONAL vs FLAT tapping, shown separately. `_land_value` treats both as
         # tapped, which is the conservative read and is exactly right for a deck that
         # cannot meet the condition — but it is an UNDER-score for one that can (Great
         # Arashin City enters untapped in any deck with a Forest). Deciding satisfiability
         # needs the deck's contents, so this REPORTS the condition instead of guessing:
         # G-52's rule that a verdict surface prints its evidence.
-        # Routed through `_TAPLAND_COND_RE` — the SAME predicate `tapland_profile` uses.
-        # This was a second, narrower implementation of one question ("is the tapping
-        # conditional?") in the same file: a bare `"unless" in low` missed every
-        # shockland, so `suggest --lands` printed `·tapped` on Hallowed Fountain while
-        # scoring it as a flat tapland (2026-09-04). Fixing the classifier and leaving the
-        # sibling would have fixed one surface and left the other wrong — the G-45 rule
-        # that two functions answering the same question must have their filters diffed.
-        cond_tapped = bool(_TAPLAND_COND_RE.search(txt))
+        # Routed through `lib.tapland_kind` — the SAME predicate `tapland_profile` and
+        # `wishlist._land_value` use. There were THREE implementations of one question
+        # ("is the tapping conditional?"): a bare `"unless" in low` here, the regex in
+        # `tapland_profile`, and a substring test in the scoring path. All three missed
+        # shocklands in different ways (2026-09-04) — the G-45 rule that functions
+        # answering one question must have their filters diffed, found the hard way.
+        cond_tapped = tapland_kind(txt) in ("shock", "conditional")
         # Restricted production ("Spend this mana only to cast a creature spell"). The
         # score already discounts it; this is what lets a human tell WHY.
         restricted = "spend this mana only" in low
@@ -5534,21 +5596,6 @@ def format_source_notes(notes, indent="  "):
     return out
 
 
-_TAPLAND_RE = re.compile(r"enters(?: the battlefield)? tapped", re.I)
-# A SHOCKLAND states its condition BEFORE the tap clause — "As this land enters, you may
-# pay 2 life. If you don't, it enters tapped." — so the `unless|if` alternative below,
-# which requires the cue AFTER, filed all ten Standard-legal shocklands as UNCONDITIONAL.
-# That landed on `consistency`'s tempo line, the one figure a human reads to judge whether
-# a manabase is too slow: deck 57 listed Hallowed Fountain among its unconditional
-# taplands, and its flex block had to caveat the count in three separate notes
-# (2026-09-04). The pay-life alternative is deliberately narrow — in the whole Standard
-# pool it matches the shocklands plus Multiversal Passage, all of which really are
-# conditional — and it is bounded so it cannot reach across an unrelated paragraph.
-_TAPLAND_COND_RE = re.compile(
-    r"enters(?: the battlefield)? tapped[^.\n]*\b(?:unless|if )"
-    r"|you may pay \d+ life[\s\S]{0,60}?enters(?: the battlefield)? tapped", re.I)
-
-
 def tapland_profile(cards, carddata):
     """(unconditional, conditional, nonbasic_land_total) — each a sorted [(qty, name)].
 
@@ -5572,9 +5619,10 @@ def tapland_profile(cards, carddata):
             continue
         total += q
         text = row.get("text") or ""
-        if _TAPLAND_COND_RE.search(text):
+        kind = tapland_kind(text)
+        if kind in ("shock", "conditional"):
             cond.append((q, n))
-        elif _TAPLAND_RE.search(text):
+        elif kind == "unconditional":
             uncond.append((q, n))
     return sorted(uncond, key=lambda t: t[1]), sorted(cond, key=lambda t: t[1]), total
 
@@ -11905,6 +11953,57 @@ def _shorthand_candidates(masked, frags):
     return out
 
 
+# P4 (2026-09-04). An EXISTENTIAL claim about the POOL is invisible to every staleness
+# scan: `rationale_staleness` prices FIGURES against the live vector and CARD citations
+# against the deck's own list, and neither shape covers "no untapped dual exists owned or
+# craftable". That sentence sat in deck 57's `#: tier:` block, was FALSE (two owned, four
+# craftable), and was the stated reason two decisions went the way they did — the same
+# shape as the "near-zero protection" claim retracted the day before.
+#
+# This FLAGS for a human re-check and deliberately does not try to verify. Verifying would
+# mean parsing an arbitrary noun phrase into a pool query, and a wrong answer on a
+# CONFIDENT-sounding claim is worse than no answer. Cue list kept narrow per G-26: a false
+# positive is noisy and gets noticed, a false negative is silent.
+_EXISTENTIAL_CLAIM_RE = re.compile(
+    r"\b(?:no|not a single)\s+[\w'\- ]{2,40}?\s+"
+    r"(?:exists?|is available|is craftable|are available|are craftable)\b"
+    r"|\bthere (?:is|are) (?:no|not a single)\b[^.;]{0,60}"
+    r"|\bnothing (?:in the pool|in Standard|else in the pool)\b"
+    r"|\bno such\b[^.;]{0,40}\bexists?\b", re.I)
+# Not a claim about the pool: a clause already scoped to THIS deck, or one narrating what a
+# past pass found. "no untapped dual exists" is checkable and was wrong; "this deck has no
+# counterspell" is a fact about the list, which `check` and `stats` already answer.
+_EXISTENTIAL_SCOPED_RE = re.compile(
+    r"\b(?:this deck|the deck|this list|the list|here|in this deck|it) \b", re.I)
+# ...and it must be about CARDS, not tactics. Narrow on purpose.
+_EXISTENTIAL_SUBJECT_RE = re.compile(
+    r"\b(?:pool|Standard|card|cards|printed|craftable|owned|dual|duals|land|lands|"
+    r"creature|creatures|spell|spells|engine|payoff|payoffs|source|sources)\b", re.I)
+
+
+def existential_pool_claims(d):
+    """[(header, sentence)] — sentences in `#: tier:` / `#: archetype:` that assert
+    something does NOT EXIST in the card pool. REPORT-ONLY, and never auto-verified: the
+    output is "re-check this", not "this is wrong"."""
+    meta, _cards = parse_deck_file(d["path"])
+    out = []
+    for header in ("tier", "archetype"):
+        prose = (meta or {}).get(header, "") or ""
+        for sent in re.split(r"(?<=[.;])\s+", prose):
+            if not _EXISTENTIAL_CLAIM_RE.search(sent):
+                continue
+            if _EXISTENTIAL_SCOPED_RE.search(sent):
+                continue
+            # The claim must be about CARDS. Without this the scan also caught "there is
+            # no mulligan heuristic that fixes it" (strategy) and a sentence quoting the
+            # deck's own archetype block — 7 roster hits at roughly 4 real, which is the
+            # G-07 precision a standing warning must not have.
+            if not _EXISTENTIAL_SUBJECT_RE.search(sent):
+                continue
+            out.append((header, " ".join(sent.split())[:160]))
+    return out
+
+
 def rationale_staleness(d, carddata=None):
     """(stale_cards, stale_figures) for a deck's `#: tier:` / `#: notes:` prose.
 
@@ -12301,12 +12400,21 @@ def cmd_tier(args):
                    f"Run `deck.py tier {args.id}` on its own for the band/gap view.")
         cards_stale, figs = rationale_staleness(d)
         wrong_excl = wrong_exclusion_claims(d)
+        # P4: existential claims about the POOL. Shown HERE, where a human is already
+        # reading the argument, and deliberately NOT wired into `check_all` — the roster
+        # sweep measured 4 real of 5, and a standing warning at that precision is the
+        # G-07 shape that trains you to ignore it. These are never auto-verified: the
+        # output is "re-check this", not "this is wrong".
+        exist = existential_pool_claims(d)
         print(f"Rationale audit — deck {d['id']}: {d['name'] or d['path']}")
-        if not cards_stale and not figs and not wrong_excl:
+        if not cards_stale and not figs and not wrong_excl and not exist:
             print("  ✓ rationale is current — every card it cites is still in the deck, "
                   "every figure matches the live vector, and nothing it calls excluded "
                   "is actually in the list.")
             return 0
+        for hdr, sent in exist:
+            print(f"  ? `#: {hdr}:` asserts something does NOT EXIST — re-check against "
+                  f"the pool, this is not verified: \"{sent}\"")
         for nm, hdr in cards_stale:
             print(f"  ⚠ `#: {hdr}:` argues from {nm}, which is NO LONGER in the deck.")
         for nm, hdr in wrong_excl:

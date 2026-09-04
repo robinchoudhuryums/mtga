@@ -438,6 +438,43 @@ _FETCH_BASIC_RE = re.compile(
     r"(?:land|plains|island|swamp|mountain|forest)\b", re.I)
 
 
+_TAPLAND_RE = re.compile(r"enters(?: the battlefield)? tapped", re.I)
+# A SHOCKLAND states its condition BEFORE the tap clause — "As this land enters, you may
+# pay 2 life. If you don't, it enters tapped." — so a cue required AFTER "enters tapped"
+# misses all ten Standard-legal ones. Kept as its own alternative, not folded into the
+# `unless|if` one, because the two conditions differ in KIND and `tapland_kind` below
+# needs to tell them apart.
+_TAPLAND_COND_RE = re.compile(
+    r"enters(?: the battlefield)? tapped[^.\n]*\b(?:unless|if )"
+    r"|you may pay \d+ life[\s\S]{0,60}?enters(?: the battlefield)? tapped", re.I)
+_TAPLAND_SHOCK_RE = re.compile(
+    r"you may pay \d+ life[\s\S]{0,60}?enters(?: the battlefield)? tapped", re.I)
+
+
+def tapland_kind(text):
+    """None | "shock" | "conditional" | "unconditional" — how a land enters.
+
+    ONE definition, three consumers: `deck.tapland_profile` (the tempo line `consistency`
+    prints), `deck.suggest_lands`' `·tapped?` marker, and `wishlist._land_value`'s untapped
+    premium. The third was the residual left after 2026-09-04's first pass fixed the other
+    two: Hallowed Fountain read conditional on both REPORTING surfaces while the SCORING
+    surface still withheld the premium, so it valued at 8.0 as though it always entered
+    tapped.
+
+    "shock" and "conditional" are separated because the conditions differ in kind. A
+    shockland's is payable AT WILL — the same reasoning that already treats Mana
+    Confluence's pay-life cost as a real source every turn — so it earns the untapped
+    premium. A board-state condition ("unless you control two or more other lands") may
+    simply not be met, so it stays scored conservatively as tapped and prints `·tapped?`
+    for a human to judge (G-37).
+    """
+    if not _TAPLAND_RE.search(text or ""):
+        return None
+    if _TAPLAND_SHOCK_RE.search(text):
+        return "shock"
+    return "conditional" if _TAPLAND_COND_RE.search(text) else "unconditional"
+
+
 def land_production(text, colors_cell=None):
     """What a LAND produces, from its oracle text plus its identity cell.
 

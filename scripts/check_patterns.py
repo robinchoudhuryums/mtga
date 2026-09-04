@@ -88,6 +88,11 @@ _EXCLUDED = {
     ("lib", "_EXTRA_MANA_COST_RE"): ("runs against the COST half of one ability line "
                                      "(before the colon) inside `land_production`, never "
                                      "whole card text; exercised by test_lib.py"),
+    # P4 (2026-09-04): the existential-claim scan reads a deck's `#: tier:` / `#: archetype:`
+    # PROSE, never card text — the live-corpus check would be meaningless for it.
+    ("deck", "_EXISTENTIAL_CLAIM_RE"): "tier-RATIONALE prose; unit-tested in test_deck.py",
+    ("deck", "_EXISTENTIAL_SCOPED_RE"): "tier-RATIONALE prose; unit-tested in test_deck.py",
+    ("deck", "_EXISTENTIAL_SUBJECT_RE"): "tier-RATIONALE prose; unit-tested in test_deck.py",
     ("deck", "_HISTORY_CUES"): "tier-RATIONALE prose; unit-tested in test_deck.py",
     ("deck", "_COMPARISON_CUES"): "tier-RATIONALE prose; unit-tested in test_deck.py",
     ("deck", "_FIGURE_PAST"): "tier-RATIONALE prose; unit-tested in test_deck.py",
@@ -289,6 +294,11 @@ def _pattern_groups():
                  "_COST_SCALE_PLAIN_EQUIP"):
         out.append((f"deck.{name}", getattr(deck, name), "raw"))
     out.append(("deck._REMINDER_RE", deck._REMINDER_RE, "raw"))
+    # `card_advantage_split` (P3, 2026-09-04): the repeatable-vs-one-shot report beside the
+    # card-advantage count. Line-anchored on ORIGINAL-case oracle text, so the raw corpus.
+    # If either dies the split silently reads every source as one-shot.
+    for name in ("_CA_ETB_RE", "_CA_REPEATABLE_RE"):
+        out.append((f"deck.{name}", getattr(deck, name), "raw"))
     out.append(("lib._STRUCT_REMINDER_RE", lib._STRUCT_REMINDER_RE, "raw"))
     # `lib.land_production` (BS8-01/02): the ONE reader behind every colour-source count
     # and `suggest --lands`. Every one of these going dead is the quiet direction — an
@@ -329,9 +339,13 @@ def _pattern_groups():
         out.append((f"tag_synergies.{name}", getattr(tag_synergies, name), "norm"))
     for name in ("_POWER_SCOPE_MINE_RE", "_POWER_SCOPE_TOTAL_RE"):
         out.append((f"deck.{name}", getattr(deck, name), "window"))
-    # tapland_profile (G-25/G-60-style report-only tempo context in `consistency`)
-    for name in ("_TAPLAND_RE", "_TAPLAND_COND_RE"):
-        out.append((f"deck.{name}", getattr(deck, name), "norm"))
+    # `lib.tapland_kind` (G-25/G-60-style report-only tempo context in `consistency`,
+    # plus `suggest --lands`' marker and `_land_value`'s untapped premium — one predicate,
+    # three consumers since 2026-09-04). `_TAPLAND_SHOCK_RE` is what separates a condition
+    # payable AT WILL from a board-state one; if it dies, every shockland silently reverts
+    # to being scored and reported as a flat tapland.
+    for name in ("_TAPLAND_RE", "_TAPLAND_COND_RE", "_TAPLAND_SHOCK_RE"):
+        out.append((f"lib.{name}", getattr(lib, name), "norm"))
     # wishlist's oracle-text classifiers (BS-04): the flex-removal seed bonus and the
     # G-19 conditional-power (`pow~`) flag. If _FLEX_REMOVAL_RE goes dead, the seed
     # ranking's other terms keep check_rankings green, so this is the ONLY gate that
