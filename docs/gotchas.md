@@ -2148,6 +2148,47 @@ Village-cycle land's identity colour is spend-only and no longer counts (deck 34
 deck 68b −1 W). Note the scan's "seven unconditional in 21a" was itself wrong — one is
 free, six are extra-cost, two are restricted; read the labels, not the total.
 
+### 2026-09-04 — the recommender did not agree with the source count
+
+`deck_source_profile` counts a basic fetch as a source of every colour the deck runs a
+basic of. `wishlist._land_value`, the model `suggest --lands` ranks on, did not:
+
+    multi = 1.0 if len(used) >= 2 else 0.5 if len(used) == 1 else 0.0
+    base  = 3.5 + 4.5 * match * multi
+
+`multi` capped at two colours, so a WUR fetch and a UR tapped dual both computed
+`match 1.0 · multi 1.0` -> **base 8.0, identical**. Fetches then lose the synergy
+tiebreak (they carry no theme tags), so on deck 57's full 216-row ranking they sat at
+**rank 45-47, score 9.5, behind 29 cards tied at exactly 10.5**. Three fetches were the
+largest manabase upgrade available to that deck — every worst cast-on-curve row moved
+5-8 points — and the tool never surfaced them; the user found them by asking.
+
+Fixed with `_LAND_BREADTH_PER_COLOR` (0.75, cap 1.5), **additive and one-directional UP**.
+The multiplicative alternative (dividing by the deck's colour count) would have LOWERED
+every two-colour dual in every three-colour deck — re-ranking the roster to fix an
+ordering at the top. Nothing below three colours moves, so no existing recommendation is
+withdrawn.
+
+### The live residual: `land_production`'s `free` set means three different things
+
+Measured the same day, while testing whether `match` should stop penalising a land for
+producing colours BEYOND the deck's. That change is CORRECT in isolation (an any-colour
+land scored 8.4, below a fetch's 8.8, when it is strictly the better fixer) but it moved
+the **#1 land pick in 89 of 115 decks**, and the cause is not the `match` logic:
+
+* **any-colour every tap** — Starting Town. Genuinely covers every colour, repeatedly.
+* **choose ONCE on entry** — Uncharted Haven, Night Market, Valgavoth's Lair, Crossroads
+  Village, Mirage Mesa, Edgewall Inn, Tarnation Vista. These supply exactly **one** colour
+  per game, fixed when they enter.
+* **reachable only by TRANSFORMING** — Branch of Vitu-Ghazi taps for `{C}`; its "add two
+  mana of any one color" line fires only when it is turned face up via Disguise. As a land
+  it produces no coloured mana at all, and it scored **10.0**, the maximum.
+* plus **Scene of the Crime**, whose any-colour ability costs an extra "tap an untapped
+  creature you control" and is filed `free`.
+
+All of them report five FREE colours, so any breadth-aware term over-credits nine
+Standard lands. **Fix the primitive before widening `match`** — the `match` change was
+implemented, measured, and REVERTED for exactly this reason.
 
 ## [G-36] `deck.py consistency <id>` is the PROBABILITY layer `mana` lacks
 
@@ -2276,6 +2317,29 @@ the `·restricted` marker for the judgment the score cannot make.
 now enforced and the restricted half is priced; the two `·` markers are there because the
 remaining judgments need the deck, not the card.
 
+### 2026-09-04 — `·tapped?` was a second, narrower copy of the tapland predicate
+
+`suggest_lands` decided conditional-tapping with a bare `tapped and "unless" in low`,
+while `tapland_profile` used `deck._TAPLAND_COND_RE`. Two implementations of one question
+inside one file — and the narrower one missed every SHOCKLAND, which states its condition
+BEFORE the tap clause ("As this land enters, you may pay 2 life. If you don't, it enters
+tapped"). Both surfaces route through the one predicate now; fixing the classifier alone
+would have left the sibling wrong.
+
+### The breadth credit's measured cost
+
+The G-35 credit re-ranks the **#1 land pick in 22 of 115 decks** — 21 at 0.5 and 25 at
+1.0, so the constant is not what drives it. The flip is fetch-over-untapped-dual, and it
+happens because the pre-existing gap was only **0.2** (deck 8: untapped dual 11.7, fetch
+11.5) with fetches already carrying a **+1.3** synergy-tag advantage that was just barely
+insufficient. Any positive credit tips it.
+
+Judged defensible: in a three-colour deck a basic fetch genuinely is the better FIXER,
+which is the axis this model scores, and the tempo cost is reported separately — by the
+`·tapped` marker and by `consistency`'s tapland line, which the shockland fix above has
+just made trustworthy. The top of a three-colour deck's list is now an 8-way tie among
+seven basic fetches plus Demolition Field; that is HONEST rather than saturated (those
+cards have the same effect) and the `Have` column does the disambiguating.
 
 ## [G-38] `deck.py suggest --ramp / --interaction / --needs` are the NEEDS model — the structural axes the
 

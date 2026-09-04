@@ -2812,7 +2812,16 @@ prose claim about the POOL — "no untapped dual exists" was false and load-bear
 (`#~` swap-line rationale sits outside `note_figure_staleness`), plus the `match`-term
 follow-on in the implementation block.
 
-**Where I left off.** P1/P2 committed and pushed on `claude/broad-scan-6kxevb`. Docs are
-NOT yet updated — G-35 and G-37 need the breadth term and the closed shockland residual,
-and deck 57's flex block still carries three notes caveating the shockland miscount that
-P2 has now fixed. `/sync-docs` is the next step.
+**Docs synced 2026-09-04** — G-35/G-37 current, deck 57's tapland note re-grounded (it was
+ONE note, not the three I had claimed). See
+`.cycle/blocks/2026-09-04-followon-and-docs-broad-implement.md`.
+
+**BLOCKING ITEM for any further land-scoring work: `lib.land_production`'s `free` set
+conflates any-colour-every-tap, choose-ONCE-on-entry (7 lands) and a clause reachable only
+by TRANSFORMING (Branch of Vitu-Ghazi taps for `{C}` and scored 10.0).** The `match`
+follow-on was implemented, measured at **89 of 115 decks changing their #1 land pick**, and
+REVERTED for this reason. The same `free` set feeds `deck_source_profile`, so source counts
+are affected too. Fix the primitive, then re-measure `_LAND_BREADTH_PER_COLOR`.
+
+**Where I left off.** Docs + deck-57 prose committed on `claude/broad-scan-6kxevb`. P3, P4,
+P5 still open and untouched.

@@ -543,11 +543,13 @@ directions.
   from the land's TEXT through `lib.land_production` (BS8-01) — ONE count,
   `deck.deck_source_profile`, behind `mana`, `consistency`, `deck_color_sources`,
   `pip_depth_warning`, `suggest --lands` and the rationale audit's colour figures.**
-  Identity alone read every "Add one mana of any color" land as ZERO sources (deck 21a:
-  B 5 against a real 12), three copies agreed with each other, and 30 of the 40
-  pip-intensive flags on the roster were artefacts. An extra-cost any-colour land
-  ("{1}, {T}: …") IS counted and labelled; spend-only mana is NOT counted and is
-  listed; a basic fetch counts for each colour the deck runs a basic of. [G-35]
+  An extra-cost any-colour land IS counted and labelled; spend-only mana is NOT; a basic
+  fetch counts for each colour the deck runs a basic of — and the RECOMMENDER disagreed
+  with that count until 2026-09-04 (`_LAND_BREADTH_PER_COLOR` is the fix). **LIVE
+  RESIDUAL: `land_production`'s `free` set conflates any-colour-every-tap,
+  choose-ONCE-on-entry (7 lands supplying exactly ONE colour per game) and a clause
+  reachable only by TRANSFORMING, so any breadth-aware term over-credits 9 Standard
+  lands — fix the primitive before widening `match`.** [G-35]
 - **`deck.py consistency <id>` is the PROBABILITY layer `mana` lacks** — keepable %,
   screw/flood, land-drop consistency and per-card P(cast on curve), with a Karsten-style
   source recommendation. Run it whenever a splash, a double pip or a top-end bomb is in
@@ -562,15 +564,15 @@ directions.
   structurally blind to lands (it filters to cards sharing a synergy theme). Scored on
   FIXING value plus bounded synergy/scarce-colour nudges, and it applies the deck's
   `#: format:`. **Both 2026-08-09 fixes were about admitting or pricing the wrong card:**
-  the candidate filter scanned a whole type line, so 81 pool cards with `// Land` on the
-  BACK qualified — three of deck 52's four top picks were unplayable as lands — now fixed
-  to front-face `_primary_type`, the same fix `wishlist._is_land` got in BS2-11 and this
-  sibling did not; and RESTRICTED mana ("spend this only to cast a creature spell", which
-  had ranked #1) now has its fixing premium halved and prints `·restricted`. **The
-  conditionally-tapped miss this rule used to claim was NOT REAL** — the 5.8-vs-4.6 gap
-  cited was mono-colour vs DUAL, not tap handling. The real limitation is the opposite and
-  conservative: a conditional land never gets the untapped premium even when the deck
-  meets the condition, so it prints `·tapped?` for a human read. [G-37]
+  a whole-type-line candidate filter admitted 81 back-face lands, and RESTRICTED mana now
+  has its premium halved and prints `·restricted`. A conditional land never gets the
+  untapped premium even when the deck meets the condition, so it prints `·tapped?` for a
+  human read. **`·tapped?` was wrong for SHOCKLANDS until 2026-09-04** — a bare
+  `"unless" in low`, a second narrower copy of `deck._TAPLAND_COND_RE` in the same file;
+  both route through the one predicate now. **The G-35 breadth credit re-ranks the #1
+  pick in 22 of 115 decks** (21 at 0.5, 25 at 1.0 — the constant is not what drives it):
+  fetches now beat untapped duals, defensible on FIXING, and `_LAND_BREADTH_PER_COLOR`
+  is the dial. [G-37]
 - **`suggest --ramp / --interaction / --needs` are the NEEDS model** — the structural
   axes theme-`suggest` is blind to (fixing, acceleration, interaction). **If the scorecard
   says the deficit is interaction or mana, the fix comes from here, not from plain
