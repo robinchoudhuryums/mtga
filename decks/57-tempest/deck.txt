@@ -51,6 +51,29 @@
 #: tier: Effortless Master x2 and adding Charred Foyer (MV 4) traded roughly half
 #: tier: that gain back for engine density. That was the user's call with the cost
 #: tier: stated. Re-grade after real games.
+#: notes: GOLIATH DAYDREAMER + FLASHBACK IS ADDITIVE, NOT A CONFLICT, and this was
+#: notes: mis-called once so it is written down. Goliath's replacement is scoped to
+#: notes: spells cast "from your hand", so it only intercepts the FIRST cast. A spell
+#: notes: cast from EXILE by his attack trigger is not cast from hand, so it resolves
+#: notes: into the GRAVEYARD as normal -- where flashback is then live. Duel Tactics
+#: notes: therefore gets THREE casts: {R} from hand -> exiled with a dream counter ->
+#: notes: cast FREE off an attack -> graveyard -> flashback {1}{R}. Shiko is likewise
+#: notes: only DELAYED, not denied: the card reaches the yard after the free cast.
+#: notes: DREAM COUNTERS ARE NEVER REMOVED -- the trigger does not spend them and they
+#: notes: are not a cost. What limits you is the ZONE CHANGE: casting the card moves it
+#: notes: out of exile, so the same card cannot be recast from there. The POOL is what
+#: notes: repeats -- every instant/sorcery cast from hand adds one, and each attack
+#: notes: spends one. Fuel is 10 instant/sorcery copies at present.
+#: notes: WIZARD'S STAFF DOUBLES IT. Goliath is a Giant WIZARD, so Equip Wizard {1},
+#: notes: and the attack trigger is a triggered ability -- the Staff makes it trigger an
+#: notes: additional time, i.e. TWO free spells per attack, each one another prowess /
+#: notes: Flurry / Sokka-token / Narset trigger. Crackling Cyclops and Kitsa are the
+#: notes: other two Wizards; the Staff wants Cyclops (0/4 that survives combat) when
+#: notes: Goliath is not out.
+#: notes: THE REAL COST, kept visible: if Goliath dies while cards sit in exile with
+#: notes: dream counters, those cards are STRANDED -- nothing else here can cast them.
+#: notes: Without him Duel Tactics would simply have sat in the yard with flashback
+#: notes: live, so he trades a safe second cast for a cheaper one hostage to a 4/4.
 #: protect: Sokka, Tenacious Tactician; Narset, Jeskai Waymaster; Flamehold Grappler; Mai, Jaded Edge
 #: notes: BUILT from the 55-mardu addendum (concept J). The pile's known blue gap,
 #: notes: recorded honestly: the PILE contained ZERO mono-U spells, so at build time
@@ -86,7 +109,7 @@
 2 Mai, Jaded Edge (TLA) 147
 1 Crackling Cyclops (FDN) 83
 1 Kitsa, Otterball Elite (BLB) 54
-1 Spectacular Skywhale (SOS) 229
+1 Goliath Daydreamer (ECL) 143
 1 Thor Odinson (MSH) 234
 1 Equilibrium Adept (TDM) 106
 1 Firebending Student (TLA) 139
