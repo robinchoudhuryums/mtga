@@ -29,10 +29,28 @@
 #: tier: not a figure, and no staleness scan prices one. The two remaining weaknesses
 #: tier: are unchanged and both were re-measured the same day: 6 of 9 nonbasics enter
 #: tier: tapped, and `consistency` reports no land count clears the keepable
-#: tier: threshold for this curve. First tuning axis: cheap two-drops -- but the two
-#: tier: best (Slickshot Show-Off, Emberheart Challenger) rotate 2026 and 2027, so
-#: tier: the honest verdict is that no craft target beats what is owned.
-#: tier: Re-grade after real games.
+#: tier: threshold for this curve. THE "NO CRAFT TARGET BEATS WHAT IS OWNED" VERDICT
+#: tier: THIS BLOCK CARRIED IS SUPERSEDED (2026-09-04), and the reason is a changed
+#: tier: QUESTION rather than a changed deck: that verdict was reached with rotation
+#: tier: and wildcard cost as constraints, and the user removed both. Re-judged on
+#: tier: merit alone, three crafts came in -- Bria, Riptide Rogue (a prowess LORD:
+#: tier: 12 creature copies gain prowess, plus every token the deck makes), Ral,
+#: tier: Crackling Wit (loyalty per noncreature spell; +1 makes a prowess Otter), and
+#: tier: Charred Foyer // Warped Space. THE DECK IS THEREFORE NO LONGER FULLY OWNED,
+#: tier: which is a deliberate trade, not a regression -- `check` tracks the gap.
+#: tier: A 12-SWAP TUNE LANDED THE SAME DAY. Measured before -> after: interaction
+#: tier: 7 -> 8, card advantage 8 (held), protection 3 (held), avg MV 3.22 -> 3.14,
+#: tier: MV-4 cards 13 -> 12, central themes 16 -> 18, floor A throughout. The
+#: tier: manabase weakness above is EASED rather than solved, and from the spell side
+#: tier: rather than the lands: no untapped dual exists owned or craftable, so the
+#: tier: gain came from cutting the two worst castability rows (Riptide Gearhulk
+#: tier: {1}{W}{W}{U}{U} at 45.9% on curve, Jeskai Brushmaster {1}{U}{R}{W} at 74.3%)
+#: tier: and adding nothing that needs white -- W pips 18 -> 14 against 11 sources.
+#: tier: THE CURVE WEAKNESS IS ONLY PARTLY ADDRESSED AND THE SHORTFALL IS RECORDED
+#: tier: HONESTLY: a tighter variant reached MV-4 = 10 and avg 3.06, but keeping
+#: tier: Effortless Master x2 and adding Charred Foyer (MV 4) traded roughly half
+#: tier: that gain back for engine density. That was the user's call with the cost
+#: tier: stated. Re-grade after real games.
 #: protect: Sokka, Tenacious Tactician; Narset, Jeskai Waymaster; Flamehold Grappler; Mai, Jaded Edge
 #: notes: BUILT from the 55-mardu addendum (concept J). The pile's known blue gap,
 #: notes: recorded honestly: the PILE contained ZERO mono-U spells, so at build time
@@ -62,14 +80,19 @@
 1 Flamehold Grappler (TDM) 185
 
 # Prowess block
-2 Jeskai Brushmaster (TDM) 195
+1 Jeskai Brushmaster (TDM) 195
+1 Ral, Crackling Wit (BLB) 230
 2 Effortless Master (TDM) 181
 2 Mai, Jaded Edge (TLA) 147
-2 Crackling Cyclops (FDN) 83
-2 Spectacular Skywhale (SOS) 229
-2 Equilibrium Adept (TDM) 106
+1 Crackling Cyclops (FDN) 83
+1 Kitsa, Otterball Elite (BLB) 54
+1 Spectacular Skywhale (SOS) 229
+1 Thor Odinson (MSH) 234
+1 Equilibrium Adept (TDM) 106
+1 Firebending Student (TLA) 139
 1 Monica Rambeau // Photon, Living Light (MSH) 23
 1 The Vision (MSH) 255
+1 Bria, Riptide Rogue (BLB) 379
 
 # Value top end
 1 Shiko, Paragon of the Way (TDM) 223
@@ -77,18 +100,20 @@
 1 Jeskai Revelation (TDM) 196
 
 # Cheap spells (prowess fuel)
-1 Into the Flood Maw (BLB) 52
-1 Chart a Course (FDN) 586
+1 Duel Tactics (SOS) 112
+1 Highway Robbery (OTJ) 129
 1 Phantom Interference (OTJ) 61
 1 Lightning Helix (MKM) 218
-1 Riptide Gearhulk (DFT) 219
 1 Boros Charm (FDN) 721
 1 Wingblade Disciple (TDM) 65
 1 Aziza, Mage Tower Captain (SOS) 174
-2 Rally the Monastery (TDM) 19
-2 Haste Magic (FIN) 140
-2 Ancestors' Aid (LCI) 132
-1 Frontline Rush (TDM) 186
+1 Rally the Monastery (TDM) 19
+1 Abrade (FDN) 188
+1 Haste Magic (FIN) 140
+1 Charred Foyer // Warped Space (DSK) 129
+1 Wizard's Staff (HOB) 59
+1 Brimstone Roundup (OTJ) 115
+1 Vibrant Outburst (SOS) 240
 
 # Lands
 2 Mystic Monastery (TDM) 262
