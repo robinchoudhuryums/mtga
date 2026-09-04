@@ -13,7 +13,7 @@
 #: archetype: Spirits are unblockable by non-Spirits; Flamehold Grappler and Shiko
 #: archetype: copy and recast the cheap suite; Bilbo and Goliath Daydreamer each turn
 #: archetype: an attack into another cast; the prowess block (Brushmaster's double
-#: archetype: strike, Effortless Master, Mai, Crackling Cyclops, Kitsa) converts each
+#: archetype: strike, Effortless Master, Mai, Kitsa) converts each
 #: archetype: cast into damage, and Yue turns a wide board into a free spell -- her
 #: archetype: waterbend is paid by tapping creatures, and Sokka's tokens arrive
 #: archetype: summoning-sick, so they cannot attack but CAN pay it.
@@ -66,7 +66,7 @@
 #: tier: Goliath Daydreamer came in over Spectacular Skywhale x1 (see the notes for the
 #: tier: flashback interaction), then Restoration Magic replaced Phantom Interference
 #: tier: and Pym Particles replaced Mai x1. Net from those three: interaction 8 -> 7,
-#: tier: protection 3 -> 4, avg MV 3.14 -> 3.11. THE INTERACTION DROP IS DELIBERATE AND
+#: tier: protection 3 -> 4, avg MV 3.14 -> 3.11 at that point. THE INTERACTION DROP IS DELIBERATE AND
 #: tier: IS THE COST OF THE PHANTOM INTERFERENCE CUT -- it was the deck's only cheap
 #: tier: counter (Jeskai Revelation at MV 7 is the other), traded because its SPREE
 #: tier: minimum of +{1} means its real floor is 2 mana, not the 1 the curve books it
@@ -101,7 +101,7 @@
 #: tier: WHAT TO WATCH IN PLAY: whether the deck runs out of cards against
 #: tier: removal-heavy midrange, which is the matchup that wheel answered.
 #: tier: A FIFTH PASS (2026-09-04) added Yue, the Moon Spirit; Equilibrium Adept was
-#: tier: the card cut for her. Curve untouched, avg MV 2.97 held, floor A; pips moved R 26 -> 25 and
+#: tier: the card cut for her. Curve untouched then, avg MV 3.11 -> 2.97, floor A; pips moved R 26 -> 25 and
 #: tier: U 17 -> 18, and the lands were re-checked against that spread and left alone
 #: tier: -- both blue-leaning basic swaps were measured and each fixed one double pip
 #: tier: by breaking the other. THE MEASURED AXES SAY NOTHING ABOUT THIS SWAP and
@@ -115,6 +115,26 @@
 #: tier: Gwen, Jeskai Revelation and Haste Magic are one-shots -- two of the best
 #: tier: three are unowned crafts, so the OWNED card advantage here is three cards.
 #: tier: That, not the integer, is what to watch in play.
+#: tier: A SIXTH PASS (2026-09-04) answered that watch item and rebuilt the manabase to
+#: tier: pay for it. Enduring Curiosity came in and Crackling Cyclops was cut, taking
+#: tier: card advantage to 6 with the deck's FIRST repeating draw engine that is
+#: tier: actually owned -- a card for every creature that connects, on a board with
+#: tier: Sokka's tokens, Bria's unblockable grant and four fliers, and it returns as an
+#: tier: enchantment when it dies. It was argued AGAINST twice earlier the same day and
+#: tier: the reason it flipped is the manabase, not the card: three BASIC FETCHES came
+#: tier: in -- 2 Evolving Wilds, for which a Mountain and a Plains were cut, plus
+#: tier: Terramorphic Expanse, for which Baron, Airship Kingdom was cut. A fetch is a source of every colour the deck runs a
+#: tier: basic of, so it buys all three at once, which is the one thing a dual cannot
+#: tier: do and the reason the earlier "no land fixes this" verdict was wrong. Sources
+#: tier: went W 11 -> 13, U 12 -> 14, R 12 -> 13 and every worst row moved: the two
+#: tier: {U}{U} cards both 74.1%, Goliath 69.6%, Flamehold Grappler 76.3% (clears its
+#: tier: target), Lightning Helix 76.9%, Sokka 82.0%. AN ISLAND WAS MEASURED AND
+#: tier: REJECTED -- it reaches U 15 but drops Goliath back to 64.6%, moving the worst
+#: tier: row rather than lifting the floor. THE PRICE, stated: the fetches are
+#: tier: tapland-equivalent, so the tempo gain from the earlier untapped-dual pass is
+#: tier: partly spent, and the deck now carries TWO MV-4 double pips at 74.1% with U
+#: tier: pips at 20 against 14 sources -- drawing both of them early is the awkward
+#: tier: hand. avg MV 2.97 -> 3.00.
 #: tier: Re-grade after real games.
 #: notes: GOLIATH DAYDREAMER + FLASHBACK IS ADDITIVE, NOT A CONFLICT, and this was
 #: notes: mis-called once so it is written down. Goliath's replacement is scoped to
@@ -132,9 +152,9 @@
 #: notes: WIZARD'S STAFF DOUBLES IT. Goliath is a Giant WIZARD, so Equip Wizard {1},
 #: notes: and the attack trigger is a triggered ability -- the Staff makes it trigger an
 #: notes: additional time, i.e. TWO free spells per attack, each one another prowess /
-#: notes: Flurry / Sokka-token / Kuruk-Spirit trigger. Crackling Cyclops and Kitsa are the
-#: notes: other two Wizards; the Staff wants Cyclops (0/4 that survives combat) when
-#: notes: Goliath is not out.
+#: notes: Flurry / Sokka-token / Kuruk-Spirit trigger. Kitsa is the only other Wizard
+#: notes: now, so the Staff has two homes rather than three -- Crackling Cyclops was the
+#: notes: third and was cut 2026-09-04.
 #: notes: THE REAL COST, kept visible: if Goliath dies while cards sit in exile with
 #: notes: dream counters, those cards are STRANDED -- nothing else here can cast them.
 #: notes: Without him Duel Tactics would simply have sat in the yard with flashback
@@ -160,7 +180,7 @@
 #: notes: is payable with {2} OR the color, so they cast without blue at 6 mana or
 #: notes: cheaper with any mix; they count as U spells for nothing (G-58 read).
 #: notes: Rally the Monastery costs {2} less after a spell this turn — sequence it
-#: notes: second. Crackling Cyclops is shared with 37/56 and Aziza with 55a/73
+#: notes: second. Aziza is shared with 55a/73 and Shiko with 76
 #: notes: (decks share the collection; a copy is never consumed).
 
 # Engine
@@ -175,7 +195,7 @@
 1 Gwen Stacy // Ghost-Spider (SPM) 78
 1 Mai, Jaded Edge (TLA) 147
 1 Pym Particles (MSH) 70
-1 Crackling Cyclops (FDN) 83
+1 Enduring Curiosity (DSK) 51
 1 Kitsa, Otterball Elite (BLB) 54
 1 Goliath Daydreamer (ECL) 143
 1 Thor Odinson (MSH) 234
@@ -215,9 +235,10 @@
 1 Gleaming Bastion (MSH) 267
 1 Hallowed Fountain (ECL) 265
 1 Sunbillow Verge (DFT) 264
-1 Baron, Airship Kingdom (FIN) 273
-6 Mountain (MSH) 293
-5 Plains (MSH) 287
+1 Terramorphic Expanse (MSC) 828
+5 Mountain (MSH) 293
+2 Evolving Wilds (ECL) 264
+4 Plains (MSH) 287
 4 Island (MSH) 290
 
 # Flex — parked, not rejected. See: deck.py flex 57
@@ -225,12 +246,12 @@
 # Manabase — the fix the 2026-09-04 tune did NOT make. See: deck.py flex 57
 #~ note: applied — Yue, the Moon Spirit in for Equilibrium Adept.
 #~ note: THE REAL YUE ARGUMENT IS A LINE, NOT A NUMBER, and it is specific to this deck: waterbend works like convoke, so SUMMONING-SICK creatures can pay it. Sokka's tokens arrive sick and cannot attack the turn they are made, which makes them free waterbend fuel -- cast a spell precombat, attack with the rest, then post-combat tap the sick tokens to free-cast. Targets in the list: Kuruk, Ral, Rally the Monastery, Charred Foyer, and Jeskai Revelation at MV 7, which is the blowout. P(holding at least one of those five) is 61% at 10 cards seen, 69% at 12. THE HONEST COUNTERS: attacking creatures are tapped and cannot pay, and only 6 of 22 creatures have vigilance; Yue herself is a 1-of, so she is available 17-20% of the time by turns 4-6; and Jeskai Brushmaster's double strike plus prowess is a HARDER clock in a deck casting two spells a turn (a 2/2 double striker after two spells hits for 8). She and The Mechanist compete for this same slot -- the Mechanist moves a measured axis (card advantage 8 -> 9) and Yue moves none, so prefer the Mechanist if the deck reads thin on grind and Yue if it reads thin on BODIES.
-#~ note: THE LAND PROBLEM IS TEMPO, NOT COLOUR ACCESS, AND NO NUMBER HERE PRICES IT. `consistency` says so itself -- "every figure here prices color ACCESS, not the turn a tapland costs" -- so the case below rests on the tapland COUNT, which is a judgment, not a measurement. Today SIX of nine nonbasics enter tapped unconditionally (Mystic Monastery x2, Temple of Epiphany, Temple of Enlightenment, Restless Anchorage, Baron, Airship Kingdom) in an `#: plan: aggro` deck that wants turn-1 through turn-4 untapped. Second thing no tool here sees: `consistency` MISCOUNTS A SHOCKLAND as an unconditional tapland -- it reads "it enters tapped" and never parses "you may pay 2 life" -- so its tapland line under-credits every plan below.
+#~ note: THE LAND PROBLEM WAS TEMPO AND IT IS NOW LARGELY FIXED -- figures re-measured 2026-09-04 after the fetch pass, because this note carried the pre-pass ones. Unconditional taplands are 3 of 11 nonbasics (Mystic Monastery, Temple of Epiphany, and Hallowed Fountain, which `consistency` MISCOUNTS: it reads "it enters tapped" and never parses "you may pay 2 life", so the real number is TWO). It was 6 of 9 before Hallowed Fountain, Gleaming Bastion and Starting Town came in. The three fetches added since are tapland-EQUIVALENT (Evolving Wilds has no mana ability, so playing and cracking it yields one tapped basic), which is why the effective count did not fall further -- that was the accepted price of the colour access below. Keep reading `consistency`'s tapland line as an over-count.
 #~ note: applied — Hallowed Fountain in for Restless Anchorage.
 #~ note: applied — Gleaming Bastion in for Temple of Enlightenment.
 #~ note: applied — Starting Town in for Mystic Monastery.
-#~ note: THE CRAFT HALF, three rares, none with a rotation problem (printings 2025-08 to 2026-04). -Baron, Airship Kingdom +Stormcarved Coast (UR, untapped from turn 3); -Temple of Epiphany +Steam Vents (UR shock); -1 Plains +Sundown Pass (RW, untapped from turn 3). Sources W 11 / U 12 / R 13, and unconditional taplands reach ONE. Measured cast-on-curve against the current list: Goliath Daydreamer {R}{R} 64.6% -> 69.6%, the three {R}{W} two-drops (Lightning Helix, Boros Charm, Aziza) 70.2% -> 72.3%, Flamehold Grappler 67.7% -> 69.3%, Sokka 74.3% -> 75.8%. Sacred Foundry (RW shock) is the fourth option if a fourth slot opens.
-#~ note: WHAT NO LAND FIXES: The Legend of Kuruk's {U}{U} sits at 64.6% on curve and does not move in either plan above, because Karsten wants 20 U sources for a turn-4 double pip and this is a three-colour deck at 24 lands. The 2026-04 slow-land cycle has NO WU member, so blue depth cannot be bought the way red and white can. If Kuruk reads uncastable in play, that is a CARD problem, not a manabase one.
+#~ note: THE CRAFT HALF, REWRITTEN 2026-09-04 because the fetch pass consumed half of it. Baron, Airship Kingdom was already cut for Terramorphic Expanse, so the remaining craft is: -Temple of Epiphany +Steam Vents (UR shock, untapped for 2 life) and, if a further slot opens, Stormcarved Coast or Sundown Pass (untapped from turn 3). None has a rotation problem (printings 2025-08 to 2026-04). These are TEMPO buys, not fixing buys -- every one is source-neutral against what it replaces, which is the whole point of preferring them to another Island.
+#~ note: A LAND DID FIX KURUK, AND THIS NOTE USED TO SAY THE OPPOSITE -- corrected 2026-09-04, and the correction is the useful part. The old claim was that {U}{U} could not be bought because the 2026-04 slow-land cycle has no WU member and a three-colour deck at 24 lands cannot be deep in all three. That reasoning only covered DUALS. A BASIC FETCH is a source of every colour the deck runs a basic of, so it buys all three at once -- the exact thing the old note said was impossible. Measured: 2 Evolving Wilds + 1 Terramorphic Expanse took W 11 -> 13, U 12 -> 14, R 12 -> 13, and with them Kuruk went 64.6% -> 74.1%, Goliath {R}{R} 64.6 -> 69.6, Flamehold Grappler 67.7 -> 76.3 (clears its target), Lightning Helix 70.2 -> 76.9, Sokka 74.3 -> 82.0. AN ISLAND WAS THE WRONG ADD and was measured as such: +2 Wilds +1 Island reaches U 15 but drops Goliath back to 64.6%, i.e. it moves the worst row from blue to red rather than lifting the floor. A basic produces one colour; a fetch produces three.
 #~ note: A MANA CREATURE DOES NOT FIX A TURN-4 DOUBLE PIP, and the arithmetic is why -- do not re-derive it. The curve for Kuruk (P of two blue sources in the 10 cards seen by turn 4 on the play) is: 12 sources 64.6%, 13 69.6%, 14 74.1%, 15 78.1%, 16 81.7%, 18 87.4%, 20 91.6% -- so ONE extra blue source is worth about +5 points. A single copy of a two-mana dork is available by turn 4 only 15% of the time (28% at two copies, 48.8% at four), and only some of those games are ones where it was the marginal blue source, so its real contribution is far under a single land's. It also costs a slot at MV 2, the deck's fattest early band, and G-81 is explicit that an early drop which only makes mana is not a clock -- in an `#: plan: aggro` list that is a threat traded for fixing.
 #~ note: THE RESTRICTION IS THE SECOND HALF OF THAT ANSWER: most blue mana creatures here CANNOT cast Kuruk at all. Hydro-Channeler (owned) is instants/sorceries only; Hydraulic Helper and Steelswarm Operator (both owned) are artifacts only; White Lotus Tile is a {4} artifact that enters tapped and counts shared creature TYPES, which this deck does not have. The Emperor of Palamecia (owned x1, {U}{R} 2-drop Wizard) is the ONLY one whose mana reaches Kuruk -- "spend only to cast a NONCREATURE spell" covers the Saga half, every instant/sorcery, Wizard's Staff, Brimstone Roundup and Ral -- and it is a Wizard, so Wizard's Staff can carry it. It is still subject to the 15% arithmetic above. Colourless unrestricted options exist (Oasis Gardener {3}, Sunbird Standard {3}) but both cost three and neither attacks.
 #~ note: MANA CHEATS DO NOT FIX KURUK EITHER, and the first half of that answer is a distinction worth keeping: COST REDUCTION IS NOT PIP FIXING. Kuruk needs two blue SOURCES whether it costs {2}{U}{U} or {U}{U}, so Inquisitive Glimmer ("enchantment spells cost {1} less"), Archmage of Runes and Bilbo -- who is already in this deck -- do nothing for it. Only a FULL free-cast or a put-onto-the-battlefield qualifies, and a put-onto-the-battlefield is the wrong shape here for a second reason: a Saga cheated in is NOT CAST, so it accrues lore counters fine but gives up the prowess trigger, the Sokka token and Bria's unblockable -- in a deck whose whole thesis is that every cast is damage. That rules out the reanimation route (Restoration Seminar, {5}{W}{W}) on top of its cost.
@@ -238,6 +259,6 @@
 #~ note: THE COUNT THAT SETTLES IT (G-61): this deck has exactly ONE front-face double pip in blue -- Kuruk -- and one in red, Goliath Daydreamer's {2}{R}{R}. Every other double pip in the list is a BACK half paid separately (G-02: Gwen, Monica, Bofur, Warped Space). Spending a slot on a cheat so that ONE card is castable is a 1-for-1 trade that leaves the deck no better. If 64.6% reads badly in play, cutting Kuruk is strictly cheaper than enabling it, and the flex block above already names the replacement at {2}{U}.
 #~ note: THE ONE CARD THAT WOULD ACTUALLY SOLVE IT is Leyline of the Guildpact (OWNED x1) -- every land becomes every basic type, so all 24 lands tap for all three colours. It is NOT proposed: its cost is {G/W}{G/U}{B/G}{R/G}, a five-colour identity that would widen `#: colors:` (G-58 says never do that) and fail the castability lint for a card you can only ever play from your OPENING HAND, i.e. a dead draw the other 85% of games. Recorded so the next session does not rediscover it and think it found something.
 # Repeatable card advantage — the answer to "the 5 is mostly one-shots". See: deck.py flex 57
-#~ -Jeskai Brushmaster | +Sokka, Lateral Strategist | OWNED (x1), the pick of the four tested 2026-09-04: {1}{W/U}{W/U} vigilance Human Warrior ALLY, "whenever Sokka and at least one other creature attack, draw a card" -- repeatable, once per combat, in a deck that attacks with tokens every turn. Three reasons it beats the others: the pips are HYBRID, payable with either colour, which is the best castability shape available in a three-colour deck (strict pips fall in ALL THREE: W 14 -> 13, U 18 -> 17, R 25 -> 24, and it never reaches the sub-90% table); it is MV 3, the deck's thinnest band, which goes 4 -> 5 and drops avg MV 2.97 -> 2.94; and it is an ALLY, so Sokka, Tenacious Tactician grants it menace and prowess. Different legendary NAME from the Tactician, so both sit on the battlefield together. Card advantage 5 -> 6. The cost: its draw needs you to be ATTACKING, so it does nothing from behind.
-#~ -Jeskai Brushmaster | +Kraum, Violent Cacophony | OWNED (x1), the FROM-BEHIND alternative to the line above: {2}{U}{R} 2/2 flier, "whenever you cast your second spell each turn, put a +1/+1 counter on Kraum and draw a card." It draws off CASTING rather than attacking, which is the half Sokka, Lateral Strategist cannot cover, and it grows while it does. Two single pips so castability is fine (83.4% on curve) and the curve is untouched (MV 4 for MV 4, avg 2.97 held); card advantage 5 -> 6. Take this one if the deck reads like it stalls on board and needs to draw while not attacking; take the other if it reads like it needs a cheaper body.
-#~ note: TWO MORE CHECKED AND NOT PROPOSED, with the reason each. ENDURING CURIOSITY (owned, {2}{U}{U}) has by far the highest ceiling here -- a card for EVERY creature that connects, on a go-wide board with Sokka tokens, Bria's unblockable and four fliers, plus it returns as an enchantment when it dies -- but it is a SECOND {U}{U} at MV 4 next to Kuruk, at the same 64.6% on curve, and U pips would go to 19 against 12 sources. That is the exact shape this deck spent five passes removing; revisit it only if blue sources reach ~15. CARETAKER'S TALENT (craft, {2}{W}) is the best of the unowned: "whenever one or more tokens you control enter, draw a card, once each turn" fires off Sokka's token every turn you cast a noncreature spell, works from behind, is MV 3 and a single white pip, and Level 3 gives creature tokens +2/+2. It is not proposed only because Sokka, Lateral Strategist does the same job, is OWNED, and brings a body.
+#~ -Jeskai Brushmaster | +Sokka, Lateral Strategist | OWNED (x1), the pick of the four tested 2026-09-04: {1}{W/U}{W/U} vigilance Human Warrior ALLY, "whenever Sokka and at least one other creature attack, draw a card" -- repeatable, once per combat, in a deck that attacks with tokens every turn. Three reasons it beats the others: the pips are HYBRID, payable with either colour, which is the best castability shape available in a three-colour deck (strict pips fall in ALL THREE: W 14 -> 13, U 18 -> 17, R 25 -> 24, and it never reaches the sub-90% table); it is MV 3, the deck's thinnest band, which goes 4 -> 5 and drops avg MV 2.97 -> 2.94; and it is an ALLY, so Sokka, Tenacious Tactician grants it menace and prowess. Different legendary NAME from the Tactician, so both sit on the battlefield together. Card advantage 6 -> 7 (it was 5 -> 6 when measured, before Enduring Curiosity landed). The cost: its draw needs you to be ATTACKING, so it does nothing from behind.
+#~ -Jeskai Brushmaster | +Kraum, Violent Cacophony | OWNED (x1), the FROM-BEHIND alternative to the line above: {2}{U}{R} 2/2 flier, "whenever you cast your second spell each turn, put a +1/+1 counter on Kraum and draw a card." It draws off CASTING rather than attacking, which is the half Sokka, Lateral Strategist cannot cover, and it grows while it does. Two single pips so castability is fine (83.4% on curve) and the curve is untouched (MV 4 for MV 4, avg 2.97 held); card advantage 6 -> 7 (it was 5 -> 6 when measured, before Enduring Curiosity landed). Take this one if the deck reads like it stalls on board and needs to draw while not attacking; take the other if it reads like it needs a cheaper body.
+#~ note: ENDURING CURIOSITY IS IN THE DECK as of 2026-09-04 and this note used to argue against it -- kept, rewritten, because WHY it flipped is the transferable part. The objection was never the card; it was that {2}{U}{U} at MV 4 sat at 64.6% on curve beside Kuruk's identical double pip. The fetch pass moved blue 12 -> 14 sources and both rows to 74.1%, which retired the objection without touching the card. A CONDITIONAL REJECTION SHOULD NAME ITS CONDITION so a later change can clear it. The residual is real and is the thing to watch: the deck now runs TWO MV-4 double pips at 74.1% and U pips reach 20 against 14 sources, the highest blue demand this list has carried -- drawing both early is the awkward hand. CARETAKER'S TALENT (craft, {2}{W}) remains the best unowned option and is still not proposed: Sokka, Lateral Strategist above does the same job, is OWNED, and brings a body.
