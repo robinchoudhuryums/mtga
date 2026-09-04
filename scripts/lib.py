@@ -405,6 +405,34 @@ _ANY_COLOR_RE = re.compile(
     r"\b(?:one |two |three |X |that much |an amount of )?mana (?:in any combination )?of any "
     r"(?:one )?(?:color|type)|\bany color\b|\bthe chosen color\b", re.I)
 _EXTRA_MANA_COST_RE = re.compile(r"\{[0-9XC]\}|\{[WUBRG]\}|\{[WUBRG]/[WUBRG]\}")
+# A cost that taps something OTHER than the land itself ("{T}, Tap an untapped creature
+# you control: Add one mana of any color" — Scene of the Crime). `{T}` is a symbol, so the
+# WORD "tap" in a cost is always an additional body; this is the non-mana sibling of
+# `_EXTRA_MANA_COST_RE` and files the colour `conditional` rather than free.
+_EXTRA_TAP_COST_RE = re.compile(
+    r"\btap (?:an|another|two|three|four|\w+) (?:untapped )?"
+    r"(?:creature|artifact|permanent|land|token)", re.I)
+# Production reachable ONLY by turning the permanent face up or transforming it. Branch of
+# Vitu-Ghazi taps for {C} as a land; its "When this land is turned face up, add two mana of
+# any one color" line needs it cast face down for {3} via Disguise first, so as a LAND it
+# adds no coloured mana at all — and it was reported as a five-colour free source, scoring
+# the maximum 10.0 in `suggest --lands` (2026-09-04).
+_TRANSFORM_GATED_RE = re.compile(r"\b(?:turned face up|turns? face up|transformed?)\b", re.I)
+# "As this land enters, choose a color. {T}: Add one mana of the chosen color." The land
+# supplies exactly ONE colour per game, fixed on entry — it is NOT simultaneously a source
+# of five. Kept inside `free` because for ACCESS it really is a source of whichever colour
+# you name (the same generosity a fetch gets), but reported separately so a breadth-aware
+# score does not credit it for colours it can never produce at the same time.
+_CHOSEN_COLOR_RE = re.compile(r"\bthe chosen color\b", re.I)
+# An ability this permanent GRANTS to others is not production it has. Forgotten Monument
+# reads `{T}: Add {C}.` then `Other Caves you control have "{T}, Pay 1 life: Add one mana
+# of any color."` — it produces colourless and nothing else, yet was read as a five-colour
+# free source and rose to #1 in dozens of decks' land suggestions (2026-09-04). The quoted
+# ability belongs to the OTHER permanents; whether THEY are in the deck is a different
+# question this function is not asked.
+_GRANTED_ABILITY_RE = re.compile(
+    r"\b(?:other\s+[\w'\- ]{0,30}|[\w'\- ]{1,30}\s+you control)\s+(?:have|has|gains?)\s+[\"“]",
+    re.I)
 _FETCH_BASIC_RE = re.compile(
     r"search your library for (?:a|an|up to \w+|one or more) basic "
     r"(?:land|plains|island|swamp|mountain|forest)\b", re.I)
@@ -439,20 +467,30 @@ def land_production(text, colors_cell=None):
     lines say. Pure (regex only), so the counters and the recommender share it.
     """
     txt = _LAND_REMINDER_RE.sub(" ", text or "")
-    free, restricted, conditional = set(), set(), set()
+    free, restricted, conditional, chosen = set(), set(), set(), set()
     any_color = fetch = False
     for line in txt.splitlines():
+        # Production you can only reach by transforming the card is not production you
+        # have as a LAND. Skipped whole: the clause is inside a triggered ability whose
+        # trigger cannot fire while the permanent is the land you played.
+        if _TRANSFORM_GATED_RE.search(line) or _GRANTED_ABILITY_RE.search(line):
+            continue
         low = line.lower()
         cost = line.split(":", 1)[0] if ":" in line else ""
-        extra_cost = bool(_EXTRA_MANA_COST_RE.search(cost)) or "sacrifice" in cost.lower()
+        extra_cost = (bool(_EXTRA_MANA_COST_RE.search(cost))
+                      or bool(_EXTRA_TAP_COST_RE.search(cost))
+                      or "sacrifice" in cost.lower())
         limited = "spend this mana only" in low
         cols = set()
+        line_chosen = False
         for m in _ADD_CLAUSE_RE.finditer(line):
             clause = m.group(0)
             cols |= {c for c in "WUBRG" if "{" + c + "}" in clause}
             if _ANY_COLOR_RE.search(clause):
                 any_color = True
                 cols |= set("WUBRG")
+                if _CHOSEN_COLOR_RE.search(clause):
+                    line_chosen = True
         if not cols:
             continue
         if limited:
@@ -461,6 +499,8 @@ def land_production(text, colors_cell=None):
             conditional |= cols
         else:
             free |= cols
+            if line_chosen:
+                chosen |= cols
     if _FETCH_BASIC_RE.search(txt):
         fetch = True
     restricted -= free
@@ -471,8 +511,10 @@ def land_production(text, colors_cell=None):
     # "spend only to cast a creature spell" and identity must not launder it into free.
     ident = card_colors(colors_cell) if colors_cell else set()
     free |= ident - restricted - conditional
+    # A colour reachable by a route OTHER than the choose-once clause is not choose-once.
+    chosen &= free - (ident - restricted - conditional)
     return {"free": free, "restricted": restricted, "conditional": conditional,
-            "any": any_color, "fetch": fetch}
+            "chosen": chosen, "any": any_color, "fetch": fetch}
 
 
 class WrongSchema(Exception):

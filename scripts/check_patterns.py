@@ -294,7 +294,14 @@ def _pattern_groups():
     # and `suggest --lands`. Every one of these going dead is the quiet direction — an
     # any-colour land back to zero sources, a fetch back to invisible. Raw form: the Add
     # clause and the fetch clause are read from ORIGINAL-case oracle text, per line.
-    for name in ("_ADD_CLAUSE_RE", "_ANY_COLOR_RE", "_FETCH_BASIC_RE", "_LAND_REMINDER_RE"):
+    for name in ("_ADD_CLAUSE_RE", "_ANY_COLOR_RE", "_FETCH_BASIC_RE", "_LAND_REMINDER_RE",
+                 # 2026-09-04: the four EXCLUSION patterns. Each one exists because a land
+                 # that produces little or nothing was read as a five-colour free source —
+                 # choose-ONCE-on-entry, a clause reachable only by transforming, an extra
+                 # non-mana tap cost, and an ability GRANTED to other permanents. If any
+                 # goes dead the land comes back as a rainbow source, silently.
+                 "_CHOSEN_COLOR_RE", "_TRANSFORM_GATED_RE", "_EXTRA_TAP_COST_RE",
+                 "_GRANTED_ABILITY_RE"):
         out.append((f"lib.{name}", getattr(lib, name), "raw"))
     out += [("tag_synergies._TRIBAL_PAYOFF_RES", p, "raw")
             for p in tag_synergies._TRIBAL_PAYOFF_RES]

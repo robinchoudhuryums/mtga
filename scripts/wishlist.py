@@ -765,8 +765,13 @@ def _land_value(row, deck_colors):
     # Calibrated so a TAPPED three-color source clears a TAPPED dual (8.0 -> 8.75) but
     # still loses to an UNTAPPED dual (9.5) — untapped-two versus tapped-three is a real
     # deck-dependent trade and the model should not pretend to settle it.
-    if len(used) > 2:
-        base += min((len(used) - 2) * _LAND_BREADTH_PER_COLOR, _LAND_BREADTH_CAP)
+    # Breadth counts only colours the land can supply SIMULTANEOUSLY. A choose-once land
+    # ("As it enters, choose a color") reports every colour, because for ACCESS it really
+    # is a source of whichever one you name — but it supplies exactly ONE per game, so
+    # crediting it for three is the error that made seven of these outrank real duals.
+    simultaneous = used - set(lp["chosen"])
+    if len(simultaneous) > 2:
+        base += min((len(simultaneous) - 2) * _LAND_BREADTH_PER_COLOR, _LAND_BREADTH_CAP)
     if (not fetch and "enters tapped" not in txt.lower()
             and "enters the battlefield tapped" not in txt.lower()):
         base += 1.5                               # untapped fixing is premium

@@ -2816,12 +2816,20 @@ follow-on in the implementation block.
 ONE note, not the three I had claimed). See
 `.cycle/blocks/2026-09-04-followon-and-docs-broad-implement.md`.
 
-**BLOCKING ITEM for any further land-scoring work: `lib.land_production`'s `free` set
-conflates any-colour-every-tap, choose-ONCE-on-entry (7 lands) and a clause reachable only
-by TRANSFORMING (Branch of Vitu-Ghazi taps for `{C}` and scored 10.0).** The `match`
-follow-on was implemented, measured at **89 of 115 decks changing their #1 land pick**, and
-REVERTED for this reason. The same `free` set feeds `deck_source_profile`, so source counts
-are affected too. Fix the primitive, then re-measure `_LAND_BREADTH_PER_COLOR`.
+**`lib.land_production`'s `free` set is FIXED (2026-09-04)** — it had meant four things:
+choose-ONCE-on-entry (7 lands, now the `chosen` key: counted for ACCESS, denied BREADTH),
+transform-gated, GRANTED to other permanents (Forgotten Monument, found during the fix) and
+an extra non-mana TAP cost. Ten lands read as five-colour sources. #1 land pick moves in
+8 of 115 decks; colour source counts unchanged because no roster deck runs any of the ten.
+See `.cycle/blocks/2026-09-04-land-production-primitive-broad-implement.md`.
 
-**Where I left off.** Docs + deck-57 prose committed on `claude/broad-scan-6kxevb`. P3, P4,
-P5 still open and untouched.
+**THE `match` FOLLOW-ON IS STILL BLOCKED and stays reverted** — re-tested on the corrected
+primitive, still **88 of 115** decks change their #1 pick. New cause, identified: the model
+cannot see an ENTRY CONDITION, so Command Bridge ("sacrifice it unless you tap an untapped
+permanent") reads as a clean untapped any-colour land. Solve that first.
+
+**Also open: `_land_value` still withholds the untapped premium from a SHOCKLAND** — the
+third surface of the P2 defect; the other two were fixed.
+
+**Where I left off.** All of the above committed on `claude/broad-scan-6kxevb`. P3, P4, P5
+still open and untouched.

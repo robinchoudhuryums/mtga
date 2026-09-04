@@ -2187,8 +2187,19 @@ the **#1 land pick in 89 of 115 decks**, and the cause is not the `match` logic:
   creature you control" and is filed `free`.
 
 All of them report five FREE colours, so any breadth-aware term over-credits nine
-Standard lands. **Fix the primitive before widening `match`** — the `match` change was
-implemented, measured, and REVERTED for exactly this reason.
+Standard lands. **FIXED 2026-09-04**, all four shapes: choose-once sets a new `chosen` key (kept in
+`free`, so ACCESS counting is unchanged, and excluded from the breadth credit because it
+cannot supply two colours at once); transform-gated lines, granted abilities and extra
+non-mana tap costs are excluded. A FOURTH shape surfaced during the fix — **Forgotten
+Monument** grants "{T}, Pay 1 life: Add one mana of any color" to OTHER Caves and taps for
+`{C}` itself; it had risen to #1 in dozens of decks. Roster effect: the #1 land pick moves
+in **8 of 115** decks, every one of them dropping a land that fixes nothing, and colour
+SOURCE counts are unchanged because **no roster deck runs any of the ten**.
+
+The `match` follow-on was re-tested on the corrected primitive and is STILL not safe —
+**88 of 115** decks change their #1 pick, because the model cannot see an entry condition
+(Command Bridge sacrifices itself unless you tap a permanent) and any-colour lands
+therefore sweep the top. It stays reverted; do not re-apply without solving that.
 
 ## [G-36] `deck.py consistency <id>` is the PROBABILITY layer `mana` lacks
 

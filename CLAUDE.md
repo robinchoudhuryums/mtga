@@ -545,11 +545,11 @@ directions.
   `pip_depth_warning`, `suggest --lands` and the rationale audit's colour figures.**
   An extra-cost any-colour land IS counted and labelled; spend-only mana is NOT; a basic
   fetch counts for each colour the deck runs a basic of — and the RECOMMENDER disagreed
-  with that count until 2026-09-04 (`_LAND_BREADTH_PER_COLOR` is the fix). **LIVE
-  RESIDUAL: `land_production`'s `free` set conflates any-colour-every-tap,
-  choose-ONCE-on-entry (7 lands supplying exactly ONE colour per game) and a clause
-  reachable only by TRANSFORMING, so any breadth-aware term over-credits 9 Standard
-  lands — fix the primitive before widening `match`.** [G-35]
+  with that count until 2026-09-04. **`free` MEANT FOUR THINGS until then**:
+  choose-ONCE-on-entry now sets `chosen` (counted for ACCESS, denied BREADTH);
+  transform-gated, GRANTED and extra-tap-cost clauses are excluded — ten lands had read as
+  five-colour sources. **Residual: `_land_value` still withholds the untapped premium from
+  a SHOCKLAND.** [G-35]
 - **`deck.py consistency <id>` is the PROBABILITY layer `mana` lacks** — keepable %,
   screw/flood, land-drop consistency and per-card P(cast on curve), with a Karsten-style
   source recommendation. Run it whenever a splash, a double pip or a top-end bomb is in
