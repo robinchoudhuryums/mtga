@@ -5599,6 +5599,15 @@ class TestTaplandProfile:
                                               "has 13 or less life.\n{T}: Add {G} or {W}."},
         "untapped dual": {"type": "Land", "text": "{T}: Add {G} or {W}."},
         "old wording": {"type": "Land", "text": "This land enters the battlefield tapped."},
+        # A SHOCKLAND states its condition BEFORE the tap clause, so the `unless|if`
+        # cue the original pattern required (which had to follow "enters tapped") never
+        # matched and all ten Standard shocklands read as UNCONDITIONAL taplands.
+        "shockland": {"type": "Land", "text": "({T}: Add {W} or {U}.)\nAs this land "
+                                              "enters, you may pay 2 life. If you don't, "
+                                              "it enters tapped."},
+        "choose-type shock": {"type": "Land", "text": "As this land enters, choose a basic "
+                                                      "land type. Then you may pay 2 life. "
+                                                      "If you don't, it enters tapped."},
         "backface land": {"type": "Creature — God // Land",
                           "text": "Trample // {T}: Add {R}."},
         "spell": {"type": "Instant", "text": "This land enters tapped."},
@@ -5613,6 +5622,16 @@ class TestTaplandProfile:
         assert [x for _, x in u] == ["old wording", "plain dual"]
         assert [x for _, x in c] == ["cond dual"]
         assert n == 4
+
+    def test_a_shockland_is_conditional_not_unconditional(self):
+        """The land you can always have untapped for 2 life is not a tapland, and reading
+        it as one corrupts the single figure `consistency` offers for tempo. Deck 57
+        listed Hallowed Fountain among its unconditional taplands through six tuning
+        passes (2026-09-04)."""
+        u, c, n = self._run(["shockland", "choose-type shock", "plain dual"])
+        assert [x for _, x in u] == ["plain dual"]
+        assert [x for _, x in c] == ["choose-type shock", "shockland"]
+        assert n == 3
 
     def test_basics_backfaces_and_nonlands_are_excluded(self):
         u, c, n = self._run(["Forest", "backface land", "spell"])

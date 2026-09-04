@@ -4685,14 +4685,21 @@ def suggest_lands(d, unowned=False, owned=False, limit=20, fmt=None, any_format=
         syn = _land_synergy_bonus(tags, central_w)
         short = _land_shortfall_bonus(on_color, deficit)
         low = txt.lower()
-        tapped = ("enters tapped" in low or "enters the battlefield tapped" in low)
+        tapped = bool(_TAPLAND_RE.search(txt))
         # CONDITIONAL vs FLAT tapping, shown separately. `_land_value` treats both as
         # tapped, which is the conservative read and is exactly right for a deck that
         # cannot meet the condition — but it is an UNDER-score for one that can (Great
         # Arashin City enters untapped in any deck with a Forest). Deciding satisfiability
         # needs the deck's contents, so this REPORTS the condition instead of guessing:
         # G-52's rule that a verdict surface prints its evidence.
-        cond_tapped = tapped and "unless" in low
+        # Routed through `_TAPLAND_COND_RE` — the SAME predicate `tapland_profile` uses.
+        # This was a second, narrower implementation of one question ("is the tapping
+        # conditional?") in the same file: a bare `"unless" in low` missed every
+        # shockland, so `suggest --lands` printed `·tapped` on Hallowed Fountain while
+        # scoring it as a flat tapland (2026-09-04). Fixing the classifier and leaving the
+        # sibling would have fixed one surface and left the other wrong — the G-45 rule
+        # that two functions answering the same question must have their filters diffed.
+        cond_tapped = bool(_TAPLAND_COND_RE.search(txt))
         # Restricted production ("Spend this mana only to cast a creature spell"). The
         # score already discounts it; this is what lets a human tell WHY.
         restricted = "spend this mana only" in low
@@ -5528,7 +5535,18 @@ def format_source_notes(notes, indent="  "):
 
 
 _TAPLAND_RE = re.compile(r"enters(?: the battlefield)? tapped", re.I)
-_TAPLAND_COND_RE = re.compile(r"enters(?: the battlefield)? tapped[^.\n]*\b(unless|if )", re.I)
+# A SHOCKLAND states its condition BEFORE the tap clause — "As this land enters, you may
+# pay 2 life. If you don't, it enters tapped." — so the `unless|if` alternative below,
+# which requires the cue AFTER, filed all ten Standard-legal shocklands as UNCONDITIONAL.
+# That landed on `consistency`'s tempo line, the one figure a human reads to judge whether
+# a manabase is too slow: deck 57 listed Hallowed Fountain among its unconditional
+# taplands, and its flex block had to caveat the count in three separate notes
+# (2026-09-04). The pay-life alternative is deliberately narrow — in the whole Standard
+# pool it matches the shocklands plus Multiversal Passage, all of which really are
+# conditional — and it is bounded so it cannot reach across an unrelated paragraph.
+_TAPLAND_COND_RE = re.compile(
+    r"enters(?: the battlefield)? tapped[^.\n]*\b(?:unless|if )"
+    r"|you may pay \d+ life[\s\S]{0,60}?enters(?: the battlefield)? tapped", re.I)
 
 
 def tapland_profile(cards, carddata):

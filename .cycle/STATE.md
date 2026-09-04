@@ -2780,3 +2780,39 @@ gates green (full suite, check_all with the one expected G-75 warning). Remainin
 five Low interface items (P-09..P-13), the batch-5 tag-prune follow-on, the operator
 visual checks (Scenarios 5, 7, 12–18), and the completeness gaps (tracker export through
 import_collection, a play-next surface, `standardbrawl` in the pool).
+
+## 2026-09-04 — deck 57 tune, then P1/P2 of the holes it surfaced
+
+**Deck 57 (Tempest)** took six tuning passes and 20 card changes plus a rebuilt manabase.
+The tune itself is recorded in the deck's own `#: tier:` block; what matters here is that
+it surfaced six tooling holes, written up in
+`.cycle/blocks/2026-09-04-deck-57-tune-findings.md`.
+
+**Implemented this session (P1, P2)** — see
+`.cycle/blocks/2026-09-04-land-breadth-tapland-broad-implement.md` for the verbatim block.
+- P1: `wishlist._land_value` now credits colour breadth above two
+  (`_LAND_BREADTH_PER_COLOR` 0.75, cap 1.5). Re-ranks the #1 land pick in 22 of 115 decks,
+  measured; the constant is the dial if that reads wrong in use.
+- P2: `_TAPLAND_COND_RE` now catches shocklands, and `suggest_lands`' duplicate
+  `cond_tapped` test was routed through it so the two surfaces cannot disagree.
+
+**Decided AGAINST, with reasons — do not re-propose without new evidence.**
+A 1-3 "limited / versatile" scale for the role-count buckets (interaction, card advantage,
+…) was proposed by the user and declined. It changes the UNITS of the only two terms
+`tier_band` reads; `TIER_FLOOR_REQ` would need re-deriving again (it already was, BS8-06),
+and **110 of 117 deck files cite interaction/card-advantage figures in `#: tier:` prose**,
+so every one goes stale in a single commit. The classifier is also the weak link, not the
+granularity — **560 of 1882 roster cards (30%) score ZERO roles**. The agreed alternative
+is the G-81 pattern: an orthogonal REPORT-ONLY split
+(`card advantage 6 (1 repeatable, 5 one-shot)`) with the bare int still feeding
+`tier_band`. That is P3 and is NOT built.
+
+**Still open:** P3 (the split above), P4 (the rationale audit cannot see an existential
+prose claim about the POOL — "no untapped dual exists" was false and load-bearing), P5
+(`#~` swap-line rationale sits outside `note_figure_staleness`), plus the `match`-term
+follow-on in the implementation block.
+
+**Where I left off.** P1/P2 committed and pushed on `claude/broad-scan-6kxevb`. Docs are
+NOT yet updated — G-35 and G-37 need the breadth term and the closed shockland residual,
+and deck 57's flex block still carries three notes caveating the shockland miscount that
+P2 has now fixed. `/sync-docs` is the next step.

@@ -707,6 +707,12 @@ def _is_land(row):
     return primary_type(row.get("Type") or "") == "Land"
 
 
+# Per-color credit for a source that fixes MORE than two of the deck's colors, and the
+# total cap. See `_land_value` for why this is additive rather than a rescaled `multi`.
+_LAND_BREADTH_PER_COLOR = 0.75
+_LAND_BREADTH_CAP = 1.5
+
+
 def _land_value(row, deck_colors):
     """0–10 MANABASE value of a land for its target deck (F03) — the theme-fit axis
     is meaningless for lands (no synergy tags), so score fixing instead: reward
@@ -741,6 +747,26 @@ def _land_value(row, deck_colors):
     match = len(used) / len(prod)                 # fraction of its colors the deck uses
     multi = 1.0 if len(used) >= 2 else 0.5 if len(used) == 1 else 0.0
     base = 3.5 + 4.5 * match * multi              # ~3.5..8 by color usefulness
+    # BREADTH ABOVE TWO. `multi` saturates at two colors, so a source producing all THREE
+    # of a three-color deck's colors scored exactly what a two-color dual did — base 8.0
+    # for both. That is not a rounding difference: `deck_source_profile` counts a basic
+    # fetch as a source of EVERY color the deck runs a basic of (G-35), so the two halves
+    # of one subsystem disagreed about what a fetch is worth. The cost was measured on
+    # deck 57 (2026-09-04): three fetches were the largest manabase upgrade available to
+    # it — every worst cast-on-curve row moved 5-8 points and the {U}{U} its own flex
+    # block had recorded as unfixable came good — and they sat at rank 45-47 of 216,
+    # behind 29 cards tied at 10.5, because they tie at 8.0 and then lose the synergy
+    # tiebreak (a fetch carries no theme tags). The user found them by asking.
+    #
+    # ADDITIVE and ONE-DIRECTIONAL UP, deliberately: a multiplicative fix (dividing by the
+    # deck's color count) would have LOWERED every two-color dual in every three-color
+    # deck, re-ranking the whole roster to fix an ordering at the top. This can only
+    # promote a genuinely broader source, so no existing recommendation is withdrawn.
+    # Calibrated so a TAPPED three-color source clears a TAPPED dual (8.0 -> 8.75) but
+    # still loses to an UNTAPPED dual (9.5) — untapped-two versus tapped-three is a real
+    # deck-dependent trade and the model should not pretend to settle it.
+    if len(used) > 2:
+        base += min((len(used) - 2) * _LAND_BREADTH_PER_COLOR, _LAND_BREADTH_CAP)
     if (not fetch and "enters tapped" not in txt.lower()
             and "enters the battlefield tapped" not in txt.lower()):
         base += 1.5                               # untapped fixing is premium
