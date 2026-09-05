@@ -356,6 +356,38 @@ Rules — cite by number in every verdict:
   today, far more with the pile's Marvel bodies). Molten Man (Elemental) and Stingerback
   (Scorpion Dragon) are outside it; choose the type for the body you are building.
 
+- **O37. STATION IS A SECOND USE OF THE TALL BODY'S POWER (user's Dawnsire insight, checked
+  against the pool).** Station taps another creature at sorcery speed for charge counters
+  equal to its POWER — so one Bulk-Upped body stations a Spacecraft to its top tier in one
+  tap, at the cost of that body's attack that turn. Pool sweep: 14 Station cards castable in
+  RW, of which the fits are **Dawnsire** (`{5}`: 10+ = 100 damage to a creature on attack,
+  20+ = a 20/20 flier — one 10-power tap turns it on, one 20-power tap makes it the body),
+  **Lumen-Class Frigate** (`{1}{W}` 3/5: 2+ = other creatures +1/+1, 12+ = flying lifelink —
+  the cheap one), **The Seriema** (`{1}{W}{W}` 5/5: ETB tutors a legendary creature — Sentry
+  — 7+ flies, and *tapped* legendary creatures you control are INDESTRUCTIBLE, which the
+  station tap itself provides), **Warmaker Gunship** (`{2}{R}`, ETB damage = artifacts),
+  **Wurmwall Sweeper** (`{2}`, 4+ flies). Galvanizing Sawship / Pinnacle Kill-Ship /
+  Extinguisher Battleship are MV 6–8 (F3; Battleship is Tannuk-warpable for its ETB).
+  Station does not stack with the Self-Destruct plan on the same turn — the body taps for
+  one or attacks for the other.
+- **O38. SPINEROCK TYRANT COPIES EVERY TRICK IN THE DECK.** "Whenever you cast an instant
+  or sorcery with a single target, copy it": Bulk Up ×4, Self-Destruct 2X, Haste Magic,
+  Team Tactics, Avatar State, Restoration Magic — every pump and every finisher is
+  single-target. It is Return the Favor's copy mode on a 6/6 FLYING body, for every spell,
+  free. Twinflame Tyrant (same cost) doubles the DAMAGE instead, to opponents only — so it
+  doubles Self-Destruct's face half and NOT its self-damage. Both are `{3}{R}{R}` with no
+  haste; the deck holds one MV-5 body, not two (F3). Spinerock for A1, Twinflame for A2.
+- **O39. DELNEY IS AN ENGINE HERE, not a 46-only card.** Power ≤2 creatures' triggers fire
+  twice: Crackling Cyclops is a printed 0/4 (O14), so each noncreature spell is +6/+0, not
+  +3; War Machine's combat trigger gives +2X/+0; Speed's rider, Hawkeye's Trick Arrows (six
+  payments), Iron Fist, Mai's prowess all double. And "power ≤2 can't be blocked by power
+  ≥3" is evasion for the body BEFORE the pump: attack as a 2-power, pump after blocks. G-40's
+  own worked example, one deck over.
+- **O40. TEAM AVATAR is the attack-alone payoff (O22's other side).** +X/+X where X = creatures
+  you control, every attack, for the creature attacking ALONE — the more bodies stay home,
+  the taller the one that goes. It rewards exactly what Luke Cage wants and Hawkeye / Ty Lee
+  / Brute violate. A1's repeatable pump.
+
 ## 4. Running verdicts
 
 Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ marginal · ✗ out`.
@@ -560,32 +592,66 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | Quilled Charger | △ | △ | Saddle 2 taps another body for menace on ITSELF. |
 | Misty Mountains Raider | △ | △ | Amass 2 on attack — an Army token deck. |
 
+### Batch 9 (20 cards)
+
+| Card | 56 | 56a | Note (framework rule) |
+|---|---|---|---|
+| Spinerock Tyrant | ★★★ | ★★★ | `{3}{R}{R}` 6/6 FLYING; copies every single-target instant/sorcery you cast (O38). A tall flying body that doubles its own pumps and finishers. MV 5, no haste (F3): the one top-end slot, and the best claim on it. |
+| Delney, Streetwise Lookout | ★★★ | ✗ | `{2}{W}` 2/2: power ≤2 triggers fire twice (Cyclops +6 per spell, War Machine, Speed, Hawkeye, Iron Fist, Mai) and power ≤2 attackers can't be blocked by power ≥3 (O39). An engine on the deck's existing pieces plus pre-pump evasion. |
+| Twinflame Tyrant | ★★★ | ★★★ | `{3}{R}{R}` 3/5 flier: double all damage to opponents and their permanents — combat, Self-Destruct's face half (not its self-half), Pain for All's reflect, Iron Fist, Gnaw. The least-gated doubler in the pile; the user's "generous" is right. Competes with Spinerock for the MV-5 slot (O38). |
+| Team Avatar | ★★ | ✗ | `{2}{W}` enchantment: the creature attacking ALONE gets +X/+X, X = your creatures — a repeatable pump keyed on the tall pattern (O40); discard mode is X damage to a creature. |
+| Cosmic Cube | ★★ | ★★ | `{5}` ward 2: every attack, look at six and cast one with MV ≤ your greatest attacking power FREE. With a 10-power attacker that is any card in the top six, every turn — CA and cheat (O28) scaling with the body. Colourless; MV 5 (F3). |
+| Dawnsire, Sunstar Dreadnought | ★★ | ★★ | `{5}`: one 10-power station tap = 100 damage to a creature on every attack; one 20-power tap = a 20/20 flier (O37). The user's insight is right and it costs the body's attack that turn. Colourless. |
+| Cloud, Midgar Mercenary | ★ | ✗ | `{W}{W}` 2/1: ETB tutor an Equipment (Boots, Shield); equipped, his and his Equipment's triggers double. WW at two is 45% (F7). ★★★ in the equipment plan. |
+| Catharsis | ★ | ★ | Evoke `{R/W}{R/W}` with RR: creatures +1/+1 and HASTE, then sacrificed — a two-mana team haste grant (Speed on, a warped Colossus swings). The user's read is right; it is a creature spell, so Cyclops does not trigger (F4). Hardcast 6 is F3. |
+| Windcrag Siege | ★ | ✗ | Mardu: attack triggers of your permanents fire twice — Cosmic Cube, Dawnsire, Daredevil, Hawkeye, Sozin's firebending (RRRRR ×2). ★★ once the deck holds three of those; today it doubles Scalestorm alone. |
+| Aettir and Priwen | ◇ | ◇ | `{6}` equip `{5}`: base P/T = your life total. 11 mana honestly, or `{6}` + Kíli / Serum / Blacksmith L2. The user's condition is right — equipment-plan only. |
+| Spider-Verse | ◇ | ◇ | Copy a spell cast from anywhere but hand, once a turn: Bulk Up's flashback, every Plot and warp recast, Hex Magic's exile, Cosmic Cube's cast. The CHEAT plan's copy engine (★★ in 56b); one flashback in 56. |
+| Zidane, Tantalus Thief | ◇ | ✗ | MV 5 ETB Threaten with lifelink + haste; Self-Destruct the stolen body (O9). |
+| Fire-Rim Form | ◇ | ◇ | `{1}{R}` flash Aura: +2/+0 permanent, first strike the turn it lands. A Ransacking that stays. |
+| Chimil, the Inner Sun | ◇ | ◇ | `{6}`: uncounterable + a free ≤5 card every end step. Cheat-plan CA (★★ there). |
+| Extinguisher Battleship | ◇ | ◇ | `{8}`: ETB destroy a noncreature permanent + 4 to EACH creature (one-sided under Crystal Barricade, O33). Tannuk warps it for `{2}{R}` as a 3-mana Vindicate-sweeper (★★ in 56b). |
+| Bifur, Melodic Rider | △ | △ | MV 6 counter-on-enter/attack; Dwarf doubling with no Dwarves. |
+| Firebender Ascension | △ | △ | Copies an attacking creature's own trigger after four — 56 has one such trigger (Scalestorm). |
+| Thunderhead Gunner | △ | △ | MV 5 body with a sorcery-speed loot. |
+| Ultima Weapon | △ | △ | `{7}` equip `{7}`: +7/+7 and destroy a creature on attack. Fourteen mana; equipment-plan only. |
+| Meteor Sword | △ | △ | `{7}` Vindicate on a +3/+3 stick. Tannuk-warpable for the ETB. |
+
 ## 5. Consolidated plan (live)
 
 Re-ranked after batch 1. Nothing applied.
 
 ### Plan A — tune 56 in place (protection + evasion)
 
-**ADDS, tiered (after batch 8):**
+**ADDS, tiered (after batch 9):**
 1. **Pain for All** (★★★, b3) — the reach engine.
 2. **Stingerback Terror** (★★★, b5) — 7/7 flying trample that grows as you cast.
-3. **The Sentry** (★★★, b4) / **Crystal Barricade** (★★★, b8) — the two routes to a FREE
-   Self-Destruct every turn (O16 / O33); virtual copies, the deck wants one or both.
-4. **Swiftfoot Boots** (★★★, b2) — permanent hexproof + haste.
-5. **Grand Abolisher** (★★★ / `{W}{W}`, b6) — the kill-turn lock; Walters / Voice (★★).
-6. **Return the Favor** (★★★, b1) — multiplier + redirect.
-7. **Enter the Avatar State** (★★★, pre-pile) / **Shardmage's Rescue** (★★, b8) — the
-   one-mana hexproof instants.
-8. **Ferocification** (★★, b8) — menace + haste every combat, permanently.
-9. **Collective Inferno** (★★, b8) — the un-gated damage doubler.
-10. **Energybending** / **Demonic Ruckus** (★★, b7); **Sozin's Comet** / **Soul
-    Immolation** / **Patriot** / **Daily Bugle Building** (★★, b8).
-11. **Iron Fist** / **Hawkeye** / **Shield** (★★, b5); **Agrus** / **Daredevil** / **Wrath**
-    (★★, b6); **Hex Magic** / **Lorehold** / **Arkenstone** / **Buster Sword** (★★, b7);
-    **Bygone Colossus**, **Restoration Magic / Bofur**, **Lightfoot**, **Spider-Man**,
-    **Luke Cage**, **Impolite Entrance**, **Bre**, **Key**, **Nova Hellkite**, **Rogue's
-    Passage** (★★).
-12. ★ (unchanged list) + Maximum Carnage, Riot, JJJ, Lightning, Veteran Survivor.
+3. **Delney** (★★★, b9) — doubles Cyclops / War Machine / Speed / Hawkeye / Iron Fist,
+   and pre-pump evasion (O39).
+4. **The Sentry** (★★★, b4) / **Crystal Barricade** (★★★, b8) — free Self-Destruct.
+5. **Swiftfoot Boots** (★★★, b2) — permanent hexproof + haste.
+6. **Spinerock Tyrant** (★★★, b9) or **Twinflame Tyrant** (★★★, b9) — THE MV-5 slot: copy
+   every trick, or double all damage (O38). One, not both.
+7. **Grand Abolisher** (★★★ / `{W}{W}`, b6) — the kill-turn lock; Walters / Voice (★★).
+8. **Return the Favor** (★★★, b1) — multiplier + redirect.
+9. **Enter the Avatar State** (★★★) / **Shardmage's Rescue** (★★) — one-mana hexproof.
+10. **Team Avatar** (★★, b9) — the attack-alone pump; **Ferocification** (★★, b8) — menace
+    + haste every combat; **Collective Inferno** (★★, b8) — the un-gated doubler.
+11. **Cosmic Cube** / **Dawnsire** (★★, b9, colourless MV 5) — the attack-and-station
+    payoffs for a body that is already tall.
+12. **Energybending** / **Demonic Ruckus** (★★, b7); **Sozin's Comet** / **Soul Immolation**
+    / **Patriot** / **Daily Bugle Building** (★★, b8); **Iron Fist** / **Hawkeye** / **Shield**
+    (★★, b5); **Agrus** / **Daredevil** / **Wrath** (★★, b6); **Hex Magic** / **Lorehold** /
+    **Arkenstone** / **Buster Sword** (★★, b7); **Bygone Colossus**, **Restoration Magic /
+    Bofur**, **Lightfoot**, **Spider-Man**, **Luke Cage**, **Impolite Entrance**, **Bre**,
+    **Key**, **Nova Hellkite**, **Rogue's Passage** (★★).
+13. ★ (unchanged list) + Cloud, Catharsis, Windcrag Siege.
+
+**MV-5 PRESSURE is now the second binding constraint after white.** Spinerock, Twinflame,
+Lorehold, Cosmic Cube, Dawnsire, Sozin's Comet (3 after foretell), Soul Immolation, Nova
+Hellkite (3 via warp) all want the T5 slot in a deck whose kill turn IS T5. A 24-land 2.4-curve
+deck holds two five-drops, not eight (P(5 lands by T5) = 47%). Spinerock Tyrant is the
+strongest single claim; everything else at MV 5 is a variant card or a one-of.
 
 **LAND SLOTS are their own sub-plan now**: Rogue's Passage (unblockable), Daily Bugle
 Building (fixing + menace), The Lonely Mountain (a Mountain-typed sink, F8-neutral) — each
@@ -649,6 +715,9 @@ what is the protection layer when there are no permanents to protect? `/draft-de
 survives the pile.
 
 ### 56a notes
+**Batch 9:** Spinerock Tyrant ★★★ (copies Overprotect, Bulk Up, Snakeskin Veil — the
+RG deck's whole trick suite is single-target), Twinflame Tyrant ★★★, Cosmic Cube / Dawnsire
+★★ (56a's compounding bodies station Dawnsire on their own).
 **Batch 8:** Ferocification ★★ (repeatable menace + haste on the compounding body),
 Collective Inferno ★★, Sozin's Comet ★★, Soul Immolation ★★ (X off Quilled Greatwurm /
 Halana's body, counters onto Brute), Daily Bugle Building ★★ (menace for Halana and Alena).
