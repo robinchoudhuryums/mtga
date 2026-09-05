@@ -754,7 +754,14 @@ Write these into `#: protect:` with the apply.
 
 ### 5.5 Plan B — 56b CHEAT-TALL: DECISION
 
-**Draft it.** The pile holds a complete, DISTINCT deck: engine (Tannuk, Warped Space,
+**DRAFTED 2026-09-05 as `decks/56-boros-tall/56b-ball-lightning.txt` (mono-R, 37+23,
+tier B PROVISIONAL, preflight READY, `similar`: closest by cards is 26 at 5 shared).** The
+re-screen of the rejected pile against the drafted list moved Goliath Daydreamer IN over
+Memorial Team Leader (KEY: every instant cast from hand recurs free on his attack; Spider-Verse
+copies it). Still homed in 56, not here, by choice: Crackling Cyclops (KEY on screen — it
+wants 56's 14 instants), Pain for All / Iron Fist (56c's), Spinerock (56's MV-5 slot).
+
+The original decision text: **Draft it.** The pile holds a complete, DISTINCT deck: engine (Tannuk, Warped Space,
 Fire Crystal, Sami, Kíli), bodies that arrive for less than printed (Bygone Colossus,
 Anticausal Vestige, Nova Hellkite, Ball Lightning, Red Tiger Mechan, Hill Gigas / Zog /
 Lorecaster / Stone-Giant via Tannuk, Stingerback and Ruckus via Plot, Extinguisher

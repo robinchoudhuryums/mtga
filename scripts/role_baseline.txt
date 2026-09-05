@@ -44,6 +44,7 @@ Avengers: Under Siege
 Azog, Moria's Ruin
 Azula, Cunning Usurper
 Badgermole
+Ball Lightning
 Bandit's Talent
 Bark of Doran
 Barret Wallace
@@ -96,6 +97,7 @@ Cephalid Inkmage
 Chameleon, Master of Disguise
 Champions of the Shoal
 Charging Strifeknight
+Choreographed Sparks
 Claim Jumper
 Clifftop Lookout
 Cloud, Midgar Mercenary
@@ -127,6 +129,7 @@ Devastating Onslaught
 Diligent Zookeeper
 Djinn of Fool's Fall
 Doc Ock's Henchmen
+Doc Ock's Tentacles
 Don & Leo, Problem Solvers
 Donatello, Mutant Mechanic
 Donatello, Turtle Techie
@@ -233,6 +236,7 @@ Herald of Eternal Dawn
 Heroes' Hangout
 High Fae Trickster
 High Perfect Morcant
+Hill Gigas
 Hit the Mother Lode
 Honored Knight-Captain
 Hop to It
@@ -244,6 +248,7 @@ Hymn of the Faller
 I Am Iron Man
 Iguana Parrot
 Imperious Inkmage
+Impolite Entrance
 Improvisation Capstone
 Improvised Arsenal
 Ingenious Leonin
@@ -366,6 +371,7 @@ Peter Parker
 Picklock Prankster // Free the Fae
 Pilfer
 Pond Prophet
+Possibility Technician
 Powerful Broker
 Pride of the Road
 Prideful Parent
@@ -386,6 +392,7 @@ Raph & Leo, Sibling Rivals
 Raphael, the Nightwatcher
 Reckless Velocitaur
 Red Room Recruit
+Red Tiger Mechan
 Redirect Lightning
 Relm's Sketching
 Renet, Temporal Apprentice
@@ -460,6 +467,7 @@ Stature, Size Shifter
 Stegron the Dinosaur Man
 Stickytongue Sentinel
 Sting, Bilbo's Sword
+Stingerback Terror
 Stony-Voiced Goblins
 Sultai Devotee
 Summoner's Grimoire
