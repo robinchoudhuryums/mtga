@@ -984,6 +984,38 @@ an existing deck" lists (38/39/74, 73a, 57/33, 45), one refusal (Giants).** Reco
 order: `/draft-deck 56b` → `/draft-deck 56c` (or fold 56c's core into 56 as tilt A2 and
 skip it) → `/tune-deck 56a` → finalize 56.
 
+### 5.11 56c as a FILE vs 56's A2 TILT — measured (2026-09-05)
+
+**56c sketch (RW, 36 + 24 on the rebuilt 56 manabase, plan midrange):** survivors Sentry /
+Luke Cage / Hazoret / Crystal Barricade / Red Hulk / Iron Fist / Infernal Phantom / Grand
+Abolisher / Ertha Jo; pumps Bulk Up ×2, Frontline Rush, Haste Magic, Full Bore, Lightfoot,
+Shardmage's Rescue; reach Self-Destruct ×2, Pain for All, Wisecrack, Gnaw, Agni Kai,
+Giantfall; doublers Twinflame, Collective Inferno, Mjölnir; amplifiers Camera, Taii, Return
+the Favor, Sparks; protection Boots, Restoration Magic, Avatar State; CA Hex Magic,
+Energybending, Ransacking. Measured: legal ✓, interaction 5 (2 answer noncreature
+permanents), protection 9, avg MV 2.53, floor B on midrange, shape TALL 8, 11 creatures.
+Closest by cards: 56a at 7 shared; against the REBUILT 56 it would share ~17.
+
+**What each is:**
+- **A2 tilt** = four slots in 56 (Iron Fist, Camera, Twinflame-or-Inferno, Restoration
+  Magic) at the cost of Ferocification / Team Avatar / Abolisher / Energybending. It gives
+  56 a fallback when the swing is blocked; it does NOT give it a second win condition — the
+  body still has to live AND attack, so Luke Cage / Hazoret (can't attack) and the
+  never-attack doublers are wasted there. Four slots buy a hedge.
+- **56c file** = the fireball as the PLAN: the body never attacks, so "attacks alone" /
+  "can't attack" / summoning sickness stop mattering, Barricade's prevention and Sentry's
+  indestructible make Self-Destruct free every turn, Iron Fist's tap is the repeatable
+  finisher, and Twinflame / Inferno / Mjölnir / Camera / Ertha Jo / Taii multiply it.
+  Chump blockers, first strike, flash blockers, fog effects are all irrelevant. Its honest
+  weaknesses: interaction 5 (creature-only bar Giantfall / Boots-class answers to its own
+  engine), a B floor on midrange, and it is ~17 cards away from the rebuilt 56 — distinct
+  by WIN CONDITION, not by list, which is the same relation 56a has to 56.
+
+**Recommendation:** skip the A2 tilt (a four-card hedge is the worst of both); keep 56
+combat-tall with Pain for All + Self-Destruct as its natural reach (already in the
+rebuild); build 56c as a file ONLY if the fireball plan is one you want to PLAY — it costs
+a slot against the 100-deck cap and half its list is 56's.
+
 ### 5.8 Craft cost — INFORMATION, per the Player Profile (not a constraint)
 
 Unowned in the §5.9 rebuild: Stingerback Terror (R), The Fire Crystal (R), Sacred Foundry
