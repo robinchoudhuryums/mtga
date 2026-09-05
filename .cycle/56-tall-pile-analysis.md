@@ -780,6 +780,14 @@ not a deck).
 
 ### 5.6 56a — Executioner's Song (RG) picks
 
+**APPLIED 2026-09-05 via /tune-deck 56a → /apply-changes (user-confirmed):** −Twin Blades
++Boots · −Molten Man ×2 +Pain for All +Mjölnir · −Ransacking +Demonic Ruckus · −Gnaw
++Giantfall · −Crackling Cyclops +Spinerock Tyrant (user chose Cyclops over Red Hulk as the
+cut). Measured: interaction 4→5, protection 4→5, floor C→B, guard clean, rationale
+re-grounded. Open: Stomping Ground ×2 (craft) for the eight taplands; Railway Brawler's
+library undercount (G-10).
+
+
 ★★★: Pain for All, Mjölnir (8 worthy carriers), Spinerock Tyrant, Twinflame Tyrant,
 Choreographed Sparks, Fire Crystal, Swiftfoot Boots. ★★: Stingerback, Dragonclaw Strike
 (4 mana in RG), Bulwark Ox, Brambleback Brute (Halana reloads it), Ferocification,
