@@ -131,6 +131,8 @@ Rules — cite by number in every verdict:
 - **E15.** "Tali Wakeen" resolved to nothing in the pool OR on Scryfall; the card is
   **Taii Wakeen, Perfect Shot** (OTJ). A name that fails twice is still a name to fix,
   not a card to drop (Stage 2). Graded under the corrected name.
+- **E16.** "Bardmage's Rescue" is **Shardmage's Rescue** (DSK) — a second name that failed
+  the pool and needed Scryfall's fuzzy match (E15's shape). Graded under the real name.
 
 ## 3. Cross-batch observations
 
@@ -322,6 +324,38 @@ Rules — cite by number in every verdict:
   is a 3/3 with six keywords and ward 7, a Stingerback copy is a 3/3 that shrinks per card
   in hand (bad). Read what the copy KEEPS before cheating it.
 
+- **O32. MENACE is the third evasion sub-cluster after flying and unblockable**, and batch 8
+  is where it arrives: Ferocification (menace + haste EVERY combat), Daily Bugle Building
+  (a land that gives a legendary menace), How to Start a Riot, J. Jonah Jameson and Caught
+  Red-Handed (suspect: menace AND can't block), Lightning, Raphael, Zhao, Item Shopkeep,
+  Quilled Charger, plus Agrus Kos (b6) and Demonic Ruckus (b7). Against a one-blocker
+  board menace is unblockable; against two it is a chump-block tax. Nothing in 56 grants
+  it today.
+- **O33. CRYSTAL BARRICADE MAKES SELF-DESTRUCT FREE WITHOUT AN INDESTRUCTIBLE BODY.**
+  "Prevent all noncombat damage that would be dealt to other creatures you control" —
+  Self-Destruct's X to itself is noncombat damage to a creature you control, so it is
+  prevented; so is Rabid Gnaw's and Agni Kai's fight-back, and Wisecrack's. A `{1}{W}` 0/4
+  defender that also chumps the Void and gives YOU hexproof. Two costs, both G-42-shaped:
+  prevented damage is not DEALT, so Pain for All's reflect does not fire off the
+  self-damage (the ETB and blocker damage still do), and Red Hulk's enrage never triggers.
+  O16 (Sentry) and O33 are the two routes to a repeatable Self-Destruct; they do not stack
+  in value, they are virtual copies.
+- **O34. Zhao's counter is the only PERMANENT Mountain-count booster in the pile**, and it
+  costs `{7}`: every nonbasic becomes a Mountain, so Molten Man gains +1/+1 per nonbasic YOU
+  control — five in 56 today. Energybending does the same for `{2}` at instant speed for a
+  turn and draws (O29). The user's read is right on the mechanism; the number is +5 for 7
+  mana, 20% castable by T7. Zhao's static also taps YOUR nonbasics on entry.
+- **O35. Firebending / mana-on-attack is the kill turn's fourth resource.** Sozin's Comet
+  (foretell `{2}{R}`, then RRRRR on the swing for every attacker), Firebending Student (b1),
+  The Last Agni Kai's overflow, Maximum Carnage's chapter II. The one-swing deck's binding
+  constraint on the kill turn is MANA for the tricks in hand, not the tricks — F4 and
+  Stingerback both want the whole hand cast. This is O28 by another mechanism.
+- **O36. Collective Inferno is Mjölnir without the worthy gate**: double all damage from
+  sources of a chosen TYPE, convoke to cast on T3–4. HUMAN covers Sentry, Iron Fist, Luke
+  Cage, Hawkeye, Mai, War Machine, Swiftblade, Scalestorm — 56's central theme (5 copies
+  today, far more with the pile's Marvel bodies). Molten Man (Elemental) and Stingerback
+  (Scorpion Dragon) are outside it; choose the type for the body you are building.
+
 ## 4. Running verdicts
 
 Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ marginal · ✗ out`.
@@ -497,31 +531,66 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | Hedron Archive | △ | △ | `{4}` ramp rock, sac for two. Wrong curve. |
 | Racers' Scoreboard | △ | △ | `{4}`: loot-two ETB, a late `{1}` discount at max speed. |
 
+### Batch 8 (24 cards)
+
+| Card | 56 | 56a | Note (framework rule) |
+|---|---|---|---|
+| Crystal Barricade | ★★★ | ✗ | `{1}{W}` 0/4 defender: prevents all noncombat damage to your OTHER creatures — Self-Destruct's self-damage, fight-back, Wisecrack — so the finisher is free every turn on any body (O33); you have hexproof; it chumps the Void. Costs Pain for All's reflect off the self-damage and Red Hulk's enrage (G-42). The A2 fireball plan's other enabler (O16 is the first). |
+| Ferocification | ★★ | ★★ | `{2}{R}` enchantment: EVERY combat, menace + haste OR +2/+0 on your creature. Repeatable evasion (O32) that turns Speed's rider on every turn (O2). One card, on the table, for the rest of the game. |
+| Collective Inferno | ★★ | ★★ | `{3}{R}{R}` convoke: double all damage from sources of a chosen type (O36). A permanent damage-doubler (F1's third axis) with no equip gate; convoke lets the small bodies pay for it. Choose Human for the Marvel bodies, or the tall body's own type. |
+| Patriot, Shield Wielder | ★★ | ✗ | `{1}{W}` 2/2: `{2},{T}`: another creature +2/+0 and HEXPROOF until end of turn — repeatable instant-speed hexproof (F6a), the activated-ability copy of Restoration Magic. Worse than Boots (mana each turn), a second copy of the effect (G-46). |
+| Shardmage's Rescue | ★★ | ✗ | `{W}` FLASH Aura (E16): hexproof the turn it enters, +1/+1 permanently. One-mana instant-speed protection that leaves a stat behind; targets your creature (Iron Fist, valiant). Avatar State gives flying instead of the counter — take both, they are the same slot. |
+| Daily Bugle Building | ★★ | ★★ | A LAND: `{1},{T}` any colour (WW fixing, F7) and `{1},{T}` a LEGENDARY creature gains menace (sorcery) — Molten Man, Sentry (redundant with flying), Iron Fist, Luke Cage, Agrus, Daredevil, Mai, Speed. Evasion from a land slot; takes a tapland's slot, never a Mountain (F8). |
+| Sozin's Comet | ★★ | ★★ | Foretell `{2}{R}` on T3, cast for three on the kill turn: every attacker adds RRRRR on attack (O35). The hand gets cast in combat. A sorcery that IS the kill turn's mana. |
+| Soul Immolation | ★★ | ★★ | `{3}{R}{R}`: blight X (X ≤ your greatest toughness; -1/-1 counters on one of your creatures) → X to each opponent AND each of their creatures. Reach + a ONE-SIDED sweeper at X = Stingerback's 7 / Sentry's 5 / a doubled body's toughness. The counters can go on a Wall token — or on Brambleback Brute, giving him X can't-block charges (E7). |
+| Maximum Carnage | ★ | ★ | MV 5 saga: I — until your next turn every creature must attack a player other than its controller: THEIR board attacks you and is TAPPED on your next turn (no blockers); II — RRR; III — 5 face. A three-turn plan that also forces YOUR creatures to attack on cast (G-42 half). |
+| How to Start a Riot | ★ | ★ | `{2}{R}` instant: menace + your team +2/+0. Three mana for what Demonic Ruckus does permanently for two (O32). |
+| J. Jonah Jameson | ★ | ★ | `{2}{R}` 2/2: ETB suspect (their blocker can't block, or your body gets menace); a Treasure per menace attacker (fixing). |
+| Lightning, Security Sergeant | ★ | ★ | `{2}{R}` 2/3 MENACE; connect → impulse a card while you control her. A menace bearer with CA. |
+| Veteran Survivor | ★ | ✗ | `{W}` 2/1; exiles a graveyard card each second main if it attacked; at three, a 5/4 HEXPROOF. A one-drop that grows into a self-protecting body by T5 — and exiles their recursion (or your Bulk Up, G-42). |
+| Zhao, the Moon Slayer | ◇ | ◇ | `{1}{R}` 2/2 menace; `{7}` for the conqueror counter → nonbasics are Mountains, Molten Man +5 permanently (O34). Taps your own duals on entry. |
+| Caught Red-Handed | ◇ | ◇ | MV 5 INSTANT Threaten + suspect: steal a blocker into your attack with haste, Self-Destruct it (O9), hand it back unable to block ever again. Five mana (F3). |
+| Raphael, Most Attitude | ◇ | ◇ | MV 4 4/3 menace; impulse on other creatures entering, play them on attack. CA on a menace body; few creatures enter here. |
+| Pigment Wrangler // Striking Palette | ◇ | ◇ | MV 5 4/4 flier that enters prepared: cast `{R}` copy-your-next-spell once. A flying bearer with a one-shot Return the Favor. F3. |
+| Daring Discovery | ◇ | ◇ | MV 5 sorcery: three creatures can't block + discover 4 (a free MV ≤4 card). Blocker removal with a free spell, two turns late. |
+| Narset's Rebuke | ◇ | ◇ | MV 5 instant: 5 damage, exile; refunds URW (the U is dead). Net-two-mana removal with two usable mana back. |
+| Pyromancer's Goggles | ◇ | ◇ | `{5}`: `{T}` for R that copies the red instant/sorcery it pays for — Bulk Up ×4, Self-Destruct 2X, every turn. F3; a cheat-plan card. |
+| Item Shopkeep | △ | △ | Menace on an EQUIPPED attacker each attack — needs the equipment plan. |
+| Wingnut, Bat on the Belfry | △ | △ | Alliance keywords need creatures entering; +1/+0 to OTHER attackers is go-wide. |
+| Quilled Charger | △ | △ | Saddle 2 taps another body for menace on ITSELF. |
+| Misty Mountains Raider | △ | △ | Amass 2 on attack — an Army token deck. |
+
 ## 5. Consolidated plan (live)
 
 Re-ranked after batch 1. Nothing applied.
 
 ### Plan A — tune 56 in place (protection + evasion)
 
-**ADDS, tiered (after batch 7):**
+**ADDS, tiered (after batch 8):**
 1. **Pain for All** (★★★, b3) — the reach engine.
 2. **Stingerback Terror** (★★★, b5) — 7/7 flying trample that grows as you cast.
-3. **The Sentry** (★★★, b4) — indestructible evasive body; Self-Destruct repeatable.
+3. **The Sentry** (★★★, b4) / **Crystal Barricade** (★★★, b8) — the two routes to a FREE
+   Self-Destruct every turn (O16 / O33); virtual copies, the deck wants one or both.
 4. **Swiftfoot Boots** (★★★, b2) — permanent hexproof + haste.
 5. **Grand Abolisher** (★★★ / `{W}{W}`, b6) — the kill-turn lock; Walters / Voice (★★).
 6. **Return the Favor** (★★★, b1) — multiplier + redirect.
-7. **Enter the Avatar State** (★★★, pre-pile) — hexproof + flying for `{W}`.
-8. **Energybending** (★★, b7) — cantrip that pumps Molten Man and fixes WW (O29).
-9. **Demonic Ruckus** (★★, b7) — 2-mana menace + trample, insured, plottable.
-10. **Iron Fist** / **Hawkeye** / **Shield** (★★, b5); **Agrus** / **Daredevil** / **Wrath**
-    (★★, b6); **Hex Magic** / **Lorehold** / **Arkenstone** / **Buster Sword** (★★, b7).
-11. **Bygone Colossus**, **Restoration Magic / Bofur**, **Lightfoot**, **Spider-Man**,
+7. **Enter the Avatar State** (★★★, pre-pile) / **Shardmage's Rescue** (★★, b8) — the
+   one-mana hexproof instants.
+8. **Ferocification** (★★, b8) — menace + haste every combat, permanently.
+9. **Collective Inferno** (★★, b8) — the un-gated damage doubler.
+10. **Energybending** / **Demonic Ruckus** (★★, b7); **Sozin's Comet** / **Soul
+    Immolation** / **Patriot** / **Daily Bugle Building** (★★, b8).
+11. **Iron Fist** / **Hawkeye** / **Shield** (★★, b5); **Agrus** / **Daredevil** / **Wrath**
+    (★★, b6); **Hex Magic** / **Lorehold** / **Arkenstone** / **Buster Sword** (★★, b7);
+    **Bygone Colossus**, **Restoration Magic / Bofur**, **Lightfoot**, **Spider-Man**,
     **Luke Cage**, **Impolite Entrance**, **Bre**, **Key**, **Nova Hellkite**, **Rogue's
     Passage** (★★).
-12. ★: Giantfall, Terror of the Peaks, Brute, Mjölnir, Wisecrack, Phantom, Pick-Axe,
-    Lonely Mountain, Helix, Trapper, Monica, Bulwark Ox, Zack Fair, Reroute, Stone by
-    Sunlight, Steal the Show, Serum, Civil War, Kíli, Taii, Vestige, Nexus, Diary, Map,
-    Spear, Strifeknight.
+12. ★ (unchanged list) + Maximum Carnage, Riot, JJJ, Lightning, Veteran Survivor.
+
+**LAND SLOTS are their own sub-plan now**: Rogue's Passage (unblockable), Daily Bugle
+Building (fixing + menace), The Lonely Mountain (a Mountain-typed sink, F8-neutral) — each
+takes a TAPLAND's slot (Temple of Triumph, Abraded Bluffs, Elegant Parlor), never a
+Mountain. Three swaps that cost no spell slot.
 
 **The white question is now the design decision, not a detail.** Six ★★★ cards are white
 (Sentry, Boots is colourless, Abolisher WW, Avatar State, plus Walters/Voice/Wrath/
@@ -580,6 +649,9 @@ what is the protection layer when there are no permanents to protect? `/draft-de
 survives the pile.
 
 ### 56a notes
+**Batch 8:** Ferocification ★★ (repeatable menace + haste on the compounding body),
+Collective Inferno ★★, Sozin's Comet ★★, Soul Immolation ★★ (X off Quilled Greatwurm /
+Halana's body, counters onto Brute), Daily Bugle Building ★★ (menace for Halana and Alena).
 **Batch 7:** Energybending ★★ (RG has no WW problem, but Molten Man's pump and the cantrip
 stand), Demonic Ruckus ★★ (menace + trample on Halana's body), Hex Magic ★★, Buster Sword ★★.
 **Batch 5:** Stingerback Terror ★★ (RR castable; a flying trample base body 56a lacks),
