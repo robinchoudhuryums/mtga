@@ -102,6 +102,15 @@ Rules — cite by number in every verdict:
   rider. In this deck a counter is ALSO a Brute reload (E7) and a Bulwark Ox key
   ("creatures with counters gain hexproof and indestructible") — a counter is a resource
   two other cards spend, not a stat.
+- **E10 (user correction, half-taken).** Stone-Giant of High Pass was filed ✗ on MV alone.
+  Its Walls are ARTIFACT creature tokens, so they chump the Void and feed "{2}{R},
+  sacrifice an artifact: 4 damage to ANY target" — reach, and the tokens outlive a warped
+  Giant. Revised to ★ in 56b (Tannuk warps it for `{2}{R}`). In 56 it stays ✗ on a
+  NUMBER, not a category: P(7 lands by T7) is 20% at 24 lands, so the hardcast mode is
+  a one-in-five card. State the probability, not the mana value.
+- **E11 (correcting the user's note).** Old Hob's `{1}{W}` indestructible targets an
+  attacking creature TOKEN only — it cannot protect the tall body unless the body is a
+  token. The haste-token half of the note is right.
 
 ## 3. Cross-batch observations
 
@@ -217,6 +226,32 @@ Rules — cite by number in every verdict:
   7/7 + a Wall token to sacrifice for 4 damage. Tannuk is the card that turns the Giants
   pile from ✗ into a plan.
 
+- **O20. THE FIREBALL SUB-PLAN IS NOW A REAL SECOND WIN CONDITION.** "Deal the tall body's
+  power to any target" has FOUR engines across the pile: Self-Destruct (in deck), Pain for
+  All (b3, doubles it), Iron Fist (b5 — every creature-targeting spell gives him a TAP
+  for his power, repeatable each turn), Infernal Phantom (b5 — dies → power to any
+  target, so Self-Destruct on him is 2X). Add the survivors (Sentry / Luke Cage take
+  Self-Destruct and live, O16) and the small reach (Helix, Hawkeye's Explosive, Longhorn's
+  plot, Stone-Giant's sac). A chump-block board stops mattering when the power goes
+  face. `stats` counts one of these as reach (Self-Destruct is `burn`; Iron Fist and
+  Phantom score no role at all — G-67, same hole as O4). The user's Iron Fist and Phantom
+  stars both read the card right.
+- **O21. Stingerback Terror's hand-size penalty runs the RIGHT way here.** -1/-1 per card
+  in hand, in a deck that CASTS its hand on the kill turn: every trick cast is +1/+1 to
+  the Terror AND its own effect, and Plot `{2}{R}` puts it in exile to come down free with
+  an empty hand. A 7/7 flying trample for three-then-zero. The user's read is right; the
+  extra point is that F4's spell density is the same number that shrinks the penalty.
+- **O22. "Becomes tapped" and "attacks alone" are TRIGGER CONDITIONS the deck's own cards
+  satisfy or violate.** Hawkeye triggers off Team Tactics' teamwork tap (a cost-as-upside,
+  G-41) without attacking. Luke Cage wants to attack ALONE — which is the tall pattern —
+  but every second attacker the pile adds (Hawkeye, Ty Lee, Brute, Scalestorm) turns him
+  off. Count attackers before pairing them.
+- **O23. Equipment that is INDESTRUCTIBLE is a permanent investment removal cannot undo**
+  (Boots is not; Shield, Pick-Axe, Lotus Ring are) — but none of them protects the BODY
+  from destroy. Captain America's Shield's +0/+8 answers burn and fights, its attack-tap
+  answers a blocker, and vigilance lets Iron Fist swing AND tap. It is the one equipment
+  in five batches that adds to the deck's protection AND evasion at once.
+
 ## 4. Running verdicts
 
 Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ marginal · ✗ out`.
@@ -317,10 +352,35 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | Colossus of the Blood Age | △ | ✗ | MV 6 6/6, ETB 3 to each opponent; dies → filter-draw. F3. |
 | The Misty Mountains Cold | △ | △ | Saga: a Treasure a turn, a 6/6 flying Dragon on chapter IV if four Treasures are held. Four turns to a body; the Treasures fix W (F7). |
 | Crumb and Get It | ◇ | ✗ | `{W}` +2/+2, indestructible only if you gift them a Food = 3 life (O18, G-42). |
-| Stone-Giant of High Pass | ✗ | ✗ | MV 7 (F3). ◇ in 56b via Tannuk (O19). |
+| Stone-Giant of High Pass | ✗ | ✗ | Revised (E10): the Walls are artifact tokens — chump the Void, then `{2}{R}` sac for 4 to ANY target. ★ in 56b (warp `{2}{R}`, and the Wall stays). ✗ in 56 on the number: 20% to hardcast on T7. |
 | Aurelia, the Warleader | ✗ | ✗ | `{2}{R}{R}{W}{W}` — WW on 11 sources at MV 6 (F3 + F7). A premium card the manabase cannot cast. |
 | Boldwyr Aggressor | ✗ | ✗ | Double strike + a Giant DS lord: 0 Giants in 56 (G-61) and DS = 0 (F2). |
 | Earth Kingdom Protectors | ✗ | ✗ | Sac: an ALLY gains indestructible — 56 runs 0 Allies (G-61). |
+
+### Batch 5 (20 cards)
+
+| Card | 56 | 56a | Note (framework rule) |
+|---|---|---|---|
+| Stingerback Terror | ★★★ | ★★ | `{2}{R}{R}` 7/7 FLYING TRAMPLE, -1/-1 per card in hand; Plot `{2}{R}` to cast free later. The biggest evasive base body in the pile (F1), and the penalty shrinks with every trick you cast (O21). Bulk Up → 14 flying trample. RR on 18 sources is fine. The user's plot line is the right sequencing. |
+| Iron Fist, Living Weapon | ★★ | ★★ | `{2}{R}` 2/3: every spell that targets YOUR creature gives him "{T}: his power to any other target" this turn. Twenty-plus of the deck's spells qualify. Pump HIM and he is a repeatable Self-Destruct with no self-damage (O20); Mjölnir-worthy (Human Warrior Hero, red) for ×2. Needs to be untapped — Shield's vigilance lets him attack and tap. The user's read is exact. |
+| Hawkeye, Master Marksman | ★★ | ★★ | `{1}{R}` 2/2 reach first strike; whenever TAPPED, `{1}` up to three times: a blocker can't block / 2 face / loot. Attacks beside the tall body as a blocker-remover + reach + the deck's only repeatable draw (F6d). Also fires off teamwork (O22). |
+| Captain America's Shield | ★★ | ★★ | `{2}` equip `{2}`, indestructible: +0/+8, vigilance, attack → TAP a defender's creature. Repeatable blocker removal (F6b) plus an 8-toughness answer to burn/fights (F6a half), and vigilance for Iron Fist (O23). Not hexproof; does nothing against destroy or exile. |
+| Luke Cage, Power Man | ★★ | ✗ | `{3}{W}` 2/5; attacks ALONE → +2/+0 and indestructible. Self-protecting on exactly the tall attack pattern, survives its own Self-Destruct (O16) with no Void. No evasion, and no protection on THEIR turn. Sentry beats it on evasion; Luke beats it on drawback. Every second attacker turns him off (O22). |
+| Infernal Phantom | ★ | ★ | `{3}{R}` 2/3; dies → its power to any target. Self-Destruct on a pumped Phantom is 2X (O20) — the user is right. MV 4 for a 2/3 (F3) and eerie is dead without enchantments; Pain for All doubles on the body you already have, which is why this is ★ not ★★. |
+| Diamond Pick-Axe | ★ | ★ | `{R}` equip `{2}`, indestructible: +1/+1 and a Treasure ON ATTACK — mana that arrives DURING combat for an extra trick, and W fixing (F7). Cheap and permanent. |
+| The Lonely Mountain | ★ | ★ | A Land — MOUNTAIN (Molten Man +1, F8) with a Dwarf-token sink; enters tapped unless you control an Equipment. Replaces a basic at no cost to F8 once Boots/Shield are in. |
+| Lightning Helix | ★ | ✗ | `{R}{W}` 3 to any target + 3 life. Flexible reach/removal at instant speed. Generic; the deck's interaction is 7 already. |
+| Mouse Trapper | ★ | ✗ | `{2}{W}` FLASH 3/2 valiant → tap an opponent's creature. A blocker-tap off a spell you cast anyway — but the spell has to target TRAPPER, not the tall body, so each tap costs a pump. The user's read is right on the mechanic; the cost is the split target. |
+| Monica Rambeau | ★ | ✗ | Front face `{2}{W}` 3/3 flying prowess — an evasive bearer (F1 + F4). The `{2}{R}{W}{W}` transform is WW on 11 sources (F7), so grade the front only (G-43). |
+| Stone by Sunlight | ★ | ✗ | `{1}{W}` destroy power ≥4 OR indestructible. Same tier and same axis as Valorous Stance — out on O17. |
+| Longhorn Sharpshooter | ◇ | ◇ | Plot `{3}{R}`: 2 to any target now, a free 3/3 reach body later with the turn's mana open. The user's sequencing is right; it is tempo-neutral rather than an axis. |
+| Old Hob, Alleycat Blues | ◇ | ◇ | MV 5 (F3): a 2/2 haste token each combat (Self-Destruct fodder — the token dies anyway, G-41; Terror of the Peaks 2 a turn). The `{1}{W}` indestructible is TOKEN-only (E11). |
+| Tenth District Hero | ◇ | ✗ | Six mana and six MV of graveyard across three steps to a 5/5 that gives OTHER creatures indestructible permanently. Collect evidence exiles Bulk Up from the yard (G-42, flashback). |
+| Prosperity Tycoon | △ | ✗ | 4/2 + a Mercenary that taps for +1/+0 (sorcery); its indestructible taps ITSELF — defensive, not for an attacker. |
+| Joshua, Phoenix's Dominant | △ | ✗ | `{1}{R}{W}` 3/4 loot-two; the Phoenix transform is 5 mana and grindy. No tall relevance. |
+| Steal the Show | △ | △ | Sorcery; damage = instants/sorceries in graveyard to a CREATURE (E1: not reach). |
+| Lotus Ring | △ | △ | Six mana total for +3/+3 vigilance and a sac-for-three. |
+| Boilerbilges Ripper | △ | △ | MV 5, sac another creature → 2 damage; with Phantom that is the Phantom's death trigger + 2. Two slow cards to make one line. |
 
 ## 5. Consolidated plan (live)
 
@@ -328,32 +388,36 @@ Re-ranked after batch 1. Nothing applied.
 
 ### Plan A — tune 56 in place (protection + evasion)
 
-**ADDS, tiered (after batch 4):**
+**ADDS, tiered (after batch 5):**
 1. **Pain for All** (★★★, b3) — the reach engine.
-2. **The Sentry, Golden Guardian** (★★★, b4) — an indestructible evasive body that makes
-   Self-Destruct repeatable (O16). The Void is the named cost.
-3. **Swiftfoot Boots** (★★★, b2) — permanent hexproof + haste.
-4. **Return the Favor** (★★★, b1) — multiplier + redirect.
-5. **Enter the Avatar State** (★★★, pre-pile) — hexproof + flying for `{W}`.
-6. **Bygone Colossus** (★★, b3) — the 9/9 for three, on the haste-grant count.
-7. **Restoration Magic** (★★) / **Bofur // Concerted Care** (★★, b4) — the hexproof
-   instants; one or both, they are virtual copies of each other.
-8. **Lightfoot Technique** (★★, b4) — flying + indestructible + a counter; the pick if
-   Sentry is NOT taken (O17).
-9. **Spectacular Spider-Man** (★★, b4) — flash protection with a body.
-10. **Impolite Entrance** (★★, b2) / **Bre** (★★, b3) / **Key** / **Nova Hellkite** /
-    **Rogue's Passage** (★★, b1).
-11. Giantfall (★) as the Gnaw #2 replacement; Terror of the Peaks (★, revised E8);
-    Brambleback Brute (★, reloads only with a counter add); Mjölnir (★); Wisecrack (★);
-    Bulwark Ox / Zack Fair / Reroute Systems (★).
-12. Out: Spectacular Tactics, Valorous Stance, Final Showdown, Fleeting Flight, Divine
-    Resilience, Crumb and Get It, Aurelia (WW), Boldwyr, Protectors.
+2. **Stingerback Terror** (★★★, b5) — a 7/7 flying trample body that grows as you cast.
+3. **The Sentry, Golden Guardian** (★★★, b4) — indestructible evasive body; Self-Destruct
+   becomes repeatable (O16). The Void is the named cost.
+4. **Swiftfoot Boots** (★★★, b2) — permanent hexproof + haste.
+5. **Return the Favor** (★★★, b1) — multiplier + redirect.
+6. **Enter the Avatar State** (★★★, pre-pile) — hexproof + flying for `{W}`.
+7. **Iron Fist** (★★, b5) — repeatable power-to-face off every targeted spell (O20).
+8. **Hawkeye** (★★, b5) — blocker-removal + reach + repeatable draw at two mana.
+9. **Captain America's Shield** (★★, b5) — repeatable blocker-tap + 8 toughness.
+10. **Bygone Colossus** (★★, b3); **Restoration Magic / Bofur** (★★); **Lightfoot
+    Technique** (★★, b4, if no Sentry); **Spider-Man** (★★, b4); **Luke Cage** (★★, b5,
+    the no-Void Sentry); **Impolite Entrance** / **Bre** / **Key** / **Nova Hellkite** /
+    **Rogue's Passage** (★★).
+11. ★: Giantfall (Gnaw #2), Terror of the Peaks, Brute, Mjölnir, Wisecrack, Phantom,
+    Pick-Axe, Lonely Mountain (a basic swap, F8-neutral), Helix, Trapper, Monica, Bulwark
+    Ox, Zack Fair, Reroute Systems, Stone by Sunlight.
 
-**Slot pressure:** eleven ★★★/★★ spell adds against 4–7 cuts. The white count is the
-binding constraint now — Sentry, Avatar State, Restoration Magic, Bofur, Lightfoot,
-Spider-Man are all W, against 11 W sources and 8 strict W pips today (F7). A final list
-takes 3–4 of the white cards, not all six, and the manabase question (the pre-pile
-note: +2 W sources without cutting a Mountain, F8) is now load-bearing.
+**The plan has split into TWO coherent shapes for 56 itself, and later batches should
+say which the pile favours:**
+- **A1 — COMBAT-tall (the current deck's line):** bodies with native evasion (Stingerback,
+  Sentry, Nova Hellkite, Bre) + hexproof protection (Boots, Avatar State, Restoration
+  Magic) + Return the Favor. Wins by one connected swing.
+- **A2 — FIREBALL-tall (O20):** the power goes face without combat: Pain for All, Iron
+  Fist, Self-Destruct ×2 on a survivor (Sentry / Luke Cage), Phantom. Wins through any
+  board; needs the body to LIVE a turn, so it wants Boots/Shield more than flying.
+Both keep Bulk Up, Cyclops, Molten Man, Speed. The Stingerback + Sentry + Pain for All +
+Iron Fist core is common to both — the difference is whether the next four slots go to
+evasion (A1) or reach engines (A2).
 
 **CUTS, in order (double-strike de-dup first, per the pre-pile finding):**
 0. NOTE: with Boots + Return the Favor + Avatar State + Restoration Magic + Impolite
@@ -391,6 +455,9 @@ what is the protection layer when there are no permanents to protect? `/draft-de
 survives the pile.
 
 ### 56a notes
+**Batch 5:** Stingerback Terror ★★ (RR castable; a flying trample base body 56a lacks),
+Iron Fist ★★ (every Overprotect / Snakeskin Veil / Bulk Up turns him on; Mjölnir-worthy),
+Hawkeye ★★, Shield ★★.
 **Batch 4:** Bulwark Ox ★★ (every 56a body carries counters — the sac is a team
 hexproof+indestructible, and the saddle-attack counter feeds Halana's compounding);
 Brambleback Brute revised to ★★ (Halana and Alena reloads it every combat, E7). The
