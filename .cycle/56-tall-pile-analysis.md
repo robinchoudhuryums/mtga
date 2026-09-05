@@ -1,6 +1,6 @@
 # Deck 56 tall pile — analysis (TEMPORARY working doc)
 
-**Status: IN PROGRESS.** Delete once the swaps land and the findings are folded into the
+**Status: PILE COMPLETE (201 cards, 10 batches) — awaiting the user's picks.** Delete once the swaps land and the findings are folded into the
 deck files' `#: notes:` blocks. A scratchpad, not a source of truth — decks/ are.
 
 **Source list:** user-supplied in batches of ~10–20 (scratchpad `pile-56-batch*.txt`).
@@ -388,6 +388,38 @@ Rules — cite by number in every verdict:
   the taller the one that goes. It rewards exactly what Luke Cage wants and Hawkeye / Ty Lee
   / Brute violate. A1's repeatable pump.
 
+- **O41. SWORD OF WEALTH AND POWER'S PROTECTION IS PROTECTION FROM YOUR OWN TRICKS.**
+  "Protection from instants and sorceries" stops targeting by ANY player's instants —
+  Bulk Up, Self-Destruct, Haste Magic, Team Tactics, Avatar State, Restoration Magic all
+  fail to target the equipped body. Sixteen of 56's 36 nonland cards are instants. It is
+  the strongest-looking protection card in the pile and a G-42 card here; it only works
+  on a body the deck pumps by ABILITY (Mercenaries, Patriot, Team Avatar, Ferocification)
+  or Aura (Pain for All, Ruckus). Graded ◇ with the warning, not ★★★.
+- **O42. THE MERCENARY SUB-THEME IS REAL AND SORCERY-SPEED (user's Ertha Jo note).**
+  Brimstone Roundup (a Mercenary per second spell — 56 casts two most turns), Hellspur
+  Posse Boss (two), Form a Posse (X), Ertha Jo and Prosperity Tycoon (one each), Rodeo
+  Pyromancers (is one). Each token is "{T}: +1/+0, sorcery speed" — so four of them are +4
+  BEFORE Bulk Up, +8 after, but only in main phase 1, so the pump is visible to blockers.
+  Ertha Jo copies every ACTIVATED ability that targets — the Mercenary taps (+2 each), but
+  also Iron Fist's tap (2X to the face), Patriot's hexproof, Key's unblockable, Bre's
+  flying. The user's read is right; the sorcery-speed limit is the caveat, and the tokens
+  are Terror-of-the-Peaks / Self-Destruct / Void-chump fodder either way.
+- **O43. THE FIRE CRYSTAL IS THREE OF THE PILE'S AXES ON ONE CARD**: red spells cost `{1}`
+  less (O28 — Bulk Up, Self-Destruct, Haste Magic, Team Tactics all `{R}`), creatures have
+  haste (O2/O10 — Speed is always on, Colossus / Sentry / Stingerback swing the turn they
+  land), and a `{4}{R}{R}` hasty token copy of a creature. `{2}{R}{R}` on 18 R sources.
+- **O44. COPY EFFECTS are the pile's fourth cluster, and they price the same** — Return
+  the Favor (`{R}{R}`+`{1}`), Choreographed Sparks (`{R}{R}`, both modes), Spinerock
+  (free, on a body), Peter Parker's Camera (abilities, 3 charges), Ertha Jo (activated
+  abilities), Mica (sac an artifact), Sword of W&P and Buster Sword (on damage),
+  Pyromancer's Goggles, Spider-Verse, Pigment Wrangler. On a Bulk Up every one is ×4.
+  A deck holds two or three; Sparks + Spinerock is the cheapest pair.
+- **O45. Screen (39 candidates): all castable, all Standard-legal; 36 of 39 read
+  "tangential"** — the theme model cannot see structural value (G-31 residual), which is
+  the whole pile. Read the order, not the word. Zero-role cards among the ★★★s: Pain for
+  All, Return the Favor, Choreographed Sparks, Stingerback, Twinflame, Grand Abolisher,
+  Delney — the batch-fix list (Stage 4) is below.
+
 ## 4. Running verdicts
 
 Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ marginal · ✗ out`.
@@ -617,127 +649,164 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | Ultima Weapon | △ | △ | `{7}` equip `{7}`: +7/+7 and destroy a creature on attack. Fourteen mana; equipment-plan only. |
 | Meteor Sword | △ | △ | `{7}` Vindicate on a +3/+3 stick. Tannuk-warpable for the ETB. |
 
-## 5. Consolidated plan (live)
+### Batch 10 (21 cards — FINAL)
 
-Re-ranked after batch 1. Nothing applied.
+| Card | 56 | 56a | Note (framework rule) |
+|---|---|---|---|
+| Choreographed Sparks | ★★★ | ★★★ | `{R}{R}` instant, one OR BOTH: copy your instant/sorcery (Bulk Up ×4, Self-Destruct 2X) / copy your creature SPELL as a hasty token (a second Stingerback that swings now and dies at end step — Self-Destruct it free, O3). Return the Favor's copy half, cheaper, plus a body mode. Can't be copied itself. |
+| The Fire Crystal | ★★★ | ★★★ | `{2}{R}{R}`: red spells cost `{1}` less, creatures have HASTE, and a hasty copy on tap (O43). The T4 play that makes the T5 kill cast the whole hand. |
+| Frontline Rush | ★★ | ✗ | `{R}{W}` instant: +X/+X where X = your creatures (or two Goblins). Reckless Ransacking's slot, better at three or more bodies, single-target (Spinerock copies it). Owned ×2. |
+| Peter Parker's Camera | ★★ | ★★ | `{1}`, three charges: `{2},{T}` copy an activated OR triggered ability — Iron Fist's tap (2X), Dawnsire's 100, Hawkeye, Bre, Molten Man's ETB (a second Mountain), Seedglaive's counter. Ertha Jo for one mana, any ability, three times. |
+| Ertha Jo, Frontier Mentor | ★★ | ✗ | `{2}{R}{W}` 2/4 + a Mercenary; copies every activated ability that targets (O42): Mercenary taps, Iron Fist, Patriot, Key, Bre. The user's sub-theme read is right; MV 4 (F3) and sorcery-speed tokens. |
+| Dalkovan Encampment | ★★ | ✗ | LAND: `{W}`, enters UNTAPPED if you control a Mountain (13 here) — the W source the manabase wants without a tapland (F7); `{2}{W},{T}` two attacking 1/1s (Team Avatar's enemy, Terror's fodder). |
+| Seifer Almasy | ★ | ★ | `{3}{R}` 3/4: the creature attacking ALONE gains double strike (F2 = 0 today; the one-card replacement for the four DS grants being cut); Fire Cross recasts a ≤3 spell from the yard when HE connects. ★★ in the post-cut list. |
+| Rodeo Pyromancers | ★ | ★ | `{3}{R}` 3/4 Mercenary: first spell each turn → RR (O35). The kill turn's mana on a body; MV 4. |
+| Brimstone Roundup | ★ | ★ | `{1}{R}` (plot `{2}{R}`): a Mercenary per second spell each turn. The sub-theme's cheapest engine (O42). |
+| Hell to Pay | ★ | ★ | `{X}{R}` sorcery: X to a creature, Treasures for the excess (W fixing). Creature-only. |
+| Improvised Arsenal | ★ | ★ | `{1}{R}` equip `{R}`: +1/+0 per artifact you control — 3–4 in the tuned list (G-83: the count decides); copies itself for `{4}{R}`. |
+| Mica, Reader of Ruins | ★ | ★ | `{3}{R}` 4/4 ward-3-life; sac an artifact to copy each instant/sorcery — Treasures and Walls are the fuel. |
+| Devastating Onslaught | ★ | ★ | `{X}{X}{R}`: X hasty token copies of your creature, gone at end step. Copies keep copiable values only (no pumps, no counters): Stingerback ×2 for five mana, Cyclops copies that each grow per spell. Self-Destruct on a token is free. Legend rule kills Molten Man / Sentry copies. |
+| Sword of Wealth and Power | ◇ | ◇ | +2/+2, PROTECTION FROM INSTANTS AND SORCERIES, Treasure + copy-next-spell on damage. Reads like the pile's best protection and is a G-42 card (O41): Bulk Up cannot target the equipped body. Only for an ability-pumped body. |
+| Form a Posse | ◇ | ✗ | `{X}{R}{W}` X Mercenaries (O42). Sorcery, go-wide. |
+| Hellspur Posse Boss | ◇ | ◇ | Two Mercenaries + outlaw haste, `{2}{R}{R}` 2/4. |
+| Adagia, Windswept Bastion | ◇ | ◇ | Tapped W land; station 12+ → copy Pain for All / Ferocification / Boots as legendary. A fifth tapland. |
+| Calamity, Galloping Inferno | ◇ | ◇ | MV 6: saddle with Stingerback, attack with two attacking token Stingerbacks. F3. |
+| Hellspur Brute | △ | △ | 5/4 trample for five minus outlaws. |
+| An Unexpected Party | ✗ | ✗ | `{2}{W}{W}` type anthem (F7) / X Dwarves. Go-wide. |
+| Chandra, Flameshaper | ✗ | ✗ | MV 7 (20% on T7). Her +1 is a hasty body copy each turn — for a deck two turns slower than this one. |
 
-### Plan A — tune 56 in place (protection + evasion)
+## 5. Consolidated plan (FINAL — 201 cards read; propose, do not apply)
 
-**ADDS, tiered (after batch 9):**
-1. **Pain for All** (★★★, b3) — the reach engine.
-2. **Stingerback Terror** (★★★, b5) — 7/7 flying trample that grows as you cast.
-3. **Delney** (★★★, b9) — doubles Cyclops / War Machine / Speed / Hawkeye / Iron Fist,
-   and pre-pump evasion (O39).
-4. **The Sentry** (★★★, b4) / **Crystal Barricade** (★★★, b8) — free Self-Destruct.
-5. **Swiftfoot Boots** (★★★, b2) — permanent hexproof + haste.
-6. **Spinerock Tyrant** (★★★, b9) or **Twinflame Tyrant** (★★★, b9) — THE MV-5 slot: copy
-   every trick, or double all damage (O38). One, not both.
-7. **Grand Abolisher** (★★★ / `{W}{W}`, b6) — the kill-turn lock; Walters / Voice (★★).
-8. **Return the Favor** (★★★, b1) — multiplier + redirect.
-9. **Enter the Avatar State** (★★★) / **Shardmage's Rescue** (★★) — one-mana hexproof.
-10. **Team Avatar** (★★, b9) — the attack-alone pump; **Ferocification** (★★, b8) — menace
-    + haste every combat; **Collective Inferno** (★★, b8) — the un-gated doubler.
-11. **Cosmic Cube** / **Dawnsire** (★★, b9, colourless MV 5) — the attack-and-station
-    payoffs for a body that is already tall.
-12. **Energybending** / **Demonic Ruckus** (★★, b7); **Sozin's Comet** / **Soul Immolation**
-    / **Patriot** / **Daily Bugle Building** (★★, b8); **Iron Fist** / **Hawkeye** / **Shield**
-    (★★, b5); **Agrus** / **Daredevil** / **Wrath** (★★, b6); **Hex Magic** / **Lorehold** /
-    **Arkenstone** / **Buster Sword** (★★, b7); **Bygone Colossus**, **Restoration Magic /
-    Bofur**, **Lightfoot**, **Spider-Man**, **Luke Cage**, **Impolite Entrance**, **Bre**,
-    **Key**, **Nova Hellkite**, **Rogue's Passage** (★★).
-13. ★ (unchanged list) + Cloud, Catharsis, Windcrag Siege.
+### 5.0 The decisions the plan hangs on (answer these first)
 
-**MV-5 PRESSURE is now the second binding constraint after white.** Spinerock, Twinflame,
-Lorehold, Cosmic Cube, Dawnsire, Sozin's Comet (3 after foretell), Soul Immolation, Nova
-Hellkite (3 via warp) all want the T5 slot in a deck whose kill turn IS T5. A 24-land 2.4-curve
-deck holds two five-drops, not eight (P(5 lands by T5) = 47%). Spinerock Tyrant is the
-strongest single claim; everything else at MV 5 is a variant card or a one-of.
+1. **Sentry or Crystal Barricade** for the free Self-Destruct (O16 / O33): Sentry is an
+   evasive body that also wins; Barricade is a 2-mana wall that also blocks the Void and
+   costs Pain for All's reflect. Both is fine; neither is not.
+2. **Spinerock or Twinflame** for the ONE MV-5 slot (O38): Spinerock for combat-tall (A1),
+   Twinflame for fireball-tall (A2). The deck cannot hold both at 24 lands.
+3. **White sources: 11 or 13.** Sacred Foundry is a Mountain-Plains, so `−2 Mountain +2
+   Sacred Foundry` adds two W sources at ZERO Molten Man cost (F8) and enters untapped. At
+   13 W, Grand Abolisher and Avatar's Wrath are real cards (WW 71% by T6 → ~80%); at 11
+   they are not. Dalkovan Encampment (untapped W beside a Mountain) is the third W source
+   if wanted, in Abraded Bluffs' slot.
+4. **A1 or A2 tilt** — decides the last four slots (§5.2).
 
-**LAND SLOTS are their own sub-plan now**: Rogue's Passage (unblockable), Daily Bugle
-Building (fixing + menace), The Lonely Mountain (a Mountain-typed sink, F8-neutral) — each
-takes a TAPLAND's slot (Temple of Triumph, Abraded Bluffs, Elegant Parlor), never a
-Mountain. Three swaps that cost no spell slot.
+### 5.1 The core package — 10 cuts, 10 adds, both tilts share it
 
-**The white question is now the design decision, not a detail.** Six ★★★ cards are white
-(Sentry, Boots is colourless, Abolisher WW, Avatar State, plus Walters/Voice/Wrath/
-Agrus/Daredevil at ★★). At 11 W sources the deck is a red deck with a white splash; the
-pile's best cards want it to be a real Boros deck at 13–14 W. That trade costs Mountains
-(F8: −1/−1 on Molten Man each), or taplands become W duals. Decide the source count
-BEFORE the final five slots — it decides whether Abolisher and Wrath are in the deck.
+| # | CUT | why cuttable | ADD | why |
+|---|---|---|---|---|
+| 1 | Twin Blades | DS #5–6 of 9, 3 MV artifact (F2) | **Pain for All** | reach engine; Self-Destruct 2X (O12) |
+| 2 | Twin Blades | " | **Stingerback Terror** | 7/7 flying trample, grows as you cast (O21) |
+| 3 | Reckless Ransacking | Pw 1.5, +3/+2 is small here | **Frontline Rush** | +X/+X instant for 2, single-target |
+| 4 | Reckless Ransacking | " | **Delney** | Cyclops +6/spell, Speed / Hawkeye / Iron Fist ×2; pre-pump evasion (O39) |
+| 5 | Team Tactics (1 of 2) | DS #3–4; keep one for the trample rider | **Choreographed Sparks** | Bulk Up ×4 or a hasty second body (O44) |
+| 6 | Rabid Gnaw (1 of 2) | keep one; Giantfall is the virtual copy | **Swiftfoot Boots** | permanent hexproof + haste (F6a, O2) |
+| 7 | Tiger-Dillo | `cuts` #1: a body gated on power 4 that adds nothing to F1 | **Enter the Avatar State** | `{W}` hexproof + flying |
+| 8 | Go Ninja Go | `cuts` #2; blink RESETS pumps and counters (G-42), damage half is creature-only | **The Sentry** *or* **Crystal Barricade** | free Self-Destruct (decision 1) |
+| 9 | Scalestorm Summoner | power-4 gate; tokens are off-plan for attack-alone | **The Fire Crystal** | red spells −1, team haste, a copy (O43) |
+| 10 | Haste Magic (1 of 2) | Fire Crystal + Boots + Ferocification carry haste now | **Spinerock** *or* **Twinflame Tyrant** | the MV-5 slot (decision 2) |
 
-**The plan has split into TWO coherent shapes for 56 itself, and later batches should
-say which the pile favours:**
-- **A1 — COMBAT-tall (the current deck's line):** bodies with native evasion (Stingerback,
-  Sentry, Nova Hellkite, Bre) + hexproof protection (Boots, Avatar State, Restoration
-  Magic) + Return the Favor. Wins by one connected swing.
-- **A2 — FIREBALL-tall (O20):** the power goes face without combat: Pain for All, Iron
-  Fist, Self-Destruct ×2 on a survivor (Sentry / Luke Cage), Phantom. Wins through any
-  board; needs the body to LIVE a turn, so it wants Boots/Shield more than flying.
-Both keep Bulk Up, Cyclops, Molten Man, Speed. The Stingerback + Sentry + Pain for All +
-Iron Fist core is common to both — the difference is whether the next four slots go to
-evasion (A1) or reach engines (A2).
+Measured effect of the core (scratch copy, `quality --vs`): to be run on the user's picks —
+the pre-pile 4-swap package measured protection 3 → 7, interaction 7 → 8, avg MV 2.42 →
+2.31, floor A → A with the guard clean; this package moves more and should be re-measured
+before applying, per G-34.
 
-**CUTS, in order (double-strike de-dup first, per the pre-pile finding):**
-0. NOTE: with Boots + Return the Favor + Avatar State + Restoration Magic + Impolite
-   Entrance + Key + Hellkite + Passage there are 7 spell adds against 4 cuts below —
-   later batches decide which five make it. The 5th–7th cuts would come from: Team
-   Tactics ×1 (DS #3–4 of 9, keep one for the trample rider), Go Ninja Go (`cuts` #2),
-   Haste Magic ×1 (if Boots/Entrance/Hellkite carry the haste count).
-1. Twin Blades ×2 — DS source #5–6 of 9, 3 MV, artifact (F2).
-2. Reckless Ransacking ×1 — weakest trick (Pw 1.5).
-3. Rabid Gnaw ×1 — keeps power-as-removal at 3 copies.
-4. (if a 5th slot is needed) Tiger-Dillo — `cuts` #1, a body gated on power 4 that only
-   attacks or blocks beside the tall one; contributes nothing to F1.
+**Duplicates after the core:** 2-ofs drop from 14 cards to 9 (Molten Man, Cyclops,
+Vindicator, Seedglaive, Speed, Boros Charm, Bulk Up, Self-Destruct, Agni Kai) — the
+user's original ask — and every remaining pair is either a body the deck wants to see
+early or a card the deck wants twice (Bulk Up, Self-Destruct).
 
-**PROTECT (the ranking cannot see these):** Self-Destruct (reach — E1), Bulk Up (the
-multiplier), Molten Man (Mountain-scaled), Speed (the only unblockable GRANT — its
-rider looks conditional and IS, on haste; O2), Seedglaive Mentor (valiant is fed by
-every targeted add), Crackling Cyclops (F4 payoff — `cuts` calls it low power).
+### 5.2 The tilt slots — four more, by plan
 
-### Plan B — 56b CHEAT-TALL variant (was "Ball Lightning"; renamed after O28 — not yet decided)
+**A1 COMBAT-tall** (one connected swing): −Boros Charm ×1, −Vindicator ×1, −Mai,
+−Celestial Armor → **Ferocification** (menace + haste every combat), **Team Avatar**
+(+X/+X attacking alone), **Grand Abolisher** (the kill-turn lock — needs decision 3),
+**Energybending** (Molten Man pump + WW fix + draw). Return the Favor if a fifth opens.
 
-**After batch 7 (O28): the thesis is COST CHEATING, ~14 cards deep — Tannuk, the warps,
-the Plots, Warped Space + Hex Magic, Sami, Kíli, Serum, Lorehold's miracle, Nexus, Vestige.
-Sire of Seven Deaths and The Arkenstone are its payloads.** After batch 4 (O19): Tannuk's warp also admits Hill Gigas, Zealous Lorecaster (a
-repeatable Bulk Up regrowth) and Stone-Giant.** After batch 3 the body count clears a 60 (O11). Bodies: Ball Lightning, Nova Hellkite,
-Red Tiger Mechan, Bygone Colossus, Iron Giant (via Tannuk), Molten Man / Cyclops / Red Hulk
-(via Tannuk — Molten Man sacrifices a land on leaving, G-42). Payoffs: Terror of the Peaks,
-Doc Ock's Tentacles, Pain for All, Self-Destruct ×2. Recast: Warped Space, Charred Foyer.
-Evasion: Speed ×2 (always on), Full Bore. Still open: the protection layer (Boots is the
-one candidate that helps a body that is leaving anyway — hexproof for the swing turn).
+**A2 FIREBALL-tall** (the power goes face): same four cuts → **Iron Fist** (repeatable
+power-to-face), **Peter Parker's Camera** (copy Iron Fist's tap, 3×), **Twinflame** if not
+already taken (else **Collective Inferno** on Human), **Restoration Magic** (instant
+indestructible for the sweeper case Barricade does not cover). Ertha Jo if a fifth opens.
 
-Core from batch 1: Ball Lightning, Nova Hellkite, Red Tiger Mechan, Tannuk, Full Bore,
-Charred Foyer // Warped Space, + 56's Self-Destruct ×2 / Bulk Up ×2 / Speed ×2 / Haste
-Magic ×2 / Crackling Cyclops. Thesis: every body is a spell (F10); Speed's rider is
-always on (O2); Self-Destruct's self-damage is free (O3); sweepers and edicts miss.
-Open questions for later batches: does the pile hold enough warp bodies for a 60, and
-what is the protection layer when there are no permanents to protect? `/draft-deck` if it
-survives the pile.
+### 5.3 Manabase (no spell slots)
 
-### 56a notes
-**Batch 9:** Spinerock Tyrant ★★★ (copies Overprotect, Bulk Up, Snakeskin Veil — the
-RG deck's whole trick suite is single-target), Twinflame Tyrant ★★★, Cosmic Cube / Dawnsire
-★★ (56a's compounding bodies station Dawnsire on their own).
-**Batch 8:** Ferocification ★★ (repeatable menace + haste on the compounding body),
-Collective Inferno ★★, Sozin's Comet ★★, Soul Immolation ★★ (X off Quilled Greatwurm /
-Halana's body, counters onto Brute), Daily Bugle Building ★★ (menace for Halana and Alena).
-**Batch 7:** Energybending ★★ (RG has no WW problem, but Molten Man's pump and the cantrip
-stand), Demonic Ruckus ★★ (menace + trample on Halana's body), Hex Magic ★★, Buster Sword ★★.
-**Batch 5:** Stingerback Terror ★★ (RR castable; a flying trample base body 56a lacks),
-Iron Fist ★★ (every Overprotect / Snakeskin Veil / Bulk Up turns him on; Mjölnir-worthy),
-Hawkeye ★★, Shield ★★.
-**Batch 4:** Bulwark Ox ★★ (every 56a body carries counters — the sac is a team
-hexproof+indestructible, and the saddle-attack counter feeds Halana's compounding);
-Brambleback Brute revised to ★★ (Halana and Alena reloads it every combat, E7). The
-white protection cluster is off-colour there; 56a's own is Overprotect / Snakeskin Veil.
-**Batch 3:** Pain for All ★★★ (RG-castable; on Halana and Alena's compounding body every
-point of damage dealt to it is face damage), Giantfall / Wisecrack ★ (interaction for its
-4 → 5–6 at a C floor, F9), Bygone Colossus ★ (56a has fewer haste grants — count them
-before adding).
-**Batch 2:** Swiftfoot Boots ★★★ (hexproof + haste on a permanent-counter body is
-exactly F9's protection axis), Mjölnir ★★★ (8 worthy carriers incl. Halana and Alena —
-doubling damage on a body that compounds counters), Dragonclaw Strike ★★ (4 mana in RG,
-Bulk Up #3 + a fight for its interaction-4 gap), Impolite Entrance ★★.
-Return the Favor and Key to the Side-Door are ★★ there too (RG-castable, and 56a's
-interaction is 4 at a C floor — a redirect is interaction it lacks, F9). Nothing in batch 1
-is a counters PAYOFF, which is 56a's stated 10-enabler / 0-payoff gap.
+- `−2 Mountain +2 Sacred Foundry` — W 11 → 13, R 18 → 18, Molten Man unchanged (Foundry
+  is a Mountain), untapped for 2 life. **Do this regardless of tilt.**
+- `−1 Abraded Bluffs +1 Rogue's Passage` — unblockable from a land; costs one W and one R
+  source, so only after the Foundries.
+- `−1 Temple of Triumph +1 Daily Bugle Building` — menace for a legendary + any-colour
+  filter; or Dalkovan Encampment here for a fourth untapped W.
+- The Lonely Mountain replaces a basic Mountain at zero F8 cost once Boots/Shield are in.
+
+### 5.4 PROTECT — what `cuts` will rank wrongly after the swaps
+
+- **Self-Destruct ×2** — `burn`, reach, the win condition (E1).
+- **Bulk Up ×2** — the multiplier; every copy effect keys on it.
+- **Molten Man ×2** — Mountain-scaled; a printed 0/0 that `cuts` cannot size.
+- **Crackling Cyclops ×2** — a printed 0/4; with Delney +6 per spell (O14, O39). `cuts`
+  calls it "low power".
+- **Speed ×2** — the only unblockable GRANT; haste-gated and now always on (O2).
+- **Seedglaive Mentor ×2** — valiant is fed by every targeted add.
+- **War Machine** — Delney doubles his combat trigger.
+- **Pain for All / Delney / Fire Crystal / Barricade / Boots** — every one scores ZERO
+  roles (O45) and will sit at the top of the next `cuts` run.
+Write these into `#: protect:` with the apply.
+
+### 5.5 Plan B — 56b CHEAT-TALL: DECISION
+
+**Draft it.** The pile holds a complete, DISTINCT deck: engine (Tannuk, Warped Space,
+Fire Crystal, Sami, Kíli), bodies that arrive for less than printed (Bygone Colossus,
+Anticausal Vestige, Nova Hellkite, Ball Lightning, Red Tiger Mechan, Hill Gigas / Zog /
+Lorecaster / Stone-Giant via Tannuk, Stingerback and Ruckus via Plot, Extinguisher
+Battleship's ETB), payoffs (Terror of the Peaks, Doc Ock's Tentacles, Cosmic Cube,
+Nexus, Spider-Verse, Chimil, Sire as a Vestige/Nexus target), free finishers
+(Self-Destruct on a leaving body, Twinflame), Hex Magic + Warped Space for gas. It shares
+Molten Man / Cyclops / Speed / Bulk Up / Self-Destruct with 56 and nothing with 38 / 74
+(those are equipment decks; this is a WARP deck). Distinctness check before drafting:
+`deck.py similar` against 56, 26 (Iron Forge runs Vestige / Nexus / Colossus) and 45.
+Protection is the open question — Boots for the swing turn, Abolisher if white, otherwise
+the plan IS the protection (bodies leave before a sorcery-speed answer). `/draft-deck`.
+
+**Not drafting:** an Equipment-tall 56c (O8 — borrow Boots / Shield / Mjölnir into 56 and
+56a instead; 38 and 74 own that space) and a Mercenary 56d (O42 — a sub-theme, four cards,
+not a deck).
+
+### 5.6 56a — Executioner's Song (RG) picks
+
+★★★: Pain for All, Mjölnir (8 worthy carriers), Spinerock Tyrant, Twinflame Tyrant,
+Choreographed Sparks, Fire Crystal, Swiftfoot Boots. ★★: Stingerback, Dragonclaw Strike
+(4 mana in RG), Bulwark Ox, Brambleback Brute (Halana reloads it), Ferocification,
+Energybending, Demonic Ruckus, Iron Fist, Cosmic Cube / Dawnsire, Sozin's Comet, Soul
+Immolation, Hex Magic. 56a's stated gap is counters PAYOFF (10 enablers, 0 payoffs) — the
+pile holds none; its interaction is 4 at a C floor, so Giantfall / Wisecrack / Dragonclaw
+Strike's fight are the honest interaction adds. A separate `/tune-deck 56a` pass with this
+list as input.
+
+### 5.7 Tooling holes found by the read (Stage 4 — fix as ONE batch, roster-diffed, K-12)
+
+1. `classify_roles` → no role: **Return the Favor** ("change the target of target spell"
+   = redirect / protection-class; "copy target instant" = multiplier), **Choreographed
+   Sparks** (copy), **Pain for All** (reach), **Iron Fist** (reach on an activated grant),
+   **Infernal Phantom** (reach on death), **Twinflame Tyrant** / **Collective Inferno** /
+   **Mjölnir** (damage doublers — `doubler_support` has no DAMAGE axis), **Grand Abolisher**
+   / **Jennifer Walters** / **Voice of Victory** (a lock is protection-class), **Delney**
+   (a trigger doubler that `suggest-homes` already sees — `✱ multiplier, 7 feeders` — but
+   `classify_roles` does not).
+2. `stats` reach count: Self-Destruct is the only `burn`-tagged reach; the "power to any
+   target" family (Pain for All, Iron Fist, Phantom, Red Hulk's enrage, Stone-Giant's sac)
+   is unindexed — O20.
+3. No model reads a MOUNTAIN COUNT as a resource (Molten Man, Energybending, Zhao, Sacred
+   Foundry's typing) — F8 is a hand rule; G-83's cost-scale family is the nearest shape.
+4. `screen` labels: 36 of 39 structurally-valued cards read "tangential" (O45) — G-31's
+   residual, re-measured on this pile.
+5. Haste-GATED evasion (Speed) and attack-ALONE conditions (Luke Cage, Team Avatar, Seifer)
+   are invisible to `count_conf` / `targets` — the G-76 state-gate family, two new members.
+
+### 5.8 Craft cost — INFORMATION, per the Player Profile (not a constraint)
+
+Unowned among the core + tilt picks: Stingerback Terror (R), Fire Crystal (R), Delney ×0?
+— no, Delney owned ×1; Grand Abolisher owned; Impolite Entrance (U), Shardmage's Rescue
+(U), Lightfoot (C), Agrus Kos (M), Ertha Jo (U), Peter Parker's Camera (R), Sword of W&P
+(M), Sacred Foundry ×2 (R). The core package is **2 rares** unowned (Stingerback, Fire
+Crystal) plus **2 rares** for the Foundries. Everything else in §5.1 is owned ×1+.
+Rotation: nothing in the core is older than 2024-09 (BLB's Gnaw is a CUT); no ⚠rot.
