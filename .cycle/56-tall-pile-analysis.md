@@ -799,6 +799,10 @@ list as input.
    Foundry's typing) — F8 is a hand rule; G-83's cost-scale family is the nearest shape.
 4. `screen` labels: 36 of 39 structurally-valued cards read "tangential" (O45) — G-31's
    residual, re-measured on this pile.
+6. WARP / PLOT / FORETELL alternative costs are invisible to `avg_mv` and `_clock_score`
+   — Bygone Colossus (warp `{3}`) prices at 9 and moved the aggro floor A → B on its own
+   (§5.9 review). The G-60 X-spell under-read, in reverse: an OVER-read of a cheat-cost
+   body. Report-only fix, same discipline (a new term in `tier_band` re-grades the roster).
 5. Haste-GATED evasion (Speed) and attack-ALONE conditions (Luke Cage, Team Avatar, Seifer)
    are invisible to `count_conf` / `targets` — the G-76 state-gate family, two new members.
 
@@ -904,6 +908,43 @@ card (O45). The `#: protect:` line for the apply must carry them.
 11 Mountain (MSH) 293
 6 Plains (MSH) 287
 ```
+
+**User review of §5.9 (2026-09-05) — three points, answered:**
+1. *Vindicator and Speed.* The rebuild cut ONE copy of each, not both (both stay at 1). Both
+   second copies are fine keeps — Vindicator is the deck's best delivery bearer (E6: DS +
+   trample is near-unblockable ×2, and Delney makes a 1-power attacker unblockable by ≥3) and
+   nonlegendary; Speed is the unblockable GRANT, legendary (two on the table is a legend-rule
+   choice, two in the deck is finding it earlier). If both return, the two weakest adds go:
+   Giantfall (the interaction restore the user may not weigh) and Frontline Rush (the +X/+X
+   trick; Team Avatar does it repeatably). Recommended: keep 2 Vindicator, 1 Speed.
+2. *Were cuts made with a variant in mind?* **No.** Every cut was graded on 56's list
+   alone. No cut was needed to free a card for 56b — decks share the collection (a card is
+   never consumed by a deck), so a Cyclops in 56 is also a Cyclops in 56b. The user's point
+   stands anyway: building the variant FIRST shows which cards are better HOMED there
+   (Cyclops, Tannuk's warp bodies, Ball Lightning), and that clarifies what 56 keeps. **Order
+   of work: `/draft-deck 56b` → `/tune-deck 56a` with §5.6 → finalize 56.** §5.9 is a
+   proposal that waits.
+3. *Cut both Molten Man.* Agreed on the merits: a 3-drop that is ~4/4 on T3 and grows one a
+   turn, dies to everything, and SACRIFICES A LAND on leaving — behind Stingerback (7/7
+   flying trample for 4, or 3 via Plot) and Sentry as the deck's tall body. Cutting him
+   RETIRES F8 (the Mountain-count rule): Rogue's Passage / Daily Bugle can now replace
+   Mountains freely, Energybending loses its pump mode (still a colourless cantrip that fixes
+   WW), Zhao / Lonely Mountain / the basic-fetch target gate become irrelevant.
+   **The two cards in — two options, measured:**
+   - **A: Bygone Colossus + Luke Cage** (two BODIES, keeps 15 creatures). Colossus: with
+     The Fire Crystal on the table it is a 9/9 HASTE for `{3}` on T4, and Barricade /
+     Self-Destruct make it a free 9 to the face when it leaves. Luke Cage: indestructible
+     when attacking ALONE — the pattern Team Avatar pays, the body Self-Destruct spares, no
+     Void. Measured: protection 6 → 7, interaction 4, avg MV 2.58 → **2.78 and the floor
+     A → B** — an ARTIFACT of Colossus's printed MV 9 (the clock score reads printed cost;
+     warp `{3}` is invisible to it — O28 / G-60's shape in reverse). The deck did not get
+     slower; the number did. Tooling item 6 for §5.7.
+   - **B: Luke Cage + Hawkeye** (or Daredevil): no MV distortion; Hawkeye is blocker
+     removal + reach + the deck's only repeatable loot, Delney-doubled (six payments), but
+     he ATTACKS — Team Avatar / Luke Cage want him home (O22). Daredevil is the attack-alone
+     -compatible CA (his trigger is "whenever you attack", he can stay home… no — he must
+     be the attacker; same conflict, milder: vigilance haste 3/4).
+   **Recommended: A**, with the floor reading disclosed.
 
 ### 5.8 Craft cost — INFORMATION, per the Player Profile (not a constraint)
 
