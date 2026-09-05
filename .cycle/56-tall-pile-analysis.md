@@ -81,6 +81,14 @@ Rules — cite by number in every verdict:
 - **E4.** Aziza rejected for "competing with Yue for untapped creatures"; redundancy
   argument wins (P(both) ≈ 4% vs P(either) ≈ 36%). Do not reject a second copy of an
   effect on the grounds that the first copy exists.
+- **E5.** A type-line scan for `Legendary Creature` missed War Machine (`Legendary
+  ARTIFACT Creature`), under-counting Mjölnir's worthy carriers 3 → 4. Substring tests on
+  a type line need the word order checked (G-63's column-vs-face shape one field over).
+- **E6.** Gingerbrute was graded above Swiftblade Vindicator as a bearer on "unblockable
+  beats double strike". Both are 1/1s, and Vindicator's double strike + TRAMPLE together
+  is near-unblockable ×2 (first-strike damage kills the chump, everything else tramples,
+  then the regular hit is all excess). F2 says a NEW double-strike grant is worth 0; it
+  does not say the printed pair on a bearer is. Gingerbrute drops to ◇.
 
 ## 3. Cross-batch observations
 
@@ -122,8 +130,9 @@ Rules — cite by number in every verdict:
   (an extra COMBAT), Swiftfoot Boots (permanent hexproof + haste), Blacksmith's Talent L2
   (free attach every combat — the equip-cost answer the user's Katana note points at).
 - **O7. Mjölnir has NO generic equip** — only "Equip worthy {1}", legendary non-Villain
-  R/W. In 56 the worthy bodies are Mai and Speed ×2 (3 copies); Molten Man and Red Hulk
-  are VILLAINS and can never carry it (G-61: the count decides, and the two signature
+  R/W. In 56 the worthy bodies are Mai, Speed ×2 and War Machine (4 copies — the first
+  scan matched `Legendary Creature` and missed War Machine's `Legendary Artifact
+  Creature` line, E5); Molten Man and Red Hulk are VILLAINS and can never carry it (G-61: the count decides, and the two signature
   bodies are outside it). In 56a worthy = 8 copies (Wolverine, Scarlet Spider, Mai,
   Halana and Alena, Ruby ×2, Speed ×2) — Mjölnir is a 56a card first.
 - **O8. An "Equipment-tall" plan is real but would collide with deck 38 Armory (voltron)
@@ -140,6 +149,35 @@ Rules — cite by number in every verdict:
   Swiftfoot Boots, Samurai's Katana, Blacksmith's Talent L3, Quaketusk Boar all grant or
   carry it, and every one of them turns Speed's unblockable rider on. The deck's four
   haste sources are the count that decides whether Speed is a 2/2 or an evasion engine.
+
+- **O11. Batch 3 is the 56b PAYLOAD, and the variant is now a real deck.** Batch 1 gave
+  the engine (Tannuk, Warped Space, Speed's rider, Self-Destruct-for-free); batch 3 gives
+  the bodies: Bygone Colossus (WARP {3}: a 9/9 for three mana), Doc Ock's Tentacles
+  (auto-attaches +4/+4 to any MV ≥5 creature that ENTERS — a warped Colossus is MV 9, a
+  warped Nova Hellkite MV 5), Terror of the Peaks (each entering body deals its power to
+  any target — a warped Colossus is 9 to the face on entry), and Iron Giant ({7} 6/6
+  trample) which Tannuk warps for {2}{R} with haste. Five warp/hasty bodies + two
+  recasts + three payoffs across three batches. Decide at the end as planned, but the
+  count now clears "enough bodies for a 60" (O3's open question).
+- **O12. Pain for All is the reach engine the tall body was missing.** ETB: enchanted
+  creature deals its power to ANY OTHER TARGET (E1 ✓ reach); then every point of damage
+  dealt TO it hits each opponent. Self-Destruct on the enchanted body = X face + X self →
+  X face again: 2X for `{1}{R}`. Chump-blocking stops saving them (the blocker's damage
+  goes face). An Aura on the one body is the 2-for-1 risk, but the ETB has paid before
+  removal resolves. The user's star is right.
+- **O13. `lose all abilities` is a G-42 card here.** Final Showdown's first mode and
+  Curious Colossus strip YOUR body's granted keywords and Molten Man's Mountain scaling
+  (he is a printed 0/0) — in a deck whose entire plan is granted abilities, the symmetric
+  mode is a self-wipe. Grade only the indestructible mode.
+- **O14. Crackling Cyclops is a printed 0/4** — F4 is not an overlay on him, it is the
+  whole card: three spells make him a 9/4. Every creature ADD that displaces a spell
+  shrinks the Cyclops; every cantrip (Impolite Entrance, Haste Magic's impulse) is +3.
+- **O15. Repeatable flying — Bre of Clan Stoutarm.** `{1}{W},{T}`: ANOTHER creature gains
+  flying + lifelink each turn, and a lifelinked tall swing (gain 20) free-casts the next
+  nonland card off the top at end step. The one MV-4 creature across three batches whose
+  turn pays for itself (F3): T5 activate + Bulk Up is four mana for a doubled evasive
+  lifelink swing. Nothing in 56 grants flying repeatably; Key to the Side-Door is the
+  unblockable equivalent at a better rate but with no draw.
 
 ## 4. Running verdicts
 
@@ -195,29 +233,58 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | Fireshrieker | ✗ | ✗ | Pure DS equipment (F2). |
 | Rover Blades | ✗ | ✗ | DS equipment that is also a 2/2 DS vehicle; equip `{4}` (F2). |
 
+### Batch 3 (21 cards)
+
+| Card | 56 | 56a | Note (framework rule) |
+|---|---|---|---|
+| Pain for All | ★★★ | ★★★ | `{2}{R}` Aura: ETB power-to-any-target (reach), then all damage dealt to the body hits each opponent. Self-Destruct becomes 2X face (O12). Turns blockers, fights (Agni Kai), Wisecrack and Red Hulk's enrage into face damage. Sorcery-speed setup; the 2-for-1 risk is real but the ETB pays first. |
+| Bygone Colossus | ★★ | ★ | WARP `{3}`: a 9/9 for three, gone at end step. No haste of its own — the count that decides it is 56's HASTE GRANTS: Haste Magic ×2 (+3/+1 → 12), Swiftfoot Boots (equip `{1}`, so T4 = warp + equip = a 9/9 hexproof haste swing), Impolite Entrance. Self-Destruct on it is a free 9 (O3); with Pain for All 18. The user's read is right, and the enabler count is what makes it ★★ rather than ★★★ in 56. ★★★ in 56b. |
+| Bre of Clan Stoutarm | ★★ | ✗ | Repeatable flying + lifelink on the tall body, and a free cast off the top after a lifelink swing (O15). MV 4, `{R}{W}` (F7: 78%). The only creature in three batches that earns a turn-4 slot. |
+| Enter the Avatar State | ★★★ | ✗ | Confirmed from the pre-pile pass: `{W}` hexproof + flying + first strike + lifelink. Plan A #3. |
+| Giantfall | ★ | ★ | `{1}{R}` instant: your creature deals its power to theirs (Rabid Gnaw without the +1/+0 or the fight-back) OR destroy target ARTIFACT — the deck's first noncreature answer. The de-dup swap for Gnaw #2: same effect, second mode (G-46 virtual copy). |
+| Wisecrack | ★ | ★ | `{2}{R}` instant: target creature deals its power to ITSELF (+2 to its controller if attacking). Removal that scales with THEIR body — kills any big blocker. On your own Pain-for-All body it is X to face. Interaction 7 → 8. |
+| Brambleback Brute | ★ | ★ | `{2}{R}` enters 2/3, two uses of `{1}{R}`: target creature can't block (sorcery). Not repeatable (E: the user's note says repeatable; it is two charges), then a 4/5. Two Ty Lee activations on a body that does not need to attack. |
+| Fleeting Flight | ★ | ✗ | `{W}`: permanent +1/+1 counter, flying, prevent all combat damage to it. Avatar State dominates it on the same mana except for the counter. |
+| Final Showdown | ★ | ✗ | Only the `{W}`+`{1}` indestructible mode is live (O13: mode 1 strips your own body; the `{3}{W}{W}` wipe is WWW on 11 sources, F7). At 2 mana instant indestructible it ties Valorous Stance and loses to Restoration Magic. |
+| Goliath Daydreamer | ★ | ◇ | `{2}{R}{R}` 4/4: your instants/sorceries exile with dream counters; on attack, cast one FREE. Bulk Up cast on T3 comes back free on every Daydreamer attack — but HE must attack, beside the tall body. RR at MV 4. Already 57's card. |
+| Doc Ock's Tentacles | △ | △ | `{1}`, equip `{5}`: +4/+4, auto-attaches when a MV ≥5 creature ENTERS. In 56 that is Red Hulk alone (Nova Hellkite if added). ★★ in 56b, where a warped Colossus enters at MV 9 (O11). |
+| Terror of the Peaks | ◇ | ◇ | MV 5 5/4 flier, targeting tax; each entering creature deals ITS power to any target. 56's bodies enter at 0–3 power (Molten Man is a printed 0/0). A 56b payoff (Colossus enters: 9 face). |
+| Combustion Man | ◇ | ◇ | MV 5; on attack, destroy target PERMANENT unless they take his power — the deck's only noncreature-permanent answer, and it scales with pumps. His attack, not the tall body's; F3. |
+| Fated Firepower | ◇ | ◇ | `{X}{R}{R}{R}` flash: every damage source you control deals +X. Triple R (F7) and X=2 costs five for +2 per hit. A wide-burn card. |
+| Burdened Stoneback | ◇ | ✗ | `{1}{W}` enters 2/2; two SORCERY-speed uses of indestructible for `{1}{W}`. Pre-combat protection only — cannot answer removal in response. |
+| Hovel Hurler | ◇ | ◇ | MV 5, two uses of +1/+0 flying (sorcery). Bre does it repeatably at MV 4. |
+| Giant Cindermaw | △ | △ | 4/3 trample for 3; "players can't gain life" fights Bre / Avatar State lifelink (G-42). |
+| Giant's Boulder | △ | △ | Scry 2 + a `{1}`-to-use any-colour rock; `{7}` destroy a permanent. Fixing for W at a cost. |
+| Slumbering Walker | ✗ | ✗ | MV 5 WW reanimating power ≤2 — a different deck. |
+| Curious Colossus | ✗ | ✗ | MV 7 WW (F3/F7); one-sided shrink. |
+| Iron Giant | ✗ | ✗ | `{7}` 6/6 with no haste — ✗ in 56; ◇ in 56b where Tannuk warps it for `{2}{R}` (O11). |
+
 ## 5. Consolidated plan (live)
 
 Re-ranked after batch 1. Nothing applied.
 
 ### Plan A — tune 56 in place (protection + evasion)
 
-**ADDS, tiered (after batch 2):**
-1. **Swiftfoot Boots** (★★★, b2) — permanent hexproof + haste for 3 mana total; turns
-   Speed on. The standing-protection answer.
-2. **Return the Favor** (★★★, b1) — multiplier + redirect-protection in one instant.
-3. **Enter the Avatar State** (pre-pile ★★★) — hexproof + flying + lifelink for `{W}`.
-4. **Restoration Magic** (pre-pile ★★) — `{W}` hexproof + INDESTRUCTIBLE at instant
-   speed: the sweeper/edict half Boots cannot cover (F6c).
-5. **Impolite Entrance** (★★, b2) — `{R}` trample + haste + draw; a cantrip that turns
-   Speed on.
-6. **Key to the Side-Door** (★★, b1) — repeatable unblockable for `{2}`.
-7. **Nova Hellkite** (★★, b1) — a hasty FLYING bearer on T3 via warp.
-8. **Rogue's Passage** (★★, b1) — land slot; from a tapland, never a Mountain (F8).
-9. Mjölnir (★, b2) — only if the 3-carrier worthy count (Mai, Speed ×2) is accepted;
-   otherwise it is 56a's card (O7).
-10. Spectacular Tactics / Valorous Stance (pre-pile ★) — now behind five cards on the
-    same protection/evasion axes; likely out.
-11. Gingerbrute (★★ as a bearer, b1) — only if a bearer slot opens.
+**ADDS, tiered (after batch 3):**
+1. **Pain for All** (★★★, b3) — the reach engine: ETB fireball, then every hit on the
+   body is face damage; Self-Destruct becomes 2X.
+2. **Swiftfoot Boots** (★★★, b2) — permanent hexproof + haste; turns Speed on; makes a
+   warped Colossus a T4 hasty 9/9.
+3. **Return the Favor** (★★★, b1) — multiplier + redirect-protection in one instant.
+4. **Enter the Avatar State** (★★★, pre-pile, confirmed b3) — hexproof + flying for `{W}`.
+5. **Bygone Colossus** (★★, b3) — a 9/9 for three; needs a same-turn haste grant, and
+   the deck now has Boots + Haste Magic ×2 + Impolite Entrance as candidates.
+6. **Restoration Magic** (★★, pre-pile) — instant indestructible for the sweeper case.
+7. **Impolite Entrance** (★★, b2) — `{R}` trample + haste + draw.
+8. **Bre of Clan Stoutarm** (★★, b3) — repeatable flying + lifelink + a free cast; the
+   MV-4 slot if the deck takes one.
+9. **Key to the Side-Door** (★★, b1) / **Nova Hellkite** (★★, b1) / **Rogue's Passage**
+   (★★, b1, land slot).
+10. Giantfall (★, b3) — as the de-dup replacement for Rabid Gnaw #2, not an extra slot.
+11. Mjölnir (★, b2) — 4 worthy carriers (O7 corrected, E5); still 56a's card first.
+12. Wisecrack (★, b3) — if interaction is the axis chosen over reach.
+13. Out of the running: Spectacular Tactics, Valorous Stance, Final Showdown, Fleeting
+    Flight — each beaten on its own axis by a card above.
 
 **CUTS, in order (double-strike de-dup first, per the pre-pile finding):**
 0. NOTE: with Boots + Return the Favor + Avatar State + Restoration Magic + Impolite
@@ -238,6 +305,13 @@ every targeted add), Crackling Cyclops (F4 payoff — `cuts` calls it low power)
 
 ### Plan B — 56b "Ball Lightning" burst variant (VARIANT SIGNAL, not yet decided)
 
+**After batch 3 the body count clears a 60 (O11).** Bodies: Ball Lightning, Nova Hellkite,
+Red Tiger Mechan, Bygone Colossus, Iron Giant (via Tannuk), Molten Man / Cyclops / Red Hulk
+(via Tannuk — Molten Man sacrifices a land on leaving, G-42). Payoffs: Terror of the Peaks,
+Doc Ock's Tentacles, Pain for All, Self-Destruct ×2. Recast: Warped Space, Charred Foyer.
+Evasion: Speed ×2 (always on), Full Bore. Still open: the protection layer (Boots is the
+one candidate that helps a body that is leaving anyway — hexproof for the swing turn).
+
 Core from batch 1: Ball Lightning, Nova Hellkite, Red Tiger Mechan, Tannuk, Full Bore,
 Charred Foyer // Warped Space, + 56's Self-Destruct ×2 / Bulk Up ×2 / Speed ×2 / Haste
 Magic ×2 / Crackling Cyclops. Thesis: every body is a spell (F10); Speed's rider is
@@ -247,6 +321,10 @@ what is the protection layer when there are no permanents to protect? `/draft-de
 survives the pile.
 
 ### 56a notes
+**Batch 3:** Pain for All ★★★ (RG-castable; on Halana and Alena's compounding body every
+point of damage dealt to it is face damage), Giantfall / Wisecrack ★ (interaction for its
+4 → 5–6 at a C floor, F9), Bygone Colossus ★ (56a has fewer haste grants — count them
+before adding).
 **Batch 2:** Swiftfoot Boots ★★★ (hexproof + haste on a permanent-counter body is
 exactly F9's protection axis), Mjölnir ★★★ (8 worthy carriers incl. Halana and Alena —
 doubling damage on a body that compounds counters), Dragonclaw Strike ★★ (4 mana in RG,
