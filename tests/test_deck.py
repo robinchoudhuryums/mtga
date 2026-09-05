@@ -5985,6 +5985,19 @@ class TestCardAdvantageSplit:
         assert (rep, one) == (2, 0)
         assert [n for _, n in notes["repeatable"]] == ["activated", "engine"]
 
+    def test_a_keyword_prefixed_trigger_is_still_a_trigger(self):
+        """Magic prints named triggers as "Opus — Whenever you cast…", and 475 pool cards
+        use that shape. The line anchor missed every one, so deck 25's Elemental Mascot
+        was filed ONE-SHOT the first time this split met a deck it was not written
+        against — the G-67 whitelist shape inside the fix for a whitelist."""
+        data = dict(self.DATA, opus={"type": "Creature — Elemental Bird",
+                                     "text": "Flying, vigilance\nOpus — Whenever you cast "
+                                             "an instant or sorcery spell, exile the top "
+                                             "card of your library. You may play that card "
+                                             "and draw two cards."})
+        rep, one, _ = deck.card_advantage_split([(1, "opus", "A", "1")], data)
+        assert (rep, one) == (1, 0)
+
     def test_an_etb_and_a_spell_are_one_shot(self):
         """An ETB is one-shot even on a permanent — the distinction is how often it PAYS,
         not whether it sits on the battlefield."""
