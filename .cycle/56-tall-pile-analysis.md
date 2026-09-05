@@ -89,6 +89,19 @@ Rules — cite by number in every verdict:
   is near-unblockable ×2 (first-strike damage kills the chump, everything else tramples,
   then the regular hit is all excess). F2 says a NEW double-strike grant is worth 0; it
   does not say the printed pair on a bearer is. Gingerbrute drops to ◇.
+- **E7 (user correction).** Brambleback Brute's "remove a counter" is ANY counter, so a
+  +1/+1 counter reloads the can't-block charge and leaves a 4/5. Graded it as two charges
+  without counting the deck's counter sources ONTO OTHER creatures: 56 has none today
+  (Seedglaive / Red Hulk / Mai all self-counter), 56a has Halana and Alena every combat.
+  State the count, then decide (G-61) — the count differs between the two decks.
+- **E8 (user correction).** Terror of the Peaks was graded on "56's bodies enter at 0–3":
+  Molten Man's static applies the moment he is on the battlefield, so he ENTERS as N/N
+  for N Mountains; Scalestorm's 3/1 tokens are a repeatable enter; Red Hulk enters at 6;
+  Go Ninja Go re-enters the body. A printed P/T is not what a creature enters as.
+- **E9.** Batch 3 filed Fleeting Flight / Lightfoot Technique's +1/+1 counter as a minor
+  rider. In this deck a counter is ALSO a Brute reload (E7) and a Bulwark Ox key
+  ("creatures with counters gain hexproof and indestructible") — a counter is a resource
+  two other cards spend, not a stat.
 
 ## 3. Cross-batch observations
 
@@ -179,6 +192,31 @@ Rules — cite by number in every verdict:
   lifelink swing. Nothing in 56 grants flying repeatably; Key to the Side-Door is the
   unblockable equivalent at a better rate but with no draw.
 
+- **O16. AN INDESTRUCTIBLE BODY MAKES SELF-DESTRUCT REPEATABLE.** Self-Destruct deals X
+  to the body too; an indestructible one (The Sentry, Hazoret) survives it, so the deck's
+  finisher stops costing the body — and with Pain for All on that body the reflected X is
+  a second X to the face. The Sentry is therefore F5 + F6(a/c) in one card: 5/5 flying
+  vigilance indestructible for `{3}{W}`, and the deck's reach spells stop being one-shots.
+  Its cost is the Void: a 5/5 flying indestructible token that attacks YOU every combat
+  (vigilance lets Sentry block it and still swing, but that is the whole tall body on
+  defence). Say the 5-a-turn out loud before taking it.
+- **O17. Batch 4 is the PROTECTION pile — ten cards on F6 — and they split by which
+  half of F6 they answer.** Hexproof (targeted removal): Restoration Magic, Bofur's
+  Concerted Care, Spider-Man's sac, Bulwark Ox's sac. Indestructible only (destroy /
+  damage, sweepers): Lightfoot Technique, Reroute Systems, Divine Resilience, Zack Fair,
+  Crumb and Get It, Earth Kingdom Protectors. With The Sentry as the body the FIRST half
+  is what the deck needs (the body already survives the second), which re-orders the
+  list: Boots, Avatar State, Restoration Magic/Bofur, Spider-Man; the indestructible-only
+  cards fall out. Without Sentry, Lightfoot Technique is the best of the second half
+  (flying + a counter, E9).
+- **O18. Crumb and Get It's indestructible is bought by GIVING THEM 3 LIFE** (the Food).
+  In a deck that computes exact lethal, that is a G-42 cost on a protection spell.
+- **O19. 56b keeps growing from the Giants via Tannuk's warp** (`{2}{R}` for any red
+  creature card in hand): Hill Gigas 5/4 trample haste, Zealous Lorecaster 4/4 + regrowth
+  Bulk Up (and it re-exiles, so it can be recast from exile to regrowth AGAIN), Stone-Giant
+  7/7 + a Wall token to sacrifice for 4 damage. Tannuk is the card that turns the Giants
+  pile from ✗ into a plan.
+
 ## 4. Running verdicts
 
 Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ marginal · ✗ out`.
@@ -243,12 +281,12 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | Enter the Avatar State | ★★★ | ✗ | Confirmed from the pre-pile pass: `{W}` hexproof + flying + first strike + lifelink. Plan A #3. |
 | Giantfall | ★ | ★ | `{1}{R}` instant: your creature deals its power to theirs (Rabid Gnaw without the +1/+0 or the fight-back) OR destroy target ARTIFACT — the deck's first noncreature answer. The de-dup swap for Gnaw #2: same effect, second mode (G-46 virtual copy). |
 | Wisecrack | ★ | ★ | `{2}{R}` instant: target creature deals its power to ITSELF (+2 to its controller if attacking). Removal that scales with THEIR body — kills any big blocker. On your own Pain-for-All body it is X to face. Interaction 7 → 8. |
-| Brambleback Brute | ★ | ★ | `{2}{R}` enters 2/3, two uses of `{1}{R}`: target creature can't block (sorcery). Not repeatable (E: the user's note says repeatable; it is two charges), then a 4/5. Two Ty Lee activations on a body that does not need to attack. |
+| Brambleback Brute | ★ | ★★ | `{2}{R}` enters 2/3; `{1}{R}`, remove ANY counter: target creature can't block (sorcery). Two charges in 56 as-is, RELOADED by every +1/+1 counter put on it (E7: Lightfoot Technique, Bulwark Ox, Fleeting Flight are the adds that do); in 56a Halana and Alena reloads it every combat, and it ends as a 4/5. Revised up on the user's read. |
 | Fleeting Flight | ★ | ✗ | `{W}`: permanent +1/+1 counter, flying, prevent all combat damage to it. Avatar State dominates it on the same mana except for the counter. |
 | Final Showdown | ★ | ✗ | Only the `{W}`+`{1}` indestructible mode is live (O13: mode 1 strips your own body; the `{3}{W}{W}` wipe is WWW on 11 sources, F7). At 2 mana instant indestructible it ties Valorous Stance and loses to Restoration Magic. |
 | Goliath Daydreamer | ★ | ◇ | `{2}{R}{R}` 4/4: your instants/sorceries exile with dream counters; on attack, cast one FREE. Bulk Up cast on T3 comes back free on every Daydreamer attack — but HE must attack, beside the tall body. RR at MV 4. Already 57's card. |
 | Doc Ock's Tentacles | △ | △ | `{1}`, equip `{5}`: +4/+4, auto-attaches when a MV ≥5 creature ENTERS. In 56 that is Red Hulk alone (Nova Hellkite if added). ★★ in 56b, where a warped Colossus enters at MV 9 (O11). |
-| Terror of the Peaks | ◇ | ◇ | MV 5 5/4 flier, targeting tax; each entering creature deals ITS power to any target. 56's bodies enter at 0–3 power (Molten Man is a printed 0/0). A 56b payoff (Colossus enters: 9 face). |
+| Terror of the Peaks | ★ | ★ | MV 5 5/4 flier, targeting tax (soft protection); each entering creature deals ITS power to any target. Revised up (E8): Molten Man ENTERS as N/N for N Mountains, Scalestorm's 3/1 tokens are 3 a turn, Red Hulk enters at 6, Go Ninja Go re-enters the body. A 56b payoff too (Colossus: 9). MV 5 with no haste is still F3's cost. |
 | Combustion Man | ◇ | ◇ | MV 5; on attack, destroy target PERMANENT unless they take his power — the deck's only noncreature-permanent answer, and it scales with pumps. His attack, not the tall body's; F3. |
 | Fated Firepower | ◇ | ◇ | `{X}{R}{R}{R}` flash: every damage source you control deals +X. Triple R (F7) and X=2 costs five for +2 per hit. A wide-burn card. |
 | Burdened Stoneback | ◇ | ✗ | `{1}{W}` enters 2/2; two SORCERY-speed uses of indestructible for `{1}{W}`. Pre-combat protection only — cannot answer removal in response. |
@@ -259,32 +297,63 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | Curious Colossus | ✗ | ✗ | MV 7 WW (F3/F7); one-sided shrink. |
 | Iron Giant | ✗ | ✗ | `{7}` 6/6 with no haste — ✗ in 56; ◇ in 56b where Tannuk warps it for `{2}{R}` (O11). |
 
+### Batch 4 (20 cards)
+
+| Card | 56 | 56a | Note (framework rule) |
+|---|---|---|---|
+| The Sentry, Golden Guardian | ★★★ | ✗ | `{3}{W}` 5/5 flying vigilance INDESTRUCTIBLE. An evasive tall body that survives its own Self-Destruct (O16) and every destroy/damage answer; with Pain for All every Self-Destruct is 2X. The Void (a 5/5 flying indestructible attacker for THEM, every combat) is a real 5-a-turn tax that vigilance only half-cancels. Single W at MV 4: 86% on curve. The user's star is right, with the Void named. |
+| Lightfoot Technique | ★★ | ✗ | `{1}{W}` instant: permanent +1/+1 counter, flying, indestructible. Evasion + protection + a counter that reloads Brute / keys Bulwark Ox (E9). The best indestructible-half card (O17) and the only one that also gives flying. |
+| Spectacular Spider-Man | ★★ | ✗ | `{1}{W}` FLASH 3/2; `{1}`, sac: ALL your creatures gain hexproof + indestructible. A protection spell held up like an instant that is a body when not needed (G-46 virtual copy of Restoration Magic with a 3/2 attached). Answers a sweeper too. |
+| Bofur, Reliable Guardian // Concerted Care | ★★ | ✗ | Adventure `{1}{W}`: hexproof + indestructible (Restoration Magic at +1 mana), then a 1/1 lifelink body from exile later. Two virtual copies of the deck's best protection effect. |
+| Restoration Magic | ★★ | ✗ | Confirmed from the pre-pile pass: `{W}` Cure = hexproof + indestructible; Curaga = the team. Plan A #6. |
+| Bulwark Ox | ★ | ★★ | `{1}{W}` 2/2 Mount: attacks while saddled → +1/+1 counter on target creature (a repeatable counter source: Brute reload, Seedglaive stacking); sac: creatures WITH COUNTERS gain hexproof + indestructible. Saddle taps another power-1 body. In 56a every body carries counters, so the sac is a team Restoration Magic. |
+| Hill Gigas | ◇ | ◇ | MV 6 5/4 trample haste OR Mountaincycling `{2}` — a land-drop that GROWS Molten Man (F8). Late, a hasty body. In 56b Tannuk warps it for `{2}{R}` (O19). |
+| Zack Fair | ★ | ✗ | `{W}` 0/1 + counter; `{1}`, sac: target creature indestructible, moves its counters and its Equipment. A stored protection spell for one mana that also re-homes Boots. Indestructible only. |
+| Reroute Systems | ★ | ✗ | `{W}` indestructible OR 2 to a tapped creature. Indestructible-half only (O17). |
+| Divine Resilience | ★ | ✗ | `{W}` indestructible, kicker for all. Restoration Magic dominates it at the same mana. |
+| Zealous Lorecaster | △ | △ | MV 6 4/4 regrowth an instant (Bulk Up back). F3 in 56; a repeatable-regrowth engine in 56b via Tannuk (O19). |
+| Monastery Messenger | △ | △ | Hybrid → `{2}{R}{W}` in RW (G-58): 2/3 flier, puts a noncreature card from graveyard on TOP (Bulk Up again next draw). MV 4 for a small body. |
+| Iron-Fist Pulverizer | △ | △ | MV 5 4/5 reach; second spell each turn → 2 face + scry. A spellslinger payoff two turns late. |
+| Colossus of the Blood Age | △ | ✗ | MV 6 6/6, ETB 3 to each opponent; dies → filter-draw. F3. |
+| The Misty Mountains Cold | △ | △ | Saga: a Treasure a turn, a 6/6 flying Dragon on chapter IV if four Treasures are held. Four turns to a body; the Treasures fix W (F7). |
+| Crumb and Get It | ◇ | ✗ | `{W}` +2/+2, indestructible only if you gift them a Food = 3 life (O18, G-42). |
+| Stone-Giant of High Pass | ✗ | ✗ | MV 7 (F3). ◇ in 56b via Tannuk (O19). |
+| Aurelia, the Warleader | ✗ | ✗ | `{2}{R}{R}{W}{W}` — WW on 11 sources at MV 6 (F3 + F7). A premium card the manabase cannot cast. |
+| Boldwyr Aggressor | ✗ | ✗ | Double strike + a Giant DS lord: 0 Giants in 56 (G-61) and DS = 0 (F2). |
+| Earth Kingdom Protectors | ✗ | ✗ | Sac: an ALLY gains indestructible — 56 runs 0 Allies (G-61). |
+
 ## 5. Consolidated plan (live)
 
 Re-ranked after batch 1. Nothing applied.
 
 ### Plan A — tune 56 in place (protection + evasion)
 
-**ADDS, tiered (after batch 3):**
-1. **Pain for All** (★★★, b3) — the reach engine: ETB fireball, then every hit on the
-   body is face damage; Self-Destruct becomes 2X.
-2. **Swiftfoot Boots** (★★★, b2) — permanent hexproof + haste; turns Speed on; makes a
-   warped Colossus a T4 hasty 9/9.
-3. **Return the Favor** (★★★, b1) — multiplier + redirect-protection in one instant.
-4. **Enter the Avatar State** (★★★, pre-pile, confirmed b3) — hexproof + flying for `{W}`.
-5. **Bygone Colossus** (★★, b3) — a 9/9 for three; needs a same-turn haste grant, and
-   the deck now has Boots + Haste Magic ×2 + Impolite Entrance as candidates.
-6. **Restoration Magic** (★★, pre-pile) — instant indestructible for the sweeper case.
-7. **Impolite Entrance** (★★, b2) — `{R}` trample + haste + draw.
-8. **Bre of Clan Stoutarm** (★★, b3) — repeatable flying + lifelink + a free cast; the
-   MV-4 slot if the deck takes one.
-9. **Key to the Side-Door** (★★, b1) / **Nova Hellkite** (★★, b1) / **Rogue's Passage**
-   (★★, b1, land slot).
-10. Giantfall (★, b3) — as the de-dup replacement for Rabid Gnaw #2, not an extra slot.
-11. Mjölnir (★, b2) — 4 worthy carriers (O7 corrected, E5); still 56a's card first.
-12. Wisecrack (★, b3) — if interaction is the axis chosen over reach.
-13. Out of the running: Spectacular Tactics, Valorous Stance, Final Showdown, Fleeting
-    Flight — each beaten on its own axis by a card above.
+**ADDS, tiered (after batch 4):**
+1. **Pain for All** (★★★, b3) — the reach engine.
+2. **The Sentry, Golden Guardian** (★★★, b4) — an indestructible evasive body that makes
+   Self-Destruct repeatable (O16). The Void is the named cost.
+3. **Swiftfoot Boots** (★★★, b2) — permanent hexproof + haste.
+4. **Return the Favor** (★★★, b1) — multiplier + redirect.
+5. **Enter the Avatar State** (★★★, pre-pile) — hexproof + flying for `{W}`.
+6. **Bygone Colossus** (★★, b3) — the 9/9 for three, on the haste-grant count.
+7. **Restoration Magic** (★★) / **Bofur // Concerted Care** (★★, b4) — the hexproof
+   instants; one or both, they are virtual copies of each other.
+8. **Lightfoot Technique** (★★, b4) — flying + indestructible + a counter; the pick if
+   Sentry is NOT taken (O17).
+9. **Spectacular Spider-Man** (★★, b4) — flash protection with a body.
+10. **Impolite Entrance** (★★, b2) / **Bre** (★★, b3) / **Key** / **Nova Hellkite** /
+    **Rogue's Passage** (★★, b1).
+11. Giantfall (★) as the Gnaw #2 replacement; Terror of the Peaks (★, revised E8);
+    Brambleback Brute (★, reloads only with a counter add); Mjölnir (★); Wisecrack (★);
+    Bulwark Ox / Zack Fair / Reroute Systems (★).
+12. Out: Spectacular Tactics, Valorous Stance, Final Showdown, Fleeting Flight, Divine
+    Resilience, Crumb and Get It, Aurelia (WW), Boldwyr, Protectors.
+
+**Slot pressure:** eleven ★★★/★★ spell adds against 4–7 cuts. The white count is the
+binding constraint now — Sentry, Avatar State, Restoration Magic, Bofur, Lightfoot,
+Spider-Man are all W, against 11 W sources and 8 strict W pips today (F7). A final list
+takes 3–4 of the white cards, not all six, and the manabase question (the pre-pile
+note: +2 W sources without cutting a Mountain, F8) is now load-bearing.
 
 **CUTS, in order (double-strike de-dup first, per the pre-pile finding):**
 0. NOTE: with Boots + Return the Favor + Avatar State + Restoration Magic + Impolite
@@ -305,7 +374,8 @@ every targeted add), Crackling Cyclops (F4 payoff — `cuts` calls it low power)
 
 ### Plan B — 56b "Ball Lightning" burst variant (VARIANT SIGNAL, not yet decided)
 
-**After batch 3 the body count clears a 60 (O11).** Bodies: Ball Lightning, Nova Hellkite,
+**After batch 4 (O19): Tannuk's warp also admits Hill Gigas, Zealous Lorecaster (a
+repeatable Bulk Up regrowth) and Stone-Giant.** After batch 3 the body count clears a 60 (O11). Bodies: Ball Lightning, Nova Hellkite,
 Red Tiger Mechan, Bygone Colossus, Iron Giant (via Tannuk), Molten Man / Cyclops / Red Hulk
 (via Tannuk — Molten Man sacrifices a land on leaving, G-42). Payoffs: Terror of the Peaks,
 Doc Ock's Tentacles, Pain for All, Self-Destruct ×2. Recast: Warped Space, Charred Foyer.
@@ -321,6 +391,10 @@ what is the protection layer when there are no permanents to protect? `/draft-de
 survives the pile.
 
 ### 56a notes
+**Batch 4:** Bulwark Ox ★★ (every 56a body carries counters — the sac is a team
+hexproof+indestructible, and the saddle-attack counter feeds Halana's compounding);
+Brambleback Brute revised to ★★ (Halana and Alena reloads it every combat, E7). The
+white protection cluster is off-colour there; 56a's own is Overprotect / Snakeskin Veil.
 **Batch 3:** Pain for All ★★★ (RG-castable; on Halana and Alena's compounding body every
 point of damage dealt to it is face damage), Giantfall / Wisecrack ★ (interaction for its
 4 → 5–6 at a C floor, F9), Bygone Colossus ★ (56a has fewer haste grants — count them
