@@ -121,6 +121,16 @@ Rules — cite by number in every verdict:
   the Ring's sac cost is the CREATURE, not the Ring — the Ring stays, unattached). The
   fallback is therefore "turn your body into three mana", which is only upside on a body
   that is leaving anyway (a warped Colossus at end of combat). △ → ◇, for that line.
+- **E14 (user correction).** Sami's affinity is on EVERY spell you cast, not on herself —
+  with four artifacts out (Boots, Shield, Key, Pick-Axe, Treasures) Bulk Up and
+  Self-Destruct cost {0} and the kill turn casts the whole hand, which is also F4 (Cyclops)
+  and Stingerback's penalty running to zero. Graded her on MV 6 alone (F3). She is ◇ in 56
+  (the artifact count is the number — 3 today, ~4 after the equipment adds) and ★★★ in an
+  artifact-tilted variant. The MV-6 cost stands: she sets up NEXT turn's kill, not this
+  one, and 24 lands reach six by T6 ~35% of the time.
+- **E15.** "Tali Wakeen" resolved to nothing in the pool OR on Scryfall; the card is
+  **Taii Wakeen, Perfect Shot** (OTJ). A name that fails twice is still a name to fix,
+  not a card to drop (Stage 2). Graded under the corrected name.
 
 ## 3. Cross-batch observations
 
@@ -284,6 +294,34 @@ Rules — cite by number in every verdict:
   +2/+1 is the rider, the impulse is the card. 56 has 0 repeatable CA (F6d); the user's
   "minor" undersells it. Haste + vigilance also turns Speed on (O2).
 
+- **O28. THE PILE'S SECOND THEME AFTER PROTECTION IS COST CHEATING, and it is ~14 cards
+  deep now.** F10 called "what the deck pays vs what is printed" structurally invisible;
+  the pile has answered it from every direction: Tannuk (red creatures + artifacts warp
+  `{2}{R}`), the native warps (Colossus `{3}`, Vestige `{4}`, Nova Hellkite, Mechan, Ball
+  Lightning's premise), the Plots (Stingerback, Demonic Ruckus `{R}`, Longhorn), Warped
+  Space (`{0}` from exile once a turn — which also makes Hex Magic's exiled hand one free
+  card a turn), Sami (affinity on every spell), Kíli (first equip free), Serum and
+  Blacksmith's Talent L2 (free attach), Lorehold (miracle `{2}` on every instant and
+  sorcery in hand), Nexus of Becoming (a 3/3 Golem copy of anything in hand each combat),
+  Anticausal Vestige (cheat a permanent onto the battlefield on leaving, twice). **56b is
+  not "Ball Lightning"; it is CHEAT-TALL** — every body and every spell arrives for less
+  than printed, and Self-Destruct is free on the ones that leave. Rename the working id's
+  thesis; decide at the end as planned.
+- **O29. Energybending is a hidden Molten Man pump.** "Lands you control gain all basic
+  land types" makes every land a MOUNTAIN until end of turn, so Molten Man gets +1/+1 per
+  non-Mountain land you control — at instant speed, for `{2}`, colourless, and it draws a
+  card. It also fixes WW for Abolisher / Wrath on the turn it matters (F7). Nothing tags
+  "gain all basic land types" as a pump, and no model here counts Mountains as a
+  resource (F8 is a hand rule).
+- **O30. Aura risk has an insurance shape.** Demonic Ruckus draws a card when it leaves
+  the battlefield, so removal on the enchanted body is a 2-for-1 that refunds one. Pain
+  for All has no such clause — its insurance is that the ETB already fired.
+- **O31. Nexus of Becoming's "except it's a 3/3" REPLACES base P/T and keeps everything
+  else** — a Molten Man copy is 3/3 + Mountains (legend rule with the real one), a Sentry
+  copy is a 3/3 flying vigilance indestructible that hands them a SECOND Void, a Sire copy
+  is a 3/3 with six keywords and ward 7, a Stingerback copy is a 3/3 that shrinks per card
+  in hand (bad). Read what the copy KEEPS before cheating it.
+
 ## 4. Running verdicts
 
 Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ marginal · ✗ out`.
@@ -429,9 +467,35 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | Zog, Triceraton Castaway | ◇ | ◇ | MV 5 5/4 reach trample + ETB can't-block, or Mountaincycling `{2}` (F8). Hill Gigas with a blocker-answer instead of haste; 56b via Tannuk ★. |
 | Veteran Guardmouse | △ | △ | MV 4 valiant: +1/+0 first strike + scry when targeted. A Seedglaive at twice the cost. |
 | Brightspear Zealot | △ | ✗ | 2/4 vigilance, +2/+0 with two spells. A small spellslinger body. |
-| Sami, Wildcat Captain | △ | ✗ | MV 6: DS vigilance + affinity for artifacts on your spells. An equipment-plan card (F3). |
+| Sami, Wildcat Captain | ◇ | ✗ | Revised (E14): affinity on EVERY spell — four artifacts out and the kill turn casts the hand for free (F4 / Stingerback run to the max). MV 6 sets up next turn's kill, not this one (F3, ~35% to six lands by T6). ★★★ in an artifact-tilted variant. |
 | Pride of the Road | ✗ | ✗ | Max-speed double strike (F2 = 0, and T5+). |
 | Aurelia, the Law Above | ✗ | ✗ | Triggers need three / five ATTACKERS — the opposite of attacking alone (G-42 for Luke Cage). |
+
+### Batch 7 (21 cards)
+
+| Card | 56 | 56a | Note (framework rule) |
+|---|---|---|---|
+| Energybending | ★★ | ★★ | `{2}` instant, colourless: every land is a Mountain until end of turn (+1/+1 per non-Mountain on Molten Man, O29), fixes WW for the turn, draws a card. Three axes on a cantrip. |
+| Demonic Ruckus | ★★ | ★★ | `{1}{R}` Aura: +1/+1 MENACE + TRAMPLE (F1 evasion), draws when it leaves (O30), Plot `{R}` to cast free later. The cheapest evasion in the pile with its 2-for-1 insured. |
+| Hex Magic | ★★ | ★★ | `{2}{R}` sorcery: exile the hand, draw that many, and you may STILL play the exiled cards until the end of next turn — a "draw N" that keeps the old N. On a kill turn with four cards it is eight cards of tricks (F6d). Sorcery at 3 is the cost. Warped Space makes one exiled card a turn free (O28). |
+| Lorehold, the Historian | ★★ | ✗ | `{3}{R}{W}` 5/5 FLYING HASTE — a T5 body that is itself the kill-turn swing (F3 ✓, Speed's rider on) and gives every instant/sorcery in hand miracle `{2}` (Return the Favor, Avatar's Wrath for two). Single pips. The top end 56 could take. |
+| The Arkenstone // Seek the Heart | ★★ | ★ | Adventure `{2}{W}`: TUTOR a legendary creature (Sentry, Iron Fist, Luke Cage, Agrus, Daredevil, Molten Man, Red Hulk…) — finds the tall body on demand. Then the `{5}` artifact: +1/+1 anthem and draw a card every end step (repeatable CA). Tannuk-warpable as an artifact. |
+| Buster Sword | ★★ | ★★ | `{3}` equip `{2}`: +3/+2; combat damage to a player → draw + free-cast a spell with MV ≤ that damage. On a double-striker the first-strike hit casts Self-Destruct free before regular damage. CA that scales with the swing. |
+| Kíli the Resourceful | ★ | ✗ | `{1}{W}` 1/2: storied is on for free here (five legendaries); first equip each turn costs `{0}`, draw when an Equipment enters. The user's read is right; the equipment COUNT decides it (3 today, Twin Blades cut) — ★★★ in the equipment plan, in 74 already. |
+| Taii Wakeen, Perfect Shot | ★ | ✗ | `{R}{W}` 2/2 (E15): `{X},{T}` adds X to every noncombat damage this turn — Self-Destruct, Pain for All, Iron Fist, Gnaw (A2 amplifier, ★★ there); draws when your noncombat damage exactly equals a creature's toughness (fiddly). |
+| Anticausal Vestige | ★ | ★ | Warp `{4}` 7/5; on LEAVING: draw + put a permanent with MV ≤ your lands onto the battlefield tapped — then recast from exile and do it again. The user's "2-time cheat" is right. Needs haste to swing on the warp turn and a target in hand; ★★★ in 56b (O28). |
+| Nexus of Becoming | ★ | ★ | `{6}`: each combat draw + exile a creature/artifact from hand → a 3/3 Golem copy with its abilities (O31). Repeatable cheat + card a turn; MV 6 (F3). ★★ in the cheat plan. |
+| Diary of Dreams | ★ | ★ | `{2}`: a page counter per instant/sorcery; `{5}`-minus-counters, `{T}`: draw. Four spells in and it is `{1}`: draw, repeatably. An artifact for Sami's count. |
+| Thrór's Map | ★ | ★ | `{2}`: tutor a basic to hand (a Plains for WW, or a Mountain for F8) + `{2},{T}` loot. Legendary (Kíli's storied, Key's draw mode). |
+| Ragged Short Spear | ★ | ★ | `{1}{R}` Equipment: ETB discard one, draw TWO; +2/+0. The ETB is the card; equip `{3}` is bad alone and free under Kíli/Serum. |
+| Charging Strifeknight | ★ | ★ | `{2}{R}` 3/3 HASTE + `{T}`, discard: draw. A hasty 3-power bearer that loots when not attacking. |
+| Yuyan Archers | △ | △ | `{1}{R}` 3/1 reach + ETB loot. 3 base power is a better Bulk Up base than Vindicator's 1 (user's point); 1 toughness dies to everything. |
+| Bandit's Haul | ◇ | ◇ | `{3}` rock: any-colour mana (WW fixing) + crime-fed draw. A rock in a 2.4-curve deck is F3's cost. |
+| Sire of Seven Deaths | △ | △ | `{7}` 7/7 with six keywords + ward 7 life. NOT Tannuk-warpable (colourless, not an artifact); 20% to hardcast on T7. A payload for Vestige / Nexus only (O31). |
+| Flick a Coin | △ | △ | 3 mana: 1 damage + Treasure + draw. F4 but too expensive for the effect. |
+| Borrowed Knowledge | △ | ✗ | `{2}{R}{W}` wheel. Hex Magic does it for 3 and KEEPS the hand. |
+| Hedron Archive | △ | △ | `{4}` ramp rock, sac for two. Wrong curve. |
+| Racers' Scoreboard | △ | △ | `{4}`: loot-two ETB, a late `{1}` discount at max speed. |
 
 ## 5. Consolidated plan (live)
 
@@ -439,24 +503,25 @@ Re-ranked after batch 1. Nothing applied.
 
 ### Plan A — tune 56 in place (protection + evasion)
 
-**ADDS, tiered (after batch 6):**
+**ADDS, tiered (after batch 7):**
 1. **Pain for All** (★★★, b3) — the reach engine.
 2. **Stingerback Terror** (★★★, b5) — 7/7 flying trample that grows as you cast.
 3. **The Sentry** (★★★, b4) — indestructible evasive body; Self-Destruct repeatable.
 4. **Swiftfoot Boots** (★★★, b2) — permanent hexproof + haste.
-5. **Grand Abolisher** (★★★ on effect, `{W}{W}` on cost, b6) — the kill-turn lock (O24).
-   Jennifer Walters / Voice of Victory (★★) are its single-W copies.
+5. **Grand Abolisher** (★★★ / `{W}{W}`, b6) — the kill-turn lock; Walters / Voice (★★).
 6. **Return the Favor** (★★★, b1) — multiplier + redirect.
 7. **Enter the Avatar State** (★★★, pre-pile) — hexproof + flying for `{W}`.
-8. **Iron Fist** / **Hawkeye** / **Captain America's Shield** (★★, b5).
-9. **Agrus Kos** / **Daredevil** / **Avatar's Wrath** (★★, b6) — blocker exile, repeatable
-   CA, one-sided wipe. All three are `{R}{W}`-or-WW MV 4+: the manabase decides.
-10. **Bygone Colossus**, **Restoration Magic / Bofur**, **Lightfoot Technique**,
-    **Spider-Man**, **Luke Cage**, **Impolite Entrance**, **Bre**, **Key**, **Nova
-    Hellkite**, **Rogue's Passage** (★★).
-11. ★: Giantfall, Terror of the Peaks, Brute, Mjölnir, Wisecrack, Phantom, Pick-Axe,
+8. **Energybending** (★★, b7) — cantrip that pumps Molten Man and fixes WW (O29).
+9. **Demonic Ruckus** (★★, b7) — 2-mana menace + trample, insured, plottable.
+10. **Iron Fist** / **Hawkeye** / **Shield** (★★, b5); **Agrus** / **Daredevil** / **Wrath**
+    (★★, b6); **Hex Magic** / **Lorehold** / **Arkenstone** / **Buster Sword** (★★, b7).
+11. **Bygone Colossus**, **Restoration Magic / Bofur**, **Lightfoot**, **Spider-Man**,
+    **Luke Cage**, **Impolite Entrance**, **Bre**, **Key**, **Nova Hellkite**, **Rogue's
+    Passage** (★★).
+12. ★: Giantfall, Terror of the Peaks, Brute, Mjölnir, Wisecrack, Phantom, Pick-Axe,
     Lonely Mountain, Helix, Trapper, Monica, Bulwark Ox, Zack Fair, Reroute, Stone by
-    Sunlight, Steal the Show, Serum, Civil War.
+    Sunlight, Steal the Show, Serum, Civil War, Kíli, Taii, Vestige, Nexus, Diary, Map,
+    Spear, Strifeknight.
 
 **The white question is now the design decision, not a detail.** Six ★★★ cards are white
 (Sentry, Boots is colourless, Abolisher WW, Avatar State, plus Walters/Voice/Wrath/
@@ -494,9 +559,11 @@ multiplier), Molten Man (Mountain-scaled), Speed (the only unblockable GRANT —
 rider looks conditional and IS, on haste; O2), Seedglaive Mentor (valiant is fed by
 every targeted add), Crackling Cyclops (F4 payoff — `cuts` calls it low power).
 
-### Plan B — 56b "Ball Lightning" burst variant (VARIANT SIGNAL, not yet decided)
+### Plan B — 56b CHEAT-TALL variant (was "Ball Lightning"; renamed after O28 — not yet decided)
 
-**After batch 4 (O19): Tannuk's warp also admits Hill Gigas, Zealous Lorecaster (a
+**After batch 7 (O28): the thesis is COST CHEATING, ~14 cards deep — Tannuk, the warps,
+the Plots, Warped Space + Hex Magic, Sami, Kíli, Serum, Lorehold's miracle, Nexus, Vestige.
+Sire of Seven Deaths and The Arkenstone are its payloads.** After batch 4 (O19): Tannuk's warp also admits Hill Gigas, Zealous Lorecaster (a
 repeatable Bulk Up regrowth) and Stone-Giant.** After batch 3 the body count clears a 60 (O11). Bodies: Ball Lightning, Nova Hellkite,
 Red Tiger Mechan, Bygone Colossus, Iron Giant (via Tannuk), Molten Man / Cyclops / Red Hulk
 (via Tannuk — Molten Man sacrifices a land on leaving, G-42). Payoffs: Terror of the Peaks,
@@ -513,6 +580,8 @@ what is the protection layer when there are no permanents to protect? `/draft-de
 survives the pile.
 
 ### 56a notes
+**Batch 7:** Energybending ★★ (RG has no WW problem, but Molten Man's pump and the cantrip
+stand), Demonic Ruckus ★★ (menace + trample on Halana's body), Hex Magic ★★, Buster Sword ★★.
 **Batch 5:** Stingerback Terror ★★ (RR castable; a flying trample base body 56a lacks),
 Iron Fist ★★ (every Overprotect / Snakeskin Veil / Bulk Up turns him on; Mjölnir-worthy),
 Hawkeye ★★, Shield ★★.
