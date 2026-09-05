@@ -944,7 +944,38 @@ card (O45). The `#: protect:` line for the apply must carry them.
      he ATTACKS — Team Avatar / Luke Cage want him home (O22). Daredevil is the attack-alone
      -compatible CA (his trigger is "whenever you attack", he can stay home… no — he must
      be the attacker; same conflict, milder: vigilance haste 3/4).
-   **Recommended: A**, with the floor reading disclosed.
+   **Recommended: A**, with the floor reading disclosed. **User leans A (2026-09-05).**
+
+### 5.10 Variant inventory — every cluster the pile surfaced, with its roster home
+
+Decision rule: a cluster is a NEW deck only if it has an engine AND payoffs the pile
+supplies (G-59: payoff count, not body count) AND no roster deck already owns the space.
+Cards are never consumed by a deck, so "home" means where the cluster's IDENTITY lives, not
+where its cards may be played.
+
+| # | Cluster | Pile depth | Roster home today | Verdict |
+|---|---|---|---|---|
+| 1 | **WARP / cheat-tall** (O3, O11, O19, O28) — Tannuk, Warped Space, Fire Crystal, Sami, Kíli; Colossus, Vestige, Hellkite, Ball Lightning, Mechan, Gigas/Zog/Lorecaster/Stone-Giant via Tannuk; Terror, Tentacles, Cube, Nexus, Chimil, Spider-Verse; Self-Destruct free | ~25 | **none** — 26 Iron Forge (UR artifact RAMP into big hitters; runs Vestige/Nexus/Colossus/Tannuk) and 45 The Exiles (WBR cast-from-exile PAYOFF) are the neighbours; 56b's thesis is the BODY is temporary, not the cast is rewarded | **NEW DECK — 56b.** `similar` against 26 and 45 before drafting. |
+| 2 | **FIREBALL-tall** (O20, O16, O33) — Pain for All, Iron Fist, Phantom, Self-Destruct, Sentry / Barricade / Luke Cage as survivors, Twinflame, Collective Inferno, Mjölnir, Taii, Camera, Ertha Jo, Wisecrack, Soul Immolation, Red Hulk, Stone-Giant's sac | ~16 | **none** — 49 Big Draco runs Twinflame/Inferno as Dragon burn; nothing wins by pointing a creature's power at the face | **NEW DECK candidate — 56c** ("the body never attacks"). Distinct from 56 by win condition, shares its pump suite. Second priority after 56b. |
+| 3 | **EQUIPMENT-tall** (O6, O8, O26) — Boots, Shield, Mjölnir, Katana, Genji Glove, Blacksmith's Talent, Kíli, Serum, Cloud, Aettir, Ultima, Buster Sword, Sword of W&P, Arsenal, Thorin, Stalwart, Gilgamesh, Item Shopkeep | ~19 | **taken three times**: 38 Armory (WB voltron), 74 Iron Hills Forge (WR Dwarf/Equipment triggers), 39 Starforge (runs Katana, Gilgamesh, Genji Glove, Buster Sword, Mjölnir, Cloud, Sami) | **Borrow, don't build.** Boots / Shield / Mjölnir into 56 and 56a; the rest are 38/39/74 adds. |
+| 4 | **MERCENARY** (O42) — Ertha Jo, Posse Boss, Form a Posse, Brimstone Roundup, Tycoon, Rodeo Pyromancers, Hellspur Brute, Old Hob | ~8 | **73a Duke's Vigil — Hired Guns IS the Mercenary-token deck** (it already runs Ertha Jo, Posse Boss, Form a Posse, Roundup, Adagia, Old Hob) | **Exists.** These are 73a adds; in 56 a sorcery-speed sub-theme of 2–3 cards at most. |
+| 5 | **COPY / spellslinger-tall** (O44) — Sparks, Return the Favor, Spinerock, Camera, Mica, Goggles, Spider-Verse, Wrangler, Sword of W&P, Buster Sword + the prowess bodies (Student, Immolator, Ty Lee, Thor, Monica, Cyclops, Mai) | ~17 | 57 Tempest (RWU prowess tempo), 33 Fighting Spirit (UR haste/DS/pump), 25 Spellstorm | **Taken.** The copy engines are 56 adds (Sparks, Return the Favor, Spinerock in the rebuild); the prowess bodies are 57/33's. |
+| 6 | **STATION** (O37) — Dawnsire, Frigate, Seriema, Gunship, Sweeper, Sawship, Kill-Ship, Battleship, Adagia | ~9 | none, and it cannot stand alone: it needs a tall body as the station source | **Sub-plan** of 56 or 56c (Dawnsire + Frigate, two slots), not a deck. |
+| 7 | **CAST-FROM-EXILE** — the Plots (Stingerback, Ruckus, Longhorn, Roundup), foretell (Comet), Hex Magic, Daydreamer, Warped Space, Charred Foyer, Lightning / Raphael impulse, Spider-Verse | ~12 | **45 The Exiles** (WBR — gets PAID for casting from exile) | **Exists** for the payoff half; the temporary-BODY half is cluster 1. |
+| 8 | **GIANTS** — Stoneback, Walker, Curious Colossus, Brute, Hurler, Bre, Cindermaw, Daydreamer, Iron Giant, Bygone Colossus, Lorecaster, Hill Gigas, Pulverizer, Stone-Giant, Boldwyr | 15 bodies | none | **Not a deck (G-59): ONE payoff** (Boldwyr Aggressor, a DS lord — and DS is worth 0 here). Fifteen bodies with one card that cares is the Mutant shape. |
+| 9 | **MENACE / evasion** (O32); **KILL-TURN LOCK** (O24); **ATTACK-ALONE** (O22, O40); **HASTE-as-enabler** (O2, O10); **REPEATABLE unblockable** (Key, Passage, Bugle) | 3–12 each | — | **Sub-clusters of 56 itself** — they are what the rebuild is made of. |
+
+**Overlaps that matter:** 1 ∩ 3 (Sami's affinity, Kíli, Tannuk warps artifacts — an
+ARTIFACT-warp 56b is one build of cluster 1); 1 ∩ 2 (Self-Destruct free on a leaving body
+is both); 2 ∩ 6 (a fireball body that never attacks is the ideal station source); 4 ∩ 2
+(Ertha Jo copies Iron Fist). **The roster is at 117 files against Arena's 100-deck cap**
+(`.cycle/prune-analysis.md` is live) — each new deck is a prune somewhere else, which is
+one more reason clusters 3–5 and 7 stay as adds to the decks that own them.
+
+**So: two new decks (56b warp, 56c fireball), one retune (56a), four "these are adds to
+an existing deck" lists (38/39/74, 73a, 57/33, 45), one refusal (Giants).** Recommended
+order: `/draft-deck 56b` → `/draft-deck 56c` (or fold 56c's core into 56 as tilt A2 and
+skip it) → `/tune-deck 56a` → finalize 56.
 
 ### 5.8 Craft cost — INFORMATION, per the Player Profile (not a constraint)
 
