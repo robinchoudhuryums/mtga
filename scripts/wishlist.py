@@ -44,7 +44,7 @@ import sys
 
 from lib import (DEFAULT_CSV, REPO_ROOT, load_rows, eprint, atomic_write, owned_qty,
                  alias_front, card_colors, card_distinctiveness, color_matches,
-                 primary_type, land_production)
+                 primary_type, land_production, tapland_kind)
 from scryfall import ScryfallUnavailable
 
 WISHLIST_CSV = os.path.join(REPO_ROOT, "card-wishlist.csv")
@@ -707,6 +707,12 @@ def _is_land(row):
     return primary_type(row.get("Type") or "") == "Land"
 
 
+# Per-color credit for a source that fixes MORE than two of the deck's colors, and the
+# total cap. See `_land_value` for why this is additive rather than a rescaled `multi`.
+_LAND_BREADTH_PER_COLOR = 0.75
+_LAND_BREADTH_CAP = 1.5
+
+
 def _land_value(row, deck_colors):
     """0–10 MANABASE value of a land for its target deck (F03) — the theme-fit axis
     is meaningless for lands (no synergy tags), so score fixing instead: reward
@@ -741,9 +747,40 @@ def _land_value(row, deck_colors):
     match = len(used) / len(prod)                 # fraction of its colors the deck uses
     multi = 1.0 if len(used) >= 2 else 0.5 if len(used) == 1 else 0.0
     base = 3.5 + 4.5 * match * multi              # ~3.5..8 by color usefulness
-    if (not fetch and "enters tapped" not in txt.lower()
-            and "enters the battlefield tapped" not in txt.lower()):
-        base += 1.5                               # untapped fixing is premium
+    # BREADTH ABOVE TWO. `multi` saturates at two colors, so a source producing all THREE
+    # of a three-color deck's colors scored exactly what a two-color dual did — base 8.0
+    # for both. That is not a rounding difference: `deck_source_profile` counts a basic
+    # fetch as a source of EVERY color the deck runs a basic of (G-35), so the two halves
+    # of one subsystem disagreed about what a fetch is worth. The cost was measured on
+    # deck 57 (2026-09-04): three fetches were the largest manabase upgrade available to
+    # it — every worst cast-on-curve row moved 5-8 points and the {U}{U} its own flex
+    # block had recorded as unfixable came good — and they sat at rank 45-47 of 216,
+    # behind 29 cards tied at 10.5, because they tie at 8.0 and then lose the synergy
+    # tiebreak (a fetch carries no theme tags). The user found them by asking.
+    #
+    # ADDITIVE and ONE-DIRECTIONAL UP, deliberately: a multiplicative fix (dividing by the
+    # deck's color count) would have LOWERED every two-color dual in every three-color
+    # deck, re-ranking the whole roster to fix an ordering at the top. This can only
+    # promote a genuinely broader source, so no existing recommendation is withdrawn.
+    # Calibrated so a TAPPED three-color source clears a TAPPED dual (8.0 -> 8.75) but
+    # still loses to an UNTAPPED dual (9.5) — untapped-two versus tapped-three is a real
+    # deck-dependent trade and the model should not pretend to settle it.
+    # Breadth counts only colours the land can supply SIMULTANEOUSLY. A choose-once land
+    # ("As it enters, choose a color") reports every colour, because for ACCESS it really
+    # is a source of whichever one you name — but it supplies exactly ONE per game, so
+    # crediting it for three is the error that made seven of these outrank real duals.
+    simultaneous = used - set(lp["chosen"])
+    if len(simultaneous) > 2:
+        base += min((len(simultaneous) - 2) * _LAND_BREADTH_PER_COLOR, _LAND_BREADTH_CAP)
+    # Untapped fixing is premium. Read through `lib.tapland_kind`, the same predicate the
+    # two REPORTING surfaces use — a substring test for "enters tapped" was the third and
+    # last surface of the 2026-09-04 shockland defect: `tapland_profile` and
+    # `suggest --lands`' `·tapped?` marker were fixed to call a shockland conditional while
+    # this SCORING path still withheld the premium, so Hallowed Fountain valued at 8.0 as
+    # though it always entered tapped. A shockland's condition is payable AT WILL, so it
+    # earns the premium; a board-state condition may not be met and stays conservative.
+    if not fetch and tapland_kind(txt) in (None, "shock"):
+        base += 1.5
     # Halve the fixing PREMIUM (never the 3.5 neutral floor) when every color this deck
     # wants from the land is restricted. Bounded and one-directional: it can only lower a
     # land, never raise one, so it cannot invent a recommendation. Half rather than zero

@@ -88,6 +88,11 @@ _EXCLUDED = {
     ("lib", "_EXTRA_MANA_COST_RE"): ("runs against the COST half of one ability line "
                                      "(before the colon) inside `land_production`, never "
                                      "whole card text; exercised by test_lib.py"),
+    # P4 (2026-09-04): the existential-claim scan reads a deck's `#: tier:` / `#: archetype:`
+    # PROSE, never card text — the live-corpus check would be meaningless for it.
+    ("deck", "_EXISTENTIAL_CLAIM_RE"): "tier-RATIONALE prose; unit-tested in test_deck.py",
+    ("deck", "_EXISTENTIAL_SCOPED_RE"): "tier-RATIONALE prose; unit-tested in test_deck.py",
+    ("deck", "_EXISTENTIAL_SUBJECT_RE"): "tier-RATIONALE prose; unit-tested in test_deck.py",
     ("deck", "_HISTORY_CUES"): "tier-RATIONALE prose; unit-tested in test_deck.py",
     ("deck", "_COMPARISON_CUES"): "tier-RATIONALE prose; unit-tested in test_deck.py",
     ("deck", "_FIGURE_PAST"): "tier-RATIONALE prose; unit-tested in test_deck.py",
@@ -109,6 +114,25 @@ _EXCLUDED = {
                                   "verbatim); unit-tested in test_deck.py",
     ("deck", "_FIG_SOURCE_SLASH"): "tier-RATIONALE prose (the '13/8/10 sources' idiom, BS8-16 — "
                                    "a claim about the deck's manabase, not card text)",
+    ("deck", "_COST_SCALE_STATE"): "runs on the EXTRACTED resource phrase, never on card "
+                                   "text — it separates a deck-composition count "
+                                   "(\"artifact you control\") from a game-state one "
+                                   "(\"card exiled this way\"), the line G-76 draws; a "
+                                   "whole-text corpus check would be meaningless for it",
+    ("deck", "_FIG_FLOOR_BAND"): "tier-RATIONALE prose (the 'metrics floor is A' claim — "
+                                 "a band LETTER, which is why no numeric figure pattern "
+                                 "could ever price it); unit-tested in test_deck.py",
+    ("deck", "_FIG_FLOOR_WANT"): "tier-RATIONALE prose (a floor the deck is AIMING at, as "
+                                 "`tier --to A` prints, is a target not a claim); "
+                                 "unit-tested in test_deck.py",
+    ("deck", "_FIG_FLOOR_HELD"): "tier-RATIONALE prose (\"held one band under the floor "
+                                 "AT B\" names the LETTER, not the floor — deck 75's "
+                                 "idiom); unit-tested in test_deck.py",
+    ("deck", "_FIG_FLOOR_PAST"): "tier-RATIONALE prose (an explicitly retrospective floor "
+                                 "claim; deliberately NARROWER than the shared "
+                                 "_figure_is_history, which suppresses a change narrative "
+                                 "— for a BAND that narrative names where the change "
+                                 "LANDED); unit-tested in test_deck.py",
     ("tag_synergies", "_QUOTED_TEXT_RE"): "a QUOTE stripper (the ability a token or emblem "
                                           "carries), applied before a rule reads the text — "
                                           "BS8-31; not a card-text pattern",
@@ -262,13 +286,32 @@ def _pattern_groups():
     # The two reminder-text strippers run BEFORE normalization — `_norm_role_text`
     # applies deck._REMINDER_RE itself since BS8-30 — so the norm corpus contains no
     # parenthetical for them to match. Raw is the form they actually see.
+    # The cost-scaling family reads ORIGINAL-case oracle text on purpose: "Equip Wizard
+    # {1}" is a type-scoped discount and "Equip {3}" is not, and the capital is the only
+    # thing separating a creature TYPE from a generic noun — the same reason the
+    # tribal-payoff scan is registered raw.
+    for name in ("_COST_SCALE_AFFINITY", "_COST_SCALE_EACH", "_COST_SCALE_EQUIP",
+                 "_COST_SCALE_PLAIN_EQUIP"):
+        out.append((f"deck.{name}", getattr(deck, name), "raw"))
     out.append(("deck._REMINDER_RE", deck._REMINDER_RE, "raw"))
+    # `card_advantage_split` (P3, 2026-09-04): the repeatable-vs-one-shot report beside the
+    # card-advantage count. Line-anchored on ORIGINAL-case oracle text, so the raw corpus.
+    # If either dies the split silently reads every source as one-shot.
+    for name in ("_CA_ETB_RE", "_CA_REPEATABLE_RE"):
+        out.append((f"deck.{name}", getattr(deck, name), "raw"))
     out.append(("lib._STRUCT_REMINDER_RE", lib._STRUCT_REMINDER_RE, "raw"))
     # `lib.land_production` (BS8-01/02): the ONE reader behind every colour-source count
     # and `suggest --lands`. Every one of these going dead is the quiet direction — an
     # any-colour land back to zero sources, a fetch back to invisible. Raw form: the Add
     # clause and the fetch clause are read from ORIGINAL-case oracle text, per line.
-    for name in ("_ADD_CLAUSE_RE", "_ANY_COLOR_RE", "_FETCH_BASIC_RE", "_LAND_REMINDER_RE"):
+    for name in ("_ADD_CLAUSE_RE", "_ANY_COLOR_RE", "_FETCH_BASIC_RE", "_LAND_REMINDER_RE",
+                 # 2026-09-04: the four EXCLUSION patterns. Each one exists because a land
+                 # that produces little or nothing was read as a five-colour free source —
+                 # choose-ONCE-on-entry, a clause reachable only by transforming, an extra
+                 # non-mana tap cost, and an ability GRANTED to other permanents. If any
+                 # goes dead the land comes back as a rainbow source, silently.
+                 "_CHOSEN_COLOR_RE", "_TRANSFORM_GATED_RE", "_EXTRA_TAP_COST_RE",
+                 "_GRANTED_ABILITY_RE"):
         out.append((f"lib.{name}", getattr(lib, name), "raw"))
     out += [("tag_synergies._TRIBAL_PAYOFF_RES", p, "raw")
             for p in tag_synergies._TRIBAL_PAYOFF_RES]
@@ -296,9 +339,13 @@ def _pattern_groups():
         out.append((f"tag_synergies.{name}", getattr(tag_synergies, name), "norm"))
     for name in ("_POWER_SCOPE_MINE_RE", "_POWER_SCOPE_TOTAL_RE"):
         out.append((f"deck.{name}", getattr(deck, name), "window"))
-    # tapland_profile (G-25/G-60-style report-only tempo context in `consistency`)
-    for name in ("_TAPLAND_RE", "_TAPLAND_COND_RE"):
-        out.append((f"deck.{name}", getattr(deck, name), "norm"))
+    # `lib.tapland_kind` (G-25/G-60-style report-only tempo context in `consistency`,
+    # plus `suggest --lands`' marker and `_land_value`'s untapped premium — one predicate,
+    # three consumers since 2026-09-04). `_TAPLAND_SHOCK_RE` is what separates a condition
+    # payable AT WILL from a board-state one; if it dies, every shockland silently reverts
+    # to being scored and reported as a flat tapland.
+    for name in ("_TAPLAND_RE", "_TAPLAND_COND_RE", "_TAPLAND_SHOCK_RE"):
+        out.append((f"lib.{name}", getattr(lib, name), "norm"))
     # wishlist's oracle-text classifiers (BS-04): the flex-removal seed bonus and the
     # G-19 conditional-power (`pow~`) flag. If _FLEX_REMOVAL_RE goes dead, the seed
     # ranking's other terms keep check_rankings green, so this is the ONLY gate that

@@ -2,9 +2,12 @@
 #: format: Standard
 #: colors: GWU
 #: plan: midrange
-#: tier: B (PROVISIONAL — unplayed brew, graded 2026-08-08). Metrics floor is A
-#: tier: (interaction 6 + card advantage 3, protection 4, avg MV 2.97) and the letter is
-#: tier: held UNDER it deliberately: the re-buy engine pays its cost in TEMPO (a
+#: tier: B (PROVISIONAL — unplayed brew, graded 2026-08-08). Metrics floor is B
+#: tier: (interaction 6 + card advantage 3, protection 4, avg MV 2.97 — it read A until
+#: tier: `TIER_FLOOR_REQ` was re-derived from the roster distribution 2026-09-02, which
+#: tier: raised the A floor's interaction requirement to 7), so the letter sits AT its floor. The reasons
+#: tier: it was held UNDER an A floor still argue against re-grading UP, and are the
+#: tier: reasons to read the B as earned rather than defaulted: the re-buy engine pays its cost in TEMPO (a
 #: tier: web-slinging cast returns a body you already paid for), which no metric here
 #: tier: prices; card advantage rests heavily on one craft target (Mary Jane); and the
 #: tier: engine's leader must transform through {1}{G}{W}{U} before the discount line

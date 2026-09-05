@@ -23,8 +23,12 @@
 #: archetype: no ETB-value creatures, and deliberately drives its OWN total DOWN — the
 #: archetype: swap is a one-shot refund and stabiliser, not a repeatable draw engine.
 #: archetype: Opposite life postures, opposite creature bases, same finisher.
-#: tier: B — Orzhov life-as-currency attrition, one band BELOW the A metrics floor,
-#: tier: PROVISIONAL (unplayed brew). The floor reads A on interaction 6 (FIVE of it
+#: tier: B — Orzhov life-as-currency attrition, AT the B metrics floor (this block placed
+#: tier: the deck one band below an A floor until `TIER_FLOOR_REQ` was re-derived from
+#: tier: the roster distribution 2026-09-02, which raised the A floor's interaction requirement to 7 —
+#: tier: interaction is the ONLY thing between this deck and an A floor, since card
+#: tier: advantage 10 clears the resilience sum on its own),
+#: tier: PROVISIONAL (unplayed brew). The floor reads B on interaction 6 (FIVE of it
 #: tier: instant-speed, two answering a noncreature permanent) plus card advantage 10 over
 #: tier: a 2.66 curve — five surplus removal spells became the pay-life engine and the
 #: tier: drain clock, and the Gwenom / Enduring Tenacity adds since cost two more

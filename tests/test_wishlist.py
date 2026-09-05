@@ -622,3 +622,83 @@ class TestAddTargetVocabulary:
     def test_the_status_label_normalizes_a_padded_id(self):
         assert wishlist._status_label("06", {"6": ("B", 0)}) == "B·0"
         assert wishlist._status_label("general", {"6": ("B", 0)}) == "—"
+
+
+class TestLandBreadthAboveTwo:
+    """`multi` saturated at two colours, so a source fixing all THREE of a three-colour
+    deck's colours scored exactly what a two-colour dual did. `deck_source_profile`
+    counts a basic fetch as a source of every colour the deck runs a basic of (G-35), so
+    the two halves of one subsystem disagreed. Deck 57's three fetches — the largest
+    manabase upgrade available to it — sat at rank 45-47 of 216 (2026-09-04)."""
+
+    FETCH = ("{T}, Sacrifice this land: Search your library for a basic land card, "
+             "put it onto the battlefield tapped, then shuffle.")
+    TAPPED_DUAL = "This land enters tapped. {T}: Add {W} or {U}."
+    UNTAPPED_DUAL = "{T}: Add {W} or {U}."
+
+    def _land(self, txt, ident=""):
+        return {"Card Text": txt, "Color(s)": ident}
+
+    def test_a_three_colour_source_beats_a_two_colour_one_in_a_three_colour_deck(self):
+        three = {"W", "U", "R"}
+        assert (wishlist._land_value(self._land(self.FETCH), three)
+                > wishlist._land_value(self._land(self.TAPPED_DUAL), three))
+
+    def test_breadth_never_overturns_the_untapped_premium(self):
+        """Untapped-two versus tapped-three is a real deck-dependent trade; the fixing
+        model must not pretend to settle it, so the breadth credit is calibrated to stay
+        under the 1.5 untapped premium."""
+        three = {"W", "U", "R"}
+        assert (wishlist._land_value(self._land(self.FETCH), three)
+                < wishlist._land_value(self._land(self.UNTAPPED_DUAL), three))
+
+    def test_a_two_colour_deck_is_untouched(self):
+        """The term is additive and gated on len(used) > 2, so nothing below three
+        colours can move — no existing recommendation is withdrawn by this change."""
+        two = {"W", "U"}
+        assert (wishlist._land_value(self._land(self.FETCH), two)
+                == wishlist._land_value(self._land(self.TAPPED_DUAL), two))
+
+    def test_the_credit_is_capped(self):
+        """Bounded like every other co-signal here: a five-colour source in a five-colour
+        deck cannot run away with the ranking."""
+        five = set("WUBRG")
+        three = {"W", "U", "R"}
+        gain5 = wishlist._land_value(self._land(self.FETCH), five)
+        gain3 = wishlist._land_value(self._land(self.FETCH), three)
+        assert gain5 - gain3 <= wishlist._LAND_BREADTH_CAP
+
+class TestShocklandEarnsTheUntappedPremium:
+    """The THIRD surface of the 2026-09-04 tapland defect. `tapland_profile` and
+    `suggest --lands`' `·tapped?` marker were fixed to read a shockland as conditional
+    while this SCORING path still tested for the substring "enters tapped", so Hallowed
+    Fountain valued at 8.0 as though it always entered tapped. All three now call
+    `lib.tapland_kind`."""
+
+    SHOCK = ("({T}: Add {W} or {U}.)\nAs this land enters, you may pay 2 life. "
+             "If you don't, it enters tapped.")
+    UNTAPPED = "{T}: Add {W} or {U}."
+    BOARD_COND = "This land enters tapped unless you control two or more other lands.\n{T}: Add {W} or {U}."
+    FLAT = "This land enters tapped.\n{T}: Add {W} or {U}."
+
+    def _l(self, t):
+        # Identity is load-bearing here exactly as it is on the real rows: a shockland
+        # prints its mana ability in PARENTHESES, which `_LAND_REMINDER_RE` strips, so the
+        # colours come from the Color(s) cell — the documented fallback.
+        return {"Card Text": t, "Color(s)": "W/U"}
+
+    def test_a_shockland_scores_as_untapped(self):
+        """Its condition is payable AT WILL — the same reasoning that already treats a
+        pay-life cost as a real source every turn."""
+        three = {"W", "U", "R"}
+        assert (wishlist._land_value(self._l(self.SHOCK), three)
+                == wishlist._land_value(self._l(self.UNTAPPED), three))
+
+    def test_a_board_state_condition_stays_conservative(self):
+        """"unless you control two or more other lands" may simply not be met, so it keeps
+        the tapped score and prints `·tapped?` for a human to judge (G-37)."""
+        three = {"W", "U", "R"}
+        assert (wishlist._land_value(self._l(self.BOARD_COND), three)
+                == wishlist._land_value(self._l(self.FLAT), three))
+        assert (wishlist._land_value(self._l(self.BOARD_COND), three)
+                < wishlist._land_value(self._l(self.SHOCK), three))

@@ -47,6 +47,7 @@ hybrid {W/U} pips are counted as flexible rather than demanding both colors.
 
 import argparse
 import csv
+import functools
 import json
 import math
 import os
@@ -63,7 +64,7 @@ from lib import (BASICS as lib_BASICS, DEFAULT_CSV, MATCHES_CSV, REPO_ROOT,
                  load_rows, eprint, card_colors, owned_qty,
                  card_distinctiveness, backup_path, card_power, front_face_cost,
                  mana_value, primary_type, atomic_write, alias_front,
-                 land_production)
+                 land_production, tapland_kind)
 from scryfall import post_collection, ScryfallUnavailable
 
 POOL_CSV = os.path.join(REPO_ROOT, "card-pool.csv")
@@ -2740,17 +2741,43 @@ _CUTS_MULT_MIN_SOURCES = 4      # below this, a doubler genuinely has nothing to
 _CUTS_MULT_PER_SOURCE = 0.35
 
 
-def _cuts_multiplier_adj(support):
+def _cuts_cost_scale_adj(support):
+    """Keep-bias for a card whose COST falls with the deck's count of a type.
+
+    Scaled to `_cuts_multiplier_adj`'s range and zero below the same floor
+    `cost_scale_boost` uses, so the two surfaces cannot disagree about whether a deck
+    supplies a resource. Only ever RAISES a keep-score: a scaler in a deck that does not
+    supply its type is already handled by theme fit, and subtracting there would punish
+    the same card twice.
+    """
+    if support < _COST_SCALE_MIN_SOURCES:
+        return 0.0
+    return min(_CUTS_MULT_CAP,
+               (support - _COST_SCALE_MIN_SOURCES + 1) * _CUTS_MULT_PER_SOURCE)
+
+
+def _cuts_multiplier_adj(support, axis=None):
     """Keep-bias for a doubler, proportional to the magnitude it multiplies.
 
-    Bounded to 0…_CUTS_MULT_CAP and ZERO below _CUTS_MULT_MIN_SOURCES — a doubler in a
-    deck that does not feed its axis really is cuttable, which is why this only ever
-    RAISES a keep-score and never lowers one: the no-support case is already handled by
-    theme-fit, and subtracting there would punish the same card twice.
+    Bounded to 0…_CUTS_MULT_CAP and ZERO below the axis floor — a doubler in a deck that
+    does not feed its axis really is cuttable, which is why this only ever RAISES a
+    keep-score and never lowers one: the no-support case is already handled by theme-fit,
+    and subtracting there would punish the same card twice.
+
+    Density is counted ABOVE the floor, and the floor is the AXIS's (`doubler_calib`)
+    where that axis has its own, else this term's `_CUTS_MULT_MIN_SOURCES`. The rate and
+    cap stay this term's own. Without the per-axis floor this saturated even harder than
+    the `suggest-homes` boost it mirrors: at 0.35/source it pins its 3.0 cap by 9 feeders,
+    and the `triggers` axis has a roster MINIMUM of 10 — so every deck on the roster got
+    the identical maximum keep-bias for any trigger doubler, on 100% of decks rather than
+    the 92% the fit boost hit. Two terms, one bug, and the code comment beside the caller
+    promising the two models "can't disagree" was what made it worth checking both.
     """
-    if support < _CUTS_MULT_MIN_SOURCES:
+    floor = (_DOUBLER_CALIB[axis][0] if axis in _DOUBLER_CALIB
+             else _CUTS_MULT_MIN_SOURCES)
+    if support < floor:
         return 0.0
-    return min(_CUTS_MULT_CAP, support * _CUTS_MULT_PER_SOURCE)
+    return min(_CUTS_MULT_CAP, (support - floor + 1) * _CUTS_MULT_PER_SOURCE)
 
 
 # `suggest --lands` co-signals. A land's dominant value is FIXING (wishlist._land_value,
@@ -3440,7 +3467,11 @@ def cmd_stats(args):
         print(f"  {'interaction total':20} {count_conf(role_counts, 'interaction'):>7}  "
               "(distinct removal/sweeper/counter cards; +N? = cards whose text reads like "
               "interaction the classifier could NOT tag)")
-        print(f"  {'card advantage':20} {count_conf(role_counts, 'card_advantage'):>7}")
+        ca_rep, ca_one, _ca_notes = card_advantage_split(cards, carddata)
+        ca_split = (f"  ({ca_rep} repeatable, {ca_one} one-shot — the integer counts CARDS, "
+                    "not how often each one pays)") if (ca_rep or ca_one) else ""
+        print(f"  {'card advantage':20} {count_conf(role_counts, 'card_advantage'):>7}"
+              f"{ca_split}")
 
     # PROTECTION axis. The role table's "Protection / trick" bucket mixes combat pumps
     # in with real answers to removal, so a deck could show a healthy trick count while
@@ -3781,6 +3812,65 @@ def role_tally(cards, carddata):
     per_role["unclassified"] = _weigh(unclassified)
     per_role["unreadable"] = _weigh(no_data)
     return per_role
+
+
+# One-shot vs repeatable card advantage (P3, 2026-09-04). `role_tally` counts CARDS, so
+# "card advantage 6" flattened one repeating engine, one net-+1 planeswalker activation and
+# four one-shots into a single integer — and TWO tuning decisions on deck 57 leaned on that
+# integer before the USER caught it; no tool did. `count_conf` (G-48) annotates
+# CLASSIFICATION uncertainty, never quality dispersion INSIDE the count.
+#
+# A 1-3 "limited / versatile" SCALE for the role buckets was proposed and DECLINED, for
+# reasons worth keeping: it changes the UNITS of the only two terms `tier_band` reads (not
+# a new term — the existing ones rescaled), so `TIER_FLOOR_REQ` would need re-deriving and
+# the 110 of 117 deck files that cite interaction/card-advantage figures in `#: tier:` prose
+# would all go stale in one commit; the classifier is the weak link rather than the
+# granularity (560 of 1882 roster cards score ZERO roles); and "versatile" is exactly the
+# fuzzy judgment this module keeps deliberately as a FLAG (G-09, G-25, G-41).
+#
+# So this is the G-81 pattern instead: an orthogonal REPORT-ONLY split, rendered beside the
+# count while the bare int still feeds `tier_band`. Same shape as `early_drops`' "9 (4 mana
+# sources)" and the interaction profile's speed split (G-24).
+_CA_ETB_RE = re.compile(r"^\s*when(?:ever)? [^,\n]{0,40}\benters\b", re.I | re.M)
+_CA_REPEATABLE_RE = re.compile(
+    r"^\s*(?:whenever\b|at the beginning of\b)"          # a trigger that fires again
+    r"|^[^:\n]{1,40}:\s",                                  # or an activated ability (K-14)
+    re.I | re.M)
+
+
+def card_advantage_split(cards, carddata):
+    """(repeatable, one_shot, notes) — quantity-weighted, REPORT-ONLY, never scored.
+
+    A card advantage source is REPEATABLE when a permanent supplies it through a recurring
+    trigger or an activated ability, and ONE-SHOT when it is an instant/sorcery or arrives
+    on a single enters-the-battlefield trigger. The distinction is structural and read off
+    the text, exactly as K-14's argument for counting activated draws in the first place —
+    an activated ability is repeatable by construction.
+    """
+    rep, one = 0, 0
+    notes = {"repeatable": [], "one_shot": []}
+    for q, n, _s, _c in cards:
+        row = carddata.get((n or "").lower()) or {}
+        typ, txt = row.get("type") or "", row.get("text") or ""
+        if "Land" in typ or _ms_key(n) in BASICS:
+            continue
+        if "Card advantage" not in classify_roles(txt):
+            continue
+        spell = ("Instant" in _primary_type(typ) or "Sorcery" in _primary_type(typ))
+        # An ETB is one-shot even on a permanent; a recurring trigger or an activated
+        # ability is not. A card with BOTH (Gwen's ETB plus Ghost-Spider's counter sink)
+        # reads repeatable, which is the honest call — the recurring half is real.
+        if not spell and _CA_REPEATABLE_RE.search(txt) and not (
+                _CA_ETB_RE.search(txt) and not _CA_REPEATABLE_RE.search(
+                    _CA_ETB_RE.sub(" ", txt))):
+            rep += q
+            notes["repeatable"].append((q, n))
+        else:
+            one += q
+            notes["one_shot"].append((q, n))
+    for k in notes:
+        notes[k].sort(key=lambda t: t[1])
+    return rep, one, notes
 
 
 def count_conf(tally, key):
@@ -4658,14 +4748,20 @@ def suggest_lands(d, unowned=False, owned=False, limit=20, fmt=None, any_format=
         syn = _land_synergy_bonus(tags, central_w)
         short = _land_shortfall_bonus(on_color, deficit)
         low = txt.lower()
-        tapped = ("enters tapped" in low or "enters the battlefield tapped" in low)
+        tapped = tapland_kind(txt) is not None
         # CONDITIONAL vs FLAT tapping, shown separately. `_land_value` treats both as
         # tapped, which is the conservative read and is exactly right for a deck that
         # cannot meet the condition — but it is an UNDER-score for one that can (Great
         # Arashin City enters untapped in any deck with a Forest). Deciding satisfiability
         # needs the deck's contents, so this REPORTS the condition instead of guessing:
         # G-52's rule that a verdict surface prints its evidence.
-        cond_tapped = tapped and "unless" in low
+        # Routed through `lib.tapland_kind` — the SAME predicate `tapland_profile` and
+        # `wishlist._land_value` use. There were THREE implementations of one question
+        # ("is the tapping conditional?"): a bare `"unless" in low` here, the regex in
+        # `tapland_profile`, and a substring test in the scoring path. All three missed
+        # shocklands in different ways (2026-09-04) — the G-45 rule that functions
+        # answering one question must have their filters diffed, found the hard way.
+        cond_tapped = tapland_kind(txt) in ("shock", "conditional")
         # Restricted production ("Spend this mana only to cast a creature spell"). The
         # score already discounts it; this is what lets a human tell WHY.
         restricted = "spend this mana only" in low
@@ -5500,10 +5596,6 @@ def format_source_notes(notes, indent="  "):
     return out
 
 
-_TAPLAND_RE = re.compile(r"enters(?: the battlefield)? tapped", re.I)
-_TAPLAND_COND_RE = re.compile(r"enters(?: the battlefield)? tapped[^.\n]*\b(unless|if )", re.I)
-
-
 def tapland_profile(cards, carddata):
     """(unconditional, conditional, nonbasic_land_total) — each a sorted [(qty, name)].
 
@@ -5527,9 +5619,10 @@ def tapland_profile(cards, carddata):
             continue
         total += q
         text = row.get("text") or ""
-        if _TAPLAND_COND_RE.search(text):
+        kind = tapland_kind(text)
+        if kind in ("shock", "conditional"):
             cond.append((q, n))
-        elif _TAPLAND_RE.search(text):
+        elif kind == "unconditional":
             uncond.append((q, n))
     return sorted(uncond, key=lambda t: t[1]), sorted(cond, key=lambda t: t[1]), total
 
@@ -7578,6 +7671,12 @@ def cut_keep_score(ctx, tline, text, tags, rarity="", qty=1):
     mult_support = (doubler_support(mult_axis, ctx["cards"], ctx["carddata"],
                                     doubler_restriction(text))
                     if mult_axis else 0)
+    # …and the cost-scaling twin: a card the deck makes CHEAP is not filler, and both
+    # halves of the cut score price it at its printed cost. Same primitives
+    # `suggest-homes` uses, for the reason the comment above gives.
+    cscale_res = cost_scale_resource(text)
+    cscale_support = (cost_scale_support(cscale_res, ctx["cards"], ctx["carddata"])
+                      if cscale_res else 0)
 
     # keep-score: higher = keep; cut candidates sort to the top (lowest keep).
     # Role credit is impact-weighted (see _role_credit) so a strong-but-off-theme
@@ -7590,7 +7689,8 @@ def cut_keep_score(ctx, tline, text, tags, rarity="", qty=1):
     keep = (fit + _role_credit(roles, ctx["deck_tally"]) + (1 if hit_central else 0)
             + (2 if sig_hit else 0) + min(tribal, 6)
             + _cuts_power_adj(power) + _cuts_uniq_adj(uniq)
-            + _cuts_multiplier_adj(mult_support))
+            + _cuts_multiplier_adj(mult_support, mult_axis)
+            + _cuts_cost_scale_adj(cscale_support))
 
     reasons = []
     if tags and not hit_central:
@@ -8593,6 +8693,169 @@ _FIXER_KEY_RATE = 0.7
 # still lost the ranking. What is missing is a deck-side COUNT, so this is a scoring term
 # on the same bounded pattern as `_fixer_boost` (whose value likewise scales with a
 # deck-side quantity, the colour count).
+# ---- COST THAT SCALES WITH A DECK COUNT ------------------------------------------
+# The doubler overlay below answers "this card MULTIPLIES something — how much of it does
+# the deck do?". This is the same question one step earlier in the turn: a card whose COST
+# falls with a count you control is worth what the deck supplies, and every model here
+# prices a card's cost as printed. Three templatings, one effect:
+#
+#   Affinity for artifacts                                      (52 pool instances)
+#   This spell costs {1} less to cast for each Equipment …     (134 instances)
+#   Equip Wizard {1}  /  Equip {3}                              (16 pool cards)
+#
+# The third is why this exists: `suggest-homes` ranked Wizard's Staff into a ONE-Wizard
+# deck above two 20-Wizard decks, because "Equip Wizard {1}" is a two-thirds discount that
+# nothing read — the card's printed cost is identical in every deck.
+#
+# SCOPE IS DELIBERATELY NARROW, on the line G-76 already draws: only a resource the DECK'S
+# COMPOSITION decides is counted. "for each artifact you control" is a deck-building fact;
+# "for each card exiled this way", "for each creature in your party", "for each creature
+# card in your graveyard" are GAME STATE at cast time, and a deck-list count is not the
+# quantity those ask about. 55 pool instances are state-shaped and are left alone rather
+# than answered wrongly.
+_COST_SCALE_AFFINITY = re.compile(r"\baffinity for ([A-Za-z][\w' ]*)", re.I)
+_COST_SCALE_EACH = re.compile(r"costs? \{[^}]+\} less to cast for each ([^.,;]{1,60})", re.I)
+# A type-scoped equip is only a discount if a PLAIN equip cost also exists to be cheaper
+# than — "Equip {3}" alongside "Equip Wizard {1}". Without that pair the scoped cost IS
+# the only cost and there is no reduction to price.
+_COST_SCALE_EQUIP = re.compile(r"[Ee]quip ([A-Z][a-z]+(?: [a-z]+)?) \{")
+_COST_SCALE_PLAIN_EQUIP = re.compile(r"[Ee]quip \{")
+# A qualifier that makes the count a board/zone/timing question rather than a deck one.
+_COST_SCALE_STATE = re.compile(
+    r"\b(this way|this turn|in your (?:graveyard|hand|party)|exiled|sacrificed|died|"
+    r"drawn|attacked|among|power|toughness|counter|color|damage|life|opponent)\b", re.I)
+# Card types are countable directly; anything else must be a real subtype in the pool.
+_COST_SCALE_CARD_TYPES = {"artifact", "creature", "enchantment", "land", "instant",
+                          "sorcery", "planeswalker", "battle", "equipment", "token",
+                          "legendary creature", "commander"}
+
+
+@functools.lru_cache(maxsize=1)
+def _cost_scale_subtypes():
+    """Every creature/artifact SUBTYPE the pool actually prints, lowercased.
+
+    A resource is only countable if it names a real type — otherwise a phrase the
+    patterns mis-slice ("basic land type among lands you") becomes a resource no card can
+    ever satisfy, and the support count is a silent zero rather than a visible miss.
+
+    Memoised, and returns a FROZENSET rather than a set: this is a derived reference table
+    handed to every caller, and G-71 is the standing lesson that a shared memoised table
+    which any caller can mutate will eventually be mutated. Building it walks the whole
+    pool, so recomputing per call made a roster sweep take minutes.
+    """
+    subs = set()
+    for c in load_card_data().values():
+        tl = c.get("type") or ""
+        if "—" not in tl:
+            continue
+        for word in tl.split("—", 1)[1].replace("//", " ").split():
+            if word.isalpha():
+                subs.add(word.lower())
+    return frozenset(subs)
+
+
+def _cost_scale_singulars(word):
+    """Candidate singular forms of a plural resource name, commonest shapes first.
+
+    Magic's creature types pluralise ordinarily but not uniformly, and a naive `[:-1]`
+    turns "Allies" into "allie" — a resource no card can carry, so the support count
+    returns a silent 0 and the card reads as having no discount at all. Yielded as
+    CANDIDATES checked against the real type list rather than applied blind, so a wrong
+    guess simply fails to match instead of inventing a type.
+    """
+    out = []
+    if word.endswith("ies"):
+        out.append(word[:-3] + "y")          # Allies -> ally
+    if word.endswith("ves"):
+        out.append(word[:-3] + "f")          # Elves -> elf
+        out.append(word[:-3] + "fe")         # Knives -> knife
+    if word.endswith("es"):
+        out.append(word[:-2])                # Foxes -> fox
+    if word.endswith("s"):
+        out.append(word[:-1])                # Knights -> knight
+    return out
+
+
+def cost_scale_resource(text):
+    """The TYPE whose count in your deck lowers this card's cost, or None.
+
+    Normalised to a bare lowercase singular ("wizard", "artifact", "equipment"), so the
+    support count below can match it against a type line.
+    """
+    if not text:
+        return None
+    raw = []
+    for m in _COST_SCALE_AFFINITY.finditer(text):
+        raw.append(m.group(1))
+    for m in _COST_SCALE_EACH.finditer(text):
+        raw.append(m.group(1))
+    if _COST_SCALE_PLAIN_EQUIP.search(text):
+        for m in _COST_SCALE_EQUIP.finditer(text):
+            raw.append(m.group(1))
+    subs = _cost_scale_subtypes()
+    for phrase in raw:
+        r = phrase.strip().lower()
+        r = re.sub(r"\s+you control\b.*$", "", r).strip()
+        if _COST_SCALE_STATE.search(r) or not r:
+            continue
+        r = re.sub(r"\bcards?\b", "", r).strip()
+        known = _COST_SCALE_CARD_TYPES | subs
+        for cand in (r, *_cost_scale_singulars(r)):
+            if cand in known:
+                return cand
+    return None
+
+
+def cost_scale_support(resource, cards, carddata):
+    """Copies in the deck whose TYPE LINE carries `resource` — the discount's magnitude.
+
+    Reads the type line, never a synergy tag (K-04): the tagger's coverage is a different
+    question from whether a card is an Artifact.
+    """
+    if not resource:
+        return 0
+    n = 0
+    for q, name, _s, _c in cards:
+        nl = name.lower()
+        if nl in BASICS:
+            continue
+        cd = carddata.get(nl) or carddata.get(nl.split(" // ")[0])
+        if not cd:
+            continue
+        if resource in (cd.get("type") or "").lower():
+            n += q
+    return n
+
+
+# Calibrated from the MEASURED distribution, which is the lesson `_DOUBLER_CALIB` was
+# written to record: across all 7,360 (scaler card, deck) pairs the support is nonzero on
+# 57%, and those nonzero counts run p25 2 / p50 3 / p75 10 / p90 22 / max 35. So a couple
+# of copies of a type is the ORDINARY case and says nothing — the floor has to sit above
+# it. floor 4 (a deck with three artifacts is not an artifact deck), key 10 (p75, a real
+# build-around), cap reached at ~22 (p90).
+#
+# The cap is 12 rather than the doubler's 18 on a judgment, stated so it can be argued
+# with: a discount changes WHEN you cast a card, a doubler changes what the card DOES, and
+# the second is worth more. Bounded either way, so neither can override a theme match.
+_COST_SCALE_MIN_SOURCES = 4
+_COST_SCALE_KEY_SOURCES = 10
+_COST_SCALE_PER_SOURCE = 0.65
+_COST_SCALE_CAP = 12.0
+
+
+def cost_scale_boost(support):
+    """Bounded fit bump for a card whose COST falls with the deck's count of a type.
+
+    Zero below the floor, linear above it, hard-capped — the same contract as
+    `doubler_boost` and `_fixer_boost`, and measured from the floor for the same reason
+    (counting the baseline every deck carries is what saturates a bounded term).
+    """
+    if support < _COST_SCALE_MIN_SOURCES:
+        return 0.0
+    return min((support - _COST_SCALE_MIN_SOURCES + 1) * _COST_SCALE_PER_SOURCE,
+               _COST_SCALE_CAP)
+
+
 _DOUBLER_AXES = {
     # axis -> (what the DOUBLER's text looks like, what a deck card that FEEDS it looks like)
     "tokens": (
@@ -8618,7 +8881,7 @@ _DOUBLER_AXES = {
         re.compile(r"if you would gain life[^.]{0,60}?twice that much", re.I),
         re.compile(r"\bgains? \d+ life|\bgain that much life|\blifelink\b", re.I)),
 }
-_DOUBLER_PER_SOURCE = 1.2   # fit points per feeding card
+_DOUBLER_PER_SOURCE = 1.2   # fit points per feeding card ABOVE the axis floor
 # Ceiling chosen as a SAFETY rail, not an operating point: real decks feed an axis with
 # 4-15 cards, so at 1.2/source the term is effectively linear across that whole range and
 # the cap only bites past 15. Capping lower (12) made it saturate at 10 and stop
@@ -8628,6 +8891,44 @@ _DOUBLER_CAP = 18
 _DOUBLER_MIN_SOURCES = 5    # below this the deck does not do the thing enough to matter
 _DOUBLER_KEY_SOURCES = 10   # at this density the doubler IS a key card (mirrors the
                             # fixer overlay promoting at 4+ colours)
+
+# THE FLOOR IS THE AXIS'S ZERO POINT, AND THE BOOST USED TO MEASURE FROM ACTUAL ZERO.
+# `_DOUBLER_MIN_SOURCES` is defined as "below this the deck does not do the thing enough
+# to matter", so density ABOVE it is the quantity a doubler is worth — but `doubler_boost`
+# grew as `support * per` from 0, which double-counts the baseline every deck already has.
+# Where the baseline is small next to the range that error is harmless; where it is large
+# the term saturates and stops carrying information, and the roster says the `triggers`
+# axis is exactly that case. Feeder counts across the 115 decks:
+#
+#     axis        p10  p25  p50  p75  p90  max   at/over the old cap (15 feeders)
+#     tokens        3    5    8   11   16   29    16 decks = 14%
+#     counters      2    3    6   10   13   25     8 decks =  7%
+#     lifegain      1    3    5    8   13   30    10 decks =  9%
+#     triggers     17   20   23   25   30   35   106 decks = 92%
+#
+# The global constants are ROSTER PERCENTILES for the three healthy axes — floor 5 ~ p25,
+# key 10 ~ p75, cap reached ~ p90 — and `triggers` is the one axis whose distribution sits
+# nowhere near them: its MINIMUM is 10, so every deck cleared both the floor and the KEY
+# promotion, and 92% pinned the cap. The term was therefore constant roster-wide on the
+# axis with the most doubler cards in the pool (32 of 57). Measured consequence:
+# Wizard's Staff, a trigger doubler, collected the identical +18 in deck 37 (30 feeders),
+# 37b (35) and 57 (22), so ranking fell back to theme overlap and put the ONE-Wizard deck
+# above the two 20-Wizard decks for a card reading "Equip Wizard {1}".
+#
+# Fix is per-axis floor/key at each axis's OWN p25/p75, with `per` and `cap` left global;
+# the three healthy axes keep their existing numbers because their distributions already
+# match. Same method and same standing hazard as `TIER_FLOOR_REQ` (BS8-06): these are
+# calibrated against a roster that grows, so re-derive when a distribution moves, and
+# never treat the fact that one axis discriminates as evidence that all four do.
+_DOUBLER_CALIB = {
+    # axis -> (floor, key_sources), from that axis's roster p25 / p75
+    "triggers": (20, 25),
+}
+
+
+def doubler_calib(axis):
+    """(floor, key_sources) for an axis — its own p25/p75, else the global defaults."""
+    return _DOUBLER_CALIB.get(axis, (_DOUBLER_MIN_SOURCES, _DOUBLER_KEY_SOURCES))
 
 
 def doubler_axis(text):
@@ -8684,17 +8985,30 @@ def doubler_support(axis, cards, carddata, max_power=None):
     return n
 
 
-def doubler_boost(support, per=_DOUBLER_PER_SOURCE, cap=_DOUBLER_CAP,
-                  floor=_DOUBLER_MIN_SOURCES):
+def doubler_boost(support, axis=None, per=_DOUBLER_PER_SOURCE, cap=_DOUBLER_CAP,
+                  floor=None):
     """Bounded fit bump for a doubler, growing with the deck's density of what it doubles.
 
-    Zero below `floor` (a deck making three tokens does not want a token doubler), linear
-    after, hard-capped at `cap` so it can reorder decks that are otherwise close without
-    ever overriding a genuine theme match — the same contract as `_fixer_boost`.
+    Zero below the axis floor (a deck making three tokens does not want a token doubler),
+    linear in the density ABOVE that floor, hard-capped at `cap` so it can reorder decks
+    that are otherwise close without ever overriding a genuine theme match — the same
+    contract as `_fixer_boost`.
+
+    Growth is measured FROM THE FLOOR, not from zero. The floor is the axis's zero point
+    by definition, and counting the baseline every deck already has is what let the
+    `triggers` axis pin the cap on 92% of the roster — see `_DOUBLER_CALIB` for the
+    distributions and the measured consequence. Pass `axis` so the per-axis floor
+    applies; `floor` overrides it outright, for a caller with its own calibration.
     """
+    if floor is None:
+        floor = doubler_calib(axis)[0]
     if support < floor:
         return 0.0
-    return min(support * per, float(cap))
+    # `support - floor + 1`: the floor is the FIRST QUALIFYING level, not the zero level,
+    # so a deck sitting exactly on it still earns the minimum bump. Dropping the +1 makes
+    # the boost 0 at the floor, which is a different claim (the deck does not do the thing
+    # at all) and breaks the pinned "nonzero at the floor, rising after" contract.
+    return min((support - floor + 1) * per, float(cap))
 
 
 def _fixer_boost(ncolors, per_color=4, cap=5, rate=1.0):
@@ -9752,6 +10066,11 @@ def cmd_suggest_homes(args):
     # density of that quantity, which is what the boost scales with.
     _daxis = doubler_axis(cd.get("text") or "")
     _drestrict = doubler_restriction(cd.get("text") or "") if _daxis else None
+    # …and which TYPE (if any) this card's COST falls with. Same shape one step earlier in
+    # the turn: the printed cost is what every model here prices, so a discount the deck
+    # earns is invisible without this. Wizard's Staff — "Equip Wizard {1}" against
+    # "Equip {3}" — ranked into a ONE-Wizard deck above two 20-Wizard decks.
+    _cscale = cost_scale_resource(cd.get("text") or "")
     results = []
     skipped_illegal = 0
     # Roster only (BS-14): a retired/example deck must not be rated a KEY home —
@@ -9851,15 +10170,25 @@ def cmd_suggest_homes(args):
         dsupport = (doubler_support(_daxis, cards, carddata, _drestrict)
                     if _daxis else 0)
         if dsupport:
-            _dboost = doubler_boost(dsupport)
+            _dboost = doubler_boost(dsupport, _daxis)
             fit += _dboost
             # Mirrors the fixer overlay's promotion rule. A doubler in a deck that really
             # does the thing IS a key card, and the strength label sorts ahead of fit — so
             # without this the boost could not reorder anything: Exalted Sunborn stayed
             # behind every KEY row no matter how many token-makers the deck fielded.
-            if dsupport >= _DOUBLER_KEY_SOURCES:
+            if dsupport >= doubler_calib(_daxis)[1]:
                 strength = "KEY"
             elif _dboost and strength == "tangential":
+                strength = "role-player"
+        # The cost-scaling overlay, same contract: bounded, only ever promotes, never
+        # demotes and never overrides a KEY already earned on theme.
+        csupport = cost_scale_support(_cscale, cards, carddata) if _cscale else 0
+        if csupport:
+            _cboost = cost_scale_boost(csupport)
+            fit += _cboost
+            if csupport >= _COST_SCALE_KEY_SOURCES:
+                strength = "KEY"
+            elif _cboost and strength == "tangential":
                 strength = "role-player"
         # Bounded curve co-signal (#5): gently sort a top-heavy card BELOW efficient fits
         # in an aggressive low-curve deck (never boosts, never relabels — see
@@ -10300,9 +10629,19 @@ def _keepable_at(nlands, deck_size, hand=7):
 # `_int_scaling` sibling covers removal; this covers the rest — "equal to the number of
 # Swamps you control", "for each creature card in your graveyard", "X is the number of".
 # Every scoring model here grades a card in isolation, so these read at their floor.
+# The resource class admits `+` and `/` and an optional NESTED zone ("… on lands you
+# control"), because the shapes it excluded are ordinary Magic templating rather than
+# exotica: compound resources ("artifact and/or enchantment you control", 15 clauses) and
+# counters-on-permanents ("the number of +1/+1 counters on lands you control" — Toph, the
+# Blind Bandit) both carry punctuation the original `[\w' -]` class could not cross.
+# Measured on the pool: 781 in-scope clauses, of which the old form missed 46 across 39
+# cards — 6%, every one of them compound or punctuated. Report-only, so the safe direction
+# for a widening here is a visible flag someone dismisses, never a silent score change.
 _DECK_STATE_AXIS_RE = re.compile(
     r"(?:equal to the number of|for each|where X is the number of)\s+"
-    r"([\w' -]{3,30}?)\s+(you control|in your graveyard|on the battlefield)", re.I)
+    r"([\w'+/ -]{3,44}?)"
+    r"(\s+on\s+[\w' -]{3,24}?)?"
+    r"\s+(you control|in your graveyard|on the battlefield)", re.I)
 
 
 def _deck_state_axis(text):
@@ -10313,7 +10652,9 @@ def _deck_state_axis(text):
     m = _DECK_STATE_AXIS_RE.search(text or "")
     if not m:
         return None
-    return f"{m.group(1).strip()} {m.group(2).strip()}"[:40] or None
+    nested = (m.group(2) or "").strip()
+    parts = [m.group(1).strip(), nested, m.group(3).strip()]
+    return " ".join(p for p in parts if p)[:44] or None
 
 
 def tier_band(vec):
@@ -11038,6 +11379,82 @@ _RATIONALE_FIGURES += [
 # the prose chose), so it is checked as one: same WANT/DELTA guards as the per-colour form.
 _FIG_SOURCE_SLASH = re.compile(r"(?<![+\-\d/])(\d{1,2}(?:/\d{1,2}){1,4})[  ]+sources?\b")
 
+# THE FLOOR BAND IS A CLAIM AND IT WAS THE ONE CLAIM NOTHING CHECKED. Every figure this
+# audit prices resolves through `_figure_lookup`, which holds the quality vector plus
+# the colour-source counts — all NUMBERS. A rationale's commonest structural assertion
+# is a LETTER ("the metrics floor is A", "one band UNDER its A floor"), and a letter
+# matched no pattern, so it was unverifiable by construction. That is not a hypothetical
+# gap: re-deriving `TIER_FLOOR_REQ` from the roster distribution (BS8-06) moved 30-odd
+# floors and left 15 of the roster's 36 floor-band claims false the same day, every one
+# of them reported CURRENT by this audit. The letter is cheap to check — the floor is a
+# pure function of the vector — and the claim is unambiguous, which is why this scan has
+# none of the hedging the figure families need: measured on the roster at 36 raw hits,
+# 15 stale, and ZERO false positives.
+#
+# The letter class is deliberately NOT case-folded (the words around it are): a band is
+# written uppercase in every rationale on the roster, and `re.I` on the letter would
+# read the article in "a floor of about 4 sources" as a claim of band A.
+_FIG_FLOOR_BAND = re.compile(
+    r"(?:metrics[ -]?)?floor\s+(?:reads?|is|sits\s+at|of|at)\s+(?:an?\s+)?(?P<b1>[SABCD])\b"
+    r"|one\s+band\s+(?:under|over|above|below)\s+(?:its|the)\s+(?P<b2>[SABCD])[ -]"
+    r"(?:metrics\s+)?floor\b"
+    r"|(?:reads?|sits\s+at)\s+(?:an?\s+)?(?P<b3>[SABCD])[ -]floor\b", re.I)
+
+# A claim about a floor the deck is AIMING at ("to reach an A floor", `tier --to A`) is a
+# target, not an assertion about the current list — the same rule `_FIG_SOURCE_WANT`
+# applies to a colour-source want.
+_FIG_FLOOR_WANT = re.compile(r"\b(?:wants?|to\s+reach|target(?:s|ing)?|--to|aim\w*\s+(?:at|for))"
+                             r"\b[^.;]{0,24}$", re.I)
+
+# A band claim is NOT suppressed by the shared `_figure_is_history`, and that is the one
+# place this scan deliberately parts company with the numeric families beside it. Their
+# history rule keys on a change narrative (`4 -> 7`, `re-graded B→A`), which for a NUMBER
+# means the figure next to it is probably the old value. For a BAND the same narrative
+# means the opposite: "interaction 4 -> 7 … put the metrics floor at A" is an assertion
+# about where the change LANDED, i.e. a claim about the current floor. Applying the
+# shared rule silently dropped 3 of the roster's 15 stale claims (decks 12/23/69a), all
+# three of them real. What actually marks a band claim as history is the TENSE of the
+# verb the pattern already captured — "the floor READ A" against "the floor READS A" —
+# plus an explicit retrospective cue.
+_FIG_FLOOR_PAST = re.compile(r"\b(?:used\s+to|before|until|previously|no\s+longer)\b"
+                             r"[^.;]{0,30}$", re.I)
+
+# "…held ONE band under the floor AT B" names the LETTER, not the floor — deck 75's
+# idiom, and the one false positive the roster produced. The bare `at` verb is what
+# admits it (the sibling "put the metrics floor at A" needs `at` and is a real claim), so
+# only that form is guarded, and only against a BAND-RELATIVE preposition: after
+# "under/over/above/below the", the letter following `at` is where the deck is HELD.
+_FIG_FLOOR_HELD = re.compile(r"\b(?:under|over|above|below)\s+(?:the|its)\s+$", re.I)
+
+
+def _floor_band_claims(prose, live_band):
+    """[(key, quoted, actual)] for every claim in `prose` about THIS deck's metrics floor
+    whose band letter is not the live one. `live_band` is `tier_band(vec)`.
+
+    Positional suppressions only (a want cue before the match); the CLAUSE-scoped
+    cross-deck and history rules are applied by the caller, which already computes them
+    for the figure loop, so a floor claim about another deck or a documented past floor
+    is suppressed by exactly the rules that suppress a numeric one."""
+    out = []
+    for m in _FIG_FLOOR_BAND.finditer(prose or ""):
+        band = next(g for g in (m.group("b1"), m.group("b2"), m.group("b3")) if g)
+        if not band.isupper():
+            continue
+        if _FIG_FLOOR_WANT.search(prose[max(0, m.start() - 30):m.start()]):
+            continue
+        if _FIG_FLOOR_PAST.search(prose[max(0, m.start() - 40):m.start()]):
+            continue
+        # "the floor READ A" is the past value; "the floor READS A" is the claim.
+        if re.match(r"(?:metrics[ -]?)?floor\s+read\b", m.group(0), re.I):
+            continue
+        if (re.match(r"(?:metrics[ -]?)?floor\s+at\b", m.group(0), re.I)
+                and _FIG_FLOOR_HELD.search(prose[max(0, m.start() - 30):m.start()])):
+            continue
+        if band != live_band:
+            out.append((m.start(), m.end(), band))
+    return out
+
+
 
 def _slash_source_claims(prose, sources, colors=None):
     """[(key, quoted, actual)] for every "N/N/N sources" claim in `prose` whose numbers
@@ -11536,6 +11953,57 @@ def _shorthand_candidates(masked, frags):
     return out
 
 
+# P4 (2026-09-04). An EXISTENTIAL claim about the POOL is invisible to every staleness
+# scan: `rationale_staleness` prices FIGURES against the live vector and CARD citations
+# against the deck's own list, and neither shape covers "no untapped dual exists owned or
+# craftable". That sentence sat in deck 57's `#: tier:` block, was FALSE (two owned, four
+# craftable), and was the stated reason two decisions went the way they did — the same
+# shape as the "near-zero protection" claim retracted the day before.
+#
+# This FLAGS for a human re-check and deliberately does not try to verify. Verifying would
+# mean parsing an arbitrary noun phrase into a pool query, and a wrong answer on a
+# CONFIDENT-sounding claim is worse than no answer. Cue list kept narrow per G-26: a false
+# positive is noisy and gets noticed, a false negative is silent.
+_EXISTENTIAL_CLAIM_RE = re.compile(
+    r"\b(?:no|not a single)\s+[\w'\- ]{2,40}?\s+"
+    r"(?:exists?|is available|is craftable|are available|are craftable)\b"
+    r"|\bthere (?:is|are) (?:no|not a single)\b[^.;]{0,60}"
+    r"|\bnothing (?:in the pool|in Standard|else in the pool)\b"
+    r"|\bno such\b[^.;]{0,40}\bexists?\b", re.I)
+# Not a claim about the pool: a clause already scoped to THIS deck, or one narrating what a
+# past pass found. "no untapped dual exists" is checkable and was wrong; "this deck has no
+# counterspell" is a fact about the list, which `check` and `stats` already answer.
+_EXISTENTIAL_SCOPED_RE = re.compile(
+    r"\b(?:this deck|the deck|this list|the list|here|in this deck|it) \b", re.I)
+# ...and it must be about CARDS, not tactics. Narrow on purpose.
+_EXISTENTIAL_SUBJECT_RE = re.compile(
+    r"\b(?:pool|Standard|card|cards|printed|craftable|owned|dual|duals|land|lands|"
+    r"creature|creatures|spell|spells|engine|payoff|payoffs|source|sources)\b", re.I)
+
+
+def existential_pool_claims(d):
+    """[(header, sentence)] — sentences in `#: tier:` / `#: archetype:` that assert
+    something does NOT EXIST in the card pool. REPORT-ONLY, and never auto-verified: the
+    output is "re-check this", not "this is wrong"."""
+    meta, _cards = parse_deck_file(d["path"])
+    out = []
+    for header in ("tier", "archetype"):
+        prose = (meta or {}).get(header, "") or ""
+        for sent in re.split(r"(?<=[.;])\s+", prose):
+            if not _EXISTENTIAL_CLAIM_RE.search(sent):
+                continue
+            if _EXISTENTIAL_SCOPED_RE.search(sent):
+                continue
+            # The claim must be about CARDS. Without this the scan also caught "there is
+            # no mulligan heuristic that fixes it" (strategy) and a sentence quoting the
+            # deck's own archetype block — 7 roster hits at roughly 4 real, which is the
+            # G-07 precision a standing warning must not have.
+            if not _EXISTENTIAL_SUBJECT_RE.search(sent):
+                continue
+            out.append((header, " ".join(sent.split())[:160]))
+    return out
+
+
 def rationale_staleness(d, carddata=None):
     """(stale_cards, stale_figures) for a deck's `#: tier:` / `#: notes:` prose.
 
@@ -11738,6 +12206,30 @@ def rationale_staleness(d, carddata=None):
         for claim in _slash_source_claims((meta or {}).get(header, "") or "", _src, _cols):
             if claim not in stale_figures:
                 stale_figures.append(claim)
+    # …and the FLOOR BAND, the structural claim that is a letter rather than a number and
+    # so matched none of the patterns above. Same two headers, same clause suppressions
+    # as the figure loop: a floor quoted for ANOTHER deck is not a claim about this one,
+    # and a documented past floor ("the floor read A before the re-derivation") is
+    # history. Whitespace is collapsed first so a claim wrapped across two `#: tier:`
+    # continuation lines is still one match.
+    try:
+        live_band = tier_band(vec)
+    except Exception:
+        live_band = None    # a band we cannot price is skipped, never guessed
+    own_name = (meta or {}).get("name", "").strip()
+    for header in ("tier", "archetype") if live_band else ():
+        prose = re.sub(r"\s+", " ", (meta or {}).get(header, "") or "")
+        for start, end, band in _floor_band_claims(prose, live_band):
+            clo, chi = _clause_bounds(prose, start, end)
+            clause = prose[clo:chi]
+            if _other_deck_ids(clause) - {own_id}:
+                continue
+            if any(nm in clause for nm in _roster_deck_names()
+                   if nm and nm not in own_name):
+                continue
+            claim = ("metrics floor", band, live_band)
+            if claim not in stale_figures:
+                stale_figures.append(claim)
     return stale_cards, stale_figures
 
 
@@ -11908,12 +12400,21 @@ def cmd_tier(args):
                    f"Run `deck.py tier {args.id}` on its own for the band/gap view.")
         cards_stale, figs = rationale_staleness(d)
         wrong_excl = wrong_exclusion_claims(d)
+        # P4: existential claims about the POOL. Shown HERE, where a human is already
+        # reading the argument, and deliberately NOT wired into `check_all` — the roster
+        # sweep measured 4 real of 5, and a standing warning at that precision is the
+        # G-07 shape that trains you to ignore it. These are never auto-verified: the
+        # output is "re-check this", not "this is wrong".
+        exist = existential_pool_claims(d)
         print(f"Rationale audit — deck {d['id']}: {d['name'] or d['path']}")
-        if not cards_stale and not figs and not wrong_excl:
+        if not cards_stale and not figs and not wrong_excl and not exist:
             print("  ✓ rationale is current — every card it cites is still in the deck, "
                   "every figure matches the live vector, and nothing it calls excluded "
                   "is actually in the list.")
             return 0
+        for hdr, sent in exist:
+            print(f"  ? `#: {hdr}:` asserts something does NOT EXIST — re-check against "
+                  f"the pool, this is not verified: \"{sent}\"")
         for nm, hdr in cards_stale:
             print(f"  ⚠ `#: {hdr}:` argues from {nm}, which is NO LONGER in the deck.")
         for nm, hdr in wrong_excl:

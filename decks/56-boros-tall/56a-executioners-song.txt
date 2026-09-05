@@ -25,7 +25,11 @@
 #: tier: because the LIST changed; it changed because the list stopped being graded as
 #: tier: an aggro deck. On the aggro plan tier_band substitutes a CLOCK score (this
 #: tier: deck read 4/7) for the interaction a resilience floor demands, which floated
-#: tier: the floor to A. Graded as midrange the floor is B, and the rubric's A wants at
+#: tier: the floor to A. Graded as midrange the floor was B then and is C today:
+#: tier: interaction 4 with card advantage 2 leaves the resilience sum at 6, one under
+#: tier: the 7 a B floor wants since `TIER_FLOOR_REQ` was re-derived from the roster
+#: tier: distribution 2026-09-02 (BS8-06), so the letter now sits one band ABOVE the
+#: tier: floor rather than at it. The rubric's A wants at
 #: tier: most ONE clear weakness. This list has three:
 #: tier: 1. CARD ADVANTAGE 2, with no refuel — the same gap the first grading named.
 #: tier: 2. INTERACTION 4, and ZERO of it answers a NONCREATURE permanent. For an
@@ -49,8 +53,8 @@
 #: tier: Blades DOES satisfy them. In an ultra-tall deck that pumps every combat the
 #: tier: printed-power count understates these gates badly. The flag is a G-16-family
 #: tier: limitation (it measures PRINTED power and cannot see the trigger's timing);
-#: tier: read the trigger before believing it. The B letter is unaffected — it sits AT
-#: tier: the measured floor, which this never fed.
+#: tier: read the trigger before believing it. The B letter is unaffected — it sits one
+#: tier: band above the measured floor, which this never fed.
 #: tier: WHAT ARGUES UP, and why it is not enough for A: the compounding ceiling is
 #: tier: genuinely high and no metric sees it — Ouroboroid grows Ashroot and Halana,
 #: tier: whose pumps scale off their own power, so the three multiply each other. But

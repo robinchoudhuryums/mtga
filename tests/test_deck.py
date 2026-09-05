@@ -1393,6 +1393,192 @@ class TestArchetypeFiguresAreAudited:
         assert hits == [], f"stale rationale figure(s): {hits}"
 
 
+class TestValueThatScalesWithADeckCount:
+    """`_deck_state_axis` flags a card graded at its FLOOR because its value is a COUNT.
+
+    Report-only by design — the axis is fuzzy and a score change on a fuzzy signal is what
+    this module keeps having to undo. The resource class was `[\\w' -]`, which cannot cross
+    punctuation, so two ordinary Magic templatings fell out: a compound resource
+    ("artifact and/or enchantment you control") and counters-on-permanents ("the number of
+    +1/+1 counters on lands you control" — Toph, the Blind Bandit). Measured on the pool:
+    781 in-scope clauses, 46 missed across 39 cards.
+    """
+
+    def test_a_counters_on_permanents_resource_is_an_axis(self):
+        """Toph's own clause, and the case that prompted the widening."""
+        ax = deck._deck_state_axis(
+            "Toph's power is equal to the number of +1/+1 counters on lands you control.")
+        assert ax == "+1/+1 counters on lands you control"
+
+    def test_a_compound_resource_is_an_axis(self):
+        ax = deck._deck_state_axis(
+            "This creature gets +1/+1 for each artifact and/or enchantment you control.")
+        assert ax == "artifact and/or enchantment you control"
+
+    def test_a_plain_resource_still_reads_as_before(self):
+        assert deck._deck_state_axis(
+            "deals damage equal to the number of creatures you control.") == "creatures you control"
+
+    def test_a_GAME_STATE_count_is_still_not_an_axis(self):
+        """The widening must not cross the line the axis already drew: a deck-list count
+        is not what these ask about, and flagging them would make the signal noise."""
+        for t in ("deals damage equal to the number of cards in your hand.",
+                  "gets +1/+1 for each creature in your party.",
+                  "Draw a card for each opponent you have."):
+            assert deck._deck_state_axis(t) is None
+
+    def test_the_axis_names_the_ZONE_so_you_know_which_number_to_count(self):
+        assert deck._deck_state_axis(
+            "for each creature card in your graveyard") == "creature card in your graveyard"
+
+
+class TestCostThatScalesWithADeckCount:
+    """A card whose COST falls with a count you control is worth what the deck supplies,
+    and every model here prices a card at its printed cost.
+
+    Found via `Equip Wizard {1}` / `Equip {3}`: `suggest-homes` ranked Wizard's Staff into
+    a ONE-Wizard deck above two 20-Wizard decks, because the printed cost is identical
+    everywhere and nothing read the scoped discount.
+    """
+
+    STAFF = ("Equipped creature has prowess.\n"
+             "If a triggered ability of equipped creature triggers, that ability triggers "
+             "an additional time.\nEquip Wizard {1}\nEquip {3}")
+
+    def test_all_three_templatings_resolve_to_a_countable_type(self):
+        assert deck.cost_scale_resource(self.STAFF) == "wizard"
+        assert deck.cost_scale_resource("Affinity for artifacts") == "artifact"
+        assert deck.cost_scale_resource(
+            "This spell costs {1} less to cast for each Equipment you control.") == "equipment"
+
+    def test_plural_resources_singularise_against_the_real_type_list(self):
+        """A naive `[:-1]` turns "Allies" into "allie" — a type no card carries, so the
+        support count comes back a silent 0 and the discount reads as absent."""
+        assert deck.cost_scale_resource("Affinity for Allies") == "ally"
+        assert deck.cost_scale_resource("Affinity for Elves") == "elf"
+        assert deck.cost_scale_resource("Affinity for Cats") == "cat"
+
+    def test_a_GAME_STATE_count_is_not_a_deck_composition_count(self):
+        """The line G-76 already draws. A deck-list count is not the quantity "for each
+        card exiled this way" asks about, so those are left alone rather than answered
+        wrongly — 55 pool instances."""
+        for t in ("This spell costs {1} less to cast for each card exiled this way.",
+                  "This spell costs {1} less to cast for each creature in your party.",
+                  "This costs {1} less to cast for each creature card in your graveyard."):
+            assert deck.cost_scale_resource(t) is None
+
+    def test_a_scoped_equip_needs_a_PLAIN_equip_to_be_cheaper_than(self):
+        """Without the pair there is no discount to price — the scoped cost IS the cost."""
+        assert deck.cost_scale_resource("Equip Knight {1}\nEquip {3}") == "knight"
+        assert deck.cost_scale_resource("Equip Knight {1}") is None
+
+    def test_boost_is_zero_below_the_floor_and_rises_then_caps(self):
+        f = deck._COST_SCALE_MIN_SOURCES
+        assert deck.cost_scale_boost(f - 1) == 0
+        assert 0 < deck.cost_scale_boost(f) < deck.cost_scale_boost(f + 6)
+        assert deck.cost_scale_boost(9999) == deck._COST_SCALE_CAP
+
+    def test_the_floor_sits_above_the_ORDINARY_number_of_copies(self):
+        """Calibrated from the measured distribution, not an imagined range — the mistake
+        `_DOUBLER_CALIB` exists to record. Across all (scaler card, deck) pairs the
+        nonzero support runs p25 2 / p50 3 / p75 10, so a couple of copies is the ordinary
+        case and a floor at or below it would fire on nearly every deck."""
+        assert deck._COST_SCALE_MIN_SOURCES > 3
+        assert deck._COST_SCALE_KEY_SOURCES >= 10
+
+    def test_support_reads_the_TYPE_LINE_not_a_synergy_tag(self):
+        """K-04: gating on a derived tag inherits every hole in the tagger. Salt Road
+        Packbeast is tagged `artifacts` off its affinity KEYWORD while its actual resource
+        is creatures — the tag would have counted the wrong thing."""
+        carddata = {"a bear": {"name": "A Bear", "type": "Creature — Bear", "text": ""},
+                    "a rock": {"name": "A Rock", "type": "Artifact", "text": ""}}
+        cards = [(3, "A Bear", "X", "1"), (2, "A Rock", "X", "2")]
+        assert deck.cost_scale_support("creature", cards, carddata) == 3
+        assert deck.cost_scale_support("artifact", cards, carddata) == 2
+        assert deck.cost_scale_support("wizard", cards, carddata) == 0
+
+
+class TestFloorBandClaimsAreAudited:
+    """The floor BAND was the one structural claim the rationale audit could not price.
+
+    Every figure it checks resolves through `_figure_lookup`, which holds numbers; a
+    rationale's commonest structural assertion is a LETTER ("the metrics floor is A"),
+    and a letter matched no pattern. Re-deriving `TIER_FLOOR_REQ` from the roster
+    distribution (BS8-06) then left 15 of the roster's 36 floor-band claims false the
+    same day, every one reported CURRENT by this audit.
+    """
+
+    def _deck(self, tmp_path, header_block, name="Probe"):
+        p = tmp_path / "deck.txt"
+        p.write_text(f"#: name: {name}\n#: colors: B\n{header_block}\n\nDeck\n"
+                     "4 Swamp (MSH) 291\n", encoding="utf-8")
+        return {"id": "zz", "path": str(p), "name": name, "variant": None}
+
+    def _band(self, monkeypatch, band):
+        monkeypatch.setattr(deck, "deck_quality_vector", lambda d: {})
+        monkeypatch.setattr(deck, "tier_band", lambda vec: band)
+
+    def test_a_stale_floor_band_claim_is_found(self, tmp_path, monkeypatch):
+        self._band(monkeypatch, "B")
+        d = self._deck(tmp_path, "#: tier: B — the metrics floor is A and the letter "
+                                 "sits one band under it.")
+        assert ("metrics floor", "A", "B") in deck.rationale_staleness(d, carddata={})[1]
+
+    def test_a_matching_floor_band_claim_is_not_flagged(self, tmp_path, monkeypatch):
+        self._band(monkeypatch, "B")
+        d = self._deck(tmp_path, "#: tier: B — the metrics floor is B and the letter "
+                                 "sits at it.")
+        assert deck.rationale_staleness(d, carddata={})[1] == []
+
+    def test_a_floor_the_deck_is_AIMING_at_is_a_target_not_a_claim(
+            self, tmp_path, monkeypatch):
+        """`deck.py tier <id> --to A` prints the gap to a target band and the prose
+        quotes it back. A target is not an assertion about the current list — the same
+        rule `_FIG_SOURCE_WANT` applies to a colour-source want."""
+        self._band(monkeypatch, "B")
+        d = self._deck(tmp_path, "#: tier: B — the path to reach an A floor is +1 "
+                                 "removal spell.")
+        assert deck.rationale_staleness(d, carddata={})[1] == []
+
+    def test_held_one_band_under_the_floor_AT_B_names_the_LETTER(
+            self, tmp_path, monkeypatch):
+        """Deck 75's idiom, and the roster's only false positive. The bare `at` verb is
+        what admits it — its sibling "put the metrics floor at A" is a real claim — so
+        only that form is guarded, and only after a band-relative preposition."""
+        self._band(monkeypatch, "A")
+        d = self._deck(tmp_path, "#: tier: B — still held ONE band under the floor at B: "
+                                 "the engine concentrates in a single 5-drop legend.")
+        assert deck.rationale_staleness(d, carddata={})[1] == []
+
+    def test_a_CHANGE_NARRATIVE_does_not_suppress_a_band_claim(
+            self, tmp_path, monkeypatch):
+        """The deliberate divergence from the numeric families. Their shared
+        `_figure_is_history` keys on a change narrative, which for a NUMBER means the
+        figure beside it is probably the old value; for a BAND the same narrative names
+        where the change LANDED. Applying the shared rule dropped 3 of the roster's 15
+        stale claims (decks 12/23/69a), all three real."""
+        self._band(monkeypatch, "C")
+        d = self._deck(tmp_path, "#: tier: B — Re-graded C→B with the tune; the "
+                                 "measurable floor is A.")
+        assert ("metrics floor", "A", "C") in deck.rationale_staleness(d, carddata={})[1]
+
+    def test_an_explicitly_PAST_floor_is_history(self, tmp_path, monkeypatch):
+        """What DOES mark a band claim as history is the tense of the verb the pattern
+        already captured, plus an explicit retrospective cue."""
+        self._band(monkeypatch, "B")
+        d = self._deck(tmp_path, "#: tier: B — the floor read A before the thresholds "
+                                 "were re-derived.")
+        assert deck.rationale_staleness(d, carddata={})[1] == []
+
+    def test_a_floor_quoted_for_ANOTHER_DECK_is_not_a_claim_about_this_one(
+            self, tmp_path, monkeypatch):
+        self._band(monkeypatch, "C")
+        other = deck._roster_deck_names()[0]
+        d = self._deck(tmp_path, f"#: tier: B — CONSISTENT WITH THE PARENT: {other} is a "
+                                 f"genuine aggro deck and holds A at its own floor.")
+        assert deck.rationale_staleness(d, carddata={})[1] == []
+
+
 class TestHeaderConsumersJoinOnMsKey:
     """BS4-01, the last open member of the G-63 class (was BS2-07).
 
@@ -3265,6 +3451,35 @@ class TestDoublerCoSignal:
         hi = deck.doubler_boost(deck._DOUBLER_MIN_SOURCES + 5)
         assert 0 < lo < hi
         assert deck.doubler_boost(9999) == deck._DOUBLER_CAP
+
+    def test_the_boost_is_calibrated_PER_AXIS_and_measures_above_the_floor(self):
+        """The `triggers` axis pinned the cap on 92% of the roster, so the term carried
+        no information on the axis with the most doubler cards in the pool.
+
+        Two causes, one fix: the boost grew from ZERO rather than from the axis floor
+        (double-counting the baseline every deck has), and every axis shared one floor
+        even though `triggers` has a roster MINIMUM of 10 against the others' medians of
+        5-8. The floor is now per-axis at that axis's own p25, and density is counted
+        above it."""
+        floor, key = deck.doubler_calib("triggers")
+        assert (floor, key) == (20, 25), "triggers calibration is its roster p25/p75"
+        assert deck.doubler_calib("tokens") == (deck._DOUBLER_MIN_SOURCES,
+                                                deck._DOUBLER_KEY_SOURCES)
+        # A count that saturated the cap on every deck must now discriminate.
+        low, mid, high = (deck.doubler_boost(n, "triggers") for n in (22, 30, 35))
+        assert 0 < low < mid < high == deck._DOUBLER_CAP
+        # …and a deck below the axis floor gets nothing, where it used to get the cap.
+        assert deck.doubler_boost(17, "triggers") == 0
+        assert deck.doubler_boost(17) > 0, "the default axis is unchanged"
+
+    def test_the_cuts_keep_bias_shares_the_axis_floor(self):
+        """`cut_keep_score` routes through the same primitives so the two models cannot
+        disagree — and it saturated HARDER, pinning its 3.0 cap by 9 feeders against a
+        roster minimum of 10, i.e. on 100% of decks rather than 92%."""
+        low, mid = (deck._cuts_multiplier_adj(n, "triggers") for n in (22, 30))
+        assert 0 < low < mid <= deck._CUTS_MULT_CAP
+        assert deck._cuts_multiplier_adj(17, "triggers") == 0
+        assert deck._cuts_multiplier_adj(17) > 0, "the default axis is unchanged"
 
     def test_restriction_is_read_off_the_doublers_own_text(self):
         assert deck.doubler_restriction(self.TRIG_DBL) == 2
@@ -5384,6 +5599,15 @@ class TestTaplandProfile:
                                               "has 13 or less life.\n{T}: Add {G} or {W}."},
         "untapped dual": {"type": "Land", "text": "{T}: Add {G} or {W}."},
         "old wording": {"type": "Land", "text": "This land enters the battlefield tapped."},
+        # A SHOCKLAND states its condition BEFORE the tap clause, so the `unless|if`
+        # cue the original pattern required (which had to follow "enters tapped") never
+        # matched and all ten Standard shocklands read as UNCONDITIONAL taplands.
+        "shockland": {"type": "Land", "text": "({T}: Add {W} or {U}.)\nAs this land "
+                                              "enters, you may pay 2 life. If you don't, "
+                                              "it enters tapped."},
+        "choose-type shock": {"type": "Land", "text": "As this land enters, choose a basic "
+                                                      "land type. Then you may pay 2 life. "
+                                                      "If you don't, it enters tapped."},
         "backface land": {"type": "Creature — God // Land",
                           "text": "Trample // {T}: Add {R}."},
         "spell": {"type": "Instant", "text": "This land enters tapped."},
@@ -5398,6 +5622,16 @@ class TestTaplandProfile:
         assert [x for _, x in u] == ["old wording", "plain dual"]
         assert [x for _, x in c] == ["cond dual"]
         assert n == 4
+
+    def test_a_shockland_is_conditional_not_unconditional(self):
+        """The land you can always have untapped for 2 life is not a tapland, and reading
+        it as one corrupts the single figure `consistency` offers for tempo. Deck 57
+        listed Hallowed Fountain among its unconditional taplands through six tuning
+        passes (2026-09-04)."""
+        u, c, n = self._run(["shockland", "choose-type shock", "plain dual"])
+        assert [x for _, x in u] == ["plain dual"]
+        assert [x for _, x in c] == ["choose-type shock", "shockland"]
+        assert n == 3
 
     def test_basics_backfaces_and_nonlands_are_excluded(self):
         u, c, n = self._run(["Forest", "backface land", "spell"])
@@ -5685,3 +5919,80 @@ class TestLibrarySearchGateWords:
 
     def test_a_real_type_still_gates(self):
         assert self._rx().search("Search your library for a Halfling card.").group(1) == "Halfling"
+
+
+class TestExistentialPoolClaims:
+    """P4: an EXISTENTIAL claim about the POOL is invisible to every staleness scan.
+    `rationale_staleness` prices FIGURES against the live vector and CARD citations
+    against the deck's list; "no untapped dual exists owned or craftable" is neither. That
+    sentence sat in deck 57's tier block, was FALSE (two owned, four craftable) and was the
+    stated reason two decisions went the way they did (2026-09-04)."""
+
+    def _deck(self, tmp_path, header):
+        p = tmp_path / "deck.txt"
+        p.write_text(f"#: name: Probe\n#: colors: WU\n{header}\n\nDeck\n"
+                     "10 Plains (HOB) 189\n", encoding="utf-8")
+        return {"id": "zz", "path": str(p), "name": "Probe", "variant": None}
+
+    def test_a_pool_wide_negative_is_flagged(self):
+        d = self._deck(tmp_path=self.tmp, header=(
+            "#: tier: A (PROVISIONAL). No untapped dual exists owned or craftable, so the "
+            "gain came from the spell side."))
+        assert [h for h, _ in deck.existential_pool_claims(d)] == ["tier"]
+
+    def test_a_claim_scoped_to_THIS_deck_is_not_a_pool_claim(self):
+        """"this deck has no counterspell" is a fact about the LIST, which `check` and
+        `stats` already answer — flagging it would be noise."""
+        d = self._deck(tmp_path=self.tmp, header=(
+            "#: tier: B. There is no counterspell in this deck, which caps it."))
+        assert deck.existential_pool_claims(d) == []
+
+    def test_a_negative_about_tactics_is_not_about_cards(self):
+        """The subject must be card-shaped. Without that gate the sweep also caught "there
+        is no mulligan heuristic that fixes it"."""
+        d = self._deck(tmp_path=self.tmp, header=(
+            "#: tier: B. There is no way to win the die roll."))
+        assert deck.existential_pool_claims(d) == []
+
+    @pytest.fixture(autouse=True)
+    def _tmp(self, tmp_path):
+        self.tmp = tmp_path
+
+
+class TestCardAdvantageSplit:
+    """P3: `role_tally` counts CARDS, so "card advantage 6" flattened one repeating engine,
+    one net-+1 activation and four one-shots. The USER caught that; no tool did. A 1-3
+    quality SCALE was declined (it would rescale the only two terms `tier_band` reads);
+    this is the G-81 pattern instead — an orthogonal REPORT-ONLY split beside the count."""
+
+    DATA = {
+        "engine": {"type": "Enchantment",
+                   "text": "At the beginning of your upkeep, draw a card."},
+        "activated": {"type": "Artifact", "text": "{2}, {T}: Draw a card."},
+        # Two cards, not one: a single-card ETB draw is a CANTRIP and correctly scores no
+        # Card-advantage role at all, so a one-card fixture would test nothing.
+        "etb": {"type": "Creature — Bird",
+                "text": "When this creature enters, draw two cards."},
+        "spell": {"type": "Instant", "text": "Draw two cards."},
+        "land": {"type": "Land", "text": "{T}: Add {U}."},
+    }
+
+    def _run(self, names):
+        return deck.card_advantage_split([(1, n, "AAA", "1") for n in names], self.DATA)
+
+    def test_a_recurring_trigger_or_an_activated_ability_is_repeatable(self):
+        rep, one, notes = self._run(["engine", "activated"])
+        assert (rep, one) == (2, 0)
+        assert [n for _, n in notes["repeatable"]] == ["activated", "engine"]
+
+    def test_an_etb_and_a_spell_are_one_shot(self):
+        """An ETB is one-shot even on a permanent — the distinction is how often it PAYS,
+        not whether it sits on the battlefield."""
+        rep, one, _ = self._run(["etb", "spell"])
+        assert (rep, one) == (0, 2)
+
+    def test_lands_are_skipped_and_quantities_are_weighted(self):
+        rep, one, _ = deck.card_advantage_split(
+            [(2, "engine", "A", "1"), (3, "spell", "A", "1"), (4, "land", "A", "1")],
+            self.DATA)
+        assert (rep, one) == (2, 3)

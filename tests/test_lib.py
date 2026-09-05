@@ -557,3 +557,64 @@ class TestLandProduction:
 
     def test_identity_is_the_fallback_for_blank_text(self):
         assert lib.land_production("", "R/G")["free"] == {"R", "G"}
+
+class TestLandProductionExclusions:
+    """Four shapes that reported FIVE FREE COLOURS for a land producing little or nothing.
+    All four surfaced on 2026-09-04 when a breadth-aware term was added to
+    `wishlist._land_value`: the term is correct, and it promoted these lands to the top of
+    dozens of decks' suggestions because the primitive underneath was wrong. `free` feeds
+    `deck_source_profile` as well as the recommender, so each of these was also a latent
+    over-count of a deck's colour sources."""
+
+    def test_choose_once_on_entry_is_marked_but_still_counted(self):
+        """"As it enters, choose a color" supplies exactly ONE colour per game. It stays in
+        `free` because for ACCESS it really is a source of whichever colour you name — the
+        same generosity a fetch gets — but `chosen` lets a breadth score decline to credit
+        colours it can never produce simultaneously."""
+        p = lib.land_production(
+            "This land enters tapped. As it enters, choose a color.\n"
+            "{T}: Add one mana of the chosen color.", "Colorless")
+        assert p["free"] == set("WUBRG")
+        assert p["chosen"] == set("WUBRG")
+
+    def test_a_true_any_colour_land_is_not_marked_chosen(self):
+        """Starting Town produces any colour on EVERY tap; it must keep full breadth."""
+        p = lib.land_production("{T}: Add {C}.\n{T}, Pay 1 life: Add one mana of any color.",
+                                "Colorless")
+        assert p["free"] == set("WUBRG") and p["chosen"] == set()
+
+    def test_production_reachable_only_by_transforming_is_not_production(self):
+        """Branch of Vitu-Ghazi taps for {C}; its "add two mana of any one color" line
+        fires only when the card is turned face up via Disguise. It scored the maximum
+        10.0 in `suggest --lands` and rose to #1 in dozens of decks."""
+        p = lib.land_production(
+            "{T}: Add {C}.\n"
+            "When this land is turned face up, add two mana of any one color.", "Colorless")
+        assert p["free"] == set() and p["chosen"] == set()
+
+    def test_an_ability_granted_to_other_permanents_is_not_this_lands_production(self):
+        """Forgotten Monument gives the any-colour ability to OTHER Caves. Whether those
+        are in the deck is a different question this function is not asked."""
+        p = lib.land_production(
+            '{T}: Add {C}.\n'
+            'Other Caves you control have "{T}, Pay 1 life: Add one mana of any color."',
+            "Colorless")
+        assert p["free"] == set()
+
+    def test_an_extra_non_mana_tap_cost_is_conditional_not_free(self):
+        """Scene of the Crime's any-colour ability costs "Tap an untapped creature you
+        control" — an extra body, the non-mana sibling of an extra mana symbol."""
+        p = lib.land_production(
+            "This land enters tapped.\n{T}: Add {C}.\n"
+            "{T}, Tap an untapped creature you control: Add one mana of any color.",
+            "Colorless")
+        assert p["free"] == set() and p["conditional"] == set("WUBRG")
+
+    def test_the_ordinary_cases_are_untouched(self):
+        """The guard rails: a plain tri-land, a dual and a fetch must read as before."""
+        tri = lib.land_production("This land enters tapped.\n{T}: Add {U}, {R}, or {W}.", "")
+        assert tri["free"] == {"U", "R", "W"} and tri["chosen"] == set()
+        fetch = lib.land_production(
+            "{T}, Sacrifice this land: Search your library for a basic land card, put it "
+            "onto the battlefield tapped, then shuffle.", "")
+        assert fetch["fetch"] is True

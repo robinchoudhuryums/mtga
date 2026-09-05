@@ -13,12 +13,14 @@
 #: tier: rose to 3 (Bard doubles every draw after the first each turn), putting the floor
 #: tier: at B. REOPENED 2026-08-15: Dawnwing Marshal was CUT (a five-mana anthem body
 #: tier: the deck's 20 payoffs outclassed) and Dazzling Denial returned in its slot, so
-#: tier: interaction is 5 again with card advantage 3 — the floor reads A and the
-#: tier: under-graded flag is back. The A case: Elspeth is still three cards in one (token doubler across 13
+#: tier: interaction is 5 again with card advantage 3 — the floor reads B and the letter
+#: tier: sits AT it. THE UNDER-GRADED FLAG IS GONE, and not because the list moved: it
+#: tier: rested on the pre-2026-09-02 thresholds, where interaction 5 alone cleared an A
+#: tier: floor. The A case is still worth a human weighing: Elspeth is three cards in one (token doubler across 13
 #: tier: feeders, a board-wide +1/+1-and-flying anthem, and removal), Bard doubles the
 #: tier: same token layer, and both counters now sit alongside them. Against re-grading:
 #: tier: singleton variance, protection 2 and a thin W manabase, all unchanged. The
-#: tier: letter stays B pending the human call the flag asks for.
+#: tier: letter stays B, and the metrics no longer argue otherwise.
 #: tier: WHAT ACTUALLY CAPS IT, measured: the white manabase. `consistency` prices the
 #: tier: deck's {W}{W} costs in the high-50s-to-low-60s% on curve — Aven Interrupter at
 #: tier: 58% on turn three, Storm, Windrider at 61% on turn four — wanting roughly +8

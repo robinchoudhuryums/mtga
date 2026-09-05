@@ -21,7 +21,6 @@ Airbending Lesson
 Ajani, Caller of the Pride
 Akul the Unrepentant
 Aloe Alchemist
-Ancestors' Aid
 Angel of Vitality
 Angelic Destiny
 Another Round
@@ -398,7 +397,6 @@ Retrieve the Esper
 Return the Favor
 Rhovanion Rampager
 Ripclaw Wrangler
-Riptide Gearhulk
 Rise of the Dark Realms
 Rise of the Varmints
 River's Rebuke
@@ -561,6 +559,7 @@ Whirlwing Stormbrood
 White Tiger, Ava Ayala
 Wild Hypothesis
 Wisecrack
+Wizard's Staff
 Wonder Man, Hollywood Hero
 Wrench
 Y'shtola Rhul

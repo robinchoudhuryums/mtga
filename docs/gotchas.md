@@ -544,6 +544,42 @@ is anchored by `check_suggest`; the lesson stands — measure the fix-rate again
 BEFORE believing a weight change, because the plausible story ("roles don't feed fit")
 was simply false on inspection.
 
+### The value that IS a count, and the punctuation that hid it (widened 2026-09-03)
+
+Every scoring model in this repo grades a card in isolation, so a card whose power or
+effect size is a COUNT of something you control reads at its FLOOR — a 7-mana 3/2 whose
+ETB deals damage equal to your Swamp count scores as a 7-mana 3/2. `_deck_state_axis` is
+the flag that says so (`⌁scales w/ <axis> — graded here at its FLOOR`), with
+`_int_scaling` as its removal-only sibling. Both are REPORT-ONLY, deliberately: the axis
+is fuzzy, and a score change on a fuzzy signal is the thing this module keeps having to
+undo.
+
+The resource class was `[\w' -]`, which cannot cross punctuation, and two ordinary Magic
+templatings sit on the far side of it:
+
+    Toph's power is equal to the number of +1/+1 counters on lands you control.
+    … gets +1/+1 for each artifact and/or enchantment you control.
+
+The first carries `+` and `/` AND a nested zone ("on lands" before "you control"); the
+second carries the `/` in "and/or". Both returned None, so the two cards most obviously
+in this family were the two the flag could not see.
+
+**Measured on the pool: 781 in-scope clauses (a count of something you control, or in
+your graveyard, or on the battlefield), of which the old form missed 46 across 39 cards —
+6%, every one compound or punctuated.** After widening, 1 clause is still missed (Lunar
+Insight, "different mana values AMONG nonland permanents", an *among*-phrasing rather
+than a punctuation problem). Only **+8 cards gained an axis they wholly lacked**; the
+other 31 already matched on a second clause, which is why the headline count moved 715 →
+723 rather than 715 → 754.
+
+**The widening did NOT cross the scope line, and that was the thing to check.** G-76's
+distinction holds: a count the DECK'S COMPOSITION decides is an axis, a GAME STATE at
+resolution time is not. Cards in your hand, creatures in your party, opponents you have,
+modes chosen, colours of mana spent — all still return None, verified by test and by a
+sweep confirming zero axis strings contain a game-state word. Widening a report-only flag
+is the safe direction anyway: a false positive is a visible line someone dismisses, where
+a false negative is silent, which is the asymmetry G-26 records for the rationale audit.
+
 ## [G-10] "Not in library" for a card you own is the deck-dump undercount symptom
 
 **"Not in library" for a card you own is the deck-dump undercount symptom.**
@@ -1525,6 +1561,58 @@ small and honest:** a possessive of a single-digit number that happens to be a d
 ("the 4's slot") would suppress. Measured at **1 roster occurrence, itself a genuine deck
 reference**, so the hazard is theoretical rather than observed.
 
+### The FLOOR BAND — the one structural claim nothing could check (2026-09-03)
+
+Every figure family this audit prices resolves through `_figure_lookup`, and everything
+it holds is a NUMBER: the quality vector plus, since BS8-16, the colour-source counts.
+But the commonest structural assertion a `#: tier:` block makes is a LETTER — "the
+metrics floor is A", "graded one band UNDER its A metrics floor" — and a letter matched
+no pattern, so it was unverifiable by construction rather than by oversight.
+
+That is not a hypothetical gap, and the cycle before had already sprung it. Re-deriving
+`TIER_FLOOR_REQ` from the roster distribution (BS8-06) moved thirty-odd floors, and the
+prose citing the OLD bands was never swept: **36 floor-band claims across the roster, 15
+of them false the same day**, every one reported CURRENT by `--audit-rationale`. Thirteen
+were stale in one direction (claiming A against a live B or C), which is what a threshold
+change looks like when nothing re-grounds the arguments that quoted the old thresholds.
+
+`_FIG_FLOOR_BAND` prices a claim against `tier_band` — a pure function of the vector, so
+unlike every figure family beside it there is no judgment in the comparison and no
+tolerance to tune. Measured on the roster at **36 raw hits → 15 reported → 15 real**.
+All fifteen were re-grounded the same day and **no tier letter was touched**: a letter is
+a human competitive judgment, and correcting the floor a block cites is a different act
+from re-grading the deck that cites it. Most of the fifteen had simply stopped being
+"one band under an A floor" and become "at a B floor" without the list changing at all.
+
+**Two calibrations, both earned by a measurement rather than chosen.**
+
+The first is a deliberate divergence from the numeric families sitting beside it. A band
+claim is NOT suppressed by the shared `_figure_is_history`. That rule keys on a change
+narrative (`4 -> 7`, `re-graded B→A`), which for a NUMBER is good evidence the figure
+next to it is the value being quoted FROM; for a BAND the same narrative means the
+opposite — "interaction 4 -> 7 … put the metrics floor at A" asserts where the change
+LANDED. Applying the shared rule dropped 3 of the 15 (decks 12/23/69a), all three real.
+What actually marks a band claim as history is the TENSE of the verb the pattern already
+captured — "the floor READ A" against "the floor READS A" — plus a narrow explicit cue
+(`used to`, `before`, `until`, `previously`, `no longer`). An earlier draft of that cue
+list carried `had`, and deck 23's innocent parenthetical "(it had zero)" suppressed a
+genuinely stale claim four words later: a retrospective cue must be about the FLOOR.
+
+The second is the roster's one false positive. Deck 75 writes "still held ONE band under
+the floor **at B**", where B is the LETTER the deck is held at, not the floor. The bare
+`at` verb is what admits it — and it cannot simply be dropped, because its sibling "put
+the metrics floor at A" needs it and is a real claim. So only the `at` form is guarded,
+and only against a band-relative preposition (`under|over|above|below` + `the|its`),
+after which the letter is where the deck is held rather than where the floor reads.
+
+A third guard came from the fix's own prose. Re-grounding fifteen blocks meant writing
+"…which moved the A bar to interaction 7" fifteen times, and `interaction\s+(\d+)` reads
+that as a claim that THIS deck's interaction is 7 — the sweep went from 0 hits to 8 on
+text written to fix it. The wording is "raised the A floor's interaction requirement to
+7" instead. **A rule's explanation lives in the same corpus the rule scans**, which is a
+hazard specific to a self-describing repo and worth remembering the next time an
+explanatory sentence has to name the number it is explaining.
+
 ## [G-28] `deck.py suggest` shows a cross-deck reuse count (`Decks` column)
 
 **`deck.py suggest` shows a cross-deck reuse count (`Decks` column).** For each
@@ -1877,6 +1965,134 @@ judge. Read a `✱ multiplier` figure on a type-scoped doubler as an upper bound
 this is fixed; the fix is a second scope pattern feeding the same filter, not a second
 model.
 
+### The bounded term that was bounded to a CONSTANT (fixed 2026-09-03)
+
+`doubler_boost` is a bounded fit bump: zero below a floor, linear after, hard-capped so it
+reorders near-ties without overriding a genuine theme match. All three constants were
+GLOBAL — one floor, one KEY threshold, one cap for all four axes — and for three of the
+four they are, in effect, roster percentiles. Feeder counts across the 115 decks:
+
+    axis        p10  p25  p50  p75  p90  max   at/over the old cap (15 feeders)
+    tokens        3    5    8   11   16   29    16 decks = 14%
+    counters      2    3    6   10   13   25     8 decks =  7%
+    lifegain      1    3    5    8   13   30    10 decks =  9%
+    triggers     17   20   23   25   30   35   106 decks = 92%
+
+Floor 5 sits at tokens' p25, KEY 10 at its p75, the cap is reached around p90. Those are
+sane calibrations for a distribution that starts near zero. The `triggers` axis starts at
+**10** — its roster MINIMUM is twice the floor and its p10 exceeds the count at which the
+cap is reached — so on that axis every deck cleared the floor, every deck cleared the KEY
+promotion, and 92% pinned the cap. The term was a constant, and it was a constant on the
+axis carrying **32 of the pool's 57 doubler cards**.
+
+The reason is the feeder pattern, not the doublers. `triggers` feeds on
+`\bwhenever\b|\bwhen .{0,40}?enters\b`, which matches a large share of any 60-card deck,
+where `creates? … token` or `put a +1/+1 counter` matches a designed subset. Two axes were
+measuring different KINDS of quantity against one scale.
+
+**How it surfaced.** Wizard's Staff — `Equipped creature has prowess. If a triggered
+ability of equipped creature triggers, that ability triggers an additional time. Equip
+Wizard {1}. Equip {3}.` — is a trigger doubler, correctly identified by `doubler_axis`.
+`suggest-homes` ranked deck 57 (ONE Wizard, 22 trigger feeders) above 37b (20 Wizards, 35)
+and 37 (21 Wizards, 30). All three collected the identical +18, so ranking fell through to
+raw theme overlap, where 57's `prowess` tag — a tag the card carries because Scryfall
+lists the keyword it GRANTS — won. The user spotted the ranking as obviously wrong before
+any gate did; no gate could, because every anchor tests that the term is bounded and
+monotonic, and a constant is both.
+
+**`cut_keep_score`'s twin was worse.** `_cuts_multiplier_adj` pins its 3.0 cap at 9
+feeders against that roster minimum of 10, so it was maxed for every trigger doubler on
+**100%** of decks. It was only checked because the comment beside its caller promises the
+two models "can't disagree" — they agreed perfectly, both saturated.
+
+**The fix has two halves, and the second is the root cause.** `_DOUBLER_CALIB` gives an
+axis its own floor/key at that axis's p25/p75 (`triggers` → 20/25; the other three keep
+the globals their distributions already match). And density is now counted ABOVE the
+floor rather than from zero: the floor is the axis's zero point by definition, so growing
+from actual zero double-counts the baseline every deck already has — harmless where that
+baseline is small next to the range, saturating where it is not. `support - floor + 1`
+keeps the floor the first QUALIFYING level rather than the zero level, which is what the
+pre-existing anchor pins.
+
+**Roster diff:** 17 of 54 doubler cards re-ordered their deck list (triggers 12, tokens 3,
+counters 2), 4 changed their top pick, and **0 of 115 decks changed their `cuts` top-3** —
+the keep-bias change removes a latent saturation without churning any current ranking.
+
+**The residual, stated because the fix does not reach it.** After recalibration deck 57
+still edges 37b by a point (49 vs 48) on raw theme overlap. What would settle it is
+`Equip Wizard {1}` — a TYPE-CONDITIONAL COST REDUCTION that makes the card cost a third as
+much to move in a Wizard deck — and nothing here models that. That is a separate defect
+from this one, and the honest reading of the remaining gap.
+
+**The transferable rule: a bounded term needs its bounds checked against the DISTRIBUTION
+it will see, not against the range its author imagined.** The cap's own comment stated the
+premise — "real decks feed an axis with 4-15 cards" — and it was true of the three axes
+its author had in mind. The same shape as the tier floor reading A for 104 of 117 decks
+(BS8-06) and `suggest`'s breadth column saturating at 99% (G-28): a signal that never
+varies is indistinguishable from a signal that is working, until something it ranks is
+obviously wrong.
+
+
+## [G-83] A cost that SCALES with a deck count, priced by nothing
+
+Every model in this repo prices a card at its PRINTED cost. That is right for most cards
+and wrong for a family of about sixty, whose cost falls with a count of something you
+control. Three templatings, one effect:
+
+    Affinity for artifacts                                       52 pool instances
+    This spell costs {1} less to cast for each Equipment …      134 instances
+    Equip Wizard {1}  /  Equip {3}                               16 cards
+
+64 pool cards resolve to a resource a deck's composition actually decides.
+
+**How it surfaced.** `suggest-homes` ranked Wizard's Staff — `Equip Wizard {1}` against a
+plain `Equip {3}` — into deck 57, which runs ONE Wizard, above decks 37 and 37b, which run
+21 and 20. The card's printed cost is identical in all three, so nothing separated them;
+the equip is a two-thirds discount in a Wizard deck and full price in a prowess deck, and
+that fact reached no scorer. It was found the way the doubler saturation was: a person
+looked at a ranking and said it was obviously wrong.
+
+**Scope is the line G-76 already draws.** Only a count the DECK'S COMPOSITION decides is
+priced. "for each artifact you control" is a deck-building fact. "for each card exiled
+this way", "for each creature in your party", "for each creature card in your graveyard"
+are GAME STATE at cast time, and a deck-list count is not the quantity they ask about —
+55 pool instances are state-shaped and are deliberately left alone rather than answered
+wrongly. A resource is also only accepted if it names a REAL card type or a subtype the
+pool actually prints, so a phrase the patterns mis-slice fails to match instead of
+becoming a resource no card can satisfy (which would read as a silent zero).
+
+**It reads the TYPE LINE, never a synergy tag.** K-04 in its plainest form: Salt Road
+Packbeast carries the tag `artifacts`, mapped from its affinity KEYWORD, while its actual
+resource is creatures — "Affinity for creatures (This spell costs {1} less to cast for
+each creature you control.)". A tag-gated implementation would have counted the wrong
+thing and looked like it worked.
+
+**Plural resources singularise against the real type list**, as candidates rather than
+blind edits. A naive `[:-1]` turns "Allies" into "allie", a type nothing carries, so
+`cost_scale_support` returns 0 and the card reads as having no discount at all — the
+failure is invisible because zero is a legitimate answer. `_cost_scale_singulars` offers
+`ies→y`, `ves→f`, `es→`, `s→` and each is checked against the pool's own subtypes.
+
+**Calibration follows `_DOUBLER_CALIB`'s lesson rather than repeating its mistake.**
+Across all 7,360 (scaler card, deck) pairs support is nonzero on 57%, and those nonzero
+counts run **p25 2 / p50 3 / p75 10 / p90 22 / max 35**. A couple of copies of a type is
+the ORDINARY case and says nothing, so the floor has to sit above it: floor **4** (a deck
+with three artifacts is not an artifact deck), key **10** (p75, a real build-around), cap
+reached near p90. The cap is **12** against the doubler's 18, on a judgment stated so it
+can be argued with — a discount changes WHEN you cast a card, a doubler changes what the
+card DOES, and the second is worth more. Bounded either way, so neither can override a
+genuine theme match.
+
+**Roster diff:** 17 of 64 scaler cards re-ordered their deck list and 5 changed their top
+pick; on the `cuts` side 2 of 115 decks changed their top-3 and **none** changed their #1.
+Both cut moves are the intended behaviour — Claws Out ("affinity for Cats") leaves the Cat
+deck's cut list, Polliwallop ("affinity for Frogs") drops down the Frog deck's.
+
+**The residual, and it is not this defect.** After the fix deck 57 still sits second for
+Wizard's Staff, ahead of deck 37, on raw theme overlap: it shares four central themes to
+37's two, and one of them is `prowess`, which the Staff genuinely grants. The Wizard decks
+now bracket it and 37b leads. Theme overlap favouring a deck the card really does fit is
+the model working, not a further hole.
 
 ## [G-34] Before committing a deck edit, run `deck.py preflight <id>` — and grade a cut/swap with `deck.py
 
@@ -1932,6 +2148,58 @@ Village-cycle land's identity colour is spend-only and no longer counts (deck 34
 deck 68b −1 W). Note the scan's "seven unconditional in 21a" was itself wrong — one is
 free, six are extra-cost, two are restricted; read the labels, not the total.
 
+### 2026-09-04 — the recommender did not agree with the source count
+
+`deck_source_profile` counts a basic fetch as a source of every colour the deck runs a
+basic of. `wishlist._land_value`, the model `suggest --lands` ranks on, did not:
+
+    multi = 1.0 if len(used) >= 2 else 0.5 if len(used) == 1 else 0.0
+    base  = 3.5 + 4.5 * match * multi
+
+`multi` capped at two colours, so a WUR fetch and a UR tapped dual both computed
+`match 1.0 · multi 1.0` -> **base 8.0, identical**. Fetches then lose the synergy
+tiebreak (they carry no theme tags), so on deck 57's full 216-row ranking they sat at
+**rank 45-47, score 9.5, behind 29 cards tied at exactly 10.5**. Three fetches were the
+largest manabase upgrade available to that deck — every worst cast-on-curve row moved
+5-8 points — and the tool never surfaced them; the user found them by asking.
+
+Fixed with `_LAND_BREADTH_PER_COLOR` (0.75, cap 1.5), **additive and one-directional UP**.
+The multiplicative alternative (dividing by the deck's colour count) would have LOWERED
+every two-colour dual in every three-colour deck — re-ranking the roster to fix an
+ordering at the top. Nothing below three colours moves, so no existing recommendation is
+withdrawn.
+
+### The live residual: `land_production`'s `free` set means three different things
+
+Measured the same day, while testing whether `match` should stop penalising a land for
+producing colours BEYOND the deck's. That change is CORRECT in isolation (an any-colour
+land scored 8.4, below a fetch's 8.8, when it is strictly the better fixer) but it moved
+the **#1 land pick in 89 of 115 decks**, and the cause is not the `match` logic:
+
+* **any-colour every tap** — Starting Town. Genuinely covers every colour, repeatedly.
+* **choose ONCE on entry** — Uncharted Haven, Night Market, Valgavoth's Lair, Crossroads
+  Village, Mirage Mesa, Edgewall Inn, Tarnation Vista. These supply exactly **one** colour
+  per game, fixed when they enter.
+* **reachable only by TRANSFORMING** — Branch of Vitu-Ghazi taps for `{C}`; its "add two
+  mana of any one color" line fires only when it is turned face up via Disguise. As a land
+  it produces no coloured mana at all, and it scored **10.0**, the maximum.
+* plus **Scene of the Crime**, whose any-colour ability costs an extra "tap an untapped
+  creature you control" and is filed `free`.
+
+All of them report five FREE colours, so any breadth-aware term over-credits nine
+Standard lands. **FIXED 2026-09-04**, all four shapes: choose-once sets a new `chosen` key (kept in
+`free`, so ACCESS counting is unchanged, and excluded from the breadth credit because it
+cannot supply two colours at once); transform-gated lines, granted abilities and extra
+non-mana tap costs are excluded. A FOURTH shape surfaced during the fix — **Forgotten
+Monument** grants "{T}, Pay 1 life: Add one mana of any color" to OTHER Caves and taps for
+`{C}` itself; it had risen to #1 in dozens of decks. Roster effect: the #1 land pick moves
+in **8 of 115** decks, every one of them dropping a land that fixes nothing, and colour
+SOURCE counts are unchanged because **no roster deck runs any of the ten**.
+
+The `match` follow-on was re-tested on the corrected primitive and is STILL not safe —
+**88 of 115** decks change their #1 pick, because the model cannot see an entry condition
+(Command Bridge sacrifices itself unless you tap a permanent) and any-colour lands
+therefore sweep the top. It stays reverted; do not re-apply without solving that.
 
 ## [G-36] `deck.py consistency <id>` is the PROBABILITY layer `mana` lacks
 
@@ -2060,6 +2328,29 @@ the `·restricted` marker for the judgment the score cannot make.
 now enforced and the restricted half is priced; the two `·` markers are there because the
 remaining judgments need the deck, not the card.
 
+### 2026-09-04 — `·tapped?` was a second, narrower copy of the tapland predicate
+
+`suggest_lands` decided conditional-tapping with a bare `tapped and "unless" in low`,
+while `tapland_profile` used `deck._TAPLAND_COND_RE`. Two implementations of one question
+inside one file — and the narrower one missed every SHOCKLAND, which states its condition
+BEFORE the tap clause ("As this land enters, you may pay 2 life. If you don't, it enters
+tapped"). Both surfaces route through the one predicate now; fixing the classifier alone
+would have left the sibling wrong.
+
+### The breadth credit's measured cost
+
+The G-35 credit re-ranks the **#1 land pick in 22 of 115 decks** — 21 at 0.5 and 25 at
+1.0, so the constant is not what drives it. The flip is fetch-over-untapped-dual, and it
+happens because the pre-existing gap was only **0.2** (deck 8: untapped dual 11.7, fetch
+11.5) with fetches already carrying a **+1.3** synergy-tag advantage that was just barely
+insufficient. Any positive credit tips it.
+
+Judged defensible: in a three-colour deck a basic fetch genuinely is the better FIXER,
+which is the axis this model scores, and the tempo cost is reported separately — by the
+`·tapped` marker and by `consistency`'s tapland line, which the shockland fix above has
+just made trustworthy. The top of a three-colour deck's list is now an 8-way tie among
+seven basic fetches plus Demolition Field; that is HONEST rather than saturated (those
+cards have the same effect) and the `Have` column does the disambiguating.
 
 ## [G-38] `deck.py suggest --ramp / --interaction / --needs` are the NEEDS model — the structural axes the
 
@@ -3761,6 +4052,42 @@ concluding the tune failed.** Fixing this means teaching `_ROLE_PATTERNS` the ke
 `connive` is a draw-then-discard, so it belongs in card advantage alongside the explicit
 "draw a card" texts.
 
+### CONNIVE is an unread keyword here
+
+Baron Helmut Zemo connives on every black spell and classifies as Payoff/Recursion, so
+deck 52's card advantage stayed at 3 across a ten-swap pass that genuinely moved the axis.
+A FLAT metric after a tune is not proof the tune failed.
+
+### 2026-09-04 — the count flattens repeatable and one-shot, and a 1-3 SCALE was declined
+
+`role_tally` returned **6** for a card-advantage set holding one repeating engine, one
+net-+1 planeswalker activation and four one-shots. The USER caught it; no tool did.
+`count_conf` (G-48) annotates CLASSIFICATION uncertainty, never quality dispersion inside
+the count. Two deck-57 tuning decisions leaned on the integer first.
+
+**The proposal was a 1-3 "limited / versatile" scale for the role buckets. Declined, four
+reasons in order of weight:**
+
+1. It changes the UNITS of the only two terms `tier_band` reads — not a new term, the
+   existing ones rescaled. `TIER_FLOOR_REQ` would need re-deriving (it already was,
+   BS8-06), and **110 of 117 deck files cite interaction/card-advantage figures in
+   `#: tier:` prose**; every one goes stale in a single commit.
+2. The classifier is the weak link, not the granularity: **560 of 1882 roster cards (30%)
+   score ZERO roles**. Precision on top of that grades confidence that is not there.
+3. "Versatile / strong" is exactly the fuzzy judgment this repo keeps as a FLAG rather
+   than a score (G-09's `⚠ scales w/`, G-25's protection axis, G-41's cost-as-upside).
+4. The failure was ONE structural distinction, not a missing scale.
+
+**Built instead: `card_advantage_split`, the G-81 pattern.** An orthogonal REPORT-ONLY
+split rendered beside the count — `card advantage 6 (4 repeatable, 2 one-shot)` — with the
+bare int still feeding `tier_band`. Repeatable = a permanent supplying it through a
+recurring trigger or an activated ability (K-14's argument: an activated ability is
+repeatable by construction); one-shot = an instant/sorcery or a single ETB.
+
+Note the automated split is MORE generous than a hand read: on deck 57 it calls Ral and
+Ghost-Spider repeatable (loyalty and a counter-sink genuinely are, in principle) where a
+human counting "engines" would say only Charred Foyer. Read it as a structural split, not
+a power judgment — which is the whole point of not building the scale.
 
 ## [K-13] A literal type-name search cannot see the choose-a-type category — and the false negative reads as an answer
 

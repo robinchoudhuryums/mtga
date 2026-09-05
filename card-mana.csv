@@ -2532,6 +2532,46 @@ The Millennium Calendar,{1},1,Double
 Earth King's Lieutenant,{G}{W},2,Trample
 Starry-Eyed Skyrider,{2}{W},3,Flying
 "Jet, Freedom Fighter",{2}{R/W}{R/W}{R/W},5,
+Dour Port-Mage,{1}{U},2,
+Three Tree Scribe,{1}{G},2,
+"Glarb, Calamity's Augur",{B}{G}{U},3,Surveil;Deathtouch
+Splash Portal,{U},1,
+Lilysplash Mentor,{2}{G}{U},4,Reach
+Long River Lurker,{2}{U},3,Ward
+Mistbreath Elder,{G},1,
+Stickytongue Sentinel,{2}{G},3,Reach
+"Clement, the Worrywort",{1}{G}{U},3,Vigilance
+Splash Lasher,{3}{U},4,Offspring
+Sunshower Druid,{G},1,
+Clifftop Lookout,{2}{G},3,Reach
+Treeguard Duo,{3}{G},4,
+"Quina, Qu Gourmet",{2}{G},3,
+Valley Mightcaller,{G},1,Trample
+Valley Floodcaller,{2}{U},3,Flash
+"Berta, Wise Extrapolator",{2}{G}{U},4,Increment
+Vinereap Mentor,{B}{G},2,Food
+Oakhollow Village,,0,
+Mudflat Village,,0,
+"Byrke, Long Ear of the Law",{4}{G}{W},6,Vigilance;Double
+"Finneas, Ace Archer",{G}{W},2,Reach;Vigilance
+Warren Warleader,{2}{W}{W},4,Offspring
+Burrowguard Mentor,{G}{W},2,Trample
+Lupinflower Village,,0,
+The Master of Lake-town,{1}{B}{B},3,Mill;Deathtouch
+Suspend Aggression,{1}{R}{W},3,
+Lorehold Charm,{R}{W},2,
+Oracle's Restoration,{G},1,
+Phantom Train,{3}{B},4,Trample
+Shepherd of the Clouds,{4}{W},5,Flying;Vigilance
+Reverent Howl,{2}{B},3,
+Caught in the Crossfire,{R}{R},2,Spree
+Rooftop Assassin,{3}{B},4,Flying;Lifelink;Flash
+Outlaw Medic,{1}{W},2,Lifelink
+Prairie Dog,{1}{W},2,Lifelink
+Ancient Cornucopia,{2}{G},3,
+Freestrider Commando,{2}{G},3,Plot
+Unfortunate Accident,{B},1,Spree
+Wizard's Staff,{1}{U},2,Equip
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -3195,7 +3235,6 @@ Generous Plunderer,{1}{R},2,Treasure;Menace
 Memory Vessel,{3}{R}{R},5,
 Molten Duplication,{1}{R},2,
 Territory Forge,{4}{R},5,
-Ancient Cornucopia,{2}{G},3,
 Bristlebud Farmer,{2}{G}{G},4,Food;Trample;Mill
 Omenpath Journey,{3}{G},4,
 Sandstorm Salvager,{2}{G},3,
@@ -3225,14 +3264,11 @@ Star Charter,{3}{W},4,Flying
 Thistledown Players,{2}{W},3,
 Valley Questcaller,{1}{W},2,Scry
 Warren Elder,{1}{W},2,
-Warren Warleader,{2}{W}{W},4,Offspring
 Whiskervale Forerunner,{3}{W},4,Valiant
 Bellowing Crier,{1}{U},2,
 Calamitous Tide,{4}{U}{U},6,
-Dour Port-Mage,{1}{U},2,
 "Eluge, the Shoreless Sea",{1}{U}{U}{U},4,
 Kitnap,{2}{U}{U},4,Gift;Enchant
-Long River Lurker,{2}{U},3,Ward
 Long River's Pull,{U}{U},2,Gift
 Mindwhisker,{2}{U},3,Surveil;Threshold
 Otterball Antics,{1}{U},2,Flashback
@@ -3241,12 +3277,9 @@ Season of Weaving,{4}{U}{U},6,
 Shore Up,{U},1,
 Shoreline Looter,{1}{U},2,Threshold
 Spellgyre,{2}{U}{U},4,Surveil
-Splash Lasher,{3}{U},4,Offspring
-Splash Portal,{U},1,
 Sugar Coat,{2}{U},3,Enchant;Flash
 Thought Shucker,{1}{U},2,Threshold
 Thundertrap Trainer,{1}{U},2,Offspring
-Valley Floodcaller,{2}{U},3,Flash
 Waterspout Warden,{2}{U},3,
 Wishing Well,{3}{U},4,
 Agate-Blade Assassin,{1}{B},2,
@@ -3290,7 +3323,6 @@ Valley Rally,{2}{R},3,Gift;Food
 Bark-Knuckle Boxer,{1}{G},2,
 Bushy Bodyguard,{1}{G},2,Forage;Offspring
 Cache Grab,{1}{G},2,Food;Mill
-Clifftop Lookout,{2}{G},3,Reach
 Curious Forager,{2}{G},3,Forage
 Druid of the Spade,{2}{G},3,
 Fecund Greenshell,{3}{G}{G},5,Reach
@@ -3302,31 +3334,20 @@ Hivespine Wolverine,{3}{G}{G},5,Fight
 Hunter's Talent,{1}{G},2,
 Innkeeper's Talent,{1}{G},2,
 Keen-Eyed Curator,{G}{G},2,
-Mistbreath Elder,{G},1,
 Pawpatch Recruit,{G},1,Offspring;Trample
 Peerless Recycling,{1}{G},2,Gift
 Scrapshooter,{1}{G}{G},3,Reach;Gift
-Stickytongue Sentinel,{2}{G},3,Reach
 Stocking the Pantry,{G},1,
-Sunshower Druid,{G},1,
 Tender Wildguide,{1}{G},2,Offspring
 Thornvault Forager,{1}{G},2,Forage
-Three Tree Scribe,{1}{G},2,
-Treeguard Duo,{3}{G},4,
 Treetop Sentries,{3}{G},4,Forage;Reach
-Valley Mightcaller,{G},1,Trample
 Wear Down,{1}{G},2,Gift
 "Alania, Divergent Storm",{3}{U}{R},5,
 "Baylen, the Haymaker",{R}{G}{W},3,
-Burrowguard Mentor,{G}{W},2,Trample
 Cindering Cutthroat,{2}{B/R},3,
-"Clement, the Worrywort",{1}{G}{U},3,Vigilance
-"Finneas, Ace Archer",{G}{W},2,Reach;Vigilance
 Fireglass Mentor,{B}{R},2,
 "Gev, Scaled Scorch",{B}{R},2,Ward
-"Glarb, Calamity's Augur",{B}{G}{U},3,Surveil;Deathtouch
 Junkblade Bruiser,{3}{R/G}{R/G},5,Trample
-Lilysplash Mentor,{2}{G}{U},4,Reach
 Mind Drill Assailant,{2}{U/B}{U/B},4,Surveil;Threshold
 "Muerra, Trash Tactician",{1}{R}{G},3,
 Plumecreed Mentor,{1}{W}{U},3,Flying
@@ -3334,7 +3355,6 @@ Plumecreed Mentor,{1}{W}{U},3,Flying
 Seedpod Squire,{3}{W/U},4,Flying
 Tidecaller Mentor,{1}{U}{B},3,Threshold;Menace
 Veteran Guardmouse,{3}{R/W},4,Valiant;Scry
-Vinereap Mentor,{B}{G},2,Food
 Wandertale Mentor,{R}{G},2,
 "Zoraline, Cosmos Caller",{1}{W}{B},3,Flying;Vigilance
 Barkform Harvester,{3},3,Reach;Changeling
@@ -3344,12 +3364,8 @@ Short Bow,{2},2,Equip
 Starforged Sword,{4},4,Gift;Equip
 Tangle Tumbler,{3},3,Vigilance
 Fabled Passage,,0,
-Lupinflower Village,,0,
-Mudflat Village,,0,
-Oakhollow Village,,0,
 Rockface Village,,0,
 "Bria, Riptide Rogue",{2}{U}{R},4,Prowess
-"Byrke, Long Ear of the Law",{4}{G}{W},6,Vigilance;Double
 Charmed Sleep,{1}{U}{U},3,Enchant
 Thieving Otter,{2}{U},3,
 Flame Lash,{3}{R},4,
@@ -5449,7 +5465,6 @@ Evil Reawakened,{4}{B},5,
 "Fang, Fearless l'Cie",{2}{B},3,
 "Jecht, Reluctant Guardian // Braska's Final Aeon",{3}{B},4,Transform;Menace
 "Kain, Traitorous Dragoon",{2}{B},3,Jump;Treasure
-Phantom Train,{3}{B},4,Trample
 Poison the Waters,{1}{B},2,
 Reno and Rude,{1}{B},2,Menace
 "Sephiroth, Fabled SOLDIER // Sephiroth, One-Winged Angel",{2}{B},3,Flying;Transform;Super Nova
@@ -5488,7 +5503,6 @@ Esper Origins // Summon: Esper Maduin,{1}{G},2,Surveil;Transform;Flashback
 Gigantoad,{3}{G},4,
 Loporrit Scout,{2}{G},3,
 Prishe's Wanderings,{2}{G},3,
-"Quina, Qu Gourmet",{2}{G},3,
 Reach the Horizon,{3}{G},4,
 Sidequest: Raise a Chocobo // Black Chocobo,{1}{G},2,Transform;Landfall
 "Torgal, A Fine Hound",{1}{G},2,
@@ -6122,7 +6136,6 @@ Ravenhill Flock,{3}{U},4,Flying
 Riddles in the Dark,{2}{U},3,
 Sound the Trumpets,{1}{U}{U},3,
 Uneasy Partings,{3}{U},4,
-Wizard's Staff,{1}{U},2,Equip
 Desolation Prowler,{1}{B},2,
 Gnashing of Teeth,{1}{B}{B},3,
 "Gollum, Silent Slinker // Meager Meal",{3}{B} // {B},4,Menace
@@ -6131,10 +6144,8 @@ Great Fierce Bee,{2}{B},3,Scry;Flying
 Great Ugly-Looking Goblin // Clap! Snap!,{5}{B} // {1}{B},6,Amass
 Head of the Hunt,{2}{B}{B},4,Flash
 Inside Information,{X}{B}{B},2,
-The Master of Lake-town,{1}{B}{B},3,Mill;Deathtouch
 Nighthowl Pursuer,{B},1,Ferocious;Menace
 Ravening Warg,{1}{B},2,Ferocious;Deathtouch
-Reverent Howl,{2}{B},3,
 Rhovanion Rampager,{2}{B},3,Amass
 Stir Up Trouble,{B},1,
 "Balin, Loremaster",{3}{R}{R},5,
@@ -11519,9 +11530,6 @@ Inventive Wingsmith,{2}{W},3,
 Lassoed by the Law,{3}{W},4,
 Mystical Tether,{2}{W},3,
 One Last Job,{2}{W},3,Spree
-Outlaw Medic,{1}{W},2,Lifelink
-Prairie Dog,{1}{W},2,Lifelink
-Shepherd of the Clouds,{4}{W},5,Flying;Vigilance
 Thunder Lasso,{2}{W},3,Equip
 Trained Arynx,{1}{W},2,Saddle;Scry
 Wanted Griffin,{3}{W},4,Flying
@@ -11560,14 +11568,11 @@ Overzealous Muscle,{4}{B},5,
 Pitiless Carnage,{3}{B},4,Plot
 Raven of Fell Omens,{1}{B},2,Flying
 Rictus Robber,{3}{B},4,Plot
-Rooftop Assassin,{3}{B},4,Flying;Lifelink;Flash
 Rush of Dread,{1}{B}{B},3,Spree
 Shoot the Sheriff,{1}{B},2,
 Tinybones Joins Up,{B},1,Mill
-Unfortunate Accident,{B},1,Spree
 "Vadmir, New Blood",{1}{B},2,
 "Calamity, Galloping Inferno",{4}{R}{R},6,Saddle;Haste
-Caught in the Crossfire,{R}{R},2,Spree
 Cunning Coyote,{1}{R},2,Plot;Haste
 Hellspur Brute,{4}{R},5,Affinity;Trample
 Hellspur Posse Boss,{2}{R}{R},4,
@@ -11585,7 +11590,6 @@ Bristlepack Sentry,{1}{G},2,Defender
 Cactarantula,{4}{G}{G},6,Reach
 Colossal Rattlewurm,{2}{G}{G},4,Trample
 Dance of the Tumbleweeds,{1}{G},2,Spree
-Freestrider Commando,{2}{G},3,Plot
 Freestrider Lookout,{2}{G},3,Reach
 Map the Frontier,{3}{G},4,
 Ornery Tumblewagg,{2}{G},3,Saddle;Double
@@ -13095,7 +13099,6 @@ Comforting Counsel,{1}{G},2,
 Emeritus of Abundance // Regrowth,{2}{G} // {1}{G},3,Vigilance;Prepared
 Infirmary Healer // Stream of Life,{1}{G} // {X}{G},2,Prepared
 Lumaret's Favor,{1}{G},2,Infusion
-Oracle's Restoration,{G},1,
 Planar Engineering,{3}{G},4,
 Slumbering Trudge,{X}{G},1,
 Studious First-Year // Rampant Growth,{G} // {1}{G},1,Prepared
@@ -13103,7 +13106,6 @@ Vastlands Scavenger // Bind to Life,{1}{G}{G} // {4}{G},3,Prepared;Mill;Deathtou
 "Abigale, Poet Laureate // Heroic Stanza",{1}{W}{B} // {1}{W/B},3,Flying;Prepared
 Abstract Paintmage,{U}{U/R}{R},3,
 Ark of Hunger,{2}{R}{W},4,Mill
-"Berta, Wise Extrapolator",{2}{G}{U},4,Increment
 Borrowed Knowledge,{2}{R}{W},4,
 Colossus of the Blood Age,{4}{R}{W},6,
 Conciliator's Duelist,{W}{W}{B}{B},4,Repartee
@@ -13112,7 +13114,6 @@ Embrace the Paradox,{3}{G}{U},5,
 Geometer's Arthropod,{G}{U},2,
 "Kirol, History Buff // Pack a Punch",{R}{W} // {1}{R}{W},2,Prepared;Mill
 "Lluwen, Exchange Student // Pest Friend",{2}{B}{G} // {B/G},4,Prepared
-Lorehold Charm,{R}{W},2,
 Mind Roots,{1}{B}{G},3,
 Molten Note,{X}{R}{W},2,Flashback
 Moment of Reckoning,{3}{W}{W}{B}{B},7,
@@ -13126,7 +13127,6 @@ Silverquill Charm,{W}{B},2,
 Snooping Page,{1}{W}{B},3,Repartee
 Splatter Technique,{1}{U}{U}{R}{R},5,
 Stirring Honormancer,{2}{W}{W/B}{B},5,
-Suspend Aggression,{1}{R}{W},3,
 Traumatic Critique,{X}{U}{R},2,
 Diary of Dreams,{2},2,
 Mage Tower Referee,{2},2,

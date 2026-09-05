@@ -2780,3 +2780,64 @@ gates green (full suite, check_all with the one expected G-75 warning). Remainin
 five Low interface items (P-09..P-13), the batch-5 tag-prune follow-on, the operator
 visual checks (Scenarios 5, 7, 12–18), and the completeness gaps (tracker export through
 import_collection, a play-next surface, `standardbrawl` in the pool).
+
+## 2026-09-04 — deck 57 tune, then P1/P2 of the holes it surfaced
+
+**Deck 57 (Tempest)** took six tuning passes and 20 card changes plus a rebuilt manabase.
+The tune itself is recorded in the deck's own `#: tier:` block; what matters here is that
+it surfaced six tooling holes, written up in
+`.cycle/blocks/2026-09-04-deck-57-tune-findings.md`.
+
+**Implemented this session (P1, P2)** — see
+`.cycle/blocks/2026-09-04-land-breadth-tapland-broad-implement.md` for the verbatim block.
+- P1: `wishlist._land_value` now credits colour breadth above two
+  (`_LAND_BREADTH_PER_COLOR` 0.75, cap 1.5). Re-ranks the #1 land pick in 22 of 115 decks,
+  measured; the constant is the dial if that reads wrong in use.
+- P2: `_TAPLAND_COND_RE` now catches shocklands, and `suggest_lands`' duplicate
+  `cond_tapped` test was routed through it so the two surfaces cannot disagree.
+
+**Decided AGAINST, with reasons — do not re-propose without new evidence.**
+A 1-3 "limited / versatile" scale for the role-count buckets (interaction, card advantage,
+…) was proposed by the user and declined. It changes the UNITS of the only two terms
+`tier_band` reads; `TIER_FLOOR_REQ` would need re-deriving again (it already was, BS8-06),
+and **110 of 117 deck files cite interaction/card-advantage figures in `#: tier:` prose**,
+so every one goes stale in a single commit. The classifier is also the weak link, not the
+granularity — **560 of 1882 roster cards (30%) score ZERO roles**. The agreed alternative
+is the G-81 pattern: an orthogonal REPORT-ONLY split
+(`card advantage 6 (1 repeatable, 5 one-shot)`) with the bare int still feeding
+`tier_band`. That is P3 and is NOT built.
+
+**Still open:** P3 (the split above), P4 (the rationale audit cannot see an existential
+prose claim about the POOL — "no untapped dual exists" was false and load-bearing), P5
+(`#~` swap-line rationale sits outside `note_figure_staleness`), plus the `match`-term
+follow-on in the implementation block.
+
+**Docs synced 2026-09-04** — G-35/G-37 current, deck 57's tapland note re-grounded (it was
+ONE note, not the three I had claimed). See
+`.cycle/blocks/2026-09-04-followon-and-docs-broad-implement.md`.
+
+**`lib.land_production`'s `free` set is FIXED (2026-09-04)** — it had meant four things:
+choose-ONCE-on-entry (7 lands, now the `chosen` key: counted for ACCESS, denied BREADTH),
+transform-gated, GRANTED to other permanents (Forgotten Monument, found during the fix) and
+an extra non-mana TAP cost. Ten lands read as five-colour sources. #1 land pick moves in
+8 of 115 decks; colour source counts unchanged because no roster deck runs any of the ten.
+See `.cycle/blocks/2026-09-04-land-production-primitive-broad-implement.md`.
+
+**THE `match` FOLLOW-ON IS STILL BLOCKED and stays reverted** — re-tested on the corrected
+primitive, still **88 of 115** decks change their #1 pick. New cause, identified: the model
+cannot see an ENTRY CONDITION, so Command Bridge ("sacrifice it unless you tap an untapped
+permanent") reads as a clean untapped any-colour land. Solve that first.
+
+**SHOCKLAND RESIDUAL FIXED** — `lib.tapland_kind` is now the ONE tapping predicate, with
+all three consumers routed through it (the regexes moved from deck.py to lib.py because
+wishlist cannot import deck). "shock" is separated from "conditional": payable AT WILL
+earns the untapped premium, board-state stays conservative.
+
+**P3 and P4 DONE (report-only).** `card_advantage_split` renders
+`card advantage 6 (4 repeatable, 2 one-shot)` in `stats`; `existential_pool_claims` shows
+in `tier --audit-rationale`. **P4 is deliberately NOT in check_all** — 4 real of 5 roster
+hits, and a standing warning at that precision is the G-07 shape. The 1-3 quality SCALE
+was DECLINED with reasons recorded in docs/gotchas.md under K-12.
+
+**Where I left off.** All committed on `claude/broad-scan-6kxevb`. Still open: the `match`
+follow-on (blocked on the entry-condition gap — Command Bridge) and P5.
