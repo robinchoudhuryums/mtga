@@ -804,9 +804,11 @@ list as input.
 
 ### 5.8 Craft cost — INFORMATION, per the Player Profile (not a constraint)
 
-Unowned among the core + tilt picks: Stingerback Terror (R), Fire Crystal (R), Delney ×0?
-— no, Delney owned ×1; Grand Abolisher owned; Impolite Entrance (U), Shardmage's Rescue
-(U), Lightfoot (C), Agrus Kos (M), Ertha Jo (U), Peter Parker's Camera (R), Sword of W&P
-(M), Sacred Foundry ×2 (R). The core package is **2 rares** unowned (Stingerback, Fire
-Crystal) plus **2 rares** for the Foundries. Everything else in §5.1 is owned ×1+.
+Unowned among the picks (screen, O45): Stingerback Terror (R), The Fire Crystal (R),
+Sacred Foundry ×2 (R) — the CORE + manabase is **4 rares**. Tilt/extended unowned: Impolite
+Entrance (U), Shardmage's Rescue (U), Lightfoot Technique (C), Agrus Kos (M), Ertha Jo (U),
+Peter Parker's Camera (R), Sword of W&P (M). Everything else in §5.1–5.2 is owned ×1+
+(Pain for All, Delney, Sentry, Barricade, Boots, both Tyrants, Abolisher, Return the Favor,
+Avatar State, Sparks, Team Avatar, Ferocification, Collective Inferno, Energybending,
+Iron Fist, Restoration Magic, Frontline Rush ×2).
 Rotation: nothing in the core is older than 2024-09 (BLB's Gnaw is a CUT); no ⚠rot.
