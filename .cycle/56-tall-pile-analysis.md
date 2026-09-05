@@ -802,10 +802,113 @@ list as input.
 5. Haste-GATED evasion (Speed) and attack-ALONE conditions (Luke Cage, Team Avatar, Seifer)
    are invisible to `count_conf` / `targets` — the G-76 state-gate family, two new members.
 
+### 5.9 THE MEASURED REBUILD (user widened the cut budget 2026-09-05: any 2-of, Cyclops, Tiger-Dillo, Become Brutes, Gnaw, clear upgrades)
+
+20 cuts / 20 adds + 3 land swaps, built on a scratch copy and measured. Combat-tall tilt
+with Sentry AND Barricade, Spinerock in the MV-5 slot, 13 W sources.
+
+**CUTS (20):** Twin Blades ×2, Reckless Ransacking ×2, Rabid Gnaw ×2, Crackling Cyclops ×1,
+Swiftblade Vindicator ×1, Seedglaive Mentor ×1, Speed ×1, Boros Charm ×1, Team Tactics ×1,
+Haste Magic ×1, The Last Agni Kai ×1, Tiger-Dillo, Scalestorm Summoner, Go Ninja Go,
+Become Brutes, Celestial Armor, Mai. **Kept at 2:** Molten Man (legend-rule redundancy on
+the signature body), Bulk Up, Self-Destruct.
+
+**ADDS (20):** Pain for All, Stingerback Terror, The Sentry, Spinerock Tyrant, Delney,
+Iron Fist, Grand Abolisher, Crystal Barricade, Swiftfoot Boots, Enter the Avatar State,
+Restoration Magic, Ferocification, Demonic Ruckus, Giantfall, Frontline Rush, Team Avatar,
+Choreographed Sparks, Return the Favor, Energybending, The Fire Crystal.
+
+**LANDS:** −2 Mountain +2 Sacred Foundry; −1 Temple of Triumph +1 Dalkovan Encampment.
+W 11 → 13, R 18 → 17, Mountains for Molten Man 13 → 13 (Foundry is typed), basic
+Mountains for his fetch 13 → 11.
+
+**Measured (scratch, `quality --vs` the pre-pile baseline):**
+
+```
+interaction     7 → 4  (+1?)   ← Gnaw ×2, Go Ninja Go, Agni Kai ×1 out; Giantfall in
+card advantage  2 → 1          ← Key's draw mode was the 2nd; Energybending/Ruckus cantrip
+protection      3 → 6
+avg MV       2.42 → 2.58       (1 five-drop, 1 six-drop)
+tier floor      A → A          (aggro clock 6/7 substitutes; guard: SOFT, intentional)
+shape        TALL 8 → TALL 7, evasive 10 → 13
+2-ofs      14 cards → 3 (Molten Man, Bulk Up, Self-Destruct)
+legal ✓ · resolve --check ✓ · castability ✓ · Molten Man fetch: 11 basics
+```
+
+The interaction drop is the honest cost: four creature-only removal spells left and the
+deck now answers a board by going over or through it (Pain for All / Iron Fist /
+Self-Destruct are reach the counter cannot see, O20). Giantfall restores one instant
+answer AND the first noncreature-permanent answer. If that reads too thin, the next
+interaction adds are Wisecrack and the second Agni Kai back in for Key-class cards.
+
+**Castability flags (13 W / 17 R):** Grand Abolisher WW 56% on T2 / ~65% on T4 — the one
+real cost; Jennifer Walters (`{1}{W}`, 89%) is the swap if it bites. Sparks / Return the
+Favor RR 73% on T2, fine by T4.
+
+**`cuts` on the rebuilt list ranks Return the Favor, Giantfall, Abolisher, Frontline Rush,
+Delney, Team Avatar and Pain for All as its seven weakest** — every one a zero-role engine
+card (O45). The `#: protect:` line for the apply must carry them.
+
+**The proposed file (nonland + lands):**
+```
+# Tall bodies
+2 Molten Man, Inferno Incarnate (SPM) 84
+1 Crackling Cyclops (FDN) 83
+1 Red Hulk (MSH) 149
+1 Stingerback Terror (OTJ) 147
+1 The Sentry, Golden Guardian (MSH) 35
+1 Spinerock Tyrant (ECL) 159
+
+# Bearers / engines
+1 Swiftblade Vindicator (FDN) 246
+1 Seedglaive Mentor (BLB) 231
+1 War Machine, Legacy of Iron (MSH) 238
+1 Speed, Young Avenger (MSH) 152
+1 Delney, Streetwise Lookout (MKM) 12
+1 Iron Fist, Living Weapon (MSH) 138
+1 Grand Abolisher (BIG) 2
+1 Crystal Barricade (FDN) 7
+
+# Evasion / protection
+1 Boros Charm (FDN) 721
+1 Swiftfoot Boots (BRR) 58
+1 Enter the Avatar State (TLA) 18
+1 Restoration Magic (FIN) 30
+1 Ferocification (OTJ) 123
+1 Demonic Ruckus (OTJ) 120
+1 Giantfall (ECL) 141
+
+# Multipliers and tricks
+2 Bulk Up (SOA) 40
+1 Team Tactics (MSH) 155
+1 Haste Magic (FIN) 140
+1 Frontline Rush (TDM) 186
+1 Team Avatar (TLA) 38
+1 Choreographed Sparks (SOS) 111
+1 Return the Favor (SOA) 47
+1 Energybending (TLA) 2
+1 The Fire Crystal (FIN) 135
+
+# Finisher / removal (power-scaled)
+2 Self-Destruct (FIN) 157
+1 The Last Agni Kai (TLA) 144
+1 Pain for All (EOE) 151
+
+# Lands
+1 Sunbillow Verge (DFT) 264
+1 Abraded Bluffs (OTJ) 251
+1 Inspiring Vantage (OTJ) 269
+1 Elegant Parlor (MKM) 260
+2 Sacred Foundry (EOE) 256
+1 Dalkovan Encampment (TDM) 253
+11 Mountain (MSH) 293
+6 Plains (MSH) 287
+```
+
 ### 5.8 Craft cost — INFORMATION, per the Player Profile (not a constraint)
 
-Unowned among the picks (screen, O45): Stingerback Terror (R), The Fire Crystal (R),
-Sacred Foundry ×2 (R) — the CORE + manabase is **4 rares**. Tilt/extended unowned: Impolite
+Unowned in the §5.9 rebuild: Stingerback Terror (R), The Fire Crystal (R), Sacred Foundry
+×2 (R) — **4 rares**; every other add is owned ×1+. Tilt/extended unowned: Impolite
 Entrance (U), Shardmage's Rescue (U), Lightfoot Technique (C), Agrus Kos (M), Ertha Jo (U),
 Peter Parker's Camera (R), Sword of W&P (M). Everything else in §5.1–5.2 is owned ×1+
 (Pain for All, Delney, Sentry, Barricade, Boots, both Tyrants, Abolisher, Return the Favor,
