@@ -111,6 +111,16 @@ Rules — cite by number in every verdict:
 - **E11 (correcting the user's note).** Old Hob's `{1}{W}` indestructible targets an
   attacking creature TOKEN only — it cannot protect the tall body unless the body is a
   token. The haste-token half of the note is right.
+- **E12 (user correction).** Steal the Show's modes resolve in printed order, and the
+  first targets a PLAYER — so "choose both" on yourself is: discard the hand (instants
+  and sorceries land in the graveyard, Bulk Up's flashback among them), draw that many,
+  THEN mode two counts the newly filled graveyard. A wheel plus scaled removal, not a
+  loot. Graded it as a loot with a rider. △ → ★.
+- **E13 (rules answer for Lotus Ring).** Indestructible stops "destroy" and lethal damage
+  only; SACRIFICE is neither, so an indestructible creature can still be sacrificed (and
+  the Ring's sac cost is the CREATURE, not the Ring — the Ring stays, unattached). The
+  fallback is therefore "turn your body into three mana", which is only upside on a body
+  that is leaving anyway (a warped Colossus at end of combat). △ → ◇, for that line.
 
 ## 3. Cross-batch observations
 
@@ -252,6 +262,28 @@ Rules — cite by number in every verdict:
   answers a blocker, and vigilance lets Iron Fist swing AND tap. It is the one equipment
   in five batches that adds to the deck's protection AND evasion at once.
 
+- **O24. THE THIRD KIND OF PROTECTION: LOCK THE KILL TURN.** Grand Abolisher, Jennifer
+  Walters and Voice of Victory all say "your opponents can't cast spells during your turn"
+  (Abolisher also stops artifact/creature/enchantment abilities). For a one-swing deck
+  that is not protection ON the body, it is the removal of every instant-speed answer on
+  the turn that matters — Bulk Up cannot be answered in response. Paired with Boots
+  (hexproof on THEIR turn) the coverage is complete. Three virtual copies of the effect
+  at two mana (G-46). Cost is white: Abolisher is `{W}{W}` — 45% on T2, 59% on T4, 71% on
+  T6 with 11 W sources — where Walters and Voice are a single W.
+- **O25. Avatar's Wrath is the one card that answers CHUMP BLOCKS and SWEEPERS at once**:
+  keep the tall body, airbend everything else (theirs AND yours), and they cannot recast
+  from exile until your next turn. It costs your own support board (Cyclops, Speed,
+  Seedglaive — recastable for `{2}`, G-42 half-cost) and WW at sorcery speed.
+- **O26. Super-Soldier Serum makes the body a LEGENDARY Soldier** — so a non-Villain R/W
+  body it enchants becomes Mjölnir-worthy (Stingerback, Cyclops, Luke Cage; Molten Man
+  and Red Hulk stay Villains), and it auto-attaches every Equipment on attack. The
+  equipment count decides it (G-61): 3 today counting Twin Blades, which are cut; Boots +
+  Shield + Celestial Armor restores 3.
+- **O27. Daredevil is the deck's first REPEATABLE card advantage.** "Whenever you attack,
+  exile the top card; you may play it this turn" fires every attack, Hero or not — the
+  +2/+1 is the rider, the impulse is the card. 56 has 0 repeatable CA (F6d); the user's
+  "minor" undersells it. Haste + vigilance also turns Speed on (O2).
+
 ## 4. Running verdicts
 
 Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ marginal · ✗ out`.
@@ -378,9 +410,28 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | Tenth District Hero | ◇ | ✗ | Six mana and six MV of graveyard across three steps to a 5/5 that gives OTHER creatures indestructible permanently. Collect evidence exiles Bulk Up from the yard (G-42, flashback). |
 | Prosperity Tycoon | △ | ✗ | 4/2 + a Mercenary that taps for +1/+0 (sorcery); its indestructible taps ITSELF — defensive, not for an attacker. |
 | Joshua, Phoenix's Dominant | △ | ✗ | `{1}{R}{W}` 3/4 loot-two; the Phoenix transform is 5 mana and grindy. No tall relevance. |
-| Steal the Show | △ | △ | Sorcery; damage = instants/sorceries in graveyard to a CREATURE (E1: not reach). |
-| Lotus Ring | △ | △ | Six mana total for +3/+3 vigilance and a sac-for-three. |
+| Steal the Show | ★ | ★ | Revised (E12): choose both on yourself — discard the hand (tricks + Bulk Up to the yard), draw that many, then damage = the now-fuller graveyard to a creature. A wheel + scaled removal for `{2}{R}` at sorcery speed. Creature-only (E1). |
+| Lotus Ring | ◇ | ◇ | Six mana total for +3/+3 vigilance, indestructible Equipment. The sac-for-three is of the CREATURE and indestructible does not stop it (E13) — upside only on a body that is leaving anyway (warp). |
 | Boilerbilges Ripper | △ | △ | MV 5, sac another creature → 2 damage; with Phantom that is the Phantom's death trigger + 2. Two slow cards to make one line. |
+
+### Batch 6 (14 cards)
+
+| Card | 56 | 56a | Note (framework rule) |
+|---|---|---|---|
+| Grand Abolisher | ★★★ | ✗ | `{W}{W}` 2/2: on your turn they cannot cast spells OR activate artifact/creature/enchantment abilities. The kill turn becomes uninteractable (O24). The `{W}{W}` is the whole cost: 59% by T4 on 11 sources (F7); if the manabase moves to 13 W it is a different card. |
+| Jennifer Walters | ★★ | ✗ | `{1}{W}` 2/3: opponents can't cast spells during your turn — the single-W Abolisher (89% by T4) without the ability lock. Transform is off-colour and dead (G-58: still castable). |
+| Voice of Victory | ★★ | ✗ | `{1}{W}` 1/3, same lock as Walters, plus Mobilize 2 (two 1/1 attackers each swing — Terror of the Peaks / Scalestorm fodder, otherwise irrelevant to tall). Third virtual copy of O24. |
+| Agrus Kos, Spirit of Justice | ★★ | ✗ | `{2}{R}{W}` 2/4 DS vigilance; ETB AND attack: suspect a creature (menace, CAN'T BLOCK), exile it if already suspected. Repeatable blocker removal that graduates to exile; or suspect your own body for menace. Works the turn it lands. |
+| Daredevil, Man Without Fear | ★★ | ✗ | `{2}{R}{W}` 3/4 vigilance haste; every attack impulses the top card (O27). Repeatable card advantage the deck has none of, on a hasty body. |
+| Avatar's Wrath | ★★ | ✗ | `{2}{W}{W}` sorcery: keep one creature, exile every other one; they can't recast from exile until your next turn. Chump blocks and sweepers answered in one card (O25); costs your own support board and WW at sorcery speed. |
+| Super-Soldier Serum | ★ | ✗ | `{1}{W}` Aura: +2/+2 first strike vigilance, legendary Soldier (Mjölnir-worthy, O26), free-attach every Equipment on attack. Aura 2-for-1 risk; ★★ once the deck holds 3+ Equipment. |
+| The Super Hero Civil War | ★ | ✗ | MV 5 saga: steal two blockers (MV ≤6 total) for two turns, team +1/+1 vigilance, then a fight. Self-Destruct on a stolen body is removal + reach (O9). The user's read is right; MV 5 at sorcery speed is F3's cost and the steal is temporary. |
+| Zog, Triceraton Castaway | ◇ | ◇ | MV 5 5/4 reach trample + ETB can't-block, or Mountaincycling `{2}` (F8). Hill Gigas with a blocker-answer instead of haste; 56b via Tannuk ★. |
+| Veteran Guardmouse | △ | △ | MV 4 valiant: +1/+0 first strike + scry when targeted. A Seedglaive at twice the cost. |
+| Brightspear Zealot | △ | ✗ | 2/4 vigilance, +2/+0 with two spells. A small spellslinger body. |
+| Sami, Wildcat Captain | △ | ✗ | MV 6: DS vigilance + affinity for artifacts on your spells. An equipment-plan card (F3). |
+| Pride of the Road | ✗ | ✗ | Max-speed double strike (F2 = 0, and T5+). |
+| Aurelia, the Law Above | ✗ | ✗ | Triggers need three / five ATTACKERS — the opposite of attacking alone (G-42 for Luke Cage). |
 
 ## 5. Consolidated plan (live)
 
@@ -388,24 +439,31 @@ Re-ranked after batch 1. Nothing applied.
 
 ### Plan A — tune 56 in place (protection + evasion)
 
-**ADDS, tiered (after batch 5):**
+**ADDS, tiered (after batch 6):**
 1. **Pain for All** (★★★, b3) — the reach engine.
-2. **Stingerback Terror** (★★★, b5) — a 7/7 flying trample body that grows as you cast.
-3. **The Sentry, Golden Guardian** (★★★, b4) — indestructible evasive body; Self-Destruct
-   becomes repeatable (O16). The Void is the named cost.
+2. **Stingerback Terror** (★★★, b5) — 7/7 flying trample that grows as you cast.
+3. **The Sentry** (★★★, b4) — indestructible evasive body; Self-Destruct repeatable.
 4. **Swiftfoot Boots** (★★★, b2) — permanent hexproof + haste.
-5. **Return the Favor** (★★★, b1) — multiplier + redirect.
-6. **Enter the Avatar State** (★★★, pre-pile) — hexproof + flying for `{W}`.
-7. **Iron Fist** (★★, b5) — repeatable power-to-face off every targeted spell (O20).
-8. **Hawkeye** (★★, b5) — blocker-removal + reach + repeatable draw at two mana.
-9. **Captain America's Shield** (★★, b5) — repeatable blocker-tap + 8 toughness.
-10. **Bygone Colossus** (★★, b3); **Restoration Magic / Bofur** (★★); **Lightfoot
-    Technique** (★★, b4, if no Sentry); **Spider-Man** (★★, b4); **Luke Cage** (★★, b5,
-    the no-Void Sentry); **Impolite Entrance** / **Bre** / **Key** / **Nova Hellkite** /
-    **Rogue's Passage** (★★).
-11. ★: Giantfall (Gnaw #2), Terror of the Peaks, Brute, Mjölnir, Wisecrack, Phantom,
-    Pick-Axe, Lonely Mountain (a basic swap, F8-neutral), Helix, Trapper, Monica, Bulwark
-    Ox, Zack Fair, Reroute Systems, Stone by Sunlight.
+5. **Grand Abolisher** (★★★ on effect, `{W}{W}` on cost, b6) — the kill-turn lock (O24).
+   Jennifer Walters / Voice of Victory (★★) are its single-W copies.
+6. **Return the Favor** (★★★, b1) — multiplier + redirect.
+7. **Enter the Avatar State** (★★★, pre-pile) — hexproof + flying for `{W}`.
+8. **Iron Fist** / **Hawkeye** / **Captain America's Shield** (★★, b5).
+9. **Agrus Kos** / **Daredevil** / **Avatar's Wrath** (★★, b6) — blocker exile, repeatable
+   CA, one-sided wipe. All three are `{R}{W}`-or-WW MV 4+: the manabase decides.
+10. **Bygone Colossus**, **Restoration Magic / Bofur**, **Lightfoot Technique**,
+    **Spider-Man**, **Luke Cage**, **Impolite Entrance**, **Bre**, **Key**, **Nova
+    Hellkite**, **Rogue's Passage** (★★).
+11. ★: Giantfall, Terror of the Peaks, Brute, Mjölnir, Wisecrack, Phantom, Pick-Axe,
+    Lonely Mountain, Helix, Trapper, Monica, Bulwark Ox, Zack Fair, Reroute, Stone by
+    Sunlight, Steal the Show, Serum, Civil War.
+
+**The white question is now the design decision, not a detail.** Six ★★★ cards are white
+(Sentry, Boots is colourless, Abolisher WW, Avatar State, plus Walters/Voice/Wrath/
+Agrus/Daredevil at ★★). At 11 W sources the deck is a red deck with a white splash; the
+pile's best cards want it to be a real Boros deck at 13–14 W. That trade costs Mountains
+(F8: −1/−1 on Molten Man each), or taplands become W duals. Decide the source count
+BEFORE the final five slots — it decides whether Abolisher and Wrath are in the deck.
 
 **The plan has split into TWO coherent shapes for 56 itself, and later batches should
 say which the pile favours:**
