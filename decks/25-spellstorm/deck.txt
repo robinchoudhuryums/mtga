@@ -62,7 +62,8 @@ Deck
 1 Izzet Guildgate (FDN) 691
 1 Riverpyre Verge (DFT) 260
 3 Stark Industries (MSH) 272
-4 Swiftwater Cliffs (TDM) 268
+3 Swiftwater Cliffs (TDM) 268
+1 Starting Town (FIN) 289
 1 Temple of Epiphany (FDN) 699
 
 # Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 25
