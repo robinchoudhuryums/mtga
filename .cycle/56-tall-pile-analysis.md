@@ -114,6 +114,33 @@ Rules — cite by number in every verdict:
   X red mana, cast the rest of the hand on the same swing. Pairs with The Last Agni Kai's
   persisting red mana. No tool scores mana-from-power.
 
+- **O6. Batch 2 is an EQUIPMENT pile, and 9 of its 20 cards grant double strike** (Hard-Won
+  Jitte, Fireshrieker, Rover Blades, Genji Glove, Leyline Axe, Dáin, Iron Hills Blacksmith,
+  Blacksmith's Talent L3, Practiced Offense from batch 1). F2 prices every one at ~0 for 56.
+  What survives is the cards that do something ELSE: Mjölnir (doubles DAMAGE — a third
+  multiplier axis distinct from Bulk Up's power-doubling and DS's two-hit), Genji Glove
+  (an extra COMBAT), Swiftfoot Boots (permanent hexproof + haste), Blacksmith's Talent L2
+  (free attach every combat — the equip-cost answer the user's Katana note points at).
+- **O7. Mjölnir has NO generic equip** — only "Equip worthy {1}", legendary non-Villain
+  R/W. In 56 the worthy bodies are Mai and Speed ×2 (3 copies); Molten Man and Red Hulk
+  are VILLAINS and can never carry it (G-61: the count decides, and the two signature
+  bodies are outside it). In 56a worthy = 8 copies (Wolverine, Scarlet Spider, Mai,
+  Halana and Alena, Ruby ×2, Speed ×2) — Mjölnir is a 56a card first.
+- **O8. An "Equipment-tall" plan is real but would collide with deck 38 Armory (voltron)
+  and 74 Iron Hills Forge (Boros Dwarf/Equipment triggers, which already runs Thorin,
+  Orcrist, Leyline Axe, Stalwart, Blacksmith)** — run `similar` against both before any
+  56c is drafted. The better use is to BORROW the two pieces that are not double strike
+  (Swiftfoot Boots, and Mjölnir if the worthy count is accepted) into 56 rather than
+  build a third equipment deck.
+- **O9. Self-Destruct on a STOLEN creature** (Unexpected Request's Threaten): their
+  creature deals its power to their face and the reflected damage kills it. A removal +
+  reach line the deck's own notes never list. Sorcery-speed setup, but it is a G-41 shape
+  in reverse — the self-damage is upside when the body is theirs.
+- **O10. Haste keeps turning up as the hidden enabler** (O2): Impolite Entrance,
+  Swiftfoot Boots, Samurai's Katana, Blacksmith's Talent L3, Quaketusk Boar all grant or
+  carry it, and every one of them turns Speed's unblockable rider on. The deck's four
+  haste sources are the count that decides whether Speed is a 2/2 or an evasion engine.
+
 ## 4. Running verdicts
 
 Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ marginal · ✗ out`.
@@ -143,28 +170,61 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | Memorial Team Leader | ✗ | ✗ | Anthem (+1/+0 to OTHERS, your turn only) is a go-wide card; warp 4/3 is the only tall use and Red Tiger Mechan does that cheaper. |
 | Relentless X-ATM092 | ✗ | ✗ | MV 6 colourless, no haste (F3). "Can't be blocked except by three or more" is real evasion two turns too late. |
 
+### Batch 2 (20 cards)
+
+| Card | 56 | 56a | Note (framework rule) |
+|---|---|---|---|
+| Swiftfoot Boots | ★★★ | ★★★ | `{2}`, equip `{1}`: PERMANENT hexproof + haste. Answers F6(a) without holding mana up, turns Speed's rider on (O2/O10), and is a noncreature spell (F4). Complements Restoration Magic (which adds indestructible at instant speed for the sweeper case, F6c) rather than competing with it. Best protection card in the pile so far. |
+| Impolite Entrance | ★★ | ★★ | `{R}` sorcery: trample + haste + DRAW. A cantrip that converts the tall body into an unblockable one via Speed (O2) and gives trample if not. One-shot CA on a deck at 2 (F6d). Sorcery is fine — it is a precombat card. |
+| Mjölnir, Hammer of Thor | ★ | ★★★ | "Double all damage equipped creature would deal" — a THIRD multiplier axis (F1): Bulk Up ×2 power → DS ×2 hits → Mjölnir ×2 damage, and it doubles Self-Destruct's / Rabid Gnaw's / Agni Kai's damage too. ETB 4 to a creature clears a blocker. But equip WORTHY only (O7): 3 carriers in 56, none of them the big bodies; 8 in 56a including Halana and Alena. MV 4 (F3). |
+| Unexpected Request | ★ | ★ | Threaten + attach an Equipment: removes their best blocker AND adds an attacker on the kill turn (F6b); Self-Destruct on the stolen body is removal + reach (O9). Sorcery, 3 mana. |
+| Dragonclaw Strike | ★ | ★★ | Hybrid `{2/G}{2/U}{2/R}`: FIVE mana in RW, FOUR in RG (G-58 — the tool's "MV 6" is the printed maximum). Double P/T then fight = Bulk Up + Agni Kai in one sorcery. 56a's midrange curve and its Bulk Up #3 slot want it; 56's T4–5 clock does not pay five for a sorcery (F3). The user's 56a flag is right. |
+| Quaketusk Boar | ◇ | ◇ | `{3}{R}{R}` 5/5 reach trample haste — a kill-turn body (F3) that hardcasts as a permanent. Nova Hellkite (warp `{2}{R}`, flying) does the job two mana cheaper and in the air. |
+| Samurai's Katana | ◇ | ◇ | `{2}{R}`: a 3/3 trample haste body that moves onto the tall one for `{5}` — or FREE via Blacksmith's Talent L2 / Thorin / Unexpected Request. +2/+2 trample haste on the tall body is F1 + O10. The `{5}` is the whole problem in 56 as-is; the user's note is the equipment-plan case (O8). |
+| Blacksmith's Talent | ◇ | ◇ | L2 (`{2}{R}`) attaches an Equipment free every combat — the engine that makes Katana / Genji Glove / Celestial Armor's equips cost 0. L1 alone is a `{R}` +1/+1 Sword; L3 is DS + haste. 8 mana across three levels: the spine of an equipment plan, a slow enchantment in 56 (F3). |
+| Thorin, Mountain-king | ◇ | ◇ | ETB: attach ANY number of Equipment free, then the creature deals its power to a creature (F5 removal). MV 4 3/4 trample. Needs Equipment on the field to be more than a body; 56 has 3 and is cutting 2. |
+| Genji Glove | ◇ | △ | `{5}` equip `{3}`: DS (0) + an EXTRA COMBAT PHASE — a ×2 that stacks with all three others (F1). 8 mana total, 5 with Talent L2. The equipment plan's top end; nothing for 56 at its clock (F3). |
+| Super-Adaptoid | △ | △ | Power = legendaries you control (usually 1–2 here); copies keywords onto ITSELF, not the tall body. A second body, not a taller one (F1). |
+| Orcrist, Goblin-cleaver | △ | △ | +2/+2 trample, Treasures on damage. Equip `{3}` — a slow Twin Blades. |
+| Leyline Axe | △ | △ | +1/+1 DS trample; free-start only in the opener (~12% at one copy). DS = 0 (F2). |
+| Dáin Ironfoot | △ | △ | Axe token + attack-trigger DS for equipped attackers (F2). |
+| Iron Hills Stalwart | △ | △ | Thorin's common cousin at MV 5 with one attach. Thorin dominates. |
+| Gilgamesh, Master-at-Arms | △ | △ | MV 6, no haste (F3); digs six for Equipment and attaches to a SAMURAI (Katana makes one). Equipment-plan top end only. |
+| Iron Hills Blacksmith | △ | ✗ | `{1}{W}` 1/1 DS + Axe token. DS = 0. |
+| Hard-Won Jitte | ✗ | ✗ | Pure DS equipment (F2). |
+| Fireshrieker | ✗ | ✗ | Pure DS equipment (F2). |
+| Rover Blades | ✗ | ✗ | DS equipment that is also a 2/2 DS vehicle; equip `{4}` (F2). |
+
 ## 5. Consolidated plan (live)
 
 Re-ranked after batch 1. Nothing applied.
 
 ### Plan A — tune 56 in place (protection + evasion)
 
-**ADDS, tiered:**
-1. **Return the Favor** (★★★) — multiplier + redirect-protection in one instant.
-2. **Enter the Avatar State** (pre-pile ★★★) — hexproof + flying + lifelink for `{W}`.
-3. **Restoration Magic** (pre-pile ★★) — `{W}` hexproof + indestructible, Tiered.
-4. **Key to the Side-Door** (★★) — repeatable unblockable for `{2}`, a noncreature spell.
-5. **Nova Hellkite** (★★) — a hasty FLYING bearer on T3 via warp. The one creature add
-   worth F4's dilution, because evasion is the axis with headroom (F1).
-6. **Rogue's Passage** (★★) — land slot; take it from a tapland (Temple of Triumph or
-   Abraded Bluffs), never a Mountain (F8).
-7. Spectacular Tactics / Valorous Stance (pre-pile ★) — protection #3/#4 with a removal
-   mode each. Now COMPETING with Return the Favor for the same slots.
-8. Gingerbrute (★★ as a bearer) — only if a bearer slot opens (Swiftblade Vindicator is
-   the comparison: unblockable-for-{1} vs double strike + trample; F2 says the latter has
-   no headroom).
+**ADDS, tiered (after batch 2):**
+1. **Swiftfoot Boots** (★★★, b2) — permanent hexproof + haste for 3 mana total; turns
+   Speed on. The standing-protection answer.
+2. **Return the Favor** (★★★, b1) — multiplier + redirect-protection in one instant.
+3. **Enter the Avatar State** (pre-pile ★★★) — hexproof + flying + lifelink for `{W}`.
+4. **Restoration Magic** (pre-pile ★★) — `{W}` hexproof + INDESTRUCTIBLE at instant
+   speed: the sweeper/edict half Boots cannot cover (F6c).
+5. **Impolite Entrance** (★★, b2) — `{R}` trample + haste + draw; a cantrip that turns
+   Speed on.
+6. **Key to the Side-Door** (★★, b1) — repeatable unblockable for `{2}`.
+7. **Nova Hellkite** (★★, b1) — a hasty FLYING bearer on T3 via warp.
+8. **Rogue's Passage** (★★, b1) — land slot; from a tapland, never a Mountain (F8).
+9. Mjölnir (★, b2) — only if the 3-carrier worthy count (Mai, Speed ×2) is accepted;
+   otherwise it is 56a's card (O7).
+10. Spectacular Tactics / Valorous Stance (pre-pile ★) — now behind five cards on the
+    same protection/evasion axes; likely out.
+11. Gingerbrute (★★ as a bearer, b1) — only if a bearer slot opens.
 
 **CUTS, in order (double-strike de-dup first, per the pre-pile finding):**
+0. NOTE: with Boots + Return the Favor + Avatar State + Restoration Magic + Impolite
+   Entrance + Key + Hellkite + Passage there are 7 spell adds against 4 cuts below —
+   later batches decide which five make it. The 5th–7th cuts would come from: Team
+   Tactics ×1 (DS #3–4 of 9, keep one for the trample rider), Go Ninja Go (`cuts` #2),
+   Haste Magic ×1 (if Boots/Entrance/Hellkite carry the haste count).
 1. Twin Blades ×2 — DS source #5–6 of 9, 3 MV, artifact (F2).
 2. Reckless Ransacking ×1 — weakest trick (Pw 1.5).
 3. Rabid Gnaw ×1 — keeps power-as-removal at 3 copies.
@@ -187,6 +247,10 @@ what is the protection layer when there are no permanents to protect? `/draft-de
 survives the pile.
 
 ### 56a notes
+**Batch 2:** Swiftfoot Boots ★★★ (hexproof + haste on a permanent-counter body is
+exactly F9's protection axis), Mjölnir ★★★ (8 worthy carriers incl. Halana and Alena —
+doubling damage on a body that compounds counters), Dragonclaw Strike ★★ (4 mana in RG,
+Bulk Up #3 + a fight for its interaction-4 gap), Impolite Entrance ★★.
 Return the Favor and Key to the Side-Door are ★★ there too (RG-castable, and 56a's
 interaction is 4 at a C floor — a redirect is interaction it lacks, F9). Nothing in batch 1
 is a counters PAYOFF, which is 56a's stated 10-enabler / 0-payoff gap.
