@@ -1024,6 +1024,55 @@ combat-tall with Pain for All + Self-Destruct as its natural reach (already in t
 rebuild); build 56c as a file ONLY if the fireball plan is one you want to PLAY — it costs
 a slot against the 100-deck cap and half its list is 56's.
 
+### 5.12 56b — pile cards NOT in the drafted list that fit it (sweep 2026-09-06)
+
+Method: all 201 pile names − 56b's 37, kept mono-R-castable and Standard-legal (118), screened
+against 56b, then graded from the per-batch text and O3 / O11 / O19 / O28 / O37 / O44.
+**The recurring caveat is Tannuk-dependence**: one Tannuk is in hand by T4 17% of the time,
+two copies 31% — so every "warps under Tannuk" body below is a bet on him unless it has its
+own cheat cost.
+
+**★★★ (would go in today):**
+- **Cosmic Cube** — every attack, cast a card from the top six with MV ≤ your greatest
+  attacking power free: a warped 9/9 Colossus swinging = any card. The cheat plan's CA.
+- **Twinflame Tyrant** — doubles every damage source to the opponent (Terror's throws,
+  Weftstalker's pings, Self-Destruct's face half, combat). Competes with Terror / Spider-Verse
+  for the MV-5 slots.
+- **Devastating Onslaught** — `{X}{X}{R}`: X hasty token copies of a creature, gone at end
+  step. On a warped Colossus that is X extra 9/9 haste bodies AND X free Self-Destruct targets.
+- **Hazoret, Godseeker** — 5/3 INDESTRUCTIBLE haste for two that "can't attack or block
+  unless you have max speed": as a body that never needs to attack, she survives her own
+  Self-Destruct every turn (O16), and max speed arrives fast in a deck pinging each turn.
+
+**★★ (in with a Tannuk or a slot):**
+- **Combustion Man** — Tannuk warps a 4/6 for `{2}{R}`; attacks with haste; "destroy target
+  permanent unless its controller has him deal damage to them equal to his power".
+- **Zealous Lorecaster** — Tannuk warp: 4/4 haste that regrowths Bulk Up / Self-Destruct, and
+  re-exiles to do it again. **Extinguisher Battleship** — Tannuk warp as an ARTIFACT:
+  Vindicate + 4 to each creature; the Spacecraft is not a creature and survives its own ETB
+  (Hellkite / Ardent / Mechan do not — G-42 half). **Zog** — Tannuk warp 5/4 + ETB can't-block.
+  **Stone-Giant** — Tannuk warp 7/7 + a Wall + `{2}{R}` sac-an-artifact for 4.
+- **Chimil, the Inner Sun** — discover 5 every end step: a warp body discovered is cast for
+  free and STAYS. MV 6. **Sozin's Comet** (KEY) — RRRRR per attacker for the combat's tricks.
+  **Spinerock Tyrant** — copies Bulk Up / Self-Destruct / Full Bore / Haste Magic; MV-5 slot.
+  **Dawnsire** (O37) — station with a warped 9/9 on the turn it would otherwise attack.
+  **Pigment Wrangler** (KEY) — Tannuk warps a 4/4 flier that arrives with a copy spell.
+
+**★ (real, slot-dependent):** Pain for All (a 3-mana "9 to the face" on a leaving Colossus;
+the Aura's second clause is lost), Nexus of Becoming (a Terror copy is a 3/3 flier WITH the
+trigger; a Colossus copy is a vanilla 3/3), Pyromancer's Goggles, Firebending Student /
+Ty Lee (KEY — evasion and mana bodies), Diary of Dreams (KEY), Wisecrack / Hell to Pay
+(interaction beyond burn), Maximum Carnage, The Arkenstone's `{5}` half (the Adventure is
+`{2}{W}` — off-colour; only the artifact casts here), Iron Fist, Ferocification.
+
+**Not for 56b despite the pile:** Crystal Barricade / Sentry / Abolisher / Delney (white),
+Mjölnir (three worthy carriers here), Energybending (nothing to fix, no Molten Man),
+Gingerbrute / Key / Passage (Speed's rider already covers evasion), Brimstone Roundup /
+Hellspur Brute / Racers' Scoreboard (KEY on screen for tag reasons — read as tangential).
+
+**56b's weakest slots, for the swaps:** Longhorn Sharpshooter, Red Tiger Mechan, Lightning
+Strike, Impolite Entrance, Hill Gigas (when Tannuk is not the plan), one Hellkite.
+
 ### 5.8 Craft cost — INFORMATION, per the Player Profile (not a constraint)
 
 Unowned in the §5.9 rebuild: Stingerback Terror (R), The Fire Crystal (R), Sacred Foundry
