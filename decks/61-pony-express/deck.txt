@@ -52,6 +52,8 @@
 #: notes: +14/+14 at ceiling, and the deck had more saddlers than saddle targets.
 #: notes: Bench (screened, in grade order): Autarch Mammoth, Gloryheath Lynx,
 #: notes: Alacrian Jaguar, One Last Job.
+#: notes: 2026-09-06 LAND SWEEP (owned four-ofs of the untapped-beside-a-basic duals): −Blossoming Sands, −Kyoshi Village, −Birnin Zana Plaza
+#: notes: +3x Gathering Place. Sources W 14 / G 14 → W 14 / G 14; unconditional taplands 4 → 1. Same colours, no tempo tax.
 
 # Glue (pilots + counter amplifier)
 1 Kona, Rescue Beastie (DSK) 187
@@ -96,10 +98,7 @@
 2 Wild Roads (DFT) 269
 2 Bucolic Ranch (OTJ) 265
 1 Hushwood Verge (DSK) 261
-1 Gathering Place (MSH) 266
-1 Blossoming Sands (M21) 244
-1 Kyoshi Village (TLA) 271
-1 Birnin Zana Plaza (MSH) 262
+4 Gathering Place (MSH) 266
 1 Suburban Sanctuary (SPM) 185
 6 Plains (MSH) 287
 6 Forest (MSH) 295

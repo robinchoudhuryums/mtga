@@ -4,6 +4,8 @@
 #: colors: RG
 #: archetype: Gruul (R/G) big creatures / smash.
 #: notes: Gruul (R/G) — big creatures / smash.
+#: notes: 2026-09-06 LAND SWEEP (owned four-ofs of the untapped-beside-a-basic duals): −2x Rugged Highlands, −Omashu City
+#: notes: +3x Training Compound. Sources R 12 / G 16 → R 12 / G 16; unconditional taplands 3 → 0. Same colours, no tempo tax.
 
 # Nonland
 1 World War Hulk (MSH) 197
@@ -43,9 +45,7 @@
 
 # Lands
 1 Thornspire Verge (DSK) 270
-2 Rugged Highlands (M21) 249
-1 Training Compound (MSH) 275
-1 Omashu City (TLA) 275
+4 Training Compound (MSH) 275
 1 Castle Doom (MSH) 263
 7 Mountain (MSH) 294
 11 Forest (MSH) 296

@@ -12,6 +12,8 @@
 #: notes: enable Ragost without derailing the WBG core. See variant 21a for the
 #: notes: 4-color big-artifact-goodstuff version. (A pure-WBG build that cuts Ragost
 #: notes: is just -Ragost +Vayne's Treachery and reverting 3 lands — no separate list.)
+#: notes: 2026-09-06 LAND SWEEP (owned four-ofs of the untapped-beside-a-basic duals): −Blossoming Sands
+#: notes: +Gathering Place. Sources W 10 / U 1 / B 13 / R 1 / G 11 → W 10 / U 1 / B 13 / R 1 / G 11; unconditional taplands 7 → 6. Same colours, no tempo tax.
 
 # Nonland — sac payoffs / aristocrats
 1 Pizza Face, Gastromancer (TMT) 163
@@ -63,9 +65,8 @@
 4 Jungle Hollow (M21) 247
 1 Scoured Barrens (M21) 250
 1 Insomnia, Crown City (FIN) 282
-1 Blossoming Sands (M21) 244
 1 Hushwood Verge (DSK) 261
-1 Gathering Place (MSH) 266
+2 Gathering Place (MSH) 266
 1 Castle Doom (MSH) 263
 1 Capital City (FIN) 274
 3 Forest (MSH) 296

@@ -39,6 +39,8 @@
 #: notes: fills the payoff slot instead. Good-Fortune Unicorn (U — every creature/token
 #: notes: enters with a +1/+1 counter) is now IN the 60, in for Okinec Ahau (LCI, would
 #: notes: have rotated ~Q4 2026 as an unowned craft — the deck 28 lesson applied here).
+#: notes: 2026-09-06 LAND SWEEP (owned four-ofs of the untapped-beside-a-basic duals): −Blossoming Sands, −Birnin Zana Plaza, −Kyoshi Village
+#: notes: +3x Gathering Place. Sources W 16 / G 14 → W 16 / G 14; unconditional taplands 3 → 0. Same colours, no tempo tax.
 #: protect: Arahbo, the First Fang; Ka-Zar of the Savage Land; White Tiger, Ava Ayala; Divine Resilience
 
 # Nonland — Cat lords / payoffs / tribal core
@@ -82,10 +84,7 @@
 
 # Lands — 25 (5 owned GW duals + basics weighted W)
 1 Hushwood Verge (DSK) 261
-1 Gathering Place (MSH) 266
-1 Blossoming Sands (TDM) 251
-1 Birnin Zana Plaza (MSH) 262
-1 Kyoshi Village (TLA) 271
+4 Gathering Place (MSH) 266
 11 Plains (MSH) 288
 9 Forest (MSH) 296
 

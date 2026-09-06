@@ -49,6 +49,8 @@
 #: notes: is printed 0/0, so sacrificing NO lands means it enters and dies on the
 #: notes: spot — the choice is how many, not whether, and this deck wants the lands
 #: notes: (The Earth King fetches them, The Boulder earthbends one).
+#: notes: 2026-09-06 LAND SWEEP (owned four-ofs of the untapped-beside-a-basic duals): −Gongaga, Reactor Town, −Commercial District
+#: notes: +2x Training Compound. Sources R 14 / G 15 → R 14 / G 15; unconditional taplands 3 → 1. Same colours, no tempo tax.
 
 # Attack-mana engine
 2 Savage Ventmaw (FDN) 665
@@ -99,9 +101,7 @@
 # Lands
 1 Thornspire Verge (DSK) 270
 1 Restless Ridgeline (LCI) 283
-1 Gongaga, Reactor Town (FIN) 280
-1 Training Compound (MSH) 275
-1 Commercial District (MKM) 259
+3 Training Compound (MSH) 275
 2 Fire Nation Palace (TLA) 268
 7 Mountain (MSH) 293
 10 Forest (MSH) 296

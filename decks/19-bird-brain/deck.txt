@@ -43,6 +43,8 @@
 #: notes: Ka-Zar, Mole Man, Glacier Godmaw, Storm Windrider). Light on interaction by
 #: notes: design — see flex slots. The raw 83-card pile is archived as variant 19c;
 #: notes: the GW (Selesnya) sibling is variant 19b.
+#: notes: 2026-09-06 LAND SWEEP (owned four-ofs of the untapped-beside-a-basic duals): −Blossoming Sands, −Kyoshi Village, −Birnin Zana Plaza
+#: notes: +3x Gathering Place. Sources W 14 / U 12 / G 15 → W 14 / U 12 / G 15; unconditional taplands 7 → 4. Same colours, no tempo tax.
 
 # Chocobo landfall / token engine
 1 Traveling Chocobo (FIN) 210
@@ -92,15 +94,12 @@
 1 Breeding Pool (EOE) 251
 1 Temple of Enlightenment (FDN) 698
 1 Dreamroot Cascade (SOS) 254
-1 Blossoming Sands (M21) 244
 1 Hushwood Verge (DSK) 261
-1 Gathering Place (MSH) 266
-1 Kyoshi Village (TLA) 271
+4 Gathering Place (MSH) 266
 1 Thornwood Falls (FDN) 269
 1 Meditation Pools (TLA) 272
 1 Restless Anchorage (LCI) 280
 1 Floodfarm Verge (DSK) 259
-1 Birnin Zana Plaza (MSH) 262
 1 Evolving Wilds (ECL) 264
 1 Terramorphic Expanse (MSC) 828
 4 Forest

@@ -4,6 +4,8 @@
 #: tier: A — Naya Dinosaurs; aggressive dino midrange. Graded on the LIST (legal 60, ownership-independent per the tiering rubric — build-state is tracked by check/audit). Re-graded B→A after the interaction package (+Bushwhack / +Clash of the Eikons fight removal / +Auspicious Arrival investigate-draw, cutting off-tribe Soldier chaff) took interaction to 5, then the 2026-08 rotation-proofing pass (Gishath/Palani's Hatcher/Rampaging Ceratops/Hulking Raptor were CUT for Etali/Thrashing Brontodon, plus a Savage Land Dinosaur and a Spider-Rex that have since been CUT themselves, 2026-08-11) moved it to interaction 6 and card advantage 3 → A-floor. The 2026-08-11 pass then took interaction to 5 and card advantage to 4, which sat EXACTLY on the A minimum; Boros Charm in over Nurturing Bristleback later that same day restored interaction to 6, so the deck clears the floor with one card of margin rather than none. A here is a clean, resilient fair-creature A (not a bomb-driven one). The fully-owned playable version is variant 28a.
 #: colors: RGW
 #: archetype: Naya (R/G/W) Dinosaur tribal with a Soldier secondary — Triceraton Commander token engine into big dinos (Ghalta, Etali cheating spells off the top). WIP brew, rotation-proofed 2026-08: every unowned card now survives the ~Q4 2026 rotation.
+#: notes: 2026-09-06 LAND SWEEP (owned four-ofs of the untapped-beside-a-basic duals): −Blossoming Sands, −Birnin Zana Plaza, −Gruul Guildgate, −Kyoshi Village, −Rugged Highlands, −Gongaga, Reactor Town
+#: notes: +3x Training Compound, +3x Gathering Place. Sources W 12 / R 12 / G 16 → W 12 / R 12 / G 16; unconditional taplands 11 → 5. Same colours, no tempo tax.
 
 2 Triceraton Commander (TMT) 25
 1 Giant Cindermaw (FDN) 624
@@ -42,24 +44,18 @@
 1 Itzquinth, Firstborn of Gishath (LCI) 230
 # Lands (24 — Naya fixing: 13 owned duals + 11 basics). Premium craft upgrade =
 # untapped duals (surveil lands / shocks / a Naya triome) to shed the tapland tempo cost.
-1 Training Compound (MSH) 275
-1 Blossoming Sands (M21) 244
+4 Training Compound (MSH) 275
 1 Hushwood Verge (DSK) 261
-1 Gathering Place (MSH) 266
-1 Birnin Zana Plaza (MSH) 262
+4 Gathering Place (MSH) 266
 1 Thornspire Verge (DSK) 270
-1 Gruul Guildgate (RNA) 250
 1 Omashu City (TLA) 275
 1 Sunbillow Verge (DFT) 264
 1 Temple of Triumph (FDN) 705
 1 Abraded Bluffs (OTJ) 251
 3 Plains
 3 Forest
-1 Kyoshi Village (TLA) 271
 2 Mountain
-1 Rugged Highlands (FDN) 265
 1 Restless Ridgeline (LCI) 283
-1 Gongaga, Reactor Town (FIN) 280
 1 Suburban Sanctuary (SPM) 185
 
 # Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 28

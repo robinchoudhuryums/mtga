@@ -69,6 +69,8 @@
 #: notes: cards — the Marvel counter bodies both decks want. Different colors and a
 #: notes: different plan (7 goes wide with heroes; this deck grows a few big ones and
 #: notes: draws off the counters), and copies are fungible, so both can run them.
+#: notes: 2026-09-06 LAND SWEEP (owned four-ofs of the untapped-beside-a-basic duals): −Blossoming Sands, −Suburban Sanctuary
+#: notes: +2x Gathering Place. Sources W 13 / B 13 / G 14 → W 13 / B 13 / G 14; unconditional taplands 10 → 8. Same colours, no tempo tax.
 
 # Placers — cheap, repeatable counters
 1 Ironpaw Aspirant (LCI) 18
@@ -124,11 +126,9 @@
 1 Hushwood Verge (DSK) 261
 2 Jungle Hollow (M21) 247
 2 Scoured Barrens (M21) 250
-1 Blossoming Sands (M21) 244
 1 Subterranean Cavern (MSH) 273
-1 Gathering Place (MSH) 266
+3 Gathering Place (MSH) 266
 1 Insomnia, Crown City (FIN) 282
-1 Suburban Sanctuary (SPM) 185
 4 Forest (HOB) 193
 4 Plains (HOB) 189
 2 Swamp (HOB) 191

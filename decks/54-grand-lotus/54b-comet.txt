@@ -150,6 +150,8 @@
 #: notes: removal + rainbow fixing + attack payoff, and the craft now also serves
 #: notes: deck 58's protected pair. Guttersnipe left only because Thunderdrum
 #: notes: Soloist does its job with a 3-damage upside and reach.
+#: notes: 2026-09-06 LAND SWEEP (owned four-ofs of the untapped-beside-a-basic duals): −2x Rugged Highlands
+#: notes: +2x Training Compound. Sources W 2 / U 13 / B 2 / R 21 / G 9 → W 2 / U 13 / B 2 / R 21 / G 9; unconditional taplands 9 → 0. Same colours, no tempo tax.
 # Firebending — the mana engine
 1 Redirect Lightning (TLA) 151
 1 Fire Sages (TLA) 136
@@ -204,8 +206,7 @@
 1 Daily Bugle Building (SPM) 179
 1 Spectacle Summit (SOS) 262
 1 Temple of Epiphany (FDN) 699
-1 Training Compound (MSH) 275
-2 Rugged Highlands (M21) 249
+3 Training Compound (MSH) 275
 1 Thornspire Verge (DSK) 270
 1 Frontier Bivouac (TDM) 256
 1 Breeding Pool (EOE) 251

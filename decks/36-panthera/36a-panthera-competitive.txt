@@ -29,6 +29,8 @@
 #: notes: Elspeth, Storm Slayer (token doubler) is intentionally OUT (you run her elsewhere);
 #: notes: Beza + Moonshaker Cavalry are the bombs. `deck.py redundancy 36a` shows the effect
 #: notes: depths; more owned virtual copies are on tap if you want to deepen a thin role.
+#: notes: 2026-09-06 LAND SWEEP (owned four-ofs of the untapped-beside-a-basic duals): −Blossoming Sands, −Birnin Zana Plaza, −Kyoshi Village
+#: notes: +3x Gathering Place. Sources W 16 / G 13 → W 16 / G 13; unconditional taplands 3 → 0. Same colours, no tempo tax.
 #: protect: Arahbo, the First Fang; Regal Caracal; Banishing Light; Divine Resilience; Anthem of Champions
 
 # Creatures — Cat go-wide core (singleton; a virtual ~13-of on the go-wide effect)
@@ -75,10 +77,7 @@
 
 # Lands — 24, W-weighted GW (owned duals + basics)
 1 Hushwood Verge (DSK) 261
-1 Gathering Place (MSH) 266
-1 Blossoming Sands (TDM) 251
-1 Birnin Zana Plaza (MSH) 262
-1 Kyoshi Village (TLA) 271
+4 Gathering Place (MSH) 266
 11 Plains (MSH) 288
 8 Forest (MSH) 296
 

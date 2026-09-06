@@ -29,6 +29,8 @@
 #: notes: Sweettooth / Friendly Neighborhood / The Cave of Two Lovers (enchantment tokens). Manabase
 #: notes: upgraded from all-basics to the 11 owned Naya duals. Interaction is still light — the
 #: notes: closest true enchantress draw engine is a Slumbering Keepguard craft (a Common).
+#: notes: 2026-09-06 LAND SWEEP (owned four-ofs of the untapped-beside-a-basic duals): −Blossoming Sands, −Birnin Zana Plaza, −Gruul Guildgate, −Omashu City, −Kyoshi Village
+#: notes: +2x Training Compound, +3x Gathering Place. Sources W 12 / R 10 / G 14 → W 12 / R 10 / G 14; unconditional taplands 8 → 3. Same colours, no tempo tax.
 
 # Creatures / anchors
 1 Furious Forebear (TDM) 13
@@ -76,20 +78,15 @@
 1 The Cave of Two Lovers (TLA) 126
 
 # Lands (23 — Naya fixing: 11 owned duals + 12 basics)
-1 Training Compound (MSH) 275
-1 Blossoming Sands (M21) 244
+3 Training Compound (MSH) 275
 1 Hushwood Verge (DSK) 261
-1 Gathering Place (MSH) 266
-1 Birnin Zana Plaza (MSH) 262
+4 Gathering Place (MSH) 266
 1 Thornspire Verge (DSK) 270
-1 Gruul Guildgate (RNA) 250
-1 Omashu City (TLA) 275
 1 Sunbillow Verge (DFT) 264
 1 Temple of Triumph (FDN) 705
 1 Abraded Bluffs (OTJ) 251
 4 Forest
 1 Suburban Sanctuary (SPM) 185
-1 Kyoshi Village (TLA) 271
 3 Plains
 3 Mountain
 
