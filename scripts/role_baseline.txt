@@ -99,7 +99,6 @@ Champions of the Shoal
 Charging Strifeknight
 Choreographed Sparks
 Claim Jumper
-Clifftop Lookout
 Cloud, Midgar Mercenary
 Collector's Vault
 Colossification
@@ -207,7 +206,6 @@ Giant Cindermaw
 Giant Koi
 Gilgamesh, Master-at-Arms
 Glamer Gifter
-Glarb, Calamity's Augur
 Glider Kids
 Glider Staff
 Goblin Plate Mail
@@ -536,7 +534,6 @@ Utrom Scientists
 Vastlands Scavenger // Bind to Life
 Venomized Cat
 Veteran Ice Climber
-Vinereap Mentor
 Virulent Silencer
 Virus Beetle
 Visage Bandit

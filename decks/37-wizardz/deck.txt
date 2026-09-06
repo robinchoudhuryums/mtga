@@ -1,98 +1,131 @@
 #: name: Wizardz
 #: format: Standard
+#: arena: 37a Wiz-Khalifa, a3d75fc7-4c52-4e4d-9385-e9728952458b
 #: colors: UBR
-#: tier: B — Grixis Wizard spellslinger; a coherent go-wide ping engine (Coruscation Mage /
-#: tier: Black Waltz / the 0/1 black-Wizard-token makers all deal noncombat damage on every
-#: tier: noncreature spell) backed by prowess payoffs, deep card advantage (Kefka/Niv-Mizzet/
-#: tier: Archmage) and a real removal suite. The floor is A and not marginally so —
-#: tier: interaction 9 against card advantage 8, once the bounce/edict/X-damage lines the
-#: tier: old classifier could not read are counted (12 before three removal slots — Harbinger
-#: tier: of the Tides, then Tribute to Hunger, then Heartless Act (CUT 2026-08-17) — were
-#: tier: traded for Gandalf, Goblins' Bane, Kindlespark Duo and Stormsplitter: every point
-#: tier: spent ON the noncreature-cast ping plan, deliberately);
-#: tier: held at B by three-color singleton variance and a fragile go-wide board (a sweeper
-#: tier: from the opponent hurts). Plays up as it gains redundancy (see the competitive 37b).
-#: archetype: Grixis (U/B/R, U-primary) Wizard tribal spellslinger. Cast cheap noncreature
-#: archetype: spells to trigger a board of "whenever you cast a noncreature spell" pingers
-#: archetype: (Coruscation Mage, Black Waltz No. 3, the 0/1 black Wizard tokens) and prowess
-#: archetype: payoffs (Balmor, Crackling Cyclops, Stormcatch Mentor), drowning the table in
-#: archetype: chip damage + card advantage, with efficient removal to clear blockers.
-#: notes: REFINED from an 89-card pile to a focused, Standard-legal 60. The pile was already
-#: notes: card-legal — the job was cutting ~29 nonland and building a manabase.
-#: notes: MANABASE: was 24 basics / 3 colors / no fixing (61% keepable, 39% screw). Now 24
-#: notes: lands, 13 owned Grixis duals weighted to U (the dominant color: 45 U pips vs ~22
-#: notes: each B/R), + Hydro-Channeler / The Emperor as spell-only U/R fixing.
-#: notes: KEY CUTS beyond the clunky top-end (Wisdom of Ages 7, Echocasting/Arcanis/Daring
-#: notes: Waverider 6, Emet-Selch, Construct a Cosmic Cube, Super Intelligence): the two
-#: notes: ANTI-SYNERGY board wipes — Withering Curse (-2/-2 all) and Fire Magic (damage each
-#: notes: creature) — both KILL YOUR OWN 0/1 Wizard tokens, nuking the go-wide plan. Cut.
-#: notes: KNOWN WEAKNESS: like a highlander it's all 1-ofs (draw variance) and the go-wide
-#: notes: board folds to an opposing sweeper. Redundancy (4× the best pingers/payoffs) is the
-#: notes: path up — the competitive 37b variant does that via functional redundancy
-#: notes: (`deck.py redundancy 37`), and 37a is a distinct value/storm take on the core.
-#: notes: FULLY OWNED — the 11 craft targets this note used to list (incl. the engine core,
-#: notes: Coruscation Mage / Black Waltz No. 3) have all been acquired. `deck.py check 37` is
-#: notes: the authority on build state; don't re-add a count here.
-#: protect: Coruscation Mage; Black Waltz No. 3; Queen Brahne; Balmor, Battlemage Captain; Kefka, Court Mage
-#: notes: PROTECTION: `deck.py stats` flags protection 0 against 5 `#: protect:` cards,
-#: notes: which reads alarming and is mostly a FALSE ALARM — the protect header marks
-#: notes: cards worth keeping, not single points of failure. `redundancy 37` shows the
-#: notes: ping engine is functionally an 8-of (noncombat damage, 8 distinct cards) on 18
-#: notes: payoff pieces and 4 card-advantage sources, so a removal spell on Coruscation
-#: notes: Mage costs a pinger, not the deck. The exposure this list actually has is the
-#: notes: one its tier rationale already names: an opposing SWEEPER, and ward/hexproof
-#: notes: does nothing against a wrath. The only owned answers that would help are
-#: notes: indestructible tricks (Stolen Stark Tech, Unlikely Aid, Dark Endurance), and
-#: notes: each saves ONE creature — near-worthless to a go-wide board. VERDICT: do not
-#: notes: add protection. If sweeper resilience becomes the priority, the lever is
-#: notes: rebuilding speed (flash threats / a recursion engine), not protection spells.
-#: notes: The same reasoning covers 37a and 37b, whose engines are equally redundant.
+#: tier: A (re-graded up from B on 2026-08-17, at the user's call, after the tune below) — a
+#: tier: grindier, value-leaning cousin of the ORIGINAL aggressive base (the old 37, CUT 2026-09-06 — this list was 37a). Same Grixis Wizard
+#: tier: spellslinger spine, but tilted toward card advantage and spell-copy payoffs: draw a
+#: tier: pile (Combat Tutorial / Think Twice / cantrips — Phyrexian Arena was CUT
+#: tier: 2026-08-17, its {B}{B} being the worst cast-on-curve cost in the deck), turn "draw your second card"
+#: tier: into board (Erudite Wizard, Clinquant Skymage, Construct a Cosmic Cube), and blow
+#: tier: out with copiers (Kitsa, Taigam) on a high-value spell. Thousand-Year Storm was
+#: tier: CUT 2026-08-17 for Rakdos Joins Up: at six mana it needed a multi-spell turn off
+#: tier: an 11-card instant/sorcery base, and its copies never fired the pings anyway (see
+#: tier: the rules caveat below), while Rakdos reanimates a creature with two +1/+1
+#: tier: counters — the shortcut to the Emperor's three-counter transform — and turns each
+#: tier: legend's death into noncombat damage Niv-Mizzet redraws. Floor
+#: tier: is B on card advantage 8 + interaction 5, and the LETTER is one band above it,
+#: tier: which the rubric allows. It read A until `TIER_FLOOR_REQ` was re-derived from the
+#: tier: roster distribution 2026-09-02 (BS8-06), which moved the A bar to interaction 7:
+#: tier: interaction 5 is now two short of it rather than exactly on the minimum. THE
+#: tier: "TREAT 5 AS A HARD FLOOR" WARNING THIS BLOCK CARRIED IS RETRACTED (2026-09-03):
+#: tier: it was written when interaction 5 sat exactly on the A bar, and re-grounding the
+#: tier: band earlier the same day kept the warning while adding a false reason ("the
+#: tier: resilience sum has no slack") — the sum is 13 against the 7 a B floor wants, and
+#: tier: cutting one interaction leaves the floor at B (4 >= 4, 12 >= 7). Nothing about
+#: tier: the METRICS forbids an interaction cut here. What still argues against one is
+#: tier: editorial and unchanged: only 3 cards answer a noncreature permanent and Mana
+#: tier: Sculpt is the sole hard counter, so the next cut should come from somewhere else.
+#: tier: Two 2026-08-17 trades spent those points deliberately:
+#: tier: Boomerang Basics was CUT for Astrologian's Planisphere (the deck's weakest card for
+#: tier: a Wizard-making counter engine, but the bounce had been carrying an interaction
+#: tier: point), and Dark Deed was CUT for Mu Yanling, Wind Rider — Dark Deed being the
+#: tier: redundant half of a pair with Bitter Triumph (same cost, same colour, but -4/-4 is
+#: tier: creature-only where Bitter Triumph also answers a planeswalker), and Mu Yanling
+#: tier: being a repeatable draw engine off 6 fliers plus her own flying Vehicle token.
+#: tier: The cut kept the noncreature-answer count at 3; cutting Mana Sculpt instead would
+#: tier: have dropped it to 2, since it is the only hard counter.
+#: tier: WHY THE LETTER MOVED B -> A: the two reasons the old B rested on have both been
+#: tier: retired by the 2026-08-17 tune. (1) It said ZERO protection; protection reads 1
+#: tier: now that Kid Loki came in and Balmor, Battlemage Captain was CUT. (2) It said the copy payoff was a trap
+#: tier: because copies don't fire the pings; the six-mana copier that argument was about
+#: tier: is gone, and the remaining copiers (Kitsa, Taigam) are cheap per-turn effects that
+#: tier: never asked to be stormed. The engine also got materially more coherent: the
+#: tier: instant/sorcery base went 10 -> 12 with two-cast cards (Think Twice), the manabase
+#: tier: dropped from 9 tapped lands to 7, and Rakdos Joins Up gave the Emperor's transform
+#: tier: a real route. A rather than S: the deck is still UNTESTED, still a singleton pile
+#: tier: whose two halves (engine creature + payoff) must be drawn together, and the
+#: tier: protection is CONDITIONAL — Kid Loki's hexproof covers only creatures that took a
+#: tier: +1/+1 counter THIS turn (Clinquant Skymage, Tempest Angler, the Emperor, the
+#: tier: Planisphere's Hero and himself by default), so the `#: protect:` build-arounds are
+#: tier: covered only when Combat Tutorial's counter is aimed at one. Re-grade with games.
+#: based-on: deck.txt
+#: archetype: Grixis (U-primary) Wizard VALUE/STORM. The original 37 raced with ping triggers; this
+#: archetype: variant grinds: heavy card draw feeds "draw your second card" payoffs and fuels a
+#: archetype: spell chain that copiers (Kitsa/Taigam, once per turn) turn into blowouts —
+#: archetype: Thousand-Year Storm was CUT 2026-08-17, so the "Storm" half of the name is now
+#: archetype: the per-turn copiers rather than a scaling chain. Niv-Mizzet + the pingers are
+#: archetype: still the kill.
+#: notes: RULES CAVEAT that shapes this build: a COPY is put on the stack, not CAST — so copies
+#: notes: do NOT trigger "whenever you cast a noncreature spell" (Coruscation Mage / Black Waltz
+#: notes: / the 0/1 tokens) or prowess. Copiers here DOUBLE THE EFFECT (removal, burn, draw),
+#: notes: they don't storm the pings. Taigam is the exception that helps the ping plan: it
+#: notes: suspends the original spell back, giving a real future CAST. So this build leans on
+#: notes: copy-for-VALUE + the draw-two engine, not a ping-storm.
+#: notes: vs the original 37 (as drafted; cut 2026-09-06): +Thousand-Year Storm, +Kitsa, +Taigam, +Return the Favor
+#: notes: (copiers — the first and last were later CUT, see the tier log);
+#: notes: +Super Intelligence, +Construct a Cosmic Cube, +Clinquant Skymage (draw-two);
+#: notes: +Uncover the Moon-Letters, +Artist's Talent (both trigger on the noncreature cast this
+#: notes: variant spams — the Moon-Letters draw scales with the mana spent, so it rewards the
+#: notes: expensive value spells, and Talent's loot feeds the draw-two payoffs before its
+#: notes: level-2 cost reduction and level-3 noncombat-damage boost come online);
+#: notes: -the most aggressive one-of bodies (Razzle-Dazzler, Harnesser of Storms, Crackling
+#: notes: Cyclops — the original 37 kept the last two), -Heartless Act and a little cheap burn.
+#: notes: 25 lands for the heavier curve. Copies are fungible, so the shared single-copy duals
+#: notes: overlap with the original 37 at no cost. FULLY OWNED — Kitsa, Clinquant Skymage and the rest
+#: notes: of this variant's former craft targets have been acquired; `deck.py check 37a` is the
+#: notes: authority on build state.
+#: notes: PROMOTED 2026-09-06: this was variant 37a (Wiz-Khalifa, the value/storm take); the original
+#: notes: 37 was CUT (user call — 37 and 37b shared 39 of 48 cards) and 37b (Competitive) became 37a.
+#: notes: The Arena deck is still named '37a Wiz-Khalifa' — attribution keys on the GUID in `#: arena:`.
+#: protect: Coruscation Mage; Niv-Mizzet, Visionary; Taigam, Master Opportunist; Kefka, Court Mage
 
-# Creatures — Wizard pingers / prowess payoffs / engines
-1 Mu Yanling, Wind Rider (DFT) 52
+# Creatures — Wizard pingers / copiers / draw payoffs / engines
 1 The Emperor of Palamecia (FIN) 219
 1 Stormcatch Mentor (BLB) 234
 1 Coruscation Mage (BLB) 131
-1 Gandalf, Goblins' Bane (HOB) 96
-1 Balmor, Battlemage Captain (FDN) 237
-1 Razzle-Dazzler (OTJ) 63
+1 Kitsa, Otterball Elite (BLB) 54
+1 Taigam, Master Opportunist (TDM) 60
+1 Kid Loki (MSH) 63
+1 Sphinx of Forgotten Lore (FDN) 51
 1 Queen Brahne (FIN) 149
 1 Mysidian Elder (FIN) 145
-1 Crackling Cyclops (FDN) 83
-1 Kindlespark Duo (BLB) 142
 1 Tempest Angler (BLB) 235
-1 Harnesser of Storms (BLB) 137
+1 Gandalf, Goblins' Bane (HOB) 96
 1 Erudite Wizard (FDN) 37
-1 Tishana's Tidebinder (LCI) 81
-1 Taigam, Master Opportunist (TDM) 60
-1 Hydro-Channeler (SOS) 54
-1 Harmonized Trio (SOS) 52
+1 Clinquant Skymage (FDN) 33
 1 Black Waltz No. 3 (FIN) 214
 1 Archmage of Runes (FDN) 30
 1 Kefka, Court Mage (FIN) 231
 1 Niv-Mizzet, Visionary (FDN) 123
-1 Stormsplitter (BLB) 154
+1 Most Decrepit Old Bird (HOB) 49
+1 Mu Yanling, Wind Rider (DFT) 52
 
-# Noncreature — token / ping enablers
-1 Cornered by Black Mages (FIN) 93
-1 Black Mage's Rod (FIN) 90
+# Noncreature — reanimation (Rakdos returns a creature with two +1/+1 counters)
+1 Rakdos Joins Up (OTJ) 225
+
+# Noncreature — card draw / draw-two engine + payoffs
+1 Combat Tutorial (FIN) 48
+1 Super Intelligence (MSH) 77
+1 Construct a Cosmic Cube (MSH) 90
+1 Uncover the Moon-Letters (HOB) 57
+1 Artist's Talent (BLB) 124
 1 Circle of Power (FIN) 92
-1 Lasting Tarfire (ECL) 149
 
-# Noncreature — cantrips / card advantage (fuel the spell count)
-1 Enter the Enigma (DSK) 52
-1 Boomerang Basics (TLA) 46
+# Noncreature — token / ping enablers + cantrips
+1 Cornered by Black Mages (FIN) 93
+1 Lasting Tarfire (ECL) 149
+1 Think Twice (FDN) 165
+1 Astrologian's Planisphere (FIN) 46
 1 Portent of Calamity (BLB) 66
-1 Phyrexian Arena (FDN) 180
+1 Unstable Experiment (SPM) 47
 
 # Noncreature — removal / interaction
-1 Thunder Magic (FIN) 165
-1 Impractical Joke (SOS) 119
+1 Playful Shove (BLB) 145
 1 Bitter Triumph (SOA) 26
-1 Unsparing Boltcaster (TDM) 130
 1 Mana Sculpt (SOS) 57
 
-# Lands — 24, U-weighted Grixis (owned duals + basics)
+# Lands — 25, U-weighted Grixis (owned duals + basics; fungible with 37)
 1 Gloomlake Verge (DSK) 260
 1 Riverpyre Verge (DFT) 260
 1 Blazemire Verge (DSK) 256
@@ -106,13 +139,12 @@
 1 Bloodfell Caves (TDM) 250
 1 Dark Fortress (MSH) 264
 7 Island (MSH) 290
-2 Swamp (MSH) 292
+3 Swamp (MSH) 292
 2 Mountain (MSH) 294
 
-# Flex — options (comments; not part of the 60). See: deck.py flex 37
-#~ note: applied — Kindlespark Duo in for Tribute to Hunger.
-#~ -Harmonized Trio | +We Say Thee Nay! | if you want a hard-ish counter over the draw-body; Trio's teamwork tap competes with attacking
-#~ note: Taigam copies your 2nd spell each turn AND suspends the original back — the one copy effect that adds real future CASTS (which re-trigger the pings). Copies themselves don't trigger "cast" pings/prowess. Variants: 37a = value/storm take; 37b = competitive functional-redundancy A build (`deck.py redundancy 37`).
-#~ note: For a more consistent build without 4-ofs, add virtual copies of the thin effects — `deck.py redundancy 37` names them (e.g. counters: Spell Pierce / Divert Disaster).
+# Flex — options (comments; not part of the 60). See: deck.py flex 37a
+#~ note: applied — Most Decrepit Old Bird in for Return the Favor.
+#~ -Circle of Power | +Daring Waverider | owned: a 6-drop that free-casts an instant/sorcery from your graveyard — big value swing if the curve can support it
 
-#~ note: applied — Gandalf, Goblins' Bane in for Harbinger of the Tides.
+#~ note: applied — Gandalf, Goblins' Bane in for Harnesser of Storms.
+#~ note: applied — Artist's Talent in for Heartless Act, and Uncover the Moon-Letters in for Crackling Cyclops.

@@ -33,7 +33,7 @@
 #: notes: the mechanic allowed: Howlsquad Heavy also serves deck 58's Krenko line
 #: notes: (haste lord + Goblin count mana); Momentum Breaker's edict shape suits
 #: notes: the 52/53 black decks; The Speed Demon is a generic black draw engine
-#: notes: beyond this deck; Heartless Act is the copy freed from 37b (in no deck
+#: notes: beyond this deck; Heartless Act is the copy freed from 37a (37b until 2026-09-06) (in no deck
 #: notes: until now). MECHANIC READS: speed ticks ONCE per turn, on YOUR turn,
 #: notes: from ANY opponent life loss — combat, Far Fortune's attack ping, burn,
 #: notes: even Gastal Thrillseeker's ETB — so a stalled board still ticks via any

@@ -2572,6 +2572,10 @@ Ancient Cornucopia,{2}{G},3,
 Freestrider Commando,{2}{G},3,Plot
 Unfortunate Accident,{B},1,Spree
 Wizard's Staff,{1}{U},2,Equip
+"Ral, Crackling Wit",{2}{U}{R},4,
+Goliath Daydreamer,{2}{R}{R},4,
+"Bria, Riptide Rogue",{2}{U}{R},4,Prowess
+Charred Foyer,{3}{R} // {4}{R}{R},10,
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -3351,7 +3355,6 @@ Junkblade Bruiser,{3}{R/G}{R/G},5,Trample
 Mind Drill Assailant,{2}{U/B}{U/B},4,Surveil;Threshold
 "Muerra, Trash Tactician",{1}{R}{G},3,
 Plumecreed Mentor,{1}{W}{U},3,Flying
-"Ral, Crackling Wit",{2}{U}{R},4,
 Seedpod Squire,{3}{W/U},4,Flying
 Tidecaller Mentor,{1}{U}{B},3,Threshold;Menace
 Veteran Guardmouse,{3}{R/W},4,Valiant;Scry
@@ -3365,7 +3368,6 @@ Starforged Sword,{4},4,Gift;Equip
 Tangle Tumbler,{3},3,Vigilance
 Fabled Passage,,0,
 Rockface Village,,0,
-"Bria, Riptide Rogue",{2}{U}{R},4,Prowess
 Charmed Sleep,{1}{U}{U},3,Enchant
 Thieving Otter,{2}{U},3,
 Flame Lash,{3}{R},4,
@@ -4678,7 +4680,6 @@ Enraged Flamecaster,{2}{R},3,Reach
 Feed the Flames,{3}{R},4,
 Flamebraider,{1}{R},2,
 Goatnap,{2}{R},3,
-Goliath Daydreamer,{2}{R}{R},4,
 Hexing Squelcher,{1}{R},2,Ward
 Impolite Entrance,{R},1,
 Lavaleaper,{3}{R},4,

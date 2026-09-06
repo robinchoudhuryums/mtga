@@ -209,8 +209,8 @@ Date,Deck,Source,Cut,Add,Cut Rank,Cut Of,Cut Protected,Add Surfaced,Add Rank,Add
 2026-08-05,35a,swap,"Krang, Utrom Warlord",Omniscience,14,32,no,no,,4468
 2026-08-05,35a,swap,"Ghost, Spectral Saboteur","Yue, the Moon Spirit",8,32,no,no,316,4469
 2026-08-05,35a,swap,Impostor Syndrome,"Appa, Loyal Sky Bison",4,32,no,no,1218,4469
-2026-08-05,37b,swap,Heartless Act,Magic Damper,1,31,no,no,2320,2696
-2026-08-05,37b,swap,Impractical Joke,Shipwreck Dowser,8,31,no,yes,3,2696
+2026-08-05,37a,swap,Heartless Act,Magic Damper,1,31,no,no,2320,2696
+2026-08-05,37a,swap,Impractical Joke,Shipwreck Dowser,8,31,no,yes,3,2696
 2026-08-05,28,swap,"Gishath, Sun's Avatar","Etali, Primal Storm",30,35,no,no,926,2645
 2026-08-05,28,swap,Palani's Hatcher,Savage Land Dinosaur,26,35,no,no,47,2640
 2026-08-05,28,swap,Rampaging Ceratops,"Spider-Rex, Daring Dino",4,35,no,no,140,2640
@@ -227,8 +227,8 @@ Date,Deck,Source,Cut,Add,Cut Rank,Cut Of,Cut Protected,Add Surfaced,Add Rank,Add
 2026-08-06,29,swap,Forest,Kyoshi Village,,32,no,no,558,2676
 2026-08-06,29,swap,Forest,Suburban Sanctuary,,32,no,no,1032,2675
 2026-08-06,29,swap,Firebender Ascension,Leaves from the Vine,17,32,no,yes,1,2674
-2026-08-06,37,swap,Depressurize,"Mu Yanling, Wind Rider",4,31,no,yes,2,2689
-2026-08-06,37b,swap,Spell Pierce,"Mu Yanling, Wind Rider",2,31,no,yes,3,2696
+2026-08-06,37x-cut,swap,Depressurize,"Mu Yanling, Wind Rider",4,31,no,yes,2,2689
+2026-08-06,37a,swap,Spell Pierce,"Mu Yanling, Wind Rider",2,31,no,yes,3,2696
 2026-08-06,48a,swap,Plasma Bolt,"Mu Yanling, Wind Rider",4,31,no,no,89,1898
 2026-08-06,38,swap,Healer's Hawk,The Aetherspark,1,34,no,no,52,1942
 2026-08-06,26b,swap,Romantic Rendezvous,Artist's Talent,2,32,no,no,368,1888
@@ -237,8 +237,8 @@ Date,Deck,Source,Cut,Add,Cut Rank,Cut Of,Cut Protected,Add Surfaced,Add Rank,Add
 2026-08-06,61,swap,Steer Clear,"Kona, Rescue Beastie",1,20,no,no,1441,1909
 2026-08-06,32,swap,Leyline of Transformation,Extravagant Replication,1,36,no,no,1723,1888
 2026-08-06,57,swap,Riverwheel Sweep,"Shiko, Paragon of the Way",2,19,no,no,,2694
-2026-08-06,37b,swap,Bitter Triumph,Unsparing Boltcaster,1,31,no,no,142,2697
-2026-08-06,37,swap,Dark Deed,Unsparing Boltcaster,2,31,no,no,194,2690
+2026-08-06,37a,swap,Bitter Triumph,Unsparing Boltcaster,1,31,no,no,142,2697
+2026-08-06,37x-cut,swap,Dark Deed,Unsparing Boltcaster,2,31,no,no,194,2690
 2026-08-06,57,swap,Thunder Salvo,Wingblade Disciple,1,18,no,no,31,2695
 2026-08-06,58,swap,Generous Plunderer,War Effort,4,18,no,no,199,2675
 2026-08-06,58,swap,Tarrian's Journal // The Tomb of Aclazotz,Salt Road Skirmish,13,18,no,no,226,2673
@@ -356,14 +356,14 @@ Date,Deck,Source,Cut,Add,Cut Rank,Cut Of,Cut Protected,Add Surfaced,Add Rank,Add
 2026-08-11,28,swap,Figure of Fable,Railway Brawler,1,35,no,no,111,2749
 2026-08-11,28,swap,"Spider-Rex, Daring Dino",The Skullspore Nexus,25,35,no,no,938,2759
 2026-08-11,28,swap,Nurturing Bristleback,Boros Charm,28,35,no,no,2417,2796
-2026-08-11,68,swap,Murder,Nowhere to Run,1,28,no,no,775,2810
-2026-08-11,68,swap,Punk Frogs,"Spider-Ham, Peter Porker",8,28,no,no,890,2810
-2026-08-11,68,swap,Burrog Banemaker,Vinereap Mentor,17,28,no,no,617,2811
-2026-08-11,68a,swap,Gigantoad,"Byrke, Long Ear of the Law",7,29,no,no,189,2774
-2026-08-11,68a,swap,Pet Avengers,"Finneas, Ace Archer",26,29,no,no,66,2779
-2026-08-11,68a,swap,Punk Frogs,Burrowguard Mentor,8,29,no,no,2326,2776
-2026-08-11,68a,swap,"Venus, Torn Between Worlds",Warren Warleader,17,29,no,no,483,2776
-2026-08-11,68a,swap,Clifftop Lookout,Hop to It,21,29,no,no,2470,2775
+2026-08-11,68x-cut,swap,Murder,Nowhere to Run,1,28,no,no,775,2810
+2026-08-11,68x-cut,swap,Punk Frogs,"Spider-Ham, Peter Porker",8,28,no,no,890,2810
+2026-08-11,68x-cut,swap,Burrog Banemaker,Vinereap Mentor,17,28,no,no,617,2811
+2026-08-11,68,swap,Gigantoad,"Byrke, Long Ear of the Law",7,29,no,no,189,2774
+2026-08-11,68,swap,Pet Avengers,"Finneas, Ace Archer",26,29,no,no,66,2779
+2026-08-11,68,swap,Punk Frogs,Burrowguard Mentor,8,29,no,no,2326,2776
+2026-08-11,68,swap,"Venus, Torn Between Worlds",Warren Warleader,17,29,no,no,483,2776
+2026-08-11,68,swap,Clifftop Lookout,Hop to It,21,29,no,no,2470,2775
 2026-08-12,69,swap,Bristlepack Sentry,Garruk's Uprising,4,24,no,no,924,2018
 2026-08-12,69,swap,"Torgal, A Fine Hound",Inspiring Call,22,24,no,no,742,2018
 2026-08-12,69,swap,Fell,Unforgiving Aim,2,24,no,no,1513,2018
@@ -408,18 +408,18 @@ Date,Deck,Source,Cut,Add,Cut Rank,Cut Of,Cut Protected,Add Surfaced,Add Rank,Add
 2026-08-15,29a,swap,Bombard,The Mountain-king's Return,1,34,no,no,71,2787
 2026-08-15,54a,swap,Loki Laufeyson,"Bilbo, Thief in the Night",4,29,no,no,505,2709
 2026-08-15,19,swap,Dazzling Denial,"Bard, King of Dale",1,30,no,no,528,2800
-2026-08-15,37,swap,Harbinger of the Tides,"Gandalf, Goblins' Bane",20,31,no,no,62,2808
-2026-08-15,37a,swap,Harnesser of Storms,"Gandalf, Goblins' Bane",15,30,no,no,80,2811
-2026-08-15,37a,swap,Heartless Act,Artist's Talent,5,30,no,no,785,2810
-2026-08-15,37a,swap,Crackling Cyclops,Uncover the Moon-Letters,16,30,no,no,1205,2810
-2026-08-15,37b,swap,Magic Damper,"Gandalf, Goblins' Bane",2,31,no,no,68,2816
-2026-08-15,37,swap,Tribute to Hunger,Kindlespark Duo,8,31,no,no,1032,2811
-2026-08-15,37b,swap,Boomerang Basics,Kindlespark Duo,3,31,no,no,857,2819
+2026-08-15,37x-cut,swap,Harbinger of the Tides,"Gandalf, Goblins' Bane",20,31,no,no,62,2808
+2026-08-15,37,swap,Harnesser of Storms,"Gandalf, Goblins' Bane",15,30,no,no,80,2811
+2026-08-15,37,swap,Heartless Act,Artist's Talent,5,30,no,no,785,2810
+2026-08-15,37,swap,Crackling Cyclops,Uncover the Moon-Letters,16,30,no,no,1205,2810
+2026-08-15,37a,swap,Magic Damper,"Gandalf, Goblins' Bane",2,31,no,no,68,2816
+2026-08-15,37x-cut,swap,Tribute to Hunger,Kindlespark Duo,8,31,no,no,1032,2811
+2026-08-15,37a,swap,Boomerang Basics,Kindlespark Duo,3,31,no,no,857,2819
 2026-08-15,29,swap,Angelic Destiny,Builder's Talent,2,32,no,no,33,2802
 2026-08-15,42,swap,Hour of Defeat,Nocturnal Hunger,5,32,no,no,28,2031
 2026-08-15,42a,swap,Hero's Downfall,Nocturnal Hunger,1,32,no,no,37,2040
 2026-08-15,62,swap,Psychic Whorl,Supper for Spiders,11,30,no,no,94,2838
-2026-08-15,37a,swap,Thunder Magic,Playful Shove,8,30,no,no,1218,2810
+2026-08-15,37,swap,Thunder Magic,Playful Shove,8,30,no,no,1218,2810
 2026-08-15,72,swap,Gathering of Darkness,Buzzard-Wasp Colony,16,27,no,no,530,1993
 2026-08-15,72,swap,Tidings of War,Sidequest: Hunt the Mark,19,28,no,no,71,2004
 2026-08-15,72,swap,Stony-Voiced Goblins,Stadium Headliner,6,29,no,yes,3,2003
@@ -452,29 +452,29 @@ Date,Deck,Source,Cut,Add,Cut Rank,Cut Of,Cut Protected,Add Surfaced,Add Rank,Add
 2026-08-17,46,swap,Take Up the Shield,Archangel of Tithes,7,22,no,no,252,1247
 2026-08-17,61,swap,Cloudspire Captain,Rambling Possum,5,23,no,yes,16,1983
 2026-08-17,61,swap,Frontier Seeker,Bridled Bighorn,7,24,no,yes,5,1984
-2026-08-17,37a,swap,Dismal Backwater,Hidden Lair,,30,no,no,1188,2809
-2026-08-17,37a,swap,Bloodfell Caves,Dark Fortress,,30,no,no,1151,2808
-2026-08-17,37a,swap,Enter the Enigma,Think Twice,7,30,no,no,1348,2807
-2026-08-17,37a,swap,Hydro-Channeler,Sphinx of Forgotten Lore,18,30,no,no,999,2807
-2026-08-17,37a,swap,Phyrexian Arena,Combat Tutorial,8,30,no,no,2391,2807
-2026-08-17,37a,swap,Thousand-Year Storm,Rakdos Joins Up,,30,yes,no,169,2807
-2026-08-17,37a,swap,Tishana's Tidebinder,Unstable Experiment,20,31,no,no,1540,2807
-2026-08-17,37a,swap,"Balmor, Battlemage Captain",Kid Loki,21,31,no,no,1638,2807
-2026-08-17,37a,swap,Boomerang Basics,Astrologian's Planisphere,8,31,no,no,907,2808
-2026-08-17,37,swap,Heartless Act,Stormsplitter,1,31,no,no,99,2814
-2026-08-17,37b,swap,Harnesser of Storms,Stormsplitter,8,31,no,no,106,2814
-2026-08-17,37a,swap,Return the Favor,Most Decrepit Old Bird,1,31,no,no,965,2807
-2026-08-17,68a,swap,Floodpits Drowner,"Oko, the Ringleader",17,29,no,no,850,2772
-2026-08-17,37b,swap,"Mu Yanling, Wind Rider","Gandalf, Spark Starter",26,31,no,yes,15,2810
-2026-08-17,37,swap,Dismal Backwater,Hidden Lair,,31,no,no,1226,2814
-2026-08-17,37,swap,Bloodfell Caves,Dark Fortress,,31,no,no,1203,2813
-2026-08-17,37,swap,Dismal Backwater,Watery Grave,,31,no,no,859,2812
-2026-08-17,37b,swap,Dismal Backwater,Hidden Lair,,31,no,no,1314,2809
-2026-08-17,37b,swap,Bloodfell Caves,Dark Fortress,,31,no,no,1280,2808
-2026-08-17,37b,swap,Dismal Backwater,Watery Grave,,31,no,no,1032,2807
-2026-08-17,37a,swap,Dismal Backwater,Watery Grave,,31,no,no,1125,2804
-2026-08-17,37b,swap,Hydro-Channeler,"Mu Yanling, Wind Rider",16,31,no,yes,4,2807
-2026-08-17,37a,swap,Dark Deed,"Mu Yanling, Wind Rider",1,31,no,yes,15,2804
+2026-08-17,37,swap,Dismal Backwater,Hidden Lair,,30,no,no,1188,2809
+2026-08-17,37,swap,Bloodfell Caves,Dark Fortress,,30,no,no,1151,2808
+2026-08-17,37,swap,Enter the Enigma,Think Twice,7,30,no,no,1348,2807
+2026-08-17,37,swap,Hydro-Channeler,Sphinx of Forgotten Lore,18,30,no,no,999,2807
+2026-08-17,37,swap,Phyrexian Arena,Combat Tutorial,8,30,no,no,2391,2807
+2026-08-17,37,swap,Thousand-Year Storm,Rakdos Joins Up,,30,yes,no,169,2807
+2026-08-17,37,swap,Tishana's Tidebinder,Unstable Experiment,20,31,no,no,1540,2807
+2026-08-17,37,swap,"Balmor, Battlemage Captain",Kid Loki,21,31,no,no,1638,2807
+2026-08-17,37,swap,Boomerang Basics,Astrologian's Planisphere,8,31,no,no,907,2808
+2026-08-17,37x-cut,swap,Heartless Act,Stormsplitter,1,31,no,no,99,2814
+2026-08-17,37a,swap,Harnesser of Storms,Stormsplitter,8,31,no,no,106,2814
+2026-08-17,37,swap,Return the Favor,Most Decrepit Old Bird,1,31,no,no,965,2807
+2026-08-17,68,swap,Floodpits Drowner,"Oko, the Ringleader",17,29,no,no,850,2772
+2026-08-17,37a,swap,"Mu Yanling, Wind Rider","Gandalf, Spark Starter",26,31,no,yes,15,2810
+2026-08-17,37x-cut,swap,Dismal Backwater,Hidden Lair,,31,no,no,1226,2814
+2026-08-17,37x-cut,swap,Bloodfell Caves,Dark Fortress,,31,no,no,1203,2813
+2026-08-17,37x-cut,swap,Dismal Backwater,Watery Grave,,31,no,no,859,2812
+2026-08-17,37a,swap,Dismal Backwater,Hidden Lair,,31,no,no,1314,2809
+2026-08-17,37a,swap,Bloodfell Caves,Dark Fortress,,31,no,no,1280,2808
+2026-08-17,37a,swap,Dismal Backwater,Watery Grave,,31,no,no,1032,2807
+2026-08-17,37,swap,Dismal Backwater,Watery Grave,,31,no,no,1125,2804
+2026-08-17,37a,swap,Hydro-Channeler,"Mu Yanling, Wind Rider",16,31,no,yes,4,2807
+2026-08-17,37,swap,Dark Deed,"Mu Yanling, Wind Rider",1,31,no,yes,15,2804
 2026-08-18,19,swap,Stirring Hopesinger,The Lord of the Eagles,24,30,no,no,87,2803
 2026-08-18,19,swap,Shrike Force,Eagle of the Great Shelf,14,30,no,no,142,2800
 2026-08-18,19b,swap,Rydia's Return,Eagle of the Great Shelf,6,34,no,no,148,1985
@@ -548,7 +548,7 @@ Date,Deck,Source,Cut,Add,Cut Rank,Cut Of,Cut Protected,Add Surfaced,Add Rank,Add
 2026-08-22,67,swap,Starbreach Whale,Railway Brawler,31,31,no,yes,11,2799
 2026-08-22,67,swap,Drix Fatemaker,Make Your Own Luck,22,31,no,no,111,2801
 2026-08-22,67,swap,Syncopate,"Bilbo, Thief in the Night",1,31,no,no,295,2801
-2026-08-23,37b,swap,Portent of Calamity,Grievous Wound,2,31,no,no,,2812
+2026-08-23,37a,swap,Portent of Calamity,Grievous Wound,2,31,no,no,,2812
 2026-08-23,26b,swap,Cryogen Relic,Esoteric Duplicator,18,32,no,no,123,1977
 2026-08-23,26a,swap,Mechan Navigator,Esoteric Duplicator,13,30,no,no,1108,1989
 2026-08-23,48,swap,Abrade,Esoteric Duplicator,2,31,no,no,603,1992
@@ -578,19 +578,19 @@ Date,Deck,Source,Cut,Add,Cut Rank,Cut Of,Cut Protected,Add Surfaced,Add Rank,Add
 2026-08-24,43,swap,Marauding Blight-Priest,"Doctor Octopus, Master Planner",10,31,no,no,307,2802
 2026-08-25,31,swap,Derelict Attic,Bloodthirsty Conqueror,1,33,no,no,22,2028
 2026-08-25,31,swap,Sporogenic Infection,Ahriman,2,33,no,no,46,2028
-2026-08-26,68b,swap,Thornvault Forager,Enduring Vitality,23,28,no,no,780,2003
-2026-08-26,68b,swap,Gigantoad,Ouroboroid,3,28,no,no,1316,2003
-2026-08-26,68b,swap,Bakersbane Duo,"Delney, Streetwise Lookout",19,28,no,no,1933,2003
-2026-08-26,68b,swap,Three Tree Scribe,Dollmaker's Shop // Porcelain Gallery,9,28,no,no,1511,2002
-2026-08-26,68b,swap,Stickytongue Sentinel,The Arkenstone,16,28,no,no,1056,2005
-2026-08-26,68b,swap,Clifftop Lookout,Coordinated Maneuver,16,28,no,no,1788,2005
-2026-08-26,68b,swap,Snakeskin Veil,Crystal Barricade,9,28,no,no,1682,2005
-2026-08-26,68b,swap,Forest,Etched Cornfield,,29,no,no,1461,2004
-2026-08-26,68b,swap,Forest,Sandsteppe Citadel,,29,no,no,1328,2003
-2026-08-26,68b,swap,Plains,Urban Retreat,,29,no,no,609,2002
-2026-08-26,68b,swap,Frog Butler,"Michelangelo, Mutant BFF",28,29,no,no,349,2001
-2026-08-27,68b,swap,Head of the Homestead,Felidar Retreat,15,30,no,no,114,2002
-2026-08-27,68b,swap,Snakeskin Veil,Moogles' Valor,10,30,no,no,814,2002
+2026-08-26,68a,swap,Thornvault Forager,Enduring Vitality,23,28,no,no,780,2003
+2026-08-26,68a,swap,Gigantoad,Ouroboroid,3,28,no,no,1316,2003
+2026-08-26,68a,swap,Bakersbane Duo,"Delney, Streetwise Lookout",19,28,no,no,1933,2003
+2026-08-26,68a,swap,Three Tree Scribe,Dollmaker's Shop // Porcelain Gallery,9,28,no,no,1511,2002
+2026-08-26,68a,swap,Stickytongue Sentinel,The Arkenstone,16,28,no,no,1056,2005
+2026-08-26,68a,swap,Clifftop Lookout,Coordinated Maneuver,16,28,no,no,1788,2005
+2026-08-26,68a,swap,Snakeskin Veil,Crystal Barricade,9,28,no,no,1682,2005
+2026-08-26,68a,swap,Forest,Etched Cornfield,,29,no,no,1461,2004
+2026-08-26,68a,swap,Forest,Sandsteppe Citadel,,29,no,no,1328,2003
+2026-08-26,68a,swap,Plains,Urban Retreat,,29,no,no,609,2002
+2026-08-26,68a,swap,Frog Butler,"Michelangelo, Mutant BFF",28,29,no,no,349,2001
+2026-08-27,68a,swap,Head of the Homestead,Felidar Retreat,15,30,no,no,114,2002
+2026-08-27,68a,swap,Snakeskin Veil,Moogles' Valor,10,30,no,no,814,2002
 2026-08-27,49,swap,Decadent Dragon // Expensive Taste,Smaug the Magnificent,26,29,no,yes,1,1242
 2026-08-27,49,swap,Roaming Throne,The Misty Mountains Cold,,29,yes,no,172,1240
 2026-08-27,49,swap,Realm-Scorcher Hellkite,Dragonmaster Outcast,30,30,no,no,484,1237

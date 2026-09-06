@@ -5499,3 +5499,15 @@ Wizard's Staff,Artifact — Equipment,"Equipped creature has prowess. (Whenever 
 If a triggered ability of equipped creature triggers, that ability triggers an additional time.
 Equip Wizard {1}
 Equip {3}",U,Equipment; equipment; pump; equip; prowess; spellslinger; tempo,HOB,59,1
+"Ral, Crackling Wit",Legendary Planeswalker — Ral,"Whenever you cast a noncreature spell, put a loyalty counter on Ral.
++1: Create a 1/1 blue and red Otter creature token with prowess.
+−3: Draw three cards, then discard two cards.
+−10: Draw three cards. You get an emblem with ""Instant and sorcery spells you cast have storm."" (Whenever you cast an instant or sorcery spell, copy it for each spell cast before it this turn.)",U/R,Ral; Planeswalker; counters; card draw; tokens; planeswalker; spellslinger,BLB,230,1
+Goliath Daydreamer,Creature — Giant Wizard,"Whenever you cast an instant or sorcery spell from your hand, exile that card with a dream counter on it instead of putting it into your graveyard as it resolves.
+Whenever this creature attacks, you may cast a spell from among cards you own in exile with dream counters on them without paying its mana cost.",R,Giant; Wizard; counters; graveyard; spellslinger,ECL,143,1
+"Bria, Riptide Rogue",Legendary Creature — Otter Rogue,"Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
+Other creatures you control have prowess. (If a creature has multiple instances of prowess, each triggers separately.)
+Whenever you cast a noncreature spell, target creature you control can't be blocked this turn.",U/R,Otter; Rogue; pump; spellslinger; prowess; tempo,BLB,379,1
+Charred Foyer,Enchantment — Room // Enchantment — Room,"At the beginning of your upkeep, exile the top card of your library. You may play it this turn.
+(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.) // Once each turn, you may pay {0} rather than pay the mana cost for a spell you cast from exile.
+(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",R,Room; impulse,DSK,129,1

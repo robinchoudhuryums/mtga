@@ -32,6 +32,17 @@ card overlap are different questions and SOME overlap is fine. The map of what i
 actually IN Arena is incomplete (G-73: only reconciled decks carry `#: arena:`), so
 the final list is roster-relative and the user maps it onto the app.
 
+## Decisions landed 2026-09-06
+
+- **68 Frog Sage CUT; 68a (Seer) promoted to 68; 68b (Warren) → 68a** — user call after games
+  (68a played better; it carried all 4 of the family's recorded matches). Matches and the
+  recommendation ledger re-keyed; the old parent's rows are tagged `68x-cut`.
+- **37 Wizardz CUT; 37a (Wiz-Khalifa) promoted to 37; 37b (Competitive) → 37a** — user call
+  (37 shared 39 of 48 with 37b). Same re-keying; old rows `37x-cut`. Cross-citations in 40
+  and 60 updated. The Arena decks keep their GUIDs, so attribution is unchanged; the app-side
+  names still read '68a …' / '37a …' until a `--sync-names` pass.
+- Roster now **116 files**.
+
 ## Refresh 2026-09-06 — what changed since 2026-08-19
 
 - Roster 111 → **118 files**: new are **56b One Fell Swoop — Ball Lightning** (drafted from the

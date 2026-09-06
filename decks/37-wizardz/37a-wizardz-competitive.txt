@@ -1,11 +1,11 @@
 #: name: Wizardz — Competitive (functional-redundancy A)
 #: format: Standard
 #: colors: UBR
-#: tier: A — the competitive, consistency-optimized build of the CORE (37) aggressive ping
+#: tier: A — the competitive, consistency-optimized build of the ORIGINAL core's aggressive ping (the old 37, CUT 2026-09-06; 37 is now the value/storm list)
 #: tier: plan, made reliable by FUNCTIONAL REDUNDANCY rather than 4-ofs: it stays a singleton
 #: tier: (highlander) list but runs each plan-effect as VIRTUAL copies (distinct similar
 #: tier: cards), so it draws its plan every game — the consistency that separates B from A.
-#: tier: `deck.py redundancy 37` named the two thin effects; this firms them up. The win-con
+#: tier: `deck.py redundancy` against the original 37 named the two thin effects; this firms them up. The win-con
 #: tier: ping ("deal damage to each opponent when you cast a noncreature spell") is a virtual
 #: tier: ~11-of (Coruscation Mage + Firebrand Archer + Thunderdrum Soloist + Black Waltz +
 #: tier: Gandalf, Goblins' Bane + the 0/1-token makers + Lasting Tarfire);
@@ -21,13 +21,13 @@
 #: tier: no format-warping bomb.
 #: based-on: deck.txt
 #: archetype: Grixis (U-primary) Wizard spellslinger — the aggressive PING race (same plan as
-#: archetype: core 37, distinct from the 37a value/storm take), tuned for competitive
+#: archetype: the original core, distinct from the value/storm take that is now 37), tuned for competitive
 #: archetype: consistency via virtual copies. Cast cheap noncreature spells to trigger a wide
 #: archetype: board of pingers + prowess payoffs and burn the table out; efficient removal
 #: archetype: clears blockers; a light counter package protects the engine.
-#: notes: This is the COMPETITIVE variant (sibling to 37a's creative value/storm take), built
-#: notes: by analyzing the core (37) with `deck.py redundancy` and applying its "virtual copies
-#: notes: first" plan. vs core 37: +Firebrand Archer +Thunderdrum Soloist (near-reprints of
+#: notes: This is the COMPETITIVE variant (sibling to the creative value/storm take, now 37), built
+#: notes: by analyzing the original core with `deck.py redundancy` and applying its "virtual copies
+#: notes: first" plan. vs the original 37: +Firebrand Archer +Thunderdrum Soloist (near-reprints of
 #: notes: Coruscation Mage — deepen the ping win-con to a virtual ~10-of) +Mana Sculpt (2nd
 #: notes: counter) +Gandalf, Goblins' Bane (an 11th virtual copy of the ping win-con, and the
 #: notes: only one that grows itself); -Harmonized Trio (clunky teamwork draw-body)
@@ -35,7 +35,8 @@
 #: notes: combat trick, near-worthless to a go-wide board). Singleton throughout.
 #: notes: More owned virtual copies on tap (see `deck.py redundancy 37b`): counters —
 #: notes: Divert Disaster / Negate / Disdainful Stroke; reach/removal — Lightning Strike / Shock.
-#: notes: Lands are fungible with 37/37a, so the shared single-copy duals cost nothing extra.
+#: notes: Lands are fungible with 37, so the shared single-copy duals cost nothing extra.
+#: notes: RENUMBERED 2026-09-06: this was 37b; the original 37 was cut and 37a became 37.
 #: protect: Coruscation Mage; Black Waltz No. 3; Balmor, Battlemage Captain; Kefka, Court Mage; Niv-Mizzet, Visionary
 
 # Creatures — Wizard pingers (virtual copies of the win-con) / prowess payoffs / engines
