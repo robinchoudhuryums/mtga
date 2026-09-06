@@ -75,6 +75,11 @@
 #: notes: (56b's signature body — Luke Cage + Agrus Kos took Molten Man's slots instead), Collective
 #: notes: Inferno (type-gated where Twinflame is not; Twinflame went to 56a). Craft targets after the
 #: notes: rebuild: Stingerback, Fire Crystal, Sacred Foundry ×2 (4 rares); everything else is owned.
+#: notes: 2026-09-06 LANDS (owned-for-unowned, colour access unchanged at W 13 / R 17): −Elegant Parlor
+#: notes: +Temple of Triumph (same tapped dual, scry for surveil), −Inspiring Vantage +Starting Town (untapped
+#: notes: T1–3 like the fastland, 1 life per coloured tap), −1 Sacred Foundry +Sun-Blessed Peak (a basic cost
+#: notes: the weakest casts 3–5 pts on curve; a second Bluffs is OTJ). Parlor/Vantage/Bluffs are MKM/OTJ and
+#: notes: leave with the 2026 rotation, so the crafts bought weeks; the remaining Bluffs goes with them.
 
 # Tall bodies
 1 The Sentry, Golden Guardian (MSH) 35
@@ -125,8 +130,9 @@
 1 Sunbillow Verge (DFT) 264
 1 Dalkovan Encampment (TDM) 253
 1 Abraded Bluffs (OTJ) 251
-1 Inspiring Vantage (OTJ) 269
-1 Elegant Parlor (MKM) 260
+1 Starting Town (FIN) 289
+1 Temple of Triumph (FDN) 705
 11 Mountain (MSH) 293
-2 Sacred Foundry (EOE) 256
+1 Sacred Foundry (EOE) 256
+1 Sun-Blessed Peak (TLA) 280
 6 Plains (MSH) 287

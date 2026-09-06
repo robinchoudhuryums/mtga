@@ -2576,6 +2576,13 @@ Wizard's Staff,{1}{U},2,Equip
 Goliath Daydreamer,{2}{R}{R},4,
 "Bria, Riptide Rogue",{2}{U}{R},4,Prowess
 Charred Foyer,{3}{R} // {4}{R}{R},10,
+Asgardian Citadel,,0,
+Iron Hills,,0,
+"Rabanastre, Royal City",,0,
+Sacred Foundry,,0,
+Bristling Backwoods,,0,
+Temple of Abandon,,0,Scry
+Savage Mansion,,0,Surveil
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -5108,7 +5115,6 @@ Thrumming Hivepool,{6},6,Affinity
 "Adagia, Windswept Bastion",,0,Station
 Command Bridge,,0,
 Godless Shrine,,0,
-Sacred Foundry,,0,
 Secluded Starforge,,0,
 Stomping Ground,,0,
 Blinkmoth Nexus,,0,
@@ -5369,7 +5375,6 @@ Dimir Guildgate,,0,
 Orzhov Guildgate,,0,
 Selesnya Guildgate,,0,
 Simic Guildgate,,0,
-Temple of Abandon,,0,Scry
 Temple of Deceit,,0,Scry
 Temple of Mystery,,0,Scry
 Temple of Plenty,,0,Scry
@@ -5548,7 +5553,6 @@ Clive's Hideaway,,0,Hideaway
 "Jidoor, Aristocratic Capital // Overture",{4}{U}{U},0,Mill
 "Lindblum, Industrial Regency // Mage Siege",{2}{R},0,
 "Midgar, City of Mako // Reactor Raid",{2}{B},0,
-"Rabanastre, Royal City",,0,
 "Sharlayan, Nation of Scholars",,0,
 "Vector, Imperial Capital",,0,
 "Windurst, Federation Center",,0,
@@ -6193,7 +6197,6 @@ Thrór's Map,{2},2,
 Well-Worn Spatula,{1},1,Equip
 Elvenking's Halls,,0,
 Goblin-town,,0,
-Iron Hills,,0,
 Lake-town,,0,
 Mirkwood,,0,
 Plains,,0,
@@ -10928,7 +10931,6 @@ Tony Stark // The Invincible Iron Man,{1}{U} // {4}{U}{R},2,Flying;Transform;Has
 "Black Widow, Double Agent",{1}{W}{B},3,Deathtouch
 "King T'Challa // Black Panther, Hope Enduring",{1}{W}{U} // {4}{W}{U},3,Transform;Double strike;Flash
 A.I.M. Labs,,0,
-Asgardian Citadel,,0,
 Avengers Hangar,,0,
 Fisk Tower,,0,
 Hell's Kitchen,,0,
@@ -11640,7 +11642,6 @@ Luxurious Locomotive,{5},5,Treasure;Crew
 Mobile Homestead,{2},2,Crew
 Silver Deputy,{2},2,
 Sterling Hound,{3},3,Surveil
-Bristling Backwoods,,0,
 Creosote Heath,,0,
 Eroded Canyon,,0,
 Forlorn Flats,,0,
@@ -13250,7 +13251,6 @@ Peter Parker's Camera,{1},1,
 Subway Train,{2},2,Crew
 Multiversal Passage,,0,
 Oscorp Industries,,0,Mayhem
-Savage Mansion,,0,Surveil
 Sinister Hideout,,0,Surveil
 Approach of the Second Sun,{6}{W},7,
 Gift of Estates,{1}{W},2,

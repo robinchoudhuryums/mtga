@@ -2538,12 +2538,12 @@ Vibrance,Creature — Elemental Incarnation,"When this creature enters, if {R}{R
 When this creature enters, if {G}{G} was spent to cast it, search your library for a land card, reveal it, put it into your hand, then shuffle. You gain 2 life.
 Evoke {R/G}{R/G}",R/G,Elemental; Incarnation; lifegain; burn; ramp; etb; evoke; value; sacrifice; noncombat damage,ECL,249,1
 "Gongaga, Reactor Town",Land — Town,"This land enters tapped.
-{T}: Add {R} or {G}.",R/G,Town; mana,FIN,280,1
+{T}: Add {R} or {G}.",R/G,Town; mana,FIN,280,4
 Gruul Guildgate,Land — Gate,"This land enters tapped.
-{T}: Add {R} or {G}.",R/G,Gate; mana,RNA,250,1
+{T}: Add {R} or {G}.",R/G,Gate; mana,RNA,250,4
 Omashu City,Land,"This land enters tapped.
 {T}: Add {R} or {G}.
-{4}, {T}, Sacrifice this land: Draw a card.",R/G,card draw; sacrifice; mana,TLA,275,1
+{4}, {T}, Sacrifice this land: Draw a card.",R/G,card draw; sacrifice; mana,TLA,275,4
 Rugged Highlands,Land,"This land enters tapped.
 When this land enters, you gain 1 life.
 {T}: Add {R} or {G}.",R/G,lifegain; mana; etb,FDN,265,1
@@ -2552,7 +2552,7 @@ Restless Ridgeline,Land,"This land enters tapped.
 {2}{R}{G}: This land becomes a 3/4 red and green Dinosaur creature until end of turn. It's still a land.
 Whenever this land attacks, another target attacking creature gets +2/+0 until end of turn. Untap that creature.",R/G,mana; pump,LCI,283,1
 Training Compound,Land,"{T}: Add {C}.
-{T}: Add {R} or {G}. Activate only if this land entered this turn or if you control a basic land.",R/G,mana,MSH,275,1
+{T}: Add {R} or {G}. Activate only if this land entered this turn or if you control a basic land.",R/G,mana,MSH,275,4
 Hardened Academic,Creature — Bird Cleric,"Flying, haste
 Discard a card: This creature gains lifelink until end of turn.
 Whenever one or more cards leave your graveyard, put a +1/+1 counter on target creature you control.",W/R,Bird; Cleric; counters; graveyard; lifegain; flying; evasion; haste; aggro; lifelink,SOS,194,1
@@ -2601,17 +2601,17 @@ Evoke {R/W}{R/W} (You may cast this spell for its evoke cost. If you do, it's sa
 Whenever Aurelia attacks for the first time each turn, untap all creatures you control. After this phase, there is an additional combat phase.",W/R,Angel; flying; evasion; vigilance; combat; haste; aggro,FDN,651,1
 Abraded Bluffs,Land — Desert,"This land enters tapped.
 When this land enters, it deals 1 damage to target opponent.
-{T}: Add {R} or {W}.",W/R,Desert; burn; mana; etb; noncombat damage,OTJ,251,1
+{T}: Add {R} or {W}.",W/R,Desert; burn; mana; etb; noncombat damage,OTJ,251,4
 "Sami, Wildcat Captain",Legendary Creature — Human Artificer Rogue,"Double strike, vigilance
 Spells you cast have affinity for artifacts. (They cost {1} less to cast for each artifact you control.)",W/R,Human; Artificer; Rogue; vigilance; combat; double strike; aggro; cost-reduction; affinity; artifacts,EOE,226,1
 Boros Guildgate,Land — Gate,"This land enters tapped.
-{T}: Add {R} or {W}.",W/R,Gate; mana,FDN,684,1
+{T}: Add {R} or {W}.",W/R,Gate; mana,FDN,684,2
 Sun-Blessed Peak,Land,"This land enters tapped.
 {T}: Add {R} or {W}.
-{4}, {T}, Sacrifice this land: Draw a card.",W/R,card draw; sacrifice; mana,TLA,280,1
+{4}, {T}, Sacrifice this land: Draw a card.",W/R,card draw; sacrifice; mana,TLA,280,3
 Wind-Scarred Crag,Land,"This land enters tapped.
 When this land enters, you gain 1 life.
-{T}: Add {R} or {W}.",W/R,lifegain; mana; etb,FDN,271,1
+{T}: Add {R} or {W}.",W/R,lifegain; mana; etb,FDN,271,4
 Temple of Triumph,Land,"This land enters tapped.
 When this land enters, scry 1. (Look at the top card of your library. You may put that card on the bottom.)
 {T}: Add {R} or {W}.",W/R,mana; etb; scry; selection,FDN,705,1
@@ -2883,7 +2883,7 @@ Search your library for a basic land card. If this spell was kicked, instead sea
 You gain 2 life.",Colorless,Lesson; lifegain; ramp; kicker; value,TLA,1,1
 Surveillance Room,Land,"When this land enters, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)
 {T}: Add {C}.
-{1}, {T}: Add one mana of any color.",Colorless,graveyard; mana; etb; selection; surveil,MSH,274,2
+{1}, {T}: Add one mana of any color.",Colorless,graveyard; mana; etb; selection; surveil,MSH,274,4
 Rumble Arena,Land,"Vigilance
 When this land enters, scry 1. (Look at the top card of your library. You may put it on the bottom.)
 {T}: Add {C}.
@@ -2985,7 +2985,7 @@ Scout the City,Sorcery,"Choose one —
 • Bring Down — Destroy target creature with flying.",G,graveyard; mill; lifegain; removal,SPM,113,1
 Rugged Highlands,Land,"This land enters tapped.
 When this land enters, you gain 1 life.
-{T}: Add {R} or {G}.",R/G,lifegain; mana; etb,M21,249,2
+{T}: Add {R} or {G}.",R/G,lifegain; mana; etb,M21,249,4
 Lightning Strike,Instant,Lightning Strike deals 3 damage to any target.,R,burn,TLA,146,1
 Primeval Bounty,Enchantment,"Whenever you cast a creature spell, create a 3/3 green Beast creature token.
 Whenever you cast a noncreature spell, put three +1/+1 counters on target creature you control.
@@ -4573,7 +4573,7 @@ Voracious Varmint,Creature — Varmint,"Vigilance
 {1}, Sacrifice this creature: Destroy target artifact or enchantment.",G,Varmint; sacrifice; removal; vigilance; combat,OTJ,188,1
 Sterling Keykeeper,Creature — Human Mercenary,"{2}, {T}: Tap target non-Mount creature.",W,Human; Mercenary,OTJ,32,1
 Mirage Mesa,Land — Desert,"This land enters tapped. As it enters, choose a color.
-{T}: Add one mana of the chosen color.",Colorless,Desert; mana,OTJ,262,1
+{T}: Add one mana of the chosen color.",Colorless,Desert; mana,OTJ,262,4
 Skulduggery,Instant,"Until end of turn, target creature you control gets +1/+1 and target creature an opponent controls gets -1/-1.",B,pump; removal,OTJ,107,1
 Desperate Bloodseeker,Creature — Vampire,"Lifelink
 When this creature enters, target player mills two cards. (They put the top two cards of their library into their graveyard.)",B,Vampire; graveyard; mill; lifegain; etb; lifelink,OTJ,86,1
@@ -5511,3 +5511,22 @@ Whenever you cast a noncreature spell, target creature you control can't be bloc
 Charred Foyer,Enchantment — Room // Enchantment — Room,"At the beginning of your upkeep, exile the top card of your library. You may play it this turn.
 (You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.) // Once each turn, you may pay {0} rather than pay the mana cost for a spell you cast from exile.
 (You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",R,Room; impulse,DSK,129,1
+Asgardian Citadel,Land,"This land enters tapped.
+When this land enters, you gain 1 life.
+{T}: Add {R} or {W}.",W/R,lifegain; mana; etb,MSH,258,4
+Iron Hills,Land,"This land enters tapped.
+{T}: Add {R} or {W}.
+{2}{R}{W}, {T}, Sacrifice this land: Put two +1/+1 counters on target Dwarf you control. Activate only as a sorcery.",W/R,counters; sacrifice; mana,HOB,185,2
+"Rabanastre, Royal City",Land — Town,"This land enters tapped.
+{T}: Add {R} or {W}.",W/R,Town; mana,FIN,287,3
+Sacred Foundry,Land — Mountain Plains,"({T}: Add {R} or {W}.)
+As this land enters, you may pay 2 life. If you don't, it enters tapped.",W/R,Mountain; Plains; pay life; mana,EOE,256,1
+Bristling Backwoods,Land — Desert,"This land enters tapped.
+When this land enters, it deals 1 damage to target opponent.
+{T}: Add {R} or {G}.",R/G,Desert; burn; mana; etb; noncombat damage,OTJ,253,2
+Temple of Abandon,Land,"This land enters tapped.
+When this land enters, scry 1. (Look at the top card of your library. You may put that card on the bottom.)
+{T}: Add {R} or {G}.",R/G,mana; etb; scry; selection,FDN,696,1
+Savage Mansion,Land,"This land enters tapped.
+{T}: Add {R} or {G}.
+{4}, {T}: Surveil 1. (Look at the top card of your library. You may put it into your graveyard.)",R/G,graveyard; mana; selection; surveil,SPM,183,4
