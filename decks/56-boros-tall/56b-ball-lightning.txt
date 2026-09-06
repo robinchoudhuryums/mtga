@@ -5,7 +5,7 @@
 #: archetype: MONO-RED CHEAT-TALL (the 56 pile analysis' variant signal, .cycle/56-tall-pile-analysis.md
 #: archetype: §5.5 / O28): every body arrives for LESS than its printed cost and most of them LEAVE at the
 #: archetype: end step — Warp (Bygone Colossus is a 9/9 for {3}, Anticausal Vestige a 7/5 for {4}, Nova
-#: archetype: Hellkite a 4/5 flier for {3}, Weftstalker Ardent / Possibility Technician for one or two), Plot (Stingerback Terror, Demonic Ruckus), Ball Lightning's own sacrifice, and Tannuk granting warp {2}{R} to every red creature
+#: archetype: Hellkite a 4/5 flier for {3}, Weftstalker Ardent for one), Plot (Stingerback Terror, Demonic Ruckus), Ball Lightning's own sacrifice, and Tannuk granting warp {2}{R} to every red creature
 #: archetype: and artifact in hand (Combustion Man is the one body that NEEDS him to be cheap). THREE THINGS FOLLOW from
 #: archetype: a body that is leaving anyway: Self-Destruct's "X damage to itself" is FREE (the finisher costs
 #: archetype: nothing), a sorcery-speed answer or a sweeper on their turn hits an empty board (the plan IS the
@@ -44,7 +44,7 @@
 #: notes: Self-Destruct targets. Doc Ock's Tentacles reads "creature with MV 5 or greater ENTERS": a warped
 #: notes: Colossus is MV 9 on entry (Tentacles attaches; the cheat cost is not the MV). Interaction is
 #: notes: deliberately burn-that-is-also-reach (Bolt, Strike, Burst ×2): a removal spell here is a face-damage
-#: notes: spell in the last turn. Ball Lightning ×2, Stingerback, Red Tiger Mechan, Possibility Technician
+#: notes: spell in the last turn. Ball Lightning ×2, Stingerback, Red Tiger Mechan, Possibility Technician (the last two CUT 2026-09-06)
 #: notes: are the craft targets (2 R + 1 R + 1 C + 1 R); everything else is owned.
 
 # Engine — cheat and recast
@@ -63,7 +63,6 @@
 1 Ball Lightning (FDN) 618
 1 Hazoret, Godseeker (DFT) 133
 1 Weftstalker Ardent (EOE) 169
-1 Possibility Technician (EOE) 153
 1 Goliath Daydreamer (ECL) 143
 1 Stingerback Terror (OTJ) 147
 1 Combustion Man (TLA) 127
@@ -73,6 +72,7 @@
 1 Doc Ock's Tentacles (SPM) 162
 1 Cosmic Cube (MSH) 245
 1 Twinflame Tyrant (FDN) 97
+1 Dawnsire, Sunstar Dreadnought (EOE) 238
 
 # Multipliers, evasion, free finishers
 2 Self-Destruct (FIN) 157

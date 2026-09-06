@@ -17,7 +17,8 @@
 #: archetype: rider and Become Brutes / Team Tactics trample grants are the evasion
 #: archetype: layer. Distinct from every roster deck: nothing else wins through ONE
 #: archetype: creature's single overwhelming attack. White beat green in the drafted
-#: archetype: A/B: clock 5v4, interaction 7v5, protection 3v0, curve 2.42v2.64.
+#: archetype: A/B at draft time (2026-08): clock 5v4, interaction 7v5, protection 3v0, curve 2.42v2.64
+#: archetype: (the live curve was 2.44 after Speedball, New Warrior replaced a Swiftblade Vindicator 2026-09-06).
 #: tier: A (PROVISIONAL) — graded at the measurable floor after the white package
 #: tier: won the drafted A/B on every axis: a real clock, seven interaction slots
 #: tier: (several scaling with the tall body's own power), and an actual protection
@@ -54,7 +55,8 @@
 1 Scalestorm Summoner (OTJ) 144
 
 # Bearers / boosters
-2 Swiftblade Vindicator (FDN) 246
+1 Swiftblade Vindicator (FDN) 246
+1 Speedball, New Warrior (MSH) 227
 2 Seedglaive Mentor (BLB) 231
 1 War Machine, Legacy of Iron (MSH) 238
 
