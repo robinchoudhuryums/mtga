@@ -27,8 +27,8 @@
 #: tier: deck read 4/7) for the interaction a resilience floor demands, which floated
 #: tier: the floor to A. Graded as midrange the floor was B then, read C after
 #: tier: `TIER_FLOOR_REQ` was re-derived 2026-09-02 (BS8-06), and is B again since the
-#: tier: 2026-09-05 pile tune: interaction 5 with card advantage 2 puts the resilience
-#: tier: sum at 7, exactly the B floor, so the letter sits AT the floor. The rubric's A wants at
+#: tier: 2026-09-05/06 pile tunes: interaction 5 with card advantage 3 puts the resilience
+#: tier: sum at 8, one over the B floor, so the letter sits AT the floor with a point to spare. The rubric's A wants at
 #: tier: most ONE clear weakness. This list has three:
 #: tier: 1. CARD ADVANTAGE 3 since Nexus of Becoming (2026-09-06) — a card every combat — where
 #: tier:    the first grading named 2 with no refuel; still the thinnest axis.
