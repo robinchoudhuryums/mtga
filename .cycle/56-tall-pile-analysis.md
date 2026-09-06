@@ -1104,6 +1104,34 @@ with Molten Man ×2 → Luke Cage + Agrus Kos, Speedball kept, Giantfall out. Re
 protection 7, avg MV 2.67, 16 creatures, one 5-drop, **interaction 3 / CA 1 / floor B** — apply
 item 3's two interaction swaps before this goes in. Overlap: 12 with 56a, 10 with 56b.
 
+### 5.14 The 56 plan as it stands — v3 (2026-09-06, user: Untimely Malfunction for Frontline Rush)
+
+Diff against the LIVE 56 (which already has Speedball for a Vindicator): **24 out, 24 in**,
+21 spell slots + 3 land slots. Legal 60, every printing verified.
+
+OUT: Molten Man ×2, Twin Blades ×2, Reckless Ransacking ×2, Rabid Gnaw ×2, Crackling
+Cyclops ×1 (of 2), Seedglaive Mentor ×1 (of 2), Speed ×1 (of 2), Boros Charm ×1 (of 2), Team
+Tactics ×1 (of 2), Haste Magic ×1 (of 2), The Last Agni Kai ×1 (of 2), Tiger-Dillo, Scalestorm
+Summoner, Go Ninja Go, Become Brutes, Celestial Armor, Mai · lands: Mountain ×2, Temple of Triumph.
+
+IN: Pain for All, Stingerback Terror, The Sentry, Spinerock Tyrant, Delney, Luke Cage, Agrus
+Kos, Iron Fist, Grand Abolisher, Crystal Barricade, Swiftfoot Boots, Enter the Avatar State,
+Restoration Magic, Ferocification, Demonic Ruckus, Team Avatar, Choreographed Sparks, Return the
+Favor, Energybending, The Fire Crystal, Untimely Malfunction · lands: Sacred Foundry ×2,
+Dalkovan Encampment.
+
+Measured: protection 3 → **7** · interaction 7 → **4** (1 noncreature answer) · CA 2 → **1** ·
+avg MV 2.42 → 2.67 · 16 creatures / 14 instants · one 5-drop, one 6 · W 13 / R 17 · 2-ofs:
+Bulk Up, Self-Destruct only · **floor A → B** on the aggro clock (5/7); the claimed A would sit
+one band above it, which the rubric allows and the letter prompt must ask about.
+Overlap after: 12 with 56a, 10 with 56b (§5.13). Unowned: Stingerback, Fire Crystal, Sacred
+Foundry ×2 (4 rares) — information, not a constraint.
+
+Open before applying: (a) Team Avatar vs HULK SMASH! — the user kept Team Avatar; interaction
+stays 4 and the floor stays B; (b) the tier LETTER after the apply (A defensible at one band
+above, or B at the floor — the human call); (c) whether Colossus is really out of 56 for good
+(Option A → Luke Cage + Agrus Kos, §5.13).
+
 ### 5.8 Craft cost — INFORMATION, per the Player Profile (not a constraint)
 
 Unowned in the §5.9 rebuild: Stingerback Terror (R), The Fire Crystal (R), Sacred Foundry
