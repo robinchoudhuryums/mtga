@@ -86,9 +86,10 @@
 1 Swiftfoot Boots (BRR) 58
 1 Devastating Onslaught (EOE) 132
 1 Pain for All (EOE) 151
+1 Untimely Malfunction (DSK) 161
 
 # Burn that is also reach
-2 Burst Lightning (FDN) 192
+1 Burst Lightning (FDN) 192
 
 # Lands
 22 Mountain (HOB) 192
