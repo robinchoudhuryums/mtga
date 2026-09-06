@@ -48,17 +48,19 @@
 #: notes: are the craft targets (2 R + 1 R + 1 C + 1 R); everything else is owned.
 
 # Engine — cheat and recast
-1 Tannuk, Steadfast Second (EOE) 162
+2 Tannuk, Steadfast Second (EOE) 162
 1 The Fire Crystal (FIN) 135
 1 Charred Foyer // Warped Space (DSK) 129
 1 Spider-Verse (SPM) 93
 1 Hex Magic (MSH) 133
+1 Firebending Student (TLA) 139
 
 # Temporary bodies — warp / plot / sacrifice
 1 Bygone Colossus (EOE) 235
 1 Anticausal Vestige (EOE) 1
-2 Nova Hellkite (EOE) 148
-2 Ball Lightning (FDN) 618
+1 Nova Hellkite (EOE) 148
+1 Zealous Lorecaster (SOS) 137
+1 Ball Lightning (FDN) 618
 1 Hazoret, Godseeker (DFT) 133
 1 Weftstalker Ardent (EOE) 169
 1 Possibility Technician (EOE) 153
@@ -79,13 +81,13 @@
 1 Sozin's Comet (TLA) 154
 1 Full Bore (EOE) 135
 1 Haste Magic (FIN) 140
-2 Speed, Young Avenger (MSH) 152
+1 Speed, Young Avenger (MSH) 152
 1 Demonic Ruckus (OTJ) 120
 1 Swiftfoot Boots (BRR) 58
 1 Devastating Onslaught (EOE) 132
+1 Pain for All (EOE) 151
 
 # Burn that is also reach
-1 Emeritus of Conflict // Lightning Bolt (SOS) 113
 2 Burst Lightning (FDN) 192
 
 # Lands

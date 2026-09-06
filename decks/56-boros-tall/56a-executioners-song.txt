@@ -31,8 +31,8 @@
 #: tier: sum at 7, exactly the B floor, so the letter sits AT the floor. The rubric's A wants at
 #: tier: most ONE clear weakness. This list has three:
 #: tier: 1. CARD ADVANTAGE 2, with no refuel — the same gap the first grading named.
-#: tier: 2. INTERACTION 5, and only ONE piece (Giantfall's artifact mode) answers a
-#: tier:    NONCREATURE permanent. For an aggro deck that is survivable (you are racing);
+#: tier: 2. INTERACTION 5, and only ONE piece (Origin of Metalbending's first mode) answers a
+#: tier:    NONCREATURE permanent — artifact OR enchantment now, where Giantfall hit artifacts only. For an aggro deck that is survivable (you are racing);
 #: tier:    for a midrange deck an enchantment or planeswalker that blanks the plan is
 #: tier:    still nearly unanswerable.
 #: tier: 3. IT DEPENDS ON RESOLVING AND KEEPING ONE BODY. Protection 5 (Overprotect
@@ -151,6 +151,11 @@
 #: notes: a 14/14 flying trample). Measured: avg MV 2.92→3.25, eight cards at MV 5+, protection 5,
 #: notes: floor B, guard clean. THE TAPLANDS ARE NOW THE DECK'S ONLY STRUCTURAL PROBLEM — eight of
 #: notes: ten nonbasics enter tapped under a curve that moved UP; Stomping Ground x2 is the craft.
+#: notes: Same day: −Speed #1 +Great Divide Guide ("each land … has {T}: Add one mana of any color" —
+#: notes: the GG fix on a two-mana body; Speed's rider needed haste the deck now gets from Halana,
+#: notes: Wolverine, Ruby and Boots) and −Giantfall +Origin of Metalbending (same mana, destroys an
+#: notes: artifact OR enchantment, and its other mode is a +1/+1 counter plus indestructible — a
+#: notes: protection spell in the counters deck; protection 5→6, interaction unchanged at 5).
 
 # Tall bodies
 1 Stingerback Terror (OTJ) 147
@@ -195,7 +200,7 @@
 2 Self-Destruct (FIN) 157
 1 The Last Agni Kai (TLA) 144
 1 Dragonclaw Strike (TDM) 180
-1 Giantfall (ECL) 141
+1 Origin of Metalbending (TLA) 187
 1 Pain for All (EOE) 151
 1 Soul Immolation (ECL) 156
 
