@@ -32,12 +32,12 @@
 #: tier: most ONE clear weakness. This list has three:
 #: tier: 1. CARD ADVANTAGE 2, with no refuel — the same gap the first grading named.
 #: tier: 2. INTERACTION 5, and only ONE piece (Origin of Metalbending's first mode) answers a
-#: tier:    NONCREATURE permanent — artifact OR enchantment now, where Giantfall hit artifacts only. For an aggro deck that is survivable (you are racing);
+#: tier:    NONCREATURE permanent — artifact OR enchantment (the artifact-only answer was CUT for it). For an aggro deck that is survivable (you are racing);
 #: tier:    for a midrange deck an enchantment or planeswalker that blanks the plan is
 #: tier:    still nearly unanswerable.
-#: tier: 3. IT DEPENDS ON RESOLVING AND KEEPING ONE BODY. Protection 5 (Overprotect
-#: tier:    x2, Snakeskin Veil, Agonasaur Rex's cycle clause, and since 2026-09-05
-#: tier:    Swiftfoot Boots — the first PERMANENT hexproof on a deck whose whole game
+#: tier: 3. IT DEPENDS ON RESOLVING AND KEEPING ONE BODY. Protection 6 (Overprotect
+#: tier:    x2, Snakeskin Veil, Agonasaur Rex's cycle clause, Origin of Metalbending's
+#: tier:    indestructible mode, and since 2026-09-05 Swiftfoot Boots — the first PERMANENT hexproof on a deck whose whole game
 #: tier:    is stored in counters) is real but thin against removal-heavy decks — and
 #: tier:    the Overprotect pair is UNOWNED, so a deck BUILT today carries the Veil,
 #: tier:    the Rex and the Boots.
