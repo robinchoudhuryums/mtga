@@ -39,7 +39,6 @@ Atomic Microsizer
 Aurelia, the Warleader
 Auron's Inspiration
 Aurora Awakener
-Avatar's Wrath
 Avenger of the Fallen
 Avengers: Under Siege
 Azog, Moria's Ruin
@@ -66,7 +65,6 @@ Blitzball Shot
 Bloodthirsty Conqueror
 Bloodtithe Collector
 Bolg's Company
-Bolt Bend
 Bone-Cairn Butcher
 Boneclub Berserker
 Boneyard Desecrator
@@ -84,7 +82,6 @@ Buzz Bots
 Bygone Colossus
 Byrke, Long Ear of the Law
 Calamity, Galloping Inferno
-Callous Sell-Sword // Burn Together
 Caparocti Sunborn
 Captain America, Living Legend
 Captain Mar-Vell, Space-Born
@@ -97,9 +94,7 @@ Cephalid Inkmage
 Chameleon, Master of Disguise
 Champions of the Shoal
 Charging Strifeknight
-Choreographed Sparks
 Claim Jumper
-Cloud, Midgar Mercenary
 Collector's Vault
 Colossification
 Corrupt Court Official
@@ -121,7 +116,6 @@ Deepchannel Duelist
 Deepmuck Desperado
 Deepway Navigator
 Defiant Survivor
-Delney, Streetwise Lookout
 Demonic Ruckus
 Desert Were-Worm
 Devastating Onslaught
@@ -213,7 +207,6 @@ Goblin-town Flunkies
 Gold Pan
 Gold Rush
 Goldvein Hydra
-Grand Abolisher
 Gravelgill Scoundrel
 Great Ugly-Looking Goblin
 Greedy Freebooter
@@ -262,19 +255,16 @@ Iron Man, Master of Machines
 Ironpaw Aspirant
 Item Shopkeep
 Jadelight Spelunker
-Jennifer Walters
 Jeong Jeong, the Deserter
 Jeskai Brushmaster
 Joo Dee, One of Many
 K'un-Lun Warrior
 Kastral, the Windcrested
-Katara, the Fearless
 Katara, Water Tribe's Hope
 Kav Landseeker
 Kavaron Skywarden
 Kindle the Inner Flame
 Kirol, Attentive First-Year
-Kitsa, Otterball Elite
 Kitsune's Technique
 Klaw, Sonic Subjugator
 Knight Luminary
@@ -285,7 +275,6 @@ Kraven the Hunter
 Krenko, Baron of Tin Street
 Krenko, Mob Boss
 Krumar Initiate
-Kutzil, Malamet Exemplar
 Kyoshi Battle Fan
 Kyoshi Warriors
 Lake-town Toymaker
@@ -325,7 +314,6 @@ Michelangelo, Weirdness to 11
 Mind Transfer Protocol
 Miner's Guidewing
 Mirkwood Pathmaker
-Mirror Room // Fractured Realm
 Mirrormind Crown
 Mistbreath Elder
 Misty Mountains Raider
@@ -360,7 +348,6 @@ Outlaw Stitcher
 Outrageous Robbery
 Ozai's Cruelty
 Pain 101
-Pain for All
 Paradox Surveyor
 Personify
 Pet Avengers
@@ -388,7 +375,6 @@ Raph & Leo, Sibling Rivals
 Raphael, the Nightwatcher
 Reckless Velocitaur
 Red Room Recruit
-Redirect Lightning
 Relm's Sketching
 Renet, Temporal Apprentice
 Reno and Rude
@@ -396,7 +382,6 @@ Resentful Revelation
 Resolute Reinforcements
 Restorative Technique
 Retrieve the Esper
-Return the Favor
 Rhovanion Rampager
 Ripclaw Wrangler
 Rise of the Dark Realms
@@ -412,7 +397,6 @@ Samurai's Katana
 Satoru, the Infiltrator
 Savage Land Dinosaur
 Savage Ventmaw
-Sawblade Skinripper
 Scarlet Spider, Ben Reilly
 Scarlet Spider, Kaine
 Scrabbling Skullcrab
@@ -420,7 +404,6 @@ Season of Weaving
 Secret of Bloodbending
 Seedglaive Mentor
 Seismic Sense
-Self-Destruct
 Self-Reflection
 Serra Angel
 Servant of the Stinger
@@ -449,12 +432,10 @@ Spider-Suit
 Spider-Woman, Secret Agent
 Splash Lasher
 Splash Portal
-Splinter, Radical Rat
 Stalactite Dagger
 Stalwart Successor
 Starbreach Whale
 Starfield Shepherd
-Starfield Vocalist
 Stargaze
 Stark Industries Executive
 Starry-Eyed Skyrider
@@ -512,7 +493,6 @@ Topiary Lecturer
 Trade the Helm
 Transit Mage
 Traveling Botanist
-Traveling Chocobo
 Treasure Dredger
 Treeguard Duo
 Treetop Snarespinner
@@ -521,7 +501,6 @@ Trusty Boomerang
 Turtle-Duck
 Turtles in Time
 Twin Blades
-Twinflame Tyrant
 Ty Lee, Artful Acrobat
 U.S.Agent, John Walker
 Ultron Drone
@@ -561,7 +540,6 @@ Whirlwing Stormbrood
 White Tiger, Ava Ayala
 Wild Hypothesis
 Wisecrack
-Wizard's Staff
 Wonder Man, Hollywood Hero
 Wrench
 Y'shtola Rhul

@@ -6080,3 +6080,61 @@ class TestDeckRotation:
         names = [c["name"] for c in atrisk]
         assert "Abraded Bluffs" in names and "Mountain" not in names
         assert meta["fmt"] == "standard"          # the deck's OWN format when fmt=None
+
+
+class TestRolePatternHoles20260906:
+    """Pile §5.7 items 1/2 and the 2026-09-06 assessment's items 5/6: whole families
+    scored ZERO roles because `_ROLE_PATTERNS` is a whitelist of phrasings (G-67).
+    Real card text throughout. K-14 diff at the fix: 0 of 114 floor bands moved, 8 decks
+    gained reach, 22 roster cards left the zero-role baseline, all verified by hand."""
+
+    def test_any_OTHER_target_is_reach(self):
+        for text in (
+            "Target creature you control deals X damage to any other target and X damage to "
+            "itself, where X is its power.",                                   # Self-Destruct
+            "When this Aura enters, enchanted creature deals damage equal to its power to any "
+            "other target.",                                                    # Pain for All
+            "Whenever Red Hulk is dealt damage, put a +1/+1 counter on him. When you do, he "
+            "deals damage equal to the number of +1/+1 counters on him to any other target.",
+        ):
+            assert "Burn / drain" in deck.classify_roles(text), text
+
+    def test_that_much_damage_to_a_face_is_reach(self):
+        assert "Burn / drain" in deck.classify_roles(
+            "Whenever enchanted creature is dealt damage, it deals that much damage to each opponent.")
+
+    def test_damage_to_a_creature_is_still_not_reach(self):
+        # The widening must not turn a fight or a board-only effect into reach.
+        assert "Burn / drain" not in deck.classify_roles(
+            "Target creature you control deals damage equal to its power to target creature you don't control.")
+
+    def test_multipliers_are_payoffs(self):
+        for text in (
+            "If a triggered ability of a creature you control with power 2 or less triggers, "
+            "that ability triggers an additional time.",                        # Delney
+            "If a source you control would deal damage to an opponent or a permanent an opponent "
+            "controls, it deals double that damage instead.",                   # Twinflame Tyrant
+            "Double all damage that sources you control of the chosen type would deal.",  # Inferno
+            "Copy target instant or sorcery spell you control. You may choose new targets for the copy.",
+            "Copy target creature spell you control. The copy gains haste.",     # Sparks
+        ):
+            assert "Payoff / engine" in deck.classify_roles(text), text
+
+    def test_a_clone_is_not_a_spell_copier(self):
+        assert "Payoff / engine" not in deck.classify_roles(
+            "You may have this creature enter as a copy of any creature on the battlefield.")
+
+    def test_a_lock_and_a_redirect_are_protection_class(self):
+        for text in (
+            "During your turn, your opponents can't cast spells or activate abilities of "
+            "artifacts, creatures, or enchantments.",                           # Grand Abolisher
+            "Your opponents can't cast spells during your turn.",               # Voice of Victory
+            "Change the target of target spell or ability with a single target.",  # Return the Favor
+        ):
+            assert "Protection / trick" in deck.classify_roles(text), text
+
+    def test_the_lock_is_role_credit_not_the_protection_axis(self):
+        # G-25: the AXIS stays ward/hexproof/indestructible-class, and the role does not
+        # feed the floor — `_INTERACTION_ROLES` is unchanged.
+        assert not deck.protection_effects("Your opponents can't cast spells during your turn.")
+        assert deck._INTERACTION_ROLES == {"Removal (spot)", "Sweeper", "Counter"}

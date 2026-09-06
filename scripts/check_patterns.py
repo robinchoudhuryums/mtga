@@ -268,6 +268,9 @@ def _pattern_groups():
     # insensitive, so the norm corpus is the right one; dead means every warp body
     # silently books at its printed nine again.
     out.append(("deck._ALT_COST_RE", deck._ALT_COST_RE, "norm"))
+    out.append(("deck._ALT_COST_GRANT_RE", deck._ALT_COST_GRANT_RE, "norm"))
+    # The typed-sink qualifier reads ORIGINAL case (Magic capitalizes creature types).
+    out.append(("deck._LAND_SINK_TYPED_RE", deck._LAND_SINK_TYPED_RE, "raw"))
     # `suggest --lands`' rider tie-break. Each cue must still match a real land, else the
     # column quietly prints `·` for a class of land and the tie falls back to name order.
     out += [(f"deck._LAND_UTILITY_CUES[{label}]", rx, "norm")

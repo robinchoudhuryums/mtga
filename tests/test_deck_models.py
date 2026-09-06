@@ -1072,3 +1072,49 @@ class TestLandUtilityTieBreak:
             assert "util" in p and 0.0 <= p["util"] <= 0.4
         scores = [p["score"] for p in res["picks"]]
         assert scores == sorted(scores, reverse=True)      # score order is untouched
+
+
+class TestCheatCostGrantsAndEffectiveCurve:
+    """Follow-ons to `cheat_cost_cards`: a card that GRANTS an alternative cost (Tannuk)
+    is named, and the curve the deck would have with alt costs substituted is reported —
+    both report-only, the vector keeps the printed curve."""
+
+    CD = dict(TestCheatCostCards.CD)
+    MANA = dict(TestCheatCostCards.MANA)
+
+    @staticmethod
+    def _cards(names, q=1):
+        return [(q, n, "SET", "1") for n in names]
+
+    def test_a_grant_is_named_with_its_scope(self):
+        out = deck.cheat_cost_grants(self._cards(["Tannuk, Steadfast Second", "Bear"]), self.CD)
+        assert out == [("Tannuk, Steadfast Second", "warp", "{2}{R}",
+                        "Artifact cards and red creature cards in your hand")]
+
+    def test_a_card_with_its_own_warp_is_not_a_grant(self):
+        assert deck.cheat_cost_grants(self._cards(["Bygone Colossus"]), self.CD) == []
+
+    def test_effective_avg_mv_substitutes_alt_costs_and_is_quantity_weighted(self):
+        cards = [(1, "Bygone Colossus", "SET", "1"), (3, "Bear", "SET", "1"), (1, "Forest", "SET", "1")]
+        eff, printed = deck.effective_avg_mv(cards, self.CD, self.MANA)
+        assert printed == round((9 + 3 * 2) / 4, 2)
+        assert eff == round((3 + 3 * 2) / 4, 2)
+
+    def test_no_cheat_cost_card_means_no_advisory(self):
+        assert deck.effective_avg_mv(self._cards(["Bear"]), self.CD, self.MANA) is None
+
+    def test_neither_reaches_the_vector_or_the_floor(self):
+        import inspect
+        src = (inspect.getsource(deck.deck_quality_vector) + inspect.getsource(deck.tier_band)
+               + inspect.getsource(deck._clock_score))
+        assert "effective_avg_mv" not in src and "cheat_cost_grants" not in src
+
+
+class TestTypedSinkLabel:
+    IRON_HILLS = ("This land enters tapped.\n{T}: Add {R} or {W}.\n{2}{R}{W}, {T}, Sacrifice this "
+                  "land: Put two +1/+1 counters on target Dwarf you control. Activate only as a sorcery.")
+    MANSION = "This land enters tapped.\n{T}: Add {R} or {G}.\n{4}, {T}: Surveil 1."
+
+    def test_a_type_restricted_sink_is_labelled_and_worth_the_same_tiebreak(self):
+        assert deck._land_utility(self.IRON_HILLS) == (0.30, "sink~")
+        assert deck._land_utility(self.MANSION) == (0.30, "sink")

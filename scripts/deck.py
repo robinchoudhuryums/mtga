@@ -1335,6 +1335,59 @@ _ALT_COST_RE = re.compile(
     r"((?:\{[^{}]+\})+)", re.I)
 
 
+# The GRANT form `_ALT_COST_RE` deliberately skips: "cards in your hand have warp {2}{R}"
+# (Tannuk). It prices nothing (which cards it reaches is a deck-level question) but a deck
+# built on one has a cheaper curve than even `cheat_cost_cards` reports, so it is NAMED.
+_ALT_COST_GRANT_RE = re.compile(
+    r"([^\n.]{0,80}?)\b(?:have|has|gain|gains) "
+    r"(warp|plot|foretell|evoke|emerge|spectacle|surge|miracle|sneak)\s*((?:\{[^{}]+\})+)", re.I)
+
+
+def cheat_cost_grants(cards, carddata):
+    """Cards that GRANT an alternative cost to other cards -> [(name, keyword, cost,
+    scope)], sorted; `scope` is the clause naming what receives it. Report-only, like
+    `cheat_cost_cards`: a grant's reach depends on the rest of the list."""
+    out, seen = [], set()
+    for _q, n, _s, _c in cards:
+        if n.lower() in BASICS or n in seen:
+            continue
+        d2 = carddata.get(n.lower())
+        if not d2:
+            continue
+        m = _ALT_COST_GRANT_RE.search(_REMINDER_RE.sub(" ", d2.get("text") or ""))
+        if not m:
+            continue
+        seen.add(n)
+        out.append((n, m.group(2).lower(), m.group(3), m.group(1).strip().strip(",;")))
+    return sorted(out)
+
+
+def effective_avg_mv(cards, carddata, mana):
+    """Quantity-weighted average MV of the nonland cards with each cheat-cost card priced
+    at its ALTERNATIVE cost -> (effective, printed). Report-only: the vector's `avg_mv`
+    stays the printed curve (a new term would re-grade the roster), this says what the
+    clock WOULD read. None when no card is priced."""
+    alt = {n.lower(): amv for n, _c, _kw, _a, amv in cheat_cost_cards(cards, carddata, mana)}
+    tot_p = tot_e = q_all = 0
+    for q, n, _s, _c in cards:
+        nl = n.lower()
+        if nl in BASICS:
+            continue
+        d2 = carddata.get(nl)
+        if not d2 or "Land" in _primary_type(d2["type"]):
+            continue
+        entry = mana.get(nl)
+        if not entry or not entry[0]:
+            continue
+        pmv = mana_value(entry[0])
+        tot_p += q * pmv
+        tot_e += q * alt.get(nl, pmv)
+        q_all += q
+    if not q_all or not alt:
+        return None
+    return round(tot_e / q_all, 2), round(tot_p / q_all, 2)
+
+
 def cheat_cost_cards(cards, carddata, mana):
     """Nonland cards carrying a printed alternative cost LOWER than their mana value ->
     [(name, printed_cost, keyword, alt_cost, alt_mv)], sorted, one entry per card.
@@ -1906,6 +1959,16 @@ _ROLE_PATTERNS = {
     # leaves-play payoffs the role map used to score as "no functional role"
     # (Judge Magister Gabranth, Rot Farm Mortipede, aristocrats/lifedrain bodies).
     "Payoff / engine": [
+        # Three MULTIPLIER shapes that scored no role at all (pile §5.7 item 1): a
+        # trigger doubler (Delney — `suggest-homes` already saw it as ✱ multiplier), a
+        # damage doubler (Twinflame Tyrant / Collective Inferno) and a spell copier
+        # (Choreographed Sparks / Return the Favor's copy mode). A card whose whole value
+        # is what the REST of the deck does is a payoff by definition; the doubler AXIS
+        # (`doubler_support`) is a separate, deliberately untaken question.
+        r"triggers an additional time",
+        r"deals? double that damage",
+        r"double all damage that sources you control",
+        r"copy target (?:instant|sorcery|creature)[^\n.]{0,25}?spell",
         r"whenever .{0,60}?dies",
         r"whenever (?:a|another|one or more) .{0,40}?(?:enters|leave|leaves|die|dies)",
         r"whenever you gain life",
@@ -1938,7 +2001,13 @@ _ROLE_PATTERNS = {
     # Direct damage / life loss to a player — reach & finishers the fixed-number
     # removal pattern misses (Cat-Gator, drain effects).
     "Burn / drain": [
-        r"deals? damage equal to .{0,60}?(?:any target|a player|target player|each opponent|that player)",
+        # "any OTHER target" is the templating every self-referencing damage source uses
+        # (Pain for All, Iron Fist, Red Hulk's enrage, Self-Destruct's "X damage to any
+        # other target … where X is its power") — a whole reach family scored zero while
+        # Infernal Phantom's "any target" passed (pile §5.7 item 2, 2026-09-06).
+        r"deals? damage equal to .{0,60}?(?:any (?:other )?target|a player|target player|each opponent|that player)",
+        r"deals? x damage to any (?:other )?target",
+        r"deals? that much damage to (?:each opponent|any (?:other )?target|target player)",
         r"(?:each opponent|target opponent|any opponent|that player|each player) loses \d",
         r"deals? \d+ damage to each opponent",
         r"loses life equal to",
@@ -1989,6 +2058,15 @@ _ROLE_PATTERNS = {
     # up, interaction / card-advantage / tier floors 0 / 0 / 0.
     "Protection / trick": [r"\bhexproof\b", r"\bindestructible\b", r"protection from",
                            r"\bward\b",
+                           # A LOCK on the opponent's turn-cycle (Grand Abolisher, Voice
+                           # of Victory, Jennifer Walters: "opponents can't cast spells
+                           # during your turn") protects everything you do that turn;
+                           # a REDIRECT (Return the Favor) is the trick that saves the
+                           # creature. Neither is on the `protection_effects` AXIS (G-25
+                           # keeps that to ward/hexproof/indestructible-class), and
+                           # neither feeds `tier_band` — role_tally / cuts credit only.
+                           r"opponents can't cast spells",
+                           r"change the target of target spell",
                            # R-13: a card pumping ITSELF (firebreathing, prowess) is not a
                            # trick you can point at the creature you need to save.
                            r"(?<!this creature )(?<!this permanent )gets \+\d+/\+\d+ until end of turn"],
@@ -3540,6 +3618,13 @@ def cmd_stats(args):
             print(f"  ⌁ {n} — {c} printed; {kw} {alt} (MV {amv})")
         print(f"  Read avg MV and the early-drop count with that in mind: {len(ch)} card(s) "
               "register dearer than you will cast them — the X-cost under-read in reverse.")
+        eff = effective_avg_mv(cards, carddata, mana)
+        if eff:
+            print(f"  effective avg MV {eff[0]:.2f} against {eff[1]:.2f} printed (alt costs "
+                  "substituted; report-only — the vector keeps the printed curve).")
+    for n, kw, cost, scope in cheat_cost_grants(cards, carddata):
+        print(f"  ⌁ grant: {n} gives {kw} {cost} to {scope or 'other cards'} — a deck-level "
+              "discount no per-card price sees; the real curve is cheaper still.")
 
     # Functional roles: what jobs the nonland spells actually do. Heuristic from
     # oracle text (see classify_roles) so the tune-deck health scorecard can
@@ -4782,11 +4867,19 @@ _LAND_UTILITY_CUES = [
 ]
 
 
+_LAND_SINK_TYPED_RE = re.compile(r"target [A-Z][a-z]+(?: [A-Z][a-z]+)? you control")
+
+
 def _land_utility(txt):
     """(value, label) for a land's rider, bounded 0–0.4; (0.0, '') for a plain dual."""
     t = _REMINDER_RE.sub(" ", txt or "")
     for val, label, rx in _LAND_UTILITY_CUES:
         if rx.search(t):
+            # A sink that only feeds ONE creature type (Iron Hills: "target Dwarf you
+            # control") is worth less than an unrestricted one; same value (it is a
+            # tie-break), different label so the human read sees the restriction.
+            if label == "sink" and _LAND_SINK_TYPED_RE.search(t):
+                label = "sink~"
             return val, label
     return 0.0, ""
 
@@ -5006,8 +5099,9 @@ def cmd_suggest_lands(args, d):
               "fixing premium is halved; judge it against what your deck actually casts.")
     print("\nScore = FIXING value (0–10, dominant: produces your colors, untapped premium) "
           "+ bounded SYNERGY (land ability hits a deck theme) + bounded SHORTFALL (produces "
-          "the scarce color). Rider (creature / draw / scry / surveil / sink / ping / life) "
-          "breaks TIES only — it never moves a land past one that fixes better. "
+          "the scarce color). Rider (creature / draw / scry / surveil / sink / ping / life; "
+          "sink~ = restricted to one creature type) breaks TIES only — it never moves a "
+          "land past one that fixes better. "
           "Ownership is a NOTE (×N / craft), not a ranking term — "
           "a 0-wildcard fixer is often the right pick, but that is your call, not the "
           "sort's, and the owned data here goes stale between updates.")
@@ -12617,6 +12711,14 @@ def cmd_tier(args):
               f"({', '.join(n for n, *_r in _ch[:3])}{'…' if len(_ch) > 3 else ''}) "
               "book at their printed cost — Warp/Plot/Foretell are invisible to the curve "
               "and to the aggro clock; see `deck.py stats` for the list.")
+        _eff = effective_avg_mv(_cards, _cd, _mana)
+        if _eff:
+            _line = f"  ⓘ effective avg MV {_eff[0]:.2f} (printed {_eff[1]:.2f})"
+            if vec.get("plan") == "aggro":
+                _line += (f"; the aggro clock would read "
+                          f"{_clock_score(dict(vec, avg_mv=_eff[0]))}/7 against "
+                          f"{_clock_score(vec)}/7")
+            print(_line + " — ADVISORY: the floor above is graded on the printed curve.")
     # Protection is REPORTED, never fed into tier_band (the floor formula is anchored by
     # check_tier.py). A zero here is a judgment prompt, not a band change.
     if not vec.get("protection"):

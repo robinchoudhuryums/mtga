@@ -2855,3 +2855,16 @@ smallest fixing step is 0.1, any nudge crosses it — it is a sort-key tie-break
 pile §5.7 items 1/2/5 (role-pattern holes, damage-doubler axis, state gates — need a K-14 floor
 diff), the taxonomy decisions (Equipment / tap-down / copy), 56's tier letter (A vs B, user's
 call), the 56c decision, and deleting `.cycle/56-tall-pile-analysis.md` once those settle.
+
+
+## 2026-09-06 (later) — role-pattern holes A-5/A-6 + cheat-cost follow-ons F-1..F-3
+See `.cycle/blocks/2026-09-06-role-holes-cheatcost-followons-broad-implement.md`.
+K-14 measured: 0 of 114 floor bands moved, 8 decks gained reach, 22 cards left the zero-role
+baseline (every unnamed one read and confirmed). Decided AGAINST, again: an effective-MV TERM
+in the vector (the advisory prints what the clock WOULD read instead), and a damage-doubler
+AXIS (these cards now carry a role; the axis is the taxonomy decision still parked).
+
+**Where I left off.** Committed on `claude/broad-scan-6kxevb`. Open: the taxonomy decisions
+(Equipment / tap-down / copy-as-multiplier axis / damage-doubler axis), state gates (§5.7 item
+5), 56's tier letter (user), 56c, deleting `.cycle/56-tall-pile-analysis.md` once settled, and
+`/sync-docs` for G-30 / G-37 / G-56 / G-60 / G-67 (two batches' worth).
