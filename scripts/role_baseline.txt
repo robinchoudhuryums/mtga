@@ -13,7 +13,6 @@ Aang, at the Crossroads // Aang, Destined Savior
 Absorbing Man
 Accumulate Wisdom
 Aerial Doombot
-Aettir and Priwen
 Agent Phil Coulson
 Agents of HYDRA
 Agrus Kos, Spirit of Justice
@@ -35,7 +34,6 @@ Archangel of Tithes
 Armament Dragon
 Arnim Zola, Bio-Fanatic
 Ashroot Animist
-Atomic Microsizer
 Aurelia, the Warleader
 Auron's Inspiration
 Aurora Awakener
@@ -46,12 +44,8 @@ Azula, Cunning Usurper
 Badgermole
 Ball Lightning
 Bandit's Talent
-Bark of Doran
-Barret Wallace
-Baseball Bat
 Baxter Stockman
 Bejeweled Warg
-Bespoke Bō
 Betor, Kin to All
 Billowing Shriekmass
 Binding Negotiation
@@ -59,7 +53,6 @@ Bioengineered Future
 Biogenic Upgrade
 Black Cat, Cunning Thief
 Black Widow, Super Spy
-Blacksmith's Talent
 Blasphemous Edict
 Blitzball Shot
 Bloodthirsty Conqueror
@@ -122,7 +115,6 @@ Devastating Onslaught
 Diligent Zookeeper
 Djinn of Fool's Fall
 Doc Ock's Henchmen
-Doc Ock's Tentacles
 Don & Leo, Problem Solvers
 Donatello, Mutant Mechanic
 Donatello, Turtle Techie
@@ -132,7 +124,6 @@ Dracogenesis
 Draconautics Engineer
 Dragon Fodder
 Dragonback Lancer
-Dragoon's Lance
 Dragoon's Wyvern
 Drake Hatcher
 Dread Summons
@@ -142,8 +133,6 @@ Dreams of Laguna
 Drix Fatemaker
 Duskwatch Hunter
 Dwalin, Weaponmaster
-Dwarven Shortsword
-Dáin Ironfoot
 Earth Kingdom Soldier
 Earth's Mightiest Heroes
 Earthbending Lesson
@@ -169,8 +158,6 @@ Festerleech
 Fire Sages
 Firebender Ascension
 Firebending Student
-Fireshrieker
-Fishing Pole
 Flamehold Grappler
 Flamekin Gildweaver
 Flexible Waterbender
@@ -190,7 +177,6 @@ Gangly Stompling
 Gas Guzzler
 Gastal Raider
 Gather the White Lotus
-Genji Glove
 Germination Practicum
 Ghalta, Primal Hunger
 Ghired, Mirror of the Wilds
@@ -201,10 +187,7 @@ Giant Koi
 Gilgamesh, Master-at-Arms
 Glamer Gifter
 Glider Kids
-Glider Staff
-Goblin Plate Mail
 Goblin-town Flunkies
-Gold Pan
 Gold Rush
 Goldvein Hydra
 Gravelgill Scoundrel
@@ -216,7 +199,6 @@ Group Project
 Growth Curve
 Guidelight Matrix
 Hama, the Bloodbender
-Hard-Won Jitte
 Hauntwoods Shrieker
 Hawkeye, Master Marksman
 Hawkeye, Young Avenger
@@ -234,26 +216,21 @@ Hop to It
 Hour of Victory
 How to Start a Riot
 HYDRA Troopers
-Hylderblade
 Hymn of the Faller
 I Am Iron Man
 Iguana Parrot
 Imperious Inkmage
 Improvisation Capstone
-Improvised Arsenal
 Ingenious Leonin
 Insatiable Skittermaw
 Interface Ace
 Invasion Reinforcements
 Invasion Submersible
 Involuntary Employment
-Iron Hills Blacksmith
 Iron Hills Stalwart
 Iron Lad, Diverging Destiny
-Iron Man Armor
 Iron Man, Master of Machines
 Ironpaw Aspirant
-Item Shopkeep
 Jadelight Spelunker
 Jeong Jeong, the Deserter
 Jeskai Brushmaster
@@ -275,13 +252,11 @@ Kraven the Hunter
 Krenko, Baron of Tin Street
 Krenko, Mob Boss
 Krumar Initiate
-Kyoshi Battle Fan
 Kyoshi Warriors
 Lake-town Toymaker
 Laughing Jasper Flint
 Leader, Super-Genius
 Leonardo, Big Brother
-Leyline Axe
 Leyline of Mutation
 Leyline of the Guildpact
 Leyline of Transformation
@@ -314,7 +289,6 @@ Michelangelo, Weirdness to 11
 Mind Transfer Protocol
 Miner's Guidewing
 Mirkwood Pathmaker
-Mirrormind Crown
 Mistbreath Elder
 Misty Mountains Raider
 Mob Lookout
@@ -391,9 +365,7 @@ Riverchurn Monument
 Rockalanche
 Rough Rhino Cavalry
 Rustler Rampage
-S.H.I.E.L.D. Spy Kit
 Salvation Swan
-Samurai's Katana
 Satoru, the Infiltrator
 Savage Land Dinosaur
 Savage Ventmaw
@@ -428,11 +400,9 @@ Sozin's Comet
 Spider-Islanders
 Spider-Man, Web-Slinger
 Spider-Punk
-Spider-Suit
 Spider-Woman, Secret Agent
 Splash Lasher
 Splash Portal
-Stalactite Dagger
 Stalwart Successor
 Starbreach Whale
 Starfield Shepherd
@@ -442,11 +412,9 @@ Starry-Eyed Skyrider
 Stature, Size Shifter
 Stegron the Dinosaur Man
 Stickytongue Sentinel
-Sting, Bilbo's Sword
 Stingerback Terror
 Stony-Voiced Goblins
 Sultai Devotee
-Summoner's Grimoire
 Sun Warriors
 Sun-Spider, Nimble Webber
 Sunpearl Kirin
@@ -487,7 +455,6 @@ Tiger-Dillo
 Time Stop
 Tinybones, Bauble Burglar
 Tinybones, the Pickpocket
-Tony Stark
 Toph, the Blind Bandit
 Topiary Lecturer
 Trade the Helm
@@ -497,12 +464,9 @@ Treasure Dredger
 Treeguard Duo
 Treetop Snarespinner
 Triceraton Commander
-Trusty Boomerang
 Turtle-Duck
 Turtles in Time
-Twin Blades
 Ty Lee, Artful Acrobat
-U.S.Agent, John Walker
 Ultron Drone
 Umbral Collar Zealot
 Underwater Tunnel // Slimy Aquarium
@@ -525,14 +489,12 @@ War Balloon
 War Machine, Legacy of Iron
 War Squeak
 Wargling
-Warrior's Sword
 Wary Watchdog
 Water Tribe Rallier
 Waterbender Ascension
 Waterwind Scout
 Waxen Shapethief
 Weapons Vendor
-Web-Shooters
 Web-Warriors
 Weftblade Enhancer
 Welcome to Sweettooth
@@ -541,7 +503,6 @@ White Tiger, Ava Ayala
 Wild Hypothesis
 Wisecrack
 Wonder Man, Hollywood Hero
-Wrench
 Y'shtola Rhul
 Zog, Triceraton Castaway
 Zurgo's Vanguard

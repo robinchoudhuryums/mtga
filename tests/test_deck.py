@@ -6138,3 +6138,93 @@ class TestRolePatternHoles20260906:
         # feed the floor — `_INTERACTION_ROLES` is unchanged.
         assert not deck.protection_effects("Your opponents can't cast spells during your turn.")
         assert deck._INTERACTION_ROLES == {"Removal (spot)", "Sweeper", "Counter"}
+
+
+class TestDamageDoublerAxis:
+    """The fifth doubler axis (2026-09-06). Feeder = NONCOMBAT damage text, deliberately
+    not creatures+burn (roster min 11 — the `triggers` saturation, G-33). Calibrated
+    (2, 7) from the roster's p50/p75 of that count."""
+
+    TWINFLAME = ("Flying\nIf a source you control would deal damage to an opponent or a "
+                 "permanent an opponent controls, it deals double that damage instead.")
+    INFERNO = "Double all damage that sources you control of the chosen type would deal."
+    SHOCK = {"name": "Shock", "type": "Instant", "text": "Shock deals 2 damage to any target."}
+    PAIN = {"name": "Pain", "type": "Enchantment — Aura",
+            "text": "When this Aura enters, enchanted creature deals damage equal to its power to any other target."}
+    BEAR = {"name": "Bear", "type": "Creature — Bear", "text": ""}
+
+    def test_the_doublers_classify_to_the_damage_axis(self):
+        assert deck.doubler_axis(self.TWINFLAME) == "damage"
+        assert deck.doubler_axis(self.INFERNO) == "damage"
+        assert deck.doubler_axis("Shock deals 2 damage to any target.") is None
+
+    def test_feeders_are_noncombat_damage_not_bodies(self):
+        cd = {"shock": self.SHOCK, "pain": self.PAIN, "bear": self.BEAR}
+        cards = [(3, "Shock", "", ""), (1, "Pain", "", ""), (10, "Bear", "", "")]
+        assert deck.doubler_support("damage", cards, cd) == 4
+
+    def test_calibration_and_boost_floor(self):
+        assert deck.doubler_calib("damage") == (2, 7)
+        assert deck.doubler_boost(1, axis="damage") == 0.0
+        assert deck.doubler_boost(2, axis="damage") > 0.0
+
+
+class TestHasteAndAttackAloneGates:
+    """Two G-76 families (pile §5.7 item 5). Haste-gated evasion needs haste SOURCES;
+    'attacks alone' is INVERTED — always reachable, it fails by CONFLICT in a go-wide
+    deck (roster p75 of go-wide cues = 9)."""
+
+    SPEED = {"name": "Speed", "type": "Legendary Creature — Mutant Hero", "colors": "R",
+             "text": "Haste\nWhenever you cast a noncreature spell, you may pay {1}. When you do, "
+                     "target creature with haste can't be blocked this turn except by creatures with haste."}
+    HASTY = {"name": "Hasty", "type": "Creature — Goblin", "colors": "R", "text": "Haste"}
+    BEAR = {"name": "Bear", "type": "Creature — Bear", "colors": "G", "text": ""}
+    TEAM = {"name": "Team", "type": "Enchantment", "colors": "W",
+            "text": "Whenever a creature you control attacks alone, it gets +X/+X until end of turn, "
+                    "where X is the number of creatures you control."}
+    WIDE = {"name": "Wide", "type": "Sorcery", "colors": "W",
+            "text": "Create three 1/1 white Soldier creature tokens."}
+    MANA = {"speed": ("{1}{R}", "2"), "hasty": ("{R}", "1"), "bear": ("{1}{G}", "2"),
+            "team": ("{2}{W}", "3"), "wide": ("{2}{W}", "3")}
+
+    def _cd(self):
+        return {"speed": self.SPEED, "hasty": self.HASTY, "bear": self.BEAR,
+                "team": self.TEAM, "wide": self.WIDE}
+
+    def _rows(self, cards):
+        return {r[0]: r for r in deck.state_gate_counts(cards, self._cd(), self.MANA)}
+
+    def test_speed_in_a_deck_with_haste_reads_free_and_without_reads_thin(self):
+        free = self._rows([(1, "Speed", "", ""), (4, "Hasty", "", "")])["Speed"]
+        assert free[2] == 5 and free[4] == "free", free
+        thin = self._rows([(1, "Speed", "", ""), (4, "Bear", "", "")])["Speed"]
+        assert thin[2] == 1 and thin[4] == "thin", thin        # Speed's own haste only
+
+    def test_attacks_alone_is_free_in_a_tall_deck_and_a_conflict_in_a_wide_one(self):
+        tall = self._rows([(1, "Team", "", ""), (4, "Bear", "", "")])["Team"]
+        assert tall[4] == "free", tall
+        wide = self._rows([(1, "Team", "", ""), (9, "Wide", "", ""), (4, "Bear", "", "")])["Team"]
+        assert wide[2] >= 9 and wide[4] == "conflict", wide
+
+    def test_the_conflict_verdict_is_rendered_and_counted_as_a_struggle(self):
+        assert "CONFLICT" in deck._STATE_FLAG["conflict"]
+        assert "alone" in deck._STATE_INVERTED and "haste" not in deck._STATE_INVERTED
+
+
+class TestEquipmentBucket:
+    """Role CREDIT only — the taxonomy half the 2026-08 pass deliberately left. Not in
+    `_INTERACTION_ROLES`; measured 0 of 114 floors moved when it landed."""
+
+    def test_equipment_text_carries_the_role(self):
+        for text in ("Equipped creature gets +2/+0.\nEquip {2}",
+                     "Reconfigure {3}",
+                     "When this Equipment enters, attach it to target creature you control."):
+            assert "Equipment / attach" in deck.classify_roles(text), text
+
+    def test_a_creature_that_merely_mentions_equipment_is_not_one(self):
+        assert "Equipment / attach" not in deck.classify_roles(
+            "Whenever you cast an Equipment spell, draw a card.")
+
+    def test_it_is_credit_not_interaction_and_last_in_the_order(self):
+        assert "Equipment / attach" not in deck._INTERACTION_ROLES
+        assert deck.ROLE_ORDER[-1] == "Equipment / attach"

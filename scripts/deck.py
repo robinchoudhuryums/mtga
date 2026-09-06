@@ -1362,13 +1362,40 @@ def cheat_cost_grants(cards, carddata):
     return sorted(out)
 
 
+_GRANT_COLORS = {"white": "W", "blue": "U", "black": "B", "red": "R", "green": "G"}
+_GRANT_TYPES = ("artifact", "creature", "instant", "sorcery", "enchantment", "planeswalker")
+
+
+def _grant_scope_matches(scope, d2):
+    """True if a card (`d2`: type + colors) is inside a grant's scope clause — "Artifact
+    cards and red creature cards in your hand" is two clauses, each a type with an
+    optional colour. A clause naming no type this parser knows matches nothing (a
+    conservative miss, never a silent over-count)."""
+    tline = (d2.get("type") or "").lower()
+    cols = set((d2.get("colors") or "").upper())
+    for clause in re.split(r",|\band\b|\bor\b", (scope or "").lower()):
+        words = clause.split()
+        types = [t for t in _GRANT_TYPES if t in words]
+        colors = {_GRANT_COLORS[w] for w in words if w in _GRANT_COLORS}
+        if not types:
+            continue
+        if any(t in tline for t in types) and (not colors or cols & colors):
+            return True
+    return False
+
+
 def effective_avg_mv(cards, carddata, mana):
     """Quantity-weighted average MV of the nonland cards with each cheat-cost card priced
-    at its ALTERNATIVE cost -> (effective, printed). Report-only: the vector's `avg_mv`
-    stays the printed curve (a new term would re-grade the roster), this says what the
-    clock WOULD read. None when no card is priced."""
+    at its ALTERNATIVE cost -> (effective, printed, with_grants). Report-only: the
+    vector's `avg_mv` stays the printed curve (a new term would re-grade the roster), this
+    says what the clock WOULD read. `with_grants` also applies every alt cost a GRANT
+    hands out (Tannuk's warp to artifact cards and red creature cards), or None when no
+    grant reaches a card. None overall when nothing is priced."""
     alt = {n.lower(): amv for n, _c, _kw, _a, amv in cheat_cost_cards(cards, carddata, mana)}
-    tot_p = tot_e = q_all = 0
+    grants = [(kw, mana_value(cost), scope) for _n, kw, cost, scope
+              in cheat_cost_grants(cards, carddata)]
+    tot_p = tot_e = tot_g = q_all = 0
+    granted = 0
     for q, n, _s, _c in cards:
         nl = n.lower()
         if nl in BASICS:
@@ -1380,12 +1407,21 @@ def effective_avg_mv(cards, carddata, mana):
         if not entry or not entry[0]:
             continue
         pmv = mana_value(entry[0])
+        emv = alt.get(nl, pmv)
+        gmv = emv
+        for _kw, gm, scope in grants:
+            if gm < gmv and _grant_scope_matches(scope, d2):
+                gmv = gm
+        if gmv < emv:
+            granted += q
         tot_p += q * pmv
-        tot_e += q * alt.get(nl, pmv)
+        tot_e += q * emv
+        tot_g += q * gmv
         q_all += q
-    if not q_all or not alt:
+    if not q_all or not (alt or granted):
         return None
-    return round(tot_e / q_all, 2), round(tot_p / q_all, 2)
+    return (round(tot_e / q_all, 2), round(tot_p / q_all, 2),
+            round(tot_g / q_all, 2) if granted else None)
 
 
 def cheat_cost_cards(cards, carddata, mana):
@@ -1445,7 +1481,7 @@ def classify_cost(keywords, text):
 ROLE_ORDER = ["Removal (spot)", "Sweeper", "Counter", "Card advantage",
               "Ramp / fixing", "Reanimation", "Payoff / engine", "Burn / drain",
               "Lifegain", "Cost reduction / cheat", "Team pump / anthem",
-              "Protection / trick", "Recursion"]
+              "Protection / trick", "Recursion", "Equipment / attach"]
 # A permanent-type LIST as MTG templates it: "creature", "artifact or enchantment",
 # "artifact, enchantment, or creature with flying". The removal patterns used to spell
 # out a handful of fixed combinations by hand, so anything outside that list matched
@@ -2072,6 +2108,16 @@ _ROLE_PATTERNS = {
                            r"(?<!this creature )(?<!this permanent )gets \+\d+/\+\d+ until end of turn"],
     "Recursion": [r"from your graveyard", r"card in your graveyard",
                   r"return .{0,40}?to your hand"],
+    # EQUIPMENT (2026-09-06) — the taxonomy half the 2026-08 role pass deliberately left:
+    # 11 of its 26 remaining zero-role cards were Equipment, and on 2026-09-06 62 roster
+    # cards with equip / attach text still carried no role. A bucket, not a pattern: it
+    # re-scores every deck running the type, so it is role CREDIT only — not in
+    # `_INTERACTION_ROLES`, not in the vector, so no floor can move (measured: 0 of 114).
+    # The keyword's own word survives reminder-stripping; `equipped creature` is on the
+    # Equipment, `reconfigure` is Equipment-that-is-a-creature, `attach … to` is the
+    # Living-weapon / auto-attach family (Doc Ock's Tentacles).
+    "Equipment / attach": [r"\bequip\b", r"equipped creature", r"\breconfigure\b",
+                           r"attach (?:it|this|that|target equipment) to"],
 }
 _ROLE_COMPILED = [(label, [re.compile(p) for p in _ROLE_PATTERNS[label]])
                   for label in ROLE_ORDER]
@@ -3618,13 +3664,15 @@ def cmd_stats(args):
             print(f"  ⌁ {n} — {c} printed; {kw} {alt} (MV {amv})")
         print(f"  Read avg MV and the early-drop count with that in mind: {len(ch)} card(s) "
               "register dearer than you will cast them — the X-cost under-read in reverse.")
-        eff = effective_avg_mv(cards, carddata, mana)
-        if eff:
-            print(f"  effective avg MV {eff[0]:.2f} against {eff[1]:.2f} printed (alt costs "
-                  "substituted; report-only — the vector keeps the printed curve).")
     for n, kw, cost, scope in cheat_cost_grants(cards, carddata):
         print(f"  ⌁ grant: {n} gives {kw} {cost} to {scope or 'other cards'} — a deck-level "
-              "discount no per-card price sees; the real curve is cheaper still.")
+              "discount no per-card price sees.")
+    eff = effective_avg_mv(cards, carddata, mana)
+    if eff:
+        print(f"  effective avg MV {eff[0]:.2f} against {eff[1]:.2f} printed (alt costs "
+              "substituted"
+              + (f"; {eff[2]:.2f} with the granted costs applied too" if eff[2] is not None else "")
+              + "; report-only — the vector keeps the printed curve).")
 
     # Functional roles: what jobs the nonland spells actually do. Heuristic from
     # oracle text (see classify_roles) so the tune-deck health scorecard can
@@ -9139,6 +9187,17 @@ _DOUBLER_AXES = {
     "lifegain": (
         re.compile(r"if you would gain life[^.]{0,60}?twice that much", re.I),
         re.compile(r"\bgains? \d+ life|\bgain that much life|\blifelink\b", re.I)),
+    # DAMAGE (2026-09-06): Twinflame Tyrant / Collective Inferno / Gratuitous Violence —
+    # 17 pool cards, 9 roster decks. The FEEDER is NONCOMBAT damage text, deliberately not
+    # "creatures + burn": every deck has creatures, so that count runs 11..36 with a roster
+    # MINIMUM above any sane floor — the exact `triggers` saturation G-33 records. Noncombat
+    # damage runs min 0 / p25 1 / p50 2 / p75 7 / p90 10 (114 decks), which discriminates;
+    # calibrated in `_DOUBLER_CALIB`. A damage doubler also doubles combat damage, which
+    # every deck gets equally and so cannot rank one home over another.
+    "damage": (
+        re.compile(r"deals? double that damage|double all damage that sources you control|"
+                   r"would deal damage[^.]{0,60}?(?:twice that much|double that)", re.I),
+        re.compile(r"deals? (?:\d+|x|that much|double)? ?damage|deals? damage equal", re.I)),
 }
 _DOUBLER_PER_SOURCE = 1.2   # fit points per feeding card ABOVE the axis floor
 # Ceiling chosen as a SAFETY rail, not an operating point: real decks feed an axis with
@@ -9182,6 +9241,9 @@ _DOUBLER_KEY_SOURCES = 10   # at this density the doubler IS a key card (mirrors
 _DOUBLER_CALIB = {
     # axis -> (floor, key_sources), from that axis's roster p25 / p75
     "triggers": (20, 25),
+    # damage: p25 is 1 and one burn spell is not a burn deck, so the floor sits at p50 (2);
+    # key at p75 (7). Measured 2026-09-06 over 114 decks.
+    "damage": (2, 7),
 }
 
 
@@ -9191,7 +9253,8 @@ def doubler_calib(axis):
 
 
 def doubler_axis(text):
-    """Which quantity this card DOUBLES ('tokens' / 'counters' / 'triggers'), or None."""
+    """Which quantity this card DOUBLES ('tokens' / 'counters' / 'triggers' / 'lifegain' /
+    'damage'), or None."""
     if not text:
         return None
     for axis, (dbl, _feed) in _DOUBLER_AXES.items():
@@ -12711,14 +12774,16 @@ def cmd_tier(args):
               f"({', '.join(n for n, *_r in _ch[:3])}{'…' if len(_ch) > 3 else ''}) "
               "book at their printed cost — Warp/Plot/Foretell are invisible to the curve "
               "and to the aggro clock; see `deck.py stats` for the list.")
-        _eff = effective_avg_mv(_cards, _cd, _mana)
-        if _eff:
-            _line = f"  ⓘ effective avg MV {_eff[0]:.2f} (printed {_eff[1]:.2f})"
-            if vec.get("plan") == "aggro":
-                _line += (f"; the aggro clock would read "
-                          f"{_clock_score(dict(vec, avg_mv=_eff[0]))}/7 against "
-                          f"{_clock_score(vec)}/7")
-            print(_line + " — ADVISORY: the floor above is graded on the printed curve.")
+    _eff = effective_avg_mv(_cards, _cd, _mana)
+    if _eff:
+        _best = _eff[2] if _eff[2] is not None else _eff[0]
+        _line = f"  ⓘ effective avg MV {_eff[0]:.2f} (printed {_eff[1]:.2f}"
+        _line += f"; {_eff[2]:.2f} with granted costs)" if _eff[2] is not None else ")"
+        if vec.get("plan") == "aggro":
+            _line += (f"; the aggro clock would read "
+                      f"{_clock_score(dict(vec, avg_mv=_best))}/7 against "
+                      f"{_clock_score(vec)}/7")
+        print(_line + " — ADVISORY: the floor above is graded on the printed curve.")
     # Protection is REPORTED, never fed into tier_band (the floor formula is anchored by
     # check_tier.py). A zero here is a judgment prompt, not a band change.
     if not vec.get("protection"):
@@ -13373,7 +13438,24 @@ _STATE_GATES = [
     (re.compile(r"(\d+|one|two|three|four|five|six|seven|eight|nine|ten) or more "
                 r"cards in exile", re.I),
      "exile sources (needs {0} cards)", "exile"),
+    # HASTE-GATED evasion (Speed, Young Avenger / Resilient Roadrunner / Gingerbrute — 3
+    # pool cards, 1 roster holder as of 2026-09-06): "creature with haste can't be blocked
+    # except by creatures with haste" is only an ability in a deck that HAS haste. Proxy =
+    # haste sources; roster runs min 0 / p50 1 / p90 5 with 52 decks at zero, so a deck can
+    # fail it. Read the band as provisional at n=1 (the G-76 residual).
+    (re.compile(r"creature with haste can't be blocked|"
+                r"can't be blocked(?: this turn)? except by creatures with haste", re.I),
+     "haste sources (the gate is haste)", "haste"),
+    # ATTACKS ALONE (Team Avatar, Seifer, Luke Cage, The Last Ronin — 53 pool cards, 13
+    # roster instances). The state is always REACHABLE (you may attack with one creature),
+    # so this family is INVERTED: it fails by CONFLICT, in a deck built to attack wide.
+    # Proxy = go-wide cues (`_WIDE_CUES`); roster p25 3 / p75 9; decks 3 (17) and 55 (13)
+    # read as conflicts, decks 5 / 6 / 56 (1–2) as free. The G-42 shape, as a gate.
+    (re.compile(r"attacks alone", re.I),
+     "go-wide cards (a CONFLICT when many)", "alone"),
 ]
+# A gate whose failure is TOO MUCH of the proxy, not too little (see "alone" above).
+_STATE_INVERTED = {"alone"}
 
 # FOUR MORE FAMILIES WERE BUILT, MEASURED AND DROPPED, and the measurements are the
 # reason this table is short. A gate earns a row only if a real deck can FAIL it; one
@@ -13400,6 +13482,8 @@ _STATE_GATES = [
 # (exile) self-calibrates and needs none. Bands measured across the 116-deck roster.
 _STATE_BANDS = {           # kind: (thin_at_or_below, free_at_or_above)
     "draw": (2, 8),
+    "haste": (1, 5),       # roster p50 / p90 of haste sources (2026-09-06)
+    "alone": (3, 9),       # INVERTED: free at/below p25, conflict at/above p75
 }
 
 
@@ -13408,7 +13492,7 @@ def _state_axis_counts(cards, carddata, mana):
     wherever a role already measures the axis, so a state gate and `stats` can never
     report different numbers for the same question."""
     tally = role_tally(cards, carddata)
-    exile = 0
+    exile = haste = wide = 0
     for q, n, _s, _c in cards:
         if n.lower() in BASICS:
             continue
@@ -13422,7 +13506,13 @@ def _state_axis_counts(cards, carddata, mana):
         text = (cd.get("text") or "").lower()
         if re.search(r"exile (?:it|them|that card|target|up to|all|each)|exile this", text):
             exile += q
-    return {"draw": tally.get("Card advantage", 0), "exile": exile}
+        stripped = _norm_role_text(cd.get("text") or "")
+        if re.search(r"\bhaste\b", stripped):
+            haste += q
+        if any(p.search(stripped) for p in _WIDE_CUES):
+            wide += q
+    return {"draw": tally.get("Card advantage", 0), "exile": exile,
+            "haste": haste, "alone": wide}
 
 
 def state_gate_counts(cards, carddata, mana):
@@ -13453,6 +13543,9 @@ def state_gate_counts(cards, carddata, mana):
             count = axes[kind]
             if need is not None:
                 verdict = "dead" if count == 0 else ("thin" if count < need else "ok")
+            elif kind in _STATE_INVERTED:
+                low, high = _STATE_BANDS[kind]
+                verdict = ("free" if count <= low else "conflict" if count >= high else "ok")
             else:
                 low, high = _STATE_BANDS[kind]
                 verdict = ("dead" if count == 0 else "thin" if count <= low
@@ -13522,6 +13615,7 @@ def cmd_targets(args):
 
 
 _STATE_FLAG = {"dead": "  ✗ CANNOT turn on", "thin": "  ⚠ thin",
+               "conflict": "  ⚠ CONFLICT (fights the deck's own plan)",
                "free": "  ✓ free (deck always meets it)", "ok": ""}
 
 
@@ -13533,13 +13627,13 @@ def _print_state_gates(cards):
     rows = state_gate_counts(cards, load_card_data(), load_mana())
     if not rows:
         return
-    order = {"dead": 0, "thin": 1, "ok": 2, "free": 3}
+    order = {"dead": 0, "thin": 1, "conflict": 1, "ok": 2, "free": 3}
     print(f"\n  {'Card':32} {'State its text needs':42} {'in deck':>7}")
     print("  " + "-" * 84)
     for name, label, count, _need, verdict in sorted(rows, key=lambda r: (order[r[4]], r[0])):
         print(f"  {name[:32]:32} {label[:42]:42} {count:>7}{_STATE_FLAG[verdict]}")
     nfree = sum(1 for r in rows if r[4] == "free")
-    nbad = sum(1 for r in rows if r[4] in ("dead", "thin"))
+    nbad = sum(1 for r in rows if r[4] in ("dead", "thin", "conflict"))
     print(f"\n  {len(rows)} STATE gate(s): {nbad} the deck struggles to meet, {nfree} it "
           "meets for free. The free ones are the point — every other model here grades a "
           "gated card as if the gate were a cost, and in the deck built to satisfy it it "

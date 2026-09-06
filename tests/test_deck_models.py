@@ -1096,9 +1096,31 @@ class TestCheatCostGrantsAndEffectiveCurve:
 
     def test_effective_avg_mv_substitutes_alt_costs_and_is_quantity_weighted(self):
         cards = [(1, "Bygone Colossus", "SET", "1"), (3, "Bear", "SET", "1"), (1, "Forest", "SET", "1")]
-        eff, printed = deck.effective_avg_mv(cards, self.CD, self.MANA)
+        eff, printed, with_grants = deck.effective_avg_mv(cards, self.CD, self.MANA)
         assert printed == round((9 + 3 * 2) / 4, 2)
         assert eff == round((3 + 3 * 2) / 4, 2)
+        assert with_grants is None                      # no grant in this list
+
+    def test_a_grant_is_applied_to_the_cards_in_its_scope_only(self):
+        cd = dict(self.CD)
+        cd["red dragon"] = {"type": "Creature — Dragon", "text": "Flying", "colors": "R"}
+        cd["green bear"] = {"type": "Creature — Bear", "text": "", "colors": "G"}
+        cd["rock"] = {"type": "Artifact", "text": "", "colors": ""}
+        mana = dict(self.MANA, **{"red dragon": ("{4}{R}", 5), "green bear": ("{4}{G}", 5),
+                                  "rock": ("{5}", 5)})
+        cards = [(1, "Tannuk, Steadfast Second", "", ""), (1, "Red Dragon", "", ""),
+                 (1, "Green Bear", "", ""), (1, "Rock", "", "")]
+        eff, printed, with_grants = deck.effective_avg_mv(cards, cd, mana)
+        # Tannuk 3 + dragon 5 + bear 5 + rock 5 = 18/4; the grant (warp {2}{R} = 3) reaches
+        # the red creature and the artifact, never the green bear: 3 + 3 + 5 + 3 = 14/4.
+        assert printed == 4.5 and eff == 4.5 and with_grants == 3.5
+
+    def test_grant_scope_parsing_needs_a_known_type(self):
+        assert deck._grant_scope_matches("artifact cards and red creature cards in your hand",
+                                         {"type": "Creature — Dragon", "colors": "R"})
+        assert not deck._grant_scope_matches("artifact cards and red creature cards in your hand",
+                                             {"type": "Creature — Bear", "colors": "G"})
+        assert not deck._grant_scope_matches("cards in your hand", {"type": "Creature", "colors": "R"})
 
     def test_no_cheat_cost_card_means_no_advisory(self):
         assert deck.effective_avg_mv(self._cards(["Bear"]), self.CD, self.MANA) is None
@@ -1108,6 +1130,7 @@ class TestCheatCostGrantsAndEffectiveCurve:
         src = (inspect.getsource(deck.deck_quality_vector) + inspect.getsource(deck.tier_band)
                + inspect.getsource(deck._clock_score))
         assert "effective_avg_mv" not in src and "cheat_cost_grants" not in src
+        assert "_grant_scope_matches" not in src
 
 
 class TestTypedSinkLabel:

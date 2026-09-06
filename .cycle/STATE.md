@@ -2868,3 +2868,17 @@ AXIS (these cards now carry a role; the axis is the taxonomy decision still park
 (Equipment / tap-down / copy-as-multiplier axis / damage-doubler axis), state gates (§5.7 item
 5), 56's tier letter (user), 56c, deleting `.cycle/56-tall-pile-analysis.md` once settled, and
 `/sync-docs` for G-30 / G-37 / G-56 / G-60 / G-67 (two batches' worth).
+
+
+## 2026-09-06 (third batch) — damage-doubler axis, haste/attack-alone gates, granted costs, Equipment bucket
+See `.cycle/blocks/2026-09-06-damage-axis-state-gates-equipment-broad-implement.md`.
+0 of 114 floors moved (every batch today measured). The tap-down / neutralize "taxonomy
+item" carried in the last two blocks was STALE — it was closed on 2026-08-19 inside the
+Removal bucket with a permanence line (docs/gotchas.md); only Equipment was actually open,
+and it is taken now as role credit. Decided: the damage axis feeds on NONCOMBAT damage text
+(creatures+burn has a roster minimum of 11 and would saturate like `triggers`).
+
+**Where I left off.** Committed on `claude/broad-scan-6kxevb`; `/sync-docs` next for the
+three batches' CLAUDE.md updates, then PR + merge. Open after that: 56's tier letter (user),
+56c, deleting `.cycle/56-tall-pile-analysis.md`, the copy-as-multiplier axis, the haste gate's
+n=1 band.
