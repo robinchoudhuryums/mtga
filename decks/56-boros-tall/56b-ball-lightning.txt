@@ -5,10 +5,8 @@
 #: archetype: MONO-RED CHEAT-TALL (the 56 pile analysis' variant signal, .cycle/56-tall-pile-analysis.md
 #: archetype: §5.5 / O28): every body arrives for LESS than its printed cost and most of them LEAVE at the
 #: archetype: end step — Warp (Bygone Colossus is a 9/9 for {3}, Anticausal Vestige a 7/5 for {4}, Nova
-#: archetype: Hellkite a 4/5 flier for {3}, Red Tiger Mechan / Weftstalker Ardent / Possibility Technician for
-#: archetype: one or two), Plot (Stingerback Terror, Longhorn Sharpshooter, Demonic
-#: archetype: Ruckus), Ball Lightning's own sacrifice, and Tannuk granting warp {2}{R} to every red creature
-#: archetype: and artifact in hand (Hill Gigas Mountaincycles when Tannuk is absent). THREE THINGS FOLLOW from
+#: archetype: Hellkite a 4/5 flier for {3}, Weftstalker Ardent / Possibility Technician for one or two), Plot (Stingerback Terror, Demonic Ruckus), Ball Lightning's own sacrifice, and Tannuk granting warp {2}{R} to every red creature
+#: archetype: and artifact in hand (Combustion Man is the one body that NEEDS him to be cheap). THREE THINGS FOLLOW from
 #: archetype: a body that is leaving anyway: Self-Destruct's "X damage to itself" is FREE (the finisher costs
 #: archetype: nothing), a sorcery-speed answer or a sweeper on their turn hits an empty board (the plan IS the
 #: archetype: protection), and every recast from exile re-fires Terror of the Peaks (power to any target),
@@ -37,7 +35,7 @@
 #: notes: PRINTED COSTS AS LIES: avg MV and the aggro clock score both price Colossus at 9 and Vestige at 6
 #: notes: (pile doc §5.7 item 6 — warp/plot are invisible to `avg_mv` / `_clock_score`), so `stats`/`tier`
 #: notes: will read this deck as slow; the real curve is warp 1–4. Tannuk-DEPENDENT bodies are kept to ONE
-#: notes: (Hill Gigas, which cycles for a Mountain without him) because one Tannuk is in hand by T4 ~17% of
+#: notes: (Combustion Man since 2026-09-06; Hill Gigas before) because one Tannuk is in hand by T4 ~17% of
 #: notes: the time (G-61). Self-Destruct on a warped body: cast it in the END STEP after the exile trigger
 #: notes: is on the stack? NO — the body must be on the battlefield: cast it in combat or main phase 2,
 #: notes: BEFORE the end step, and let the exile clean up. Ball Lightning + Bulk Up + Self-Destruct = 12 trample
@@ -61,34 +59,34 @@
 1 Anticausal Vestige (EOE) 1
 2 Nova Hellkite (EOE) 148
 2 Ball Lightning (FDN) 618
-1 Red Tiger Mechan (EOE) 154
+1 Hazoret, Godseeker (DFT) 133
 1 Weftstalker Ardent (EOE) 169
 1 Possibility Technician (EOE) 153
 1 Goliath Daydreamer (ECL) 143
 1 Stingerback Terror (OTJ) 147
-1 Longhorn Sharpshooter (OTJ) 132
-1 Hill Gigas (FIN) 141
+1 Combustion Man (TLA) 127
 
 # Payoffs — enters and leaves
 1 Terror of the Peaks (OTJ) 149
 1 Doc Ock's Tentacles (SPM) 162
+1 Cosmic Cube (MSH) 245
+1 Twinflame Tyrant (FDN) 97
 
 # Multipliers, evasion, free finishers
 2 Self-Destruct (FIN) 157
 2 Bulk Up (SOA) 40
 1 Choreographed Sparks (SOS) 111
-1 Return the Favor (SOA) 47
+1 Sozin's Comet (TLA) 154
 1 Full Bore (EOE) 135
 1 Haste Magic (FIN) 140
-1 Impolite Entrance (ECL) 146
 2 Speed, Young Avenger (MSH) 152
 1 Demonic Ruckus (OTJ) 120
 1 Swiftfoot Boots (BRR) 58
+1 Devastating Onslaught (EOE) 132
 
 # Burn that is also reach
 1 Emeritus of Conflict // Lightning Bolt (SOS) 113
 2 Burst Lightning (FDN) 192
-1 Lightning Strike (MSH) 142
 
 # Lands
 22 Mountain (HOB) 192

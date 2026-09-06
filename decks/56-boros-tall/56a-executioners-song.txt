@@ -174,7 +174,7 @@
 
 # Ramp / evasion riders
 1 Ruby, Daring Tracker (FDN) 245
-1 Speed, Young Avenger (MSH) 152
+1 Great Divide Guide (TLA) 181
 
 # Protection (what the A/B green list never had)
 2 Overprotect (BLB) 185

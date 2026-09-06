@@ -236,7 +236,6 @@ Herald of Eternal Dawn
 Heroes' Hangout
 High Fae Trickster
 High Perfect Morcant
-Hill Gigas
 Hit the Mother Lode
 Honored Knight-Captain
 Hop to It
@@ -248,7 +247,6 @@ Hymn of the Faller
 I Am Iron Man
 Iguana Parrot
 Imperious Inkmage
-Impolite Entrance
 Improvisation Capstone
 Improvised Arsenal
 Ingenious Leonin
@@ -392,7 +390,6 @@ Raph & Leo, Sibling Rivals
 Raphael, the Nightwatcher
 Reckless Velocitaur
 Red Room Recruit
-Red Tiger Mechan
 Redirect Lightning
 Relm's Sketching
 Renet, Temporal Apprentice
