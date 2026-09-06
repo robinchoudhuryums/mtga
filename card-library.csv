@@ -2650,7 +2650,7 @@ When this land enters, you gain 1 life.
 Hushwood Verge,Land,"{T}: Add {G}.
 {T}: Add {W}. Activate only if you control a Forest or a Plains.",W/G,mana,DSK,261,1
 Gathering Place,Land,"{T}: Add {C}.
-{T}: Add {G} or {W}. Activate only if this land entered this turn or if you control a basic land.",W/G,mana,MSH,266,1
+{T}: Add {G} or {W}. Activate only if this land entered this turn or if you control a basic land.",W/G,mana,MSH,266,4
 Cuboid Colony,Creature — Insect,"Flash
 Flying, trample
 Increment (Whenever you cast a spell, if the amount of mana you spent is greater than this creature's power or toughness, put a +1/+1 counter on this creature.)",U/G,Insect; counters; flying; evasion; trample; flash; tempo; increment; spellslinger,SOS,183,1
@@ -5543,3 +5543,6 @@ Strangled Cemetery,Land,"This land enters tapped unless a player has 13 or less 
 Wild Roads,Land,"This land enters tapped unless you control a Mount or Vehicle.
 {T}: Add {G}.
 {1}{G}, {T}, Sacrifice this land: Create a 1/1 colorless Pilot creature token with ""This token saddles Mounts and crews Vehicles as though its power were 2 greater."" Activate only as a sorcery.",G,Mount; sacrifice; tokens; mana,DFT,269,2
+Temple of Plenty,Land,"This land enters tapped.
+When this land enters, scry 1. (Look at the top card of your library. You may put that card on the bottom.)
+{T}: Add {G} or {W}.",W/G,mana; etb; scry; selection,FDN,703,1
