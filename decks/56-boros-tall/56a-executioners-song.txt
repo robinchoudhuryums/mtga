@@ -163,6 +163,12 @@
 #: notes: sum 8). Red Hulk was the least synergistic six: a Villain (no Mjölnir), enrage that nothing
 #: notes: here arranges, and the Self-Destruct non-combo above. Nexus at six is a real turn on eight
 #: notes: taplands — Stomping Ground x2 stays the first craft.
+#: notes: 2026-09-06 LANDS (all owned): −Gruul Guildgate −Gongaga −Commercial District +3 Training Compound
+#: notes: (untapped for either colour beside any of the 14 basics, or the turn it enters) and −1 Mountain +1 Forest
+#: notes: for the six {G}{G} cards against two {R}{R}. Taplands 8 → 5, sources 17/17: Broodguard T2 69 → 73%,
+#: notes: Sparks 76 → 73%, Ouroboroid/Harmonizer T4 82 → 85%. Commercial District was MKM (2026 rotation);
+#: notes: Restless Ridgeline is LCI and goes with it — kept as the one land that attacks; Savage Mansion
+#: notes: (owned) is its stand-in then. Stomping Ground x2 is now a Rugged Highlands upgrade, not the fix.
 
 # Tall bodies
 1 Stingerback Terror (OTJ) 147
@@ -214,11 +220,8 @@
 # Lands
 1 Thornspire Verge (DSK) 270
 1 Restless Ridgeline (LCI) 283
-1 Gongaga, Reactor Town (FIN) 280
-1 Training Compound (MSH) 275
-1 Commercial District (MKM) 259
-8 Mountain (MSH) 293
+4 Training Compound (MSH) 275
+7 Mountain (MSH) 293
 3 Rugged Highlands (M21) 249
 1 Omashu City (TLA) 275
-1 Gruul Guildgate (RNA) 250
-6 Forest (MSH) 296
+7 Forest (MSH) 296

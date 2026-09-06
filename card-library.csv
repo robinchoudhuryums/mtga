@@ -1785,7 +1785,7 @@ Fire Nation Palace,Land,"This land enters tapped unless you control a basic land
 "Kavaron, Memorial World",Land — Planet,"This land enters tapped.
 {T}: Add {R}.
 Station (Tap another creature you control: Put charge counters equal to its power on this Planet. Station only as a sorcery.)
-12+ | {1}{R}, {T}, Sacrifice a land: Create a 2/2 colorless Robot artifact creature token, then creatures you control get +1/+0 and gain haste until end of turn.",R,Planet; sacrifice; tokens; mana; pump; station; counters; artifacts; haste; aggro,EOE,255,1
+12+ | {1}{R}, {T}, Sacrifice a land: Create a 2/2 colorless Robot artifact creature token, then creatures you control get +1/+0 and gain haste until end of turn.",R,Planet; sacrifice; tokens; mana; pump; station; counters; artifacts; haste; aggro,EOE,255,3
 Ambitious Augmenter,Creature — Turtle Wizard,"Increment (Whenever you cast a spell, if the amount of mana you spent is greater than this creature's power or toughness, put a +1/+1 counter on this creature.)
 When this creature dies, if it had one or more counters on it, create a 0/0 green and blue Fractal creature token, then put this creature's counters on that token.",G,Turtle; Wizard; counters; tokens; increment; spellslinger,SOS,140,1
 Run Over,Instant,"This spell costs {1} less to cast if it targets a Mount or Vehicle you control.
@@ -5530,3 +5530,6 @@ When this land enters, scry 1. (Look at the top card of your library. You may pu
 Savage Mansion,Land,"This land enters tapped.
 {T}: Add {R} or {G}.
 {4}, {T}: Surveil 1. (Look at the top card of your library. You may put it into your graveyard.)",R/G,graveyard; mana; selection; surveil,SPM,183,4
+Rocky Roads,Land,"This land enters tapped unless you control a Mount or Vehicle.
+{T}: Add {R}.
+{1}{R}, {T}, Sacrifice this land: Create a 1/1 colorless Pilot creature token with ""This token saddles Mounts and crews Vehicles as though its power were 2 greater."" Activate only as a sorcery.",R,Mount; sacrifice; tokens; mana,DFT,261,2
