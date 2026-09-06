@@ -1073,6 +1073,37 @@ Hellspur Brute / Racers' Scoreboard (KEY on screen for tag reasons — read as t
 **56b's weakest slots, for the swaps:** Longhorn Sharpshooter, Red Tiger Mechan, Lightning
 Strike, Impolite Entrance, Hill Gigas (when Tannuk is not the plan), one Hellkite.
 
+### 5.13 Did tuning 56a and 56b change the plan for 56? (measured 2026-09-06)
+
+Yes, in four ways — none of them "a card got used up" (decks share the collection), all of
+them about IDENTITY and about what the 56a/56b passes taught.
+
+1. **Overlap.** Today 56 shares 5 nonland cards with 56a and 4 with 56b; 56a and 56b share
+   9. The §5.9 rebuild as written would share **12 with 56a and 10 with 56b** — a third of
+   its nonland. Eight cards would be common to ALL THREE (Bulk Up, Self-Destruct, Sparks,
+   Ruckus, Haste Magic, Pain for All, Boots, Stingerback). Distinct by win condition, yes
+   (protected permanent body / compounding counters / temporary bodies); by list, converging.
+   **56's distinctness is its WHITE layer** — Sentry, Delney, Abolisher, Luke Cage, Agrus,
+   Avatar State, Restoration Magic, Team Avatar, Speedball's redirect — and the rebuild should
+   lean on that rather than on the red cards the other two also want.
+2. **Option A changed.** Bygone Colossus is now 56b's signature body; putting it in 56 too
+   blurs the one line that separates them. Molten Man's two slots → **Luke Cage + Agrus Kos**
+   (measured below). Agrus also restores some of the interaction the rebuild lost.
+3. **The rebuild's interaction drop is worse than §5.9 measured, and 56a/56b showed the fix.**
+   With Speedball taking Giantfall's slot the rebuilt 56 reads **interaction 3, no noncreature
+   answer, card advantage 1, floor A → B** (aggro clock 5/7). 56b's pass found the shape that
+   fixes it without burn: **HULK SMASH!** (teamwork off the tall body: kill + destroy a
+   noncreature artifact for two), **Untimely Malfunction** (redirect / artifact / can't-block),
+   Wisecrack. Two of those in place of Team Avatar and Frontline Rush puts interaction back to 5
+   and the floor back to A.
+4. **Speedball is already in** (for a Vindicator, 2026-09-06), so the rebuild's "Vindicator ×1"
+   cut is spent; Vindicator stays at 1 beside him.
+
+**Rebuild v2 (scratch-measured; saved as scratchpad `56-rebuild-proposal-v2.txt`):** §5.9
+with Molten Man ×2 → Luke Cage + Agrus Kos, Speedball kept, Giantfall out. Result: legal 60,
+protection 7, avg MV 2.67, 16 creatures, one 5-drop, **interaction 3 / CA 1 / floor B** — apply
+item 3's two interaction swaps before this goes in. Overlap: 12 with 56a, 10 with 56b.
+
 ### 5.8 Craft cost — INFORMATION, per the Player Profile (not a constraint)
 
 Unowned in the §5.9 rebuild: Stingerback Terror (R), The Fire Crystal (R), Sacred Foundry
