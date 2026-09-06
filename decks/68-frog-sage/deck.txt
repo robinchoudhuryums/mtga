@@ -1,64 +1,56 @@
 #: name: Frog Sage
 #: format: Standard
-#: colors: GUB
+#: arena: 68a Frog Sage: Seer, 1073648b-ed2c-4078-a7c9-940b8ebb49a9
+#: colors: GWU
+#: based-on: deck.txt
 #: plan: midrange
-#: tier: B (PROVISIONAL) — graded UNDER the A metrics floor (interaction 6 / card-adv 5 /
-#: tier: protection 3 / 2.86 curve) deliberately, which the rubric permits with argument:
-#: tier: this is an untested v1 whose engine is nearly all singletons (draw variance on a
-#: tier: two-payoff core — Dour Port-Mage and Three Tree Scribe are one copy each), it
-#: tier: carries 20 craft targets, and the interaction-8 figure counts stun/tap tempo
-#: tier: pieces whose value depends on the blink loop actually assembling. The floor also
-#: tier: cannot see the deck's real question: whether a one-of blink engine finds its
-#: tier: pieces fast enough. Re-grade after real games; A is reachable if it does.
-#: protect: Glarb, Calamity's Augur; Dour Port-Mage; Three Tree Scribe; Clement, the Worrywort; Sab-Sunen, Luxa Embodied; Quina, Qu Gourmet
-#: archetype: Sultai (B/G/U) FROG BLINK-AND-RETURN value engine — the deck's currency is
-#: archetype: CREATURES ENTERING AND LEAVING WITHOUT DYING. Two payoffs read that exact
-#: archetype: event: Dour Port-Mage (draw per leave-without-dying) and Three Tree Scribe
-#: archetype: (+1/+1 counter per leave-without-dying); the enablers are Splash Portal,
-#: archetype: Lilysplash Mentor, Skyskipper Duo, Long River Lurker's self-exile loop,
-#: archetype: Mistbreath Elder's free upkeep bounce, Stickytongue Sentinel, Clement and
-#: archetype: Y'shtola Rhul (a free blink EVERY end step). The ETB layer they re-buy:
-#: archetype: Pond Prophet / Dreamdew Entrancer (draw), Floodpits Drowner / Splash
-#: archetype: Lasher (stun tempo), Sunshower Druid (counters), Bogwater Lumaret
-#: archetype: (life), Clifftop Lookout (lands), Genghis Frog (Mutagen tokens).
-#: archetype: SECONDARY SYNERGIES, noted at build time: (1) COUNTER-PARITY — Sab-Sunen
-#: archetype: needs an EVEN counter count to attack and draws on ODD, so the deck's
-#: archetype: external counter sources (Sunshower, Scribe, Mutagen, Oakhollow Village)
-#: archetype: TOGGLE her between modes on demand; (2) Quina turns EVERY token event
-#: archetype: (Mutagen, Splash Lasher's Offspring, Berta's Fractals) into an extra Frog
-#: archetype: feeding Valley Mightcaller and the village lands; (3) Glarb casts the
-#: archetype: deck's MV4+ half off the top and his surveil stocks Mudflat Village;
-#: archetype: (4) Valley Floodcaller untaps the team on every noncreature spell, so the
-#: archetype: interaction suite doubles as combat math. DISTINCT from deck 27 (Blink,
-#: archetype: WU value-flicker: different colors, no tribe) and 34 (Zoologist, GU
-#: archetype: type-COUNT: its changelings care about type variety, this cares about one
-#: archetype: type's density and the enter/leave event itself).
-#: notes: BUILT 2026-08-11 from the user's ~48-card "Frog Sage" idea pile. The pile held
-#: notes: EVERY Frog payoff in Standard (a K-13 effect-shape sweep of the pool found zero
-#: notes: outside it) plus four findable bodies the pile missed: Dour Port-Mage — the
-#: notes: blink payoff the archetype is named for — Stickytongue Sentinel, Skyskipper Duo
-#: notes: and Pond Prophet. GUB was chosen over GUW as primary because black's frogs ARE
-#: notes: frogs (Glarb, The Gitrog, Bogwater Lumaret) while white's pile cards are Rabbit
-#: notes: typal plus Helga; the GUW build exists as variant 68a around Helga's
-#: notes: MV4+-creature-cast engine. The rabbit/squirrel half of the pile was FIRST sorted
-#: notes: out as "a different deck idea" and that judgment was PARTLY REVERSED on the
-#: notes: user's re-read (same day): Mightcaller / Oakhollow / Treeguard read "Frog,
-#: notes: Rabbit, Raccoon, or Squirrel" and "number of creatures", not "Frog" — the
-#: notes: rabbits were never off-plan, and the wide+counters package is variant 68a's.
-#: notes: SPIDER-HAM was the measured miss of the first pass: `screen` rated it tangential
-#: notes: off a Lifegain tag while its type-list anthem pumps 28 of 31 creatures here —
-#: notes: the K-03 shape (a card whose text names types it never casts carries no tag for
-#: notes: them). It replaced Punk Frogs, a vanilla ward body: avg MV 2.92 -> 2.83.
-#: notes: Sacrifice-axis cards (Camellia) stay out of both lists — that IS a different deck.
-#: notes: Poison Dart Frog was in the pile and is EXCLUDED for rotation (LCI, ~2026);
-#: notes: Frog Butler is the same effect rotation-safe.
+#: tier: B (PROVISIONAL) — same blink core as the ORIGINAL 68 (cut 2026-09-06; this list was 68a), graded on the same argument
+#: tier: (untested v1, singleton engine, craft-heavy). After the 2026-08-11 wide-counters
+#: tier: pivot its OWN open question changed: no longer Helga's density (she is a mana
+#: tier: engine now, 7 MV4+ casts) but whether the wide half and the blink half feed each
+#: tier: other or fight — the G-42 role-split in the archetype block is the thing to
+#: tier: watch in games. Measured at the pivot: avg MV 2.97 -> 2.86, early drops 15 -> 17,
+#: tier: central themes 12 -> 16, protection 4 -> 3. Re-grade after games.
+#: protect: Helga, Skittish Seer; Dour Port-Mage; Three Tree Scribe; Clement, the Worrywort; Sab-Sunen, Luxa Embodied; Quina, Qu Gourmet
+#: archetype: Bant (G/W/U) FROG-AND-RABBIT WIDE COUNTERS over the original 68's blink skeleton (that list was CUT 2026-09-06) —
+#: archetype: PIVOTED 2026-08-11 on the user's re-read of the pile: Valley Mightcaller,
+#: archetype: Oakhollow Village and Treeguard Duo read "Frog, Rabbit, Raccoon, or
+#: archetype: Squirrel" and "number of creatures you control", so the rabbit package was
+#: archetype: never off-plan. The wide half: Byrke DOUBLES the counters on any attacker
+#: archetype: that has one (14 counter sources feed him), Finneas counters every
+#: archetype: token/Rabbit on attack and draws at total power 10, Burrowguard Mentor IS
+#: archetype: the creature count, Warren Warleader and Hop to It make the bodies — and
+#: archetype: QUINA adds a bonus Frog to every token event, so the rabbit tokens feed the
+#: archetype: Frog payoffs by rule. White's blink (Personify, Daydream, Season of the
+#: archetype: Burrow) stays as the value layer; Helga remains as a mana engine and a
+#: archetype: 7-cast MV4+ draw trigger rather than the deck's center. G-42 CAVEAT, live
+#: archetype: in this list: blink ERASES +1/+1 counters, so the roles are SPLIT — blink
+#: archetype: the ETB bodies (Pond Prophet, Splash Lasher, Dreamdew), grow the attackers
+#: archetype: (Byrke's targets, Mightcaller, Burrowguard); Lilysplash and Daydream return
+#: archetype: the creature WITH a counter, so they are the exempt blinks. DISTINCT from
+#: archetype: the original 68 by AXIS: that list converted enter/leave events into cards via Dour
+#: archetype: Port-Mage and Glarb — both CUT with that list; this converts them into board width and counters.
+#: notes: PROMOTED 2026-09-06: this was variant 68a (Seer); the original 68 was CUT because 68a
+#: notes: played better (user call after games), and 68b (Warren) became 68a. Built 2026-08-11
+#: notes: alongside the original from the same idea pile; its notes (pile provenance, the K-13
+#: notes: payoff sweep) live in git history of this path before 2026-09-06. The user
+#: notes: guessed GUW or GUB up front; GUB won primary because black's cards are Frogs
+#: notes: (Glarb, Gitrog, Bogwater) while white's case rests on Helga plus generic blink.
+#: notes: This list is the test of that judgment — if Helga's engine plays better than
+#: notes: Glarb's, promote it. PIVOT 2026-08-11 (user call, reversing my grouping): OUT
+#: notes: Gigantoad, Pet Avengers, Punk Frogs, Venus, Clifftop Lookout; IN Byrke, Finneas,
+#: notes: Burrowguard Mentor, Warren Warleader, Hop to It. Venus and the tall half live on
+#: notes: in the PARENT (shared collection — the same copies serve both decks).
+#: notes: KNOWN THIN SPOT, accepted at build time: Season of the Burrow wants {W}{W} on a
+#: notes: 7-W-source base — `mana` flags it. It is the deck's only double-white and a
+#: notes: late-game modal, so the G-36 framing is "cast late", not a build error.
 
-# Payoffs — the two cards that read the leave-without-dying event
+# The seer — every big creature cast pays out
+1 Helga, Skittish Seer (BLB) 217
+
+# Payoffs — leave-without-dying
 1 Dour Port-Mage (BLB) 47
 1 Three Tree Scribe (BLB) 199
-
-# The sage — surveil + cast the top half of the deck
-1 Glarb, Calamity's Augur (BLB) 215
 
 # Blink / bounce enablers
 1 Splash Portal (BLB) 74
@@ -69,53 +61,56 @@
 1 Stickytongue Sentinel (BLB) 193
 1 Clement, the Worrywort (BLB) 209
 1 Y'shtola Rhul (FIN) 86
+1 Personify (ECL) 28
+1 Daydream (SOS) 9
+1 Season of the Burrow (BLB) 29
 
-# ETB value layer — what the blinks re-buy
+# ETB value layer
 1 Pond Prophet (BLB) 229
 1 Dreamdew Entrancer (BLB) 211
 1 Splash Lasher (BLB) 73
 1 Sunshower Druid (BLB) 195
-1 Clifftop Lookout (BLB) 168
 1 Genghis Frog (TMT) 148
 1 Treeguard Duo (BLB) 200
-2 Bogwater Lumaret (SOS) 177
+1 Hinterland Sanctifier (FDN) 730
+1 Oko, the Ringleader (OTJ) 223
+
+# The wide half — rabbit counters package (2026-08-11 pivot)
+1 Byrke, Long Ear of the Law (BLB) 380
+1 Finneas, Ace Archer (BLB) 212
+1 Warren Warleader (BLB) 38
+1 Burrowguard Mentor (BLB) 206
+1 Hop to It (SOA) 6
+1 Sab-Sunen, Luxa Embodied (DFT) 221
 
 # Tribal payoffs and engines
 1 Quina, Qu Gourmet (FIN) 194
 1 Valley Mightcaller (BLB) 202
 1 Valley Floodcaller (BLB) 79
-1 The Gitrog, Ravenous Ride (OTJ) 206
-1 Venus, Torn Between Worlds (TMT) 136
-1 Sab-Sunen, Luxa Embodied (DFT) 221
 2 Frog Butler (TMT) 114
 1 Berta, Wise Extrapolator (SOS) 175
-1 Vinereap Mentor (BLB) 238
-1 Spider-Ham, Peter Porker (SPM) 114
 
 # Interaction
 1 Polliwallop (BLB) 189
 1 Into the Flood Maw (BLB) 52
-1 Floodpits Drowner (DSK) 59
-1 Withering Torment (DSK) 124
-1 Nowhere to Run (DSK) 111
 
-# Lands (24) — three creature-typal villages + owned duals
+# Lands (24)
 1 Lilypad Village (BLB) 255
 1 Oakhollow Village (BLB) 258
-1 Mudflat Village (BLB) 257
+1 Lupinflower Village (BLB) 256
 1 Breeding Pool (EOE) 251
-1 Overgrown Tomb (ECL) 266
 1 Willowrush Verge (DFT) 270
-1 Wastewood Verge (DFT) 268
-1 Gloomlake Verge (DSK) 260
-1 Opulent Palace (TDM) 264
-1 Undercity Sewers (PZA) 0
-1 Dreamroot Cascade (SOS) 254
-6 Forest (HOB) 193
-4 Island (HOB) 190
-3 Swamp (HOB) 191
-#~ -Withering Torment | +Run Away Together | OWNED (ECL, 2026-08-13 ingest): owner's pick, and the
-#~   TAG FIT IS LOW — 5 in 68a, and it does not rank for 68 or 68b at all, because the
+1 Thornwood Falls (FDN) 269
+1 Gathering Place (MSH) 266
+1 Suburban Sanctuary (SPM) 185
+1 Hushwood Verge (DSK) 261
+1 Tranquil Cove (TDM) 270
+1 Blossoming Sands (M21) 244
+4 Forest (HOB) 193
+5 Island (HOB) 190
+4 Plains (HOB) 189
+#~ -Hop to It | +Run Away Together | OWNED (ECL, 2026-08-13 ingest): owner's pick, and the
+#~   TAG FIT IS LOW — 5 here (this deck), and it does not rank for 68a at all, because the
 #~   tagger sees only `bounce`. Grade it from the text instead: "{1}{U} Choose two target
 #~   creatures controlled by DIFFERENT players. Return those creatures to their owners'
 #~   hands." In a blink/ETB deck the forced second target is the upside — you re-buy your

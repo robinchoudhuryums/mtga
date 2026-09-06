@@ -484,15 +484,15 @@ directions.
   next. **EVERY craft view carries the flag** — `check` inline per missing/short card,
   `wildcards` (incl. `--dedup`), `suggest --lands/--ramp/--interaction`, `tier --to`'s
   fillers. Owned rows are exempt: an owned card costs no wildcard. **The windows must
-  MATCH and did not**: `rotation_risk` read `<= year` until 2026-08-28, one year
-  stricter than every sibling, while a docstring asserted they "cannot disagree" —
-  `suggest --unowned` was its last caller, so the craft recommender under-flagged by a
-  full rotation. **A claim that two implementations agree is not agreement.** Plain
-  `suggest` also excludes LANDS now: a land has no cost, so the printed-cost castability
-  gate (G-58) passed an off-colour one unconditionally.
-  **The year is the STANDARD YEAR, not release + 3 (BS8-13)**: a January–July set leaves with
-  the previous fall's (MKM/OTJ/BIG → 2026). **⚠rot is a craft flag on a Standard card** (BS8-12:
-  `craft_rot_note` delegates to `rotation_risk`). Reprints: `_SET_ROTATION_OVERRIDE`; verify. [G-30]
+  MATCH and did not** (`rotation_risk` read one year stricter than every sibling until
+  2026-08-28 while a docstring said they "cannot disagree" — **a claim that two
+  implementations agree is not agreement**). Plain `suggest` excludes LANDS (a land has no
+  cost, so the printed-cost gate G-58 passed an off-colour one). **The year is the STANDARD
+  YEAR, not release + 3 (BS8-13)**: a January–July set leaves with the previous fall's.
+  Reprints: `_SET_ROTATION_OVERRIDE`; verify. **An OWNED rotating card was invisible on
+  every per-deck surface until 2026-09-06** (56a's Commercial District and Restless Ridgeline
+  found by hand): **`deck.py rotation <id>`** lists one deck's rotating cards, owned
+  included, and `check` ends with an `ⓘ N OWNED card(s) rotate` footer. Run it before a tune. [G-30]
 - **A COST THAT SCALES WITH A DECK COUNT IS INVISIBLE TO EVERY MODEL HERE, because they all price the PRINTED cost (added 2026-09-03).** Three templatings, one effect — `Affinity for artifacts` (52 pool instances), `costs {1} less to cast for each Equipment you control` (134), and a type-scoped `Equip Wizard {1}` beside a plain `Equip {3}` (16 cards); **64 pool cards** resolve to a countable type. Found because `suggest-homes` ranked Wizard's Staff into a **ONE-Wizard** deck above two **20-Wizard** decks: the printed cost is identical everywhere. `cost_scale_resource` / `cost_scale_support` / `cost_scale_boost` mirror the doubler trio, feed `suggest-homes` and `cut_keep_score`, and read the **TYPE LINE, never a tag** (K-04 — Salt Road Packbeast is tagged `artifacts` off its affinity KEYWORD while its real resource is creatures). **SCOPE IS THE G-76 LINE:** only a count the DECK'S COMPOSITION decides; "for each card exiled this way" / "in your party" / "in your graveyard" are game state (55 instances) and are left alone rather than answered wrongly. Calibrated from the measured distribution per `_DOUBLER_CALIB`'s lesson — nonzero support runs p25 2 / p50 3 / p75 10 / p90 22, so the floor is **4** (three artifacts is not an artifact deck), key 10, cap 12 (under the doubler's 18: a discount changes WHEN you cast, a doubler changes what the card DOES). Roster diff: **17 of 64 scaler cards re-ordered, 5 changed top pick; 2 of 115 `cuts` top-3 moved, 0 changed #1.** Plural resources singularise against the real type list — a naive `[:-1]` makes "Allies" → "allie", a type nothing carries, so the count is a silent 0. [G-83]
 - **`deck.py suggest-homes <card>` is the cross-deck fit pass** — every deck where the
   card is castable, format-legal and shares a *central* theme, labelled KEY /
@@ -530,7 +530,7 @@ directions.
   scope and nothing else**, so a TYPE-scoped doubler (Splinter's Ninja clause) is counted
   against the whole deck — 27 feeders in deck 20 against a correct 12. Read a
   `✱ multiplier` figure on a tribal doubler as an upper bound until that is fixed.
-  **A BOUNDED TERM IS ONLY BOUNDED USEFULLY IF THE ROSTER SPANS ITS RANGE (fixed 2026-09-03).** The floor/key/cap were ONE set of globals for all four axes, and they are roster PERCENTILES for three of them (floor 5 ≈ p25, key 10 ≈ p75, cap ≈ p90) — but `triggers` has a roster **MINIMUM of 10** (p50 23, p90 30), so every deck cleared the floor AND the KEY promotion and **92% pinned the cap**: constant roster-wide, on the axis holding 32 of the pool's 57 doubler cards. `cut_keep_score`'s twin saturated at 9 feeders, i.e. **100%**. Measured cost: Wizard's Staff (`Equip Wizard {1}`, a trigger doubler) scored the identical +18 in deck 37 (30 feeders), 37b (35) and 57 (22), so a ONE-Wizard deck outranked two 20-Wizard decks. Fix is `_DOUBLER_CALIB` — per-axis floor/key at that axis's own p25/p75 — plus growth measured ABOVE the floor rather than from zero, since counting the baseline every deck has is what saturates. Roster diff: **17 of 54 doubler cards re-ordered, 4 changed top pick, 0 of 115 `cuts` top-3 moved.** Re-derive when a distribution moves (the `TIER_FLOOR_REQ` hazard), and never read one axis discriminating as evidence all four do. [G-33]
+  **A BOUNDED TERM IS ONLY BOUNDED USEFULLY IF THE ROSTER SPANS ITS RANGE (fixed 2026-09-03).** The floor/key/cap were ONE set of globals for all four axes, and they are roster PERCENTILES for three of them (floor 5 ≈ p25, key 10 ≈ p75, cap ≈ p90) — but `triggers` has a roster **MINIMUM of 10** (p50 23, p90 30), so every deck cleared the floor AND the KEY promotion and **92% pinned the cap**: constant roster-wide, on the axis holding 32 of the pool's 57 doubler cards. `cut_keep_score`'s twin saturated at 9 feeders, i.e. **100%**. Measured cost: Wizard's Staff (`Equip Wizard {1}`, a trigger doubler) scored the identical +18 in deck 37 (30 feeders), 37b (35) and 57 (22), so a ONE-Wizard deck outranked two 20-Wizard decks. Fix is `_DOUBLER_CALIB` — per-axis floor/key at that axis's own p25/p75 — plus growth measured ABOVE the floor rather than from zero, since counting the baseline every deck has is what saturates. Roster diff: **17 of 54 doubler cards re-ordered, 4 changed top pick, 0 of 115 `cuts` top-3 moved.** Re-derive when a distribution moves (the `TIER_FLOOR_REQ` hazard), and never read one axis discriminating as evidence all four do. **A FIFTH axis, `damage` (2026-09-06)**: Twinflame Tyrant / Collective Inferno / Gratuitous Violence (17 pool cards) had no axis, so `suggest-homes` ranked Twinflame KEY in 56a on Dragon/evasion alone. Its FEEDER is NONCOMBAT damage text — creatures+burn has a roster MINIMUM of 11 and would have saturated exactly like `triggers` — calibrated (2, 7) from that count's p50/p75 (min 0 / p25 1 / p50 2 / p75 7 / p90 10). Roster diff: 4 of 10 doublers' top-5 changed, 2 changed #1, all toward burn-dense decks; 0 floors. [G-33]
 - **Before committing a deck edit run `deck.py preflight <id>`, and grade a cut/swap with
   `deck.py quality`.** `preflight` folds legal + owned + castable + a full `check_all`
   into one READY/BLOCKED verdict. `quality --json` before, `--vs FILE` after, flags
@@ -564,16 +564,17 @@ directions.
 - **`deck.py suggest --lands <id>` is the manabase RECOMMENDER** — plain `suggest` is
   structurally blind to lands (it filters to cards sharing a synergy theme). Scored on
   FIXING value plus bounded synergy/scarce-colour nudges, and it applies the deck's
-  `#: format:`. **Both 2026-08-09 fixes were about admitting or pricing the wrong card:**
-  a whole-type-line candidate filter admitted 81 back-face lands, and RESTRICTED mana now
-  has its premium halved and prints `·restricted`. A conditional land never gets the
-  untapped premium even when the deck meets the condition, so it prints `·tapped?` for a
-  human read. **`·tapped?` was wrong for SHOCKLANDS until 2026-09-04** — a bare
-  `"unless" in low`, a second narrower copy of `deck._TAPLAND_COND_RE` in the same file;
-  both route through the one predicate now. **The G-35 breadth credit re-ranks the #1
-  pick in 22 of 115 decks** (21 at 0.5, 25 at 1.0 — the constant is not what drives it):
-  fetches now beat untapped duals, defensible on FIXING, and `_LAND_BREADTH_PER_COLOR`
-  is the dial. [G-37]
+  `#: format:`. Both 2026-08-09 fixes were about admitting or pricing the wrong card (81
+  back-face lands admitted; RESTRICTED mana now half-premium, `·restricted`). A conditional
+  land never gets the untapped premium even when the deck meets the condition — `·tapped?`
+  is the human read, and it was wrong for SHOCKLANDS until 2026-09-04 (a second copy of
+  `_TAPLAND_COND_RE`; one predicate now). **The G-35 breadth credit re-ranks the #1 pick
+  in 22 of 115 decks** — fetches beat untapped duals on FIXING; `_LAND_BREADTH_PER_COLOR`
+  is the dial. **The RIDER breaks ties, and only ties (2026-09-06)**: four Boros taplands
+  tied at 10.9 (a scry, nothing, a draw sink, a life point). `_land_utility` (creature /
+  draw / scry / surveil / sink / ping / life; `sink~` = one creature type) is a SORT KEY
+  after the score, never a score term — the smallest fixing step is 0.1, so any additive
+  nudge would re-rank lands on something other than fixing. Scores pinned unchanged. [G-37]
 - **`suggest --ramp / --interaction / --needs` are the NEEDS model** — the structural
   axes theme-`suggest` is blind to (fixing, acceleration, interaction). **If the scorecard
   says the deficit is interaction or mana, the fix comes from here, not from plain
@@ -708,18 +709,17 @@ directions.
 - **`swap --apply` records the decision to `recommendations.csv`** — where `cuts` ranked
   the card you cut and whether `suggest` surfaced the add, captured against the PRE-swap
   deck. `deck.py feedback` reads it back and **leads with the DISAGREEMENTS**, because an
-  agreement is contaminated by the shortlist's own influence. It is REPORT-ONLY and must
-  stay so: `tests/test_recommendations.py` structurally forbids a scoring function
-  reading the ledger — including `cut_keep_score` and `_weakest_cut`, the DELEGATES the
-  scan missed while claiming to be structural (a ledger read placed in the shared
-  delegate satisfied every assertion; 7 functions are scanned now, not 5). Recording
-  never blocks a swap — the caller catches any exception, not just `OSError`, so a
-  corrupted ledger can't traceback AFTER the deck file is written.
-  **A swap applied only to MEASURE something still leaves a row** — prefer a dry run or a
-  scratch copy. **`swap_outcomes` joins the ledger to `matches.csv`** — the one signal
-  these models cannot influence — banned from those same seven functions for a STRONGER
-  reason (a win rate looks like ground truth), split per DECK not per swap, and refusing
-  to read under 20, which is where it sits. G-57 governs it. [G-56]
+  agreement is contaminated by the shortlist's own influence. REPORT-ONLY, and it must stay
+  so: `tests/test_recommendations.py` forbids a scoring function reading the ledger — 7
+  functions scanned, the DELEGATES (`cut_keep_score`, `_weakest_cut`) included. Recording
+  never blocks a swap (any exception is caught AFTER the deck file is written). **A swap
+  applied only to MEASURE something still leaves a row** — use a dry run or a scratch copy,
+  which since 2026-09-06 can live OUTSIDE decks/: `find_deck(id, allow_path=True)` lets the
+  21 read-only commands take an existing `.txt` path, so a measurement needs no temporary
+  variant that INV-04 and every roster view count as a deck. WRITERS never take a path.
+  **`swap_outcomes` joins the ledger to `matches.csv`** — the one signal these models cannot
+  influence — banned from those same seven functions for a STRONGER reason (a win rate looks
+  like ground truth), split per DECK, refusing to read under 20. G-57 governs it. [G-56]
 - **Match results are FREE from `Player.log`, and the two lines AROUND the result JSON are
   the load-bearing halves.** `finalMatchResult` carries the outcome and both seats but NOT
   which seat is yours; that is only in the `Match to <userId>:` prefix, so a paste of the
@@ -771,7 +771,11 @@ directions.
   while the real curve barely moved either time. `deck.py stats` now lists them under
   `✕ X-COST cards` and `deck.py tier` prints a one-line "avg MV under-reads" advisory.
   Both are REPORT-ONLY and must stay so — a new term in `tier_band` would silently
-  re-grade the roster, exactly as the protection axis is kept out. [G-60]
+  re-grade the roster, exactly as the protection axis is kept out. **A CHEAT COST is the same
+  distortion the other way (2026-09-06)**: Warp / Plot / Foretell book at the PRINTED cost, so
+  Bygone Colossus (Warp {3}) read MV 9 and moved 56b's aggro floor. `stats` lists `⌁ CHEAT-COST`
+  cards and grants, `tier` prints "avg MV over-reads" plus the effective curve (alt costs, then
+  grants applied) and the clock it WOULD read — ADVISORY, pinned out of the vector. [G-60]
 - **BEFORE DISMISSING A CARD, COUNT THE DECK PROPERTY ITS VALUE DEPENDS ON.** Four
   dismissals were overturned in one cycle, all the same shape — a card judged on its own
   text when the decision belonged to a number in the LIST. Michelangelo was called
@@ -847,19 +851,18 @@ directions.
   whose resource is tokens must say so in its `#: notes:` or the flag invites a bad cut. [G-66]
 
 - **A GATE THE DECK MEETS FOR FREE IS NOT A COST, AND EVERY MODEL HERE READ IT AS ONE.**
-  G-66's `targets` asks only "does the deck CONTAIN N cards of shape X" — all 13
-  `_TARGET_GATES` count cards in the list — so a card gated on a GAME STATE was invisible
-  in **both directions**, and one 2026-08-24 session hit each end: Ketramose needs seven
-  cards in exile against **three** sources, and Lake-town Toymaker needs "drawn two or more
-  cards this turn" in the deck whose second engine draws one **every turn**, so its pump is
-  UNCONDITIONAL — it was one confirmation from being cut as a conditional one, having scored
-  fit 17 / power 2 / uniqueness 0 / **no detected role**. `deck.py targets` now prints a
-  STATE GATES section reporting both ends (`CANNOT turn on` / `thin` / `free`), with
-  proxies from `role_tally` so a gate and `stats` cannot answer one question differently.
-  **Only 2 of 6 families shipped**: a roster sweep found lifegain, artifacts and drain
-  structurally always satisfied, and delirium MIS-PROXIED — it asks about the GRAVEYARD,
-  and counting types in the DECK is a bound any 60-card list clears. **Residual: the two
-  live families are n=4 and n=1 on the roster** — read a band as provisional. [G-76]
+  G-66's `targets` counts CARDS IN THE LIST, so a card gated on a GAME STATE was invisible
+  in **both directions** (2026-08-24: Ketramose needs seven cards in exile against **three**
+  sources; Lake-town Toymaker's "drawn two or more cards this turn" is UNCONDITIONAL in the
+  deck that draws one every turn, and it was one confirmation from being cut as conditional).
+  `deck.py targets` prints a STATE GATES section reporting both ends (`CANNOT turn on` /
+  `thin` / `free`), with proxies from `role_tally` so a gate and `stats` cannot disagree.
+  **Only 2 of 6 families shipped** — lifegain, artifacts and drain are structurally always
+  satisfied, and delirium MIS-PROXIES (it asks about the GRAVEYARD). **Two more landed
+  2026-09-06**: HASTE-gated evasion (Speed; proxy = haste sources, 52 decks hold zero) and
+  ATTACKS ALONE — the first INVERTED family: always reachable, so it fails by CONFLICT in a
+  go-wide deck (`_STATE_INVERTED`, proxy = `_WIDE_CUES`; decks 3 and 55 on Team Avatar).
+  **Residual: the live families are n=4 / 1 / 1 / 13** — read a band as provisional. [G-76]
 - **A PREVIEWED SET IS IN SCRYFALL MONTHS BEFORE YOU CAN PLAY IT, and the pool took its
   printings.** Scryfall indexes spoiled cards immediately and `unique=cards` returns the
   NEWEST printing, so a reprint in an unreleased set became the ONLY printing the pool
@@ -934,17 +937,17 @@ directions.
   matches PHRASINGS, and Magic templates one effect several ways — so a card worded a way no
   pattern anticipates scores ZERO roles, and the tier floor, `cuts`, the quality guard and
   `check_all` inherit that as fact. The DEFAULT failure is a silent UNDER-count; a too-broad
-  pattern OVER-counts just as silently (BS2-06). 23 holes closed in 2026-08, NEUTRALIZATION
-  (**ask which rule a family takes before reusing one**) among them. **2026-09-01 adds the
-  family-disagreement shape, and the REPORTED half was the smaller one**: all three
-  damage-equal-to patterns said "dealS damage", so the plural "each DEAL damage" scored
-  nothing (5 cards) — and measuring that surfaced
-  `to ANOTHER target creature`, which the TARGET-FIRST sibling three lines below had always
-  handled (10 more, 0 false positives, 4 decks +1 interaction, **0 tier floors**). **When a
-  pattern family has several members, diff them against each other.** **A PATTERN hole is
-  fixed and measured; a TAXONOMY hole (Equipment, selection, hand attack) re-scores the
-  roster — triage by that line.** `check_roles.py` makes it visible: read
-  `role_baseline.txt` and `--tags` as a DELTA. Real-text fixtures. [G-67]
+  pattern OVER-counts just as silently (BS2-06). 23 holes closed in 2026-08 (**ask which rule a
+  family takes before reusing one**); 2026-09-01 added the family-disagreement shape (**when a
+  pattern family has several members, diff them against each other** — "dealS" vs "each DEAL",
+  15 cards, 0 floors). **A PATTERN hole is fixed and measured; a TAXONOMY hole (selection, hand
+  attack, extra combat, taxing) re-scores the roster — triage by that line.** 2026-09-06: "any
+  OTHER target" reach, MULTIPLIERS (trigger / damage doublers, spell copiers) as payoffs, a LOCK /
+  REDIRECT as protection-class, and an `Equipment / attach` BUCKET (role credit, never
+  interaction) — 0 of 114 floors, 562 → 501 zero-role cards, every unnamed leaver read.
+  Tap-down / neutralize is CLOSED (2026-08-19, inside Removal): two handoff blocks carried it
+  as open — a follow-on list goes stale like any prose. `check_roles.py` makes holes visible:
+  read `role_baseline.txt` and `--tags` as a DELTA. Real-text fixtures. [G-67]
 - **A TOOL THAT REJECTS THE FORM THE PROJECT ITSELF WRITES DOWN.** Two bugs an hour apart on
   2026-09-01, one shape: the interface disagreed with an artifact the repo produces, and
   REPORTED SUCCESS. `wishlist.py --add` silently dropped `--target`/`--note` — they are

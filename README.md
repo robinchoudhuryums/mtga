@@ -469,7 +469,7 @@ python3 scripts/deck.py mana 1a       # hybrid-aware color requirements + castab
 python3 scripts/deck.py consistency 1a # opening-hand keepable %, land drops, P(cast on curve) + source fix
 python3 scripts/deck.py tribes 1a     # creature-subtype breakdown + type-matters synergies
 python3 scripts/deck.py engines 1a    # enabler ↔ payoff balance for the deck's engine themes
-python3 scripts/deck.py targets 1a    # TARGETS for its own gated effects (MV caps, sac costs) + STATE gates (dead / free)
+python3 scripts/deck.py targets 1a    # TARGETS for its own gated effects (MV caps, sac costs) + STATE gates (dead / free / CONFLICT — an attacks-alone card in a go-wide deck)
 python3 scripts/deck.py suggest 1a --owned   # pool cards that fit; --owned = 0-wildcard upgrades
 python3 scripts/deck.py suggest 1a --lands --owned  # MANABASE recommender: owned lands that fix your colors (fixing + synergy + scarce-color nudges; any-colour lands and basic fetches included)
 python3 scripts/deck.py suggest 1a --needs   # STRUCTURAL needs the theme model can't see: fixing · acceleration (--ramp) · interaction (--interaction, board-scalers flagged)
@@ -488,6 +488,7 @@ python3 scripts/deck.py text 1a              # full oracle text of every card (r
 python3 scripts/deck.py suggest 1a --unowned --full  # picks WITH full text + keywords + flags
 python3 scripts/deck.py suggest-homes "Crib Swap"    # which decks a card fits, with a fit-strength label
 python3 scripts/deck.py rotation             # roster-wide: which Standard decks run cards aging out (what rotates next); --within N, --years N, --format
+python3 scripts/deck.py rotation 1a          # ONE deck's rotating cards by year, OWNED included (check flags craft targets only)
 python3 scripts/deck.py brawl                 # roster-wide: which decks are closest to a legal Brawl conversion + the best commander for each
 python3 scripts/deck.py preflight 1a         # one-call verify: legal + owned + castable + integrity
 python3 scripts/deck.py quality 1a --json    # deck-quality vector; --vs FILE diffs a before-snapshot

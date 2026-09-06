@@ -46,6 +46,11 @@
 #: notes: deliberately burn-that-is-also-reach (Bolt, Strike, Burst ×2): a removal spell here is a face-damage
 #: notes: spell in the last turn. Ball Lightning ×2, Stingerback, Red Tiger Mechan, Possibility Technician (the last two CUT 2026-09-06)
 #: notes: are the craft targets (2 R + 1 R + 1 C + 1 R); everything else is owned.
+#: notes: 2026-09-06 LANDS: −2 Mountain +2 Fire Nation Palace (owned; untapped beside any of the 20 basics).
+#: notes: {1}{R},{T}: the attacker adds {R}{R}{R}{R} in combat, which pays Bulk Up + Self-Destruct on the same
+#: notes: swing from one land — a warped 9/9 doubles to 18 and Self-Destructs for 18 with a body that was
+#: notes: leaving anyway. Sources stay R 23. Kavaron (station taps a body that should be attacking) and
+#: notes: Rocky Roads (no Mount/Vehicle here, so a tapland) were read and declined.
 
 # Engine — cheat and recast
 2 Tannuk, Steadfast Second (EOE) 162
@@ -92,5 +97,6 @@
 1 Burst Lightning (FDN) 192
 
 # Lands
-22 Mountain (HOB) 192
+20 Mountain (HOB) 192
+2 Fire Nation Palace (TLA) 268
 1 The Lonely Mountain (HOB) 187

@@ -28,7 +28,7 @@
 #: tier: instead), but it is the first thing to revisit if the engine keeps getting picked
 #: tier: off.
 #: tier: What carries it past floor-consistency into a real A is FUNCTIONAL REDUNDANCY, the
-#: tier: same argument that grades Wizardz 37b an A: `deck.py redundancy 40` reads a virtual
+#: tier: same argument that grades Wizardz 37a (the Competitive build, 37b until 2026-09-06) an A: `deck.py redundancy 40` reads a virtual
 #: tier: 6-of counterspell, 6-of card advantage, 7-of payoff and 4-of removal, so singleton
 #: tier: variance barely bites — only cost-reduction and reanimation are thin (2 each).
 #: tier: Manabase is clean: 26 lands, 87% keepable openers, 0 uncastable, no color stray

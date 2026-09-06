@@ -286,7 +286,28 @@ def _norm_deck_id(raw):
     return m.group(1) if m else t
 
 
-def find_deck(deck_id):
+def find_deck(deck_id, allow_path=False):
+    """Resolve a deck id (zero-padding normalized, G-82) to its roster record.
+
+    `allow_path=True` also accepts an EXISTING `.txt` path — a scratch copy of a deck
+    kept OUTSIDE decks/, so a measurement can run without a temporary variant file that
+    INV-04, `check_all` and every roster view would count as a real deck (2026-09-06:
+    every scratch measurement that day needed a throwaway `56z-scratch.txt` inside the
+    deck's directory). Only the READ-ONLY commands pass it. A WRITER never does: a
+    `swap --apply` on a scratch copy would record a ledger row (G-56), and `move` /
+    `apply-flex` / `preflight` / `history` reason about the roster file. A path that IS a
+    roster file resolves to its real record, so the id printed is the roster id.
+    """
+    raw = (deck_id or "").strip()
+    if allow_path and raw.endswith(".txt") and os.path.isfile(raw):
+        full = os.path.abspath(raw)
+        for d in discover_decks():
+            if os.path.abspath(d["path"]) == full:
+                return d
+        base = os.path.splitext(os.path.basename(raw))[0]
+        rec = _record(base, base, raw, base, True)
+        rec["scratch"] = True
+        return rec
     want = _norm_deck_id(deck_id)
     for d in discover_decks():
         if _norm_deck_id(d["id"]) == want:
@@ -902,7 +923,7 @@ def deck_build_gap(cards, by_name_qty):
 
 
 def cmd_check(args):
-    d = find_deck(args.id)
+    d = find_deck(args.id, allow_path=True)
     if not d:
         eprint(f"No deck with id {args.id!r}. Try: deck.py list")
         return 1
@@ -956,6 +977,19 @@ def cmd_check(args):
               f"next ({', '.join(rot_flagged)}) — see `deck.py rotation` before crafting.")
     if not missing and not short:
         print("You own everything in this deck. Ready to build.")
+    # OWNED cards that rotate this year or next — the half `⚠rot` deliberately skips (an
+    # owned card costs no wildcard, G-30) and so the half nothing on this surface said.
+    # Same window as `craft_rot_note` (within=1); one line, names capped, pointer to the
+    # full per-deck view.
+    _atr, _rmeta = deck_rotation(d, within=1)
+    _own_rot = [c for c in _atr
+                if owned_qty(by_name_qty, c["name"].lower()) >= c["qty"]]
+    if _own_rot and _rmeta["has_released"]:
+        _yr = _own_rot[0]["rotates"]
+        _names = [c["name"] for c in _own_rot if c["rotates"] == _yr]
+        print(f"ⓘ {len(_own_rot)} OWNED card(s) rotate out this year or next (~{_yr}: "
+              f"{', '.join(_names[:4])}{'…' if len(_names) > 4 else ''}) — not a craft, "
+              f"so not flagged above; `deck.py rotation {d['id']}` lists them all.")
 
     # Castability lint (offline, identity-only — pass an empty mana dict). Flags
     # cards whose color identity strays outside the deck's declared colors.
@@ -1022,7 +1056,7 @@ def _multiset(cards):
 
 
 def cmd_diff(args):
-    a, b = find_deck(args.a), find_deck(args.b)
+    a, b = find_deck(args.a, allow_path=True), find_deck(args.b, allow_path=True)
     if not a or not b:
         eprint("Both deck ids must exist. Try: deck.py list")
         return 1
@@ -1050,7 +1084,7 @@ def cmd_diff(args):
 
 
 def cmd_arena(args):
-    d = find_deck(args.id)
+    d = find_deck(args.id, allow_path=True)
     if not d:
         eprint(f"No deck with id {args.id!r}.")
         return 1
@@ -1289,6 +1323,142 @@ def x_cost_cards(cards, carddata, mana):
     return sorted(out)
 
 
+# A printed ALTERNATIVE cost cheaper than the mana value: "Warp {3}", "Plot {2}{R}",
+# "Foretell {1}{U}". The subset of `CHEAPER_KW` whose cost is PRINTED and so can be priced
+# — convoke / affinity / delve / improvise scale with game state and are left alone
+# (G-83's line). The lookbehinds skip a GRANT ("cards in your hand have warp {2}{R}",
+# Tannuk): the granting card's own cost is not reduced, its targets' are, and a deck-level
+# grant is a different question from a card-level cost.
+_ALT_COST_RE = re.compile(
+    r"(?<!have )(?<!has )(?<!gain )(?<!gains )(?<!with )"
+    r"\b(warp|plot|foretell|evoke|emerge|spectacle|surge|miracle|sneak)\b\s*[—–-]?\s*"
+    r"((?:\{[^{}]+\})+)", re.I)
+
+
+# The GRANT form `_ALT_COST_RE` deliberately skips: "cards in your hand have warp {2}{R}"
+# (Tannuk). It prices nothing (which cards it reaches is a deck-level question) but a deck
+# built on one has a cheaper curve than even `cheat_cost_cards` reports, so it is NAMED.
+_ALT_COST_GRANT_RE = re.compile(
+    r"([^\n.]{0,80}?)\b(?:have|has|gain|gains) "
+    r"(warp|plot|foretell|evoke|emerge|spectacle|surge|miracle|sneak)\s*((?:\{[^{}]+\})+)", re.I)
+
+
+def cheat_cost_grants(cards, carddata):
+    """Cards that GRANT an alternative cost to other cards -> [(name, keyword, cost,
+    scope)], sorted; `scope` is the clause naming what receives it. Report-only, like
+    `cheat_cost_cards`: a grant's reach depends on the rest of the list."""
+    out, seen = [], set()
+    for _q, n, _s, _c in cards:
+        if n.lower() in BASICS or n in seen:
+            continue
+        d2 = carddata.get(n.lower())
+        if not d2:
+            continue
+        m = _ALT_COST_GRANT_RE.search(_REMINDER_RE.sub(" ", d2.get("text") or ""))
+        if not m:
+            continue
+        seen.add(n)
+        out.append((n, m.group(2).lower(), m.group(3), m.group(1).strip().strip(",;")))
+    return sorted(out)
+
+
+_GRANT_COLORS = {"white": "W", "blue": "U", "black": "B", "red": "R", "green": "G"}
+_GRANT_TYPES = ("artifact", "creature", "instant", "sorcery", "enchantment", "planeswalker")
+
+
+def _grant_scope_matches(scope, d2):
+    """True if a card (`d2`: type + colors) is inside a grant's scope clause — "Artifact
+    cards and red creature cards in your hand" is two clauses, each a type with an
+    optional colour. A clause naming no type this parser knows matches nothing (a
+    conservative miss, never a silent over-count)."""
+    tline = (d2.get("type") or "").lower()
+    cols = set((d2.get("colors") or "").upper())
+    for clause in re.split(r",|\band\b|\bor\b", (scope or "").lower()):
+        words = clause.split()
+        types = [t for t in _GRANT_TYPES if t in words]
+        colors = {_GRANT_COLORS[w] for w in words if w in _GRANT_COLORS}
+        if not types:
+            continue
+        if any(t in tline for t in types) and (not colors or cols & colors):
+            return True
+    return False
+
+
+def effective_avg_mv(cards, carddata, mana):
+    """Quantity-weighted average MV of the nonland cards with each cheat-cost card priced
+    at its ALTERNATIVE cost -> (effective, printed, with_grants). Report-only: the
+    vector's `avg_mv` stays the printed curve (a new term would re-grade the roster), this
+    says what the clock WOULD read. `with_grants` also applies every alt cost a GRANT
+    hands out (Tannuk's warp to artifact cards and red creature cards), or None when no
+    grant reaches a card. None overall when nothing is priced."""
+    alt = {n.lower(): amv for n, _c, _kw, _a, amv in cheat_cost_cards(cards, carddata, mana)}
+    grants = [(kw, mana_value(cost), scope) for _n, kw, cost, scope
+              in cheat_cost_grants(cards, carddata)]
+    tot_p = tot_e = tot_g = q_all = 0
+    granted = 0
+    for q, n, _s, _c in cards:
+        nl = n.lower()
+        if nl in BASICS:
+            continue
+        d2 = carddata.get(nl)
+        if not d2 or "Land" in _primary_type(d2["type"]):
+            continue
+        entry = mana.get(nl)
+        if not entry or not entry[0]:
+            continue
+        pmv = mana_value(entry[0])
+        emv = alt.get(nl, pmv)
+        gmv = emv
+        for _kw, gm, scope in grants:
+            if gm < gmv and _grant_scope_matches(scope, d2):
+                gmv = gm
+        if gmv < emv:
+            granted += q
+        tot_p += q * pmv
+        tot_e += q * emv
+        tot_g += q * gmv
+        q_all += q
+    if not q_all or not (alt or granted):
+        return None
+    return (round(tot_e / q_all, 2), round(tot_p / q_all, 2),
+            round(tot_g / q_all, 2) if granted else None)
+
+
+def cheat_cost_cards(cards, carddata, mana):
+    """Nonland cards carrying a printed alternative cost LOWER than their mana value ->
+    [(name, printed_cost, keyword, alt_cost, alt_mv)], sorted, one entry per card.
+
+    The mirror of `x_cost_cards`: the curve, `avg_mv` and `_clock_score` all read the
+    PRINTED cost, so Bygone Colossus (Warp {3}) books as a nine-drop and on its own
+    moved deck 56b's aggro floor A -> B (pile analysis §5.7 item 6, 2026-09-05). Report-
+    only, by the G-60 discipline — this must never feed `deck_quality_vector` or
+    `tier_band`, because a new term there would silently re-grade the roster. Reminder
+    text is stripped first (Plot's reminder quotes the cost again).
+    """
+    out, seen = [], set()
+    for _q, n, _s, _c in cards:
+        if n.lower() in BASICS or n in seen:
+            continue
+        d2 = carddata.get(n.lower())
+        if not d2 or "Land" in _primary_type(d2["type"]):
+            continue
+        entry = mana.get(n.lower())
+        cost = (entry[0] if entry else "") or ""
+        if not cost:
+            continue
+        printed_mv = mana_value(cost)
+        text = _REMINDER_RE.sub(" ", d2.get("text") or "")
+        m = _ALT_COST_RE.search(text)
+        if not m:
+            continue
+        alt = m.group(2)
+        alt_mv = mana_value(alt)
+        if alt_mv < printed_mv:
+            seen.add(n)
+            out.append((n, cost, m.group(1).lower(), alt, alt_mv))
+    return sorted(out)
+
+
 def classify_cost(keywords, text):
     """Return (cheaper_reasons, gated_reasons) for a card's cost profile."""
     kset = set(keywords or [])
@@ -1311,7 +1481,7 @@ def classify_cost(keywords, text):
 ROLE_ORDER = ["Removal (spot)", "Sweeper", "Counter", "Card advantage",
               "Ramp / fixing", "Reanimation", "Payoff / engine", "Burn / drain",
               "Lifegain", "Cost reduction / cheat", "Team pump / anthem",
-              "Protection / trick", "Recursion"]
+              "Protection / trick", "Recursion", "Equipment / attach"]
 # A permanent-type LIST as MTG templates it: "creature", "artifact or enchantment",
 # "artifact, enchantment, or creature with flying". The removal patterns used to spell
 # out a handful of fixed combinations by hand, so anything outside that list matched
@@ -1825,6 +1995,16 @@ _ROLE_PATTERNS = {
     # leaves-play payoffs the role map used to score as "no functional role"
     # (Judge Magister Gabranth, Rot Farm Mortipede, aristocrats/lifedrain bodies).
     "Payoff / engine": [
+        # Three MULTIPLIER shapes that scored no role at all (pile §5.7 item 1): a
+        # trigger doubler (Delney — `suggest-homes` already saw it as ✱ multiplier), a
+        # damage doubler (Twinflame Tyrant / Collective Inferno) and a spell copier
+        # (Choreographed Sparks / Return the Favor's copy mode). A card whose whole value
+        # is what the REST of the deck does is a payoff by definition; the doubler AXIS
+        # (`doubler_support`) is a separate, deliberately untaken question.
+        r"triggers an additional time",
+        r"deals? double that damage",
+        r"double all damage that sources you control",
+        r"copy target (?:instant|sorcery|creature)[^\n.]{0,25}?spell",
         r"whenever .{0,60}?dies",
         r"whenever (?:a|another|one or more) .{0,40}?(?:enters|leave|leaves|die|dies)",
         r"whenever you gain life",
@@ -1857,7 +2037,13 @@ _ROLE_PATTERNS = {
     # Direct damage / life loss to a player — reach & finishers the fixed-number
     # removal pattern misses (Cat-Gator, drain effects).
     "Burn / drain": [
-        r"deals? damage equal to .{0,60}?(?:any target|a player|target player|each opponent|that player)",
+        # "any OTHER target" is the templating every self-referencing damage source uses
+        # (Pain for All, Iron Fist, Red Hulk's enrage, Self-Destruct's "X damage to any
+        # other target … where X is its power") — a whole reach family scored zero while
+        # Infernal Phantom's "any target" passed (pile §5.7 item 2, 2026-09-06).
+        r"deals? damage equal to .{0,60}?(?:any (?:other )?target|a player|target player|each opponent|that player)",
+        r"deals? x damage to any (?:other )?target",
+        r"deals? that much damage to (?:each opponent|any (?:other )?target|target player)",
         r"(?:each opponent|target opponent|any opponent|that player|each player) loses \d",
         r"deals? \d+ damage to each opponent",
         r"loses life equal to",
@@ -1908,11 +2094,30 @@ _ROLE_PATTERNS = {
     # up, interaction / card-advantage / tier floors 0 / 0 / 0.
     "Protection / trick": [r"\bhexproof\b", r"\bindestructible\b", r"protection from",
                            r"\bward\b",
+                           # A LOCK on the opponent's turn-cycle (Grand Abolisher, Voice
+                           # of Victory, Jennifer Walters: "opponents can't cast spells
+                           # during your turn") protects everything you do that turn;
+                           # a REDIRECT (Return the Favor) is the trick that saves the
+                           # creature. Neither is on the `protection_effects` AXIS (G-25
+                           # keeps that to ward/hexproof/indestructible-class), and
+                           # neither feeds `tier_band` — role_tally / cuts credit only.
+                           r"opponents can't cast spells",
+                           r"change the target of target spell",
                            # R-13: a card pumping ITSELF (firebreathing, prowess) is not a
                            # trick you can point at the creature you need to save.
                            r"(?<!this creature )(?<!this permanent )gets \+\d+/\+\d+ until end of turn"],
     "Recursion": [r"from your graveyard", r"card in your graveyard",
                   r"return .{0,40}?to your hand"],
+    # EQUIPMENT (2026-09-06) — the taxonomy half the 2026-08 role pass deliberately left:
+    # 11 of its 26 remaining zero-role cards were Equipment, and on 2026-09-06 62 roster
+    # cards with equip / attach text still carried no role. A bucket, not a pattern: it
+    # re-scores every deck running the type, so it is role CREDIT only — not in
+    # `_INTERACTION_ROLES`, not in the vector, so no floor can move (measured: 0 of 114).
+    # The keyword's own word survives reminder-stripping; `equipped creature` is on the
+    # Equipment, `reconfigure` is Equipment-that-is-a-creature, `attach … to` is the
+    # Living-weapon / auto-attach family (Doc Ock's Tentacles).
+    "Equipment / attach": [r"\bequip\b", r"equipped creature", r"\breconfigure\b",
+                           r"attach (?:it|this|that|target equipment) to"],
 }
 _ROLE_COMPILED = [(label, [re.compile(p) for p in _ROLE_PATTERNS[label]])
                   for label in ROLE_ORDER]
@@ -3293,7 +3498,7 @@ def cmd_text(args):
     text hides something a label can miss (board-wide / modal / leaves-play /
     deck-dependent / alt-cost). Basics are omitted."""
     import textwrap
-    d = find_deck(args.id)
+    d = find_deck(args.id, allow_path=True)
     if not d:
         eprint(f"No deck with id {args.id!r}. Try: deck.py list")
         return 1
@@ -3351,7 +3556,7 @@ def cmd_text(args):
 
 
 def cmd_stats(args):
-    d = find_deck(args.id)
+    d = find_deck(args.id, allow_path=True)
     if not d:
         eprint(f"No deck with id {args.id!r}.")
         return 1
@@ -3451,6 +3656,23 @@ def cmd_stats(args):
             print(f"  ✕ {n} — {c}")
         print(f"  Read avg MV and the early-drop count with that in mind: {len(xs)} card(s) "
               "register cheaper than you will cast them.")
+
+    ch = cheat_cost_cards(cards, carddata, mana)
+    if ch:
+        print("\nCHEAT-COST cards — the curve books these at their PRINTED cost (⌁):")
+        for n, c, kw, alt, amv in ch:
+            print(f"  ⌁ {n} — {c} printed; {kw} {alt} (MV {amv})")
+        print(f"  Read avg MV and the early-drop count with that in mind: {len(ch)} card(s) "
+              "register dearer than you will cast them — the X-cost under-read in reverse.")
+    for n, kw, cost, scope in cheat_cost_grants(cards, carddata):
+        print(f"  ⌁ grant: {n} gives {kw} {cost} to {scope or 'other cards'} — a deck-level "
+              "discount no per-card price sees.")
+    eff = effective_avg_mv(cards, carddata, mana)
+    if eff:
+        print(f"  effective avg MV {eff[0]:.2f} against {eff[1]:.2f} printed (alt costs "
+              "substituted"
+              + (f"; {eff[2]:.2f} with the granted costs applied too" if eff[2] is not None else "")
+              + "; report-only — the vector keeps the printed curve).")
 
     # Functional roles: what jobs the nonland spells actually do. Heuristic from
     # oracle text (see classify_roles) so the tune-deck health scorecard can
@@ -3604,7 +3826,7 @@ def _tribe_ref_re(t):
 
 def cmd_tribes(args):
     """Creature-subtype breakdown + type-matters synergy scan."""
-    d = find_deck(args.id)
+    d = find_deck(args.id, allow_path=True)
     if not d:
         eprint(f"No deck with id {args.id!r}.")
         return 1
@@ -4295,6 +4517,56 @@ def _pool_rotation_index():
     return alias_front(idx), has_released
 
 
+def _deck_atrisk(cards, fmt, pool, years, within, this_year):
+    """The per-deck half of `rotation_sweep`: one deck's rotating card lines ->
+    (atrisk, unverified). `atrisk` = [{name, set, rotates, qty}] sorted soonest first;
+    `unverified` counts lines the pool cannot place. Shared with `deck_rotation` so the
+    roster sweep and the single-deck view cannot disagree on what rotates."""
+    atrisk, unverified = [], 0
+    for q, n, s, _c in cards:
+        nl = n.lower()
+        if nl in BASICS:
+            continue
+        info = pool.get(nl) or pool.get(nl.split(" // ")[0])
+        if not info:
+            unverified += 1
+            continue
+        released, legals, setc = info
+        if fmt and legals and fmt not in legals:
+            continue  # not legal in this format anyway — it can't "rotate out" of it
+        rotates = rotation_year(released, years, setc)
+        if rotates is None:
+            continue  # no usable release date — can't place it on the timeline
+        if rotates > this_year + within:
+            continue  # not rotating within the horizon
+        atrisk.append({"name": n, "set": setc or s, "rotates": rotates, "qty": q})
+    atrisk.sort(key=lambda x: (x["rotates"], x["name"]))
+    return atrisk, unverified
+
+
+def deck_rotation(d, fmt=None, years=3, within=2):
+    """ONE deck's rotation exposure, owned cards included -> (atrisk, meta).
+
+    `check` flags rotation only on a card you have to CRAFT (an owned card costs no
+    wildcard — G-30), and `rotation` with no id prints the whole roster, so an OWNED
+    rotating card was found by hand: 56a's Commercial District and Restless Ridgeline,
+    both leaving with the 2026 rotation, on 2026-09-06. `fmt=None` reads the deck's own
+    `#: format:` (rotation is a legality fact about THAT format). Same per-deck routine as
+    the sweep, so the two views agree by construction.
+    """
+    import datetime
+    this_year = datetime.date.today().year
+    pool, has_released = _pool_rotation_index()
+    dm, cards = parse_deck_file(d["path"])
+    fmt = (dm.get("format") if fmt is None else fmt) or ""
+    fmt = fmt.strip().lower()
+    atrisk, unverified = _deck_atrisk(cards, fmt, pool, years, within, this_year)
+    meta = {"has_released": has_released, "stale_days": pool_staleness_days(),
+            "unverified": unverified, "this_year": this_year, "within": within,
+            "fmt": fmt}
+    return atrisk, meta
+
+
 def rotation_sweep(fmt="standard", years=3, within=2):
     """Roster-wide rotation exposure for `fmt` (default Standard): which cards each deck
     runs are CLOSEST to rotating, so you can see what rotates NEXT and which decks it
@@ -4327,29 +4599,13 @@ def rotation_sweep(fmt="standard", years=3, within=2):
         dm, cards = parse_deck_file(d["path"])
         if fmt and (dm.get("format") or "").strip().lower() != fmt:
             continue
-        atrisk = []
-        for q, n, s, c in cards:
-            nl = n.lower()
-            if nl in BASICS:
-                continue
-            info = pool.get(nl) or pool.get(nl.split(" // ")[0])
-            if not info:
-                unverified += 1
-                continue
-            released, legals, setc = info
-            if fmt and legals and fmt not in legals:
-                continue  # not legal in this format anyway — it can't "rotate out" of it
-            rotates = rotation_year(released, years, setc)
-            if rotates is None:
-                continue  # no usable release date — can't place it on the timeline
-            if rotates > this_year + within:
-                continue  # not rotating within the horizon
-            atrisk.append({"name": n, "set": setc or s, "rotates": rotates, "qty": q})
-            rr = rollup.setdefault(rotates, {"slots": 0, "cards": set(), "decks": set()})
+        atrisk, unv = _deck_atrisk(cards, fmt, pool, years, within, this_year)
+        unverified += unv
+        for c in atrisk:
+            rr = rollup.setdefault(c["rotates"], {"slots": 0, "cards": set(), "decks": set()})
             rr["slots"] += 1
-            rr["cards"].add(n)
+            rr["cards"].add(c["name"])
             rr["decks"].add(d["id"])
-        atrisk.sort(key=lambda x: (x["rotates"], x["name"]))
         decks_out.append({"id": d["id"], "name": d["name"] or d["id"],
                           "atrisk": atrisk, "n_slots": len(atrisk)})
     decks_out.sort(key=lambda x: (-x["n_slots"], x["id"]))
@@ -4638,6 +4894,44 @@ def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_form
     return res
 
 
+# A land's RIDER — what it does beyond producing mana. Every land here is scored on
+# FIXING (G-37) and nothing read the ability, so `suggest --lands 56` scored Temple of
+# Triumph, Boros Guildgate, Sun-Blessed Peak and Wind-Scarred Crag identically at 10.9
+# (2026-09-06) — a scry, a draw sink, a ping and a vanilla tapland in one tie. This is a
+# SORT-KEY tie-break among equal scores, deliberately NOT a score term: the smallest fixing
+# step between real classes is 0.1 (a choose-a-colour land vs a filter land), so any
+# additive nudge would cross it and re-rank lands on something other than fixing. Cues are
+# read on reminder-stripped text; the first match wins (list order = value order), so the
+# result is bounded and deterministic (G-54).
+_LAND_UTILITY_CUES = [
+    (0.40, "creature", re.compile(r"becomes? an? .{0,60}?\bcreature\b", re.I | re.S)),
+    (0.40, "draw", re.compile(r":[^\n]*\bdraw (?:a|one|two) cards?", re.I)),
+    (0.30, "scry", re.compile(r"when this land enters, scry \d", re.I)),
+    (0.30, "surveil", re.compile(r"when this land enters, surveil \d", re.I)),
+    (0.30, "sink", re.compile(r"\{[^\n]*\}[^\n]*:(?![^\n]*\badd\b)[^\n]*(?:counter|token|damage|"
+                                r"gains? [a-z]+ until|surveil|scry)", re.I)),
+    (0.20, "ping", re.compile(r"when this land enters, it deals \d+ damage", re.I)),
+    (0.10, "life", re.compile(r"when this land enters, you gain \d+ life", re.I)),
+]
+
+
+_LAND_SINK_TYPED_RE = re.compile(r"target [A-Z][a-z]+(?: [A-Z][a-z]+)? you control")
+
+
+def _land_utility(txt):
+    """(value, label) for a land's rider, bounded 0–0.4; (0.0, '') for a plain dual."""
+    t = _REMINDER_RE.sub(" ", txt or "")
+    for val, label, rx in _LAND_UTILITY_CUES:
+        if rx.search(t):
+            # A sink that only feeds ONE creature type (Iron Hills: "target Dwarf you
+            # control") is worth less than an unrestricted one; same value (it is a
+            # tie-break), different label so the human read sees the restriction.
+            if label == "sink" and _LAND_SINK_TYPED_RE.search(t):
+                label = "sink~"
+            return val, label
+    return 0.0, ""
+
+
 def suggest_lands(d, unowned=False, owned=False, limit=20, fmt=None, any_format=False):
     """Recommend LANDS for a deck's manabase — the axis theme-based `suggest` is blind to
     (it filters candidates to cards sharing a synergy theme, and lands rarely do, so it can
@@ -4772,9 +5066,11 @@ def suggest_lands(d, unowned=False, owned=False, limit=20, fmt=None, any_format=
         # Restricted production ("Spend this mana only to cast a creature spell"). The
         # score already discounts it; this is what lets a human tell WHY.
         restricted = "spend this mana only" in low
+        util, util_label = _land_utility(txt)
         picks.append({
             "name": name, "rarity": (r.get("Rarity") or "").strip(), "owned": h,
             "fix": fix, "syn": syn, "short": short, "score": round(fix + syn + short, 2),
+            "util": util, "util_label": util_label,
             "produces": "".join(c for c in "WUBRG" if c in on_color),
             "tapped": tapped, "cond_tapped": cond_tapped, "restricted": restricted,
             "text": txt, "matches": sorted(set(tags) & central),
@@ -4790,7 +5086,8 @@ def suggest_lands(d, unowned=False, owned=False, limit=20, fmt=None, any_format=
     # counts in one session). It stays SHOWN on every row as `×N` / `craft`. These three
     # siblings kept the old tiebreak, so at equal score the owned card always outranked a
     # possibly-better unowned one on exactly the wildcard-spend surfaces (BS4-36).
-    picks.sort(key=lambda p: (-p["score"], p["name"].lower()))
+    # UTILITY breaks ties only — a rider never outranks fixing (see _LAND_UTILITY_CUES).
+    picks.sort(key=lambda p: (-p["score"], -p["util"], p["name"].lower()))
     if limit and limit > 0:
         picks = picks[:limit]
     return {"ok": True, "colors": deck_colors, "picks": picks, "fmt": fmt,
@@ -4816,8 +5113,8 @@ def cmd_suggest_lands(args, d):
         print("\nNo on-color lands to suggest (rebuild card-pool.csv with build_pool.py --all?).")
         return 0
     print(f"\n  {'Have':5} {'Land':30} {'Rarity':8} {'Prod':4} {'Fix':>4} {'Syn':>4} "
-          f"{'Sh':>4} {'Score':>5}")
-    print("-" * 78)
+          f"{'Sh':>4} {'Score':>5}  {'Rider':8}")
+    print("-" * 88)
     rotting = 0
     for p in res["picks"]:
         have = f"×{p['owned']}" if p["owned"] else "craft"
@@ -4828,7 +5125,7 @@ def cmd_suggest_lands(args, d):
         rotting += 1 if rot else 0
         print(f"  {have:5} {p['name'][:30]:30} {(p['rarity'] or '?')[:8]:8} "
               f"{p['produces']:4} {p['fix']:>4.1f} {p['syn']:>4.1f} {p['short']:>4.1f} "
-              f"{p['score']:>5.1f}{tap}{rot}")
+              f"{p['score']:>5.1f}  {(p.get('util_label') or '·'):8}{tap}{rot}")
     if rotting:
         print(f"\n⚠ {rotting} craft pick(s) rotate out of Standard this year or next — "
               "see `deck.py rotation` before spending a wildcard.")
@@ -4850,7 +5147,10 @@ def cmd_suggest_lands(args, d):
               "fixing premium is halved; judge it against what your deck actually casts.")
     print("\nScore = FIXING value (0–10, dominant: produces your colors, untapped premium) "
           "+ bounded SYNERGY (land ability hits a deck theme) + bounded SHORTFALL (produces "
-          "the scarce color). Ownership is a NOTE (×N / craft), not a ranking term — "
+          "the scarce color). Rider (creature / draw / scry / surveil / sink / ping / life; "
+          "sink~ = restricted to one creature type) breaks TIES only — it never moves a "
+          "land past one that fixes better. "
+          "Ownership is a NOTE (×N / craft), not a ranking term — "
           "a 0-wildcard fixer is often the right pick, but that is your call, not the "
           "sort's, and the owned data here goes stale between updates.")
     return 0
@@ -5159,7 +5459,7 @@ def cmd_suggest(args):
     the scoring lives in suggest_scored() so the dashboard shares it verbatim.
     With --lands, defers to the manabase recommender (cmd_suggest_lands) instead.
     """
-    d = find_deck(args.id)
+    d = find_deck(args.id, allow_path=True)
     if not d:
         eprint(f"No deck with id {args.id!r}. Try: deck.py list")
         return 1
@@ -5364,7 +5664,7 @@ def opening_land_stats(N, lands, on_play=True):
 
 def cmd_mana(args):
     """Hybrid-aware color requirements: which colors a deck STRICTLY needs."""
-    d = find_deck(args.id)
+    d = find_deck(args.id, allow_path=True)
     if not d:
         eprint(f"No deck with id {args.id!r}.")
         return 1
@@ -5640,7 +5940,7 @@ def cmd_consistency(args):
     screw/flood, land-drop consistency, and — per card — P(casting on curve) with a
     Karsten-style source recommendation for the ones that come up short. Diagnosis with
     numbers, not vibes: `mana` says 'thin', this says '62% on turn 3, want +2 sources'."""
-    d = find_deck(args.id)
+    d = find_deck(args.id, allow_path=True)
     if not d:
         eprint(f"No deck with id {args.id!r}. Try: deck.py list")
         return 1
@@ -5943,7 +6243,7 @@ def header_card_staleness(path):
 def cmd_flex(args):
     """Show a deck's flex suggestions, enriching the +In card with cost / owned /
     rarity so you can see what each swap would take."""
-    d = find_deck(args.id)
+    d = find_deck(args.id, allow_path=True)
     if not d:
         eprint(f"No deck with id {args.id!r}. Try: deck.py list")
         return 1
@@ -7447,7 +7747,7 @@ def cmd_legal(args):
     legality against the deck's declared `#: format:` (override with --format). Size
     and copy rules are offline; the legality check needs the pool's Legalities
     column (build_pool.py). Basic lands are exempt (unlimited)."""
-    d = find_deck(args.id)
+    d = find_deck(args.id, allow_path=True)
     if not d:
         eprint(f"No deck with id {args.id!r}. Try: deck.py list")
         return 1
@@ -7817,7 +8117,7 @@ def cmd_cuts(args):
     the deck runs in numbers. Transparent by design — it shows the components so you
     judge, and it does NOT know your spice/signature cards, so read it as a
     shortlist, not a verdict."""
-    d = find_deck(args.id)
+    d = find_deck(args.id, allow_path=True)
     if not d:
         eprint(f"No deck with id {args.id!r}. Try: deck.py list")
         return 1
@@ -7961,7 +8261,7 @@ def cmd_verify(args):
     'identical' or a +/- differential by card. Case-insensitive, quantity-aware,
     and printing-fungible — a different printing (or basic-land art) of the same
     card counts as a match, since Arena copies are fungible across printings."""
-    d = find_deck(args.id)
+    d = find_deck(args.id, allow_path=True)
     if not d:
         eprint(f"No deck with id {args.id!r}. Try: deck.py list")
         return 1
@@ -8887,6 +9187,17 @@ _DOUBLER_AXES = {
     "lifegain": (
         re.compile(r"if you would gain life[^.]{0,60}?twice that much", re.I),
         re.compile(r"\bgains? \d+ life|\bgain that much life|\blifelink\b", re.I)),
+    # DAMAGE (2026-09-06): Twinflame Tyrant / Collective Inferno / Gratuitous Violence —
+    # 17 pool cards, 9 roster decks. The FEEDER is NONCOMBAT damage text, deliberately not
+    # "creatures + burn": every deck has creatures, so that count runs 11..36 with a roster
+    # MINIMUM above any sane floor — the exact `triggers` saturation G-33 records. Noncombat
+    # damage runs min 0 / p25 1 / p50 2 / p75 7 / p90 10 (114 decks), which discriminates;
+    # calibrated in `_DOUBLER_CALIB`. A damage doubler also doubles combat damage, which
+    # every deck gets equally and so cannot rank one home over another.
+    "damage": (
+        re.compile(r"deals? double that damage|double all damage that sources you control|"
+                   r"would deal damage[^.]{0,60}?(?:twice that much|double that)", re.I),
+        re.compile(r"deals? (?:\d+|x|that much|double)? ?damage|deals? damage equal", re.I)),
 }
 _DOUBLER_PER_SOURCE = 1.2   # fit points per feeding card ABOVE the axis floor
 # Ceiling chosen as a SAFETY rail, not an operating point: real decks feed an axis with
@@ -8930,6 +9241,9 @@ _DOUBLER_KEY_SOURCES = 10   # at this density the doubler IS a key card (mirrors
 _DOUBLER_CALIB = {
     # axis -> (floor, key_sources), from that axis's roster p25 / p75
     "triggers": (20, 25),
+    # damage: p25 is 1 and one burn spell is not a burn deck, so the floor sits at p50 (2);
+    # key at p75 (7). Measured 2026-09-06 over 114 decks.
+    "damage": (2, 7),
 }
 
 
@@ -8939,7 +9253,8 @@ def doubler_calib(axis):
 
 
 def doubler_axis(text):
-    """Which quantity this card DOUBLES ('tokens' / 'counters' / 'triggers'), or None."""
+    """Which quantity this card DOUBLES ('tokens' / 'counters' / 'triggers' / 'lifegain' /
+    'damage'), or None."""
     if not text:
         return None
     for axis, (dbl, _feed) in _DOUBLER_AXES.items():
@@ -9200,7 +9515,7 @@ def cmd_similar(args):
     'is this deck distinct, or does it duplicate an existing one?' check (the question a
     from-scratch build always raises). Cosine over the central-theme WEIGHT vectors, so a
     shared dominant theme dominates the score; a color-overlap % is shown alongside."""
-    d = find_deck(args.id)
+    d = find_deck(args.id, allow_path=True)
     if not d:
         eprint(f"No deck with id {args.id!r}. Try: deck.py list")
         return 1
@@ -9647,7 +9962,7 @@ def cmd_screen(args):
     60. Reads names from args or stdin (one per line, optional leading quantity, `#`
     comments ignored). Prints full oracle text, because a verdict surface that hides the
     evidence is how a card gets mis-graded twice."""
-    d = find_deck(args.id)
+    d = find_deck(args.id, allow_path=True)
     if not d:
         eprint(f"No deck with id {args.id!r}. Try: deck.py list")
         return 1
@@ -10378,7 +10693,7 @@ def cmd_quality(args):
     this deck's list at a past git ref against now. Soft by design — it WARNS (some
     regressions are intentional trades); exits 0 unless --strict."""
     import json
-    d = find_deck(args.id)
+    d = find_deck(args.id, allow_path=True)
     if not d:
         eprint(f"No deck with id {args.id!r}. Try: deck.py list")
         return 1
@@ -11116,7 +11431,7 @@ def near_duplicates(cards, carddata, mana=None):
 
 def cmd_shape(args):
     """Report a deck's structural SHAPE — wide/tall, fast/slow — from oracle text."""
-    d = find_deck(args.id)
+    d = find_deck(args.id, allow_path=True)
     if not d:
         eprint(f"No deck with id {args.id!r}. Try: deck.py list")
         return 1
@@ -11161,7 +11476,7 @@ def cmd_redundancy(args):
     depth (distinct cards providing it), flags the THIN ones, and for each proposes how to
     firm it up — functional (virtual) copies FIRST so the deck stays semi-singleton, with
     true duplicates only as a fallback when there aren't enough of acceptable quality."""
-    d = find_deck(args.id)
+    d = find_deck(args.id, allow_path=True)
     if not d:
         eprint(f"No deck with id {args.id!r}. Try: deck.py list")
         return 1
@@ -12388,7 +12703,7 @@ def cmd_tier(args):
     NEVER writes the tier — grading is a human judgment that credits bombs/meta the
     metrics can't see; this only surfaces a letter ≥2 bands above what the numbers
     support (or, conversely, a deck the metrics say is under-graded)."""
-    d = find_deck(args.id)
+    d = find_deck(args.id, allow_path=True)
     if not d:
         eprint(f"No deck with id {args.id!r}. Try: deck.py list")
         return 1
@@ -12453,6 +12768,22 @@ def cmd_tier(args):
         print(f"  ⚠ avg MV under-reads: {len(_xs)} X-cost card(s) "
               f"({', '.join(n for n, _c in _xs[:3])}{'…' if len(_xs) > 3 else ''}) "
               "book as MV 1 because X counts as 0 — see `deck.py stats` for the list.")
+    _ch = cheat_cost_cards(_cards, _cd, _mana)
+    if _ch:
+        print(f"  ⚠ avg MV over-reads: {len(_ch)} cheat-cost card(s) "
+              f"({', '.join(n for n, *_r in _ch[:3])}{'…' if len(_ch) > 3 else ''}) "
+              "book at their printed cost — Warp/Plot/Foretell are invisible to the curve "
+              "and to the aggro clock; see `deck.py stats` for the list.")
+    _eff = effective_avg_mv(_cards, _cd, _mana)
+    if _eff:
+        _best = _eff[2] if _eff[2] is not None else _eff[0]
+        _line = f"  ⓘ effective avg MV {_eff[0]:.2f} (printed {_eff[1]:.2f}"
+        _line += f"; {_eff[2]:.2f} with granted costs)" if _eff[2] is not None else ")"
+        if vec.get("plan") == "aggro":
+            _line += (f"; the aggro clock would read "
+                      f"{_clock_score(dict(vec, avg_mv=_best))}/7 against "
+                      f"{_clock_score(vec)}/7")
+        print(_line + " — ADVISORY: the floor above is graded on the printed curve.")
     # Protection is REPORTED, never fed into tier_band (the floor formula is anchored by
     # check_tier.py). A zero here is a judgment prompt, not a band change.
     if not vec.get("protection"):
@@ -13107,7 +13438,24 @@ _STATE_GATES = [
     (re.compile(r"(\d+|one|two|three|four|five|six|seven|eight|nine|ten) or more "
                 r"cards in exile", re.I),
      "exile sources (needs {0} cards)", "exile"),
+    # HASTE-GATED evasion (Speed, Young Avenger / Resilient Roadrunner / Gingerbrute — 3
+    # pool cards, 1 roster holder as of 2026-09-06): "creature with haste can't be blocked
+    # except by creatures with haste" is only an ability in a deck that HAS haste. Proxy =
+    # haste sources; roster runs min 0 / p50 1 / p90 5 with 52 decks at zero, so a deck can
+    # fail it. Read the band as provisional at n=1 (the G-76 residual).
+    (re.compile(r"creature with haste can't be blocked|"
+                r"can't be blocked(?: this turn)? except by creatures with haste", re.I),
+     "haste sources (the gate is haste)", "haste"),
+    # ATTACKS ALONE (Team Avatar, Seifer, Luke Cage, The Last Ronin — 53 pool cards, 13
+    # roster instances). The state is always REACHABLE (you may attack with one creature),
+    # so this family is INVERTED: it fails by CONFLICT, in a deck built to attack wide.
+    # Proxy = go-wide cues (`_WIDE_CUES`); roster p25 3 / p75 9; decks 3 (17) and 55 (13)
+    # read as conflicts, decks 5 / 6 / 56 (1–2) as free. The G-42 shape, as a gate.
+    (re.compile(r"attacks alone", re.I),
+     "go-wide cards (a CONFLICT when many)", "alone"),
 ]
+# A gate whose failure is TOO MUCH of the proxy, not too little (see "alone" above).
+_STATE_INVERTED = {"alone"}
 
 # FOUR MORE FAMILIES WERE BUILT, MEASURED AND DROPPED, and the measurements are the
 # reason this table is short. A gate earns a row only if a real deck can FAIL it; one
@@ -13134,6 +13482,8 @@ _STATE_GATES = [
 # (exile) self-calibrates and needs none. Bands measured across the 116-deck roster.
 _STATE_BANDS = {           # kind: (thin_at_or_below, free_at_or_above)
     "draw": (2, 8),
+    "haste": (1, 5),       # roster p50 / p90 of haste sources (2026-09-06)
+    "alone": (3, 9),       # INVERTED: free at/below p25, conflict at/above p75
 }
 
 
@@ -13142,7 +13492,7 @@ def _state_axis_counts(cards, carddata, mana):
     wherever a role already measures the axis, so a state gate and `stats` can never
     report different numbers for the same question."""
     tally = role_tally(cards, carddata)
-    exile = 0
+    exile = haste = wide = 0
     for q, n, _s, _c in cards:
         if n.lower() in BASICS:
             continue
@@ -13156,7 +13506,13 @@ def _state_axis_counts(cards, carddata, mana):
         text = (cd.get("text") or "").lower()
         if re.search(r"exile (?:it|them|that card|target|up to|all|each)|exile this", text):
             exile += q
-    return {"draw": tally.get("Card advantage", 0), "exile": exile}
+        stripped = _norm_role_text(cd.get("text") or "")
+        if re.search(r"\bhaste\b", stripped):
+            haste += q
+        if any(p.search(stripped) for p in _WIDE_CUES):
+            wide += q
+    return {"draw": tally.get("Card advantage", 0), "exile": exile,
+            "haste": haste, "alone": wide}
 
 
 def state_gate_counts(cards, carddata, mana):
@@ -13187,6 +13543,9 @@ def state_gate_counts(cards, carddata, mana):
             count = axes[kind]
             if need is not None:
                 verdict = "dead" if count == 0 else ("thin" if count < need else "ok")
+            elif kind in _STATE_INVERTED:
+                low, high = _STATE_BANDS[kind]
+                verdict = ("free" if count <= low else "conflict" if count >= high else "ok")
             else:
                 low, high = _STATE_BANDS[kind]
                 verdict = ("dead" if count == 0 else "thin" if count <= low
@@ -13221,7 +13580,7 @@ def dead_library_searches(cards, carddata, mana):
 def cmd_targets(args):
     """Does this deck contain TARGETS for its own effects? Counts, per gated card, how
     many cards in the list satisfy the gate its text names."""
-    d = find_deck(args.id)
+    d = find_deck(args.id, allow_path=True)
     if not d:
         eprint(f"No deck with id {args.id!r}. Try: deck.py list")
         return 1
@@ -13256,6 +13615,7 @@ def cmd_targets(args):
 
 
 _STATE_FLAG = {"dead": "  ✗ CANNOT turn on", "thin": "  ⚠ thin",
+               "conflict": "  ⚠ CONFLICT (fights the deck's own plan)",
                "free": "  ✓ free (deck always meets it)", "ok": ""}
 
 
@@ -13267,13 +13627,13 @@ def _print_state_gates(cards):
     rows = state_gate_counts(cards, load_card_data(), load_mana())
     if not rows:
         return
-    order = {"dead": 0, "thin": 1, "ok": 2, "free": 3}
+    order = {"dead": 0, "thin": 1, "conflict": 1, "ok": 2, "free": 3}
     print(f"\n  {'Card':32} {'State its text needs':42} {'in deck':>7}")
     print("  " + "-" * 84)
     for name, label, count, _need, verdict in sorted(rows, key=lambda r: (order[r[4]], r[0])):
         print(f"  {name[:32]:32} {label[:42]:42} {count:>7}{_STATE_FLAG[verdict]}")
     nfree = sum(1 for r in rows if r[4] == "free")
-    nbad = sum(1 for r in rows if r[4] in ("dead", "thin"))
+    nbad = sum(1 for r in rows if r[4] in ("dead", "thin", "conflict"))
     print(f"\n  {len(rows)} STATE gate(s): {nbad} the deck struggles to meet, {nfree} it "
           "meets for free. The free ones are the point — every other model here grades a "
           "gated card as if the gate were a cost, and in the deck built to satisfy it it "
@@ -13286,7 +13646,7 @@ def cmd_engines(args):
     ENABLERS (feed the engine) vs PAYOFFS (reward it) and flag a lopsided engine —
     payoffs with no enablers, or enablers with no reward — the flaw a bag-of-tags model
     can't see. Heuristic + text-based; prints the card lists so you grade the balance."""
-    d = find_deck(args.id)
+    d = find_deck(args.id, allow_path=True)
     if not d:
         eprint(f"No deck with id {args.id!r}. Try: deck.py list")
         return 1
@@ -13337,6 +13697,8 @@ def cmd_rotation(args):
     rotating, and what rotates next. Offline: reads the pool's Released/Legalities
     snapshot. A card's rotation year is its set's release + `--years` (Standard's ~3y
     window); `--within` sets how far ahead to look (default 2). Scope with --format."""
+    if getattr(args, "id", None):
+        return _cmd_rotation_deck(args)
     fmt = (args.fmt or "standard").strip().lower()
     decks, rollup, meta = rotation_sweep(fmt, years=args.years, within=args.within)
     if not meta["has_released"]:
@@ -13377,6 +13739,44 @@ def cmd_rotation(args):
     print("\nTiming is a ~%d-year heuristic from set release, not the official schedule, and "
           "the pool keys one printing per card (a reprint can read early) — verify before "
           "disenchanting." % args.years)
+    return 0
+
+
+def _cmd_rotation_deck(args):
+    """`rotation <id>` — one deck's rotating cards by year, OWNED INCLUDED (the roster
+    view names them too, buried in 100+ decks; `check` never does, by design)."""
+    d = find_deck(args.id, allow_path=True)
+    if not d:
+        eprint(f"No deck with id {args.id!r}. Try: deck.py list")
+        return 1
+    # --format not given -> the deck's own `#: format:` (None); given -> that format.
+    atrisk, meta = deck_rotation(d, fmt=args.fmt, years=args.years, within=args.within)
+    if not meta["has_released"]:
+        eprint("card-pool.csv has no Released column — rebuild it (build_pool.py --all) so "
+               "rotation dates are available. Nothing to report until then.")
+        return 1
+    _, _, by_name_qty = load_collection()
+    print(f"Deck {d['id']}: {d['name'] or d['path']} — rotation ({meta['fmt'] or 'any format'}, "
+          f"~{args.years}y window, next {args.within}y): {len(atrisk)} rotating card line(s).")
+    if not atrisk:
+        print(f"  Nothing rotating within {args.within} year(s). ✓")
+        return 0
+    year = None
+    for c in atrisk:
+        if c["rotates"] != year:
+            year = c["rotates"]
+            soon = "  ⚠ SOON" if year <= meta["this_year"] + 1 else ""
+            past = "  (past-due — pool may be stale)" if year < meta["this_year"] else ""
+            print(f"\n  ~{year}{soon}{past}")
+        have = owned_qty(by_name_qty, c["name"].lower())
+        own = "owned" if have >= c["qty"] else (f"owned {have}/{c['qty']}" if have else "CRAFT")
+        print(f"     {c['qty']}× {c['name']} ({c['set']})  · {own}")
+    n_owned = sum(1 for c in atrisk if owned_qty(by_name_qty, c["name"].lower()) >= c["qty"])
+    print(f"\n  {n_owned} owned line(s) rotate with the deck — an owned card costs no wildcard, "
+          "so `check` does not flag these; a rotating card is a LEGALITY fact about the "
+          "deck's future, not a resource question (Player Profile).")
+    if meta["unverified"]:
+        print(f"  ({meta['unverified']} line(s) not found in the pool — unverified, skipped.)")
     return 0
 
 
@@ -13459,8 +13859,12 @@ def main():
     p.add_argument("--format", dest="fmt", default="standard",
                    help="which decks to assess (default: standard)")
     p = sub.add_parser("rotation", help="roster-wide Standard-rotation exposure — which decks run aging-out cards")
-    p.add_argument("--format", dest="fmt", default="standard",
-                   help="format to check rotation for (default: standard)")
+    p.add_argument("id", nargs="?", default=None,
+                   help="a deck id (or a scratch .txt path): list only THAT deck's rotating "
+                        "cards by year, owned ones included — `check` flags craft targets only")
+    p.add_argument("--format", dest="fmt", default=None,
+                   help="format to check rotation for (default: standard for the roster "
+                        "sweep; a single deck's own `#: format:` when an id is given)")
     p.add_argument("--years", type=int, default=3,
                    help="rotation window in years (default: 3, Standard's rough window)")
     p.add_argument("--within", type=int, default=2,

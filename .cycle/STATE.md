@@ -2841,3 +2841,44 @@ was DECLINED with reasons recorded in docs/gotchas.md under K-12.
 
 **Where I left off.** All committed on `claude/broad-scan-6kxevb`. Still open: the `match`
 follow-on (blocked on the entry-condition gap — Command Bridge) and P5.
+
+
+## 2026-09-06 — tooling batch T-1..T-4 (per-deck rotation, cheat-cost advisory, land rider tie-break, scratch-by-path)
+See `.cycle/blocks/2026-09-06-tooling-batch-rotation-cheatcost-lands-path-broad-implement.md`.
+All four are report-only or read-only: no score term, no writer, no tier floor moved (pinned by
+tests). The check_patterns completeness gate caught both new pattern sets unregistered — the
+gate working as designed. Decided AGAINST: an additive rider nudge in `suggest --lands` (the
+smallest fixing step is 0.1, any nudge crosses it — it is a sort-key tie-break instead) and an
+"effective MV" term for cheat-cost bodies (would re-grade the roster; G-60 discipline).
+
+**Where I left off.** Committed on `claude/broad-scan-6kxevb`. Still open from the same day:
+pile §5.7 items 1/2/5 (role-pattern holes, damage-doubler axis, state gates — need a K-14 floor
+diff), the taxonomy decisions (Equipment / tap-down / copy), 56's tier letter (A vs B, user's
+call), the 56c decision, and deleting `.cycle/56-tall-pile-analysis.md` once those settle.
+
+
+## 2026-09-06 (later) — role-pattern holes A-5/A-6 + cheat-cost follow-ons F-1..F-3
+See `.cycle/blocks/2026-09-06-role-holes-cheatcost-followons-broad-implement.md`.
+K-14 measured: 0 of 114 floor bands moved, 8 decks gained reach, 22 cards left the zero-role
+baseline (every unnamed one read and confirmed). Decided AGAINST, again: an effective-MV TERM
+in the vector (the advisory prints what the clock WOULD read instead), and a damage-doubler
+AXIS (these cards now carry a role; the axis is the taxonomy decision still parked).
+
+**Where I left off.** Committed on `claude/broad-scan-6kxevb`. Open: the taxonomy decisions
+(Equipment / tap-down / copy-as-multiplier axis / damage-doubler axis), state gates (§5.7 item
+5), 56's tier letter (user), 56c, deleting `.cycle/56-tall-pile-analysis.md` once settled, and
+`/sync-docs` for G-30 / G-37 / G-56 / G-60 / G-67 (two batches' worth).
+
+
+## 2026-09-06 (third batch) — damage-doubler axis, haste/attack-alone gates, granted costs, Equipment bucket
+See `.cycle/blocks/2026-09-06-damage-axis-state-gates-equipment-broad-implement.md`.
+0 of 114 floors moved (every batch today measured). The tap-down / neutralize "taxonomy
+item" carried in the last two blocks was STALE — it was closed on 2026-08-19 inside the
+Removal bucket with a permanence line (docs/gotchas.md); only Equipment was actually open,
+and it is taken now as role credit. Decided: the damage axis feeds on NONCOMBAT damage text
+(creatures+burn has a roster minimum of 11 and would saturate like `triggers`).
+
+**Where I left off.** Committed on `claude/broad-scan-6kxevb`; `/sync-docs` next for the
+three batches' CLAUDE.md updates, then PR + merge. Open after that: 56's tier letter (user),
+56c, deleting `.cycle/56-tall-pile-analysis.md`, the copy-as-multiplier axis, the haste gate's
+n=1 band.

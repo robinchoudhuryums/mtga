@@ -6009,3 +6009,222 @@ class TestCardAdvantageSplit:
             [(2, "engine", "A", "1"), (3, "spell", "A", "1"), (4, "land", "A", "1")],
             self.DATA)
         assert (rep, one) == (2, 3)
+
+
+class TestScratchPathResolution:
+    """A READ-ONLY command may take an existing `.txt` path, so a scratch copy can be
+    measured OUTSIDE decks/ — every scratch measurement on 2026-09-06 needed a throwaway
+    `56z-scratch.txt` inside the deck's directory, which INV-04, `check_all` and every
+    roster view then counted as a real deck. Writers never take a path: a `swap --apply`
+    on a scratch copy would record a ledger row (G-56)."""
+
+    def _scratch(self, tmp_path):
+        p = tmp_path / "56-scratch.txt"
+        p.write_text("#: name: Scratch\n#: format: Standard\n#: colors: R\n"
+                     "1 Shock (M21) 159\n23 Mountain (M21) 273\n", encoding="utf-8")
+        return str(p)
+
+    def test_a_path_is_refused_by_default(self, tmp_path):
+        assert deck.find_deck(self._scratch(tmp_path)) is None
+
+    def test_a_path_resolves_for_a_read_only_caller(self, tmp_path):
+        d = deck.find_deck(self._scratch(tmp_path), allow_path=True)
+        assert d and d.get("scratch") is True
+        assert d["id"] == "56-scratch" and d["meta"].get("name") == "Scratch"
+
+    def test_a_roster_file_path_resolves_to_its_roster_record(self):
+        live = deck.find_deck("56")
+        if not live:                                   # roster-dependent
+            return
+        d = deck.find_deck(live["path"], allow_path=True)
+        assert d["id"] == "56" and not d.get("scratch")
+
+    def test_only_read_only_commands_pass_allow_path(self):
+        """The writers and the roster-reasoning commands must keep the id-only form."""
+        import inspect, re
+        src = inspect.getsource(deck)
+        for writer in ("cmd_swap", "cmd_move", "cmd_apply_flex", "cmd_preflight", "cmd_history"):
+            body = inspect.getsource(getattr(deck, writer))
+            assert "allow_path" not in body, writer
+        for reader in ("cmd_stats", "cmd_consistency", "cmd_quality", "cmd_tier", "cmd_mana"):
+            body = inspect.getsource(getattr(deck, reader))
+            assert "allow_path=True" in body, reader
+
+
+class TestDeckRotation:
+    """`check` flags rotation only on a CRAFT target (G-30: an owned card costs no
+    wildcard) and `rotation` printed the whole roster, so an OWNED rotating card was
+    found by hand (56a's Commercial District and Restless Ridgeline, 2026-09-06).
+    `deck_rotation` is the per-deck view, sharing `_deck_atrisk` with the sweep."""
+
+    def test_the_single_deck_view_agrees_with_the_sweep_by_construction(self):
+        decks, _rollup, meta = deck.rotation_sweep("standard", years=3, within=2)
+        if not meta["has_released"] or not decks:
+            return
+        target = next((x for x in decks if x["n_slots"]), None)
+        if not target:
+            return
+        d = deck.find_deck(target["id"])
+        atrisk, _m = deck.deck_rotation(d, fmt="standard", years=3, within=2)
+        assert atrisk == target["atrisk"]
+
+    def test_owned_cards_are_included_not_just_craft_targets(self, tmp_path):
+        # Abraded Bluffs (OTJ) is owned and rotates ~2026; a basic never appears.
+        p = tmp_path / "r.txt"
+        p.write_text("#: name: R\n#: format: Standard\n#: colors: R\n"
+                     "1 Abraded Bluffs (OTJ) 251\n23 Mountain (M21) 273\n", encoding="utf-8")
+        d = deck.find_deck(str(p), allow_path=True)
+        atrisk, meta = deck.deck_rotation(d, years=3, within=5)
+        if not meta["has_released"]:
+            return
+        names = [c["name"] for c in atrisk]
+        assert "Abraded Bluffs" in names and "Mountain" not in names
+        assert meta["fmt"] == "standard"          # the deck's OWN format when fmt=None
+
+
+class TestRolePatternHoles20260906:
+    """Pile §5.7 items 1/2 and the 2026-09-06 assessment's items 5/6: whole families
+    scored ZERO roles because `_ROLE_PATTERNS` is a whitelist of phrasings (G-67).
+    Real card text throughout. K-14 diff at the fix: 0 of 114 floor bands moved, 8 decks
+    gained reach, 22 roster cards left the zero-role baseline, all verified by hand."""
+
+    def test_any_OTHER_target_is_reach(self):
+        for text in (
+            "Target creature you control deals X damage to any other target and X damage to "
+            "itself, where X is its power.",                                   # Self-Destruct
+            "When this Aura enters, enchanted creature deals damage equal to its power to any "
+            "other target.",                                                    # Pain for All
+            "Whenever Red Hulk is dealt damage, put a +1/+1 counter on him. When you do, he "
+            "deals damage equal to the number of +1/+1 counters on him to any other target.",
+        ):
+            assert "Burn / drain" in deck.classify_roles(text), text
+
+    def test_that_much_damage_to_a_face_is_reach(self):
+        assert "Burn / drain" in deck.classify_roles(
+            "Whenever enchanted creature is dealt damage, it deals that much damage to each opponent.")
+
+    def test_damage_to_a_creature_is_still_not_reach(self):
+        # The widening must not turn a fight or a board-only effect into reach.
+        assert "Burn / drain" not in deck.classify_roles(
+            "Target creature you control deals damage equal to its power to target creature you don't control.")
+
+    def test_multipliers_are_payoffs(self):
+        for text in (
+            "If a triggered ability of a creature you control with power 2 or less triggers, "
+            "that ability triggers an additional time.",                        # Delney
+            "If a source you control would deal damage to an opponent or a permanent an opponent "
+            "controls, it deals double that damage instead.",                   # Twinflame Tyrant
+            "Double all damage that sources you control of the chosen type would deal.",  # Inferno
+            "Copy target instant or sorcery spell you control. You may choose new targets for the copy.",
+            "Copy target creature spell you control. The copy gains haste.",     # Sparks
+        ):
+            assert "Payoff / engine" in deck.classify_roles(text), text
+
+    def test_a_clone_is_not_a_spell_copier(self):
+        assert "Payoff / engine" not in deck.classify_roles(
+            "You may have this creature enter as a copy of any creature on the battlefield.")
+
+    def test_a_lock_and_a_redirect_are_protection_class(self):
+        for text in (
+            "During your turn, your opponents can't cast spells or activate abilities of "
+            "artifacts, creatures, or enchantments.",                           # Grand Abolisher
+            "Your opponents can't cast spells during your turn.",               # Voice of Victory
+            "Change the target of target spell or ability with a single target.",  # Return the Favor
+        ):
+            assert "Protection / trick" in deck.classify_roles(text), text
+
+    def test_the_lock_is_role_credit_not_the_protection_axis(self):
+        # G-25: the AXIS stays ward/hexproof/indestructible-class, and the role does not
+        # feed the floor — `_INTERACTION_ROLES` is unchanged.
+        assert not deck.protection_effects("Your opponents can't cast spells during your turn.")
+        assert deck._INTERACTION_ROLES == {"Removal (spot)", "Sweeper", "Counter"}
+
+
+class TestDamageDoublerAxis:
+    """The fifth doubler axis (2026-09-06). Feeder = NONCOMBAT damage text, deliberately
+    not creatures+burn (roster min 11 — the `triggers` saturation, G-33). Calibrated
+    (2, 7) from the roster's p50/p75 of that count."""
+
+    TWINFLAME = ("Flying\nIf a source you control would deal damage to an opponent or a "
+                 "permanent an opponent controls, it deals double that damage instead.")
+    INFERNO = "Double all damage that sources you control of the chosen type would deal."
+    SHOCK = {"name": "Shock", "type": "Instant", "text": "Shock deals 2 damage to any target."}
+    PAIN = {"name": "Pain", "type": "Enchantment — Aura",
+            "text": "When this Aura enters, enchanted creature deals damage equal to its power to any other target."}
+    BEAR = {"name": "Bear", "type": "Creature — Bear", "text": ""}
+
+    def test_the_doublers_classify_to_the_damage_axis(self):
+        assert deck.doubler_axis(self.TWINFLAME) == "damage"
+        assert deck.doubler_axis(self.INFERNO) == "damage"
+        assert deck.doubler_axis("Shock deals 2 damage to any target.") is None
+
+    def test_feeders_are_noncombat_damage_not_bodies(self):
+        cd = {"shock": self.SHOCK, "pain": self.PAIN, "bear": self.BEAR}
+        cards = [(3, "Shock", "", ""), (1, "Pain", "", ""), (10, "Bear", "", "")]
+        assert deck.doubler_support("damage", cards, cd) == 4
+
+    def test_calibration_and_boost_floor(self):
+        assert deck.doubler_calib("damage") == (2, 7)
+        assert deck.doubler_boost(1, axis="damage") == 0.0
+        assert deck.doubler_boost(2, axis="damage") > 0.0
+
+
+class TestHasteAndAttackAloneGates:
+    """Two G-76 families (pile §5.7 item 5). Haste-gated evasion needs haste SOURCES;
+    'attacks alone' is INVERTED — always reachable, it fails by CONFLICT in a go-wide
+    deck (roster p75 of go-wide cues = 9)."""
+
+    SPEED = {"name": "Speed", "type": "Legendary Creature — Mutant Hero", "colors": "R",
+             "text": "Haste\nWhenever you cast a noncreature spell, you may pay {1}. When you do, "
+                     "target creature with haste can't be blocked this turn except by creatures with haste."}
+    HASTY = {"name": "Hasty", "type": "Creature — Goblin", "colors": "R", "text": "Haste"}
+    BEAR = {"name": "Bear", "type": "Creature — Bear", "colors": "G", "text": ""}
+    TEAM = {"name": "Team", "type": "Enchantment", "colors": "W",
+            "text": "Whenever a creature you control attacks alone, it gets +X/+X until end of turn, "
+                    "where X is the number of creatures you control."}
+    WIDE = {"name": "Wide", "type": "Sorcery", "colors": "W",
+            "text": "Create three 1/1 white Soldier creature tokens."}
+    MANA = {"speed": ("{1}{R}", "2"), "hasty": ("{R}", "1"), "bear": ("{1}{G}", "2"),
+            "team": ("{2}{W}", "3"), "wide": ("{2}{W}", "3")}
+
+    def _cd(self):
+        return {"speed": self.SPEED, "hasty": self.HASTY, "bear": self.BEAR,
+                "team": self.TEAM, "wide": self.WIDE}
+
+    def _rows(self, cards):
+        return {r[0]: r for r in deck.state_gate_counts(cards, self._cd(), self.MANA)}
+
+    def test_speed_in_a_deck_with_haste_reads_free_and_without_reads_thin(self):
+        free = self._rows([(1, "Speed", "", ""), (4, "Hasty", "", "")])["Speed"]
+        assert free[2] == 5 and free[4] == "free", free
+        thin = self._rows([(1, "Speed", "", ""), (4, "Bear", "", "")])["Speed"]
+        assert thin[2] == 1 and thin[4] == "thin", thin        # Speed's own haste only
+
+    def test_attacks_alone_is_free_in_a_tall_deck_and_a_conflict_in_a_wide_one(self):
+        tall = self._rows([(1, "Team", "", ""), (4, "Bear", "", "")])["Team"]
+        assert tall[4] == "free", tall
+        wide = self._rows([(1, "Team", "", ""), (9, "Wide", "", ""), (4, "Bear", "", "")])["Team"]
+        assert wide[2] >= 9 and wide[4] == "conflict", wide
+
+    def test_the_conflict_verdict_is_rendered_and_counted_as_a_struggle(self):
+        assert "CONFLICT" in deck._STATE_FLAG["conflict"]
+        assert "alone" in deck._STATE_INVERTED and "haste" not in deck._STATE_INVERTED
+
+
+class TestEquipmentBucket:
+    """Role CREDIT only — the taxonomy half the 2026-08 pass deliberately left. Not in
+    `_INTERACTION_ROLES`; measured 0 of 114 floors moved when it landed."""
+
+    def test_equipment_text_carries_the_role(self):
+        for text in ("Equipped creature gets +2/+0.\nEquip {2}",
+                     "Reconfigure {3}",
+                     "When this Equipment enters, attach it to target creature you control."):
+            assert "Equipment / attach" in deck.classify_roles(text), text
+
+    def test_a_creature_that_merely_mentions_equipment_is_not_one(self):
+        assert "Equipment / attach" not in deck.classify_roles(
+            "Whenever you cast an Equipment spell, draw a card.")
+
+    def test_it_is_credit_not_interaction_and_last_in_the_order(self):
+        assert "Equipment / attach" not in deck._INTERACTION_ROLES
+        assert deck.ROLE_ORDER[-1] == "Equipment / attach"
