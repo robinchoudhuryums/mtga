@@ -291,6 +291,12 @@ wrong in the other direction. This is the same shape as the Equipment-bucket que
 on the list (§0-newest item 5): adding a bucket re-scores every deck running the type, so take
 it deliberately with a K-14 diff, not as a pattern slip-in.
 
+> **CORRECTION 2026-09-06:** the neutralize half above was CLOSED on 2026-08-19 — tap-down and
+> ability-strip live in the Removal bucket behind a permanence line (docs/gotchas.md, "The
+> neutralization bucket, closed"). The Equipment bucket was taken on 2026-09-06 as role credit
+> only (0 of 114 floors moved). Neither is open; the remaining bucket-shaped families are extra
+> combat, taxing and hand attack.
+
 ### Two gate gaps worth closing before they produce the next instance
 - `check_dfc`'s registry-completeness scan only walks builders that read **card-pool.csv**.
   Every ownership index reads card-library.csv, which is why BS6-01 was invisible to it.

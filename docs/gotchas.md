@@ -1757,6 +1757,10 @@ a deck on Standard's card pool — which INCLUDES 60-card Brawl (it rotates with
 the scan's "Brawl decks should not flag" was wrong for that half) and excludes Historic
 Brawl.
 
+### 2026-09-06 — the per-deck view, and why `check` stayed quiet
+
+`check` prints `⚠rot` on CRAFT targets only, by design (an owned card costs no wildcard), and `rotation` printed all 111 decks, so an owned rotating card was found by hand on the day the 56a manabase was rebuilt: Commercial District (MKM) and Restless Ridgeline (LCI), both leaving with the 2026 rotation, sat in a deck that `check` had just called fine. `deck.py rotation <id>` is the per-deck view (owned included, by year, `⚠ SOON`), `_deck_atrisk` is the one routine behind it and the sweep so the two cannot disagree, and `check` ends with a one-line `ⓘ N OWNED card(s) rotate out this year or next` footer on the same within=1 window as `craft_rot_note`. The `--format` default changed from `standard` to None so the per-deck view reads the deck's own `#: format:`; the roster sweep still assumes Standard.
+
 ## [G-31] `deck.py suggest-homes <card>` automates the "which of my decks does this new card improve" fit 
 
 **`deck.py suggest-homes <card>` automates the "which of my decks does this new
@@ -2031,6 +2035,10 @@ its author had in mind. The same shape as the tier floor reading A for 104 of 11
 (BS8-06) and `suggest`'s breadth column saturating at 99% (G-28): a signal that never
 varies is indistinguishable from a signal that is working, until something it ranks is
 obviously wrong.
+
+### 2026-09-06 — the fifth axis, `damage`, and the feeder that was rejected
+
+Twinflame Tyrant, Collective Inferno and Gratuitous Violence (17 pool cards, 9 roster decks) doubled nothing the model could see, so `suggest-homes` ranked Twinflame KEY in 56a on Dragon/evasion overlap alone. The obvious feeder — every creature plus every burn spell — was measured and rejected: roster min 11 / p25 21 / p90 29, i.e. every deck clears any floor and the term would pin the cap the way `triggers` did. NONCOMBAT damage text runs min 0 / p25 1 / p50 2 / p75 7 / p90 10 and discriminates; the doubler's combat half is something every deck gets equally and so cannot rank one home over another. `_DOUBLER_CALIB["damage"] = (2, 7)` (floor at p50, since one burn spell is not a burn deck). Roster diff on ten doublers' `suggest-homes` top-5: 4 changed, 2 changed #1 (Lightning, Army of One; The Rollercrusher Ride), all toward burn-dense decks; 0 floors.
 
 
 ## [G-83] A cost that SCALES with a deck count, priced by nothing
@@ -2351,6 +2359,10 @@ which is the axis this model scores, and the tempo cost is reported separately �
 just made trustworthy. The top of a three-colour deck's list is now an 8-way tie among
 seven basic fetches plus Demolition Field; that is HONEST rather than saturated (those
 cards have the same effect) and the `Have` column does the disambiguating.
+
+### 2026-09-06 — the rider is a tie-break, and why not a score term
+
+`suggest 56 --lands --owned` scored Temple of Triumph, Boros Guildgate, Sun-Blessed Peak and Wind-Scarred Crag identically at 10.9: every term is about FIXING and nothing read the ETB or the activated ability (the blindness G-42 records for doubler decks). `_land_utility` reads seven cues on reminder-stripped text (creature land 0.4, draw sink 0.4, scry / surveil / activated sink 0.3, ETB ping 0.2, lifegain 0.1; a sink restricted to one creature type prints `sink~`) and is used as the SECOND SORT KEY only. An additive nudge was considered and declined: the smallest fixing step between real land classes is 0.1 (a choose-one any-colour land against a filter land), so any nudge large enough to matter crosses it and re-ranks lands on the rider. Pinned: every pick's `score` equals fix + syn + short, and score order is unchanged.
 
 ## [G-38] `deck.py suggest --ramp / --interaction / --needs` are the NEEDS model — the structural axes the
 
@@ -2972,6 +2984,10 @@ feed back into a ranking. Doing so would defeat the bounded-and-anchored propert
 `tests/test_recommendations.py` scans for `swap_outcomes`, `MATCHES_CSV` and
 `load_match_counts` alongside `load_recommendations`.
 
+### 2026-09-06 — measuring on a scratch copy without a roster file
+
+Every scratch measurement on 2026-09-05/06 needed a throwaway `56z-scratch.txt` INSIDE `decks/56-boros-tall/`, because `find_deck` resolved ids only; while it existed, INV-04, `check_all` and every roster view counted it as a deck, and a `swap --apply` on it would have written the ledger row this rule warns about. `find_deck(deck_id, allow_path=True)` now accepts an existing `.txt` path for the 21 read-only commands; the writers (`swap`, `move`, `apply-flex`) and the roster-reasoning commands (`preflight`, `history`) keep the id-only form, pinned by a source test. A path that IS a roster file resolves to its real record so the printed id is the roster id.
+
 
 ## [G-57] Match results are FREE from `Player.log` — the lines AROUND the result JSON are the load-bearing halves
 
@@ -3487,6 +3503,10 @@ G-53 says a capability that works and is never reached is invisible to every cor
 gate. This is the same shape one layer down: **a pattern that was never written is
 invisible too.** K-12 says the role counts under-count and to read the uncertainty channel
 — that is the symptom; this is the cause, and `check_roles` is the instrument.
+
+### 2026-09-06 — three pattern families and one bucket, with the day's measurement
+
+The 201-card pile read (deck 56) listed the zero-role cards it had graded by hand, and they fell into shapes rather than one-offs. REACH: every self-referencing damage source is templated "to any OTHER target" (Pain for All, Iron Fist, Red Hulk, Self-Destruct's "X damage to any other target … where X is its power") and none matched the `any target` alternation that Infernal Phantom passed; `deals that much damage to each opponent` was a second miss. MULTIPLIERS: a trigger doubler ("triggers an additional time" — Delney, which `suggest-homes` already scored as ✱ multiplier while `cuts` called it 56a's weakest card), a damage doubler ("deals double that damage", "double all damage that sources you control") and a spell copier ("copy target instant/sorcery/creature … spell", scoped so a clone does not match) are Payoff / engine — a card whose value is what the rest of the deck does. LOCK and REDIRECT: "opponents can't cast spells" (Grand Abolisher, Voice of Victory, Jennifer Walters, Kutzil's combat-only lock) and "change the target of target spell" (Return the Favor, Bolt Bend, Redirect Lightning) are Protection / trick — role credit; `protection_effects` and `_INTERACTION_ROLES` pinned unchanged. The BUCKET: `Equipment / attach` (equip, equipped creature, reconfigure, attach … to), 39 roster cards, last in `ROLE_ORDER`, never interaction. Measured across all 114 decks in three snapshots: 0 floor bands moved, interaction / card advantage / clock 0 changed, reach +1 to +4 in 8 decks, 562 → 540 → 501 zero-role cards, and every card that left the baseline without being named in a finding was read (Avatar's Wrath, Bolt Bend, Callous Sell-Sword, Cloud, Katara the Fearless, Kitsa, Kutzil, Mirror Room, Redirect Lightning, Sawblade Skinripper, Splinter, Starfield Vocalist, Traveling Chocobo — all true positives). **The stale record**: two handoff blocks that day carried "tap-down / neutralize" as an untaken taxonomy item; it had closed on 2026-08-19 (see the neutralization section above). A follow-on list is a claim about the code and goes stale like any other prose.
 
 
 ## [K-01] A handful of recurring Universe-Beyond flavor *mechanics* (Vivid, Job select, Opus, Increment, I
@@ -4286,6 +4306,10 @@ fixed-cost card is not flagged and that lands and duplicate copies are excluded.
 an `{X}` spell properly would need a model of what X you actually pay, which depends on
 the board. Read the flagged cards and judge; do not try to correct `avg_mv` by hand,
 because `check_tier.py` anchors the floor formula against the raw value.
+
+### 2026-09-06 — the cheat-cost twin, and the two figures it prints
+
+The X-cost under-read has a mirror: Warp, Plot, Foretell, Evoke, Emerge, Spectacle, Surge, Miracle and Sneak are printed alternative costs the curve never sees, so Bygone Colossus (Warp {3}) booked at nine and on its own moved 56b's aggro floor A → B (pile analysis §5.7 item 6). `cheat_cost_cards` reads the keyword's own cost off reminder-stripped text with lookbehinds that skip a GRANT ("cards in your hand have warp {2}{R}" reduces Tannuk's targets, not Tannuk), `cheat_cost_grants` names the grant with its scope clause, and `effective_avg_mv` prints three numbers — printed, alt costs substituted, and with each grant applied to the cards in its scope (`_grant_scope_matches` parses type + optional colour clauses; a subtype or mana-value scope matches nothing, the conservative miss). `tier` adds the aggro clock the effective curve WOULD read. Every one of these is ADVISORY and pinned out of `deck_quality_vector`, `tier_band` and `_clock_score`: an effective-MV TERM was considered and declined because it re-grades the roster, which is this rule.
 
 
 ## [G-61] Before dismissing a card, count the deck property its value depends on
@@ -5835,6 +5859,10 @@ flag because it looks like information.
   nothing fails the build — without that, a dead state-gate pattern reads as "this deck
   has no gated cards", which is indistinguishable from a clean result. That is exactly
   how the digit-only descend gate hid for months.
+
+### 2026-09-06 — two families, one of them inverted
+
+HASTE-gated evasion: Speed, Young Avenger's "target creature with haste can't be blocked this turn except by creatures with haste" is an ability only in a deck that has haste. Pool: 3 cards (Speed, Resilient Roadrunner, Gingerbrute). Proxy = haste sources on reminder-stripped text; roster min 0 / p50 1 / p75 3 / p90 5 with 52 decks at zero, so the gate can fail; band thin ≤1 / free ≥5; one roster holder (56, count 7, free). ATTACKS ALONE: 53 pool cards, 13 roster instances in 12 decks (Team Avatar, Seifer, Luke Cage, The Last Ronin, S.H.I.E.L.D. Spy Kit, HYDRA Infiltration). The state is always REACHABLE — you may attack with one creature — so the family cannot be dead or thin; it fails by CONFLICT with a deck built to attack wide, the G-42 shape expressed as a gate. Proxy = `_WIDE_CUES` count (roster p25 3 / p50 5 / p75 9); `_STATE_INVERTED` flips the band (free ≤3, CONFLICT ≥9). Decks 3 (17 wide cues) and 55 (13) read CONFLICT on Team Avatar; 5, 6, 38, 56, 70 read free. `_STATE_FLAG["conflict"]` renders it and `_print_state_gates` counts it as a struggle. Both report-only.
 
 ## [G-77] An advisory you can only act on by a forbidden edit is a hazard
 
