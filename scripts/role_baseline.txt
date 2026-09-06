@@ -16,6 +16,7 @@ Aerial Doombot
 Aettir and Priwen
 Agent Phil Coulson
 Agents of HYDRA
+Agrus Kos, Spirit of Justice
 Ainok Wayfarer
 Airbending Lesson
 Ajani, Caller of the Pride
@@ -44,12 +45,12 @@ Avengers: Under Siege
 Azog, Moria's Ruin
 Azula, Cunning Usurper
 Badgermole
+Ball Lightning
 Bandit's Talent
 Bark of Doran
 Barret Wallace
 Baseball Bat
 Baxter Stockman
-Become Brutes
 Bejeweled Warg
 Bespoke Bō
 Betor, Kin to All
@@ -96,6 +97,7 @@ Cephalid Inkmage
 Chameleon, Master of Disguise
 Champions of the Shoal
 Charging Strifeknight
+Choreographed Sparks
 Claim Jumper
 Clifftop Lookout
 Cloud, Midgar Mercenary
@@ -127,6 +129,7 @@ Devastating Onslaught
 Diligent Zookeeper
 Djinn of Fool's Fall
 Doc Ock's Henchmen
+Doc Ock's Tentacles
 Don & Leo, Problem Solvers
 Donatello, Mutant Mechanic
 Donatello, Turtle Techie
@@ -212,6 +215,7 @@ Goblin-town Flunkies
 Gold Pan
 Gold Rush
 Goldvein Hydra
+Grand Abolisher
 Gravelgill Scoundrel
 Great Ugly-Looking Goblin
 Greedy Freebooter
@@ -460,6 +464,7 @@ Stature, Size Shifter
 Stegron the Dinosaur Man
 Stickytongue Sentinel
 Sting, Bilbo's Sword
+Stingerback Terror
 Stony-Voiced Goblins
 Sultai Devotee
 Summoner's Grimoire

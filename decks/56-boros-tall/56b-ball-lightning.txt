@@ -1,0 +1,96 @@
+#: name: One Fell Swoop — Ball Lightning
+#: format: Standard
+#: colors: R
+#: plan: aggro
+#: archetype: MONO-RED CHEAT-TALL (the 56 pile analysis' variant signal, .cycle/56-tall-pile-analysis.md
+#: archetype: §5.5 / O28): every body arrives for LESS than its printed cost and most of them LEAVE at the
+#: archetype: end step — Warp (Bygone Colossus is a 9/9 for {3}, Anticausal Vestige a 7/5 for {4}, Nova
+#: archetype: Hellkite a 4/5 flier for {3}, Weftstalker Ardent for one), Plot (Stingerback Terror, Demonic Ruckus), Ball Lightning's own sacrifice, and Tannuk granting warp {2}{R} to every red creature
+#: archetype: and artifact in hand (Combustion Man is the one body that NEEDS him to be cheap). THREE THINGS FOLLOW from
+#: archetype: a body that is leaving anyway: Self-Destruct's "X damage to itself" is FREE (the finisher costs
+#: archetype: nothing), a sorcery-speed answer or a sweeper on their turn hits an empty board (the plan IS the
+#: archetype: protection), and every recast from exile re-fires Terror of the Peaks (power to any target),
+#: archetype: Doc Ock's Tentacles (+4/+4 auto-attach on an MV-5+ body) and Weftstalker Ardent's ping. The
+#: archetype: RECAST layer is Warped Space ({0} once a turn for a spell cast from exile), Spider-Verse (copy
+#: archetype: the spell cast from exile — a warp recast, a Plot cast, a Hex Magic card), Hex Magic (exile the
+#: archetype: hand, draw that many, play BOTH), Goliath Daydreamer (every instant cast from hand comes back FREE
+#: archetype: on his attack) and Choreographed Sparks (copy a creature spell as a hasty token —
+#: archetype: a second 9/9). The Fire Crystal and Tannuk give the whole board haste so Speed's rider (haste
+#: archetype: creatures can't be blocked except by haste) is always on. Bulk Up doubles whichever body swings.
+#: archetype: DISTINCT from 56 (RW combat-tall: permanent bearers + a protection layer) and 56a (RG: compounding
+#: archetype: counters on permanent bodies) by the same test: 56's bodies are PROTECTED, 56b's are TEMPORARY.
+#: archetype: Neighbours checked: 26 Iron Forge (UR artifact RAMP into big hitters — shares Vestige / Colossus /
+#: archetype: Tannuk / Full Bore but ramps to hardcast) and 45 The Exiles (WBR — paid for CASTING from exile;
+#: archetype: this deck's payoff is the body entering and leaving, not the cast).
+#: tier: B (PROVISIONAL) — held at B by three things the A floor cannot see, and graded UNDER it on
+#: tier: purpose: (1) the ENGINE is singletons — Tannuk, The Fire Crystal, Warped Space, Spider-Verse are
+#: tier: one copy each, so the cheat plan's consistency is the cap, not its ceiling; (2) protection is 1
+#: tier: (Boots) by design — the plan is that the bodies have already left — which means a flash blocker
+#: tier: or instant-speed removal on the swing turn is unanswered; (3) unplayed. The floor reads A on the
+#: tier: aggro clock, and that clock is pricing Colossus at MV 9 (pile doc §5.7 item 6), so the measured
+#: tier: floor is not trustworthy in either direction here. Re-grade after ten games; the number that
+#: tier: would move it to A is a second copy of the recast engine (a 2nd Warped Space or Spider-Verse).
+#: protect: Tannuk, Steadfast Second; The Fire Crystal; Charred Foyer // Warped Space; Self-Destruct; Bulk Up; Bygone Colossus; Anticausal Vestige; Terror of the Peaks; Speed, Young Avenger
+#: notes: DRAFTED 2026-09-05 from the 201-card pile (batches 1, 3, 7, 9 supplied the cluster). READ THE
+#: notes: PRINTED COSTS AS LIES: avg MV and the aggro clock score both price Colossus at 9 and Vestige at 6
+#: notes: (pile doc §5.7 item 6 — warp/plot are invisible to `avg_mv` / `_clock_score`), so `stats`/`tier`
+#: notes: will read this deck as slow; the real curve is warp 1–4. Tannuk-DEPENDENT bodies are kept to ONE
+#: notes: (Combustion Man since 2026-09-06; Hill Gigas before) because one Tannuk is in hand by T4 ~17% of
+#: notes: the time (G-61). Self-Destruct on a warped body: cast it in the END STEP after the exile trigger
+#: notes: is on the stack? NO — the body must be on the battlefield: cast it in combat or main phase 2,
+#: notes: BEFORE the end step, and let the exile clean up. Ball Lightning + Bulk Up + Self-Destruct = 12 trample
+#: notes: + 12 face for {R}{R}{R}+{1}{R}+{1}{R}. Sparks' creature mode on a WARP cast: the copy is a token
+#: notes: with haste that dies at end step; the original warps out too — both leave, both are free
+#: notes: Self-Destruct targets. Doc Ock's Tentacles reads "creature with MV 5 or greater ENTERS": a warped
+#: notes: Colossus is MV 9 on entry (Tentacles attaches; the cheat cost is not the MV). Interaction is
+#: notes: deliberately burn-that-is-also-reach (Bolt, Strike, Burst ×2): a removal spell here is a face-damage
+#: notes: spell in the last turn. Ball Lightning ×2, Stingerback, Red Tiger Mechan, Possibility Technician (the last two CUT 2026-09-06)
+#: notes: are the craft targets (2 R + 1 R + 1 C + 1 R); everything else is owned.
+
+# Engine — cheat and recast
+2 Tannuk, Steadfast Second (EOE) 162
+1 The Fire Crystal (FIN) 135
+1 Charred Foyer // Warped Space (DSK) 129
+1 Spider-Verse (SPM) 93
+1 Hex Magic (MSH) 133
+1 Firebending Student (TLA) 139
+1 Pyromancer's Goggles (FDN) 677
+
+# Temporary bodies — warp / plot / sacrifice
+1 Bygone Colossus (EOE) 235
+1 Anticausal Vestige (EOE) 1
+1 Nova Hellkite (EOE) 148
+1 Zealous Lorecaster (SOS) 137
+1 Ball Lightning (FDN) 618
+1 Hazoret, Godseeker (DFT) 133
+1 Weftstalker Ardent (EOE) 169
+1 Goliath Daydreamer (ECL) 143
+1 Stingerback Terror (OTJ) 147
+1 Combustion Man (TLA) 127
+
+# Payoffs — enters and leaves
+1 Terror of the Peaks (OTJ) 149
+1 Doc Ock's Tentacles (SPM) 162
+1 Cosmic Cube (MSH) 245
+1 Twinflame Tyrant (FDN) 97
+
+# Multipliers, evasion, free finishers
+2 Self-Destruct (FIN) 157
+2 Bulk Up (SOA) 40
+1 Choreographed Sparks (SOS) 111
+1 Sozin's Comet (TLA) 154
+1 Full Bore (EOE) 135
+1 Haste Magic (FIN) 140
+1 Speed, Young Avenger (MSH) 152
+1 Demonic Ruckus (OTJ) 120
+1 Swiftfoot Boots (BRR) 58
+1 Devastating Onslaught (EOE) 132
+1 Pain for All (EOE) 151
+1 Untimely Malfunction (DSK) 161
+
+# Burn that is also reach
+1 Burst Lightning (FDN) 192
+
+# Lands
+22 Mountain (HOB) 192
+1 The Lonely Mountain (HOB) 187

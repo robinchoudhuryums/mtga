@@ -3832,8 +3832,15 @@ def role_tally(cards, carddata):
 # count while the bare int still feeds `tier_band`. Same shape as `early_drops`' "9 (4 mana
 # sources)" and the interaction profile's speed split (G-24).
 _CA_ETB_RE = re.compile(r"^\s*when(?:ever)? [^,\n]{0,40}\benters\b", re.I | re.M)
+# The keyword-prefix alternative is not cosmetic: Magic prints a named trigger as
+# "Opus — Whenever you cast an instant or sorcery spell, …", and **475 pool cards** use that
+# shape. Without it the line anchor missed every one, so deck 25's Elemental Mascot — an
+# Opus trigger that impulses a card on each big spell — was filed ONE-SHOT the first time
+# this split was pointed at a deck other than the one it was written against. That is the
+# G-67 whitelist shape appearing inside the fix for a different whitelist.
 _CA_REPEATABLE_RE = re.compile(
-    r"^\s*(?:whenever\b|at the beginning of\b)"          # a trigger that fires again
+    r"^\s*(?:[A-Za-z][\w' ]{2,24} —\s*)?"                  # optional keyword prefix
+    r"(?:whenever\b|at the beginning of\b)"                # a trigger that fires again
     r"|^[^:\n]{1,40}:\s",                                  # or an activated ability (K-14)
     re.I | re.M)
 

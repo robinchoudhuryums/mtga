@@ -2,30 +2,42 @@
 #: format: Standard
 #: colors: RW
 #: plan: aggro
-#: archetype: RED-FORWARD BOROS ULTRA-TALL (concept T from the 55-mardu addendum):
-#: archetype: boost one or two creatures far past lethal and win in a single swing.
-#: archetype: Bodies that get tall on their own (Molten Man scales with Mountains,
-#: archetype: Crackling Cyclops with each noncreature spell, Red Hulk when damaged);
-#: archetype: bearers that multiply every boost (Swiftblade Vindicator's double
-#: archetype: strike doubles each pump, Seedglaive Mentor grows each time our own
-#: archetype: trick targets it, War Machine pumps +X/+0 per his power); one-shot
-#: archetype: multipliers (Bulk Up DOUBLES power, Team Tactics and Twin Blades grant
-#: archetype: double strike); a real PROTECTION layer for the one body (Boros Charm,
-#: archetype: Celestial Armor, Go Ninja Go's blink-save); and Self-Destruct converts
-#: archetype: the tall body's power into a face-directed fireball at instant speed,
-#: archetype: so chump-blocking never saves the opponent. Speed's haste-unblockable
-#: archetype: rider and Become Brutes / Team Tactics trample grants are the evasion
-#: archetype: layer. Distinct from every roster deck: nothing else wins through ONE
-#: archetype: creature's single overwhelming attack. White beat green in the drafted
-#: archetype: A/B: clock 5v4, interaction 7v5, protection 3v0, curve 2.42v2.64.
-#: tier: A (PROVISIONAL) — graded at the measurable floor after the white package
-#: tier: won the drafted A/B on every axis: a real clock, seven interaction slots
-#: tier: (several scaling with the tall body's own power), and an actual protection
-#: tier: layer, which one-swing decks usually lack. Unproven in matches; the honest
-#: tier: weaknesses are thin card advantage (impulse effects only — a stalled board
-#: tier: grinds it out of resources) and the structural all-in shape: a timely
-#: tier: sweeper or edict-style effect still beats the plan. Re-grade after games.
-#: protect: Molten Man, Inferno Incarnate; Bulk Up; Self-Destruct
+#: archetype: BOROS COMBAT-TALL, REBUILT 2026-09-06 from the 201-card pile analysis
+#: archetype: (.cycle/56-tall-pile-analysis.md §5.9–5.14): ONE protected body wins in one swing, and the
+#: archetype: deck's identity against its own variants is its WHITE LAYER — 56a (RG) compounds permanent
+#: archetype: counters, 56b (mono-R) plays bodies that leave; 56 keeps a PERMANENT body alive and makes it
+#: archetype: connect. Bodies that are tall or self-protecting: Stingerback Terror (7/7 flying trample that
+#: archetype: GROWS as the hand empties), The Sentry (5/5 flying vigilance indestructible — survives its own
+#: archetype: Self-Destruct), Luke Cage (indestructible when attacking ALONE, the deck's pattern), Red Hulk,
+#: archetype: Spinerock Tyrant (copies every single-target trick), Iron Fist (every creature-targeting spell
+#: archetype: gives him a tap for his power to any target), Agrus Kos (suspect → exile on attack). Bearers:
+#: archetype: Swiftblade Vindicator (DS + trample is near-unblockable ×2), Speedball (+2/+2 when targeted and
+#: archetype: may REDIRECT the spell), Seedglaive, War Machine. Delney doubles every power-≤2 trigger (Cyclops
+#: archetype: is +6 a spell, War Machine, Speed's rider, Iron Fist) and lets a 2-power attacker past power-3+
+#: archetype: blockers before the pump. PROTECTION is the axis this rebuild bought — 3 → 7: Swiftfoot Boots
+#: archetype: (permanent hexproof + haste), Avatar State and Restoration Magic (one-mana hexproof instants),
+#: archetype: Crystal Barricade (prevents the body's OWN Self-Destruct damage, chumps the Void), Grand Abolisher
+#: archetype: (the kill turn cannot be interrupted), Speedball's redirect. REACH: Self-Destruct ×2 on a survivor
+#: archetype: is repeatable, Pain for All makes every hit on the body face damage. MULTIPLIERS: Bulk Up ×2,
+#: archetype: Choreographed Sparks / Return the Favor copy them, Team Avatar (+X/+X attacking alone), Fire
+#: archetype: Crystal (red spells −1, team haste so Speed's rider is always on). EVASION: Stingerback / Sentry
+#: archetype: fly, Ferocification (menace + haste every combat), Ruckus (menace + trample, refunds a card),
+#: archetype: Speed's rider. Interaction is deliberately thin (4, one noncreature answer in Untimely
+#: archetype: Malfunction) — the deck answers a board by going over or through it, not by clearing it.
+#: tier: A (PROVISIONAL) — one band ABOVE the measured B floor, which the rubric allows and the
+#: tier: rebuild's own numbers make the honest reading. The floor: aggro plan, clock 5/7, interaction 4
+#: tier: (+1 unread) with card advantage 1 — the resilience axis is where the rebuild PAID: four
+#: tier: creature-only removal spells left (Gnaw ×2, Go Ninja Go, one Agni Kai) and the B floor is the
+#: tier: bill. What argues the A: protection 7 on a plan that lives or dies by one body (the old list
+#: tier: claimed "a real protection layer" and measured 3, one of them Boros Charm double-booked against
+#: tier: its own reach mode); two bodies that survive their own Self-Destruct so the finisher stops
+#: tier: being a one-shot; a kill-turn lock (Abolisher) no other deck here has; and Delney turning the
+#: tier: cheap bodies into engines. Weaknesses, stated: card advantage 1 (Energybending and Ruckus's
+#: tier: leave-draw are not counted, but the deck refuels less than the old list); avg MV 2.67 with
+#: tier: eight cards at MV 4+ on 24 lands; Abolisher's {W}{W} at 13 W sources (59% by T4); and the Void
+#: tier: Sentry hands over is a real 5-a-turn tax. UNPLAYED in this form — re-grade after ten games;
+#: tier: the letter is the user's call, not the guard's.
+#: protect: Self-Destruct; Bulk Up; Crackling Cyclops; Speed, Young Avenger; Seedglaive Mentor; War Machine, Legacy of Iron; Pain for All; Delney, Streetwise Lookout; The Fire Crystal; Crystal Barricade; Swiftfoot Boots; Return the Favor; Choreographed Sparks; Grand Abolisher; Speedball, New Warrior
 #: notes: BUILT from the 55-mardu addendum analysis (concept T). The RGB idea was
 #: notes: infeasible (zero G/B cards in the pile) and the GREEN package measurably
 #: notes: lost the draft-time A/B to white on every axis — parked, not dead: Ashroot
@@ -43,45 +55,78 @@
 #: notes: same-turn trick. Seedglaive's valiant is once per turn — spread tricks
 #: notes: across turns when building him, stack them only on the kill turn.
 
-# Tall bodies
-2 Molten Man, Inferno Incarnate (SPM) 84
-2 Crackling Cyclops (FDN) 83
-1 Red Hulk (MSH) 149
-1 Mai, Jaded Edge (TLA) 147
+#: notes: 2026-09-06 REBUILD (24-for-24, .cycle/56-tall-pile-analysis.md §5.14): OUT Molten Man ×2 (a printed
+#: notes: 0/0 that was ~4/4 on T3, died to everything and SACRIFICED A LAND on leaving — cut on the merits,
+#: notes: and Sacred Foundry is a Mountain so the land swap cost him nothing anyway), Twin Blades ×2 /
+#: notes: Team Tactics ×1 / Boros Charm ×1 (the deck ran NINE double-strike sources and DS does not stack —
+#: notes: on a Vindicator every grant was a blank), Ransacking ×2 (Pw 1.5), Gnaw ×2 + Go Ninja Go + Agni
+#: notes: Kai ×1 (creature-only removal; Go Ninja Go's blink RESETS pumps and counters), Tiger-Dillo /
+#: notes: Scalestorm (power-4 gates that added nothing to evasion), Celestial Armor, Become Brutes, Mai,
+#: notes: one each of Cyclops / Seedglaive / Speed / Haste Magic. The 2-ofs went 14 cards → 2 (Bulk Up,
+#: notes: Self-Destruct) — the user's original ask. Vindicator stayed at 1 beside Speedball (added the same
+#: notes: day for the other copy). LANDS: −2 Mountain +2 Sacred Foundry (W 11 → 13 at zero curve cost,
+#: notes: untapped for 2 life), −Temple of Triumph +Dalkovan Encampment (untapped W beside a Mountain).
+#: notes: Reads the tooling cannot make: Self-Destruct's self-damage is PREVENTED by Barricade and survived
+#: notes: by Sentry / Luke Cage (indestructible), so the finisher is repeatable; Pain for All's reflect does
+#: notes: NOT fire off prevented damage (the ETB and blocker damage still do); Speed's rider needs HASTE on
+#: notes: the target — Fire Crystal, Boots and Ferocification supply it; Delney's doubling reads printed
+#: notes: power ≤2, so Cyclops (0/4) and War Machine (1/3) qualify. Declined here: HULK SMASH! for Team
+#: notes: Avatar (would put interaction at 5 and the floor at A; user kept Team Avatar), Bygone Colossus
+#: notes: (56b's signature body — Luke Cage + Agrus Kos took Molten Man's slots instead), Collective
+#: notes: Inferno (type-gated where Twinflame is not; Twinflame went to 56a). Craft targets after the
+#: notes: rebuild: Stingerback, Fire Crystal, Sacred Foundry ×2 (4 rares); everything else is owned.
 
-# Power-4 payoff bodies
-1 Tiger-Dillo (TLA) 155
-1 Scalestorm Summoner (OTJ) 144
+# Tall bodies
+1 The Sentry, Golden Guardian (MSH) 35
+1 Stingerback Terror (OTJ) 147
+1 Crackling Cyclops (FDN) 83
+1 Spinerock Tyrant (ECL) 159
+1 Red Hulk (MSH) 149
+1 Luke Cage, Power Man (MSH) 20
+1 Agrus Kos, Spirit of Justice (MKM) 184
+1 Iron Fist, Living Weapon (MSH) 138
+
 
 # Bearers / boosters
-2 Swiftblade Vindicator (FDN) 246
-2 Seedglaive Mentor (BLB) 231
+1 Swiftblade Vindicator (FDN) 246
+1 Speedball, New Warrior (MSH) 227
+1 Seedglaive Mentor (BLB) 231
+1 Delney, Streetwise Lookout (MKM) 12
 1 War Machine, Legacy of Iron (MSH) 238
 
 # Evasion riders / protection
-2 Speed, Young Avenger (MSH) 152
-2 Boros Charm (FDN) 721
-1 Celestial Armor (FDN) 5
-1 Go Ninja Go (TMT) 149
+1 Speed, Young Avenger (MSH) 152
+1 Ferocification (OTJ) 123
+1 Boros Charm (FDN) 721
+1 Enter the Avatar State (TLA) 18
+1 Restoration Magic (FIN) 30
+1 Grand Abolisher (BIG) 2
+1 Swiftfoot Boots (BRR) 58
+1 Demonic Ruckus (OTJ) 120
+1 Crystal Barricade (FDN) 7
 
 # Multipliers and tricks
 2 Bulk Up (SOA) 40
-2 Team Tactics (MSH) 155
-2 Twin Blades (TLA) 157
-2 Haste Magic (FIN) 140
-2 Reckless Ransacking (ECL) 152
-1 Become Brutes (WOE) 317
+1 Team Tactics (MSH) 155
+1 Team Avatar (TLA) 38
+1 The Fire Crystal (FIN) 135
+1 Haste Magic (FIN) 140
+1 Energybending (TLA) 2
+1 Return the Favor (SOA) 47
+1 Choreographed Sparks (SOS) 111
 
 # Finisher / removal (power-scaled)
 2 Self-Destruct (FIN) 157
-2 The Last Agni Kai (TLA) 144
-2 Rabid Gnaw (BLB) 147
+1 The Last Agni Kai (TLA) 144
+1 Untimely Malfunction (DSK) 161
+1 Pain for All (EOE) 151
 
 # Lands
 1 Sunbillow Verge (DFT) 264
-1 Temple of Triumph (FDN) 705
+1 Dalkovan Encampment (TDM) 253
 1 Abraded Bluffs (OTJ) 251
 1 Inspiring Vantage (OTJ) 269
 1 Elegant Parlor (MKM) 260
-13 Mountain (MSH) 293
+11 Mountain (MSH) 293
+2 Sacred Foundry (EOE) 256
 6 Plains (MSH) 287

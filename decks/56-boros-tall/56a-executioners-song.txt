@@ -4,8 +4,8 @@
 #: colors: RG
 #: plan: midrange
 #: archetype: GRUUL ULTRA-TALL — the green-package variant of deck 56, revived from
-#: archetype: its parked-not-dead note. Same red core (Molten Man, Crackling Cyclops,
-#: archetype: Red Hulk, Bulk Up, Self-Destruct, the trick suite); green replaces the
+#: archetype: its parked-not-dead note. Same red core as 56 (Crackling Cyclops, Bulk Up,
+#: archetype: Self-Destruct, the trick suite — Molten Man and Red Hulk were CUT 2026-09-05/06); green replaces the
 #: archetype: white bearers with the two biggest RAW boosters in the whole pile —
 #: archetype: Ashroot Animist (+X/+X AND trample per attack) and Halana and Alena
 #: archetype: (X permanent counters + haste every combat) — plus Ruby's ramp. The
@@ -19,27 +19,29 @@
 #: archetype: vs 56 core: white MULTIPLIES
 #: archetype: boosts on small bearers; green COMPOUNDS permanent counters on bodies
 #: archetype: that are already big — slower, bigger, board-independent.
-#: protect: Molten Man, Inferno Incarnate; Ashroot Animist; Halana and Alena, Partners; Bulk Up; Self-Destruct; Overprotect
+#: protect: Ashroot Animist; Halana and Alena, Partners; Ouroboroid; Bulk Up; Self-Destruct; Overprotect; Pain for All; Spinerock Tyrant; Swiftfoot Boots; Twinflame Tyrant; Iron Fist, Living Weapon; Choreographed Sparks
 #: tier: B (PROVISIONAL) — RE-GRADED 2026-08-09 from A, at the measurable floor, after
 #: tier: `#: plan:` was corrected from aggro to midrange. The letter did not change
 #: tier: because the LIST changed; it changed because the list stopped being graded as
 #: tier: an aggro deck. On the aggro plan tier_band substitutes a CLOCK score (this
 #: tier: deck read 4/7) for the interaction a resilience floor demands, which floated
-#: tier: the floor to A. Graded as midrange the floor was B then and is C today:
-#: tier: interaction 4 with card advantage 2 leaves the resilience sum at 6, one under
-#: tier: the 7 a B floor wants since `TIER_FLOOR_REQ` was re-derived from the roster
-#: tier: distribution 2026-09-02 (BS8-06), so the letter now sits one band ABOVE the
-#: tier: floor rather than at it. The rubric's A wants at
+#: tier: the floor to A. Graded as midrange the floor was B then, read C after
+#: tier: `TIER_FLOOR_REQ` was re-derived 2026-09-02 (BS8-06), and is B again since the
+#: tier: 2026-09-05/06 pile tunes: interaction 5 with card advantage 3 puts the resilience
+#: tier: sum at 8, one over the B floor, so the letter sits AT the floor with a point to spare. The rubric's A wants at
 #: tier: most ONE clear weakness. This list has three:
-#: tier: 1. CARD ADVANTAGE 2, with no refuel — the same gap the first grading named.
-#: tier: 2. INTERACTION 4, and ZERO of it answers a NONCREATURE permanent. For an
-#: tier:    aggro deck that is survivable (you are racing); for a midrange deck it is a
-#: tier:    real hole — an enchantment or planeswalker that blanks the plan is unanswerable.
-#: tier: 3. IT DEPENDS ON RESOLVING AND KEEPING ONE BODY. Protection 4 (Overprotect
-#: tier:    x2, Snakeskin Veil, and since 2026-08-11 Agonasaur Rex's cycle clause,
-#: tier:    which grants indestructible at instant speed) is real but thin against
-#: tier:    removal-heavy decks — and the Overprotect pair is UNOWNED, so a deck BUILT
-#: tier:    today carries the Veil and the Rex.
+#: tier: 1. CARD ADVANTAGE 3 since Nexus of Becoming (2026-09-06) — a card every combat — where
+#: tier:    the first grading named 2 with no refuel; still the thinnest axis.
+#: tier: 2. INTERACTION 5, and only ONE piece (Origin of Metalbending's first mode) answers a
+#: tier:    NONCREATURE permanent — artifact OR enchantment (the artifact-only answer was CUT for it). For an aggro deck that is survivable (you are racing);
+#: tier:    for a midrange deck an enchantment or planeswalker that blanks the plan is
+#: tier:    still nearly unanswerable.
+#: tier: 3. IT DEPENDS ON RESOLVING AND KEEPING ONE BODY. Protection 6 (Overprotect
+#: tier:    x2, Snakeskin Veil, Agonasaur Rex's cycle clause, Origin of Metalbending's
+#: tier:    indestructible mode, and since 2026-09-05 Swiftfoot Boots — the first PERMANENT hexproof on a deck whose whole game
+#: tier:    is stored in counters) is real but thin against removal-heavy decks — and
+#: tier:    the Overprotect pair is UNOWNED, so a deck BUILT today carries the Veil,
+#: tier:    the Rex and the Boots.
 #: tier: A FOURTH WEAKNESS WAS CLAIMED HERE AND IS RETRACTED (2026-08-09; Scalestorm
 #: tier: Summoner has since been CUT 2026-08-10, so this now covers Ruby alone and is
 #: tier: kept as the reasoning that retired the flag). `stats`
@@ -49,8 +51,8 @@
 #: tier: CARD HAS AN ENTERS TRIGGER: Scalestorm checks "whenever this creature ATTACKS
 #: tier: ... if you control a creature with power 4 or greater" and Ruby checks
 #: tier: "whenever Ruby ATTACKS WHILE you control" — both read the board at ATTACK
-#: tier: time, so a creature grown by Ashroot, Halana, Ouroboroid, Bulk Up or Twin
-#: tier: Blades DOES satisfy them. In an ultra-tall deck that pumps every combat the
+#: tier: time, so a creature grown by Ashroot, Halana, Ouroboroid, Bulk Up or Buster
+#: tier: Sword DOES satisfy them. In an ultra-tall deck that pumps every combat the
 #: tier: printed-power count understates these gates badly. The flag is a G-16-family
 #: tier: limitation (it measures PRINTED power and cannot see the trigger's timing);
 #: tier: read the trigger before believing it. The B letter is unaffected — it sits one
@@ -110,9 +112,9 @@
 #: notes: plan is one enormous creature surviving. Be honest about what it is NOT: the
 #: notes: cycle is card-NEUTRAL (discard this, draw one), so card advantage stays at 2
 #: notes: and the classifier is right to leave it there. It also does not free a rare;
-#: notes: it spends the same rare wildcard on a different card. The 2nd AGNI KAI stays a craft and should be crafted
-#: notes: FIRST — 56, 56a and 59 are all short the same copy, so one rare completes
-#: notes: three decks (shared collection).
+#: notes: it spends the same rare wildcard on a different card. (The 2nd AGNI KAI was CUT
+#: notes: 2026-09-05 for Dragonclaw Strike — four mana in RG: double power AND toughness, then
+#: notes: fight — so the craft-first note that stood here is retired; 56 and 59 still want it.)
 #: notes: PLAN CORRECTED 2026-08-09 (user call): aggro -> midrange. `#: plan: aggro`
 #: notes: had always disagreed with this deck's own archetype line ("slower, bigger,
 #: notes: board-independent"), and the header is load-bearing rather than descriptive —
@@ -120,15 +122,56 @@
 #: notes: advantage. The mismatch was silently buying an A. See `#: tier:` for the
 #: notes: re-grade. LESSON WORTH KEEPING: a plan header is a grading input, not a label;
 #: notes: when the prose and the plan disagree, the prose is usually the honest one.
+#: notes: 2026-09-05 PILE TUNE (six swaps from .cycle/56-tall-pile-analysis.md §5.6, user-
+#: notes: confirmed): BOTH Molten Man CUT — against 8 basic Mountains he was a 3-mana ~3/3
+#: notes: that sacrifices a land on leaving, behind six better counter engines (the "14
+#: notes: Mountains" note above is history). In: Pain for All (on Halana's target every
+#: notes: point dealt to it is face damage; Self-Destruct is 2X), Mjölnir (equip WORTHY {1}
+#: notes: on EIGHT carriers here — Halana, Wolverine, Scarlet Spider, Mai, Ruby x2, Speed x2
+#: notes: — vs four in 56; Red Hulk is a Villain and never carries it), Swiftfoot Boots for
+#: notes: a Twin Blades (one Blades kept: double strike is NOT redundant here, 3 sources vs
+#: notes: 56's 9, and on a 20/20 it is worth 20), Demonic Ruckus for Ransacking (menace +
+#: notes: trample that refunds a card when removed — the classifier does not count that
+#: notes: draw, so card advantage still reads 2), Giantfall for Gnaw (same power-damage
+#: notes: mode plus the deck's first artifact answer), Spinerock Tyrant for one Cyclops
+#: notes: (user call over Red Hulk: copies Overprotect, Bulk Up, Snakeskin, Self-Destruct —
+#: notes: every trick here is single-target). Measured: interaction 4→5, protection 4→5,
+#: notes: floor C→B, guard clean. Still open: EIGHT taplands (the craft is Stomping Ground,
+#: notes: a Mountain Forest that turns Thornspire Verge on); Railway Brawler reads unowned
+#: notes: because the LIBRARY undercounts it (G-10), not because the deck lacks it.
+#: notes: 2026-09-06 SECOND PASS (user-confirmed, from the same pile doc): −Agni Kai #2
+#: notes: +Dragonclaw Strike (four mana in RG: double P AND T, then fight); −Ruby #2 +Choreographed
+#: notes: Sparks (copy Overprotect / Bulk Up, or an 8/8 haste Rex token that is a free Self-Destruct);
+#: notes: −Mai +Twinflame Tyrant (ungated damage doubler — Collective Inferno was DECLINED here:
+#: notes: the attacker is whichever body got the counters, so one chosen type covers a third of
+#: notes: them); −Haste Magic #1 +Soul Immolation (X up to Rex's 8 / Stingerback's 7, one-sided;
+#: notes: the -1/-1 counters go on a body you do not need); −Twin Blades +Buster Sword (kept Boots
+#: notes: — permanent hexproof is the axis this deck loses on; the user first proposed cutting it);
+#: notes: −Speed #2 +Iron Fist (Ouroboroid puts X counters on EACH creature, so his tap is a real
+#: notes: fireball; Mjölnir-worthy); −Cyclops +Stingerback Terror (Brawler doubles it on entry:
+#: notes: a 14/14 flying trample). Measured: avg MV 2.92→3.25, eight cards at MV 5+, protection 5,
+#: notes: floor B, guard clean. THE TAPLANDS ARE NOW THE DECK'S ONLY STRUCTURAL PROBLEM — eight of
+#: notes: ten nonbasics enter tapped under a curve that moved UP; Stomping Ground x2 is the craft.
+#: notes: Same day: −Speed #1 +Great Divide Guide ("each land … has {T}: Add one mana of any color" —
+#: notes: the GG fix on a two-mana body; Speed's rider needed haste the deck now gets from Halana,
+#: notes: Wolverine, Ruby and Boots) and −Giantfall +Origin of Metalbending (same mana, destroys an
+#: notes: artifact OR enchantment, and its other mode is a +1/+1 counter plus indestructible — a
+#: notes: protection spell in the counters deck; protection 5→6, interaction unchanged at 5).
+#: notes: −Red Hulk +NEXUS OF BECOMING (user call): a 3/3 Golem copy of a counters ENGINE is close to
+#: notes: full value here because the value is the trigger, not the body — a second Ouroboroid
+#: notes: (non-legendary), Brawler, Twinflame, Ashroot — plus a card every combat (CA 2→3, resilience
+#: notes: sum 8). Red Hulk was the least synergistic six: a Villain (no Mjölnir), enrage that nothing
+#: notes: here arranges, and the Self-Destruct non-combo above. Nexus at six is a real turn on eight
+#: notes: taplands — Stomping Ground x2 stays the first craft.
 
 # Tall bodies
-2 Molten Man, Inferno Incarnate (SPM) 84
-2 Crackling Cyclops (FDN) 83
-1 Red Hulk (MSH) 149
+1 Stingerback Terror (OTJ) 147
+1 Spinerock Tyrant (ECL) 159
 1 Wolverine, Fierce Fighter (MSH) 240
 1 Scarlet Spider, Ben Reilly (SPM) 142
-1 Mai, Jaded Edge (TLA) 147
+1 Twinflame Tyrant (FDN) 97
 1 Agonasaur Rex (DFT) 151
+1 Iron Fist, Living Weapon (MSH) 138
 
 # Power-4 payoff body
 1 Quilled Greatwurm (FDN) 111
@@ -139,27 +182,34 @@
 1 Ouroboroid (EOE) 201
 1 Mightform Harmonizer (EOE) 200
 1 Railway Brawler (OTJ) 175
+1 Nexus of Becoming (BIG) 25
 
 # Ramp / evasion riders
-2 Ruby, Daring Tracker (FDN) 245
-2 Speed, Young Avenger (MSH) 152
+1 Ruby, Daring Tracker (FDN) 245
+1 Great Divide Guide (TLA) 181
 
 # Protection (what the A/B green list never had)
 2 Overprotect (BLB) 185
 1 Sage of the Fang (TDM) 155
+1 Swiftfoot Boots (BRR) 58
 
 # Multipliers and tricks
 2 Bulk Up (SOA) 40
 1 Snakeskin Veil (TDM) 159
 1 Broodguard Elite (EOE) 175
-2 Twin Blades (TLA) 157
-2 Haste Magic (FIN) 140
-1 Reckless Ransacking (ECL) 152
+1 Buster Sword (FIN) 255
+1 Haste Magic (FIN) 140
+1 Demonic Ruckus (OTJ) 120
+1 Mjölnir, Hammer of Thor (MSH) 146
+1 Choreographed Sparks (SOS) 111
 
 # Finisher / removal (power-scaled)
 2 Self-Destruct (FIN) 157
-2 The Last Agni Kai (TLA) 144
-1 Rabid Gnaw (BLB) 147
+1 The Last Agni Kai (TLA) 144
+1 Dragonclaw Strike (TDM) 180
+1 Origin of Metalbending (TLA) 187
+1 Pain for All (EOE) 151
+1 Soul Immolation (ECL) 156
 
 # Lands
 1 Thornspire Verge (DSK) 270
