@@ -76,6 +76,8 @@
 #: notes: via Enduring Innocence and lifegain into cards via Exemplar of Light, and it
 #: notes: never blinks for value. If the roster ever needs pruning, 68b vs 68 is the
 #: notes: closest pair in the family and the honest place to look first.
+#: notes: 2026-09-06 LAND SWEEP (owned four-ofs of the untapped-beside-a-basic duals): −Blossoming Sands, −Birnin Zana Plaza, −Kyoshi Village
+#: notes: +3x Gathering Place. Sources W 16 / U 1 / B 1 / G 16 → W 16 / U 1 / B 1 / G 16; unconditional taplands 6 → 3. Same colours, no tempo tax.
 
 1 Enduring Innocence (DSK) 6
 1 Exemplar of Light (FDN) 733
@@ -112,11 +114,8 @@
 1 Oakhollow Village (BLB) 258
 1 Lupinflower Village (BLB) 256
 1 Hushwood Verge (DSK) 261
-1 Gathering Place (MSH) 266
+4 Gathering Place (MSH) 266
 1 Suburban Sanctuary (SPM) 185
-1 Blossoming Sands (M21) 244
-1 Birnin Zana Plaza (MSH) 262
-1 Kyoshi Village (TLA) 271
 7 Forest (HOB) 193
 1 Sandsteppe Citadel (TDM) 266
 1 Etched Cornfield (DSK) 258

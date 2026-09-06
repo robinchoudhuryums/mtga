@@ -32,6 +32,8 @@
 #: notes: BAYLEN'S ABILITIES ARE UNRESTRICTED (no sorcery clause): with Veteran
 #: notes: Beastrider untapping everything at your end step, the token board pays Baylen
 #: notes: again on each opponent's turn.
+#: notes: 2026-09-06 LAND SWEEP (owned four-ofs of the untapped-beside-a-basic duals): −Command Bridge, −Blossoming Sands, −Kyoshi Village, −Rugged Highlands, −Gongaga, Reactor Town
+#: notes: +2x Gathering Place, +3x Training Compound. Sources W 11 / U 1 / B 1 / R 11 / G 12 → W 10 / R 11 / G 12; unconditional taplands 6 → 1. Same colours, no tempo tax.
 #: protect: Baylen, the Haymaker; Wylie Duke, Atiin Hero; Ghired, Mirror of the Wilds; Ertha Jo, Frontier Mentor; Anzrag, the Quake-Mole
 
 # Mercenary engine — token makers + sinks
@@ -77,14 +79,11 @@
 1 Zealous Display (EOE) 45
 
 # Lands — 24 Naya (fungible with 73)
-1 Command Bridge (EOE) 252
 1 Sunbillow Verge (DFT) 264
 1 Thornspire Verge (DSK) 270
 1 Hushwood Verge (DSK) 261
-1 Blossoming Sands (M21) 244
-1 Kyoshi Village (TLA) 271
-1 Rugged Highlands (FDN) 265
-1 Gongaga, Reactor Town (FIN) 280
+2 Gathering Place (MSH) 266
+3 Training Compound (MSH) 275
 1 Restless Ridgeline (LCI) 283
 6 Plains (HOB) 189
 4 Forest (HOB) 193

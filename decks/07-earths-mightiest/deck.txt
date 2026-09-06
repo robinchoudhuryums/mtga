@@ -18,11 +18,13 @@
 #: tier: `TIER_FLOOR_REQ` was re-derived from the roster distribution 2026-09-02 (BS8-06),
 #: tier: so the under-graded flag this paragraph was written to answer is gone — the
 #: tier: letter did not move, the yardstick did. Held at B pending a HUMAN call only because the deck is
-#: tier: UNPLAYED — the thin 7-theme spine and singleton variance are the remaining
+#: tier: UNPLAYED — the thin 6-theme spine and singleton variance are the remaining
 #: tier: arguments, and neither is measured.
 #: colors: GW
 #: archetype: Selesnya (G/W) Avengers heroes go-wide.
 #: notes: Selesnya (G/W) — Avengers heroes go-wide.
+#: notes: 2026-09-06 LAND SWEEP (owned four-ofs of the untapped-beside-a-basic duals): −Blossoming Sands, −Birnin Zana Plaza, −Kyoshi Village
+#: notes: +3x Gathering Place. Sources W 13 / G 16 → W 13 / G 16; unconditional taplands 3 → 0. Same colours, no tempo tax.
 
 # Nonland
 1 Agent Phil Coulson (MSH) 4
@@ -64,12 +66,9 @@
 
 # Lands
 8 Plains (MSH) 288
-1 Blossoming Sands (M21) 244
-1 Gathering Place (MSH) 266
+4 Gathering Place (MSH) 266
 1 Hushwood Verge (DSK) 261
 11 Forest (MSH) 296
-1 Birnin Zana Plaza (MSH) 262
-1 Kyoshi Village (TLA) 271
 
 # Flex — STANDARD-LEGAL craft targets, weighted so you don't waste wildcards. See: deck.py flex 7
 #~ -Requisition Raid | +Kutzil's Flanker | CRAFT (R) ★ MARKED UPGRADE: flash — big counters OR removal; the flexible interaction the deck genuinely lacks

@@ -2,7 +2,7 @@
 #: format: Standard
 #: tier: B — Triceraton owned build. The old C hard-cap (near-zero interaction /
 #: tier: thin themes) stopped fitting once the classifier read the removal it had
-#: tier: been missing; the live figures are interaction 6 and 14 central themes on a
+#: tier: been missing; the live figures are interaction 6 and 15 central themes on a
 #: tier: fully BUILT, castable Naya Dino shell. 2026-08-31 swaps, both from the
 #: tier: power-4 package crafted for deck 59 (copies are fungible, so they cost no
 #: tier: wildcards): Terrian, World Tyrant was CUT for Roxanne, Starfall Savant — a
@@ -25,6 +25,8 @@
 #: colors: RGW
 #: based-on: 28
 #: archetype: 28 variant built from owned cards — Naya Dinosaurs + Soldier go-wide. Now with the crafted removal (Itzquinth, Triumphant Chomp) and more Dinos (Scalestorm, Dracosaur, Belligerent) swapped in over the off-plan filler. Still missing the rare/mythic tribal payoffs (Regal Imperiosaur lord, Gishath), so it's a solid Dino midrange, not yet full tribal.
+#: notes: 2026-09-06 LAND SWEEP (owned four-ofs of the untapped-beside-a-basic duals): −Blossoming Sands, −Birnin Zana Plaza, −Gruul Guildgate, −Omashu City
+#: notes: +2x Gathering Place, +2x Training Compound. Sources W 11 / R 11 / G 12 → W 11 / R 11 / G 12; unconditional taplands 7 → 3. Same colours, no tempo tax.
 
 2 Triceraton Commander (TMT) 25
 1 Serra Redeemer (BLB) 387
@@ -65,13 +67,10 @@
 
 # Lands (23 — Naya fixing: 11 owned duals + 12 basics, all owned + Standard-legal)
 1 Restless Ridgeline (LCI) 283
-1 Blossoming Sands (M21) 244
 1 Hushwood Verge (DSK) 261
-1 Gathering Place (MSH) 266
-1 Birnin Zana Plaza (MSH) 262
+3 Gathering Place (MSH) 266
 1 Thornspire Verge (DSK) 270
-1 Gruul Guildgate (RNA) 250
-1 Omashu City (TLA) 275
+2 Training Compound (MSH) 275
 1 Sunbillow Verge (DFT) 264
 1 Temple of Triumph (FDN) 705
 1 Abraded Bluffs (OTJ) 251

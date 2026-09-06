@@ -8,6 +8,8 @@
 #: notes: Eagle / Kastral / Choco) for more green token-makers (Suki, Rinoa,
 #: notes: Spider-Ham) and a clean GW manabase. Chocobo landfall tokens + For the
 #: notes: Common Good copy-army + white/green anthems & go-wide. Compare to the primary (deck.txt).
+#: notes: 2026-09-06 LAND SWEEP (owned four-ofs of the untapped-beside-a-basic duals): −Birnin Zana Plaza, −Blossoming Sands, −Kyoshi Village
+#: notes: +3x Gathering Place. Sources W 15 / U 1 / G 18 → W 15 / U 1 / G 18; unconditional taplands 4 → 1. Same colours, no tempo tax.
 
 # Chocobo landfall / token engine
 1 Traveling Chocobo (FIN) 210
@@ -54,11 +56,8 @@
 1 Sazh Katzroy (FIN) 199
 
 # Lands (GW — 10 nonbasic + 14 basics; 3 sac-fetches double every landfall trigger)
-1 Birnin Zana Plaza (MSH) 262
-1 Blossoming Sands (M21) 244
 1 Hushwood Verge (DSK) 261
-1 Gathering Place (MSH) 266
-1 Kyoshi Village (TLA) 271
+4 Gathering Place (MSH) 266
 1 Ba Sing Se (TLA) 266
 1 Evolving Wilds (ECL) 264
 1 Terramorphic Expanse (MSC) 828

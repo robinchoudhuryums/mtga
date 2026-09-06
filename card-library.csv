@@ -2650,7 +2650,7 @@ When this land enters, you gain 1 life.
 Hushwood Verge,Land,"{T}: Add {G}.
 {T}: Add {W}. Activate only if you control a Forest or a Plains.",W/G,mana,DSK,261,1
 Gathering Place,Land,"{T}: Add {C}.
-{T}: Add {G} or {W}. Activate only if this land entered this turn or if you control a basic land.",W/G,mana,MSH,266,1
+{T}: Add {G} or {W}. Activate only if this land entered this turn or if you control a basic land.",W/G,mana,MSH,266,4
 Cuboid Colony,Creature — Insect,"Flash
 Flying, trample
 Increment (Whenever you cast a spell, if the amount of mana you spent is greater than this creature's power or toughness, put a +1/+1 counter on this creature.)",U/G,Insect; counters; flying; evasion; trample; flash; tempo; increment; spellslinger,SOS,183,1
@@ -2930,7 +2930,7 @@ Castle Doom,Land,"{T}: Add {C}.
 {3}, {T}, Sacrifice an artifact: Create a 3/3 colorless Robot Villain artifact creature token named Doombot. Activate only as a sorcery.",Colorless,sacrifice; tokens; mana,MSH,263,3
 Capital City,Land — Town,"{T}: Add {C}.
 {1}, {T}: Add one mana of any color.
-Cycling {2} ({2}, Discard this card: Draw a card.)",Colorless,Town; card draw; mana; cycling,FIN,274,1
+Cycling {2} ({2}, Discard this card: Draw a card.)",Colorless,Town; card draw; mana; cycling,FIN,274,4
 Captivating Cave,Land — Cave,"{T}: Add {C}.
 {1}, {T}: Add one mana of any color.
 {4}, {T}, Sacrifice this land: Put two +1/+1 counters on target creature. Activate only as a sorcery.",Colorless,Cave; counters; sacrifice; mana,LCI,268,1
@@ -3008,7 +3008,7 @@ The Mind Stone,Legendary Artifact — Infinity Stone,"Indestructible
 "Evendo, Waking Haven",Land — Planet,"This land enters tapped.
 {T}: Add {G}.
 Station (Tap another creature you control: Put charge counters equal to its power on this Planet. Station only as a sorcery.)
-12+ | {G}, {T}: Add {G} for each creature you control.",G,Planet; mana; station; counters; artifacts,EOE,253,1
+12+ | {G}, {T}: Add {G} for each creature you control.",G,Planet; mana; station; counters; artifacts,EOE,253,4
 Wisdom of Ages,Sorcery,"Return all instant and sorcery cards from your graveyard to your hand. You have no maximum hand size for the rest of the game.
 Exile Wisdom of Ages.",U,graveyard,SOS,71,1
 Urban Retreat,Land,"This land enters tapped.
@@ -3362,7 +3362,7 @@ The Goose Mother enters with X +1/+1 counters on it.
 When The Goose Mother enters, create half X Food tokens, rounded up.
 Whenever The Goose Mother attacks, you may sacrifice a Food. If you do, draw a card.",U/G,Bird; Hydra; counters; card draw; sacrifice; tokens; etb; food; flying; evasion,WOE,204,1
 Golgari Guildgate,Land — Gate,"This land enters tapped.
-{T}: Add {B} or {G}.",B/G,Gate; mana,FDN,689,1
+{T}: Add {B} or {G}.",B/G,Gate; mana,FDN,689,4
 Subterranean Cavern,Land,"This land enters tapped.
 When this land enters, you gain 1 life.
 {T}: Add {B} or {G}.",B/G,lifegain; mana; etb,MSH,273,1
@@ -4584,7 +4584,7 @@ Hardbristle Bandit,Creature — Plant Rogue,"{T}: Add one mana of any color.
 Whenever you commit a crime, untap this creature. This ability triggers only once each turn. (Targeting opponents, anything they control, and/or cards in their graveyards is a crime.)",G,Plant; Rogue; graveyard; mana,OTJ,168,1
 Festering Gulch,Land — Desert,"This land enters tapped.
 When this land enters, it deals 1 damage to target opponent.
-{T}: Add {B} or {G}.",B/G,Desert; burn; mana; etb; noncombat damage,OTJ,257,1
+{T}: Add {B} or {G}.",B/G,Desert; burn; mana; etb; noncombat damage,OTJ,257,3
 Cheering Crowd,Creature — Human Citizen,"At the beginning of each player's first main phase, that player may put a +1/+1 counter on this creature. If they do, they add {C} for each counter on it.",R/G,Human; Citizen; counters,SPM,126,1
 The Speed Demon,Legendary Creature — Demon,"Flying, trample
 Start your engines! (If you have no speed, it starts at 1. It increases once on each of your turns when an opponent loses life. Max speed is 4.)
@@ -5007,7 +5007,7 @@ Threshold — This creature gets +1/+1 as long as there are seven or more cards 
 Celebrate the Mountain-king,Enchantment,"When this enchantment enters, for each opponent, exile up to one target nonland permanent that player controls until this enchantment leaves the battlefield.
 When this enchantment enters, recruit. (Draw a card, then discard a card. If you discarded a nonland card, create a 1/1 white Human Soldier creature token.)",W,card draw; tokens; etb,HOB,7,1
 Sandsteppe Citadel,Land,"This land enters tapped.
-{T}: Add {W}, {B}, or {G}.",W/B/G,mana,TDM,266,1
+{T}: Add {W}, {B}, or {G}.",W/B/G,mana,TDM,266,2
 Simulacrum Synthesizer,Artifact,"When this artifact enters, scry 2.
 Whenever another artifact you control with mana value 3 or greater enters, create a 0/0 colorless Construct artifact creature token with ""This token gets +1/+1 for each artifact you control.""",U,tokens; etb; scry; pump; selection,BIG,6,1
 Jailbreak Scheme,Sorcery,"Spree (Choose one or more additional costs.)
@@ -5533,3 +5533,16 @@ Savage Mansion,Land,"This land enters tapped.
 Rocky Roads,Land,"This land enters tapped unless you control a Mount or Vehicle.
 {T}: Add {R}.
 {1}{R}, {T}, Sacrifice this land: Create a 1/1 colorless Pilot creature token with ""This token saddles Mounts and crews Vehicles as though its power were 2 greater."" Activate only as a sorcery.",R,Mount; sacrifice; tokens; mana,DFT,261,2
+"Gohn, Town of Ruin",Land — Town,"This land enters tapped.
+{T}: Add {B} or {G}.",B/G,Town; mana,FIN,278,3
+Mirkwood,Land,"This land enters tapped.
+{T}: Add {B} or {G}.
+{2}{B}{G}, {T}, Sacrifice this land: Put two +1/+1 counters on target Bear, Spider, or Wolf you control. Activate only as a sorcery.",B/G,counters; sacrifice; mana,HOB,188,1
+Strangled Cemetery,Land,"This land enters tapped unless a player has 13 or less life.
+{T}: Add {B} or {G}.",B/G,mana,DSK,268,1
+Wild Roads,Land,"This land enters tapped unless you control a Mount or Vehicle.
+{T}: Add {G}.
+{1}{G}, {T}, Sacrifice this land: Create a 1/1 colorless Pilot creature token with ""This token saddles Mounts and crews Vehicles as though its power were 2 greater."" Activate only as a sorcery.",G,Mount; sacrifice; tokens; mana,DFT,269,2
+Temple of Plenty,Land,"This land enters tapped.
+When this land enters, scry 1. (Look at the top card of your library. You may put that card on the bottom.)
+{T}: Add {G} or {W}.",W/G,mana; etb; scry; selection,FDN,703,1

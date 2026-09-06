@@ -124,6 +124,12 @@
 #: notes: reward. Counters here are incidental (Ainok Wayfarer, Beorn's Hospitality,
 #: notes: Famished Worldsire); the deck's scaling comes from the land count, not from
 #: notes: counters, so adding a counters payoff would be building a second deck.
+#: notes: 2026-09-06 LANDS: −4 Forest +2 Elven Passage +2 Ba Sing Se (owned). Passage is the fetch that
+#: notes: dodges the four-fetch cap above — beholding an Elf (Aftermath Analyst, Mirkwood Pathmaker) untaps
+#: notes: the fetched Forest — and every fetch is replayable from the yard under Mole Man / Icetill / Closet.
+#: notes: Ba Sing Se is untapped beside any Forest and earthbend makes a land a Bear-able body that returns
+#: notes: on death (another landfall). `consistency` reads all of this as neutral (G 25 either way) — it
+#: notes: counts a fetch as a source and cannot price the crack turn; the cap was a hand measurement.
 
 1 Beorn the Fierce (HOB) 119
 1 Lumra, Bellow of the Woods (BLB) 183
@@ -163,7 +169,9 @@
 1 Hobbit Hole (HOB) 184
 1 Terramorphic Expanse (MSC) 828
 1 Cryptic Caves (FDN) 771
-21 Forest (HOB) 193
+17 Forest (HOB) 193
+2 Ba Sing Se (TLA) 266
+2 Elven Passage (HOB) 181
 
 #~ craft: Planar Engineering {3}{G} — sac two lands, fetch four basics. The two
 #~ craft: sacrificed lands go to the GRAVEYARD, which Lumra / Summon: Titan / Aftermath

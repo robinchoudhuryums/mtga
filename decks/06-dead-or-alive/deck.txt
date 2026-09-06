@@ -4,6 +4,8 @@
 #: colors: WBG
 #: archetype: Abzan (W/B/G) reanimator — graveyard value.
 #: notes: Abzan (W/B/G) — graveyard value / reanimator.
+#: notes: 2026-09-06 LAND SWEEP (owned four-ofs of the untapped-beside-a-basic duals): −Kyoshi Village, −Birnin Zana Plaza, −Blossoming Sands
+#: notes: +3x Gathering Place. Sources W 12 / U 2 / B 13 / R 2 / G 14 → W 12 / U 2 / B 13 / R 2 / G 14; unconditional taplands 7 → 4. Same colours, no tempo tax.
 
 # Nonland
 2 The Last Ronin (TMT) 154
@@ -43,20 +45,17 @@
 
 # Lands
 1 Eden, Seat of the Sanctum (FIN) 277
-1 Gathering Place (MSH) 266
+4 Gathering Place (MSH) 266
 2 Surveillance Room (MSH) 274
 5 Swamp (MSH) 291
 1 Illegitimate Business (TMT) 186
 1 Insomnia, Crown City (FIN) 282
 3 Plains (MSH) 287
-1 Kyoshi Village (TLA) 271
 1 Hushwood Verge (DSK) 261
 1 Bleachbone Verge (DFT) 250
 3 Forest (MSH) 295
 1 Foggy Bottom Swamp (TLA) 269
-1 Birnin Zana Plaza (MSH) 262
 1 Wastewood Verge (DFT) 268
-1 Blossoming Sands (M21) 244
 1 Jungle Hollow (M21) 247
 
 # Flex — STANDARD-LEGAL craftable reanimator upgrades. See: deck.py flex 6

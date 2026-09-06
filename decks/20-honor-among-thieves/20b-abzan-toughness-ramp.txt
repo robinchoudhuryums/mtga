@@ -27,6 +27,8 @@
 #: notes: toughness dorks, land ramp) powers out the fatties; Loot can cheat
 #: notes: Adamantoise into play. Slower ramp-midrange, not aggro. Aettir and Priwen
 #: notes: (X/X = life) is a backup finisher.
+#: notes: 2026-09-06 LAND SWEEP (owned four-ofs of the untapped-beside-a-basic duals): −Blossoming Sands
+#: notes: +Gathering Place. Sources W 11 / U 4 / B 14 / R 3 / G 16 → W 11 / U 4 / B 14 / R 3 / G 16; unconditional taplands 9 → 8. Same colours, no tempo tax.
 
 # Nonland — payoffs & flavor
 1 The Kingpin of Crime (MSH) 220
@@ -74,9 +76,8 @@
 
 # Lands
 4 Jungle Hollow (M21) 247
-1 Blossoming Sands (M21) 244
 1 Hushwood Verge (DSK) 261
-1 Gathering Place (MSH) 266
+2 Gathering Place (MSH) 266
 1 Opulent Palace (TDM) 264
 1 Scoured Barrens (M21) 250
 1 Temple of Silence (FDN) 704

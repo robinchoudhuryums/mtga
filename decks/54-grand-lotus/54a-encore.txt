@@ -147,6 +147,8 @@
 #: notes: (2 -> 3+), first call if the engine keeps dying; Balmor converts the spell
 #: notes: count to combat damage. Thousand-Year Storm is on-plan but collapses this
 #: notes: deck toward deck 25's identity — a USER CALL, deliberately not auto-applied.
+#: notes: 2026-09-06 LAND SWEEP (owned four-ofs of the untapped-beside-a-basic duals): −2x Rugged Highlands
+#: notes: +2x Training Compound. Sources W 2 / U 16 / B 2 / R 16 / G 12 → W 2 / U 16 / B 2 / R 16 / G 12; unconditional taplands 9 → 7. Same colours, no tempo tax.
 # Engine — cast-from-graveyard granters
 1 Iroh, Grand Lotus (TLA) 227
 1 Songcrafter Mage (TDM) 225
@@ -202,8 +204,7 @@
 3 Stark Industries (MSH) 272
 1 Spectacle Summit (SOS) 262
 1 Temple of Epiphany (FDN) 699
-1 Training Compound (MSH) 275
-2 Rugged Highlands (M21) 249
+3 Training Compound (MSH) 275
 1 Thornspire Verge (DSK) 270
 1 Breeding Pool (EOE) 251
 1 Willowrush Verge (DFT) 270

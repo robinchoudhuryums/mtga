@@ -52,6 +52,8 @@
 #: notes: SEQUENCING NOTE: tap-for-mana BEFORE casting — a Drum/Relic/Vitality
 #: notes: activation is a Wylie draw the spell then benefits from; with Captain America
 #: notes: out, tap each fixer body once for value, get it refunded, then tap for mana.
+#: notes: 2026-09-06 LAND SWEEP (owned four-ofs of the untapped-beside-a-basic duals): −Adagia, Windswept Bastion, −Command Bridge, −Blossoming Sands, −Kyoshi Village, −Rugged Highlands, −Gongaga, Reactor Town
+#: notes: +3x Gathering Place, +3x Training Compound. Sources W 13 / U 4 / B 2 / R 11 / G 14 → W 12 / U 3 / B 1 / R 11 / G 15; unconditional taplands 9 → 3. Same colours, no tempo tax.
 #: uncastable-ok: Captain America, Living Legend
 #: protect: Wylie Duke, Atiin Hero; Captain America, Living Legend; Dazzling Theater // Prop Room; Annie Joins Up; Dragonbroods' Relic
 
@@ -100,17 +102,13 @@
 1 Fate of the Sun-Cryst (FIN) 19
 
 # Lands — 24 (Adagia + Command Bridge are outlets; Monastery/Surveillance pay the U)
-1 Adagia, Windswept Bastion (EOE) 250
-1 Command Bridge (EOE) 252
 1 Surveillance Room (MSH) 274
 1 Sunbillow Verge (DFT) 264
 1 Thornspire Verge (DSK) 270
 1 Hushwood Verge (DSK) 261
 2 Mystic Monastery (TDM) 262
-1 Blossoming Sands (M21) 244
-1 Kyoshi Village (TLA) 271
-1 Rugged Highlands (FDN) 265
-1 Gongaga, Reactor Town (FIN) 280
+3 Gathering Place (MSH) 266
+3 Training Compound (MSH) 275
 1 Restless Ridgeline (LCI) 283
 4 Plains (HOB) 189
 5 Forest (HOB) 193

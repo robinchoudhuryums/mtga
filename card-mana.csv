@@ -2584,6 +2584,11 @@ Bristling Backwoods,,0,
 Temple of Abandon,,0,Scry
 Savage Mansion,,0,Surveil
 Rocky Roads,,0,
+"Gohn, Town of Ruin",,0,
+Mirkwood,,0,
+Strangled Cemetery,,0,
+Wild Roads,,0,
+Temple of Plenty,,0,Scry
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -3870,7 +3875,6 @@ Foul Roads,,0,
 Muraganda Raceway,,0,Max speed;Start your engines!
 Night Market,,0,Cycling
 Reef Roads,,0,
-Wild Roads,,0,
 Possibility Storm,{3}{R}{R},5,
 Ghost Quarter,,0,
 Burden of Guilt,{W},1,Enchant
@@ -4568,7 +4572,6 @@ Murky Sewer,,0,
 Neglected Manor,,0,
 Peculiar Lighthouse,,0,
 Raucous Carnival,,0,
-Strangled Cemetery,,0,
 Valgavoth's Lair,,0,Hexproof
 Roast,{1}{R},2,
 Rally the Ancestors,{X}{W}{W},2,
@@ -5377,7 +5380,6 @@ Selesnya Guildgate,,0,
 Simic Guildgate,,0,
 Temple of Deceit,,0,Scry
 Temple of Mystery,,0,Scry
-Temple of Plenty,,0,Scry
 Make a Stand,{2}{W},3,
 Confiscate,{4}{U}{U},6,Enchant
 Rite of Replication,{2}{U}{U},4,Kicker
@@ -5548,7 +5550,6 @@ Ring of the Lucii,{4},4,
 World Map,{1},1,
 "Balamb Garden, SeeD Academy // Balamb Garden, Airborne",,0,Flying;Transform;Crew
 Clive's Hideaway,,0,Hideaway
-"Gohn, Town of Ruin",,0,
 "Ishgard, the Holy See // Faith & Grief",{3}{W}{W},0,
 "Jidoor, Aristocratic Capital // Overture",{4}{U}{U},0,Mill
 "Lindblum, Industrial Regency // Mage Siege",{2}{R},0,
@@ -6198,7 +6199,6 @@ Well-Worn Spatula,{1},1,Equip
 Elvenking's Halls,,0,
 Goblin-town,,0,
 Lake-town,,0,
-Mirkwood,,0,
 Plains,,0,
 Island,,0,
 Swamp,,0,

@@ -11,6 +11,8 @@
 #: notes: Bullseye, Sawblade) for a clean 3-color base, plus the slowest cards (Dawnsire, Kitsune,
 #: notes: Worlds Within Worlds, Hidetsugu's, Redshift, Avatar Destiny). Top-end is still a touch
 #: notes: heavy (Krang/Bahamut/Dawning Archaic) — trim more toward the tempo plan if it clunks.
+#: notes: 2026-09-06 LAND SWEEP (owned four-ofs of the untapped-beside-a-basic duals): −Gruul Guildgate
+#: notes: +Training Compound. Sources U 11 / R 11 / G 11 → U 11 / R 11 / G 11; unconditional taplands 5 → 4. Same colours, no tempo tax.
 
 # Cheat enablers + top-end payoffs (worth cheating)
 1 Michelangelo, Improviser (TMT) 119
@@ -62,7 +64,7 @@
 1 Thornspire Verge (DSK) 270
 1 Breeding Pool (EOE) 251
 1 Izzet Guildgate (FDN) 691
-1 Gruul Guildgate (FDN) 690
+1 Training Compound (MSH) 275
 1 Temple of Epiphany (FDN) 699
 1 Restless Ridgeline (LCI) 283
 1 Guadosalam, Farplane Gateway (FIN) 281

@@ -44,6 +44,8 @@
 #: notes: KNOWN THIN SPOT, accepted at build time: Season of the Burrow wants {W}{W} on a
 #: notes: 7-W-source base — `mana` flags it. It is the deck's only double-white and a
 #: notes: late-game modal, so the G-36 framing is "cast late", not a build error.
+#: notes: 2026-09-06 LAND SWEEP (owned four-ofs of the untapped-beside-a-basic duals): −Suburban Sanctuary, −Blossoming Sands
+#: notes: +2x Gathering Place. Sources W 9 / U 9 / G 11 → W 9 / U 9 / G 11; unconditional taplands 4 → 2. Same colours, no tempo tax.
 
 # The seer — every big creature cast pays out
 1 Helga, Skittish Seer (BLB) 217
@@ -101,11 +103,9 @@
 1 Breeding Pool (EOE) 251
 1 Willowrush Verge (DFT) 270
 1 Thornwood Falls (FDN) 269
-1 Gathering Place (MSH) 266
-1 Suburban Sanctuary (SPM) 185
+3 Gathering Place (MSH) 266
 1 Hushwood Verge (DSK) 261
 1 Tranquil Cove (TDM) 270
-1 Blossoming Sands (M21) 244
 4 Forest (HOB) 193
 5 Island (HOB) 190
 4 Plains (HOB) 189

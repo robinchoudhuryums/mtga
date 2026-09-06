@@ -24,6 +24,8 @@
 #: notes: manabase rides heavy any-color fixing (Castle Doom makes any color FOR
 #: notes: artifacts — nearly the whole deck) + Heraldic Banner / Barrels / Arc Reactor.
 #: notes: Powerful and flavorful but the least consistent of the three.
+#: notes: 2026-09-06 LAND SWEEP (owned four-ofs of the untapped-beside-a-basic duals): −Blossoming Sands
+#: notes: +Gathering Place. Sources W 10 / U 8 / B 12 / R 10 / G 13 → W 10 / U 8 / B 12 / R 10 / G 13; unconditional taplands 4 → 3. Same colours, no tempo tax.
 
 # Nonland — Food / sac core
 1 Pizza Face, Gastromancer (TMT) 163
@@ -78,7 +80,7 @@
 1 Captivating Cave (LCI) 268
 1 Starting Town (FIN) 289
 1 Jungle Hollow (M21) 247
-1 Blossoming Sands (M21) 244
+1 Gathering Place (MSH) 266
 1 Bloodfell Caves (TDM) 250
 1 Opulent Palace (TDM) 264
 3 Forest (MSH) 296

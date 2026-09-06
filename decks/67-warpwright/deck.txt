@@ -34,6 +34,8 @@
 #: archetype: the exile-cast is an ENGINE (free permanents + board) rather than a payoff.
 #: notes: Draft 1, from the 2026-08-10 ingest's Kellan seed. Fully owned by design —
 #: notes: every line was picked from the owned pool; tune for craft upgrades later.
+#: notes: 2026-09-06 LAND SWEEP (owned four-ofs of the untapped-beside-a-basic duals): −Suburban Sanctuary
+#: notes: +Gathering Place. Sources W 12 / U 15 / G 10 → W 12 / U 15 / G 10; unconditional taplands 9 → 8. Same colours, no tempo tax.
 1 Kellan, the Kid (OTJ) 213
 2 Appa, Steadfast Guardian (TLA) 10
 1 Doc Aurlock, Grizzled Genius (OTJ) 201
@@ -74,7 +76,7 @@
 1 Guadosalam, Farplane Gateway (FIN) 281
 1 Mutant Town (TMT) 187
 1 Pym Technologies (MSH) 271
-1 Suburban Sanctuary (SPM) 185
+1 Gathering Place (MSH) 266
 1 Tranquil Cove (TDM) 270
 2 University Campus (SPM) 186
 1 North Pole Gates (TLA) 274

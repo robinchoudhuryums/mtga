@@ -20,6 +20,8 @@
 #: notes: Valorous Stance, Unforgiving Aim, Harsh Annotation) + the Dion bomb + Super Strength,
 #: notes: and craft Slumbering Keepguard as the enchantress draw engine (its one craft).
 #: notes: Interaction jumps from 1 → ~10. Manabase +1 land (24) for the heavier top-end.
+#: notes: 2026-09-06 LAND SWEEP (owned four-ofs of the untapped-beside-a-basic duals): −Blossoming Sands, −Birnin Zana Plaza, −Gruul Guildgate, −Omashu City
+#: notes: +2x Gathering Place, +2x Training Compound. Sources W 11 / R 10 / G 14 → W 11 / R 10 / G 14; unconditional taplands 7 → 3. Same colours, no tempo tax.
 
 # Threats / bombs
 1 Terra, Magical Adept (FIN) 245
@@ -67,13 +69,10 @@
 
 # Lands (24 — Naya fixing: 11 owned duals + 13 basics)
 1 Restless Ridgeline (LCI) 283
-1 Blossoming Sands (M21) 244
 1 Hushwood Verge (DSK) 261
-1 Gathering Place (MSH) 266
-1 Birnin Zana Plaza (MSH) 262
+3 Gathering Place (MSH) 266
 1 Thornspire Verge (DSK) 270
-1 Gruul Guildgate (RNA) 250
-1 Omashu City (TLA) 275
+2 Training Compound (MSH) 275
 1 Sunbillow Verge (DFT) 264
 1 Temple of Triumph (FDN) 705
 1 Abraded Bluffs (OTJ) 251
