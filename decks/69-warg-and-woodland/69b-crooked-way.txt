@@ -80,6 +80,14 @@
 #: notes: every recursion effect double-dips — the creature comes back AND the Goblin
 #: notes: army grows. The Orcs-gain-menace mode is a mana sink the deck can actually
 #: notes: pay late.
+#: notes: 2026-09-06 LANDS, all owned now (twelve unowned lands were the craft blocker): −3 Overgrown Tomb
+#: notes: −4 Temple Garden −4 Deathcap Glade −1 Sandsteppe Citadel, +3 Gathering Place (4 total, the GW twin
+#: notes: of Training Compound: untapped beside any basic) +Hushwood Verge +Wastewood Verge +2 Evolving Wilds
+#: notes: +2 Elven Passage +Vibrant Cityscape +Terramorphic Expanse +Temple of Plenty. Measured: W 11 / B 14 /
+#: notes: G 20 → 17 / 13 / 20, unconditional taplands 3 → 3, Tolsimir T5 64.7 → 88.2%, Head of the Hunt T4
+#: notes: 74.1 → 69.6% (the one cost; a Plains→Swamp moves a point each way), Scavenger T3 87.7 → 87.7%. The
+#: notes: six fetches are twelve landfall triggers for Tifa / Dancing / Through the Forest Gate. Temple
+#: notes: Garden is no longer the load-bearing craft; nothing unowned beats this by more than a point or two.
 
 1 Torgal, A Fine Hound (FIN) 208
 1 Tifa Lockhart (FIN) 206
@@ -116,11 +124,16 @@
 1 Fell (BLB) 95
 1 Warg Tactics (HOB) 139
 1 Doubling Season (FDN) 216
-4 Overgrown Tomb (ECL) 266
-4 Temple Garden (ECL) 268
-4 Deathcap Glade (SOS) 253
-3 Sandsteppe Citadel (TDM) 266
-1 Gathering Place (MSH) 266
+1 Overgrown Tomb (ECL) 266
+2 Evolving Wilds (ECL) 264
+1 Hushwood Verge (DSK) 261
+1 Vibrant Cityscape (SPM) 188
+2 Elven Passage (HOB) 181
+1 Wastewood Verge (DFT) 268
+2 Sandsteppe Citadel (TDM) 266
+1 Terramorphic Expanse (MSC) 828
+4 Gathering Place (MSH) 266
+1 Temple of Plenty (FDN) 703
 1 Bleachbone Verge (DFT) 250
 4 Forest (HOB) 193
 2 Swamp (HOB) 191

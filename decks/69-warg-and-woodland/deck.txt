@@ -69,6 +69,13 @@
 #: notes: triggers and 21 targets, and runs it. If a third copy ever goes, Wolfbat is
 #: notes: the pick — it holds the Wolf count and its self-rebuy is live off this deck's
 #: notes: second-draw effects.
+#: notes: 2026-09-06 LANDS, owned-for-unowned (ten rare lands were the craft blocker): −3 Overgrown Tomb
+#: notes: −4 Deathcap Glade −2 Mirkwood −1 Temple of Malady, +Wastewood Verge +Strangled Cemetery +2 Ba Sing
+#: notes: Se +Foggy Bottom Swamp +2 Jungle Hollow +2 Evolving Wilds +1 Swamp. Measured: sources B 17 / G 20
+#: notes: → 15 / 19, unconditional taplands 5 → 5, Head of the Hunt T4 84.7 → 78.1%, Scavenger T3 87.7 →
+#: notes: 85.3%. Jungle Hollow over Festering Gulch because Gulch is OTJ (2026 rotation). CRAFT PRIORITY if
+#: notes: wildcards go here: Deathcap Glade x4 first (untapped from T3, both colours; replaces the Hollows
+#: notes: and Wilds), Tombs after. Every land in the list is owned now.
 
 # ── Wolves ──────────────────────────────────────────
 1 Nighthowl Pursuer (HOB) 78
@@ -115,12 +122,17 @@
 1 Unforgiving Aim (ECL) 200
 
 # ── Lands ───────────────────────────────────────────
-4 Overgrown Tomb (ECL) 266
-4 Deathcap Glade (SOS) 253
-3 Mirkwood (HOB) 188
-2 Temple of Malady (FDN) 700
+1 Overgrown Tomb (ECL) 266
+1 Foggy Bottom Swamp (TLA) 269
+1 Strangled Cemetery (DSK) 268
+1 Wastewood Verge (DFT) 268
+2 Jungle Hollow (M21) 247
+2 Ba Sing Se (TLA) 266
+1 Mirkwood (HOB) 188
+2 Evolving Wilds (ECL) 264
+1 Temple of Malady (FDN) 700
 7 Forest (HOB) 193
-4 Swamp (HOB) 191
+5 Swamp (HOB) 191
 #~ -Head of the Hunt | +Azog, Moria's Ruin | OWNED (HOB, ingested 2026-08-13): fit 51. ETB destroy a
 #~   creature, its controller amasses Goblins X = that creature's power, and if it was YOURS you
 #~   draw. Removal on a body in a deck at interaction 5. NOTE the amass is a gift to the OPPONENT
