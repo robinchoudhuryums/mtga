@@ -950,3 +950,125 @@ class TestTaggerSeesTypesTheCardOnlyTALKSAbout:
         assert "Swamp" in self._tags(
             "Sorcery", "Corrupt deals damage to any target equal to the number of "
                        "Swamps you control. You gain that much life.")
+
+
+class TestCheatCostCards:
+    """The mirror of `x_cost_cards`: the curve, `avg_mv` and `_clock_score` read the
+    PRINTED cost, so a Warp / Plot / Foretell body books at a price you never pay —
+    Bygone Colossus (Warp {3}) reads as a nine-drop and on its own moved 56b's aggro floor
+    A -> B (pile analysis §5.7 item 6). Report-only by the same G-60 discipline. Fixtures
+    are the cards' REAL text (G-67)."""
+
+    CD = {
+        "bygone colossus": {"type": "Artifact Creature — Robot Giant",
+                            "text": "Warp {3} (You may cast this card from your hand for its "
+                                    "warp cost. Exile this creature at the beginning of the next "
+                                    "end step, then you may cast it from exile on a later turn.)"},
+        "stingerback terror": {"type": "Creature — Scorpion Dragon",
+                               "text": "Flying, trample\nThis creature gets -1/-1 for each card "
+                                       "in your hand.\nPlot {2}{R} (You may pay {2}{R} and exile "
+                                       "this card from your hand. Cast it as a sorcery on a later "
+                                       "turn without paying its mana cost. Plot only as a sorcery.)"},
+        "tannuk, steadfast second": {"type": "Legendary Creature — Kavu Pilot",
+                                     "text": "Other creatures you control have haste.\nArtifact "
+                                             "cards and red creature cards in your hand have warp "
+                                             "{2}{R}. (You may cast a card from your hand for its "
+                                             "warp cost.)"},
+        "bear": {"type": "Creature — Bear", "text": ""},
+        "forest": {"type": "Basic Land — Forest", "text": ""},
+    }
+    MANA = {
+        "bygone colossus": ("{9}", 9),
+        "stingerback terror": ("{3}{R}", 4),
+        "tannuk, steadfast second": ("{2}{R}", 3),
+        "bear": ("{1}{G}", 2),
+    }
+
+    @staticmethod
+    def _cards(names):
+        return [(1, n, "SET", "1") for n in names]
+
+    def test_a_warp_body_is_flagged_with_both_costs(self):
+        out = deck.cheat_cost_cards(self._cards(["Bygone Colossus", "Bear"]), self.CD, self.MANA)
+        assert out == [("Bygone Colossus", "{9}", "warp", "{3}", 3)]
+
+    def test_plot_is_priced_from_the_keyword_not_the_reminder_text(self):
+        # Plot's reminder quotes the cost again ("You may pay {2}{R}"); the keyword line is
+        # what is read, and MV 3 < 4 flags it.
+        out = deck.cheat_cost_cards(self._cards(["Stingerback Terror"]), self.CD, self.MANA)
+        assert out == [("Stingerback Terror", "{3}{R}", "plot", "{2}{R}", 3)]
+
+    def test_a_card_that_GRANTS_warp_is_not_itself_cheaper(self):
+        # Tannuk's own cost is {2}{R}; "have warp {2}{R}" reduces his targets, not him.
+        assert deck.cheat_cost_cards(self._cards(["Tannuk, Steadfast Second"]),
+                                     self.CD, self.MANA) == []
+
+    def test_fixed_cost_cards_lands_and_duplicates_are_excluded(self):
+        cards = self._cards(["Bear", "Forest", "Bygone Colossus", "Bygone Colossus"])
+        out = deck.cheat_cost_cards(cards, self.CD, self.MANA)
+        assert [n for n, *_r in out] == ["Bygone Colossus"]
+
+    def test_the_flag_does_not_reach_the_quality_vector(self):
+        """Report-only by design — `tier_band` must not see it (the X-cost rule, in reverse)."""
+        import inspect
+        src = (inspect.getsource(deck.deck_quality_vector) + inspect.getsource(deck.tier_band)
+               + inspect.getsource(deck._clock_score))
+        assert "cheat_cost_cards" not in src
+
+
+class TestLandUtilityTieBreak:
+    """`suggest --lands` scores FIXING and nothing read the rider, so Temple of Triumph,
+    Boros Guildgate, Sun-Blessed Peak and Wind-Scarred Crag tied at 10.9 (2026-09-06). The
+    rider is a SORT-KEY tie-break, never a score term: the smallest fixing step between
+    land classes is 0.1, so any additive nudge would re-rank lands on something other than
+    fixing. Real land text (G-67)."""
+
+    TEMPLE = ("This land enters tapped.\nWhen this land enters, scry 1. (Look at the top card "
+              "of your library. You may put that card on the bottom.)\n{T}: Add {R} or {W}.")
+    PEAK = "This land enters tapped.\n{T}: Add {R} or {W}.\n{4}, {T}, Sacrifice this land: Draw a card."
+    GATE = "This land enters tapped.\n{T}: Add {R} or {W}."
+    BLUFFS = ("This land enters tapped.\nWhen this land enters, it deals 1 damage to target "
+              "opponent.\n{T}: Add {R} or {W}.")
+    CRAG = "This land enters tapped.\nWhen this land enters, you gain 1 life.\n{T}: Add {R} or {W}."
+    RIDGE = ("This land enters tapped.\n{T}: Add {R} or {G}.\n{2}{R}{G}: This land becomes a 3/4 "
+             "red and green Dinosaur creature until end of turn. It's still a land.")
+    PARLOR = ("({T}: Add {R} or {W}.)\nThis land enters tapped.\nWhen this land enters, surveil "
+              "1. (Look at the top card of your library. You may put it into your graveyard.)")
+
+    def test_each_rider_is_read_and_a_vanilla_dual_scores_zero(self):
+        assert deck._land_utility(self.GATE) == (0.0, "")
+        assert deck._land_utility(self.TEMPLE) == (0.30, "scry")
+        assert deck._land_utility(self.PARLOR) == (0.30, "surveil")
+        assert deck._land_utility(self.PEAK) == (0.40, "draw")
+        assert deck._land_utility(self.BLUFFS) == (0.20, "ping")
+        assert deck._land_utility(self.CRAG) == (0.10, "life")
+        assert deck._land_utility(self.RIDGE) == (0.40, "creature")
+
+    def test_the_rider_is_bounded_and_reminder_text_is_ignored(self):
+        assert all(v <= 0.4 for v, _l, _rx in deck._LAND_UTILITY_CUES)
+        # Only the reminder mentions scrying — no ability does.
+        assert deck._land_utility("{T}: Add {G}. (Scry 1 is not something this land does.)") == (0.0, "")
+
+    def test_tie_break_orders_equal_scores_by_rider_and_never_crosses_a_score(self):
+        picks = [
+            {"name": "Boros Guildgate", "score": 10.9, "util": 0.0},
+            {"name": "Sun-Blessed Peak", "score": 10.9, "util": 0.4},
+            {"name": "Temple of Triumph", "score": 10.9, "util": 0.3},
+            {"name": "Blazemire Verge", "score": 9.1, "util": 0.0},
+            {"name": "Kavaron, Memorial World", "score": 8.8, "util": 0.4},   # rider, lower score
+        ]
+        picks.sort(key=lambda p: (-p["score"], -p["util"], p["name"].lower()))
+        assert [p["name"] for p in picks] == ["Sun-Blessed Peak", "Temple of Triumph",
+                                              "Boros Guildgate", "Blazemire Verge",
+                                              "Kavaron, Memorial World"]
+
+    def test_the_live_recommender_keeps_util_out_of_the_score(self):
+        d = deck.find_deck("56")
+        if not d:                                   # roster-dependent
+            return
+        res = deck.suggest_lands(d, owned=True, limit=0)
+        for p in res["picks"]:
+            assert p["score"] == round(p["fix"] + p["syn"] + p["short"], 2), p["name"]
+            assert "util" in p and 0.0 <= p["util"] <= 0.4
+        scores = [p["score"] for p in res["picks"]]
+        assert scores == sorted(scores, reverse=True)      # score order is untouched

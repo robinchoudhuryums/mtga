@@ -2841,3 +2841,17 @@ was DECLINED with reasons recorded in docs/gotchas.md under K-12.
 
 **Where I left off.** All committed on `claude/broad-scan-6kxevb`. Still open: the `match`
 follow-on (blocked on the entry-condition gap — Command Bridge) and P5.
+
+
+## 2026-09-06 — tooling batch T-1..T-4 (per-deck rotation, cheat-cost advisory, land rider tie-break, scratch-by-path)
+See `.cycle/blocks/2026-09-06-tooling-batch-rotation-cheatcost-lands-path-broad-implement.md`.
+All four are report-only or read-only: no score term, no writer, no tier floor moved (pinned by
+tests). The check_patterns completeness gate caught both new pattern sets unregistered — the
+gate working as designed. Decided AGAINST: an additive rider nudge in `suggest --lands` (the
+smallest fixing step is 0.1, any nudge crosses it — it is a sort-key tie-break instead) and an
+"effective MV" term for cheat-cost bodies (would re-grade the roster; G-60 discipline).
+
+**Where I left off.** Committed on `claude/broad-scan-6kxevb`. Still open from the same day:
+pile §5.7 items 1/2/5 (role-pattern holes, damage-doubler axis, state gates — need a K-14 floor
+diff), the taxonomy decisions (Equipment / tap-down / copy), 56's tier letter (A vs B, user's
+call), the 56c decision, and deleting `.cycle/56-tall-pile-analysis.md` once those settle.

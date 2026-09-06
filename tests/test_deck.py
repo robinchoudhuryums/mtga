@@ -6009,3 +6009,74 @@ class TestCardAdvantageSplit:
             [(2, "engine", "A", "1"), (3, "spell", "A", "1"), (4, "land", "A", "1")],
             self.DATA)
         assert (rep, one) == (2, 3)
+
+
+class TestScratchPathResolution:
+    """A READ-ONLY command may take an existing `.txt` path, so a scratch copy can be
+    measured OUTSIDE decks/ — every scratch measurement on 2026-09-06 needed a throwaway
+    `56z-scratch.txt` inside the deck's directory, which INV-04, `check_all` and every
+    roster view then counted as a real deck. Writers never take a path: a `swap --apply`
+    on a scratch copy would record a ledger row (G-56)."""
+
+    def _scratch(self, tmp_path):
+        p = tmp_path / "56-scratch.txt"
+        p.write_text("#: name: Scratch\n#: format: Standard\n#: colors: R\n"
+                     "1 Shock (M21) 159\n23 Mountain (M21) 273\n", encoding="utf-8")
+        return str(p)
+
+    def test_a_path_is_refused_by_default(self, tmp_path):
+        assert deck.find_deck(self._scratch(tmp_path)) is None
+
+    def test_a_path_resolves_for_a_read_only_caller(self, tmp_path):
+        d = deck.find_deck(self._scratch(tmp_path), allow_path=True)
+        assert d and d.get("scratch") is True
+        assert d["id"] == "56-scratch" and d["meta"].get("name") == "Scratch"
+
+    def test_a_roster_file_path_resolves_to_its_roster_record(self):
+        live = deck.find_deck("56")
+        if not live:                                   # roster-dependent
+            return
+        d = deck.find_deck(live["path"], allow_path=True)
+        assert d["id"] == "56" and not d.get("scratch")
+
+    def test_only_read_only_commands_pass_allow_path(self):
+        """The writers and the roster-reasoning commands must keep the id-only form."""
+        import inspect, re
+        src = inspect.getsource(deck)
+        for writer in ("cmd_swap", "cmd_move", "cmd_apply_flex", "cmd_preflight", "cmd_history"):
+            body = inspect.getsource(getattr(deck, writer))
+            assert "allow_path" not in body, writer
+        for reader in ("cmd_stats", "cmd_consistency", "cmd_quality", "cmd_tier", "cmd_mana"):
+            body = inspect.getsource(getattr(deck, reader))
+            assert "allow_path=True" in body, reader
+
+
+class TestDeckRotation:
+    """`check` flags rotation only on a CRAFT target (G-30: an owned card costs no
+    wildcard) and `rotation` printed the whole roster, so an OWNED rotating card was
+    found by hand (56a's Commercial District and Restless Ridgeline, 2026-09-06).
+    `deck_rotation` is the per-deck view, sharing `_deck_atrisk` with the sweep."""
+
+    def test_the_single_deck_view_agrees_with_the_sweep_by_construction(self):
+        decks, _rollup, meta = deck.rotation_sweep("standard", years=3, within=2)
+        if not meta["has_released"] or not decks:
+            return
+        target = next((x for x in decks if x["n_slots"]), None)
+        if not target:
+            return
+        d = deck.find_deck(target["id"])
+        atrisk, _m = deck.deck_rotation(d, fmt="standard", years=3, within=2)
+        assert atrisk == target["atrisk"]
+
+    def test_owned_cards_are_included_not_just_craft_targets(self, tmp_path):
+        # Abraded Bluffs (OTJ) is owned and rotates ~2026; a basic never appears.
+        p = tmp_path / "r.txt"
+        p.write_text("#: name: R\n#: format: Standard\n#: colors: R\n"
+                     "1 Abraded Bluffs (OTJ) 251\n23 Mountain (M21) 273\n", encoding="utf-8")
+        d = deck.find_deck(str(p), allow_path=True)
+        atrisk, meta = deck.deck_rotation(d, years=3, within=5)
+        if not meta["has_released"]:
+            return
+        names = [c["name"] for c in atrisk]
+        assert "Abraded Bluffs" in names and "Mountain" not in names
+        assert meta["fmt"] == "standard"          # the deck's OWN format when fmt=None

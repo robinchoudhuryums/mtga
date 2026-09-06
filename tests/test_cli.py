@@ -362,3 +362,24 @@ class TestTunePlanOutputContract:
                 assert "still short" not in out, (d["id"], out[-600:])
                 return
         assert checked, "no roster deck assembled a tune plan — the planner is unreachable"
+
+
+class TestRotationTakesADeckId:
+    """`rotation <id>` is the per-deck view (owned rotating cards included). The roster
+    sweep still runs with no argument — `_ARGS` covers that shape."""
+
+    def test_rotation_with_a_deck_id_lists_that_deck_only(self):
+        rc, out = _run(["scripts/deck.py", "rotation", _DECK])
+        assert rc == 0 and TRACEBACK not in out
+        assert out.startswith(f"Deck {_DECK}:"), out[:120]
+        assert "Rotation sweep" not in out
+
+    def test_a_scratch_path_works_for_a_reader_and_not_for_a_writer(self, tmp_path):
+        import deck                                   # sys.path is set by _pick_deck
+        src = deck.find_deck(_DECK)["path"]
+        p = tmp_path / "scratch.txt"
+        p.write_text(open(src, encoding="utf-8").read(), encoding="utf-8")
+        rc, out = _run(["scripts/deck.py", "stats", str(p)])
+        assert rc == 0 and TRACEBACK not in out and "Deck scratch:" in out
+        rc, out = _run(["scripts/deck.py", "swap", str(p), "--cut", _CUT_CARD, "--add", _ADD_CARD])
+        assert rc != 0 and "No deck with id" in out
