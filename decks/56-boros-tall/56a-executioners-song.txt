@@ -111,9 +111,9 @@
 #: notes: plan is one enormous creature surviving. Be honest about what it is NOT: the
 #: notes: cycle is card-NEUTRAL (discard this, draw one), so card advantage stays at 2
 #: notes: and the classifier is right to leave it there. It also does not free a rare;
-#: notes: it spends the same rare wildcard on a different card. The 2nd AGNI KAI stays a craft and should be crafted
-#: notes: FIRST — 56, 56a and 59 are all short the same copy, so one rare completes
-#: notes: three decks (shared collection).
+#: notes: it spends the same rare wildcard on a different card. (The 2nd AGNI KAI was CUT
+#: notes: 2026-09-05 for Dragonclaw Strike — four mana in RG: double power AND toughness, then
+#: notes: fight — so the craft-first note that stood here is retired; 56 and 59 still want it.)
 #: notes: PLAN CORRECTED 2026-08-09 (user call): aggro -> midrange. `#: plan: aggro`
 #: notes: had always disagreed with this deck's own archetype line ("slower, bigger,
 #: notes: board-independent"), and the header is load-bearing rather than descriptive —
@@ -178,7 +178,8 @@
 
 # Finisher / removal (power-scaled)
 2 Self-Destruct (FIN) 157
-2 The Last Agni Kai (TLA) 144
+1 The Last Agni Kai (TLA) 144
+1 Dragonclaw Strike (TDM) 180
 1 Giantfall (ECL) 141
 1 Pain for All (EOE) 151
 
