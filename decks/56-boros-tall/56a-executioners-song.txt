@@ -19,7 +19,7 @@
 #: archetype: vs 56 core: white MULTIPLIES
 #: archetype: boosts on small bearers; green COMPOUNDS permanent counters on bodies
 #: archetype: that are already big — slower, bigger, board-independent.
-#: protect: Ashroot Animist; Halana and Alena, Partners; Ouroboroid; Bulk Up; Self-Destruct; Overprotect; Pain for All; Spinerock Tyrant; Swiftfoot Boots
+#: protect: Ashroot Animist; Halana and Alena, Partners; Ouroboroid; Bulk Up; Self-Destruct; Overprotect; Pain for All; Spinerock Tyrant; Swiftfoot Boots; Twinflame Tyrant; Iron Fist, Living Weapon; Choreographed Sparks
 #: tier: B (PROVISIONAL) — RE-GRADED 2026-08-09 from A, at the measurable floor, after
 #: tier: `#: plan:` was corrected from aggro to midrange. The letter did not change
 #: tier: because the LIST changed; it changed because the list stopped being graded as
@@ -50,8 +50,8 @@
 #: tier: CARD HAS AN ENTERS TRIGGER: Scalestorm checks "whenever this creature ATTACKS
 #: tier: ... if you control a creature with power 4 or greater" and Ruby checks
 #: tier: "whenever Ruby ATTACKS WHILE you control" — both read the board at ATTACK
-#: tier: time, so a creature grown by Ashroot, Halana, Ouroboroid, Bulk Up or Twin
-#: tier: Blades DOES satisfy them. In an ultra-tall deck that pumps every combat the
+#: tier: time, so a creature grown by Ashroot, Halana, Ouroboroid, Bulk Up or Buster
+#: tier: Sword DOES satisfy them. In an ultra-tall deck that pumps every combat the
 #: tier: printed-power count understates these gates badly. The flag is a G-16-family
 #: tier: limitation (it measures PRINTED power and cannot see the trigger's timing);
 #: tier: read the trigger before believing it. The B letter is unaffected — it sits one
@@ -138,15 +138,29 @@
 #: notes: floor C→B, guard clean. Still open: EIGHT taplands (the craft is Stomping Ground,
 #: notes: a Mountain Forest that turns Thornspire Verge on); Railway Brawler reads unowned
 #: notes: because the LIBRARY undercounts it (G-10), not because the deck lacks it.
+#: notes: 2026-09-06 SECOND PASS (user-confirmed, from the same pile doc): −Agni Kai #2
+#: notes: +Dragonclaw Strike (four mana in RG: double P AND T, then fight); −Ruby #2 +Choreographed
+#: notes: Sparks (copy Overprotect / Bulk Up, or an 8/8 haste Rex token that is a free Self-Destruct);
+#: notes: −Mai +Twinflame Tyrant (ungated damage doubler — Collective Inferno was DECLINED here:
+#: notes: the attacker is whichever body got the counters, so one chosen type covers a third of
+#: notes: them); −Haste Magic #1 +Soul Immolation (X up to Rex's 8 / Stingerback's 7, one-sided;
+#: notes: the -1/-1 counters go on a body you do not need); −Twin Blades +Buster Sword (kept Boots
+#: notes: — permanent hexproof is the axis this deck loses on; the user first proposed cutting it);
+#: notes: −Speed #2 +Iron Fist (Ouroboroid puts X counters on EACH creature, so his tap is a real
+#: notes: fireball; Mjölnir-worthy); −Cyclops +Stingerback Terror (Brawler doubles it on entry:
+#: notes: a 14/14 flying trample). Measured: avg MV 2.92→3.25, eight cards at MV 5+, protection 5,
+#: notes: floor B, guard clean. THE TAPLANDS ARE NOW THE DECK'S ONLY STRUCTURAL PROBLEM — eight of
+#: notes: ten nonbasics enter tapped under a curve that moved UP; Stomping Ground x2 is the craft.
 
 # Tall bodies
-1 Crackling Cyclops (FDN) 83
+1 Stingerback Terror (OTJ) 147
 1 Spinerock Tyrant (ECL) 159
 1 Red Hulk (MSH) 149
 1 Wolverine, Fierce Fighter (MSH) 240
 1 Scarlet Spider, Ben Reilly (SPM) 142
-1 Mai, Jaded Edge (TLA) 147
+1 Twinflame Tyrant (FDN) 97
 1 Agonasaur Rex (DFT) 151
+1 Iron Fist, Living Weapon (MSH) 138
 
 # Power-4 payoff body
 1 Quilled Greatwurm (FDN) 111
@@ -159,8 +173,8 @@
 1 Railway Brawler (OTJ) 175
 
 # Ramp / evasion riders
-2 Ruby, Daring Tracker (FDN) 245
-2 Speed, Young Avenger (MSH) 152
+1 Ruby, Daring Tracker (FDN) 245
+1 Speed, Young Avenger (MSH) 152
 
 # Protection (what the A/B green list never had)
 2 Overprotect (BLB) 185
@@ -171,10 +185,11 @@
 2 Bulk Up (SOA) 40
 1 Snakeskin Veil (TDM) 159
 1 Broodguard Elite (EOE) 175
-1 Twin Blades (TLA) 157
-2 Haste Magic (FIN) 140
+1 Buster Sword (FIN) 255
+1 Haste Magic (FIN) 140
 1 Demonic Ruckus (OTJ) 120
 1 Mjölnir, Hammer of Thor (MSH) 146
+1 Choreographed Sparks (SOS) 111
 
 # Finisher / removal (power-scaled)
 2 Self-Destruct (FIN) 157
@@ -182,6 +197,7 @@
 1 Dragonclaw Strike (TDM) 180
 1 Giantfall (ECL) 141
 1 Pain for All (EOE) 151
+1 Soul Immolation (ECL) 156
 
 # Lands
 1 Thornspire Verge (DSK) 270
