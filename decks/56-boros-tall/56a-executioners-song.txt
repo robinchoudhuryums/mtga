@@ -4,8 +4,8 @@
 #: colors: RG
 #: plan: midrange
 #: archetype: GRUUL ULTRA-TALL — the green-package variant of deck 56, revived from
-#: archetype: its parked-not-dead note. Same red core (Molten Man, Crackling Cyclops,
-#: archetype: Red Hulk, Bulk Up, Self-Destruct, the trick suite); green replaces the
+#: archetype: its parked-not-dead note. Same red core as 56 (Crackling Cyclops, Bulk Up,
+#: archetype: Self-Destruct, the trick suite — Molten Man and Red Hulk were CUT 2026-09-05/06); green replaces the
 #: archetype: white bearers with the two biggest RAW boosters in the whole pile —
 #: archetype: Ashroot Animist (+X/+X AND trample per attack) and Halana and Alena
 #: archetype: (X permanent counters + haste every combat) — plus Ruby's ramp. The
@@ -30,7 +30,8 @@
 #: tier: 2026-09-05 pile tune: interaction 5 with card advantage 2 puts the resilience
 #: tier: sum at 7, exactly the B floor, so the letter sits AT the floor. The rubric's A wants at
 #: tier: most ONE clear weakness. This list has three:
-#: tier: 1. CARD ADVANTAGE 2, with no refuel — the same gap the first grading named.
+#: tier: 1. CARD ADVANTAGE 3 since Nexus of Becoming (2026-09-06) — a card every combat — where
+#: tier:    the first grading named 2 with no refuel; still the thinnest axis.
 #: tier: 2. INTERACTION 5, and only ONE piece (Origin of Metalbending's first mode) answers a
 #: tier:    NONCREATURE permanent — artifact OR enchantment (the artifact-only answer was CUT for it). For an aggro deck that is survivable (you are racing);
 #: tier:    for a midrange deck an enchantment or planeswalker that blanks the plan is
@@ -156,11 +157,16 @@
 #: notes: Wolverine, Ruby and Boots) and −Giantfall +Origin of Metalbending (same mana, destroys an
 #: notes: artifact OR enchantment, and its other mode is a +1/+1 counter plus indestructible — a
 #: notes: protection spell in the counters deck; protection 5→6, interaction unchanged at 5).
+#: notes: −Red Hulk +NEXUS OF BECOMING (user call): a 3/3 Golem copy of a counters ENGINE is close to
+#: notes: full value here because the value is the trigger, not the body — a second Ouroboroid
+#: notes: (non-legendary), Brawler, Twinflame, Ashroot — plus a card every combat (CA 2→3, resilience
+#: notes: sum 8). Red Hulk was the least synergistic six: a Villain (no Mjölnir), enrage that nothing
+#: notes: here arranges, and the Self-Destruct non-combo above. Nexus at six is a real turn on eight
+#: notes: taplands — Stomping Ground x2 stays the first craft.
 
 # Tall bodies
 1 Stingerback Terror (OTJ) 147
 1 Spinerock Tyrant (ECL) 159
-1 Red Hulk (MSH) 149
 1 Wolverine, Fierce Fighter (MSH) 240
 1 Scarlet Spider, Ben Reilly (SPM) 142
 1 Twinflame Tyrant (FDN) 97
@@ -176,6 +182,7 @@
 1 Ouroboroid (EOE) 201
 1 Mightform Harmonizer (EOE) 200
 1 Railway Brawler (OTJ) 175
+1 Nexus of Becoming (BIG) 25
 
 # Ramp / evasion riders
 1 Ruby, Daring Tracker (FDN) 245

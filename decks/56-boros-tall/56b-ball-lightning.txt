@@ -54,6 +54,7 @@
 1 Spider-Verse (SPM) 93
 1 Hex Magic (MSH) 133
 1 Firebending Student (TLA) 139
+1 Pyromancer's Goggles (FDN) 677
 
 # Temporary bodies — warp / plot / sacrifice
 1 Bygone Colossus (EOE) 235
@@ -72,7 +73,6 @@
 1 Doc Ock's Tentacles (SPM) 162
 1 Cosmic Cube (MSH) 245
 1 Twinflame Tyrant (FDN) 97
-1 Dawnsire, Sunstar Dreadnought (EOE) 238
 
 # Multipliers, evasion, free finishers
 2 Self-Destruct (FIN) 157
