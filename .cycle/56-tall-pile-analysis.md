@@ -1,6 +1,9 @@
 # Deck 56 tall pile — analysis (TEMPORARY working doc)
 
-**Status: PILE COMPLETE (201 cards, 10 batches) — awaiting the user's picks.** Delete once the swaps land and the findings are folded into the
+**Status: SWAPS LANDED 2026-09-06 — 56 rebuilt (24-for-24, §5.14), 56a tuned (§5.6), 56b drafted and tuned
+(§5.5, §5.12). Still open before this file is deleted: the 56c decision (§5.11), the §5.7 tooling
+batch (move to `.cycle/NEXT-SESSION.md`), Stomping Ground ×2 for 56a, Railway Brawler's library
+undercount. The durable card reads are in the three deck files' `#: notes:` blocks.** Delete once the swaps land and the findings are folded into the
 deck files' `#: notes:` blocks. A scratchpad, not a source of truth — decks/ are.
 
 **Source list:** user-supplied in batches of ~10–20 (scratchpad `pile-56-batch*.txt`).

@@ -16,6 +16,7 @@ Aerial Doombot
 Aettir and Priwen
 Agent Phil Coulson
 Agents of HYDRA
+Agrus Kos, Spirit of Justice
 Ainok Wayfarer
 Airbending Lesson
 Ajani, Caller of the Pride
@@ -50,7 +51,6 @@ Bark of Doran
 Barret Wallace
 Baseball Bat
 Baxter Stockman
-Become Brutes
 Bejeweled Warg
 Bespoke Bō
 Betor, Kin to All
@@ -215,6 +215,7 @@ Goblin-town Flunkies
 Gold Pan
 Gold Rush
 Goldvein Hydra
+Grand Abolisher
 Gravelgill Scoundrel
 Great Ugly-Looking Goblin
 Greedy Freebooter
