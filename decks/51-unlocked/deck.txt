@@ -4,13 +4,13 @@
 #: colors: U
 #: plan: control
 #: tier: B — GRADED 2026-07. Deliberately one band BELOW the measurable floor, which reads A on
-#: tier: interaction 7 plus card advantage 9 at a 4.03 curve. The floor is metric-only and says
+#: tier: interaction 7 plus card advantage 10 at a 3.97 curve. The floor is metric-only and says
 #: tier: so; against the rubric an A needs four things and this list fails two.
 #: tier:   A-FLOOR — yes: interaction 7 meets the (re-derived, 2026-09-02) threshold of
 #: tier:     seven exactly and the sum of 16 clears eleven.
 #: tier:   COHERENT ENGINE — yes. Rooms into Fractured Realm into Omniscience, with real doubling.
-#: tier:   TIGHT CURVE — no. 4.03 is the slowest on the roster, on 12 early drops.
-#: tier:   AT MOST ONE CLEAR WEAKNESS — no, and the two COMPOUND: a 4.03-curve deck holding seven
+#: tier:   TIGHT CURVE — no. 3.97 is among the slowest on the roster, on 12 early drops.
+#: tier:   AT MOST ONE CLEAR WEAKNESS — no, and the two COMPOUND: a 3.97-curve deck holding seven
 #: tier:   answers loses to a fast start in a way neither problem would cause alone. Secret
 #: tier:   Invasion narrowed both gaps at once — it is the deck's only card that is removal, a
 #: tier:   threat and a protection source in one, since exiling a creature also turns one of yours
@@ -28,10 +28,10 @@
 #: tier: WHAT ARGUES UP, and A is genuinely close. The bombs are PRESENT, not aspirational —
 #: tier: Omniscience, Summon: Bahamut (four unconditional destroys under Fractured Realm), Krang
 #: tier: Utrom Warlord and The Walls of Ba Sing Se are all in the 60, and Walls is the broadest
-#: tier: of the FOUR sources behind protection 4: "other permanents you control have
+#: tier: of the THREE sources behind protection 3: "other permanents you control have
 #: tier: indestructible" covers every one of them, while Krang carries its own indestructible
-#: tier: and grants it to other artifact creatures, and Tolarian Terror and Secret Invasion each
-#: tier: bring ward {2}. (This line read "protection reads 3" until 2026-07-31; the figure had
+#: tier: and grants it to other artifact creatures, and Secret Invasion
+#: tier: brings ward {2}. (This line read "protection reads 3" until 2026-07-31; the figure had
 #: tier: moved and --audit-rationale cannot see it, because a copula between a label and its
 #: tier: number hides the figure from the sweep — the live G-26 residual, so check this one by
 #: tier: hand.) Every coloured card casts on curve at >=90% — and distinctness is the
@@ -194,6 +194,11 @@
 #: notes: and sorcery in your graveyard" in a deck running six counterspells and five draw
 #: notes: spells is routinely a turn-five 5/5 with ward {2} — a threat that gets cheaper exactly
 #: notes: as the control plan does its job. Two copies, deliberately.
+#: notes: 2026-09-07: −Tolarian Terror +Overlord of the Floodpits (owned). Terror's discount counted instants and
+#: notes: sorceries in a Rooms deck that runs few; Overlord is a three-mana impending enchantment that becomes a 6/6
+#: notes: flier and loots on entry and attack — a trigger Fractured Realm doubles to draw four. Floodpits Drowner
+#: notes: was considered and kept (interaction, and a doubled stun). Protection 4 → 3 (Terror's ward), card
+#: notes: advantage 9 → 10, avg MV 4.03 → 3.97.
 
 # Rooms — cheap on the front, a mana sink on the back
 1 Underwater Tunnel // Slimy Aquarium (DSK) 79
@@ -237,7 +242,7 @@
 1 Norman Osborn (SPM) 39
 1 Ghostly Keybearer (DSK) 61
 1 Kiora, the Rising Tide (FDN) 45
-1 Tolarian Terror (FDN) 167
+1 Overlord of the Floodpits (DSK) 68
 1 Stormkeld Prowler (WOE) 71
 
 # The top end

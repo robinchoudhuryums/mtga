@@ -53,9 +53,9 @@
 #: tier: noncreature permanent. The two refill engines were then RESTORED against
 #: tier: Deduce and Marauding Blight-Priest once their real role was understood (see
 #: tier: notes: they fix the hand, they do not merely cap it), so the axis held at 4
-#: tier: while card advantage came back to 15 on a 3.17 curve with 16 early drops.
+#: tier: while card advantage came back to 15 on a 3.26 curve with 15 early drops.
 #: tier: Against the thin answer count stands card
-#: tier: advantage 15 on a 3.17 curve, a number that is real rather than a pile of
+#: tier: advantage 15 on a 3.26 curve, a number that is real rather than a pile of
 #: tier: cantrips — Cloudblazer draws two, Chart a Course draws two, Spirit Water Revival
 #: tier: draws seven when waterbent, the Grimoire draws five on cast, and Bard, King of
 #: tier: Dale doubles every one of them past the first each turn. B now MATCHES the
@@ -178,6 +178,10 @@
 #: notes: The gain-1 lands (Tranquil Cove, Scoured Barrens, Dismal Backwater) are
 #: notes: cantrips once the Grimoire is out — that is why they beat the untapped duals
 #: notes: they would otherwise lose to.
+#: notes: 2026-09-07: −Osseous Sticktwister +Overlord of the Floodpits (owned). Impending {1}{U}{U} is a three-mana
+#: notes: enchantment that loots (draw two, discard one) on entry and on every attack once it is a 6/6 flier — the
+#: notes: two draws in one turn that switch Lake-town Toymaker on. Sticktwister's delirium needed four card types
+#: notes: in the yard and its lifelink body is the cost. Avg MV 3.17 → 3.26, early drops 16 → 15.
 
 Deck
 # Hand size — the spine (the two SETTERS reset the hand every turn — see notes)
@@ -208,12 +212,12 @@ Deck
 1 Cloudblazer (FDN) 653
 1 Chart a Course (FDN) 586
 1 Thirst for Knowledge (MSH) 79
+1 Overlord of the Floodpits (DSK) 68
 
 # Lifegain = card draw
 1 Ruin-Lurker Bat (LCI) 33
 1 Night Nurse, Healer of Heroes (MSH) 26
 1 Starscape Cleric (BLB) 116
-1 Osseous Sticktwister (DSK) 112
 1 Leech Collector (SOS) 88
 1 Restoration Magic (FIN) 30
 
