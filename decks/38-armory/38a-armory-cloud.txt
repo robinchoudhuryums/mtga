@@ -46,12 +46,14 @@
 #: notes: THE RISK: still protect Cloud (Celestial Armor hexproof, Stolen Stark indestructible,
 #: notes: Zack Fair sac-to-save). Play B for resilience, C for the explosive spice. Lands
 #: notes: fungible with base 38.
+#: notes: 2026-09-07: −Ruin-Lurker Bat +Thunder Lasso (owned). Lasso attaches itself on entry and taps a blocker on
+#: notes: every attack — evasion for whichever carrier holds it (Whiplash first), and +1/+1. The Bat was the
+#: notes: shortlist's top row but also a one-drop flier carrier; taken because the deck keeps four other cheap fliers.
 #: protect: Cloud, Midgar Mercenary; Buster Sword; Celestial Armor; Whiplash, Vengeful Engineer
 
 # Creatures — cheap evasive carriers + the engine
 1 Quill-Blade Laureate
 1 Miner's Guidewing (LCI) 24
-1 Ruin-Lurker Bat (LCI) 33
 1 Momo, Playful Pet (TLA) 30
 1 Shrike Force (BLB) 31
 1 Sheltered by Ghosts (DSK) 30
@@ -84,6 +86,7 @@
 1 Captain America's Shield (MSH) 244
 1 Super-Soldier Serum (MSH) 38
 1 Fireshrieker (FDN) 674
+1 Thunder Lasso (OTJ) 35
 
 # Equipment — Job-select body / removal / utility
 1 Dragoon's Lance (FIN) 17
