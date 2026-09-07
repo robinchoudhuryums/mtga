@@ -2643,6 +2643,45 @@ Railway Brawler,{3}{G}{G},5,Reach;Plot;Trample
 Pyromancer's Goggles,{5},5,
 Ball Lightning,{R}{R}{R},3,Haste;Trample
 Doc Ock's Tentacles,{1},1,Equip
+Riverchurn Monument,{1}{U},2,Exhaust;Mill
+"Gisa, the Hellraiser",{3}{B}{B},5,Ward
+Trash the Town,{G},1,Spree
+"Ertha Jo, Frontier Mentor",{2}{R}{W},4,
+Thunder Lasso,{2}{W},3,Equip
+Spinewoods Armadillo,{4}{G}{G},6,Reach;Ward
+Outcaster Greenblade,{2}{G},3,
+Honest Rutstein,{1}{B}{G},3,
+"Miriam, Herd Whisperer",{G}{W},2,
+Bilbo's Gambit,{1}{W},2,Gift;Treasure
+Infinite Guideline Station,{W}{U}{B}{R}{G},5,Station
+Abhorrent Oculus,{2}{U},3,Flying;Manifest;Manifest dread
+Overlord of the Floodpits,{3}{U}{U},5,Flying;Impending
+Mirror Room,{2}{U} // {5}{U}{U},10,
+Meathook Massacre II,{X}{X}{B}{B}{B}{B},4,
+The Rollercrusher Ride,{X}{2}{R},3,Delirium;Double
+Beastie Beatdown,{R}{G},2,Delirium
+Unwilling Vessel,{2}{U},3,Vigilance;Eerie
+Inquisitive Glimmer,{W}{U},2,
+Splitskin Doll,{1}{W},2,
+Optimistic Scavenger,{W},1,Eerie
+Ghostly Keybearer,{3}{U},4,Flying
+Moldering Gym,{2}{G} // {5}{G},9,Manifest;Manifest dread
+Cult Healer,{2}{W},3,Eerie
+Bashful Beastie,{4}{G},5,Manifest;Manifest dread
+Horrid Vigor,{1}{G},2,
+Fear of Lost Teeth,{B},1,
+Friendly Ghost,{3}{W},4,Flying
+Boilerbilges Ripper,{4}{R},5,
+Appendage Amalgam,{2}{B},3,Surveil;Flash
+Raucous Carnival,,0,
+Marauding Sphinx,{3}{U}{U},5,Flying;Surveil;Vigilance;Ward
+Canyon Crab,{1}{U},2,
+Loan Shark,{3}{U},4,Plot
+Bard's Company,{2}{W}{U},4,
+Defend the Rider,{G},1,
+"Loot, the Pathfinder",{2}{G}{U}{R},5,Vigilance;Haste;Exhaust;Double strike
+Push the Limit,{5}{R}{R},7,
+Greasewrench Goblin,{R},1,Exhaust
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -3815,7 +3854,6 @@ Memory Guardian,{4}{U},5,Flying;Affinity
 Nimble Thopterist,{3}{U},4,
 Possession Engine,{3}{U}{U},5,Crew
 Repurposing Bay,{2}{U},3,
-Riverchurn Monument,{1}{U},2,Exhaust;Mill
 Sabotage Strategist,{2}{U}{U},4,Flying;Vigilance;Exhaust
 Skystreak Engineer,{1}{U},2,Flying;Exhaust
 Slick Imitator,{1}{U},2,Max speed;Start your engines!
@@ -3852,14 +3890,12 @@ Endrider Catalyzer,{1}{R},2,Max speed;Start your engines!
 Full Throttle,{4}{R}{R},6,
 Gastal Blockbuster,{2}{R},3,
 Gastal Thrillroller,{2}{R},3,Haste;Crew;Trample
-Greasewrench Goblin,{R},1,Exhaust
 Howlsquad Heavy,{2}{R},3,Max speed;Start your engines!
 Kickoff Celebrations,{1}{R},2,Max speed;Start your engines!
 Marauding Mako,{R},1,Cycling
 Pacesetter Paragon,{2}{R},3,Exhaust
 Pedal to the Metal,{X}{R},1,
 Prowcatcher Specialist,{1}{R},2,Haste;Exhaust
-Push the Limit,{5}{R}{R},7,
 Reckless Velocitaur,{3}{R},4,
 Skycrash,{1}{R},2,Cycling
 Spire Mechcycle,{4}{R},5,Haste;Crew;Exhaust
@@ -3868,7 +3904,6 @@ Afterburner Expert,{2}{G},3,Exhaust
 Alacrian Jaguar,{4}{G},5,Saddle;Vigilance
 Autarch Mammoth,{4}{G}{G},6,Saddle
 Bestow Greatness,{2}{G},3,
-Defend the Rider,{G},1,
 District Mascot,{G},1,Saddle
 Elvish Refueler,{2}{G},3,Exhaust
 Fang Guardian,{3}{G},4,Flash
@@ -3898,7 +3933,6 @@ Haunt the Network,{3}{U}{B},5,
 Haunted Hellride,{1}{U}{B},3,Crew
 "Kolodin, Triumph Caster",{R}{W},2,
 "Lagorin, Soul of Alacria",{G}{W},2,Flying;Saddle
-"Loot, the Pathfinder",{2}{G}{U}{R},5,Vigilance;Haste;Exhaust;Double strike
 "Mendicant Core, Guidelight",{W}{U},2,Max speed;Start your engines!
 Oildeep Gearhulk,{U}{U}{B}{B},4,Lifelink;Ward
 Rangers' Aetherhive,{1}{G}{U},3,Vigilance;Crew
@@ -4419,7 +4453,6 @@ Pyromantic Pilgrim,{2}{R},3,Haste
 A-Leyline of Resonance,{2}{R}{R},4,
 "A-Kona, Rescue Beastie",{4}{G},5,Survival
 Acrobatic Cheerleader,{1}{W},2,Survival
-Cult Healer,{2}{W},3,Eerie
 Dazzling Theater // Prop Room,{3}{W} // {2}{W},7,
 Dollmaker's Shop // Porcelain Gallery,{1}{W} // {4}{W}{W},8,
 Emerge from the Cocoon,{4}{W},5,
@@ -4428,14 +4461,12 @@ Exorcise,{1}{W},2,
 Fear of Abduction,{4}{W}{W},6,Flying
 Fear of Immobility,{4}{W},5,
 Fear of Surveillance,{1}{W},2,Surveil;Vigilance
-Friendly Ghost,{3}{W},4,Flying
 Ghostly Dancers,{3}{W}{W},5,Flying;Eerie
 Glimmer Seeker,{2}{W},3,Survival
 Grand Entryway // Elegant Rotunda,{1}{W} // {2}{W},5,
 Jump Scare,{W},1,
 Leyline of Hope,{2}{W}{W},4,
 Lionheart Glimmer,{3}{W}{W},5,Ward
-Optimistic Scavenger,{W},1,Eerie
 Patched Plaything,{2}{W},3,Double strike
 Possessed Goat,{W},1,
 Reluctant Role Model,{1}{W},2,Lifelink;Survival
@@ -4444,14 +4475,12 @@ Seized from Slumber,{4}{W},5,
 Shardmage's Rescue,{W},1,Enchant;Flash
 Shepherding Spirits,{4}{W}{W},6,Flying;Plainscycling;Landcycling;Typecycling;Cycling
 Split Up,{1}{W}{W},3,
-Splitskin Doll,{1}{W},2,
 Surgical Suite // Hospital Room,{1}{W} // {3}{W},6,
 "Toby, Beastie Befriender",{2}{W},3,
 Trapped in the Screen,{2}{W},3,Ward
 Unidentified Hovership,{1}{W}{W},3,Flying;Crew
 Unwanted Remake,{W},1,
 Veteran Survivor,{W},1,Survival
-Abhorrent Oculus,{2}{U},3,Flying;Manifest;Manifest dread
 Central Elevator // Promising Stairs,{3}{U} // {2}{U},7,Surveil
 Clammy Prowler,{3}{U},4,
 Creeping Peeper,{1}{U},2,
@@ -4465,12 +4494,10 @@ Fear of Falling,{3}{U}{U},5,Flying
 Fear of Impostors,{1}{U}{U},3,Flash
 Fear of Isolation,{1}{U},2,Flying
 Get Out,{U}{U},2,
-Ghostly Keybearer,{3}{U},4,Flying
 Glimmerburst,{3}{U},4,
 Meat Locker // Drowned Diner,{2}{U} // {3}{U}{U},8,
 The Mindskinner,{U}{U}{U},3,Mill
 Mirror Room // Fractured Realm,{2}{U} // {5}{U}{U},10,
-Overlord of the Floodpits,{3}{U}{U},5,Flying;Impending
 Paranormal Analyst,{1}{U},2,Manifest;Manifest dread
 Piranha Fly,{1}{U},2,Flying
 Scrabbling Skullcrab,{U},1,Mill;Eerie
@@ -4481,9 +4508,7 @@ Tunnel Surveyor,{2}{U},3,
 Twist Reality,{1}{U}{U},3,Manifest;Manifest dread
 Unable to Scream,{U},1,Enchant
 Unnerving Grasp,{2}{U},3,Manifest;Manifest dread
-Unwilling Vessel,{2}{U},3,Vigilance;Eerie
 Vanish from Sight,{3}{U},4,Surveil
-Appendage Amalgam,{2}{B},3,Surveil;Flash
 Cackling Slasher,{3}{B},4,Deathtouch
 Come Back Wrong,{2}{B},3,
 Commune with Evil,{2}{B},3,
@@ -4493,7 +4518,6 @@ Dashing Bloodsucker,{3}{B},4,Eerie
 Defiled Crypt // Cadaver Lab,{3}{B} // {B},5,
 Demonic Counsel,{1}{B},2,Delirium
 Doomsday Excruciator,{B}{B}{B}{B}{B}{B},6,Flying
-Fear of Lost Teeth,{B},1,
 Fear of the Dark,{4}{B},5,
 Give In to Violence,{1}{B},2,
 Grievous Wound,{3}{B}{B},5,Enchant
@@ -4501,7 +4525,6 @@ Killer's Mask,{2}{B},3,Manifest;Manifest dread;Equip
 Let's Play a Game,{3}{B},4,Delirium
 Leyline of the Void,{2}{B}{B},4,
 Live or Die,{3}{B}{B},5,
-Meathook Massacre II,{X}{X}{B}{B}{B}{B},4,
 Miasma Demon,{4}{B}{B},6,Flying
 Overlord of the Balemurk,{3}{B}{B},5,Impending;Mill
 Popular Egotist,{2}{B},3,
@@ -4515,7 +4538,6 @@ Vile Mutilator,{5}{B}{B},7,Flying;Trample
 Winter's Intervention,{1}{B},2,
 Bedhead Beastie,{4}{R}{R},6,Mountaincycling;Landcycling;Menace;Typecycling;Cycling
 Betrayer's Bargain,{1}{R},2,
-Boilerbilges Ripper,{4}{R},5,
 Charred Foyer // Warped Space,{3}{R} // {4}{R}{R},10,
 Cursed Recording,{2}{R}{R},4,
 Diversion Specialist,{3}{R},4,Menace
@@ -4538,7 +4560,6 @@ Rampaging Soulrager,{2}{R},3,
 Razorkin Hordecaller,{4}{R},5,Haste
 Razorkin Needlehead,{R}{R},2,
 Ripchain Razorkin,{3}{R},4,Reach
-The Rollercrusher Ride,{X}{2}{R},3,Delirium;Double
 Screaming Nemesis,{2}{R},3,Haste
 Ticket Booth // Tunnel of Hate,{2}{R} // {4}{R}{R},9,Manifest;Manifest dread
 Trial of Agony,{R},1,
@@ -4550,7 +4571,6 @@ Waltz of Rage,{3}{R}{R},5,
 "Altanak, the Thrice-Called",{5}{G}{G},7,Trample
 Anthropede,{3}{G},4,Reach
 Balustrade Wurm,{3}{G}{G},5,Delirium;Haste;Trample
-Bashful Beastie,{4}{G},5,Manifest;Manifest dread
 Break Down the Door,{2}{G},3,Manifest;Manifest dread
 Cathartic Parting,{1}{G},2,
 Coordinated Clobbering,{G},1,
@@ -4559,7 +4579,6 @@ Fear of Exposure,{2}{G},3,Trample
 Grasping Longneck,{2}{G},3,Reach
 Greenhouse // Rickety Gazebo,{2}{G} // {3}{G},7,Mill
 Hedge Shredder,{2}{G}{G},4,Crew;Mill
-Horrid Vigor,{1}{G},2,
 House Cartographer,{1}{G},2,Survival
 Manifest Dread,{1}{G},2,Manifest;Manifest dread
 Moldering Gym // Weight Room,{2}{G} // {5}{G},9,Manifest;Manifest dread
@@ -4575,13 +4594,11 @@ Under the Skin,{2}{G},3,Manifest;Manifest dread
 Valgavoth's Onslaught,{X}{X}{G},1,Manifest;Manifest dread
 Walk-In Closet // Forgotten Cellar,{2}{G} // {3}{G}{G},8,
 Wickerfolk Thresher,{3}{G},4,Delirium
-Beastie Beatdown,{R}{G},2,Delirium
 Broodspinner,{B}{G},2,Surveil;Reach
 Disturbing Mirth,{B}{R},2,Manifest;Manifest dread
 Fear of Infinity,{1}{U}{B},3,Flying;Lifelink;Eerie
 Gremlin Tamer,{W}{U},2,Eerie
 Growing Dread,{G}{U},2,Manifest;Manifest dread;Flash
-Inquisitive Glimmer,{W}{U},2,
 Intruding Soulrager,{U}{R},2,Vigilance
 The Jolly Balloon Man,{1}{R}{W},3,Haste
 Midnight Mayhem,{2}{R}{W},4,
@@ -4616,7 +4633,6 @@ Lakeside Shack,,0,
 Murky Sewer,,0,
 Neglected Manor,,0,
 Peculiar Lighthouse,,0,
-Raucous Carnival,,0,
 Valgavoth's Lair,,0,Hexproof
 Roast,{1}{R},2,
 Rally the Ancestors,{X}{W}{W},2,
@@ -5139,7 +5155,6 @@ Biotech Specialist,{R}{G},2,
 Cosmogoyf,{B}{G},2,
 "Dyadrine, Synthesis Amalgam",{X}{G}{W},2,Trample
 Genemorph Imago,{G}{U},2,Landfall;Flying
-Infinite Guideline Station,{W}{U}{B}{R}{G},5,Station
 Interceptor Mechan,{2}{B}{R},4,Flying;Void
 "Mm'menon, Uthros Exile",{1}{U}{R},3,Flying
 Mutinous Massacre,{3}{B}{B}{R}{R},7,
@@ -6146,7 +6161,6 @@ Mirror of Life Trapping,{4},4,
 Navigation Orb,{3},3,
 Baldur's Gate,,0,
 Long-Bodied Grey Dog,{3},3,Reach;Treasure;Flash
-Bilbo's Gambit,{1}{W},2,Gift;Treasure
 "Bofur, Reliable Guardian // Concerted Care",{W} // {1}{W},1,Lifelink
 Dwarven Provisioner,{1}{W},2,
 Esgaroth Garrison,{4}{W},5,
@@ -6199,7 +6213,6 @@ Ordinary Bear,{3}{G},4,
 Quarrel,{1}{G},2,
 Wood Elves,{2}{G},3,
 Bard the Bowman,{1}{W}{U},3,Reach
-Bard's Company,{2}{W}{U},4,
 "Bifur, Melodic Rider",{4}{R/W}{R/W},6,
 "Dwalin, Weaponmaster",{1}{R/W},2,First strike
 Fearsome Goblin Pair,{2}{B/R},3,Amass
@@ -11549,18 +11562,14 @@ Inventive Wingsmith,{2}{W},3,
 Lassoed by the Law,{3}{W},4,
 Mystical Tether,{2}{W},3,
 One Last Job,{2}{W},3,Spree
-Thunder Lasso,{2}{W},3,Equip
 Trained Arynx,{1}{W},2,Saddle;Scry
 Wanted Griffin,{3}{W},4,Flying
-Canyon Crab,{1}{U},2,
 Daring Thunder-Thief,{3}{U},4,Flash
 Duelist of the Mind,{1}{U},2,Flying;Vigilance
 "Fblthp, Lost on the Range",{1}{U}{U},3,Plot;Ward
 Fleeting Reflection,{1}{U},2,
 Harrier Strix,{U},1,Flying
 The Key to the Vault,{1}{U},2,Equip
-Loan Shark,{3}{U},4,Plot
-Marauding Sphinx,{3}{U}{U},5,Flying;Surveil;Vigilance;Ward
 Metamorphic Blast,{U},1,Spree
 Peerless Ropemaster,{4}{U},5,
 Shackle Slinger,{2}{U},3,
@@ -11578,7 +11587,6 @@ Caustic Bronco,{1}{B},2,Saddle
 Corrupted Conviction,{B},1,
 Desert's Due,{1}{B},2,
 Forsaken Miner,{B},1,
-"Gisa, the Hellraiser",{3}{B}{B},5,Ward
 Insatiable Avarice,{B},1,Spree
 "Kaervek, the Punisher",{1}{B}{B},3,
 Neutralize the Guards,{2}{B},3,Surveil
@@ -11611,14 +11619,11 @@ Dance of the Tumbleweeds,{1}{G},2,Spree
 Freestrider Lookout,{2}{G},3,Reach
 Map the Frontier,{3}{G},4,
 Ornery Tumblewagg,{2}{G},3,Saddle;Double
-Outcaster Greenblade,{2}{G},3,
 Reach for the Sky,{3}{G},4,Enchant;Flash
 Smuggler's Surprise,{G},1,Spree;Mill
-Spinewoods Armadillo,{4}{G}{G},6,Reach;Ward
 Spinewoods Paladin,{4}{G},5,Plot;Trample
 Stubborn Burrowfiend,{1}{G},2,Saddle;Mill
 Throw from the Saddle,{1}{G},2,
-Trash the Town,{G},1,Spree
 Tumbleweed Rising,{1}{G},2,Plot
 Akul the Unrepentant,{B}{B}{R}{R},4,Flying;Trample
 At Knifepoint,{1}{B}{R},3,
@@ -11626,9 +11631,7 @@ At Knifepoint,{1}{B}{R},3,
 "Breeches, the Blastmaker",{1}{U}{R},3,Menace
 "Bruse Tarl, Roving Rancher",{2}{R}{W},4,
 "Eriette, the Beguiler",{1}{W}{U}{B},4,Lifelink
-"Ertha Jo, Frontier Mentor",{2}{R}{W},4,
 Form a Posse,{X}{R}{W},2,
-Honest Rutstein,{1}{B}{G},3,
 "Kambal, Profiteering Mayor",{1}{W}{B},3,
 Kellan Joins Up,{G}{W}{U},3,Plot
 Laughing Jasper Flint,{1}{B}{R},3,
@@ -11637,7 +11640,6 @@ Laughing Jasper Flint,{1}{B}{R},3,
 Make Your Own Luck,{3}{G}{U},5,Plot
 "Malcolm, the Eyes",{U}{R},2,Flying;Investigate;Haste
 "Marchesa, Dealer of Death",{U}{B}{R},3,
-"Miriam, Herd Whisperer",{G}{W},2,
 "Obeka, Splitter of Seconds",{1}{U}{B}{R},4,Menace
 Pillage the Bog,{B}{G},2,Plot
 "Rakdos, the Muscle",{2}{B}{B}{R},5,Flying;Trample

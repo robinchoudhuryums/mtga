@@ -5668,3 +5668,92 @@ At the beginning of the end step, sacrifice this creature.",R,Elemental; sacrifi
 Doc Ock's Tentacles,Artifact — Equipment,"Whenever a creature you control with mana value 5 or greater enters, you may attach this Equipment to it.
 Equipped creature gets +4/+4.
 Equip {5}",Colorless,Equipment; equipment; pump; equip,SPM,162,1
+Riverchurn Monument,Artifact,"{1}, {T}: Any number of target players each mill two cards. (Each of them puts the top two cards of their library into their graveyard.)
+Exhaust — {2}{U}{U}, {T}: Any number of target players each mill cards equal to the number of cards in their graveyard. (Activate each exhaust ability only once.)",U,graveyard; mill; exhaust; payoff,DFT,57,1
+"Gisa, the Hellraiser",Legendary Creature — Human Warlock,"Ward—{2}, Pay 2 life.
+Skeletons and Zombies you control get +1/+1 and have menace.
+Whenever you commit a crime, create two tapped 2/2 blue and black Zombie Rogue creature tokens. This ability triggers only once each turn. (Targeting opponents, anything they control, and/or cards in their graveyards is a crime.)",B,Human; Warlock; Zombie; graveyard; pay life; tokens; pump; ward; protection; menace; evasion,OTJ,89,1
+Trash the Town,Instant,"Spree (Choose one or more additional costs.)
++ {2} — Put two +1/+1 counters on target creature.
++ {1} — Target creature gains trample until end of turn.
++ {1} — Until end of turn, target creature gains ""Whenever this creature deals combat damage to a player, draw two cards.""",G,counters; card draw; spree; value; trample; evasion,OTJ,186,1
+"Ertha Jo, Frontier Mentor",Legendary Creature — Kor Advisor,"When Ertha Jo enters, create a 1/1 red Mercenary creature token with ""{T}: Target creature you control gets +1/+0 until end of turn. Activate only as a sorcery.""
+Whenever you activate an ability that targets a creature or player, copy that ability. You may choose new targets for the copy.",W/R,Kor; Advisor; tokens; etb; pump,OTJ,203,1
+Thunder Lasso,Artifact — Equipment,"When this Equipment enters, attach it to target creature you control.
+Equipped creature gets +1/+1.
+Whenever equipped creature attacks, tap target creature defending player controls.
+Equip {2}",W,Equipment; etb; equipment; pump; equip,OTJ,35,1
+Spinewoods Armadillo,Creature — Armadillo,"Reach
+Ward {3} (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {3}.)
+{1}{G}, Discard this card: Search your library for a basic land card or a Desert card, reveal it, put it into your hand, then shuffle. You gain 3 life.",G,Armadillo; lifegain; ramp; reach; defense; ward; protection,OTJ,182,1
+Outcaster Greenblade,Creature — Human Mercenary,"When this creature enters, search your library for a basic land card or a Desert card, reveal it, put it into your hand, then shuffle.
+This creature gets +1/+1 for each Desert you control.",G,Human; Mercenary; ramp; etb; pump,OTJ,172,1
+Honest Rutstein,Legendary Creature — Human Warlock,"When Honest Rutstein enters, return target creature card from your graveyard to your hand.
+Creature spells you cast cost {1} less to cast.",B/G,Human; Warlock; graveyard; cost-reduction; etb,OTJ,207,1
+"Miriam, Herd Whisperer",Legendary Creature — Human Druid,"During your turn, Mounts and Vehicles you control have hexproof.
+Whenever a Mount or Vehicle you control attacks, put a +1/+1 counter on it.",W/G,Human; Druid; Mount; Vehicle; counters; hexproof; protection,OTJ,221,1
+Bilbo's Gambit,Instant,"Gift a Treasure (You may promise an opponent a gift as you cast this spell. If you do, they create a Treasure token before its other effects. It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")
+Return target spell to its owner's hand. If the gift was promised, players can't cast spells this turn.",W,tokens; treasure; bounce; gift; value,HOB,5,1
+Infinite Guideline Station,Legendary Artifact — Spacecraft,"When Infinite Guideline Station enters, create a tapped 2/2 colorless Robot artifact creature token for each multicolored permanent you control.
+Station (Tap another creature you control: Put charge counters equal to its power on this Spacecraft. Station only as a sorcery. It's an artifact creature at 12+.)
+12+ | Flying
+Whenever Infinite Guideline Station attacks, draw a card for each multicolored permanent you control.",W/U/B/R/G,Spacecraft; card draw; tokens; etb; station; counters; artifacts,EOE,219,1
+Abhorrent Oculus,Creature — Eye,"As an additional cost to cast this spell, exile six cards from your graveyard.
+Flying
+At the beginning of each opponent's upkeep, manifest dread. (Look at the top two cards of your library. Put one onto the battlefield face down as a 2/2 creature and the other into your graveyard. Turn it face up any time for its mana cost if it's a creature card.)",U,Eye; graveyard; selection; flying; evasion; manifest; tokens; manifest dread,DSK,42,1
+Overlord of the Floodpits,Enchantment Creature — Avatar Horror,"Impending 4—{1}{U}{U} (If you cast this spell for its impending cost, it enters with four time counters and isn't a creature until the last is removed. At the beginning of your end step, remove a time counter from it.)
+Flying
+Whenever this permanent enters or attacks, draw two cards, then discard a card.",U,Avatar; Horror; card draw; flying; evasion; impending; tempo; cost-reduction,DSK,68,1
+Mirror Room,Enchantment — Room // Enchantment — Room,"When you unlock this door, create a token that's a copy of target creature you control, except it's a Reflection in addition to its other creature types.
+(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.) // If a triggered ability of a permanent you control triggers, that ability triggers an additional time.
+(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",U,Room; tokens,DSK,67,1
+Meathook Massacre II,Legendary Enchantment,"When Meathook Massacre II enters, each player sacrifices X creatures of their choice.
+Whenever a creature you control dies, you may pay 3 life. If you do, return that card under your control with a finality counter on it.
+Whenever a creature an opponent controls dies, they may pay 3 life. If they don't, return that card under your control with a finality counter on it.",B,counters; pay life; sacrifice; etb,DSK,108,1
+The Rollercrusher Ride,Legendary Enchantment,"Delirium — If a source you control would deal noncombat damage to a permanent or player while there are four or more card types among cards in your graveyard, it deals double that damage instead.
+When The Rollercrusher Ride enters, it deals X damage to each of up to X target creatures.",R,graveyard; burn; etb; noncombat damage; delirium; double,DSK,155,1
+Beastie Beatdown,Sorcery,"Choose target creature you control and target creature an opponent controls.
+Delirium — If there are four or more card types among cards in your graveyard, put two +1/+1 counters on the creature you control.
+The creature you control deals damage equal to its power to the creature an opponent controls.",R/G,counters; graveyard; delirium,DSK,210,1
+Unwilling Vessel,Creature — Human Wizard,"Vigilance
+Eerie — Whenever an enchantment you control enters and whenever you fully unlock a Room, put a possession counter on this creature.
+When this creature dies, create an X/X blue Spirit creature token with flying, where X is the number of counters on this creature.",U,Human; Wizard; counters; tokens; vigilance; combat; eerie,DSK,81,2
+Inquisitive Glimmer,Enchantment Creature — Fox Glimmer,"Enchantment spells you cast cost {1} less to cast.
+Unlock costs you pay cost {1} less.",W/U,Fox; Glimmer; cost-reduction,DSK,217,1
+Splitskin Doll,Artifact Creature — Toy,"When this creature enters, draw a card. Then discard a card unless you control another creature with power 2 or less.",W,Toy; card draw; etb,DSK,33,1
+Optimistic Scavenger,Creature — Human Scout,"Eerie — Whenever an enchantment you control enters and whenever you fully unlock a Room, put a +1/+1 counter on target creature.",W,Human; Scout; counters; eerie,DSK,21,1
+Ghostly Keybearer,Creature — Spirit,"Flying
+Whenever this creature deals combat damage to a player, unlock a locked door of up to one target Room you control.",U,Spirit; flying; evasion,DSK,61,1
+Moldering Gym,Enchantment — Room // Enchantment — Room,"When you unlock this door, search your library for a basic land card, put it onto the battlefield tapped, then shuffle.
+(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.) // When you unlock this door, manifest dread, then put three +1/+1 counters on that creature.
+(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",G,Room; counters; ramp; manifest; tokens; manifest dread; graveyard,DSK,190,1
+Cult Healer,Creature — Human Doctor,"Eerie — Whenever an enchantment you control enters and whenever you fully unlock a Room, this creature gains lifelink until end of turn.",W,Human; Doctor; lifegain; eerie; lifelink,DSK,2,1
+Bashful Beastie,Creature — Beast,"When this creature dies, manifest dread. (Look at the top two cards of your library. Put one onto the battlefield face down as a 2/2 creature and the other into your graveyard. Turn it face up any time for its mana cost if it's a creature card.)",G,Beast; graveyard; selection; manifest; tokens; manifest dread,DSK,169,1
+Horrid Vigor,Instant,Target creature gains deathtouch and indestructible until end of turn.,G,deathtouch; combat; removal; indestructible; resilience,DSK,184,1
+Fear of Lost Teeth,Enchantment Creature — Nightmare,"When this creature dies, it deals 1 damage to any target and you gain 1 life.",B,Nightmare; lifegain; burn; noncombat damage,DSK,97,1
+Friendly Ghost,Creature — Spirit,"Flying
+When this creature enters, target creature gets +2/+4 until end of turn.",W,Spirit; etb; pump; flying; evasion,DSK,12,1
+Boilerbilges Ripper,Creature — Human Assassin,"When this creature enters, you may sacrifice another creature or enchantment. When you do, this creature deals 2 damage to any target.",R,Human; Assassin; sacrifice; burn; etb; noncombat damage,DSK,127,1
+Appendage Amalgam,Enchantment Creature — Horror,"Flash
+Whenever this creature attacks, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)",B,Horror; graveyard; selection; surveil; flash; tempo,DSK,83,1
+Raucous Carnival,Land,"This land enters tapped unless a player has 13 or less life.
+{T}: Add {R} or {W}.",W/R,mana,DSK,266,1
+Marauding Sphinx,Creature — Sphinx Rogue,"Flying, vigilance, ward {2}
+Whenever you commit a crime, surveil 2. This ability triggers only once each turn. (Targeting opponents, anything they control, and/or cards in their graveyards is a crime.)",U,Sphinx; Rogue; graveyard; flying; evasion; surveil; vigilance; combat; ward; protection,OTJ,56,1
+Canyon Crab,Creature — Crab,"{1}{U}: This creature gets +2/-2 until end of turn.
+At the beginning of your end step, if you haven't cast a spell from your hand this turn, draw a card, then discard a card.",U,Crab; card draw; pump; removal,OTJ,40,1
+Loan Shark,Creature — Shark Rogue,"When this creature enters, if you've cast two or more spells this turn, draw a card.
+Plot {3}{U} (You may pay {3}{U} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)",U,Shark; Rogue; exile cast; card draw; etb; plot; tempo; cost-reduction,OTJ,55,1
+Bard's Company,Creature — Human Citizen,"You may cast this spell as though it had flash if you control a Human.
+Other creatures you control get +1/+1.
+Whenever this creature enters or attacks, recruit. (Draw a card, then discard a card. If you discarded a nonland card, create a 1/1 white Human Soldier creature token.)",W/U,Human; Citizen; card draw; tokens; pump; recruit,HOB,146,1
+Defend the Rider,Instant,"Choose one —
+• Target permanent you control gains hexproof and indestructible until end of turn.
+• Create a 1/1 colorless Pilot creature token with ""This token saddles Mounts and crews Vehicles as though its power were 2 greater.""",G,tokens; hexproof; protection; indestructible; resilience,DFT,157,2
+"Loot, the Pathfinder",Legendary Creature — Beast Noble,"Double strike, vigilance, haste
+Exhaust — {G}, {T}: Add three mana of any one color. (Activate each exhaust ability only once.)
+Exhaust — {U}, {T}: Draw three cards.
+Exhaust — {R}, {T}: Loot deals 3 damage to any target.",U/R/G,Beast; Noble; card draw; burn; mana; noncombat damage; vigilance; combat; haste; aggro; exhaust; payoff; double strike,DFT,212,1
+Push the Limit,Sorcery,"Return all Mount and Vehicle cards from your graveyard to the battlefield. Sacrifice them at the beginning of the next end step.
+Vehicles you control become artifact creatures until end of turn. Creatures you control gain haste until end of turn.",R,Vehicle; reanimator; graveyard; sacrifice; haste; aggro,DFT,143,1
+Greasewrench Goblin,Creature — Goblin Artificer,"Exhaust — {2}{R}: Discard up to two cards, then draw that many cards. Put a +1/+1 counter on this creature. (Activate each exhaust ability only once.)",R,Goblin; Artificer; counters; card draw; exhaust; payoff,DFT,132,1
