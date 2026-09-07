@@ -31,9 +31,6 @@ At the beginning of each combat this turn, untap all creatures that attacked thi
 Regal Imperiosaur,Creature — Dinosaur,Other Dinosaurs you control get +1/+1.,G,Dinosaur; pump,DFT,177,Rare,28,,5.5,hand
 Riverchurn Monument,Artifact,"{1}, {T}: Any number of target players each mill two cards. (Each of them puts the top two cards of their library into their graveyard.)
 Exhaust — {2}{U}{U}, {T}: Any number of target players each mill cards equal to the number of cards in their graveyard. (Activate each exhaust ability only once.)",U,graveyard; mill; exhaust; payoff,DFT,57,Rare,51; 51a,"Deck 51: {1},{T} mills 2 -> SIX with The Water Crystal already in the deck; Exhaust mills their whole graveyard +4. Activated, so Fractured Realm does NOT double it. ~turn 11 clock alone, faster with Exhaust.",7.4,hand
-Pride of the Road,Creature — Zombie Cat Warrior,"Vigilance
-Start your engines! (If you have no speed, it starts at 1. It increases once on each of your turns when an opponent loses life. Max speed is 4.)
-Max speed — At the beginning of combat on your turn, target creature or Vehicle you control gains double strike until end of turn.",W,Zombie; Cat; Warrior; max speed; speed; aggro; vigilance; combat; start your engines!,DFT,24,Uncommon,36,,2.5,hand
 Reckless Velocitaur,Creature — Minotaur Pilot,"Whenever this creature saddles a Mount or crews a Vehicle during your main phase, that Mount or Vehicle gets +2/+0 and gains trample until end of turn.",R,Minotaur; Pilot; pump,DFT,144,Uncommon,48a,,2.0,seed
 Mirror Room // Fractured Realm,Enchantment — Room // Enchantment — Room,"When you unlock this door, create a token that's a copy of target creature you control, except it's a Reflection in addition to its other creature types.
 (You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.) // If a triggered ability of a permanent you control triggers, that ability triggers an additional time.
@@ -92,9 +89,6 @@ Mechan Assembler,Artifact Creature — Robot Artificer,"Whenever another artifac
 Whenever an artifact you control enters, put a +1/+1 counter on target creature.",U/R,Jellyfish; Advisor; counters; flying; evasion,EOE,221,Uncommon,48,Holds Adaptive Automaton's slot in 48 at Uncommon cost.,4.0,hand
 Sunstar Expansionist,Creature — Human Knight,"When this creature enters, if an opponent controls more lands than you, create a Lander token. (It's an artifact with ""{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."")
 Landfall — Whenever a land you control enters, this creature gets +1/+0 until end of turn.",W,Human; Knight; sacrifice; tokens; ramp; etb; landfall; pump; lands,EOE,41,Uncommon,36,,3.0,hand
-"Ajani, Caller of the Pride",Legendary Planeswalker — Ajani,"+1: Put a +1/+1 counter on up to one target creature.
-−3: Target creature gains flying and double strike until end of turn.
-−8: Create X 2/2 white Cat creature tokens, where X is your life total.",W,Ajani; Planeswalker; counters; tokens; planeswalker,FDN,134,Mythic,36,,6.5,hand
 "Muldrotha, the Gravetide",Legendary Creature — Elemental Avatar,"During each of your turns, you may play a land and cast a permanent spell of each permanent type from your graveyard. (If a card has multiple permanent types, choose one as you play it.)",U/B/G,Elemental; Avatar; graveyard,FDN,243,Mythic,,,5.5,seed
 Omniscience,Enchantment,You may cast spells from your hand without paying their mana costs.,U,,FDN,161,Mythic,51,,8.0,hand
 Omniscience,Enchantment,You may cast spells from your hand without paying their mana costs.,U,,FDN,208,Mythic,,,4.5,seed
@@ -107,21 +101,11 @@ This creature is the chosen type in addition to its other types.
 Other creatures you control of the chosen type get +1/+1.",Colorless,Construct; pump,FDN,723,Rare,48,FLEX in 48: swap back for Mm'menon when a Rare wildcard is free. One of only 5 choose-a-type anthems in Standard; no cheaper substitute exists.,6.0,hand
 Aggressive Mammoth,Creature — Elephant,"Trample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)
 Other creatures you control have trample.",G,Elephant; trample; evasion,FDN,551,Rare,50,,6.0,hand
-"Arahbo, the First Fang",Legendary Creature — Cat Avatar,"Other Cats you control get +1/+1.
-Whenever Arahbo or another nontoken Cat you control enters, create a 1/1 white Cat creature token.",W,Cat; Avatar; tokens; pump,FDN,2,Rare,36,,5.5,hand
 Desecration Demon,Creature — Demon,"Flying
 At the beginning of each combat, any opponent may sacrifice a creature of their choice. If a player does, tap this creature and put a +1/+1 counter on it.",B,Demon; counters; sacrifice; flying; evasion,FDN,603,Rare,general,efficient 6/6 flying B beater (opp-sac edict) — any black midrange,5.5,hand
 Dread Summons,Sorcery,"Each player mills X cards. For each creature card put into a graveyard this way, you create a tapped 2/2 black Zombie creature token. (To mill a card, a player puts the top card of their library into their graveyard.)",B,graveyard; mill; tokens,FDN,604,Rare,,,3.0,seed
-Felidar Retreat,Enchantment,"Landfall — Whenever a land you control enters, choose one —
-• Create a 2/2 white Cat Beast creature token.
-• Put a +1/+1 counter on each creature you control. Those creatures gain vigilance until end of turn.",W,counters; tokens; landfall; lands; ramp,FDN,574,Rare,36,,6.0,hand
-Felidar Retreat,Enchantment,"Landfall — Whenever a land you control enters, choose one —
-• Create a 2/2 white Cat Beast creature token.
-• Put a +1/+1 counter on each creature you control. Those creatures gain vigilance until end of turn.",W,counters; tokens; landfall; lands; ramp; vigilance; combat,FDN,20,Rare,,,5.5,seed
 Genesis Wave,Sorcery,Reveal the top X cards of your library. You may put any number of permanent cards with mana value X or less from among them onto the battlefield. Then put all cards revealed this way that weren't put onto the battlefield into your graveyard.,G,graveyard,FDN,165,Rare,40a,"FLEX (see 40a #~). 83% permanents here; each land it drops re-triggers landfall, so X=6 with 3 lands doubles Mossborn Hydra x8. GGG is castable off G-primary mana + Great Divide Guide.",7.5,hand
 Gilded Lotus,Artifact,{T}: Add three mana of any one color.,Colorless,mana,FDN,725,Rare,51,,7.0,hand
-Jazal Goldmane,Legendary Creature — Cat Warrior,"First strike (This creature deals combat damage before creatures without first strike.)
-{3}{W}{W}: Attacking creatures you control get +X/+X until end of turn, where X is the number of attacking creatures.",W,Cat; Warrior; pump; first strike; combat,FDN,497,Rare,36,,4.5,hand
 Leyline Axe,Artifact — Equipment,"If this card is in your opening hand, you may begin the game with it on the battlefield.
 Equipped creature gets +1/+1 and has double strike and trample.
 Equip {3} ({3}: Attach to target creature you control. Equip only as a sorcery.)",Colorless,Equipment; equipment; pump; equip,FDN,129,Rare,38a,"Double strike ON CLOUD is the 4x line: Cloud doubles triggers of gear attached to HIM, and he has no double strike natively, so each combat-damage equipment fires 4x (two damage steps, each doubled). May also START on the battlefield from the opening hand. Held out of the 60 only on the 17-equipment / 16-creature ratio; Fireshrieker is the owned-cost version already maindecked.",7.0,hand
@@ -129,8 +113,6 @@ Nullpriest of Oblivion,Creature — Vampire Cleric,"Kicker {3}{B} (You may pay a
 Lifelink
 Menace (This creature can't be blocked except by two or more creatures.)
 When this creature enters, if it was kicked, return target creature card from your graveyard to the battlefield.",B,Vampire; Cleric; reanimator; graveyard; lifegain; etb; lifelink; menace; evasion; kicker; value,FDN,611,Rare,11,,6.0,hand
-Regal Caracal,Creature — Cat,"Other Cats you control get +1/+1 and have lifelink. (Damage dealt by those creatures also causes you to gain that much life.)
-When this creature enters, create two 1/1 white Cat creature tokens with lifelink.",W,Cat; lifegain; tokens; etb; pump,FDN,579,Rare,36,,5.0,hand
 Rite of Replication,Sorcery,"Kicker {5} (You may pay an additional {5} as you cast this spell.)
 Create a token that's a copy of target creature. If this spell was kicked, create five of those tokens instead.",U,tokens; kicker; value,FDN,711,Rare,25,Copy engine for Spellstorm (25): clone your best creature (kicker = 5 copies) — payoff redundancy,6.5,hand
 Billowing Shriekmass,Creature — Spirit,"Flying
@@ -141,11 +123,9 @@ Threshold — This creature can't be blocked as long as there are seven or more 
 Dreadwing Scavenger,Creature — Nightmare Bird,"Flying
 Whenever this creature enters or attacks, draw a card, then discard a card.
 Threshold — This creature gets +1/+1 and has deathtouch as long as there are seven or more cards in your graveyard.",U/B,Nightmare; Bird; graveyard; card draw; pump; flying; evasion; threshold,FDN,118,Uncommon,,,4.0,seed
-Good-Fortune Unicorn,Creature — Unicorn,"Whenever another creature you control enters, put a +1/+1 counter on that creature.",W/G,Unicorn; counters,FDN,240,Uncommon,36a,,5.0,hand
 Hoarding Dragon,Creature — Dragon,"Flying
 When this creature enters, you may search your library for an artifact card, exile it, then shuffle.
 When this creature dies, you may put the exiled card into its owner's hand.",R,Dragon; etb; flying; evasion,FDN,626,Uncommon,49,,5.0,hand
-Ingenious Leonin,Creature — Cat Soldier,"{3}{W}: Put a +1/+1 counter on another target attacking creature you control. If that creature is a Cat, it gains first strike until end of turn. (It deals combat damage before creatures without first strike.)",W,Cat; Soldier; counters,FDN,495,Uncommon,36,,2.0,hand
 Crow of Dark Tidings,Creature — Zombie Bird,"Flying
 When this creature enters or dies, mill two cards. (Put the top two cards of your library into your graveyard.)",B,Zombie; Bird; graveyard; mill; etb; flying; evasion,FDN,519,Common,,,1.0,seed
 Tolarian Terror,Creature — Serpent,"This spell costs {1} less to cast for each instant and sorcery card in your graveyard.
@@ -241,9 +221,6 @@ Spider-UK,Legendary Creature — Spider Human Hero,"Web-slinging {2}{W} (You may
 At the beginning of your end step, if two or more creatures entered the battlefield under your control this turn, you draw a card and gain 2 life.",W,Spider; Human; Hero; lifegain; card draw; bounce; web-slinging; evasion; tempo,MSC,777,Uncommon,23,,3.5,hand
 Kang the Conqueror,Legendary Creature — Human Villain,"Flying
 Power-up — {5}{U}{U}{U}: Put a +1/+1 counter on Kang. Take an extra turn after this one. During that turn, power-up abilities can't be activated. (Activate each power-up ability only once. Reduce the cost by his mana cost if he entered this turn.)",U,Human; Villain; counters; flying; evasion; power-up; payoff,MSH,62,Mythic,12,blue control finisher — evasive body + extra-turn power-up; UUU castable in Dimir,6.5,hand
-Railway Brawler,Creature — Rhino Warrior,"Reach, trample
-Whenever another creature you control enters, put X +1/+1 counters on it, where X is its power.
-Plot {3}{G} (You may pay {3}{G} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)",G,Rhino; Warrior; counters; exile cast; reach; defense; plot; tempo; cost-reduction; trample; evasion,OTJ,175,Mythic,,,8.0,seed
 Blooming Marsh,Land,"This land enters tapped unless you control two or fewer other lands.
 {T}: Add {B} or {G}.",B/G,mana,OTJ,266,Rare,21; 6,Manabase upgrade: de-tapland Gastromancer (21) B->A; reusable across WB/BG/GW decks. Also firms deck 8's thin green (Killmonger/Ygra) — fungible. | Also Abzan reanimator deck 6 (Dead or Alive) — same WBG fixing; fungible craft.,6.5,hand
 Concealed Courtyard,Land,"This land enters tapped unless you control two or fewer other lands.
@@ -258,9 +235,6 @@ Whenever a legendary creature you control enters, put a +1/+1 counter on each cr
 Whenever you cast a multicolored instant or sorcery spell from your hand, exile that spell instead of putting it into your graveyard as it resolves. If you do, it becomes plotted. (You may cast it as a sorcery on a later turn without paying its mana cost.)",U/R,Human; Rogue; graveyard; pump; plot; tempo; cost-reduction; prowess; spellslinger,OTJ,217,Rare,25,prowess 3-drop that impulses off your spells,6.5,hand
 "Malcolm, the Eyes",Legendary Creature — Siren Pirate,"Flying, haste
 Whenever you cast your second spell each turn, investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",U/R,Siren; Pirate; card draw; sacrifice; tokens; clue; flying; evasion; investigate; haste; aggro,OTJ,219,Rare,25,2-drop: second spell -> investigate,5.5,hand
-Stingerback Terror,Creature — Scorpion Dragon,"Flying, trample
-This creature gets -1/-1 for each card in your hand.
-Plot {2}{R} (You may pay {2}{R} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)",R,Scorpion; Dragon; exile cast; removal; flying; evasion; plot; tempo; cost-reduction; trample,OTJ,147,Rare,49,,5.0,hand
 Lassoed by the Law,Enchantment,"When this enchantment enters, exile target nonland permanent an opponent controls until this enchantment leaves the battlefield.
 When this enchantment enters, create a 1/1 red Mercenary creature token with ""{T}: Target creature you control gets +1/+0 until end of turn. Activate only as a sorcery.""",W,tokens; removal; etb; pump,OTJ,18,Uncommon,3; 36a,,5.5,hand
 Make Your Own Luck,Sorcery,"Look at the top three cards of your library. You may exile a nonland card from among them. If you do, it becomes plotted. Put the rest into your hand. (You may cast it as a sorcery on a later turn without paying its mana cost.)",U/G,selection; plot; tempo; cost-reduction,OTJ,218,Uncommon,,,3.5,seed
@@ -301,9 +275,6 @@ Multiversal Passage,Land,"As this land enters, choose a basic land type. Then yo
 This land is the chosen type.",Colorless,,SPM,180,Rare,general,basic-type fixing land — any deck,6.0,hand
 Radioactive Spider,Creature — Spider,"Reach, deathtouch
 Fateful Bite — {2}, Sacrifice this creature: Search your library for a Spider Hero card, reveal it, put it into your hand, then shuffle. Activate only as a sorcery.",G,Spider; sacrifice; reach; defense; deathtouch; combat; removal,SPM,111,Rare,66,"PRIORITY of the two: the only MV-1 Spider available to fix Eddie Brock's flagged thin reanimation gate (2 targets). Deathtouch/reach body, sac outlet, and a tutor for any Spider Hero. Cut candidate on craft: Alien Symbiosis or Grub's Command.",3.0,seed
-"Scarlet Spider, Ben Reilly",Legendary Creature — Spider Human Hero,"Web-slinging {R}{G} (You may cast this spell for {R}{G} if you also return a tapped creature you control to its owner's hand.)
-Trample
-Sensational Save — If Scarlet Spider was cast using web-slinging, he enters with X +1/+1 counters on him, where X is the mana value of the returned creature.",R/G,Spider; Human; Hero; counters; bounce; trample; evasion; web-slinging; tempo,SPM,142,Rare,66,"OPTIONAL, graded last of the three finds: Sensational Save wants a tapped creature RETURNED, in a deck that would rather sacrifice it (the G-42 mirror). Take only if the tempo line proves itself in games. Cut candidate: Alien Symbiosis or Grub's Command.",3.5,seed
 Strength of Will,Instant,"Until end of turn, target creature you control gains indestructible and ""Whenever this creature is dealt damage, put that many +1/+1 counters on it.""",G,counters,SPM,118,Rare,general,green protect + damage->counters combat trick — any green deck,4.0,hand
 With Great Power . . .,Enchantment — Aura,"Enchant creature you control
 Enchanted creature gets +2/+2 for each Aura and Equipment attached to it.

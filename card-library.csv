@@ -3962,7 +3962,7 @@ The Soul Stone,Legendary Artifact — Infinity Stone,"Indestructible
 ∞ — At the beginning of your upkeep, return target creature card from your graveyard to the battlefield.",B,Infinity; Stone; reanimator; graveyard; mana; indestructible; resilience,SPM,66,1
 Web-Warriors,Creature — Spider Hero,"When this creature enters, put a +1/+1 counter on each other creature you control.",W/G,Spider; Hero; counters; etb,SPM,159,2
 "Tannuk, Steadfast Second",Legendary Creature — Kavu Pilot,"Other creatures you control have haste.
-Artifact cards and red creature cards in your hand have warp {2}{R}. (You may cast a card from your hand for its warp cost. Exile that permanent at the beginning of the next end step, then you may cast it from exile on a later turn.)",R,Kavu; Pilot; exile cast; haste; aggro,EOE,162,1
+Artifact cards and red creature cards in your hand have warp {2}{R}. (You may cast a card from your hand for its warp cost. Exile that permanent at the beginning of the next end step, then you may cast it from exile on a later turn.)",R,Kavu; Pilot; exile cast; haste; aggro,EOE,162,2
 Inventors' Fair,Legendary Land,"At the beginning of your upkeep, if you control three or more artifacts, you gain 1 life.
 {T}: Add {C}.
 {4}, {T}, Sacrifice Inventors' Fair: Search your library for an artifact card, reveal it, put it into your hand, then shuffle. Activate only if you control three or more artifacts.",Colorless,lifegain; sacrifice; mana,EOS,21,1
@@ -3983,7 +3983,7 @@ Warp {1}{W} (You may cast this card from your hand for its warp cost. Exile this
 Perigee Beckoner,Creature — Horror,"When this creature enters, until end of turn, another target creature you control gets +2/+0 and gains ""When this creature dies, return it to the battlefield tapped under its owner's control.""
 Warp {1}{B} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",B,Horror; exile cast; etb; pump; blink; warp; tempo; cost-reduction,EOE,112,1
 Rhystic Study,Enchantment,"Whenever an opponent casts a spell, you may draw a card unless that player pays {1}.",U,card draw,FCA,31,1
-Self-Destruct,Instant,"Target creature you control deals X damage to any other target and X damage to itself, where X is its power.",R,burn,FIN,157,1
+Self-Destruct,Instant,"Target creature you control deals X damage to any other target and X damage to itself, where X is its power.",R,burn,FIN,157,2
 Exhibition Tidecaller,Creature — Djinn Wizard,"Opus — Whenever you cast an instant or sorcery spell, target player mills three cards. If five or more mana was spent to cast that spell, that player mills ten cards instead.",U,Djinn; Wizard; mill; spellslinger; graveyard; opus; payoff,SOS,48,1
 Fated Firepower,Enchantment,"Flash
 This enchantment enters with X fire counters on it.
@@ -4687,7 +4687,7 @@ Whenever you sacrifice a token, target opponent loses 1 life.",B,Halfling; Citiz
 Bejeweled Warg,Creature — Wolf,"Trample
 Whenever this creature deals combat damage to a player, choose one —
 • Put a +1/+1 counter on target Wolf you control.
-• Create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")",G,Wolf; counters; sacrifice; tokens; treasure; trample; evasion,HOB,117,1
+• Create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")",G,Wolf; counters; sacrifice; tokens; treasure; trample; evasion,HOB,117,2
 Uncover the Moon-Letters,Enchantment,"Whenever you cast a noncreature spell, you may draw X cards, where X is the amount of mana spent to cast that spell. If you do, discard two cards.",U,card draw; spellslinger,HOB,57,1
 Radagast of Rhosgobel,Legendary Creature — Avatar Wizard,The first creature spell you cast each turn costs {2} less to cast and can be cast as though it had flash.,G,Avatar; Wizard; cost-reduction,HOB,136,1
 Roll-Roll-Roll-Roll,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after IV.)
@@ -4701,7 +4701,7 @@ Mirkwood Pathmaker,Creature — Elf Ranger,Mirkwood Pathmaker's power and toughn
 Stone by Sunlight,Instant,"Choose one —
 • Destroy target creature with power 4 or greater.
 • Until end of turn, target creature becomes an artifact in addition to its other types and gains indestructible. (Damage and effects that say ""destroy"" don't destroy it.)",W,removal; indestructible; resilience,HOB,27,1
-Wilderland Scrounger,Creature — Wolf,"Ferocious — Whenever this creature attacks while you control a creature with power 4 or greater, put a +1/+1 counter on each creature you control.",G,Wolf; counters; ferocious,HOB,141,1
+Wilderland Scrounger,Creature — Wolf,"Ferocious — Whenever this creature attacks while you control a creature with power 4 or greater, put a +1/+1 counter on each creature you control.",G,Wolf; counters; ferocious,HOB,141,2
 The Black Arrow,Legendary Artifact — Equipment,"Flash
 When The Black Arrow enters, it deals 1 damage to any target. If a Dragon is dealt damage this way, destroy it.
 Equipped creature gets +1/+1 and has reach.
@@ -4754,7 +4754,7 @@ Ward—Discard a card.
 Creatures your opponents control have base toughness 1.",B,Elemental; Bird; flying; evasion; trample; ward; protection,BLB,100,1
 Mouse Trapper,Creature — Mouse Soldier,"Flash
 Valiant — Whenever this creature becomes the target of a spell or ability you control for the first time each turn, tap target creature an opponent controls.",W,Mouse; Soldier; valiant; combat; counters; flash; tempo,BLB,22,1
-Overprotect,Instant,"Target creature you control gets +3/+3 and gains trample, hexproof, and indestructible until end of turn.",G,pump; trample; evasion; hexproof; protection; indestructible; resilience,BLB,185,1
+Overprotect,Instant,"Target creature you control gets +3/+3 and gains trample, hexproof, and indestructible until end of turn.",G,pump; trample; evasion; hexproof; protection; indestructible; resilience,BLB,185,2
 Eddymurk Crab,Creature — Elemental Crab,"Flash
 This spell costs {1} less to cast for each instant and sorcery card in your graveyard.
 This creature enters tapped if it's not your turn.
@@ -5546,3 +5546,125 @@ Wild Roads,Land,"This land enters tapped unless you control a Mount or Vehicle.
 Temple of Plenty,Land,"This land enters tapped.
 When this land enters, scry 1. (Look at the top card of your library. You may put that card on the bottom.)
 {T}: Add {G} or {W}.",W/G,mana; etb; scry; selection,FDN,703,1
+Nighthowl Pursuer,Creature — Wolf,"Menace (This creature can't be blocked except by two or more creatures.)
+Ferocious — Whenever this creature attacks while you control a creature with power 4 or greater, this creature gets +2/+2 until end of turn.",B,Wolf; pump; ferocious; menace; evasion,HOB,78,1
+Wargling,Creature — Wolf,"Ferocious — Whenever this creature attacks while you control a creature with power 4 or greater, until end of turn, this creature gets +1/+0 and creatures you control gain trample.",G,Wolf; pump; ferocious; trample; evasion,HOB,140,1
+Wildborn Preserver,Creature — Elf Archer,"Flash (You may cast this spell any time you could cast an instant.)
+Reach (This creature can block creatures with flying.)
+Whenever another non-Human creature you control enters, you may pay {X}. When you do, put X +1/+1 counters on this creature.",G,Elf; Archer; counters; reach; defense; flash; tempo,FDN,650,1
+Ravening Warg,Creature — Wolf,"Deathtouch
+Ferocious — Whenever this creature attacks while you control a creature with power 4 or greater, you gain 2 life.",B,Wolf; lifegain; ferocious; deathtouch; combat; removal,HOB,80,1
+Duskwatch Hunter,Creature — Wolf,"This creature can't be blocked by tokens.
+When this creature enters, put a +1/+1 counter on target creature.",B/G,Wolf; counters; etb,HOB,153,1
+Head of the Hunt,Creature — Wolf,"Flash
+If a creature an opponent controls would die, exile it instead. When you do, create a 2/2 green Wolf creature token.",B,Wolf; tokens; flash; tempo,HOB,75,1
+Moon-Vigil Adherents,Creature — Elf Druid,"Trample
+This creature gets +1/+1 for each creature you control and each creature card in your graveyard.",G,Elf; Druid; graveyard; pump; trample; evasion,ECL,184,1
+Kraven the Hunter,Legendary Creature — Human Warrior Villain,"Trample
+Whenever a creature an opponent controls with the greatest power among creatures that player controls dies, draw a card and put a +1/+1 counter on Kraven the Hunter.",B/G,Human; Warrior; Villain; counters; card draw; trample; evasion,SPM,133,1
+Hunter's Talent,Enchantment — Class,"(Gain the next level as a sorcery to add its ability.)
+When this Class enters, target creature you control deals damage equal to its power to target creature you don't control.
+{1}{G}: Level 2
+Whenever you attack, target attacking creature gets +1/+0 and gains trample until end of turn.
+{3}{G}: Level 3
+At the beginning of your end step, if you control a creature with power 4 or greater, draw a card.",G,Class; card draw; etb; pump; removal; trample; evasion,BLB,179,1
+"Torgal, A Fine Hound",Legendary Creature — Wolf,"Whenever you cast your first Human creature spell each turn, that creature enters with an additional +1/+1 counter on it for each Dog and/or Wolf you control.
+{T}: Add one mana of any color.",G,Wolf; counters; mana,FIN,208,1
+"Tolsimir, Midnight's Light",Legendary Creature — Elf Scout,"Lifelink
+When Tolsimir enters, create Voja Fenstalker, a legendary 5/5 green and white Wolf creature token with trample.
+Whenever a Wolf you control attacks, if Tolsimir attacked this combat, target creature an opponent controls blocks that Wolf this combat if able.",W/G,Elf; Scout; lifegain; tokens; etb; lifelink,MKM,236,1
+Roamer's Routine,Sorcery,"Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.
+Harmonize {4}{G} (You may cast this card from your graveyard for its harmonize cost. You may tap a creature you control to reduce that cost by {X}, where X is its power. Then exile this spell.)",G,graveyard; ramp; harmonize; recursion,TDM,154,1
+Drag to the Roots,Instant,"Delirium — This spell costs {2} less to cast as long as there are four or more card types among cards in your graveyard.
+Destroy target nonland permanent.",B/G,graveyard; cost-reduction; removal; delirium,DSK,213,1
+Fell,Sorcery,Destroy target creature.,B,removal,BLB,95,1
+"Wylie Duke, Atiin Hero",Legendary Creature — Human Ranger,"Vigilance
+Whenever Wylie Duke becomes tapped, you gain 1 life and draw a card.",W/G,Human; Ranger; lifegain; card draw; vigilance; combat,OTJ,239,1
+Traveling Botanist,Creature — Dog Scout,"Whenever this creature becomes tapped, look at the top card of your library. If it's a land card, you may reveal it and put it into your hand. If you don't put the card into your hand, you may put it into your graveyard.",G,Dog; Scout; graveyard; selection,TDM,164,1
+Annie Joins Up,Legendary Enchantment,"When Annie Joins Up enters, it deals 5 damage to target creature or planeswalker an opponent controls.
+If a triggered ability of a legendary creature you control triggers, that ability triggers an additional time.",W/R/G,burn; etb,OTJ,191,1
+"Kirol, Attentive First-Year",Legendary Creature — Vampire Cleric,Tap two untapped creatures you control: Copy target triggered ability you control. You may choose new targets for the copy. Activate only once each turn.,W/R,Vampire; Cleric,ECL,231,1
+The Wandering Rescuer,Legendary Creature — Human Samurai Noble,"Flash
+Convoke (Your creatures can help cast this spell. Each creature you tap while casting this spell pays for {1} or one mana of that creature's color.)
+Double strike
+Other tapped creatures you control have hexproof.",W,Human; Samurai; Noble; double strike; combat; aggro; flash; tempo; convoke; go-wide; hexproof; protection,DSK,41,1
+Group Project,Sorcery,"Create a 2/2 red and white Spirit creature token.
+Flashback—Tap three untapped creatures you control. (You may cast this card from your graveyard for its flashback cost. Then exile it.)",W,graveyard; tokens; flashback; recursion; spellslinger,SOS,17,1
+Springleaf Drum,Artifact,"{T}, Tap an untapped creature you control: Add one mana of any color.",Colorless,,ECL,260,1
+Gene Pollinator,Artifact Creature — Robot Insect,"{T}, Tap an untapped permanent you control: Add one mana of any color.",G,Robot; Insect,EOE,186,1
+"Ghired, Mirror of the Wilds",Legendary Creature — Human Shaman,"Haste
+Nontoken creatures you control have ""{T}: Create a token that's a copy of target token you control that entered this turn.""",W/R/G,Human; Shaman; Nontoken; tokens; haste; aggro,OTJ,205,1
+Orphans of the Wheat,Creature — Human,"Whenever this creature attacks, tap any number of untapped creatures you control. This creature gets +1/+1 until end of turn for each creature tapped this way.",W,Human; pump,DSK,22,1
+Baseball Bat,Artifact — Equipment,"When this Equipment enters, attach it to target creature you control.
+Equipped creature gets +1/+1.
+Whenever equipped creature attacks, tap up to one target creature.
+Equip {3} ({3}: Attach to target creature you control. Equip only as a sorcery.)",W/G,Equipment; etb; equipment; pump; equip,DSK,209,1
+"Dori, Bearer of Friends",Legendary Creature — Dwarf Warrior,"Trample
+When Dori enters, create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")",R,Dwarf; Warrior; tokens; etb; treasure; trample; evasion,HOB,94,1
+"Balin, Loremaster",Legendary Creature — Dwarf Bard,"Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.)
+Whenever Balin or another Dwarf you control enters, you may discard your hand. Draw X cards, where X is the number of cards discarded this way. If you have an enduring story, Balin deals X damage to each opponent.",R,Dwarf; Bard; card draw; burn; noncombat damage; storied,HOB,87,1
+Glóin the Mighty,Legendary Creature — Dwarf Warrior // Sorcery — Adventure,"At the beginning of your first main phase, add {R}{R}. // Easy Pickings deals 1 damage to each creature your opponents control. (Then exile this card. You may cast the creature later from exile.)",R,Dwarf; Warrior; Adventure; exile cast; burn,HOB,99,1
+Fíli the Pathfinder,Legendary Creature — Dwarf Scout,"Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.)
+As long as you have an enduring story, creatures you control get +1/+1.
+Whenever Fíli or another nontoken Dwarf you control enters, create a 2/2 red Dwarf creature token.",W,Dwarf; Scout; tokens; pump; storied,HOB,14,1
+Thorin Oakenshield,Legendary Creature — Dwarf Noble,"Trample
+Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.)
+As long as you have an enduring story, artifacts and creatures you control have ward {1}.",W/R,Dwarf; Noble; trample; evasion; storied; ward; protection,HOB,165,1
+Luxurious Locomotive,Artifact — Vehicle,"Whenever this Vehicle attacks, create a Treasure token for each creature that crewed it this turn. (They're artifacts with ""{T}, Sacrifice this token: Add one mana of any color."")
+Crew 1. Activate only once each turn. (Tap any number of creatures you control with total power 1 or more: This Vehicle becomes an artifact creature until end of turn.)",Colorless,Vehicle; tokens; treasure; vehicle; crew; vehicles,OTJ,244,1
+Gold Pan,Artifact — Equipment,"When this Equipment enters, create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")
+Equipped creature gets +1/+1.
+Equip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)",Colorless,Equipment; tokens; etb; treasure; equipment; pump; equip,OTJ,242,1
+Windcrag Siege,Enchantment,"As this enchantment enters, choose Mardu or Jeskai.
+• Mardu — If a creature attacking causes a triggered ability of a permanent you control to trigger, that ability triggers an additional time.
+• Jeskai — At the beginning of your upkeep, create a 1/1 red Goblin creature token. It gains lifelink and haste until end of turn.",W/R,lifegain; tokens; lifelink; haste; aggro,TDM,235,1
+An Unexpected Party,Enchantment // Sorcery — Adventure,"As this enchantment enters, choose a creature type.
+Creatures you control of the chosen type get +2/+2. // Create X 2/2 red Dwarf creature tokens. (Then exile this card. You may cast the enchantment later from exile.)",W,Adventure; exile cast; tokens; pump,HOB,29,1
+Involuntary Employment,Sorcery,"Gain control of target creature until end of turn. Untap that creature. It gains haste until end of turn. Create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")",R,tokens; treasure; theft; haste; aggro,FDN,203,1
+"Arahbo, the First Fang",Legendary Creature — Cat Avatar,"Other Cats you control get +1/+1.
+Whenever Arahbo or another nontoken Cat you control enters, create a 1/1 white Cat creature token.",W,Cat; Avatar; tokens; pump,FDN,2,1
+Regal Caracal,Creature — Cat,"Other Cats you control get +1/+1 and have lifelink. (Damage dealt by those creatures also causes you to gain that much life.)
+When this creature enters, create two 1/1 white Cat creature tokens with lifelink.",W,Cat; lifegain; tokens; etb; pump; lifelink,FDN,579,1
+Jazal Goldmane,Legendary Creature — Cat Warrior,"First strike (This creature deals combat damage before creatures without first strike.)
+{3}{W}{W}: Attacking creatures you control get +X/+X until end of turn, where X is the number of attacking creatures.",W,Cat; Warrior; pump; first strike; combat,FDN,497,1
+Felidar Retreat,Enchantment,"Landfall — Whenever a land you control enters, choose one —
+• Create a 2/2 white Cat Beast creature token.
+• Put a +1/+1 counter on each creature you control. Those creatures gain vigilance until end of turn.",W,counters; tokens; landfall; lands; vigilance; combat,FDN,574,1
+Ingenious Leonin,Creature — Cat Soldier,"{3}{W}: Put a +1/+1 counter on another target attacking creature you control. If that creature is a Cat, it gains first strike until end of turn. (It deals combat damage before creatures without first strike.)",W,Cat; Soldier; counters; first strike; combat,FDN,495,1
+Good-Fortune Unicorn,Creature — Unicorn,"Whenever another creature you control enters, put a +1/+1 counter on that creature.",W/G,Unicorn; counters,FDN,240,1
+"Basri, Tomorrow's Champion",Legendary Creature — Human Knight,"{W}, {T}, Exert Basri: Create a 1/1 white Cat creature token with lifelink. (An exerted creature won't untap during your next untap step.)
+Cycling {2}{W} ({2}{W}, Discard this card: Draw a card.)
+When you cycle this card, Cats you control gain hexproof and indestructible until end of turn.",W,Human; Knight; Cat; lifegain; card draw; tokens; exert; cycling; hexproof; protection; indestructible; resilience,DFT,3,1
+"Ajani, Caller of the Pride",Legendary Planeswalker — Ajani,"+1: Put a +1/+1 counter on up to one target creature.
+−3: Target creature gains flying and double strike until end of turn.
+−8: Create X 2/2 white Cat creature tokens, where X is your life total.",W,Ajani; Planeswalker; counters; tokens; planeswalker; flying; evasion; double strike; combat; aggro,FDN,134,1
+Pride of the Road,Creature — Zombie Cat Warrior,"Vigilance
+Start your engines! (If you have no speed, it starts at 1. It increases once on each of your turns when an opponent loses life. Max speed is 4.)
+Max speed — At the beginning of combat on your turn, target creature or Vehicle you control gains double strike until end of turn.",W,Zombie; Cat; Warrior; Vehicle; max speed; speed; aggro; vigilance; combat; start your engines!; double strike,DFT,24,1
+Stingerback Terror,Creature — Scorpion Dragon,"Flying, trample
+This creature gets -1/-1 for each card in your hand.
+Plot {2}{R} (You may pay {2}{R} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)",R,Scorpion; Dragon; exile cast; removal; flying; evasion; plot; tempo; cost-reduction; trample,OTJ,147,1
+"Agrus Kos, Spirit of Justice",Legendary Creature — Spirit Detective,"Double strike, vigilance
+Whenever Agrus Kos enters or attacks, choose up to one target creature. If it's suspected, exile it. Otherwise, suspect it. (A suspected creature has menace and can't block.)",W/R,Spirit; Detective; vigilance; combat; suspect; aristocrats; double strike; aggro,MKM,184,1
+Swiftblade Vindicator,Creature — Human Soldier,"Double strike (This creature deals both first-strike and regular combat damage.)
+Vigilance (Attacking doesn't cause this creature to tap.)
+Trample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)",W/R,Human; Soldier; vigilance; combat; trample; evasion; double strike; aggro,FDN,246,1
+The Fire Crystal,Legendary Artifact,"Red spells you cast cost {1} less to cast.
+Creatures you control have haste.
+{4}{R}{R}, {T}: Create a token that's a copy of target creature you control. Sacrifice it at the beginning of the next end step.",R,cost-reduction; sacrifice; tokens; haste; aggro,FIN,135,1
+"Scarlet Spider, Ben Reilly",Legendary Creature — Spider Human Hero,"Web-slinging {R}{G} (You may cast this spell for {R}{G} if you also return a tapped creature you control to its owner's hand.)
+Trample
+Sensational Save — If Scarlet Spider was cast using web-slinging, he enters with X +1/+1 counters on him, where X is the mana value of the returned creature.",R/G,Spider; Human; Hero; counters; bounce; trample; evasion; web-slinging; tempo,SPM,142,1
+Agonasaur Rex,Creature — Dinosaur,"Trample
+Cycling {2}{G} ({2}{G}, Discard this card: Draw a card.)
+When you cycle this card, put two +1/+1 counters on up to one target creature or Vehicle. It gains trample and indestructible until end of turn.",G,Dinosaur; counters; card draw; trample; evasion; cycling; indestructible; resilience,DFT,151,1
+Railway Brawler,Creature — Rhino Warrior,"Reach, trample
+Whenever another creature you control enters, put X +1/+1 counters on it, where X is its power.
+Plot {3}{G} (You may pay {3}{G} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)",G,Rhino; Warrior; counters; exile cast; reach; defense; plot; tempo; cost-reduction; trample; evasion,OTJ,175,1
+Pyromancer's Goggles,Legendary Artifact,"{T}: Add {R}. When that mana is spent to cast a red instant or sorcery spell, copy that spell and you may choose new targets for the copy.",R,mana; spell copy,FDN,677,1
+Ball Lightning,Creature — Elemental,"Trample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)
+Haste (This creature can attack and {T} as soon as it comes under your control.)
+At the beginning of the end step, sacrifice this creature.",R,Elemental; sacrifice; haste; aggro; trample; evasion,FDN,618,1
+Doc Ock's Tentacles,Artifact — Equipment,"Whenever a creature you control with mana value 5 or greater enters, you may attach this Equipment to it.
+Equipped creature gets +4/+4.
+Equip {5}",Colorless,Equipment; equipment; pump; equip,SPM,162,1
