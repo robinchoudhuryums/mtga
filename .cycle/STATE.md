@@ -2893,3 +2893,13 @@ dated `#: notes:` line). `decks/38-armory/38a-armory-cloud.txt` deleted; 39's pr
 Leyline Axe wishlist row re-pointed at 38; the prune-analysis row marked CUT. Roster 116 → 115.
 Decided AGAINST cutting Weapons Vendor for Lasso — it is one of the deck's two counted
 card-advantage cards, so Boomerang (the same tap effect, paid for) was the cut.
+
+## 2026-09-08 (later) — deck 71 rebuilt for rotation and early defense
+Seventeen swaps on deck 71 (see its dated `#: notes:` lines), the 38a retirement, and
+the basic shift; every swap measured on a scratch copy before applying, audit current
+after each. Decided AGAINST: a mana rock in Homesickness's slot (the deck's problem is
+colour, which the land split fixes at no slot cost); Splatter Technique as a rare craft
+once Artistic Process (owned) covered the sweep; Weapons Vendor as the Lasso cut in 38
+(one of two counted card-advantage cards); Waterbender Ascension (needs four combat
+connections in a deck whose creatures sit back). Open items are in NEXT-SESSION.md's
+2026-09-08 stamp.
