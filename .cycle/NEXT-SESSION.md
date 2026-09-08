@@ -44,6 +44,11 @@ commands disagree.
 > Thunder Lasso's three flex lines), and the unresolved card name "Fear of Immortality"
 > (DSK has Fear of Immobility / Fear of Infinity). Mabel, Heir to Cragflame is owned but
 > absent from card-pool.csv — a pool gap to close on the next `make refresh REFETCH=1`.
+> **Two role-pattern holes surfaced by the deck-71 swaps (baselined, not fixed):** Kitnap's
+> Aura-steal wording ("You control enchanted creature") scores no Removal role, and Eluge's
+> "costs {U} (or {1}) less" scores no Cost-reduction role. Both are G-67 pattern holes, not
+> roleless cards — fix each with a K-14 roster floor diff, then prune them from
+> `role_baseline.txt`. Fog Bank is genuinely roleless in the taxonomy (a Defender wall).
 >
 > **STATE STAMP, 2026-09-03.** Broad scan #8 is MERGED as PR #163 — eight commits: seven
 > implementation batches, a deck re-grade pass and two doc syncs. `main` is the place to
