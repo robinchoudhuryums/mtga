@@ -2,13 +2,13 @@
 #: format: Standard
 #: colors: UR
 #: plan: control
-#: tier: B (PROVISIONAL) — graded deliberately UNDER the A metrics floor (interaction 13,
+#: tier: B (PROVISIONAL) — graded deliberately UNDER the A metrics floor (interaction 12,
 #: tier: card advantage 8 — a real control suite). Held at B because: UNTESTED first
 #: tier: draft; the engine has a real speed question the metrics cannot see (nothing
 #: tier: happens until turn 4-5, and an aggro start punishes a hand of 7-drops — the
 #: tier: keepable/mulligan texture of a 10-haymaker list only shows up in games);
-#: tier: consistency prices the triple-pip hard-casts at 66% on curve, partly answered
-#: tier: by any-color Treasure/Ashling mana but not proven; and singleton variance on
+#: tier: consistency prices Eluge's UUU at 63.5% on turn four (Resonating Lute doubles land
+#: tier: mana for the SPELL half only, so the creature top end stays hand-cast); singleton variance on
 #: tier: the engine pieces means some games present no Zaffai/Capstone/Melek at all.
 #: tier: Re-grade after games; the ceiling reads A if the curve texture holds up.
 #: archetype: Izzet (U/R) BIG-SPELL ramp-control around Zaffai and the Tempests: survive
@@ -65,6 +65,12 @@
 #: notes: that makes a Treasure every upkeep is both the turn-four blocker and the ramp into the 7-drops;
 #: notes: the draw-and-stun shape lives in Ashling's Command now. Basics 9/9 → 10 Island / 8 Mountain: pips
 #: notes: are U 34 / R 20, and the shift takes Eluge 58.6 → 63.5% on turn four for ~3 points off each RR card.
+#: notes: 2026-09-08 (eighth pass) — Bottomless Pool // Locker Room → Bilbo, Thief in the Night (owned):
+#: notes: a turn-two body that later re-buys a haymaker from the yard on attack; NOTE it pulls against
+#: notes: Goliath Daydreamer, whose exile clause keeps hand-cast spells OUT of the graveyard. Last
+#: notes: Reckless Ransacking → Resonating Lute (SOS rare craft): every land taps for two mana of one
+#: notes: colour for instants and sorceries, so turn five is ten spell mana and every colour — the ramp
+#: notes: engine the rituals approximated. Its mana cannot cast Eluge / Smaug / Daydreamer / Ovika.
 #: protect: Zaffai and the Tempests; Melek, Reforged Researcher; Ashling, Rekindled; Improvisation Capstone; Taigam, Master Opportunist
 
 # Bodies / engines
@@ -81,6 +87,7 @@
 1 Eluge, the Shoreless Sea (BLB) 49
 1 The Wondrous Wasp (MSH) 84
 1 Smaug the Magnificent (HOB) 110
+1 Bilbo, Thief in the Night (HOB) 33
 
 # Payloads — big FIXED-cost spells (Zaffai / Capstone hits)
 1 Improvisation Capstone (SOS) 120
@@ -95,11 +102,10 @@
 
 # Ramp / rituals
 1 Rapturous Moment (SOS) 219
-1 Reckless Ransacking (ECL) 152
+1 Resonating Lute (SOS) 221
 
 # Draw / velocity
 1 Roaring Furnace // Steaming Sauna (DSK) 230
-1 Bottomless Pool // Locker Room (DSK) 43
 1 Self-Reflection (FDN) 163
 
 # Interaction — counters + burn (hard-cast; Time Stop above doubles as the catch-all)
