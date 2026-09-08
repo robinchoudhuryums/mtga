@@ -313,3 +313,19 @@ the 60 with `deck.py apply-flex <id> <n>` (dry-run by default; `--apply` writes 
 deltas first, use `deck.py swap <id> --cut A --add B` — it prints the real card
 types (so a "vanilla flyer" that's actually a Bird won't slip past) plus the
 card-count / creature / avg-MV / color-identity deltas.
+
+## Stage 8 — Hand the confirmed swaps to `/apply-changes`
+
+This command PROPOSES; it never writes to a deck file. Once the user confirms a
+set of swaps, run **`/apply-changes <id>`** and stop there — do not apply them
+yourself. That skill is the only path carrying the three things a tune needs on
+the way out: the F10 `quality --vs` regression guard, the mandatory
+`tier <id> --audit-rationale` re-grounding (a swap moves the numbers the `#: tier:`
+prose cites, by construction), and the shared verify+commit tail.
+
+**Never hand-edit a deck line.** `deck.py swap --apply` (with `--section` to
+relocate) and `deck.py move` are the only sanctioned write forms — retyping a
+`(SET) COLLECTOR#` by hand is what G-65 and G-77 exist to prevent, and it has
+invented wrong collector numbers twice.
+
+If the user wants none of the swaps, that is a complete outcome: say so and stop.

@@ -1674,10 +1674,19 @@ is invisible, and a handoff nobody is told to read is the same failure one layer
   the incident, the measurement and the reasoning behind each, keyed by the `[G-nn]` /
   `[K-nn]` anchor the rule carries. CLAUDE.md holds the rule and any live residual so a
   session can act safely without opening this; open it to find out WHY. Live.
-- **`docs/systems-map.md`** — the TASK-first map: the four workflows with their real
-  command paths and costs, every **reconciliation point** where a human must settle two
-  answers, and the overlapping-answer inventory with measured agreement. Read it when
-  you need to know which command answers a question, or why two of them disagree. Live.
+- **`docs/systems-map.md`** — the TASK-first map, and **the router from what the user
+  ASKED to which skill answers it**. Its four sections are named for the four things
+  Robin does — *Ingest new cards* (`/ingest`), *Build a new deck* (`/draft-deck`),
+  *Refine a deck* (`/tune-deck` → `/apply-changes`), *Prioritize crafts*
+  (`/add-wishlist`) — each with the real command path, per-command costs, and every
+  **reconciliation point** where a human must settle two answers, plus the
+  overlapping-answer inventory with measured agreement.
+  **Open it whenever a request names a deck task in the user's own words** ("refine
+  this deck", "what should I craft", "I opened some packs") — nothing else in this file
+  maps an ASK to a skill, so an agent that skips it improvises the sequence. Measured
+  2026-09-08: 15 of the 16 commands `/tune-deck` runs are independently named in Common
+  Gotchas, so improvising recovers most of the TOOLS and none of the ORDER — and the
+  handoff to the skill that writes is the step it drops. Live.
 - **`ROADMAP.md`** — long-range ideas; regenerate with `/roadmap`. Live.
 - **`docs/tooling-improvement-plan.md` — DELETED 2026-08-12**, and the reasoning is
   worth keeping for the next document like it. Findings F01–F15 had all landed cycles

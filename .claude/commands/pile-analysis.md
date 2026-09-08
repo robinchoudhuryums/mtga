@@ -1,5 +1,6 @@
-Work a LARGE card pile (roughly 60+ cards) against one or more decks, in batches,
-keeping a running analysis doc that survives context loss.
+Work a LARGE card pile (60+ cards) against one or more decks, in batches.
+
+Keeps a running analysis doc that survives context loss.
 
 Input: a pile dump (Arena export lines, or bare names) plus the deck(s) it is aimed at,
 in $ARGUMENTS or the user's latest message.

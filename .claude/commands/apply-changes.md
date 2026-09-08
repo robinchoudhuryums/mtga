@@ -1,5 +1,7 @@
-Apply a set of confirmed swaps to a deck, keep flex/wishlist in sync, verify,
-and commit.
+Apply confirmed deck swaps, keep flex/wishlist in sync, verify and commit.
+
+The WRITE half of a tune: `/tune-deck` proposes, this applies. Never hand-edit a
+deck line (G-65).
 
 Input: a deck id + a list of swaps in $ARGUMENTS or the user's latest message —
 each as `−<cut> / +<add>` (from a `/tune-deck` Recommended-changes block or
