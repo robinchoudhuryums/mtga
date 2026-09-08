@@ -1,0 +1,7 @@
+date,cycle,subsystem,phase,net_score,prod_fixes,new_failure_modes,category_d_ratio,axis_b_lowest,notes,defensive_count
+2026-08-12,2,broad,reflect,67,67,0,,,"backfilled 2026-09-08 from 10 of 10 implement blocks carrying NET SCORE; no /reflect ran for this cycle, so defensive_count was never taken",
+2026-08-12,3,broad,reflect,53,53,0,,,"backfilled 2026-09-08 from 6 of 6 implement blocks carrying NET SCORE; no /reflect ran for this cycle, so defensive_count was never taken",
+2026-08-14,4,broad,reflect,14,14,0,,,"backfilled 2026-09-08 from 4 of 5 implement blocks carrying NET SCORE; no /reflect ran for this cycle, so defensive_count was never taken",
+2026-08-24,6,broad,reflect,17,17,0,,,"backfilled 2026-09-08 from 3 of 5 implement blocks carrying NET SCORE; no /reflect ran for this cycle, so defensive_count was never taken",
+2026-09-01,7,broad,reflect,14,15,1,,,"backfilled 2026-09-08 from 7 of 16 implement blocks carrying NET SCORE; no /reflect ran for this cycle, so defensive_count was never taken",
+2026-09-06,8,broad,reflect,55,56,1,,,"backfilled 2026-09-08 from 12 of 16 implement blocks carrying NET SCORE; no /reflect ran for this cycle, so defensive_count was never taken",

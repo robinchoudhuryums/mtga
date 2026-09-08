@@ -1517,8 +1517,9 @@ so the status pills' fills derive from the same token as their text. [C-10]
 ## Command provenance
 
 `broad-scan`, `broad-implement`, `test-sync`, `sync-docs`, `health-pulse`,
-`roadmap`, `sync-commands`, `targeted-audit`, `targeted-implement`, and
-`pr-review` in `.claude/commands/` are copied **verbatim** from
+`roadmap`, `sync-commands`, `targeted-audit`, `targeted-implement`,
+`pr-review`, `regression`, `reflect`, `cycle-init`, `cycle-status` and
+`cycle-resume` in `.claude/commands/` are copied **verbatim** from
 [claude-workflow-tools](https://github.com/robinchoudhuryums/claude-workflow-tools)
 — currently synced to template **v1.33.0**;
 they stay project-agnostic and read everything from the Cycle Workflow Config
@@ -1528,14 +1529,46 @@ flags OUTDATED — don't edit them here. They span the **Tier-1 loop** the proje
 runs (`broad-scan` → `broad-implement` → `test-sync` → `sync-docs`) plus **Tier-2
 depth** (`targeted-audit`/`targeted-implement` for a single subsystem, `pr-review`
 for per-change health) and the meta commands (`health-pulse`, `roadmap`,
-`sync-commands`). The **Tier-3 full-cycle** commands (`audit`, `plan`, `implement`,
-`regression`, `reflect`, `systems-map`, `cycle-*`, `setup-cycle`) are deliberately
-NOT vendored — that two-axis-scoring ceremony outweighs its benefit at this project's
-size; adopt them only if you later want benchmarkable scoring. **Two corrections to
-that sentence, because it has aged.** The `.cycle/` state dir is NOT part of what was
-declined — this project uses one (see "Session state" below), and reading the
-un-vendoring as covering it would hide the handoff a fresh session is supposed to
-start from. And **`systems-map` was re-tested, and the vendoring stays declined** — but
+`sync-commands`) and, since 2026-09-08, the **state-and-measurement** half of Tier 3
+(`regression`, `reflect`, `cycle-init`, `cycle-status`, `cycle-resume`).
+
+**THE TIER-3 REJECTION WAS RE-DERIVED 2026-09-08 AND SPLIT IN TWO.** It had read:
+"deliberately NOT vendored — that two-axis-scoring ceremony outweighs its benefit at
+this project's size". Two measurements retired half of that. **The ceremony was already
+being paid**: `/health-pulse` IS vendored, so the two-axis scoring already runs here
+directionally, and `/broad-implement`'s mandated summary block carries `NET SCORE`, so
+**78 of 86 blocks already had one** — what was skipped was never the ceremony, it was the
+AGGREGATION, and those 78 scores had never once been read as a trend. **And the state
+layer was vendored half-open**: both implement commands WRITE `.cycle/STATE.md` in their
+CHECKPOINT step while the commands that DEFINE and BOUND it were not vendored, so it grew
+to **2,913 lines / 45 sections / 66 "Where I left off" headings** — against the
+24-section, 347-line shape the template repo diagnosed as a defect in its OWN copy
+(v1.29.0 F15) and fixed by splitting history out. A reader is told to consult it "before
+re-proposing a rejected fix" and **39 decided-against passages were buried in it**. Split
+the same way: STATE.md is the rolling 7-section file, `.cycle/HISTORY.md` holds the
+narrative. **Keep STATE.md to those seven sections** — `/cycle-status` and `/cycle-resume`
+read the FIRST match of each heading, so a second `## Where I left off` shadows the real one.
+`/reflect` adds the one bucket the record lacks: **`Defensive` appears in 0 of 86 blocks
+while 17 of 86 report a measured-zero roster impact** ("0 tier floors moved", "0 of 114
+decks change band") — the project records that honestly every time and never aggregated it.
+`/regression` is the blast-radius pass `check_all` structurally cannot make (it verifies
+invariants; it does not ask what OUTSIDE the changed scope could break), and its step 4 is
+Parallel Source-of-Truth Drift — this project's dominant bug class (G-70, G-35, G-30, G-63,
+G-71, K-09). Cycle numbering starts at **8**, adopted from the scan number the blocks and
+the BS8-nn anchors already use; `metrics.csv` is backfilled per cycle from the blocks that
+carried a score, and `defensive_count` is blank there because it was never taken.
+
+**`audit`, `plan`, `implement`, `systems-map` and `setup-cycle` stay DECLINED** — they
+duplicate the Tier-1/Tier-2 loop this project actually runs, and `/setup-cycle` generates
+a config far weaker than the hand-built one above. One measured caveat: `/audit` is the
+only template command whose focus list names *parallel source-of-truth*, and **neither
+`broad-scan.md` nor `targeted-audit.md` mentions it** (nor test-gap coverage) — this
+project's scans have found that class repeatedly anyway, so it is found by instinct rather
+than by instruction. **PROJECT_HEALTH.md was deliberately NOT created**: the Health
+Synthesis (§6a) is a console prompt, not a vendored command, and `/health-pulse` is
+read-only, so the file would sit empty while reading as a live status board.
+The `.cycle/` state dir was never part of what was declined — this project uses one
+(see "Session state" below). And **`systems-map` was re-tested, and the vendoring stays declined** — but
 the MAP itself landed: **`docs/systems-map.md`** is a hand-written, TASK-first map (the
 four things the user does: ingest · draft · tune+apply · prioritize crafts), not the
 module map the generic Tier-3 command produces. That distinction is why the command was
@@ -1611,9 +1644,23 @@ is invisible, and a handoff nobody is told to read is the same failure one layer
   prints `[card-library] … integrity: OK, N soft` and either a pytest result or
   "unchanged since last green run — skipped". A skip is a cached green, keyed on the
   HEAD tree of the code paths; a deck/CSV-only change does not rerun the suite, by design.
-- **`.cycle/STATE.md`** — prose record: what was completed, decisions made, what was
-  decided AGAINST (worth reading before re-proposing a rejected fix), and where the
-  last session left off.
+- **`.cycle/STATE.md`** — the ROLLING state of the CURRENT cycle, in exactly seven
+  sections (Current / In progress / Completed / Pending / Open follow-on / Decisions
+  made / Where I left off). `/cycle-status` and `/cycle-resume` read it, and they read
+  the FIRST match of each heading — **a second `## Where I left off` silently shadows
+  the real one**, which is how this file reached 2,913 lines before the 2026-09-08 split.
+  Narrative goes to HISTORY.md, per-run summaries to `.cycle/blocks/`.
+- **`.cycle/HISTORY.md`** — the completed-cycle narrative split out of STATE.md
+  (45 sessions, newest first): what was completed, decisions made, and what was decided
+  AGAINST. **Read it before re-proposing a rejected fix** — that is the half of the old
+  STATE.md worth keeping, and it was the half being buried.
+- **`.cycle/metrics.csv`** — one `phase=reflect` row per cycle (net score, production
+  fixes, new failure modes, defensive count). `/reflect` is its ONLY writer for those
+  columns; the implement commands write STATE.md, not metrics, so never add a row for an
+  implement/plan/audit phase or the totals double-count. Cycles 2–8 are backfilled from
+  the blocks that carried a `NET SCORE`; `defensive_count` is blank there because no
+  `/reflect` ran and the bucket was never taken. `.cycle/estimates.csv` is its
+  estimate-vs-actual sibling, header-only until the first `/reflect`.
 - **`.cycle/blocks/*.md`** — one verbatim implementation summary per
   `/broad-implement` run. `/broad-scan` and `/roadmap` consume these in a FRESH
   session, which is why they live on disk rather than only in chat.
