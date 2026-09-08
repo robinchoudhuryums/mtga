@@ -16,7 +16,7 @@
 #: archetype: only pay for MV-4+ spells), Rapturous Moment and Treasures, then land an
 #: archetype: engine (Zaffai casting a free instant/sorcery every turn; Improvisation
 #: archetype: Capstone recurring itself via paradigm; Melek discounting the first spell
-#: archetype: each turn by {3}) and chain haymakers — Hit the Mother Lode, Turtles in
+#: archetype: each turn by {3}) and chain haymakers — Ashling's Command, Turtles in
 #: archetype: Time, Multiversal Incursion, Season of Weaving — with Taigam copying AND
 #: archetype: suspending the best one for a free recast. DISTINCTIVENESS: the 37 family
 #: archetype: is a cheap-spell PING race (win = many small triggers); this deck is the
@@ -34,6 +34,10 @@
 #: notes: here the 7-drop refuel is the plan (and it grows Melek's spell-count body).
 #: notes: Vnwxt's no-maximum-hand-size underwrites the draw-7s (Turtles in Time) and
 #: notes: Wisdom of Ages without a discard step.
+#: notes: 2026-09-08 — Hit the Mother Lode (rotates ~2026) → Ashling's Command (ECL, rare): draw two
+#: notes: + two Treasures is the Mother Lode ramp-and-value shape at instant speed, draw two + 2 to
+#: notes: each creature one player controls is the anti-aggro line; the Elemental-copy mode is dead
+#: notes: here (Ashling is the only Elemental). Fixed cost, so a Zaffai / Capstone free cast is full value.
 #: protect: Zaffai and the Tempests; Melek, Reforged Researcher; Ashling, Rekindled; Improvisation Capstone; Taigam, Master Opportunist
 
 # Bodies / engines
@@ -45,9 +49,9 @@
 1 Tishana's Tidebinder (LCI) 81
 1 Vnwxt, Verbose Host (DFT) 73
 
-# Payloads — big FIXED-cost spells (Zaffai / Capstone / Mother Lode hits)
+# Payloads — big FIXED-cost spells (Zaffai / Capstone hits)
 1 Improvisation Capstone (SOS) 120
-1 Hit the Mother Lode (LCI) 153
+1 Ashling's Command (ECL) 205
 1 Turtles in Time (TMT) 55
 1 Multiversal Incursion (MSH) 68
 1 Brass's Bounty (FDN) 190
