@@ -75,6 +75,9 @@
 #: notes: non-trampling attacker every turn for the whole game; Artistic Process and Kitnap cover the
 #: notes: big-creature answer the 5-mana burn provided. Spell count after the day's swaps: 16 instants
 #: notes: and sorceries (11 haymakers + 5 cheap interaction) against 15 creatures, down from 24 / 7.
+#: notes: 2026-09-08 (tenth pass) — River's Rebuke → Yue, the Moon Spirit (owned): a second free-cast engine
+#: notes: at four, waterbend {5} paid by tapping the deck's own 16 artifacts and creatures, on a 3/3 flying
+#: notes: vigilance body. Rebuke moves to the flex block. Spell count 15 — do not cut another spell for a body.
 #: protect: Zaffai and the Tempests; Melek, Reforged Researcher; Ashling, Rekindled; Improvisation Capstone; Taigam, Master Opportunist
 
 # Bodies / engines
@@ -93,6 +96,7 @@
 1 Smaug the Magnificent (HOB) 110
 1 Bilbo, Thief in the Night (HOB) 33
 1 Fog Bank (FDN) 591
+1 Yue, the Moon Spirit (TLA) 83
 
 # Payloads — big FIXED-cost spells (Zaffai / Capstone hits)
 1 Improvisation Capstone (SOS) 120
@@ -103,7 +107,6 @@
 1 Time Stop (FDN) 166
 1 Artistic Process (SOS) 108
 1 Season of Weaving (BLB) 68
-1 River's Rebuke (FDN) 595
 
 # Ramp / rituals
 1 Rapturous Moment (SOS) 219
@@ -132,11 +135,10 @@
 8 Mountain (HOB) 192
 
 # Flex — options (comments; not part of the 60). See: deck.py flex 71
-#~ -River's Rebuke | +Yue, the Moon Spirit | OWNED (TLA rare, ~2028): a second free-cast engine at four —
-#~   waterbend {5} + {T} casts a noncreature spell from hand for nothing, and the deck's 16 artifacts
-#~   and creatures pay the waterbend by tapping. 3/3 flying vigilance body. Measured 2026-09-08:
-#~   interaction 11, card advantage 8, avg MV 4.29 → 4.15, spell count 16 → 15, quality guard clean.
-#~   Rebuke is the cut because it is the weakest-fit unowned rare and its one-sided bounce is now
-#~   partly covered by Artistic Process / Kitnap / the Command's sweep mode.
-#~ note: Vnwxt is the alternative cut if you want to hold 16 spells — it costs the 0/4 wall and the
-#~ note: no-maximum-hand-size clause, which Steaming Sauna's back half duplicates at five mana.
+#~ note: applied 2026-09-08 — Yue, the Moon Spirit in for River's Rebuke (measured: interaction 11,
+#~ note: card advantage 8, avg MV 4.29 → 4.15, spell count 16 → 15, quality guard clean).
+#~ -Time Stop | +River's Rebuke | RARE craft (FDN, ~2029): the one-sided mass bounce the list gave up for
+#~   Yue — 6 mana, sorcery, returns every nonland permanent one player controls. Take it back if the
+#~   go-wide matchups need a full reset that Artistic Process (2 to each) and Kitnap (one steal) do
+#~   not give. Time Stop is the cut because it is the weakest-fit card by the cut model (fit 1) and
+#~   its end-the-turn is the one effect here that competes for the same emergency slot.
