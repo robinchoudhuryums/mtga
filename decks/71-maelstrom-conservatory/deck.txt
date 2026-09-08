@@ -2,7 +2,7 @@
 #: format: Standard
 #: colors: UR
 #: plan: control
-#: tier: B (PROVISIONAL) — graded deliberately UNDER the A metrics floor (interaction 12,
+#: tier: B (PROVISIONAL) — graded deliberately UNDER the A metrics floor (interaction 11,
 #: tier: card advantage 8 — a real control suite). Held at B because: UNTESTED first
 #: tier: draft; the engine has a real speed question the metrics cannot see (nothing
 #: tier: happens until turn 4-5, and an aggro start punishes a hand of 7-drops — the
@@ -71,6 +71,10 @@
 #: notes: Reckless Ransacking → Resonating Lute (SOS rare craft): every land taps for two mana of one
 #: notes: colour for instants and sorceries, so turn five is ten spell mana and every colour — the ramp
 #: notes: engine the rituals approximated. Its mana cannot cast Eluge / Smaug / Daydreamer / Ovika.
+#: notes: 2026-09-08 (ninth pass) — Conduct Electricity → Fog Bank (owned): a turn-two wall that blocks one
+#: notes: non-trampling attacker every turn for the whole game; Artistic Process and Kitnap cover the
+#: notes: big-creature answer the 5-mana burn provided. Spell count after the day's swaps: 16 instants
+#: notes: and sorceries (11 haymakers + 5 cheap interaction) against 15 creatures, down from 24 / 7.
 #: protect: Zaffai and the Tempests; Melek, Reforged Researcher; Ashling, Rekindled; Improvisation Capstone; Taigam, Master Opportunist
 
 # Bodies / engines
@@ -88,6 +92,7 @@
 1 The Wondrous Wasp (MSH) 84
 1 Smaug the Magnificent (HOB) 110
 1 Bilbo, Thief in the Night (HOB) 33
+1 Fog Bank (FDN) 591
 
 # Payloads — big FIXED-cost spells (Zaffai / Capstone hits)
 1 Improvisation Capstone (SOS) 120
@@ -112,7 +117,6 @@
 1 Divert Disaster (EOE) 55
 1 Confusticate and Bebother (HOB) 35
 1 Amazing Acrobatics (SPM) 25
-1 Conduct Electricity (BLB) 130
 1 Kitnap (BLB) 53
 1 Lightning Strike (TLA) 146
 1 Untimely Malfunction (DSK) 161
