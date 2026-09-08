@@ -3889,21 +3889,49 @@ def cmd_tribes(args):
 # --- deck suggestions from the pool ----------------------------------------- #
 @_file_memo("DEFAULT_CSV", "POOL_CSV")
 def load_card_meta():
-    """name_lower -> {'colors': set(WUBRG), 'synergies': [tags]} from library then
-    pool. Color(s) is color IDENTITY, which is exactly what we want for deck fit
-    (a card is playable in a deck whose identity covers it)."""
-    meta = {}
+    """name_lower -> {'colors': set(WUBRG), 'synergies': [tags]}.
+
+    COLOURS are library-first, then pool. Color(s) is color IDENTITY, which is exactly
+    what we want for deck fit (a card is playable in a deck whose identity covers it).
+
+    SYNERGIES are POOL-first, and that asymmetry is the whole point (BS9-01). K-09 says
+    `tag_synergies.py --merge` can only ADD to a library cell — it cannot REMOVE a tag
+    the corrected rules no longer derive — "so the pool is the corrected store". That
+    sentence was true about the FILE and false about the MODEL: this loader took the
+    library's row for every OWNED card, i.e. exactly the cards the BS8-31 corrections
+    were about, so every theme surface (`suggest`, `suggest-homes`, `cuts`' fit term,
+    `similar`, centrality, the wishlist idf) scored on tags the project had already
+    fixed and stored elsewhere. Measured 2026-09-08: **219 of 2,576 shared cards (8.5%)
+    disagreed** — the library carrying `sacrifice` ×131 (every Saga), `ramp` ×39
+    (landfall/convoke no longer map to it), `reanimator` ×31, `removal` ×16 — and
+    **105 of 113 roster decks ran at least one**. No gate could see it: `check_roles
+    --tags` sweeps the POOL, `check_themes` is missing-only (an EXTRA tag is invisible
+    to it), and `check_agreement` takes this loader as its own input.
+
+    A BLANK pool cell never overrides: the pool has ~340 blanks, so a card the tagger
+    cannot theme must keep whatever the library holds rather than be silently emptied.
+    (Measured at 0 such cards today — the guard is for the next pool rebuild.)
+    """
+    meta, pool_tags = {}, {}
     for path in (DEFAULT_CSV, POOL_CSV):
         if not os.path.exists(path):
             continue
         with open(path, newline="", encoding="utf-8") as fh:
             for r in csv.DictReader(fh):
                 nl = (r.get("Card Name") or "").strip().lower()
-                if not nl or nl in meta:
+                if not nl:
                     continue
-                cols = card_colors(r.get("Color(s)"))
                 tags = [t.strip() for t in (r.get("Synergies") or "").split(";") if t.strip()]
-                meta[nl] = {"colors": cols, "synergies": tags}
+                # Collect the pool's tags BEFORE the library-precedence skip below —
+                # the rows that need correcting are precisely the ones already in `meta`.
+                if path == POOL_CSV and tags and nl not in pool_tags:
+                    pool_tags[nl] = tags
+                if nl in meta:
+                    continue
+                meta[nl] = {"colors": card_colors(r.get("Color(s)")), "synergies": tags}
+    for nl, tags in pool_tags.items():
+        if nl in meta:
+            meta[nl]["synergies"] = tags
     # SECOND pass, per lib.alias_front's contract (BS2-40): this was the last loader
     # still aliasing IN-pass, and its `nl in meta: continue` made the order-dependence
     # into row LOSS — a real card named like an earlier DFC's front hit the alias and

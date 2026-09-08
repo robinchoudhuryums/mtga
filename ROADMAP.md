@@ -9,7 +9,7 @@ gates · **1,3xx tests in 30 files** · `check_all` green with ZERO soft warning
 
 Two figures do most of the work below:
 
-- **Tier spread: A 39 / B 65 / C 3 / ungraded 3 — of which 51 are PROVISIONAL.** Every one
+- **Tier spread: A 39 / B 66 / C 4 / ungraded 6 — of which 51 are PROVISIONAL.** Every one
   says the same thing in its file: unplayed. That count has GROWN (41 → 51) since the last
   roadmap, because decks are being added faster than they are being played.
 - **`matches.csv` holds 58 matches** (15 → 58 on 2026-08-20, from one log ingest), 55

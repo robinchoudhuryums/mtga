@@ -13,61 +13,68 @@
 > HISTORY.md; per-run summaries belong in `.cycle/blocks/`.
 
 ## Current
-Cycle: 8 — broad scan #8, merged as PR #169/#170 plus the cross-deck pass; numbering
-adopted 2026-09-08 from the scan number the blocks and CLAUDE.md's BS8-nn anchors
-already use. Increments only when a NEW audit cycle begins.
-Phase: idle
+Cycle: 9 — a fresh `/broad-scan` ran 2026-09-08 after cycle 8's work merged, which is what
+increments the number. Cycle 8's blocks stay under their own prefix.
+Phase: implement
 Scope: broad
 Test Command: `python3 scripts/check_all.py`
 Subsystem cycles since last Seams audit: 0 (counter adopted 2026-09-08; no Seams audit has run)
 Updated: 2026-09-08
 
 ## In progress (facts to carry forward — NOT judgments)
-- Tier-3 adoption, this session: STATE.md split from HISTORY.md; `/cycle-init`,
-  `/regression`, `/reflect`, `/cycle-status`, `/cycle-resume` vendored from template
-  v1.33.0; `metrics.csv` backfilled from the blocks that already carry a net score.
-- Deck 71's rebuild is landed but has an ordered open list — see §0-current of
-  NEXT-SESSION.md (Melek rotates ~2026 and is a protected engine piece; Rapturous
-  Moment is the craft to drop now the Lute is in; spell count 15 v 16 creatures).
+- Broad scan #9 produced 8 findings in 4 batches. **Batch 1 is DONE** (F1, F4, F8) —
+  block `.cycle/blocks/09-batch1-broad-implement.md`. Batches 2–4 are not started.
+- Deck 71's rebuild has an ordered open list — see §0-current of NEXT-SESSION.md.
 
 ## Completed this cycle
-- Broad scan #8, seven implementation batches + a deck re-grade pass + two doc syncs |
-  merged PR #163, then #169/#170 | blocks `2026-09-broad-scan-8-*`, `2026-09-04-*`, `2026-09-06-*`
 - Template sync v1.23.0 → v1.33.0 | `.claude/commands/broad-scan.md`, CLAUDE.md, docs/cycle-config.md
-- Tier-3 re-evaluation and partial adoption | `.cycle/`, `.claude/commands/`, CLAUDE.md
+- Tier-3 re-evaluation; state-and-measurement half adopted | `.cycle/`, `.claude/commands/`, CLAUDE.md
+- Skill-discoverability fixes | tune-deck Stage 8 handoff, systems-map promoted to intent
+  router, three skill descriptions de-truncated
+- Broad scan #9 (audit only, no writes) | 8 findings, 4 batches
+- **Batch 1** | F1 pool-first synergies + F4/F8 stale figures | scripts/deck.py, CLAUDE.md,
+  ROADMAP.md, decks/15, decks/40
 
 ## Pending / not yet done
-- The cross-deck homes from the 2026-09-08 pass, NOT applied: Whirlwing Stormbrood → 67,
-  Death to Our Enemies → 72, Gandalf → 55a, Swallowed by Leviathan → 62,
-  Pensive Professor → 37/37a (craft), Eject → 43 for Lake-town Toymaker.
-- The earlier proposed swaps never applied (55, 39, 75, 46, 55b, 13, 37a, 69, 77, 31, 42a, 38)
-  — listed in full in NEXT-SESSION.md §0-current.
-- Two G-67 role-pattern holes surfaced by the deck-71 swaps, baselined not fixed: Kitnap's
-  Aura-steal wording scores no Removal role; Eluge's "costs {U} (or {1}) less" scores no
-  Cost-reduction role. Fix each with a K-14 roster floor diff, then prune from `role_baseline.txt`.
-- Mabel, Heir to Cragflame is owned but absent from `card-pool.csv` — close on the next
-  `make refresh REFETCH=1`.
-- Unresolved card name "Fear of Immortality" (DSK has Fear of Immobility / Fear of Infinity).
+- **Batch 2 — the guards that would have caught Batch 1.** F1b: a cross-file `Synergies`
+  agreement check in check_agreement (UNBLOCKED by F1, and it must land AFTER F1 or it goes
+  red on arrival). F3: extend `figure_drift` past its 6 hand-kept entries, including the
+  tier-floor spread F4 just corrected.
+- **Batch 3 — silent degradation and roster scope.** F2: sub-majority `if err_decks:` warning
+  in build_dashboard (its craft sibling has one, the detail-panel scan does not, so 1–49% of
+  decks can publish `[analysis error]` panels silently); adopt Scenario 19. F5: route
+  `wishlist.py:1535/689/813` through `roster_decks()` before the roster prune lands.
+- **Batch 4 — the editor's untested boundary.** F6: tests for `_guard_request` (Host +
+  Origin) and for `/api/revert`, `/api/remove`, `/api/add`. F7: decide whether to retire the
+  absent-token save bypass.
+- The unapplied cross-deck homes and earlier proposed swaps — NEXT-SESSION.md §0-current.
+- Two G-67 role-pattern holes (Kitnap, Eluge), baselined not fixed.
 
 ## Open follow-on items
-- `scripts/deck.py: _ROLE_PATTERNS` — the two holes above; measure floors before widening (K-14).
-- `card-library.csv` — stale `sacrifice`/`ramp` tags survive because `--merge` cannot remove
-  one; the pool is the corrected store (K-09).
-- Regression scenarios 5–8 and 10–18 need a person at a browser and several have never
-  been walked; scenario 11 is still the only thing that can prove the match-logging loop closes.
+- `K-09` reads as though "the pool is the corrected store" is a fact about the FILES; it is
+  now true of the MODEL too. Record it there — `/sync-docs`.
+- `G-30` says "Run it before a tune" of `deck.py rotation`, but its absence from `/tune-deck`
+  is DELIBERATE (recommendations ignore rotation so the human decides). A future session will
+  try to re-add it; the rule needs the exception written in.
+- ROADMAP.md line 12's "of which 51 are PROVISIONAL" was not re-measured.
+- `synergies` LIST ORDER now comes from the pool (258 pure re-orderings). Nothing measured
+  moved; any surface showing "the first N themes" shows the pool's order.
+- Regression scenarios 5–8 and 10–19 need a person at a browser; several never walked.
 
 ## Decisions made (so the next session doesn't re-litigate)
-- Tier-3 `/audit`, `/plan`, `/implement`, `/systems-map`, `/setup-cycle` stay UNVENDORED —
-  they duplicate the Tier-1/Tier-2 loop this project runs. Re-evaluated 2026-09-08 with the
-  measurements in CLAUDE.md's Command provenance; only the state-and-measurement half was adopted.
-- PROJECT_HEALTH.md deliberately NOT created: the Health Synthesis (§6a) is a console prompt,
-  not a vendored command, and `/health-pulse` is read-only — the file would sit empty while
-  reading as a live status board.
-- The full history of what was decided against lives in `.cycle/HISTORY.md`; read it before
-  re-proposing a rejected fix.
+- `load_card_meta` is POOL-first for Synergies and LIBRARY-first for colours. Colours were
+  deliberately left alone — the finding was about tags, and re-sourcing identity is a
+  separate, wider change.
+- A BLANK pool cell never overrides a library tag set (0 such cards today; the guard is for
+  the next pool rebuild).
+- The two tags the override drops (`fear` on Wraith, `undying` on Shadow of the Goblin) are
+  Scryfall ability-NAME artefacts, the K-01 shape — dropping them is a correction.
+- Tier-3 `/audit`, `/plan`, `/implement`, `/systems-map`, `/setup-cycle` stay UNVENDORED.
+- PROJECT_HEALTH.md deliberately NOT created (no vendored writer for it).
+- The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
-Tier-3 partial adoption committed and pushed on `claude/sync-commands-mmmsdb`. Next
-concrete step is the user's call between the deck work in Pending above (the unapplied
-cross-deck homes, and deck 71's Melek/Rapturous Moment decisions) and the two G-67
-role-pattern holes. Run `/cycle-status` first — it now reads this file.
+Batch 1 committed and pushed on `claude/sync-commands-mmmsdb`; gate green, 1729 pytest pass,
+`make postedit` clean. **Next concrete step: Batch 2**, and F1b specifically — it is the guard
+that would have caught F1 the day BS8-31 shipped, and it is only safe to add now that F1 has
+landed. Run `/broad-implement Batch 2` or pick another batch from Pending above.
