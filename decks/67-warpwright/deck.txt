@@ -2,7 +2,7 @@
 #: format: Standard
 #: colors: GWU
 #: plan: midrange
-#: tier: B (PROVISIONAL) — graded UNDER the A metrics floor (interaction 4 / card-adv 3,
+#: tier: B (PROVISIONAL) — graded UNDER the A metrics floor (interaction 4 / card-adv 4,
 #: tier: which UNDER-reads by at least 1: Fblthp scores ZERO roles — "the top card of
 #: tier: your library has plot" is a one-card template no _ROLE_PATTERNS entry can
 #: tier: earn (K-09), and it is repeatable card advantage the metric cannot see, the
@@ -36,6 +36,9 @@
 #: notes: every line was picked from the owned pool; tune for craft upgrades later.
 #: notes: 2026-09-06 LAND SWEEP (owned four-ofs of the untapped-beside-a-basic duals): −Suburban Sanctuary
 #: notes: +Gathering Place. Sources W 12 / U 15 / G 10 → W 12 / U 15 / G 10; unconditional taplands 9 → 8. Same colours, no tempo tax.
+#: notes: 2026-09-07: −Djinn of Fool's Fall +Overlord of the Floodpits (owned). Same five-mana flier slot; Overlord
+#: notes: draws two / discards one on every entry and attack, and as a nonland permanent Appa can airbend it for a {2}
+#: notes: recast from exile (a Kellan trigger). Impending itself is a cast from HAND — it is not an exile cast.
 1 Kellan, the Kid (OTJ) 213
 2 Appa, Steadfast Guardian (TLA) 10
 1 Doc Aurlock, Grizzled Genius (OTJ) 201
@@ -67,7 +70,7 @@
 1 Parting Gust (BLB) 24
 1 Salvation Swan (BLB) 28
 1 Into the Flood Maw (BLB) 52
-1 Djinn of Fool's Fall (OTJ) 43
+1 Overlord of the Floodpits (DSK) 68
 1 Bilbo, Thief in the Night (HOB) 33
 1 Webstrike Elite (DFT) 186
 1 Willowrush Verge (DFT) 270

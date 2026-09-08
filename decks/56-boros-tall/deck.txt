@@ -26,14 +26,14 @@
 #: archetype: Malfunction) — the deck answers a board by going over or through it, not by clearing it.
 #: tier: A (PROVISIONAL) — one band ABOVE the measured B floor, which the rubric allows and the
 #: tier: rebuild's own numbers make the honest reading. The floor: aggro plan, clock 5/7, interaction 4
-#: tier: (+1 unread) with card advantage 1 — the resilience axis is where the rebuild PAID: four
+#: tier: (+1 unread) with card advantage 0 — the resilience axis is where the rebuild PAID: four
 #: tier: creature-only removal spells left (Gnaw ×2, Go Ninja Go, one Agni Kai) and the B floor is the
 #: tier: bill. What argues the A: protection 7 on a plan that lives or dies by one body (the old list
 #: tier: claimed "a real protection layer" and measured 3, one of them Boros Charm double-booked against
 #: tier: its own reach mode); two bodies that survive their own Self-Destruct so the finisher stops
 #: tier: being a one-shot; a kill-turn lock (Abolisher) no other deck here has; and Delney turning the
-#: tier: cheap bodies into engines. Weaknesses, stated: card advantage 1 (Energybending and Ruckus's
-#: tier: leave-draw are not counted, but the deck refuels less than the old list); avg MV 2.67 with
+#: tier: cheap bodies into engines. Weaknesses, stated: card advantage 0 (Haste Magic was the counted one; Energybending and Ruckus's
+#: tier: leave-draw are not counted, but the deck refuels less than the old list); avg MV 2.69 with
 #: tier: eight cards at MV 4+ on 24 lands; Abolisher's {W}{W} at 13 W sources (59% by T4); and the Void
 #: tier: Sentry hands over is a real 5-a-turn tax. UNPLAYED in this form — re-grade after ten games;
 #: tier: the letter is the user's call, not the guard's.
@@ -80,6 +80,9 @@
 #: notes: T1–3 like the fastland, 1 life per coloured tap), −1 Sacred Foundry +Sun-Blessed Peak (a basic cost
 #: notes: the weakest casts 3–5 pts on curve; a second Bluffs is OTJ). Parlor/Vantage/Bluffs are MKM/OTJ and
 #: notes: leave with the 2026 rotation, so the crafts bought weeks; the remaining Bluffs goes with them.
+#: notes: 2026-09-07: −Haste Magic +Mabel, Heir to Cragflame (owned). Cragflame is permanent haste + trample +
+#: notes: vigilance on whichever bearer carries it (equip {2}) where Haste Magic was a one-shot; the Mouse anthem
+#: notes: reaches Seedglaive Mentor only. Card advantage reads 0 now (Haste Magic's impulse draw was the counted one).
 
 # Tall bodies
 1 The Sentry, Golden Guardian (MSH) 35
@@ -98,6 +101,7 @@
 1 Seedglaive Mentor (BLB) 231
 1 Delney, Streetwise Lookout (MKM) 12
 1 War Machine, Legacy of Iron (MSH) 238
+1 Mabel, Heir to Cragflame (BLB) 224
 
 # Evasion riders / protection
 1 Speed, Young Avenger (MSH) 152
@@ -115,7 +119,6 @@
 1 Team Tactics (MSH) 155
 1 Team Avatar (TLA) 38
 1 The Fire Crystal (FIN) 135
-1 Haste Magic (FIN) 140
 1 Energybending (TLA) 2
 1 Return the Favor (SOA) 47
 1 Choreographed Sparks (SOS) 111

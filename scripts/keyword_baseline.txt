@@ -5,6 +5,7 @@
 double
 eerie
 enchant
+exert
 ferocious
 food
 foretell

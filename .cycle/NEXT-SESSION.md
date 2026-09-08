@@ -19,6 +19,32 @@ commands disagree.
 
 ## 0-current. THE 2026-08-24 SESSION (READ THIS FIRST — supersedes §0-latest below)
 
+> **STATE STAMP, 2026-09-08.** Everything through 2026-09-08 is going to `main` as one PR
+> (the branch is restarted from `main` after the merge, so `main` is the place to branch
+> from). Two days of DECK work, no tooling: (1) 38a was RETIRED into 38 — Sheltered by
+> Ghosts / Thunder Lasso / Shrike Force folded in, file deleted, prune-analysis row marked
+> CUT, roster 116 → 115; (2) deck 71 was rebuilt across seventeen swaps for the ~2026
+> rotation and the early-defense concern the user raised — Ashling's Command, Artistic
+> Process, Glen Elendra Guardian, Loch Mare, Ovika, Kitnap, Amazing Acrobatics, Goliath
+> Daydreamer, Eluge, The Wondrous Wasp, Smaug, Bilbo, Resonating Lute, Fog Bank and Yue
+> in; basics shifted 9/9 → 10 Island / 8 Mountain on the U 34 / R 20 pip demand. Its
+> dated `#: notes:` lines carry every measurement. **OPEN on deck 71, in order:** Melek
+> rotates ~2026 and is a protected engine piece — the replacement is Yue's shape (a free
+> cast), and The Dawning Archaic / Weftwalking are the owned alternatives already graded;
+> Season of Weaving (mythic craft) rotates ~2027; Rapturous Moment is the craft to DROP
+> from the plan now that the Lute is in (not yet done — user's call); the spell count is
+> 15 against 16 creatures, so the next swap must not trade a spell for a body (the free-cast
+> engines feed on instants/sorceries); River's Rebuke is parked on the flex block against
+> Time Stop; Bilbo and Daydreamer pull opposite ways on the graveyard (G-42) — watch which
+> one does the work in play. Also pending from earlier in the day: the proposed swaps in
+> other decks that were never applied (55 −Team Avatar +Fire Crystal, 39 −Barret +Doc Ock's
+> Tentacles, 75 −Mirkwood Pathmaker +Moon-Vigil Adherents, 46 −Diamond Mare +Ajani, 55b
+> −Snow Villiers +Stingerback Terror, 13 −Seismic Sense +Torgal, 37a Rollercrusher Ride, 69
+> Trash the Town, 77 Riverchurn Monument, 31 Horrid Vigor, 42a Meathook Massacre II, 38
+> Thunder Lasso's three flex lines), and the unresolved card name "Fear of Immortality"
+> (DSK has Fear of Immobility / Fear of Infinity). Mabel, Heir to Cragflame is owned but
+> absent from card-pool.csv — a pool gap to close on the next `make refresh REFETCH=1`.
+>
 > **STATE STAMP, 2026-09-03.** Broad scan #8 is MERGED as PR #163 — eight commits: seven
 > implementation batches, a deck re-grade pass and two doc syncs. `main` is the place to
 > branch from. Live gates: `check_all` all invariants hold with the SAME one soft warning

@@ -14,8 +14,8 @@
 #: tier: singleton-variance build. Aspirational WIP — a legal 60 with 14 craft
 #: tier: targets still to build; graded on the list's merits per the rubric.
 #: colors: WR
-#: archetype: Boros (W/R) equipment — a different flavor from the Orzhov Armory decks
-#: archetype: (38/38a): aggressive white-red suit-up with a Thor / God-Squad top-end
+#: archetype: Boros (W/R) equipment — a different flavor from the Orzhov Armory deck
+#: archetype: (38): aggressive white-red suit-up with a Thor / God-Squad top-end
 #: archetype: and a shared Cloud equipment package.
 #: notes: /tune-deck pass — fixed the manabase with OWNED untapped-with-basic lands
 #: notes: (−1 Plains +Abandoned Air Temple; −2 Mountain +2 Fire Nation Palace;
@@ -28,9 +28,13 @@
 #: notes: `deals 3 damage` on ETB needs no board, where a fight needs a creature and
 #: notes: risks it, and Chainsaw stays as an Equipment afterward. Cut the weakest
 #: notes: filler: Dig Site Inventory, Quintessential Katana, Coral Sword, Knife,
-#: notes: Unexpected Request. Shares its equipment/carrier package with 38/38a —
+#: notes: Unexpected Request. Shares its equipment/carrier package with 38 —
 #: notes: copies fungible. NOTE: Mardu Devotee reads as a B "stray" in the castability
 #: notes: lint (its `{1}: add B` ability) but is cast for {W} — ignore the flag.
+#: notes: 2026-09-07: −Mardu Devotee +Mabel, Heir to Cragflame (owned). A 3/3 that brings a free Equipment for the
+#: notes: four equipped-matters payoffs (Serum, Blacksmith's Talent, Barret, Vendor) and pumps Seedglaive Mentor (Mouse).
+#: notes: Manabase measured unchanged on a scratch copy (W 13 / R 13, same cast-on-curve table); Devotee's once-a-turn
+#: notes: filter was the deck's only nonland source, and its B identity stray is gone with it.
 #: protect: Thor, God of Thunder; Thor Odinson; Mjölnir, Hammer of Thor; Aurelia, the Warleader; Cloud, Midgar Mercenary; Cloud, Planet's Champion
 
 Deck
@@ -55,7 +59,7 @@ Deck
 1 The Super Hero Civil War (MSH) 231
 
 # Creatures / walkers
-1 Mardu Devotee (TDM) 16
+1 Mabel, Heir to Cragflame (BLB) 224
 1 Freya Crescent (FIN) 138
 1 Silver Sable, Mercenary Leader (SPM) 13
 1 Barret Wallace (FIN) 129

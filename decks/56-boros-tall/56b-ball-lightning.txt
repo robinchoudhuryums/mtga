@@ -5,12 +5,12 @@
 #: archetype: MONO-RED CHEAT-TALL (the 56 pile analysis' variant signal, .cycle/56-tall-pile-analysis.md
 #: archetype: §5.5 / O28): every body arrives for LESS than its printed cost and most of them LEAVE at the
 #: archetype: end step — Warp (Bygone Colossus is a 9/9 for {3}, Anticausal Vestige a 7/5 for {4}, Nova
-#: archetype: Hellkite a 4/5 flier for {3}, Weftstalker Ardent for one), Plot (Stingerback Terror, Demonic Ruckus), Ball Lightning's own sacrifice, and Tannuk granting warp {2}{R} to every red creature
+#: archetype: Hellkite a 4/5 flier for {3}), Plot (Stingerback Terror, Demonic Ruckus), Ball Lightning's own sacrifice, and Tannuk granting warp {2}{R} to every red creature
 #: archetype: and artifact in hand (Combustion Man is the one body that NEEDS him to be cheap). THREE THINGS FOLLOW from
 #: archetype: a body that is leaving anyway: Self-Destruct's "X damage to itself" is FREE (the finisher costs
 #: archetype: nothing), a sorcery-speed answer or a sweeper on their turn hits an empty board (the plan IS the
 #: archetype: protection), and every recast from exile re-fires Terror of the Peaks (power to any target),
-#: archetype: Doc Ock's Tentacles (+4/+4 auto-attach on an MV-5+ body) and Weftstalker Ardent's ping. The
+#: archetype: Doc Ock's Tentacles (+4/+4 auto-attach on an MV-5+ body). The
 #: archetype: RECAST layer is Warped Space ({0} once a turn for a spell cast from exile), Spider-Verse (copy
 #: archetype: the spell cast from exile — a warp recast, a Plot cast, a Hex Magic card), Hex Magic (exile the
 #: archetype: hand, draw that many, play BOTH), Goliath Daydreamer (every instant cast from hand comes back FREE
@@ -51,6 +51,11 @@
 #: notes: swing from one land — a warped 9/9 doubles to 18 and Self-Destructs for 18 with a body that was
 #: notes: leaving anyway. Sources stay R 23. Kavaron (station taps a body that should be attacking) and
 #: notes: Rocky Roads (no Mount/Vehicle here, so a tapland) were read and declined.
+#: notes: 2026-09-07 PLAY FEEDBACK (a few games: wins fast; loses to an empty board and a hand of tricks): −Burst
+#: notes: Lightning +Gandalf, Goblins' Bane (a body that grows and pings on every noncreature spell, so the hand of
+#: notes: pumps is damage with no other body; his Adventure impulse-draw is an exile cast), −Weftstalker Ardent
+#: notes: +Chandra, Spark Hunter (0: a 3/2 Vehicle body every turn that survives a wrath; +2: discard a dead trick
+#: notes: or sacrifice an artifact to draw). Interaction 5 → 4; protection stays 3 by design (the bodies leave).
 
 # Engine — cheat and recast
 2 Tannuk, Steadfast Second (EOE) 162
@@ -60,6 +65,7 @@
 1 Hex Magic (MSH) 133
 1 Firebending Student (TLA) 139
 1 Pyromancer's Goggles (FDN) 677
+1 Chandra, Spark Hunter (DFT) 116
 
 # Temporary bodies — warp / plot / sacrifice
 1 Bygone Colossus (EOE) 235
@@ -68,7 +74,6 @@
 1 Zealous Lorecaster (SOS) 137
 1 Ball Lightning (FDN) 618
 1 Hazoret, Godseeker (DFT) 133
-1 Weftstalker Ardent (EOE) 169
 1 Goliath Daydreamer (ECL) 143
 1 Stingerback Terror (OTJ) 147
 1 Combustion Man (TLA) 127
@@ -78,6 +83,7 @@
 1 Doc Ock's Tentacles (SPM) 162
 1 Cosmic Cube (MSH) 245
 1 Twinflame Tyrant (FDN) 97
+1 Gandalf, Goblins' Bane // Flameshape (HOB) 96
 
 # Multipliers, evasion, free finishers
 2 Self-Destruct (FIN) 157
@@ -94,7 +100,6 @@
 1 Untimely Malfunction (DSK) 161
 
 # Burn that is also reach
-1 Burst Lightning (FDN) 192
 
 # Lands
 20 Mountain (HOB) 192

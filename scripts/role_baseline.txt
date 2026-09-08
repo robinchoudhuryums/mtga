@@ -113,7 +113,6 @@ Demonic Ruckus
 Desert Were-Worm
 Devastating Onslaught
 Diligent Zookeeper
-Djinn of Fool's Fall
 Doc Ock's Henchmen
 Don & Leo, Problem Solvers
 Donatello, Mutant Mechanic
@@ -149,7 +148,6 @@ Enigma Drake
 Enter the Enigma
 Entropic Battlecruiser
 Esoteric Duplicator
-Faerie Slumber Party
 Falcon, Winged Wonder
 Fated Firepower
 Fearsome Goblin Pair
@@ -210,7 +208,6 @@ Herald of Eternal Dawn
 Heroes' Hangout
 High Fae Trickster
 High Perfect Morcant
-Hit the Mother Lode
 Honored Knight-Captain
 Hop to It
 Hour of Victory
@@ -337,7 +334,6 @@ Psychic Whorl
 Pym Particles
 Quaketusk Boar
 Quicksilver, Brash Blur
-Quill-Blade Laureate
 Quina, Qu Gourmet
 Radiant Lotus
 Raft Security Officer
