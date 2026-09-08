@@ -140,6 +140,7 @@ Echo, Perceptive Prodigy
 Echocasting Symposium
 Eerie Gravestone
 Effortless Master
+Eluge, the Shoreless Sea
 Ember Island Production
 Emeritus of Woe
 Emil, Vastlands Roamer
@@ -161,6 +162,7 @@ Flamekin Gildweaver
 Flexible Waterbender
 Flopsie, Bumi's Buddy
 Flowerfoot Swordmaster
+Fog Bank
 Foggy Swamp Vinebender
 Foggy Swamp Visions
 Fortress Kin-Guard
@@ -239,6 +241,7 @@ Kav Landseeker
 Kavaron Skywarden
 Kindle the Inner Flame
 Kirol, Attentive First-Year
+Kitnap
 Kitsune's Technique
 Klaw, Sonic Subjugator
 Knight Luminary
@@ -356,7 +359,6 @@ Rhovanion Rampager
 Ripclaw Wrangler
 Rise of the Dark Realms
 Rise of the Varmints
-River's Rebuke
 Riverchurn Monument
 Rockalanche
 Rough Rhino Cavalry
