@@ -2,7 +2,7 @@
 #: format: Standard
 #: colors: UR
 #: plan: control
-#: tier: B (PROVISIONAL) — graded deliberately UNDER the A metrics floor (interaction 13,
+#: tier: B (PROVISIONAL) — graded deliberately UNDER the A metrics floor (interaction 14,
 #: tier: card advantage 8 — a real control suite). Held at B because: UNTESTED first
 #: tier: draft; the engine has a real speed question the metrics cannot see (nothing
 #: tier: happens until turn 4-5, and an aggro start punishes a hand of 7-drops — the
@@ -38,6 +38,14 @@
 #: notes: + two Treasures is the Mother Lode ramp-and-value shape at instant speed, draw two + 2 to
 #: notes: each creature one player controls is the anti-aggro line; the Elemental-copy mode is dead
 #: notes: here (Ashling is the only Elemental). Fixed cost, so a Zaffai / Capstone free cast is full value.
+#: notes: 2026-09-08 (second pass) — Faerie Slumber Party (rotates ~2026) → Artistic Process (owned):
+#: notes: the one-sided 2-damage mode is the surviving sweep, 6 to a creature or a 3/3 flyer otherwise;
+#: notes: Soul Immolation (owned, one-sided wrath scaling with Zaffai's 7 toughness) was the spice
+#: notes: alternative and stays parked — dead with no creature out, which is when a sweeper is needed.
+#: notes: Tishana's Tidebinder (rotates ~2026) → Glen Elendra Guardian (owned): flash 3/4 flyer with a
+#: notes: counter-a-noncreature-spell ability paid with its own -1/-1 counter. ONE-SHOT here — the deck
+#: notes: has no counter sources; only Self-Reflection / Multiversal Incursion copies bring a fresh
+#: notes: counter (a copy enters with its own -1/-1). Melek still rotates ~2026; Season of Weaving ~2027.
 #: protect: Zaffai and the Tempests; Melek, Reforged Researcher; Ashling, Rekindled; Improvisation Capstone; Taigam, Master Opportunist
 
 # Bodies / engines
@@ -46,7 +54,7 @@
 1 Ashling, Rekindled (ECL) 124
 1 Taigam, Master Opportunist (TDM) 60
 1 Archmage of Runes (FDN) 30
-1 Tishana's Tidebinder (LCI) 81
+1 Glen Elendra Guardian (ECL) 51
 1 Vnwxt, Verbose Host (DFT) 73
 
 # Payloads — big FIXED-cost spells (Zaffai / Capstone hits)
@@ -57,7 +65,7 @@
 1 Brass's Bounty (FDN) 190
 1 Wisdom of Ages (SOS) 71
 1 Time Stop (FDN) 166
-1 Faerie Slumber Party (WOE) 311
+1 Artistic Process (SOS) 108
 1 Season of Weaving (BLB) 68
 1 River's Rebuke (FDN) 595
 
