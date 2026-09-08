@@ -250,7 +250,41 @@ def _live_figures():
             return sum(1 for r in _csv.DictReader(fh)
                        if not (r.get("Synergies") or "").strip())
 
+    # The roster-SHAPE figures (BS9-02). The six entries below this were all
+    # file-and-column counts; the figure that actually went stale was the tier-floor
+    # spread — the sentence CLAIMED AS THE EVIDENCE for leaving `TIER_FLOOR_REQ` alone
+    # ("the spread is healthy (A 63 / B 43 / C 9 …)"), which read A 62 / B 45 / C 6 live
+    # while `figure_drift` returned zero rows. A registry that covers six of CLAUDE.md's
+    # ~1,100 numeric claims cannot be complete, so the rule for what earns an entry is:
+    # a figure a RULE cites as its evidence, and that a function here can measure.
+    #
+    # `tier_floor_spread()` is a roster-wide walk (~2s) and is NOT memoized, so the four
+    # entries share ONE lazy call — `live_fn` only runs on a regex match, so a CLAUDE.md
+    # that stops making the claim pays nothing.
+    _spread = {}
+
+    def _floor(band):
+        def get():
+            if not _spread:
+                import deck
+                _spread.update(deck.tier_floor_spread()[0])
+            if band == "%":
+                return round(100 * max(_spread.values()) / sum(_spread.values()))
+            return _spread[band]
+        return get
+
     return [
+        # Each anchored on the words AROUND its own number, never on its neighbours'
+        # values — otherwise correcting A silently kills B's and C's patterns, and a dead
+        # pattern is reported but a WRONG-BUT-LIVE one is not.
+        ("tier-floor spread A",
+         r"the spread is healthy \(A (\d+) /", _floor("A")),
+        ("tier-floor spread B",
+         r"the spread is healthy \(A \d+ / B (\d+) /", _floor("B")),
+        ("tier-floor spread C",
+         r"the spread is healthy \(A \d+ / B \d+ / C (\d+),", _floor("C")),
+        ("tier-floor top band %",
+         r"top band (\d+)% against the 85% alarm", _floor("%")),
         # ENTRIES, not lines (BS8-22): `_lines` counted the file's 15 comment lines, so
         # the figure this defends described the FILE while the acknowledged set — what a
         # reader takes "baselined at N" to mean — was 15 smaller.

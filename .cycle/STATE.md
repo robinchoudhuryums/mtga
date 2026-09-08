@@ -22,8 +22,9 @@ Subsystem cycles since last Seams audit: 0 (counter adopted 2026-09-08; no Seams
 Updated: 2026-09-08
 
 ## In progress (facts to carry forward — NOT judgments)
-- Broad scan #9 produced 8 findings in 4 batches. **Batch 1 is DONE** (F1, F4, F8) —
-  block `.cycle/blocks/09-batch1-broad-implement.md`. Batches 2–4 are not started.
+- Broad scan #9 produced 8 findings in 4 batches. **Batches 1 and 2 are DONE** (F1, F4, F8;
+  then F1b, F3 + the Batch-1 follow-ons) — blocks `09-batch1-*` and
+  `09-batch2-and-followons-*`. Batches 3 and 4 are not started.
 - Deck 71's rebuild has an ordered open list — see §0-current of NEXT-SESSION.md.
 
 ## Completed this cycle
@@ -34,12 +35,11 @@ Updated: 2026-09-08
 - Broad scan #9 (audit only, no writes) | 8 findings, 4 batches
 - **Batch 1** | F1 pool-first synergies + F4/F8 stale figures | scripts/deck.py, CLAUDE.md,
   ROADMAP.md, decks/15, decks/40
+- **Batch 2 + follow-ons** | F1b model-vs-store agreement pair (mutation-proven), F3 four
+  roster-shape figures, K-09/G-30 amended, ROADMAP PROVISIONAL 51→55 | check_agreement.py,
+  check_docs.py, test_gates_fire.py, CLAUDE.md, docs/gotchas.md, ROADMAP.md
 
 ## Pending / not yet done
-- **Batch 2 — the guards that would have caught Batch 1.** F1b: a cross-file `Synergies`
-  agreement check in check_agreement (UNBLOCKED by F1, and it must land AFTER F1 or it goes
-  red on arrival). F3: extend `figure_drift` past its 6 hand-kept entries, including the
-  tier-floor spread F4 just corrected.
 - **Batch 3 — silent degradation and roster scope.** F2: sub-majority `if err_decks:` warning
   in build_dashboard (its craft sibling has one, the detail-panel scan does not, so 1–49% of
   decks can publish `[analysis error]` panels silently); adopt Scenario 19. F5: route
@@ -51,12 +51,10 @@ Updated: 2026-09-08
 - Two G-67 role-pattern holes (Kitnap, Eluge), baselined not fixed.
 
 ## Open follow-on items
-- `K-09` reads as though "the pool is the corrected store" is a fact about the FILES; it is
-  now true of the MODEL too. Record it there — `/sync-docs`.
-- `G-30` says "Run it before a tune" of `deck.py rotation`, but its absence from `/tune-deck`
-  is DELIBERATE (recommendations ignore rotation so the human decides). A future session will
-  try to re-add it; the rule needs the exception written in.
-- ROADMAP.md line 12's "of which 51 are PROVISIONAL" was not re-measured.
+- `figure_drift` now covers 10 of CLAUDE.md's ~1,100 numeric claims. The rule for what earns
+  an entry is written down; the registry is still hand-kept and its misses still invisible.
+- `tier_floor_spread()` is called twice per `check_all` (the BS8-06 sweep and figure_drift)
+  and is not memoized — ~2s of duplicated roster walk, a one-liner nobody has needed yet.
 - `synergies` LIST ORDER now comes from the pool (258 pure re-orderings). Nothing measured
   moved; any surface showing "the first N themes" shows the pool's order.
 - Regression scenarios 5–8 and 10–19 need a person at a browser; several never walked.
@@ -74,7 +72,8 @@ Updated: 2026-09-08
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
-Batch 1 committed and pushed on `claude/sync-commands-mmmsdb`; gate green, 1729 pytest pass,
-`make postedit` clean. **Next concrete step: Batch 2**, and F1b specifically — it is the guard
-that would have caught F1 the day BS8-31 shipped, and it is only safe to add now that F1 has
-landed. Run `/broad-implement Batch 2` or pick another batch from Pending above.
+Batches 1 and 2 committed and pushed on `claude/sync-commands-mmmsdb`; gate green, 1734 pytest
+pass. **Next concrete step: Batch 3** — F2 (the dashboard's degradation guard is majority-only,
+so 1–49% of decks can publish `[analysis error]` panels silently; its craft sibling already has
+the sub-threshold warning) and F5 (route `wishlist.py`'s three roster loops through
+`roster_decks()` BEFORE the pending prune marks a deck retired). Run `/broad-implement Batch 3`.

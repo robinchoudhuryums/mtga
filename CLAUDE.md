@@ -487,15 +487,15 @@ directions.
   next. **EVERY craft view carries the flag** — `check` inline per missing/short card,
   `wildcards` (incl. `--dedup`), `suggest --lands/--ramp/--interaction`, `tier --to`'s
   fillers. Owned rows are exempt: an owned card costs no wildcard. **The windows must
-  MATCH and did not** (`rotation_risk` read one year stricter than every sibling until
-  2026-08-28 while a docstring said they "cannot disagree" — **a claim that two
-  implementations agree is not agreement**). Plain `suggest` excludes LANDS (a land has no
-  cost, so the printed-cost gate G-58 passed an off-colour one). **The year is the STANDARD
-  YEAR, not release + 3 (BS8-13)**: a January–July set leaves with the previous fall's.
-  Reprints: `_SET_ROTATION_OVERRIDE`; verify. **An OWNED rotating card was invisible on
-  every per-deck surface until 2026-09-06** (56a's Commercial District and Restless Ridgeline
-  found by hand): **`deck.py rotation <id>`** lists one deck's rotating cards, owned
-  included, and `check` ends with an `ⓘ N OWNED card(s) rotate` footer. Run it before a tune. [G-30]
+  MATCH and did not** (`rotation_risk` was a year stricter until 2026-08-28 while a
+  docstring said they "cannot disagree" — **a claim that two implementations agree is not
+  agreement**). Plain `suggest` excludes LANDS (a land has no cost, so G-58's printed-cost
+  gate passed an off-colour one). **The year is the STANDARD YEAR, not release + 3
+  (BS8-13)**; reprints: `_SET_ROTATION_OVERRIDE`, verify. **`deck.py rotation <id>`** lists
+  one deck's rotating cards, OWNED included (invisible everywhere until 2026-09-06), and
+  `check` ends with an `ⓘ N OWNED card(s) rotate` footer. Run it before a tune — **but
+  `/tune-deck` deliberately does NOT: recommendations ignore rotation so the human decides.
+  A design choice, not drift; do not "fix" it into that skill.** [G-30]
 - **A COST THAT SCALES WITH A DECK COUNT IS INVISIBLE TO EVERY MODEL HERE, because they all price the PRINTED cost (added 2026-09-03).** Three templatings, one effect — `Affinity for artifacts` (52 pool instances), `costs {1} less to cast for each Equipment you control` (134), and a type-scoped `Equip Wizard {1}` beside a plain `Equip {3}` (16 cards); **64 pool cards** resolve to a countable type. Found because `suggest-homes` ranked Wizard's Staff into a **ONE-Wizard** deck above two **20-Wizard** decks: the printed cost is identical everywhere. `cost_scale_resource` / `cost_scale_support` / `cost_scale_boost` mirror the doubler trio, feed `suggest-homes` and `cut_keep_score`, and read the **TYPE LINE, never a tag** (K-04 — Salt Road Packbeast is tagged `artifacts` off its affinity KEYWORD while its real resource is creatures). **SCOPE IS THE G-76 LINE:** only a count the DECK'S COMPOSITION decides; "for each card exiled this way" / "in your party" / "in your graveyard" are game state (55 instances) and are left alone rather than answered wrongly. Calibrated from the measured distribution per `_DOUBLER_CALIB`'s lesson — nonzero support runs p25 2 / p50 3 / p75 10 / p90 22, so the floor is **4** (three artifacts is not an artifact deck), key 10, cap 12 (under the doubler's 18: a discount changes WHEN you cast, a doubler changes what the card DOES). Roster diff: **17 of 64 scaler cards re-ordered, 5 changed top pick; 2 of 115 `cuts` top-3 moved, 0 changed #1.** Plural resources singularise against the real type list — a naive `[:-1]` makes "Allies" → "allie", a type nothing carries, so the count is a silent 0. [G-83]
 - **`deck.py suggest-homes <card>` is the cross-deck fit pass** — every deck where the
   card is castable, format-legal and shares a *central* theme, labelled KEY /
@@ -1136,17 +1136,17 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   disagreed, each leaving a card with a blank Synergies cell and therefore invisible to
   every tag-based recommendation. **The 2026-08-19 instance runs the OTHER way and is
   worse, because nothing is blank**: Dead Weight is tagged `removal` by the tagger and
-  scored ZERO roles by the classifier, so it was a removal card to one model and roleless
-  to the other — and it is the ROLE model that feeds `tier_band` (BS6-10). Comparing the
-  two is cheap, and is a GATE now, not a one-off: `check_roles.py --tags` sweeps the pool
-  for it, baselined at 173 and soft in `check_all`. It reads the tagger's own
-  `MECHANIC_RULES` live (never a copy) and excludes the deathtouch KEYWORD path by
-  construction. **The tag rules read the CARD, not what it describes (BS8-31)**: `sacrifice`
-  and `removal` run on reminder- and quote-stripped text (every Saga was `sacrifice`),
-  `reanimator` needs one graveyard→battlefield clause, `landfall`/`convoke` no longer map to
-  `ramp`; `--merge` cannot REMOVE a stale library tag, so the pool is the corrected store — 250 of the 388 raw hits, which an allowlist would have had to enumerate.
-  A worklist, not a defect count. **Residual: 340 pool blanks —
-  a long tail of un-themeable effects, and a new theme for four cards is not the fix.** [K-09]
+  scored ZERO roles by the classifier — and it is the ROLE model that feeds `tier_band`
+  (BS6-10). It is a GATE now: `check_roles.py --tags` sweeps the pool for it,
+  baselined at 173 and soft in `check_all`, reading `MECHANIC_RULES` live, never a copy.
+  **The tag rules read the CARD, not what it describes (BS8-31)** — `sacrifice`/`removal`
+  on reminder-stripped text, `reanimator` needs a graveyard→battlefield clause,
+  `landfall`/`convoke` no longer map to `ramp`; `--merge` cannot REMOVE a stale library
+  tag, so the pool is the corrected store. **THAT WAS TRUE OF THE FILE AND FALSE OF THE
+  MODEL (BS9-01)**: `load_card_meta` was library-first, so every OWNED card fed
+  `cuts`/`suggest`/centrality the STALE row (219 of 2,576; 105 of 113 decks). POOL-first
+  now; a BLANK pool cell never overrides; `check_agreement._agree_synergy_store` holds it.
+  **Residual: 340 pool blanks — a new theme for four cards is not the fix.** [K-09]
 - **After editing a tag pattern, regenerate BOTH derived tag stores** —
   `tag_synergies.py --merge` for the LIBRARY and **`build_pool.py --all` for the pool**,
   which re-derives every pool row's `Synergies` through the same `tags_for()`. Skipping

@@ -24,6 +24,7 @@ import pytest
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "scripts"))
 
+import check_agreement   # noqa: E402
 import check_colors      # noqa: E402
 import check_engines     # noqa: E402
 import check_keywords    # noqa: E402
@@ -341,3 +342,63 @@ class TestDashboardFreshnessFires:
         junk = tmp_path / "junk.html"
         junk.write_text("<html>no data island</html>", encoding="utf-8")
         assert build_dashboard.dashboard_staleness(str(junk)) is None
+
+
+class TestCheckAgreementSynergyStoreFires:
+    """BS9-01. `load_card_meta` read library-then-pool with a first-wins skip, so every
+    OWNED card's themes came from the UNCORRECTED library row — exactly the cards the
+    BS8-31 tag rules had corrected. 219 of 2,576 shared cards disagreed and 105 of 113
+    roster decks ran at least one, while `cuts`, `suggest`, `suggest-homes`, `similar`
+    and centrality all scored on the stale set.
+
+    No existing gate could see it, which is the point of pinning it HERE: `check_roles
+    --tags` sweeps the pool (comparing the corrected store with itself), `check_themes`
+    is MISSING-only so an EXTRA tag is invisible, and the agreement module's own
+    `_agree_weakest_cut` takes `load_card_meta()` as its shared INPUT, so both of its
+    implementations inherited the same wrong tags and agreed perfectly."""
+
+    def _library_first(self):
+        """The exact pre-fix loader: library precedence for Synergies as well as colours."""
+        import csv
+        meta = {}
+        for path in (deck.DEFAULT_CSV, deck.POOL_CSV):
+            with open(path, newline="", encoding="utf-8") as fh:
+                for r in csv.DictReader(fh):
+                    nl = (r.get("Card Name") or "").strip().lower()
+                    if not nl or nl in meta:
+                        continue
+                    meta[nl] = {"colors": lib.card_colors(r.get("Color(s)")),
+                                "synergies": [t.strip() for t in
+                                              (r.get("Synergies") or "").split(";") if t.strip()]}
+        return lib.alias_front(meta)
+
+    def test_it_is_quiet_on_the_real_repo(self):
+        errs = []
+        check_agreement._agree_synergy_store(errs)
+        assert errs == [], f"the pair is failing before any mutation: {errs}"
+
+    def test_it_catches_the_library_first_precedence(self, monkeypatch):
+        monkeypatch.setattr(deck, "load_card_meta", self._library_first)
+        errs = []
+        check_agreement._agree_synergy_store(errs)
+        assert errs, "reverting to library-first precedence must fail the pair"
+        assert "corrected tag store" in errs[0]
+
+    def test_a_blank_pool_cell_never_counts_as_a_disagreement(self, monkeypatch):
+        """The loader deliberately keeps the library's tags where the pool cell is blank
+        (~340 rows), so the pair must SKIP those rather than demand the model be empty."""
+        real = deck.load_card_meta()
+        probe = next(iter(real))
+        monkeypatch.setattr(deck, "load_card_meta",
+                            lambda: {probe: {"colors": set(), "synergies": ["kept"]}})
+        errs = []
+        check_agreement._agree_synergy_store(errs)
+        # `probe` may legitimately disagree; what must NOT happen is a blank-cell row
+        # being reported, so assert no error names an empty pool side.
+        assert not any("pool=[]" in e for e in errs)
+
+    def test_an_empty_model_is_reported_loudly_not_silently(self, monkeypatch):
+        monkeypatch.setattr(deck, "load_card_meta", dict)
+        errs = []
+        check_agreement._agree_synergy_store(errs)
+        assert errs and "UNVERIFIED" in errs[0]

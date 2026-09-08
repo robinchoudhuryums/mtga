@@ -1765,6 +1765,15 @@ Brawl.
 
 `check` prints `⚠rot` on CRAFT targets only, by design (an owned card costs no wildcard), and `rotation` printed all 111 decks, so an owned rotating card was found by hand on the day the 56a manabase was rebuilt: Commercial District (MKM) and Restless Ridgeline (LCI), both leaving with the 2026 rotation, sat in a deck that `check` had just called fine. `deck.py rotation <id>` is the per-deck view (owned included, by year, `⚠ SOON`), `_deck_atrisk` is the one routine behind it and the sweep so the two cannot disagree, and `check` ends with a one-line `ⓘ N OWNED card(s) rotate out this year or next` footer on the same within=1 window as `craft_rot_note`. The `--format` default changed from `standard` to None so the per-deck view reads the deck's own `#: format:`; the roster sweep still assumes Standard.
 
+
+**`/tune-deck` deliberately does NOT run `deck.py rotation`, and that is a design choice.**
+The rule above says "run it before a tune", which is right for a *human* preparing one — but
+the skill omits it on purpose: tune recommendations should ignore rotation so the human
+decides whether to run a card despite it, rather than having the tool quietly discount a
+card that leaves Standard next year. A 2026-09-08 discoverability review first read the
+omission as skill drift (G-53's shape) and was corrected by the owner. Recorded here because
+the rule's own imperative is what would make the next session "fix" it back.
+
 ## [G-31] `deck.py suggest-homes <card>` automates the "which of my decks does this new card improve" fit 
 
 **`deck.py suggest-homes <card>` automates the "which of my decks does this new
@@ -3892,6 +3901,43 @@ noncreature form. Pool (re-derived via `build_pool --all`): sacrifice 2117→155
 change a tag. **The LIBRARY keeps its stale tags**: `tag_synergies --merge` only ADDS
 (it cannot tell a hand-curated tag from a rule-added one), so an owned Saga still carries
 `sacrifice` in card-library.csv until a prune mode exists — a follow-on, not a fix here.
+
+
+**CLOSED 2026-09-08 (BS9-01), and NOT by the prune mode the paragraph above predicted.**
+The library's stale tags were never the live defect — *which store the MODEL reads* was.
+`deck.load_card_meta` iterated `(card-library.csv, card-pool.csv)` with a first-wins skip,
+so for every OWNED card it returned the UNCORRECTED library row: exactly the cards BS8-31
+had corrected. Measured: **219 of 2,576 shared cards disagreed** (`sacrifice` on 131 — every
+Saga — `ramp` 39, `reanimator` 32, `removal` 16) and **105 of 113 roster decks ran at least
+one**, feeding theme fit, centrality, `suggest`, `suggest-homes`, `cuts`' fit term, `similar`
+and the wishlist idf a tag set the project had already fixed and stored elsewhere.
+
+Nothing could see it, and the reason is instructive: `check_roles --tags` sweeps the POOL, so
+it compared the corrected store with itself; `check_themes` is MISSING-only, so an EXTRA
+stale tag is invisible to it by construction; and `check_agreement`'s `_agree_weakest_cut`
+takes `load_card_meta()` as its shared INPUT, so both of its implementations inherited the
+same wrong tags and agreed perfectly. A divergence that exists only BETWEEN a model and its
+store is exactly the shape `check_agreement` was built for, and it had no such pair.
+
+The fix is precedence, not a prune: **Synergies are POOL-first, colours stay library-first**
+(the finding was about tags; re-sourcing identity is a separate, wider change), and a BLANK
+pool cell never overrides, so the pool's ~340 blanks cannot empty a library row. The library
+still carries its stale tags — it is the inventory, not the tag store — and that is now
+harmless rather than a follow-on.
+
+Roster diff: 483 list-level tag changes = 225 real set changes + 258 pure re-orderings;
+**0 of 113 tier floors moved** (the K-14 test — `tier_band` grades on `role_tally`, which
+reads TEXT, so tags cannot reach it); central-theme set moved on 36 decks; `cuts` top-3
+changed on 27. Two tags are dropped that the tagger cannot emit — `fear` on Wraith, Vicious
+Vigilante and `undying` on Shadow of the Goblin — and BOTH are Scryfall ability-NAME
+artefacts, the K-01 shape (Wraith's ability is *named* "Fear Gas"; its text is "can't be
+blocked"), so dropping them is a correction rather than the loss of a hand-curated tag.
+Held by `check_agreement._agree_synergy_store`, mutation-proven in `tests/test_gates_fire.py`.
+
+**The first measurement of that roster diff was wrong and reported a clean zero on all three
+axes** — every accessor signature was off (`rank_cut_candidates` takes a deck record,
+`tier_band` a vector, `_central_themes` theme weights), so all 113 decks fell into `except`.
+G-01's shape exactly. The rerun asserts >100 decks produced a real ranking before reporting.
 
 ## [K-10] `tag_synergies.py` also text-tags MECHANICAL-SYNERGY payoffs the keyword map missed (tagging-mis
 
