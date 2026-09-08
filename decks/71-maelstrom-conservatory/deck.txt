@@ -3,7 +3,7 @@
 #: colors: UR
 #: plan: control
 #: tier: B (PROVISIONAL) — graded deliberately UNDER the A metrics floor (interaction 14,
-#: tier: card advantage 8 — a real control suite). Held at B because: UNTESTED first
+#: tier: card advantage 9 — a real control suite). Held at B because: UNTESTED first
 #: tier: draft; the engine has a real speed question the metrics cannot see (nothing
 #: tier: happens until turn 4-5, and an aggro start punishes a hand of 7-drops — the
 #: tier: keepable/mulligan texture of a 10-haymaker list only shows up in games);
@@ -46,6 +46,8 @@
 #: notes: counter-a-noncreature-spell ability paid with its own -1/-1 counter. ONE-SHOT here — the deck
 #: notes: has no counter sources; only Self-Reflection / Multiversal Incursion copies bring a fresh
 #: notes: counter (a copy enters with its own -1/-1). Melek still rotates ~2026; Season of Weaving ~2027.
+#: notes: 2026-09-08 (third pass) — Think Twice → Loch Mare (ECL mythic craft): the 2-drop the curve
+#: notes: lacked (3 cards at MV 3–4), three draws at {1}{U} each or a stun off its own -1/-1 counters.
 #: protect: Zaffai and the Tempests; Melek, Reforged Researcher; Ashling, Rekindled; Improvisation Capstone; Taigam, Master Opportunist
 
 # Bodies / engines
@@ -56,6 +58,7 @@
 1 Archmage of Runes (FDN) 30
 1 Glen Elendra Guardian (ECL) 51
 1 Vnwxt, Verbose Host (DFT) 73
+1 Loch Mare (ECL) 57
 
 # Payloads — big FIXED-cost spells (Zaffai / Capstone hits)
 1 Improvisation Capstone (SOS) 120
@@ -78,7 +81,6 @@
 1 Bottomless Pool // Locker Room (DSK) 43
 1 Self-Reflection (FDN) 163
 1 Homesickness (SOS) 53
-1 Think Twice (FDN) 165
 
 # Interaction — counters + burn (hard-cast; Time Stop above doubles as the catch-all)
 1 Syncopate (FIN) 80
