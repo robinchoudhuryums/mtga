@@ -403,7 +403,10 @@ directions.
   CONDITIONAL power a rarity+role seed structurally cannot price. **The Power scale is
   0–10 and range-ENFORCED at rank time**: a finite out-of-range cell flags `pow!` and
   scores 0 — 15 live cells carried 0–100-style grades ('84', '78'…) and were silently
-  LEADING `--rank`/`--budget` until the flag landed (batch 6). [G-19]
+  LEADING `--rank`/`--budget` until the flag landed (batch 6).
+  **The file's rows end in CRLF** (the `csv` default); a rewrite with `lineterminator='\n'` touches
+  every row, so a one-cell edit reads as a 164-line diff. Write it through `wishlist.py`'s own
+  writer or the default terminator. [G-19]
 - **Auto-targeting a wishlist batch: trust STRONG, judge `review`.**
   `wishlist.py --suggest-targets` scores fit by theme rarity (idf) so broad decks stop
   acting as catch-alls — only a *specific* theme is a confident match. Workflow: `--add`
@@ -966,32 +969,27 @@ directions.
 - **A `#:` HEADER THAT LISTS CARD NAMES GOES STALE, AND UNTIL 2026-08-07 NOTHING CHECKED
   ONE.** `#: protect:` and `#: uncastable-ok:` are read by the tooling as INSTRUCTIONS, so
   an entry naming a card the deck no longer runs is a silent no-op — `cuts` excludes
-  protected cards BY NAME, so a name matching nothing drops out of the mechanism it was
-  written for. Worse, `protect` also feeds a figure a HUMAN reads: the zero-protection flag
-  prints "names N build-around card(s)", and deck 26b reported FIVE against a real four in
-  the very sentence arguing its tier cap. `#: uncastable-ok:` is the more dangerous half —
-  it SUPPRESSES a castability failure, so a stale entry is a disabled check. No gate could
-  see the class: INV-04 validates deck LINES, the rationale audit reads `#: tier:` /
-  `#: archetype:` PROSE, and a card-name list in a third header was checked by nothing.
-  `deck.header_card_staleness` now sweeps the roster inside `check_all` (soft — pruning is
-  editorial) and found two more the moment it ran: deck 56's Boros header protected two
-  GREEN cards that live only in its Gruul variant 56a. Joined on `_ms_key` per G-63, so a
-  DFC named by its front face does not read as stale. [G-68]
+  protected cards BY NAME, and the zero-protection flag prints "names N build-around
+  card(s)" from the same list (deck 26b reported FIVE against a real four in its tier cap).
+  `#: uncastable-ok:` is the more dangerous half — it SUPPRESSES a castability failure, so a
+  stale entry is a disabled check. No gate saw the class: INV-04 validates LINES, the
+  rationale audit reads PROSE. `deck.header_card_staleness` sweeps the roster inside
+  `check_all` (soft — pruning is editorial); joined on `_ms_key` per G-63. **A scripted
+  header insert must anchor on the REAL line (`^#: protect: <Name>`)** — prose quotes the
+  header name in backticks, and on 2026-09-08 an insert before the first substring split two
+  `#: tier:` lines; this sweep caught both in the same run. [G-68]
 
 - **A BASELINE UPDATED BEFORE THE GATE THAT READS IT IS A MUTED GATE.** `make postedit`
   ran `check_roles.py --update-baseline` unconditionally and FIRST, so every new zero-role
-  card was acknowledged before `check_all` could warn about it — on the exact workflow
-  (after every deck edit) the radar was built for. **FIXED broad-scan-7: the acknowledge
-  step now runs LAST** (dashboard → `check_all` → `--update-baseline`), so the warning
-  fires on the run that earns it and step 3 clears it. `--update-baseline` rewrites the
-  file from the CURRENT set, so it cannot tell one genuinely roleless new card from a
-  `_ROLE_PATTERNS` edit that just re-zeroed fifty; it therefore NAMES every card it
-  acknowledges and REFUSES a jump over `--max-new` (postedit passes `MAXNEW`, default 8 —
-  `make postedit MAXNEW=40` for a deliberate bulk pass). `check_keywords.py
-  --update-baseline` got the same delta report and `--max-new` (BS4-10); it has no
-  automated caller, so it was never MUTED. **The shape generalizes: when an acknowledge
-  step and a warn step run in one command, the ORDER decides whether the warning exists at
-  all** — and the convenience of automating the pair is what hides it. [G-69]
+  card was acknowledged before `check_all` could warn about it. **FIXED broad-scan-7: the
+  acknowledge step runs LAST** (dashboard → `check_all` → `--update-baseline`). Because it
+  rewrites the file from the CURRENT set, it NAMES every card it acknowledges and REFUSES a
+  jump over `--max-new` (`MAXNEW`, default 8; `make postedit MAXNEW=40` for a bulk pass);
+  `check_keywords.py --update-baseline` has the same guard. **When an acknowledge step and a
+  warn step share one command, the ORDER decides whether the warning exists.** The other
+  trap is the SOFT/HARD split: a new zero-role card is a soft warning locally and a HARD
+  `test_check_roles` failure in CI — PR #169 (2026-09-08) went red on three deck-71 cards
+  committed after `check_all` alone. The tail's `make postedit` is the acknowledge; run it. [G-69]
 
 - **BUILDABILITY IS PER CARD NAME, NEVER PER LINE — one definition, `deck_requirements` /
   `deck_build_gap`.** A deck may list the same card on two lines, and owned counts are

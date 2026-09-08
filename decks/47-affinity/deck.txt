@@ -4,7 +4,7 @@
 #: plan: midrange
 #: tier: B — PROVISIONAL, and deliberately one band BELOW the measurable floor, which reads
 #: tier: A on interaction 7 (5 of it instant-speed, 4 able to answer a noncreature permanent)
-#: tier: plus card advantage 8 on a 3.08 curve. The guard will soft-flag this as possibly
+#: tier: plus card advantage 8 on a 3.14 curve. The guard will soft-flag this as possibly
 #: tier: under-graded; that is intentional, and here is the argument. FOUR structural risks the
 #: tier: floor cannot see, which is more than an A tolerates:
 #: tier: 1. IT DOES NOT EXIST YET. Eight craft targets, including both cards that make it a
@@ -22,6 +22,9 @@
 #: tier: What argues UP, for when this is played: the interaction profile is the best of the
 #: tier: three artifact decks, the manabase is flawless (see below), and the goldfish draws
 #: tier: are genuinely fast. Re-grade after a session.
+#: notes: 2026-09-08 — Guidelight Matrix → Outlaw Stitcher (owned, rotates ~2026): 24 cards at MV 0–1 and 23
+#: notes: artifacts make a three-spell turn routine, so the Zombie enters as a 6/6+ for four; plot it on a quiet
+#: notes: turn and drop it free on a big one. Matrix's Mount/Vehicle riders had almost nothing to target here.
 #: protect: Krang, Master Mind; Chrome Dome; Gearseeker Serpent; Ironheart, Clever Champion; Braided Net
 #: archetype: MONO-BLUE AFFINITY. The deck's whole idea is that it ramps with PERMANENTS
 #: archetype: rather than with mana. Flood the board with cheap artifacts, then cast things
@@ -39,7 +42,7 @@
 #: archetype: enough artifacts yet" rather than "not enough lands" or "no Silencer".
 #: archetype: THE FUEL HAS TO REPLACE ITSELF or affinity is just card disadvantage in a
 #: archetype: trenchcoat, and that is the real constraint on which cheap artifacts made it.
-#: archetype: Futurist Forge and Guidelight Matrix draw on entry; Cryogen Relic draws when it
+#: archetype: Futurist Forge draws on entry; Cryogen Relic draws when it
 #: archetype: ENTERS AND AGAIN WHEN IT LEAVES; Buzz Bots draws when it dies; A.I.M. Synthoids
 #: archetype: surveils 2; Sewer-veillance Cam has flash and sacrifices for two cards. Every one
 #: archetype: of those is an artifact that costs you no card to deploy — that is why they are
@@ -156,6 +159,7 @@
 1 Chrome Dome (TMT) 172
 1 Ironheart, Clever Champion (MSH) 60
 1 Don & Raph, Hard Science (TMT) 144
+1 Outlaw Stitcher (OTJ) 59
 
 # Artifact-count card advantage
 1 Edgar, King of Figaro (FIN) 51
@@ -165,7 +169,6 @@
 # Fuel that replaces itself
 1 Futurist Forge (MSH) 55
 1 Cryogen Relic (EOE) 52
-1 Guidelight Matrix (DFT) 233
 1 Sewer-veillance Cam (TMT) 53
 1 Buzz Bots (TMT) 32
 1 A.I.M. Synthoids (MSH) 242
