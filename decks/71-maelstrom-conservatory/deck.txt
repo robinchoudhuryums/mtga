@@ -2,8 +2,8 @@
 #: format: Standard
 #: colors: UR
 #: plan: control
-#: tier: B (PROVISIONAL) — graded deliberately UNDER the A metrics floor (interaction 12,
-#: tier: card advantage 7 — a real control suite). Held at B because: UNTESTED first
+#: tier: B (PROVISIONAL) — graded deliberately UNDER the A metrics floor (interaction 13,
+#: tier: card advantage 8 — a real control suite). Held at B because: UNTESTED first
 #: tier: draft; the engine has a real speed question the metrics cannot see (nothing
 #: tier: happens until turn 4-5, and an aggro start punishes a hand of 7-drops — the
 #: tier: keepable/mulligan texture of a 10-haymaker list only shows up in games);
