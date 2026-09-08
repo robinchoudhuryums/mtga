@@ -152,7 +152,7 @@ Cards in NO other deck, basics excluded. ≤ 3 unique, with the deck each shares
 | 35a Hack n Slash — Ninja Avatar | 1 | 35 (24) | B | 3 | Y |
 | 36 Panthera | 2 | 36a (36) | B | · | Y |
 | 36a Panthera — Competitive | 2 | 36 (36) | A | · | · |
-| 38a Armory — Cloud Value-Combo | 2 | 38 (30) | B | · | · |
+| 38a Armory — Cloud Value-Combo | 2 | 38 (30) | B | · | · |  ← **CUT 2026-09-08** (Thunder Lasso / Shrike Force / Sheltered by Ghosts folded into 38; file deleted)
 | 68a Frog Sage — Seer | 2 | 68 (28) | B | 4 | Y |
 | 21a Gastromancer — 4-Color | 2 | 21 (24) | B | · | · |
 | 7 Earth's Mightiest | 2 | 63 (15) | B | 3 | Y |

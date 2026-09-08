@@ -272,5 +272,5 @@ Deck
 #~   they are a per-turn hand RESET, which under the Grimoire is a per-turn life
 #~   reset. Blight-Priest is the redundant half of a pair with Starscape Cleric,
 #~   which drains identically at one mana less with flying and offspring. Final:
-#~   interaction 4, card advantage 15, avg MV 3.17, floor B = claimed B.
+#~   interaction 4, card advantage 16, avg MV 3.26 (re-grounded 2026-09-08 after Overlord of the Floodpits came in), floor B = claimed B.
 #~ note: applied — Osseous Sticktwister in for Radiant Strike.

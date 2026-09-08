@@ -2882,3 +2882,14 @@ and it is taken now as role credit. Decided: the damage axis feeds on NONCOMBAT 
 three batches' CLAUDE.md updates, then PR + merge. Open after that: 56's tier letter (user),
 56c, deleting `.cycle/56-tall-pile-analysis.md`, the copy-as-multiplier axis, the haste gate's
 n=1 band.
+
+
+## 2026-09-08 — 38a retired into 38
+The user kept 38 over 38a. Three 38a-only cards earned slots in 38 (Sheltered by Ghosts for
+Aettir and Priwen, Thunder Lasso for Trusty Boomerang, Shrike Force for Miner's Guidewing);
+interaction 4→5 lifted 38's metrics floor C→B with the letter unchanged. Fireshrieker /
+Dragonfire Blade / Quill-Blade Laureate / Dual-Sun Adepts / Momo stayed out (reasons in 38's
+dated `#: notes:` line). `decks/38-armory/38a-armory-cloud.txt` deleted; 39's prose and the
+Leyline Axe wishlist row re-pointed at 38; the prune-analysis row marked CUT. Roster 116 → 115.
+Decided AGAINST cutting Weapons Vendor for Lasso — it is one of the deck's two counted
+card-advantage cards, so Boomerang (the same tap effect, paid for) was the cut.
