@@ -1016,6 +1016,10 @@ every `--rank` and `--budget` run was steering wildcards by mis-scaled cells. Th
 flag replaces a silent over-rank with a loud under-rank; the cells are hand-grade
 data (G-17) and stay yours to re-grade — `wishlist.py --rank` lists all 15.
 
+**2026-09-08 — CRLF.** `card-wishlist.csv` rows end in `\r\n` (Python `csv`'s default
+terminator). A scripted one-cell retarget written with `lineterminator='\n'` produced a
+164-insertion / 164-deletion diff; rewriting with the default terminator made it one line.
+`wishlist.py`'s `_write` already uses the default — route edits through it.
 
 ## [G-20] Auto-targeting a wishlist batch: trust STRONG, judge `review`
 
@@ -3508,6 +3512,10 @@ invisible too.** K-12 says the role counts under-count and to read the uncertain
 
 The 201-card pile read (deck 56) listed the zero-role cards it had graded by hand, and they fell into shapes rather than one-offs. REACH: every self-referencing damage source is templated "to any OTHER target" (Pain for All, Iron Fist, Red Hulk, Self-Destruct's "X damage to any other target … where X is its power") and none matched the `any target` alternation that Infernal Phantom passed; `deals that much damage to each opponent` was a second miss. MULTIPLIERS: a trigger doubler ("triggers an additional time" — Delney, which `suggest-homes` already scored as ✱ multiplier while `cuts` called it 56a's weakest card), a damage doubler ("deals double that damage", "double all damage that sources you control") and a spell copier ("copy target instant/sorcery/creature … spell", scoped so a clone does not match) are Payoff / engine — a card whose value is what the rest of the deck does. LOCK and REDIRECT: "opponents can't cast spells" (Grand Abolisher, Voice of Victory, Jennifer Walters, Kutzil's combat-only lock) and "change the target of target spell" (Return the Favor, Bolt Bend, Redirect Lightning) are Protection / trick — role credit; `protection_effects` and `_INTERACTION_ROLES` pinned unchanged. The BUCKET: `Equipment / attach` (equip, equipped creature, reconfigure, attach … to), 39 roster cards, last in `ROLE_ORDER`, never interaction. Measured across all 114 decks in three snapshots: 0 floor bands moved, interaction / card advantage / clock 0 changed, reach +1 to +4 in 8 decks, 562 → 540 → 501 zero-role cards, and every card that left the baseline without being named in a finding was read (Avatar's Wrath, Bolt Bend, Callous Sell-Sword, Cloud, Katara the Fearless, Kitsa, Kutzil, Mirror Room, Redirect Lightning, Sawblade Skinripper, Splinter, Starfield Vocalist, Traveling Chocobo — all true positives). **The stale record**: two handoff blocks that day carried "tap-down / neutralize" as an untaken taxonomy item; it had closed on 2026-08-19 (see the neutralization section above). A follow-on list is a claim about the code and goes stale like any other prose.
 
+**2026-09-08 — two holes baselined, not fixed.** Kitnap's Aura-steal wording ("You control
+enchanted creature") scores no Removal role, and Eluge, the Shoreless Sea's "costs {U} (or
+{1}) less to cast" scores no Cost-reduction role (the pattern wants a digit). Both sit in
+`role_baseline.txt` pending a K-14 floor diff; prune them when the patterns land.
 
 ## [K-01] A handful of recurring Universe-Beyond flavor *mechanics* (Vivid, Job select, Opus, Increment, I
 
@@ -5218,6 +5226,14 @@ card added later could be silently exempted if the names happened to collide.
 Five tests pin it, including a roster-wide behavioural anchor: both known instances are
 fixed, so any new hit is a regression someone introduced rather than a backlog item.
 
+**2026-09-08 — the sweep caught a header the EDITOR broke.** Two `#: notes:` blocks were
+inserted by script "before `#: protect:`", anchored on the first substring — which in decks 43
+and 47 is a `#: tier:` sentence quoting the header name in backticks ("against five
+`#: protect:` build-arounds"). The insert split that sentence, leaving a line that began
+`#: protect:\` build-arounds…`, and `header_card_staleness` reported it in the same
+`check_all` run as a protect header naming a non-card. Rule: anchor a header insert on the
+real line (`^#: protect: [A-Z]`), never on the first occurrence of the string.
+
 ## [G-69] A baseline updated before the gate that reads it is a muted gate
 
 `check_roles.py` is the radar for cards `classify_roles` scores with NO functional role.
@@ -5273,6 +5289,13 @@ and a WARN step over the same set, the order decides whether the warning exists 
 and the convenience of automating the pair is what hides it. The same all-or-nothing
 rewrite still sits under `check_keywords.py --update-baseline`; it is not currently
 automated into a routine command, which is the only reason it is not the same bug.
+
+**2026-09-08 — PR #169 red on main.** Three deck-71 swaps (Eluge, Fog Bank, Kitnap) were
+committed after `check_all` alone; locally the three unacknowledged zero-role cards were a
+SOFT warning, but `tests/test_check_roles.py::test_check_is_quiet_against_its_own_baseline`
+asserts the gate is silent, so CI failed on the merge commit. `make postedit` (the commit
+tail's step 3) is the acknowledge; PR #170 ran it. Two of the three were real pattern holes
+(see G-67), one (Fog Bank) is roleless by design.
 
 ## [G-70] Buildability is per card NAME, never per line
 

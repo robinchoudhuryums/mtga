@@ -53,9 +53,9 @@
 #: tier: noncreature permanent. The two refill engines were then RESTORED against
 #: tier: Deduce and Marauding Blight-Priest once their real role was understood (see
 #: tier: notes: they fix the hand, they do not merely cap it), so the axis held at 4
-#: tier: while card advantage came back to 15 on a 3.26 curve with 15 early drops.
+#: tier: while card advantage came back to 16 on a 3.34 curve with 14 early drops.
 #: tier: Against the thin answer count stands card
-#: tier: advantage 15 on a 3.26 curve, a number that is real rather than a pile of
+#: tier: advantage 16 on a 3.34 curve, a number that is real rather than a pile of
 #: tier: cantrips — Cloudblazer draws two, Chart a Course draws two, Spirit Water Revival
 #: tier: draws seven when waterbent, the Grimoire draws five on cast, and Bard, King of
 #: tier: Dale doubles every one of them past the first each turn. B now MATCHES the
@@ -89,6 +89,9 @@
 #: tier: PATH TO A: add a second protection effect, and a second card on the payoff axis
 #: tier: (the flex block names two candidates) so the deck's ceiling shows up more than
 #: tier: one game in five.
+#: notes: 2026-09-08 — Chart a Course → School Daze (SPM uncommon craft): counter-plus-draw or draw three, on the
+#: notes: one axis this deck is short (interaction 4 → 5 against card advantage 16). Eject (owned, uncounterable
+#: notes: bounce + draw) is the next interaction add if wanted — Lake-town Toymaker is its cut.
 #: protect: Marina Vendrell's Grimoire; Ms. Marvel, Kamala Khan; King T'Challa // Black Panther, Hope Enduring; Vnwxt, Verbose Host
 #: notes: WHY NO PAY-LIFE DRAW. Deck 42's package is actively ANTI-synergistic here.
 #: notes: Under the Grimoire, Lunar Convocation's "pay 2 life: draw a card" is lose 2 ->
@@ -210,7 +213,7 @@ Deck
 # Draw / second-card enablers
 1 Kitsa, Otterball Elite (BLB) 54
 1 Cloudblazer (FDN) 653
-1 Chart a Course (FDN) 586
+1 School Daze (SPM) 42
 1 Thirst for Knowledge (MSH) 79
 1 Overlord of the Floodpits (DSK) 68
 
@@ -272,5 +275,5 @@ Deck
 #~   they are a per-turn hand RESET, which under the Grimoire is a per-turn life
 #~   reset. Blight-Priest is the redundant half of a pair with Starscape Cleric,
 #~   which drains identically at one mana less with flying and offspring. Final:
-#~   interaction 4, card advantage 16, avg MV 3.26 (re-grounded 2026-09-08 after Overlord of the Floodpits came in), floor B = claimed B.
+#~   interaction 5, card advantage 16, avg MV 3.34 (re-grounded 2026-09-08 after School Daze came in), floor B = claimed B.
 #~ note: applied — Osseous Sticktwister in for Radiant Strike.

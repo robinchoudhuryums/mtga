@@ -2903,3 +2903,11 @@ once Artistic Process (owned) covered the sweep; Weapons Vendor as the Lasso cut
 (one of two counted card-advantage cards); Waterbender Ascension (needs four combat
 connections in a deck whose creatures sit back). Open items are in NEXT-SESSION.md's
 2026-09-08 stamp.
+
+## 2026-09-08 (evening) — CI fix, cross-deck fit pass, sync-docs
+PR #169 merged red (Tests): three unacknowledged zero-role cards from the deck-71 swaps;
+PR #170 ran the postedit tail. Cross-deck pass on the 27 cards graded for deck 71: nine had a
+genuine home; applied Outlaw Stitcher → 47 (for Guidelight Matrix) and School Daze → 43 (for
+Chart a Course). A scripted `#: notes:` insert anchored on the first "#: protect:" substring
+split a `#: tier:` sentence in both files; repaired, and G-68 now says to anchor on the real
+header line. Docs synced: G-19 (CRLF wishlist), G-67 (Kitnap / Eluge holes), G-68, G-69.

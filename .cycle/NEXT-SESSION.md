@@ -19,9 +19,11 @@ commands disagree.
 
 ## 0-current. THE 2026-08-24 SESSION (READ THIS FIRST — supersedes §0-latest below)
 
-> **STATE STAMP, 2026-09-08.** Everything through 2026-09-08 is going to `main` as one PR
-> (the branch is restarted from `main` after the merge, so `main` is the place to branch
-> from). Two days of DECK work, no tooling: (1) 38a was RETIRED into 38 — Sheltered by
+> **STATE STAMP, 2026-09-08.** Merged as PR #169 (deck work), #170 (the CI fix — see G-69) and
+> a third PR carrying the cross-deck pass (Outlaw Stitcher → 47, School Daze → 43) and this
+> doc sync; `main` is the place to branch from. Remaining genuine homes from that pass, NOT
+> applied: Whirlwing Stormbrood → 67, Death to Our Enemies → 72, Gandalf → 55a, Swallowed by
+> Leviathan → 62, Pensive Professor → 37/37a (craft), Eject → 43 for Lake-town Toymaker. Two days of DECK work, no tooling: (1) 38a was RETIRED into 38 — Sheltered by
 > Ghosts / Thunder Lasso / Shrike Force folded in, file deleted, prune-analysis row marked
 > CUT, roster 116 → 115; (2) deck 71 was rebuilt across seventeen swaps for the ~2026
 > rotation and the early-defense concern the user raised — Ashling's Command, Artistic
