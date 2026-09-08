@@ -2,7 +2,7 @@
 #: format: Standard
 #: colors: UR
 #: plan: control
-#: tier: B (PROVISIONAL) — graded deliberately UNDER the A metrics floor (interaction 14,
+#: tier: B (PROVISIONAL) — graded deliberately UNDER the A metrics floor (interaction 13,
 #: tier: card advantage 9 — a real control suite). Held at B because: UNTESTED first
 #: tier: draft; the engine has a real speed question the metrics cannot see (nothing
 #: tier: happens until turn 4-5, and an aggro start punishes a hand of 7-drops — the
@@ -48,6 +48,12 @@
 #: notes: counter (a copy enters with its own -1/-1). Melek still rotates ~2026; Season of Weaving ~2027.
 #: notes: 2026-09-08 (third pass) — Think Twice → Loch Mare (ECL mythic craft): the 2-drop the curve
 #: notes: lacked (3 cards at MV 3–4), three draws at {1}{U} each or a stun off its own -1/-1 counters.
+#: notes: 2026-09-08 (fourth pass) — Wisdom of Ages → Ovika, Enigma Goliath (owned): a Zaffai free cast of
+#: notes: a 7-drop is seven hasty Goblins, ward {3}+3 life; Wisdom was the recursion Goliath Daydreamer
+#: notes: (planned) would have starved by exiling hand-cast spells. Crash and Burn (rotates ~2027) → Kitnap
+#: notes: (BLB rare craft, ~2027): a permanent steal answers what 6 damage cannot. Spell Pierce → Amazing
+#: notes: Acrobatics (owned): a hard counter on anything, and the tap mode is a fog against the aggro start
+#: notes: the tier block worries about; 79.5% on turn three at 17 U sources.
 #: protect: Zaffai and the Tempests; Melek, Reforged Researcher; Ashling, Rekindled; Improvisation Capstone; Taigam, Master Opportunist
 
 # Bodies / engines
@@ -59,6 +65,7 @@
 1 Glen Elendra Guardian (ECL) 51
 1 Vnwxt, Verbose Host (DFT) 73
 1 Loch Mare (ECL) 57
+1 Ovika, Enigma Goliath (FDN) 663
 
 # Payloads — big FIXED-cost spells (Zaffai / Capstone hits)
 1 Improvisation Capstone (SOS) 120
@@ -66,7 +73,6 @@
 1 Turtles in Time (TMT) 55
 1 Multiversal Incursion (MSH) 68
 1 Brass's Bounty (FDN) 190
-1 Wisdom of Ages (SOS) 71
 1 Time Stop (FDN) 166
 1 Artistic Process (SOS) 108
 1 Season of Weaving (BLB) 68
@@ -87,9 +93,9 @@
 1 An Offer You Can't Refuse (FDN) 160
 1 Divert Disaster (EOE) 55
 1 Confusticate and Bebother (HOB) 35
-1 Spell Pierce (SOA) 23
+1 Amazing Acrobatics (SPM) 25
 1 Conduct Electricity (BLB) 130
-1 Crash and Burn (DFT) 119
+1 Kitnap (BLB) 53
 1 Lightning Strike (TLA) 146
 1 Untimely Malfunction (DSK) 161
 
