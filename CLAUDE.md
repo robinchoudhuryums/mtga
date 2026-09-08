@@ -1303,8 +1303,9 @@ earned it: [C-01]
 - INV-05 | Color(s) stores color identity; actual mana cost lives only in card-mana.csv | Subsystem: Data | Verify: design/manual
 - INV-06 | Synergy tags are keyword-aware — regenerate via build_mana.py then tag_synergies.py --merge after imports (--merge preserves hand-curated tags; --force replaces them) | Subsystem: Ingest | Verify: manual
 
-**Policy Configuration:** threshold 6/10; 2 consecutive cycles below triggers a policy
-response.
+**Policy Configuration:**
+Policy threshold: 6/10
+Consecutive cycles: 2
 
 **Regression Scenarios** (manual walks; the Test Command above is the primary gate).
 Scenarios 5–8 need **a person at a browser** — they are the perceptual and interaction
@@ -1497,7 +1498,11 @@ format.
 
 **Frozen Subsystems:** none.
 
-**Deploy Command:** Data + local tooling ship by commit/push (no build/release step). The
+**Deploy Command:**
+Presentation: `.github/workflows/pages.yml` — rebuilds `build_dashboard.py` offline and
+publishes `dashboard.html` to GitHub Pages on every push to `main`.
+
+Data + local tooling ship by commit/push (no build/release step). The
 one deployed artifact is the roster **dashboard**, and since 2026-08-24 the workflow
 INSPECTS the page it is about to publish (non-trivial size + the `#data` island, the same
 two facts INV-03 checks on the committed copy) — nothing looked at it before:
@@ -1515,7 +1520,7 @@ so the status pills' fills derive from the same token as their text. [C-10]
 `roadmap`, `sync-commands`, `targeted-audit`, `targeted-implement`, and
 `pr-review` in `.claude/commands/` are copied **verbatim** from
 [claude-workflow-tools](https://github.com/robinchoudhuryums/claude-workflow-tools)
-— currently synced to template **v1.23.0**;
+— currently synced to template **v1.33.0**;
 they stay project-agnostic and read everything from the Cycle Workflow Config
 above. To update them, run **`/sync-commands`** with a path/URL to that repo (it
 reports the template VERSION + CHANGELOG and diffs each file) and re-copy any it

@@ -340,7 +340,11 @@ cards or stale figures); stats reports the protection axis and flags a ZERO; red
 
 ## [C-10] Deploy Command
 
-**Deploy Command:** Data + local tooling ship by commit/push (no build/release step). The
+**Deploy Command:**
+Presentation: `.github/workflows/pages.yml` — rebuilds `build_dashboard.py` offline and
+publishes `dashboard.html` to GitHub Pages on every push to `main`.
+
+Data + local tooling ship by commit/push (no build/release step). The
 one deployed artifact is the **roster dashboard**: `.github/workflows/pages.yml` rebuilds
 `build_dashboard.py` offline and publishes it to **GitHub Pages on every push to `main`**
 (no manual step). Everything else is read/run locally. The generated page is a themed
