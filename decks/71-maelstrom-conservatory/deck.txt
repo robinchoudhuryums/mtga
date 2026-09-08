@@ -58,6 +58,9 @@
 #: notes: spell, Zaffai's free one included, comes back free on attack. Syncopate → Eluge, the Shoreless
 #: notes: Sea (BLB mythic craft, ~2027): a 9/9+ off the Islands whose discount stacks with Melek's; UUU
 #: notes: prices at 58.6% on turn four at 17 U sources (65% at 11 Islands) — a turn-5/6 play in practice.
+#: notes: 2026-09-08 (sixth pass) — An Offer You Can't Refuse → The Wondrous Wasp (owned): a turn-two flash
+#: notes: flyer that taps an attacker and strips its abilities while the Wasp lives — the early defense the
+#: notes: list lacked (only five bodies at MV ≤3, two of them walls), on the same interaction axis Offer sat on.
 #: protect: Zaffai and the Tempests; Melek, Reforged Researcher; Ashling, Rekindled; Improvisation Capstone; Taigam, Master Opportunist
 
 # Bodies / engines
@@ -72,6 +75,7 @@
 1 Ovika, Enigma Goliath (FDN) 663
 1 Goliath Daydreamer (ECL) 143
 1 Eluge, the Shoreless Sea (BLB) 49
+1 The Wondrous Wasp (MSH) 84
 
 # Payloads — big FIXED-cost spells (Zaffai / Capstone hits)
 1 Improvisation Capstone (SOS) 120
@@ -95,7 +99,6 @@
 1 Homesickness (SOS) 53
 
 # Interaction — counters + burn (hard-cast; Time Stop above doubles as the catch-all)
-1 An Offer You Can't Refuse (FDN) 160
 1 Divert Disaster (EOE) 55
 1 Confusticate and Bebother (HOB) 35
 1 Amazing Acrobatics (SPM) 25
