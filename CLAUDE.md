@@ -1496,6 +1496,18 @@ format.
     "Synced live" toast (BS8 P-05); the paste reads "⚠ TRUNCATED? paste holds N of M cards
     — a fragment, not a drift" rather than "⟳ drifted — 0 added / 44 removed" (BS8-43).
 
+19. Degraded analysis panels on the published page | Subsystem: Presentation & Interface
+    Steps: open the deployed dashboard (or the committed `dashboard.html`); open six or
+    seven deck modals spread across the roster; read the Legal, Cuts and Arena panels in
+    each. Then run `python3 scripts/build_dashboard.py --out /tmp/d.html` and read stderr.
+    Expected: no panel contains the text `[analysis error`, and stderr carries no
+    `deck analysis failed for N/113` line. The build REFUSES success only when HALF or
+    more decks are affected; below that it publishes, so before BS9-04 a 1–49% regression
+    shipped to Pages with a green build and silent output — up to 57 decks. The
+    sub-majority WARN added there is what a fresh run surfaces; this walk is what catches
+    it on a page already published. `--out` writes a throwaway copy, so it is safe to run
+    against the real data at any time.
+
 **Frozen Subsystems:** none.
 
 **Deploy Command:**

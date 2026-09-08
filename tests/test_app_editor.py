@@ -62,17 +62,17 @@ class TestDeckSaveStaleness:
         assert "CHANGED" in r.get_json()["errors"][0]
         assert "Opt" in open(world, encoding="utf-8").read()
 
-    def test_an_absent_token_keeps_the_old_contract(self, world):
-        """A cached pre-token page must still be able to save (no token = no gate);
-        the gate is opt-in by presence, and every freshly-served page carries one."""
+    def test_an_absent_token_is_now_REFUSED(self, world):
+        """BS9-06 REVERSES this pin. It asserted 200 and read "a cached pre-token page
+        must still be able to save (no token = no gate)". That justification expired:
+        `templates/deck.html` sends the field unconditionally, the page is served by the
+        same process that validates it, and a successful save reloads. Meanwhile the hole
+        re-admitted the exact failure BS2-26 exists to stop — an open tab silently
+        reverting a CLI `swap --apply`. Revert by dropping `deck_save`'s `not sent`."""
         c = app.app.test_client()
         r = _save(c, world, token="")
-        assert r.status_code == 200
-
-
-class TestMetaKeyValidation:
-    """BS2-28: a key META_RE can't parse saved fine, toasted success, then silently
-    demoted to a comment on the next load — deck.py never saw the header."""
+        assert r.status_code == 409
+        assert "staleness token" in r.get_json()["errors"][0]
 
     def test_a_spaced_key_is_rejected_before_any_write(self, world):
         c = app.app.test_client()
@@ -146,9 +146,14 @@ class TestCsvSaveStaleness:
         assert r.status_code == 409
         assert ",159,9" in library.read_text(encoding="utf-8"), "the CLI's 9 survived"
 
-    def test_an_absent_token_keeps_the_old_contract(self, library):
+    def test_an_absent_token_is_now_REFUSED(self, library):
+        """BS9-06, the CSV half — see the deck-save twin above. A DICT body is the
+        CURRENT wire format and must carry a token; `test_a_bare_list_body_still_saves`
+        below pins the one shape that legitimately cannot."""
         c = app.app.test_client()
-        assert _csv_save(c, self.EDIT).status_code == 200
+        r = _csv_save(c, self.EDIT)
+        assert r.status_code == 409
+        assert "staleness token" in r.get_json()["errors"][0]
 
     def test_a_bare_list_body_still_saves(self, library):
         c = app.app.test_client()
@@ -186,3 +191,113 @@ class TestDeckSaveGateEqualsInv04:
         r = _save(c, world, token=app._doc_token(world))
         assert r.status_code == 200
         assert oct(os.stat(world).st_mode & 0o777) == "0o644"
+
+
+class TestRequestGuard:
+    """BS9-05. `_guard_request` is the WHOLE security boundary of a write-capable
+    server, and nothing tested it: a grep across tests/ for Origin, Host, 403,
+    `_same_origin` or `_guard_request` returned nothing. Its own docstring names the two
+    holes it closes — a cross-origin form POST to `/api/revert`, which reads no body at
+    all and so is not accidentally protected by the JSON content-type check the other
+    endpoints get for free; and DNS rebinding, where a hostile name resolving to
+    127.0.0.1 scripts the editor from a page the user merely visits.
+
+    Both are asserted in BOTH directions, because a guard that refuses everything is as
+    broken as one that refuses nothing and looks identical from a passing test that only
+    checks the refusal."""
+
+    def test_a_cross_origin_post_is_refused(self, library):
+        c = app.app.test_client()
+        r = c.post("/api/revert", headers={"Origin": "http://evil.example"})
+        assert r.status_code == 403
+        assert "cross-origin" in r.get_json()["errors"][0]
+
+    def test_a_same_origin_post_is_allowed_through_the_guard(self, library):
+        """The guard must not be the thing that fails it — 409 (no backup yet) is the
+        endpoint's own answer and proves the request reached it."""
+        c = app.app.test_client()
+        r = c.post("/api/revert", headers={"Origin": "http://localhost"})
+        assert r.status_code != 403
+
+    def test_a_post_with_no_origin_is_allowed(self):
+        """Documented and deliberate: no Origin means a non-browser client (curl, a
+        script), which CSRF does not apply to. Pinned so the reasoning is visible if
+        someone tightens it."""
+        c = app.app.test_client()
+        assert c.post("/api/revert").status_code != 403
+
+    def test_a_safe_method_is_never_origin_checked(self):
+        c = app.app.test_client()
+        assert c.get("/decks", headers={"Origin": "http://evil.example"}).status_code != 403
+
+    def test_a_rebinding_host_is_refused(self):
+        c = app.app.test_client()
+        r = c.get("/decks", headers={"Host": "attacker.example"})
+        assert r.status_code == 403
+        assert "unexpected Host" in r.get_json()["errors"][0]
+
+    @pytest.mark.parametrize("host", ["127.0.0.1", "localhost", "127.0.0.1:5000"])
+    def test_loopback_hosts_are_allowed(self, host):
+        c = app.app.test_client()
+        assert c.get("/decks", headers={"Host": host}).status_code != 403
+
+    def test_a_deliberate_non_local_bind_relaxes_the_host_check(self, monkeypatch):
+        """`main()` sets `_bind_host`; binding off loopback on purpose must not make
+        every request 403, or the flag would be unusable."""
+        monkeypatch.setattr(app, "_bind_host", "0.0.0.0")
+        c = app.app.test_client()
+        assert c.get("/decks", headers={"Host": "192.168.1.5:5000"}).status_code != 403
+
+
+class TestDestructiveEndpoints:
+    """BS9-05. `/api/add`, `/api/remove` and `/api/revert` write card-library.csv and
+    were exercised by no test at all — `test_app_editor.py` covered `/api/save` and
+    `/api/deck/save` only, i.e. 2 of the editor's 10 routes. `/api/revert` is the one
+    the CSRF guard was written FOR."""
+
+    KEY = {"name": "Shock", "set": "M21", "collector": "159"}
+
+    def test_remove_drops_the_printing_and_backs_up(self, library):
+        c = app.app.test_client()
+        r = c.post("/api/remove", data=json.dumps({"key": self.KEY}),
+                   headers={"Content-Type": "application/json"})
+        assert r.status_code == 200 and r.get_json()["ok"]
+        assert "Shock" not in library.read_text(encoding="utf-8")
+        assert r.get_json()["backup"], "a destructive write must leave a .bak"
+
+    def test_remove_of_an_absent_printing_is_refused(self, library):
+        c = app.app.test_client()
+        r = c.post("/api/remove",
+                   data=json.dumps({"key": dict(self.KEY, collector="999")}),
+                   headers={"Content-Type": "application/json"})
+        assert r.status_code >= 400
+        assert "Shock" in library.read_text(encoding="utf-8"), "the row must survive"
+
+    def test_revert_restores_the_backup_remove_made(self, library):
+        c = app.app.test_client()
+        assert c.post("/api/remove", data=json.dumps({"key": self.KEY}),
+                      headers={"Content-Type": "application/json"}).status_code == 200
+        assert "Shock" not in library.read_text(encoding="utf-8")
+        r = c.post("/api/revert")
+        assert r.status_code == 200 and r.get_json()["ok"]
+        assert "Shock" in library.read_text(encoding="utf-8"), "the revert restored it"
+
+    def test_revert_with_no_backup_is_a_clean_409_not_a_crash(self, library):
+        c = app.app.test_client()
+        r = c.post("/api/revert")
+        assert r.status_code == 409
+        assert "No backup" in r.get_json()["errors"][0]
+
+    def test_add_appends_a_mana_row_so_inv02_holds(self, library, monkeypatch):
+        """The INV-02 half of `/api/add`, offline: a new library name must gain a
+        card-mana.csv row in the same request or the gate goes red on the next run."""
+        monkeypatch.setattr(app, "_lookup_card", lambda n: (None, "offline"))
+        c = app.app.test_client()
+        r = c.post("/api/add",
+                   data=json.dumps({"name": "Opt", "set": "M21", "collector": "59",
+                                    "quantity": "1"}),
+                   headers={"Content-Type": "application/json"})
+        assert r.status_code == 200 and r.get_json()["ok"], r.get_json()
+        assert "Opt" in library.read_text(encoding="utf-8")
+        mana = os.path.join(os.path.dirname(str(library)), "card-mana.csv")
+        assert "Opt" in open(mana, encoding="utf-8").read(), "INV-02: no mana row written"

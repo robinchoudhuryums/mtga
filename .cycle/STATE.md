@@ -15,16 +15,15 @@
 ## Current
 Cycle: 9 — a fresh `/broad-scan` ran 2026-09-08 after cycle 8's work merged, which is what
 increments the number. Cycle 8's blocks stay under their own prefix.
-Phase: implement
+Phase: verify
 Scope: broad
 Test Command: `python3 scripts/check_all.py`
 Subsystem cycles since last Seams audit: 0 (counter adopted 2026-09-08; no Seams audit has run)
 Updated: 2026-09-08
 
 ## In progress (facts to carry forward — NOT judgments)
-- Broad scan #9 produced 8 findings in 4 batches. **Batches 1 and 2 are DONE** (F1, F4, F8;
-  then F1b, F3 + the Batch-1 follow-ons) — blocks `09-batch1-*` and
-  `09-batch2-and-followons-*`. Batches 3 and 4 are not started.
+- **Broad scan #9 is FULLY IMPLEMENTED** — all 8 findings, 4 batches, blocks `09-batch1-*`,
+  `09-batch2-and-followons-*`, `09-batch3-4-*`. Phase is now verify/reflect, not implement.
 - Deck 71's rebuild has an ordered open list — see §0-current of NEXT-SESSION.md.
 
 ## Completed this cycle
@@ -38,15 +37,11 @@ Updated: 2026-09-08
 - **Batch 2 + follow-ons** | F1b model-vs-store agreement pair (mutation-proven), F3 four
   roster-shape figures, K-09/G-30 amended, ROADMAP PROVISIONAL 51→55 | check_agreement.py,
   check_docs.py, test_gates_fire.py, CLAUDE.md, docs/gotchas.md, ROADMAP.md
+- **Batches 3 + 4** | F2 sub-majority dashboard warning + Scenario 19, F5 four wishlist
+  roster loops, F6 twelve editor guard/endpoint tests (mutation-proven), F7 absent-token
+  bypass retired | build_dashboard.py, wishlist.py, app.py, test_app_editor.py, CLAUDE.md
 
 ## Pending / not yet done
-- **Batch 3 — silent degradation and roster scope.** F2: sub-majority `if err_decks:` warning
-  in build_dashboard (its craft sibling has one, the detail-panel scan does not, so 1–49% of
-  decks can publish `[analysis error]` panels silently); adopt Scenario 19. F5: route
-  `wishlist.py:1535/689/813` through `roster_decks()` before the roster prune lands.
-- **Batch 4 — the editor's untested boundary.** F6: tests for `_guard_request` (Host +
-  Origin) and for `/api/revert`, `/api/remove`, `/api/add`. F7: decide whether to retire the
-  absent-token save bypass.
 - The unapplied cross-deck homes and earlier proposed swaps — NEXT-SESSION.md §0-current.
 - Two G-67 role-pattern holes (Kitnap, Eluge), baselined not fixed.
 
@@ -72,8 +67,10 @@ Updated: 2026-09-08
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
-Batches 1 and 2 committed and pushed on `claude/sync-commands-mmmsdb`; gate green, 1734 pytest
-pass. **Next concrete step: Batch 3** — F2 (the dashboard's degradation guard is majority-only,
-so 1–49% of decks can publish `[analysis error]` panels silently; its craft sibling already has
-the sub-threshold warning) and F5 (route `wishlist.py`'s three roster loops through
-`roster_decks()` BEFORE the pending prune marks a deck retired). Run `/broad-implement Batch 3`.
+All four batches of broad scan #9 committed and pushed on `claude/sync-commands-mmmsdb`; gate
+green, **1761 pytest passed / 0 skipped**. The scan is closed — nothing from it is outstanding.
+**Next concrete step is a choice, not a queue:** (a) `/reflect` on cycle 9, which has never run
+and is the whole reason `defensive_count` was adopted — 9 of the 10 items across batches 2–4
+were defensive, and the metrics row would say so for the first time; (b) `/sync-docs` for the
+one G-15 clause the last block names; or (c) the DECK work in Pending above, which is the only
+thing here a player would notice.

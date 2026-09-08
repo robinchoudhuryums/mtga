@@ -2755,6 +2755,21 @@ def main():
                f"(e.g. {', '.join(err_decks[:6])}) — a deck.py command likely regressed. "
                f"The dashboard was written but is DEGRADED; refusing to report success.")
         return 1
+    # SUB-MAJORITY, and it had no voice at all (BS9-04). The threshold above is the
+    # DEPLOY gate: below half, the build returned 0 and printed NOTHING, so 1-49% of the
+    # roster — up to 57 decks — could publish `[analysis error]` panels to Pages under a
+    # green build with silent output. The craft sibling twenty lines down has had BOTH
+    # halves since BS5-05: the same majority refusal AND an `if craft_bad:` line for the
+    # smaller case. Two functions answering "did this degrade?" for the text panels and
+    # for the craft table, and only one of them said anything below the threshold — the
+    # G-45 shape ("when two functions answer the same question, diff their filters").
+    # Warn, do not fail: a handful of degraded panels is worth publishing around, and
+    # promoting it to a non-zero exit would block the deploy on one bad card.
+    if err_decks:
+        eprint(f"WARN:  deck analysis failed for {len(err_decks)}/{ndecks} deck(s): "
+               f"{', '.join(err_decks[:6])}" + (" …" if len(err_decks) > 6 else "")
+               + " — those panels will publish reading `[analysis error]`. Run "
+                 "`python3 scripts/deck.py legal|cuts|arena <id>` on one to see why.")
     # The FOURTH analysis payload. The scan above covers the three `detail` text panels
     # and has never covered `craft`, which is built by a different function with its own
     # try/except — so a roster-wide `suggest_scored` regression published an empty craft
