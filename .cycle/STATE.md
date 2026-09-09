@@ -15,12 +15,12 @@
 ## Current
 Cycle: 9 — a fresh `/broad-scan` ran 2026-09-08 after cycle 8's work merged, which is what
 increments the number. Cycle 8's blocks stay under their own prefix.
-Phase: implement (a second implement pass on cycle 9, from a deck-session post-mortem
-rather than from the scan's finding list)
+Phase: reflect (cycle 9's reflection has RUN — `.cycle/blocks/09-a-reflect.md`, and the
+first /reflect this project has ever run)
 Scope: broad
 Test Command: `python3 scripts/check_all.py`
-Subsystem cycles since last Seams audit: 0 (counter adopted 2026-09-08; no Seams audit has run)
-Updated: 2026-09-09 (second pass)
+Subsystem cycles since last Seams audit: 1 (counter adopted 2026-09-08; no Seams audit has run)
+Updated: 2026-09-09 (reflect)
 
 ## In progress (facts to carry forward — NOT judgments)
 - **Broad scan #9 is FULLY IMPLEMENTED** — all 8 findings, 4 batches, blocks `09-batch1-*`,
@@ -110,15 +110,24 @@ Updated: 2026-09-09 (second pass)
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
-The previous pass's follow-on list is CLOSED — one done, three measured and declined — and
-`/sync-docs` has run and applied. Gate green, **1783 pytest passed / 0 skipped**, Scenario 2
-walked, docs synced with a new G-84 anchor in both files.
-**The finding worth carrying forward is not any single fix**: wiring `unmet_gate` to a
-40-row craft table proved a primitive that had been correct enough for `swap` and
-`redundancy` was **85% wrong there** (82 hits, 12 real), and `figure_drift` then caught a
-real bug in that same pass's own CLAUDE.md text within minutes of the entry being added.
-Both say the same thing — a measurement is only as good as the surface it was taken at.
-Next step is unchanged and now cheaper: (a) `/reflect` on cycle 9, which has six implement
-blocks and has still never run, and this pass gives it a clean `2 - 0 = 2` beside the
-previous one's `1 - 1 = 0, defensive 1`; or (b) the DECK work in Pending, the only thing
-here a player would notice.
+**Cycle 9 is reflected and closed** — `.cycle/blocks/09-a-reflect.md`, `metrics.csv` row
+`2026-09-09,9,broad,reflect,2,3,1,…,13`. Six implement blocks graded action by action:
+**3 production fixes (1 Critical), 1 new capability, 13 defensive, 1 new failure mode (Low),
+net 2.**
+
+**The number worth carrying is `defensive_count = 13`** — the first time this project has
+ever measured that bucket, and it says 13 of 17 actions this cycle fixed nothing that was
+firing. That is not a criticism of the cycle (two of the 13 paid off inside it), but it is
+the shape the metric was adopted to expose, and cycles 2–8's backfilled rows cannot show it.
+
+One self-report was CORRECTED here: block `09-followons-and-syncdocs` claimed 2 production
+fixes; the honest count is 1. See the metrics `notes` field, which the verification pack
+surfaces automatically.
+
+**The cycle's central lesson has no gate** (logged as INV-11): a primitive must be
+re-measured AT each new caller. It was learned by shipping a gate to `swap` that measured
+0 of 805, then finding the same primitive 85% wrong the next day on a 40-row craft table.
+
+Next: nothing is outstanding from cycle 9. Either start a fresh `/broad-scan` (which
+increments to cycle 10), run the Seams & Invariants audit the counter now shows as 1 cycle
+overdue, or do the DECK work in Pending — the only thing here a player would notice.
