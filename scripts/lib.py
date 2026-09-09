@@ -125,6 +125,82 @@ def latest_backup(paths):
     return max(paths, key=_mtime)
 
 
+# ── Forensic write log ───────────────────────────────────────────────────────────────
+#
+# WHO WROTE card-library.csv? On 2026-09-09 three writes stripped freshly-merged synergy
+# tags off the collection's source of truth, at 22:35:01, 22:59:13 and 23:02:44. The
+# `.bak` timeline proved they happened — a backup holds the PRE-write state, and each of
+# those held the tagged version while the file afterwards did not — but nothing recorded
+# a CALLER, so the investigation had to proceed by elimination and never finished. Cleared
+# by direct before/after md5 and backup-count tests: the full pytest suite, `build_pool
+# --all`, `check_all`, `make postedit`, a scratch `tag_synergies` run (whose `.bak` landed
+# correctly in /tmp), and the SessionStart hook. No stray processes were running.
+#
+# Reconstructing a writer from backup timestamps is the wrong tool, so this makes the
+# writer name itself. One append-only JSON line per write that lands INSIDE the repo.
+#
+# Three properties it must have, each of which this file already states elsewhere:
+#   * It can NEVER fail a write. Every exception is swallowed — a diagnostic that breaks
+#     the thing it observes is worse than no diagnostic, the rule `_do_swap` follows for
+#     the recommendation ledger.
+#   * It logs AFTER the successful `os.replace`, never before (G-10: a script that writes
+#     and narrates must write first, or a broken pipe reports a write that never happened).
+#   * It never routes through `atomic_write` itself — a plain append, or this recurses.
+#
+# Scoped to targets under REPO_ROOT so a test writing to `tmp_path` is not logged; that
+# keeps a 1,789-test run from burying the handful of real writes this exists to catch.
+_WRITE_LOG = os.path.join(REPO_ROOT, ".cycle", "atomic-writes.log")
+_WRITE_LOG_MAX = 1_000_000          # rotate at ~1MB; one generation, so ~2MB bounded
+
+
+def _write_log_enabled(path):
+    """Log only real writes to files inside the repo. `MTGA_NO_WRITE_LOG=1` opts out."""
+    if os.environ.get("MTGA_NO_WRITE_LOG"):
+        return False
+    try:
+        return not os.path.relpath(os.path.abspath(path), REPO_ROOT).startswith(os.pardir)
+    except (ValueError, OSError):       # different drive, unresolvable path
+        return False
+
+
+def _log_atomic_write(path, backup_name):
+    """Append one forensic line naming the caller of a completed write. Never raises.
+
+    The content hash is the field that separates "something wrote this" from "something
+    CHANGED it" — the distinction that made the 2026-09-09 timeline so hard to read, since
+    several innocent writes rewrote the file byte-identically."""
+    try:
+        import hashlib
+        import json
+        import traceback
+        frames = [f"{os.path.basename(fr.filename)}:{fr.lineno} {fr.name}"
+                  for fr in traceback.extract_stack()[:-2]
+                  if os.path.basename(fr.filename) != "lib.py"]
+        with open(path, "rb") as fh:
+            blob = fh.read()
+        rec = {
+            "ts": datetime.now().isoformat(timespec="seconds"),
+            "target": os.path.relpath(os.path.abspath(path), REPO_ROOT),
+            "bytes": len(blob),
+            "md5": hashlib.md5(blob).hexdigest()[:12],
+            "bak": os.path.basename(backup_name) if backup_name else None,
+            "pid": os.getpid(),
+            "argv": " ".join(sys.argv)[:200],
+            "stack": frames[-12:],
+        }
+        os.makedirs(os.path.dirname(_WRITE_LOG), exist_ok=True)
+        try:
+            if os.path.getsize(_WRITE_LOG) > _WRITE_LOG_MAX:
+                os.replace(_WRITE_LOG, _WRITE_LOG + ".1")
+        except OSError:
+            pass
+        # O_APPEND: concurrent writers cannot interleave a short line.
+        with open(_WRITE_LOG, "a", encoding="utf-8") as fh:
+            fh.write(json.dumps(rec) + "\n")
+    except Exception:
+        pass                            # a diagnostic must never break a write
+
+
 def atomic_write(path, write_fn, *, backup=True):
     """Write `path` durably: render to a temp file in the same directory, optionally
     back the existing file up to a timestamped `.bak`, then atomically ``os.replace``.
@@ -154,8 +230,10 @@ def atomic_write(path, write_fn, *, backup=True):
             shutil.copymode(path, tmp)
         else:
             os.chmod(tmp, 0o644)
+        bak = None
         if backup and os.path.exists(path):
-            shutil.copy2(path, backup_path(path))
+            bak = backup_path(path)
+            shutil.copy2(path, bak)
         os.replace(tmp, path)
         try:
             # fsync the DIRECTORY too, so the rename itself survives power loss.
@@ -166,6 +244,19 @@ def atomic_write(path, write_fn, *, backup=True):
                 os.close(dfd)
         except OSError:
             pass  # some platforms can't fsync a directory; atomicity still holds
+        # AFTER the replace, so the log records writes that actually landed (G-10).
+        # GUARDED AT THE CALL SITE TOO, not only inside `_log_atomic_write`. The write is
+        # already committed here, so an exception escaping this line would reach the
+        # handler below, fail to remove a temp that no longer exists, and RE-RAISE — the
+        # worst possible outcome: the file written and the caller told it failed. Found by
+        # a test that makes the logger itself raise; reading the logger's own try/except
+        # would have missed it, which is why write-safety properties are pinned by mutation
+        # (tests/test_writer_mutations.py).
+        try:
+            if _write_log_enabled(path):
+                _log_atomic_write(path, bak)
+        except BaseException:
+            pass
     except BaseException:
         try:
             os.remove(tmp)
