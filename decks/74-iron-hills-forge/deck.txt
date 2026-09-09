@@ -2,7 +2,7 @@
 #: format: Standard
 #: colors: WR
 #: plan: midrange
-#: tier: B (PROVISIONAL) — matches the B metrics floor (interaction 7 — the
+#: tier: B (PROVISIONAL) — graded UNDER the A metrics floor (interaction 8 — the
 #: tier: 2026-09-09 top-end pass traded a scaling burn spell for Chainsaw's ETB
 #: tier: burn and Meteor Sword's unconditional destroy; Thorin's
 #: tier: Last Stand closed the noncreature-answer hole, and Thorin, Mountain-king's
@@ -12,7 +12,9 @@
 #: tier: unclassified per axis, the K-12 shape at its
 #: tier: widest: Kíli, Giott, Balin, Dáin's Company and Buster Sword all draw through
 #: tier: loot/wheel/dig/hit triggers no pattern reads, and Bifur/Cloud double them).
-#: tier: A coherent two-half engine with real protection (3) and a live anthem plan;
+#: tier: A coherent two-half engine with thin protection (2 — Dwarven Mattock's ward
+#: tier: was cut for Cathar Commando 2026-09-09, and Thorin Oakenshield's storied
+#: tier: ward {1} already covered most of it) and a live anthem plan;
 #: tier: held at B: UNTESTED, 18 craft targets including most of the ★★★ core, the
 #: tier: tag-level similarity to the roster's equipment decks demands games to prove
 #: tier: the tribal identity plays as differently as it reads, and avg MV under-reads
@@ -24,7 +26,7 @@
 #: archetype: a curve: NINE effects here attach with NO equip cost paid (Kíli's {0}
 #: archetype: first equip each turn, Thorin Mountain-king's any-number ETB, Iron
 #: archetype: Hills Stalwart, Dáin Ironfoot, Gilgamesh, Blacksmith's Talent at
-#: archetype: level 2 — a free attach EVERY combat — and the four self-attaching
+#: archetype: level 2 — a free attach EVERY combat — and the three self-attaching
 #: archetype: Equipment, Samurai's Katana's Job select among them) plus three cost
 #: archetype: reducers (Dwarven Mauler's −{2}, Mjölnir's worthy {1}, Firion's −{2}).
 #: archetype: A printed equip cost is not what this deck pays, so the expensive
@@ -90,6 +92,13 @@
 #: notes: KNOWN COST of the whole pass: instant-speed interaction fell 3 -> 1. The
 #: notes: pieces retired (Judgment Bolt, The Black Arrow's flash, Vow to Erebor) were
 #: notes: the flexible half. Read the interaction profile before adding more removal.
+#: notes: 2026-09-09 Cathar Commando in for Dwarven Mattock, closing the instant-speed
+#: notes: hole the top-end pass opened (1 -> 2 instant, 3 -> 4 noncreature answers).
+#: notes: Dori was the alternative cut and was kept again for the same reason as
+#: notes: before: he is one of only TWO nonland mana sources left after Gold Pan went,
+#: notes: and a Dwarf that six cards count. Mattock was the cheaper loss — its ward {1}
+#: notes: overlaps Thorin Oakenshield's storied team ward, and three other Equipment
+#: notes: still self-attach. Commando is a 3/1, so Leonardo recasts it from the yard.
 #: protect: Kíli the Resourceful; Bifur, Melodic Rider; Cloud, Midgar Mercenary; Mjölnir, Hammer of Thor; Orcrist, Goblin-cleaver; Magda, the Hoardmaster
 
 # Dwarves — the trigger engine
@@ -120,12 +129,12 @@
 1 Thor, God of Thunder (MSH) 156
 1 Barret Wallace (FIN) 129
 1 Blacksmith's Talent (BLB) 125
+1 Cathar Commando (FDN) 139
 
 # Equipment — cheap, auto-attaching, trigger-dense
 1 Orcrist, Goblin-cleaver (HOB) 177
 1 Mjölnir, Hammer of Thor (MSH) 146
 1 Dwarven Shortsword (HOB) 10
-1 Dwarven Mattock (HOB) 172
 1 Buster Sword (FIN) 255
 1 Chainsaw (DSK) 128
 1 Sting, Bilbo's Sword (HOB) 178
