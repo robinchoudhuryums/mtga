@@ -1164,7 +1164,7 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   MODEL (BS9-01)**: `load_card_meta` was library-first, so every OWNED card fed
   `cuts`/`suggest`/centrality the STALE row (219 of 2,576; 105 of 113 decks). POOL-first
   now; a BLANK pool cell never overrides; `check_agreement._agree_synergy_store` holds it.
-  **Residual: 340 pool blanks — a new theme for four cards is not the fix.** [K-09]
+  **Residual: 343 pool blanks — a new theme for four cards is not the fix.** [K-09]
 - **After editing a tag pattern, regenerate BOTH derived tag stores** —
   `tag_synergies.py --merge` for the LIBRARY and **`build_pool.py --all` for the pool**,
   which re-derives every pool row's `Synergies` through the same `tags_for()`. Skipping
