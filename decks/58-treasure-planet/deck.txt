@@ -115,12 +115,13 @@
 #: notes: William, Gisa the Hellraiser, Chief Warg's Company. Food Fight left the
 #: notes: protect header with it. ACCEPTED TRADE, soft-flagged: interaction 9 -> 8
 #: notes: (Food Fight was counted as removal). Protection 1 -> 2 on Gisa's ward.
-#: notes: GREEN IS NOW THE STRESS COLOUR and this is the number to watch: only 8 green
-#: notes: sources against Bejeweled Warg (70.6% on turn 2), Chief Warg's Company and
-#: notes: Vraska (64.7% on turn 3), Goldvein Hydra (65.4% on turn 1) and Mutagen Man's
-#: notes: {G}{G} (28.8%). `consistency` wants 13-15 G for the three-drops. The pass
-#: notes: also raised avg MV 3.14 -> 3.36 and dropped early drops 15 -> 12, so the
-#: notes: manabase is the next thing to fix, before any further top-end.
+#: notes: GREEN WAS THE STRESS COLOUR AT 8 SOURCES — FIXED 2026-09-09 by the land
+#: notes: pass below. Keeping the diagnosis because it is the one to re-run: green
+#: notes: is not a splash here (14 of 36 nonland cards want it) and it carried 15
+#: notes: strict pips against 8 sources, i.e. 1.88 pips per source where B ran 1.55
+#: notes: and R 1.73. Re-check that ratio, not the raw count, after any colour
+#: notes: change. The token pass also raised avg MV 3.14 -> 3.42 and dropped early
+#: notes: drops 15 -> 12; the CURVE, not the fixing, is now the open item.
 #: notes: 2026-09-09 (user-decided): Biotech Specialist in for Rot-Curse Rakshasa,
 #: notes: Liliana Dreadhorde General in for the 2nd Flamekin Gildweaver. Interaction
 #: notes: 8 -> 9, card advantage 3 -> 4, quality guard clean. Biotech does THREE jobs
@@ -145,6 +146,23 @@
 #: notes: the Sackville/Biotech sacrifice triggers do not advance it. With 12 of 36
 #: notes: spells at MV <= 2 it turns on around turn 4. Sell-Sword was the cut because
 #: notes: it was unowned AND rotating ~2026, i.e. a craft with no future.
+#: notes: 2026-09-09 LAND PASS: 3 Mountain -> 3 Training Compound, 1 Swamp ->
+#: notes: Overgrown Tomb. Sources B 11 / R 11 / G 8 -> B 11 / R 11 / G 12, with red
+#: notes: and black UNTOUCHED — Training Compound adds {R} OR {G}, so trading
+#: notes: Mountains for it costs no red. Its condition (control a basic land) is
+#: notes: always on at 12 basics, so it is an untapped dual in practice and the
+#: notes: unconditional tapland count did not move. Cast-on-curve: Mutagen Man's
+#: notes: {G}{G} 28.8% -> 50.7%, Goldvein Hydra 65.4% -> 77.8%, Biotech 58.1% ->
+#: notes: 70.2%, the {B}{G} three-drops 64.7% -> 74.1%. Green is no longer the
+#: notes: outlier; the worst rows are the {B}{B} / {R}{R} five-drops, a curve
+#: notes: problem. TWO STANDING NOTES. (1) ELVEN PASSAGE IS A TRAP HERE — the land
+#: notes: recommender ranks it joint-top on fixing breadth, but its untap rider
+#: notes: needs you to behold an ELF and this deck runs zero, so it is a Vibrant
+#: notes: Cityscape that costs 1 life; use Evolving Wilds or Terramorphic Expanse.
+#: notes: (2) FOUNTAINPORT adds only {C}, so the effective coloured-land count is 23
+#: notes: of 24 — kept because its sac-a-token draw and Treasure abilities got MORE
+#: notes: relevant with Tom Bert and William and Sackville-Bagginses, but it is the
+#: notes: next cut if green tightens again.
 
 # Producers (the mint)
 1 Goldvein Hydra (OTJ) 167
@@ -195,8 +213,10 @@
 1 Restless Ridgeline (LCI) 283
 1 Fountainport (BLB) 253
 1 Temple of Malady (FDN) 700
-6 Mountain (MSH) 293
-6 Swamp (MSH) 291
+3 Mountain (MSH) 293
+3 Training Compound (MSH) 275
+5 Swamp (MSH) 291
+1 Overgrown Tomb (ECL) 266
 4 Forest (MSH) 296
 
 # Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 58
