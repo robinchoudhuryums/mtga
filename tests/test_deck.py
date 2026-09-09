@@ -1498,6 +1498,119 @@ class TestCostThatScalesWithADeckCount:
         assert deck.cost_scale_support("wizard", cards, carddata) == 0
 
 
+class TestUnmetGateReachesTheRecommenders:
+    """The gate primitive answered correctly and the two surfaces that RECOMMEND cards
+    into a deck did not ask — G-40 again, one surface past `swap`.
+
+    Wiring it to `suggest`'s craft table is what exposed two defects in the primitive
+    that a single-card surface had hidden: 82 dead-gate hits across 4,520 craft picks, of
+    which only 12 were real. Both fixes are pinned here, because both were invisible until
+    the answer had to survive a 40-row table.
+    """
+
+    def test_the_question_and_its_rendering_are_split_but_agree(self):
+        """One predicate, two renderings — a table row has its own deck column, so the
+        single-card wording is redundant there. A second predicate per surface is the
+        parallel-source-of-truth shape (G-70)."""
+        cd, mana = deck.load_card_data(), deck.load_mana()
+        _m, cards = deck.parse_deck_file(deck.find_deck("6")["path"])
+        label = deck.unmet_gate("Hobbit Hole", cards, cd, mana)
+        note = deck.unmet_gate_note("Hobbit Hole", cards, cd, mana)
+        assert label and label in note and "0 in this deck" in note
+        assert deck.unmet_gate("Swamp", cards, cd, mana) == ""
+        assert deck.unmet_gate_note("Swamp", cards, cd, mana) == ""
+
+    def test_a_card_that_MAKES_its_own_resource_is_not_dead(self):
+        """`target_counts` excludes the card itself — right for "does this deck hold
+        targets", wrong for "will this card be dead if I ADD it". Huatli, Poet of Unity
+        searches for a Dinosaur in chapter III and CREATES TWO DINOSAUR TOKENS in chapter
+        I, and was 40 of the 82 first-pass hits: the single biggest false family."""
+        cd, mana = deck.load_card_data(), deck.load_mana()
+        _m, cards = deck.parse_deck_file(deck.find_deck("50a")["path"])
+        assert deck.unmet_gate(
+            "Huatli, Poet of Unity // Roar of the Fifth People", cards, cd, mana) == ""
+        assert deck._supplies_own_gate(
+            "Dinosaur cards in the deck", "Create two 3/3 green Dinosaur creature tokens.")
+        # It must not suppress a gate the card does NOT supply.
+        assert not deck._supplies_own_gate(
+            "Halfling cards in the deck", "Create a Treasure token.")
+
+    def test_a_gate_quoted_only_in_REMINDER_text_is_not_the_card(self):
+        """K-09: a text rule reads the CARD, not what it DESCRIBES. Bargain's reminder is
+        "You may sacrifice an artifact, enchantment, or token" — an OPTIONAL cost that
+        three card types satisfy — and `sac_a` read it as a hard artifact requirement.
+        17 of the 82 first-pass hits (21%) came from a parenthetical and nothing else."""
+        cd, mana = deck.load_card_data(), deck.load_mana()
+        rows = deck.target_counts(
+            [(1, "Agatha's Champion", "", ""), (20, "Mountain", "", "")], cd, mana)
+        assert not [r for r in rows if r[0] == "Agatha's Champion"], rows
+
+    def test_but_a_LIBRARY_SEARCH_in_reminder_text_still_counts(self):
+        """The deliberate exception, and G-75 names it by example: a keyword's fetch rider
+        is written ONLY in its reminder. Stripping reminders globally would have deleted a
+        live gate silently — which is why the strip is scoped by gate KIND."""
+        assert "lib_type" in deck._TARGET_KEEP_REM
+        cd, mana = deck.load_card_data(), deck.load_mana()
+        rows = deck.target_counts(
+            [(1, "Hobbit Hole", "", ""), (20, "Mountain", "", "")], cd, mana)
+        labs = {r[1]: r[2] for r in rows}
+        assert any("Halfling" in k for k in labs), labs
+        assert [v for k, v in labs.items() if "Halfling" in k] == [0]
+
+    def test_a_TOKEN_is_fodder_for_a_sacrifice_gate(self):
+        """G-66's own stated residual, measured: `target_counts` counts CARDS, so an
+        artifact-sacrifice gate read 0 in 24 roster decks holding no artifact CARD and
+        making up to five artifact TOKENS. Harmless while only `targets` read it; it
+        became the dominant false family the moment the gate reached a craft table."""
+        cd, mana = deck.load_card_data(), deck.load_mana()
+        rows = deck.target_counts([(1, "Magnetic Snuffler", "", ""),
+                                   (4, "Big Score", "", ""),
+                                   (20, "Mountain", "", "")], cd, mana)
+        sac = [r for r in rows if "sacrifice" in r[1]]
+        assert sac and sac[0][2] == 4, sac
+
+    def test_suggest_reports_a_dead_gate_on_a_craft_pick(self, capsys):
+        from types import SimpleNamespace as NS
+        rc = deck.cmd_suggest(NS(id="68", unowned=True, owned=False, limit=40,
+                                 format=None, any_format=False, full=False,
+                                 lands=False, ramp=False, interaction=False, needs=False))
+        out = capsys.readouterr().out
+        assert rc == 0
+        assert "⚠gate" in out, out[-1500:]
+        # G-75's rule has to be ON the surface, not only in the docs: a hit is a claim
+        # about the GATE, never about the card.
+        assert "NEVER THE CARD" in out
+
+    def test_suggest_homes_reports_a_dead_gate_per_deck(self, capsys):
+        from types import SimpleNamespace as NS
+        rc = deck.cmd_suggest_homes(NS(card="Hobbit Hole", any_format=False))
+        out = capsys.readouterr().out
+        assert rc == 0
+        assert "⚠ gate:" in out, out[:1500]
+
+    def test_the_live_dead_gate_rate_stays_LOW_on_the_craft_table(self):
+        """The measurement that decides whether this belongs on a 40-row table at all.
+        Before the two fixes: 82 hits over 4,520 picks, 12 of them real. After: 12, all
+        12 real on manual review. A flag that is usually wrong trains you to ignore the
+        real ones — the rate G-27 declined the `#: notes:` scan over — so this pins the
+        ceiling rather than the exact number, which real pool churn will move."""
+        cd, mana = deck.load_card_data(), deck.load_mana()
+        hits = total = 0
+        for d in deck.roster_decks()[:30]:
+            _m, cards = deck.parse_deck_file(d["path"])
+            res = deck.suggest_scored(d, unowned=True, limit=20)
+            if not res.get("ok"):
+                continue
+            for p in res["picks"]:
+                total += 1
+                if deck.unmet_gate(p["name"], cards, cd, mana):
+                    hits += 1
+        assert total, "no picks scored — the harness is broken, not the rate"
+        assert hits / total < 0.02, (
+            f"{hits}/{total} craft picks flagged — re-measure the gate's precision "
+            "before leaving this on a recommender surface")
+
+
 class TestChosenTypePayoff:
     """A card whose output scales with a CHOSEN creature type names no type, so K-13's
     trap is structural here: a literal type-name search returns nothing and reads as a

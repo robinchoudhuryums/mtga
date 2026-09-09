@@ -20,7 +20,7 @@ rather than from the scan's finding list)
 Scope: broad
 Test Command: `python3 scripts/check_all.py`
 Subsystem cycles since last Seams audit: 0 (counter adopted 2026-09-08; no Seams audit has run)
-Updated: 2026-09-09
+Updated: 2026-09-09 (second pass)
 
 ## In progress (facts to carry forward — NOT judgments)
 - **Broad scan #9 is FULLY IMPLEMENTED** — all 8 findings, 4 batches, blocks `09-batch1-*`,
@@ -28,7 +28,8 @@ Updated: 2026-09-09
 - A FIFTH implement block landed 2026-09-09 from a different source: a post-mortem of the
   deck 39/58/74 tuning session, which asked what caused the card misreads. Three tooling
   fixes came out of it; two built, one measured and declined. Block
-  `09-swap-gate-and-type-scale-broad-implement.md`.
+  `09-swap-gate-and-type-scale-broad-implement.md`, and a SIXTH closing that block's own
+  follow-on list plus a `/sync-docs` pass — `09-followons-and-syncdocs-broad-implement.md`.
 - Deck 71's rebuild has an ordered open list — see §0-current of NEXT-SESSION.md.
 
 ## Completed this cycle
@@ -50,20 +51,24 @@ Updated: 2026-09-09
   overlay (`type_scale_*`, floor 7 / key 13 / cap 12 calibrated from the roster's
   p25/p75/p90) wired into `suggest-homes` and `cut_keep_score`; the self-consuming-resource
   flag measured and DECLINED | scripts/deck.py, scripts/check_patterns.py, tests/test_deck.py
+- **Follow-ons + /sync-docs** | `unmet_gate` wired into BOTH recommenders, which exposed and
+  fixed three defects in the primitive (self-supply, reminder text, G-66's token residual):
+  82 dead-gate hits over 4,520 craft picks -> 12, all 12 genuine. Three other follow-ons
+  measured and declined. New anchor G-84; G-66/G-06/G-40/K-09/G-42/K-13 updated; G-84's pool
+  count registered in `figure_drift` | scripts/deck.py, scripts/check_docs.py,
+  scripts/check_patterns.py, tests/test_deck.py, CLAUDE.md, docs/gotchas.md
 
 ## Pending / not yet done
 - The unapplied cross-deck homes and earlier proposed swaps — NEXT-SESSION.md §0-current.
 - Two G-67 role-pattern holes (Kitnap, Eluge), baselined not fixed.
 
 ## Open follow-on items
-- `unmet_gate_note` still has only two callers (`redundancy`, `swap`). `suggest` and
-  `suggest-homes` recommend cards into decks and neither asks — G-40 one surface over.
-  `suggest-homes` iterates every deck for one card, so it needs a cost measurement first.
-- `creature_subtypes` walks ALL faces of a DFC type line; it feeds `cut_keep_score`'s
-  `tribal` term and now `type_scale_support` too. G-63's column list does not yet name TYPE
-  on this path.
-- The NAMED-type half of the chosen-type overlay is unbuilt (a literal tribal lord is a much
-  larger population, partly served by tribal tags). G-67's triage line applies.
+- `unmet_gate` has three callers now, and `redundancy` is the one never re-measured AT its
+  own surface — the exact lesson the second wiring taught. Small list, so the rate is
+  probably fine; "probably" is what that pass spent the day disproving.
+- G-84's DFC front-face question is closed as "all-faces is the better approximation", NOT as
+  correct. A per-face availability read (transform vs modal vs saga-back) would settle it;
+  G-63's column list still does not name TYPE on this path.
 - `figure_drift` now covers 10 of CLAUDE.md's ~1,100 numeric claims. The rule for what earns
   an entry is written down; the registry is still hand-kept and its misses still invisible.
 - `tier_floor_spread()` is called twice per `check_all` (the BS8-06 sweep and figure_drift)
@@ -91,18 +96,29 @@ Updated: 2026-09-09
   upside in one deck and conflict in another - separated by the deck's PLAN, which no text
   model here holds.
 - The BLANKET converters (Arcane Adaptation, Leyline of Transformation) are EXCLUDED from the
-  chosen-type family rather than counted: they INVERT the term.
+  chosen-type family rather than counted: they INVERT the term. The pattern is ANCHORED at the
+  clause start — unanchored it also swallowed Lifecraft Engine, a genuine member.
+- **FRONT-ONLY subtype counting is DECLINED, measured**: of 35 roster DFCs whose faces differ,
+  25 are creature->creature transforms (all-faces over-counts) but 10 have a NON-creature
+  front where front-only counts a hard ZERO. It trades 25 over-counts for 10 silent zeroes.
+- **The NAMED-type overlay half is DECLINED, measured**: 124 pool cards, but `tribal` already
+  serves the 92 where the card IS that type, and the noun extraction misfires on the rest.
+- **Caching `type_scale_support` is DECLINED**: 1.3% of `suggest-homes`, and a cache keyed on
+  an unhashable list is the G-71 hazard.
+- Gate patterns read reminder-STRIPPED text EXCEPT the library-search family — a fetch rider
+  lives only in its reminder, and a global strip deletes G-75's worked example silently.
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
-Three post-mortem fixes done on `claude/sync-commands-mmmsdb`: `swap` reports an unmet gate on
-the add, the chosen-type payoff overlay is live and measured (15 of 43 family cards re-order
-their homes, 5 change #1, **0 tier floors**, 0 `cuts` top-3), and the self-consuming-resource
-flag is declined with its numbers recorded above. Gate green, full pytest green, Scenario 2
-walked. **Nothing here is half-finished.** The next step is the same choice this file carried
-before the pass, now with one more block to read: (a) `/reflect` on cycle 9 — five implement
-blocks now, and this one is the first to carry an explicit `defensive: 1`, the bucket the
-metric was adopted for; (b) `/sync-docs`, which now has a real queue — a NEW gotcha anchor for
-the chosen-type family (CLAUDE.md + docs/gotchas.md together, `check_docs` gates both
-directions), G-06/G-66 for the swap gate, and G-42 for the declined measurement; or (c) the
-DECK work in Pending, the only thing here a player would notice.
+The previous pass's follow-on list is CLOSED — one done, three measured and declined — and
+`/sync-docs` has run and applied. Gate green, **1783 pytest passed / 0 skipped**, Scenario 2
+walked, docs synced with a new G-84 anchor in both files.
+**The finding worth carrying forward is not any single fix**: wiring `unmet_gate` to a
+40-row craft table proved a primitive that had been correct enough for `swap` and
+`redundancy` was **85% wrong there** (82 hits, 12 real), and `figure_drift` then caught a
+real bug in that same pass's own CLAUDE.md text within minutes of the entry being added.
+Both say the same thing — a measurement is only as good as the surface it was taken at.
+Next step is unchanged and now cheaper: (a) `/reflect` on cycle 9, which has six implement
+blocks and has still never run, and this pass gives it a clean `2 - 0 = 2` beside the
+previous one's `1 - 1 = 0, defensive 1`; or (b) the DECK work in Pending, the only thing
+here a player would notice.

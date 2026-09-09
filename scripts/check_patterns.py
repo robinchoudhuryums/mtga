@@ -317,6 +317,15 @@ def _pattern_groups():
     for name in ("_TYPE_SCALE_CHOOSE_RE", "_TYPE_SCALE_PAYOFF_RE",
                  "_TYPE_SCALE_CONVERTER_RE", "_TYPE_SCALE_CHANGELING_RE"):
         out.append((f"deck.{name}", getattr(deck, name), "raw"))
+    # The two SUPPRESSION patterns behind the proposed-add gate. Both run on
+    # reminder-stripped oracle text in its original case, so the raw corpus is what they
+    # see. They fail in OPPOSITE directions and both directions are quiet: if either dies,
+    # a card that makes its own resource (Huatli's Dinosaur tokens) or a deck whose fodder
+    # is TOKENS starts reporting a dead gate again — 57 of the first measurement's 82 hits.
+    # If either got too BROAD, a genuinely dead gate goes unreported, which is the silence
+    # that existed before the gate did.
+    for name in ("_SELF_SUPPLY_RE", "_TOKEN_CREATE_RE"):
+        out.append((f"deck.{name}", getattr(deck, name), "raw"))
     # `card_advantage_split` (P3, 2026-09-04): the repeatable-vs-one-shot report beside the
     # card-advantage count. Line-anchored on ORIGINAL-case oracle text, so the raw corpus.
     # If either dies the split silently reads every source as one-shot.

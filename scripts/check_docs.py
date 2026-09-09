@@ -238,6 +238,20 @@ def _live_figures():
         with open(os.path.join(REPO_ROOT, p), encoding="utf-8") as fh:
             return sum(1 for ln in fh if ln.strip() and not ln.lstrip().startswith("#"))
 
+    def _chosen_type_cards():
+        """Pool cards in G-84's chosen-type payoff family, through `type_scale_payoff`
+        itself — never a second copy of the predicate, which is the drift this gate
+        exists to catch one layer up."""
+        import csv as _csv
+        import deck
+        n = 0
+        with open(os.path.join(REPO_ROOT, "card-pool.csv"), newline="",
+                  encoding="utf-8") as fh:
+            for r in _csv.DictReader(fh):
+                if deck.type_scale_payoff(r.get("Card Text") or ""):
+                    n += 1
+        return n
+
     def _pool_tag(tag):
         path = os.path.join(REPO_ROOT, "card-pool.csv")
         with open(path, newline="", encoding="utf-8") as fh:
@@ -299,6 +313,13 @@ def _live_figures():
         ("C-02 matches.csv rows",
          r"LIVE since 2026-08-10 — (\d+) matches",
          lambda: _lines("matches.csv") - 1),
+        # G-84's pool population. It earns an entry on this registry's own rule — a number
+        # CITED AS EVIDENCE that is derivable live and will move on the next pool rebuild
+        # (a new set's lords and banners land in this family without anyone noticing).
+        # It is also the figure the calibration rests on, so a drift here is a prompt to
+        # re-derive the floor/key, exactly as `tier_floor_spread` is for TIER_FLOOR_REQ.
+        ("G-84 chosen-type pool cards",
+         r"\*\*(\d+) pool cards\*\* are this family", _chosen_type_cards),
         # C-01 gate count. Three documents carried three different numbers (11 / 12 / 14)
         # against a real 13, because a COUNT of files is a measurement nobody re-measures
         # (BS8-26). `check_all.py` is the RUNNER, not one of the gates it runs.
