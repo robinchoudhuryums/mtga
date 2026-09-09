@@ -4,9 +4,10 @@
 #: tier: plan and the letter MATCHES it as of the 2026-09-09 seven-swap pass — the
 #: tier: first time this deck's claim has not sat a band above its floor. Clock 3 on
 #: tier: top of interaction 6 clears the A floor's pressure bar of 7, and card
-#: tier: advantage rose 1 -> 2 on Kíli, whose draw reads Equipment as well as Dwarves
-#: tier: against 13 of them here. That axis is still the thin one: 2 is the whole
-#: tier: buffer, and The Arkenstone is the parked fix (see the flex block).
+#: tier: advantage rose 1 -> 3 — Kíli, whose draw reads Equipment as well as Dwarves
+#: tier: against 13 of them here, then The Arkenstone, maindecked 2026-09-09 for the
+#: tier: unconditional end-step draw. Its Adventure half also tutors a legendary out
+#: tier: of the 15 this deck runs, and it is cast on turn 3, so its MV 5 over-reads.
 #: tier: The A letter rests on a coherent double-strike /
 #: tier: extra-combat engine (Dáin Ironfoot's team double strike, Cloud Planet's
 #: tier: Champion, Raphael, Blacksmith's Talent, Sami; Aurelia + Raph & Leo add
@@ -69,6 +70,11 @@
 #: notes: land on turn 3 ahead of the Equipment, where a Treasure plan casts her on 6+
 #: notes: after the engine has already run. Running her needs blue LANDS, i.e. a
 #: notes: different deck.
+#: notes: 2026-09-09 (user-decided): The Arkenstone in for Zack Fair. Card advantage
+#: notes: 2 -> 3, floor holds A. PROTECTION 3 -> 2 is the accepted cost and is now the
+#: notes: deck's thinnest axis — Zack Fair was the cheap indestructible grant, so what
+#: notes: remains protects less of the suited creature this plan invests in. Watch it
+#: notes: before spending another protection card.
 #: protect: Thor, God of Thunder; Thor Odinson; Mjölnir, Hammer of Thor; Aurelia, the Warleader; Cloud, Midgar Mercenary; Cloud, Planet's Champion
 
 Deck
@@ -100,7 +106,7 @@ Deck
 1 Thor Odinson (MSH) 234
 1 Aurelia, the Warleader (FDN) 651
 1 Sami, Wildcat Captain (EOE) 226
-1 Zack Fair (FIN) 45
+1 The Arkenstone // Seek the Heart (HOB) 170
 1 Cloud, Midgar Mercenary (FIN) 10
 1 Kíli the Resourceful (HOB) 17
 1 Weapons Vendor (FIN) 40
