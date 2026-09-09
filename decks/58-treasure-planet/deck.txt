@@ -12,8 +12,10 @@
 #: archetype: so each Treasure cracks for two and her Meteorites ramp AND burn; and
 #: archetype: the payoff layer spends the currency four ways: counters (Crime
 #: archetype: Novelist, Twitching Doll, Pirate Peddlers — Elvish Archivist was CUT for
-#: archetype: Twitching Doll 2026-08-08; Lightless Evangel was CUT for
-#: archetype: Rot-Curse Rakshasa, whose decayed body feeds the same outlets), bodies
+#: archetype: Twitching Doll 2026-08-08; Biotech Specialist arrived 2026-09-09 and
+#: archetype: is a CRIME engine as much as a counters one — it pings a target
+#: archetype: opponent on every artifact sacrifice, so it turns each Treasure crack
+#: archetype: into a crime for Magda and Gisa), bodies
 #: archetype: (Stone-Giant's 3/1 Boulder on entry AND each attack, Magda's 4/4
 #: archetype: dragons, Aatchik's swarm, Gisa's two 2/2s per crime, Chief Warg's
 #: archetype: 2/2 every upkeep), cards (Tom, Bert and William, Smaug's Treasure-mana
@@ -119,6 +121,20 @@
 #: notes: {G}{G} (28.8%). `consistency` wants 13-15 G for the three-drops. The pass
 #: notes: also raised avg MV 3.14 -> 3.36 and dropped early drops 15 -> 12, so the
 #: notes: manabase is the next thing to fix, before any further top-end.
+#: notes: 2026-09-09 (user-decided): Biotech Specialist in for Rot-Curse Rakshasa,
+#: notes: Liliana Dreadhorde General in for the 2nd Flamekin Gildweaver. Interaction
+#: notes: 8 -> 9, card advantage 3 -> 4, quality guard clean. Biotech does THREE jobs
+#: notes: here and only one is obvious: its Lander fetches a BASIC, which is the only
+#: notes: card in the list that answers the 8-green-source problem above; its ping is
+#: notes: a CRIME on every artifact sacrifice, feeding Magda and Gisa; and it is a
+#: notes: rotation survivor (EOE ~2028) in a deck whose core is OTJ ~2026.
+#: notes: CRIME CENSUS after this pass (7 sources, and the shape matters more than the
+#: notes: count): Sackville-Bagginses and Biotech Specialist fire on every token or
+#: notes: artifact SACRIFICE, i.e. on cracking a Treasure, so a crime happens on
+#: notes: essentially every turn once either is out. Jolene x2, Stone-Giant and
+#: notes: Roxanne's Meteorites are repeatable ACTIVATED crimes; Terrapact x2 and
+#: notes: Deadly Precision are one-shots. Liliana and Aatchik commit NO crime (each
+#: notes: opponent / each player is not targeting), and neither does Vraska.
 
 # Producers (the mint)
 1 Goldvein Hydra (OTJ) 167
@@ -127,7 +143,8 @@
 1 Magda, the Hoardmaster (OTJ) 133
 1 Death to Our Enemies (MSH) 127
 2 Jolene, Plundering Pugilist (OTJ) 210
-2 Flamekin Gildweaver (ECL) 140
+1 Flamekin Gildweaver (ECL) 140
+1 Liliana, Dreadhorde General (FDN) 176
 2 Terrapact Intimidator (EOE) 164
 1 War Effort (TDM) 131
 1 Brass's Bounty (FDN) 190
@@ -146,7 +163,7 @@
 1 Twitching Doll (DSK) 201
 1 Chandra, Spark Hunter (DFT) 116
 2 Pirate Peddlers (TLA) 115
-1 Rot-Curse Rakshasa (TDM) 87
+1 Biotech Specialist (EOE) 214
 1 Callous Sell-Sword // Burn Together (WOE) 221
 1 Aatchik, Emerald Radian (DFT) 187
 1 Ygra, Eater of All (BLB) 241
