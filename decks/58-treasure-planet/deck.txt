@@ -14,14 +14,14 @@
 #: archetype: Novelist, Twitching Doll, Pirate Peddlers — Elvish Archivist was CUT for
 #: archetype: Twitching Doll 2026-08-08; Lightless Evangel was CUT for
 #: archetype: Rot-Curse Rakshasa, whose decayed body feeds the same outlets), bodies
-#: archetype: (Krenko's goblin per artifact death, Magda's 4/4 dragons, Aatchik's
-#: archetype: swarm), cards (Fanatical Offering, Tarrian's
+#: archetype: (Stone-Giant's 3/1 Boulder on entry AND each attack, Magda's 4/4
+#: archetype: dragons, Aatchik's swarm), cards (Fanatical Offering, Tarrian's
 #: archetype: Journal, Fountainport), and damage (Food Fight turns every token into
 #: archetype: a fling; Gold Rush is the kill-turn pump). Distinct from deck 8 (BRG
 #: archetype: aristocrats — sacrifices CREATURES for drains), deck 21 (WBG Food
 #: archetype: chains) and the UR artifact family (26/48): this deck's engine is the
 #: archetype: token economy itself, and no other deck runs Roxanne's doubling.
-#: protect: Roxanne, Starfall Savant; Crime Novelist; Krenko, Baron of Tin Street; Magda, the Hoardmaster; Food Fight
+#: protect: Roxanne, Starfall Savant; Crime Novelist; Magda, the Hoardmaster; Food Fight
 #: tier: B (PROVISIONAL) — deliberately conservative for a first economy build: the
 #: tier: engine is deep but the interaction count is thin for midrange and the deck
 #: tier: needs a turn of setup before the currency flows. The floor may read
@@ -37,7 +37,7 @@
 #: notes: crime is TARGETING opponents or their stuff — Deadly Precision, Jolene
 #: notes: pings and Food Fight flings all trigger her, but she makes exactly one
 #: notes: Treasure a turn. Ygra makes ALL creatures Food ARTIFACTS: every creature
-#: notes: death then feeds Krenko's goblin trigger and Crime Novelist, and Ygra +
+#: notes: death then feeds Crime Novelist and Pirate Peddlers, and Ygra +
 #: notes: Food Fight lets any creature be flung — but she is symmetric (opponents'
 #: notes: creatures are Food too) and a lightning rod; she multi-homes from decks
 #: notes: 8/21. Aatchik counts artifact cards IN THE YARD — cracked Treasures are
@@ -46,7 +46,7 @@
 #: notes: (G-30): Elvish Archivist and Food Fight are WOE (~2026 rotation) and the
 #: notes: LCI cards (Freebooter, Offering, Journal, Ridgeline) go ~2026-27 — the
 #: notes: OTJ/MKM/DFT/EOE/ECL core outlives them; re-check at rotation. TOOLING
-#: notes: FALSE-THIN (G-66): `deck.py targets` reports Crime Novelist and Krenko
+#: notes: FALSE-THIN (G-66): `deck.py targets` reports the artifact-sac gates
 #: notes: with "1 artifact to sacrifice" because it counts artifact CARDS in the
 #: notes: list — the deck's artifacts are TOKENS from 14 producer cards, which no
 #: notes: list scan can see. The gates are fed; do not cut the payoffs over it.
@@ -66,8 +66,7 @@
 #: notes: DFT and owned, so this is the same rotation-proofing trade decks 28 and 36 took.
 #: notes: FIT: her +2 sacrifices an artifact for a card, and 19 token producers feed it —
 #: notes: that sacrifice then triggers Crime Novelist (+1/+1 and {R}), Pirate Peddlers
-#: notes: (+1/+1) and Krenko ("whenever an artifact is put into a graveyard from the
-#: notes: battlefield, pay {R}: 1/1 Goblin"). Her 0 makes a 3/2 artifact token that Food
+#: notes: (+1/+1). Her 0 makes a 3/2 artifact token that Food
 #: notes: Fight can fling. Her -7 emblem (artifact enters: 3 damage to any target) is a real
 #: notes: win condition against this producer count, not a rider.
 #: notes: THE QUALITY GUARD SOFT-FLAGGED card advantage 4 -> 3 AND IT IS READING BACKWARDS
@@ -77,6 +76,12 @@
 #: notes: inside a loyalty ability. Real card advantage went UP. Interaction reads 8 -> 9 for
 #: notes: the mirror-image reason (her -7 emblem parses as removal) — treat that one as
 #: notes: cosmetic, the deck's interaction is still the thin axis its tier note names.
+#: notes: 2026-09-09 (user-decided): Krenko, Baron of Tin Street OUT for
+#: notes: Stone-Giant of High Pass. Krenko was the only Standard card turning an
+#: notes: artifact DEATH into a body, but he rotates ~2026 with 14 other lines here,
+#: notes: and his Goblin-lord half was dead (zero other Goblins). Stone-Giant gives
+#: notes: the top end the curve lacked, a Boulder on entry and on every attack, and
+#: notes: a repeatable {2}{R}+artifact -> 4 damage outlet on the thin interaction axis.
 
 # Producers (the mint)
 1 Goldvein Hydra (OTJ) 167
@@ -98,7 +103,7 @@
 # Payoffs (the spend)
 1 Vraska, the Silencer (OTJ) 237
 2 Crime Novelist (MKM) 121
-1 Krenko, Baron of Tin Street (MKM) 135
+1 Stone-Giant of High Pass (HOB) 113
 1 The Misty Mountains Cold (HOB) 104
 1 Twitching Doll (DSK) 201
 1 Chandra, Spark Hunter (DFT) 116
