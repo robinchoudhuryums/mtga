@@ -1,16 +1,16 @@
 #: name: Starforge
 #: format: Standard
-#: tier: A — Boros (W/R) equipment aggro-midrange. Metrics floor is B on the aggro plan
-#: tier: and the letter is one band above it, which the rubric allows. The clock
-#: tier: substitution still does its work — clock 3 on top of interaction 5 clears the A
-#: tier: floor's pressure bar of 7 (interaction fell 6 -> 5 on 2026-09-09 when Firion
-#: tier: replaced Idol of the Deep King, whose flash 2-damage ETB was the counted
-#: tier: piece) — but card advantage 1 leaves the resilience sum at 10
-#: tier: against the 11 an A floor wants (Chainsaw replaced Agni Kai 2026-08-15 and the
-#: tier: interaction count held; the floor read A until `TIER_FLOOR_REQ` was re-derived
-#: tier: from the roster distribution 2026-09-02). The A letter rests on a coherent double-strike /
-#: tier: extra-combat engine (Hard-Won Jitte, Twin Blades, Cloud Planet's Champion,
-#: tier: Raphael, Blacksmith's Talent, Sami; Aurelia + Raph & Leo add combat phases),
+#: tier: A — Boros (W/R) equipment aggro-midrange. Metrics floor is A on the aggro
+#: tier: plan and the letter MATCHES it as of the 2026-09-09 seven-swap pass — the
+#: tier: first time this deck's claim has not sat a band above its floor. Clock 3 on
+#: tier: top of interaction 6 clears the A floor's pressure bar of 7, and card
+#: tier: advantage rose 1 -> 2 on Kíli, whose draw reads Equipment as well as Dwarves
+#: tier: against 13 of them here. That axis is still the thin one: 2 is the whole
+#: tier: buffer, and The Arkenstone is the parked fix (see the flex block).
+#: tier: The A letter rests on a coherent double-strike /
+#: tier: extra-combat engine (Dáin Ironfoot's team double strike, Cloud Planet's
+#: tier: Champion, Raphael, Blacksmith's Talent, Sami; Aurelia + Raph & Leo add
+#: tier: combat phases),
 #: tier: a huge legendary count that turns on Mjölnir's `worthy {1}`, and real bombs
 #: tier: (Thor, Mjölnir, Aurelia). Held here, not S, by a top-heavy curve and a
 #: tier: singleton-variance build. Aspirational WIP — a legal 60 with 14 craft
@@ -44,19 +44,42 @@
 #: notes: which is what the count was reading; Firion is a permanent engine instead —
 #: notes: team haste for equipped creatures plus a free temporary copy of every NONTOKEN
 #: notes: Equipment that enters, against 13 of them here.
+#: notes: 2026-09-09 SEVEN-SWAP PASS (user-decided, after a pile review): out Honored
+#: notes: Knight-Captain, Hard-Won Jitte, Twin Blades, Diamond Pick-Axe, Wrench, Silver
+#: notes: Sable and a Mountain; in Kíli, Dáin Ironfoot, Thorin Mountain-king, Orcrist,
+#: notes: Quintessential Katana, Adelbert Steiner and The Lonely Mountain. Metrics floor
+#: notes: B -> A, interaction 5 -> 6, card advantage 1 -> 2, themes 14 -> 15; protection
+#: notes: 4 -> 3 is the accepted cost (Diamond Pick-Axe was the indestructible one).
+#: notes: THE DWARF CARDS ARE NOT HERE FOR THE TRIBE — this deck runs ZERO Dwarves and
+#: notes: seven of the nine considered had no Dwarf requirement at all. Kíli and Thorin
+#: notes: Oakenshield key off STORIED, which is trivially on at 13 artifacts + 15
+#: notes: legendaries against a threshold of 3. Iron Hills WAS rejected on the tribe:
+#: notes: its ability targets a Dwarf, so it is a plain tapland here.
+#: notes: ORCRIST'S TYPE CHOICE IS MADE ON RESOLUTION, so it is never dead — and this
+#: notes: deck has 10 HUMANS, so naming Human is up to ten Treasures per connection.
+#: notes: An earlier read called it weak for 'no tribe density and no Treasure payoffs';
+#: notes: both halves were wrong, and the user's pushback is what corrected it.
+#: notes: THE MIGHTY THOR, JANE FOSTER IS PERMANENTLY OUT and the reason is worth
+#: notes: keeping: her text is the best card advantage considered (draw per Equipment
+#: notes: entering, NO once-per-turn cap, against 13 Equipment), but she is {1}{W}{U}
+#: notes: and this deck has W 13 / R 13 / ZERO blue. Orcrist's Treasures tap for any
+#: notes: colour and CAN pay the {U}, but that is not a fix: castability reads LAND
+#: notes: sources, so she scores uncastable and an uncastable stray CAPS the metrics
+#: notes: floor at C — measured A -> C with a 2-band tier mismatch. She also wants to
+#: notes: land on turn 3 ahead of the Equipment, where a Treasure plan casts her on 6+
+#: notes: after the engine has already run. Running her needs blue LANDS, i.e. a
+#: notes: different deck.
 #: protect: Thor, God of Thunder; Thor Odinson; Mjölnir, Hammer of Thor; Aurelia, the Warleader; Cloud, Midgar Mercenary; Cloud, Planet's Champion
 
 Deck
 # Equipment
-1 Diamond Pick-Axe (LCI) 143
-1 Hard-Won Jitte (TMT) 91
+1 Orcrist, Goblin-cleaver (HOB) 177
 1 Iron Man Armor (MSH) 248
 1 Samurai's Katana (FIN) 154
-1 Twin Blades (TLA) 157
 1 Mjölnir, Hammer of Thor (MSH) 146
 1 Warrior's Sword (FIN) 169
 1 Buster Sword (FIN) 255
-1 Wrench (MKM) 37
+1 Quintessential Katana (TMT) 23
 1 Genji Glove (FIN) 258
 1 Celestial Armor (FDN) 5
 1 Web-Shooters (SPM) 22
@@ -69,7 +92,7 @@ Deck
 # Creatures / walkers
 1 Mabel, Heir to Cragflame (BLB) 224
 1 Freya Crescent (FIN) 138
-1 Silver Sable, Mercenary Leader (SPM) 13
+1 Adelbert Steiner (FIN) 3
 1 Barret Wallace (FIN) 129
 1 Thor, God of Thunder (MSH) 156
 1 Cloud, Planet's Champion (FIN) 552
@@ -79,11 +102,13 @@ Deck
 1 Sami, Wildcat Captain (EOE) 226
 1 Zack Fair (FIN) 45
 1 Cloud, Midgar Mercenary (FIN) 10
-1 Honored Knight-Captain (EOE) 22
+1 Kíli the Resourceful (HOB) 17
 1 Weapons Vendor (FIN) 40
 1 Raphael, the Nightwatcher (TMT) 103
 1 Raph & Leo, Sibling Rivals (TMT) 166
 1 Firion, Wild Rose Warrior (FIN) 137
+1 Dáin Ironfoot (HOB) 91
+1 Thorin, Mountain-king (HOB) 114
 
 # Spells
 1 Chainsaw (DSK) 128
@@ -92,12 +117,13 @@ Deck
 
 # Lands — 25, Boros; owned untapped-with-basic duals/utility over straight basics
 11 Plains (MSH) 288
-10 Mountain (MSH) 294
+9 Mountain (MSH) 294
+1 The Lonely Mountain (HOB) 187
 1 Abandoned Air Temple (TLA) 263
 2 Fire Nation Palace (TLA) 268
 1 Sunbillow Verge (DFT) 264
 
 # Flex — options (comments; not part of the 60). See: deck.py flex 39
-#~ +Purple Dragon Punks | OWNED ramp — a 2nd equipment-mana dork (like Freya) if you want to lean harder into ramp-into-bombs; swap in for the weakest remaining filler (e.g. Honored Knight-Captain)
+#~ +Purple Dragon Punks | OWNED ramp — a 2nd equipment-mana dork (like Freya) if you want to lean harder into ramp-into-bombs; swap in for the weakest remaining filler (Honored Knight-Captain, the old example, was cut 2026-09-09)
 #~ +Duty Beyond Death | U CRAFT spice — sac a creature: your team gains indestructible + a +1/+1 counter each. A wrath-blowout / combat trick; the only wildcard-costing option, hold unless you want the protection
 #~ note: applied — Firion, Wild Rose Warrior in for Idol of the Deep King.
