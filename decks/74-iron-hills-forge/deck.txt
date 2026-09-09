@@ -2,7 +2,9 @@
 #: format: Standard
 #: colors: WR
 #: plan: midrange
-#: tier: B (PROVISIONAL) — matches the B metrics floor (interaction 6 — Thorin's
+#: tier: B (PROVISIONAL) — matches the B metrics floor (interaction 7 — the
+#: tier: 2026-09-09 top-end pass traded a scaling burn spell for Chainsaw's ETB
+#: tier: burn and Meteor Sword's unconditional destroy; Thorin's
 #: tier: Last Stand closed the noncreature-answer hole, and Thorin, Mountain-king's
 #: tier: equip-then-deal-damage trigger became readable when the scaling-damage
 #: tier: pattern gained its "up to one target" twin on 2026-08-19 — card advantage
@@ -15,9 +17,20 @@
 #: tier: tag-level similarity to the roster's equipment decks demands games to prove
 #: tier: the tribal identity plays as differently as it reads, and avg MV under-reads
 #: tier: by one X-spell. Re-grade with games and the crafts in hand.
-#: archetype: Boros (W/R) DWARF/EQUIPMENT TRIGGER ENGINE. The equipment here are cheap
-#: archetype: trigger fodder, not a voltron suit — that is the identity line against
-#: archetype: deck 38 Armory. PLAN: every Dwarf and every Equipment that enters feeds
+#: archetype: Boros (W/R) DWARF/EQUIPMENT TRIGGER ENGINE. The equipment are trigger
+#: archetype: fodder first, not a voltron suit — that is the identity line against
+#: archetype: deck 38 Armory. AMENDED 2026-09-09: "cheap" no longer covers all of
+#: archetype: it. Meteor Sword ({7}) and Thor ({3}{R}{R}) were added on a count, not
+#: archetype: a curve: TEN effects here attach with NO equip cost paid (Kíli's {0}
+#: archetype: first equip each turn, Thorin Mountain-king's any-number ETB, Iron
+#: archetype: Hills Stalwart, Dáin Ironfoot, Gilgamesh, Vow to Erebor, and the four
+#: archetype: self-attaching Equipment) plus four cost reducers (Dwarven Mauler's
+#: archetype: −{2}, Mjölnir's worthy {1}, Gold Pan at {1}, Firion's copies at −{2}).
+#: archetype: A printed equip cost is not what this deck pays, so the expensive
+#: archetype: Equipment cost only their CAST. The voltron line still holds: no card
+#: archetype: here wins by suiting one threat — Meteor Sword is removal that happens
+#: archetype: to be an Equipment, and Barret reads the number of SEPARATE equipped
+#: archetype: bodies, which is the opposite of a single suit. PLAN: every Dwarf and every Equipment that enters feeds
 #: archetype: the draw engine (Kíli draws on either and makes the first equip each turn
 #: archetype: FREE; Giott loots on either; Balin wheels on each Dwarf and burns with an
 #: archetype: enduring story; Dáin's Company digs), while Fíli turns each nontoken
@@ -29,18 +42,28 @@
 #: archetype: on hit. STORIED (3+ artifacts/legendaries/Sagas) is the deck's natural
 #: archetype: state by turn 3 and switches on Fíli's anthem, Thorin Oakenshield's ward,
 #: archetype: Ori's vigilance and Kíli's free equips. Gilgamesh and Thorin
-#: archetype: Mountain-king cheat and re-arrange the weapons; Judgment Bolt is removal
-#: archetype: that scales with the Equipment count.
+#: archetype: Mountain-king cheat and re-arrange the weapons — Gilgamesh puts an
+#: archetype: Equipment onto the battlefield FREE from the top six, which is what
+#: archetype: prices Meteor Sword's {7}. REMOVAL rides the Equipment: Chainsaw's ETB
+#: archetype: 3 damage (Firion's token copy re-triggers it), Meteor Sword destroying
+#: archetype: any permanent, Mjölnir's ETB 4 and its discard sweep.
 #: archetype: DISTINCTIVENESS, argued against BOTH equipment decks: 38 Armory is Orzhov
 #: archetype: voltron (one suited threat); 39 Starforge is Boros suit-up AGGRO with the
-#: archetype: Thor/God-Squad top end. This deck is a TRIBAL TRIGGER engine — the win is
+#: archetype: God-Squad top end. THOR IS NOW SHARED WITH 39 and does a different job in
+#: archetype: each: there he is a God-Squad body, here he is a burn engine, because
+#: archetype: Mjölnir doubles ALL damage its equipped creature deals — including Thor's
+#: archetype: noncreature-cast trigger — and Thor is a legendary red non-Villain, so
+#: archetype: worthy {1} attaches it for {1} (or {0} off Kíli). Every Equipment cast is
+#: archetype: then 2x its mana value to the face. This deck is a TRIBAL TRIGGER engine — the win is
 #: archetype: card-advantage grind plus a wide Dwarf token board, and the equipment are
 #: archetype: ETB fodder. The first draft imported six of 39's support cards; Weapons
 #: archetype: Vendor and Blacksmith's Talent were CUT for Iron Hills Blacksmith and
 #: archetype: Iron Hills Stalwart (two more Dwarves) to hold the line — the remaining
-#: archetype: shared four (Cloud, Gilgamesh, Mjölnir, Buster Sword) are fungible copies
-#: archetype: doing deck-specific work here (Cloud doubles, Mjölnir equips worthy
-#: archetype: Dwarf legends for {1}).
+#: archetype: shared cards (Cloud, Gilgamesh, Mjölnir, Buster Sword, and now Thor,
+#: archetype: Barret and Chainsaw) are fungible copies doing deck-specific work here
+#: archetype: (Cloud doubles, Mjölnir equips worthy Dwarf legends for {1}, Barret
+#: archetype: counts the equipped bodies the free-attach suite makes, Chainsaw is an
+#: archetype: Equipment-ETB trigger that also kills something).
 #: notes: Drafted 2026-08-16 from .cycle/dwarf-equipment-analysis.md (130 cards read).
 #: notes: The TREASURE sub-theme the pile surfaced (Smaug, Misty Mountains Cold,
 #: notes: Magda's dragon, the producer suite) is specced there as the 74a variant —
@@ -77,6 +100,8 @@
 1 Gilgamesh, Master-at-Arms (FIN) 139
 1 Firion, Wild Rose Warrior (FIN) 137
 1 Item Shopkeep (FIN) 142
+1 Thor, God of Thunder (MSH) 156
+1 Barret Wallace (FIN) 129
 
 # Equipment — cheap, auto-attaching, trigger-dense
 1 Orcrist, Goblin-cleaver (HOB) 177
@@ -84,17 +109,15 @@
 1 Dwarven Shortsword (HOB) 10
 1 Dwarven Mattock (HOB) 172
 1 Buster Sword (FIN) 255
-1 Leyline Axe (FDN) 129
+1 Chainsaw (DSK) 128
 1 Gold Pan (OTJ) 242
 1 Sting, Bilbo's Sword (HOB) 178
+1 Meteor Sword (TLA) 258
 
 # Noncreature support / interaction
 1 Vow to Erebor (HOB) 31
 1 An Unexpected Party // At the Door (HOB) 29
 1 Thorin's Last Stand (HOB) 28
-1 Judgment Bolt (FIN) 559
-1 One Last Job (OTJ) 22
-1 The Black Arrow (HOB) 171
 
 # Lands — 24 Boros (Lonely Mountain + Iron Hills are on-plan)
 1 The Lonely Mountain (HOB) 187
