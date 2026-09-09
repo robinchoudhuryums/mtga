@@ -135,6 +135,16 @@
 #: notes: Roxanne's Meteorites are repeatable ACTIVATED crimes; Terrapact x2 and
 #: notes: Deadly Precision are one-shots. Liliana and Aatchik commit NO crime (each
 #: notes: opponent / each player is not targeting), and neither does Vraska.
+#: notes: 2026-09-09 (user-decided): Brimstone Roundup in for Callous Sell-Sword.
+#: notes: Roundup was chosen over At Knifepoint DELIBERATELY as the DIVERSIFIED pick:
+#: notes: At Knifepoint reads the same crime trigger Magda and Gisa already read, and
+#: notes: its first-strike clause is near-dead here (three outlaws), while Roundup
+#: notes: keys on your SECOND CAST SPELL each turn, which nothing else in the list
+#: notes: reads. Note what that condition does NOT count: activated and triggered
+#: notes: abilities are invisible to it, so Jolene's ping, Stone-Giant's outlet and
+#: notes: the Sackville/Biotech sacrifice triggers do not advance it. With 12 of 36
+#: notes: spells at MV <= 2 it turns on around turn 4. Sell-Sword was the cut because
+#: notes: it was unowned AND rotating ~2026, i.e. a craft with no future.
 
 # Producers (the mint)
 1 Goldvein Hydra (OTJ) 167
@@ -164,7 +174,7 @@
 1 Chandra, Spark Hunter (DFT) 116
 2 Pirate Peddlers (TLA) 115
 1 Biotech Specialist (EOE) 214
-1 Callous Sell-Sword // Burn Together (WOE) 221
+1 Brimstone Roundup (OTJ) 115
 1 Aatchik, Emerald Radian (DFT) 187
 1 Ygra, Eater of All (BLB) 241
 1 Gisa, the Hellraiser (OTJ) 89
