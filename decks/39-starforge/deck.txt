@@ -2,8 +2,10 @@
 #: format: Standard
 #: tier: A — Boros (W/R) equipment aggro-midrange. Metrics floor is B on the aggro plan
 #: tier: and the letter is one band above it, which the rubric allows. The clock
-#: tier: substitution still does its work — clock 3 on top of interaction 6 clears the A
-#: tier: floor's pressure bar of 7 — but card advantage 1 leaves the resilience sum at 10
+#: tier: substitution still does its work — clock 3 on top of interaction 5 clears the A
+#: tier: floor's pressure bar of 7 (interaction fell 6 -> 5 on 2026-09-09 when Firion
+#: tier: replaced Idol of the Deep King, whose flash 2-damage ETB was the counted
+#: tier: piece) — but card advantage 1 leaves the resilience sum at 10
 #: tier: against the 11 an A floor wants (Chainsaw replaced Agni Kai 2026-08-15 and the
 #: tier: interaction count held; the floor read A until `TIER_FLOOR_REQ` was re-derived
 #: tier: from the roster distribution 2026-09-02). The A letter rests on a coherent double-strike /
@@ -35,6 +37,13 @@
 #: notes: four equipped-matters payoffs (Serum, Blacksmith's Talent, Barret, Vendor) and pumps Seedglaive Mentor (Mouse).
 #: notes: Manabase measured unchanged on a scratch copy (W 13 / R 13, same cast-on-curve table); Devotee's once-a-turn
 #: notes: filter was the deck's only nonland source, and its B identity stray is gone with it.
+#: notes: 2026-09-09: Firion, Wild Rose Warrior in for Idol of the Deep King. The flex
+#: notes: block had staged Firion against SILVER SABLE since it was a craft target; now
+#: notes: that it is owned the user took the Idol slot instead, so Silver Sable stays.
+#: notes: ACCEPTED TRADE: interaction 6 -> 5. Idol was flash + 2 damage to any target,
+#: notes: which is what the count was reading; Firion is a permanent engine instead —
+#: notes: team haste for equipped creatures plus a free temporary copy of every NONTOKEN
+#: notes: Equipment that enters, against 13 of them here.
 #: protect: Thor, God of Thunder; Thor Odinson; Mjölnir, Hammer of Thor; Aurelia, the Warleader; Cloud, Midgar Mercenary; Cloud, Planet's Champion
 
 Deck
@@ -51,7 +60,6 @@ Deck
 1 Genji Glove (FIN) 258
 1 Celestial Armor (FDN) 5
 1 Web-Shooters (SPM) 22
-1 Idol of the Deep King (LCI) 155
 
 # Enchantments (Aura / Class / Saga)
 1 Super-Soldier Serum (MSH) 38
@@ -75,6 +83,7 @@ Deck
 1 Weapons Vendor (FIN) 40
 1 Raphael, the Nightwatcher (TMT) 103
 1 Raph & Leo, Sibling Rivals (TMT) 166
+1 Firion, Wild Rose Warrior (FIN) 137
 
 # Spells
 1 Chainsaw (DSK) 128
@@ -91,4 +100,4 @@ Deck
 # Flex — options (comments; not part of the 60). See: deck.py flex 39
 #~ +Purple Dragon Punks | OWNED ramp — a 2nd equipment-mana dork (like Freya) if you want to lean harder into ramp-into-bombs; swap in for the weakest remaining filler (e.g. Honored Knight-Captain)
 #~ +Duty Beyond Death | U CRAFT spice — sac a creature: your team gains indestructible + a +1/+1 counter each. A wrath-blowout / combat trick; the only wildcard-costing option, hold unless you want the protection
-#~ -Silver Sable, Mercenary Leader | +Firion, Wild Rose Warrior | RARE craft upgrade — equipment payoff: team haste + a free temporary copy (equip {2} cheaper) of each nontoken Equipment you play. Silver Sable is the owned 0-wildcard stand-in; craft Firion when a rare is spare.
+#~ note: applied — Firion, Wild Rose Warrior in for Idol of the Deep King.
