@@ -5,7 +5,7 @@
 #: plan: midrange
 #: archetype: JUND TREASURE ECONOMY — the user's RGB concept, given the identity the
 #: archetype: roster left open: artifact TOKENS as currency. Producers at every point
-#: archetype: on the curve (Greedy Freebooter's death trigger, Magda's once-a-turn
+#: archetype: on the curve (Bejeweled Warg's combat-damage choice, Magda's once-a-turn
 #: archetype: crime, Jolene's power-4 attacks, Flamekin Gildweaver's ETB, Terrapact's
 #: archetype: Landers, Brass's Bounty's one-shot flood); Roxanne, Starfall Savant is
 #: archetype: the mana engine — every artifact TOKEN tapped for mana yields double,
@@ -15,13 +15,20 @@
 #: archetype: Twitching Doll 2026-08-08; Lightless Evangel was CUT for
 #: archetype: Rot-Curse Rakshasa, whose decayed body feeds the same outlets), bodies
 #: archetype: (Stone-Giant's 3/1 Boulder on entry AND each attack, Magda's 4/4
-#: archetype: dragons, Aatchik's swarm), cards (Fanatical Offering, Tarrian's
-#: archetype: Journal, Fountainport), and damage (Food Fight turns every token into
-#: archetype: a fling; Gold Rush is the kill-turn pump). Distinct from deck 8 (BRG
+#: archetype: dragons, Aatchik's swarm, Gisa's two 2/2s per crime, Chief Warg's
+#: archetype: 2/2 every upkeep), cards (Tom, Bert and William, Smaug's Treasure-mana
+#: archetype: draw, Sackville-Bagginses, Tarrian's Journal, Fountainport), and
+#: archetype: damage (Sackville-Bagginses drains 1 per TOKEN sacrificed, which the
+#: archetype: token engines now feed every turn; Gold Rush is the kill-turn pump).
+#: archetype: THE FLING PLAN IS GONE as of 2026-09-09: Food Fight was the card that
+#: archetype: turned every artifact into a damage source and NOTHING in Standard
+#: archetype: replaces it — a pool sweep for "Artifacts you control have <ability>"
+#: archetype: returns one survivor past 2027, and it grants ward. The damage axis is
+#: archetype: now drain-shaped, not fling-shaped; do not read the old plan back in. Distinct from deck 8 (BRG
 #: archetype: aristocrats — sacrifices CREATURES for drains), deck 21 (WBG Food
 #: archetype: chains) and the UR artifact family (26/48): this deck's engine is the
 #: archetype: token economy itself, and no other deck runs Roxanne's doubling.
-#: protect: Roxanne, Starfall Savant; Crime Novelist; Magda, the Hoardmaster; Food Fight
+#: protect: Roxanne, Starfall Savant; Crime Novelist; Magda, the Hoardmaster
 #: tier: B (PROVISIONAL) — deliberately conservative for a first economy build: the
 #: tier: engine is deep but the interaction count is thin for midrange and the deck
 #: tier: needs a turn of setup before the currency flows. The floor may read
@@ -34,18 +41,24 @@
 #: notes: Meteorites, Landers — not Tarrian's Journal, a nontoken artifact), and
 #: notes: cracking a Treasure taps it for mana, so the doubling applies. Crime
 #: notes: Novelist + a Roxanne-doubled Treasure nets THREE mana per crack. Magda's
-#: notes: crime is TARGETING opponents or their stuff — Deadly Precision, Jolene
-#: notes: pings and Food Fight flings all trigger her, but she makes exactly one
-#: notes: Treasure a turn. Ygra makes ALL creatures Food ARTIFACTS: every creature
-#: notes: death then feeds Crime Novelist and Pirate Peddlers, and Ygra +
-#: notes: Food Fight lets any creature be flung — but she is symmetric (opponents'
+#: notes: crime is TARGETING opponents or their stuff — 8 cards here can commit one
+#: notes: (Sackville-Bagginses, Jolene, Terrapact, Roxanne, Stone-Giant, Chandra,
+#: notes: Aatchik, Deadly Precision) — but she makes exactly one Treasure a turn.
+#: notes: GISA reads the same trigger for two 2/2 Zombie Rogues, and her anthem is
+#: notes: not dead text: it pumps the tokens she herself makes to 3/3 menace. Ygra makes ALL creatures Food ARTIFACTS: every creature
+#: notes: death then feeds Crime Novelist, Pirate Peddlers and every sacrifice
+#: notes: outlet — but she is symmetric (opponents'
 #: notes: creatures are Food too) and a lightning rod; she multi-homes from decks
 #: notes: 8/21. Aatchik counts artifact cards IN THE YARD — cracked Treasures are
 #: notes: tokens and do NOT count; his count grows from Journal sacs and dead
 #: notes: nontoken artifacts, so read his ETB as creatures-in-yard mostly. ROTATION
-#: notes: (G-30): Elvish Archivist and Food Fight are WOE (~2026 rotation) and the
-#: notes: LCI cards (Freebooter, Offering, Journal, Ridgeline) go ~2026-27 — the
-#: notes: OTJ/MKM/DFT/EOE/ECL core outlives them; re-check at rotation. TOOLING
+#: notes: (G-30): the WOE and LCI cards are gone as of 2026-09-09, but the ~2026
+#: notes: cliff is now the OTJ core itself — Magda, Jolene x2, Roxanne, Goldvein
+#: notes: Hydra, Gold Rush, Vraska, Boneyard Desecrator and the newly added Gisa.
+#: notes: Sweeps run 2026-09-09 found NO Standard survivor past 2027 for four of
+#: notes: those functions: artifact-token mana doubling (Roxanne), a mass fling
+#: notes: grant (Food Fight), crime-or-attack-triggered Treasure (Magda/Jolene) and
+#: notes: a BGR creature-land (Ridgeline). Plan the rebuild, do not expect swaps. TOOLING
 #: notes: FALSE-THIN (G-66): `deck.py targets` reports the artifact-sac gates
 #: notes: with "1 artifact to sacrifice" because it counts artifact CARDS in the
 #: notes: list — the deck's artifacts are TOKENS from 14 producer cards, which no
@@ -95,10 +108,21 @@
 #: notes: every spell cast with Treasure mana, which is what this deck does every turn.
 #: notes: His ETB (X Treasures = artifacts your OPPONENTS control) is meta-dependent and
 #: notes: often zero — grade him on the draw clause.
+#: notes: 2026-09-09 TOKEN-ENGINE PASS (user-decided): out Greedy Freebooter, Fanatical
+#: notes: Offering, Food Fight, Reckless Ransacking; in Bejeweled Warg, Tom Bert and
+#: notes: William, Gisa the Hellraiser, Chief Warg's Company. Food Fight left the
+#: notes: protect header with it. ACCEPTED TRADE, soft-flagged: interaction 9 -> 8
+#: notes: (Food Fight was counted as removal). Protection 1 -> 2 on Gisa's ward.
+#: notes: GREEN IS NOW THE STRESS COLOUR and this is the number to watch: only 8 green
+#: notes: sources against Bejeweled Warg (70.6% on turn 2), Chief Warg's Company and
+#: notes: Vraska (64.7% on turn 3), Goldvein Hydra (65.4% on turn 1) and Mutagen Man's
+#: notes: {G}{G} (28.8%). `consistency` wants 13-15 G for the three-drops. The pass
+#: notes: also raised avg MV 3.14 -> 3.36 and dropped early drops 15 -> 12, so the
+#: notes: manabase is the next thing to fix, before any further top-end.
 
 # Producers (the mint)
 1 Goldvein Hydra (OTJ) 167
-1 Greedy Freebooter (LCI) 109
+1 Bejeweled Warg (HOB) 117
 1 The Sackville-Bagginses (HOB) 83
 1 Magda, the Hoardmaster (OTJ) 133
 1 Death to Our Enemies (MSH) 127
@@ -107,7 +131,7 @@
 2 Terrapact Intimidator (EOE) 164
 1 War Effort (TDM) 131
 1 Brass's Bounty (FDN) 190
-1 Reckless Ransacking (ECL) 152
+1 Chief Warg's Company (HOB) 151
 1 Mutagen Man, Living Ooze (TMT) 124
 1 Boneyard Desecrator (OTJ) 81
 
@@ -126,12 +150,12 @@
 1 Callous Sell-Sword // Burn Together (WOE) 221
 1 Aatchik, Emerald Radian (DFT) 187
 1 Ygra, Eater of All (BLB) 241
-1 Food Fight (WOE) 129
+1 Gisa, the Hellraiser (OTJ) 89
 1 Gold Rush (OTJ) 166
 1 Smaug, Wicked Worm (HOB) 164
 
 # Draw / removal (sac-fueled)
-1 Fanatical Offering (LCI) 105
+1 Tom, Bert, and William (HOB) 169
 1 Salt Road Skirmish (TDM) 88
 1 Deadly Precision (TLA) 95
 
@@ -158,8 +182,7 @@
 #~ note: copy is redundancy insurance, never a second engine — its realistic value is a fresh
 #~ note: Meteorite when you cast it over the first. She is OTJ and rotates ~2026, so this may
 #~ note: expire before it is worth crafting.
-#~ -Gold Rush | +Bejeweled Warg | OWNED (HOB): fit 91, the highest in the batch for this deck.
-#~   Trample, and on combat damage choose a +1/+1 counter on a Wolf OR a Treasure — the Treasure
-#~   mode is what earns the slot here, not the Wolf clause.
+#~ note: applied — Bejeweled Warg maindecked 2026-09-09 (in for Greedy Freebooter, not the
+#~ note: Gold Rush slot this line originally proposed). Gold Rush stays in the deck.
 #~ note: Deadly Precision carries ⚡cost-as-upside HERE (its sacrifice cost feeds your outlets), so
 #~ note: grade that cut from full text before taking it — the flag says the tool under-rates it.
