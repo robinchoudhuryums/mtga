@@ -177,6 +177,44 @@ KEYWORD_THEMES = {
     # Infusion — "if you gained life this turn". A lifegain payoff, the lifegain
     # analogue of `morbid`. 13/13 gain `payoff`, 5 gain `lifegain`.
     "infusion": ["lifegain", "payoff"],
+    # Recruit (HOB) — "Draw a card, then discard a card. If you discarded a nonland
+    # card, create a 1/1 white Human Soldier creature token." 10 cards, all genuinely
+    # carrying the mechanic (no `Jump`-style name artifact, K-01).
+    #
+    # THE MAPPING GAINS NOTHING TODAY — 10/10 already carry `tokens`, because every one
+    # prints the reminder and the tokens rule reads "create … token" straight out of it.
+    # That is K-02's exact situation, and the reason to index it anyway: the map exists
+    # for the card that states the keyword BARE, and that tail is invisible until a set
+    # prints one. Recorded here so the zero is read as expected, not as a broken mapping.
+    #
+    # THREE THEMES WERE CONSIDERED AND REJECTED, each for a rule this file already states:
+    #   `card advantage` — a loot is card-NEUTRAL (K-14's `_LOOT_RE` excludes rummaging
+    #      from the role for the same reason). It would have gained 10/10, which is what
+    #      makes it tempting and wrong.
+    #   `discard` — that theme means HAND ATTACK ("target player discards"), the opposite
+    #      card. Tagging a self-loot with it is K-05's drain-vs-pay-life inversion.
+    #   `selection` — operationally "look at the top" to 936 cards. A loot filters your
+    #      draw, but widening an idf theme to a second mechanic destroys the specificity
+    #      that makes it useful (K-06, where `heist` was nearly folded into `theft`).
+    # `graveyard` is the near miss: recruit COSTS a discard, and K-02 says a keyword maps
+    # to what it costs. Left out because ONE card to the yard does not make ten white
+    # token-makers graveyard cards, and it would have gained 9/10 — a big silent re-route.
+    "recruit": ["tokens"],
+    # Storied (HOB) — "If you control three or more artifacts, legendaries, and/or Sagas,
+    # you have an enduring story for the rest of the game." 9 cards, all Dwarf legends.
+    # Unlike recruit this mapping is the ONLY thing that reaches them: the reminder holds
+    # no rule-triggering words, so 9/9 gain both themes and carried neither before.
+    #
+    # A THRESHOLD IS MAPPED TO WHAT IT COUNTS — the same treatment `delirium`, `descend`
+    # and `threshold` get for the graveyard. `payoff` is the half that says what the
+    # keyword IS (a bonus you unlock), matching `vivid` / `opus` / `infusion` / `void`.
+    #
+    # `saga` is deliberately NOT included even though the threshold names Sagas: that
+    # theme is TYPE-LINE sourced and means "this card is a Saga". Nine Dwarf creatures
+    # are not, and unioning the two would be K-06 exactly. `legendary` is not a theme
+    # here at all (0 pool cards), and inventing one for nine cards is the fix K-09's
+    # residual already rejects.
+    "storied": ["artifacts", "payoff"],
     # Disappear — "if a permanent left the battlefield under your control this turn".
     # Deliberately given morbid's exact pair: a disappear deck is built with sac
     # outlets and expiring tokens. KNOWN ADJACENCY, not tagged: blink also satisfies

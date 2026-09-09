@@ -9420,7 +9420,7 @@ Celebrate the Mountain-king,Enchantment,"When this enchantment enters, for each 
 When this enchantment enters, recruit. (Draw a card, then discard a card. If you discarded a nonland card, create a 1/1 white Human Soldier creature token.)",W,card draw; tokens; etb; recruit,HOB,7,Uncommon,standard;pioneer;modern;legacy;vintage;historic;timeless;brawl,2026-08-14,,
 "Dáin, Lord of the Iron Hills",Legendary Creature — Dwarf Noble,"Vigilance
 Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.)
-As long as you have an enduring story, creatures can't attack you unless their controller pays {1} for each of those creatures.",W,Dwarf; Noble; vigilance; combat; storied,HOB,8,Uncommon,standard;pioneer;modern;legacy;vintage;historic;timeless;brawl,2026-08-14,2,2
+As long as you have an enduring story, creatures can't attack you unless their controller pays {1} for each of those creatures.",W,Dwarf; Noble; vigilance; combat; storied; artifacts; payoff,HOB,8,Uncommon,standard;pioneer;modern;legacy;vintage;historic;timeless;brawl,2026-08-14,2,2
 Dwarven Provisioner,Creature — Dwarf Citizen,{3}{W}: Creatures you control get +1/+1 until end of turn.,W,Dwarf; Citizen; pump,HOB,9,Common,standard;pioneer;modern;legacy;vintage;pauper;historic;timeless;brawl,2026-08-14,2,2
 Dwarven Shortsword,Artifact — Equipment,"When this Equipment enters, create a 2/2 red Dwarf creature token, then attach this Equipment to it.
 Equipped creature gets +1/+2.
@@ -9433,14 +9433,14 @@ Esgaroth Garrison,Creature — Human Soldier,"Esgaroth Garrison's power is equal
 When this creature enters, recruit. (Draw a card, then discard a card. If you discarded a nonland card, create a 1/1 white Human Soldier creature token.)",W,Human; Soldier; card draw; tokens; etb; recruit,HOB,13,Common,standard;pioneer;modern;legacy;vintage;pauper;historic;timeless;brawl,2026-08-14,*,5
 Fíli the Pathfinder,Legendary Creature — Dwarf Scout,"Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.)
 As long as you have an enduring story, creatures you control get +1/+1.
-Whenever Fíli or another nontoken Dwarf you control enters, create a 2/2 red Dwarf creature token.",W,Dwarf; Scout; tokens; pump; storied,HOB,14,Rare,standard;pioneer;modern;legacy;vintage;historic;timeless;brawl,2026-08-14,2,2
+Whenever Fíli or another nontoken Dwarf you control enters, create a 2/2 red Dwarf creature token.",W,Dwarf; Scout; tokens; pump; storied; artifacts; payoff,HOB,14,Rare,standard;pioneer;modern;legacy;vintage;historic;timeless;brawl,2026-08-14,2,2
 Gleaming Splendor,Enchantment,"Whenever an opponent draws their second card each turn, you create a Treasure token.
 {2}{W}: Two target players each draw a card.",W,card draw; tokens; treasure,HOB,15,Mythic,standard;pioneer;modern;legacy;vintage;historic;timeless;brawl,2026-08-14,,
 Iron Hills Blacksmith,Creature — Dwarf Artificer,"Double strike
 When this creature enters, create a colorless Equipment artifact token named Axe with ""Equipped creature gets +1/+0"" and equip {2}.",W,Dwarf; Artificer; tokens; etb; equipment; pump; double strike; combat; aggro,HOB,16,Uncommon,standard;pioneer;modern;legacy;vintage;historic;timeless;brawl,2026-08-14,1,1
 Kíli the Resourceful,Legendary Creature — Dwarf Scout,"Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.)
 As long as you have an enduring story, you may pay {0} rather than pay the equip cost of the first equip ability you activate each turn.
-Whenever another Dwarf or Equipment you control enters, draw a card. This ability triggers only once each turn.",W,Dwarf; Scout; Equipment; card draw; equipment; storied,HOB,17,Rare,standard;pioneer;modern;legacy;vintage;historic;timeless;brawl,2026-08-14,1,2
+Whenever another Dwarf or Equipment you control enters, draw a card. This ability triggers only once each turn.",W,Dwarf; Scout; Equipment; card draw; equipment; storied; artifacts; payoff,HOB,17,Rare,standard;pioneer;modern;legacy;vintage;historic;timeless;brawl,2026-08-14,1,2
 Lake-town Lookout,Creature — Human Scout,"When this creature dies, recruit. (Draw a card, then discard a card. If you discarded a nonland card, create a 1/1 white Human Soldier creature token.)",W,Human; Scout; card draw; tokens; recruit,HOB,18,Common,standard;pioneer;modern;legacy;vintage;pauper;historic;timeless;brawl,2026-08-14,1,1
 Lake-town Toymaker,Creature — Human Artificer,"At the beginning of combat on your turn, if you've drawn two or more cards this turn, another target creature you control gets +3/+0 and gains first strike until end of turn.",W,Human; Artificer; pump; first strike; combat,HOB,19,Uncommon,standard;pioneer;modern;legacy;vintage;historic;timeless;brawl,2026-08-14,3,4
 Magnificent End,Instant,"This spell costs {3} less to cast if it targets a tapped creature.
@@ -9452,7 +9452,7 @@ I — Recruit. (Draw a card, then discard a card. If you discarded a nonland car
 II — Return target creature card with mana value 3 or less from your graveyard to the battlefield.
 III — Put a +1/+1 counter on up to one target creature.",W,Saga; counters; reanimator; graveyard; card draw; tokens; saga; recruit,HOB,22,Uncommon,standard;pioneer;modern;legacy;vintage;historic;timeless;brawl,2026-08-14,,
 "Ori, Keeper of Songs",Legendary Creature — Dwarf Bard,"Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.)
-As long as you have an enduring story, Ori gets +1/+0 and has vigilance.",W,Dwarf; Bard; pump; storied; vigilance; combat,HOB,23,Common,standard;pioneer;modern;legacy;vintage;pauper;historic;timeless;brawl,2026-08-14,3,3
+As long as you have an enduring story, Ori gets +1/+0 and has vigilance.",W,Dwarf; Bard; pump; storied; artifacts; payoff; vigilance; combat,HOB,23,Common,standard;pioneer;modern;legacy;vintage;pauper;historic;timeless;brawl,2026-08-14,3,3
 The Queen of Dale,Legendary Creature — Human Noble,"Whenever an opponent casts their first noncreature spell each turn, you recruit. (Draw a card, then discard a card. If you discarded a nonland card, create a 1/1 white Human Soldier creature token.)",W,Human; Noble; card draw; tokens; recruit,HOB,24,Mythic,standard;pioneer;modern;legacy;vintage;historic;timeless;brawl,2026-08-14,2,1
 "Roads Go Ever, Ever On",Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after IV.)
 I — Search your library for up to two basic Plains cards, exile them, then shuffle. You gain 2 life.
@@ -9583,9 +9583,9 @@ Destroy target creature.",B,sacrifice; removal,HOB,84,Common,standard;pioneer;mo
 Stony-Voiced Goblins,Creature — Goblin Bard,"When this creature enters, each opponent discards a card.",B,Goblin; Bard; etb; discard,HOB,85,Common,standard;pioneer;modern;legacy;vintage;pauper;historic;timeless;brawl,2026-08-14,1,1
 Supper for Spiders,Instant,"Put onto the battlefield under your control all creature cards in your opponents' graveyards that were put there from the battlefield this turn. They are Food artifacts with ""{2}, {T}, Sacrifice this artifact: You gain 3 life."" (They lose all other types and subtypes.)",B,graveyard; lifegain; food,HOB,86,Rare,standard;pioneer;modern;legacy;vintage;historic;timeless;brawl,2026-08-14,,
 "Balin, Loremaster",Legendary Creature — Dwarf Bard,"Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.)
-Whenever Balin or another Dwarf you control enters, you may discard your hand. Draw X cards, where X is the number of cards discarded this way. If you have an enduring story, Balin deals X damage to each opponent.",R,Dwarf; Bard; card draw; burn; noncombat damage; storied,HOB,87,Rare,standard;pioneer;modern;legacy;vintage;historic;timeless;brawl,2026-08-14,4,4
+Whenever Balin or another Dwarf you control enters, you may discard your hand. Draw X cards, where X is the number of cards discarded this way. If you have an enduring story, Balin deals X damage to each opponent.",R,Dwarf; Bard; card draw; burn; noncombat damage; storied; artifacts; payoff,HOB,87,Rare,standard;pioneer;modern;legacy;vintage;historic;timeless;brawl,2026-08-14,4,4
 "Bombur, Gentle Dreamer",Legendary Creature — Dwarf Bard,"Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.)
-Bombur doesn't untap during your untap step unless you have an enduring story.",R,Dwarf; Bard; storied,HOB,88,Uncommon,standard;pioneer;modern;legacy;vintage;historic;timeless;brawl,2026-08-14,5,3
+Bombur doesn't untap during your untap step unless you have an enduring story.",R,Dwarf; Bard; storied; artifacts; payoff,HOB,88,Uncommon,standard;pioneer;modern;legacy;vintage;historic;timeless;brawl,2026-08-14,5,3
 Bothersome Noisemaker,Creature — Goblin Bard,"Whenever you cast a noncreature spell, amass Goblins 1. (Put a +1/+1 counter on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)",R,Goblin; Bard; counters; tokens; spellslinger; amass; go-wide,HOB,89,Uncommon,standard;pioneer;modern;legacy;vintage;historic;timeless;brawl,2026-08-14,2,2
 "Burn, Burn, Tree and Fern",Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after IV.)
 I — This Saga deals 6 damage to target creature an opponent controls.
@@ -9617,7 +9617,7 @@ I, II, III, IV — Create a Treasure token. Then if you control four or more Tre
 Misty Mountains Raider,Creature — Goblin Soldier,"Whenever you attack, amass Goblins 2. (Put two +1/+1 counters on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)",R,Goblin; Soldier; counters; tokens; amass; go-wide,HOB,105,Uncommon,standard;pioneer;modern;legacy;vintage;historic;timeless;brawl,2026-08-14,4,4
 Óin the Brave,Legendary Creature — Dwarf Warrior,"Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.)
 As long as you have an enduring story, Óin gets +1/+0 and has haste.
-{1}, {T}, Discard a card: Draw a card.",R,Dwarf; Warrior; card draw; pump; storied; haste; aggro,HOB,106,Common,standard;pioneer;modern;legacy;vintage;pauper;historic;timeless;brawl,2026-08-14,1,3
+{1}, {T}, Discard a card: Draw a card.",R,Dwarf; Warrior; card draw; pump; storied; artifacts; payoff; haste; aggro,HOB,106,Common,standard;pioneer;modern;legacy;vintage;pauper;historic;timeless;brawl,2026-08-14,1,3
 Pinecone Strike,Instant,"Choose one or both —
 • Pinecone Strike deals 3 damage to target creature. If that creature would die this turn, exile it instead.
 • Destroy target artifact token.",R,removal; burn,HOB,107,Common,standard;pioneer;modern;legacy;vintage;pauper;historic;timeless;brawl,2026-08-14,,
@@ -9697,7 +9697,7 @@ Other creatures you control get +1/+1.
 Whenever this creature enters or attacks, recruit. (Draw a card, then discard a card. If you discarded a nonland card, create a 1/1 white Human Soldier creature token.)",W/U,Human; Citizen; card draw; tokens; pump; recruit,HOB,146,Rare,standard;pioneer;modern;legacy;vintage;historic;timeless;brawl,2026-08-14,2,3
 "Bifur, Melodic Rider",Legendary Creature — Dwarf Bard,"Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.)
 Whenever Bifur enters or attacks, put a +1/+1 counter on target creature.
-As long as you have an enduring story, if a triggered ability of a Dwarf you control triggers, that ability triggers an additional time.",W/R,Dwarf; Bard; counters; storied,HOB,147,Uncommon,standard;pioneer;modern;legacy;vintage;historic;timeless;brawl,2026-08-14,4,5
+As long as you have an enduring story, if a triggered ability of a Dwarf you control triggers, that ability triggers an additional time.",W/R,Dwarf; Bard; counters; storied; artifacts; payoff,HOB,147,Uncommon,standard;pioneer;modern;legacy;vintage;historic;timeless;brawl,2026-08-14,4,5
 Bolg of the North,Legendary Creature — Goblin Soldier,"When Bolg enters, you may sacrifice another creature. When you do, Bolg deals damage equal to that creature's power to another target creature. If excess damage was dealt this way, amass Goblins X, where X is that excess damage. (Put X +1/+1 counters on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)",B/R,Goblin; Soldier; counters; sacrifice; tokens; etb; amass; go-wide,HOB,148,Uncommon,standard;pioneer;modern;legacy;vintage;historic;timeless;brawl,2026-08-14,5,5
 Bolg's Company,Creature — Goblin Soldier,"This creature has haste as long as you control another Goblin.
 {T}, Sacrifice another Goblin: Add {B}{R}.",B/R,Goblin; Soldier; sacrifice; haste; aggro,HOB,149,Rare,standard;pioneer;modern;legacy;vintage;historic;timeless;brawl,2026-08-14,2,2
@@ -9733,7 +9733,7 @@ When Smaug enters, create X tapped Treasure tokens, where X is the number of art
 Whenever you cast a spell, if mana from a Treasure was spent to cast it, you draw a card and lose 1 life.",B/R,Dragon; pay life; card draw; tokens; etb; treasure; flying; evasion,HOB,164,Rare,standard;pioneer;modern;legacy;vintage;historic;timeless;brawl,2026-08-14,5,5
 Thorin Oakenshield,Legendary Creature — Dwarf Noble,"Trample
 Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.)
-As long as you have an enduring story, artifacts and creatures you control have ward {1}.",W/R,Dwarf; Noble; trample; evasion; storied; ward; protection,HOB,165,Uncommon,standard;pioneer;modern;legacy;vintage;historic;timeless;brawl,2026-08-14,3,2
+As long as you have an enduring story, artifacts and creatures you control have ward {1}.",W/R,Dwarf; Noble; trample; evasion; storied; artifacts; payoff; ward; protection,HOB,165,Uncommon,standard;pioneer;modern;legacy;vintage;historic;timeless;brawl,2026-08-14,3,2
 "Thranduil, Sindarin Liege // Silvan Rally",Legendary Creature — Elf Noble // Sorcery — Adventure,"Other Elves you control get +1/+1.
 Landfall — Whenever a land you control enters, create a 1/1 green Elf creature token. // Mill four cards, then put up to two land cards from among them into your hand. (Then exile this card. You may cast the creature later from exile.)",U/G,Elf; Noble; Adventure; Elve; mill; exile cast; tokens; landfall; pump; graveyard; lands,HOB,166,Uncommon,standard;pioneer;modern;legacy;vintage;historic;timeless;brawl,2026-08-14,2,3
 "Thranduil, the Elvenking",Legendary Creature — Elf Noble,"Thranduil has all activated abilities of all Elf cards in your graveyard.
@@ -9780,7 +9780,7 @@ Goblin-town,Land,"This land enters tapped.
 {T}: Add {B} or {R}.
 {2}{B}{R}, {T}, Sacrifice this land: Put two +1/+1 counters on target Goblin or Orc you control. Activate only as a sorcery.",B/R,counters; sacrifice; mana,HOB,183,Common,standard;pioneer;modern;legacy;vintage;pauper;historic;timeless;brawl,2026-08-14,,
 Hobbit Hole,Land,"{T}, Sacrifice this land: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.
-Halflingcycling {4} ({4}, Discard this card: Search your library for a Halfling card, reveal it, put it into your hand, then shuffle.)",Colorless,sacrifice; ramp; cycling; card draw; halflingcycling,HOB,184,Common,standard;pioneer;modern;legacy;vintage;pauper;historic;timeless;brawl,2026-08-14,,
+Halflingcycling {4} ({4}, Discard this card: Search your library for a Halfling card, reveal it, put it into your hand, then shuffle.)",Colorless,sacrifice; ramp; cycling; card draw,HOB,184,Common,standard;pioneer;modern;legacy;vintage;pauper;historic;timeless;brawl,2026-08-14,,
 Iron Hills,Land,"This land enters tapped.
 {T}: Add {R} or {W}.
 {2}{R}{W}, {T}, Sacrifice this land: Put two +1/+1 counters on target Dwarf you control. Activate only as a sorcery.",W/R,counters; sacrifice; mana,HOB,185,Common,standard;pioneer;modern;legacy;vintage;pauper;historic;timeless;brawl,2026-08-14,,
@@ -19529,7 +19529,7 @@ The Masters of Evil,Legendary Creature — Human Villain,"Other Villains you con
 {1}{B}, Discard this card: Search your library for a Plan card, reveal it, put it into your hand, then shuffle.",B,Human; Villain; pump,MSH,105,Uncommon,standard;pioneer;modern;legacy;vintage;historic;timeless;alchemy;brawl,2026-06-26,5,6
 M.O.D.O.K.,Legendary Artifact Creature — Villain,"Flying, lifelink
 Mental Organism — Pay 3 life: M.O.D.O.K. connives. Activate only during your turn. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on this creature.)
-Designed Only for Killing — Creatures your opponents control get -1/-1.",B,Villain; counters; lifegain; card draw; flying; evasion; lifelink; designed only for killing; connive; graveyard,MSH,106,Mythic,standard;pioneer;modern;legacy;vintage;historic;timeless;alchemy;brawl,2026-06-26,2,2
+Designed Only for Killing — Creatures your opponents control get -1/-1.",B,Villain; counters; lifegain; card draw; flying; evasion; lifelink; connive; graveyard,MSH,106,Mythic,standard;pioneer;modern;legacy;vintage;historic;timeless;alchemy;brawl,2026-06-26,2,2
 "Moonstone, Harsh Mistress",Legendary Creature — Human Doctor Villain,"Flying
 Whenever you discard a card, you may exile that card from your graveyard. If you do, until the end of your next turn, you may play that card.",B,Human; Doctor; Villain; graveyard; flying; evasion,MSH,107,Uncommon,standard;pioneer;modern;legacy;vintage;historic;timeless;alchemy;brawl,2026-06-26,2,4
 Ninja of the Hand,Creature — Human Ninja Villain,"Deathtouch
@@ -23814,7 +23814,7 @@ Spider Spawning,Sorcery,"Create a 1/2 green Spider creature token with reach for
 Flashback {6}{B} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",B/G,graveyard; tokens; flashback; recursion; spellslinger,SIS,56,Uncommon,modern;legacy;vintage;historic;timeless;brawl,2023-03-21,,
 Travel Preparations,Sorcery,"Put a +1/+1 counter on each of up to two target creatures.
 Flashback {1}{W} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",W/G,counters; graveyard; flashback; recursion; spellslinger,SIS,57,Common,modern;legacy;vintage;pauper;historic;timeless;brawl,2023-03-21,,
-Young Wolf,Creature — Wolf,"Undying (When this creature dies, if it had no +1/+1 counters on it, return it to the battlefield under its owner's control with a +1/+1 counter on it.)",G,Wolf; counters; undying,SIS,58,Common,modern;legacy;vintage;pauper;historic;timeless;brawl,2023-03-21,1,1
+Young Wolf,Creature — Wolf,"Undying (When this creature dies, if it had no +1/+1 counters on it, return it to the battlefield under its owner's control with a +1/+1 counter on it.)",G,Wolf; counters,SIS,58,Common,modern;legacy;vintage;pauper;historic;timeless;brawl,2023-03-21,1,1
 Diregraf Captain,Creature — Zombie Soldier,"Deathtouch
 Other Zombie creatures you control get +1/+1.
 Whenever another Zombie you control dies, target opponent loses 1 life.",U/B,Zombie; Soldier; pump; deathtouch; combat; removal,SIS,59,Uncommon,modern;legacy;vintage;historic;timeless;brawl,2023-03-21,2,2
