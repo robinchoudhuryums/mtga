@@ -2,22 +2,38 @@
 #: format: Standard
 #: colors: WR
 #: plan: midrange
-#: tier: B (PROVISIONAL) — matches the B metrics floor (interaction 6 — Thorin's
+#: tier: B (PROVISIONAL) — graded UNDER the A metrics floor (interaction 8 — the
+#: tier: 2026-09-09 top-end pass traded a scaling burn spell for Chainsaw's ETB
+#: tier: burn and Meteor Sword's unconditional destroy; Thorin's
 #: tier: Last Stand closed the noncreature-answer hole, and Thorin, Mountain-king's
 #: tier: equip-then-deal-damage trigger became readable when the scaling-damage
 #: tier: pattern gained its "up to one target" twin on 2026-08-19 — card advantage
-#: tier: 3 — Ragged Short Spear, the one classified rummage, was CUT for Item Shopkeep
-#: tier: on 2026-08-16 — with several unclassified per axis, the K-12 shape at its
+#: tier: 3 — the deck's one classified rummage was cut on 2026-08-16 — with several
+#: tier: unclassified per axis, the K-12 shape at its
 #: tier: widest: Kíli, Giott, Balin, Dáin's Company and Buster Sword all draw through
 #: tier: loot/wheel/dig/hit triggers no pattern reads, and Bifur/Cloud double them).
-#: tier: A coherent two-half engine with real protection (3) and a live anthem plan;
+#: tier: A coherent two-half engine with thin protection (2 — Dwarven Mattock's ward
+#: tier: was cut for Cathar Commando 2026-09-09, and Thorin Oakenshield's storied
+#: tier: ward {1} already covered most of it) and a live anthem plan;
 #: tier: held at B: UNTESTED, 18 craft targets including most of the ★★★ core, the
 #: tier: tag-level similarity to the roster's equipment decks demands games to prove
 #: tier: the tribal identity plays as differently as it reads, and avg MV under-reads
 #: tier: by one X-spell. Re-grade with games and the crafts in hand.
-#: archetype: Boros (W/R) DWARF/EQUIPMENT TRIGGER ENGINE. The equipment here are cheap
-#: archetype: trigger fodder, not a voltron suit — that is the identity line against
-#: archetype: deck 38 Armory. PLAN: every Dwarf and every Equipment that enters feeds
+#: archetype: Boros (W/R) DWARF/EQUIPMENT TRIGGER ENGINE. The equipment are trigger
+#: archetype: fodder first, not a voltron suit — that is the identity line against
+#: archetype: deck 38 Armory. AMENDED 2026-09-09: "cheap" no longer covers all of
+#: archetype: it. Meteor Sword ({7}) and Thor ({3}{R}{R}) were added on a count, not
+#: archetype: a curve: NINE effects here attach with NO equip cost paid (Kíli's {0}
+#: archetype: first equip each turn, Thorin Mountain-king's any-number ETB, Iron
+#: archetype: Hills Stalwart, Dáin Ironfoot, Gilgamesh, Blacksmith's Talent at
+#: archetype: level 2 — a free attach EVERY combat — and the three self-attaching
+#: archetype: Equipment, Samurai's Katana's Job select among them) plus three cost
+#: archetype: reducers (Dwarven Mauler's −{2}, Mjölnir's worthy {1}, Firion's −{2}).
+#: archetype: A printed equip cost is not what this deck pays, so the expensive
+#: archetype: Equipment cost only their CAST. The voltron line still holds: no card
+#: archetype: here wins by suiting one threat — Meteor Sword is removal that happens
+#: archetype: to be an Equipment, and Barret reads the number of SEPARATE equipped
+#: archetype: bodies, which is the opposite of a single suit. PLAN: every Dwarf and every Equipment that enters feeds
 #: archetype: the draw engine (Kíli draws on either and makes the first equip each turn
 #: archetype: FREE; Giott loots on either; Balin wheels on each Dwarf and burns with an
 #: archetype: enduring story; Dáin's Company digs), while Fíli turns each nontoken
@@ -29,18 +45,28 @@
 #: archetype: on hit. STORIED (3+ artifacts/legendaries/Sagas) is the deck's natural
 #: archetype: state by turn 3 and switches on Fíli's anthem, Thorin Oakenshield's ward,
 #: archetype: Ori's vigilance and Kíli's free equips. Gilgamesh and Thorin
-#: archetype: Mountain-king cheat and re-arrange the weapons; Judgment Bolt is removal
-#: archetype: that scales with the Equipment count.
+#: archetype: Mountain-king cheat and re-arrange the weapons — Gilgamesh puts an
+#: archetype: Equipment onto the battlefield FREE from the top six, which is what
+#: archetype: prices Meteor Sword's {7}. REMOVAL rides the Equipment: Chainsaw's ETB
+#: archetype: 3 damage (Firion's token copy re-triggers it), Meteor Sword destroying
+#: archetype: any permanent, Mjölnir's ETB 4 and its discard sweep.
 #: archetype: DISTINCTIVENESS, argued against BOTH equipment decks: 38 Armory is Orzhov
 #: archetype: voltron (one suited threat); 39 Starforge is Boros suit-up AGGRO with the
-#: archetype: Thor/God-Squad top end. This deck is a TRIBAL TRIGGER engine — the win is
+#: archetype: God-Squad top end. THOR IS NOW SHARED WITH 39 and does a different job in
+#: archetype: each: there he is a God-Squad body, here he is a burn engine, because
+#: archetype: Mjölnir doubles ALL damage its equipped creature deals — including Thor's
+#: archetype: noncreature-cast trigger — and Thor is a legendary red non-Villain, so
+#: archetype: worthy {1} attaches it for {1} (or {0} off Kíli). Every Equipment cast is
+#: archetype: then 2x its mana value to the face. This deck is a TRIBAL TRIGGER engine — the win is
 #: archetype: card-advantage grind plus a wide Dwarf token board, and the equipment are
 #: archetype: ETB fodder. The first draft imported six of 39's support cards; Weapons
 #: archetype: Vendor and Blacksmith's Talent were CUT for Iron Hills Blacksmith and
 #: archetype: Iron Hills Stalwart (two more Dwarves) to hold the line — the remaining
-#: archetype: shared four (Cloud, Gilgamesh, Mjölnir, Buster Sword) are fungible copies
-#: archetype: doing deck-specific work here (Cloud doubles, Mjölnir equips worthy
-#: archetype: Dwarf legends for {1}).
+#: archetype: shared cards (Cloud, Gilgamesh, Mjölnir, Buster Sword, and now Thor,
+#: archetype: Barret and Chainsaw) are fungible copies doing deck-specific work here
+#: archetype: (Cloud doubles, Mjölnir equips worthy Dwarf legends for {1}, Barret
+#: archetype: counts the equipped bodies the free-attach suite makes, Chainsaw is an
+#: archetype: Equipment-ETB trigger that also kills something).
 #: notes: Drafted 2026-08-16 from .cycle/dwarf-equipment-analysis.md (130 cards read).
 #: notes: The TREASURE sub-theme the pile surfaced (Smaug, Misty Mountains Cold,
 #: notes: Magda's dragon, the producer suite) is specced there as the 74a variant —
@@ -50,6 +76,29 @@
 #: notes: Skateboard, Trusty Boomerang) were graded to the Wylie-family decks, but the
 #: notes: user pushed back on eliminating them entirely — see the flex block; revisit
 #: notes: after games rather than treating the exclusion as settled.
+#: notes: 2026-09-09 SECOND HALF of the top-end pass: Blacksmith's Talent in for
+#: notes: Gold Pan (OTJ rotates ~2026; the Class is a free attach EVERY combat, which
+#: notes: is what makes Meteor Sword's equip repeatable, plus a Sword token that is
+#: notes: itself an Equipment-ETB trigger), Samurai's Katana in for Vow to Erebor (Job
+#: notes: select replaces the free attach in kind and makes its holder a SAMURAI, which
+#: notes: is the only thing that gives Gilgamesh's attach clause a target other than
+#: notes: himself — Leonardo is the second), and Leonardo, Sewer Samurai in for Item
+#: notes: Shopkeep. Leonardo recasts creatures with power OR toughness 1 or less from
+#: notes: the yard: SEVEN of the deck's 21 creatures qualify and they are the engine —
+#: notes: Kíli, Cloud, Giott, Dwalin, Dáin Ironfoot, Dwarven Mauler, Iron Hills
+#: notes: Blacksmith. Dori was the proposed cut for him and was KEPT: cutting Dori and
+#: notes: Gold Pan together would have taken the deck from three nonland mana sources
+#: notes: to one (Glóin alone) in the same pass that added a 7-drop (G-61).
+#: notes: KNOWN COST of the whole pass: instant-speed interaction fell 3 -> 1. The
+#: notes: pieces retired (Judgment Bolt, The Black Arrow's flash, Vow to Erebor) were
+#: notes: the flexible half. Read the interaction profile before adding more removal.
+#: notes: 2026-09-09 Cathar Commando in for Dwarven Mattock, closing the instant-speed
+#: notes: hole the top-end pass opened (1 -> 2 instant, 3 -> 4 noncreature answers).
+#: notes: Dori was the alternative cut and was kept again for the same reason as
+#: notes: before: he is one of only TWO nonland mana sources left after Gold Pan went,
+#: notes: and a Dwarf that six cards count. Mattock was the cheaper loss — its ward {1}
+#: notes: overlaps Thorin Oakenshield's storied team ward, and three other Equipment
+#: notes: still self-attach. Commando is a 3/1, so Leonardo recasts it from the yard.
 #: protect: Kíli the Resourceful; Bifur, Melodic Rider; Cloud, Midgar Mercenary; Mjölnir, Hammer of Thor; Orcrist, Goblin-cleaver; Magda, the Hoardmaster
 
 # Dwarves — the trigger engine
@@ -76,25 +125,25 @@
 1 Cloud, Midgar Mercenary (FIN) 10
 1 Gilgamesh, Master-at-Arms (FIN) 139
 1 Firion, Wild Rose Warrior (FIN) 137
-1 Item Shopkeep (FIN) 142
+1 Leonardo, Sewer Samurai (TMT) 17
+1 Thor, God of Thunder (MSH) 156
+1 Barret Wallace (FIN) 129
+1 Blacksmith's Talent (BLB) 125
+1 Cathar Commando (FDN) 139
 
 # Equipment — cheap, auto-attaching, trigger-dense
 1 Orcrist, Goblin-cleaver (HOB) 177
 1 Mjölnir, Hammer of Thor (MSH) 146
 1 Dwarven Shortsword (HOB) 10
-1 Dwarven Mattock (HOB) 172
 1 Buster Sword (FIN) 255
-1 Leyline Axe (FDN) 129
-1 Gold Pan (OTJ) 242
+1 Chainsaw (DSK) 128
 1 Sting, Bilbo's Sword (HOB) 178
+1 Meteor Sword (TLA) 258
+1 Samurai's Katana (FIN) 154
 
 # Noncreature support / interaction
-1 Vow to Erebor (HOB) 31
 1 An Unexpected Party // At the Door (HOB) 29
 1 Thorin's Last Stand (HOB) 28
-1 Judgment Bolt (FIN) 559
-1 One Last Job (OTJ) 22
-1 The Black Arrow (HOB) 171
 
 # Lands — 24 Boros (Lonely Mountain + Iron Hills are on-plan)
 1 The Lonely Mountain (HOB) 187
@@ -108,6 +157,6 @@
 
 # Flex — options (comments; not part of the 60). See: deck.py flex 74
 #~ note: applied — Thorin's Last Stand in for Coral Sword (the modal artifact/enchantment answer closes the G-24 noncreature-answer hole).
-#~ -Gold Pan | +Web-Shooters | owned: the user's tap-down pushback lives here — the best of that cluster for THIS deck (repeatable attack-tap on a body the engine already equips). Revisit after games.
+#~ note: applied — Blacksmith's Talent in for Gold Pan.
 #~ -Iron Hills Stalwart | +Beatrix, Loyal General | craft R: mass re-attach every combat instead of an ETB attach body; the trade is a Dwarf for a Human and curve 5 -> 6.
 #~ note: applied — Item Shopkeep in for Ragged Short Spear.

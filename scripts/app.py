@@ -412,9 +412,24 @@ def save():
         return jsonify(ok=False, errors=["Malformed request: expected a JSON list of edit objects."]), 400
     if not edits:
         return jsonify(ok=True, updated=0, backup=None)
-    # Staleness gate (BS8-18) — the page sends the token it loaded; an absent token
-    # keeps the old contract for a cached pre-token page, exactly as the deck save does.
-    sent = str(data.get("lib_token") or "") if isinstance(data, dict) else ""
+    # Staleness gate (BS8-18, tightened BS9-06). The page sends the token it loaded.
+    # An ABSENT token used to skip the check entirely — a standing hole in the guard,
+    # kept for "a cached pre-token page". That justification expired: both templates
+    # send the field unconditionally (`lib_token: dataEl.dataset.libToken || ''`), the
+    # page is served by the same process that validates it, and a successful save
+    # reloads. What the hole re-admitted is the exact failure BS8-18 exists to stop —
+    # silently overwriting a CLI `import`/`swap --apply`. A DICT body is the CURRENT
+    # wire format and must carry a token; the BARE LIST below is unambiguously the
+    # pre-token page and cannot carry one, so it keeps the old contract.
+    # To revert: drop the `not sent` clause.
+    if isinstance(data, dict):
+        sent = str(data.get("lib_token") or "")
+        if not sent:
+            return jsonify(ok=False, errors=[
+                "This page did not send a staleness token, so the save cannot be checked "
+                "against the file on disk. Reload the page and try again."]), 409
+    else:
+        sent = ""
     if sent and sent != _lib_token():
         return jsonify(ok=False, errors=[
             "card-library.csv CHANGED since this page loaded it (an import, a "
@@ -997,8 +1012,14 @@ def deck_save():
     # file), and `recommendations.csv` then recorded a decision against a deck
     # state that no longer existed. The `.bak` made it recoverable; nothing made
     # it VISIBLE. Token = content hash sent with the page, echoed on save.
+    # BS9-06: an absent token no longer skips the check (see the note on `save()`).
+    # This endpoint has only ever taken a dict, so there is no legacy shape to spare.
     sent = str(data.get("doc_token") or "")
-    if sent and sent != _doc_token(d["path"]):
+    if not sent:
+        return jsonify(ok=False, errors=[
+            "This page did not send a staleness token, so the save cannot be checked "
+            "against the file on disk. Reload the page and try again."]), 409
+    if sent != _doc_token(d["path"]):
         return jsonify(ok=False, errors=[
             "The deck file CHANGED since this page loaded it (a `swap --apply`, a "
             "sync, or another tab?). Saving would silently overwrite that change — "

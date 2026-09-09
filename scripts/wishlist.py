@@ -299,7 +299,9 @@ def cmd_add(path, target=None, note=None):
             # separated by `;` or `,`, `general`, or `concept: …`. The first draft of
             # this check refused `general` and `21; 6` while 13 live rows used them.
             import deck as dk
-            known = {dk._norm_deck_id(d["id"]) for d in dk.discover_decks()}
+            # ROSTER only (BS9-03) — the `#: status: example` placeholder was an
+            # accepted craft home, and a `retired` deck would stay one after the prune.
+            known = {dk._norm_deck_id(d["id"]) for d in dk.roster_decks()}
             toks = [t.strip() for t in re.split(r"[;,]", target) if t.strip()]
             bad = [t for t in toks
                    if t.lower() not in ("—", "general") and not t.lower().startswith("concept")
@@ -682,11 +684,16 @@ _WC_RANK = {"Mythic": 3, "Rare": 2, "Uncommon": 1, "Common": 0}
 
 
 def _deck_colors_map():
-    """deck_id(lower) -> declared color set, for land manabase scoring."""
+    """deck_id(lower) -> declared color set, for land manabase scoring.
+
+    ROSTER decks only (BS9-03). `discover_decks()` includes anything under decks/,
+    `#: status: example|template|placeholder|retired|archived` included; `deck.py`'s own
+    surfaces exclude those via `roster_decks()`, and this file must agree or a land is
+    scored for a home no other view believes in."""
     try:
         import deck as dk
         return {d["id"].lower(): card_colors(d["meta"].get("colors"))
-                for d in dk.discover_decks()}
+                for d in dk.roster_decks()}
     except Exception as e:
         # Degrade (lands score neutral) but don't do it silently — a broken deck load
         # would quietly drop the land manabase axis from --rank (audit A14).
@@ -810,7 +817,7 @@ def _deck_status():
         return {}
     _bk, _bn, by_name_qty = dk.load_collection()
     out = {}
-    for d in dk.discover_decks():
+    for d in dk.roster_decks():   # BS9-03: not a placeholder/retired deck's build state
         meta, cards = dk.parse_deck_file(d["path"])
         tier = dk._deck_tier(meta) or "·"
         # ONE definition of "do I own this deck" (G-70 / BS8-37): the inline loop this
@@ -1532,7 +1539,15 @@ def _audit_target_issues(color_only=False):
     mana = {}
     try:
         import deck as dk
-        for d in dk.discover_decks():
+        # ROSTER decks (BS9-03). This set is what `--add --target` validates against and
+        # what this audit calls a KNOWN deck, and it took `discover_decks()` — so the
+        # `#: status: example` placeholder was an accepted craft home, while the
+        # fingerprint model 1,000 lines up already filtered on `is_roster_deck`. Two
+        # views of "which decks exist" inside ONE file: `--rank` scored against 113
+        # while `--target` validated against 115. The teeth are on the STATUSES that do
+        # not exist yet — the roster prune in `.cycle/prune-analysis.md` will mark decks
+        # `retired`, and every deck.py surface drops one the moment it is marked.
+        for d in dk.roster_decks():
             deck_ids.add(dk._norm_deck_id(d["id"]))
             deck_cols[dk._norm_deck_id(d["id"])] = card_colors(d["meta"].get("colors"))
         mana = dk.load_mana()

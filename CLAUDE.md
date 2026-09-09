@@ -169,7 +169,7 @@ castability · curve · central-theme density), with the intangibles moving a de
   model can't see those), so it **under-rates by design.** An uncastable stray CAPS the floor at C
   rather than SETTING it, so a dead card can no longer RAISE a D-floor deck, and a card
   the deck's `#: uncastable-ok:` header declares intentional is not counted at all.
-- **A GOOD DECK CAN SIT AT A LOW FLOOR, AND THAT IS THE MODEL WORKING (investigated 2026-09-03, prompted by deck 78 playing above its B).** The floor reads TWO of the eleven terms `deck_quality_vector` produces; **21 of deck 78's 36 nonland cards contribute nothing to it** — 11 payoff/engine plus 10 with no role at all, Doubling Season / Starfield Vocalist / Katara among them, i.e. the entire trigger-doubling thesis. That is not deck-78-specific: the roster's MEDIAN deck has 71% of its nonland cards invisible to the floor (78 is 75%, rank 42 of 115). **A payoff-density term was simulated and DECLINED**: +1 per 4 payoff cards capped at +3 moved 16 decks, cut the C band 9→1 and pushed A to 62% — re-starting the saturation BS8-06 had just fixed — **and left deck 78 at B anyway.** So the answer to "does a well-playing deck mean the rubric is wrong" is no on both halves: the intended remedy is the human letter, which the rubric already lets sit ONE band above the floor. Three things say leave the table alone: the spread is healthy (A 63 / B 43 / C 9, top band 55% against the 85% alarm), the record cannot arbitrate (**79 matches, and int+ca correlates with winning at r = −0.03**; nothing clears the ±0.22 noise band, so this is not evidence the floor is wrong, it is evidence the sample sees nothing), and deck 78's 5-2 is one win above the 54% pooled baseline at n=7 against a 20-match floor. **Re-derive the table when `tier_floor_spread` says so; do not re-derive it because a deck outperformed its letter.**
+- **A GOOD DECK CAN SIT AT A LOW FLOOR, AND THAT IS THE MODEL WORKING (investigated 2026-09-03, prompted by deck 78 playing above its B).** The floor reads TWO of the eleven terms `deck_quality_vector` produces; **21 of deck 78's 36 nonland cards contribute nothing to it** — 11 payoff/engine plus 10 with no role at all, Doubling Season / Starfield Vocalist / Katara among them, i.e. the entire trigger-doubling thesis. That is not deck-78-specific: the roster's MEDIAN deck has 71% of its nonland cards invisible to the floor (78 is 75%, rank 42 of 115). **A payoff-density term was simulated and DECLINED**: +1 per 4 payoff cards capped at +3 moved 16 decks, cut the C band 9→1 and pushed A to 62% — re-starting the saturation BS8-06 had just fixed — **and left deck 78 at B anyway.** So the answer to "does a well-playing deck mean the rubric is wrong" is no on both halves: the intended remedy is the human letter, which the rubric already lets sit ONE band above the floor. Three things say leave the table alone: the spread is healthy (A 62 / B 45 / C 6, top band 55% against the 85% alarm), the record cannot arbitrate (**79 matches, and int+ca correlates with winning at r = −0.03**; nothing clears the ±0.22 noise band, so this is not evidence the floor is wrong, it is evidence the sample sees nothing), and deck 78's 5-2 is one win above the 54% pooled baseline at n=7 against a 20-match floor. **Re-derive the table when `tier_floor_spread` says so; do not re-derive it because a deck outperformed its letter.**
 - **The floor is ARCHETYPE-aware** (#4): an aggro deck closes on a fast clock, not an
   interaction suite, so for an **aggro** plan a bounded `_clock_score` (low curve +
   cheap threats + reach, 0–7) SUBSTITUTES for the interaction the resilience floor
@@ -487,15 +487,15 @@ directions.
   next. **EVERY craft view carries the flag** — `check` inline per missing/short card,
   `wildcards` (incl. `--dedup`), `suggest --lands/--ramp/--interaction`, `tier --to`'s
   fillers. Owned rows are exempt: an owned card costs no wildcard. **The windows must
-  MATCH and did not** (`rotation_risk` read one year stricter than every sibling until
-  2026-08-28 while a docstring said they "cannot disagree" — **a claim that two
-  implementations agree is not agreement**). Plain `suggest` excludes LANDS (a land has no
-  cost, so the printed-cost gate G-58 passed an off-colour one). **The year is the STANDARD
-  YEAR, not release + 3 (BS8-13)**: a January–July set leaves with the previous fall's.
-  Reprints: `_SET_ROTATION_OVERRIDE`; verify. **An OWNED rotating card was invisible on
-  every per-deck surface until 2026-09-06** (56a's Commercial District and Restless Ridgeline
-  found by hand): **`deck.py rotation <id>`** lists one deck's rotating cards, owned
-  included, and `check` ends with an `ⓘ N OWNED card(s) rotate` footer. Run it before a tune. [G-30]
+  MATCH and did not** (`rotation_risk` was a year stricter until 2026-08-28 while a
+  docstring said they "cannot disagree" — **a claim that two implementations agree is not
+  agreement**). Plain `suggest` excludes LANDS (a land has no cost, so G-58's printed-cost
+  gate passed an off-colour one). **The year is the STANDARD YEAR, not release + 3
+  (BS8-13)**; reprints: `_SET_ROTATION_OVERRIDE`, verify. **`deck.py rotation <id>`** lists
+  one deck's rotating cards, OWNED included (invisible everywhere until 2026-09-06), and
+  `check` ends with an `ⓘ N OWNED card(s) rotate` footer. Run it before a tune — **but
+  `/tune-deck` deliberately does NOT: recommendations ignore rotation so the human decides.
+  A design choice, not drift; do not "fix" it into that skill.** [G-30]
 - **A COST THAT SCALES WITH A DECK COUNT IS INVISIBLE TO EVERY MODEL HERE, because they all price the PRINTED cost (added 2026-09-03).** Three templatings, one effect — `Affinity for artifacts` (52 pool instances), `costs {1} less to cast for each Equipment you control` (134), and a type-scoped `Equip Wizard {1}` beside a plain `Equip {3}` (16 cards); **64 pool cards** resolve to a countable type. Found because `suggest-homes` ranked Wizard's Staff into a **ONE-Wizard** deck above two **20-Wizard** decks: the printed cost is identical everywhere. `cost_scale_resource` / `cost_scale_support` / `cost_scale_boost` mirror the doubler trio, feed `suggest-homes` and `cut_keep_score`, and read the **TYPE LINE, never a tag** (K-04 — Salt Road Packbeast is tagged `artifacts` off its affinity KEYWORD while its real resource is creatures). **SCOPE IS THE G-76 LINE:** only a count the DECK'S COMPOSITION decides; "for each card exiled this way" / "in your party" / "in your graveyard" are game state (55 instances) and are left alone rather than answered wrongly. Calibrated from the measured distribution per `_DOUBLER_CALIB`'s lesson — nonzero support runs p25 2 / p50 3 / p75 10 / p90 22, so the floor is **4** (three artifacts is not an artifact deck), key 10, cap 12 (under the doubler's 18: a discount changes WHEN you cast, a doubler changes what the card DOES). Roster diff: **17 of 64 scaler cards re-ordered, 5 changed top pick; 2 of 115 `cuts` top-3 moved, 0 changed #1.** Plural resources singularise against the real type list — a naive `[:-1]` makes "Allies" → "allie", a type nothing carries, so the count is a silent 0. [G-83]
 - **`deck.py suggest-homes <card>` is the cross-deck fit pass** — every deck where the
   card is castable, format-legal and shares a *central* theme, labelled KEY /
@@ -1136,17 +1136,17 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   disagreed, each leaving a card with a blank Synergies cell and therefore invisible to
   every tag-based recommendation. **The 2026-08-19 instance runs the OTHER way and is
   worse, because nothing is blank**: Dead Weight is tagged `removal` by the tagger and
-  scored ZERO roles by the classifier, so it was a removal card to one model and roleless
-  to the other — and it is the ROLE model that feeds `tier_band` (BS6-10). Comparing the
-  two is cheap, and is a GATE now, not a one-off: `check_roles.py --tags` sweeps the pool
-  for it, baselined at 173 and soft in `check_all`. It reads the tagger's own
-  `MECHANIC_RULES` live (never a copy) and excludes the deathtouch KEYWORD path by
-  construction. **The tag rules read the CARD, not what it describes (BS8-31)**: `sacrifice`
-  and `removal` run on reminder- and quote-stripped text (every Saga was `sacrifice`),
-  `reanimator` needs one graveyard→battlefield clause, `landfall`/`convoke` no longer map to
-  `ramp`; `--merge` cannot REMOVE a stale library tag, so the pool is the corrected store — 250 of the 388 raw hits, which an allowlist would have had to enumerate.
-  A worklist, not a defect count. **Residual: 340 pool blanks —
-  a long tail of un-themeable effects, and a new theme for four cards is not the fix.** [K-09]
+  scored ZERO roles by the classifier — and it is the ROLE model that feeds `tier_band`
+  (BS6-10). It is a GATE now: `check_roles.py --tags` sweeps the pool for it,
+  baselined at 173 and soft in `check_all`, reading `MECHANIC_RULES` live, never a copy.
+  **The tag rules read the CARD, not what it describes (BS8-31)** — `sacrifice`/`removal`
+  on reminder-stripped text, `reanimator` needs a graveyard→battlefield clause,
+  `landfall`/`convoke` no longer map to `ramp`; `--merge` cannot REMOVE a stale library
+  tag, so the pool is the corrected store. **THAT WAS TRUE OF THE FILE AND FALSE OF THE
+  MODEL (BS9-01)**: `load_card_meta` was library-first, so every OWNED card fed
+  `cuts`/`suggest`/centrality the STALE row (219 of 2,576; 105 of 113 decks). POOL-first
+  now; a BLANK pool cell never overrides; `check_agreement._agree_synergy_store` holds it.
+  **Residual: 340 pool blanks — a new theme for four cards is not the fix.** [K-09]
 - **After editing a tag pattern, regenerate BOTH derived tag stores** —
   `tag_synergies.py --merge` for the LIBRARY and **`build_pool.py --all` for the pool**,
   which re-derives every pool row's `Synergies` through the same `tags_for()`. Skipping
@@ -1303,8 +1303,9 @@ earned it: [C-01]
 - INV-05 | Color(s) stores color identity; actual mana cost lives only in card-mana.csv | Subsystem: Data | Verify: design/manual
 - INV-06 | Synergy tags are keyword-aware — regenerate via build_mana.py then tag_synergies.py --merge after imports (--merge preserves hand-curated tags; --force replaces them) | Subsystem: Ingest | Verify: manual
 
-**Policy Configuration:** threshold 6/10; 2 consecutive cycles below triggers a policy
-response.
+**Policy Configuration:**
+Policy threshold: 6/10
+Consecutive cycles: 2
 
 **Regression Scenarios** (manual walks; the Test Command above is the primary gate).
 Scenarios 5–8 need **a person at a browser** — they are the perceptual and interaction
@@ -1495,9 +1496,25 @@ format.
     "Synced live" toast (BS8 P-05); the paste reads "⚠ TRUNCATED? paste holds N of M cards
     — a fragment, not a drift" rather than "⟳ drifted — 0 added / 44 removed" (BS8-43).
 
+19. Degraded analysis panels on the published page | Subsystem: Presentation & Interface
+    Steps: open the deployed dashboard (or the committed `dashboard.html`); open six or
+    seven deck modals spread across the roster; read the Legal, Cuts and Arena panels in
+    each. Then run `python3 scripts/build_dashboard.py --out /tmp/d.html` and read stderr.
+    Expected: no panel contains the text `[analysis error`, and stderr carries no
+    `deck analysis failed for N/113` line. The build REFUSES success only when HALF or
+    more decks are affected; below that it publishes, so before BS9-04 a 1–49% regression
+    shipped to Pages with a green build and silent output — up to 57 decks. The
+    sub-majority WARN added there is what a fresh run surfaces; this walk is what catches
+    it on a page already published. `--out` writes a throwaway copy, so it is safe to run
+    against the real data at any time.
+
 **Frozen Subsystems:** none.
 
-**Deploy Command:** Data + local tooling ship by commit/push (no build/release step). The
+**Deploy Command:**
+Presentation: `.github/workflows/pages.yml` — rebuilds `build_dashboard.py` offline and
+publishes `dashboard.html` to GitHub Pages on every push to `main`.
+
+Data + local tooling ship by commit/push (no build/release step). The
 one deployed artifact is the roster **dashboard**, and since 2026-08-24 the workflow
 INSPECTS the page it is about to publish (non-trivial size + the `#data` island, the same
 two facts INV-03 checks on the committed copy) — nothing looked at it before:
@@ -1512,10 +1529,11 @@ so the status pills' fills derive from the same token as their text. [C-10]
 ## Command provenance
 
 `broad-scan`, `broad-implement`, `test-sync`, `sync-docs`, `health-pulse`,
-`roadmap`, `sync-commands`, `targeted-audit`, `targeted-implement`, and
-`pr-review` in `.claude/commands/` are copied **verbatim** from
+`roadmap`, `sync-commands`, `targeted-audit`, `targeted-implement`,
+`pr-review`, `regression`, `reflect`, `cycle-init`, `cycle-status` and
+`cycle-resume` in `.claude/commands/` are copied **verbatim** from
 [claude-workflow-tools](https://github.com/robinchoudhuryums/claude-workflow-tools)
-— currently synced to template **v1.23.0**;
+— currently synced to template **v1.33.0**;
 they stay project-agnostic and read everything from the Cycle Workflow Config
 above. To update them, run **`/sync-commands`** with a path/URL to that repo (it
 reports the template VERSION + CHANGELOG and diffs each file) and re-copy any it
@@ -1523,14 +1541,46 @@ flags OUTDATED — don't edit them here. They span the **Tier-1 loop** the proje
 runs (`broad-scan` → `broad-implement` → `test-sync` → `sync-docs`) plus **Tier-2
 depth** (`targeted-audit`/`targeted-implement` for a single subsystem, `pr-review`
 for per-change health) and the meta commands (`health-pulse`, `roadmap`,
-`sync-commands`). The **Tier-3 full-cycle** commands (`audit`, `plan`, `implement`,
-`regression`, `reflect`, `systems-map`, `cycle-*`, `setup-cycle`) are deliberately
-NOT vendored — that two-axis-scoring ceremony outweighs its benefit at this project's
-size; adopt them only if you later want benchmarkable scoring. **Two corrections to
-that sentence, because it has aged.** The `.cycle/` state dir is NOT part of what was
-declined — this project uses one (see "Session state" below), and reading the
-un-vendoring as covering it would hide the handoff a fresh session is supposed to
-start from. And **`systems-map` was re-tested, and the vendoring stays declined** — but
+`sync-commands`) and, since 2026-09-08, the **state-and-measurement** half of Tier 3
+(`regression`, `reflect`, `cycle-init`, `cycle-status`, `cycle-resume`).
+
+**THE TIER-3 REJECTION WAS RE-DERIVED 2026-09-08 AND SPLIT IN TWO.** It had read:
+"deliberately NOT vendored — that two-axis-scoring ceremony outweighs its benefit at
+this project's size". Two measurements retired half of that. **The ceremony was already
+being paid**: `/health-pulse` IS vendored, so the two-axis scoring already runs here
+directionally, and `/broad-implement`'s mandated summary block carries `NET SCORE`, so
+**78 of 86 blocks already had one** — what was skipped was never the ceremony, it was the
+AGGREGATION, and those 78 scores had never once been read as a trend. **And the state
+layer was vendored half-open**: both implement commands WRITE `.cycle/STATE.md` in their
+CHECKPOINT step while the commands that DEFINE and BOUND it were not vendored, so it grew
+to **2,913 lines / 45 sections / 66 "Where I left off" headings** — against the
+24-section, 347-line shape the template repo diagnosed as a defect in its OWN copy
+(v1.29.0 F15) and fixed by splitting history out. A reader is told to consult it "before
+re-proposing a rejected fix" and **39 decided-against passages were buried in it**. Split
+the same way: STATE.md is the rolling 7-section file, `.cycle/HISTORY.md` holds the
+narrative. **Keep STATE.md to those seven sections** — `/cycle-status` and `/cycle-resume`
+read the FIRST match of each heading, so a second `## Where I left off` shadows the real one.
+`/reflect` adds the one bucket the record lacks: **`Defensive` appears in 0 of 86 blocks
+while 17 of 86 report a measured-zero roster impact** ("0 tier floors moved", "0 of 114
+decks change band") — the project records that honestly every time and never aggregated it.
+`/regression` is the blast-radius pass `check_all` structurally cannot make (it verifies
+invariants; it does not ask what OUTSIDE the changed scope could break), and its step 4 is
+Parallel Source-of-Truth Drift — this project's dominant bug class (G-70, G-35, G-30, G-63,
+G-71, K-09). Cycle numbering starts at **8**, adopted from the scan number the blocks and
+the BS8-nn anchors already use; `metrics.csv` is backfilled per cycle from the blocks that
+carried a score, and `defensive_count` is blank there because it was never taken.
+
+**`audit`, `plan`, `implement`, `systems-map` and `setup-cycle` stay DECLINED** — they
+duplicate the Tier-1/Tier-2 loop this project actually runs, and `/setup-cycle` generates
+a config far weaker than the hand-built one above. One measured caveat: `/audit` is the
+only template command whose focus list names *parallel source-of-truth*, and **neither
+`broad-scan.md` nor `targeted-audit.md` mentions it** (nor test-gap coverage) — this
+project's scans have found that class repeatedly anyway, so it is found by instinct rather
+than by instruction. **PROJECT_HEALTH.md was deliberately NOT created**: the Health
+Synthesis (§6a) is a console prompt, not a vendored command, and `/health-pulse` is
+read-only, so the file would sit empty while reading as a live status board.
+The `.cycle/` state dir was never part of what was declined — this project uses one
+(see "Session state" below). And **`systems-map` was re-tested, and the vendoring stays declined** — but
 the MAP itself landed: **`docs/systems-map.md`** is a hand-written, TASK-first map (the
 four things the user does: ingest · draft · tune+apply · prioritize crafts), not the
 module map the generic Tier-3 command produces. That distinction is why the command was
@@ -1606,9 +1656,23 @@ is invisible, and a handoff nobody is told to read is the same failure one layer
   prints `[card-library] … integrity: OK, N soft` and either a pytest result or
   "unchanged since last green run — skipped". A skip is a cached green, keyed on the
   HEAD tree of the code paths; a deck/CSV-only change does not rerun the suite, by design.
-- **`.cycle/STATE.md`** — prose record: what was completed, decisions made, what was
-  decided AGAINST (worth reading before re-proposing a rejected fix), and where the
-  last session left off.
+- **`.cycle/STATE.md`** — the ROLLING state of the CURRENT cycle, in exactly seven
+  sections (Current / In progress / Completed / Pending / Open follow-on / Decisions
+  made / Where I left off). `/cycle-status` and `/cycle-resume` read it, and they read
+  the FIRST match of each heading — **a second `## Where I left off` silently shadows
+  the real one**, which is how this file reached 2,913 lines before the 2026-09-08 split.
+  Narrative goes to HISTORY.md, per-run summaries to `.cycle/blocks/`.
+- **`.cycle/HISTORY.md`** — the completed-cycle narrative split out of STATE.md
+  (45 sessions, newest first): what was completed, decisions made, and what was decided
+  AGAINST. **Read it before re-proposing a rejected fix** — that is the half of the old
+  STATE.md worth keeping, and it was the half being buried.
+- **`.cycle/metrics.csv`** — one `phase=reflect` row per cycle (net score, production
+  fixes, new failure modes, defensive count). `/reflect` is its ONLY writer for those
+  columns; the implement commands write STATE.md, not metrics, so never add a row for an
+  implement/plan/audit phase or the totals double-count. Cycles 2–8 are backfilled from
+  the blocks that carried a `NET SCORE`; `defensive_count` is blank there because no
+  `/reflect` ran and the bucket was never taken. `.cycle/estimates.csv` is its
+  estimate-vs-actual sibling, header-only until the first `/reflect`.
 - **`.cycle/blocks/*.md`** — one verbatim implementation summary per
   `/broad-implement` run. `/broad-scan` and `/roadmap` consume these in a FRESH
   session, which is why they live on disk rather than only in chat.
@@ -1622,10 +1686,19 @@ is invisible, and a handoff nobody is told to read is the same failure one layer
   the incident, the measurement and the reasoning behind each, keyed by the `[G-nn]` /
   `[K-nn]` anchor the rule carries. CLAUDE.md holds the rule and any live residual so a
   session can act safely without opening this; open it to find out WHY. Live.
-- **`docs/systems-map.md`** — the TASK-first map: the four workflows with their real
-  command paths and costs, every **reconciliation point** where a human must settle two
-  answers, and the overlapping-answer inventory with measured agreement. Read it when
-  you need to know which command answers a question, or why two of them disagree. Live.
+- **`docs/systems-map.md`** — the TASK-first map, and **the router from what the user
+  ASKED to which skill answers it**. Its four sections are named for the four things
+  Robin does — *Ingest new cards* (`/ingest`), *Build a new deck* (`/draft-deck`),
+  *Refine a deck* (`/tune-deck` → `/apply-changes`), *Prioritize crafts*
+  (`/add-wishlist`) — each with the real command path, per-command costs, and every
+  **reconciliation point** where a human must settle two answers, plus the
+  overlapping-answer inventory with measured agreement.
+  **Open it whenever a request names a deck task in the user's own words** ("refine
+  this deck", "what should I craft", "I opened some packs") — nothing else in this file
+  maps an ASK to a skill, so an agent that skips it improvises the sequence. Measured
+  2026-09-08: 15 of the 16 commands `/tune-deck` runs are independently named in Common
+  Gotchas, so improvising recovers most of the TOOLS and none of the ORDER — and the
+  handoff to the skill that writes is the step it drops. Live.
 - **`ROADMAP.md`** — long-range ideas; regenerate with `/roadmap`. Live.
 - **`docs/tooling-improvement-plan.md` — DELETED 2026-08-12**, and the reasoning is
   worth keeping for the next document like it. Findings F01–F15 had all landed cycles

@@ -1687,4 +1687,6 @@ Claude Code slash commands live in `.claude/commands/`:
   Cycle state lives in `.cycle/` — start a fresh session at
   [`.cycle/NEXT-SESSION.md`](.cycle/NEXT-SESSION.md) (the current diagnosis, the
   agreed next task, and the measurements not worth re-deriving), with `STATE.md` for
-  the prose record and `blocks/` for the per-run implementation summaries.
+  the current cycle's rolling seven-section state, `HISTORY.md` for the completed-cycle
+  prose record, `metrics.csv` for the per-cycle net-score trend, and `blocks/` for the
+  per-run implementation summaries.

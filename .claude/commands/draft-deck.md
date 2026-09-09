@@ -1,5 +1,6 @@
-Build a NEW deck FROM SCRATCH around a concept, from your owned pool + craft
-targets — the create-a-list counterpart to `/add-deck` (which ingests a pasted
+Build a NEW deck from scratch around a concept, from your owned pool + craft targets.
+
+The create-a-list counterpart to `/add-deck` (which ingests a pasted
 list). Orchestrates the existing scripts; it never re-implements their logic, so
 it can't drift from them.
 

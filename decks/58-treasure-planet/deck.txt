@@ -5,23 +5,32 @@
 #: plan: midrange
 #: archetype: JUND TREASURE ECONOMY — the user's RGB concept, given the identity the
 #: archetype: roster left open: artifact TOKENS as currency. Producers at every point
-#: archetype: on the curve (Greedy Freebooter's death trigger, Magda's once-a-turn
+#: archetype: on the curve (Bejeweled Warg's combat-damage choice, Magda's once-a-turn
 #: archetype: crime, Jolene's power-4 attacks, Flamekin Gildweaver's ETB, Terrapact's
 #: archetype: Landers, Brass's Bounty's one-shot flood); Roxanne, Starfall Savant is
 #: archetype: the mana engine — every artifact TOKEN tapped for mana yields double,
 #: archetype: so each Treasure cracks for two and her Meteorites ramp AND burn; and
 #: archetype: the payoff layer spends the currency four ways: counters (Crime
 #: archetype: Novelist, Twitching Doll, Pirate Peddlers — Elvish Archivist was CUT for
-#: archetype: Twitching Doll 2026-08-08; Lightless Evangel was CUT for
-#: archetype: Rot-Curse Rakshasa, whose decayed body feeds the same outlets), bodies
-#: archetype: (Krenko's goblin per artifact death, Magda's 4/4 dragons, Aatchik's
-#: archetype: swarm), cards (Fanatical Offering, Tarrian's
-#: archetype: Journal, Fountainport), and damage (Food Fight turns every token into
-#: archetype: a fling; Gold Rush is the kill-turn pump). Distinct from deck 8 (BRG
+#: archetype: Twitching Doll 2026-08-08; Biotech Specialist arrived 2026-09-09 and
+#: archetype: is a CRIME engine as much as a counters one — it pings a target
+#: archetype: opponent on every artifact sacrifice, so it turns each Treasure crack
+#: archetype: into a crime for Magda and Gisa), bodies
+#: archetype: (Stone-Giant's 3/1 Boulder on entry AND each attack, Magda's 4/4
+#: archetype: dragons, Aatchik's swarm, Gisa's two 2/2s per crime, Chief Warg's
+#: archetype: 2/2 every upkeep), cards (Tom, Bert and William, Smaug's Treasure-mana
+#: archetype: draw, Sackville-Bagginses, Tarrian's Journal, Fountainport), and
+#: archetype: damage (Sackville-Bagginses drains 1 per TOKEN sacrificed, which the
+#: archetype: token engines now feed every turn; Gold Rush is the kill-turn pump).
+#: archetype: THE FLING PLAN IS GONE as of 2026-09-09: Food Fight was the card that
+#: archetype: turned every artifact into a damage source and NOTHING in Standard
+#: archetype: replaces it — a pool sweep for "Artifacts you control have <ability>"
+#: archetype: returns one survivor past 2027, and it grants ward. The damage axis is
+#: archetype: now drain-shaped, not fling-shaped; do not read the old plan back in. Distinct from deck 8 (BRG
 #: archetype: aristocrats — sacrifices CREATURES for drains), deck 21 (WBG Food
 #: archetype: chains) and the UR artifact family (26/48): this deck's engine is the
 #: archetype: token economy itself, and no other deck runs Roxanne's doubling.
-#: protect: Roxanne, Starfall Savant; Crime Novelist; Krenko, Baron of Tin Street; Magda, the Hoardmaster; Food Fight
+#: protect: Roxanne, Starfall Savant; Crime Novelist; Magda, the Hoardmaster
 #: tier: B (PROVISIONAL) — deliberately conservative for a first economy build: the
 #: tier: engine is deep but the interaction count is thin for midrange and the deck
 #: tier: needs a turn of setup before the currency flows. The floor may read
@@ -34,19 +43,25 @@
 #: notes: Meteorites, Landers — not Tarrian's Journal, a nontoken artifact), and
 #: notes: cracking a Treasure taps it for mana, so the doubling applies. Crime
 #: notes: Novelist + a Roxanne-doubled Treasure nets THREE mana per crack. Magda's
-#: notes: crime is TARGETING opponents or their stuff — Deadly Precision, Jolene
-#: notes: pings and Food Fight flings all trigger her, but she makes exactly one
-#: notes: Treasure a turn. Ygra makes ALL creatures Food ARTIFACTS: every creature
-#: notes: death then feeds Krenko's goblin trigger and Crime Novelist, and Ygra +
-#: notes: Food Fight lets any creature be flung — but she is symmetric (opponents'
+#: notes: crime is TARGETING opponents or their stuff — 8 cards here can commit one
+#: notes: (Sackville-Bagginses, Jolene, Terrapact, Roxanne, Stone-Giant, Chandra,
+#: notes: Aatchik, Deadly Precision) — but she makes exactly one Treasure a turn.
+#: notes: GISA reads the same trigger for two 2/2 Zombie Rogues, and her anthem is
+#: notes: not dead text: it pumps the tokens she herself makes to 3/3 menace. Ygra makes ALL creatures Food ARTIFACTS: every creature
+#: notes: death then feeds Crime Novelist, Pirate Peddlers and every sacrifice
+#: notes: outlet — but she is symmetric (opponents'
 #: notes: creatures are Food too) and a lightning rod; she multi-homes from decks
 #: notes: 8/21. Aatchik counts artifact cards IN THE YARD — cracked Treasures are
 #: notes: tokens and do NOT count; his count grows from Journal sacs and dead
 #: notes: nontoken artifacts, so read his ETB as creatures-in-yard mostly. ROTATION
-#: notes: (G-30): Elvish Archivist and Food Fight are WOE (~2026 rotation) and the
-#: notes: LCI cards (Freebooter, Offering, Journal, Ridgeline) go ~2026-27 — the
-#: notes: OTJ/MKM/DFT/EOE/ECL core outlives them; re-check at rotation. TOOLING
-#: notes: FALSE-THIN (G-66): `deck.py targets` reports Crime Novelist and Krenko
+#: notes: (G-30): the WOE and LCI cards are gone as of 2026-09-09, but the ~2026
+#: notes: cliff is now the OTJ core itself — Magda, Jolene x2, Roxanne, Goldvein
+#: notes: Hydra, Gold Rush, Vraska, Boneyard Desecrator and the newly added Gisa.
+#: notes: Sweeps run 2026-09-09 found NO Standard survivor past 2027 for four of
+#: notes: those functions: artifact-token mana doubling (Roxanne), a mass fling
+#: notes: grant (Food Fight), crime-or-attack-triggered Treasure (Magda/Jolene) and
+#: notes: a BGR creature-land (Ridgeline). Plan the rebuild, do not expect swaps. TOOLING
+#: notes: FALSE-THIN (G-66): `deck.py targets` reports the artifact-sac gates
 #: notes: with "1 artifact to sacrifice" because it counts artifact CARDS in the
 #: notes: list — the deck's artifacts are TOKENS from 14 producer cards, which no
 #: notes: list scan can see. The gates are fed; do not cut the payoffs over it.
@@ -66,8 +81,7 @@
 #: notes: DFT and owned, so this is the same rotation-proofing trade decks 28 and 36 took.
 #: notes: FIT: her +2 sacrifices an artifact for a card, and 19 token producers feed it —
 #: notes: that sacrifice then triggers Crime Novelist (+1/+1 and {R}), Pirate Peddlers
-#: notes: (+1/+1) and Krenko ("whenever an artifact is put into a graveyard from the
-#: notes: battlefield, pay {R}: 1/1 Goblin"). Her 0 makes a 3/2 artifact token that Food
+#: notes: (+1/+1). Her 0 makes a 3/2 artifact token that Food
 #: notes: Fight can fling. Her -7 emblem (artifact enters: 3 damage to any target) is a real
 #: notes: win condition against this producer count, not a rider.
 #: notes: THE QUALITY GUARD SOFT-FLAGGED card advantage 4 -> 3 AND IT IS READING BACKWARDS
@@ -77,41 +91,116 @@
 #: notes: inside a loyalty ability. Real card advantage went UP. Interaction reads 8 -> 9 for
 #: notes: the mirror-image reason (her -7 emblem parses as removal) — treat that one as
 #: notes: cosmetic, the deck's interaction is still the thin axis its tier note names.
+#: notes: 2026-09-09 (user-decided): Krenko, Baron of Tin Street OUT for
+#: notes: Stone-Giant of High Pass. Krenko was the only Standard card turning an
+#: notes: artifact DEATH into a body, but he rotates ~2026 with 14 other lines here,
+#: notes: and his Goblin-lord half was dead (zero other Goblins). Stone-Giant gives
+#: notes: the top end the curve lacked, a Boulder on entry and on every attack, and
+#: notes: a repeatable {2}{R}+artifact -> 4 damage outlet on the thin interaction axis.
+#: notes: 2026-09-09 (user-decided) x2: The Sackville-Bagginses in for the 2nd Greedy
+#: notes: Freebooter — MV 2, its ETB sacrifice is cost-as-upside here (it feeds Crime
+#: notes: Novelist / Pirate Peddlers / Aatchik on the way past) and draws plus makes a
+#: notes: Treasure, and its second line drains 1 per TOKEN sacrificed, i.e. once per
+#: notes: Treasure you crack for mana. The role model scores it card-advantage 0 because
+#: notes: the draw sits behind a sacrifice cost — a K-12 under-count, not a verdict.
+#: notes: And Smaug, Wicked Worm in for the 2nd Roxanne (benched to the flex block).
+#: notes: ACCEPTED TRADE, flagged by the quality guard: interaction 10 -> 9, because the
+#: notes: 2nd Roxanne's Meteorite reads as removal (2 damage to any target). Bought with
+#: notes: card advantage 2 -> 3 on the axis the tier note calls thin: Smaug draws off
+#: notes: every spell cast with Treasure mana, which is what this deck does every turn.
+#: notes: His ETB (X Treasures = artifacts your OPPONENTS control) is meta-dependent and
+#: notes: often zero — grade him on the draw clause.
+#: notes: 2026-09-09 TOKEN-ENGINE PASS (user-decided): out Greedy Freebooter, Fanatical
+#: notes: Offering, Food Fight, Reckless Ransacking; in Bejeweled Warg, Tom Bert and
+#: notes: William, Gisa the Hellraiser, Chief Warg's Company. Food Fight left the
+#: notes: protect header with it. ACCEPTED TRADE, soft-flagged: interaction 9 -> 8
+#: notes: (Food Fight was counted as removal). Protection 1 -> 2 on Gisa's ward.
+#: notes: GREEN WAS THE STRESS COLOUR AT 8 SOURCES — FIXED 2026-09-09 by the land
+#: notes: pass below. Keeping the diagnosis because it is the one to re-run: green
+#: notes: is not a splash here (14 of 36 nonland cards want it) and it carried 15
+#: notes: strict pips against 8 sources, i.e. 1.88 pips per source where B ran 1.55
+#: notes: and R 1.73. Re-check that ratio, not the raw count, after any colour
+#: notes: change. The token pass also raised avg MV 3.14 -> 3.42 and dropped early
+#: notes: drops 15 -> 12; the CURVE, not the fixing, is now the open item.
+#: notes: 2026-09-09 (user-decided): Biotech Specialist in for Rot-Curse Rakshasa,
+#: notes: Liliana Dreadhorde General in for the 2nd Flamekin Gildweaver. Interaction
+#: notes: 8 -> 9, card advantage 3 -> 4, quality guard clean. Biotech does THREE jobs
+#: notes: here and only one is obvious: its Lander fetches a BASIC, which is the only
+#: notes: card in the list that answers the 8-green-source problem above; its ping is
+#: notes: a CRIME on every artifact sacrifice, feeding Magda and Gisa; and it is a
+#: notes: rotation survivor (EOE ~2028) in a deck whose core is OTJ ~2026.
+#: notes: CRIME CENSUS after this pass (7 sources, and the shape matters more than the
+#: notes: count): Sackville-Bagginses and Biotech Specialist fire on every token or
+#: notes: artifact SACRIFICE, i.e. on cracking a Treasure, so a crime happens on
+#: notes: essentially every turn once either is out. Jolene x2, Stone-Giant and
+#: notes: Roxanne's Meteorites are repeatable ACTIVATED crimes; Terrapact x2 and
+#: notes: Deadly Precision are one-shots. Liliana and Aatchik commit NO crime (each
+#: notes: opponent / each player is not targeting), and neither does Vraska.
+#: notes: 2026-09-09 (user-decided): Brimstone Roundup in for Callous Sell-Sword.
+#: notes: Roundup was chosen over At Knifepoint DELIBERATELY as the DIVERSIFIED pick:
+#: notes: At Knifepoint reads the same crime trigger Magda and Gisa already read, and
+#: notes: its first-strike clause is near-dead here (three outlaws), while Roundup
+#: notes: keys on your SECOND CAST SPELL each turn, which nothing else in the list
+#: notes: reads. Note what that condition does NOT count: activated and triggered
+#: notes: abilities are invisible to it, so Jolene's ping, Stone-Giant's outlet and
+#: notes: the Sackville/Biotech sacrifice triggers do not advance it. With 12 of 36
+#: notes: spells at MV <= 2 it turns on around turn 4. Sell-Sword was the cut because
+#: notes: it was unowned AND rotating ~2026, i.e. a craft with no future.
+#: notes: 2026-09-09 LAND PASS: 3 Mountain -> 3 Training Compound, 1 Swamp ->
+#: notes: Overgrown Tomb. Sources B 11 / R 11 / G 8 -> B 11 / R 11 / G 12, with red
+#: notes: and black UNTOUCHED — Training Compound adds {R} OR {G}, so trading
+#: notes: Mountains for it costs no red. Its condition (control a basic land) is
+#: notes: always on at 12 basics, so it is an untapped dual in practice and the
+#: notes: unconditional tapland count did not move. Cast-on-curve: Mutagen Man's
+#: notes: {G}{G} 28.8% -> 50.7%, Goldvein Hydra 65.4% -> 77.8%, Biotech 58.1% ->
+#: notes: 70.2%, the {B}{G} three-drops 64.7% -> 74.1%. Green is no longer the
+#: notes: outlier; the worst rows are the {B}{B} / {R}{R} five-drops, a curve
+#: notes: problem. TWO STANDING NOTES. (1) ELVEN PASSAGE IS A TRAP HERE — the land
+#: notes: recommender ranks it joint-top on fixing breadth, but its untap rider
+#: notes: needs you to behold an ELF and this deck runs zero, so it is a Vibrant
+#: notes: Cityscape that costs 1 life; use Evolving Wilds or Terramorphic Expanse.
+#: notes: (2) FOUNTAINPORT adds only {C}, so the effective coloured-land count is 23
+#: notes: of 24 — kept because its sac-a-token draw and Treasure abilities got MORE
+#: notes: relevant with Tom Bert and William and Sackville-Bagginses, but it is the
+#: notes: next cut if green tightens again.
 
 # Producers (the mint)
 1 Goldvein Hydra (OTJ) 167
-2 Greedy Freebooter (LCI) 109
+1 Bejeweled Warg (HOB) 117
+1 The Sackville-Bagginses (HOB) 83
 1 Magda, the Hoardmaster (OTJ) 133
 1 Death to Our Enemies (MSH) 127
 2 Jolene, Plundering Pugilist (OTJ) 210
-2 Flamekin Gildweaver (ECL) 140
+1 Flamekin Gildweaver (ECL) 140
+1 Liliana, Dreadhorde General (FDN) 176
 2 Terrapact Intimidator (EOE) 164
 1 War Effort (TDM) 131
 1 Brass's Bounty (FDN) 190
-1 Reckless Ransacking (ECL) 152
+1 Chief Warg's Company (HOB) 151
 1 Mutagen Man, Living Ooze (TMT) 124
 1 Boneyard Desecrator (OTJ) 81
 
 # The mana engine
-2 Roxanne, Starfall Savant (OTJ) 228
+1 Roxanne, Starfall Savant (OTJ) 228
 
 # Payoffs (the spend)
 1 Vraska, the Silencer (OTJ) 237
 2 Crime Novelist (MKM) 121
-1 Krenko, Baron of Tin Street (MKM) 135
+1 Stone-Giant of High Pass (HOB) 113
 1 The Misty Mountains Cold (HOB) 104
 1 Twitching Doll (DSK) 201
 1 Chandra, Spark Hunter (DFT) 116
 2 Pirate Peddlers (TLA) 115
-1 Rot-Curse Rakshasa (TDM) 87
-1 Callous Sell-Sword // Burn Together (WOE) 221
+1 Biotech Specialist (EOE) 214
+1 Brimstone Roundup (OTJ) 115
 1 Aatchik, Emerald Radian (DFT) 187
 1 Ygra, Eater of All (BLB) 241
-1 Food Fight (WOE) 129
+1 Gisa, the Hellraiser (OTJ) 89
 1 Gold Rush (OTJ) 166
+1 Smaug, Wicked Worm (HOB) 164
 
 # Draw / removal (sac-fueled)
-1 Fanatical Offering (LCI) 105
+1 Tom, Bert, and William (HOB) 169
 1 Salt Road Skirmish (TDM) 88
 1 Deadly Precision (TLA) 95
 
@@ -124,17 +213,23 @@
 1 Restless Ridgeline (LCI) 283
 1 Fountainport (BLB) 253
 1 Temple of Malady (FDN) 700
-6 Mountain (MSH) 293
-6 Swamp (MSH) 291
+3 Mountain (MSH) 293
+3 Training Compound (MSH) 275
+5 Swamp (MSH) 291
+1 Overgrown Tomb (ECL) 266
 4 Forest (MSH) 296
 
 # Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 58
 #~ -War Effort | +Generous Plunderer | benched 2026-08 for War Effort: a menace body whose upkeep Treasure is symmetric (the opponent gets one too) and whose attack damage scales with THEIR artifact count, not ours — good in an artifact meta, worse as generic fodder. Bring it back if the Warrior tokens prove surplus.
-#~ -Deadly Precision | +The Sackville-Bagginses | OWNED (HOB, ingested 2026-08-13): fit 73. ETB may
-#~   sacrifice another creature or artifact to draw AND make a Treasure, then every token you
-#~   sacrifice drains 1. Both halves are this deck's engine, not incidental.
-#~ -Gold Rush | +Bejeweled Warg | OWNED (HOB): fit 91, the highest in the batch for this deck.
-#~   Trample, and on combat damage choose a +1/+1 counter on a Wolf OR a Treasure — the Treasure
-#~   mode is what earns the slot here, not the Wolf clause.
+#~ note: applied — The Sackville-Bagginses in for the 2nd Greedy Freebooter.
+#~ note: BENCHED 2026-09-09 — the SECOND Roxanne, Starfall Savant (craft R), cut for Smaug,
+#~ note: Wicked Worm. Written as a note, not a `-X | +Y` line, because the +In staleness check
+#~ note: reads quantity-blind: Roxanne IS in the deck, at 1 copy, so a swap line here would
+#~ note: warn forever (G-04). To restore, take Smaug's slot back. She is LEGENDARY, so the 2nd
+#~ note: copy is redundancy insurance, never a second engine — its realistic value is a fresh
+#~ note: Meteorite when you cast it over the first. She is OTJ and rotates ~2026, so this may
+#~ note: expire before it is worth crafting.
+#~ note: applied — Bejeweled Warg maindecked 2026-09-09 (in for Greedy Freebooter, not the
+#~ note: Gold Rush slot this line originally proposed). Gold Rush stays in the deck.
 #~ note: Deadly Precision carries ⚡cost-as-upside HERE (its sacrifice cost feeds your outlets), so
 #~ note: grade that cut from full text before taking it — the flag says the tool under-rates it.

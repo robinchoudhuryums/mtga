@@ -40,6 +40,7 @@ Distribution-independent. check_all.py folds this in as a HARD gate. Run standal
 (``python3 scripts/check_agreement.py``). Returns a list of error strings; empty ==
 healthy.
 """
+import csv
 import os
 import sys
 
@@ -59,6 +60,7 @@ REQUIRED = [
     ("deck", "_power_seed"), ("wishlist", "_seed_power"),
     ("deck", "owned_role_fillers"), ("deck", "craft_role_fillers"),
     ("deck", "deck_requirements"), ("deck", "deck_build_gap"),
+    ("deck", "load_card_meta"),
 ]
 
 
@@ -386,9 +388,65 @@ def _agree_buildability(errs):
                     "different craft targets.\n    " + "\n    ".join(bad[:6]))
 
 
+def _agree_synergy_store(errs):
+    """QUESTION: what themes does this card have?
+
+    A: `deck.load_card_meta()[name]["synergies"]` — what every theme surface actually
+       reads (`suggest`, `suggest-homes`, `cuts`' fit term, `similar`, centrality, the
+       wishlist idf).
+    B: `card-pool.csv`'s own `Synergies` cell — the CORRECTED store. K-09:
+       `tag_synergies --merge` can only ADD to a library cell, never REMOVE a tag the
+       rules no longer derive, "so the pool is the corrected store".
+
+    That sentence was true about the FILE and false about the MODEL until BS9-01.
+    `load_card_meta` read library-then-pool with a first-wins skip, so for every OWNED
+    card — precisely the cards the BS8-31 tag corrections were about — A returned the
+    UNCORRECTED library row. Measured at the time: 219 of 2,576 shared cards disagreed
+    (`sacrifice` on 131, `ramp` 39, `reanimator` 32, `removal` 16) and 105 of 113 roster
+    decks ran at least one.
+
+    Nothing could see it, which is why it belongs here rather than in a per-model gate:
+    `check_roles --tags` sweeps the POOL, so it compared the corrected store with itself;
+    `check_themes` is MISSING-only, so an EXTRA stale tag is invisible to it by
+    construction; and `check_agreement`'s own `_agree_weakest_cut` takes
+    `load_card_meta()` as its shared INPUT, so both of its implementations inherited the
+    same wrong tags and agreed perfectly. A divergence only exists BETWEEN the model and
+    the store, which is exactly the shape this module exists for.
+
+    A BLANK pool cell is skipped, not compared: the pool carries ~340 of them, and the
+    loader deliberately keeps the library's tags there rather than emptying a row.
+    """
+    meta = deck.load_card_meta()
+    if not meta:
+        # LOUD, per the discipline `_agree_owned` records: a quiet pass is
+        # indistinguishable from a pair that never ran.
+        errs.append("WARN: the synergy-store pair did not run — load_card_meta returned "
+                    "nothing, so the model-vs-pool tag agreement is UNVERIFIED.")
+        return
+    bad, compared = [], 0
+    with open(deck.POOL_CSV, newline="", encoding="utf-8") as fh:
+        for r in csv.DictReader(fh):
+            nl = (r.get("Card Name") or "").strip().lower()
+            pool_tags = [t.strip() for t in (r.get("Synergies") or "").split(";") if t.strip()]
+            if not nl or not pool_tags or nl not in meta:
+                continue
+            compared += 1
+            if list(meta[nl]["synergies"]) != pool_tags:
+                bad.append(f"{nl!r}: model={meta[nl]['synergies']} vs pool={pool_tags}")
+    if not compared:
+        errs.append("WARN: the synergy-store pair compared NOTHING — card-pool.csv has "
+                    "no tagged row the model knows. Unverified, not agreed.")
+        return
+    if bad:
+        errs.append(f"the theme model disagrees with the corrected tag store on "
+                    f"{len(bad)} of {compared} pool-tagged card(s) — the K-09 class, "
+                    f"where a stale library tag the tagger can no longer remove reaches "
+                    f"`cuts` / `suggest` / centrality.\n    " + "\n    ".join(bad[:6]))
+
+
 PAIRS = (_agree_weakest_cut, _agree_legality, _agree_owned,
          _agree_interaction, _agree_power_seed, _agree_role_fillers,
-         _agree_buildability)
+         _agree_buildability, _agree_synergy_store)
 
 
 def check():
