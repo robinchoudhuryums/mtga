@@ -2682,6 +2682,17 @@ Defend the Rider,{G},1,
 "Loot, the Pathfinder",{2}{G}{U}{R},5,Vigilance;Haste;Exhaust;Double strike
 Push the Limit,{5}{R}{R},7,
 Greasewrench Goblin,{R},1,Exhaust
+Loch Mare,{1}{U},2,
+"Eluge, the Shoreless Sea",{1}{U}{U}{U},4,
+Ashling's Command,{3}{U}{R},5,Treasure
+Season of Weaving,{4}{U}{U},6,
+Rapturous Moment,{4}{U}{R},6,
+Resonating Lute,{2}{U}{R},4,
+Kitnap,{2}{U}{U},4,Gift;Enchant
+"Bifur, Melodic Rider",{4}{R/W}{R/W},6,
+"Dwalin, Weaponmaster",{1}{R/W},2,First strike
+Iron Hills Blacksmith,{1}{W},2,Double strike
+"Firion, Wild Rose Warrior",{2}{R},3,
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -3377,13 +3388,10 @@ Warren Elder,{1}{W},2,
 Whiskervale Forerunner,{3}{W},4,Valiant
 Bellowing Crier,{1}{U},2,
 Calamitous Tide,{4}{U}{U},6,
-"Eluge, the Shoreless Sea",{1}{U}{U}{U},4,
-Kitnap,{2}{U}{U},4,Gift;Enchant
 Long River's Pull,{U}{U},2,Gift
 Mindwhisker,{2}{U},3,Surveil;Threshold
 Otterball Antics,{1}{U},2,Flashback
 Plumecreed Escort,{1}{U},2,Flying;Flash
-Season of Weaving,{4}{U}{U},6,
 Shore Up,{U},1,
 Shoreline Looter,{1}{U},2,Threshold
 Spellgyre,{2}{U}{U},4,Surveil
@@ -4712,7 +4720,6 @@ Disruptor of Currents,{3}{U}{U},5,Flash;Convoke
 Flitterwing Nuisance,{U},1,Flying
 Harmonized Crescendo,{4}{U}{U},6,Convoke
 Kulrath Mystic,{2}{U},3,
-Loch Mare,{1}{U},2,
 Lofty Dreams,{3}{U}{U},5,Enchant;Convoke
 "Oko, Lorwyn Liege // Oko, Shadowmoor Scion",{2}{U},3,Transform;Mill
 Rime Chill,{6}{U},7,Vivid
@@ -4779,7 +4786,6 @@ Spry and Mighty,{4}{G},5,
 Tend the Sprigs,{2}{G},3,
 Thoughtweft Charge,{1}{G},2,
 "Trystan, Callous Cultivator // Trystan, Penitent Culler",{2}{G},3,Transform;Mill;Deathtouch
-Ashling's Command,{3}{U}{R},5,Treasure
 Boggart Cursecrafter,{B}{R},2,Deathtouch
 Brigid's Command,{1}{G}{W},3,Fight
 Chaos Spewer,{2}{B/R},3,Blight
@@ -5529,7 +5535,6 @@ Blazing Bomb,{R},1,Blow Up
 Call the Mountain Chocobo,{3}{R},4,Flashback
 Choco-Comet,{X}{R}{R},2,
 "Clive, Ifrit's Dominant // Ifrit, Warden of Inferno",{4}{R}{R},6,Transform;Fight
-"Firion, Wild Rose Warrior",{2}{R},3,
 Item Shopkeep,{1}{R},2,
 Laughing Mad,{2}{R},3,Flashback
 Light of Judgment,{4}{R},5,
@@ -6164,7 +6169,6 @@ Long-Bodied Grey Dog,{3},3,Reach;Treasure;Flash
 "Bofur, Reliable Guardian // Concerted Care",{W} // {1}{W},1,Lifelink
 Dwarven Provisioner,{1}{W},2,
 Esgaroth Garrison,{4}{W},5,
-Iron Hills Blacksmith,{1}{W},2,Double strike
 Lake-town Lookout,{W},1,
 Lake-town Toymaker,{3}{W},4,
 Settle the Wreckage,{2}{W}{W},4,
@@ -6213,8 +6217,6 @@ Ordinary Bear,{3}{G},4,
 Quarrel,{1}{G},2,
 Wood Elves,{2}{G},3,
 Bard the Bowman,{1}{W}{U},3,Reach
-"Bifur, Melodic Rider",{4}{R/W}{R/W},6,
-"Dwalin, Weaponmaster",{1}{R/W},2,First strike
 Fearsome Goblin Pair,{2}{B/R},3,Amass
 Goblin Plate Mail,{1}{B/R},2,Amass;Equip
 The Great Goblin,{1}{B/R}{B/R},3,
@@ -13131,8 +13133,6 @@ Molten Note,{X}{R}{W},2,Flashback
 Moment of Reckoning,{3}{W}{W}{B}{B},7,
 Old-Growth Educator,{2}{B}{G},4,Infusion;Reach;Vigilance
 Prismari Charm,{U}{R},2,Surveil
-Rapturous Moment,{4}{U}{R},6,
-Resonating Lute,{2}{U}{R},4,
 "Sanar, Unfinished Genius // Wild Idea",{U}{R} // {3}{U}{R},2,Treasure;Prepared
 Scolding Administrator,{W}{B},2,Menace;Repartee
 Silverquill Charm,{W}{B},2,

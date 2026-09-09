@@ -5757,3 +5757,34 @@ Exhaust — {R}, {T}: Loot deals 3 damage to any target.",U/R/G,Beast; Noble; ca
 Push the Limit,Sorcery,"Return all Mount and Vehicle cards from your graveyard to the battlefield. Sacrifice them at the beginning of the next end step.
 Vehicles you control become artifact creatures until end of turn. Creatures you control gain haste until end of turn.",R,Vehicle; reanimator; graveyard; sacrifice; haste; aggro,DFT,143,1
 Greasewrench Goblin,Creature — Goblin Artificer,"Exhaust — {2}{R}: Discard up to two cards, then draw that many cards. Put a +1/+1 counter on this creature. (Activate each exhaust ability only once.)",R,Goblin; Artificer; counters; card draw; exhaust; payoff,DFT,132,1
+Loch Mare,Creature — Horse Serpent,"This creature enters with three -1/-1 counters on it.
+{1}{U}, Remove a counter from this creature: Draw a card.
+{2}{U}, Remove two counters from this creature: Tap target creature. Put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)",U,Horse; Serpent; counters; card draw,ECL,57,1
+"Eluge, the Shoreless Sea",Legendary Creature — Elemental Fish,"Eluge's power and toughness are each equal to the number of Islands you control.
+Whenever Eluge enters or attacks, put a flood counter on target land. It's an Island in addition to its other types for as long as it has a flood counter on it.
+The first instant or sorcery spell you cast each turn costs {U} (or {1}) less to cast for each land you control with a flood counter on it.",U,Elemental; Fish; Island; counters,BLB,49,1
+Ashling's Command,Kindred Instant — Elemental,"Choose two —
+• Create a token that's a copy of target Elemental you control.
+• Target player draws two cards.
+• Ashling's Command deals 2 damage to each creature target player controls.
+• Target player creates two Treasure tokens.",U/R,Elemental; tokens; burn; treasure,ECL,205,1
+Season of Weaving,Sorcery,"Choose up to five {P} worth of modes. You may choose the same mode more than once.
+{P} — Draw a card.
+{P}{P} — Choose an artifact or creature you control. Create a token that's a copy of it.
+{P}{P}{P} — Return each nonland, nontoken permanent to its owner's hand.",U,card draw; tokens; bounce,BLB,68,1
+Rapturous Moment,Sorcery,"Draw three cards, then discard two cards. Add {U}{U}{R}{R}{R}.",U/R,card draw,SOS,219,1
+Resonating Lute,Artifact,"Lands you control have ""{T}: Add two mana of any one color. Spend this mana only to cast instant and sorcery spells.""
+{T}: Draw a card. Activate only if you have seven or more cards in your hand.",U/R,card draw; mana; spellslinger,SOS,221,1
+Kitnap,Enchantment — Aura,"Gift a card (You may promise an opponent a gift as you cast this spell. If you do, when it enters, they draw a card.)
+Enchant creature
+When this Aura enters, tap enchanted creature. If the gift wasn't promised, put three stun counters on it.
+You control enchanted creature.",U,Aura; counters; card draw; etb; aura; gift; value; enchant,BLB,53,1
+"Bifur, Melodic Rider",Legendary Creature — Dwarf Bard,"Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.)
+Whenever Bifur enters or attacks, put a +1/+1 counter on target creature.
+As long as you have an enduring story, if a triggered ability of a Dwarf you control triggers, that ability triggers an additional time.",W/R,Dwarf; Bard; counters; storied,HOB,147,1
+"Dwalin, Weaponmaster",Legendary Creature — Dwarf Warrior,"First strike
+Whenever Dwalin enters or attacks, put a hone counter on each Equipment you control. (Each hone counter on an Equipment grants +1/+0 to equipped creature.)",W/R,Dwarf; Warrior; Equipment; counters; first strike; combat,HOB,154,1
+Iron Hills Blacksmith,Creature — Dwarf Artificer,"Double strike
+When this creature enters, create a colorless Equipment artifact token named Axe with ""Equipped creature gets +1/+0"" and equip {2}.",W,Dwarf; Artificer; tokens; etb; equipment; pump; double strike; combat; aggro,HOB,16,1
+"Firion, Wild Rose Warrior",Legendary Creature — Human Rebel Warrior,"Equipped creatures you control have haste.
+Whenever a nontoken Equipment you control enters, create a token that's a copy of it, except it has ""This Equipment's equip abilities cost {2} less to activate."" Sacrifice that token at the beginning of the next upkeep.",R,Human; Rebel; Warrior; Equipped; Equipment; cost-reduction; sacrifice; tokens; equipment; haste; aggro,FIN,137,1
