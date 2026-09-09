@@ -1498,6 +1498,142 @@ class TestCostThatScalesWithADeckCount:
         assert deck.cost_scale_support("wizard", cards, carddata) == 0
 
 
+class TestChosenTypePayoff:
+    """A card whose output scales with a CHOSEN creature type names no type, so K-13's
+    trap is structural here: a literal type-name search returns nothing and reads as a
+    finished answer.
+
+    Orcrist, Goblin-cleaver — "choose a creature type. Create a Treasure token for each
+    creature you control of that type" — was argued against twice in one pass on two
+    claims that were both false: that the ability is dead without the named tribe (the
+    type is chosen ON RESOLUTION, so it is never dead), and that deck 39 fields nothing
+    for it. Neither number came from a tool, because no tool held it.
+    """
+
+    ORCRIST = ("Equipped creature gets +2/+2 and has trample.\n"
+               "Whenever equipped creature deals combat damage to a player, choose a "
+               "creature type. Create a Treasure token for each creature you control of "
+               "that type.\nEquip {3}")
+    LORD = ("As this artifact enters, choose a creature type.\n"
+            "Creatures you control of the chosen type get +1/+1.")
+    CONVERTER = ("As this enchantment enters, choose a creature type.\n"
+                 "Creatures you control are the chosen type in addition to their other "
+                 "types.")
+
+    def test_the_family_is_recognised_across_its_templatings(self):
+        assert deck.type_scale_payoff(self.ORCRIST)
+        assert deck.type_scale_payoff(self.LORD)
+        # The one-sided sweeper reads the SAME concentration from the other side.
+        assert deck.type_scale_payoff(
+            "Choose a creature type. Creatures that aren't of the chosen type get "
+            "-3/-3 until end of turn.")
+
+    def test_a_BLANKET_converter_is_excluded_because_it_inverts_the_term(self):
+        """Arcane Adaptation / Leyline of Transformation make every creature you control
+        the chosen type, so they are worth MORE the more scattered your types are — the
+        opposite claim to every other member. Counting them would rank them backwards."""
+        assert not deck.type_scale_payoff(self.CONVERTER)
+        # A converter scoped to ITSELF is not that shape and stays in.
+        assert deck.type_scale_payoff(
+            "As this creature enters, choose a creature type.\nThis creature is the "
+            "chosen type in addition to its other types.\nOther creatures you control "
+            "of the chosen type get +1/+1.")
+
+    def test_an_ordinary_card_is_silent(self):
+        assert not deck.type_scale_payoff("Deal 3 damage to any target.")
+        assert not deck.type_scale_payoff("")
+        # "choose a creature type" with no payoff clause is a cost or a naming effect.
+        assert not deck.type_scale_payoff("Choose a creature type. Scry 1.")
+
+    def test_support_is_the_BIGGEST_type_the_deck_can_field(self):
+        """The chooser picks on resolution, so the maximum bucket is the read — not the
+        count of any one named tribe, which is what makes the family invisible."""
+        carddata = {
+            "a": {"name": "A", "type": "Creature — Human Soldier", "text": ""},
+            "b": {"name": "B", "type": "Creature — Human Wizard", "text": ""},
+            "c": {"name": "C", "type": "Creature — Dwarf", "text": ""},
+        }
+        cards = [(3, "A", "X", "1"), (2, "B", "X", "2"), (4, "C", "X", "3")]
+        assert deck.type_scale_support(cards, carddata) == (5, "human")
+
+    def test_a_changeling_counts_toward_whichever_type_you_choose(self):
+        """G-59: a changeling IS every creature type — it receives a tribal effect, it
+        just never provides one."""
+        carddata = {
+            "a": {"name": "A", "type": "Creature — Human", "text": ""},
+            "sh": {"name": "Sh", "type": "Creature — Shapeshifter",
+                   "text": "Changeling (This card is every creature type.)"},
+        }
+        assert deck.type_scale_support(
+            [(2, "A", "", ""), (3, "Sh", "", "")], carddata) == (5, "human")
+        # Changelings alone still give you a type to choose.
+        assert deck.type_scale_support([(3, "Sh", "", "")], carddata)[0] == 3
+
+    def test_an_empty_or_creatureless_deck_reads_zero_not_a_crash(self):
+        assert deck.type_scale_support([], {}) == (0, "")
+        assert deck.type_scale_support(
+            [(4, "Mountain", "", "")], {"mountain": {"type": "Basic Land"}}) == (0, "")
+
+    def test_support_is_deterministic_when_two_types_tie(self):
+        """G-54: a dict plus a sort key that can tie is a nondeterministic output, and a
+        tie between two creature types is the ordinary case, not the edge one."""
+        carddata = {"a": {"name": "A", "type": "Creature — Elf", "text": ""},
+                    "b": {"name": "B", "type": "Creature — Zombie", "text": ""}}
+        cards = [(3, "A", "", ""), (3, "B", "", "")]
+        assert len({deck.type_scale_support(cards, carddata) for _ in range(5)}) == 1
+
+    def test_boost_is_zero_below_the_floor_and_rises_then_caps(self):
+        f = deck._TYPE_SCALE_MIN_SOURCES
+        assert deck.type_scale_boost(f - 1) == 0
+        assert 0 < deck.type_scale_boost(f) < deck.type_scale_boost(f + 5)
+        assert deck.type_scale_boost(9999) == deck._TYPE_SCALE_CAP
+
+    def test_the_floor_and_key_are_the_ROSTERS_percentiles(self):
+        """Calibrated from the measured distribution, the method `_DOUBLER_CALIB` records
+        and the check its `triggers` axis failed: across 113 decks the largest
+        creature-type count runs min 3 / p25 7 / p50 9 / p75 13 / p90 17 / max 26, so a
+        floor at or below the p10 would fire on every deck and carry no information."""
+        assert deck._TYPE_SCALE_MIN_SOURCES >= 7
+        assert deck._TYPE_SCALE_KEY_SOURCES >= 13
+
+    def test_the_term_spans_its_range_on_the_LIVE_roster(self):
+        """The saturation check that has to be re-run, not assumed — a bounded term is
+        only bounded usefully if real decks sit on both sides of the floor and few pin
+        the cap. `tier_floor_spread`'s 85% alarm is the same idea one model over."""
+        cd = deck.load_card_data()
+        vals = []
+        for d in deck.roster_decks():
+            _m, cards = deck.parse_deck_file(d["path"])
+            vals.append(deck.type_scale_support(cards, cd)[0])
+        below = sum(1 for v in vals if v < deck._TYPE_SCALE_MIN_SOURCES)
+        capped = sum(1 for v in vals
+                     if deck.type_scale_boost(v) >= deck._TYPE_SCALE_CAP)
+        assert 0.05 < below / len(vals) < 0.60, (
+            f"{below}/{len(vals)} decks below the floor — re-derive the calibration")
+        assert capped / len(vals) < 0.30, (
+            f"{capped}/{len(vals)} decks pin the cap — the `triggers` saturation shape")
+
+    def test_the_cut_keep_bias_only_ever_RAISES(self):
+        """Same contract as the doubler and cost-scale twins: a lord in a deck with no
+        tribe is already sorted up the cut list by theme fit, and subtracting there would
+        punish the same card twice."""
+        assert deck._cuts_type_scale_adj(0) == 0.0
+        assert deck._cuts_type_scale_adj(deck._TYPE_SCALE_MIN_SOURCES - 1) == 0.0
+        assert deck._cuts_type_scale_adj(deck._TYPE_SCALE_MIN_SOURCES) > 0
+        assert deck._cuts_type_scale_adj(9999) == deck._CUTS_MULT_CAP
+
+    def test_suggest_homes_prints_the_deciding_COUNT(self, capsys):
+        """G-52: a verdict surface must print its evidence. The failure this closes was a
+        stated type count that came from nobody's tool, so the label alone is not enough
+        — the number has to be on the row."""
+        from types import SimpleNamespace as NS
+        rc = deck.cmd_suggest_homes(NS(card="Orcrist, Goblin-cleaver", any_format=False))
+        out = capsys.readouterr().out
+        assert rc == 0
+        assert "chosen-type payoff" in out, out[:400]
+        assert "✦" in out, out[:1200]
+
+
 class TestFloorBandClaimsAreAudited:
     """The floor BAND was the one structural claim the rationale audit could not price.
 
@@ -5126,6 +5262,31 @@ class TestProposedAddGateCheck:
         _meta, cards = deck.parse_deck_file(d["path"])
         assert deck.unmet_gate_note("Swamp", cards, cd, mana) == ""
         assert deck.unmet_gate_note("No Such Card At All", cards, cd, mana) == ""
+
+    def test_swap_preview_reports_an_unmet_gate_on_the_add(self, capsys):
+        """The G-40 half: the primitive worked and `swap` — the surface G-06 mandates
+        for grading a change — never called it. Its only caller was `redundancy`."""
+        from types import SimpleNamespace as NS
+        rc = deck.cmd_swap(NS(id="6", cut="Owlin Historian", add="Hobbit Hole",
+                              apply=False, section=None))
+        out = capsys.readouterr().out
+        assert rc == 0
+        assert "⚠ gate:" in out and "0 in this deck" in out, out
+
+    def test_the_probe_is_the_POST_CUT_list(self):
+        """The card being CUT may be the only thing satisfying the add's gate, so the
+        pre-swap deck answers the wrong question. Same add, same deck, opposite verdict
+        depending only on whether the cut has been applied — which is why `_do_swap`
+        builds the probe from `after` rather than from `cards`."""
+        cd, mana = deck.load_card_data(), dict(deck.load_mana())
+        halfling = "Lightfoot Rogue"
+        cards = [(1, halfling, "", ""), (1, "Shock", "", ""), (4, "Mountain", "", "")]
+        assert deck.unmet_gate_note("Hobbit Hole", cards, cd, mana) == "", (
+            "the deck still holds its one Halfling — nothing to warn about")
+        after = deck._cards_after_swap(cards, halfling, "Hobbit Hole", ("", ""))
+        base = [r for r in after if deck._ms_key(r[1]) != deck._ms_key("Hobbit Hole")]
+        note = deck.unmet_gate_note("Hobbit Hole", base, cd, mana)
+        assert "Halfling" in note and "0 in this deck" in note, note
 
 
 class TestStateGateCounts:

@@ -306,6 +306,17 @@ def _pattern_groups():
                  "_COST_SCALE_PLAIN_EQUIP"):
         out.append((f"deck.{name}", getattr(deck, name), "raw"))
     out.append(("deck._REMINDER_RE", deck._REMINDER_RE, "raw"))
+    # The CHOSEN-TYPE payoff family (`type_scale_payoff`). Runs on reminder-stripped
+    # oracle text in its original case, so the raw corpus is the form it sees. All four
+    # matter in the quiet direction: if the CHOOSE or PAYOFF half dies the whole family
+    # reads as ordinary filler again — the K-13 blind spot this term closed, where a
+    # literal type-name search returns nothing and reads as a finished answer. If the
+    # CONVERTER exclusion dies, Arcane Adaptation and Leyline of Transformation get ranked
+    # backwards (they are worth MORE the more scattered your types are). If the CHANGELING
+    # pattern dies, a changeling stops counting toward the type you choose (G-59).
+    for name in ("_TYPE_SCALE_CHOOSE_RE", "_TYPE_SCALE_PAYOFF_RE",
+                 "_TYPE_SCALE_CONVERTER_RE", "_TYPE_SCALE_CHANGELING_RE"):
+        out.append((f"deck.{name}", getattr(deck, name), "raw"))
     # `card_advantage_split` (P3, 2026-09-04): the repeatable-vs-one-shot report beside the
     # card-advantage count. Line-anchored on ORIGINAL-case oracle text, so the raw corpus.
     # If either dies the split silently reads every source as one-shot.
