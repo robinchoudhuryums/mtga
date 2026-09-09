@@ -8,8 +8,8 @@
 #: tier: Last Stand closed the noncreature-answer hole, and Thorin, Mountain-king's
 #: tier: equip-then-deal-damage trigger became readable when the scaling-damage
 #: tier: pattern gained its "up to one target" twin on 2026-08-19 — card advantage
-#: tier: 3 — Ragged Short Spear, the one classified rummage, was CUT for Item Shopkeep
-#: tier: on 2026-08-16 — with several unclassified per axis, the K-12 shape at its
+#: tier: 3 — the deck's one classified rummage was cut on 2026-08-16 — with several
+#: tier: unclassified per axis, the K-12 shape at its
 #: tier: widest: Kíli, Giott, Balin, Dáin's Company and Buster Sword all draw through
 #: tier: loot/wheel/dig/hit triggers no pattern reads, and Bifur/Cloud double them).
 #: tier: A coherent two-half engine with real protection (3) and a live anthem plan;
@@ -21,11 +21,12 @@
 #: archetype: fodder first, not a voltron suit — that is the identity line against
 #: archetype: deck 38 Armory. AMENDED 2026-09-09: "cheap" no longer covers all of
 #: archetype: it. Meteor Sword ({7}) and Thor ({3}{R}{R}) were added on a count, not
-#: archetype: a curve: TEN effects here attach with NO equip cost paid (Kíli's {0}
+#: archetype: a curve: NINE effects here attach with NO equip cost paid (Kíli's {0}
 #: archetype: first equip each turn, Thorin Mountain-king's any-number ETB, Iron
-#: archetype: Hills Stalwart, Dáin Ironfoot, Gilgamesh, Vow to Erebor, and the four
-#: archetype: self-attaching Equipment) plus four cost reducers (Dwarven Mauler's
-#: archetype: −{2}, Mjölnir's worthy {1}, Gold Pan at {1}, Firion's copies at −{2}).
+#: archetype: Hills Stalwart, Dáin Ironfoot, Gilgamesh, Blacksmith's Talent at
+#: archetype: level 2 — a free attach EVERY combat — and the four self-attaching
+#: archetype: Equipment, Samurai's Katana's Job select among them) plus three cost
+#: archetype: reducers (Dwarven Mauler's −{2}, Mjölnir's worthy {1}, Firion's −{2}).
 #: archetype: A printed equip cost is not what this deck pays, so the expensive
 #: archetype: Equipment cost only their CAST. The voltron line still holds: no card
 #: archetype: here wins by suiting one threat — Meteor Sword is removal that happens
@@ -73,6 +74,22 @@
 #: notes: Skateboard, Trusty Boomerang) were graded to the Wylie-family decks, but the
 #: notes: user pushed back on eliminating them entirely — see the flex block; revisit
 #: notes: after games rather than treating the exclusion as settled.
+#: notes: 2026-09-09 SECOND HALF of the top-end pass: Blacksmith's Talent in for
+#: notes: Gold Pan (OTJ rotates ~2026; the Class is a free attach EVERY combat, which
+#: notes: is what makes Meteor Sword's equip repeatable, plus a Sword token that is
+#: notes: itself an Equipment-ETB trigger), Samurai's Katana in for Vow to Erebor (Job
+#: notes: select replaces the free attach in kind and makes its holder a SAMURAI, which
+#: notes: is the only thing that gives Gilgamesh's attach clause a target other than
+#: notes: himself — Leonardo is the second), and Leonardo, Sewer Samurai in for Item
+#: notes: Shopkeep. Leonardo recasts creatures with power OR toughness 1 or less from
+#: notes: the yard: SEVEN of the deck's 21 creatures qualify and they are the engine —
+#: notes: Kíli, Cloud, Giott, Dwalin, Dáin Ironfoot, Dwarven Mauler, Iron Hills
+#: notes: Blacksmith. Dori was the proposed cut for him and was KEPT: cutting Dori and
+#: notes: Gold Pan together would have taken the deck from three nonland mana sources
+#: notes: to one (Glóin alone) in the same pass that added a 7-drop (G-61).
+#: notes: KNOWN COST of the whole pass: instant-speed interaction fell 3 -> 1. The
+#: notes: pieces retired (Judgment Bolt, The Black Arrow's flash, Vow to Erebor) were
+#: notes: the flexible half. Read the interaction profile before adding more removal.
 #: protect: Kíli the Resourceful; Bifur, Melodic Rider; Cloud, Midgar Mercenary; Mjölnir, Hammer of Thor; Orcrist, Goblin-cleaver; Magda, the Hoardmaster
 
 # Dwarves — the trigger engine
@@ -99,9 +116,10 @@
 1 Cloud, Midgar Mercenary (FIN) 10
 1 Gilgamesh, Master-at-Arms (FIN) 139
 1 Firion, Wild Rose Warrior (FIN) 137
-1 Item Shopkeep (FIN) 142
+1 Leonardo, Sewer Samurai (TMT) 17
 1 Thor, God of Thunder (MSH) 156
 1 Barret Wallace (FIN) 129
+1 Blacksmith's Talent (BLB) 125
 
 # Equipment — cheap, auto-attaching, trigger-dense
 1 Orcrist, Goblin-cleaver (HOB) 177
@@ -110,12 +128,11 @@
 1 Dwarven Mattock (HOB) 172
 1 Buster Sword (FIN) 255
 1 Chainsaw (DSK) 128
-1 Gold Pan (OTJ) 242
 1 Sting, Bilbo's Sword (HOB) 178
 1 Meteor Sword (TLA) 258
+1 Samurai's Katana (FIN) 154
 
 # Noncreature support / interaction
-1 Vow to Erebor (HOB) 31
 1 An Unexpected Party // At the Door (HOB) 29
 1 Thorin's Last Stand (HOB) 28
 
@@ -131,6 +148,6 @@
 
 # Flex — options (comments; not part of the 60). See: deck.py flex 74
 #~ note: applied — Thorin's Last Stand in for Coral Sword (the modal artifact/enchantment answer closes the G-24 noncreature-answer hole).
-#~ -Gold Pan | +Web-Shooters | owned: the user's tap-down pushback lives here — the best of that cluster for THIS deck (repeatable attack-tap on a body the engine already equips). Revisit after games.
+#~ note: applied — Blacksmith's Talent in for Gold Pan.
 #~ -Iron Hills Stalwart | +Beatrix, Loyal General | craft R: mass re-attach every combat instead of an ETB attach body; the trade is a Dwarf for a Human and curve 5 -> 6.
 #~ note: applied — Item Shopkeep in for Ragged Short Spear.
