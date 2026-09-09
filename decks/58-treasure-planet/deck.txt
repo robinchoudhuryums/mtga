@@ -82,10 +82,24 @@
 #: notes: and his Goblin-lord half was dead (zero other Goblins). Stone-Giant gives
 #: notes: the top end the curve lacked, a Boulder on entry and on every attack, and
 #: notes: a repeatable {2}{R}+artifact -> 4 damage outlet on the thin interaction axis.
+#: notes: 2026-09-09 (user-decided) x2: The Sackville-Bagginses in for the 2nd Greedy
+#: notes: Freebooter — MV 2, its ETB sacrifice is cost-as-upside here (it feeds Crime
+#: notes: Novelist / Pirate Peddlers / Aatchik on the way past) and draws plus makes a
+#: notes: Treasure, and its second line drains 1 per TOKEN sacrificed, i.e. once per
+#: notes: Treasure you crack for mana. The role model scores it card-advantage 0 because
+#: notes: the draw sits behind a sacrifice cost — a K-12 under-count, not a verdict.
+#: notes: And Smaug, Wicked Worm in for the 2nd Roxanne (benched to the flex block).
+#: notes: ACCEPTED TRADE, flagged by the quality guard: interaction 10 -> 9, because the
+#: notes: 2nd Roxanne's Meteorite reads as removal (2 damage to any target). Bought with
+#: notes: card advantage 2 -> 3 on the axis the tier note calls thin: Smaug draws off
+#: notes: every spell cast with Treasure mana, which is what this deck does every turn.
+#: notes: His ETB (X Treasures = artifacts your OPPONENTS control) is meta-dependent and
+#: notes: often zero — grade him on the draw clause.
 
 # Producers (the mint)
 1 Goldvein Hydra (OTJ) 167
-2 Greedy Freebooter (LCI) 109
+1 Greedy Freebooter (LCI) 109
+1 The Sackville-Bagginses (HOB) 83
 1 Magda, the Hoardmaster (OTJ) 133
 1 Death to Our Enemies (MSH) 127
 2 Jolene, Plundering Pugilist (OTJ) 210
@@ -98,7 +112,7 @@
 1 Boneyard Desecrator (OTJ) 81
 
 # The mana engine
-2 Roxanne, Starfall Savant (OTJ) 228
+1 Roxanne, Starfall Savant (OTJ) 228
 
 # Payoffs (the spend)
 1 Vraska, the Silencer (OTJ) 237
@@ -114,6 +128,7 @@
 1 Ygra, Eater of All (BLB) 241
 1 Food Fight (WOE) 129
 1 Gold Rush (OTJ) 166
+1 Smaug, Wicked Worm (HOB) 164
 
 # Draw / removal (sac-fueled)
 1 Fanatical Offering (LCI) 105
@@ -135,9 +150,14 @@
 
 # Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 58
 #~ -War Effort | +Generous Plunderer | benched 2026-08 for War Effort: a menace body whose upkeep Treasure is symmetric (the opponent gets one too) and whose attack damage scales with THEIR artifact count, not ours — good in an artifact meta, worse as generic fodder. Bring it back if the Warrior tokens prove surplus.
-#~ -Deadly Precision | +The Sackville-Bagginses | OWNED (HOB, ingested 2026-08-13): fit 73. ETB may
-#~   sacrifice another creature or artifact to draw AND make a Treasure, then every token you
-#~   sacrifice drains 1. Both halves are this deck's engine, not incidental.
+#~ note: applied — The Sackville-Bagginses in for the 2nd Greedy Freebooter.
+#~ note: BENCHED 2026-09-09 — the SECOND Roxanne, Starfall Savant (craft R), cut for Smaug,
+#~ note: Wicked Worm. Written as a note, not a `-X | +Y` line, because the +In staleness check
+#~ note: reads quantity-blind: Roxanne IS in the deck, at 1 copy, so a swap line here would
+#~ note: warn forever (G-04). To restore, take Smaug's slot back. She is LEGENDARY, so the 2nd
+#~ note: copy is redundancy insurance, never a second engine — its realistic value is a fresh
+#~ note: Meteorite when you cast it over the first. She is OTJ and rotates ~2026, so this may
+#~ note: expire before it is worth crafting.
 #~ -Gold Rush | +Bejeweled Warg | OWNED (HOB): fit 91, the highest in the batch for this deck.
 #~   Trample, and on combat damage choose a +1/+1 counter on a Wolf OR a Treasure — the Treasure
 #~   mode is what earns the slot here, not the Wolf clause.
