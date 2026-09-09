@@ -101,9 +101,38 @@ def fetch_all(query):
     return cards
 
 
-def row_for(card):
+def corpus_keyword_frequencies(cards):
+    """({keyword_lower: distinct cards carrying it}, corpus size) over the cards being
+    tagged — the population the noise floor should actually be judged against.
+
+    `tags_for` otherwise scores it from card-mana.csv, which `make refresh` rebuilds at
+    step 3, one step AFTER this builder runs. See `tags_for`'s docstring for the measured
+    consequence; the short version is that a keyword absent from the stale mana file reads
+    as frequency 0, which `is_noise_keyword` treats as NOT noise, so every keyword unique
+    to a card added in the same run earned a bare tag for at least one cycle.
+
+    DISTINCT CARDS, not rows — the same unit `keyword_frequencies` counts, and the K-08
+    trap in the other direction: Scryfall returns one object per card with a DFC named
+    `Front // Back`, so a set of names is already per-card, but it is built explicitly so
+    a future `unique=prints` query cannot silently double-count a keyword over the floor.
+    """
+    seen = {}
+    for c in cards:
+        name = (c.get("name") or "").strip()
+        if not name:
+            continue
+        for kw in (c.get("keywords") or []):
+            k = (kw or "").strip().lower()
+            if k:
+                seen.setdefault(k, set()).add(name)
+    return {k: len(v) for k, v in seen.items()}, len({
+        (c.get("name") or "").strip() for c in cards if (c.get("name") or "").strip()})
+
+
+def row_for(card, freq=None, corpus=None):
     type_line, text = oracle_fields(card)
-    tags = tags_for({"Type": type_line, "Card Text": text}, card.get("keywords"))
+    tags = tags_for({"Type": type_line, "Card Text": text}, card.get("keywords"),
+                    freq, corpus)
     return {
         "Card Name": card.get("name", ""),
         "Type": type_line,
@@ -371,11 +400,30 @@ def main():
         return (c.get("set", ""), int(cn) if cn.isdigit() else 0, cn)
     cards.sort(key=sort_key)
 
+    # Score the keyword noise floor against THIS corpus, not card-mana.csv (which
+    # `make refresh` rebuilds one step later — see `tags_for`). `is_noise_keyword` has
+    # always taken an explicit corpus; nothing passed one, so the pool was judged by a
+    # file describing a different, staler population.
+    #
+    # THE CORPUS SIZE DECIDES WHETHER THE FLOOR ENGAGES AT ALL, and the two scopes fall
+    # on opposite sides of `_NOISE_MIN_CORPUS` (5000). Measured 2026-09-09:
+    #   --all              15,977 cards  -> floor engages, self-consistent. This is the
+    #                                      scope `make refresh` uses (G-18).
+    #   default (Standard)  4,887 cards  -> BELOW the floor, so the heuristic disengages
+    #                                      and every keyword is emitted.
+    # That is the guard working as its own comment describes ("a small corpus degrades to
+    # today's behaviour, never a confident wrong one") — judging a Standard-only pool by
+    # the full Arena population is scoring one population with another, which is the bug
+    # this change exists to remove, not a behaviour worth preserving. Note 4,887 sits just
+    # under 5,000: a Standard rotation can move the narrow build across the threshold, so
+    # read a narrow pool's bare keyword tags as unfiltered by default.
+    kw_freq, kw_corpus = corpus_keyword_frequencies(cards)
+
     def _write(fh):
         writer = csv.DictWriter(fh, fieldnames=POOL_HEADER, quoting=csv.QUOTE_MINIMAL)
         writer.writeheader()
         for c in cards:
-            writer.writerow(row_for(c))
+            writer.writerow(row_for(c, kw_freq, kw_corpus))
     atomic_write(args.out, _write)
     # Stamp the build date so suggest can flag a stale pool (rotation happened since),
     # plus the QUERY so the freshness skip above can tell a full-pool build from a

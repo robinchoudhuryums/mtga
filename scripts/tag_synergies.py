@@ -814,7 +814,25 @@ def type_subtypes(type_line):
     return subs
 
 
-def tags_for(row, keywords=None):
+def tags_for(row, keywords=None, freq=None, corpus=None):
+    """Synergy tags for one card. `freq`/`corpus` score the noise floor against a
+    SPECIFIC corpus instead of card-mana.csv — see `is_noise_keyword`, which has always
+    accepted them; this is the parameter that lets a CALLER supply the population it is
+    actually tagging.
+
+    Why it exists: `build_pool.py` runs at step 2 of `make refresh` and card-mana.csv is
+    rebuilt at step 3, so the pool's noise floor was judged against the PREVIOUS cycle's
+    mana file — and `0 < freq.get(k, 0)` means an absent keyword reads as freq 0, i.e.
+    NOT noise, so every keyword unique to a card added in that same run got a bare tag
+    for a cycle. Measured on the 2026-09-09 refresh: `halflingcycling` and `designed only
+    for killing` (both 0 -> 1) plus `undying` (2 -> 1, K-08's DFC double-count). The lag
+    did not reliably self-correct either, because `build_pool`'s reuse guard keys on the
+    tagger fingerprint, which does not hash card-mana.csv — so on any cadence faster than
+    weekly the stale tags persisted until a tagger edit forced a rebuild.
+
+    Defaults are None on purpose: `wishlist.py` and `app.py` tag ONE card with no corpus
+    of their own, and the library merge's universe IS card-mana.csv (INV-02), so all
+    three keep the old behaviour exactly."""
     type_line = (row.get("Type") or "").strip()
     text = (row.get("Card Text") or "").strip()
     t_low, x_low = type_line.lower(), text.lower()
@@ -853,7 +871,7 @@ def tags_for(row, keywords=None):
     # Skip Universe-Beyond flavor ability names (see FLAVOR_KEYWORDS).
     for kw in (keywords or []):
         k = kw.strip().lower()
-        if not k or is_noise_keyword(k):
+        if not k or is_noise_keyword(k, freq, corpus):
             continue
         if k not in tags:
             tags.append(k)

@@ -929,6 +929,71 @@ costs nothing is a place where the fix can cost nothing.** If "unknown" can neve
 "known", the state machine has one absorbing state and it is the broken one.
 
 
+### 2026-09-09 — the refresh ORDER made the pool's noise floor read a stale population
+
+`make refresh` runs `build_pool.py` at step 2 and `build_mana.py --pool` at step 3, and
+that order is a real dependency: build_mana reads card-pool.csv to know which cards to
+resolve (G-13). But the arrow ran the other way too, invisibly. `tags_for` reaches
+card-mana.csv through `is_noise_keyword`, so **the pool's keyword noise floor was judged
+against the previous cycle's mana file.**
+
+**Scope, measured — it was narrower than it first looked.** Per-card keywords never
+lagged: `build_pool.py` passes Scryfall's live `card.get("keywords")` straight into
+`tags_for`. And `is_noise_keyword` short-circuits on anything in `KEYWORD_THEMES`,
+`FLAVOR_KEYWORDS` or `deck.ENGINE_THEMES` **before** any frequency read, so all 218
+indexed keywords were immune. Only the ~225 UNINDEXED keywords were exposed.
+
+**The failure direction is the "absent = unknown" shape this file already records for the
+build stamp (BS3-02).** The guard is `0 < freq.get(k, 0) <= _NOISE_MAX_CARDS`, so a
+keyword the stale file has never seen scores frequency 0 — which is not `> 0`, therefore
+NOT noise, therefore emitted. Every keyword unique to a card added in that same run earned
+a bare tag for at least one cycle. Measured across the 2026-09-09 refresh, exactly three
+keywords flipped, all on the second derive:
+
+| keyword | freq | cause |
+|---|---|---|
+| `halflingcycling` | 0 → 1 | absent from the stale mana file |
+| `designed only for killing` | 0 → 1 | absent from the stale mana file |
+| `undying` | 2 → 1 | K-08's DFC double-count, corrected by the mana rebuild |
+
+**What made a one-cycle lag permanent.** `build_pool`'s reuse guard returns early when the
+pool is inside the freshness window, the query matches and the tagger fingerprint is
+unchanged — and the fingerprint hashes `tag_synergies.py` plus `deck.ENGINE_THEMES`, never
+card-mana.csv. That omission was a deliberate, documented non-goal (a derived file's hash
+changes on every mana rebuild, so the reuse would never fire). The consequence was not
+documented: on any refresh cadence faster than the window, the stale tags survived until
+something else forced a rebuild. Here they survived until an unrelated tagger edit did.
+
+**The opposite direction is structurally possible and has not fired:** a stale `freq=1` for
+a keyword a new set expands onto many cards would SUPPRESS a real mechanic's tag for a
+cycle. Nothing measures it, because nothing looks.
+
+### The fix, and why it is not a workaround
+
+`is_noise_keyword(kw, freq=None, corpus=None)` has always accepted an explicit corpus —
+`check_keywords.py` and the tests pass one. `tags_for` was the single caller that did not
+thread it. It now does, and `build_pool` computes frequencies from **its own fetched
+corpus**, which it already holds in full (`fetch_all` completes before any row is built).
+
+That is strictly more correct rather than merely earlier: the floor now describes exactly
+the population being tagged, instead of a different file that happened to sit nearby. It
+also dissolves the non-goal — the noise floor no longer depends on anything outside the
+tagger fingerprint, so there is nothing left to hash.
+
+**Verification: a full `--all --refetch` rebuild changed 0 of 15,977 Synergies cells.**
+That is the result to want. The two corpora agree while they are in sync, so the change is
+a no-op today and only bites when they diverge — which is the bug.
+
+**CORPUS SIZE DECIDES WHETHER THE FLOOR ENGAGES, and the two scopes straddle the
+threshold.** `_NOISE_MIN_CORPUS` is 5,000; measured 2026-09-09, `--all` returns 15,977
+cards and the Standard-only default returns **4,887**. So a narrow build now sits just
+below the floor and emits every keyword unfiltered. That is the guard behaving as its own
+comment describes — "a small corpus degrades to today's behaviour, never a confident wrong
+one" — and judging a Standard-only pool by the full Arena population is scoring one
+population with another, the very thing this change removes. But 4,887 against 5,000 is
+close: a Standard rotation can move the narrow build across the threshold in either
+direction, so read a narrow pool's bare keyword tags as unfiltered by default.
+
 ## [G-19] `card-wishlist.csv` is UNOWNED craft targets
 
 **`card-wishlist.csv` is UNOWNED craft targets**, separate from the owned library

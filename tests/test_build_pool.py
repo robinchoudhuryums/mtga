@@ -260,3 +260,88 @@ class TestUnreleasedPrintingsStayOutOfThePool:
         _run(env, "--allow-shrink")
         assert env["calls"] == [build_pool.QUERY_ALL]
         assert "date<=now" in env["calls"][0]
+
+
+class TestNoiseFloorScoresTheCorpusBeingTagged:
+    """The pool's keyword noise floor was judged by card-mana.csv — a file `make refresh`
+    rebuilds one step LATER.
+
+    `make refresh` runs build_pool at step 2 and build_mana at step 3, and that order is a
+    real dependency (build_mana --pool reads card-pool.csv, G-13). But `tags_for` reached
+    card-mana.csv through `is_noise_keyword`, so the pool was scored against the PREVIOUS
+    cycle's population. The guard is `0 < freq.get(k, 0) <= _NOISE_MAX_CARDS`, so a keyword
+    the stale file has never seen reads as frequency 0 — NOT noise — and every keyword
+    unique to a card added in that same run earned a bare tag for at least one cycle.
+
+    It did not reliably self-correct: build_pool's reuse guard keys on the tagger
+    fingerprint, which deliberately does not hash card-mana.csv (a derived file's hash
+    would change on every mana rebuild and the reuse would never fire), so on any cadence
+    faster than the freshness window the stale tags persisted until a tagger edit forced a
+    rebuild. Measured on the 2026-09-09 refresh: `halflingcycling` and `designed only for
+    killing` (0 -> 1) and `undying` (2 -> 1, K-08's DFC double-count) all flipped only on
+    the second derive.
+    """
+
+    def test_frequencies_count_DISTINCT_CARDS(self):
+        """The unit `keyword_frequencies` uses, and K-08's trap in the other direction: a
+        per-ROW tally lets one card clear a floor meant to need two."""
+        cards = [{"name": "A", "keywords": ["Flying", "Zorp"]},
+                 {"name": "B", "keywords": ["Flying"]},
+                 {"name": "C // D", "keywords": ["Zorp"]},
+                 {"name": "", "keywords": ["Ignored"]}]
+        freq, corpus = build_pool.corpus_keyword_frequencies(cards)
+        assert freq == {"flying": 2, "zorp": 2}
+        assert corpus == 3, "the unnamed entry must not inflate the corpus"
+
+    def test_a_keyword_UNKNOWN_to_card_mana_is_still_scored(self):
+        """The bug itself. Under the old path this keyword scored frequency 0 against
+        card-mana.csv, which reads as not-noise, and the bare tag shipped."""
+        import tag_synergies as ts
+        row = {"Type": "Instant", "Card Text": ""}
+        big = ts._NOISE_MIN_CORPUS + 1
+        assert "zorpcycling" not in ts.tags_for(row, ["Zorpcycling"], {"zorpcycling": 1}, big)
+        assert "zorpcycling" in ts.tags_for(row, ["Zorpcycling"], {"zorpcycling": 2}, big)
+
+    def test_a_corpus_too_small_to_judge_does_NOT_suppress(self):
+        """`_NOISE_MIN_CORPUS` degrades to emitting rather than to a confident wrong
+        answer, which is what makes it safe to hand the floor a narrower corpus. The
+        default (Standard-only) build measured 4,887 cards on 2026-09-09 against a 5,000
+        floor, so it sits just BELOW and its bare keyword tags are unfiltered."""
+        import tag_synergies as ts
+        row = {"Type": "Instant", "Card Text": ""}
+        small = ts._NOISE_MIN_CORPUS - 1
+        assert "zorpcycling" in ts.tags_for(row, ["Zorpcycling"], {"zorpcycling": 1}, small)
+
+    def test_an_INDEXED_keyword_never_consulted_the_corpus_either_way(self):
+        """`is_noise_keyword` short-circuits on a declared mechanic before any frequency
+        read, which is why the 218 indexed keywords were never exposed to the lag — and
+        why `recruit`/`storied` stopped being exposed the moment they were indexed."""
+        import tag_synergies as ts
+        row = {"Type": "Creature — Bird", "Card Text": ""}
+        assert "flying" in ts.tags_for(row, ["Flying"], {"flying": 1},
+                                       ts._NOISE_MIN_CORPUS + 1)
+
+    def test_the_defaults_are_UNCHANGED_for_the_single_card_callers(self):
+        """`wishlist.py` and `app.py` tag one card with no corpus of their own, and the
+        library merge's universe IS card-mana.csv (INV-02). Passing nothing must still
+        read the mana file, or this fix silently re-scopes three other callers."""
+        import tag_synergies as ts
+        assert "evasion" in ts.tags_for({"Type": "Creature — Bird", "Card Text": ""},
+                                        ["Flying"])
+
+    def test_the_corpus_REACHES_row_for(self, monkeypatch):
+        """The wiring anchor. A pure-function fix nothing calls is the G-40 shape this
+        module has paid for repeatedly — `row_for` must actually thread the corpus, or
+        every assertion above is true and the pool is still scored by card-mana.csv."""
+        import tag_synergies as ts
+        seen = {}
+
+        def spy(row, keywords=None, freq=None, corpus=None):
+            seen["freq"], seen["corpus"] = freq, corpus
+            return []
+
+        monkeypatch.setattr(build_pool, "tags_for", spy)
+        build_pool.row_for({"name": "X", "keywords": ["Zorp"], "type_line": "Creature",
+                            "oracle_text": ""}, {"zorp": 1}, 9999)
+        assert seen == {"freq": {"zorp": 1}, "corpus": 9999}, (
+            "row_for dropped the corpus — the pool is still judged by card-mana.csv")

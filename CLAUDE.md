@@ -394,9 +394,10 @@ directions.
   plus the VALUE of `deck.ENGINE_THEMES` (BS2-23; BS4-37 hashed all of deck.py, BS5-06
   narrowed it back because that staled the pool every cycle) — and a mismatch defeats it. An ABSENT hash means UNKNOWN and rebuilds ONCE (the
   reuse path returned before writing a stamp, so "unknown = reuse" could never arm —
-  BS3-02). **Stated non-goal:** card-mana.csv's keyword frequencies also feed the noise
-  floor and are NOT hashed, because a derived file's hash would change on every mana
-  rebuild and the reuse would never fire. `--refetch` (`make refresh REFETCH=1`). [G-18]
+  BS3-02). **The card-mana.csv noise-floor dependency is GONE, not accepted (2026-09-09)** —
+  build_pool runs at step 2 and card-mana.csv is rebuilt at step 3, so the floor judged the
+  pool by the PREVIOUS cycle's population; it now scores against its OWN fetched corpus
+  (0 of 15,977 cells moved). `--refetch` (`make refresh REFETCH=1`). [G-18]
 - **`card-wishlist.csv` is UNOWNED craft targets**, with DFCs under their full
   `Front // Back` name. `--rank` blends a hand-graded Power 50/50 with theme fit plus a
   bounded cross-deck breadth bonus; **lands rank on manabase value instead**, since theme
