@@ -200,21 +200,57 @@ upkeep draw is your first card of the turn and your draw step is your second, so
 Foundations (FDN) — long legality, does not rotate. Its second line drains the opponent 1
 per draw, which is the deck's only reach.
 
-### O6 — Distinctness: the mechanic exists on the roster, in the wrong colours and the wrong plan.
+### O6 — **CORRECTED 2026-09-10, after the user pushed back. My distinctness claim was wrong.**
 
-`deck.py rotation`-style roster scan of the 27-card family: **deck 37 Wizardz (UBR)** holds
-6 and its `#: archetype:` says outright "heavy card draw feeds 'draw your second card'
-payoffs". Deck 43 (WUB hand-SIZE control) holds 5, deck 12 (UB draw control) 4.
+**What I wrote and what is actually true.** I said the mechanic "exists on the roster only
+as deck 37 Wizardz (UBR)" and that "no WU deck and no mono-U deck runs this theme — none of
+them draws twice a turn on purpose", and I justified crafting Ravenhill Flock on the ground
+that "no roster deck draws repeatedly". **All of that is false.** Measured across every deck
+whose `#: colors:` contains U (draw-mentioning nonland cards / nonland cards; payoffs =
+cards that CARE that you drew; engines = repeatable draw sources):
 
-So the mechanic is represented — as a **Grixis Wizard value/storm** deck. A WU build is a
-different deck on every other axis (colours, tribe, plan, curve): fliers and Clue tokens
-with a lifegain/tokens sub-theme, not a spell chain into copiers. G-47's rule applies —
-theme similarity and card overlap are different questions, and the castable overlap with 37
-is ~6 mono-U cards. **Some overlap is fine; state it rather than hide it.**
+| deck | colors | payoffs | engines | draw density |
+|---|---|---:|---:|---|
+| **43 Uatu The Watcher** | WUB | **11** | **10** | 22/35 = **63%** |
+| **12 Drawn Conclusions** | UB | **8** | 2 | 20/35 = 57% |
+| 26b Iron Forge — Ancient Decay | UR | 1 | 9 | 20/36 = 56% |
+| 22 Bloodbending (+brawl) | UB | 3–5 | 3–4 | 17/35 = 49% |
+| **37 Wizardz** | UBR | 6 | 1 | 14/35 = 40% |
+| 32 Mimicry | UB | 3 | 5 | 14/36 = 39% |
+| 51 Unlocked | U | 3 | 2 | 13/34 = 38% |
+| **60a Redline — Night Circuit** | UB | 2 | **9** | 10/28 = 36% |
+| 47 Grid Overload | U | 1 | 4 | 13/37 = 35% |
 
-No WU deck and no mono-U deck on the roster runs this theme. 16 Moon Spirit is WU tempo,
-27 Blink is WU ETB value, 51 Unlocked is mono-U Rooms control, 47 Grid Overload is mono-U
-affinity — none of them draws twice a turn on purpose.
+Deck 43 holds **more** of the 27-card draw-trigger family than 37 does (5 vs 4 once
+variants are separated), and its archetype header is explicitly a draw engine — "every
+point of life gained draws a card … no maximum hand size". Deck 12 is *named* Drawn
+Conclusions and holds four of the family including Kid Loki, Atlantean Cavalry, Erudite
+Wizard and Messenger Hawk. **And deck 60a already runs Scrawling Crawler as a documented
+engine piece** — its archetype prose names the exact interaction I presented as a discovery
+("Scrawling Crawler (opponents' draw on YOUR upkeep drains them)"), alongside Vnwxt for
+draw doubling.
+
+**What survives the correction, measured rather than asserted:**
+
+1. **Card overlap is low.** The 33-card proposed spine shares **8 cards with deck 43**
+   (24%), 5 with 37, 5 with 12, 4 with 15. G-47's calibration — deck 52a at 14 shared with
+   its own parent is fine — puts 8 comfortably inside "distinct". Theme similarity and card
+   overlap are different questions and some overlap is fine.
+2. **12 of the 27 family members are in no deck at all.**
+3. **No WU or mono-U deck is BUILT on it.** Every dense draw deck is U+B or U+B+R. 51, 47,
+   18 and 16 hold exactly one family member each, incidentally.
+
+**A supporting argument I tried and REFUTED, so it is not used below.** I hypothesised the
+12 unplaced cards are unplaced because they are *cheap* and the roster's draw decks are
+expensive control decks with no room for two-drops. Measured: placed avg MV **2.73**,
+unplaced avg MV **2.67**. Identical. I have no measured explanation for why those 12 are
+unplaced and will not invent one — four are simply from the newest set (HOB).
+
+**Net effect on the recommendation.** The case for a new deck is **narrower than I first
+stated**: it is a COLOUR-and-PLAN gap (no WU build; every dense one is a U+B/U+R control or
+value deck), not a mechanical gap. That is a legitimate reason, but it is the user's call
+whether it clears "distinct enough", and the honest alternative — feed the unplaced cards
+to 43 and 12 instead — is now stated as option B in §6.
 
 ### O7 — The opponent-draw axis is real, is exactly three cards, and two are unowned.
 
@@ -266,6 +302,17 @@ COUNT and the TRIGGER templating, so `Whenever an Equipment you control enters, 
 card` (Jane Foster) matched COUNT first and the TRIGGER bucket read **1**. Re-run
 non-exclusively it reads 2 (Jane Foster, Kíli). A bucket count from a first-match loop is
 not a count — this is the G-67 whitelist problem wearing a control-flow disguise.
+
+**E4 — I asserted the roster had no draw-focused deck, having run the sweep that showed it did.**
+The concentration scan printed deck 43 at 5 family members and deck 12 at 4 alongside deck
+37's 4, and I wrote "the mechanic exists on the roster only as deck 37", disposing of 43 and
+12 by their archetype LABELS ("hand-size control", "draw control") instead of by their
+contents. Deck 43 is 63% draw cards with 11 payoffs and 10 repeatable engines; deck 12 is
+named *Drawn Conclusions*. I also presented Scrawling Crawler as a find when deck 60a's own
+prose already describes the interaction. **The failure shape: I ran the measurement, then
+overrode it with a category read of a one-line archetype header — the exact move F9 and
+G-49 both forbid** (the header is the older claim; the measurement wins). Caught by the
+user, by no gate. See O6.
 
 **E3 — Deck 27 runs Jane Foster and ZERO Equipment, so half her text is dead right now.**
 `deck.py targets 27` reports "No gated effects detected": a trigger with no possible source
@@ -333,7 +380,7 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | **Knowledge Seeker** | {1}{U} | ◇ | ★★ | Grows on the second draw **and** replaces itself with a Clue when it dies. |
 | **Mischievous Mystic** | {1}{U} | ◇ | ★★★ | Second draw → a 1/1 **flier** every turn. The token half of the plan and the best payoff at 2 mana. |
 | **Master's Councillors** | {1}{U} | ✗ | ★★ | Second draw → mill 3, and +2/+0 per seven-card graveyard — it mills itself into a threat. Unowned, HOB. |
-| **Ravenhill Flock** | {3}{U} | ◇ | ★★ | Grows on **every** draw, not just the second — the payoff that scales with the whole engine. 4 mana for a 2/2-ish body is the cost. **Craft answer: yes, but only into this deck** — `suggest-homes` finds no current home, and it is unowned and unplaced precisely because no roster deck draws repeatedly. |
+| **Ravenhill Flock** | {3}{U} | ◇ | ★★ | Grows on **every** draw, not just the second — the payoff that scales with the whole engine. 4 mana for a 2/2-ish body is the cost. **Craft answer: only if this deck gets built.** `suggest-homes` finds no current home. My first reason for that ("no roster deck draws repeatedly") was false — 43, 12, 26b and 60a all do; it is unplaced and I have no measured explanation why (see O6). |
 | **Clinquant Skymage** | {3}{U} | ◇ | ★★ | Same trigger as Ravenhill Flock, already owned, already in deck 37. |
 | **Astrologian's Planisphere** | {1}{U} | ★ | ★★ | Third card each turn + noncreature spells; and it makes the carrier a **Wizard**, which is Wizard's Staff's Equip {1}. ⚠ rotates. |
 | **Messenger Hawk** | {2}{U/B} | ◇ | ★★ | Hybrid, on-colour in U (G-58). ETB Clue **and** +2/+0 once you have drawn two — enabler and payoff in one card. |
@@ -401,12 +448,14 @@ equipment in this pile. A UW build would be the fourth W-based one. The 11 blue 
 are homeless because **no equipment deck is W+U** (O3), which is a gap in the colour grid,
 not a deck-shaped hole.
 
-**(2) DO build a new deck — on the second pile's actual theme: `WU — draw your second card
-each turn`.** 21 Standard WU-castable payoffs, **12 of them in no deck at all**; the
-mechanic exists on the roster only as **Grixis Wizard storm (37)**, so a WU fliers-and-
-Clues build is distinct in colours, tribe, plan and curve (O5, O6). Roughly **60 of the 67**
-second-pile cards feed it. This is F10 firing exactly as the rule predicts: the cluster
-that kept getting rejected for the same reason was the deck asking to be built.
+**(2) A new `WU — draw your second card each turn` deck is DEFENSIBLE BUT NOT OBVIOUS — the
+user's call, and option B below is the real alternative.** 21 Standard WU-castable payoffs,
+**12 of them in no deck at all**, and **60 of the 67** second-pile cards mention drawing
+(the 7 that do not are exactly the equipment payoffs). The argument is a COLOUR-and-PLAN
+gap, **not** a mechanical gap: the roster already has four dense draw decks (43 WUB at 63%
+density with 11 payoffs, 12 UB, 37 UBR, 60a UB) — see the O6 correction — but none is WU
+and all four are control/value/midrange rather than a curve of 1- and 2-drop payoffs.
+Overlap with the closest, deck 43, is 8 of 33 cards.
 
 **(3) Put the genuinely-blue equipment into deck 27, not into a new deck.** Deck 27 already
 runs **The Mighty Thor, Jane Foster**, whose "whenever an Equipment you control enters,
@@ -423,7 +472,8 @@ board. **Not** a control deck: the payoffs are 1- and 2-drops that grow, so it c
 
 **The engine (the part that must be right):**
 - **Scrawling Crawler** {3} — upkeep "each player draws" makes your draw step your *second*
-  card every turn, for free. FDN, no rotation. **Unowned.** Nothing else in WU does this.
+  card every turn, for free. FDN, no rotation. **Unowned, and already listed in deck 60a**,
+  whose prose names this exact interaction — so it is a proven engine here, not a find.
 - **Gleaming Splendor** {1}{W} — `{2}{W}: two players each draw` is a repeatable on-demand
   second draw for BOTH sides, plus a Treasure on their second draw. **Owned.**
 - **The Unagi of Kyoshi Island** {3}{U}{U} — their second draw → you draw two. Flash + ward.
@@ -457,7 +507,28 @@ Floodpits {3}{U}{U} (impending {1}{U}{U}), Sunpearl Kirin {1}{W}, Glen Elendra G
 4. **Two of the three engine pieces are unowned.** Reported as information (G-10), not as a
    design constraint — the list above is the optimal list regardless.
 
-### B. Deck 27 Blink — the equipment adds, ranked
+### B. ALTERNATIVE to a new deck — feed 43 and 12 instead
+
+Stated as a real option, not a courtesy, because O6 weakened option A. Deck 43 (WUB, 11
+draw payoffs, 10 engines, 63% density) and deck 12 (UB, "card-draw control", 8 payoffs) are
+already the decks this pile's theme belongs to, and both can cast most of it.
+
+- **Gleaming Splendor** {1}{W} → **deck 43**. Its `{2}{W}: two players each draw` is a
+  repeatable draw outlet, and 43 is the deck that converts drawing into a win condition.
+- **The Unagi of Kyoshi Island** {3}{U}{U} → **43 or 12**. Both cast it; both draw enough
+  that the opponent's second draw is easy to force.
+- **Lakeshore Apothecary / Master's Councillors / Jaded Analyst / Otter-Penguin / Private
+  Eye / Tiger-Seal** → **12**, which already runs four of the family.
+- **Ravenhill Flock** → 43 or 12 (grows on *every* draw; both draw 20+ cards' worth).
+
+**The trade-off, plainly:** option B costs nothing and gets these cards played sooner, but
+it deepens two decks that are already deep and leaves the WU colour pair without a draw
+deck. Option A builds the deck the pile is actually shaped like, at the cost of being the
+fifth draw-heavy blue deck on the roster. **I do not think the measurements decide this —
+they say both are reasonable.**
+
+
+### C. Deck 27 Blink — the equipment adds, ranked
 
 Deck 27's measured deficits (§2): **card advantage 4, protection 1, ZERO answers to a
 noncreature permanent.** Everything below is chosen against those three, not against the
@@ -487,7 +558,7 @@ equipment theme.
 - **Moonlit Meditation.** Does what Mirrormind Crown does for 2 less and with no equip cost
   — if a token-copy effect goes into 27 at all, this is the one. Still a build-around.
 
-### C. PROTECT list — what the rankings structurally cannot see
+### D. PROTECT list — what the rankings structurally cannot see
 
 If any of these sort to the top of a `cuts` list, that is the ranking failing, not the card:
 - **Jane Foster (deck 27)** — she is the *reason* the equipment adds work; `cuts` scores
@@ -499,7 +570,7 @@ If any of these sort to the top of a `cuts` list, that is the ranking failing, n
   the static Treasure line.
 - **Air Nomad Legacy (new deck)** — a 2-mana enchantment doing two jobs, neither tagged.
 
-### D. Craft cost — INFORMATION ONLY, at the end, per the Player Profile
+### E. Craft cost — INFORMATION ONLY, at the end, per the Player Profile
 
 Unowned in the plan above: **Scrawling Crawler** (R), **The Unagi of Kyoshi Island** (R),
 **Ravenhill Flock** (U), **Lakeshore Apothecary** (C), **Master's Councillors** (U),
@@ -510,7 +581,7 @@ Toymaker / Agent 13 / Spider-UK / Cursed Windbreaker / Thief's Knife / The Key t
 Vault** (U/R). Sequencing note only: **Scrawling Crawler first** — nothing else in the list
 changes as many cards' behaviour.
 
-### E. Not resolved here
+### F. Not resolved here
 
 - Whether to also spin a **`38a` UW variant** of Armory rather than a new deck. Cheaper in
   roster terms, but it inherits 38's white payoff shell and does not use the draw theme —
