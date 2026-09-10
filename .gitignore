@@ -28,3 +28,8 @@ credentials*.json
 # pytest cache (unit-test layer)
 .pytest_cache/
 .cycle/.tests-green-sig
+# Forensic log of every atomic_write landing inside the repo (lib._log_atomic_write).
+# Diagnostic only, rotates at ~1MB, and names the caller of a write — kept OUT of git
+# because it is machine- and run-specific, not a record anyone should review in a diff.
+.cycle/atomic-writes.log
+.cycle/atomic-writes.log.1

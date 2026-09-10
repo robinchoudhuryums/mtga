@@ -929,6 +929,71 @@ costs nothing is a place where the fix can cost nothing.** If "unknown" can neve
 "known", the state machine has one absorbing state and it is the broken one.
 
 
+### 2026-09-09 — the refresh ORDER made the pool's noise floor read a stale population
+
+`make refresh` runs `build_pool.py` at step 2 and `build_mana.py --pool` at step 3, and
+that order is a real dependency: build_mana reads card-pool.csv to know which cards to
+resolve (G-13). But the arrow ran the other way too, invisibly. `tags_for` reaches
+card-mana.csv through `is_noise_keyword`, so **the pool's keyword noise floor was judged
+against the previous cycle's mana file.**
+
+**Scope, measured — it was narrower than it first looked.** Per-card keywords never
+lagged: `build_pool.py` passes Scryfall's live `card.get("keywords")` straight into
+`tags_for`. And `is_noise_keyword` short-circuits on anything in `KEYWORD_THEMES`,
+`FLAVOR_KEYWORDS` or `deck.ENGINE_THEMES` **before** any frequency read, so all 218
+indexed keywords were immune. Only the ~225 UNINDEXED keywords were exposed.
+
+**The failure direction is the "absent = unknown" shape this file already records for the
+build stamp (BS3-02).** The guard is `0 < freq.get(k, 0) <= _NOISE_MAX_CARDS`, so a
+keyword the stale file has never seen scores frequency 0 — which is not `> 0`, therefore
+NOT noise, therefore emitted. Every keyword unique to a card added in that same run earned
+a bare tag for at least one cycle. Measured across the 2026-09-09 refresh, exactly three
+keywords flipped, all on the second derive:
+
+| keyword | freq | cause |
+|---|---|---|
+| `halflingcycling` | 0 → 1 | absent from the stale mana file |
+| `designed only for killing` | 0 → 1 | absent from the stale mana file |
+| `undying` | 2 → 1 | K-08's DFC double-count, corrected by the mana rebuild |
+
+**What made a one-cycle lag permanent.** `build_pool`'s reuse guard returns early when the
+pool is inside the freshness window, the query matches and the tagger fingerprint is
+unchanged — and the fingerprint hashes `tag_synergies.py` plus `deck.ENGINE_THEMES`, never
+card-mana.csv. That omission was a deliberate, documented non-goal (a derived file's hash
+changes on every mana rebuild, so the reuse would never fire). The consequence was not
+documented: on any refresh cadence faster than the window, the stale tags survived until
+something else forced a rebuild. Here they survived until an unrelated tagger edit did.
+
+**The opposite direction is structurally possible and has not fired:** a stale `freq=1` for
+a keyword a new set expands onto many cards would SUPPRESS a real mechanic's tag for a
+cycle. Nothing measures it, because nothing looks.
+
+### The fix, and why it is not a workaround
+
+`is_noise_keyword(kw, freq=None, corpus=None)` has always accepted an explicit corpus —
+`check_keywords.py` and the tests pass one. `tags_for` was the single caller that did not
+thread it. It now does, and `build_pool` computes frequencies from **its own fetched
+corpus**, which it already holds in full (`fetch_all` completes before any row is built).
+
+That is strictly more correct rather than merely earlier: the floor now describes exactly
+the population being tagged, instead of a different file that happened to sit nearby. It
+also dissolves the non-goal — the noise floor no longer depends on anything outside the
+tagger fingerprint, so there is nothing left to hash.
+
+**Verification: a full `--all --refetch` rebuild changed 0 of 15,977 Synergies cells.**
+That is the result to want. The two corpora agree while they are in sync, so the change is
+a no-op today and only bites when they diverge — which is the bug.
+
+**CORPUS SIZE DECIDES WHETHER THE FLOOR ENGAGES, and the two scopes straddle the
+threshold.** `_NOISE_MIN_CORPUS` is 5,000; measured 2026-09-09, `--all` returns 15,977
+cards and the Standard-only default returns **4,887**. So a narrow build now sits just
+below the floor and emits every keyword unfiltered. That is the guard behaving as its own
+comment describes — "a small corpus degrades to today's behaviour, never a confident wrong
+one" — and judging a Standard-only pool by the full Arena population is scoring one
+population with another, the very thing this change removes. But 4,887 against 5,000 is
+close: a Standard rotation can move the narrow build across the threshold in either
+direction, so read a narrow pool's bare keyword tags as unfiltered by default.
+
 ## [G-19] `card-wishlist.csv` is UNOWNED craft targets
 
 **`card-wishlist.csv` is UNOWNED craft targets**, separate from the owned library
@@ -2448,6 +2513,34 @@ Angel of Vitality's "you gain that much life plus 1 instead" is +1, not ×2, and
 have qualified. Pool diff: 53 → 57 doublers, the four new ones all genuine.
 
 
+### 2026-09-08/09 — `unmet_gate` is the bigger instance of this rule
+
+`unmet_gate` answers "would adding this card bring a gate the deck holds nothing for". It
+was built for `redundancy`'s virtual-copy planner and had **that one caller**, while the
+surface the rules mandate for grading a change (`swap`, G-06) and both recommenders went on
+proposing cards without it. `swap` was wired 2026-09-08; `suggest` and `suggest-homes`
+2026-09-09.
+
+**The second wiring is the one that taught something new.** A primitive that had been
+correct enough for a single-card surface was **85% wrong on a 40-row craft table**: replaying
+`suggest --unowned --limit 40` across the roster produced 82 dead-gate hits over 4,520 picks,
+of which **12 were real**. Two defects, both invisible until then:
+
+| defect | share of the 82 | why a single-card surface hid it |
+|---|---:|---|
+| a card that MAKES its own resource (Huatli's Dinosaur tokens) | 40 (49%) | one wrong line in a card you are already reading in full |
+| a gate quoted only in REMINDER text (Bargain) | 17 (21%) | ditto |
+| a deck whose fodder is TOKENS, not cards (G-66's own residual) | 17 of the 25 survivors | `targets` prints the list beside the number, so a human corrects it |
+
+After all three fixes: **12 hits, 12 real on manual review** (The Lion-Turtle ×6 with no
+Lessons, Magnetic Snuffler ×3 and Ezrim ×1 in decks with neither artifact cards nor artifact
+tokens, Colossal Rattlewurm ×2 with no Deserts).
+
+The rule to carry: **reaching a new caller is not free. Re-measure the primitive AT that
+caller** — a false positive a human absorbs once is a false positive a ranking repeats forty
+times, and the rate at which a warning becomes noise is the rate G-27 declined the
+`#: notes:` scan over.
+
 ## [G-41] `deck.py cuts` flags COST-AS-UPSIDE (`⚡`) — a cost that is a BENEFIT in this deck
 
 **`deck.py cuts` flags COST-AS-UPSIDE (`⚡`) — a cost that is a BENEFIT in this deck.**
@@ -2533,6 +2626,33 @@ The trade itself was still correct — two cantrip-scale doubled triggers agains
 was a good price. **Being unable to see that a price was paid is the defect.** Before a
 land swap in a deck whose engine reads triggers, diff the ETB text of both sides, and say
 in the notes what the swap cost.
+
+### 2026-09-09 — a flag for this was built, measured and DECLINED
+
+Do not restart it. Two forms were tried.
+
+**Broad form** — a card that consumes a resource the deck's other cards COUNT. 44
+(card, deck) pairs fire on the live roster across 13 decks, and **23 of the 44 read
+backwards**:
+
+| family | rows | why it is backwards |
+|---|---:|---|
+| fetchlands (Evolving Wilds, Terramorphic Expanse, Vibrant Cityscape, Hobbit Hole, Elven Passage) | 12 | they sacrifice themselves and **replace** what they sacrificed — the land count is unchanged, and in a landfall deck the sacrifice IS the payoff |
+| sacrifice outlets in decks whose plan is sacrificing (Legion Extruder, Castle Doom, Technodrome, Ahriman, June, Killmonger, Tom Bert and William, Esoteric Duplicator) | 11 | that is G-41's cost-as-UPSIDE, one rule up, saying the opposite thing about the same text |
+
+Of the remaining 21, at best 3–6 are real, and every one of those is an **optional activated
+ability** — a tension, not a defect. Precision ≤14%, against the ~45% at which G-27 declined
+the `#: notes:` staleness scan for exactly this reason.
+
+**Narrow form** — a card that *unconditionally* empties a zone the deck depends on, G-42's
+first named example. **0 live instances on the roster**: a gate with no probe it can hold,
+the vacuous-probe shape G-63 records.
+
+**The structural reason, which is the transferable part:** a sacrifice is a CHOICE, and the
+identical text is cost-as-upside in one deck and a conflict in another. The two readings are
+separated by the deck's PLAN, which no text model here holds. That is why G-42's genuine
+instances are found by COUNTING what the deck depends on — the human read G-61 already
+mandates — and never by reading the card.
 
 ## [G-43] Grade a modal / split / adventure card by the FACE YOU CAST, not the half you want
 
@@ -4814,6 +4934,45 @@ by a better pattern. The mitigation is editorial: a deck whose gated resource is
 must say so in `#: notes:` (58 does), because a reader who trusts the flag would cut the
 deck's best payoffs.
 
+### 2026-09-09 — the TOKEN residual is closed, and how it stayed open
+
+The residual this section carried read: *it counts CARDS, so a TOKEN economy reads
+false-thin — deck 58's artifact-sac gates reported "1 artifact" against 14 token producers;
+a deck whose resource is tokens must say so in its `#: notes:` or the flag invites a bad
+cut.*
+
+That remedy is the tell. It asked the **deck** to document around a **model** bug, and it
+survived a year because the only reader was `deck.py targets`, where a human sees the card
+list beside the number and silently corrects it.
+
+Wiring `unmet_gate` into `suggest`'s craft table removed the human. The token miss
+immediately became the **dominant false family there — 17 of the 25 hits that survived the
+other two fixes** — because a ranking surface repeats a false positive on every row instead
+of showing it once.
+
+`_makes_token` now counts an artifact- or creature-token PRODUCER as fodder for
+`sac_a` / `sac_c` / `sac_ac`. Roster diff on `deck.py targets`:
+
+| measure | before | after |
+|---|---:|---:|
+| gate rows across 113 decks | 416 | 416 |
+| decks whose counts changed | — | 32 |
+| `✗ NOTHING` rows that became satisfied | — | 1 |
+| new `✗ NOTHING` rows | — | 0 |
+| deck 58's artifact-sac gates | 1 | 17 |
+
+Row count unchanged means no gate appeared or vanished; only the counts got more honest.
+
+**The general rule it earned: a report-only residual is priced at the surface that reads
+it.** Wiring the same primitive to a ranking surface re-prices every residual it carries, so
+"acceptable, it's report-only" expires the moment a second caller ranks on it.
+
+**Live residuals.** Gate patterns match reminder-STRIPPED text, except the library-search
+family (`_TARGET_KEEP_REM` — `lib_type`, `basic_any`, `basic_named`), because a keyword's
+fetch rider is written ONLY in its reminder and a global strip would have deleted G-75's own
+worked example silently. And a generic "create a token that's a copy of that creature" is
+not counted, because what it copies is unknowable here.
+
 ## [K-14] A draw clause behind an activation cost was invisible to the role tally (fixed 2026-08-07)
 
 `classify_roles` decides "Card advantage" from `_ROLE_PATTERNS`, and **every pattern in
@@ -6266,3 +6425,148 @@ keeps bare ints while `count_conf` renders the uncertainty for a human (G-48). T
 rationale-figure audit also still compares a quoted "N early drops" against the total,
 because that is what the prose means.
 
+
+## [G-84] A chosen-type payoff is worth the deck's biggest creature type
+
+Added 2026-09-09, from a post-mortem of the deck 39 tuning session.
+
+### The incident
+
+Deck 39 (Starforge) was being tuned and **Orcrist, Goblin-cleaver** was on the pile:
+
+```
+Legendary Artifact — Equipment   {3}
+Equipped creature gets +2/+2 and has trample.
+Whenever equipped creature deals combat damage to a player, choose a creature type.
+  Create a Treasure token for each creature you control of that type.
+Equip {3}
+```
+
+It was argued down twice, on two claims:
+
+1. *"The Treasure clause is dead — this deck has no Dwarves."*
+2. *"And Treasures need a dedicated payoff the deck doesn't have."*
+
+Both are false, and the user said so. The type is chosen **on resolution**, so the ability
+is never dead — it is only un-maximised; deck 39 fields **eight Humans**. And a Treasure is
+mana, which needs no payoff.
+
+The transferable part is not that the call was wrong. It is **where the numbers came from**:
+every deck property the tooling has a command for was measured that session, and every
+property it has no command for was *asserted*. "No Dwarves" was an assertion. Nothing here
+held the number, so nothing could contradict it.
+
+### Why no model could see it — K-13, structurally
+
+K-13 already states the trap: *a literal type-name search cannot see the choose-a-type
+category, and a false negative there reads as a finished answer.* This family is the purest
+case of it. A pool sweep for "Dwarves you control get" finds these cards **never**, because
+the card does not contain a type name at all — it contains the *instruction to pick one*.
+
+`cut_keep_score` has a `tribal` term, but it counts the deck's copies of **the card's own
+subtypes**, and Orcrist is an Equipment. Theme overlap sees `tokens`/`treasure`/`equipment`.
+The one number that decides the card — how concentrated your creature types are — was held
+by nothing.
+
+### The family: 44 cards, one deciding number
+
+Reminder-stripped text matching `choose a creature type` **and** `of the chosen/that type`
+returns 46 pool cards; less the two blanket converters below, the family is **44**. They
+look like five different effects and are one question:
+
+| shape | examples |
+|---|---|
+| lord | Patchwork Banner, Rally the Ranks, Icon of Ancestry, Chronicle of Victory |
+| literal count | Distant Melody, Kindred Charge, Banner of Kinship, Orcrist, Three Tree City |
+| cost reducer | Herald's Horn, Urza's Incubator, Gathering Stone |
+| type-restricted fixer | Cavern of Souls, Unclaimed Territory, Secluded Courtyard, Pillar of Origins |
+| one-sided sweeper | Crippling Fear, Raise the Palisade |
+
+The sweepers are worth keeping in mind: "creatures that **aren't** of the chosen type get
+-3/-3" reads the same concentration from the other side, and a mono-tribe deck gets a
+one-sided wrath. Same number, opposite sign.
+
+Because the chooser picks on resolution, the deciding number is the **maximum** bucket, not
+the count of any one named tribe.
+
+### The two exclusions, and why one of them inverts
+
+**Arcane Adaptation** and **Leyline of Transformation** both read:
+
+> Creatures you control **are** the chosen type in addition to their other types.
+
+These make everything the chosen type, so they are worth **more** the more scattered your
+types are — the exact opposite claim to every other member of the family. Counting them
+would rank them backwards, so `_TYPE_SCALE_CONVERTER_RE` drops them.
+
+A converter scoped to **itself** — Metallic Mimic, Adaptive Automaton, Roaming Throne,
+Coalition Construct ("*this creature* is the chosen type in addition to its other types") —
+is a different shape and stays in. So does Lifecraft Engine, which converts only Vehicles.
+
+### Calibration, and the check that had to be re-run
+
+`_DOUBLER_CALIB` records the lesson: *a bounded term is only bounded usefully if the roster
+spans its range*, and the `triggers` axis failed it (roster minimum 10, so 92% of decks
+pinned the cap and the term was constant). Largest creature-type count across 113 decks:
+
+| min | p10 | p25 | p50 | p75 | p90 | max |
+|----:|----:|----:|----:|----:|----:|----:|
+| 3 | 5 | 7 | 9 | 13 | 17 | 26 |
+
+Floor **7** (p25 — a deck with six of a type is not a tribal deck), key **13** (p75), cap 12
+reached at 18 (~p90). **23% of decks sit below the floor, 9% pin the cap**, so the term
+discriminates across its whole range. `tests/test_deck.py::TestChosenTypePayoff` re-runs
+that spread against the live roster rather than trusting these numbers — re-derive when the
+roster moves, the standing `TIER_FLOOR_REQ` hazard.
+
+Cap 12 rather than the doubler's 18 is a judgment, stated so it can be argued with: a
+doubler multiplies whatever the deck already does; a chosen-type payoff pays off on ONE
+type. A real build-around, a narrower one. Same size as `cost_scale_boost` (G-83).
+
+### Roster diff
+
+Measured by toggling `type_scale_payoff` off and re-running:
+
+| surface | change |
+|---|---|
+| `suggest-homes` | 16 of 44 reachable family cards changed their top-5; **5 changed #1** |
+| `cuts` | **0 of 113** decks changed their top-3; 3 of 14 maindecked copies moved down |
+| tier floors | **0 of 113** — the role/quality vector is untouched by construction |
+
+Every visible `suggest-homes` move is toward tribal density: Adaptive Automaton 57 → 74
+(18 Dwarves), Chronicle of Victory 57 → 28a (16 Soldiers), Patchwork Banner 57 → 76
+(20 Dragons). Banner of Kinship in deck 48 (13 Robots) went from the 5th most cuttable card
+to the 7th, which is the mis-rank the term exists to correct.
+
+### The count is printed, not just used
+
+Every row carries `✦ N <type>`. G-52 says a verdict surface must print its evidence, and the
+failure this closes was specifically a *stated count that came from nobody's tool* — so the
+label alone would have reproduced it.
+
+### Residuals
+
+**Inherited from `creature_subtypes`, and front-only was measured and REJECTED.** It walks
+every face of a type line. Of the 35 roster DFCs whose faces differ, **25 are
+creature→creature transforms** (all-faces over-counts, since the back type needs a transform)
+but **10 have a non-creature front** — a Saga or enchantment whose back genuinely is that
+creature type, where front-only counts a hard **zero**. Front-only changes 23 of 113 decks'
+best-type count and trades 25 over-counts for 10 silent zeroes, which is the worse direction.
+The correct rule needs a per-face availability distinction the stored type line does not
+carry; until then all-faces is the better of the two available approximations. G-63's column
+list does not yet name TYPE on this path.
+
+**Creatures only.** A few members read "permanent you control of that type"; a Kindred
+enchantment or a type-bearing noncreature is missed.
+
+### The NAMED-type half is deliberately unbuilt
+
+A literal tribal lord ("Dwarves you control get +1/+1") is the obvious widening and was
+measured: 124 pool cards name a specific creature type in a scaling clause, but
+`cut_keep_score`'s `tribal` term already serves the 92 where the card **is** that type. That
+leaves 32 — a small increment over an existing term — and the noun extraction visibly
+misfires on it, pulling `equipment` and `food`, which are artifact types rather than creature
+types. G-67's triage line applies: a pattern hole is fixed and measured, a taxonomy hole
+re-scores the roster. This is the second.
+
+The chosen-type half had no such overlap, which is exactly why it was the right half first.

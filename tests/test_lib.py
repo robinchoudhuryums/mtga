@@ -5,6 +5,8 @@ ownership) fixes, plus the atomic-write safety net, so a refactor can't regress 
 without a red test (the static/behavioural check_* gates cover the same ground at
 the integration level; this is the fast, isolated layer)."""
 import csv
+import json
+import os
 
 import pytest
 
@@ -618,3 +620,90 @@ class TestLandProductionExclusions:
             "{T}, Sacrifice this land: Search your library for a basic land card, put it "
             "onto the battlefield tapped, then shuffle.", "")
         assert fetch["fetch"] is True
+
+
+class TestAtomicWriteForensicLog:
+    """`atomic_write` records WHO wrote, because on 2026-09-09 nothing did.
+
+    Three writes stripped freshly-merged synergy tags off card-library.csv at 22:35:01,
+    22:59:13 and 23:02:44. The `.bak` timeline proved they happened — a backup holds the
+    PRE-write state, and each of those held the tagged version while the file afterwards
+    did not — but no caller was recorded anywhere, so the hunt proceeded by elimination
+    (pytest, build_pool, check_all, make postedit, a scratch tag_synergies run, the
+    SessionStart hook) and never reached an answer. Reconstructing a writer from backup
+    mtimes is the wrong tool; this makes the writer name itself.
+    """
+
+    @pytest.fixture
+    def logged(self, tmp_path, monkeypatch):
+        """Treat tmp_path AS the repo, so a write into it is 'inside' and gets logged to
+        a temp log — the real one stays untouched."""
+        log = tmp_path / "writes.log"
+        monkeypatch.setattr(lib, "REPO_ROOT", str(tmp_path))
+        monkeypatch.setattr(lib, "_WRITE_LOG", str(log))
+        monkeypatch.delenv("MTGA_NO_WRITE_LOG", raising=False)
+        return {"root": tmp_path, "log": log}
+
+    def _records(self, log):
+        return [json.loads(l) for l in log.read_text(encoding="utf-8").splitlines() if l]
+
+    def test_a_write_records_its_caller_and_target(self, logged):
+        target = logged["root"] / "card-library.csv"
+        lib.atomic_write(str(target), lambda fh: fh.write("a,b\n1,2\n"))
+        rec, = self._records(logged["log"])
+        assert rec["target"] == "card-library.csv"
+        assert rec["bytes"] == len("a,b\n1,2\n")
+        assert rec["pid"] == os.getpid()
+        assert any("test_lib.py" in f for f in rec["stack"]), rec["stack"]
+        assert not any(f.startswith("lib.py:") for f in rec["stack"]), (
+            "lib's own frames are noise — the point is the CALLER")
+
+    def test_the_hash_is_of_the_NEW_content(self, logged):
+        """Logged AFTER the replace (G-10). Recording before the write is what let a
+        broken pipe report a write that never happened; here it would also mean the hash
+        described the file the writer was about to destroy, not the one it left."""
+        import hashlib
+        target = logged["root"] / "x.csv"
+        target.write_text("OLD", encoding="utf-8")
+        lib.atomic_write(str(target), lambda fh: fh.write("NEW"))
+        rec, = self._records(logged["log"])
+        assert rec["md5"] == hashlib.md5(b"NEW").hexdigest()[:12]
+        assert rec["bak"] and rec["bak"].startswith("x.csv."), rec
+
+    def test_a_write_OUTSIDE_the_repo_is_not_logged(self, logged, tmp_path):
+        """Scoped to the repo so a 1,789-test run cannot bury the handful of real writes
+        this exists to catch."""
+        outside = tmp_path.parent / "elsewhere.csv"
+        lib.atomic_write(str(outside), lambda fh: fh.write("x"))
+        assert not logged["log"].exists()
+
+    def test_the_opt_out_env_var_silences_it(self, logged, monkeypatch):
+        monkeypatch.setenv("MTGA_NO_WRITE_LOG", "1")
+        lib.atomic_write(str(logged["root"] / "y.csv"), lambda fh: fh.write("x"))
+        assert not logged["log"].exists()
+
+    def test_a_BROKEN_logger_still_writes_the_file(self, logged, monkeypatch):
+        """The load-bearing property. A diagnostic that can break the thing it observes is
+        worse than no diagnostic — the rule `_do_swap` follows for its ledger. Proven by
+        making the logger itself raise, rather than by reading the try/except."""
+        def boom(*a, **k):
+            raise RuntimeError("logger exploded")
+        monkeypatch.setattr(lib, "_log_atomic_write", boom)
+        target = logged["root"] / "z.csv"
+        lib.atomic_write(str(target), lambda fh: fh.write("payload"))
+        assert target.read_text(encoding="utf-8") == "payload"
+
+    def test_an_UNWRITABLE_log_still_writes_the_file(self, logged):
+        """The same property one layer down: the logger runs but cannot append."""
+        logged["log"].mkdir()          # a directory where a file is expected
+        target = logged["root"] / "w.csv"
+        lib.atomic_write(str(target), lambda fh: fh.write("payload"))
+        assert target.read_text(encoding="utf-8") == "payload"
+
+    def test_the_log_rotates_so_it_cannot_grow_without_bound(self, logged, monkeypatch):
+        monkeypatch.setattr(lib, "_WRITE_LOG_MAX", 200)
+        target = logged["root"] / "r.csv"
+        for i in range(6):
+            lib.atomic_write(str(target), lambda fh, i=i: fh.write("x" * i))
+        assert os.path.exists(str(logged["log"]) + ".1"), "expected one rotation"
+        assert logged["log"].stat().st_size <= 200 + 4096

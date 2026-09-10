@@ -2961,6 +2961,20 @@ def _cuts_cost_scale_adj(support):
                (support - _COST_SCALE_MIN_SOURCES + 1) * _CUTS_MULT_PER_SOURCE)
 
 
+def _cuts_type_scale_adj(support):
+    """Keep-bias for a chosen-type payoff, proportional to the deck's best type count.
+
+    Same shape and same range as `_cuts_cost_scale_adj`, zero below the floor
+    `type_scale_boost` uses so the two surfaces cannot disagree about whether a deck
+    fields a tribe, and RAISING only — a lord in a deck with no tribe is already sorted
+    up the cut list by theme fit, and subtracting would punish the same card twice.
+    """
+    if support < _TYPE_SCALE_MIN_SOURCES:
+        return 0.0
+    return min(_CUTS_MULT_CAP,
+               (support - _TYPE_SCALE_MIN_SOURCES + 1) * _CUTS_MULT_PER_SOURCE)
+
+
 def _cuts_multiplier_adj(support, axis=None):
     """Keep-bias for a doubler, proportional to the magnitude it multiplies.
 
@@ -5552,6 +5566,18 @@ def cmd_suggest(args):
         w = pip_depth_warning(_e[0] if _e else "", _pipsrc, total=_piptot)
         if w:
             pipwarns[p["name"]] = w
+    # UNMET GATES on a proposed ADD (G-66/G-76). Same G-40 shape the pip warning above
+    # records, one primitive over: `unmet_gate` was built for `redundancy`, reached `swap`
+    # in the previous pass, and the two surfaces that recommend cards INTO a deck still did
+    # not ask — so `suggest` could offer a card whose gate this deck holds nothing for and
+    # say nothing. Scored over the PRINTED picks only, the same scope `pipwarns` uses:
+    # `target_counts` costs ~2.4ms per deck, so the whole roster is 0.27s and a pick list
+    # is a fraction of that. Display only — it never filters a pick or moves a score.
+    gatewarns = {}
+    for p in res["picks"]:
+        g = unmet_gate(p["name"], _pipcards, load_card_data(), _pipmana)
+        if g:
+            gatewarns[p["name"]] = g
     print(f"\n{'Have':>5}  {'Card':28}  {'Rarity':8}  {'Decks':>5}  Matches (deck themes)")
     print("-" * 82)
     craftby = {}
@@ -5564,8 +5590,16 @@ def cmd_suggest(args):
         rotflag = " ⚠rot" if p.get("rotates") else ""
         pw = pipwarns.get(p["name"])
         pipflag = f"  ⚠⚠{pw[1]}x{{{pw[0]}}} vs {pw[2]} src" if pw else ""
+        gateflag = "  ⚠gate" if p["name"] in gatewarns else ""
         print(f"{have:>5}  {p['name'][:28]:28}  {rar[:8]:8}  {p['decks']:>5}  "
-              f"{', '.join(p['matches'][:5])}{rotflag}{pipflag}")
+              f"{', '.join(p['matches'][:5])}{rotflag}{pipflag}{gateflag}")
+    if gatewarns:
+        print(f"⚠gate = {len(gatewarns)} pick(s) bring a GATE this deck holds nothing for. "
+              "READ IT AS A CLAIM ABOUT THE GATE, NEVER THE CARD (G-75): The Lion-Turtle "
+              "with no Lessons is still a mana dork that gains 3 life, it just cannot "
+              "attack. The question is whether you are paying for the half that works:")
+        for _n, _g in sorted(gatewarns.items()):
+            print(f"     {_n} — needs {_g}")
     if pipwarns:
         print(f"⚠⚠ {len(pipwarns)} pick(s) flagged on PIP DEPTH — the colour filter is a set "
               "test and cannot see whether you can pay the pips. 3+ pips means you likely "
@@ -7426,6 +7460,23 @@ def _do_swap(d, cut, add, apply, flex_entry=None, section=None):
         print(f"  ⚠ '{add}' not found in library or pool — check spelling; "
               "it will be added as a bare line.")
 
+    # Does this deck hold TARGETS for a gate the add brings (G-66/G-76)? `swap` is the
+    # surface the rules mandate for grading a change (G-06), and it never asked —
+    # `unmet_gate_note`'s ONLY caller was `redundancy`, the textbook G-40 shape its own
+    # docstring names. The probe is the POST-CUT list: the card being CUT may be the one
+    # thing satisfying the add's gate, so asking against the pre-swap deck answers the
+    # wrong question. `unmet_gate_note` appends the candidate itself, so the add is
+    # dropped from the base list here — a bumped existing line is excluded from the
+    # count by name inside `target_counts` either way, so this changes no number, only
+    # the contract. Report-only, and as heuristic as `target_counts`: read the card.
+    try:
+        gate = unmet_gate_note(add, [r for r in after if _ms_key(r[1]) != _ms_key(add)],
+                               carddata, mana)
+    except Exception:
+        gate = ""
+    if gate:
+        print(f"  {gate}")
+
     def delta(a, b):
         d_ = b - a
         return f"{a} → {b}" + (f"  ({d_:+d})" if d_ else "")
@@ -7945,6 +7996,11 @@ def cut_scoring_context(meta, cards, cardmeta, carddata):
         "signature": _strong_signature_themes(meta, cards, cardmeta),
         "deck_tally": role_tally(cards, carddata),
         "sub_count": sub_count,
+        # The deck's BEST creature-type count (and its name) — a chosen-type payoff is
+        # worth whichever type the chooser picks, so this is a deck-level number, not a
+        # per-card one. Computed once here so `rank_cut_candidates` and `_weakest_cut`
+        # read the same value, the reason this context object exists.
+        "type_scale": type_scale_support(cards, carddata),
     }
 
 
@@ -8012,6 +8068,12 @@ def cut_keep_score(ctx, tline, text, tags, rarity="", qty=1):
     cscale_res = cost_scale_resource(text)
     cscale_support = (cost_scale_support(cscale_res, ctx["cards"], ctx["carddata"])
                       if cscale_res else 0)
+    # …and the CHOSEN-TYPE twin. Same blindness one shape over: the card names no type,
+    # so theme fit sees a couple of generic tags and `tribal` sees the card's OWN
+    # subtypes — which for Orcrist (an Equipment) and for every banner in the family is
+    # none at all. The deck-level count comes from the shared context, so `cuts` and
+    # `suggest-homes` price the family off the same number.
+    tscale_support = ctx.get("type_scale", (0, ""))[0] if type_scale_payoff(text) else 0
 
     # keep-score: higher = keep; cut candidates sort to the top (lowest keep).
     # Role credit is impact-weighted (see _role_credit) so a strong-but-off-theme
@@ -8025,7 +8087,8 @@ def cut_keep_score(ctx, tline, text, tags, rarity="", qty=1):
             + (2 if sig_hit else 0) + min(tribal, 6)
             + _cuts_power_adj(power) + _cuts_uniq_adj(uniq)
             + _cuts_multiplier_adj(mult_support, mult_axis)
-            + _cuts_cost_scale_adj(cscale_support))
+            + _cuts_cost_scale_adj(cscale_support)
+            + _cuts_type_scale_adj(tscale_support))
 
     reasons = []
     if tags and not hit_central:
@@ -9189,6 +9252,130 @@ def cost_scale_boost(support):
         return 0.0
     return min((support - _COST_SCALE_MIN_SOURCES + 1) * _COST_SCALE_PER_SOURCE,
                _COST_SCALE_CAP)
+
+
+# A CHOSEN-TYPE PAYOFF IS WORTH THE DECK'S BIGGEST CREATURE TYPE, AND K-13 SAYS WHY NO
+# MODEL HERE COULD SEE IT: the card never names a type, so a literal type-name search
+# returns nothing and reads as a finished answer. Orcrist, Goblin-cleaver — "choose a
+# creature type. Create a Treasure token for each creature you control of that type" — was
+# argued down twice in one 2026-09-08 pass on two claims that were both false: that the
+# ability is dead in a deck with no Dwarves (the type is chosen ON RESOLUTION, so it is
+# never dead — it is merely un-maximised), and that deck 39 fields nothing for it (it
+# fields TEN Humans). Neither number came from a tool, because no tool held it.
+#
+# 46 pool cards template this way, and the whole family shares ONE deciding number: the
+# largest creature-type count the deck can field, since that is what a player choosing on
+# resolution picks. It spans lords ("creatures you control of the chosen type get +1/+1"),
+# literal counters (Distant Melody, Kindred Charge, Orcrist), cost reducers (Herald's Horn),
+# type-restricted fixers (Cavern of Souls) and the one-sided sweepers whose value is the
+# same concentration read from the other side (Crippling Fear: "creatures that AREN'T of
+# the chosen type get -3/-3").
+_TYPE_SCALE_CHOOSE_RE = re.compile(r"choose[sn]? (?:a|another) creature type", re.I)
+_TYPE_SCALE_PAYOFF_RE = re.compile(r"of (?:the chosen|that) type|the chosen type", re.I)
+# The two BLANKET CONVERTERS invert the term and are excluded rather than counted
+# backwards: Arcane Adaptation and Leyline of Transformation make every creature you
+# control the chosen type, so they are worth MORE the more scattered your types are —
+# the opposite claim to every other member of the family. A converter scoped to ITSELF
+# (Metallic Mimic, Adaptive Automaton, Roaming Throne, Coalition Construct) or to one
+# other type (Lifecraft Engine's Vehicles) is not this shape and stays in.
+# ANCHORED AT THE CLAUSE START, and `figure_drift` is what caught the unanchored version
+# the day it landed: Lifecraft Engine reads "VEHICLE creatures you control are the chosen
+# creature type", a converter scoped to ONE type sitting beside a real lord clause ("each
+# creature you control of the chosen type … gets +1/+1"), and the loose pattern swallowed
+# it — excluding a genuine family member. Only a BLANKET converter (the clause standing on
+# its own) inverts the term.
+_TYPE_SCALE_CONVERTER_RE = re.compile(
+    r"(?:^|(?<=[.\n]))\s*creatures you control are the chosen (?:creature )?type",
+    re.I | re.M)
+# G-59: a changeling IS every creature type, so it counts toward whichever type you
+# choose — it receives the effect, it just never provides one.
+_TYPE_SCALE_CHANGELING_RE = re.compile(
+    r"\bchangeling\b|(?:is|are) every creature type", re.I)
+
+
+def type_scale_payoff(text):
+    """True when this card's output scales with the deck's count of a CHOSEN creature type.
+
+    Reminder text is stripped first (K-09/G-80): the changeling reminder quotes "every
+    creature type", and a convoke reminder quotes "that creature's color".
+    """
+    if not text:
+        return False
+    t = _REMINDER_RE.sub(" ", text)
+    if not (_TYPE_SCALE_CHOOSE_RE.search(t) and _TYPE_SCALE_PAYOFF_RE.search(t)):
+        return False
+    return not _TYPE_SCALE_CONVERTER_RE.search(t)
+
+
+def type_scale_support(cards, carddata):
+    """``(count, type)`` — the biggest creature type this deck can field, and its name.
+
+    The number a chosen-type payoff is actually worth: the chooser picks the deck's best
+    type, so the MAXIMUM bucket is the read, not the count of any one named tribe.
+    Subtypes come from `creature_subtypes`, the same parser `cut_keep_score`'s `tribal`
+    term uses — one definition, so the two cannot disagree (G-70). Changelings are added
+    to every bucket per G-59.
+
+    RESIDUALS, both inherited and both stated rather than silently handled:
+    `creature_subtypes` walks EVERY face of a type line, so a transform DFC contributes
+    its back-face types as well as its front's; and this counts CREATURES, while a few
+    members of the family read "permanent you control of that type" (a Kindred enchantment
+    or a type-bearing noncreature would be missed). Report-scale, both directions small.
+    """
+    counts, changelings = {}, 0
+    for q, name, _s, _c in cards:
+        nl = (name or "").lower()
+        if nl in BASICS:
+            continue
+        cd = carddata.get(nl) or carddata.get(nl.split(" // ")[0])
+        if not cd:
+            continue
+        if _TYPE_SCALE_CHANGELING_RE.search(_REMINDER_RE.sub(" ", cd.get("text") or "")):
+            changelings += q
+            continue
+        for st in creature_subtypes(cd.get("type") or ""):
+            counts[st.lower()] = counts.get(st.lower(), 0) + q
+    if changelings:
+        for k in list(counts):
+            counts[k] += changelings
+        if not counts:
+            return changelings, "any creature type"
+    if not counts:
+        return 0, ""
+    # Ties broken on the NAME so the answer is deterministic — a dict plus a sort key that
+    # can tie is the G-54 bug, and two types at the same count is the ordinary case.
+    best = max(sorted(counts), key=lambda k: (counts[k], k))
+    return counts[best], best
+
+
+# Calibrated from the roster's own distribution, the method `_DOUBLER_CALIB` records:
+# across 113 decks the largest creature-type count runs min 3 / p25 7 / p50 9 / p75 13 /
+# p90 17 / max 26. Floor 7 (p25 — a deck with six of a type is not a tribal deck), key 13
+# (p75, a real build-around), cap reached at 18 (~p90). 23% of decks sit below the floor
+# and 9% pin the cap, so the term spans its range — the check `_DOUBLER_CALIB` exists to
+# force, and the one the `triggers` axis failed. Re-derive when the roster moves.
+#
+# Cap 12 rather than the doubler's 18, on a judgment stated so it can be argued with: a
+# doubler multiplies whatever the deck already does, while a chosen-type payoff pays off
+# on ONE type — a real build-around, but a narrower one. Same size as `cost_scale_boost`.
+_TYPE_SCALE_MIN_SOURCES = 7
+_TYPE_SCALE_KEY_SOURCES = 13
+_TYPE_SCALE_PER_SOURCE = 1.1
+_TYPE_SCALE_CAP = 12.0
+
+
+def type_scale_boost(support):
+    """Bounded fit bump for a chosen-type payoff, growing with the deck's best type count.
+
+    Zero below the floor, linear above it, hard-capped — the same contract as
+    `doubler_boost` / `cost_scale_boost` / `_fixer_boost`, and measured FROM the floor for
+    the reason `doubler_boost` records: counting the baseline every deck carries is what
+    saturates a bounded term.
+    """
+    if support < _TYPE_SCALE_MIN_SOURCES:
+        return 0.0
+    return min((support - _TYPE_SCALE_MIN_SOURCES + 1) * _TYPE_SCALE_PER_SOURCE,
+               _TYPE_SCALE_CAP)
 
 
 _DOUBLER_AXES = {
@@ -10393,13 +10580,18 @@ def cmd_suggest_homes(args):
     card_mv = _cmv[1] if _cmv and _cmv[1] is not None else None
     fixer_rate = _fixer_rate(cd.get("text") or "", card_mv)
     is_fixer = bool(fixer_rate)
+    # Does this card's output scale with a CHOSEN creature type? The family names no
+    # type, so theme overlap and the `tribal` count are both blind to it (K-13).
+    is_tscale = type_scale_payoff(cd.get("text") or "")
 
     print(f"Card: {card}  [{'/'.join(sorted(ccols)) or 'Colorless'}]  ({cd['type']})")
     _fixnote = ("   [rainbow fixer — value scales with a deck’s color count"
                 + ("" if fixer_rate >= _FIXER_KEY_RATE
                    else f"; single source at MV {card_mv} — discounted") + "]")
     print(f"Themes: {', '.join(sorted(ctags)) or '(none)'}"
-          f"{_fixnote if is_fixer else ''}")
+          f"{_fixnote if is_fixer else ''}"
+          + ("   [chosen-type payoff — worth the deck's BIGGEST creature type, shown "
+             "per row]" if is_tscale else ""))
     # The VERDICT surfaces are where the misreads clustered this cycle. `cuts` and `swap`
     # print full oracle text and produced the fewest bad calls; suggest-homes hands out
     # KEY / role-player / tangential labels with NO text, which is how Genesis Wave was
@@ -10540,6 +10732,19 @@ def cmd_suggest_homes(args):
                 strength = "KEY"
             elif _cboost and strength == "tangential":
                 strength = "role-player"
+        # CHOSEN-TYPE overlay, same contract again: bounded, promotes only, never demotes
+        # and never overrides a KEY earned on theme. The count is carried onto the ROW as
+        # well as into the fit — the failure this closes was a stated type count that came
+        # from nobody's tool (G-52: a verdict surface must print its evidence).
+        tscale = type_scale_support(cards, carddata) if is_tscale else (0, "")
+        tsupport = tscale[0]
+        if tsupport:
+            _tboost = type_scale_boost(tsupport)
+            fit += _tboost
+            if tsupport >= _TYPE_SCALE_KEY_SOURCES:
+                strength = "KEY"
+            elif _tboost and strength == "tangential":
+                strength = "role-player"
         # Bounded curve co-signal (#5): gently sort a top-heavy card BELOW efficient fits
         # in an aggressive low-curve deck (never boosts, never relabels — see
         # _home_curve_fit). `top_heavy` flags the row so the clunk is visible, not silent.
@@ -10548,7 +10753,12 @@ def cmd_suggest_homes(args):
         top_heavy = curve_mult < 1.0
         cut = (None if already else
                _weakest_cut(dmeta, cards, cardmeta, carddata, add_is_fixer=is_fixer))
-        results.append((fit, dd["id"], already, shared, cut, strength, top_heavy, pipwarn))
+        # Does THIS deck hold anything for a gate the card brings (G-66/G-76)? Skipped for
+        # a deck already running it — the question there is not whether to add it. ~2.4ms
+        # per deck, so at most 0.27s across the whole roster.
+        gate = "" if already else unmet_gate(card, cards, carddata, mana)
+        results.append((fit, dd["id"], already, shared, cut, strength, top_heavy,
+                        pipwarn, tscale if is_tscale else None, gate))
 
     if skipped_illegal:
         print(f"({skipped_illegal} castable deck(s) skipped — the card isn't legal in "
@@ -10565,15 +10775,20 @@ def cmd_suggest_homes(args):
     results.sort(key=lambda r: (_srank.get(r[5], 3), -r[0], r[1]))
     print(f"  {'deck':5} {'strength':11} {'fit':>4}  {'in?':3}  shared themes  ·  suggested cut")
     print("  " + "-" * 82)
-    for fit, did, already, shared, cut, strength, top_heavy, pipwarn in results:
+    for (fit, did, already, shared, cut, strength, top_heavy, pipwarn,
+         tscale, gate) in results:
         tag = "yes" if already else "no"
         hint = "already maindecked" if already else (f"cut ~ {cut}" if cut else "")
+        if tscale and tscale[0]:
+            hint = (hint + "  " if hint else "") + f"✦ {tscale[0]} {tscale[1]}"
         if top_heavy:
             hint = (hint + "  " if hint else "") + "⚠ top-heavy for this curve"
         if pipwarn:
             _col, _pips, _have, _want = pipwarn
             hint = ((hint + "  " if hint else "")
                     + f"⚠⚠ {_pips}x{{{_col}}} vs {_have} sources")
+        if gate:
+            hint = (hint + "  " if hint else "") + f"⚠ gate: {gate} — 0"
         print(f"  {did:5} {strength:11} {fit:>4.0f}  {tag:3}  {', '.join(shared[:3]):28}  {hint}")
     _pw = [r for r in results if r[7]]
     if _pw:
@@ -10587,6 +10802,17 @@ def cmd_suggest_homes(args):
     if any(r[6] for r in results):
         print(f"\n⚠ = the card (MV {card_mv}) sits well above that deck's average curve — a "
               "win-more/top-heavy add there; grade it from text.")
+    _gw = [r for r in results if r[9]]
+    if _gw:
+        print(f"\n⚠ gate = {len(_gw)} deck(s) hold nothing for a gate this card brings — a "
+              "claim about THAT GATE in THAT DECK, never about the card (G-75): the rest "
+              "of it still works. Rank on `strength` first; a KEY home with an unmet gate "
+              "is a shopping list, a tangential one with an unmet gate is a no.")
+    if any(r[8] and r[8][0] for r in results):
+        print(f"\n✦ = the biggest creature type that deck can field — what this card is "
+              f"worth there, since the type is CHOSEN. It is never dead (choose whatever "
+              f"you have most of), only un-maximised; the floor for a real payoff is "
+              f"{_TYPE_SCALE_MIN_SOURCES}, a build-around is {_TYPE_SCALE_KEY_SOURCES}+.")
     strong = [r for r in results if not r[2]]
     if len(strong) >= 2:
         print(f"\nCastable + on-theme in {len(strong)} decks it's not already in — one owned "
@@ -13211,6 +13437,58 @@ _SCREEN_KEY_SATURATED = 0.40   # KEY on this share of a pile carries no informat
 _TARGET_WORD_NUM = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5,
                     "six": 6, "seven": 7, "eight": 8, "nine": 9, "ten": 10}
 _TARGET_FAT_MV = 5      # at/above this, reanimating a card gains real mana
+# WHICH GATE FAMILIES READ THE REMINDER TEXT — and the two that must disagree.
+#
+# K-09's rule is that a text rule reads the CARD, not what it DESCRIBES, and this model
+# was breaking it: `sac_a` matches "sacrifice an artifact", which is most of BARGAIN's
+# reminder ("You may sacrifice an artifact, enchantment, or token as you cast this
+# spell"), so every bargain card reported a hard artifact requirement for a cost that is
+# OPTIONAL and that three card types satisfy. Measured when the gate reached `suggest`:
+# 17 of 82 dead-gate hits — 21% — came from a parenthetical and nothing else.
+#
+# The LIBRARY-SEARCH family is the deliberate exception, and G-75 is why: a keyword's
+# fetch rider is written ONLY in its reminder ("Halflingcycling {4} ({4}, Discard this
+# card: Search your library for a Halfling card…)"), and that whiffing rider is a hit
+# G-75 names by example. Stripping reminders globally would have deleted it silently —
+# which is how a live gate goes missing while every test stays green.
+_TARGET_KEEP_REM = {"lib_type", "basic_any", "basic_named"}
+
+# A TOKEN IS FODDER, AND COUNTING CARDS MISSED IT — G-66's own stated residual, now
+# measured. `target_counts` counts CARDS, so an artifact-sacrifice gate read "0 artifacts"
+# in 24 roster decks that hold no artifact CARD and make up to five artifact TOKENS
+# (Treasure, Clue, Food); G-66 records the same shape on deck 58 ("1 artifact" against 14
+# token producers) and warns that the flag invites a bad cut. It stayed a warning because
+# the only reader was `targets`, where a human sees the list; wiring the gate into
+# `suggest`'s craft table made it the dominant FALSE family there — 17 of the 25 surviving
+# hits — which is what forced the fix.
+#
+# Deliberately literal: the token's type must be named in the CREATE clause, so
+# "create a Treasure token" counts as an artifact (Treasure is an artifact type) only via
+# the named types below, and a generic "create a token that's a copy" does not count —
+# what it copies is unknowable here. Quantity-weighted like every other count in this
+# function: a card is a source, not a per-token tally.
+_TOKEN_TYPES = {
+    "artifact": ("treasure", "clue", "food", "blood", "powerstone", "junk", "map",
+                 "gold", "artifact", "equipment", "vehicle", "incubator"),
+    "creature": ("creature",),
+}
+_TOKEN_CREATE_RE = re.compile(r"creates?\b[^.]{0,90}?\btokens?\b", re.I)
+
+
+def _makes_token(entry, want):
+    """Does this deck card CREATE a token of type `want` ('artifact' / 'creature')?
+
+    Reads the reminder-stripped text already on the pool entry. `want` 'creature' matches
+    the literal word, which every creature-token clause carries ("create a 1/1 white
+    Soldier creature token"); 'artifact' matches the named artifact token types, since
+    "create a Treasure token" never says the word artifact."""
+    names = _TOKEN_TYPES.get(want, ())
+    for m in _TOKEN_CREATE_RE.finditer(entry.get("no_rem") or ""):
+        clause = m.group(0).lower()
+        if any(t in clause for t in names):
+            return True
+    return False
+
 _TARGET_GATES = [
     (re.compile(r"mana value (\d+) or less", re.I), "creature MV ≤{0} in the yard", "mv"),
     (re.compile(r"total mana value (\d+) or less", re.I), "cards totalling MV ≤{0}", "mv"),
@@ -13299,9 +13577,9 @@ _TARGET_GATES = [
 ]
 
 
-def unmet_gate_note(cand_name, cards, carddata, mana):
-    """``'⚠ gate: <label> — 0 in this deck'`` if adding `cand_name` would bring a GATE
-    this deck cannot satisfy, else ``''``.
+def unmet_gate(cand_name, cards, carddata, mana):
+    """The LABEL of a gate adding `cand_name` would bring that this deck holds NOTHING
+    for, else ``''``.
 
     `target_counts` already answers "does this deck hold what this card's text asks
     for" — but only for cards ALREADY in the list. Nothing asked it about a card being
@@ -13310,8 +13588,16 @@ def unmet_gate_note(cand_name, cards, carddata, mana):
     deck has none of) as card-advantage copies for deck 6 — two of four picks, each
     drawing exactly zero. A working primitive one caller does not reach (G-40).
 
+    THE QUESTION LIVES HERE AND THE RENDERING LIVES IN ITS CALLERS. It is split that way
+    because the second and third callers needed the answer inside a TABLE ROW, where the
+    single-card surface's "— 0 in this deck" is redundant with the row's own deck column;
+    the alternative was a second predicate per surface, which is the parallel-source-of-
+    truth shape this project keeps paying for (G-70).
+
     Report-only, and inherits every limit of `target_counts`: a heuristic over card
-    text, so read the card, not the flag."""
+    text, so read the card, not the flag. Its stated residual reaches every caller — a
+    deck whose resource is TOKENS reads false-thin (G-66), so this is a claim about the
+    COUNT, never a verdict on the card."""
     cd = carddata.get((cand_name or "").lower())
     if not cd:
         return ""
@@ -13323,9 +13609,46 @@ def unmet_gate_note(cand_name, cards, carddata, mana):
     for card, label, count, need in rows:
         if card != cand_name:
             continue
-        if count == 0:
-            return f"⚠ gate: {label} — 0 in this deck"
+        if count == 0 and not _supplies_own_gate(label, cd.get("text") or ""):
+            return label
     return ""
+
+
+# A CARD THAT MAKES ITS OWN RESOURCE IS NOT DEAD, AND `target_counts` CANNOT SEE THAT BY
+# CONSTRUCTION: its counts EXCLUDE the card itself ("a sacrifice outlet is not its own
+# fodder"), which is right for the deck-inventory question it answers and wrong for
+# "will this card be dead if I ADD it". Huatli, Poet of Unity searches for a Dinosaur
+# card in chapter III and CREATES TWO DINOSAUR TOKENS in chapter I, so it turns its own
+# gate on — and it was 40 of the 82 dead-gate hits (49%) the first `suggest` measurement
+# produced, i.e. the single biggest false family.
+#
+# Deliberately narrow: only a CREATE clause naming the gated resource counts. That is the
+# one way a card reliably supplies a resource to itself on the battlefield; "search for"
+# or "return" would beg the question, since those are the gates.
+_SELF_SUPPLY_RE = re.compile(r"creates? [^.]{0,80}", re.I)
+
+
+def _supplies_own_gate(label, text):
+    """True when the candidate's OWN text creates the resource its gate asks for.
+
+    `label` is a `target_counts` label ("Dinosaur cards in the deck", "artifacts to
+    sacrifice"); the resource is its leading noun. Report-only like everything around it,
+    and it can only ever SUPPRESS a warning — the cost of being wrong here is the silence
+    that was the status quo before the gate existed."""
+    res = (label or "").split()[0].lower().rstrip("s")
+    if not res or not text:
+        return False
+    for m in _SELF_SUPPLY_RE.finditer(_REMINDER_RE.sub(" ", text)):
+        if res in m.group(0).lower():
+            return True
+    return False
+
+
+def unmet_gate_note(cand_name, cards, carddata, mana):
+    """`unmet_gate` rendered for a SINGLE-CARD surface (`swap`, `redundancy`), where the
+    deck is context rather than a column: ``'⚠ gate: <label> — 0 in this deck'``."""
+    label = unmet_gate(cand_name, cards, carddata, mana)
+    return f"⚠ gate: {label} — 0 in this deck" if label else ""
 
 
 def target_counts(cards, carddata, mana):
@@ -13349,8 +13672,11 @@ def target_counts(cards, carddata, mana):
         cd = carddata.get(nl) or carddata.get(nl.split(" // ")[0]) or {}
         entry = mana.get(nl) or mana.get(nl.split(" // ")[0])
         mv = mana_value(front_face_cost(entry[0])) if entry and entry[0] else None
+        # BOTH forms of the text, because the gate families disagree about which one is
+        # the card. Kept side by side and chosen per gate KIND below (`_TARGET_KEEP_REM`).
+        raw = cd.get("text") or ""
         pool.append({"n": n, "q": q, "type": (cd.get("type") or "").lower(),
-                     "text": cd.get("text") or "", "mv": mv})
+                     "text": raw, "no_rem": _REMINDER_RE.sub(" ", raw), "mv": mv})
     out, seen = [], set()
     for c in pool:
         # Lands are skipped as GATE SOURCES (a sacrifice outlet is not its own fodder,
@@ -13364,7 +13690,7 @@ def target_counts(cards, carddata, mana):
             continue
         seen.add(c["n"])
         for rx, label, kind in _TARGET_GATES:
-            m = rx.search(c["text"])
+            m = rx.search(c["text"] if kind in _TARGET_KEEP_REM else c["no_rem"])
             if not m:
                 continue
             groups = [g for g in (m.groups() or ()) if g is not None]
@@ -13378,11 +13704,14 @@ def target_counts(cards, carddata, mana):
                         and o["mv"] is not None and o["mv"] <= num]
             elif kind == "sac_ac":
                 hits = [o for o in others
-                        if "creature" in o["type"] or "artifact" in o["type"]]
+                        if "creature" in o["type"] or "artifact" in o["type"]
+                        or _makes_token(o, "creature") or _makes_token(o, "artifact")]
             elif kind == "sac_c":
-                hits = [o for o in others if "creature" in o["type"]]
+                hits = [o for o in others
+                        if "creature" in o["type"] or _makes_token(o, "creature")]
             elif kind == "sac_a":
-                hits = [o for o in others if "artifact" in o["type"]]
+                hits = [o for o in others
+                        if "artifact" in o["type"] or _makes_token(o, "artifact")]
             elif kind == "creat":
                 hits = [o for o in others if "creature" in o["type"]]
                 # The count that actually decided something on deck 52: not "how many

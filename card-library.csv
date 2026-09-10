@@ -4671,7 +4671,7 @@ Stony-Voiced Goblins,Creature — Goblin Bard,"When this creature enters, each o
 Confusticate and Bebother,Instant,"Choose one —
 • Counter target spell unless its controller pays {4}.
 • Draw two cards, then discard a card.",U,counterspell; card draw,HOB,35,1
-The Queen of Dale,Legendary Creature — Human Noble,"Whenever an opponent casts their first noncreature spell each turn, you recruit. (Draw a card, then discard a card. If you discarded a nonland card, create a 1/1 white Human Soldier creature token.)",W,Human; Noble; card draw; tokens,HOB,24,1
+The Queen of Dale,Legendary Creature — Human Noble,"Whenever an opponent casts their first noncreature spell each turn, you recruit. (Draw a card, then discard a card. If you discarded a nonland card, create a 1/1 white Human Soldier creature token.)",W,Human; Noble; card draw; tokens; recruit,HOB,24,1
 The Arkenstone,Legendary Artifact // Sorcery — Adventure,"Creatures you control get +1/+1.
 At the beginning of your end step, draw a card. // Search your library for a legendary creature card, reveal it, put it into your hand, then shuffle. (Then exile this card. You may cast the artifact later from exile.)",W,Adventure; exile cast; card draw; pump,HOB,170,1
 "Orcrist, Goblin-cleaver",Legendary Artifact — Equipment,"Equipped creature gets +2/+2 and has trample.
@@ -4681,7 +4681,7 @@ Equip {3}",Colorless,Equipment; tokens; treasure; equipment; pump; equip; trampl
 When Sting enters, put a hone counter on Sting for each creature target opponent controls. Attach Sting to up to one target creature you control. (Each hone counter on an Equipment grants +1/+0 to equipped creature.)
 Equip {3}",Colorless,Equipment; counters; etb; equipment; equip; flash; tempo,HOB,178,1
 Great Gilded Boat,Artifact — Vehicle,"Whenever you attack, recruit. (Draw a card, then discard a card. If you discarded a nonland card, create a 1/1 white Human Soldier creature token.)
-Crew 2 (Tap any number of creatures you control with total power 2 or more: This Vehicle becomes an artifact creature until end of turn.)",U,Vehicle; card draw; tokens; vehicle; crew; vehicles,HOB,42,1
+Crew 2 (Tap any number of creatures you control with total power 2 or more: This Vehicle becomes an artifact creature until end of turn.)",U,Vehicle; card draw; tokens; vehicle; crew; vehicles; recruit,HOB,42,1
 The Sackville-Bagginses,Legendary Creature — Halfling Citizen,"When The Sackville-Bagginses enter, you may sacrifice another creature or artifact. If you do, draw a card and create a Treasure token.
 Whenever you sacrifice a token, target opponent loses 1 life.",B,Halfling; Citizen; card draw; sacrifice; tokens; treasure,HOB,83,1
 Bejeweled Warg,Creature — Wolf,"Trample
@@ -4727,7 +4727,7 @@ Magnificent End deals 5 damage to target creature.",W,cost-reduction; burn,HOB,2
 Mirkwood Nurturer,Creature — Elf Ranger,"When this creature enters, return up to one other target permanent you control to its owner's hand. If you do, put a +1/+1 counter on this creature.",U/G,Elf; Ranger; counters; etb; bounce,HOB,160,1
 Smaug's Fury,Instant,Target creature gets +3/+0 and gains reach and first strike until end of turn.,R,pump; first strike; combat; reach; defense,HOB,111,1
 Long Lake Nuisance,Creature — Bird,"Flying
-When this creature enters, recruit. (Draw a card, then discard a card. If you discarded a nonland card, create a 1/1 white Human Soldier creature token.)",U,Bird; card draw; tokens; etb; flying; evasion,HOB,45,1
+When this creature enters, recruit. (Draw a card, then discard a card. If you discarded a nonland card, create a 1/1 white Human Soldier creature token.)",U,Bird; card draw; tokens; etb; flying; evasion; recruit,HOB,45,1
 Boughside Wanderers,Creature — Elf Scout,"When this creature enters, look at the top four cards of your library. You may reveal a permanent card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.
 Landfall — Whenever a land you control enters, this creature gets +2/+2 until end of turn.",G,Elf; Scout; etb; landfall; pump; selection; lands; ramp,HOB,121,1
 Bilbo's Deadly Slice,Instant,Destroy target creature.,B,removal,HOB,62,1
@@ -4820,7 +4820,7 @@ III, IV — Draw a card.",U,Saga; card draw; sacrifice; saga; hexproof; protecti
 The Mountain-king's Return,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
 I — Recruit. (Draw a card, then discard a card. If you discarded a nonland card, create a 1/1 white Human Soldier creature token.)
 II — Return target creature card with mana value 3 or less from your graveyard to the battlefield.
-III — Put a +1/+1 counter on up to one target creature.",W,Saga; counters; reanimator; graveyard; card draw; sacrifice; tokens; saga,HOB,22,1
+III — Put a +1/+1 counter on up to one target creature.",W,Saga; counters; reanimator; graveyard; card draw; sacrifice; tokens; saga; recruit,HOB,22,1
 Key to the Side-Door,Artifact,"{2}, {T}: Target creature can't be blocked this turn.
 {1}, {T}, Discard a legendary card with the same name as a legendary permanent you control: Draw two cards.",Colorless,card draw,HOB,175,1
 Great Ugly-Looking Goblin,Creature — Goblin Soldier // Sorcery — Adventure,Each creature you control with a +1/+1 counter on it has menace. (It can't be blocked except by two or more creatures.) // Amass Goblins 2. (Then exile this card. You may cast the creature later from exile.),B,Goblin; Soldier; Adventure; counters; exile cast; amass; tokens; go-wide; menace; evasion,HOB,74,1
@@ -4830,9 +4830,9 @@ I — Target opponent reveals their hand. You choose a nonland card from it. Tha
 II — Amass Goblins 1. (Put a +1/+1 counter on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)
 III, IV — Target opponent loses 1 life and you gain 1 life.",B,Saga; counters; lifegain; sacrifice; tokens; saga; discard; amass; go-wide,HOB,65,1
 "Ori, Keeper of Songs",Legendary Creature — Dwarf Bard,"Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.)
-As long as you have an enduring story, Ori gets +1/+0 and has vigilance.",W,Dwarf; Bard; pump; vigilance; combat,HOB,23,1
+As long as you have an enduring story, Ori gets +1/+0 and has vigilance.",W,Dwarf; Bard; pump; vigilance; combat; storied; artifacts; payoff,HOB,23,1
 Patient Instructor,Creature — Human Citizen,"Vigilance
-When this creature enters, recruit. (Draw a card, then discard a card. If you discarded a nonland card, create a 1/1 white Human Soldier creature token.)",W/U,Human; Citizen; card draw; tokens; etb; vigilance; combat,HOB,162,1
+When this creature enters, recruit. (Draw a card, then discard a card. If you discarded a nonland card, create a 1/1 white Human Soldier creature token.)",W/U,Human; Citizen; card draw; tokens; etb; vigilance; combat; recruit,HOB,162,1
 Vow to Erebor,Instant,"Untap target creature you control. It gets +2/+2 until end of turn. If it's a Dwarf, you may attach an Equipment you control to it.",W,pump; Equipment,HOB,31,1
 Builder's Talent,Enchantment — Class,"(Gain the next level as a sorcery to add its ability.)
 When this Class enters, create a 0/4 white Wall creature token with defender.
@@ -4951,7 +4951,7 @@ Rage into the Valley,Sorcery,"You draw a card and lose 1 life.
 Amass Goblins 2. (Put two +1/+1 counters on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)",B,counters; pay life; card draw; tokens; amass; go-wide,HOB,79,1
 "Dáin, Lord of the Iron Hills",Legendary Creature — Dwarf Noble,"Vigilance
 Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.)
-As long as you have an enduring story, creatures can't attack you unless their controller pays {1} for each of those creatures.",W,Dwarf; Noble; vigilance; combat,HOB,8,1
+As long as you have an enduring story, creatures can't attack you unless their controller pays {1} for each of those creatures.",W,Dwarf; Noble; vigilance; combat; storied; artifacts; payoff,HOB,8,1
 Dwarven Mattock,Artifact — Equipment,"When this Equipment enters, attach it to target Dwarf you control.
 Equipped creature gets +2/+2 and has ward {1}. (Whenever equipped creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {1}.)
 Equip {3} ({3}: Attach to target creature you control. Equip only as a sorcery.)",Colorless,Equipment; etb; equipment; pump; equip; ward; protection,HOB,172,1
@@ -5005,7 +5005,7 @@ When Gandalf enters, he deals 3 damage divided as you choose among one, two, or 
 Most Decrepit Old Bird,Creature — Bird // Sorcery — Adventure,"Flying
 Threshold — This creature gets +1/+1 as long as there are seven or more cards in your graveyard. // Mill four cards, then put an instant or sorcery card from among them into your hand.",U,Bird; Adventure; graveyard; mill; exile cast; pump; flying; evasion; threshold,HOB,49,1
 Celebrate the Mountain-king,Enchantment,"When this enchantment enters, for each opponent, exile up to one target nonland permanent that player controls until this enchantment leaves the battlefield.
-When this enchantment enters, recruit. (Draw a card, then discard a card. If you discarded a nonland card, create a 1/1 white Human Soldier creature token.)",W,card draw; tokens; etb,HOB,7,1
+When this enchantment enters, recruit. (Draw a card, then discard a card. If you discarded a nonland card, create a 1/1 white Human Soldier creature token.)",W,card draw; tokens; etb; recruit,HOB,7,1
 Sandsteppe Citadel,Land,"This land enters tapped.
 {T}: Add {W}, {B}, or {G}.",W/B/G,mana,TDM,266,2
 Simulacrum Synthesizer,Artifact,"When this artifact enters, scry 2.
@@ -5015,7 +5015,7 @@ Jailbreak Scheme,Sorcery,"Spree (Choose one or more additional costs.)
 + {2} — Target artifact or creature's owner puts it on their choice of the top or bottom of their library.",U,counters; spree; value,OTJ,53,1
 Double Down,Enchantment,"Whenever you cast an outlaw spell, copy that spell. (Assassins, Mercenaries, Pirates, Rogues, and Warlocks are outlaws. Copies of permanent spells become tokens.)",U,spell copy,OTJ,44,1
 Hobbit Hole,Land,"{T}, Sacrifice this land: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.
-Halflingcycling {4} ({4}, Discard this card: Search your library for a Halfling card, reveal it, put it into your hand, then shuffle.)",Colorless,sacrifice; ramp,HOB,184,1
+Halflingcycling {4} ({4}, Discard this card: Search your library for a Halfling card, reveal it, put it into your hand, then shuffle.)",Colorless,sacrifice; ramp; cycling; card draw,HOB,184,1
 Explosive Derailment,Instant,"Spree (Choose one or more additional costs.)
 + {2} — Explosive Derailment deals 4 damage to target creature.
 + {2} — Destroy target artifact.",R,removal; burn; spree; value,OTJ,122,2
@@ -5064,7 +5064,7 @@ Surgical Suite,Enchantment — Room // Enchantment — Room,"When you unlock thi
 (You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",W,Room; counters; reanimator; graveyard,DSK,34,1
 Kíli the Resourceful,Legendary Creature — Dwarf Scout,"Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.)
 As long as you have an enduring story, you may pay {0} rather than pay the equip cost of the first equip ability you activate each turn.
-Whenever another Dwarf or Equipment you control enters, draw a card. This ability triggers only once each turn.",W,Dwarf; Scout; card draw; equipment,HOB,17,1
+Whenever another Dwarf or Equipment you control enters, draw a card. This ability triggers only once each turn.",W,Dwarf; Scout; card draw; equipment; storied; artifacts; payoff,HOB,17,1
 Overlord of the Mistmoors,Enchantment Creature — Avatar Horror,"Impending 4—{2}{W}{W} (If you cast this spell for its impending cost, it enters with four time counters and isn't a creature until the last is removed. At the beginning of your end step, remove a time counter from it.)
 Whenever this permanent enters or attacks, create two 2/1 white Insect creature tokens with flying.",W,Avatar; Horror; tokens; impending; tempo; cost-reduction,DSK,23,1
 Hardlight Containment,Enchantment — Aura,"Enchant artifact you control
@@ -5602,14 +5602,14 @@ Equip {3} ({3}: Attach to target creature you control. Equip only as a sorcery.)
 "Dori, Bearer of Friends",Legendary Creature — Dwarf Warrior,"Trample
 When Dori enters, create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")",R,Dwarf; Warrior; tokens; etb; treasure; trample; evasion,HOB,94,1
 "Balin, Loremaster",Legendary Creature — Dwarf Bard,"Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.)
-Whenever Balin or another Dwarf you control enters, you may discard your hand. Draw X cards, where X is the number of cards discarded this way. If you have an enduring story, Balin deals X damage to each opponent.",R,Dwarf; Bard; card draw; burn; noncombat damage; storied,HOB,87,1
+Whenever Balin or another Dwarf you control enters, you may discard your hand. Draw X cards, where X is the number of cards discarded this way. If you have an enduring story, Balin deals X damage to each opponent.",R,Dwarf; Bard; card draw; burn; noncombat damage; storied; artifacts; payoff,HOB,87,1
 Glóin the Mighty,Legendary Creature — Dwarf Warrior // Sorcery — Adventure,"At the beginning of your first main phase, add {R}{R}. // Easy Pickings deals 1 damage to each creature your opponents control. (Then exile this card. You may cast the creature later from exile.)",R,Dwarf; Warrior; Adventure; exile cast; burn,HOB,99,1
 Fíli the Pathfinder,Legendary Creature — Dwarf Scout,"Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.)
 As long as you have an enduring story, creatures you control get +1/+1.
-Whenever Fíli or another nontoken Dwarf you control enters, create a 2/2 red Dwarf creature token.",W,Dwarf; Scout; tokens; pump; storied,HOB,14,1
+Whenever Fíli or another nontoken Dwarf you control enters, create a 2/2 red Dwarf creature token.",W,Dwarf; Scout; tokens; pump; storied; artifacts; payoff,HOB,14,1
 Thorin Oakenshield,Legendary Creature — Dwarf Noble,"Trample
 Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.)
-As long as you have an enduring story, artifacts and creatures you control have ward {1}.",W/R,Dwarf; Noble; trample; evasion; storied; ward; protection,HOB,165,1
+As long as you have an enduring story, artifacts and creatures you control have ward {1}.",W/R,Dwarf; Noble; trample; evasion; storied; ward; protection; artifacts; payoff,HOB,165,1
 Luxurious Locomotive,Artifact — Vehicle,"Whenever this Vehicle attacks, create a Treasure token for each creature that crewed it this turn. (They're artifacts with ""{T}, Sacrifice this token: Add one mana of any color."")
 Crew 1. Activate only once each turn. (Tap any number of creatures you control with total power 1 or more: This Vehicle becomes an artifact creature until end of turn.)",Colorless,Vehicle; tokens; treasure; vehicle; crew; vehicles,OTJ,244,1
 Gold Pan,Artifact — Equipment,"When this Equipment enters, create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")
@@ -5757,3 +5757,34 @@ Exhaust — {R}, {T}: Loot deals 3 damage to any target.",U/R/G,Beast; Noble; ca
 Push the Limit,Sorcery,"Return all Mount and Vehicle cards from your graveyard to the battlefield. Sacrifice them at the beginning of the next end step.
 Vehicles you control become artifact creatures until end of turn. Creatures you control gain haste until end of turn.",R,Vehicle; reanimator; graveyard; sacrifice; haste; aggro,DFT,143,1
 Greasewrench Goblin,Creature — Goblin Artificer,"Exhaust — {2}{R}: Discard up to two cards, then draw that many cards. Put a +1/+1 counter on this creature. (Activate each exhaust ability only once.)",R,Goblin; Artificer; counters; card draw; exhaust; payoff,DFT,132,1
+Loch Mare,Creature — Horse Serpent,"This creature enters with three -1/-1 counters on it.
+{1}{U}, Remove a counter from this creature: Draw a card.
+{2}{U}, Remove two counters from this creature: Tap target creature. Put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)",U,Horse; Serpent; counters; card draw,ECL,57,1
+"Eluge, the Shoreless Sea",Legendary Creature — Elemental Fish,"Eluge's power and toughness are each equal to the number of Islands you control.
+Whenever Eluge enters or attacks, put a flood counter on target land. It's an Island in addition to its other types for as long as it has a flood counter on it.
+The first instant or sorcery spell you cast each turn costs {U} (or {1}) less to cast for each land you control with a flood counter on it.",U,Elemental; Fish; Island; counters,BLB,49,1
+Ashling's Command,Kindred Instant — Elemental,"Choose two —
+• Create a token that's a copy of target Elemental you control.
+• Target player draws two cards.
+• Ashling's Command deals 2 damage to each creature target player controls.
+• Target player creates two Treasure tokens.",U/R,Elemental; tokens; burn; treasure,ECL,205,1
+Season of Weaving,Sorcery,"Choose up to five {P} worth of modes. You may choose the same mode more than once.
+{P} — Draw a card.
+{P}{P} — Choose an artifact or creature you control. Create a token that's a copy of it.
+{P}{P}{P} — Return each nonland, nontoken permanent to its owner's hand.",U,card draw; tokens; bounce,BLB,68,1
+Rapturous Moment,Sorcery,"Draw three cards, then discard two cards. Add {U}{U}{R}{R}{R}.",U/R,card draw,SOS,219,1
+Resonating Lute,Artifact,"Lands you control have ""{T}: Add two mana of any one color. Spend this mana only to cast instant and sorcery spells.""
+{T}: Draw a card. Activate only if you have seven or more cards in your hand.",U/R,card draw; mana; spellslinger,SOS,221,1
+Kitnap,Enchantment — Aura,"Gift a card (You may promise an opponent a gift as you cast this spell. If you do, when it enters, they draw a card.)
+Enchant creature
+When this Aura enters, tap enchanted creature. If the gift wasn't promised, put three stun counters on it.
+You control enchanted creature.",U,Aura; counters; card draw; etb; aura; gift; value; enchant,BLB,53,1
+"Bifur, Melodic Rider",Legendary Creature — Dwarf Bard,"Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.)
+Whenever Bifur enters or attacks, put a +1/+1 counter on target creature.
+As long as you have an enduring story, if a triggered ability of a Dwarf you control triggers, that ability triggers an additional time.",W/R,Dwarf; Bard; counters; storied; artifacts; payoff,HOB,147,1
+"Dwalin, Weaponmaster",Legendary Creature — Dwarf Warrior,"First strike
+Whenever Dwalin enters or attacks, put a hone counter on each Equipment you control. (Each hone counter on an Equipment grants +1/+0 to equipped creature.)",W/R,Dwarf; Warrior; Equipment; counters; first strike; combat,HOB,154,1
+Iron Hills Blacksmith,Creature — Dwarf Artificer,"Double strike
+When this creature enters, create a colorless Equipment artifact token named Axe with ""Equipped creature gets +1/+0"" and equip {2}.",W,Dwarf; Artificer; tokens; etb; equipment; pump; double strike; combat; aggro,HOB,16,1
+"Firion, Wild Rose Warrior",Legendary Creature — Human Rebel Warrior,"Equipped creatures you control have haste.
+Whenever a nontoken Equipment you control enters, create a token that's a copy of it, except it has ""This Equipment's equip abilities cost {2} less to activate."" Sacrifice that token at the beginning of the next upkeep.",R,Human; Rebel; Warrior; Equipped; Equipment; cost-reduction; sacrifice; tokens; equipment; haste; aggro,FIN,137,1

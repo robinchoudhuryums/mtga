@@ -1498,6 +1498,255 @@ class TestCostThatScalesWithADeckCount:
         assert deck.cost_scale_support("wizard", cards, carddata) == 0
 
 
+class TestUnmetGateReachesTheRecommenders:
+    """The gate primitive answered correctly and the two surfaces that RECOMMEND cards
+    into a deck did not ask — G-40 again, one surface past `swap`.
+
+    Wiring it to `suggest`'s craft table is what exposed two defects in the primitive
+    that a single-card surface had hidden: 82 dead-gate hits across 4,520 craft picks, of
+    which only 12 were real. Both fixes are pinned here, because both were invisible until
+    the answer had to survive a 40-row table.
+    """
+
+    def test_the_question_and_its_rendering_are_split_but_agree(self):
+        """One predicate, two renderings — a table row has its own deck column, so the
+        single-card wording is redundant there. A second predicate per surface is the
+        parallel-source-of-truth shape (G-70)."""
+        cd, mana = deck.load_card_data(), deck.load_mana()
+        _m, cards = deck.parse_deck_file(deck.find_deck("6")["path"])
+        label = deck.unmet_gate("Hobbit Hole", cards, cd, mana)
+        note = deck.unmet_gate_note("Hobbit Hole", cards, cd, mana)
+        assert label and label in note and "0 in this deck" in note
+        assert deck.unmet_gate("Swamp", cards, cd, mana) == ""
+        assert deck.unmet_gate_note("Swamp", cards, cd, mana) == ""
+
+    def test_a_card_that_MAKES_its_own_resource_is_not_dead(self):
+        """`target_counts` excludes the card itself — right for "does this deck hold
+        targets", wrong for "will this card be dead if I ADD it". Huatli, Poet of Unity
+        searches for a Dinosaur in chapter III and CREATES TWO DINOSAUR TOKENS in chapter
+        I, and was 40 of the 82 first-pass hits: the single biggest false family."""
+        cd, mana = deck.load_card_data(), deck.load_mana()
+        _m, cards = deck.parse_deck_file(deck.find_deck("50a")["path"])
+        assert deck.unmet_gate(
+            "Huatli, Poet of Unity // Roar of the Fifth People", cards, cd, mana) == ""
+        assert deck._supplies_own_gate(
+            "Dinosaur cards in the deck", "Create two 3/3 green Dinosaur creature tokens.")
+        # It must not suppress a gate the card does NOT supply.
+        assert not deck._supplies_own_gate(
+            "Halfling cards in the deck", "Create a Treasure token.")
+
+    def test_a_gate_quoted_only_in_REMINDER_text_is_not_the_card(self):
+        """K-09: a text rule reads the CARD, not what it DESCRIBES. Bargain's reminder is
+        "You may sacrifice an artifact, enchantment, or token" — an OPTIONAL cost that
+        three card types satisfy — and `sac_a` read it as a hard artifact requirement.
+        17 of the 82 first-pass hits (21%) came from a parenthetical and nothing else."""
+        cd, mana = deck.load_card_data(), deck.load_mana()
+        rows = deck.target_counts(
+            [(1, "Agatha's Champion", "", ""), (20, "Mountain", "", "")], cd, mana)
+        assert not [r for r in rows if r[0] == "Agatha's Champion"], rows
+
+    def test_but_a_LIBRARY_SEARCH_in_reminder_text_still_counts(self):
+        """The deliberate exception, and G-75 names it by example: a keyword's fetch rider
+        is written ONLY in its reminder. Stripping reminders globally would have deleted a
+        live gate silently — which is why the strip is scoped by gate KIND."""
+        assert "lib_type" in deck._TARGET_KEEP_REM
+        cd, mana = deck.load_card_data(), deck.load_mana()
+        rows = deck.target_counts(
+            [(1, "Hobbit Hole", "", ""), (20, "Mountain", "", "")], cd, mana)
+        labs = {r[1]: r[2] for r in rows}
+        assert any("Halfling" in k for k in labs), labs
+        assert [v for k, v in labs.items() if "Halfling" in k] == [0]
+
+    def test_a_TOKEN_is_fodder_for_a_sacrifice_gate(self):
+        """G-66's own stated residual, measured: `target_counts` counts CARDS, so an
+        artifact-sacrifice gate read 0 in 24 roster decks holding no artifact CARD and
+        making up to five artifact TOKENS. Harmless while only `targets` read it; it
+        became the dominant false family the moment the gate reached a craft table."""
+        cd, mana = deck.load_card_data(), deck.load_mana()
+        rows = deck.target_counts([(1, "Magnetic Snuffler", "", ""),
+                                   (4, "Big Score", "", ""),
+                                   (20, "Mountain", "", "")], cd, mana)
+        sac = [r for r in rows if "sacrifice" in r[1]]
+        assert sac and sac[0][2] == 4, sac
+
+    def test_suggest_reports_a_dead_gate_on_a_craft_pick(self, capsys):
+        from types import SimpleNamespace as NS
+        rc = deck.cmd_suggest(NS(id="68", unowned=True, owned=False, limit=40,
+                                 format=None, any_format=False, full=False,
+                                 lands=False, ramp=False, interaction=False, needs=False))
+        out = capsys.readouterr().out
+        assert rc == 0
+        assert "⚠gate" in out, out[-1500:]
+        # G-75's rule has to be ON the surface, not only in the docs: a hit is a claim
+        # about the GATE, never about the card.
+        assert "NEVER THE CARD" in out
+
+    def test_suggest_homes_reports_a_dead_gate_per_deck(self, capsys):
+        from types import SimpleNamespace as NS
+        rc = deck.cmd_suggest_homes(NS(card="Hobbit Hole", any_format=False))
+        out = capsys.readouterr().out
+        assert rc == 0
+        assert "⚠ gate:" in out, out[:1500]
+
+    def test_the_live_dead_gate_rate_stays_LOW_on_the_craft_table(self):
+        """The measurement that decides whether this belongs on a 40-row table at all.
+        Before the two fixes: 82 hits over 4,520 picks, 12 of them real. After: 12, all
+        12 real on manual review. A flag that is usually wrong trains you to ignore the
+        real ones — the rate G-27 declined the `#: notes:` scan over — so this pins the
+        ceiling rather than the exact number, which real pool churn will move."""
+        cd, mana = deck.load_card_data(), deck.load_mana()
+        hits = total = 0
+        for d in deck.roster_decks()[:30]:
+            _m, cards = deck.parse_deck_file(d["path"])
+            res = deck.suggest_scored(d, unowned=True, limit=20)
+            if not res.get("ok"):
+                continue
+            for p in res["picks"]:
+                total += 1
+                if deck.unmet_gate(p["name"], cards, cd, mana):
+                    hits += 1
+        assert total, "no picks scored — the harness is broken, not the rate"
+        assert hits / total < 0.02, (
+            f"{hits}/{total} craft picks flagged — re-measure the gate's precision "
+            "before leaving this on a recommender surface")
+
+
+class TestChosenTypePayoff:
+    """A card whose output scales with a CHOSEN creature type names no type, so K-13's
+    trap is structural here: a literal type-name search returns nothing and reads as a
+    finished answer.
+
+    Orcrist, Goblin-cleaver — "choose a creature type. Create a Treasure token for each
+    creature you control of that type" — was argued against twice in one pass on two
+    claims that were both false: that the ability is dead without the named tribe (the
+    type is chosen ON RESOLUTION, so it is never dead), and that deck 39 fields nothing
+    for it. Neither number came from a tool, because no tool held it.
+    """
+
+    ORCRIST = ("Equipped creature gets +2/+2 and has trample.\n"
+               "Whenever equipped creature deals combat damage to a player, choose a "
+               "creature type. Create a Treasure token for each creature you control of "
+               "that type.\nEquip {3}")
+    LORD = ("As this artifact enters, choose a creature type.\n"
+            "Creatures you control of the chosen type get +1/+1.")
+    CONVERTER = ("As this enchantment enters, choose a creature type.\n"
+                 "Creatures you control are the chosen type in addition to their other "
+                 "types.")
+
+    def test_the_family_is_recognised_across_its_templatings(self):
+        assert deck.type_scale_payoff(self.ORCRIST)
+        assert deck.type_scale_payoff(self.LORD)
+        # The one-sided sweeper reads the SAME concentration from the other side.
+        assert deck.type_scale_payoff(
+            "Choose a creature type. Creatures that aren't of the chosen type get "
+            "-3/-3 until end of turn.")
+
+    def test_a_BLANKET_converter_is_excluded_because_it_inverts_the_term(self):
+        """Arcane Adaptation / Leyline of Transformation make every creature you control
+        the chosen type, so they are worth MORE the more scattered your types are — the
+        opposite claim to every other member. Counting them would rank them backwards."""
+        assert not deck.type_scale_payoff(self.CONVERTER)
+        # A converter scoped to ITSELF is not that shape and stays in.
+        assert deck.type_scale_payoff(
+            "As this creature enters, choose a creature type.\nThis creature is the "
+            "chosen type in addition to its other types.\nOther creatures you control "
+            "of the chosen type get +1/+1.")
+
+    def test_an_ordinary_card_is_silent(self):
+        assert not deck.type_scale_payoff("Deal 3 damage to any target.")
+        assert not deck.type_scale_payoff("")
+        # "choose a creature type" with no payoff clause is a cost or a naming effect.
+        assert not deck.type_scale_payoff("Choose a creature type. Scry 1.")
+
+    def test_support_is_the_BIGGEST_type_the_deck_can_field(self):
+        """The chooser picks on resolution, so the maximum bucket is the read — not the
+        count of any one named tribe, which is what makes the family invisible."""
+        carddata = {
+            "a": {"name": "A", "type": "Creature — Human Soldier", "text": ""},
+            "b": {"name": "B", "type": "Creature — Human Wizard", "text": ""},
+            "c": {"name": "C", "type": "Creature — Dwarf", "text": ""},
+        }
+        cards = [(3, "A", "X", "1"), (2, "B", "X", "2"), (4, "C", "X", "3")]
+        assert deck.type_scale_support(cards, carddata) == (5, "human")
+
+    def test_a_changeling_counts_toward_whichever_type_you_choose(self):
+        """G-59: a changeling IS every creature type — it receives a tribal effect, it
+        just never provides one."""
+        carddata = {
+            "a": {"name": "A", "type": "Creature — Human", "text": ""},
+            "sh": {"name": "Sh", "type": "Creature — Shapeshifter",
+                   "text": "Changeling (This card is every creature type.)"},
+        }
+        assert deck.type_scale_support(
+            [(2, "A", "", ""), (3, "Sh", "", "")], carddata) == (5, "human")
+        # Changelings alone still give you a type to choose.
+        assert deck.type_scale_support([(3, "Sh", "", "")], carddata)[0] == 3
+
+    def test_an_empty_or_creatureless_deck_reads_zero_not_a_crash(self):
+        assert deck.type_scale_support([], {}) == (0, "")
+        assert deck.type_scale_support(
+            [(4, "Mountain", "", "")], {"mountain": {"type": "Basic Land"}}) == (0, "")
+
+    def test_support_is_deterministic_when_two_types_tie(self):
+        """G-54: a dict plus a sort key that can tie is a nondeterministic output, and a
+        tie between two creature types is the ordinary case, not the edge one."""
+        carddata = {"a": {"name": "A", "type": "Creature — Elf", "text": ""},
+                    "b": {"name": "B", "type": "Creature — Zombie", "text": ""}}
+        cards = [(3, "A", "", ""), (3, "B", "", "")]
+        assert len({deck.type_scale_support(cards, carddata) for _ in range(5)}) == 1
+
+    def test_boost_is_zero_below_the_floor_and_rises_then_caps(self):
+        f = deck._TYPE_SCALE_MIN_SOURCES
+        assert deck.type_scale_boost(f - 1) == 0
+        assert 0 < deck.type_scale_boost(f) < deck.type_scale_boost(f + 5)
+        assert deck.type_scale_boost(9999) == deck._TYPE_SCALE_CAP
+
+    def test_the_floor_and_key_are_the_ROSTERS_percentiles(self):
+        """Calibrated from the measured distribution, the method `_DOUBLER_CALIB` records
+        and the check its `triggers` axis failed: across 113 decks the largest
+        creature-type count runs min 3 / p25 7 / p50 9 / p75 13 / p90 17 / max 26, so a
+        floor at or below the p10 would fire on every deck and carry no information."""
+        assert deck._TYPE_SCALE_MIN_SOURCES >= 7
+        assert deck._TYPE_SCALE_KEY_SOURCES >= 13
+
+    def test_the_term_spans_its_range_on_the_LIVE_roster(self):
+        """The saturation check that has to be re-run, not assumed — a bounded term is
+        only bounded usefully if real decks sit on both sides of the floor and few pin
+        the cap. `tier_floor_spread`'s 85% alarm is the same idea one model over."""
+        cd = deck.load_card_data()
+        vals = []
+        for d in deck.roster_decks():
+            _m, cards = deck.parse_deck_file(d["path"])
+            vals.append(deck.type_scale_support(cards, cd)[0])
+        below = sum(1 for v in vals if v < deck._TYPE_SCALE_MIN_SOURCES)
+        capped = sum(1 for v in vals
+                     if deck.type_scale_boost(v) >= deck._TYPE_SCALE_CAP)
+        assert 0.05 < below / len(vals) < 0.60, (
+            f"{below}/{len(vals)} decks below the floor — re-derive the calibration")
+        assert capped / len(vals) < 0.30, (
+            f"{capped}/{len(vals)} decks pin the cap — the `triggers` saturation shape")
+
+    def test_the_cut_keep_bias_only_ever_RAISES(self):
+        """Same contract as the doubler and cost-scale twins: a lord in a deck with no
+        tribe is already sorted up the cut list by theme fit, and subtracting there would
+        punish the same card twice."""
+        assert deck._cuts_type_scale_adj(0) == 0.0
+        assert deck._cuts_type_scale_adj(deck._TYPE_SCALE_MIN_SOURCES - 1) == 0.0
+        assert deck._cuts_type_scale_adj(deck._TYPE_SCALE_MIN_SOURCES) > 0
+        assert deck._cuts_type_scale_adj(9999) == deck._CUTS_MULT_CAP
+
+    def test_suggest_homes_prints_the_deciding_COUNT(self, capsys):
+        """G-52: a verdict surface must print its evidence. The failure this closes was a
+        stated type count that came from nobody's tool, so the label alone is not enough
+        — the number has to be on the row."""
+        from types import SimpleNamespace as NS
+        rc = deck.cmd_suggest_homes(NS(card="Orcrist, Goblin-cleaver", any_format=False))
+        out = capsys.readouterr().out
+        assert rc == 0
+        assert "chosen-type payoff" in out, out[:400]
+        assert "✦" in out, out[:1200]
+
+
 class TestFloorBandClaimsAreAudited:
     """The floor BAND was the one structural claim the rationale audit could not price.
 
@@ -5126,6 +5375,31 @@ class TestProposedAddGateCheck:
         _meta, cards = deck.parse_deck_file(d["path"])
         assert deck.unmet_gate_note("Swamp", cards, cd, mana) == ""
         assert deck.unmet_gate_note("No Such Card At All", cards, cd, mana) == ""
+
+    def test_swap_preview_reports_an_unmet_gate_on_the_add(self, capsys):
+        """The G-40 half: the primitive worked and `swap` — the surface G-06 mandates
+        for grading a change — never called it. Its only caller was `redundancy`."""
+        from types import SimpleNamespace as NS
+        rc = deck.cmd_swap(NS(id="6", cut="Owlin Historian", add="Hobbit Hole",
+                              apply=False, section=None))
+        out = capsys.readouterr().out
+        assert rc == 0
+        assert "⚠ gate:" in out and "0 in this deck" in out, out
+
+    def test_the_probe_is_the_POST_CUT_list(self):
+        """The card being CUT may be the only thing satisfying the add's gate, so the
+        pre-swap deck answers the wrong question. Same add, same deck, opposite verdict
+        depending only on whether the cut has been applied — which is why `_do_swap`
+        builds the probe from `after` rather than from `cards`."""
+        cd, mana = deck.load_card_data(), dict(deck.load_mana())
+        halfling = "Lightfoot Rogue"
+        cards = [(1, halfling, "", ""), (1, "Shock", "", ""), (4, "Mountain", "", "")]
+        assert deck.unmet_gate_note("Hobbit Hole", cards, cd, mana) == "", (
+            "the deck still holds its one Halfling — nothing to warn about")
+        after = deck._cards_after_swap(cards, halfling, "Hobbit Hole", ("", ""))
+        base = [r for r in after if deck._ms_key(r[1]) != deck._ms_key("Hobbit Hole")]
+        note = deck.unmet_gate_note("Hobbit Hole", base, cd, mana)
+        assert "Halfling" in note and "0 in this deck" in note, note
 
 
 class TestStateGateCounts:

@@ -15,15 +15,21 @@
 ## Current
 Cycle: 9 — a fresh `/broad-scan` ran 2026-09-08 after cycle 8's work merged, which is what
 increments the number. Cycle 8's blocks stay under their own prefix.
-Phase: verify
+Phase: reflect (cycle 9's reflection has RUN — `.cycle/blocks/09-a-reflect.md`, and the
+first /reflect this project has ever run)
 Scope: broad
 Test Command: `python3 scripts/check_all.py`
-Subsystem cycles since last Seams audit: 0 (counter adopted 2026-09-08; no Seams audit has run)
-Updated: 2026-09-08
+Subsystem cycles since last Seams audit: 1 (counter adopted 2026-09-08; no Seams audit has run)
+Updated: 2026-09-09 (reflect)
 
 ## In progress (facts to carry forward — NOT judgments)
 - **Broad scan #9 is FULLY IMPLEMENTED** — all 8 findings, 4 batches, blocks `09-batch1-*`,
-  `09-batch2-and-followons-*`, `09-batch3-4-*`. Phase is now verify/reflect, not implement.
+  `09-batch2-and-followons-*`, `09-batch3-4-*`. Nothing from the scan is outstanding.
+- A FIFTH implement block landed 2026-09-09 from a different source: a post-mortem of the
+  deck 39/58/74 tuning session, which asked what caused the card misreads. Three tooling
+  fixes came out of it; two built, one measured and declined. Block
+  `09-swap-gate-and-type-scale-broad-implement.md`, and a SIXTH closing that block's own
+  follow-on list plus a `/sync-docs` pass — `09-followons-and-syncdocs-broad-implement.md`.
 - Deck 71's rebuild has an ordered open list — see §0-current of NEXT-SESSION.md.
 
 ## Completed this cycle
@@ -40,12 +46,29 @@ Updated: 2026-09-08
 - **Batches 3 + 4** | F2 sub-majority dashboard warning + Scenario 19, F5 four wishlist
   roster loops, F6 twelve editor guard/endpoint tests (mutation-proven), F7 absent-token
   bypass retired | build_dashboard.py, wishlist.py, app.py, test_app_editor.py, CLAUDE.md
+- **Post-mortem fixes 1-3** | `swap` now reports an unmet gate on the ADD (probe built
+  POST-CUT, so a cut that removes the gate's only enabler shows); a CHOSEN-TYPE payoff
+  overlay (`type_scale_*`, floor 7 / key 13 / cap 12 calibrated from the roster's
+  p25/p75/p90) wired into `suggest-homes` and `cut_keep_score`; the self-consuming-resource
+  flag measured and DECLINED | scripts/deck.py, scripts/check_patterns.py, tests/test_deck.py
+- **Follow-ons + /sync-docs** | `unmet_gate` wired into BOTH recommenders, which exposed and
+  fixed three defects in the primitive (self-supply, reminder text, G-66's token residual):
+  82 dead-gate hits over 4,520 craft picks -> 12, all 12 genuine. Three other follow-ons
+  measured and declined. New anchor G-84; G-66/G-06/G-40/K-09/G-42/K-13 updated; G-84's pool
+  count registered in `figure_drift` | scripts/deck.py, scripts/check_docs.py,
+  scripts/check_patterns.py, tests/test_deck.py, CLAUDE.md, docs/gotchas.md
 
 ## Pending / not yet done
 - The unapplied cross-deck homes and earlier proposed swaps — NEXT-SESSION.md §0-current.
 - Two G-67 role-pattern holes (Kitnap, Eluge), baselined not fixed.
 
 ## Open follow-on items
+- `unmet_gate` has three callers now, and `redundancy` is the one never re-measured AT its
+  own surface — the exact lesson the second wiring taught. Small list, so the rate is
+  probably fine; "probably" is what that pass spent the day disproving.
+- G-84's DFC front-face question is closed as "all-faces is the better approximation", NOT as
+  correct. A per-face availability read (transform vs modal vs saga-back) would settle it;
+  G-63's column list still does not name TYPE on this path.
 - `figure_drift` now covers 10 of CLAUDE.md's ~1,100 numeric claims. The rule for what earns
   an entry is written down; the registry is still hand-kept and its misses still invisible.
 - `tier_floor_spread()` is called twice per `check_all` (the BS8-06 sweep and figure_drift)
@@ -64,13 +87,47 @@ Updated: 2026-09-08
   Scryfall ability-NAME artefacts, the K-01 shape — dropping them is a correction.
 - Tier-3 `/audit`, `/plan`, `/implement`, `/systems-map`, `/setup-cycle` stay UNVENDORED.
 - PROJECT_HEALTH.md deliberately NOT created (no vendored writer for it).
+- **The self-consuming-resource flag (G-42's mirror) is DECLINED, measured.** 44 (card, deck)
+  pairs fire on the roster and **23 read BACKWARDS** — 12 fetchlands (they REPLACE what they
+  sacrifice) and 11 sacrifice outlets in decks whose plan is sacrificing, which is G-41's
+  cost-as-upside saying the opposite thing. At best 3-6 of the rest are real: <=14% precision,
+  against the ~45% at which G-27 declined the `#: notes:` scan. The narrow non-optional form
+  has **0 live instances**. Structural reason: a sacrifice is a CHOICE, and the same text is
+  upside in one deck and conflict in another - separated by the deck's PLAN, which no text
+  model here holds.
+- The BLANKET converters (Arcane Adaptation, Leyline of Transformation) are EXCLUDED from the
+  chosen-type family rather than counted: they INVERT the term. The pattern is ANCHORED at the
+  clause start — unanchored it also swallowed Lifecraft Engine, a genuine member.
+- **FRONT-ONLY subtype counting is DECLINED, measured**: of 35 roster DFCs whose faces differ,
+  25 are creature->creature transforms (all-faces over-counts) but 10 have a NON-creature
+  front where front-only counts a hard ZERO. It trades 25 over-counts for 10 silent zeroes.
+- **The NAMED-type overlay half is DECLINED, measured**: 124 pool cards, but `tribal` already
+  serves the 92 where the card IS that type, and the noun extraction misfires on the rest.
+- **Caching `type_scale_support` is DECLINED**: 1.3% of `suggest-homes`, and a cache keyed on
+  an unhashable list is the G-71 hazard.
+- Gate patterns read reminder-STRIPPED text EXCEPT the library-search family — a fetch rider
+  lives only in its reminder, and a global strip deletes G-75's worked example silently.
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
-All four batches of broad scan #9 committed and pushed on `claude/sync-commands-mmmsdb`; gate
-green, **1761 pytest passed / 0 skipped**. The scan is closed — nothing from it is outstanding.
-**Next concrete step is a choice, not a queue:** (a) `/reflect` on cycle 9, which has never run
-and is the whole reason `defensive_count` was adopted — 9 of the 10 items across batches 2–4
-were defensive, and the metrics row would say so for the first time; (b) `/sync-docs` for the
-one G-15 clause the last block names; or (c) the DECK work in Pending above, which is the only
-thing here a player would notice.
+**Cycle 9 is reflected and closed** — `.cycle/blocks/09-a-reflect.md`, `metrics.csv` row
+`2026-09-09,9,broad,reflect,2,3,1,…,13`. Six implement blocks graded action by action:
+**3 production fixes (1 Critical), 1 new capability, 13 defensive, 1 new failure mode (Low),
+net 2.**
+
+**The number worth carrying is `defensive_count = 13`** — the first time this project has
+ever measured that bucket, and it says 13 of 17 actions this cycle fixed nothing that was
+firing. That is not a criticism of the cycle (two of the 13 paid off inside it), but it is
+the shape the metric was adopted to expose, and cycles 2–8's backfilled rows cannot show it.
+
+One self-report was CORRECTED here: block `09-followons-and-syncdocs` claimed 2 production
+fixes; the honest count is 1. See the metrics `notes` field, which the verification pack
+surfaces automatically.
+
+**The cycle's central lesson has no gate** (logged as INV-11): a primitive must be
+re-measured AT each new caller. It was learned by shipping a gate to `swap` that measured
+0 of 805, then finding the same primitive 85% wrong the next day on a 40-row craft table.
+
+Next: nothing is outstanding from cycle 9. Either start a fresh `/broad-scan` (which
+increments to cycle 10), run the Seams & Invariants audit the counter now shows as 1 cycle
+overdue, or do the DECK work in Pending — the only thing here a player would notice.
