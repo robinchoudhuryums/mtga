@@ -74,11 +74,11 @@
 1 Vibranium Energy Daggers (MSH) 254
 1 Captain America's Shield (MSH) 244
 1 Thunder Lasso (OTJ) 35
+1 Trusty Boomerang (TLA) 260
 
 # Equipment — Job-select bodies / removal / voltron scalers
 1 Kyoshi Battle Fan (TLA) 257
 1 Dragoon's Lance (FIN) 17
-1 Trusty Boomerang (TLA) 260
 1 Meteor Sword (TLA) 258
 1 Super-Soldier Serum (MSH) 38
 1 Sheltered by Ghosts (DSK) 30
