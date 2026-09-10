@@ -465,7 +465,7 @@ capable blinkers re-fire equipment ETBs (F2). Six equipment turn that trigger on
 
 ---
 
-### A. New deck — `WU Second Draw` (proposal for `/draft-deck`)
+### A. New deck — `WU Second Draw` — **DRAFTED as deck 79 on 2026-09-10** (`decks/79-second-draw/deck.txt`; floor A, graded B PROVISIONAL; `screen` of the 56 rejected cards flagged one strict upgrade worth noting — Long River's Pull over Essence Scatter — left out because BLB rotates)
 
 **Thesis:** draw twice every turn as a matter of course, and turn each extra draw into a
 board. **Not** a control deck: the payoffs are 1- and 2-drops that grow, so it curves out.
@@ -545,7 +545,7 @@ Declined for 43: **Ravenhill Flock / Homunculus Horde / Thopter Fabricator** (43
 
 **Protect in 43 (the notes already say so, and `cuts` ranks them anyway):** Lake-town Toymaker (unconditional here — Kitsa guarantees the gate), The Ten Rings and Doctor Octopus (the per-turn life reset), Restoration Magic (the only protection), all four `#: protect:` cards. **Never cut interaction from either deck** — five of the eight `cuts` rows on each are ⚠interaction, and both decks are one answer short of A.
 
-**Not modelled anywhere:** `targets` prints no STATE GATES for "drawn two or more this turn" in either deck — the family is not one of G-76's shipped six. 43's Toymaker gate is documented in its notes by hand; nothing checks it.
+**CORRECTION (2026-09-10, found while drafting deck 79):** I wrote here that `targets` prints no STATE GATES for "drawn two or more this turn". It does — the family is modelled as `draws per turn (needs 2+)` and reads Lake-town Toymaker FREE at 16 in deck 43 and Messenger Hawk FREE at 11 in deck 12. My grep matched the header `STATE GATES`; the tool prints `STATE gate(s)`. A tool-blindness claim from a grep that matched nothing is the K-13 zero-result shape one layer up.
 
 ### C. Deck 27 Blink — the equipment adds, ranked
 
