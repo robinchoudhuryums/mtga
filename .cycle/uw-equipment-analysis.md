@@ -507,26 +507,45 @@ Floodpits {3}{U}{U} (impending {1}{U}{U}), Sunpearl Kirin {1}{W}, Glen Elendra G
 4. **Two of the three engine pieces are unowned.** Reported as information (G-10), not as a
    design constraint — the list above is the optimal list regardless.
 
-### B. ALTERNATIVE to a new deck — feed 43 and 12 instead
+### B. OPTION B — feed decks 43 and 12 (MEASURED 2026-09-10; user chose to run B first)
 
-Stated as a real option, not a courtesy, because O6 weakened option A. Deck 43 (WUB, 11
-draw payoffs, 10 engines, 63% density) and deck 12 (UB, "card-draw control", 8 payoffs) are
-already the decks this pile's theme belongs to, and both can cast most of it.
+Method: live vector per deck → `screen` the 33-card family against each → `cuts` for the
+weakest slots → every pair previewed with `deck.py swap` (dry run: no unmet gate, no section
+warning, no castability flag on any of them) → role deltas measured with `deck.py tier` on a
+scratch copy per pair (G-56 path form) → `consistency` for the one pip question.
 
-- **Gleaming Splendor** {1}{W} → **deck 43**. Its `{2}{W}: two players each draw` is a
-  repeatable draw outlet, and 43 is the deck that converts drawing into a win condition.
-- **The Unagi of Kyoshi Island** {3}{U}{U} → **43 or 12**. Both cast it; both draw enough
-  that the opponent's second draw is easy to force.
-- **Lakeshore Apothecary / Master's Councillors / Jaded Analyst / Otter-Penguin / Private
-  Eye / Tiger-Seal** → **12**, which already runs four of the family.
-- **Ravenhill Flock** → 43 or 12 (grows on *every* draw; both draw 20+ cards' worth).
+**What the measurements say up front:** interaction moves on exactly ONE of the ten pairs.
+Every draw-trigger add is a *deepen-the-engine* move; both decks' real deficit is
+interaction (43: 5, 12: 6, A-floor needs 7), and the pile's draw payoffs cannot touch it.
+The one pair that does is the best swap in the set.
 
-**The trade-off, plainly:** option B costs nothing and gets these cards played sooner, but
-it deepens two decks that are already deep and leaves the WU colour pair without a draw
-deck. Option A builds the deck the pile is actually shaped like, at the cost of being the
-fifth draw-heavy blue deck on the roster. **I do not think the measurements decide this —
-they say both are reasonable.**
+#### Deck 12 — Drawn Conclusions (UB, claimed A, floor B)
 
+| # | cut → add | vector delta | why |
+|---|---|---|---|
+| **1** | **H.E.R.B.I.E. Scout Unit → Glen Elendra Guardian** | **interaction 6→7, floor B→A** (matches the claimed A) | Flash flying body that counters a noncreature spell; 12's fourth instant-speed answer. HERBIE is a 4-mana filler cantrip. **Owned.** |
+| **2** | **Daring Waverider → Scrawling Crawler** | card-adv 11→12, MV 3.44→3.36 | Upkeep "each player draws" is a guaranteed second draw for the 8-card trigger cluster (Kid Loki, Cavalry ×2, Erudite Wizard, Hawk, Cosmic Cube, Brutes, Masque) that does not die with a creature like Super Intelligence does — and its drain fires **Kaito, Bane of Nightmares' 0** every turn. Waverider is a 6-drop recasting one of ~8 spells. Craft (R). |
+| **3** | **Roxxon Brutes → Master's Councillors** | MV −0.08, otherwise flat | Same trigger, 2 mana instead of 5; the mill-3 can target *yourself* to feed Grim Reaper and Waverider/Hallcreeper lines, or the opponent to grow it. Brutes is the weakest body in the deck. Craft (U). Villain count 8→7, no Villain lord in 12. |
+| 4 (opt.) | Trickster's Stratagem → Confusticate and Bebother | card-adv +1, interaction flat (6→6) | Lateral: instant-speed counter-or-draw-two for a sorcery tuck. **Do NOT cut Stratagem for a non-interaction card** — the classifier counts it (a Horde in its slot reads interaction 5). Owned. |
+| 5 (opt.) | Wanderwine Farewell → Homunculus Horde | (Horde for HERBIE measured flat; Trio slot REJECTED: card-adv 11→10 and Merfolk 6→5) | Self-copying token payoff; every copy is a token, so **Mister Fantastic draws** on each. Only if you want a fourth payoff body. Craft (R). |
+
+Declined for 12, with the count: **Thopter Fabricator** (flat vector, and Horde is the better token payoff for Reed); **Private Eye** (0 Detectives in 12 and 43 — G-59); **Tiger-Seal / Jaded Analyst / Otter-Penguin / Friendly Teddy** (read in full — bodies that need the trigger to be creatures at all); **The Unagi** (fires only on the OPPONENT's second draw, which 12 never forces — its home is 43 beside Gleaming Splendor); **Ravenhill Flock** (a 4-mana body in a deck that wants its 4-slot for Leader/Attuma/Kaito).
+
+**Protect in 12 (what `cuts` cannot see):** **Super Intelligence** ranks weakest at Fit 3, but on your own creature it is the 1-mana guaranteed second draw — the whole trigger cluster's enabler (the flex block declined cutting it for the same reason).
+
+#### Deck 43 — Uatu The Watcher (WUB, claimed B, floor B)
+
+| # | cut → add | vector delta | why |
+|---|---|---|---|
+| **1** | **The Queen of Dale → Kid Loki** | **protection 2→3** | The tier prose's stated PATH TO A is "a second protection effect". Bard the Bowman puts a counter on a creature every turn → that creature has hexproof all turn under Kid Loki; Knowledge Seeker / Kang / Raven Eagle counters do the same. Queen's recruit is gated on the *opponent* casting noncreature spells. Owned, 1 mana. |
+| **2** | **Thirst for Knowledge → The Unagi of Kyoshi Island** | protection 2→3 (ward), MV +0.06 | With Gleaming Splendor (below) or the opponent's own draw engines, "they draw their second card → you draw two" is a flash 5-drop that refills the hand the deck lives on. **Pips:** `consistency` reads it at **83.1% on T5 — identical to School Daze and Overlord**, both already run, so the notes' "ONE double pip in the whole deck" rule is already stale (three `{U}{U}` cards today); re-ground that note either way. Thirst is a one-shot draw in the deck's deepest axis (card-adv 16). Craft (R). |
+| **3** | **Bilbo, Luckwearer → Gleaming Splendor** | flat vector (measured for Thirst's slot; Bilbo's identical) | `{2}{W}: two players each draw` is a repeatable draw outlet that also turns on The Unagi, and their second draw pays a Treasure. Cost stated: it hands the opponent cards. Bilbo is an unowned craft; Kitsa already provides the free second draw Bilbo's loot would. Owned. |
+
+Declined for 43: **Ravenhill Flock / Homunculus Horde / Thopter Fabricator** (43 holds 8 second-card payoffs already — Raven Eagle, Foggy Swamp, Kang, Bowman, Seeker, Mystic, Toymaker, Vnwxt — and needs answers, not a ninth); **Aether Syphon** (43 already has Kitsa's free loot); **Master's Councillors** (its mill fights Ketramose's exile plan — G-42).
+
+**Protect in 43 (the notes already say so, and `cuts` ranks them anyway):** Lake-town Toymaker (unconditional here — Kitsa guarantees the gate), The Ten Rings and Doctor Octopus (the per-turn life reset), Restoration Magic (the only protection), all four `#: protect:` cards. **Never cut interaction from either deck** — five of the eight `cuts` rows on each are ⚠interaction, and both decks are one answer short of A.
+
+**Not modelled anywhere:** `targets` prints no STATE GATES for "drawn two or more this turn" in either deck — the family is not one of G-76's shipped six. 43's Toymaker gate is documented in its notes by hand; nothing checks it.
 
 ### C. Deck 27 Blink — the equipment adds, ranked
 
