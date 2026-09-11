@@ -1,7 +1,7 @@
 #: name: Avengers
 #: format: Standard
 #: tier: B — Mono-W go-wide/counters. The slow-curve argument this B rested on has
-#: tier: largely gone: curve 3.36 (was 3.6, then 3.42) and 11 one-two-drops (was 6) after Erode,
+#: tier: largely gone: curve 3.39 (was 3.6, then 3.42/3.36) and 11 one-two-drops (was 6) after Erode,
 #: tier: Curious Farm Animals and Coordinated Maneuver came in for Aerith Rescue
 #: tier: Mission, Dauntless Veteran and U.S.Agent. Interaction went 4 -> 7 and the deck's
 #: tier: first three answers to a noncreature permanent (it had zero) put the metrics
@@ -50,6 +50,13 @@
 #: notes: anyway. Do NOT cut the Towers to "fix" him — they are his enablers and a Hero tutor.
 
 Deck
+#: notes: 2026-09-11 — Quake, Agent of S.H.I.E.L.D. → Exemplar of Light (owned, 0 wildcards). card advantage 2 → 3 on a
+#: notes: floor that stays B. Exemplar closes BOTH payoff gaps `engines` reported in one card: "whenever you gain life, put
+#: notes: a +1/+1 counter on this creature" turns the deck's six lifegain enablers (which had NO payoff) into counters, and
+#: notes: "whenever you put one or more +1/+1 counters on this creature, draw a card" turns counters into cards — the 13
+#: notes: enablers / 2 payoffs imbalance was the deck's oldest structural weakness. Quake's "whenever you cast a noncreature
+#: notes: spell, tap target creature or land" had only five noncreature spells to trigger on.
+
 # Hero core — anthems, counters, tempo
 2 Avengers Assemble! (MSH) 6
 1 Agent Phil Coulson (MSH) 4
@@ -62,7 +69,7 @@ Deck
 1 Mockingbird, Ace Agent (MSH) 22
 1 Spider-Woman, Secret Agent (MSH) 229
 1 Super-Adaptoid (MSH) 250
-1 Quake, Agent of S.H.I.E.L.D. (MSH) 32
+1 Exemplar of Light (FDN) 733
 1 Coordinated Maneuver (TDM) 6
 1 Delney, Streetwise Lookout (MKM) 12
 1 Origin of the Avengers (MSH) 28
