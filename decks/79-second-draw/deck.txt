@@ -4,7 +4,7 @@
 #: plan: midrange
 #: tier: B (PROVISIONAL) — deliberately one band UNDER the metrics floor, which reads A on interaction 7 +1?
 #: tier: (5 instant-speed, 4 able to answer a noncreature permanent) — EXACTLY the A-floor threshold of seven, with nothing to
-#: tier: spare — card advantage 20 (8 repeatable) and protection 3 on a 3.14 curve with 24 lands (worst cast-on-curve is
+#: tier: spare — card advantage 20 (8 repeatable) and protection 3 on a 3.19 curve with 24 lands (worst cast-on-curve is
 #: tier: Yangchen's {W}{W} at 79.5% on T5; keepable 84% and `consistency` says no land count improves it). Graded under the
 #: tier: floor for four things it cannot see: (1) UNPLAYED AND UNBUILT — 10 craft targets including the keystone (Scrawling
 #: tier: Crawler) and The Unagi. (2) THE ENGINE IS SYMMETRIC — Crawler and Gleaming Splendor hand the opponent cards every
@@ -51,6 +51,9 @@
 #: notes: proves too slow in play. Dazzling Denial was passed over for Essence Scatter: the deck fields ~4 Birds, not enough
 #: notes: to rely on the {4} mode.
 
+#: notes: 2026-09-11 — Spell Pierce → Refute (user's pick). A hard counter that loots, so the answer itself is a
+#: notes: second-draw source; Pierce was soft, noncreature-only and the weakest answer as the game plan lengthened.
+#: notes: Vector flat at interaction 7, avg MV 3.14 → 3.19. FDN, no rotation.
 #: notes: 2026-09-11 — THE COPY PACKAGE (user's picks): Lady Octopus → The Clone Saga; Essence Scatter → Ember Island
 #: notes: Production; Into the Flood Maw → Impostor Syndrome, all under a new `# Copies` section. The question was "many Wan
 #: notes: Shi Tongs": Spider-Verse is owned but red and Spider-only; of the five WU Standard legend-rule cards, The Clone Saga
@@ -151,7 +154,7 @@
 1 Impostor Syndrome (SPM) 34
 
 # Interaction
-1 Spell Pierce (SOA) 23
+1 Refute (FDN) 48
 1 Into the Roil (FDN) 509
 1 Glen Elendra Guardian (ECL) 51
 1 Confusticate and Bebother (HOB) 35
