@@ -3,8 +3,8 @@
 #: colors: WU
 #: plan: midrange
 #: tier: B (PROVISIONAL) — deliberately one band UNDER the metrics floor, which reads A on interaction 9
-#: tier: (7 instant-speed, 5 able to answer a noncreature permanent), card advantage 17 (8 repeatable) and protection
-#: tier: 3 on a 2.81 curve with 24 lands (worst cast-on-curve is Yangchen's {W}{W} at 79.5% on T5, keepable 84% — `consistency` says no
+#: tier: (7 instant-speed, 5 able to answer a noncreature permanent), card advantage 18 (8 repeatable) and protection
+#: tier: 3 on a 2.83 curve with 24 lands (worst cast-on-curve is Yangchen's {W}{W} at 79.5% on T5, keepable 84% — `consistency` says no
 #: tier: land count improves it). Graded under the floor for three things it cannot see: (1) UNPLAYED AND UNBUILT — 10 craft
 #: tier: targets, including the keystone (Scrawling Crawler) and the best payoff pair (The Unagi); without the
 #: tier: Crawler this is a functional Azorius tempo deck, not THIS deck. (2) THE ENGINE IS SYMMETRIC — Scrawling
@@ -15,14 +15,15 @@
 #: tier: (Kitsa joined the list) — the identities differ on colours (WU vs WUB) and win-con (evasive second-draw
 #: tier: creatures vs the Grimoire hand-size lock), two of G-47's three, so no pivot. Re-grade after 20 matches: the
 #: tier: floor says A and the rubric lets the letter follow it once the deck exists and has been played.
-#: archetype: Azorius (W/U) "draw your second card each turn" TEMPO. Twelve payoffs that trigger on the second
+#: archetype: Azorius (W/U) "draw your second card each turn" TEMPO. Eleven payoffs that trigger on the second
 #: archetype: draw of a turn (Kid Loki, Lady Octopus, Mischievous Mystic, Lakeshore Apothecary, Knowledge Seeker,
-#: archetype: Master's Councillors, Astrologian's Planisphere, Bard the Bowman, Clinquant Skymage,
+#: archetype: Astrologian's Planisphere, Bard the Bowman, Clinquant Skymage,
 #: archetype: Ravenhill Flock, Lake-town Toymaker, Homunculus Horde) over a GUARANTEED second draw: Scrawling
 #: archetype: Crawler's upkeep "each player draws" makes the draw step card two every turn for free, Gleaming
 #: archetype: Splendor's {2}{W} hands both players a card on demand (turning on The Unagi and its own Treasure),
 #: archetype: Vnwxt and Bard, King of Dale double draws. A Clue layer (Air Nomad Legacy, The Mechanist,
-#: archetype: Knowledge Seeker), Kitsa's loot and Super Intelligence supply the second draw when the engine is not out, and
+#: archetype: Knowledge Seeker), Kitsa's loot and Super Intelligence supply the second draw when the engine is not out,
+#: archetype: Spirit Water Revival's waterbend (tap six of the wide board: draw SEVEN) is the burst turn, and
 #: archetype: 10 fliers carry the damage; Enduring Curiosity and Mu Yanling turn connecting fliers into more draws.
 #: archetype: PLAN: curve out with 1-2 drop payoffs that grow, protect them with cheap counters and Kid Loki's
 #: archetype: hexproof, and win in the air. Not a control deck. DISTINCTIVENESS: the roster's four dense draw
@@ -47,6 +48,13 @@
 #: notes: proves too slow in play. Dazzling Denial was passed over for Essence Scatter: the deck fields ~4 Birds, not enough
 #: notes: to rely on the {4} mode.
 
+#: notes: 2026-09-11 — Master's Councillors → Spirit Water Revival (user's pick). The burst-draw question was asked as a
+#: notes: ramp question ("a huge Wan Shi Tong / Ravenhill Flock turn"); the honest answer is that Flock's boost is a DRAW count,
+#: notes: not a mana count, and Wan Shi Tong's X is mana-only (waterbend/convoke do not pay for creature spells). SWR's
+#: notes: waterbend {6} taps creatures and artifacts — 25 payer cards plus 13 token sources here — for draw SEVEN (fourteen under
+#: notes: Bard, King of Dale) with no maximum hand size. card-adv 17 → 18, {1}{U}{U} on T3 at 82.6%. ELUGE was read and declined:
+#: notes: its discount applies only to the first instant/sorcery each turn (6 in the deck, all MV 1–3), never to a creature, and
+#: notes: {1}{U}{U}{U} reads 63.5% on T4 against 18 U sources. Councillors' mill had no payoff in this list.
 #: notes: 2026-09-11 — Messenger Hawk → Astrologian's Planisphere (user's pick; keeps Clinquant Skymage). The quality guard
 #: notes: flags card-adv 18 → 17 — that is Hawk's ETB Clue, and the trade is deliberate: Planisphere is a second/third-card
 #: notes: payoff that brings its own 1/1 body, it is the deck's third artifact SPELL (Lady Octopus's {T} had two targets), and it
@@ -103,7 +111,6 @@
 1 Mischievous Mystic (FDN) 47
 1 Lakeshore Apothecary (HOB) 43
 1 Knowledge Seeker (TLA) 60
-1 Master's Councillors (HOB) 47
 1 Astrologian's Planisphere (FIN) 46
 1 Bard the Bowman (HOB) 145
 1 Clinquant Skymage (FDN) 33
@@ -122,6 +129,7 @@
 1 The Mighty Thor, Jane Foster (MSH) 222
 1 Kitsa, Otterball Elite (BLB) 54
 1 The Arkenstone // Seek the Heart (HOB) 170
+1 Spirit Water Revival (TLA) 73
 
 # Interaction
 1 Into the Flood Maw (BLB) 52
