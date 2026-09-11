@@ -4,18 +4,23 @@
 #: colors: G
 #: based-on: deck.txt
 #: plan: midrange
-#: tier: B — PROVISIONAL, and it now MATCHES the measurable floor rather than sitting under it.
-#: tier: The floor moved: interaction 5 plus card advantage 1 is a sum of 6, and the A-floor
-#: tier: wants 7, so the earlier "one band below A" framing is no longer true — the removal
-#: tier: suite thinned as the engine cards came in. Three weaknesses hold it here:
-#: tier: 1. CARD ADVANTAGE 1 IS THE LOWEST FIGURE ON THE ROSTER. Icetill Explorer, Traveling
+#: tier: B — PROVISIONAL, and it sits ONE BAND ABOVE the measurable floor, which the rubric
+#: tier: allows for what the metrics cannot see. RE-GROUNDED 2026-09-11: this block previously
+#: tier: said the letter "MATCHES the measurable floor", which was wrong on its own arithmetic —
+#: tier: interaction 5 plus card advantage 1 is a sum of 6 against the 7 a B floor wants, so the
+#: tier: floor reads C, not B. The removal suite thinned as the engine cards came in. RE-GRADE
+#: tier: CANDIDATE: the letter needs the human call, and the case for holding B is below.
+#: tier: Three weaknesses hold it here:
+#: tier: 1. CARD ADVANTAGE 1 IS THE LOWEST FIGURE ON THE ROSTER, tied with deck 23. Icetill Explorer, Traveling
 #: tier:    Chocobo, Agatha's Soul Cauldron and Web of Life and Destiny all generate real value
 #: tier:    the classifier cannot read, so the true number is higher — but not by much, and the
 #: tier:    deck has no unconditional draw spell at all.
 #: tier: 2. IT IS THE SLOWEST DECK BUILT THIS CYCLE. Avg MV 3.82 with only 11 early drops, and
 #: tier:    the engine needs lands in the GRAVEYARD before it does anything, so the first three
 #: tier:    turns are close to blank. Against a fast start it is behind before Lumra is castable.
-#: tier: 3. CENTRAL THEMES 25 is the most diffuse reading on the roster after deck 23. That is
+#: tier: 3. CENTRAL THEMES 17 (this block said 25; the live vector reads 17 — the figure audit
+#: tier:    misses it because its patterns match "17 central themes", not "CENTRAL THEMES 17").
+#: tier:    Still among the more diffuse readings, behind deck 23's 24. That is
 #: tier:    partly an artifact of counting every landfall and token cue separately, but it does
 #: tier:    reflect a real spread: the deck is doing land-ramp, self-mill, tokens and counters at
 #: tier:    once, and a sweeper catches it mid-assembly.
