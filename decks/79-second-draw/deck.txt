@@ -4,12 +4,12 @@
 #: plan: midrange
 #: tier: B (PROVISIONAL) — deliberately one band UNDER the metrics floor, which reads A on interaction 7 +1?
 #: tier: (5 instant-speed, 4 able to answer a noncreature permanent) — EXACTLY the A-floor threshold of seven, with nothing to
-#: tier: spare — card advantage 20 (8 repeatable) and protection 3 on a 3.19 curve with 24 lands (worst cast-on-curve is
+#: tier: spare — card advantage 21 (8 repeatable) and protection 3 on a 3.11 curve with 24 lands (worst cast-on-curve is
 #: tier: Yangchen's {W}{W} at 79.5% on T5; keepable 84% and `consistency` says no land count improves it). Graded under the
 #: tier: floor for four things it cannot see: (1) UNPLAYED AND UNBUILT — 10 craft targets including the keystone (Scrawling
 #: tier: Crawler) and The Unagi. (2) THE ENGINE IS SYMMETRIC — Crawler and Gleaming Splendor hand the opponent cards every
 #: tier: turn they are out. (3) INTERACTION AT THE EDGE — the 2026-09-11 copy package (Clone Saga / Ember Island / Impostor
-#: tier: Syndrome) went in over two answers and a 1-drop; one more answer out and the floor drops a band, and the deck's answers
+#: tier: Syndrome, less Ember Island) went in over two answers and a 1-drop; one more answer out and the floor drops a band, and the deck's answers
 #: tier: to a resolved threat are Into the Roil, Sheltered by Ghosts and Jane's tap-blink. (4) FIVE CARDS ROTATE within the
 #: tier: window (Vnwxt, Mu Yanling, Enduring Curiosity, Three Steps Ahead, Restless Anchorage). DISTINCTNESS, stated not
 #: tier: hidden: `similar` read 91% against 43 Uatu The Watcher on ✦card draw + ✦tokens at the draft (10 shared nonland
@@ -51,6 +51,11 @@
 #: notes: proves too slow in play. Dazzling Denial was passed over for Essence Scatter: the deck fields ~4 Birds, not enough
 #: notes: to rely on the {4} mode.
 
+#: notes: 2026-09-11 — Ember Island Production → Waterbending Scroll (user's pick), closing the day's tuning. The Scroll's
+#: notes: {6} activation costs {1} less per ISLAND YOU CONTROL — not per Island in the deck — so it is a 4-mana draw on turn 3
+#: notes: and a FREE {T}: draw every turn from about six Islands on (24 lands, 11 of them Islands): a late engine, not an early
+#: notes: one. Ember Island was the marginal member of the copy package by its own argument — a one-shot five-mana sorcery whose
+#: notes: Wan Shi Tong copy enters with X = 0 and draws nothing. card-adv 20 → 21, avg MV 3.19 → 3.11, floor A.
 #: notes: 2026-09-11 — Spell Pierce → Refute (user's pick). A hard counter that loots, so the answer itself is a
 #: notes: second-draw source; Pierce was soft, noncreature-only and the weakest answer as the game plan lengthened.
 #: notes: Vector flat at interaction 7, avg MV 3.14 → 3.19. FDN, no rotation.
@@ -147,10 +152,10 @@
 1 The Arkenstone // Seek the Heart (HOB) 170
 1 Spirit Water Revival (TLA) 73
 1 Wan Shi Tong, Librarian (TLA) 78
+1 Waterbending Scroll (TLA) 81
 
 # Copies — around the legend rule
 1 The Clone Saga (MSC) 782
-1 Ember Island Production (TLA) 48
 1 Impostor Syndrome (SPM) 34
 
 # Interaction
