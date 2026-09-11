@@ -9,7 +9,7 @@
 #: tier: floor for four things it cannot see: (1) UNPLAYED AND UNBUILT — 10 craft targets including the keystone (Scrawling
 #: tier: Crawler) and The Unagi. (2) THE ENGINE IS SYMMETRIC — Crawler and Gleaming Splendor hand the opponent cards every
 #: tier: turn they are out. (3) INTERACTION AT THE EDGE — the 2026-09-11 copy package (Clone Saga / Ember Island / Impostor
-#: tier: Syndrome) went in over two answers and a 1-drop; one more answer out and the floor is B, and the deck's answers
+#: tier: Syndrome) went in over two answers and a 1-drop; one more answer out and the floor drops a band, and the deck's answers
 #: tier: to a resolved threat are Into the Roil, Sheltered by Ghosts and Jane's tap-blink. (4) FIVE CARDS ROTATE within the
 #: tier: window (Vnwxt, Mu Yanling, Enduring Curiosity, Three Steps Ahead, Restless Anchorage). DISTINCTNESS, stated not
 #: tier: hidden: `similar` read 91% against 43 Uatu The Watcher on ✦card draw + ✦tokens at the draft (10 shared nonland
