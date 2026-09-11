@@ -3,9 +3,9 @@
 #: colors: WU
 #: plan: midrange
 #: tier: B (PROVISIONAL) — deliberately one band UNDER the metrics floor, which reads A on interaction 8
-#: tier: (7 instant-speed, 5 able to answer a noncreature permanent), card advantage 16 (8 repeatable) and protection
-#: tier: 3 on a 2.67 curve with 24 lands (worst cast-on-curve 85.7%, keepable 84% — `consistency` says no land count
-#: tier: improves it). Graded under the floor for three things it cannot see: (1) UNPLAYED AND UNBUILT — 10 craft
+#: tier: (7 instant-speed, 5 able to answer a noncreature permanent), card advantage 17 (8 repeatable) and protection
+#: tier: 3 on a 2.81 curve with 24 lands (worst cast-on-curve is Yangchen's {W}{W} at 79.5% on T5, keepable 84% — `consistency` says no
+#: tier: land count improves it). Graded under the floor for three things it cannot see: (1) UNPLAYED AND UNBUILT — 10 craft
 #: tier: targets, including the keystone (Scrawling Crawler) and the best payoff pair (The Unagi); without the
 #: tier: Crawler this is a functional Azorius tempo deck, not THIS deck. (2) THE ENGINE IS SYMMETRIC — Scrawling
 #: tier: Crawler and Gleaming Splendor hand the opponent cards every turn they are out; no metric prices that and it
@@ -15,14 +15,14 @@
 #: tier: (Kitsa joined the list) — the identities differ on colours (WU vs WUB) and win-con (evasive second-draw
 #: tier: creatures vs the Grimoire hand-size lock), two of G-47's three, so no pivot. Re-grade after 20 matches: the
 #: tier: floor says A and the rubric lets the letter follow it once the deck exists and has been played.
-#: archetype: Azorius (W/U) "draw your second card each turn" TEMPO. Thirteen payoffs that trigger on the second
+#: archetype: Azorius (W/U) "draw your second card each turn" TEMPO. Twelve payoffs that trigger on the second
 #: archetype: draw of a turn (Kid Loki, Lady Octopus, Mischievous Mystic, Lakeshore Apothecary, Knowledge Seeker,
-#: archetype: Master's Councillors, Atlantean Cavalry, Messenger Hawk, Bard the Bowman, Clinquant Skymage,
+#: archetype: Master's Councillors, Messenger Hawk, Bard the Bowman, Clinquant Skymage,
 #: archetype: Ravenhill Flock, Lake-town Toymaker, Homunculus Horde) over a GUARANTEED second draw: Scrawling
 #: archetype: Crawler's upkeep "each player draws" makes the draw step card two every turn for free, Gleaming
 #: archetype: Splendor's {2}{W} hands both players a card on demand (turning on The Unagi and its own Treasure),
 #: archetype: Vnwxt and Bard, King of Dale double draws. A Clue layer (Air Nomad Legacy, The Mechanist, Messenger
-#: archetype: Hawk, Knowledge Seeker) and cheap cantrips supply the second draw when the engine is not out, and
+#: archetype: Hawk, Knowledge Seeker), Kitsa's loot and Super Intelligence supply the second draw when the engine is not out, and
 #: archetype: 10 fliers carry the damage; Enduring Curiosity and Mu Yanling turn connecting fliers into more draws.
 #: archetype: PLAN: curve out with 1-2 drop payoffs that grow, protect them with cheap counters and Kid Loki's
 #: archetype: hexproof, and win in the air. Not a control deck. DISTINCTIVENESS: the roster's four dense draw
@@ -47,6 +47,12 @@
 #: notes: proves too slow in play. Dazzling Denial was passed over for Essence Scatter: the deck fields ~4 Birds, not enough
 #: notes: to rely on the {4} mode.
 
+#: notes: 2026-09-11 — ROUND 2 (user's picks): Chart a Course → The Legend of Yangchen; Atlantean Cavalry → The Arkenstone.
+#: notes: card-adv 16 → 17, interaction 8 → 8 +1? (Yangchen's chapter I is removal the classifier only half-tags), avg MV
+#: notes: 2.67 → 2.81 — the curve headroom was real (keepable is curve-limited at 84%, not land-limited). Chart was the
+#: notes: draft's one 2-mana guaranteed second draw; Kitsa and Super Intelligence now cover that role, which is what made it
+#: notes: cuttable. Yangchen's chapter II (you draw 3 AND they draw 3) is the card's point here: their second card pays
+#: notes: Gleaming Splendor a Treasure and draws The Unagi two. The Arkenstone's {2}{W} Adventure tutors any of 8 legends.
 #: notes: 2026-09-11 — FIRST TUNE, four swaps (Floodpits Drowner → Kitsa; Plunder the Trollshaws → Super Intelligence;
 #: notes: Spectral Sailor → Moonlit Meditation; Hardlight Containment → Three Steps Ahead). Interaction 9 → 8 (the floor
 #: notes: holds A), protection 4 → 3 (Hardlight's ward {1} was the credited point), avg MV 2.64 → 2.67. WHY EACH:
@@ -63,8 +69,8 @@
 #: notes: ENDURING INNOCENCE was measured and declined on mana alone: 17 creatures at power ≤2 plus every Faerie token make
 #: notes: its draw near-certain, but {W}{W} on turn 3 reads 67.8% against 14 W sources — the worst number in the deck by 18.
 
-#~ -Homunculus Horde | +The Legend of Yangchen | OWNED — measured 2026-09-11: chapter I exiles up to two of their MV≥3 permanents, chapter II is "you draw 3 AND they draw 3" — their second card, so Gleaming Splendor pays a Treasure and The Unagi draws two — chapter III a flier that airbends on your second spell. interaction 8→8+1?, card-adv 16→17, avg MV +0.02; {W}{W} on T5 reads 79.5% against 14 W sources. Horde is the weakest payoff by `cuts` (Fit 13) and a craft.
-#~ -Atlantean Cavalry | +The Arkenstone | OWNED — measured 2026-09-11: the {2}{W} Adventure tutors any of 8 legendary creatures (Unagi, Bard King, Mu Yanling, Kid Loki, Lady Octopus…); the {5} artifact is an anthem plus an end-step draw and an artifact body. card-adv 16→17, avg MV +0.05. Cavalry is one of four interchangeable 2-drop growers.
+#~ note: applied — The Legend of Yangchen // Avatar Yangchen in for Chart a Course.
+#~ note: applied — The Arkenstone // Seek the Heart in for Atlantean Cavalry.
 #~ -Clinquant Skymage | +Astrologian's Planisphere | OWNED — measured 2026-09-11: Job select brings its own 1/1 body; third card each turn fires off Crawler + draw step + any cantrip, and 11 noncreature spells add counters; Equip {2} can re-home it. Vector flat, avg MV 2.67→2.61. Skymage is the redundant twin of Ravenhill Flock (`screen` flags Flock as its strict upgrade). FIN rotates.
 #~ -Messenger Hawk | +The Key to the Vault | CRAFT (R) — measured 2026-09-11 and DECLINED (see notes): no draw, 18–34% to hit a 5-drop; card-adv 16→15. Recorded so the case is not re-derived.
 #~ -Moonlit Meditation | +Wan Shi Tong, Librarian | OWNED — alternative in this slot if a BODY is wanted: flash flier, X counters + X/2 draws, no rotation. Vector flat.
@@ -86,7 +92,6 @@
 1 Lakeshore Apothecary (HOB) 43
 1 Knowledge Seeker (TLA) 60
 1 Master's Councillors (HOB) 47
-1 Atlantean Cavalry (MSH) 45
 1 Messenger Hawk (TLA) 234
 1 Bard the Bowman (HOB) 145
 1 Clinquant Skymage (FDN) 33
@@ -98,12 +103,13 @@
 # Clues, cantrips and combat draw
 1 Air Nomad Legacy (TLA) 206
 1 The Mechanist, Aerial Artisan (TLA) 64
-1 Chart a Course (FDN) 586
+1 The Legend of Yangchen // Avatar Yangchen (TLA) 27
 1 Enduring Curiosity (DSK) 51
 1 Mu Yanling, Wind Rider (DFT) 52
 1 Overlord of the Floodpits (DSK) 68
 1 Sunpearl Kirin (TDM) 29
 1 Kitsa, Otterball Elite (BLB) 54
+1 The Arkenstone // Seek the Heart (HOB) 170
 
 # Interaction
 1 Into the Flood Maw (BLB) 52
