@@ -2,9 +2,9 @@
 #: format: Standard
 #: colors: WU
 #: plan: midrange
-#: tier: B (PROVISIONAL) — deliberately one band UNDER the metrics floor, which reads A on interaction 8
-#: tier: (7 instant-speed, 5 able to answer a noncreature permanent), card advantage 17 (8 repeatable) and protection
-#: tier: 3 on a 2.81 curve with 24 lands (worst cast-on-curve is Yangchen's {W}{W} at 79.5% on T5, keepable 84% — `consistency` says no
+#: tier: B (PROVISIONAL) — deliberately one band UNDER the metrics floor, which reads A on interaction 9
+#: tier: (7 instant-speed, 5 able to answer a noncreature permanent), card advantage 18 (8 repeatable) and protection
+#: tier: 3 on a 2.83 curve with 24 lands (worst cast-on-curve is Yangchen's {W}{W} at 79.5% on T5, keepable 84% — `consistency` says no
 #: tier: land count improves it). Graded under the floor for three things it cannot see: (1) UNPLAYED AND UNBUILT — 10 craft
 #: tier: targets, including the keystone (Scrawling Crawler) and the best payoff pair (The Unagi); without the
 #: tier: Crawler this is a functional Azorius tempo deck, not THIS deck. (2) THE ENGINE IS SYMMETRIC — Scrawling
@@ -47,6 +47,14 @@
 #: notes: proves too slow in play. Dazzling Denial was passed over for Essence Scatter: the deck fields ~4 Birds, not enough
 #: notes: to rely on the {4} mode.
 
+#: notes: 2026-09-11 — Sunpearl Kirin → The Mighty Thor, Jane Foster (user's pick of slot). Her attack blink hits ANY nontoken
+#: notes: artifact or creature and returns it TAPPED: on your side Overlord of the Floodpits comes back with no time counters (a
+#: notes: 6/6 flier at once, draw two), Messenger Hawk makes another Clue, Mu Yanling another Vehicle; on theirs it is a tap-down
+#: notes: of the best blocker every attack. interaction 8 → 9, card-adv 17 → 18 — READ THAT +1 WITH CARE: it is her "whenever an
+#: notes: Equipment enters, draw" clause, which is DEAD at 0 Equipment; the classifier cannot see that. Kirin was one of her four
+#: notes: own-side blink targets, so those are three now. Fishing Pole was measured and left out: a Fish per turn for {1} plus a
+#: notes: tapped carrier, competing with Kitsa's {T} for the tap, and Moonlit Meditation only converts the FIRST token event each
+#: notes: turn — which Mischievous Mystic already supplies for free.
 #: notes: 2026-09-11 — ROUND 2 (user's picks): Chart a Course → The Legend of Yangchen; Atlantean Cavalry → The Arkenstone.
 #: notes: card-adv 16 → 17, interaction 8 → 8 +1? (Yangchen's chapter I is removal the classifier only half-tags), avg MV
 #: notes: 2.67 → 2.81 — the curve headroom was real (keepable is curve-limited at 84%, not land-limited). Chart was the
@@ -107,7 +115,7 @@
 1 Enduring Curiosity (DSK) 51
 1 Mu Yanling, Wind Rider (DFT) 52
 1 Overlord of the Floodpits (DSK) 68
-1 Sunpearl Kirin (TDM) 29
+1 The Mighty Thor, Jane Foster (MSH) 222
 1 Kitsa, Otterball Elite (BLB) 54
 1 The Arkenstone // Seek the Heart (HOB) 170
 
