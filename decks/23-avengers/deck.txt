@@ -1,7 +1,7 @@
 #: name: Avengers
 #: format: Standard
 #: tier: B — Mono-W go-wide/counters. The slow-curve argument this B rested on has
-#: tier: largely gone: curve 3.33 (was 3.6, then 3.42/3.36/3.39) and 12 one-two-drops (was 6) after Erode,
+#: tier: largely gone: curve 3.28 (was 3.6, then 3.42/3.36/3.39/3.33) and 13 one-two-drops (was 6) after Erode,
 #: tier: Curious Farm Animals and Coordinated Maneuver came in for Aerith Rescue
 #: tier: Mission, Dauntless Veteran and U.S.Agent. Interaction went 4 -> 7 and the deck's
 #: tier: first three answers to a noncreature permanent (it had zero) put the metrics
@@ -14,9 +14,10 @@
 #: tier: rather than sitting a band above it. The measured count still understates the deck —
 #: tier: Avengers Assemble! (x2) is a repeatable end-step draw the classifier misses, as are
 #: tier: Mikey & Leo and Origin chapter II, so the honest figure is nearer 4. Central themes
-#: tier: 24 → 18 from that one swap (the count is deck-relative: cutting a five-drop raised the
-#: tier: dominant theme's bar and shed six marginal themes), so this is no longer the roster's
-#: tier: most diffuse deck — 56a reads 32, 24b 30, 56 29, 26 25.
+#: tier: went 24 → 18 on that one swap and 18 → 16 on the 2026-09-11 tune (the count is
+#: tier: deck-relative: cutting a five-drop raises the dominant theme's bar and sheds the
+#: tier: marginal themes), so this is no longer the roster's most diffuse deck — 56a reads
+#: tier: 32, 24b 30, 56 29, 26 25.
 #: notes: MANABASE: Surveillance Room was cut for a 21st Plains. In a MONO-WHITE deck its
 #: notes: "{1}, {T}: add one mana of any color" is a white source with a tax and its {C} mode
 #: notes: does nothing a Plains does not — so it was costing a real white source for a one-shot
@@ -63,6 +64,24 @@ Deck
 #: notes: +1/+1 counter on EACH creature you control") is the only W-castable effect here that scales with the whole board
 #: notes: rather than one tribe — the four true counter doublers in white are all tribe-locked (Giada/Angels,
 #: notes: Prairie Dog/Rabbits, Dragonstorm Globe, Turtle Van), which is why none of them is in this list.
+#: notes: 2026-09-11 tune, three swaps — Don & Leo, Problem Solvers → White Lotus Tile; Raph & Leo, Sibling Rivals →
+#: notes: The Eagles Are Coming!; 2x Plains → 2x Abandoned Air Temple. Floor stays B; curve 3.33 → 3.28, early drops
+#: notes: 12 → 13. THE DECK IS NOW WIP: White Lotus Tile is 1 mythic and the 2nd Air Temple 1 rare, so `check` reports
+#: notes: a craft gap by design.
+#: notes: DON & LEO WAS THE G-42 SHAPE — a fine card fighting its own deck. Its only ability blinks a creature YOU
+#: notes: control, and a blink returns a NEW object, so it ERASES the +1/+1 counters this deck exists to accumulate
+#: notes: (Leader's Talent, Virtue of Loyalty, Exemplar, White Widow, Origin ch. III all put them on). It did re-trigger
+#: notes: the deck's 8 ETBs, so it was not blank — it was the most expensive non-payoff card in a 3.3-curve list and it
+#: notes: pulled against the engine. RAPH & LEO was the weakest fit `cuts` measured (15, against a 17-31 field): the
+#: notes: extra combat untaps ONE OR TWO attackers, so the second swing re-attacks with two creatures, not the board —
+#: notes: a tall card in a wide deck.
+#: notes: WHITE LOTUS TILE's X is the greatest number of creatures you control SHARING A TYPE — read that as a
+#: notes: BATTLEFIELD count, not a deck count. The deck-list ceiling is Human 14 / Hero 10 / Soldier 7 (Soldier tokens
+#: notes: grow that line in play); the realistic figure is 3-5. It is a top-end burst for Anti-Venom, not a turn-4 rock.
+#: notes: THE AIR TEMPLES ARE MANA-NEUTRAL AND MEASURED SO: both tap for W, so W sources stay at 22, keepable stays
+#: notes: 84.4% and Anti-Venom stays 36.7% on T5. What they add is the '{3}{W}, {T}: put a +1/+1 counter on each
+#: notes: creature you control' sink — a LAND that is a counters payoff. Their tapland clause ('unless you control a
+#: notes: basic land') is near-dead against 19 Plains.
 
 # Hero core — anthems, counters, tempo
 2 Avengers Assemble! (MSH) 6
@@ -91,14 +110,16 @@ Deck
 1 Resolute Reinforcements (FDN) 145
 1 Monica Rambeau (MSH) 23
 1 Erode (SOS) 15
+1 The Eagles Are Coming! (HOB) 12
 
 # TMT engine (secondary) — combat, counter-draw, ETB value
-1 Raph & Leo, Sibling Rivals (TMT) 166
 1 Mikey & Leo, Chaos & Order (TMT) 158
 1 Lita, Little Orphan Amphibian (TMT) 19
-1 Don & Leo, Problem Solvers (TMT) 143
 1 Leonardo, Big Brother (TMT) 14
 1 Anti-Venom, Horrifying Healer (SPM) 1
+
+# Mana — burst for the WWWWW top end
+1 White Lotus Tile (TLA) 262
 
 # Interaction
 1 Static Snare (TDM) 26
@@ -108,7 +129,8 @@ Deck
 1 Cosmogrand Zenith (EOE) 9
 
 # Lands
-21 Plains (MSH) 288
+19 Plains (MSH) 288
+2 Abandoned Air Temple (TLA) 263
 2 Avengers Tower (MSH) 260
 1 Urban Retreat (SPM) 187
 
