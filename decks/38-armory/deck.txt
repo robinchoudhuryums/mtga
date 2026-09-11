@@ -4,7 +4,7 @@
 #: tier: B — Orzhov (W-primary) Equipment midrange that can go WIDE or go TALL. A resilient
 #: tier: equipment deck (the auto-attach / Job-select package means gear never strands), with
 #: tier: real card advantage (Cloud's trigger-doubling, Swordsman's connive, Weapons Vendor,
-#: tier: Buster Sword) and a B splash for removal (Ronin, Meteor Sword, Deconstruction Hammer)
+#: tier: Buster Sword) and a B splash for removal (Ronin, Meteor Sword)
 #: tier: + recursion (Winter Soldier). Held at B by a lean creature base (leans on token-
 #: tier: making equipment for bodies) and voltron-style fragility when it does go tall.
 #: archetype: Orzhov (W/B) Equipment midrange. Suit up a board of creatures (many equipment
@@ -33,6 +33,14 @@
 #: notes: of 38a: Fireshrieker (Cloud doubles only gear on HIMSELF, so double strike is one
 #: notes: carrier deep and Shrike Force brings a body), Dragonfire Blade (protection already 6),
 #: notes: Quill-Blade Laureate / Dual-Sun Adepts (no evasion), Momo (a better Guidewing, same slot).
+#: notes: 2026-09-10 — ARENA-SIDE change, recorded here after the fact: +Trusty Boomerang
+#: notes: (−Deconstruction Hammer), because the Hammer is LCI and rotates ~2026 (⚠ SOON), while
+#: notes: the Boomerang is TLA. Interaction 5→4 drops the metrics floor back B→C, undoing the
+#: notes: 2026-09-08 lift above; the letter stays B, one band over, which the guard still reads
+#: notes: as defensible. The deck does NOT lose its noncreature answer: Meteor Sword already
+#: notes: destroys target permanent on ETB, which is strictly better than the Hammer's
+#: notes: {3},{T},Sacrifice artifact/enchantment mode — so what actually left is a sorcery-speed
+#: notes: removal COUNT, not the capability. Both cards are owned; 0 wildcards either way.
 
 # Creatures — carriers / payoffs / engines
 1 The Aetherspark (DFT) 231
@@ -66,11 +74,11 @@
 1 Vibranium Energy Daggers (MSH) 254
 1 Captain America's Shield (MSH) 244
 1 Thunder Lasso (OTJ) 35
+1 Trusty Boomerang (TLA) 260
 
 # Equipment — Job-select bodies / removal / voltron scalers
 1 Kyoshi Battle Fan (TLA) 257
 1 Dragoon's Lance (FIN) 17
-1 Deconstruction Hammer (LCI) 9
 1 Meteor Sword (TLA) 258
 1 Super-Soldier Serum (MSH) 38
 1 Sheltered by Ghosts (DSK) 30

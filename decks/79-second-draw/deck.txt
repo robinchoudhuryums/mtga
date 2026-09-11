@@ -1,0 +1,179 @@
+#: name: Second Draw
+#: format: Standard
+#: colors: WU
+#: plan: midrange
+#: tier: B (PROVISIONAL) — deliberately one band UNDER the metrics floor, which reads A on interaction 7 +1?
+#: tier: (5 instant-speed, 4 able to answer a noncreature permanent) — EXACTLY the A-floor threshold of seven, with nothing to
+#: tier: spare — card advantage 21 (8 repeatable) and protection 3 on a 3.11 curve with 24 lands (worst cast-on-curve is
+#: tier: Yangchen's {W}{W} at 79.5% on T5; keepable 84% and `consistency` says no land count improves it). Graded under the
+#: tier: floor for four things it cannot see: (1) UNPLAYED AND UNBUILT — 10 craft targets including the keystone (Scrawling
+#: tier: Crawler) and The Unagi. (2) THE ENGINE IS SYMMETRIC — Crawler and Gleaming Splendor hand the opponent cards every
+#: tier: turn they are out. (3) INTERACTION AT THE EDGE — the 2026-09-11 copy package (Clone Saga / Ember Island / Impostor
+#: tier: Syndrome, less Ember Island) went in over two answers and a 1-drop; one more answer out and the floor drops a band, and the deck's answers
+#: tier: to a resolved threat are Into the Roil, Sheltered by Ghosts and Jane's tap-blink. (4) FIVE CARDS ROTATE within the
+#: tier: window (Vnwxt, Mu Yanling, Enduring Curiosity, Three Steps Ahead, Restless Anchorage). DISTINCTNESS, stated not
+#: tier: hidden: `similar` read 91% against 43 Uatu The Watcher on ✦card draw + ✦tokens at the draft (10 shared nonland
+#: tier: cards then); the identities differ on colours (WU vs WUB) and win-con (evasive second-draw creatures and copies vs
+#: tier: the Grimoire hand-size lock). Re-grade after 20 matches.
+#: archetype: Azorius (W/U) "draw your second card each turn" value-midrange. Nine payoffs that trigger on the second
+#: archetype: draw of a turn (Kid Loki, Mischievous Mystic, Knowledge Seeker,
+#: archetype: Astrologian's Planisphere, Bard the Bowman, Clinquant Skymage,
+#: archetype: Ravenhill Flock, Lake-town Toymaker, Homunculus Horde) over a GUARANTEED second draw: Scrawling
+#: archetype: Crawler's upkeep "each player draws" makes the draw step card two every turn for free, Gleaming
+#: archetype: Splendor's {2}{W} hands both players a card on demand (turning on The Unagi and its own Treasure),
+#: archetype: Vnwxt and Bard, King of Dale double draws. A Clue layer (Air Nomad Legacy, The Mechanist,
+#: archetype: Knowledge Seeker), Kitsa's loot and Super Intelligence supply the second draw when the engine is not out,
+#: archetype: Spirit Water Revival's waterbend (tap six of the wide board: draw SEVEN) is the burst turn, and
+#: archetype: 10 fliers carry the damage; Enduring Curiosity and Mu Yanling turn connecting fliers into more draws.
+#: archetype: PLAN (re-grounded 2026-09-11 after the day's tunes took avg MV 2.64 → 3.14): a value-midrange deck, no longer
+#: archetype: tempo — cheap payoffs that grow, a COPY layer that gets around the legend rule on the deck's 11 legends (The Clone
+#: archetype: Saga copies the SPELL so a second Wan Shi Tong keeps its X; Impostor Syndrome tokens every connecting nontoken
+#: archetype: creature; Ember Island Production is the one-shot), Spirit Water Revival's draw-seven as the burst turn, and a
+#: archetype: win in the air. Interaction was traded down to reach this shape and sits at the A-floor threshold. DISTINCTIVENESS: the roster's four dense draw
+#: archetype: decks are 43 (WUB hand-size control), 12 (UB draw control), 37 (UBR Wizard storm) and 60a (UB
+#: archetype: speed-drain); this is the first WU one and the first built on the second-card TRIGGER as its
+#: archetype: creature base rather than as a control payoff. Card overlap with the closest (43) is 8 of 36.
+#: protect: Scrawling Crawler; Gleaming Splendor; Bard, King of Dale; Air Nomad Legacy; The Unagi of Kyoshi Island
+#: notes: 2026-09-10 — drafted from the UW pile analysis (.cycle/uw-equipment-analysis.md §6A, option A). The pile
+#: notes: was framed as blue EQUIPMENT; 60 of its 67 non-equipment cards mention drawing, and the repeated shape was the
+#: notes: second-card trigger — F10 (a repeated rejection reason is the deck asking to be built). Pool measurement behind
+#: notes: it: 21 Standard WU-castable second-draw payoffs, 12 of them in no deck, against only 4 guaranteed enablers —
+#: notes: the enabler side is the thin half and decides whether the deck functions, which is why Scrawling Crawler
+#: notes: (FDN, does not rotate) is protected: nothing else in these colours makes the trigger free every turn.
+#: notes: KNOWN COSTS, stated up front: Scrawling Crawler and Gleaming Splendor both hand the OPPONENT cards; against a
+#: notes: deck that uses them better, that is the loss. ROTATION (G-30): Vnwxt (DFT), Mu Yanling (DFT), Restless
+#: notes: Anchorage (LCI), Enduring Curiosity (DSK), Floodpits Drowner (DSK) rotate within the window — the core
+#: notes: (Crawler FDN + the HOB/TLA/MSH half) does not. The MKM Clue package (Alquist Proft, Case of the Filched
+#: notes: Falcon, Curious Inquiry, Private Eye) was left OUT for rotation; Astrologian's Planisphere (FIN) likewise.
+#: notes: Hardlight Containment needs an artifact you control — count the Clue/Treasure/Crawler sources before cutting one.
+#: notes: Bard, King of Dale is the 6-drop top end on purpose: every non-first draw becomes two, so ANY cantrip fires
+#: notes: every payoff, and Mischievous Mystic's Faeries / the Clues are doubled. Its slot is the first to go if the curve
+#: notes: proves too slow in play. Dazzling Denial was passed over for Essence Scatter: the deck fields ~4 Birds, not enough
+#: notes: to rely on the {4} mode.
+
+#: notes: 2026-09-11 — Ember Island Production → Waterbending Scroll (user's pick), closing the day's tuning. The Scroll's
+#: notes: {6} activation costs {1} less per ISLAND YOU CONTROL — not per Island in the deck — so it is a 4-mana draw on turn 3
+#: notes: and a FREE {T}: draw every turn from about six Islands on (24 lands, 11 of them Islands): a late engine, not an early
+#: notes: one. Ember Island was the marginal member of the copy package by its own argument — a one-shot five-mana sorcery whose
+#: notes: Wan Shi Tong copy enters with X = 0 and draws nothing. card-adv 20 → 21, avg MV 3.19 → 3.11, floor A.
+#: notes: 2026-09-11 — Spell Pierce → Refute (user's pick). A hard counter that loots, so the answer itself is a
+#: notes: second-draw source; Pierce was soft, noncreature-only and the weakest answer as the game plan lengthened.
+#: notes: Vector flat at interaction 7, avg MV 3.14 → 3.19. FDN, no rotation.
+#: notes: 2026-09-11 — THE COPY PACKAGE (user's picks): Lady Octopus → The Clone Saga; Essence Scatter → Ember Island
+#: notes: Production; Into the Flood Maw → Impostor Syndrome, all under a new `# Copies` section. The question was "many Wan
+#: notes: Shi Tongs": Spider-Verse is owned but red and Spider-only; of the five WU Standard legend-rule cards, The Clone Saga
+#: notes: copies the SPELL (X is kept, so the copy draws), while Impostor Syndrome / Ember Island / Multiversal Incursion copy
+#: notes: the PERMANENT — a Wan Shi Tong token enters with X = 0 and, unless Ember Island's 4/4 clause saves it, dies. Those two
+#: notes: are Jane / Bard King / Unagi engines. The same X = 0 rule applies to Moonlit Meditation (keep it on Flock/Curiosity).
+#: notes: Quality guard flagged interaction 9 → 7 and avg MV 2.83 → 3.14 — both deliberate and both recorded in the tier block.
+#: notes: Lady Octopus's payoff had three artifact targets; Planisphere stays on its own merits (payoff body + Jane's clause).
+#: notes: 2026-09-11 — Lakeshore Apothecary → Wan Shi Tong, Librarian (user's pick). card-adv 18 → 19, floor A. A flash flier
+#: notes: whose X/2 draws fire the second-card triggers on the OPPONENT's turn when cast at end step, and whose every draw is
+#: notes: doubled under Bard, King of Dale. Apothecary was the last of the interchangeable 2-drop growers (Seeker, Kid Loki and
+#: notes: Planisphere still do that job); the cost is a 2-drop out of a curve that has climbed 2.64 → 2.83 over the day's tunes.
+#: notes: 2026-09-11 — Master's Councillors → Spirit Water Revival (user's pick). The burst-draw question was asked as a
+#: notes: ramp question ("a huge Wan Shi Tong / Ravenhill Flock turn"); the honest answer is that Flock's boost is a DRAW count,
+#: notes: not a mana count, and Wan Shi Tong's X is mana-only (waterbend/convoke do not pay for creature spells). SWR's
+#: notes: waterbend {6} taps creatures and artifacts — 25 payer cards plus 13 token sources here — for draw SEVEN (fourteen under
+#: notes: Bard, King of Dale) with no maximum hand size. card-adv 17 → 18, {1}{U}{U} on T3 at 82.6%. ELUGE was read and declined:
+#: notes: its discount applies only to the first instant/sorcery each turn (6 in the deck, all MV 1–3), never to a creature, and
+#: notes: {1}{U}{U}{U} reads 63.5% on T4 against 18 U sources. Councillors' mill had no payoff in this list.
+#: notes: 2026-09-11 — Messenger Hawk → Astrologian's Planisphere (user's pick; keeps Clinquant Skymage). The quality guard
+#: notes: flags card-adv 18 → 17 — that is Hawk's ETB Clue, and the trade is deliberate: Planisphere is a second/third-card
+#: notes: payoff that brings its own 1/1 body, it is the deck's third artifact SPELL (Lady Octopus's {T} had two targets), and it
+#: notes: is the first Equipment, so Jane Foster's "Equipment enters → draw" clause is live for the first time. Equip {2} re-homes
+#: notes: it when the Hero dies. FIN rotates. Lady Octopus's payoff targets: Crawler (3), Planisphere (2), Arkenstone (5).
+#: notes: 2026-09-11 — Sunpearl Kirin → The Mighty Thor, Jane Foster (user's pick of slot). Her attack blink hits ANY nontoken
+#: notes: artifact or creature and returns it TAPPED: on your side Overlord of the Floodpits comes back with no time counters (a
+#: notes: 6/6 flier at once, draw two), Messenger Hawk makes another Clue, Mu Yanling another Vehicle; on theirs it is a tap-down
+#: notes: of the best blocker every attack. interaction 8 → 9, card-adv 17 → 18 — READ THAT +1 WITH CARE: it is her "whenever an
+#: notes: Equipment enters, draw" clause, which is DEAD at 0 Equipment; the classifier cannot see that. Kirin was one of her four
+#: notes: own-side blink targets; with Messenger Hawk gone too (below) those are two — Mu Yanling and Overlord. Fishing Pole was measured and left out: a Fish per turn for {1} plus a
+#: notes: tapped carrier, competing with Kitsa's {T} for the tap, and Moonlit Meditation only converts the FIRST token event each
+#: notes: turn — which Mischievous Mystic already supplies for free.
+#: notes: 2026-09-11 — ROUND 2 (user's picks): Chart a Course → The Legend of Yangchen; Atlantean Cavalry → The Arkenstone.
+#: notes: card-adv 16 → 17, interaction 8 → 8 +1? (Yangchen's chapter I is removal the classifier only half-tags), avg MV
+#: notes: 2.67 → 2.81 — the curve headroom was real (keepable is curve-limited at 84%, not land-limited). Chart was the
+#: notes: draft's one 2-mana guaranteed second draw; Kitsa and Super Intelligence now cover that role, which is what made it
+#: notes: cuttable. Yangchen's chapter II (you draw 3 AND they draw 3) is the card's point here: their second card pays
+#: notes: Gleaming Splendor a Treasure and draws The Unagi two. The Arkenstone's {2}{W} Adventure tutors any of 8 legends.
+#: notes: 2026-09-11 — FIRST TUNE, four swaps (Floodpits Drowner → Kitsa; Plunder the Trollshaws → Super Intelligence;
+#: notes: Spectral Sailor → Moonlit Meditation; Hardlight Containment → Three Steps Ahead). Interaction 9 → 8 (the floor
+#: notes: holds A), protection 4 → 3 (Hardlight's ward {1} was the credited point), avg MV 2.64 → 2.67. WHY EACH:
+#: notes: Kitsa's free {T} loot is a second draw on demand at instant speed; Super Intelligence on YOUR creature draws at
+#: notes: YOUR upkeep — the draw step is then card two every turn and the opponent never draws from it (the 09-10 draft
+#: notes: notes had called it "symmetric", which was wrong: only the enchanted creature's controller draws); Moonlit
+#: notes: Meditation rides Mischievous Mystic's every-turn Faerie — with 9 own token sources, the first tokens each turn
+#: notes: become copies of a non-legendary payoff (Ravenhill Flock / Curiosity / Apothecary), never enchant one of the 8
+#: notes: legends; Hardlight needed an artifact to enchant and the deck holds ONE on the type line (Crawler, a craft) plus
+#: notes: Clues you could then never crack — Three Steps Ahead's draw mode is a second-draw enabler at instant speed and
+#: notes: its counter mode keeps the answer count. THE KEY TO THE VAULT was measured and declined: it does not DRAW (look /
+#: notes: exile / cast), so it feeds none of the 13 payoffs, and with 5 cards at MV 5+ in a ~53-card library the free-cast
+#: notes: hits a top-end card 18% of the time seeing two cards, 34% seeing four — mostly it cheats a 1–3 drop.
+#: notes: ENDURING INNOCENCE was measured and declined on mana alone: 17 creatures at power ≤2 plus every Faerie token make
+#: notes: its draw near-certain, but {W}{W} on turn 3 reads 67.8% against 14 W sources — the worst number in the deck by 18.
+
+#~ note: applied — The Legend of Yangchen // Avatar Yangchen in for Chart a Course.
+#~ note: applied — The Arkenstone // Seek the Heart in for Atlantean Cavalry.
+#~ note: applied — Astrologian's Planisphere in for Messenger Hawk.
+#~ note: applied — Wan Shi Tong, Librarian in for Lakeshore Apothecary.
+#~ -Moonlit Meditation | +Enduring Innocence | OWNED — DECLINED on mana: {W}{W} T3 = 67.8% (worst in the deck by 18 points; wants 22 W sources, have 14). 17 creatures at power ≤2 plus every Faerie token make the trigger itself near-certain. Comes back only with a W-leaning manabase, which costs the four {U}{U} cards.
+#~ +Fractal Anomaly | OWNED 61st card: with Crawler you have drawn two by main phase → a 2/2 for {U} at instant speed, 4/4+ on a Bard King turn. Vector card-adv −1 (it draws nothing).
+
+# Engine — the guaranteed second draw
+1 Scrawling Crawler (FDN) 132
+1 Gleaming Splendor (HOB) 15
+1 Vnwxt, Verbose Host (DFT) 73
+1 The Unagi of Kyoshi Island (TLA) 77
+1 Bard, King of Dale (HOB) 144
+1 Super Intelligence (MSH) 77
+
+# Payoffs — second card each turn
+1 Kid Loki (MSH) 63
+1 Mischievous Mystic (FDN) 47
+1 Knowledge Seeker (TLA) 60
+1 Astrologian's Planisphere (FIN) 46
+1 Bard the Bowman (HOB) 145
+1 Clinquant Skymage (FDN) 33
+1 Ravenhill Flock (HOB) 52
+1 Lake-town Toymaker (HOB) 19
+1 Homunculus Horde (FDN) 41
+1 Moonlit Meditation (EOE) 69
+
+# Clues, cantrips and combat draw
+1 Air Nomad Legacy (TLA) 206
+1 The Mechanist, Aerial Artisan (TLA) 64
+1 The Legend of Yangchen // Avatar Yangchen (TLA) 27
+1 Enduring Curiosity (DSK) 51
+1 Mu Yanling, Wind Rider (DFT) 52
+1 Overlord of the Floodpits (DSK) 68
+1 The Mighty Thor, Jane Foster (MSH) 222
+1 Kitsa, Otterball Elite (BLB) 54
+1 The Arkenstone // Seek the Heart (HOB) 170
+1 Spirit Water Revival (TLA) 73
+1 Wan Shi Tong, Librarian (TLA) 78
+1 Waterbending Scroll (TLA) 81
+
+# Copies — around the legend rule
+1 The Clone Saga (MSC) 782
+1 Impostor Syndrome (SPM) 34
+
+# Interaction
+1 Refute (FDN) 48
+1 Into the Roil (FDN) 509
+1 Glen Elendra Guardian (ECL) 51
+1 Confusticate and Bebother (HOB) 35
+1 Sheltered by Ghosts (DSK) 30
+1 Three Steps Ahead (OTJ) 75
+
+# Lands (24)
+1 Hallowed Fountain (ECL) 265
+1 Floodfarm Verge (DSK) 259
+1 Gleaming Bastion (MSH) 267
+1 Temple of Enlightenment (FDN) 698
+1 Restless Anchorage (LCI) 280
+1 University Campus (SPM) 186
+1 North Pole Gates (TLA) 274
+1 Avengers Hangar (MSH) 259
+10 Island (HOB) 190
+6 Plains (HOB) 189
