@@ -236,7 +236,7 @@ Make Your Own Luck,Sorcery,"Look at the top three cards of your library. You may
 Comforting Counsel,Enchantment,"Whenever you gain life, put a growth counter on this enchantment.
 As long as there are five or more growth counters on this enchantment, creatures you control get +3/+3.",G,counters; pump,SOS,143,Rare,7,"broadly useful — best 7 (Earth's Mightiest); also 9,19b,19a",4.0,hand
 Deathcap Glade,Land,"This land enters tapped unless you control two or more other lands.
-{T}: Add {B} or {G}.",B/G,mana,SOS,253,Rare,20b,"broadly useful — best 20b (Honor Among Thieves — Abzan Toughness Ramp); also 13,21,21a",5.0,hand
+{T}: Add {B} or {G}.",B/G,mana,SOS,253,Rare,31,"retargeted 2026-09-11 (20b retired): best 31 Pox — `suggest --lands 31` scores it 10.9, its highest BG dual, and B is 31's scarce colour; also 69,13,21",5.0,hand
 Magmablood Archaic,Creature — Avatar,"Trample, reach
 Converge — This creature enters with a +1/+1 counter on it for each color of mana spent to cast it.
 Whenever you cast an instant or sorcery spell, creatures you control get +1/+0 until end of turn for each color of mana spent to cast that spell.",R,Avatar; counters; pump; spellslinger; reach; defense; converge; multicolor; trample; evasion,SOS,123,Rare,25,Repeatable spellslinger payoff for Spellstorm (25) — the flex block's craft target,5.0,hand
@@ -319,7 +319,7 @@ Bebop & Rocksteady,Legendary Creature — Boar Rhino Mutant,"Whenever Bebop & Ro
 "Don & Raph, Hard Science",Legendary Creature — Mutant Ninja Turtle,"Menace
 Whenever Don & Raph attack, the next noncreature spell you cast this turn has affinity for artifacts. (It costs {1} less to cast for each artifact you control.)",U/R,Mutant; Ninja; Turtle; menace; evasion,TMT,144,Rare,47,TMNT UR-artifacts legend — new-deck focal point (menace + artifact-affinity payoff),5.0,hand
 "Madame Null, Power Broker",Legendary Creature — Demon Advisor,"Deathtouch
-Whenever another creature you control enters, you may pay life equal to its power. If you do, put that many +1/+1 counters on it.",B,Demon; Advisor; counters; deathtouch; combat; removal,TMT,66,Rare,20b,"broadly useful — best 20b (Honor Among Thieves — Abzan Toughness Ramp); also 11,8,21",5.5,hand
+Whenever another creature you control enters, you may pay life equal to its power. If you do, put that many +1/+1 counters on it.",B,Demon; Advisor; counters; deathtouch; combat; removal,TMT,66,Rare,31,"retargeted 2026-09-11 (20b retired): best 31 Pox — `suggest-homes` rates it KEY at 57, a clear lead over 42 at 32; also 11,8,21",5.5,hand
 Michelangelo's Technique,Sorcery,"Sneak {3}{G} (You may cast this spell for {3}{G} if you also return an unblocked attacker you control to hand during the declare blockers step.)
 Look at the top eight cards of your library. Put up to two creature cards with total mana value 6 or less from among them onto the battlefield and the rest on the bottom of your library in a random order.",G,selection; sneak; tempo; cost-reduction,TMT,122,Rare,concept: Turtle,"best 19a (Bird Brain — Bant Tokens); also 13,5,17",4.0,hand
 "Mikey & Don, Party Planners",Legendary Creature — Mutant Ninja Turtle,"Ward {2}

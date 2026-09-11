@@ -25,8 +25,10 @@
 #: tier: 53.5 -> 58.6%, Enduring Innocence 72.1 -> 79.5%, Exemplar and Warleader 78.1 ->
 #: tier: 84.7%. Caveat the model cannot price: two of the three enter TAPPED
 #: tier: unconditionally, taking the deck to 7 taplands of 11 nonbasics, and `consistency`
-#: tier: counts SOURCES, not tempo), zero uncastable strays, central themes 17
-#: tier: (was 20 — Warrior and food left with the cut Frogs/Squirrels). Re-grade after games.
+#: tier: counts SOURCES, not tempo), zero uncastable strays, central themes 15
+#: tier: (was 20 — Warrior and food left with the cut Frogs/Squirrels; re-grounded from a
+#: tier: stale 17 on 2026-09-11, when the figure audit learned the label-then-number idiom).
+#: tier: Re-grade after games.
 #: protect: The Unbeatable Squirrel Girl; Byrke, Long Ear of the Law; Quina, Qu Gourmet; Enduring Innocence; Spider-Ham, Peter Porker
 #: archetype: Selesnya (G/W) BURROW-WIDE — the third seat for the Frog Sage skeleton, and
 #: archetype: the one that drops BLINK as the engine and keeps only the wide/counters half.

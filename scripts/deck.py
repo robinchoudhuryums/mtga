@@ -11913,6 +11913,12 @@ _RATIONALE_FIGURES = [
     (re.compile(_FIG_DEC + r"[  ]+average", re.I), "avg_mv"),
     (re.compile(_FIG_NUM + r"[- ]theme", re.I), "central_themes"),
     (re.compile(_FIG_NUM + r" central themes", re.I), "central_themes"),
+    # LABEL-THEN-NUMBER, the same shape the `protection` pattern above already covers.
+    # Deck 50a wrote "CENTRAL THEMES 25" against a live 17 and the audit reported the
+    # block CURRENT for as long as it stood: both patterns above want the number FIRST
+    # ("17 central themes", "17-theme"), so the roster's other idiom was invisible by
+    # construction. Found during the 2026-09-11 tier-C review, not by a gate.
+    (re.compile(r"central themes?[  ]+(\d+)", re.I), "central_themes"),
     (re.compile(r"protection[  ]+(\d+)", re.I), "protection"),
     (re.compile(r"protection" + _FIG_PAREN, re.I), "protection"),
     # EARLY DROPS were in the quality vector but never audited, so a count could go stale
