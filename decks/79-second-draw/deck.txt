@@ -67,8 +67,8 @@
 #~ -Atlantean Cavalry | +The Arkenstone | OWNED — measured 2026-09-11: the {2}{W} Adventure tutors any of 8 legendary creatures (Unagi, Bard King, Mu Yanling, Kid Loki, Lady Octopus…); the {5} artifact is an anthem plus an end-step draw and an artifact body. card-adv 16→17, avg MV +0.05. Cavalry is one of four interchangeable 2-drop growers.
 #~ -Clinquant Skymage | +Astrologian's Planisphere | OWNED — measured 2026-09-11: Job select brings its own 1/1 body; third card each turn fires off Crawler + draw step + any cantrip, and 11 noncreature spells add counters; Equip {2} can re-home it. Vector flat, avg MV 2.67→2.61. Skymage is the redundant twin of Ravenhill Flock (`screen` flags Flock as its strict upgrade). FIN rotates.
 #~ -Messenger Hawk | +The Key to the Vault | CRAFT (R) — measured 2026-09-11 and DECLINED (see notes): no draw, 18–34% to hit a 5-drop; card-adv 16→15. Recorded so the case is not re-derived.
-#~ -Spectral Sailor | +Wan Shi Tong, Librarian | OWNED — alternative to Moonlit Meditation in that slot if a BODY is wanted: flash flier, X counters + X/2 draws, no rotation. Vector flat.
-#~ -Spectral Sailor | +Enduring Innocence | OWNED — DECLINED on mana: {W}{W} T3 = 67.8% (worst in the deck by 18 points; wants 22 W sources, have 14). 17 creatures at power ≤2 plus every Faerie token make the trigger itself near-certain. Comes back only with a W-leaning manabase, which costs the four {U}{U} cards.
+#~ -Moonlit Meditation | +Wan Shi Tong, Librarian | OWNED — alternative in this slot if a BODY is wanted: flash flier, X counters + X/2 draws, no rotation. Vector flat.
+#~ -Moonlit Meditation | +Enduring Innocence | OWNED — DECLINED on mana: {W}{W} T3 = 67.8% (worst in the deck by 18 points; wants 22 W sources, have 14). 17 creatures at power ≤2 plus every Faerie token make the trigger itself near-certain. Comes back only with a W-leaning manabase, which costs the four {U}{U} cards.
 #~ +Fractal Anomaly | OWNED 61st card: with Crawler you have drawn two by main phase → a 2/2 for {U} at instant speed, 4/4+ on a Bard King turn. Vector card-adv −1 (it draws nothing).
 
 # Engine — the guaranteed second draw
