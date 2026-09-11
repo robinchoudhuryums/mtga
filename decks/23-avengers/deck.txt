@@ -1,19 +1,22 @@
 #: name: Avengers
 #: format: Standard
 #: tier: B — Mono-W go-wide/counters. The slow-curve argument this B rested on has
-#: tier: largely gone: curve 3.42 (was 3.6) and 11 one-two-drops (was 6) after Erode,
+#: tier: largely gone: curve 3.36 (was 3.6, then 3.42) and 11 one-two-drops (was 6) after Erode,
 #: tier: Curious Farm Animals and Coordinated Maneuver came in for Aerith Rescue
 #: tier: Mission, Dauntless Veteran and U.S.Agent. Interaction went 4 -> 7 and the deck's
 #: tier: first three answers to a noncreature permanent (it had zero) put the metrics
 #: tier: floor to A at the time. BOTH HALVES OF THAT HAVE SINCE MOVED, and the letter is
-#: tier: now the generous one rather than the conservative one: interaction reads 5 after
+#: tier: no longer the generous one: interaction reads 5 after
 #: tier: the 2026-09-01 classifier fix stopped counting a blink as spot removal, and with
-#: tier: card advantage 1 the resilience sum is 6 against the 7 a B floor wants, so the
-#: tier: metrics floor is C. Letter HELD at B, one band ABOVE the floor, which the rubric
-#: tier: allows for what the metrics cannot see — the remaining case
-#: tier: for B is card advantage, which measures 1 (Avengers Assemble! is a real
-#: tier: repeatable draw the classifier misses, so call it ~2), and 24 central themes,
-#: tier: the most diffuse deck on the roster.
+#: tier: card advantage at 1 the resilience sum was 6 against the 7 a B floor wants, so the
+#: tier: metrics floor was C. RE-GROUNDED 2026-09-11 after Captain Mar-Vell → Haliya, Guided by
+#: tier: Light: card advantage 1 → 2 and the floor C → B, so the letter now MATCHES its floor
+#: tier: rather than sitting a band above it. The measured count still understates the deck —
+#: tier: Avengers Assemble! (x2) is a repeatable end-step draw the classifier misses, as are
+#: tier: Mikey & Leo and Origin chapter II, so the honest figure is nearer 4. Central themes
+#: tier: 24 → 18 from that one swap (the count is deck-relative: cutting a five-drop raised the
+#: tier: dominant theme's bar and shed six marginal themes), so this is no longer the roster's
+#: tier: most diffuse deck — 56a reads 32, 24b 30, 56 29, 26 25.
 #: notes: MANABASE: Surveillance Room was cut for a 21st Plains. In a MONO-WHITE deck its
 #: notes: "{1}, {T}: add one mana of any color" is a white source with a tax and its {C} mode
 #: notes: does nothing a Plains does not — so it was costing a real white source for a one-shot
@@ -34,6 +37,17 @@
 #: notes: 24 lands (colorless-light so WW costs are reliable). Interaction: Stasis
 #: notes: Snare, Pacifism x2, Focus Fire, Red Guardian, Starfall Invocation.
 #: notes: Promoted from the refined 60 (formerly variant 23a).
+#: notes: 2026-09-11 — Captain Mar-Vell, Space-Born → Haliya, Guided by Light (owned, 0 wildcards). Floor C → B, so the
+#: notes: claimed letter now matches. Haliya's "whenever Haliya or another creature or artifact you control enters, you gain
+#: notes: 1 life" fires off EIGHT token makers (doubled by Elspeth and Exalted Sunborn), so her "draw a card if you've gained
+#: notes: 3 or more life this turn" is near-unconditional here — and it gives the deck's six lifegain enablers the payoff
+#: notes: `engines` reported them lacking. Mar-Vell's flash-granting needed the OPPONENT to cast first, and the deck already
+#: notes: holds four natural flash cards plus Jennifer Walters stopping their turn-spells. Side effect worth knowing: central
+#: notes: themes 24 → 18 — the count is deck-relative, so cutting a five-drop raised the dominant theme's bar.
+#: notes: ANTI-VENOM IS KEPT ON PURPOSE, and `consistency`'s 36.7% on T5 UNDERSTATES him: it does not count the 2x Avengers
+#: notes: Tower, whose mana is restricted to HERO spells — and Anti-Venom is a Symbiote HERO, so both Towers cast him. Proxy
+#: notes: measured (Towers as Plains, 24 W sources) he reads 46.7%; the true rate is between, and he is a turn-6/7 reanimator
+#: notes: anyway. Do NOT cut the Towers to "fix" him — they are his enablers and a Hero tutor.
 
 Deck
 # Hero core — anthems, counters, tempo
@@ -56,7 +70,7 @@ Deck
 
 # Go-wide / anthems / tokens
 1 Exalted Sunborn (EOE) 15
-1 Captain Mar-Vell, Space-Born (MSH) 12
+1 Haliya, Guided by Light (EOE) 19
 1 Duty Beyond Death (TDM) 10
 1 Virtue of Loyalty (WOE) 38
 1 Kinscaer Sentry (ECL) 22
