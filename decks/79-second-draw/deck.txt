@@ -2,21 +2,21 @@
 #: format: Standard
 #: colors: WU
 #: plan: midrange
-#: tier: B (PROVISIONAL) — deliberately one band UNDER the metrics floor, which reads A on interaction 9
-#: tier: (7 instant-speed, 5 able to answer a noncreature permanent), card advantage 19 (8 repeatable) and protection
-#: tier: 3 on a 2.83 curve with 24 lands (worst cast-on-curve is Yangchen's {W}{W} at 79.5% on T5, keepable 84% — `consistency` says no
-#: tier: land count improves it). Graded under the floor for three things it cannot see: (1) UNPLAYED AND UNBUILT — 10 craft
-#: tier: targets, including the keystone (Scrawling Crawler) and the best payoff pair (The Unagi); without the
-#: tier: Crawler this is a functional Azorius tempo deck, not THIS deck. (2) THE ENGINE IS SYMMETRIC — Scrawling
-#: tier: Crawler and Gleaming Splendor hand the opponent cards every turn they are out; no metric prices that and it
-#: tier: decides the matchup against any deck that draws better than you. (3) FIVE CARDS ROTATE within the window
-#: tier: (Vnwxt, Mu Yanling, Enduring Curiosity, Three Steps Ahead, Restless Anchorage). DISTINCTNESS, stated not
-#: tier: hidden: `similar` reads 91% against 43 Uatu The Watcher on ✦card draw + ✦tokens with 10 shared nonland cards
-#: tier: (Kitsa joined the list) — the identities differ on colours (WU vs WUB) and win-con (evasive second-draw
-#: tier: creatures vs the Grimoire hand-size lock), two of G-47's three, so no pivot. Re-grade after 20 matches: the
-#: tier: floor says A and the rubric lets the letter follow it once the deck exists and has been played.
-#: archetype: Azorius (W/U) "draw your second card each turn" TEMPO. Ten payoffs that trigger on the second
-#: archetype: draw of a turn (Kid Loki, Lady Octopus, Mischievous Mystic, Knowledge Seeker,
+#: tier: B (PROVISIONAL) — deliberately one band UNDER the metrics floor, which reads A on interaction 7 +1?
+#: tier: (5 instant-speed, 4 able to answer a noncreature permanent) — EXACTLY the A-floor threshold of seven, with nothing to
+#: tier: spare — card advantage 20 (8 repeatable) and protection 3 on a 3.14 curve with 24 lands (worst cast-on-curve is
+#: tier: Yangchen's {W}{W} at 79.5% on T5; keepable 84% and `consistency` says no land count improves it). Graded under the
+#: tier: floor for four things it cannot see: (1) UNPLAYED AND UNBUILT — 10 craft targets including the keystone (Scrawling
+#: tier: Crawler) and The Unagi. (2) THE ENGINE IS SYMMETRIC — Crawler and Gleaming Splendor hand the opponent cards every
+#: tier: turn they are out. (3) INTERACTION AT THE EDGE — the 2026-09-11 copy package (Clone Saga / Ember Island / Impostor
+#: tier: Syndrome) went in over two answers and a 1-drop; one more answer out and the floor is B, and the deck's answers
+#: tier: to a resolved threat are Into the Roil, Sheltered by Ghosts and Jane's tap-blink. (4) FIVE CARDS ROTATE within the
+#: tier: window (Vnwxt, Mu Yanling, Enduring Curiosity, Three Steps Ahead, Restless Anchorage). DISTINCTNESS, stated not
+#: tier: hidden: `similar` read 91% against 43 Uatu The Watcher on ✦card draw + ✦tokens at the draft (10 shared nonland
+#: tier: cards then); the identities differ on colours (WU vs WUB) and win-con (evasive second-draw creatures and copies vs
+#: tier: the Grimoire hand-size lock). Re-grade after 20 matches.
+#: archetype: Azorius (W/U) "draw your second card each turn" value-midrange. Nine payoffs that trigger on the second
+#: archetype: draw of a turn (Kid Loki, Mischievous Mystic, Knowledge Seeker,
 #: archetype: Astrologian's Planisphere, Bard the Bowman, Clinquant Skymage,
 #: archetype: Ravenhill Flock, Lake-town Toymaker, Homunculus Horde) over a GUARANTEED second draw: Scrawling
 #: archetype: Crawler's upkeep "each player draws" makes the draw step card two every turn for free, Gleaming
@@ -25,8 +25,11 @@
 #: archetype: Knowledge Seeker), Kitsa's loot and Super Intelligence supply the second draw when the engine is not out,
 #: archetype: Spirit Water Revival's waterbend (tap six of the wide board: draw SEVEN) is the burst turn, and
 #: archetype: 10 fliers carry the damage; Enduring Curiosity and Mu Yanling turn connecting fliers into more draws.
-#: archetype: PLAN: curve out with 1-2 drop payoffs that grow, protect them with cheap counters and Kid Loki's
-#: archetype: hexproof, and win in the air. Not a control deck. DISTINCTIVENESS: the roster's four dense draw
+#: archetype: PLAN (re-grounded 2026-09-11 after the day's tunes took avg MV 2.64 → 3.14): a value-midrange deck, no longer
+#: archetype: tempo — cheap payoffs that grow, a COPY layer that gets around the legend rule on the deck's 11 legends (The Clone
+#: archetype: Saga copies the SPELL so a second Wan Shi Tong keeps its X; Impostor Syndrome tokens every connecting nontoken
+#: archetype: creature; Ember Island Production is the one-shot), Spirit Water Revival's draw-seven as the burst turn, and a
+#: archetype: win in the air. Interaction was traded down to reach this shape and sits at the A-floor threshold. DISTINCTIVENESS: the roster's four dense draw
 #: archetype: decks are 43 (WUB hand-size control), 12 (UB draw control), 37 (UBR Wizard storm) and 60a (UB
 #: archetype: speed-drain); this is the first WU one and the first built on the second-card TRIGGER as its
 #: archetype: creature base rather than as a control payoff. Card overlap with the closest (43) is 8 of 36.
@@ -48,6 +51,14 @@
 #: notes: proves too slow in play. Dazzling Denial was passed over for Essence Scatter: the deck fields ~4 Birds, not enough
 #: notes: to rely on the {4} mode.
 
+#: notes: 2026-09-11 — THE COPY PACKAGE (user's picks): Lady Octopus → The Clone Saga; Essence Scatter → Ember Island
+#: notes: Production; Into the Flood Maw → Impostor Syndrome, all under a new `# Copies` section. The question was "many Wan
+#: notes: Shi Tongs": Spider-Verse is owned but red and Spider-only; of the five WU Standard legend-rule cards, The Clone Saga
+#: notes: copies the SPELL (X is kept, so the copy draws), while Impostor Syndrome / Ember Island / Multiversal Incursion copy
+#: notes: the PERMANENT — a Wan Shi Tong token enters with X = 0 and, unless Ember Island's 4/4 clause saves it, dies. Those two
+#: notes: are Jane / Bard King / Unagi engines. The same X = 0 rule applies to Moonlit Meditation (keep it on Flock/Curiosity).
+#: notes: Quality guard flagged interaction 9 → 7 and avg MV 2.83 → 3.14 — both deliberate and both recorded in the tier block.
+#: notes: Lady Octopus's payoff had three artifact targets; Planisphere stays on its own merits (payoff body + Jane's clause).
 #: notes: 2026-09-11 — Lakeshore Apothecary → Wan Shi Tong, Librarian (user's pick). card-adv 18 → 19, floor A. A flash flier
 #: notes: whose X/2 draws fire the second-card triggers on the OPPONENT's turn when cast at end step, and whose every draw is
 #: notes: doubled under Bard, King of Dale. Apothecary was the last of the interchangeable 2-drop growers (Seeker, Kid Loki and
@@ -111,7 +122,6 @@
 
 # Payoffs — second card each turn
 1 Kid Loki (MSH) 63
-1 Lady Octopus, Inspired Inventor (SPM) 35
 1 Mischievous Mystic (FDN) 47
 1 Knowledge Seeker (TLA) 60
 1 Astrologian's Planisphere (FIN) 46
@@ -135,10 +145,13 @@
 1 Spirit Water Revival (TLA) 73
 1 Wan Shi Tong, Librarian (TLA) 78
 
+# Copies — around the legend rule
+1 The Clone Saga (MSC) 782
+1 Ember Island Production (TLA) 48
+1 Impostor Syndrome (SPM) 34
+
 # Interaction
-1 Into the Flood Maw (BLB) 52
 1 Spell Pierce (SOA) 23
-1 Essence Scatter (SOS) 47
 1 Into the Roil (FDN) 509
 1 Glen Elendra Guardian (ECL) 51
 1 Confusticate and Bebother (HOB) 35
