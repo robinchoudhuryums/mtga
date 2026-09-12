@@ -1,23 +1,20 @@
 #: name: Avengers
 #: format: Standard
-#: tier: B — Mono-W go-wide/counters. The slow-curve argument this B rested on has
-#: tier: largely gone: curve 3.25 (was 3.6, then 3.42/3.36/3.39/3.33/3.28) and 13 one-two-drops (was 6) after Erode,
-#: tier: Curious Farm Animals and Coordinated Maneuver came in for Aerith Rescue
-#: tier: Mission, Dauntless Veteran and U.S.Agent. Interaction went 4 -> 7 and the deck's
-#: tier: first three answers to a noncreature permanent (it had zero) put the metrics
-#: tier: floor to A at the time. BOTH HALVES OF THAT HAVE SINCE MOVED, and the letter is
-#: tier: no longer the generous one: interaction reads 5 after
-#: tier: the 2026-09-01 classifier fix stopped counting a blink as spot removal, and with
-#: tier: card advantage at 1 the resilience sum was 6 against the 7 a B floor wants, so the
-#: tier: metrics floor was C. RE-GROUNDED 2026-09-11 after Captain Mar-Vell → Haliya, Guided by
-#: tier: Light: card advantage 1 → 2 and the floor C → B, so the letter now MATCHES its floor
-#: tier: rather than sitting a band above it. The measured count still understates the deck —
-#: tier: Avengers Assemble! is a repeatable end-step draw the classifier misses, as are
-#: tier: Mikey & Leo and Origin chapter II, so the honest figure is nearer 4. Central themes
-#: tier: went 24 → 18 on that one swap and 18 → 15 across the 2026-09-11/12 tune (the count is
-#: tier: deck-relative: cutting a five-drop raises the dominant theme's bar and sheds the
-#: tier: marginal themes), so this is no longer the roster's most diffuse deck — 56a reads
-#: tier: 32, 24b 30, 56 29, 26 25.
+#: tier: B — Mono-W go-wide/counters, and the letter MATCHES its metrics floor rather than sitting a band above it.
+#: tier: Live vector: interaction 6, card advantage 3, protection 8, curve 3.25, 13 one-two-drops, 15 central themes.
+#: tier: WHAT CAPS IT AT B IS CARD ADVANTAGE, not interaction. An A floor wants interaction >= 7 AND
+#: tier: interaction+card-advantage >= 11; the deck reads 6 and 9, so it is one interaction piece and one card-advantage
+#: tier: piece short. The measured package that closes it is in the notes below — both halves owned, neither rotating.
+#: tier: THE CARD-ADVANTAGE COUNT UNDERSTATES THE DECK. The classifier counts exactly three (Exemplar of Light, Haliya,
+#: tier: Mikey & Leo) and misses two: Avengers Assemble!'s end-step draw and Origin of the Avengers chapter II, so the
+#: tier: honest figure is nearer 5. The floor grades on the counted 3, which is why the letter stays where it is.
+#: tier: HISTORY, kept so the numbers above are not re-derived from scratch each pass. The curve ran 3.6 ->
+#: tier: 3.42/3.36/3.39/3.33/3.28 -> 3.25 and one-two-drops 6 -> 13 over a long series of swaps whose particulars are
+#: tier: in git (`deck.py history 23`) rather than here. The floor sat at C in early
+#: tier: September 2026, when the 2026-09-01 classifier fix stopped counting a blink as spot removal (interaction fell
+#: tier: from 7) against a card advantage of 1; Haliya took card advantage to 2 and the floor back to B. Central themes
+#: tier: went 24 -> 18 -> 15, which is deck-relative arithmetic — cutting a five-drop raises the dominant theme's bar —
+#: tier: rather than a loss of focus. This is no longer the roster's most diffuse deck: 56a reads 32, 24b 30, 56 29, 26 25.
 #: notes: MANABASE: Surveillance Room was cut for a 21st Plains. In a MONO-WHITE deck its
 #: notes: "{1}, {T}: add one mana of any color" is a white source with a tax and its {C} mode
 #: notes: does nothing a Plains does not — so it was costing a real white source for a one-shot
@@ -95,6 +92,32 @@ Deck
 #: notes: NOTE FOR THE NEXT READER: the '(x2)' in the tier block above was stale the moment this swap landed, and
 #: notes: `tier --audit-rationale` did NOT flag it — a COPY-COUNT is not one of the figures `_figure_lookup` prices,
 #: notes: so a claim of the form 'card (xN)' goes stale silently. Check those by hand after any swap.
+#: notes: 2026-09-12 — Red Guardian, Super-Soldier → Banishing Light; Resolute Reinforcements → Sheltered by Ghosts.
+#: notes: Interaction 5 → 6 and protection 7 → 8, with curve 3.25 and 13 early drops both HELD. Floor still B.
+#: notes: Red Guardian's removal was CONDITIONAL — 'destroy target creature an opponent controls that DEALT DAMAGE
+#: notes: this turn' — so it was blank against an untapped blocker, a planeswalker, or anything that had not attacked.
+#: notes: Banishing Light is the same {2}{W} unconditional and exiles ANY nonland permanent. Sheltered by Ghosts pays
+#: notes: on three axes for {1}{W}: exile any nonland permanent, plus lifelink (which feeds Exemplar of Light's
+#: notes: counter and Haliya's draw) and ward {2} on the carrier.
+#: notes: The cost of both is BODIES: white creatures 22 → 20, which is convoke fodder for Dazzling Theater and type
+#: notes: count for White Lotus Tile. Watch that number if more creatures leave.
+#: notes: ERODE WAS CONSIDERED FOR REPLACEMENT AND KEPT. At {W} for unconditional 'destroy target creature or
+#: notes: planeswalker' it is the cheapest interaction in the deck, and the drawback (they may fetch a basic, TAPPED)
+#: notes: is small. `cuts` ranks it near the bottom, but that ranking is THEME FIT and a removal spell has no tribe —
+#: notes: the G-09 limitation, not a verdict on the card.
+#: notes: PATH TO AN A FLOOR (measured 2026-09-12, two slots): A wants interaction >= 7 and interaction+card-advantage
+#: notes: >= 11; the deck reads 6 and 9. +Celebrate the Mountain-king (owned, {3}{W}, exiles any nonland permanent and
+#: notes: recruits a Soldier) takes interaction to 7; +Sokka, Lateral Strategist (owned, {1}{W/U}{W/U} hybrid paid
+#: notes: on-colour, draws whenever he and another creature attack) takes card advantage to 4. Neither rotates.
+#: notes: Softest remaining slots by `cuts`: Leonardo, Big Brother and Lita, Little Orphan Amphibian — but both are
+#: notes: cheap, and taking them costs early drops 13 → 11.
+#: notes: MEASUREMENT CAVEAT ON THE `Interaction profile` LINE: Sheltered by Ghosts and Celebrate the Mountain-king
+#: notes: both genuinely answer a noncreature permanent, and neither is counted in the 'N can answer a noncreature
+#: notes: permanent' figure. `_NONCREATURE_ANSWER_CUES` lists 'destroy target nonland permanent' with NO exile twin,
+#: notes: and 'exile UP TO ONE target' breaks every 'exile target' cue — 42 of the 63 pool cards that exile a nonland
+#: notes: permanent are missed, and the 21 counted match only because the word 'enchantment' happens to appear later
+#: notes: in their own sentence. `classify_roles` still tags them Removal (spot), so the TIER FLOOR is unaffected;
+#: notes: only that report-only line under-reads. Read it as a floor, not a count.
 
 # Hero core — anthems, counters, tempo
 1 Avengers Assemble! (MSH) 6
@@ -120,7 +143,6 @@ Deck
 1 Duty Beyond Death (TDM) 10
 1 Virtue of Loyalty (WOE) 38
 1 Kinscaer Sentry (ECL) 22
-1 Resolute Reinforcements (FDN) 145
 1 Monica Rambeau (MSH) 23
 1 Erode (SOS) 15
 1 The Eagles Are Coming! (HOB) 12
@@ -139,8 +161,9 @@ Deck
 1 Static Snare (TDM) 26
 1 Elspeth, Storm Slayer (TDM) 11
 1 Jennifer Walters (MSH) 18
-1 Red Guardian, Super-Soldier (MSH) 34
+1 Banishing Light (EOE) 6
 1 Cosmogrand Zenith (EOE) 9
+1 Sheltered by Ghosts (DSK) 30
 
 # Lands
 19 Plains (MSH) 288
