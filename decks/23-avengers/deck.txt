@@ -1,19 +1,30 @@
 #: name: Avengers
 #: format: Standard
-#: tier: B — Mono-W go-wide/counters. The slow-curve argument this B rested on has
-#: tier: largely gone: curve 3.42 (was 3.6) and 11 one-two-drops (was 6) after Erode,
-#: tier: Curious Farm Animals and Coordinated Maneuver came in for Aerith Rescue
-#: tier: Mission, Dauntless Veteran and U.S.Agent. Interaction went 4 -> 7 and the deck's
-#: tier: first three answers to a noncreature permanent (it had zero) put the metrics
-#: tier: floor to A at the time. BOTH HALVES OF THAT HAVE SINCE MOVED, and the letter is
-#: tier: now the generous one rather than the conservative one: interaction reads 5 after
-#: tier: the 2026-09-01 classifier fix stopped counting a blink as spot removal, and with
-#: tier: card advantage 1 the resilience sum is 6 against the 7 a B floor wants, so the
-#: tier: metrics floor is C. Letter HELD at B, one band ABOVE the floor, which the rubric
-#: tier: allows for what the metrics cannot see — the remaining case
-#: tier: for B is card advantage, which measures 1 (Avengers Assemble! is a real
-#: tier: repeatable draw the classifier misses, so call it ~2), and 24 central themes,
-#: tier: the most diffuse deck on the roster.
+#: tier: A — Mono-W go-wide/counters. Re-graded B -> A on 2026-09-12, AT its metrics floor, not above it.
+#: tier: Live vector: interaction 7, card advantage 5, protection 8, curve 3.33, 12 one-two-drops, 14 central themes.
+#: tier: An A floor wants interaction >= 7 AND interaction+card-advantage >= 11; this reads 7 and 12.
+#: tier: TWO THINGS MOVED, AND ONLY ONE OF THEM WAS THE DECK. The 2026-09-11/12 tune took interaction 5 -> 7
+#: tier: (Banishing Light, Sheltered by Ghosts and White Auracite came in for three softer slots; see the notes
+#: tier: below) while HOLDING protection at 8 and the curve at 3.33. The card-advantage half was
+#: tier: not a change to the list at all: the classifier had a hole — a draw sitting behind an intervening
+#: tier: if-clause scored zero — and this deck paid for it TWICE, since Avengers Assemble! and Spider-UK are both
+#: tier: templated that way. Closing the hole read them for the first time, 3 -> 5. This block had asserted for
+#: tier: months that the classifier misses Avengers Assemble!'s draw; the claim was right and is now measured.
+#: tier: WHAT AN A MEANS HERE, per the rubric: A-floor resilience, a coherent engine, a tight curve, at most one
+#: tier: clear weakness. The engine is coherent — `engines` reports counters, tokens and lifegain all BALANCED,
+#: tier: with no payoff gap left. The one clear weakness is the TOP END: Anti-Venom's {W}{W}{W}{W}{W} is a
+#: tier: turn-6/7 card even with White Lotus Tile, White Auracite and Dazzling Theater's convoke all pulling for
+#: tier: it. That is one weakness, which is what an A allows.
+#: tier: NOT S, and the distinction is the honest one: S wants proven top-meta capability and this deck is
+#: tier: UNPLAYED. Re-read the letter after /log-matches.
+#: tier: HISTORY, kept so the numbers above are not re-derived from scratch each pass. The curve ran 3.6 ->
+#: tier: 3.42/3.36/3.39/3.33/3.28/3.25/3.31 -> 3.33 and one-two-drops 6 -> 12 over a long series of swaps whose
+#: tier: particulars are in git (`deck.py history 23`) rather than here. The floor sat at C in early September
+#: tier: 2026, when the 2026-09-01 classifier fix stopped counting a blink as spot removal (interaction fell from
+#: tier: 7) against a card advantage of 1; Haliya took card advantage to 2 and the floor back to B, and the tune
+#: tier: above took it to A. Central themes went 24 -> 18 -> 14, deck-relative arithmetic — cutting a five-drop
+#: tier: raises the dominant theme's bar — rather than a loss of focus. This is no longer the roster's most
+#: tier: diffuse deck: 56a reads 32, 24b 30, 56 29, 26 25.
 #: notes: MANABASE: Surveillance Room was cut for a 21st Plains. In a MONO-WHITE deck its
 #: notes: "{1}, {T}: add one mana of any color" is a white source with a tax and its {C} mode
 #: notes: does nothing a Plains does not — so it was costing a real white source for a one-shot
@@ -34,10 +45,129 @@
 #: notes: 24 lands (colorless-light so WW costs are reliable). Interaction: Stasis
 #: notes: Snare, Pacifism x2, Focus Fire, Red Guardian, Starfall Invocation.
 #: notes: Promoted from the refined 60 (formerly variant 23a).
+#: notes: 2026-09-11 — Captain Mar-Vell, Space-Born → Haliya, Guided by Light (owned, 0 wildcards). Floor C → B, so the
+#: notes: claimed letter now matches. Haliya's "whenever Haliya or another creature or artifact you control enters, you gain
+#: notes: 1 life" fires off EIGHT token makers (doubled by Elspeth and Exalted Sunborn), so her "draw a card if you've gained
+#: notes: 3 or more life this turn" is near-unconditional here — and it gives the deck's six lifegain enablers the payoff
+#: notes: `engines` reported them lacking. Mar-Vell's flash-granting needed the OPPONENT to cast first, and the deck already
+#: notes: holds four natural flash cards plus Jennifer Walters stopping their turn-spells. Side effect worth knowing: central
+#: notes: themes 24 → 18 — the count is deck-relative, so cutting a five-drop raised the dominant theme's bar.
+#: notes: ANTI-VENOM IS KEPT ON PURPOSE, and `consistency`'s 36.7% on T5 UNDERSTATES him: it does not count the 2x Avengers
+#: notes: Tower, whose mana is restricted to HERO spells — and Anti-Venom is a Symbiote HERO, so both Towers cast him. Proxy
+#: notes: measured (Towers as Plains, 24 W sources) he reads 46.7%; the true rate is between, and he is a turn-6/7 reanimator
+#: notes: anyway. Do NOT cut the Towers to "fix" him — they are his enablers and a Hero tutor.
 
 Deck
+#: notes: 2026-09-11 — Quake, Agent of S.H.I.E.L.D. → Exemplar of Light (owned, 0 wildcards). card advantage 2 → 3 on a
+#: notes: floor that stays B. Exemplar closes BOTH payoff gaps `engines` reported in one card: "whenever you gain life, put
+#: notes: a +1/+1 counter on this creature" turns the deck's six lifegain enablers (which had NO payoff) into counters, and
+#: notes: "whenever you put one or more +1/+1 counters on this creature, draw a card" turns counters into cards — the 13
+#: notes: enablers / 2 payoffs imbalance was the deck's oldest structural weakness. Quake's "whenever you cast a noncreature
+#: notes: spell, tap target creature or land" had only five noncreature spells to trigger on.
+#: notes: 2026-09-11 — Mockingbird, Ace Agent → Leader's Talent (owned, 0 wildcards). Floor stays B; curve 3.39 → 3.33.
+#: notes: Mockingbird's counter trigger wanted spells that TARGET a creature you control, and the deck holds TWO, so it was
+#: notes: a 2/2 double-striker that rarely grew. Leader's Talent is the counter compounder the mono-W sweep looked for and
+#: notes: did not otherwise find: level 1 is a free counter on every attack, and level 3 ("whenever you CAST A SPELL, put a
+#: notes: +1/+1 counter on EACH creature you control") is the only W-castable effect here that scales with the whole board
+#: notes: rather than one tribe — the four true counter doublers in white are all tribe-locked (Giada/Angels,
+#: notes: Prairie Dog/Rabbits, Dragonstorm Globe, Turtle Van), which is why none of them is in this list.
+#: notes: 2026-09-11 tune, three swaps — Don & Leo, Problem Solvers → White Lotus Tile; Raph & Leo, Sibling Rivals →
+#: notes: The Eagles Are Coming!; 2x Plains → 2x Abandoned Air Temple. Floor stays B; curve 3.33 → 3.28, early drops
+#: notes: 12 → 13. THE DECK IS NOW WIP: White Lotus Tile is 1 mythic and the 2nd Air Temple 1 rare, so `check` reports
+#: notes: a craft gap by design.
+#: notes: DON & LEO WAS THE G-42 SHAPE — a fine card fighting its own deck. Its only ability blinks a creature YOU
+#: notes: control, and a blink returns a NEW object, so it ERASES the +1/+1 counters this deck exists to accumulate
+#: notes: (Leader's Talent, Virtue of Loyalty, Exemplar, White Widow, Origin ch. III all put them on). It did re-trigger
+#: notes: the deck's 8 ETBs, so it was not blank — it was the most expensive non-payoff card in a 3.3-curve list and it
+#: notes: pulled against the engine. RAPH & LEO was the weakest fit `cuts` measured (15, against a 17-31 field): the
+#: notes: extra combat untaps ONE OR TWO attackers, so the second swing re-attacks with two creatures, not the board —
+#: notes: a tall card in a wide deck.
+#: notes: WHITE LOTUS TILE's X is the greatest number of creatures you control SHARING A TYPE — read that as a
+#: notes: BATTLEFIELD count, not a deck count. The deck-list ceiling is Human 14 / Hero 10 / Soldier 7 (Soldier tokens
+#: notes: grow that line in play); the realistic figure is 3-5. It is a top-end burst for Anti-Venom, not a turn-4 rock.
+#: notes: THE AIR TEMPLES ARE MANA-NEUTRAL AND MEASURED SO: both tap for W, so W sources stay at 22, keepable stays
+#: notes: 84.4% and Anti-Venom stays 36.7% on T5. What they add is the '{3}{W}, {T}: put a +1/+1 counter on each
+#: notes: creature you control' sink — a LAND that is a counters payoff. Their tapland clause ('unless you control a
+#: notes: basic land') is near-dead against 19 Plains.
+#: notes: 2026-09-12 — 2x Avengers Assemble! → 1x, with Dazzling Theater // Prop Room in the freed slot. Floor stays B;
+#: notes: curve 3.28 → 3.25. THE THEATER IS THE BETTER ANSWER TO ANTI-VENOM THAN THE TILE and the reason is colour:
+#: notes: convoke pays 'one mana of that creature's colour', and 21 of the deck's 22 creatures are white (plus every
+#: notes: Soldier and Bird token it makes), so five tapped bodies pay {W}{W}{W}{W}{W} outright. The Tile caps at X of
+#: notes: ONE colour and enters tapped. They are kept BOTH because they are not redundant: convoke helps only CREATURE
+#: notes: spells, and the deck runs 14 noncreature cards (Elspeth, Static Snare, Virtue of Loyalty, Avengers Assemble!)
+#: notes: that only the Tile ramps. Prop Room's back half ({2}{W}, unlock at leisure) untaps your team on each other
+#: notes: player's untap step — attack with everything and still block.
+#: notes: The SECOND Avengers Assemble! was the cut because it was the most expensive redundancy in the list at MV 5
+#: notes: and every axis held (interaction 5, card advantage 3, protection 7). The first copy is still the engine.
+#: notes: NOTE FOR THE NEXT READER: the '(x2)' in the tier block above was stale the moment this swap landed, and
+#: notes: `tier --audit-rationale` did NOT flag it — a COPY-COUNT is not one of the figures `_figure_lookup` prices,
+#: notes: so a claim of the form 'card (xN)' goes stale silently. Check those by hand after any swap.
+#: notes: 2026-09-12 — Red Guardian, Super-Soldier → Banishing Light; Resolute Reinforcements → Sheltered by Ghosts.
+#: notes: Interaction 5 → 6 and protection 7 → 8, with curve 3.25 and 13 early drops both HELD. Floor still B.
+#: notes: Red Guardian's removal was CONDITIONAL — 'destroy target creature an opponent controls that DEALT DAMAGE
+#: notes: this turn' — so it was blank against an untapped blocker, a planeswalker, or anything that had not attacked.
+#: notes: Banishing Light is the same {2}{W} unconditional and exiles ANY nonland permanent. Sheltered by Ghosts pays
+#: notes: on three axes for {1}{W}: exile any nonland permanent, plus lifelink (which feeds Exemplar of Light's
+#: notes: counter and Haliya's draw) and ward {2} on the carrier.
+#: notes: The cost of both is BODIES: white creatures 22 → 20, which is convoke fodder for Dazzling Theater and type
+#: notes: count for White Lotus Tile. Watch that number if more creatures leave.
+#: notes: ERODE WAS CONSIDERED FOR REPLACEMENT AND KEPT. At {W} for unconditional 'destroy target creature or
+#: notes: planeswalker' it is the cheapest interaction in the deck, and the drawback (they may fetch a basic, TAPPED)
+#: notes: is small. `cuts` ranks it near the bottom, but that ranking is THEME FIT and a removal spell has no tribe —
+#: notes: the G-09 limitation, not a verdict on the card.
+#: notes: PATH TO AN A FLOOR (measured 2026-09-12, two slots): A wants interaction >= 7 and interaction+card-advantage
+#: notes: >= 11; the deck reads 6 and 9. +Celebrate the Mountain-king (owned, {3}{W}, exiles any nonland permanent and
+#: notes: recruits a Soldier) takes interaction to 7; +Sokka, Lateral Strategist (owned, {1}{W/U}{W/U} hybrid paid
+#: notes: on-colour, draws whenever he and another creature attack) takes card advantage to 4. Neither rotates.
+#: notes: Softest remaining slots by `cuts`: Leonardo, Big Brother and Lita, Little Orphan Amphibian — but both are
+#: notes: cheap, and taking them costs early drops 13 → 11.
+#: notes: MEASUREMENT CAVEAT ON THE `Interaction profile` LINE: Sheltered by Ghosts and Celebrate the Mountain-king
+#: notes: both genuinely answer a noncreature permanent, and neither is counted in the 'N can answer a noncreature
+#: notes: permanent' figure. `_NONCREATURE_ANSWER_CUES` lists 'destroy target nonland permanent' with NO exile twin,
+#: notes: and 'exile UP TO ONE target' breaks every 'exile target' cue — 42 of the 63 pool cards that exile a nonland
+#: notes: permanent are missed, and the 21 counted match only because the word 'enchantment' happens to appear later
+#: notes: in their own sentence. `classify_roles` still tags them Removal (spot), so the TIER FLOOR is unaffected;
+#: notes: only that report-only line under-reads. Read it as a floor, not a count.
+#: notes: 2026-09-12 — Lita, Little Orphan Amphibian → Spider-UK (1 uncommon craft). Floor stays B; curve 3.25 → 3.31,
+#: notes: early drops 13 → 12. `suggest` independently surfaced this add, which is rare. Its end-step trigger ('if two
+#: notes: or more creatures entered under your control this turn, you draw a card and gain 2 life') is close to
+#: notes: unconditional here — eight token makers, several of which make TWO bodies at once (Okoye, Cosmogrand Zenith),
+#: notes: doubled again by Elspeth and Exalted Sunborn — and the 2 life feeds Exemplar's counter and Haliya's draw.
+#: notes: A SECOND CLASSIFIER HOLE, MEASURED HERE, AND THIS ONE REACHES THE TIER FLOOR. Spider-UK scores Lifegain and
+#: notes: NOT Card advantage. The breaker is an INTERVENING IF-CLAUSE: 'at the beginning of your end step, draw a card'
+#: notes: classifies fine, and 'at the beginning of your end step, IF <condition>, you draw a card' scores zero — the
+#: notes: draw sits outside the pattern's proximity window. Pool-wide: 72 cards template a conditional triggered draw
+#: notes: and 42 are MISSED. Seven are maindecked across the roster (Avengers Assemble!, Betor, Donatello, Dragonfly
+#: notes: Swarm, Iron Man Master of Machines, Satoru, Spider-UK) in decks 4/7/12/17/20/23/25/26/54/65/76.
+#: notes: This deck pays for it TWICE — Avengers Assemble! and Spider-UK are both in the missed set, which is why the
+#: notes: tier block above says the honest card-advantage figure is 6 against a counted 3. Monkeypatched in memory (no
+#: notes: file touched), closing the hole reads card advantage 5 and the resilience sum 11 — but interaction stays 6,
+#: notes: so the deck would STILL be B, one interaction card short of A. Fixing the pattern is NOT a shortcut to A.
+#: notes: Left unfixed deliberately: unlike the noncreature-answer hole above, this axis DOES feed tier_band, so the
+#: notes: change needs the roster-wide before/after floor diff K-12 mandates — that belongs in its own pass, not a tune.
+#: notes: Minor related gap: Spider-UK's Web-slinging {2}{W} is a cheat cost and is NOT in the `CHEAT-COST` list `tier`
+#: notes: prints, so the 3.31 curve over-reads by slightly more than the advisory says.
+#: notes: 2026-09-12 — Leonardo, Big Brother → White Auracite (owned). INTERACTION 6 → 7, protection HELD at 8, curve
+#: notes: 3.31 → 3.33, early drops 12. Floor still B — the interaction half of the A gap is now MET and only card
+#: notes: advantage is short.
+#: notes: WHITE AURACITE WAS FIRST PROPOSED FOR SUPER-ADAPTOID'S SLOT AND THAT CUT WAS MEASURED WORSE ON EVERY AXIS:
+#: notes: same interaction gain, but protection 8 → 7, curve 3.36, early drops 11. Leonardo was free. Super-Adaptoid's
+#: notes: power equals your LEGENDARY CREATURES and the deck runs 16, so it is a 3-6 body for {2} and the deck's
+#: notes: cheapest scaling threat; its keyword theft is also the 8th protection piece. One real mark against it: it is
+#: notes: COLORLESS, so under Dazzling Theater's convoke it pays only {1}, never a white pip.
+#: notes: Leonardo was the free slot for the reasons `cuts` and the text agree on: lowest power in the list (Pw ~1.5),
+#: notes: no detected role, and his sneak {W} returns an unblocked attacker to hand — which ERASES that creature's
+#: notes: +1/+1 counters, the same conflict Don & Leo was cut for.
+#: notes: White Auracite does two jobs: exile any nonland permanent, and '{T}: Add {W}' — a 23rd white source that
+#: notes: `consistency` does NOT count, since that model reads lands only. In the deck whose one castability problem is
+#: notes: Anti-Venom's {W}{W}{W}{W}{W}, removal that also taps for white is worth more than the role count shows.
+#: notes: REMAINING PATH TO A — ONE SWAP: +Sokka, Lateral Strategist (owned, {1}{W/U}{W/U} hybrid paid on-colour, draws
+#: notes: whenever he and another creature attack) takes card advantage 3 → 4 and the sum to 11. Measured floor A with
+#: notes: Origin of the Avengers as the cut, which keeps protection at 8. Origin is the one judgment call: the floor
+#: notes: detects no role for it, but scry 2 → a free Hero MV<=3 or a draw → counters on the whole board is real value.
+
 # Hero core — anthems, counters, tempo
-2 Avengers Assemble! (MSH) 6
+1 Avengers Assemble! (MSH) 6
 1 Agent Phil Coulson (MSH) 4
 1 Captain America, Super-Soldier (MSH) 9
 1 Captain America, Wings of Freedom (MSH) 10
@@ -45,42 +175,46 @@ Deck
 1 Invisible Woman, Sue Storm (MSH) 17
 1 Okoye, Dora Milaje Leader (MSH) 27
 1 White Widow, Free Agent (MSH) 42
-1 Mockingbird, Ace Agent (MSH) 22
+1 Leader's Talent (TMT) 13
 1 Spider-Woman, Secret Agent (MSH) 229
 1 Super-Adaptoid (MSH) 250
-1 Quake, Agent of S.H.I.E.L.D. (MSH) 32
+1 Exemplar of Light (FDN) 733
 1 Coordinated Maneuver (TDM) 6
 1 Delney, Streetwise Lookout (MKM) 12
 1 Origin of the Avengers (MSH) 28
 1 The Sentry, Golden Guardian (MSH) 35
+1 Spider-UK (MSC) 777
 
 # Go-wide / anthems / tokens
 1 Exalted Sunborn (EOE) 15
-1 Captain Mar-Vell, Space-Born (MSH) 12
+1 Haliya, Guided by Light (EOE) 19
 1 Duty Beyond Death (TDM) 10
 1 Virtue of Loyalty (WOE) 38
 1 Kinscaer Sentry (ECL) 22
-1 Resolute Reinforcements (FDN) 145
 1 Monica Rambeau (MSH) 23
 1 Erode (SOS) 15
+1 The Eagles Are Coming! (HOB) 12
 
 # TMT engine (secondary) — combat, counter-draw, ETB value
-1 Raph & Leo, Sibling Rivals (TMT) 166
 1 Mikey & Leo, Chaos & Order (TMT) 158
-1 Lita, Little Orphan Amphibian (TMT) 19
-1 Don & Leo, Problem Solvers (TMT) 143
-1 Leonardo, Big Brother (TMT) 14
 1 Anti-Venom, Horrifying Healer (SPM) 1
+
+# Mana — burst for the WWWWW top end
+1 White Lotus Tile (TLA) 262
+1 Dazzling Theater // Prop Room (DSK) 3
 
 # Interaction
 1 Static Snare (TDM) 26
 1 Elspeth, Storm Slayer (TDM) 11
 1 Jennifer Walters (MSH) 18
-1 Red Guardian, Super-Soldier (MSH) 34
+1 Banishing Light (EOE) 6
 1 Cosmogrand Zenith (EOE) 9
+1 Sheltered by Ghosts (DSK) 30
+1 White Auracite (FIN) 41
 
 # Lands
-21 Plains (MSH) 288
+19 Plains (MSH) 288
+2 Abandoned Air Temple (TLA) 263
 2 Avengers Tower (MSH) 260
 1 Urban Retreat (SPM) 187
 

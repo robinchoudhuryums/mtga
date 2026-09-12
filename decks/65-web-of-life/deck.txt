@@ -3,7 +3,7 @@
 #: colors: GWU
 #: plan: midrange
 #: tier: B (PROVISIONAL — unplayed brew, graded 2026-08-08). Metrics floor is B
-#: tier: (interaction 6 + card advantage 3, protection 4, avg MV 2.97 — it read A until
+#: tier: (interaction 6 + card advantage 4, protection 4, avg MV 2.97 — it read A until
 #: tier: `TIER_FLOOR_REQ` was re-derived from the roster distribution 2026-09-02, which
 #: tier: raised the A floor's interaction requirement to 7), so the letter sits AT its floor. The reasons
 #: tier: it was held UNDER an A floor still argue against re-grading UP, and are the

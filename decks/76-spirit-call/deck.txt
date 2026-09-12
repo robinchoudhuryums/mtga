@@ -31,7 +31,7 @@
 #: archetype: the roster wins at upkeep by a counting condition.
 #: protect: Call the Spirit Dragons; Dracogenesis; Lathliss, Dragon Queen; Leyline of the Guildpact; Enduring Vitality
 #: tier: B (PROVISIONAL) — graded UNDER the A metrics floor (interaction 8, card
-#: tier: advantage 3, protection 4 (the 2026-08-23 pass traded Niv-Mizzet Visionary's
+#: tier: advantage 4, protection 4 (the 2026-08-23 pass traded Niv-Mizzet Visionary's
 #: tier: draw engine for Neriv's damage doubler, and Armament Dragon was CUT for
 #: tier: Karakyk Guardian's hexproof body — card advantage down one, protection up one;
 #: tier: interaction had risen 7->8 in the 2026-08-22 pile pass with Dragonclaw Strike

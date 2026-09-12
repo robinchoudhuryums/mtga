@@ -1843,6 +1843,45 @@ _ROLE_PATTERNS = {
                        # `whenever .* draw a card` swept every one into card advantage —
                        # scoring a draw-payoff as a draw, which is backwards.
                        r"\bwhenever\b[^.,]{0,80}?, [^.]{0,60}?draws? a card",
+                       # AN INTERVENING IF-CLAUSE PUSHES THE DRAW OUT OF BOTH WINDOWS
+                       # ABOVE, and Magic templates a large family that way: "<trigger>,
+                       # if <condition>, draw a card". The two patterns above allow 60
+                       # characters between the trigger and the draw, and a real condition
+                       # clause runs longer than that — Spider-UK's is 85 characters,
+                       # Avengers Assemble!'s is 104 — so both scored ZERO card advantage
+                       # while reading, in plain English, "draw a card" every turn.
+                       # Measured 2026-09-12: 72 pool cards template a conditional
+                       # triggered draw and 42 were missed; 22 of them had no card
+                       # advantage from any other pattern, and all 22 are true positives.
+                       # Seven were maindecked across ten roster decks, and deck 23 paid
+                       # for it twice (Avengers Assemble! AND Spider-UK), which is what
+                       # surfaced it — its `#: tier:` prose had asserted for months that
+                       # the classifier misses Avengers Assemble!'s draw, with no one able
+                       # to say why.
+                       #
+                       # THE FIX IS THE if-CLAUSE, NOT A WIDER WINDOW, and that distinction
+                       # was measured rather than assumed. Simply widening the two windows
+                       # to 120 characters covers the same phase-trigger cards (51/51) but
+                       # lets the `whenever` pattern cross into a GRANTED ability quoted
+                       # inside another clause — Hydroponics Architect grants a land "when
+                       # this land enters, draw a card", a one-shot ETB cantrip the cantrip
+                       # rule above deliberately excludes, and Sygg and Ambassador of
+                       # Evendo are the same shape. Anchoring on ", if … ," admits none of
+                       # them.
+                       #
+                       # Two scoping choices carry the safety:
+                       #   the draw sits IMMEDIATELY after the condition's closing comma,
+                       #     so "…, if X, target player draws a card" does not match — the
+                       #     words "target player" fall between the comma and the draw.
+                       #     That is what keeps an opponent's draw out without a lookbehind.
+                       #   bare `when` is EXCLUDED, only `at the beginning of` (a phase
+                       #     trigger recurs) and `whenever` (recurs by construction) open
+                       #     the pattern. "When this creature enters, if X, draw a card" is
+                       #     a one-shot cantrip and stays out, same as the plain ETB form.
+                       r"(?:at the beginning of (?:your|each|the) "
+                       r"(?:upkeep|end step|draw step|combat|precombat main phase)"
+                       r"|\bwhenever\b[^.,]{0,80})"
+                       r", if [^.]{0,140}?, (?:you )?draws? a card",
                        r"\binvestigate\b",
                        # A CLUE TOKEN *is* a delayed draw ("{2}, Sacrifice this token:
                        # Draw a card"), and `investigate` above is the KEYWORD form of
@@ -4187,6 +4226,29 @@ _NONCREATURE_ANSWER_CUES = [re.compile(p) for p in [
     # creature, planeswalker, or Vehicle … destroy the chosen permanent" reaches past
     # creatures, but names the types a sentence away from the verb.
     r"choose target[^.]*\b(planeswalker|artifact|enchantment|vehicle|spacecraft|permanent)",
+    # THE EXILE TWIN WAS MISSING, and the family-disagreement rule (G-67) is exactly
+    # what would have caught it: `destroy target nonland permanent` is listed above and
+    # `exile target nonland permanent` — the commonest white O-Ring templating there is —
+    # was not. It matched only BY ACCIDENT, when the word "artifact"/"enchantment"
+    # happened to appear later in the same sentence, which is why Banishing Light
+    # ("…until this ENCHANTMENT leaves the battlefield") counted and Sheltered by Ghosts
+    # ("…until this AURA leaves the battlefield") did not, on identical effects.
+    #
+    # "UP TO ONE" is the second half: every `exile target` / `destroy target` cue above
+    # requires the word "target" to follow the verb immediately, so the optional-target
+    # templating ("exile UP TO ONE target nonland permanent" — Prayer of Binding,
+    # Celebrate the Mountain-king, Cityscape Leveler) defeated all of them.
+    #
+    # Measured 2026-09-12: 63 pool cards exile a nonland permanent and 42 were missed;
+    # across the whole cue list, 102 interaction cards newly read as a noncreature
+    # answer, with 0 false positives — no card whose target is scoped to a permanent YOU
+    # control or to your own graveyard is admitted (checked explicitly, since "return up
+    # to one target permanent card FROM YOUR GRAVEYARD" is recursion, not an answer).
+    # This list feeds `interaction_profile` only, which is REPORT-ONLY (G-24) — no tier
+    # floor moves on it, and the roster diff confirmed none did.
+    r"exile (?:up to \w+ )?target[^.]{0,40}?nonland permanent",
+    r"destroy (?:up to \w+ )?target[^.]{0,40}?nonland permanent",
+    r"(?:exile|destroy|return) up to \w+ target[^.]{0,40}?\b(artifact|enchantment|planeswalker|permanent)",
 ]]
 
 
@@ -11913,6 +11975,12 @@ _RATIONALE_FIGURES = [
     (re.compile(_FIG_DEC + r"[  ]+average", re.I), "avg_mv"),
     (re.compile(_FIG_NUM + r"[- ]theme", re.I), "central_themes"),
     (re.compile(_FIG_NUM + r" central themes", re.I), "central_themes"),
+    # LABEL-THEN-NUMBER, the same shape the `protection` pattern above already covers.
+    # Deck 50a wrote "CENTRAL THEMES 25" against a live 17 and the audit reported the
+    # block CURRENT for as long as it stood: both patterns above want the number FIRST
+    # ("17 central themes", "17-theme"), so the roster's other idiom was invisible by
+    # construction. Found during the 2026-09-11 tier-C review, not by a gate.
+    (re.compile(r"central themes?[  ]+(\d+)", re.I), "central_themes"),
     (re.compile(r"protection[  ]+(\d+)", re.I), "protection"),
     (re.compile(r"protection" + _FIG_PAREN, re.I), "protection"),
     # EARLY DROPS were in the quality vector but never audited, so a count could go stale

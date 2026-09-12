@@ -1,25 +1,33 @@
 #: name: Earth's Mightiest
 #: format: Standard
 #: arena: 07 Earth’s Mightiest, e3a6c595-914d-4809-bd6d-630b3758ca89
-#: tier: B — RE-GRADE CANDIDATE, and the argument for B has now expired. Selesnya
-#: tier: go-wide heroes. The old one-line reason ("fast clock but thin
-#: tier: interaction (3)") stopped being true on either count once the classifier fix
-#: tier: read interaction 8, on a 3.08 curve with the plan inferring MIDRANGE, not
-#: tier: aggro. The B rested on a different axis after that — NO REPEATABLE REFUEL, so
-#: tier: a go-wide board folded to a single sweeper — and the stated path
-#: tier: to A was "a repeatable draw engine that scales off the wide board, not more
-#: tier: interaction". THAT ENGINE IS NOW IN THE DECK: Haliya, Ascendant Cadet was
-#: tier: crafted and maindecked 2026-08-10 (a counter on every attack; a card whenever
-#: tier: countered creatures connect), taking card advantage 0→2, and Valorous Stance
-#: tier: replaced Spider-Man, Brooklyn Visionary the same day for interaction 8 and
-#: tier: protection 4. The metrics floor is B and the letter now sits AT it: interaction 8
-#: tier: clears the A floor's interaction bar of 7, but card advantage 2 leaves the
-#: tier: resilience sum at 10 against the 11 an A floor wants. It read A until
-#: tier: `TIER_FLOOR_REQ` was re-derived from the roster distribution 2026-09-02 (BS8-06),
-#: tier: so the under-graded flag this paragraph was written to answer is gone — the
-#: tier: letter did not move, the yardstick did. Held at B pending a HUMAN call only because the deck is
-#: tier: UNPLAYED — the thin 6-theme spine and singleton variance are the remaining
-#: tier: arguments, and neither is measured.
+#: tier: A — Selesnya go-wide heroes (counters + tokens). Re-graded B -> A on 2026-09-12, AT its
+#: tier: metrics floor: interaction 8, card advantage 3, sum 11 against the 11 an A floor wants,
+#: tier: protection 4, curve 3.08.
+#: tier: THE CAP THIS DECK CARRIED WAS NAMED, AND IT IS THE THING THAT WENT AWAY. The B rested on
+#: tier: "NO REPEATABLE REFUEL, so a go-wide board folded to a single sweeper", and the stated path to
+#: tier: A was "a repeatable draw engine that scales off the wide board, not more interaction". The
+#: tier: deck now has three repeatable card-advantage sources and zero one-shots: Haliya, Ascendant
+#: tier: Cadet (crafted and maindecked 2026-08-10) and Avengers Assemble!, both of which refuel off
+#: tier: exactly the wide board the cap was about. Avengers Assemble! had been read as ZERO card
+#: tier: advantage until 2026-09-12, when a classifier hole was closed (a draw behind an intervening
+#: tier: if-clause scored nothing) — so part of this deck's refuel was invisible rather than absent,
+#: tier: and the list did not change on the day the floor moved.
+#: tier: AGAINST THE RUBRIC's four A tests: A-floor yes; coherent engine yes (`engines` reports
+#: tier: counters and tokens both BALANCED, 4 and 9 payoffs respectively); tight curve yes at 3.08;
+#: tier: at most one clear weakness — yes, and it is card advantage 3, which is the floor's own
+#: tier: minimum rather than a comfortable margin. A sweeper is still this deck's worst matchup.
+#: tier: WHY THIS ONE MOVED WHEN 35 OTHER SUB-FLOOR DECKS DID NOT, since the standard has to be the
+#: tier: same for all of them: those 35 argue LIVE caps their floors cannot see — deck 26b's
+#: tier: zero-protection drain shell, 51's 3.97 curve compounding with thin answers, 45's 76% overlap
+#: tier: with deck 24, 71's untested haymaker curve. This block argued that its own cap had EXPIRED
+#: tier: and asked to be re-graded. Being UNPLAYED is not a weakness of the LIST and is not what
+#: tier: holds a letter down here; it is why the deck is not S.
+#: tier: NOT S: that needs proven top-meta capability, and this deck has no recorded matches.
+#: tier: The thin spine is worth watching but is not the cap it was read as: 6 central themes is
+#: tier: 2nd-lowest on a 112-deck roster (median 14), which for a deck that does exactly two things —
+#: tier: counters and tokens, with 24 and 11 enablers — reads as FOCUS rather than as thinness.
+#: tier: Re-read after /log-matches.
 #: colors: GW
 #: archetype: Selesnya (G/W) Avengers heroes go-wide.
 #: notes: Selesnya (G/W) — Avengers heroes go-wide.

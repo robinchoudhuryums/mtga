@@ -2,7 +2,7 @@
 #: format: Standard
 #: tier: C — 5-color superhero goodstuff. The old rationale capped this on "thin
 #: tier: interaction (2)"; that figure was a classifier under-read and the live vector is
-#: tier: interaction 3 / card advantage 4 / protection 3, a B floor. The letter STAYS at
+#: tier: interaction 3 / card advantage 5 / protection 3, a B floor. The letter STAYS at
 #: tier: C anyway, because the cap here was never really the interaction count — it is
 #: tier: MANA and SPINE, the two things the floor cannot see:
 #: tier: 1. The manabase. `consistency 17` reads keepable 84%, land-drop 63% by turn 4,

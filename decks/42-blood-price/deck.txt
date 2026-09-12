@@ -23,30 +23,60 @@
 #: archetype: no ETB-value creatures, and deliberately drives its OWN total DOWN — the
 #: archetype: swap is a one-shot refund and stabiliser, not a repeatable draw engine.
 #: archetype: Opposite life postures, opposite creature bases, same finisher.
-#: tier: B — Orzhov life-as-currency attrition, AT the B metrics floor (this block placed
-#: tier: the deck one band below an A floor until `TIER_FLOOR_REQ` was re-derived from
-#: tier: the roster distribution 2026-09-02, which raised the A floor's interaction requirement to 7 —
-#: tier: interaction is the ONLY thing between this deck and an A floor, since card
-#: tier: advantage 10 clears the resilience sum on its own),
-#: tier: PROVISIONAL (unplayed brew). The floor reads B on interaction 6 (FIVE of it
-#: tier: instant-speed, two answering a noncreature permanent) plus card advantage 10 over
-#: tier: a 2.66 curve — five surplus removal spells became the pay-life engine and the
-#: tier: drain clock, and the Gwenom / Enduring Tenacity adds since cost two more
-#: tier: answers, so 6 is now the floor of comfortable rather than a surplus — and
-#: tier: unlike deck 41 that
-#: tier: card-advantage number is REAL — Cruel Truths, Circle of Power, Decode
-#: tier: Transmissions and Visions of Villainy each draw two, so this is an engine, not
-#: tier: a pile of cantrips. Held at B by two structural risks the floor cannot see:
-#: tier: 1. The deck lowers its OWN life total as a core mechanic while running ZERO
-#: tier:    protection, so it is spending the exact resource that keeps it alive. Against
-#: tier:    an aggro deck the pay-life draws are a liability, and the Mister Negative
-#: tier:    refund is SMALLEST in that matchup — the swap scales with the opponent's
-#: tier:    total, so it pays most against the control decks that were never racing you.
-#: tier: 2. The clock is slow. Three drain permanents and a few evasive bodies is a real
-#: tier:    plan B, but it wins on turn 12, not turn 6, which gives the life payments a
-#: tier:    long time to matter.
-#: tier: PATH TO A: cheap lifelink or a protection effect for the engine pieces, and a
-#: tier: faster drain finish so plan B closes before the life debt does.
+#: notes: 2026-09-12 TUNE — three swaps, all aimed at the stated plan (resolve Mister Negative, swap totals).
+#: notes: Stargaze -> Mister Negative (2nd copy); Black Widow, Super Spy -> The Seriema; Dream Beavers ->
+#: notes: Tribute to Hunger. Floor B -> A: interaction 6 -> 7, card advantage 10 -> 11, protection 1 -> 2,
+#: notes: curve 2.63 -> 2.86, keepable UNCHANGED at 86.0%.
+#: notes: THE DECIDING MEASUREMENT: Mister Negative is the ONLY 'exchange life totals' effect in Standard.
+#: notes: Swept by EFFECT SHAPE rather than by name (K-13), the pool holds no substitute at any cost in any
+#: notes: colour this deck can cast — so the plan cannot be made redundant, only more FINDABLE. It was run
+#: notes: as a SINGLETON while the collection holds TWO. P(seeing him) by ~16 cards drawn: 27% on one copy,
+#: notes: 47% on two, 61% with The Seriema's ETB legend-tutor as a virtual third. That is the difference
+#: notes: between a plan and a hope, and the second copy cost zero wildcards.
+#: notes: The Seriema is a VIRTUAL copy at MV 3 rather than a true one at MV 7 (G-46, virtual copies first),
+#: notes: which is why the curve only moved 0.23 for two extra outs. The legend rule is not a cost here: the
+#: notes: value is the ETB, so a second copy drawn after the first has died is pure upside.
+#: notes: Tribute to Hunger is an EDICT, so it answers the hexproof and warded threats the deck's five
+#: notes: targeted removal spells cannot touch, and its lifegain feeds Lunar Convocation's end-step trigger
+#: notes: and Enduring Tenacity's drain.
+#: notes: TWO CARDS THAT RANK AS CUTS AND MUST NOT BE CUT: Enduring Tenacity ranks 5th weakest on theme fit,
+#: notes: and 'whenever you gain life, target opponent loses that much' is the payoff for the ENTIRE lifegain
+#: notes: shell — the ranking sees fit, not that this is the finisher. Dark Confidant is repeatable draw paid
+#: notes: in life, which is the deck's thesis in one card.
+#: notes: MAI IS KEPT ON PURPOSE and the reasoning is worth recording, because it reads as anti-synergy and
+#: notes: is not. 'Whenever a PLAYER casts a noncreature spell, THEY lose 2 life' is symmetric, and this deck
+#: notes: casts 18 noncreature spells against 17 creatures — so it points at the pilot more often than at the
+#: notes: opponent. It stays because the deck is the only side that PROFITS from a low own-total: Mai is a
+#: notes: deterrent that taxes their interaction while this deck happily pays, and Mister Negative refunds
+#: notes: the difference. Do not 'fix' this into a cut on the symmetry argument alone.
+#: tier: B — Orzhov life-as-currency attrition, held ONE BAND UNDER an A metrics floor, deliberately.
+#: tier: Live vector: interaction 7 (SIX of it instant-speed, three answering a noncreature permanent),
+#: tier: card advantage 11, protection 2, curve 2.86, 10 central themes. The 2026-09-12 tune cleared the
+#: tier: interaction gap this block used to name as the only thing between the deck and an A floor.
+#: tier: THAT CARD-ADVANTAGE NUMBER IS REAL, unlike a pile of cantrips: Cruel Truths, Circle of Power,
+#: tier: Decode Transmissions and Visions of Villainy each draw TWO.
+#: tier: NO LONGER AN UNPLAYED BREW — it is 0-2, which is n=2 and reads as nothing at all against the
+#: tier: 20-match floor. It is not evidence for the letter in either direction. What it IS evidence of:
+#: tier: no `why=` was recorded on either loss, so the games produced no diagnosis. Record the reason on
+#: tier: the next few (`make log-match DECK=42 R=L WHY=...`) and this block can stop arguing from
+#: tier: structure alone.
+#: tier: HELD AT B BY TWO STRUCTURAL RISKS THE FLOOR CANNOT SEE, both still live:
+#: tier: 1. The deck lowers its OWN life total as a core mechanic on protection 2. That is the exact
+#: tier:    resource keeping it alive, and against an aggro deck the pay-life draws are a liability —
+#: tier:    while the Mister Negative refund is SMALLEST in that matchup, since the swap scales with the
+#: tier:    OPPONENT's total and so pays most against the control decks that were never racing you.
+#: tier:    A protection sweep was run 2026-09-12 and found no good WB answer: the best-looking option,
+#: tier:    Elenda Saint of Dusk, keys its whole bonus on your life being ABOVE starting and therefore
+#: tier:    fights this deck's thesis outright (the G-42 shape). This axis may simply not be fixable
+#: tier:    here, and a control deck's resilience legitimately living in answers and refuel is why the
+#: tier:    letter is not lower.
+#: tier: 2. The clock is slow. Three drain permanents and a few evasive bodies is a real plan B, but it
+#: tier:    wins on turn 12, not turn 6, which gives the life payments a long time to matter.
+#: tier: ONE HONEST CAVEAT ON THE INTERACTION COUNT: the seventh piece is Dissection Practice, whose
+#: tier:    removal is a -1/-1. It is the weakest card in the deck AND the card holding the count at 7,
+#: tier:    so the A floor rests partly on a card that would otherwise be the first cut.
+#: tier: PATH TO A (the letter, not the floor): a faster drain finish so plan B closes before the life
+#: tier: debt does, or enough recorded games to argue the intangibles from the record instead of theory.
 #: protect: Mister Negative; Lunar Convocation; Phyrexian Arena
 #: notes: HOW THE REFUND WORKS — exchanging totals only draws cards when YOUR life was
 #: notes: higher, which is not this deck's situation. Here the swap is the good half:
@@ -77,26 +107,24 @@ Deck
 1 Dissection Practice (SOS) 79
 
 # The refund + alternate win-cons
-1 Mister Negative (SPM) 135
+2 Mister Negative (SPM) 135
 1 Corroding Dragonstorm (TDM) 75
 1 Mai, Scornful Striker (TLA) 109
 1 Doom Reigns Supreme (MSH) 96
+1 The Seriema (EOE) 35
 
 # Evasive / token drain — plan B
 1 Bitterbloom Bearer (ECL) 88
-1 Black Widow, Super Spy (MSH) 89
 1 Healer's Hawk (FDN) 142
 1 Vengeful Bloodwitch (FDN) 76
 1 Cecil, Dark Knight // Cecil, Redeemed Paladin (FIN) 91
 1 Callous Inspector (TLA) 89
 1 Sanguine Syphoner (FDN) 68
-1 Dream Beavers (TMT) 62
 1 Starscape Cleric (BLB) 116
 
 # Life into cards — repeatable, on a body
 1 Gwenom, Remorseless (SPM) 56
 1 Grave Researcher (SOS) 85
-1 Stargaze (SOA) 34
 1 Dark Confidant (FIN) 94
 1 Darkstar Augur (BLB) 90
 1 Koh, the Face Stealer (TLA) 107
@@ -112,6 +140,7 @@ Deck
 1 Sephiroth's Intervention (FIN) 116
 1 Nocturnal Hunger (BLB) 102
 1 Erode (SOS) 15
+1 Tribute to Hunger (FDN) 614
 
 # Lands — 24, Orzhov
 1 Bleachbone Verge (DFT) 250

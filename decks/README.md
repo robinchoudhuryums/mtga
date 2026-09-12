@@ -79,10 +79,14 @@ marks a file that is **not part of the playable roster**. The deck stays fully
 addressable by id — `check`, `stats`, `cuts`, `text` and the editor all still work on it,
 and `deck.py list` shows it tagged `[example]` — but roster-WIDE views skip it:
 `audit`, `rotation`, `brawl`, `wildcards`, the tier sweep, cross-deck reuse counts, and
-the dashboard. Use it for the `00-example-avatar` illustration or a deck you've retired
-but want to keep. Without it, a permanently-illegal 26-card demo sits at the top of
-`deck.py audit` as a `★ TUNE` candidate forever, which is how the triage's most
-actionable output became 100% false positive.
+the dashboard. Use it for a deck you've retired but want to keep — `20b` is the live
+example (`#: status: retired`, with a `#: notes:` line saying why). Without it, a
+retired or illegal list sits at the top of `deck.py audit` as a `★ TUNE` candidate
+forever, which is how the triage's most actionable output became 100% false positive.
+(The `00-example-avatar` placeholder this paragraph used to cite was DELETED 2026-09-11:
+a real retired deck illustrates the header better than a demo, and the demo showed up in
+any roster sweep whose script forgot to honour the header — which is exactly what
+happened during the 2026-09-11 tier-C review.)
 
 Variations are **full lists too** (not diffs) — so every file is robust and
 independently checkable. Use `deck.py diff` to see what a variation changes; git

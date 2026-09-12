@@ -3399,6 +3399,69 @@ predicate (`<= declared`), not by remembering which functions were converted.
 
 ## [G-67] A pattern set is a whitelist, and a whitelist's misses are invisible
 
+### 2026-09-12 — two proximity-window holes, and why the fix was the clause
+
+Found while grading a single card (Spider-UK) for deck 23, not by a gate.
+
+**Hole 1 — card advantage, an intervening if-clause. This one reaches `tier_band`.**
+
+Both trigger-shaped card-advantage patterns allowed 60 characters between the trigger and
+the draw. Magic templates a large family with a condition in between:
+
+    at the beginning of your end step, if <condition>, draw a card
+
+A real condition runs longer than 60 characters — Spider-UK's is 85, Avengers Assemble!'s
+is 104 — so both scored ZERO card advantage while reading, in plain English, "draw a card"
+every turn. Measured: **72 pool cards** template a conditional triggered draw, **42 were
+missed**, and **22** had no card advantage from any other pattern. All 22 are true
+positives. Seven were maindecked across ten roster decks.
+
+**Widening the window to 120 was measured and rejected.** It covers the same phase-trigger
+cards (51/51), but lets the `whenever` pattern cross into a GRANTED ability quoted inside
+another clause: Hydroponics Architect grants a land *"when this land enters, draw a card"*,
+which is the one-shot ETB cantrip the cantrip rule deliberately excludes; Sygg and
+Ambassador of Evendo are the same shape. Anchoring on `, if … ,` admits none of them.
+
+Two scoping choices carry the safety, and both are worth preserving if the pattern is ever
+edited:
+
+- The draw sits **immediately after the condition's closing comma**, so
+  `…, if X, target player draws a card` does not match — the words "target player" fall
+  between the comma and the draw. That is what keeps an opponent's draw out *without* a
+  variable-length lookbehind, which `re` does not support.
+- Bare `when` is **excluded**; only `at the beginning of` (a phase trigger recurs) and
+  `whenever` (recurs by construction) open the pattern. `When this creature enters, if X,
+  draw a card` is a one-shot cantrip and stays out, exactly as the plain ETB form does.
+
+Roster diff (the K-12 mandated measurement): **10 decks changed card advantage, 3 tier
+floors moved** — deck 7 B→A, deck 20 C→B, deck 23 B→A. Floor spread went A 65/B 43/C 6 to
+A 67/B 41/C 5, top band 59%, well under the 85% `tier_floor_spread` alarm.
+
+**Hole 2 — the noncreature-answer cues, report-only (G-24).**
+
+`_NONCREATURE_ANSWER_CUES` listed `destroy target nonland permanent` and **no exile twin**,
+which is precisely the family-disagreement shape this rule already warns about. The exile
+form matched only *by accident*, when the word "artifact"/"enchantment" happened to appear
+later in the same sentence — so Banishing Light (*"…until this ENCHANTMENT leaves"*)
+counted and Sheltered by Ghosts (*"…until this AURA leaves"*), an identical effect, did
+not. Separately, every `exile target` / `destroy target` cue required "target" to follow
+the verb immediately, so the optional-target templating (`exile UP TO ONE target nonland
+permanent` — Prayer of Binding, Celebrate the Mountain-king, Cityscape Leveler) defeated
+all of them.
+
+63 pool cards exile a nonland permanent, 42 were missed. Across the whole cue list, **102
+interaction cards newly read as a noncreature answer, with 0 false positives** — own-permanent
+and own-graveyard scopes were checked explicitly, since *"return up to one target permanent
+card FROM YOUR GRAVEYARD"* is recursion, not an answer. **0 tier floors moved**, as expected:
+this list feeds `interaction_profile` only.
+
+**The process lesson.** Closing the card-advantage hole left EIGHT decks citing the old
+under-counted figure in their `#: tier:` prose, and `test_the_roster_figure_sweep_is_clean`
+named every one of them in a single failure message. A floor-moving pattern fix is only
+affordable *because* that sweep exists — without it the stale rationales would have been
+found one deck at a time, months later. Run the suite, not just `check_all`, after a role
+pattern change.
+
 `deck._ROLE_PATTERNS` is the model that decides what a card *does*. It is a list of
 regexes matched against oracle text — i.e. a **whitelist of phrasings** — and Magic
 templates the same effect several different ways. When a card is worded a way no pattern

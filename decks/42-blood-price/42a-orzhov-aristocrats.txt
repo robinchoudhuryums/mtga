@@ -13,8 +13,40 @@
 #: archetype: Room drains 1 and gains 1 per creature, Arnyn drains
 #: archetype: 2 for a 1-power token, Al Bhed Salvagers counts artifacts too (so a
 #: archetype: sacrificed Clue, Food or Treasure drains), Agent Venom and Liliana turn
-#: archetype: nontoken deaths into cards, and Judge Magister Gabranth / Sandbender
-#: archetype: Scavengers grow on every one.
+#: archetype: nontoken deaths into cards, and Sandbender Scavengers grows on every one.
+#: notes: 2026-09-12 TUNE — five swaps aimed at the ONE axis this deck was short on: instant speed.
+#: notes: Starscape Cleric -> South Wind Avatar; Treasure Dredger -> Angel of Vitality; Judge Magister
+#: notes: Gabranth -> Overkill; Krovod Haunch -> Dubious Delicacy; Jecht -> Umbral Collar Zealot.
+#: notes: Floor stays A. Interaction 7 -> 8, but the number that mattered is INSTANT-SPEED 1 of 7 -> 3 of 8:
+#: notes: a sacrifice deck that could not act on the opponent's turn now can. Curve 2.97 -> 3.09, keepable
+#: notes: UNCHANGED at 86.0%, protection held at 3.
+#: notes: UMBRAL COLLAR ZEALOT IS THE STRUCTURAL FIX, not a value add. Every outlet this deck had — Ayli,
+#: notes: Vampiric Rites, Baron Bertram, Ravenous Amulet — COSTS MANA per activation, so with 12 triggered
+#: notes: drain effects there was no way to convert the board in response to a wrath. Zealot is free and
+#: notes: unlimited. It also completes a loop with KRUMAR INITIATE that neither card had alone: endure X
+#: notes: makes an X/X Spirit TOKEN (not just counters), and the Zealot cashes it for zero mana.
+#: notes: DUBIOUS DELICACY does four jobs — flash ETB -3/-3 (instant removal), an ARTIFACT body that is
+#: notes: fodder and triggers Al Bhed Salvagers on death, sac for 3 life (which Enduring Tenacity converts
+#: notes: to 3 damage), or sac to drain 3 outright.
+#: notes: OVERKILL over a cheaper -X/-X: -0/-9999 is not 'destroy', so it answers INDESTRUCTIBLE, which
+#: notes: nothing else here does except an edict.
+#: notes: THREE THINGS THE TOOLS GOT WRONG IN THIS PASS, recorded so they are not re-derived:
+#: notes: 1. KRUMAR INITIATE was nearly cut as a 'pay-X-life self-pump'. Endure X reads 'put X +1/+1
+#: notes:    counters on it OR CREATE AN X/X WHITE SPIRIT TOKEN' — it is a repeatable token factory, and
+#: notes:    the token is fodder. The tagger files it under counters because it reads only the first mode.
+#: notes: 2. The `counters: N enablers, no payoff` warning is a FALSE ALARM here and always will be:
+#: notes:    Sandbender, Fiendish Panda, Obsessive Pursuit and Krumar all put counters on THEMSELVES.
+#: notes:    There is no engine waiting for a reward. Do not 'fix' it by adding a counters payoff.
+#: notes: 3. Ayli's exile ability is gated on 'at least 10 life MORE than your starting total', which
+#: notes:    `targets` does not model (its state-gate proxy treats lifegain as always satisfied). The
+#: notes:    interaction count prices Ayli as an available answer; it usually is not.
+#: notes: JECHT WAS THE CUT over Rottenmouth Viper on the same reasoning: his double edict is Saga chapter
+#: notes: III, reachable only after connecting with combat damage and two more turns of ticks, in a deck
+#: notes: whose plan is sacrificing rather than attacking. Sweepers drop 2 -> 1 (Liliana alone) — the one
+#: notes: real cost of this tune, and `redundancy` already called that axis thin at 2.
+#: notes: STARSCAPE CLERIC was cut on PLAY EXPERIENCE beating the text read. Its Offspring makes a token
+#: notes: copy carrying the same drain trigger, which reads like a one-card doubler — but Offspring makes
+#: notes: it a 5-mana play, and at 5 mana this deck has better things to do, so it is rarely paid.
 #: archetype: THE OUTLETS ARE THE POINT — unlike the core 42, which still runs
 #: archetype: Vengeful Bloodwitch with NOTHING to feed it on demand, so it only fires
 #: archetype: when the opponent obliges. Baron Bertram Graywater (a token engine that is also a
@@ -44,7 +76,7 @@
 #: tier: BE PRECISE ABOUT THE FLOOR, because "restore the interaction" was not the whole
 #: tier: fix: the A floor wants interaction >=7 AND interaction+card-advantage >=11 (the
 #: tier: table was re-derived 2026-09-02, BS8-06; it used to read 5 and 7). Both
-#: tier: clauses are now MET — interaction 7 and card advantage 8 — so the MEASURABLE
+#: tier: clauses are now MET — interaction 8 and card advantage 8 — so the MEASURABLE
 #: tier: FLOOR IS A and the claimed B is a deliberate call one band BELOW it, on the three
 #: tier: risks listed further down that no metric can see. Note how the second clause was
 #: tier: cleared: not by a swap, but by a classifier fix — TWICE now. The card advantage
@@ -139,6 +171,7 @@ Deck
 1 Ravenous Amulet (FDN) 131
 1 Tragedy Feaster (SOS) 102
 1 Baron Bertram Graywater (OTJ) 195
+1 Umbral Collar Zealot (EOE) 123
 
 # Death-trigger drain — the tax on every sacrifice
 1 Enduring Tenacity (DSK) 95
@@ -146,8 +179,8 @@ Deck
 1 Deadly Precision (TLA) 95
 1 Arnyn, Deathbloom Botanist (SOS) 74
 1 Al Bhed Salvagers (FIN) 88
-1 Judge Magister Gabranth (FIN) 230
 1 Liliana, Dreadhorde General (FDN) 176
+1 South Wind Avatar (TMT) 78
 
 # Sacrifice payoffs / glue
 1 Scavenger's Talent (BLB) 111
@@ -165,14 +198,11 @@ Deck
 1 Bitterbloom Bearer (ECL) 88
 1 Krumar Initiate (TDM) 84
 1 Midnight Snack (FDN) 65
-1 Treasure Dredger (OTJ) 110
-1 Jecht, Reluctant Guardian (FIN) 104
-1 Krovod Haunch (MKM) 21
 
 # Value
 1 Treacherous Greed (MKM) 237
-1 Starscape Cleric (BLB) 116
 1 Vein Ripper (MKM) 110
+1 Angel of Vitality (ANB) 1
 
 # Rebuild / protect the engine
 1 Fix What's Broken (SOS) 188
@@ -185,6 +215,8 @@ Deck
 # Removal
 1 Ruthless Lawbringer (OTJ) 229
 1 Nocturnal Hunger (BLB) 102
+1 Overkill (FIN) 109
+1 Dubious Delicacy (EOE) 96
 
 # Lands — 25, Orzhov
 1 Bleachbone Verge (DFT) 250
@@ -206,4 +238,10 @@ Deck
 #~ note: applied — Vein Ripper in for Robot Domination.
 #~ note: SLOT MATH, closed — the three cheap bodies (Resolute Reinforcements, Agents of HYDRA, and Anafenza for the interaction fix) are spent, and Fiendish Panda was kept on a re-read. The deck is now 35 nonlands with no filler, which is the good version of 'no room': any further add has to beat an engine card, not a spare one.
 
-#~ -Krumar Initiate | +Down, Down to Goblin-town | owned: a Saga that strips a nonland card, then amasses a body, then drains twice — three things this deck wants, on one card. This is the add the SLOT MATH note above demands: Krumar Initiate is not a spare, it is the weakest engine card (sorcery-speed, pay-X-life, worst fit in the deck at 39). NOT a cut for Deadly Precision or Hero's Downfall — the first is cost-as-upside here and the second is 1 of only 7 interaction.
+#~ note: RETIRED 2026-09-12 — the standing '-Krumar Initiate | +Down, Down to Goblin-town' proposal is
+#~ note: withdrawn, and the reason it was wrong is worth keeping. It called Krumar 'the weakest engine
+#~ note: card (sorcery-speed, pay-X-life)', which reads only the FIRST mode of endure. Endure X is 'put X
+#~ note: +1/+1 counters on it OR CREATE AN X/X WHITE SPIRIT TOKEN' — so it is a repeatable token factory
+#~ note: whose tokens are sacrifice fodder, and with Umbral Collar Zealot's free outlet added the same day
+#~ note: it closes a zero-mana loop: make an X/X, sac it, collect every death trigger. Down, Down to
+#~ note: Goblin-town is still a fine card and can be re-proposed against a different slot.

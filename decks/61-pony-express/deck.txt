@@ -1,5 +1,23 @@
 #: name: Pony Express
 #: format: Standard
+#: status: retired   (kept for reference — excluded from roster-wide views)
+#: notes: RETIRED 2026-09-12. Not a design failure — the FORMAT moved out from under it.
+#: notes: The measurable case: this was the roster's weakest deck on the resilience axis by a clear
+#: notes: margin — interaction 4 and CARD ADVANTAGE 0, a sum of 4 against the next-lowest 6, on a C
+#: notes: metrics floor. It was also the only C-floor deck that was not buildable: 11 cards not in the
+#: notes: library and 2 short.
+#: notes: The deciding fact is ROTATION, which is a legality question about the deck's future rather
+#: notes: than a resource one (Player Profile). 36 lines rotate, 12 of them in the ~2026 window, and
+#: notes: they are not incidental — the Mounts spine IS the rotating set. Bounding Felidar, Bridled
+#: notes: Bighorn, Miriam Herd Whisperer, Ornery Tumblewagg, Seraphic Steed, Fortune Loyal Steed,
+#: notes: Mobile Homestead and Bucolic Ranch are all OTJ. Saddle/Mounts is an OTJ mechanic with no
+#: notes: successor in the current Standard pool, so the archetype cannot be rebuilt in-format: there
+#: notes: is no card to swap the spine ONTO. Crafting the 13 missing rotating targets would buy a deck
+#: notes: that leaves Standard within the year.
+#: notes: WHAT WOULD REVIVE IT: a future set printing Mounts or saddle payoffs, or moving the deck to
+#: notes: a non-rotating format (`#: format: Historic`), where the OTJ core stays legal indefinitely.
+#: notes: The counter spine (Caradora amplifying every counter event, Tumblewagg doubling) is a good
+#: notes: engine and the reason to keep the file rather than delete it.
 #: arena: 61 Pony Express, 2d3a90e8-22e7-40b3-b185-fb7a138f41af
 #: colors: GW
 #: plan: midrange
