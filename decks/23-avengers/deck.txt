@@ -1,20 +1,20 @@
 #: name: Avengers
 #: format: Standard
 #: tier: B — Mono-W go-wide/counters, and the letter MATCHES its metrics floor rather than sitting a band above it.
-#: tier: Live vector: interaction 6, card advantage 3, protection 8, curve 3.31, 12 one-two-drops, 15 central themes.
+#: tier: Live vector: interaction 7, card advantage 3, protection 8, curve 3.33, 12 one-two-drops, 14 central themes.
 #: tier: WHAT CAPS IT AT B IS CARD ADVANTAGE, not interaction. An A floor wants interaction >= 7 AND
-#: tier: interaction+card-advantage >= 11; the deck reads 6 and 9, so it is one interaction piece and one card-advantage
-#: tier: piece short. The measured package that closes it is in the notes below — both halves owned, neither rotating.
+#: tier: interaction+card-advantage >= 11; the deck reads 7 and 10, so the INTERACTION half is already met and the deck
+#: tier: is ONE card-advantage piece short. The measured single swap that closes it is in the notes below.
 #: tier: THE CARD-ADVANTAGE COUNT UNDERSTATES THE DECK, AND THE REASON IS NOW MEASURED (see notes). The classifier
 #: tier: counts exactly three (Exemplar of Light, Haliya, Mikey & Leo) and misses Avengers Assemble!, Spider-UK and
 #: tier: Origin of the Avengers chapter II, so the honest figure is 6. The floor grades on the counted 3, which is why
 #: tier: the letter stays where it is.
 #: tier: HISTORY, kept so the numbers above are not re-derived from scratch each pass. The curve ran 3.6 ->
-#: tier: 3.42/3.36/3.39/3.33/3.28/3.25 -> 3.31 and one-two-drops 6 -> 12 over a long series of swaps whose particulars are
+#: tier: 3.42/3.36/3.39/3.33/3.28/3.25/3.31 -> 3.33 and one-two-drops 6 -> 12 over a long series of swaps whose particulars are
 #: tier: in git (`deck.py history 23`) rather than here. The floor sat at C in early
 #: tier: September 2026, when the 2026-09-01 classifier fix stopped counting a blink as spot removal (interaction fell
 #: tier: from 7) against a card advantage of 1; Haliya took card advantage to 2 and the floor back to B. Central themes
-#: tier: went 24 -> 18 -> 15, which is deck-relative arithmetic — cutting a five-drop raises the dominant theme's bar —
+#: tier: went 24 -> 18 -> 14, which is deck-relative arithmetic — cutting a five-drop raises the dominant theme's bar —
 #: tier: rather than a loss of focus. This is no longer the roster's most diffuse deck: 56a reads 32, 24b 30, 56 29, 26 25.
 #: notes: MANABASE: Surveillance Room was cut for a 21st Plains. In a MONO-WHITE deck its
 #: notes: "{1}, {T}: add one mana of any color" is a white source with a tax and its {C} mode
@@ -138,6 +138,24 @@ Deck
 #: notes: change needs the roster-wide before/after floor diff K-12 mandates — that belongs in its own pass, not a tune.
 #: notes: Minor related gap: Spider-UK's Web-slinging {2}{W} is a cheat cost and is NOT in the `CHEAT-COST` list `tier`
 #: notes: prints, so the 3.31 curve over-reads by slightly more than the advisory says.
+#: notes: 2026-09-12 — Leonardo, Big Brother → White Auracite (owned). INTERACTION 6 → 7, protection HELD at 8, curve
+#: notes: 3.31 → 3.33, early drops 12. Floor still B — the interaction half of the A gap is now MET and only card
+#: notes: advantage is short.
+#: notes: WHITE AURACITE WAS FIRST PROPOSED FOR SUPER-ADAPTOID'S SLOT AND THAT CUT WAS MEASURED WORSE ON EVERY AXIS:
+#: notes: same interaction gain, but protection 8 → 7, curve 3.36, early drops 11. Leonardo was free. Super-Adaptoid's
+#: notes: power equals your LEGENDARY CREATURES and the deck runs 16, so it is a 3-6 body for {2} and the deck's
+#: notes: cheapest scaling threat; its keyword theft is also the 8th protection piece. One real mark against it: it is
+#: notes: COLORLESS, so under Dazzling Theater's convoke it pays only {1}, never a white pip.
+#: notes: Leonardo was the free slot for the reasons `cuts` and the text agree on: lowest power in the list (Pw ~1.5),
+#: notes: no detected role, and his sneak {W} returns an unblocked attacker to hand — which ERASES that creature's
+#: notes: +1/+1 counters, the same conflict Don & Leo was cut for.
+#: notes: White Auracite does two jobs: exile any nonland permanent, and '{T}: Add {W}' — a 23rd white source that
+#: notes: `consistency` does NOT count, since that model reads lands only. In the deck whose one castability problem is
+#: notes: Anti-Venom's {W}{W}{W}{W}{W}, removal that also taps for white is worth more than the role count shows.
+#: notes: REMAINING PATH TO A — ONE SWAP: +Sokka, Lateral Strategist (owned, {1}{W/U}{W/U} hybrid paid on-colour, draws
+#: notes: whenever he and another creature attack) takes card advantage 3 → 4 and the sum to 11. Measured floor A with
+#: notes: Origin of the Avengers as the cut, which keeps protection at 8. Origin is the one judgment call: the floor
+#: notes: detects no role for it, but scry 2 → a free Hero MV<=3 or a draw → counters on the whole board is real value.
 
 # Hero core — anthems, counters, tempo
 1 Avengers Assemble! (MSH) 6
@@ -170,7 +188,6 @@ Deck
 
 # TMT engine (secondary) — combat, counter-draw, ETB value
 1 Mikey & Leo, Chaos & Order (TMT) 158
-1 Leonardo, Big Brother (TMT) 14
 1 Anti-Venom, Horrifying Healer (SPM) 1
 
 # Mana — burst for the WWWWW top end
@@ -184,6 +201,7 @@ Deck
 1 Banishing Light (EOE) 6
 1 Cosmogrand Zenith (EOE) 9
 1 Sheltered by Ghosts (DSK) 30
+1 White Auracite (FIN) 41
 
 # Lands
 19 Plains (MSH) 288
