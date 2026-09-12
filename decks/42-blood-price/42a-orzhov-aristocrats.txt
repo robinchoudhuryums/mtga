@@ -20,11 +20,15 @@
 #: notes: Floor stays A. Interaction 7 -> 8, but the number that mattered is INSTANT-SPEED 1 of 7 -> 3 of 8:
 #: notes: a sacrifice deck that could not act on the opponent's turn now can. Curve 2.97 -> 3.09, keepable
 #: notes: UNCHANGED at 86.0%, protection held at 3.
-#: notes: UMBRAL COLLAR ZEALOT IS THE STRUCTURAL FIX, not a value add. Every outlet this deck had — Ayli,
-#: notes: Vampiric Rites, Baron Bertram, Ravenous Amulet — COSTS MANA per activation, so with 12 triggered
-#: notes: drain effects there was no way to convert the board in response to a wrath. Zealot is free and
-#: notes: unlimited. It also completes a loop with KRUMAR INITIATE that neither card had alone: endure X
-#: notes: makes an X/X Spirit TOKEN (not just counters), and the Zealot cashes it for zero mana.
+#: notes: UMBRAL COLLAR ZEALOT WAS ADDED HERE AND CUT AGAIN ON 2026-09-12b, AND THE ARGUMENT FOR IT WAS
+#: notes: PARTLY WRONG — recorded because the wrong half is easy to repeat. The claim was 'every other outlet
+#: notes: costs mana, so there is no way to convert the board in response to a wrath'. FALSE: an activated
+#: notes: ability carries no timing restriction unless it says so, and Ayli ({1}), Vampiric Rites ({1}{B}) and
+#: notes: Baron Bertram ({1}{B}) are ALL instant-speed. Ravenous Amulet is the only outlet that says 'Activate
+#: notes: only as a sorcery'. The Zealot's real and only edge was working while TAPPED OUT, which is a much
+#: notes: narrower property, and cutting it cost ZERO card advantage where cutting Ravenous Amulet would have
+#: notes: cost one. THE DECK HAS SEVEN OUTLETS counting the two on lands (Fountainport, Susur Secundi), so it
+#: notes: was never outlet-starved. Do not re-add the Zealot on the wrath argument.
 #: notes: DUBIOUS DELICACY does four jobs — flash ETB -3/-3 (instant removal), an ARTIFACT body that is
 #: notes: fodder and triggers Al Bhed Salvagers on death, sac for 3 life (which Enduring Tenacity converts
 #: notes: to 3 damage), or sac to drain 3 outright.
@@ -58,10 +62,10 @@
 #: notes: DREADED BAT-CLOUD costs {3} less if a creature died this turn, which here is every turn — so it is a
 #: notes: 4/2 FLIER WITH DEATHTOUCH for an effective {1}{B}, and the curve figure OVER-reads it at MV 5 (G-60).
 #: notes: It scores NO role, so it moves no axis: a body, chosen deliberately over a situational spell.
-#: notes: MY PRECIOUS TOOK THE VIPER'S SLOT, NOT SCAVENGER'S TALENT'S OR THE ZEALOT'S, and the reasoning matters
-#: notes: because all three measured identically on the axes. Umbral Collar Zealot is the FREE REPEATABLE sac
-#: notes: outlet the other four outlets are not, and My Precious's Adventure is a ONE-SHOT sacrifice — trading
-#: notes: the repeatable for the single use would undo the fix it was added for. Scavenger's Talent is {B} for
+#: notes: MY PRECIOUS ENDED UP IN THE ZEALOT'S SLOT, not the Viper's — the Viper was cut for it first and put
+#: notes: BACK the same day. Rottenmouth Viper is the stronger card (an escalating 'lose 4 unless you sacrifice
+#: notes: or discard' whose printed MV 6 over-reads it, since it costs {1} less per permanent sacrificed), and
+#: notes: with seven outlets the deck could spare one. Scavenger's Talent stays: it is {B} for
 #: notes: Food (artifact fodder AND lifegain, feeding Enduring Tenacity, South Wind Avatar and Angel of Vitality)
 #: notes: plus a level-3 reanimation outlet; cutting it alongside Fix What's Broken would have dropped
 #: notes: Reanimation to 4. The Viper was the only six-drop, so its slot gave the best curve of the three (3.03
@@ -175,8 +179,8 @@
 #: notes: the deaths this deck stopped having once every one-shot body became a recurring
 #: notes: token generator. A fit score cannot see that the fodder changed underneath it —
 #: notes: this is the grade-against-THIS-deck's-engine rule cutting the other way.
-#: notes: WATCH THE ARTIFACT CLAUSES. Al Bhed Salvagers, Ahriman, Umbral Collar Zealot
-#: notes: and Kingpin's Enforcers all read "creature OR artifact", so Clue tokens
+#: notes: WATCH THE ARTIFACT CLAUSES. Al Bhed Salvagers and Baron Bertram Graywater
+#: notes: both read "creature OR artifact", so Clue tokens
 #: notes: (Obsessive Pursuit), Food (Scavenger's Talent) and Treasure (Fountainport) are
 #: notes: fodder too — that is a meaningful amount of extra fuel the creature count hides.
 #: notes: Fountainport is doing three jobs: a land, a token maker, and a sacrifice outlet
@@ -191,7 +195,6 @@ Deck
 1 Ravenous Amulet (FDN) 131
 1 Tragedy Feaster (SOS) 102
 1 Baron Bertram Graywater (OTJ) 195
-1 Umbral Collar Zealot (EOE) 123
 
 # Death-trigger drain — the tax on every sacrifice
 1 Enduring Tenacity (DSK) 95
@@ -231,6 +234,7 @@ Deck
 
 # Drain clock
 1 Starseer Mentor (BLB) 233
+1 Rottenmouth Viper (BLB) 107
 
 # Removal
 1 Ruthless Lawbringer (OTJ) 229
@@ -262,6 +266,7 @@ Deck
 #~ note: withdrawn, and the reason it was wrong is worth keeping. It called Krumar 'the weakest engine
 #~ note: card (sorcery-speed, pay-X-life)', which reads only the FIRST mode of endure. Endure X is 'put X
 #~ note: +1/+1 counters on it OR CREATE AN X/X WHITE SPIRIT TOKEN' — so it is a repeatable token factory
-#~ note: whose tokens are sacrifice fodder, and with Umbral Collar Zealot's free outlet added the same day
-#~ note: it closes a zero-mana loop: make an X/X, sac it, collect every death trigger. Down, Down to
+#~ note: whose tokens are sacrifice fodder for the deck's seven outlets. (An earlier version of this note
+#~ note: cited a zero-mana loop with Umbral Collar Zealot; the Zealot was cut on 2026-09-12b, so the loop
+#~ note: now costs the outlet's activation.) Down, Down to
 #~ note: Goblin-town is still a fine card and can be re-proposed against a different slot.
