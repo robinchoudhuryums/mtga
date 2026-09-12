@@ -1,15 +1,16 @@
 #: name: Avengers
 #: format: Standard
 #: tier: B — Mono-W go-wide/counters, and the letter MATCHES its metrics floor rather than sitting a band above it.
-#: tier: Live vector: interaction 6, card advantage 3, protection 8, curve 3.25, 13 one-two-drops, 15 central themes.
+#: tier: Live vector: interaction 6, card advantage 3, protection 8, curve 3.31, 12 one-two-drops, 15 central themes.
 #: tier: WHAT CAPS IT AT B IS CARD ADVANTAGE, not interaction. An A floor wants interaction >= 7 AND
 #: tier: interaction+card-advantage >= 11; the deck reads 6 and 9, so it is one interaction piece and one card-advantage
 #: tier: piece short. The measured package that closes it is in the notes below — both halves owned, neither rotating.
-#: tier: THE CARD-ADVANTAGE COUNT UNDERSTATES THE DECK. The classifier counts exactly three (Exemplar of Light, Haliya,
-#: tier: Mikey & Leo) and misses two: Avengers Assemble!'s end-step draw and Origin of the Avengers chapter II, so the
-#: tier: honest figure is nearer 5. The floor grades on the counted 3, which is why the letter stays where it is.
+#: tier: THE CARD-ADVANTAGE COUNT UNDERSTATES THE DECK, AND THE REASON IS NOW MEASURED (see notes). The classifier
+#: tier: counts exactly three (Exemplar of Light, Haliya, Mikey & Leo) and misses Avengers Assemble!, Spider-UK and
+#: tier: Origin of the Avengers chapter II, so the honest figure is 6. The floor grades on the counted 3, which is why
+#: tier: the letter stays where it is.
 #: tier: HISTORY, kept so the numbers above are not re-derived from scratch each pass. The curve ran 3.6 ->
-#: tier: 3.42/3.36/3.39/3.33/3.28 -> 3.25 and one-two-drops 6 -> 13 over a long series of swaps whose particulars are
+#: tier: 3.42/3.36/3.39/3.33/3.28/3.25 -> 3.31 and one-two-drops 6 -> 12 over a long series of swaps whose particulars are
 #: tier: in git (`deck.py history 23`) rather than here. The floor sat at C in early
 #: tier: September 2026, when the 2026-09-01 classifier fix stopped counting a blink as spot removal (interaction fell
 #: tier: from 7) against a card advantage of 1; Haliya took card advantage to 2 and the floor back to B. Central themes
@@ -118,6 +119,25 @@ Deck
 #: notes: permanent are missed, and the 21 counted match only because the word 'enchantment' happens to appear later
 #: notes: in their own sentence. `classify_roles` still tags them Removal (spot), so the TIER FLOOR is unaffected;
 #: notes: only that report-only line under-reads. Read it as a floor, not a count.
+#: notes: 2026-09-12 — Lita, Little Orphan Amphibian → Spider-UK (1 uncommon craft). Floor stays B; curve 3.25 → 3.31,
+#: notes: early drops 13 → 12. `suggest` independently surfaced this add, which is rare. Its end-step trigger ('if two
+#: notes: or more creatures entered under your control this turn, you draw a card and gain 2 life') is close to
+#: notes: unconditional here — eight token makers, several of which make TWO bodies at once (Okoye, Cosmogrand Zenith),
+#: notes: doubled again by Elspeth and Exalted Sunborn — and the 2 life feeds Exemplar's counter and Haliya's draw.
+#: notes: A SECOND CLASSIFIER HOLE, MEASURED HERE, AND THIS ONE REACHES THE TIER FLOOR. Spider-UK scores Lifegain and
+#: notes: NOT Card advantage. The breaker is an INTERVENING IF-CLAUSE: 'at the beginning of your end step, draw a card'
+#: notes: classifies fine, and 'at the beginning of your end step, IF <condition>, you draw a card' scores zero — the
+#: notes: draw sits outside the pattern's proximity window. Pool-wide: 72 cards template a conditional triggered draw
+#: notes: and 42 are MISSED. Seven are maindecked across the roster (Avengers Assemble!, Betor, Donatello, Dragonfly
+#: notes: Swarm, Iron Man Master of Machines, Satoru, Spider-UK) in decks 4/7/12/17/20/23/25/26/54/65/76.
+#: notes: This deck pays for it TWICE — Avengers Assemble! and Spider-UK are both in the missed set, which is why the
+#: notes: tier block above says the honest card-advantage figure is 6 against a counted 3. Monkeypatched in memory (no
+#: notes: file touched), closing the hole reads card advantage 5 and the resilience sum 11 — but interaction stays 6,
+#: notes: so the deck would STILL be B, one interaction card short of A. Fixing the pattern is NOT a shortcut to A.
+#: notes: Left unfixed deliberately: unlike the noncreature-answer hole above, this axis DOES feed tier_band, so the
+#: notes: change needs the roster-wide before/after floor diff K-12 mandates — that belongs in its own pass, not a tune.
+#: notes: Minor related gap: Spider-UK's Web-slinging {2}{W} is a cheat cost and is NOT in the `CHEAT-COST` list `tier`
+#: notes: prints, so the 3.31 curve over-reads by slightly more than the advisory says.
 
 # Hero core — anthems, counters, tempo
 1 Avengers Assemble! (MSH) 6
@@ -136,6 +156,7 @@ Deck
 1 Delney, Streetwise Lookout (MKM) 12
 1 Origin of the Avengers (MSH) 28
 1 The Sentry, Golden Guardian (MSH) 35
+1 Spider-UK (MSC) 777
 
 # Go-wide / anthems / tokens
 1 Exalted Sunborn (EOE) 15
@@ -149,7 +170,6 @@ Deck
 
 # TMT engine (secondary) — combat, counter-draw, ETB value
 1 Mikey & Leo, Chaos & Order (TMT) 158
-1 Lita, Little Orphan Amphibian (TMT) 19
 1 Leonardo, Big Brother (TMT) 14
 1 Anti-Venom, Horrifying Healer (SPM) 1
 
