@@ -47,6 +47,25 @@
 #: notes: STARSCAPE CLERIC was cut on PLAY EXPERIENCE beating the text read. Its Offspring makes a token
 #: notes: copy carrying the same drain trigger, which reads like a one-card doubler — but Offspring makes
 #: notes: it a 5-mana play, and at 5 mana this deck has better things to do, so it is rarely paid.
+#: notes: 2026-09-12b — Fix What's Broken -> Dreaded Bat-Cloud; Rottenmouth Viper -> My Precious. Card advantage
+#: notes: 8 -> 9, protection 3 -> 4, curve 3.09 -> 3.03, floor A held.
+#: notes: FIX WHAT'S BROKEN WAS CALLED A 'MASS REBUILD' THREE TIMES IN CHAT AND THE COUNT REFUTES IT. It returns
+#: notes: each artifact/creature at ONE chosen mana value; the deck-list ceiling looks fine (6 at X=2, 6 at X=3,
+#: notes: 5 at X=4) but that needs a whole bucket dead at once. Simulated over the real MV spread: with four
+#: notes: creatures dead it returns 1.96 on average (median 2, 13% chance of 3); three-plus needs six-to-eight
+#: notes: dead. A two-for-one that is occasionally a three-for-one, sorcery-speed, DEAD on an empty board, and it
+#: notes: costs X life on top. Reanimation was 6 deep with it and is 5 without.
+#: notes: DREADED BAT-CLOUD costs {3} less if a creature died this turn, which here is every turn — so it is a
+#: notes: 4/2 FLIER WITH DEATHTOUCH for an effective {1}{B}, and the curve figure OVER-reads it at MV 5 (G-60).
+#: notes: It scores NO role, so it moves no axis: a body, chosen deliberately over a situational spell.
+#: notes: MY PRECIOUS TOOK THE VIPER'S SLOT, NOT SCAVENGER'S TALENT'S OR THE ZEALOT'S, and the reasoning matters
+#: notes: because all three measured identically on the axes. Umbral Collar Zealot is the FREE REPEATABLE sac
+#: notes: outlet the other four outlets are not, and My Precious's Adventure is a ONE-SHOT sacrifice — trading
+#: notes: the repeatable for the single use would undo the fix it was added for. Scavenger's Talent is {B} for
+#: notes: Food (artifact fodder AND lifegain, feeding Enduring Tenacity, South Wind Avatar and Angel of Vitality)
+#: notes: plus a level-3 reanimation outlet; cutting it alongside Fix What's Broken would have dropped
+#: notes: Reanimation to 4. The Viper was the only six-drop, so its slot gave the best curve of the three (3.03
+#: notes: against 3.14 and 3.17).
 #: archetype: THE OUTLETS ARE THE POINT — unlike the core 42, which still runs
 #: archetype: Vengeful Bloodwitch with NOTHING to feed it on demand, so it only fires
 #: archetype: when the opponent obliges. Baron Bertram Graywater (a token engine that is also a
@@ -76,13 +95,14 @@
 #: tier: BE PRECISE ABOUT THE FLOOR, because "restore the interaction" was not the whole
 #: tier: fix: the A floor wants interaction >=7 AND interaction+card-advantage >=11 (the
 #: tier: table was re-derived 2026-09-02, BS8-06; it used to read 5 and 7). Both
-#: tier: clauses are now MET — interaction 8 and card advantage 8 — so the MEASURABLE
+#: tier: clauses are now MET — interaction 8 and card advantage 9 — so the MEASURABLE
 #: tier: FLOOR IS A and the claimed B is a deliberate call one band BELOW it, on the three
 #: tier: risks listed further down that no metric can see. Note how the second clause was
 #: tier: cleared: not by a swap, but by a classifier fix — TWICE now. The card advantage
 #: tier: here read 1 for as long as this deck existed because the role model matched a
 #: tier: repeatable draw only when it was templated on the UPKEEP, and this deck's draws
-#: tier: are not. It then went 4 -> 8 under K-14, which taught the model that a draw you
+#: tier: are not. It then went 4 -> 8 under K-14, and 8 -> 9 on 2026-09-12 when My Precious
+#: tier: came in; K-14 taught the model that a draw you
 #: tier: reach by PAYING a cost is still a draw: Vampiric Rites, Ravenous Amulet, Baron
 #: tier: Bertram, Lunar Convocation and Fountainport are all sacrifice-to-draw outlets
 #: tier: and all read as zero. This deck is the roster's largest single correction, which
@@ -100,7 +120,7 @@
 #: tier: of ramping the opponent a basic — at the price of sorcery speed, taking the suite
 #: tier: to 1 instant against 4 sorcery.
 #: tier: Held at B by three further things the floor cannot see:
-#: tier: 1. CARD ADVANTAGE 8 IS REAL BUT CONDITIONAL, which is the part the number still
+#: tier: 1. CARD ADVANTAGE 9 IS REAL BUT CONDITIONAL, which is the part the number still
 #: tier:    cannot express. Treacherous Greed's draw-three clears the bar outright;
 #: tier:    Vampiric Rites, Baron Bertram and Agent Venom each draw exactly ONE
 #: tier:    card off a sacrifice, and that is a WASH when the fodder is a card from hand.
@@ -111,7 +131,7 @@
 #: tier: 2. AN ARISTOCRATS DECK NEEDS TWO HALVES AT ONCE — an outlet AND a payoff on the
 #: tier:    battlefield — and a singleton build draws one half far more often than both.
 #: tier:    Five outlets against six drain payoffs is the virtual-redundancy answer, but
-#: tier:    virtual copies are not 4-ofs, and the protection 3 is thinner than it reads:
+#: tier:    virtual copies are not 4-ofs, and the protection 4 is thinner than it reads:
 #: tier:    only Restoration Magic can be pointed at anything, while Tragedy Feaster's and
 #: tier:    Vein Ripper's ward defend those two bodies alone — so the three `#: protect:`
 #: tier:    build-arounds still have exactly ONE answer between them.
@@ -203,13 +223,13 @@ Deck
 1 Treacherous Greed (MKM) 237
 1 Vein Ripper (MKM) 110
 1 Angel of Vitality (ANB) 1
+1 Dreaded Bat-Cloud (HOB) 66
 
 # Rebuild / protect the engine
-1 Fix What's Broken (SOS) 188
 1 Restoration Magic (FIN) 30
+1 My Precious // Allure of Power (HOB) 176
 
 # Drain clock
-1 Rottenmouth Viper (BLB) 107
 1 Starseer Mentor (BLB) 233
 
 # Removal
