@@ -1,7 +1,7 @@
 #: name: Avengers
 #: format: Standard
 #: tier: B — Mono-W go-wide/counters. The slow-curve argument this B rested on has
-#: tier: largely gone: curve 3.28 (was 3.6, then 3.42/3.36/3.39/3.33) and 13 one-two-drops (was 6) after Erode,
+#: tier: largely gone: curve 3.25 (was 3.6, then 3.42/3.36/3.39/3.33/3.28) and 13 one-two-drops (was 6) after Erode,
 #: tier: Curious Farm Animals and Coordinated Maneuver came in for Aerith Rescue
 #: tier: Mission, Dauntless Veteran and U.S.Agent. Interaction went 4 -> 7 and the deck's
 #: tier: first three answers to a noncreature permanent (it had zero) put the metrics
@@ -12,9 +12,9 @@
 #: tier: metrics floor was C. RE-GROUNDED 2026-09-11 after Captain Mar-Vell → Haliya, Guided by
 #: tier: Light: card advantage 1 → 2 and the floor C → B, so the letter now MATCHES its floor
 #: tier: rather than sitting a band above it. The measured count still understates the deck —
-#: tier: Avengers Assemble! (x2) is a repeatable end-step draw the classifier misses, as are
+#: tier: Avengers Assemble! is a repeatable end-step draw the classifier misses, as are
 #: tier: Mikey & Leo and Origin chapter II, so the honest figure is nearer 4. Central themes
-#: tier: went 24 → 18 on that one swap and 18 → 16 on the 2026-09-11 tune (the count is
+#: tier: went 24 → 18 on that one swap and 18 → 15 across the 2026-09-11/12 tune (the count is
 #: tier: deck-relative: cutting a five-drop raises the dominant theme's bar and sheds the
 #: tier: marginal themes), so this is no longer the roster's most diffuse deck — 56a reads
 #: tier: 32, 24b 30, 56 29, 26 25.
@@ -82,9 +82,22 @@ Deck
 #: notes: 84.4% and Anti-Venom stays 36.7% on T5. What they add is the '{3}{W}, {T}: put a +1/+1 counter on each
 #: notes: creature you control' sink — a LAND that is a counters payoff. Their tapland clause ('unless you control a
 #: notes: basic land') is near-dead against 19 Plains.
+#: notes: 2026-09-12 — 2x Avengers Assemble! → 1x, with Dazzling Theater // Prop Room in the freed slot. Floor stays B;
+#: notes: curve 3.28 → 3.25. THE THEATER IS THE BETTER ANSWER TO ANTI-VENOM THAN THE TILE and the reason is colour:
+#: notes: convoke pays 'one mana of that creature's colour', and 21 of the deck's 22 creatures are white (plus every
+#: notes: Soldier and Bird token it makes), so five tapped bodies pay {W}{W}{W}{W}{W} outright. The Tile caps at X of
+#: notes: ONE colour and enters tapped. They are kept BOTH because they are not redundant: convoke helps only CREATURE
+#: notes: spells, and the deck runs 14 noncreature cards (Elspeth, Static Snare, Virtue of Loyalty, Avengers Assemble!)
+#: notes: that only the Tile ramps. Prop Room's back half ({2}{W}, unlock at leisure) untaps your team on each other
+#: notes: player's untap step — attack with everything and still block.
+#: notes: The SECOND Avengers Assemble! was the cut because it was the most expensive redundancy in the list at MV 5
+#: notes: and every axis held (interaction 5, card advantage 3, protection 7). The first copy is still the engine.
+#: notes: NOTE FOR THE NEXT READER: the '(x2)' in the tier block above was stale the moment this swap landed, and
+#: notes: `tier --audit-rationale` did NOT flag it — a COPY-COUNT is not one of the figures `_figure_lookup` prices,
+#: notes: so a claim of the form 'card (xN)' goes stale silently. Check those by hand after any swap.
 
 # Hero core — anthems, counters, tempo
-2 Avengers Assemble! (MSH) 6
+1 Avengers Assemble! (MSH) 6
 1 Agent Phil Coulson (MSH) 4
 1 Captain America, Super-Soldier (MSH) 9
 1 Captain America, Wings of Freedom (MSH) 10
@@ -120,6 +133,7 @@ Deck
 
 # Mana — burst for the WWWWW top end
 1 White Lotus Tile (TLA) 262
+1 Dazzling Theater // Prop Room (DSK) 3
 
 # Interaction
 1 Static Snare (TDM) 26
