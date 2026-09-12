@@ -1,21 +1,30 @@
 #: name: Avengers
 #: format: Standard
-#: tier: B — Mono-W go-wide/counters, and the letter MATCHES its metrics floor rather than sitting a band above it.
-#: tier: Live vector: interaction 7, card advantage 3, protection 8, curve 3.33, 12 one-two-drops, 14 central themes.
-#: tier: WHAT CAPS IT AT B IS CARD ADVANTAGE, not interaction. An A floor wants interaction >= 7 AND
-#: tier: interaction+card-advantage >= 11; the deck reads 7 and 10, so the INTERACTION half is already met and the deck
-#: tier: is ONE card-advantage piece short. The measured single swap that closes it is in the notes below.
-#: tier: THE CARD-ADVANTAGE COUNT UNDERSTATES THE DECK, AND THE REASON IS NOW MEASURED (see notes). The classifier
-#: tier: counts exactly three (Exemplar of Light, Haliya, Mikey & Leo) and misses Avengers Assemble!, Spider-UK and
-#: tier: Origin of the Avengers chapter II, so the honest figure is 6. The floor grades on the counted 3, which is why
-#: tier: the letter stays where it is.
+#: tier: A — Mono-W go-wide/counters. Re-graded B -> A on 2026-09-12, AT its metrics floor, not above it.
+#: tier: Live vector: interaction 7, card advantage 5, protection 8, curve 3.33, 12 one-two-drops, 14 central themes.
+#: tier: An A floor wants interaction >= 7 AND interaction+card-advantage >= 11; this reads 7 and 12.
+#: tier: TWO THINGS MOVED, AND ONLY ONE OF THEM WAS THE DECK. The 2026-09-11/12 tune took interaction 5 -> 7
+#: tier: (Banishing Light, Sheltered by Ghosts and White Auracite came in for three softer slots; see the notes
+#: tier: below) while HOLDING protection at 8 and the curve at 3.33. The card-advantage half was
+#: tier: not a change to the list at all: the classifier had a hole — a draw sitting behind an intervening
+#: tier: if-clause scored zero — and this deck paid for it TWICE, since Avengers Assemble! and Spider-UK are both
+#: tier: templated that way. Closing the hole read them for the first time, 3 -> 5. This block had asserted for
+#: tier: months that the classifier misses Avengers Assemble!'s draw; the claim was right and is now measured.
+#: tier: WHAT AN A MEANS HERE, per the rubric: A-floor resilience, a coherent engine, a tight curve, at most one
+#: tier: clear weakness. The engine is coherent — `engines` reports counters, tokens and lifegain all BALANCED,
+#: tier: with no payoff gap left. The one clear weakness is the TOP END: Anti-Venom's {W}{W}{W}{W}{W} is a
+#: tier: turn-6/7 card even with White Lotus Tile, White Auracite and Dazzling Theater's convoke all pulling for
+#: tier: it. That is one weakness, which is what an A allows.
+#: tier: NOT S, and the distinction is the honest one: S wants proven top-meta capability and this deck is
+#: tier: UNPLAYED. Re-read the letter after /log-matches.
 #: tier: HISTORY, kept so the numbers above are not re-derived from scratch each pass. The curve ran 3.6 ->
-#: tier: 3.42/3.36/3.39/3.33/3.28/3.25/3.31 -> 3.33 and one-two-drops 6 -> 12 over a long series of swaps whose particulars are
-#: tier: in git (`deck.py history 23`) rather than here. The floor sat at C in early
-#: tier: September 2026, when the 2026-09-01 classifier fix stopped counting a blink as spot removal (interaction fell
-#: tier: from 7) against a card advantage of 1; Haliya took card advantage to 2 and the floor back to B. Central themes
-#: tier: went 24 -> 18 -> 14, which is deck-relative arithmetic — cutting a five-drop raises the dominant theme's bar —
-#: tier: rather than a loss of focus. This is no longer the roster's most diffuse deck: 56a reads 32, 24b 30, 56 29, 26 25.
+#: tier: 3.42/3.36/3.39/3.33/3.28/3.25/3.31 -> 3.33 and one-two-drops 6 -> 12 over a long series of swaps whose
+#: tier: particulars are in git (`deck.py history 23`) rather than here. The floor sat at C in early September
+#: tier: 2026, when the 2026-09-01 classifier fix stopped counting a blink as spot removal (interaction fell from
+#: tier: 7) against a card advantage of 1; Haliya took card advantage to 2 and the floor back to B, and the tune
+#: tier: above took it to A. Central themes went 24 -> 18 -> 14, deck-relative arithmetic — cutting a five-drop
+#: tier: raises the dominant theme's bar — rather than a loss of focus. This is no longer the roster's most
+#: tier: diffuse deck: 56a reads 32, 24b 30, 56 29, 26 25.
 #: notes: MANABASE: Surveillance Room was cut for a 21st Plains. In a MONO-WHITE deck its
 #: notes: "{1}, {T}: add one mana of any color" is a white source with a tax and its {C} mode
 #: notes: does nothing a Plains does not — so it was costing a real white source for a one-shot

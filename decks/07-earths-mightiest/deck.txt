@@ -10,16 +10,18 @@
 #: tier: to A was "a repeatable draw engine that scales off the wide board, not more
 #: tier: interaction". THAT ENGINE IS NOW IN THE DECK: Haliya, Ascendant Cadet was
 #: tier: crafted and maindecked 2026-08-10 (a counter on every attack; a card whenever
-#: tier: countered creatures connect), taking card advantage 0→2, and Valorous Stance
-#: tier: replaced Spider-Man, Brooklyn Visionary the same day for interaction 8 and
-#: tier: protection 4. The metrics floor is B and the letter now sits AT it: interaction 8
-#: tier: clears the A floor's interaction bar of 7, but card advantage 2 leaves the
-#: tier: resilience sum at 10 against the 11 an A floor wants. It read A until
-#: tier: `TIER_FLOOR_REQ` was re-derived from the roster distribution 2026-09-02 (BS8-06),
-#: tier: so the under-graded flag this paragraph was written to answer is gone — the
-#: tier: letter did not move, the yardstick did. Held at B pending a HUMAN call only because the deck is
-#: tier: UNPLAYED — the thin 6-theme spine and singleton variance are the remaining
-#: tier: arguments, and neither is measured.
+#: tier: countered creatures connect), and Valorous Stance replaced Spider-Man, Brooklyn
+#: tier: Visionary the same day for interaction 8 and protection 4.
+#: tier: THE METRICS FLOOR IS NOW A, AND THE LETTER SITS ONE BAND UNDER IT — a re-grade
+#: tier: the human call this paragraph has been deferring is now overdue on. Interaction 8
+#: tier: clears the A bar of 7 and card advantage 3 puts the resilience sum at 11, exactly
+#: tier: the A requirement. The floor moved on 2026-09-12 with no change to the LIST: the
+#: tier: card-advantage classifier had a hole (a draw behind an intervening if-clause
+#: tier: scored zero), and closing it read Avengers Assemble! correctly for the first
+#: tier: time. This deck's card advantage had been under-counted at 2 against a real 3.
+#: tier: The remaining arguments for holding at B are the ones no metric prices and the
+#: tier: reason the letter is NOT being auto-written here: the deck is UNPLAYED, the spine
+#: tier: is a thin 6 themes, and singleton variance is high. Grade it after /log-matches.
 #: colors: GW
 #: archetype: Selesnya (G/W) Avengers heroes go-wide.
 #: notes: Selesnya (G/W) — Avengers heroes go-wide.

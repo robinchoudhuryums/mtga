@@ -46,7 +46,6 @@ Ball Lightning
 Bandit's Talent
 Baxter Stockman
 Bejeweled Warg
-Betor, Kin to All
 Billowing Shriekmass
 Binding Negotiation
 Bioengineered Future
@@ -228,7 +227,6 @@ Invasion Submersible
 Involuntary Employment
 Iron Hills Stalwart
 Iron Lad, Diverging Destiny
-Iron Man, Master of Machines
 Ironpaw Aspirant
 Jadelight Spelunker
 Jeong Jeong, the Deserter
@@ -364,7 +362,6 @@ Rockalanche
 Rough Rhino Cavalry
 Rustler Rampage
 Salvation Swan
-Satoru, the Infiltrator
 Savage Land Dinosaur
 Savage Ventmaw
 Scarlet Spider, Ben Reilly

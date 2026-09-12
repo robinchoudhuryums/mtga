@@ -169,7 +169,7 @@ castability · curve · central-theme density), with the intangibles moving a de
   model can't see those), so it **under-rates by design.** An uncastable stray CAPS the floor at C
   rather than SETTING it, so a dead card can no longer RAISE a D-floor deck, and a card
   the deck's `#: uncastable-ok:` header declares intentional is not counted at all.
-- **A GOOD DECK CAN SIT AT A LOW FLOOR, AND THAT IS THE MODEL WORKING (investigated 2026-09-03, prompted by deck 78 playing above its B).** The floor reads TWO of the eleven terms `deck_quality_vector` produces; **21 of deck 78's 36 nonland cards contribute nothing to it** — 11 payoff/engine plus 10 with no role at all, Doubling Season / Starfield Vocalist / Katara among them, i.e. the entire trigger-doubling thesis. That is not deck-78-specific: the roster's MEDIAN deck has 71% of its nonland cards invisible to the floor (78 is 75%, rank 42 of 115). **A payoff-density term was simulated and DECLINED**: +1 per 4 payoff cards capped at +3 moved 16 decks, cut the C band 9→1 and pushed A to 62% — re-starting the saturation BS8-06 had just fixed — **and left deck 78 at B anyway.** So the answer to "does a well-playing deck mean the rubric is wrong" is no on both halves: the intended remedy is the human letter, which the rubric already lets sit ONE band above the floor. Three things say leave the table alone: the spread is healthy (A 65 / B 43 / C 5, top band 58% against the 85% alarm), the record cannot arbitrate (**79 matches, and int+ca correlates with winning at r = −0.03**; nothing clears the ±0.22 noise band, so this is not evidence the floor is wrong, it is evidence the sample sees nothing), and deck 78's 5-2 is one win above the 54% pooled baseline at n=7 against a 20-match floor. **Re-derive the table when `tier_floor_spread` says so; do not re-derive it because a deck outperformed its letter.**
+- **A GOOD DECK CAN SIT AT A LOW FLOOR, AND THAT IS THE MODEL WORKING (investigated 2026-09-03, prompted by deck 78 playing above its B).** The floor reads TWO of the eleven terms `deck_quality_vector` produces; **21 of deck 78's 36 nonland cards contribute nothing to it** — 11 payoff/engine plus 10 with no role at all, Doubling Season / Starfield Vocalist / Katara among them, i.e. the entire trigger-doubling thesis. That is not deck-78-specific: the roster's MEDIAN deck has 71% of its nonland cards invisible to the floor (78 is 75%, rank 42 of 115). **A payoff-density term was simulated and DECLINED**: +1 per 4 payoff cards capped at +3 moved 16 decks, cut the C band 9→1 and pushed A to 62% — re-starting the saturation BS8-06 had just fixed — **and left deck 78 at B anyway.** So the answer to "does a well-playing deck mean the rubric is wrong" is no on both halves: the intended remedy is the human letter, which the rubric already lets sit ONE band above the floor. Three things say leave the table alone: the spread is healthy (A 67 / B 41 / C 5, top band 59% against the 85% alarm), the record cannot arbitrate (**79 matches, and int+ca correlates with winning at r = −0.03**; nothing clears the ±0.22 noise band, so this is not evidence the floor is wrong, it is evidence the sample sees nothing), and deck 78's 5-2 is one win above the 54% pooled baseline at n=7 against a 20-match floor. **Re-derive the table when `tier_floor_spread` says so; do not re-derive it because a deck outperformed its letter.**
 - **The floor is ARCHETYPE-aware** (#4): an aggro deck closes on a fast clock, not an
   interaction suite, so for an **aggro** plan a bounded `_clock_score` (low curve +
   cheap threats + reach, 0–7) SUBSTITUTES for the interaction the resilience floor
@@ -959,17 +959,17 @@ directions.
   matches PHRASINGS, and Magic templates one effect several ways — so a card worded a way no
   pattern anticipates scores ZERO roles, and the tier floor, `cuts`, the quality guard and
   `check_all` inherit that as fact. The DEFAULT failure is a silent UNDER-count; a too-broad
-  pattern OVER-counts just as silently (BS2-06). 23 holes closed in 2026-08 (**ask which rule a
-  family takes before reusing one**); 2026-09-01 added the family-disagreement shape (**when a
-  pattern family has several members, diff them against each other** — "dealS" vs "each DEAL",
-  15 cards, 0 floors). **A PATTERN hole is fixed and measured; a TAXONOMY hole (selection, hand
-  attack, extra combat, taxing) re-scores the roster — triage by that line.** 2026-09-06: "any
-  OTHER target" reach, MULTIPLIERS (trigger / damage doublers, spell copiers) as payoffs, a LOCK /
-  REDIRECT as protection-class, and an `Equipment / attach` BUCKET (role credit, never
-  interaction) — 0 of 114 floors, 562 → 501 zero-role cards, every unnamed leaver read.
-  Tap-down / neutralize is CLOSED (2026-08-19, inside Removal): two handoff blocks carried it
-  as open — a follow-on list goes stale like any prose. `check_roles.py` makes holes visible:
-  read `role_baseline.txt` and `--tags` as a DELTA. Real-text fixtures. [G-67]
+  pattern OVER-counts just as silently (BS2-06). **A PATTERN hole is fixed and measured; a
+  TAXONOMY hole (selection, hand attack, extra combat, taxing) re-scores the roster — triage by
+  that line.** Three shapes recur, check them first: **reuse** (ask which rule a family takes),
+  **family disagreement** (diff a family's members against each other — "dealS" vs "each DEAL";
+  `destroy target nonland permanent` with no exile twin), and **the proximity window**
+  (2026-09-12: an intervening if-clause outran card advantage's 60-char span; 22 cards gained
+  the role, THREE tier floors moved, and widening the window was measured and REJECTED for
+  crossing into granted abilities — **fix the CLAUSE, not the window**). **Run the SUITE after a
+  role-pattern change, not just `check_all`**: the roster figure sweep names every deck whose
+  `#: tier:` prose still cites the old number (eight, that day). `check_roles.py` makes holes
+  visible: read `role_baseline.txt` and `--tags` as a DELTA. Real-text fixtures. [G-67]
 - **A TOOL THAT REJECTS THE FORM THE PROJECT ITSELF WRITES DOWN.** Two bugs an hour apart on
   2026-09-01, one shape: the interface disagreed with an artifact the repo produces, and
   REPORTED SUCCESS. `wishlist.py --add` silently dropped `--target`/`--note` — they are
