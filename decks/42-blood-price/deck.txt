@@ -6,7 +6,7 @@
 #: archetype: Orzhov (W/B) LIFE-AS-CURRENCY attrition. The premise: cards whose strong
 #: archetype: effect is bought with life are themselves the payoff, because the cost is
 #: archetype: refundable. Pay life freely for cards (Lunar Convocation's repeatable
-#: archetype: {1}{B} pay-2-draw, Phyrexian Arena, Visions of Villainy, Cruel Truths,
+#: archetype: {1}{B} pay-2-draw, Phyrexian Arena, Cruel Truths,
 #: archetype: Circle of Power, Decode Transmissions), grind them out with a deep removal
 #: archetype: suite, then hand the accumulated debt to the opponent with Mister Negative
 #: archetype: — exchanging totals refunds every point you spent and drops them to yours.
@@ -51,17 +51,17 @@
 #: notes: the difference. Do not 'fix' this into a cut on the symmetry argument alone.
 #: tier: B — Orzhov life-as-currency attrition, held ONE BAND UNDER an A metrics floor, deliberately.
 #: tier: Live vector: interaction 7 (SIX of it instant-speed, three answering a noncreature permanent),
-#: tier: card advantage 11, protection 2, curve 2.86, 10 central themes. The 2026-09-12 tune cleared the
+#: tier: card advantage 12, protection 3, curve 2.94, 13 central themes. The 2026-09-12 tunes cleared the
 #: tier: interaction gap this block used to name as the only thing between the deck and an A floor.
 #: tier: THAT CARD-ADVANTAGE NUMBER IS REAL, unlike a pile of cantrips: Cruel Truths, Circle of Power,
-#: tier: Decode Transmissions and Visions of Villainy each draw TWO.
+#: tier: Decode Transmissions and The Arkenstone's end-step trigger each pay repeatedly.
 #: tier: NO LONGER AN UNPLAYED BREW — it is 0-2, which is n=2 and reads as nothing at all against the
 #: tier: 20-match floor. It is not evidence for the letter in either direction. What it IS evidence of:
 #: tier: no `why=` was recorded on either loss, so the games produced no diagnosis. Record the reason on
 #: tier: the next few (`make log-match DECK=42 R=L WHY=...`) and this block can stop arguing from
 #: tier: structure alone.
 #: tier: HELD AT B BY TWO STRUCTURAL RISKS THE FLOOR CANNOT SEE, both still live:
-#: tier: 1. The deck lowers its OWN life total as a core mechanic on protection 2. That is the exact
+#: tier: 1. The deck lowers its OWN life total as a core mechanic on protection 3. That is the exact
 #: tier:    resource keeping it alive, and against an aggro deck the pay-life draws are a liability —
 #: tier:    while the Mister Negative refund is SMALLEST in that matchup, since the swap scales with the
 #: tier:    OPPONENT's total and so pays most against the control decks that were never racing you.
@@ -90,16 +90,35 @@
 #: notes: The refund also scales with THEIR total, so it is largest against control and
 #: notes: smallest against the aggro decks that punish a low life total — Healer's Hawk,
 #: notes: Sephiroth's Intervention and the removal suite are the hedge for that matchup.
-#: notes: Craft targets: Mister Negative (M) only — everything else is owned.
+#: notes: Craft targets: The Seriema (R) only — everything else is owned, Mister Negative included (2x).
 #: notes: Bloodchief Ascension was the first-draft drain win-con; it is a TLE
 #: notes: supplemental card and NOT Standard-legal, caught by `deck.py legal`.
-#: notes: Corroding Dragonstorm / Doom Reigns Supreme / Sanguine Syphoner replace it.
+#: notes: Corroding Dragonstorm / Sanguine Syphoner replace it (Doom Reigns Supreme was the third and is CUT —
+#: notes: see the 2026-09-12b entry below for why the Villain count could never turn it on).
+#: notes: 2026-09-12b — Visions of Villainy -> The Arkenstone; Doom Reigns Supreme -> My Precious. Card advantage
+#: notes: 11 -> 12, protection 2 -> 3, curve 2.86 -> 2.94, floor A held. Both adds are TWO CARDS IN ONE.
+#: notes: DOOM REIGNS SUPREME WAS NEARLY DEAD AND THE COUNT SAYS WHY: the deck fields TWO Villains and both are
+#: notes: Mister Negative, whom the legend rule caps at one on the battlefield. Its trigger fired once or twice a
+#: notes: game against a payoff that needs the FIFTH plan counter — unreachable. Do not re-add it without adding
+#: notes: Villains first.
+#: notes: VISIONS OF VILLAINY WAS NOT DEAD, it was REDUNDANT — its Villain clause is only a {1} discount, so it
+#: notes: was a functional {2}{B} draw-two-lose-2, i.e. the THIRD copy of that effect beside Decode Transmissions
+#: notes: (same cost, and its Void rider IS live here) and Cruel Truths. It was the worst of the three.
+#: notes: THE ARKENSTONE is the plan-A consistency piece. Seek the Heart ({2}{W}) tutors a LEGENDARY CREATURE, so
+#: notes: Mister Negative access goes 61% -> 72% by ~16 cards seen (2 copies + The Seriema + this = 4 outs), and
+#: notes: the deck fields SEVEN legendary creatures so the tutor stays flexible rather than being a one-card
+#: notes: search. The artifact half then gives a REPEATABLE end-step draw plus a +1/+1 anthem.
+#: notes: MY PRECIOUS grants HEXPROOF, the protection this deck could not otherwise buy: a 2026-09-12 sweep of WB
+#: notes: protection found nothing usable (Elenda keys on life ABOVE starting and fights the thesis outright).
+#: notes: Its Adventure half is an instant-speed sacrifice that draws two.
+#: notes: OVERKILL WAS CONSIDERED AND DECLINED: six of this deck's seven answers are already instant, four of them
+#: notes: 'destroy target creature', and its one distinct angle (beating indestructible) is already covered by
+#: notes: Tribute to Hunger's edict.
 
 Deck
 # Life into cards — the engine
 1 Lunar Convocation (BLB) 223
 1 Phyrexian Arena (FDN) 180
-1 Visions of Villainy (MSH) 120
 1 Cruel Truths (TDM) 76
 1 Decode Transmissions (EOE) 94
 1 Circle of Power (FIN) 92
@@ -110,8 +129,8 @@ Deck
 2 Mister Negative (SPM) 135
 1 Corroding Dragonstorm (TDM) 75
 1 Mai, Scornful Striker (TLA) 109
-1 Doom Reigns Supreme (MSH) 96
 1 The Seriema (EOE) 35
+1 The Arkenstone // Seek the Heart (HOB) 170
 
 # Evasive / token drain — plan B
 1 Bitterbloom Bearer (ECL) 88
@@ -128,6 +147,7 @@ Deck
 1 Dark Confidant (FIN) 94
 1 Darkstar Augur (BLB) 90
 1 Koh, the Face Stealer (TLA) 107
+1 My Precious // Allure of Power (HOB) 176
 
 # Drain finish
 1 Enduring Tenacity (DSK) 95
