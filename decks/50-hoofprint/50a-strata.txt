@@ -4,38 +4,37 @@
 #: colors: G
 #: based-on: deck.txt
 #: plan: midrange
-#: tier: B — PROVISIONAL, and it sits ONE BAND ABOVE the measurable floor, which the rubric
-#: tier: allows for what the metrics cannot see. RE-GROUNDED 2026-09-11: this block previously
-#: tier: said the letter "MATCHES the measurable floor", which was wrong on its own arithmetic —
-#: tier: interaction 5 plus card advantage 1 is a sum of 6 against the 7 a B floor wants, so the
-#: tier: floor reads C, not B. The removal suite thinned as the engine cards came in. RE-GRADE
-#: tier: CANDIDATE: the letter needs the human call, and the case for holding B is below.
-#: tier: Three weaknesses hold it here:
-#: tier: 1. CARD ADVANTAGE 1 IS THE LOWEST FIGURE ON THE ROSTER, tied with deck 23. Icetill Explorer, Traveling
-#: tier:    Chocobo, Agatha's Soul Cauldron and Web of Life and Destiny all generate real value
-#: tier:    the classifier cannot read, so the true number is higher — but not by much, and the
-#: tier:    deck has no unconditional draw spell at all.
-#: tier: 2. IT IS THE SLOWEST DECK BUILT THIS CYCLE. Avg MV 3.82 with only 11 early drops, and
-#: tier:    the engine needs lands in the GRAVEYARD before it does anything, so the first three
+#: tier: B — PROVISIONAL. Live vector: interaction 5, card advantage 2, protection 4,
+#: tier: avg MV 3.94, 10 early drops, 19 central themes. The metrics floor is B, so the letter
+#: tier: is CONSISTENT with it.
+#: tier: RE-GROUNDED 2026-09-14 after two swaps into the list (see the notes below). They
+#: tier: moved card advantage 1 → 2 and protection 3 → 4, which lifted the floor from C.
+#: tier: The previous block argued B against a C floor; that gap is closed by the list itself.
+#: tier: Two weaknesses still hold it at B:
+#: tier: 1. THE CARD-ADVANTAGE AXIS IS UNDER-MEASURED AND THE HAND COUNT IS ABOUT SEVEN. The
+#: tier:    classifier files "put a card from your LIBRARY onto the battlefield" as ramp, not as
+#: tier:    advantage, so Ojer Kaslem, Web of Life and Destiny, Loot, Famished Worldsire,
+#: tier:    Traveling Chocobo and Icetill Explorer all score zero on it. What stays TRUE is the
+#: tier:    SHAPE of the gap: almost none of that is DRAW, so the deck cannot dig for an answer
+#: tier:    it does not already hold. Vivien Reid's +1 and Kyoshi's chapter I are its first two.
+#: tier: 2. IT IS THE SLOWEST DECK BUILT THIS CYCLE. Avg MV 3.94 on 10 early drops, and the
+#: tier:    engine needs lands in the GRAVEYARD before it does anything, so the first three
 #: tier:    turns are close to blank. Against a fast start it is behind before Lumra is castable.
-#: tier: 3. CENTRAL THEMES 17 (this block said 25; the live vector reads 17 — the figure audit
-#: tier:    misses it because its patterns match "17 central themes", not "CENTRAL THEMES 17").
-#: tier:    Still among the more diffuse readings, behind deck 23's 24. That is
-#: tier:    partly an artifact of counting every landfall and token cue separately, but it does
-#: tier:    reflect a real spread: the deck is doing land-ramp, self-mill, tokens and counters at
-#: tier:    once, and a sweeper catches it mid-assembly.
-#: tier: WHAT ARGUES UP: the manabase is flawless — every coloured card on curve at >=90% with
-#: tier: keepable 88.4%, the best pair on the roster — protection 3 is the highest of any deck
-#: tier: built this cycle, and Traveling Chocobo genuinely doubles the payoff layer rather than
-#: tier: adding to it. A resolved Lumra with eight lands is an 8/8 that returns every land in
-#: tier: the yard, which is a one-card swing nothing else here matches.
-#: tier: PROVISIONAL: unplayed, 18 craft targets.
+#: tier: WHAT ARGUES UP: the manabase is flawless — every coloured card on curve at >=90%, with
+#: tier: keepable 87.4% — protection 4 is the highest of any deck built this cycle, and Traveling
+#: tier: Chocobo doubles the payoff layer instead of adding to it. A resolved Lumra on eight
+#: tier: lands is an 8/8 that returns every land in the yard, a one-card swing nothing else here
+#: tier: matches. Kyoshi is a SAGA, so Clash of the Eikons can remove and re-add a lore counter
+#: tier: in a single cast to re-trigger chapter I.
+#: tier: PROVISIONAL: unplayed. The deck is now FULLY OWNED — the earlier "18 craft targets" was
+#: tier: stale.
 #: protect: Lumra, Bellow of the Woods; Traveling Chocobo; Sapling Nursery; Summon: Titan; Icetill Explorer
 #: archetype: MONO-GREEN LANDS. Its parent counts CREATURES — Craterhoof's X, Enduring Vitality,
-#: archetype: Three Tree City all read the same number. This deck counts LANDS instead, and two
-#: archetype: of its creatures are literally sized by that count: Lumra, Bellow of the Woods and
-#: archetype: Harmonious Grovestrider are each "power and toughness equal to the number of lands
-#: archetype: you control". Same colour, opposite resource.
+#: archetype: Three Tree City all read the same number. This deck counts LANDS instead: Lumra,
+#: archetype: Bellow of the Woods is literally "power and toughness each equal to the number of
+#: archetype: lands you control", and Summon: Titan's chapter III pumps by the same count.
+#: archetype: (Harmonious Grovestrider was CUT 2026-09-14 for The Legend of Kyoshi; it read the
+#: archetype: same way.) Same colour, opposite resource.
 #: archetype: THE ENGINE IS SELF-MILL INTO MASS RETURN, which is why milling is an asset here and
 #: archetype: a liability everywhere else. Icetill Explorer mills on every landfall AND lets you
 #: archetype: play lands out of the graveyard; Lumra mills four and then returns EVERY land card
@@ -212,6 +211,16 @@
 #: notes: that carry the PLAN are exclusive. That is what a variant should look like — a shared
 #: notes: shell and a different engine — as against 26b vs 48a at 89%, where the top end itself
 #: notes: was duplicated.
+#: notes: 2026-09-14 — TWO SWAPS. Bite Down was CUT for Vivien Reid: the deck ran THREE copies
+#: notes:   of one effect (Bite Down and Hard-Hitting Question are word-for-word identical, and
+#: notes:   Clash of the Eikons' first mode is a third fight), so the third was the cheapest slot
+#: notes:   in the deck. Vivien's +1 digs a creature or land into hand every turn and her −3 kills
+#: notes:   an artifact, enchantment or flier — the deck had only TWO noncreature answers.
+#: notes:   Harmonious Grovestrider was CUT for The Legend of Kyoshi: both scale off the land
+#: notes:   count, but Kyoshi's chapter I DRAWS that number instead of being a body of it, and its
+#: notes:   back face gives lands trample and hexproof. Kyoshi is also a SAGA, so Clash of the
+#: notes:   Eikons can remove and re-add a lore counter in one cast to re-trigger chapter I.
+#: notes:   Floor moved C → B; card advantage 1 → 2, protection 3 → 4, avg MV 3.82 → 3.94.
 
 # The engine — mill lands on purpose, then return them all at once
 1 Icetill Explorer (EOE) 192
@@ -230,7 +239,7 @@
 1 Sapling Nursery (ECL) 192
 1 Mightform Harmonizer (EOE) 200
 1 Primeval Bounty (FDN) 644
-1 Harmonious Grovestrider (EOE) 189
+1 The Legend of Kyoshi // Avatar Kyoshi (TLA) 186
 1 Famished Worldsire (EOE) 182
 
 # Ramp
@@ -255,7 +264,7 @@
 1 The Skullspore Nexus (LCI) 212
 
 # Interaction
-1 Bite Down (FDN) 212
+1 Vivien Reid (FDN) 234
 1 Hard-Hitting Question (MKM) 164
 1 Heritage Reclamation (TDM) 145
 1 Pawpatch Formation (BLB) 186
@@ -273,7 +282,7 @@
 
 # Flex — measured and parked. See: deck.py flex 50a
 #~ -Hard-Hitting Question | +A Realm Reborn | "Other permanents you control have '{T}: Add one mana of any color'" — and the breadth is the point: not just lands or creatures, but the enchantments (Sapling Nursery, Primeval Bounty, Garruk's Uprising) and artifacts too, which no other mana card here reaches. This deck has no Enduring Vitality, so nothing currently turns its creatures into mana at all. Parked purely on COST: at {4}{G}{G} it is the wrong end of the curve for the slowest deck on the roster. Measured as the fourth add of a package (with Sledge-Class Seedship, Summoner's Grimoire and Rainveil Rejuvenator) it read avg MV 4.18 with SEVEN early drops and interaction 4 — unplayable. Take it only after the curve comes down, e.g. if the land-fetch bodies get cheaper replacements.
-#~ -Harmonious Grovestrider | +Beorn's Hospitality | OWNED (HOB, 2026-08-13 ingest): fit 45.
+#~ note: applied — The Legend of Kyoshi // Avatar Kyoshi in for Harmonious Grovestrider.
 #~   Landfall puts a +1/+1 counter on a creature, and {5}{G}{G} turns it into a Bear whose
 #~   power and toughness equal your land count — the same clause Grovestrider has, on a
 #~   TWO-drop that does something before it flips. Grovestrider is `cuts` #1 here at fit 7,
