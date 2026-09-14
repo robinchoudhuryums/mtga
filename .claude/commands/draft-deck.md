@@ -90,8 +90,13 @@ Stage 5** — grade it from the floor, don't guess.
    again after ANY change of plan, not just once. It also flags a candidate that is a
    ★ STRICT UPGRADE of a card already in the 60, and a ✱ multiplier whose value is in
    the rest of the deck rather than its own text.
-3. `deck.py cuts NN` (weakest-fit, full text) + `deck.py suggest NN --owned` /
-   `--needs` — trim off-plan filler and slot owned upgrades. Honor the Player Profile
+3. `deck.py cuts NN` (weakest-fit, full text) + `deck.py suggest NN --owned --limit 0` /
+   `--needs` — trim off-plan filler and slot owned upgrades. **`--limit 0`, not the
+   default.** `suggest` prints a top-20 WINDOW ranked by THEME FIT, and measured across
+   783 applied swaps the median rank of the card actually added is **407** of ~950 — only
+   10% fell inside that window. It bites harder here than in a tune: a deck being drafted
+   has no existing list to anchor on, so the window is a larger share of what you see.
+   The footer now names the window ("top N of M ranked candidate(s)"); scan past it. Honor the Player Profile
    (protect signature/spice, keep it flavorful). Preview any swap with `deck.py swap`.
 4. `python3 scripts/deck.py tier NN` — read the metrics floor and set `#: tier:` to a
    letter you can DEFEND (at most one band above the floor; never auto-inflate — it's

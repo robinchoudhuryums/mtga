@@ -148,7 +148,12 @@ Notes on that pull, each of which cost something the first time:
 2. **Count before you dismiss** (G-61, G-59). "Too narrow" is a claim about a number in
    the deck list — state the number. "This tribe has no payoffs" is a claim about the
    pool — search the *effect shape*, not the noun (K-13), because a zero-result literal
-   search is an unverified search, not a fact.
+   search is an unverified search, not a fact. **`pool.py --regex '<shape>'` is the tool
+   that performs it**, added 2026-09-14; before it existed every such sweep was a
+   hand-written heredoc, which is how a rule mandating the search kept being answered by
+   a literal one — `--text` is a SUBSTRING match and always was. Reminder text is
+   stripped, so it reads a card the way the tagger and the role classifier do
+   (`--regex-raw` keeps it). It composes with `--within` / `--legal` / `--role`.
 3. **Grade the ability that PAYS, not the one that is broken.** Four cards were rejected
    in one pass on a clause that did not fire, while their unconditional mana or copy
    ability went unread.
