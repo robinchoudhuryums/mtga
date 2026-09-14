@@ -263,6 +263,9 @@ def deck_viz(meta, cards, carddata, mana, keywords, by_key, by_name):
     }
 
 
+_CRAFT_TOTALS = {}
+
+
 def craft_rows(d, problems=None):
     """Structured craft picks (unowned, on-color, on-theme) for the interactive
     table — from the SAME suggest_scored() the `deck.py suggest` CLI renders, so
@@ -289,8 +292,19 @@ def craft_rows(d, problems=None):
         if res.get("reason") == "no-pool" and problems is not None:
             problems.append(f"{d['id']}: no card-pool.csv to score against")
         return []
+    # `back_off` rides along because this table is the page's "spend a wildcard here"
+    # surface, and a split / Adventure card's BACK half can need a colour the deck does
+    # not have (BS10-08). Measured AT THIS CALLER before wiring, per G-40's rule that
+    # reaching a new caller is not free: 7 of 1,680 rendered rows across 7 decks (0.42%)
+    # — rare, but each one is a wildcard the page recommends for half a card.
+    # How much of the ranking these 15 rows are (BS10-05). The page can only ship a
+    # window, and a reader who does not know a window exists reads its absence as
+    # absence — measured over 783 applied swaps, the MEDIAN rank of the card actually
+    # added is 407, so "not on this table" is very weak evidence of "not worth crafting".
+    _CRAFT_TOTALS[d["id"]] = res.get("candidates")
     return [{"name": p["name"], "rarity": p["rarity"], "decks": p["decks"],
-             "matches": p["matches"]} for p in res["picks"]]
+             "matches": p["matches"], "back_off": p.get("back_off") or ""}
+            for p in res["picks"]]
 
 
 def collect():
@@ -365,6 +379,7 @@ def collect():
             "wc": wc,
             "wcBy": {r: int(wc_by.get(r, 0)) for r in ("M", "R", "U", "C")},
             "craft": craft_rows(d, craft_problems),
+            "craftTotal": _CRAFT_TOTALS.get(d["id"]),
             "viz": deck_viz(meta, cards, carddata, mana, keywords, by_key, by_name),
             "detail": deck_detail(d["id"]),
             # Roster-triage score from the SAME audit_deck() the `deck.py audit` CLI
@@ -1552,6 +1567,16 @@ function craftNameCell(r){
   const nm = el('span','hovname', r.name); attachHover(nm, r.name); td.appendChild(nm);
   td.appendChild(document.createTextNode(' '));
   const a = el('a','scry','↗'); a.href = scryUrl(r.name); a.target = '_blank'; a.rel = 'noopener'; a.title = 'Open on Scryfall'; td.appendChild(a);
+  // The row prints the whole `Front // Back` name while castability read the FRONT face
+  // (G-02), so half this card may be uncastable here. Disclosure, never a filter — the
+  // front half is genuinely castable and the card may be worth the wildcard for it alone.
+  if (r.back_off){
+    td.appendChild(document.createTextNode(' '));
+    const b = el('span','flag','\u26a0 back:' + r.back_off);
+    b.title = 'The BACK half of this split/Adventure card needs ' + r.back_off
+            + ', which this deck does not cast. The front half is fine (G-43: grade it by the face you cast).';
+    td.appendChild(b);
+  }
   return td;
 }
 
@@ -1615,7 +1640,18 @@ function craftTable(d){
   return sortableTable('dt', cols, rows, craftSort[d.id]);
 }
 function detailBody(d, k){
-  if (k === 'craft'){ if (!(d.craft||[]).length) return preOf('No craft picks — nothing on-color and on-theme to craft here.'); return craftTable(d); }
+  if (k === 'craft'){
+    if (!(d.craft||[]).length) return preOf('No craft picks — nothing on-color and on-theme to craft here.');
+    const wrap = el('div');
+    if (d.craftTotal && d.craftTotal > (d.craft||[]).length){
+      const hint = el('div','metaline2',
+        'Top ' + (d.craft||[]).length + ' of ' + d.craftTotal + ' ranked candidates. '
+        + 'Rank is THEME FIT, not a verdict — run `deck.py suggest ' + d.id + ' --unowned --limit 0` for the rest.');
+      wrap.appendChild(hint);
+    }
+    wrap.appendChild(craftTable(d));
+    return wrap;
+  }
   if (k === 'stats') return renderStats(d.viz);
   if (k === 'mana') return renderMana(d.viz);
   return preOf((d.detail && d.detail[k]) || '(no output)');

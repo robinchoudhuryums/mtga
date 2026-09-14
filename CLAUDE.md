@@ -794,6 +794,21 @@ directions.
   Bygone Colossus (Warp {3}) read MV 9 and moved 56b's aggro floor. `stats` lists `⌁ CHEAT-COST`
   cards and grants, `tier` prints "avg MV over-reads" plus the effective curve (alt costs, then
   grants applied) and the clock it WOULD read — ADVISORY, pinned out of the vector. [G-60]
+- **"EFFECTIVE AVG MV" PRICES ONLY THE PRINTED ALT COSTS, and said so nowhere (2026-09-14).**
+  `effective_avg_mv` substitutes what `_ALT_COST_RE` finds — Warp / Plot / Foretell — while
+  `classify_cost` flags a much wider ◊ set (affinity, improvise, convoke, delve, evoke, "costs
+  {N} less") that it never prices, because what those shrink by is a BOARD STATE the curve does
+  not have. So deck 47, whose whole premise is a discount, printed "effective avg MV 3.51
+  against 3.54 printed" and meant the printed curve — a 0.03 correction on a list that routinely
+  casts a {6} for {U}{U}, read during a live tune. `unpriced_discount_cards` now says so at
+  `stats` and `tier`, derived from the same two primitives the ◊ list and the effective figure
+  already use so the three cannot disagree (G-40). **DISCLOSURE, never pricing** — report-only
+  for G-25/G-60's reason, and do not "finish" it by feeding `tier_band`.
+  **`_UNPRICED_DISCLOSE_FLOOR = 3` is p75 of its own axis, not 1**: across the 43 decks that
+  print an effective figure the unpriced count runs p25 1 / p50 2 / p75 3 / p90 5 / max 11, so
+  a floor of 1 fires on 83% (the G-07 saturation shape) against **14 of 43 (32%)** at 3. That
+  is a roster percentile and carries the `TIER_FLOOR_REQ` hazard — the figure is registered in
+  `figure_drift`, so a moved distribution prompts re-derivation. [G-85]
 - **BEFORE DISMISSING A CARD, COUNT THE DECK PROPERTY ITS VALUE DEPENDS ON.** Four
   dismissals were overturned in one cycle, all the same shape — a card judged on its own
   text when the decision belonged to a number in the LIST. Michelangelo was called
@@ -1165,7 +1180,22 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   MODEL (BS9-01)**: `load_card_meta` was library-first, so every OWNED card fed
   `cuts`/`suggest`/centrality the STALE row (219 of 2,576; 105 of 113 decks). POOL-first
   now; a BLANK pool cell never overrides; `check_agreement._agree_synergy_store` holds it.
-  **Residual: 343 pool blanks — a new theme for four cards is not the fix.** [K-09]
+  **Residual: 338 pool blanks — a new theme for four cards is not the fix.** [K-09]
+- **THE TAGGER HAD NO `artifacts` RULE AT ALL, the largest single cause of the median-407
+  ranking (added 2026-09-14).** Every `artifacts` tag came from the KEYWORD map (affinity /
+  improvise / modular / craft…), so a card whose whole text is "artifacts you control get
+  +1/+1" carried NO artifact theme — and `suggest` / `cuts` / `suggest-homes` / centrality are
+  all theme-fit driven. **NOT an `_TYPE_MATTERS` entry**: that table's first pattern is
+  `(a|an|target|…) <TYPE>`, which for artifacts matches **427 pool cards** — every "destroy
+  target artifact", i.e. artifact HATE tagged as synergy (the G-42 shape).
+  `_ARTIFACT_MATTERS_RE` matches **273 pool cards, 1.71%** — between `exile cast` (1.68%) and
+  `pay life` (2.2%), under the 3.86% `exile cast` was capped to avoid. **The `(?<!or )` /
+  `(?! or creature)` guards and the `an|another|one or more` anchor are load-bearing**: without
+  the anchor it matches "when THIS artifact enters" (every artifact with an ETB), and `artifact
+  or creature` is **236 cards** of generic either-type text. Reads `_clean_text` (K-09). Pool
+  tag 158 → 415; **0 of 112 tier floors moved** (G-80: tags feed cuts/suggest, the floor reads
+  TEXT). Residual: BEING an artifact is deliberately untagged (~19% of the pool) — G-83's
+  `cost_scale_resource` answers that from the TYPE LINE. [K-15]
 - **After editing a tag pattern, regenerate BOTH derived tag stores** —
   `tag_synergies.py --merge` for the LIBRARY and **`build_pool.py --all` for the pool**,
   which re-derives every pool row's `Synergies` through the same `tags_for()`. Skipping

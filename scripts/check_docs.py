@@ -252,6 +252,43 @@ def _live_figures():
                     n += 1
         return n
 
+    def _artifact_matters_cards():
+        """K-15's pool population, through `_ARTIFACT_MATTERS_RE` itself — never a second
+        copy of the predicate, which is the drift this gate exists to catch one layer up.
+        It moves on any pool rebuild (a new set's artifact lords land in this family), and
+        it is the figure the 1.71% band argument rests on."""
+        import csv as _csv
+        import tag_synergies as _T
+        n = 0
+        with open(os.path.join(REPO_ROOT, "card-pool.csv"), newline="",
+                  encoding="utf-8") as fh:
+            for r in _csv.DictReader(fh):
+                if _T._ARTIFACT_MATTERS_RE.search(
+                        _T._clean_text((r.get("Card Text") or "").lower())):
+                    n += 1
+        return n
+
+    def _unpriced_fires():
+        """G-85: how many of the decks that PRINT an effective avg MV carry enough unpriced
+        ◊ cards to trip `_UNPRICED_DISCLOSE_FLOOR`. Registered because that floor is a
+        roster PERCENTILE and so carries the `TIER_FLOOR_REQ` hazard — a moved distribution
+        must prompt a re-derivation rather than silently saturating (at a floor of 1 this
+        reads 83%). ~1.7s, and it only runs when CLAUDE.md still makes the claim."""
+        import deck
+        cd, mana = deck.load_card_data(), deck.load_mana()
+        fires = 0
+        for d in deck.roster_decks():
+            try:
+                _meta, cards = deck.parse_deck_file(d["path"])
+                e = deck.effective_avg_mv(cards, cd, mana)
+            except Exception:
+                continue
+            if not e or e[0] is None:
+                continue
+            if len(deck.unpriced_discount_cards(cards, cd, mana)) >= deck._UNPRICED_DISCLOSE_FLOOR:
+                fires += 1
+        return fires
+
     def _pool_tag(tag):
         path = os.path.join(REPO_ROOT, "card-pool.csv")
         with open(path, newline="", encoding="utf-8") as fh:
@@ -323,6 +360,15 @@ def _live_figures():
         # C-01 gate count. Three documents carried three different numbers (11 / 12 / 14)
         # against a real 13, because a COUNT of files is a measurement nobody re-measures
         # (BS8-26). `check_all.py` is the RUNNER, not one of the gates it runs.
+        # K-15's artifact-matters population — same rule as G-84's entry above: a number
+        # cited as EVIDENCE for the 1.71% band that is derivable live and moves on the
+        # next pool rebuild.
+        ("K-15 artifact-matters pool cards",
+         r"`_ARTIFACT_MATTERS_RE` matches \*\*(\d+) pool cards", _artifact_matters_cards),
+        # G-85's calibration. Anchored on the words around ITS number, never on the 43 —
+        # correcting one must not kill the other's pattern.
+        ("G-85 unpriced-disclosure fire rate",
+         r"against \*\*(\d+) of 43 \(32%\)\*\* at 3", _unpriced_fires),
         ("C-01 model-sanity gates",
          r"INV-01…04 plus \*\*(\w+) model-sanity", lambda: _gate_word()),
     ]

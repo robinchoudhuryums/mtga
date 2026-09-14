@@ -2786,7 +2786,7 @@ _CA_CUES = re.compile(
 # impossible: anything the classifier CAN see, the net also sees, and the flag still
 # only fires when the classifier tagged no matching role.
 # Parenthetical REMINDER text. Non-nested is enough — MTG never nests reminders.
-_REMINDER_RE = re.compile(r"\([^()]*\)")
+_REMINDER_RE = lib.REMINDER_RE   # one definition, in lib (see its comment)
 
 _INT_CUE_PATS = [_INT_CUES] + [p for lbl in sorted(_INTERACTION_ROLES)
                                for p in _ROLE_COMPILED_MAP[lbl]]

@@ -19,6 +19,22 @@ commands disagree.
 
 ## 0-current. THE 2026-08-24 SESSION (READ THIS FIRST — supersedes §0-latest below)
 
+> **STATE STAMP, 2026-09-14 (second, supersedes the first below).** **Batch 3 and every
+> follow-on are now ALSO done** — block `10-batch3-followons-artifacts-tagger-*`. BS10-04 is
+> closed: the tagger had **no `artifacts` rule at all**, so an artifact deck's own payoffs
+> were invisible to every theme ranking. New `_ARTIFACT_MATTERS_RE` (273 pool cards, 1.71%;
+> pool tag 158 → 415); **0 of 112 tier floors moved**; re-ranking the 15 cards actually added
+> to deck 47 against the pre-swap list gives **median rank 310 → 144, best 120 → 20**. Also
+> landed: the dashboard craft table now renders the back-half flag and a "top 15 of N" window
+> hint, the four reminder-regex copies are one `lib.REMINDER_RE`, and two figures are
+> registered in `figure_drift`. New anchors **K-15** and **G-85**.
+> **THE ONE THING LEFT FROM SCAN #10 IS BS10-01 / BS10-02** — the interaction-taxonomy holes
+> (exchange/gain control 79 of 84 missed, tap+stun 33 of 34). **They are NOT a repeat of
+> BS10-04**: tags feed `cuts`/`suggest` while `tier_band` reads TEXT (G-80), which is why the
+> artifacts fix moved zero floors — but these feed `role_tally`, which IS what the floor
+> grades on, so that batch re-scores the roster and needs K-14's floor diff plus a roster
+> `#: tier:` prose sweep. Deck 47's own tier block argues from the 79-of-84 figure.
+>
 > **STATE STAMP, 2026-09-14.** Branch `claude/sync-commands-mmmsdb`. **Broad scan #10 ran
 > today and Batches 1 & 2 are implemented** (block
 > `.cycle/blocks/10-batch1-2-ranking-visibility-broad-implement.md`; 1796 pytest pass,

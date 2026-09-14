@@ -4,7 +4,7 @@
 #: plan: midrange
 #: tier: B — PROVISIONAL, and now CONSISTENT with the metrics floor rather than one band
 #: tier: under it. Live vector: interaction 6, card advantage 7, protection 2, avg MV 3.54
-#: tier: (effective 3.51), 20 central themes. The old block argued B against an A floor; the
+#: tier: (effective 3.51), 10 central themes. The old block argued B against an A floor; the
 #: tier: 2026-09-14 rebuild closed that gap, and not by making the deck worse.
 #: tier: THE INTERACTION FIGURE UNDER-READS, and the cause is a classifier hole rather than a
 #: tier: thin suite: Trade the Helm's "exchange control of target artifact or creature you

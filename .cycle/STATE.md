@@ -14,25 +14,24 @@
 
 ## Current
 Cycle: 10 — a fresh `/broad-scan` ran 2026-09-14 out of the deck 47 tuning post-mortem
-("why does the tooling not propose the cards I propose?"). Cycle 9's blocks stay under
-their own prefix; cycle 9 is reflected and closed.
-Phase: implement (Batches 1 & 2 done — `.cycle/blocks/10-batch1-2-ranking-visibility-*`)
+("why does the tooling not propose the cards I propose?"). Cycle 9 is reflected and closed.
+Phase: implement (Batches 1-3 + all three follow-ons done; only BS10-01/BS10-02 remain)
 Scope: broad
 Test Command: `python3 scripts/check_all.py`
 Subsystem cycles since last Seams audit: 2 (counter adopted 2026-09-08; no Seams audit has run)
-Updated: 2026-09-14 (broad-implement, batches 1-2)
+Updated: 2026-09-14 (broad-implement, batch 3 + follow-ons)
 
 ## In progress (facts to carry forward — NOT judgments)
-- **Broad scan #10 ran 2026-09-14; Batches 1 & 2 are implemented, Batches 3 & 4 are NOT.**
-  The user selected batches 1-2 only. Outstanding: **BS10-04** (`tags_for` misses 112 of
-  150 artifact-count cards) and **BS10-01 / BS10-02** (interaction taxonomy: exchange/gain
-  control 79 of 84 missed, tap+stun 33 of 34 missed against bounce's 1 of 31).
-- **The number this cycle produced is `suggest`'s rank median: 407.** Over 783 applied
-  swaps that recorded a rank for the ADD, the median rank of the card actually chosen is
-  407 and only 10% fell inside the default top-20 window. That is the measured answer to
-  "why does the tooling not suggest my cards": it is not REACH, it is RANKING. BS10-05
-  discloses it; **BS10-04 is the finding that would move it.**
-- Cycle 9's work is fully landed; nothing from scan #9 is outstanding.
+- **Broad scan #10: Batches 1, 2 and 3 are implemented, plus every follow-on from the
+  batch-1-2 block.** The ONLY thing outstanding from the scan is **BS10-01 / BS10-02**, the
+  interaction-taxonomy holes.
+- **The cycle's number is `suggest`'s rank median: 407.** Over 783 applied swaps the median
+  rank of the card actually ADDED is 407 of ~950 and only 10% fell inside the default top-20
+  window. Batch 2 disclosed it; **Batch 3 fixed its largest single cause** — the tagger had
+  no `artifacts` rule at all. Re-ranking the 15 cards actually added to deck 47 against the
+  PRE-swap list: **median 310 -> 144, best 120 -> 20.**
+- BS10-04 moved **0 of 112 tier floors** (bands identical at A 67 / B 41 / C 4). BS10-01/02
+  will NOT be like that — they feed `role_tally`, which `tier_band` grades on.
 - Deck 71's rebuild has an ordered open list — see §0-current of NEXT-SESSION.md.
 
 ## Completed this cycle
@@ -67,42 +66,64 @@ Updated: 2026-09-14 (broad-implement, batches 1-2)
   ◊ discounts `effective_avg_mv` does not price (14 of 43 decks), BS10-08 a split card's
   BACK half needing a colour the deck lacks (0.46% roster-wide, transform DFCs correctly
   excluded) | scripts/deck.py, scripts/pool.py, CLAUDE.md, decks/67-warpwright/deck.txt
+- **Scan #10 Batch 3 + follow-ons** | BS10-04 the `artifacts` tagger hole (273 pool cards,
+  1.71%; pool tag 158 -> 415; 0 tier floors, `cuts` top-3 on 5 decks, `suggest` top-20 on 27;
+  deck 47/51 `#: tier:` figures re-grounded per K-12), the dashboard craft table wired for
+  `back_off` + `craftTotal` (re-measured at that caller: 0.42%), the four reminder-regex
+  copies consolidated into one `lib.REMINDER_RE` (0 disagreements across 15,977 texts), and
+  two `figure_drift` registrations (K-15's 273, G-85's 14-of-43) | scripts/tag_synergies.py,
+  scripts/check_patterns.py, scripts/lib.py, scripts/deck.py, scripts/build_dashboard.py,
+  scripts/check_docs.py, CLAUDE.md (new K-15 + G-85), docs/gotchas.md, decks/47, decks/51
 
 ## Pending / not yet done
-- **Scan #10 Batches 3 & 4** — BS10-04 (tagger artifact-count hole) and BS10-01 / BS10-02
-  (interaction taxonomy holes). BS10-04 is the highest-leverage item outstanding: it is the
-  measured cause of the median-407 ranking BS10-05 only discloses.
-- A `/sync-docs` pass for the three gotchas BS10-07 / BS10-08 / BS10-05 outran — see the
-  block's DOCUMENTATION UPDATES NEEDED.
-
+- **Scan #10 BS10-01 / BS10-02 — the LAST outstanding scan item.** Interaction-taxonomy
+  holes: exchange/gain control **79 of 84 missed (94%)**, tap+stun **33 of 34 (97%)** against
+  bounce's 1 of 31. Deck 47's `#: tier:` block argues from the first figure. These feed
+  `role_tally`, so unlike BS10-04 they WILL move tier floors — budget a K-14 floor diff and a
+  roster `#: tier:` prose sweep.
+- A `/sync-docs` pass: G-02/G-43/G-58 do not mention BS10-08's back-half flag, and G-38/G-22
+  do not mention the ranking-window footer or the median-407 measurement.
 - The unapplied cross-deck homes and earlier proposed swaps — NEXT-SESSION.md §0-current.
 - Two G-67 role-pattern holes (Kitnap, Eluge), baselined not fixed.
 
 ## Open follow-on items
-- The dashboard's craft table shares `suggest_scored` and now RECEIVES `back_off` and
-  `candidates` without rendering either — the G-40 shape (a primitive that works and one
-  caller that never asks). Re-measure the rate AT that caller before wiring; do not inherit
-  the 0.46% measured on the CLI.
-- Four private copies of the `\([^)]*\)` reminder regex remain across deck.py, lib.py (x2)
-  and tag_synergies.py. BS10-06 added a CALLER of deck.py's, not a fifth copy.
-- `_UNPRICED_DISCLOSE_FLOOR = 3` carries the `TIER_FLOOR_REQ` hazard (calibrated from
-  today's 43-deck population) and is NOT registered in `check_docs.figure_drift`.
-
+- The `or creature` guard in `_ARTIFACT_MATTERS_RE` costs the genuine either-type cards an
+  artifact deck would copy or sacrifice (Three Steps Ahead is the measured instance). It is
+  holding back 236 cards — do not relax it without re-measuring BOTH sides.
+- A roster before/after harness must ASSERT zero errors. Mine called `tier_band(vec, cards=…)`,
+  which takes only `vec`, so 112 decks errored identically on both sides and the diff reported
+  the answer I expected from a probe that ran nothing (G-63's vacuous shape). The `cuts` half
+  compared a set's repr, whose order is nondeterministic (G-54).
+- CLOSED 2026-09-14 (batch 3): the dashboard now renders `back_off` + `craftTotal`; the four
+  reminder-regex copies are one `lib.REMINDER_RE`; `_UNPRICED_DISCLOSE_FLOOR`'s calibration is
+  registered in `figure_drift` as G-85. Nothing left from the batch-1-2 block.
 - `unmet_gate` has three callers now, and `redundancy` is the one never re-measured AT its
   own surface — the exact lesson the second wiring taught. Small list, so the rate is
   probably fine; "probably" is what that pass spent the day disproving.
 - G-84's DFC front-face question is closed as "all-faces is the better approximation", NOT as
   correct. A per-face availability read (transform vs modal vs saga-back) would settle it;
   G-63's column list still does not name TYPE on this path.
-- `figure_drift` now covers 10 of CLAUDE.md's ~1,100 numeric claims. The rule for what earns
-  an entry is written down; the registry is still hand-kept and its misses still invisible.
+- `figure_drift` now covers 12 of CLAUDE.md's ~1,100 numeric claims (K-15 and G-85 joined
+  2026-09-14). The rule for what earns an entry is written down; the registry is still
+  hand-kept and its misses still invisible.
 - `tier_floor_spread()` is called twice per `check_all` (the BS8-06 sweep and figure_drift)
   and is not memoized — ~2s of duplicated roster walk, a one-liner nobody has needed yet.
+  G-85's entry adds a further ~1.7s roster walk, lazily.
 - `synergies` LIST ORDER now comes from the pool (258 pure re-orderings). Nothing measured
   moved; any surface showing "the first N themes" shows the pool's order.
 - Regression scenarios 5–8 and 10–19 need a person at a browser; several never walked.
 
 ## Decisions made (so the next session doesn't re-litigate)
+- **`artifacts` is NOT an `_TYPE_MATTERS` entry, deliberately.** That table's first pattern
+  matches 427 pool cards for artifacts — every "destroy target artifact", i.e. artifact HATE
+  tagged as synergy. The mechanism is right for Equipment and wrong for Artifact.
+- **BEING an artifact is deliberately untagged** (~19% of the pool would destroy the theme).
+  G-83's `cost_scale_resource` already answers "how many artifacts does this deck field" from
+  the TYPE LINE.
+- **`lib.REMINDER_RE` takes the stricter `[^()]` form** for all five call sites. Measured
+  identical on 15,977 texts; the four original NAMES stay as aliases because
+  `check_patterns`' registry is keyed by (module, attribute name).
+
 - **BS10-08 DECLINES the ambiguous middle rather than guessing.** There is no `layout`
   column, so a transform DFC and a modal one are indistinguishable by cost alone — and
   Norman Osborn / Bruce Banner are the two cards G-58 already cites as this exact mis-bin.
@@ -150,23 +171,24 @@ Updated: 2026-09-14 (broad-implement, batches 1-2)
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
-**Broad scan #10, Batches 1 & 2 are implemented, verified and committed** — block
-`.cycle/blocks/10-batch1-2-ranking-visibility-broad-implement.md`. Five findings:
-BS10-03 / BS10-05 / BS10-06 / BS10-07 / BS10-08. **1796 tests pass, `check_all` exit 0,
-`make postedit` clean. NET SCORE 4 − 0 = 4** (BS10-06 graded a new capability, not a
-production fix, per cycle 9's precedent).
+**Broad scan #10 Batch 3 and every follow-on are implemented, verified and committed** —
+block `.cycle/blocks/10-batch3-followons-artifacts-tagger-broad-implement.md`.
+**1796 tests pass, `check_all` exit 0, `make refresh` + `make postedit` exit 0, Regression
+Scenario 2 walked 30/30. NET SCORE 1 − 0 = 1** — one production fix (BS10-04) and three
+DEFENSIVE follow-ons, graded by cycle 9's precedent rather than inflated.
 
-**The thing to carry into the next session is BS10-04.** This cycle measured why the
-tooling's recommendations and the user's picks diverge — the median rank of an actually
-chosen add is **407 of ~950 candidates, 10% inside the top 20** — and then fixed only the
-DISCLOSURE of it. The cause is upstream: `tags_for` misses 112 of 150 artifact-count cards
-(74%), so theme-fit-driven `base` sinks mechanically perfect picks. BS10-05 makes the
-problem visible at the surface; BS10-04 is what makes the ranking usable. Batches 3 & 4
-were not selected, not blocked.
+**BS10-01 / BS10-02 is the only thing left from scan #10, and it is not a repeat of BS10-04.**
+The artifacts fix moved 0 tier floors because tags feed `cuts`/`suggest` while `tier_band`
+reads TEXT (G-80). The interaction-taxonomy holes feed `role_tally`, which IS what the floor
+grades on — so that batch re-scores the roster and needs K-14's floor diff plus the roster
+`#: tier:` prose sweep. Deck 47's own tier block argues from the 79-of-84 figure, so it is one
+of the decks that will need re-grounding.
 
-One caution for whoever runs BS10-04: it is a TAGGER change, which per G-67's triage line
-is a TAXONOMY widening, not a pattern hole — it re-scores the roster. K-10 requires BOTH
-derived tag stores rebuilt (`tag_synergies.py --merge` AND `build_pool.py --all`), and
-K-12 requires the before/after roster diff plus the `#: tier:` prose sweep. Budget for
-that, and expect the full pytest suite (not just `check_all`) to be the gate that catches
-stale prose — it is what caught deck 67 in this batch.
+**The process lesson from this batch is worth more than either fix.** My before/after harness
+reported "0 tier floors moved" — the answer I expected — from a call that errored on all 112
+decks in both snapshots. It measured nothing and looked clean. Two gates caught what I did
+not: `check_patterns` hard-failed on the unregistered regex, and the roster figure sweep named
+decks 47 and 51. **Assert zero errors in a measurement harness, and read the sampled cards
+rather than the count** — the first broad artifact shape I measured was 608 cards at 94%
+missed, and reading four of them showed all four were false positives ("when THIS artifact
+enters" is a card's own ETB).
