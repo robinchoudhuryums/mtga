@@ -75,6 +75,7 @@ Pinnacle Starcage,Artifact,"When this artifact enters, exile all artifacts and c
 The Eternity Elevator,Legendary Artifact — Spacecraft,"{T}: Add {C}{C}{C}.
 Station (Tap another creature you control: Put charge counters equal to its power on this Spacecraft. Station only as a sorcery.)
 20+ | {T}: Add X mana of any one color, where X is the number of charge counters on The Eternity Elevator.",Colorless,Spacecraft; mana; station; counters; artifacts,EOE,241,Rare,51,,5.5,hand
+Desculpting Blast,Instant,"Return target nonland permanent to its owner's hand. If it was attacking, create a 1/1 colorless Drone artifact creature token with flying and ""This token can block only creatures with flying.""",U,tokens; bounce,EOE,54,Uncommon,47,deck 47 rebuild 2026-09-14,3.0,seed
 Dubious Delicacy,Artifact — Food,"Flash
 When this artifact enters, up to one target creature gets -3/-3 until end of turn.
 {2}, {T}, Sacrifice this artifact: You gain 3 life.
@@ -230,6 +231,10 @@ Whenever a legendary creature you control enters, put a +1/+1 counter on each cr
 Whenever you cast a multicolored instant or sorcery spell from your hand, exile that spell instead of putting it into your graveyard as it resolves. If you do, it becomes plotted. (You may cast it as a sorcery on a later turn without paying its mana cost.)",U/R,Human; Rogue; graveyard; pump; plot; tempo; cost-reduction; prowess; spellslinger,OTJ,217,Rare,25,prowess 3-drop that impulses off your spells,6.5,hand
 "Malcolm, the Eyes",Legendary Creature — Siren Pirate,"Flying, haste
 Whenever you cast your second spell each turn, investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",U/R,Siren; Pirate; card draw; sacrifice; tokens; clue; flying; evasion; investigate; haste; aggro,OTJ,219,Rare,25,2-drop: second spell -> investigate,5.5,hand
+Three Steps Ahead,Instant,"Spree (Choose one or more additional costs.)
++ {1}{U} — Counter target spell.
++ {3} — Create a token that's a copy of target artifact or creature you control.
++ {2} — Draw two cards, then discard a card.",U,counterspell; card draw; tokens; spree; value,OTJ,75,Rare,47,deck 47 rebuild 2026-09-14,5.5,seed
 Lassoed by the Law,Enchantment,"When this enchantment enters, exile target nonland permanent an opponent controls until this enchantment leaves the battlefield.
 When this enchantment enters, create a 1/1 red Mercenary creature token with ""{T}: Target creature you control gets +1/+0 until end of turn. Activate only as a sorcery.""",W,tokens; removal; etb; pump,OTJ,18,Uncommon,3; 36a,,5.5,hand
 Make Your Own Luck,Sorcery,"Look at the top three cards of your library. You may exile a nonland card from among them. If you do, it becomes plotted. Put the rest into your hand. (You may cast it as a sorcery on a later turn without paying its mana cost.)",U/G,selection; plot; tempo; cost-reduction,OTJ,218,Uncommon,,,3.5,seed
@@ -344,6 +349,7 @@ Weather Maker,Artifact,"Landfall — Whenever a land you control enters, put a c
 {T}: Add one mana of any color.
 {T}, Remove two charge counters from this artifact: Add {C}{C}.
 {T}, Remove three charge counters from this artifact: It deals 3 damage to any target.",Colorless,counters; burn; mana; landfall; lands; ramp,TMT,182,Rare,general,landfall any-color ramp rock — flexible fixing/ramp (also 13/19a landfall),5.5,hand
+Henchbots,Artifact Creature — Robot,"When this creature enters, exile target tapped creature an opponent controls until this creature leaves the battlefield.",Colorless,Robot; removal; etb,TMT,174,Uncommon,47,deck 47 rebuild 2026-09-14,3.5,seed
 Realm-Scorcher Hellkite,Creature — Dragon,"Bargain (You may sacrifice an artifact, enchantment, or token as you cast this spell.)
 Flying, haste
 When this creature enters, if it was bargained, add four mana in any combination of colors.
