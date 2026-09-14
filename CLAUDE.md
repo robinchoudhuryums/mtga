@@ -1198,19 +1198,20 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   **CONNIVE is an unread keyword here**, so a FLAT metric after a tune is not proof the
   tune failed. [K-12]
 - **A LITERAL TYPE-NAME SEARCH CANNOT SEE THE CHOOSE-A-TYPE CATEGORY, and a false negative
-  there reads as a finished answer.** A pool sweep for "Robots you control get" / "for each
-  Robot" returned zero, and an entire archetype was declined in writing as "bodies without
-  a payoff". There are FOURTEEN such cards in those colours and five are genuine lords —
-  they say "as this enters, choose a creature type", so the category NEVER contains the
-  type name. Deck 48 exists only because a later card pile surfaced one by accident. This
-  is K-04 one layer earlier: that rule says do not gate a PREDICATE on a derived tag, this
-  one says do not gate a SEARCH on a literal name when the effect is expressed generically.
-  **Search the EFFECT SHAPE, not the noun** — "choose a creature type", "creatures you
-  control get +1/+1", "of the chosen type" — and treat a zero-result sweep as an unverified
-  search, not a fact about the format. Same shape as the changeling / kindred cards, and as
-  any "permanents of that type" wording. **G-84 is the automated half of this rule** — the
-  44-card chosen-type family is exactly the category a literal search cannot see, and it is
-  now measured rather than asserted. [K-13]
+  there reads as a finished answer.** A sweep for "Robots you control get" / "for each
+  Robot" returned zero and an archetype was declined in writing as "bodies without a
+  payoff" — but FOURTEEN such cards exist in those colours, five of them genuine lords,
+  because they say "as this enters, choose a creature type" and so NEVER contain the type
+  name. K-04 one layer earlier: that rule says do not gate a PREDICATE on a derived tag,
+  this one says do not gate a SEARCH on a literal name when the effect is worded
+  generically. **Search the EFFECT SHAPE, not the noun**, and treat a zero-result sweep as
+  an unverified search, not a fact about the format. **`pool.py --regex '<shape>'` IS that
+  search** (BS10-06) — a regex over oracle text with reminder text stripped the way
+  `classify_roles` reads it (`--regex-raw` keeps it), composable with `--within` /
+  `--legal` / `--type` / `--full`. Until it existed every such sweep was a hand-written
+  heredoc, which is how a rule mandating the search kept being answered by a literal one:
+  `--text` is a SUBSTRING match and always was. **G-84 is the automated half** — the
+  44-card chosen-type family, now measured rather than asserted. [K-13]
 - **A DRAW REACHED BY PAYING A COST IS A DRAW — FIXED 2026-08-07, and the fix's SHAPE is
   the rule.** Every Card-advantage pattern was TRIGGER-shaped, so `+1: Draw a card`,
   `{3},{T}: Draw a card` and every planeswalker's draw ability scored ZERO (187 pool cards,

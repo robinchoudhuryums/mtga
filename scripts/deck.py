@@ -1424,6 +1424,51 @@ def effective_avg_mv(cards, carddata, mana):
             round(tot_g / q_all, 2) if granted else None)
 
 
+
+# Floor for DISCLOSING that the effective-MV figure left discounts unpriced. Calibrated
+# from the only population that can see the line — the 43 decks that print an effective
+# figure at all — where the unpriced count runs min 0 / p25 1 / p50 2 / p75 3 / p90 5 /
+# max 11. At >=1 the note fires on 83% of them, which is the G-07 saturation shape: a
+# standing warning on four decks in five is one you learn to skip. The floor is that
+# axis's own p75, the same way `_DOUBLER_CALIB` and G-83 set theirs; it fires on 14 of 43
+# (32%) and deck 47, the case that found this, carries 7.
+_UNPRICED_DISCLOSE_FLOOR = 3
+
+
+def unpriced_discount_cards(cards, carddata, mana):
+    """The ◊ cards whose discount `effective_avg_mv` does NOT substitute -> [(name, why)].
+
+    `effective_avg_mv` prices `cheat_cost_cards`, i.e. the PRINTED alternative costs
+    `_ALT_COST_RE` finds (Warp / Plot / Foretell). `classify_cost` flags a wider ◊ set —
+    affinity, improvise, convoke, delve, evoke, and the "costs {N} less" text rule — and
+    none of those is priced, because what they shrink by is a BOARD STATE the curve does
+    not have. So a deck whose entire premise is a discount can print "effective avg MV
+    3.51 (printed 3.54)" and mean the printed curve: deck 47 (mono-blue affinity) carried
+    ELEVEN ◊ cards and the correction moved 0.03, on a list that routinely casts a {6} for
+    {U}{U}.
+
+    This is DISCLOSURE, not pricing, for the reason G-25 and G-60 both give: the axis is
+    fuzzy and a score change on a fuzzy signal is what this file keeps having to undo.
+    Derived from the same two primitives the ◊ list and the effective figure already use,
+    so the three surfaces cannot disagree (G-40)."""
+    priced = {n.lower() for n, _c, _kw, _a, _amv in cheat_cost_cards(cards, carddata, mana)}
+    kw_by = {n.lower(): (d.get("keywords") or "").split(";") if isinstance(d.get("keywords"), str)
+             else (d.get("keywords") or [])
+             for n, d in (carddata or {}).items()}
+    out, seen = [], set()
+    for _q, n, _s, _c in cards:
+        nl = n.lower()
+        if nl in BASICS or nl in seen or nl in priced:
+            continue
+        d2 = carddata.get(nl)
+        if not d2:
+            continue
+        cheaper, _gated = classify_cost(kw_by.get(nl), d2.get("text"))
+        if cheaper:
+            seen.add(nl)
+            out.append((n, ", ".join(cheaper)))
+    return out
+
 def cheat_cost_cards(cards, carddata, mana):
     """Nonland cards carrying a printed alternative cost LOWER than their mana value ->
     [(name, printed_cost, keyword, alt_cost, alt_mv)], sorted, one entry per card.
@@ -1890,6 +1935,18 @@ _ROLE_PATTERNS = {
                        # noncreature spell and scored Payoff/engine only, so a deck built
                        # on it still read card advantage 0.
                        r"create (?:a|\w+|that many) clue tokens?",
+                       # "PUT THE REST INTO YOUR HAND" is a multi-card draw whose word
+                       # for drawing is "put", so every pattern in this bucket missed it.
+                       # The family is small and it is WHOLLY missed — 4 pool cards, 4
+                       # scoring zero card advantage: Make Your Own Luck (look at three,
+                       # exile one, the rest to hand), Allure of the Unknown (reveal six,
+                       # they exile one, five to hand), Threats Undetected (search four,
+                       # they keep two, two to hand) and Deliver Unto Evil. Every one
+                       # delivers two or more cards, so there is no cantrip exclusion to
+                       # make here — the "rest" of a revealed or searched set is always
+                       # plural by construction, which is why the bare phrase is safe
+                       # where a bare "draw a card" would not be.
+                       r"put the rest into your hand",
                        # IMPULSE. "Exile the top card of your library. You may play that
                        # card this turn" is a card you would not otherwise have had — the
                        # same advantage a draw gives, one zone over. Nothing matched it:
@@ -3726,6 +3783,24 @@ def cmd_stats(args):
               "substituted"
               + (f"; {eff[2]:.2f} with the granted costs applied too" if eff[2] is not None else "")
               + "; report-only — the vector keeps the printed curve).")
+        # WHAT "EFFECTIVE" DOES NOT PRICE, said out loud. `effective_avg_mv` substitutes
+        # the PRINTED alternative costs — Warp / Plot / Foretell — and nothing else, so on
+        # a deck whose whole premise is a discount it is still reading the printed curve
+        # and calling the number effective. Deck 47 (mono-blue affinity) is the worked
+        # case: it printed "effective avg MV 3.51 (printed 3.54)" for a list carrying
+        # ELEVEN ◊ cards plus three artifact-restricted mana sources, so the corrected
+        # figure moved 0.03 on a deck that routinely casts a {6} for {U}{U}. The ◊ list
+        # above already names the cards; what was missing is that the "effective" line
+        # does not use them. Disclosure only — pricing affinity needs a board state the
+        # curve does not have, and a scoring change on a fuzzy signal is what this file
+        # keeps having to undo (G-25, G-60).
+        _unpriced = [n for n, _why in unpriced_discount_cards(cards, carddata, mana)]
+        if len(_unpriced) >= _UNPRICED_DISCLOSE_FLOOR:
+            print(f"  ⓘ NOT priced into that figure: {len(_unpriced)} ◊ card(s) whose "
+                  "discount is affinity / improvise / a cost-reduction effect "
+                  f"({', '.join(_unpriced[:3])}{'…' if len(_unpriced) > 3 else ''}). "
+                  "Those shrink with the BOARD, which no curve reading can see — treat "
+                  "the effective figure as an upper bound here.")
 
     # Functional roles: what jobs the nonland spells actually do. Heuristic from
     # oracle text (see classify_roles) so the tune-deck health scorecard can
@@ -4987,6 +5062,12 @@ def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_form
             hi_reuse.append((name, fits))
         picks.append({"name": name, "rarity": (r.get("Rarity") or "").strip(),
                       "owned": h, "decks": fits, "score": score, "matches": shared,
+                      # The castability filter read the FRONT face (G-02), but the row
+                      # prints the whole `Front // Back` name — see split_back_offcolor.
+                      # Computed HERE so the CLI and the dashboard, which shares this
+                      # function verbatim, cannot disagree.
+                      "back_off": split_back_offcolor(_me[0] if _me else "", deck_colors,
+                                                     r.get("Type") or ""),
                       "rotates": bool(_rot_deck and h == 0 and rotation_risk(
                           r.get("Released") or "", set_code=r.get("Set Code") or "",
                           legal={x.strip() for x in (r.get("Legalities") or "").split(";")}))})
@@ -4994,7 +5075,8 @@ def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_form
     res.update(ok=True, colors=deck_colors,
                themes=sorted(theme_w.items(), key=lambda kv: -kv[1])[:6],
                fmt=fmt, apply_fmt=apply_fmt, has_leg=has_leg,
-               picks=picks, total=len(top), hi_reuse=hi_reuse)
+               picks=picks, total=len(top), candidates=len(suggestions),
+               hi_reuse=hi_reuse)
     return res
 
 
@@ -5653,8 +5735,15 @@ def cmd_suggest(args):
         pw = pipwarns.get(p["name"])
         pipflag = f"  ⚠⚠{pw[1]}x{{{pw[0]}}} vs {pw[2]} src" if pw else ""
         gateflag = "  ⚠gate" if p["name"] in gatewarns else ""
+        # The row prints the whole `Front // Back` name, and the castability filter read
+        # the FRONT (G-02). 33% of the pool's split cards need a colour on the back that
+        # the front does not, so a mono-colour deck was shown half a card it cannot cast
+        # with nothing saying so. Measured at THIS caller before wiring, per G-40: 51 of
+        # 800 top-20 rows across 40 decks (6%) — informative, not the G-07 saturation
+        # shape. Disclosure only; it never filters a pick or moves a score.
+        splitflag = f"  ⚠back:{p['back_off']}" if p.get("back_off") else ""
         print(f"{have:>5}  {p['name'][:28]:28}  {rar[:8]:8}  {p['decks']:>5}  "
-              f"{', '.join(p['matches'][:5])}{rotflag}{pipflag}{gateflag}")
+              f"{', '.join(p['matches'][:5])}{rotflag}{pipflag}{gateflag}{splitflag}")
     if gatewarns:
         print(f"⚠gate = {len(gatewarns)} pick(s) bring a GATE this deck holds nothing for. "
               "READ IT AS A CLAIM ABOUT THE GATE, NEVER THE CARD (G-75): The Lion-Turtle "
@@ -5672,6 +5761,20 @@ def cmd_suggest(args):
     print(f"{res['total']} suggestion(s) — {res['total'] - ncraft} owned, {ncraft} to craft"
           + (f" ({', '.join(f'{n} {r}' for r, n in sorted(craftby.items()))})"
              if ncraft else ""))
+    # HOW MUCH OF THE RANKING YOU ARE SEEING. `total` is the TRUNCATED count, so this
+    # footer read "20 suggestion(s)" whether the ranking held 20 candidates or 508, and
+    # nothing on the page said which. That matters because the ranking is theme-fit
+    # driven and buries a structurally-chosen card: measured over `recommendations.csv`,
+    # 783 applied swaps carry a recorded rank for the card that was ADDED, and their
+    # MEDIAN rank is 407 — only 83 (10%) fell inside this default top-20 window. A
+    # reader who does not know the window exists reads its absence as absence.
+    _cands = res.get("candidates")
+    if _cands and _cands > res["total"]:
+        print(f"Showing the top {res['total']} of {_cands} ranked candidate(s) — "
+              "`--limit 0` prints them all. Rank here is THEME FIT (+ role credit, curve "
+              "and a power co-signal); a card chosen for a mechanical interaction the "
+              "tags do not encode can rank far down. `deck.py feedback` reports where "
+              "the cards you actually added ranked.")
     print("Decks = how many of your OTHER decks the card is castable in + shares a "
           "SPECIFIC central theme with — generic overlap (etb/tokens/counters/…) and "
           "broad tribes don't count (higher = more value per wildcard).")
@@ -7430,6 +7533,24 @@ def cmd_feedback(args):
                   f"{_RECS_SUGGEST_WINDOW} beforehand. Watch the TREND, not the level — "
                   f"the level is dominated by structural picks the theme gate excludes "
                   f"by design (G-38).")
+        # WHERE THE ADDS ACTUALLY RANKED. `Add Surfaced` collapses the ledger's own
+        # `Add Rank` to a yes/no at the top-20 window, which answers "was it on the
+        # page" and hides "how far down was it" — and the second is the number that says
+        # whether the ranking is usable. The ledger has stored the rank all along; nothing
+        # read it as a distribution until BS10-05. A median near the window means the
+        # model and the human shop in the same aisle; a median in the hundreds means the
+        # ranking finds the card and buries it, which is a different problem from the
+        # theme gate G-38 describes and wants a different fix.
+        _ranked = sorted(int(r["Add Rank"]) for r in rows
+                         if str(r.get("Add Rank") or "").strip().isdigit())
+        if len(_ranked) >= _RECS_MIN_SAMPLE:
+            _n = len(_ranked)
+            _med = _ranked[_n // 2]
+            _in = sum(1 for x in _ranked if x <= _RECS_SUGGEST_WINDOW)
+            print(f"  Rank of the chosen add, over {_n} row(s) that recorded one: "
+                  f"median {_med} · p25 {_ranked[_n // 4]} · p75 {_ranked[3 * _n // 4]} "
+                  f"· worst {_ranked[-1]}. {_in} ({100 * _in // _n}%) ranked inside the "
+                  f"default top {_RECS_SUGGEST_WINDOW}.")
         print()
 
     if n < _RECS_MIN_SAMPLE:
@@ -10020,6 +10141,59 @@ def _candidate_castability(cost, ident, declared):
     return True, "identity has " + "/".join(stray) + " (off-color ability — still castable)"
 
 
+
+def _back_half_is_cast_from_hand(type_line):
+    """True when a `A // B` card's BACK half is a face you CAST, not one you transform into.
+
+    G-02 splits this family: an Adventure, a Room and a true split card all put the back
+    half on the stack for its own cost, while a TRANSFORM DFC reaches its back by
+    transforming — Norman Osborn stores `{1}{U} // {1}{U}{B}{R}` because that second
+    number is a TRANSFORM cost, and G-58 cites him and Bruce Banner as exactly the cards a
+    naive read mis-bins. There is no `layout` column to separate a transform DFC from a
+    modal one, so this reads the only unambiguous evidence the type line carries and
+    DECLINES the ambiguous middle: 213 of the 308 two-part costs qualify, and the 157
+    creature/land-faced DFCs stay out rather than be answered wrongly (the G-76 scope
+    line — report nothing rather than report a guess)."""
+    if not type_line or "//" not in type_line:
+        return False
+    front, back = [x.strip() for x in type_line.split("//", 1)]
+    if "Adventure" in back or "Room" in back:
+        return True
+    _PERMANENT = ("Creature", "Land", "Artifact", "Enchantment", "Planeswalker", "Battle")
+    def _spell(s):
+        return (("Instant" in s or "Sorcery" in s)
+                and not any(w in s for w in _PERMANENT))
+    return _spell(front) and _spell(back)
+
+
+def split_back_offcolor(cost, declared, type_line):
+    """For a `A // B` cost, the colours the BACK half needs that `declared` lacks -> str
+    like "R", or "" when there is no back half or it is castable.
+
+    `_candidate_castability` and `parse_pips` both read the FRONT face, which is correct
+    (G-02) — the front is what you pay to put the card on the stack. But every recommender
+    prints the whole `Front // Back` name, and 102 of the pool's 308 split / Adventure /
+    Room cards (33%) have a back half needing a colour the front does not: Failure //
+    Comply is `{1}{U} // {W}`, Heartflame Duelist // Heartflame Slash is `{1}{W} // {2}{R}`.
+    So a mono-U deck is shown "Failure // Comply" with no indication that half the card is
+    uncastable in it — against G-43's rule to grade by the FACE YOU CAST, on surfaces G-52
+    says must print their evidence. Found while sweeping Adventure removal for deck 67,
+    where four of the hits were exactly this shape.
+
+    Disclosure only — it never filters a pick or moves a score, because the front half is
+    genuinely castable and the card may well be worth running for it alone."""
+    if not cost or "//" not in cost:
+        return ""
+    if not _back_half_is_cast_from_hand(type_line):
+        return ""
+    back = cost.split("//", 1)[1].strip()
+    if not back:
+        return ""
+    strict, hybrid = parse_pips(back)
+    need = set(strict) - declared
+    need |= {x for h in hybrid if len(h) >= 2 and not (h & declared) for x in h}
+    return "/".join(sorted(need))
+
 def _printing_index():
     """name_lower (full AND DFC front) -> (display, set_code, collector), preferring
     owned∩pool > owned > pool (DD-1). Used by `deck.py resolve`.
@@ -10300,7 +10474,12 @@ def cmd_screen(args):
                               cand_pt=(cd.get("power"), cd.get("toughness")))
         legs = legal.get(nl) or legal.get(nl.split(" // ")[0]) or set()
         cast_ok, cast_note = _candidate_castability(cost, ident, declared)
+        # Only meaningful when the FRONT half is castable — otherwise "front half only
+        # here" contradicts the `⚠ NOT castable` flag printed right above it.
+        back_off = (split_back_offcolor(cost, declared, cd.get("type") or "")
+                    if cast_ok else "")
         rows.append(dict(name=name, cost=cost, mv=mv, text=text, roles=roles,
+                         back_off=back_off,
                          strength=strength, shared=shared, axis=ax, support=sup,
                          upgrades=ups, ident=ident,
                          owned=owned_qty(qty, name), rar=rar.get(nl, "?"),
@@ -10345,6 +10524,10 @@ def cmd_screen(args):
             flags.append(f"⚠ NOT legal in {fmt}")
         if r["cast_note"]:
             flags.append(r["cast_note"])
+        # The FRONT half is castable (that is what `_candidate_castability` read) but the
+        # BACK half is not — disclosure, never a filter. G-08.
+        if r.get("back_off"):
+            flags.append("⚠ back half needs " + r["back_off"] + " — front half only here")
         if r["upgrades"]:
             flags.append("★ STRICT UPGRADE of " + ", ".join(r["upgrades"]))
         if r["axis"] and r["support"]:
@@ -13105,6 +13288,10 @@ def cmd_tier(args):
             _line += (f"; the aggro clock would read "
                       f"{_clock_score(dict(vec, avg_mv=_best))}/7 against "
                       f"{_clock_score(vec)}/7")
+        _unpriced_t = unpriced_discount_cards(_cards, _cd, _mana)
+        if len(_unpriced_t) >= _UNPRICED_DISCLOSE_FLOOR:
+            _line += (f"; {len(_unpriced_t)} ◊ card(s) whose affinity/improvise discount "
+                      "is NOT priced in either")
         print(_line + " — ADVISORY: the floor above is graded on the printed curve.")
     # Protection is REPORTED, never fed into tier_band (the floor formula is anchored by
     # check_tier.py). A zero here is a judgment prompt, not a band change.

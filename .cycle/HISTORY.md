@@ -19,6 +19,35 @@ re-proposing a fix that was already declined.
 
 ---
 
+## Cycle 9 — closed 2026-09-09 (broad; the first `/reflect` this project ran)
+
+Moved here from STATE.md's `Where I left off` on 2026-09-14 when cycle 10 opened,
+per the split's rule that narrative lives in this file and nothing is dropped.
+
+**Cycle 9 is reflected and closed** — `.cycle/blocks/09-a-reflect.md`, `metrics.csv` row
+`2026-09-09,9,broad,reflect,2,3,1,…,13`. Six implement blocks graded action by action:
+**3 production fixes (1 Critical), 1 new capability, 13 defensive, 1 new failure mode (Low),
+net 2.**
+
+**The number worth carrying is `defensive_count = 13`** — the first time this project has
+ever measured that bucket, and it says 13 of 17 actions this cycle fixed nothing that was
+firing. That is not a criticism of the cycle (two of the 13 paid off inside it), but it is
+the shape the metric was adopted to expose, and cycles 2–8's backfilled rows cannot show it.
+
+One self-report was CORRECTED here: block `09-followons-and-syncdocs` claimed 2 production
+fixes; the honest count is 1. See the metrics `notes` field, which the verification pack
+surfaces automatically.
+
+**The cycle's central lesson has no gate** (logged as INV-11): a primitive must be
+re-measured AT each new caller. It was learned by shipping a gate to `swap` that measured
+0 of 805, then finding the same primitive 85% wrong the next day on a 40-row craft table.
+
+Next: nothing is outstanding from cycle 9. Either start a fresh `/broad-scan` (which
+increments to cycle 10), run the Seams & Invariants audit the counter now shows as 1 cycle
+overdue, or do the DECK work in Pending — the only thing here a player would notice.
+
+---
+
 ## Session — four craft-surface holes, found by USING the tools (2026-08-28, latest)
 
 Gates green; full suite passes (+9 tests). Block:

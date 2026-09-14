@@ -13,23 +13,26 @@
 > HISTORY.md; per-run summaries belong in `.cycle/blocks/`.
 
 ## Current
-Cycle: 9 — a fresh `/broad-scan` ran 2026-09-08 after cycle 8's work merged, which is what
-increments the number. Cycle 8's blocks stay under their own prefix.
-Phase: reflect (cycle 9's reflection has RUN — `.cycle/blocks/09-a-reflect.md`, and the
-first /reflect this project has ever run)
+Cycle: 10 — a fresh `/broad-scan` ran 2026-09-14 out of the deck 47 tuning post-mortem
+("why does the tooling not propose the cards I propose?"). Cycle 9's blocks stay under
+their own prefix; cycle 9 is reflected and closed.
+Phase: implement (Batches 1 & 2 done — `.cycle/blocks/10-batch1-2-ranking-visibility-*`)
 Scope: broad
 Test Command: `python3 scripts/check_all.py`
-Subsystem cycles since last Seams audit: 1 (counter adopted 2026-09-08; no Seams audit has run)
-Updated: 2026-09-09 (reflect)
+Subsystem cycles since last Seams audit: 2 (counter adopted 2026-09-08; no Seams audit has run)
+Updated: 2026-09-14 (broad-implement, batches 1-2)
 
 ## In progress (facts to carry forward — NOT judgments)
-- **Broad scan #9 is FULLY IMPLEMENTED** — all 8 findings, 4 batches, blocks `09-batch1-*`,
-  `09-batch2-and-followons-*`, `09-batch3-4-*`. Nothing from the scan is outstanding.
-- A FIFTH implement block landed 2026-09-09 from a different source: a post-mortem of the
-  deck 39/58/74 tuning session, which asked what caused the card misreads. Three tooling
-  fixes came out of it; two built, one measured and declined. Block
-  `09-swap-gate-and-type-scale-broad-implement.md`, and a SIXTH closing that block's own
-  follow-on list plus a `/sync-docs` pass — `09-followons-and-syncdocs-broad-implement.md`.
+- **Broad scan #10 ran 2026-09-14; Batches 1 & 2 are implemented, Batches 3 & 4 are NOT.**
+  The user selected batches 1-2 only. Outstanding: **BS10-04** (`tags_for` misses 112 of
+  150 artifact-count cards) and **BS10-01 / BS10-02** (interaction taxonomy: exchange/gain
+  control 79 of 84 missed, tap+stun 33 of 34 missed against bounce's 1 of 31).
+- **The number this cycle produced is `suggest`'s rank median: 407.** Over 783 applied
+  swaps that recorded a rank for the ADD, the median rank of the card actually chosen is
+  407 and only 10% fell inside the default top-20 window. That is the measured answer to
+  "why does the tooling not suggest my cards": it is not REACH, it is RANKING. BS10-05
+  discloses it; **BS10-04 is the finding that would move it.**
+- Cycle 9's work is fully landed; nothing from scan #9 is outstanding.
 - Deck 71's rebuild has an ordered open list — see §0-current of NEXT-SESSION.md.
 
 ## Completed this cycle
@@ -57,12 +60,34 @@ Updated: 2026-09-09 (reflect)
   measured and declined. New anchor G-84; G-66/G-06/G-40/K-09/G-42/K-13 updated; G-84's pool
   count registered in `figure_drift` | scripts/deck.py, scripts/check_docs.py,
   scripts/check_patterns.py, tests/test_deck.py, CLAUDE.md, docs/gotchas.md
+- **Scan #10 Batches 1 + 2** | BS10-03 card-advantage hole ("put the rest into your hand",
+  4 pool cards wholly missed; 0 tier floors moved, deck 67 prose re-grounded 4->5), BS10-05
+  `suggest`'s ranking window + `feedback`'s rank distribution (median 407), BS10-06
+  `pool.py --regex` (K-13's effect-shape search, which had a rule and no tool), BS10-07 the
+  ◊ discounts `effective_avg_mv` does not price (14 of 43 decks), BS10-08 a split card's
+  BACK half needing a colour the deck lacks (0.46% roster-wide, transform DFCs correctly
+  excluded) | scripts/deck.py, scripts/pool.py, CLAUDE.md, decks/67-warpwright/deck.txt
 
 ## Pending / not yet done
+- **Scan #10 Batches 3 & 4** — BS10-04 (tagger artifact-count hole) and BS10-01 / BS10-02
+  (interaction taxonomy holes). BS10-04 is the highest-leverage item outstanding: it is the
+  measured cause of the median-407 ranking BS10-05 only discloses.
+- A `/sync-docs` pass for the three gotchas BS10-07 / BS10-08 / BS10-05 outran — see the
+  block's DOCUMENTATION UPDATES NEEDED.
+
 - The unapplied cross-deck homes and earlier proposed swaps — NEXT-SESSION.md §0-current.
 - Two G-67 role-pattern holes (Kitnap, Eluge), baselined not fixed.
 
 ## Open follow-on items
+- The dashboard's craft table shares `suggest_scored` and now RECEIVES `back_off` and
+  `candidates` without rendering either — the G-40 shape (a primitive that works and one
+  caller that never asks). Re-measure the rate AT that caller before wiring; do not inherit
+  the 0.46% measured on the CLI.
+- Four private copies of the `\([^)]*\)` reminder regex remain across deck.py, lib.py (x2)
+  and tag_synergies.py. BS10-06 added a CALLER of deck.py's, not a fifth copy.
+- `_UNPRICED_DISCLOSE_FLOOR = 3` carries the `TIER_FLOOR_REQ` hazard (calibrated from
+  today's 43-deck population) and is NOT registered in `check_docs.figure_drift`.
+
 - `unmet_gate` has three callers now, and `redundancy` is the one never re-measured AT its
   own surface — the exact lesson the second wiring taught. Small list, so the rate is
   probably fine; "probably" is what that pass spent the day disproving.
@@ -78,6 +103,21 @@ Updated: 2026-09-09 (reflect)
 - Regression scenarios 5–8 and 10–19 need a person at a browser; several never walked.
 
 ## Decisions made (so the next session doesn't re-litigate)
+- **BS10-08 DECLINES the ambiguous middle rather than guessing.** There is no `layout`
+  column, so a transform DFC and a modal one are indistinguishable by cost alone — and
+  Norman Osborn / Bruce Banner are the two cards G-58 already cites as this exact mis-bin.
+  Only an Adventure/Room back or instant-or-sorcery-on-both-faces qualifies (213 of 308);
+  the 157 creature/land-faced DFCs stay unflagged. A modal DFC with a creature back is a
+  KNOWN, ACCEPTED false negative — G-76's scope line, report nothing over reporting a guess.
+- **BS10-07 and BS10-08 are DISCLOSURE, pinned out of every score** (G-25 / G-60's rule:
+  a score change on a fuzzy signal is what this file keeps having to undo). Do not
+  "finish" either by feeding it into `tier_band`.
+- **`_UNPRICED_DISCLOSE_FLOOR` is p75 of its own axis, not 1.** At >=1 the note fires on
+  83% of the decks that can see it — the G-07 saturation shape. 32% at the chosen floor.
+- **BS10-06 does not add a fifth reminder-regex copy.** `pool.strip_reminder` lazily proxies
+  `deck._REMINDER_RE` for the same reason `pool.classify_roles` proxies its model: `--regex`
+  must answer the same question about a card that `classify_roles` does (K-09).
+
 - `load_card_meta` is POOL-first for Synergies and LIBRARY-first for colours. Colours were
   deliberately left alone — the finding was about tags, and re-sourcing identity is a
   separate, wider change.
@@ -110,24 +150,23 @@ Updated: 2026-09-09 (reflect)
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
-**Cycle 9 is reflected and closed** — `.cycle/blocks/09-a-reflect.md`, `metrics.csv` row
-`2026-09-09,9,broad,reflect,2,3,1,…,13`. Six implement blocks graded action by action:
-**3 production fixes (1 Critical), 1 new capability, 13 defensive, 1 new failure mode (Low),
-net 2.**
+**Broad scan #10, Batches 1 & 2 are implemented, verified and committed** — block
+`.cycle/blocks/10-batch1-2-ranking-visibility-broad-implement.md`. Five findings:
+BS10-03 / BS10-05 / BS10-06 / BS10-07 / BS10-08. **1796 tests pass, `check_all` exit 0,
+`make postedit` clean. NET SCORE 4 − 0 = 4** (BS10-06 graded a new capability, not a
+production fix, per cycle 9's precedent).
 
-**The number worth carrying is `defensive_count = 13`** — the first time this project has
-ever measured that bucket, and it says 13 of 17 actions this cycle fixed nothing that was
-firing. That is not a criticism of the cycle (two of the 13 paid off inside it), but it is
-the shape the metric was adopted to expose, and cycles 2–8's backfilled rows cannot show it.
+**The thing to carry into the next session is BS10-04.** This cycle measured why the
+tooling's recommendations and the user's picks diverge — the median rank of an actually
+chosen add is **407 of ~950 candidates, 10% inside the top 20** — and then fixed only the
+DISCLOSURE of it. The cause is upstream: `tags_for` misses 112 of 150 artifact-count cards
+(74%), so theme-fit-driven `base` sinks mechanically perfect picks. BS10-05 makes the
+problem visible at the surface; BS10-04 is what makes the ranking usable. Batches 3 & 4
+were not selected, not blocked.
 
-One self-report was CORRECTED here: block `09-followons-and-syncdocs` claimed 2 production
-fixes; the honest count is 1. See the metrics `notes` field, which the verification pack
-surfaces automatically.
-
-**The cycle's central lesson has no gate** (logged as INV-11): a primitive must be
-re-measured AT each new caller. It was learned by shipping a gate to `swap` that measured
-0 of 805, then finding the same primitive 85% wrong the next day on a 40-row craft table.
-
-Next: nothing is outstanding from cycle 9. Either start a fresh `/broad-scan` (which
-increments to cycle 10), run the Seams & Invariants audit the counter now shows as 1 cycle
-overdue, or do the DECK work in Pending — the only thing here a player would notice.
+One caution for whoever runs BS10-04: it is a TAGGER change, which per G-67's triage line
+is a TAXONOMY widening, not a pattern hole — it re-scores the roster. K-10 requires BOTH
+derived tag stores rebuilt (`tag_synergies.py --merge` AND `build_pool.py --all`), and
+K-12 requires the before/after roster diff plus the `#: tier:` prose sweep. Budget for
+that, and expect the full pytest suite (not just `check_all`) to be the gate that catches
+stale prose — it is what caught deck 67 in this batch.

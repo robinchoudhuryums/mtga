@@ -19,6 +19,31 @@ commands disagree.
 
 ## 0-current. THE 2026-08-24 SESSION (READ THIS FIRST — supersedes §0-latest below)
 
+> **STATE STAMP, 2026-09-14.** Branch `claude/sync-commands-mmmsdb`. **Broad scan #10 ran
+> today and Batches 1 & 2 are implemented** (block
+> `.cycle/blocks/10-batch1-2-ranking-visibility-broad-implement.md`; 1796 pytest pass,
+> `check_all` exit 0). The scan came out of the deck 47 tune, from the user's question:
+> *why do the tooling's suggestions and the cards I pick keep diverging?* **The measured
+> answer is that it is RANKING, not reach** — over 783 applied swaps that recorded a rank
+> for the card ADDED, the median rank is **407** of ~950 candidates and only **10%** fell
+> inside `suggest`'s default top-20 window. Every one of the user's deck-47 picks WAS in
+> the ranking (ranks 63–404); none was near the top. **Batches 1 & 2 fixed the disclosure
+> of this, not the cause.** Landed: BS10-03 (a card-advantage pattern hole, 4 pool cards,
+> 0 tier floors moved), BS10-05 (`suggest` now names the window it truncates; `feedback`
+> reports the rank distribution), BS10-06 (`pool.py --regex` — K-13 demanded an
+> effect-shape search and no tool performed one), BS10-07 ("effective avg MV" discloses
+> the affinity/improvise discounts it does NOT price), BS10-08 (a split/Adventure card's
+> BACK half needing a colour the deck lacks). **STILL OPEN and the highest-leverage item
+> in the repo: BS10-04** — `tags_for` misses **112 of 150** artifact-count cards (74%), so
+> theme-fit-driven ranking sinks mechanically perfect picks. That is the CAUSE of the 407.
+> Also open: BS10-01 / BS10-02, interaction-taxonomy holes (exchange/gain control 79 of 84
+> missed; tap+stun 33 of 34 missed against bounce's 1 of 31). Batches 3 & 4 were not
+> selected by the user, not blocked. BS10-04 is a TAGGER change — G-67's triage line makes
+> it a TAXONOMY widening that re-scores the roster, so it needs K-10's BOTH-store rebuild and
+> K-12's before/after diff plus the `#: tier:` prose sweep. Deck 71's open list below is
+> untouched by this work and still stands.
+
+
 > **STATE STAMP, 2026-09-08.** Merged as PR #169 (deck work), #170 (the CI fix — see G-69) and
 > a third PR carrying the cross-deck pass (Outlaw Stitcher → 47, School Daze → 43) and this
 > doc sync; `main` is the place to branch from. Remaining genuine homes from that pass, NOT

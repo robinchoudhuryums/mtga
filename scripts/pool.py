@@ -26,12 +26,26 @@ Filters are case-insensitive substring matches, AND-ed together.
 
 import argparse
 import csv
+import re
 import os
 import sys
 import textwrap
 
 from lib import (DEFAULT_CSV, REPO_ROOT, load_rows, eprint, owned_qty, color_matches,
                  color_within, alias_front)
+
+
+def strip_reminder(text):
+    r"""Lazy proxy for deck.py's `_REMINDER_RE` — same reason `classify_roles` below is one:
+    the reminder-stripping regex must be the ONE the role/tag models use, or --regex would
+    answer a different question than `classify_roles` does about the same card, and this
+    module deliberately does not import deck.py at load time.
+
+    Four private copies of `\([^)]*\)` already exist across scripts/ (deck, lib x2,
+    tag_synergies); this adds a caller, not a fifth copy. Consolidating them is a separate
+    job — noted as a follow-on rather than done here."""
+    import deck
+    return deck._REMINDER_RE.sub(" ", text or "")
 
 
 def classify_roles(text):
@@ -132,6 +146,13 @@ def matches(card, args, owned):
             and has("Card Text", args.text)
             and has("Synergies", args.synergy)):
         return False
+    rx = getattr(args, "regex", None)
+    if rx:
+        body = card.get("Card Text") or ""
+        if not getattr(args, "regex_raw", False):
+            body = strip_reminder(body)
+        if not rx.search(body):
+            return False
     # Identity is SET-matched via lib.color_matches, never substring — "r" is in
     # "colorless", so the substring test swept in all 1,116 Colorless cards (BS-10).
     if not color_matches(card.get("Color(s)"), args.color):
@@ -193,6 +214,21 @@ def main():
     ap = argparse.ArgumentParser(description="Search the Arena card pool with ownership.")
     ap.add_argument("--pool", default=POOL_PATH)
     ap.add_argument("--name"); ap.add_argument("--type"); ap.add_argument("--text")
+    # EFFECT-SHAPE SEARCH. `--text` is a SUBSTRING match, and K-13's whole rule is that a
+    # literal search cannot see a generically-worded effect: "choose a creature type" never
+    # contains the type name, a chosen-type lord never says "Robot", a steal effect says
+    # "exchange control" and not "destroy". Every sweep that found something in this
+    # project's recent tuning passes was a hand-written regex over card-pool.csv, rewritten
+    # from scratch each session because no tool did it — the G-53 shape, one step earlier
+    # (not "a capability nothing reaches" but one never built). Reminder text is stripped
+    # before matching by default, the same way `tags_for` / `classify_roles` /
+    # `target_counts` read a card (K-09), so "(You may cast…)" boilerplate cannot mint a
+    # hit; --regex-raw keeps it for the library-search family whose riders live there.
+    ap.add_argument("--regex", metavar="RE",
+                    help="match Card Text as a REGEX (case-insensitive, reminder text "
+                         "stripped) — search the EFFECT SHAPE, not the noun (K-13)")
+    ap.add_argument("--regex-raw", action="store_true",
+                    help="with --regex: match against RAW text, reminder text included")
     ap.add_argument("--color", help="identity CONTAINS these colors (superset; 'c' = colorless only)")
     ap.add_argument("--within", help="identity FITS a deck of these colors (subset; colorless passes) "
                     "— the castable-in-my-deck survey filter")
@@ -210,6 +246,16 @@ def main():
     ap.add_argument("--full", action="store_true",
                     help="print each hit's full oracle text + keywords (deep read for adds)")
     args = ap.parse_args()
+
+    if args.regex:
+        try:
+            args.regex = re.compile(args.regex, re.IGNORECASE | re.DOTALL)
+        except re.error as e:
+            eprint(f"--regex is not a valid regular expression: {e}")
+            return 2
+    elif getattr(args, "regex_raw", False):
+        eprint("--regex-raw only means something with --regex.")
+        return 2
 
     try:
         pool = load_pool(args.pool)
