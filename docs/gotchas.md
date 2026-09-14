@@ -3709,6 +3709,64 @@ enchanted creature") scores no Removal role, and Eluge, the Shoreless Sea's "cos
 {1}) less to cast" scores no Cost-reduction role (the pattern wants a digit). Both sit in
 `role_baseline.txt` pending a K-14 floor diff; prune them when the patterns land.
 
+
+### 2026-09-14 (BS10-01 / BS10-02) — one hole, one decision, and they look identical from the data
+
+A broad scan filed two interaction-taxonomy findings side by side, both measured the same
+way and both reading like this rule's family-disagreement signature. **One was a real hole
+and the other was a documented decision.** The difference is not visible in the measurement,
+because a measurement counts the EFFECT and cannot see the DECISION.
+
+**BS10-01 — REAL, fixed.** Permanent steal and exchange (`gain control of target …`,
+`exchange control of …`) scored no interaction role on **91 of 98** pool cards, against the
+bounce sibling's 4%. Taking their creature answers it AND keeps it, and this module already
+treats the effect as an answer — the shrink-Aura guard upstream calls Duskmourn's
+Domination's "You control enchanted creature" a Control-Magic steal and a real answer. Only
+the `gain control of target` templating had no pattern.
+
+**Half the family is not an answer, and that half is the larger one.** A THREATEN ("gain
+control of target creature UNTIL END OF TURN. Untap it. It gains haste") hands the creature
+back: an alpha-strike or sacrifice-outlet enabler, an aggro finisher. **48 of the 103 steal
+cards are that shape**, and counting them would have inflated exactly the decks that run
+them — the same call G-62 makes about blind mill, and the same PERMANENCE line the
+neutralization block already draws.
+
+Two construction notes worth keeping. The duration cue sits in the same sentence but on
+EITHER side of the phrase (Grishnákh reads "until end of turn, gain control of…"), so the
+exclusion is clause-scoped with a tempered token rather than a proximity window — this
+rule's own "fix the CLAUSE, not the window". And **the trailing temper must be anchored on
+`(?:\.|$)`**: a bare `{0,N}` with nothing after it matches zero characters and excludes
+nothing, which is how a first draft let Act of Treason and Captivating Crew straight
+through while reporting a plausible-looking count.
+
+Three exclusions, each earned by reading a card in full rather than by reasoning: an
+OPPONENT gaining control is a DONATION (Harmless Offering, Discerning Financier); "gain
+control of target OPPONENT" is a player, not a permanent (Emrakul, the Promised End); and
+"until the end of your next turn" is a second Threaten templating (Evil's Thrall). Validated
+against a hand-graded list of 10 that must stay out and 10 that must come in: 20 of 20.
+
+Roster diff: **1 of 112 tier floors moved** (deck 47 B → A, on Trade the Helm — the exact
+card that deck's `#: tier:` block had been arguing was missing from the count), interaction
+up on 2 decks, `cuts` top-3 on 1. Bands A 67/41/4 → 68/40/4.
+
+**BS10-02 — REFUTED, and the exclusion re-affirmed.** The scan measured the one-turn
+tap-down family ("doesn't untap during its controller's NEXT untap step") as 33 of 34
+scoring no interaction role and filed it as a pattern hole. The two templatings really are
+disjoint — 37 permanent, 39 one-turn, **zero overlap** — which is exactly what a real
+family-disagreement looks like. But the permanent half is the half this bucket wants, and
+the block's own comment had already drawn the line: *a one-turn effect is TEMPO, not an
+answer*, and *a tempo card read as removal would inflate the axis the tier floor grades on,
+which is the BS2-06 failure*. Widening it would have added 36 cards to that axis.
+
+The refutation is now recorded at the exclusion itself, because that is where someone
+re-filing it will land. **The two outcomes are consistent rather than merely coexisting:**
+the same permanence line that keeps one-turn tap-down out is what makes the steal pattern
+exclude Threatens. A scan that files both as holes has found one hole and one decision.
+
+**The transferable rule: before widening a role bucket, read the comment at the exclusion.**
+A measured gap is evidence that a pattern does not match something. It is not evidence that
+it should.
+
 ## [K-01] A handful of recurring Universe-Beyond flavor *mechanics* (Vivid, Job select, Opus, Increment, I
 
 A handful of recurring Universe-Beyond flavor *mechanics* (Vivid, Job select,
@@ -6633,3 +6691,125 @@ types. G-67's triage line applies: a pattern hole is fixed and measured, a taxon
 re-scores the roster. This is the second.
 
 The chosen-type half had no such overlap, which is exactly why it was the right half first.
+
+---
+
+## [K-15] The tagger had no `artifacts` rule at all, so an artifact deck's payoffs sank in every theme ranking
+
+**Found 2026-09-14 (BS10-04), out of the question "why do the tooling's suggestions and the
+cards I pick keep diverging?"** The measured answer from BS10-05 was that it is RANKING, not
+reach: over 783 applied swaps the median rank of the card actually added is **407** of ~950
+candidates. This is the largest single cause of that number.
+
+### What was missing
+
+`MECHANIC_RULES` had **no `artifacts` entry**. Every `artifacts` tag in the pool came from the
+KEYWORD map — affinity, improvise, modular, station, prototype, craft, storied — so a card
+whose entire text is "artifacts you control get +1/+1", or "draw a card for each artifact you
+control", or "spend this mana only to cast an artifact spell", carried **no artifact theme**.
+`suggest` / `cuts` / `suggest-homes` / centrality are all theme-fit driven, so those cards
+ranked as though they had nothing to do with the deck built on them.
+
+Deck 47 (mono-blue affinity) is the worked case. Of its 24 artifact-referencing nonland
+cards the keyword path tagged 5, and **10 genuinely artifact-matters cards had no artifact
+tag at all** — including both of the artifact-restricted mana sources the deck is built on
+(Steelswarm Operator, Cargo Ship).
+
+### Why it is a separate rule and not an entry in `_TYPE_MATTERS`
+
+`_TYPE_MATTERS` (K-03's "a card whose text names a card TYPE it interacts with but never is")
+looks like the natural home, and it is wrong here. Its first pattern is
+`(a|an|target|another|each|any) <TYPE>`, which for artifacts matches **427 pool cards** —
+every "destroy target artifact" ever printed. That is artifact HATE, and tagging it
+`artifacts` would call a hoser a synergy piece, the G-42 shape. The type-matters mechanism
+is right for Equipment and wrong for Artifact because only Artifact has a removal population
+that large.
+
+### The scope, measured against this file's own bands
+
+`_ARTIFACT_MATTERS_RE` matches **273 pool cards, 1.71%** — between `exile cast` (1.68%) and
+`pay life` (2.2%), and well under the **3.86%** that `exile cast` was explicitly capped to
+avoid as "past the point where it still identifies an archetype". Two loosenings were
+measured and REJECTED for landing there:
+
+- **`whenever an artifact … enters` without the `an|another|one or more` anchor** also matches
+  "when **this** artifact enters" — i.e. every artifact with an ETB trigger (Abzan Monument,
+  Adherent's Heirloom). Those are artifacts, not artifact payoffs.
+- **`artifact or creature` / `creature or artifact` is 236 cards** of generic either-type text
+  (Secure Detention enchants either; Compleated Huntmaster sacs either). The `(?<!or )` and
+  `(?! or creature)` guards are load-bearing, not tidiness.
+
+Read on `_clean_text` (K-09), so affinity's own reminder text — which literally reads "for
+each artifact you control" — cannot mint a hit; those cards already tag via the keyword.
+
+### What it moved
+
+Pool `artifacts` tag **158 → 415** cards. Roster diff, the K-12/K-14 shape:
+
+- **0 of 112 tier floors moved**; band distribution identical at A 67 / B 41 / C 4. Expected
+  and confirmed rather than assumed — G-80's rule is that tags feed `cuts`/`suggest`/
+  centrality while `tier_band` grades on `role_tally`, which reads TEXT.
+- `cuts` top-3 changed on **5 of 112** decks, #1 on 3 — each toward protecting an artifact
+  card in an artifact deck (deck 21a's #1 cut was Radiant Lotus).
+- `suggest` top-20 changed on **27** decks, #1 on 2.
+- `central_themes` moved on 6 decks, and deck 47's **20 → 10 is the model getting sharper,
+  not weaker**: `artifacts` went from 8 of its cards to 25 of 36 nonland, so the incidental
+  tail (`Mutant`, `Ninja`, `Turtle`, `combat`, `vigilance`) stopped clearing the centrality
+  bar. The deck now reads as an artifact deck. Both it and deck 51 needed their `#: tier:`
+  figures re-grounded — K-12's mandated consequence, caught by the roster figure sweep.
+
+**The validation that matters.** Re-ranking the 15 cards the user actually added to deck 47,
+against the PRE-swap list (a scratch path, G-56, so `suggest` does not exclude them for
+already being in the deck): **median rank 310 → 144, best rank 120 → 20**, 9 up and 5 down.
+The five that moved down are the honest cost — four have no artifact-matters text at all and
+are correctly untagged, and one, Three Steps Ahead ("a copy of target artifact **or** creature
+you control"), is a genuine false negative bought by the 236-card `or creature` guard.
+
+### Residuals
+
+- **Being an artifact is not tagged, deliberately.** ~19% of the pool is artifacts; tagging
+  them would destroy the theme. The "how many artifacts does this deck field" question is
+  already answered correctly by G-83's `cost_scale_resource`, which reads the TYPE LINE.
+- The `or creature` guard costs the genuine either-type cards an artifact deck would copy or
+  sacrifice. Measured at 236 excluded against a handful of real ones; do not relax it without
+  re-measuring both sides.
+- BS10-01 / BS10-02 (the interaction taxonomy: exchange/gain control 79 of 84 missed,
+  tap+stun 33 of 34) are the same class one model over and remain open.
+
+---
+
+## [G-85] "Effective avg MV" prices only the PRINTED alternative costs, and said so nowhere
+
+**Added 2026-09-14 (BS10-07).** `effective_avg_mv` substitutes the printed alternative costs
+`_ALT_COST_RE` finds — Warp, Plot, Foretell — and nothing else. `classify_cost` flags a much
+wider ◊ set (affinity, improvise, convoke, delve, evoke, and the "costs {N} less" text rule)
+that it never prices, because what those shrink by is a BOARD STATE the curve does not have.
+
+So a deck whose entire premise is a discount printed **"effective avg MV 3.51 against 3.54
+printed"** and meant the printed curve. Deck 47 (mono-blue affinity) carried seven such cards
+plus three artifact-restricted mana sources, and the "correction" moved 0.03 on a list that
+routinely casts a {6} for {U}{U}. That figure was read during a live tune. The ◊ list was
+already on the page; what was missing is that the line calling itself *effective* does not use it.
+
+### Disclosure, never pricing
+
+`unpriced_discount_cards` is derived from the same two primitives the ◊ list and the effective
+figure already use (`cheat_cost_cards` + `classify_cost`), so the three surfaces cannot
+disagree (G-40). It is REPORT-ONLY at `stats` and `tier` and must stay so, for the reason G-25
+and G-60 both give: the axis is fuzzy, and a score change on a fuzzy signal is what this file
+keeps having to undo. Pricing affinity properly needs a board state no curve reading has.
+
+### The floor is p75 of its own axis, not 1
+
+`_UNPRICED_DISCLOSE_FLOOR = 3`, calibrated from the only population that can see the line —
+the **43 decks that print an effective figure at all** — where the unpriced count runs
+min 0 / p25 1 / p50 2 / p75 3 / p90 5 / max 11. At a floor of 1 the note fires on **83%** of
+them, which is the G-07 saturation shape: a standing warning on four decks in five is one you
+learn to skip. At 3 it fires on **14 of 43 (32%)**, and deck 47 — the case that found it —
+carries 7.
+
+That calibration carries the `TIER_FLOOR_REQ` hazard: it is a roster percentile, so it stops
+discriminating if the distribution moves. The 14-of-43 figure is registered in
+`check_docs.figure_drift` so a drift prompts re-derivation rather than going unnoticed —
+the same treatment `tier_floor_spread` gets for `TIER_FLOOR_REQ` and G-84's population gets
+for its floor/key.

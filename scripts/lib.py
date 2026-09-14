@@ -490,7 +490,23 @@ def mana_value(cost):
 # it, and `suggest --lands` skipped every any-colour land and every basic fetch before
 # scoring (`prod` was empty). ONE reader of the text, here, so the counter and the
 # recommender cannot disagree about what a land produces.
-_LAND_REMINDER_RE = re.compile(r"\([^)]*\)")
+# THE reminder-text stripper. Four private copies of this pattern existed — here (twice),
+# in deck.py and in tag_synergies.py — and they were not even the same regex: deck's read
+# `\([^()]*\)` and the other three `\([^)]*\)`, which differ the moment a reminder
+# contains a nested parenthesis. Measured across all 15,977 pool texts they agree on every
+# one, so this consolidation is behaviour-preserving TODAY and the divergence was latent,
+# not live — which is exactly the parallel-source-of-truth shape this project keeps paying
+# for (G-70, G-35, G-30, G-63, G-71, K-09). `lib` is the canonical home because it imports
+# nothing from the project, so deck/tag_synergies can alias it with no cycle.
+#
+# The STRICTER `[^()]` form wins: on nested text it declines to span from an outer open
+# paren to an inner close, which is the conservative direction.
+#
+# The four original NAMES are kept as aliases rather than rewritten at ~40 call sites:
+# `check_patterns`' completeness registry is keyed by (module, attribute name), so
+# renaming them would silently drop them out of the gate that proves they still match.
+REMINDER_RE = re.compile(r"\([^()]*\)")
+_LAND_REMINDER_RE = REMINDER_RE
 _ADD_CLAUSE_RE = re.compile(r"\badds?\b[^.\n]*", re.I)
 _ANY_COLOR_RE = re.compile(
     r"\b(?:one |two |three |X |that much |an amount of )?mana (?:in any combination )?of any "
@@ -834,7 +850,7 @@ def distinctiveness_score(tags, idf, tribe_tags, n, *, k=2):
 # corpus / build artifact / normalization pipeline (the cheap alternative to a text
 # TF-IDF model). card_distinctiveness takes the MAX of the two signals, so a
 # mis-calibration here can RESCUE a mis-tagged card but never scramble the ranking.
-_STRUCT_REMINDER_RE = re.compile(r"\([^)]*\)")  # parenthetical reminder text — not an ability
+_STRUCT_REMINDER_RE = REMINDER_RE  # parenthetical reminder text — not an ability
 # A triggered ability on an event OTHER than a plain ETB — the distinctive shape a
 # generic "when this enters" token/lifegain body lacks. (Conservative: a combined
 # "enters or attacks" trigger is skipped by the enters-lookahead — safe, it only

@@ -25,7 +25,8 @@ import os
 import re
 import sys
 
-from lib import DEFAULT_CSV, REPO_ROOT, load_rows, write_rows, csv_schema_error, eprint
+from lib import (DEFAULT_CSV, REPO_ROOT, load_rows, write_rows, csv_schema_error,
+                 eprint, REMINDER_RE)
 
 MANA_CSV = os.path.join(REPO_ROOT, "card-mana.csv")
 
@@ -507,6 +508,7 @@ MECHANIC_RULES = [
     ("food", lambda t, x: "food" in x),
     ("treasure", lambda t, x: "treasure" in x),
     ("clue", lambda t, x: "clue" in x or "investigate" in x),
+    ("artifacts", lambda t, x: _ARTIFACT_MATTERS_RE.search(_clean_text(x)) is not None),
     ("equipment", lambda t, x: "equipment" in t or "equip " in x or "equip {" in x),
     ("aura", lambda t, x: "aura" in t or "enchant creature" in x),
     ("vehicle", lambda t, x: "vehicle" in t),
@@ -594,6 +596,52 @@ _NON_TRIBE_WORDS = {
 # Scoped to an INTERACTION clause, not a bare mention, so a Vehicle's own crew reminder
 # text doesn't retag every Vehicle with what it already is.
 _TYPE_MATTERS = ("Mount", "Vehicle", "Equipment", "Saga", "Battle", "Planeswalker")
+# ARTIFACTS AS A COUNTED RESOURCE — the theme `_TYPE_MATTERS` above deliberately does NOT
+# carry, and the hole that sank an entire deck's recommendations (BS10-04). There was no
+# `artifacts` MECHANIC rule at all: the tag came ONLY from the keyword map (affinity /
+# improvise / modular / station / prototype / craft / storied), so a card whose whole text
+# is "artifacts you control get +1/+1" or "draw a card for each artifact you control"
+# carried no artifact theme and sank in every theme-fit ranking. Measured on deck 47
+# (mono-blue affinity): of its 24 artifact-referencing nonland cards, the keyword path
+# tagged 5 and 10 genuinely artifact-matters cards had NO artifact tag at all — including
+# the two artifact-restricted mana sources the deck is built on.
+#
+# WHY NOT `_TYPE_MATTERS`: its first pattern is `(a|an|target|another|each|any) <TYPE>`,
+# which for artifacts matches **427 pool cards** — every "destroy target artifact" printed.
+# That is artifact HATE, and tagging it `artifacts` would call a hoser a synergy piece, the
+# G-42 shape. The type-matters mechanism is right for Equipment and wrong for Artifact
+# because only Artifact has a removal population that large, so this is a separate rule
+# with the removal templating left out.
+#
+# SCOPE, measured against the bands this file already sets. The rule matches **273 pool
+# cards, 1.71%** — between `exile cast` (1.68%) and `pay life` (2.2%), and well under the
+# **3.86%** that `exile cast` was explicitly capped to avoid as "past the point where it
+# still identifies an archetype". Two loosenings were measured and REJECTED for landing
+# there: `whenever an artifact ... enters` without the `an|another|one or more` anchor also
+# matches "when THIS artifact enters", i.e. every artifact with an ETB (Abzan Monument,
+# Adherent's Heirloom); and `artifact or creature` / `creature or artifact` is **236 cards**
+# of generic either-type text (Secure Detention enchants either, Compleated Huntmaster sacs
+# either) that no artifact deck is specifically served by — hence the `(?<!or )` and
+# `(?! or creature)` guards, which are load-bearing, not tidiness.
+#
+# Read on `_clean_text` (K-09), so affinity's own reminder text — which literally reads
+# "for each artifact you control" — cannot mint a hit; those cards already tag via keyword.
+_ARTIFACT_MATTERS_RE = re.compile(
+    # the card COUNTS them
+    r"(?:for each|number of) (?:other )?artifacts?\b"
+    # anything about the artifacts YOU CONTROL — anthem, target, tap-for-mana, bounce
+    r"|(?<!or )\bartifacts?(?: creatures?)? you control\b(?! or creature)"
+    # a COUNT GATE (metalcraft and its longhand)
+    r"|(?:if|as long as|whenever) you control [^.]{0,24}?\bartifacts?\b"
+    r"|\b(?:two|three|four|five|\d+) or more artifacts\b"
+    r"|\bmetalcraft\b"
+    # a payoff for PLAYING them
+    r"|whenever you cast an artifact|artifact spells? you cast"
+    r"|whenever (?:an|another|one or more) artifacts?\b[^.]{0,40}?\benters?\b"
+    r"|an artifact entered\b"
+    # mana that can ONLY buy artifacts is an artifact-deck card by construction
+    r"|only to cast (?:an )?artifact",
+    re.I)
 _TYPE_MATTERS_RES = [
     re.compile(r"\b(?:a|an|target|another|each|any) (%s)\b" % "|".join(_TYPE_MATTERS)),
     re.compile(r"\b(%s)s? you control\b" % "|".join(_TYPE_MATTERS)),
@@ -759,7 +807,7 @@ _GRANTED_KEYWORDS = ("deathtouch", "flying", "trample", "lifelink", "menace",
 # Reminder text is parenthetical and QUOTES the keyword it explains, so a scan over raw
 # text would tag every card whose reminder happens to name one. Stripped for THIS pass
 # only — every other rule keeps the corpus it was written against.
-_GRANT_REMINDER_RE = re.compile(r"\([^)]*\)")
+_GRANT_REMINDER_RE = REMINDER_RE   # one definition, in lib (see its comment)
 _QUOTED_TEXT_RE = re.compile(r'"[^"]*"')
 
 

@@ -2,8 +2,8 @@
 #: format: Standard
 #: colors: GWU
 #: plan: midrange
-#: tier: B (PROVISIONAL) — graded UNDER the A metrics floor (interaction 4 / card-adv 4,
-#: tier: which UNDER-reads by at least 1: Fblthp scores ZERO roles — "the top card of
+#: tier: B (PROVISIONAL) — graded UNDER the A metrics floor (interaction 4 / card-adv 5,
+#: tier: which UNDER-reads by at least 1: Fblthp scores no CARD-ADVANTAGE role — "the top card of
 #: tier: your library has plot" is a one-card template no _ROLE_PATTERNS entry can
 #: tier: earn (K-09), and it is repeatable card advantage the metric cannot see, the
 #: tier: same shape as the CONNIVE under-count in K-12;

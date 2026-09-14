@@ -352,7 +352,14 @@ def _pattern_groups():
     out += [("tag_synergies._TYPE_MATTERS_RES", p, "raw")
             for p in tag_synergies._TYPE_MATTERS_RES]
     for name in ("_HEIST_CAST_LOOSE", "_HEIST_CAST_STRICT", "_HEIST_OPP_ZONE",
-                 "_EXILE_CAST_ENABLE", "_EXILE_CAST_PAYOFF"):
+                 "_EXILE_CAST_ENABLE", "_EXILE_CAST_PAYOFF",
+                 # ARTIFACTS-AS-A-COUNTED-RESOURCE (BS10-04). "norm", not "raw": unlike
+                 # its `_TYPE_MATTERS_RES` neighbour above — which needs original case
+                 # because a real card TYPE is capitalized — this one is run on
+                 # `_clean_text(x)`, already lowercased and reminder-stripped, so
+                 # registering it "raw" would be the wrong-corpus mistake this file's
+                 # own docstring warns about.
+                 "_ARTIFACT_MATTERS_RE"):
         out.append((f"tag_synergies.{name}", getattr(tag_synergies, name), "norm"))
     # GRANTED-keyword scan. One pattern per evergreen keyword, nested in a dict rather
     # than bound as module attributes, so the completeness check cannot see them

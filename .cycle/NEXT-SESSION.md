@@ -19,6 +19,72 @@ commands disagree.
 
 ## 0-current. THE 2026-08-24 SESSION (READ THIS FIRST — supersedes §0-latest below)
 
+> **STATE STAMP, 2026-09-14 (third — SCAN #10 IS COMPLETE, supersedes both below).**
+> All four batches and every follow-on are implemented. Batch 4 closed **BS10-01**:
+> permanent steal / exchange (`gain control of target …`, `exchange control of …`) scored no
+> interaction role on **91 of 98** pool cards; the pattern was added with the 48 THREATENS
+> ("until end of turn … untap it … gains haste") deliberately excluded on the permanence
+> line. **1 of 112 tier floors moved** — deck 47 B → A, on Trade the Helm, the exact card
+> that deck's own tier block had been arguing was uncounted.
+> **BS10-02 was REFUTED, not fixed, and this is the thing to carry:** the one-turn tap-down
+> exclusion is DELIBERATE and its reasoning sits four lines above the pattern (a one-turn
+> effect is TEMPO, not an answer; widening it adds 36 cards to the axis `tier_band` grades —
+> the BS2-06 failure). The two findings arrived looking identical. **A measurement counts the
+> EFFECT and cannot see the DECISION — read the comment at the exclusion before widening a
+> role bucket.** Do not re-file it.
+> **ONE HUMAN DECISION IS OPEN: deck 47's tier letter.** It claims B against a now-A floor.
+> The rubric permits one band under when the prose argues it, and the block names three risks
+> (unbuilt with 10 craft targets, thin protection, the curve climbed) — but `deck.py tier 47`
+> prints the possibly-under-graded nudge. Never auto-written; it is the user's call.
+> **AND A GATE HID A REAL STALE FIGURE.** After the change deck 47's prose said "interaction
+> 6" against a live 7, and BOTH `tier --audit-rationale` and the pytest roster sweep reported
+> CURRENT — "rather than", written into that block a cycle earlier, sat 46 chars before the
+> number and tripped `_figure_is_history`'s comparison-cue window, silencing all five of its
+> live-vector figures. Reworded and watched-it-fail; the general defect is logged in
+> STATE.md's follow-ons. **The K-12 promise that "the suite names every stale deck" is only
+> as good as the prose's wording.**
+>
+> **STATE STAMP, 2026-09-14 (second).** **Batch 3 and every
+> follow-on are now ALSO done** — block `10-batch3-followons-artifacts-tagger-*`. BS10-04 is
+> closed: the tagger had **no `artifacts` rule at all**, so an artifact deck's own payoffs
+> were invisible to every theme ranking. New `_ARTIFACT_MATTERS_RE` (273 pool cards, 1.71%;
+> pool tag 158 → 415); **0 of 112 tier floors moved**; re-ranking the 15 cards actually added
+> to deck 47 against the pre-swap list gives **median rank 310 → 144, best 120 → 20**. Also
+> landed: the dashboard craft table now renders the back-half flag and a "top 15 of N" window
+> hint, the four reminder-regex copies are one `lib.REMINDER_RE`, and two figures are
+> registered in `figure_drift`. New anchors **K-15** and **G-85**.
+> **THE ONE THING LEFT FROM SCAN #10 IS BS10-01 / BS10-02** — the interaction-taxonomy holes
+> (exchange/gain control 79 of 84 missed, tap+stun 33 of 34). **They are NOT a repeat of
+> BS10-04**: tags feed `cuts`/`suggest` while `tier_band` reads TEXT (G-80), which is why the
+> artifacts fix moved zero floors — but these feed `role_tally`, which IS what the floor
+> grades on, so that batch re-scores the roster and needs K-14's floor diff plus a roster
+> `#: tier:` prose sweep. Deck 47's own tier block argues from the 79-of-84 figure.
+>
+> **STATE STAMP, 2026-09-14.** Branch `claude/sync-commands-mmmsdb`. **Broad scan #10 ran
+> today and Batches 1 & 2 are implemented** (block
+> `.cycle/blocks/10-batch1-2-ranking-visibility-broad-implement.md`; 1796 pytest pass,
+> `check_all` exit 0). The scan came out of the deck 47 tune, from the user's question:
+> *why do the tooling's suggestions and the cards I pick keep diverging?* **The measured
+> answer is that it is RANKING, not reach** — over 783 applied swaps that recorded a rank
+> for the card ADDED, the median rank is **407** of ~950 candidates and only **10%** fell
+> inside `suggest`'s default top-20 window. Every one of the user's deck-47 picks WAS in
+> the ranking (ranks 63–404); none was near the top. **Batches 1 & 2 fixed the disclosure
+> of this, not the cause.** Landed: BS10-03 (a card-advantage pattern hole, 4 pool cards,
+> 0 tier floors moved), BS10-05 (`suggest` now names the window it truncates; `feedback`
+> reports the rank distribution), BS10-06 (`pool.py --regex` — K-13 demanded an
+> effect-shape search and no tool performed one), BS10-07 ("effective avg MV" discloses
+> the affinity/improvise discounts it does NOT price), BS10-08 (a split/Adventure card's
+> BACK half needing a colour the deck lacks). **STILL OPEN and the highest-leverage item
+> in the repo: BS10-04** — `tags_for` misses **112 of 150** artifact-count cards (74%), so
+> theme-fit-driven ranking sinks mechanically perfect picks. That is the CAUSE of the 407.
+> Also open: BS10-01 / BS10-02, interaction-taxonomy holes (exchange/gain control 79 of 84
+> missed; tap+stun 33 of 34 missed against bounce's 1 of 31). Batches 3 & 4 were not
+> selected by the user, not blocked. BS10-04 is a TAGGER change — G-67's triage line makes
+> it a TAXONOMY widening that re-scores the roster, so it needs K-10's BOTH-store rebuild and
+> K-12's before/after diff plus the `#: tier:` prose sweep. Deck 71's open list below is
+> untouched by this work and still stands.
+
+
 > **STATE STAMP, 2026-09-08.** Merged as PR #169 (deck work), #170 (the CI fix — see G-69) and
 > a third PR carrying the cross-deck pass (Outlaw Stitcher → 47, School Daze → 43) and this
 > doc sync; `main` is the place to branch from. Remaining genuine homes from that pass, NOT

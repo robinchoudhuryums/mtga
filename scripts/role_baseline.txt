@@ -273,7 +273,6 @@ Magic Pot
 Magitek Armor
 Mai, Jaded Edge
 Mai, Scornful Striker
-Make Your Own Luck
 Malboro
 Mammoth Bellow
 Mardu Devotee
@@ -452,7 +451,6 @@ Tinybones, Bauble Burglar
 Tinybones, the Pickpocket
 Toph, the Blind Bandit
 Topiary Lecturer
-Trade the Helm
 Transit Mage
 Traveling Botanist
 Treasure Dredger

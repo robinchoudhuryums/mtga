@@ -287,6 +287,22 @@ python3 scripts/pool.py --color G --synergy ramp --unowned   # green ramp you'd 
 python3 scripts/pool.py --synergy removal --rarity rare,mythic --unowned
 python3 scripts/pool.py --type Merfolk --count               # how many exist vs. how many you own
 python3 scripts/pool.py --within WUBRG --role ramp --unowned # anything a five-colour deck could CAST
+python3 scripts/pool.py --regex 'choose a creature type'     # search the EFFECT SHAPE, not the noun
+```
+
+**`--regex` searches oracle text as a regular expression, and it is the one to reach
+for when the effect has no fixed noun.** `--text` is a substring match, so a literal
+search cannot see a generically-worded effect: a chosen-type lord says "as this enters,
+choose a creature type" and never contains the type name, a steal effect says "exchange
+control" rather than "destroy", and a zero-result substring sweep reads like a fact about
+the format when it is only an unverified search. Reminder text is stripped before matching,
+the same way the synergy tagger and the role classifier read a card, so `(You may cast…)`
+boilerplate cannot mint a hit — pass `--regex-raw` to keep it (fetch-land riders live
+there). It composes with every other filter:
+
+```
+python3 scripts/pool.py --regex 'artifacts you control (get|have)' --within U --legal standard
+python3 scripts/pool.py --regex 'exchange control of|gain control of target' --unowned --full
 ```
 
 `--color` matches the identity set, as in `query.py` (`--color R` excludes
@@ -461,43 +477,44 @@ python3 scripts/deck.py similar 40    # decks most alike by central-theme overla
 python3 scripts/deck.py resolve "Bloom Tender" "2 Island"   # names → deck lines `<qty> Name (SET) #`
 python3 scripts/deck.py resolve --check 76   # verify a WRITTEN deck's (SET) COLLECTOR# fields (strict)
 python3 scripts/deck.py resolve --fix 76 --apply   # ...and REPAIR the bad ones in place (never by hand)
-python3 scripts/deck.py check 1a      # owned vs needed + a castability lint (off-color cards)
-python3 scripts/deck.py diff 1 1a     # what variant 1a changes vs base deck 1
-python3 scripts/deck.py arena 1a      # emit an Arena-importable decklist to paste back
-python3 scripts/deck.py stats 1a      # curve, colors, types, cost flags, roles + interaction profile
-python3 scripts/deck.py mana 1a       # hybrid-aware color requirements + castability lint
-python3 scripts/deck.py consistency 1a # opening-hand keepable %, land drops, P(cast on curve) + source fix
-python3 scripts/deck.py tribes 1a     # creature-subtype breakdown + type-matters synergies
-python3 scripts/deck.py engines 1a    # enabler ↔ payoff balance for the deck's engine themes
-python3 scripts/deck.py targets 1a    # TARGETS for its own gated effects (MV caps, sac costs) + STATE gates (dead / free / CONFLICT — an attacks-alone card in a go-wide deck)
-python3 scripts/deck.py suggest 1a --owned   # pool cards that fit; --owned = 0-wildcard upgrades
-python3 scripts/deck.py suggest 1a --lands --owned  # MANABASE recommender: owned lands that fix your colors (fixing + synergy + scarce-color nudges; any-colour lands and basic fetches included)
-python3 scripts/deck.py suggest 1a --needs   # STRUCTURAL needs the theme model can't see: fixing · acceleration (--ramp) · interaction (--interaction, board-scalers flagged)
-python3 scripts/deck.py legal 1a      # construction lint: deck size, copy limits, format legality
-python3 scripts/deck.py shape 1a      # wide vs tall, fast vs slow — the structural read themes can't give
-python3 scripts/deck.py cuts 1a       # rank the deck's weakest-fit cards as cut candidates
-python3 scripts/deck.py screen 1a <names>    # re-score candidate cards against the deck AS IT IS NOW (★ strict upgrade, ✱ multiplier)
-python3 scripts/deck.py flex 1a       # suggested swaps (#~ lines) + stale ones: dead -Out, already-run +In, contradicted note figures
-python3 scripts/deck.py swap 1a --cut A --add B   # preview deltas + FULL oracle text of both; --apply writes (.bak) + auto-retires stale #~ flex lines
-python3 scripts/deck.py swap 1a --cut A --add B --apply --section Removal   # ...and file the new line under `# Removal` (verbatim; never hand-move a card line)
-python3 scripts/deck.py apply-flex 1a 2      # promote flex swap #2 into the 60 (--apply writes)
+python3 scripts/deck.py check 20a      # owned vs needed + a castability lint (off-color cards)
+python3 scripts/deck.py diff 20 20a   # what variant 20a changes vs base deck 20
+python3 scripts/deck.py arena 20a      # emit an Arena-importable decklist to paste back
+python3 scripts/deck.py stats 20a      # curve, colors, types, cost flags, roles + interaction profile
+python3 scripts/deck.py mana 20a       # hybrid-aware color requirements + castability lint
+python3 scripts/deck.py consistency 20a # opening-hand keepable %, land drops, P(cast on curve) + source fix
+python3 scripts/deck.py tribes 20a     # creature-subtype breakdown + type-matters synergies
+python3 scripts/deck.py engines 20a    # enabler ↔ payoff balance for the deck's engine themes
+python3 scripts/deck.py targets 20a    # TARGETS for its own gated effects (MV caps, sac costs) + STATE gates (dead / free / CONFLICT — an attacks-alone card in a go-wide deck)
+python3 scripts/deck.py suggest 20a --owned   # pool cards that fit; --owned = 0-wildcard upgrades
+python3 scripts/deck.py suggest 20a --lands --owned  # MANABASE recommender: owned lands that fix your colors (fixing + synergy + scarce-color nudges; any-colour lands and basic fetches included)
+python3 scripts/deck.py suggest 20a --needs   # STRUCTURAL needs the theme model can't see: fixing · acceleration (--ramp) · interaction (--interaction, board-scalers flagged)
+python3 scripts/deck.py legal 20a      # construction lint: deck size, copy limits, format legality
+python3 scripts/deck.py shape 20a      # wide vs tall, fast vs slow — the structural read themes can't give
+python3 scripts/deck.py cuts 20a       # rank the deck's weakest-fit cards as cut candidates
+python3 scripts/deck.py screen 20a <names>    # re-score candidate cards against the deck AS IT IS NOW (★ strict upgrade, ✱ multiplier)
+python3 scripts/deck.py flex 20a       # suggested swaps (#~ lines) + stale ones: dead -Out, already-run +In, contradicted note figures
+python3 scripts/deck.py swap 20a --cut A --add B   # preview deltas + FULL oracle text of both; --apply writes (.bak) + auto-retires stale #~ flex lines
+python3 scripts/deck.py swap 20a --cut A --add B --apply --section Removal   # ...and file the new line under `# Removal` (verbatim; never hand-move a card line)
+python3 scripts/deck.py apply-flex 20a 2      # promote flex swap #2 into the 60 (--apply writes)
 python3 scripts/deck.py feedback             # how cuts/suggest scored against the swaps you applied (report-only)
-pbpaste | python3 scripts/deck.py verify 1a  # diff a pasted Arena export against the stored deck
+pbpaste | python3 scripts/deck.py verify 20a  # diff a pasted Arena export against the stored deck
 pbpaste | python3 scripts/deck.py sync        # reconcile MANY decks from one Arena paste (--apply to write)
-python3 scripts/deck.py text 1a              # full oracle text of every card (read before grading)
-python3 scripts/deck.py suggest 1a --unowned --full  # picks WITH full text + keywords + flags
+python3 scripts/deck.py text 20a              # full oracle text of every card (read before grading)
+python3 scripts/deck.py suggest 20a --unowned --full  # picks WITH full text + keywords + flags
+python3 scripts/deck.py suggest 20a --unowned --limit 0  # the WHOLE ranking, not the top-20 window
 python3 scripts/deck.py suggest-homes "Crib Swap"    # which decks a card fits, with a fit-strength label
 python3 scripts/deck.py rotation             # roster-wide: which Standard decks run cards aging out (what rotates next); --within N, --years N, --format
-python3 scripts/deck.py rotation 1a          # ONE deck's rotating cards by year, OWNED included (check flags craft targets only)
+python3 scripts/deck.py rotation 20a          # ONE deck's rotating cards by year, OWNED included (check flags craft targets only)
 python3 scripts/deck.py brawl                 # roster-wide: which decks are closest to a legal Brawl conversion + the best commander for each
-python3 scripts/deck.py preflight 1a         # one-call verify: legal + owned + castable + integrity
-python3 scripts/deck.py quality 1a --json    # deck-quality vector; --vs FILE diffs a before-snapshot
-python3 scripts/deck.py tier 1a              # claimed #: tier: vs the tier its metrics support
-python3 scripts/deck.py tier 1a --to A       # gap to A + owned fillers AND craft targets for the short axis
-python3 scripts/deck.py tier 1a --audit-rationale  # is the #: tier: argument still true? (cut cards, stale figures)
-python3 scripts/deck.py redundancy 1a        # competitive consistency: virtual (functional) copies first, duplicates as fallback
-python3 scripts/deck.py history 1a           # the deck's git change history (its changelog); --since YYYY-MM-DD adds the net card change since then
-python3 scripts/deck.py quality 1a --at HASH # compare this deck's list at a past commit vs now
+python3 scripts/deck.py preflight 20a         # one-call verify: legal + owned + castable + integrity
+python3 scripts/deck.py quality 20a --json    # deck-quality vector; --vs FILE diffs a before-snapshot
+python3 scripts/deck.py tier 20a              # claimed #: tier: vs the tier its metrics support
+python3 scripts/deck.py tier 20a --to A       # gap to A + owned fillers AND craft targets for the short axis
+python3 scripts/deck.py tier 20a --audit-rationale  # is the #: tier: argument still true? (cut cards, stale figures)
+python3 scripts/deck.py redundancy 20a        # competitive consistency: virtual (functional) copies first, duplicates as fallback
+python3 scripts/deck.py history 20a           # the deck's git change history (its changelog); --since YYYY-MM-DD adds the net card change since then
+python3 scripts/deck.py quality 20a --at HASH # compare this deck's list at a past commit vs now
 ```
 
 `feedback` closes the loop on the recommenders. Every ranking model here grades

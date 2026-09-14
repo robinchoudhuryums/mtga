@@ -429,7 +429,16 @@ directions.
   `--owned --limit 0` for 0-wildcard upgrades you already own, `--unowned` for craft
   targets. Picks are ranked by theme fit plus impact-role credit, with three BOUNDED
   modifiers — saturation-discounted role credit, a curve factor, and a power co-signal
-  that only re-ranks WITHIN the on-theme set. [G-22]
+  that only re-ranks WITHIN the on-theme set.
+  **THE LIST IS A WINDOW AND THE RANKING IS THEME FIT, so read a card's ABSENCE as neither
+  (BS10-05).** The footer counted the TRUNCATION, so it read "20 suggestion(s)" whether the
+  ranking held 20 candidates or 958; it now prints "top N of M ranked candidate(s)"
+  (`--limit 0` for all). Why it matters is measured, not asserted: across **783 applied swaps
+  that recorded a rank for the card ADDED, the MEDIAN rank is 407** and only **10%** fell
+  inside the default top 20. `deck.py feedback` reports that distribution. A card chosen for
+  a mechanical interaction the tags do not encode ranks far down BY CONSTRUCTION — a
+  different problem from the theme gate G-38 describes, and K-15 was its largest single
+  cause. [G-22]
 - **`deck.py engines <id>` grades a deck's two-sided ENGINES** (enabler ↔ payoff): a
   synergy tag says "sacrifice" is present, not which cards FEED the engine and which PAY
   IT OFF. The ⚠ fires only off the trustworthy PAYOFF side, since enabler cues are broad.
@@ -632,7 +641,18 @@ directions.
   by the deck's PLAN, which no text model here holds.** [G-42]
 - **Grade a modal / split / adventure card by the FACE YOU CAST, not the half you want.**
   Decadent Dragon was drafted for its `{2}{B}` adventure half and cut once `consistency`
-  priced its `{2}{R}{R}` FRONT face at 53% on turn four. [G-43]
+  priced its `{2}{R}{R}` FRONT face at 53% on turn four. **The AUTOMATED half landed
+  2026-09-14 (BS10-08)**: castability reads the FRONT (G-02) while every recommender prints
+  the whole `Front // Back` name, and **102 of the pool's 308 split / Adventure / Room cards
+  (33%)** need a colour on the BACK that the front does not — so a mono-U deck was shown
+  "Failure // Comply" (`{1}{U} // {W}`) with nothing saying half of it is uncastable.
+  `split_back_offcolor` prints `⚠back:<colours>` in `suggest`, `screen` and the dashboard's
+  craft table. **Scoped to faces you CAST**: a TRANSFORM DFC reaches its back by
+  transforming, not paying, so Norman Osborn and Bruce Banner — the two cards G-58 names as
+  exactly this mis-bin — must not fire, and the ambiguous middle is DECLINED (213 of 308
+  qualify; the 157 creature/land-faced DFCs stay out, G-76's scope line). Disclosure only —
+  0.46% of candidate rows roster-wide, never a filter or a score change. Deck 49's Decadent
+  Dragon is this rule's own worked case, flagged by its own tool. [G-43]
 - **`cuts` folds an ability-DISTINCTIVENESS co-signal (`Uq`)** — the card-level analog of
   the deck-idf theme model, so a generic-ability filler sorts UP the cut list and a
   distinctive card is mildly protected. It takes the MAX of tag-rarity and a
@@ -794,6 +814,21 @@ directions.
   Bygone Colossus (Warp {3}) read MV 9 and moved 56b's aggro floor. `stats` lists `⌁ CHEAT-COST`
   cards and grants, `tier` prints "avg MV over-reads" plus the effective curve (alt costs, then
   grants applied) and the clock it WOULD read — ADVISORY, pinned out of the vector. [G-60]
+- **"EFFECTIVE AVG MV" PRICES ONLY THE PRINTED ALT COSTS, and said so nowhere (2026-09-14).**
+  `effective_avg_mv` substitutes what `_ALT_COST_RE` finds — Warp / Plot / Foretell — while
+  `classify_cost` flags a much wider ◊ set (affinity, improvise, convoke, delve, evoke, "costs
+  {N} less") that it never prices, because what those shrink by is a BOARD STATE the curve does
+  not have. So deck 47, whose whole premise is a discount, printed "effective avg MV 3.51
+  against 3.54 printed" and meant the printed curve — a 0.03 correction on a list that routinely
+  casts a {6} for {U}{U}, read during a live tune. `unpriced_discount_cards` now says so at
+  `stats` and `tier`, derived from the same two primitives the ◊ list and the effective figure
+  already use so the three cannot disagree (G-40). **DISCLOSURE, never pricing** — report-only
+  for G-25/G-60's reason, and do not "finish" it by feeding `tier_band`.
+  **`_UNPRICED_DISCLOSE_FLOOR = 3` is p75 of its own axis, not 1**: across the 43 decks that
+  print an effective figure the unpriced count runs p25 1 / p50 2 / p75 3 / p90 5 / max 11, so
+  a floor of 1 fires on 83% (the G-07 saturation shape) against **14 of 43 (32%)** at 3. That
+  is a roster percentile and carries the `TIER_FLOOR_REQ` hazard — the figure is registered in
+  `figure_drift`, so a moved distribution prompts re-derivation. [G-85]
 - **BEFORE DISMISSING A CARD, COUNT THE DECK PROPERTY ITS VALUE DEPENDS ON.** Four
   dismissals were overturned in one cycle, all the same shape — a card judged on its own
   text when the decision belonged to a number in the LIST. Michelangelo was called
@@ -1165,7 +1200,22 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   MODEL (BS9-01)**: `load_card_meta` was library-first, so every OWNED card fed
   `cuts`/`suggest`/centrality the STALE row (219 of 2,576; 105 of 113 decks). POOL-first
   now; a BLANK pool cell never overrides; `check_agreement._agree_synergy_store` holds it.
-  **Residual: 343 pool blanks — a new theme for four cards is not the fix.** [K-09]
+  **Residual: 338 pool blanks — a new theme for four cards is not the fix.** [K-09]
+- **THE TAGGER HAD NO `artifacts` RULE AT ALL, the largest single cause of the median-407
+  ranking (added 2026-09-14).** Every `artifacts` tag came from the KEYWORD map (affinity /
+  improvise / modular / craft…), so a card whose whole text is "artifacts you control get
+  +1/+1" carried NO artifact theme — and `suggest` / `cuts` / `suggest-homes` / centrality are
+  all theme-fit driven. **NOT an `_TYPE_MATTERS` entry**: that table's first pattern is
+  `(a|an|target|…) <TYPE>`, which for artifacts matches **427 pool cards** — every "destroy
+  target artifact", i.e. artifact HATE tagged as synergy (the G-42 shape).
+  `_ARTIFACT_MATTERS_RE` matches **273 pool cards, 1.71%** — between `exile cast` (1.68%) and
+  `pay life` (2.2%), under the 3.86% `exile cast` was capped to avoid. **The `(?<!or )` /
+  `(?! or creature)` guards and the `an|another|one or more` anchor are load-bearing**: without
+  the anchor it matches "when THIS artifact enters" (every artifact with an ETB), and `artifact
+  or creature` is **236 cards** of generic either-type text. Reads `_clean_text` (K-09). Pool
+  tag 158 → 415; **0 of 112 tier floors moved** (G-80: tags feed cuts/suggest, the floor reads
+  TEXT). Residual: BEING an artifact is deliberately untagged (~19% of the pool) — G-83's
+  `cost_scale_resource` answers that from the TYPE LINE. [K-15]
 - **After editing a tag pattern, regenerate BOTH derived tag stores** —
   `tag_synergies.py --merge` for the LIBRARY and **`build_pool.py --all` for the pool**,
   which re-derives every pool row's `Synergies` through the same `tags_for()`. Skipping
@@ -1198,19 +1248,20 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   **CONNIVE is an unread keyword here**, so a FLAT metric after a tune is not proof the
   tune failed. [K-12]
 - **A LITERAL TYPE-NAME SEARCH CANNOT SEE THE CHOOSE-A-TYPE CATEGORY, and a false negative
-  there reads as a finished answer.** A pool sweep for "Robots you control get" / "for each
-  Robot" returned zero, and an entire archetype was declined in writing as "bodies without
-  a payoff". There are FOURTEEN such cards in those colours and five are genuine lords —
-  they say "as this enters, choose a creature type", so the category NEVER contains the
-  type name. Deck 48 exists only because a later card pile surfaced one by accident. This
-  is K-04 one layer earlier: that rule says do not gate a PREDICATE on a derived tag, this
-  one says do not gate a SEARCH on a literal name when the effect is expressed generically.
-  **Search the EFFECT SHAPE, not the noun** — "choose a creature type", "creatures you
-  control get +1/+1", "of the chosen type" — and treat a zero-result sweep as an unverified
-  search, not a fact about the format. Same shape as the changeling / kindred cards, and as
-  any "permanents of that type" wording. **G-84 is the automated half of this rule** — the
-  44-card chosen-type family is exactly the category a literal search cannot see, and it is
-  now measured rather than asserted. [K-13]
+  there reads as a finished answer.** A sweep for "Robots you control get" / "for each
+  Robot" returned zero and an archetype was declined in writing as "bodies without a
+  payoff" — but FOURTEEN such cards exist in those colours, five of them genuine lords,
+  because they say "as this enters, choose a creature type" and so NEVER contain the type
+  name. K-04 one layer earlier: that rule says do not gate a PREDICATE on a derived tag,
+  this one says do not gate a SEARCH on a literal name when the effect is worded
+  generically. **Search the EFFECT SHAPE, not the noun**, and treat a zero-result sweep as
+  an unverified search, not a fact about the format. **`pool.py --regex '<shape>'` IS that
+  search** (BS10-06) — a regex over oracle text with reminder text stripped the way
+  `classify_roles` reads it (`--regex-raw` keeps it), composable with `--within` /
+  `--legal` / `--type` / `--full`. Until it existed every such sweep was a hand-written
+  heredoc, which is how a rule mandating the search kept being answered by a literal one:
+  `--text` is a SUBSTRING match and always was. **G-84 is the automated half** — the
+  44-card chosen-type family, now measured rather than asserted. [K-13]
 - **A DRAW REACHED BY PAYING A COST IS A DRAW — FIXED 2026-08-07, and the fix's SHAPE is
   the rule.** Every Card-advantage pattern was TRIGGER-shaped, so `+1: Draw a card`,
   `{3},{T}: Draw a card` and every planeswalker's draw ability scored ZERO (187 pool cards,

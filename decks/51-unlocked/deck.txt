@@ -24,7 +24,7 @@
 #: tier: TWO THINGS THE FLOOR CANNOT SEE, both arguing DOWN. `deck.py engines` reports "counters:
 #: tier: 6 enablers, no payoff — your engine has no reward": Ramos, Pensive Professor, Bruce
 #: tier: Banner, Norman Osborn and Stormkeld Prowler all make +1/+1 counters and nothing in the
-#: tier: deck cares. And 12 central themes with `shape` reading BALANCED/neither is diffuse.
+#: tier: deck cares. And 13 central themes with `shape` reading BALANCED/neither is diffuse.
 #: tier: WHAT ARGUES UP, and A is genuinely close. The bombs are PRESENT, not aspirational —
 #: tier: Omniscience, Summon: Bahamut (four unconditional destroys under Fractured Realm), Krang
 #: tier: Utrom Warlord and The Walls of Ba Sing Se are all in the 60, and Walls is the broadest

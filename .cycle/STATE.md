@@ -13,24 +13,27 @@
 > HISTORY.md; per-run summaries belong in `.cycle/blocks/`.
 
 ## Current
-Cycle: 9 — a fresh `/broad-scan` ran 2026-09-08 after cycle 8's work merged, which is what
-increments the number. Cycle 8's blocks stay under their own prefix.
-Phase: reflect (cycle 9's reflection has RUN — `.cycle/blocks/09-a-reflect.md`, and the
-first /reflect this project has ever run)
+Cycle: 10 — a fresh `/broad-scan` ran 2026-09-14 out of the deck 47 tuning post-mortem
+("why does the tooling not propose the cards I propose?"). Cycle 9 is reflected and closed.
+Phase: implement — **scan #10 is FULLY IMPLEMENTED**. All four batches plus every follow-on.
 Scope: broad
 Test Command: `python3 scripts/check_all.py`
-Subsystem cycles since last Seams audit: 1 (counter adopted 2026-09-08; no Seams audit has run)
-Updated: 2026-09-09 (reflect)
+Subsystem cycles since last Seams audit: 2 (counter adopted 2026-09-08; no Seams audit has run)
+Updated: 2026-09-14 (broad-implement, batch 4)
 
 ## In progress (facts to carry forward — NOT judgments)
-- **Broad scan #9 is FULLY IMPLEMENTED** — all 8 findings, 4 batches, blocks `09-batch1-*`,
-  `09-batch2-and-followons-*`, `09-batch3-4-*`. Nothing from the scan is outstanding.
-- A FIFTH implement block landed 2026-09-09 from a different source: a post-mortem of the
-  deck 39/58/74 tuning session, which asked what caused the card misreads. Three tooling
-  fixes came out of it; two built, one measured and declined. Block
-  `09-swap-gate-and-type-scale-broad-implement.md`, and a SIXTH closing that block's own
-  follow-on list plus a `/sync-docs` pass — `09-followons-and-syncdocs-broad-implement.md`.
-- Deck 71's rebuild has an ordered open list — see §0-current of NEXT-SESSION.md.
+- **Broad scan #10 is fully implemented — nothing outstanding from the scan.** Four
+  blocks: `10-batch1-2-ranking-visibility`, `10-batch3-followons-artifacts-tagger`,
+  `10-batch4-interaction-taxonomy`.
+- **One finding was REFUTED rather than fixed: BS10-02.** The one-turn tap-down exclusion is
+  deliberate and documented; widening it would have added 36 cards to the axis `tier_band`
+  grades. Recorded at the exclusion itself so a re-file lands on it.
+- **ONE OPEN HUMAN DECISION: deck 47's tier letter.** It claims B and its metrics floor is
+  now A (BS10-01 gave Trade the Helm a removal role). The rubric permits one band under when
+  the prose argues it, and this block names three risks — but the deck also prints the
+  possibly-under-graded nudge. Never auto-written.
+- The cycle's number was `suggest`'s rank median **407**; batch 2 disclosed it and batch 3
+  fixed its largest cause (deck 47's own picks: median 310 → 144).
 
 ## Completed this cycle
 - Template sync v1.23.0 → v1.33.0 | `.claude/commands/broad-scan.md`, CLAUDE.md, docs/cycle-config.md
@@ -57,27 +60,106 @@ Updated: 2026-09-09 (reflect)
   measured and declined. New anchor G-84; G-66/G-06/G-40/K-09/G-42/K-13 updated; G-84's pool
   count registered in `figure_drift` | scripts/deck.py, scripts/check_docs.py,
   scripts/check_patterns.py, tests/test_deck.py, CLAUDE.md, docs/gotchas.md
+- **Scan #10 Batches 1 + 2** | BS10-03 card-advantage hole ("put the rest into your hand",
+  4 pool cards wholly missed; 0 tier floors moved, deck 67 prose re-grounded 4->5), BS10-05
+  `suggest`'s ranking window + `feedback`'s rank distribution (median 407), BS10-06
+  `pool.py --regex` (K-13's effect-shape search, which had a rule and no tool), BS10-07 the
+  ◊ discounts `effective_avg_mv` does not price (14 of 43 decks), BS10-08 a split card's
+  BACK half needing a colour the deck lacks (0.46% roster-wide, transform DFCs correctly
+  excluded) | scripts/deck.py, scripts/pool.py, CLAUDE.md, decks/67-warpwright/deck.txt
+- **Scan #10 Batch 3 + follow-ons** | BS10-04 the `artifacts` tagger hole (273 pool cards,
+  1.71%; pool tag 158 -> 415; 0 tier floors, `cuts` top-3 on 5 decks, `suggest` top-20 on 27;
+  deck 47/51 `#: tier:` figures re-grounded per K-12), the dashboard craft table wired for
+  `back_off` + `craftTotal` (re-measured at that caller: 0.42%), the four reminder-regex
+  copies consolidated into one `lib.REMINDER_RE` (0 disagreements across 15,977 texts), and
+  two `figure_drift` registrations (K-15's 273, G-85's 14-of-43) | scripts/tag_synergies.py,
+  scripts/check_patterns.py, scripts/lib.py, scripts/deck.py, scripts/build_dashboard.py,
+  scripts/check_docs.py, CLAUDE.md (new K-15 + G-85), docs/gotchas.md, decks/47, decks/51
+
+- **Scan #10 Batch 4** | BS10-01 permanent steal/exchange added to `Removal (spot)` (91 of
+  98 pool cards had scored nothing; 48 Threatens deliberately excluded on the permanence
+  line; 20-of-20 hand validation) — **1 of 112 tier floors moved**, deck 47 B → A. BS10-02
+  REFUTED and its exclusion re-affirmed in place. K-12 consequences: deck 47's tier block
+  rewritten, deck 43's `#~ note:` re-grounded 5 → 6, CLAUDE.md's tier-floor spread
+  67/41/60% → 68/40/61% | scripts/deck.py, decks/47, decks/43, CLAUDE.md, docs/gotchas.md
 
 ## Pending / not yet done
+- **Deck 47's tier LETTER** — claimed B, floor now A. A human call; see above.
+- A `/sync-docs` pass: G-02/G-43/G-58 do not mention BS10-08's back-half flag, and G-38/G-22
+  do not mention the ranking-window footer or the median-407 measurement.
 - The unapplied cross-deck homes and earlier proposed swaps — NEXT-SESSION.md §0-current.
 - Two G-67 role-pattern holes (Kitnap, Eluge), baselined not fixed.
 
 ## Open follow-on items
+- **THE COMPARISON-CUE SUPPRESSION IS A LIVE BLIND SPOT in the audit K-12 depends on.**
+  `_figure_is_history` silences every figure within ±60 chars of a `_COMPARISON_CUES` word.
+  Deck 47's block hid FIVE figures behind one "rather than" for a full cycle, and both the
+  CLI audit and the pytest roster sweep reported it CURRENT while its interaction figure was
+  wrong. A plausible fix is to stop suppressing inside an explicit live-state listing
+  ("Live vector:"), but that needs G-26's roster-wide precision sweep first.
+- BS10-01 residual: a Threaten whose duration cue sits in a DIFFERENT sentence from the
+  gain-control phrase would be counted. Zero pool instances today; re-check after a rebuild.
+
+- The `or creature` guard in `_ARTIFACT_MATTERS_RE` costs the genuine either-type cards an
+  artifact deck would copy or sacrifice (Three Steps Ahead is the measured instance). It is
+  holding back 236 cards — do not relax it without re-measuring BOTH sides.
+- A roster before/after harness must ASSERT zero errors. Mine called `tier_band(vec, cards=…)`,
+  which takes only `vec`, so 112 decks errored identically on both sides and the diff reported
+  the answer I expected from a probe that ran nothing (G-63's vacuous shape). The `cuts` half
+  compared a set's repr, whose order is nondeterministic (G-54).
+- CLOSED 2026-09-14 (batch 3): the dashboard now renders `back_off` + `craftTotal`; the four
+  reminder-regex copies are one `lib.REMINDER_RE`; `_UNPRICED_DISCLOSE_FLOOR`'s calibration is
+  registered in `figure_drift` as G-85. Nothing left from the batch-1-2 block.
 - `unmet_gate` has three callers now, and `redundancy` is the one never re-measured AT its
   own surface — the exact lesson the second wiring taught. Small list, so the rate is
   probably fine; "probably" is what that pass spent the day disproving.
 - G-84's DFC front-face question is closed as "all-faces is the better approximation", NOT as
   correct. A per-face availability read (transform vs modal vs saga-back) would settle it;
   G-63's column list still does not name TYPE on this path.
-- `figure_drift` now covers 10 of CLAUDE.md's ~1,100 numeric claims. The rule for what earns
-  an entry is written down; the registry is still hand-kept and its misses still invisible.
+- `figure_drift` now covers 13 of CLAUDE.md's ~1,100 numeric claims (K-15 and G-85 joined
+  2026-09-14). The rule for what earns an entry is written down; the registry is still
+  hand-kept and its misses still invisible.
 - `tier_floor_spread()` is called twice per `check_all` (the BS8-06 sweep and figure_drift)
   and is not memoized — ~2s of duplicated roster walk, a one-liner nobody has needed yet.
+  G-85's entry adds a further ~1.7s roster walk, lazily.
 - `synergies` LIST ORDER now comes from the pool (258 pure re-orderings). Nothing measured
   moved; any surface showing "the first N themes" shows the pool's order.
 - Regression scenarios 5–8 and 10–19 need a person at a browser; several never walked.
 
 ## Decisions made (so the next session doesn't re-litigate)
+- **BS10-02 IS REFUTED, NOT DEFERRED. Do not re-file it.** The one-turn tap-down family
+  (39 cards, disjoint from the 37 permanent ones) is excluded because a one-turn effect is
+  TEMPO, not an answer — widening it adds 36 cards to the axis the tier floor grades on,
+  which is the BS2-06 failure. The same permanence line makes BS10-01 exclude Threatens, so
+  the two decisions agree rather than merely coexist.
+- **Before widening a role bucket, read the comment AT the exclusion.** A measured gap is
+  evidence that a pattern does not match something; it is not evidence that it should.
+
+- **`artifacts` is NOT an `_TYPE_MATTERS` entry, deliberately.** That table's first pattern
+  matches 427 pool cards for artifacts — every "destroy target artifact", i.e. artifact HATE
+  tagged as synergy. The mechanism is right for Equipment and wrong for Artifact.
+- **BEING an artifact is deliberately untagged** (~19% of the pool would destroy the theme).
+  G-83's `cost_scale_resource` already answers "how many artifacts does this deck field" from
+  the TYPE LINE.
+- **`lib.REMINDER_RE` takes the stricter `[^()]` form** for all five call sites. Measured
+  identical on 15,977 texts; the four original NAMES stay as aliases because
+  `check_patterns`' registry is keyed by (module, attribute name).
+
+- **BS10-08 DECLINES the ambiguous middle rather than guessing.** There is no `layout`
+  column, so a transform DFC and a modal one are indistinguishable by cost alone — and
+  Norman Osborn / Bruce Banner are the two cards G-58 already cites as this exact mis-bin.
+  Only an Adventure/Room back or instant-or-sorcery-on-both-faces qualifies (213 of 308);
+  the 157 creature/land-faced DFCs stay unflagged. A modal DFC with a creature back is a
+  KNOWN, ACCEPTED false negative — G-76's scope line, report nothing over reporting a guess.
+- **BS10-07 and BS10-08 are DISCLOSURE, pinned out of every score** (G-25 / G-60's rule:
+  a score change on a fuzzy signal is what this file keeps having to undo). Do not
+  "finish" either by feeding it into `tier_band`.
+- **`_UNPRICED_DISCLOSE_FLOOR` is p75 of its own axis, not 1.** At >=1 the note fires on
+  83% of the decks that can see it — the G-07 saturation shape. 32% at the chosen floor.
+- **BS10-06 does not add a fifth reminder-regex copy.** `pool.strip_reminder` lazily proxies
+  `deck._REMINDER_RE` for the same reason `pool.classify_roles` proxies its model: `--regex`
+  must answer the same question about a card that `classify_roles` does (K-09).
+
 - `load_card_meta` is POOL-first for Synergies and LIBRARY-first for colours. Colours were
   deliberately left alone — the finding was about tags, and re-sourcing identity is a
   separate, wider change.
@@ -110,24 +192,26 @@ Updated: 2026-09-09 (reflect)
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
-**Cycle 9 is reflected and closed** — `.cycle/blocks/09-a-reflect.md`, `metrics.csv` row
-`2026-09-09,9,broad,reflect,2,3,1,…,13`. Six implement blocks graded action by action:
-**3 production fixes (1 Critical), 1 new capability, 13 defensive, 1 new failure mode (Low),
-net 2.**
+**Broad scan #10 is COMPLETE** — four batches, every follow-on, three implementation
+blocks in `.cycle/blocks/10-*`. **1796 tests pass, `check_all` exit 0, `make postedit`
+exit 0, Regression Scenario 2 walked 29/29. Batch 4 NET SCORE 1 − 0 = 1.**
 
-**The number worth carrying is `defensive_count = 13`** — the first time this project has
-ever measured that bucket, and it says 13 of 17 actions this cycle fixed nothing that was
-firing. That is not a criticism of the cycle (two of the 13 paid off inside it), but it is
-the shape the metric was adopted to expose, and cycles 2–8's backfilled rows cannot show it.
+**One decision is waiting for the user: deck 47's tier letter.** BS10-01 gave Trade the Helm
+— the exact card that deck's own tier block had been arguing was uncounted — a removal role,
+so interaction went 6 → 7 and the metrics floor B → A. The claimed letter is still B. The
+rubric allows one band under when the prose argues it, and the block names three risks (the
+deck is unbuilt with 10 craft targets, protection is thin, the curve climbed), but the tier
+command prints the possibly-under-graded nudge and the letter is a human judgment.
 
-One self-report was CORRECTED here: block `09-followons-and-syncdocs` claimed 2 production
-fixes; the honest count is 1. See the metrics `notes` field, which the verification pack
-surfaces automatically.
+**The lesson from this batch is that a measured gap is not a mandate.** Two findings arrived
+looking identical — same measurement shape, same disjoint-templating signature. One was a
+real hole; the other was a decision with its reasoning written four lines above the pattern,
+and I had drafted the fix before reading it. A measurement counts the EFFECT and cannot see
+the DECISION.
 
-**The cycle's central lesson has no gate** (logged as INV-11): a primitive must be
-re-measured AT each new caller. It was learned by shipping a gate to `swap` that measured
-0 of 805, then finding the same primitive 85% wrong the next day on a 40-row craft table.
-
-Next: nothing is outstanding from cycle 9. Either start a fresh `/broad-scan` (which
-increments to cycle 10), run the Seams & Invariants audit the counter now shows as 1 cycle
-overdue, or do the DECK work in Pending — the only thing here a player would notice.
+**And the audit that K-12 depends on hid a real stale figure.** After the change deck 47's
+prose said interaction 6 against a live 7, and both the CLI audit and the pytest roster sweep
+said CURRENT — because "rather than", a phrase I wrote into that block last cycle, sat 46
+characters before the number and tripped the comparison-cue suppression, silencing all five
+of its live-vector figures. Found by hand, fixed by rewording, and then watched-it-fail to
+prove the sweep can see it now. The general defect is logged under Open follow-on items.
