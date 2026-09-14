@@ -116,7 +116,7 @@ Updated: 2026-09-14 (broad-implement, batch 4)
 - G-84's DFC front-face question is closed as "all-faces is the better approximation", NOT as
   correct. A per-face availability read (transform vs modal vs saga-back) would settle it;
   G-63's column list still does not name TYPE on this path.
-- `figure_drift` now covers 12 of CLAUDE.md's ~1,100 numeric claims (K-15 and G-85 joined
+- `figure_drift` now covers 13 of CLAUDE.md's ~1,100 numeric claims (K-15 and G-85 joined
   2026-09-14). The rule for what earns an entry is written down; the registry is still
   hand-kept and its misses still invisible.
 - `tier_floor_spread()` is called twice per `check_all` (the BS8-06 sweep and figure_drift)

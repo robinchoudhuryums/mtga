@@ -429,7 +429,16 @@ directions.
   `--owned --limit 0` for 0-wildcard upgrades you already own, `--unowned` for craft
   targets. Picks are ranked by theme fit plus impact-role credit, with three BOUNDED
   modifiers — saturation-discounted role credit, a curve factor, and a power co-signal
-  that only re-ranks WITHIN the on-theme set. [G-22]
+  that only re-ranks WITHIN the on-theme set.
+  **THE LIST IS A WINDOW AND THE RANKING IS THEME FIT, so read a card's ABSENCE as neither
+  (BS10-05).** The footer counted the TRUNCATION, so it read "20 suggestion(s)" whether the
+  ranking held 20 candidates or 958; it now prints "top N of M ranked candidate(s)"
+  (`--limit 0` for all). Why it matters is measured, not asserted: across **783 applied swaps
+  that recorded a rank for the card ADDED, the MEDIAN rank is 407** and only **10%** fell
+  inside the default top 20. `deck.py feedback` reports that distribution. A card chosen for
+  a mechanical interaction the tags do not encode ranks far down BY CONSTRUCTION — a
+  different problem from the theme gate G-38 describes, and K-15 was its largest single
+  cause. [G-22]
 - **`deck.py engines <id>` grades a deck's two-sided ENGINES** (enabler ↔ payoff): a
   synergy tag says "sacrifice" is present, not which cards FEED the engine and which PAY
   IT OFF. The ⚠ fires only off the trustworthy PAYOFF side, since enabler cues are broad.
@@ -632,7 +641,18 @@ directions.
   by the deck's PLAN, which no text model here holds.** [G-42]
 - **Grade a modal / split / adventure card by the FACE YOU CAST, not the half you want.**
   Decadent Dragon was drafted for its `{2}{B}` adventure half and cut once `consistency`
-  priced its `{2}{R}{R}` FRONT face at 53% on turn four. [G-43]
+  priced its `{2}{R}{R}` FRONT face at 53% on turn four. **The AUTOMATED half landed
+  2026-09-14 (BS10-08)**: castability reads the FRONT (G-02) while every recommender prints
+  the whole `Front // Back` name, and **102 of the pool's 308 split / Adventure / Room cards
+  (33%)** need a colour on the BACK that the front does not — so a mono-U deck was shown
+  "Failure // Comply" (`{1}{U} // {W}`) with nothing saying half of it is uncastable.
+  `split_back_offcolor` prints `⚠back:<colours>` in `suggest`, `screen` and the dashboard's
+  craft table. **Scoped to faces you CAST**: a TRANSFORM DFC reaches its back by
+  transforming, not paying, so Norman Osborn and Bruce Banner — the two cards G-58 names as
+  exactly this mis-bin — must not fire, and the ambiguous middle is DECLINED (213 of 308
+  qualify; the 157 creature/land-faced DFCs stay out, G-76's scope line). Disclosure only —
+  0.46% of candidate rows roster-wide, never a filter or a score change. Deck 49's Decadent
+  Dragon is this rule's own worked case, flagged by its own tool. [G-43]
 - **`cuts` folds an ability-DISTINCTIVENESS co-signal (`Uq`)** — the card-level analog of
   the deck-idf theme model, so a generic-ability filler sorts UP the cut list and a
   distinctive card is mildly protected. It takes the MAX of tag-rarity and a
