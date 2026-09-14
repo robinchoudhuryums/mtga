@@ -15,24 +15,25 @@
 ## Current
 Cycle: 10 — a fresh `/broad-scan` ran 2026-09-14 out of the deck 47 tuning post-mortem
 ("why does the tooling not propose the cards I propose?"). Cycle 9 is reflected and closed.
-Phase: implement (Batches 1-3 + all three follow-ons done; only BS10-01/BS10-02 remain)
+Phase: implement — **scan #10 is FULLY IMPLEMENTED**. All four batches plus every follow-on.
 Scope: broad
 Test Command: `python3 scripts/check_all.py`
 Subsystem cycles since last Seams audit: 2 (counter adopted 2026-09-08; no Seams audit has run)
-Updated: 2026-09-14 (broad-implement, batch 3 + follow-ons)
+Updated: 2026-09-14 (broad-implement, batch 4)
 
 ## In progress (facts to carry forward — NOT judgments)
-- **Broad scan #10: Batches 1, 2 and 3 are implemented, plus every follow-on from the
-  batch-1-2 block.** The ONLY thing outstanding from the scan is **BS10-01 / BS10-02**, the
-  interaction-taxonomy holes.
-- **The cycle's number is `suggest`'s rank median: 407.** Over 783 applied swaps the median
-  rank of the card actually ADDED is 407 of ~950 and only 10% fell inside the default top-20
-  window. Batch 2 disclosed it; **Batch 3 fixed its largest single cause** — the tagger had
-  no `artifacts` rule at all. Re-ranking the 15 cards actually added to deck 47 against the
-  PRE-swap list: **median 310 -> 144, best 120 -> 20.**
-- BS10-04 moved **0 of 112 tier floors** (bands identical at A 67 / B 41 / C 4). BS10-01/02
-  will NOT be like that — they feed `role_tally`, which `tier_band` grades on.
-- Deck 71's rebuild has an ordered open list — see §0-current of NEXT-SESSION.md.
+- **Broad scan #10 is fully implemented — nothing outstanding from the scan.** Four
+  blocks: `10-batch1-2-ranking-visibility`, `10-batch3-followons-artifacts-tagger`,
+  `10-batch4-interaction-taxonomy`.
+- **One finding was REFUTED rather than fixed: BS10-02.** The one-turn tap-down exclusion is
+  deliberate and documented; widening it would have added 36 cards to the axis `tier_band`
+  grades. Recorded at the exclusion itself so a re-file lands on it.
+- **ONE OPEN HUMAN DECISION: deck 47's tier letter.** It claims B and its metrics floor is
+  now A (BS10-01 gave Trade the Helm a removal role). The rubric permits one band under when
+  the prose argues it, and this block names three risks — but the deck also prints the
+  possibly-under-graded nudge. Never auto-written.
+- The cycle's number was `suggest`'s rank median **407**; batch 2 disclosed it and batch 3
+  fixed its largest cause (deck 47's own picks: median 310 → 144).
 
 ## Completed this cycle
 - Template sync v1.23.0 → v1.33.0 | `.claude/commands/broad-scan.md`, CLAUDE.md, docs/cycle-config.md
@@ -75,18 +76,30 @@ Updated: 2026-09-14 (broad-implement, batch 3 + follow-ons)
   scripts/check_patterns.py, scripts/lib.py, scripts/deck.py, scripts/build_dashboard.py,
   scripts/check_docs.py, CLAUDE.md (new K-15 + G-85), docs/gotchas.md, decks/47, decks/51
 
+- **Scan #10 Batch 4** | BS10-01 permanent steal/exchange added to `Removal (spot)` (91 of
+  98 pool cards had scored nothing; 48 Threatens deliberately excluded on the permanence
+  line; 20-of-20 hand validation) — **1 of 112 tier floors moved**, deck 47 B → A. BS10-02
+  REFUTED and its exclusion re-affirmed in place. K-12 consequences: deck 47's tier block
+  rewritten, deck 43's `#~ note:` re-grounded 5 → 6, CLAUDE.md's tier-floor spread
+  67/41/60% → 68/40/61% | scripts/deck.py, decks/47, decks/43, CLAUDE.md, docs/gotchas.md
+
 ## Pending / not yet done
-- **Scan #10 BS10-01 / BS10-02 — the LAST outstanding scan item.** Interaction-taxonomy
-  holes: exchange/gain control **79 of 84 missed (94%)**, tap+stun **33 of 34 (97%)** against
-  bounce's 1 of 31. Deck 47's `#: tier:` block argues from the first figure. These feed
-  `role_tally`, so unlike BS10-04 they WILL move tier floors — budget a K-14 floor diff and a
-  roster `#: tier:` prose sweep.
+- **Deck 47's tier LETTER** — claimed B, floor now A. A human call; see above.
 - A `/sync-docs` pass: G-02/G-43/G-58 do not mention BS10-08's back-half flag, and G-38/G-22
   do not mention the ranking-window footer or the median-407 measurement.
 - The unapplied cross-deck homes and earlier proposed swaps — NEXT-SESSION.md §0-current.
 - Two G-67 role-pattern holes (Kitnap, Eluge), baselined not fixed.
 
 ## Open follow-on items
+- **THE COMPARISON-CUE SUPPRESSION IS A LIVE BLIND SPOT in the audit K-12 depends on.**
+  `_figure_is_history` silences every figure within ±60 chars of a `_COMPARISON_CUES` word.
+  Deck 47's block hid FIVE figures behind one "rather than" for a full cycle, and both the
+  CLI audit and the pytest roster sweep reported it CURRENT while its interaction figure was
+  wrong. A plausible fix is to stop suppressing inside an explicit live-state listing
+  ("Live vector:"), but that needs G-26's roster-wide precision sweep first.
+- BS10-01 residual: a Threaten whose duration cue sits in a DIFFERENT sentence from the
+  gain-control phrase would be counted. Zero pool instances today; re-check after a rebuild.
+
 - The `or creature` guard in `_ARTIFACT_MATTERS_RE` costs the genuine either-type cards an
   artifact deck would copy or sacrifice (Three Steps Ahead is the measured instance). It is
   holding back 236 cards — do not relax it without re-measuring BOTH sides.
@@ -114,6 +127,14 @@ Updated: 2026-09-14 (broad-implement, batch 3 + follow-ons)
 - Regression scenarios 5–8 and 10–19 need a person at a browser; several never walked.
 
 ## Decisions made (so the next session doesn't re-litigate)
+- **BS10-02 IS REFUTED, NOT DEFERRED. Do not re-file it.** The one-turn tap-down family
+  (39 cards, disjoint from the 37 permanent ones) is excluded because a one-turn effect is
+  TEMPO, not an answer — widening it adds 36 cards to the axis the tier floor grades on,
+  which is the BS2-06 failure. The same permanence line makes BS10-01 exclude Threatens, so
+  the two decisions agree rather than merely coexist.
+- **Before widening a role bucket, read the comment AT the exclusion.** A measured gap is
+  evidence that a pattern does not match something; it is not evidence that it should.
+
 - **`artifacts` is NOT an `_TYPE_MATTERS` entry, deliberately.** That table's first pattern
   matches 427 pool cards for artifacts — every "destroy target artifact", i.e. artifact HATE
   tagged as synergy. The mechanism is right for Equipment and wrong for Artifact.
@@ -171,24 +192,26 @@ Updated: 2026-09-14 (broad-implement, batch 3 + follow-ons)
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
-**Broad scan #10 Batch 3 and every follow-on are implemented, verified and committed** —
-block `.cycle/blocks/10-batch3-followons-artifacts-tagger-broad-implement.md`.
-**1796 tests pass, `check_all` exit 0, `make refresh` + `make postedit` exit 0, Regression
-Scenario 2 walked 30/30. NET SCORE 1 − 0 = 1** — one production fix (BS10-04) and three
-DEFENSIVE follow-ons, graded by cycle 9's precedent rather than inflated.
+**Broad scan #10 is COMPLETE** — four batches, every follow-on, three implementation
+blocks in `.cycle/blocks/10-*`. **1796 tests pass, `check_all` exit 0, `make postedit`
+exit 0, Regression Scenario 2 walked 29/29. Batch 4 NET SCORE 1 − 0 = 1.**
 
-**BS10-01 / BS10-02 is the only thing left from scan #10, and it is not a repeat of BS10-04.**
-The artifacts fix moved 0 tier floors because tags feed `cuts`/`suggest` while `tier_band`
-reads TEXT (G-80). The interaction-taxonomy holes feed `role_tally`, which IS what the floor
-grades on — so that batch re-scores the roster and needs K-14's floor diff plus the roster
-`#: tier:` prose sweep. Deck 47's own tier block argues from the 79-of-84 figure, so it is one
-of the decks that will need re-grounding.
+**One decision is waiting for the user: deck 47's tier letter.** BS10-01 gave Trade the Helm
+— the exact card that deck's own tier block had been arguing was uncounted — a removal role,
+so interaction went 6 → 7 and the metrics floor B → A. The claimed letter is still B. The
+rubric allows one band under when the prose argues it, and the block names three risks (the
+deck is unbuilt with 10 craft targets, protection is thin, the curve climbed), but the tier
+command prints the possibly-under-graded nudge and the letter is a human judgment.
 
-**The process lesson from this batch is worth more than either fix.** My before/after harness
-reported "0 tier floors moved" — the answer I expected — from a call that errored on all 112
-decks in both snapshots. It measured nothing and looked clean. Two gates caught what I did
-not: `check_patterns` hard-failed on the unregistered regex, and the roster figure sweep named
-decks 47 and 51. **Assert zero errors in a measurement harness, and read the sampled cards
-rather than the count** — the first broad artifact shape I measured was 608 cards at 94%
-missed, and reading four of them showed all four were false positives ("when THIS artifact
-enters" is a card's own ETB).
+**The lesson from this batch is that a measured gap is not a mandate.** Two findings arrived
+looking identical — same measurement shape, same disjoint-templating signature. One was a
+real hole; the other was a decision with its reasoning written four lines above the pattern,
+and I had drafted the fix before reading it. A measurement counts the EFFECT and cannot see
+the DECISION.
+
+**And the audit that K-12 depends on hid a real stale figure.** After the change deck 47's
+prose said interaction 6 against a live 7, and both the CLI audit and the pytest roster sweep
+said CURRENT — because "rather than", a phrase I wrote into that block last cycle, sat 46
+characters before the number and tripped the comparison-cue suppression, silencing all five
+of its live-vector figures. Found by hand, fixed by rewording, and then watched-it-fail to
+prove the sweep can see it now. The general defect is logged under Open follow-on items.

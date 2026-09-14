@@ -2,15 +2,18 @@
 #: format: Standard
 #: colors: U
 #: plan: midrange
-#: tier: B — PROVISIONAL, and now CONSISTENT with the metrics floor rather than one band
-#: tier: under it. Live vector: interaction 6, card advantage 7, protection 2, avg MV 3.54
-#: tier: (effective 3.51), 10 central themes. The old block argued B against an A floor; the
-#: tier: 2026-09-14 rebuild closed that gap, and not by making the deck worse.
-#: tier: THE INTERACTION FIGURE UNDER-READS, and the cause is a classifier hole rather than a
-#: tier: thin suite: Trade the Helm's "exchange control of target artifact or creature you
-#: tier: control and target artifact or creature an opponent controls" is an answer, and 79 of
-#: tier: the 84 pool cards that steal or exchange a permanent — 94% — score no interaction
-#: tier: role at all. Counted by hand the suite is one piece larger than the vector says.
+#: tier: B — PROVISIONAL. Live vector: interaction 7, card advantage 7, protection 2,
+#: tier: avg MV 3.54 (effective 3.51), 10 central themes. The metrics floor is A, so the
+#: tier: letter now sits ONE BAND below it, held there deliberately by the three risks
+#: tier: listed next — which the rubric permits and which is a RE-GRADE CANDIDATE once the
+#: tier: deck is built and played.
+#: tier: THE INTERACTION UNDER-READ IS CLOSED (2026-09-14). This block used to argue that
+#: tier: the figure was one low because Trade the Helm's "exchange control of target
+#: tier: artifact or creature you control and target artifact or creature an opponent
+#: tier: controls" is an answer that no role pattern scored — 91 of 98 such pool cards read
+#: tier: as no interaction at all. The pattern was added and the model now agrees with the
+#: tier: hand count: the axis went 6 to 7 and the floor B to A. Nothing about the LIST
+#: tier: changed; the measurement caught up to it.
 #: tier: THREE structural risks the floor cannot see:
 #: tier: 1. IT DOES NOT EXIST YET. Ten craft targets, including both cards that make it a
 #: tier:    deck rather than a pile (Chrome Dome, the lord; Krang Master Mind, the finisher).

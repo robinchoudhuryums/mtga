@@ -3709,6 +3709,64 @@ enchanted creature") scores no Removal role, and Eluge, the Shoreless Sea's "cos
 {1}) less to cast" scores no Cost-reduction role (the pattern wants a digit). Both sit in
 `role_baseline.txt` pending a K-14 floor diff; prune them when the patterns land.
 
+
+### 2026-09-14 (BS10-01 / BS10-02) — one hole, one decision, and they look identical from the data
+
+A broad scan filed two interaction-taxonomy findings side by side, both measured the same
+way and both reading like this rule's family-disagreement signature. **One was a real hole
+and the other was a documented decision.** The difference is not visible in the measurement,
+because a measurement counts the EFFECT and cannot see the DECISION.
+
+**BS10-01 — REAL, fixed.** Permanent steal and exchange (`gain control of target …`,
+`exchange control of …`) scored no interaction role on **91 of 98** pool cards, against the
+bounce sibling's 4%. Taking their creature answers it AND keeps it, and this module already
+treats the effect as an answer — the shrink-Aura guard upstream calls Duskmourn's
+Domination's "You control enchanted creature" a Control-Magic steal and a real answer. Only
+the `gain control of target` templating had no pattern.
+
+**Half the family is not an answer, and that half is the larger one.** A THREATEN ("gain
+control of target creature UNTIL END OF TURN. Untap it. It gains haste") hands the creature
+back: an alpha-strike or sacrifice-outlet enabler, an aggro finisher. **48 of the 103 steal
+cards are that shape**, and counting them would have inflated exactly the decks that run
+them — the same call G-62 makes about blind mill, and the same PERMANENCE line the
+neutralization block already draws.
+
+Two construction notes worth keeping. The duration cue sits in the same sentence but on
+EITHER side of the phrase (Grishnákh reads "until end of turn, gain control of…"), so the
+exclusion is clause-scoped with a tempered token rather than a proximity window — this
+rule's own "fix the CLAUSE, not the window". And **the trailing temper must be anchored on
+`(?:\.|$)`**: a bare `{0,N}` with nothing after it matches zero characters and excludes
+nothing, which is how a first draft let Act of Treason and Captivating Crew straight
+through while reporting a plausible-looking count.
+
+Three exclusions, each earned by reading a card in full rather than by reasoning: an
+OPPONENT gaining control is a DONATION (Harmless Offering, Discerning Financier); "gain
+control of target OPPONENT" is a player, not a permanent (Emrakul, the Promised End); and
+"until the end of your next turn" is a second Threaten templating (Evil's Thrall). Validated
+against a hand-graded list of 10 that must stay out and 10 that must come in: 20 of 20.
+
+Roster diff: **1 of 112 tier floors moved** (deck 47 B → A, on Trade the Helm — the exact
+card that deck's `#: tier:` block had been arguing was missing from the count), interaction
+up on 2 decks, `cuts` top-3 on 1. Bands A 67/41/4 → 68/40/4.
+
+**BS10-02 — REFUTED, and the exclusion re-affirmed.** The scan measured the one-turn
+tap-down family ("doesn't untap during its controller's NEXT untap step") as 33 of 34
+scoring no interaction role and filed it as a pattern hole. The two templatings really are
+disjoint — 37 permanent, 39 one-turn, **zero overlap** — which is exactly what a real
+family-disagreement looks like. But the permanent half is the half this bucket wants, and
+the block's own comment had already drawn the line: *a one-turn effect is TEMPO, not an
+answer*, and *a tempo card read as removal would inflate the axis the tier floor grades on,
+which is the BS2-06 failure*. Widening it would have added 36 cards to that axis.
+
+The refutation is now recorded at the exclusion itself, because that is where someone
+re-filing it will land. **The two outcomes are consistent rather than merely coexisting:**
+the same permanence line that keeps one-turn tap-down out is what makes the steal pattern
+exclude Threatens. A scan that files both as holes has found one hole and one decision.
+
+**The transferable rule: before widening a role bucket, read the comment at the exclusion.**
+A measured gap is evidence that a pattern does not match something. It is not evidence that
+it should.
+
 ## [K-01] A handful of recurring Universe-Beyond flavor *mechanics* (Vivid, Job select, Opus, Increment, I
 
 A handful of recurring Universe-Beyond flavor *mechanics* (Vivid, Job select,

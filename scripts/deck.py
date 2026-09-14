@@ -1644,11 +1644,22 @@ _ROLE_PATTERNS = {
         #
         # THE LINE IS PERMANENCE, and it is drawn deliberately. A one-turn effect is TEMPO,
         # not an answer, so `doesn't untap during its controller's NEXT untap step` (Frost
-        # Lynx, White Dragon — 35 cards) and `loses all abilities UNTIL end of turn / until
+        # Lynx, White Dragon — 39 cards) and `loses all abilities UNTIL end of turn / until
         # your next turn` (Merfolk Trickster, Azure Beastbinder) are all EXCLUDED. That
         # matches how the rest of this file treats a one-shot, and it is the conservative
         # direction: a tempo card read as removal would inflate the axis the tier floor
         # grades on, which is the BS2-06 failure.
+        #
+        # RE-RAISED AND REFUTED 2026-09-14 (BS10-02). A broad scan measured the one-turn
+        # family as "33 of 34 scoring no interaction role" and filed it as a pattern hole
+        # beside BS10-01 — because a measurement counts the EFFECT and cannot see the
+        # DECISION. The two templatings are DISJOINT (37 permanent / 39 one-turn, zero
+        # overlap), which reads exactly like G-67's family-disagreement signature and is
+        # not: the permanent half is the half this bucket wants. Widening it would have
+        # added 36 cards to the axis `tier_band` grades, in the direction this paragraph
+        # exists to prevent. **The exclusion stands. Do not re-file it.** The same
+        # permanence line is what makes the steal pattern below exclude Threatens, so the
+        # two decisions agree rather than merely coexist.
         #
         # (1) TAP-DOWN, permanent. `its controller's` is doing real work: the same clause
         # appears as a DRAWBACK on your own card ("Colossus of Sardia doesn't untap during
@@ -1776,6 +1787,48 @@ _ROLE_PATTERNS = {
         # "creature", and `[^.]` keeps the span inside one sentence.
         rf"return (?:up to \w+ )?target (?:[a-z-]+ ){{0,2}}?{_PERM_TYPE_LIST}"
         rf"[^.]{{0,60}}?(?:owner'?s?|owners'|their) hands?",
+                       # PERMANENT STEAL / EXCHANGE (BS10-01). Taking their creature answers
+                       # it AND keeps it — strictly better than destroying it — yet 91 of 98
+                       # such pool cards scored no interaction role, against bounce's 4%
+                       # above. The file already treats the effect as an answer: the
+                       # shrink-Aura guard upstream calls Duskmourn's Domination's "You
+                       # control enchanted creature" a Control-Magic steal and a real answer.
+                       # What was missing is the `gain control of target` templating.
+                       #
+                       # HALF THE FAMILY IS NOT AN ANSWER. A THREATEN ("gain control of
+                       # target creature UNTIL END OF TURN. Untap it. It gains haste") hands
+                       # the creature back — an alpha-strike or sacrifice-outlet enabler, an
+                       # aggro finisher — so counting it would inflate exactly the decks that
+                       # run it. That is the PERMANENCE line the neutralization block below
+                       # draws, applied here, so the two decisions agree; it is also the call
+                       # G-62 makes about blind mill. 48 of the 103 steal cards are that
+                       # shape and stay OUT.
+                       #
+                       # CLAUSE-SCOPED, not a proximity window: the duration cue sits in the
+                       # same sentence but on EITHER side of the phrase (Grishnakh reads
+                       # "until end of turn, gain control of..."), which is G-67's rule to fix
+                       # the CLAUSE rather than widen the window. **The trailing temper MUST
+                       # be anchored on `(?:\.|$)`** — a bare `{0,N}` with nothing after it
+                       # matches zero characters and excludes nothing, which is how a first
+                       # draft let Act of Treason and Captivating Crew through.
+                       #
+                       # Three exclusions, each earned by reading the card in full: an
+                       # OPPONENT gaining control is a DONATION (Harmless Offering, Discerning
+                       # Financier); "gain control of target OPPONENT" is a player, not a
+                       # permanent (Emrakul, the Promised End); and "until the end of your
+                       # next turn" is a second Threaten templating (Evil's Thrall).
+                       # Validated against a hand-graded list of 10 that must stay out and 10
+                       # that must come in: 20 of 20. 43 matches, 38 newly scoring a role.
+                       r"(?:[.\n]|\A)(?:(?!until (?:the )?end of (?:turn|your next turn)"
+                       r"|until your next turn)[^.]){0,140}?"
+                       r"(?<!opponent )(?<!that player )\bgains? control of (?:up to \w+ )?"
+                       r"(?:target|that|another target|each)(?!\s+(?:opponent|player)\b)"
+                       r"(?:(?!until (?:the )?end of (?:turn|your next turn)"
+                       r"|until your next turn)[^.]){0,160}(?:\.|$)",
+                       # The EXCHANGE half needs no duration guard — every pool instance is
+                       # permanent, and swapping your worst permanent for their best is an
+                       # answer by construction (Trade the Helm, Shrewd Negotiation, Oko).
+                       r"\bexchange control of",
         # EDICT. Sacrifice-a-creature-of-their-choice is removal (it answers hexproof),
         # and it sat in the broad audit cue while missing from this list entirely.
         # EDICTS, generalized (BS8-28): the two narrow forms this replaces ("sacrifices a

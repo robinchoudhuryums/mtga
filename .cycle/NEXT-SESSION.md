@@ -19,7 +19,32 @@ commands disagree.
 
 ## 0-current. THE 2026-08-24 SESSION (READ THIS FIRST — supersedes §0-latest below)
 
-> **STATE STAMP, 2026-09-14 (second, supersedes the first below).** **Batch 3 and every
+> **STATE STAMP, 2026-09-14 (third — SCAN #10 IS COMPLETE, supersedes both below).**
+> All four batches and every follow-on are implemented. Batch 4 closed **BS10-01**:
+> permanent steal / exchange (`gain control of target …`, `exchange control of …`) scored no
+> interaction role on **91 of 98** pool cards; the pattern was added with the 48 THREATENS
+> ("until end of turn … untap it … gains haste") deliberately excluded on the permanence
+> line. **1 of 112 tier floors moved** — deck 47 B → A, on Trade the Helm, the exact card
+> that deck's own tier block had been arguing was uncounted.
+> **BS10-02 was REFUTED, not fixed, and this is the thing to carry:** the one-turn tap-down
+> exclusion is DELIBERATE and its reasoning sits four lines above the pattern (a one-turn
+> effect is TEMPO, not an answer; widening it adds 36 cards to the axis `tier_band` grades —
+> the BS2-06 failure). The two findings arrived looking identical. **A measurement counts the
+> EFFECT and cannot see the DECISION — read the comment at the exclusion before widening a
+> role bucket.** Do not re-file it.
+> **ONE HUMAN DECISION IS OPEN: deck 47's tier letter.** It claims B against a now-A floor.
+> The rubric permits one band under when the prose argues it, and the block names three risks
+> (unbuilt with 10 craft targets, thin protection, the curve climbed) — but `deck.py tier 47`
+> prints the possibly-under-graded nudge. Never auto-written; it is the user's call.
+> **AND A GATE HID A REAL STALE FIGURE.** After the change deck 47's prose said "interaction
+> 6" against a live 7, and BOTH `tier --audit-rationale` and the pytest roster sweep reported
+> CURRENT — "rather than", written into that block a cycle earlier, sat 46 chars before the
+> number and tripped `_figure_is_history`'s comparison-cue window, silencing all five of its
+> live-vector figures. Reworded and watched-it-fail; the general defect is logged in
+> STATE.md's follow-ons. **The K-12 promise that "the suite names every stale deck" is only
+> as good as the prose's wording.**
+>
+> **STATE STAMP, 2026-09-14 (second).** **Batch 3 and every
 > follow-on are now ALSO done** — block `10-batch3-followons-artifacts-tagger-*`. BS10-04 is
 > closed: the tagger had **no `artifacts` rule at all**, so an artifact deck's own payoffs
 > were invisible to every theme ranking. New `_ARTIFACT_MATTERS_RE` (273 pool cards, 1.71%;
