@@ -5,7 +5,7 @@
 #: based-on: deck.txt
 #: plan: midrange
 #: tier: B — PROVISIONAL. Live vector: interaction 5, card advantage 2, protection 5,
-#: tier: avg MV 4.12, 8 early drops, 31 central themes. The metrics floor is B, so the letter
+#: tier: avg MV 4.09, 8 early drops, 34 central themes. The metrics floor is B, so the letter
 #: tier: is CONSISTENT with it.
 #: tier: RE-GROUNDED 2026-09-14 after two swaps into the list (see the notes below). They
 #: tier: moved card advantage 1 → 2 and protection 3 → 4, which lifted the floor from C.
@@ -18,7 +18,7 @@
 #: tier:    SHAPE of the gap: almost none of that is DRAW, so the deck cannot dig for an answer
 #: tier:    it does not already hold. Vivien Reid's +1 and Kyoshi's chapter I are its first two.
 #: tier: 2. IT IS THE SLOWEST DECK BUILT THIS CYCLE, AND THE 2026-09-15 SWAPS MADE IT SLOWER.
-#: tier:    Avg MV 4.12 on 8 early drops, and the engine needs lands in the GRAVEYARD before it
+#: tier:    Avg MV 4.09 on 8 early drops, and the engine needs lands in the GRAVEYARD before it
 #: tier:    does anything, so the first three turns are close to blank. Against a fast start it
 #: tier:    is behind before Lumra is castable. Rampaging Baloths at {4}{G}{G} is the single
 #: tier:    biggest contributor and was taken with that cost understood.
@@ -28,11 +28,20 @@
 #: tier: lands is an 8/8 that returns every land in the yard, a one-card swing nothing else here
 #: tier: matches. Kyoshi is a SAGA, so Clash of the Eikons can remove and re-add a lore counter
 #: tier: in a single cast to re-trigger chapter I.
-#: tier: PROVISIONAL: unplayed, and NO LONGER fully owned — the 2026-09-15 swaps added two craft
-#: tier: targets (Undergrowth Recon, mythic; Rampaging Baloths, rare), both wishlisted to 50a.
-#: tier: A THIRD WEAKNESS OPENED THAT DAY: cutting Wildwood Scourge left the counters engine at
-#: tier: 8 enablers against ONE payoff (The Earth Crystal), so most of the +1/+1 counters this
-#: tier: deck makes now have nothing that reads them. That is the first thing to fix.
+#: tier: PROVISIONAL: unplayed, but FULLY OWNED. This block previously read "NO LONGER fully
+#: tier: owned" on the strength of two craft targets the 2026-09-15 swaps added (Undergrowth Recon,
+#: tier: Rampaging Baloths); the REPO was wrong, both were already owned, and reconcile_crafts.py
+#: tier: corrected card-library.csv the same day. That is the G-10 deck-dump undercount verbatim.
+#: tier: A THIRD WEAKNESS OPENED THAT DAY: cutting Wildwood Scourge left `engines` reading the
+#: tier: counters engine at 8 enablers against ONE payoff (The Earth Crystal). Measured 2026-09-15,
+#: tier: that ratio OVERSTATES the gap. The payoff pattern wants "on creatures you control", so it
+#: tier: misses Bristly Bill's "{3}{G}{G}: double the number of +1/+1 counters on EACH creature you
+#: tier: control", and three more cards convert counters through POWER rather than reading them as
+#: tier: counters (Tyvar, The Skullspore Nexus and Kyoshi's chapter I all read greatest power).
+#: tier: What is genuinely missing is AGGREGATION: Ba Sing Se and Zanarkand put their counters on
+#: tier: LANDS, Primeval Bounty and Bristly Bill scatter theirs, and nothing now collects them into
+#: tier: one threat the way Scourge did. Mossborn Hydra was weighed for this slot on 2026-09-15 and
+#: tier: NOT taken — Thranduil won it on shape (see the notes).
 #: protect: Lumra, Bellow of the Woods; Traveling Chocobo; Sapling Nursery; Summon: Titan; Icetill Explorer
 #: archetype: MONO-GREEN LANDS. Its parent counts CREATURES — Craterhoof's X, Enduring Vitality,
 #: archetype: Three Tree City all read the same number. This deck counts LANDS instead: Lumra,
@@ -50,10 +59,12 @@
 #: archetype: rather than a pile: "if a LAND you control entering causes a triggered ability of a
 #: archetype: permanent you control to trigger, that ability triggers an ADDITIONAL time." Every
 #: archetype: landfall in the deck fires twice — Sapling Nursery makes two 3/4 Treefolk per land,
-#: archetype: Mightform Harmonizer doubles a creature's power twice, Seedship Agrarian takes two
+#: archetype: Rampaging Baloths two 4/4 Beasts, Thranduil two Elf tokens (2/2 each off his own
+#: archetype: anthem), Mightform Harmonizer doubles a creature's power twice, Seedship Agrarian takes two
 #: archetype: counters, Primeval Bounty gains six. It also lets you play lands off the top.
-#: archetype: THE LAND-MAKERS ARE THE REAL MANA BASE. Overlord of the Hauntwoods creates a land
-#: archetype: token when it enters AND when it attacks; The Earth King fetches a basic for every
+#: archetype: THE LAND-MAKERS ARE THE REAL MANA BASE. (Overlord of the Hauntwoods was CUT
+#: archetype: 2026-09-15 for Thranduil and parked in the flex block; it made a land token on entry
+#: archetype: AND on every attack.) The Earth King fetches a basic for every
 #: archetype: power-4-or-greater attacker; Famished
 #: archetype: Worldsire devours lands for counters and then refills them from the top. Loot and
 #: archetype: Icetill Explorer each add a second land drop per turn, which is what turns a
@@ -239,6 +250,27 @@
 #: notes:   creatures you control" is a finisher off Lumra. `cuts` ranked Earthbender Ascension
 #: notes:   29 of 29 — its LAST pick, i.e. the model rated it the best-fitting card in the deck.
 #: notes:   Curve 3.94 → 4.12, early drops 10 → 8, central themes 19 → 31.
+#: notes: 2026-09-15 (second pass) — OVERLORD OF THE HAUNTWOODS OUT, THRANDUIL, SINDARIN LIEGE IN.
+#: notes:   User-directed, and the model DISAGREED: `cuts` ranked Overlord 20 of 29 (keep-score 43.9,
+#: notes:   fit 35) while Thranduil was surfaced by `suggest`. What the ranking could not see is SHAPE.
+#: notes:   `shape` read BALANCED (wide 9 / tall 8) before the swap and WIDE (10 / 8) after it, and the
+#: notes:   deck's two {3}{G}{G} mana sinks — Tyvar's +X/+X and Bristly Bill's counter doubler — both
+#: notes:   scale with creature COUNT and are near-dead on a one-creature board. The deck was also long
+#: notes:   on trigger SOURCES and short on payoffs: 14 land-making / extra-land-drop effects against 9
+#: notes:   landfall payoffs, now 10.
+#: notes:   THRANDUIL IS TWO CARDS IN ONE SLOT and the adventure half is the engine: Silvan Rally at
+#: notes:   {1}{G}{G} mills four and takes UP TO TWO land cards to hand — the "up to" is the flexible
+#: notes:   part, since you take them for extra land drops with Loot and Icetill Explorer, or leave them
+#: notes:   in the yard for Lumra, Summon: Titan, Aftermath Analyst and Undergrowth Recon. The creature
+#: notes:   half then makes an Elf per landfall, two under Traveling Chocobo. Its {2}{G/U}{G/U} is
+#: notes:   HYBRID and paid entirely on-colour — the `colors:` header stays G (G-58); `preflight` reads
+#: notes:   "castability PASS (+1 hybrid stray, ok)".
+#: notes:   WHAT IT COST, stated rather than hidden: Overlord was a 6/5 that turned on both power-4
+#: notes:   gates here (Garruk's Uprising's ETB draw, The Earth King's attack fetch) and whose land
+#: notes:   token is every basic land type, i.e. a Forest for Sapling Nursery's affinity. Thranduil is a
+#: notes:   2/3. It is parked in the flex block against Kona, Rescue Beastie with the full reasoning.
+#: notes:   MEASURED: avg MV 4.12 → 4.09, interaction 5, card advantage 2, protection 5 and creatures 20
+#: notes:   all held, central themes 31 → 34; the quality guard reported net improvement, no regressions.
 
 # The engine — mill lands on purpose, then return them all at once
 1 Icetill Explorer (EOE) 192
@@ -248,7 +280,6 @@
 1 Traveling Chocobo (FIN) 210
 
 # Land-makers — these are the real mana base
-1 Overlord of the Hauntwoods (DSK) 194
 1 The Earth King (TLA) 172
 1 Seedship Agrarian (EOE) 204
 1 Loot, Exuberant Explorer (FDN) 106
@@ -260,6 +291,7 @@
 1 The Legend of Kyoshi // Avatar Kyoshi (TLA) 186
 1 Famished Worldsire (EOE) 182
 1 Rampaging Baloths (FDN) 645
+1 Thranduil, Sindarin Liege // Silvan Rally (HOB) 166
 
 # Ramp
 1 Sazh's Chocobo (FIN) 200
@@ -288,7 +320,7 @@
 1 Pawpatch Formation (BLB) 186
 1 Clash of the Eikons (FIN) 180
 
-# Lands (26) — every one of these is a spell; 4 sac-fetches give TWO landfall triggers per land drop into 9 payoffs
+# Lands (26) — every one of these is a spell; 4 sac-fetches give TWO landfall triggers per land drop into 10 payoffs
 2 Ba Sing Se (TLA) 266
 1 Evendo, Waking Haven (EOE) 253
 1 Zanarkand, Ancient Metropolis // Lasting Fayth (FIN) 293
@@ -299,6 +331,7 @@
 18 Forest (MSH) 295
 
 # Flex — measured and parked. See: deck.py flex 50a
+#~ -Kona, Rescue Beastie | +Overlord of the Hauntwoods | PARKED 2026-09-15, cut for Thranduil. "Whenever this permanent enters or attacks, create a tapped colorless land token named Everywhere that is every basic land type" — a repeatable landfall trigger that costs no card from hand, and the token is a FOREST, so it also shrinks Sapling Nursery's affinity cost. Its 6/5 body turns on BOTH power-4 gates here (Garruk's Uprising's ETB draw, The Earth King's attack fetch); Thranduil is a 2/3. `cuts` ranked it 20 of 29 (keep-score 43.9, fit 35) and DISAGREED with the cut — the row is in recommendations.csv. Why it went anyway: at the time of the cut the deck ran 14 land-making / extra-land-drop effects against 9 landfall payoffs, so it was long on trigger SOURCES and short on payoffs, and Thranduil is the payoff that flipped `shape` from BALANCED (wide 9 / tall 8) to WIDE. TWO THINGS THE CURVE GETS WRONG ABOUT IT, both worth knowing before taking it back: Impending 4—{1}{G}{G} still fires the ETB on the 3-mana cast (the trigger reads "permanent", not "creature") but it is NOT a creature for four turns, so the per-attack half is delayed — the discount and the repeatable half are in tension; and the cheat-cost model does not read impending (it covers warp/plot/foretell only), so `stats` books it at MV 5 against a real 3. TAKE IT BACK IF the deck goes TALL again, or the landfall payoff count falls back under ~9; the cut then is Kona, Rescue Beastie — `cuts` 2 of 29 at fit 5, and the fourth of four cheat-into-play effects.
 #~ -Hard-Hitting Question | +A Realm Reborn | "Other permanents you control have '{T}: Add one mana of any color'" — and the breadth is the point: not just lands or creatures, but the enchantments (Sapling Nursery, Primeval Bounty, Garruk's Uprising) and artifacts too, which no other mana card here reaches. This deck has no Enduring Vitality, so nothing currently turns its creatures into mana at all. Parked purely on COST: at {4}{G}{G} it is the wrong end of the curve for the slowest deck on the roster. Measured as the fourth add of a package (with Sledge-Class Seedship, Summoner's Grimoire and Rainveil Rejuvenator) it read avg MV 4.18 with SEVEN early drops and interaction 4 — unplayable. Take it only after the curve comes down, e.g. if the land-fetch bodies get cheaper replacements.
 #~ note: applied — The Legend of Kyoshi // Avatar Kyoshi in for Harmonious Grovestrider.
 #~   Landfall puts a +1/+1 counter on a creature, and {5}{G}{G} turns it into a Bear whose
