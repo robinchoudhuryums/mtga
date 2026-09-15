@@ -240,18 +240,19 @@ directions.
   re-creates the partial read from the inside** — it happened while grading (2026-08);
   the closing `━━ end · <name> ━━` bar is the tell that you saw the whole card. [G-01]
 - **A split / Room / Adventure card's stored cost covers BOTH halves — read the FRONT
-  face.** Use `lib.front_face_cost()` / `lib.mana_value()`; `parse_pips` and `load_mana`
-  already do. A **MODAL DFC** is stored the same way now — either face is castable from
-  hand — but its Mana Value is the FRONT face's, so it escapes residual 2 below; a
+  face.** **`lib.mana_value()` does NOT do this for you** — it sums whatever it is handed,
+  and its docstring says to pass ONE face — so the call is `mana_value(front_face_cost(c))`.
+  Better still, do not recompute at all: `load_mana` front-faces once, so **`entry[1]` is
+  the answer and `entry[0]` is raw input**. A recompute from `entry[0]` has produced this
+  bug THREE times — `card.py`'s combined MV (closed 2026-08-12), then `effective_avg_mv`
+  and `cheat_cost_cards` (both closed 2026-09-15; the first printed a wrong avg MV beside
+  the right one on **27 of 112 decks**, and because both figures are report-only no floor
+  moved, no invariant broke and nothing flagged). `check_agreement`'s ninth pair,
+  `_agree_avg_mv`, now holds the two figures together. A **MODAL DFC** is stored the same
+  way — either face is castable from hand — but its Mana Value is the FRONT face's; a
   TRANSFORM DFC keeps one cost, since its back is reached by transforming, not by paying.
   **The one live residual: a deck that plays a split card mainly for its BACK half reads
-  cheaper than it plays** — grade that one from the printed card. (The second residual —
-  `card.py` printing the COMBINED mana value, so Mirror Room // Fractured Realm displayed
-  MV 10 for a `{2}{U}` three-drop — is CLOSED as of 2026-08-12: it recomputes from the
-  front face like `load_mana` always did, and names which half the number describes. It
-  had put the inspection surface G-01 mandates in direct contradiction with every analysis
-  surface for a year, which is the shape to watch for: the fix landed in the ANALYSIS path
-  and the READING path was never brought along.) [G-02]
+  cheaper than it plays** — grade that one from the printed card. [G-02]
 - **Don't judge a card by printed mana value or a single subtype.** Read the card TEXT
   (it is in the CSV): `stats` flags ◊/△ cost flexibility and functional roles, `tribes`
   reads oracle text for cross-type synergies. [G-03]

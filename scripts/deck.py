@@ -1390,7 +1390,10 @@ def effective_avg_mv(cards, carddata, mana):
     vector's `avg_mv` stays the printed curve (a new term would re-grade the roster), this
     says what the clock WOULD read. `with_grants` also applies every alt cost a GRANT
     hands out (Tannuk's warp to artifact cards and red creature cards), or None when no
-    grant reaches a card. None overall when nothing is priced."""
+    grant reaches a card. None overall when nothing is priced.
+
+    The printed figure is the STORED mana value (`load_mana`'s front-faced entry[1]),
+    the same number `deck_quality_vector` averages — so the two cannot drift apart."""
     alt = {n.lower(): amv for n, _c, _kw, _a, amv in cheat_cost_cards(cards, carddata, mana)}
     grants = [(kw, mana_value(cost), scope) for _n, kw, cost, scope
               in cheat_cost_grants(cards, carddata)]
@@ -1404,9 +1407,18 @@ def effective_avg_mv(cards, carddata, mana):
         if not d2 or "Land" in _primary_type(d2["type"]):
             continue
         entry = mana.get(nl)
-        if not entry or not entry[0]:
+        if not entry or not entry[0] or entry[1] is None:
             continue
-        pmv = mana_value(entry[0])
+        # The STORED mana value, never a recompute from entry[0]. `load_mana` already
+        # front-faces a split / Room / Adventure cost (G-02) and `mana_value`'s own
+        # docstring says to pass ONE face, because the raw `A // B` string sums both —
+        # Thranduil's `{2}{G/U}{G/U} // {1}{G/U}{G/U}` reads 7 against a real 4. This
+        # line recomputed from the raw cost until 2026-09-15, so the "printed" figure
+        # reported here disagreed with `deck_quality_vector`'s `avg_mv` (which reads
+        # entry[1]) on 27 of 112 decks, by up to +0.45 — two answers to one question,
+        # printed side by side in `stats` and `tier`. Reading entry[1] is what makes
+        # them agree by CONSTRUCTION rather than by two implementations matching.
+        pmv = entry[1]
         emv = alt.get(nl, pmv)
         gmv = emv
         for _kw, gm, scope in grants:
@@ -1489,9 +1501,16 @@ def cheat_cost_cards(cards, carddata, mana):
             continue
         entry = mana.get(n.lower())
         cost = (entry[0] if entry else "") or ""
-        if not cost:
+        if not cost or entry[1] is None:
             continue
-        printed_mv = mana_value(cost)
+        # Stored MV, front-faced by `load_mana` — the same G-02 rule as
+        # `effective_avg_mv` above, and fixed in the same change. LATENT rather than
+        # live when it was found: 0 of the 616 `//`-cost rows also carry
+        # warp/plot/foretell, so no verdict flipped. It is still wrong, because the
+        # test below is a MANA-VALUE comparison and a combined `A // B` total would
+        # admit a card whose alternative cost is not actually cheaper the moment such
+        # a printing exists.
+        printed_mv = entry[1]
         text = _REMINDER_RE.sub(" ", d2.get("text") or "")
         m = _ALT_COST_RE.search(text)
         if not m:

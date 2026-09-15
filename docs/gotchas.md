@@ -110,6 +110,51 @@ whenever a name contains `" // "`.** The narrow code fix would be for `card.py` 
 `mana_value(front_face_cost(cost))` and show the combined total only as an aside; until
 that lands the rule above is the mitigation.
 
+**Residual 3, closed 2026-09-15, and it is the SAME SHAPE A THIRD TIME: a recompute from
+the raw cost.** Residual 2 was `card.py` reading the stored combined MV; this one is two
+functions in `deck.py` recomputing MV from `entry[0]` when `load_mana` had already put the
+correct, front-faced number in `entry[1]` beside it. `effective_avg_mv` did
+`pmv = mana_value(entry[0])`, so the **printed** figure it reports — the one `stats` and
+`tier` render in the same block as the vector's `avg_mv` — summed both halves of every
+split / Room / Adventure cost. `cheat_cost_cards` did the same in `printed_mv`.
+
+Measured at the fix: **616 of the `card-mana.csv` rows carry a `//` cost and all 616
+disagree between the stored MV and `mana_value(raw)`; 27 of 112 decks printed a wrong
+figure, by up to +0.45** (deck 23 read 3.78 against a live 3.33, 51a 3.61 against 3.22,
+69a 4.29 against 4.00). `cheat_cost_cards` was LATENT rather than live — **0** of those
+616 rows also carries warp / plot / foretell, so no verdict flipped — and it was fixed
+anyway, because the comparison it performs is a mana-value test and a combined total would
+admit a card whose alternative cost is not actually cheaper the moment such a printing
+exists. After the fix, 0 of 112 decks disagree and `cheat_cost_cards`' output is byte-identical
+on all 112.
+
+**Why nothing caught it for the function's whole life.** Both figures are report-only by
+the G-60 discipline (`tier_band` and `deck_quality_vector` never read them), so no tier
+floor moved, no invariant broke and no gate had anything to fire on — the number was simply
+wrong, in print, on a quarter of the roster. It surfaced only because an Adventure card
+(Thranduil, Sindarin Liege // Silvan Rally, `{2}{G/U}{G/U} // {1}{G/U}{G/U}`, front face 4
+and combined 7) entered deck 50a during a tune and made `tier` print "effective avg MV 4.15
+(printed 4.18)" directly beneath a vector reading 4.09.
+
+**The transferable half, and the thing that makes this rule's wording load-bearing.**
+CLAUDE.md had said "Use `lib.front_face_cost()` / `lib.mana_value()`", which reads as *either
+of these is safe*. `mana_value` sums whatever it is handed; its own docstring already said
+to pass one face. The safe call is `mana_value(front_face_cost(c))`, and better still is not
+to recompute at all — **`load_mana` did the front-facing once, so `entry[1]` is the answer
+and `entry[0]` is raw input.** `deck_shape`, `deck_needs` and every other consumer read
+`entry[1]`; these two were the outliers. The fix reads `entry[1]` in both, which makes them
+agree with the vector by CONSTRUCTION rather than by two implementations happening to match
+— the G-70 rule one file over.
+
+**Gated now by `check_agreement`'s ninth pair, `_agree_avg_mv`** (QUESTION: what is this
+deck's printed average mana value? A = `deck_quality_vector`'s `avg_mv`; B =
+`effective_avg_mv`'s printed element), which sweeps the live roster and additionally runs a
+synthetic split-cost control with the raw-cost recompute as the deliberately wrong
+implementation — since whether the roster happens to hold a `//` card in a deck that also
+prints an effective figure is an accident of the current lists. Watched it fail in both
+halves before the fix was restored. `tests/test_deck_models.py` pins the behaviour on both
+functions, each mutation-tested against the old code.
+
 **Later development: MODAL double-faced cards now store both costs the same way.** A
 modal DFC is castable as either face, so it belongs in the same `A // B` convention, and
 `build_mana` used to keep only the front — see G-63 for the incident and the wider class.

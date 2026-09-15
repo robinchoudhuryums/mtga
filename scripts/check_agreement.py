@@ -444,9 +444,82 @@ def _agree_synergy_store(errs):
                     f"`cuts` / `suggest` / centrality.\n    " + "\n    ".join(bad[:6]))
 
 
+def _agree_avg_mv(errs):
+    """QUESTION: what is this deck's PRINTED average mana value?
+
+    A: `deck_quality_vector`'s `avg_mv` — the number the curve reads, `_clock_score`
+       weighs, `cuts` prints in its short-axis note and every `#: tier:` figure claim
+       resolves against.
+    B: `effective_avg_mv`'s `printed` element — the figure `stats` and `tier` print in
+       the SAME block, immediately beside A.
+
+    Two answers to one question, rendered side by side, and nothing compared them. A
+    read the stored `card-mana.csv` mana value (front-faced by `load_mana`, G-02); B
+    recomputed it from the raw cost string, and `mana_value` on a split / Room /
+    Adventure `A // B` cost sums BOTH halves — its own docstring says to pass one face.
+    Found 2026-09-15 when an Adventure card entered deck 50a and `tier` printed
+    "effective avg MV 4.15 (printed 4.18)" under a vector reading 4.09. The roster held
+    616 `//`-cost rows and **27 of 112 decks** were affected, by up to +0.45. Nothing
+    caught it: the figure is report-only (G-60 pins it out of `tier_band`), so no floor
+    moved and no invariant broke — it was simply wrong on a quarter of the roster.
+
+    Checked on the LIVE ROSTER, and additionally against a deliberately WRONG control —
+    the raw-cost recompute — on a synthetic split-cost deck, since whether the roster
+    happens to hold a `//` card in a deck that also prints an effective figure is an
+    accident of the current lists."""
+    # (1) The synthetic case: a split-cost card must be priced at its FRONT face. Real
+    #     text (G-67) — Thranduil's Adventure cost and Bygone Colossus's warp, the
+    #     latter only so `effective_avg_mv` has something to price and returns non-None.
+    cd = {
+        "thranduil, sindarin liege // silvan rally": {
+            "type": "Legendary Creature — Elf Noble // Sorcery — Adventure",
+            "text": "Other Elves you control get +1/+1."},
+        "bygone colossus": {
+            "type": "Artifact Creature — Robot Giant",
+            "text": "Warp {3} (You may cast this card from your hand for its warp cost.)"},
+    }
+    raw = "{2}{G/U}{G/U} // {1}{G/U}{G/U}"
+    mana = {"thranduil, sindarin liege // silvan rally": (raw, 4),
+            "bygone colossus": ("{9}", 9)}
+    cards = [(1, "Thranduil, Sindarin Liege // Silvan Rally", "HOB", "166"),
+             (1, "Bygone Colossus", "EOE", "1")]
+    got = deck.effective_avg_mv(cards, cd, mana)
+    if not got:
+        errs.append("effective_avg_mv returned None on a deck holding a warp card — the "
+                    "split-cost control cannot run.")
+    else:
+        expect = round((4 + 9) / 2, 2)
+        if got[1] != expect:
+            errs.append(
+                f"effective_avg_mv prices a split/Adventure cost at {got[1]} against the "
+                f"front-face {expect}: it is reading the raw `A // B` string, which sums "
+                "BOTH halves (G-02). Use the stored mana value, as `deck_quality_vector` "
+                "does.")
+        if deck.mana_value(raw) == 4:
+            errs.append("mana_value() now front-faces a `//` cost on its own, so the "
+                        "control above asserts nothing — re-derive this pair.")
+    # (2) The live roster: the two figures are printed in one block and must match.
+    bad = []
+    carddata, mn = deck.load_card_data(), deck.load_mana()
+    for d in deck.roster_decks():
+        _meta, cards = deck.parse_deck_file(d["path"])
+        if not cards:
+            continue
+        eff = deck.effective_avg_mv(cards, carddata, mn)
+        if not eff:
+            continue
+        vec = deck.deck_quality_vector(d)["avg_mv"]
+        if abs(eff[1] - vec) >= 0.01:
+            bad.append(f"{d['id']}: effective_avg_mv printed={eff[1]} vs vector avg_mv={vec}")
+    if bad:
+        errs.append("the printed average mana value disagrees with the vector's — `stats` "
+                    "and `tier` render both in one block, so a reader sees two answers to "
+                    f"one question ({len(bad)} deck(s)).\n    " + "\n    ".join(bad[:6]))
+
+
 PAIRS = (_agree_weakest_cut, _agree_legality, _agree_owned,
          _agree_interaction, _agree_power_seed, _agree_role_fillers,
-         _agree_buildability, _agree_synergy_store)
+         _agree_buildability, _agree_synergy_store, _agree_avg_mv)
 
 
 def check():

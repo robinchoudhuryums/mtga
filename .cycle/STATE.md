@@ -36,6 +36,7 @@ Updated: 2026-09-14 (broad-implement, batch 4)
   fixed its largest cause (deck 47's own picks: median 310 → 144).
 
 ## Completed this cycle
+- **G-02 recompute fix (post-scan, user-requested)** | `effective_avg_mv` and `cheat_cost_cards` recomputed mana value from the RAW `A // B` cost instead of `load_mana`'s front-faced `entry[1]`; the printed avg MV `stats`/`tier` render disagreed with the vector's on **27 of 112 decks, up to +0.45** (0 after). `cheat_cost_cards` was latent (0 of 616 `//` rows carry an alt cost). Report-only, so **no floor moved and nothing flagged** — gated now by `check_agreement`'s ninth pair `_agree_avg_mv` (roster sweep + synthetic split-cost control, watched-it-fail both halves) | scripts/deck.py, scripts/check_agreement.py, tests/test_deck_models.py, CLAUDE.md, docs/gotchas.md
 - Template sync v1.23.0 → v1.33.0 | `.claude/commands/broad-scan.md`, CLAUDE.md, docs/cycle-config.md
 - Tier-3 re-evaluation; state-and-measurement half adopted | `.cycle/`, `.claude/commands/`, CLAUDE.md
 - Skill-discoverability fixes | tune-deck Stage 8 handoff, systems-map promoted to intent
@@ -91,6 +92,8 @@ Updated: 2026-09-14 (broad-implement, batch 4)
 - Two G-67 role-pattern holes (Kitnap, Eluge), baselined not fixed.
 
 ## Open follow-on items
+- **`_ALT_COST_RE` does not cover `impending`.** It matches warp|plot|foretell|evoke|emerge|spectacle|surge|miracle|sneak, so an Overlord books at its printed MV: Overlord of the Hauntwoods reads MV 5 against an Impending 4—{1}{G}{G} cast of 3, and the ETB fires on the cheap cast because the trigger reads *permanent*, not *creature*. **6 pool cards, 4 maindecked across 10 decks**, all Overlords. NOT a one-word add: impending delays the BODY four turns, so unlike warp the cheap cast is not strictly cheaper — decide what the effective curve should claim before widening it.
+- **The generalised form of the G-02 fix, unswept:** `load_mana` normalises a value and hands back `(raw, normalised)`; two callers recomputed from `raw` and drifted. No sweep has asked whether any OTHER `load_*` table has the same shape — a loader that fixes something up, and a caller that re-derives it from the untouched input beside it.
 - **THE COMPARISON-CUE SUPPRESSION IS A LIVE BLIND SPOT in the audit K-12 depends on.**
   `_figure_is_history` silences every figure within ±60 chars of a `_COMPARISON_CUES` word.
   Deck 47's block hid FIVE figures behind one "rather than" for a full cycle, and both the

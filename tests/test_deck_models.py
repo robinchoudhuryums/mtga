@@ -1132,6 +1132,49 @@ class TestCheatCostGrantsAndEffectiveCurve:
         assert "effective_avg_mv" not in src and "cheat_cost_grants" not in src
         assert "_grant_scope_matches" not in src
 
+    # --- G-02: a split / Room / Adventure cost is priced at its FRONT face ---------
+    # `mana_value` on the raw `A // B` string sums BOTH halves (its own docstring says
+    # to pass one face), so this function recomputing from entry[0] made the "printed"
+    # figure it reports disagree with `deck_quality_vector`'s `avg_mv` — which reads the
+    # stored, front-faced entry[1] — on 27 of 112 decks, by up to +0.45. Found 2026-09-15
+    # when an Adventure card entered deck 50a and `tier` printed both numbers in one
+    # block. Real card text (G-67).
+    SPLIT_CD = {"thranduil, sindarin liege // silvan rally": {
+        "type": "Legendary Creature — Elf Noble // Sorcery — Adventure",
+        "text": "Other Elves you control get +1/+1.\nLandfall — Whenever a land you "
+                "control enters, create a 1/1 green Elf creature token."}}
+    SPLIT_RAW = "{2}{G/U}{G/U} // {1}{G/U}{G/U}"
+
+    def test_a_split_cost_is_priced_at_the_front_face_not_both_halves(self):
+        cd = dict(self.CD, **self.SPLIT_CD)
+        mana = dict(self.MANA,
+                    **{"thranduil, sindarin liege // silvan rally": (self.SPLIT_RAW, 4)})
+        cards = [(1, "Thranduil, Sindarin Liege // Silvan Rally", "HOB", "166"),
+                 (1, "Bygone Colossus", "SET", "1")]
+        eff, printed, _g = deck.effective_avg_mv(cards, cd, mana)
+        assert printed == round((4 + 9) / 2, 2)      # front face 4, NOT the combined 7
+        assert eff == round((4 + 3) / 2, 2)          # Colossus warps to 3
+
+    def test_the_raw_split_cost_really_does_over_read(self):
+        """The control: without it the assertion above could pass for the wrong reason."""
+        assert deck.mana_value(self.SPLIT_RAW) == 7
+        assert deck.mana_value(deck.front_face_cost(self.SPLIT_RAW)) == 4
+
+    def test_cheat_cost_cards_compares_against_the_front_face_too(self):
+        """Latent at the fix — 0 of the 616 `//`-cost rows also carry warp/plot/foretell —
+        but the comparison is a MANA-VALUE test, so a combined total would admit a card
+        whose alternative cost is not actually cheaper."""
+        cd = dict(self.SPLIT_CD)
+        cd["thranduil, sindarin liege // silvan rally"] = dict(
+            cd["thranduil, sindarin liege // silvan rally"],
+            text="Other Elves you control get +1/+1.\nWarp {5} (You may cast this card "
+                 "from your hand for its warp cost.)")
+        mana = {"thranduil, sindarin liege // silvan rally": (self.SPLIT_RAW, 4)}
+        cards = [(1, "Thranduil, Sindarin Liege // Silvan Rally", "HOB", "166")]
+        # warp {5} is DEARER than the {2}{G/U}{G/U} front face (4) and cheaper only than
+        # the bogus combined 7, so reading the raw cost would flag it as a discount.
+        assert deck.cheat_cost_cards(cards, cd, mana) == []
+
 
 class TestTypedSinkLabel:
     IRON_HILLS = ("This land enters tapped.\n{T}: Add {R} or {W}.\n{2}{R}{W}, {T}, Sacrifice this "
