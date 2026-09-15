@@ -47,7 +47,7 @@
 #: notes: +1 Terramorphic Expanse. A basic-land fetch counts as a source for every
 #: notes: colour the deck runs a basic of, so three of them beat three duals: sources
 #: notes: went B 10 to 12, G 13 to 16, U 11 to 12, and cards below 90% on curve went
-#: notes: 29 to 19 (March of the World Ooze 44.3% to 61.4%, Mimeoplasm 64.9% to 74.8%,
+#: notes: 29 to 20 (March of the World Ooze 44.3% to 61.4%, Mimeoplasm 64.9% to 74.8%,
 #: notes: Consuming Ashes 53.1% to 64.6%). The sacrificed fetch is also a LAND CARD in
 #: notes: the yard, which is live text for Summon: Titan II, Lluwen's Worm ability and
 #: notes: the Descend 8 counts on Uchbenbak and The Everflowing Well. Caveat the model
