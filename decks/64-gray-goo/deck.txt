@@ -53,7 +53,19 @@
 #: notes: the Descend 8 counts on Uchbenbak and The Everflowing Well. Caveat the model
 #: notes: cannot see: consistency reports 5 of 13 nonbasics tapped because a fetch
 #: notes: ENTERS untapped — the basic it finds enters tapped, so the real tempo cost
-#: notes: on the turn you crack it is a tapland's. Basics are now 6/2/3, one of each.
+#: notes: on the turn you crack it is a tapland's. Basics after that step were 6/2/3.
+#: notes: 2026-09-15 (second pass) — +Watery Grave (-1 Island) and +Temple of Mystery
+#: notes: (-1 Forest). Both are owned; the Temple was missing from card-library.csv and
+#: notes: was reconciled in (the G-10 undercount symptom, not a new craft). Sources went
+#: notes: B 12 to 13 and U 12 to 13, G unchanged at 16; cards below 90% on curve went
+#: notes: 20 to 16, so the whole manabase pass is 29 to 16. The PLACEMENT was measured,
+#: notes: not assumed: cutting a Swamp for the Grave, or a Swamp for the Temple, each
+#: notes: stopped at 18 — B is the second-thinnest colour against {B}{B} Consuming Ashes
+#: notes: and Wick's Patrol, and Island-for-Grave plus Forest-for-Temple is the only
+#: notes: pairing that raises it. COST, stated because no model prices it: basics are now
+#: notes: 5 Forest / 1 Island / 3 Swamp, so once a fetch takes the Island the other two
+#: notes: can only find Forest or Swamp. Blue ACCESS does not depend on that basic (nine
+#: notes: other lands make U) — what is lost is fetch flexibility late.
 
 # Engine — eat the yard, grow
 1 Mimeoplasm, Revered One (DFT) 214
@@ -114,8 +126,10 @@
 1 Opulent Palace (TDM) 264
 1 Lilypad Village (BLB) 255
 1 Surveillance Room (MSH) 274
-6 Forest (HOB) 193
-2 Island (HOB) 190
+5 Forest (HOB) 193
+1 Temple of Mystery (FDN) 702
+1 Island (HOB) 190
+1 Watery Grave (EOE) 261
 2 Evolving Wilds (ECL) 264
 3 Swamp (HOB) 191
 1 Terramorphic Expanse (MSC) 828
