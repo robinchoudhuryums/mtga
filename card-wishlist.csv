@@ -1,7 +1,4 @@
 Card Name,Type,Card Text,Color(s),Synergies,Set Code,Collector #,Rarity,Target,Note,Power,Power Source
-Undergrowth Recon,Enchantment,"At the beginning of your upkeep, return target land card from your graveyard to the battlefield tapped.",G,reanimator; graveyard,,,Mythic,50a,added to 50a 2026-09-15: Recon is repeatable upkeep land recursion = a landfall trigger every turn; Baloths is a 4/4 per landfall,7.5,seed
-Rampaging Baloths,Creature — Beast,"Trample
-Landfall — Whenever a land you control enters, create a 4/4 green Beast creature token.",G,Beast; tokens; landfall; trample; evasion; lands,,,Rare,50a,added to 50a 2026-09-15: Recon is repeatable upkeep land recursion = a landfall trigger every turn; Baloths is a 4/4 per landfall,5.5,seed
 Sword of Wealth and Power,Artifact — Equipment,"Equipped creature gets +2/+2 and has protection from instants and from sorceries.
 Whenever equipped creature deals combat damage to a player, create a Treasure token. When you next cast an instant or sorcery spell this turn, copy that spell. You may choose new targets for the copy.
 Equip {2}",Colorless,Equipment; tokens; treasure; equipment; pump; spell copy; equip,BIG,26,Mythic,,,7.0,seed
@@ -182,7 +179,6 @@ Poison Dart Frog,Creature — Frog,"Reach
 {2}: This creature gains deathtouch until end of turn.",G,Frog; mana; reach; defense,LCI,207,Common,50,,1.5,seed
 Druid of the Cowl,Creature — Elf Druid,{T}: Add {G}.,G,Elf; Druid; mana,M19,177,Common,50,,1.5,seed
 Llanowar Elves,Creature — Elf Druid,{T}: Add {G}.,G,Elf; Druid; mana,M19,314,Common,50,,1.5,seed
-Undergrowth Recon,Enchantment,"At the beginning of your upkeep, return target land card from your graveyard to the battlefield tapped.",G,graveyard,MKM,181,Mythic,,,7.5,seed
 Ill-Timed Explosion,Sorcery,"Draw two cards. Then you may discard two cards. When you do, Ill-Timed Explosion deals X damage to each creature, where X is the greatest mana value among cards discarded this way.",U/R,card draw; burn,MKM,207,Rare,25,draw two + scalable board sweep/burn,7.0,hand
 "Izoni, Center of the Web",Legendary Creature — Elf Detective,"Menace
 Whenever Izoni enters or attacks, you may collect evidence 4. If you do, create two 2/1 black and green Spider creature tokens with menace and reach.

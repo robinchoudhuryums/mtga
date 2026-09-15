@@ -5788,3 +5788,6 @@ Iron Hills Blacksmith,Creature — Dwarf Artificer,"Double strike
 When this creature enters, create a colorless Equipment artifact token named Axe with ""Equipped creature gets +1/+0"" and equip {2}.",W,Dwarf; Artificer; tokens; etb; equipment; pump; double strike; combat; aggro,HOB,16,1
 "Firion, Wild Rose Warrior",Legendary Creature — Human Rebel Warrior,"Equipped creatures you control have haste.
 Whenever a nontoken Equipment you control enters, create a token that's a copy of it, except it has ""This Equipment's equip abilities cost {2} less to activate."" Sacrifice that token at the beginning of the next upkeep.",R,Human; Rebel; Warrior; Equipped; Equipment; cost-reduction; sacrifice; tokens; equipment; haste; aggro,FIN,137,1
+Undergrowth Recon,Enchantment,"At the beginning of your upkeep, return target land card from your graveyard to the battlefield tapped.",G,reanimator; graveyard,MKM,181,1
+Rampaging Baloths,Creature — Beast,"Trample
+Landfall — Whenever a land you control enters, create a 4/4 green Beast creature token.",G,Beast; tokens; landfall; trample; evasion; lands,FDN,645,1
