@@ -1,4 +1,7 @@
 Card Name,Type,Card Text,Color(s),Synergies,Set Code,Collector #,Rarity,Target,Note,Power,Power Source
+Undergrowth Recon,Enchantment,"At the beginning of your upkeep, return target land card from your graveyard to the battlefield tapped.",G,reanimator; graveyard,,,Mythic,50a,added to 50a 2026-09-15: Recon is repeatable upkeep land recursion = a landfall trigger every turn; Baloths is a 4/4 per landfall,7.5,seed
+Rampaging Baloths,Creature — Beast,"Trample
+Landfall — Whenever a land you control enters, create a 4/4 green Beast creature token.",G,Beast; tokens; landfall; trample; evasion; lands,,,Rare,50a,added to 50a 2026-09-15: Recon is repeatable upkeep land recursion = a landfall trigger every turn; Baloths is a 4/4 per landfall,5.5,seed
 Sword of Wealth and Power,Artifact — Equipment,"Equipped creature gets +2/+2 and has protection from instants and from sorceries.
 Whenever equipped creature deals combat damage to a player, create a Treasure token. When you next cast an instant or sorcery spell this turn, copy that spell. You may choose new targets for the copy.
 Equip {2}",Colorless,Equipment; tokens; treasure; equipment; pump; spell copy; equip,BIG,26,Mythic,,,7.0,seed

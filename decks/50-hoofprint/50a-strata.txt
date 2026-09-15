@@ -4,8 +4,8 @@
 #: colors: G
 #: based-on: deck.txt
 #: plan: midrange
-#: tier: B — PROVISIONAL. Live vector: interaction 5, card advantage 2, protection 4,
-#: tier: avg MV 3.94, 10 early drops, 19 central themes. The metrics floor is B, so the letter
+#: tier: B — PROVISIONAL. Live vector: interaction 5, card advantage 2, protection 5,
+#: tier: avg MV 4.12, 8 early drops, 31 central themes. The metrics floor is B, so the letter
 #: tier: is CONSISTENT with it.
 #: tier: RE-GROUNDED 2026-09-14 after two swaps into the list (see the notes below). They
 #: tier: moved card advantage 1 → 2 and protection 3 → 4, which lifted the floor from C.
@@ -17,17 +17,22 @@
 #: tier:    Traveling Chocobo and Icetill Explorer all score zero on it. What stays TRUE is the
 #: tier:    SHAPE of the gap: almost none of that is DRAW, so the deck cannot dig for an answer
 #: tier:    it does not already hold. Vivien Reid's +1 and Kyoshi's chapter I are its first two.
-#: tier: 2. IT IS THE SLOWEST DECK BUILT THIS CYCLE. Avg MV 3.94 on 10 early drops, and the
-#: tier:    engine needs lands in the GRAVEYARD before it does anything, so the first three
-#: tier:    turns are close to blank. Against a fast start it is behind before Lumra is castable.
+#: tier: 2. IT IS THE SLOWEST DECK BUILT THIS CYCLE, AND THE 2026-09-15 SWAPS MADE IT SLOWER.
+#: tier:    Avg MV 4.12 on 8 early drops, and the engine needs lands in the GRAVEYARD before it
+#: tier:    does anything, so the first three turns are close to blank. Against a fast start it
+#: tier:    is behind before Lumra is castable. Rampaging Baloths at {4}{G}{G} is the single
+#: tier:    biggest contributor and was taken with that cost understood.
 #: tier: WHAT ARGUES UP: the manabase is flawless — every coloured card on curve at >=90%, with
-#: tier: keepable 87.4% — protection 4 is the highest of any deck built this cycle, and Traveling
+#: tier: keepable 87.4% — protection 5 is the highest of any deck built this cycle, and Traveling
 #: tier: Chocobo doubles the payoff layer instead of adding to it. A resolved Lumra on eight
 #: tier: lands is an 8/8 that returns every land in the yard, a one-card swing nothing else here
 #: tier: matches. Kyoshi is a SAGA, so Clash of the Eikons can remove and re-add a lore counter
 #: tier: in a single cast to re-trigger chapter I.
-#: tier: PROVISIONAL: unplayed. The deck is now FULLY OWNED — the earlier "18 craft targets" was
-#: tier: stale.
+#: tier: PROVISIONAL: unplayed, and NO LONGER fully owned — the 2026-09-15 swaps added two craft
+#: tier: targets (Undergrowth Recon, mythic; Rampaging Baloths, rare), both wishlisted to 50a.
+#: tier: A THIRD WEAKNESS OPENED THAT DAY: cutting Wildwood Scourge left the counters engine at
+#: tier: 8 enablers against ONE payoff (The Earth Crystal), so most of the +1/+1 counters this
+#: tier: deck makes now have nothing that reads them. That is the first thing to fix.
 #: protect: Lumra, Bellow of the Woods; Traveling Chocobo; Sapling Nursery; Summon: Titan; Icetill Explorer
 #: archetype: MONO-GREEN LANDS. Its parent counts CREATURES — Craterhoof's X, Enduring Vitality,
 #: archetype: Three Tree City all read the same number. This deck counts LANDS instead: Lumra,
@@ -221,6 +226,19 @@
 #: notes:   back face gives lands trample and hexproof. Kyoshi is also a SAGA, so Clash of the
 #: notes:   Eikons can remove and re-add a lore counter in one cast to re-trigger chapter I.
 #: notes:   Floor moved C → B; card advantage 1 → 2, protection 3 → 4, avg MV 3.82 → 3.94.
+#: notes: 2026-09-15 — THREE SWAPS, user-directed. Agatha's Soul Cauldron was CUT for
+#: notes:   Undergrowth Recon ("at the beginning of your upkeep, return target land card from
+#: notes:   your graveyard to the battlefield tapped" — repeatable land recursion that is ALSO a
+#: notes:   landfall trigger every upkeep, which is what the Analyst/Lumra/Titan package does
+#: notes:   once each). Noted at the time: G-61 records the Cauldron as a WRONGLY overturned
+#: notes:   dismissal in this very deck, on the grounds that it self-mills four ways; it also
+#: notes:   rotates ~2026, which is what settled it. Wildwood Scourge was CUT for Rampaging
+#: notes:   Baloths (a 4/4 Beast on every landfall) — see weakness 3, this is what stranded the
+#: notes:   counters payoffs. Earthbender Ascension was CUT for Tyvar, the Pummeler, whose
+#: notes:   "{3}{G}{G}: creatures you control get +X/+X where X is the greatest power among
+#: notes:   creatures you control" is a finisher off Lumra. `cuts` ranked Earthbender Ascension
+#: notes:   29 of 29 — its LAST pick, i.e. the model rated it the best-fitting card in the deck.
+#: notes:   Curve 3.94 → 4.12, early drops 10 → 8, central themes 19 → 31.
 
 # The engine — mill lands on purpose, then return them all at once
 1 Icetill Explorer (EOE) 192
@@ -241,13 +259,12 @@
 1 Primeval Bounty (FDN) 644
 1 The Legend of Kyoshi // Avatar Kyoshi (TLA) 186
 1 Famished Worldsire (EOE) 182
+1 Rampaging Baloths (FDN) 645
 
 # Ramp
 1 Sazh's Chocobo (FIN) 200
 1 Tifa Lockhart (FIN) 206
 1 Bristly Bill, Spine Sower (OTJ) 157
-1 Wildwood Scourge (FDN) 236
-1 Earthbender Ascension (TLA) 175
 1 Mona Lisa, Science Geek (TMT) 123
 
 # Cheat into play — the land-aware half of the family's options
@@ -256,12 +273,13 @@
 1 Sledge-Class Seedship (EOE) 208
 1 Web of Life and Destiny (SPM) 122
 1 Groundchuck & Dirtbag (TMT) 115
-1 Agatha's Soul Cauldron (WOE) 242
+1 Undergrowth Recon (MKM) 181
 1 The Earth Crystal (FIN) 184
 
 # Trample and the multiplier
 1 Garruk's Uprising (M21) 186
 1 The Skullspore Nexus (LCI) 212
+1 Tyvar, the Pummeler (DSK) 202
 
 # Interaction
 1 Vivien Reid (FDN) 234
