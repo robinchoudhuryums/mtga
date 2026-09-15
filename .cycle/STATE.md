@@ -92,7 +92,18 @@ Updated: 2026-09-14 (broad-implement, batch 4)
 - Two G-67 role-pattern holes (Kitnap, Eluge), baselined not fixed.
 
 ## Open follow-on items
-- **`_ALT_COST_RE` does not cover `impending`.** It matches warp|plot|foretell|evoke|emerge|spectacle|surge|miracle|sneak, so an Overlord books at its printed MV: Overlord of the Hauntwoods reads MV 5 against an Impending 4—{1}{G}{G} cast of 3, and the ETB fires on the cheap cast because the trigger reads *permanent*, not *creature*. **6 pool cards, 4 maindecked across 10 decks**, all Overlords. NOT a one-word add: impending delays the BODY four turns, so unlike warp the cheap cast is not strictly cheaper — decide what the effective curve should claim before widening it.
+- CLOSED 2026-09-15: `_ALT_COST_RE` now covers `impending`. It was not the count of cards
+  that mattered — `effective_avg_mv` returns None when nothing is priced, so **7 of the 9
+  decks holding an impending card printed NO advisory at all**, a failure that presented as
+  silence. The cost is substituted (right for what the deck PAYS) and the body delay is
+  DISCLOSED by `impending_delay_note` rather than gated, because a gate on the "this
+  permanent" wording would pass all six cards and assert nothing. 7 decks gained a figure,
+  2 moved, **0 of 112 tier floors**. Ride-alongs: `check_patterns` refused the build until
+  `_IMPENDING_RE` was registered; `cmd_tier`'s "Warp/Plot/Foretell" prose named three of
+  nine keywords and now names the shape; G-85's effective-figure POPULATION moved 43 → 50
+  and was only ever hardcoded inside the fire-rate entry's own regex, so it is registered in
+  `figure_drift` as its own figure now. Residual: no impending GRANT form exists, so
+  `_ALT_COST_GRANT_RE` was left alone.
 - **The generalised form of the G-02 fix, unswept:** `load_mana` normalises a value and hands back `(raw, normalised)`; two callers recomputed from `raw` and drifted. No sweep has asked whether any OTHER `load_*` table has the same shape — a loader that fixes something up, and a caller that re-derives it from the untouched input beside it.
 - **THE COMPARISON-CUE SUPPRESSION IS A LIVE BLIND SPOT in the audit K-12 depends on.**
   `_figure_is_history` silences every figure within ±60 chars of a `_COMPARISON_CUES` word.

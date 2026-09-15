@@ -801,35 +801,35 @@ directions.
   reading — that a deep tribe must be supportable — is what makes a shallow archetype look
   buildable right up until the deck has no reason to share a type. [G-59]
 - **An `{X}` SPELL IS PRICED AT MV 1, so a curve reading UNDER-reads any deck running
-  several — and the distortion runs BOTH ways.** `mana_value` counts X as 0 because that
-  is what the rules say off the stack, which is right for castability and for
-  cast-on-curve probability (you really can cast Wildwood Scourge for `{G}`) and wrong as
-  a CURVE reading: a card you realistically cast for four books as a one-drop and as an
-  early drop. Deck 50a was misread twice in one cycle — adding two `{X}` spells made avg
-  MV appear to fall 3.85 → 3.70, and removing one made it appear to rise 3.55 → 3.76,
-  while the real curve barely moved either time. `deck.py stats` now lists them under
-  `✕ X-COST cards` and `deck.py tier` prints a one-line "avg MV under-reads" advisory.
-  Both are REPORT-ONLY and must stay so — a new term in `tier_band` would silently
-  re-grade the roster, exactly as the protection axis is kept out. **A CHEAT COST is the same
-  distortion the other way (2026-09-06)**: Warp / Plot / Foretell book at the PRINTED cost, so
-  Bygone Colossus (Warp {3}) read MV 9 and moved 56b's aggro floor. `stats` lists `⌁ CHEAT-COST`
-  cards and grants, `tier` prints "avg MV over-reads" plus the effective curve (alt costs, then
-  grants applied) and the clock it WOULD read — ADVISORY, pinned out of the vector. [G-60]
+  several — and the distortion runs BOTH ways.** `mana_value` counts X as 0, which is what
+  the rules say off the stack: right for castability and cast-on-curve probability, wrong
+  as a CURVE reading. Deck 50a was misread twice in one cycle, in both directions, while
+  its real curve barely moved. `stats` lists `✕ X-COST cards`; `tier` prints an advisory.
+  REPORT-ONLY and it must stay so — a new term in `tier_band` would silently re-grade the
+  roster, exactly as the protection axis is kept out. **A CHEAT COST is the same distortion
+  the other way (2026-09-06)**: an alternative cost books at the PRINTED cost, so Bygone
+  Colossus (Warp {3}) read MV 9 and moved 56b's aggro floor. **IMPENDING was missing from
+  that pattern until 2026-09-15 — it prints a COUNT between keyword and cost
+  (`Impending 4—{1}{G}{G}`) — and since `effective_avg_mv` returns None when nothing is
+  priced, SEVEN of the nine decks holding one printed no advisory AT ALL. Its cheap cast
+  buys the permanent and its enters trigger but NOT a creature for N turns, which
+  `impending_delay_note` DISCLOSES rather than gates; it was also the one member of that
+  pattern missing from `CHEAPER_KW`, so ◊ and ⌁ disagreed. 0 floors moved.** [G-60]
 - **"EFFECTIVE AVG MV" PRICES ONLY THE PRINTED ALT COSTS, and said so nowhere (2026-09-14).**
-  `effective_avg_mv` substitutes what `_ALT_COST_RE` finds — Warp / Plot / Foretell — while
-  `classify_cost` flags a much wider ◊ set (affinity, improvise, convoke, delve, evoke, "costs
-  {N} less") that it never prices, because what those shrink by is a BOARD STATE the curve does
-  not have. So deck 47, whose whole premise is a discount, printed "effective avg MV 3.51
-  against 3.54 printed" and meant the printed curve — a 0.03 correction on a list that routinely
-  casts a {6} for {U}{U}, read during a live tune. `unpriced_discount_cards` now says so at
-  `stats` and `tier`, derived from the same two primitives the ◊ list and the effective figure
-  already use so the three cannot disagree (G-40). **DISCLOSURE, never pricing** — report-only
-  for G-25/G-60's reason, and do not "finish" it by feeding `tier_band`.
-  **`_UNPRICED_DISCLOSE_FLOOR = 3` is p75 of its own axis, not 1**: across the 43 decks that
-  print an effective figure the unpriced count runs p25 1 / p50 2 / p75 3 / p90 5 / max 11, so
-  a floor of 1 fires on 83% (the G-07 saturation shape) against **14 of 43 (32%)** at 3. That
-  is a roster percentile and carries the `TIER_FLOOR_REQ` hazard — the figure is registered in
-  `figure_drift`, so a moved distribution prompts re-derivation. [G-85]
+  `effective_avg_mv` substitutes what `_ALT_COST_RE` finds — the ten printed alternative
+  costs, Warp / Plot / Foretell / Impending among them — while `classify_cost` flags a much
+  wider ◊ set (affinity, improvise, convoke, delve, evoke, "costs {N} less") that it never
+  prices, because what those shrink by is a BOARD STATE the curve does not have. So deck 47,
+  whose whole premise is a discount, printed "effective avg MV 3.51 against 3.54 printed" and
+  meant the printed curve — a 0.03 correction on a list that routinely casts a {6} for
+  {U}{U}. `unpriced_discount_cards` now says so at `stats` and `tier`, derived from the same
+  two primitives the ◊ list and the effective figure already use so the three cannot
+  disagree (G-40). **DISCLOSURE, never pricing** — report-only for G-25/G-60's reason, and do
+  not "finish" it by feeding `tier_band`. **`_UNPRICED_DISCLOSE_FLOOR = 3` is p75 of its own
+  axis, not 1**: across the **50 decks that print an effective figure** the unpriced count
+  runs p25 1 / p50 2 / p75 3 / p90 5 / max 11, so a floor of 1 fires on 80% (the G-07
+  saturation shape) against **15 of 50 (30%)** at 3. BOTH figures are registered in
+  `figure_drift`, which is what caught the population move when impending joined. [G-85]
 - **BEFORE DISMISSING A CARD, COUNT THE DECK PROPERTY ITS VALUE DEPENDS ON.** Four
   dismissals were overturned in one cycle, all the same shape — a card judged on its own
   text when the decision belonged to a number in the LIST. Michelangelo was called

@@ -4651,6 +4651,53 @@ because `check_tier.py` anchors the floor formula against the raw value.
 
 The X-cost under-read has a mirror: Warp, Plot, Foretell, Evoke, Emerge, Spectacle, Surge, Miracle and Sneak are printed alternative costs the curve never sees, so Bygone Colossus (Warp {3}) booked at nine and on its own moved 56b's aggro floor A → B (pile analysis §5.7 item 6). `cheat_cost_cards` reads the keyword's own cost off reminder-stripped text with lookbehinds that skip a GRANT ("cards in your hand have warp {2}{R}" reduces Tannuk's targets, not Tannuk), `cheat_cost_grants` names the grant with its scope clause, and `effective_avg_mv` prints three numbers — printed, alt costs substituted, and with each grant applied to the cards in its scope (`_grant_scope_matches` parses type + optional colour clauses; a subtype or mana-value scope matches nothing, the conservative miss). `tier` adds the aggro clock the effective curve WOULD read. Every one of these is ADVISORY and pinned out of `deck_quality_vector`, `tier_band` and `_clock_score`: an effective-MV TERM was considered and declined because it re-grades the roster, which is this rule.
 
+### 2026-09-15 — impending, and the keyword that prints a COUNT
+
+`_ALT_COST_RE` matched `\b(keyword)\b\s*[—–-]?\s*(cost)`, and **impending is the one
+member of the family that prints a number between the two**: `Impending 4—{1}{G}{G}`. So
+all six pool cards carrying it — the five Overlords plus Lurker in the Deep — booked at
+their printed mana value, Overlord of the Hauntwoods reading MV 5 against a cast of 3.
+
+**The cost was larger than a wrong figure, and this is the part worth carrying.**
+`effective_avg_mv` returns `None` when nothing is priced, so a deck whose ONLY alternative
+cost was impending printed no effective figure, no "avg MV over-reads" line and no
+`⌁ CHEAT-COST` list at all. **Nine roster decks hold an impending card and SEVEN of them
+got no advisory whatsoever** — the failure presented as silence, not as a wrong number,
+which is why nothing looked wrong. Measured after: those 7 now print a figure, decks 67
+and 78 (which already printed one for their warp/plot cards) moved 3.17 → 3.11 and
+3.36 → 3.28, and **0 of 112 tier floors moved**, which G-60 guarantees structurally since
+none of these figures reaches the vector.
+
+**Why the cost is substituted at all, and what is disclosed instead.** Impending's cheap
+cast is not equivalent to warp's: it buys a noncreature permanent with N time counters, so
+the entry trigger fires now and the BODY arrives N turns later. Substituting is therefore
+exactly right for what the deck PAYS and generous for what it FIELDS. All six cards deliver
+their entry value on the cheap cast — the five Overlords read "whenever this **permanent**
+enters or attacks", and Lurker in the Deep names itself, which by the rules is the same
+thing — so a GATE keyed on that wording would pass all six and assert nothing, the
+considered-check-that-covers-nothing shape `check_patterns` fails a build over. It is
+DISCLOSED instead: `impending_delay_note` prints "buys the permanent and its enters trigger
+but NOT a creature until the time counters run out: Overlord of the Hauntwoods (4 turns)"
+at both `stats` and `tier`, from one definition rather than two render-site copies (G-70).
+
+**Three ride-alongs.** `_ALT_COST_RE` tolerates the count NON-capturing on purpose —
+`cheat_cost_cards` reads group(1)/group(2), and a capturing group in the middle renumbers
+both for every caller and test; `_IMPENDING_RE` reads the count where it is needed, and
+`check_patterns` refused the build until it was registered. And `cmd_tier`'s advisory said
+"Warp/Plot/Foretell are invisible to the curve" while the pattern held nine keywords —
+prose naming three members of a growing set, corrected to name the shape instead. And
+`impending` turned out to be the ONE member of `_ALT_COST_RE`'s list missing from
+`CHEAPER_KW`, the table behind the `◊ Effective cost may be LOWER than printed MV` list —
+so deck 17's Overlord was named by the ⌁ list and absent from the ◊ one, two tables
+answering "is this cheaper than it looks" and disagreeing. Adding it moved the unpriced
+count on **0 of 112 decks** (`unpriced_discount_cards` is ◊ MINUS priced, and impending is
+priced now), and a structural test pins the general form: every keyword in the priced
+pattern must also be in `CHEAPER_KW`.
+
+**Residual:** there is no impending GRANT form, so `_ALT_COST_GRANT_RE` was deliberately
+left alone; if a future card reads "creatures in your hand have impending 2—{1}", the grant
+path will not see it.
+
 
 ## [G-61] Before dismissing a card, count the deck property its value depends on
 

@@ -1277,6 +1277,12 @@ def load_keywords():
 CHEAPER_KW = {
     "warp", "sneak", "plot", "convoke", "affinity", "delve", "improvise",
     "emerge", "spectacle", "evoke", "offering", "surge", "miracle", "foretell",
+    # `impending` was the ONE member of `_ALT_COST_RE`'s list missing here (2026-09-15),
+    # so the ◊ "effective cost may be LOWER" list omitted an Overlord while the ⌁
+    # cheat-cost list named it — two tables answering "is this cheaper than it looks"
+    # and disagreeing. `unpriced_discount_cards` is ◊ MINUS priced, and impending is
+    # priced now, so this is a display fix with no effect on that count (measured).
+    "impending",
 }
 # Keywords that gate an ability or mode behind an ADDITIONAL / activated cost —
 # so the card does more than its base cost implies (and you pay for it).
@@ -1324,15 +1330,34 @@ def x_cost_cards(cards, carddata, mana):
 
 
 # A printed ALTERNATIVE cost cheaper than the mana value: "Warp {3}", "Plot {2}{R}",
-# "Foretell {1}{U}". The subset of `CHEAPER_KW` whose cost is PRINTED and so can be priced
-# — convoke / affinity / delve / improvise scale with game state and are left alone
-# (G-83's line). The lookbehinds skip a GRANT ("cards in your hand have warp {2}{R}",
-# Tannuk): the granting card's own cost is not reduced, its targets' are, and a deck-level
-# grant is a different question from a card-level cost.
+# "Foretell {1}{U}", "Impending 4—{1}{G}{G}". The subset of `CHEAPER_KW` whose cost is
+# PRINTED and so can be priced — convoke / affinity / delve / improvise scale with game
+# state and are left alone (G-83's line). The lookbehinds skip a GRANT ("cards in your
+# hand have warp {2}{R}", Tannuk): the granting card's own cost is not reduced, its
+# targets' are, and a deck-level grant is a different question from a card-level cost.
+#
+# IMPENDING carries a COUNT between the keyword and the cost that none of the others do,
+# so the digits are tolerated here and matched NON-capturing on purpose: `cheat_cost_cards`
+# reads group(1) as the keyword and group(2) as the cost, and a capturing group in the
+# middle would renumber both for every caller and test. `_IMPENDING_RE` below reads the
+# count where it is actually needed.
 _ALT_COST_RE = re.compile(
     r"(?<!have )(?<!has )(?<!gain )(?<!gains )(?<!with )"
-    r"\b(warp|plot|foretell|evoke|emerge|spectacle|surge|miracle|sneak)\b\s*[—–-]?\s*"
+    r"\b(warp|plot|foretell|evoke|emerge|spectacle|surge|miracle|sneak|impending)\b"
+    r"\s*(?:\d+)?\s*[—–-]?\s*"
     r"((?:\{[^{}]+\})+)", re.I)
+
+
+# Impending's cheap cast buys the EFFECT, not the BODY: the permanent enters, its
+# "whenever this permanent enters or attacks" trigger fires, and it is not a creature
+# until N end steps have removed the time counters. All six pool cards carrying it
+# deliver their entry value on the cheap cast — the five Overlords say "this permanent",
+# and Lurker in the Deep names itself, which by the rules is the same thing — so
+# substituting the cost is exactly right for what the deck PAYS and generous for what it
+# FIELDS. DISCLOSED rather than gated, per G-60/G-85: a gate keyed on the "this permanent"
+# wording would pass all six cards today and therefore assert nothing, which is the
+# considered-check-that-covers-nothing shape `check_patterns` fails a build over.
+_IMPENDING_RE = re.compile(r"\bimpending\s*(\d+)", re.I)
 
 
 # The GRANT form `_ALT_COST_RE` deliberately skips: "cards in your hand have warp {2}{R}"
@@ -1521,6 +1546,29 @@ def cheat_cost_cards(cards, carddata, mana):
             seen.add(n)
             out.append((n, cost, m.group(1).lower(), alt, alt_mv))
     return sorted(out)
+
+
+def impending_delay_note(cards, carddata, mana):
+    """The one thing the effective curve over-credits about impending -> str or None.
+
+    `cheat_cost_cards` prices an impending card at its cheap cast, which is what the deck
+    PAYS — but that cast buys a noncreature permanent with N time counters, so the entry
+    trigger fires now and the BODY arrives N turns later. Naming it is the whole fix: a
+    reader who sees "Overlord of the Hauntwoods — {3}{G}{G} printed; impending {1}{G}{G}"
+    would otherwise read a 3-mana 6/5. Report-only, and it must stay so (G-60)."""
+    out = []
+    for n, _cost, kw, _alt, _amv in cheat_cost_cards(cards, carddata, mana):
+        if kw != "impending":
+            continue
+        d2 = carddata.get(n.lower())
+        m = _IMPENDING_RE.search(_REMINDER_RE.sub(" ", (d2 or {}).get("text") or ""))
+        out.append((n, int(m.group(1)) if m else None))
+    if not out:
+        return None
+    parts = [f"{n} ({t} turns)" if t else n for n, t in out]
+    return ("impending is priced at the cheap cast, which buys the permanent and its "
+            "enters trigger but NOT a creature until the time counters run out: "
+            + ", ".join(parts))
 
 
 def classify_cost(keywords, text):
@@ -3846,6 +3894,9 @@ def cmd_stats(args):
             print(f"  ⌁ {n} — {c} printed; {kw} {alt} (MV {amv})")
         print(f"  Read avg MV and the early-drop count with that in mind: {len(ch)} card(s) "
               "register dearer than you will cast them — the X-cost under-read in reverse.")
+        _imp = impending_delay_note(cards, carddata, mana)
+        if _imp:
+            print(f"  ⓘ {_imp}")
     for n, kw, cost, scope in cheat_cost_grants(cards, carddata):
         print(f"  ⌁ grant: {n} gives {kw} {cost} to {scope or 'other cards'} — a deck-level "
               "discount no per-card price sees.")
@@ -13349,8 +13400,11 @@ def cmd_tier(args):
     if _ch:
         print(f"  ⚠ avg MV over-reads: {len(_ch)} cheat-cost card(s) "
               f"({', '.join(n for n, *_r in _ch[:3])}{'…' if len(_ch) > 3 else ''}) "
-              "book at their printed cost — Warp/Plot/Foretell are invisible to the curve "
-              "and to the aggro clock; see `deck.py stats` for the list.")
+              "book at their printed cost — a printed alternative cost is invisible to the "
+              "curve and to the aggro clock; see `deck.py stats` for the list.")
+        _imp = impending_delay_note(_cards, _cd, _mana)
+        if _imp:
+            print(f"  ⓘ {_imp}")
     _eff = effective_avg_mv(_cards, _cd, _mana)
     if _eff:
         _best = _eff[2] if _eff[2] is not None else _eff[0]

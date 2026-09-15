@@ -268,15 +268,23 @@ def _live_figures():
                     n += 1
         return n
 
-    def _unpriced_fires():
-        """G-85: how many of the decks that PRINT an effective avg MV carry enough unpriced
-        ◊ cards to trip `_UNPRICED_DISCLOSE_FLOOR`. Registered because that floor is a
-        roster PERCENTILE and so carries the `TIER_FLOOR_REQ` hazard — a moved distribution
-        must prompt a re-derivation rather than silently saturating (at a floor of 1 this
-        reads 83%). ~1.7s, and it only runs when CLAUDE.md still makes the claim."""
+    _unpriced_cache = {}
+
+    def _unpriced_counts():
+        """G-85's two figures from ONE roster walk -> (population, fires): how many decks
+        PRINT an effective avg MV, and how many of those carry enough unpriced ◊ cards to
+        trip `_UNPRICED_DISCLOSE_FLOOR`. Both are registered because that floor is a roster
+        PERCENTILE and so carries the `TIER_FLOOR_REQ` hazard — a moved distribution must
+        prompt a re-derivation rather than silently saturating (at a floor of 1 this reads
+        80%). The POPULATION is the half that moved first: impending joining `_ALT_COST_RE`
+        on 2026-09-15 took it 43 -> 50, and the fire-rate entry only carried it inside its
+        own regex, where nothing could check it. One walk, ~1.7s, cached for the second
+        reader; both run only while CLAUDE.md still makes the claim."""
+        if "v" in _unpriced_cache:
+            return _unpriced_cache["v"]
         import deck
         cd, mana = deck.load_card_data(), deck.load_mana()
-        fires = 0
+        population = fires = 0
         for d in deck.roster_decks():
             try:
                 _meta, cards = deck.parse_deck_file(d["path"])
@@ -285,9 +293,17 @@ def _live_figures():
                 continue
             if not e or e[0] is None:
                 continue
+            population += 1
             if len(deck.unpriced_discount_cards(cards, cd, mana)) >= deck._UNPRICED_DISCLOSE_FLOOR:
                 fires += 1
-        return fires
+        _unpriced_cache["v"] = (population, fires)
+        return _unpriced_cache["v"]
+
+    def _unpriced_fires():
+        return _unpriced_counts()[1]
+
+    def _unpriced_population():
+        return _unpriced_counts()[0]
 
     def _pool_tag(tag):
         path = os.path.join(REPO_ROOT, "card-pool.csv")
@@ -368,7 +384,13 @@ def _live_figures():
         # G-85's calibration. Anchored on the words around ITS number, never on the 43 —
         # correcting one must not kill the other's pattern.
         ("G-85 unpriced-disclosure fire rate",
-         r"against \*\*(\d+) of 43 \(32%\)\*\* at 3", _unpriced_fires),
+         r"against \*\*(\d+) of 50 \(30%\)\*\* at 3", _unpriced_fires),
+        # The POPULATION was a claim the fire-rate entry only hardcoded in its own pattern,
+        # so when impending joined `_ALT_COST_RE` and seven more decks began printing an
+        # effective figure, the denominator moved with nothing watching it. Registered as
+        # its own figure (2026-09-15).
+        ("G-85 effective-figure population",
+         r"across the \*\*(\d+) decks that print an effective figure\*\*", _unpriced_population),
         ("C-01 model-sanity gates",
          r"INV-01…04 plus \*\*(\w+) model-sanity", lambda: _gate_word()),
     ]
