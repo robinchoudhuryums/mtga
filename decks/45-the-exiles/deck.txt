@@ -56,28 +56,70 @@
 #: archetype: Mardu VARIANT of Eternal Flame — rather than a core deck of its own. It is
 #: archetype: kept standalone here only because Mardu is an otherwise empty color slot;
 #: archetype: if the go-wide plan does not separate it in play, fold it into 24 as 24c.
-#: tier: B — PROVISIONAL (unplayed brew). The metrics floor reads A on interaction 8
-#: tier: across a 3.34 curve, six of it able to answer a noncreature permanent, and the
+#: tier: B — PROVISIONAL (unplayed brew). The metrics floor reads A on interaction 7
+#: tier: across a 3.34 curve, four of it able to answer a noncreature permanent, and the
 #: tier: deck is FULLY OWNED — zero craft targets, unusual for a from-scratch build. Held
 #: tier: a band below the floor by three things the floor cannot see:
 #: tier: 1. THE 76% OVERLAP WITH 24. A deck that measurably duplicates an existing A-tier
 #: tier:    deck on ten cards and its dominant theme has to earn its slot in play
 #: tier:    before it earns a letter. See the distinctness note above.
 #: tier: 2. THREE COLORS, AND APPA IS THE STRESS POINT. Appa wants {W}{W} on turn four at
-#: tier:    69.6% against 13 white sources. It has FLASH, which is the real mitigation —
+#: tier:    74.1% against 14 white sources. It has FLASH, which is the real mitigation —
 #: tier:    hold it and cast it the turn the white arrives rather than on curve — but a
 #: tier:    protected payoff that wants a colour the deck is scarcest on is a live risk.
-#: tier: 3. CARD ADVANTAGE READS 0. Three cards are unclassified and the impulse package is
-#: tier:    genuine card advantage the classifier cannot score, so the floor understates
-#: tier:    it — but it is also true that impulse cards are card-NEUTRAL if the exiled
-#: tier:    card goes unplayed, and this deck has no way to rebuy a missed one.
-#: tier: PATH TO A: prove the go-wide half separates it from 24, then RESTORE PROTECTION —
-#: tier: it is now 1 against four `#: protect:` build-arounds, down from 2, because
-#: tier: Valorous Stance was the slot spent on Spider-Verse. That was a deliberate trade
-#: tier: (Spider-Verse copies every cast-from-exile spell, which is the deck's whole
-#: tier: thesis) but it moved AWAY from the stated path, and the protection axis is now
-#: tier: the first thing to fix rather than the second.
+#: tier: 3. CARD ADVANTAGE READS 8 (7 repeatable), and the claim here USED TO SAY 0 --
+#: tier:    that was false, not merely stale, and it was false from the build. The audit
+#: tier:    could not see it: its pattern needs the number ADJACENT to the cue and
+#: tier:    "READS 0" puts a verb between them (the G-26 copula residual, same shape that
+#: tier:    hid deck 70's figures). So this leg of the B argument was never real. What
+#: tier:    DOES stand: impulse cards are card-NEUTRAL if the exiled card goes unplayed,
+#: tier:    and this deck cannot rebuy a missed one.
+#: tier: PATH TO A: prove the go-wide half separates it from 24. THE PROTECTION HALF IS
+#: tier: DONE (2026-09-16): the axis read ZERO when this paragraph was written -- it said
+#: tier: 1, which was itself stale -- and now reads 2 against four `#: protect:`
+#: tier: build-arounds. Valorous Stance was the slot originally spent on Spider-Verse;
+#: tier: that trade was right (Spider-Verse copies every cast-from-exile spell, the deck's
+#: tier: whole thesis) and Valorous Stance is still OWNED if the axis wants a third piece,
+#: tier: since its second mode destroys a creature with toughness 4 or greater.
 #: protect: Fire Lord Zuko; Quintorius Kand; Appa, Steadfast Guardian; Etali, Primal Storm
+#: notes: TUNED 2026-09-16 (4 swaps, 0 wildcards -- the deck was already fully owned):
+#: notes: -Burst Lightning/+Restoration Magic, -Long Goodbye/+Boros Charm,
+#: notes: -1 Scoured Barrens/+Sacred Foundry, -1 Swamp/+1 Plains.
+#: notes: PROTECTION 0 -> 2, closing the axis this file's own PATH TO A names. Restoration
+#: notes: Magic's Cure mode is {W} for "target PERMANENT gains hexproof and indestructible"
+#: notes: -- PERMANENT, so it also covers Quintorius (a planeswalker) and Spider-Verse,
+#: notes: which a creature-only trick cannot; Curaga scales it to the whole board. Boros
+#: notes: Charm adds a second board-wide save plus reach.
+#: notes: INTERACTION 8 -> 7 and the quality guard flagged it. Both cuts carried a Removal
+#: notes: role (Burst Lightning, Long Goodbye) against one add that carries both
+#: notes: (Boros Charm); Restoration Magic is pure protection. Accepted knowingly. Also
+#: notes: down: instant-speed INTERACTION 3 -> 2 (the deck still runs three instants, but
+#: notes: Restoration Magic does not count as interaction). Long Goodbye also rotates ~2026.
+#: notes: MANABASE, measured before and after: sources W 13 -> 14, B 14 -> 12, R 15 -> 16;
+#: notes: unconditional taplands 12 -> 11; cards below 90% on curve 18 -> 15. Appa 69.6 ->
+#: notes: 74.1%, the three {W}{W} five-drops 75.3 -> 79.5%. The trade is ~4.5 points on
+#: notes: three black two-drops for ~4.5 on four white cards incl. two protect-named
+#: notes: build-arounds -- BLACK IS FIVE CARDS and was drawing 14 sources against WHITE's
+#: notes: thirteen for twelve cards with four {W}{W} costs. A third basic Plains also
+#: notes: un-thins Starfield Shepherd's "search for a basic Plains" (2 -> 3 hits).
+#: notes: Boros Charm at {R}{W} is the one card breaking this list's single-pip rule: it
+#: notes: reads 83.6% on turn two. Acceptable for a REACTIVE instant you hold rather than
+#: notes: curve out with; do not read it as a licence to add more two-pip cards.
+#: notes: ERODE AND PLASMA BOLT WERE RE-EXAMINED AND KEPT (asked 2026-09-16, recorded so it
+#: notes: is not re-derived). Of 81 owned WBR-castable Standard removal spells at MV <= 2,
+#: notes: NONE beats Erode's {W} instant "destroy target creature or planeswalker" -- the
+#: notes: near misses are all conditional (Valorous Stance / Stone by Sunlight /
+#: notes: Spectacular Tactics gate on toughness or power 4+) or cost double (Harsh
+#: notes: Annotation is {1}{W}, no planeswalker mode, and gives them a 1/1 flier). Plasma
+#: notes: Bolt survives once VOID is priced: 8 warp/plot cards plus 12 self-exile or
+#: notes: sacrifice sources make it live most turns from three on, i.e. 1 mana for 3 damage
+#: notes: to ANY target -- the same damage Lightning Strike and Lightning Helix deal for
+#: notes: two. Lightning Helix (owned x2) is a different PROFILE, not an upgrade: instant
+#: notes: and +3 life, against a mana and an early drop this deck is already short on (10).
+#: notes: THE ONE REAL HOLE IT LEAVES: the deck has ZERO artifact answers -- verified, no
+#: notes: card in the 60 destroys or exiles an artifact (Feed the Swarm is creature-or-
+#: notes: enchantment, Erode is creature-or-planeswalker). Abrade ({1}{R}, owned) is the
+#: notes: fix if the meta wants it, at the cost of a one-drop and with no reach.
 
 # Payoffs — every one triggers on "cast a spell from exile"
 1 Spider-Verse (SPM) 93
@@ -116,11 +158,11 @@
 1 Sheriff of Safe Passage (OTJ) 29
 1 Stagecoach Security (OTJ) 30
 
-# Removal — single-pip only, to survive three colors
+# Interaction & protection — mostly single-pip, to survive three colors
 1 Plasma Bolt (EOE) 152
-1 Burst Lightning (FDN) 192
+1 Restoration Magic (FIN) 30
 1 Erode (SOS) 15
-1 Long Goodbye (MKM) 92
+1 Boros Charm (FDN) 721
 1 Feed the Swarm (SOA) 29
 1 Cruel Alliance (MSH) 92
 
@@ -131,7 +173,8 @@
 2 Bloodfell Caves (TDM) 250
 1 Temple of Malice (FDN) 701
 1 Bleachbone Verge (DFT) 250
-4 Scoured Barrens (M21) 250
+3 Scoured Barrens (M21) 250
+1 Sacred Foundry (EOE) 256
 1 Temple of Silence (FDN) 704
 1 Sunbillow Verge (DFT) 264
 1 Abraded Bluffs (OTJ) 251
@@ -139,5 +182,5 @@
 1 Wind-Scarred Crag (FDN) 271
 1 Sun-Blessed Peak (TLA) 280
 4 Mountain (MSH) 293
-2 Plains (MSH) 287
-2 Swamp (MSH) 291
+3 Plains (MSH) 287
+1 Swamp (MSH) 291
