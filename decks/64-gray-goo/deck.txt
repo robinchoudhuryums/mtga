@@ -2,17 +2,19 @@
 #: format: Standard
 #: colors: UBG
 #: plan: midrange
-#: tier: B (PROVISIONAL — unplayed brew, graded 2026-08-08; figures re-grounded 2026-09-15).
-#: tier: The floor read A when this was written; TIER_FLOOR_REQ was re-derived on 2026-09-02
-#: tier: and the same vector (interaction 7 + card advantage 2) now reads B, which the letter
-#: tier: MATCHES rather than sits under. The three knowns that argued it down are unchanged
-#: tier: and still argue against anything higher: card advantage is a thin 2 for a deck that
-#: tier: wants to hit land drops AND feed an engine; protection is ZERO against five protected
-#: tier: build-arounds — the invested-body failure mode deck 63's notes name — with The
-#: tier: Ooze as insurance (the counters come back as Mutagens) rather than an answer; and the
-#: tier: manabase is three colours deep, with five lands entering tapped. The engine is real
-#: tier: and the interaction is on-theme, but an unplayed three-colour brew with those
-#: tier: three knowns is a B until games say otherwise. Re-grade after /log-matches.
+#: tier: B (PROVISIONAL — unplayed brew, graded 2026-08-08; figures re-grounded 2026-09-16).
+#: tier: RE-GRADE CANDIDATE, pending the human call: the letter now sits one band UNDER the
+#: tier: floor, and two of the three knowns that argued it down have been fixed. The 2026-09-16
+#: tier: tune added Inspiring Call and Origin of Metalbending, taking interaction to 8 and card
+#: tier: advantage to 2 -> 3, so the floor reads A. Protection went ZERO -> 2 against the five
+#: tier: protected build-arounds — the invested-body failure mode deck 63's notes name — which
+#: tier: was the sharpest of the three; The Ooze is still insurance (the counters come back as
+#: tier: Mutagens) rather than an answer, and both new protection pieces are one-shot instants,
+#: tier: so the axis is real but thin. WHAT STILL CAPS IT: the deck remains UNPLAYED, card
+#: tier: advantage is 3 with NONE of it repeatable, and the manabase is three colours deep —
+#: tier: the 2026-09-16 fetch-and-dual pass took cards below 90% on curve from 29 to 16, which
+#: tier: is a large improvement and not a solved problem. Held at B until games say otherwise;
+#: tier: re-grade after /log-matches.
 #: archetype: Sultai "EAT THE GRAVEYARD, GROW" — the graveyard is FOOD, not a
 #: archetype: reanimation resource. The roster's first deck on this axis: self-mill
 #: archetype: (17 fillers, most attached to bodies or interaction) stocks the yard, and
@@ -66,6 +68,29 @@
 #: notes: 5 Forest / 1 Island / 3 Swamp, so once a fetch takes the Island the other two
 #: notes: can only find Forest or Swamp. Blue ACCESS does not depend on that basic (nine
 #: notes: other lands make U) — what is lost is fetch flexibility late.
+#: notes: 2026-09-16 — TUNE: +Inspiring Call (-Dawnhand Eulogist), +Origin of Metalbending
+#: notes: (-Midnight Tilling). Both adds are owned; 0 wildcards. Interaction 7 -> 8, card
+#: notes: advantage 2 -> 3, protection ZERO -> 2, avg MV 3.22 -> 3.19, central themes 6 -> 7
+#: notes: (card draw crossed the centrality bar). The metrics floor moved B -> A; the LETTER
+#: notes: is unchanged and the guard now prints the possibly-under-graded nudge, which is the
+#: notes: human call the tier block defers.
+#: notes: WHY THESE TWO ADDS: Inspiring Call closes BOTH named weaknesses in one card —
+#: notes: 'draw a card for each creature you control with a +1/+1 counter on it, those
+#: notes: creatures gain indestructible' scales on the 13 counter-placing cards this deck
+#: notes: already runs, with Ouroboroid putting counters on EVERY creature at combat. Origin
+#: notes: of Metalbending is modal and both modes are live: it is the 4th card that answers a
+#: notes: noncreature permanent, and its second mode is protection that also feeds the counter
+#: notes: engine and Stalwart Successor's trigger.
+#: notes: WHY THESE TWO CUTS, AND THE MODEL DISAGREED ON ONE: `cuts` ranked Dawnhand Eulogist
+#: notes: 28 of 29 — i.e. near its STRONGEST fit, on tag overlap. The cut is made on its GATE
+#: notes: instead: 'if there is an Elf card in your graveyard' against a deck that ran exactly
+#: notes: ONE Elf (Lluwen), which `targets` flagged as the deck's only thin gate. So it was a
+#: notes: four-mana mill-3 menace body whose rider fires only after that single Elf is already
+#: notes: in the yard. Midnight Tilling was rank 5 and the weaker of two near-identical mill
+#: notes: fillers; it scored Recursion only, so neither cut costs a graded axis. Cost of the
+#: notes: pair: creatures 20 -> 19, and one of 17 self-mill fillers.
+#: notes: RESIDUAL: card advantage is 3 with NONE of it repeatable (0 repeatable / 2 one-shot),
+#: notes: and both protection pieces are one-shot instants. The axes moved; they are not deep.
 
 # Engine — eat the yard, grow
 1 Mimeoplasm, Revered One (DFT) 214
@@ -81,6 +106,7 @@
 1 Ouroboroid (EOE) 201
 1 Omnivorous Flytrap (DSK) 192
 1 March of the World Ooze (DFT) 169
+1 Inspiring Call (TLE) 168
 
 # Ooze bodies & spice
 1 Sin, Spira's Punishment (FIN) 242
@@ -95,7 +121,6 @@
 
 # Self-mill value bodies
 1 Lluwen, Imperfect Naturalist (ECL) 232
-1 Dawnhand Eulogist (ECL) 99
 1 Town Greeter (FIN) 209
 1 Ainok Wayfarer (TDM) 134
 1 Nashi, Searcher in the Dark (DSK) 223
@@ -103,17 +128,17 @@
 # Mill spells & card flow
 1 The Everflowing Well // The Myriad Pools (LCI) 56
 1 Summon: Titan (FIN) 204
-1 Midnight Tilling (ECL) 182
 1 Scout the City (SPM) 113
 1 Cruel Truths (TDM) 76
 1 Rapid Rescue (MSH) 181
 
-# Interaction (mills while it answers)
+# Interaction (most of it mills while it answers)
 1 Wick's Patrol (BLB) 121
 1 Hour of Defeat (MSH) 99
 1 Consuming Ashes (OTJ) 83
 1 Sokka's Haiku (TLA) 71
 1 Don't Make a Sound (DSK) 49
+1 Origin of Metalbending (TLA) 187
 
 # Lands
 1 Breeding Pool (EOE) 251
