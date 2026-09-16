@@ -5794,3 +5794,9 @@ Landfall — Whenever a land you control enters, create a 4/4 green Beast creatu
 Temple of Mystery,Land,"This land enters tapped.
 When this land enters, scry 1. (Look at the top card of your library. You may put that card on the bottom.)
 {T}: Add {G} or {U}.",U/G,mana; etb; scry; selection,FDN,702,1
+Scavenging Ooze,Creature — Ooze,"{G}: Exile target card from a graveyard. If it was a creature card, put a +1/+1 counter on this creature and you gain 1 life.",G,Ooze; counters; graveyard; lifegain,FDN,232,1
+Ooze Patrol,Creature — Ooze,"When this creature enters, mill two cards, then put a +1/+1 counter on this creature for each artifact and/or creature card in your graveyard. (To mill two cards, put the top two cards of your library into your graveyard.)",G,Ooze; counters; graveyard; mill; etb; artifacts,DFT,172,1
+Slime Against Humanity,Sorcery,"Create a 0/0 green Ooze creature token with trample. Put X +1/+1 counters on it, where X is two plus the total number of cards you own in exile and in your graveyard that are Oozes or are named Slime Against Humanity.
+A deck can have any number of cards named Slime Against Humanity.",G,counters; graveyard; tokens,MKM,177,3
+Slick Imitator,Creature — Ooze,"Start your engines! (If you have no speed, it starts at 1. It increases once on each of your turns when an opponent loses life. Max speed is 4.)
+Max speed — {1}, Sacrifice this creature: Copy target spell you control. You may choose new targets for the copy. (A copy of a permanent spell becomes a token.)",U,Ooze; sacrifice; max speed; speed; aggro; start your engines!,DFT,62,1
