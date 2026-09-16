@@ -1,5 +1,6 @@
 #: name: Maelstrom Conservatory
 #: format: Standard
+#: arena: 71 Zaffai's Maelstrom, f8689a78-0f81-4b96-b68f-239b397cb665
 #: colors: UR
 #: plan: control
 #: tier: B (PROVISIONAL) — graded deliberately UNDER the A metrics floor (interaction 11,

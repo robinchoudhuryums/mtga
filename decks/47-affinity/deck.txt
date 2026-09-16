@@ -1,5 +1,6 @@
 #: name: Grid Overload
 #: format: Standard
+#: arena: 47 Grid Overload, 6ff4a40e-08bf-41a1-b7ed-3d36ad518807
 #: colors: U
 #: plan: midrange
 #: tier: B — PROVISIONAL. Live vector: interaction 7, card advantage 7, protection 2,

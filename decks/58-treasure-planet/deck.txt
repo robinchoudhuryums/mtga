@@ -1,6 +1,6 @@
 #: name: Treasure Planet
 #: format: Standard
-#: arena: 58 Treasure Planet, dfe5ff2f-f782-4e39-b4f7-88f6c15d0d3a
+#: arena: 58 Treasure Planet, 4f83c097-3c1f-4c01-b5c9-44f3463e7960
 #: colors: BRG
 #: plan: midrange
 #: archetype: JUND TREASURE ECONOMY — the user's RGB concept, given the identity the

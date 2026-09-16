@@ -1,5 +1,6 @@
 #: name: Iron Forge
 #: format: Standard
+#: arena: 26 Iron Colossi, 61b262e2-2f32-4076-a484-0a04b54bcf0d
 #: colors: UR
 #: plan: midrange
 #: tier: A — Izzet artifacts/robots, rebuilt 2026-07 around RAMP-TO-HEAVY-HITTERS plus a
