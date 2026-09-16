@@ -2,10 +2,10 @@
 #: format: Standard
 #: colors: B
 #: tier: B (PROVISIONAL) — graded deliberately UNDER the A metrics floor, and the floor
-#: tier: itself needs a caveat in both directions: interaction reads 7 with 3 possible
-#: tier: under-counts, while card advantage reads 2 against a real engine the classifier
+#: tier: itself needs a caveat in both directions: interaction reads 8 with 5 possible
+#: tier: under-counts, while card advantage reads 3 against a real engine the classifier
 #: tier: cannot see (Hostile Investigator's investigate-per-discard, Aclazotz's
-#: tier: draw-when-they-can't, Bandit's Talent level 3, Hollow Marauder — 6 cards sit
+#: tier: draw-when-they-can't, Bandit's Talent level 3, Hollow Marauder — 5 cards sit
 #: tier: unclassified, the K-12 shape). Held at B because: this is an UNTESTED first
 #: tier: draft; the two best payoffs (Tinybones, Aclazotz) plus Hostile Investigator are
 #: tier: uncrafted, so the list that would earn the letter is not the list on the table;
@@ -14,8 +14,8 @@
 #: tier: metrics cannot price. Re-grade after the craft targets land and it has games.
 #: archetype: Mono-black OPPONENT-DISCARD attrition (the roster's first hand-attack deck).
 #: archetype: PLAN: strip the hand with a wall of ETB-discard bodies (Virus Beetle, Hecteyes,
-#: archetype: Stony-Voiced Goblins, Malboro, Klaw) and discard spells (Psychic Whorl, Ozai's
-#: archetype: Cruelty, Rankle's Prank, Rush of Dread), then win the empty-hand state three
+#: archetype: Stony-Voiced Goblins, Malboro, Klaw) and discard spells (Shredder's Revenge,
+#: archetype: Ozai's Cruelty, Seeker's Folly, Rush of Dread), then win the empty-hand state three
 #: archetype: ways: PUNISH it (Bandit's Talent level 2 upkeep drain + level 3 extra draws,
 #: archetype: Aclazotz drawing when they can't discard, Entropic Battlecruiser turning each
 #: archetype: discard into 3 life, Painful Quandary taxing every topdeck 5 life), STEAL it
@@ -32,11 +32,38 @@
 #: notes: unioning the two would be the K-06 mistake. Self-discard payoffs (Monument to
 #: notes: Endurance, Moonstone) deliberately excluded for the same reason.
 #: notes: WIP — 9 craft targets (Tinybones, Aclazotz, Hostile Investigator, Entropic
-#: notes: Battlecruiser, Bloodtithe Collector, Hollow Marauder, Arbiter of Woe,
-#: notes: Rankle's Prank, Rush of Dread: 2 mythic / 4 rare / 3 uncommon). The owned core
-#: notes: (27 of 36 nonland) already plays the plan.
+#: notes: Battlecruiser, Bloodtithe Collector, Arbiter of Woe, Rush of Dread, The Death
+#: notes: of Gwen Stacy, Thought-Stalker Warlock: 2 mythic / 4 rare / 3 uncommon). The
+#: notes: owned core (27 of 36 nonland) already plays the plan.
 #: notes: Arbiter of Woe's sacrifice cost is COST-AS-UPSIDE here (G-41): the deck fields
 #: notes: nine 1-2 MV bodies whose ETB value is already spent by the time they feed him.
+#: notes: TUNED 2026-09-16 (5 swaps): -Rankle's Prank/+Maha, -Momentum Breaker/+The Death
+#: notes: of Gwen Stacy, -Binding Negotiation/+Ral Zarek, -Pilfer/+Thought-Stalker Warlock,
+#: notes: -Psychic Whorl/+Shredder's Revenge. Closed the ZERO-protection finding (0 -> 1):
+#: notes: Maha's Ward-Discard a card is protection AND hand attack on one clause. The
+#: notes: reveal-and-choose effect had been running FOUR deep (Pilfer, Binding Negotiation,
+#: notes: Temporal Intervention, Down Down chapter I); two were cut.
+#: notes: INTERACTION READS 8, DOWN FROM 9, and the drop is a classifier artifact worth
+#: notes: stating rather than hiding: Rankle's Prank scored Removal+Sweeper for "each
+#: notes: player sacrifices two creatures of their choice" -- symmetric, off an
+#: notes: 18-creature board -- and Momentum Breaker scored Removal for an EDICT they
+#: notes: answer with their worst body. Both points bought one TARGETED Destroy (Gwen
+#: notes: Stacy chapter I) plus a static the role model cannot see at all: Maha makes
+#: notes: every opposing creature base toughness 1, so Seeker's Folly's -1/-1 mode is a
+#: notes: one-sided board wipe (G-67 -- a whitelist's misses are invisible). Cost paid
+#: notes: knowingly: early drops 13 -> 10 and avg MV 3.31 -> 3.42, three 2-drops out for
+#: notes: three 3-drops, in a deck that wants to attack the hand early.
+#: notes: MYOJIN OF NIGHT'S REACH considered and DECLINED on the math, recorded so it is
+#: notes: not re-derived: at 24 lands P(>=8 lands SEEN) is 11.9% by turn 8 and 42.9% by
+#: notes: turn 12, for a 5/2 that strips the hand once. Every mono-B accelerant fails on
+#: notes: its own text -- Pit Automaton's mana is "only to activate abilities", Hedron
+#: notes: Archive's {C}{C} cannot pay the BBB, Solemn Simulacrum ramps 1 for 4, Three Tree
+#: notes: City costs a Swamp in a manabase where everything already casts on curve at
+#: notes: >=90%. It must be HARD-CAST (no divinity counter = no indestructible and no
+#: notes: ability), so cheating it in is not a route either. Rush of Dread's "+{2} --
+#: notes: target opponent discards half the cards in their hand" is the castable version
+#: notes: of that effect and is already on the craft list; Myojin (FDN, rotates ~2029) is
+#: notes: the only version that survives rotation. Revisit only in a 26-27-land build.
 #: protect: Bandit's Talent; Tinybones, Bauble Burglar; Aclazotz, Deepest Betrayal; Painful Quandary; Jecht, Reluctant Guardian
 
 # Payoffs / engines — punish, steal, or tax the stripped hand
@@ -49,6 +76,7 @@
 1 Osseous Sticktwister (DSK) 112
 1 Thornplate Intimidator (BLB) 117
 1 Jecht, Reluctant Guardian (FIN) 104
+1 Maha, Its Feathers Night (BLB) 100
 
 # Enabler bodies — ETB / attack discard triggers
 1 Virus Beetle (EOE) 124
@@ -62,20 +90,19 @@
 1 Hollow Marauder (OTJ) 90
 1 Arbiter of Woe (FDN) 55
 1 Ripclaw Wrangler (DFT) 101
+1 Thought-Stalker Warlock (BLB) 118
 
 # Discard spells / enchantment enablers
-1 Psychic Whorl (BLB) 105
-1 Pilfer (FDN) 181
+1 Shredder's Revenge (TMT) 76
 1 Auntie's Sentence (ECL) 85
 1 Seeker's Folly (FDN) 69
 1 Ozai's Cruelty (TLA) 113
 1 Temporal Intervention (EOE) 120
 1 Down, Down to Goblin-town (HOB) 65
-1 Rankle's Prank (WOE) 102
 1 Rush of Dread (OTJ) 104
-1 Momentum Breaker (DFT) 97
+1 The Death of Gwen Stacy (SPM) 54
 1 HYDRA Infiltration (MSH) 100
-1 Binding Negotiation (OTJ) 78
+1 Ral Zarek, Guest Lecturer (SOS) 97
 
 # Removal / card advantage
 1 Nocturnal Hunger (BLB) 102
@@ -87,6 +114,6 @@
 24 Swamp (HOB) 191
 
 # Flex — options (comments; not part of the 60). See: deck.py flex 70
-#~ -Pilfer | +Ego Drain | owned: a mana cheaper for the same effect, but screen's ★ strict-upgrade call is WRONG — "exile a card from your hand unless you control a Faerie" is a real cost (Dream Seizer is the only Faerie here). Play it only if the meta rewards the tempo.
-#~ -Momentum Breaker | +Burglar Rat | craft C: a second Virus Beetle if the ETB-body count matters more than the sac-or-discard edict
+#~ note: applied — Thought-Stalker Warlock in for Pilfer.
+#~ note: applied — The Death of Gwen Stacy in for Momentum Breaker.
 #~ note: the red SELF-discard package (Cool but Rude, Hobgoblin, Case of the Crimson Pulse, Fear of Missing Out) was screened and excluded — mechanically a different deck (K-06); a Rakdos variant could explore it later without touching this list.

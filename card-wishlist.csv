@@ -23,6 +23,8 @@ Starforged Sword,Artifact — Equipment,"Gift a tapped Fish (You may promise an 
 When this Equipment enters, if the gift was promised, attach this Equipment to target creature you control.
 Equipped creature gets +3/+3 and loses flying.
 Equip {3}",Colorless,Equipment; tokens; etb; equipment; pump; gift; value; equip,BLB,249,Uncommon,38,,3.0,hand
+Thought-Stalker Warlock,Creature — Lizard Warlock,"Menace (This creature can't be blocked except by two or more creatures.)
+When this creature enters, choose target opponent. If they lost life this turn, they reveal their hand, you choose a nonland card from it, and they discard that card. Otherwise, they discard a card.",B,Lizard; Warlock; etb; menace; evasion,BLB,118,Uncommon,70,"Deck 70: Menace body + the reveal-and-choose discard Pilfer did, upgraded — full Thoughtseize mode once they have lost life this turn (Painful Quandary / Bandit's Talent L2 / Thornplate all feed it). Rotates ~2027.",2.0,seed
 Daggerfang Duo,Creature — Rat Squirrel,"Deathtouch
 When this creature enters, you may mill two cards. (You may put the top two cards of your library into your graveyard.)",B,Rat; Squirrel; graveyard; mill; etb; deathtouch; combat; removal,BLB,89,Common,,,1.0,seed
 Sunshower Druid,Creature — Frog Druid,"When this creature enters, put a +1/+1 counter on target creature and you gain 1 life.",G,Frog; Druid; counters; lifegain; etb,BLB,195,Common,50,,1.5,seed
@@ -269,6 +271,10 @@ This land is the chosen type.",Colorless,,SPM,180,Rare,general,basic-type fixing
 Radioactive Spider,Creature — Spider,"Reach, deathtouch
 Fateful Bite — {2}, Sacrifice this creature: Search your library for a Spider Hero card, reveal it, put it into your hand, then shuffle. Activate only as a sorcery.",G,Spider; sacrifice; reach; defense; deathtouch; combat; removal,SPM,111,Rare,66,"PRIORITY of the two: the only MV-1 Spider available to fix Eddie Brock's flagged thin reanimation gate (2 targets). Deathtouch/reach body, sac outlet, and a tutor for any Spider Hero. Cut candidate on craft: Alien Symbiosis or Grub's Command.",3.0,seed
 Strength of Will,Instant,"Until end of turn, target creature you control gains indestructible and ""Whenever this creature is dealt damage, put that many +1/+1 counters on it.""",G,counters,SPM,118,Rare,general,green protect + damage->counters combat trick — any green deck,4.0,hand
+The Death of Gwen Stacy,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
+I — Destroy target creature.
+II — Each player may discard a card. Each player who doesn't loses 3 life.
+III — Exile any number of target players' graveyards.",B,Saga; graveyard; removal; saga,SPM,54,Rare,70,Deck 70: removal + hellbent-proof discard (ch. II drains 3 if they can't discard) + targeted yard exile on one 3-mana card. Rotates ~2028 — the longest runway of 70's craft list.,5.0,seed
 With Great Power . . .,Enchantment — Aura,"Enchant creature you control
 Enchanted creature gets +2/+2 for each Aura and Equipment attached to it.
 All damage that would be dealt to you is dealt to enchanted creature instead.",W,Aura; aura; pump; enchant,SPM,24,Rare,38,,3.5,hand

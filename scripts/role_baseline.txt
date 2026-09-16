@@ -47,7 +47,6 @@ Bandit's Talent
 Baxter Stockman
 Bejeweled Warg
 Billowing Shriekmass
-Binding Negotiation
 Bioengineered Future
 Biogenic Upgrade
 Biotech Specialist
@@ -325,7 +324,6 @@ Personify
 Pet Avengers
 Peter Parker
 Picklock Prankster // Free the Fae
-Pilfer
 Pond Prophet
 Powerful Broker
 Pride of the Road
@@ -442,6 +440,7 @@ The Queen of Dale
 The Regalia
 Think Twice
 Thor Odinson
+Thought-Stalker Warlock
 Three Tree Scribe
 Thunderous Velocipede
 Tidings of War
