@@ -1,6 +1,6 @@
 #: name: Frog Sage
 #: format: Standard
-#: arena: 68a Frog Sage: Seer, 1073648b-ed2c-4078-a7c9-940b8ebb49a9
+#: arena: 68 Frog Sage, 06b7e693-b914-40e7-ae7f-1b2ead45ab51
 #: colors: GWU
 #: based-on: deck.txt
 #: plan: midrange
