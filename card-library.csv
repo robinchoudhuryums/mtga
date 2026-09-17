@@ -482,7 +482,7 @@ United Front,Sorcery,"Create X 1/1 white Ally creature tokens, then put a +1/+1 
 Another Round,Sorcery,"Exile any number of creatures you control, then return them to the battlefield under their owner's control. Then repeat this process X more times.",W,blink,OTJ,1,1
 Abandoned Air Temple,Land,"This land enters tapped unless you control a basic land.
 {T}: Add {W}.
-{3}{W}, {T}: Put a +1/+1 counter on each creature you control.",W,counters; mana,TLA,263,1
+{3}{W}, {T}: Put a +1/+1 counter on each creature you control.",W,counters; mana,TLA,263,2
 Honest Work,Enchantment — Aura,"Enchant creature an opponent controls
 When this Aura enters, tap enchanted creature and remove all counters from it.
 Enchanted creature loses all abilities and is a Citizen with base power and toughness 1/1 and ""{T}: Add {C}"" named Humble Merchant. (It loses all other creature types and names.)",U,Aura; mana; etb; aura; enchant,TLA,55,1
@@ -2365,7 +2365,7 @@ Stormcatch Mentor,Creature — Otter Wizard,"Haste
 Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
 Instant and sorcery spells you cast cost {1} less to cast.",U/R,Otter; Wizard; pump; spellslinger; prowess; tempo; haste; aggro; cost-reduction,BLB,234,1
 Dark Fortress,Land,"{T}: Add {C}.
-{T}: Add {B} or {R}. Activate only if this land entered this turn or if you control a basic land.",B/R,mana,MSH,264,1
+{T}: Add {B} or {R}. Activate only if this land entered this turn or if you control a basic land.",B/R,mana,MSH,264,4
 Colorstorm Stallion,Creature — Elemental Horse,"Ward {1}, haste
 Opus — Whenever you cast an instant or sorcery spell, this creature gets +1/+1 until end of turn. If five or more mana was spent to cast that spell, create a token that's a copy of this creature.",U/R,Elemental; Horse; tokens; pump; spellslinger; haste; aggro; ward; protection; opus; payoff,SOS,180,1
 The Emperor of Palamecia,Legendary Creature — Human Noble Wizard // Legendary Creature — Demon Noble Wizard,"{T}: Add {U} or {R}. Spend this mana only to cast a noncreature spell.
@@ -2913,7 +2913,7 @@ Thaumaton Torpedo,Artifact,"{6}, {T}, Sacrifice this artifact: Destroy target no
 {5}, {T}: Mill two cards. Then you may sacrifice this land. When you do, return another target permanent card from your graveyard to your hand.",Colorless,Town; graveyard; mill; sacrifice; mana,FIN,277,1
 Crossroads Village,Land — Town,"This land enters tapped. As it enters, choose a color.
 {T}: Add one mana of the chosen color.",Colorless,Town; mana,FIN,276,1
-Evolving Wilds,Land,"{T}, Sacrifice this land: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.",Colorless,sacrifice; ramp,ECL,264,2
+Evolving Wilds,Land,"{T}, Sacrifice this land: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.",Colorless,sacrifice; ramp,ECL,264,4
 Gingerbrute,Artifact Creature — Food Golem,"Haste (This creature can attack and {T} as soon as it comes under your control.)
 {1}: This creature can't be blocked this turn except by creatures with haste.
 {2}, {T}, Sacrifice this creature: You gain 3 life.",Colorless,Food; Golem; lifegain; sacrifice; haste; aggro,ELD,219,1
@@ -3610,7 +3610,7 @@ Wall Crawl,Enchantment,"When this enchantment enters, create a 2/1 green Spider 
 Spiders you control get +1/+1 and can't be blocked by creatures with defender.",G,Spider; lifegain; tokens; etb; pump,SPM,121,1
 Daily Bugle Building,Land,"{T}: Add {C}.
 {1}, {T}: Add one mana of any color.
-Smear Campaign — {1}, {T}: Target legendary creature gains menace until end of turn. Activate only as a sorcery.",Colorless,mana; menace; evasion,SPM,179,1
+Smear Campaign — {1}, {T}: Target legendary creature gains menace until end of turn. Activate only as a sorcery.",Colorless,mana; menace; evasion,SPM,179,3
 "Anti-Venom, Horrifying Healer",Legendary Creature — Symbiote Hero,"When Anti-Venom enters, if he was cast, return target creature card from your graveyard to the battlefield.
 If damage would be dealt to Anti-Venom, prevent that damage and put that many +1/+1 counters on him.",W,Symbiote; Hero; counters; reanimator; graveyard; etb,SPM,1,1
 Web of Life and Destiny,Enchantment,"Convoke (Your creatures can help cast this spell. Each creature you tap while casting this spell pays for {1} or one mana of that creature's color.)
@@ -4057,7 +4057,7 @@ Frontline Rush,Instant,"Choose one —
 • Create two 1/1 red Goblin creature tokens.
 • Target creature gets +X/+X until end of turn, where X is the number of creatures you control.",W/R,tokens; pump,TDM,186,2
 Nomad Outpost,Land,"This land enters tapped.
-{T}: Add {R}, {W}, or {B}.",W/B/R,mana,TDM,263,1
+{T}: Add {R}, {W}, or {B}.",W/B/R,mana,TDM,263,4
 Withering Torment,Instant,Destroy target creature or enchantment. You lose 2 life.,B,pay life; removal,DSK,124,1
 Paradox Surveyor,Creature — Elf Druid,"Reach
 When this creature enters, look at the top five cards of your library. You may reveal a land card or a card with {X} in its mana cost from among them and put it into your hand. Put the rest on the bottom of your library in a random order.",U/G,Elf; Druid; etb; selection; reach; defense,SOS,208,1
@@ -5802,3 +5802,10 @@ Slick Imitator,Creature — Ooze,"Start your engines! (If you have no speed, it 
 Max speed — {1}, Sacrifice this creature: Copy target spell you control. You may choose new targets for the copy. (A copy of a permanent spell becomes a token.)",U,Ooze; sacrifice; max speed; speed; aggro; start your engines!,DFT,62,1
 Tragic Trajectory,Sorcery,"Target creature gets -2/-2 until end of turn.
 Void — That creature gets -10/-10 until end of turn instead if a nonland permanent left the battlefield this turn or a spell was warped this turn.",B,removal; void; graveyard; payoff,EOE,122,1
+Great Arashin City,Land,"This land enters tapped unless you control a Forest or a Plains.
+{T}: Add {B}.
+{1}{B}, {T}, Exile a creature card from your graveyard: Create a 1/1 white Spirit creature token.",B,graveyard; tokens; mana,TDM,257,1
+Godless Shrine,Land — Plains Swamp,"({T}: Add {W} or {B}.)
+As this land enters, you may pay 2 life. If you don't, it enters tapped.",W/B,Plains; Swamp; pay life; mana,EOE,254,1
+Shattered Sanctum,Land,"This land enters tapped unless you control two or more other lands.
+{T}: Add {W} or {B}.",W/B,mana,SOS,260,1

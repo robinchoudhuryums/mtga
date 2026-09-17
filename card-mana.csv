@@ -2701,6 +2701,9 @@ Ooze Patrol,{3}{G},4,Mill
 Slime Against Humanity,{2}{G},3,
 Slick Imitator,{1}{U},2,Max speed;Start your engines!
 Tragic Trajectory,{B},1,Void
+Great Arashin City,,0,
+Godless Shrine,,0,
+Shattered Sanctum,,0,
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -5185,7 +5188,6 @@ Survey Mechan,{4},4,Flying;Hexproof
 Thrumming Hivepool,{6},6,Affinity
 "Adagia, Windswept Bastion",,0,Station
 Command Bridge,,0,
-Godless Shrine,,0,
 Secluded Starforge,,0,
 Stomping Ground,,0,
 Blinkmoth Nexus,,0,
@@ -13152,7 +13154,6 @@ Forum of Amity,,0,Surveil
 Great Hall of the Biblioplex,,0,
 Paradox Gardens,,0,Surveil
 Petrified Hamlet,,0,
-Shattered Sanctum,,0,
 Stormcarved Coast,,0,
 Sundown Pass,,0,
 Titan's Grave,,0,Surveil
@@ -13713,7 +13714,6 @@ Temur Monument,{2},2,
 Watcher of the Wayside,{3},3,Mill
 Cori Mountain Monastery,,0,
 Frontier Bivouac,,0,
-Great Arashin City,,0,
 Kishla Village,,0,Surveil
 Maelstrom of the Spirit Dragon,,0,
 Mistrise Village,,0,
