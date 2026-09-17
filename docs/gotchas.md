@@ -2048,7 +2048,24 @@ all. Neither is derivable from the KEY label. The rule is not "distrust KEY"; it
 KEY answers "does this share a theme", and for a card whose text names a resource, the
 question that decides is "how much of that resource does the deck hold".
 
+**The roster KEY-saturation warning (2026-09-17).** `screen` has warned since G-47 when KEY
+fires on ≥40% of a PILE, and `suggest-homes` had no equivalent — so a card KEY in a QUARTER
+of the roster was presented exactly like one KEY in two decks. Found when an ownership
+reconcile surfaced 75 cards and the fit pass returned **756 KEY rows across 70 of them**,
+which reads as 756 recommendations and is really a fact about the tags.
 
+`_HOMES_KEY_SATURATED = 0.15` is derived, not chosen. Across those 75 cards on a 114-deck
+roster the KEY-deck count runs p25 4 / p50 9 (8%) / p75 14 (12%) / max 30 — Patchwork Banner,
+26%, matching on `mana` and `pump`. At 0.15 the warning fires on 14 of 75 (19%), the same
+band as `_UNPRICED_DISCLOSE_FLOOR` (30%) and well clear of the G-07 saturation shape, where a
+warning that fires on everything trains you to ignore it. It is LOWER than the pile threshold
+because the denominators differ: a `screen` pile is pre-filtered to one deck's plausible adds,
+where 40% KEY is unremarkable, while a roster is every deck you own.
+
+It REPORTS and never re-scores, the protection-axis and count-confidence stance. The
+worked case: Volley Veteran ("damage equal to the number of Goblins you control") read KEY
+for deck 39, a Humans/Equipment deck, on the `etb` tag alone — the count that decides the
+card is zero.
 ## [G-32] `suggest-homes` reads CASTABILITY as an identity SUBSET — which says nothing about whether you c
 
 **`suggest-homes` reads CASTABILITY as an identity SUBSET — which says nothing about
@@ -2229,6 +2246,31 @@ not "creatures + burn": every deck has creatures, so that count runs 11..36 and 
 saturated exactly like `triggers`. Calibrated (2, 7) from the noncombat count's p50/p75
 (min 0 / p25 1 / p50 2 / p75 7 / p90 10). Roster diff: 4 of 10 doublers' top-5 changed, 2
 changed #1, all toward burn-dense decks; 0 tier floors moved.
+
+**The active voice, and why Doubling Season was invisible (2026-09-17).** `_DOUBLER_AXES`
+matched only the PASSIVE templating of the global replacement — "twice that many of those
+tokens ARE CREATED instead" (Elspeth, Storm Slayer; Bard, King of Dale). Doubling Season,
+Anointed Procession and Parallel Lives use the ACTIVE voice, "If an effect would create one
+or more tokens …, IT CREATES twice that many", and matched nothing; Doubling Season missed
+on BOTH of its axes, since the counters pattern was passive too. G-67's family-disagreement
+shape: diff a family's members against each other.
+
+Two discriminators keep the widened pattern honest, and neither was invented — both were
+taken from rules the module already stated. The active branch requires the literal "twice
+that many" rather than reusing the passive branch's looser `instead`, because a replacement
+that is NOT a doubling is templated identically: Doc Samson, Super Psychiatrist reads "put
+that many PLUS ONE of each of those kinds of counters instead", which is the lifegain axis's
+Angel of Vitality case one axis over. And it is scoped to "an effect"/"you" and never "an
+opponent", because Vorinclex's second clause HALVES an opponent's counters.
+
+Pool: **71 → 76 detected doublers, zero lost** — Doubling Season, Anointed Procession,
+Parallel Lives (tokens), Vorinclex, Innkeeper's Talent (counters). Roster diff: **0 of 111
+tier floors moved** (predicted — G-80: tags and overlays feed cuts/suggest while `tier_band`
+grades on `role_tally`, which reads TEXT) and **1 of 111 `cuts` top-3 sets changed** — deck
+78, where Doubling Season moved DOWN the cut list and now carries its `✱multiplier` flag.
+That deck's own thesis card had been ranked its second-weakest, the same shape G-40 records
+for Delney in deck 46. `check_suggest`'s doubler probe tested only the passive form and so
+could not have caught this; it now covers both voices and both near-miss families.
 ## [G-83] A cost that SCALES with a deck count, priced by nothing
 
 Every model in this repo prices a card at its PRINTED cost. That is right for most cards

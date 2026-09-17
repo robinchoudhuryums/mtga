@@ -226,6 +226,16 @@ before you decide a rule looks arbitrary and simplify it away, or when you are w
 directly on the subsystem it governs. `scripts/check_docs.py` gates the link in both
 directions.
 
+**A rule here has a budget: 300 WORDS, enforced by `check_docs.WORD_CAP`.** Over that and
+the evidence has moved back in — keep the rule and any live residual here, put the incident
+and the measurements in the `docs/gotchas.md` section. The cap counts WORDS because it
+counted LINES until 2026-09-17, which is a property of the FORMATTING that a bullet evades
+simply by not wrapping: the four longest rules in this file all passed a 15-line cap and two
+of them sat on a SINGLE line. 300 sits above p90 of the rule distribution, so it targets
+outliers rather than churning ordinary rules. **This file is loaded EVERY session and
+`docs/gotchas.md` is opt-in** — that asymmetry, not the total word count, is what the budget
+is protecting.
+
 - **Inspect one card with `card.py <name>`, never a truncated slice.** It prints the
   complete oracle text plus mana cost, **format legality**, owned quantity and which
   decks run it. Run it before grading or recommending ANY card in chat — "it's in the
@@ -555,6 +565,10 @@ directions.
   on its axis, and cost-shaped themes (graveyard/mill/discard) count only when the deck
   fields payoffs — filling your graveyard is value in a reanimator deck and damage in a
   control deck. It is a SHORTLIST: grade from full text, preview with `swap`.
+  **A SATURATED KEY SAYS SO SINCE 2026-09-17** (`_HOMES_KEY_SATURATED`, the roster twin of
+  `screen`'s pile-wide `_SCREEN_KEY_SATURATED`): KEY in ≥15% of the roster is a fact about
+  the TAGS, not a recommendation, and the warning names the generic themes carrying it.
+  Prefer the NARROW matches — a card KEY in two decks shares something specific with them.
   **TWO RESIDUALS, both measured on one card (2026-08-07).** A ZERO-ROW result is a THEME
   miss, not a colour-identity fact — reporting the second produced a written "you have no
   Abzan deck" claim against FOUR WBG decks. And KEY scores THEME OVERLAP ALONE, so for a
@@ -579,6 +593,11 @@ directions.
   on that axis (tokens / counters / triggers / lifegain / damage — FIVE since 2026-09-06),
   bounded and promoting to KEY only at real density. `doubler_restriction` reads the
   doubler's OWN scope so a restricted one isn't counted against the whole deck.
+  **IT MATCHES TWO VOICES, and only the passive one until 2026-09-17** — so DOUBLING
+  SEASON scored `None` on BOTH its axes while Elspeth ("…ARE CREATED instead") matched.
+  The active branch ("IT CREATES twice that many") needs that LITERAL phrase, since a
+  plus-N replacement is templated identically (Doc Samson is +1), and excludes an
+  OPPONENT clause so Vorinclex's halving is not your doubler.
   **KNOWN GAP: it parses a POWER scope and nothing else**, so a TYPE-scoped doubler
   (Splinter's Ninja clause) is counted against the whole deck — 27 feeders in deck 20
   against a correct 12. Read a `✱ multiplier` figure on a tribal doubler as an upper bound

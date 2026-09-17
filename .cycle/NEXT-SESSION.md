@@ -19,6 +19,33 @@ commands disagree.
 
 ## 0-current. THE 2026-08-24 SESSION (READ THIS FIRST — supersedes §0-latest below)
 
+> **STATE STAMP, 2026-09-17 (supersedes everything below).** Branch
+> `claude/sync-commands-mmmsdb`, restarted from `main` after PR #178 merged. Four things
+> landed since scan #10, none of them a scan: **(1)** 18 matches ingested (matches.csv now
+> **131 rows, 128 attributed across 39 decks**, pooled 67-64) and three `#: arena:` headers
+> refreshed — deck 45's Arena DeckId changed because it was rebuilt after its tune, and
+> deck 79's Arena name is "Gambit's Draw" against the repo's "Second Draw" (the G-73
+> flavour-name case; the rename was NOT adopted, and adopting it would strand citations in
+> decks 12, 26b, 43 and 47). **(2)** A roster-wide ownership RECONCILE: every deck with a
+> logged match is now fully owned, library **2710 → 2785 printings**, wishlist 166 → 142.
+> The 11 decks still short are all decks with NO logged match, deliberately left as real
+> craft targets. **(3) BS11-01/02/03** — `doubler_axis` missed the ACTIVE voice, so
+> **Doubling Season scored None on both its axes**; `suggest-homes` gained a roster
+> KEY-saturation warning; `/ingest` Stage 3c now splits new-to-the-LIBRARY from
+> new-to-the-ROSTER. **(4) BS12-01/02** — four overlong rules trimmed (−896 words), the
+> CLAUDE.md bullet cap switched from LINES to **300 WORDS** (a line cap is evaded by not
+> wrapping — two of the four sat on one line), and `figure_drift` grew 14 → 21 registered
+> figures, of which **five were already stale** and were re-grounded.
+> Live gates: **1810 pytest passed / 0 skipped**, `check_all` all invariants hold with the
+> SAME one soft warning (the three accepted dead tutors), `check_docs` zero figure drift.
+> Blocks: `.cycle/blocks/2026-09-doubler-active-voice-*` and `2026-09-prose-budget-*`.
+> **Open, and needing a human:** deck 47's tier letter (still claimed B against an A floor,
+> carried over from scan #10) and deck 45's (claimed B against an A floor, with one leg of
+> its own argument known false). **Open follow-on:** G-43's "102 of the pool's 308" could
+> not be registered in `figure_drift` — measured live it reads 63 of 213, because the two
+> numbers count different populations in one sentence, and it needs the original derivation
+> before it can be gated.
+>
 > **STATE STAMP, 2026-09-14 (third — SCAN #10 IS COMPLETE, supersedes both below).**
 > All four batches and every follow-on are implemented. Batch 4 closed **BS10-01**:
 > permanent steal / exchange (`gain control of target …`, `exchange control of …`) scored no
