@@ -417,6 +417,44 @@ def deck_color_sources(cards, meta, carddata):
     return src
 
 
+def binding_pips(cost, sources):
+    """The strict colour demand a cost places on a deck with THESE sources.
+
+    `parse_pips` splits strict from hybrid, and every probability surface then DROPPED the
+    hybrid half on the premise `cast_probability`'s docstring states: a hybrid is strictly
+    easier to pay, so the strict demand is what binds. That premise is true everywhere
+    except at ZERO, and it fails silently there: with no sources of one half, `{B/G}` IS
+    `{B}`, and a cost of `{1}{B/G}{B/G}` is a real double-black demand that the model
+    reported as NO demand at all.
+
+    Measured on the roster when this was added (2026-09-17): **41 cards** carried a hybrid
+    pip with a half the deck had zero sources of, and **27 were overstated by 5+ points**,
+    every one of them printing exactly 100% because with no strict pips there was nothing
+    left to constrain on. The worst, deck 14's Long Feng, Grand Secretariat
+    (`{1}{B/G}{B/G}` in a deck with G=0 and B=11), read 100% against a true 52.5% — and it
+    was absent from `consistency`'s cast-on-curve table entirely while its strictly EASIER
+    twin, a `{B}{B}` card off the same 11 sources, was flagged at 65.1%.
+
+    Three cases, and only the middle one changes:
+      * a hybrid with 2+ live halves  -> still not binding (the original premise holds)
+      * a hybrid with exactly ONE live half -> collapses to a strict pip on that half
+      * a hybrid with NO live half -> left alone. The card is uncastable and the
+        castability lint owns that; inventing a pip here would have to pick a colour the
+        deck cannot produce, which is a guess, and this module does not guess (G-16).
+    A monocolor (`{2/W}`) or Phyrexian (`{W/P}`) hybrid is a single-colour frozenset and is
+    payable generically, so it never binds — the same rule `_candidate_castability` uses.
+    """
+    strict, hybrid = parse_pips(cost or "")
+    out = dict(strict)
+    for h in hybrid:
+        if len(h) < 2:
+            continue
+        live = [c for c in sorted(h) if (sources or {}).get(c, 0) > 0]
+        if len(live) == 1:
+            out[live[0]] = out.get(live[0], 0) + 1
+    return out
+
+
 def pip_depth_warning(cost, sources, total=None):
     """(colour, pips, have, want) when a card's DEEPEST single-colour pip demand is more
     than the deck's sources realistically support — else None.
@@ -438,7 +476,7 @@ def pip_depth_warning(cost, sources, total=None):
     None. Read the two bands as different claims: a 3-pip flag says "you cannot cast
     this", a 2-pip flag says "you will cast this late".
     """
-    strict, _hybrid = parse_pips(cost or "")
+    strict = binding_pips(cost, sources)
     if not strict:
         return None
     col, pips = max(strict.items(), key=lambda kv: kv[1])
@@ -6408,7 +6446,7 @@ def cmd_consistency(args):
         entry = mana.get(nl)
         if not entry or not entry[0]:
             continue
-        strict, _hy = parse_pips(entry[0])
+        strict = binding_pips(entry[0], sources)
         if not strict:
             continue
         seen.add(nl)
@@ -6466,7 +6504,8 @@ def cmd_consistency(args):
                   f"Karsten source count to reach target, a splash flag for a thin (≤{SPLASH_MAX}-source) "
                   "color (cast late or cut), or a color-hungry flag for an early double pip.")
     print("\nModel: hypergeometric (exact); per-color independence for multi-color costs "
-          "(a mild over-estimate), hybrids excluded as non-binding. A planning aid, not a "
+          "(a mild over-estimate); a hybrid binds only when the deck has sources for just ONE "
+          "of its halves, in which case it IS that colour. A planning aid, not a "
           "guarantee — mulligans, scry, and card draw all shift the real numbers.")
     return 0
 
@@ -12287,6 +12326,10 @@ _FIG_PAREN = _FIG_GAP + r"\((\d+)\)"
 # not a precise claim and should not be audited as one.
 _FIG_NUM = r"(?<![\d.])(?<!\d-)(\d+)"
 _FIG_DEC = r"(?<![\d.])(?<!\d-)(\d+\.\d+)"
+# A copula figure whose number is immediately re-qualified by a SPEED word is a
+# sub-count of the interaction profile (G-24), not the axis total. Roster-derived: one
+# match of 23, deck 26b's "the interaction is 1 instant-speed against 11 sorcery-speed".
+_FIG_SPEED_QUALIFIED = r"(?!\s*(?:instant|sorcery)[- ]speed)"
 _RATIONALE_FIGURES = [
     (re.compile(r"interaction[  ]+(\d+)", re.I), "interaction"),
     (re.compile(r"interaction" + _FIG_PAREN, re.I), "interaction"),
@@ -12310,6 +12353,30 @@ _RATIONALE_FIGURES = [
     (re.compile(_FIG_NUM + r"[  ]+interaction", re.I), "interaction"),
     (re.compile(_FIG_NUM + r"[  ]+card[- ]adv(?:antage)?", re.I), "card_advantage"),
     (re.compile(_FIG_NUM + r"[  ]+protection", re.I), "protection"),
+    # …and the COPULA form, which every pattern above misses because they all require the
+    # number ADJACENT to the label. G-26 has recorded "a copula hides a figure" as a known
+    # residual for a year without anyone measuring it. Measured 2026-09-17: the roster
+    # carries **23** copula-shaped claims and **6 of them are WRONG** — deck 26b says
+    # "interaction is 1" against a live 10, deck 27 "card advantage is 1" against 4 — a 26%
+    # error rate on the exact axes a tier letter rests on, all of it invisible.
+    # The verb list is CLOSED and short on purpose, the same discipline G-26 demands of the
+    # suppression cues: these are the copulas the roster actually writes.
+    # `(?:only |just |down to |up to )?` absorbs the hedge the prose puts between verb and
+    # number, and `_FIG_SPEED_QUALIFIED` is the one exclusion the roster sweep earned. Deck
+    # 26b writes "the interaction is 1 instant-speed against 11 sorcery-speed", which is a
+    # claim about the interaction PROFILE that `stats` splits by speed (G-24), not about the
+    # interaction COUNT — the only one of the 23 roster matches whose number is re-qualified.
+    # It matched, and only an unrelated suppression kept the audit quiet on it, which is a
+    # false positive waiting to fire rather than a rule.
+    (re.compile(r"interaction(?:\s+now)?\s+(?:reads?|is|sits at|stands at|comes to|runs|"
+                r"counts)\s+(?:only |just |down to |up to )?" + _FIG_NUM + _FIG_SPEED_QUALIFIED,
+                re.I), "interaction"),
+    (re.compile(r"card[- ]adv(?:antage)?(?:\s+now)?\s+(?:reads?|is|sits at|stands at|"
+                r"comes to|runs|counts)\s+(?:only |just |down to |up to )?" + _FIG_NUM
+                + _FIG_SPEED_QUALIFIED, re.I), "card_advantage"),
+    (re.compile(r"protection(?:\s+now)?\s+(?:reads?|is|sits at|stands at|comes to|runs|"
+                r"counts)\s+(?:only |just |down to |up to )?" + _FIG_NUM + _FIG_SPEED_QUALIFIED,
+                re.I), "protection"),
     # …and the house phrasing, where the number comes FIRST ("a tight 2.44 curve").
     # The pattern above only reads "curve of 2.44" / "avg MV 2.44", which the rationales
     # essentially never use: roster-wide it matched ONE figure against fourteen written

@@ -109,7 +109,7 @@
 #: tier: which feeds no term, so every number is flat and the case is a LINE OF PLAY
 #: tier: -- waterbend is paid by tapping creatures, Sokka's tokens arrive
 #: tier: summoning-sick and so cannot attack but CAN pay it, and Yue's own vigilance
-#: tier: leaves her untapped to activate after she attacks. Card advantage reads 5,
+#: tier: leaves her untapped to activate after she attacks. Card advantage reads 6,
 #: tier: and the honest reading of that number is that it FLATTENS very different
 #: tier: cards: only Charred Foyer is a repeating engine, Ral is a single net +1, and
 #: tier: Gwen, Jeskai Revelation and Haste Magic are one-shots -- two of the best

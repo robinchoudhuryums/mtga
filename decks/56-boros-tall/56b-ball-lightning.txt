@@ -25,8 +25,8 @@
 #: archetype: this deck's payoff is the body entering and leaving, not the cast).
 #: tier: B (PROVISIONAL) — held at B by three things the A floor cannot see, and graded UNDER it on
 #: tier: purpose: (1) the ENGINE is singletons — Tannuk, The Fire Crystal, Warped Space, Spider-Verse are
-#: tier: one copy each, so the cheat plan's consistency is the cap, not its ceiling; (2) protection is 1
-#: tier: (Boots) by design — the plan is that the bodies have already left — which means a flash blocker
+#: tier: one copy each, so the cheat plan's consistency is the cap, not its ceiling; (2) protection is 3
+#: tier: by design — the plan is that the bodies have already left — which means a flash blocker
 #: tier: or instant-speed removal on the swing turn is unanswered; (3) unplayed. The floor reads A on the
 #: tier: aggro clock, and that clock is pricing Colossus at MV 9 (pile doc §5.7 item 6), so the measured
 #: tier: floor is not trustworthy in either direction here. Re-grade after ten games; the number that

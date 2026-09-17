@@ -66,7 +66,7 @@
 #: tier:    which axis (library / hand / graveyard) the deck actually attacks that game.
 #: tier: PATH TO A: functional redundancy on the combat-heist axis (`deck.py redundancy`)
 #: tier: so the plan does not hinge on drawing one of five connectors, plus a second
-#: tier: protection effect — protection is 2 against six `#: protect:` build-arounds,
+#: tier: protection effect — protection is 1 against six `#: protect:` build-arounds,
 #: tier: every one of which is a must-kill the moment it resolves.
 #: protect: Azula, Cunning Usurper; Tinybones, Bauble Burglar; Tinybones, the Pickpocket; Black Widow, Super Spy; Etrata, Deadly Fugitive; Cruelclaw's Heist
 
