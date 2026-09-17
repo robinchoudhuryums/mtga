@@ -1,5 +1,6 @@
 #: name: Dead or Alive
 #: format: Standard
+#: arena: 06 Dead or Alive, 263e61da-c799-4cf2-ab7b-5fa4f71536f6
 #: tier: B — Abzan reanimator; powerful top-end. Mana pass firmed the 3-color base (owned WBG duals: white 8->10 sources for the WW cards, green ->12). White is the reanimator ENGINE (Restoration Seminar/Primary Research/Starfall/Night Nurse/Owlin), not a cuttable splash. Residual cap: singleton inconsistency (redundancy is the only A-lever, and it trades away the singleton character).
 #: colors: WBG
 #: archetype: Abzan (W/B/G) reanimator — graveyard value.
