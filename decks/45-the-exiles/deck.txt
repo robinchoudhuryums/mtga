@@ -50,14 +50,14 @@
 #: archetype: number to argue past. The genuine difference is narrow:
 #: archetype: Fire Lord Zuko is the one card 24 structurally cannot run (it needs black),
 #: archetype: and Zuko + Appa turn the exile triggers into a GO-WIDE COUNTERS plan (tokens
-#: archetype: from Appa/Mechanized Ninja Cavalry/Quintorius/Rayblade Trooper, all pumped by
+#: archetype: from Appa/Quintorius/Rayblade Trooper/Virtue of Loyalty, all pumped by
 #: archetype: one Zuko trigger) where 24 converts them into card advantage.
 #: archetype: So the honest structural question is whether this should be deck 24c — a
 #: archetype: Mardu VARIANT of Eternal Flame — rather than a core deck of its own. It is
 #: archetype: kept standalone here only because Mardu is an otherwise empty color slot;
 #: archetype: if the go-wide plan does not separate it in play, fold it into 24 as 24c.
-#: tier: B — PROVISIONAL (unplayed brew). The metrics floor reads A on interaction 7
-#: tier: across a 3.34 curve, four of it able to answer a noncreature permanent, and the
+#: tier: B — PROVISIONAL (unplayed brew). The metrics floor reads A on interaction 9
+#: tier: across a 3.31 curve, five of it able to answer a noncreature permanent, and the
 #: tier: deck is FULLY OWNED — zero craft targets, unusual for a from-scratch build. Held
 #: tier: a band below the floor by three things the floor cannot see:
 #: tier: 1. THE 76% OVERLAP WITH 24. A deck that measurably duplicates an existing A-tier
@@ -116,10 +116,48 @@
 #: notes: to ANY target -- the same damage Lightning Strike and Lightning Helix deal for
 #: notes: two. Lightning Helix (owned x2) is a different PROFILE, not an upgrade: instant
 #: notes: and +3 life, against a mana and an early drop this deck is already short on (10).
-#: notes: THE ONE REAL HOLE IT LEAVES: the deck has ZERO artifact answers -- verified, no
-#: notes: card in the 60 destroys or exiles an artifact (Feed the Swarm is creature-or-
-#: notes: enchantment, Erode is creature-or-planeswalker). Abrade ({1}{R}, owned) is the
-#: notes: fix if the meta wants it, at the cost of a one-drop and with no reach.
+#: notes: THE ONE REAL HOLE IT LEFT -- since CLOSED on 2026-09-17, see below -- was that
+#: notes: the deck had ZERO artifact answers: verified at the time, no card in the 60
+#: notes: destroyed or exiled an artifact (Feed the Swarm was creature-or-enchantment,
+#: notes: Erode is creature-or-planeswalker).
+#: notes: TUNED 2026-09-17 (4 more swaps, 0 wildcards): -Burning Curiosity/+Requisition
+#: notes: Raid, -Feed the Swarm/+Cathar Commando, -Fanatical Firebrand/+Valorous Stance,
+#: notes: -Mechanized Ninja Cavalry/+Untimely Malfunction. FIRST CLEAN QUALITY GUARD of the
+#: notes: two-day pass: net improvement, no regressions.
+#: notes: Interaction 7 -> 9, protection 2 -> 3, INSTANT-SPEED interaction 2 -> 5, early
+#: notes: drops 10 -> 11, avg MV 3.34 -> 3.31 (effective 2.86), central themes 15 -> 17.
+#: notes: ARTIFACT AND ENCHANTMENT ARE NOW BOTH ANSWERED, THREE WAYS, and every one of them
+#: notes: is chosen to be NEVER DEAD -- the binding constraint is that this is a 60-card
+#: notes: singleton with no sideboard, where a narrow hate card is a blank in half the
+#: notes: matchups. Requisition Raid's third spree mode ("+1/+1 counter on each creature
+#: notes: target player controls", aimed at yourself) is a Fire Lord Zuko trigger printed on
+#: notes: a card. Cathar Commando is a 3/1 FLASH body when they hold neither type, feeding
+#: notes: Zuko's counters, Appa's tokens, Weftstalker's ping and Rayblade's counter. Untimely
+#: notes: Malfunction's "change the target of target spell or ability with a single target"
+#: notes: is real PROTECTION -- point their removal at a 1/1 Ally instead of Etali -- and
+#: notes: "one or two target creatures can't block" is an alpha-strike enabler on a wide
+#: notes: board; `screen` classifies it as both Protection and Removal.
+#: notes: VALOROUS STANCE WAS RE-ADDED and the earlier note above calling it merely
+#: notes: "conditional" was the wrong read: it is TWO cards, and its removal half is the
+#: notes: best of its family. Measured across the 2,735 Standard creatures with printed P/T
+#: notes: (G-16 excludes the */X ones rather than guessing): "toughness 4 or greater" kills
+#: notes: 903 (33.0%) against 706 (25.8%) for the "power 4 or greater" wording on Stone by
+#: notes: Sunlight and Spectacular Tactics, and it uniquely covers 357 creatures they cannot.
+#: notes: Stone by Sunlight stays out: same 25.8%, and "becomes an artifact" does nothing
+#: notes: here. Spectacular Tactics is the live alternative if you ever want the better
+#: notes: PROTECTION mode instead -- it grants hexproof plus a PERMANENT +1/+1 counter, and
+#: notes: hexproof answers exile and -X/-X where indestructible does not.
+#: notes: TWO COSTS PAID KNOWINGLY, both from cutting creatures rather than spells:
+#: notes: creatures 22 -> 21 (wide score was 10 at 22 copies), and Starfield Shepherd's
+#: notes: "creature card with mana value 1 or less" clause drops from 2 targets to 1 (Kellan
+#: notes: alone). Its tutor is NOT dead -- three basic Plains still make it 4 hits, and the
+#: notes: Plains half is the fixing that mattered -- but a second one-drop creature is the
+#: notes: cheapest way to un-thin it if a later pass wants to.
+#: notes: BLACK IS NOW TWO CARDS (Fire Lord Zuko, Black Widow) against 12 sources. The
+#: notes: "cut black entirely" route in the archetype note above is now a two-card decision
+#: notes: rather than a five-card one; Fire Lord Zuko is the only real casualty, and it is
+#: notes: `#: protect:`-named. Not done, deliberately -- recorded so the next pass sees the
+#: notes: cost has fallen.
 
 # Payoffs — every one triggers on "cast a spell from exile"
 1 Spider-Verse (SPM) 93
@@ -130,11 +168,8 @@
 1 Zidane, Tantalus Thief (FIN) 251
 # Impulse enablers — exile off your own library
 1 Kellan, Planar Trailblazer (FDN) 91
-1 Fanatical Firebrand (FDN) 195
-1 Mechanized Ninja Cavalry (TMT) 156
 1 Heroes' Hangout (MSC) 804
 1 Exalted Sunborn (EOE) 15
-1 Burning Curiosity (ECL) 129
 1 Jessica Jones, Private Eye (MSH) 139
 1 Lightning, Security Sergeant (FIN) 560
 1 Harnesser of Storms (BLB) 137
@@ -163,8 +198,11 @@
 1 Restoration Magic (FIN) 30
 1 Erode (SOS) 15
 1 Boros Charm (FDN) 721
-1 Feed the Swarm (SOA) 29
+1 Cathar Commando (FDN) 139
 1 Cruel Alliance (MSH) 92
+1 Requisition Raid (SOA) 10
+1 Valorous Stance (FDN) 583
+1 Untimely Malfunction (DSK) 161
 
 # Lands
 1 Blood Crypt (ECL) 262

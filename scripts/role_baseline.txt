@@ -67,7 +67,6 @@ Broodguard Elite
 Bulk Up
 Bumi, King of Three Trials
 Bumi, Unleashed
-Burning Curiosity
 Burnout Bashtronaut
 Burrowguard Mentor
 Buzz Bots
@@ -279,7 +278,6 @@ Mardu Monument
 Masked Meower
 Master Pakku
 Mechanical Mobster
-Mechanized Ninja Cavalry
 Metalhead
 Michelangelo, Weirdness to 11
 Mind Transfer Protocol
