@@ -5800,3 +5800,5 @@ Slime Against Humanity,Sorcery,"Create a 0/0 green Ooze creature token with tram
 A deck can have any number of cards named Slime Against Humanity.",G,counters; graveyard; tokens,MKM,177,3
 Slick Imitator,Creature — Ooze,"Start your engines! (If you have no speed, it starts at 1. It increases once on each of your turns when an opponent loses life. Max speed is 4.)
 Max speed — {1}, Sacrifice this creature: Copy target spell you control. You may choose new targets for the copy. (A copy of a permanent spell becomes a token.)",U,Ooze; sacrifice; max speed; speed; aggro; start your engines!,DFT,62,1
+Tragic Trajectory,Sorcery,"Target creature gets -2/-2 until end of turn.
+Void — That creature gets -10/-10 until end of turn instead if a nonland permanent left the battlefield this turn or a spell was warped this turn.",B,removal; void; graveyard; payoff,EOE,122,1

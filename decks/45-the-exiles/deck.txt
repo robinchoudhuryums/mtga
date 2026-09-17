@@ -10,8 +10,8 @@
 #: archetype: EACH creature you control) and Appa, Steadfast Guardian (a 1/1 Ally token).
 #: archetype: One cast from exile turns on all three at once — drain, pump and a body.
 #: archetype: THE TRIGGER DOES NOT CARE WHOSE CARD IT WAS. Red supplies the cheap IMPULSE
-#: archetype: effects that exile off your own library; heist (Black Widow, Korvold, Etali)
-#: archetype: exiles off the opponent's; both feed the same payoffs. Self-exile and
+#: archetype: effects that exile off your own library; heist (Black Widow, Etali) exiles
+#: archetype: off the opponent's; both feed the same payoffs. Self-exile and
 #: archetype: opponent-exile finally combine here instead of competing for a slot, because
 #: archetype: Quintorius/Zuko/Appa are the shared payoff that neither 24 nor 44 has.
 #: archetype: BE HONEST ABOUT WHAT BLACK IS FOR: it is Fire Lord Zuko's {B} pip plus three
@@ -21,7 +21,9 @@
 #: archetype: CUT for cause: Doom Reigns Supreme wants five Villains against this deck's
 #: archetype: one, and The Rise of Sozin was rejected because its chapter I destroys all
 #: archetype: creatures, which is a disaster for a go-wide board. The heist that actually
-#: archetype: matters in this list is RED — Etali and Korvold.
+#: archetype: matters in this list is RED — Etali and Black Widow. (Korvold was CUT
+#: archetype: 2026-09-17: its heist is chapter III of a Saga, three turns out, for the job
+#: archetype: Interdimensional Web Watch now does on ETB.)
 #: archetype: WARP IS THE MOST RELIABLE TRIGGER IN THE DECK, and the reason five of them
 #: archetype: are maindecked. Impulse only pays off when the exiled card is one you actually
 #: archetype: want to cast; warp exiles the creature ITSELF and lets you re-cast it from
@@ -37,7 +39,7 @@
 #: archetype: them so you may recast them for {2} — which means Appa ENABLES the trigger
 #: archetype: it also pays off, and rebuys any ETB on the board while doing it. It is the
 #: archetype: closest thing the deck has to a combo turn.
-#: archetype: Zuko's counters are why the token half matters: Appa's Allies and Korvold's
+#: archetype: Zuko's counters are why the token half matters: Appa's Allies and Zidane's
 #: archetype: Treasures make the board wide, and one Zuko trigger pumps all of it. The
 #: archetype: plan is go-wide midrange, not durdle.
 #: archetype: DISTINCTNESS — READ THIS BEFORE INVESTING WILDCARDS. `deck.py similar` reads
@@ -50,14 +52,14 @@
 #: archetype: number to argue past. The genuine difference is narrow:
 #: archetype: Fire Lord Zuko is the one card 24 structurally cannot run (it needs black),
 #: archetype: and Zuko + Appa turn the exile triggers into a GO-WIDE COUNTERS plan (tokens
-#: archetype: from Appa/Quintorius/Rayblade Trooper/Virtue of Loyalty, all pumped by
+#: archetype: from Appa/Quintorius/Web-Warriors/Virtue of Loyalty, all pumped by
 #: archetype: one Zuko trigger) where 24 converts them into card advantage.
 #: archetype: So the honest structural question is whether this should be deck 24c — a
 #: archetype: Mardu VARIANT of Eternal Flame — rather than a core deck of its own. It is
 #: archetype: kept standalone here only because Mardu is an otherwise empty color slot;
 #: archetype: if the go-wide plan does not separate it in play, fold it into 24 as 24c.
-#: tier: B — PROVISIONAL (unplayed brew). The metrics floor reads A on interaction 9
-#: tier: across a 3.31 curve, five of it able to answer a noncreature permanent, and the
+#: tier: B — PROVISIONAL (unplayed brew). The metrics floor reads A on interaction 8
+#: tier: across a 3.43 curve, four of it able to answer a noncreature permanent, and the
 #: tier: deck is FULLY OWNED — zero craft targets, unusual for a from-scratch build. Held
 #: tier: a band below the floor by three things the floor cannot see:
 #: tier: 1. THE 76% OVERLAP WITH 24. A deck that measurably duplicates an existing A-tier
@@ -158,6 +160,39 @@
 #: notes: rather than a five-card one; Fire Lord Zuko is the only real casualty, and it is
 #: notes: `#: protect:`-named. Not done, deliberately -- recorded so the next pass sees the
 #: notes: cost has fallen.
+#: notes: PILE PASS 2026-09-17 (9 swaps, 0 wildcards). Out: Korvold, Weftblade Enhancer,
+#: notes: Stagecoach Security, Harnesser of Storms, Plasma Bolt, Crimson Operative,
+#: notes: Rayblade Trooper, Erode, Cruel Alliance. In: Interdimensional Web Watch,
+#: notes: Anticausal Vestige, Web-Warriors, Glider Staff, Airbender's Reversal, Charred
+#: notes: Foyer // Warped Space, Ketramose, Goliath Daydreamer, Aven Interrupter.
+#: notes: THE RULE THAT SORTED THE 41-CARD PILE: this deck's four payoffs do NOT agree on
+#: notes: which exile event they want. `cast a spell from exile` pays all four (Zuko, Appa,
+#: notes: Quintorius, Spider-Verse); `a permanent you control ENTERS from exile` pays
+#: notes: FIRE LORD ZUKO ONLY. So a BLINK is worth a quarter of an exile-then-CAST. The
+#: notes: corollary that decided most of the adds: AIRBEND IS NOT BLINK -- it reads "exile
+#: notes: it, its owner may cast it for {2}" -- so Glider Staff and Airbender's Reversal
+#: notes: pay 4/4, while Daydream / Ennis / Salvation Swan / Go Ninja Go / The Mind Stone
+#: notes: pay 1/4 and were all passed over.
+#: notes: Protection 3 -> 4, card advantage now 8 REPEATABLE / 0 one-shot (was 7/1),
+#: notes: instant-speed interaction 6 of 8 (was 5 of 9), central themes 17 -> 18.
+#: notes: THREE COSTS, ALL PAID KNOWINGLY:
+#: notes: 1. Interaction 8, down from 9 -- three removal spells out (Plasma Bolt, Erode,
+#: notes:    Cruel Alliance) against two removal-ish adds. Note the reversal: Erode was
+#: notes:    argued as UNCUTTABLE on 2026-09-16 ("of 81 owned removal spells at MV<=2 none
+#: notes:    beats it"), and that rate claim is still true. What changed is the MARGINAL
+#: notes:    value of the 9th removal spell against an engine piece, not the card.
+#: notes: 2. BOROS CHARM IS NOW THE ONLY PLANESWALKER ANSWER IN THE 60, down from three
+#: notes:    (Erode and Plasma Bolt were the others). Verified against all 60 cards. If
+#: notes:    planeswalkers show up in the meta this is the first thing to fix.
+#: notes: 3. avg MV 3.31 -> 3.43 and early drops 11 -> 10, against 11 unconditional
+#: notes:    taplands. Anticausal Vestige warps for {4} and Charred Foyer's front is {3}{R},
+#: notes:    so the EFFECTIVE curve moved far less than the printed one.
+#: notes: OWNERSHIP CORRECTION: Charred Foyer was graded "craft 1 Mythic" in the first pile
+#: notes: pass and is in fact OWNED. The library stores it under its FRONT face alone
+#: notes: ("Charred Foyer") while the pool keys the full "Charred Foyer // Warped Space" --
+#: notes: the G-63 join, missed because the throwaway pull used a raw name lookup instead
+#: notes: of `lib.owned_qty`. Tragic Trajectory was separately absent from the library and
+#: notes: was reconciled in (G-10 lower-bound symptom, user-reported).
 
 # Payoffs — every one triggers on "cast a spell from exile"
 1 Spider-Verse (SPM) 93
@@ -172,34 +207,34 @@
 1 Exalted Sunborn (EOE) 15
 1 Jessica Jones, Private Eye (MSH) 139
 1 Lightning, Security Sergeant (FIN) 560
-1 Harnesser of Storms (BLB) 137
-1 Crimson Operative (MSH) 126
+1 Glider Staff (TLA) 22
+1 Charred Foyer // Warped Space (DSK) 129
 1 Raphael, Most Attitude (TMT) 101
 1 Zuko, Exiled Prince (TLA) 163
 1 The Legend of Roku (TLA) 145
+1 Goliath Daydreamer (ECL) 143
+1 Interdimensional Web Watch (SPM) 165
 
 # Heist — the same trigger, off the opponent's library
 1 Black Widow, Super Spy (MSH) 89
-1 Korvold and the Noble Thief (WOE) 139
 1 Etali, Primal Storm (FDN) 194
 
-# Warp / plot — cast from exile on a later turn
+# Bodies — warp / plot cast from exile, plus the anthems that pay them off
 1 Virtue of Loyalty (WOE) 38
 1 Weftstalker Ardent (EOE) 169
-1 Rayblade Trooper (EOE) 30
-1 Weftblade Enhancer (EOE) 44
+1 Ketramose, the New Dawn (DFT) 209
+1 Anticausal Vestige (EOE) 1
 1 Nova Hellkite (EOE) 148
 1 Starfield Shepherd (EOE) 37
 1 Sheriff of Safe Passage (OTJ) 29
-1 Stagecoach Security (OTJ) 30
+1 Web-Warriors (SPM) 159
 
 # Interaction & protection — mostly single-pip, to survive three colors
-1 Plasma Bolt (EOE) 152
+1 Airbender's Reversal (TLA) 7
 1 Restoration Magic (FIN) 30
-1 Erode (SOS) 15
 1 Boros Charm (FDN) 721
 1 Cathar Commando (FDN) 139
-1 Cruel Alliance (MSH) 92
+1 Aven Interrupter (OTJ) 4
 1 Requisition Raid (SOA) 10
 1 Valorous Stance (FDN) 583
 1 Untimely Malfunction (DSK) 161
@@ -222,3 +257,7 @@
 4 Mountain (MSH) 293
 3 Plains (MSH) 287
 1 Swamp (MSH) 291
+
+# Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 45
+#~ -Heroes' Hangout | +Hex Magic | owned; both are red impulse enablers and Hex Magic is the bigger effect — "exile all the cards from your hand, then draw that many, until end of your NEXT turn you may play cards exiled this way" refills AND makes every card a 4/4 payoff trigger, where Heroes' Hangout exiles two and lets you play ONE. Held out of the 60 only because the pile pass already added five cards and the curve moved 3.31 -> 3.43.
+#~ note: KRANG & SHREDDER is the open question, not a flex line. Its {4}{U/B}{U/B} reads as NON-BINDING hybrid pips in both `consistency` (which excludes hybrids) and `deck.py mana` (which files them under Hybrid pips) — but the deck runs ZERO blue sources, so in play it binds as {4}{B}{B} against 12 black sources. Both tools are right about IDENTITY and silent about the QUANTITY. Decide from that, not from the 90% table.
