@@ -5809,3 +5809,8 @@ Godless Shrine,Land — Plains Swamp,"({T}: Add {W} or {B}.)
 As this land enters, you may pay 2 life. If you don't, it enters tapped.",W/B,Plains; Swamp; pay life; mana,EOE,254,1
 Shattered Sanctum,Land,"This land enters tapped unless you control two or more other lands.
 {T}: Add {W} or {B}.",W/B,mana,SOS,260,1
+"Joshua, Phoenix's Dominant",Legendary Creature — Human Noble Wizard // Legendary Enchantment Creature — Saga Phoenix,"When Joshua enters, discard up to two cards, then draw that many cards.
+{3}{R}{W}, {T}: Exile Joshua, then return it to the battlefield transformed under its owner's control. Activate only as a sorcery. // (As this Saga enters and after your draw step, add a lore counter.)
+I, II — Rising Flames — Phoenix deals 2 damage to each opponent.
+III — Flames of Rebirth — Return any number of target creature cards with total mana value 6 or less from your graveyard to the battlefield. Exile Phoenix, then return it to the battlefield (front face up).
+Flying, lifelink",W/R,Human; Noble; Wizard; Saga; Phoenix; reanimator; graveyard; lifegain; card draw; burn; etb; saga; noncombat damage; flying; evasion; lifelink; transform,FIN,229,1

@@ -59,7 +59,7 @@
 #: archetype: kept standalone here only because Mardu is an otherwise empty color slot;
 #: archetype: if the go-wide plan does not separate it in play, fold it into 24 as 24c.
 #: tier: B — PROVISIONAL (unplayed brew). The metrics floor reads A on interaction 10
-#: tier: across a 3.49 curve, four of it able to answer a noncreature permanent, and the
+#: tier: across a 3.43 curve, four of it able to answer a noncreature permanent, and the
 #: tier: deck is FULLY OWNED — zero craft targets, unusual for a from-scratch build. Held
 #: tier: a band below the floor by three things the floor cannot see:
 #: tier: 1. THE 76% OVERLAP WITH 24. A deck that measurably duplicates an existing A-tier
@@ -257,6 +257,22 @@
 #: notes: Shepherd tutors a basic PLAINS. Eight basics (4 Mountain / 3 Plains / 1 Swamp)
 #: notes: is the floor -- do not trade another basic for a nonbasic without re-checking
 #: notes: all four.
+#: notes: JOSHUA IN FOR STARFIELD SHEPHERD, 2026-09-17 — the user's call over a recorded
+#: notes: recommendation to keep the Shepherd, so the reasoning on BOTH sides is here.
+#: notes: FOR: Joshua reads 90.6% on turn three, `screen` rates it role-player on 7 shared
+#: notes: themes, and it is the FIRST add in this whole two-day pass that `suggest` itself
+#: notes: surfaced (every other one was found by hand). Curve 3.49 -> 3.43.
+#: notes: AGAINST, and worth re-checking in play: `cuts` ranked Starfield Shepherd 28 of 31,
+#: notes: i.e. the 4th-best FIT in the deck, and it was doing three jobs — warp {1}{W} at
+#: notes: 93.1% on turn two that re-casts from exile for a full 4/4 payoff, a flier, and the
+#: notes: deck's ONLY basic-Plains tutor. That last one got more valuable the same day, when
+#: notes: the M2 manabase made the basic count load-bearing for three other lands.
+#: notes: Joshua's chapter III (mass reanimate) remains the part this deck supports WORST —
+#: notes: 20 creatures but ZERO self-mill, so it only ever returns what died in combat.
+#: notes: Starfield Shepherd is parked in the flex block; reverse if chapter III keeps
+#: notes: finding an empty graveyard. Joshua read as unowned when it was added; the user
+#: notes: reported otherwise and it was reconciled in the same session (G-10 lower bound
+#: notes: again), so the deck stays FULLY OWNED at zero craft targets.
 
 # Payoffs — every one triggers on "cast a spell from exile"
 1 Spider-Verse (SPM) 93
@@ -288,7 +304,7 @@
 1 Ketramose, the New Dawn (DFT) 209
 1 Anticausal Vestige (EOE) 1
 1 Nova Hellkite (EOE) 148
-1 Starfield Shepherd (EOE) 37
+1 Joshua, Phoenix's Dominant // Phoenix, Warden of Fire (FIN) 229
 1 Sheriff of Safe Passage (OTJ) 29
 1 Web-Warriors (SPM) 159
 
@@ -325,5 +341,7 @@
 1 Swamp (MSH) 291
 
 # Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 45
+#~ -Joshua, Phoenix's Dominant // Phoenix, Warden of Fire | +Starfield Shepherd | owned; the card Joshua replaced 2026-09-17, parked here because the cut was close and Joshua is the CRAFT. Warp {1}{W} reads 93.1% on turn two, it exiles itself at end step and re-casts from exile later for a full 4/4 payoff, and its ETB is the deck's ONLY basic-Plains tutor -- which matters more than it used to, since Abandoned Air Temple, Dark Fortress and Blazemire Verge all key off the basic count. Reverse this if Joshua's chapter III keeps finding an empty graveyard (the deck has ZERO self-mill).
+#~ note: Hex Magic lost its pairing when Heroes' Hangout was cut on 2026-09-17 and the swap auto-retired the line. It is still owned and still the bigger effect than any impulse enabler here; it simply has no obvious slot now.
 #~ note: applied — Tragic Trajectory in for Heroes' Hangout.
 #~ note: KRANG & SHREDDER — CONSIDERED AND DECLINED 2026-09-17, recorded so it is not re-proposed. Its {4}{U/B}{U/B} reads as NON-BINDING hybrid pips in BOTH `consistency` (whose cast_probability docstring says hybrids are "strictly easier, so the strict demand is the binding constraint") and `deck.py mana` (which files them under Hybrid pips). That premise holds only if you have BOTH colours, and this deck runs ZERO blue — so it binds as {4}{B}{B}. Fed the honest demand through deck.cast_probability: 70.5% T5 / 75.6% T6 / 80.1% T7 at the 12 black sources it had, against a Karsten target of 17 sources for 90% on turn six. `consistency` printed 100%, so the false all-clear was worth ~24 points. DECIDING FACT: the L1 manabase applied the same day drops black to 10, which takes Krang to 64.6% on turn six — fixing the mana base for the deck makes this card materially worse, and it was the only card asking black to grow.
