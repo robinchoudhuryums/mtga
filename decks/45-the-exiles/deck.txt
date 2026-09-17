@@ -239,6 +239,24 @@
 #: notes: you control -- routinely a 4/4-6/6 on a wide board -- and its plot is a
 #: notes: GUARANTEED cast-from-exile on your own schedule, where Cruelclaw's needs combat
 #: notes: damage to connect). Chandra for Quintorius, per the paragraph above.
+#: notes: MANABASE M2, 2026-09-17: -2 Scoured Barrens / +Godless Shrine +Shattered
+#: notes: Sanctum, and -Temple of Silence / +Abandoned Air Temple. UNCONDITIONAL TAPLANDS
+#: notes: 11 -> 8 with the colour counts barely moving (W 16 flat, B 10 -> 9, R 16 flat) --
+#: notes: the first two are the SAME BW pair as Scoured Barrens, just untapped-capable
+#: notes: (Godless Shrine pays 2 life at will; Shattered Sanctum is untapped from turn
+#: notes: three, "unless you control two or more other lands"), so that half is a pure
+#: notes: tempo gain at zero colour cost.
+#: notes: Abandoned Air Temple is the one with a real ability: "{3}{W}, {T}: Put a +1/+1
+#: notes: counter on EACH creature you control" is a Fire Lord Zuko effect on a land,
+#: notes: repeatable, in a 21-creature go-wide deck, and it is the mana sink this list
+#: notes: otherwise lacks. It enters untapped "unless you control a basic land" and the
+#: notes: deck runs 8 basics.
+#: notes: THE BASIC COUNT IS NOW LOAD-BEARING and was not before. Four nonbasics key off
+#: notes: it: Abandoned Air Temple and Dark Fortress both read "if you control a basic
+#: notes: land", Blazemire Verge needs a Swamp or Mountain for its {R}, and Starfield
+#: notes: Shepherd tutors a basic PLAINS. Eight basics (4 Mountain / 3 Plains / 1 Swamp)
+#: notes: is the floor -- do not trade another basic for a nonbasic without re-checking
+#: notes: all four.
 
 # Payoffs — every one triggers on "cast a spell from exile"
 1 Spider-Verse (SPM) 93
@@ -292,9 +310,11 @@
 2 Asgardian Citadel (MSH) 258
 1 Temple of Malice (FDN) 701
 1 Bleachbone Verge (DFT) 250
-3 Scoured Barrens (M21) 250
+1 Scoured Barrens (M21) 250
+1 Shattered Sanctum (SOS) 260
+1 Godless Shrine (EOE) 254
 1 Sacred Foundry (EOE) 256
-1 Temple of Silence (FDN) 704
+1 Abandoned Air Temple (TLA) 263
 1 Sunbillow Verge (DFT) 264
 1 Abraded Bluffs (OTJ) 251
 1 Temple of Triumph (FDN) 705
