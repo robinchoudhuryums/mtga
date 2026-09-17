@@ -114,28 +114,60 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | Tinybones, Bauble Burglar | {1}{B} | craft R | — | **✗** | `whenever an OPPONENT discards` — deck 45 has **0**. Dead. It is already deck 70's craft target, where it works |
 | Moonstone, Harsh Mistress | {3}{B} | ×1 | — | **✗** | `whenever YOU discard` — **0** outlets in deck 45 |
 
-## 5. Consolidated plan (live)
+## 5. Consolidated plan (live) — rewritten 2026-09-17 after batch 2
 
-### Tier 1 — take these
-1. **Interdimensional Web Watch** (owned, 0 wildcards) — cut **Heroes' Hangout**
-   (`exile the top two… choose ONE of them`, the weakest of the impulse enablers, fit 19 / power 2).
-2. **Glider Staff** (owned) — cut **Harnesser of Storms** (3 MV; its `or Otter spell` half is
-   dead text, it is the only Otter, so it is 9-of-35 once per turn).
-3. **Airbender's Reversal** (owned) — cut **Plasma Bolt** *only if* you want more airbend;
-   otherwise hold, since interaction is already 9 and Plasma Bolt is an early drop (R6).
+**The cut pool changed the shape of this.** The user named 11 cards they are willing to
+cut; **10 are live** (Long Goodbye was already swapped out for Boros Charm on 2026-09-16).
+With ten slots available the question stops being "what one upgrade" and becomes "what
+package", so the plan below is ordered as matched pairs.
+
+### Tier 1 — take, all owned, 0 wildcards
+| # | add | cut | why this pair |
+|---|---|---|---|
+| 1 | **Interdimensional Web Watch** {4} | **Korvold and the Noble Thief** | Both MV 4, both heist-flavoured. Korvold's exile is CHAPTER III — three turns away. The Watch does it on ETB and then taps for mana that can only cast from exile. Colourless, so no strain on W14/B12/R16 |
+| 2 | **Anticausal Vestige** {6} / **warp {4}** | **Weftblade Enhancer** | Straight warp-body upgrade at the same printed MV 6. `When this creature LEAVES the battlefield, draw a card, then you may put a permanent card with MV <= lands you control from your hand onto the battlefield` — and warp makes it leave ON PURPOSE, then it recasts from exile for 4/4 (R1). Colourless |
+| 3 | **Web-Warriors** {4}{G/W} -> castable {4}{W} | **Stagecoach Security** | The cleanest upgrade in the pile. Stagecoach's anthem is `until end of turn`; Web-Warriors' `+1/+1 counter on each OTHER creature you control` is PERMANENT, on a 4/3 body, across 21 creatures. Owned x2 |
+| 4 | **Glider Staff** {2}{W} | **Harnesser of Storms** | airbend = recast for {2} = 4/4 (R1). Harnesser is 9-of-35 fuel once per turn and its `or Otter spell` half is dead text — it is the only Otter |
+| 5 | **Airbender's Reversal** {1}{W} | **Plasma Bolt** | modal `destroy target attacking creature` OR airbend your own (4/4). Interaction is already 9, so trading one burn spell for a modal one costs nothing |
 
 ### Tier 2 — the one craft worth a wildcard
-4. **Charred Foyer // Warped Space** (craft **1 Mythic**) — the best card in the pile, and
-   the only craft that clears the bar. Nothing owned does what Warped Space does.
+| # | add | cut | why |
+|---|---|---|---|
+| 6 | **Charred Foyer // Warped Space** (craft **1 Mythic**) | **Crimson Operative** | Same job, vastly better rate: Crimson Operative impulses ONCE on ETB for MV 4; Charred Foyer does it EVERY upkeep, and the back half (`once each turn, you may pay {0} rather than pay the mana cost for a spell you cast from exile`) is a free 4/4 trigger every turn |
 
-### Tier 3 — take if you want the body, not the trigger
-5. **Ketramose, the New Dawn** (owned) — a 3-mana indestructible 4/4. Keeps black alive (R5).
-6. **Goliath Daydreamer** (owned) — best if the instant/sorcery count grows past 9.
+### Tier 3 — real, take if you want that axis
+| add | cut | note |
+|---|---|---|
+| **Ketramose, the New Dawn** | Rayblade Trooper *or* Cruel Alliance | indestructible 4/4 for 3. Keeps the black splash alive (R5) |
+| **Goliath Daydreamer** | Erode | fuel counted at **9** instants/sorceries |
+| **Hex Magic** / **Aven Interrupter** | Cruel Alliance / Erode | both real, both behind the above |
+| **Krang & Shredder** | Virtue of Loyalty | heist + free cast from exile is very on-theme, but `{4}{B}{B}` at MV 6 against **12 black sources** is the heaviest ask in the pile (R5) |
+
+### Batch-2 rejects, with the reason
+- **Triple Triad** `{3}{R}{R}{R}` — the effect is the thesis (free cast from exile every
+  upkeep), the COST is not castable here. The deck's own `consistency` table already reads
+  `{R}{R}` on turn four at **81.7%** against a wanted 20 sources with 16 held; triple-R at
+  six is a strictly heavier demand on the same base, with 11 unconditional taplands (R6).
+- **Tragic Trajectory** — `{B}` for **-10/-10 with Void** is premium removal and Void is
+  reliably on. Held back only by R5 (black is two cards) and it is a craft.
+- **Spider-Punk / Spider-Woman** — Spider-Verse's `the legend rule doesn't apply to Spiders
+  you control` is currently dead text, and these would switch it on, but the unlock is
+  narrow: it only matters for a LEGENDARY Spider you have two of, i.e. one you copied with
+  Spider-Verse itself. Spider-Punk's `spells and abilities can't be countered` is the more
+  real line. **Web-Warriors is in Tier 1 on its own merits, not as a Spider.**
+- **All-Fates Stalker** — `screen` calls it KEY; the text argues down. Its ETB exiles
+  `until this creature leaves the battlefield`, and warping it makes it leave at the next
+  end step, handing the creature straight back. The two halves fight each other.
+- **Hylderblade / Interceptor Mechan** — both black, both marginal; equip {4} and a
+  2/2 flier respectively.
 
 ### PROTECT — what the ranking structurally cannot see (R7)
-- **Spider-Verse, Appa, Fire Lord Zuko, Quintorius Kand, Etali** — the four payoffs plus
-  the copy engine. `cuts` cannot score `exile cast`, so these sort on generic tags only.
-- **Every warp/plot card.** Their printed cost over-reads them by ~0.45 avg MV (R2).
-- **Requisition Raid / Cathar Commando / Untimely Malfunction / Valorous Stance /
-  Restoration Magic / Boros Charm** — all newcomers, all flagged `✚ NEWCOMER` by `cuts`
-  precisely because tag-fit under-reads them. Not cut candidates.
+- **Spider-Verse, Appa, Fire Lord Zuko, Quintorius Kand, Etali** — `cuts` cannot score
+  `exile cast`, so these sort on generic tags only.
+- **Every warp/plot card.** Printed cost over-reads them by ~0.45 avg MV (R2).
+- **The six newcomers** (Requisition Raid, Cathar Commando, Untimely Malfunction, Valorous
+  Stance, Restoration Magic, Boros Charm) — `cuts` flags them `NEWCOMER` precisely because
+  tag-fit under-reads them.
+- **Virtue of Loyalty is the one Tier-3 cut to think twice about**: its enchantment half is
+  a repeatable end-step anthem AND untapper, which is a Fire Lord Zuko effect that repeats
+  every turn. It is on the willing-to-cut list, but it is the best card on that list.
