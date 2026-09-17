@@ -181,6 +181,9 @@ Whenever you draw your second card each turn, this creature gets +1/+1 and gains
 Novice Inspector,Creature — Human Detective,"When this creature enters, investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",W,Human; Detective; card draw; sacrifice; tokens; etb; clue; investigate,MKM,29,Common,36a,,3.5,hand
 Kang the Conqueror,Legendary Creature — Human Villain,"Flying
 Power-up — {5}{U}{U}{U}: Put a +1/+1 counter on Kang. Take an extra turn after this one. During that turn, power-up abilities can't be activated. (Activate each power-up ability only once. Reduce the cost by his mana cost if he entered this turn.)",U,Human; Villain; counters; flying; evasion; power-up; payoff,MSH,62,Mythic,12,blue control finisher — evasive body + extra-turn power-up; UUU castable in Dimir,6.5,hand
+Fisk Tower,Land,"This land enters tapped.
+When this land enters, you gain 1 life.
+{T}: Add {W} or {B}.",W/B,lifegain; mana; etb,MSH,265,Common,41,"manabase: WB dual for a basic — +1 source to the off-colour, gain 1 life",2.0,seed
 Blooming Marsh,Land,"This land enters tapped unless you control two or fewer other lands.
 {T}: Add {B} or {G}.",B/G,mana,OTJ,266,Rare,21; 6,Manabase upgrade: de-tapland Gastromancer (21) B->A; reusable across WB/BG/GW decks. Also firms deck 8's thin green (Killmonger/Ygra) — fungible. | Also Abzan reanimator deck 6 (Dead or Alive) — same WBG fixing; fungible craft.,6.5,hand
 Concealed Courtyard,Land,"This land enters tapped unless you control two or fewer other lands.
@@ -309,6 +312,9 @@ Weather Maker,Artifact,"Landfall — Whenever a land you control enters, put a c
 {T}: Add one mana of any color.
 {T}, Remove two charge counters from this artifact: Add {C}{C}.
 {T}, Remove three charge counters from this artifact: It deals 3 damage to any target.",Colorless,counters; burn; mana; landfall; lands; ramp,TMT,182,Rare,general,landfall any-color ramp rock — flexible fixing/ramp (also 13/19a landfall),5.5,hand
+Foot Headquarters,Land,"This land enters tapped.
+When this land enters, you gain 1 life.
+{T}: Add {W} or {B}.",W/B,lifegain; mana; etb,TMT,185,Common,41,"manabase: WB dual for a basic — +1 source to the off-colour, gain 1 life",2.0,seed
 Realm-Scorcher Hellkite,Creature — Dragon,"Bargain (You may sacrifice an artifact, enchantment, or token as you cast this spell.)
 Flying, haste
 When this creature enters, if it was bargained, add four mana in any combination of colors.
