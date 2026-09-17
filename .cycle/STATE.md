@@ -36,6 +36,7 @@ Updated: 2026-09-14 (broad-implement, batch 4)
   fixed its largest cause (deck 47's own picks: median 310 → 144).
 
 ## Completed this cycle
+- **BS11-01/02/03 — the doubler active voice and fit-pass saturation (post-scan, user-requested)** | `doubler_axis` matched only the PASSIVE voice of the global replacement, so **Doubling Season — the card the mechanic is named after — scored None on BOTH its axes** and `cuts` ranked it deck 78's 2nd-weakest card while that deck's rubric entry names it as the thesis. Active branch added to the tokens and counters patterns, requiring the literal "twice that many" so Doc Samson's plus-N stays out and scoped away from Vorinclex's opponent-halving clause. Pool 71 → 76 doublers, **0 lost**; roster diff **0 of 111 tier floors, 1 of 111 cuts top-3** (deck 78, Doubling Season moving DOWN — the intended direction). `suggest-homes` gained a roster-wide KEY-saturation warning (`_HOMES_KEY_SATURATED = 0.15`, derived from p75 of a measured 75-card distribution), the twin of `screen`'s pile-wide 0.40. `/ingest` Stage 3c now splits new-to-the-LIBRARY from new-to-the-ROSTER. **check_suggest's doubler probe tested only the passive form and so could not have caught this** — extended, watched-it-fail | scripts/deck.py, scripts/check_suggest.py, tests/test_deck.py, .claude/commands/ingest.md
 - **G-02 recompute fix (post-scan, user-requested)** | `effective_avg_mv` and `cheat_cost_cards` recomputed mana value from the RAW `A // B` cost instead of `load_mana`'s front-faced `entry[1]`; the printed avg MV `stats`/`tier` render disagreed with the vector's on **27 of 112 decks, up to +0.45** (0 after). `cheat_cost_cards` was latent (0 of 616 `//` rows carry an alt cost). Report-only, so **no floor moved and nothing flagged** — gated now by `check_agreement`'s ninth pair `_agree_avg_mv` (roster sweep + synthetic split-cost control, watched-it-fail both halves) | scripts/deck.py, scripts/check_agreement.py, tests/test_deck_models.py, CLAUDE.md, docs/gotchas.md
 - Template sync v1.23.0 → v1.33.0 | `.claude/commands/broad-scan.md`, CLAUDE.md, docs/cycle-config.md
 - Tier-3 re-evaluation; state-and-measurement half adopted | `.cycle/`, `.claude/commands/`, CLAUDE.md
@@ -206,6 +207,10 @@ Updated: 2026-09-14 (broad-implement, batch 4)
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
+**BS11-01/02/03 are implemented and committed (2026-09-17), on top of a match ingest and a roster-wide ownership reconcile.** 1809 tests pass, `check_all` exit 0 with the same single pre-existing soft warning. Block: `.cycle/blocks/2026-09-doubler-active-voice-and-fit-saturation-broad-implement.md`. NET SCORE 2 − 0 = 2. **Two CLAUDE.md doc updates are outstanding and named in that block** (G-33 should record the active-voice branch; G-31 should name the new saturation warning) — `/sync-docs` is the way in.
+
+Earlier in the same cycle:
+
 **Broad scan #10 is COMPLETE** — four batches, every follow-on, three implementation
 blocks in `.cycle/blocks/10-*`. **1796 tests pass, `check_all` exit 0, `make postedit`
 exit 0, Regression Scenario 2 walked 29/29. Batch 4 NET SCORE 1 − 0 = 1.**

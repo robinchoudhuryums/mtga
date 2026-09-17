@@ -9686,13 +9686,33 @@ def type_scale_boost(support):
 
 _DOUBLER_AXES = {
     # axis -> (what the DOUBLER's text looks like, what a deck card that FEEDS it looks like)
+    # BOTH branches below are the SAME effect in two voices, and only the passive one was
+    # matched until 2026-09-17 — so DOUBLING SEASON, the card the mechanic is named after,
+    # scored `None` on BOTH of its axes. Elspeth, Storm Slayer says "twice that many of
+    # those tokens ARE CREATED instead" (passive) and matched; Doubling Season says "IT
+    # CREATES twice that many" (active) and did not. G-67's family-disagreement shape: diff
+    # a family's members against each other. Live on the roster at the time — decks 78 and
+    # 69b run Doubling Season — so `suggest-homes`' doubler overlay and `cuts`' ✱
+    # multiplier co-signal were both blind to the archetypal doubler.
+    # The active branch requires the LITERAL "twice that many" rather than reusing the
+    # passive branch's looser `instead`, for the reason the lifegain axis records below: a
+    # replacement that is NOT a doubling is templated identically. Doc Samson, Super
+    # Psychiatrist ("put that many PLUS ONE of each of those kinds of counters instead")
+    # is that card here, it is a +1 and not a x2, and `instead` alone would admit it.
+    # Scoped to "an effect"/"you" and never "an opponent": Vorinclex's second clause
+    # ("if an OPPONENT would put one or more counters ... they put HALF that many") is a
+    # halving of THEIR counters and must not read as your doubler.
     "tokens": (
         re.compile(r"if one or more[^.]{0,80}?tokens? would be created[^.]{0,80}?"
-                   r"(?:twice that many|instead)", re.I),
+                   r"(?:twice that many|instead)"
+                   r"|if (?:an effect|you) would create one or more[^.]{0,80}?tokens?"
+                   r"[^.]{0,80}?twice that many", re.I),
         re.compile(r"creates? (?:a|an|two|three|four|\w+) [^.]{0,60}?token", re.I)),
     "counters": (
         re.compile(r"if one or more[^.]{0,80}?counters? would be put[^.]{0,80}?"
-                   r"(?:twice that many|instead)", re.I),
+                   r"(?:twice that many|instead)"
+                   r"|if (?:an effect|you) would put one or more[^.]{0,80}?counters?"
+                   r"[^.]{0,80}?twice that many", re.I),
         re.compile(r"put (?:a|an|two|three|\w+) \+1/\+1 counter", re.I)),
     "triggers": (
         re.compile(r"triggers? an additional time|that ability triggers? one more time", re.I),
@@ -11181,6 +11201,31 @@ def cmd_suggest_homes(args):
               f"worth there, since the type is CHOSEN. It is never dead (choose whatever "
               f"you have most of), only un-maximised; the floor for a real payoff is "
               f"{_TYPE_SCALE_MIN_SOURCES}, a build-around is {_TYPE_SCALE_KEY_SOURCES}+.")
+    # SATURATION, the roster-wide twin of `screen`'s pile-wide `_SCREEN_KEY_SATURATED`.
+    # That warning has existed since G-47 and this surface had no equivalent, so a card
+    # reading KEY in a QUARTER of the roster was presented exactly like one reading KEY in
+    # two decks. Measured 2026-09-17 on the 75 cards a reconcile ingest surfaced, against
+    # a 114-deck roster: KEY-deck counts run p25 4 / p50 9 (8%) / p75 14 (12%) / max 30
+    # (Patchwork Banner, 26%). The threshold is p75-ish and fires on 14 of 75 (19%) — the
+    # same band as `_UNPRICED_DISCLOSE_FLOOR` (30%) and well clear of the G-07 saturation
+    # shape, where a warning that fires on everything trains you to ignore it.
+    # REPORTS, never re-scores — the protection-axis and count-confidence stance. KEY is
+    # theme overlap alone (G-31), so a saturated one is a fact about the TAGS, not the card.
+    _roster_n = len(roster_decks())
+    _keys = [r for r in results if r[5] == "KEY"]
+    if _roster_n and len(_keys) / _roster_n >= _HOMES_KEY_SATURATED:
+        _by_theme = {}
+        for r in _keys:
+            for t in r[3]:
+                _by_theme[t] = _by_theme.get(t, 0) + 1
+        _top = sorted(_by_theme.items(), key=lambda kv: (-kv[1], kv[0]))[:2]
+        print(f"\n⚠ KEY is SATURATED for this card — KEY in {len(_keys)} of {_roster_n} "
+              f"roster decks ({len(_keys) / _roster_n * 100:.0f}%)"
+              + (f", mostly on `{'`, `'.join(t for t, _ in _top)}`" if _top else "")
+              + ". KEY scores THEME OVERLAP ALONE, so at this rate it is a fact about the "
+                "tags, not a recommendation. Read the ORDER and the shared themes, and "
+                "prefer the NARROW matches — a card KEY in two decks shares something "
+                "specific with them.")
     strong = [r for r in results if not r[2]]
     if len(strong) >= 2:
         print(f"\nCastable + on-theme in {len(strong)} decks it's not already in — one owned "
@@ -13815,6 +13860,12 @@ def cmd_preflight(args):
               # deck actually holds. Each entry: (regex, label, kind). `kind` selects the
               # counter below — keeping the two apart is what lets a new gate be one line.
 _SCREEN_KEY_SATURATED = 0.40   # KEY on this share of a pile carries no information
+# The ROSTER-wide twin, for `suggest-homes`. Lower than the pile threshold because the
+# denominators differ: a `screen` pile is pre-filtered to one deck's plausible adds,
+# where 40% KEY is unremarkable, while a roster is every deck you own and a card that
+# is KEY in 15% of them is matching a generic tag. Derived from the measured
+# distribution (p75), not chosen — see cmd_suggest_homes.
+_HOMES_KEY_SATURATED = 0.15   # KEY on this share of the ROSTER carries no information
 _TARGET_WORD_NUM = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5,
                     "six": 6, "seven": 7, "eight": 8, "nine": 9, "ten": 10}
 _TARGET_FAT_MV = 5      # at/above this, reanimating a card gains real mana
