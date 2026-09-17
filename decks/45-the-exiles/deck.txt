@@ -66,7 +66,7 @@
 #: tier:    deck on ten cards and its dominant theme has to earn its slot in play
 #: tier:    before it earns a letter. See the distinctness note above.
 #: tier: 2. THREE COLORS, AND APPA IS THE STRESS POINT. Appa wants {W}{W} on turn four at
-#: tier:    74.1% against 14 white sources. It has FLASH, which is the real mitigation —
+#: tier:    81.7% against 16 white sources. It has FLASH, which is the real mitigation —
 #: tier:    hold it and cast it the turn the white arrives rather than on curve — but a
 #: tier:    protected payoff that wants a colour the deck is scarcest on is a live risk.
 #: tier: 3. CARD ADVANTAGE READS 8 (7 repeatable), and the claim here USED TO SAY 0 --
@@ -193,6 +193,24 @@
 #: notes: the G-63 join, missed because the throwaway pull used a raw name lookup instead
 #: notes: of `lib.owned_qty`. Tragic Trajectory was separately absent from the library and
 #: notes: was reconciled in (G-10 lower-bound symptom, user-reported).
+#: notes: MANABASE L1, 2026-09-17: -2 Bloodfell Caves / +2 Asgardian Citadel. Asgardian
+#: notes: Citadel is a literal COLOUR-SHIFTED Bloodfell Caves -- same "enters tapped",
+#: notes: same "gain 1 life", {R} or {W} instead of {B} or {R} -- so the swap is neutral on
+#: notes: tempo and pure gain on colour. Sources W 14 -> 16, B 12 -> 10, R 16 flat; cards
+#: notes: below 90% on curve 19 -> 14. Appa 74.1 -> 81.7%, Aven Interrupter 67.8 -> 76.0%.
+#: notes: WHY: the 2026-09-17 pile pass left BLACK at 3 pips across 3 cards (Fire Lord
+#: notes: Zuko, Ketramose, Black Widow -- all SINGLE pips) drawing 12 of 25 lands, while
+#: notes: WHITE carried 22 pips across 17 cards on 14 sources. `deck.py mana` labels black
+#: notes: a "light splash" in its own output. This is the same misallocation the 2026-09-16
+#: notes: pass fixed, re-created by that pile pass's own adds, four of which were white.
+#: notes: COST: the three black cards drop ~5 points each (Fire Lord Zuko 78.1 -> 75.3%,
+#: notes: Black Widow 85.3 -> 79.0%, Ketramose 82.0 -> 79.1%). Accepted: three single-pip
+#: notes: cards against seventeen white ones. The L2 variant (-1 Swamp/+1 Plains, W17/B9)
+#: notes: was measured and NOT taken -- same 14 below-90, but Fire Lord Zuko falls to
+#: notes: 72.7% and it is `#: protect:`-named.
+#: notes: STILL THE WORST CARD: Aven Interrupter at 76.0%. Its {1}{W}{W} on turn three
+#: notes: wants 22 white sources, which a three-colour deck cannot reach -- "cut it" is a
+#: notes: legitimate answer here, not just "fix the lands".
 
 # Payoffs — every one triggers on "cast a spell from exile"
 1 Spider-Verse (SPM) 93
@@ -243,7 +261,7 @@
 1 Blood Crypt (ECL) 262
 1 Blazemire Verge (DSK) 256
 1 Dark Fortress (MSH) 264
-2 Bloodfell Caves (TDM) 250
+2 Asgardian Citadel (MSH) 258
 1 Temple of Malice (FDN) 701
 1 Bleachbone Verge (DFT) 250
 3 Scoured Barrens (M21) 250
@@ -260,4 +278,4 @@
 
 # Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 45
 #~ -Heroes' Hangout | +Hex Magic | owned; both are red impulse enablers and Hex Magic is the bigger effect — "exile all the cards from your hand, then draw that many, until end of your NEXT turn you may play cards exiled this way" refills AND makes every card a 4/4 payoff trigger, where Heroes' Hangout exiles two and lets you play ONE. Held out of the 60 only because the pile pass already added five cards and the curve moved 3.31 -> 3.43.
-#~ note: KRANG & SHREDDER is the open question, not a flex line. Its {4}{U/B}{U/B} reads as NON-BINDING hybrid pips in both `consistency` (which excludes hybrids) and `deck.py mana` (which files them under Hybrid pips) — but the deck runs ZERO blue sources, so in play it binds as {4}{B}{B} against 12 black sources. Both tools are right about IDENTITY and silent about the QUANTITY. Decide from that, not from the 90% table.
+#~ note: KRANG & SHREDDER — CONSIDERED AND DECLINED 2026-09-17, recorded so it is not re-proposed. Its {4}{U/B}{U/B} reads as NON-BINDING hybrid pips in BOTH `consistency` (whose cast_probability docstring says hybrids are "strictly easier, so the strict demand is the binding constraint") and `deck.py mana` (which files them under Hybrid pips). That premise holds only if you have BOTH colours, and this deck runs ZERO blue — so it binds as {4}{B}{B}. Fed the honest demand through deck.cast_probability: 70.5% T5 / 75.6% T6 / 80.1% T7 at the 12 black sources it had, against a Karsten target of 17 sources for 90% on turn six. `consistency` printed 100%, so the false all-clear was worth ~24 points. DECIDING FACT: the L1 manabase applied the same day drops black to 10, which takes Krang to 64.6% on turn six — fixing the mana base for the deck makes this card materially worse, and it was the only card asking black to grow.
