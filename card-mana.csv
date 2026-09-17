@@ -2693,6 +2693,18 @@ Kitnap,{2}{U}{U},4,Gift;Enchant
 "Dwalin, Weaponmaster",{1}{R/W},2,First strike
 Iron Hills Blacksmith,{1}{W},2,Double strike
 "Firion, Wild Rose Warrior",{2}{R},3,
+Undergrowth Recon,{1}{G}{G},3,
+Rampaging Baloths,{4}{G}{G},6,Trample;Landfall
+Temple of Mystery,,0,Scry
+Scavenging Ooze,{1}{G},2,
+Ooze Patrol,{3}{G},4,Mill
+Slime Against Humanity,{2}{G},3,
+Slick Imitator,{1}{U},2,Max speed;Start your engines!
+Tragic Trajectory,{B},1,Void
+Great Arashin City,,0,
+Godless Shrine,,0,
+Shattered Sanctum,,0,
+"Joshua, Phoenix's Dominant",{1}{R}{W},3,Flying;Lifelink;Transform
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -3865,7 +3877,6 @@ Possession Engine,{3}{U}{U},5,Crew
 Repurposing Bay,{2}{U},3,
 Sabotage Strategist,{2}{U}{U},4,Flying;Vigilance;Exhaust
 Skystreak Engineer,{1}{U},2,Flying;Exhaust
-Slick Imitator,{1}{U},2,Max speed;Start your engines!
 Spectral Interference,{1}{U},2,
 Stall Out,{1}{U},2,Cycling
 Thopter Fabricator,{2}{U},3,Flying;Crew
@@ -3919,7 +3930,6 @@ Fang Guardian,{3}{G},4,Flash
 Fang-Druid Summoner,{3}{G},4,Reach
 Lumbering Worldwagon,{2}{G},3,Crew
 Molt Tender,{G},1,Mill
-Ooze Patrol,{3}{G},4,Mill
 "Oviya, Automech Artisan",{3}{G},4,
 Regal Imperiosaur,{1}{G}{G},3,
 Rise from the Wreck,{2}{G},3,
@@ -5122,7 +5132,6 @@ Requiem Monolith,{2}{B},3,
 Sunset Saboteur,{1}{B},2,Menace;Ward
 Susurian Dirgecraft,{4}{B},5,Station
 Susurian Voidborn,{2}{B},3,Warp
-Tragic Trajectory,{B},1,Void
 Voidforged Titan,{4}{B},5,Void
 "Xu-Ifit, Osteoharmonist",{1}{B}{B},3,
 Debris Field Crusher,{4}{R},5,Station
@@ -5180,7 +5189,6 @@ Survey Mechan,{4},4,Flying;Hexproof
 Thrumming Hivepool,{6},6,Affinity
 "Adagia, Windswept Bastion",,0,Station
 Command Bridge,,0,
-Godless Shrine,,0,
 Secluded Starforge,,0,
 Stomping Ground,,0,
 Blinkmoth Nexus,,0,
@@ -5301,7 +5309,6 @@ Thrill of Possibility,{1}{R},2,
 Genesis Wave,{X}{G}{G}{G},3,
 Mild-Mannered Librarian,{G},1,
 Nessian Hornbeetle,{1}{G},2,
-Scavenging Ooze,{1}{G},2,
 Wary Thespian,{1}{G},2,Surveil
 "Muldrotha, the Gravetide",{3}{B}{G}{U},6,
 Adventuring Gear,{1},1,Equip;Landfall
@@ -5401,7 +5408,6 @@ Heroes' Bane,{3}{G}{G},5,
 Mold Adder,{G},1,
 Ordeal of Nylea,{1}{G},2,Enchant
 Predator Ooze,{G}{G}{G},3,Indestructible
-Rampaging Baloths,{4}{G}{G},6,Trample;Landfall
 Deadly Brew,{B}{G},2,
 Drogskol Reaver,{5}{W}{U},7,Flying;Lifelink;Double strike
 Dryad Militant,{G/W},1,
@@ -5430,7 +5436,6 @@ Orzhov Guildgate,,0,
 Selesnya Guildgate,,0,
 Simic Guildgate,,0,
 Temple of Deceit,,0,Scry
-Temple of Mystery,,0,Scry
 Make a Stand,{2}{W},3,
 Confiscate,{4}{U}{U},6,Enchant
 Rite of Replication,{2}{U}{U},4,Kicker
@@ -10276,11 +10281,9 @@ Rope,{G},1,Equip
 Rubblebelt Maverick,{G},1,Surveil
 Sample Collector,{2}{G},3,Collect evidence
 Sharp-Eyed Rookie,{1}{G},2,Investigate;Vigilance
-Slime Against Humanity,{2}{G},3,
 They Went This Way,{2}{G},3,Investigate
 Topiary Panther,{4}{G}{G},6,Landcycling;Trample;Basic landcycling;Typecycling;Cycling
 Tunnel Tipster,{1}{G},2,
-Undergrowth Recon,{1}{G}{G},3,
 Vengeful Creeper,{4}{G},5,Disguise
 Vitu-Ghazi Inspector,{1}{G},2,Collect evidence;Reach
 "Alquist Proft, Master Sleuth",{1}{W}{U},3,Investigate;Vigilance
@@ -13152,7 +13155,6 @@ Forum of Amity,,0,Surveil
 Great Hall of the Biblioplex,,0,
 Paradox Gardens,,0,Surveil
 Petrified Hamlet,,0,
-Shattered Sanctum,,0,
 Stormcarved Coast,,0,
 Sundown Pass,,0,
 Titan's Grave,,0,Surveil
@@ -13713,7 +13715,6 @@ Temur Monument,{2},2,
 Watcher of the Wayside,{3},3,Mill
 Cori Mountain Monastery,,0,
 Frontier Bivouac,,0,
-Great Arashin City,,0,
 Kishla Village,,0,Surveil
 Maelstrom of the Spirit Dragon,,0,
 Mistrise Village,,0,

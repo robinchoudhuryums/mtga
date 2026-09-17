@@ -2,15 +2,19 @@
 #: format: Standard
 #: colors: UBG
 #: plan: midrange
-#: tier: B (PROVISIONAL — unplayed brew, graded 2026-08-08). The metrics floor says A
-#: tier: (interaction 7 + card advantage 2 = 9 over the bar), and the letter is held
-#: tier: UNDER it deliberately: card advantage is a thin 2 for a deck that wants to hit
-#: tier: land drops AND feed an engine; protection is ZERO against five protected
-#: tier: build-arounds — the invested-body failure mode deck 63's notes name — with The
-#: tier: Ooze as insurance (the counters come back as Mutagens) rather than an answer;
-#: tier: and ten of 24 lands enter tapped or conditionally tapped. The engine is real
-#: tier: and the interaction is on-theme, but an unplayed three-colour brew with those
-#: tier: three knowns is a B until games say otherwise. Re-grade after /log-matches.
+#: tier: B (PROVISIONAL — unplayed brew, graded 2026-08-08; figures re-grounded 2026-09-16).
+#: tier: RE-GRADE CANDIDATE, pending the human call: the letter now sits one band UNDER the
+#: tier: floor, and two of the three knowns that argued it down have been fixed. The 2026-09-16
+#: tier: tune added Inspiring Call and Origin of Metalbending, taking interaction to 8 and card
+#: tier: advantage to 2 -> 3, so the floor reads A. Protection went ZERO -> 2 against the five
+#: tier: protected build-arounds — the invested-body failure mode deck 63's notes name — which
+#: tier: was the sharpest of the three; The Ooze is still insurance (the counters come back as
+#: tier: Mutagens) rather than an answer, and both new protection pieces are one-shot instants,
+#: tier: so the axis is real but thin. WHAT STILL CAPS IT: the deck remains UNPLAYED, card
+#: tier: advantage is 3 with NONE of it repeatable, and the manabase is three colours deep —
+#: tier: the 2026-09-16 fetch-and-dual pass took cards below 90% on curve from 29 to 16, which
+#: tier: is a large improvement and not a solved problem. Held at B until games say otherwise;
+#: tier: re-grade after /log-matches.
 #: archetype: Sultai "EAT THE GRAVEYARD, GROW" — the graveyard is FOOD, not a
 #: archetype: reanimation resource. The roster's first deck on this axis: self-mill
 #: archetype: (17 fillers, most attached to bodies or interaction) stocks the yard, and
@@ -36,7 +40,57 @@
 #: notes: Ooze package was never sub-themed into 62). A TOKEN-ECONOMY note per G-66:
 #: notes: The Ooze's payoff is Mutagen TOKENS, so target-counting tools under-read it.
 #: notes: Slime Against Humanity is deliberately a 3-of ("a deck can have any number");
-#: notes: rotation: verified ⚠rot~2027 — a year-plus of Standard for three commons.
+#: notes: rotation: RE-VERIFIED 2026-09-15 — Slime Against Humanity is MKM and rotates
+#: notes: ~2026, NOT the ~2027 this line claimed; three commons for well under a year.
+#: notes: The wider clock: Mimeoplasm, March of the World Ooze, Omnivorous Flytrap,
+#: notes: Ooze Patrol, Stalwart Successor, Quag Feast, Sin and Summon: Titan all go
+#: notes: ~2027, i.e. four of the five #: protect: build-arounds inside two years.
+#: notes: 2026-09-15 — MANABASE: -2 Island, -1 Swamp for +2 Evolving Wilds and
+#: notes: +1 Terramorphic Expanse. A basic-land fetch counts as a source for every
+#: notes: colour the deck runs a basic of, so three of them beat three duals: sources
+#: notes: went B 10 to 12, G 13 to 16, U 11 to 12, and cards below 90% on curve went
+#: notes: 29 to 20 (March of the World Ooze 44.3% to 61.4%, Mimeoplasm 64.9% to 74.8%,
+#: notes: Consuming Ashes 53.1% to 64.6%). The sacrificed fetch is also a LAND CARD in
+#: notes: the yard, which is live text for Summon: Titan II, Lluwen's Worm ability and
+#: notes: the Descend 8 counts on Uchbenbak and The Everflowing Well. Caveat the model
+#: notes: cannot see: consistency reports 5 of 13 nonbasics tapped because a fetch
+#: notes: ENTERS untapped — the basic it finds enters tapped, so the real tempo cost
+#: notes: on the turn you crack it is a tapland's. Basics after that step were 6/2/3.
+#: notes: 2026-09-15 (second pass) — +Watery Grave (-1 Island) and +Temple of Mystery
+#: notes: (-1 Forest). Both are owned; the Temple was missing from card-library.csv and
+#: notes: was reconciled in (the G-10 undercount symptom, not a new craft). Sources went
+#: notes: B 12 to 13 and U 12 to 13, G unchanged at 16; cards below 90% on curve went
+#: notes: 20 to 16, so the whole manabase pass is 29 to 16. The PLACEMENT was measured,
+#: notes: not assumed: cutting a Swamp for the Grave, or a Swamp for the Temple, each
+#: notes: stopped at 18 — B is the second-thinnest colour against {B}{B} Consuming Ashes
+#: notes: and Wick's Patrol, and Island-for-Grave plus Forest-for-Temple is the only
+#: notes: pairing that raises it. COST, stated because no model prices it: basics are now
+#: notes: 5 Forest / 1 Island / 3 Swamp, so once a fetch takes the Island the other two
+#: notes: can only find Forest or Swamp. Blue ACCESS does not depend on that basic (nine
+#: notes: other lands make U) — what is lost is fetch flexibility late.
+#: notes: 2026-09-16 — TUNE: +Inspiring Call (-Dawnhand Eulogist), +Origin of Metalbending
+#: notes: (-Midnight Tilling). Both adds are owned; 0 wildcards. Interaction 7 -> 8, card
+#: notes: advantage 2 -> 3, protection ZERO -> 2, avg MV 3.22 -> 3.19, central themes 6 -> 7
+#: notes: (card draw crossed the centrality bar). The metrics floor moved B -> A; the LETTER
+#: notes: is unchanged and the guard now prints the possibly-under-graded nudge, which is the
+#: notes: human call the tier block defers.
+#: notes: WHY THESE TWO ADDS: Inspiring Call closes BOTH named weaknesses in one card —
+#: notes: 'draw a card for each creature you control with a +1/+1 counter on it, those
+#: notes: creatures gain indestructible' scales on the 13 counter-placing cards this deck
+#: notes: already runs, with Ouroboroid putting counters on EVERY creature at combat. Origin
+#: notes: of Metalbending is modal and both modes are live: it is the 4th card that answers a
+#: notes: noncreature permanent, and its second mode is protection that also feeds the counter
+#: notes: engine and Stalwart Successor's trigger.
+#: notes: WHY THESE TWO CUTS, AND THE MODEL DISAGREED ON ONE: `cuts` ranked Dawnhand Eulogist
+#: notes: 28 of 29 — i.e. near its STRONGEST fit, on tag overlap. The cut is made on its GATE
+#: notes: instead: 'if there is an Elf card in your graveyard' against a deck that ran exactly
+#: notes: ONE Elf (Lluwen), which `targets` flagged as the deck's only thin gate. So it was a
+#: notes: four-mana mill-3 menace body whose rider fires only after that single Elf is already
+#: notes: in the yard. Midnight Tilling was rank 5 and the weaker of two near-identical mill
+#: notes: fillers; it scored Recursion only, so neither cut costs a graded axis. Cost of the
+#: notes: pair: creatures 20 -> 19, and one of 17 self-mill fillers.
+#: notes: RESIDUAL: card advantage is 3 with NONE of it repeatable (0 repeatable / 2 one-shot),
+#: notes: and both protection pieces are one-shot instants. The axes moved; they are not deep.
 
 # Engine — eat the yard, grow
 1 Mimeoplasm, Revered One (DFT) 214
@@ -52,6 +106,7 @@
 1 Ouroboroid (EOE) 201
 1 Omnivorous Flytrap (DSK) 192
 1 March of the World Ooze (DFT) 169
+1 Inspiring Call (TLE) 168
 
 # Ooze bodies & spice
 1 Sin, Spira's Punishment (FIN) 242
@@ -66,7 +121,6 @@
 
 # Self-mill value bodies
 1 Lluwen, Imperfect Naturalist (ECL) 232
-1 Dawnhand Eulogist (ECL) 99
 1 Town Greeter (FIN) 209
 1 Ainok Wayfarer (TDM) 134
 1 Nashi, Searcher in the Dark (DSK) 223
@@ -74,17 +128,17 @@
 # Mill spells & card flow
 1 The Everflowing Well // The Myriad Pools (LCI) 56
 1 Summon: Titan (FIN) 204
-1 Midnight Tilling (ECL) 182
 1 Scout the City (SPM) 113
 1 Cruel Truths (TDM) 76
 1 Rapid Rescue (MSH) 181
 
-# Interaction (mills while it answers)
+# Interaction (most of it mills while it answers)
 1 Wick's Patrol (BLB) 121
 1 Hour of Defeat (MSH) 99
 1 Consuming Ashes (OTJ) 83
 1 Sokka's Haiku (TLA) 71
 1 Don't Make a Sound (DSK) 49
+1 Origin of Metalbending (TLA) 187
 
 # Lands
 1 Breeding Pool (EOE) 251
@@ -97,9 +151,13 @@
 1 Opulent Palace (TDM) 264
 1 Lilypad Village (BLB) 255
 1 Surveillance Room (MSH) 274
-6 Forest (HOB) 193
-4 Island (HOB) 190
-4 Swamp (HOB) 191
+5 Forest (HOB) 193
+1 Temple of Mystery (FDN) 702
+1 Island (HOB) 190
+1 Watery Grave (EOE) 261
+2 Evolving Wilds (ECL) 264
+3 Swamp (HOB) 191
+1 Terramorphic Expanse (MSC) 828
 #~ -Slick Imitator | +Gathering of Darkness | OWNED (HOB, ingested 2026-08-13): fit 57. Returns a
 #~   creature card from the graveyard to hand AND amasses Goblins 3 — a graveyard payoff that also
 #~   builds a body, in a deck whose currency is the graveyard. Slick Imitator is `cuts` #1 here and
@@ -109,7 +167,8 @@
 #~   design; Slick Imitator is `cuts` #1 and flagged off the deck's central themes.
 #~ -Ouroboroid | +Stargaze | OWNED (BLB): fit 34. "{X}{B}{B} Look at twice X cards, put X
 #~   into your HAND and the rest into your GRAVEYARD" — the rejected half is not a cost
-#~   here, it is the second mode. ⚠⚠ pip check: 2x{B} vs 9 sources, so cast it late.
+#~   here, it is the second mode. ⚠⚠ pip check: 2x{B} vs 12 sources (2026-09-15), so cast it late.
 #~ -Stalwart Successor | +Nightwhorl Hermit | OWNED (BLB): fit 34. Threshold — unblockable
 #~   at seven cards in the yard, which this deck reaches on its own.
-#~ note: three suggestions, three distinct cuts, all 0-wildcard.
+#~ note: FOUR suggestions over three distinct cuts — the first two both target Slick
+#~ note: Imitator and only one can be taken. All 0-wildcard.

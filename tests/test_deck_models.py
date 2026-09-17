@@ -1132,6 +1132,98 @@ class TestCheatCostGrantsAndEffectiveCurve:
         assert "effective_avg_mv" not in src and "cheat_cost_grants" not in src
         assert "_grant_scope_matches" not in src
 
+    # --- G-02: a split / Room / Adventure cost is priced at its FRONT face ---------
+    # `mana_value` on the raw `A // B` string sums BOTH halves (its own docstring says
+    # to pass one face), so this function recomputing from entry[0] made the "printed"
+    # figure it reports disagree with `deck_quality_vector`'s `avg_mv` — which reads the
+    # stored, front-faced entry[1] — on 27 of 112 decks, by up to +0.45. Found 2026-09-15
+    # when an Adventure card entered deck 50a and `tier` printed both numbers in one
+    # block. Real card text (G-67).
+    SPLIT_CD = {"thranduil, sindarin liege // silvan rally": {
+        "type": "Legendary Creature — Elf Noble // Sorcery — Adventure",
+        "text": "Other Elves you control get +1/+1.\nLandfall — Whenever a land you "
+                "control enters, create a 1/1 green Elf creature token."}}
+    SPLIT_RAW = "{2}{G/U}{G/U} // {1}{G/U}{G/U}"
+
+    def test_a_split_cost_is_priced_at_the_front_face_not_both_halves(self):
+        cd = dict(self.CD, **self.SPLIT_CD)
+        mana = dict(self.MANA,
+                    **{"thranduil, sindarin liege // silvan rally": (self.SPLIT_RAW, 4)})
+        cards = [(1, "Thranduil, Sindarin Liege // Silvan Rally", "HOB", "166"),
+                 (1, "Bygone Colossus", "SET", "1")]
+        eff, printed, _g = deck.effective_avg_mv(cards, cd, mana)
+        assert printed == round((4 + 9) / 2, 2)      # front face 4, NOT the combined 7
+        assert eff == round((4 + 3) / 2, 2)          # Colossus warps to 3
+
+    def test_the_raw_split_cost_really_does_over_read(self):
+        """The control: without it the assertion above could pass for the wrong reason."""
+        assert deck.mana_value(self.SPLIT_RAW) == 7
+        assert deck.mana_value(deck.front_face_cost(self.SPLIT_RAW)) == 4
+
+    # --- impending: the keyword carries a COUNT the other eight do not ------------
+    # `_ALT_COST_RE` matched keyword-then-cost, and "Impending 4—{1}{G}{G}" puts a digit
+    # between them, so all six impending cards booked at their printed MV. Worse than a
+    # wrong figure: `effective_avg_mv` returns None when nothing is priced, so SEVEN of
+    # the nine decks holding one printed no advisory at all. Real card text (G-67).
+    IMP_CD = {"overlord of the hauntwoods": {
+        "type": "Enchantment Creature — Avatar Horror",
+        "text": "Impending 4—{1}{G}{G}\nWhenever this permanent enters or attacks, create "
+                "a tapped colorless land token named Everywhere that is every basic land type."}}
+    IMP_MANA = {"overlord of the hauntwoods": ("{3}{G}{G}", 5)}
+
+    def test_impending_is_priced_past_its_count(self):
+        cards = [(1, "Overlord of the Hauntwoods", "DSK", "194")]
+        assert deck.cheat_cost_cards(cards, self.IMP_CD, self.IMP_MANA) == [
+            ("Overlord of the Hauntwoods", "{3}{G}{G}", "impending", "{1}{G}{G}", 3)]
+
+    def test_the_impending_delay_is_disclosed_with_its_turn_count(self):
+        cards = [(1, "Overlord of the Hauntwoods", "DSK", "194")]
+        note = deck.impending_delay_note(cards, self.IMP_CD, self.IMP_MANA)
+        assert note and "Overlord of the Hauntwoods (4 turns)" in note
+        assert "NOT a creature" in note
+
+    def test_no_impending_card_means_no_delay_note(self):
+        """It must not fire on a warp/plot deck — the delay is impending's alone."""
+        assert deck.impending_delay_note(self._cards(["Bygone Colossus"]),
+                                         self.CD, self.MANA) is None
+
+    def test_every_priced_keyword_is_also_flagged_cheaper(self):
+        """Two tables answer "is this cheaper than it looks": `CHEAPER_KW` drives the ◊
+        list and `_ALT_COST_RE` drives the ⌁ one. `impending` was in the second and not
+        the first (2026-09-15), so deck 17's Overlord was named by ⌁ and missing from ◊.
+        The general form is the gate: a new priced keyword must land in both."""
+        import re as _re
+        alt = _re.search(r"\\b\(([a-z|]+)\)\\b", deck._ALT_COST_RE.pattern)
+        assert alt, "the keyword alternation moved — re-derive this test"
+        kws = set(alt.group(1).split("|"))
+        assert kws, "no keywords parsed out of _ALT_COST_RE"
+        missing = sorted(kws - {k.lower() for k in deck.CHEAPER_KW})
+        assert not missing, (
+            f"{missing} carry a priced alternative cost but are not in CHEAPER_KW, so the "
+            "◊ 'effective cost may be LOWER' list omits them while the ⌁ cheat-cost list "
+            "names them.")
+
+    def test_the_delay_note_does_not_reach_the_vector(self):
+        import inspect
+        src = (inspect.getsource(deck.deck_quality_vector) + inspect.getsource(deck.tier_band)
+               + inspect.getsource(deck._clock_score))
+        assert "impending_delay_note" not in src and "_IMPENDING_RE" not in src
+
+    def test_cheat_cost_cards_compares_against_the_front_face_too(self):
+        """Latent at the fix — 0 of the 616 `//`-cost rows also carry warp/plot/foretell —
+        but the comparison is a MANA-VALUE test, so a combined total would admit a card
+        whose alternative cost is not actually cheaper."""
+        cd = dict(self.SPLIT_CD)
+        cd["thranduil, sindarin liege // silvan rally"] = dict(
+            cd["thranduil, sindarin liege // silvan rally"],
+            text="Other Elves you control get +1/+1.\nWarp {5} (You may cast this card "
+                 "from your hand for its warp cost.)")
+        mana = {"thranduil, sindarin liege // silvan rally": (self.SPLIT_RAW, 4)}
+        cards = [(1, "Thranduil, Sindarin Liege // Silvan Rally", "HOB", "166")]
+        # warp {5} is DEARER than the {2}{G/U}{G/U} front face (4) and cheaper only than
+        # the bogus combined 7, so reading the raw cost would flag it as a discount.
+        assert deck.cheat_cost_cards(cards, cd, mana) == []
+
 
 class TestTypedSinkLabel:
     IRON_HILLS = ("This land enters tapped.\n{T}: Add {R} or {W}.\n{2}{R}{W}, {T}, Sacrifice this "

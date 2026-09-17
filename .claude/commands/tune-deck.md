@@ -81,13 +81,29 @@ Read the actual card text — never judge by mana value or a single subtype:
 5. `python3 scripts/deck.py suggest <id>` — on-color, on-theme pool cards, owned
    vs. craftable with rarity (auto-filtered to the deck's format). Run it BOTH
    ways every time: `--owned --limit 0` to scour the whole collection for
-   0-wildcard upgrades already in the roster, AND `--unowned` for craft targets
-   (these feed Section 6 — always evaluate them, even for a fully-owned deck).
+   0-wildcard upgrades already in the roster, AND `--unowned --limit 0` for craft
+   targets (these feed Section 6 — always evaluate them, even for a fully-owned deck).
+   **`--limit 0` ON BOTH HALVES, and the craft half is the one that used to be
+   missing it.** The default prints a top-20 WINDOW, and the ranking is theme fit —
+   measured across 783 applied swaps, the MEDIAN rank of the card actually added is
+   **407** of ~950 candidates and only **10%** fell inside that window. So a tune
+   that reads the default list is reading the page the eventual pick is usually not
+   on. `suggest` now prints "top N of M ranked candidate(s)" so the window is
+   visible; `deck.py feedback` reports the distribution. A card chosen for a
+   mechanical interaction the tags do not encode ranks far down BY CONSTRUCTION —
+   scan deeper, and treat a card's ABSENCE from the top of the list as no evidence.
    **Add `--full`** so the picks come with full oracle text + keyword line + ⚠
    flags — grade every ADD from that text, not the tag-match line (same phased-
    ingestion discipline as `text`/`cuts`; the funnel is "shortlist cheap, read the
    finalists"). For a themed deep-read of the whole library or pool, `query.py
    --synergy X --full` / `pool.py --synergy X --full` dump full text + keywords too.
+   **When the question is "does this deck have payoffs for X", use `pool.py --regex
+   '<effect shape>'`, not `--text`.** `--text` is a substring match, and a
+   generically-worded effect never contains the noun — a chosen-type lord says "as
+   this enters, choose a creature type" and never names the type, a steal effect says
+   "exchange control". A zero-result substring sweep reads like a fact about the
+   format when it is only an unverified search (K-13). Reminder text is stripped, so
+   it reads a card the way the tagger and the role classifier do.
 5b. **`suggest` alone is BLIND to structural needs — use the needs modes when the
    gap is structural.** The theme model answers "what SYNERGIZES"; it filters
    candidates to cards sharing a synergy theme, so a removal spell, a mana dork or
@@ -185,8 +201,9 @@ goal is a tier climb, lead with the swaps that close the `deck.py tier --to` gap
 (the specific axis it named — e.g. interaction) and say how far each moves it toward
 the next floor, so the block is aimed at the target, not scattered.
 
-**6. Craft upgrades** — ALWAYS run `deck.py suggest <id> --unowned` (it
-auto-filters to the deck's `#: format:`) and surface the craftable cards that
+**6. Craft upgrades** — ALWAYS run `deck.py suggest <id> --unowned --limit 0` (it
+auto-filters to the deck's `#: format:`; `--limit 0` for the median-407 reason in
+Stage 1.5 — the default top-20 holds the eventual pick 10% of the time) and surface the craftable cards that
 would improve the deck, read from card text (don't trust the tag match). Do this
 **even when the deck is fully owned**. **Tag every pick with an explicit weight so
 the user never burns a wildcard on a lateral card:**

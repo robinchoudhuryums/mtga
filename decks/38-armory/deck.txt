@@ -41,6 +41,21 @@
 #: notes: destroys target permanent on ETB, which is strictly better than the Hammer's
 #: notes: {3},{T},Sacrifice artifact/enchantment mode — so what actually left is a sorcery-speed
 #: notes: removal COUNT, not the capability. Both cards are owned; 0 wildcards either way.
+#: notes: 2026-09-15 — two swaps: +Crude Bent Blade (−Trusty Boomerang) and +Kíli the
+#: notes: Resourceful (−1 of 2 Weapons Vendor). The Blade's ETB edict restores the removal
+#: notes: COUNT the 2026-09-10 line gave up, lifting the metrics floor C→B again on its own;
+#: notes: Kíli then adds the card-advantage axis (2→3). Boomerang went because it was the
+#: notes: FIFTH tap-down effect here (Wrench, Web-Shooters, Captain America's Shield, Thunder
+#: notes: Lasso) and the only one that bounces itself, so each repeat costs ~{3} all-in —
+#: notes: and tapping is tempo, not an answer, which is why five of them left the floor at C.
+#: notes: Kíli cut the SECOND Weapons Vendor rather than a distinct effect: Vendor was the
+#: notes: deck's only nonland duplicate, its combat-step {1} attach is what Kíli does for {0},
+#: notes: and it is the earliest-rotating card of the candidates (FIN, ~2027). Kíli's Storied
+#: notes: gate (3+ artifacts/legendaries/Sagas) reads 20 artifacts + 11 legendaries here.
+#: notes: Not taken: −Honored Knight-Captain (its {4}{W}{W}+sac puts Meteor Sword onto the
+#: notes: battlefield, ETB destroy target permanent, for less than hard-casting the 7 — and it
+#: notes: brings two bodies) and −Mirrormind Crown (would have reached 14 creatures, but its
+#: notes: replacement is a real repeatable engine with Goldvein Pick's Treasure trigger).
 
 # Creatures — carriers / payoffs / engines
 1 The Aetherspark (DFT) 231
@@ -52,7 +67,8 @@
 1 Winter Soldier, Icy Assassin (MSH) 239
 1 Swordsman, Sharp Scoundrel (MSH) 116
 1 Honored Knight-Captain (EOE) 22
-2 Weapons Vendor (FIN) 40
+1 Weapons Vendor (FIN) 40
+1 Kíli the Resourceful (HOB) 17
 1 Ronin, Shadow Stalker (MSH) 112
 1 U.S.Agent, John Walker (MSH) 236
 1 Sun-Spider, Nimble Webber (SPM) 154
@@ -74,7 +90,6 @@
 1 Vibranium Energy Daggers (MSH) 254
 1 Captain America's Shield (MSH) 244
 1 Thunder Lasso (OTJ) 35
-1 Trusty Boomerang (TLA) 260
 
 # Equipment — Job-select bodies / removal / voltron scalers
 1 Kyoshi Battle Fan (TLA) 257
@@ -83,6 +98,7 @@
 1 Super-Soldier Serum (MSH) 38
 1 Sheltered by Ghosts (DSK) 30
 1 Mirrormind Crown (ECL) 258
+1 Crude Bent Blade (HOB) 63
 
 # Lands — 25, W-weighted Orzhov (owned WB duals + basics)
 1 Bleachbone Verge (DFT) 250
@@ -96,15 +112,12 @@
 #~ note: ROUTE C (variant 38a, the Cloud value-combo) was retired 2026-09-08 — see the dated #: notes: line for what came over and what stayed out.
 #~ note: applied — Thunder Lasso in for Trusty Boomerang.
 #~ note: applied — Sheltered by Ghosts in for Aettir and Priwen.
-#~ -Super-Soldier Serum | +Crude Bent Blade | OWNED (HOB, ingested 2026-08-13): fit 106 here, the
-#~   highest of any card in the batch. ETB makes an opponent sacrifice a creature, then +2/+1 and
-#~   Equip {2}. Removal stapled to an Equipment.
+#~ note: applied — Crude Bent Blade in for Trusty Boomerang.
 #~ note: applied — Shrike Force in for Miner's Guidewing (the Orcrist line that targeted Guidewing is retired with it).
 #~ -Zack Fair | +Sting, Bilbo's Sword | OWNED (HOB): fit 86. {2} FLASH Equipment that enters with a
 #~   hone counter per creature the opponent controls and auto-attaches. Scales with THEIR board.
 #~ note: both are owned as of the 2026-08-13 HOB ingest, so this is a 0-wildcard package.
-#~ note: the two cuts are distinct on purpose — `cuts` names Super-Soldier Serum for both,
-#~ note: and it can only be cut once. Serum is also floor-graded (⌁scales w/ equipment).
+#~ note: Super-Soldier Serum is floor-graded (⌁scales w/ equipment), so read its cut rank low.
 #~ -Whiplash, Vengeful Engineer | +Dwarven Shortsword | OWNED (HOB, 2026-08-13 ingest):
 #~   fit 107 — the highest any card has scored against this deck. "When this Equipment
 #~   enters, create a 2/2 red Dwarf creature token, then attach this Equipment to it" is a
@@ -113,8 +126,8 @@
 #~ -Sun-Spider, Nimble Webber | +The Black Arrow | OWNED (HOB): fit 100. FLASH Equipment,
 #~   ETB 1 damage to any target — and it DESTROYS a Dragon outright regardless of
 #~   toughness — then +1/+1 and reach for Equip {1}, the cheapest equip cost in the deck.
-#~ note: cuts are distinct from the two named above (Super-Soldier Serum / Zack Fair)
-#~ note: because the cut pool is shared and each name goes once.
-#~ note: This deck now carries FOUR flexed Equipment suggestions from two HOB batches;
-#~ note: they cannot all be taken. Priority by fit: Dwarven Shortsword 107, Crude Bent
-#~ note: Blade 106, The Black Arrow 100, Sting 86 (Orcrist's line retired 2026-09-08).
+#~ note: this cut is distinct from Zack Fair / Whiplash above — the cut pool is shared and
+#~ note: each name goes once.
+#~ note: THREE flexed Equipment suggestions remain from the two HOB batches; they cannot all
+#~ note: be taken. Priority by fit: Dwarven Shortsword 107, The Black Arrow 100, Sting 86.
+#~ note: (Crude Bent Blade 106 was maindecked 2026-09-15; Orcrist's line retired 2026-09-08.)

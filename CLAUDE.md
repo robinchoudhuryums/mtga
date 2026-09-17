@@ -169,7 +169,7 @@ castability · curve · central-theme density), with the intangibles moving a de
   model can't see those), so it **under-rates by design.** An uncastable stray CAPS the floor at C
   rather than SETTING it, so a dead card can no longer RAISE a D-floor deck, and a card
   the deck's `#: uncastable-ok:` header declares intentional is not counted at all.
-- **A GOOD DECK CAN SIT AT A LOW FLOOR, AND THAT IS THE MODEL WORKING (investigated 2026-09-03, prompted by deck 78 playing above its B).** The floor reads TWO of the eleven terms `deck_quality_vector` produces; **21 of deck 78's 36 nonland cards contribute nothing to it** — 11 payoff/engine plus 10 with no role at all, Doubling Season / Starfield Vocalist / Katara among them, i.e. the entire trigger-doubling thesis. That is not deck-78-specific: the roster's MEDIAN deck has 71% of its nonland cards invisible to the floor (78 is 75%, rank 42 of 115). **A payoff-density term was simulated and DECLINED**: +1 per 4 payoff cards capped at +3 moved 16 decks, cut the C band 9→1 and pushed A to 62% — re-starting the saturation BS8-06 had just fixed — **and left deck 78 at B anyway.** So the answer to "does a well-playing deck mean the rubric is wrong" is no on both halves: the intended remedy is the human letter, which the rubric already lets sit ONE band above the floor. Three things say leave the table alone: the spread is healthy (A 68 / B 40 / C 4, top band 61% against the 85% alarm), the record cannot arbitrate (**79 matches, and int+ca correlates with winning at r = −0.03**; nothing clears the ±0.22 noise band, so this is not evidence the floor is wrong, it is evidence the sample sees nothing), and deck 78's 5-2 is one win above the 54% pooled baseline at n=7 against a 20-match floor. **Re-derive the table when `tier_floor_spread` says so; do not re-derive it because a deck outperformed its letter.**
+- **A GOOD DECK CAN SIT AT A LOW FLOOR, AND THAT IS THE MODEL WORKING (investigated 2026-09-03, prompted by deck 78 playing above its B).** The floor reads TWO of the eleven terms `deck_quality_vector` produces; **21 of deck 78's 36 nonland cards contribute nothing to it** — 11 payoff/engine plus 10 with no role at all, Doubling Season / Starfield Vocalist / Katara among them, i.e. the entire trigger-doubling thesis. That is not deck-78-specific: the roster's MEDIAN deck has 71% of its nonland cards invisible to the floor (78 is 75%, rank 42 of 115). **A payoff-density term was simulated and DECLINED**: +1 per 4 payoff cards capped at +3 moved 16 decks, cut the C band 9→1 and pushed A to 62% — re-starting the saturation BS8-06 had just fixed — **and left deck 78 at B anyway.** So the answer to "does a well-playing deck mean the rubric is wrong" is no on both halves: the intended remedy is the human letter, which the rubric already lets sit ONE band above the floor. Three things say leave the table alone: the spread is healthy (A 69 / B 41 / C 2, top band 62% against the 85% alarm), the record cannot arbitrate (**79 matches, and int+ca correlates with winning at r = −0.03**; nothing clears the ±0.22 noise band, so this is not evidence the floor is wrong, it is evidence the sample sees nothing), and deck 78's 5-2 is one win above the 54% pooled baseline at n=7 against a 20-match floor. **Re-derive the table when `tier_floor_spread` says so; do not re-derive it because a deck outperformed its letter.**
 - **The floor is ARCHETYPE-aware** (#4): an aggro deck closes on a fast clock, not an
   interaction suite, so for an **aggro** plan a bounded `_clock_score` (low curve +
   cheap threats + reach, 0–7) SUBSTITUTES for the interaction the resilience floor
@@ -240,18 +240,19 @@ directions.
   re-creates the partial read from the inside** — it happened while grading (2026-08);
   the closing `━━ end · <name> ━━` bar is the tell that you saw the whole card. [G-01]
 - **A split / Room / Adventure card's stored cost covers BOTH halves — read the FRONT
-  face.** Use `lib.front_face_cost()` / `lib.mana_value()`; `parse_pips` and `load_mana`
-  already do. A **MODAL DFC** is stored the same way now — either face is castable from
-  hand — but its Mana Value is the FRONT face's, so it escapes residual 2 below; a
+  face.** **`lib.mana_value()` does NOT do this for you** — it sums whatever it is handed,
+  and its docstring says to pass ONE face — so the call is `mana_value(front_face_cost(c))`.
+  Better still, do not recompute at all: `load_mana` front-faces once, so **`entry[1]` is
+  the answer and `entry[0]` is raw input**. A recompute from `entry[0]` has produced this
+  bug THREE times — `card.py`'s combined MV (closed 2026-08-12), then `effective_avg_mv`
+  and `cheat_cost_cards` (both closed 2026-09-15; the first printed a wrong avg MV beside
+  the right one on **27 of 112 decks**, and because both figures are report-only no floor
+  moved, no invariant broke and nothing flagged). `check_agreement`'s ninth pair,
+  `_agree_avg_mv`, now holds the two figures together. A **MODAL DFC** is stored the same
+  way — either face is castable from hand — but its Mana Value is the FRONT face's; a
   TRANSFORM DFC keeps one cost, since its back is reached by transforming, not by paying.
   **The one live residual: a deck that plays a split card mainly for its BACK half reads
-  cheaper than it plays** — grade that one from the printed card. (The second residual —
-  `card.py` printing the COMBINED mana value, so Mirror Room // Fractured Realm displayed
-  MV 10 for a `{2}{U}` three-drop — is CLOSED as of 2026-08-12: it recomputes from the
-  front face like `load_mana` always did, and names which half the number describes. It
-  had put the inspection surface G-01 mandates in direct contradiction with every analysis
-  surface for a year, which is the shape to watch for: the fix landed in the ANALYSIS path
-  and the READING path was never brought along.) [G-02]
+  cheaper than it plays** — grade that one from the printed card. [G-02]
 - **Don't judge a card by printed mana value or a single subtype.** Read the card TEXT
   (it is in the CSV): `stats` flags ◊/△ cost flexibility and functional roles, `tribes`
   reads oracle text for cross-type synergies. [G-03]
@@ -800,35 +801,35 @@ directions.
   reading — that a deep tribe must be supportable — is what makes a shallow archetype look
   buildable right up until the deck has no reason to share a type. [G-59]
 - **An `{X}` SPELL IS PRICED AT MV 1, so a curve reading UNDER-reads any deck running
-  several — and the distortion runs BOTH ways.** `mana_value` counts X as 0 because that
-  is what the rules say off the stack, which is right for castability and for
-  cast-on-curve probability (you really can cast Wildwood Scourge for `{G}`) and wrong as
-  a CURVE reading: a card you realistically cast for four books as a one-drop and as an
-  early drop. Deck 50a was misread twice in one cycle — adding two `{X}` spells made avg
-  MV appear to fall 3.85 → 3.70, and removing one made it appear to rise 3.55 → 3.76,
-  while the real curve barely moved either time. `deck.py stats` now lists them under
-  `✕ X-COST cards` and `deck.py tier` prints a one-line "avg MV under-reads" advisory.
-  Both are REPORT-ONLY and must stay so — a new term in `tier_band` would silently
-  re-grade the roster, exactly as the protection axis is kept out. **A CHEAT COST is the same
-  distortion the other way (2026-09-06)**: Warp / Plot / Foretell book at the PRINTED cost, so
-  Bygone Colossus (Warp {3}) read MV 9 and moved 56b's aggro floor. `stats` lists `⌁ CHEAT-COST`
-  cards and grants, `tier` prints "avg MV over-reads" plus the effective curve (alt costs, then
-  grants applied) and the clock it WOULD read — ADVISORY, pinned out of the vector. [G-60]
+  several — and the distortion runs BOTH ways.** `mana_value` counts X as 0, which is what
+  the rules say off the stack: right for castability and cast-on-curve probability, wrong
+  as a CURVE reading. Deck 50a was misread twice in one cycle, in both directions, while
+  its real curve barely moved. `stats` lists `✕ X-COST cards`; `tier` prints an advisory.
+  REPORT-ONLY and it must stay so — a new term in `tier_band` would silently re-grade the
+  roster, exactly as the protection axis is kept out. **A CHEAT COST is the same distortion
+  the other way (2026-09-06)**: an alternative cost books at the PRINTED cost, so Bygone
+  Colossus (Warp {3}) read MV 9 and moved 56b's aggro floor. **IMPENDING was missing from
+  that pattern until 2026-09-15 — it prints a COUNT between keyword and cost
+  (`Impending 4—{1}{G}{G}`) — and since `effective_avg_mv` returns None when nothing is
+  priced, SEVEN of the nine decks holding one printed no advisory AT ALL. Its cheap cast
+  buys the permanent and its enters trigger but NOT a creature for N turns, which
+  `impending_delay_note` DISCLOSES rather than gates; it was also the one member of that
+  pattern missing from `CHEAPER_KW`, so ◊ and ⌁ disagreed. 0 floors moved.** [G-60]
 - **"EFFECTIVE AVG MV" PRICES ONLY THE PRINTED ALT COSTS, and said so nowhere (2026-09-14).**
-  `effective_avg_mv` substitutes what `_ALT_COST_RE` finds — Warp / Plot / Foretell — while
-  `classify_cost` flags a much wider ◊ set (affinity, improvise, convoke, delve, evoke, "costs
-  {N} less") that it never prices, because what those shrink by is a BOARD STATE the curve does
-  not have. So deck 47, whose whole premise is a discount, printed "effective avg MV 3.51
-  against 3.54 printed" and meant the printed curve — a 0.03 correction on a list that routinely
-  casts a {6} for {U}{U}, read during a live tune. `unpriced_discount_cards` now says so at
-  `stats` and `tier`, derived from the same two primitives the ◊ list and the effective figure
-  already use so the three cannot disagree (G-40). **DISCLOSURE, never pricing** — report-only
-  for G-25/G-60's reason, and do not "finish" it by feeding `tier_band`.
-  **`_UNPRICED_DISCLOSE_FLOOR = 3` is p75 of its own axis, not 1**: across the 43 decks that
-  print an effective figure the unpriced count runs p25 1 / p50 2 / p75 3 / p90 5 / max 11, so
-  a floor of 1 fires on 83% (the G-07 saturation shape) against **14 of 43 (32%)** at 3. That
-  is a roster percentile and carries the `TIER_FLOOR_REQ` hazard — the figure is registered in
-  `figure_drift`, so a moved distribution prompts re-derivation. [G-85]
+  `effective_avg_mv` substitutes what `_ALT_COST_RE` finds — the ten printed alternative
+  costs, Warp / Plot / Foretell / Impending among them — while `classify_cost` flags a much
+  wider ◊ set (affinity, improvise, convoke, delve, evoke, "costs {N} less") that it never
+  prices, because what those shrink by is a BOARD STATE the curve does not have. So deck 47,
+  whose whole premise is a discount, printed "effective avg MV 3.51 against 3.54 printed" and
+  meant the printed curve — a 0.03 correction on a list that routinely casts a {6} for
+  {U}{U}. `unpriced_discount_cards` now says so at `stats` and `tier`, derived from the same
+  two primitives the ◊ list and the effective figure already use so the three cannot
+  disagree (G-40). **DISCLOSURE, never pricing** — report-only for G-25/G-60's reason, and do
+  not "finish" it by feeding `tier_band`. **`_UNPRICED_DISCLOSE_FLOOR = 3` is p75 of its own
+  axis, not 1**: across the **50 decks that print an effective figure** the unpriced count
+  runs p25 1 / p50 2 / p75 3 / p90 5 / max 11, so a floor of 1 fires on 80% (the G-07
+  saturation shape) against **15 of 50 (30%)** at 3. BOTH figures are registered in
+  `figure_drift`, which is what caught the population move when impending joined. [G-85]
 - **BEFORE DISMISSING A CARD, COUNT THE DECK PROPERTY ITS VALUE DEPENDS ON.** Four
   dismissals were overturned in one cycle, all the same shape — a card judged on its own
   text when the decision belonged to a number in the LIST. Michelangelo was called
@@ -1322,10 +1323,10 @@ earned it: [C-01]
 
 **Subsystems:**
 - Data: card-library.csv, card-pool.csv, card-mana.csv, card-wishlist.csv, matches.csv
-  (LIVE since 2026-08-10 — 82 matches, 79 attributed across 30 decks, pooled 44-38; the
-  best per-deck row is STILL n=8 against the 20-match floor after a month, which is why
-  `--report` also POOLS, and why the four HAND columns exist at all — G-74; all four are
-  still EMPTY in all 82 rows, so scenario 11 remains the only thing that can prove that
+  (LIVE since 2026-08-10 — 113 matches, 110 attributed across 37 decks, pooled 59-54; the
+  best per-deck row is n=12 (deck 78) against the 20-match floor after five weeks, which is
+  why `--report` also POOLS, and why the four HAND columns exist at all — G-74; all four are
+  still EMPTY in all 113 rows, so scenario 11 remains the only thing that can prove that
   loop closes), recommendations.csv,
   collection-stamp.json (written only by `import_collection.py --apply` — the date owned
   counts were last EXACT; absent until the first run, and the craft surfaces say so) [C-02]

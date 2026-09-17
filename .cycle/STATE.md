@@ -36,6 +36,7 @@ Updated: 2026-09-14 (broad-implement, batch 4)
   fixed its largest cause (deck 47's own picks: median 310 → 144).
 
 ## Completed this cycle
+- **G-02 recompute fix (post-scan, user-requested)** | `effective_avg_mv` and `cheat_cost_cards` recomputed mana value from the RAW `A // B` cost instead of `load_mana`'s front-faced `entry[1]`; the printed avg MV `stats`/`tier` render disagreed with the vector's on **27 of 112 decks, up to +0.45** (0 after). `cheat_cost_cards` was latent (0 of 616 `//` rows carry an alt cost). Report-only, so **no floor moved and nothing flagged** — gated now by `check_agreement`'s ninth pair `_agree_avg_mv` (roster sweep + synthetic split-cost control, watched-it-fail both halves) | scripts/deck.py, scripts/check_agreement.py, tests/test_deck_models.py, CLAUDE.md, docs/gotchas.md
 - Template sync v1.23.0 → v1.33.0 | `.claude/commands/broad-scan.md`, CLAUDE.md, docs/cycle-config.md
 - Tier-3 re-evaluation; state-and-measurement half adopted | `.cycle/`, `.claude/commands/`, CLAUDE.md
 - Skill-discoverability fixes | tune-deck Stage 8 handoff, systems-map promoted to intent
@@ -91,6 +92,19 @@ Updated: 2026-09-14 (broad-implement, batch 4)
 - Two G-67 role-pattern holes (Kitnap, Eluge), baselined not fixed.
 
 ## Open follow-on items
+- CLOSED 2026-09-15: `_ALT_COST_RE` now covers `impending`. It was not the count of cards
+  that mattered — `effective_avg_mv` returns None when nothing is priced, so **7 of the 9
+  decks holding an impending card printed NO advisory at all**, a failure that presented as
+  silence. The cost is substituted (right for what the deck PAYS) and the body delay is
+  DISCLOSED by `impending_delay_note` rather than gated, because a gate on the "this
+  permanent" wording would pass all six cards and assert nothing. 7 decks gained a figure,
+  2 moved, **0 of 112 tier floors**. Ride-alongs: `check_patterns` refused the build until
+  `_IMPENDING_RE` was registered; `cmd_tier`'s "Warp/Plot/Foretell" prose named three of
+  nine keywords and now names the shape; G-85's effective-figure POPULATION moved 43 → 50
+  and was only ever hardcoded inside the fire-rate entry's own regex, so it is registered in
+  `figure_drift` as its own figure now. Residual: no impending GRANT form exists, so
+  `_ALT_COST_GRANT_RE` was left alone.
+- **The generalised form of the G-02 fix, unswept:** `load_mana` normalises a value and hands back `(raw, normalised)`; two callers recomputed from `raw` and drifted. No sweep has asked whether any OTHER `load_*` table has the same shape — a loader that fixes something up, and a caller that re-derives it from the untouched input beside it.
 - **THE COMPARISON-CUE SUPPRESSION IS A LIVE BLIND SPOT in the audit K-12 depends on.**
   `_figure_is_history` silences every figure within ±60 chars of a `_COMPARISON_CUES` word.
   Deck 47's block hid FIVE figures behind one "rather than" for a full cycle, and both the

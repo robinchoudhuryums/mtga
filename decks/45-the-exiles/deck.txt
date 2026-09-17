@@ -10,8 +10,8 @@
 #: archetype: EACH creature you control) and Appa, Steadfast Guardian (a 1/1 Ally token).
 #: archetype: One cast from exile turns on all three at once — drain, pump and a body.
 #: archetype: THE TRIGGER DOES NOT CARE WHOSE CARD IT WAS. Red supplies the cheap IMPULSE
-#: archetype: effects that exile off your own library; heist (Black Widow, Korvold, Etali)
-#: archetype: exiles off the opponent's; both feed the same payoffs. Self-exile and
+#: archetype: effects that exile off your own library; heist (Black Widow, Etali) exiles
+#: archetype: off the opponent's; both feed the same payoffs. Self-exile and
 #: archetype: opponent-exile finally combine here instead of competing for a slot, because
 #: archetype: Quintorius/Zuko/Appa are the shared payoff that neither 24 nor 44 has.
 #: archetype: BE HONEST ABOUT WHAT BLACK IS FOR: it is Fire Lord Zuko's {B} pip plus three
@@ -21,7 +21,9 @@
 #: archetype: CUT for cause: Doom Reigns Supreme wants five Villains against this deck's
 #: archetype: one, and The Rise of Sozin was rejected because its chapter I destroys all
 #: archetype: creatures, which is a disaster for a go-wide board. The heist that actually
-#: archetype: matters in this list is RED — Etali and Korvold.
+#: archetype: matters in this list is RED — Etali and Black Widow. (Korvold was CUT
+#: archetype: 2026-09-17: its heist is chapter III of a Saga, three turns out, for the job
+#: archetype: Interdimensional Web Watch now does on ETB.)
 #: archetype: WARP IS THE MOST RELIABLE TRIGGER IN THE DECK, and the reason five of them
 #: archetype: are maindecked. Impulse only pays off when the exiled card is one you actually
 #: archetype: want to cast; warp exiles the creature ITSELF and lets you re-cast it from
@@ -37,7 +39,7 @@
 #: archetype: them so you may recast them for {2} — which means Appa ENABLES the trigger
 #: archetype: it also pays off, and rebuys any ETB on the board while doing it. It is the
 #: archetype: closest thing the deck has to a combo turn.
-#: archetype: Zuko's counters are why the token half matters: Appa's Allies and Korvold's
+#: archetype: Zuko's counters are why the token half matters: Appa's Allies and Zidane's
 #: archetype: Treasures make the board wide, and one Zuko trigger pumps all of it. The
 #: archetype: plan is go-wide midrange, not durdle.
 #: archetype: DISTINCTNESS — READ THIS BEFORE INVESTING WILDCARDS. `deck.py similar` reads
@@ -50,34 +52,242 @@
 #: archetype: number to argue past. The genuine difference is narrow:
 #: archetype: Fire Lord Zuko is the one card 24 structurally cannot run (it needs black),
 #: archetype: and Zuko + Appa turn the exile triggers into a GO-WIDE COUNTERS plan (tokens
-#: archetype: from Appa/Mechanized Ninja Cavalry/Quintorius/Rayblade Trooper, all pumped by
+#: archetype: from Appa/Quintorius/Web-Warriors/Virtue of Loyalty, all pumped by
 #: archetype: one Zuko trigger) where 24 converts them into card advantage.
 #: archetype: So the honest structural question is whether this should be deck 24c — a
 #: archetype: Mardu VARIANT of Eternal Flame — rather than a core deck of its own. It is
 #: archetype: kept standalone here only because Mardu is an otherwise empty color slot;
 #: archetype: if the go-wide plan does not separate it in play, fold it into 24 as 24c.
-#: tier: B — PROVISIONAL (unplayed brew). The metrics floor reads A on interaction 8
-#: tier: across a 3.34 curve, six of it able to answer a noncreature permanent, and the
+#: tier: B — PROVISIONAL (unplayed brew). The metrics floor reads A on interaction 10
+#: tier: across a 3.43 curve, four of it able to answer a noncreature permanent, and the
 #: tier: deck is FULLY OWNED — zero craft targets, unusual for a from-scratch build. Held
 #: tier: a band below the floor by three things the floor cannot see:
 #: tier: 1. THE 76% OVERLAP WITH 24. A deck that measurably duplicates an existing A-tier
 #: tier:    deck on ten cards and its dominant theme has to earn its slot in play
 #: tier:    before it earns a letter. See the distinctness note above.
 #: tier: 2. THREE COLORS, AND APPA IS THE STRESS POINT. Appa wants {W}{W} on turn four at
-#: tier:    69.6% against 13 white sources. It has FLASH, which is the real mitigation —
+#: tier:    81.7% against 16 white sources. It has FLASH, which is the real mitigation —
 #: tier:    hold it and cast it the turn the white arrives rather than on curve — but a
 #: tier:    protected payoff that wants a colour the deck is scarcest on is a live risk.
-#: tier: 3. CARD ADVANTAGE READS 0. Three cards are unclassified and the impulse package is
-#: tier:    genuine card advantage the classifier cannot score, so the floor understates
-#: tier:    it — but it is also true that impulse cards are card-NEUTRAL if the exiled
-#: tier:    card goes unplayed, and this deck has no way to rebuy a missed one.
-#: tier: PATH TO A: prove the go-wide half separates it from 24, then RESTORE PROTECTION —
-#: tier: it is now 1 against four `#: protect:` build-arounds, down from 2, because
-#: tier: Valorous Stance was the slot spent on Spider-Verse. That was a deliberate trade
-#: tier: (Spider-Verse copies every cast-from-exile spell, which is the deck's whole
-#: tier: thesis) but it moved AWAY from the stated path, and the protection axis is now
-#: tier: the first thing to fix rather than the second.
+#: tier: 3. CARD ADVANTAGE READS 8 (7 repeatable), and the claim here USED TO SAY 0 --
+#: tier:    that was false, not merely stale, and it was false from the build. The audit
+#: tier:    could not see it: its pattern needs the number ADJACENT to the cue and
+#: tier:    "READS 0" puts a verb between them (the G-26 copula residual, same shape that
+#: tier:    hid deck 70's figures). So this leg of the B argument was never real. What
+#: tier:    DOES stand: impulse cards are card-NEUTRAL if the exiled card goes unplayed,
+#: tier:    and this deck cannot rebuy a missed one.
+#: tier: PATH TO A: prove the go-wide half separates it from 24. THE PROTECTION HALF IS
+#: tier: DONE (2026-09-16): the axis read ZERO when this paragraph was written -- it said
+#: tier: 1, which was itself stale -- and now reads 2 against four `#: protect:`
+#: tier: build-arounds. Valorous Stance was the slot originally spent on Spider-Verse;
+#: tier: that trade was right (Spider-Verse copies every cast-from-exile spell, the deck's
+#: tier: whole thesis) and Valorous Stance is still OWNED if the axis wants a third piece,
+#: tier: since its second mode destroys a creature with toughness 4 or greater.
 #: protect: Fire Lord Zuko; Quintorius Kand; Appa, Steadfast Guardian; Etali, Primal Storm
+#: notes: TUNED 2026-09-16 (4 swaps, 0 wildcards -- the deck was already fully owned):
+#: notes: -Burst Lightning/+Restoration Magic, -Long Goodbye/+Boros Charm,
+#: notes: -1 Scoured Barrens/+Sacred Foundry, -1 Swamp/+1 Plains.
+#: notes: PROTECTION 0 -> 2, closing the axis this file's own PATH TO A names. Restoration
+#: notes: Magic's Cure mode is {W} for "target PERMANENT gains hexproof and indestructible"
+#: notes: -- PERMANENT, so it also covers Quintorius (a planeswalker) and Spider-Verse,
+#: notes: which a creature-only trick cannot; Curaga scales it to the whole board. Boros
+#: notes: Charm adds a second board-wide save plus reach.
+#: notes: INTERACTION 8 -> 7 and the quality guard flagged it. Both cuts carried a Removal
+#: notes: role (Burst Lightning, Long Goodbye) against one add that carries both
+#: notes: (Boros Charm); Restoration Magic is pure protection. Accepted knowingly. Also
+#: notes: down: instant-speed INTERACTION 3 -> 2 (the deck still runs three instants, but
+#: notes: Restoration Magic does not count as interaction). Long Goodbye also rotates ~2026.
+#: notes: MANABASE, measured before and after: sources W 13 -> 14, B 14 -> 12, R 15 -> 16;
+#: notes: unconditional taplands 12 -> 11; cards below 90% on curve 18 -> 15. Appa 69.6 ->
+#: notes: 74.1%, the three {W}{W} five-drops 75.3 -> 79.5%. The trade is ~4.5 points on
+#: notes: three black two-drops for ~4.5 on four white cards incl. two protect-named
+#: notes: build-arounds -- BLACK IS FIVE CARDS and was drawing 14 sources against WHITE's
+#: notes: thirteen for twelve cards with four {W}{W} costs. A third basic Plains also
+#: notes: un-thins Starfield Shepherd's "search for a basic Plains" (2 -> 3 hits).
+#: notes: Boros Charm at {R}{W} is the one card breaking this list's single-pip rule: it
+#: notes: reads 83.6% on turn two. Acceptable for a REACTIVE instant you hold rather than
+#: notes: curve out with; do not read it as a licence to add more two-pip cards.
+#: notes: ERODE AND PLASMA BOLT WERE RE-EXAMINED AND KEPT (asked 2026-09-16, recorded so it
+#: notes: is not re-derived). Of 81 owned WBR-castable Standard removal spells at MV <= 2,
+#: notes: NONE beats Erode's {W} instant "destroy target creature or planeswalker" -- the
+#: notes: near misses are all conditional (Valorous Stance / Stone by Sunlight /
+#: notes: Spectacular Tactics gate on toughness or power 4+) or cost double (Harsh
+#: notes: Annotation is {1}{W}, no planeswalker mode, and gives them a 1/1 flier). Plasma
+#: notes: Bolt survives once VOID is priced: 8 warp/plot cards plus 12 self-exile or
+#: notes: sacrifice sources make it live most turns from three on, i.e. 1 mana for 3 damage
+#: notes: to ANY target -- the same damage Lightning Strike and Lightning Helix deal for
+#: notes: two. Lightning Helix (owned x2) is a different PROFILE, not an upgrade: instant
+#: notes: and +3 life, against a mana and an early drop this deck is already short on (10).
+#: notes: THE ONE REAL HOLE IT LEFT -- since CLOSED on 2026-09-17, see below -- was that
+#: notes: the deck had ZERO artifact answers: verified at the time, no card in the 60
+#: notes: destroyed or exiled an artifact (Feed the Swarm was creature-or-enchantment,
+#: notes: Erode is creature-or-planeswalker).
+#: notes: TUNED 2026-09-17 (4 more swaps, 0 wildcards): -Burning Curiosity/+Requisition
+#: notes: Raid, -Feed the Swarm/+Cathar Commando, -Fanatical Firebrand/+Valorous Stance,
+#: notes: -Mechanized Ninja Cavalry/+Untimely Malfunction. FIRST CLEAN QUALITY GUARD of the
+#: notes: two-day pass: net improvement, no regressions.
+#: notes: Interaction 7 -> 9, protection 2 -> 3, INSTANT-SPEED interaction 2 -> 5, early
+#: notes: drops 10 -> 11, avg MV 3.34 -> 3.31 (effective 2.86), central themes 15 -> 17.
+#: notes: ARTIFACT AND ENCHANTMENT ARE NOW BOTH ANSWERED, THREE WAYS, and every one of them
+#: notes: is chosen to be NEVER DEAD -- the binding constraint is that this is a 60-card
+#: notes: singleton with no sideboard, where a narrow hate card is a blank in half the
+#: notes: matchups. Requisition Raid's third spree mode ("+1/+1 counter on each creature
+#: notes: target player controls", aimed at yourself) is a Fire Lord Zuko trigger printed on
+#: notes: a card. Cathar Commando is a 3/1 FLASH body when they hold neither type, feeding
+#: notes: Zuko's counters, Appa's tokens, Weftstalker's ping and Rayblade's counter. Untimely
+#: notes: Malfunction's "change the target of target spell or ability with a single target"
+#: notes: is real PROTECTION -- point their removal at a 1/1 Ally instead of Etali -- and
+#: notes: "one or two target creatures can't block" is an alpha-strike enabler on a wide
+#: notes: board; `screen` classifies it as both Protection and Removal.
+#: notes: VALOROUS STANCE WAS RE-ADDED and the earlier note above calling it merely
+#: notes: "conditional" was the wrong read: it is TWO cards, and its removal half is the
+#: notes: best of its family. Measured across the 2,735 Standard creatures with printed P/T
+#: notes: (G-16 excludes the */X ones rather than guessing): "toughness 4 or greater" kills
+#: notes: 903 (33.0%) against 706 (25.8%) for the "power 4 or greater" wording on Stone by
+#: notes: Sunlight and Spectacular Tactics, and it uniquely covers 357 creatures they cannot.
+#: notes: Stone by Sunlight stays out: same 25.8%, and "becomes an artifact" does nothing
+#: notes: here. Spectacular Tactics is the live alternative if you ever want the better
+#: notes: PROTECTION mode instead -- it grants hexproof plus a PERMANENT +1/+1 counter, and
+#: notes: hexproof answers exile and -X/-X where indestructible does not.
+#: notes: TWO COSTS PAID KNOWINGLY, both from cutting creatures rather than spells:
+#: notes: creatures 22 -> 21 (wide score was 10 at 22 copies), and Starfield Shepherd's
+#: notes: "creature card with mana value 1 or less" clause drops from 2 targets to 1 (Kellan
+#: notes: alone). Its tutor is NOT dead -- three basic Plains still make it 4 hits, and the
+#: notes: Plains half is the fixing that mattered -- but a second one-drop creature is the
+#: notes: cheapest way to un-thin it if a later pass wants to.
+#: notes: BLACK IS NOW TWO CARDS (Fire Lord Zuko, Black Widow) against 12 sources. The
+#: notes: "cut black entirely" route in the archetype note above is now a two-card decision
+#: notes: rather than a five-card one; Fire Lord Zuko is the only real casualty, and it is
+#: notes: `#: protect:`-named. Not done, deliberately -- recorded so the next pass sees the
+#: notes: cost has fallen.
+#: notes: PILE PASS 2026-09-17 (9 swaps, 0 wildcards). Out: Korvold, Weftblade Enhancer,
+#: notes: Stagecoach Security, Harnesser of Storms, Plasma Bolt, Crimson Operative,
+#: notes: Rayblade Trooper, Erode, Cruel Alliance. In: Interdimensional Web Watch,
+#: notes: Anticausal Vestige, Web-Warriors, Glider Staff, Airbender's Reversal, Charred
+#: notes: Foyer // Warped Space, Ketramose, Goliath Daydreamer, Aven Interrupter.
+#: notes: THE RULE THAT SORTED THE 41-CARD PILE: this deck's four payoffs do NOT agree on
+#: notes: which exile event they want. `cast a spell from exile` pays all four (Zuko, Appa,
+#: notes: Quintorius, Spider-Verse); `a permanent you control ENTERS from exile` pays
+#: notes: FIRE LORD ZUKO ONLY. So a BLINK is worth a quarter of an exile-then-CAST. The
+#: notes: corollary that decided most of the adds: AIRBEND IS NOT BLINK -- it reads "exile
+#: notes: it, its owner may cast it for {2}" -- so Glider Staff and Airbender's Reversal
+#: notes: pay 4/4, while Daydream / Ennis / Salvation Swan / Go Ninja Go / The Mind Stone
+#: notes: pay 1/4 and were all passed over.
+#: notes: Protection 3 -> 4, card advantage now 8 REPEATABLE / 0 one-shot (was 7/1),
+#: notes: instant-speed interaction 6 of 8 (was 5 of 9), central themes 17 -> 18.
+#: notes: THREE COSTS, ALL PAID KNOWINGLY:
+#: notes: 1. Interaction 8, down from 9 -- three removal spells out (Plasma Bolt, Erode,
+#: notes:    Cruel Alliance) against two removal-ish adds. Note the reversal: Erode was
+#: notes:    argued as UNCUTTABLE on 2026-09-16 ("of 81 owned removal spells at MV<=2 none
+#: notes:    beats it"), and that rate claim is still true. What changed is the MARGINAL
+#: notes:    value of the 9th removal spell against an engine piece, not the card.
+#: notes: 2. BOROS CHARM IS NOW THE ONLY PLANESWALKER ANSWER IN THE 60, down from three
+#: notes:    (Erode and Plasma Bolt were the others). Verified against all 60 cards. If
+#: notes:    planeswalkers show up in the meta this is the first thing to fix.
+#: notes: 3. avg MV 3.31 -> 3.43 and early drops 11 -> 10, against 11 unconditional
+#: notes:    taplands. Anticausal Vestige warps for {4} and Charred Foyer's front is {3}{R},
+#: notes:    so the EFFECTIVE curve moved far less than the printed one.
+#: notes: OWNERSHIP CORRECTION: Charred Foyer was graded "craft 1 Mythic" in the first pile
+#: notes: pass and is in fact OWNED. The library stores it under its FRONT face alone
+#: notes: ("Charred Foyer") while the pool keys the full "Charred Foyer // Warped Space" --
+#: notes: the G-63 join, missed because the throwaway pull used a raw name lookup instead
+#: notes: of `lib.owned_qty`. Tragic Trajectory was separately absent from the library and
+#: notes: was reconciled in (G-10 lower-bound symptom, user-reported).
+#: notes: MANABASE L1, 2026-09-17: -2 Bloodfell Caves / +2 Asgardian Citadel. Asgardian
+#: notes: Citadel is a literal COLOUR-SHIFTED Bloodfell Caves -- same "enters tapped",
+#: notes: same "gain 1 life", {R} or {W} instead of {B} or {R} -- so the swap is neutral on
+#: notes: tempo and pure gain on colour. Sources W 14 -> 16, B 12 -> 10, R 16 flat; cards
+#: notes: below 90% on curve 19 -> 14. Appa 74.1 -> 81.7%, Aven Interrupter 67.8 -> 76.0%.
+#: notes: WHY: the 2026-09-17 pile pass left BLACK at 3 pips across 3 cards (Fire Lord
+#: notes: Zuko, Ketramose, Black Widow -- all SINGLE pips) drawing 12 of 25 lands, while
+#: notes: WHITE carried 22 pips across 17 cards on 14 sources. `deck.py mana` labels black
+#: notes: a "light splash" in its own output. This is the same misallocation the 2026-09-16
+#: notes: pass fixed, re-created by that pile pass's own adds, four of which were white.
+#: notes: COST: the three black cards drop ~5 points each (Fire Lord Zuko 78.1 -> 75.3%,
+#: notes: Black Widow 85.3 -> 79.0%, Ketramose 82.0 -> 79.1%). Accepted: three single-pip
+#: notes: cards against seventeen white ones. The L2 variant (-1 Swamp/+1 Plains, W17/B9)
+#: notes: was measured and NOT taken -- same 14 below-90, but Fire Lord Zuko falls to
+#: notes: 72.7% and it is `#: protect:`-named.
+#: notes: STILL THE WORST CARD: Aven Interrupter at 76.0%. Its {1}{W}{W} on turn three
+#: notes: wants 22 white sources, which a three-colour deck cannot reach -- "cut it" is a
+#: notes: legitimate answer here, not just "fix the lands".
+#: notes: 2026-09-17 (late): -Heroes' Hangout/+Tragic Trajectory, -Zidane/+Chandra,
+#: notes: Flameshaper. Interaction 8 -> 10, central themes 18 -> 19, avg MV 3.43 -> 3.49.
+#: notes: Tragic Trajectory is {B} for -10/-10 whenever VOID is on, and Void is live off
+#: notes: NINE enablers here (Appa, Weftstalker Ardent, Anticausal Vestige, Nova Hellkite,
+#: notes: Starfield Shepherd, Exalted Sunborn, Sheriff, Glider Staff, Airbender's
+#: notes: Reversal). It refills the interaction the pile pass drained.
+#: notes: CHANDRA CAME IN FOR ZIDANE, NOT QUINTORIUS, AND THE DISTINCTION IS THE WHOLE
+#: notes: POINT: Quintorius is one of the four PAYOFFS ("whenever you cast a spell from
+#: notes: exile, 2 damage to each opponent and gain 2 life") and is `#: protect:`-named.
+#: notes: Cutting a payoff for another ENABLER, in a deck already running a dozen-plus
+#: notes: enablers against four payoffs, makes every remaining enabler worth less. Zidane
+#: notes: was the right cut instead: MV 5, a one-shot Threaten, and its second clause
+#: notes: ("whenever an opponent gains control of a permanent from you") is near-dead
+#: notes: because nothing here gives them permanents.
+#: notes: THE CHANDRA LINE WORTH KNOWING: +1 copies a creature you control with HASTE.
+#: notes: Copy ETALI, attack immediately, and its trigger exiles the top card of each
+#: notes: player's library and casts them free -- every one of those is a cast FROM EXILE,
+#: notes: so all four payoffs fire off one +1. Chandra reads 86.2% on turn five and 92.5%
+#: notes: by seven against 16 red sources; it is a late card, not a curve card.
+#: notes: THREE PROPOSALS DECLINED the same day, recorded so they are not re-litigated:
+#: notes: Joshua for Jessica Jones (Jessica is a REPEATABLE impulse engine whose X is her
+#: notes: own power, so she scales with Fire Lord Zuko / Web-Warriors / Requisition Raid,
+#: notes: and she costs no card per activation; Joshua is a craft whose chapter III wants a
+#: notes: graveyard this deck has ZERO fill for). Cruelclaw for Sheriff of Safe Passage
+#: notes: (Sheriff is printed 0/0 but enters with one counter PLUS one per other creature
+#: notes: you control -- routinely a 4/4-6/6 on a wide board -- and its plot is a
+#: notes: GUARANTEED cast-from-exile on your own schedule, where Cruelclaw's needs combat
+#: notes: damage to connect). Chandra for Quintorius, per the paragraph above.
+#: notes: MANABASE M2, 2026-09-17: -2 Scoured Barrens / +Godless Shrine +Shattered
+#: notes: Sanctum, and -Temple of Silence / +Abandoned Air Temple. UNCONDITIONAL TAPLANDS
+#: notes: 11 -> 8 with the colour counts barely moving (W 16 flat, B 10 -> 9, R 16 flat) --
+#: notes: the first two are the SAME BW pair as Scoured Barrens, just untapped-capable
+#: notes: (Godless Shrine pays 2 life at will; Shattered Sanctum is untapped from turn
+#: notes: three, "unless you control two or more other lands"), so that half is a pure
+#: notes: tempo gain at zero colour cost.
+#: notes: Abandoned Air Temple is the one with a real ability: "{3}{W}, {T}: Put a +1/+1
+#: notes: counter on EACH creature you control" is a Fire Lord Zuko effect on a land,
+#: notes: repeatable, in a 21-creature go-wide deck, and it is the mana sink this list
+#: notes: otherwise lacks. It enters untapped "unless you control a basic land" and the
+#: notes: deck runs 8 basics.
+#: notes: THE BASIC COUNT IS NOW LOAD-BEARING and was not before. Four nonbasics key off
+#: notes: it: Abandoned Air Temple and Dark Fortress both read "if you control a basic
+#: notes: land", Blazemire Verge needs a Swamp or Mountain for its {R}, and Starfield
+#: notes: Shepherd tutors a basic PLAINS. Eight basics (4 Mountain / 3 Plains / 1 Swamp)
+#: notes: is the floor -- do not trade another basic for a nonbasic without re-checking
+#: notes: all four.
+#: notes: JOSHUA IN FOR STARFIELD SHEPHERD, 2026-09-17 — the user's call over a recorded
+#: notes: recommendation to keep the Shepherd, so the reasoning on BOTH sides is here.
+#: notes: FOR: Joshua reads 90.6% on turn three, `screen` rates it role-player on 7 shared
+#: notes: themes, and it is the FIRST add in this whole two-day pass that `suggest` itself
+#: notes: surfaced (every other one was found by hand). Curve 3.49 -> 3.43.
+#: notes: AGAINST, and worth re-checking in play: `cuts` ranked Starfield Shepherd 28 of 31,
+#: notes: i.e. the 4th-best FIT in the deck, and it was doing three jobs — warp {1}{W} at
+#: notes: 93.1% on turn two that re-casts from exile for a full 4/4 payoff, a flier, and the
+#: notes: deck's ONLY basic-Plains tutor. That last one got more valuable the same day, when
+#: notes: the M2 manabase made the basic count load-bearing for three other lands.
+#: notes: Joshua's chapter III (mass reanimate) remains the part this deck supports WORST —
+#: notes: 20 creatures but ZERO self-mill, so it only ever returns what died in combat.
+#: notes: Starfield Shepherd is parked in the flex block; reverse if chapter III keeps
+#: notes: finding an empty graveyard. Joshua read as unowned when it was added; the user
+#: notes: reported otherwise and it was reconciled in the same session (G-10 lower bound
+#: notes: again), so the deck stays FULLY OWNED at zero craft targets.
+#: notes: CRUELCLAW WAS PROPOSED FOUR TIMES AND DECLINED FOUR TIMES (2026-09-17), and the
+#: notes: reason is NOT any of the individual comparisons -- it is the COST, and the cost
+#: notes: got worse as this session's own manabase work proceeded. Black sources went
+#: notes: 14 -> 12 -> 10 -> 9 across three approved changes, taking The Infamous Cruelclaw's
+#: notes: {1}{B}{R} from roughly 85% on turn three to 75.6%. It was a reasonable card here
+#: notes: when black was five cards on fourteen sources; it is not one at four cards on
+#: notes: nine. Making it work means reversing the black direction, which was measured and
+#: notes: is the worse deck. It already has homes in 44a Outlaw Heist and 55a Spellstorm.
+#: notes: The incumbents it lost to, for the record: Sheriff of Safe Passage (a printed 0/0
+#: notes: that enters with one counter plus one per other creature, and whose plot is a
+#: notes: GUARANTEED cast-from-exile), Zuko, Exiled Prince (firebending 3 exactly pays for
+#: notes: his own "{3}: exile the top card, you may play it", so every attack is a free
+#: notes: repeating 4/4 payoff) and Glider Staff (95.2% against Cruelclaw's 75.6%, with six
+#: notes: worthwhile airbend targets -- airbending Anticausal Vestige fires its leaves-play
+#: notes: trigger, recasts a {6} for {2}, and pays all four payoffs in one turn).
 
 # Payoffs — every one triggers on "cast a spell from exile"
 1 Spider-Verse (SPM) 93
@@ -85,59 +295,68 @@
 1 Fire Lord Zuko (TLA) 221
 1 Quintorius Kand (LCI) 238
 
-1 Zidane, Tantalus Thief (FIN) 251
+1 Chandra, Flameshaper (FDN) 81
 # Impulse enablers — exile off your own library
 1 Kellan, Planar Trailblazer (FDN) 91
-1 Fanatical Firebrand (FDN) 195
-1 Mechanized Ninja Cavalry (TMT) 156
-1 Heroes' Hangout (MSC) 804
 1 Exalted Sunborn (EOE) 15
-1 Burning Curiosity (ECL) 129
 1 Jessica Jones, Private Eye (MSH) 139
 1 Lightning, Security Sergeant (FIN) 560
-1 Harnesser of Storms (BLB) 137
-1 Crimson Operative (MSH) 126
+1 Glider Staff (TLA) 22
+1 Charred Foyer // Warped Space (DSK) 129
 1 Raphael, Most Attitude (TMT) 101
 1 Zuko, Exiled Prince (TLA) 163
 1 The Legend of Roku (TLA) 145
+1 Goliath Daydreamer (ECL) 143
+1 Interdimensional Web Watch (SPM) 165
 
 # Heist — the same trigger, off the opponent's library
 1 Black Widow, Super Spy (MSH) 89
-1 Korvold and the Noble Thief (WOE) 139
 1 Etali, Primal Storm (FDN) 194
 
-# Warp / plot — cast from exile on a later turn
+# Bodies — warp / plot cast from exile, plus the anthems that pay them off
 1 Virtue of Loyalty (WOE) 38
 1 Weftstalker Ardent (EOE) 169
-1 Rayblade Trooper (EOE) 30
-1 Weftblade Enhancer (EOE) 44
+1 Ketramose, the New Dawn (DFT) 209
+1 Anticausal Vestige (EOE) 1
 1 Nova Hellkite (EOE) 148
-1 Starfield Shepherd (EOE) 37
+1 Joshua, Phoenix's Dominant // Phoenix, Warden of Fire (FIN) 229
 1 Sheriff of Safe Passage (OTJ) 29
-1 Stagecoach Security (OTJ) 30
+1 Web-Warriors (SPM) 159
 
-# Removal — single-pip only, to survive three colors
-1 Plasma Bolt (EOE) 152
-1 Burst Lightning (FDN) 192
-1 Erode (SOS) 15
-1 Long Goodbye (MKM) 92
-1 Feed the Swarm (SOA) 29
-1 Cruel Alliance (MSH) 92
+# Interaction & protection — mostly single-pip, to survive three colors
+1 Airbender's Reversal (TLA) 7
+1 Restoration Magic (FIN) 30
+1 Boros Charm (FDN) 721
+1 Cathar Commando (FDN) 139
+1 Aven Interrupter (OTJ) 4
+1 Requisition Raid (SOA) 10
+1 Valorous Stance (FDN) 583
+1 Untimely Malfunction (DSK) 161
+1 Tragic Trajectory (EOE) 122
 
 # Lands
 1 Blood Crypt (ECL) 262
 1 Blazemire Verge (DSK) 256
 1 Dark Fortress (MSH) 264
-2 Bloodfell Caves (TDM) 250
+2 Asgardian Citadel (MSH) 258
 1 Temple of Malice (FDN) 701
 1 Bleachbone Verge (DFT) 250
-4 Scoured Barrens (M21) 250
-1 Temple of Silence (FDN) 704
+1 Scoured Barrens (M21) 250
+1 Shattered Sanctum (SOS) 260
+1 Godless Shrine (EOE) 254
+1 Sacred Foundry (EOE) 256
+1 Abandoned Air Temple (TLA) 263
 1 Sunbillow Verge (DFT) 264
 1 Abraded Bluffs (OTJ) 251
 1 Temple of Triumph (FDN) 705
 1 Wind-Scarred Crag (FDN) 271
 1 Sun-Blessed Peak (TLA) 280
 4 Mountain (MSH) 293
-2 Plains (MSH) 287
-2 Swamp (MSH) 291
+3 Plains (MSH) 287
+1 Swamp (MSH) 291
+
+# Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 45
+#~ -Joshua, Phoenix's Dominant // Phoenix, Warden of Fire | +Starfield Shepherd | owned; the card Joshua replaced 2026-09-17, parked here because the cut was close and Joshua is the CRAFT. Warp {1}{W} reads 93.1% on turn two, it exiles itself at end step and re-casts from exile later for a full 4/4 payoff, and its ETB is the deck's ONLY basic-Plains tutor -- which matters more than it used to, since Abandoned Air Temple, Dark Fortress and Blazemire Verge all key off the basic count. Reverse this if Joshua's chapter III keeps finding an empty graveyard (the deck has ZERO self-mill).
+#~ note: Hex Magic lost its pairing when Heroes' Hangout was cut on 2026-09-17 and the swap auto-retired the line. It is still owned and still the bigger effect than any impulse enabler here; it simply has no obvious slot now.
+#~ note: applied — Tragic Trajectory in for Heroes' Hangout.
+#~ note: KRANG & SHREDDER — CONSIDERED AND DECLINED 2026-09-17, recorded so it is not re-proposed. Its {4}{U/B}{U/B} reads as NON-BINDING hybrid pips in BOTH `consistency` (whose cast_probability docstring says hybrids are "strictly easier, so the strict demand is the binding constraint") and `deck.py mana` (which files them under Hybrid pips). That premise holds only if you have BOTH colours, and this deck runs ZERO blue — so it binds as {4}{B}{B}. Fed the honest demand through deck.cast_probability: 70.5% T5 / 75.6% T6 / 80.1% T7 at the 12 black sources it had, against a Karsten target of 17 sources for 90% on turn six. `consistency` printed 100%, so the false all-clear was worth ~24 points. DECIDING FACT: the L1 manabase applied the same day drops black to 10, which takes Krang to 64.6% on turn six — fixing the mana base for the deck makes this card materially worse, and it was the only card asking black to grow.

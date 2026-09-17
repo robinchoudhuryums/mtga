@@ -1,5 +1,6 @@
 #: name: One Fell Swoop — Ball Lightning
 #: format: Standard
+#: arena: 56b Warp Missile, cb9a28d6-ed9d-49b6-835a-6aadc3d6353e
 #: colors: R
 #: plan: aggro
 #: archetype: MONO-RED CHEAT-TALL (the 56 pile analysis' variant signal, .cycle/56-tall-pile-analysis.md

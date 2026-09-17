@@ -110,6 +110,51 @@ whenever a name contains `" // "`.** The narrow code fix would be for `card.py` 
 `mana_value(front_face_cost(cost))` and show the combined total only as an aside; until
 that lands the rule above is the mitigation.
 
+**Residual 3, closed 2026-09-15, and it is the SAME SHAPE A THIRD TIME: a recompute from
+the raw cost.** Residual 2 was `card.py` reading the stored combined MV; this one is two
+functions in `deck.py` recomputing MV from `entry[0]` when `load_mana` had already put the
+correct, front-faced number in `entry[1]` beside it. `effective_avg_mv` did
+`pmv = mana_value(entry[0])`, so the **printed** figure it reports — the one `stats` and
+`tier` render in the same block as the vector's `avg_mv` — summed both halves of every
+split / Room / Adventure cost. `cheat_cost_cards` did the same in `printed_mv`.
+
+Measured at the fix: **616 of the `card-mana.csv` rows carry a `//` cost and all 616
+disagree between the stored MV and `mana_value(raw)`; 27 of 112 decks printed a wrong
+figure, by up to +0.45** (deck 23 read 3.78 against a live 3.33, 51a 3.61 against 3.22,
+69a 4.29 against 4.00). `cheat_cost_cards` was LATENT rather than live — **0** of those
+616 rows also carries warp / plot / foretell, so no verdict flipped — and it was fixed
+anyway, because the comparison it performs is a mana-value test and a combined total would
+admit a card whose alternative cost is not actually cheaper the moment such a printing
+exists. After the fix, 0 of 112 decks disagree and `cheat_cost_cards`' output is byte-identical
+on all 112.
+
+**Why nothing caught it for the function's whole life.** Both figures are report-only by
+the G-60 discipline (`tier_band` and `deck_quality_vector` never read them), so no tier
+floor moved, no invariant broke and no gate had anything to fire on — the number was simply
+wrong, in print, on a quarter of the roster. It surfaced only because an Adventure card
+(Thranduil, Sindarin Liege // Silvan Rally, `{2}{G/U}{G/U} // {1}{G/U}{G/U}`, front face 4
+and combined 7) entered deck 50a during a tune and made `tier` print "effective avg MV 4.15
+(printed 4.18)" directly beneath a vector reading 4.09.
+
+**The transferable half, and the thing that makes this rule's wording load-bearing.**
+CLAUDE.md had said "Use `lib.front_face_cost()` / `lib.mana_value()`", which reads as *either
+of these is safe*. `mana_value` sums whatever it is handed; its own docstring already said
+to pass one face. The safe call is `mana_value(front_face_cost(c))`, and better still is not
+to recompute at all — **`load_mana` did the front-facing once, so `entry[1]` is the answer
+and `entry[0]` is raw input.** `deck_shape`, `deck_needs` and every other consumer read
+`entry[1]`; these two were the outliers. The fix reads `entry[1]` in both, which makes them
+agree with the vector by CONSTRUCTION rather than by two implementations happening to match
+— the G-70 rule one file over.
+
+**Gated now by `check_agreement`'s ninth pair, `_agree_avg_mv`** (QUESTION: what is this
+deck's printed average mana value? A = `deck_quality_vector`'s `avg_mv`; B =
+`effective_avg_mv`'s printed element), which sweeps the live roster and additionally runs a
+synthetic split-cost control with the raw-cost recompute as the deliberately wrong
+implementation — since whether the roster happens to hold a `//` card in a deck that also
+prints an effective figure is an accident of the current lists. Watched it fail in both
+halves before the fix was restored. `tests/test_deck_models.py` pins the behaviour on both
+functions, each mutation-tested against the old code.
+
 **Later development: MODAL double-faced cards now store both costs the same way.** A
 modal DFC is castable as either face, so it belongs in the same `A // B` convention, and
 `build_mana` used to keep only the front — see G-63 for the incident and the wider class.
@@ -4605,6 +4650,53 @@ because `check_tier.py` anchors the floor formula against the raw value.
 ### 2026-09-06 — the cheat-cost twin, and the two figures it prints
 
 The X-cost under-read has a mirror: Warp, Plot, Foretell, Evoke, Emerge, Spectacle, Surge, Miracle and Sneak are printed alternative costs the curve never sees, so Bygone Colossus (Warp {3}) booked at nine and on its own moved 56b's aggro floor A → B (pile analysis §5.7 item 6). `cheat_cost_cards` reads the keyword's own cost off reminder-stripped text with lookbehinds that skip a GRANT ("cards in your hand have warp {2}{R}" reduces Tannuk's targets, not Tannuk), `cheat_cost_grants` names the grant with its scope clause, and `effective_avg_mv` prints three numbers — printed, alt costs substituted, and with each grant applied to the cards in its scope (`_grant_scope_matches` parses type + optional colour clauses; a subtype or mana-value scope matches nothing, the conservative miss). `tier` adds the aggro clock the effective curve WOULD read. Every one of these is ADVISORY and pinned out of `deck_quality_vector`, `tier_band` and `_clock_score`: an effective-MV TERM was considered and declined because it re-grades the roster, which is this rule.
+
+### 2026-09-15 — impending, and the keyword that prints a COUNT
+
+`_ALT_COST_RE` matched `\b(keyword)\b\s*[—–-]?\s*(cost)`, and **impending is the one
+member of the family that prints a number between the two**: `Impending 4—{1}{G}{G}`. So
+all six pool cards carrying it — the five Overlords plus Lurker in the Deep — booked at
+their printed mana value, Overlord of the Hauntwoods reading MV 5 against a cast of 3.
+
+**The cost was larger than a wrong figure, and this is the part worth carrying.**
+`effective_avg_mv` returns `None` when nothing is priced, so a deck whose ONLY alternative
+cost was impending printed no effective figure, no "avg MV over-reads" line and no
+`⌁ CHEAT-COST` list at all. **Nine roster decks hold an impending card and SEVEN of them
+got no advisory whatsoever** — the failure presented as silence, not as a wrong number,
+which is why nothing looked wrong. Measured after: those 7 now print a figure, decks 67
+and 78 (which already printed one for their warp/plot cards) moved 3.17 → 3.11 and
+3.36 → 3.28, and **0 of 112 tier floors moved**, which G-60 guarantees structurally since
+none of these figures reaches the vector.
+
+**Why the cost is substituted at all, and what is disclosed instead.** Impending's cheap
+cast is not equivalent to warp's: it buys a noncreature permanent with N time counters, so
+the entry trigger fires now and the BODY arrives N turns later. Substituting is therefore
+exactly right for what the deck PAYS and generous for what it FIELDS. All six cards deliver
+their entry value on the cheap cast — the five Overlords read "whenever this **permanent**
+enters or attacks", and Lurker in the Deep names itself, which by the rules is the same
+thing — so a GATE keyed on that wording would pass all six and assert nothing, the
+considered-check-that-covers-nothing shape `check_patterns` fails a build over. It is
+DISCLOSED instead: `impending_delay_note` prints "buys the permanent and its enters trigger
+but NOT a creature until the time counters run out: Overlord of the Hauntwoods (4 turns)"
+at both `stats` and `tier`, from one definition rather than two render-site copies (G-70).
+
+**Three ride-alongs.** `_ALT_COST_RE` tolerates the count NON-capturing on purpose —
+`cheat_cost_cards` reads group(1)/group(2), and a capturing group in the middle renumbers
+both for every caller and test; `_IMPENDING_RE` reads the count where it is needed, and
+`check_patterns` refused the build until it was registered. And `cmd_tier`'s advisory said
+"Warp/Plot/Foretell are invisible to the curve" while the pattern held nine keywords —
+prose naming three members of a growing set, corrected to name the shape instead. And
+`impending` turned out to be the ONE member of `_ALT_COST_RE`'s list missing from
+`CHEAPER_KW`, the table behind the `◊ Effective cost may be LOWER than printed MV` list —
+so deck 17's Overlord was named by the ⌁ list and absent from the ◊ one, two tables
+answering "is this cheaper than it looks" and disagreeing. Adding it moved the unpriced
+count on **0 of 112 decks** (`unpriced_discount_cards` is ◊ MINUS priced, and impending is
+priced now), and a structural test pins the general form: every keyword in the priced
+pattern must also be in `CHEAPER_KW`.
+
+**Residual:** there is no impending GRANT form, so `_ALT_COST_GRANT_RE` was deliberately
+left alone; if a future card reads "creatures in your hand have impending 2—{1}", the grant
+path will not see it.
 
 
 ## [G-61] Before dismissing a card, count the deck property its value depends on

@@ -47,7 +47,6 @@ Bandit's Talent
 Baxter Stockman
 Bejeweled Warg
 Billowing Shriekmass
-Binding Negotiation
 Bioengineered Future
 Biogenic Upgrade
 Biotech Specialist
@@ -68,7 +67,6 @@ Broodguard Elite
 Bulk Up
 Bumi, King of Three Trials
 Bumi, Unleashed
-Burning Curiosity
 Burnout Bashtronaut
 Burrowguard Mentor
 Buzz Bots
@@ -207,7 +205,6 @@ Hecteyes
 Hedge Shredder
 Hei Bai, Spirit of Balance
 Herald of Eternal Dawn
-Heroes' Hangout
 High Fae Trickster
 High Perfect Morcant
 Honored Knight-Captain
@@ -280,7 +277,6 @@ Mardu Monument
 Masked Meower
 Master Pakku
 Mechanical Mobster
-Mechanized Ninja Cavalry
 Metalhead
 Michelangelo, Weirdness to 11
 Mind Transfer Protocol
@@ -325,7 +321,6 @@ Personify
 Pet Avengers
 Peter Parker
 Picklock Prankster // Free the Fae
-Pilfer
 Pond Prophet
 Powerful Broker
 Pride of the Road
@@ -442,6 +437,7 @@ The Queen of Dale
 The Regalia
 Think Twice
 Thor Odinson
+Thought-Stalker Warlock
 Three Tree Scribe
 Thunderous Velocipede
 Tidings of War
@@ -489,7 +485,6 @@ Waterwind Scout
 Waxen Shapethief
 Weapons Vendor
 Web-Warriors
-Weftblade Enhancer
 Welcome to Sweettooth
 Whirlwing Stormbrood
 White Tiger, Ava Ayala
