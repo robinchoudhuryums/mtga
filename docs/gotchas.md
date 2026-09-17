@@ -1527,6 +1527,43 @@ The meta-lesson repeats `check_agreement`'s: a check that passes while missing t
 reads as coverage. What broke the standoff was FIXTURES FROM LIVE MISSES — not
 re-reasoning about cue lists — and a roster sweep after every change.
 
+**The copula, closed 2026-09-17.** Every figure pattern required the number ADJACENT to its
+label (`interaction[ ]+(\d+)`), so "interaction is 7" matched nothing. This file had carried
+"a copula hides a figure" as a known residual for a year with nobody measuring it. The sweep:
+**23 copula claims across the roster, 5 of them wrong** — deck 27 said "card advantage is 1"
+against a live 4, deck 57 "Card advantage reads 5" against 6, decks 44/46/56b likewise on
+protection. A 26% error rate on the exact axes a tier letter rests on.
+
+The verb list is CLOSED (reads / is / sits at / stands at / comes to / runs / counts) and was
+taken from what the roster actually writes, not invented. ONE exclusion, and it was earned:
+deck 26b writes "the interaction is 1 instant-speed against 11 sorcery-speed", which is a
+claim about the interaction PROFILE that `stats` splits by speed (G-24), not the axis total.
+It was the only one of the 23 whose number is re-qualified, it DID match the new pattern, and
+only an unrelated suppression kept the audit quiet on it — a false positive waiting to fire
+rather than a rule.
+
+**KEEPABLE, added in the same pass.** Nine percentage claims sat in the roster's prose and
+NONE was verifiable, because every figure resolves through `_figure_lookup`, which holds the
+quality vector and has no probability term. `_keepable_at` is pure arithmetic over the land
+count, so the figure costs no per-card work, and it WILL drift — any manabase change moves
+it. Routed through `opening_land_stats`, the helper `consistency` prints from.
+
+Both keepable patterns carry their OWN past-tense guard, because the shared
+`_figure_is_history` can reach neither shape: it looks only BEFORE the match and only within
+24 characters. Deck 35a writes "keepable was 80%", where the cue sits INSIDE what a greedy
+pattern swallows; deck 51 writes "86.0% keepable; that figure was wrong", where it sits
+after. Both were real false positives on the day the patterns were written — 2 of 13 — and
+two permanent false warnings in `check_all` is precisely the rate G-78 refused, because it
+trains you to ignore the sweep.
+
+**Why the WORD-SPELLED figure stays unbuilt.** Measured the same day: a broad pattern returns
+44 roster candidates at roughly 10–20% precision, because "one" and "two" are ordinary
+English — "Protection was the ONE", "the ONE weakness", "interaction 6 is ONE of". Narrowing
+to the unambiguous `<word> <axis>` form gives 10 matches of which the apparent failures are
+history ("it SCORED zero interaction UNTIL the"), a hyphenate my own regex split
+("NEAR-zero interaction"), and a claim about a different list entirely ("that test's green
+list ran zero protection", which sits in `#: notes:` and is outside the scan by design). The
+same triage line G-67 draws, and the same answer the `#: notes:` scan got twice.
 ## [G-27] `deck.py tier <id> --audit-rationale` catches a STALE tier argument
 
 **`deck.py tier <id> --audit-rationale` catches a STALE tier argument.** The `#: tier:`
@@ -2453,7 +2490,9 @@ The fix note is source-count-aware: a **thin (≤3-source) splash** color is ref
 "cast late or cut, don't chase it on curve" rather than printing an impractical land
 count (15 R sources), and an **early double pip in a MAIN color** ({B}{B} on T2) reads
 "color-hungry — expect it a turn or two later" instead of being mislabeled a splash.
-Strict pips only (hybrids are strictly easier — excluded, same rule `mana` uses);
+Strict pips, plus any hybrid that BINDS — a hybrid is strictly easier only while the
+deck can produce either half, and at zero sources of one, `{B/G}` IS `{B}` (`binding_pips`,
+added 2026-09-17; the same rule `mana` uses);
 multi-color costs use per-color independence (a mild over-estimate). `--on-draw` models
 the extra card; `--target P` sets the cast-probability bar (default 0.90). A planning
 aid, not a guarantee (mulligans/scry/draw shift the real numbers) — it doesn't gate

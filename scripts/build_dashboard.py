@@ -211,6 +211,7 @@ def deck_viz(meta, cards, carddata, mana, keywords, by_key, by_name):
     strict_pips = {c: 0 for c in "WUBRG"}
     cards_need = {c: 0 for c in "WUBRG"}
     hyb, hybrid_only, mana_unknown = {}, 0, 0
+    hyb_sets = set()
     for q, n, s, c in cards:
         nl = n.lower()
         if nl in B:
@@ -232,8 +233,23 @@ def deck_viz(meta, cards, carddata, mana, keywords, by_key, by_name):
         for h in hybrid:
             k = "/".join(sorted(h))
             hyb[k] = hyb.get(k, 0) + q
+            hyb_sets.add(h)
         if hybrid and not strict:
             hybrid_only += q
+    # A hybrid binds as a single colour when the deck has sources for only ONE of its
+    # halves (BS13-01) — the same rule `deck.py mana` and `consistency` apply. Without it
+    # this panel repeats the blanket "payable with either color" that made deck 14 look
+    # fine, and the dashboard becomes the surface that disagrees, which is the failure the
+    # note just below records for `#: uncastable-ok:`.
+    _src = deckmod.deck_source_profile(cards, by_key, by_name, carddata)[0]
+    _binds = {}
+    for h in hyb_sets:
+        if len(h) < 2:
+            continue
+        _live = [c for c in sorted(h) if _src.get(c, 0) > 0]
+        if len(_live) == 1:
+            _binds["/".join(sorted(h))] = _live[0]
+
     # `#: uncastable-ok:` exempts a reanimator's intended-uncastable bombs (F-02), so the
     # dashboard must pass the same exemption the CLI does — otherwise a deck reads BLOCKED
     # here and READY there.
@@ -254,7 +270,7 @@ def deck_viz(meta, cards, carddata, mana, keywords, by_key, by_name):
             "declared": "".join(sorted(declared)),
             "strict": [{"c": c, "pips": strict_pips[c], "cards": cards_need[c]}
                        for c in "WUBRG" if cards_need[c]],
-            "hybrids": [{"colors": k, "n": v}
+            "hybrids": [{"colors": k, "n": v, "binds": _binds.get(k, "")}
                         for k, v in sorted(hyb.items(), key=lambda kv: -kv[1])],
             "hybrid_only": hybrid_only, "unknown": mana_unknown,
             "uncastable": [{"name": n, "why": w} for n, w in uncastable],
@@ -1599,7 +1615,7 @@ function renderMana(v){
   const m = v.mana; let html = '';
   if (m.strict.length){ const smax = Math.max(1, ...m.strict.map(x => x.pips)); html += vizSection('Strict color requirements (pips that MUST be paid with that color)', m.strict.map(x => '<div class="hbar"><span class="lbl">' + x.c + '</span><span class="track"><span class="fill pipfill ' + x.c + '" style="width:' + Math.round(100*x.pips/smax) + '%"></span></span><span class="val">' + x.pips + ' · ' + x.cards + 'c</span></div>').join('')); }
   else html += vizSection('Strict color requirements', '<div class="metaline2">No strict single-color pips.</div>');
-  if (m.hybrids.length) html += vizSection('Hybrid pips (payable with either color)', '<div class="flags">' + m.hybrids.map(h => '<span class="flag"><b>' + esc(h.colors) + '</b> ×' + h.n + '</span>').join('') + '</div>');
+  if (m.hybrids.length) html += vizSection('Hybrid pips (payable with either color \u2014 unless only one has sources)', '<div class="flags">' + m.hybrids.map(h => '<span class="flag"><b>' + esc(h.colors) + '</b> ×' + h.n + (h.binds ? ' \u26a0 binds as {' + esc(h.binds) + '}' : '') + '</span>').join('') + '</div>');
   let cast;
   if (!m.declared) cast = '<div class="metaline2">No declared colors — castability lint off.</div>';
   else if (!m.uncastable.length && !m.off_ident.length) cast = '<span class="badge b-ok">every nonland card fits ' + esc(m.declared) + ' ✓</span>';

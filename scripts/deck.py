@@ -417,6 +417,44 @@ def deck_color_sources(cards, meta, carddata):
     return src
 
 
+def binding_pips(cost, sources):
+    """The strict colour demand a cost places on a deck with THESE sources.
+
+    `parse_pips` splits strict from hybrid, and every probability surface then DROPPED the
+    hybrid half on the premise `cast_probability`'s docstring states: a hybrid is strictly
+    easier to pay, so the strict demand is what binds. That premise is true everywhere
+    except at ZERO, and it fails silently there: with no sources of one half, `{B/G}` IS
+    `{B}`, and a cost of `{1}{B/G}{B/G}` is a real double-black demand that the model
+    reported as NO demand at all.
+
+    Measured on the roster when this was added (2026-09-17): **41 cards** carried a hybrid
+    pip with a half the deck had zero sources of, and **27 were overstated by 5+ points**,
+    every one of them printing exactly 100% because with no strict pips there was nothing
+    left to constrain on. The worst, deck 14's Long Feng, Grand Secretariat
+    (`{1}{B/G}{B/G}` in a deck with G=0 and B=11), read 100% against a true 52.5% — and it
+    was absent from `consistency`'s cast-on-curve table entirely while its strictly EASIER
+    twin, a `{B}{B}` card off the same 11 sources, was flagged at 65.1%.
+
+    Three cases, and only the middle one changes:
+      * a hybrid with 2+ live halves  -> still not binding (the original premise holds)
+      * a hybrid with exactly ONE live half -> collapses to a strict pip on that half
+      * a hybrid with NO live half -> left alone. The card is uncastable and the
+        castability lint owns that; inventing a pip here would have to pick a colour the
+        deck cannot produce, which is a guess, and this module does not guess (G-16).
+    A monocolor (`{2/W}`) or Phyrexian (`{W/P}`) hybrid is a single-colour frozenset and is
+    payable generically, so it never binds — the same rule `_candidate_castability` uses.
+    """
+    strict, hybrid = parse_pips(cost or "")
+    out = dict(strict)
+    for h in hybrid:
+        if len(h) < 2:
+            continue
+        live = [c for c in sorted(h) if (sources or {}).get(c, 0) > 0]
+        if len(live) == 1:
+            out[live[0]] = out.get(live[0], 0) + 1
+    return out
+
+
 def pip_depth_warning(cost, sources, total=None):
     """(colour, pips, have, want) when a card's DEEPEST single-colour pip demand is more
     than the deck's sources realistically support — else None.
@@ -430,7 +468,8 @@ def pip_depth_warning(cost, sources, total=None):
 
     Reported as a FLAG, never a filter: a deep-pip card can still be a fine late-game
     play in a deck that leans hard on its colour, and the caller prints the numbers so a
-    human decides. Hybrids are excluded (strictly easier), matching `parse_pips`.
+    human decides. A hybrid is excluded only while the deck has sources for BOTH halves
+    (`binding_pips`, BS13-01): at zero sources of one, `{B/G}` IS `{B}` and it binds.
 
     THE BAR IS PIP-COUNT AWARE (`_PIP_DEPTH_TARGET_BY_PIPS`). 3+ pips grade at 0.70,
     unchanged. 2 pips grade at 0.55, because the 3-pip floor let a {2}{B}{B} craft target
@@ -438,7 +477,7 @@ def pip_depth_warning(cost, sources, total=None):
     None. Read the two bands as different claims: a 3-pip flag says "you cannot cast
     this", a 2-pip flag says "you will cast this late".
     """
-    strict, _hybrid = parse_pips(cost or "")
+    strict = binding_pips(cost, sources)
     if not strict:
         return None
     col, pips = max(strict.items(), key=lambda kv: kv[1])
@@ -6060,21 +6099,6 @@ def cmd_mana(args):
         if hybrid and not strict:
             hybrid_only += q
 
-    print(f"Deck {d['id']}: {d['name'] or d['path']} — mana requirements (hybrid-aware)\n")
-    print("Strict color requirements (must be paid with that color):")
-    for c in "WUBRG":
-        if cards_need[c]:
-            note = _commitment(cards_need[c])
-            print(f"  {c}  {strict_pips[c]:3} pips across {cards_need[c]:2} card(s)   {note}")
-    if hybrid_pips:
-        print("\nHybrid pips (payable with EITHER color — don't demand their own sources):")
-        for h, n in sorted(hybrid_pips.items(), key=lambda kv: -kv[1]):
-            print(f"  {'/'.join(sorted(h))}  {n} pip(s)")
-    if hybrid_only:
-        print(f"\n{hybrid_only} card(s) are hybrid-only — castable with any of their colors.")
-    if unknown:
-        print(f"\n{unknown} card(s) had no cost data (run build_mana.py to refresh).")
-
     # Color-source adequacy: count how many lands can PRODUCE each color, then flag
     # cards whose strict colored-pip demand looks thin against those sources — the
     # "wants UU but this is a U-splash deck" check the identity lint can't make.
@@ -6082,8 +6106,47 @@ def cmd_mana(args):
     # colour identity alone, so a "{T}: Add one mana of any color" land was zero sources
     # and the `△ Pip-intensive` flag below fired on manabases built to fix exactly that.
     # Mana dorks aren't counted, so read it as a review signal, not a hard failure.
+    # Computed BEFORE the hybrid report below, which needs it: this call sat after that
+    # report until 2026-09-17, which is why the report could only speak in the abstract.
     carddata = load_card_data()
     sources, nlands, _total, source_notes = deck_source_profile(cards, by_key, by_name, carddata)
+
+    # A hybrid pip is "payable with EITHER color" only while the deck can actually produce
+    # either one. `binding_pips` is the rule (added with BS13-01): at ZERO sources of one
+    # half, {B/G} IS {B}, and this surface's blanket reassurance was the sentence that made
+    # deck 14 look fine while Long Feng, Grand Secretariat sat at a true 52.5%. Same
+    # primitive the probability surfaces use, so `mana` and `consistency` cannot disagree.
+    dead_half = {}
+    for h in hybrid_pips:
+        if len(h) < 2:
+            continue
+        live = [c for c in sorted(h) if sources.get(c, 0) > 0]
+        if len(live) == 1:
+            dead_half[h] = live[0]
+
+    print(f"Deck {d['id']}: {d['name'] or d['path']} — mana requirements (hybrid-aware)\n")
+    print("Strict color requirements (must be paid with that color):")
+    for c in "WUBRG":
+        if cards_need[c]:
+            note = _commitment(cards_need[c])
+            print(f"  {c}  {strict_pips[c]:3} pips across {cards_need[c]:2} card(s)   {note}")
+    if hybrid_pips:
+        print("\nHybrid pips (payable with EITHER color — unless the deck has sources for "
+              "only ONE of them):")
+        for h, n in sorted(hybrid_pips.items(), key=lambda kv: -kv[1]):
+            live = dead_half.get(h)
+            flag = (f"   ⚠ BINDS as {{{live}}} — no sources for "
+                    f"{'/'.join(sorted(h - {live}))}") if live else ""
+            print(f"  {'/'.join(sorted(h))}  {n} pip(s){flag}")
+    if hybrid_only:
+        bound = sum(1 for h in dead_half)
+        extra = ("" if not bound else
+                 f" — but {bound} of these hybrid symbol(s) bind as a single colour here, "
+                 f"so `deck.py consistency {d['id']}` is the real read")
+        print(f"\n{hybrid_only} card(s) are hybrid-only — castable with any of their "
+              f"colors{extra}.")
+    if unknown:
+        print(f"\n{unknown} card(s) had no cost data (run build_mana.py to refresh).")
 
     def _is_land(nl, s, c):
         row = by_key.get((nl, s.lower(), c.lower())) or by_name.get(nl)
@@ -6408,7 +6471,7 @@ def cmd_consistency(args):
         entry = mana.get(nl)
         if not entry or not entry[0]:
             continue
-        strict, _hy = parse_pips(entry[0])
+        strict = binding_pips(entry[0], sources)
         if not strict:
             continue
         seen.add(nl)
@@ -6466,7 +6529,8 @@ def cmd_consistency(args):
                   f"Karsten source count to reach target, a splash flag for a thin (≤{SPLASH_MAX}-source) "
                   "color (cast late or cut), or a color-hungry flag for an early double pip.")
     print("\nModel: hypergeometric (exact); per-color independence for multi-color costs "
-          "(a mild over-estimate), hybrids excluded as non-binding. A planning aid, not a "
+          "(a mild over-estimate); a hybrid binds only when the deck has sources for just ONE "
+          "of its halves, in which case it IS that colour. A planning aid, not a "
           "guarantee — mulligans, scry, and card draw all shift the real numbers.")
     return 0
 
@@ -12287,6 +12351,10 @@ _FIG_PAREN = _FIG_GAP + r"\((\d+)\)"
 # not a precise claim and should not be audited as one.
 _FIG_NUM = r"(?<![\d.])(?<!\d-)(\d+)"
 _FIG_DEC = r"(?<![\d.])(?<!\d-)(\d+\.\d+)"
+# A copula figure whose number is immediately re-qualified by a SPEED word is a
+# sub-count of the interaction profile (G-24), not the axis total. Roster-derived: one
+# match of 23, deck 26b's "the interaction is 1 instant-speed against 11 sorcery-speed".
+_FIG_SPEED_QUALIFIED = r"(?!\s*(?:instant|sorcery)[- ]speed)"
 _RATIONALE_FIGURES = [
     (re.compile(r"interaction[  ]+(\d+)", re.I), "interaction"),
     (re.compile(r"interaction" + _FIG_PAREN, re.I), "interaction"),
@@ -12310,12 +12378,50 @@ _RATIONALE_FIGURES = [
     (re.compile(_FIG_NUM + r"[  ]+interaction", re.I), "interaction"),
     (re.compile(_FIG_NUM + r"[  ]+card[- ]adv(?:antage)?", re.I), "card_advantage"),
     (re.compile(_FIG_NUM + r"[  ]+protection", re.I), "protection"),
+    # …and the COPULA form, which every pattern above misses because they all require the
+    # number ADJACENT to the label. G-26 has recorded "a copula hides a figure" as a known
+    # residual for a year without anyone measuring it. Measured 2026-09-17: the roster
+    # carries **23** copula-shaped claims and **6 of them are WRONG** — deck 26b says
+    # "interaction is 1" against a live 10, deck 27 "card advantage is 1" against 4 — a 26%
+    # error rate on the exact axes a tier letter rests on, all of it invisible.
+    # The verb list is CLOSED and short on purpose, the same discipline G-26 demands of the
+    # suppression cues: these are the copulas the roster actually writes.
+    # `(?:only |just |down to |up to )?` absorbs the hedge the prose puts between verb and
+    # number, and `_FIG_SPEED_QUALIFIED` is the one exclusion the roster sweep earned. Deck
+    # 26b writes "the interaction is 1 instant-speed against 11 sorcery-speed", which is a
+    # claim about the interaction PROFILE that `stats` splits by speed (G-24), not about the
+    # interaction COUNT — the only one of the 23 roster matches whose number is re-qualified.
+    # It matched, and only an unrelated suppression kept the audit quiet on it, which is a
+    # false positive waiting to fire rather than a rule.
+    (re.compile(r"interaction(?:\s+now)?\s+(?:reads?|is|sits at|stands at|comes to|runs|"
+                r"counts)\s+(?:only |just |down to |up to )?" + _FIG_NUM + _FIG_SPEED_QUALIFIED,
+                re.I), "interaction"),
+    (re.compile(r"card[- ]adv(?:antage)?(?:\s+now)?\s+(?:reads?|is|sits at|stands at|"
+                r"comes to|runs|counts)\s+(?:only |just |down to |up to )?" + _FIG_NUM
+                + _FIG_SPEED_QUALIFIED, re.I), "card_advantage"),
+    (re.compile(r"protection(?:\s+now)?\s+(?:reads?|is|sits at|stands at|comes to|runs|"
+                r"counts)\s+(?:only |just |down to |up to )?" + _FIG_NUM + _FIG_SPEED_QUALIFIED,
+                re.I), "protection"),
     # …and the house phrasing, where the number comes FIRST ("a tight 2.44 curve").
     # The pattern above only reads "curve of 2.44" / "avg MV 2.44", which the rationales
     # essentially never use: roster-wide it matched ONE figure against fourteen written
     # the other way round, so the avg_mv half of this audit was decorative. Six stale
     # curve figures were sitting in the prose, invisible, when this was added.
     (re.compile(_FIG_DEC + r"[  ]+curve", re.I), "avg_mv"),
+    # KEEPABLE, both orders the roster writes it. The prose rounds ("82% keepable" against
+    # a live 82.5), which the int branch of the comparison already tolerates by truncating.
+    # BOTH carry their own past-tense guard, because the shared `_figure_is_history` cannot
+    # reach either shape. `_FIGURE_PAST` looks only BEFORE the match and only within 24
+    # chars: deck 35a writes "keepable was 80%", where the cue sits INSIDE what the second
+    # pattern would swallow, and deck 51 writes "86.0% keepable; that figure was wrong",
+    # where it sits after. So the connector list is CLOSED (no `was`/`were` in it) and the
+    # first pattern refuses a following past tense. Both were real false positives on the
+    # day these patterns were written — 2 of 13 matches — and 2 permanent false warnings in
+    # `check_all` is the rate G-78 refused, because it trains you to ignore the sweep.
+    (re.compile(r"(\d+(?:\.\d+)?)%[  ]+keepable(?![^.]{0,40}\b(?:was|were)\b)", re.I),
+     "keepable"),
+    (re.compile(r"keepable(?:\s+(?:is|at|of|now|rose to))?\s+(\d+(?:\.\d+)?)%", re.I),
+     "keepable"),
     # The reversal above was only ever taught the word "curve". The other house phrasing
     # for the same figure is "3.19 average" — and the FORWARD pattern requires "average"
     # to be followed by MV, so a bare number-then-"average" matched nothing in either
@@ -12499,6 +12605,22 @@ def _figure_lookup(vec, cards, carddata):
         return out          # a figure we cannot price is skipped, never guessed
     for col, n in src.items():
         out[f"sources_{col}"] = n
+    # KEEPABLE, the one probability figure the rationales quote that this lookup could
+    # price. Added 2026-09-17: the roster carries 9 percentage claims and NONE of them was
+    # verifiable, because every figure here comes from the quality vector, which has no
+    # probability term. Cheap enough to belong — `_keepable_at` is pure arithmetic over the
+    # land count, so this costs no per-card work — and it WILL drift, since any manabase
+    # change moves it. Routed through `opening_land_stats`, the same helper `consistency`
+    # prints from, so the two cannot disagree (G-70).
+    # NOT added: a per-card "N% on turn 5" claim. That figure is about ONE CARD the prose
+    # names in passing, so there is no deck-level value to look up, and guessing which card
+    # is meant is exactly the kind of guess this module refuses to make.
+    try:
+        by_key, by_name, _qty = load_collection()
+        _s, nlands, total, _notes = deck_source_profile(cards, by_key, by_name, carddata)
+        out["keepable"] = round(100 * opening_land_stats(total or 60, nlands)["keepable"], 1)
+    except Exception:
+        pass            # same stance as above: a figure we cannot price is skipped
     return out
 # Words that are also real card names ("Negate", "Rest in Peace", …). Requiring a
 # multi-word name or a long single word keeps the scan quiet; a citation of a one-word

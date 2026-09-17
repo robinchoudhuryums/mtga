@@ -3609,9 +3609,27 @@ class TestPipDepthWarning:
         assert deck.pip_depth_warning("{B}{B}{B}", {"B": 24}) is None
         assert deck.pip_depth_warning("{B}{B}{B}", {"B": 10}) is not None
 
-    def test_hybrids_excluded(self):
-        # Hybrid pips are strictly easier to pay, matching parse_pips' rule.
+    def test_hybrids_excluded_while_BOTH_halves_are_live(self):
+        # A hybrid IS strictly easier to pay — while you can actually pay either half.
         assert deck.pip_depth_warning("{U/B}{U/B}{U/B}", {"U": 4, "B": 4}) is None
+
+    def test_a_hybrid_with_one_dead_half_binds_as_that_colour(self):
+        """The premise "hybrids are strictly easier" is true everywhere except at ZERO,
+        and it failed SILENTLY there: with no sources of one half, {U/B} IS {U}. Measured
+        on the roster, 41 cards carried such a pip and 27 were overstated by 5+ points,
+        every one printing exactly 100% because nothing was left to constrain on."""
+        assert deck.pip_depth_warning("{U/B}{U/B}{U/B}", {"U": 4, "B": 0}) is not None
+        assert deck.binding_pips("{1}{B/G}{B/G}", {"B": 11, "G": 0}) == {"B": 2}
+
+    def test_a_hybrid_with_NO_live_half_is_left_to_the_castability_lint(self):
+        """Inventing a pip would mean picking a colour the deck cannot produce, which is a
+        guess; the card is uncastable and that lint owns it."""
+        assert deck.binding_pips("{1}{B/G}{B/G}", {"B": 0, "G": 0}) == {}
+
+    def test_a_monocolor_or_phyrexian_hybrid_never_binds(self):
+        """{2/W} and {W/P} are single-colour frozensets payable generically — the same rule
+        `_candidate_castability` uses."""
+        assert deck.binding_pips("{2/W}{2/W}", {"W": 0}) == {}
 
     def test_no_cost_is_safe(self):
         assert deck.pip_depth_warning("", {"W": 10}) is None

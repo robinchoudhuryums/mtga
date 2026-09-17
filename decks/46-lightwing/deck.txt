@@ -72,7 +72,7 @@
 #: protect: The Wind Crystal; Ajani's Pridemate; Twinblade Paladin; Exemplar of Light; Angel of Vitality; Delney, Streetwise Lookout; Stirring Hopesinger; Valkyrie's Call; Lyra Dawnbringer; Giada, Font of Hope; Angelic Destiny; Herald of Eternal Dawn; Silver Sable, Mercenary Leader; Rosa, Resolute White Mage
 #: tier: A — PROVISIONAL (fully crafted and owned, but UNPLAYED). The letter sits AT
 #: tier: the metrics floor: interaction 5 is exactly the A bar, 5 + card advantage 2 is
-#: tier: exactly the sum of 7, and protection is 4. There is no slack on either axis,
+#: tier: exactly the sum of 7, and protection is 3. There is no slack on either axis,
 #: tier: which is the honest summary of this build — it spends its slots on ENGINE
 #: tier: rather than on answers, and one more cut to either axis drops it to B.
 #: tier: TWO 2026-08-10 SWAPS NETTED OUT HERE. Rally the Monastery was CUT for Aerith

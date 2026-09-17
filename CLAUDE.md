@@ -483,15 +483,19 @@ is protecting.
   false negative is silent, and three sweeps each found figures the audit had reported
   clean. A CARD citation and a FIGURE go stale differently and must not share a predicate —
   the CARD path kept a broad `remov\w*` for a year, so a card saying "removes" suppressed
-  its own report. The 2026-08-09 rework clause-scoped both cue families and found six real
-  stale rationales. **The sweep is least optional when you WIDEN the scan**: extending it
-  to archetype figures (G-27) returned 3 hits of which 2 were FALSE, and their suppressions
-  muted the 1 real one until the parent-name case was handled. **CLOSED 2026-08-11: a
-  PREFIX COLLISION** — only IN-DECK names were masked, so a fragment of an ABSENT card's
-  name resolved to a DIFFERENT card. **STILL LIVE:** a copula hides a figure ("protection
-  is 1"); "the swap removes X" about a CUT card reads as live; a 4+-card fragment drops as
-  an epithet; a card absent from the POOL is invisible; and a figure needs its cue ADJACENT
-  ("the fastest curve here at 2.44" is missed, deck 26b). [G-26]
+  its own report. **The sweep is least optional when you WIDEN the scan**, and a widening
+  that adds its own cue must carry its own guard: the 2026-09-17 COPULA patterns
+  ("interaction is 7", 23 roster claims of which 5 were wrong) needed a SPEED-word
+  exclusion, because a re-qualified number is a profile sub-count (G-24) and not the axis
+  total, and the KEEPABLE patterns added beside them needed a past-tense guard, because the
+  shared history cue reaches neither a cue INSIDE the match nor one AFTER it.
+  **CLOSED:** the prefix collision (2026-08-11); the copula, for the three floor axes
+  (2026-09-17). **STILL LIVE:** a figure spelled as a WORD is deliberately unbuilt —
+  ~10–20% precision, since "one" and "two" are ordinary prose, so it would put permanent
+  false warnings in `check_all` (the G-78 bar); a per-card "N% on turn 5" has no deck-level
+  value to look up; "the swap removes X" about a CUT card reads as live; a 4+-card fragment
+  drops as an epithet; a card absent from the POOL is invisible; and a figure needs its cue
+  ADJACENT ("the fastest curve here at 2.44", deck 26b). [G-26]
 - **Run `tier <id> --audit-rationale` after ANY deck edit.** The tier guard checks the
   LETTER; this checks the ARGUMENT — cards the prose cites that the deck no longer runs,
   and figures the live quality vector contradicts. A swap moves those numbers by
@@ -578,7 +582,13 @@ is protecting.
   converted 2026-08-20 — G-58) and says nothing about PIPS.** A `{W}{W}{W}{W}{W}` was KEY for
   decks with 10–11 white sources, roughly a 1% chance on turn five. `pip_depth_warning`
   prints `⚠⚠ 5x{W} vs 10 sources` from the same hypergeometric model `consistency` uses.
-  It is a FLAG, never a score change. **Two 2026-08-13 fixes, and both are the G-40 shape
+  It is a FLAG, never a score change. **A HYBRID IS "STRICTLY EASIER" ONLY WHILE BOTH
+  HALVES ARE LIVE** — at ZERO sources of one, `{B/G}` IS `{B}`, and every probability
+  surface dropped it entirely, reporting **100%** because nothing was left to constrain
+  on: 41 roster cards, 27 overstated by 5+ points, the worst at 100% against a true
+  52.5% and absent from `consistency`'s table while its strictly EASIER twin was
+  flagged. ONE definition, `binding_pips` (2026-09-17), read by `pip_depth_warning`,
+  `consistency`, `mana` and the dashboard so all four agree. **Two 2026-08-13 fixes, and both are the G-40 shape
   — a working primitive nothing asked.** It had ONE caller, `suggest-homes`, so the
   DECK-level recommender that surfaces craft targets never ran it; `cmd_suggest` calls it
   now. And the floor was 3 pips, so `{2}{B}{B}` Elegy Acolyte was recommended into a deck
@@ -640,7 +650,9 @@ is protecting.
   prescribing a direction: on a low curve BOTH directions used to trip ("consider fewer"
   at 24 lands, "consider more" at 23, where keepable was worse), so when neither helps it
   now says the threshold is unreachable and points at cast-on-curve — which is the number
-  that settles the question anyway. A planning aid, not a guarantee. [G-36]
+  that settles the question anyway. A planning aid, not a guarantee. Its pips are
+  `binding_pips`, so a hybrid whose deck has sources for only ONE half is priced as
+  that colour rather than skipped (G-32). [G-36]
 - **`deck.py suggest --lands <id>` is the manabase RECOMMENDER** — plain `suggest` is
   structurally blind to lands (it filters to cards sharing a synergy theme). Scored on
   FIXING value plus bounded synergy/scarce-colour nudges, and it applies the deck's
