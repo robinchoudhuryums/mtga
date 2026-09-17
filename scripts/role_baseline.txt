@@ -164,7 +164,6 @@ Flowerfoot Swordmaster
 Fog Bank
 Foggy Swamp Vinebender
 Foggy Swamp Visions
-Fortress Kin-Guard
 Fortune, Loyal Steed
 Frantic Strength
 Frontier Seeker
@@ -220,7 +219,6 @@ Improvisation Capstone
 Ingenious Leonin
 Insatiable Skittermaw
 Interface Ace
-Invasion Reinforcements
 Invasion Submersible
 Involuntary Employment
 Iron Hills Stalwart
