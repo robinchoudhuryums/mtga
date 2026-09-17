@@ -92,15 +92,36 @@ re-run it for the named cards, or run `make refresh` if the gap is the mana rows
 
 ## Stage 3c — Find homes for the NEW cards
 
-**Run this whenever the ingest added cards you did not previously own.** Cataloging is
+**Run this whenever the ingest added a card that is not already in a deck.** Cataloging is
 bookkeeping; placing the cards is the point, and it used to live in a separate command
-that was easy not to run. Skip it only when nothing was newly added — a deck-dump
-true-up or a tracker import that only adjusted counts has no new cards to place, and a
-full-collection import of a thousand rows must not trigger a thousand fit passes.
+that was easy not to run.
 
-You already know which cards are new: `reconcile_crafts.py` lists them under "Add to
-library" (a "Quantity bumped" row is NOT new). For each one, in this order — never grade
-from a tag or a role label, which is CLAUDE.md's recurring mis-grade:
+**"New to the LIBRARY" is not "new to the ROSTER", and taking the first for the second
+made this stage ask the wrong question about 75 cards at once (2026-09-17).** This
+paragraph used to read, in full: *"You already know which cards are new:
+`reconcile_crafts.py` lists them under 'Add to library'."* That is right for a craft or
+pack ingest and WRONG for an ownership RECONCILE, where the export is built from decks
+you already play — every added row is a card already maindecked somewhere, so the rule
+returned 75 "new" cards of which **0 were new to the roster**, and Stage 3c then asked
+"where should this go?" about cards that already had a home. The fit pass that followed
+was saturated by construction: 70 of 75 produced a KEY row, 756 rows in total.
+
+So split the two cases before running anything:
+
+- **A card absent from every deck file** is a genuine placement — run the full pass below.
+- **A card already maindecked somewhere** is an ownership CORRECTION. The question is not
+  "where does this go" but **"does it earn a SECOND home"** — so exclude the decks it
+  already lives in (`card.py` prints them on its `in decks:` line) and grade only what is
+  left. Lead with the NARROW matches: `suggest-homes` warns when KEY is saturated for a
+  card, and a card KEY in two decks shares something specific with them, while one KEY in
+  a quarter of the roster is matching a generic tag (G-31 — KEY is theme overlap alone).
+- **Skip the stage entirely** when nothing was added at all — a deck-dump true-up or a
+  tracker import that only adjusted counts has no cards to place, and a full-collection
+  import of a thousand rows must not trigger a thousand fit passes.
+
+Partition them with the "Add to library" list ("Quantity bumped" is NOT new) crossed
+against deck membership. For each card that survives, in this order — never grade from a
+tag or a role label, which is CLAUDE.md's recurring mis-grade:
 
 1. `python3 scripts/card.py "<name>"` — complete oracle text, mana cost, **format
    legality**, owned quantity, and which decks already run it. A card that is not legal
@@ -135,7 +156,11 @@ the swaps once the user confirms.
 - **Homes for the new cards** (Stage 3c): per card, the fit rows as
   `card → deck (strength) — cut candidate — key upgrade / sidegrade / different-flavor`,
   with the operative oracle clause quoted for each recommended swap. State the
-  **no-home** cards plainly too — owned, but nothing fits yet.
+  **no-home** cards plainly too — owned, but nothing fits yet. Say which partition each
+  card came from: a genuine placement, or a correction being asked whether it earns a
+  SECOND home. And if you ran a fit pass whose KEY label came back saturated, report THAT
+  rather than the rows — a saturated list is a fact about the tags, and handing it over as
+  a recommendation is how a tag match gets mistaken for a read of the card.
 - **Decks that became newly buildable.** An ingest is the one event that flips a deck
   from "craft targets outstanding" to "ready to build", and nothing else in the workflow
   reports it — `/roster-review` would, but that is a periodic survey nobody runs after a

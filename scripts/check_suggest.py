@@ -425,6 +425,30 @@ def check():
         errs.append("doubler_axis no longer detects a token doubler (Exalted Sunborn).")
     if deck.doubler_axis("Shock deals 2 damage to any target.") is not None:
         errs.append("doubler_axis must return None for an ordinary card.")
+    # THE ACTIVE VOICE of the same effect. This probe tested only the PASSIVE form above,
+    # which is exactly why no gate caught that DOUBLING SEASON — the card the mechanic is
+    # named after — scored None on BOTH of its axes until 2026-09-17. A gate whose fixture
+    # encodes one member of a family cannot see the family disagreement (G-67).
+    if deck.doubler_axis("If an effect would create one or more tokens under your control, "
+                         "it creates twice that many of those tokens instead.") != "tokens":
+        errs.append("doubler_axis no longer detects an ACTIVE-voice token doubler "
+                    "(Doubling Season / Anointed Procession / Parallel Lives).")
+    if deck.doubler_axis("If you would put one or more counters on a permanent or player, "
+                         "put twice that many of each of those kinds of counters on that "
+                         "permanent or player instead.") != "counters":
+        errs.append("doubler_axis no longer detects an ACTIVE-voice counter doubler "
+                    "(Vorinclex / Innkeeper's Talent).")
+    if deck.doubler_axis("If you would put one or more counters on a permanent you control, "
+                         "put that many plus one of each of those kinds of counters on that "
+                         "permanent instead.") is not None:
+        errs.append("doubler_axis must NOT read a plus-N COUNTER replacement as a doubler "
+                    "(Doc Samson is +1, not x2) — the same discriminator lifegain needs.")
+    if deck.doubler_axis("If an opponent would put one or more counters on a permanent or "
+                         "player, they put half that many of each of those kinds of "
+                         "counters on that permanent or player instead, rounded "
+                         "down.") is not None:
+        errs.append("doubler_axis must NOT read an OPPONENT-scoped halving as your doubler "
+                    "(Vorinclex's second clause).")
     if deck.doubler_restriction("a creature you control with power 2 or less") != 2:
         errs.append("doubler_restriction must read a doubler's own power scope (Delney); "
                     "without it a restricted doubler's support is roughly doubled.")

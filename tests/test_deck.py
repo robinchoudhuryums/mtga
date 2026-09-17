@@ -3686,6 +3686,39 @@ class TestDoublerCoSignal:
         as an ordinary artifact."""
         assert deck.doubler_axis(self.LIFE_DBL) == "lifegain"
 
+    # The ACTIVE voice of the same effect, missed until 2026-09-17. Real card text.
+    TOKEN_DBL_ACTIVE = ("If an effect would create one or more tokens under your control, "
+                        "it creates twice that many of those tokens instead.")
+    COUNTER_DBL_ACTIVE = ("If you would put one or more counters on a permanent or player, "
+                          "put twice that many of each of those kinds of counters on that "
+                          "permanent or player instead.")
+    COUNTER_PLUS1_ACTIVE = ("If you would put one or more counters on a permanent you "
+                            "control, put that many plus one of each of those kinds of "
+                            "counters on that permanent instead.")
+    OPPONENT_HALVING = ("If an opponent would put one or more counters on a permanent or "
+                        "player, they put half that many of each of those kinds of "
+                        "counters on that permanent or player instead, rounded down.")
+
+    def test_active_voice_doublers_are_detected(self):
+        """DOUBLING SEASON — the card the mechanic is named after — scored None on BOTH of
+        its axes, because only the passive voice was matched. Elspeth, Storm Slayer says
+        "twice that many of those tokens ARE CREATED instead" and matched; Doubling Season
+        says "IT CREATES twice that many" and did not. G-67's family-disagreement shape."""
+        assert deck.doubler_axis(self.TOKEN_DBL_ACTIVE) == "tokens"
+        assert deck.doubler_axis(self.COUNTER_DBL_ACTIVE) == "counters"
+
+    def test_a_plus_N_counter_replacement_is_not_a_doubler(self):
+        """The same discriminator the lifegain axis needs, one axis over: Doc Samson,
+        Super Psychiatrist is "that many PLUS ONE", not x2. This is why the active branch
+        requires the literal "twice that many" and does not reuse the passive branch's
+        looser `instead`."""
+        assert deck.doubler_axis(self.COUNTER_PLUS1_ACTIVE) is None
+
+    def test_an_opponent_scoped_halving_is_not_your_doubler(self):
+        """Vorinclex's second clause HALVES an opponent's counters. Scoping the active
+        branch to "an effect"/"you" is what keeps it out."""
+        assert deck.doubler_axis(self.OPPONENT_HALVING) is None
+
     def test_a_plus_N_lifegain_replacement_is_not_a_doubler(self):
         """The discriminator the lifegain axis needs: a replacement that is NOT a doubling
         is templated identically. Angel of Vitality is +1, not x2, and would qualify on the
@@ -4491,6 +4524,13 @@ class TestScreenSaturationAndCounts:
 
     def test_key_saturation_threshold_exists_and_is_a_fraction(self):
         assert 0 < deck._SCREEN_KEY_SATURATED < 1
+
+    def test_roster_key_saturation_threshold_is_stricter_than_the_pile_one(self):
+        """`suggest-homes` had no saturation warning at all while `screen` has had one
+        since G-47, so a card KEY in a QUARTER of the roster was presented exactly like
+        one KEY in two decks. The roster bar is LOWER because the denominators differ: a
+        pile is pre-filtered to one deck's plausible adds, a roster is every deck."""
+        assert 0 < deck._HOMES_KEY_SATURATED < deck._SCREEN_KEY_SATURATED
 
     def test_the_signature_rescue_is_preserved(self):
         """A tightening was TRIED and rejected: requiring a non-generic signature theme

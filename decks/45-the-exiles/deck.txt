@@ -1,6 +1,6 @@
 #: name: The Exiles
 #: format: standard
-#: arena: 45 The Exiles, 994ff050-0f38-4c7c-b187-eef8d44e5ec2
+#: arena: 45 The Exiles, c5b28301-7213-4130-b505-e8b75f48d382
 #: colors: WBR
 #: plan: midrange
 #: archetype: Mardu (W/B/R) CAST-FROM-EXILE PAYOFF — the deck that gets PAID for casting

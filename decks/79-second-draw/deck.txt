@@ -1,5 +1,6 @@
 #: name: Second Draw
 #: format: Standard
+#: arena: 79 Gambit's Draw, 2fde6f4f-8de8-49a5-8a44-0980735f14c6
 #: colors: WU
 #: plan: midrange
 #: tier: B (PROVISIONAL) — deliberately one band UNDER the metrics floor, which reads A on interaction 7 +1?

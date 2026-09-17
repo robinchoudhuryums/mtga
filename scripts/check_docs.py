@@ -72,7 +72,15 @@ REQUIRED_LABELS = ["Invariant Library", "Test Command", "Subsystems"]
 
 # The sections whose long form lives in an evidence file.
 SPLIT_SECTIONS = ["Common Gotchas", "Known Issues", "Cycle Workflow Config"]
-LINE_CAP = 15               # max lines for one bullet in a split section
+WORD_CAP = 300              # max WORDS for one bullet in a split section
+# WORDS, not lines, since 2026-09-17. The cap was 15 LINES — the right rule measured on a
+# property of the FORMATTING, and a bullet evades it simply by not wrapping. Measured at
+# the time: the four longest rules in the file ALL passed the line cap, and two of them
+# (G-84 at 551 words, G-83 at 269) sat on a SINGLE line. A 300-word cap sits above p90 of
+# the rule distribution (224), so it targets outliers rather than churning ordinary rules;
+# when it was introduced it fired on exactly the four it was meant to: G-09, G-27, G-33,
+# G-84. A line cap also punished the fix — wrapping a trimmed bullet to a readable width
+# turned a passing 1-line rule into a failing 21-line one.
 
 # {2,3}: gotchas are at G-67 and rising roughly monotonically — a two-digit cap
 # would make the first [G-100] invisible to BOTH scans at once (reference and
@@ -187,10 +195,11 @@ def check():
     # (5) the line cap that stops the two files re-fusing
     for name in SPLIT_SECTIONS:
         for head, buf in _section_bullets(lines, name):
-            if len(buf) > LINE_CAP:
+            words = sum(len(ln.split()) for ln in buf)
+            if words > WORD_CAP:
                 title = re.sub(r"\s+", " ", head)[:64]
                 errs.append(
-                    f"CLAUDE.md '{name}' bullet is {len(buf)} lines (cap {LINE_CAP}): "
+                    f"CLAUDE.md '{name}' bullet is {words} words (cap {WORD_CAP}): "
                     f"{title}… — that length means the evidence has moved back in. Keep "
                     "the rule and the live residual here; put the rest in its "
                     "docs/gotchas.md section.")
@@ -340,6 +349,72 @@ def _live_figures():
             return _spread[band]
         return get
 
+    _pool_cache = {}
+
+    def _pool():
+        """card-pool.csv rows, read once for every figure below that needs them."""
+        if "rows" not in _pool_cache:
+            with open(os.path.join(REPO_ROOT, "card-pool.csv"), newline="",
+                      encoding="utf-8") as fh:
+                _pool_cache["rows"] = list(_csv.DictReader(fh))
+        return _pool_cache["rows"]
+
+    def _cost_scale_cards():
+        """G-83's pool population, through `cost_scale_resource` itself."""
+        import deck
+        return sum(1 for r in _pool() if deck.cost_scale_resource(r.get("Card Text") or ""))
+
+    def _granted_evergreen_cards():
+        """G-80's population, through `granted_keywords` itself. Scoped to the TWELVE the
+        prose names: `_GRANTED_KEYWORDS` has held seventeen since the 2026-09-02 addition
+        of ward/convoke/affinity/prowess/flash, so counting the whole list would silently
+        answer a different question than the sentence asks. Rendered with a thousands
+        separator because CLAUDE.md writes it that way."""
+        import tag_synergies as _T
+        extra = {"ward", "convoke", "affinity", "prowess", "flash"}
+        twelve = [k for k in _T._GRANTED_KEYWORDS if k not in extra]
+        n = sum(1 for r in _pool()
+                if any(k in twelve for k in _T.granted_keywords(r.get("Card Text") or "")))
+        return f"{n:,}"
+
+    _tm_cache = {}
+
+    def _type_matters_counts():
+        """K-03's pair from ONE pool walk -> (tags, cards), through `_TYPE_MATTERS_RES`
+        itself. Note the patterns are CASE-SENSITIVE (they match `Mount`/`Vehicle`), so
+        they read `_clean_text` output un-lowered — lowercasing first returns a clean
+        ZERO, which is the shape that reads as a finding rather than a bug (G-01)."""
+        if "v" not in _tm_cache:
+            import tag_synergies as _T
+            tags = cards = 0
+            for r in _pool():
+                c = _T._clean_text(r.get("Card Text") or "")
+                n = sum(1 for rx in _T._TYPE_MATTERS_RES if rx.search(c))
+                if n:
+                    cards += 1
+                    tags += n
+            _tm_cache["v"] = (tags, cards)
+        return _tm_cache["v"]
+
+    _ledger_cache = {}
+
+    def _ledger_rank_stats():
+        """G-22's pair -> (rows carrying an Add Rank, their MEDIAN). Read through
+        `deck.load_recommendations`, never a second CSV reader. This is a DOC gate, not a
+        scoring function, so it is outside the G-56 ban that `tests/test_recommendations`
+        enforces on `cut_keep_score` and friends — and it must stay that way."""
+        if "v" not in _ledger_cache:
+            import statistics as _st
+            import deck
+            ranks = sorted(int(r["Add Rank"]) for r in deck.load_recommendations()
+                           if (r.get("Add Rank") or "").strip().isdigit())
+            _ledger_cache["v"] = ((len(ranks), int(_st.median(ranks))) if ranks else (0, 0))
+        return _ledger_cache["v"]
+
+    def _test_files():
+        import glob as _glob
+        return len(_glob.glob(os.path.join(REPO_ROOT, "tests", "test_*.py")))
+
     return [
         # Each anchored on the words AROUND its own number, never on its neighbours'
         # values — otherwise correcting A silently kills B's and C's patterns, and a dead
@@ -393,6 +468,31 @@ def _live_figures():
          r"across the \*\*(\d+) decks that print an effective figure\*\*", _unpriced_population),
         ("C-01 model-sanity gates",
          r"INV-01…04 plus \*\*(\w+) model-sanity", lambda: _gate_word()),
+        # ── Added 2026-09-17. Before this the registry held 14 entries against roughly 40
+        # LIVE claims in CLAUDE.md (the other ~1,100 numeric tokens are dated history,
+        # which cannot rot). Every entry below is a number the file cites as EVIDENCE that
+        # is derivable from a real predicate and moves on a pool rebuild or a swap — the
+        # same bar G-84's and K-15's entries set. FIVE of the seven were ALREADY STALE when
+        # registered, which is the argument for the registry rather than against it.
+        ("G-83 cost-scale pool cards",
+         r"\*\*(\d+) pool cards\*\* resolve to a countable type", _cost_scale_cards),
+        ("G-80 granted-evergreen pool cards",
+         r"\*\*([\d,]+) pool cards grant one of the twelve evergreens\*\*",
+         _granted_evergreen_cards),
+        ("K-03 type-matters tags",
+         r"`_TYPE_MATTERS_RES`, (\d+) tags across", lambda: _type_matters_counts()[0]),
+        ("K-03 type-matters cards",
+         r"`_TYPE_MATTERS_RES`, \d+ tags across (\d+) pool cards",
+         lambda: _type_matters_counts()[1]),
+        # G-22's pair. They move on EVERY applied swap — including the ones this repo's own
+        # skills make — so they are the fastest-drifting figures in the file, and the
+        # argument the median-rank rule rests on.
+        ("G-22 applied swaps with a rank",
+         r"across \*\*(\d+) applied swaps", lambda: _ledger_rank_stats()[0]),
+        ("G-22 median add rank",
+         r"the MEDIAN rank is (\d+)\*\*", lambda: _ledger_rank_stats()[1]),
+        ("C-07 test files",
+         r"tests/ \((\d+) test files", _test_files),
     ]
 
 
