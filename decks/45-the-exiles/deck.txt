@@ -273,6 +273,21 @@
 #: notes: finding an empty graveyard. Joshua read as unowned when it was added; the user
 #: notes: reported otherwise and it was reconciled in the same session (G-10 lower bound
 #: notes: again), so the deck stays FULLY OWNED at zero craft targets.
+#: notes: CRUELCLAW WAS PROPOSED FOUR TIMES AND DECLINED FOUR TIMES (2026-09-17), and the
+#: notes: reason is NOT any of the individual comparisons -- it is the COST, and the cost
+#: notes: got worse as this session's own manabase work proceeded. Black sources went
+#: notes: 14 -> 12 -> 10 -> 9 across three approved changes, taking The Infamous Cruelclaw's
+#: notes: {1}{B}{R} from roughly 85% on turn three to 75.6%. It was a reasonable card here
+#: notes: when black was five cards on fourteen sources; it is not one at four cards on
+#: notes: nine. Making it work means reversing the black direction, which was measured and
+#: notes: is the worse deck. It already has homes in 44a Outlaw Heist and 55a Spellstorm.
+#: notes: The incumbents it lost to, for the record: Sheriff of Safe Passage (a printed 0/0
+#: notes: that enters with one counter plus one per other creature, and whose plot is a
+#: notes: GUARANTEED cast-from-exile), Zuko, Exiled Prince (firebending 3 exactly pays for
+#: notes: his own "{3}: exile the top card, you may play it", so every attack is a free
+#: notes: repeating 4/4 payoff) and Glider Staff (95.2% against Cruelclaw's 75.6%, with six
+#: notes: worthwhile airbend targets -- airbending Anticausal Vestige fires its leaves-play
+#: notes: trigger, recasts a {6} for {2}, and pays all four payoffs in one turn).
 
 # Payoffs — every one triggers on "cast a spell from exile"
 1 Spider-Verse (SPM) 93
