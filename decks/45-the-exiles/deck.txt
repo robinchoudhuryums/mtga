@@ -58,8 +58,8 @@
 #: archetype: Mardu VARIANT of Eternal Flame — rather than a core deck of its own. It is
 #: archetype: kept standalone here only because Mardu is an otherwise empty color slot;
 #: archetype: if the go-wide plan does not separate it in play, fold it into 24 as 24c.
-#: tier: B — PROVISIONAL (unplayed brew). The metrics floor reads A on interaction 8
-#: tier: across a 3.43 curve, four of it able to answer a noncreature permanent, and the
+#: tier: B — PROVISIONAL (unplayed brew). The metrics floor reads A on interaction 10
+#: tier: across a 3.49 curve, four of it able to answer a noncreature permanent, and the
 #: tier: deck is FULLY OWNED — zero craft targets, unusual for a from-scratch build. Held
 #: tier: a band below the floor by three things the floor cannot see:
 #: tier: 1. THE 76% OVERLAP WITH 24. A deck that measurably duplicates an existing A-tier
@@ -211,6 +211,34 @@
 #: notes: STILL THE WORST CARD: Aven Interrupter at 76.0%. Its {1}{W}{W} on turn three
 #: notes: wants 22 white sources, which a three-colour deck cannot reach -- "cut it" is a
 #: notes: legitimate answer here, not just "fix the lands".
+#: notes: 2026-09-17 (late): -Heroes' Hangout/+Tragic Trajectory, -Zidane/+Chandra,
+#: notes: Flameshaper. Interaction 8 -> 10, central themes 18 -> 19, avg MV 3.43 -> 3.49.
+#: notes: Tragic Trajectory is {B} for -10/-10 whenever VOID is on, and Void is live off
+#: notes: NINE enablers here (Appa, Weftstalker Ardent, Anticausal Vestige, Nova Hellkite,
+#: notes: Starfield Shepherd, Exalted Sunborn, Sheriff, Glider Staff, Airbender's
+#: notes: Reversal). It refills the interaction the pile pass drained.
+#: notes: CHANDRA CAME IN FOR ZIDANE, NOT QUINTORIUS, AND THE DISTINCTION IS THE WHOLE
+#: notes: POINT: Quintorius is one of the four PAYOFFS ("whenever you cast a spell from
+#: notes: exile, 2 damage to each opponent and gain 2 life") and is `#: protect:`-named.
+#: notes: Cutting a payoff for another ENABLER, in a deck already running a dozen-plus
+#: notes: enablers against four payoffs, makes every remaining enabler worth less. Zidane
+#: notes: was the right cut instead: MV 5, a one-shot Threaten, and its second clause
+#: notes: ("whenever an opponent gains control of a permanent from you") is near-dead
+#: notes: because nothing here gives them permanents.
+#: notes: THE CHANDRA LINE WORTH KNOWING: +1 copies a creature you control with HASTE.
+#: notes: Copy ETALI, attack immediately, and its trigger exiles the top card of each
+#: notes: player's library and casts them free -- every one of those is a cast FROM EXILE,
+#: notes: so all four payoffs fire off one +1. Chandra reads 86.2% on turn five and 92.5%
+#: notes: by seven against 16 red sources; it is a late card, not a curve card.
+#: notes: THREE PROPOSALS DECLINED the same day, recorded so they are not re-litigated:
+#: notes: Joshua for Jessica Jones (Jessica is a REPEATABLE impulse engine whose X is her
+#: notes: own power, so she scales with Fire Lord Zuko / Web-Warriors / Requisition Raid,
+#: notes: and she costs no card per activation; Joshua is a craft whose chapter III wants a
+#: notes: graveyard this deck has ZERO fill for). Cruelclaw for Sheriff of Safe Passage
+#: notes: (Sheriff is printed 0/0 but enters with one counter PLUS one per other creature
+#: notes: you control -- routinely a 4/4-6/6 on a wide board -- and its plot is a
+#: notes: GUARANTEED cast-from-exile on your own schedule, where Cruelclaw's needs combat
+#: notes: damage to connect). Chandra for Quintorius, per the paragraph above.
 
 # Payoffs — every one triggers on "cast a spell from exile"
 1 Spider-Verse (SPM) 93
@@ -218,10 +246,9 @@
 1 Fire Lord Zuko (TLA) 221
 1 Quintorius Kand (LCI) 238
 
-1 Zidane, Tantalus Thief (FIN) 251
+1 Chandra, Flameshaper (FDN) 81
 # Impulse enablers — exile off your own library
 1 Kellan, Planar Trailblazer (FDN) 91
-1 Heroes' Hangout (MSC) 804
 1 Exalted Sunborn (EOE) 15
 1 Jessica Jones, Private Eye (MSH) 139
 1 Lightning, Security Sergeant (FIN) 560
@@ -256,6 +283,7 @@
 1 Requisition Raid (SOA) 10
 1 Valorous Stance (FDN) 583
 1 Untimely Malfunction (DSK) 161
+1 Tragic Trajectory (EOE) 122
 
 # Lands
 1 Blood Crypt (ECL) 262
@@ -277,5 +305,5 @@
 1 Swamp (MSH) 291
 
 # Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 45
-#~ -Heroes' Hangout | +Hex Magic | owned; both are red impulse enablers and Hex Magic is the bigger effect — "exile all the cards from your hand, then draw that many, until end of your NEXT turn you may play cards exiled this way" refills AND makes every card a 4/4 payoff trigger, where Heroes' Hangout exiles two and lets you play ONE. Held out of the 60 only because the pile pass already added five cards and the curve moved 3.31 -> 3.43.
+#~ note: applied — Tragic Trajectory in for Heroes' Hangout.
 #~ note: KRANG & SHREDDER — CONSIDERED AND DECLINED 2026-09-17, recorded so it is not re-proposed. Its {4}{U/B}{U/B} reads as NON-BINDING hybrid pips in BOTH `consistency` (whose cast_probability docstring says hybrids are "strictly easier, so the strict demand is the binding constraint") and `deck.py mana` (which files them under Hybrid pips). That premise holds only if you have BOTH colours, and this deck runs ZERO blue — so it binds as {4}{B}{B}. Fed the honest demand through deck.cast_probability: 70.5% T5 / 75.6% T6 / 80.1% T7 at the 12 black sources it had, against a Karsten target of 17 sources for 90% on turn six. `consistency` printed 100%, so the false all-clear was worth ~24 points. DECIDING FACT: the L1 manabase applied the same day drops black to 10, which takes Krang to 64.6% on turn six — fixing the mana base for the deck makes this card materially worse, and it was the only card asking black to grow.
