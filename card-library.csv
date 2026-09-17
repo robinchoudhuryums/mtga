@@ -2557,7 +2557,7 @@ Hardened Academic,Creature — Bird Cleric,"Flying, haste
 Discard a card: This creature gains lifelink until end of turn.
 Whenever one or more cards leave your graveyard, put a +1/+1 counter on target creature you control.",W/R,Bird; Cleric; counters; graveyard; lifegain; flying; evasion; haste; aggro; lifelink,SOS,194,1
 Pursue the Past,Sorcery,"You gain 2 life. You may discard a card. If you do, draw two cards.
-Flashback {2}{R}{W} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",W/R,graveyard; lifegain; card draw; flashback; recursion; spellslinger,SOS,216,1
+Flashback {2}{R}{W} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",W/R,graveyard; lifegain; card draw; flashback; recursion; spellslinger,SOS,216,2
 Mechanized Ninja Cavalry,Artifact Creature — Robot Ninja,"When this creature enters, create a 1/1 colorless Robot artifact creature token.",W/R,Robot; Ninja; tokens; etb,TMT,156,1
 "Ragost, Deft Gastronaut",Legendary Creature — Lobster Citizen,"Artifacts you control are Foods in addition to their other types and have ""{2}, {T}, Sacrifice this artifact: You gain 3 life.""
 {1}, {T}, Sacrifice a Food: Ragost deals 3 damage to each opponent.
@@ -3116,7 +3116,7 @@ Valiant — Whenever this creature becomes the target of a spell or ability you 
 Rayblade Trooper,Creature — Human Soldier,"When this creature enters, put a +1/+1 counter on target creature you control.
 Whenever a nontoken creature you control with a +1/+1 counter on it dies, create a 1/1 white Human Soldier creature token.
 Warp {1}{W} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",W,Human; Soldier; counters; tokens; etb; warp; tempo; cost-reduction; exile cast,EOE,30,1
-Terrapact Intimidator,Creature — Kavu Scout,"When this creature enters, target opponent may have you create two Lander tokens. If they don't, put two +1/+1 counters on this creature. (A Lander token is an artifact with ""{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."")",R,Kavu; Scout; counters; sacrifice; tokens; ramp; etb,EOE,164,1
+Terrapact Intimidator,Creature — Kavu Scout,"When this creature enters, target opponent may have you create two Lander tokens. If they don't, put two +1/+1 counters on this creature. (A Lander token is an artifact with ""{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."")",R,Kavu; Scout; counters; sacrifice; tokens; ramp; etb,EOE,164,2
 Shipwreck Dowser,Creature — Merfolk Wizard,"Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
 When this creature enters, return target instant or sorcery card from your graveyard to your hand.",U,Merfolk; Wizard; graveyard; etb; pump; prowess; spellslinger; tempo,FDN,596,1
 Queen Brahne,Legendary Creature — Human Noble,"Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
@@ -4083,7 +4083,7 @@ Meat Locker,Enchantment — Room // Enchantment — Room,"When you unlock this d
 Scrap Compactor,Artifact,"{3}, {T}, Sacrifice this artifact: It deals 3 damage to target creature.
 {6}, {T}, Sacrifice this artifact: Destroy target creature or Vehicle.",Colorless,sacrifice; removal; burn,DFT,242,1
 Thunder Salvo,Instant,"Thunder Salvo deals X damage to target creature, where X is 2 plus the number of other spells you've cast this turn.",R,burn,OTJ,150,1
-Crime Novelist,Creature — Goblin Bard,"Whenever you sacrifice an artifact, put a +1/+1 counter on this creature and add {R}.",R,Goblin; Bard; counters; sacrifice,MKM,121,1
+Crime Novelist,Creature — Goblin Bard,"Whenever you sacrifice an artifact, put a +1/+1 counter on this creature and add {R}.",R,Goblin; Bard; counters; sacrifice,MKM,121,2
 "Doc Aurlock, Grizzled Genius",Legendary Creature — Bear Druid,"Spells you cast from your graveyard or from exile cost {2} less to cast.
 Plotting cards from your hand costs {2} less.",U/G,Bear; Druid; graveyard; cost-reduction; exile cast,OTJ,201,1
 Equilibrium Adept,Creature — Dog Monk,"When this creature enters, exile the top card of your library. Until the end of your next turn, you may play that card.
@@ -5814,3 +5814,162 @@ Shattered Sanctum,Land,"This land enters tapped unless you control two or more o
 I, II — Rising Flames — Phoenix deals 2 damage to each opponent.
 III — Flames of Rebirth — Return any number of target creature cards with total mana value 6 or less from your graveyard to the battlefield. Exile Phoenix, then return it to the battlefield (front face up).
 Flying, lifelink",W/R,Human; Noble; Wizard; Saga; Phoenix; reanimator; graveyard; lifegain; card draw; burn; etb; saga; noncombat damage; flying; evasion; lifelink; transform,FIN,229,1
+Spider-UK,Legendary Creature — Spider Human Hero,"Web-slinging {2}{W} (You may cast this spell for {2}{W} if you also return a tapped creature you control to its owner's hand.)
+At the beginning of your end step, if two or more creatures entered the battlefield under your control this turn, you draw a card and gain 2 life.",W,Spider; Human; Hero; lifegain; card draw; bounce; web-slinging; evasion; tempo,MSC,777,1
+White Lotus Tile,Artifact,"This artifact enters tapped.
+{T}: Add X mana of any one color, where X is the greatest number of creatures you control that have a creature type in common.",Colorless,mana,TLA,262,1
+Patchwork Banner,Artifact,"As this artifact enters, choose a creature type.
+Creatures you control of the chosen type get +1/+1.
+{T}: Add one mana of any color.",Colorless,mana; pump,BLB,247,1
+Regal Imperiosaur,Creature — Dinosaur,Other Dinosaurs you control get +1/+1.,G,Dinosaur; pump,DFT,177,1
+Thrashing Brontodon,Creature — Dinosaur,"{1}, Sacrifice this creature: Destroy target artifact or enchantment.",G,Dinosaur; sacrifice; removal,FDN,560,1
+Llanowar Elves,Creature — Elf Druid,{T}: Add {G}.,G,Elf; Druid; mana,FDN,227,1
+Omniscience,Enchantment,You may cast spells from your hand without paying their mana costs.,U,,FDN,161,1
+"Bonny Pall, Clearcutter",Legendary Creature — Giant Scout,"Reach
+When Bonny Pall enters, create Beau, a legendary blue Ox creature token with ""Beau's power and toughness are each equal to the number of lands you control.""
+Whenever you attack, draw a card, then you may put a land card from your hand or graveyard onto the battlefield.",U/G,Giant; Scout; graveyard; card draw; tokens; etb; reach; defense,OTJ,196,1
+The Seriema,Legendary Artifact — Spacecraft,"When The Seriema enters, search your library for a legendary creature card, reveal it, put it into your hand, then shuffle.
+Station (Tap another creature you control: Put charge counters equal to its power on this Spacecraft. Station only as a sorcery. It's an artifact creature at 7+.)
+7+ | Flying
+Other tapped legendary creatures you control have indestructible.",W,Spacecraft; etb; station; counters; artifacts; indestructible; resilience,EOE,35,1
+Dubious Delicacy,Artifact — Food,"Flash
+When this artifact enters, up to one target creature gets -3/-3 until end of turn.
+{2}, {T}, Sacrifice this artifact: You gain 3 life.
+{2}, {T}, Sacrifice this artifact: Target opponent loses 3 life.",B,Food; lifegain; sacrifice; etb; removal; flash; tempo,EOE,96,1
+Bard the Bowman,Legendary Creature — Human Archer,"Reach
+Whenever you draw your second card each turn, put a +1/+1 counter on target creature. It gains lifelink until end of turn.",W/U,Human; Archer; counters; lifegain; reach; defense; lifelink,HOB,145,1
+Lake-town Toymaker,Creature — Human Artificer,"At the beginning of combat on your turn, if you've drawn two or more cards this turn, another target creature you control gets +3/+0 and gains first strike until end of turn.",W,Human; Artificer; pump; first strike; combat,HOB,19,1
+School Daze,Instant,"Choose one —
+• Do Homework — Draw three cards.
+• Fight Crime — Counter target spell. Draw a card.",U,counterspell; card draw,SPM,42,1
+"Krang, Master Mind",Legendary Artifact Creature — Utrom Warrior,"Affinity for artifacts (This spell costs {1} less to cast for each artifact you control.)
+When Krang enters, if you have fewer than four cards in hand, draw cards equal to the difference.
+Krang gets +1/+0 for each other artifact you control.",U,Utrom; Warrior; cost-reduction; card draw; etb; artifacts; pump; affinity,TMT,43,1
+Valkyrie Aerial Unit,Artifact Creature — Construct,"Affinity for artifacts (This spell costs {1} less to cast for each artifact you control.)
+Flying
+When this creature enters, surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)",U,Construct; graveyard; cost-reduction; etb; selection; flying; evasion; surveil; affinity; artifacts,FIN,84,1
+Memory Guardian,Artifact Creature — Robot Artificer,"Affinity for artifacts (This spell costs {1} less to cast for each artifact you control.)
+Flying",U,Robot; Artificer; cost-reduction; flying; evasion; affinity; artifacts,DFT,49,1
+Chrome Dome,Artifact Creature — Robot Ninja,"Other artifact creatures you control get +1/+0.
+{5}: Create a token that's a copy of another target artifact you control. That token gains haste. Sacrifice it at the beginning of the next end step.",Colorless,Robot; Ninja; sacrifice; tokens; artifacts; pump; haste; aggro,TMT,172,1
+"Don & Raph, Hard Science",Legendary Creature — Mutant Ninja Turtle,"Menace
+Whenever Don & Raph attack, the next noncreature spell you cast this turn has affinity for artifacts. (It costs {1} less to cast for each artifact you control.)",U/R,Mutant; Ninja; Turtle; cost-reduction; menace; evasion; affinity; artifacts,TMT,144,1
+Trade the Helm,Sorcery,"Exchange control of target artifact or creature you control and target artifact or creature an opponent controls.
+Cycling {2} ({2}, Discard this card: Draw a card.)",U,card draw; cycling,DFT,69,1
+Mechan Assembler,Artifact Creature — Robot Artificer,"Whenever another artifact you control enters, create a 2/2 colorless Robot artifact creature token. This ability triggers only once each turn.",U,Robot; Artificer; tokens; artifacts,EOE,63,1
+Desculpting Blast,Instant,"Return target nonland permanent to its owner's hand. If it was attacking, create a 1/1 colorless Drone artifact creature token with flying and ""This token can block only creatures with flying.""",U,tokens; bounce,EOE,54,1
+Three Steps Ahead,Instant,"Spree (Choose one or more additional costs.)
++ {1}{U} — Counter target spell.
++ {3} — Create a token that's a copy of target artifact or creature you control.
++ {2} — Draw two cards, then discard a card.",U,counterspell; card draw; tokens; spree; value,OTJ,75,1
+Henchbots,Artifact Creature — Robot,"When this creature enters, exile target tapped creature an opponent controls until this creature leaves the battlefield.",Colorless,Robot; removal; etb,TMT,174,1
+Tangle Tumbler,Artifact — Vehicle,"Vigilance
+{3}, {T}: Put a +1/+1 counter on target creature.
+Tap two untapped tokens you control: This Vehicle becomes an artifact creature until end of turn.",Colorless,Vehicle; counters; vehicle; vigilance; combat,BLB,250,1
+The Prima Vista,Legendary Artifact — Vehicle,"Flying
+Whenever you cast a noncreature spell, if at least four mana was spent to cast it, The Prima Vista becomes an artifact creature until end of turn.
+Crew 2 (Tap any number of creatures you control with total power 2 or more: This Vehicle becomes an artifact creature until end of turn.)",U,Vehicle; vehicle; spellslinger; flying; evasion; crew; vehicles,FIN,64,1
+Fire Nation Warship,Artifact — Vehicle,"Reach
+When this Vehicle dies, create a Clue token. (It's an artifact with ""{2}, Sacrifice this token: Draw a card."")
+Crew 2 (Tap any number of creatures you control with total power 2 or more: This Vehicle becomes an artifact creature until end of turn.)",Colorless,Vehicle; card draw; tokens; clue; vehicle; reach; defense; crew; vehicles,TLA,256,1
+The Eternity Elevator,Legendary Artifact — Spacecraft,"{T}: Add {C}{C}{C}.
+Station (Tap another creature you control: Put charge counters equal to its power on this Spacecraft. Station only as a sorcery.)
+20+ | {T}: Add X mana of any one color, where X is the number of charge counters on The Eternity Elevator.",Colorless,Spacecraft; mana; station; counters; artifacts,EOE,241,1
+The Regalia,Legendary Artifact — Vehicle,"Haste
+Whenever The Regalia attacks, reveal cards from the top of your library until you reveal a land card. Put that card onto the battlefield tapped and the rest on the bottom of your library in a random order.
+Crew 1",Colorless,Vehicle; vehicle; haste; aggro; crew; vehicles,FIN,267,1
+Invasion Submersible,Artifact — Vehicle,"When this Vehicle enters, return up to one other target nonland permanent to its owner's hand.
+Exhaust — Waterbend {3}: This Vehicle becomes an artifact creature. Put three +1/+1 counters on it. (While paying a waterbend cost, you can tap your artifacts and creatures to help. Each one pays for {1}. Activate each exhaust ability only once.)",U,Vehicle; counters; etb; vehicle; bounce; exhaust; payoff; waterbend; bending,TLA,57,1
+Reckless Velocitaur,Creature — Minotaur Pilot,"Whenever this creature saddles a Mount or crews a Vehicle during your main phase, that Mount or Vehicle gets +2/+0 and gains trample until end of turn.",R,Minotaur; Pilot; Mount; Vehicle; pump; trample; evasion,DFT,144,1
+"Mica, Reader of Ruins",Legendary Creature — Human Artificer,"Ward—Pay 3 life. (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays 3 life.)
+Whenever you cast an instant or sorcery spell, you may sacrifice an artifact. If you do, copy that spell and you may choose new targets for the copy.",R,Human; Artificer; sacrifice; spellslinger; spell copy; ward; protection,SOS,124,1
+Kavaron Harrier,Artifact Creature — Robot Soldier,"Whenever this creature attacks, you may pay {2}. If you do, create a 2/2 colorless Robot artifact creature token that's tapped and attacking. Sacrifice that token at end of combat.",R,Robot; Soldier; sacrifice; tokens,EOE,139,1
+Extinguisher Battleship,Artifact — Spacecraft,"When this Spacecraft enters, destroy target noncreature permanent. Then this Spacecraft deals 4 damage to each creature.
+Station (Tap another creature you control: Put charge counters equal to its power on this Spacecraft. Station only as a sorcery. It's an artifact creature at 5+.)
+5+ | Flying, trample",Colorless,Spacecraft; removal; burn; etb; station; counters; artifacts,EOE,242,1
+Reef Roads,Land,"This land enters tapped unless you control a Mount or Vehicle.
+{T}: Add {U}.
+{1}{U}, {T}, Sacrifice this land: Create a 1/1 colorless Pilot creature token with ""This token saddles Mounts and crews Vehicles as though its power were 2 greater."" Activate only as a sorcery.",U,Mount; sacrifice; tokens; mana,DFT,259,1
+Volatile Fault,Land — Cave,"{T}: Add {C}.
+{1}, {T}, Sacrifice this land: Destroy target nonbasic land an opponent controls. That player may search their library for a basic land card, put it onto the battlefield, then shuffle. You create a Treasure token.",Colorless,Cave; sacrifice; tokens; removal; mana; treasure,LCI,286,1
+"Zodiark, Umbral God",Legendary Creature — God,"Indestructible
+When Zodiark enters, each player sacrifices half the non-God creatures they control of their choice, rounded down.
+Whenever a player sacrifices another creature, put a +1/+1 counter on Zodiark.",B,God; counters; sacrifice; etb; indestructible; resilience,FIN,128,1
+Susurian Voidborn,Creature — Vampire Soldier,"Whenever this creature or another creature or artifact you control dies, target opponent loses 1 life and you gain 1 life.
+Warp {B} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",B,Vampire; Soldier; lifegain; exile cast; warp; tempo; cost-reduction,EOE,118,1
+Elegy Acolyte,Creature — Human Cleric,"Lifelink
+Whenever one or more creatures you control deal combat damage to a player, you draw a card and lose 1 life.
+Void — At the beginning of your end step, if a nonland permanent left the battlefield this turn or a spell was warped this turn, create a 2/2 colorless Robot artifact creature token.",B,Human; Cleric; lifegain; pay life; card draw; tokens; lifelink; void; graveyard; payoff,EOE,97,1
+Vincent Valentine,Legendary Creature — Assassin // Legendary Creature — Werewolf Beast,"Whenever a creature an opponent controls dies, put a number of +1/+1 counters on Vincent Valentine equal to that creature's power.
+Whenever Vincent Valentine attacks, you may transform it. // Trample, lifelink
+When Galian Beast dies, return it to the battlefield tapped (front face up).",B,Assassin; Werewolf; Beast; counters; lifegain; lifelink; transform; trample; evasion,FIN,125,1
+Hidden Necropolis,Land — Cave,"This land enters tapped.
+{T}: Add {B}.
+{4}{B}, {T}, Sacrifice this land: Discover 4. Activate only as a sorcery. (Exile cards from the top of your library until you exile a nonland card with mana value 4 or less. Cast it without paying its mana cost or put it into your hand. Put the rest on the bottom in a random order.)",B,Cave; card advantage; sacrifice; mana; discover; value; spellslinger,LCI,275,1
+Full Throttle,Sorcery,"After this main phase, there are two additional combat phases.
+At the beginning of each combat this turn, untap all creatures that attacked this turn.",R,,DFT,127,1
+Sword of Wealth and Power,Artifact — Equipment,"Equipped creature gets +2/+2 and has protection from instants and from sorceries.
+Whenever equipped creature deals combat damage to a player, create a Treasure token. When you next cast an instant or sorcery spell this turn, copy that spell. You may choose new targets for the copy.
+Equip {2}",Colorless,Equipment; tokens; treasure; equipment; pump; spell copy; equip,BIG,26,1
+Frontier Bivouac,Land,"This land enters tapped.
+{T}: Add {G}, {U}, or {R}.",U/R/G,mana,TDM,256,1
+"Judith, Carnage Connoisseur",Legendary Creature — Human Shaman,"Whenever you cast an instant or sorcery spell, choose one —
+• That spell gains deathtouch and lifelink.
+• Create a 2/2 red Imp creature token with ""When this token dies, it deals 2 damage to each opponent.""",B/R,Human; Shaman; lifegain; tokens; burn; spellslinger; noncombat damage; deathtouch; combat; removal; lifelink,MKM,210,1
+Cori Mountain Stalwart,Creature — Human Monk,"Flurry — Whenever you cast your second spell each turn, this creature deals 2 damage to each opponent and you gain 2 life.",W/R,Human; Monk; lifegain; burn; noncombat damage; flurry; spellslinger,TDM,175,2
+Brazen Collector,Creature — Raccoon Rogue,"First strike
+Whenever this creature attacks, add {R}. Until end of turn, you don't lose this mana as steps and phases end.",R,Raccoon; Rogue; first strike; combat,BLB,128,1
+Sunstar Lightsmith,Creature — Human Artificer,"Whenever you cast your second spell each turn, put a +1/+1 counter on this creature and draw a card.",W,Human; Artificer; counters; card draw,EOE,42,1
+"Kirol, History Buff",Legendary Creature — Vampire Cleric // Sorcery,"Whenever one or more cards leave your graveyard, Kirol becomes prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.) // Mill a card. Put two +1/+1 counters on target creature. It gains trample until end of turn.",W/R,Vampire; Cleric; counters; graveyard; mill; prepared; spellslinger; tempo; trample; evasion,SOS,198,2
+Frantic Firebolt,Instant,"Frantic Firebolt deals X damage to target creature, where X is 2 plus the number of cards in your graveyard that are instant cards, sorcery cards, and/or have an Adventure.",R,graveyard; burn,WOE,130,2
+Stone-Giant of High Pass,Creature — Giant,"Whenever this creature enters or attacks, create a 3/1 colorless Wall artifact creature token with defender named Stone Boulder.
+{2}{R}, Sacrifice an artifact: This creature deals 4 damage to any target.",R,Giant; sacrifice; tokens; burn; noncombat damage,HOB,113,1
+Biotech Specialist,Creature — Insect Scientist,"When this creature enters, create a Lander token. (It's an artifact with ""{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."")
+Whenever you sacrifice an artifact, this creature deals 2 damage to target opponent.",R/G,Insect; Scientist; sacrifice; tokens; burn; ramp; etb; noncombat damage,EOE,214,1
+"Aatchik, Emerald Radian",Legendary Creature — Insect Druid,"When Aatchik enters, create a 1/1 green Insect creature token for each artifact and/or creature card in your graveyard.
+Whenever another Insect you control dies, put a +1/+1 counter on Aatchik. Each opponent loses 1 life.",B/G,Insect; Druid; counters; graveyard; tokens; etb; artifacts,DFT,187,1
+Tidings of War,Sorcery,"Amass Goblins 1. If this spell was cast from a graveyard, amass Goblins 3 instead. (To amass Goblins X, put X +1/+1 counters on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)
+Flashback {3}{R} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",R,counters; graveyard; tokens; amass; go-wide; flashback; recursion; spellslinger,HOB,115,1
+Bothersome Noisemaker,Creature — Goblin Bard,"Whenever you cast a noncreature spell, amass Goblins 1. (Put a +1/+1 counter on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)",R,Goblin; Bard; counters; tokens; spellslinger; amass; go-wide,HOB,89,1
+Goblin Plate Mail,Artifact — Equipment,"When this Equipment enters, amass Goblins 1, then attach this Equipment to the amassed Army. (To amass Goblins 1, put a +1/+1 counter on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)
+Equipped creature gets +1/+0 and has menace.
+Equip {4}",B/R,Equipment; counters; tokens; etb; equipment; pump; amass; go-wide; equip; menace; evasion,HOB,157,1
+Fearsome Goblin Pair,Creature — Goblin Soldier,"When this creature dies, amass Goblins 4. (Put four +1/+1 counters on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)",B/R,Goblin; Soldier; counters; tokens; amass; go-wide,HOB,156,1
+The Great Goblin,Legendary Creature — Goblin Noble,"Whenever you put one or more counters on a Goblin, Orc, or Army you control, The Great Goblin deals 2 damage to target opponent.
+Whenever another Goblin, Orc, or Army you control dies, exile the top card of your library. You may play it until the end of your next turn.",B/R,Goblin; Noble; burn; impulse; noncombat damage,HOB,158,1
+Rhovanion Rampager,Creature — Wolf,"Whenever this creature attacks, you may sacrifice another creature. If you do, put a number of +1/+1 counters on this creature equal to the sacrificed creature's power.
+When this creature dies, amass Goblins X, where X is this creature's power. (Put X +1/+1 counters on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)",B,Wolf; counters; sacrifice; tokens; amass; go-wide,HOB,82,1
+"Calamity, Galloping Inferno",Legendary Creature — Horse Mount,"Haste
+Whenever Calamity attacks while saddled, choose a nonlegendary creature that saddled it this turn and create a tapped and attacking token that's a copy of it. Sacrifice that token at the beginning of the next end step. Repeat this process once.
+Saddle 1",R,Horse; Mount; sacrifice; tokens; saddle; go-wide; combat; haste; aggro,OTJ,116,1
+Boneclub Berserker,Creature — Goblin Berserker,This creature gets +2/+0 for each other Goblin you control.,R,Goblin; Berserker; pump,ECL,126,1
+Howlsquad Heavy,Creature — Goblin Mercenary,"Start your engines!
+Other Goblins you control have haste.
+At the beginning of combat on your turn, create a 1/1 red Goblin creature token. That token attacks this combat if able.
+Max speed — {T}: Add {R} for each Goblin you control.",R,Goblin; Mercenary; tokens; mana; max speed; speed; aggro; start your engines!; haste,DFT,134,1
+Boggart Cursecrafter,Creature — Goblin Warlock,"Deathtouch
+Whenever another Goblin you control dies, this creature deals 1 damage to each opponent.",B/R,Goblin; Warlock; burn; noncombat damage; deathtouch; combat; removal,ECL,206,1
+Boggart Mischief,Kindred Enchantment — Goblin,"When this enchantment enters, you may blight 1. If you do, create two 1/1 black and red Goblin creature tokens. (To blight 1, put a -1/-1 counter on a creature you control.)
+Whenever a Goblin creature you control dies, each opponent loses 1 life and you gain 1 life.",B,Goblin; counters; lifegain; tokens; etb; blight; graveyard,ECL,92,1
+Volley Veteran,Creature — Goblin Warrior,"When this creature enters, it deals damage to target creature an opponent controls equal to the number of Goblins you control.",R,Goblin; Warrior; etb,FDN,550,1
+Zoyowa Lava-Tongue,Legendary Creature — Goblin Warlock,"Deathtouch
+At the beginning of your end step, if you descended this turn, each opponent may discard a card or sacrifice a permanent of their choice. Zoyowa deals 3 damage to each opponent who didn't. (You descended if a permanent card was put into your graveyard from anywhere.)",B/R,Goblin; Warlock; graveyard; sacrifice; burn; noncombat damage; deathtouch; combat; removal,LCI,245,1
+Corrupted Conviction,Instant,"As an additional cost to cast this spell, sacrifice a creature.
+Draw two cards.",B,card draw; sacrifice,OTJ,84,1
+Goblin Negotiation,Sorcery,Goblin Negotiation deals X damage to target creature. Create a number of 1/1 red Goblin creature tokens equal to the amount of excess damage dealt to that creature this way.,R,tokens; burn,FDN,88,1
+Scrawling Crawler,Artifact Creature — Phyrexian Construct,"At the beginning of your upkeep, each player draws a card.
+Whenever an opponent draws a card, that player loses 1 life.",Colorless,Phyrexian; Construct,FDN,132,1
+The Unagi of Kyoshi Island,Legendary Creature — Serpent,"Flash
+Ward—Waterbend {4}. (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {4}. They can tap their artifacts and creatures to help. Each one pays for {1}.)
+Whenever an opponent draws their second card each turn, you draw two cards.",U,Serpent; card draw; ward; protection; flash; tempo; waterbend; bending,TLA,77,1
+Ravenhill Flock,Creature — Bird,"Flying
+Whenever you draw a card, put a +1/+1 counter on this creature.",U,Bird; counters; card draw; flying; evasion,HOB,52,1
+Homunculus Horde,Creature — Homunculus,"Whenever you draw your second card each turn, create a token that's a copy of this creature.",U,Homunculus; tokens,FDN,41,1
+Moonlit Meditation,Enchantment — Aura,"Enchant artifact or creature you control
+The first time you would create one or more tokens each turn, you may instead create that many tokens that are copies of enchanted permanent.",U,Aura; tokens; aura; enchant,EOE,69,1
+Refute,Instant,"Counter target spell. Draw a card, then discard a card.",U,counterspell; card draw,FDN,48,1
+Into the Roil,Instant,"Kicker {1}{U} (You may pay an additional {1}{U} as you cast this spell.)
+Return target nonland permanent to its owner's hand. If this spell was kicked, draw a card.",U,card draw; bounce; kicker; value,FDN,509,1
+Avengers Hangar,Land,"This land enters tapped.
+When this land enters, you gain 1 life.
+{T}: Add {W} or {U}.",W/U,lifegain; mana; etb,MSH,259,1
