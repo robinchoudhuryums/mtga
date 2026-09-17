@@ -117,11 +117,15 @@ class TestVendoredSectionNames:
 
 class TestLineCap:
     """Without this the two files quietly re-fuse over a few cycles, and no other
-    check can see it happening — the regression is gradual, not an event."""
+    check can see it happening — the regression is gradual, not an event.
+
+    The cap counts WORDS since 2026-09-17. It counted LINES, which is a property of the
+    FORMATTING: a bullet evaded it by not wrapping, and the four longest rules in the file
+    all passed, two of them on a single line."""
 
     def test_an_overlong_bullet_fails(self, tmp_path, monkeypatch):
         long_rule = "- Rule. [G-01]\n" + "\n".join(
-            f"  continuation {i}" for i in range(cd.LINE_CAP + 3))
+            f"  continuation words {i}" for i in range(cd.WORD_CAP))
         c = tmp_path / "CLAUDE.md"
         c.write_text(_claude_stub(None, raw_bullets=long_rule))
         g = tmp_path / "gotchas.md"
@@ -134,7 +138,17 @@ class TestLineCap:
         lines = cd._read(cd.CLAUDE_MD).split("\n")
         for name in cd.SPLIT_SECTIONS:
             for head, buf in cd._section_bullets(lines, name):
-                assert len(buf) <= cd.LINE_CAP, f"{name}: {head[:60]}"
+                words = sum(len(ln.split()) for ln in buf)
+                assert words <= cd.WORD_CAP, f"{name}: {head[:60]} ({words} words)"
+
+    def test_the_cap_cannot_be_evaded_by_not_wrapping(self):
+        """The bug the switch to WORDS closes: one very long line passed a LINE cap. This
+        pins that the SAME text fails whether it is wrapped or not."""
+        body = " ".join(f"w{i}" for i in range(cd.WORD_CAP + 50))
+        one_line = [f"  {body}"]
+        wrapped = [f"  w{i}" for i in range(cd.WORD_CAP + 50)]
+        assert sum(len(l.split()) for l in one_line) > cd.WORD_CAP
+        assert sum(len(l.split()) for l in wrapped) > cd.WORD_CAP
 
     def test_there_is_no_exemption_list(self):
         """An allowlist here would rot exactly like the registries this gate imitates,

@@ -625,6 +625,19 @@ sweep confirming zero axis strings contain a game-state word. Widening a report-
 is the safe direction anyway: a false positive is a visible line someone dismisses, where
 a false negative is silent, which is the asymmetry G-26 records for the rationale audit.
 
+**`cuts` is a shortlist, and the measurement that says so.** On a creature-heavy deck it
+is close to a coin flip: 50% agreement against 86% on noncreature cards, at n=31 and
+n=103. Three fixes for that were pre-registered and REFUTED — body quality, tag-count
+normalization and role-credit reweighting fixed **0 of 7** mis-ranks while churning **28 of
+116** top-3 sets. The worst offenders are ZERO-role cards, which no weight can help, which
+is why the standing instruction is to read the oracle text rather than derive a fourth fix.
+
+**The `_deck_state_axis` widening (2026-09-03).** The resource class could not cross
+punctuation, so a COMPOUND resource ("artifact and/or enchantment you control") and
+COUNTERS-ON-PERMANENTS ("the number of +1/+1 counters on lands you control" — Toph, the
+Blind Bandit) both fell out of it. Measured across the pool: **781 in-scope clauses, 46
+missed across 39 cards → 1**, with **+8 cards** gaining an axis they wholly lacked. The
+widening deliberately did NOT cross G-76's scope line.
 ## [G-10] "Not in library" for a card you own is the deck-dump undercount symptom
 
 **"Not in library" for a card you own is the deck-dump undercount symptom.**
@@ -1727,6 +1740,40 @@ text written to fix it. The wording is "raised the A floor's interaction require
 hazard specific to a self-describing repo and worth remembering the next time an
 explanatory sentence has to name the number it is explaining.
 
+**The manabase axis was outside the scan altogether until 2026-09-02.** Every figure family
+resolves against `deck_quality_vector`, which has no colour-source term — so deck 78 claimed
+"~51% against 13/8/8 sources" straight through a rebuild to 13/8/10 and the audit reported
+CURRENT. Fixed by widening the LOOKUP rather than adding a parallel pass, so one pattern per
+colour reuses every existing suppression. The per-colour patterns could not see the idiom
+that motivated them (deck 78 writes `13/8/10 sources`), so `_slash_source_claims` checks the
+slash form as a multiset over the deck's `#: colors:` and renders live counts in the prose's
+own order (BS8-16). It found deck 78 stale the day it landed, because any-colour lands count
+as sources now.
+
+**The possessive hole it exposed.** `_OTHER_DECK_RE` needs the literal word *deck*, but the
+prose's commoner idiom is the POSSESSIVE (`68a's 12 green sources`) — **35 roster
+occurrences** — so a cross-deck claim flagged against the citing deck. `_other_deck_ids`
+reads both now, gating the possessive on a REAL roster id. Roster: 4 flags → 3, the
+suppressed one exactly that false positive. Note `_other_deck_ids` returns EMPTY for a bare
+`40a Some Name`: the id route needs the word *deck* or a possessive, so the roster-NAME mask
+carries the commonest cross-deck citation.
+
+**The floor band was the one claim nothing checked (2026-09-03).** Every figure resolves
+through `_figure_lookup`, which holds NUMBERS, while a rationale's commonest structural
+assertion is a LETTER ("the metrics floor is A") — unverifiable by construction. Re-deriving
+`TIER_FLOOR_REQ` (BS8-06) left **15 of the roster's 36 floor-band claims false the same
+day**, every one reported CURRENT. `_FIG_FLOOR_BAND` prices them against `tier_band`: 15
+hits, 15 real, all re-grounded, **no tier letter touched**. Two calibrations — a band claim
+is NOT suppressed by the shared `_figure_is_history`, because a change narrative names where
+a NUMBER came FROM but where a BAND LANDED (the shared rule silently dropped 3 real hits);
+and "held one band under the floor **at B**" names the LETTER, the roster's one false
+positive.
+
+**Why `#: notes:` staleness scanning stays declined.** Re-measured 2026-08-31: 81 roster
+hits at ~45% precision, 61 of them carrying a clause-wide history cue. Deck 59's cut
+Ancestors' Aid is caught by NEITHER — its own clause said another card "were CUT … for
+Hugs". The suppressions that make this scan trustworthy are exactly what blind it in a build
+log, which is why the answer has been no twice.
 ## [G-28] `deck.py suggest` shows a cross-deck reuse count (`Decks` column)
 
 **`deck.py suggest` shows a cross-deck reuse count (`Decks` column).** For each
@@ -2163,7 +2210,25 @@ obviously wrong.
 
 Twinflame Tyrant, Collective Inferno and Gratuitous Violence (17 pool cards, 9 roster decks) doubled nothing the model could see, so `suggest-homes` ranked Twinflame KEY in 56a on Dragon/evasion overlap alone. The obvious feeder — every creature plus every burn spell — was measured and rejected: roster min 11 / p25 21 / p90 29, i.e. every deck clears any floor and the term would pin the cap the way `triggers` did. NONCOMBAT damage text runs min 0 / p25 1 / p50 2 / p75 7 / p90 10 and discriminates; the doubler's combat half is something every deck gets equally and so cannot rank one home over another. `_DOUBLER_CALIB["damage"] = (2, 7)` (floor at p50, since one burn spell is not a burn deck). Roster diff on ten doublers' `suggest-homes` top-5: 4 changed, 2 changed #1 (Lightning, Army of One; The Rollercrusher Ride), all toward burn-dense decks; 0 floors.
 
+**The saturation measurement (2026-09-03).** The floor/key/cap were one set of globals for
+all four axes then defined, and they are roster PERCENTILES for three of them (floor 5 ≈
+p25, key 10 ≈ p75, cap ≈ p90). `triggers` has a roster **MINIMUM of 10** (p50 23, p90 30),
+so every deck cleared the floor AND the KEY promotion and **92% pinned the cap** —
+constant roster-wide, on the axis holding 32 of the pool's 57 doubler cards.
+`cut_keep_score`'s twin saturated at 9 feeders, i.e. **100%**. Measured cost: Wizard's
+Staff (`Equip Wizard {1}`, a trigger doubler) scored the identical +18 in deck 37 (30
+feeders), 37b (35) and 57 (22), so a ONE-Wizard deck outranked two 20-Wizard decks. Fixed
+by `_DOUBLER_CALIB` (per-axis floor/key at that axis's own p25/p75) plus growth measured
+above the floor. Roster diff: **17 of 54 doubler cards re-ordered, 4 changed top pick, 0 of
+115 `cuts` top-3 moved.**
 
+**The fifth axis, `damage` (2026-09-06).** Twinflame Tyrant / Collective Inferno /
+Gratuitous Violence (17 pool cards) had no axis at all, so `suggest-homes` ranked Twinflame
+KEY in deck 56a on Dragon/evasion alone. Its FEEDER is NONCOMBAT damage text, deliberately
+not "creatures + burn": every deck has creatures, so that count runs 11..36 and would have
+saturated exactly like `triggers`. Calibrated (2, 7) from the noncombat count's p50/p75
+(min 0 / p25 1 / p50 2 / p75 7 / p90 10). Roster diff: 4 of 10 doublers' top-5 changed, 2
+changed #1, all toward burn-dense decks; 0 tier floors moved.
 ## [G-83] A cost that SCALES with a deck count, priced by nothing
 
 Every model in this repo prices a card at its PRINTED cost. That is right for most cards
@@ -6642,6 +6707,41 @@ because that is what the prose means.
 ## [G-84] A chosen-type payoff is worth the deck's biggest creature type
 
 Added 2026-09-09, from a post-mortem of the deck 39 tuning session.
+
+**The incident.** Orcrist, Goblin-cleaver ("choose a creature type. Create a Treasure
+token for each creature you control of that type") was argued down twice in one pass on
+two claims that were both FALSE and neither of which came from a tool: that the ability is
+dead without the named tribe — the type is chosen ON RESOLUTION, so it is never dead, only
+un-maximised — and that deck 39 fields nothing for it, when it fields eight Humans. That
+is what earned the `✦ N <type>` per-row print: the failure was a stated count that came
+from nobody's tool (G-52).
+
+**Why a literal search could not find the family.** 46 pool cards template "choose a
+creature type … of that type"; less the two blanket converters, 44 are the family. They
+name no type at all, so a search for "Goblins you control get" returns zero and reads as a
+fact about the format rather than as an unverified search. That is K-13 exactly, one layer
+on: K-13 says do not gate a SEARCH on a literal name when the effect is worded generically.
+
+**Calibration.** Largest-creature-type count across the roster runs min 3 / p25 7 / p50 9 /
+p75 13 / p90 17 / max 26, so the floor is 7 and the key 13 (cap 12, reached at 18). With
+those, **23% of decks sit below the floor and 9% pin the cap** — the spread check the
+`triggers` axis failed, and the reason `_DOUBLER_CALIB` exists.
+
+**Roster diff when it landed.** 16 of 44 family cards changed their top-5 homes and 5
+changed #1, all toward tribally dense decks; 3 of 14 maindecked copies moved down the cut
+list; **0 of 113 `cuts` top-3 sets and 0 tier floors moved.**
+
+**The front-only measurement.** `creature_subtypes` walks every face of a type line, which
+over-counts 25 transform DFCs. Restricting it to the front face was measured and rejected:
+it trades those 25 over-counts for **10 hard ZEROES** on cards whose front is a Saga or an
+enchantment and whose back is genuinely that creature type. A silent zero is the worse
+direction.
+
+**Why the NAMED-type half is unbuilt.** 124 pool cards name a specific creature type, but
+`cut_keep_score`'s `tribal` term already serves the 92 where the card IS that type, leaving
+32 — a small increment over an existing term. The noun extraction also visibly misfires,
+pulling `equipment` and `food`, which are not creature types. G-67's triage line: a
+TAXONOMY widening, not a pattern hole.
 
 ### The incident
 
