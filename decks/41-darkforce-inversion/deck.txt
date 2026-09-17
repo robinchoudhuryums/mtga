@@ -60,7 +60,8 @@
 #: notes: Getaway Glamer and Ruthless Lawbringer. Deep-Cavern Bat is the single best blink
 #: notes: target here and Another Round is the only one-card double-blink in the format, so
 #: notes: both stay in for now; replace them individually rather than rebuilding the shell.
-#: notes: OWNERSHIP: fully owned as of 2026-09-17 — no craft targets outstanding.
+#: notes: OWNERSHIP: every spell is owned; the manabase carries the only craft targets —
+#: notes: Fisk Tower and Foot Headquarters, two common wildcards, wishlisted against this deck.
 
 Deck
 # Blink — the engine
@@ -114,12 +115,14 @@ Deck
 
 # Lands — 24, Orzhov
 1 Bleachbone Verge (DFT) 250
+1 Fisk Tower (MSH) 265
+1 Foot Headquarters (TMT) 185
 1 Godless Shrine (EOE) 254
 1 Scoured Barrens (M21) 250
-1 Misty Palms Oasis (TLA) 273
+1 Shattered Sanctum (SOS) 260
 1 Temple of Silence (FDN) 704
-10 Plains (MSH) 285
-9 Swamp (MSH) 287
+9 Plains (MSH) 285
+8 Swamp (MSH) 287
 
 #~ +Painful Quandary | -Stroke of Midnight | PRO-synergy here in a way its black flavour hides: it is the one taxer on the list that is NOT symmetric (it triggers only on OPPONENTS' spells and costs you nothing), and pushing their total DOWN widens the exact gap Mister Negative converts into cards. Held out of the 60 only on curve — MV 5 against a 2.92 average, and it does nothing on an empty board. Owned.
 #~ +The Mind Stone | -Visions of Villainy | The ONLY way to re-trigger a noncreature ETB in this deck: all six blink spells read "exile target CREATURE you control", while the Mind Stone's harnessed ability blinks any nonland permanent — so it is what unlocks Airbender Ascension, Stolen Stark Tech, Eerie Gravestone and Foraging Wickermaw. Indestructible, so it survives the removal that answers the rest of the engine. Slow: {5}{W} plus a tap to harness, and a plain mana rock before that. RETARGETED 2026-09-17 — this line used to propose cutting Airbender Ascension, which is one of the four permanents the Mind Stone exists to re-trigger. Owned.
