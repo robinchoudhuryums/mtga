@@ -4873,6 +4873,66 @@ class TestDeckStateAxis:
         assert deck._deck_state_axis("") is None
 
 
+class TestDisplayNameFitsAGlossToAColumn:
+    """A `#: name:` may carry a trailing "(...)" premise ("Hoofprint (creatures are the
+    mana)"), and the roster tables are fixed-width. Chopping mid-gloss is the worst option:
+    the name is what a reader matches on, so the GLOSS goes first."""
+
+    def test_a_name_that_fits_is_untouched(self):
+        assert deck.display_name("Hoofprint (creatures are the mana)", 40) == (
+            "Hoofprint (creatures are the mana)")
+
+    def test_a_narrow_column_drops_the_gloss_not_the_name(self):
+        assert deck.display_name("Maelstrom Conservatory (ramp into big spells)", 26) == (
+            "Maelstrom Conservatory")
+
+    def test_a_name_too_long_even_bare_is_truncated_with_an_ellipsis(self):
+        got = deck.display_name("One Fell Swoop \u2014 Executioner\u2019s Song", 26)
+        assert got.endswith("\u2026") and len(got) <= 26
+
+    def test_an_unglossed_name_is_unchanged(self):
+        assert deck.display_name("Second Draw", 26) == "Second Draw"
+        assert deck.display_name("", 26) == ""
+
+    def test_only_a_TRAILING_parenthetical_counts_as_a_gloss(self):
+        """"Wizardz — Competitive (functional-redundancy A)" is a variant name that ends in
+        a parenthetical, and dropping it there is correct. But a parenthetical in the
+        MIDDLE is part of the name and must survive."""
+        assert deck.display_name("Alpha (beta) Gamma", 12) == "Alpha (beta…"
+
+
+class TestAGlossedNameStillMasksACrossDeckCitation:
+    """G-27's "a rename is a suppression change", arriving exactly as documented. The
+    rationale audit masks roster deck NAMES out of a rationale before scanning it, so a
+    distinctness clause about another deck is not read as a claim about this one. Glossing
+    deck 1 to "Black Sun (sacrifice tokens for reach)" stopped the bare "Black Sun"
+    matching, and deck 44a's clause — "Black Sun is aggro-sacrifice with a 5/7 clock and
+    card advantage 0", a claim about DECK 1 — flagged against 44a's own card advantage of
+    7 within the same run that applied the glosses.
+
+    Prose cites the BARE name, so that is the form that has to mask."""
+
+    def _names(self, monkeypatch, *names):
+        monkeypatch.setattr(deck, "discover_decks", lambda: [{"name": n} for n in names])
+        return deck._roster_deck_names({})          # fresh cache, not the module's
+
+    def test_the_bare_name_is_registered(self, monkeypatch):
+        got = self._names(monkeypatch, "Black Sun (sacrifice tokens for reach)")
+        assert "Black Sun" in got, (
+            "without this the audit reports a false stale figure on every deck whose "
+            "prose names a glossed one — 50 of 106 decks are cited by another")
+
+    def test_the_glossed_form_is_registered_too(self, monkeypatch):
+        got = self._names(monkeypatch, "Black Sun (sacrifice tokens for reach)")
+        assert "Black Sun (sacrifice tokens for reach)" in got
+
+    def test_a_variant_still_contributes_its_parent_half(self, monkeypatch):
+        """The em-dash split must run on the BARE name, or a glossed variant registers
+        "Outlaw Heist (…)" and the parent half is lost."""
+        got = self._names(monkeypatch, "Grand Larceny — Outlaw Heist (their cards)")
+        assert "Grand Larceny" in got and "Outlaw Heist" in got
+
+
 class TestCrossModuleDeckCallers:
     """`build_dashboard.py` calls into `deck.py`'s internals, and NOTHING exercised that
     seam. When `_castability` went from a 3-tuple to a 4-tuple for the `#: uncastable-ok:`

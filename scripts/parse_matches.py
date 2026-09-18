@@ -577,13 +577,39 @@ _GUID_RE = re.compile(r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]
 _ARENA_DASH_RE = re.compile(r"(\S)-\s+")
 
 
+# A trailing "(...)" on a repo `#: name:` is a GLOSS, not part of the name — the one-line
+# premise the roster carries so a creative name still says how the deck works ("Hoofprint
+# (creatures are the mana)"). It exists only on this side: Arena holds the short name, and
+# nothing here writes to Arena. So it belongs in exactly the category `_name_key` already
+# has for the curly apostrophe and the doubled space — a difference that is NOT a rename.
+#
+# Without this the reconciler reads every glossed deck as renamed. Measured before the
+# change: 49 glosses would take the standing divergence report from 8 lines to 57, burying
+# the 8 real ones — a permanent false warning, which is the bar this project holds a
+# standing report to.
+_NAME_GLOSS_RE = re.compile(r"\s*\([^()]*\)\s*$")
+
+
+def _name_gloss(s):
+    """The trailing "(...)" gloss on a deck name, without surrounding space, or ''."""
+    m = _NAME_GLOSS_RE.search((s or "").strip())
+    return m.group(0).strip() if m else ""
+
+
+def _name_bare(s):
+    """A deck name with its trailing gloss removed."""
+    return _NAME_GLOSS_RE.sub("", (s or "").strip()).strip()
+
+
 def _name_key(s):
     """Comparison key for two deck names: words only, case- and punctuation-blind.
 
     The trigger for a rename must be a difference in WORDS, never in typography. Arena
     writes a curly apostrophe ("Earth’s"), a doubled space ("66  Lethal Protector") and a
-    hyphen for an em dash; all three are the SAME name and must not churn the repo."""
-    return re.sub(r"[^a-z0-9]+", "", (s or "").lower())
+    hyphen for an em dash; all three are the SAME name and must not churn the repo. A
+    trailing repo-side gloss is the same kind of difference (see `_NAME_GLOSS_RE`) and is
+    dropped before comparing."""
+    return re.sub(r"[^a-z0-9]+", "", _name_bare(s).lower())
 
 
 def _adopted_name(arena_name, rec, parent_name):
@@ -600,8 +626,12 @@ def _adopted_name(arena_name, rec, parent_name):
     rest = _ARENA_DASH_RE.sub(r"\1 — ", rest).strip()
     if not rest:
         return ""
+    # The repo's own gloss survives an adoption — Arena never had it to offer, so dropping
+    # it here would make every `--sync-names --apply` silently strip the premise lines.
+    gloss = _name_gloss(rec.get("name"))
+    parent_name = _name_bare(parent_name)
     if not (rec.get("variant") and parent_name):
-        return rest
+        return (rest + " " + gloss).strip() if gloss else rest
     pk, rk = _name_key(parent_name), _name_key(rest)
     if rk.startswith(pk) and rk != pk:
         # Arena repeated the parent — keep the repo's spelling of it, not Arena's.
@@ -609,7 +639,8 @@ def _adopted_name(arena_name, rec, parent_name):
         while tail and _name_key(tail) != rk[len(pk):]:
             tail = tail[1:]
         rest = tail.lstrip(" —-").strip() or rest
-    return f"{parent_name} — {rest}" if _name_key(rest) != pk else parent_name
+    out = f"{parent_name} — {rest}" if _name_key(rest) != pk else parent_name
+    return (out + " " + gloss).strip() if gloss else out
 
 
 def deck_name_plan(names):

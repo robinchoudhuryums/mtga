@@ -1,4 +1,4 @@
-#: name: Eternal Flame
+#: name: Eternal Flame (Boros aggro)
 #: format: Standard
 #: tier: A — Boros (WR) impulse/cast-from-exile; deepest synergy web on the roster (Thm 20), card-advantage engine (Quintorius Kand + Thor), 9 interaction, curve lowered on the A-track pass. Promoted from B: 2-color consistency + engine + interaction + deep synergy.
 #: colors: WR

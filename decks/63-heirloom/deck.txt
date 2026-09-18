@@ -1,4 +1,4 @@
-#: name: Heirloom
+#: name: Heirloom (fast +1/+1 counters)
 #: format: Standard
 #: arena: 63 Heirloom, 08090a22-f52e-44aa-9aaa-fea0088c1532
 #: colors: WBG

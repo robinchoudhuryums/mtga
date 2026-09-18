@@ -1,4 +1,4 @@
-#: name: Lethal Protector
+#: name: Lethal Protector (Symbiote aristocrats)
 #: format: Standard
 #: arena: 66  Lethal Protector, 7d5bedba-fb3a-474e-9fbc-97859ffc47df
 #: colors: BRG

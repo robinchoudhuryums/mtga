@@ -1,4 +1,4 @@
-#: name: Grand Lotus
+#: name: Grand Lotus (Lessons flash back for 1)
 #: format: Standard
 #: colors: GUR
 #: plan: midrange

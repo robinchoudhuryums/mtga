@@ -1,4 +1,4 @@
-#: name: Sibsig Choir
+#: name: Sibsig Choir (Zombie tokens go wide)
 #: format: Standard
 #: colors: B
 #: plan: midrange

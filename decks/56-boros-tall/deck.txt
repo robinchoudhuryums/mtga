@@ -1,4 +1,4 @@
-#: name: One Fell Swoop
+#: name: One Fell Swoop (one big protected attacker)
 #: format: Standard
 #: colors: RW
 #: plan: aggro

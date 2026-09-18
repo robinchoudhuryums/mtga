@@ -1,4 +1,4 @@
-#: name: Pox
+#: name: Pox (Elves or poison — 2 plans)
 #: format: Standard
 #: arena: 31 Pox, c8394616-e2ae-4d34-a42c-5320ca45dd15
 #: colors: BG

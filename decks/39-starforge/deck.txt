@@ -1,4 +1,4 @@
-#: name: Starforge
+#: name: Starforge (aggressive Equipment)
 #: format: Standard
 #: tier: A — Boros (W/R) equipment aggro-midrange. Metrics floor is A on the aggro
 #: tier: plan and the letter MATCHES it as of the 2026-09-09 seven-swap pass — the

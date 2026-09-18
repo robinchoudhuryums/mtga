@@ -1,4 +1,4 @@
-#: name: Bottomless
+#: name: Bottomless (self-mill, on purpose)
 #: format: Standard
 #: colors: UB
 #: plan: midrange

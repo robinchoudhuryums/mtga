@@ -1,4 +1,4 @@
-#: name: Gray Goo
+#: name: Gray Goo (eat the yard, grow)
 #: format: Standard
 #: colors: UBG
 #: plan: midrange

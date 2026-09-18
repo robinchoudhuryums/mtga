@@ -920,6 +920,59 @@ class TestAdoptingArenaDeckNames:
                                                guid=self.GUID), out=lambda *_a: None)
         assert plan == []
 
+    def test_a_gloss_does_not_break_the_containment_suppressions(self):
+        """THE load-bearing half of the `_name_key` change, and the only one: G-73
+        suppresses the stranded-citation and orphaned-variant warnings when the new name
+        still CONTAINS the old one ("Unlock" -> "Unlocked", so every citation still
+        reads). A gloss sits BETWEEN the two names in the raw string, so an un-stripped
+        key breaks containment and puts a false warning on every glossed rename.
+
+        Measured on the real roster, the strip changes the divergence report NOT AT ALL —
+        `_adopted_name` carrying the gloss through is what keeps the 49 glossed decks out
+        of it. So this, not the report, is what the strip is for."""
+        old, new = "Pox (Elves or poison)", "Poxwalkers (Elves or poison)"
+        assert pm._name_key(old) in pm._name_key(new), (
+            "an un-stripped key reads 'poxelvesorpoison' against 'poxwalkerselvesorpoison'"
+            " — not a substring, so the suppression that makes a rename safe stops firing")
+        assert pm._name_key("Pox") in pm._name_key(new), "the unglossed case still holds"
+
+    def test_a_repo_side_gloss_is_not_a_rename(self, tmp_path, monkeypatch):
+        """A `#: name:` may carry a trailing "(...)" premise so a creative name still says
+        how the deck works. It exists only on this side — Arena holds the short name and
+        nothing here writes to Arena — so it must not read as a rename. Delivered by
+        `_adopted_name` carrying the gloss through, which the next test pins from the
+        other side. Measured before the change: 49 glosses would have taken the standing
+        divergence report from 8 lines to 57, burying the 8 real ones."""
+        self._roster(tmp_path, monkeypatch, **{
+            "50-hoof": self._cored("Hoofprint (creatures are the mana)", "50 Hoofprint")})
+        _w, plan = pm.sync_deck_names(_setdeck(name="50 Hoofprint", guid=self.GUID),
+                                      out=lambda *_a: None)
+        assert plan == []
+
+    def test_a_real_rename_still_fires_through_a_gloss(self, tmp_path, monkeypatch):
+        """The other half: ignoring the gloss must not blind the comparison to the NAME."""
+        self._roster(tmp_path, monkeypatch, **{
+            "26-iron": self._cored("Iron Forge (ramp into artifact bombs)", "26 Old")})
+        _w, plan = pm.sync_deck_names(_setdeck(name="26 Iron Colossi", guid=self.GUID),
+                                      out=lambda *_a: None)
+        assert [(x[0], x[3]) for x in plan] == [
+            ("26", "Iron Colossi (ramp into artifact bombs)")], (
+            "adopting Arena's name must CARRY the gloss through — Arena never had it to "
+            "offer, so dropping it would make --sync-names --apply silently strip every "
+            "premise line on the roster")
+
+    def test_a_variant_prefix_is_composed_from_the_bare_parent(self, tmp_path, monkeypatch):
+        """The parent's gloss must not be inherited into the child's prefix, or a variant
+        adopts "Iron Forge (ramp into artifact bombs) — Ancient Decay"."""
+        self._roster(tmp_path, monkeypatch, **{
+            "26-iron-forge": self._cored("Iron Forge (ramp into artifact bombs)",
+                                         "26 Iron Forge", guid="g-parent")})
+        (tmp_path / "decks" / "26-iron-forge" / "26b-scrap.txt").write_text(
+            self._cored("Iron Forge — Scrapyard Tithe", "26b Old"), encoding="utf-8")
+        _w, plan = pm.sync_deck_names(_setdeck(name="26b Ancient Decay", guid=self.GUID),
+                                      out=lambda *_a: None)
+        assert [(x[0], x[3]) for x in plan] == [("26b", "Iron Forge — Ancient Decay")]
+
     def test_it_reports_without_the_flag_and_writes_nothing(self, tmp_path, monkeypatch):
         """G-53 — a capability behind a flag nobody runs is invisible, so the run says a
         rename is available even when it will not make one."""

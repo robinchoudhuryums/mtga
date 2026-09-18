@@ -1,4 +1,4 @@
-#: name: Fractalandtastic
+#: name: Fractalandtastic (Fractals + counter doublers)
 #: format: Standard
 #: tier: A — Temur Fractals counters/ramp; powerful engine + card advantage + ramp, now with adequate interaction. The interaction package (+Plasma Bolt / +Shock, cutting redundant card-selection; Spell Pierce was part of it and was later swapped out for Sab-Sunen) took interaction 2→5 and resil 4→7, lifting the measurable floor to A while keeping the 10 payoffs + 4 ramp intact (curve improved 3.40→3.23). Held at A (not an S conversation) by the 3-color GUR mana. Earlier B was correct pre-package; re-graded B→A once the metrics floor reached A.
 #: colors: GUR

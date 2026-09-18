@@ -1,4 +1,4 @@
-#: name: Darkforce Inversion
+#: name: Darkforce Inversion (gain, drain, swap totals)
 #: format: Standard
 #: colors: WB
 #: plan: control

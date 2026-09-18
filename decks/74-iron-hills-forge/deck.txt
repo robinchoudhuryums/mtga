@@ -1,4 +1,4 @@
-#: name: Iron Hills Forge
+#: name: Iron Hills Forge (Dwarves — equip triggers)
 #: format: Standard
 #: colors: WR
 #: plan: midrange
