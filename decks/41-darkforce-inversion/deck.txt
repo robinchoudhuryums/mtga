@@ -2,74 +2,76 @@
 #: format: Standard
 #: colors: WB
 #: plan: control
-#: archetype: Orzhov (W/B) BLINK-VALUE control. The plan is a life-total DIFFERENTIAL
-#: archetype: turned into cards. Cheap value-ETB creatures are re-bought with flicker,
-#: archetype: which also digs (Eerie Gravestone, Red Room Recruit, A.I.M. Synthoids),
-#: archetype: strips their hand (Deep-Cavern Bat, Corrupt Court Official) and re-kills on
-#: archetype: every re-entry (Ruthless Lawbringer, Poisoner's Apprentice, Koya);
-#: archetype: lifelink bodies and a deep removal suite keep your total high while theirs
-#: archetype: erodes. Mister Negative then exchanges totals — and because a blink is a
-#: archetype: RE-ENTRY, flickering him TWICE draws you the whole gap and puts the life
-#: archetype: totals back where they started (swap, draw the difference, swap back).
-#: archetype: Another Round is the one card that does it alone: at X=1 it blinks your
-#: archetype: board twice for {1}{1}{2}{W}.
+#: archetype: Orzhov (W/B) LIFEGAIN-DRAIN control on a blink shell. Life is the
+#: archetype: resource. Lifelink bodies and gain-triggers push your total up, drain
+#: archetype: payoffs convert each gain into life LOSS for the opponent, and Mister
+#: archetype: Negative exchanges the two totals. A blink is a RE-ENTRY, so flickering him
+#: archetype: TWICE draws the whole gap and puts both totals back (swap, draw, swap back);
+#: archetype: Another Round does it alone at X=1.
+#: archetype: THE KILL, added 2026-09-18, is a two-card loop: Bloodthirsty Conqueror
+#: archetype: ("whenever an opponent loses life, you gain that much") plus either
+#: archetype: Starscape Cleric or Enduring Tenacity ("whenever you gain life, they lose
+#: archetype: that much") loops until the opponent is dead. The lifegain side runs fifteen
+#: archetype: enablers, three of them lands, so a land drop can start it.
+#: archetype: LIFE IS ALSO SPENT, not just banked: Inside Information buys mana with it,
+#: archetype: Treasure Dredger buys a Treasure, Foolish Fate and Poisoner's Apprentice pay
+#: archetype: off having gained it. Spending down before a swap is not a cost — the swap
+#: archetype: refunds it out of the opponent's total and craters theirs in the same motion.
 #: archetype: DISTINCTNESS vs 20 Honor Among Thieves, the roster's other Orzhov deck:
-#: archetype: 20 is a lifegain-drain AGGRO deck — evasive Ninjas on a clock, using life
-#: archetype: as a Kingpin win-con. This is a CONTROL deck that treats life as a
-#: archetype: RESOURCE to convert into cards, and wins by out-carding you. Deliberately
-#: archetype: runs no Ninjas and no sneak/clock package; the creature base is chosen for
-#: archetype: ETB text, not evasion.
-#: tier: B — Orzhov blink-value control, deliberately held ONE BAND UNDER a metrics
-#: tier: floor of A. The floor was C before the 2026-09-17 tune and the tune is what moved
-#: tier: it: six swaps added four real answers (Banishing Light, Ruthless Lawbringer,
-#: tier: Poisoner's Apprentice, Liliana) and two repeatable draw engines (The Arkenstone's
-#: tier: artifact half, Liliana again). Live vector: interaction 7 over a 2.92 curve, card
-#: tier: advantage 10 (6 repeatable), protection 1. The four blink spells (Daydream,
-#: tier: Personify, Salvation Swan, Airbender Ascension) are STILL not counted as answers —
-#: tier: they are value, not interaction — so the `stats` under-count warning that names
-#: tier: them is expected and is not a hidden bonus.
-#: tier: WHAT HOLDS IT AT B, against a floor that now says A:
-#: tier: 1. PROTECTION. Only Stolen Stark Tech defends anything, against four
-#: tier:    protect-header build-arounds. The shell is enchantments and sorceries with no
-#: tier:    way to shield the pieces that win; the floor is blind to this axis by design
-#: tier:    (it is reported, never graded), and it is the axis that decides the matchup
-#: tier:    against a removal deck.
-#: tier: 2. RELIABILITY. The marquee payoff costs seven. Two copies are ~39% to have been
-#: tier:    drawn by turn seven on the play (13 cards seen), and Seek the Heart ({2}{W},
-#: tier:    fetches any legendary creature) takes "has access to him" to ~53%. The build is
-#: tier:    arranged so that is survivable — every blink target is a value ETB that stands
-#: tier:    on its own, so a Negative-less draw is a normal Orzhov value deck rather than a
-#: tier:    dead hand — but a deck whose ceiling waits on a seven-drop is not yet an A.
-#: tier: 3. PROVISIONAL — a fresh brew that has not been played. Re-grade after games.
-#: tier: PATH TO A: a real protection source for the engine, and a second Another Round —
-#: tier: the one card that re-enters the whole board TWICE for one spell. See the `#~`
-#: tier: block for both, and for the succession plan once Another Round rotates.
-#: protect: Mister Negative; Another Round; Enduring Innocence; Salvation Swan
-#: notes: WHY THE ENGINE WORKS — Mister Negative's ETB is a "may", and the draw clause
-#: notes: fires only when YOUR life was higher. So: blink 1 swaps (you take their low
-#: notes: total, draw the gap), blink 2 swaps back (you regain your high total, draw 0).
-#: notes: Net across the pair: the whole differential in cards, life unchanged. From a
-#: notes: LOW total the order inverts — blink 1 is a huge stabiliser, blink 2 buys the
-#: notes: cards — so the engine works from either side; being high is just safer.
-#: notes: The deck must FUNCTION WITHOUT HIM: every blink target is a value ETB that is
-#: notes: fine on its own, so a Mister-Negative-less draw is a normal Orzhov value deck,
-#: notes: not a dead hand. That is the difference between a build-around and a one-piece
-#: notes: combo (two copies of a seven-drop — ~39% to have drawn one by turn seven, and
-#: notes: ~53% counting Seek the Heart, which fetches him).
-#: notes: ROTATION: four cards leave Standard this fall — Another Round, Deep-Cavern Bat,
-#: notes: Getaway Glamer and Ruthless Lawbringer. Deep-Cavern Bat is the single best blink
-#: notes: target here and Another Round is the only one-card double-blink in the format, so
-#: notes: both stay in for now; replace them individually rather than rebuilding the shell.
-#: notes: OWNERSHIP: every spell is owned; the manabase carries the only craft targets —
-#: notes: Fisk Tower and Foot Headquarters, two common wildcards, wishlisted against this deck.
+#: archetype: 20 is a lifegain-drain AGGRO deck — evasive Ninjas on a clock, using life as
+#: archetype: a Kingpin win-con. This one converts life into CARDS and MANA and closes with
+#: archetype: the loop; it runs no Ninjas and no sneak package, and its creature base is
+#: archetype: chosen for ETB text rather than evasion.
+#: tier: B — Orzhov lifegain-drain control, deliberately held ONE BAND UNDER a metrics
+#: tier: floor of A. Rebuilt 2026-09-18 (ten swaps) after the list was read as weak
+#: tier: despite clearing the floor: the surveil package was cut for real top-end and a
+#: tier: combo kill. Live vector: interaction 9 over a 3.36 curve, card advantage 11,
+#: tier: protection 2. Board power went 41 to 58, from rank 18 of 112 on the roster to
+#: tier: about its median — that axis is the one the floor cannot see and the one that
+#: tier: made the old list read weak.
+#: tier: WHAT HOLDS IT AT B, against a floor that says A:
+#: tier: 1. THE CURVE. 3.36 against 24 lands, and the figure UNDER-reports: three X-cost
+#: tier:    cards book at MV 1. Treasure Dredger is the only acceleration. A 25th land
+#: tier:    measured better on every axis (keepable 84.4 to 86.0, screw 14.3 to 12.2,
+#: tier:    turn-4 land drop 63.2 to 67.5) and is the first change to try if it stumbles.
+#: tier: 2. THE KILL IS A TWO-CARD LOOP and both halves are singletons. It assembles off
+#: tier:    fifteen lifegain enablers, but a deck whose best line needs two specific cards
+#: tier:    is not an A until the fair half proves it can win on its own.
+#: tier: 3. PROVISIONAL — rebuilt and unplayed. Re-grade after games.
+#: tier: The blink spells (Daydream, Salvation Swan, Airbender Ascension) are still NOT
+#: tier: counted as answers — they are value, not interaction — so the `stats` under-count
+#: tier: warning naming them is expected and is not a hidden bonus.
+#: tier: PATH TO A: the 25th land, and evidence the deck closes without drawing both combo
+#: tier: halves. See the `#~` block for the succession plan once Another Round rotates.
+#: protect: Mister Negative; Another Round; Enduring Innocence; Salvation Swan; Bloodthirsty Conqueror; Enduring Tenacity; Starscape Cleric
+#: notes: WHY THE SWAP WORKS — Mister Negative's ETB is a "may", and the draw clause
+#: notes: fires only when YOUR life was higher. Two modes, and they are alternatives, not
+#: notes: a combo: from a HIGH total the swap draws the gap and hands them your lead; from
+#: notes: a total you have SPENT DOWN it refunds your life and craters theirs instead.
+#: notes: For this deck the second mode is usually the better one — card advantage is
+#: notes: already 11, and closing is the thing it is short of.
+#: notes: SO PAYING LIFE IS NOT A DRAWBACK HERE. Inside Information buys mana at mana
+#: notes: value, Treasure Dredger buys a Treasure, and the swap refunds the total out of
+#: notes: the opponent's. Grade a pay-life card on its RATE against Negative's own 1 life
+#: notes: per card, not on the fact that it costs life. Nothing in the tooling models this:
+#: notes: the cost-as-upside flag has five rules and none of them is pay-life.
+#: notes: The drain triggers fire on the way UP and spending later does not untrigger them,
+#: notes: so gain-then-spend captures both halves.
+#: notes: ROTATION: four cards leave Standard this fall — Another Round, Baron Bertram
+#: notes: Graywater, Ruthless Lawbringer and Treasure Dredger. Another Round is the only
+#: notes: one-card double-blink in the format; replace them individually rather than
+#: notes: rebuilding the shell.
+#: notes: OWNERSHIP: four craft targets, all wishlisted against this deck — Inside
+#: notes: Information (mythic), Foolish Fate (uncommon), Fisk Tower and Foot Headquarters
+#: notes: (commons). Every other card is owned.
 
 Deck
 # Blink — the engine
 1 Another Round (OTJ) 1
 1 Daydream (SOS) 9
-1 Personify (ECL) 28
+1 Treasure Dredger (OTJ) 110
 1 Parting Gust (BLB) 24
-1 Getaway Glamer (OTJ) 14
+1 Inside Information (HOB) 76
 1 Ennis, Debate Moderator (SOS) 14
 1 Salvation Swan (BLB) 28
 
@@ -82,26 +84,26 @@ Deck
 1 Liliana, Dreadhorde General (FDN) 176
 1 Airbender Ascension (TLA) 6
 1 Stolen Stark Tech (MSH) 114
-1 Visions of Villainy (MSH) 120
+1 Foolish Fate (SOS) 83
 
 # Value ETB creatures — the blink targets
-1 Deep-Cavern Bat (LCI) 102
+1 Beza, the Bounding Spring (BLB) 2
 1 Dream Beavers (TMT) 62
 1 Starscape Cleric (BLB) 116
-1 Red Room Recruit (MSH) 110
+1 M.O.D.O.K. (MSH) 106
 1 Banishing Light (EOE) 6
-1 Corrupt Court Official (TLA) 92
+1 Baron Bertram Graywater (OTJ) 195
 1 Koya, Death from Above (TMT) 11
-1 A.I.M. Synthoids (MSH) 242
+1 Bloodthirsty Conqueror (FDN) 58
 1 Ruthless Lawbringer (OTJ) 229
 1 The Arkenstone // Seek the Heart (HOB) 170
 1 Poisoner's Apprentice (SOS) 92
 
 # Drain — pushes their total down
-1 Imperious Inkmage (SOS) 195
+1 Enduring Tenacity (DSK) 95
 1 Phyrexian Arena (FDN) 180
-1 Foraging Wickermaw (ECL) 256
-1 Eerie Gravestone (SPM) 163
+1 Doctor Doom (MSH) 95
+1 Morlun, Devourer of Spiders (SPM) 59
 
 # Card advantage — the stated path to A
 1 Circle of Power (FIN) 92
@@ -121,13 +123,13 @@ Deck
 1 Scoured Barrens (M21) 250
 1 Shattered Sanctum (SOS) 260
 1 Temple of Silence (FDN) 704
-9 Plains (MSH) 285
-8 Swamp (MSH) 287
+8 Plains (MSH) 285
+9 Swamp (MSH) 287
 
-#~ +Painful Quandary | -Stroke of Midnight | PRO-synergy here in a way its black flavour hides: it is the one taxer on the list that is NOT symmetric (it triggers only on OPPONENTS' spells and costs you nothing), and pushing their total DOWN widens the exact gap Mister Negative converts into cards. Held out of the 60 only on curve — MV 5 against a 2.92 average, and it does nothing on an empty board. Owned.
-#~ +The Mind Stone | -Visions of Villainy | The ONLY way to re-trigger a noncreature ETB in this deck: all six blink spells read "exile target CREATURE you control", while the Mind Stone's harnessed ability blinks any nonland permanent — so it is what unlocks Airbender Ascension, Stolen Stark Tech, Eerie Gravestone and Foraging Wickermaw. Indestructible, so it survives the removal that answers the rest of the engine. Slow: {5}{W} plus a tap to harness, and a plain mana rock before that. RETARGETED 2026-09-17 — this line used to propose cutting Airbender Ascension, which is one of the four permanents the Mind Stone exists to re-trigger. Owned.
-#~ +The Seriema | -Personify | The SECOND tutor for the marquee payoff: "search your library for a legendary creature card, reveal it, put it into your hand" finds Mister Negative, the same way Seek the Heart does, and doubling that search is the cheapest fix for the reliability point in `#: tier:`. Its rider — "other tapped legendary creatures you control have indestructible" — is NARROW here and should not be read as the protection this deck is short on: Mister Negative has vigilance, so he is rarely tapped at all, and the grant only really applies to a creature you tapped to Station this. Costs {1}{W}{W} against Personify's {1}{W}, and it is not a blink target (the deck's six blink spells all read "creature you control"). Owned.
-#~ +Anchovy & Banana Pizza | -Getaway Glamer | Unconditional "when this artifact enters, destroy target creature" against Getaway Glamer's Spree mode, which only kills "if no other creature has greater power" — i.e. it whiffs on exactly the threat you most need dead. Its sacrifice mode gains 3 life, which turns ON Poisoner's Apprentice's Infusion clause ("if you gained life this turn") in a deck where that gate is otherwise carried by the lifelink bodies alone. The cost is real: {2}{B}{B} against {W}, on a 2.92 curve, and it is an artifact rather than a creature, so only The Mind Stone can re-trigger it. Owned.
+#~ +Painful Quandary | -Stroke of Midnight | PRO-synergy here in a way its black flavour hides: it is the one taxer on the list that is NOT symmetric (it triggers only on OPPONENTS' spells and costs you nothing), and pushing their total DOWN widens the exact gap Mister Negative converts into cards. Held out of the 60 only on curve — MV 5 against a 3.36 average, and it does nothing on an empty board. The 2026-09-18 rebuild raised the curve, so this is now a harder sell, not an easier one. Owned.
+#~ note: applied — Foolish Fate in for Visions of Villainy.
+#~ note: applied — Treasure Dredger in for Personify.
+#~ note: applied — Inside Information in for Getaway Glamer.
 #~ +Prayer of Binding | -Banishing Light | The FLASH half of the answer Banishing Light already provides — it exiles a nonland permanent an opponent controls until it leaves, plus 2 life, held up on the opponent's turn instead of telegraphed on yours (and its target is "up to one", so it can be flashed in blank for the 2 life when nothing is worth hitting). In a control deck that wants to keep mana open that is the better card; it costs {3}{W} against {2}{W}, which is why it is a flex and not the maindeck pick. Banishing Light was added 2026-09-17 and has not been played, so decide this after games rather than before. Owned.
 #~ note: SUCCESSION for Another Round (rotates ~2026). Nothing in Standard reproduces it — a regex sweep of the pool for repeated-blink text ("repeat this process", "do this again") returns five cards, of which only Another Round blinks your own board more than once for one spell. So there is no swap to plan; the plan is structural. When it rotates, the one-card double re-entry of Mister Negative (swap, draw the gap, swap back) becomes a two-card or two-turn line, carried by Airbender Ascension's end-step blink plus any one-shot blink. Re-check this note after each set release rather than treating it as settled.
 #~ note: applied — Koya, Death from Above in for Hecteyes.

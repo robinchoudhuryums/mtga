@@ -6,7 +6,6 @@
 # This list should only ever SHRINK. A new entry means either a deck edit
 # introduced an untriaged card or a pattern regressed.
 # `check_roles.py --update-baseline` to acknowledge the current set.
-A.I.M. Synthoids
 Aang's Iceberg
 Aang, at the Crossroads
 Aang, at the Crossroads // Aang, Destined Savior
@@ -214,10 +213,10 @@ HYDRA Troopers
 Hymn of the Faller
 I Am Iron Man
 Iguana Parrot
-Imperious Inkmage
 Improvisation Capstone
 Ingenious Leonin
 Insatiable Skittermaw
+Inside Information
 Interface Ace
 Invasion Submersible
 Involuntary Employment

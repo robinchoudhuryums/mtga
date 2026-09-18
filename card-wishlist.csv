@@ -130,6 +130,7 @@ When Ragnarok dies, destroy target permanent and return target nonlegendary perm
 Balamb T-Rexaur,Creature — Dinosaur,"Trample
 When this creature enters, you gain 3 life.
 Forestcycling {2} ({2}, Discard this card: Search your library for a Forest card, reveal it, put it into your hand, then shuffle.)",G,Dinosaur; lifegain; etb; landcycling; card draw; lands; trample; evasion; forestcycling; typecycling; cycling,FIN,173,Common,28,,2.0,hand
+Inside Information,Sorcery,"Exile the top X cards of target opponent's library. You may play those cards this turn. If you cast a spell this way, pay life equal to its mana value rather than pay its mana cost.",B,pay life; heist; impulse,HOB,76,Mythic,41,"drain/value package: unconditional removal + life-to-mana, refunded by the Mister Negative swap",4.5,seed
 Bonehoard Dracosaur,Creature — Dinosaur Dragon,"Flying, first strike
 At the beginning of your upkeep, exile the top two cards of your library. You may play them this turn. If you exiled a land card this way, create a 3/1 red Dinosaur creature token. If you exiled a nonland card this way, create a Treasure token.",R,Dinosaur; Dragon; tokens; treasure; impulse; flying; evasion; first strike; combat,LCI,134,Mythic,49,,7.5,hand
 "Matzalantli, the Great Door // The Core",Legendary Artifact // Legendary Land,"{T}: Draw a card, then discard a card.
@@ -228,6 +229,8 @@ Sundown Pass,Land,"This land enters tapped unless you control two or more other 
 {T}: Add {R} or {W}.",W/R,mana,SOS,264,Rare,general,"WR fixing land — generic fixing, not earthbend-specific",5.0,hand
 Together as One,Sorcery,"Converge — Target player draws X cards, Together as One deals X damage to any target, and you gain X life, where X is the number of colors of mana spent to cast this spell.",Colorless,burn; converge; multicolor,SOS,4,Rare,17,Converge payoff (draw/burn/gain X = colors spent) — rewards the 5-color manabase,4.5,hand
 Traumatic Critique,Instant,"Traumatic Critique deals X damage to any target. Draw two cards, then discard a card.",U/R,card draw; burn,SOS,239,Rare,general,UR X-burn + card advantage — good in any UR/spellslinger shell (cf. Prismari concept),5.5,hand
+Foolish Fate,Instant,"Destroy target creature.
+Infusion — If you gained life this turn, that creature's controller loses 3 life.",B,lifegain; removal; infusion; payoff,SOS,83,Uncommon,41,"drain/value package: unconditional removal + life-to-mana, refunded by the Mister Negative swap",3.0,seed
 Multiversal Passage,Land,"As this land enters, choose a basic land type. Then you may pay 2 life. If you don't, it enters tapped.
 This land is the chosen type.",Colorless,,SPM,180,Rare,general,basic-type fixing land — any deck,6.0,hand
 Radioactive Spider,Creature — Spider,"Reach, deathtouch
