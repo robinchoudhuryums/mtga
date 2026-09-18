@@ -26,7 +26,7 @@
 #: tier: floor of A. Rebuilt 2026-09-18 (ten swaps) after the list was read as weak
 #: tier: despite clearing the floor: the surveil package was cut for real top-end and a
 #: tier: combo kill. Live vector: interaction 9 over a 3.37 curve, card advantage 11,
-#: tier: protection 2. Board power went 41 to 56, from rank 18 of 112 on the roster to
+#: tier: protection 2. Board power went 41 to 55, from rank 18 of 112 on the roster to
 #: tier: about its median — that axis is the one the floor cannot see and the one that
 #: tier: made the old list read weak.
 #: tier: WHAT HOLDS IT AT B, against a floor that says A:
@@ -59,6 +59,15 @@
 #: notes: the cost-as-upside flag has five rules and none of them is pay-life.
 #: notes: The drain triggers fire on the way UP and spending later does not untrigger them,
 #: notes: so gain-then-spend captures both halves.
+#: notes: RECURSION — the deck can return Mister Negative ONE way, and it was ZERO
+#: notes: until Fiendish Panda came in 2026-09-18. Jackdaw Savior LOOKS like the
+#: notes: answer and is not: it triggers only when a FLIER dies and returns a card of
+#: notes: LESSER mana value, and the deck's biggest flier is MV 5, so it caps at
+#: notes: returning MV 4. Negative is MV 7 and is not a flier, so he can neither
+#: notes: trigger it nor be returned by it. Panda reaches him at power 7 — base 3
+#: notes: plus four lifegain triggers — and dies to do it. If he is milled or
+#: notes: discarded with Panda absent, the only outs are the second copy and Seek the
+#: notes: Heart, both of which search the LIBRARY, not the graveyard.
 #: notes: ROTATION: four cards leave Standard this fall — Another Round, Baron Bertram
 #: notes: Graywater, Ruthless Lawbringer and Treasure Dredger. Another Round is the only
 #: notes: one-card double-blink in the format; replace them individually rather than
@@ -89,7 +98,7 @@ Deck
 1 Foolish Fate (SOS) 83
 
 # Value ETB creatures — the blink targets
-1 Beza, the Bounding Spring (BLB) 2
+1 Fiendish Panda (FDN) 120
 1 Dream Beavers (TMT) 62
 1 Starscape Cleric (BLB) 116
 1 M.O.D.O.K. (MSH) 106
