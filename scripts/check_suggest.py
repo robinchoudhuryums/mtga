@@ -343,15 +343,39 @@ def check():
     #       produced 99 KEYs across a 14-card sample where the strict set produces 54, and
     #       every one of the 45 differences was KEY -> tangential.
     #       This is a WIRING anchor, not a pure-function one, and deliberately so — the
-    #       F-18 lesson. `fit_strength` is RIGHT to mint KEY from any signature theme it
-    #       is handed: the whole point of the rescue is that a generic theme IS a
-    #       signature when it is genuinely the spine (`counters` is in GENERIC_THEMES).
-    #       So the strictness cannot live in the function; it lives in which signature the
-    #       CALLER builds, and only reading the call site can catch that. Asserting
-    #       fit_strength(signature={"etb"}) == tangential would contradict the rescue.
+    #       F-18 lesson. It stays: the strict signature is the caller's job and only
+    #       reading the call site can catch a caller that builds the loose one.
+    #
+    #       WHAT CHANGED 2026-09-18: this comment used to add "so the strictness cannot
+    #       live in the function … asserting fit_strength(signature={'etb'}) == tangential
+    #       would contradict the rescue". The first half was measured wrong — even with
+    #       the STRICT signature the branch minted 97.3% of every KEY verdict roster-wide
+    #       — and the second half confused two different tightenings. A generic signature
+    #       theme now has to EARN its KEY through a structural overlay, and when it does
+    #       not it falls through to the branches BELOW rather than being forced to
+    #       tangential. So the rescue below is untouched, and the assertion the old
+    #       comment warned against is still one nobody makes.
     if fs(["counters"], {"counters": 12}, "", 8, 8, signature={"counters"}) != "KEY":
         errs.append("fit_strength: the #: protect: rescue must still promote a deck's real "
                     "build-around spine (a counters deck protecting counter-doublers).")
+
+    # (11c) …and the other side of that branch: a GENERIC signature theme that is NOT the
+    #       deck's spine must NOT mint a KEY on its own. This is the saturation anchor —
+    #       before it, the signature branch returned 97.3% of all KEY verdicts and the two
+    #       branches designed to discriminate were dead at 1.5% and 1.2%. The card here
+    #       shares only `tokens`, which the deck protects but which is far from its top
+    #       theme, and it clears no structural overlay, so it is a role-player, not a home.
+    #       Kept as a PURE-function anchor because this half genuinely does live in the
+    #       function — unlike 11b's, which is about what the caller hands it.
+    if fs(["tokens"], {"tokens": 2, "Cat": 10}, "", 8, 8, signature={"tokens"}) == "KEY":
+        errs.append("fit_strength: a GENERIC signature theme that is not the deck's spine "
+                    "must not mint KEY by itself (the 97.3%-of-all-KEY saturation).")
+    #       …and the overlay is what earns it back. A doubler whose axis the deck feeds
+    #       is the case the branch exists for, so with an overlay that clears, KEY returns.
+    if fs(["tokens"], {"tokens": 2, "Cat": 10}, "", 8, 8, signature={"tokens"},
+          overlay=lambda: True) != "KEY":
+        errs.append("fit_strength: a generic signature theme MUST still mint KEY when the "
+                    "card clears a structural overlay for the deck (the G-33 rescue).")
     src = inspect.getsource(deck.cmd_suggest_homes)
     if "_strong_signature_themes" not in src or re.search(
             r"[^_]_signature_themes\(", src):

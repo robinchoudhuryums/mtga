@@ -4619,11 +4619,55 @@ class TestScreenSaturationAndCounts:
     def test_the_signature_rescue_is_preserved(self):
         """A tightening was TRIED and rejected: requiring a non-generic signature theme
         dropped deck 30's KEY rate 21%->1% and demoted Innkeeper's Talent, the
-        counter-doubler-in-a-counters-deck case the signature branch exists for. So the
-        fix REPORTS saturation instead of re-scoring — this pins that KEY still fires on a
-        generic signature theme."""
+        counter-doubler-in-a-counters-deck case the signature branch exists for.
+
+        THAT REJECTION STILL STANDS and this still pins it. What landed on 2026-09-18 is a
+        DIFFERENT change and the distinction is the whole point: the rejected one removed
+        the branch's effect, this one makes it CONDITIONAL on the card clearing a
+        structural overlay, and when it does not the card falls through to the branches
+        BELOW rather than being forced down. Measured on the deck the rejection was taken
+        on: **deck 30's KEY rate does not move at all (27.7% before and after)**,
+        Innkeeper's Talent and Branching Evolution keep KEY through the overlay, and Kami
+        of Whispered Hopes / Conclave Mentor / Ozolith keep it through `top-theme` —
+        because where `counters` really is the spine it is also the top theme. This
+        assertion passes for that second reason, which is why the case below exists too.
+        """
         assert deck.fit_strength(["counters"], {"counters": 20}, "", 9, 5,
                                  frozenset({"counters"})) == "KEY"
+
+    def test_a_generic_signature_that_is_not_the_spine_does_not_mint_key(self):
+        """The saturation itself. This branch is the FIRST statement in `fit_strength` and
+        returned KEY unconditionally, so across a 400-card sample x the 112-deck roster it
+        produced **97.3% of every KEY verdict** while the two branches designed to
+        discriminate were dead — `role-gap` 1.5%, `top-theme` 1.2%. Median KEY decks per
+        card 8, p90 17, max 35.
+
+        Here `tokens` is protected by the deck but is far from its spine, and the card
+        clears no overlay, so it is a role-player. Note it is NOT forced to tangential:
+        the fall-through is what keeps the demotion honest, and roster-wide the tangential
+        count did not move by a single row (289 -> 289 across a 12-card live sample)."""
+        assert deck.fit_strength(["tokens"], {"tokens": 2, "Cat": 10}, "", 8, 8,
+                                 signature={"tokens"}) == "role-player"
+
+    def test_a_structural_overlay_earns_the_generic_signature_key_back(self):
+        """…and this is how the G-33 rescue survives it. A doubler whose axis the deck
+        actually feeds engages the spine structurally, which is exactly what separates the
+        real rescue from a blanket mint."""
+        assert deck.fit_strength(["tokens"], {"tokens": 2, "Cat": 10}, "", 8, 8,
+                                 signature={"tokens"}, overlay=lambda: True) == "KEY"
+
+    def test_a_specific_signature_theme_still_mints_on_its_own(self):
+        """Only GENERIC signature themes have to earn it. A specific one IS the home."""
+        assert deck.fit_strength(["Ninja"], {"Ninja": 2, "Cat": 10}, "", 8, 8,
+                                 signature={"Ninja"}) == "KEY"
+
+    def test_the_overlay_predicate_is_optional(self):
+        """`fit_strength` stays a pure function — the overlay is a zero-arg predicate the
+        CALLER supplies, and its absence must not crash or mint. All three call sites
+        (screen, suggest-homes, quality) pass one; a future caller that forgets gets the
+        conservative fall-through rather than a KEY nothing checked."""
+        assert deck.fit_strength(["tokens"], {"tokens": 2, "Cat": 10}, "", 8, 8,
+                                 signature={"tokens"}, overlay=None) == "role-player"
 
 
 class TestAlreadyInDeckJoinsAreFrontFaced:

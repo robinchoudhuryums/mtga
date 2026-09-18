@@ -4642,7 +4642,47 @@ def deck_role_counts(cards, carddata):
     return t["interaction"], t["card_advantage"]
 
 
-def fit_strength(shared, theme_w, card_text, deck_int, deck_ca, signature=frozenset()):
+def structural_overlay_hit(card_text, cards, carddata):
+    """Does this card clear a STRUCTURAL overlay for THIS deck — a doubler with feeders,
+    a cost-scaler with its resource, a chosen-type payoff with a type to choose?
+
+    One definition, shared by every `fit_strength` caller, so the three surfaces cannot
+    disagree about what "earns" a KEY (G-70). It routes through the same primitives
+    `suggest-homes` and `cut_keep_score` already use rather than re-deriving any of them.
+
+    This exists for the generic-signature branch below. A theme like `counters` or
+    `tokens` is in GENERIC_THEMES and yet is genuinely a deck's spine when the deck
+    protects cards built on it — the rescue G-33 names. What separates the real rescue
+    from a blanket mint is whether the CARD engages that spine structurally, and that is
+    exactly what these three primitives measure.
+    """
+    txt = card_text or ""
+    ax = doubler_axis(txt)
+    if ax:
+        axis = ax[0] if isinstance(ax, (list, tuple)) else ax
+        try:
+            if doubler_support(axis, cards, carddata):
+                return True
+        except Exception:
+            pass
+    res = cost_scale_resource(txt)
+    if res:
+        try:
+            if cost_scale_support(res, cards, carddata):
+                return True
+        except Exception:
+            pass
+    if type_scale_payoff(txt):
+        try:
+            if type_scale_support(cards, carddata):
+                return True
+        except Exception:
+            pass
+    return False
+
+
+def fit_strength(shared, theme_w, card_text, deck_int, deck_ca, signature=frozenset(),
+                 overlay=None):
     """Classify a card→deck fit as KEY / role-player / tangential (F04).
 
       KEY          – shares the deck's SIGNATURE theme (top central theme, OR a theme
@@ -4679,9 +4719,41 @@ def fit_strength(shared, theme_w, card_text, deck_int, deck_ca, signature=frozen
     # A signature-theme match is a genuine home (the deck's spine) — but a broad
     # background tribe (Human/Hero/Villain) is NOT a signature even when a protected card
     # happens to carry it, so it can't mint a KEY by itself (tagging-misreads #4).
-    if signature and any(t in signature and t.lower() not in _GENERIC_TRIBES
-                         for t in shared):
-        return "KEY"
+    #
+    # A GENERIC signature theme has to EARN its KEY (2026-09-18). This branch is the FIRST
+    # statement in the function and it returned KEY unconditionally, so measured across a
+    # 400-card sample × the 112-deck roster it minted **97.3% of every KEY verdict** and
+    # the two branches BELOW that are designed to discriminate were effectively dead —
+    # `role-gap` 1.5%, `top-theme` 1.2%. Median KEY decks per card: 8, p90 17, max 35.
+    # Six generic themes carried ~75% of it (graveyard, tokens, counters, card draw,
+    # evasion, etb), each central in 64–103 of 112 decks, so "shares this deck's spine"
+    # was true of almost any card.
+    #
+    # The rescue the branch exists for is NOT removed, and the distinction matters because
+    # A STRICTER TIGHTENING WAS TRIED AND REJECTED (pinned by
+    # `test_the_signature_rescue_is_preserved`): requiring the signature theme to be
+    # NON-GENERIC dropped deck 30's KEY rate 21% -> 1% and demoted Innkeeper's Talent,
+    # the counter-doubler-in-a-counters-deck the branch was written for. That fix removed
+    # the effect; this one makes it CONDITIONAL, and the cards it exists for clear the
+    # condition. Measured on that same deck: **deck 30's KEY rate does not move at all
+    # (27.7% before and after)**, Innkeeper's Talent and Branching Evolution stay KEY
+    # through the overlay, and Kami of Whispered Hopes / Conclave Mentor / Ozolith stay
+    # KEY through `top-theme` — because in a deck whose spine really is `counters`, that
+    # theme is also the top theme, so the discriminating branch catches them anyway.
+    # What loses its blanket KEY is the deck where a generic signature theme is NOT the
+    # spine, which is the saturation itself.
+    #
+    # `overlay` is a zero-argument predicate the CALLER supplies (see
+    # `structural_overlay_hit`), keeping this function pure. When it is absent a generic
+    # signature simply falls through to the branches below — conservative, since those can
+    # still return KEY — rather than minting one nothing has checked.
+    sig_hits = [t for t in shared
+                if t in signature and t.lower() not in _GENERIC_TRIBES]
+    if sig_hits:
+        if any(t.lower() not in GENERIC_THEMES for t in sig_hits):
+            return "KEY"                      # a SPECIFIC spine is a home on its own
+        if overlay is not None and overlay():
+            return "KEY"                      # …a generic one only when the card engages it
     # No SPECIFIC shared theme -> at most GENERICALLY playable here, not a synergy home.
     # Checked BEFORE the role-gap branch on purpose (see docstring).
     if not specific:
@@ -10847,7 +10919,9 @@ def cmd_screen(args):
         ident = card_colors(cd.get("colors"))
         ctags = set(cardmeta.get(nl, {}).get("synergies", []))
         shared = sorted(ctags & central)
-        strength = fit_strength(shared, theme_w, text, d_int, d_ca, sig)
+        strength = fit_strength(
+            shared, theme_w, text, d_int, d_ca, sig,
+            overlay=lambda t=text: structural_overlay_hit(t, cards, carddata))
         roles = sorted(classify_roles(text))
         ax = doubler_axis(text)
         sup = doubler_support(ax, cards, carddata, doubler_restriction(text)) if ax else 0
@@ -11312,7 +11386,10 @@ def cmd_suggest_homes(args):
         # STRICT (>=2 protected cards) — see fit_strength's docstring: the loose
         # union made a generic theme a signature and minted KEY nearly everywhere.
         sig = _strong_signature_themes(dmeta, cards, cardmeta)
-        strength = fit_strength(shared, theme_w, cd.get("text") or "", d_int, d_ca, sig)
+        strength = fit_strength(
+            shared, theme_w, cd.get("text") or "", d_int, d_ca, sig,
+            overlay=lambda t=(cd.get("text") or ""): structural_overlay_hit(
+                t, cards, carddata))
         # Color-fixer overlay: a rainbow fixer's worth scales with the deck's color
         # count, which theme-overlap can't see. In a 3+-color deck it's at least a
         # role-player manabase upgrade; in a 4+-color deck it's a KEY one (the fixing
@@ -11782,7 +11859,10 @@ def cmd_quality(args):
         # STRICT (>=2 protected cards) — see fit_strength's docstring: the loose
         # union made a generic theme a signature and minted KEY nearly everywhere.
         sig = _strong_signature_themes(dmeta, cards, cardmeta)
-        strength = fit_strength(shared, theme_w, (cd or {}).get("text") or "", d_int, d_ca, sig)
+        strength = fit_strength(
+            shared, theme_w, (cd or {}).get("text") or "", d_int, d_ca, sig,
+            overlay=lambda t=((cd or {}).get("text") or ""): structural_overlay_hit(
+                t, cards, carddata))
         if strength == "tangential":
             weak_add = f"add {args.add!r} is only a TANGENTIAL fit (generic themes only)"
 

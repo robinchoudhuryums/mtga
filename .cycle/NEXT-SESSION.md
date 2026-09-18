@@ -27,9 +27,25 @@ commands disagree.
 > call, alongside decks 45 and 47. Deck 41 is now WIP (2 common craft targets, both
 > wishlisted): Fisk Tower and Foot Headquarters.
 >
-> **OPEN FINDING — `suggest-homes` KEY saturation is a CONTROL-FLOW defect, not a data
+> **CLOSED 2026-09-18 — the fix landed; the measurements below are kept because they are
+> the evidence, not because the work is outstanding.** A GENERIC signature theme now has to
+> EARN its KEY by the card clearing a structural overlay for that deck (`fit_strength`
+> gained an `overlay` predicate, wired at all THREE callers); a SPECIFIC signature theme
+> still mints on its own, and a generic one that does not earn it FALLS THROUGH to the
+> branches below rather than being forced down. Result: KEY 18.6% → 10.2%, KEY decks per
+> card p50 **8 → 4**, p90 17 → 10, and the two dead branches came alive — `top-theme`
+> 1.2% → **63.8%**, `role-gap` 1.5% → **8.8%**. Live at the callers: `suggest-homes` KEY
+> 93 → 73 over 12 cards with **tangential unchanged at 289**, `screen` moved on 5 of 8
+> decks where the path bites (42 of 112 decks carry a generic signature theme that is not
+> their top theme), `quality --add` unchanged because its warning fires on tangential.
+> **The earlier REJECTED tightening is not what landed** — deck 30's KEY rate did not move
+> at all (27.7% before and after) against that one's 21% → 1%, and Innkeeper's Talent
+> survives. Block: `.cycle/blocks/2026-09-key-saturation-earned-signature-broad-implement.md`.
+> **Still open from this finding: the RELATIONAL gap at the end, which is untouched.**
+>
+> ~~**OPEN FINDING — `suggest-homes` KEY saturation is a CONTROL-FLOW defect, not a data
 > gap. Measured 2026-09-17; do not re-derive, and do not "fix" it with more card
-> categories.** Prompted by the user asking whether more granular card data would make
+> categories.**~~ Prompted by the user asking whether more granular card data would make
 > fits more discriminating. It would not, at the bottleneck.
 >
 > METHOD (reproducible, the script was deliberately NOT committed — the
