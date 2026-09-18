@@ -3,12 +3,12 @@
 #: arena: 16 Moon Spirit, 697e3fd9-7143-4ef4-af0f-fda0b908eb1f
 #: tier: A — Azorius WATERBEND tempo-value, one band above its B metrics floor and
 #: tier: defensible there on two things the floor cannot read. FIRST, the floor's
-#: tier: interaction count is 6 and the real number is 8: Aetherize scores NO
+#: tier: interaction count is 5 and the real number is 7: Aetherize scores NO
 #: tier: functional role at all (a mass BOUNCE — "return all attacking creatures" — is
 #: tier: invisible to the classifier, which scores destroy-all and exile-all as
 #: tier: sweepers and single-target bounce as removal, an 18-card hole in the pool),
 #: tier: and Invasion Submersible's enters-bounce is likewise unscored. SECOND, board
-#: tier: power 65 and card advantage 9 are both well above where this deck sat before
+#: tier: power 68 and card advantage 9 are both well above where this deck sat before
 #: tier: the 2026-09-18 waterbend rebuild. The rebuild traded the white airbend package
 #: tier: for waterbend depth and moved the manabase from 10/12 to 7/15: cast-on-curve
 #: tier: rows under 70% went from FOUR (worst 60.5%) to ZERO (worst 72.9%), which is
@@ -102,7 +102,7 @@
 1 Into the Flood Maw (BLB) 52
 1 Watery Grasp (TLA) 82
 1 Flexible Waterbender (TLA) 50
-1 Disdainful Stroke (SOA) 17
+1 Pestered Wellguard (ECL) 63
 1 Sandbenders' Storm (TLA) 34
 
 # Lands
