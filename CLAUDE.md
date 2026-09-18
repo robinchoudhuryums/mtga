@@ -1396,10 +1396,10 @@ earned it: [C-01]
 
 **Subsystems:**
 - Data: card-library.csv, card-pool.csv, card-mana.csv, card-wishlist.csv, matches.csv
-  (LIVE since 2026-08-10 — 131 matches, 128 attributed across 39 decks, pooled 67-64; the
-  best per-deck row is n=13 (deck 45) against the 20-match floor after six weeks, which is
+  (LIVE since 2026-08-10 — 135 matches, 132 attributed across 40 decks, pooled 69-66; the
+  best per-deck row is n=15 (deck 45) against the 20-match floor after six weeks, which is
   why `--report` also POOLS, and why the four HAND columns exist at all — G-74; all four are
-  still EMPTY in all 131 rows, so scenario 11 remains the only thing that can prove that
+  still EMPTY in all 135 rows, so scenario 11 remains the only thing that can prove that
   loop closes), recommendations.csv,
   collection-stamp.json (written only by `import_collection.py --apply` — the date owned
   counts were last EXACT; absent until the first run, and the craft surfaces say so) [C-02]
