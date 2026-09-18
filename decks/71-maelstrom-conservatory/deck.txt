@@ -3,15 +3,16 @@
 #: arena: 71 Zaffai's Maelstrom, f8689a78-0f81-4b96-b68f-239b397cb665
 #: colors: UR
 #: plan: control
-#: tier: B (PROVISIONAL) — graded deliberately UNDER the A metrics floor (interaction 11,
-#: tier: card advantage 8 — a real control suite). Held at B because: UNTESTED first
-#: tier: draft; the engine has a real speed question the metrics cannot see (nothing
-#: tier: happens until turn 4-5, and an aggro start punishes a hand of 7-drops — the
-#: tier: keepable/mulligan texture of a 10-haymaker list only shows up in games);
-#: tier: consistency prices Eluge's UUU at 63.5% on turn four (Resonating Lute doubles land
-#: tier: mana for the SPELL half only, so the creature top end stays hand-cast); singleton variance on
-#: tier: the engine pieces means some games present no Zaffai/Capstone/Melek at all.
-#: tier: Re-grade after games; the ceiling reads A if the curve texture holds up.
+#: tier: B (PROVISIONAL) — graded deliberately UNDER the A metrics floor (interaction
+#: tier: 12, card advantage 8 — a real control suite). Held at B because: UNTESTED
+#: tier: first draft; the engine has a real speed question the metrics cannot see
+#: tier: (nothing happens until turn 4-5, and an aggro start punishes a hand of 7-drops
+#: tier: — the keepable/mulligan texture of a 10-haymaker list only shows up in games);
+#: tier: consistency prices Eluge's UUU at 63.5% on turn four (Resonating Lute doubles
+#: tier: land mana for the SPELL half only, so the creature top end stays hand-cast);
+#: tier: singleton variance on the engine pieces means some games present no
+#: tier: Zaffai/Capstone/Melek at all. Re-grade after games; the ceiling reads A if the
+#: tier: curve texture holds up.
 #: archetype: Izzet (U/R) BIG-SPELL ramp-control around Zaffai and the Tempests: survive
 #: archetype: with cheap counters and burn, ramp with Ashling's back face ({C}{C} that can
 #: archetype: only pay for MV-4+ spells), Rapturous Moment and Treasures, then land an

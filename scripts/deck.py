@@ -2003,7 +2003,20 @@ _ROLE_PATTERNS = {
                 # "each player sacrifices all other creatures they control" (Bringer of
                 # the Last Gift) is a wrath by another name; so is "two"/"X"/"half".
                 r"each (?:player|opponent) sacrifices (?:all|two|three|four|x|half)"
-                r"(?: of)?(?: the)? (?:other )?(?:creatures|permanents)"],
+                r"(?: of)?(?: the)? (?:other )?(?:creatures|permanents)",
+                # MASS BOUNCE is a wrath by another name and scored NOTHING, while
+                # `destroy all` and `exile all` above scored Sweeper and SINGLE-target
+                # bounce ("return target creature an opponent controls…") scored Removal —
+                # the family-disagreement shape G-67 says to check first. 22 pool cards,
+                # every one of them a real board wipe (Whelming Wave, Crush of Tentacles,
+                # Upheaval, Aetherize). The `owner(?:s'|'s)` alternation is load-bearing:
+                # the first measurement of this family used `owners?'?` and silently MISSED
+                # the singular possessive, which is the spelling Aetherize — the card that
+                # prompted the fix — actually uses, so the count read 18 against a real 22.
+                # Graveyard recursion is excluded by construction, since it returns cards
+                # "to YOUR hand", never "to their owner's hand"; 0 pool cards scope a mass
+                # bounce to permanents YOU control, so no self-blink is swept up.
+                r"return all [^.]{0,80}?to (?:their|its) owner(?:s'|'s) hands?"],
     # "counter up to one target spell unless…" (Repulsive Mutation) matched neither
     # this pattern NOR the broad coverage net below, so it scored zero roles AND was
     # never flagged as an under-read — the worst case, a miss invisible to the very

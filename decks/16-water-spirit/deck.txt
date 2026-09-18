@@ -3,18 +3,21 @@
 #: arena: 16 Moon Spirit, 697e3fd9-7143-4ef4-af0f-fda0b908eb1f
 #: tier: A — Azorius WATERBEND tempo-value, one band above its B metrics floor and
 #: tier: defensible there on two things the floor cannot read. FIRST, the floor's
-#: tier: interaction count is 5 and the real number is 7: Aetherize scores NO
-#: tier: functional role at all (a mass BOUNCE — "return all attacking creatures" — is
-#: tier: invisible to the classifier, which scores destroy-all and exile-all as
-#: tier: sweepers and single-target bounce as removal, an 18-card hole in the pool),
-#: tier: and Invasion Submersible's enters-bounce is likewise unscored. SECOND, board
-#: tier: power 68 and card advantage 9 are both well above where this deck sat before
-#: tier: the 2026-09-18 waterbend rebuild. The rebuild traded the white airbend package
-#: tier: for waterbend depth and moved the manabase from 10/12 to 7/15: cast-on-curve
-#: tier: rows under 70% went from FOUR (worst 60.5%) to ZERO (worst 72.9%), which is
-#: tier: the single largest measurable gain here. Held out of S by the absence of a
-#: tier: proven fast kill — Kuruk's Spirits are a real clock but a slow one, and the
-#: tier: deck has never been played in this configuration.
+#: tier: interaction count is 6 and the real number is 7 or more. Aetherize scored NO
+#: tier: functional role until 2026-09-18, when mass BOUNCE was added to the Sweeper
+#: tier: patterns — destroy-all and exile-all already scored, and single-target bounce
+#: tier: scored removal, so the family disagreed with itself across 22 pool cards.
+#: tier: THREE pieces are still unscored and all three are real: Aang's Iceberg is an
+#: tier: O-Ring, Crashing Wave taps and stuns their board, and Invasion Submersible's
+#: tier: enters-bounce is flexible enough to be fair. The classifier requires removal
+#: tier: to say "an opponent controls"; these do not. SECOND, board power 68 and card
+#: tier: advantage 9 are both well above where this deck sat before the 2026-09-18
+#: tier: waterbend rebuild. The rebuild traded the white airbend package for waterbend
+#: tier: depth and moved the manabase from 10/12 to 7/15: cast-on-curve rows under 70%
+#: tier: went from FOUR (worst 60.5%) to ZERO (worst 72.9%), which is the single
+#: tier: largest measurable gain here. Held out of S by the absence of a proven fast
+#: tier: kill — Kuruk's Spirits are a real clock but a slow one, and the deck has never
+#: tier: been played in this configuration.
 #: colors: WU
 #: archetype: AZORIUS WATERBEND, and the mechanic is the archetype: waterbend is CONVOKE FOR
 #: archetype: ACTIVATED COSTS — "you can tap your artifacts and creatures to help, each one

@@ -736,6 +736,41 @@ class TestClassifyRoles:
             "When this creature enters, if you cast it, each player sacrifices all other "
             "creatures they control.")
 
+    def test_mass_bounce_is_a_sweeper(self):
+        """The family disagreed with ITSELF: `destroy all` and `exile all` scored Sweeper,
+        single-target bounce scored Removal, and `return all ... to their owner's hand`
+        scored NOTHING — 22 pool cards, every one a real board wipe. Aetherize is the card
+        that surfaced it, and it uses the SINGULAR possessive, which the family's first
+        measurement missed (`owners?'?` reads "owner'" then wants a space) — so the count
+        read 18 against a real 22 until the alternation was written out."""
+        assert "Sweeper" in deck.classify_roles(
+            "Return all attacking creatures to their owner's hand.")      # singular
+        assert "Sweeper" in deck.classify_roles(
+            "Return all creatures to their owners' hands.")               # plural
+        assert "Sweeper" in deck.classify_roles(
+            "Return all nonland permanents to their owners' hands.")
+
+    def test_graveyard_recursion_is_not_a_mass_bounce(self):
+        """Excluded BY CONSTRUCTION, not by a guard: recursion returns cards to YOUR hand,
+        never to their owner's. Wisdom of Ages is the live case."""
+        roles = deck.classify_roles(
+            "Return all instant and sorcery cards from your graveyard to your hand. "
+            "You have no maximum hand size for the rest of the game.")
+        assert "Sweeper" not in roles, roles
+
+    def test_the_mass_edict_pattern_kept_its_tail(self):
+        """Regression, and the assertion has to be NEGATIVE. The mass-bounce pattern was
+        first inserted mid-way through an implicit two-line string concatenation, which
+        truncated the edict pattern to "...sacrifices (all|two|...)" and glued its tail
+        onto the new one. That truncation makes the pattern BROADER, not narrower, so
+        every positive case still passed — the tail is a GUARD requiring the sacrifice to
+        be of creatures or permanents. Sacrificing Treasures or lands is not a wrath."""
+        assert "Sweeper" in deck.classify_roles(
+            "Each player sacrifices all other creatures they control.")
+        for not_a_wrath in ("Each player sacrifices all Treasures they control.",
+                            "Each opponent sacrifices all lands they control."):
+            assert "Sweeper" not in deck.classify_roles(not_a_wrath), not_a_wrath
+
     def test_repeatable_upkeep_draw_is_card_advantage(self):
         # Phyrexian Arena. A REPEATABLE single draw accrues advantage — the cantrip
         # exclusion is about ONE-SHOT single draws, and reading Arena as a cantrip is why
