@@ -771,7 +771,12 @@ that regex read can silently **under**-count a phrasing it doesn't recognize,
 any card whose text *reads like* interaction / card advantage the classifier didn't
 tag ("⚠ Possible UNDER-COUNT — verify"), so a miss becomes an explicit prompt to
 read the card rather than a silent gap in the count. It never changes a count — it
-tells you where to look. (Working that list is worth the time: the second pass
+tells you where to look. It also prints **board power** — the total printed power of the
+creatures the deck fields — because nothing here measured that axis until 2026-09-18, and
+a deck can post strong interaction and card advantage while fielding nothing that ends a
+game. It is report-only and never reaches the tier floor. Printed `*`/X power is counted
+apart rather than treated as 0, and **tokens count for nothing**, so read the figure as a
+floor on what the deck can present rather than a ceiling. (Working that list is worth the time: the second pass
 through it found that the bounce pattern required the literal text "owner hand"
 while Magic writes "to its *owner's* hand", so every unconditional bounce spell in
 the collection had been scoring zero roles. Fixing that plus six other templatings
@@ -813,6 +818,14 @@ conditional — because every probability it computes prices color *access*, and
 pass once raised every castability figure while quietly taking the deck to 7 unconditional
 taplands. The tempo cost is invisible to the model; the line says so instead of implying
 the manabase got strictly better.
+
+It also names the **nonland mana sources it is NOT counting** — the rocks, dorks and
+mana-producing artifacts that `suggest --ramp` happily recommends. The exclusion itself is
+right and stays: a rock costs a card and a turn, so it is not a land drop and must not
+inflate a land count. But the *silence* meant two surfaces disagreed by construction, and
+two decks had hand-written the workaround into their own notes before the tool said it.
+Nothing about the numbers changes; the line tells you every cast-on-curve figure below it
+is a floor for that deck.
 
 **`deck.py targets <id>`** answers a question every other model here is structurally
 blind to: a card whose text names a RESOURCE — "return target creature card with mana
