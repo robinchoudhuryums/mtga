@@ -2682,6 +2682,37 @@ _COST_UPSIDE = [
     (re.compile(r"\bdiscard (?:a|one|two|that) card", re.I),
      {"graveyard", "reanimator", "recursion", "madness"}, "discard cost → fills the yard"),
 ]
+# A PAY-LIFE RULE WAS PROPOSED, MEASURED AND DECLINED (2026-09-18). Do not restart it —
+# the measurement is here so a re-proposal lands on the numbers instead of re-deriving them.
+#
+# It was proposed for a real miss: three cards were graded DOWN in chat for costing life,
+# in deck 41, whose whole thesis is spending life for cards and then exchanging life
+# totals with Mister Negative. Nothing in the tooling models that, and this table is where
+# such a rule would live. But measured against the roster it fails on every axis:
+#
+#   BROAD form (gate: a deck whose CENTRAL themes include lifegain / pay life / drain /
+#   lifelink — 50 of 112 decks) fires on 91 (deck, card) pairs at **22% precision**, and
+#   that figure is GENEROUS because the bucket counting it was itself gated on a regex
+#   that conflates "whenever you GAIN life" with "whenever you LOSE life". The failures:
+#     46% NOT REWARDED — shocklands ("as this land enters, you may pay 2 life"), equip
+#        costs, a land's own "{T}, pay 1 life: add". You pay those FOR something; the
+#        drawback is never the payoff.
+#     26% CHEAP, not upside — the deck tolerates the cost. That is a different claim.
+#      6% BACKWARDS — "ward—pay 5 life" is the OPPONENT's cost, read as yours. This is
+#        literally G-42's signature, the flag that was built, measured at 23 of 44 hits
+#        pointing the wrong way, and declined.
+#
+#   NARROW form (gate: the deck fields a payoff that TRIGGERS on you losing life — the
+#   only shape that makes the cost feed something) is unbuildable: **1 of 112 decks** holds
+#   one, off **7 pool cards** total, and it is NOT deck 41. Deck 41's refund is Mister
+#   Negative's life SWAP, which no text model here holds.
+#
+# THE SHAPE WAS WRONG, and that is the transferable part. Every rule above encodes a cost
+# that FEEDS something — a sacrifice feeds an outlet, a discard fills the yard, a land
+# bounce re-triggers landfall. Paying life feeds nothing. What deck 41 needed was the
+# weaker claim "this cost is CHEAP here, because the deck refunds it", and ⚡ asserts the
+# stronger one. Until something models a life-total SWAP, the deck's own `#: notes:` is
+# the right home for that judgment, which is where it now lives.
 
 
 # Themes that are only a BENEFIT when the deck is built to reward them; otherwise the
@@ -6327,6 +6358,76 @@ def format_source_notes(notes, indent="  "):
     return out
 
 
+def uncounted_mana_sources(cards, carddata):
+    """[(qty, name, colours, conditional)] — NONLAND permanents that produce mana.
+
+    `deck_source_profile` counts LANDS and only lands (G-35), which is deliberate and
+    right: a rock or a dork costs a card and a turn, so it is not a land drop and must
+    not inflate a land count. The cost of that correctness was SILENCE — `consistency`
+    prices every cast-on-curve figure off the land count while `suggest --ramp`
+    recommends exactly the nonland sources it cannot see, so the two surfaces disagree
+    by construction and neither says so. Two decks (23 and 41) had independently written
+    the workaround into their own `#: notes:` prose before this existed, which by this
+    repo's own rule means the RULE was the thing that was wrong, not the decks.
+
+    REPORT-ONLY, and it must stay so: this changes NO figure. It says "the model cannot
+    see these", never "add them to your sources".
+
+    The production rules are `lib.land_production`'s, run on a nonland card's text, so
+    this and the land count cannot drift apart (G-70) — which is the entire point, since
+    the finding IS two surfaces disagreeing. That reuse buys three exclusions for free,
+    each matching what the land count already does:
+      • SPEND-ONLY mana is not counted (G-35 says so for lands; counting it here would
+        have made the disclosure contradict the rule it exists to complement — 8 roster
+        cards, Giada and Hydro-Channeler among them).
+      • A GRANTED ability is not counted, so "Lands you control have '{T}: Add …'"
+        reads as the land UPGRADE it is rather than a new source.
+      • An extra-cost ability is counted but LABELLED, exactly as a land's is.
+    The PERMANENT filter is this function's own: a land's Add clause is repeatable by
+    tapping, a sorcery's is a one-shot ritual, so an instant/sorcery is excluded rather
+    than reported as a source.
+
+    Measured 2026-09-18 across the roster: **75 of 112 decks**, 76 distinct cards.
+    Precision hand-checked at 74 of 76 — the residual is an aura that upgrades a LAND
+    ("Enchanted land has '{T}: Add two mana…'", New Horizons), which `_GRANTED_ABILITY_RE`
+    does not phrase-match, and one "target player adds" that could name the opponent
+    (Radiant Lotus). Both are disclosure noise, not a wrong number.
+
+    NOTE the first measurement of this was WRONG and the error is worth keeping: a
+    hand-rolled regex reported 40 decks, and `_MANA_SOURCE_RE` — the existing primitive,
+    which has exactly one caller — reported 89 with a much worse precision, because it
+    matches rituals, spend-restricted mana and granted abilities alike. G-40's rule fired
+    exactly as written: reaching a new caller is not free, so re-measure the primitive AT
+    that caller.
+    """
+    perm = ("Artifact", "Creature", "Enchantment", "Planeswalker", "Battle")
+    out = []
+    for q, n, _s, _c in cards:
+        nl = n.lower()
+        if nl in BASICS:
+            continue
+        cd = carddata.get(nl)
+        if not cd:
+            continue
+        tline = cd.get("type") or ""
+        # FRONT face decides the type (G-63): a `Creature // Land` back face must not
+        # make the card read as a land and drop out of this list entirely.
+        if "Land" in _primary_type(tline):
+            continue
+        if not any(t in tline.split("//")[0] for t in perm):
+            continue
+        prod = land_production(cd.get("text") or "")
+        # NO `colors_cell` — `land_production` folds a LAND's identity in because a
+        # land's identity IS its mana symbols, which is false for a nonland card, where
+        # identity is its casting cost. Passing it would make every coloured permanent a
+        # mana source.
+        usable = prod["free"] | prod["conditional"]
+        if usable:
+            out.append((q, cd.get("name") or n, "".join(sorted(usable)),
+                        not prod["free"]))
+    return sorted(out, key=lambda r: (-r[0], r[1]))
+
+
 def tapland_profile(cards, carddata):
     """(unconditional, conditional, nonbasic_land_total) — each a sorted [(qty, name)].
 
@@ -6464,6 +6565,23 @@ def cmd_consistency(args):
                   + ", ".join(f"{c} ({sources[c]})" for c in splash)
                   + " — a card needing one of these on curve reads low below; treat it as a "
                     "late-game splash (cast when you've drawn the source), not a curve play.")
+    # The heading above says "lands producing each color" and means it — so say what that
+    # EXCLUDES. Every figure on this page is priced off the land count (G-35), while
+    # `suggest --ramp` recommends the nonland sources that count cannot see; the two
+    # surfaces disagreed by construction and neither disclosed it. DISCLOSURE ONLY: no
+    # number above or below moves, because a rock is not a land drop.
+    _nonland_src = uncounted_mana_sources(cards, carddata)
+    if _nonland_src:
+        _n = sum(q for q, _nm, _cl, _cond in _nonland_src)
+        _shown = ", ".join(
+            f"{q}× {nm} ({cl}{', extra cost' if cond else ''})"
+            for q, nm, cl, cond in _nonland_src[:4])
+        print(f"\n  ⓘ {_n} NONLAND mana source(s) are NOT in the counts above: {_shown}"
+              + ("…" if len(_nonland_src) > 4 else "")
+              + ".\n    Deliberate — a rock or a dork costs a card and a turn, so it is not "
+                "a land drop and must not inflate a land count. But it does mean every "
+                "cast-on-curve figure below is a FLOOR for this deck, and that "
+                "`suggest --ramp` can recommend acceleration this page will never price.")
 
     # #1 — per-card cast probability on curve. Cast turn = the card's MV (min 1),
     # capped so a 7-drop isn't judged as if cast on turn 7 verbatim (you've usually

@@ -53,6 +53,22 @@ UNIVERSE = {
     "zero bear": _card("Zero Bear", "Creature — Bear", "", "B", "0", "4"),
     # A Vehicle is not a creature until crewed, so it is reported apart, never summed in.
     "wagon": _card("Wagon", "Artifact — Vehicle", "Crew 2", "B", "4", "4"),
+    # --- nonland mana sources, for uncounted_mana_sources ---
+    "dork": _card("Dork", "Creature — Elf Druid", "{T}: Add {B}.", "B", "1", "1"),
+    "rock": _card("Rock", "Artifact", "{T}: Add one mana of any color.", ""),
+    # An extra MANA cost makes it a filter, not a source on the turn you need the colour
+    # — counted but LABELLED, exactly as a land's is (G-35).
+    "filter rock": _card("Filter Rock", "Artifact", "{1}, {T}: Add one mana of any color.", ""),
+    # "Spend this mana only …" is NOT counted for a land, so it must not be counted here
+    # either, or the disclosure would contradict the rule it complements.
+    "narrow dork": _card("Narrow Dork", "Creature — Elf Druid",
+                         "{T}: Add {B}. Spend this mana only to cast creature spells.",
+                         "B", "1", "1"),
+    # A GRANTED ability upgrades lands you already count; it is not a new source.
+    "grantor": _card("Grantor", "Enchantment",
+                     "Lands you control have \"{T}: Add one mana of any color.\"", "B"),
+    # A ritual is one-shot, not a source — and an instant/sorcery is excluded by type.
+    "ritual": _card("Ritual", "Sorcery", "Add {B}{B}{B}.", "B"),
     "swamp": _card("Swamp", "Basic Land — Swamp", "", ""),
 }
 
@@ -61,6 +77,8 @@ MANA = {
     "arena": ("{2}{B}", 3), "bear": ("{1}{B}", 2), "big bear": ("{4}{B}", 5),
     "red bear": ("{1}{R}", 2), "swamp": ("", 0),
     "star bear": ("{1}{B}", 2), "zero bear": ("{1}{B}", 2), "wagon": ("{2}", 2),
+    "dork": ("{B}", 1), "rock": ("{2}", 2), "filter rock": ("{2}", 2),
+    "narrow dork": ("{B}", 1), "grantor": ("{1}{B}", 2), "ritual": ("{B}", 1),
 }
 
 META = {
@@ -74,6 +92,12 @@ META = {
     "star bear": {"colors": {"B"}, "synergies": ["Bear"]},
     "zero bear": {"colors": {"B"}, "synergies": ["Bear"]},
     "wagon": {"colors": {"B"}, "synergies": ["artifacts"]},
+    "dork": {"colors": {"B"}, "synergies": ["ramp"]},
+    "rock": {"colors": set(), "synergies": ["ramp"]},
+    "filter rock": {"colors": set(), "synergies": ["ramp"]},
+    "narrow dork": {"colors": {"B"}, "synergies": ["ramp"]},
+    "grantor": {"colors": {"B"}, "synergies": ["ramp"]},
+    "ritual": {"colors": {"B"}, "synergies": ["ramp"]},
 }
 
 
@@ -1331,3 +1355,58 @@ class TestAuditedFigureKeys:
         """The finding itself: deck 41's board-power figure went stale twice in one
         session while the audit reported the block current."""
         assert "board power" in deck.audited_figure_keys()
+
+
+class TestUncountedManaSources:
+    """`consistency` prices every figure off the LAND count (G-35) while `suggest --ramp`
+    recommends the nonland sources that count cannot see — two surfaces disagreeing by
+    construction, with neither saying so. Decks 23 and 41 had each hand-written the
+    workaround into their own `#: notes:` before this existed. These pin the exclusions,
+    which are the whole reason the disclosure is trustworthy: they are `land_production`'s
+    own rules, so the disclosure and the land count cannot drift apart."""
+
+    def _names(self, synth, lines):
+        d = synth(lines)
+        _m, cards = deck.parse_deck_file(d["path"])
+        return {n for _q, n, _c, _cond in deck.uncounted_mana_sources(cards, UNIVERSE)}
+
+    def test_a_nonland_permanent_that_makes_mana_is_reported(self, synth):
+        assert self._names(synth, ["1 Dork", "1 Rock", "20 Swamp"]) == {"Dork", "Rock"}
+
+    def test_a_land_is_not_reported(self, synth):
+        """Lands are already in the count this disclosure qualifies."""
+        assert "Swamp" not in self._names(synth, ["1 Dork", "20 Swamp"])
+
+    def test_spend_restricted_mana_is_excluded(self, synth):
+        """G-35 does not count spend-only mana for a LAND. Counting it here would make
+        the disclosure contradict the rule it exists to complement."""
+        assert self._names(synth, ["1 Narrow Dork", "20 Swamp"]) == set()
+
+    def test_a_granted_ability_is_excluded(self, synth):
+        """"Lands you control have '{T}: Add …'" upgrades lands that are already counted;
+        it does not add a source."""
+        assert self._names(synth, ["1 Grantor", "20 Swamp"]) == set()
+
+    def test_a_ritual_is_excluded(self, synth):
+        """A land's Add clause is repeatable by tapping; a sorcery's is one-shot."""
+        assert self._names(synth, ["1 Ritual", "20 Swamp"]) == set()
+
+    def test_an_extra_cost_source_is_reported_but_flagged(self, synth):
+        d = synth(["1 Filter Rock", "1 Dork", "20 Swamp"])
+        _m, cards = deck.parse_deck_file(d["path"])
+        by_name = {n: cond for _q, n, _c, cond in deck.uncounted_mana_sources(cards, UNIVERSE)}
+        assert by_name["Filter Rock"] is True     # labelled, as a land's would be
+        assert by_name["Dork"] is False
+
+    def test_it_changes_no_source_count(self, synth):
+        """REPORT-ONLY. The disclosure must not move a single figure — a rock is not a
+        land drop, which is exactly why `deck_source_profile` excludes it."""
+        by_key, by_name, _qty = deck.load_collection()
+        plain = synth(["2 Zap", "20 Swamp"])
+        withdork = synth(["2 Zap", "1 Dork", "20 Swamp"])
+        _m1, c1 = deck.parse_deck_file(plain["path"])
+        _m2, c2 = deck.parse_deck_file(withdork["path"])
+        s1, l1, _t1, _n1 = deck.deck_source_profile(c1, by_key, by_name, UNIVERSE)
+        s2, l2, _t2, _n2 = deck.deck_source_profile(c2, by_key, by_name, UNIVERSE)
+        assert s1["B"] == s2["B"] and l1 == l2
+        assert deck.uncounted_mana_sources(c2, UNIVERSE)      # …yet it IS disclosed
