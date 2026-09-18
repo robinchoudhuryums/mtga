@@ -323,6 +323,23 @@ def craft_rows(d, problems=None):
             for p in res["picks"]]
 
 
+# A `#: format:` header is free text, and the roster writes it two ways — 107 decks say
+# "Standard" and four say "standard". The shelf grouping keys on this string and `FMT_ORDER`
+# is title-cased, so a lowercase header matched no entry, sorted to the end and got a SHELF
+# OF ITS OWN: decks 44, 44a, 45 and 45a sat in a second "standard" section away from the
+# other 107, which is exactly what a user reported seeing.
+#
+# G-08's rule is the fix and it already existed: every legality and recommender surface
+# reads the format through the canonical helper, never the raw string. This is the one
+# surface that still read the raw string, so it routes through `normalize_format` too and
+# then title-cases for display — `normalize_format` lowercases (it is built for the
+# construction-rule sets), and a shelf heading wants "Historic Brawl", not "historic brawl".
+# An EMPTY header still yields "", which the template turns into "Unspecified" as before.
+def _display_format(raw):
+    """The `#: format:` header as ONE canonical display label, via `normalize_format`."""
+    return deckmod.normalize_format(raw or "").title()
+
+
 def collect():
     """Gather the structured dashboard payload from committed data only."""
     _no_network()
@@ -385,7 +402,7 @@ def collect():
             "core": d["core"],
             "name": d["name"] or d["id"],
             "archetype": deckmod._deck_identity(meta, width=140),
-            "format": (meta.get("format") or "").strip(),
+            "format": _display_format(meta.get("format")),
             "colors": (meta.get("colors") or "").strip().upper(),
             "variant": bool(d["variant"]),
             "total": total,
@@ -1310,7 +1327,14 @@ function restorePrefs(){
   STATE.theme = p.theme || (window.matchMedia
     && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
   STATE.viewMode = p.viewMode || 'grid'; STATE.quickFilter = p.quickFilter || 'all';
-  STATE.activeColors = p.activeColors || {}; STATE.open = p.open || {}; STATE.pinned = p.pinned || {};
+  // STATE.open is deliberately NOT restored from localStorage. It used to be, so an
+  // analysis panel you expanded once stayed expanded on every later visit with nothing
+  // on screen to explain why — the URL looked clean because the hash is the OTHER half
+  // of this. A disclosure you clicked to read something is transient; the theme, view
+  // mode, colour chips and pinned decks below are preferences you deliberately set.
+  // The HASH path still opens decks (see `h.d` further down) so a deep link and the 🔗
+  // share button keep working, and that route is VISIBLE in the address bar.
+  STATE.activeColors = p.activeColors || {}; STATE.open = {}; STATE.pinned = p.pinned || {};
   STATE.secCollapsed = p.secCollapsed || {}; STATE.wlRarity = p.wlRarity || {};
   const h = parseHash();
   if (h.v) STATE.viewMode = h.v;
@@ -1320,20 +1344,26 @@ function restorePrefs(){
   if (h.d) { h.d.split(',').forEach(id => { if (id) STATE.open[id] = true; }); STATE._jump = h.d.split(',')[0]; }
   document.documentElement.setAttribute('data-theme', STATE.theme);
 }
-function buildHash(){
+// `includeOpen` is false for the ADDRESS BAR and true for the 🔗 share button, and the
+// split is the point. Expanding an analysis panel used to rewrite the URL with `d=<id>`,
+// so a plain refresh re-opened it — the visible half of the same complaint the
+// localStorage restore caused invisibly. A disclosure you clicked to read something is
+// not part of "the view you are on"; it IS part of a link you deliberately hand someone,
+// which is why the share button still captures it and an inbound `#d=` still opens it.
+function buildHash(includeOpen){
   const p = [];
   if (STATE.viewMode !== 'grid') p.push('v=' + STATE.viewMode);
   if (STATE.quickFilter !== 'all') p.push('f=' + STATE.quickFilter);
   if (STATE.deckFilter) p.push('q=' + encodeURIComponent(STATE.deckFilter));
   const cols = ['W','U','B','R','G'].filter(c => STATE.activeColors[c]).join('');
   if (cols) p.push('c=' + cols);
-  const open = Object.keys(STATE.open).filter(k => STATE.open[k]);
+  const open = includeOpen ? Object.keys(STATE.open).filter(k => STATE.open[k]) : [];
   if (open.length) p.push('d=' + open.join(','));
   return p.length ? '#' + p.join('&') : ' ';
 }
 function persist(){
-  try { history.replaceState(null,'',buildHash()); } catch(e){}
-  try { localStorage.setItem('mtga-prefs', JSON.stringify({theme:STATE.theme, viewMode:STATE.viewMode, quickFilter:STATE.quickFilter, activeColors:STATE.activeColors, open:STATE.open, pinned:STATE.pinned, secCollapsed:STATE.secCollapsed, wlRarity:STATE.wlRarity})); } catch(e){}
+  try { history.replaceState(null,'',buildHash(false)); } catch(e){}
+  try { localStorage.setItem('mtga-prefs', JSON.stringify({theme:STATE.theme, viewMode:STATE.viewMode, quickFilter:STATE.quickFilter, activeColors:STATE.activeColors, pinned:STATE.pinned, secCollapsed:STATE.secCollapsed, wlRarity:STATE.wlRarity})); } catch(e){}
 }
 // Restore prefs + deep-link BEFORE anything renders, so control highlights (color
 // chips, quick pills, view toggle) and the deck/wishlist views all reflect saved state.
@@ -2347,7 +2377,7 @@ function paletteEl(){
 
 // ---------- header buttons + keyboard ----------
 $('btntheme').onclick = () => { STATE.theme = STATE.theme==='dark'?'light':'dark'; document.documentElement.setAttribute('data-theme', STATE.theme); persist(); };
-$('btnshare').onclick = () => { const url = location.href.split('#')[0] + buildHash().replace(/^ $/,''); writeClip(url, () => toast('View link copied to clipboard')); };
+$('btnshare').onclick = () => { const url = location.href.split('#')[0] + buildHash(true).replace(/^ $/,''); writeClip(url, () => toast('View link copied to clipboard')); };
 $('btnsync').onclick = () => syncLive(false);
 a11y($('palettehint'), {label:'Open command palette'});
 $('palettehint').onclick = openPalette;

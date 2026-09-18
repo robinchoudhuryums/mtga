@@ -1,5 +1,5 @@
 #: name: Grand Larceny — Outlaw Heist
-#: format: standard
+#: format: Standard
 #: colors: BR
 #: plan: midrange
 #: archetype: Rakdos (B/R) variant of 44 — the same mono-black heist spine, taking the

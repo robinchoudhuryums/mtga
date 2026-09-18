@@ -1,5 +1,5 @@
 #: name: The Exiles
-#: format: standard
+#: format: Standard
 #: arena: 45 The Exiles, c5b28301-7213-4130-b505-e8b75f48d382
 #: colors: WBR
 #: plan: midrange
