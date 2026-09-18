@@ -743,6 +743,29 @@ class TestDashboardSurfacesTheDeckFileProse:
         assert bd._flex_entries(str(tmp_path / "nope.txt")) == [], (
             "an unreadable file must degrade to no flex, never take the build down")
 
+    def test_the_build_log_is_paragraphed_on_its_own_shouted_leads(self, tmp_path):
+        """`parse_deck_file` joins `#: notes:` into ONE string with no newlines (deck 50 is
+        16,540 chars), so the only paragraphing the prose has is the shouted lead-ins the
+        roster writes it with. Split in PYTHON so the page ships an array and no second
+        copy of this regex exists to drift from the first."""
+        bd = self._mod()
+        txt = ("Drafted from the survey, and it held up. WHY THERE IS NO TRIBE — green's "
+               "payoffs are scattered. MV 5 is the cap, so nothing above it. "
+               "MULTIPLES OVER SINGLETONS on the load-bearing cards.")
+        got = bd._notes_paragraphs({"notes": txt})
+        assert len(got) == 3, got
+        assert got[0].startswith("Drafted") and got[0].endswith("held up.")
+        assert got[1].startswith("WHY THERE IS NO TRIBE")
+        assert "MV 5 is the cap" in got[1], (
+            "a LONE acronym mid-prose is not a section lead — a lead needs two shouted "
+            "tokens, or every 'MV 5' and 'WIP.' would start a paragraph")
+        assert got[2].startswith("MULTIPLES OVER SINGLETONS")
+
+    def test_a_deck_with_no_build_log_yields_no_paragraphs(self):
+        bd = self._mod()
+        assert bd._notes_paragraphs({}) == []
+        assert bd._notes_paragraphs({"notes": "   "}) == []
+
     def test_the_synopsis_is_the_prose_and_the_label_is_the_label(self, tmp_path):
         """Both fields are kept deliberately: the deck CARD wants a one-line label, the
         MODAL wants the prose. Pinning them apart is what stops a future tidy-up from
@@ -765,5 +788,6 @@ class TestDashboardSurfacesTheDeckFileProse:
         i = src.find("decks.append({")
         assert i != -1
         window = src[i:i + 2200]
-        assert '"synopsis"' in window and '"flex"' in window, (
-            "the modal reads d.synopsis / d.flex — dropping either restores the '…'")
+        assert '"synopsis"' in window and '"flex"' in window and '"notes"' in window, (
+            "the modal reads d.synopsis / d.flex / d.notes — dropping any restores the "
+            "'…' or an empty tab")

@@ -340,6 +340,36 @@ def _display_format(raw):
     return deckmod.normalize_format(raw or "").title()
 
 
+# The `#: notes:` build log is stored one header line per source line and `parse_deck_file`
+# joins them into ONE string with no newlines at all — so the raw value is a 2,793-char
+# (deck 41) to 16,540-char (deck 50) wall of text. The roster does not write it that way:
+# 59 of the 111 decks with notes structure it with SHOUTED lead-ins ("WHY THE SWAP WORKS
+# —", "RECURSION —", "UNGRADED ON PURPOSE"), and that structure is the only paragraphing
+# the prose has. Splitting on it is a PRESENTATION concern and lives here rather than in
+# `deck.py`, which has no reason to care.
+#
+# Split in PYTHON, not in the page's JS: the payload then ships an array and there is no
+# second copy of this regex to drift from the first — the cross-language bug class
+# `tests/test_dashboard_js.py` exists for.
+_NOTE_LEAD_RE = re.compile(
+    r"(?<=[.!?:;—] )(?=[A-Z][A-Z0-9’'\-]*(?:\s+(?:[A-Z0-9’'\-]{2,}|[A-Z]))+[\s—:,])")
+
+
+def _notes_paragraphs(meta):
+    """The deck's `#: notes:` prose as paragraphs, split on its own shouted lead-ins.
+
+    A sentence boundary is REQUIRED before a lead, so a shout mid-sentence never splits;
+    a lead needs TWO shouted tokens, so a lone acronym ("MV 5 is the cap", "WIP.") does
+    not either. Measured over the roster: 59 of 111 decks split, p50 2 paragraphs, max 40
+    (deck 50) with a 40-char shortest — every one a real section, and the 52 that do not
+    split are genuinely written as one block.
+    """
+    txt = (meta.get("notes") or "").strip()
+    if not txt:
+        return []
+    return [p.strip() for p in _NOTE_LEAD_RE.split(txt) if p.strip()]
+
+
 def _flex_entries(path):
     """The deck's `#~` block as [{in, out, note}], through `deck.parse_flex` — the one
     parser, never a second reading of the same lines."""
@@ -422,6 +452,10 @@ def collect():
             # the browser at all and the modal's "…" was the end of the data, not a CSS
             # clamp. Both are kept: the card wants a label, the modal wants the prose.
             "synopsis": (meta.get("archetype") or "").strip(),
+            # The `#: notes:` build log — the per-deck reasoning record, 111 decks and
+            # 319 KB of prose, which the page carried none of. Paragraphed at build time
+            # (see `_notes_paragraphs`) because the stored form has no line breaks.
+            "notes": _notes_paragraphs(meta),
             # The `#~` flex block — proposed swaps and craft notes the repo file carries
             # and the page did not surface at ALL. 84 decks have one, 935 entries.
             "flex": _flex_entries(d["path"]),
@@ -950,6 +984,8 @@ TEMPLATE = r"""<!DOCTYPE html>
   .flexswap { font-size:12.5px; font-weight:600; margin-bottom:5px; }
   .flexin { color:var(--ok); } .flexout { color:var(--bad); }
   .flexnote { font-size:12px; color:var(--ink2); line-height:1.5; white-space:pre-wrap; }
+  .notepara { font-size:12.5px; color:var(--ink); line-height:1.6; margin:0 0 11px; max-width:640px; }
+  .notepara:last-child { margin-bottom:0; }
 
   /* palette / modal / preview / toast */
   .overlay { position:fixed; inset:0; z-index:60; background:rgba(6,8,11,.6); backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px); display:flex; align-items:flex-start; justify-content:center; }
@@ -1688,7 +1724,7 @@ function renderMana(v){
 }
 
 // ---------- deck filtering ----------
-const TABS = [['craft','Craft picks'],['arena','Arena import'],['stats','Stats'],['mana','Mana'],['cuts','Cuts'],['legal','Legal'],['flex','Flex']];
+const TABS = [['craft','Craft picks'],['arena','Arena import'],['stats','Stats'],['mana','Mana'],['cuts','Cuts'],['legal','Legal'],['flex','Flex'],['notes','Build log']];
 const QUICK = [['all','All'],['buildable','Buildable now'],['needsMythic','Needs mythic'],['incomplete','Needs work']];
 function filteredDecks(){
   const q = (STATE.deckFilter||'').toLowerCase().trim();
@@ -1750,6 +1786,16 @@ function detailBody(d, k){
       if (e.note) row.appendChild(el('div','flexnote', e.note));
       wrap.appendChild(row);
     });
+    return wrap;
+  }
+  if (k === 'notes'){
+    const ns = d.notes || [];
+    if (!ns.length) return preOf('No `#: notes:` block — this deck files no build log.');
+    const wrap = el('div');
+    wrap.appendChild(el('div','metaline2',
+      'The deck file\'s `#: notes:` build log — why the list is what it is. '
+      + 'Prose, not a measurement: nothing re-grounds it when the deck changes.'));
+    ns.forEach(t => wrap.appendChild(el('p','notepara', t)));
     return wrap;
   }
   return preOf((d.detail && d.detail[k]) || '(no output)');
