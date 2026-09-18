@@ -25,15 +25,17 @@
 #: tier: B — Orzhov lifegain-drain control, deliberately held ONE BAND UNDER a metrics
 #: tier: floor of A. Rebuilt 2026-09-18 (ten swaps) after the list was read as weak
 #: tier: despite clearing the floor: the surveil package was cut for real top-end and a
-#: tier: combo kill. Live vector: interaction 9 over a 3.36 curve, card advantage 11,
-#: tier: protection 2. Board power went 41 to 58, from rank 18 of 112 on the roster to
+#: tier: combo kill. Live vector: interaction 9 over a 3.37 curve, card advantage 11,
+#: tier: protection 2. Board power went 41 to 56, from rank 18 of 112 on the roster to
 #: tier: about its median — that axis is the one the floor cannot see and the one that
 #: tier: made the old list read weak.
 #: tier: WHAT HOLDS IT AT B, against a floor that says A:
-#: tier: 1. THE CURVE. 3.36 against 24 lands, and the figure UNDER-reports: three X-cost
-#: tier:    cards book at MV 1. Treasure Dredger is the only acceleration. A 25th land
-#: tier:    measured better on every axis (keepable 84.4 to 86.0, screw 14.3 to 12.2,
-#: tier:    turn-4 land drop 63.2 to 67.5) and is the first change to try if it stumbles.
+#: tier: 1. THE CURVE. 3.37 against 25 lands, and the figure UNDER-reports: three X-cost
+#: tier:    cards book at MV 1, so the deck plays heavier than the number. Treasure
+#: tier:    Dredger is the only acceleration. The 25th land was TAKEN 2026-09-18, for
+#: tier:    Inspiring Overseer — keepable 84.4 to 86.0, screw 14.3 to 12.2, turn-4 land
+#: tier:    drop 63.2 to 67.5. A 26th is NOT the next step: flood is already 1.7% and the
+#: tier:    remaining fix is cheap spells, not more lands.
 #: tier: 2. THE KILL IS A TWO-CARD LOOP and both halves are singletons. It assembles off
 #: tier:    fifteen lifegain enablers, but a deck whose best line needs two specific cards
 #: tier:    is not an A until the fair half proves it can win on its own.
@@ -107,7 +109,6 @@ Deck
 
 # Card advantage — the stated path to A
 1 Circle of Power (FIN) 92
-1 Inspiring Overseer (FDN) 496
 1 Raven Eagle (TLA) 116
 
 # Removal
@@ -115,7 +116,7 @@ Deck
 1 Stroke of Midnight (FDN) 148
 1 Tolls of War (TLA) 245
 
-# Lands — 24, Orzhov
+# Lands — 25, Orzhov
 1 Bleachbone Verge (DFT) 250
 1 Fisk Tower (MSH) 265
 1 Foot Headquarters (TMT) 185
@@ -124,9 +125,9 @@ Deck
 1 Shattered Sanctum (SOS) 260
 1 Temple of Silence (FDN) 704
 8 Plains (MSH) 285
-9 Swamp (MSH) 287
+10 Swamp (MSH) 287
 
-#~ +Painful Quandary | -Stroke of Midnight | PRO-synergy here in a way its black flavour hides: it is the one taxer on the list that is NOT symmetric (it triggers only on OPPONENTS' spells and costs you nothing), and pushing their total DOWN widens the exact gap Mister Negative converts into cards. Held out of the 60 only on curve — MV 5 against a 3.36 average, and it does nothing on an empty board. The 2026-09-18 rebuild raised the curve, so this is now a harder sell, not an easier one. Owned.
+#~ +Painful Quandary | -Stroke of Midnight | PRO-synergy here in a way its black flavour hides: it is the one taxer on the list that is NOT symmetric (it triggers only on OPPONENTS' spells and costs you nothing), and pushing their total DOWN widens the exact gap Mister Negative converts into cards. Held out of the 60 only on curve — MV 5 against a 3.37 average, and it does nothing on an empty board. The 2026-09-18 rebuild raised the curve, so this is now a harder sell, not an easier one. Owned.
 #~ note: applied — Foolish Fate in for Visions of Villainy.
 #~ note: applied — Treasure Dredger in for Personify.
 #~ note: applied — Inside Information in for Getaway Glamer.
