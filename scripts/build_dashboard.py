@@ -340,6 +340,18 @@ def _display_format(raw):
     return deckmod.normalize_format(raw or "").title()
 
 
+def _flex_entries(path):
+    """The deck's `#~` block as [{in, out, note}], through `deck.parse_flex` — the one
+    parser, never a second reading of the same lines."""
+    try:
+        return [{"in": (e.get("in") or "").strip(),
+                 "out": (e.get("out") or "").strip(),
+                 "note": (e.get("note") or "").strip()}
+                for e in deckmod.parse_flex(path)]
+    except Exception:
+        return []
+
+
 def collect():
     """Gather the structured dashboard payload from committed data only."""
     _no_network()
@@ -403,6 +415,16 @@ def collect():
             "name": d["name"] or d["id"],
             "archetype": deckmod._deck_identity(meta, width=140),
             "format": _display_format(meta.get("format")),
+            # The FULL `#: archetype:` prose. `archetype` above is `_deck_identity`'s
+            # one-line card label, truncated at 140 chars — which is 11% of the average
+            # deck's synopsis (p50 981 chars, max 5240) and cut 83 of the 109 decks that
+            # have one. That truncation happens at BUILD time, so the rest never reached
+            # the browser at all and the modal's "…" was the end of the data, not a CSS
+            # clamp. Both are kept: the card wants a label, the modal wants the prose.
+            "synopsis": (meta.get("archetype") or "").strip(),
+            # The `#~` flex block — proposed swaps and craft notes the repo file carries
+            # and the page did not surface at ALL. 84 decks have one, 935 entries.
+            "flex": _flex_entries(d["path"]),
             "colors": (meta.get("colors") or "").strip().upper(),
             "variant": bool(d["variant"]),
             "total": total,
@@ -919,6 +941,15 @@ TEMPLATE = r"""<!DOCTYPE html>
   .flag { font-size:11.5px; border:1px solid var(--line2); border-radius:6px; padding:2px 7px; background:var(--fill2); }
   .castlist { font-size:12px; margin:4px 0 0; padding-left:18px; color:var(--ink); }
   .metaline2 { font-size:12px; color:var(--ink2); margin-top:5px; }
+  /* The modal's full synopsis. Capped and scrollable rather than truncated: the longest
+     is 5240 chars and would push the tabs off-screen, but cutting it is what the user
+     was complaining about. */
+  .msyn { color:var(--ink2); font-size:12.5px; margin-top:5px; line-height:1.5; max-width:520px;
+          max-height:8.5em; overflow-y:auto; white-space:pre-wrap; }
+  .flexrow { border:1px solid var(--line); border-radius:10px; padding:10px 12px; margin-bottom:9px; }
+  .flexswap { font-size:12.5px; font-weight:600; margin-bottom:5px; }
+  .flexin { color:var(--ok); } .flexout { color:var(--bad); }
+  .flexnote { font-size:12px; color:var(--ink2); line-height:1.5; white-space:pre-wrap; }
 
   /* palette / modal / preview / toast */
   .overlay { position:fixed; inset:0; z-index:60; background:rgba(6,8,11,.6); backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px); display:flex; align-items:flex-start; justify-content:center; }
@@ -1657,7 +1688,7 @@ function renderMana(v){
 }
 
 // ---------- deck filtering ----------
-const TABS = [['craft','Craft picks'],['arena','Arena import'],['stats','Stats'],['mana','Mana'],['cuts','Cuts'],['legal','Legal']];
+const TABS = [['craft','Craft picks'],['arena','Arena import'],['stats','Stats'],['mana','Mana'],['cuts','Cuts'],['legal','Legal'],['flex','Flex']];
 const QUICK = [['all','All'],['buildable','Buildable now'],['needsMythic','Needs mythic'],['incomplete','Needs work']];
 function filteredDecks(){
   const q = (STATE.deckFilter||'').toLowerCase().trim();
@@ -1700,6 +1731,27 @@ function detailBody(d, k){
   }
   if (k === 'stats') return renderStats(d.viz);
   if (k === 'mana') return renderMana(d.viz);
+  if (k === 'flex'){
+    const fx = d.flex || [];
+    if (!fx.length) return preOf('No `#~` flex block — this deck files no proposed swaps or craft notes.');
+    const wrap = el('div');
+    wrap.appendChild(el('div','metaline2',
+      fx.length + ' flex note(s) from the deck file. Advisory — a flex line is a human note, '
+      + 'so nothing edits one; `deck.py flex ' + d.id + '` retires or retargets a stale one.'));
+    fx.forEach(e => {
+      const row = el('div','flexrow');
+      if (e['in'] || e.out){
+        const sw = el('div','flexswap');
+        if (e['in']) sw.appendChild(el('span','flexin', '+' + e['in']));
+        if (e['in'] && e.out) sw.appendChild(document.createTextNode('  /  '));
+        if (e.out) sw.appendChild(el('span','flexout', '\u2212' + e.out));
+        row.appendChild(sw);
+      }
+      if (e.note) row.appendChild(el('div','flexnote', e.note));
+      wrap.appendChild(row);
+    });
+    return wrap;
+  }
   return preOf((d.detail && d.detail[k]) || '(no output)');
 }
 function deckBadges(d){
@@ -2312,7 +2364,8 @@ function modalEl(d){
   const m = el('div','modal'); m.onclick = e => e.stopPropagation();
   const head = el('div','mhead');
   const left = el('div');
-  left.innerHTML = '<h3>' + esc(d.name) + ' <span class="id">#' + esc(d.id) + '</span></h3><div style="color:var(--ink2);font-size:12.5px;margin-top:5px;line-height:1.45;max-width:520px">' + esc(d.archetype) + '</div>';
+  left.innerHTML = '<h3>' + esc(d.name) + ' <span class="id">#' + esc(d.id) + '</span></h3>'
+    + '<div class="msyn">' + esc(d.synopsis || d.archetype || '') + '</div>';
   const meta = el('div','metaline'); meta.style.marginTop = '8px';
   if (d.format){ const f = el('span',null,d.format); f.style.color = 'var(--ink2b)'; meta.appendChild(f); }
   meta.appendChild(pipsRow(d.colors)); meta.appendChild(el('span',null,d.total + ' cards'));
