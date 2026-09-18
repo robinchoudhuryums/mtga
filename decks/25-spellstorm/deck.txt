@@ -1,7 +1,32 @@
-#: name: Spellstorm (Wizard spellslinger)
+#: name: Spellstorm (cost reducers + spell copies)
 #: format: Standard
 #: tier: A — Izzet (UR) spells-matter/storm; elite interaction (11 = 9 removal + 2 sweepers, 4 of which answer a noncreature permanent, half instant-speed), tight low curve, coherent spells-matter engine with a Thousand Year Storm finisher. Metric floor is now A on its own (interaction 11 + card-adv 4, under-reads Tolarian Terror/Dragonfly Swarm), so the A no longer leans on intangibles. The "singleton knock" is quantifiably SMALL: `deck.py redundancy 25` shows the pile is functionally redundant — a virtual ~14-of spellslinger / 11-of burn / 9-of removal / 13-of payoff — so it draws its plan every game despite being all 1-ofs. Held out of S by no format-warping bomb (Thousand-Year Storm is a value finisher, not a proven top-meta engine). The only thin effects are incidental (ramp/sweeper/reanimation), not plan-critical.
 #: colors: UR
+#: archetype: IZZET SPELLS-MATTER THAT DISCOUNTS ITS TOP END RATHER THAN RAMPING INTO IT.
+#: archetype: Three cards cut the cost directly — The Scarlet Witch (instants and sorceries
+#: archetype: of mana value 4 or greater cost {X} less, X being her power), Stormcatch
+#: archetype: Mentor ({1} less on every instant and sorcery) and Tolarian Terror, which
+#: archetype: prices itself off your own graveyard — and three more make mana only spells
+#: archetype: can spend: Electro adds {R} on each instant or sorcery you cast and keeps
+#: archetype: unspent red between steps, The Emperor of Palamecia taps for noncreature mana,
+#: archetype: and Firebending Student adds red equal to its power when it attacks. What all
+#: archetype: of that buys is a deliberately expensive top: Wisdom of Ages, Artistic
+#: archetype: Process, Orbital Plunge, Heated Argument, and The Dawning Archaic at mana
+#: archetype: value 10. THEN THE DECK COPIES IT. Thousand-Year Storm copies each instant or
+#: archetype: sorcery once per spell already cast that turn, Prismari simply grants them all
+#: archetype: storm, and Loki copies one on demand. The payoff layer counts SPELLS, not
+#: archetype: creatures — Niv-Mizzet draws for each point of noncombat damage any of your
+#: archetype: sources deals, Balmor pumps the team on every spell, and Enigma Drake,
+#: archetype: Dragonfly Swarm, Firebender Ascension, Ovika, Melek and Wiccan all scale off
+#: archetype: the count. Measured: interaction 11, card advantage 4, protection 5, board
+#: archetype: power 52 and 17 central themes at a 3.72 curve. DISTINCTNESS vs Wizardz, its
+#: archetype: nearest theme neighbour at 89% and the roster's other blue-red spellslinger:
+#: archetype: that deck is WIZARD TRIBAL and grinds "draw your second card each turn"
+#: archetype: payoffs; this one is not tribal at all — its seven Wizards are incidental —
+#: archetype: and wins by resolving one enormous copied spell. vs Maelstrom Conservatory
+#: archetype: (77%, the same UR colours): that deck RAMPS into big spells with Ashling's
+#: archetype: back face and Treasures, where this one DISCOUNTS them, which is why its curve
+#: archetype: can carry a ten-drop.
 #: notes: Izzet (U/R) storm / spells-matter. Cost reduction (Scarlet Witch,
 #: notes: Stormcatch Mentor, Tolarian Terror, Emperor of Palamecia, Electro) into
 #: notes: a curated set of big spells; Thousand-Year Storm / Prismari / Loki copy

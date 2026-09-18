@@ -1,7 +1,35 @@
-#: name: Eternal Flame (Boros aggro)
+#: name: Eternal Flame (impulse — play off the top)
 #: format: Standard
 #: tier: A — Boros (WR) impulse/cast-from-exile; deepest synergy web on the roster (Thm 20), card-advantage engine (Quintorius Kand + Thor), 9 interaction, curve lowered on the A-track pass. Promoted from B: 2-color consistency + engine + interaction + deep synergy.
 #: colors: WR
+#: plan: midrange
+#: archetype: BOROS IMPULSE, and what separates it from every other cast-from-exile deck
+#: archetype: here is that this one MANUFACTURES the exile rather than waiting for one.
+#: archetype: Eight cards exile from the top of YOUR library and let you play the card that
+#: archetype: turn — Zuko's {3} activation, Kellan once he has connected and become a
+#: archetype: Detective, Daredevil on attack, Jessica Jones for X cards at once, Crimson
+#: archetype: Operative's ETB, Territorial Bruntar on landfall, Blazing Crescendo stapled to
+#: archetype: a combat trick, and Superior Foes whenever you cast something of mana value 4
+#: archetype: or greater — while Etali exiles the top of EACH player's library and casts
+#: archetype: those for free. A second set reaches the GRAVEYARD instead: Practiced
+#: archetype: Scrollsmith, Thor's ETB, Quintorius Kand's -6, and Seifer Almasy on combat
+#: archetype: damage. TWO PAYOFFS TURN THAT INTO A CLOCK. Quintorius Kand drains 2 and gains
+#: archetype: 2 EVERY time you cast a spell from exile, and Thor deals damage equal to a
+#: archetype: noncreature spell's mana value to any target whenever you cast one — so the
+#: archetype: same cards are both the reason to dig and the reason the digging kills. THE
+#: archetype: MANA IS THE HIDDEN CONSTRAINT AND IS BUILT FOR: an impulsed card is only card
+#: archetype: advantage if you can actually cast it before it expires, so firebending and
+#: archetype: Treasures supply the extra mana rather than leaving it to land drops.
+#: archetype: Measured: card advantage 15, among the roster's highest, on interaction 9,
+#: archetype: board power 68 and 21 central themes at a 3.47 curve. That curve and the WIDE
+#: archetype: 7 / tall 1 shape both say MIDRANGE — this is not an aggro deck, and a `#:
+#: archetype: plan:` header claiming otherwise would buy it a tier band it has not earned.
+#: archetype: DISTINCTNESS vs The Exiles (61%, 8 shared cards), the roster's other cast-
+#: archetype: from-exile deck: that one is Mardu and is built so that the CASTING pays —
+#: archetype: three payoffs on one event, with the exile coming from anywhere. This deck is
+#: archetype: Boros and supplies its own exile off the top, so most of its card advantage is
+#: archetype: in the digging and the payoffs are the bonus. Its own variant 24b is the
+#: archetype: grindy Treasure-ramp-into-bombs route and shares 20 cards.
 #: notes: Boros impulse / cast-from-exile. Quintorius Kand + Thor, God of Thunder as
 #: notes: payoffs; a dense "exile the top card, play it" package (Practiced
 #: notes: Scrollsmith, Daredevil, Jessica Jones, Crimson Operative, Territorial
