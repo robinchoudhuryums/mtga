@@ -5,24 +5,28 @@
 #: plan: control
 #: archetype: Orzhov (W/B) LIFE-AS-CURRENCY attrition. The premise: cards whose strong
 #: archetype: effect is bought with life are themselves the payoff, because the cost is
-#: archetype: refundable. Pay life freely for cards (Lunar Convocation's repeatable
-#: archetype: {1}{B} pay-2-draw, Phyrexian Arena, Cruel Truths,
-#: archetype: Circle of Power, Decode Transmissions), grind them out with a deep removal
-#: archetype: suite, then hand the accumulated debt to the opponent with Mister Negative
-#: archetype: — exchanging totals refunds every point you spent and drops them to yours.
-#: archetype: TWO PLANS THAT WIN WITHOUT HIM, by design, because he is a single mythic:
-#: archetype: (1) TOKEN DRAIN — Bitterbloom Bearer, Lunar Convocation's Bats and the
-#: archetype: death-triggers (Vengeful Bloodwitch, Callous Inspector; Agents of HYDRA was
-#: archetype: CUT for Cecil, Dark Knight, whose own life payments flip him)
-#: archetype: build an evasive board while Bloodchief Ascension and Mai turn every
-#: archetype: exchange into life loss; (2) pure CARD-ADVANTAGE attrition — ten removal
-#: archetype: spells backed by six draw effects simply out-resources a fair deck.
-#: archetype: DISTINCTNESS vs 41 Darkforce Inversion, the other Mister Negative deck:
-#: archetype: 41 is a BLINK deck that re-triggers his ETB to convert a life gap into
-#: archetype: cards while keeping its own total high. This one never blinks, runs almost
-#: archetype: no ETB-value creatures, and deliberately drives its OWN total DOWN — the
-#: archetype: swap is a one-shot refund and stabiliser, not a repeatable draw engine.
-#: archetype: Opposite life postures, opposite creature bases, same finisher.
+#: archetype: refundable. Pay life freely for cards (Lunar Convocation's repeatable {1}{B}
+#: archetype: pay-2-draw, Phyrexian Arena, Cruel Truths, Circle of Power, Decode
+#: archetype: Transmissions), grind them out with a deep removal suite, then hand the
+#: archetype: accumulated debt to the opponent with Mister Negative — exchanging totals
+#: archetype: refunds every point you spent and drops them to yours. TWO PLANS THAT WIN
+#: archetype: WITHOUT HIM, by design, because he is a single mythic: (1) TOKEN DRAIN —
+#: archetype: Bitterbloom Bearer, Lunar Convocation's Bats and the death-triggers (Vengeful
+#: archetype: Bloodwitch, Callous Inspector; Agents of HYDRA was CUT for Cecil, Dark Knight,
+#: archetype: whose own life payments flip him) build an evasive board while Bloodchief
+#: archetype: Ascension and Mai turn every exchange into life loss; (2) pure CARD-ADVANTAGE
+#: archetype: attrition — ten removal spells backed by six draw effects simply out-resources
+#: archetype: a fair deck. DISTINCTNESS vs 41 Darkforce Inversion, the other Mister Negative
+#: archetype: deck: THE SPLIT IS WHICH SIDE OF THE SWAP EACH DECK WANTS TO BE ON. His draw
+#: archetype: clause only pays if you LOST life, so 41 swaps from AHEAD to draw the gap and
+#: archetype: blinks him to put both totals back — a repeatable draw engine. This deck swaps
+#: archetype: from BEHIND: it has already spent its total down buying cards, so exchanging
+#: archetype: refunds every point and drops them to yours. No draw, and none wanted. It
+#: archetype: never blinks and runs almost no ETB-value creatures. NOTE the contrast
+#: archetype: narrowed on 2026-09-18: 41's rebuild added a spend-life-then-swap line of its
+#: archetype: own, so 'opposite life postures' is now a difference of DEGREE — it pays life
+#: archetype: on half as many cards as this deck and banks far more than it spends. Opposite
+#: archetype: creature bases, same finisher.
 #: notes: 2026-09-12 TUNE — three swaps, all aimed at the stated plan (resolve Mister Negative, swap totals).
 #: notes: Stargaze -> Mister Negative (2nd copy); Black Widow, Super Spy -> The Seriema; Dream Beavers ->
 #: notes: Tribute to Hunger. Floor B -> A: interaction 6 -> 7, card advantage 10 -> 11, protection 1 -> 2,

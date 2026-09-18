@@ -3,44 +3,41 @@
 #: arena: 43 Uatu The Watcher, 40651353-dd7e-4c43-b718-832d478c69f7
 #: colors: WUB
 #: plan: control
-#: archetype: Esper (W/U/B, U-primary) HAND-SIZE control — the deck where your life
-#: archetype: total IS your hand size. Marina Vendrell's Grimoire rewrites both
-#: archetype: resources into one: every point of life gained draws a card, every point
-#: archetype: lost discards one, you have no maximum hand size, and you DON'T LOSE THE
-#: archetype: GAME at 0 or less life. You only lose with an empty hand. So the deck
-#: archetype: plays lifelink and incidental lifegain as CARD DRAW (Ruin-Lurker Bat is a
-#: archetype: repeatable cantrip; Cloudblazer draws four; the gain-1 lands cantrip), and
-#: archetype: hoards the result behind Ms. Marvel / Vnwxt / the Grimoire, whose
-#: archetype: no-maximum-hand-size clauses are what keep the hand deep enough to absorb
-#: archetype: the Grimoire's discards. The MAX-HAND-SIZE SETTERS ARE GONE and that was
-#: archetype: deliberate: The Ten Rings and Doctor Octopus were CUT 2026-08-24 (Healer's
-#: archetype: Hawk went the same day) because each SETS a ceiling — ten and eight — which
-#: archetype: resolves in timestamp order and can CAP the hand in the deck whose clock is
-#: archetype: Ms. Marvel's power = cards in hand. What is left says no MAXIMUM, which is
-#: archetype: the clause the deck actually wants. Bard, King
-#: archetype: of Dale DOUBLES every draw past the first each
-#: archetype: turn, so the Grimoire's gain-N-draw-N reads 2N and the second-card cluster
-#: archetype: fires off the first extra draw. Ms. Marvel's power equals cards in hand, so the
-#: archetype: hoard is also the win-con.
-#: archetype: THE DECK MUST FUNCTION WITHOUT THE GRIMOIRE — it is one unowned rare, ~22%
-#: archetype: to be seen by turn 7 — so the second engine is the "whenever you draw your
-#: archetype: SECOND card each turn" cluster (King T'Challa, Kang, Raven Eagle, Foggy
-#: archetype: Swamp Spirit Keeper, Mischievous Mystic, Knowledge Seeker, The Queen of
-#: archetype: Dale, Bard the Bowman; Wolfbat was CUT 2026-08-24), turned
-#: archetype: on every turn by Kitsa's free loot and a pile of cheap draw. That plan wins
-#: archetype: by chip drain and evasive bodies with no Grimoire in sight.
-#: archetype: Mister Negative is the haymaker and is deliberately pointed the ONE way
-#: archetype: that works here: swapping from BEHIND. His own draw clause needs you to
-#: archetype: have LOST life, so under the Grimoire swapping while ahead draws N and
-#: archetype: discards N for nothing. Swapping while behind gains the whole gap, and the
-#: archetype: Grimoire converts that gain into that many cards.
-#: archetype: DISTINCTNESS: deck 41 blinks Mister Negative for re-entry value and needs a
-#: archetype: HIGH life total; deck 42 spends life for cards and
-#: archetype: refunds once. This deck does neither — it treats life and cards as the same
-#: archetype: resource and is happy at any total, including below zero. Against the Dimir
-#: archetype: draw decks: 12 Drawn Conclusions is a UB control deck that draws to find
-#: archetype: answers, 22 Bloodbending mills; here the drawing IS the deck and white is a
-#: archetype: real color rather than a splash. It is the roster's only Esper deck.
+#: archetype: Esper (W/U/B, U-primary) HAND-SIZE control — the deck where your life total IS
+#: archetype: your hand size. Marina Vendrell's Grimoire rewrites both resources into one:
+#: archetype: every point of life gained draws a card, every point lost discards one, you
+#: archetype: have no maximum hand size, and you DON'T LOSE THE GAME at 0 or less life. You
+#: archetype: only lose with an empty hand. So the deck plays lifelink and incidental
+#: archetype: lifegain as CARD DRAW (Ruin-Lurker Bat is a repeatable cantrip; Cloudblazer
+#: archetype: draws four; the gain-1 lands cantrip), and hoards the result behind Ms. Marvel
+#: archetype: / Vnwxt / the Grimoire, whose no-maximum-hand-size clauses are what keep the
+#: archetype: hand deep enough to absorb the Grimoire's discards. The MAX-HAND-SIZE SETTERS
+#: archetype: ARE GONE and that was deliberate: The Ten Rings and Doctor Octopus were CUT
+#: archetype: 2026-08-24 (Healer's Hawk went the same day) because each SETS a ceiling — ten
+#: archetype: and eight — which resolves in timestamp order and can CAP the hand in the deck
+#: archetype: whose clock is Ms. Marvel's power = cards in hand. What is left says no
+#: archetype: MAXIMUM, which is the clause the deck actually wants. Bard, King of Dale
+#: archetype: DOUBLES every draw past the first each turn, so the Grimoire's gain-N-draw-N
+#: archetype: reads 2N and the second-card cluster fires off the first extra draw. Ms.
+#: archetype: Marvel's power equals cards in hand, so the hoard is also the win-con. THE
+#: archetype: DECK MUST FUNCTION WITHOUT THE GRIMOIRE — it is one unowned rare, ~22% to be
+#: archetype: seen by turn 7 — so the second engine is the "whenever you draw your SECOND
+#: archetype: card each turn" cluster (King T'Challa, Kang, Raven Eagle, Foggy Swamp Spirit
+#: archetype: Keeper, Mischievous Mystic, Knowledge Seeker, The Queen of Dale, Bard the
+#: archetype: Bowman; Wolfbat was CUT 2026-08-24), turned on every turn by Kitsa's free loot
+#: archetype: and a pile of cheap draw. That plan wins by chip drain and evasive bodies with
+#: archetype: no Grimoire in sight. Mister Negative is the haymaker and is deliberately
+#: archetype: pointed the ONE way that works here: swapping from BEHIND. His own draw clause
+#: archetype: needs you to have LOST life, so under the Grimoire swapping while ahead draws
+#: archetype: N and discards N for nothing. Swapping while behind gains the whole gap, and
+#: archetype: the Grimoire converts that gain into that many cards. DISTINCTNESS: deck 41
+#: archetype: blinks Mister Negative for re-entry value and swaps from AHEAD, where the draw
+#: archetype: clause pays; deck 42 spends life for cards and refunds once. This deck does
+#: archetype: neither — it treats life and cards as the same resource and is happy at any
+#: archetype: total, including below zero. Against the Dimir draw decks: 12 Drawn
+#: archetype: Conclusions is a UB control deck that draws to find answers, 22 Bloodbending
+#: archetype: mills; here the drawing IS the deck and white is a real color rather than a
+#: archetype: splash. It is the roster's only Esper deck.
 #: tier: B — Esper hand-size control, ON the B metrics floor, PROVISIONAL (barely
 #: tier: played: 0-1). THE INTERACTION AXIS DIPPED AND WAS REPAIRED IN ONE DAY, and the
 #: tier: shape of the repair is the argument: the 2026-08-24 HOB pass took interaction

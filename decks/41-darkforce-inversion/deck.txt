@@ -2,26 +2,38 @@
 #: format: Standard
 #: colors: WB
 #: plan: control
-#: archetype: Orzhov (W/B) LIFEGAIN-DRAIN control on a blink shell. Life is the
-#: archetype: resource. Lifelink bodies and gain-triggers push your total up, drain
-#: archetype: payoffs convert each gain into life LOSS for the opponent, and Mister
-#: archetype: Negative exchanges the two totals. A blink is a RE-ENTRY, so flickering him
-#: archetype: TWICE draws the whole gap and puts both totals back (swap, draw, swap back);
-#: archetype: Another Round does it alone at X=1.
-#: archetype: THE KILL, added 2026-09-18, is a two-card loop: Bloodthirsty Conqueror
-#: archetype: ("whenever an opponent loses life, you gain that much") plus either
-#: archetype: Starscape Cleric or Enduring Tenacity ("whenever you gain life, they lose
-#: archetype: that much") loops until the opponent is dead. The lifegain side runs thirteen
-#: archetype: enablers, three of them lands, so a land drop can start it.
-#: archetype: LIFE IS ALSO SPENT, not just banked: Inside Information buys mana with it,
-#: archetype: Treasure Dredger buys a Treasure, Foolish Fate and Poisoner's Apprentice pay
-#: archetype: off having gained it. Spending down before a swap is not a cost — the swap
-#: archetype: refunds it out of the opponent's total and craters theirs in the same motion.
-#: archetype: DISTINCTNESS vs 20 Honor Among Thieves, the roster's other Orzhov deck:
-#: archetype: 20 is a lifegain-drain AGGRO deck — evasive Ninjas on a clock, using life as
-#: archetype: a Kingpin win-con. This one converts life into CARDS and MANA and closes with
-#: archetype: the loop; it runs no Ninjas and no sneak package, and its creature base is
-#: archetype: chosen for ETB text rather than evasion.
+#: archetype: Orzhov (W/B) LIFEGAIN-DRAIN control on a blink shell. Life is the resource.
+#: archetype: Lifelink bodies and gain-triggers push your total up, drain payoffs convert
+#: archetype: each gain into life LOSS for the opponent, and Mister Negative exchanges the
+#: archetype: two totals. A blink is a RE-ENTRY, so flickering him TWICE draws the whole gap
+#: archetype: and puts both totals back (swap, draw, swap back); Another Round does it alone
+#: archetype: at X=1. THE KILL, added 2026-09-18, is a two-card loop: Bloodthirsty Conqueror
+#: archetype: ("whenever an opponent loses life, you gain that much") plus either Starscape
+#: archetype: Cleric or Enduring Tenacity ("whenever you gain life, they lose that much")
+#: archetype: loops until the opponent is dead. The lifegain side runs thirteen enablers,
+#: archetype: three of them lands, so a land drop can start it. LIFE IS ALSO SPENT, not just
+#: archetype: banked: Inside Information buys mana with it, Treasure Dredger buys a
+#: archetype: Treasure, Foolish Fate and Poisoner's Apprentice pay off having gained it.
+#: archetype: Spending down before a swap is not a cost — the swap refunds it out of the
+#: archetype: opponent's total and craters theirs in the same motion. DISTINCTNESS vs 20
+#: archetype: Honor Among Thieves, the roster's other Orzhov deck: 20 is a lifegain-drain
+#: archetype: AGGRO deck — evasive Ninjas on a clock, using life as a Kingpin win-con. This
+#: archetype: one converts life into CARDS and MANA and closes with the loop; it runs no
+#: archetype: Ninjas and no sneak package, and its creature base is chosen for ETB text
+#: archetype: rather than evasion. DISTINCTNESS vs THE OTHER TWO MISTER NEGATIVE DECKS,
+#: archetype: which is a question of WHICH SIDE OF THE SWAP each deck wants to be on. His
+#: archetype: draw clause pays only if you LOST life, so this deck swaps from AHEAD, draws
+#: archetype: the gap, and blinks him to put both totals back — seven blink effects and
+#: archetype: eleven ETB creatures make that repeatable. 42 Blood Price swaps from BEHIND:
+#: archetype: it has spent its own total down buying cards, so the exchange is a one-shot
+#: archetype: refund with no draw, and it never blinks. 43 Uatu The Watcher also swaps from
+#: archetype: behind but for the opposite reason — under Marina Vendrell's Grimoire the life
+#: archetype: it GAINS back is itself the card draw, so it is happy at any total including
+#: archetype: below zero. Six shared spells with 42 and four with 43, mostly the drain half
+#: archetype: and the manabase. THE KILL IS NOT UNIQUE EITHER: 60a Redline — Night Circuit
+#: archetype: holds the same Bloodthirsty Conqueror plus Starscape Cleric / Enduring
+#: archetype: Tenacity package and shares nothing else with this deck at all — a borrowed
+#: archetype: finisher in a different colour pair, not a converging deck.
 #: tier: B — Orzhov lifegain-drain control, deliberately held ONE BAND UNDER a metrics
 #: tier: floor of A. Rebuilt 2026-09-18 (ten swaps) after the list was read as weak
 #: tier: despite clearing the floor: the surveil package was cut for real top-end and a
