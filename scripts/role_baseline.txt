@@ -216,7 +216,6 @@ Iguana Parrot
 Improvisation Capstone
 Ingenious Leonin
 Insatiable Skittermaw
-Inside Information
 Interface Ace
 Invasion Submersible
 Involuntary Employment
@@ -239,14 +238,12 @@ Kitsune's Technique
 Klaw, Sonic Subjugator
 Knight Luminary
 Kona, Rescue Beastie
-Korvold and the Noble Thief
 Koya, Death from Above
 Kraven the Hunter
 Krenko, Mob Boss
 Krumar Initiate
 Kyoshi Warriors
 Lake-town Toymaker
-Laughing Jasper Flint
 Leader, Super-Genius
 Leonardo, Big Brother
 Leyline of Mutation
@@ -440,8 +437,6 @@ Thunderous Velocipede
 Tidings of War
 Tiger-Dillo
 Time Stop
-Tinybones, Bauble Burglar
-Tinybones, the Pickpocket
 Toph, the Blind Bandit
 Topiary Lecturer
 Transit Mage

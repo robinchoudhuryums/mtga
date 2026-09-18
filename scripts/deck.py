@@ -2126,6 +2126,51 @@ _ROLE_PATTERNS = {
                        # the top card of every library and lets you cast them. The two
                        # patterns above are scoped to "your library" and missed it.
                        r"exile the top card of each player's library[^.]{0,60}?(?:you may cast|you may play)",
+                       # …and off an OPPONENT'S zone, which is the same effect with the
+                       # third owner and was the last one unscored. The comment above
+                       # records this family disagreement being found once already — the
+                       # two patterns before it are scoped to "your library", so Etali's
+                       # "each player's" was invisible — and the opponent-scoped half was
+                       # left behind in that same fix. Inside Information ("exile the top X
+                       # cards of target opponent's library. You may play those cards this
+                       # turn") scored ZERO roles, and it is not alone: **34 of the pool's
+                       # 84 `heist`-tagged cards scored no role at all.**
+                       #
+                       # The justification is the impulse comment's own, one owner over: a
+                       # card you may cast that you would not otherwise have had is the
+                       # advantage a draw gives, whichever library it came from. Casting it
+                       # off THEIR library is if anything more card advantage, not less,
+                       # since it costs them the card too.
+                       #
+                       # Measured before landing (K-14's rule — measure the floors before
+                       # widening a role bucket): **21 pool cards gain the role, 7 roster
+                       # decks move their card-advantage count, and ZERO tier floors move.**
+                       # Hand-checked at 21 of 21, the two softest being modal cards where
+                       # heist is one mode of three (Weave the Nightmare, Grave
+                       # Expectations) — a mode is still a mode, which is how every other
+                       # modal card is scored here.
+                       r"exile the top \w+ cards? of (?:target |an? |each )?opponent's library"
+                       r"[^.]{0,80}\. (?:until [^.]{0,40}, )?you may (?:play|cast)",
+                       r"opponent exiles the top \w+ cards? of their library[^.]{0,100}\.? ?"
+                       r"[^.]{0,120}?you may (?:cast|play)",
+                       # Casting a card you DO NOT OWN, from wherever it was exiled or from
+                       # their graveyard. The zone varies (library, hand, graveyard) and the
+                       # templating with it, so the deciding clause is the ownership, not the
+                       # zone — Intellect Devourer takes it off their HAND and King Narfi's
+                       # Betrayal off every graveyard.
+                       r"you may (?:cast|play) (?:\w+ ){0,6}cards? (?:you don't own|"
+                       r"from (?:that player's|an opponent's|their) graveyard)",
+                       # HEIST stated BARE. The keyword's reminder text is stripped before
+                       # any of these patterns run (K-09), so a card whose whole clause is
+                       # "Heist target opponent's library." keeps only the keyword — the
+                       # same reason K-02 gives for the keyword map existing at all.
+                       r"\bheist target opponent's library",
+                       # "…cast spells from among cards exiled with this" — the exile and
+                       # the permission are SEPARATE abilities here, so the sentence-scoped
+                       # impulse patterns above cannot join them. Catches the opponent-zone
+                       # cases and one own-library miss of the same shape (Theater of
+                       # Horrors), which is a second hole closed by the same clause.
+                       r"you may (?:play lands and )?cast spells from among cards exiled with this",
                        # CASTING OFF THE TOP of your own library is a permanent draw
                        # substitute — Vizier of the Menagerie, Mm'menon. Scored nothing.
                        r"you may (?:cast|play) (?:\w+ ){0,3}(?:spells|cards?) from the top of your library",

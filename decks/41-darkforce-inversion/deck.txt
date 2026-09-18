@@ -25,7 +25,7 @@
 #: tier: B — Orzhov lifegain-drain control, deliberately held ONE BAND UNDER a metrics
 #: tier: floor of A. Rebuilt 2026-09-18 (ten swaps) after the list was read as weak
 #: tier: despite clearing the floor: the surveil package was cut for real top-end and a
-#: tier: combo kill. Live vector: interaction 9 over a 3.49 curve, card advantage 11,
+#: tier: combo kill. Live vector: interaction 9 over a 3.49 curve, card advantage 12,
 #: tier: protection 3. Board power went 41 to 57, from rank 18 of 112 on the roster to
 #: tier: about its median — that axis is the one the floor cannot see and the one that
 #: tier: made the old list read weak.
@@ -51,7 +51,7 @@
 #: notes: a combo: from a HIGH total the swap draws the gap and hands them your lead; from
 #: notes: a total you have SPENT DOWN it refunds your life and craters theirs instead.
 #: notes: For this deck the second mode is usually the better one — card advantage is
-#: notes: already 11, and closing is the thing it is short of.
+#: notes: already 12, and closing is the thing it is short of.
 #: notes: SO PAYING LIFE IS NOT A DRAWBACK HERE. Inside Information buys mana at mana
 #: notes: value, Treasure Dredger buys a Treasure, and the swap refunds the total out of
 #: notes: the opponent's. Grade a pay-life card on its RATE against Negative's own 1 life

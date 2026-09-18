@@ -542,6 +542,50 @@ class TestClassifyRoles:
         ]:
             assert "Card advantage" in deck.classify_roles(text), text
 
+    def test_casting_from_an_opponents_zone_is_card_advantage(self):
+        """The third owner, and the last one unscored. The two impulse patterns are scoped
+        to "your library" and the Etali one to "each player's" — the OPPONENT-scoped half
+        was left behind in that same fix, so Inside Information scored ZERO roles and **34
+        of the pool's 84 `heist`-tagged cards** scored none either. A card you may cast
+        that you would not otherwise have had is the advantage a draw gives, whichever
+        library it came from; off THEIRS it is if anything more, since it costs them the
+        card too. Measured before landing: 21 pool cards gain the role, 7 decks move their
+        count, ZERO tier floors move."""
+        for text in [
+            # Inside Information — the card that surfaced this.
+            "Exile the top X cards of target opponent's library. You may play those cards "
+            "this turn. If you cast a spell this way, pay life equal to its mana value "
+            "rather than pay its mana cost.",
+            # …phrased from the opponent's side of the sentence (Villainous Wealth).
+            "Target opponent exiles the top X cards of their library. You may cast any "
+            "number of spells with mana value X or less from among them without paying "
+            "their mana costs.",
+            # The zone varies, so the deciding clause is the OWNERSHIP, not the zone —
+            # this one is their graveyard (Tinybones, the Pickpocket).
+            "Whenever Tinybones deals combat damage to a player, you may cast target "
+            "nonland permanent card from that player's graveyard.",
+            # HEIST stated bare: the keyword's reminder text is stripped before any role
+            # pattern runs (K-09), so the bare keyword is all that survives.
+            "Whenever this creature attacks, heist target opponent's library.",
+            # The exile and the permission are SEPARATE abilities, which no
+            # sentence-scoped pattern can join.
+            "At the beginning of your upkeep, exile the top card of your library.\n"
+            "During your turn, if an opponent lost life this turn, you may play lands and "
+            "cast spells from among cards exiled with this enchantment.",
+        ]:
+            assert "Card advantage" in deck.classify_roles(text), text
+
+    def test_taking_from_an_opponent_without_casting_it_is_not_card_advantage(self):
+        """The guard, and the same one the own-library case already has: exiling from a
+        library is not advantage — the PERMISSION TO CAST is. Ashiok's +2 exiles three of
+        their cards and gives you nothing to do with them; a mill effect is a clock, not a
+        draw (G-62)."""
+        for text in [
+            "+2: Exile the top three cards of target opponent's library.",
+            "Target opponent mills four cards.",
+        ]:
+            assert "Card advantage" not in deck.classify_roles(text), text
+
     def test_plain_library_exile_is_not_card_advantage(self):
         # The guard: exiling from a library without permission to play it is not advantage.
         assert "Card advantage" not in deck.classify_roles(

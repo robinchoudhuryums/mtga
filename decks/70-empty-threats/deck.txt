@@ -3,7 +3,7 @@
 #: colors: B
 #: tier: B (PROVISIONAL) — graded deliberately UNDER the A metrics floor, and the floor
 #: tier: itself needs a caveat in both directions: interaction reads 8 with 5 possible
-#: tier: under-counts, while card advantage reads 3 against a real engine the classifier
+#: tier: under-counts, while card advantage reads 4 against a real engine the classifier
 #: tier: cannot see (Hostile Investigator's investigate-per-discard, Aclazotz's
 #: tier: draw-when-they-can't, Bandit's Talent level 3, Hollow Marauder — 5 cards sit
 #: tier: unclassified, the K-12 shape). Held at B because: this is an UNTESTED first
