@@ -25,12 +25,12 @@
 #: tier: B — Orzhov lifegain-drain control, deliberately held ONE BAND UNDER a metrics
 #: tier: floor of A. Rebuilt 2026-09-18 (ten swaps) after the list was read as weak
 #: tier: despite clearing the floor: the surveil package was cut for real top-end and a
-#: tier: combo kill. Live vector: interaction 9 over a 3.46 curve, card advantage 11,
+#: tier: combo kill. Live vector: interaction 9 over a 3.49 curve, card advantage 11,
 #: tier: protection 3. Board power went 41 to 57, from rank 18 of 112 on the roster to
 #: tier: about its median — that axis is the one the floor cannot see and the one that
 #: tier: made the old list read weak.
 #: tier: WHAT HOLDS IT AT B, against a floor that says A:
-#: tier: 1. THE CURVE. 3.46 against 25 lands, and the figure UNDER-reports: three X-cost
+#: tier: 1. THE CURVE. 3.49 against 25 lands, and the figure UNDER-reports: three X-cost
 #: tier:    cards book at MV 1, so the deck plays heavier than the number. Treasure
 #: tier:    Dredger is the only acceleration. The 25th land was TAKEN 2026-09-18, for
 #: tier:    Inspiring Overseer — keepable 84.4 to 86.0, screw 14.3 to 12.2, turn-4 land
@@ -40,7 +40,7 @@
 #: tier:    fifteen lifegain enablers, but a deck whose best line needs two specific cards
 #: tier:    is not an A until the fair half proves it can win on its own.
 #: tier: 3. PROVISIONAL — rebuilt and unplayed. Re-grade after games.
-#: tier: The blink spells (Daydream, Salvation Swan, Airbender Ascension) are still NOT
+#: tier: The blink spells (Daydream, Salvation Swan) are still NOT
 #: tier: counted as answers — they are value, not interaction — so the `stats` under-count
 #: tier: warning naming them is expected and is not a hidden bonus.
 #: tier: PATH TO A: the 25th land, and evidence the deck closes without drawing both combo
@@ -103,7 +103,7 @@ Deck
 
 # Blink support / extra answers
 1 Liliana, Dreadhorde General (FDN) 176
-1 Airbender Ascension (TLA) 6
+1 Construct a Cosmic Cube (MSH) 90
 1 Stolen Stark Tech (MSH) 114
 1 Foolish Fate (SOS) 83
 
@@ -146,11 +146,12 @@ Deck
 8 Plains (MSH) 285
 10 Swamp (MSH) 287
 
-#~ +Painful Quandary | -Stroke of Midnight | PRO-synergy here in a way its black flavour hides: it is the one taxer on the list that is NOT symmetric (it triggers only on OPPONENTS' spells and costs you nothing), and pushing their total DOWN widens the exact gap Mister Negative converts into cards. Held out of the 60 only on curve — MV 5 against a 3.46 average, and it does nothing on an empty board. The 2026-09-18 rebuild raised the curve, so this is now a harder sell, not an easier one. Owned.
+#~ +Painful Quandary | -Stroke of Midnight | PRO-synergy here in a way its black flavour hides: it is the one taxer on the list that is NOT symmetric (it triggers only on OPPONENTS' spells and costs you nothing), and pushing their total DOWN widens the exact gap Mister Negative converts into cards. Held out of the 60 only on curve — MV 5 against a 3.49 average, and it does nothing on an empty board. The 2026-09-18 rebuild raised the curve, so this is now a harder sell, not an easier one. Owned.
 #~ note: applied — Foolish Fate in for Visions of Villainy.
 #~ note: applied — Treasure Dredger in for Personify.
 #~ note: applied — Inside Information in for Getaway Glamer.
 #~ +Prayer of Binding | -Banishing Light | The FLASH half of the answer Banishing Light already provides — it exiles a nonland permanent an opponent controls until it leaves, plus 2 life, held up on the opponent's turn instead of telegraphed on yours (and its target is "up to one", so it can be flashed in blank for the 2 life when nothing is worth hitting). In a control deck that wants to keep mana open that is the better card; it costs {3}{W} against {2}{W}, which is why it is a flex and not the maindeck pick. Banishing Light was added 2026-09-17 and has not been played, so decide this after games rather than before. Owned.
+#~ +Airbender Ascension | -Construct a Cosmic Cube | The REVERT line, not an upgrade: these two are the same shape — an enchantment that banks counters off a repeated event — and Cosmic Cube won the slot 2026-09-18 on how fast the event arrives. Airbender needs FOUR creature-enters before it does anything and then blinks one creature per end step; Cosmic Cube pays a 2/1 menace on every trigger, and Phyrexian Arena, The Arkenstone and Doctor Doom each guarantee that trigger every turn on their own (an upkeep or end-step draw makes the draw step your SECOND card). Bring Airbender back if the blink shell ends up wanting a repeatable engine more than the deck wants recurring bodies — i.e. if the 2/1s are not closing games. Owned.
 #~ note: SUCCESSION for Another Round (rotates ~2026). Nothing in Standard reproduces it — a regex sweep of the pool for repeated-blink text ("repeat this process", "do this again") returns five cards, of which only Another Round blinks your own board more than once for one spell. So there is no swap to plan; the plan is structural. When it rotates, the one-card double re-entry of Mister Negative (swap, draw the gap, swap back) becomes a two-card or two-turn line, carried by Airbender Ascension's end-step blink plus any one-shot blink. Re-check this note after each set release rather than treating it as settled.
 #~ note: applied — Koya, Death from Above in for Hecteyes.
 #~ note: applied — Ruthless Lawbringer in for Fortress Kin-Guard.
