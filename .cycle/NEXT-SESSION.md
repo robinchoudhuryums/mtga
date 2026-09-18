@@ -19,6 +19,63 @@ commands disagree.
 
 ## 0-current. THE 2026-08-24 SESSION (READ THIS FIRST — supersedes §0-latest below)
 
+> **STATE STAMP, 2026-09-17 (second — supersedes the one below it).** Deck 41 Darkforce
+> Inversion was tuned and its manabase rebuilt (PR #181, merged): six swaps took the
+> metrics floor **C → A** (interaction 3 → 7, card advantage 8 → 10), then three land
+> swaps took colour sources W 15/B 14 → **W 16/B 15** and cards under 90% on curve
+> **15 → 8**. Its tier LETTER is still **B against an A floor** — a THIRD open human
+> call, alongside decks 45 and 47. Deck 41 is now WIP (2 common craft targets, both
+> wishlisted): Fisk Tower and Foot Headquarters.
+>
+> **OPEN FINDING — `suggest-homes` KEY saturation is a CONTROL-FLOW defect, not a data
+> gap. Measured 2026-09-17; do not re-derive, and do not "fix" it with more card
+> categories.** Prompted by the user asking whether more granular card data would make
+> fits more discriminating. It would not, at the bottleneck.
+>
+> METHOD (reproducible, the script was deliberately NOT committed — the
+> `lib.full_card_text()` dead-code lesson, and `check_commands` flags an unreachable
+> script): sample 400 Standard-legal `card-pool.csv` rows × the 112 roster decks, through
+> the SAME filters `cmd_suggest_homes` applies (`pool_format_key` legality, then
+> `_candidate_castability` against `_deck_castable_colors`), and mirror `fit_strength`'s
+> control flow to record WHICH test returns each verdict. Seed 11. **The first pass was
+> wrong by ~2× because it omitted the castability filter** (p50 17 rather than 8) — mirror
+> validated against the live tool on three cards afterwards: 5/5, 2/2, 18 vs 19, the
+> one-off being the fixer overlay the mirror does not replicate.
+>
+> RESULT. KEY decks per card: 9% zero, **p50 8**, p75 12, p90 17, max 36 of 112 — so the
+> saturation is real. But **72.7% of all pairings already return `tangential`**: the CARD
+> side discriminates correctly. **97.2% of KEY verdicts come from the `signature`
+> branch**, against `role-gap` 1.6% and `top-theme` 1.1% — the two branches designed to
+> discriminate are effectively dead. CAUSE: `fit_strength`'s FIRST statement returns KEY
+> before the `specific` filter runs, and it excludes `_GENERIC_TRIBES` but NOT
+> `GENERIC_THEMES` — so any theme carried by ≥2 of a deck's `#: protect:` cards mints KEY
+> for every card sharing it, `tokens`/`counters`/`graveyard` included. Themes carrying
+> KEY, with roster centrality: graveyard 592 rows (central in 64/112), tokens 575
+> (90/112), counters 531 (92/112), card draw 392 (81/112), evasion 270 (93/112), etb 107
+> (103/112) — six themes, ~75% of all KEY.
+>
+> **DO NOT fix by deleting the branch**: it exists for a real rescue (G-33's counter-doubler
+> in a counters deck must read KEY). Candidate fix is to make a signature theme EARN it —
+> an idf floor on the theme, or requiring the card to also clear a structural overlay for
+> that deck. Directly testable: re-run the distribution and check whether `role-gap` and
+> `top-theme` come alive.
+>
+> **WHY MORE GRANULAR CARD DATA IS NOT THE FIX, measured rather than assumed:** the four
+> structural overlays already built are each exactly "more granular data", and each moved
+> only its own family — G-33 doubler (17 of 64 scalers re-ordered, 5 changed top pick),
+> G-83 cost-scale, G-84 type-scale (16 of 44 changed top-5, 5 changed #1), K-15
+> artifact-matters (pool tags 158 → 415, **0 of 112 tier floors moved**). None moved the
+> median. Granularity belongs AFTER the control-flow fix: today both halves of a split
+> `tokens` would just be signature themes.
+>
+> **A SEPARATE GAP, RELATIONAL RATHER THAN GRANULAR:** G-22's median add rank of 424 is
+> caused by card×card relations no per-card category encodes — Seek the Heart ranked
+> **645** for deck 41 because "tutors a legendary creature" plus "this deck's payoff IS a
+> legendary creature" is a relation between two cards, not a property of either.
+> `deck.py targets` is already the primitive for that shape. G-40's warning governs any
+> wiring of it into a ranking: a primitive correct at one caller measured **85% wrong** at
+> a ranking caller, so re-measure AT the new surface before trusting it.
+>
 > **STATE STAMP, 2026-09-17 (supersedes everything below).** Branch
 > `claude/sync-commands-mmmsdb`, restarted from `main` after PR #178 merged. Four things
 > landed since scan #10, none of them a scan: **(1)** 18 matches ingested (matches.csv now
