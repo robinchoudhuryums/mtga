@@ -1988,6 +1988,28 @@ class TestRationaleFigureAudit:
         assert not deck._ARROW_AFTER.match(" (seven of it instant-speed)")
         assert not deck._ARROW_AFTER.match(" plus card advantage 9")
 
+    def test_the_worded_delta_marks_the_from_side_as_history(self):
+        """`_ARROW_AFTER` only knew the arrow spelling, so "board power went 41 to 57"
+        left the FROM side unguarded — and the roster writes it that way (deck 41's board
+        power, deck 47's "the axis went 6 to 7"). Registering board power as an auditable
+        figure without this would have flagged 41 as a stale claim of the current list,
+        which is a false positive on the one deck the whole fix exists for."""
+        for tail in (" to 57", " to 4"):
+            assert deck._FIG_RANGE_AFTER.match(tail), tail
+
+    def test_the_worded_delta_guard_needs_a_number(self):
+        """Ordinary prose says "to" constantly. Requiring a DIGIT after it keeps
+        "interaction 7 to answer a wrath" a live claim rather than a suppressed one."""
+        for tail in (" to answer a wrath", " to the floor", " today"):
+            assert not deck._FIG_RANGE_AFTER.match(tail), tail
+
+    def test_a_worded_delta_suppresses_only_the_from_side(self):
+        prose = "Board power went 41 to 57, which is about the roster median."
+        i = prose.index("41")
+        assert deck._figure_is_history(prose, i, i + 2)        # the FROM side
+        j = prose.index("57")
+        assert not deck._figure_is_history(prose, j, j + 2)    # the current value
+
     def _fig(self, prose, needle="interaction 9"):
         """_figure_is_history over the position of `needle` in `prose`."""
         i = prose.index(needle)

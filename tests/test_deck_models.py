@@ -43,6 +43,16 @@ UNIVERSE = {
     # Off-colour: identity R in a mono-B deck, and its cost demands R, so it is
     # genuinely UNCASTABLE rather than a hybrid you pay on-colour.
     "red bear": _card("Red Bear", "Creature — Bear", "", "R", "2", "2"),
+    # Printed `*` power — card_power returns None and board_power must NOT fold it in
+    # as 0 (G-16). Every X-creature and every "power equal to" card is this shape.
+    "star bear": _card("Star Bear", "Creature — Bear",
+                       "Star Bear's power is equal to the number of cards in your hand.",
+                       "B", "*", "3"),
+    # Printed ZERO power, which is REAL and common — the BS4-32 trap. It must count as a
+    # genuine 0, not read as unknown.
+    "zero bear": _card("Zero Bear", "Creature — Bear", "", "B", "0", "4"),
+    # A Vehicle is not a creature until crewed, so it is reported apart, never summed in.
+    "wagon": _card("Wagon", "Artifact — Vehicle", "Crew 2", "B", "4", "4"),
     "swamp": _card("Swamp", "Basic Land — Swamp", "", ""),
 }
 
@@ -50,6 +60,7 @@ MANA = {
     "zap": ("{1}{B}", 2), "slow zap": ("{1}{B}", 2), "shatter": ("{1}{B}", 2),
     "arena": ("{2}{B}", 3), "bear": ("{1}{B}", 2), "big bear": ("{4}{B}", 5),
     "red bear": ("{1}{R}", 2), "swamp": ("", 0),
+    "star bear": ("{1}{B}", 2), "zero bear": ("{1}{B}", 2), "wagon": ("{2}", 2),
 }
 
 META = {
@@ -60,6 +71,9 @@ META = {
     "bear": {"colors": {"B"}, "synergies": ["Bear"]},
     "big bear": {"colors": {"B"}, "synergies": ["Bear"]},
     "red bear": {"colors": {"R"}, "synergies": ["Bear"]},
+    "star bear": {"colors": {"B"}, "synergies": ["Bear"]},
+    "zero bear": {"colors": {"B"}, "synergies": ["Bear"]},
+    "wagon": {"colors": {"B"}, "synergies": ["artifacts"]},
 }
 
 
@@ -1233,3 +1247,87 @@ class TestTypedSinkLabel:
     def test_a_type_restricted_sink_is_labelled_and_worth_the_same_tiebreak(self):
         assert deck._land_utility(self.IRON_HILLS) == (0.30, "sink~")
         assert deck._land_utility(self.MANSION) == (0.30, "sink")
+
+
+class TestBoardPower:
+    """The board-presence axis (added 2026-09-18). Every model here graded a deck on
+    resilience and theme and none of them asked how big its creatures are, so a deck could
+    clear an A floor while fielding nothing that closes a game. These pin the three things
+    that make the number trustworthy: it is quantity-weighted, it never invents a value for
+    an unprintable one, and it does NOT reach the tier floor."""
+
+    def test_sums_printed_power_quantity_weighted(self, synth):
+        d = synth(["2 Bear", "1 Big Bear", "20 Swamp"])
+        _m, cards = deck.parse_deck_file(d["path"])
+        bp = deck.board_power(cards, UNIVERSE)
+        assert bp["power"] == 2 * 2 + 5        # two 2/2s plus one 5/5
+        assert bp["creatures"] == 3
+        assert bp["unknown"] == 0
+
+    def test_a_star_power_creature_is_unknown_not_zero(self, synth):
+        """`card_power` returns None for a printed `*`, and folding that in as 0 would
+        report a confident number the card cannot support (G-16)."""
+        d = synth(["1 Bear", "2 Star Bear", "20 Swamp"])
+        _m, cards = deck.parse_deck_file(d["path"])
+        bp = deck.board_power(cards, UNIVERSE)
+        assert bp["power"] == 2                # the Bear alone
+        assert bp["unknown"] == 2              # quantity-weighted, like the counts it sits beside
+        assert bp["creatures"] == 3            # …but still a creature on the board
+        assert "unknown power" in deck.board_power_note(bp)
+
+    def test_a_printed_zero_is_a_real_zero(self, synth):
+        """The BS4-32 trap one function over: `card_power(0)` is a genuine 0, so a
+        `card_power(...) or ...` would silently reclassify the commonest real zero there
+        is as unknown."""
+        d = synth(["1 Zero Bear", "20 Swamp"])
+        _m, cards = deck.parse_deck_file(d["path"])
+        bp = deck.board_power(cards, UNIVERSE)
+        assert bp["power"] == 0 and bp["unknown"] == 0 and bp["creatures"] == 1
+
+    def test_a_vehicle_is_reported_apart_never_summed_in(self, synth):
+        d = synth(["1 Bear", "1 Wagon", "20 Swamp"])
+        _m, cards = deck.parse_deck_file(d["path"])
+        bp = deck.board_power(cards, UNIVERSE)
+        assert bp["power"] == 2                # the Wagon's 4 is NOT in the total
+        assert bp["creatures"] == 1
+        assert bp["vehicles"] == 1 and bp["vehicle_power"] == 4
+        assert "once crewed" in deck.board_power_note(bp)
+
+    def test_the_vector_creature_count_is_the_same_definition(self, synth):
+        """`deck_quality_vector` used to run its own `"Creature" in _primary_type(...)`
+        tally beside this one — two answers to one question (G-70). It calls the helper
+        now, and this is what keeps it that way."""
+        d = synth(["2 Bear", "1 Big Bear", "1 Star Bear", "1 Wagon", "20 Swamp"])
+        _m, cards = deck.parse_deck_file(d["path"])
+        v = deck.deck_quality_vector(d)
+        assert v["creatures"] == deck.board_power(cards, UNIVERSE)["creatures"]
+        assert v["board_power"] == deck.board_power(cards, UNIVERSE)["power"]
+
+    def test_board_power_does_not_move_the_tier_floor(self, synth):
+        """REPORT-ONLY is a design constraint, not an implementation detail: a new term in
+        `tier_band` would silently re-grade the whole roster, which is why the protection
+        axis (G-25) and the X-cost advisory (G-60) are kept out too. Two decks identical
+        but for creature SIZE must land in the same band."""
+        small = deck.deck_quality_vector(synth(["4 Bear", "2 Zap", "1 Arena", "20 Swamp"]))
+        big = deck.deck_quality_vector(synth(["4 Big Bear", "2 Zap", "1 Arena", "20 Swamp"]))
+        assert big["board_power"] > small["board_power"]
+        assert deck.tier_band(big) == deck.tier_band(small)
+
+
+class TestAuditedFigureKeys:
+    """The rationale audit's self-disclosure. A clean bill means "every figure I have a
+    pattern for is current", and without this list that reads as the stronger claim."""
+
+    def test_every_pattern_key_is_represented(self):
+        """Derived from the table, never hand-listed — so adding a pattern cannot leave
+        the disclosure behind."""
+        labels = " · ".join(deck.audited_figure_keys())
+        for _rx, key in deck._RATIONALE_FIGURES:
+            token = "colour sources" if key.startswith("sources_") else key.replace("_", " ")
+            token = "avg MV" if key == "avg_mv" else token
+            assert token in labels, f"{key} has a pattern but no disclosed label"
+
+    def test_board_power_is_registered(self):
+        """The finding itself: deck 41's board-power figure went stale twice in one
+        session while the audit reported the block current."""
+        assert "board power" in deck.audited_figure_keys()

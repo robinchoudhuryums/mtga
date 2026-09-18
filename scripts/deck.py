@@ -4005,6 +4005,17 @@ def cmd_stats(args):
             print("    ⚠ ZERO protection — nothing here answers targeted removal on a key "
                   "permanent; fine for a spell-based deck, a real gap for a threat-based one.")
 
+    # BOARD PRESENCE. Printed next to the role counts precisely because it is the axis
+    # they cannot see: a deck can post strong interaction and card advantage — clearing
+    # the tier floor on both — while fielding nothing that ends a game. That was deck 41
+    # on 2026-09-18 (41 printed power at an A floor) and there was no tool to say so.
+    # REPORT-ONLY; nothing below reaches `tier_band`.
+    _bp = board_power(cards, carddata)
+    if _bp["creatures"] or _bp["vehicles"]:
+        print(f"  {'board power':20} {board_power_note(_bp)}")
+        print("    ⓘ printed power only — TOKENS and other created bodies count ZERO here, "
+              "so read it as a FLOOR on what the deck can present, not a ceiling.")
+
     # Power-threshold payoffs. A "power 4 or greater" trigger reads unconditional to a
     # synergy model, but only fires off bodies that meet the bar on their PRINTED stats —
     # and an X-creature or a counters payoff is very often printed 0/0. This is measurable
@@ -11307,6 +11318,86 @@ def _early_drops_note(vec):
     return f"{n} ({m} mana source{'s' if m != 1 else ''})" if m else str(n)
 
 
+# BOARD PRESENCE — total printed power of the creatures the deck actually fields.
+#
+# Added 2026-09-18 because NOTHING here measured it. The tier floor reads interaction +
+# card advantage; `cuts` reads theme fit and role credit; `stats` counts creatures but
+# never asks how big they are. So a deck could clear an A floor on resilience while
+# fielding nothing that ends a game, and the only way to see it was to hand-roll the sum
+# — which happened six times in one session before this function existed (deck 41 read 41
+# printed power across 19 creatures at an A floor, rank 18 of 112, and "why does this
+# deck look weak" had no tool to answer it).
+#
+# It is a SEPARATE axis, not a restatement of the floor: measured across the 112-deck
+# roster, board power correlates with interaction+card-advantage at r = -0.147 against a
+# +/-0.188 noise band at that n, i.e. indistinguishable from zero. Distribution: min 23,
+# p10 37, p50 54, p90 73, max 120.
+#
+# REPORT-ONLY, and it must stay so. A new term in `tier_band` would silently re-grade the
+# whole roster — the same reason the protection axis (G-25) and the X-cost advisory
+# (G-60) are kept out, and the same reason the payoff-density term was simulated and
+# DECLINED on 2026-09-03. `check_tier` anchors the floor's formula; this is not part of it.
+#
+# WHAT IT CANNOT SEE, disclosed rather than guessed at:
+#   • UNKNOWN power. `card_power` returns None for a printed `*` / `X` / `1+*` and never
+#     coerces (G-16), so those are counted SEPARATELY and never folded in as 0. That is
+#     not a rare case to wave away: 70 of the roster's 112 decks hold at least one such
+#     creature, 124 copies in total, so a bare sum would silently under-report on 62% of
+#     the roster. Same stance as `count_conf` (G-48) — report the uncertainty, not just
+#     the number.
+#   • TOKENS and other created bodies. Doctor Doom's two 3/3 Doombots and Construct a
+#     Cosmic Cube's 2/1-per-turn contribute ZERO here, because they are not printed on a
+#     card in the list. `_makes_token` knows a card creates a token but not how big it is,
+#     and parsing token sizes is a new pattern set with a whitelist's blind spots (G-67).
+#   • VEHICLES, which are not creatures until crewed. Counted and reported apart rather
+#     than summed in: 10 roster decks, 16 copies, 63 power.
+# Read the figure as a FLOOR on what the deck can present, never a ceiling.
+def board_power(cards, carddata):
+    """{'power', 'creatures', 'unknown', 'vehicles', 'vehicle_power'} for a deck's list.
+
+    `power` is quantity-weighted printed power over cards whose FRONT face is a creature
+    (`primary_type`, per G-63 — a `Creature // Land` back face must not re-type the card).
+    `unknown` counts the copies whose printed power is not a number; they are excluded
+    from `power` entirely, never treated as 0.
+    """
+    power = creatures = unknown = vehicles = vehicle_power = 0
+    for q, n, _s, _c in cards:
+        nl = n.lower()
+        if nl in BASICS:
+            continue
+        cd = carddata.get(nl)
+        if not cd:
+            continue
+        tline = cd.get("type") or ""
+        # NOTE `card_power(...) or 0` would be wrong here for the reason G-16 spells out
+        # and BS4-32 proved: a printed power of 0 is real and common (every X-creature is
+        # printed 0/0), so `or` silently reclassifies the commonest real zero as unknown.
+        p = card_power(cd.get("power"))
+        if "Creature" in _primary_type(tline):
+            creatures += q
+            if p is None:
+                unknown += q
+            else:
+                power += p * q
+        elif "Vehicle" in tline:
+            vehicles += q
+            if p is not None:
+                vehicle_power += p * q
+    return {"power": power, "creatures": creatures, "unknown": unknown,
+            "vehicles": vehicles, "vehicle_power": vehicle_power}
+
+
+def board_power_note(bp):
+    """The one-line human rendering of `board_power`, shared by `stats` and `tier` so the
+    two cannot drift apart (G-70)."""
+    out = f"{bp['power']} printed power over {bp['creatures']} creature(s)"
+    if bp["unknown"]:
+        out += f" (+{bp['unknown']} of unknown power — printed */X, not counted as 0)"
+    if bp["vehicles"]:
+        out += f"; {bp['vehicles']} Vehicle(s) worth {bp['vehicle_power']} more once crewed"
+    return out
+
+
 def deck_quality_vector(d):
     """A deck's measurable QUALITY vector (F10), from the same primitives the CLI
     uses — so a cut/swap can be checked for regression before/after: buildable,
@@ -11324,7 +11415,7 @@ def deck_quality_vector(d):
     missing, short = deck_build_gap(cards, qty)
     theme_w, mvs, early = {}, [], 0
     early_mana = 0
-    creatures = reach = 0
+    reach = 0
     for q, n, s, c in cards:
         nl = n.lower()
         if nl in BASICS:
@@ -11347,8 +11438,6 @@ def deck_quality_vector(d):
                     # first, the way every other text predicate here reads a card.
                     if _MANA_SOURCE_RE.search(_REMINDER_RE.sub(" ", cd.get("text") or "")):
                         early_mana += q
-        if "Creature" in _primary_type(tline):
-            creatures += q
         # Reach = ability to CLOSE a game (the aggro axis): burn/drain reach, or an
         # evasive body that keeps connecting. Used only by the archetype-aware floor.
         if ("Burn / drain" in classify_roles((cd.get("text") if cd else "") or "")
@@ -11362,6 +11451,7 @@ def deck_quality_vector(d):
     uncast, _off, _off_ability, _intended = _castability(
         cards, declared, mana, carddata, _uncastable_ok(dmeta))
     _tally = role_tally(cards, carddata)
+    _bp = board_power(cards, carddata)
     d_int, d_ca = _tally["interaction"], _tally["card_advantage"]
     return {
         "buildable": missing == 0 and short == 0, "missing": missing, "short": short,
@@ -11384,7 +11474,15 @@ def deck_quality_vector(d):
         # human reading it for a CURVE argument sees what it is made of, and subtracted
         # from the aggro `_clock_score` where "cheap threat" is what the term means.
         "early_mana": early_mana,
-        "creatures": creatures, "reach": reach,
+        # Creature COUNT and board POWER come from the one definition (G-70). This
+        # used to be a second in-loop `"Creature" in _primary_type(...)` tally sitting
+        # beside board_power's — two answers to one question, which is this repo's
+        # dominant bug class. Verified a no-op across all 112 roster decks.
+        "creatures": _bp["creatures"], "reach": reach,
+        # BOARD PRESENCE. Reported here so `quality --json` / `--vs` and the rationale
+        # audit can all reach it, and deliberately NOT read by `tier_band` — see the
+        # comment on `board_power` for why a new floor term is the thing to avoid.
+        "board_power": _bp["power"], "board_unknown": _bp["unknown"],
         # The deck's game PLAN drives which axes its tier floor weights (#4): an aggro
         # deck is graded on its clock, not an interaction suite it doesn't want.
         "plan": deck_plan(dmeta, avg_mv=(round(sum(mvs) / len(mvs), 2) if mvs else 0.0),
@@ -12445,6 +12543,23 @@ _RATIONALE_FIGURES = [
     # phrasings below are taken from the roster's own prose rather than invented.
     (re.compile(_FIG_NUM + r"[  ]+(?:early|cheap) drops?", re.I), "early_drops"),
     (re.compile(_FIG_NUM + r"[- ]one[- ]two[- ]drops?", re.I), "early_drops"),
+    # BOARD POWER, registered 2026-09-18 in the SAME change that added the metric — the
+    # gap being closed is exactly that an UNREGISTERED figure is unauditable. Deck 41's
+    # board-power figure went stale twice in one session (41→56 after one swap, →57 after
+    # three more) and `--audit-rationale` reported the block current both times, because
+    # no pattern here could price the number. A figure you can invent in prose and never
+    # have checked is worse than no figure: it reads as audited.
+    #
+    # Deliberately NOT `_FIG_GAP`. The roster's only live board-power claim is a worded
+    # DELTA — "Board power went 41 to 57" — and a gap of up to two lowercase words would
+    # read `went 41` as a claim of 41, flagging the FROM side of the very change the prose
+    # is documenting. Adjacent forms only, plus one explicit TO-side pattern for the delta,
+    # whose capture is the value that IS current. Verbs taken from the roster's own prose.
+    (re.compile(r"board power[  ]+(\d+)", re.I), "board_power"),
+    (re.compile(r"board power" + _FIG_PAREN, re.I), "board_power"),
+    (re.compile(_FIG_NUM + r"[  ]+board power", re.I), "board_power"),
+    (re.compile(r"board power\s+(?:went|goes|moved|rose|climbed|fell|dropped)\s+"
+                r"\d+\s+to\s+(\d+)", re.I), "board_power"),
 ]
 
 # COLOUR SOURCES — the manabase axis, which every pattern above is blind to because it is
@@ -12591,6 +12706,37 @@ def _slash_source_claims(prose, sources, colors=None):
     return out
 
 
+# WHAT THE RATIONALE AUDIT CAN ACTUALLY CHECK, derived from the pattern table above and
+# never listed by hand — a hand-kept list would be a second source of truth for "which
+# figures are audited" and would drift from the table the moment anyone added a pattern,
+# which is this repo's dominant bug class.
+#
+# It exists because a clean bill was being read as a stronger claim than it is. The audit
+# says "every figure matches the live vector"; what it MEANS is "every figure I have a
+# pattern for matches". Those differ by however many numbers nobody has registered, and
+# the difference is invisible: deck 41's prose asserted a board-power figure that went
+# stale twice in one session while the audit reported the block current, because no
+# pattern could price it. A reader had no way to know that number was never checked.
+# Printing the covered list turns an unregistered figure from a silent gap into a visible
+# absence — the cheapest honest fix, and the one that does not pretend to audit prose it
+# cannot parse.
+def audited_figure_keys():
+    """Sorted human labels for the figure families `--audit-rationale` prices."""
+    keys = {k for _rx, k in _RATIONALE_FIGURES}
+    # `avg_mv` is the one key whose prose spelling is not its snake_case name.
+    pretty = {"avg_mv": "avg MV"}
+    labels = {pretty.get(k, k.replace("_", " "))
+              for k in keys if not k.startswith("sources_")}
+    src = sorted(k[len("sources_"):] for k in keys if k.startswith("sources_"))
+    if src:
+        # Both the per-colour patterns and the `13/8/10 sources` slash idiom.
+        labels.add("colour sources (" + "/".join(src) + ")")
+    # Not a `_RATIONALE_FIGURES` row — the floor BAND is a letter, scanned separately by
+    # `_floor_band_claims` — but it is a claim this audit checks, so it belongs in the list.
+    labels.add("metrics floor band")
+    return sorted(labels)
+
+
 def _figure_lookup(vec, cards, carddata):
     """The quality vector PLUS the deck's colour-source counts, keyed `sources_W` etc.
 
@@ -12667,6 +12813,13 @@ _HISTORY_WINDOW = 140
 _SIMILE_BEFORE = re.compile(r"\b(?:is|are)\s+$", re.I)
 # `0→1` / `1->4`: the matched number is the FROM side of a stated change.
 _ARROW_AFTER = re.compile(r"\s*(?:→|->|—>|–>)")
+# The WORD form of the same thing: "board power went 41 to 57" states a change, and the
+# first number is its FROM side, not a claim about the current list. `_ARROW_AFTER` only
+# ever knew the arrow spelling, so the worded idiom was unguarded — two live instances on
+# the roster (deck 41's board power, deck 47's "the axis went 6 to 7"), plus the same
+# shape inside deck 41's manabase line ("keepable 84.4 to 86.0"). Requires a DIGIT after
+# "to" so ordinary prose ("interaction 7 to answer a wrath") is untouched.
+_FIG_RANGE_AFTER = re.compile(r"\s+to\s+\d")
 # "X does NOT do this" — a citation immediately followed by a negation is a contrast
 # with an absent card, not a claim the deck runs it (26a's Mjölnir note).
 _NEGATION_AFTER = re.compile(r"\s+(?:does\s+not|doesn'?t|is\s+not|isn'?t|cannot|can'?t)\b", re.I)
@@ -12869,6 +13022,8 @@ def _figure_is_history(prose, start, end):
     """True when a quoted figure is presented as a PAST value, not a current claim."""
     if _ARROW_AFTER.match(prose, end):
         return True                       # "0→1" — the match is the FROM side.
+    if _FIG_RANGE_AFTER.match(prose, end):
+        return True                       # "41 to 57" — the worded form of the same.
     # A figure inside QUOTATION MARKS is a citation of earlier prose, not a live claim:
     # deck 7 writes `The old one-line reason ("fast clock but thin interaction (3)") is no
     # longer true`, which asserts the opposite of what the number says. `_FIGURE_PAST`
@@ -13524,6 +13679,12 @@ def cmd_tier(args):
         # output is "re-check this", not "this is wrong".
         exist = existential_pool_claims(d)
         print(f"Rationale audit — deck {d['id']}: {d['name'] or d['path']}")
+        # Say WHICH figures were priced, on both the clean and the stale path. A verdict
+        # surface must print its evidence (G-52), and the evidence for "every figure
+        # matches" is the list of figures it was able to look at.
+        print("  figures checked: " + " · ".join(audited_figure_keys()))
+        print("  ⓘ a number NOT on that list is unguarded — no pattern prices it, so this "
+              "audit's silence about it is not a clean bill.")
         if not cards_stale and not figs and not wrong_excl and not exist:
             print("  ✓ rationale is current — every card it cites is still in the deck, "
                   "every figure matches the live vector, and nothing it calls excluded "
@@ -13552,12 +13713,20 @@ def cmd_tier(args):
           f"interaction {vec.get('interaction_conf') or vec['interaction']} · "
           f"card-adv {vec.get('card_advantage_conf') or vec['card_advantage']} · "
           f"protection {vec.get('protection', 0)} · "
+          f"board power {vec.get('board_power', 0)} · "
           f"avg MV {vec['avg_mv']} · central themes {vec['central_themes']}")
     # An {X} spell is priced at MV 1 (X counts as 0 off the stack), so the avg MV printed
     # just above under-reads a list that runs several. REPORT-only, like protection — a
     # new term in tier_band would silently re-grade the roster.
     _cd = load_card_data()
     _mana = load_mana()
+    # BOARD PRESENCE is REPORTED, never fed into tier_band — same stance as protection
+    # above and the X-cost advisory below, and for the same reason: a new floor term
+    # would silently re-grade the roster. The caveat line prints only when there is one.
+    _bpv = board_power(_cards, _cd)
+    if _bpv["unknown"] or _bpv["vehicles"]:
+        print(f"  ⓘ board power {board_power_note(_bpv)} — the floor above does not read "
+              "this axis at all.")
     _xs = x_cost_cards(_cards, _cd, _mana)
     if _xs:
         print(f"  ⚠ avg MV under-reads: {len(_xs)} X-cost card(s) "
