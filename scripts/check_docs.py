@@ -314,6 +314,45 @@ def _live_figures():
     def _unpriced_population():
         return _unpriced_counts()[0]
 
+    _board_cache = {}
+
+    def _board_counts():
+        """G-86's two figures and G-35's one, from ONE roster walk -> (median board power,
+        decks holding an unknown-power creature, decks holding an uncounted nonland mana
+        source). All three are numbers a RULE cites as its evidence and that a function
+        here can measure, which is this registry's own bar.
+
+        They earn entries for the `TIER_FLOOR_REQ` reason: the median anchors G-86's
+        "separate axis" argument, the unknown count is the whole justification for
+        reporting the remainder apart rather than folding it in as 0, and G-35's count is
+        what makes the nonland disclosure worth printing. Every one of them moves on an
+        ordinary deck edit. Routed through `board_power` and `uncounted_mana_sources`
+        THEMSELVES — never a second copy of either predicate, which is the drift this gate
+        exists to catch one layer up.
+
+        One walk, cached for the later readers; `live_fn` only runs on a regex match, so a
+        CLAUDE.md that stops making the claim pays nothing."""
+        if "v" in _board_cache:
+            return _board_cache["v"]
+        import deck
+        cd = deck.load_card_data()
+        powers, unknown_decks, nonland_decks = [], 0, 0
+        for d in deck.roster_decks():
+            try:
+                _meta, cards = deck.parse_deck_file(d["path"])
+            except Exception:
+                continue
+            bp = deck.board_power(cards, cd)
+            powers.append(bp["power"])
+            if bp["unknown"]:
+                unknown_decks += 1
+            if deck.uncounted_mana_sources(cards, cd):
+                nonland_decks += 1
+        powers.sort()
+        median = powers[len(powers) // 2] if powers else 0
+        _board_cache["v"] = (median, unknown_decks, nonland_decks)
+        return _board_cache["v"]
+
     def _pool_tag(tag):
         path = os.path.join(REPO_ROOT, "card-pool.csv")
         with open(path, newline="", encoding="utf-8") as fh:
@@ -468,6 +507,18 @@ def _live_figures():
          r"across the \*\*(\d+) decks that print an effective figure\*\*", _unpriced_population),
         ("C-01 model-sanity gates",
          r"INV-01…04 plus \*\*(\w+) model-sanity", lambda: _gate_word()),
+        # G-86's two and G-35's one, from one shared roster walk. Each anchored on the
+        # words around ITS number, never on a neighbour's value — correcting one must not
+        # kill another's pattern, since a dead pattern is reported but a wrong-but-live
+        # one is not.
+        ("G-86 roster median board power",
+         r"p10 37 / \*\*p50 (\d+)\*\*", lambda: _board_counts()[0]),
+        ("G-86 decks with an unknown-power creature",
+         r"no corner case — \*\*(\d+) of 112 decks\*\* hold one",
+         lambda: _board_counts()[1]),
+        ("G-35 decks with an uncounted nonland mana source",
+         r"NOT in the counts above` \(\*\*(\d+) of 112 decks\*\*\)",
+         lambda: _board_counts()[2]),
         # ── Added 2026-09-17. Before this the registry held 14 entries against roughly 40
         # LIVE claims in CLAUDE.md (the other ~1,100 numeric tokens are dated history,
         # which cannot rot). Every entry below is a number the file cites as EVIDENCE that

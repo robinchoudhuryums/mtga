@@ -202,6 +202,8 @@ Whenever you cast your second spell each turn, investigate. (Create a Clue token
 Lassoed by the Law,Enchantment,"When this enchantment enters, exile target nonland permanent an opponent controls until this enchantment leaves the battlefield.
 When this enchantment enters, create a 1/1 red Mercenary creature token with ""{T}: Target creature you control gets +1/+0 until end of turn. Activate only as a sorcery.""",W,tokens; removal; etb; pump,OTJ,18,Uncommon,3; 36a,,5.5,hand
 Make Your Own Luck,Sorcery,"Look at the top three cards of your library. You may exile a nonland card from among them. If you do, it becomes plotted. Put the rest into your hand. (You may cast it as a sorcery on a later turn without paying its mana cost.)",U/G,selection; plot; tempo; cost-reduction,OTJ,218,Uncommon,,,3.5,seed
+Decorum Dissertation,Sorcery — Lesson,"Target player draws two cards and loses 2 life.
+Paradigm (Then exile this spell. After you first resolve a spell with this name, you may cast a copy of it from exile without paying its mana cost at the beginning of each of your first main phases.)",B,Lesson; paradigm; exile cast; card advantage,SOS,78,Mythic,41,Paradigm: a free draw-2 each main phase once resolved; the life is refunded by the Negative swap,6.0,seed
 Comforting Counsel,Enchantment,"Whenever you gain life, put a growth counter on this enchantment.
 As long as there are five or more growth counters on this enchantment, creatures you control get +3/+3.",G,counters; pump,SOS,143,Rare,7,"broadly useful — best 7 (Earth's Mightiest); also 9,19b,19a",4.0,hand
 Deathcap Glade,Land,"This land enters tapped unless you control two or more other lands.

@@ -542,6 +542,50 @@ class TestClassifyRoles:
         ]:
             assert "Card advantage" in deck.classify_roles(text), text
 
+    def test_casting_from_an_opponents_zone_is_card_advantage(self):
+        """The third owner, and the last one unscored. The two impulse patterns are scoped
+        to "your library" and the Etali one to "each player's" — the OPPONENT-scoped half
+        was left behind in that same fix, so Inside Information scored ZERO roles and **34
+        of the pool's 84 `heist`-tagged cards** scored none either. A card you may cast
+        that you would not otherwise have had is the advantage a draw gives, whichever
+        library it came from; off THEIRS it is if anything more, since it costs them the
+        card too. Measured before landing: 21 pool cards gain the role, 7 decks move their
+        count, ZERO tier floors move."""
+        for text in [
+            # Inside Information — the card that surfaced this.
+            "Exile the top X cards of target opponent's library. You may play those cards "
+            "this turn. If you cast a spell this way, pay life equal to its mana value "
+            "rather than pay its mana cost.",
+            # …phrased from the opponent's side of the sentence (Villainous Wealth).
+            "Target opponent exiles the top X cards of their library. You may cast any "
+            "number of spells with mana value X or less from among them without paying "
+            "their mana costs.",
+            # The zone varies, so the deciding clause is the OWNERSHIP, not the zone —
+            # this one is their graveyard (Tinybones, the Pickpocket).
+            "Whenever Tinybones deals combat damage to a player, you may cast target "
+            "nonland permanent card from that player's graveyard.",
+            # HEIST stated bare: the keyword's reminder text is stripped before any role
+            # pattern runs (K-09), so the bare keyword is all that survives.
+            "Whenever this creature attacks, heist target opponent's library.",
+            # The exile and the permission are SEPARATE abilities, which no
+            # sentence-scoped pattern can join.
+            "At the beginning of your upkeep, exile the top card of your library.\n"
+            "During your turn, if an opponent lost life this turn, you may play lands and "
+            "cast spells from among cards exiled with this enchantment.",
+        ]:
+            assert "Card advantage" in deck.classify_roles(text), text
+
+    def test_taking_from_an_opponent_without_casting_it_is_not_card_advantage(self):
+        """The guard, and the same one the own-library case already has: exiling from a
+        library is not advantage — the PERMISSION TO CAST is. Ashiok's +2 exiles three of
+        their cards and gives you nothing to do with them; a mill effect is a clock, not a
+        draw (G-62)."""
+        for text in [
+            "+2: Exile the top three cards of target opponent's library.",
+            "Target opponent mills four cards.",
+        ]:
+            assert "Card advantage" not in deck.classify_roles(text), text
+
     def test_plain_library_exile_is_not_card_advantage(self):
         # The guard: exiling from a library without permission to play it is not advantage.
         assert "Card advantage" not in deck.classify_roles(
@@ -1987,6 +2031,28 @@ class TestRationaleFigureAudit:
     def test_a_plain_figure_is_not_treated_as_an_arrow(self):
         assert not deck._ARROW_AFTER.match(" (seven of it instant-speed)")
         assert not deck._ARROW_AFTER.match(" plus card advantage 9")
+
+    def test_the_worded_delta_marks_the_from_side_as_history(self):
+        """`_ARROW_AFTER` only knew the arrow spelling, so "board power went 41 to 57"
+        left the FROM side unguarded — and the roster writes it that way (deck 41's board
+        power, deck 47's "the axis went 6 to 7"). Registering board power as an auditable
+        figure without this would have flagged 41 as a stale claim of the current list,
+        which is a false positive on the one deck the whole fix exists for."""
+        for tail in (" to 57", " to 4"):
+            assert deck._FIG_RANGE_AFTER.match(tail), tail
+
+    def test_the_worded_delta_guard_needs_a_number(self):
+        """Ordinary prose says "to" constantly. Requiring a DIGIT after it keeps
+        "interaction 7 to answer a wrath" a live claim rather than a suppressed one."""
+        for tail in (" to answer a wrath", " to the floor", " today"):
+            assert not deck._FIG_RANGE_AFTER.match(tail), tail
+
+    def test_a_worded_delta_suppresses_only_the_from_side(self):
+        prose = "Board power went 41 to 57, which is about the roster median."
+        i = prose.index("41")
+        assert deck._figure_is_history(prose, i, i + 2)        # the FROM side
+        j = prose.index("57")
+        assert not deck._figure_is_history(prose, j, j + 2)    # the current value
 
     def _fig(self, prose, needle="interaction 9"):
         """_figure_is_history over the position of `needle` in `prose`."""
@@ -4553,11 +4619,55 @@ class TestScreenSaturationAndCounts:
     def test_the_signature_rescue_is_preserved(self):
         """A tightening was TRIED and rejected: requiring a non-generic signature theme
         dropped deck 30's KEY rate 21%->1% and demoted Innkeeper's Talent, the
-        counter-doubler-in-a-counters-deck case the signature branch exists for. So the
-        fix REPORTS saturation instead of re-scoring — this pins that KEY still fires on a
-        generic signature theme."""
+        counter-doubler-in-a-counters-deck case the signature branch exists for.
+
+        THAT REJECTION STILL STANDS and this still pins it. What landed on 2026-09-18 is a
+        DIFFERENT change and the distinction is the whole point: the rejected one removed
+        the branch's effect, this one makes it CONDITIONAL on the card clearing a
+        structural overlay, and when it does not the card falls through to the branches
+        BELOW rather than being forced down. Measured on the deck the rejection was taken
+        on: **deck 30's KEY rate does not move at all (27.7% before and after)**,
+        Innkeeper's Talent and Branching Evolution keep KEY through the overlay, and Kami
+        of Whispered Hopes / Conclave Mentor / Ozolith keep it through `top-theme` —
+        because where `counters` really is the spine it is also the top theme. This
+        assertion passes for that second reason, which is why the case below exists too.
+        """
         assert deck.fit_strength(["counters"], {"counters": 20}, "", 9, 5,
                                  frozenset({"counters"})) == "KEY"
+
+    def test_a_generic_signature_that_is_not_the_spine_does_not_mint_key(self):
+        """The saturation itself. This branch is the FIRST statement in `fit_strength` and
+        returned KEY unconditionally, so across a 400-card sample x the 112-deck roster it
+        produced **97.3% of every KEY verdict** while the two branches designed to
+        discriminate were dead — `role-gap` 1.5%, `top-theme` 1.2%. Median KEY decks per
+        card 8, p90 17, max 35.
+
+        Here `tokens` is protected by the deck but is far from its spine, and the card
+        clears no overlay, so it is a role-player. Note it is NOT forced to tangential:
+        the fall-through is what keeps the demotion honest, and roster-wide the tangential
+        count did not move by a single row (289 -> 289 across a 12-card live sample)."""
+        assert deck.fit_strength(["tokens"], {"tokens": 2, "Cat": 10}, "", 8, 8,
+                                 signature={"tokens"}) == "role-player"
+
+    def test_a_structural_overlay_earns_the_generic_signature_key_back(self):
+        """…and this is how the G-33 rescue survives it. A doubler whose axis the deck
+        actually feeds engages the spine structurally, which is exactly what separates the
+        real rescue from a blanket mint."""
+        assert deck.fit_strength(["tokens"], {"tokens": 2, "Cat": 10}, "", 8, 8,
+                                 signature={"tokens"}, overlay=lambda: True) == "KEY"
+
+    def test_a_specific_signature_theme_still_mints_on_its_own(self):
+        """Only GENERIC signature themes have to earn it. A specific one IS the home."""
+        assert deck.fit_strength(["Ninja"], {"Ninja": 2, "Cat": 10}, "", 8, 8,
+                                 signature={"Ninja"}) == "KEY"
+
+    def test_the_overlay_predicate_is_optional(self):
+        """`fit_strength` stays a pure function — the overlay is a zero-arg predicate the
+        CALLER supplies, and its absence must not crash or mint. All three call sites
+        (screen, suggest-homes, quality) pass one; a future caller that forgets gets the
+        conservative fall-through rather than a KEY nothing checked."""
+        assert deck.fit_strength(["tokens"], {"tokens": 2, "Cat": 10}, "", 8, 8,
+                                 signature={"tokens"}, overlay=None) == "role-player"
 
 
 class TestAlreadyInDeckJoinsAreFrontFaced:

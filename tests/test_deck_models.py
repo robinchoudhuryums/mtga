@@ -43,6 +43,32 @@ UNIVERSE = {
     # Off-colour: identity R in a mono-B deck, and its cost demands R, so it is
     # genuinely UNCASTABLE rather than a hybrid you pay on-colour.
     "red bear": _card("Red Bear", "Creature — Bear", "", "R", "2", "2"),
+    # Printed `*` power — card_power returns None and board_power must NOT fold it in
+    # as 0 (G-16). Every X-creature and every "power equal to" card is this shape.
+    "star bear": _card("Star Bear", "Creature — Bear",
+                       "Star Bear's power is equal to the number of cards in your hand.",
+                       "B", "*", "3"),
+    # Printed ZERO power, which is REAL and common — the BS4-32 trap. It must count as a
+    # genuine 0, not read as unknown.
+    "zero bear": _card("Zero Bear", "Creature — Bear", "", "B", "0", "4"),
+    # A Vehicle is not a creature until crewed, so it is reported apart, never summed in.
+    "wagon": _card("Wagon", "Artifact — Vehicle", "Crew 2", "B", "4", "4"),
+    # --- nonland mana sources, for uncounted_mana_sources ---
+    "dork": _card("Dork", "Creature — Elf Druid", "{T}: Add {B}.", "B", "1", "1"),
+    "rock": _card("Rock", "Artifact", "{T}: Add one mana of any color.", ""),
+    # An extra MANA cost makes it a filter, not a source on the turn you need the colour
+    # — counted but LABELLED, exactly as a land's is (G-35).
+    "filter rock": _card("Filter Rock", "Artifact", "{1}, {T}: Add one mana of any color.", ""),
+    # "Spend this mana only …" is NOT counted for a land, so it must not be counted here
+    # either, or the disclosure would contradict the rule it complements.
+    "narrow dork": _card("Narrow Dork", "Creature — Elf Druid",
+                         "{T}: Add {B}. Spend this mana only to cast creature spells.",
+                         "B", "1", "1"),
+    # A GRANTED ability upgrades lands you already count; it is not a new source.
+    "grantor": _card("Grantor", "Enchantment",
+                     "Lands you control have \"{T}: Add one mana of any color.\"", "B"),
+    # A ritual is one-shot, not a source — and an instant/sorcery is excluded by type.
+    "ritual": _card("Ritual", "Sorcery", "Add {B}{B}{B}.", "B"),
     "swamp": _card("Swamp", "Basic Land — Swamp", "", ""),
 }
 
@@ -50,6 +76,9 @@ MANA = {
     "zap": ("{1}{B}", 2), "slow zap": ("{1}{B}", 2), "shatter": ("{1}{B}", 2),
     "arena": ("{2}{B}", 3), "bear": ("{1}{B}", 2), "big bear": ("{4}{B}", 5),
     "red bear": ("{1}{R}", 2), "swamp": ("", 0),
+    "star bear": ("{1}{B}", 2), "zero bear": ("{1}{B}", 2), "wagon": ("{2}", 2),
+    "dork": ("{B}", 1), "rock": ("{2}", 2), "filter rock": ("{2}", 2),
+    "narrow dork": ("{B}", 1), "grantor": ("{1}{B}", 2), "ritual": ("{B}", 1),
 }
 
 META = {
@@ -60,6 +89,15 @@ META = {
     "bear": {"colors": {"B"}, "synergies": ["Bear"]},
     "big bear": {"colors": {"B"}, "synergies": ["Bear"]},
     "red bear": {"colors": {"R"}, "synergies": ["Bear"]},
+    "star bear": {"colors": {"B"}, "synergies": ["Bear"]},
+    "zero bear": {"colors": {"B"}, "synergies": ["Bear"]},
+    "wagon": {"colors": {"B"}, "synergies": ["artifacts"]},
+    "dork": {"colors": {"B"}, "synergies": ["ramp"]},
+    "rock": {"colors": set(), "synergies": ["ramp"]},
+    "filter rock": {"colors": set(), "synergies": ["ramp"]},
+    "narrow dork": {"colors": {"B"}, "synergies": ["ramp"]},
+    "grantor": {"colors": {"B"}, "synergies": ["ramp"]},
+    "ritual": {"colors": {"B"}, "synergies": ["ramp"]},
 }
 
 
@@ -1233,3 +1271,142 @@ class TestTypedSinkLabel:
     def test_a_type_restricted_sink_is_labelled_and_worth_the_same_tiebreak(self):
         assert deck._land_utility(self.IRON_HILLS) == (0.30, "sink~")
         assert deck._land_utility(self.MANSION) == (0.30, "sink")
+
+
+class TestBoardPower:
+    """The board-presence axis (added 2026-09-18). Every model here graded a deck on
+    resilience and theme and none of them asked how big its creatures are, so a deck could
+    clear an A floor while fielding nothing that closes a game. These pin the three things
+    that make the number trustworthy: it is quantity-weighted, it never invents a value for
+    an unprintable one, and it does NOT reach the tier floor."""
+
+    def test_sums_printed_power_quantity_weighted(self, synth):
+        d = synth(["2 Bear", "1 Big Bear", "20 Swamp"])
+        _m, cards = deck.parse_deck_file(d["path"])
+        bp = deck.board_power(cards, UNIVERSE)
+        assert bp["power"] == 2 * 2 + 5        # two 2/2s plus one 5/5
+        assert bp["creatures"] == 3
+        assert bp["unknown"] == 0
+
+    def test_a_star_power_creature_is_unknown_not_zero(self, synth):
+        """`card_power` returns None for a printed `*`, and folding that in as 0 would
+        report a confident number the card cannot support (G-16)."""
+        d = synth(["1 Bear", "2 Star Bear", "20 Swamp"])
+        _m, cards = deck.parse_deck_file(d["path"])
+        bp = deck.board_power(cards, UNIVERSE)
+        assert bp["power"] == 2                # the Bear alone
+        assert bp["unknown"] == 2              # quantity-weighted, like the counts it sits beside
+        assert bp["creatures"] == 3            # …but still a creature on the board
+        assert "unknown power" in deck.board_power_note(bp)
+
+    def test_a_printed_zero_is_a_real_zero(self, synth):
+        """The BS4-32 trap one function over: `card_power(0)` is a genuine 0, so a
+        `card_power(...) or ...` would silently reclassify the commonest real zero there
+        is as unknown."""
+        d = synth(["1 Zero Bear", "20 Swamp"])
+        _m, cards = deck.parse_deck_file(d["path"])
+        bp = deck.board_power(cards, UNIVERSE)
+        assert bp["power"] == 0 and bp["unknown"] == 0 and bp["creatures"] == 1
+
+    def test_a_vehicle_is_reported_apart_never_summed_in(self, synth):
+        d = synth(["1 Bear", "1 Wagon", "20 Swamp"])
+        _m, cards = deck.parse_deck_file(d["path"])
+        bp = deck.board_power(cards, UNIVERSE)
+        assert bp["power"] == 2                # the Wagon's 4 is NOT in the total
+        assert bp["creatures"] == 1
+        assert bp["vehicles"] == 1 and bp["vehicle_power"] == 4
+        assert "once crewed" in deck.board_power_note(bp)
+
+    def test_the_vector_creature_count_is_the_same_definition(self, synth):
+        """`deck_quality_vector` used to run its own `"Creature" in _primary_type(...)`
+        tally beside this one — two answers to one question (G-70). It calls the helper
+        now, and this is what keeps it that way."""
+        d = synth(["2 Bear", "1 Big Bear", "1 Star Bear", "1 Wagon", "20 Swamp"])
+        _m, cards = deck.parse_deck_file(d["path"])
+        v = deck.deck_quality_vector(d)
+        assert v["creatures"] == deck.board_power(cards, UNIVERSE)["creatures"]
+        assert v["board_power"] == deck.board_power(cards, UNIVERSE)["power"]
+
+    def test_board_power_does_not_move_the_tier_floor(self, synth):
+        """REPORT-ONLY is a design constraint, not an implementation detail: a new term in
+        `tier_band` would silently re-grade the whole roster, which is why the protection
+        axis (G-25) and the X-cost advisory (G-60) are kept out too. Two decks identical
+        but for creature SIZE must land in the same band."""
+        small = deck.deck_quality_vector(synth(["4 Bear", "2 Zap", "1 Arena", "20 Swamp"]))
+        big = deck.deck_quality_vector(synth(["4 Big Bear", "2 Zap", "1 Arena", "20 Swamp"]))
+        assert big["board_power"] > small["board_power"]
+        assert deck.tier_band(big) == deck.tier_band(small)
+
+
+class TestAuditedFigureKeys:
+    """The rationale audit's self-disclosure. A clean bill means "every figure I have a
+    pattern for is current", and without this list that reads as the stronger claim."""
+
+    def test_every_pattern_key_is_represented(self):
+        """Derived from the table, never hand-listed — so adding a pattern cannot leave
+        the disclosure behind."""
+        labels = " · ".join(deck.audited_figure_keys())
+        for _rx, key in deck._RATIONALE_FIGURES:
+            token = "colour sources" if key.startswith("sources_") else key.replace("_", " ")
+            token = "avg MV" if key == "avg_mv" else token
+            assert token in labels, f"{key} has a pattern but no disclosed label"
+
+    def test_board_power_is_registered(self):
+        """The finding itself: deck 41's board-power figure went stale twice in one
+        session while the audit reported the block current."""
+        assert "board power" in deck.audited_figure_keys()
+
+
+class TestUncountedManaSources:
+    """`consistency` prices every figure off the LAND count (G-35) while `suggest --ramp`
+    recommends the nonland sources that count cannot see — two surfaces disagreeing by
+    construction, with neither saying so. Decks 23 and 41 had each hand-written the
+    workaround into their own `#: notes:` before this existed. These pin the exclusions,
+    which are the whole reason the disclosure is trustworthy: they are `land_production`'s
+    own rules, so the disclosure and the land count cannot drift apart."""
+
+    def _names(self, synth, lines):
+        d = synth(lines)
+        _m, cards = deck.parse_deck_file(d["path"])
+        return {n for _q, n, _c, _cond in deck.uncounted_mana_sources(cards, UNIVERSE)}
+
+    def test_a_nonland_permanent_that_makes_mana_is_reported(self, synth):
+        assert self._names(synth, ["1 Dork", "1 Rock", "20 Swamp"]) == {"Dork", "Rock"}
+
+    def test_a_land_is_not_reported(self, synth):
+        """Lands are already in the count this disclosure qualifies."""
+        assert "Swamp" not in self._names(synth, ["1 Dork", "20 Swamp"])
+
+    def test_spend_restricted_mana_is_excluded(self, synth):
+        """G-35 does not count spend-only mana for a LAND. Counting it here would make
+        the disclosure contradict the rule it exists to complement."""
+        assert self._names(synth, ["1 Narrow Dork", "20 Swamp"]) == set()
+
+    def test_a_granted_ability_is_excluded(self, synth):
+        """"Lands you control have '{T}: Add …'" upgrades lands that are already counted;
+        it does not add a source."""
+        assert self._names(synth, ["1 Grantor", "20 Swamp"]) == set()
+
+    def test_a_ritual_is_excluded(self, synth):
+        """A land's Add clause is repeatable by tapping; a sorcery's is one-shot."""
+        assert self._names(synth, ["1 Ritual", "20 Swamp"]) == set()
+
+    def test_an_extra_cost_source_is_reported_but_flagged(self, synth):
+        d = synth(["1 Filter Rock", "1 Dork", "20 Swamp"])
+        _m, cards = deck.parse_deck_file(d["path"])
+        by_name = {n: cond for _q, n, _c, cond in deck.uncounted_mana_sources(cards, UNIVERSE)}
+        assert by_name["Filter Rock"] is True     # labelled, as a land's would be
+        assert by_name["Dork"] is False
+
+    def test_it_changes_no_source_count(self, synth):
+        """REPORT-ONLY. The disclosure must not move a single figure — a rock is not a
+        land drop, which is exactly why `deck_source_profile` excludes it."""
+        by_key, by_name, _qty = deck.load_collection()
+        plain = synth(["2 Zap", "20 Swamp"])
+        withdork = synth(["2 Zap", "1 Dork", "20 Swamp"])
+        _m1, c1 = deck.parse_deck_file(plain["path"])
+        _m2, c2 = deck.parse_deck_file(withdork["path"])
+        s1, l1, _t1, _n1 = deck.deck_source_profile(c1, by_key, by_name, UNIVERSE)
+        s2, l2, _t2, _n2 = deck.deck_source_profile(c2, by_key, by_name, UNIVERSE)
+        assert s1["B"] == s2["B"] and l1 == l2
+        assert deck.uncounted_mana_sources(c2, UNIVERSE)      # …yet it IS disclosed

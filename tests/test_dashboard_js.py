@@ -44,6 +44,10 @@ BUILD_DASHBOARD = os.path.join(REPO_ROOT, "scripts", "build_dashboard.py")
 _JS_FUNCS = ["parseLine", "formatHint", "deckFormatClass", "multiset", "diffSets",
              "bestMatch", "analyzeOne"]
 
+# The view-state functions. Same extraction, different question: these decide what
+# survives a refresh, which is browser behaviour no Python test can reach.
+_STATE_FUNCS = ["parseHash", "restorePrefs", "buildHash", "persist"]
+
 _HARNESS = """
 const fs = require('fs');
 const src = fs.readFileSync(process.argv[2], 'utf8');
@@ -178,3 +182,125 @@ class TestDashboardMatcherAgreesWithPython:
         `<` rather than localeCompare, which would order hyphenated ids differently."""
         assert js_side[0]["id"] == "10", js_side[0]
         assert js_side[0]["lowconf"] is True and js_side[0]["runnerUp"] == "3"
+
+
+# ---------------------------------------------------------------------------- #
+# NOTE these are CONCATENATED around the extracted source rather than `eval`-ing it the
+# way the matcher harness above does. `eval` leaks FUNCTION declarations into the
+# surrounding scope but not a `const`, so an eval'd `const STATE = {...}` is invisible to
+# the assertions and the run dies with "STATE is not defined".
+_STATE_STUBS = """
+let _ls = {};
+const localStorage = { getItem: k => (k in _ls ? _ls[k] : null),
+                       setItem: (k, v) => { _ls[k] = String(v); } };
+let _hash = '';
+const location = { get hash(){ return _hash; }, href: 'file:///d.html' };
+const history = { replaceState: (a, b, u) => {
+  _hash = (u || '').trim().startsWith('#') ? u.trim() : ''; } };
+const document = { documentElement: { setAttribute: () => {} } };
+const window = { matchMedia: () => ({ matches: false }) };
+"""
+
+_STATE_ASSERTS = """
+const out = {};
+function reset(h){ _hash = h || ''; }
+
+// Expand a deck: the ADDRESS BAR must not carry it…
+reset(''); restorePrefs(); STATE.open['45'] = true; persist();
+out.addressBar = _hash;
+// …but a link you deliberately hand someone must.
+out.shareLink = buildHash(true);
+// A plain refresh re-reads whatever persisted — nothing should be open.
+restorePrefs();
+out.afterRefresh = STATE.open;
+// An inbound deep link still opens the deck.
+reset('#d=45'); restorePrefs();
+out.deepLink = STATE.open;
+// …while a REAL preference still survives a refresh.
+reset(''); restorePrefs(); STATE.theme = 'light'; STATE.pinned = {'41': true}; persist();
+restorePrefs();
+out.theme = STATE.theme; out.pinned = STATE.pinned;
+console.log(JSON.stringify(out));
+"""
+
+
+def _extract_state_js():
+    """`STATE` plus the view-state functions, from the shipped source."""
+    src = open(BUILD_DASHBOARD, encoding="utf-8").read()
+    i = src.index("const STATE = {")
+    end = src.index("};", i) + 2
+    parts = [src[i:end]]
+    for name in _STATE_FUNCS:
+        marker = f"function {name}("
+        assert marker in src, f"{name} is no longer defined in build_dashboard.py"
+        j = src.index(marker)
+        depth, start = 0, src.index("{", j)
+        for k in range(start, len(src)):
+            if src[k] == "{":
+                depth += 1
+            elif src[k] == "}":
+                depth -= 1
+                if depth == 0:
+                    parts.append(src[j:k + 1])
+                    break
+        else:
+            raise AssertionError(f"unbalanced braces extracting {name}")
+    return "\n".join(parts)
+
+
+@pytest.fixture(scope="module")
+def state_side(tmp_path_factory):
+    node = shutil.which("node")
+    if not node:
+        pytest.skip("node not installed (CI sets PYTEST_NO_SKIPS, which fails on this)")
+    d = tmp_path_factory.mktemp("dashstate")
+    (d / "run.js").write_text(
+        _STATE_STUBS + "\n" + _extract_state_js() + "\n" + _STATE_ASSERTS,
+        encoding="utf-8")
+    r = subprocess.run([node, str(d / "run.js")],
+                       capture_output=True, text=True, timeout=60)
+    assert r.returncode == 0, f"node failed:\n{r.stderr[:2000]}"
+    return json.loads(r.stdout)
+
+
+class TestExpandedPanelsDoNotSurviveARefresh:
+    """A user reported that "whenever I refresh, one or more of the decks' details are
+    expanded for some reason", and the "for some reason" was the whole bug: the expanded
+    set was written to BOTH localStorage and the URL hash, so a panel opened once to read
+    something stayed open on every later visit with nothing on screen to explain it.
+
+    The distinction the fix draws — and what these pin — is between a PREFERENCE you
+    deliberately set (theme, view mode, colour chips, pinned decks) and a transient
+    DISCLOSURE you clicked to read something. The first persists; the second does not.
+    Deep links keep working because that route is visible in the address bar, and the 🔗
+    share button still captures the open panels because a link you hand someone is a
+    deliberate act.
+
+    Browser behaviour, so no Python test can reach it — the same reason this file's other
+    class runs the matcher under Node."""
+
+    def test_the_state_js_still_extracts(self):
+        """Guards the test itself, like its sibling above: a rename must fail loudly here
+        rather than quietly leave the refresh behaviour uncovered."""
+        js = _extract_state_js()
+        assert "const STATE = {" in js
+        for name in _STATE_FUNCS:
+            assert f"function {name}(" in js
+
+    def test_expanding_a_deck_does_not_touch_the_address_bar(self, state_side):
+        assert state_side["addressBar"] == "", state_side
+
+    def test_the_share_button_still_captures_expanded_decks(self, state_side):
+        assert state_side["shareLink"] == "#d=45", state_side
+
+    def test_nothing_is_expanded_after_a_refresh(self, state_side):
+        """The reported bug. `STATE.open` used to be restored from localStorage."""
+        assert state_side["afterRefresh"] == {}, state_side
+
+    def test_a_deep_link_still_opens_the_deck(self, state_side):
+        assert state_side["deepLink"] == {"45": True}, state_side
+
+    def test_real_preferences_still_survive(self, state_side):
+        """The other half: this must not have thrown out the state that SHOULD persist."""
+        assert state_side["theme"] == "light", state_side
+        assert state_side["pinned"] == {"41": True}, state_side

@@ -450,8 +450,8 @@ is protecting.
   **THE LIST IS A WINDOW AND THE RANKING IS THEME FIT, so read a card's ABSENCE as neither
   (BS10-05).** The footer counted the TRUNCATION, so it read "20 suggestion(s)" whether the
   ranking held 20 candidates or 958; it now prints "top N of M ranked candidate(s)"
-  (`--limit 0` for all). Why it matters is measured, not asserted: across **831 applied swaps
-  that recorded a rank for the card ADDED, the MEDIAN rank is 421** and only **11%** fell
+  (`--limit 0` for all). Why it matters is measured, not asserted: across **836 applied swaps
+  that recorded a rank for the card ADDED, the MEDIAN rank is 422** and only **11%** fell
   inside the default top 20. `deck.py feedback` reports that distribution. A card chosen for
   a mechanical interaction the tags do not encode ranks far down BY CONSTRUCTION — a
   different problem from the theme gate G-38 describes, and K-15 was its largest single
@@ -515,7 +515,9 @@ is protecting.
   misses a name several lines into a wrapped one (deck 52 named Zemo under "Deliberately NOT
   included" while running him). And **scanning `#: notes:` for staleness was measured and
   DECLINED twice** — the suppressions that make the scan trustworthy are exactly what blind
-  it inside a build log, so do not re-propose it. [G-27]
+  it inside a build log, so do not re-propose it. BOARD POWER joined 2026-09-18, and the
+  audit now PRINTS the families it can price — an unregistered figure reads as audited
+  otherwise. [G-27]
 - **`suggest`'s `Decks` column is cross-deck BREADTH, not curated fit** — castable and
   sharing a *central* theme that is also SPECIFIC, with variants collapsed to their core
   deck. Both gates are load-bearing: centrality alone left the column saturated at 99%,
@@ -640,7 +642,14 @@ is protecting.
   transform-gated, GRANTED and extra-tap-cost clauses are excluded — ten lands had read as
   five-colour sources. **`lib.tapland_kind` is the ONE tapping predicate** (the tempo
   line, `·tapped?`, and `_land_value`'s premium): a shockland's condition is payable AT
-  WILL so it earns the premium, a board-state one stays conservative. [G-35]
+  WILL so it earns the premium, a board-state one stays conservative.
+  **NONLAND sources are DISCLOSED since 2026-09-18, never counted**: `consistency` prints
+  `ⓘ N NONLAND mana source(s) are NOT in the counts above` (**75 of 112 decks**). The
+  exclusion is right — a rock is not a land drop — but its SILENCE was not, because
+  `suggest --ramp` recommends exactly what this count cannot see, and decks 23 and 41 had
+  each hand-written the workaround into their own `#: notes:` before the tool said it.
+  `uncounted_mana_sources` runs `land_production` on a NONLAND's text, so the spend-only
+  and granted-ability exclusions are the same ones and the two cannot drift. [G-35]
 - **`deck.py consistency <id>` is the PROBABILITY layer `mana` lacks** — keepable %,
   screw/flood, land-drop consistency and per-card P(cast on curve), with a Karsten-style
   source recommendation. Run it whenever a splash, a double pip or a top-end bomb is in
@@ -697,7 +706,16 @@ is protecting.
   landfall kicker returning a land, Warp in a counters deck, a sacrifice feeding an
   outlet, a discard filling a reanimator's yard). Every model grades a card in isolation,
   where an additional cost reads as a drawback. A FLAG for a human read, never a score
-  change. [G-41]
+  change. **A PAY-LIFE RULE WAS PROPOSED, MEASURED AND DECLINED (2026-09-18) — do not
+  restart it; the numbers sit at `_COST_UPSIDE`.** The broad form scores **22%** precision
+  over 91 roster pairs: **46%** are shocklands and equip costs, which you pay FOR
+  something, **26%** are cheap-but-not-upside, and **6%** are BACKWARDS — "ward—pay 5
+  life" is the OPPONENT's cost read as yours, G-42's own signature. The narrow form (gate:
+  a payoff that TRIGGERS on losing life) fires on **1 of 112 decks** off 7 pool cards, and
+  not on deck 41, which motivated it. **The SHAPE was wrong**: every rule here encodes a
+  cost that FEEDS something — a sacrifice feeds an outlet, a discard fills the yard — and
+  paying life feeds nothing. Deck 41 needed the weaker claim "this cost is CHEAP here",
+  which its own `#: notes:` now carries. [G-41]
 - **The MIRROR of cost-as-upside has no flag: a fine card that fights your own engine.**
   Graveyard hate in a graveyard deck, hand attack against a deck you want holding cards.
   Two such cards shipped into finished decks. **When a deck DEPENDS on a zone being
@@ -903,6 +921,24 @@ is protecting.
   runs p25 1 / p50 2 / p75 3 / p90 5 / max 11, so a floor of 1 fires on 80% (the G-07
   saturation shape) against **15 of 50 (30%)** at 3. BOTH figures are registered in
   `figure_drift`, which is what caught the population move when impending joined. [G-85]
+- **BOARD PRESENCE IS AN AXIS AND NOTHING HERE MEASURED IT until 2026-09-18.** The tier
+  floor reads interaction + card advantage, `cuts` reads theme fit and role credit, and
+  `stats` counted creatures without ever asking how big they are — so a deck can clear an
+  A floor on resilience while fielding nothing that ends a game, and the only way to see
+  that was to hand-roll the sum, done six times in one session before `board_power`
+  existed. It is a SEPARATE axis, not a restatement of the floor: **r = −0.147 against a
+  ±0.188 noise band at n=112**. Roster distribution min 23 / p10 37 / **p50 54** / p90 73
+  / max 120. **REPORT-ONLY, and it must stay so** — a new `tier_band` term silently
+  re-grades the roster, the reason the protection axis (G-25) and the X-cost advisory
+  (G-60) are kept out and the reason the payoff-density term was simulated and DECLINED
+  2026-09-03. `deck_quality_vector` publishes it, `tier_band` ignores it, and a test pins
+  that two decks differing only in creature SIZE land in the same band. **THREE THINGS IT
+  CANNOT SEE, disclosed rather than guessed at:** a printed `*`/X power is counted APART
+  and never coerced to 0 (G-16), which is no corner case — **70 of 112 decks** hold one,
+  so a bare sum would under-report on 62% of the roster; TOKENS and other created bodies
+  read ZERO, so a card making two 3/3s contributes nothing; and VEHICLES are counted
+  apart, not being creatures until crewed. Read the figure as a FLOOR on what the deck can
+  present, never a ceiling. [G-86]
 - **BEFORE DISMISSING A CARD, COUNT THE DECK PROPERTY ITS VALUE DEPENDS ON.** Four
   dismissals were overturned in one cycle, all the same shape — a card judged on its own
   text when the decision belonged to a number in the LIST. Michelangelo was called
@@ -1396,10 +1432,10 @@ earned it: [C-01]
 
 **Subsystems:**
 - Data: card-library.csv, card-pool.csv, card-mana.csv, card-wishlist.csv, matches.csv
-  (LIVE since 2026-08-10 — 131 matches, 128 attributed across 39 decks, pooled 67-64; the
-  best per-deck row is n=13 (deck 45) against the 20-match floor after six weeks, which is
+  (LIVE since 2026-08-10 — 135 matches, 132 attributed across 40 decks, pooled 69-66; the
+  best per-deck row is n=15 (deck 45) against the 20-match floor after six weeks, which is
   why `--report` also POOLS, and why the four HAND columns exist at all — G-74; all four are
-  still EMPTY in all 131 rows, so scenario 11 remains the only thing that can prove that
+  still EMPTY in all 135 rows, so scenario 11 remains the only thing that can prove that
   loop closes), recommendations.csv,
   collection-stamp.json (written only by `import_collection.py --apply` — the date owned
   counts were last EXACT; absent until the first run, and the craft surfaces say so) [C-02]

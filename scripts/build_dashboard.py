@@ -323,6 +323,65 @@ def craft_rows(d, problems=None):
             for p in res["picks"]]
 
 
+# A `#: format:` header is free text, and the roster writes it two ways — 107 decks say
+# "Standard" and four say "standard". The shelf grouping keys on this string and `FMT_ORDER`
+# is title-cased, so a lowercase header matched no entry, sorted to the end and got a SHELF
+# OF ITS OWN: decks 44, 44a, 45 and 45a sat in a second "standard" section away from the
+# other 107, which is exactly what a user reported seeing.
+#
+# G-08's rule is the fix and it already existed: every legality and recommender surface
+# reads the format through the canonical helper, never the raw string. This is the one
+# surface that still read the raw string, so it routes through `normalize_format` too and
+# then title-cases for display — `normalize_format` lowercases (it is built for the
+# construction-rule sets), and a shelf heading wants "Historic Brawl", not "historic brawl".
+# An EMPTY header still yields "", which the template turns into "Unspecified" as before.
+def _display_format(raw):
+    """The `#: format:` header as ONE canonical display label, via `normalize_format`."""
+    return deckmod.normalize_format(raw or "").title()
+
+
+# The `#: notes:` build log is stored one header line per source line and `parse_deck_file`
+# joins them into ONE string with no newlines at all — so the raw value is a 2,793-char
+# (deck 41) to 16,540-char (deck 50) wall of text. The roster does not write it that way:
+# 59 of the 111 decks with notes structure it with SHOUTED lead-ins ("WHY THE SWAP WORKS
+# —", "RECURSION —", "UNGRADED ON PURPOSE"), and that structure is the only paragraphing
+# the prose has. Splitting on it is a PRESENTATION concern and lives here rather than in
+# `deck.py`, which has no reason to care.
+#
+# Split in PYTHON, not in the page's JS: the payload then ships an array and there is no
+# second copy of this regex to drift from the first — the cross-language bug class
+# `tests/test_dashboard_js.py` exists for.
+_NOTE_LEAD_RE = re.compile(
+    r"(?<=[.!?:;—] )(?=[A-Z][A-Z0-9’'\-]*(?:\s+(?:[A-Z0-9’'\-]{2,}|[A-Z]))+[\s—:,])")
+
+
+def _notes_paragraphs(meta):
+    """The deck's `#: notes:` prose as paragraphs, split on its own shouted lead-ins.
+
+    A sentence boundary is REQUIRED before a lead, so a shout mid-sentence never splits;
+    a lead needs TWO shouted tokens, so a lone acronym ("MV 5 is the cap", "WIP.") does
+    not either. Measured over the roster: 59 of 111 decks split, p50 2 paragraphs, max 40
+    (deck 50) with a 40-char shortest — every one a real section, and the 52 that do not
+    split are genuinely written as one block.
+    """
+    txt = (meta.get("notes") or "").strip()
+    if not txt:
+        return []
+    return [p.strip() for p in _NOTE_LEAD_RE.split(txt) if p.strip()]
+
+
+def _flex_entries(path):
+    """The deck's `#~` block as [{in, out, note}], through `deck.parse_flex` — the one
+    parser, never a second reading of the same lines."""
+    try:
+        return [{"in": (e.get("in") or "").strip(),
+                 "out": (e.get("out") or "").strip(),
+                 "note": (e.get("note") or "").strip()}
+                for e in deckmod.parse_flex(path)]
+    except Exception:
+        return []
+
+
 def collect():
     """Gather the structured dashboard payload from committed data only."""
     _no_network()
@@ -385,7 +444,21 @@ def collect():
             "core": d["core"],
             "name": d["name"] or d["id"],
             "archetype": deckmod._deck_identity(meta, width=140),
-            "format": (meta.get("format") or "").strip(),
+            "format": _display_format(meta.get("format")),
+            # The FULL `#: archetype:` prose. `archetype` above is `_deck_identity`'s
+            # one-line card label, truncated at 140 chars — which is 11% of the average
+            # deck's synopsis (p50 981 chars, max 5240) and cut 83 of the 109 decks that
+            # have one. That truncation happens at BUILD time, so the rest never reached
+            # the browser at all and the modal's "…" was the end of the data, not a CSS
+            # clamp. Both are kept: the card wants a label, the modal wants the prose.
+            "synopsis": (meta.get("archetype") or "").strip(),
+            # The `#: notes:` build log — the per-deck reasoning record, 111 decks and
+            # 319 KB of prose, which the page carried none of. Paragraphed at build time
+            # (see `_notes_paragraphs`) because the stored form has no line breaks.
+            "notes": _notes_paragraphs(meta),
+            # The `#~` flex block — proposed swaps and craft notes the repo file carries
+            # and the page did not surface at ALL. 84 decks have one, 935 entries.
+            "flex": _flex_entries(d["path"]),
             "colors": (meta.get("colors") or "").strip().upper(),
             "variant": bool(d["variant"]),
             "total": total,
@@ -902,6 +975,17 @@ TEMPLATE = r"""<!DOCTYPE html>
   .flag { font-size:11.5px; border:1px solid var(--line2); border-radius:6px; padding:2px 7px; background:var(--fill2); }
   .castlist { font-size:12px; margin:4px 0 0; padding-left:18px; color:var(--ink); }
   .metaline2 { font-size:12px; color:var(--ink2); margin-top:5px; }
+  /* The modal's full synopsis. Capped and scrollable rather than truncated: the longest
+     is 5240 chars and would push the tabs off-screen, but cutting it is what the user
+     was complaining about. */
+  .msyn { color:var(--ink2); font-size:12.5px; margin-top:5px; line-height:1.5; max-width:520px;
+          max-height:8.5em; overflow-y:auto; white-space:pre-wrap; }
+  .flexrow { border:1px solid var(--line); border-radius:10px; padding:10px 12px; margin-bottom:9px; }
+  .flexswap { font-size:12.5px; font-weight:600; margin-bottom:5px; }
+  .flexin { color:var(--ok); } .flexout { color:var(--bad); }
+  .flexnote { font-size:12px; color:var(--ink2); line-height:1.5; white-space:pre-wrap; }
+  .notepara { font-size:12.5px; color:var(--ink); line-height:1.6; margin:0 0 11px; max-width:640px; }
+  .notepara:last-child { margin-bottom:0; }
 
   /* palette / modal / preview / toast */
   .overlay { position:fixed; inset:0; z-index:60; background:rgba(6,8,11,.6); backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px); display:flex; align-items:flex-start; justify-content:center; }
@@ -1310,7 +1394,14 @@ function restorePrefs(){
   STATE.theme = p.theme || (window.matchMedia
     && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
   STATE.viewMode = p.viewMode || 'grid'; STATE.quickFilter = p.quickFilter || 'all';
-  STATE.activeColors = p.activeColors || {}; STATE.open = p.open || {}; STATE.pinned = p.pinned || {};
+  // STATE.open is deliberately NOT restored from localStorage. It used to be, so an
+  // analysis panel you expanded once stayed expanded on every later visit with nothing
+  // on screen to explain why — the URL looked clean because the hash is the OTHER half
+  // of this. A disclosure you clicked to read something is transient; the theme, view
+  // mode, colour chips and pinned decks below are preferences you deliberately set.
+  // The HASH path still opens decks (see `h.d` further down) so a deep link and the 🔗
+  // share button keep working, and that route is VISIBLE in the address bar.
+  STATE.activeColors = p.activeColors || {}; STATE.open = {}; STATE.pinned = p.pinned || {};
   STATE.secCollapsed = p.secCollapsed || {}; STATE.wlRarity = p.wlRarity || {};
   const h = parseHash();
   if (h.v) STATE.viewMode = h.v;
@@ -1320,20 +1411,26 @@ function restorePrefs(){
   if (h.d) { h.d.split(',').forEach(id => { if (id) STATE.open[id] = true; }); STATE._jump = h.d.split(',')[0]; }
   document.documentElement.setAttribute('data-theme', STATE.theme);
 }
-function buildHash(){
+// `includeOpen` is false for the ADDRESS BAR and true for the 🔗 share button, and the
+// split is the point. Expanding an analysis panel used to rewrite the URL with `d=<id>`,
+// so a plain refresh re-opened it — the visible half of the same complaint the
+// localStorage restore caused invisibly. A disclosure you clicked to read something is
+// not part of "the view you are on"; it IS part of a link you deliberately hand someone,
+// which is why the share button still captures it and an inbound `#d=` still opens it.
+function buildHash(includeOpen){
   const p = [];
   if (STATE.viewMode !== 'grid') p.push('v=' + STATE.viewMode);
   if (STATE.quickFilter !== 'all') p.push('f=' + STATE.quickFilter);
   if (STATE.deckFilter) p.push('q=' + encodeURIComponent(STATE.deckFilter));
   const cols = ['W','U','B','R','G'].filter(c => STATE.activeColors[c]).join('');
   if (cols) p.push('c=' + cols);
-  const open = Object.keys(STATE.open).filter(k => STATE.open[k]);
+  const open = includeOpen ? Object.keys(STATE.open).filter(k => STATE.open[k]) : [];
   if (open.length) p.push('d=' + open.join(','));
   return p.length ? '#' + p.join('&') : ' ';
 }
 function persist(){
-  try { history.replaceState(null,'',buildHash()); } catch(e){}
-  try { localStorage.setItem('mtga-prefs', JSON.stringify({theme:STATE.theme, viewMode:STATE.viewMode, quickFilter:STATE.quickFilter, activeColors:STATE.activeColors, open:STATE.open, pinned:STATE.pinned, secCollapsed:STATE.secCollapsed, wlRarity:STATE.wlRarity})); } catch(e){}
+  try { history.replaceState(null,'',buildHash(false)); } catch(e){}
+  try { localStorage.setItem('mtga-prefs', JSON.stringify({theme:STATE.theme, viewMode:STATE.viewMode, quickFilter:STATE.quickFilter, activeColors:STATE.activeColors, pinned:STATE.pinned, secCollapsed:STATE.secCollapsed, wlRarity:STATE.wlRarity})); } catch(e){}
 }
 // Restore prefs + deep-link BEFORE anything renders, so control highlights (color
 // chips, quick pills, view toggle) and the deck/wishlist views all reflect saved state.
@@ -1627,7 +1724,7 @@ function renderMana(v){
 }
 
 // ---------- deck filtering ----------
-const TABS = [['craft','Craft picks'],['arena','Arena import'],['stats','Stats'],['mana','Mana'],['cuts','Cuts'],['legal','Legal']];
+const TABS = [['craft','Craft picks'],['arena','Arena import'],['stats','Stats'],['mana','Mana'],['cuts','Cuts'],['legal','Legal'],['flex','Flex'],['notes','Build log']];
 const QUICK = [['all','All'],['buildable','Buildable now'],['needsMythic','Needs mythic'],['incomplete','Needs work']];
 function filteredDecks(){
   const q = (STATE.deckFilter||'').toLowerCase().trim();
@@ -1670,6 +1767,37 @@ function detailBody(d, k){
   }
   if (k === 'stats') return renderStats(d.viz);
   if (k === 'mana') return renderMana(d.viz);
+  if (k === 'flex'){
+    const fx = d.flex || [];
+    if (!fx.length) return preOf('No `#~` flex block — this deck files no proposed swaps or craft notes.');
+    const wrap = el('div');
+    wrap.appendChild(el('div','metaline2',
+      fx.length + ' flex note(s) from the deck file. Advisory — a flex line is a human note, '
+      + 'so nothing edits one; `deck.py flex ' + d.id + '` retires or retargets a stale one.'));
+    fx.forEach(e => {
+      const row = el('div','flexrow');
+      if (e['in'] || e.out){
+        const sw = el('div','flexswap');
+        if (e['in']) sw.appendChild(el('span','flexin', '+' + e['in']));
+        if (e['in'] && e.out) sw.appendChild(document.createTextNode('  /  '));
+        if (e.out) sw.appendChild(el('span','flexout', '\u2212' + e.out));
+        row.appendChild(sw);
+      }
+      if (e.note) row.appendChild(el('div','flexnote', e.note));
+      wrap.appendChild(row);
+    });
+    return wrap;
+  }
+  if (k === 'notes'){
+    const ns = d.notes || [];
+    if (!ns.length) return preOf('No `#: notes:` block — this deck files no build log.');
+    const wrap = el('div');
+    wrap.appendChild(el('div','metaline2',
+      'The deck file\'s `#: notes:` build log — why the list is what it is. '
+      + 'Prose, not a measurement: nothing re-grounds it when the deck changes.'));
+    ns.forEach(t => wrap.appendChild(el('p','notepara', t)));
+    return wrap;
+  }
   return preOf((d.detail && d.detail[k]) || '(no output)');
 }
 function deckBadges(d){
@@ -2282,7 +2410,8 @@ function modalEl(d){
   const m = el('div','modal'); m.onclick = e => e.stopPropagation();
   const head = el('div','mhead');
   const left = el('div');
-  left.innerHTML = '<h3>' + esc(d.name) + ' <span class="id">#' + esc(d.id) + '</span></h3><div style="color:var(--ink2);font-size:12.5px;margin-top:5px;line-height:1.45;max-width:520px">' + esc(d.archetype) + '</div>';
+  left.innerHTML = '<h3>' + esc(d.name) + ' <span class="id">#' + esc(d.id) + '</span></h3>'
+    + '<div class="msyn">' + esc(d.synopsis || d.archetype || '') + '</div>';
   const meta = el('div','metaline'); meta.style.marginTop = '8px';
   if (d.format){ const f = el('span',null,d.format); f.style.color = 'var(--ink2b)'; meta.appendChild(f); }
   meta.appendChild(pipsRow(d.colors)); meta.appendChild(el('span',null,d.total + ' cards'));
@@ -2347,7 +2476,7 @@ function paletteEl(){
 
 // ---------- header buttons + keyboard ----------
 $('btntheme').onclick = () => { STATE.theme = STATE.theme==='dark'?'light':'dark'; document.documentElement.setAttribute('data-theme', STATE.theme); persist(); };
-$('btnshare').onclick = () => { const url = location.href.split('#')[0] + buildHash().replace(/^ $/,''); writeClip(url, () => toast('View link copied to clipboard')); };
+$('btnshare').onclick = () => { const url = location.href.split('#')[0] + buildHash(true).replace(/^ $/,''); writeClip(url, () => toast('View link copied to clipboard')); };
 $('btnsync').onclick = () => syncLive(false);
 a11y($('palettehint'), {label:'Open command palette'});
 $('palettehint').onclick = openPalette;

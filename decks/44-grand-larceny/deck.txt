@@ -1,5 +1,5 @@
 #: name: Grand Larceny
-#: format: standard
+#: format: Standard
 #: colors: UB
 #: plan: midrange
 #: archetype: Dimir (U/B, black-primary) HEIST — the deck whose card advantage is

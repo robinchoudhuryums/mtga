@@ -689,3 +689,105 @@ class TestDeckEditorUnloadGuard:
         assert "bypassUnloadGuard" in src
         i = src.find("if (d.ok) {")
         assert i != -1 and "bypassUnloadGuard = true" in src[i:i + 200]
+
+
+class TestDashboardSurfacesTheDeckFileProse:
+    """The deck modal showed a 140-char label ending in "…" and no flex block at all, so
+    a reader took the "…" for a CSS clamp and the flex block for something the page chose
+    not to show. Both were facts about the PAYLOAD: `_deck_identity` truncates at build
+    time (83 of 109 decks with an `#: archetype:`; p50 981 chars, max 5240 — about 11%
+    visible), and `flex` was never emitted at all (84 decks, 935 entries).
+
+    The format shelf is the same class one field over: `#: format:` is free text and the
+    roster writes it two ways, so `standard` matched no `FMT_ORDER` entry and four decks
+    got a shelf of their own — G-08's rule (read a format through the canonical helper,
+    never the raw string) applied to the one surface that still read it raw."""
+
+    def _mod(self):
+        import importlib.util
+        import os
+        p = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                         "scripts", "build_dashboard.py")
+        spec = importlib.util.spec_from_file_location("bd_prose_probe", p)
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        return mod
+
+    def test_one_format_spelling_makes_one_shelf(self):
+        bd = self._mod()
+        assert bd._display_format("standard") == bd._display_format("Standard") == "Standard"
+        assert bd._display_format("historic-brawl") == bd._display_format("Historic Brawl")
+        # …and the label the shelf sorts on must be one FMT_ORDER knows.
+        src = open(bd.__file__, encoding="utf-8").read()
+        order = src[src.find("const FMT_ORDER"):].split("]")[0]
+        for raw in ("standard", "Brawl", "historic brawl", "alchemy"):
+            assert "'%s'" % bd._display_format(raw) in order, raw
+        assert bd._display_format("") == "", "an empty header still falls through to Unspecified"
+
+    def test_a_flex_block_reaches_the_payload(self, tmp_path):
+        bd = self._mod()
+        p = tmp_path / "d.txt"
+        p.write_text("#: name: T\n#~ -Stroke of Midnight | +Painful Quandary | slower, bigger\n"
+                     "#~ note: a bare note carries no swap\n"
+                     "1 Swamp (MSH) 291\n", encoding="utf-8")
+        got = bd._flex_entries(str(p))
+        assert {"in": "Painful Quandary", "out": "Stroke of Midnight",
+                "note": "slower, bigger"} in got
+        assert len(got) == 2, got
+
+    def test_a_deck_with_no_flex_block_yields_an_empty_list(self, tmp_path):
+        bd = self._mod()
+        p = tmp_path / "d.txt"
+        p.write_text("#: name: T\n1 Swamp (MSH) 291\n", encoding="utf-8")
+        assert bd._flex_entries(str(p)) == []
+        assert bd._flex_entries(str(tmp_path / "nope.txt")) == [], (
+            "an unreadable file must degrade to no flex, never take the build down")
+
+    def test_the_build_log_is_paragraphed_on_its_own_shouted_leads(self, tmp_path):
+        """`parse_deck_file` joins `#: notes:` into ONE string with no newlines (deck 50 is
+        16,540 chars), so the only paragraphing the prose has is the shouted lead-ins the
+        roster writes it with. Split in PYTHON so the page ships an array and no second
+        copy of this regex exists to drift from the first."""
+        bd = self._mod()
+        txt = ("Drafted from the survey, and it held up. WHY THERE IS NO TRIBE — green's "
+               "payoffs are scattered. MV 5 is the cap, so nothing above it. "
+               "MULTIPLES OVER SINGLETONS on the load-bearing cards.")
+        got = bd._notes_paragraphs({"notes": txt})
+        assert len(got) == 3, got
+        assert got[0].startswith("Drafted") and got[0].endswith("held up.")
+        assert got[1].startswith("WHY THERE IS NO TRIBE")
+        assert "MV 5 is the cap" in got[1], (
+            "a LONE acronym mid-prose is not a section lead — a lead needs two shouted "
+            "tokens, or every 'MV 5' and 'WIP.' would start a paragraph")
+        assert got[2].startswith("MULTIPLES OVER SINGLETONS")
+
+    def test_a_deck_with_no_build_log_yields_no_paragraphs(self):
+        bd = self._mod()
+        assert bd._notes_paragraphs({}) == []
+        assert bd._notes_paragraphs({"notes": "   "}) == []
+
+    def test_the_synopsis_is_the_prose_and_the_label_is_the_label(self, tmp_path):
+        """Both fields are kept deliberately: the deck CARD wants a one-line label, the
+        MODAL wants the prose. Pinning them apart is what stops a future tidy-up from
+        collapsing the two back into the truncated one."""
+        import sys
+        sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(
+            os.path.abspath(__file__))), "scripts"))
+        import deck as deckmod
+        bd = self._mod()
+        prose = "A long synopsis. " * 40
+        p = tmp_path / "d.txt"
+        p.write_text("#: name: T\n#: archetype: %s\n1 Swamp (MSH) 291\n" % prose,
+                     encoding="utf-8")
+        meta, _cards = deckmod.parse_deck_file(str(p))
+        label = deckmod._deck_identity(meta, width=140)
+        synopsis = (meta.get("archetype") or "").strip()
+        assert label.endswith("…") and len(label) <= 140
+        assert len(synopsis) > len(label) and not synopsis.endswith("…")
+        src = open(bd.__file__, encoding="utf-8").read()
+        i = src.find("decks.append({")
+        assert i != -1
+        window = src[i:i + 2200]
+        assert '"synopsis"' in window and '"flex"' in window and '"notes"' in window, (
+            "the modal reads d.synopsis / d.flex / d.notes — dropping any restores the "
+            "'…' or an empty tab")

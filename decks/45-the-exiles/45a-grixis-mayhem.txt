@@ -1,5 +1,5 @@
 #: name: The Exiles — Grixis Mayhem
-#: format: standard
+#: format: Standard
 #: colors: UBR
 #: plan: midrange
 #: archetype: Grixis (U/B/R) variant of 45 — the OTHER zone. Where 45 casts from EXILE and

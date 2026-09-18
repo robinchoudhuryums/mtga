@@ -11,7 +11,7 @@
 #: archetype: THE KILL, added 2026-09-18, is a two-card loop: Bloodthirsty Conqueror
 #: archetype: ("whenever an opponent loses life, you gain that much") plus either
 #: archetype: Starscape Cleric or Enduring Tenacity ("whenever you gain life, they lose
-#: archetype: that much") loops until the opponent is dead. The lifegain side runs fifteen
+#: archetype: that much") loops until the opponent is dead. The lifegain side runs thirteen
 #: archetype: enablers, three of them lands, so a land drop can start it.
 #: archetype: LIFE IS ALSO SPENT, not just banked: Inside Information buys mana with it,
 #: archetype: Treasure Dredger buys a Treasure, Foolish Fate and Poisoner's Apprentice pay
@@ -25,12 +25,12 @@
 #: tier: B — Orzhov lifegain-drain control, deliberately held ONE BAND UNDER a metrics
 #: tier: floor of A. Rebuilt 2026-09-18 (ten swaps) after the list was read as weak
 #: tier: despite clearing the floor: the surveil package was cut for real top-end and a
-#: tier: combo kill. Live vector: interaction 9 over a 3.37 curve, card advantage 11,
-#: tier: protection 2. Board power went 41 to 56, from rank 18 of 112 on the roster to
+#: tier: combo kill. Live vector: interaction 9 over a 3.49 curve, card advantage 12,
+#: tier: protection 3. Board power went 41 to 57, from rank 18 of 112 on the roster to
 #: tier: about its median — that axis is the one the floor cannot see and the one that
 #: tier: made the old list read weak.
 #: tier: WHAT HOLDS IT AT B, against a floor that says A:
-#: tier: 1. THE CURVE. 3.37 against 25 lands, and the figure UNDER-reports: three X-cost
+#: tier: 1. THE CURVE. 3.49 against 25 lands, and the figure UNDER-reports: three X-cost
 #: tier:    cards book at MV 1, so the deck plays heavier than the number. Treasure
 #: tier:    Dredger is the only acceleration. The 25th land was TAKEN 2026-09-18, for
 #: tier:    Inspiring Overseer — keepable 84.4 to 86.0, screw 14.3 to 12.2, turn-4 land
@@ -40,7 +40,7 @@
 #: tier:    fifteen lifegain enablers, but a deck whose best line needs two specific cards
 #: tier:    is not an A until the fair half proves it can win on its own.
 #: tier: 3. PROVISIONAL — rebuilt and unplayed. Re-grade after games.
-#: tier: The blink spells (Daydream, Salvation Swan, Airbender Ascension) are still NOT
+#: tier: The blink spells (Daydream, Salvation Swan) are still NOT
 #: tier: counted as answers — they are value, not interaction — so the `stats` under-count
 #: tier: warning naming them is expected and is not a hidden bonus.
 #: tier: PATH TO A: the 25th land, and evidence the deck closes without drawing both combo
@@ -51,7 +51,7 @@
 #: notes: a combo: from a HIGH total the swap draws the gap and hands them your lead; from
 #: notes: a total you have SPENT DOWN it refunds your life and craters theirs instead.
 #: notes: For this deck the second mode is usually the better one — card advantage is
-#: notes: already 11, and closing is the thing it is short of.
+#: notes: already 12, and closing is the thing it is short of.
 #: notes: SO PAYING LIFE IS NOT A DRAWBACK HERE. Inside Information buys mana at mana
 #: notes: value, Treasure Dredger buys a Treasure, and the swap refunds the total out of
 #: notes: the opponent's. Grade a pay-life card on its RATE against Negative's own 1 life
@@ -59,6 +59,25 @@
 #: notes: the cost-as-upside flag has five rules and none of them is pay-life.
 #: notes: The drain triggers fire on the way UP and spending later does not untrigger them,
 #: notes: so gain-then-spend captures both halves.
+#: notes: RECURSION — the deck can return Mister Negative ONE way, and it was ZERO
+#: notes: until Fiendish Panda came in 2026-09-18. Jackdaw Savior LOOKS like the
+#: notes: answer and is not: it triggers only when a FLIER dies and returns a card of
+#: notes: LESSER mana value, and the deck's biggest flier is MV 5, so it caps at
+#: notes: returning MV 4. Negative is MV 7 and is not a flier, so he can neither
+#: notes: trigger it nor be returned by it. Panda reaches him at power 7 — base 3
+#: notes: plus four lifegain triggers — and dies to do it. If he is milled or
+#: notes: discarded with Panda absent, the only outs are the second copy and Seek the
+#: notes: Heart, both of which search the LIBRARY, not the graveyard. Grave Researcher
+#: notes: joined 2026-09-18 and is the unconditional half — it reanimates ANY creature
+#: notes: for {B} plus life equal to its mana value, so seven life buys Negative back,
+#: notes: which is the spend-then-swap line rather than a cost.
+#: notes: KEEP BOTH COPIES of Mister Negative. Access and recovery are different axes:
+#: notes: the recursion needs him already drawn, milled or killed, and does nothing to
+#: notes: FIND him. Measured on the play, turn 7: two copies plus Seek the Heart is
+#: notes: 52.6%, one copy plus the tutor is 38.9% — cutting one spends the tutor's whole
+#: notes: gain. He is LEGENDARY, so a second copy drawn with the first in play is not
+#: notes: dead: cast it, the swap triggers, then the legend rule bins one — a second
+#: notes: Darkforce Inversion, and the binned copy lands where the recursion can reach.
 #: notes: ROTATION: four cards leave Standard this fall — Another Round, Baron Bertram
 #: notes: Graywater, Ruthless Lawbringer and Treasure Dredger. Another Round is the only
 #: notes: one-card double-blink in the format; replace them individually rather than
@@ -80,22 +99,22 @@ Deck
 # Payoffs
 2 Mister Negative (SPM) 135
 1 Enduring Innocence (DSK) 6
-1 Jackdaw Savior (BLB) 18
+1 Grave Researcher // Reanimate (SOS) 85
 
 # Blink support / extra answers
 1 Liliana, Dreadhorde General (FDN) 176
-1 Airbender Ascension (TLA) 6
+1 Construct a Cosmic Cube (MSH) 90
 1 Stolen Stark Tech (MSH) 114
 1 Foolish Fate (SOS) 83
 
 # Value ETB creatures — the blink targets
-1 Beza, the Bounding Spring (BLB) 2
+1 Fiendish Panda (FDN) 120
 1 Dream Beavers (TMT) 62
 1 Starscape Cleric (BLB) 116
 1 M.O.D.O.K. (MSH) 106
 1 Banishing Light (EOE) 6
 1 Baron Bertram Graywater (OTJ) 195
-1 Koya, Death from Above (TMT) 11
+1 Purging Stormbrood // Absorb Essence (TDM) 213
 1 Bloodthirsty Conqueror (FDN) 58
 1 Ruthless Lawbringer (OTJ) 229
 1 The Arkenstone // Seek the Heart (HOB) 170
@@ -108,7 +127,7 @@ Deck
 1 Morlun, Devourer of Spiders (SPM) 59
 
 # Card advantage — the stated path to A
-1 Circle of Power (FIN) 92
+1 Decorum Dissertation (SOS) 78
 1 Raven Eagle (TLA) 116
 
 # Removal
@@ -127,11 +146,12 @@ Deck
 8 Plains (MSH) 285
 10 Swamp (MSH) 287
 
-#~ +Painful Quandary | -Stroke of Midnight | PRO-synergy here in a way its black flavour hides: it is the one taxer on the list that is NOT symmetric (it triggers only on OPPONENTS' spells and costs you nothing), and pushing their total DOWN widens the exact gap Mister Negative converts into cards. Held out of the 60 only on curve — MV 5 against a 3.37 average, and it does nothing on an empty board. The 2026-09-18 rebuild raised the curve, so this is now a harder sell, not an easier one. Owned.
+#~ +Painful Quandary | -Stroke of Midnight | PRO-synergy here in a way its black flavour hides: it is the one taxer on the list that is NOT symmetric (it triggers only on OPPONENTS' spells and costs you nothing), and pushing their total DOWN widens the exact gap Mister Negative converts into cards. Held out of the 60 only on curve — MV 5 against a 3.49 average, and it does nothing on an empty board. The 2026-09-18 rebuild raised the curve, so this is now a harder sell, not an easier one. Owned.
 #~ note: applied — Foolish Fate in for Visions of Villainy.
 #~ note: applied — Treasure Dredger in for Personify.
 #~ note: applied — Inside Information in for Getaway Glamer.
 #~ +Prayer of Binding | -Banishing Light | The FLASH half of the answer Banishing Light already provides — it exiles a nonland permanent an opponent controls until it leaves, plus 2 life, held up on the opponent's turn instead of telegraphed on yours (and its target is "up to one", so it can be flashed in blank for the 2 life when nothing is worth hitting). In a control deck that wants to keep mana open that is the better card; it costs {3}{W} against {2}{W}, which is why it is a flex and not the maindeck pick. Banishing Light was added 2026-09-17 and has not been played, so decide this after games rather than before. Owned.
+#~ +Airbender Ascension | -Construct a Cosmic Cube | The REVERT line, not an upgrade: these two are the same shape — an enchantment that banks counters off a repeated event — and Cosmic Cube won the slot 2026-09-18 on how fast the event arrives. Airbender needs FOUR creature-enters before it does anything and then blinks one creature per end step; Cosmic Cube pays a 2/1 menace on every trigger, and Phyrexian Arena, The Arkenstone and Doctor Doom each guarantee that trigger every turn on their own (an upkeep or end-step draw makes the draw step your SECOND card). Bring Airbender back if the blink shell ends up wanting a repeatable engine more than the deck wants recurring bodies — i.e. if the 2/1s are not closing games. Owned.
 #~ note: SUCCESSION for Another Round (rotates ~2026). Nothing in Standard reproduces it — a regex sweep of the pool for repeated-blink text ("repeat this process", "do this again") returns five cards, of which only Another Round blinks your own board more than once for one spell. So there is no swap to plan; the plan is structural. When it rotates, the one-card double re-entry of Mister Negative (swap, draw the gap, swap back) becomes a two-card or two-turn line, carried by Airbender Ascension's end-step blink plus any one-shot blink. Re-check this note after each set release rather than treating it as settled.
 #~ note: applied — Koya, Death from Above in for Hecteyes.
 #~ note: applied — Ruthless Lawbringer in for Fortress Kin-Guard.

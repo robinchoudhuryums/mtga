@@ -100,6 +100,9 @@ _EXCLUDED = {
     ("deck", "_ARRIVING_BREAK"): "tier-RATIONALE prose; unit-tested in test_deck.py",
     ("deck", "_DEPARTING_CUES"): "tier-RATIONALE prose; unit-tested in test_deck.py",
     ("deck", "_ARROW_AFTER"): "tier-RATIONALE prose; unit-tested in test_deck.py",
+    ("deck", "_FIG_RANGE_AFTER"): "tier-RATIONALE prose (the WORDED form of "
+                                  "_ARROW_AFTER — \"board power went 41 to 57\" marks "
+                                  "the FROM side); unit-tested in test_deck.py",
     ("deck", "_CLAUSE_BREAK"): "tier-RATIONALE prose (clause bounds for the 2026-08-09 "
                                "suppression scoping); unit-tested in test_deck.py",
     ("deck", "_OTHER_DECK_RE"): "tier-RATIONALE prose (a 'deck N' reference marks a "

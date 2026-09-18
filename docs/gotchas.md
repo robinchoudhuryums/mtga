@@ -2390,7 +2390,9 @@ reverting. This is what the `/apply-changes` skill runs around every swap.
 
 **`deck.py mana` also lints color SOURCES, not just pip demand.** After the pip
 breakdown it prints "Color sources (lands producing each color)" (basics by
-name, nonbasics by color identity — mana dorks aren't counted) and flags cards
+name, nonbasics by color identity — mana dorks aren't counted, and since
+2026-09-18 `consistency` SAYS SO; see "The nonland sources the count excludes"
+at the end of this section) and flags cards
 whose strict colored pips look thin against those sources (`△ Pip-intensive`:
 wants CC with <9 sources, or C with <4). This catches the "wants UU but this is
 really a U-splash" problem the castability lint (which only checks identity ⊆
@@ -2475,6 +2477,49 @@ The `match` follow-on was re-tested on the corrected primitive and is STILL not 
 **88 of 115** decks change their #1 pick, because the model cannot see an entry condition
 (Command Bridge sacrifices itself unless you tap a permanent) and any-colour lands
 therefore sweep the top. It stays reverted; do not re-apply without solving that.
+
+### The nonland sources the count excludes (added 2026-09-18)
+
+Counting LANDS and only lands is right and stays: a rock or a dork costs a card and a
+turn, so it is not a land drop and must not inflate a land count. **The exclusion was
+never the bug. Its SILENCE was.** `consistency` prices every cast-on-curve figure off that
+count while `suggest --ramp` recommends exactly the nonland sources it cannot see, printing
+"acceleration want: HIGH" on the same deck — two surfaces disagreeing by construction, and
+neither said so.
+
+The evidence that the RULE was wrong rather than the decks: **two decks had independently
+written the workaround into their own `#: notes:`** before any tool said it. Deck 23 — "a
+23rd white source that `consistency` does NOT count, since that model reads lands only" —
+and deck 41. When two writers route around a documented rule, the rule is the thing that is
+wrong.
+
+`uncounted_mana_sources` prints `ⓘ N NONLAND mana source(s) are NOT in the counts above`,
+REPORT-ONLY: no figure moves. Its production rules are **`lib.land_production`'s, run on a
+nonland card's text**, so the disclosure and the land count cannot drift apart (G-70) —
+which is the entire point, the finding being two surfaces disagreeing. That reuse buys
+three exclusions for free, each matching what the land count already does:
+
+- **SPEND-ONLY mana is not counted.** G-35 says so for lands, so counting it here would
+  have made the disclosure contradict the rule it exists to complement — 8 roster cards,
+  Giada and Hydro-Channeler among them.
+- **GRANTED abilities are not counted**, so "Lands you control have '{T}: Add …'" reads as
+  the land UPGRADE it is rather than a new source.
+- **Extra-cost abilities are counted but LABELLED**, exactly as a land's are.
+
+The PERMANENT filter is the function's own: a land's Add clause is repeatable by tapping, a
+sorcery's is a one-shot ritual.
+
+Measured: **75 of 112 decks, 76 distinct cards**, hand-checked at 74 of 76. The two
+residuals are an aura that upgrades a LAND ("Enchanted land has '{T}: Add two mana…'",
+New Horizons — `_GRANTED_ABILITY_RE` does not phrase-match that form) and one "target
+player adds" that could name the opponent (Radiant Lotus).
+
+**Two earlier measurements of this were WRONG, and the error is the lesson.** A
+hand-rolled regex written during triage reported 40 decks. `_MANA_SOURCE_RE` — the
+EXISTING primitive, which has exactly one caller — reported 89 decks / 97 cards at much
+worse precision, matching rituals, spend-restricted mana and granted abilities alike.
+G-40's rule fired exactly as written: *reaching a new caller is not free, so re-measure the
+primitive AT that caller.* Neither number survived contact with a hand-check.
 
 ## [G-36] `deck.py consistency <id>` is the PROBABILITY layer `mana` lacks
 
@@ -2746,6 +2791,38 @@ moves the counters onto your threat (Broodguard Elite); a **sacrifice** cost fee
 outlet; a **discard** cost fills a reanimator's yard. Shown in the cut table and again in
 the oracle-text block. It is a FLAG for a human read, never a score change — the same
 posture as `⚠ scales w/`, because the signal is real but too fuzzy to move a ranking.
+
+### A PAY-LIFE RULE WAS PROPOSED, MEASURED AND DECLINED (2026-09-18)
+
+Do not restart it. It was proposed for a REAL miss: during the deck 41 tune, three cards
+were graded down in chat for costing life — in the deck whose whole thesis is spending life
+for cards and then exchanging life totals with Mister Negative. The user caught it; no tool
+could, and this table is where such a rule would live.
+
+**BROAD form** — gate on a deck whose CENTRAL themes include lifegain / pay life / drain /
+lifelink (50 of 112 decks). Fires on **91 (deck, card) pairs at 22% precision**, and that
+figure is GENEROUS, because the bucket counting it was itself gated on a regex conflating
+"whenever you GAIN life" with "whenever you LOSE life". The failures:
+
+| share | bucket | why it is wrong |
+|---|---|---|
+| **46%** | NOT REWARDED | shocklands ("as this land enters, you may pay 2 life"), equip costs, a land's own "{T}, pay 1 life: add". You pay those FOR something; the drawback is never the payoff. |
+| **26%** | CHEAP, not upside | the deck tolerates the cost. That is a different claim from the one ⚡ makes. |
+| **6%** | BACKWARDS | "ward—pay 5 life" is the OPPONENT's cost, read as yours. Literally G-42's signature — the flag built, measured at 23 of 44 hits pointing the wrong way, and declined. |
+| 22% | arguably right | …and inflated, per above. |
+
+**NARROW form** — gate on the deck fielding a payoff that TRIGGERS on you losing life, the
+only shape that makes the cost feed something. Unbuildable: **1 of 112 decks** holds one,
+off **7 pool cards** in the whole pool, and it is **not deck 41**, the deck that motivated
+the finding. Deck 41's refund is Mister Negative's life SWAP, which no text model here
+holds.
+
+**THE SHAPE WAS WRONG, and that is the transferable part.** Every rule in `_COST_UPSIDE`
+encodes a cost that FEEDS something — a sacrifice feeds an outlet, a discard fills the
+yard, a land bounce re-triggers landfall. Paying life feeds nothing. What deck 41 needed
+was the weaker claim "this cost is CHEAP here, because the deck refunds it", and ⚡ asserts
+the stronger one. Until something models a life-total swap, the deck's own `#: notes:` is
+the right home for that judgment, which is where it now lives.
 
 
 ## [G-42] The MIRROR of cost-as-upside: a fine card that fights your own engine
@@ -7086,3 +7163,98 @@ discriminating if the distribution moves. The 14-of-43 figure is registered in
 `check_docs.figure_drift` so a drift prompts re-derivation rather than going unnoticed —
 the same treatment `tier_floor_spread` gets for `TIER_FLOOR_REQ` and G-84's population gets
 for its floor/key.
+
+
+## [G-86] Board presence is an axis, and nothing here measured it
+
+**BOARD PRESENCE IS AN AXIS AND NOTHING HERE MEASURED IT until 2026-09-18.**
+
+### What was missing
+
+`grep -rn "board_power\|board power" scripts/*.py` returned **no hits**. The tier floor
+reads interaction + card advantage; `cuts` reads theme fit and role credit; `stats`
+counted creatures and never asked how big they are. So the question "why does this deck
+look weak?" had no tool behind it, and the sum was hand-rolled **six-plus times in one
+session** — the 2026-09-18 deck 41 tune, where the deck read weak while clearing an A
+floor at **41 printed power across 19 creatures, rank 18 of 112**.
+
+### It is a separate axis, and that is measured rather than asserted
+
+Across the 112-deck roster, board power correlates with the two terms the floor DOES read
+(interaction + card advantage) at **r = −0.147**, against a ±0.188 noise band at that n.
+Indistinguishable from zero: the floor is not already seeing this in another form.
+
+Distribution — min **23**, p10 **37**, p25 **45**, p50 **54**, p75 **66**, p90 **73**,
+max **120**, mean 56.2.
+
+### Report-only, and the reason is the same one three other rules give
+
+A new term in `tier_band` silently re-grades the whole roster. That is why the protection
+axis is kept out (G-25), why the X-cost advisory is kept out (G-60), why the
+unpriced-discount disclosure is kept out (G-85), and why the payoff-density term was
+simulated and DECLINED on 2026-09-03 — it moved 16 decks, cut the C band 9→1 and pushed A
+to 62%, re-starting the saturation BS8-06 had just fixed.
+
+`deck_quality_vector` publishes `board_power` / `board_unknown` so `quality --json` and the
+rationale audit can reach them; `tier_band` ignores both. That is pinned behaviourally:
+two decks differing only in creature SIZE must land in the same band.
+
+### What it cannot see — disclosed, not guessed at
+
+**Unknown power.** `lib.card_power` returns `None` for a printed `*`, `1+*` or `X` and
+never coerces (G-16; `card_power(0)` is a real 0, the trap BS4-32 closed). Those copies are
+counted SEPARATELY and never folded in as zero. This is not a corner case to wave away:
+**70 of 112 decks** hold at least one such creature, **124 copies** in total, so a bare sum
+would silently under-report on 62% of the roster. The stance is `count_conf`'s (G-48):
+report the uncertainty, not just the number.
+
+**Tokens and other created bodies read ZERO**, because they are not printed on a card in
+the list. Doctor Doom's two 3/3 Doombots and Construct a Cosmic Cube's 2/1-per-turn
+contribute nothing. `_makes_token` knows a card creates a token but not how big it is, and
+parsing token sizes is a new pattern set carrying a whitelist's blind spots (G-67), so the
+limitation is printed rather than half-modelled. **Read the figure as a FLOOR on what the
+deck can present, never a ceiling.**
+
+**Vehicles** are counted apart, not being creatures until crewed: 10 decks, 16 copies, 63
+power.
+
+### The de-duplication that came with it
+
+`deck_quality_vector` had been running a SECOND in-loop `"Creature" in _primary_type(...)`
+tally beside `board_power`'s — two answers to one question, this repo's dominant bug class
+(G-70). It calls the helper now; verified a no-op at **0 creature-count diffs across all
+112 decks** against a pre-change snapshot.
+
+### The figure half, and why it shipped in the same change
+
+Deck 41's board-power figure went stale **twice in one session** — 41→56 after one swap,
+→57 after three more — while `deck.py tier 41 --audit-rationale` reported the block CURRENT
+both times, because an unregistered figure is unauditable by construction. Registering the
+metric and registering the CLAIM about it are one change, not two.
+
+Two things were earned writing those patterns:
+
+**`_FIG_GAP` is wrong for this figure.** The roster's only live board-power claim is a
+worded delta — "Board power went 41 to 57" — and a gap of up to two lowercase words reads
+`went 41` as a claim of 41, flagging the FROM side of the change the prose is documenting.
+Adjacent forms only, plus one explicit TO-side pattern.
+
+**`_ARROW_AFTER` only knew the arrow spelling.** `_FIG_RANGE_AFTER` is its worded form: a
+figure followed by "to <digit>" is the FROM side. Two live instances on the roster (deck
+41's board power, deck 47's "the axis went 6 to 7"), plus the same shape inside deck 41's
+manabase line. It requires a DIGIT after "to" so "interaction 7 to answer a wrath" stays a
+live claim. It is a new false-NEGATIVE surface and was counted as one: 0 live instances,
+all 10 roster matches of the shape being genuine deltas or ranges.
+
+### And the audit now says what it checked
+
+A clean bill read "every figure matches the live vector" and MEANT "every figure I have a
+pattern for matches". The gap between those is invisible, which is exactly how deck 41's
+number rotted in plain sight. `audited_figure_keys()` is DERIVED from the pattern table —
+never hand-listed, which would be a second source of truth for "which figures are audited"
+— and `--audit-rationale` prints it on both the clean and the stale path, with an explicit
+note that a number not on the list is unguarded.
+
+Verification at the time: roster sweep reported **0 stale figures, unchanged**, so no new
+false positives; the patterns were watched to FAIL on a mutated copy in all three prose
+forms and to stay quiet on the correct value and on a verbless delta's FROM side.

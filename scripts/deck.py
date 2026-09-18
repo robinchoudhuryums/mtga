@@ -2126,6 +2126,51 @@ _ROLE_PATTERNS = {
                        # the top card of every library and lets you cast them. The two
                        # patterns above are scoped to "your library" and missed it.
                        r"exile the top card of each player's library[^.]{0,60}?(?:you may cast|you may play)",
+                       # …and off an OPPONENT'S zone, which is the same effect with the
+                       # third owner and was the last one unscored. The comment above
+                       # records this family disagreement being found once already — the
+                       # two patterns before it are scoped to "your library", so Etali's
+                       # "each player's" was invisible — and the opponent-scoped half was
+                       # left behind in that same fix. Inside Information ("exile the top X
+                       # cards of target opponent's library. You may play those cards this
+                       # turn") scored ZERO roles, and it is not alone: **34 of the pool's
+                       # 84 `heist`-tagged cards scored no role at all.**
+                       #
+                       # The justification is the impulse comment's own, one owner over: a
+                       # card you may cast that you would not otherwise have had is the
+                       # advantage a draw gives, whichever library it came from. Casting it
+                       # off THEIR library is if anything more card advantage, not less,
+                       # since it costs them the card too.
+                       #
+                       # Measured before landing (K-14's rule — measure the floors before
+                       # widening a role bucket): **21 pool cards gain the role, 7 roster
+                       # decks move their card-advantage count, and ZERO tier floors move.**
+                       # Hand-checked at 21 of 21, the two softest being modal cards where
+                       # heist is one mode of three (Weave the Nightmare, Grave
+                       # Expectations) — a mode is still a mode, which is how every other
+                       # modal card is scored here.
+                       r"exile the top \w+ cards? of (?:target |an? |each )?opponent's library"
+                       r"[^.]{0,80}\. (?:until [^.]{0,40}, )?you may (?:play|cast)",
+                       r"opponent exiles the top \w+ cards? of their library[^.]{0,100}\.? ?"
+                       r"[^.]{0,120}?you may (?:cast|play)",
+                       # Casting a card you DO NOT OWN, from wherever it was exiled or from
+                       # their graveyard. The zone varies (library, hand, graveyard) and the
+                       # templating with it, so the deciding clause is the ownership, not the
+                       # zone — Intellect Devourer takes it off their HAND and King Narfi's
+                       # Betrayal off every graveyard.
+                       r"you may (?:cast|play) (?:\w+ ){0,6}cards? (?:you don't own|"
+                       r"from (?:that player's|an opponent's|their) graveyard)",
+                       # HEIST stated BARE. The keyword's reminder text is stripped before
+                       # any of these patterns run (K-09), so a card whose whole clause is
+                       # "Heist target opponent's library." keeps only the keyword — the
+                       # same reason K-02 gives for the keyword map existing at all.
+                       r"\bheist target opponent's library",
+                       # "…cast spells from among cards exiled with this" — the exile and
+                       # the permission are SEPARATE abilities here, so the sentence-scoped
+                       # impulse patterns above cannot join them. Catches the opponent-zone
+                       # cases and one own-library miss of the same shape (Theater of
+                       # Horrors), which is a second hole closed by the same clause.
+                       r"you may (?:play lands and )?cast spells from among cards exiled with this",
                        # CASTING OFF THE TOP of your own library is a permanent draw
                        # substitute — Vizier of the Menagerie, Mm'menon. Scored nothing.
                        r"you may (?:cast|play) (?:\w+ ){0,3}(?:spells|cards?) from the top of your library",
@@ -2682,6 +2727,37 @@ _COST_UPSIDE = [
     (re.compile(r"\bdiscard (?:a|one|two|that) card", re.I),
      {"graveyard", "reanimator", "recursion", "madness"}, "discard cost → fills the yard"),
 ]
+# A PAY-LIFE RULE WAS PROPOSED, MEASURED AND DECLINED (2026-09-18). Do not restart it —
+# the measurement is here so a re-proposal lands on the numbers instead of re-deriving them.
+#
+# It was proposed for a real miss: three cards were graded DOWN in chat for costing life,
+# in deck 41, whose whole thesis is spending life for cards and then exchanging life
+# totals with Mister Negative. Nothing in the tooling models that, and this table is where
+# such a rule would live. But measured against the roster it fails on every axis:
+#
+#   BROAD form (gate: a deck whose CENTRAL themes include lifegain / pay life / drain /
+#   lifelink — 50 of 112 decks) fires on 91 (deck, card) pairs at **22% precision**, and
+#   that figure is GENEROUS because the bucket counting it was itself gated on a regex
+#   that conflates "whenever you GAIN life" with "whenever you LOSE life". The failures:
+#     46% NOT REWARDED — shocklands ("as this land enters, you may pay 2 life"), equip
+#        costs, a land's own "{T}, pay 1 life: add". You pay those FOR something; the
+#        drawback is never the payoff.
+#     26% CHEAP, not upside — the deck tolerates the cost. That is a different claim.
+#      6% BACKWARDS — "ward—pay 5 life" is the OPPONENT's cost, read as yours. This is
+#        literally G-42's signature, the flag that was built, measured at 23 of 44 hits
+#        pointing the wrong way, and declined.
+#
+#   NARROW form (gate: the deck fields a payoff that TRIGGERS on you losing life — the
+#   only shape that makes the cost feed something) is unbuildable: **1 of 112 decks** holds
+#   one, off **7 pool cards** total, and it is NOT deck 41. Deck 41's refund is Mister
+#   Negative's life SWAP, which no text model here holds.
+#
+# THE SHAPE WAS WRONG, and that is the transferable part. Every rule above encodes a cost
+# that FEEDS something — a sacrifice feeds an outlet, a discard fills the yard, a land
+# bounce re-triggers landfall. Paying life feeds nothing. What deck 41 needed was the
+# weaker claim "this cost is CHEAP here, because the deck refunds it", and ⚡ asserts the
+# stronger one. Until something models a life-total SWAP, the deck's own `#: notes:` is
+# the right home for that judgment, which is where it now lives.
 
 
 # Themes that are only a BENEFIT when the deck is built to reward them; otherwise the
@@ -4005,6 +4081,17 @@ def cmd_stats(args):
             print("    ⚠ ZERO protection — nothing here answers targeted removal on a key "
                   "permanent; fine for a spell-based deck, a real gap for a threat-based one.")
 
+    # BOARD PRESENCE. Printed next to the role counts precisely because it is the axis
+    # they cannot see: a deck can post strong interaction and card advantage — clearing
+    # the tier floor on both — while fielding nothing that ends a game. That was deck 41
+    # on 2026-09-18 (41 printed power at an A floor) and there was no tool to say so.
+    # REPORT-ONLY; nothing below reaches `tier_band`.
+    _bp = board_power(cards, carddata)
+    if _bp["creatures"] or _bp["vehicles"]:
+        print(f"  {'board power':20} {board_power_note(_bp)}")
+        print("    ⓘ printed power only — TOKENS and other created bodies count ZERO here, "
+              "so read it as a FLOOR on what the deck can present, not a ceiling.")
+
     # Power-threshold payoffs. A "power 4 or greater" trigger reads unconditional to a
     # synergy model, but only fires off bodies that meet the bar on their PRINTED stats —
     # and an X-creature or a counters payoff is very often printed 0/0. This is measurable
@@ -4555,7 +4642,47 @@ def deck_role_counts(cards, carddata):
     return t["interaction"], t["card_advantage"]
 
 
-def fit_strength(shared, theme_w, card_text, deck_int, deck_ca, signature=frozenset()):
+def structural_overlay_hit(card_text, cards, carddata):
+    """Does this card clear a STRUCTURAL overlay for THIS deck — a doubler with feeders,
+    a cost-scaler with its resource, a chosen-type payoff with a type to choose?
+
+    One definition, shared by every `fit_strength` caller, so the three surfaces cannot
+    disagree about what "earns" a KEY (G-70). It routes through the same primitives
+    `suggest-homes` and `cut_keep_score` already use rather than re-deriving any of them.
+
+    This exists for the generic-signature branch below. A theme like `counters` or
+    `tokens` is in GENERIC_THEMES and yet is genuinely a deck's spine when the deck
+    protects cards built on it — the rescue G-33 names. What separates the real rescue
+    from a blanket mint is whether the CARD engages that spine structurally, and that is
+    exactly what these three primitives measure.
+    """
+    txt = card_text or ""
+    ax = doubler_axis(txt)
+    if ax:
+        axis = ax[0] if isinstance(ax, (list, tuple)) else ax
+        try:
+            if doubler_support(axis, cards, carddata):
+                return True
+        except Exception:
+            pass
+    res = cost_scale_resource(txt)
+    if res:
+        try:
+            if cost_scale_support(res, cards, carddata):
+                return True
+        except Exception:
+            pass
+    if type_scale_payoff(txt):
+        try:
+            if type_scale_support(cards, carddata):
+                return True
+        except Exception:
+            pass
+    return False
+
+
+def fit_strength(shared, theme_w, card_text, deck_int, deck_ca, signature=frozenset(),
+                 overlay=None):
     """Classify a card→deck fit as KEY / role-player / tangential (F04).
 
       KEY          – shares the deck's SIGNATURE theme (top central theme, OR a theme
@@ -4592,9 +4719,41 @@ def fit_strength(shared, theme_w, card_text, deck_int, deck_ca, signature=frozen
     # A signature-theme match is a genuine home (the deck's spine) — but a broad
     # background tribe (Human/Hero/Villain) is NOT a signature even when a protected card
     # happens to carry it, so it can't mint a KEY by itself (tagging-misreads #4).
-    if signature and any(t in signature and t.lower() not in _GENERIC_TRIBES
-                         for t in shared):
-        return "KEY"
+    #
+    # A GENERIC signature theme has to EARN its KEY (2026-09-18). This branch is the FIRST
+    # statement in the function and it returned KEY unconditionally, so measured across a
+    # 400-card sample × the 112-deck roster it minted **97.3% of every KEY verdict** and
+    # the two branches BELOW that are designed to discriminate were effectively dead —
+    # `role-gap` 1.5%, `top-theme` 1.2%. Median KEY decks per card: 8, p90 17, max 35.
+    # Six generic themes carried ~75% of it (graveyard, tokens, counters, card draw,
+    # evasion, etb), each central in 64–103 of 112 decks, so "shares this deck's spine"
+    # was true of almost any card.
+    #
+    # The rescue the branch exists for is NOT removed, and the distinction matters because
+    # A STRICTER TIGHTENING WAS TRIED AND REJECTED (pinned by
+    # `test_the_signature_rescue_is_preserved`): requiring the signature theme to be
+    # NON-GENERIC dropped deck 30's KEY rate 21% -> 1% and demoted Innkeeper's Talent,
+    # the counter-doubler-in-a-counters-deck the branch was written for. That fix removed
+    # the effect; this one makes it CONDITIONAL, and the cards it exists for clear the
+    # condition. Measured on that same deck: **deck 30's KEY rate does not move at all
+    # (27.7% before and after)**, Innkeeper's Talent and Branching Evolution stay KEY
+    # through the overlay, and Kami of Whispered Hopes / Conclave Mentor / Ozolith stay
+    # KEY through `top-theme` — because in a deck whose spine really is `counters`, that
+    # theme is also the top theme, so the discriminating branch catches them anyway.
+    # What loses its blanket KEY is the deck where a generic signature theme is NOT the
+    # spine, which is the saturation itself.
+    #
+    # `overlay` is a zero-argument predicate the CALLER supplies (see
+    # `structural_overlay_hit`), keeping this function pure. When it is absent a generic
+    # signature simply falls through to the branches below — conservative, since those can
+    # still return KEY — rather than minting one nothing has checked.
+    sig_hits = [t for t in shared
+                if t in signature and t.lower() not in _GENERIC_TRIBES]
+    if sig_hits:
+        if any(t.lower() not in GENERIC_THEMES for t in sig_hits):
+            return "KEY"                      # a SPECIFIC spine is a home on its own
+        if overlay is not None and overlay():
+            return "KEY"                      # …a generic one only when the card engages it
     # No SPECIFIC shared theme -> at most GENERICALLY playable here, not a synergy home.
     # Checked BEFORE the role-gap branch on purpose (see docstring).
     if not specific:
@@ -6316,6 +6475,76 @@ def format_source_notes(notes, indent="  "):
     return out
 
 
+def uncounted_mana_sources(cards, carddata):
+    """[(qty, name, colours, conditional)] — NONLAND permanents that produce mana.
+
+    `deck_source_profile` counts LANDS and only lands (G-35), which is deliberate and
+    right: a rock or a dork costs a card and a turn, so it is not a land drop and must
+    not inflate a land count. The cost of that correctness was SILENCE — `consistency`
+    prices every cast-on-curve figure off the land count while `suggest --ramp`
+    recommends exactly the nonland sources it cannot see, so the two surfaces disagree
+    by construction and neither says so. Two decks (23 and 41) had independently written
+    the workaround into their own `#: notes:` prose before this existed, which by this
+    repo's own rule means the RULE was the thing that was wrong, not the decks.
+
+    REPORT-ONLY, and it must stay so: this changes NO figure. It says "the model cannot
+    see these", never "add them to your sources".
+
+    The production rules are `lib.land_production`'s, run on a nonland card's text, so
+    this and the land count cannot drift apart (G-70) — which is the entire point, since
+    the finding IS two surfaces disagreeing. That reuse buys three exclusions for free,
+    each matching what the land count already does:
+      • SPEND-ONLY mana is not counted (G-35 says so for lands; counting it here would
+        have made the disclosure contradict the rule it exists to complement — 8 roster
+        cards, Giada and Hydro-Channeler among them).
+      • A GRANTED ability is not counted, so "Lands you control have '{T}: Add …'"
+        reads as the land UPGRADE it is rather than a new source.
+      • An extra-cost ability is counted but LABELLED, exactly as a land's is.
+    The PERMANENT filter is this function's own: a land's Add clause is repeatable by
+    tapping, a sorcery's is a one-shot ritual, so an instant/sorcery is excluded rather
+    than reported as a source.
+
+    Measured 2026-09-18 across the roster: **75 of 112 decks**, 76 distinct cards.
+    Precision hand-checked at 74 of 76 — the residual is an aura that upgrades a LAND
+    ("Enchanted land has '{T}: Add two mana…'", New Horizons), which `_GRANTED_ABILITY_RE`
+    does not phrase-match, and one "target player adds" that could name the opponent
+    (Radiant Lotus). Both are disclosure noise, not a wrong number.
+
+    NOTE the first measurement of this was WRONG and the error is worth keeping: a
+    hand-rolled regex reported 40 decks, and `_MANA_SOURCE_RE` — the existing primitive,
+    which has exactly one caller — reported 89 with a much worse precision, because it
+    matches rituals, spend-restricted mana and granted abilities alike. G-40's rule fired
+    exactly as written: reaching a new caller is not free, so re-measure the primitive AT
+    that caller.
+    """
+    perm = ("Artifact", "Creature", "Enchantment", "Planeswalker", "Battle")
+    out = []
+    for q, n, _s, _c in cards:
+        nl = n.lower()
+        if nl in BASICS:
+            continue
+        cd = carddata.get(nl)
+        if not cd:
+            continue
+        tline = cd.get("type") or ""
+        # FRONT face decides the type (G-63): a `Creature // Land` back face must not
+        # make the card read as a land and drop out of this list entirely.
+        if "Land" in _primary_type(tline):
+            continue
+        if not any(t in tline.split("//")[0] for t in perm):
+            continue
+        prod = land_production(cd.get("text") or "")
+        # NO `colors_cell` — `land_production` folds a LAND's identity in because a
+        # land's identity IS its mana symbols, which is false for a nonland card, where
+        # identity is its casting cost. Passing it would make every coloured permanent a
+        # mana source.
+        usable = prod["free"] | prod["conditional"]
+        if usable:
+            out.append((q, cd.get("name") or n, "".join(sorted(usable)),
+                        not prod["free"]))
+    return sorted(out, key=lambda r: (-r[0], r[1]))
+
+
 def tapland_profile(cards, carddata):
     """(unconditional, conditional, nonbasic_land_total) — each a sorted [(qty, name)].
 
@@ -6453,6 +6682,23 @@ def cmd_consistency(args):
                   + ", ".join(f"{c} ({sources[c]})" for c in splash)
                   + " — a card needing one of these on curve reads low below; treat it as a "
                     "late-game splash (cast when you've drawn the source), not a curve play.")
+    # The heading above says "lands producing each color" and means it — so say what that
+    # EXCLUDES. Every figure on this page is priced off the land count (G-35), while
+    # `suggest --ramp` recommends the nonland sources that count cannot see; the two
+    # surfaces disagreed by construction and neither disclosed it. DISCLOSURE ONLY: no
+    # number above or below moves, because a rock is not a land drop.
+    _nonland_src = uncounted_mana_sources(cards, carddata)
+    if _nonland_src:
+        _n = sum(q for q, _nm, _cl, _cond in _nonland_src)
+        _shown = ", ".join(
+            f"{q}× {nm} ({cl}{', extra cost' if cond else ''})"
+            for q, nm, cl, cond in _nonland_src[:4])
+        print(f"\n  ⓘ {_n} NONLAND mana source(s) are NOT in the counts above: {_shown}"
+              + ("…" if len(_nonland_src) > 4 else "")
+              + ".\n    Deliberate — a rock or a dork costs a card and a turn, so it is not "
+                "a land drop and must not inflate a land count. But it does mean every "
+                "cast-on-curve figure below is a FLOOR for this deck, and that "
+                "`suggest --ramp` can recommend acceleration this page will never price.")
 
     # #1 — per-card cast probability on curve. Cast turn = the card's MV (min 1),
     # capped so a 7-drop isn't judged as if cast on turn 7 verbatim (you've usually
@@ -10673,7 +10919,9 @@ def cmd_screen(args):
         ident = card_colors(cd.get("colors"))
         ctags = set(cardmeta.get(nl, {}).get("synergies", []))
         shared = sorted(ctags & central)
-        strength = fit_strength(shared, theme_w, text, d_int, d_ca, sig)
+        strength = fit_strength(
+            shared, theme_w, text, d_int, d_ca, sig,
+            overlay=lambda t=text: structural_overlay_hit(t, cards, carddata))
         roles = sorted(classify_roles(text))
         ax = doubler_axis(text)
         sup = doubler_support(ax, cards, carddata, doubler_restriction(text)) if ax else 0
@@ -11138,7 +11386,10 @@ def cmd_suggest_homes(args):
         # STRICT (>=2 protected cards) — see fit_strength's docstring: the loose
         # union made a generic theme a signature and minted KEY nearly everywhere.
         sig = _strong_signature_themes(dmeta, cards, cardmeta)
-        strength = fit_strength(shared, theme_w, cd.get("text") or "", d_int, d_ca, sig)
+        strength = fit_strength(
+            shared, theme_w, cd.get("text") or "", d_int, d_ca, sig,
+            overlay=lambda t=(cd.get("text") or ""): structural_overlay_hit(
+                t, cards, carddata))
         # Color-fixer overlay: a rainbow fixer's worth scales with the deck's color
         # count, which theme-overlap can't see. In a 3+-color deck it's at least a
         # role-player manabase upgrade; in a 4+-color deck it's a KEY one (the fixing
@@ -11307,6 +11558,86 @@ def _early_drops_note(vec):
     return f"{n} ({m} mana source{'s' if m != 1 else ''})" if m else str(n)
 
 
+# BOARD PRESENCE — total printed power of the creatures the deck actually fields.
+#
+# Added 2026-09-18 because NOTHING here measured it. The tier floor reads interaction +
+# card advantage; `cuts` reads theme fit and role credit; `stats` counts creatures but
+# never asks how big they are. So a deck could clear an A floor on resilience while
+# fielding nothing that ends a game, and the only way to see it was to hand-roll the sum
+# — which happened six times in one session before this function existed (deck 41 read 41
+# printed power across 19 creatures at an A floor, rank 18 of 112, and "why does this
+# deck look weak" had no tool to answer it).
+#
+# It is a SEPARATE axis, not a restatement of the floor: measured across the 112-deck
+# roster, board power correlates with interaction+card-advantage at r = -0.147 against a
+# +/-0.188 noise band at that n, i.e. indistinguishable from zero. Distribution: min 23,
+# p10 37, p50 54, p90 73, max 120.
+#
+# REPORT-ONLY, and it must stay so. A new term in `tier_band` would silently re-grade the
+# whole roster — the same reason the protection axis (G-25) and the X-cost advisory
+# (G-60) are kept out, and the same reason the payoff-density term was simulated and
+# DECLINED on 2026-09-03. `check_tier` anchors the floor's formula; this is not part of it.
+#
+# WHAT IT CANNOT SEE, disclosed rather than guessed at:
+#   • UNKNOWN power. `card_power` returns None for a printed `*` / `X` / `1+*` and never
+#     coerces (G-16), so those are counted SEPARATELY and never folded in as 0. That is
+#     not a rare case to wave away: 70 of the roster's 112 decks hold at least one such
+#     creature, 124 copies in total, so a bare sum would silently under-report on 62% of
+#     the roster. Same stance as `count_conf` (G-48) — report the uncertainty, not just
+#     the number.
+#   • TOKENS and other created bodies. Doctor Doom's two 3/3 Doombots and Construct a
+#     Cosmic Cube's 2/1-per-turn contribute ZERO here, because they are not printed on a
+#     card in the list. `_makes_token` knows a card creates a token but not how big it is,
+#     and parsing token sizes is a new pattern set with a whitelist's blind spots (G-67).
+#   • VEHICLES, which are not creatures until crewed. Counted and reported apart rather
+#     than summed in: 10 roster decks, 16 copies, 63 power.
+# Read the figure as a FLOOR on what the deck can present, never a ceiling.
+def board_power(cards, carddata):
+    """{'power', 'creatures', 'unknown', 'vehicles', 'vehicle_power'} for a deck's list.
+
+    `power` is quantity-weighted printed power over cards whose FRONT face is a creature
+    (`primary_type`, per G-63 — a `Creature // Land` back face must not re-type the card).
+    `unknown` counts the copies whose printed power is not a number; they are excluded
+    from `power` entirely, never treated as 0.
+    """
+    power = creatures = unknown = vehicles = vehicle_power = 0
+    for q, n, _s, _c in cards:
+        nl = n.lower()
+        if nl in BASICS:
+            continue
+        cd = carddata.get(nl)
+        if not cd:
+            continue
+        tline = cd.get("type") or ""
+        # NOTE `card_power(...) or 0` would be wrong here for the reason G-16 spells out
+        # and BS4-32 proved: a printed power of 0 is real and common (every X-creature is
+        # printed 0/0), so `or` silently reclassifies the commonest real zero as unknown.
+        p = card_power(cd.get("power"))
+        if "Creature" in _primary_type(tline):
+            creatures += q
+            if p is None:
+                unknown += q
+            else:
+                power += p * q
+        elif "Vehicle" in tline:
+            vehicles += q
+            if p is not None:
+                vehicle_power += p * q
+    return {"power": power, "creatures": creatures, "unknown": unknown,
+            "vehicles": vehicles, "vehicle_power": vehicle_power}
+
+
+def board_power_note(bp):
+    """The one-line human rendering of `board_power`, shared by `stats` and `tier` so the
+    two cannot drift apart (G-70)."""
+    out = f"{bp['power']} printed power over {bp['creatures']} creature(s)"
+    if bp["unknown"]:
+        out += f" (+{bp['unknown']} of unknown power — printed */X, not counted as 0)"
+    if bp["vehicles"]:
+        out += f"; {bp['vehicles']} Vehicle(s) worth {bp['vehicle_power']} more once crewed"
+    return out
+
+
 def deck_quality_vector(d):
     """A deck's measurable QUALITY vector (F10), from the same primitives the CLI
     uses — so a cut/swap can be checked for regression before/after: buildable,
@@ -11324,7 +11655,7 @@ def deck_quality_vector(d):
     missing, short = deck_build_gap(cards, qty)
     theme_w, mvs, early = {}, [], 0
     early_mana = 0
-    creatures = reach = 0
+    reach = 0
     for q, n, s, c in cards:
         nl = n.lower()
         if nl in BASICS:
@@ -11347,8 +11678,6 @@ def deck_quality_vector(d):
                     # first, the way every other text predicate here reads a card.
                     if _MANA_SOURCE_RE.search(_REMINDER_RE.sub(" ", cd.get("text") or "")):
                         early_mana += q
-        if "Creature" in _primary_type(tline):
-            creatures += q
         # Reach = ability to CLOSE a game (the aggro axis): burn/drain reach, or an
         # evasive body that keeps connecting. Used only by the archetype-aware floor.
         if ("Burn / drain" in classify_roles((cd.get("text") if cd else "") or "")
@@ -11362,6 +11691,7 @@ def deck_quality_vector(d):
     uncast, _off, _off_ability, _intended = _castability(
         cards, declared, mana, carddata, _uncastable_ok(dmeta))
     _tally = role_tally(cards, carddata)
+    _bp = board_power(cards, carddata)
     d_int, d_ca = _tally["interaction"], _tally["card_advantage"]
     return {
         "buildable": missing == 0 and short == 0, "missing": missing, "short": short,
@@ -11384,7 +11714,15 @@ def deck_quality_vector(d):
         # human reading it for a CURVE argument sees what it is made of, and subtracted
         # from the aggro `_clock_score` where "cheap threat" is what the term means.
         "early_mana": early_mana,
-        "creatures": creatures, "reach": reach,
+        # Creature COUNT and board POWER come from the one definition (G-70). This
+        # used to be a second in-loop `"Creature" in _primary_type(...)` tally sitting
+        # beside board_power's — two answers to one question, which is this repo's
+        # dominant bug class. Verified a no-op across all 112 roster decks.
+        "creatures": _bp["creatures"], "reach": reach,
+        # BOARD PRESENCE. Reported here so `quality --json` / `--vs` and the rationale
+        # audit can all reach it, and deliberately NOT read by `tier_band` — see the
+        # comment on `board_power` for why a new floor term is the thing to avoid.
+        "board_power": _bp["power"], "board_unknown": _bp["unknown"],
         # The deck's game PLAN drives which axes its tier floor weights (#4): an aggro
         # deck is graded on its clock, not an interaction suite it doesn't want.
         "plan": deck_plan(dmeta, avg_mv=(round(sum(mvs) / len(mvs), 2) if mvs else 0.0),
@@ -11521,7 +11859,10 @@ def cmd_quality(args):
         # STRICT (>=2 protected cards) — see fit_strength's docstring: the loose
         # union made a generic theme a signature and minted KEY nearly everywhere.
         sig = _strong_signature_themes(dmeta, cards, cardmeta)
-        strength = fit_strength(shared, theme_w, (cd or {}).get("text") or "", d_int, d_ca, sig)
+        strength = fit_strength(
+            shared, theme_w, (cd or {}).get("text") or "", d_int, d_ca, sig,
+            overlay=lambda t=((cd or {}).get("text") or ""): structural_overlay_hit(
+                t, cards, carddata))
         if strength == "tangential":
             weak_add = f"add {args.add!r} is only a TANGENTIAL fit (generic themes only)"
 
@@ -12445,6 +12786,23 @@ _RATIONALE_FIGURES = [
     # phrasings below are taken from the roster's own prose rather than invented.
     (re.compile(_FIG_NUM + r"[  ]+(?:early|cheap) drops?", re.I), "early_drops"),
     (re.compile(_FIG_NUM + r"[- ]one[- ]two[- ]drops?", re.I), "early_drops"),
+    # BOARD POWER, registered 2026-09-18 in the SAME change that added the metric — the
+    # gap being closed is exactly that an UNREGISTERED figure is unauditable. Deck 41's
+    # board-power figure went stale twice in one session (41→56 after one swap, →57 after
+    # three more) and `--audit-rationale` reported the block current both times, because
+    # no pattern here could price the number. A figure you can invent in prose and never
+    # have checked is worse than no figure: it reads as audited.
+    #
+    # Deliberately NOT `_FIG_GAP`. The roster's only live board-power claim is a worded
+    # DELTA — "Board power went 41 to 57" — and a gap of up to two lowercase words would
+    # read `went 41` as a claim of 41, flagging the FROM side of the very change the prose
+    # is documenting. Adjacent forms only, plus one explicit TO-side pattern for the delta,
+    # whose capture is the value that IS current. Verbs taken from the roster's own prose.
+    (re.compile(r"board power[  ]+(\d+)", re.I), "board_power"),
+    (re.compile(r"board power" + _FIG_PAREN, re.I), "board_power"),
+    (re.compile(_FIG_NUM + r"[  ]+board power", re.I), "board_power"),
+    (re.compile(r"board power\s+(?:went|goes|moved|rose|climbed|fell|dropped)\s+"
+                r"\d+\s+to\s+(\d+)", re.I), "board_power"),
 ]
 
 # COLOUR SOURCES — the manabase axis, which every pattern above is blind to because it is
@@ -12591,6 +12949,37 @@ def _slash_source_claims(prose, sources, colors=None):
     return out
 
 
+# WHAT THE RATIONALE AUDIT CAN ACTUALLY CHECK, derived from the pattern table above and
+# never listed by hand — a hand-kept list would be a second source of truth for "which
+# figures are audited" and would drift from the table the moment anyone added a pattern,
+# which is this repo's dominant bug class.
+#
+# It exists because a clean bill was being read as a stronger claim than it is. The audit
+# says "every figure matches the live vector"; what it MEANS is "every figure I have a
+# pattern for matches". Those differ by however many numbers nobody has registered, and
+# the difference is invisible: deck 41's prose asserted a board-power figure that went
+# stale twice in one session while the audit reported the block current, because no
+# pattern could price it. A reader had no way to know that number was never checked.
+# Printing the covered list turns an unregistered figure from a silent gap into a visible
+# absence — the cheapest honest fix, and the one that does not pretend to audit prose it
+# cannot parse.
+def audited_figure_keys():
+    """Sorted human labels for the figure families `--audit-rationale` prices."""
+    keys = {k for _rx, k in _RATIONALE_FIGURES}
+    # `avg_mv` is the one key whose prose spelling is not its snake_case name.
+    pretty = {"avg_mv": "avg MV"}
+    labels = {pretty.get(k, k.replace("_", " "))
+              for k in keys if not k.startswith("sources_")}
+    src = sorted(k[len("sources_"):] for k in keys if k.startswith("sources_"))
+    if src:
+        # Both the per-colour patterns and the `13/8/10 sources` slash idiom.
+        labels.add("colour sources (" + "/".join(src) + ")")
+    # Not a `_RATIONALE_FIGURES` row — the floor BAND is a letter, scanned separately by
+    # `_floor_band_claims` — but it is a claim this audit checks, so it belongs in the list.
+    labels.add("metrics floor band")
+    return sorted(labels)
+
+
 def _figure_lookup(vec, cards, carddata):
     """The quality vector PLUS the deck's colour-source counts, keyed `sources_W` etc.
 
@@ -12667,6 +13056,13 @@ _HISTORY_WINDOW = 140
 _SIMILE_BEFORE = re.compile(r"\b(?:is|are)\s+$", re.I)
 # `0→1` / `1->4`: the matched number is the FROM side of a stated change.
 _ARROW_AFTER = re.compile(r"\s*(?:→|->|—>|–>)")
+# The WORD form of the same thing: "board power went 41 to 57" states a change, and the
+# first number is its FROM side, not a claim about the current list. `_ARROW_AFTER` only
+# ever knew the arrow spelling, so the worded idiom was unguarded — two live instances on
+# the roster (deck 41's board power, deck 47's "the axis went 6 to 7"), plus the same
+# shape inside deck 41's manabase line ("keepable 84.4 to 86.0"). Requires a DIGIT after
+# "to" so ordinary prose ("interaction 7 to answer a wrath") is untouched.
+_FIG_RANGE_AFTER = re.compile(r"\s+to\s+\d")
 # "X does NOT do this" — a citation immediately followed by a negation is a contrast
 # with an absent card, not a claim the deck runs it (26a's Mjölnir note).
 _NEGATION_AFTER = re.compile(r"\s+(?:does\s+not|doesn'?t|is\s+not|isn'?t|cannot|can'?t)\b", re.I)
@@ -12869,6 +13265,8 @@ def _figure_is_history(prose, start, end):
     """True when a quoted figure is presented as a PAST value, not a current claim."""
     if _ARROW_AFTER.match(prose, end):
         return True                       # "0→1" — the match is the FROM side.
+    if _FIG_RANGE_AFTER.match(prose, end):
+        return True                       # "41 to 57" — the worded form of the same.
     # A figure inside QUOTATION MARKS is a citation of earlier prose, not a live claim:
     # deck 7 writes `The old one-line reason ("fast clock but thin interaction (3)") is no
     # longer true`, which asserts the opposite of what the number says. `_FIGURE_PAST`
@@ -13524,6 +13922,12 @@ def cmd_tier(args):
         # output is "re-check this", not "this is wrong".
         exist = existential_pool_claims(d)
         print(f"Rationale audit — deck {d['id']}: {d['name'] or d['path']}")
+        # Say WHICH figures were priced, on both the clean and the stale path. A verdict
+        # surface must print its evidence (G-52), and the evidence for "every figure
+        # matches" is the list of figures it was able to look at.
+        print("  figures checked: " + " · ".join(audited_figure_keys()))
+        print("  ⓘ a number NOT on that list is unguarded — no pattern prices it, so this "
+              "audit's silence about it is not a clean bill.")
         if not cards_stale and not figs and not wrong_excl and not exist:
             print("  ✓ rationale is current — every card it cites is still in the deck, "
                   "every figure matches the live vector, and nothing it calls excluded "
@@ -13552,12 +13956,20 @@ def cmd_tier(args):
           f"interaction {vec.get('interaction_conf') or vec['interaction']} · "
           f"card-adv {vec.get('card_advantage_conf') or vec['card_advantage']} · "
           f"protection {vec.get('protection', 0)} · "
+          f"board power {vec.get('board_power', 0)} · "
           f"avg MV {vec['avg_mv']} · central themes {vec['central_themes']}")
     # An {X} spell is priced at MV 1 (X counts as 0 off the stack), so the avg MV printed
     # just above under-reads a list that runs several. REPORT-only, like protection — a
     # new term in tier_band would silently re-grade the roster.
     _cd = load_card_data()
     _mana = load_mana()
+    # BOARD PRESENCE is REPORTED, never fed into tier_band — same stance as protection
+    # above and the X-cost advisory below, and for the same reason: a new floor term
+    # would silently re-grade the roster. The caveat line prints only when there is one.
+    _bpv = board_power(_cards, _cd)
+    if _bpv["unknown"] or _bpv["vehicles"]:
+        print(f"  ⓘ board power {board_power_note(_bpv)} — the floor above does not read "
+              "this axis at all.")
     _xs = x_cost_cards(_cards, _cd, _mana)
     if _xs:
         print(f"  ⚠ avg MV under-reads: {len(_xs)} X-cost card(s) "
