@@ -6400,23 +6400,98 @@ class TestFeedbackIdNormalization:
 class TestTribesPayoffsAreNotTokenMakers:
     """BS8-33: a type named only inside a "create … token" clause is a body the card
     makes, not a type it rewards; changelings qualify for every named type; the payoff
-    is not one of its own qualifiers."""
+    is not one of its own qualifiers.
+
+    These call `tribe_payoff_refs`, the function `cmd_tribes` actually uses. They used to
+    re-implement the predicate inline, which meant they would have stayed green if the
+    command had stopped applying the guard — the test pinned a copy, not the code."""
 
     def test_token_clause_is_not_a_reference(self):
-        import re
-        txt = "When this enters, create a 4/4 green Bear creature token."
-        clauses = [c for c in re.split(r"[.\n]", txt) if c.strip()]
-        assert not any(deck._tribe_ref_re("Bear").search(c)
-                       and not re.search(r"\bcreates?\b[^.]*\btokens?\b", c, re.I)
-                       for c in clauses)
+        assert deck.tribe_payoff_refs(
+            "Bear Summoner", "When this enters, create a 4/4 green Bear creature token.",
+            {"Bear"}) == set()
 
     def test_a_lord_clause_is(self):
-        import re
-        txt = "Other Bears you control get +1/+1."
-        clauses = [c for c in re.split(r"[.\n]", txt) if c.strip()]
-        assert any(deck._tribe_ref_re("Bear").search(c)
-                   and not re.search(r"\bcreates?\b[^.]*\btokens?\b", c, re.I)
-                   for c in clauses)
+        assert deck.tribe_payoff_refs(
+            "Bear Lord", "Other Bears you control get +1/+1.", {"Bear"}) == {"Bear"}
+
+
+class TestTribesDoesNotReadACardsOwnNameAsATribe:
+    """K-16: a card's self-reference is a clause like any other, so "Exile Spirit Water
+    Revival" made a draw spell a Spirit payoff. 17 roster cards were pure false positives.
+
+    Real card text throughout. Each negative case FAILS against the unfixed code, which is
+    the point — a positive-only assertion here passes either way."""
+
+    # Real text, TLA. Its only "Spirit" is the card telling you to exile itself.
+    SPIRIT_WATER_REVIVAL = (
+        "As an additional cost to cast this spell, you may waterbend {6}.\n"
+        "Draw two cards. If this spell's additional cost was paid, instead shuffle your "
+        "graveyard into your library, draw seven cards, and you have no maximum hand size "
+        "for the rest of the game.\nExile Spirit Water Revival."
+    )
+    # Real text, MSH. "Human" occurs only inside his own name; "Hero" is a real payoff.
+    HUMAN_TORCH = (
+        "Flying\nWhenever you draw a card, if you control another Hero, Human Torch deals "
+        "1 damage to target opponent."
+    )
+    # Real text, M19. Self-reference by name, nothing else.
+    ENIGMA_DRAKE = (
+        "Flying\nEnigma Drake's power is equal to the number of instant and sorcery cards "
+        "in your graveyard."
+    )
+    # Real text, DMU. A genuine lord whose FIRST clause is token-creation — the case that
+    # made the name look load-bearing. Its third line is what actually earns the payoff.
+    LATHLISS = (
+        "Flying\nWhenever another nontoken Dragon you control enters, create a 5/5 red "
+        "Dragon creature token with flying.\n{1}{R}: Dragons you control get +1/+0 until "
+        "end of turn."
+    )
+
+    def test_a_self_reference_by_name_is_not_a_payoff(self):
+        assert deck.tribe_payoff_refs(
+            "Spirit Water Revival", self.SPIRIT_WATER_REVIVAL, {"Spirit"}) == set()
+
+    def test_the_short_form_before_the_comma_counts_as_the_name(self):
+        assert deck.tribe_payoff_refs(
+            "Enigma Drake, Skyward", self.ENIGMA_DRAKE, {"Drake"}) == set()
+
+    def test_a_type_only_in_the_name_drops_while_a_real_one_survives(self):
+        assert deck.tribe_payoff_refs(
+            "Human Torch, Johnny Storm", self.HUMAN_TORCH,
+            {"Human", "Hero"}) == {"Hero"}
+
+    def test_a_real_lord_survives_the_name_strip(self):
+        # The regression pin: the worry was that stripping the name would also drop the
+        # payoffs whose only OTHER reference sits inside a token clause. Measured at 0
+        # roster cards, because a genuine lord has a second clause the token guard admits.
+        assert deck.tribe_payoff_refs(
+            "Lathliss, Dragon Queen", self.LATHLISS, {"Dragon"}) == {"Dragon"}
+
+    def test_the_front_face_of_a_split_card_counts_as_the_name(self):
+        assert deck.tribe_payoff_refs(
+            "Bear Hug // Bear Down", "Exile Bear Hug.", {"Bear"}) == set()
+
+
+class TestStripOwnNameIsSharedWithTheUpgradeTest:
+    """K-16 routes `tribe_payoff_refs` and `_upgrade_clauses` through one definition of
+    "this card's own name", so the two cannot drift about which spellings count."""
+
+    def test_all_three_spellings_are_stripped(self):
+        assert deck._own_name_forms("Lathliss, Dragon Queen") == [
+            "Lathliss, Dragon Queen", "Lathliss"]
+        assert deck._own_name_forms("Bear Hug // Bear Down") == [
+            "Bear Hug // Bear Down", "Bear Hug"]
+
+    def test_the_strip_is_case_insensitive_but_does_not_lowercase(self):
+        # `_tribe_ref_re` is case-SENSITIVE, so the shared helper must leave the rest of
+        # the text's capitalisation alone — lowercasing would stop every type matching.
+        out = deck.strip_own_name("wurmcoil", "Wurmcoil rewards Dragons.")
+        assert "Dragons" in out and "Wurmcoil" not in out
+
+    def test_upgrade_clauses_still_normalises_its_own_name(self):
+        assert deck._upgrade_clauses("Big Angel", "Big Angel has flying.") == {
+            "~ has flying"}
 
 
 class TestStrictUpgradesSeePowerAndToughness:

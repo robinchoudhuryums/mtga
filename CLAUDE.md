@@ -1375,19 +1375,25 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   heredoc, which is how a rule mandating the search kept being answered by a literal one:
   `--text` is a SUBSTRING match and always was. **G-84 is the automated half** — the
   44-card chosen-type family, now measured rather than asserted. [K-13]
-- **`deck.py tribes` READS A CARD'S OWN NAME AS A TRIBAL REFERENCE.** Its type-matters scan
-  walks reminder-stripped CLAUSES, and a card's self-reference is a clause — so *"Exile
-  Spirit Water Revival"* makes that draw spell a **Spirit payoff**, and Winter Soldier reads
-  as a Soldier payoff. Measured 2026-09-19: **73 of 367 roster payoff rows** name a type that
-  appears in the card's own name, of which **16 distinct cards are PURE false positives**
-  (the type occurs nowhere else in their text — six Spider-Men, Go Ninja Go, Avatar's Wrath)
-  and 30 are real payoffs credited for the wrong reason, because BS8-33's token-clause guard
-  had already excluded their genuine clause. Found in deck 16, where the phantom "6
-  qualifying Spirits" nearly became an argument for adding a Spirit producer — **a false
-  positive on a VERDICT surface reads as evidence** (G-52). The fix is one line, the same
-  shape as the token-clause guard two lines above it in `cmd_tribes`: strip the card's own
-  name before the type scan. Unbuilt — `tribes` is report-only, so grade the list, not the
-  count. [K-16]
+- **`deck.py tribes` READ A CARD'S OWN NAME AS A TRIBAL REFERENCE — FIXED 2026-09-19, and
+  the REUSE is the lesson.** A self-reference is a clause like any other, so *"Exile Spirit
+  Water Revival"* made that draw spell a **Spirit payoff** and Winter Soldier a Soldier
+  payoff; found in deck 16, where a phantom "6 qualifying Spirits" nearly became an argument
+  for adding a Spirit producer — **a false positive on a VERDICT surface reads as evidence**
+  (G-52). `tribe_payoff_refs` is now the one predicate `cmd_tribes` and its tests share, and
+  it strips the name through **`strip_own_name`**, shared with `_upgrade_clauses`.
+  **ROUTING IT THROUGH `_upgrade_clauses` WHOLESALE — the obvious G-40 move — WOULD HAVE
+  EMPTIED THE LIST, not fixed it**: that helper LOWERCASES, and `_tribe_ref_re` is
+  case-SENSITIVE because Magic capitalises types, so every payoff would have stopped
+  matching at once. Share the primitive, not the pipeline. Roster diff: **367 → 336 rows,
+  17 cards dropped, 0 newly admitted**, and Human Torch correctly keeps `Hero` while losing
+  `Human` (which is only in his name). The worry that it would also drop real payoffs
+  credited via their name **measured at ZERO** — a genuine lord has a second clause the
+  token guard admits (Lathliss keeps Dragon on *"{1}{R}: Dragons you control get +1/+0"*).
+  **RESIDUAL, measured and DECLINED:** BS8-33 discards a whole clause, so a lord that
+  references AND creates in one sentence is under-counted; excising just the create-span
+  admits 17 more at **12 real / 5 false**. A separate bug in the opposite direction — do not
+  fold it in without its own measurement. [K-16]
 - **A DRAW REACHED BY PAYING A COST IS A DRAW — FIXED 2026-08-07, and the fix's SHAPE is
   the rule.** Every Card-advantage pattern was TRIGGER-shaped, so `+1: Draw a card`,
   `{3},{T}: Draw a card` and every planeswalker's draw ability scored ZERO (187 pool cards,
