@@ -60,7 +60,7 @@
 #: archetype: hybrid (Sokka, payable all-blue), carrying two removal spells, the untapper,
 #: archetype: that team pump and Kykar. It is NOT flavour — but it is what keeps Secret of
 #: archetype: Bloodbending out, since {U}{U}{U}{U} needs 20+ blue sources against this
-#: archetype: deck's 17 and reads 38% on turn five, 46% on turn six.
+#: archetype: deck's 18 and reads 43% on turn five, 52% on turn six.
 #: notes: REBUILT 2026-09-18 into the roster's waterbend deck. The whole airbend package
 #: notes: was cut (Aang the Last Airbender, Appa Steadfast Guardian, Airbender
 #: notes: Ascension, Airbending Lesson x2, The Legend of Yangchen, Airbender's Reversal,
@@ -110,6 +110,23 @@
 #: notes: than a new source. Hydro-Man keeps the body count at 23, keeps the early drop,
 #: notes: moves a white pip to blue and adds a mana source. Its cost is real and is not
 #: notes: a metric: he is a LAND on the opponent's turn, so he never blocks.
+#: notes: ONE LAND CHANGED on 2026-09-19, a Plains for GLEAMING BASTION, and it is free
+#: notes: rather than a trade: the Bastion taps for either colour, so replacing a Plains
+#: notes: holds W at 9 while taking U from 17 to 18. Its gate ("only if this land entered
+#: notes: this turn or if you control a basic land") is satisfied by the 21 basics that
+#: notes: remain, and on the turn it enters it is satisfied automatically, so it is an
+#: notes: untapped dual here — the only one available beyond the two already run, since
+#: notes: every other WU land the recommender offers enters tapped. Worst cast-on-curve
+#: notes: row 72.9% -> 75.1%, rows under 80% 13 -> 10, mean 86.5% -> 87.8%, with rows
+#: notes: under 70% still ZERO. THE LAND COUNT AND SPLIT WERE BOTH RE-TESTED AND LEFT
+#: notes: ALONE: 23 lands is worse on every measure, and 6/16 versus 7/15 was a tie on
+#: notes: the binding constraint before the Bastion landed. A SECOND dual measured BETTER
+#: notes: still (rows under 80% would fall to 5) and was DECLINED — every candidate left
+#: notes: enters tapped, and `consistency` prices colour ACCESS while stating that a
+#: notes: tapland's tempo is invisible to it. This deck's resource is a wide UNTAPPED
+#: notes: board, so it pays that invisible cost harder than most. Restless Anchorage is
+#: notes: the one worth revisiting, because animating it makes a BODY and a body is
+#: notes: waterbend fodder — but it enters tapped and wants {1}{W}{U} to turn on.
 
 # Nonland
 1 Spirit Water Revival (TLA) 73
@@ -152,5 +169,6 @@
 
 # Lands
 1 Hallowed Fountain (ECL) 265
-7 Plains (ANB) 115
+6 Plains (ANB) 115
+1 Gleaming Bastion (MSH) 267
 15 Island (ANB) 113

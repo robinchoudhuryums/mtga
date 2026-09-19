@@ -1811,6 +1811,22 @@ hits at ~45% precision, 61 of them carrying a clause-wide history cue. Deck 59's
 Ancestors' Aid is caught by NEITHER — its own clause said another card "were CUT … for
 Hugs". The suppressions that make this scan trustworthy are exactly what blind it in a build
 log, which is why the answer has been no twice.
+
+**A GLOSS is a rename for suppression purposes, and it broke the audit the OTHER way
+(2026-09-19).** Glossing 49 deck names with a one-line premise — `Black Sun` becoming
+`Black Sun (mono-B sac/drain)` — changed no card and no figure, and immediately produced a
+FALSE POSITIVE two decks away: deck 44a was flagged `card_advantage 0 vs live 7` because
+`_roster_deck_names` had only the glossed form, so deck 1's bare name "Black Sun" no longer
+masked a citation of it inside 44a's prose. The rename case this section already documents
+runs the opposite direction — a name that should stop masking and doesn't — which is why
+the gloss case was not anticipated: adding text to a name can UNMASK as easily as removing
+it. `_roster_deck_names` now registers BOTH the glossed and the bare form of every deck
+name. The related half sits in `parse_matches`: `_name_key` / `_name_gloss` / `_name_bare`
+split the parenthetical off so that a repo-side gloss is not read as an Arena rename, a
+REAL rename still fires through one, and `--sync-names --apply` re-appends the gloss rather
+than letting Arena's bare name silently strip every premise line (verified: arena
+`16 Water Bender` against repo `Moon Spirit (WU waterbend tempo)` adopts as
+`Water Bender (WU waterbend tempo)`, while arena `16 Moon Spirit` fires no rename at all).
 ## [G-28] `deck.py suggest` shows a cross-deck reuse count (`Decks` column)
 
 **`deck.py suggest` shows a cross-deck reuse count (`Decks` column).** For each
@@ -7258,3 +7274,42 @@ note that a number not on the list is unguarded.
 Verification at the time: roster sweep reported **0 stale figures, unchanged**, so no new
 false positives; the patterns were watched to FAIL on a mutated copy in all three prose
 forms and to stay quiet on the correct value and on a verbless delta's FROM side.
+
+## [K-16] `deck.py tribes` reads a card's OWN NAME as a tribal reference
+
+`cmd_tribes`' type-matters scan asks, for each creature type the deck fields, whether any
+reminder-stripped CLAUSE of a card's oracle text names it. A card's self-reference is a
+clause like any other, so **"Exile Spirit Water Revival"** makes that card a Spirit payoff,
+and **Winter Soldier, Icy Assassin** reads as a Soldier payoff.
+
+The scan already carries one guard of exactly this shape — BS8-33 excluded types named
+inside a `create … token` clause, because "The Earth King rewards Bear" off a 4/4 Bear token
+was 320 of 902 roster rows. The self-name case is the same class and was not covered.
+
+**Measured 2026-09-19, roster-wide:** 367 payoff rows, of which **73 name a type that also
+appears in the card's own name**. Splitting those by whether the type survives deleting the
+name from the text:
+
+- **16 distinct cards are PURE false positives** — the type occurs nowhere else. Six
+  Spider-Men (Spider-Gwen, Free Spirit; Spider-Man, To the Rescue; Spider-Man, Brooklyn
+  Visionary; Spider-Woman, Secret Agent; Sun-Spider, Nimble Webber; Spider-Byte, Web Warden;
+  Spectacular Spider-Man; Scarlet Spider, Kaine), plus Super-Skrull, Shark Shredder,
+  Go Ninja Go, Enigma Drake, Avatar's Wrath, Avatar Aang, Winter Soldier and Spirit Water
+  Revival.
+- **30 are REAL payoffs credited for the wrong reason** — Lathliss, Dragon Queen genuinely
+  rewards Dragons, but its real clause is token-creation and therefore excluded, leaving the
+  name as the only surviving match. Fixing the self-name case alone would make these read as
+  non-payoffs, so the two guards have to be considered together.
+
+**How it was found.** Grading a 27-card pile against deck 16, `tribes` reported
+"Spirit Water Revival — rewards Spirit (6 qualifying creatures)". The card is a draw spell
+with a waterbend additional cost and has nothing to do with the Spirit creature type. The
+phantom count was one step from becoming an argument for adding a Spirit producer to the
+deck — **a false positive on a VERDICT surface reads as evidence** (G-52), which is the
+same reason `suggest-homes` was made to print oracle text.
+
+**The fix is one line** — strip the card's own name (and its pre-comma short form) from the
+text before the type scan, immediately beside the token-clause guard in `cmd_tribes`.
+**Unbuilt as of 2026-09-19.** `tribes` is report-only and feeds no score, so the cost of the
+bug is a misread rather than a re-graded roster; the live instruction is to read the printed
+card list rather than the qualifying count.

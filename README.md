@@ -929,7 +929,11 @@ mana …)`. `check` stays offline and reads no mana costs, so it reports the thi
 than guessing; `mana` gives the definitive read. `tribes` reads oracle text to surface
 **type-matters payoffs** — e.g. a Saga that rewards Krakens/Leviathans/Merfolk/
 Octopuses/Serpents will list those types and how many of your creatures qualify —
-so cross-type tribal synergies aren't missed.
+so cross-type tribal synergies aren't missed. **Read the printed list, not the
+qualifying count:** the scan walks oracle clauses and a card's self-reference is a clause,
+so a card whose own NAME contains a creature type can read as a payoff for it — "Exile
+Spirit Water Revival" makes a draw spell a Spirit payoff. 16 roster cards are this shape
+(K-16). Report-only, so it misleads a reader rather than moving a score.
 
 `legal` is a **deck-construction lint**: it checks deck size against the format
 minimum (60, or 100 for Commander-likes), the copy limit (4 of any nonbasic — or 1
@@ -1149,7 +1153,11 @@ decks need attention; click a deck to filter the list below to it. Every deck (a
 variant) shows its buildable status and a one-click **⧉ Copy Arena import** button
 (the clean `deck.py arena` block, for pasting into Arena on mobile); expanding a deck
 gives sortable **Craft picks** and a **Wishlist priority** table (the `wishlist.py
---rank` tiers), plus Stats / Mana / Cuts / Legal / Arena panels. The triage and craft
+--rank` tiers), plus Stats / Mana / Cuts / Legal / Arena panels and two that carry the
+deck file's own prose: **Flex** (the `#~` suggested-swap block, via `deck.parse_flex`) and
+**Build log** (the `#: notes:` history, paragraphed on its leading capitalised phrases).
+Those two exist because the reasoning behind a deck lived only in the file — the page could
+tell you a deck's curve but not why a card was cut. The triage and craft
 numbers come from the same `audit_deck()` / `suggest_scored()` the CLI renders, so
 the dashboard can't drift from the commands.
 
@@ -1578,6 +1586,15 @@ other writer here. Without `--apply` you get the plan and nothing else. (Until 2
 the flag wrote on its own, and the sourceless form could not be previewed at all; it
 adopted ten names unannounced in one session.) A routine `session.log --apply` ingest
 never renames a deck — the rename has to be asked for by name.
+
+**Most repo names also carry a GLOSS** — a short parenthetical premise, so
+`Moon Spirit` reads `Moon Spirit (WU waterbend tempo)` in the roster views and you can tell
+what a clever name actually does. Arena has no such thing to offer, so the gloss is split
+off before any comparison (`_name_key` / `_name_gloss` / `_name_bare`): adding or editing
+one is **not** a rename and fires nothing, a real Arena rename still fires through one, and
+`--sync-names --apply` re-appends the gloss instead of letting Arena's bare name strip every
+premise line. Adding a gloss *is* a suppression change for the rationale audit, though — see
+G-27; `deck.display_name` drops it before truncating so column widths stay readable.
 
 It reports the plan on every run, flag or not. Typography alone is not a rename,
 a variant keeps its `<parent> — <variant>` prefix, and it flags what a rename would strand:
