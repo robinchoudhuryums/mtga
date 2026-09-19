@@ -571,15 +571,19 @@ is protecting.
   on its axis, and cost-shaped themes (graveyard/mill/discard) count only when the deck
   fields payoffs — filling your graveyard is value in a reanimator deck and damage in a
   control deck. It is a SHORTLIST: grade from full text, preview with `swap`.
-  **A SATURATED KEY SAYS SO SINCE 2026-09-17** (`_HOMES_KEY_SATURATED`, the roster twin of
-  `screen`'s pile-wide `_SCREEN_KEY_SATURATED`): KEY in ≥15% of the roster is a fact about
-  the TAGS, not a recommendation, and the warning names the generic themes carrying it.
-  Prefer the NARROW matches — a card KEY in two decks shares something specific with them.
-  **TWO RESIDUALS, both measured on one card (2026-08-07).** A ZERO-ROW result is a THEME
-  miss, not a colour-identity fact — reporting the second produced a written "you have no
-  Abzan deck" claim against FOUR WBG decks. And KEY scores THEME OVERLAP ALONE, so for a
-  structurally-valued card it says little: Chandra rated KEY in 14 of 42 decks, nearly all
-  on the generic red trio, while the counts that decided placement were unseen. [G-31]
+  **A SATURATED KEY SAYS SO** (`_HOMES_KEY_SATURATED`, the roster twin of `screen`'s
+  `_SCREEN_KEY_SATURATED`): KEY in ≥15% of the roster is a fact about the TAGS, not a
+  recommendation. **That warning was the SYMPTOM; the CAUSE was fixed 2026-09-18** — the
+  signature branch ran FIRST and excluded `_GENERIC_TRIBES` but not `GENERIC_THEMES`, so it
+  minted **97.3% of all KEY verdicts** while the two branches designed to discriminate lay
+  dead. A GENERIC signature theme must now EARN its KEY by also clearing
+  **`structural_overlay_hit`** — ONE definition across all THREE callers (G-40/G-70) —
+  while a SPECIFIC one still mints alone. KEY 18.6% → 10.2%; top-theme 1.2% → 63.8%.
+  Prefer the NARROW matches. **TWO RESIDUALS, measurements in the gotchas section:** a
+  ZERO-ROW result is a THEME miss, not a colour-identity fact (reporting the second
+  produced a written "you have no Abzan deck" claim against FOUR WBG decks); and a
+  SPECIFIC signature theme still mints on overlap alone, so a structurally-valued card can
+  rate KEY broadly on generic tags. [G-31]
 - **Castability reads the PRINTED COST (`suggest-homes`, the last identity-subset holdout,
   converted 2026-08-20 — G-58) and says nothing about PIPS.** A `{W}{W}{W}{W}{W}` was KEY for
   decks with 10–11 white sources, roughly a 1% chance on turn five. `pip_depth_warning`
@@ -1375,19 +1379,25 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   heredoc, which is how a rule mandating the search kept being answered by a literal one:
   `--text` is a SUBSTRING match and always was. **G-84 is the automated half** — the
   44-card chosen-type family, now measured rather than asserted. [K-13]
-- **`deck.py tribes` READS A CARD'S OWN NAME AS A TRIBAL REFERENCE.** Its type-matters scan
-  walks reminder-stripped CLAUSES, and a card's self-reference is a clause — so *"Exile
-  Spirit Water Revival"* makes that draw spell a **Spirit payoff**, and Winter Soldier reads
-  as a Soldier payoff. Measured 2026-09-19: **73 of 367 roster payoff rows** name a type that
-  appears in the card's own name, of which **16 distinct cards are PURE false positives**
-  (the type occurs nowhere else in their text — six Spider-Men, Go Ninja Go, Avatar's Wrath)
-  and 30 are real payoffs credited for the wrong reason, because BS8-33's token-clause guard
-  had already excluded their genuine clause. Found in deck 16, where the phantom "6
-  qualifying Spirits" nearly became an argument for adding a Spirit producer — **a false
-  positive on a VERDICT surface reads as evidence** (G-52). The fix is one line, the same
-  shape as the token-clause guard two lines above it in `cmd_tribes`: strip the card's own
-  name before the type scan. Unbuilt — `tribes` is report-only, so grade the list, not the
-  count. [K-16]
+- **`deck.py tribes` READ A CARD'S OWN NAME AS A TRIBAL REFERENCE — FIXED 2026-09-19, and
+  the REUSE is the lesson.** A self-reference is a clause like any other, so *"Exile Spirit
+  Water Revival"* made that draw spell a **Spirit payoff** and Winter Soldier a Soldier
+  payoff; found in deck 16, where a phantom "6 qualifying Spirits" nearly became an argument
+  for adding a Spirit producer — **a false positive on a VERDICT surface reads as evidence**
+  (G-52). `tribe_payoff_refs` is now the one predicate `cmd_tribes` and its tests share, and
+  it strips the name through **`strip_own_name`**, shared with `_upgrade_clauses`.
+  **ROUTING IT THROUGH `_upgrade_clauses` WHOLESALE — the obvious G-40 move — WOULD HAVE
+  EMPTIED THE LIST, not fixed it**: that helper LOWERCASES, and `_tribe_ref_re` is
+  case-SENSITIVE because Magic capitalises types, so every payoff would have stopped
+  matching at once. Share the primitive, not the pipeline. Roster diff: **367 → 336 rows,
+  17 cards dropped, 0 newly admitted**, and Human Torch correctly keeps `Hero` while losing
+  `Human` (which is only in his name). The worry that it would also drop real payoffs
+  credited via their name **measured at ZERO** — a genuine lord has a second clause the
+  token guard admits (Lathliss keeps Dragon on *"{1}{R}: Dragons you control get +1/+0"*).
+  **RESIDUAL, measured and DECLINED:** BS8-33 discards a whole clause, so a lord that
+  references AND creates in one sentence is under-counted; excising just the create-span
+  admits 17 more at **12 real / 5 false**. A separate bug in the opposite direction — do not
+  fold it in without its own measurement. [K-16]
 - **A DRAW REACHED BY PAYING A COST IS A DRAW — FIXED 2026-08-07, and the fix's SHAPE is
   the rule.** Every Card-advantage pattern was TRIGGER-shaped, so `+1: Draw a card`,
   `{3},{T}: Draw a card` and every planeswalker's draw ability scored ZERO (187 pool cards,
@@ -1843,13 +1853,18 @@ is invisible, and a handoff nobody is told to read is the same failure one layer
   consolidated swap plan; it is TEMPORARY and says so, and it is deleted once the
   swaps land. Named here because a fresh session loads nothing else, and the whole
   point of committing it per batch is that it outlives one context window.
-  **THREE are live as of 2026-08-19** — read them before re-deriving their findings:
+  **FOUR are live as of 2026-09-19** — read them before re-deriving their findings:
   `prune-analysis.md` (the roster-wide prune shortlist for Arena's 100-deck cap:
   card-overlap matrix + `similar` sweep + a three-tier candidate list, awaiting the
-  user's keep/cut calls); `wylie-tap-analysis.md` (Variant B, the mono-W tap-down
-  control build, still specced-but-undrafted; Variant C parked); and
-  `hob-followup-analysis.md`. Each is deleted when its work lands — the 54-family doc
-  went on 2026-08-05, which is the contract working as intended.
+  user's keep/cut calls — its overlap numbers predate deck 16's 2026-09-19 rebuild);
+  `wylie-tap-analysis.md` (Variant B, the mono-W tap-down control build, still
+  specced-but-undrafted; Variant C parked); `hob-followup-analysis.md`; and
+  `uw-equipment-analysis.md` (the 97-card UW pile, IN PROGRESS — it was live and
+  UNLISTED here for weeks, which is the failure this list exists to prevent).
+  Each is deleted when its work lands — the 54-family doc went on 2026-08-05 and
+  `56-tall-pile-analysis.md` on 2026-09-19, 13 days after its own header said the swaps
+  had landed. **A finished doc left in place reads as live to anything that greps** —
+  the `docs/tooling-improvement-plan.md` lesson, one directory over.
 - **The SessionStart hook** (`.claude/settings.json` → `scripts/session_check.sh`)
   prints `[card-library] … integrity: OK, N soft` and either a pytest result or
   "unchanged since last green run — skipped". A skip is a cached green, keyed on the

@@ -19,7 +19,7 @@ Phase: implement — **scan #10 is FULLY IMPLEMENTED**. All four batches plus ev
 Scope: broad
 Test Command: `python3 scripts/check_all.py`
 Subsystem cycles since last Seams audit: 2 (counter adopted 2026-09-08; no Seams audit has run)
-Updated: 2026-09-18 (broad-implement, KEY saturation — the earned signature)
+Updated: 2026-09-19 (deck work + two classifier holes + a doc sync — see Where I left off)
 
 ## In progress (facts to carry forward — NOT judgments)
 - **Broad scan #10 is fully implemented — nothing outstanding from the scan.** Four
@@ -213,6 +213,35 @@ Updated: 2026-09-18 (broad-implement, KEY saturation — the earned signature)
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
+**2026-09-19 — deck work, two classifier holes, and the handoff caught up.** Working tree
+clean, full pytest exit 0, `make postedit` green, `check_docs` resolves 114 rules. Branch
+`claude/sync-commands-mmmsdb`; PRs #183/#184/#185 merged.
+
+**Deck 16 is a different deck** — rebuilt as the roster's waterbend deck, tuned nine swaps
+to the A metrics floor, then one land (Plains → Gleaming Bastion). Its `#: notes:` carries
+the negative results so they are not re-derived. **`prune-analysis.md`'s overlap numbers
+predate it.**
+
+**Two classifier holes closed, both 0 tier floors moved:** mass bounce now scores as a
+Sweeper, and **K-16** — `tribes` no longer reads a card's own NAME as a tribe (367 → 336
+payoff rows, 0 newly admitted). K-16's lesson is about REUSE: `_upgrade_clauses` lowercases
+and `_tribe_ref_re` is case-SENSITIVE, so the obvious routing would have emptied the payoff
+list while looking like a fix.
+
+**CLOSED from the entry below:** G-31 now documents `structural_overlay_hit`, not just the
+saturation warning. **Also closed:** the live analysis-doc list in CLAUDE.md said THREE and
+named the wrong set (`uw-equipment-analysis.md` was live and unlisted); corrected to FOUR,
+and `56-tall-pile-analysis.md` deleted — finished since 2026-09-06.
+
+**Open, numbers already taken (do not re-derive):** BS8-33 discards a whole clause, so a
+lord that references a type AND creates a token of it in one sentence is under-counted;
+the create-span fix admits 17 more at 12 real / 5 false. See `docs/gotchas.md` `[K-16]`.
+
+**Still open from before:** G-22's RELATIONAL gap (card × card, the bigger half of the
+median-rank finding) remains the obvious next batch — untouched by any of the above.
+
+Earlier in the same cycle:
+
 **KEY saturation fixed (2026-09-18).** Full pytest exit 0, `check_all` exit 0 with soft warnings identical to baseline, `check_suggest` OK, anchor 11c watched-it-fail against a regressed implementation, output deterministic across three hash seeds. Block: `.cycle/blocks/2026-09-key-saturation-earned-signature-broad-implement.md`. NET SCORE 1 − 0 = 1. The finding in `.cycle/NEXT-SESSION.md` is marked CLOSED with its result.
 
 **THE REJECTED TIGHTENING STILL STANDS — do not confuse the two.** `tests/test_deck.py::test_the_signature_rescue_is_preserved` pins it and its docstring now spells out the difference: the rejected fix REMOVED the branch's effect (deck 30 21% → 1%, Innkeeper's Talent demoted); this one makes it CONDITIONAL and lets an unearned generic signature fall through to branches that can still return KEY (deck 30 27.7% → 27.7%, Innkeeper's Talent kept).

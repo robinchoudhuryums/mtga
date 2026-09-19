@@ -7308,8 +7308,55 @@ phantom count was one step from becoming an argument for adding a Spirit produce
 deck — **a false positive on a VERDICT surface reads as evidence** (G-52), which is the
 same reason `suggest-homes` was made to print oracle text.
 
-**The fix is one line** — strip the card's own name (and its pre-comma short form) from the
-text before the type scan, immediately beside the token-clause guard in `cmd_tribes`.
-**Unbuilt as of 2026-09-19.** `tribes` is report-only and feeds no score, so the cost of the
-bug is a misread rather than a re-graded roster; the live instruction is to read the printed
-card list rather than the qualifying count.
+## What shipped (2026-09-19)
+
+**`tribe_payoff_refs(name, text, deck_types)`** is now the single predicate behind the
+payoff list. `cmd_tribes` calls it and so do the tests — which matters, because the previous
+BS8-33 tests re-implemented the predicate inline and would have stayed green if the command
+had stopped applying the guard. They pinned a copy, not the code.
+
+The name strip goes through **`strip_own_name(name, text, placeholder)`**, built on
+`_own_name_forms` — the full name, the front face of a split/DFC, and the pre-comma short
+form — and now shared with `_upgrade_clauses`, so the two cannot drift about which spellings
+count as a self-reference.
+
+**The obvious fix was the wrong one, and this is the transferable part.** `_upgrade_clauses`
+already did exactly this normalisation and had one caller, which reads as a textbook G-40
+"wire the primitive to its second caller". But it LOWERCASES its text, and `_tribe_ref_re` is
+case-SENSITIVE — deliberately, because Magic capitalises creature types in oracle text and a
+case-insensitive scan would match prose like "in good spirits". Routing `cmd_tribes` through
+it wholesale would have made **every** type reference stop matching, emptying the payoff list
+rather than trimming it, and the visible symptom (fewer rows) would have looked like the fix
+working. **Share the primitive, not the pipeline**: extract the part both callers agree on
+and leave each one its own case handling. Verified by hashing `_upgrade_clauses` output
+across all 15,867 pool cards before and after — byte-identical, so `screen` is unperturbed.
+
+**Roster diff:** 367 → 336 payoff rows, 253 → 236 distinct cards, **0 newly admitted**. The
+17 cards that lost every row are exactly the pure false positives above plus Goblin
+Negotiation (whose only other "Goblin" sits in a token clause). One card changed type set
+rather than disappearing: **Human Torch, Johnny Storm** keeps `Hero` — *"if you control
+another Hero"* is a real payoff — and loses `Human`, which occurs only inside his own name.
+
+**The 30 "real payoff, wrong reason" cards were a false alarm, and the correction is worth
+recording.** The original measurement asked whether the type survives deleting the name from
+the text, ignoring the token guard. The live question is narrower: does it survive in a
+clause the token guard *admits*. Measured at the card level, the number of cards rescued by
+also relaxing the token guard is **0** — a genuine lord nearly always has a second clause,
+and Lathliss keeps Dragon on `{1}{R}: Dragons you control get +1/+0`, not on its name.
+
+## Residual: BS8-33 discards the whole clause, which under-counts the other way
+
+A lord that references a type AND creates a token of it in one sentence loses the reference,
+because the guard drops the entire clause. Excising only the `create … token` SPAN and
+scanning the remainder admits **17 more roster cards at 12 real / 5 false (71%)** — real:
+Krenko, Mob Boss (*"X is the number of Goblins you control"*), Deeproot Pilgrimage, Genghis
+Frog, Fíli the Pathfinder; false: Defend the Rider, Valor's Flagship, both Kuruk faces,
+Dragonbroods' Relic.
+
+**Measured and deliberately not folded in.** It is a different bug in the opposite direction
+— K-16 over-counts, this under-counts — and 71% precision is a judgement call that deserves
+its own pass rather than riding along on a fix whose own precision is 100%. Do not restart it
+without re-measuring; the numbers above are the starting point.
+
+`tribes` remains **report-only** — it feeds no score and no tier floor, so neither the bug
+nor the residual can move a deck's grade.

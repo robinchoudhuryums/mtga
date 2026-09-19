@@ -4211,6 +4211,36 @@ def cmd_stats(args):
     return 0
 
 
+def _own_name_forms(name):
+    """The spellings a card uses to refer to ITSELF: the full name, the FRONT face of a
+    split/DFC, and the pre-comma short form (older templating self-references by name,
+    and a legendary's text routinely shortens to the part before the comma)."""
+    n = (name or "").strip()
+    seen, out = set(), []
+    for f in (n, n.split(" // ")[0], n.split(",")[0]):
+        f = f.strip()
+        if f and f.lower() not in seen:
+            seen.add(f.lower())
+            out.append(f)
+    return out
+
+
+def strip_own_name(name, text, placeholder="~"):
+    """`text` with every self-reference BY NAME replaced by `placeholder`, case-insensitively.
+
+    ONE definition of "this card's own name", shared by `_upgrade_clauses` (the ★ STRICT
+    UPGRADE containment test) and `tribe_payoff_refs`, so the two cannot drift about which
+    spellings count. Case-insensitive because `_upgrade_clauses` hands it already-lowercased
+    text while `tribe_payoff_refs` must NOT lowercase — `_tribe_ref_re` is case-SENSITIVE,
+    since Magic capitalises creature types and lowercasing would make every type reference
+    stop matching at once (K-16: reusing `_upgrade_clauses` wholesale would have silently
+    emptied the payoff list rather than fixing it)."""
+    t = text or ""
+    for f in _own_name_forms(name):
+        t = re.sub(re.escape(f), placeholder, t, flags=re.I)
+    return t
+
+
 def _tribe_ref_re(t):
     """Compiled pattern matching a creature TYPE reference in oracle text — singular
     OR plural. Lords overwhelmingly template plural ("Ninjas you control get +1/+1",
@@ -4232,6 +4262,33 @@ def _tribe_ref_re(t):
     else:
         forms.append(re.escape(t + "s"))
     return re.compile(rf"\b(?:{'|'.join(forms)})\b")
+
+
+def tribe_payoff_refs(name, text, deck_types):
+    """The creature types out of `deck_types` that this card's oracle text REWARDS.
+
+    TWO exclusions, and both exist because a reference can name a type the card does not
+    care about. **BS8-33** — a type named only inside a "create … token" clause is a BODY
+    the card makes, not a type it rewards ("The Earth King rewards Bear" off a 4/4 Bear
+    token was 320 of 902 roster rows). **K-16** — a card's own NAME is a clause like any
+    other, so "Exile Spirit Water Revival" made that draw spell a Spirit payoff and Winter
+    Soldier read as a Soldier payoff; 17 roster cards were pure false positives of this.
+
+    The name strip runs through `strip_own_name`, shared with `_upgrade_clauses`. Note the
+    text is NOT lowercased: `_tribe_ref_re` is case-sensitive by design, because Magic
+    capitalises creature types.
+
+    Measured when the name strip landed: 367 payoff rows → 336, dropping exactly the 17
+    self-name cards and rescuing none — the worry that it would also drop real payoffs
+    credited via their name did not materialise, because a genuine lord almost always has
+    a SECOND clause the token guard admits (Lathliss keeps Dragon on "{1}{R}: Dragons you
+    control get +1/+0", not on its name)."""
+    t = strip_own_name(name, _REMINDER_RE.sub(" ", text or ""), " ~ ")
+    clauses = [c for c in re.split(r"[.\n]", t) if c.strip()]
+    return {ty for ty in deck_types
+            if any(_tribe_ref_re(ty).search(c)
+                   and not re.search(r"\bcreates?\b[^.]*\btokens?\b", c, re.I)
+                   for c in clauses)}
 
 
 def cmd_tribes(args):
@@ -4272,17 +4329,11 @@ def cmd_tribes(args):
         d2 = data.get(n.lower())
         if not d2 or not d2["text"]:
             continue
-        # A type named only inside a "create … token" clause is a BODY the card makes,
-        # not a type it rewards (BS8-33 — 320 of 902 roster payoff rows were this: "The
-        # Earth King rewards Bear" on "create a 4/4 Bear token"). The reference has to
-        # occur outside every token-creation clause. Changelings qualify for every type a
+        # Which types this card REWARDS — token bodies (BS8-33) and its own name (K-16)
+        # both excluded; see `tribe_payoff_refs`. Changelings qualify for every type a
         # payoff names (they ARE every creature type — G-59), and the payoff card itself
         # is not one of its own qualifiers.
-        _txt = _REMINDER_RE.sub(" ", d2["text"])
-        _clauses = [c for c in re.split(r"[.\n]", _txt) if c.strip()]
-        refs = {t for t in deck_types
-                if any(_tribe_ref_re(t).search(c) and not re.search(
-                       r"\bcreates?\b[^.]*\btokens?\b", c, re.I) for c in _clauses)}
+        refs = tribe_payoff_refs(n, d2["text"], deck_types)
         if refs:
             qual = sum(q2 for q2, n2, s2, c2 in cards
                        if n2 != n and (subs_by_card.get(n2, set()) & refs
@@ -10843,10 +10894,7 @@ def _upgrade_clauses(name, text):
     most real upgrades — but its false-positive rate is near zero, which is the right
     error direction for a flag whose whole claim is "you already run a worse version of
     this card"."""
-    t = _REMINDER_RE.sub(" ", (text or "").lower())
-    for nm in filter(None, [(name or "").lower(), (name or "").lower().split(" // ")[0],
-                            (name or "").lower().split(",")[0]]):
-        t = t.replace(nm, "~")
+    t = strip_own_name(name, _REMINDER_RE.sub(" ", (text or "").lower()))
     t = _UPGRADE_SELF_RE.sub("~", t)
     return {c.strip(" .;") for c in re.split(r"[\n.]", t) if c.strip(" .;")}
 
