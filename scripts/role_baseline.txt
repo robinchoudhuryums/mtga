@@ -157,7 +157,6 @@ Firebender Ascension
 Firebending Student
 Flamehold Grappler
 Flamekin Gildweaver
-Flexible Waterbender
 Flopsie, Bumi's Buddy
 Flowerfoot Swordmaster
 Fog Bank
@@ -175,13 +174,11 @@ Gas Guzzler
 Gastal Raider
 Gather the White Lotus
 Germination Practicum
-Geyser Leaper
 Ghalta, Primal Hunger
 Ghired, Mirror of the Wilds
 Ghost, Spectral Saboteur
 Ghostly Keybearer
 Giant Cindermaw
-Giant Koi
 Gilgamesh, Master-at-Arms
 Glamer Gifter
 Glider Kids
@@ -453,6 +450,7 @@ Umbral Collar Zealot
 Underwater Tunnel // Slimy Aquarium
 United Front
 Unstable Experiment
+Unstoppable Plan
 Unstoppable Slasher
 Utrom Scientists
 Vastlands Scavenger // Bind to Life
