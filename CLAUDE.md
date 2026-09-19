@@ -571,15 +571,19 @@ is protecting.
   on its axis, and cost-shaped themes (graveyard/mill/discard) count only when the deck
   fields payoffs — filling your graveyard is value in a reanimator deck and damage in a
   control deck. It is a SHORTLIST: grade from full text, preview with `swap`.
-  **A SATURATED KEY SAYS SO SINCE 2026-09-17** (`_HOMES_KEY_SATURATED`, the roster twin of
-  `screen`'s pile-wide `_SCREEN_KEY_SATURATED`): KEY in ≥15% of the roster is a fact about
-  the TAGS, not a recommendation, and the warning names the generic themes carrying it.
-  Prefer the NARROW matches — a card KEY in two decks shares something specific with them.
-  **TWO RESIDUALS, both measured on one card (2026-08-07).** A ZERO-ROW result is a THEME
-  miss, not a colour-identity fact — reporting the second produced a written "you have no
-  Abzan deck" claim against FOUR WBG decks. And KEY scores THEME OVERLAP ALONE, so for a
-  structurally-valued card it says little: Chandra rated KEY in 14 of 42 decks, nearly all
-  on the generic red trio, while the counts that decided placement were unseen. [G-31]
+  **A SATURATED KEY SAYS SO** (`_HOMES_KEY_SATURATED`, the roster twin of `screen`'s
+  `_SCREEN_KEY_SATURATED`): KEY in ≥15% of the roster is a fact about the TAGS, not a
+  recommendation. **That warning was the SYMPTOM; the CAUSE was fixed 2026-09-18** — the
+  signature branch ran FIRST and excluded `_GENERIC_TRIBES` but not `GENERIC_THEMES`, so it
+  minted **97.3% of all KEY verdicts** while the two branches designed to discriminate lay
+  dead. A GENERIC signature theme must now EARN its KEY by also clearing
+  **`structural_overlay_hit`** — ONE definition across all THREE callers (G-40/G-70) —
+  while a SPECIFIC one still mints alone. KEY 18.6% → 10.2%; top-theme 1.2% → 63.8%.
+  Prefer the NARROW matches. **TWO RESIDUALS, measurements in the gotchas section:** a
+  ZERO-ROW result is a THEME miss, not a colour-identity fact (reporting the second
+  produced a written "you have no Abzan deck" claim against FOUR WBG decks); and a
+  SPECIFIC signature theme still mints on overlap alone, so a structurally-valued card can
+  rate KEY broadly on generic tags. [G-31]
 - **Castability reads the PRINTED COST (`suggest-homes`, the last identity-subset holdout,
   converted 2026-08-20 — G-58) and says nothing about PIPS.** A `{W}{W}{W}{W}{W}` was KEY for
   decks with 10–11 white sources, roughly a 1% chance on turn five. `pip_depth_warning`
@@ -1849,13 +1853,18 @@ is invisible, and a handoff nobody is told to read is the same failure one layer
   consolidated swap plan; it is TEMPORARY and says so, and it is deleted once the
   swaps land. Named here because a fresh session loads nothing else, and the whole
   point of committing it per batch is that it outlives one context window.
-  **THREE are live as of 2026-08-19** — read them before re-deriving their findings:
+  **FOUR are live as of 2026-09-19** — read them before re-deriving their findings:
   `prune-analysis.md` (the roster-wide prune shortlist for Arena's 100-deck cap:
   card-overlap matrix + `similar` sweep + a three-tier candidate list, awaiting the
-  user's keep/cut calls); `wylie-tap-analysis.md` (Variant B, the mono-W tap-down
-  control build, still specced-but-undrafted; Variant C parked); and
-  `hob-followup-analysis.md`. Each is deleted when its work lands — the 54-family doc
-  went on 2026-08-05, which is the contract working as intended.
+  user's keep/cut calls — its overlap numbers predate deck 16's 2026-09-19 rebuild);
+  `wylie-tap-analysis.md` (Variant B, the mono-W tap-down control build, still
+  specced-but-undrafted; Variant C parked); `hob-followup-analysis.md`; and
+  `uw-equipment-analysis.md` (the 97-card UW pile, IN PROGRESS — it was live and
+  UNLISTED here for weeks, which is the failure this list exists to prevent).
+  Each is deleted when its work lands — the 54-family doc went on 2026-08-05 and
+  `56-tall-pile-analysis.md` on 2026-09-19, 13 days after its own header said the swaps
+  had landed. **A finished doc left in place reads as live to anything that greps** —
+  the `docs/tooling-improvement-plan.md` lesson, one directory over.
 - **The SessionStart hook** (`.claude/settings.json` → `scripts/session_check.sh`)
   prints `[card-library] … integrity: OK, N soft` and either a pytest result or
   "unchanged since last green run — skipped". A skip is a cached green, keyed on the

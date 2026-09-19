@@ -4,6 +4,15 @@
 2026-09-06 pass wholesale — every row of that table had moved (see §5). Delete once the
 prune decisions land. A scratchpad, not a source of truth — decks/ are.
 
+> **⚠ PARTLY STALE, 2026-09-19 — re-run before acting on any row involving deck 15 or 16.**
+> Deck 16 was rebuilt and tuned by eleven cards the day after this was generated (the
+> waterbend split from 15 Air Nomads, then nine swaps and a land). Its overlap figures here
+> predate all of it. The 15 × 16 pair is the one this actually decides: the split was made
+> precisely to separate them, and the shared-card count was expected to fall from 19 to
+> around 12, with a further drop to ~6 available if deck 15 also sheds its six waterbend
+> cards — a call deliberately left until deck 15 has been played in its current form
+> (3-0 at n=3). Every other row is as generated.
+
 **Why:** MTG Arena caps the app at 100 decks. Pruning means REMOVING FROM ARENA — the repo
 file can stay, since a repo deck costs nothing against the cap.
 

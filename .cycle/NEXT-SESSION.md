@@ -19,6 +19,51 @@ commands disagree.
 
 ## 0-current. THE 2026-08-24 SESSION (READ THIS FIRST — supersedes §0-latest below)
 
+> **STATE STAMP, 2026-09-19 (NEWEST — supersedes every stamp below it).** Seventeen
+> commits since the last stamp, across four threads. Nothing here is outstanding unless it
+> says so.
+>
+> **1. DECK NAMES NOW CARRY A GLOSS.** 49 opaque names gained a one-line premise —
+> `Moon Spirit` is `Moon Spirit (WU waterbend tempo)` — abbreviated house-style (`4c`,
+> `sac`, `opp`, `self`). **Searching by name: strip the parenthetical first.** The tooling
+> does this for you (`parse_matches._name_key` / `_name_gloss` / `_name_bare`,
+> `deck.display_name`), and `--sync-names --apply` RE-APPENDS the gloss rather than letting
+> Arena's bare name strip it. **A gloss is a suppression change for the rationale audit** —
+> it fired live, flagging deck 44a because deck 1's bare "Black Sun" stopped masking;
+> `_roster_deck_names` now registers both forms. G-27 carries the rule.
+>
+> **2. DECK 16 IS A DIFFERENT DECK.** Rebuilt as the roster's waterbend deck (15 Air
+> Nomads owns airbend), then tuned nine swaps to the **A metrics floor** (interaction
+> 6 → 7, untappers 2 → 5, protection 4 → 5), then one land swap (a Plains → Gleaming
+> Bastion, U 17 → 18). Claimed A now MATCHES its floor rather than sitting above it.
+> Craft targets: Unstoppable Plan, Kykar, Hydro-Man (3 rares, wishlisted). Its
+> `#: notes:` carries the negative results so they are not re-derived — 23 lands is worse,
+> a second dual measures better but every candidate enters tapped, Station Monitor was
+> dropped because nothing in the deck cares about artifacts.
+> **`prune-analysis.md`'s overlap numbers predate this** and should be re-run before its
+> keep/cut calls are acted on.
+>
+> **3. TWO CLASSIFIER HOLES CLOSED, both measured at 0 roster impact on the tier floor.**
+> Mass BOUNCE now scores as a Sweeper (the role family disagreed with itself across 22 pool
+> cards; 0 of 114 floors moved) — its regression test had to be a NEGATIVE assertion,
+> because truncating the pattern makes it BROADER and a positive test passes against the
+> mutant. And **K-16**: `deck.py tribes` no longer reads a card's own NAME as a tribe
+> (367 → 336 payoff rows, 17 cards, 0 newly admitted). The K-16 lesson is about REUSE, not
+> tribes — `_upgrade_clauses` looked like the primitive to route through, but it lowercases
+> and `_tribe_ref_re` is case-SENSITIVE, so wholesale reuse would have EMPTIED the payoff
+> list while looking like the fix working. Share the primitive, not the pipeline.
+>
+> **4. OPEN, with its numbers already taken.** BS8-33 discards a whole clause, so a lord
+> that references a type AND creates a token of it in one sentence is under-counted;
+> excising only the create-span admits 17 more cards at **12 real / 5 false (71%)**. A
+> different bug in the opposite direction from K-16, deliberately not folded in. Numbers
+> are in `docs/gotchas.md` under `[K-16]` — do not re-derive them.
+>
+> **Also closed:** G-31 now documents the `structural_overlay_hit` fix rather than only the
+> saturation warning (the item the stamp below left open for `/sync-docs`), the live
+> analysis-doc list in CLAUDE.md is corrected to FOUR, and `56-tall-pile-analysis.md` was
+> deleted — its own header had said "SWAPS LANDED" since 2026-09-06.
+
 > **STATE STAMP, 2026-09-17 (second — supersedes the one below it).** Deck 41 Darkforce
 > Inversion was tuned and its manabase rebuilt (PR #181, merged): six swaps took the
 > metrics floor **C → A** (interaction 3 → 7, card advantage 8 → 10), then three land
