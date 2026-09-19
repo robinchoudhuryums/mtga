@@ -1,4 +1,4 @@
-#: name: Pony Express
+#: name: Pony Express (Mounts + counters)
 #: format: Standard
 #: status: retired   (kept for reference — excluded from roster-wide views)
 #: notes: RETIRED 2026-09-12. Not a design failure — the FORMAT moved out from under it.

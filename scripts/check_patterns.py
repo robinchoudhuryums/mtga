@@ -81,6 +81,9 @@ _SCANNED_MODULES = (deck, lib, tag_synergies, wishlist)
 _EXCLUDED = {
     ("deck", "LINE_RE"): "deck-file card-line syntax, not card text",
     ("deck", "META_RE"): "deck-file `#:` header syntax, not card text",
+    ("deck", "_NAME_GLOSS_RE"): ("the trailing '(...)' premise gloss on a `#: name:` "
+                                 "header, not card text; unit-tested via display_name "
+                                 "and _roster_deck_names in test_deck.py"),
     ("deck", "FORMAT_VARIANT_RE"): "deck-id/format syntax, not card text",
     ("deck", "_DECK_MARKER_RE"): "Arena paste `Deck` marker, not card text",
     ("deck", "SYMBOL_RE"): "mana-symbol syntax ({W}), not card text",

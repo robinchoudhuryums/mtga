@@ -1,22 +1,127 @@
 #: name: Moon Spirit
 #: format: Standard
 #: arena: 16 Moon Spirit, 697e3fd9-7143-4ef4-af0f-fda0b908eb1f
-#: tier: A — Azorius (WU) tempo; evasive threats + genuine interaction on a clean 2-color base. Re-graded B→A: the earlier "(3) interaction" was a classifier undercount — the real count is 6 (bounce/counters/removal), and Into the Flood Maw / The Legend of Yangchen / Benevolent River Spirit read as more still. Coherent tempo shell, 9 payoffs; A-floor on the corrected counts.
+#: tier: A — Azorius WATERBEND tempo-value, and since the 2026-09-19 pass the letter
+#: tier: MATCHES its metrics floor rather than sitting a band above it. Interaction is
+#: tier: 7 on the counted number, which is what moved the floor: Amazing Acrobatics,
+#: tier: Bottomless Pool // Locker Room and Kitsune replaced Sandbenders' Storm and
+#: tier: Into the Flood Maw, so the count went 6 to 7 while two of the three cuts were
+#: tier: themselves interaction. FIVE pieces are still unscored and all five are real:
+#: tier: Aang's Iceberg is an O-Ring, Crashing Wave taps and stuns their board,
+#: tier: Invasion Submersible's enters-bounce is flexible enough to be fair, Aang,
+#: tier: Swift Savior's airbend exiles a creature OR a spell on the stack, and
+#: tier: Unstoppable Plan answers the deck's own tapped-out vulnerability every turn.
+#: tier: The classifier requires removal to say "an opponent controls"; these do not.
+#: tier: Board power 64 and card advantage 8 both sit slightly below where the
+#: tier: 2026-09-18 rebuild left them (68 and 9) — a deliberate trade of two draw
+#: tier: pieces and two large bodies for interaction and untappers. Board power 64 is
+#: tier: above the roster median of 54 and the figure counts printed power only, so it
+#: tier: under-reads a list that now runs three token engines. The manabase is
+#: tier: unchanged at 7/15 and cast-on-curve rows under 70% remain at ZERO (worst
+#: tier: 72.9%). Held out of S by the absence of a proven fast kill — Kuruk's Spirits
+#: tier: are a real clock but a slow one, and the deck has never been played in this
+#: tier: configuration.
 #: colors: WU
-#: archetype: Azorius (W/U) Water Tribe spirits / waterbend tempo.
-#: notes: Azorius (W/U) — Water Tribe / spirits tempo.
+#: archetype: AZORIUS WATERBEND, and the mechanic is the archetype: waterbend is CONVOKE FOR
+#: archetype: ACTIVATED COSTS — "you can tap your artifacts and creatures to help, each one
+#: archetype: pays for {1}" — so the deck's resource is a WIDE UNTAPPED BOARD rather than
+#: archetype: mana. Fifteen of the thirty-six nonland cards carry a waterbend cost, against
+#: archetype: ONE airbend card; the split with 15 Air Nomads was made deliberately on
+#: archetype: 2026-09-18, and that deck now owns airbend (it plays all ten in Standard)
+#: archetype: while this one owns waterbend (sixteen of Standard's twenty are mono-blue).
+#: archetype: That count was NINETEEN before the 2026-09-19 pass and the drop was accepted
+#: archetype: knowingly: Namor, Kykar and Mischievous Mystic convert noncreature spells
+#: archetype: into BODIES, and a body is what a waterbend cost actually spends, so the
+#: archetype: deck lost waterbend CARDS while gaining waterbend FUEL.
+#: archetype: TAPPING IS MEANT TO BE FREE, which is the half a card list does not show:
+#: archetype: seven creatures have vigilance and FIVE cards untap your permanents —
+#: archetype: Unstoppable Plan untaps every nonland permanent at your end step, Captain
+#: archetype: America untaps the first creature tapped each turn, North Pole Patrol untaps
+#: archetype: on demand, Octopus Form untaps one at instant speed, and Hydro-Man untaps
+#: archetype: himself. FOUR cards PAY YOU for the tapping — Katara, Bending Prodigy grows
+#: archetype: whenever she is tapped at end step, Compassionate Healer gains and scries
+#: archetype: whenever she becomes tapped, Pestered Wellguard makes a 1/1 flier on EVERY
+#: archetype: tap, and Aang and La put a +1/+1 counter on each TAPPED creature when they
+#: archetype: attack. THE COST CURVE IS 3-6 AND THE BOARD REACHES IT, though read the
+#: archetype: figure with its method attached: simulating 20,000 games and counting only
+#: archetype: bodies CAST from hand (tokens excluded, which is conservative here) the deck
+#: archetype: fields ~2.8 by turn five and ~4.2 by turn seven — waterbend {3} on five and
+#: archetype: {5} on seven before any token joins them. The pre-pass list measures 3.0 and
+#: archetype: 4.5 under that same model, so this pass cost ~7%; the older 4.3 / 5.3 figures
+#: archetype: came from a method that could not be reproduced and were replaced rather than
+#: archetype: patched. Read the two outliers as aspirational rather than planned — Aang, Swift
+#: archetype: Savior's waterbend {8} transform lands around turn seven, and The Legend of
+#: archetype: Kuruk's waterbend {20} extra turn is not reachable. KURUK IS THE ENGINE AND
+#: archetype: THE CLOCK IN ONE SLOT: its back face makes a 1/1 Spirit for every spell you
+#: archetype: cast, and those Spirits cannot be blocked by non-Spirit creatures, so the same
+#: archetype: tokens that pay waterbend costs also close the game. Katara, Water Tribe's
+#: archetype: Hope is the alternate kill — waterbend {X} makes every creature X/X. WHITE IS
+#: archetype: A SPLASH AND EARNS IT: eleven cards, every one a single {W} and one of those
+#: archetype: hybrid (Sokka, payable all-blue), carrying two removal spells, the untapper,
+#: archetype: that team pump and Kykar. It is NOT flavour — but it is what keeps Secret of
+#: archetype: Bloodbending out, since {U}{U}{U}{U} needs 20+ blue sources against this
+#: archetype: deck's 17 and reads 38% on turn five, 46% on turn six.
+#: notes: REBUILT 2026-09-18 into the roster's waterbend deck. The whole airbend package
+#: notes: was cut (Aang the Last Airbender, Appa Steadfast Guardian, Airbender
+#: notes: Ascension, Airbending Lesson x2, The Legend of Yangchen, Airbender's Reversal,
+#: notes: Avatar's Wrath) because 15 Air Nomads plays every airbend card in Standard and
+#: notes: this deck was running eight of them; 19 shared cards with that deck dropped to
+#: notes: 12. WHY AVATAR'S WRATH WENT, since it was the only sweeper: it was the last
+#: notes: {W}{W} card, and with it in the list a shift to blue drops its own cast rate
+#: notes: to 40%. Cut, the manabase could follow the deck's colour shift (W pips 24 ->
+#: notes: 12, U pips 21 -> 35) and every card cleared 70% on curve for the first time.
+#: notes: AETHERIZE REPLACED IT rather than a symmetric wrath, and that was measured:
+#: notes: Restricted Office // Lecture Hall destroys all creatures with power 3 or
+#: notes: greater, and TEN of this deck's twenty-four creatures are power 3+, so it is a
+#: notes: board wipe pointed at yourself. Aetherize returns all ATTACKING creatures,
+#: notes: which never includes yours, and answers the deck's real vulnerability — being
+#: notes: attacked while tapped out for a waterbend cost. GATHER THE WHITE LOTUS was cut
+#: notes: on a simulation rather than a hunch: it makes a token per Plains, and at any
+#: notes: land split this deck can support that is 1.4 to 2.3 tokens for five mana.
+#: notes: SECRET OF BLOODBENDING WAS CONSIDERED AND DECLINED — see the archetype block
+#: notes: for the numbers; if the deck ever goes mono-blue it becomes castable and
+#: notes: should come back. Mu Yanling took its slot instead: same mana value, half the
+#: notes: blue pips, and she brings two bodies of which one is an artifact, which
+#: notes: waterbend can tap.
+#: notes: NINE SWAPS ON 2026-09-19, aimed at one number: the metrics floor needed +1
+#: notes: interaction to reach A, and TWO of the six cards first proposed for cutting
+#: notes: (Sandbenders' Storm, Into the Flood Maw) were themselves interaction, so a
+#: notes: straight six-card cut would have widened the gap from +1 to +3 rather than
+#: notes: closing it. Replacements were chosen to restore the axis first: Amazing
+#: notes: Acrobatics counters anything (Sandbenders' Storm only killed power 4+),
+#: notes: Bottomless Pool // Locker Room bounces at the same {U} without gifting them a
+#: notes: Fish and its back half turns combat damage into draws, and Kitsune exchanges
+#: notes: control on enter AND on every combat-damage hit, which in a token deck means
+#: notes: handing over a 1/1 for their best creature. STATION MONITOR WAS PROPOSED AND
+#: notes: DROPPED: it was ranked on making ARTIFACT bodies, but nothing in this deck
+#: notes: cares about artifacts (Earth Kingdom Jailer reads the opponent's, Invasion
+#: notes: Submersible is one, Mu Yanling makes one) and waterbend taps "artifacts AND
+#: notes: creatures" alike — so its artifact-ness bought nothing while costing 70.9%
+#: notes: against Mischievous Mystic's 94.3% on turn two. WATERBENDER ASCENSION WAS
+#: notes: PROPOSED FOR CUTTING AND KEPT: its quest counter triggers PER CREATURE dealing
+#: notes: combat damage, not once per turn, so four attackers arm it in a single combat
+#: notes: and every connecting creature after that draws a card — and Kuruk's Spirits
+#: notes: cannot be blocked by non-Spirit creatures. ABSOLUTE VIRTUE WAS KEPT by choice;
+#: notes: cutting it was worth a further 6 board power and 1 protection, and the 8/8
+#: notes: with protection-from-each-opponent was judged the better game-ender.
+#: notes: HYDRO-MAN OVER DAZZLING THEATER for the last slot: Theater's Prop Room half
+#: notes: largely duplicates Unstoppable Plan, and its convoke competes with waterbend
+#: notes: for the SAME resource (both tap your creatures), so it is a new sink rather
+#: notes: than a new source. Hydro-Man keeps the body count at 23, keeps the early drop,
+#: notes: moves a white pip to blue and adds a mana source. Its cost is real and is not
+#: notes: a metric: he is a LAND on the opponent's turn, so he never blocks.
 
 # Nonland
-1 Aang, the Last Airbender (TLA) 4
+1 Spirit Water Revival (TLA) 73
 1 Aang, Swift Savior (TLA) 204
-1 Appa, Steadfast Guardian (TLA) 10
+1 The Legend of Kuruk // Avatar Kuruk (TLA) 61
 1 Sokka, Lateral Strategist (TLA) 241
-1 Spectral Sailor (FDN) 164
+1 Octopus Form (TLA) 66
 1 Katara, Water Tribe's Hope (TLA) 231
 1 Hakoda, Selfless Commander (TLA) 23
 1 Ty Lee, Chi Blocker (TLA) 76
 1 Compassionate Healer (TLA) 13
-1 Water Tribe Rallier (TLA) 42
+1 Hydro-Man, Fluid Felon (SPM) 33
 1 Earth Kingdom Jailer (TLA) 16
 1 Knowledge Seeker (TLA) 60
 1 North Pole Patrol (TLA) 65
@@ -24,27 +129,28 @@
 1 Benevolent River Spirit (TLA) 45
 1 Yue, the Moon Spirit (TLA) 83
 1 South Pole Voyager (TLA) 35
-1 Giant Koi (TLA) 53
-1 Forecasting Fortune Teller (TLA) 51
-1 Airbender Ascension (TLA) 6
-1 Airbender's Reversal (TLA) 7
-2 Airbending Lesson (TLA) 8
-1 Avatar's Wrath (TLA) 12
+1 Kykar, Zephyr Awakener (FDN) 122
+1 Mischievous Mystic (FDN) 47
+1 The Unagi of Kyoshi Island (TLA) 77
+1 Aetherize (FDN) 151
+1 Invasion Submersible (TLA) 57
+1 Katara, Bending Prodigy (TLA) 59
+1 Mu Yanling, Wind Rider (DFT) 52
 1 Aang's Iceberg (TLA) 5
-1 Path to Redemption (TLA) 31
+1 Namor the Sub-Mariner (MSH) 69
 1 Crashing Wave (TLA) 47
 1 Floodfarm Verge (DSK) 259
 1 Waterbending Lesson (TLA) 80
-1 East Wind Avatar (TMT) 5
-1 Gather the White Lotus (TLA) 20
+1 Kitsune, Dragon's Daughter (TMT) 41
+1 Captain America, Living Legend (MSH) 210
 1 Waterbender Ascension (TLA) 79
-1 Into the Flood Maw (BLB) 52
-1 The Legend of Yangchen (TLA) 27
-1 Flexible Waterbender (TLA) 50
-1 Disdainful Stroke (SOA) 17
-1 Sandbenders' Storm (TLA) 34
+1 Bottomless Pool // Locker Room (DSK) 43
+1 Watery Grasp (TLA) 82
+1 Unstoppable Plan (DFT) 72
+1 Pestered Wellguard (ECL) 63
+1 Amazing Acrobatics (SPM) 25
 
 # Lands
 1 Hallowed Fountain (ECL) 265
-10 Plains (ANB) 115
-12 Island (ANB) 113
+7 Plains (ANB) 115
+15 Island (ANB) 113

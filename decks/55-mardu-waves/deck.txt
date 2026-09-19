@@ -1,4 +1,4 @@
-#: name: Mardu Waves
+#: name: Mardu Waves (attack-trigger token waves)
 #: format: Standard
 #: colors: RWB
 #: plan: aggro

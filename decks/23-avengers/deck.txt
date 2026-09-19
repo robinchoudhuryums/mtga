@@ -39,6 +39,34 @@
 #: notes: Reanimating or blinking Anti-Venom is NOT a workaround — his trigger reads "if he was
 #: notes: cast", so cheating him in leaves a vanilla damage-prevention body.
 #: colors: W
+#: plan: midrange
+#: archetype: MONO-WHITE HERO GO-WIDE, and the engine is +1/+1 COUNTERS SPREAD BOARD-WIDE
+#: archetype: rather than an anthem pile. EIGHT cards put a counter on EACH creature you
+#: archetype: control at once — Leader's Talent at level 3 (on every spell you cast), Origin
+#: archetype: of the Avengers chapter III, Duty Beyond Death, Virtue of Loyalty at each end
+#: archetype: step, Elspeth's 0, Monica Rambeau's back face, Cosmogrand Zenith on your
+#: archetype: second spell each turn, and Abandoned Air Temple, which is a LAND that does it
+#: archetype: — plus Agent Phil Coulson tapping for a counter on each other Hero. THAT PULSE
+#: archetype: IS THE DRAW ENGINE, NOT JUST THE CLOCK, which is what a "go-wide white deck"
+#: archetype: label hides. Mikey & Leo draws when you put a counter on a creature, Exemplar
+#: archetype: of Light draws when counters land on it, Invisible Woman, Sue Storm mints a
+#: archetype: 0/4 Wall when counters land on other Heroes, and Avengers Assemble! draws at
+#: archetype: end step if a Hero attacked or entered — so one board-wide pulse is a card, a
+#: archetype: body and a team pump at once, and card advantage 5 is five REPEATABLE sources
+#: archetype: with no one-shots. Delney doubles the triggered ability of every creature with
+#: archetype: power 2 or less, which is exactly Coulson (2/2), Mikey & Leo (2/2) and
+#: archetype: Cosmogrand Zenith (2/4). A second layer doubles TOKENS twice over — Elspeth,
+#: archetype: Storm Slayer and Exalted Sunborn both read "twice that many of those tokens
+#: archetype: are created instead" — so Okoye's two Soldiers, Elspeth's +1 and a kicked The
+#: archetype: Eagles Are Coming! all arrive doubled. Measured WIDE 7 / tall 5 on a slow 3.33
+#: archetype: curve, interaction 7, board power 52, and protection 8, the joint highest on
+#: archetype: the roster — Captain America's shield counter gives hexproof to you AND your
+#: archetype: other Heroes, over Duty Beyond Death, Sheltered by Ghosts' ward and The
+#: archetype: Sentry's indestructible. DISTINCTNESS vs the roster's other white go-wide
+#: archetype: decks: Knight's Edge wins with anthems and Knight tokens, and Lightwing grows
+#: archetype: a few tall lifelink bodies. This deck goes wide AND grows the whole board,
+#: archetype: then converts the growing into cards. Heirloom is its nearest theme neighbour
+#: archetype: at 89% but is Abzan and fast where this is mono-white and slow.
 #: notes: Mono-white Hero go-wide/counters — Avengers Assemble + Captain America +
 #: notes: Phil Coulson, with a TMT secondary engine (Raph & Leo extra combat,
 #: notes: Mikey & Leo counter-draw, Lita/Don & Leo/Leonardo Big Brother value).

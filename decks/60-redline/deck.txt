@@ -1,4 +1,4 @@
-#: name: Redline
+#: name: Redline (max speed — hit every turn)
 #: format: Standard
 #: arena: 60 Redline, 3ce6b040-075a-4110-9764-3e1f5924c2da
 #: colors: BR

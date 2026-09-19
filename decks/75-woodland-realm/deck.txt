@@ -1,4 +1,4 @@
-#: name: Woodland Realm
+#: name: Woodland Realm (Elf abilities from the yard)
 #: format: Standard
 #: colors: BGU
 #: plan: midrange

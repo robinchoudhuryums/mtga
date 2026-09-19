@@ -1,4 +1,4 @@
-#: name: Frog Sage
+#: name: Frog Sage (Frogs + Rabbits go wide)
 #: format: Standard
 #: arena: 68a Frog Sage: Seer, 1073648b-ed2c-4078-a7c9-940b8ebb49a9
 #: colors: GWU

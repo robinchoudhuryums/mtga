@@ -1,4 +1,4 @@
-#: name: Team Avatar
+#: name: Team Avatar (Ally triggers fire twice)
 #: format: Standard
 #: arena: 78 Team Avatar, 354e2dd0-561f-469e-af48-2f9bc4e6f5f4
 #: colors: GWU

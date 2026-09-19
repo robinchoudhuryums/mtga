@@ -1,4 +1,4 @@
-#: name: Warg and Woodland
+#: name: Warg and Woodland (payoffs gated on power 4)
 #: format: Standard
 #: colors: BG
 #: plan: midrange

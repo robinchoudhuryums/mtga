@@ -1,4 +1,4 @@
-#: name: Grand Larceny
+#: name: Grand Larceny (cast opp's cards)
 #: format: Standard
 #: colors: UB
 #: plan: midrange

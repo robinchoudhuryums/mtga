@@ -1,4 +1,4 @@
-#: name: Treasure Planet
+#: name: Treasure Planet (Treasures as currency)
 #: format: Standard
 #: arena: 58 Treasure Planet, 4f83c097-3c1f-4c01-b5c9-44f3463e7960
 #: colors: BRG

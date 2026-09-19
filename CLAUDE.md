@@ -450,8 +450,8 @@ is protecting.
   **THE LIST IS A WINDOW AND THE RANKING IS THEME FIT, so read a card's ABSENCE as neither
   (BS10-05).** The footer counted the TRUNCATION, so it read "20 suggestion(s)" whether the
   ranking held 20 candidates or 958; it now prints "top N of M ranked candidate(s)"
-  (`--limit 0` for all). Why it matters is measured, not asserted: across **836 applied swaps
-  that recorded a rank for the card ADDED, the MEDIAN rank is 422** and only **11%** fell
+  (`--limit 0` for all). Why it matters is measured, not asserted: across **854 applied swaps
+  that recorded a rank for the card ADDED, the MEDIAN rank is 419** and only **11%** fell
   inside the default top 20. `deck.py feedback` reports that distribution. A card chosen for
   a mechanical interaction the tags do not encode ranks far down BY CONSTRUCTION — a
   different problem from the theme gate G-38 describes, and K-15 was its largest single
@@ -644,7 +644,7 @@ is protecting.
   line, `·tapped?`, and `_land_value`'s premium): a shockland's condition is payable AT
   WILL so it earns the premium, a board-state one stays conservative.
   **NONLAND sources are DISCLOSED since 2026-09-18, never counted**: `consistency` prints
-  `ⓘ N NONLAND mana source(s) are NOT in the counts above` (**75 of 112 decks**). The
+  `ⓘ N NONLAND mana source(s) are NOT in the counts above` (**76 of 112 decks**). The
   exclusion is right — a rock is not a land drop — but its SILENCE was not, because
   `suggest --ramp` recommends exactly what this count cannot see, and decks 23 and 41 had
   each hand-written the workaround into their own `#: notes:` before the tool said it.

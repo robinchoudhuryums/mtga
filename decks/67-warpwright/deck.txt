@@ -1,4 +1,4 @@
-#: name: Kid Flash
+#: name: Kid Flash (warp + plot free-casts)
 #: format: Standard
 #: colors: GWU
 #: plan: midrange

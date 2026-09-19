@@ -1,4 +1,4 @@
-#: name: Paradox Drive
+#: name: Paradox Drive (ramp into one big X-spell)
 #: format: Standard
 #: colors: GU
 #: archetype: Simic (G/U) big-mana ramp-CONTROL — ramp + a counter/removal shell into a

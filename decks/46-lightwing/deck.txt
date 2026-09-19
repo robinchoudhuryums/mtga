@@ -1,4 +1,4 @@
-#: name: Lightwing
+#: name: Lightwing (growing lifelink bodies)
 #: format: Standard
 #: colors: W
 #: plan: midrange

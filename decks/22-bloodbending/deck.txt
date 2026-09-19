@@ -1,4 +1,4 @@
-#: name: Bloodbending
+#: name: Bloodbending (mill control)
 #: format: Standard
 #: arena: 22 Bloodbending, 6904238a-f5a2-49d9-967c-547167fecec2
 #: tier: B — Dimir mill / graveyard-value control. RE-GRADED UP from C: the C rested on

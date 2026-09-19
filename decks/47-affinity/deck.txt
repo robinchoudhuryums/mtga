@@ -1,4 +1,4 @@
-#: name: Grid Overload
+#: name: Grid Overload (artifacts make spells cheap)
 #: format: Standard
 #: arena: 47 Grid Overload, 6ff4a40e-08bf-41a1-b7ed-3d36ad518807
 #: colors: U

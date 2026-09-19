@@ -157,7 +157,6 @@ Firebender Ascension
 Firebending Student
 Flamehold Grappler
 Flamekin Gildweaver
-Flexible Waterbender
 Flopsie, Bumi's Buddy
 Flowerfoot Swordmaster
 Fog Bank
@@ -180,7 +179,6 @@ Ghired, Mirror of the Wilds
 Ghost, Spectral Saboteur
 Ghostly Keybearer
 Giant Cindermaw
-Giant Koi
 Gilgamesh, Master-at-Arms
 Glamer Gifter
 Glider Kids
@@ -446,13 +444,13 @@ Treeguard Duo
 Treetop Snarespinner
 Triceraton Commander
 Turtle-Duck
-Turtles in Time
 Ty Lee, Artful Acrobat
 Ultron Drone
 Umbral Collar Zealot
 Underwater Tunnel // Slimy Aquarium
 United Front
 Unstable Experiment
+Unstoppable Plan
 Unstoppable Slasher
 Utrom Scientists
 Vastlands Scavenger // Bind to Life

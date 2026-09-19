@@ -537,6 +537,26 @@ def owned(by_name_qty, name):
 # --------------------------------------------------------------------------- #
 # Commands
 # --------------------------------------------------------------------------- #
+# A `#: name:` may carry a trailing "(...)" GLOSS — the one-line premise the roster adds
+# so a creative name still says how the deck works ("Hoofprint (creatures are the mana)").
+# Fixed-width roster columns have to degrade somewhere, and chopping mid-gloss is the worst
+# of the options: `wildcards` used a blind `[:26]`, which already truncated real names
+# ("One Fell Swoop — Executioner's Song" -> "One Fell Swoop — Executione"). Drop the whole
+# gloss before touching the NAME, since the name is what the reader matches on.
+_NAME_GLOSS_RE = re.compile(r"\s*\([^()]*\)\s*$")
+
+
+def display_name(name, width):
+    """A deck name fitted to `width`: full, else un-glossed, else truncated with '…'."""
+    name = (name or "").strip()
+    if len(name) <= width:
+        return name
+    bare = _NAME_GLOSS_RE.sub("", name).strip()
+    if len(bare) <= width:
+        return bare
+    return bare[:max(1, width - 1)].rstrip() + "…"
+
+
 def _deck_identity(meta, width=92):
     """One-line 'meant-for' summary for `list`: the `#: archetype:` field if the
     deck declares one, else the first sentence of its `#: notes:`. '' if neither."""
@@ -754,7 +774,7 @@ def cmd_wildcards(args):
                                            len(d["id"]), d["id"]))
     for d in ordered:
         shorts = deck_short[d["id"]]
-        label = (d["name"] or d["id"])[:26]
+        label = display_name(d["name"] or d["id"], 26)
         total = sum(m for _, m in shorts)
         if total == 0:
             print(f"{d['id']:>5}  {label:26}  buildable ✓")
@@ -1983,7 +2003,20 @@ _ROLE_PATTERNS = {
                 # "each player sacrifices all other creatures they control" (Bringer of
                 # the Last Gift) is a wrath by another name; so is "two"/"X"/"half".
                 r"each (?:player|opponent) sacrifices (?:all|two|three|four|x|half)"
-                r"(?: of)?(?: the)? (?:other )?(?:creatures|permanents)"],
+                r"(?: of)?(?: the)? (?:other )?(?:creatures|permanents)",
+                # MASS BOUNCE is a wrath by another name and scored NOTHING, while
+                # `destroy all` and `exile all` above scored Sweeper and SINGLE-target
+                # bounce ("return target creature an opponent controls…") scored Removal —
+                # the family-disagreement shape G-67 says to check first. 22 pool cards,
+                # every one of them a real board wipe (Whelming Wave, Crush of Tentacles,
+                # Upheaval, Aetherize). The `owner(?:s'|'s)` alternation is load-bearing:
+                # the first measurement of this family used `owners?'?` and silently MISSED
+                # the singular possessive, which is the spelling Aetherize — the card that
+                # prompted the fix — actually uses, so the count read 18 against a real 22.
+                # Graveyard recursion is excluded by construction, since it returns cards
+                # "to YOUR hand", never "to their owner's hand"; 0 pool cards scope a mass
+                # bounce to permanents YOU control, so no self-blink is swept up.
+                r"return all [^.]{0,80}?to (?:their|its) owner(?:s'|'s) hands?"],
     # "counter up to one target spell unless…" (Repulsive Mutation) matched neither
     # this pattern NOR the broad coverage net below, so it scored zero roles AND was
     # never flagged as an under-read — the worst case, a miss invisible to the very
@@ -9543,7 +9576,10 @@ def cmd_audit(args):
 
     print(f"Deck roster audit — {len(scored)} decks "
           f"(offline triage; full-tune only the flagged ones)\n")
-    name_w = min(32, max(4, max((len(r["name"]) for r in rows), default=4)))
+    # Cap raised 32 -> 48 for the `#: name:` gloss (see `display_name`): the column
+    # AUTO-SIZES to the longest name present, so an unglossed roster is unchanged and a
+    # glossed one widens only as far as it must. Longest today is 46.
+    name_w = min(48, max(4, max((len(r["name"]) for r in rows), default=4)))
     hdr = (f"  {'ID':<4}  {'Deck':<{name_w}}  {'Tier':<4}  {'Sz':>3}  {'Own':<4}  {'Legal':<5}  "
            f"{'Cast':<7}  {'Int':>3}  {'Thm':>3}  {'Pld':>3}  Action")
     print(hdr)
@@ -9551,7 +9587,8 @@ def cmd_audit(args):
     for r in rows:
         label = {"TUNE": "★ TUNE", "craft": "craft", "review": "review", "ok": "ok"}[r["verdict"]]
         action = label + (f" — {r['why']}" if r["why"] else "")
-        print(f"  {r['id']:<4}  {r['name'][:name_w]:<{name_w}}  {(r['tier'] or '·'):<4}  "
+        print(f"  {r['id']:<4}  {display_name(r['name'], name_w):<{name_w}}  "
+              f"{(r['tier'] or '·'):<4}  "
               f"{r['sz']:>3}  {r['own']:<4}  {r['legal']:<5}  {r['cast']:<7}  {r['int']:>3}  "
               f"{r['thm']:>3}  {(str(r['played']) if r['played'] else '·'):>3}  {action}")
 
@@ -13348,14 +13385,23 @@ def _roster_deck_names(_cache={}):
         names = set()
         for rec in discover_decks():
             nm = (rec.get("name") or "").strip()
+            # A trailing "(...)" is the repo-side PREMISE GLOSS, never how prose cites the
+            # deck — so the BARE name is what has to mask. This is G-27's "a rename is a
+            # suppression change" arriving as predicted: glossing deck 1 to "Black Sun
+            # (sacrifice tokens for reach)" stopped "Black Sun" matching, and 44a's
+            # distinctness clause — a claim about DECK 1 — flagged against 44a's own card
+            # advantage within the same run. Both forms are registered: prose cites the
+            # bare name, and masking the glossed one costs nothing.
+            bare = _NAME_GLOSS_RE.sub("", nm).strip()
             # Split a decorated title ("Blood Price — Orzhov Aristocrats") so the core
             # name masks too; drop short fragments that would mask real prose.
-            for part in re.split(r"\s+[—–-]\s+", nm):
+            for part in re.split(r"\s+[—–-]\s+", bare):
                 part = part.strip()
                 if len(part) >= _RATIONALE_MIN_LEN or " " in part:
                     names.add(part)
-            if nm:
-                names.add(nm)
+            for whole in (nm, bare):
+                if whole:
+                    names.add(whole)
         _cache["names"] = sorted(names, key=len, reverse=True)
     return _cache["names"]
 

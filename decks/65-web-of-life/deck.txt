@@ -1,4 +1,4 @@
-#: name: Web of Life
+#: name: Web of Life (Spiders re-buy ETBs)
 #: format: Standard
 #: colors: GWU
 #: plan: midrange

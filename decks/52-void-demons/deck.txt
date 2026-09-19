@@ -1,4 +1,4 @@
-#: name: Void Demons
+#: name: Void Demons (something leaves every turn)
 #: format: Standard
 #: arena: 52 Void Demons, 87b2d0ff-cb92-4665-9606-bad230e9d0c3
 #: colors: B

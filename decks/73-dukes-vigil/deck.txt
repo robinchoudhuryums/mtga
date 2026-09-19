@@ -1,4 +1,4 @@
-#: name: Duke's Vigil
+#: name: Duke's Vigil (tap self for value)
 #: format: Standard
 #: colors: WGR
 #: plan: midrange

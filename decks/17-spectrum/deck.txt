@@ -1,4 +1,4 @@
-#: name: Spectrum
+#: name: Spectrum (5c good-stuff)
 #: format: Standard
 #: tier: C — 5-color superhero goodstuff. The old rationale capped this on "thin
 #: tier: interaction (2)"; that figure was a classifier under-read and the live vector is

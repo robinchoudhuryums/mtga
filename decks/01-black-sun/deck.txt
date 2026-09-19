@@ -1,4 +1,4 @@
-#: name: Black Sun
+#: name: Black Sun (sac tokens for reach)
 #: format: Standard
 #: tier: A — Rakdos aggro-sacrifice; low curve + 10 interaction + reach — fast and consistent
 #: colors: BR

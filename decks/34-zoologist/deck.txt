@@ -1,4 +1,4 @@
-#: name: Zoologist
+#: name: Zoologist (changelings are every type)
 #: format: Standard
 #: tier: B — Simic changeling / Diligent-Zookeeper type-count deck; the metrics floor now reads A, not B (interaction 9, card advantage 5
 #: tier: — an older note claimed it was "under-read as 0". CORRECTED TWICE since, and both

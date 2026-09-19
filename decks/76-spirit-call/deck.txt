@@ -1,4 +1,4 @@
-#: name: Spirit Call
+#: name: Spirit Call (5c Dragons, alt-win)
 #: format: Standard
 #: colors: WUBRG
 #: plan: midrange
