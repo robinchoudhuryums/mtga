@@ -36,6 +36,43 @@
 #: tier: needs a turn of setup before the currency flows. The floor may read
 #: tier: higher; hold the letter until real games show the engine's speed. The
 #: tier: known structural risk: mass artifact removal cashes out the whole board.
+#: notes: 2026-09-20 — MANABASE. Out: Restless Ridgeline, Razortrap Gorge, Temple of
+#: notes: Malady, 1 Mountain, 1 Swamp. In: 3 Dark Fortress, 2 Mirage Mesa. B 11 -> 13,
+#: notes: R 11 -> 13, G 12 (flat), cards under 90% on curve 31 -> 21, and the unconditional
+#: notes: tapland count is unchanged at 2. Zero wildcards — every card was already owned.
+#: notes: THE FIND WAS A FREE ONE: Dark Fortress is the BR member of the very cycle this
+#: notes: deck already played three of (Training Compound is the GR one — same clause,
+#: notes: enters untapped), it was owned x4 and in SEVEN other decks, and this deck ran
+#: notes: ZERO while B and R were its two scarcest colours at 11 each. There is no BG
+#: notes: member in Standard, so that cycle offers nothing further here.
+#: notes: READ THE 50.7% ON MUTAGEN MAN AS A MODEL ARTIFACT, NOT A MANABASE FAULT (G-60).
+#: notes: `consistency` prices {X} at 0, so {X}{G}{G} books as a TURN-TWO double-green
+#: notes: requirement for a card you cast on turn four or five for X=2-3. It says "want 24
+#: notes: G sources", which is impossible in a 24-land three-colour deck. The honest worst
+#: notes: card is Aatchik {B}{B}{G} on turn five, 60.8% -> 70.3%; the T5 trio (Liliana,
+#: notes: Gisa, Stone-Giant) went 65.1% -> 75.3%. Both X-cost cards are listed by `stats`.
+#: notes: THE CEILING ON THIS APPROACH IS THE BASIC GATE, and no tool prices it: Dark
+#: notes: Fortress and Training Compound both read "Activate only if this land entered this
+#: notes: turn or if you control a basic land". At 10 basics with six gated lands,
+#: notes: P(you control a basic) is 67% on turn two and 82% on turn three; below that those
+#: notes: six make only {C}. That is why the basics stop at 10 rather than being cut
+#: notes: further for duals — it is the limit, not a detail.
+#: notes: TWO COSTS, STATED RATHER THAN BURIED. Restless Ridgeline was a MANLAND (a 3/4
+#: notes: Dinosaur that pumps and untaps an attacker), so this is not a free cut; it went
+#: notes: because it was an unconditional tapland AND the deck's soonest rotator (~2026).
+#: notes: And Mirage Mesa enters tapped unconditionally — two of them are the price paid
+#: notes: for holding G at 12 while B and R climb. Razortrap Gorge's "unless a player has
+#: notes: 13 or less life" is false in the turns that matter (G-37: read the clause against
+#: notes: THIS deck), so it was a tapland when it counted.
+#: notes: FOUNTAINPORT WAS NEARLY CUT AND SHOULD NOT BE. It is the only land here making no
+#: notes: coloured mana, which on the colour axis reads as the obvious cut — but {4},{T}:
+#: notes: create a Treasure and {2},{T}, sacrifice a token: draw a card make it a treasure
+#: notes: ENGINE in a land slot, on-theme three ways in a deck whose thesis is tokens as
+#: notes: currency. G-61: count the deck property the card's value depends on first.
+#: notes: Mirage Mesa makes `deck.py mana` report W 2 / U 2 — lands producing colours
+#: notes: nothing here casts. That does NOT widen `#: colors:` (G-58); castability passes.
+#: notes: MEASURED AND NOT TAKEN: a third Mirage Mesa in place of a Dark Fortress reads
+#: notes: B 12 / R 12 / G 13 and 26 under 90 — better green, worse everything else.
 #: notes: BUILT from the 55-mardu addendum follow-up: the whole-pool payoff count
 #: notes: (108 treasure/artifact-sac payoffs, 75 producers in standard RGBW) that
 #: notes: made the concept viable, after the pile-only read had rejected RGB. Key
@@ -209,13 +246,12 @@
 1 Wastewood Verge (DFT) 268
 1 Thornspire Verge (DSK) 270
 1 Blazemire Verge (DSK) 256
-1 Razortrap Gorge (DSK) 267
-1 Restless Ridgeline (LCI) 283
+3 Dark Fortress (MSH) 264
 1 Fountainport (BLB) 253
-1 Temple of Malady (FDN) 700
-3 Mountain (MSH) 293
+2 Mountain (MSH) 293
+2 Mirage Mesa (OTJ) 262
 3 Training Compound (MSH) 275
-5 Swamp (MSH) 291
+4 Swamp (MSH) 291
 1 Overgrown Tomb (ECL) 266
 4 Forest (MSH) 296
 
