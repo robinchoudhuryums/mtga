@@ -128,7 +128,6 @@ Dream Harvest
 Dream Seizer
 Dreams of Laguna
 Drix Fatemaker
-Duskwatch Hunter
 Dwalin, Weaponmaster
 Earth Kingdom Soldier
 Earth's Mightiest Heroes
@@ -242,6 +241,7 @@ Krenko, Mob Boss
 Krumar Initiate
 Kyoshi Warriors
 Lake-town Toymaker
+Large Bear
 Leader, Super-Genius
 Leonardo, Big Brother
 Leyline of Mutation

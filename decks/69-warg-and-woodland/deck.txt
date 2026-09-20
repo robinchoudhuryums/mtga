@@ -2,18 +2,22 @@
 #: format: Standard
 #: colors: BG
 #: plan: midrange
-#: tier: B — PROVISIONAL, and deliberately graded UNDER the metrics floor, which reads
-#: tier: A. The floor is earned honestly (interaction 5, card advantage 5) but it cannot
-#: tier: see this deck's single point of failure: 8 card names / 11 copies do nothing
-#: tier: until a power-4 body is on the board, and only 7 creatures are PRINTED at power
-#: tier: 4 or greater. One well-timed removal spell on the enabler switches off a third
-#: tier: of the deck at once, which is not a weakness any deck at A carries. Against
-#: tier: that: the gate is checked at ATTACK time, so a pumped body qualifies, and the
-#: tier: deck has many ways to pump — Spider-Ham lifts every Wolf and Bear, Beorn lifts
-#: tier: Bears by +2/+2 and converts one creature per combat into a Bear, and Wilderland
-#: tier: Scrounger counters the whole board on a satisfied attack. Also unplayed and
-#: tier: heavily unbuilt. Re-grade upward once the gate has been tested in real games —
-#: tier: if it turns on reliably this is an A, and if it doesn't it is a C.
+#: tier: B — and the ARGUMENT behind it inverted on 2026-09-20, so read this before
+#: tier: re-grading. It used to say the deck was held under the floor by its own gate:
+#: tier: 8 names did nothing until a power-4 body was out, against only 6 creature
+#: tier: copies PRINTED at power 4 or greater. That gap is CLOSED — Railway Brawler,
+#: tier: Large Bear, Gigantic Big Bear and Warden of the Grove took the printed count
+#: tier: to 9 of 27 against 8 gated copies, and `deck.py stats` no longer raises the
+#: tier: power-4 thinness flag on this deck at all (neither figure is one the rationale
+#: tier: audit can price, so they are hand-counted and dated). What caps it now is the
+#: tier: OPPOSITE axis, and the same swaps spent it: interaction 4 and card advantage
+#: tier: 4 are the floor's own two terms, early drops 10, and `suggest --needs` reads
+#: tier: interaction SHORT. The gate is still checked at ATTACK time, so a pumped body
+#: tier: qualifies — Spider-Ham lifts every Wolf and Bear, Beorn lifts Bears by +2/+2
+#: tier: and converts one creature per combat into a Bear, and Wilderland Scrounger
+#: tier: counters the whole board on a satisfied attack. Still unplayed. RE-GRADE
+#: tier: CANDIDATE, pending the human call: this letter now sits ON the metrics floor
+#: tier: rather than under it, and recovering interaction is what would move it.
 #: archetype: GOLGARI FEROCIOUS — a Wolf tribal shell whose payoffs are gated on "a
 #: archetype: creature with power 4 or greater," and a Bear package that exists to TURN
 #: archetype: THAT GATE ON. The Bears are the cheapest reliable way to satisfy it:
@@ -25,8 +29,8 @@
 #: archetype: is the gate, not the tribe: no other roster deck is built around a
 #: archetype: threshold that its own second subtheme exists to clear. Card advantage all
 #: archetype: routes through the same gate (The Chief Warg on a satisfied attack,
-#: archetype: Garruk's Uprising when a power-4 creature enters, Hunter's Talent at level
-#: archetype: three), which is why the tier is capped rather than raised by it.
+#: archetype: Garruk's Uprising when a power-4 creature enters), which is why the tier
+#: archetype: is capped rather than raised by it.
 #: protect: Beorn the Fierce; The Chief Warg; Wilderland Scrounger; Spider-Ham, Peter Porker; Dancing from Dark to Dawn; The Earth King
 #: notes: WHITE WAS TESTED AND REJECTED (2026-08-12). The concept pile offered Tolsimir,
 #: notes: Midnight's Light; Rinoa Heartilly; Wylie Duke, Atiin Hero; Veteran Beastrider;
@@ -86,7 +90,7 @@
 1 Railway Brawler (OTJ) 175
 1 Ravening Warg (HOB) 80
 1 The Earth Crystal (FIN) 184
-1 Duskwatch Hunter (HOB) 153
+1 Large Bear (HOB) 159
 1 Leatherhead, Swamp Stalker (TMT) 117
 1 Gigantic Big Bear (HOB) 126
 1 Chief Warg's Company (HOB) 151
@@ -110,6 +114,7 @@
 1 Sazh Katzroy (FIN) 199
 1 Kraven the Hunter (SPM) 133
 1 Dancing from Dark to Dawn (HOB) 123
+1 Twitching Doll (DSK) 201
 
 # ── Card advantage off the gate ─────────────────────
 1 Radagast of Rhosgobel (HOB) 136
@@ -117,7 +122,6 @@
 1 Inspiring Call (TLE) 168
 
 # ── Interaction ─────────────────────────────────────
-1 Hunter's Talent (BLB) 179
 1 Warg Tactics (HOB) 139
 1 Felling Blow (FDN) 105
 1 Unforgiving Aim (ECL) 200
