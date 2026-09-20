@@ -454,7 +454,7 @@ is protecting.
   **THE LIST IS A WINDOW AND THE RANKING IS THEME FIT, so read a card's ABSENCE as neither
   (BS10-05).** The footer counted the TRUNCATION, so it read "20 suggestion(s)" whether the
   ranking held 20 candidates or 958; it now prints "top N of M ranked candidate(s)"
-  (`--limit 0` for all). Why it matters is measured, not asserted: across **858 applied swaps
+  (`--limit 0` for all). Why it matters is measured, not asserted: across **859 applied swaps
   that recorded a rank for the card ADDED, the MEDIAN rank is 417** and only **11%** fell
   inside the default top 20. `deck.py feedback` reports that distribution. A card chosen for
   a mechanical interaction the tags do not encode ranks far down BY CONSTRUCTION — a
@@ -933,9 +933,9 @@ is protecting.
   two primitives the ◊ list and the effective figure already use so the three cannot
   disagree (G-40). **DISCLOSURE, never pricing** — report-only for G-25/G-60's reason, and do
   not "finish" it by feeding `tier_band`. **`_UNPRICED_DISCLOSE_FLOOR = 3` is p75 of its own
-  axis, not 1**: across the **50 decks that print an effective figure** the unpriced count
+  axis, not 1**: across the **51 decks that print an effective figure** the unpriced count
   runs p25 1 / p50 2 / p75 3 / p90 5 / max 11, so a floor of 1 fires on 80% (the G-07
-  saturation shape) against **15 of 50 (30%)** at 3. BOTH figures are registered in
+  saturation shape) against **16 of 51 (31%)** at 3. BOTH figures are registered in
   `figure_drift`, which is what caught the population move when impending joined. [G-85]
 - **BOARD PRESENCE IS AN AXIS AND NOTHING HERE MEASURED IT until 2026-09-18.** The tier
   floor reads interaction + card advantage, `cuts` reads theme fit and role credit, and
