@@ -3,29 +3,41 @@
 #: arena: 79 Gambit's Draw, 2fde6f4f-8de8-49a5-8a44-0980735f14c6
 #: colors: WU
 #: plan: midrange
-#: tier: B (PROVISIONAL) — deliberately one band UNDER the metrics floor, which reads A on interaction 7 +1?
-#: tier: (5 instant-speed, 4 able to answer a noncreature permanent) — EXACTLY the A-floor threshold of seven, with nothing to
-#: tier: spare — card advantage 21 (8 repeatable) and protection 3 on a 3.11 curve with 24 lands (worst cast-on-curve is
-#: tier: Yangchen's {W}{W} at 79.5% on T5; keepable 84% and `consistency` says no land count improves it). Graded under the
-#: tier: floor for four things it cannot see: (1) UNPLAYED AND UNBUILT — 10 craft targets including the keystone (Scrawling
-#: tier: Crawler) and The Unagi. (2) THE ENGINE IS SYMMETRIC — Crawler and Gleaming Splendor hand the opponent cards every
-#: tier: turn they are out. (3) INTERACTION AT THE EDGE — the 2026-09-11 copy package (Clone Saga / Ember Island / Impostor
-#: tier: Syndrome, less Ember Island) went in over two answers and a 1-drop; one more answer out and the floor drops a band, and the deck's answers
-#: tier: to a resolved threat are Into the Roil, Sheltered by Ghosts and Jane's tap-blink. (4) FIVE CARDS ROTATE within the
-#: tier: window (Vnwxt, Mu Yanling, Enduring Curiosity, Three Steps Ahead, Restless Anchorage). DISTINCTNESS, stated not
-#: tier: hidden: `similar` read 91% against 43 Uatu The Watcher on ✦card draw + ✦tokens at the draft (10 shared nonland
-#: tier: cards then); the identities differ on colours (WU vs WUB) and win-con (evasive second-draw creatures and copies vs
-#: tier: the Grimoire hand-size lock). Re-grade after 20 matches.
+#: tier: B (PROVISIONAL, AND NOW A RE-GRADE CANDIDATE) — still one band under the metrics floor, which reads A on
+#: tier: interaction 8 +1? and card advantage 19 (protection 3, board power 52, a 3.25 printed curve / 3.19 effective,
+#: tier: 24 lands; keepable 84% and `consistency` says no land count improves it). THREE OF THE FOUR REASONS THIS WAS
+#: tier: GRADED UNDER THE FLOOR HAVE WEAKENED, which is why the letter is now a question rather than a settled call.
+#: tier: (1) It is FULLY OWNED as of 2026-09-20 — the "10 craft targets including the keystone" clause was true at the
+#: tier: draft and is not now; what remains is UNPLAYED, at n=2. (2) THE SYMMETRIC ENGINE IS HALVED — Gleaming Splendor
+#: tier: was cut on 2026-09-20, and its trigger was literally "whenever an OPPONENT draws their second card"; Scrawling
+#: tier: Crawler alone still hands them cards. (3) INTERACTION IS NO LONGER AT THE EDGE — it was EXACTLY the A-floor
+#: tier: threshold of seven with nothing to spare; Bilbo's adventure half took it to 8, so there is one point of slack
+#: tier: for the first time, and the answers to a resolved threat are now Into the Roil, Sheltered by Ghosts, Celebrate
+#: tier: the Mountain-king's O-Ring, Marang's double bounce and Jane's tap-blink. (4) UNCHANGED — FIVE CARDS ROTATE
+#: tier: within the window (Vnwxt, Mu Yanling, Enduring Curiosity, Three Steps Ahead, Restless Anchorage), two of them
+#: tier: ~2026. THE REAL RESIDUAL IS THE EARLY GAME, diagnosed 2026-09-20 and NOT yet fixed: five unconditional
+#: tier: taplands put a tapped land in the first two land drops 38% of the time, and the cheap creatures are engine
+#: tier: pieces (1/1s and 2/1s) rather than blockers. DISTINCTNESS, stated not hidden: `similar` read 91% against 43
+#: tier: Uatu The Watcher on ✦card draw + ✦tokens at the draft (10 shared nonland cards then); the identities differ on
+#: tier: colours (WU vs WUB) and win-con (evasive second-draw creatures and copies vs the Grimoire hand-size lock).
+#: tier: Re-grade after 20 matches — or sooner, on points 1-3 above.
 #: archetype: Azorius (W/U) "draw your second card each turn" value-midrange. Nine payoffs that trigger on the second
 #: archetype: draw of a turn (Kid Loki, Mischievous Mystic, Knowledge Seeker,
 #: archetype: Astrologian's Planisphere, Bard the Bowman, Clinquant Skymage,
 #: archetype: Ravenhill Flock, Lake-town Toymaker, Homunculus Horde) over a GUARANTEED second draw: Scrawling
-#: archetype: Crawler's upkeep "each player draws" makes the draw step card two every turn for free, Gleaming
-#: archetype: Splendor's {2}{W} hands both players a card on demand (turning on The Unagi and its own Treasure),
-#: archetype: Vnwxt and Bard, King of Dale double draws. A Clue layer (Air Nomad Legacy, The Mechanist,
+#: archetype: Crawler's upkeep "each player draws" makes the draw step card two every turn for free, Bilbo's
+#: archetype: unblockable combat-damage loot supplies one every attack, and Vnwxt and Bard, King of Dale double
+#: archetype: draws. GLEAMING SPLENDOR WAS CUT 2026-09-20 from this enabler slot — its trigger read "whenever an
+#: archetype: OPPONENT draws their second card", i.e. it was half of the symmetric-engine cost the tier block names,
+#: archetype: and Bilbo replaces it as a guaranteed source that feeds only you. A Clue layer (The Mechanist,
 #: archetype: Knowledge Seeker), Kitsa's loot and Super Intelligence supply the second draw when the engine is not out,
 #: archetype: Spirit Water Revival's waterbend (tap six of the wide board: draw SEVEN) is the burst turn, and
 #: archetype: 10 fliers carry the damage; Enduring Curiosity and Mu Yanling turn connecting fliers into more draws.
+#: archetype: AIR NOMAD LEGACY WAS CUT 2026-09-20 for Marang River Regent, and the cost is a real one no metric
+#: archetype: prices: its +1/+1 anthem covered all ten of those fliers, and `board_power` reads PRINTED power, so
+#: archetype: the +8 that swap shows understates what was given up. What it buys is a 6/7 flying body, an ETB that
+#: archetype: bounces two nonland permanents, and an Omen half ({3}{U}: draw three, discard one, shuffle back) that
+#: archetype: makes the card an instant-speed second-draw enabler early and a two-for-one threat late.
 #: archetype: PLAN (re-grounded 2026-09-11 after the day's tunes took avg MV 2.64 → 3.14): a value-midrange deck, no longer
 #: archetype: tempo — cheap payoffs that grow, a COPY layer that gets around the legend rule on the deck's 11 legends (The Clone
 #: archetype: Saga copies the SPELL so a second Wan Shi Tong keeps its X; Impostor Syndrome tokens every connecting nontoken
@@ -34,7 +46,7 @@
 #: archetype: decks are 43 (WUB hand-size control), 12 (UB draw control), 37 (UBR Wizard storm) and 60a (UB
 #: archetype: speed-drain); this is the first WU one and the first built on the second-card TRIGGER as its
 #: archetype: creature base rather than as a control payoff. Card overlap with the closest (43) is 8 of 36.
-#: protect: Scrawling Crawler; Gleaming Splendor; Bard, King of Dale; Air Nomad Legacy; The Unagi of Kyoshi Island
+#: protect: Scrawling Crawler; Bard, King of Dale; The Unagi of Kyoshi Island
 #: notes: 2026-09-10 — drafted from the UW pile analysis (.cycle/uw-equipment-analysis.md §6A, option A). The pile
 #: notes: was framed as blue EQUIPMENT; 60 of its 67 non-equipment cards mention drawing, and the repeated shape was the
 #: notes: second-card trigger — F10 (a repeated rejection reason is the deck asking to be built). Pool measurement behind
@@ -123,7 +135,7 @@
 
 # Engine — the guaranteed second draw
 1 Scrawling Crawler (FDN) 132
-1 Gleaming Splendor (HOB) 15
+1 Bilbo, Luckwearer // Burglar's Plot (HOB) 32
 1 Vnwxt, Verbose Host (DFT) 73
 1 The Unagi of Kyoshi Island (TLA) 77
 1 Bard, King of Dale (HOB) 144
@@ -142,7 +154,7 @@
 1 Moonlit Meditation (EOE) 69
 
 # Clues, cantrips and combat draw
-1 Air Nomad Legacy (TLA) 206
+1 Marang River Regent // Coil and Catch (TDM) 51
 1 The Mechanist, Aerial Artisan (TLA) 64
 1 The Legend of Yangchen // Avatar Yangchen (TLA) 27
 1 Enduring Curiosity (DSK) 51
@@ -153,14 +165,14 @@
 1 The Arkenstone // Seek the Heart (HOB) 170
 1 Spirit Water Revival (TLA) 73
 1 Wan Shi Tong, Librarian (TLA) 78
-1 Waterbending Scroll (TLA) 81
+1 Drake Hatcher (FDN) 35
 
 # Copies — around the legend rule
 1 The Clone Saga (MSC) 782
 1 Impostor Syndrome (SPM) 34
 
 # Interaction
-1 Refute (FDN) 48
+1 Celebrate the Mountain-king (HOB) 7
 1 Into the Roil (FDN) 509
 1 Glen Elendra Guardian (ECL) 51
 1 Confusticate and Bebother (HOB) 35
