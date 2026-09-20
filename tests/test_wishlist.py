@@ -668,6 +668,72 @@ class TestLandBreadthAboveTwo:
         gain3 = wishlist._land_value(self._land(self.FETCH), three)
         assert gain5 - gain3 <= wishlist._LAND_BREADTH_CAP
 
+class TestConditionalTaplandsSplitByWhenTheConditionIsMet:
+    """The `conditional` bucket held FOUR behaviours with OPPOSITE early-game profiles and
+    scored them identically (2026-09-20). Measured over the pool's 87 conditional lands:
+    fastlands (11) are untapped turns 1-3, basic-gated checklands (35) are untapped from
+    turn two in any deck with a real basic count, slowlands (10) are tapped turns 1-3, and
+    a board state like "13 or less life" (10) is tapped exactly when you want it untapped.
+    `tapland_profile`'s docstring already named that last case, so the project had half the
+    distinction written down and no way to act on it."""
+
+    # Real oracle text (Seachrome Coast / Clifftop Retreat / Shipwreck Marsh shapes).
+    FAST = ("This land enters tapped unless you control two or fewer other lands.\n"
+            "{T}: Add {W} or {U}.")
+    CHECK = ("This land enters tapped unless you control a Plains or an Island.\n"
+             "{T}: Add {W} or {U}.")
+    CHECK_BASIC = ("This land enters tapped unless you control a basic land.\n"
+                   "{T}: Add {W} or {U}.")
+    SLOW = ("This land enters tapped unless you control two or more other lands.\n"
+            "{T}: Add {W} or {U}.")
+    UNTAPPED = "{T}: Add {W} or {U}."
+
+    def _l(self, t):
+        return {"Card Text": t, "Color(s)": "W/U"}
+
+    def test_a_fastland_scores_as_untapped(self):
+        """Untapped on turns 1-3 BY CONSTRUCTION — the exact window fixing is for. Same
+        reasoning that already admits a shockland's pay-at-will clause."""
+        two = {"W", "U"}
+        assert (wishlist._land_value(self._l(self.FAST), two)
+                == wishlist._land_value(self._l(self.UNTAPPED), two))
+
+    def test_a_slowland_stays_conservative(self):
+        """Its condition is false precisely when tempo matters, so it must NOT be swept up
+        with the fastland — the two differ by one word ('fewer' vs 'more')."""
+        two = {"W", "U"}
+        assert (wishlist._land_value(self._l(self.SLOW), two)
+                < wishlist._land_value(self._l(self.UNTAPPED), two))
+
+    def test_a_checkland_needs_the_caller_to_supply_the_basic_count(self):
+        """`basics=None` means UNKNOWN and stays conservative, which is what keeps every
+        caller that does not opt in (notably `wishlist --rank`, which has no deck) scoring
+        exactly as it did before."""
+        two = {"W", "U"}
+        for txt in (self.CHECK, self.CHECK_BASIC):
+            assert (wishlist._land_value(self._l(txt), two)
+                    < wishlist._land_value(self._l(self.UNTAPPED), two))
+
+    def test_a_checkland_earns_the_premium_once_the_deck_clears_the_floor(self):
+        two = {"W", "U"}
+        full = wishlist._land_value(self._l(self.UNTAPPED), two)
+        for txt in (self.CHECK, self.CHECK_BASIC):
+            rich = wishlist._land_value(
+                self._l(txt), two, basics=wishlist._CHECKLAND_BASIC_FLOOR)
+            poor = wishlist._land_value(
+                self._l(txt), two, basics=wishlist._CHECKLAND_BASIC_FLOOR - 1)
+            assert rich == full
+            assert poor < full
+
+    def test_basics_never_promote_a_slowland_or_a_board_state(self):
+        """The opt-in must be scoped to the checkland family — a basic count says nothing
+        about whether you control two other lands or whether someone is at 13 life."""
+        two = {"W", "U"}
+        for txt in (self.SLOW, TestShocklandEarnsTheUntappedPremium.BOARD_COND):
+            assert (wishlist._land_value(self._l(txt), two, basics=24)
+                    == wishlist._land_value(self._l(txt), two))
+
+
 class TestShocklandEarnsTheUntappedPremium:
     """The THIRD surface of the 2026-09-04 tapland defect. `tapland_profile` and
     `suggest --lands`' `·tapped?` marker were fixed to read a shockland as conditional

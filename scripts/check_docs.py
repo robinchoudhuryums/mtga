@@ -225,6 +225,13 @@ def check():
 # capture the figure in group 1 and be specific enough that it cannot match a different
 # sentence; a pattern matching nothing is itself reported, since a silently-dead check
 # here reads exactly like a clean one (the failure mode check_patterns exists for).
+def _checkland_basic_floor():
+    """`wishlist._CHECKLAND_BASIC_FLOOR` — the roster p25 a deck must clear for a
+    basic-gated checkland to earn the untapped premium (G-35)."""
+    import wishlist
+    return wishlist._CHECKLAND_BASIC_FLOOR
+
+
 def _live_figures():
     import csv as _csv
 
@@ -525,6 +532,12 @@ def _live_figures():
         # is derivable from a real predicate and moves on a pool rebuild or a swap — the
         # same bar G-84's and K-15's entries set. FIVE of the seven were ALREADY STALE when
         # registered, which is the argument for the registry rather than against it.
+        # G-35's checkland floor is a CONSTANT the rule quotes, not a measurement, which
+        # makes it the cheapest possible drift: re-calibrate `_CHECKLAND_BASIC_FLOOR` and
+        # the rule silently keeps claiming the old number. Registered on G-27's standing
+        # argument that an unregistered figure reads as audited.
+        ("G-35 checkland basic floor",
+         r"`check` \(a basic gate, floor (\d+)\)", _checkland_basic_floor),
         ("G-83 cost-scale pool cards",
          r"\*\*(\d+) pool cards\*\* resolve to a countable type", _cost_scale_cards),
         ("G-80 granted-evergreen pool cards",

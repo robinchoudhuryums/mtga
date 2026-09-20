@@ -620,6 +620,34 @@ class TestStructuralSuggesters:
         names = [p["name"] for p in deck.suggest_lands(d, owned=True)["picks"]]
         assert "Pool Offcolor Land" not in names
 
+    def test_suggest_lands_offers_another_copy_of_a_land_the_deck_runs(self, world):
+        """THE RECOMMENDER'S LARGEST BLIND SPOT until 2026-09-20. `suggest` proper must
+        skip a card the deck runs (proposing it again is the G-04 `+In` staleness bug) and
+        `suggest_lands` inherited that filter verbatim — so it was structurally unable to
+        say the thing that fixes most manabases: play a second copy of the untapped dual
+        you already run. Standard holds exactly THREE untapped W/U duals; decks 16 and 79
+        each ran singletons of all three, and duplicating them was the whole fix for both.
+        Roster-wide after the change, 58 of 112 decks' #1 land pick is a duplicate."""
+        d = world(["1 Bear", "1 Pool Dual", "19 Swamp"], owned=["Pool Dual"])
+        picks = deck.suggest_lands(d, owned=True)["picks"]
+        by_name = {p["name"]: p for p in picks}
+        assert "Pool Dual" in by_name
+        assert by_name["Pool Dual"]["in_deck"] == 1      # labelled, not passed off as new
+
+    def test_suggest_lands_stops_at_the_format_copy_limit(self, world):
+        """The only reason left to exclude a land — four is all Standard allows, so a
+        fifth is not a recommendation, it is an illegal deck."""
+        d = world(["1 Bear", "4 Pool Dual", "16 Swamp"], owned=["Pool Dual"])
+        names = [p["name"] for p in deck.suggest_lands(d, owned=True)["picks"]]
+        assert "Pool Dual" not in names
+
+    def test_suggest_lands_never_proposes_a_basic(self, world):
+        """Basics are unlimited in Arena, so a `+Swamp` row proposes a 25th land rather
+        than a card — the same carve-out G-04 makes for the flex block."""
+        d = world(["1 Bear", "20 Swamp"], owned=["Pool Dual"])
+        names = [p["name"].lower() for p in deck.suggest_lands(d, owned=True)["picks"]]
+        assert "swamp" not in names
+
     def test_suggest_mana_offers_repeatable_sources(self, world):
         d = world(["1 Big Bear", "20 Swamp"], owned=["Pool Dork", "Pool Rock"])
         needs = deck.deck_needs(d)

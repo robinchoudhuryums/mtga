@@ -64,7 +64,7 @@ from lib import (BASICS as lib_BASICS, DEFAULT_CSV, MATCHES_CSV, REPO_ROOT,
                  load_rows, eprint, card_colors, owned_qty,
                  card_distinctiveness, backup_path, card_power, front_face_cost,
                  mana_value, primary_type, atomic_write, alias_front,
-                 land_production, tapland_kind)
+                 land_production, tapland_kind, TAPLAND_CONDITIONAL_KINDS)
 from scryfall import post_collection, ScryfallUnavailable
 
 POOL_CSV = os.path.join(REPO_ROOT, "card-pool.csv")
@@ -5597,11 +5597,39 @@ def suggest_lands(d, unowned=False, owned=False, limit=20, fmt=None, any_format=
     _, _, by_name_qty = load_collection()
     owned_of = lambda nl: owned_qty(by_name_qty, nl)
 
+    # A LAND ALREADY IN THE DECK IS A LEGITIMATE PICK, and excluding one was this
+    # recommender's largest blind spot (2026-09-20). `suggest` proper must skip a card the
+    # deck runs — proposing it again is the G-04 `+In` staleness bug — and `suggest_lands`
+    # inherited that filter verbatim. But a MANABASE is routinely 2-4 of a dual, so the
+    # filter made the tool structurally unable to say the one thing that fixes most
+    # manabases: play another copy of the untapped dual you already run. Measured the day
+    # it was found — Standard holds exactly THREE W/U duals that do not enter
+    # unconditionally tapped, decks 16 and 79 each ran singletons of all three, and
+    # duplicating them was the entire fix for both. The recommender could not propose it
+    # and offered basic-FETCHES instead, which enter their basic TAPPED, i.e. strictly
+    # worse on the axis being fixed.
+    #
+    # Only the FORMAT COPY LIMIT excludes now (and basics, which are unlimited in Arena
+    # and would just propose a 25th land — the same carve-out G-04 makes). `in_deck` rides
+    # along so the caller can label a duplicate rather than let it read as a new card.
+    cfmt = normalize_format(fmt or dmeta.get("format"))
+    copy_limit = 1 if cfmt in SINGLETON_FORMATS else 4
+    in_deck = {}
+    deck_basics = 0
+    for q, n, _s, _c in cards:
+        k = _ms_key(n)
+        in_deck[k] = in_deck.get(k, 0) + q
+        if (n or "").lower() in BASICS:
+            deck_basics += q
+
     picks = []
     for r in pool:
         name = (r.get("Card Name") or "").strip()
         nl = name.lower()
-        if not name or nl.split(" // ")[0] in deck_names or nl in BASICS:
+        if not name or nl in BASICS:
+            continue
+        have_in_deck = in_deck.get(_ms_key(name), 0)
+        if have_in_deck >= copy_limit:
             continue
         # FRONT face, via `_primary_type` — the same test `wishlist._is_land` was fixed to
         # use in BS2-11, and the manabase RECOMMENDER kept the whole-type-line substring
@@ -5635,7 +5663,11 @@ def suggest_lands(d, unowned=False, owned=False, limit=20, fmt=None, any_format=
             continue
         if owned and h == 0:
             continue
-        fix = wishlist._land_value(r, deck_colors)
+        # The deck's BASIC count decides whether a checkland ("unless you control a basic
+        # land") is really a tapland here — the one member of the conditional family whose
+        # gate is a fact about the LIST rather than a board state (G-37). Passed, not
+        # guessed: `wishlist --rank` has no deck and keeps the conservative score.
+        fix = wishlist._land_value(r, deck_colors, basics=deck_basics)
         tags = [t.strip() for t in (r.get("Synergies") or "").split(";") if t.strip()]
         syn = _land_synergy_bonus(tags, central_w)
         short = _land_shortfall_bonus(on_color, deficit)
@@ -5653,17 +5685,25 @@ def suggest_lands(d, unowned=False, owned=False, limit=20, fmt=None, any_format=
         # `tapland_profile`, and a substring test in the scoring path. All three missed
         # shocklands in different ways (2026-09-04) — the G-45 rule that functions
         # answering one question must have their filters diffed, found the hard way.
-        cond_tapped = tapland_kind(txt) in ("shock", "conditional")
+        _tkind = tapland_kind(txt)
+        cond_tapped = _tkind in TAPLAND_CONDITIONAL_KINDS
+        # Four clauses lived under one `·tapped?` and behave oppositely in the early
+        # turns, so the marker now NAMES which one (G-52: a verdict surface prints its
+        # evidence). `·fast` is untapped turns 1-3; `·check` depends on this deck's basic
+        # count, which the score above already applied.
+        cond_label = {"fast": "·fast", "check": "·check"}.get(_tkind, "·tapped?")
         # Restricted production ("Spend this mana only to cast a creature spell"). The
         # score already discounts it; this is what lets a human tell WHY.
         restricted = "spend this mana only" in low
         util, util_label = _land_utility(txt)
         picks.append({
             "name": name, "rarity": (r.get("Rarity") or "").strip(), "owned": h,
+            "in_deck": have_in_deck,
             "fix": fix, "syn": syn, "short": short, "score": round(fix + syn + short, 2),
             "util": util, "util_label": util_label,
             "produces": "".join(c for c in "WUBRG" if c in on_color),
-            "tapped": tapped, "cond_tapped": cond_tapped, "restricted": restricted,
+            "tapped": tapped, "cond_tapped": cond_tapped, "cond_label": cond_label,
+            "restricted": restricted,
             "text": txt, "matches": sorted(set(tags) & central),
             # G-30 on a WILDCARD-SPEND surface. `check`, `wildcards` and `wishlist --rank`
             # all flag a rotating craft target; this recommender — which exists to be
@@ -5703,18 +5743,23 @@ def cmd_suggest_lands(args, d):
     if not res["picks"]:
         print("\nNo on-color lands to suggest (rebuild card-pool.csv with build_pool.py --all?).")
         return 0
-    print(f"\n  {'Have':5} {'Land':30} {'Rarity':8} {'Prod':4} {'Fix':>4} {'Syn':>4} "
-          f"{'Sh':>4} {'Score':>5}  {'Rider':8}")
-    print("-" * 88)
+    print(f"\n  {'Have':5} {'In':>2} {'Land':30} {'Rarity':8} {'Prod':4} {'Fix':>4} "
+          f"{'Syn':>4} {'Sh':>4} {'Score':>5}  {'Rider':8}")
+    print("-" * 91)
     rotting = 0
     for p in res["picks"]:
         have = f"×{p['owned']}" if p["owned"] else "craft"
-        tap = (" ·tapped?" if p.get("cond_tapped") else " ·tapped") if p["tapped"] else ""
+        tap = ((" " + (p.get("cond_label") or "·tapped?")) if p.get("cond_tapped")
+               else " ·tapped") if p["tapped"] else ""
         tap += " ·restricted" if p.get("restricted") else ""
         # Only a CRAFT pick's rotation matters here — an owned land costs no wildcard.
         rot = f" {p['rot']}" if p.get("rot") and not p["owned"] else ""
         rotting += 1 if rot else 0
-        print(f"  {have:5} {p['name'][:30]:30} {(p['rarity'] or '?')[:8]:8} "
+        # `In` is copies ALREADY in the deck — a duplicate is a normal manabase pick, but
+        # it must not read as a new card (the whole point of admitting them).
+        n_in = p.get("in_deck") or 0
+        print(f"  {have:5} {(str(n_in) if n_in else '·'):>2} {p['name'][:30]:30} "
+              f"{(p['rarity'] or '?')[:8]:8} "
               f"{p['produces']:4} {p['fix']:>4.1f} {p['syn']:>4.1f} {p['short']:>4.1f} "
               f"{p['score']:>5.1f}  {(p.get('util_label') or '·'):8}{tap}{rot}")
     if rotting:
@@ -5729,10 +5774,19 @@ def cmd_suggest_lands(args, d):
             for para in (p["text"] or "(no oracle text)").split("\n"):
                 for line in (textwrap.wrap(para, width=86) or [""]):
                     print(f"    {line}")
+    if any((p.get("in_deck") or 0) for p in res["picks"]):
+        print("\n`In` = copies already in the deck. A row with `In` set proposes ANOTHER "
+              "copy — a manabase is routinely 2-4 of a dual, and excluding these was this "
+              "recommender's largest blind spot: it could not say \"play a second one of "
+              "the untapped dual you already run\", which is the commonest real fix. "
+              "Capped at the format's copy limit; basics are excluded (unlimited).")
     if any(p.get("cond_tapped") for p in res["picks"]):
-        print("\n·tapped? = enters tapped UNLESS a condition holds — scored as tapped "
-              "(conservative). Read the clause: if THIS deck meets it, the land is better "
-              "than its score says.")
+        print("\n·tapped? = enters tapped UNLESS a condition this model cannot settle (a "
+              "board state, or 'two or MORE other lands', which is false exactly when "
+              "tempo matters) — scored as tapped, conservatively. ·fast = untapped on "
+              "turns 1-3 ('two or fewer other lands'); ·check = gated on a basic land, "
+              "and this deck's basic count is already in the score. Both of those earn "
+              "the untapped premium; the bare ·tapped? does not.")
     if any(p.get("restricted") for p in res["picks"]):
         print("·restricted = the colored mana has a 'spend this only to…' clause. Its "
               "fixing premium is halved; judge it against what your deck actually casts.")
@@ -6025,8 +6079,13 @@ def cmd_suggest_needs(args, d):
     # the filter --any-format just disabled.
     lands = suggest_lands(d, owned=True, limit=4, fmt=fmt,
                           any_format=getattr(args, "any_format", False))["picks"]
+    # `--needs` renders the SAME picks, so it inherits the duplicate rows admitted above
+    # — and without the `In` column it would show "another copy of your Verge" as though
+    # it were a new card, which is the one thing that column exists to prevent. Marked
+    # inline instead.
     _top("Fixing · owned lands", lands,
-         lambda p: f"×{p['owned']} {p['name'][:34]:34} {p['produces']:4} score {p['score']:.1f}")
+         lambda p: f"×{p['owned']} {p['name'][:34]:34} {p['produces']:4} score {p['score']:.1f}"
+                   + (f"  (+1, you run {p['in_deck']})" if (p.get("in_deck") or 0) else ""))
     dorks = suggest_mana(d, needs, owned=True, limit=4, fmt=fmt)
     _top("Fixing / acceleration · owned mana sources", dorks,
          lambda p: f"×{p['owned']} {p['name'][:34]:34} {p['produces']:4} score {p['score']:.1f}"
@@ -6653,7 +6712,7 @@ def tapland_profile(cards, carddata):
         total += q
         text = row.get("text") or ""
         kind = tapland_kind(text)
-        if kind in ("shock", "conditional"):
+        if kind in TAPLAND_CONDITIONAL_KINDS:
             cond.append((q, n))
         elif kind == "unconditional":
             uncond.append((q, n))

@@ -351,6 +351,10 @@ is protecting.
   Profile; when a decision leans on ownership, say so, because that is the premise most
   likely to be false. `import_collection.py` against a tracker export is the only tool
   that sets counts EXACTLY (including down) — run it before a wildcard-spending pass.
+  **`check_all` reports that freshness since 2026-09-20** (`collection_freshness_soft`):
+  `collection_stamp_note` had three states and three consumers, and the gate that runs
+  EVERY session was not one — so five stale land counts made two decks read as needing NINE
+  rare wildcards against a real ZERO, caught only because the user said so.
   **A script that WRITES and NARRATES must write first**: reporting before writing let
   `--apply | head -6` die on BrokenPipeError having printed success and written nothing
   (two batches lost 2026-08-18, invisible to `check_all`). Fixed and pinned. [G-10]
@@ -645,8 +649,10 @@ is protecting.
   choose-ONCE-on-entry now sets `chosen` (counted for ACCESS, denied BREADTH);
   transform-gated, GRANTED and extra-tap-cost clauses are excluded — ten lands had read as
   five-colour sources. **`lib.tapland_kind` is the ONE tapping predicate** (the tempo
-  line, `·tapped?`, and `_land_value`'s premium): a shockland's condition is payable AT
-  WILL so it earns the premium, a board-state one stays conservative.
+  line, `·tapped?`, `_land_value`'s premium), and its `conditional` bucket merged FOUR
+  opposite behaviours until 2026-09-20: `fast` and `check` (a basic gate, floor 12) now earn
+  the premium a shockland already had, while a SLOWLAND and a board state stay conservative —
+  false exactly when tempo matters. Test `TAPLAND_CONDITIONAL_KINDS`, not a string.
   **NONLAND sources are DISCLOSED since 2026-09-18, never counted**: `consistency` prints
   `ⓘ N NONLAND mana source(s) are NOT in the counts above` (**76 of 112 decks**). The
   exclusion is right — a rock is not a land drop — but its SILENCE was not, because
@@ -670,12 +676,18 @@ is protecting.
   structurally blind to lands (it filters to cards sharing a synergy theme). Scored on
   FIXING value plus bounded synergy/scarce-colour nudges, and it applies the deck's
   `#: format:`. Both 2026-08-09 fixes were about admitting or pricing the wrong card (81
-  back-face lands admitted; RESTRICTED mana now half-premium, `·restricted`). A conditional
-  land never gets the untapped premium even when the deck meets the condition — `·tapped?`
-  is the human read, and it was wrong for SHOCKLANDS until 2026-09-04 (a second copy of
-  `_TAPLAND_COND_RE`; one predicate now). **The G-35 breadth credit re-ranks the #1 pick
+  back-face lands admitted; RESTRICTED mana now half-premium, `·restricted`). `·tapped?` is
+  the human read for a condition this model cannot settle, and it has been WRONG twice:
+  for SHOCKLANDS until 2026-09-04 (a second copy of `_TAPLAND_COND_RE`; one predicate
+  now), and for FASTLANDS and met CHECKLANDS until 2026-09-20 — both earn the premium
+  now and print `·fast` / `·check` (G-35). **The G-35 breadth credit re-ranks the #1 pick
   in 22 of 115 decks** — fetches beat untapped duals on FIXING; `_LAND_BREADTH_PER_COLOR`
-  is the dial. **The RIDER breaks ties, and only ties (2026-09-06)**: four Boros taplands
+  is the dial. **A LAND ALREADY IN THE DECK IS A PICK (2026-09-20)** — it had inherited
+  `suggest` proper's skip-what-you-run filter (right there, G-04's `+In` bug), so it could
+  not say the thing that fixes most manabases: play a SECOND copy of the untapped dual you
+  already run. Only the format copy limit and basics exclude now, and an `In` column labels
+  the duplicate. Roster: **58 of 112 decks' #1 pick is now another copy**, all singleton
+  untapped duals. **The RIDER breaks ties, and only ties (2026-09-06)**: four Boros taplands
   tied at 10.9 (a scry, nothing, a draw sink, a life point). `_land_utility` (creature /
   draw / scry / surveil / sink / ping / life; `sink~` = one creature type) is a SORT KEY
   after the score, never a score term — the smallest fixing step is 0.1, so any additive
@@ -1437,7 +1449,10 @@ tier-floor-spread sweep (`deck.tier_floor_spread`: one floor band holding >85% o
 roster means the thresholds have stopped discriminating), and (2026-09-03) a TENTH, the
 BS8-22 figure-drift sweep (`check_docs.figure_drift`: a MEASUREMENT a CLAUDE.md rule cites
 as its evidence that no longer matches the data — it lived inside a gate that runs and was
-itself reached by nothing but a hand run). Two things to know
+itself reached by nothing but a hand run), and (2026-09-20) an ELEVENTH, the G-10
+collection-freshness sweep (`check_all.collection_freshness_soft`: are the repo's OWNED
+counts trustworthy — `lib.collection_stamp_note` had three states and three consumers and
+this gate, the one that runs every session, was not one of them). Two things to know
 before touching it: it imports `deck` as a MODULE and calls its MODEL functions (no
 `cmd_*` at all), so it never
 builds an argparse tree — the CLI surface is covered by `tests/test_cli.py` and a CI smoke
@@ -1464,7 +1479,8 @@ earned it: [C-01]
   still EMPTY in all 135 rows, so scenario 11 remains the only thing that can prove that
   loop closes), recommendations.csv,
   collection-stamp.json (written only by `import_collection.py --apply` — the date owned
-  counts were last EXACT; absent until the first run, and the craft surfaces say so) [C-02]
+  counts were last EXACT; absent until the first run, and since 2026-09-20 `check_all`
+  says so once per session as well as every craft surface saying it inline) [C-02]
 - Outcomes: scripts/parse_matches.py, recommendations.csv + `deck.py feedback` — the only
   subsystems that have seen a real game or a real decision [C-03]
 - Ingest & Enrich: scripts/import_arena.py, scripts/import_collection.py,

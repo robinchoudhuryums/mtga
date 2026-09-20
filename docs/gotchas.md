@@ -717,6 +717,32 @@ on disk anyway; it was watched to fail against the unfixed source first.
 
 **Generalize it:** any script here that both mutates a canonical file and narrates what it
 did should do the durable work first. Narration is the part that is safe to lose.
+
+### 2026-09-20 — the freshness fact existed and never reached the gate
+
+`lib.collection_stamp_note` was already well built: three states (never reconciled / stale,
+with the age in days / fresh, returning None) and three consumers — `card.py` and two
+`deck.py` sites. What it did not have was a session-level surface. `check_all` — the gate
+the SessionStart hook runs on **every** session — never called it, so the fact rode along
+beside individual craft costs where it is easy to scroll past.
+
+The cost, measured the day it was found: five land counts were stale in
+`card-library.csv` (Hallowed Fountain 1 against a real 2, Gleaming Bastion 1 against 3,
+Agna Qel'a 1 against 2, Uthros 1 against 2, Frontier Bivouac 1 against 2). Two decks were
+therefore reported as needing **nine rare wildcards** for a manabase rebuild that actually
+cost **zero**. No gate saw it; the user mentioned the real counts in passing.
+
+This is G-53 one layer over — a capability that works and is never reached is invisible to
+every correctness gate — and the remedy is the same: give it a caller.
+`collection_freshness_soft()` is a module-level function rather than an inline block in
+`main()` specifically so it can be watched failing, which is `test_check_all.py`'s own
+standing rule.
+
+On saturation (G-07): the warning stays on until someone runs `import_collection.py`,
+which is deliberate. It is one binary fact about the repo with a one-command remedy that
+clears it permanently — not a per-row verdict firing on most of a table, which is the shape
+G-07 is about.
+
 ## [G-11] MTG Arena set codes can differ from Scryfall
 
 **MTG Arena set codes can differ from Scryfall** (e.g. Arena `DAR` = Scryfall
@@ -2537,6 +2563,43 @@ worse precision, matching rituals, spend-restricted mana and granted abilities a
 G-40's rule fired exactly as written: *reaching a new caller is not free, so re-measure the
 primitive AT that caller.* Neither number survived contact with a hand-check.
 
+### 2026-09-20 — the `conditional` tapland bucket held four opposite behaviours
+
+`tapland_kind` returned `conditional` for every non-shock clause, and all three consumers
+treated that as "may not be met, score it as tapped". Measured over the pool's 87
+conditional lands, the bucket was really four families with **opposite early-game
+profiles**:
+
+| clause | pool | when it is untapped |
+|---|---|---|
+| `fast` — "two or **fewer** other lands" | 11 | turns 1-3 — the best tempo land there is |
+| `check` — a basic-land gate | 35 | from turn two, in any deck with real basics |
+| slowland — "two or **more** other lands" | 10 | turn 4+ — tapped when it matters |
+| board state — "a player has 13 or less life" | 10 | late, if at all |
+
+The project already had half the insight written down: `tapland_profile`'s own docstring
+names the 13-or-less-life case as "usually tapped exactly when you want it untapped". What
+it had no way to do was tell that case apart from a checkland, whose gate is a fact about
+the **deck list** rather than the board.
+
+`_TAPLAND_FAST_RE` and `_TAPLAND_CHECK_RE` split them. `fast` earns the untapped premium
+outright, on the same reasoning that already admits a shockland's pay-at-will clause.
+`check` earns it only when the CALLER supplies a basic count clearing
+`_CHECKLAND_BASIC_FLOOR`; `basics=None` means unknown and stays conservative, which is what
+keeps `wishlist --rank` — which has no deck — scoring exactly as before.
+
+**The floor is 12, the roster's p25** (114 decks: min 4 / p10 9 / p25 12 / p50 15.5 / p75
+19 / max 24; no deck runs zero). At 12 basics in a 24-land deck, the conservative model —
+the chance at least one of the two lands you already control on turn three is a basic —
+reads **76%**, and the real rate is higher because you sequence (lead on the basic, play
+the checkland second) and because you draw more lands. Only turn one is reliably tapped,
+which is equally true of the shockland that already takes the full premium.
+
+Impact: 35 of 676 pool land rows change score once a deck's basics are known; 11 fastlands
+gain it unconditionally. Consumers now test `TAPLAND_CONDITIONAL_KINDS` rather than
+string-matching, so adding a fifth kind cannot silently change what an existing
+`in ("shock", "conditional")` test meant.
+
 ## [G-36] `deck.py consistency <id>` is the PROBABILITY layer `mana` lacks
 
 **`deck.py consistency <id>` is the PROBABILITY layer `mana` lacks.** `mana` diagnoses
@@ -2693,6 +2756,39 @@ cards have the same effect) and the `Have` column does the disambiguating.
 ### 2026-09-06 — the rider is a tie-break, and why not a score term
 
 `suggest 56 --lands --owned` scored Temple of Triumph, Boros Guildgate, Sun-Blessed Peak and Wind-Scarred Crag identically at 10.9: every term is about FIXING and nothing read the ETB or the activated ability (the blindness G-42 records for doubler decks). `_land_utility` reads seven cues on reminder-stripped text (creature land 0.4, draw sink 0.4, scry / surveil / activated sink 0.3, ETB ping 0.2, lifegain 0.1; a sink restricted to one creature type prints `sink~`) and is used as the SECOND SORT KEY only. An additive nudge was considered and declined: the smallest fixing step between real land classes is 0.1 (a choose-one any-colour land against a filter land), so any nudge large enough to matter crosses it and re-ranks lands on the rider. Pinned: every pick's `score` equals fix + syn + short, and score order is unchanged.
+
+### 2026-09-20 — a land already in the deck was never a candidate
+
+`suggest_lands` opened with the candidate filter `suggest` proper uses:
+
+```python
+if not name or nl.split(" // ")[0] in deck_names or nl in BASICS:
+    continue
+```
+
+For NONLAND cards that is right and G-04 says why — proposing a card the deck already
+runs is the `+In` staleness bug, which deck 28 hit live. `suggest_lands` inherited it
+verbatim, and for a MANABASE it is wrong: two-to-four copies of a dual is ordinary
+construction, so the filter made the recommender structurally unable to say the sentence
+that fixes most manabases — *play another copy of the untapped dual you already run*.
+
+Found by hand. Standard holds exactly **three** W/U duals that do not enter
+unconditionally tapped (Floodfarm Verge, Gleaming Bastion, Hallowed Fountain) out of
+fifteen dedicated W/U duals; decks 16 and 79 each ran **singletons of all three**, and
+duplicating them was the entire fix for both, at zero wildcards. What the tool offered
+instead was its untapped top end — Hobbit Hole, Evolving Wilds, Elven Passage, Escape
+Tunnel — every one a basic-FETCH that puts the fetched basic in **tapped**, so they score
+high on G-35 fixing breadth and are strictly worse than a tapland on the axis in question.
+
+Now only the format copy limit and basics exclude, and an `In` column carries the count
+already in the deck so a duplicate cannot read as a new card. Roster diff: **58 of 112
+decks' #1 land pick is now another copy of a land they run**, and every example is a
+singleton untapped dual (the Verge cycle, Floodfarm Verge, Bleachbone Verge…). A
+duplicate appears somewhere in the top five for **96 of 112**.
+
+The transferable half: *a filter copied between two surfaces carries the assumption that
+justified it.* Skip-what-you-run encodes "one copy is enough", which is true of a spell
+and false of a land.
 
 ## [G-38] `deck.py suggest --ramp / --interaction / --needs` are the NEEDS model — the structural axes the
 

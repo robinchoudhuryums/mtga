@@ -26,7 +26,7 @@ import os
 import re
 import sys
 
-from lib import DEFAULT_CSV, REPO_ROOT, load_rows, eprint
+from lib import DEFAULT_CSV, REPO_ROOT, load_rows, eprint, collection_stamp_note
 from validate import validate
 import deck as deckmod
 
@@ -229,6 +229,37 @@ def check_library_printings():
             for sc, names in sorted(bad.items())]
 
 
+def collection_freshness_soft():
+    """[] or one soft line: are the repo's OWNED COUNTS trustworthy?
+
+    `lib.collection_stamp_note` already had three states (never reconciled / stale with
+    its age / fresh) and three consumers — card.py and two deck.py sites — and the
+    INTEGRITY GATE, the one surface that runs on every session via the SessionStart hook,
+    was not one of them. So the fact rode along beside individual craft costs, where it is
+    easy to scroll past, and never reached a session-level report.
+
+    The cost is measured, not hypothetical: on 2026-09-20 five land counts were stale
+    (Hallowed Fountain 1 against a real 2, Gleaming Bastion 1 against 3, plus three more),
+    which made two decks read as needing NINE rare wildcards when they needed ZERO. No
+    gate saw it; the user mentioned it in passing.
+
+    It stays on until someone acts, which is deliberate and is NOT the G-07 saturation
+    shape: it is one binary fact about the repo with a one-command remedy that clears it
+    permanently, not a per-row verdict that fires on most of a table.
+
+    A function rather than an inline block in `main()` so it can be watched failing —
+    this file's own standing rule (BS2-29).
+    """
+    try:
+        note = collection_stamp_note()
+    except Exception as e:                      # a missing/garbled stamp must never gate
+        return [f"collection freshness check skipped ({e})"]
+    if not note:
+        return []
+    return [note.lstrip("\u24d8 ").strip()
+            + " \u2014 every craft cost this repo prints is built on those counts"]
+
+
 def main():
     ap = argparse.ArgumentParser(description="Card-library integrity check.")
     ap.add_argument("--quiet", action="store_true", help="one-line summary only")
@@ -407,6 +438,21 @@ def main():
                     f"(SET) COLLECTOR# this repo does not hold — {ex}"
                     + ("; …" if len(deck_warns) > 3 else "")
                     + " (run `deck.py legal <id>` for the per-deck detail)")
+    # Soft: OWNED-COUNT FRESHNESS. `lib.collection_stamp_note` has existed with three
+    # states and three consumers (card.py, deck.py x2) since it was built, and the
+    # integrity gate — the one surface that runs on EVERY session via the SessionStart
+    # hook — never read it. So the fact rode along beside individual craft costs, where
+    # it is easy to scroll past, and never once reached a session-level report. The cost
+    # is measured, not hypothetical: on 2026-09-20 five land counts were stale (Hallowed
+    # Fountain 1 against a real 2, Gleaming Bastion 1 against 3, plus three more), which
+    # made two decks read as needing NINE rare wildcards when they needed zero. Nothing
+    # flagged it; the user happened to mention it.
+    #
+    # It is a single binary fact about the repo with a one-command remedy that clears it
+    # permanently, not a per-row verdict, so it is not the G-07 saturation shape even
+    # though it stays on until someone acts.
+    soft.extend(collection_freshness_soft())
+
     try:
         import wishlist as wl
         for _sev, name, msg in wl._audit_target_issues(color_only=True):

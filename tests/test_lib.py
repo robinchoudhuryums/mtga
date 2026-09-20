@@ -707,3 +707,51 @@ class TestAtomicWriteForensicLog:
             lib.atomic_write(str(target), lambda fh, i=i: fh.write("x" * i))
         assert os.path.exists(str(logged["log"]) + ".1"), "expected one rotation"
         assert logged["log"].stat().st_size <= 200 + 4096
+
+
+class TestTaplandKindSplitsByWhenTheConditionIsMet:
+    """ONE predicate, and until 2026-09-20 its `conditional` bucket merged four clauses
+    with OPPOSITE early-game profiles. Measured over the pool's 676 lands: 11 fast, 35
+    check, 41 still plain conditional (slowlands + board states), 27 shock."""
+
+    FAST = "This land enters tapped unless you control two or fewer other lands."
+    SLOW = "This land enters tapped unless you control two or more other lands."
+    CHECK_TYPE = "This land enters tapped unless you control a Plains or an Island."
+    CHECK_ONE = "This land enters tapped unless you control an Island."
+    CHECK_BASIC = "This land enters tapped unless you control a basic land."
+    CHECK_TWO = "This land enters tapped unless you control two or more basic lands."
+    LIFE = "This land enters tapped unless a player has 13 or less life."
+    TYPE_GATE = "This land enters tapped unless you control a Mount or Vehicle."
+    SHOCK = ("As this land enters, you may pay 2 life. If you don't, it enters tapped.")
+    FLAT = "This land enters tapped."
+    NONE = "{T}: Add {U}."
+
+    def test_the_fast_and_slow_clauses_differ_by_one_word_and_must_not_merge(self):
+        """'two or FEWER' is untapped turns 1-3; 'two or MORE' is tapped turns 1-3. The
+        whole point of the split, and the easiest thing to get backwards."""
+        assert lib.tapland_kind(self.FAST) == "fast"
+        assert lib.tapland_kind(self.SLOW) == "conditional"
+
+    def test_every_basic_gate_spelling_reads_as_check(self):
+        for t in (self.CHECK_TYPE, self.CHECK_ONE, self.CHECK_BASIC, self.CHECK_TWO):
+            assert lib.tapland_kind(t) == "check", t
+
+    def test_board_states_stay_plain_conditional(self):
+        """A life total and a creature-type gate are not facts about the deck LIST, so
+        they must keep the conservative score (G-37)."""
+        for t in (self.LIFE, self.TYPE_GATE):
+            assert lib.tapland_kind(t) == "conditional", t
+
+    def test_the_pre_existing_kinds_are_unchanged(self):
+        assert lib.tapland_kind(self.SHOCK) == "shock"
+        assert lib.tapland_kind(self.FLAT) == "unconditional"
+        assert lib.tapland_kind(self.NONE) is None
+
+    def test_every_kind_but_unconditional_counts_as_conditional_tapping(self):
+        """Consumers test membership in TAPLAND_CONDITIONAL_KINDS rather than
+        string-matching, so adding a kind cannot silently change what an existing
+        `in ("shock", "conditional")` test meant."""
+        for t in (self.SHOCK, self.FAST, self.CHECK_BASIC, self.LIFE):
+            assert lib.tapland_kind(t) in lib.TAPLAND_CONDITIONAL_KINDS, t
+        assert lib.tapland_kind(self.FLAT) not in lib.TAPLAND_CONDITIONAL_KINDS
+
