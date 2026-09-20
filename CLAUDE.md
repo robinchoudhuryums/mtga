@@ -676,10 +676,11 @@ is protecting.
   structurally blind to lands (it filters to cards sharing a synergy theme). Scored on
   FIXING value plus bounded synergy/scarce-colour nudges, and it applies the deck's
   `#: format:`. Both 2026-08-09 fixes were about admitting or pricing the wrong card (81
-  back-face lands admitted; RESTRICTED mana now half-premium, `·restricted`). A conditional
-  land never gets the untapped premium even when the deck meets the condition — `·tapped?`
-  is the human read, and it was wrong for SHOCKLANDS until 2026-09-04 (a second copy of
-  `_TAPLAND_COND_RE`; one predicate now). **The G-35 breadth credit re-ranks the #1 pick
+  back-face lands admitted; RESTRICTED mana now half-premium, `·restricted`). `·tapped?` is
+  the human read for a condition this model cannot settle, and it has been WRONG twice:
+  for SHOCKLANDS until 2026-09-04 (a second copy of `_TAPLAND_COND_RE`; one predicate
+  now), and for FASTLANDS and met CHECKLANDS until 2026-09-20 — both earn the premium
+  now and print `·fast` / `·check` (G-35). **The G-35 breadth credit re-ranks the #1 pick
   in 22 of 115 decks** — fetches beat untapped duals on FIXING; `_LAND_BREADTH_PER_COLOR`
   is the dial. **A LAND ALREADY IN THE DECK IS A PICK (2026-09-20)** — it had inherited
   `suggest` proper's skip-what-you-run filter (right there, G-04's `+In` bug), so it could
@@ -1478,7 +1479,8 @@ earned it: [C-01]
   still EMPTY in all 135 rows, so scenario 11 remains the only thing that can prove that
   loop closes), recommendations.csv,
   collection-stamp.json (written only by `import_collection.py --apply` — the date owned
-  counts were last EXACT; absent until the first run, and the craft surfaces say so) [C-02]
+  counts were last EXACT; absent until the first run, and since 2026-09-20 `check_all`
+  says so once per session as well as every craft surface saying it inline) [C-02]
 - Outcomes: scripts/parse_matches.py, recommendations.csv + `deck.py feedback` — the only
   subsystems that have seen a real game or a real decision [C-03]
 - Ingest & Enrich: scripts/import_arena.py, scripts/import_collection.py,
