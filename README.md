@@ -487,7 +487,7 @@ python3 scripts/deck.py tribes 20a     # creature-subtype breakdown + type-matte
 python3 scripts/deck.py engines 20a    # enabler ↔ payoff balance for the deck's engine themes
 python3 scripts/deck.py targets 20a    # TARGETS for its own gated effects (MV caps, sac costs) + STATE gates (dead / free / CONFLICT — an attacks-alone card in a go-wide deck)
 python3 scripts/deck.py suggest 20a --owned   # pool cards that fit; --owned = 0-wildcard upgrades
-python3 scripts/deck.py suggest 20a --lands --owned  # MANABASE recommender: owned lands that fix your colors (fixing + synergy + scarce-color nudges; any-colour lands and basic fetches included)
+python3 scripts/deck.py suggest 20a --lands --owned  # MANABASE recommender: owned lands that fix your colors (fixing + synergy + scarce-color nudges; any-colour lands and basic fetches included). A land ALREADY in the deck is a candidate — an `In` column shows the copies you run, since "play a second one of that untapped dual" is the commonest real manabase fix; only the format copy limit and basics are excluded.
 python3 scripts/deck.py suggest 20a --needs   # STRUCTURAL needs the theme model can't see: fixing · acceleration (--ramp) · interaction (--interaction, board-scalers flagged)
 python3 scripts/deck.py legal 20a      # construction lint: deck size, copy limits, format legality
 python3 scripts/deck.py shape 20a      # wide vs tall, fast vs slow — the structural read themes can't give

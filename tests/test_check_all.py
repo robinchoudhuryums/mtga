@@ -256,3 +256,37 @@ class TestInv01bLibrarySetCodes:
         self._world(tmp_path, monkeypatch, "ZZZ")
         monkeypatch.setattr(ca, "POOL_CSV", str(tmp_path / "absent.csv"))
         assert ca.check_library_printings() == []
+
+
+class TestCollectionFreshnessReachesTheGate:
+    """`lib.collection_stamp_note` had three states and three consumers, and the INTEGRITY
+    GATE — the one surface that runs every session via the SessionStart hook — was not one
+    of them (2026-09-20). The G-53 shape: a capability that works and is never reached is
+    invisible to every correctness gate.
+
+    Measured cost: five stale land counts made two decks read as needing NINE rare
+    wildcards against a real ZERO, and nothing flagged it."""
+
+    def test_a_never_reconciled_collection_is_reported(self, monkeypatch):
+        monkeypatch.setattr(ca, "collection_stamp_note",
+                            lambda: "\u24d8 owned counts are LOWER BOUNDS — never reconciled")
+        out = ca.collection_freshness_soft()
+        assert len(out) == 1
+        assert "LOWER BOUNDS" in out[0]
+        assert not out[0].startswith("\u24d8")          # the runner adds its own ~ marker
+        assert "craft cost" in out[0]                    # says WHY it matters, not just that
+
+    def test_a_fresh_collection_is_quiet(self, monkeypatch):
+        """The healthy twin — otherwise the warning is unconditional and says nothing."""
+        monkeypatch.setattr(ca, "collection_stamp_note", lambda: None)
+        assert ca.collection_freshness_soft() == []
+
+    def test_a_broken_stamp_degrades_instead_of_gating(self, monkeypatch):
+        """Freshness is REPORT-ONLY. A garbled sidecar must not take the integrity gate
+        down with it — it reports that the check was skipped and the run continues."""
+        def boom():
+            raise ValueError("garbled stamp")
+        monkeypatch.setattr(ca, "collection_stamp_note", boom)
+        out = ca.collection_freshness_soft()
+        assert len(out) == 1 and "skipped" in out[0]
+

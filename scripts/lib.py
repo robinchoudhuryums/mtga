@@ -556,10 +556,36 @@ _TAPLAND_COND_RE = re.compile(
     r"|you may pay \d+ life[\s\S]{0,60}?enters(?: the battlefield)? tapped", re.I)
 _TAPLAND_SHOCK_RE = re.compile(
     r"you may pay \d+ life[\s\S]{0,60}?enters(?: the battlefield)? tapped", re.I)
+# The `conditional` bucket held FOUR behaviours with OPPOSITE early-game profiles, and
+# scored and reported them identically (2026-09-20). Measured over the pool's 87
+# conditional lands: "two or FEWER other lands" (11) is untapped exactly on turns 1-3,
+# the best tempo land there is; a BASIC-gated clause (32: "a basic land", "two or more
+# basic lands", "a Plains", "an Island or a Swamp"…) is untapped from turn two in any
+# deck with a real basic count; "two or MORE other lands" (10) is tapped exactly turns
+# 1-3; and a board state like "unless a player has 13 or less life" (10) is tapped when
+# you want it untapped. `tapland_profile`'s docstring already named that last case — the
+# project had half the distinction written down and no way to act on it.
+_TAPLAND_FAST_RE = re.compile(
+    r"enters(?: the battlefield)? tapped unless you control (?:two|2) or fewer other lands",
+    re.I)
+# A basic-land gate. Both spellings: the TYPE-named checkland cycle ("a Plains", "an
+# Island or a Swamp") and the literal "a basic land" / "two or more basic lands". The
+# `other` exclusion is load-bearing — "two or more other lands" is the SLOWLAND, whose
+# timing is the opposite, and it must not land here.
+_TAPLAND_CHECK_RE = re.compile(
+    r"enters(?: the battlefield)? tapped unless you control "
+    r"(?:(?:a|an|one or more|two or more|\d+) basic lands?"
+    r"|(?:a|an) (?:Plains|Island|Swamp|Mountain|Forest)"
+    r"(?: or (?:a|an) (?:Plains|Island|Swamp|Mountain|Forest))?)",
+    re.I)
+# The kinds whose tapping is CONDITIONAL rather than certain. Consumers test membership
+# here instead of string-matching, so adding a kind cannot silently change what an
+# existing `in ("shock", "conditional")` test means.
+TAPLAND_CONDITIONAL_KINDS = ("shock", "fast", "check", "conditional")
 
 
 def tapland_kind(text):
-    """None | "shock" | "conditional" | "unconditional" — how a land enters.
+    """None | "shock" | "fast" | "check" | "conditional" | "unconditional" — how a land enters.
 
     ONE definition, three consumers: `deck.tapland_profile` (the tempo line `consistency`
     prints), `deck.suggest_lands`' `·tapped?` marker, and `wishlist._land_value`'s untapped
@@ -579,6 +605,10 @@ def tapland_kind(text):
         return None
     if _TAPLAND_SHOCK_RE.search(text):
         return "shock"
+    if _TAPLAND_FAST_RE.search(text):
+        return "fast"
+    if _TAPLAND_CHECK_RE.search(text):
+        return "check"
     return "conditional" if _TAPLAND_COND_RE.search(text) else "unconditional"
 
 

@@ -390,7 +390,13 @@ def _pattern_groups():
     # three consumers since 2026-09-04). `_TAPLAND_SHOCK_RE` is what separates a condition
     # payable AT WILL from a board-state one; if it dies, every shockland silently reverts
     # to being scored and reported as a flat tapland.
-    for name in ("_TAPLAND_RE", "_TAPLAND_COND_RE", "_TAPLAND_SHOCK_RE"):
+    # `_TAPLAND_FAST_RE` / `_TAPLAND_CHECK_RE` (2026-09-20) split the `conditional`
+    # bucket by WHEN the condition is met. Both are premium-GRANTING, so a dead one is
+    # the expensive direction here rather than the cheap one: a fastland or a met
+    # checkland silently reverts to being scored as a flat tapland, which is the same
+    # class of miss the shockland defect was.
+    for name in ("_TAPLAND_RE", "_TAPLAND_COND_RE", "_TAPLAND_SHOCK_RE",
+                 "_TAPLAND_FAST_RE", "_TAPLAND_CHECK_RE"):
         out.append((f"lib.{name}", getattr(lib, name), "norm"))
     # wishlist's oracle-text classifiers (BS-04): the flex-removal seed bonus and the
     # G-19 conditional-power (`pow~`) flag. If _FLEX_REMOVAL_RE goes dead, the seed

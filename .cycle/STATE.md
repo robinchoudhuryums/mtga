@@ -19,7 +19,7 @@ Phase: implement — **scan #10 is FULLY IMPLEMENTED**. All four batches plus ev
 Scope: broad
 Test Command: `python3 scripts/check_all.py`
 Subsystem cycles since last Seams audit: 2 (counter adopted 2026-09-08; no Seams audit has run)
-Updated: 2026-09-19 (deck work + two classifier holes + a doc sync — see Where I left off)
+Updated: 2026-09-20 (manabase recommender + tapland taxonomy + the freshness gate — see Where I left off)
 
 ## In progress (facts to carry forward — NOT judgments)
 - **Broad scan #10 is fully implemented — nothing outstanding from the scan.** Four
@@ -36,6 +36,16 @@ Updated: 2026-09-19 (deck work + two classifier holes + a doc sync — see Where
   fixed its largest cause (deck 47's own picks: median 310 → 144).
 
 ## Completed this cycle
+- **2026-09-20 — three tooling fixes surfaced by the deck 16/79 manabase work**
+  (`.cycle/blocks/2026-09-manabase-recommender-tapland-taxonomy-broad-implement.md`).
+  (1) `suggest_lands` had inherited `suggest` proper's skip-what-you-run filter, so it
+  could not propose a SECOND copy of a land — the fix for most manabases. Now only the
+  copy limit and basics exclude; an `In` column labels duplicates. **58 of 112 decks' #1
+  land pick is now another copy.** (2) `tapland_kind`'s `conditional` bucket held FOUR
+  families with opposite timing; `fast` and `check` now earn the untapped premium, `check`
+  only when the caller passes a basic count over 12 (roster p25). 35 of 676 pool land rows
+  move. (3) `check_all` now reports collection freshness (`collection_freshness_soft`).
+  17 new tests, each mutant-verified.
 - **KEY saturation in `fit_strength` — the earned generic signature (post-scan, user-requested)** | The filed control-flow defect: the signature branch is the function's FIRST statement and excluded `_GENERIC_TRIBES` but not `GENERIC_THEMES`, so it minted **97.3% of every KEY verdict** roster-wide while `role-gap` (1.5%) and `top-theme` (1.2%) were dead. A generic signature theme must now EARN its KEY via `structural_overlay_hit`; a specific one still mints alone; an unearned generic one FALLS THROUGH rather than being forced down. KEY 18.6% → 10.2%, p50 KEY decks per card **8 → 4**, and `top-theme` → **63.8%** / `role-gap` → **8.8%**. **A REJECTION was pinned in the tests and had to be cleared first** — an earlier tightening dropped deck 30 21% → 1% and demoted Innkeeper's Talent; that rejection stands and this is a different change, evidenced on the same deck: **deck 30's KEY rate does not move at all (27.7% → 27.7%)** and Innkeeper's Talent survives via the overlay. Measured LIVE at all THREE callers per G-40, with `tangential` invariant at every one — the first `screen` sample showed zero change and would have been a VACUOUS pass, so the population was measured (42 of 112 decks) and re-run where the path bites (5 of 8 moved) | scripts/deck.py, scripts/check_suggest.py, tests/test_deck.py
 - **F2/F4 — the nonland mana-source disclosure, and a MEASURED DECLINE of the pay-life flag (post-scan, user-requested)** | F2: `consistency` prices every figure off the LAND count (G-35) while `suggest --ramp` recommends the nonland sources it cannot see — two surfaces disagreeing by construction, neither saying so, and **decks 23 and 41 had each independently hand-written the workaround into their own `#: notes:`**, which by this repo's rule means the RULE was wrong. New `uncounted_mana_sources`, printed by `consistency`, REPORT-ONLY (no figure moves — a rock is not a land drop, and that exclusion was never the bug; its SILENCE was). Rules reused from `lib.land_production` so the disclosure and the land count cannot drift, which buys the spend-only / granted-ability exclusions free. **75 of 112 decks, 76 cards, hand-checked 74/76.** The first two measurements were WRONG — a hand-rolled regex said 40 decks, and `_MANA_SOURCE_RE` (the existing primitive, one caller) said 89 at far worse precision: G-40 fired exactly as written. F4: **DECLINED after measurement, not built.** Bar pre-registered at ~50%; the broad form scores **22%** (46% shocklands/equip costs, 26% cheap-not-upside, **6% BACKWARDS** — "ward—pay 5 life" is the OPPONENT's cost, G-42's own signature), and the narrow form fires on **1 of 112 decks** off 7 pool cards — **not deck 41**, the deck that motivated it. The shape was wrong: every `_COST_UPSIDE` rule encodes a cost that FEEDS something, and paying life feeds nothing | scripts/deck.py, tests/test_deck_models.py
 - **F1/F3 — the board-presence axis and the rationale audit's self-disclosure (post-scan, user-requested)** | Came out of the deck 41 tune: the deck read WEAK while clearing an A floor, and **no tool measured board presence at all** — `grep board_power scripts/` returned nothing and the sum was hand-rolled six-plus times in one session. New `board_power` (quantity-weighted printed power over FRONT-face creatures), report-only in `stats` and `tier`, never in `tier_band` — pinned by a test that two decks differing only in creature SIZE land in the same band. It is a SEPARATE axis, measured: **r = −0.147 against a ±0.188 noise band at n=112**, distribution min 23 / p10 37 / p50 54 / p90 73 / max 120. Three limits disclosed rather than guessed: unknown `*`/X power (**70 of 112 decks**, 124 copies — a bare sum would under-report on 62% of the roster), tokens (read ZERO), and Vehicles (counted apart, 10 decks). `deck_quality_vector` had a SECOND in-loop creature tally beside it — removed, 0 diffs across 112 decks. F3's half: deck 41's board-power figure **went stale twice in one session while `--audit-rationale` reported it CURRENT**, because an unregistered figure is unauditable; registered now, with `_FIG_RANGE_AFTER` (the WORDED form of `_ARROW_AFTER` — the roster writes "went 41 to 57") so the delta's FROM side is not flagged, and `audited_figure_keys()` derived from the pattern table so the audit PRINTS what it can price | scripts/deck.py, scripts/check_patterns.py, tests/test_deck_models.py, tests/test_deck.py
@@ -99,6 +109,16 @@ Updated: 2026-09-19 (deck work + two classifier holes + a doc sync — see Where
 - Two G-67 role-pattern holes (Kitnap, Eluge), baselined not fixed.
 
 ## Open follow-on items
+- **No surface computes P(a tapped land in your first N land drops).** Hand-rolled six
+  times on 2026-09-20 and it decided both manabases. The G-86 `board_power` shape. MUST
+  stay report-only — `tapland_profile`'s docstring already commits to never feeding a
+  score, and G-25/G-60/G-86 say why.
+- **`wishlist --rank` could pass its Target deck's basics to `_land_value`** and price
+  checklands properly. NOT built: the wishlist holds zero checkland rows today, so the
+  change is unmeasurable and this project measures. Revisit when one is wishlisted.
+- `_central_themes`' relative cutoff moved deck 79's reported count 11 → 8 with no deck
+  change (two new tagged lands raised the top weight). Report-only; documented in the
+  deck's notes rather than filed as a defect.
 - CLOSED 2026-09-15: `_ALT_COST_RE` now covers `impending`. It was not the count of cards
   that mattered — `effective_avg_mv` returns None when nothing is priced, so **7 of the 9
   decks holding an impending card printed NO advisory at all**, a failure that presented as
@@ -213,6 +233,27 @@ Updated: 2026-09-19 (deck work + two classifier holes + a doc sync — see Where
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
+**2026-09-20 — deck 16/79 manabases, then the three tooling fixes they surfaced.**
+PR #187 merged (four deck-79 swaps, the library reconcile, both manabases rebuilt, the
+dashboard). Then `/broad-implement 1-3` on branch `claude/sync-commands-mmmsdb`, restarted
+from `main` after the merge. `check_all` green, `check_docs` 114 rules, `check_commands`
+OK, both `--help` levels OK.
+
+**THE THREE FIXES ARE IN THE BLOCK FILE** — read it rather than re-deriving:
+`.cycle/blocks/2026-09-manabase-recommender-tapland-taxonomy-broad-implement.md`.
+
+**Two of the three findings were not what I filed, and the corrections matter more than
+the fixes.** Finding 2 was filed as "checkland vs board-state" and MEASURED as four
+families with opposite early-game timing (fast / check / slowland / board state) — the
+measurement widened the fix. Finding 3 claimed `collection_stamp_note` could not tell
+"never" from "30 days ago"; it ALREADY could, and the only real gap was that `check_all`
+never called it. State a finding from the code, not from the symptom that surfaced it.
+
+**A PROCESS FAILURE TO NOT REPEAT:** a background full-suite run reported five failures
+that were artifacts of my own concurrent edits to scripts/ while it was reading them. All
+five passed on the settled tree. The clean re-run is now guarded by a before/after md5 of
+scripts/ — never edit source while a suite is running, and never report such a run red.
+
 **2026-09-19 — deck work, two classifier holes, and the handoff caught up.** Working tree
 clean, full pytest exit 0, `make postedit` green, `check_docs` resolves 114 rules. Branch
 `claude/sync-commands-mmmsdb`; PRs #183/#184/#185 merged.

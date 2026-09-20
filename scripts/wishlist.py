@@ -720,7 +720,18 @@ _LAND_BREADTH_PER_COLOR = 0.75
 _LAND_BREADTH_CAP = 1.5
 
 
-def _land_value(row, deck_colors):
+# A CHECKLAND's gate is the deck's BASIC COUNT, which is knowable — unlike the board
+# states the rest of the `conditional` bucket asks about. Floor is the roster's p25
+# (measured 2026-09-20 over 114 decks: min 4 / p10 9 / p25 12 / p50 15.5 / p75 19 / max
+# 24; no deck runs zero). At 12 basics in a 24-land deck the conservative model — the
+# chance at least one of the two lands you already control on turn three is a basic —
+# reads 76%, and the real rate is higher because you SEQUENCE (lead on the basic, play
+# the checkland second) and because you draw more lands. Only turn one is reliably
+# tapped, which is also true of the shockland that already earns the full premium.
+_CHECKLAND_BASIC_FLOOR = 12
+
+
+def _land_value(row, deck_colors, basics=None):
     """0–10 MANABASE value of a land for its target deck (F03) — the theme-fit axis
     is meaningless for lands (no synergy tags), so score fixing instead: reward
     producing colors the deck actually runs (a WB dual in mono-W is half-dead),
@@ -786,7 +797,19 @@ def _land_value(row, deck_colors):
     # this SCORING path still withheld the premium, so Hallowed Fountain valued at 8.0 as
     # though it always entered tapped. A shockland's condition is payable AT WILL, so it
     # earns the premium; a board-state condition may not be met and stays conservative.
-    if not fetch and tapland_kind(txt) in (None, "shock"):
+    # UNTAPPED-WHEN-IT-MATTERS earns the premium; "conditional" alone does not.
+    # `fast` ("unless you control two or fewer other lands") is untapped on turns 1-3 by
+    # construction — the exact window fixing is for — so it qualifies outright, on the
+    # same reasoning that already admits a shockland's pay-at-will clause. `check` (a
+    # basic-land gate) qualifies only when the CALLER knows the deck clears the floor;
+    # `basics=None` means unknown and stays conservative, so every caller that does not
+    # opt in scores exactly as before. A SLOWLAND ("two or MORE other lands") and a board
+    # state ("unless a player has 13 or less life") keep the conservative score — their
+    # condition is false precisely when tempo matters.
+    _kind = tapland_kind(txt)
+    _untapped_early = _kind in (None, "shock", "fast") or (
+        _kind == "check" and basics is not None and basics >= _CHECKLAND_BASIC_FLOOR)
+    if not fetch and _untapped_early:
         base += 1.5
     # Halve the fixing PREMIUM (never the 3.5 neutral floor) when every color this deck
     # wants from the land is restricted. Bounded and one-directional: it can only lower a
