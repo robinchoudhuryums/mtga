@@ -61,6 +61,29 @@
 #: archetype: that team pump and Kykar. It is NOT flavour — but it is what keeps Secret of
 #: archetype: Bloodbending out, since {U}{U}{U}{U} needs 20+ blue sources against this
 #: archetype: deck's 18 and reads 43% on turn five, 52% on turn six.
+#: notes: 2026-09-20 — MANABASE. The diagnosis was COLOUR, not tempo: this deck already held ZERO unconditional
+#: notes: taplands, while W was a PRIMARY colour (10 pips across 10 cards) on NINE sources — Compassionate Healer
+#: notes: and South Pole Voyager are turn-two {W} plays that read 75.1%, and eighteen cards sat under 90% on curve.
+#: notes: THE FREE HALF was a bookkeeping miss, not a deckbuilding one: this deck ran ONE Hallowed Fountain and ONE
+#: notes: Gleaming Bastion against a real 2 and 3 owned, and COPIES ARE FUNGIBLE ACROSS DECKS — deck 79 maxes the
+#: notes: same lands on the same day, and one copy plays in both simultaneously. Out: 4 Island, 1 Plains. In: a 2nd
+#: notes: Hallowed Fountain, 2 more Gleaming Bastion, 2 Mystic Monastery. W 9 -> 13, U 18 -> 19, cards under 90% on
+#: notes: curve 18 -> 13, worst on curve 75.1% -> 79.6%. Zero wildcards.
+#: notes: THE MYSTIC MONASTERY CALL IS THE OPPOSITE OF DECK 79'S, deliberately. Monastery is a real W/U dual and an
+#: notes: unconditional tapland; 79 is removing that class because its losing pattern is early tempo, while this
+#: notes: deck has no tapland exposure to protect and a colour hole to fill, so 16% tapland risk for +4 W and +1 U
+#: notes: is a good trade HERE and a bad one THERE. Same card, opposite verdict, decided by the deck's own problem.
+#: notes: Its third colour (R) is a land producing a colour nothing here casts — it does NOT widen `#: colors:`.
+#: notes: ALSO CONSIDERED: Abandoned Air Temple would be the purer W fix (a checkland, untapped from turn two, plus
+#: notes: a {3}{W} board-wide +1/+1) and reads W 14 / U 18 at the same 13 under 90 — a live alternative if the two
+#: notes: taplands play worse than they measure. Urban Retreat is the flavour pick left on the table: it is a W/U
+#: notes: source whose "return a TAPPED creature you control" cost is one this deck pays for free (waterbend taps
+#: notes: your own board), but it enters tapped. Abandoned Campground was REJECTED for both decks — its "unless a
+#: notes: player has 13 or less life" clause is false in the turns that matter (G-37: read the clause against THIS
+#: notes: deck), so it is a tapland when it counts and a marginal upgrade over Monastery only after turn five.
+#: notes: Floodfarm Verge was also RELOCATED from the `# Nonland` section to `# Lands` the same day — a G-05
+#: notes: mismatch the file had carried since the rebuild. Moved with `deck.py move`, so the printing fields were
+#: notes: never retyped (G-65/G-77); no recommendations.csv row, because a relocation is not a decision.
 #: notes: REBUILT 2026-09-18 into the roster's waterbend deck. The whole airbend package
 #: notes: was cut (Aang the Last Airbender, Appa Steadfast Guardian, Airbender
 #: notes: Ascension, Airbending Lesson x2, The Legend of Yangchen, Airbender's Reversal,
@@ -156,7 +179,6 @@
 1 Aang's Iceberg (TLA) 5
 1 Namor the Sub-Mariner (MSH) 69
 1 Crashing Wave (TLA) 47
-1 Floodfarm Verge (DSK) 259
 1 Waterbending Lesson (TLA) 80
 1 Kitsune, Dragon's Daughter (TMT) 41
 1 Captain America, Living Legend (MSH) 210
@@ -168,7 +190,9 @@
 1 Amazing Acrobatics (SPM) 25
 
 # Lands
-1 Hallowed Fountain (ECL) 265
-6 Plains (ANB) 115
-1 Gleaming Bastion (MSH) 267
-15 Island (ANB) 113
+2 Hallowed Fountain (ECL) 265
+5 Plains (ANB) 115
+3 Gleaming Bastion (MSH) 267
+11 Island (ANB) 113
+2 Mystic Monastery (TDM) 262
+1 Floodfarm Verge (DSK) 259

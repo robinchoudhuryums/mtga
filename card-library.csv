@@ -489,10 +489,10 @@ Enchanted creature loses all abilities and is a Citizen with base power and toug
 "Uthros, Titanic Godcore",Land — Planet,"This land enters tapped.
 {T}: Add {U}.
 Station (Tap another creature you control: Put charge counters equal to its power on this Planet. Station only as a sorcery.)
-12+ | {U}, {T}: Add {U} for each artifact you control.",U,Planet; mana; station; counters; artifacts,EOE,260,1
+12+ | {U}, {T}: Add {U} for each artifact you control.",U,Planet; mana; station; counters; artifacts,EOE,260,2
 Agna Qel'a,Land,"This land enters tapped unless you control a basic land.
 {T}: Add {U}.
-{2}{U}, {T}: Draw a card, then discard a card.",U,card draw; mana,TLA,264,1
+{2}{U}, {T}: Draw a card, then discard a card.",U,card draw; mana,TLA,264,2
 Syncopate,Instant,"Counter target spell unless its controller pays {X}. If that spell is countered this way, exile it instead of putting it into its owner's graveyard.",U,counterspell; graveyard,FIN,80,1
 Procrastinate,Sorcery,"Tap target creature. Put twice X stun counters on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)",U,counters,SOS,64,1
 Portent of Calamity,Sorcery,"Reveal the top X cards of your library. For each card type, you may exile a card of that type from among them. Put the rest into your graveyard. You may cast a spell from among the exiled cards without paying its mana cost if you exiled four or more cards this way. Then put the rest of the exiled cards into your hand.",U,graveyard,BLB,66,1
@@ -2240,9 +2240,9 @@ Azorius Guildgate,Land — Gate,"This land enters tapped.
 Floodfarm Verge,Land,"{T}: Add {W}.
 {T}: Add {U}. Activate only if you control a Plains or an Island.",W/U,mana,DSK,259,1
 Hallowed Fountain,Land — Plains Island,"({T}: Add {W} or {U}.)
-As this land enters, you may pay 2 life. If you don't, it enters tapped.",W/U,Plains; Island; mana; pay life,ECL,265,1
+As this land enters, you may pay 2 life. If you don't, it enters tapped.",W/U,Plains; Island; mana; pay life,ECL,265,2
 Gleaming Bastion,Land,"{T}: Add {C}.
-{T}: Add {W} or {U}. Activate only if this land entered this turn or if you control a basic land.",W/U,mana,MSH,267,1
+{T}: Add {W} or {U}. Activate only if this land entered this turn or if you control a basic land.",W/U,mana,MSH,267,3
 North Pole Gates,Land,"This land enters tapped.
 {T}: Add {W} or {U}.
 {4}, {T}, Sacrifice this land: Draw a card.",W/U,card draw; sacrifice; mana,TLA,274,1
@@ -5912,7 +5912,7 @@ Sword of Wealth and Power,Artifact — Equipment,"Equipped creature gets +2/+2 a
 Whenever equipped creature deals combat damage to a player, create a Treasure token. When you next cast an instant or sorcery spell this turn, copy that spell. You may choose new targets for the copy.
 Equip {2}",Colorless,Equipment; tokens; treasure; equipment; pump; spell copy; equip,BIG,26,1
 Frontier Bivouac,Land,"This land enters tapped.
-{T}: Add {G}, {U}, or {R}.",U/R/G,mana,TDM,256,1
+{T}: Add {G}, {U}, or {R}.",U/R/G,mana,TDM,256,2
 "Judith, Carnage Connoisseur",Legendary Creature — Human Shaman,"Whenever you cast an instant or sorcery spell, choose one —
 • That spell gains deathtouch and lifelink.
 • Create a 2/2 red Imp creature token with ""When this token dies, it deals 2 damage to each opponent.""",B/R,Human; Shaman; lifegain; tokens; burn; spellslinger; noncombat damage; deathtouch; combat; removal; lifelink,MKM,210,1
@@ -5973,3 +5973,5 @@ Return target nonland permanent to its owner's hand. If this spell was kicked, d
 Avengers Hangar,Land,"This land enters tapped.
 When this land enters, you gain 1 life.
 {T}: Add {W} or {U}.",W/U,lifegain; mana; etb,MSH,259,1
+"Ishgard, the Holy See",Land — Town // Sorcery — Adventure,"This land enters tapped.
+{T}: Add {W}. // Return up to two target artifact and/or enchantment cards from your graveyard to your hand. (Then exile this card. You may play the land later from exile.)",W,Town; Adventure; graveyard; exile cast; mana,FIN,283,1
