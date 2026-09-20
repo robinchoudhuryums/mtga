@@ -88,7 +88,7 @@
 1 The Earth Crystal (FIN) 184
 1 Duskwatch Hunter (HOB) 153
 1 Leatherhead, Swamp Stalker (TMT) 117
-1 Summon: Fenrir (FIN) 203
+1 Gigantic Big Bear (HOB) 126
 1 Chief Warg's Company (HOB) 151
 1 The Chief Warg (HOB) 150
 1 Head of the Hunt (HOB) 75
@@ -97,7 +97,7 @@
 # ── Bears (the Ferocious enablers) ──────────────────
 1 Moon-Vigil Adherents (ECL) 184
 1 Vastlands Scavenger // Bind to Life (SOS) 166
-1 Little Bear (HOB) 128
+1 Warden of the Grove (TDM) 166
 1 Germination Practicum (SOS) 149
 1 The Earth King (TLA) 172
 1 Beorn the Fierce (HOB) 119
