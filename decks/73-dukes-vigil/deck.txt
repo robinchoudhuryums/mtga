@@ -2,14 +2,19 @@
 #: format: Standard
 #: colors: WGR
 #: plan: midrange
-#: tier: B (PROVISIONAL) — graded UNDER the A metrics floor, which this list meets
-#: tier: exactly (interaction 5, with the two axes summing right at the threshold)
+#: tier: B (PROVISIONAL) — the letter now MATCHES the metrics floor, which reads B.
+#: tier: (An earlier draft of this block claimed it met the A floor "exactly"; that was
+#: tier: never true — the floor read C until 2026-09-21, and the claim survived because
+#: tier: no audit pattern prices a floor stated that way. Corrected here.) Graded
 #: tier: under the honest plan (the
 #: tier: inference guessed aggro off the cheap curve, but this is a VALUE ENGINE —
 #: tier: plan set to midrange per the 56a lesson, so the floor weighs interaction +
-#: tier: card advantage). Interaction reads 5; card advantage reads 1 and is the most
-#: tier: under-counted axis in the roster (K-12 shape): Wylie, Spider-Gwen, Traveling
-#: tier: Botanist, Seedship Agrarian, Compassionate Healer and Fishing Pole all
+#: tier: card advantage). Interaction reads 5; card advantage reads 2 and is still the
+#: tier: most under-counted axis in the roster (K-12 shape). TRAVELING BOTANIST WAS THE
+#: tier: SIXTH NAME ON THIS LIST AND IS NOW COUNTED: the 2026-09-21 topdeck-to-hand
+#: tier: pattern closed that hole, which took the figure from 1 to 2 and the floor from
+#: tier: C to B. This block predicted its own fix. The rest still read 0: Wylie,
+#: tier: Spider-Gwen, Seedship Agrarian, Compassionate Healer and Fishing Pole all
 #: tier: draw/filter/generate through becomes-tapped or untap triggers no pattern
 #: tier: reads, Captain America doubles them, and Annie doubles Wylie. In the
 #: tier: 2026-08-16 tune Agent Maria Hill was CUT (she was the one classified draw,

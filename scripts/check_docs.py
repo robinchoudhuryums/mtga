@@ -392,7 +392,11 @@ def _live_figures():
                 _spread.update(deck.tier_floor_spread()[0])
             if band == "%":
                 return round(100 * max(_spread.values()) / sum(_spread.values()))
-            return _spread[band]
+            # `.get`, not `[]`: a band with no decks in it is a real 0. When the C
+            # band emptied on 2026-09-21 this raised KeyError and the entry reported
+            # 'could not measure' — a dead entry, which is reported, in place of the
+            # stale figure, which is not.
+            return _spread.get(band, 0)
         return get
 
     _pool_cache = {}

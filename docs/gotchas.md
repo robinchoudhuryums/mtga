@@ -3826,6 +3826,65 @@ predicate (`<= declared`), not by remembering which functions were converted.
 
 ## [G-67] A pattern set is a whitelist, and a whitelist's misses are invisible
 
+### 2026-09-21 — the proximity window's mirror: the WINDOW was innocent
+
+Two holes, found while tuning deck 3 by hand — again not by a gate.
+
+**F1, `Team pump / anthem`, purely defensive.** The third pattern read `creatures you
+control (?:of the chosen type |with [^.]{0,30}?)get \+`. The author anticipated *of the
+chosen TYPE* and missed *of the chosen COLOUR*, so Heraldic Banner and Caged Sun scored
+ZERO roles. Two pool cards, one Standard-legal, **zero decks run either** — the
+family-disagreement shape this rule already tells you to check first, and it cost nothing
+this month. Widened to `(?:type|colou?r)`.
+
+**F2, Card advantage, a live mis-grade.** No pattern covered the topdeck-reveal-to-hand
+family (*"look at the top card of your library. If it's an artifact or creature card, you
+may reveal it and put it into your hand"*), so Sidequest: Catch a Fish scored Ramp/fixing
+ALONE. 25 pool cards.
+
+**The first draft of F2 was WRONG, and that is the entry worth keeping.** It was written
+`look at the top card of your library\.[^.]{0,80}?put (?:it|that card) into your hand` —
+a same-sentence span, on the stated theory that the SENTENCE BOUNDARY separates card
+advantage from ramp. It does not. Risen Reef, Fecund Greenshell, Wickerfolk Thresher and
+Parcelbeast all read *"if it's a land, put it onto the battlefield. OTHERWISE / IF YOU
+DON'T, put it into your hand"* — you get the card either way, so they ARE card advantage,
+and the tight span silently dropped ten of them. The real discriminator is whether the
+card **reaches your hand at all**: the 8 genuine negatives (Lantern of Revealing, Raiders'
+Karve, Mobile Homestead…) never say "into your hand" anywhere, so the DESTINATION clause
+excludes them with no help from the span, which is now `.{0,220}?`.
+
+This is 2026-09-12 in reverse. There the fix was the clause and widening the window was
+rejected; here the window was BLAMED and the clause was doing the work all along. In both
+cases the question that settles it is *which sub-clause actually discriminates*, and the
+span is whatever that clause needs to reach.
+
+A regression test asserting the tight theory had already been written and would have
+pinned the wrong behaviour permanently. It was rewritten before the change landed. All
+four new tests were proven load-bearing against targeted mutants: tightening the span back
+to `[^.]{0,80}` fails `test_topdeck_to_hand_survives_an_intervening_sentence` (Risen Reef's
+real text), and widening the destination to "onto the battlefield" fails
+`test_topdeck_that_NEVER_reaches_hand_is_not_card_advantage` (Lantern of Revealing's).
+The negative half is the one that constrains — truncating a regex makes it BROADER, so a
+positive-only test passes vacuously.
+
+Roster diff (the K-12 mandated measurement): **card advantage moved on 3 deck files**
+(03-knights-edge 4→5 and its brawl twin 1→2, 73-dukes-vigil 1→2) and **ONE tier floor
+moved — deck 73 C→B**. Deck 73's claimed B had been a live mis-grade, and its own
+`#: tier:` block predicted the fix: it listed Traveling Botanist sixth among cards whose
+draw no pattern read. `check_roles` baseline: 0 newly acknowledged, 1 stale entry pruned;
+coverage 1405 → 1406 of 1884. Reminder text is stripped upstream by `_clean_text`, which
+is why Search for Azcanta's surveil reminder (*"put that card into your graveyard"*) does
+not match.
+
+**Deck 61 was predicted to move and did NOT.** `role_tally` skips LANDS by design and
+Bucolic Ranch is a Land. The pre-fix estimate had been made by adding +1 to a quality
+vector rather than asking whether the card is counted at all — the cheap way to be wrong
+about a blast radius.
+
+**Residual, not examined:** the 8 battlefield-only members of the family are ramp and
+score no Ramp/fixing role from these patterns. A separate axis.
+
+
 ### 2026-09-12 — two proximity-window holes, and why the fix was the clause
 
 Found while grading a single card (Spider-UK) for deck 23, not by a gate.

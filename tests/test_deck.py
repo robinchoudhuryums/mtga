@@ -96,6 +96,54 @@ class TestClassifyRoles:
         # A one-card draw is deliberately NOT counted as card advantage.
         assert "Card advantage" not in deck.classify_roles("Draw a card.")
 
+    # --- 2026-09-21 whitelist holes, both surfaced by a deck-3 tune (G-67).
+
+    def test_chosen_colour_anthem_counts(self):
+        # The alternation anticipated chosen-TYPE and missed chosen-COLOUR, so
+        # Heraldic Banner scored ZERO roles. Real text, per G-67's fixture rule.
+        roles = deck.classify_roles(
+            "As this artifact enters, choose a color.\n"
+            "Creatures you control of the chosen color get +1/+0.\n"
+            "{T}: Add one mana of the chosen color."
+        )
+        assert "Team pump / anthem" in roles
+
+    def test_topdeck_reveal_to_hand_is_card_advantage(self):
+        # Sidequest: Catch a Fish scored Ramp/fixing ALONE; deck 73 sat a band low.
+        roles = deck.classify_roles(
+            "At the beginning of your upkeep, look at the top card of your library. "
+            "If it's an artifact or creature card, you may reveal it and put it into "
+            "your hand."
+        )
+        assert "Card advantage" in roles
+
+    def test_topdeck_to_hand_survives_an_intervening_sentence(self):
+        # Risen Reef's real text. The card reaches your hand only AFTER a sentence
+        # about the battlefield, so a same-sentence span drops it -- and it dropped
+        # ten cards that way in this pattern's first draft. You get the card either
+        # way, which is what makes the whole family card advantage.
+        roles = deck.classify_roles(
+            "Whenever this creature or another Elemental you control enters, look at "
+            "the top card of your library. If it's a land card, you may put it onto "
+            "the battlefield tapped. If you don't put the card onto the battlefield, "
+            "put it into your hand."
+        )
+        assert "Card advantage" in roles
+
+    def test_topdeck_that_NEVER_reaches_hand_is_not_card_advantage(self):
+        # THE NEGATIVE HALF, and the one that constrains the pattern (G-67): truncating
+        # a regex makes it BROADER, so the positives above would still pass against a
+        # span that swallowed everything. Lantern of Revealing's real text -- the card
+        # goes to the battlefield or stays on top, and NEVER to hand. That is a land
+        # drop, not card advantage, and 8 pool cards share the shape. What excludes
+        # them is the "into your hand" requirement, NOT any sentence boundary.
+        roles = deck.classify_roles(
+            "{T}: Add {C}.\n"
+            "{1}, {T}: Look at the top card of your library. If it's a land card, you "
+            "may put it onto the battlefield tapped."
+        )
+        assert "Card advantage" not in roles
+
     def test_vanilla_has_no_interaction_role(self):
         # Combat keywords are not functional interaction/card-advantage.
         roles = deck.classify_roles("Flying. Vigilance.")
