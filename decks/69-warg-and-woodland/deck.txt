@@ -10,9 +10,10 @@
 #: tier: to 9 of 27 against 8 gated copies, and `deck.py stats` no longer raises the
 #: tier: power-4 thinness flag on this deck at all (neither figure is one the rationale
 #: tier: audit can price, so they are hand-counted and dated). What caps it now is the
-#: tier: OPPOSITE axis, and the same swaps spent it: interaction 4 and card advantage
-#: tier: 4 are the floor's own two terms, early drops 10, and `suggest --needs` reads
-#: tier: interaction SHORT. The gate is still checked at ATTACK time, so a pumped body
+#: tier: OPPOSITE axis, and the same swaps spent it: interaction 4 is one of the
+#: tier: floor's own two terms and `suggest --needs` reads it SHORT, while card
+#: tier: advantage 5 and early drops 12 have since been recovered by Herd Heirloom,
+#: tier: Insidious Fungus and Twitching Doll. The gate is still checked at ATTACK time, so a pumped body
 #: tier: qualifies — Spider-Ham lifts every Wolf and Bear, Beorn lifts Bears by +2/+2
 #: tier: and converts one creature per combat into a Bear, and Wilderland Scrounger
 #: tier: counters the whole board on a satisfied attack. Still unplayed. RE-GRADE
@@ -20,10 +21,11 @@
 #: tier: rather than under it, and recovering interaction is what would move it.
 #: archetype: GOLGARI FEROCIOUS — a Wolf tribal shell whose payoffs are gated on "a
 #: archetype: creature with power 4 or greater," and a Bear package that exists to TURN
-#: archetype: THAT GATE ON. The Bears are the cheapest reliable way to satisfy it:
-#: archetype: Vastlands Scavenger is a 4/4 deathtouch on turn three, Leatherhead a 5/4 on
-#: archetype: four, The Earth King arrives with a 4/4 Bear token, Beorn the Fierce is a
-#: archetype: 6/6. Beorn is the joint — he pumps Bears AND makes one creature per
+#: archetype: THAT GATE ON. The Bears carry the top end: Large Bear is a 5/5 with haste,
+#: archetype: Beorn the Fierce a 6/6, Gigantic Big Bear a hexproof 10/7, and The Earth
+#: archetype: King arrives with a 4/4 Bear token. The cheapest printed power-4 bodies are
+#: archetype: Chief Warg's Company and Kraven the Hunter at three mana, Leatherhead a 5/4
+#: archetype: on four. Beorn is the joint — he pumps Bears AND makes one creature per
 #: archetype: combat into a Bear, so a Wolf becomes a Bear becomes a power-4 body becomes
 #: archetype: the enabler — and Spider-Ham pumps both tribes at once. The DISTINCTIVENESS
 #: archetype: is the gate, not the tribe: no other roster deck is built around a
@@ -101,7 +103,7 @@
 
 # ── Bears (the Ferocious enablers) ──────────────────
 1 Moon-Vigil Adherents (ECL) 184
-1 Vastlands Scavenger // Bind to Life (SOS) 166
+1 Herd Heirloom (TDM) 144
 1 Warden of the Grove (TDM) 166
 1 Germination Practicum (SOS) 149
 1 The Earth King (TLA) 172
@@ -125,7 +127,7 @@
 # ── Interaction ─────────────────────────────────────
 1 Warg Tactics (HOB) 139
 1 Felling Blow (FDN) 105
-1 Unforgiving Aim (ECL) 200
+1 Insidious Fungus (DSK) 186
 
 # ── Lands ───────────────────────────────────────────
 1 Overgrown Tomb (ECL) 266
