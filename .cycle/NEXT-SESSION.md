@@ -40,8 +40,11 @@ commands disagree.
 > `#: notes:` carries the negative results so they are not re-derived — 23 lands is worse,
 > a second dual measures better but every candidate enters tapped, Station Monitor was
 > dropped because nothing in the deck cares about artifacts.
-> **`prune-analysis.md`'s overlap numbers predate this** and should be re-run before its
-> keep/cut calls are acted on.
+> **`prune-analysis.md`'s overlap numbers predated this — CLOSED 2026-09-21**, regenerated
+> against the live 114-file roster. The 15×16 pair moved exactly as forecast, **19 shared
+> cards → 11** against a predicted "around 12", and cross-family pairs fell 10 → 6 of
+> 6,399. The keep/cut calls are still the user's and still outstanding; it is the
+> EVIDENCE that is no longer stale.
 >
 > **3. TWO CLASSIFIER HOLES CLOSED, both measured at 0 roster impact on the tier floor.**
 > Mass BOUNCE now scores as a Sweeper (the role family disagreed with itself across 22 pool
