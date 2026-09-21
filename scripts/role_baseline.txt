@@ -155,7 +155,6 @@ Fire Sages
 Firebender Ascension
 Firebending Student
 Flamehold Grappler
-Flamekin Gildweaver
 Flopsie, Bumi's Buddy
 Flowerfoot Swordmaster
 Fog Bank
@@ -330,6 +329,7 @@ Raging Goblinoids
 Rainveil Rejuvenator
 Rapacious Dragon
 Raph & Leo, Sibling Rivals
+Raph & Mikey, Troublemakers
 Raphael, the Nightwatcher
 Reckless Velocitaur
 Red Room Recruit

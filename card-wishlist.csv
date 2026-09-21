@@ -276,10 +276,6 @@ Karakyk Guardian,Creature — Dragon,"Flying, vigilance, trample
 This creature has hexproof as long as it hasn't dealt damage yet. (It can't be the target of spells or abilities your opponents control.)",U/R/G,Dragon; flying; evasion; vigilance; combat; trample,TDM,198,Uncommon,,,2.5,seed
 Runescale Stormbrood // Chilling Screech,Creature — Dragon // Instant — Omen,"Flying
 Whenever you cast a noncreature spell or a Dragon spell, this creature gets +2/+0 until end of turn. // Counter target spell with mana value 2 or less. (Then shuffle this card into its owner's library.)",U/R,Dragon; Omen; counterspell; pump; flying; evasion,TDM,221,Uncommon,49,Deck 49: a 4-drop DRAGON that is also a Dragon payoff (+2/+0 on every noncreature or Dragon spell). Hidden from every red filter because its identity is U/R from the {1}{U} Omen half - the FRONT face is {3}{R} and mono-red castable (G-58 bulk-triage variant).,7.2,hand
-Phoenix Fleet Airship,Artifact — Vehicle,"Flying
-At the beginning of your end step, if you sacrificed a permanent this turn, create a token that's a copy of this Vehicle.
-As long as you control eight or more permanents named Phoenix Fleet Airship, this Vehicle is an artifact creature.
-Crew 1",B,Vehicle; sacrifice; tokens; vehicle; flying; evasion; crew; vehicles,TLA,114,Mythic,21,sacrifice-matters: copies itself when you sac a permanent (quirky build-around),5.0,hand
 "Azula, Cunning Usurper",Legendary Creature — Human Noble Rogue,"Firebending 2 (Whenever this creature attacks, add {R}{R}. This mana lasts until end of combat.)
 When Azula enters, target opponent exiles a nontoken creature they control, then they exile a nonland card from their graveyard.
 During your turn, you may cast cards exiled with Azula and you may cast them as though they had flash. Mana of any type can be spent to cast those spells.",U/B,Human; Noble; Rogue; graveyard; etb; firebending; bending,TLA,208,Rare,22,"best 22 (Bloodbending); also 17,12",6.0,hand
@@ -307,8 +303,6 @@ Look at the top eight cards of your library. Put up to two creature cards with t
 "Mikey & Don, Party Planners",Legendary Creature — Mutant Ninja Turtle,"Ward {2}
 You may look at the top card of your library any time.
 You may play lands and cast Mutant, Ninja, or Turtle spells from the top of your library. If you cast a creature spell this way, that creature enters with an additional +1/+1 counter on it.",U/G,Mutant; Ninja; Turtle; counters; selection; ward; protection,TMT,157,Rare,4,"best 4 (Quantum Realm); also 19a,17",5.5,hand
-"Raph & Mikey, Troublemakers",Legendary Creature — Mutant Ninja Turtle,"Trample, haste
-Whenever Raph & Mikey attack, reveal cards from the top of your library until you reveal a creature card. Put that card onto the battlefield tapped and attacking and the rest on the bottom of your library in a random order.",R/G,Mutant; Ninja; Turtle; haste; aggro; trample; evasion,TMT,167,Rare,9,"RG aggro: on attack, cheat a creature into play attacking — fits Hulk Smash (TMNT flavor)",5.5,hand
 Raphael's Technique,Instant,"Sneak {2}{R} (You may cast this spell for {2}{R} if you also return an unblocked attacker you control to hand during the declare blockers step.)
 Each player may discard their hand and draw seven cards.",R,card draw; sneak; tempo; cost-reduction,TMT,105,Rare,general,"symmetric red wheel (each player may draw 7) — niche refuel, no sacrifice synergy",3.5,hand
 "Rat King, Verminister",Legendary Creature — Rat Avatar,"Disappear — At the beginning of your end step, if a permanent left the battlefield under your control this turn, create a 1/1 black Rat creature token and put a +1/+1 counter on Rat King.

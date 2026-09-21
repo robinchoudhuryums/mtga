@@ -2780,6 +2780,9 @@ Refute,{1}{U}{U},3,
 Into the Roil,{1}{U},2,Kicker
 Avengers Hangar,,0,
 "Ishgard, the Holy See",{3}{W}{W},0,
+"Raph & Mikey, Troublemakers",{5}{R/G}{R/G},7,Haste;Trample
+"Jenova, Ancient Calamity",{2}{B}{G},4,
+Phoenix Fleet Airship,{2}{B}{B},4,Flying;Crew
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -5612,7 +5615,6 @@ The Emperor of Palamecia // The Lord Master of Hell,{U}{R},2,Starfall;Transform
 Gladiolus Amicitia,{4}{R}{G},6,Landfall
 "Golbez, Crystal Collector",{U}{B},2,Surveil
 Hope Estheim,{W}{U},2,Lifelink;Mill
-"Jenova, Ancient Calamity",{2}{B}{G},4,
 "Joshua, Phoenix's Dominant // Phoenix, Warden of Fire",{1}{R}{W},3,Flying;Lifelink;Transform
 "Kefka, Court Mage // Kefka, Ruler of Ruin",{2}{U}{B}{R},5,Flying;Transform
 "Kuja, Genome Sorcerer // Trance Kuja, Fate Defied",{2}{B}{R},4,Transform;Flare Star;Double
@@ -13991,7 +13993,6 @@ Dai Li Indoctrination,{1}{B},2,Earthbend
 The Fire Nation Drill,{2}{B}{B},4,Crew;Trample
 Fire Nation Engineer,{2}{B},3,Raid
 "Lo and Li, Twin Tutors",{4}{B},5,
-Phoenix Fleet Airship,{2}{B}{B},4,Flying;Crew
 The Rise of Sozin // Fire Lord Sozin,{4}{B}{B},6,Transform;Firebending;Menace
 Fire Nation Attacks,{4}{R},5,Flashback
 The Legend of Roku // Avatar Roku,{2}{R}{R},4,Transform;Firebending
@@ -14264,7 +14265,6 @@ Turtle Power!,{2}{G},3,Flash
 Bebop & Rocksteady,{1}{B/G}{B/G},3,
 Lessons from Life,{2}{G}{U},4,
 "Mikey & Don, Party Planners",{2}{G/U}{G/U},4,Ward
-"Raph & Mikey, Troublemakers",{5}{R/G}{R/G},7,Haste;Trample
 "Tokka & Rahzar, Terrible Twos",{B/R}{B/R},2,Menace
 Turtle Van,{3},3,Crew;Double
 Weather Maker,{3},3,Landfall
