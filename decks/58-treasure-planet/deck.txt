@@ -6,31 +6,42 @@
 #: archetype: JUND TREASURE ECONOMY — the user's RGB concept, given the identity the
 #: archetype: roster left open: artifact TOKENS as currency. Producers at every point
 #: archetype: on the curve (Bejeweled Warg's combat-damage choice, Magda's once-a-turn
-#: archetype: crime, Jolene's power-4 attacks, Flamekin Gildweaver's ETB, Terrapact's
+#: archetype: crime, Jolene's power-4 attacks, Smaug's upkeep Treasure, Terrapact's
 #: archetype: Landers, Brass's Bounty's one-shot flood); Roxanne, Starfall Savant is
 #: archetype: the mana engine — every artifact TOKEN tapped for mana yields double,
 #: archetype: so each Treasure cracks for two and her Meteorites ramp AND burn; and
-#: archetype: the payoff layer spends the currency four ways: counters (Crime
-#: archetype: Novelist, Twitching Doll, Pirate Peddlers — Elvish Archivist was CUT for
-#: archetype: Twitching Doll 2026-08-08; Biotech Specialist arrived 2026-09-09 and
-#: archetype: is a CRIME engine as much as a counters one — it pings a target
-#: archetype: opponent on every artifact sacrifice, so it turns each Treasure crack
-#: archetype: into a crime for Magda and Gisa), bodies
+#: archetype: the payoff layer spends the currency four ways: counters (Pirate
+#: archetype: Peddlers, Super Shredder, Pizza Face — whose Disappear turns a spare
+#: archetype: Treasure into a 3/3 while it stays a Treasure; Biotech Specialist
+#: archetype: arrived 2026-09-09 and is a CRIME engine as much as a counters one —
+#: archetype: it pings a target opponent on every artifact sacrifice, so it turns
+#: archetype: each Treasure crack into a crime for Magda and Gisa), bodies
 #: archetype: (Stone-Giant's 3/1 Boulder on entry AND each attack, Magda's 4/4
-#: archetype: dragons, Aatchik's swarm, Gisa's two 2/2s per crime, Chief Warg's
-#: archetype: 2/2 every upkeep), cards (Tom, Bert and William, Smaug's Treasure-mana
-#: archetype: draw, Sackville-Bagginses, Tarrian's Journal, Fountainport), and
+#: archetype: dragons, Phoenix Fleet Airship's self-copies, Gisa's two 2/2s per
+#: archetype: crime, Chief Warg's 2/2 every upkeep, Fire Navy Trebuchet's flier on
+#: archetype: every attack), cards (Tom, Bert and William, Mikey & Leo's once-a-turn
+#: archetype: draw off any counter, Sackville-Bagginses, Tarrian's Journal,
+#: archetype: Fountainport), and
 #: archetype: damage (Sackville-Bagginses drains 1 per TOKEN sacrificed, which the
 #: archetype: token engines now feed every turn; Gold Rush is the kill-turn pump).
 #: archetype: THE FLING PLAN IS GONE as of 2026-09-09: Food Fight was the card that
 #: archetype: turned every artifact into a damage source and NOTHING in Standard
 #: archetype: replaces it — a pool sweep for "Artifacts you control have <ability>"
 #: archetype: returns one survivor past 2027, and it grants ward. The damage axis is
-#: archetype: now drain-shaped, not fling-shaped; do not read the old plan back in. Distinct from deck 8 (BRG
+#: archetype: now drain-shaped, not fling-shaped; do not read the old plan back in.
+#: archetype: 2026-09-21 ADDED A MULTIPLIER LAYER on top of the economy: Doubling
+#: archetype: Season is the ONLY token doubler castable in these colours — an
+#: archetype: effect-shape sweep of Standard returns three others and every one is
+#: archetype: white or blue — and 29 copies here create tokens, so it doubles the
+#: archetype: fuel AND the payoff. Smaug converts the Treasure count into damage to
+#: archetype: any target, and Phoenix Fleet Airship copies ITSELF each end step a
+#: archetype: permanent was sacrificed — the copies carry the same trigger, so it
+#: archetype: DOUBLES rather than increments, and at eight it stops needing crew.
+#: archetype: Distinct from deck 8 (BRG
 #: archetype: aristocrats — sacrifices CREATURES for drains), deck 21 (WBG Food
 #: archetype: chains) and the UR artifact family (26/48): this deck's engine is the
 #: archetype: token economy itself, and no other deck runs Roxanne's doubling.
-#: protect: Roxanne, Starfall Savant; Crime Novelist; Magda, the Hoardmaster
+#: protect: Roxanne, Starfall Savant; Magda, the Hoardmaster
 #: tier: B (PROVISIONAL) — deliberately conservative for a first economy build: the
 #: tier: engine is deep but the interaction count is thin for midrange and the deck
 #: tier: needs a turn of setup before the currency flows. The floor may read
@@ -207,11 +218,13 @@
 1 The Sackville-Bagginses (HOB) 83
 1 Magda, the Hoardmaster (OTJ) 133
 1 Death to Our Enemies (MSH) 127
-2 Jolene, Plundering Pugilist (OTJ) 210
-1 Flamekin Gildweaver (ECL) 140
+1 Jolene, Plundering Pugilist (OTJ) 210
+1 Pizza Face, Gastromancer (TMT) 163
+1 Doubling Season (FDN) 216
 1 Liliana, Dreadhorde General (FDN) 176
-2 Terrapact Intimidator (EOE) 164
-1 War Effort (TDM) 131
+1 Terrapact Intimidator (EOE) 164
+1 Super Shredder (TMT) 83
+1 Fire Navy Trebuchet (TLA) 100
 1 Brass's Bounty (FDN) 190
 1 Chief Warg's Company (HOB) 151
 1 Mutagen Man, Living Ooze (TMT) 124
@@ -222,15 +235,17 @@
 
 # Payoffs (the spend)
 1 Vraska, the Silencer (OTJ) 237
-2 Crime Novelist (MKM) 121
+1 Legion Extruder (BIG) 12
+1 Smaug the Magnificent (HOB) 110
 1 Stone-Giant of High Pass (HOB) 113
 1 The Misty Mountains Cold (HOB) 104
-1 Twitching Doll (DSK) 201
+1 Mikey & Leo, Chaos & Order (TMT) 158
 1 Chandra, Spark Hunter (DFT) 116
-2 Pirate Peddlers (TLA) 115
+1 Pirate Peddlers (TLA) 115
+1 Raphael, the Nightwatcher (TMT) 103
 1 Biotech Specialist (EOE) 214
 1 Brimstone Roundup (OTJ) 115
-1 Aatchik, Emerald Radian (DFT) 187
+1 Phoenix Fleet Airship (TLA) 114
 1 Ygra, Eater of All (BLB) 241
 1 Gisa, the Hellraiser (OTJ) 89
 1 Gold Rush (OTJ) 166
@@ -256,7 +271,7 @@
 4 Forest (MSH) 296
 
 # Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 58
-#~ -War Effort | +Generous Plunderer | benched 2026-08 for War Effort: a menace body whose upkeep Treasure is symmetric (the opponent gets one too) and whose attack damage scales with THEIR artifact count, not ours — good in an artifact meta, worse as generic fodder. Bring it back if the Warrior tokens prove surplus.
+#~ note: applied — Fire Navy Trebuchet in for War Effort.
 #~ note: applied — The Sackville-Bagginses in for the 2nd Greedy Freebooter.
 #~ note: BENCHED 2026-09-09 — the SECOND Roxanne, Starfall Savant (craft R), cut for Smaug,
 #~ note: Wicked Worm. Written as a note, not a `-X | +Y` line, because the +In staleness check
