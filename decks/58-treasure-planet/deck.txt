@@ -234,7 +234,7 @@
 1 Roxanne, Starfall Savant (OTJ) 228
 
 # Payoffs (the spend)
-1 Vraska, the Silencer (OTJ) 237
+1 Jenova, Ancient Calamity (FIN) 228
 1 Legion Extruder (BIG) 12
 1 Smaug the Magnificent (HOB) 110
 1 Stone-Giant of High Pass (HOB) 113
