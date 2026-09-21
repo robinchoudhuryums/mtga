@@ -438,7 +438,6 @@ Time Stop
 Toph, the Blind Bandit
 Topiary Lecturer
 Transit Mage
-Traveling Botanist
 Treasure Dredger
 Treeguard Duo
 Treetop Snarespinner

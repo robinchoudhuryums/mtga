@@ -2139,6 +2139,25 @@ _ROLE_PATTERNS = {
                        # plural by construction, which is why the bare phrase is safe
                        # where a bare "draw a card" would not be.
                        r"put the rest into your hand",
+                       # TOPDECK TO HAND. "Look at the top card of your library. If
+                       # it's a <type> card, you may reveal it and put it into your
+                       # hand" is a free extra card whenever it hits -- 25 pool cards.
+                       # Nothing matched it, so Sidequest: Catch a Fish scored
+                       # Ramp/fixing ALONE and deck 73 sat a tier band low (2026-09-21).
+                       # THE DISCRIMINATOR IS "REACHES YOUR HAND", NOT THE SENTENCE
+                       # BOUNDARY, and getting that backwards was the first draft of
+                       # this very pattern. A tight `[^.]` span looks safer and is not:
+                       # Risen Reef, Fecund Greenshell, Wickerfolk Thresher and
+                       # Parcelbeast all read "if it's a land, put it onto the
+                       # battlefield. OTHERWISE / IF YOU DON'T, put it into your hand"
+                       # -- you get the card either way, so they ARE card advantage, and
+                       # a same-sentence span silently drops all ten of them. The real
+                       # negative is the 8 cards that reach the battlefield and NEVER
+                       # the hand (Lantern of Revealing, Raiders' Karve): pure ramp,
+                       # and they are excluded because they never say "into your hand"
+                       # at all -- which is the exclusion doing the work, not the span.
+                       r"look at the top card of your library\..{0,220}?"
+                       r"put (?:it|that card) into your hand",
                        # IMPULSE. "Exile the top card of your library. You may play that
                        # card this turn" is a card you would not otherwise have had — the
                        # same advantage a draw gives, one zone over. Nothing matched it:
@@ -2418,7 +2437,13 @@ _ROLE_PATTERNS = {
         # "Creatures you control WITH FLYING get +1/+1" (Favorable Winds, Empyrean Eagle),
         # "Creatures you control OF THE CHOSEN TYPE get +2/+2" (An Unexpected Party) --
         # the choose-a-type category K-13 warns never contains the type name.
-        r"creatures you control (?:of the chosen type |with [^.]{0,30}?)get \+",
+        # CHOSEN COLOUR IS THE SAME CATEGORY AND WAS MISSING (2026-09-21): the author of
+        # this alternation anticipated chosen-TYPE and not chosen-COLOUR, so Heraldic
+        # Banner ("Creatures you control of the chosen color get +1/+0") scored ZERO
+        # roles -- the family-disagreement shape G-67 says to check first. Only 2 pool
+        # cards (Heraldic Banner, Caged Sun) and 0 decks ran either, so this is purely
+        # DEFENSIVE; it is here so the next chosen-colour anthem is not invisible.
+        r"creatures you control (?:of the chosen (?:type|colou?r) |with [^.]{0,30}?)get \+",
     ],
     # `ward` mirrors _PROTECTION_RE (which always counted it): the role counted bare
     # hexproof/indestructible but not their modern replacement, so the AXIS and the

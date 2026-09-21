@@ -4,6 +4,9 @@
 #: tier: 2026-09-21: the letter is now BACKED by the floor rather than sitting a band
 #: tier: above it. Card advantage was the capping axis — it read 1 — and a seven-swap
 #: tier: pass RAISED it to 4 via Exemplar of Light (draws off both the
+#: tier: nine counter effects and the lifegain suite); a classifier fix later the
+#: tier: same day took it to 5 by finally counting Sidequest: Catch a Fish's
+#: tier: topdeck-to-hand upkeep trigger, which had scored Ramp/fixing alone.
 #: tier: nine counter-on-each-creature effects and the lifegain suite), Mikey & Leo,
 #: tier: and The Arkenstone, which is also the best anthem available and tutors any of
 #: tier: the 12 legendary creatures here. White Auracite came in over Colleen Wing as

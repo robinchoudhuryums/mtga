@@ -36,6 +36,20 @@ Updated: 2026-09-20 (manabase recommender + tapland taxonomy + the freshness gat
   fixed its largest cause (deck 47's own picks: median 310 → 144).
 
 ## Completed this cycle
+
+- **2026-09-21 — two role-pattern whitelist holes, surfaced by a deck-3 tune.**
+  `Team pump / anthem` matched "of the chosen TYPE" and not "of the chosen COLOUR"
+  (Heraldic Banner, Caged Sun scored zero roles; 0 decks run either — defensive).
+  Card advantage had no topdeck-to-hand pattern, so Sidequest: Catch a Fish scored
+  Ramp/fixing alone and **deck 73 sat a tier band low** — a live mis-grade, now
+  C→B with its claimed B matching the floor. Roster diff 3 deck files / 1 band.
+  Block: `.cycle/blocks/2026-09-topdeck-to-hand-and-chosen-colour-anthem-broad-implement.md`.
+  **The first draft of the card-advantage pattern was wrong and the discipline caught
+  it**: it used a same-sentence span on the theory that the sentence boundary
+  separates card advantage from ramp. It does not — Risen Reef and three others put
+  the card in hand only AFTER a battlefield sentence, and a tight span drops ten such
+  cards. The discriminator is "reaches your hand at all". A test pinning the wrong
+  theory had already been written and was rewritten before landing.
 - **2026-09-20 — three tooling fixes surfaced by the deck 16/79 manabase work**
   (`.cycle/blocks/2026-09-manabase-recommender-tapland-taxonomy-broad-implement.md`).
   (1) `suggest_lands` had inherited `suggest` proper's skip-what-you-run filter, so it
