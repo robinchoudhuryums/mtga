@@ -5979,3 +5979,7 @@ When this land enters, you gain 1 life.
 Whenever Raph & Mikey attack, reveal cards from the top of your library until you reveal a creature card. Put that card onto the battlefield tapped and attacking and the rest on the bottom of your library in a random order.",R/G,Mutant; Ninja; Turtle; haste; aggro; trample; evasion,TMT,167,1
 "Jenova, Ancient Calamity",Legendary Creature — Alien,"At the beginning of combat on your turn, put a number of +1/+1 counters equal to Jenova's power on up to one other target creature. That creature becomes a Mutant in addition to its other types.
 Whenever a Mutant you control dies during your turn, you draw cards equal to its power.",B/G,Alien; counters; card draw,FIN,228,1
+Phoenix Fleet Airship,Artifact — Vehicle,"Flying
+At the beginning of your end step, if you sacrificed a permanent this turn, create a token that's a copy of this Vehicle.
+As long as you control eight or more permanents named Phoenix Fleet Airship, this Vehicle is an artifact creature.
+Crew 1",B,Vehicle; sacrifice; tokens; vehicle; flying; evasion; crew; vehicles,TLA,114,1
