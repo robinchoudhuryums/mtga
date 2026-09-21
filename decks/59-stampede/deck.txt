@@ -70,10 +70,29 @@
 #: notes: Vaultborn Tyrant, which also gains 3), and the "enters OR attacks" pair
 #: notes: (Roxanne, Dragonhawk) fires its enters half if it is the card revealed.
 #: notes: Savage
-#: notes: Ventmaw stays at 2x: it is NOT legendary, so that copy is real redundancy.
+#: notes: Ventmaw was at 2x here because it is NOT legendary, so that copy was real
+#: notes: redundancy; one of the two went on 2026-09-21 (below).
+#: notes: 2026-09-21 (user-decided): 2nd Savage Ventmaw OUT for Terror of the Peaks,
+#: notes: the first step of a deliberate climb to the A floor (needs interaction 7;
+#: notes: this took it 4 -> 5, avg MV 4.17 -> 4.14, board power 119 -> 120). Terror is
+#: notes: REPEATABLE removal stapled to a 5/5 FLIER, which is the only evasion in a
+#: notes: deck that is otherwise all ground trample. THE COUNTS THAT PICKED IT: 29
+#: notes: creatures at mean power 4.1, top of curve 12/7/7/6/6/5/5/5 (nine at 5+), so
+#: notes: its trigger is ~4 damage baseline and 12 off Ghalta; and FIVE cards put a
+#: notes: creature onto the battlefield or make a token (Raph & Mikey every attack,
+#: notes: Web of Life and Destiny every combat, The Earth King, Scalestorm Summoner,
+#: notes: Sylvan Scavenging), so it fires without being cast into. It also stacks with
+#: notes: the three power-4 ETB draws already here (Garruk's Uprising, Outcaster
+#: notes: Trailblazer, Vaultborn Tyrant) - one creature landing can be three cards AND
+#: notes: a burn spell. Its ward-ish clause (opponents' spells targeting it cost 3
+#: notes: life) partly covers the protection axis this tier note calls near-zero.
+#: notes: HELL TO PAY was considered and is a real option for a later slot, with one
+#: notes: caveat the TIMING SPINE note above already implies: it is a SORCERY, so
+#: notes: FIREBENDING mana cannot pay for it - only Ventmaw mana, which survives to
+#: notes: main 2. Its excess damage makes Treasures, which Roxanne then doubles.
 
 # Attack-mana engine
-2 Savage Ventmaw (FDN) 665
+1 Savage Ventmaw (FDN) 665
 1 Jolene, Plundering Pugilist (OTJ) 210
 1 Zuko, Exiled Prince (TLA) 163
 1 Fire Sages (TLA) 136
@@ -113,6 +132,7 @@
 1 Bitter Work (TLA) 210
 1 Wilderland Scrounger (HOB) 141
 1 Cactusfolk Sureshot (OTJ) 199
+1 Terror of the Peaks (OTJ) 149
 
 # Interaction (combat-mana sinks)
 1 The Last Agni Kai (TLA) 144
