@@ -51,10 +51,30 @@
 #: notes: (The Earth King fetches them, The Boulder earthbends one).
 #: notes: 2026-09-06 LAND SWEEP (owned four-ofs of the untapped-beside-a-basic duals): −Gongaga, Reactor Town, −Commercial District
 #: notes: +2x Training Compound. Sources R 14 / G 15 → R 14 / G 15; unconditional taplands 3 → 1. Same colours, no tempo tax.
+#: notes: 2026-09-21 (user-decided): the SECOND Jolene, Plundering Pugilist OUT for
+#: notes: Raph & Mikey, Troublemakers. Jolene is LEGENDARY, so a second copy is blank
+#: notes: while the first is on the battlefield — the only card in the 60 with that
+#: notes: property; she stays at 1x and stays in #: protect:. Raph & Mikey is a 7/7
+#: notes: trample haste whose attack trigger reveals until a creature and puts it onto
+#: notes: the battlefield tapped and attacking, which is what Web of Life and Destiny
+#: notes: already does here at MV 8 with no body. 29 of 60 cards are creatures, so it
+#: notes: digs ~2.1 deep. ACCEPTED TRADE, flagged by the quality guard: INTERACTION
+#: notes: 5 -> 4, on the axis this deck is already thinnest on, because role counts are
+#: notes: quantity-weighted and Jolene's Treasure-sac ping counted twice. avg MV
+#: notes: 4.06 -> 4.17; board power 116 -> 119, 2nd of 112 on the roster. THE RULES
+#: notes: POINT no model here prices: a creature put onto the battlefield ATTACKING was
+#: notes: never DECLARED an attacker, so "whenever ~ attacks" triggers do NOT fire on
+#: notes: it — so read the trigger as a free BODY plus its ETB, never a free attack
+#: notes: trigger. THAT ETB IS WORTH MORE HERE THAN IN MOST DECKS: three cards draw
+#: notes: off a power-4+ creature ENTERING (Garruk's Uprising, Outcaster Trailblazer,
+#: notes: Vaultborn Tyrant, which also gains 3), and the "enters OR attacks" pair
+#: notes: (Roxanne, Dragonhawk) fires its enters half if it is the card revealed.
+#: notes: Savage
+#: notes: Ventmaw stays at 2x: it is NOT legendary, so that copy is real redundancy.
 
 # Attack-mana engine
 2 Savage Ventmaw (FDN) 665
-2 Jolene, Plundering Pugilist (OTJ) 210
+1 Jolene, Plundering Pugilist (OTJ) 210
 1 Zuko, Exiled Prince (TLA) 163
 1 Fire Sages (TLA) 136
 1 Roxanne, Starfall Savant (OTJ) 228
@@ -79,6 +99,7 @@
 1 Quaketusk Boar (BLB) 146
 1 Hugs, Grisly Guardian (BLB) 218
 1 Dragonhawk, Fate's Tempest (BLB) 132
+1 Raph & Mikey, Troublemakers (TMT) 167
 
 # Power-4 payoff lattice
 1 Garruk's Uprising (M21) 186
