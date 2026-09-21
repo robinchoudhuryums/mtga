@@ -151,3 +151,25 @@
 #~ +Nasty Little Rabbit | CRAFT (U): {G} 1/2 whose Ferocious puts a +1/+1 COUNTER on itself at the beginning of combat while you control a power-4 creature — it reaches power 4 on the third combat and joins the lattice permanently, off a ONE-mana investment. Wanted because the 2026-08-31 passes cut three 2-drops and took early drops 12 -> 9; it ticks at BEGINNING OF COMBAT, not on attack, so it still grows on turns you hold the board back.
 #~ note: LANDS, measured 2026-08-31. G is the more-demanded colour (31 pips / 24 cards) on FEWER sources (14) than R (25 pips / 21 cards, 15 sources) — a leftover from Molten Man, the only card that cared about Mountain count, now cut. Moving ONE basic (8 Mountain/9 Forest -> 7/10) measures +3.6 to +4.3 cast-on-curve for six green-hungry cards against -3.6 for three red ones, with nothing below 79.5%. Going further (6/11) OVERSHOOTS: the {R}{R} five-drops fall to 75.3% and Hugs REGRESSES, red becoming its bottleneck.
 #~ note: Do NOT cut Fire Nation Palace to fix the mana — it reads as a mono-R tapland but grants firebending 4 to any creature ({1}{R}, {T}), which is this deck's whole archetype, and it enters UNTAPPED while you control a basic (17 of them).
+#~ -Wilderland Scrounger | +Hard-Hitting Question | OWNED — A-FLOOR STEP 2 of 3 (proposed 2026-09-21, not applied): {G} sorcery, "target creature you control deals damage equal to its power to target creature or planeswalker you don't control". A BITE, not a fight, so no damage comes back. Priced by YOUR creature's power, which is this deck's surplus — it ranks 2nd of 112 on board power. Scrounger is the cut because it is a power-4 PAYOFF that is itself power 3: it depends on the lattice and contributes nothing to it, and a 3/6 is a blocker's body in a deck whose plan is attacking.
+#~ -Web of Life and Destiny | +Hell to Pay | OWNED — A-FLOOR STEP 3 of 3 (proposed 2026-09-21, not applied): {X}{R}, X damage to a creature, excess becomes Treasures — which Roxanne then doubles. THE CAVEAT IS THE TIMING SPINE above: it is a SORCERY, so firebending mana (Zuko / Fire Sages / Fire Nation Palace, which expires at end of combat) CANNOT pay for it; only Ventmaw mana, which survives to main 2. Bite Down ({1}{G} instant) is the swap-in if that constraint is unwanted — same axis, same destination, answers on their turn. Web is the cut because Raph & Mikey now cheats a creature onto the battlefield too; the cost is that Web is the only one that does it WITHOUT attacking, and the tier note names a stalled board as the weakness.
+#~ note: A-FLOOR PLAN (measured 2026-09-21 on scratch copies, none applied). The floor
+#~ note: needs interaction at 7 with the sum at 11+; card advantage already clears its
+#~ note: half, so interaction is the only axis that has to move. Step 1 LANDED — Terror
+#~ note: of the Peaks in for the 2nd Savage Ventmaw. The two lines above are steps 2-3
+#~ note: and were projected to reach the A floor together with avg MV around 3.8.
+#~ note: TWO ALTERNATIVE CUTS were measured and both also reached it. Hazoret, Godseeker
+#~ note: is the sharpest read: its "{1},{T}: target creature with power 2 or less can't
+#~ note: be blocked" can target SEVEN creatures here and they are the wrong seven (Fire
+#~ note: Sages, Ruby, Raucous Audience, Spider Manifestation, Goldvein Hydra, The Earth
+#~ note: King, Halana and Alena — mana dorks and utility bodies), while every real threat
+#~ note: is power 4+ and untargetable by it; it also cannot attack or block until max
+#~ note: speed. Cutting it costs the protection axis a point, which is why it is not the
+#~ note: lead. Flopsie was the other, and is being KEPT on a play-experience call: two
+#~ note: blanket trample granters across 60 cards is thin, so a third damage-through
+#~ note: effect earns its slot on draw consistency even though its clause is scoped to
+#~ note: power 4+, which overlaps the creatures that already trample natively.
+#~ note: DO NOT reach the A floor by flipping `#: plan:` to aggro — that substitutes a
+#~ note: clock score for the interaction the floor demands and buys the band without
+#~ note: changing a card. The archetype prose says combat-RAMP into monsters; midrange
+#~ note: is the honest header.
