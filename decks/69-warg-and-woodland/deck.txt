@@ -96,7 +96,8 @@
 1 Chief Warg's Company (HOB) 151
 1 The Chief Warg (HOB) 150
 1 Head of the Hunt (HOB) 75
-2 Wilderland Scrounger (HOB) 141
+1 Wilderland Scrounger (HOB) 141
+1 Web-Warriors (SPM) 159
 
 # ── Bears (the Ferocious enablers) ──────────────────
 1 Moon-Vigil Adherents (ECL) 184
