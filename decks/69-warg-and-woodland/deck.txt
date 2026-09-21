@@ -12,8 +12,9 @@
 #: tier: audit can price, so they are hand-counted and dated). What caps it now is the
 #: tier: OPPOSITE axis, and the same swaps spent it: interaction 4 is one of the
 #: tier: floor's own two terms and `suggest --needs` reads it SHORT, while card
-#: tier: advantage 5 and early drops 12 have since been recovered by Herd Heirloom,
-#: tier: Insidious Fungus and Twitching Doll. The gate is still checked at ATTACK time, so a pumped body
+#: tier: advantage 5 and early drops 11 have since been recovered, mostly by Herd
+#: tier: Heirloom and Twitching Doll, and protection is 5. The gate is still checked at
+#: tier: ATTACK time, so a pumped body
 #: tier: qualifies — Spider-Ham lifts every Wolf and Bear, Beorn lifts Bears by +2/+2
 #: tier: and converts one creature per combat into a Bear, and Wilderland Scrounger
 #: tier: counters the whole board on a satisfied attack. Still unplayed. RE-GRADE
@@ -86,7 +87,7 @@
 # ── Wolves ──────────────────────────────────────────
 1 Nighthowl Pursuer (HOB) 78
 1 Wargling (HOB) 140
-1 Wildborn Preserver (FDN) 650
+1 Mister Hyde, Monster Within (MSH) 176
 1 Goldvein Hydra (OTJ) 167
 1 Bejeweled Warg (HOB) 117
 1 Railway Brawler (OTJ) 175
@@ -127,7 +128,7 @@
 # ── Interaction ─────────────────────────────────────
 1 Warg Tactics (HOB) 139
 1 Felling Blow (FDN) 105
-1 Insidious Fungus (DSK) 186
+1 Origin of Metalbending (TLA) 187
 
 # ── Lands ───────────────────────────────────────────
 1 Overgrown Tomb (ECL) 266
