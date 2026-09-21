@@ -1,6 +1,15 @@
 #: name: Knight's Edge
 #: format: Standard
-#: tier: A — Mono-W go-wide aggro; fast, anthems, 8 interaction on a 3.44 curve.
+#: tier: A — Mono-W go-wide aggro; fast, anthems, 9 interaction on a 3.50 curve.
+#: tier: 2026-09-21: the letter is now BACKED by the floor rather than sitting a band
+#: tier: above it. Card advantage was the capping axis — it read 1 — and a seven-swap
+#: tier: pass RAISED it to 4 via Exemplar of Light (draws off both the
+#: tier: nine counter-on-each-creature effects and the lifegain suite), Mikey & Leo,
+#: tier: and The Arkenstone, which is also the best anthem available and tutors any of
+#: tier: the 12 legendary creatures here. White Auracite came in over Colleen Wing as
+#: tier: the ONLY cheap unconditional answer to a planeswalker: everything else is
+#: tier: creature-only, conditional, or Summon: Bahamut at nine mana. Colleen's own
+#: tier: trigger wanted a spell targeting your creature and only TWO cards could.
 #: tier: Red Guardian was CUT for Delney (12 trigger feeders, 13 power-2-or-less
 #: tier: creatures); Resolute Reinforcements was CUT for Dollmaker's Shop, trading a
 #: tier: one-shot token for an every-attack one plus a board-scaling back door.
@@ -26,38 +35,39 @@
 1 Virtue of Loyalty (WOE) 38
 1 Leonardo, Leader in Blue (TMT) 16
 1 Political Triumph (MSH) 31
-1 Quintessential Katana (TMT) 23
+1 Jazal Goldmane (FDN) 497
 1 Requisition Raid (SOA) 10
 1 Delney, Streetwise Lookout (MKM) 12
 1 Duty Beyond Death (TDM) 10
-1 Colleen Wing, Street Samurai (MSH) 13
-1 Leader's Talent (TMT) 13
+1 White Auracite (FIN) 41
+1 The Arkenstone // Seek the Heart (HOB) 170
 1 Leonardo, Cutting Edge (TMT) 15
 1 Dollmaker's Shop (DSK) 4
 1 Elspeth, Storm Slayer (TDM) 11
 1 White Mage's Staff (FIN) 42
 1 Ajani, Outland Chaperone (ECL) 4
-1 Leonardo, Big Brother (TMT) 14
+1 Mikey & Leo, Chaos & Order (TMT) 158
 1 Sidequest: Catch a Fish (FIN) 31
 1 Team Avatar (TLA) 38
 1 Friendly Neighborhood (SPM) 8
 1 Okoye, Dora Milaje Leader (MSH) 27
 1 Invisible Woman, Sue Storm (MSH) 17
 1 Serra Redeemer (BLB) 387
-1 Snow Villiers (FIN) 33
+1 Exemplar of Light (FDN) 733
 1 United Front (TLA) 39
-1 Moonshaker Cavalry (WOE) 21
+1 The Eagles Are Coming! (HOB) 12
 1 EPF Point Squad (TMT) 145
 1 Raph & Leo, Sibling Rivals (TMT) 166
 1 Sally Pride, Lioness Leader (TMT) 24
 1 Anafenza, Unyielding Lineage (TDM) 2
 
 # Lands
-24 Plains (MSH) 288
+22 Plains (MSH) 288
+2 Abandoned Air Temple (TLA) 263
 
 # Flex — STANDARD-LEGAL craftable upgrades (interaction + go-wide). See: deck.py flex 3
-#~ -Team Avatar | +Kutzil's Flanker | CRAFT (R): flash — big counters OR removal; flexible interaction, and cuts the anti-synergy "attacks alone" card
+#~ -Team Avatar | +Kutzil's Flanker | CRAFT (R) — RATIONALE CORRECTED 2026-09-21, and the line is now a SKIP. It was filed as "flexible interaction", which came from the `removal` synergy TAG rather than the text. Its three modes are counters-on-itself for creatures that LEFT the battlefield, gain 2 life + scry 2, and "exile target player's GRAVEYARD" — that last one is what earned the tag, and it is graveyard hate, not creature removal. It also rotates ~2026. K-04: never grade a card from a derived tag. Team Avatar's own "attacks alone" clause IS a real conflict flagged by `targets`, but its {2}{W} discard mode is live scaling removal, so the card stays.
 #~ note: applied — Anti-Venom, Horrifying Healer in for Divine Resilience.
-#~ -Requisition Raid | +Rayblade Trooper | CRAFT (U): +1/+1 counter on ETB + a death payoff — on the counters/go-wide plan
-#~ note: all three are CRAFT targets (not owned) and Standard-legal. Priority: Kutzil's Flanker (adds the flexible removal the deck is thin on).
+#~ -Requisition Raid | +Rayblade Trooper | OWNED x1 (was mislabelled CRAFT until 2026-09-21): +1/+1 counter on ETB + a death payoff, plus warp {1}{W} — on the counters/go-wide plan. Still a live option; costs no wildcard. Weigh against Requisition Raid being the deck's only artifact/enchantment answer.
+#~ note: the "all three are CRAFT targets" claim above was WRONG on both counts by 2026-09-21 — Rayblade Trooper is owned, and Kutzil's Flanker is not the flexible removal it was billed as. Only Kutzil's Flanker is still unowned, and it is now a skip.
 #~ note: applied — Snow Villiers in for Ancestor Dragon.
