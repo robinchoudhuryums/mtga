@@ -5359,6 +5359,68 @@ class TestRationaleStalenessLiveMisses:
         got = self._cards(tmp_path, "#: archetype: Spider-Islanders was cut for the package.\n")
         assert "Spider-Islanders" not in got
 
+    # ---- 2026-09-21: `rather than` was a comparison cue, and it is ordinary English ----
+
+    def test_rather_than_in_the_clause_does_not_suppress_a_live_citation(self, tmp_path):
+        """THE MISS. `rather than` sat in `_COMPARISON_CUES`, so any citation sharing a
+        clause with ordinary prose — "capped rather than raised", "real rather than a
+        pile of cantrips" — went unreported. It hid a cut card deck 69 still argued
+        from, and deck 43 listing a swapped card as a current draw source.
+
+        It read as a POSITIONAL bug (a name inside parentheses) for one probe, because
+        moving the name 15 characters earlier happened to push the cue one character
+        outside the 140-char window. Instrumenting the window is what named the cause;
+        the parenthesis had nothing to do with it, which is why this fixture has none."""
+        got = self._cards(tmp_path,
+            "#: archetype: Card advantage routes through Crib Swap on a satisfied\n"
+            "#: archetype: attack, which is why the tier is capped rather than raised.\n")
+        assert "Crib Swap" in got
+
+    def test_the_replacement_departure_idiom_still_suppresses(self, tmp_path):
+        """The cost of the line above, paid narrowly. Removing `rather than` surfaced
+        this repo's own replacement idiom as a false positive — "Boros Charm in over
+        Nurturing Bristleback" names the card that LEFT. `_cites_as_arriving` only ever
+        covered the arriving side, so `in over` / `in for` joined `_HISTORY_CUES`."""
+        for idiom in ("in over", "in for"):
+            got = self._cards(
+                tmp_path, f"#: archetype: Storm, Windrider {idiom} Crib Swap restored interaction to 6.\n")
+            assert "Crib Swap" not in got, idiom
+
+    def test_possessive_other_deck_reference_suppresses(self, tmp_path):
+        """`_cites_as_history` tested the other-deck frame with `_OTHER_DECK_RE` — the
+        word-anchored `deck 42` form alone — while the POSSESSIVE `42's` is the commoner
+        idiom here and the FIGURE half has used the combined `_other_deck_ids` helper all
+        along. A primitive wired to some callers and not this one (G-40); it was masked
+        by the broad cue above until that was narrowed."""
+        got = self._cards(tmp_path,
+            "#: archetype: None of 42's three payoffs (Crib Swap, Appa) trigger here.\n")
+        assert "Crib Swap" not in got
+
+    def test_a_rubric_threshold_is_not_a_claim_about_this_list(self, tmp_path):
+        """Surfaced by the same narrowing: deck 37 writes "the roster distribution moved
+        the A bar to interaction 7", which states TIER_FLOOR_REQ, not its own count. The
+        cue must sit BEFORE the figure — the other three roster citations of a threshold
+        put it after ("interaction 5 is exactly the A bar") and keep auditing."""
+        d = self._deck(tmp_path, "#: tier: B. BS8-06 moved the A bar to interaction 7.\n")
+        _cards, figs = deck.rationale_staleness(d)
+        assert figs == []
+
+    def test_a_bare_axis_figure_beside_a_threshold_still_audits(self, tmp_path):
+        """The negative control: the guard is a 30-char look-BEHIND, so the deck's own
+        number in the same sentence must still be priced. This probe has interaction 0."""
+        d = self._deck(tmp_path,
+            "#: tier: B. BS8-06 moved the A bar to a higher place; interaction 7 here.\n")
+        _cards, figs = deck.rationale_staleness(d)
+        assert any(k == "interaction" for k, _q, _a in figs)
+
+    def test_a_decks_own_id_is_not_an_other_deck_reference(self, tmp_path):
+        """The negative control for the line above, and the reason `own_id` is threaded
+        in: a block that names its OWN id must keep auditing, or the possessive widening
+        would hand every deck a way to silence its own citations."""
+        got = self._cards(tmp_path,
+            "#: archetype: 99's whole plan runs through Crib Swap on a satisfied attack.\n")
+        assert "Crib Swap" in got
+
     def test_figures_about_another_deck_do_not_flag(self, tmp_path):
         # 56a quoted its parent's vector — "deck 56 core … interaction 7" — and both
         # numbers flagged as stale against 56a's own vector (two false positives).

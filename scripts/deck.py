@@ -12969,6 +12969,15 @@ _RATIONALE_FIGURES = [
 _FIG_COLOR_WORDS = (("W", "white"), ("U", "blue"), ("B", "black"),
                     ("R", "red"), ("G", "green"))
 _FIG_SOURCE_WANT = re.compile(r"\bwants?\b[^.;]{0,20}$", re.I)
+# A RUBRIC THRESHOLD IS NOT A CLAIM ABOUT THIS LIST, the same shape as the WANT guard
+# one line up. Deck 37 writes "the roster distribution moved the A bar to interaction
+# 7: interaction 5 is now two short" — the FIRST number is `TIER_FLOOR_REQ`, the second
+# is the deck's own and audits normally. Surfaced 2026-09-21 when `rather than` left
+# `_COMPARISON_CUES`, which had been suppressing the whole clause by accident.
+# `bar|threshold|minimum` only, NOT `floor`: "the floor's interaction 7" is ordinary
+# phrasing for a claim about this deck. Roster: 4 threshold-style citations, and this
+# guard changes exactly one of them — the other three put the cue AFTER their figure.
+_FIG_THRESHOLD_BEFORE = re.compile(r"\b(?:bar|threshold|minimum)\b[^.;]{0,20}$", re.I)
 _RATIONALE_FIGURES += [
     (re.compile(rf"(?<![+\-\d])\b(\d{{1,2}})[  ]+(?:{_c}|{_w})[  ]+sources?\b"),
      f"sources_{_c}")
@@ -13189,7 +13198,13 @@ _HISTORY_CUES = re.compile(
     r"\b(?:was|were|became|becomes|replac\w*|swap\w*|cut\w*|remov(?:ed|ing)|dropp\w*|"
     r"left|leaves|instead|no longer|previously|earlier|former\w*|queued|flex|"
     r"craft target|alternative|revisit|option|skipped|held out|used to|missing|"
-    r"exclud\w*)\b", re.I)
+    r"exclud\w*|in over|in for)\b", re.I)
+# `in over` / `in for` are THIS repo's own replacement idiom — "Boros Charm in over
+# Nurturing Bristleback", "Bard, King of Dale in for Invasion Tactics" — naming the
+# DEPARTING card, which `_cites_as_arriving` (the arriving side) never covered. Added
+# 2026-09-21 with the `rather than` removal below, because dropping that cue surfaced
+# deck 28's replacement sentence as a false positive and nothing else suppressed it.
+# Roster cost of adding them: 0 additional suppressions.
 # The last three joined on the 2026-08-09 clause-scoping sweep: "the argument this
 # block USED TO make for Ramos", "still MISSING the tribal payoffs (Regal
 # Imperiosaur…)" and "Fire Lord Zuko was EXCLUDED for…" are all change-/WIP-language
@@ -13227,8 +13242,20 @@ _NEGATION_AFTER = re.compile(r"\s+(?:does\s+not|doesn'?t|is\s+not|isn'?t|cannot|
 _COMPARISON_CUES = re.compile(
     r"\b(?:path to|vs\.?|versus|unlike|compared|comparison|distinctness|roster'?s|"
     r"another deck|other deck|that deck|that one|elsewhere|would|"
-    r"consider|candidate|upgrade to|next add|instead of|variant|rather than|"
+    r"consider|candidate|upgrade to|next add|instead of|variant|"
     r"parent|sibling|same shape)\b", re.I)
+# `rather than` was REMOVED 2026-09-21. It is ordinary English, not comparison
+# vocabulary — "capped rather than raised", "real rather than a pile of cantrips",
+# "refills the board rather than the hand" — and as a ±140-char window cue it
+# suppressed any card citation sharing that clause. It hid a real stale citation in
+# deck 69 (a cut card still argued from in `#: archetype:`) and in deck 43 (a swapped
+# card listed as a current draw source), and the near-miss that exposed it was pure
+# luck: moving the name 15 characters earlier pushed the cue one character outside the
+# window, which read as a POSITIONAL bug until the window was instrumented. Its
+# intended sense ("consider X rather than Y") is already carried by `consider`,
+# `instead of` and `upgrade to`. Roster sweep: 6 citations touched it, it was the SOLE
+# suppressor on 3, of which 2 were replacement sentences now held by `in over`/`in for`
+# and 1 was the real deck-43 miss.
 # `would` widened from `would be|would need` — "…where Laughing Jasper Flint and
 # Rakdos, the Muscle WOULD each demand a hard {R}" is hypothetical-mode prose about a
 # fork not taken, and the modal alone is the signal. `parent`/`sibling` are this
@@ -13306,7 +13333,7 @@ def _clause_bounds(prose, start, end):
     return lo, hi
 
 
-def _cites_as_history(prose, pos, length):
+def _cites_as_history(prose, pos, length, own_id=None):
     """True when a card citation is NOT an argument that this deck runs the card.
 
     Two families: change-/flex-language (the card left, or was deliberately held out —
@@ -13346,8 +13373,16 @@ def _cites_as_history(prose, pos, length):
         # A sharing claim names cards this deck is asserted to RUN, so the other-deck
         # reference in it is not comparison context. Everything else still suppresses.
         return bool(_COMPARISON_CUES.search(prose[prev_lo:clo]))
+    # The other-deck reference goes through `_other_deck_ids`, which knows BOTH
+    # idioms. This line read `_OTHER_DECK_RE.search(frame)` — the word-anchored
+    # `deck 42` form alone — until 2026-09-21, while the POSSESSIVE form (`42's`) is
+    # the commoner one here by 35 occurrences to a handful, and the FIGURE scan has
+    # used the combined helper all along. A primitive wired to some callers and not
+    # this one (G-40): deck 45a's "none of 45's three payoffs (Quintorius, Fire Lord
+    # Zuko, Appa) trigger on a graveyard cast" was held up only by an unrelated broad
+    # cue, and surfaced the moment that cue was narrowed.
     return bool(_COMPARISON_CUES.search(prose[prev_lo:clo])
-                or _OTHER_DECK_RE.search(frame))
+                or (_other_deck_ids(frame) - {str(own_id).lower()}))
 
 
 # A FIGURE is history under much narrower conditions than a CARD citation, and reusing
@@ -13683,6 +13718,9 @@ def rationale_staleness(d, carddata=None):
     Report-only: the prose is a human argument and this never edits it. Names are
     matched against known cards so ordinary English can't trip it."""
     carddata = carddata if carddata is not None else load_card_data()
+    # Defined here rather than beside the FIGURE half below: the CARD scan needs it too,
+    # to keep a deck's citation of its OWN id from reading as an other-deck comparison.
+    own_id = str(d.get("id") or "").lower()
     meta, cards = parse_deck_file(d["path"])
     in_deck = {n for _q, n, _s, _c in cards}
     in_deck |= {n.split(" // ")[0] for n in list(in_deck)}
@@ -13736,7 +13774,7 @@ def rationale_staleness(d, carddata=None):
             # History suppression, EXCEPT on the arriving side of a stated replacement:
             # a card the prose says came IN is a claim about the current list, and its
             # absence means the sentence points the wrong way (see `_cites_as_arriving`).
-            if (_cites_as_history(masked, pos, len(disp))
+            if (_cites_as_history(masked, pos, len(disp), own_id)
                     and not _cites_as_arriving(masked, pos)):
                 continue
             # SIMILE. "It'll Quench Ya! is Spell Pierce that hits creatures too" explains
@@ -13782,7 +13820,7 @@ def rationale_staleness(d, carddata=None):
                 continue
             if any(frag in other for other in in_deck):
                 continue
-            if (_cites_as_history(masked, pos, len(frag))
+            if (_cites_as_history(masked, pos, len(frag), own_id)
                     and not _cites_as_arriving(masked, pos)):
                 continue
             if _SIMILE_BEFORE.search(masked[max(0, pos - 6):pos]):
@@ -13798,7 +13836,6 @@ def rationale_staleness(d, carddata=None):
         stale_cards = sorted(set(stale_cards))
     vec = deck_quality_vector(d)
     figure_values = _figure_lookup(vec, cards, carddata)
-    own_id = str(d.get("id") or "").lower()
     # The FIGURE half sweeps the SAME two headers as the CARD half above. It read
     # `#: tier:` alone, so a figure in `#: archetype:` could contradict the live vector
     # indefinitely: deck 26a quoted "avg MV 3.05, 15 early drops" against a live 2.97 and
@@ -13818,6 +13855,8 @@ def rationale_staleness(d, carddata=None):
                     continue
                 if key.startswith("sources_") and _FIG_SOURCE_WANT.search(
                         prose[max(0, m.start() - 24):m.start()]):
+                    continue
+                if _FIG_THRESHOLD_BEFORE.search(prose[max(0, m.start() - 30):m.start()]):
                     continue
                 # A figure quoted about ANOTHER DECK is not a claim about this one. 56a's
                 # block compared itself to its parent — "deck 56 core is a genuine aggro

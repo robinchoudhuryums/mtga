@@ -2,38 +2,48 @@
 #: format: Standard
 #: colors: BG
 #: plan: midrange
-#: tier: B — PROVISIONAL, and deliberately graded UNDER the metrics floor, which reads
-#: tier: A. The floor is earned honestly (interaction 5, card advantage 5) but it cannot
-#: tier: see this deck's single point of failure: 8 card names / 11 copies do nothing
-#: tier: until a power-4 body is on the board, and only 7 creatures are PRINTED at power
-#: tier: 4 or greater. One well-timed removal spell on the enabler switches off a third
-#: tier: of the deck at once, which is not a weakness any deck at A carries. Against
-#: tier: that: the gate is checked at ATTACK time, so a pumped body qualifies, and the
-#: tier: deck has many ways to pump — Spider-Ham lifts every Wolf and Bear, Beorn lifts
-#: tier: Bears by +2/+2 and converts one creature per combat into a Bear, and Wilderland
-#: tier: Scrounger counters the whole board on a satisfied attack. Also unplayed and
-#: tier: heavily unbuilt. Re-grade upward once the gate has been tested in real games —
-#: tier: if it turns on reliably this is an A, and if it doesn't it is a C.
+#: tier: B — and the ARGUMENT behind it inverted on 2026-09-20, so read this before
+#: tier: re-grading. It used to say the deck was held under the floor by its own gate:
+#: tier: 8 names did nothing until a power-4 body was out, against only 6 creature
+#: tier: copies PRINTED at power 4 or greater. That gap is CLOSED — Railway Brawler,
+#: tier: Large Bear, Gigantic Big Bear and Warden of the Grove took the printed count
+#: tier: to 9 of 27 against 8 gated copies, and `deck.py stats` no longer raises the
+#: tier: power-4 thinness flag on this deck at all (neither figure is one the rationale
+#: tier: audit can price, so they are hand-counted and dated). What caps it now is the
+#: tier: OPPOSITE axis, and the same swaps spent it: interaction 4 is one of the
+#: tier: floor's own two terms and `suggest --needs` reads it SHORT, while card
+#: tier: advantage 5 and early drops 11 have since been recovered, mostly by Herd
+#: tier: Heirloom and Twitching Doll, and protection is 5. The gate is still checked at
+#: tier: ATTACK time, so a pumped body
+#: tier: qualifies — Spider-Ham lifts every Wolf and Bear, Beorn lifts Bears by +2/+2
+#: tier: and converts one creature per combat into a Bear, and Wilderland Scrounger
+#: tier: counters the whole board on a satisfied attack. Still unplayed. RE-GRADE
+#: tier: CANDIDATE, pending the human call: this letter now sits ON the metrics floor
+#: tier: rather than under it, and recovering interaction is what would move it.
 #: archetype: GOLGARI FEROCIOUS — a Wolf tribal shell whose payoffs are gated on "a
 #: archetype: creature with power 4 or greater," and a Bear package that exists to TURN
-#: archetype: THAT GATE ON. The Bears are the cheapest reliable way to satisfy it:
-#: archetype: Vastlands Scavenger is a 4/4 deathtouch on turn three, Leatherhead a 5/4 on
-#: archetype: four, The Earth King arrives with a 4/4 Bear token, Beorn the Fierce is a
-#: archetype: 6/6. Beorn is the joint — he pumps Bears AND makes one creature per
+#: archetype: THAT GATE ON. The Bears carry the top end: Large Bear is a 5/5 with haste,
+#: archetype: Beorn the Fierce a 6/6, Gigantic Big Bear a hexproof 10/7, and The Earth
+#: archetype: King arrives with a 4/4 Bear token. The cheapest printed power-4 bodies are
+#: archetype: Chief Warg's Company and Kraven the Hunter at three mana, Leatherhead a 5/4
+#: archetype: on four. Beorn is the joint — he pumps Bears AND makes one creature per
 #: archetype: combat into a Bear, so a Wolf becomes a Bear becomes a power-4 body becomes
 #: archetype: the enabler — and Spider-Ham pumps both tribes at once. The DISTINCTIVENESS
 #: archetype: is the gate, not the tribe: no other roster deck is built around a
 #: archetype: threshold that its own second subtheme exists to clear. Card advantage all
-#: archetype: routes through the same gate (The Chief Warg on a satisfied attack,
-#: archetype: Garruk's Uprising when a power-4 creature enters, Hunter's Talent at level
-#: archetype: three), which is why the tier is capped rather than raised by it.
-#: protect: Beorn the Fierce; The Chief Warg; Wilderland Scrounger; Spider-Ham, Peter Porker; Dancing from Dark to Dawn; The Earth King
+#: archetype: USED to route entirely through the same gate, which is why the tier was
+#: archetype: capped rather than raised by it. That is now only half true: Garruk's
+#: archetype: Uprising still wants a power-4 creature to enter and Herd Heirloom grants
+#: archetype: its draw to a power-4 body, but Meltstrider Eulogist draws whenever a
+#: archetype: creature with a +1/+1 counter DIES, which is the first draw in the list
+#: archetype: that pays when the gate is off.
+#: protect: Beorn the Fierce; Wilderland Scrounger; Spider-Ham, Peter Porker; Dancing from Dark to Dawn; The Earth King
 #: notes: WHITE WAS TESTED AND REJECTED (2026-08-12). The concept pile offered Tolsimir,
 #: notes: Midnight's Light; Rinoa Heartilly; Wylie Duke, Atiin Hero; Veteran Beastrider;
 #: notes: Perennation; and Release the Dogs. White contributes no Ferocious card and no
 #: notes: Bear — its whole yield is Wolf-adjacent tokens, the axis this deck already has
 #: notes: most of — while Black supplies half the Ferocious cards, the only repeatable
-#: notes: ferocious-triggered draw (The Chief Warg) and the best removal-adjacent body
+#: notes: ferocious-triggered draw (The Chief Warg, since cut) and the best removal-adjacent body
 #: notes: (Head of the Hunt). Building GW instead of GB would trade six Wolf cards for
 #: notes: one. Tolsimir and Wylie Duke also rotate ~2027, and a {W}{W} splash on top of
 #: notes: the live {B}{B} and {G}{G} is the third double pip that breaks the manabase.
@@ -80,23 +90,25 @@
 # ── Wolves ──────────────────────────────────────────
 1 Nighthowl Pursuer (HOB) 78
 1 Wargling (HOB) 140
-1 Wildborn Preserver (FDN) 650
+1 Mister Hyde, Monster Within (MSH) 176
 1 Goldvein Hydra (OTJ) 167
-2 Bejeweled Warg (HOB) 117
+1 Bejeweled Warg (HOB) 117
+1 Railway Brawler (OTJ) 175
 1 Ravening Warg (HOB) 80
 1 The Earth Crystal (FIN) 184
-1 Duskwatch Hunter (HOB) 153
+1 Large Bear (HOB) 159
 1 Leatherhead, Swamp Stalker (TMT) 117
-1 Summon: Fenrir (FIN) 203
+1 Gigantic Big Bear (HOB) 126
 1 Chief Warg's Company (HOB) 151
-1 The Chief Warg (HOB) 150
+1 Meltstrider Eulogist (EOE) 197
 1 Head of the Hunt (HOB) 75
-2 Wilderland Scrounger (HOB) 141
+1 Wilderland Scrounger (HOB) 141
+1 Web-Warriors (SPM) 159
 
 # ── Bears (the Ferocious enablers) ──────────────────
 1 Moon-Vigil Adherents (ECL) 184
-1 Vastlands Scavenger // Bind to Life (SOS) 166
-1 Little Bear (HOB) 128
+1 Herd Heirloom (TDM) 144
+1 Warden of the Grove (TDM) 166
 1 Germination Practicum (SOS) 149
 1 The Earth King (TLA) 172
 1 Beorn the Fierce (HOB) 119
@@ -109,6 +121,7 @@
 1 Sazh Katzroy (FIN) 199
 1 Kraven the Hunter (SPM) 133
 1 Dancing from Dark to Dawn (HOB) 123
+1 Twitching Doll (DSK) 201
 
 # ── Card advantage off the gate ─────────────────────
 1 Radagast of Rhosgobel (HOB) 136
@@ -116,10 +129,9 @@
 1 Inspiring Call (TLE) 168
 
 # ── Interaction ─────────────────────────────────────
-1 Hunter's Talent (BLB) 179
 1 Warg Tactics (HOB) 139
 1 Felling Blow (FDN) 105
-1 Unforgiving Aim (ECL) 200
+1 Origin of Metalbending (TLA) 187
 
 # ── Lands ───────────────────────────────────────────
 1 Overgrown Tomb (ECL) 266
@@ -135,11 +147,14 @@
 5 Swamp (HOB) 191
 #~ -Head of the Hunt | +Azog, Moria's Ruin | OWNED (HOB, ingested 2026-08-13): fit 51. ETB destroy a
 #~   creature, its controller amasses Goblins X = that creature's power, and if it was YOURS you
-#~   draw. Removal on a body in a deck at interaction 5. NOTE the amass is a gift to the OPPONENT
+#~   draw. Removal on a body in a deck at interaction 4. NOTE the amass is a gift to the OPPONENT
 #~   when you kill their creature — read it as removal that hands back a scaled Army, not clean.
 #~ -Felling Blow | +Troll Negotiations | OWNED (HOB): fit 31. Two +1/+1 counters then FIGHT — the
 #~   same shape as Felling Blow (counter + damage) but two counters instead of one, and it feeds
-#~   The Earth Crystal's doubler. Strictly the better version of a card already here.
+#~   The Earth Crystal's doubler. NOT strictly better, and the claim that it was sat here
+#~   for weeks: Felling Blow deals ONE-WAY damage while Troll Negotiations FIGHTS, so a
+#~   deathtoucher trades up against your best body — and it costs a mana more. Held
+#~   2026-09-21 for exactly that reason.
 #~ note: `cuts` names Radagast of Rhosgobel for both, at fit 4 — it is NOT the cut to take. Radagast
 #~ note: was added deliberately 2026-08-12 and stacks with The Earth Crystal for {3} off a green
 #~ note: creature spell; `cuts` cannot see a cost reducer's worth (G-40 shape).

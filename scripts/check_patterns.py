@@ -118,6 +118,10 @@ _EXCLUDED = {
                                   "not a claim about the current list — `deck.py "
                                   "consistency` prints that line and it gets pasted in "
                                   "verbatim); unit-tested in test_deck.py",
+    ("deck", "_FIG_THRESHOLD_BEFORE"): "tier-RATIONALE prose (a RUBRIC threshold — "
+                                       "'moved the A bar to interaction 7' states "
+                                       "TIER_FLOOR_REQ, not this deck's own figure); "
+                                       "unit-tested in test_deck.py",
     ("deck", "_FIG_SOURCE_SLASH"): "tier-RATIONALE prose (the '13/8/10 sources' idiom, BS8-16 — "
                                    "a claim about the deck's manabase, not card text)",
     ("deck", "_COST_SCALE_STATE"): "runs on the EXTRACTED resource phrase, never on card "

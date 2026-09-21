@@ -503,9 +503,12 @@ def _live_figures():
         ("K-15 artifact-matters pool cards",
          r"`_ARTIFACT_MATTERS_RE` matches \*\*(\d+) pool cards", _artifact_matters_cards),
         # G-85's calibration. Anchored on the words around ITS number, never on the 43 —
-        # correcting one must not kill the other's pattern.
+        # correcting one must not kill the other's pattern. The DENOMINATOR and percentage
+        # are wildcards for the same reason: they were literals (`of 50 (30%)`) until
+        # 2026-09-20, so acting on the drift this entry reports — updating 15 to 16 and 50
+        # to 51 — killed its own pattern, trading a true warning for a dead one.
         ("G-85 unpriced-disclosure fire rate",
-         r"against \*\*(\d+) of 50 \(30%\)\*\* at 3", _unpriced_fires),
+         r"against \*\*(\d+) of \d+ \(\d+%\)\*\* at 3", _unpriced_fires),
         # The POPULATION was a claim the fire-rate entry only hardcoded in its own pattern,
         # so when impending joined `_ALT_COST_RE` and seven more decks began printing an
         # effective figure, the denominator moved with nothing watching it. Registered as
