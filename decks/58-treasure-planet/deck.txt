@@ -211,6 +211,19 @@
 #: notes: of 24 — kept because its sac-a-token draw and Treasure abilities got MORE
 #: notes: relevant with Tom Bert and William and Sackville-Bagginses, but it is the
 #: notes: next cut if green tightens again.
+#: notes: 2026-09-21 (user-decided): Smaug, Wicked Worm CUT for Raph & Mikey,
+#: notes: Troublemakers, a 7/7 trample haste whose attack trigger reveals until a creature
+#: notes: and puts it onto the battlefield tapped and attacking. 24 of 60 cards are
+#: notes: creatures, so it digs ~2.5 deep. ACCEPTED TRADE, flagged by the quality guard:
+#: notes: card advantage 6 -> 5, the exact axis Smaug was bought for in the 09-09 note
+#: notes: above; avg MV 3.47 -> 3.53, interaction 10 held. TWO THINGS NO MODEL HERE
+#: notes: PRICES. (1) A creature put onto the battlefield ATTACKING was never DECLARED an
+#: notes: attacker, so "whenever ~ attacks" triggers do NOT fire on it — only the
+#: notes: "enters OR attacks" pair (Roxanne, Stone-Giant) pays off, via their enters half.
+#: notes: Read the trigger as a body plus an ETB, never a free attack trigger. (2) TMT
+#: notes: rotates ~2028 against HOB ~2029, so the swap gives up a year of Standard life;
+#: notes: Smaug was the longest-lived card in the deck. cuts ranked him 30 of 34 and
+#: notes: suggest never surfaced the add — the models wanted this deck left alone.
 
 # Producers (the mint)
 1 Goldvein Hydra (OTJ) 167
@@ -249,7 +262,7 @@
 1 Ygra, Eater of All (BLB) 241
 1 Gisa, the Hellraiser (OTJ) 89
 1 Gold Rush (OTJ) 166
-1 Smaug, Wicked Worm (HOB) 164
+1 Raph & Mikey, Troublemakers (TMT) 167
 
 # Draw / removal (sac-fueled)
 1 Tom, Bert, and William (HOB) 169
@@ -276,7 +289,9 @@
 #~ note: BENCHED 2026-09-09 — the SECOND Roxanne, Starfall Savant (craft R), cut for Smaug,
 #~ note: Wicked Worm. Written as a note, not a `-X | +Y` line, because the +In staleness check
 #~ note: reads quantity-blind: Roxanne IS in the deck, at 1 copy, so a swap line here would
-#~ note: warn forever (G-04). To restore, take Smaug's slot back. She is LEGENDARY, so the 2nd
+#~ note: warn forever (G-04). To restore, take a Payoffs slot back — Smaug, Wicked Worm
+#~ note: was benched into that same section on 2026-09-21, so the two compete for it.
+#~ note: She is LEGENDARY, so the 2nd
 #~ note: copy is redundancy insurance, never a second engine — its realistic value is a fresh
 #~ note: Meteorite when you cast it over the first. She is OTJ and rotates ~2026, so this may
 #~ note: expire before it is worth crafting.
@@ -284,3 +299,4 @@
 #~ note: Gold Rush slot this line originally proposed). Gold Rush stays in the deck.
 #~ note: Deadly Precision carries ⚡cost-as-upside HERE (its sacrifice cost feeds your outlets), so
 #~ note: grade that cut from full text before taking it — the flag says the tool under-rates it.
+#~ -Raph & Mikey, Troublemakers | +Smaug, Wicked Worm | OWNED — BENCHED 2026-09-21: the 5/5 flier that held this Payoffs slot until Raph & Mikey. Restore him on the DRAW CLAUSE alone ("whenever you cast a spell, if mana from a Treasure was spent to cast it, you draw a card and lose 1 life") — the deck's most repeatable card advantage, and the quality guard flagged 6 -> 5 on the way out. His ETB (X Treasures = artifacts your OPPONENTS control) is meta-dependent and often zero, so it is not part of the case. HOB, rotates ~2029 — the longest Standard life of anything in the deck, against Raph & Mikey's ~2028.

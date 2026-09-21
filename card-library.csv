@@ -5975,3 +5975,7 @@ When this land enters, you gain 1 life.
 {T}: Add {W} or {U}.",W/U,lifegain; mana; etb,MSH,259,1
 "Ishgard, the Holy See",Land — Town // Sorcery — Adventure,"This land enters tapped.
 {T}: Add {W}. // Return up to two target artifact and/or enchantment cards from your graveyard to your hand. (Then exile this card. You may play the land later from exile.)",W,Town; Adventure; graveyard; exile cast; mana,FIN,283,1
+"Raph & Mikey, Troublemakers",Legendary Creature — Mutant Ninja Turtle,"Trample, haste
+Whenever Raph & Mikey attack, reveal cards from the top of your library until you reveal a creature card. Put that card onto the battlefield tapped and attacking and the rest on the bottom of your library in a random order.",R/G,Mutant; Ninja; Turtle; haste; aggro; trample; evasion,TMT,167,1
+"Jenova, Ancient Calamity",Legendary Creature — Alien,"At the beginning of combat on your turn, put a number of +1/+1 counters equal to Jenova's power on up to one other target creature. That creature becomes a Mutant in addition to its other types.
+Whenever a Mutant you control dies during your turn, you draw cards equal to its power.",B/G,Alien; counters; card draw,FIN,228,1
