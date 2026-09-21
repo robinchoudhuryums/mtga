@@ -31,16 +31,19 @@
 #: archetype: the enabler — and Spider-Ham pumps both tribes at once. The DISTINCTIVENESS
 #: archetype: is the gate, not the tribe: no other roster deck is built around a
 #: archetype: threshold that its own second subtheme exists to clear. Card advantage all
-#: archetype: routes through the same gate (The Chief Warg on a satisfied attack,
-#: archetype: Garruk's Uprising when a power-4 creature enters), which is why the tier
-#: archetype: is capped rather than raised by it.
-#: protect: Beorn the Fierce; The Chief Warg; Wilderland Scrounger; Spider-Ham, Peter Porker; Dancing from Dark to Dawn; The Earth King
+#: archetype: USED to route entirely through the same gate, which is why the tier was
+#: archetype: capped rather than raised by it. That is now only half true: Garruk's
+#: archetype: Uprising still wants a power-4 creature to enter and Herd Heirloom grants
+#: archetype: its draw to a power-4 body, but Meltstrider Eulogist draws whenever a
+#: archetype: creature with a +1/+1 counter DIES, which is the first draw in the list
+#: archetype: that pays when the gate is off.
+#: protect: Beorn the Fierce; Wilderland Scrounger; Spider-Ham, Peter Porker; Dancing from Dark to Dawn; The Earth King
 #: notes: WHITE WAS TESTED AND REJECTED (2026-08-12). The concept pile offered Tolsimir,
 #: notes: Midnight's Light; Rinoa Heartilly; Wylie Duke, Atiin Hero; Veteran Beastrider;
 #: notes: Perennation; and Release the Dogs. White contributes no Ferocious card and no
 #: notes: Bear — its whole yield is Wolf-adjacent tokens, the axis this deck already has
 #: notes: most of — while Black supplies half the Ferocious cards, the only repeatable
-#: notes: ferocious-triggered draw (The Chief Warg) and the best removal-adjacent body
+#: notes: ferocious-triggered draw (The Chief Warg, since cut) and the best removal-adjacent body
 #: notes: (Head of the Hunt). Building GW instead of GB would trade six Wolf cards for
 #: notes: one. Tolsimir and Wylie Duke also rotate ~2027, and a {W}{W} splash on top of
 #: notes: the live {B}{B} and {G}{G} is the third double pip that breaks the manabase.
@@ -97,7 +100,7 @@
 1 Leatherhead, Swamp Stalker (TMT) 117
 1 Gigantic Big Bear (HOB) 126
 1 Chief Warg's Company (HOB) 151
-1 The Chief Warg (HOB) 150
+1 Meltstrider Eulogist (EOE) 197
 1 Head of the Hunt (HOB) 75
 1 Wilderland Scrounger (HOB) 141
 1 Web-Warriors (SPM) 159
