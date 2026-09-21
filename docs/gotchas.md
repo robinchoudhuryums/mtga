@@ -1590,6 +1590,53 @@ history ("it SCORED zero interaction UNTIL the"), a hyphenate my own regex split
 ("NEAR-zero interaction"), and a claim about a different list entirely ("that test's green
 list ran zero protection", which sits in `#: notes:` and is outside the scan by design). The
 same triage line G-67 draws, and the same answer the `#: notes:` scan got twice.
+**`rather than` WAS A CUE, AND ORDINARY ENGLISH IS A FALSE-NEGATIVE ENGINE (2026-09-21).**
+`_COMPARISON_CUES` carried `rather than` for the "consider X rather than Y" sense. But the
+cue is a ±140-char window cue inside the citation's clause, and this repo's prose writes the
+phrase constantly in its ordinary sense — "capped **rather than** raised", "a number that is
+real **rather than** a pile of cantrips", "Elspeth's 0 refills the board **rather than** the
+hand". Any card citation sharing that clause went unreported. Two real misses: deck 69's
+`#: archetype:` still argued from The Chief Warg after it was swapped out, and deck 43's
+`#: tier:` listed **Chart a Course** among its current draw spells three days after its own
+`#: notes:` recorded swapping it for School Daze.
+
+**The diagnosis was wrong first, and the way it was wrong is the lesson.** The bug was filed
+as *positional* — "the audit does not read a citation inside a parenthetical" — on a
+three-probe comparison that looked clean: the live parenthetical citation was unflagged, the
+same slot with a different absent card was unflagged, and the same name moved OUTSIDE the
+parentheses WAS flagged. Every one of those observations is reproducible. The inference was
+still wrong: moving the name 15 characters earlier pushed `rather than` one character past
+the end of the 140-char window, and nothing about parentheses was involved. A later attempt
+to reconstruct the probe from re-worded prose failed to reproduce it, which is what forced
+instrumenting `_clause_bounds` and the cue search directly instead of inferring from
+input/output pairs. **Three consistent probes are not a mechanism.**
+
+**The roster sweep, and why the cost was paid narrowly.** Removing the cue took flagged card
+citations 0 → 4. Graded by hand: 1 real (deck 43) and 3 false, i.e. 25% precision — below the
+bar G-78 sets, so the cue could not simply be deleted. But each false positive named a
+NARROWER rule that should have fired:
+
+* deck 28 — "Boros Charm **in over** Nurturing Bristleback restored interaction to 6". This
+  repo's own replacement idiom, naming the card that LEFT. `_cites_as_arriving` covered only
+  the arriving side, so `in over` / `in for` joined `_HISTORY_CUES`. Roster cost: 0
+  additional suppressions.
+* deck 45a ×2 — "none of **45's** three payoffs (Quintorius, Fire Lord Zuko, Appa) trigger on
+  a graveyard cast". `_cites_as_history` tested the other-deck frame with `_OTHER_DECK_RE`,
+  the word-anchored `deck 42` form ALONE, while the possessive `42's` is the commoner idiom
+  here by 35 occurrences to a handful — and the FIGURE half had used the combined
+  `_other_deck_ids` helper all along. A primitive wired to some callers and not this one
+  (G-40), masked for as long as the broad cue was there to hide it. `own_id` is threaded
+  through so a deck naming its OWN id still audits.
+* deck 78 — "Bard, King of Dale (ADDED 2026-09-02 **for** Invasion Tactics)". Legitimate
+  history in an idiom no cue covers. Fixed in the PROSE (`, replacing Invasion Tactics`,
+  which `replac\w*` already reads) rather than by growing the cue list, per G-26's
+  narrowness rule: one deck's phrasing is not a reason to widen a roster-wide predicate.
+
+After all three, the roster sweep reports **0** card citations with 0 false positives, and
+the deck-69 case that started it flags correctly. Three of the four regression tests fail
+against a mutant carrying the old cue lists; the fourth (a deck citing its own id must still
+audit) passes either way by design — it guards the widening, it does not pin it.
+
 ## [G-27] `deck.py tier <id> --audit-rationale` catches a STALE tier argument
 
 **`deck.py tier <id> --audit-rationale` catches a STALE tier argument.** The `#: tier:`

@@ -454,7 +454,7 @@ is protecting.
   **THE LIST IS A WINDOW AND THE RANKING IS THEME FIT, so read a card's ABSENCE as neither
   (BS10-05).** The footer counted the TRUNCATION, so it read "20 suggestion(s)" whether the
   ranking held 20 candidates or 958; it now prints "top N of M ranked candidate(s)"
-  (`--limit 0` for all). Why it matters is measured, not asserted: across **859 applied swaps
+  (`--limit 0` for all). Why it matters is measured, not asserted: across **869 applied swaps
   that recorded a rank for the card ADDED, the MEDIAN rank is 417** and only **11%** fell
   inside the default top 20. `deck.py feedback` reports that distribution. A card chosen for
   a mechanical interaction the tags do not encode ranks far down BY CONSTRUCTION — a
@@ -493,8 +493,8 @@ is protecting.
   exclusion, because a re-qualified number is a profile sub-count (G-24) and not the axis
   total, and the KEEPABLE patterns added beside them needed a past-tense guard, because the
   shared history cue reaches neither a cue INSIDE the match nor one AFTER it.
-  **CLOSED:** the prefix collision (2026-08-11); the copula, for the three floor axes
-  (2026-09-17). **STILL LIVE:** a figure spelled as a WORD is deliberately unbuilt —
+  **CLOSED:** the prefix collision (2026-08-11); the copula (2026-09-17); `rather than`,
+  an ORDINARY-ENGLISH cue that silently hid real citations (2026-09-21). **STILL LIVE:** a figure spelled as a WORD is deliberately unbuilt —
   ~10–20% precision, since "one" and "two" are ordinary prose, so it would put permanent
   false warnings in `check_all` (the G-78 bar); a per-card "N% on turn 5" has no deck-level
   value to look up; "the swap removes X" about a CUT card reads as live; a 4+-card fragment
@@ -654,7 +654,7 @@ is protecting.
   the premium a shockland already had, while a SLOWLAND and a board state stay conservative —
   false exactly when tempo matters. Test `TAPLAND_CONDITIONAL_KINDS`, not a string.
   **NONLAND sources are DISCLOSED since 2026-09-18, never counted**: `consistency` prints
-  `ⓘ N NONLAND mana source(s) are NOT in the counts above` (**76 of 112 decks**). The
+  `ⓘ N NONLAND mana source(s) are NOT in the counts above` (**77 of 112 decks**). The
   exclusion is right — a rock is not a land drop — but its SILENCE was not, because
   `suggest --ramp` recommends exactly what this count cannot see, and decks 23 and 41 had
   each hand-written the workaround into their own `#: notes:` before the tool said it.

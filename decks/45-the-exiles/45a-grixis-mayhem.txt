@@ -42,7 +42,7 @@
 #: tier:    Green Goblin and Chandra, Spark Hunter are the two that supply that discard for
 #: tier:    free on a repeating clock — Chandra's +2 also REPLACES the card, so a mayhem
 #: tier:    card pitched to her is a two-for-one rather than a cost.
-#: tier: 3. PROTECTION 1 against three `#: protect:` build-arounds.
+#: tier: 3. PROTECTION 0 against three `#: protect:` build-arounds.
 #: tier: NOTE ON DISTINCTNESS: unlike its core deck this one measures CLEAN. `deck.py
 #: tier: similar` tops out at 73% against deck 6 on a single shared card and 71% against
 #: tier: 25 on four — diffuse graveyard/value overlap, not a duplicated identity. Compare

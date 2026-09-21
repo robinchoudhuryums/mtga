@@ -53,7 +53,7 @@
 #: tier: while card advantage came back to 16 on a 3.34 curve with 14 early drops.
 #: tier: Against the thin answer count stands card
 #: tier: advantage 16 on a 3.34 curve, a number that is real rather than a pile of
-#: tier: cantrips — Cloudblazer draws two, Chart a Course draws two, Spirit Water Revival
+#: tier: cantrips — Cloudblazer draws two, School Daze draws three, Spirit Water Revival
 #: tier: draws seven when waterbent, the Grimoire draws five on cast, and Bard, King of
 #: tier: Dale doubles every one of them past the first each turn. B now MATCHES the
 #: tier: floor rather than sitting over it, so the letter needs no intangibles credit —

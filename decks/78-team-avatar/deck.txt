@@ -35,7 +35,7 @@
 #: tier: because a trigger-doubler has no bucket at all; and
 #: tier: the card-advantage 3 is a floor, not a count -- Hakoda casts Ally spells off the
 #: tier: top of the library and does not classify, Elspeth's 0 refills the board rather
-#: tier: than the hand, and Bard, King of Dale (ADDED 2026-09-02 for Invasion Tactics) is a
+#: tier: than the hand, and Bard, King of Dale (ADDED 2026-09-02, replacing Invasion Tactics) is a
 #: tier: DOUBLER of draws the bucket counts once -- Sokka under Katara and Bard is four
 #: tier: cards a combat. Celebrate the Mountain-king was CUT the same day for Overlord of
 #: tier: the Mistmoors (removal traded for a feeder: sixteen flying 2/1s for four mana
