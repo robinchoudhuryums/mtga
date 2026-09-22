@@ -1,6 +1,7 @@
 #: name: Panthera — Competitive (functional-redundancy A)
 #: format: Standard
 #: colors: GW
+#: plan: midrange
 #: tier: A — the competitive build of Panthera (deck 36), made consistent by FUNCTIONAL
 #: tier: REDUNDANCY, not 4-ofs. `deck.py redundancy 36` showed the singleton core is ALREADY
 #: tier: virtual-deep in its plan-critical effects (the go-wide Cat theme is a virtual ~13-of;
@@ -8,7 +9,7 @@
 #: tier: no true duplicates needed. This is a tightened, competitively-tuned version of that
 #: tier: core: max premium interaction (Banishing Light / Crib Swap / Erode / Get Lost / Stroke
 #: tier: of Midnight — real noncreature answers), the best go-wide payoffs, and Divine
-#: tier: Resilience as the anti-sweeper out. Metrics floor A. A notch below a true-4-of A on
+#: tier: Resilience as the anti-sweeper out. Metrics floor B (it read A on an INFERRED aggro plan until `#: plan: midrange` was written 2026-09-22; the vector did not move, only the plan the floor grades it on). A notch below a true-4-of A on
 #: tier: raw consistency (virtual copies aren't identical), but the plan hinges on no single
 #: tier: card, so it's a defensible A — and it fits the creative singleton style. Out of S:
 #: tier: no format-warping bomb, and a go-wide board still fears a sweeper.

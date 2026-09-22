@@ -1,7 +1,8 @@
 #: name: Honor Among Thieves
 #: format: Standard
-#: tier: A — Orzhov Ninja lifegain-drain; metrics floor A (interaction 7 + aggro clock), M.O.D.O.K. board -1/-1 + connive card advantage, evasive Sneak clock into Kingpin/Elenda life-swing
+#: tier: A — Orzhov Ninja lifegain-drain; metrics floor B (interaction 7 + card advantage 2; it read A on an INFERRED aggro plan until `#: plan: midrange` was written 2026-09-22, and the aggro clock no longer substitutes — the vector itself did not move), M.O.D.O.K. board -1/-1 + connive card advantage, evasive Sneak clock into Kingpin/Elenda life-swing
 #: colors: WB
+#: plan: midrange
 #: archetype: Orzhov (W/B) lifegain-drain aggro-midrange — evasive Ninjas fuel the Kingpin life-swing.
 #: protect: Splinter, Radical Rat; Ninja Teen; Dark Leo & Shredder; Karai, Future of the Foot; The Kingpin of Crime; Splinter, Hamato Yoshi; The Wind Crystal; Elenda, Saint of Dusk
 #: notes: Orzhov (W/B) lifegain-drain aggro-midrange seeded by The Kingpin of Crime (Extort). An evasive Ninja package (Sneak) connects for combat damage to fuel the life-swing engine; the two R/W-hybrid Ninjas are cast off white. P/T-swap novelty lives in the 20a variant.

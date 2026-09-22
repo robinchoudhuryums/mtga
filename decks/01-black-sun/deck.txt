@@ -2,6 +2,7 @@
 #: format: Standard
 #: tier: A — Rakdos aggro-sacrifice; 8 interaction + reach — resilient and consistent
 #: colors: BR
+#: plan: midrange
 #: archetype: Rakdos (B/R) aggro-sacrifice — tokens + graveyard; the first constructed deck.
 #: notes: Rakdos (B/R) — first constructed deck.
 
