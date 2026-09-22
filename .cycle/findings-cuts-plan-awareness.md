@@ -46,6 +46,14 @@ tokens/mana/etb and is a ramp creature in a deck that wants to be attacking on t
 
 Separately, `cuts` ranked **Day of Black Sun #1** — the card the deck is NAMED after.
 
+**The strongest data point arrived last, 2026-09-22:** `cuts` ranked **Fire Nation Raider
+33 / 33** — its single strongest KEEP in the deck — for a four-mana 4/2 whose entire text is
+*"Raid — When this creature enters, if you attacked this turn, create a Clue token."* Cast
+precombat it does nothing, and a 4/2 trades down against everything. It ranks last on the
+cut list because `tokens` / `etb` / `raid` / `clue` are four of the deck's central themes
+and the card hits all four. The tags are right; the card is a 4/2 that sometimes cantrips.
+This is the cleanest available illustration that theme fit alone is not a grade.
+
 ### Three things to settle before building anything
 
 **1. The `#: protect:` header already solves the loudest half, and deck 1 was not using it.**

@@ -13,7 +13,7 @@
 1 Hazoret, Godseeker (DFT) 133
 1 Raphael, Tough Turtle (TMT) 104
 2 Searslicer Goblin (FDN) 93
-1 Fire Nation Raider (TLA) 135
+1 Doctor Doom (MSH) 95
 1 Slash, Reptile Rampager (TMT) 108
 1 Krenko, Mob Boss (FDN) 204
 1 Technodrome (TMT) 179
