@@ -1,6 +1,6 @@
 #: name: Black Sun (sac tokens for reach)
 #: format: Standard
-#: tier: A — Rakdos aggro-sacrifice; 9 interaction + reach — resilient and consistent
+#: tier: A — Rakdos aggro-sacrifice; 8 interaction + reach — resilient and consistent
 #: colors: BR
 #: archetype: Rakdos (B/R) aggro-sacrifice — tokens + graveyard; the first constructed deck.
 #: notes: Rakdos (B/R) — first constructed deck.
@@ -19,7 +19,7 @@
 1 Technodrome (TMT) 179
 1 Bot Bashing Time (TMT) 85
 1 Raven Eagle (TLA) 116
-1 Wick's Patrol (BLB) 121
+1 Gisa, the Hellraiser (OTJ) 89
 1 High-Society Hunter (FDN) 61
 1 Massacre Wurm (FDN) 714
 1 Namazu Trader (FIN) 107
