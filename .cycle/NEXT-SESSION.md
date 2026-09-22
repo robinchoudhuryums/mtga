@@ -611,11 +611,15 @@ session-start hook prints the live figures — trust it, not any number written 
    it**. TWO LIVE RESIDUALS SURVIVE THE DECLINE, both zero-code:
    **(a)** `#: protect:` is the existing mechanism for "stop offering my signature card"
    and several decks do not use it — deck 1 had none, which is why its namesake ranked #1
-   cut; **(b)** SEVEN decks carry an INFERRED plan that contradicts their own curve, and
-   the plan is a grading input to `tier`, not just a label (the deck-56a lesson) —
-   39-starforge (3.40), 35-hack-n-slash (3.36), 20-honor-among-thieves (3.33),
-   36-panthera (3.31), 02-thundergod (3.28), 37-wizardz (3.11), 01-black-sun (3.03).
-   Adding an explicit `#: plan:` to those seven is editorial work on the deck files.
+   cut; **(b) CLOSED 2026-09-22.** All seven got an explicit `#: plan: midrange` —
+   `shape` read four as SLOW and three as MIDRANGE, none as fast, all on 24-25 lands.
+   Four floors dropped A→B (20, 35, 36a, 39) and no letter became indefensible: 35 now
+   MATCHES its floor and the other three sit one band above, which the rubric allows.
+   The hand read found THREE falsified floor claims the rationale audit could not price,
+   on top of the one it caught — all four corrected. Roster spread A 71/B 41 → A 67/B 45,
+   top band 63% → 60%. **Residual: 47 decks still carry no explicit `#: plan:` header.**
+   Those seven were the subset where the inference is measurably WRONG; the rest are
+   unverified, which is not the same as known-good.
 1. **`.cycle/prune-analysis.md` — the largest outstanding item, and it is BLOCKED ON THE
    USER, not on analysis.** The roster is at 113 decks against Arena's 100-deck cap. The
    doc carries the finished work — card-overlap matrix, `similar` sweep, playstyle belts,
