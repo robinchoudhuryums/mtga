@@ -602,6 +602,8 @@ session-start hook prints the live figures — trust it, not any number written 
 
 ### Open items, in the order they are worth picking up
 
+0. **`.cycle/findings-cuts-plan-awareness.md` — a written-up `/broad-scan` finding, OPEN.** `cuts` reads neither mana value nor `#: plan:`, so it wanted to KEEP three of the four cards deck 1 cut on 2026-09-22 (Kav Landseeker at 28/33). The measurements are already taken — do not re-derive them: 60 of 114 decks carry an explicit `#: plan:` header, and SEVEN read inferred `aggro` at avg MV >= 2.9, so a plan-aware feature would read the wrong plan on all seven. The file carries the constraints (flag not score term, explicit headers only, G-41/G-42's measured precision bar).
+
 1. **`.cycle/prune-analysis.md` — the largest outstanding item, and it is BLOCKED ON THE
    USER, not on analysis.** The roster is at 113 decks against Arena's 100-deck cap. The
    doc carries the finished work — card-overlap matrix, `similar` sweep, playstyle belts,
