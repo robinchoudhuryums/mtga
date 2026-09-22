@@ -602,8 +602,20 @@ session-start hook prints the live figures — trust it, not any number written 
 
 ### Open items, in the order they are worth picking up
 
-0. **`.cycle/findings-cuts-plan-awareness.md` — a written-up `/broad-scan` finding, OPEN.** `cuts` reads neither mana value nor `#: plan:`, so it wanted to KEEP three of the four cards deck 1 cut on 2026-09-22 (Kav Landseeker at 28/33). The measurements are already taken — do not re-derive them: 60 of 114 decks carry an explicit `#: plan:` header, and SEVEN read inferred `aggro` at avg MV >= 2.9, so a plan-aware feature would read the wrong plan on all seven. The file carries the constraints (flag not score term, explicit headers only, G-41/G-42's measured precision bar).
-
+0. **F-CUTS-01 (plan-aware `cuts`) was BUILT, MEASURED and DECLINED 2026-09-22 — read
+   `.cycle/HISTORY.md` before re-proposing it.** The finding file is deleted; its numbers
+   live there. Short version: 40 hits over 205 cards in the only 8 decks it could fire on,
+   **25 clearly false (precision <= 37.5%)**, it flags aggro FINISHERS as off-plan
+   (Aurelia in two decks), it re-opens G-60/G-83 on cost-reduced cards, `_MANA_SOURCE_RE`
+   misfires on a fight spell, and it **could not fire on deck 1, the case that produced
+   it**. TWO LIVE RESIDUALS SURVIVE THE DECLINE, both zero-code:
+   **(a)** `#: protect:` is the existing mechanism for "stop offering my signature card"
+   and several decks do not use it — deck 1 had none, which is why its namesake ranked #1
+   cut; **(b)** SEVEN decks carry an INFERRED plan that contradicts their own curve, and
+   the plan is a grading input to `tier`, not just a label (the deck-56a lesson) —
+   39-starforge (3.40), 35-hack-n-slash (3.36), 20-honor-among-thieves (3.33),
+   36-panthera (3.31), 02-thundergod (3.28), 37-wizardz (3.11), 01-black-sun (3.03).
+   Adding an explicit `#: plan:` to those seven is editorial work on the deck files.
 1. **`.cycle/prune-analysis.md` — the largest outstanding item, and it is BLOCKED ON THE
    USER, not on analysis.** The roster is at 113 decks against Arena's 100-deck cap. The
    doc carries the finished work — card-overlap matrix, `similar` sweep, playstyle belts,

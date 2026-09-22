@@ -19,6 +19,74 @@ re-proposing a fix that was already declined.
 
 ---
 
+## 2026-09-22 — F-CUTS-01 (plan-aware `cuts`) BUILT, MEASURED and DECLINED
+
+Third member of the family G-41 and G-42 already belong to: a `cuts` flag that was
+proposed, prototyped, measured against the live roster and then NOT shipped. The numbers
+are here so nobody re-derives them.
+
+**What was proposed.** A display-only `⚠ off-plan` rider on the `cuts` table, gated on an
+EXPLICIT `#: plan:` header, flagging (a) a nonland card at MV >= 5 and (b) an early drop
+that only makes mana, reusing `_MANA_SOURCE_RE` (G-81). It came out of the deck-1 tune,
+where `cuts` ranked **-Fire Nation Raider 33/33** — its single strongest KEEP — for a
+4-mana 4/2 whose only text is a conditional Clue, plus -Kav Landseeker 28/33,
+-Diamond Pick-Axe 18/33 and -Prickly Pair 14/33.
+
+**Why it was declined — three independent reasons, in increasing order of force.**
+
+**1. Coverage. It could not fire on its own motivating case.** Constraint 2 restricted it
+to explicit `#: plan:` headers, because 54 of 114 decks have none and SEVEN read inferred
+`aggro` at avg MV >= 2.9. Only **8 of 114 decks (7%)** carry an explicit `#: plan: aggro`,
+and **deck 1 is not one of them** — its plan is inferred from the word "aggro" in its
+`#: archetype:` prose. The finding's own safety constraint excluded the deck that produced
+the finding.
+
+**2. Precision. 40 hits over 205 nonland cards in those 8 decks; 25 are clearly FALSE
+(62.5%), so precision is at best 37.5%** — G-41 measured 22% and G-42 <= 14%, and both were
+declined. The failures are structural, not tunable:
+
+- **The MV>=5 branch flags aggro FINISHERS**, which is backwards — an aggro deck's top end
+  IS its plan. Aurelia, the Warleader (*"whenever Aurelia attacks for the first time each
+  turn, untap all creatures you control. After this phase, there is an additional combat
+  phase"*) was flagged in TWO of the eight decks. So were Full Throttle (two extra combats),
+  Sozin's Comet, Twinflame Tyrant, Nova Hellkite, Streaking Oilgorger, Thor Odinson, Samut,
+  Combustion Man and Spinerock Tyrant.
+- **It re-opens G-60 and G-83.** Printed MV lies on exactly the cards it flags hardest:
+  The Dawning Archaic (MV 10, *"costs {1} less for each instant and sorcery card in your
+  graveyard"*), Valkyrie Aerial Unit (MV 7, Affinity for artifacts), Savage Ventmaw (MV 6,
+  *"whenever this creature attacks, add {R}{R}{R}{G}{G}{G}"*), and Fate of the Sun-Cryst
+  (MV 5, *"costs {2} less if it targets a tapped creature"* — in deck 73a, the TAP deck).
+- **The mana branch fires BACKWARDS on the deck whose thesis it is.** Deck 73a is the
+  tap-for-value build; Springleaf Drum, Dragonbroods' Relic, Hardbristle Bandit and Spider
+  Manifestation are its ENGINE and all four were flagged. G-42's signature.
+- **`_MANA_SOURCE_RE` misfires at this caller, exactly as its own docstring already
+  warned.** The Last Agni Kai — a `{1}{R}` FIGHT spell — matched on *"add that much {R}"* in
+  its excess-damage rider. Mardu Devotee was called "mana-only" while reading *"when this
+  creature enters, scry 2"*. `deck.py` L6681-6686 already records this primitive measuring
+  "much worse precision" when it reached a second caller (89 decks against a hand-rolled
+  40); G-40's rule fired again, as written.
+
+**3. The survivors are redundant.** Strip the 25 false positives and the ~15 left all say
+"this card is expensive" — which the `cuts` table's **MV column already prints beside every
+row**. A flag that restates an adjacent column is noise with extra steps.
+
+**What is NOT declined, and is the real finding.** `cut_keep_score` genuinely reads no mana
+value and no plan — that part of F-CUTS-01 is confirmed and unchanged. The two things worth
+doing are both cheaper than the flag:
+
+- **`#: protect:` already exists and deck 1 was not using it.** It hard-excludes by name,
+  and its absence is why the deck's namesake ranked #1 cut. Zero code.
+- **The 7 decks whose INFERRED plan is wrong are a live defect in `tier`, not just in
+  `cuts`** — the plan is a grading input (the deck-56a lesson). 39-starforge (3.40),
+  35-hack-n-slash (3.36), 20-honor-among-thieves (3.33), 36-panthera (3.31),
+  02-thundergod (3.28), 37-wizardz (3.11), 01-black-sun (3.03). That backfill is editorial
+  work on the deck files and needs no code at all.
+
+**Do not re-propose the flag without new evidence.** The MV-branch problem is not a
+threshold that can be tuned: "expensive" and "finisher" are the same cards in an aggro
+deck, separated only by the deck's PLAN — which is the thing no text model here holds, word
+for word the reason G-42 was declined.
+
 ## Cycle 9 — closed 2026-09-09 (broad; the first `/reflect` this project ran)
 
 Moved here from STATE.md's `Where I left off` on 2026-09-14 when cycle 10 opened,

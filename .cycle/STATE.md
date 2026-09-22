@@ -37,6 +37,22 @@ Updated: 2026-09-20 (manabase recommender + tapland taxonomy + the freshness gat
 
 ## Completed this cycle
 
+- **2026-09-22 — F-CUTS-01 (plan-aware `cuts`) BUILT, MEASURED and DECLINED.** No
+  production code changed. 40 hits over 205 cards in the only **8 of 114 decks (7%)** it
+  could fire on; **25 clearly false, precision <= 37.5%**, against G-41's 22% and G-42's
+  <=14%, both declined. It flags aggro FINISHERS as off-plan (Aurelia in two decks),
+  re-opens G-60/G-83 on cost-reduced cards, fires backwards on deck 73a's own tap engine,
+  and `_MANA_SOURCE_RE` matched a FIGHT spell. Decisive: it **could not fire on deck 1**,
+  the case that produced it. Numbers in `.cycle/HISTORY.md`; block at
+  `.cycle/blocks/2026-09-f-cuts-01-plan-aware-cuts-broad-implement.md`. Two zero-code
+  residuals survive and are NEXT-SESSION item 0.
+- **2026-09-22 — deck 1 tuned (six applied swaps).** Manabase rebuilt from 4 owned-but-
+  unplayed Dark Fortress + Blood Crypt (B 13->17, cards below 90% on curve **15 -> 7**,
+  Massacre Wurm 44.3% -> 66.4%), then Sawblade Skinripper, June, Slash, Rat King, Gisa and
+  Doctor Doom in for Tome Blast, Diamond Pick-Axe, Kav Landseeker, Prickly Pair, Wick's
+  Patrol and Fire Nation Raider. Protection **1 -> 3**, card advantage 6 -> 7, floor holds
+  A. Two rare crafts outstanding (Slash, Rat King).
+
 - **2026-09-21 — two role-pattern whitelist holes, surfaced by a deck-3 tune.**
   `Team pump / anthem` matched "of the chosen TYPE" and not "of the chosen COLOUR"
   (Heraldic Banner, Caged Sun scored zero roles; 0 decks run either — defensive).
