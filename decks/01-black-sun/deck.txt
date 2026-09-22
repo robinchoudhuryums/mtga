@@ -17,7 +17,6 @@
 1 Doctor Doom (MSH) 95
 1 Slash, Reptile Rampager (TMT) 108
 1 Krenko, Mob Boss (FDN) 204
-1 Technodrome (TMT) 179
 1 Bot Bashing Time (TMT) 85
 1 Raven Eagle (TLA) 116
 1 Gisa, the Hellraiser (OTJ) 89
@@ -42,6 +41,7 @@
 1 Rat King, Verminister (TMT) 71
 1 Callous Inspector (TLA) 89
 1 Day of Black Sun (TLA) 94
+1 Rakdos Joins Up (OTJ) 225
 
 # Lands
 1 Fire Nation Palace (TLA) 268
