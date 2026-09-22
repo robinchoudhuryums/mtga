@@ -85,8 +85,8 @@ Read the actual card text — never judge by mana value or a single subtype:
    targets (these feed Section 6 — always evaluate them, even for a fully-owned deck).
    **`--limit 0` ON BOTH HALVES, and the craft half is the one that used to be
    missing it.** The default prints a top-20 WINDOW, and the ranking is theme fit —
-   measured across 783 applied swaps, the MEDIAN rank of the card actually added is
-   **407** of ~950 candidates and only **10%** fell inside that window. So a tune
+   measured across 897 applied swaps, the MEDIAN rank of the card actually added is
+   **404** of ~950 candidates and only **11%** fell inside that window. So a tune
    that reads the default list is reading the page the eventual pick is usually not
    on. `suggest` now prints "top N of M ranked candidate(s)" so the window is
    visible; `deck.py feedback` reports the distribution. A card chosen for a

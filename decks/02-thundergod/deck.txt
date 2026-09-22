@@ -18,8 +18,10 @@
 #: archetype: discard a card" — not an aggro clock: `shape` reads this as NEITHER wide
 #: archetype: (2) nor tall (0), and the curve is MIDRANGE. Called "aggro / burn" until
 #: archetype: 2026-09-22; the plan header was corrected to midrange the same week after
-#: archetype: it had been inferring `aggro` off that word at avg MV 3.28.
-#: notes: Mono-red, Thor-themed aggro.
+#: archetype: it had been inferring `aggro` off that word. The curve has only gotten
+#: archetype: slower since: avg mv 3.14 today.
+#: notes: Mono-red, Thor-themed legendary-matters MIDRANGE (the one-line summary read
+#: notes: "aggro" until 2026-09-22 — see the archetype block).
 #: notes: PROTECTION: `deck.py stats` flags protection 0, and that is CORRECT AND FINE
 #: notes: here — checked, not waved away. Protection matters when a plan hangs on one
 #: notes: permanent; this deck's resilience is threat DENSITY. 26 creatures, `redundancy`
@@ -51,9 +53,9 @@
 1 Spider-Gwen, Free Spirit (MSC) 874
 1 Solstice Revelations (TLA) 153
 1 Ty Lee, Artful Acrobat (TLA) 158
-1 Wisecrack (MSC) 813
+1 Thunder Magic (FIN) 165
 1 Bumi Bash (TLA) 125
-1 Fire Nation Raider (TLA) 135
+1 Blacksmith's Talent (BLB) 125
 1 Mjölnir, Hammer of Thor (MSH) 146
 1 Combustion Man (TLA) 127
 1 Ultimate Green Goblin (SPM) 157
@@ -76,7 +78,7 @@
 
 # Flex — STANDARD-LEGAL craftable red upgrades (deepen the spellslinger / Hero plan). See: deck.py flex 2
 #~ -Child of the Volcano | +Charming Scoundrel | CRAFT (R): haste 2-drop, modal ETB (loot / Treasure / Wicked Role) — flexible aggressive value
-#~ -Wisecrack | +Queen Brahne | CRAFT (U): prowess + makes a Wizard token every attack — spellslinger go-wide that also fuels Firebrand/Ty Lee
+#~ note: applied — Thunder Magic in for Wisecrack.
 #~ -Zealous Lorecaster | +Realm-Scorcher Hellkite | CRAFT (M): Bargain dragon finisher — flying haste + a big ETB burn
 #~ note: all three are CRAFT targets (not owned) and Standard-legal. Priority: Charming Scoundrel. AVOID Ash Zealot — it punishes ALL graveyard casting, hitting your own Mayhem/flashback.
 
