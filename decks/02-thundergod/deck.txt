@@ -3,7 +3,22 @@
 #: tier: A — Mono-R burn/aggro; consistent mana, 9 burn doubling as removal
 #: colors: R
 #: plan: midrange
-#: archetype: Mono-red Thor-themed aggro / burn.
+#: archetype: Mono-red LEGENDARY-matters value with a burn shell. 17 of the 26
+#: archetype: creatures are legendary, and that is not flavour — it is what turns on
+#: archetype: Mjölnir's "Equip worthy {1}" (10 legal targets: legendary, non-Villain,
+#: archetype: red) and Human Torch, Johnny Storm's "if you control another Hero"
+#: archetype: clause (7 Heroes). THE
+#: archetype: DAMAGE ENGINE IS THOR + MJÖLNIR: Thor reads "whenever you cast a
+#: archetype: noncreature spell, Thor deals damage equal to that spell's mana value to
+#: archetype: any target" and Mjölnir reads "Double all damage equipped creature would
+#: archetype: deal", so every noncreature spell is doubled face damage for a {1} equip.
+#: archetype: Seven creatures deal damage off their own text and Mjölnir doubles any of
+#: archetype: them. The engine `engines` actually measures is DISCARD/graveyard at 16
+#: archetype: enablers / 8 payoffs — four Mayhem cards plus Hobgoblin's "whenever you
+#: archetype: discard a card" — not an aggro clock: `shape` reads this as NEITHER wide
+#: archetype: (2) nor tall (0), and the curve is MIDRANGE. Called "aggro / burn" until
+#: archetype: 2026-09-22; the plan header was corrected to midrange the same week after
+#: archetype: it had been inferring `aggro` off that word at avg MV 3.28.
 #: notes: Mono-red, Thor-themed aggro.
 #: notes: PROTECTION: `deck.py stats` flags protection 0, and that is CORRECT AND FINE
 #: notes: here — checked, not waved away. Protection matters when a plan hangs on one
@@ -11,8 +26,11 @@
 #: notes: reads burn as a virtual 12-of and spot removal 10 deep, and there is no
 #: notes: `#: protect:` build-around to defend. Losing any single body costs a turn of
 #: notes: clock, not the game. Spending slots on ward/hexproof would dilute the clock,
-#: notes: which IS the plan. The real thin axes are card advantage 1 and a sweeper count
-#: notes: of 1 — that is where to look if it underperforms, not protection.
+#: notes: which IS the plan. The thin axis is the SWEEPER count, which is 1. Card
+#: notes: advantage read 1 when this block was written and reads 5 now (2 repeatable,
+#: notes: 3 one-shot) — corrected 2026-09-22. Nothing catches a stale figure in a
+#: notes: block: the rationale audit scans `#: tier:` and `#: archetype:` only, and
+#: notes: excluding `#: notes:` was measured and kept deliberately (G-27).
 
 # Nonland
 1 J. Jonah Jameson (SPM) 81
