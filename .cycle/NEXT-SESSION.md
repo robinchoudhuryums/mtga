@@ -617,9 +617,24 @@ session-start hook prints the live figures — trust it, not any number written 
    MATCHES its floor and the other three sit one band above, which the rubric allows.
    The hand read found THREE falsified floor claims the rationale audit could not price,
    on top of the one it caught — all four corrected. Roster spread A 71/B 41 → A 67/B 45,
-   top band 63% → 60%. **Residual: 47 decks still carry no explicit `#: plan:` header.**
-   Those seven were the subset where the inference is measurably WRONG; the rest are
-   unverified, which is not the same as known-good.
+   top band 63% → 60%. **The remaining 47 were then swept and are SAFE.** Only ONE resolved to
+   `aggro`, the one plan that changes the floor — deck 33, whose inference is CORRECT
+   (avg MV 2.53 = 3rd percentile of the roster, 21 early drops with ZERO mana sources,
+   nothing above MV 5, clock 6/7) and which now carries an explicit `#: plan: aggro`.
+   Of the other 46, **32 share the identical interaction floor whatever they are
+   labelled**, so a wrong label costs nothing there; 14 would GAIN a band if relabelled
+   aggro (the conservative direction) and 13 of those are plainly not aggro.
+   **ONE OPEN JUDGEMENT CALL: 38-armory.** Deck 33's curve twin (avg MV 2.51, 20 early
+   drops, 0 mana, one card above MV 4) but TALL equipment-voltron where 33 is WIDE, and
+   its own prose says "Equipment midrange". Calling it aggro raises its floor B→A and
+   puts its claimed B BELOW the floor — a re-grade, not a header fix, so it was left
+   alone. **60 of 114 decks now carry an explicit header.**
+   **AUDIT GAP, not fixed:** `tier --audit-rationale` prices none of the
+   qualifier-wrapped figure idiom — not deck 33's "(measured 1" against a live 6, nor
+   the three falsified floor claims hand-caught above. 21 files use it, 14 state a
+   `metrics floor X` letter, all 14 read correct today — but four only because they
+   were hand-corrected, not because anything checks them. Widening those patterns needs
+   the roster sweep G-26 mandates.
 1. **`.cycle/prune-analysis.md` — the largest outstanding item, and it is BLOCKED ON THE
    USER, not on analysis.** The roster is at 113 decks against Arena's 100-deck cap. The
    doc carries the finished work — card-overlap matrix, `similar` sweep, playstyle belts,
