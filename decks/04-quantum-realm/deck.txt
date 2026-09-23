@@ -1,6 +1,6 @@
 #: name: Quantum Realm
 #: format: Standard
-#: tier: A — Simic (GU) +1/+1 counters value midrange; 7 interaction + a scalable counters-payoff card-advantage engine (Wan Shi Tong + Teo + Knowledge Seeker) + on-theme interaction (Glen Elendra Guardian) on a clean 2-color base. Re-graded B→A: A-floor on corrected interaction, coherent 12-payoff engine. Residual cap: singleton-inconsistent (and the heuristic CA stat undercounts the creature-based draw here, so it plays with more card advantage than the "1" shown).
+#: tier: A — Simic (GU) +1/+1 counters value midrange; 8 interaction + a scalable counters-payoff card-advantage engine (Wan Shi Tong + Teo + Knowledge Seeker) + on-theme interaction (Glen Elendra Guardian) on a clean 2-color base. Re-graded B→A: A-floor on corrected interaction, coherent 12-payoff engine. Residual cap: singleton-inconsistent. Card advantage reads 7 since the 2026-09-23 package (it read 1 when this was written, and still under-counts: Mister-Hyde-style counter-spending draw is unclassified). Protection went 1 -> 3 in the same package (Sab-Sunen's indestructible, Inspiring Call's instant-speed indestructible).
 #: colors: UG
 #: archetype: Simic (U/G) +1/+1 counters / value.
 #: notes: Simic (U/G) — +1/+1 counters / value.
@@ -46,18 +46,18 @@
 1 Doc Samson, Super Psychiatrist (MSH) 164
 1 The Ooze (TMT) 177
 1 The Goose Mother (WOE) 204
-1 Bespoke Bō (TMT) 31
+1 Troll Negotiations (HOB) 138
 1 Training Regimen (MSH) 192
-1 Pet Avengers (MSH) 178
+1 Sab-Sunen, Luxa Embodied (DFT) 221
 1 Quandrix, the Proof (SOS) 218
 1 Teo, Spirited Glider (TLA) 74
 1 Mole Man, Moloid Master (MSH) 177
 1 Bite Down (FDN) 212
-1 Crustacean Commando (TMT) 33
+1 Inspiring Call (TLE) 168
 1 Mutant Chain Reaction (TMT) 125
 1 Glen Elendra Guardian (ECL) 51
 1 Ooze Spill (TMT) 48
-1 Renet, Temporal Apprentice (TMT) 50
+1 Doubling Season (FDN) 216
 1 Utrom Scientists (TMT) 56
 1 Ray Fillet, Man Ray (TMT) 49
 1 Knowledge Seeker (TLA) 60
