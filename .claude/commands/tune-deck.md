@@ -85,8 +85,8 @@ Read the actual card text — never judge by mana value or a single subtype:
    targets (these feed Section 6 — always evaluate them, even for a fully-owned deck).
    **`--limit 0` ON BOTH HALVES, and the craft half is the one that used to be
    missing it.** The default prints a top-20 WINDOW, and the ranking is theme fit —
-   measured across 908 applied swaps, the MEDIAN rank of the card actually added is
-   **403** of ~950 candidates and only **11%** fell inside that window. So a tune
+   measured across 912 applied swaps, the MEDIAN rank of the card actually added is
+   **391** of ~950 candidates and only **11%** fell inside that window. So a tune
    that reads the default list is reading the page the eventual pick is usually not
    on. `suggest` now prints "top N of M ranked candidate(s)" so the window is
    visible; `deck.py feedback` reports the distribution. A card chosen for a
@@ -222,7 +222,7 @@ goal is a tier climb, lead with the swaps that close the `deck.py tier --to` gap
 the next floor, so the block is aimed at the target, not scattered.
 
 **6. Craft upgrades** — ALWAYS run `deck.py suggest <id> --unowned --limit 0` (it
-auto-filters to the deck's `#: format:`; `--limit 0` for the median-403 reason in
+auto-filters to the deck's `#: format:`; `--limit 0` for the median-391 reason in
 Stage 1.5 — the default top-20 holds the eventual pick 10% of the time) and surface the craftable cards that
 would improve the deck, read from card text (don't trust the tag match). Do this
 **even when the deck is fully owned**. **Tag every pick with an explicit weight so

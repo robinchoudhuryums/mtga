@@ -1,6 +1,6 @@
 #: name: Quantum Realm
 #: format: Standard
-#: tier: A — Simic (GU) +1/+1 counters value midrange; 8 interaction + a scalable counters-payoff card-advantage engine (Wan Shi Tong + Teo + Knowledge Seeker) + on-theme interaction (Glen Elendra Guardian) on a clean 2-color base. Re-graded B→A: A-floor on corrected interaction, coherent 12-payoff engine. Residual cap: singleton-inconsistent. Card advantage reads 7 since the 2026-09-23 package (it read 1 when this was written, and still under-counts: Mister-Hyde-style counter-spending draw is unclassified). Protection went 1 -> 3 in the same package (Sab-Sunen's indestructible, Inspiring Call's instant-speed indestructible).
+#: tier: A — Simic (GU) +1/+1 counters value midrange; 8 interaction + a scalable counters-payoff card-advantage engine (Wan Shi Tong + Venus + Mister Hyde + Knowledge Seeker) + on-theme interaction (Glen Elendra Guardian) on a clean 2-color base. Re-graded B→A: A-floor on corrected interaction, coherent 12-payoff engine. Residual cap: singleton-inconsistent. Card advantage reads 7 since the 2026-09-23 package (it read 1 when this was written, and still under-counts: Mister Hyde's counter-spending draw is unclassified). Protection went 1 -> 3 in the same package (Sab-Sunen's indestructible, Inspiring Call's instant-speed indestructible).
 #: colors: UG
 #: archetype: Simic (U/G) +1/+1 counters / value.
 #: notes: Simic (U/G) — +1/+1 counters / value.
@@ -45,6 +45,14 @@
 #: notes: three -1/-1 counters, i.e. three counterspell uses. It only enters DEAD with
 #: notes: two doublers out (1x2x2 = 4 on a 3/4) — and Applied Geometry copying Doubling
 #: notes: Season IS a second doubler, so cast Glen before that copy exists, not after.
+#: notes: 2026-09-23 (package 3): -Tester / +Thunderous Velocipede, -Cuboid Colony /
+#: notes: +Warden of the Grove, -The Goose Mother / +Venus, -Teo / +Berta. Cuts ranked
+#: notes: the Goose 36/36 (its strongest keep): it cannot see that the Goose rotates
+#: notes: ~2026, and Venus keeps card advantage at 7. The price is the curve: three
+#: notes: 2-drops became 3- and 5-drops (early drops 13 -> 10, avg MV 3.17 -> 3.31).
+#: notes: VELOCIPEDE vs GLEN: its extra +1/+1 counter cancels Glen's -1/-1 (704.5q), so
+#: notes: with no other replacement effect out Glen enters a 3/4 with NO counter to
+#: notes: remove. Warden's endure never does this — choose the Spirit token instead.
 
 # Nonland
 1 The Astonishing Ant-Man (MSH) 204
@@ -56,12 +64,12 @@
 1 She-Hulk, Jade Defender (MSH) 188
 1 Doc Samson, Super Psychiatrist (MSH) 164
 1 The Ooze (TMT) 177
-1 The Goose Mother (WOE) 204
+1 Venus, Torn Between Worlds (TMT) 136
 1 Troll Negotiations (HOB) 138
 1 Training Regimen (MSH) 192
 1 Sab-Sunen, Luxa Embodied (DFT) 221
 1 Quandrix, the Proof (SOS) 218
-1 Teo, Spirited Glider (TLA) 74
+1 Berta, Wise Extrapolator (SOS) 175
 1 Mister Hyde, Monster Within (MSH) 176
 1 Bite Down (FDN) 212
 1 Inspiring Call (TLE) 168
@@ -78,11 +86,11 @@
 1 Michelangelo, Weirdness to 11 (TMT) 121
 1 Germination Practicum (SOS) 149
 1 Fractal Tender (SOS) 190
-1 Cuboid Colony (SOS) 183
+1 Warden of the Grove (TDM) 166
 1 Knockout Maneuver (SOA) 54
 1 Pterafractyl (SOS) 215
 1 Novel Nunchaku (TMT) 127
-1 Tester of the Tangential (SOS) 69
+1 Thunderous Velocipede (DFT) 183
 
 # Lands
 8 Island (MSH) 289
