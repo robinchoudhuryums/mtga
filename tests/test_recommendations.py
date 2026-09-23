@@ -238,6 +238,7 @@ class TestItIsReportOnly:
                    deck._weakest_cut):
             src = inspect.getsource(fn)
             assert "load_recommendations" not in src, fn.__name__
+            assert "add_rank_stats" not in src, fn.__name__
             assert "RECS_CSV" not in src, fn.__name__
             # OUTCOMES are banned from the scoring stack for a stronger reason than the
             # ledger is. `swap_outcomes` joins applied swaps to games played, and a win
@@ -575,3 +576,61 @@ class TestSwapOutcomes:
         out = capsys.readouterr().out
         assert "far below" in out or "no matches.csv" in out
         assert "%" not in out, "a win rate must not appear at this sample size"
+
+
+class TestAddRankStatsIsOneDefinition:
+    """`feedback` and check_docs' G-22 drift gate once computed the add-rank median
+    separately and DISAGREED on an even count: feedback took `ranked[n // 2]` (the
+    upper-middle element) and truncated its in-window percent, the gate took
+    `int(statistics.median(...))`. On 2026-09-23 that printed "median 388 … (10%)" while
+    the gate read 385, and a doc re-synced from feedback's output turned the gate red.
+    Both now read `deck.add_rank_stats`; these pin that they still agree."""
+
+    # EVEN count (20, the report floor) whose two middle ranks straddle: sorted, the
+    # 10th and 11th are 100 and 105, so the real median is 102.5 -> 103, the upper-middle
+    # element is 105 and the truncated median is 102. 3 of 20 in the top-20 window is
+    # 15% either way, so the percent is pinned separately below on 2/12.
+    RANKS = [1, 5, 19, 40, 50, 60, 70, 80, 90, 100,
+             105, 200, 300, 400, 500, 600, 700, 800, 900, 1000]
+
+    def _ledger(self, tmp_path, ranks):
+        p = tmp_path / "recs.csv"
+        with open(p, "w", newline="", encoding="utf-8") as fh:
+            w = csv.DictWriter(fh, fieldnames=deck.RECS_HEADER)
+            w.writeheader()
+            for i, rk in enumerate(ranks):
+                w.writerow(_row(**{"Cut": f"Cut {i}", "Add": f"Add {i}",
+                                   "Add Rank": rk, "Add Surfaced": "no"}))
+        return str(p)
+
+    def test_an_even_sample_takes_the_real_median_rounded(self, tmp_path):
+        rs = deck.add_rank_stats(deck.load_recommendations(self._ledger(tmp_path, self.RANKS)))
+        assert rs["n"] == 20 and rs["median"] == 103
+        assert rs["in_window"] == 3 and rs["in_window_pct"] == 15
+
+    def test_the_in_window_share_is_rounded_not_truncated(self, tmp_path):
+        # 2/12 = 16.67% -> 17 (truncation reads 16).
+        rs = deck.add_rank_stats(deck.load_recommendations(
+            self._ledger(tmp_path, [1, 2] + [500] * 10)))
+        assert rs["in_window_pct"] == 17
+
+    def test_feedback_and_the_drift_gate_report_the_same_figures(
+            self, tmp_path, monkeypatch, capsys):
+        import re
+        import check_docs
+        monkeypatch.setattr(deck, "RECS_CSV", self._ledger(tmp_path, self.RANKS))
+        monkeypatch.setattr(deck, "load_match_counts", lambda: {})
+        deck.cmd_feedback(type("A", (), {"id": None})())
+        out = capsys.readouterr().out
+        m = re.search(r"over (\d+) row\(s\) that recorded one: median (\d+) .*?"
+                      r"\d+ \((\d+)%\) ranked inside", out)
+        assert m, out
+        printed = tuple(int(g) for g in m.groups())
+        live = {label: fn() for label, _pat, fn in check_docs._live_figures()
+                if label.startswith("G-22")}
+        gate = (live["G-22 applied swaps with a rank"], live["G-22 median add rank"],
+                live["G-22 adds inside the suggest window %"])
+        assert printed == gate == (20, 103, 15)
+
+    def test_an_empty_ledger_has_no_stats(self, tmp_path):
+        assert deck.add_rank_stats([]) is None

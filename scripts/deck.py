@@ -7679,6 +7679,42 @@ def load_recommendations(path=None):
         return [dict(r) for r in csv.DictReader(fh)]
 
 
+def add_rank_stats(rows=None):
+    """The ONE definition of "where did the chosen add rank" over the ledger's `Add Rank`
+    column -> dict(n, median, p25, p75, worst, in_window, in_window_pct), or None when no
+    row carries a rank. `rows` defaults to the whole ledger.
+
+    `cmd_feedback` prints it and `check_docs`' figure-drift gate checks CLAUDE.md G-22
+    against it. They used to compute it separately and DISAGREED: feedback took
+    `ranked[n // 2]` (the upper-middle element on an even count, not the median) and
+    TRUNCATED the in-window percent, while the gate took `int(statistics.median(...))` —
+    so a session that re-synced the docs from feedback's output turned the gate red
+    (G-70's parallel-source shape). `median` is the real median ROUNDED HALF-UP to a whole
+    rank (an even count's mean of the two middle ranks can end in .5), and
+    `in_window_pct` is rounded, not truncated. p25/p75 stay the simple index quantiles.
+
+    REPORT-ONLY, like every ledger read: G-56 bans it from the scoring stack and
+    `tests/test_recommendations.py` enforces that by name."""
+    import statistics
+    if rows is None:
+        rows = load_recommendations()
+    ranked = sorted(int(r["Add Rank"]) for r in rows
+                    if str(r.get("Add Rank") or "").strip().isdigit())
+    if not ranked:
+        return None
+    n = len(ranked)
+    in_window = sum(1 for x in ranked if x <= _RECS_SUGGEST_WINDOW)
+    return {
+        "n": n,
+        "median": int(math.floor(statistics.median(ranked) + 0.5)),
+        "p25": ranked[n // 4],
+        "p75": ranked[3 * n // 4],
+        "worst": ranked[-1],
+        "in_window": in_window,
+        "in_window_pct": int(math.floor(100 * in_window / n + 0.5)),
+    }
+
+
 def recent_ledger_adds(deck_id, days=14, path=None):
     """`_ms_key` set of cards ADDED to `deck_id` by a ledger swap in the last `days`.
 
@@ -8156,16 +8192,14 @@ def cmd_feedback(args):
         # model and the human shop in the same aisle; a median in the hundreds means the
         # ranking finds the card and buries it, which is a different problem from the
         # theme gate G-38 describes and wants a different fix.
-        _ranked = sorted(int(r["Add Rank"]) for r in rows
-                         if str(r.get("Add Rank") or "").strip().isdigit())
-        if len(_ranked) >= _RECS_MIN_SAMPLE:
-            _n = len(_ranked)
-            _med = _ranked[_n // 2]
-            _in = sum(1 for x in _ranked if x <= _RECS_SUGGEST_WINDOW)
-            print(f"  Rank of the chosen add, over {_n} row(s) that recorded one: "
-                  f"median {_med} · p25 {_ranked[_n // 4]} · p75 {_ranked[3 * _n // 4]} "
-                  f"· worst {_ranked[-1]}. {_in} ({100 * _in // _n}%) ranked inside the "
-                  f"default top {_RECS_SUGGEST_WINDOW}.")
+        # Computed by `add_rank_stats`, the same helper check_docs' drift gate reads, so
+        # the figure printed here is the figure CLAUDE.md G-22 is checked against.
+        _rs = add_rank_stats(rows)
+        if _rs and _rs["n"] >= _RECS_MIN_SAMPLE:
+            print(f"  Rank of the chosen add, over {_rs['n']} row(s) that recorded one: "
+                  f"median {_rs['median']} · p25 {_rs['p25']} · p75 {_rs['p75']} "
+                  f"· worst {_rs['worst']}. {_rs['in_window']} ({_rs['in_window_pct']}%) "
+                  f"ranked inside the default top {_RECS_SUGGEST_WINDOW}.")
         print()
 
     if n < _RECS_MIN_SAMPLE:

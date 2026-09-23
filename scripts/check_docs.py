@@ -449,16 +449,18 @@ def _live_figures():
     _ledger_cache = {}
 
     def _ledger_rank_stats():
-        """G-22's pair -> (rows carrying an Add Rank, their MEDIAN). Read through
-        `deck.load_recommendations`, never a second CSV reader. This is a DOC gate, not a
-        scoring function, so it is outside the G-56 ban that `tests/test_recommendations`
-        enforces on `cut_keep_score` and friends — and it must stay that way."""
+        """G-22's figures -> (rows carrying an Add Rank, their MEDIAN, in-window %).
+        Computed by `deck.add_rank_stats`, the SAME helper `deck.py feedback` prints from —
+        this gate once re-derived the median itself and disagreed with feedback on an even
+        count, so a doc re-synced from feedback's output turned it red (G-70). This is a DOC
+        gate, not a scoring function, so it is outside the G-56 ban that
+        `tests/test_recommendations` enforces on `cut_keep_score` and friends — and it
+        must stay that way."""
         if "v" not in _ledger_cache:
-            import statistics as _st
             import deck
-            ranks = sorted(int(r["Add Rank"]) for r in deck.load_recommendations()
-                           if (r.get("Add Rank") or "").strip().isdigit())
-            _ledger_cache["v"] = ((len(ranks), int(_st.median(ranks))) if ranks else (0, 0))
+            rs = deck.add_rank_stats()
+            _ledger_cache["v"] = ((rs["n"], rs["median"], rs["in_window_pct"]) if rs
+                                  else (0, 0, 0))
         return _ledger_cache["v"]
 
     def _test_files():
@@ -562,6 +564,9 @@ def _live_figures():
          r"across \*\*(\d+) applied swaps", lambda: _ledger_rank_stats()[0]),
         ("G-22 median add rank",
          r"the MEDIAN rank is (\d+)\*\*", lambda: _ledger_rank_stats()[1]),
+        ("G-22 adds inside the suggest window %",
+         r"the MEDIAN rank is \d+\*\* and only \*\*(\d+)%\*\* fell",
+         lambda: _ledger_rank_stats()[2]),
         ("C-07 test files",
          r"tests/ \((\d+) test files", _test_files),
     ]

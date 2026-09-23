@@ -222,8 +222,8 @@ goal is a tier climb, lead with the swaps that close the `deck.py tier --to` gap
 the next floor, so the block is aimed at the target, not scattered.
 
 **6. Craft upgrades** — ALWAYS run `deck.py suggest <id> --unowned --limit 0` (it
-auto-filters to the deck's `#: format:`; `--limit 0` for the median-407 reason in
-Stage 1.5 — the default top-20 holds the eventual pick 10% of the time) and surface the craftable cards that
+auto-filters to the deck's `#: format:`; `--limit 0` for the median-404 reason in
+Stage 1.5 — the default top-20 holds the eventual pick 11% of the time) and surface the craftable cards that
 would improve the deck, read from card text (don't trust the tag match). Do this
 **even when the deck is fully owned**. **Tag every pick with an explicit weight so
 the user never burns a wildcard on a lateral card:**
