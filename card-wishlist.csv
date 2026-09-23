@@ -66,7 +66,6 @@ Archenemy's Charm,Instant,"Choose one —
 • Put two +1/+1 counters on target creature you control. It gains lifelink until end of turn.",B,counters; graveyard; lifegain; removal,EOE,88,Rare,52a,,6.0,seed
 Pinnacle Starcage,Artifact,"When this artifact enters, exile all artifacts and creatures with mana value 2 or less until this artifact leaves the battlefield.
 {6}{W}{W}: Put each card exiled with this artifact into its owner's graveyard, then create a 2/2 colorless Robot artifact creature token for each card put into a graveyard this way. Sacrifice this artifact.",W,reanimator; graveyard; sacrifice; tokens; etb,EOE,33,Rare,6,,6,hand
-Terrasymbiosis,Enchantment,"Whenever you put one or more +1/+1 counters on a creature you control, you may draw that many cards. Do this only once each turn.",G,counters; card draw,EOE,210,Rare,4,deck 4 repeatable card draw (counters -> cards); -Pterafractyl,6.5,seed
 "Mm'menon, Uthros Exile",Legendary Creature — Jellyfish Advisor,"Flying
 Whenever an artifact you control enters, put a +1/+1 counter on target creature.",U/R,Jellyfish; Advisor; counters; flying; evasion,EOE,221,Uncommon,48,Holds Adaptive Automaton's slot in 48 at Uncommon cost.,4.0,hand
 Sunstar Expansionist,Creature — Human Knight,"When this creature enters, if an opponent controls more lands than you, create a Lander token. (It's an artifact with ""{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."")
@@ -109,9 +108,6 @@ Threshold — This creature gets +1/+1 and has deathtouch as long as there are s
 Hoarding Dragon,Creature — Dragon,"Flying
 When this creature enters, you may search your library for an artifact card, exile it, then shuffle.
 When this creature dies, you may put the exiled card into its owner's hand.",R,Dragon; etb; flying; evasion,FDN,626,Uncommon,49,,5.0,hand
-Ordeal of Nylea,Enchantment — Aura,"Enchant creature
-Whenever enchanted creature attacks, put a +1/+1 counter on it. Then if it has three or more +1/+1 counters on it, sacrifice this Aura.
-When you sacrifice this Aura, search your library for up to two basic land cards, put them onto the battlefield tapped, then shuffle.",G,Aura; counters; sacrifice; aura; enchant,FDN,641,Uncommon,4,deck 4 ramp: first attack with 3+ counters fetches two basics (two Thranduil landfall triggers); -Knowledge Seeker,4.5,seed
 Crow of Dark Tidings,Creature — Zombie Bird,"Flying
 When this creature enters or dies, mill two cards. (Put the top two cards of your library into your graveyard.)",B,Zombie; Bird; graveyard; mill; etb; flying; evasion,FDN,519,Common,,,1.0,seed
 Tolarian Terror,Creature — Serpent,"This spell costs {1} less to cast for each instant and sorcery card in your graveyard.

@@ -71,6 +71,12 @@
 #: notes: a creature already carrying 3+ it pops on the first attack: two basics = two
 #: notes: Thranduil's Company landfall triggers. Card advantage 7 -> 6 is the Seeker's
 #: notes: Clue; cuts ranked the Seeker 33/36 (a keep) and cannot see ramp or landfall.
+#: notes: 2026-09-23 Ba Sing Se for a Forest. It enters untapped whenever a basic is
+#: notes: out (15 basics remain), so it is a free upgrade on a G source: its earthbend
+#: notes: sink puts +1/+1 counters the doublers multiply, and a land-creature that dies
+#: notes: returns to the battlefield, which is a Thranduil's Company landfall trigger.
+#: notes: G-42 clear: a basic Forest carries no ETB to lose. Elven Passage was priced
+#: notes: and SKIPPED: it pulls this list toward deck 30's lands-matter identity.
 
 # Nonland
 1 The Astonishing Ant-Man (MSH) 204
@@ -116,7 +122,8 @@
 1 Temple of Mystery (FDN) 702
 1 Pym Technologies (MSH) 271
 1 Dreamroot Cascade (SOS) 254
-8 Forest (MSH) 295
+7 Forest (MSH) 295
+1 Ba Sing Se (TLA) 266
 1 Thornwood Falls (FDN) 269
 1 Mutant Town (TMT) 187
 1 Willowrush Verge (DFT) 270

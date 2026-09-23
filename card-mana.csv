@@ -2784,6 +2784,8 @@ Avengers Hangar,,0,
 "Jenova, Ancient Calamity",{2}{B}{G},4,
 Phoenix Fleet Airship,{2}{B}{B},4,Flying;Crew
 Warden of the Grove,{2}{G},3,Endure
+Terrasymbiosis,{2}{G},3,
+Ordeal of Nylea,{1}{G},2,Enchant
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -5219,7 +5221,6 @@ Larval Scoutlander,{2}{G},3,Station
 Lashwhip Predator,{4}{G}{G},6,Reach
 Meltstrider's Resolve,{G},1,Fight;Enchant
 Sami's Curiosity,{G},1,
-Terrasymbiosis,{2}{G},3,
 "Alpharael, Dreaming Acolyte",{1}{U}{B},3,
 Biomechan Engineer,{G}{U},2,
 Cosmogoyf,{B}{G},2,
@@ -5450,7 +5451,6 @@ Fierce Empath,{2}{G},3,
 Gnarlback Rhino,{2}{G}{G},4,Trample
 Heroes' Bane,{3}{G}{G},5,
 Mold Adder,{G},1,
-Ordeal of Nylea,{1}{G},2,Enchant
 Predator Ooze,{G}{G}{G},3,Indestructible
 Deadly Brew,{B}{G},2,
 Drogskol Reaver,{5}{W}{U},7,Flying;Lifelink;Double strike
