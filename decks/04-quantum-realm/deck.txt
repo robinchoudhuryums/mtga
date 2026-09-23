@@ -4,6 +4,28 @@
 #: colors: UG
 #: archetype: Simic (U/G) +1/+1 counters / value.
 #: notes: Simic (U/G) — +1/+1 counters / value.
+#: notes: MANABASE REBUILT 2026-09-23. It was 20 basics and FOUR nonbasics in a
+#: notes: two-colour deck with 25 U pips and 22 G pips, and 17 of 36 nonland cards sat
+#: notes: below 90% cast-on-curve. Four owned GU duals came in for four basics — Temple
+#: notes: of Mystery, Meditation Pools, Mutant Town, Thornwood Falls — taking U and G
+#: notes: from 14 each to 16 each and the below-90% count to NINE. Every single-pip
+#: notes: card now clears 90%.
+#: notes: THE COST IS TEMPO AND NO TOOL HERE MEASURES IT (G-35): unconditional
+#: notes: taplands went 1 -> 5 of 24 lands. `consistency` prices colour ACCESS only,
+#: notes: so its numbers show the gain and not the price. Accepted deliberately.
+#: notes: The untapped alternative is 2 rare wildcards (a 2nd Breeding Pool and a 2nd
+#: notes: Willowrush Verge in place of two of the four) for the same 9, at 3
+#: notes: unconditional taplands instead of 5 — still open.
+#: notes: The nine that remain are STRUCTURAL, not fixable here: {U}{U}/{G}{G} on turn
+#: notes: two wants 22-24 sources, which 24 lands cannot reach. Two of the nine are
+#: notes: X-cost cards the model books at turn two and you cast on turn five+, so the
+#: notes: real residual is Ooze Spill at 76%.
+#: notes: G-42 CHECKED AND CLEAR: that rule warns a land swap can silently drop ETB
+#: notes: triggers a doubler deck feeds on, and this deck IS one (Doc Samson and
+#: notes: Michelangelo both replace N counters with N+1). The trade ran the GOOD way —
+#: notes: basics have no ETB and three of the four adds do (scry 1, gain 1 life x2) —
+#: notes: and the two landfall payoffs, Ka-Zar's Zabu token and Mole Man, trigger on
+#: notes: ANY land, so neither cares which.
 
 # Nonland
 1 The Astonishing Ant-Man (MSH) 204
@@ -44,10 +66,14 @@
 1 Tester of the Tangential (SOS) 69
 
 # Lands
-10 Island (MSH) 289
+8 Island (MSH) 289
+1 Meditation Pools (TLA) 272
+1 Temple of Mystery (FDN) 702
 1 Pym Technologies (MSH) 271
 1 Dreamroot Cascade (SOS) 254
-10 Forest (MSH) 295
+8 Forest (MSH) 295
+1 Thornwood Falls (FDN) 269
+1 Mutant Town (TMT) 187
 1 Willowrush Verge (DFT) 270
 1 Breeding Pool (EOE) 251
 
