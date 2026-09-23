@@ -109,6 +109,9 @@ Threshold — This creature gets +1/+1 and has deathtouch as long as there are s
 Hoarding Dragon,Creature — Dragon,"Flying
 When this creature enters, you may search your library for an artifact card, exile it, then shuffle.
 When this creature dies, you may put the exiled card into its owner's hand.",R,Dragon; etb; flying; evasion,FDN,626,Uncommon,49,,5.0,hand
+Ordeal of Nylea,Enchantment — Aura,"Enchant creature
+Whenever enchanted creature attacks, put a +1/+1 counter on it. Then if it has three or more +1/+1 counters on it, sacrifice this Aura.
+When you sacrifice this Aura, search your library for up to two basic land cards, put them onto the battlefield tapped, then shuffle.",G,Aura; counters; sacrifice; aura; enchant,FDN,641,Uncommon,4,deck 4 ramp: first attack with 3+ counters fetches two basics (two Thranduil landfall triggers); -Knowledge Seeker,4.5,seed
 Crow of Dark Tidings,Creature — Zombie Bird,"Flying
 When this creature enters or dies, mill two cards. (Put the top two cards of your library into your graveyard.)",B,Zombie; Bird; graveyard; mill; etb; flying; evasion,FDN,519,Common,,,1.0,seed
 Tolarian Terror,Creature — Serpent,"This spell costs {1} less to cast for each instant and sorcery card in your graveyard.
