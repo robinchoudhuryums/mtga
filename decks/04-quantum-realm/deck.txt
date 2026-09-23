@@ -1,6 +1,6 @@
 #: name: Quantum Realm
 #: format: Standard
-#: tier: A — Simic (GU) +1/+1 counters value midrange; 8 interaction + a scalable counters-payoff card-advantage engine (Wan Shi Tong + Venus + Mister Hyde + Knowledge Seeker) + on-theme interaction (Glen Elendra Guardian) on a clean 2-color base. Re-graded B→A: A-floor on corrected interaction, coherent 12-payoff engine. Residual cap: singleton-inconsistent. Card advantage reads 6 after the 2026-09-23 packages (it read 1 when this was written, and still under-counts: Mister Hyde's counter-spending draw is unclassified). Protection went 1 -> 3 in the same package (Sab-Sunen's indestructible, Inspiring Call's instant-speed indestructible).
+#: tier: A — Simic (GU) +1/+1 counters value midrange; 8 interaction + a scalable counters-payoff card-advantage engine (Wan Shi Tong + Venus + Mister Hyde + Knowledge Seeker) + on-theme interaction (Glen Elendra Guardian) on a clean 2-color base. Re-graded B→A: A-floor on corrected interaction, coherent 12-payoff engine. Residual cap: singleton-inconsistent. Card advantage reads 7 after the 2026-09-23 packages (it read 1 when this was written, and still under-counts: Mister Hyde's counter-spending draw is unclassified). Protection went 1 -> 3 in the same package (Sab-Sunen's indestructible, Inspiring Call's instant-speed indestructible).
 #: colors: UG
 #: archetype: Simic (U/G) +1/+1 counters / value.
 #: notes: Simic (U/G) — +1/+1 counters / value.
@@ -61,6 +61,11 @@
 #: notes: Practicum and Applied Geometry be cast at flash speed) and a landfall counter
 #: notes: engine. Card advantage 7 -> 6 is the Cam's draw-two. Thranduil's extra land
 #: notes: drop needs another Elf; Fractal Tender is the only one.
+#: notes: 2026-09-23 (package 5): -Pterafractyl / +Terrasymbiosis (a CRAFT, wishlisted
+#: notes: to this deck). Chosen as the deck's repeatable card draw: every counter
+#: notes: placement the doublers multiply becomes that many cards, once a turn. Ray
+#: notes: Fillet was kept over Meltstrider Eulogist on purpose — its counter-to-card
+#: notes: activation is unlimited per turn; Meltstrider only draws when a creature dies.
 
 # Nonland
 1 The Astonishing Ant-Man (MSH) 204
@@ -96,7 +101,7 @@
 1 Fractal Tender (SOS) 190
 1 Warden of the Grove (TDM) 166
 1 Knockout Maneuver (SOA) 54
-1 Pterafractyl (SOS) 215
+1 Terrasymbiosis (EOE) 210
 1 Novel Nunchaku (TMT) 127
 1 Thunderous Velocipede (DFT) 183
 
