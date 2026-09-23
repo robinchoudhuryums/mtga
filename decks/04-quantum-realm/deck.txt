@@ -20,6 +20,14 @@
 #: notes: two wants 22-24 sources, which 24 lands cannot reach. Two of the nine are
 #: notes: X-cost cards the model books at turn two and you cast on turn five+, so the
 #: notes: real residual is Ooze Spill at 76%.
+#: notes: RAILWAY BRAWLER (in for Donatello, 2026-09-23) made it TEN: its {3}{G}{G}
+#: notes: casts on turn five 86.2% of the time on 16 green sources, knowingly accepted
+#: notes: for "whenever another creature you control enters, put X +1/+1 counters on it,
+#: notes: where X is its power" across 26 creatures and two plus-one replacements. It is
+#: notes: OTJ and ROTATES OUT OF STANDARD THIS FALL (~2026) — a short-term add, chosen as
+#: notes: one. Donatello, not Utrom Scientists, was the cut: Utrom is the deck's only
+#: notes: tap-down, which the interaction count cannot see, and Donatello's own draw
+#: notes: ("if you control an artifact") leaned on Utrom being an artifact.
 #: notes: G-42 CHECKED AND CLEAR: that rule warns a land swap can silently drop ETB
 #: notes: triggers a doubler deck feeds on, and this deck IS one (Doc Samson and
 #: notes: Michelangelo both replace N counters with N+1). The trade ran the GOOD way —
@@ -55,7 +63,7 @@
 1 Knowledge Seeker (TLA) 60
 1 Mutagen Man, Living Ooze (TMT) 124
 1 Sewer-veillance Cam (TMT) 53
-1 Donatello, Turtle Techie (TMT) 37
+1 Railway Brawler (OTJ) 175
 1 Michelangelo, Weirdness to 11 (TMT) 121
 1 Germination Practicum (SOS) 149
 1 Fractal Tender (SOS) 190

@@ -113,7 +113,6 @@ Diligent Zookeeper
 Doc Ock's Henchmen
 Don & Leo, Problem Solvers
 Donatello, Mutant Mechanic
-Donatello, Turtle Techie
 Dori, Bearer of Friends
 Doubling Season
 Dracogenesis
@@ -478,6 +477,7 @@ Welcome to Sweettooth
 Whirlwing Stormbrood
 White Tiger, Ava Ayala
 Wild Hypothesis
+Wisecrack
 Wonder Man, Hollywood Hero
 Y'shtola Rhul
 Zog, Triceraton Castaway
