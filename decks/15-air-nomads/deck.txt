@@ -9,7 +9,12 @@
 #: tier: and only 1 protection effect, which is more than the single weakness an A
 #: tier: tolerates. A deliberate below-floor call, like 35a and 21a.
 #: colors: WU
-#: archetype: Azorius (W/U) Air Nomads fliers / airbend + waterbend tempo.
+#: archetype: Azorius (W/U) Air Nomads fliers / airbend tempo, with a small waterbend
+#: archetype: sub-package. The header claimed the waterbend axis outright until
+#: archetype: 2026-09-23; that axis belongs to deck 16, which was split off this deck
+#: archetype: and rebuilt 2026-09-19. Measured: 8 airbend cards here against 16's ZERO,
+#: archetype: and 5 waterbend against its 14. The five that stay are cost fuel, not a
+#: archetype: theme — see the `#: notes:` line below.
 #: notes: Azorius (W/U) — Air Nomads fliers / tempo. A-track pass: +Wan Shi Tong (owned card-advantage
 #: notes: bomb) + It'll Quench Ya! (counter) + Watery Grasp (on-theme lockdown), firmed blue to 12 sources.
 #: notes: Kept the waterbend token fuel (Gather the White Lotus / United Front) — it pays the

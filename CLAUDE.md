@@ -1872,15 +1872,14 @@ is invisible, and a handoff nobody is told to read is the same failure one layer
   consolidated swap plan; it is TEMPORARY and says so, and it is deleted once the
   swaps land. Named here because a fresh session loads nothing else, and the whole
   point of committing it per batch is that it outlives one context window.
-  **FOUR are live as of 2026-09-19** — read them before re-deriving their findings:
-  `prune-analysis.md` (the roster-wide prune shortlist for Arena's 100-deck cap:
-  card-overlap matrix + `similar` sweep + a three-tier candidate list, awaiting the
-  user's keep/cut calls — its overlap numbers predate deck 16's 2026-09-19 rebuild);
-  `wylie-tap-analysis.md` (Variant B, the mono-W tap-down control build, still
-  specced-but-undrafted; Variant C parked); `hob-followup-analysis.md`; and
-  `uw-equipment-analysis.md` (the 97-card UW pile, IN PROGRESS — it was live and
-  UNLISTED here for weeks, which is the failure this list exists to prevent).
-  Each is deleted when its work lands — the 54-family doc went on 2026-08-05 and
+  **NONE are live as of 2026-09-23** — the last four (`prune-analysis.md`,
+  `wylie-tap-analysis.md`, `hob-followup-analysis.md`, `uw-equipment-analysis.md`,
+  1,407 lines) were cleared at the owner's instruction with their proposals still
+  unapplied. **That is a deliberate abandonment, not a completion, and the difference
+  matters**: a future session that wants those analyses must `git show` them
+  (`git log --diff-filter=D -- .cycle/`), because nothing was folded into decks/ first.
+  What they held, and the one thing salvaged, is in `.cycle/HISTORY.md` under
+  2026-09-23. Each is deleted when its work lands — the 54-family doc went on 2026-08-05 and
   `56-tall-pile-analysis.md` on 2026-09-19, 13 days after its own header said the swaps
   had landed. **A finished doc left in place reads as live to anything that greps** —
   the `docs/tooling-improvement-plan.md` lesson, one directory over.
