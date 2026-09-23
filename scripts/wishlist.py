@@ -731,7 +731,7 @@ _LAND_BREADTH_CAP = 1.5
 _CHECKLAND_BASIC_FLOOR = 12
 
 
-def _land_value(row, deck_colors, basics=None):
+def _land_value(row, deck_colors, basics=None, basic_types=None):
     """0–10 MANABASE value of a land for its target deck (F03) — the theme-fit axis
     is meaningless for lands (no synergy tags), so score fixing instead: reward
     producing colors the deck actually runs (a WB dual in mono-W is half-dead),
@@ -806,7 +806,13 @@ def _land_value(row, deck_colors, basics=None):
     # opt in scores exactly as before. A SLOWLAND ("two or MORE other lands") and a board
     # state ("unless a player has 13 or less life") keep the conservative score — their
     # condition is false precisely when tempo matters.
-    _kind = tapland_kind(txt)
+    # `basic_types` (the colours of the deck's own basics) is what lets a TYPE-NAMED
+    # checkland be answered rather than assumed. Without it "unless you control a Plains
+    # or an Island" collapsed to `check` and then took the premium off the deck's TOTAL
+    # basic count — so a 23-Mountain mono-red deck credited an untapped Cori Mountain
+    # Monastery, which can never be untapped there (81 pairs across 54 of 114 decks,
+    # 2026-09-22). `tapland_kind` answers it now; this call just has to pass the deck.
+    _kind = tapland_kind(txt, basic_types)
     _untapped_early = _kind in (None, "shock", "fast") or (
         _kind == "check" and basics is not None and basics >= _CHECKLAND_BASIC_FLOOR)
     if not fetch and _untapped_early:

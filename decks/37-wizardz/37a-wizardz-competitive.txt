@@ -1,6 +1,7 @@
 #: name: Wizardz — Competitive (functional-redundancy A)
 #: format: Standard
 #: colors: UBR
+#: plan: midrange
 #: tier: A — the competitive, consistency-optimized build of the ORIGINAL core's aggressive ping (the old 37, CUT 2026-09-06; 37 is now the value/storm list)
 #: tier: plan, made reliable by FUNCTIONAL REDUNDANCY rather than 4-ofs: it stays a singleton
 #: tier: (highlander) list but runs each plan-effect as VIRTUAL copies (distinct similar

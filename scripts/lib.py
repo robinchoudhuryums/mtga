@@ -572,20 +572,63 @@ _TAPLAND_FAST_RE = re.compile(
 # Island or a Swamp") and the literal "a basic land" / "two or more basic lands". The
 # `other` exclusion is load-bearing — "two or more other lands" is the SLOWLAND, whose
 # timing is the opposite, and it must not land here.
+# The two TYPE alternatives are CAPTURED (named `t1`/`t2`) so `tapland_check_types` can
+# read which basics the gate actually names. One pattern, not two: a second regex for
+# "which types" would be a parallel source of truth for the same question, and the two
+# would drift the moment a new templating appeared. Capturing changes nothing a
+# `.search()` truthiness test sees, which is all every other consumer does.
 _TAPLAND_CHECK_RE = re.compile(
     r"enters(?: the battlefield)? tapped unless you control "
     r"(?:(?:a|an|one or more|two or more|\d+) basic lands?"
-    r"|(?:a|an) (?:Plains|Island|Swamp|Mountain|Forest)"
-    r"(?: or (?:a|an) (?:Plains|Island|Swamp|Mountain|Forest))?)",
+    r"|(?:a|an) (?P<t1>Plains|Island|Swamp|Mountain|Forest)"
+    r"(?: or (?:a|an) (?P<t2>Plains|Island|Swamp|Mountain|Forest))?)",
     re.I)
+# Basic land type (== its card name) -> the colour it produces. Public because
+# `deck.suggest_lands` needs the same map to read a DECK's basics, and two copies of
+# this table is exactly the parallel-source-of-truth shape this project keeps paying
+# for. `wastes` is deliberately absent: it produces no colour, so it satisfies no
+# type-named checkland gate.
+BASIC_TYPE_COLORS = {"plains": "W", "island": "U", "swamp": "B",
+                     "mountain": "R", "forest": "G"}
+
+
+def tapland_check_types(text):
+    """Which BASIC TYPES a checkland's gate names, as WUBRG letters.
+
+    None when the land is not a checkland at all; an EMPTY frozenset for the generic
+    "unless you control a basic land" form, where any basic satisfies it; a non-empty
+    frozenset for the TYPE-named cycle ("unless you control a Plains or an Island").
+
+    The distinction is what `tapland_kind` needs to stop crediting a deck for a gate it
+    cannot meet. Before 2026-09-22 both spellings collapsed to `check` and the only thing
+    any consumer knew was the deck's TOTAL basic count, so Cori Mountain Monastery — gated
+    on a Plains or an Island — earned the untapped premium in a 23-MOUNTAIN mono-red deck,
+    where it always enters tapped. Measured over the roster at the fix: 81 (deck, on-colour
+    land) pairs across 54 of 114 decks were credited a premium for a land that can never
+    be untapped there."""
+    m = _TAPLAND_CHECK_RE.search(text or "")
+    if not m:
+        return None
+    return frozenset(BASIC_TYPE_COLORS[g.lower()]
+                     for g in (m.group("t1"), m.group("t2")) if g)
 # The kinds whose tapping is CONDITIONAL rather than certain. Consumers test membership
 # here instead of string-matching, so adding a kind cannot silently change what an
 # existing `in ("shock", "conditional")` test means.
 TAPLAND_CONDITIONAL_KINDS = ("shock", "fast", "check", "conditional")
 
 
-def tapland_kind(text):
+def tapland_kind(text, basic_types=None):
     """None | "shock" | "fast" | "check" | "conditional" | "unconditional" — how a land enters.
+
+    `basic_types` is the set of WUBRG letters the DECK's basic lands produce, and it is
+    what makes a TYPE-NAMED checkland answerable. Pass it and a gate the deck cannot meet
+    ("unless you control a Plains or an Island" in a deck with no Plains and no Island)
+    reports `unconditional`, which is the literal truth there — it always enters tapped —
+    so it neither earns the untapped premium nor prints `·check`. Omit it (the default)
+    and the function behaves exactly as before, which is what `wishlist --rank` and any
+    other deckless caller needs. The GENERIC "unless you control a basic land" form names
+    no type and is unaffected: `tapland_check_types` returns an empty set for it, and the
+    deck's basic COUNT is still the thing that decides it, one layer up in `_land_value`.
 
     ONE definition, three consumers: `deck.tapland_profile` (the tempo line `consistency`
     prints), `deck.suggest_lands`' `·tapped?` marker, and `wishlist._land_value`'s untapped
@@ -608,6 +651,9 @@ def tapland_kind(text):
     if _TAPLAND_FAST_RE.search(text):
         return "fast"
     if _TAPLAND_CHECK_RE.search(text):
+        need = tapland_check_types(text)
+        if need and basic_types is not None and not (need & set(basic_types)):
+            return "unconditional"
         return "check"
     return "conditional" if _TAPLAND_COND_RE.search(text) else "unconditional"
 

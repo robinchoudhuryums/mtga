@@ -1,9 +1,13 @@
 #: name: Starforge (aggressive Equipment)
 #: format: Standard
-#: tier: A — Boros (W/R) equipment aggro-midrange. Metrics floor is A on the aggro
-#: tier: plan and the letter MATCHES it as of the 2026-09-09 seven-swap pass — the
-#: tier: first time this deck's claim has not sat a band above its floor. Clock 3 on
-#: tier: top of interaction 6 clears the A floor's pressure bar of 7, and card
+#: tier: A — Boros (W/R) equipment aggro-midrange. Metrics floor B. It read A from
+#: tier: 2026-09-09 until 2026-09-22, on an INFERRED aggro plan whose clock 3
+#: tier: substituted for the interaction the resilience floor wants; `shape` measures
+#: tier: a SLOW curve here (avg MV 3.40, 25 lands, nine cards at MV 5+) and the
+#: tier: header is now an explicit `#: plan: midrange`, so the floor grades on
+#: tier: interaction 6 + card advantage 3 and reads B. The A letter therefore sits
+#: tier: ONE band above its floor, which the rubric allows and which this block has
+#: tier: to earn rather than assert. Card
 #: tier: advantage rose 1 -> 3 — Kíli, whose draw reads Equipment as well as Dwarves
 #: tier: against 13 of them here, then The Arkenstone, maindecked 2026-09-09 for the
 #: tier: unconditional end-step draw. Its Adventure half also tutors a legendary out
@@ -17,6 +21,7 @@
 #: tier: singleton-variance build. Aspirational WIP — a legal 60 with 14 craft
 #: tier: targets still to build; graded on the list's merits per the rubric.
 #: colors: WR
+#: plan: midrange
 #: archetype: Boros (W/R) equipment — a different flavor from the Orzhov Armory deck
 #: archetype: (38): aggressive white-red suit-up with a Thor / God-Squad top-end
 #: archetype: and a shared Cloud equipment package.

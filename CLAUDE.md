@@ -169,7 +169,7 @@ castability · curve · central-theme density), with the intangibles moving a de
   model can't see those), so it **under-rates by design.** An uncastable stray CAPS the floor at C
   rather than SETTING it, so a dead card can no longer RAISE a D-floor deck, and a card
   the deck's `#: uncastable-ok:` header declares intentional is not counted at all.
-- **A GOOD DECK CAN SIT AT A LOW FLOOR, AND THAT IS THE MODEL WORKING (investigated 2026-09-03, prompted by deck 78 playing above its B).** The floor reads TWO of the eleven terms `deck_quality_vector` produces; **21 of deck 78's 36 nonland cards contribute nothing to it** — 11 payoff/engine plus 10 with no role at all, Doubling Season / Starfield Vocalist / Katara among them, i.e. the entire trigger-doubling thesis. That is not deck-78-specific: the roster's MEDIAN deck has 71% of its nonland cards invisible to the floor (78 is 75%, rank 42 of 115). **A payoff-density term was simulated and DECLINED**: +1 per 4 payoff cards capped at +3 moved 16 decks, cut the C band 9→1 and pushed A to 62% — re-starting the saturation BS8-06 had just fixed — **and left deck 78 at B anyway.** So the answer to "does a well-playing deck mean the rubric is wrong" is no on both halves: the intended remedy is the human letter, which the rubric already lets sit ONE band above the floor. Three things say leave the table alone: the spread is healthy (A 71 / B 41 / C 0, that band now EMPTY — deck 73 was its last member — top band 63% against the 85% alarm), the record cannot arbitrate (**79 matches, and int+ca correlates with winning at r = −0.03**; nothing clears the ±0.22 noise band, so this is not evidence the floor is wrong, it is evidence the sample sees nothing), and deck 78's 5-2 is one win above the 54% pooled baseline at n=7 against a 20-match floor. **Re-derive the table when `tier_floor_spread` says so; do not re-derive it because a deck outperformed its letter.**
+- **A GOOD DECK CAN SIT AT A LOW FLOOR, AND THAT IS THE MODEL WORKING (investigated 2026-09-03, prompted by deck 78 playing above its B).** The floor reads TWO of the eleven terms `deck_quality_vector` produces; **21 of deck 78's 36 nonland cards contribute nothing to it** — 11 payoff/engine plus 10 with no role at all, Doubling Season / Starfield Vocalist / Katara among them, i.e. the entire trigger-doubling thesis. That is not deck-78-specific: the roster's MEDIAN deck has 71% of its nonland cards invisible to the floor (78 is 75%, rank 42 of 115). **A payoff-density term was simulated and DECLINED**: +1 per 4 payoff cards capped at +3 moved 16 decks, cut the C band 9→1 and pushed A to 62% — re-starting the saturation BS8-06 had just fixed — **and left deck 78 at B anyway.** So the answer to "does a well-playing deck mean the rubric is wrong" is no on both halves: the intended remedy is the human letter, which the rubric already lets sit ONE band above the floor. Three things say leave the table alone: the spread is healthy (A 67 / B 45 / C 0, that band now EMPTY — deck 73 was its last member — top band 60% against the 85% alarm; the 2026-09-22 plan-header pass moved four decks A→B and widened it further), the record cannot arbitrate (**79 matches, and int+ca correlates with winning at r = −0.03**; nothing clears the ±0.22 noise band, so this is not evidence the floor is wrong, it is evidence the sample sees nothing), and deck 78's 5-2 is one win above the 54% pooled baseline at n=7 against a 20-match floor. **Re-derive the table when `tier_floor_spread` says so; do not re-derive it because a deck outperformed its letter.**
 - **The floor is ARCHETYPE-aware** (#4): an aggro deck closes on a fast clock, not an
   interaction suite, so for an **aggro** plan a bounded `_clock_score` (low curve +
   cheap threats + reach, 0–7) SUBSTITUTES for the interaction the resilience floor
@@ -454,8 +454,8 @@ is protecting.
   **THE LIST IS A WINDOW AND THE RANKING IS THEME FIT, so read a card's ABSENCE as neither
   (BS10-05).** The footer counted the TRUNCATION, so it read "20 suggestion(s)" whether the
   ranking held 20 candidates or 958; it now prints "top N of M ranked candidate(s)"
-  (`--limit 0` for all). Why it matters is measured, not asserted: across **888 applied swaps
-  that recorded a rank for the card ADDED, the MEDIAN rank is 414** and only **11%** fell
+  (`--limit 0` for all). Why it matters is measured, not asserted: across **899 applied swaps
+  that recorded a rank for the card ADDED, the MEDIAN rank is 404** and only **11%** fell
   inside the default top 20. `deck.py feedback` reports that distribution. A card chosen for
   a mechanical interaction the tags do not encode ranks far down BY CONSTRUCTION — a
   different problem from the theme gate G-38 describes, and K-15 was its largest single
@@ -644,20 +644,21 @@ is protecting.
   `deck.deck_source_profile`, behind `mana`, `consistency`, `deck_color_sources`,
   `pip_depth_warning`, `suggest --lands` and the rationale audit's colour figures.**
   An extra-cost any-colour land IS counted and labelled; spend-only mana is NOT; a basic
-  fetch counts for each colour the deck runs a basic of — and the RECOMMENDER disagreed
-  with that count until 2026-09-04. **`free` MEANT FOUR THINGS until then**:
+  fetch counts for each colour the deck runs a basic of. **`free` MEANT FOUR THINGS
+  until 2026-09-04**:
   choose-ONCE-on-entry now sets `chosen` (counted for ACCESS, denied BREADTH);
-  transform-gated, GRANTED and extra-tap-cost clauses are excluded — ten lands had read as
-  five-colour sources. **`lib.tapland_kind` is the ONE tapping predicate** (the tempo
+  transform-gated, GRANTED and extra-tap-cost clauses are excluded. **`lib.tapland_kind` is the ONE tapping predicate** (the tempo
   line, `·tapped?`, `_land_value`'s premium), and its `conditional` bucket merged FOUR
   opposite behaviours until 2026-09-20: `fast` and `check` (a basic gate, floor 12) now earn
   the premium a shockland already had, while a SLOWLAND and a board state stay conservative —
-  false exactly when tempo matters. Test `TAPLAND_CONDITIONAL_KINDS`, not a string.
+  false exactly when tempo matters. **A TYPE-NAMED gate ('a Plains or an Island') is read
+  against the deck's OWN basics since 2026-09-23 — pass `basic_types`, or it reads `check`
+  for a deck that can never meet it (81 pairs, 54 of 114 decks).** Test
+  `TAPLAND_CONDITIONAL_KINDS`, not a string.
   **NONLAND sources are DISCLOSED since 2026-09-18, never counted**: `consistency` prints
   `ⓘ N NONLAND mana source(s) are NOT in the counts above` (**77 of 112 decks**). The
   exclusion is right — a rock is not a land drop — but its SILENCE was not, because
-  `suggest --ramp` recommends exactly what this count cannot see, and decks 23 and 41 had
-  each hand-written the workaround into their own `#: notes:` before the tool said it.
+  `suggest --ramp` recommends exactly what this count cannot see.
   `uncounted_mana_sources` runs `land_production` on a NONLAND's text, so the spend-only
   and granted-ability exclusions are the same ones and the two cannot drift. [G-35]
 - **`deck.py consistency <id>` is the PROBABILITY layer `mana` lacks** — keepable %,
@@ -675,11 +676,9 @@ is protecting.
 - **`deck.py suggest --lands <id>` is the manabase RECOMMENDER** — plain `suggest` is
   structurally blind to lands (it filters to cards sharing a synergy theme). Scored on
   FIXING value plus bounded synergy/scarce-colour nudges, and it applies the deck's
-  `#: format:`. Both 2026-08-09 fixes were about admitting or pricing the wrong card (81
-  back-face lands admitted; RESTRICTED mana now half-premium, `·restricted`). `·tapped?` is
+  `#: format:`. RESTRICTED mana is half-premium, `·restricted`. `·tapped?` is
   the human read for a condition this model cannot settle, and it has been WRONG twice:
-  for SHOCKLANDS until 2026-09-04 (a second copy of `_TAPLAND_COND_RE`; one predicate
-  now), and for FASTLANDS and met CHECKLANDS until 2026-09-20 — both earn the premium
+  for SHOCKLANDS until 2026-09-04, and for FASTLANDS and met CHECKLANDS until 2026-09-20 — both earn the premium
   now and print `·fast` / `·check` (G-35). **The G-35 breadth credit re-ranks the #1 pick
   in 22 of 115 decks** — fetches beat untapped duals on FIXING; `_LAND_BREADTH_PER_COLOR`
   is the dial. **A LAND ALREADY IN THE DECK IS A PICK (2026-09-20)** — it had inherited
@@ -691,7 +690,9 @@ is protecting.
   tied at 10.9 (a scry, nothing, a draw sink, a life point). `_land_utility` (creature /
   draw / scry / surveil / sink / ping / life; `sink~` = one creature type) is a SORT KEY
   after the score, never a score term — the smallest fixing step is 0.1, so any additive
-  nudge would re-rank lands on something other than fixing. Scores pinned unchanged. [G-37]
+  nudge would re-rank lands on something other than fixing. Scores pinned unchanged.
+  **`/tune-deck` runs this EVERY run since 2026-09-23** — it was gated on a scorecard mana
+  deficit, which is the one deck this list has nothing to say to. [G-37]
 - **`suggest --ramp / --interaction / --needs` are the NEEDS model** — the structural
   axes theme-`suggest` is blind to (fixing, acceleration, interaction). **If the scorecard
   says the deficit is interaction or mana, the fix comes from here, not from plain
@@ -933,9 +934,9 @@ is protecting.
   two primitives the ◊ list and the effective figure already use so the three cannot
   disagree (G-40). **DISCLOSURE, never pricing** — report-only for G-25/G-60's reason, and do
   not "finish" it by feeding `tier_band`. **`_UNPRICED_DISCLOSE_FLOOR = 3` is p75 of its own
-  axis, not 1**: across the **52 decks that print an effective figure** the unpriced count
-  runs p25 1 / p50 2 / p75 3 / p90 5 / max 11, so a floor of 1 fires on 80% (the G-07
-  saturation shape) against **16 of 52 (31%)** at 3. BOTH figures are registered in
+  axis, not 1**: across the **53 decks that print an effective figure** the unpriced count
+  runs p25 1 / p50 2 / p75 3 / p90 5 / max 11, so a floor of 1 fires on 83% (the G-07
+  saturation shape) against **16 of 53 (30%)** at 3. BOTH figures are registered in
   `figure_drift`, which is what caught the population move when impending joined. [G-85]
 - **BOARD PRESENCE IS AN AXIS AND NOTHING HERE MEASURED IT until 2026-09-18.** The tier
   floor reads interaction + card advantage, `cuts` reads theme fit and role credit, and

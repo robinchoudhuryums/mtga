@@ -1,7 +1,8 @@
 #: name: Black Sun (sac tokens for reach)
 #: format: Standard
-#: tier: A — Rakdos aggro-sacrifice; low curve + 10 interaction + reach — fast and consistent
+#: tier: A — Rakdos aggro-sacrifice; 8 interaction + reach — resilient and consistent
 #: colors: BR
+#: plan: midrange
 #: archetype: Rakdos (B/R) aggro-sacrifice — tokens + graveyard; the first constructed deck.
 #: notes: Rakdos (B/R) — first constructed deck.
 
@@ -13,50 +14,50 @@
 1 Hazoret, Godseeker (DFT) 133
 1 Raphael, Tough Turtle (TMT) 104
 2 Searslicer Goblin (FDN) 93
-1 Fire Nation Raider (TLA) 135
-1 Kav Landseeker (EOE) 138
+1 Doctor Doom (MSH) 95
+1 Slash, Reptile Rampager (TMT) 108
 1 Krenko, Mob Boss (FDN) 204
-1 Technodrome (TMT) 179
 1 Bot Bashing Time (TMT) 85
 1 Raven Eagle (TLA) 116
-1 Wick's Patrol (BLB) 121
+1 Gisa, the Hellraiser (OTJ) 89
 1 High-Society Hunter (FDN) 61
 1 Massacre Wurm (FDN) 714
 1 Namazu Trader (FIN) 107
 1 Red Hulk (MSH) 149
+1 Sawblade Skinripper (DSK) 231
+1 June, Bounty Hunter (TLA) 106
 
 # Spells
 1 Avengers: Under Siege (MSH) 205
 1 Blood Spatter Analysis (MKM) 189
 1 Hell to Pay (OTJ) 126
 2 Burst Lightning (FDN) 192
-1 Diamond Pick-Axe (LCI) 143
 1 Sporogenic Infection (DSK) 117
 1 Robot Domination (MSH) 111
 1 Dragon Fodder (FDN) 535
 1 Reckless Ransacking (ECL) 152
 1 Magic Pot (FIN) 263
-1 Tome Blast (SOS) 135
 1 Goblin Surprise (FDN) 200
-1 Prickly Pair (OTJ) 137
+1 Rat King, Verminister (TMT) 71
 1 Callous Inspector (TLA) 89
 1 Day of Black Sun (TLA) 94
+1 Rakdos Joins Up (OTJ) 225
 
 # Lands
 1 Fire Nation Palace (TLA) 268
-1 Bloodfell Caves (TDM) 250
-1 Blazemire Verge (DSK) 256
+2 Blazemire Verge (DSK) 256
 1 Razortrap Gorge (DSK) 267
-1 Temple of Malice (FDN) 701
-9 Swamp (MSH) 292
-10 Mountain (MSH) 294
+8 Swamp (MSH) 292
+2 Blood Crypt (ECL) 262
+6 Mountain (MSH) 294
+4 Dark Fortress (MSH) 264
 
 # Flex — STANDARD-LEGAL craftable aristocrats upgrades. See: deck.py flex 1
 # Tier 1 — Goblin/sacrifice payoffs (on-theme with Krenko + your Goblins):
-#~ -Kav Landseeker | +Krenko, Baron of Tin Street | CRAFT (R): a 2nd Krenko — Goblin/sacrifice/reanimator payoff that snowballs the go-wide plan
-#~ -Diamond Pick-Axe | +Redcap Gutter-Dweller | CRAFT (R): Goblin that eats tokens for counters + reach; a real sacrifice payoff
+#~ note: applied — Slash, Reptile Rampager in for Kav Landseeker.
+#~ note: applied — June, Bounty Hunter in for Diamond Pick-Axe.
 #~ -Reckless Ransacking | +Reckless Lackey | CRAFT (C): cheap Goblin — sac for card draw + Treasure
 # Tier 2 — removal / value:
-#~ -Tome Blast | +Disturbing Mirth | CRAFT (U): sac a creature → draw two, then it manifests a card — cheap BR sacrifice card advantage
-#~ -Prickly Pair | +Boneyard Desecrator | CRAFT (C): Mercenary sac payoff with counters + Treasure
-#~ note: all five are CRAFT targets (not owned) and Standard-legal. Cuts are the softest maindeck slots — swap to taste. Priority: Krenko, Baron of Tin Street.
+#~ note: applied — Sawblade Skinripper in for Tome Blast.
+#~ note: applied — Rat King, Verminister in for Prickly Pair.
+#~ note: three lines left after the 2026-09-22 tune. Reckless Lackey and Boneyard Desecrator are now OWNED (x1 each), not crafts — and both are OTJ, so they rotate ~2026, as does Krenko, Baron of Tin Street (MKM). Only the Krenko line is still a craft, and it is on a one-year clock.

@@ -755,3 +755,49 @@ class TestTaplandKindSplitsByWhenTheConditionIsMet:
             assert lib.tapland_kind(t) in lib.TAPLAND_CONDITIONAL_KINDS, t
         assert lib.tapland_kind(self.FLAT) not in lib.TAPLAND_CONDITIONAL_KINDS
 
+    # --- the deck-aware half (2026-09-22) ---------------------------------------
+    # A TYPE-NAMED gate collapsed to `check` for every deck, and the only thing any
+    # consumer knew was the deck's TOTAL basic count — so a 23-Mountain mono-red deck
+    # credited Cori Mountain Monastery ("a Plains or an Island") the untapped premium.
+
+    def test_a_named_gate_reports_which_basics_it_wants(self):
+        assert lib.tapland_check_types(self.CHECK_TYPE) == frozenset("WU")
+        assert lib.tapland_check_types(self.CHECK_ONE) == frozenset("U")
+
+    def test_a_generic_basic_gate_names_no_type_and_a_nonland_gate_is_not_a_check(self):
+        """The EMPTY set and None are different answers and must not be conflated: empty
+        means 'any basic satisfies it' (the deck's COUNT decides, one layer up), None
+        means this is not a checkland at all. `if not types` would merge them."""
+        assert lib.tapland_check_types(self.CHECK_BASIC) == frozenset()
+        assert lib.tapland_check_types(self.CHECK_TWO) == frozenset()
+        assert lib.tapland_check_types(self.LIFE) is None
+        assert lib.tapland_check_types(self.FLAT) is None
+
+    def test_a_named_gate_the_deck_cannot_meet_is_unconditional(self):
+        """The bug this fixes. Mono-red runs no Plains and no Island, so the land ALWAYS
+        enters tapped there — `unconditional` is the literal truth, and it keeps the land
+        out of TAPLAND_CONDITIONAL_KINDS so no consumer pays it the untapped premium."""
+        assert lib.tapland_kind(self.CHECK_TYPE, {"R"}) == "unconditional"
+        assert lib.tapland_kind(self.CHECK_TYPE, {"R"}) not in lib.TAPLAND_CONDITIONAL_KINDS
+
+    def test_a_named_gate_the_deck_CAN_meet_still_reads_check(self):
+        """The negative half, and the one that stops the fix over-applying: a deck holding
+        either named basic keeps the premium it has earned since 2026-09-20. Without this
+        assertion, downgrading every named gate to `unconditional` would also pass."""
+        assert lib.tapland_kind(self.CHECK_TYPE, {"W"}) == "check"
+        assert lib.tapland_kind(self.CHECK_TYPE, {"U", "R"}) == "check"
+        assert lib.tapland_kind(self.CHECK_ONE, {"U"}) == "check"
+
+    def test_a_generic_basic_gate_is_never_downgraded_by_basic_types(self):
+        """It names no type, so no set of basics can fail it — Wastes-only decks are the
+        `_land_value` basic-COUNT question, not this one."""
+        for bt in ({"R"}, {"W", "U"}, set()):
+            assert lib.tapland_kind(self.CHECK_BASIC, bt) == "check", bt
+
+    def test_omitting_basic_types_preserves_every_pre_existing_answer(self):
+        """`wishlist --rank` has no deck and must score exactly as it did. A default that
+        quietly downgraded would re-rank the whole wishlist with nothing reporting it."""
+        for t in (self.FAST, self.SLOW, self.CHECK_TYPE, self.CHECK_ONE, self.CHECK_BASIC,
+                  self.CHECK_TWO, self.LIFE, self.TYPE_GATE, self.SHOCK, self.FLAT):
+            assert lib.tapland_kind(t) == lib.tapland_kind(t, None), t
+
