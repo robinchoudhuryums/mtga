@@ -34,14 +34,25 @@
 #: notes: basics have no ETB and three of the four adds do (scry 1, gain 1 life x2) —
 #: notes: and the two landfall payoffs, Ka-Zar's Zabu token and Mole Man, trigger on
 #: notes: ANY land, so neither cares which.
+#: notes: 2026-09-23 (later): -Stature / +Ambitious Augmenter (Stature's "can't be
+#: notes: blocked if her power is 1 or less" was switched off by every counter the deck
+#: notes: adds), -Ka-Zar / +Applied Geometry, -Mole Man / +Mister Hyde. Both landfall
+#: notes: payoffs named above are now gone, so the deck has NO landfall payoff left.
+#: notes: Cuts ranked Ka-Zar 32/36 (a keep) — it cannot see that the five-drop slot was
+#: notes: the deck's most crowded, or that Doubling Season's second Zabu dies to the
+#: notes: legend rule. GLEN ELENDRA IS KEPT ON PURPOSE: its controller orders the
+#: notes: replacement effects, so with Doubling Season + Doc Samson it enters a 0/1 with
+#: notes: three -1/-1 counters, i.e. three counterspell uses. It only enters DEAD with
+#: notes: two doublers out (1x2x2 = 4 on a 3/4) — and Applied Geometry copying Doubling
+#: notes: Season IS a second doubler, so cast Glen before that copy exists, not after.
 
 # Nonland
 1 The Astonishing Ant-Man (MSH) 204
 1 Ant-Man, Colony Commander (MSH) 201
 1 Justice, Vance Astrovik (MSH) 61
-1 Stature, Size Shifter (MSH) 76
+1 Ambitious Augmenter (SOS) 140
 1 Wan Shi Tong, Librarian (TLA) 78
-1 Ka-Zar of the Savage Land (MSH) 174
+1 Applied Geometry (SOS) 172
 1 She-Hulk, Jade Defender (MSH) 188
 1 Doc Samson, Super Psychiatrist (MSH) 164
 1 The Ooze (TMT) 177
@@ -51,7 +62,7 @@
 1 Sab-Sunen, Luxa Embodied (DFT) 221
 1 Quandrix, the Proof (SOS) 218
 1 Teo, Spirited Glider (TLA) 74
-1 Mole Man, Moloid Master (MSH) 177
+1 Mister Hyde, Monster Within (MSH) 176
 1 Bite Down (FDN) 212
 1 Inspiring Call (TLE) 168
 1 Mutant Chain Reaction (TMT) 125

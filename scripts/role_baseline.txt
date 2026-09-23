@@ -20,6 +20,7 @@ Airbending Lesson
 Ajani, Caller of the Pride
 Akul the Unrepentant
 Aloe Alchemist
+Ambitious Augmenter
 Angel of Vitality
 Angelic Destiny
 Another Round
@@ -387,7 +388,6 @@ Starfield Shepherd
 Stargaze
 Stark Industries Executive
 Starry-Eyed Skyrider
-Stature, Size Shifter
 Stegron the Dinosaur Man
 Stickytongue Sentinel
 Stingerback Terror
