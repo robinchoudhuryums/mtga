@@ -1,6 +1,6 @@
 #: name: Quantum Realm
 #: format: Standard
-#: tier: A — Simic (GU) +1/+1 counters value midrange; 8 interaction + a scalable counters-payoff card-advantage engine (Wan Shi Tong + Venus + Mister Hyde + Knowledge Seeker) + on-theme interaction (Glen Elendra Guardian) on a clean 2-color base. Re-graded B→A: A-floor on corrected interaction, coherent 12-payoff engine. Residual cap: singleton-inconsistent. Card advantage reads 7 since the 2026-09-23 package (it read 1 when this was written, and still under-counts: Mister Hyde's counter-spending draw is unclassified). Protection went 1 -> 3 in the same package (Sab-Sunen's indestructible, Inspiring Call's instant-speed indestructible).
+#: tier: A — Simic (GU) +1/+1 counters value midrange; 8 interaction + a scalable counters-payoff card-advantage engine (Wan Shi Tong + Venus + Mister Hyde + Knowledge Seeker) + on-theme interaction (Glen Elendra Guardian) on a clean 2-color base. Re-graded B→A: A-floor on corrected interaction, coherent 12-payoff engine. Residual cap: singleton-inconsistent. Card advantage reads 6 after the 2026-09-23 packages (it read 1 when this was written, and still under-counts: Mister Hyde's counter-spending draw is unclassified). Protection went 1 -> 3 in the same package (Sab-Sunen's indestructible, Inspiring Call's instant-speed indestructible).
 #: colors: UG
 #: archetype: Simic (U/G) +1/+1 counters / value.
 #: notes: Simic (U/G) — +1/+1 counters / value.
@@ -53,6 +53,14 @@
 #: notes: VELOCIPEDE vs GLEN: its extra +1/+1 counter cancels Glen's -1/-1 (704.5q), so
 #: notes: with no other replacement effect out Glen enters a 3/4 with NO counter to
 #: notes: remove. Warden's endure never does this — choose the Spirit token instead.
+#: notes: 2026-09-23 (package 4): -Utrom Scientists / +Whirlwing Stormbrood, and
+#: notes: -Sewer-veillance Cam / +Thranduil's Company. This REVERSES the Utrom reasoning
+#: notes: above, knowingly: the deck now has NO tap-down (Utrom's stun and the Cam's
+#: notes: tap/untap were both of it), traded for instant-speed sorceries (Whirlwing lets
+#: notes: Troll Negotiations, Knockout Maneuver, Mutant Chain Reaction, Germination
+#: notes: Practicum and Applied Geometry be cast at flash speed) and a landfall counter
+#: notes: engine. Card advantage 7 -> 6 is the Cam's draw-two. Thranduil's extra land
+#: notes: drop needs another Elf; Fractal Tender is the only one.
 
 # Nonland
 1 The Astonishing Ant-Man (MSH) 204
@@ -77,11 +85,11 @@
 1 Glen Elendra Guardian (ECL) 51
 1 Ooze Spill (TMT) 48
 1 Doubling Season (FDN) 216
-1 Utrom Scientists (TMT) 56
+1 Whirlwing Stormbrood // Dynamic Soar (TDM) 234
 1 Ray Fillet, Man Ray (TMT) 49
 1 Knowledge Seeker (TLA) 60
 1 Mutagen Man, Living Ooze (TMT) 124
-1 Sewer-veillance Cam (TMT) 53
+1 Thranduil's Company (HOB) 168
 1 Railway Brawler (OTJ) 175
 1 Michelangelo, Weirdness to 11 (TMT) 121
 1 Germination Practicum (SOS) 149

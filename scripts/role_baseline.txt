@@ -447,7 +447,6 @@ United Front
 Unstable Experiment
 Unstoppable Plan
 Unstoppable Slasher
-Utrom Scientists
 Vastlands Scavenger // Bind to Life
 Venomized Cat
 Veteran Ice Climber
@@ -472,6 +471,7 @@ Weapons Vendor
 Web-Warriors
 Welcome to Sweettooth
 Whirlwing Stormbrood
+Whirlwing Stormbrood // Dynamic Soar
 White Tiger, Ava Ayala
 Wild Hypothesis
 Wisecrack
