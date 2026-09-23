@@ -2647,6 +2647,56 @@ gain it unconditionally. Consumers now test `TAPLAND_CONDITIONAL_KINDS` rather t
 string-matching, so adding a fifth kind cannot silently change what an existing
 `in ("shock", "conditional")` test meant.
 
+### 2026-09-23 — the `check` premium read the basic COUNT and never the basic TYPE
+
+The 2026-09-20 split above put `check` in `TAPLAND_CONDITIONAL_KINDS` and let a deck
+earn the untapped premium once it cleared `_CHECKLAND_BASIC_FLOOR = 12` basics. That is
+the right rule for the GENERIC spelling — "unless you control a basic land", where any
+basic satisfies the gate — and it was wrong for the TYPE-NAMED cycle, which
+`_TAPLAND_CHECK_RE` matches in the same alternation: "unless you control a Plains or an
+Island" names two basics, and a deck's TOTAL basic count says nothing about whether it
+runs either of them.
+
+Found from the other end, during a manabase pass on deck 2 (mono-red, 23 Mountain).
+`suggest 2 --lands` ranked **Cori Mountain Monastery** at #2, scored 7.2, labelled
+`·check` — tied with Fire Nation Palace, which genuinely is untapped there. Its gate is
+a Plains or an Island. The deck runs neither, and never will. It always enters tapped.
+
+Measured before the fix, over on-colour candidates only (a land whose production the deck
+cannot use is filtered out before scoring, so those pairs never mattered): **81 (deck,
+land) pairs across 54 of 114 decks** were credited the premium for a land that can never
+be untapped in them. Worked examples, all verified by hand against the deck's basics:
+deck 11 (Swamp only) was offered Great Arashin City, gated on a Forest or a Plains;
+deck 50 (Forest only) was offered Kishla Village, gated on an Island or a Swamp.
+
+The fix is in the predicate, not the caller, because G-35's whole point is that there is
+ONE of it. `lib.tapland_check_types(text)` reads which basics the gate names — `None` for
+a non-checkland, an EMPTY frozenset for the generic form, a non-empty one for the named
+cycle — off *named capture groups added to `_TAPLAND_CHECK_RE` itself* rather than a
+second regex, since a parallel pattern for "which types" is the drift shape this project
+keeps paying for. `tapland_kind(text, basic_types=None)` then returns `unconditional` for
+a named gate the deck cannot meet, which is the literal truth and keeps it out of
+`TAPLAND_CONDITIONAL_KINDS`, so no consumer has to special-case it. Omitting
+`basic_types` reproduces every pre-fix answer exactly — `wishlist --rank` has no deck and
+must not silently re-rank.
+
+Three callers opted in: `wishlist._land_value` (the premium), `deck.suggest_lands` (the
+premium AND the `·check` marker, which was making the same wrong claim to the reader),
+and `deck.tapland_profile` (the `consistency` tempo line, which walks a deck's own lands
+and so always knew the answer). `lib.BASIC_TYPE_COLORS` is the one basic-name→colour map
+both files read.
+
+Roster diff, measured by running `suggest_lands` over all 112 decks twice with the
+predicate monkeypatched back to its pre-fix form: **79 (deck, land) scores moved, 91
+`·check` rider labels corrected, 63 decks changed at least one row, and 6 decks' #1 pick
+changed** — 11/52/53/70 off Great Arashin City onto Realm of Koh, 50/69a off Kishla
+Village onto Ba Sing Se. Every one of the six moves off a land the deck cannot untap.
+
+The empty-frozenset-vs-`None` distinction is the part that is easy to get wrong and is
+pinned by its own test: `if not types` merges "any basic satisfies this" with "this is
+not a checkland", and merging them would hand the generic cycle to the type check, where
+`need & basic_types` is empty for every deck and every checkland reads unconditional.
+
 ## [G-36] `deck.py consistency <id>` is the PROBABILITY layer `mana` lacks
 
 **`deck.py consistency <id>` is the PROBABILITY layer `mana` lacks.** `mana` diagnoses
@@ -2832,6 +2882,34 @@ already in the deck so a duplicate cannot read as a new card. Roster diff: **58 
 decks' #1 land pick is now another copy of a land they run**, and every example is a
 singleton untapped dual (the Verge cycle, Floodfarm Verge, Bleachbone Verge…). A
 duplicate appears somewhere in the top five for **96 of 112**.
+
+### 2026-09-23 — the recommender was correct and `/tune-deck` was not running it
+
+The 2026-09-20 change above only pays off if the list gets OPENED, and the skill that
+tunes decks was gating it. `.claude/commands/tune-deck.md` step 5b grouped `--lands` with
+`--ramp` and `--interaction` under one rule — *"if the scorecard says the deficit is
+interaction or mana, the fix comes from here"* — which is right for the other two and
+became wrong for `--lands` the moment a land already in the deck became a pick. The
+recommender's commonest output is now advice for a manabase that is **not** deficient,
+i.e. precisely the deck the gate skips.
+
+Deck 2 is the worked case that found it. Mono-red, R 24, `consistency` reporting every
+coloured card casting on curve at ≥90% — no scorecard would ever have opened the list.
+Sitting in it: a second Fire Nation Palace, owned, adding a firebending mana sink to a
+deck with no other flood outlet, at **R 24 → 24 and keepable 84.4% → 84.4%**. Nothing a
+probability surface can show, because nothing on a probability surface moves.
+
+That is the general shape, and it is why the new step 5c tells you to read the TEMPO line
+rather than the colour counts. Swapping an unconditional tapland for an untapped dual of
+the same colours moves no source count and no cast-on-curve figure; the entire gain is
+the turn it stops costing, and `consistency` is blind to that by design (G-35 —
+report-only tempo context, never a score). Deck 1 took exactly that trade the same day:
+−Bloodfell Caves −Temple of Malice for second copies of Blazemire Verge and Blood Crypt,
+**B 17 → 17, R 16 → 16, every cast-on-curve figure identical**, taplands 5 → 4 with the
+two unconditional ones gone. The rotation cost is real and was reported rather than
+buried: Temple of Malice (FDN) was legal to ~2029 and the two adds run to ~2027 and
+~2028.
+
 
 The transferable half: *a filter copied between two surfaces carries the assumption that
 justified it.* Skip-what-you-run encodes "one copy is enough", which is true of a spell

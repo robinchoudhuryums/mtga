@@ -114,6 +114,26 @@ Read the actual card text — never judge by mana value or a single subtype:
    scorecard says the deficit is interaction or mana, the fix comes from here, not
    from plain `suggest`.** Board-dependent removal is FLAGGED `⚠ scales w/ <axis>`
    with the deck's strength on that axis — grade those from text.
+5c. **`python3 scripts/deck.py suggest <id> --lands` EVERY RUN — it is not gated on the
+   scorecard, and it used to be.** 5b's "if the scorecard says the deficit is … mana"
+   is the right rule for `--ramp` and `--interaction`, and it was the wrong one for
+   `--lands` from the moment G-37 landed (2026-09-20): a land ALREADY IN THE DECK
+   became a pick, so the recommender's commonest output is now "play a SECOND copy of
+   the untapped dual you already run" — advice aimed squarely at a manabase that is
+   NOT deficient, i.e. exactly the deck the gate skipped. **58 of 112 decks' #1 pick is
+   a duplicate of a land they already play.** Deck 2 is the worked case that found
+   this: mono-red, R 24, every card casting on curve at ≥90%, so no scorecard would
+   ever have opened this list — and a second Fire Nation Palace was sitting in it,
+   free, adding a firebending mana sink for zero change to any probability figure.
+   **Read the TEMPO line, not just the colour counts.** `consistency` prints
+   `ⓘ taplands: N of M nonbasic land(s) enter tapped`, split into unconditional and
+   conditional. An UNCONDITIONAL tapland swapped for an untapped dual of the same
+   colours moves no source count and no cast-on-curve figure — the whole gain is the
+   turn it stops costing, and every probability surface here is blind to it by design
+   (G-35). That is a real upgrade the scorecard cannot show you.
+   A `·check` rider is deck-aware since 2026-09-22 — it is only credited as untapped
+   when the deck actually runs a basic of the type the gate NAMES — so trust the
+   marker, but read `·tapped?` as the human call G-37 says it is.
 6. `python3 scripts/deck.py cuts <id>` — the ranked weakest-fit shortlist, with the
    full oracle text of the top candidates, a `⚠ context` flag on deck-dependent
    mechanics, `⚠interaction` on removal rows (with the deck's interaction count),

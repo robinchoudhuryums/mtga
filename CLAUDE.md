@@ -644,20 +644,21 @@ is protecting.
   `deck.deck_source_profile`, behind `mana`, `consistency`, `deck_color_sources`,
   `pip_depth_warning`, `suggest --lands` and the rationale audit's colour figures.**
   An extra-cost any-colour land IS counted and labelled; spend-only mana is NOT; a basic
-  fetch counts for each colour the deck runs a basic of — and the RECOMMENDER disagreed
-  with that count until 2026-09-04. **`free` MEANT FOUR THINGS until then**:
+  fetch counts for each colour the deck runs a basic of. **`free` MEANT FOUR THINGS
+  until 2026-09-04**:
   choose-ONCE-on-entry now sets `chosen` (counted for ACCESS, denied BREADTH);
-  transform-gated, GRANTED and extra-tap-cost clauses are excluded — ten lands had read as
-  five-colour sources. **`lib.tapland_kind` is the ONE tapping predicate** (the tempo
+  transform-gated, GRANTED and extra-tap-cost clauses are excluded. **`lib.tapland_kind` is the ONE tapping predicate** (the tempo
   line, `·tapped?`, `_land_value`'s premium), and its `conditional` bucket merged FOUR
   opposite behaviours until 2026-09-20: `fast` and `check` (a basic gate, floor 12) now earn
   the premium a shockland already had, while a SLOWLAND and a board state stay conservative —
-  false exactly when tempo matters. Test `TAPLAND_CONDITIONAL_KINDS`, not a string.
+  false exactly when tempo matters. **A TYPE-NAMED gate ('a Plains or an Island') is read
+  against the deck's OWN basics since 2026-09-23 — pass `basic_types`, or it reads `check`
+  for a deck that can never meet it (81 pairs, 54 of 114 decks).** Test
+  `TAPLAND_CONDITIONAL_KINDS`, not a string.
   **NONLAND sources are DISCLOSED since 2026-09-18, never counted**: `consistency` prints
   `ⓘ N NONLAND mana source(s) are NOT in the counts above` (**77 of 112 decks**). The
   exclusion is right — a rock is not a land drop — but its SILENCE was not, because
-  `suggest --ramp` recommends exactly what this count cannot see, and decks 23 and 41 had
-  each hand-written the workaround into their own `#: notes:` before the tool said it.
+  `suggest --ramp` recommends exactly what this count cannot see.
   `uncounted_mana_sources` runs `land_production` on a NONLAND's text, so the spend-only
   and granted-ability exclusions are the same ones and the two cannot drift. [G-35]
 - **`deck.py consistency <id>` is the PROBABILITY layer `mana` lacks** — keepable %,
@@ -675,11 +676,9 @@ is protecting.
 - **`deck.py suggest --lands <id>` is the manabase RECOMMENDER** — plain `suggest` is
   structurally blind to lands (it filters to cards sharing a synergy theme). Scored on
   FIXING value plus bounded synergy/scarce-colour nudges, and it applies the deck's
-  `#: format:`. Both 2026-08-09 fixes were about admitting or pricing the wrong card (81
-  back-face lands admitted; RESTRICTED mana now half-premium, `·restricted`). `·tapped?` is
+  `#: format:`. RESTRICTED mana is half-premium, `·restricted`. `·tapped?` is
   the human read for a condition this model cannot settle, and it has been WRONG twice:
-  for SHOCKLANDS until 2026-09-04 (a second copy of `_TAPLAND_COND_RE`; one predicate
-  now), and for FASTLANDS and met CHECKLANDS until 2026-09-20 — both earn the premium
+  for SHOCKLANDS until 2026-09-04, and for FASTLANDS and met CHECKLANDS until 2026-09-20 — both earn the premium
   now and print `·fast` / `·check` (G-35). **The G-35 breadth credit re-ranks the #1 pick
   in 22 of 115 decks** — fetches beat untapped duals on FIXING; `_LAND_BREADTH_PER_COLOR`
   is the dial. **A LAND ALREADY IN THE DECK IS A PICK (2026-09-20)** — it had inherited
@@ -691,7 +690,9 @@ is protecting.
   tied at 10.9 (a scry, nothing, a draw sink, a life point). `_land_utility` (creature /
   draw / scry / surveil / sink / ping / life; `sink~` = one creature type) is a SORT KEY
   after the score, never a score term — the smallest fixing step is 0.1, so any additive
-  nudge would re-rank lands on something other than fixing. Scores pinned unchanged. [G-37]
+  nudge would re-rank lands on something other than fixing. Scores pinned unchanged.
+  **`/tune-deck` runs this EVERY run since 2026-09-23** — it was gated on a scorecard mana
+  deficit, which is the one deck this list has nothing to say to. [G-37]
 - **`suggest --ramp / --interaction / --needs` are the NEEDS model** — the structural
   axes theme-`suggest` is blind to (fixing, acceleration, interaction). **If the scorecard
   says the deficit is interaction or mana, the fix comes from here, not from plain

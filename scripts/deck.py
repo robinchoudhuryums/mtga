@@ -64,7 +64,8 @@ from lib import (BASICS as lib_BASICS, DEFAULT_CSV, MATCHES_CSV, REPO_ROOT,
                  load_rows, eprint, card_colors, owned_qty,
                  card_distinctiveness, backup_path, card_power, front_face_cost,
                  mana_value, primary_type, atomic_write, alias_front,
-                 land_production, tapland_kind, TAPLAND_CONDITIONAL_KINDS)
+                 land_production, tapland_kind, TAPLAND_CONDITIONAL_KINDS,
+                 BASIC_TYPE_COLORS)
 from scryfall import post_collection, ScryfallUnavailable
 
 POOL_CSV = os.path.join(REPO_ROOT, "card-pool.csv")
@@ -5641,11 +5642,17 @@ def suggest_lands(d, unowned=False, owned=False, limit=20, fmt=None, any_format=
     copy_limit = 1 if cfmt in SINGLETON_FORMATS else 4
     in_deck = {}
     deck_basics = 0
+    # The basic COUNT decides a generic checkland; the basic TYPES decide a type-named
+    # one, and only the count was collected until 2026-09-22 (see `lib.tapland_kind`).
+    deck_basic_types = set()
     for q, n, _s, _c in cards:
         k = _ms_key(n)
         in_deck[k] = in_deck.get(k, 0) + q
         if (n or "").lower() in BASICS:
             deck_basics += q
+            _bc = BASIC_TYPE_COLORS.get((n or "").lower())
+            if _bc:
+                deck_basic_types.add(_bc)
 
     picks = []
     for r in pool:
@@ -5692,12 +5699,13 @@ def suggest_lands(d, unowned=False, owned=False, limit=20, fmt=None, any_format=
         # land") is really a tapland here — the one member of the conditional family whose
         # gate is a fact about the LIST rather than a board state (G-37). Passed, not
         # guessed: `wishlist --rank` has no deck and keeps the conservative score.
-        fix = wishlist._land_value(r, deck_colors, basics=deck_basics)
+        fix = wishlist._land_value(r, deck_colors, basics=deck_basics,
+                                   basic_types=deck_basic_types)
         tags = [t.strip() for t in (r.get("Synergies") or "").split(";") if t.strip()]
         syn = _land_synergy_bonus(tags, central_w)
         short = _land_shortfall_bonus(on_color, deficit)
         low = txt.lower()
-        tapped = tapland_kind(txt) is not None
+        tapped = tapland_kind(txt, deck_basic_types) is not None
         # CONDITIONAL vs FLAT tapping, shown separately. `_land_value` treats both as
         # tapped, which is the conservative read and is exactly right for a deck that
         # cannot meet the condition — but it is an UNDER-score for one that can (Great
@@ -5710,7 +5718,7 @@ def suggest_lands(d, unowned=False, owned=False, limit=20, fmt=None, any_format=
         # `tapland_profile`, and a substring test in the scoring path. All three missed
         # shocklands in different ways (2026-09-04) — the G-45 rule that functions
         # answering one question must have their filters diffed, found the hard way.
-        _tkind = tapland_kind(txt)
+        _tkind = tapland_kind(txt, deck_basic_types)
         cond_tapped = _tkind in TAPLAND_CONDITIONAL_KINDS
         # Four clauses lived under one `·tapped?` and behave oppositely in the early
         # turns, so the marker now NAMES which one (G-52: a verdict surface prints its
@@ -6726,6 +6734,12 @@ def tapland_profile(cards, carddata):
     exactly when you want it untapped. Never feeds a score (the G-25/G-60 rule:
     a new term silently re-grades)."""
     uncond, cond, total = [], [], 0
+    # This walk knows the deck, so a TYPE-NAMED checkland gate is answerable here and is
+    # answered (2026-09-22). Reporting a land as `conditional` when the deck runs none of
+    # the basics its gate names is the same defect the scoring surface had — `tapland_kind`
+    # decides it for both, so the two cannot disagree.
+    deck_basic_types = {c for q, n, _s, _c in cards
+                        if (c := BASIC_TYPE_COLORS.get((n or "").lower()))}
     for q, n, _s, _c in cards:
         row = carddata.get((n or "").lower()) or {}
         typ = row.get("type") or ""
@@ -6736,7 +6750,7 @@ def tapland_profile(cards, carddata):
             continue
         total += q
         text = row.get("text") or ""
-        kind = tapland_kind(text)
+        kind = tapland_kind(text, deck_basic_types)
         if kind in TAPLAND_CONDITIONAL_KINDS:
             cond.append((q, n))
         elif kind == "unconditional":

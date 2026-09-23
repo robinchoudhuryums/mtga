@@ -73,8 +73,8 @@
 1 Burst Lightning (FDN) 192
 
 # Lands
-1 Fire Nation Palace (TLA) 268
-23 Mountain (MSH) 294
+2 Fire Nation Palace (TLA) 268
+22 Mountain (MSH) 294
 
 # Flex — STANDARD-LEGAL craftable red upgrades (deepen the spellslinger / Hero plan). See: deck.py flex 2
 #~ -Child of the Volcano | +Charming Scoundrel | CRAFT (R): haste 2-drop, modal ETB (loot / Treasure / Wicked Role) — flexible aggressive value
