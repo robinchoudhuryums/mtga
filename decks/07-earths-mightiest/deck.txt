@@ -2,8 +2,8 @@
 #: format: Standard
 #: arena: 07 Earth’s Mightiest, e3a6c595-914d-4809-bd6d-630b3758ca89
 #: tier: A — Selesnya go-wide heroes (counters + tokens). Re-graded B -> A on 2026-09-12, when it sat
-#: tier: exactly AT its metrics floor. Live after the 2026-09-24 tunes: interaction 9, card advantage 6,
-#: tier: sum 15 against the 11 an A floor wants, protection 6, curve 3.53.
+#: tier: exactly AT its metrics floor. Live after the 2026-09-24 tunes: interaction 8, card advantage 5,
+#: tier: sum 13 against the 11 an A floor wants, protection 5, curve 3.72.
 #: tier: THE CAP THIS DECK CARRIED WAS NAMED, AND IT IS THE THING THAT WENT AWAY. The B rested on
 #: tier: "NO REPEATABLE REFUEL, so a go-wide board folded to a single sweeper", and the stated path to
 #: tier: A was "a repeatable draw engine that scales off the wide board, not more interaction". The
@@ -14,16 +14,20 @@
 #: tier: if-clause scored nothing) — so part of this deck's refuel was invisible rather than absent,
 #: tier: and the list did not change on the day the floor moved.
 #: tier: AGAINST THE RUBRIC's four A tests: A-floor yes; coherent engine yes (`engines` reports
-#: tier: counters and tokens both BALANCED, 3 and 11 payoffs respectively); tight curve — WEAKER
-#: tier: than it was: 3.53 printed since the 2026-09-24 big-spell package (Curious Colossus at 7, Web
-#: tier: of Life and Destiny at 8) landed. Enduring Vitality (every creature taps for any colour), Web's
-#: tier: own convoke and Kona, Rescue Beastie are there to pay for or cheat those, and the printed figure
-#: tier: prices none of them — but a curve argued from what the deck MIGHT pay is a weaker claim than
-#: tier: one it simply has, so this test is now the soft one;
+#: tier: counters and tokens both BALANCED, 3 and 12 payoffs respectively); tight curve — the SOFT
+#: tier: test now: 3.72 printed since the 2026-09-24 big-spell package (Curious Colossus and Glacier
+#: tier: Godmaw at 7, Web of Life and Destiny at 8), with ten cards at 5+. The owner's read is that the
+#: tier: deck pays less than that, and the pieces are real — Enduring Vitality (every creature taps for
+#: tier: any colour), Kona, Rescue Beastie (a free permanent), Doc Samson (taps for its power), Kirol
+#: tier: (copies Kona's or Web's trigger) and Web's own convoke — but the printed figure prices none of
+#: tier: them and they are FOUR cards: at least one is in hand by turn 4 in 53% of games (Vitality or
+#: tier: Kona alone, 31%). So the top end plays cheaper once the engine is up, and at printed cost in
+#: tier: roughly the other half of games;
 #: tier: at most one clear weakness — yes, and it is card advantage, which sat at the floor's own
 #: tier: minimum until Exemplar of Light (a draw whenever it gets +1/+1 counters), Viv Vision (a
 #: tier: draw on each attack at power 4+), Enduring Innocence, Mister Hyde and Finneas joined on
-#: tier: 2026-09-24: a margin now, not a comfortable one. A sweeper is
+#: tier: 2026-09-24; Beast, Erudite Aerialist left the same day for Serra Redeemer, so the count is 5
+#: tier: and the floor's sum clears by two: a margin, not a comfortable one. A sweeper is
 #: tier: still this deck's worst matchup.
 #: tier: WHY THIS ONE MOVED WHEN 35 OTHER SUB-FLOOR DECKS DID NOT, since the standard has to be the
 #: tier: same for all of them: those 35 argue LIVE caps their floors cannot see — deck 26b's
@@ -34,7 +38,7 @@
 #: tier: NOT S: that needs proven top-meta capability, and this deck has no recorded matches.
 #: tier: The spine is no longer thin: 11 central themes against a roster median of 14 (24 of 112
 #: tier: decks run fewer), up from 6 before the 2026-09-24 tunes, for a deck that still does two things —
-#: tier: counters and tokens, with 19 and 8 enablers — and now a mana engine under them.
+#: tier: counters and tokens, with 18 and 8 enablers — and now a mana engine under them.
 #: tier: Re-read after /log-matches.
 #: colors: GW
 #: archetype: Selesnya (G/W) Avengers heroes go-wide.
@@ -71,6 +75,14 @@
 #: notes: over Kinscaer Sentry, which also lets it drop Web of Life); -Leader's Talent/+Web of Life and Destiny
 #: notes: (convoke; each of your combats, a creature from the top five onto the battlefield; an enchantment,
 #: notes: so it survives creature wipes). Avg MV 3.22 -> 3.53, interaction 8 -> 9, protection 5 -> 6.
+#: notes: 2026-09-24 fifth pass (owner's picks): -Spider-Man, To the Rescue/+Kirol, Attentive First-Year
+#: notes: (tap two creatures: copy a triggered ability you control, once a turn — Byrke's doubling, Kona's
+#: notes: Survival, Web's creature, Serra's counters); -Beast, Erudite Aerialist/+Serra Redeemer (every
+#: notes: power-2-or-less creature that enters gets two +1/+1 counters, three with Doc Samson);
+#: notes: -Longstalk Brawl/+Glacier Godmaw (landfall: the team gets +1/+1, vigilance and haste; its Lander
+#: notes: token cracked at beginning of combat gives Web's fresh creature haste). Chosen over Invisible
+#: notes: Woman / The Thing as the cuts; interaction 9 -> 8, card advantage 6 -> 5, protection 6 -> 5,
+#: notes: avg MV 3.53 -> 3.72 — the owner reads the curve as cheaper than printed (see the tier block).
 
 # Nonland
 1 Agent Phil Coulson (MSH) 4
@@ -85,7 +97,7 @@
 1 Valorous Stance (FDN) 583
 1 Exemplar of Light (FDN) 733
 1 The Thing, Ben Grimm (MSH) 190
-1 Spider-Man, To the Rescue (MSH) 228
+1 Kirol, Attentive First-Year (ECL) 231
 1 Black Panther, Vanguard (MSH) 207
 1 Finneas, Ace Archer (BLB) 212
 1 Mikey & Leo, Chaos & Order (TMT) 158
@@ -94,7 +106,7 @@
 1 Battle Menu (FIN) 9
 1 Web of Life and Destiny (SPM) 122
 1 Spectacular Tactics (SPM) 15
-1 Longstalk Brawl (BLB) 182
+1 Glacier Godmaw (EOE) 188
 1 Silk, Web Weaver (SPM) 145
 1 Go Nuts! (MSH) 168
 1 Enduring Vitality (DSK) 176
@@ -108,7 +120,7 @@
 1 Invisible Woman, Sue Storm (MSH) 17
 1 Curious Colossus (ECL) 12
 1 Enduring Innocence (DSK) 6
-1 Beast, Erudite Aerialist (MSH) 206
+1 Serra Redeemer (BLB) 387
 
 # Lands
 6 Plains (MSH) 288
