@@ -28,6 +28,13 @@
 #: notes: reanimated Vastlands is prepared again); -Lys Alana Informant/+Seedship
 #: notes: Broodtender. The one-shot draw of Visions of Villainy is the card advantage
 #: notes: this pass gave up (5 -> 4), traded for Aatchik's board and Cloud's removal.
+#: notes: 2026-09-24 lands: -Forest/+Evolving Wilds and -Swamp/+Evolving Wilds (owned).
+#: notes: A basic fetch counts for both colours, so sources went B 14 -> 15 and G 15 -> 16,
+#: notes: and cards below 90% on curve 17 -> 14. The cost is tempo: the fetched basic
+#: notes: enters tapped, which `consistency` does not count as a tapland. The spent Wilds
+#: notes: stays in the yard as a land card for Sandman's return, a land type toward
+#: notes: delirium, and +1 to Cloud of Darkness's X. The rotation-safe untapped version
+#: notes: of this upgrade is Overgrown Tomb #2 + Deathcap Glade (two rare crafts).
 
 # Nonland
 1 Liliana, Dreadhorde General (FDN) 176
@@ -70,9 +77,10 @@
 # Lands (owned tidy: −Opulent Palace, a Sultai tapland whose blue is dead here → +Swamp)
 3 Jungle Hollow (M21) 247
 1 Wastewood Verge (DFT) 268
-9 Swamp (MSH) 292
+8 Swamp (MSH) 292
 1 Overgrown Tomb (ECL) 266
-10 Forest (MSH) 296
+9 Forest (MSH) 296
+2 Evolving Wilds (ECL) 264
 
 # Flex — STANDARD-LEGAL craftable upgrades that markedly improve the deck. See: deck.py flex 5
 #~ -Swamp | +Restless Cottage | CRAFT (R): a BG creature-LAND — fixing that's never a dead draw (flood insurance), a 4/4 threat, and graveyard exile on attack. Best bang for a Rare.
