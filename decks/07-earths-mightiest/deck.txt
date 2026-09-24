@@ -2,8 +2,8 @@
 #: format: Standard
 #: arena: 07 Earth’s Mightiest, e3a6c595-914d-4809-bd6d-630b3758ca89
 #: tier: A — Selesnya go-wide heroes (counters + tokens). Re-graded B -> A on 2026-09-12, when it sat
-#: tier: exactly AT its metrics floor. Live after the 2026-09-24 tunes: interaction 8, card advantage 5,
-#: tier: sum 13 against the 11 an A floor wants, protection 5, curve 3.14.
+#: tier: exactly AT its metrics floor. Live after the 2026-09-24 tunes: interaction 8, card advantage 6,
+#: tier: sum 14 against the 11 an A floor wants, protection 5, curve 3.22.
 #: tier: THE CAP THIS DECK CARRIED WAS NAMED, AND IT IS THE THING THAT WENT AWAY. The B rested on
 #: tier: "NO REPEATABLE REFUEL, so a go-wide board folded to a single sweeper", and the stated path to
 #: tier: A was "a repeatable draw engine that scales off the wide board, not more interaction". The
@@ -14,10 +14,11 @@
 #: tier: if-clause scored nothing) — so part of this deck's refuel was invisible rather than absent,
 #: tier: and the list did not change on the day the floor moved.
 #: tier: AGAINST THE RUBRIC's four A tests: A-floor yes; coherent engine yes (`engines` reports
-#: tier: counters and tokens both BALANCED, 4 and 9 payoffs respectively); tight curve yes at 3.14;
+#: tier: counters and tokens both BALANCED, 4 and 9 payoffs respectively); tight curve yes at 3.22;
 #: tier: at most one clear weakness — yes, and it is card advantage, which sat at the floor's own
-#: tier: minimum until Exemplar of Light (a draw whenever it gets +1/+1 counters) and Viv Vision (a
-#: tier: draw on each attack at power 4+) joined on 2026-09-24: a margin now, not a comfortable one. A sweeper is
+#: tier: minimum until Exemplar of Light (a draw whenever it gets +1/+1 counters), Viv Vision (a
+#: tier: draw on each attack at power 4+), Enduring Innocence, Mister Hyde and Finneas joined on
+#: tier: 2026-09-24: a margin now, not a comfortable one. A sweeper is
 #: tier: still this deck's worst matchup.
 #: tier: WHY THIS ONE MOVED WHEN 35 OTHER SUB-FLOOR DECKS DID NOT, since the standard has to be the
 #: tier: same for all of them: those 35 argue LIVE caps their floors cannot see — deck 26b's
@@ -47,6 +48,13 @@
 #: notes: Vision, whose draw needs a noncreature spell and only 14 of 36 spells are); -Powerful
 #: notes: Broker/+Captain America, Super-Soldier (you and other Heroes have hexproof while his shield
 #: notes: holds).
+#: notes: 2026-09-24 third pass: -Friendly Neighborhood/+Silk, Web Weaver (a 1/1 token per creature
+#: notes: spell, plus a team pump sink); -Primeval Bounty/+Byrke, Long Ear of the Law (doubles the +1/+1
+#: notes: counters on each countered attacker); -Wildwood Scourge/+Enduring Innocence (draws once a turn
+#: notes: when small creatures or tokens enter, and it returns as an enchantment when it dies);
+#: notes: -White Tiger/+Mister Hyde (grows itself each upkeep, or turns a spare counter into a card);
+#: notes: -Colleen Wing/+Finneas, Ace Archer (counters every token when it attacks, and draws at total power 10+);
+#: notes: -1 Forest/+Evendo, Waking Haven (enters tapped; when stationed to 12+, {G},{T} adds G for each creature).
 
 # Nonland
 1 Agent Phil Coulson (MSH) 4
@@ -55,7 +63,7 @@
 1 Captain America, Wings of Freedom (MSH) 10
 1 Viv Vision, Teen Synthezoid (MSH) 256
 1 Avengers Assemble! (MSH) 6
-1 White Tiger, Ava Ayala (MSH) 196
+1 Mister Hyde, Monster Within (MSH) 176
 1 The Unbeatable Squirrel Girl (MSH) 193
 1 Elspeth, Storm Slayer (TDM) 11
 1 Valorous Stance (FDN) 583
@@ -63,7 +71,7 @@
 1 The Thing, Ben Grimm (MSH) 190
 1 Spider-Man, To the Rescue (MSH) 228
 1 Black Panther, Vanguard (MSH) 207
-1 Colleen Wing, Street Samurai (MSH) 13
+1 Finneas, Ace Archer (BLB) 212
 1 Mikey & Leo, Chaos & Order (TMT) 158
 1 Political Triumph (MSH) 31
 1 Requisition Raid (SOA) 10
@@ -71,19 +79,19 @@
 1 Leader's Talent (TMT) 13
 1 Spectacular Tactics (SPM) 15
 1 Longstalk Brawl (BLB) 182
-1 Friendly Neighborhood (SPM) 8
+1 Silk, Web Weaver (SPM) 145
 1 Go Nuts! (MSH) 168
 1 Anafenza, Unyielding Lineage (TDM) 2
 1 Doc Samson, Super Psychiatrist (MSH) 164
 1 Captain America, Super-Soldier (MSH) 9
 1 Veteran Beastrider (DFT) 226
 1 Haliya, Ascendant Cadet (EOE) 218
-1 Primeval Bounty (FDN) 644
+1 Byrke, Long Ear of the Law (BLB) 380
 1 Michelangelo, Mutant BFF (TMT) 120
 1 Kapow! (SPM) 103
 1 Invisible Woman, Sue Storm (MSH) 17
 1 Flopsie, Bumi's Buddy (TLA) 179
-1 Wildwood Scourge (FDN) 236
+1 Enduring Innocence (DSK) 6
 1 Beast, Erudite Aerialist (MSH) 206
 
 # Lands
@@ -91,7 +99,8 @@
 2 Abandoned Air Temple (TLA) 263
 4 Gathering Place (MSH) 266
 1 Hushwood Verge (DSK) 261
-9 Forest (MSH) 296
+8 Forest (MSH) 296
+1 Evendo, Waking Haven (EOE) 253
 2 Evolving Wilds (ECL) 264
 
 # Flex — STANDARD-LEGAL craft targets, weighted so you don't waste wildcards. See: deck.py flex 7
