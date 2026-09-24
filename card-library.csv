@@ -2967,7 +2967,7 @@ Avengers Tower,Land,"{T}: Add {C}.
 {4}, {T}: Look at the top three cards of your library. You may reveal a Hero card from among them and put it into your hand. Put the rest on the bottom of your library in any order.",Colorless,mana; selection,MSH,260,4
 Baxter Building,Land,"{T}: Add {C}.
 {4}, {T}: Add four mana in any combination of colors.
-{4}, {T}: Draw a card. Activate only if you control a creature with toughness 4 or greater.",Colorless,card draw; mana,MSH,261,2
+{4}, {T}: Draw a card. Activate only if you control a creature with toughness 4 or greater.",Colorless,card draw; mana,MSH,261,4
 Zuko's Exile,Instant — Lesson,"Exile target artifact, creature, or enchantment. Its controller creates a Clue token. (It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",Colorless,Lesson; card draw; sacrifice; tokens; removal; clue,TLA,3,1
 Rancorous Archaic,Creature — Avatar,"Trample, reach
 Converge — This creature enters with a +1/+1 counter on it for each color of mana spent to cast it.",Colorless,Avatar; counters; reach; defense; converge; multicolor; trample; evasion,SOS,2,2
