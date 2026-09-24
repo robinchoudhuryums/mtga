@@ -2,8 +2,8 @@
 #: format: Standard
 #: arena: 07 Earth’s Mightiest, e3a6c595-914d-4809-bd6d-630b3758ca89
 #: tier: A — Selesnya go-wide heroes (counters + tokens). Re-graded B -> A on 2026-09-12, when it sat
-#: tier: exactly AT its metrics floor. Live after the 2026-09-24 tunes: interaction 8, card advantage 6,
-#: tier: sum 14 against the 11 an A floor wants, protection 5, curve 3.22.
+#: tier: exactly AT its metrics floor. Live after the 2026-09-24 tunes: interaction 9, card advantage 6,
+#: tier: sum 15 against the 11 an A floor wants, protection 6, curve 3.53.
 #: tier: THE CAP THIS DECK CARRIED WAS NAMED, AND IT IS THE THING THAT WENT AWAY. The B rested on
 #: tier: "NO REPEATABLE REFUEL, so a go-wide board folded to a single sweeper", and the stated path to
 #: tier: A was "a repeatable draw engine that scales off the wide board, not more interaction". The
@@ -14,7 +14,12 @@
 #: tier: if-clause scored nothing) — so part of this deck's refuel was invisible rather than absent,
 #: tier: and the list did not change on the day the floor moved.
 #: tier: AGAINST THE RUBRIC's four A tests: A-floor yes; coherent engine yes (`engines` reports
-#: tier: counters and tokens both BALANCED, 4 and 9 payoffs respectively); tight curve yes at 3.22;
+#: tier: counters and tokens both BALANCED, 3 and 11 payoffs respectively); tight curve — WEAKER
+#: tier: than it was: 3.53 printed since the 2026-09-24 big-spell package (Curious Colossus at 7, Web
+#: tier: of Life and Destiny at 8) landed. Enduring Vitality (every creature taps for any colour), Web's
+#: tier: own convoke and Kona, Rescue Beastie are there to pay for or cheat those, and the printed figure
+#: tier: prices none of them — but a curve argued from what the deck MIGHT pay is a weaker claim than
+#: tier: one it simply has, so this test is now the soft one;
 #: tier: at most one clear weakness — yes, and it is card advantage, which sat at the floor's own
 #: tier: minimum until Exemplar of Light (a draw whenever it gets +1/+1 counters), Viv Vision (a
 #: tier: draw on each attack at power 4+), Enduring Innocence, Mister Hyde and Finneas joined on
@@ -27,9 +32,9 @@
 #: tier: and asked to be re-graded. Being UNPLAYED is not a weakness of the LIST and is not what
 #: tier: holds a letter down here; it is why the deck is not S.
 #: tier: NOT S: that needs proven top-meta capability, and this deck has no recorded matches.
-#: tier: The thin spine is worth watching but is not the cap it was read as: 6 central themes is
-#: tier: 2nd-lowest on a 112-deck roster (median 14), which for a deck that does exactly two things —
-#: tier: counters and tokens, with 24 and 11 enablers — reads as FOCUS rather than as thinness.
+#: tier: The spine is no longer thin: 11 central themes against a roster median of 14 (24 of 112
+#: tier: decks run fewer), up from 6 before the 2026-09-24 tunes, for a deck that still does two things —
+#: tier: counters and tokens, with 19 and 8 enablers — and now a mana engine under them.
 #: tier: Re-read after /log-matches.
 #: colors: GW
 #: archetype: Selesnya (G/W) Avengers heroes go-wide.
@@ -55,6 +60,17 @@
 #: notes: -White Tiger/+Mister Hyde (grows itself each upkeep, or turns a spare counter into a card);
 #: notes: -Colleen Wing/+Finneas, Ace Archer (counters every token when it attacks, and draws at total power 10+);
 #: notes: -1 Forest/+Evendo, Waking Haven (enters tapped; when stationed to 12+, {G},{T} adds G for each creature).
+#: notes: 2026-09-24 fourth pass, the big-spell package: -Flopsie/+Curious Colossus (on entry every creature
+#: notes: the opponent controls loses all abilities and becomes a 1/1 — no end-of-turn clause, so it lasts);
+#: notes: -Anafenza/+Enduring Vitality (creatures tap for any colour; returns as an enchantment when it dies;
+#: notes: Veteran Beastrider was KEPT over Anafenza because its end-step untap turns tapped mana creatures back
+#: notes: into blockers); -Kapow!/+Leatherhead, Swamp Stalker (enters with a hexproof counter, two with Doc
+#: notes: Samson; removes any counter on combat damage to destroy an artifact or enchantment);
+#: notes: -Political Triumph/+Kona, Rescue Beastie (puts a permanent from hand onto the battlefield in the
+#: notes: second main phase if Kona is tapped — attacking OR tapped for Vitality mana; the owner picked Kona
+#: notes: over Kinscaer Sentry, which also lets it drop Web of Life); -Leader's Talent/+Web of Life and Destiny
+#: notes: (convoke; each of your combats, a creature from the top five onto the battlefield; an enchantment,
+#: notes: so it survives creature wipes). Avg MV 3.22 -> 3.53, interaction 8 -> 9, protection 5 -> 6.
 
 # Nonland
 1 Agent Phil Coulson (MSH) 4
@@ -73,24 +89,24 @@
 1 Black Panther, Vanguard (MSH) 207
 1 Finneas, Ace Archer (BLB) 212
 1 Mikey & Leo, Chaos & Order (TMT) 158
-1 Political Triumph (MSH) 31
+1 Kona, Rescue Beastie (DSK) 187
 1 Requisition Raid (SOA) 10
 1 Battle Menu (FIN) 9
-1 Leader's Talent (TMT) 13
+1 Web of Life and Destiny (SPM) 122
 1 Spectacular Tactics (SPM) 15
 1 Longstalk Brawl (BLB) 182
 1 Silk, Web Weaver (SPM) 145
 1 Go Nuts! (MSH) 168
-1 Anafenza, Unyielding Lineage (TDM) 2
+1 Enduring Vitality (DSK) 176
 1 Doc Samson, Super Psychiatrist (MSH) 164
 1 Captain America, Super-Soldier (MSH) 9
 1 Veteran Beastrider (DFT) 226
 1 Haliya, Ascendant Cadet (EOE) 218
 1 Byrke, Long Ear of the Law (BLB) 380
 1 Michelangelo, Mutant BFF (TMT) 120
-1 Kapow! (SPM) 103
+1 Leatherhead, Swamp Stalker (TMT) 117
 1 Invisible Woman, Sue Storm (MSH) 17
-1 Flopsie, Bumi's Buddy (TLA) 179
+1 Curious Colossus (ECL) 12
 1 Enduring Innocence (DSK) 6
 1 Beast, Erudite Aerialist (MSH) 206
 
@@ -104,6 +120,6 @@
 2 Evolving Wilds (ECL) 264
 
 # Flex — STANDARD-LEGAL craft targets, weighted so you don't waste wildcards. See: deck.py flex 7
-#~ -Requisition Raid | +Kutzil's Flanker | CRAFT (R) ★ MARKED UPGRADE: flash — big counters OR removal; the flexible interaction the deck genuinely lacks
+#~ note: RETIRED 2026-09-24 — the Kutzil's Flanker line proposed cutting Requisition Raid for a card that rotates in 2026; the deck's interaction is 9 now and Requisition Raid is one of only two artifact/enchantment answers the deck runs (Leatherhead is the other).
 #~ note: RETIRED — the Silver Sable line proposed cutting Foggy Swamp Vinebender, which left the deck rounds ago, and its own text already read "MINOR: lateral; don't spend a wildcard here". A suggestion that argues against itself is not worth retargeting.
 #~ note: card advantage already handled — Mikey & Leo (drew off counters) is now maindeck over Graduation Day. Sharp-Eyed Rookie would be a redundant sidegrade; skip it.
