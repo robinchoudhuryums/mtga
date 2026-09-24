@@ -5990,3 +5990,5 @@ Ordeal of Nylea,Enchantment — Aura,"Enchant creature
 Whenever enchanted creature attacks, put a +1/+1 counter on it. Then if it has three or more +1/+1 counters on it, sacrifice this Aura.
 When you sacrifice this Aura, search your library for up to two basic land cards, put them onto the battlefield tapped, then shuffle.",G,Aura; counters; sacrifice; aura; enchant,FDN,641,1
 Midnight Reaper,Creature — Zombie Knight,"Whenever a nontoken creature you control dies, this creature deals 1 damage to you and you draw a card.",B,Zombie; Knight; card draw; burn,FDN,609,1
+Overlord of the Balemurk,Enchantment Creature — Avatar Horror,"Impending 5—{1}{B} (If you cast this spell for its impending cost, it enters with five time counters and isn't a creature until the last is removed. At the beginning of your end step, remove a time counter from it.)
+Whenever this permanent enters or attacks, mill four cards, then you may return a non-Avatar creature card or a planeswalker card from your graveyard to your hand.",B,Avatar; Horror; graveyard; mill; impending; tempo; cost-reduction,DSK,113,1
