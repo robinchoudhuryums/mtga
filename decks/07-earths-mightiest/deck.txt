@@ -2,8 +2,8 @@
 #: format: Standard
 #: arena: 07 Earth’s Mightiest, e3a6c595-914d-4809-bd6d-630b3758ca89
 #: tier: A — Selesnya go-wide heroes (counters + tokens). Re-graded B -> A on 2026-09-12, when it sat
-#: tier: exactly AT its metrics floor. Live after the 2026-09-24 tune: interaction 8, card advantage 4,
-#: tier: sum 12 against the 11 an A floor wants, protection 4, curve 3.06.
+#: tier: exactly AT its metrics floor. Live after the 2026-09-24 tunes: interaction 8, card advantage 5,
+#: tier: sum 13 against the 11 an A floor wants, protection 5, curve 3.14.
 #: tier: THE CAP THIS DECK CARRIED WAS NAMED, AND IT IS THE THING THAT WENT AWAY. The B rested on
 #: tier: "NO REPEATABLE REFUEL, so a go-wide board folded to a single sweeper", and the stated path to
 #: tier: A was "a repeatable draw engine that scales off the wide board, not more interaction". The
@@ -14,10 +14,10 @@
 #: tier: if-clause scored nothing) — so part of this deck's refuel was invisible rather than absent,
 #: tier: and the list did not change on the day the floor moved.
 #: tier: AGAINST THE RUBRIC's four A tests: A-floor yes; coherent engine yes (`engines` reports
-#: tier: counters and tokens both BALANCED, 4 and 9 payoffs respectively); tight curve yes at 3.06;
+#: tier: counters and tokens both BALANCED, 4 and 9 payoffs respectively); tight curve yes at 3.14;
 #: tier: at most one clear weakness — yes, and it is card advantage, which sat at the floor's own
-#: tier: minimum until Exemplar of Light (a draw whenever it gets +1/+1 counters) added a fourth
-#: tier: repeatable source on 2026-09-24: a thin margin rather than a comfortable one. A sweeper is
+#: tier: minimum until Exemplar of Light (a draw whenever it gets +1/+1 counters) and Viv Vision (a
+#: tier: draw on each attack at power 4+) joined on 2026-09-24: a margin now, not a comfortable one. A sweeper is
 #: tier: still this deck's worst matchup.
 #: tier: WHY THIS ONE MOVED WHEN 35 OTHER SUB-FLOOR DECKS DID NOT, since the standard has to be the
 #: tier: same for all of them: those 35 argue LIVE caps their floors cannot see — deck 26b's
@@ -41,13 +41,19 @@
 #: notes: is the fetched basic entering tapped); -2 Plains/+2 Abandoned Air Temple (same W source,
 #: notes: untapped beside any basic, plus a {3}{W} sink that counters every creature — flood insurance
 #: notes: that triggers Mikey & Leo and Exemplar). Temple Garden x2 is the untapped craft alternative.
+#: notes: 2026-09-24 second pass: -Knight of Wundagore/+Doc Samson (every counter placed on your
+#: notes: permanents gets one more: +1/+1, loyalty on Elspeth, lore on Origin, plan on Political
+#: notes: Triumph, Cap's shield); -Hulkling/+Viv Vision (draws on attack at power 4+; chosen over The
+#: notes: Vision, whose draw needs a noncreature spell and only 14 of 36 spells are); -Powerful
+#: notes: Broker/+Captain America, Super-Soldier (you and other Heroes have hexproof while his shield
+#: notes: holds).
 
 # Nonland
 1 Agent Phil Coulson (MSH) 4
 1 Jennifer Walters (MSH) 18
 1 Origin of the Avengers (MSH) 28
 1 Captain America, Wings of Freedom (MSH) 10
-1 Hulkling, Burgeoning Bruiser (MSH) 173
+1 Viv Vision, Teen Synthezoid (MSH) 256
 1 Avengers Assemble! (MSH) 6
 1 White Tiger, Ava Ayala (MSH) 196
 1 The Unbeatable Squirrel Girl (MSH) 193
@@ -68,8 +74,8 @@
 1 Friendly Neighborhood (SPM) 8
 1 Go Nuts! (MSH) 168
 1 Anafenza, Unyielding Lineage (TDM) 2
-1 Knight of Wundagore (MSH) 175
-1 Powerful Broker (MSH) 179
+1 Doc Samson, Super Psychiatrist (MSH) 164
+1 Captain America, Super-Soldier (MSH) 9
 1 Veteran Beastrider (DFT) 226
 1 Haliya, Ascendant Cadet (EOE) 218
 1 Primeval Bounty (FDN) 644
