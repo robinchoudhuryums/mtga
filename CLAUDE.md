@@ -454,8 +454,8 @@ is protecting.
   **THE LIST IS A WINDOW AND THE RANKING IS THEME FIT, so read a card's ABSENCE as neither
   (BS10-05).** The footer counted the TRUNCATION, so it read "20 suggestion(s)" whether the
   ranking held 20 candidates or 958; it now prints "top N of M ranked candidate(s)"
-  (`--limit 0` for all). Why it matters is measured, not asserted: across **916 applied swaps
-  that recorded a rank for the card ADDED, the MEDIAN rank is 385** and only **11%** fell
+  (`--limit 0` for all). Why it matters is measured, not asserted: across **921 applied swaps
+  that recorded a rank for the card ADDED, the MEDIAN rank is 382** and only **11%** fell
   inside the default top 20. `deck.py feedback` reports that distribution. A card chosen for
   a mechanical interaction the tags do not encode ranks far down BY CONSTRUCTION — a
   different problem from the theme gate G-38 describes, and K-15 was its largest single
@@ -934,9 +934,9 @@ is protecting.
   two primitives the ◊ list and the effective figure already use so the three cannot
   disagree (G-40). **DISCLOSURE, never pricing** — report-only for G-25/G-60's reason, and do
   not "finish" it by feeding `tier_band`. **`_UNPRICED_DISCLOSE_FLOOR = 3` is p75 of its own
-  axis, not 1**: across the **54 decks that print an effective figure** the unpriced count
-  runs p25 1 / p50 2 / p75 3 / p90 5 / max 11, so a floor of 1 fires on 83% (the G-07
-  saturation shape) against **16 of 54 (30%)** at 3. BOTH figures are registered in
+  axis, not 1**: across the **55 decks that print an effective figure** the unpriced count
+  runs p25 1 / p50 2 / p75 3 / p90 5 / max 11, so a floor of 1 fires on 84% (the G-07
+  saturation shape) against **16 of 55 (29%)** at 3. BOTH figures are registered in
   `figure_drift`, which is what caught the population move when impending joined. [G-85]
 - **BOARD PRESENCE IS AN AXIS AND NOTHING HERE MEASURED IT until 2026-09-18.** The tier
   floor reads interaction + card advantage, `cuts` reads theme fit and role credit, and
@@ -1065,7 +1065,7 @@ is protecting.
 - **A CARD THAT GRANTS A KEYWORD IS A CARD ABOUT THAT KEYWORD, and the tagger only read
   what a card HAS.** Keyword tags came from Scryfall's `keywords` field, so a lord handing
   the team deathtouch carried no `deathtouch` tag and looked like a card with nothing to do
-  with the deck built on it. **1,942 pool cards grant one of the twelve evergreens**, and
+  with the deck built on it. **1,912 pool cards grant one of the twelve evergreens**, and
   for FOUR the granted case is the MAJORITY, so the tag tracked the exception (haste has since crossed to a FIFTH at 366 grant vs 359 have — a 7-card margin that can flip on any pool rebuild, so do not harden the count). `tags_for`
   reads grants from TEXT now (`granted_keywords`, reminder text stripped, opponent- and
   loss-scoped clauses excluded). Tags feed `cuts` / `suggest` / centrality (deck 31's Venom
@@ -1292,7 +1292,7 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   cue is still invisible — grade those from full text. The type-naming half is CLOSED
   (2026-08-20): a card whose text names a CARD TYPE it interacts with but never is —
   Gilgamesh digging for "Equipment cards" — now carries that tag via
-  `_TYPE_MATTERS_RES`, 277 tags across 193 pool cards, nothing lost. A "what does this
+  `_TYPE_MATTERS_RES`, 270 tags across 189 pool cards, nothing lost. A "what does this
   card look for" read still beats the tags for the fixer half.** [K-03]
 - **Never gate a predicate on a derived TAG — it inherits every hole in the tagger.**
   `_is_color_fixer` did, so the roster's two best fixers (keying off unindexed Vivid) read
@@ -1304,7 +1304,7 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   rule one layer over and the costliest instance:** `cuts`' fit term is gated on derived
   tags, so when the tagger read only the keywords a card HAS, a deck-31 engine piece
   scored fit 17 and was offered as a cut. The user caught it; no gate could. [K-04]
-- **`pay life` is a tagged theme** (357 pool cards, 2.2% — specific enough to build
+- **`pay life` is a tagged theme** (351 pool cards, 2.2% — specific enough to build
   around): YOU losing life as a cost, plus the cards that only CARE. "Each opponent loses
   2 life" is a DRAIN effect — the opposite card, deliberately not tagged. [K-05]
 - **CHECK `MECHANIC_RULES` FOR THE NAME BEFORE ADDING A THEME.** `heist` (cast a card
@@ -1313,7 +1313,7 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   and destroyed the specificity that makes an idf theme useful, **with `check_all` green
   throughout, because a tag collision breaks no invariant.** [K-06]
 - **`exile cast` is the SIBLING of `heist` and stays separate** — casting your OWN exiled
-  cards (impulse / Warp / Plot / Foretell / Adventure, 291 pool cards). The two only look
+  cards (impulse / Warp / Plot / Foretell / Adventure, 282 pool cards). The two only look
   alike; a deck built on one gets nothing from the other. [K-07]
 - **`keyword_frequencies()` counts DISTINCT CARDS, not rows** — the mana file keys a DFC
   under its full `Front // Back` name, so a two-faced card could contribute two rows and
@@ -1340,7 +1340,7 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   all theme-fit driven. **NOT an `_TYPE_MATTERS` entry**: that table's first pattern is
   `(a|an|target|…) <TYPE>`, which for artifacts matches **427 pool cards** — every "destroy
   target artifact", i.e. artifact HATE tagged as synergy (the G-42 shape).
-  `_ARTIFACT_MATTERS_RE` matches **273 pool cards, 1.71%** — between `exile cast` (1.68%) and
+  `_ARTIFACT_MATTERS_RE` matches **272 pool cards, 1.73%** — beside `exile cast` (1.79%) and
   `pay life` (2.2%), under the 3.86% `exile cast` was capped to avoid. **The `(?<!or )` /
   `(?! or creature)` guards and the `an|another|one or more` anchor are load-bearing**: without
   the anchor it matches "when THIS artifact enters" (every artifact with an ETB), and `artifact

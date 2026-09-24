@@ -1,12 +1,26 @@
 #: name: Coming of Galactus
 #: format: Standard
-#: tier: A — Golgari graveyard midrange; grindy value, 9 interaction (7 spot removal + 2 sweepers) + 4 card advantage on a clean 2-color base. Re-graded B→A: measurable floor is A (strong interaction + card advantage, coherent recursion engine) with no offsetting consistency tax — the earlier B under-rated it.
+#: tier: A — Golgari graveyard midrange; grindy value, 9 interaction (7 spot removal + 3 sweepers; Liliana counts as both) + 5 card advantage (2 repeatable: Liliana, Midnight Reaper) on a clean 2-color base. Re-graded B→A: measurable floor is A (strong interaction + card advantage, coherent recursion engine) with no offsetting consistency tax — the earlier B under-rated it.
 #: colors: BG
 #: archetype: Golgari (B/G) graveyard midrange / value.
 #: notes: Golgari (B/G) — graveyard / midrange value.
+#: notes: 2026-09-24 tune, six swaps. -Swamp/+Overgrown Tomb took G to 15, and the
+#: notes: finished list has 13 cards below 90% on curve against 21 before, with no new
+#: notes: unconditional tapland. -Rot Farm Mortipede/+Kraven's Last Hunt: mill five, then
+#: notes: damage equal to the greatest power among creature cards in the yard (six have
+#: notes: 4+, counting Sandman, whose power is your land count there too), then a creature
+#: notes: back to hand. -Wary Watchdog/+Moseo: the lifegain payoff `engines` reported
+#: notes: missing; Infusion reanimates a creature of MV up to the life gained that turn.
+#: notes: -Fell Horseman/+Overlord of the Balemurk (craft M): impending {1}{B} mills four
+#: notes: and returns a creature, then again on every attack. -Gingerbread Hunter/+Midnight
+#: notes: Reaper and -Super-Skrull/+Liliana, Dreadhorde General: card draw off every death,
+#: notes: fed by Cauldron, Sidisi and Killmonger. Three of the cuts rotate ~2026.
+#: notes: COST OF THE SUPER-SKRULL CUT: Shang-Chi's mana is spend-only on abilities of
+#: notes: creature sources, and Super-Skrull was its one on-board target; the haste clause
+#: notes: still lets a reanimated Sidisi activate at once. Shang-Chi is the next cut to read.
 
 # Nonland
-1 Super-Skrull (MSH) 115
+1 Liliana, Dreadhorde General (FDN) 176
 1 Rapid Rescue (MSH) 181
 1 Call Damage Control (MSH) 162
 1 The Last Ronin (TMT) 154
@@ -17,12 +31,12 @@
 1 Shang-Chi, Master of Kung Fu (MSH) 187
 1 Sidisi, Regent of the Mire (TDM) 92
 1 True Ancestry (TLA) 199
-1 Wary Watchdog (DSK) 206
+1 Moseo, Vein's New Dean (SOS) 91
 1 Hulkling, Burgeoning Bruiser (MSH) 173
 1 Sandman, Shifting Scoundrel (SPM) 112
 1 Thawbringer (EOE) 211
 1 Avatar Destiny (TLA) 165
-1 Gingerbread Hunter (WOE) 227
+1 Midnight Reaper (FDN) 609
 1 Ka-Zar of the Savage Land (MSH) 174
 1 Earth's Mightiest Heroes (MSH) 165
 1 Titania, Rugged Rumbler (MSH) 235
@@ -33,25 +47,26 @@
 1 Dai Li Agents (TLA) 214
 1 Lively Dirge (OTJ) 93
 1 Too Evil to Stay Dead (MSH) 118
-1 Fell Horseman (WOE) 92
+1 Overlord of the Balemurk (DSK) 113
 1 Grim Reaper, Lethal Legionnaire (MSH) 98
 1 Hour of Defeat (MSH) 99
-1 Rot Farm Mortipede (MKM) 102
+1 Kraven's Last Hunt (SPM) 105
 1 Day of Black Sun (TLA) 94
 1 Wick's Patrol (BLB) 121
 1 Cauldron of Essence (SOS) 179
+1 Cruel Truths (TDM) 76
+1 Visions of Villainy (MSH) 120
 
 # Lands (owned tidy: −Opulent Palace, a Sultai tapland whose blue is dead here → +Swamp)
 3 Jungle Hollow (M21) 247
 1 Wastewood Verge (DFT) 268
-10 Swamp (MSH) 292
-1 Cruel Truths (TDM) 76
+9 Swamp (MSH) 292
+1 Overgrown Tomb (ECL) 266
 10 Forest (MSH) 296
-1 Visions of Villainy (MSH) 120
 
 # Flex — STANDARD-LEGAL craftable upgrades that markedly improve the deck. See: deck.py flex 5
 #~ -Swamp | +Restless Cottage | CRAFT (R): a BG creature-LAND — fixing that's never a dead draw (flood insurance), a 4/4 threat, and graveyard exile on attack. Best bang for a Rare.
-#~ -Wary Watchdog | +Overlord of the Balemurk | CRAFT (M): premium graveyard value-bomb (Impending 5—{1}{B}); mills + recurs a creature. A real engine.
 #~ -Thawbringer | +The Swarmweaver | CRAFT (R): two flying Insect tokens + a delirium anthem — your self-mill turns on delirium easily
 #~ -Rapid Rescue | +Insatiable Avarice | CRAFT (R): Spree tutor — find The Coming of Galactus (or any payoff), or draw three
-#~ note: all four are CRAFT targets (not owned), Standard-legal. Priority: Restless Cottage (fixes the manabase permanently), then Overlord of the Balemurk.
+#~ -Thawbringer | +Twilight Diviner | CRAFT (R): surveil 2 on entry, and once per turn a token copy of a creature that entered from the graveyard — one reanimated Killmonger becomes two ETB removal triggers. A 3/3 for 3 against Thawbringer's surveil-1 4/2.
+#~ note: 2026-09-24 — the Overlord line was consumed: Overlord of the Balemurk is maindecked (in for Fell Horseman; still a craft, wishlisted for 5 and 11). Twilight Diviner is the remaining ★ craft. Restless Cottage and Insatiable Avarice rotate ~2026 and Cottage enters tapped; The Swarmweaver is lateral.
