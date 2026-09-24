@@ -1,6 +1,6 @@
 #: name: Coming of Galactus
 #: format: Standard
-#: tier: A — Golgari graveyard midrange; grindy value, 9 interaction (7 spot removal + 3 sweepers; Liliana counts as both) + 5 card advantage (2 repeatable: Liliana, Midnight Reaper) on a clean 2-color base. Re-graded B→A: measurable floor is A (strong interaction + card advantage, coherent recursion engine) with no offsetting consistency tax — the earlier B under-rated it.
+#: tier: A — Golgari graveyard midrange; grindy value, 10 interaction (8 spot removal + 3 sweepers; Liliana counts as both) + 4 card advantage (2 repeatable: Liliana, Midnight Reaper) on a clean 2-color base. Re-graded B→A: measurable floor is A (strong interaction + card advantage, coherent recursion engine) with no offsetting consistency tax — the earlier B under-rated it.
 #: colors: BG
 #: archetype: Golgari (B/G) graveyard midrange / value.
 #: notes: Golgari (B/G) — graveyard / midrange value.
@@ -18,6 +18,16 @@
 #: notes: COST OF THE SUPER-SKRULL CUT: Shang-Chi's mana is spend-only on abilities of
 #: notes: creature sources, and Super-Skrull was its one on-board target; the haste clause
 #: notes: still lets a reanimated Sidisi activate at once. Shang-Chi is the next cut to read.
+#: notes: 2026-09-24 second pass, six more swaps: -Shang-Chi/+Drag to the Roots (instant,
+#: notes: any nonland permanent, {B}{G} with delirium); -Ka-Zar/+Cloud of Darkness (-X/-X
+#: notes: where X = permanent cards in the yard, and 48 of the 60 are permanents);
+#: notes: -Visions of Villainy/+Aatchik (an Insect per artifact/creature card in the yard,
+#: notes: each death drawing off Liliana and draining through Cauldron); -Wick's Patrol/
+#: notes: +Moon-Vigil Adherents; -Thawbringer/+Vastlands Scavenger (enters prepared, and
+#: notes: its Bind to Life mills seven and puts a creature onto the battlefield — a
+#: notes: reanimated Vastlands is prepared again); -Lys Alana Informant/+Seedship
+#: notes: Broodtender. The one-shot draw of Visions of Villainy is the card advantage
+#: notes: this pass gave up (5 -> 4), traded for Aatchik's board and Cloud's removal.
 
 # Nonland
 1 Liliana, Dreadhorde General (FDN) 176
@@ -25,19 +35,19 @@
 1 Call Damage Control (MSH) 162
 1 The Last Ronin (TMT) 154
 1 Witherbloom, the Balancer (SOS) 245
-1 Lys Alana Informant (ECL) 181
+1 Seedship Broodtender (EOE) 227
 1 Midnight Tilling (ECL) 182
 1 Scout the City (MSC) 817
-1 Shang-Chi, Master of Kung Fu (MSH) 187
+1 Drag to the Roots (DSK) 213
 1 Sidisi, Regent of the Mire (TDM) 92
 1 True Ancestry (TLA) 199
 1 Moseo, Vein's New Dean (SOS) 91
 1 Hulkling, Burgeoning Bruiser (MSH) 173
 1 Sandman, Shifting Scoundrel (SPM) 112
-1 Thawbringer (EOE) 211
+1 Vastlands Scavenger // Bind to Life (SOS) 166
 1 Avatar Destiny (TLA) 165
 1 Midnight Reaper (FDN) 609
-1 Ka-Zar of the Savage Land (MSH) 174
+1 Cloud of Darkness (FIN) 217
 1 Earth's Mightiest Heroes (MSH) 165
 1 Titania, Rugged Rumbler (MSH) 235
 1 Exdeath, Void Warlock (FIN) 220
@@ -52,10 +62,10 @@
 1 Hour of Defeat (MSH) 99
 1 Kraven's Last Hunt (SPM) 105
 1 Day of Black Sun (TLA) 94
-1 Wick's Patrol (BLB) 121
+1 Moon-Vigil Adherents (ECL) 184
 1 Cauldron of Essence (SOS) 179
 1 Cruel Truths (TDM) 76
-1 Visions of Villainy (MSH) 120
+1 Aatchik, Emerald Radian (DFT) 187
 
 # Lands (owned tidy: −Opulent Palace, a Sultai tapland whose blue is dead here → +Swamp)
 3 Jungle Hollow (M21) 247
@@ -66,7 +76,6 @@
 
 # Flex — STANDARD-LEGAL craftable upgrades that markedly improve the deck. See: deck.py flex 5
 #~ -Swamp | +Restless Cottage | CRAFT (R): a BG creature-LAND — fixing that's never a dead draw (flood insurance), a 4/4 threat, and graveyard exile on attack. Best bang for a Rare.
-#~ -Thawbringer | +The Swarmweaver | CRAFT (R): two flying Insect tokens + a delirium anthem — your self-mill turns on delirium easily
+#~ -Hulkling, Burgeoning Bruiser | +Twilight Diviner | CRAFT (R): surveil 2 on entry, and once per turn a token copy of a creature that entered from the graveyard — one reanimated Killmonger or Cloud of Darkness becomes two ETB removal triggers. Retargeted from Thawbringer, which Vastlands Scavenger replaced; Hulkling is the weakest remaining 3-drop.
 #~ -Rapid Rescue | +Insatiable Avarice | CRAFT (R): Spree tutor — find The Coming of Galactus (or any payoff), or draw three
-#~ -Thawbringer | +Twilight Diviner | CRAFT (R): surveil 2 on entry, and once per turn a token copy of a creature that entered from the graveyard — one reanimated Killmonger becomes two ETB removal triggers. A 3/3 for 3 against Thawbringer's surveil-1 4/2.
-#~ note: 2026-09-24 — the Overlord line was consumed: Overlord of the Balemurk is maindecked (in for Fell Horseman; still a craft, wishlisted for 5 and 11). Twilight Diviner is the remaining ★ craft. Restless Cottage and Insatiable Avarice rotate ~2026 and Cottage enters tapped; The Swarmweaver is lateral.
+#~ note: 2026-09-24 — the Overlord line was consumed: Overlord of the Balemurk is maindecked (in for Fell Horseman; still a craft, wishlisted for 5 and 11). Twilight Diviner is the remaining ★ craft. Restless Cottage and Insatiable Avarice rotate ~2026 and Cottage enters tapped.

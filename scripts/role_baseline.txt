@@ -255,7 +255,6 @@ Loki Laufeyson
 Long Feng, Grand Secretariat
 Loot, Exuberant Explorer
 Lorehold, the Historian
-Lys Alana Informant
 Madame Web, Clairvoyant
 Magic Pot
 Magitek Armor
@@ -410,7 +409,6 @@ Team Tactics
 Temporal Intervention
 Terra, Magical Adept
 Terrapact Intimidator
-Thawbringer
 The Boulder, Ready to Rumble
 The Cave of Two Lovers
 The Final Days
