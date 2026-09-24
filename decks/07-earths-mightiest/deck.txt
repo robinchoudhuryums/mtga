@@ -1,22 +1,24 @@
 #: name: Earth's Mightiest
 #: format: Standard
 #: arena: 07 Earth’s Mightiest, e3a6c595-914d-4809-bd6d-630b3758ca89
-#: tier: A — Selesnya go-wide heroes (counters + tokens). Re-graded B -> A on 2026-09-12, AT its
-#: tier: metrics floor: interaction 8, card advantage 3, sum 11 against the 11 an A floor wants,
-#: tier: protection 4, curve 3.08.
+#: tier: A — Selesnya go-wide heroes (counters + tokens). Re-graded B -> A on 2026-09-12, when it sat
+#: tier: exactly AT its metrics floor. Live after the 2026-09-24 tune: interaction 8, card advantage 4,
+#: tier: sum 12 against the 11 an A floor wants, protection 4, curve 3.06.
 #: tier: THE CAP THIS DECK CARRIED WAS NAMED, AND IT IS THE THING THAT WENT AWAY. The B rested on
 #: tier: "NO REPEATABLE REFUEL, so a go-wide board folded to a single sweeper", and the stated path to
 #: tier: A was "a repeatable draw engine that scales off the wide board, not more interaction". The
-#: tier: deck now has three repeatable card-advantage sources and zero one-shots: Haliya, Ascendant
+#: tier: deck had three repeatable card-advantage sources and zero one-shots by then: Haliya, Ascendant
 #: tier: Cadet (crafted and maindecked 2026-08-10) and Avengers Assemble!, both of which refuel off
 #: tier: exactly the wide board the cap was about. Avengers Assemble! had been read as ZERO card
 #: tier: advantage until 2026-09-12, when a classifier hole was closed (a draw behind an intervening
 #: tier: if-clause scored nothing) — so part of this deck's refuel was invisible rather than absent,
 #: tier: and the list did not change on the day the floor moved.
 #: tier: AGAINST THE RUBRIC's four A tests: A-floor yes; coherent engine yes (`engines` reports
-#: tier: counters and tokens both BALANCED, 4 and 9 payoffs respectively); tight curve yes at 3.08;
-#: tier: at most one clear weakness — yes, and it is card advantage 3, which is the floor's own
-#: tier: minimum rather than a comfortable margin. A sweeper is still this deck's worst matchup.
+#: tier: counters and tokens both BALANCED, 4 and 9 payoffs respectively); tight curve yes at 3.06;
+#: tier: at most one clear weakness — yes, and it is card advantage, which sat at the floor's own
+#: tier: minimum until Exemplar of Light (a draw whenever it gets +1/+1 counters) added a fourth
+#: tier: repeatable source on 2026-09-24: a thin margin rather than a comfortable one. A sweeper is
+#: tier: still this deck's worst matchup.
 #: tier: WHY THIS ONE MOVED WHEN 35 OTHER SUB-FLOOR DECKS DID NOT, since the standard has to be the
 #: tier: same for all of them: those 35 argue LIVE caps their floors cannot see — deck 26b's
 #: tier: zero-protection drain shell, 51's 3.97 curve compounding with thin answers, 45's 76% overlap
@@ -33,6 +35,12 @@
 #: notes: Selesnya (G/W) — Avengers heroes go-wide.
 #: notes: 2026-09-06 LAND SWEEP (owned four-ofs of the untapped-beside-a-basic duals): −Blossoming Sands, −Birnin Zana Plaza, −Kyoshi Village
 #: notes: +3x Gathering Place. Sources W 13 / G 16 → W 13 / G 16; unconditional taplands 3 → 0. Same colours, no tempo tax.
+#: notes: 2026-09-24 tune: -Wakandan Royal Guard/+Exemplar of Light (draws whenever it gets +1/+1
+#: notes: counters, once a turn — card advantage 3 -> 4); -2 Forest/+2 Evolving Wilds (a basic fetch
+#: notes: counts for both colours: W 13 -> 15, G stays 16, cards below 90% on curve 16 -> 9; the cost
+#: notes: is the fetched basic entering tapped); -2 Plains/+2 Abandoned Air Temple (same W source,
+#: notes: untapped beside any basic, plus a {3}{W} sink that counters every creature — flood insurance
+#: notes: that triggers Mikey & Leo and Exemplar). Temple Garden x2 is the untapped craft alternative.
 
 # Nonland
 1 Agent Phil Coulson (MSH) 4
@@ -45,7 +53,7 @@
 1 The Unbeatable Squirrel Girl (MSH) 193
 1 Elspeth, Storm Slayer (TDM) 11
 1 Valorous Stance (FDN) 583
-1 Wakandan Royal Guard (MSH) 195
+1 Exemplar of Light (FDN) 733
 1 The Thing, Ben Grimm (MSH) 190
 1 Spider-Man, To the Rescue (MSH) 228
 1 Black Panther, Vanguard (MSH) 207
@@ -73,10 +81,12 @@
 1 Beast, Erudite Aerialist (MSH) 206
 
 # Lands
-8 Plains (MSH) 288
+6 Plains (MSH) 288
+2 Abandoned Air Temple (TLA) 263
 4 Gathering Place (MSH) 266
 1 Hushwood Verge (DSK) 261
-11 Forest (MSH) 296
+9 Forest (MSH) 296
+2 Evolving Wilds (ECL) 264
 
 # Flex — STANDARD-LEGAL craft targets, weighted so you don't waste wildcards. See: deck.py flex 7
 #~ -Requisition Raid | +Kutzil's Flanker | CRAFT (R) ★ MARKED UPGRADE: flash — big counters OR removal; the flexible interaction the deck genuinely lacks

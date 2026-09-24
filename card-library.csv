@@ -2964,7 +2964,7 @@ Lie in Wait,Sorcery,Return target creature card from your graveyard to your hand
 "Narset, Jeskai Waymaster",Legendary Creature — Human Monk,"At the beginning of your end step, you may discard your hand. If you do, draw cards equal to the number of spells you've cast this turn.",W/U/R,Human; Monk; card draw,TDM,209,1
 Avengers Tower,Land,"{T}: Add {C}.
 {T}: Add one mana of any color. Spend this mana only to cast a Hero spell or to activate an ability of a Hero source.
-{4}, {T}: Look at the top three cards of your library. You may reveal a Hero card from among them and put it into your hand. Put the rest on the bottom of your library in any order.",Colorless,mana; selection,MSH,260,3
+{4}, {T}: Look at the top three cards of your library. You may reveal a Hero card from among them and put it into your hand. Put the rest on the bottom of your library in any order.",Colorless,mana; selection,MSH,260,4
 Baxter Building,Land,"{T}: Add {C}.
 {4}, {T}: Add four mana in any combination of colors.
 {4}, {T}: Draw a card. Activate only if you control a creature with toughness 4 or greater.",Colorless,card draw; mana,MSH,261,2
@@ -5992,3 +5992,6 @@ When you sacrifice this Aura, search your library for up to two basic land cards
 Midnight Reaper,Creature — Zombie Knight,"Whenever a nontoken creature you control dies, this creature deals 1 damage to you and you draw a card.",B,Zombie; Knight; card draw; burn,FDN,609,1
 Overlord of the Balemurk,Enchantment Creature — Avatar Horror,"Impending 5—{1}{B} (If you cast this spell for its impending cost, it enters with five time counters and isn't a creature until the last is removed. At the beginning of your end step, remove a time counter from it.)
 Whenever this permanent enters or attacks, mill four cards, then you may return a non-Avatar creature card or a planeswalker card from your graveyard to your hand.",B,Avatar; Horror; graveyard; mill; impending; tempo; cost-reduction,DSK,113,1
+"Silk, Web Weaver",Legendary Creature — Spider Human Hero,"Web-slinging {1}{G}{W} (You may cast this spell for {1}{G}{W} if you also return a tapped creature you control to its owner's hand.)
+Whenever you cast a creature spell, create a 1/1 green and white Human Citizen creature token.
+{3}{G}{W}: Creatures you control get +2/+2 and gain vigilance until end of turn.",W/G,Spider; Human; Hero; tokens; pump; bounce; web-slinging; evasion; tempo; vigilance; combat,SPM,145,2

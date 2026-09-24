@@ -2788,6 +2788,7 @@ Terrasymbiosis,{2}{G},3,
 Ordeal of Nylea,{1}{G},2,Enchant
 Midnight Reaper,{2}{B},3,
 Overlord of the Balemurk,{3}{B}{B},5,Impending;Mill
+"Silk, Web Weaver",{2}{G}{W},4,Web-slinging
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -13088,7 +13089,6 @@ Biorganic Carapace,{2}{W}{U},4,Equip
 "Kraven, Proud Predator",{1}{R}{G},3,Vigilance;Top of the Food Chain
 Mary Jane Watson,{1}{G/W},2,
 Morbius the Living Vampire,{2}{U}{B},4,Flying;Lifelink;Vigilance
-"Silk, Web Weaver",{2}{G}{W},4,Web-slinging
 Spider-Man 2099,{U}{R},2,Vigilance;From the Future;Double strike
 "Spider-Woman, Stunning Savior",{1}{W/U},2,Flying;Venom Blast
 "The Spot, Living Portal",{3}{W}{B},5,
