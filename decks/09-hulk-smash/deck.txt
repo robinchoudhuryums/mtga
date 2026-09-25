@@ -1,11 +1,30 @@
 #: name: Hulk Smash
 #: format: Standard
-#: tier: A — Gruul aggro/smash; low curve (2.75) + 8 interaction
+#: tier: A — Gruul counters/smash. Live after the 2026-09-25 tune: interaction 11, card advantage 5,
+#: tier: sum 16 against the 11 an A floor wants, curve 2.94.
+#: tier: AGAINST THE RUBRIC's four A tests: A-floor yes; coherent engine yes (thirteen counter
+#: tier: placers feed Michelangelo, Weirdness to 11, and the bite/fight spells turn that size into
+#: tier: removal); tight curve yes at 2.94; at most one clear weakness — protection is ZERO, nothing
+#: tier: here gives a creature hexproof or indestructible, so a removal-heavy opponent can pick the
+#: tier: Hulks off one at a time. Card advantage is thin but no longer all one-shot: Hunter's Talent
+#: tier: at level 3 draws each end step while a power-4 creature is out.
+#: tier: NOT S: that needs proven top-meta capability, and this deck has no recorded matches.
 #: colors: RG
 #: archetype: Gruul (R/G) big creatures / smash.
 #: notes: Gruul (R/G) — big creatures / smash.
 #: notes: 2026-09-06 LAND SWEEP (owned four-ofs of the untapped-beside-a-basic duals): −2x Rugged Highlands, −Omashu City
 #: notes: +3x Training Compound. Sources R 12 / G 16 → R 12 / G 16; unconditional taplands 3 → 0. Same colours, no tempo tax.
+#: notes: 2026-09-25 tune — the Hulk package: -Kav Landseeker/+Hulk, Gamma Goliath (6/5 reach trample;
+#: notes: other creatures' power-ups cost {3} less); -Heroic Feast/+Abomination, Terrifying Titan (power-up:
+#: notes: a counter and a fight; Heroic Feast had two lifegain sources to trigger it); -Powerful
+#: notes: Broker/+She-Hulk, Jade Defender (power-up destroys an artifact or enchantment); -Goldvein
+#: notes: Pick/+Red Hulk (enrage: when dealt damage, a counter and that many damage to any other target —
+#: notes: the fight spells and Pain for All set it off); -Hire a Crew/+Hunter's Talent (enters as a bite,
+#: notes: level 3 draws each end step with a power-4 creature out); -Diamond Pick-Axe/+Lasting Tarfire
+#: notes: (2 to each opponent at each end step you placed a counter; the Pick-Axe rotates ~2026).
+#: notes: Manabase: -Castle Doom, -2 Forest/+3 Thornspire Verge (4 total; 3 are CRAFTS, wishlisted):
+#: notes: sources R 12 / G 16 → R 15 / G 17, cards below 90% on curve 18 → 8. Thornspire rotates ~2027;
+#: notes: Stomping Ground (to ~2028, 2 life or tapped) is the longer-lived alternative.
 
 # Nonland
 1 World War Hulk (MSH) 197
@@ -17,13 +36,13 @@
 1 Sylvan Scavenging (FDN) 113
 1 Death to Our Enemies (MSH) 127
 1 Punishing Punch (MSH) 180
-1 Powerful Broker (MSH) 179
-1 Heroic Feast (MSH) 172
+1 She-Hulk, Jade Defender (MSH) 188
+1 Abomination, Terrifying Titan (MSH) 198
 1 Synchronized Charge (TDM) 162
 1 Mutagen Man, Living Ooze (TMT) 124
 1 Go Nuts! (MSH) 168
 1 The Unbeatable Squirrel Girl (MSH) 193
-1 Kav Landseeker (EOE) 138
+1 Hulk, Gamma Goliath (MSH) 215
 1 Crimson Operative (MSH) 126
 1 Pain for All (EOE) 151
 1 Machinesmith Automaton (MSH) 144
@@ -34,25 +53,24 @@
 2 Blazing Crescendo (MSH) 125
 1 Iroh's Demonstration (TLA) 141
 1 Michelangelo, Weirdness to 11 (TMT) 121
-1 Diamond Pick-Axe (LCI) 143
+1 Lasting Tarfire (ECL) 149
 2 HYDRA Assault Robot (MSH) 137
-1 Hire a Crew (MSH) 134
+1 Hunter's Talent (BLB) 179
 1 Hell to Pay (OTJ) 126
 1 Epic Fight (MSH) 166
 1 Primeval Bounty (FDN) 644
-1 Goldvein Pick (FDN) 253
+1 Red Hulk (MSH) 149
 1 Ka-Zar of the Savage Land (MSH) 174
 
 # Lands
-1 Thornspire Verge (DSK) 270
+4 Thornspire Verge (DSK) 270
 4 Training Compound (MSH) 275
-1 Castle Doom (MSH) 263
 7 Mountain (MSH) 294
-11 Forest (MSH) 296
+9 Forest (MSH) 296
 
 # Flex — STANDARD-LEGAL craft targets, weighted so you don't waste wildcards. See: deck.py flex 9
 #~ -Pain for All | +Sharp-Eyed Rookie | CRAFT (R) ★ but ⚠rot~2027 (MKM): vigilance body that grows a counter AND investigates whenever a bigger creature enters — the card-advantage-plus-counters engine the deck lacks. Re-graded 2026-08: still a marked upgrade with ~1y of Standard left, but Mutagen Man (below, rotation-safe) is now the better first craft at the same ★
 #~ note: applied — Mutagen Man, Living Ooze in for Training Regimen.
-#~ -Goldvein Pick | +Bioengineered Future | CRAFT (R) ~ SIDEGRADE: every creature enters with a counter per land that entered — good, but needs landfall you only partly support; skip unless you lean into landers
+#~ note: applied — Red Hulk in for Goldvein Pick.
 #~ note: owned adds already done — Michelangelo, Weirdness to 11 (counter amplifier) and Ka-Zar (card advantage) beat anything craftable for THIS deck. The crafts above earn their wildcard mostly on cross-deck reuse (10 decks each).
-#~ +Lasting Tarfire | OWNED: {1}{R} enchantment — "at each end step, if you put a counter on a creature this turn, deal 2 damage to each opponent." A recurring reach/burn engine (this counters deck puts counters most turns) that patches the thin direct-damage. Maindecked in deck 30; fungible, promote here over a weak combat trick if you want the reach.
+#~ note: applied 2026-09-25 — Lasting Tarfire in for Diamond Pick-Axe.

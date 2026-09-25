@@ -132,6 +132,6 @@
 2 Evolving Wilds (ECL) 264
 
 # Flex — STANDARD-LEGAL craft targets, weighted so you don't waste wildcards. See: deck.py flex 7
-#~ note: RETIRED 2026-09-24 — the Kutzil's Flanker line proposed cutting Requisition Raid for a card that rotates in 2026; the deck's interaction is 9 now and Requisition Raid is one of only two artifact/enchantment answers the deck runs (Leatherhead is the other).
+#~ note: RETIRED 2026-09-24 — the Kutzil's Flanker line proposed cutting Requisition Raid for a card that rotates in 2026, and Requisition Raid is one of only two artifact/enchantment answers the deck runs (Leatherhead is the other).
 #~ note: RETIRED — the Silver Sable line proposed cutting Foggy Swamp Vinebender, which left the deck rounds ago, and its own text already read "MINOR: lateral; don't spend a wildcard here". A suggestion that argues against itself is not worth retargeting.
 #~ note: card advantage already handled — Mikey & Leo (drew off counters) is now maindeck over Graduation Day. Sharp-Eyed Rookie would be a redundant sidegrade; skip it.
