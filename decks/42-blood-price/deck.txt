@@ -16,7 +16,7 @@
 #: archetype: whose own life payments flip him) build an evasive board while Bloodchief
 #: archetype: Ascension and Mai turn every exchange into life loss; (2) pure CARD-ADVANTAGE
 #: archetype: attrition — ten removal spells backed by six draw effects simply out-resources
-#: archetype: a fair deck. DISTINCTNESS vs 41 Darkforce Inversion, the other Mister Negative
+#: archetype: a fair deck. DISTINCTNESS vs 41 Soul Inversion, the other Mister Negative
 #: archetype: deck: THE SPLIT IS WHICH SIDE OF THE SWAP EACH DECK WANTS TO BE ON. His draw
 #: archetype: clause only pays if you LOST life, so 41 swaps from AHEAD to draw the gap and
 #: archetype: blinks him to put both totals back — a repeatable draw engine. This deck swaps

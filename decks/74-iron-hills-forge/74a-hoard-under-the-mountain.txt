@@ -40,7 +40,7 @@
 #: archetype: treasure economy and its Dragon payoffs — same tribe, different resource.
 #: archetype: The two treasure-adjacent roster decks differ on identity, argued
 #: archetype: explicitly: 58 Treasure Planet is artifacts/SACRIFICE (4 shared cards,
-#: archetype: wrong colors), and 48a Motor Pool is IZZET Vehicles+Treasure that CHEATS
+#: archetype: wrong colors), and 48a Autopilot is IZZET Vehicles+Treasure that CHEATS
 #: archetype: permanents into play — it shares 9 generic red PRODUCERS with this list
 #: archetype: (Brass's Bounty, Hell to Pay, Prompto, Stark Exec, the Picks…, all
 #: archetype: fungible copies) but zero of the PAYOFF half: Smaug, Magda's Dragon,

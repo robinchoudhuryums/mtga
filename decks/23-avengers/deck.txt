@@ -1,4 +1,4 @@
-#: name: Avengers
+#: name: Avengers Assemble!
 #: format: Standard
 #: tier: A — Mono-W go-wide/counters. Re-graded B -> A on 2026-09-12, AT its metrics floor, not above it.
 #: tier: Live vector: interaction 7, card advantage 5, protection 8, curve 3.33, 12 one-two-drops, 14 central themes.

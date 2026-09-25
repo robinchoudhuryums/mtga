@@ -1,4 +1,4 @@
-#: name: Doombots — Motor Pool
+#: name: Doombots — Autopilot
 #: format: Standard
 #: arena: 48a Autopilot, 4a0ff8e9-9340-45a8-8818-cef148458044
 #: colors: UR

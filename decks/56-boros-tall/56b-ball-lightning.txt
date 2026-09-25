@@ -1,4 +1,4 @@
-#: name: One Fell Swoop — Ball Lightning
+#: name: One Fell Swoop — Warp Missile
 #: format: Standard
 #: arena: 56b Warp Missile, cb9a28d6-ed9d-49b6-835a-6aadc3d6353e
 #: colors: R
@@ -20,7 +20,7 @@
 #: archetype: creatures can't be blocked except by haste) is always on. Bulk Up doubles whichever body swings.
 #: archetype: DISTINCT from 56 (RW combat-tall: permanent bearers + a protection layer) and 56a (RG: compounding
 #: archetype: counters on permanent bodies) by the same test: 56's bodies are PROTECTED, 56b's are TEMPORARY.
-#: archetype: Neighbours checked: 26 Iron Forge (UR artifact RAMP into big hitters — shares Vestige / Colossus /
+#: archetype: Neighbours checked: 26 Iron Colossi (UR artifact RAMP into big hitters — shares Vestige / Colossus /
 #: archetype: Tannuk / Full Bore but ramps to hardcast) and 45 The Exiles (WBR — paid for CASTING from exile;
 #: archetype: this deck's payoff is the body entering and leaving, not the cast).
 #: tier: B (PROVISIONAL) — held at B by three things the A floor cannot see, and graded UNDER it on

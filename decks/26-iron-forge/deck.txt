@@ -1,4 +1,4 @@
-#: name: Iron Forge (ramp into artifact bombs)
+#: name: Iron Colossi (ramp into artifact bombs)
 #: format: Standard
 #: arena: 26 Iron Colossi, 61b262e2-2f32-4076-a484-0a04b54bcf0d
 #: colors: UR

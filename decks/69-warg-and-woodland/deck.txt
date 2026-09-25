@@ -1,4 +1,4 @@
-#: name: Warg and Woodland (payoffs gated on power 4)
+#: name: Bear-Wolf (payoffs gated on power 4)
 #: format: Standard
 #: arena: 69 Bear-Wolf, 9e88298a-21f7-4746-a739-6da900cc9343
 #: colors: BG

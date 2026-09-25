@@ -4,7 +4,7 @@
 #: plan: midrange
 #: archetype: Mono-WHITE LIFEGAIN built on SEVERAL GROWING LIFELINK BODIES, with an ANGEL
 #: archetype: sub-theme and graveyard recursion. The roster's other two mono-white decks
-#: archetype: (3 Knight's Edge, 23 Avengers) both go WIDE — `deck.py shape` scores them
+#: archetype: (3 Knight's Edge, 23 Avengers Assemble!) both go WIDE — `deck.py shape` scores them
 #: archetype: 19/7 and 9/4 wide-over-tall — and win by adding a body and an anthem. This
 #: archetype: one grows the bodies it already has with counters instead of adding more.
 #: archetype: BE HONEST ABOUT THE BODY COUNT: at 24 creatures this is not a low-creature

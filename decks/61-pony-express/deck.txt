@@ -35,7 +35,7 @@
 #: archetype: cycling) saddle at +2, and Unswerving Sloth refunds the whole team.
 #: archetype: Guardian Sunmare turns each attack into a battlefield tutor for the
 #: archetype: MV<=3 toolbox; Fortune blinks its rider for repeat ETBs. Distinct from
-#: archetype: 48a Motor Pool (UR Vehicles + Treasure velocity, zero Mounts, zero
+#: archetype: 48a Autopilot (UR Vehicles + Treasure velocity, zero Mounts, zero
 #: archetype: counters): different colors, Mount-typed engine, counter payoff axis.
 #: protect: Caradora, Heart of Alacria; Miriam, Herd Whisperer; Ornery Tumblewagg; Guardian Sunmare; Valor's Flagship
 #: tier: B (PROVISIONAL) — an unplayed first draft graded under whatever the floor

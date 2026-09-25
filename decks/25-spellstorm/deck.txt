@@ -23,7 +23,7 @@
 #: archetype: nearest theme neighbour at 89% and the roster's other blue-red spellslinger:
 #: archetype: that deck is WIZARD TRIBAL and grinds "draw your second card each turn"
 #: archetype: payoffs; this one is not tribal at all — its seven Wizards are incidental —
-#: archetype: and wins by resolving one enormous copied spell. vs Maelstrom Conservatory
+#: archetype: and wins by resolving one enormous copied spell. vs Zaffai's Maelstrom
 #: archetype: (77%, the same UR colours): that deck RAMPS into big spells with Ashling's
 #: archetype: back face and Treasures, where this one DISCOUNTS them, which is why its curve
 #: archetype: can carry a ten-drop.
