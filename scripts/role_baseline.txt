@@ -20,6 +20,7 @@ Airbending Lesson
 Ajani, Caller of the Pride
 Akul the Unrepentant
 Aloe Alchemist
+Ambitious Augmenter
 Angel of Vitality
 Angelic Destiny
 Another Round
@@ -113,7 +114,6 @@ Diligent Zookeeper
 Doc Ock's Henchmen
 Don & Leo, Problem Solvers
 Donatello, Mutant Mechanic
-Donatello, Turtle Techie
 Dori, Bearer of Friends
 Doubling Season
 Dracogenesis
@@ -236,6 +236,7 @@ Knight Luminary
 Kona, Rescue Beastie
 Koya, Death from Above
 Kraven the Hunter
+Kraven, Proud Predator
 Krenko, Mob Boss
 Krumar Initiate
 Kyoshi Warriors
@@ -255,7 +256,6 @@ Loki Laufeyson
 Long Feng, Grand Secretariat
 Loot, Exuberant Explorer
 Lorehold, the Historian
-Lys Alana Informant
 Madame Web, Clairvoyant
 Magic Pot
 Magitek Armor
@@ -309,11 +309,9 @@ Ozai's Cruelty
 Pain 101
 Paradox Surveyor
 Personify
-Pet Avengers
 Peter Parker
 Picklock Prankster // Free the Fae
 Pond Prophet
-Powerful Broker
 Pride of the Road
 Prideful Parent
 Procrastinate
@@ -334,7 +332,6 @@ Raphael, the Nightwatcher
 Reckless Velocitaur
 Red Room Recruit
 Relm's Sketching
-Renet, Temporal Apprentice
 Reno and Rude
 Resentful Revelation
 Resolute Reinforcements
@@ -390,7 +387,6 @@ Starfield Shepherd
 Stargaze
 Stark Industries Executive
 Starry-Eyed Skyrider
-Stature, Size Shifter
 Stegron the Dinosaur Man
 Stickytongue Sentinel
 Stingerback Terror
@@ -403,7 +399,6 @@ Super-Soldier Serum
 Surrak, Elusive Hunter
 Sweettooth Witch
 Swiftblade Vindicator
-Synchronized Charge
 Taii Wakeen, Perfect Shot
 Tangle Tumbler
 Tannuk, Steadfast Second
@@ -413,8 +408,6 @@ Team Tactics
 Temporal Intervention
 Terra, Magical Adept
 Terrapact Intimidator
-Tester of the Tangential
-Thawbringer
 The Boulder, Ready to Rumble
 The Cave of Two Lovers
 The Final Days
@@ -451,7 +444,6 @@ United Front
 Unstable Experiment
 Unstoppable Plan
 Unstoppable Slasher
-Utrom Scientists
 Vastlands Scavenger // Bind to Life
 Venomized Cat
 Veteran Ice Climber
@@ -461,13 +453,11 @@ Visage Bandit
 Vision Quest
 Vito's Inquisitor
 Voyager Glidecar
-Wakandan Royal Guard
 Wanderbrine Trapper
 War Balloon
 War Machine, Legacy of Iron
 War Squeak
 Wargling
-Wary Watchdog
 Water Tribe Rallier
 Waterbender Ascension
 Waterwind Scout
@@ -476,8 +466,10 @@ Weapons Vendor
 Web-Warriors
 Welcome to Sweettooth
 Whirlwing Stormbrood
+Whirlwing Stormbrood // Dynamic Soar
 White Tiger, Ava Ayala
 Wild Hypothesis
+Wisecrack
 Wonder Man, Hollywood Hero
 Y'shtola Rhul
 Zog, Triceraton Castaway

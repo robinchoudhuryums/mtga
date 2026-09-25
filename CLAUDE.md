@@ -454,8 +454,8 @@ is protecting.
   **THE LIST IS A WINDOW AND THE RANKING IS THEME FIT, so read a card's ABSENCE as neither
   (BS10-05).** The footer counted the TRUNCATION, so it read "20 suggestion(s)" whether the
   ranking held 20 candidates or 958; it now prints "top N of M ranked candidate(s)"
-  (`--limit 0` for all). Why it matters is measured, not asserted: across **899 applied swaps
-  that recorded a rank for the card ADDED, the MEDIAN rank is 404** and only **11%** fell
+  (`--limit 0` for all). Why it matters is measured, not asserted: across **970 applied swaps
+  that recorded a rank for the card ADDED, the MEDIAN rank is 364** and only **11%** fell
   inside the default top 20. `deck.py feedback` reports that distribution. A card chosen for
   a mechanical interaction the tags do not encode ranks far down BY CONSTRUCTION — a
   different problem from the theme gate G-38 describes, and K-15 was its largest single
@@ -656,7 +656,7 @@ is protecting.
   for a deck that can never meet it (81 pairs, 54 of 114 decks).** Test
   `TAPLAND_CONDITIONAL_KINDS`, not a string.
   **NONLAND sources are DISCLOSED since 2026-09-18, never counted**: `consistency` prints
-  `ⓘ N NONLAND mana source(s) are NOT in the counts above` (**77 of 112 decks**). The
+  `ⓘ N NONLAND mana source(s) are NOT in the counts above` (**78 of 112 decks**). The
   exclusion is right — a rock is not a land drop — but its SILENCE was not, because
   `suggest --ramp` recommends exactly what this count cannot see.
   `uncounted_mana_sources` runs `land_production` on a NONLAND's text, so the spend-only
@@ -934,9 +934,9 @@ is protecting.
   two primitives the ◊ list and the effective figure already use so the three cannot
   disagree (G-40). **DISCLOSURE, never pricing** — report-only for G-25/G-60's reason, and do
   not "finish" it by feeding `tier_band`. **`_UNPRICED_DISCLOSE_FLOOR = 3` is p75 of its own
-  axis, not 1**: across the **53 decks that print an effective figure** the unpriced count
-  runs p25 1 / p50 2 / p75 3 / p90 5 / max 11, so a floor of 1 fires on 83% (the G-07
-  saturation shape) against **16 of 53 (30%)** at 3. BOTH figures are registered in
+  axis, not 1**: across the **55 decks that print an effective figure** the unpriced count
+  runs p25 1 / p50 2 / p75 3 / p90 5 / max 11, so a floor of 1 fires on 84% (the G-07
+  saturation shape) against **17 of 55 (31%)** at 3. BOTH figures are registered in
   `figure_drift`, which is what caught the population move when impending joined. [G-85]
 - **BOARD PRESENCE IS AN AXIS AND NOTHING HERE MEASURED IT until 2026-09-18.** The tier
   floor reads interaction + card advantage, `cuts` reads theme fit and role credit, and
@@ -944,15 +944,15 @@ is protecting.
   A floor on resilience while fielding nothing that ends a game, and the only way to see
   that was to hand-roll the sum, done six times in one session before `board_power`
   existed. It is a SEPARATE axis, not a restatement of the floor: **r = −0.147 against a
-  ±0.188 noise band at n=112**. Roster distribution min 23 / p10 37 / **p50 54** / p90 73
+  ±0.188 noise band at n=112**. Roster distribution min 23 / p10 37 / **p50 55** / p90 73
   / max 120. **REPORT-ONLY, and it must stay so** — a new `tier_band` term silently
   re-grades the roster, the reason the protection axis (G-25) and the X-cost advisory
   (G-60) are kept out and the reason the payoff-density term was simulated and DECLINED
   2026-09-03. `deck_quality_vector` publishes it, `tier_band` ignores it, and a test pins
   that two decks differing only in creature SIZE land in the same band. **THREE THINGS IT
   CANNOT SEE, disclosed rather than guessed at:** a printed `*`/X power is counted APART
-  and never coerced to 0 (G-16), which is no corner case — **70 of 112 decks** hold one,
-  so a bare sum would under-report on 62% of the roster; TOKENS and other created bodies
+  and never coerced to 0 (G-16), which is no corner case — **71 of 112 decks** hold one,
+  so a bare sum would under-report on 63% of the roster; TOKENS and other created bodies
   read ZERO, so a card making two 3/3s contributes nothing; and VEHICLES are counted
   apart, not being creatures until crewed. Read the figure as a FLOOR on what the deck can
   present, never a ceiling. [G-86]
@@ -1065,7 +1065,7 @@ is protecting.
 - **A CARD THAT GRANTS A KEYWORD IS A CARD ABOUT THAT KEYWORD, and the tagger only read
   what a card HAS.** Keyword tags came from Scryfall's `keywords` field, so a lord handing
   the team deathtouch carried no `deathtouch` tag and looked like a card with nothing to do
-  with the deck built on it. **1,942 pool cards grant one of the twelve evergreens**, and
+  with the deck built on it. **1,912 pool cards grant one of the twelve evergreens**, and
   for FOUR the granted case is the MAJORITY, so the tag tracked the exception (haste has since crossed to a FIFTH at 366 grant vs 359 have — a 7-card margin that can flip on any pool rebuild, so do not harden the count). `tags_for`
   reads grants from TEXT now (`granted_keywords`, reminder text stripped, opponent- and
   loss-scoped clauses excluded). Tags feed `cuts` / `suggest` / centrality (deck 31's Venom
@@ -1292,7 +1292,7 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   cue is still invisible — grade those from full text. The type-naming half is CLOSED
   (2026-08-20): a card whose text names a CARD TYPE it interacts with but never is —
   Gilgamesh digging for "Equipment cards" — now carries that tag via
-  `_TYPE_MATTERS_RES`, 277 tags across 193 pool cards, nothing lost. A "what does this
+  `_TYPE_MATTERS_RES`, 270 tags across 189 pool cards, nothing lost. A "what does this
   card look for" read still beats the tags for the fixer half.** [K-03]
 - **Never gate a predicate on a derived TAG — it inherits every hole in the tagger.**
   `_is_color_fixer` did, so the roster's two best fixers (keying off unindexed Vivid) read
@@ -1304,7 +1304,7 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   rule one layer over and the costliest instance:** `cuts`' fit term is gated on derived
   tags, so when the tagger read only the keywords a card HAS, a deck-31 engine piece
   scored fit 17 and was offered as a cut. The user caught it; no gate could. [K-04]
-- **`pay life` is a tagged theme** (357 pool cards, 2.2% — specific enough to build
+- **`pay life` is a tagged theme** (351 pool cards, 2.2% — specific enough to build
   around): YOU losing life as a cost, plus the cards that only CARE. "Each opponent loses
   2 life" is a DRAIN effect — the opposite card, deliberately not tagged. [K-05]
 - **CHECK `MECHANIC_RULES` FOR THE NAME BEFORE ADDING A THEME.** `heist` (cast a card
@@ -1313,7 +1313,7 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   and destroyed the specificity that makes an idf theme useful, **with `check_all` green
   throughout, because a tag collision breaks no invariant.** [K-06]
 - **`exile cast` is the SIBLING of `heist` and stays separate** — casting your OWN exiled
-  cards (impulse / Warp / Plot / Foretell / Adventure, 291 pool cards). The two only look
+  cards (impulse / Warp / Plot / Foretell / Adventure, 282 pool cards). The two only look
   alike; a deck built on one gets nothing from the other. [K-07]
 - **`keyword_frequencies()` counts DISTINCT CARDS, not rows** — the mana file keys a DFC
   under its full `Front // Back` name, so a two-faced card could contribute two rows and
@@ -1340,7 +1340,7 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   all theme-fit driven. **NOT an `_TYPE_MATTERS` entry**: that table's first pattern is
   `(a|an|target|…) <TYPE>`, which for artifacts matches **427 pool cards** — every "destroy
   target artifact", i.e. artifact HATE tagged as synergy (the G-42 shape).
-  `_ARTIFACT_MATTERS_RE` matches **273 pool cards, 1.71%** — between `exile cast` (1.68%) and
+  `_ARTIFACT_MATTERS_RE` matches **272 pool cards, 1.73%** — beside `exile cast` (1.79%) and
   `pay life` (2.2%), under the 3.86% `exile cast` was capped to avoid. **The `(?<!or )` /
   `(?! or creature)` guards and the `an|another|one or more` anchor are load-bearing**: without
   the anchor it matches "when THIS artifact enters" (every artifact with an ETB), and `artifact
@@ -1872,15 +1872,14 @@ is invisible, and a handoff nobody is told to read is the same failure one layer
   consolidated swap plan; it is TEMPORARY and says so, and it is deleted once the
   swaps land. Named here because a fresh session loads nothing else, and the whole
   point of committing it per batch is that it outlives one context window.
-  **FOUR are live as of 2026-09-19** — read them before re-deriving their findings:
-  `prune-analysis.md` (the roster-wide prune shortlist for Arena's 100-deck cap:
-  card-overlap matrix + `similar` sweep + a three-tier candidate list, awaiting the
-  user's keep/cut calls — its overlap numbers predate deck 16's 2026-09-19 rebuild);
-  `wylie-tap-analysis.md` (Variant B, the mono-W tap-down control build, still
-  specced-but-undrafted; Variant C parked); `hob-followup-analysis.md`; and
-  `uw-equipment-analysis.md` (the 97-card UW pile, IN PROGRESS — it was live and
-  UNLISTED here for weeks, which is the failure this list exists to prevent).
-  Each is deleted when its work lands — the 54-family doc went on 2026-08-05 and
+  **NONE are live as of 2026-09-23** — the last four (`prune-analysis.md`,
+  `wylie-tap-analysis.md`, `hob-followup-analysis.md`, `uw-equipment-analysis.md`,
+  1,407 lines) were cleared at the owner's instruction with their proposals still
+  unapplied. **That is a deliberate abandonment, not a completion, and the difference
+  matters**: a future session that wants those analyses must `git show` them
+  (`git log --diff-filter=D -- .cycle/`), because nothing was folded into decks/ first.
+  What they held, and the one thing salvaged, is in `.cycle/HISTORY.md` under
+  2026-09-23. Each is deleted when its work lands — the 54-family doc went on 2026-08-05 and
   `56-tall-pile-analysis.md` on 2026-09-19, 13 days after its own header said the swaps
   had landed. **A finished doc left in place reads as live to anything that greps** —
   the `docs/tooling-improvement-plan.md` lesson, one directory over.

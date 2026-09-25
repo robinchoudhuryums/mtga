@@ -2964,10 +2964,10 @@ Lie in Wait,Sorcery,Return target creature card from your graveyard to your hand
 "Narset, Jeskai Waymaster",Legendary Creature — Human Monk,"At the beginning of your end step, you may discard your hand. If you do, draw cards equal to the number of spells you've cast this turn.",W/U/R,Human; Monk; card draw,TDM,209,1
 Avengers Tower,Land,"{T}: Add {C}.
 {T}: Add one mana of any color. Spend this mana only to cast a Hero spell or to activate an ability of a Hero source.
-{4}, {T}: Look at the top three cards of your library. You may reveal a Hero card from among them and put it into your hand. Put the rest on the bottom of your library in any order.",Colorless,mana; selection,MSH,260,3
+{4}, {T}: Look at the top three cards of your library. You may reveal a Hero card from among them and put it into your hand. Put the rest on the bottom of your library in any order.",Colorless,mana; selection,MSH,260,4
 Baxter Building,Land,"{T}: Add {C}.
 {4}, {T}: Add four mana in any combination of colors.
-{4}, {T}: Draw a card. Activate only if you control a creature with toughness 4 or greater.",Colorless,card draw; mana,MSH,261,2
+{4}, {T}: Draw a card. Activate only if you control a creature with toughness 4 or greater.",Colorless,card draw; mana,MSH,261,4
 Zuko's Exile,Instant — Lesson,"Exile target artifact, creature, or enchantment. Its controller creates a Clue token. (It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",Colorless,Lesson; card draw; sacrifice; tokens; removal; clue,TLA,3,1
 Rancorous Archaic,Creature — Avatar,"Trample, reach
 Converge — This creature enters with a +1/+1 counter on it for each color of mana spent to cast it.",Colorless,Avatar; counters; reach; defense; converge; multicolor; trample; evasion,SOS,2,2
@@ -5983,3 +5983,22 @@ Phoenix Fleet Airship,Artifact — Vehicle,"Flying
 At the beginning of your end step, if you sacrificed a permanent this turn, create a token that's a copy of this Vehicle.
 As long as you control eight or more permanents named Phoenix Fleet Airship, this Vehicle is an artifact creature.
 Crew 1",B,Vehicle; sacrifice; tokens; vehicle; flying; evasion; crew; vehicles,TLA,114,1
+Warden of the Grove,Creature — Hydra,"At the beginning of your end step, put a +1/+1 counter on this creature.
+Whenever another nontoken creature you control enters, it endures X, where X is the number of counters on this creature. (Put X +1/+1 counters on the creature that entered or create an X/X white Spirit creature token.)",G,Hydra; counters; tokens; endure,TDM,166,1
+Terrasymbiosis,Enchantment,"Whenever you put one or more +1/+1 counters on a creature you control, you may draw that many cards. Do this only once each turn.",G,counters; card draw,EOE,210,1
+Ordeal of Nylea,Enchantment — Aura,"Enchant creature
+Whenever enchanted creature attacks, put a +1/+1 counter on it. Then if it has three or more +1/+1 counters on it, sacrifice this Aura.
+When you sacrifice this Aura, search your library for up to two basic land cards, put them onto the battlefield tapped, then shuffle.",G,Aura; counters; sacrifice; aura; enchant,FDN,641,1
+Midnight Reaper,Creature — Zombie Knight,"Whenever a nontoken creature you control dies, this creature deals 1 damage to you and you draw a card.",B,Zombie; Knight; card draw; burn,FDN,609,1
+Overlord of the Balemurk,Enchantment Creature — Avatar Horror,"Impending 5—{1}{B} (If you cast this spell for its impending cost, it enters with five time counters and isn't a creature until the last is removed. At the beginning of your end step, remove a time counter from it.)
+Whenever this permanent enters or attacks, mill four cards, then you may return a non-Avatar creature card or a planeswalker card from your graveyard to your hand.",B,Avatar; Horror; graveyard; mill; impending; tempo; cost-reduction,DSK,113,1
+"Silk, Web Weaver",Legendary Creature — Spider Human Hero,"Web-slinging {1}{G}{W} (You may cast this spell for {1}{G}{W} if you also return a tapped creature you control to its owner's hand.)
+Whenever you cast a creature spell, create a 1/1 green and white Human Citizen creature token.
+{3}{G}{W}: Creatures you control get +2/+2 and gain vigilance until end of turn.",W/G,Spider; Human; Hero; tokens; pump; bounce; web-slinging; evasion; tempo; vigilance; combat,SPM,145,2
+"Brigid, Clachan's Heart",Legendary Creature — Kithkin Warrior // Legendary Creature — Kithkin Soldier,"Whenever this creature enters or transforms into Brigid, Clachan's Heart, create a 1/1 green and white Kithkin creature token.
+At the beginning of your first main phase, you may pay {G}. If you do, transform Brigid. // {T}: Add X {G} or X {W}, where X is the number of other creatures you control.
+At the beginning of your first main phase, you may pay {W}. If you do, transform Brigid.",W/G,Kithkin; Warrior; Soldier; tokens; mana; transform,ECL,7,1
+Herd Heirloom,Artifact,"{T}: Add one mana of any color. Spend this mana only to cast a creature spell.
+{T}: Until end of turn, target creature you control with power 4 or greater gains trample and ""Whenever this creature deals combat damage to a player, draw a card.""",G,card draw; mana; trample; evasion,TDM,144,1
+"Kraven, Proud Predator",Legendary Creature — Human Warrior Villain,"Vigilance
+Top of the Food Chain — Kraven's power is equal to the greatest mana value among permanents you control.",R/G,Human; Warrior; Villain; food; vigilance; combat,SPM,132,1

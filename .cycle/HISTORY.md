@@ -19,6 +19,53 @@ re-proposing a fix that was already declined.
 
 ---
 
+## 2026-09-23 — the four live pile-analysis docs were CLEARED, unapplied
+
+At the owner's instruction, and worth recording precisely because it is NOT the ending
+the `/pile-analysis` contract describes. That contract is: fold the durable findings into
+the deck files' `#: notes:`, THEN delete. Here the four docs were deleted with their
+consolidated plans still proposed-not-applied. **This was a deliberate abandonment, not a
+completion.** Nothing was folded first, so the analyses live only in git —
+`git log --diff-filter=D -- .cycle/` finds the deleting commit, `git show <sha>^:<path>`
+recovers a file.
+
+What went, 1,407 lines in total:
+
+- **`prune-analysis.md`** (176 lines, regenerated 2026-09-21). The roster-wide prune
+  shortlist for Arena's 100-deck cap. **Its own headline was that there is probably no
+  cap pressure at all**: the cap counts decks in the CLIENT and only 48 of 114 repo files
+  carry an `#: arena:` header, so every number in it was conditional on a count nobody has
+  taken. Its decision 1 said as much — "if the answer is near 48, close this doc". The
+  15 × 16 pair, once the one real candidate at 19 shared spells, had already decayed to 11
+  of 36 (cosine 80%) after deck 16's rebuild.
+- **`uw-equipment-analysis.md`** (608 lines). The 94-card UW equipment pile. Its deciding
+  finding, O2: the roster ALREADY holds four equipment decks (38 Armory WB, 39 Starforge
+  WR, 74 Iron Hills Forge WR, 26 Iron Forge UR), so a UW build would be the fourth W-based
+  one, and `suggest-homes` puts 38/39/74 first for almost every equipment in the pile.
+  O3 is the half worth remembering: **11 equipment are homeless for exactly one reason —
+  they are BLUE**, and no equipment deck on the roster is W+U, so a `{U}` equipment has
+  nowhere to go by construction.
+- **`hob-followup-analysis.md`** (341 lines). A 27-card mono-green pile against decks
+  69 / 69a / 69b, with a ranked consolidated plan and per-add cut candidates. All
+  proposed, none applied.
+- **`wylie-tap-analysis.md`** (282 lines). Core drafted as deck 73 and Variant A as 73a;
+  **Variant B (mono-W tap-down control) was specced and never drafted**, and it goes
+  unbuilt. Variant C was already parked on a G-59 payoff count.
+
+**ONE THING WAS SALVAGED BEFORE THE DELETE**, because it was a one-line edit the prune doc
+itself called "the cheapest remaining action in this document": deck 15's `#: archetype:`
+still read *"airbend + waterbend tempo"* and so still claimed the axis deck 16 was split
+off to own. Measured before rewriting rather than taken from the doc: deck 15 runs **8
+airbend cards against deck 16's ZERO, and 5 waterbend against its 14**, and its own
+`#: notes:` already explains the five as cost fuel rather than a theme. Header rewritten to
+say that, with the rationale audit re-run on BOTH decks per G-27 since the new prose cites
+deck 16 by number.
+
+**The transferable point.** CLAUDE.md's session-state list existed to stop a live doc going
+unlisted; it now has to carry the opposite fact, that the slot is empty and the last
+occupants were abandoned rather than finished. A reader who finds no `*-analysis.md` and no
+note would reasonably conclude the work landed. It did not.
+
 ## 2026-09-23 — the checkland gate read the basic COUNT, never the basic TYPE
 
 `lib._TAPLAND_CHECK_RE` matches two spellings in one alternation: the GENERIC "enters

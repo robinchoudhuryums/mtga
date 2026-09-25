@@ -635,10 +635,14 @@ session-start hook prints the live figures — trust it, not any number written 
    `metrics floor X` letter, all 14 read correct today — but four only because they
    were hand-corrected, not because anything checks them. Widening those patterns needs
    the roster sweep G-26 mandates.
-1. **`.cycle/prune-analysis.md` — the largest outstanding item, and it is BLOCKED ON THE
-   USER, not on analysis.** The roster is at 113 decks against Arena's 100-deck cap. The
-   doc carries the finished work — card-overlap matrix, `similar` sweep, playstyle belts,
-   a three-tier candidate list — and is waiting on keep/cut calls. Do not re-derive it.
+1. **The prune question is CLOSED WITHOUT AN ANSWER — `prune-analysis.md` was deleted
+   2026-09-23 at the owner's instruction, unapplied.** Its own headline was that there is
+   probably no cap pressure at all: the cap counts decks in the CLIENT and only **48 of
+   114** repo files carry an `#: arena:` header, so the whole document was conditional on
+   a count nobody has taken. If the prune question returns, take that count first
+   (`parse_matches.py --apply` harvests the headers) and recover the analysis with
+   `git show` — do not re-derive it by hand. The one cheap action it named WAS taken
+   before deletion: deck 15's archetype header no longer claims deck 16's waterbend axis.
 2. **Ownership drift — the two KNOWN cards are cleared, the CLASS is not.** Cool but Rude
    and Captain Howler, Sea Scourge were reconciled on 2026-08-19 and 26b now checks
    fully buildable. But every one of the ~10 corrections this stretch was found the same
@@ -661,8 +665,9 @@ session-start hook prints the live figures — trust it, not any number written 
    class `_ROLE_PATTERNS` has no bucket for; tap-down, extra-combat, taxing and hand
    attack are in the same position. Adding a bucket re-scores every deck running the
    type, so it is a decision to take deliberately, not a pattern fix to slip in.
-6. **Wylie Variant B** (mono-W tap-down control) remains specced-but-undrafted in
-   `.cycle/wylie-tap-analysis.md`; Variant C parked.
+6. **Wylie Variant B** (mono-W tap-down control) was specced-but-undrafted in
+   `.cycle/wylie-tap-analysis.md`, which was deleted 2026-09-23 with the spec unbuilt.
+   `git show` it if the build is ever wanted; Variant C was already parked.
 7. Noted in passing: **26a's own file flags that a near-mono-blue rebuild would eliminate
    its mana problems** — a real option nobody has priced.
 

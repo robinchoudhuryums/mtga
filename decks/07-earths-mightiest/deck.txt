@@ -1,22 +1,36 @@
 #: name: Earth's Mightiest
 #: format: Standard
 #: arena: 07 Earth’s Mightiest, e3a6c595-914d-4809-bd6d-630b3758ca89
-#: tier: A — Selesnya go-wide heroes (counters + tokens). Re-graded B -> A on 2026-09-12, AT its
-#: tier: metrics floor: interaction 8, card advantage 3, sum 11 against the 11 an A floor wants,
-#: tier: protection 4, curve 3.08.
+#: tier: A — Selesnya go-wide heroes (counters + tokens). Re-graded B -> A on 2026-09-12, when it sat
+#: tier: exactly AT its metrics floor. Live after the 2026-09-25 tune: interaction 7, card advantage 5,
+#: tier: sum 12 against the 11 an A floor wants, protection 5, curve 3.72.
 #: tier: THE CAP THIS DECK CARRIED WAS NAMED, AND IT IS THE THING THAT WENT AWAY. The B rested on
 #: tier: "NO REPEATABLE REFUEL, so a go-wide board folded to a single sweeper", and the stated path to
 #: tier: A was "a repeatable draw engine that scales off the wide board, not more interaction". The
-#: tier: deck now has three repeatable card-advantage sources and zero one-shots: Haliya, Ascendant
+#: tier: deck had three repeatable card-advantage sources and zero one-shots by then: Haliya, Ascendant
 #: tier: Cadet (crafted and maindecked 2026-08-10) and Avengers Assemble!, both of which refuel off
 #: tier: exactly the wide board the cap was about. Avengers Assemble! had been read as ZERO card
 #: tier: advantage until 2026-09-12, when a classifier hole was closed (a draw behind an intervening
 #: tier: if-clause scored nothing) — so part of this deck's refuel was invisible rather than absent,
 #: tier: and the list did not change on the day the floor moved.
 #: tier: AGAINST THE RUBRIC's four A tests: A-floor yes; coherent engine yes (`engines` reports
-#: tier: counters and tokens both BALANCED, 4 and 9 payoffs respectively); tight curve yes at 3.08;
-#: tier: at most one clear weakness — yes, and it is card advantage 3, which is the floor's own
-#: tier: minimum rather than a comfortable margin. A sweeper is still this deck's worst matchup.
+#: tier: counters and tokens both BALANCED, 3 and 11 payoffs respectively); tight curve — the SOFT
+#: tier: test now: 3.72 printed since the 2026-09-24 big-spell package (Curious Colossus and Glacier
+#: tier: Godmaw at 7, Web of Life and Destiny at 8), with ten cards at 5+. The owner's read is that the
+#: tier: deck pays less than that, and the pieces are real — Enduring Vitality (every creature taps for
+#: tier: any colour), Kona, Rescue Beastie (a free permanent), Doc Samson (taps for its power), Kirol
+#: tier: (copies Kona's or Web's trigger) and Web's own convoke — but the printed figure prices none of
+#: tier: them and they are FOUR cards: at least one is in hand by turn 4 in 53% of games (Vitality or
+#: tier: Kona alone, 31%). So the top end plays cheaper once the engine is up, and at printed cost in
+#: tier: roughly the other half of games;
+#: tier: at most one clear weakness — yes, and it is card advantage, which sat at the floor's own
+#: tier: minimum until Exemplar of Light (a draw whenever it gets +1/+1 counters), Viv Vision (a
+#: tier: draw on each attack at power 4+), Enduring Innocence, Mister Hyde and Finneas joined on
+#: tier: 2026-09-24; Beast, Erudite Aerialist left the same day for Serra Redeemer, so the count is 5
+#: tier: and the floor's sum clears by one. Interaction now sits exactly ON the A floor's minimum
+#: tier: since Spectacular Tactics was CUT for Captain America's Shield (2026-09-25): no margin on
+#: tier: either axis, so one more removal-for-threat trade drops the floor to B. A sweeper is
+#: tier: still this deck's worst matchup.
 #: tier: WHY THIS ONE MOVED WHEN 35 OTHER SUB-FLOOR DECKS DID NOT, since the standard has to be the
 #: tier: same for all of them: those 35 argue LIVE caps their floors cannot see — deck 26b's
 #: tier: zero-protection drain shell, 51's 3.97 curve compounding with thin answers, 45's 76% overlap
@@ -24,61 +38,111 @@
 #: tier: and asked to be re-graded. Being UNPLAYED is not a weakness of the LIST and is not what
 #: tier: holds a letter down here; it is why the deck is not S.
 #: tier: NOT S: that needs proven top-meta capability, and this deck has no recorded matches.
-#: tier: The thin spine is worth watching but is not the cap it was read as: 6 central themes is
-#: tier: 2nd-lowest on a 112-deck roster (median 14), which for a deck that does exactly two things —
-#: tier: counters and tokens, with 24 and 11 enablers — reads as FOCUS rather than as thinness.
+#: tier: The spine is no longer thin: 14 central themes, level with the roster median of 14,
+#: tier: up from 6 before the 2026-09-24 tunes, for a deck that still does two things —
+#: tier: counters and tokens, with 17 and 8 enablers — and now a mana engine under them.
 #: tier: Re-read after /log-matches.
 #: colors: GW
 #: archetype: Selesnya (G/W) Avengers heroes go-wide.
 #: notes: Selesnya (G/W) — Avengers heroes go-wide.
 #: notes: 2026-09-06 LAND SWEEP (owned four-ofs of the untapped-beside-a-basic duals): −Blossoming Sands, −Birnin Zana Plaza, −Kyoshi Village
 #: notes: +3x Gathering Place. Sources W 13 / G 16 → W 13 / G 16; unconditional taplands 3 → 0. Same colours, no tempo tax.
+#: notes: 2026-09-24 tune: -Wakandan Royal Guard/+Exemplar of Light (draws whenever it gets +1/+1
+#: notes: counters, once a turn — card advantage 3 -> 4); -2 Forest/+2 Evolving Wilds (a basic fetch
+#: notes: counts for both colours: W 13 -> 15, G stays 16, cards below 90% on curve 16 -> 9; the cost
+#: notes: is the fetched basic entering tapped); -2 Plains/+2 Abandoned Air Temple (same W source,
+#: notes: untapped beside any basic, plus a {3}{W} sink that counters every creature — flood insurance
+#: notes: that triggers Mikey & Leo and Exemplar). Temple Garden x2 is the untapped craft alternative.
+#: notes: 2026-09-24 second pass: -Knight of Wundagore/+Doc Samson (every counter placed on your
+#: notes: permanents gets one more: +1/+1, loyalty on Elspeth, lore on Origin, plan on Political
+#: notes: Triumph, Cap's shield); -Hulkling/+Viv Vision (draws on attack at power 4+; chosen over The
+#: notes: Vision, whose draw needs a noncreature spell and only 14 of 36 spells are); -Powerful
+#: notes: Broker/+Captain America, Super-Soldier (you and other Heroes have hexproof while his shield
+#: notes: holds).
+#: notes: 2026-09-24 third pass: -Friendly Neighborhood/+Silk, Web Weaver (a 1/1 token per creature
+#: notes: spell, plus a team pump sink); -Primeval Bounty/+Byrke, Long Ear of the Law (doubles the +1/+1
+#: notes: counters on each countered attacker); -Wildwood Scourge/+Enduring Innocence (draws once a turn
+#: notes: when small creatures or tokens enter, and it returns as an enchantment when it dies);
+#: notes: -White Tiger/+Mister Hyde (grows itself each upkeep, or turns a spare counter into a card);
+#: notes: -Colleen Wing/+Finneas, Ace Archer (counters every token when it attacks, and draws at total power 10+);
+#: notes: -1 Forest/+Evendo, Waking Haven (enters tapped; when stationed to 12+, {G},{T} adds G for each creature).
+#: notes: 2026-09-24 fourth pass, the big-spell package: -Flopsie/+Curious Colossus (on entry every creature
+#: notes: the opponent controls loses all abilities and becomes a 1/1 — no end-of-turn clause, so it lasts);
+#: notes: -Anafenza/+Enduring Vitality (creatures tap for any colour; returns as an enchantment when it dies;
+#: notes: Veteran Beastrider was KEPT over Anafenza because its end-step untap turns tapped mana creatures back
+#: notes: into blockers); -Kapow!/+Leatherhead, Swamp Stalker (enters with a hexproof counter, two with Doc
+#: notes: Samson; removes any counter on combat damage to destroy an artifact or enchantment);
+#: notes: -Political Triumph/+Kona, Rescue Beastie (puts a permanent from hand onto the battlefield in the
+#: notes: second main phase if Kona is tapped — attacking OR tapped for Vitality mana; the owner picked Kona
+#: notes: over Kinscaer Sentry, which also lets it drop Web of Life); -Leader's Talent/+Web of Life and Destiny
+#: notes: (convoke; each of your combats, a creature from the top five onto the battlefield; an enchantment,
+#: notes: so it survives creature wipes). Avg MV 3.22 -> 3.53, interaction 8 -> 9, protection 5 -> 6.
+#: notes: 2026-09-24 fifth pass (owner's picks): -Spider-Man, To the Rescue/+Kirol, Attentive First-Year
+#: notes: (tap two creatures: copy a triggered ability you control, once a turn — Byrke's doubling, Kona's
+#: notes: Survival, Web's creature, Serra's counters); -Beast, Erudite Aerialist/+Serra Redeemer (every
+#: notes: power-2-or-less creature that enters gets two +1/+1 counters, three with Doc Samson);
+#: notes: -Longstalk Brawl/+Glacier Godmaw (landfall: the team gets +1/+1, vigilance and haste; its Lander
+#: notes: token cracked at beginning of combat gives Web's fresh creature haste). Chosen over Invisible
+#: notes: Woman / The Thing as the cuts; interaction 9 -> 8, card advantage 6 -> 5, protection 6 -> 5,
+#: notes: avg MV 3.53 -> 3.72 — the owner reads the curve as cheaper than printed (see the tier block).
+#: notes: 2026-09-25: -Origin of the Avengers/+Kinscaer Sentry (owner's pick — first strike, lifelink, and on
+#: notes: attack puts a creature with MV up to the number of attackers from hand onto the battlefield attacking).
+#: notes: 2026-09-25: -Spectacular Tactics/+Captain America's Shield (owner's pick — on Captain America, Wings
+#: notes: of Freedom his toughness becomes 9, so every other attacking Hero gets +9/+9; the equipped creature
+#: notes: also taps a blocker on each attack). Interaction 8 -> 7, exactly the A floor's minimum.
+#: notes: 2026-09-25: -Veteran Beastrider/+Brigid, Clachan's Heart (owner's pick — a Kithkin token on entry,
+#: notes: then pay {G} to flip her into a mana source tapping for one per other creature). Earth's Mightiest
+#: notes: Heroes parked in the flex block over The Thing.
 
 # Nonland
 1 Agent Phil Coulson (MSH) 4
 1 Jennifer Walters (MSH) 18
-1 Origin of the Avengers (MSH) 28
+1 Kinscaer Sentry (ECL) 22
 1 Captain America, Wings of Freedom (MSH) 10
-1 Hulkling, Burgeoning Bruiser (MSH) 173
+1 Viv Vision, Teen Synthezoid (MSH) 256
 1 Avengers Assemble! (MSH) 6
-1 White Tiger, Ava Ayala (MSH) 196
+1 Mister Hyde, Monster Within (MSH) 176
 1 The Unbeatable Squirrel Girl (MSH) 193
 1 Elspeth, Storm Slayer (TDM) 11
 1 Valorous Stance (FDN) 583
-1 Wakandan Royal Guard (MSH) 195
+1 Exemplar of Light (FDN) 733
 1 The Thing, Ben Grimm (MSH) 190
-1 Spider-Man, To the Rescue (MSH) 228
+1 Kirol, Attentive First-Year (ECL) 231
 1 Black Panther, Vanguard (MSH) 207
-1 Colleen Wing, Street Samurai (MSH) 13
+1 Finneas, Ace Archer (BLB) 212
 1 Mikey & Leo, Chaos & Order (TMT) 158
-1 Political Triumph (MSH) 31
+1 Kona, Rescue Beastie (DSK) 187
 1 Requisition Raid (SOA) 10
 1 Battle Menu (FIN) 9
-1 Leader's Talent (TMT) 13
-1 Spectacular Tactics (SPM) 15
-1 Longstalk Brawl (BLB) 182
-1 Friendly Neighborhood (SPM) 8
+1 Web of Life and Destiny (SPM) 122
+1 Captain America's Shield (MSH) 244
+1 Glacier Godmaw (EOE) 188
+1 Silk, Web Weaver (SPM) 145
 1 Go Nuts! (MSH) 168
-1 Anafenza, Unyielding Lineage (TDM) 2
-1 Knight of Wundagore (MSH) 175
-1 Powerful Broker (MSH) 179
-1 Veteran Beastrider (DFT) 226
+1 Enduring Vitality (DSK) 176
+1 Doc Samson, Super Psychiatrist (MSH) 164
+1 Captain America, Super-Soldier (MSH) 9
+1 Brigid, Clachan's Heart // Brigid, Doun's Mind (ECL) 7
 1 Haliya, Ascendant Cadet (EOE) 218
-1 Primeval Bounty (FDN) 644
+1 Byrke, Long Ear of the Law (BLB) 380
 1 Michelangelo, Mutant BFF (TMT) 120
-1 Kapow! (SPM) 103
+1 Leatherhead, Swamp Stalker (TMT) 117
 1 Invisible Woman, Sue Storm (MSH) 17
-1 Flopsie, Bumi's Buddy (TLA) 179
-1 Wildwood Scourge (FDN) 236
-1 Beast, Erudite Aerialist (MSH) 206
+1 Curious Colossus (ECL) 12
+1 Enduring Innocence (DSK) 6
+1 Serra Redeemer (BLB) 387
 
 # Lands
-8 Plains (MSH) 288
+6 Plains (MSH) 288
+2 Abandoned Air Temple (TLA) 263
 4 Gathering Place (MSH) 266
 1 Hushwood Verge (DSK) 261
-11 Forest (MSH) 296
+8 Forest (MSH) 296
+1 Evendo, Waking Haven (EOE) 253
+2 Evolving Wilds (ECL) 264
 
 # Flex — STANDARD-LEGAL craft targets, weighted so you don't waste wildcards. See: deck.py flex 7
-#~ -Requisition Raid | +Kutzil's Flanker | CRAFT (R) ★ MARKED UPGRADE: flash — big counters OR removal; the flexible interaction the deck genuinely lacks
+#~ -The Thing, Ben Grimm | +Earth's Mightiest Heroes | OWNED (M) ★ owner's flex pick 2026-09-25: with teamwork 5 it puts EVERY creature card from the top eight onto the battlefield, roughly three or four in this creature-dense list, for six mana. The Thing is the same mana value so the curve holds; Invisible Woman was the other cut considered and is the Wall engine, so keep her. Teamwork taps creatures: cast it after combat with vigilance attackers or ones that stayed home.
+#~ note: RETIRED 2026-09-24 — the Kutzil's Flanker line proposed cutting Requisition Raid for a card that rotates in 2026, and Requisition Raid is one of only two artifact/enchantment answers the deck runs (Leatherhead is the other).
 #~ note: RETIRED — the Silver Sable line proposed cutting Foggy Swamp Vinebender, which left the deck rounds ago, and its own text already read "MINOR: lateral; don't spend a wildcard here". A suggestion that argues against itself is not worth retargeting.
 #~ note: card advantage already handled — Mikey & Leo (drew off counters) is now maindeck over Graduation Day. Sharp-Eyed Rookie would be a redundant sidegrade; skip it.
