@@ -5995,3 +5995,6 @@ Whenever this permanent enters or attacks, mill four cards, then you may return 
 "Silk, Web Weaver",Legendary Creature — Spider Human Hero,"Web-slinging {1}{G}{W} (You may cast this spell for {1}{G}{W} if you also return a tapped creature you control to its owner's hand.)
 Whenever you cast a creature spell, create a 1/1 green and white Human Citizen creature token.
 {3}{G}{W}: Creatures you control get +2/+2 and gain vigilance until end of turn.",W/G,Spider; Human; Hero; tokens; pump; bounce; web-slinging; evasion; tempo; vigilance; combat,SPM,145,2
+"Brigid, Clachan's Heart",Legendary Creature — Kithkin Warrior // Legendary Creature — Kithkin Soldier,"Whenever this creature enters or transforms into Brigid, Clachan's Heart, create a 1/1 green and white Kithkin creature token.
+At the beginning of your first main phase, you may pay {G}. If you do, transform Brigid. // {T}: Add X {G} or X {W}, where X is the number of other creatures you control.
+At the beginning of your first main phase, you may pay {W}. If you do, transform Brigid.",W/G,Kithkin; Warrior; Soldier; tokens; mana; transform,ECL,7,1

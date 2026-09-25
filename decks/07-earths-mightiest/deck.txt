@@ -14,7 +14,7 @@
 #: tier: if-clause scored nothing) — so part of this deck's refuel was invisible rather than absent,
 #: tier: and the list did not change on the day the floor moved.
 #: tier: AGAINST THE RUBRIC's four A tests: A-floor yes; coherent engine yes (`engines` reports
-#: tier: counters and tokens both BALANCED, 3 and 12 payoffs respectively); tight curve — the SOFT
+#: tier: counters and tokens both BALANCED, 3 and 11 payoffs respectively); tight curve — the SOFT
 #: tier: test now: 3.72 printed since the 2026-09-24 big-spell package (Curious Colossus and Glacier
 #: tier: Godmaw at 7, Web of Life and Destiny at 8), with ten cards at 5+. The owner's read is that the
 #: tier: deck pays less than that, and the pieces are real — Enduring Vitality (every creature taps for
@@ -36,9 +36,9 @@
 #: tier: and asked to be re-graded. Being UNPLAYED is not a weakness of the LIST and is not what
 #: tier: holds a letter down here; it is why the deck is not S.
 #: tier: NOT S: that needs proven top-meta capability, and this deck has no recorded matches.
-#: tier: The spine is no longer thin: 11 central themes against a roster median of 14 (24 of 112
+#: tier: The spine is no longer thin: 12 central themes against a roster median of 14 (35 of 112
 #: tier: decks run fewer), up from 6 before the 2026-09-24 tunes, for a deck that still does two things —
-#: tier: counters and tokens, with 18 and 8 enablers — and now a mana engine under them.
+#: tier: counters and tokens, with 17 and 8 enablers — and now a mana engine under them.
 #: tier: Re-read after /log-matches.
 #: colors: GW
 #: archetype: Selesnya (G/W) Avengers heroes go-wide.
@@ -83,11 +83,13 @@
 #: notes: token cracked at beginning of combat gives Web's fresh creature haste). Chosen over Invisible
 #: notes: Woman / The Thing as the cuts; interaction 9 -> 8, card advantage 6 -> 5, protection 6 -> 5,
 #: notes: avg MV 3.53 -> 3.72 — the owner reads the curve as cheaper than printed (see the tier block).
+#: notes: 2026-09-25: -Origin of the Avengers/+Kinscaer Sentry (owner's pick — first strike, lifelink, and on
+#: notes: attack puts a creature with MV up to the number of attackers from hand onto the battlefield attacking).
 
 # Nonland
 1 Agent Phil Coulson (MSH) 4
 1 Jennifer Walters (MSH) 18
-1 Origin of the Avengers (MSH) 28
+1 Kinscaer Sentry (ECL) 22
 1 Captain America, Wings of Freedom (MSH) 10
 1 Viv Vision, Teen Synthezoid (MSH) 256
 1 Avengers Assemble! (MSH) 6
