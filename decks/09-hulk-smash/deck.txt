@@ -1,15 +1,16 @@
 #: name: Hulk Smash
 #: format: Standard
-#: tier: A — Gruul counters/smash. Live after the 2026-09-25 second pass: interaction 13, card advantage 7,
-#: tier: sum 20 against the 11 an A floor wants, curve 3.25 (3.11 effective).
+#: tier: A — Gruul counters/smash. Live after the 2026-09-25 third pass: interaction 12, card advantage 7,
+#: tier: sum 19 against the 11 an A floor wants, curve 3.28 (3.14 effective).
 #: tier: AGAINST THE RUBRIC's four A tests: A-floor yes; coherent engine yes (counter placers feed
 #: tier: Michelangelo, Weirdness to 11, the bite/fight spells turn that size into removal, and Bitter
-#: tier: Work, Viv, Halana and Wolverine pay off the same big bodies attacking); the curve is no longer
-#: tier: tight — the second pass bought Tyvar, Viv, Halana and Mikey & Leo with early drops, so it plays
-#: tier: as midrange, not a fast smash; at most one clear weakness — protection is 1, and it is Tyvar
-#: tier: shielding only himself (tap another creature: he gains indestructible), so a removal-heavy
-#: tier: opponent can still pick the Hulks off one at a time. Card advantage is now mostly repeatable:
-#: tier: Hunter's Talent, Bitter Work, Viv, Buster Sword and Mikey & Leo all draw more than once.
+#: tier: Work, Viv, Halana and Wolverine pay off the same big bodies attacking — twice a turn once Raph
+#: tier: & Leo attack, since they add a second combat); the curve is no longer tight — the second pass
+#: tier: bought Tyvar, Viv, Halana and Mikey & Leo with early drops, so it plays as midrange, not a fast
+#: tier: smash; at most one clear weakness — that curve, since a fast opponent can get under a 3.28
+#: tier: list. Protection, the weakness this block used to name, is now 3: Overprotect at instant speed,
+#: tier: Leatherhead's hexproof counter, and Tyvar shielding only himself. Card advantage is mostly
+#: tier: repeatable: Hunter's Talent, Bitter Work, Viv, Buster Sword, Mikey & Leo and Herd Heirloom.
 #: tier: NOT S: that needs proven top-meta capability, and this deck has no recorded matches.
 #: colors: RG
 #: archetype: Gruul (R/G) big creatures / smash.
@@ -33,6 +34,10 @@
 #: notes: Spelunker/+Vibrance; -Blazing Crescendo (2nd slot)/+Mikey & Leo, Chaos & Order; -HYDRA Assault
 #: notes: Robot/+Viv Vision, Teen Synthezoid; -Wildwood Scourge/+Buster Sword. Interaction 11 -> 13,
 #: notes: card advantage 5 -> 7, curve 2.94 -> 3.25 — the curve cost was accepted for the bigger bodies.
+#: notes: 2026-09-25 third pass (owner's picks): -Blazing Crescendo/+Overprotect; -Death to Our Enemies/+Raph
+#: notes: & Leo, Sibling Rivals (a second combat every turn they attack); -Hell to Pay/+Herd Heirloom; -The
+#: notes: Unbeatable Squirrel Girl/+Leatherhead, Swamp Stalker (GGG at 58.6% on curve for GG at 84.7%).
+#: notes: Interaction 13 -> 12, protection 1 -> 3, curve 3.25 -> 3.28.
 
 # Nonland
 1 World War Hulk (MSH) 197
@@ -42,14 +47,14 @@
 1 Drix Fatemaker (EOE) 178
 1 Surrak, Elusive Hunter (TDM) 161
 1 Sylvan Scavenging (FDN) 113
-1 Death to Our Enemies (MSH) 127
+1 Raph & Leo, Sibling Rivals (TMT) 166
 1 Punishing Punch (MSH) 180
 1 She-Hulk, Jade Defender (MSH) 188
 1 Abomination, Terrifying Titan (MSH) 198
 1 Wolverine, Fierce Fighter (MSH) 240
 1 Mutagen Man, Living Ooze (TMT) 124
 1 The Last Agni Kai (TLA) 144
-1 The Unbeatable Squirrel Girl (MSH) 193
+1 Leatherhead, Swamp Stalker (TMT) 117
 1 Hulk, Gamma Goliath (MSH) 215
 1 Bitter Work (TLA) 210
 1 Pain for All (EOE) 151
@@ -58,7 +63,7 @@
 1 Manhole Missile (TMT) 94
 1 HULK SMASH! (MSH) 135
 1 Bulk Up (SOA) 40
-1 Blazing Crescendo (MSH) 125
+1 Overprotect (BLB) 185
 1 Mikey & Leo, Chaos & Order (TMT) 158
 1 Iroh's Demonstration (TLA) 141
 1 Michelangelo, Weirdness to 11 (TMT) 121
@@ -66,7 +71,7 @@
 1 Viv Vision, Teen Synthezoid (MSH) 256
 1 Halana and Alena, Partners (VOW) 239
 1 Hunter's Talent (BLB) 179
-1 Hell to Pay (OTJ) 126
+1 Herd Heirloom (TDM) 144
 1 Epic Fight (MSH) 166
 1 Primeval Bounty (FDN) 644
 1 Red Hulk (MSH) 149

@@ -2,8 +2,8 @@
 #: format: Standard
 #: arena: 07 Earth’s Mightiest, e3a6c595-914d-4809-bd6d-630b3758ca89
 #: tier: A — Selesnya go-wide heroes (counters + tokens). Re-graded B -> A on 2026-09-12, when it sat
-#: tier: exactly AT its metrics floor. Live after the 2026-09-24 tunes: interaction 8, card advantage 5,
-#: tier: sum 13 against the 11 an A floor wants, protection 5, curve 3.72.
+#: tier: exactly AT its metrics floor. Live after the 2026-09-25 tune: interaction 7, card advantage 5,
+#: tier: sum 12 against the 11 an A floor wants, protection 5, curve 3.72.
 #: tier: THE CAP THIS DECK CARRIED WAS NAMED, AND IT IS THE THING THAT WENT AWAY. The B rested on
 #: tier: "NO REPEATABLE REFUEL, so a go-wide board folded to a single sweeper", and the stated path to
 #: tier: A was "a repeatable draw engine that scales off the wide board, not more interaction". The
@@ -27,7 +27,9 @@
 #: tier: minimum until Exemplar of Light (a draw whenever it gets +1/+1 counters), Viv Vision (a
 #: tier: draw on each attack at power 4+), Enduring Innocence, Mister Hyde and Finneas joined on
 #: tier: 2026-09-24; Beast, Erudite Aerialist left the same day for Serra Redeemer, so the count is 5
-#: tier: and the floor's sum clears by two: a margin, not a comfortable one. A sweeper is
+#: tier: and the floor's sum clears by one. Interaction now sits exactly ON the A floor's minimum
+#: tier: since Spectacular Tactics was CUT for Captain America's Shield (2026-09-25): no margin on
+#: tier: either axis, so one more removal-for-threat trade drops the floor to B. A sweeper is
 #: tier: still this deck's worst matchup.
 #: tier: WHY THIS ONE MOVED WHEN 35 OTHER SUB-FLOOR DECKS DID NOT, since the standard has to be the
 #: tier: same for all of them: those 35 argue LIVE caps their floors cannot see — deck 26b's
@@ -36,8 +38,8 @@
 #: tier: and asked to be re-graded. Being UNPLAYED is not a weakness of the LIST and is not what
 #: tier: holds a letter down here; it is why the deck is not S.
 #: tier: NOT S: that needs proven top-meta capability, and this deck has no recorded matches.
-#: tier: The spine is no longer thin: 12 central themes against a roster median of 14 (35 of 112
-#: tier: decks run fewer), up from 6 before the 2026-09-24 tunes, for a deck that still does two things —
+#: tier: The spine is no longer thin: 14 central themes, level with the roster median of 14,
+#: tier: up from 6 before the 2026-09-24 tunes, for a deck that still does two things —
 #: tier: counters and tokens, with 17 and 8 enablers — and now a mana engine under them.
 #: tier: Re-read after /log-matches.
 #: colors: GW
@@ -85,6 +87,9 @@
 #: notes: avg MV 3.53 -> 3.72 — the owner reads the curve as cheaper than printed (see the tier block).
 #: notes: 2026-09-25: -Origin of the Avengers/+Kinscaer Sentry (owner's pick — first strike, lifelink, and on
 #: notes: attack puts a creature with MV up to the number of attackers from hand onto the battlefield attacking).
+#: notes: 2026-09-25: -Spectacular Tactics/+Captain America's Shield (owner's pick — on Captain America, Wings
+#: notes: of Freedom his toughness becomes 9, so every other attacking Hero gets +9/+9; the equipped creature
+#: notes: also taps a blocker on each attack). Interaction 8 -> 7, exactly the A floor's minimum.
 
 # Nonland
 1 Agent Phil Coulson (MSH) 4
@@ -107,7 +112,7 @@
 1 Requisition Raid (SOA) 10
 1 Battle Menu (FIN) 9
 1 Web of Life and Destiny (SPM) 122
-1 Spectacular Tactics (SPM) 15
+1 Captain America's Shield (MSH) 244
 1 Glacier Godmaw (EOE) 188
 1 Silk, Web Weaver (SPM) 145
 1 Go Nuts! (MSH) 168

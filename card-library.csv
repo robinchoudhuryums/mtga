@@ -6000,3 +6000,5 @@ At the beginning of your first main phase, you may pay {G}. If you do, transform
 At the beginning of your first main phase, you may pay {W}. If you do, transform Brigid.",W/G,Kithkin; Warrior; Soldier; tokens; mana; transform,ECL,7,1
 Herd Heirloom,Artifact,"{T}: Add one mana of any color. Spend this mana only to cast a creature spell.
 {T}: Until end of turn, target creature you control with power 4 or greater gains trample and ""Whenever this creature deals combat damage to a player, draw a card.""",G,card draw; mana; trample; evasion,TDM,144,1
+"Kraven, Proud Predator",Legendary Creature — Human Warrior Villain,"Vigilance
+Top of the Food Chain — Kraven's power is equal to the greatest mana value among permanents you control.",R/G,Human; Warrior; Villain; food; vigilance; combat,SPM,132,1
