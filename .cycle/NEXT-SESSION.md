@@ -19,7 +19,17 @@ commands disagree.
 
 ## 0-current. THE 2026-08-24 SESSION (READ THIS FIRST — supersedes §0-latest below)
 
-> **STATE STAMP, 2026-09-19 (NEWEST — supersedes every stamp below it).** Seventeen
+> **STATE STAMP, 2026-09-25 (NEWEST).** One thing in flight: the **match digest** —
+> recording play/draw, mulligans, land drops and the opponent's cards from Arena's full
+> game-state log, so loss reasons stop depending on memory. The plan, the owner's three
+> decisions and the Step 0 check are in **`.cycle/match-digest-plan.md`**. NOTHING IS
+> BUILT, and nothing should be until the owner has run Step 0 on the Mac and pasted its
+> output — it confirms the data still exists and supplies the real field layout the
+> fixtures must follow. The same day also: 51 matches logged (186 recorded), 14 decks
+> renamed to their Arena names, and the `--sync-names` warnings fixed (gloss, case, card
+> names — measured in `docs/gotchas.md` G-73).
+>
+> **STATE STAMP, 2026-09-19 (supersedes every stamp below it).** Seventeen
 > commits since the last stamp, across four threads. Nothing here is outstanding unless it
 > says so.
 >
