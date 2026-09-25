@@ -1,5 +1,6 @@
 #: name: Warg and Woodland (payoffs gated on power 4)
 #: format: Standard
+#: arena: 69 Bear-Wolf, 9e88298a-21f7-4746-a739-6da900cc9343
 #: colors: BG
 #: plan: midrange
 #: tier: B — and the ARGUMENT behind it inverted on 2026-09-20, so read this before

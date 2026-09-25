@@ -1476,10 +1476,10 @@ earned it: [C-01]
 
 **Subsystems:**
 - Data: card-library.csv, card-pool.csv, card-mana.csv, card-wishlist.csv, matches.csv
-  (LIVE since 2026-08-10 — 135 matches, 132 attributed across 40 decks, pooled 69-66; the
-  best per-deck row is n=15 (deck 45) against the 20-match floor after six weeks, which is
+  (LIVE since 2026-08-10 — 186 matches, 183 attributed across 46 decks, pooled 95-90-1; the
+  best per-deck row is n=16 (deck 79) against the 20-match floor after seven weeks, which is
   why `--report` also POOLS, and why the four HAND columns exist at all — G-74; all four are
-  still EMPTY in all 135 rows, so scenario 11 remains the only thing that can prove that
+  still EMPTY in all 186 rows, so scenario 11 remains the only thing that can prove that
   loop closes), recommendations.csv,
   collection-stamp.json (written only by `import_collection.py --apply` — the date owned
   counts were last EXACT; absent until the first run, and since 2026-09-20 `check_all`

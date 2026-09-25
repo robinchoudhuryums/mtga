@@ -1,5 +1,6 @@
 #: name: Hulk Smash
 #: format: Standard
+#: arena: 09 Hulk Smash, 526138c5-bbfd-4094-afd4-67a748f1cb89
 #: tier: A — Gruul counters/smash. Live after the 2026-09-25 sixth pass: interaction 11, card advantage 9,
 #: tier: sum 20 against the 11 an A floor wants, curve 3.33 (3.25 effective).
 #: tier: AGAINST THE RUBRIC's four A tests: A-floor yes; coherent engine yes (counter placers feed

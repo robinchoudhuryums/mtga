@@ -1,5 +1,6 @@
 #: name: Black Sun (sac tokens for reach)
 #: format: Standard
+#: arena: 01 Black Sun, 481ff989-bb8e-4794-b5bb-19e4163f9cf5
 #: tier: A — Rakdos aggro-sacrifice; 8 interaction + reach — resilient and consistent
 #: colors: BR
 #: plan: midrange
