@@ -1,17 +1,20 @@
 #: name: Hulk Smash
 #: format: Standard
-#: tier: A — Gruul counters/smash. Live after the 2026-09-25 fifth pass: interaction 11, card advantage 8,
-#: tier: sum 19 against the 11 an A floor wants, curve 3.31 (3.17 effective).
+#: tier: A — Gruul counters/smash. Live after the 2026-09-25 sixth pass: interaction 11, card advantage 9,
+#: tier: sum 20 against the 11 an A floor wants, curve 3.33 (3.25 effective).
 #: tier: AGAINST THE RUBRIC's four A tests: A-floor yes; coherent engine yes (counter placers feed
 #: tier: Michelangelo, Weirdness to 11, the bite/fight spells turn that size into removal, and Bitter
 #: tier: Work, Viv, Halana and Wolverine pay off the same big bodies attacking — twice a turn once Raph
-#: tier: & Leo attack, since they add a second combat); the curve is no longer tight — the second pass
-#: tier: bought Tyvar, Viv, Halana and Mikey & Leo with early drops, so it plays as midrange, not a fast
-#: tier: smash; at most one clear weakness — that curve, since a fast opponent can get under a 3.31
-#: tier: list, and the fourth pass traded two mid-curve engines for Quilled Greatwurm and West Wind Avatar. Protection, the weakness this block used to name, is now 3: Overprotect at instant speed,
-#: tier: Leatherhead's hexproof counter, and Tyvar shielding only himself. Card advantage is mostly
-#: tier: repeatable: Hunter's Talent, Bitter Work, Viv, Buster Sword, Mikey & Leo, Herd Heirloom and West
-#: tier: Wind Avatar (an end-step draw whenever a permanent left, which its own attack trigger arranges).
+#: tier: & Leo attack, since they add a second combat — while Garruk's Uprising gives every one of them
+#: tier: trample); the curve is no longer tight — the second pass bought Tyvar, Viv, Halana and Mikey &
+#: tier: Leo with early drops, and the fourth traded two mid-curve engines for Quilled Greatwurm and West
+#: tier: Wind Avatar, so it plays as midrange, not a fast smash; at most one clear weakness — that curve,
+#: tier: since a fast opponent can get under a 3.33 list. Protection, the weakness this block used to
+#: tier: name, is now 3: Overprotect at instant speed, Leatherhead's hexproof counter, and Tyvar
+#: tier: shielding only himself. Card advantage is mostly repeatable: Hunter's Talent, Bitter Work, Viv,
+#: tier: Buster Sword, Mikey & Leo, Herd Heirloom, West Wind Avatar (an end-step draw whenever a
+#: tier: permanent left, which its own attack trigger arranges) and Garruk's Uprising (a draw for each
+#: tier: power-4+ creature that enters).
 #: tier: NOT S: that needs proven top-meta capability, and this deck has no recorded matches.
 #: colors: RG
 #: archetype: Gruul (R/G) big creatures / smash.
@@ -45,14 +48,18 @@
 #: notes: 2026-09-25 fifth pass (owner's pick): -Manhole Missile/+Tifa's Limit Break (+2/+2 for {G}, double for
 #: notes: {2}{G}, triple for {6}{G}{G}). Interaction 12 -> 11; the removal that needs no creature of yours is now
 #: notes: Vibrance and Iroh's Demonstration alone, so keep both.
+#: notes: 2026-09-25 sixth pass (owner's picks): -Drix Fatemaker/+Garruk's Uprising (team trample, and a draw
+#: notes: whenever a creature with power 4 or greater enters); -Surrak, Elusive Hunter/+Wonder Man, Hollywood Hero
+#: notes: (each power-up can be activated an additional time). Card advantage 8 -> 9, curve 3.31 -> 3.33.
+#: notes: Radagast of Rhosgobel was weighed and passed on: a 4-mana 2/5 whose discount skips power-ups.
 
 # Nonland
 1 World War Hulk (MSH) 197
 1 Vibrance (ECL) 249
 1 Buster Sword (FIN) 255
 1 Michelangelo, Mutant BFF (TMT) 120
-1 Drix Fatemaker (EOE) 178
-1 Surrak, Elusive Hunter (TDM) 161
+1 Garruk's Uprising (M21) 186
+1 Wonder Man, Hollywood Hero (MSH) 160
 1 Kraven, Proud Predator (SPM) 132
 1 Raph & Leo, Sibling Rivals (TMT) 166
 1 Punishing Punch (MSH) 180
