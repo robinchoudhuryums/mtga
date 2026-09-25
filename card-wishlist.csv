@@ -35,8 +35,6 @@ Whenever one or more land cards are put into your graveyard from your library, p
 Crew 1 (Tap any number of creatures you control with total power 1 or more: This Vehicle becomes an artifact creature until end of turn.)",G,Vehicle; reanimator; graveyard; mill; vehicle; crew; vehicles,DSK,183,Rare,,,3.0,seed
 The Mindskinner,Legendary Enchantment Creature — Nightmare,"The Mindskinner can't be blocked.
 If a source you control would deal damage to an opponent, prevent that damage and each opponent mills that many cards.",U,Nightmare; mill; graveyard,DSK,66,Rare,51a,"Deck 51a: converts every damage source you control into mill, +4 each with the Water Crystal. Pure upside HERE because the deck has no combat plan to lose - it would be a trap in parent 51, which wins with Krang and the Terrors.",7.2,hand
-Thornspire Verge,Land,"{T}: Add {R}.
-{T}: Add {G}. Activate only if you control a Mountain or a Forest.",R/G,mana,DSK,270,Rare,9,deck 9 manabase: 3 more copies (4 total) replace Castle Doom + 2 Forest; red sources 12 -> 15,4.0,seed
 Unholy Annex // Ritual Chamber,Enchantment — Room // Enchantment — Room,"At the beginning of your end step, draw a card. If you control a Demon, each opponent loses 2 life and you gain 2 life. Otherwise, you lose 2 life.
 (You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.) // When you unlock this door, create a 6/6 black Demon creature token with flying.
 (You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",B,Room; lifegain; pay life; card draw; tokens,DSK,118,Rare,52a,,6.5,seed

@@ -52,6 +52,11 @@
 #: notes: whenever a creature with power 4 or greater enters); -Surrak, Elusive Hunter/+Wonder Man, Hollywood Hero
 #: notes: (each power-up can be activated an additional time). Card advantage 8 -> 9, curve 3.31 -> 3.33.
 #: notes: Radagast of Rhosgobel was weighed and passed on: a 4-mana 2/5 whose discount skips power-ups.
+#: notes: 2026-09-25 manabase, owned lands only (owner's call — only one Thornspire Verge is owned): -3 Thornspire
+#: notes: Verge/+Starting Town (untapped on turns 1-3, any colour for 1 life), +Fire Nation Palace (untapped beside a
+#: notes: basic), +Restless Ridgeline (always tapped; RG, and a 3/4 attacker). Sources R 15 / G 17 -> R 15 / G 16.
+#: notes: The Thornspire wishlist row was dropped. Note: consistency reads Starting Town's white as unbinding the
+#: notes: {R/W} and {G/W} hybrids, so Raph & Leo and Mikey & Leo read easier there than they really are.
 
 # Nonland
 1 World War Hulk (MSH) 197
@@ -92,7 +97,10 @@
 1 West Wind Avatar (TMT) 137
 
 # Lands
-4 Thornspire Verge (DSK) 270
+1 Thornspire Verge (DSK) 270
+1 Restless Ridgeline (LCI) 283
+1 Fire Nation Palace (TLA) 268
+1 Starting Town (FIN) 289
 4 Training Compound (MSH) 275
 7 Mountain (MSH) 294
 9 Forest (MSH) 296
