@@ -1,13 +1,13 @@
 #: name: Hulk Smash
 #: format: Standard
-#: tier: A — Gruul counters/smash. Live after the 2026-09-25 fourth pass: interaction 12, card advantage 8,
-#: tier: sum 20 against the 11 an A floor wants, curve 3.33 (3.19 effective).
+#: tier: A — Gruul counters/smash. Live after the 2026-09-25 fifth pass: interaction 11, card advantage 8,
+#: tier: sum 19 against the 11 an A floor wants, curve 3.31 (3.17 effective).
 #: tier: AGAINST THE RUBRIC's four A tests: A-floor yes; coherent engine yes (counter placers feed
 #: tier: Michelangelo, Weirdness to 11, the bite/fight spells turn that size into removal, and Bitter
 #: tier: Work, Viv, Halana and Wolverine pay off the same big bodies attacking — twice a turn once Raph
 #: tier: & Leo attack, since they add a second combat); the curve is no longer tight — the second pass
 #: tier: bought Tyvar, Viv, Halana and Mikey & Leo with early drops, so it plays as midrange, not a fast
-#: tier: smash; at most one clear weakness — that curve, since a fast opponent can get under a 3.33
+#: tier: smash; at most one clear weakness — that curve, since a fast opponent can get under a 3.31
 #: tier: list, and the fourth pass traded two mid-curve engines for Quilled Greatwurm and West Wind Avatar. Protection, the weakness this block used to name, is now 3: Overprotect at instant speed,
 #: tier: Leatherhead's hexproof counter, and Tyvar shielding only himself. Card advantage is mostly
 #: tier: repeatable: Hunter's Talent, Bitter Work, Viv, Buster Sword, Mikey & Leo, Herd Heirloom and West
@@ -42,6 +42,9 @@
 #: notes: 2026-09-25 fourth pass (owner's picks): -Sylvan Scavenging/+Kraven, Proud Predator (power = the
 #: notes: greatest mana value among your permanents); -Ka-Zar of the Savage Land/+West Wind Avatar;
 #: notes: -Primeval Bounty/+Quilled Greatwurm. Card advantage 7 -> 8, curve 3.28 -> 3.33.
+#: notes: 2026-09-25 fifth pass (owner's pick): -Manhole Missile/+Tifa's Limit Break (+2/+2 for {G}, double for
+#: notes: {2}{G}, triple for {6}{G}{G}). Interaction 12 -> 11; the removal that needs no creature of yours is now
+#: notes: Vibrance and Iroh's Demonstration alone, so keep both.
 
 # Nonland
 1 World War Hulk (MSH) 197
@@ -64,7 +67,7 @@
 1 Pain for All (EOE) 151
 1 Tyvar, the Pummeler (DSK) 202
 1 Hugs, Grisly Guardian (BLB) 218
-1 Manhole Missile (TMT) 94
+1 Tifa's Limit Break (FIN) 207
 1 HULK SMASH! (MSH) 135
 1 Bulk Up (SOA) 40
 1 Overprotect (BLB) 185
