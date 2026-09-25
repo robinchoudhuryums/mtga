@@ -90,6 +90,9 @@
 #: notes: 2026-09-25: -Spectacular Tactics/+Captain America's Shield (owner's pick — on Captain America, Wings
 #: notes: of Freedom his toughness becomes 9, so every other attacking Hero gets +9/+9; the equipped creature
 #: notes: also taps a blocker on each attack). Interaction 8 -> 7, exactly the A floor's minimum.
+#: notes: 2026-09-25: -Veteran Beastrider/+Brigid, Clachan's Heart (owner's pick — a Kithkin token on entry,
+#: notes: then pay {G} to flip her into a mana source tapping for one per other creature). Earth's Mightiest
+#: notes: Heroes parked in the flex block over The Thing.
 
 # Nonland
 1 Agent Phil Coulson (MSH) 4
@@ -119,7 +122,7 @@
 1 Enduring Vitality (DSK) 176
 1 Doc Samson, Super Psychiatrist (MSH) 164
 1 Captain America, Super-Soldier (MSH) 9
-1 Veteran Beastrider (DFT) 226
+1 Brigid, Clachan's Heart // Brigid, Doun's Mind (ECL) 7
 1 Haliya, Ascendant Cadet (EOE) 218
 1 Byrke, Long Ear of the Law (BLB) 380
 1 Michelangelo, Mutant BFF (TMT) 120
@@ -139,6 +142,7 @@
 2 Evolving Wilds (ECL) 264
 
 # Flex — STANDARD-LEGAL craft targets, weighted so you don't waste wildcards. See: deck.py flex 7
+#~ -The Thing, Ben Grimm | +Earth's Mightiest Heroes | OWNED (M) ★ owner's flex pick 2026-09-25: with teamwork 5 it puts EVERY creature card from the top eight onto the battlefield, roughly three or four in this creature-dense list, for six mana. The Thing is the same mana value so the curve holds; Invisible Woman was the other cut considered and is the Wall engine, so keep her. Teamwork taps creatures: cast it after combat with vigilance attackers or ones that stayed home.
 #~ note: RETIRED 2026-09-24 — the Kutzil's Flanker line proposed cutting Requisition Raid for a card that rotates in 2026, and Requisition Raid is one of only two artifact/enchantment answers the deck runs (Leatherhead is the other).
 #~ note: RETIRED — the Silver Sable line proposed cutting Foggy Swamp Vinebender, which left the deck rounds ago, and its own text already read "MINOR: lateral; don't spend a wildcard here". A suggestion that argues against itself is not worth retargeting.
 #~ note: card advantage already handled — Mikey & Leo (drew off counters) is now maindeck over Graduation Day. Sharp-Eyed Rookie would be a redundant sidegrade; skip it.

@@ -454,7 +454,7 @@ is protecting.
   **THE LIST IS A WINDOW AND THE RANKING IS THEME FIT, so read a card's ABSENCE as neither
   (BS10-05).** The footer counted the TRUNCATION, so it read "20 suggestion(s)" whether the
   ranking held 20 candidates or 958; it now prints "top N of M ranked candidate(s)"
-  (`--limit 0` for all). Why it matters is measured, not asserted: across **963 applied swaps
+  (`--limit 0` for all). Why it matters is measured, not asserted: across **967 applied swaps
   that recorded a rank for the card ADDED, the MEDIAN rank is 364** and only **11%** fell
   inside the default top 20. `deck.py feedback` reports that distribution. A card chosen for
   a mechanical interaction the tags do not encode ranks far down BY CONSTRUCTION — a
@@ -951,8 +951,8 @@ is protecting.
   2026-09-03. `deck_quality_vector` publishes it, `tier_band` ignores it, and a test pins
   that two decks differing only in creature SIZE land in the same band. **THREE THINGS IT
   CANNOT SEE, disclosed rather than guessed at:** a printed `*`/X power is counted APART
-  and never coerced to 0 (G-16), which is no corner case — **70 of 112 decks** hold one,
-  so a bare sum would under-report on 62% of the roster; TOKENS and other created bodies
+  and never coerced to 0 (G-16), which is no corner case — **71 of 112 decks** hold one,
+  so a bare sum would under-report on 63% of the roster; TOKENS and other created bodies
   read ZERO, so a card making two 3/3s contributes nothing; and VEHICLES are counted
   apart, not being creatures until crewed. Read the figure as a FLOOR on what the deck can
   present, never a ceiling. [G-86]
