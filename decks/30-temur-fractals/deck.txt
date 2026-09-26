@@ -54,6 +54,10 @@
 #: notes: Pathfinder: interaction held at 7 (Loot's {R},{T} 3 damage replaces the hard counter —
 #: notes: Quandrix Charm is now the only counterspell), plus {U},{T} draw three and {G},{T} three
 #: notes: mana on a double-striking haste body. Card advantage 5→7. Loot rotates ~2027.
+#: notes: −Tatyova, Benthic Druid/+Terrasymbiosis: the same draw job for 3 mana instead of 5, and
+#: notes: it draws "that many" off the first counter placement each turn — Bristly Bill turns
+#: notes: every land drop into one, so Tatyova's landfall draw is covered and doubled. Card
+#: notes: advantage held at 7; five-drops 9→8, printed avg MV 3.57→3.51.
 
 # Fractals & counter engine
 1 Emil, Vastlands Roamer (SOS) 146
@@ -78,6 +82,7 @@
 1 Mikey & Leo, Chaos & Order (TMT) 158
 1 Shock (ANB) 84
 1 Inspiring Call (TLE) 168
+1 Terrasymbiosis (EOE) 210
 
 # Lands-matter ramp / bombs
 1 Lumra, Bellow of the Woods (BLB) 183
@@ -93,7 +98,6 @@
 1 World War Hulk (MSH) 197
 1 Loot, the Pathfinder (DFT) 212
 1 Enduring Curiosity (DSK) 51
-1 Tatyova, Benthic Druid (FDN) 247
 1 Germination Practicum (SOS) 149
 1 Felling Blow (FDN) 105
 
