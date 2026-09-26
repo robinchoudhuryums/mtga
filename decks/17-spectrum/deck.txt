@@ -1,35 +1,49 @@
 #: name: Spectrum (5c good-stuff)
 #: format: Standard
-#: tier: C — 5-color superhero goodstuff. The old rationale capped this on "thin
-#: tier: interaction (2)"; that figure was a classifier under-read and the live vector is
-#: tier: interaction 3 / card advantage 5 / protection 3, a B floor. The letter STAYS at
-#: tier: C anyway, because the cap here was never really the interaction count — it is
-#: tier: MANA and SPINE, the two things the floor cannot see:
-#: tier: 1. The manabase. `consistency 17` reads keepable 84%, land-drop 63% by turn 4,
-#: tier:    and a 3-source red splash — so Cosmic Spider-Man casts on curve 6% of the
-#: tier:    time, Avatar Aang 8%, Thanos 9%, and {B}{B}{B} Super-Skrull 1%. A deck whose
-#: tier:    marquee cards are single-digit percentages to be castable when they are
-#: tier:    supposed to be castable is capped regardless of how good those cards are.
-#: tier: 2. No spine. 23 central themes across a rainbow singleton pile is the textbook
-#: tier:    "thin themes / heavy variance" C, not a coherent engine with one weakness.
-#: tier: The bombs are real and this deck wins games off them — that is the point of the
-#: tier: build — but they win by drawing well, which is what a C grade describes.
-#: tier: PATH TO B: cut to 3–4 colors so the splashes are castable on curve, or add real
-#: tier: fixing; the interaction count is not what is holding it back.
+#: tier: C — 5-color superhero goodstuff. RE-GRADE CANDIDATE after the 2026-09-26 tune,
+#: tier: pending the owner's call; the letter is unchanged until then. The live vector is
+#: tier: interaction 5 / card advantage 5 / protection 3, a B floor. The C was never about
+#: tier: that count — it rested on MANA and SPINE, the two things the floor cannot see, and
+#: tier: the tune took the path the old block named ("add real fixing") on the first:
+#: tier: 1. The manabase. Nineteen basics and colourless lands became owned Verges,
+#: tier:    shocklands, two tri-lands and Starting Town. `consistency 17` now puts Cosmic
+#: tier:    Spider-Man on curve 57% of the time, Avatar Aang 57%, Thanos 52%, Sokka 62%,
+#: tier:    where the basics-heavy base read 12% / 15% / 16% / 20%. Those are FLOORS: the
+#: tier:    model leaves out five mana creatures, Great Divide Guide's any-colour lands and
+#: tier:    Leyline of the Guildpact. Super-Skrull's {B}{B}{B} is still 21% on turn four,
+#: tier:    and keepable 84% is the curve, not the colours — no land count moves it.
+#: tier: 2. The spine. 14 central themes around a real colour-count core (vivid, converge,
+#: tier:    both Leylines, five-colour power-ups) is still a singleton pile, and it still
+#: tier:    wins by drawing its bombs. Whether that alone holds it at C is the open call.
 #: colors: WUBRG
 #: archetype: Five-color rainbow good-stuff / superheroes.
 #: notes: Five-color rainbow good-stuff / superheroes.
+#: notes: 2026-09-26 tune — MANABASE (all owned, 0 wildcards): −2 Baxter Building, −3 Forest,
+#: notes: −3 Island, −4 Plains, −4 Swamp, −3 Mountain for all ten Verges, six shocklands
+#: notes: (Breeding Pool, Overgrown Tomb, Sacred Foundry, Hallowed Fountain, Blood Crypt,
+#: notes: Watery Grave), Frontier Bivouac, Sandsteppe Citadel and Starting Town. Chosen over
+#: notes: ten other candidate bases measured on scratch copies; it led on every card. Cost:
+#: notes: two unconditional taplands and shockland life. The Verges, tri-lands and Starting
+#: notes: Town rotate ~2027, the shocklands ~2028.
+#: notes: 2026-09-26 tune — SPELLS: −Diamond Pick-Axe/+Dragonfire Blade (hexproof from
+#: notes: monocolored; equip costs {1} less per colour, so {0} on a four- or five-colour
+#: notes: creature or anything under the Guildpact); −Goldvein Pick/+Explosive Prodigy (vivid
+#: notes: ETB burn, the fifth interaction piece); −Energybending/+Sanar, Innovative First-Year
+#: notes: (vivid card advantage every turn — the classifier finds no role for it, so the card
+#: notes: advantage count does not show it). Energybending was Hermitic Herbalist's only
+#: notes: Lesson, so the Herbalist's Lesson-only mana has no target now; it still taps for
+#: notes: any colour.
 
 # Nonland
 1 Great Divide Guide (TLA) 181
 1 Undercover Skrull (MSH) 194
 1 Shang-Chi, Master of Kung Fu (MSH) 187
 1 Hermitic Herbalist (TLA) 226
-1 Energybending (TLA) 2
+1 Sanar, Innovative First-Year (ECL) 241
 1 Leyline of the Guildpact (MKM) 217
 1 Doc Samson, Super Psychiatrist (MSH) 164
-1 Diamond Pick-Axe (LCI) 143
-1 Goldvein Pick (FDN) 253
+1 Dragonfire Blade (TDM) 240
+1 Explosive Prodigy (ECL) 136
 1 Barrels of Blasting Jelly (TLA) 254
 1 Overlord of the Hauntwoods (DSK) 194
 1 Super-Skrull (MSH) 115
@@ -55,19 +69,34 @@
 1 Flamehold Grappler (TDM) 185
 1 Tony Stark (MSH) 80
 1 Iron Man Armor (MSH) 248
-
-# Lands
 1 Planetarium of Wan Shi Tong (TLA) 259
 1 Bloom Tender (ECL) 166
-2 Baxter Building (MSH) 261
+
+# Lands
+1 Starting Town (FIN) 289
+1 Frontier Bivouac (TDM) 256
 1 Surveillance Room (MSH) 274
-6 Forest (MSH) 295
-4 Plains (MSH) 287
-4 Island (MSH) 289
-4 Swamp (MSH) 291
-3 Mountain (MSH) 293
+3 Forest (MSH) 295
+1 Breeding Pool (EOE) 251
+1 Willowrush Verge (DFT) 270
+1 Hushwood Verge (DSK) 261
+1 Sandsteppe Citadel (TDM) 266
+1 Hallowed Fountain (ECL) 265
+1 Bleachbone Verge (DFT) 250
+1 Sunbillow Verge (DFT) 264
+1 Island (MSH) 289
+1 Watery Grave (EOE) 261
+1 Gloomlake Verge (DSK) 260
+1 Floodfarm Verge (DSK) 259
+1 Blood Crypt (ECL) 262
+1 Overgrown Tomb (ECL) 266
+1 Blazemire Verge (DSK) 256
+1 Wastewood Verge (DFT) 268
+1 Sacred Foundry (EOE) 256
+1 Riverpyre Verge (DFT) 260
+1 Thornspire Verge (DSK) 270
 
 # Flex — cross-deck craft notes. See: deck.py flex 17
 #~ note: CROSS-DECK CRAFT — Betor, Kin to All (WBG M) is a strong good-stuff pickup here: a 5/7 flyer that draws off total toughness >=10 and untaps your board at >=20. Abzan Monument (WBG U) is cheap 5c fixing + a token mana-sink. Both share one wildcard across decks 20b, 6, and 17 (best value-per-wildcard of the WBG craft targets; see cross-deck analysis).
 
-#~ +Urban Retreat | SIDEGRADE (owned): Bant (W/U/G) tri-land fixing for the 5-color mana; swap over a basic or tapland.
+#~ note: RETIRED 2026-09-26 — the +Urban Retreat sidegrade was superseded by the manabase pass that replaced 19 basics/colourless lands with owned Verges, shocklands and tri-lands; measured, Urban Retreat in place of Sandsteppe Citadel was a wash, trading a black source for a blue one.
