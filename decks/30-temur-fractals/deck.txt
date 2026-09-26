@@ -1,6 +1,6 @@
 #: name: Fractalandtastic (Fractals + counter doublers)
 #: format: Standard
-#: tier: A — Temur Fractals counters/ramp; a doubler engine (Loading Zone, Doubling Season, Growth Curve, Zimone, Bristly Bill) over card advantage + ramp, with adequate interaction. The first interaction package (+Shock, plus a Plasma Bolt that was later CUT for Felling Blow; Spell Pierce was part of it and was later swapped out for Sab-Sunen) took interaction 2→5 and lifted the measurable floor to A; the 2026-09-26 passes hold interaction at 7 with card advantage 5 and protection 4. Held at A (not an S conversation) by the 3-color GUR mana and a top-heavy curve (10 early drops). Earlier B was correct pre-package; re-graded B→A once the metrics floor reached A.
+#: tier: A — Temur Fractals counters/ramp; a doubler engine (Loading Zone, Doubling Season, Growth Curve, Zimone, Bristly Bill) over card advantage + ramp, with adequate interaction. The first interaction package (+Shock, plus a Plasma Bolt that was later CUT for Felling Blow; Spell Pierce was part of it and was later swapped out for Sab-Sunen) took interaction 2→5 and lifted the measurable floor to A; the 2026-09-26 passes hold interaction at 7 with card advantage 7 and protection 4. Held at A (not an S conversation) by the 3-color GUR mana and a top-heavy curve (10 early drops). Earlier B was correct pre-package; re-graded B→A once the metrics floor reached A.
 #: colors: GUR
 #: protect: Emil, Vastlands Roamer; Loading Zone; Growth Curve; Quandrix Charm; Doubling Season
 #: archetype: Temur (G/U/R) +1/+1 counters & Fractals on a lands-matter ramp shell. Built from the
@@ -48,6 +48,12 @@
 #: notes: with six counters (doubled here) — Doubling Season, Loading Zone, Warden of the Grove,
 #: notes: Fractal Tender or Topiary Lecturer; a legendary copy (Emil/Berta/Zimone/Bill) dies to the
 #: notes: legend rule. Cost: protection 5→4 (Claim's indestructible counter), early drops 11→10.
+#: notes: −Lasting Tarfire/+Mikey & Leo, Chaos & Order: both key on putting a counter each turn —
+#: notes: Tarfire turned it into 2 damage, Mikey & Leo turns it into a card and a body (its
+#: notes: {G/W}{G/W} is {G}{G} here: no white, ~60% on turn 2). −Sokka's Haiku/+Loot, the
+#: notes: Pathfinder: interaction held at 7 (Loot's {R},{T} 3 damage replaces the hard counter —
+#: notes: Quandrix Charm is now the only counterspell), plus {U},{T} draw three and {G},{T} three
+#: notes: mana on a double-striking haste body. Card advantage 5→7. Loot rotates ~2027.
 
 # Fractals & counter engine
 1 Emil, Vastlands Roamer (SOS) 146
@@ -69,7 +75,7 @@
 # Card advantage / dig
 1 Sab-Sunen, Luxa Embodied (DFT) 221
 1 Mind into Matter (SOS) 202
-1 Lasting Tarfire (ECL) 149
+1 Mikey & Leo, Chaos & Order (TMT) 158
 1 Shock (ANB) 84
 1 Inspiring Call (TLE) 168
 
@@ -85,7 +91,7 @@
 1 Soul Immolation (ECL) 156
 1 Origin of Metalbending (TLA) 187
 1 World War Hulk (MSH) 197
-1 Sokka's Haiku (TLA) 71
+1 Loot, the Pathfinder (DFT) 212
 1 Enduring Curiosity (DSK) 51
 1 Tatyova, Benthic Druid (FDN) 247
 1 Germination Practicum (SOS) 149
