@@ -2,9 +2,10 @@
 #: format: Standard
 #: tier: C — 5-color superhero goodstuff. RE-GRADE CANDIDATE after the 2026-09-26 tune,
 #: tier: pending the owner's call; the letter is unchanged until then. The live vector is
-#: tier: interaction 6 / card advantage 5 / protection 3, a B floor. The C was never about
-#: tier: that count — it rested on MANA and SPINE, the two things the floor cannot see, and
-#: tier: the tune took the path the old block named ("add real fixing") on the first:
+#: tier: interaction 7 / card advantage 7 / protection 3, an A floor — two bands over the
+#: tier: letter. The C was never about that count — it rested on MANA and SPINE, the two
+#: tier: things the floor cannot see, and the tune took the path the old block named ("add
+#: tier: real fixing") on the first:
 #: tier: 1. The manabase. Nineteen basics and colourless lands became owned Verges,
 #: tier:    shocklands, two tri-lands and Starting Town. `consistency 17` now puts Cosmic
 #: tier:    Spider-Man on curve 57% of the time, Avatar Aang 57%, Thanos 52%, Sokka 62%,
@@ -12,7 +13,7 @@
 #: tier:    model leaves out five mana creatures, Great Divide Guide's any-colour lands and
 #: tier:    Leyline of the Guildpact. Super-Skrull's {B}{B}{B} is still 21% on turn four,
 #: tier:    and keepable 84% is the curve, not the colours — no land count moves it.
-#: tier: 2. The spine. 13 central themes around a real colour-count core (vivid, converge,
+#: tier: 2. The spine. 14 central themes around a real colour-count core (vivid, converge,
 #: tier:    both Leylines, five-colour power-ups) is still a singleton pile, and it still
 #: tier:    wins by drawing its bombs. Whether that alone holds it at C is the open call.
 #: colors: WUBRG
@@ -41,6 +42,10 @@
 #: notes: colour, for "Creatures you control have '{T}: Add one mana of any color'" — with Captain
 #: notes: America's first-tap untap every creature taps twice, and Shang-Chi lets a new one tap at
 #: notes: once). Interaction 5→6. Earthen Ally kept at the owner's call.
+#: notes: 2026-09-26 third pass — −Iron Man Armor/+Loot, the Pathfinder; −Doc Samson/+The
+#: notes: Arkenstone // Seek the Heart. Interaction 6→7, card advantage 5→7, which moves the
+#: notes: floor from B to A. Iron Man, Master of Machines now has four other artifacts to
+#: notes: count (Dragonfire Blade, Barrels of Blasting Jelly, Planetarium, The Arkenstone).
 
 # Nonland
 1 Great Divide Guide (TLA) 181
@@ -49,7 +54,7 @@
 1 Hermitic Herbalist (TLA) 226
 1 Sanar, Innovative First-Year (ECL) 241
 1 Leyline of the Guildpact (MKM) 217
-1 Doc Samson, Super Psychiatrist (MSH) 164
+1 The Arkenstone // Seek the Heart (HOB) 170
 1 Dragonfire Blade (TDM) 240
 1 Explosive Prodigy (ECL) 136
 1 Barrels of Blasting Jelly (TLA) 254
@@ -76,7 +81,7 @@
 1 Absolute Virtue (FIN) 212
 1 Sundering Archaic (SOS) 3
 1 Tony Stark (MSH) 80
-1 Iron Man Armor (MSH) 248
+1 Loot, the Pathfinder (DFT) 212
 1 Planetarium of Wan Shi Tong (TLA) 259
 1 Bloom Tender (ECL) 166
 
