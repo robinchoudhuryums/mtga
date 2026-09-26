@@ -7,15 +7,16 @@
 #: tier: things the floor cannot see, and the tune took the path the old block named ("add
 #: tier: real fixing") on the first:
 #: tier: 1. The manabase. Nineteen basics and colourless lands became Verges, shocklands,
-#: tier:    two tri-lands and Starting Town, and three more shocklands later replaced the
-#: tier:    Island and two Forests. `consistency 17` now puts Cosmic
-#: tier:    Spider-Man on curve 63% of the time, Avatar Aang 64% and Thanos 59%, where
-#: tier:    the basics-heavy base read 12% / 15% / 16%. Read those two ways: the model
-#: tier:    counts each Verge's second colour as always on, though it needs a matching land
-#: tier:    type (a gated simulation runs about 5 points lower), and it leaves out five mana
-#: tier:    creatures, Great Divide Guide's any-colour lands and Leyline of the Guildpact.
-#: tier:    Super-Skrull's {B}{B}{B} is still 21% on turn four, and keepable 84% is the
-#: tier:    curve, not the colours — no land count moves it.
+#: tier:    two tri-lands and Starting Town; later the Island and a Forest became Godless
+#: tier:    Shrine and Commercial District, which carry the Plains and Mountain types the
+#: tier:    red and white Verges need. `consistency 17` now puts Cosmic Spider-Man on curve
+#: tier:    61% of the time, Avatar Aang 60% and Thanos 59%, where the basics-heavy base
+#: tier:    read 12% / 15% / 16%. Read those two ways: the model counts each Verge's second
+#: tier:    colour as always on, though it needs a matching land type (a gated simulation
+#: tier:    runs several points lower), and it leaves out five mana creatures, Great Divide
+#: tier:    Guide's any-colour lands and Leyline of the Guildpact. Super-Skrull's {B}{B}{B}
+#: tier:    is still 26% on turn four, and keepable 84% is the curve, not the colours — no
+#: tier:    land count moves it.
 #: tier: 2. The spine. 12 central themes around a real colour-count core (vivid, converge,
 #: tier:    both Leylines, five-colour power-ups) is still a singleton pile, and it still
 #: tier:    wins by drawing its bombs. Whether that alone holds it at C is the open call.
@@ -65,12 +66,15 @@
 #: notes: legendary spell web-slinging {G}{W}{U}: sixteen qualify, Absolute Virtue (8 mana) and the
 #: notes: five-colour Station and Cosmic Spider-Man among them. Explosive Prodigy was the other
 #: notes: candidate and was kept: it is interaction piece seven of seven, and the A floor needs 7.
-#: notes: 2026-09-26 LANDS (3 rare crafts) — −Island/+Steam Vents, −2 Forest/+Stomping Ground,
-#: notes: +Temple Garden. Each keeps the basic's colour and type and adds a second colour plus a
-#: notes: Mountain or Plains type, which turns on the red and white Verge secondaries. Measured with
-#: notes: a simulation that honours the Verge gates (the tools count them as always on): average
-#: notes: cast-on-curve given land drops 71.6% → 76.5%; Wonder Man 55→74, Thanos 39→51, Station
-#: notes: 59→69, Peter 69→74. Sources W 9→10, R 9→11.
+#: notes: 2026-09-26 LANDS — three rare shocklands (Steam Vents, Stomping Ground, Temple Garden)
+#: notes: went in for the Island and two Forests and were REVERSED the same day: the owner does not
+#: notes: want rare crafts for this. Owned replacement: −Island/+Godless Shrine, −Forest/+Commercial
+#: notes: District. Each adds a Plains or Mountain type, which turns on the red and white Verge
+#: notes: secondaries. A simulation that honours the Verge gates (the tools count them as always
+#: notes: on) puts average cast-on-curve given land drops at 71.6% → 74.6%, against 76.6% for the
+#: notes: shocks. Commercial District enters tapped, its surveil triggers Planetarium, and it rotates
+#: notes: ~2026. Sources W 9→10, U 11→10, B 10→11, R 9→10. Next owned step if wanted: −Forest/+Mystic
+#: notes: Monastery (76.1%, but a fourth tapland and Enduring Vitality's {G}{G} 65%→58%).
 
 # Nonland
 1 Great Divide Guide (TLA) 181
@@ -114,9 +118,8 @@
 1 Starting Town (FIN) 289
 1 Frontier Bivouac (TDM) 256
 1 Surveillance Room (MSH) 274
-1 Forest (MSH) 295
-1 Temple Garden (ECL) 268
-1 Stomping Ground (EOE) 258
+2 Forest (MSH) 295
+1 Commercial District (MKM) 259
 1 Breeding Pool (EOE) 251
 1 Willowrush Verge (DFT) 270
 1 Hushwood Verge (DSK) 261
@@ -124,7 +127,7 @@
 1 Hallowed Fountain (ECL) 265
 1 Bleachbone Verge (DFT) 250
 1 Sunbillow Verge (DFT) 264
-1 Steam Vents (ECL) 267
+1 Godless Shrine (EOE) 254
 1 Watery Grave (EOE) 261
 1 Gloomlake Verge (DSK) 260
 1 Floodfarm Verge (DSK) 259

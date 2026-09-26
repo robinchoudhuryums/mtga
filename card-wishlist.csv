@@ -59,10 +59,6 @@ Valgavoth's Faithful,Creature — Human Cleric,"{3}{B}, Sacrifice this creature:
 Spineseeker Centipede,Creature — Insect,"When this creature enters, search your library for a basic land card, reveal it, put it into your hand, then shuffle.
 Delirium — This creature gets +1/+2 and has vigilance as long as there are four or more card types among cards in your graveyard.",G,Insect; graveyard; ramp; etb; pump; delirium,DSK,199,Common,50,,1.5,seed
 End-Blaze Epiphany,Instant,"End-Blaze Epiphany deals X damage to target creature. When that creature dies this turn, exile a number of cards from the top of your library equal to its power, then choose a card exiled this way. Until the end of your next turn, you may play that card.",R,burn,ECL,134,Rare,24,X-burn removal + impulse; Quintorius/exile payoff,6.0,hand
-Steam Vents,Land — Island Mountain,"({T}: Add {U} or {R}.)
-As this land enters, you may pay 2 life. If you don't, it enters tapped.",U/R,Island; Mountain; pay life; mana,ECL,267,Rare,17,Deck 17 manabase craft (2026-09-26): turns on the red/white Verge secondaries,3.0,seed
-Temple Garden,Land — Forest Plains,"({T}: Add {G} or {W}.)
-As this land enters, you may pay 2 life. If you don't, it enters tapped.",W/G,Forest; Plains; pay life; mana,ECL,268,Rare,17,Deck 17 manabase craft (2026-09-26): turns on the red/white Verge secondaries,3.0,seed
 Iron-Shield Elf,Creature — Elf Warrior,"Discard a card: This creature gains indestructible until end of turn. Tap it. (Damage and effects that say ""destroy"" don't destroy it. If its toughness is 0 or less, it still dies.)",B,Elf; Warrior,ECL,108,Uncommon,52a,,2.5,seed
 Spell Snare,Instant,Counter target spell with mana value 2.,U,counterspell,ECL,71,Uncommon,51,,3.0,seed
 Archenemy's Charm,Instant,"Choose one —
@@ -71,8 +67,6 @@ Archenemy's Charm,Instant,"Choose one —
 • Put two +1/+1 counters on target creature you control. It gains lifelink until end of turn.",B,counters; graveyard; lifegain; removal,EOE,88,Rare,52a,,6.0,seed
 Pinnacle Starcage,Artifact,"When this artifact enters, exile all artifacts and creatures with mana value 2 or less until this artifact leaves the battlefield.
 {6}{W}{W}: Put each card exiled with this artifact into its owner's graveyard, then create a 2/2 colorless Robot artifact creature token for each card put into a graveyard this way. Sacrifice this artifact.",W,reanimator; graveyard; sacrifice; tokens; etb,EOE,33,Rare,6,,6,hand
-Stomping Ground,Land — Mountain Forest,"({T}: Add {R} or {G}.)
-As this land enters, you may pay 2 life. If you don't, it enters tapped.",R/G,Mountain; Forest; pay life; mana,EOE,258,Rare,17,Deck 17 manabase craft (2026-09-26): turns on the red/white Verge secondaries,3.0,seed
 "Mm'menon, Uthros Exile",Legendary Creature — Jellyfish Advisor,"Flying
 Whenever an artifact you control enters, put a +1/+1 counter on target creature.",U/R,Jellyfish; Advisor; counters; flying; evasion,EOE,221,Uncommon,48,Holds Adaptive Automaton's slot in 48 at Uncommon cost.,4.0,hand
 Sunstar Expansionist,Creature — Human Knight,"When this creature enters, if an opponent controls more lands than you, create a Lander token. (It's an artifact with ""{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."")
