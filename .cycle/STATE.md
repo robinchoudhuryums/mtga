@@ -37,6 +37,21 @@ Updated: 2026-09-23 (deck-aware checkland gate + `/tune-deck` runs `--lands` eve
 
 ## Completed this cycle
 
+- **2026-09-26 — G-87: a colour gated on a land TYPE was counted as a full source.**
+  The Verge cycle ("Activate only if you control a Mountain or a Plains") and the MSH
+  basic cycle ("…or if you control a basic land") read as FREE in `lib.land_production`,
+  so `mana` / `consistency` / `pip_depth_warning` / the rationale audit all treated them as
+  always on. Now `land_production` reports `gated` (subset of `free`), and
+  `deck_source_profile` credits each by `lib.gated_source_credit` (P one of the two other
+  lands on turn three carries a named type — the `_CHECKLAND_BASIC_FLOOR` framing), rounded
+  per colour. Validated against a gate-honouring Monte Carlo on nine decks: tool Δ tracks
+  sim Δ within ~1.1 points mean, against a 4.6-point bias removed. Roster: 93/114 decks
+  run a gated land, 42 changed source counts (all down), **0 tier floors moved**. Three
+  stale source figures re-grounded (decks 78, 68a) and deck 17's tier block rewritten.
+  `_LAND_GATE_RE` registered in `check_patterns`; tests watched to fail with the pattern
+  dead. Residuals (recommender half, `tapland_kind` basics-only twin, Leyline of the
+  Guildpact, unaudited per-card %) are in the G-87 long form and under Open follow-on.
+
 - **2026-09-23 — F-LAND-01/02/03: the checkland gate read the basic COUNT, never the
   basic TYPE, and `/tune-deck` was not running the land recommender at all.** Both
   shipped. `_TAPLAND_CHECK_RE` matches the generic "a basic land" AND the type-named
@@ -152,6 +167,10 @@ Updated: 2026-09-23 (deck-aware checkland gate + `/tune-deck` runs `--lands` eve
 - Two G-67 role-pattern holes (Kitnap, Eluge), baselined not fixed.
 
 ## Open follow-on items
+- **G-87 recommender half** — `suggest --lands` and `wishlist._land_value` still score a
+  Verge's gated colour as full fixing (they read `free`). Pricing the gate there is a
+  separate measurement (G-40). Also: `tapland_kind`'s checkland type gate counts basics
+  only while G-87's source gate counts typed nonbasics — two answers to one question.
 - **No surface computes P(a tapped land in your first N land drops).** Hand-rolled six
   times on 2026-09-20 and it decided both manabases. The G-86 `board_power` shape. MUST
   stay report-only — `tapland_profile`'s docstring already commits to never feeding a

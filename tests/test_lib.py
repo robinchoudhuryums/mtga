@@ -622,6 +622,52 @@ class TestLandProductionExclusions:
         assert fetch["fetch"] is True
 
 
+class TestLandTypeGates:
+    """G-87: a colour a land adds only while you control a land of a named TYPE. The
+    Verge cycle and the MSH basic-gated cycle both read as FREE until 2026-09-26, so every
+    source count treated them as always on. Real oracle text throughout."""
+
+    SUNBILLOW = ("{T}: Add {W}.\n{T}: Add {R}. Activate only if you control a Mountain "
+                 "or a Plains.")
+    GATHERING = ("{T}: Add {C}.\n{T}: Add {G} or {W}. Activate only if this land entered "
+                 "this turn or if you control a basic land.")
+
+    def test_a_verge_gates_only_its_second_colour_on_the_named_types(self):
+        p = lib.land_production(self.SUNBILLOW, "W/R")
+        assert p["free"] == {"W", "R"}, "both stay in free: the land CAN make R"
+        assert p["gated"] == {"R": frozenset({"R", "W"})}, "Mountain -> R, Plains -> W"
+
+    def test_the_basic_land_gate_names_no_type(self):
+        p = lib.land_production(self.GATHERING, "G/W")
+        assert p["gated"] == {"G": frozenset(), "W": frozenset()}
+
+    def test_ungated_lands_carry_no_gate(self):
+        """A shockland, an any-colour land and the ARTIFACT-gated Spire (a board state,
+        out of scope) must not be read as type-gated."""
+        shock = lib.land_production("({T}: Add {R} or {W}.)\nAs this land enters, you may "
+                                    "pay 2 life. If you don't, it enters tapped.", "R/W")
+        spire = lib.land_production("{T}: Add {C}.\n{T}, Pay 1 life: Add one mana of any "
+                                    "color. Activate only if you control an artifact.", "")
+        assert shock["gated"] == {} and spire["gated"] == {}
+
+    def test_a_colour_also_added_ungated_is_not_gated(self):
+        p = lib.land_production("{T}: Add {R}.\n{T}: Add {R}. Activate only if you control "
+                                "a Mountain or a Plains.", "R")
+        assert p["gated"] == {}
+
+    def test_land_basic_types_reads_the_front_type_line(self):
+        assert lib.land_basic_types("Land — Mountain Forest") == {"R", "G"}
+        assert lib.land_basic_types("Basic Land — Forest") == {"G"}
+        assert lib.land_basic_types("Land") == frozenset()
+
+    def test_credit_is_the_turn_three_chance_an_enabler_is_out(self):
+        """Pinned to the checkland floor's framing: 12 enablers in 24 lands is ~78%."""
+        assert lib.gated_source_credit(0, 24) == 0.0
+        assert round(lib.gated_source_credit(5, 24), 2) == 0.40
+        assert round(lib.gated_source_credit(12, 24), 2) == 0.78
+        assert lib.gated_source_credit(23, 24) == 1.0
+
+
 class TestAtomicWriteForensicLog:
     """`atomic_write` records WHO wrote, because on 2026-09-09 nothing did.
 

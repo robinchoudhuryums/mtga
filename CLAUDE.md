@@ -956,6 +956,26 @@ is protecting.
   read ZERO, so a card making two 3/3s contributes nothing; and VEHICLES are counted
   apart, not being creatures until crewed. Read the figure as a FLOOR on what the deck can
   present, never a ceiling. [G-86]
+- **A COLOUR A LAND MAKES ONLY WHILE YOU CONTROL A LAND OF A NAMED TYPE IS NOT A FULL
+  SOURCE, and until 2026-09-26 every count here read it as one.** Two templatings: the
+  Verge cycle's second colour ("Activate only if you control a Mountain or a Plains") and
+  the MSH basic cycle ("…or if you control a basic land" — Gathering Place, Training
+  Compound, Dark Fortress, Gleaming Bastion). `lib.land_production` now reports them in
+  **`gated`** (a subset of `free`, like `chosen`), and `deck.deck_source_profile` prices each
+  by **`lib.gated_source_credit`** — the chance one of the two other lands you control on
+  turn three carries a named type, the framing `_CHECKLAND_BASIC_FLOOR` already rests on —
+  rounded per COLOUR. Enablers are TYPES, not names: a shockland enables a Verge exactly as a
+  basic does. **Validated, not asserted**: on nine decks the tool's cast-on-curve change
+  tracks a gate-honouring simulation within ~1 point on average, against the 4.6-point bias
+  it removes. Roster: **93 of 114 decks** run a gated land; **42** changed source counts, all
+  down; **0 tier floors moved** (the floor reads no sources). `mana`/`consistency` list each
+  gated land with its credit. **Residuals:** `suggest --lands` and `wishlist._land_value`
+  still score a gated colour as full fixing (they read `free`, the recommender half); the
+  checkland gate in `tapland_kind` counts BASICS only while this one counts typed nonbasics
+  too — two answers to "do I control a land of type X"; board-state gates (Spire of
+  Industry's artifact, Mirrex's entered-this-turn) and Leyline of the Guildpact are
+  unmodelled; and a per-card "N% on curve" in deck prose is unaudited (G-26), so a figure
+  quoted before this change may be stale without a warning. [G-87]
 - **BEFORE DISMISSING A CARD, COUNT THE DECK PROPERTY ITS VALUE DEPENDS ON.** Four
   dismissals were overturned in one cycle, all the same shape — a card judged on its own
   text when the decision belonged to a number in the LIST. Michelangelo was called

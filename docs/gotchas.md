@@ -7587,6 +7587,83 @@ Verification at the time: roster sweep reported **0 stale figures, unchanged**, 
 false positives; the patterns were watched to FAIL on a mutated copy in all three prose
 forms and to stay quiet on the correct value and on a verbless delta's FROM side.
 
+## [G-87] A colour gated on a land TYPE is not a full source
+
+### How it was found
+
+The 2026-09-26 deck 17 tune (ten Verges, few typed lands). `deck.py mana` read
+W 10 / U 10 / B 11 / R 10 / G 13 and `consistency` priced the five-colour cards around
+57–67% on curve. A Monte Carlo that honoured each Verge's gate ("{T}: Add {R}. Activate only
+if you control a Mountain or a Plains") put the same deck's average cast-on-curve, given
+land drops, about **6 points lower** than the same simulation with the gates ignored. The
+tool had no concept of the gate: `lib.land_production` filed the second colour as `free`.
+
+### Scope — two templatings, and only two
+
+Surveyed over every pool land with an "activate only if" mana line: 17 lines, of which 15
+are the Verge cycle ("…a Mountain or a Plains", all ten) and the MSH basic cycle ("…if this
+land entered this turn or if you control a basic land" — Gathering Place, Training Compound,
+Dark Fortress, Gleaming Bastion and Hidden Lair). The other two are board states — Spire of
+Industry ("you control an artifact") and Mirrex ("this land entered this turn") — and are
+deliberately left unmodelled rather than answered wrongly.
+
+### The model
+
+`land_production` returns **`gated`**: `{colour: frozenset of WUBRG letters}`, an EMPTY set
+meaning "any basic land". It is a SUBSET of `free`, following `chosen`'s precedent, so a
+caller that only asks "can this land ever make R" (the recommender) is unchanged, and only
+the COUNT prices the gate.
+
+`deck_source_profile` now makes two passes — the whole manabase must be known before any
+land is priced — and credits each gated colour by `gated_source_credit(enablers, nlands)`:
+P(at least one of the TWO other lands you control is an enabler), hypergeometric over the
+deck's other lands. Two lands on turn three is exactly the framing
+`wishlist._CHECKLAND_BASIC_FLOOR` rests on for the checkland version of the same question,
+so "met" means one thing. At 12 enablers in 24 lands it reads 0.78 (the floor's 76%), at 5
+it reads 0.40, with none it is 0. Credits are summed and **rounded per colour**, not per
+land: three Verges at 40% are one real source, where rounding each would make them zero.
+
+Enablers are land TYPES, read from the front type line by `lib.land_basic_types`, so a
+shockland ("Land — Mountain Plains") enables a Verge exactly as a basic does. A land is
+never its own enabler.
+
+### Validated against the simulation, not just asserted
+
+The two models answer different questions (per-colour hypergeometric independence vs a
+joint pip matching given land drops), so their LEVELS differ by construction. What must
+agree is the CHANGE the gate makes. Nine decks, tool Δ vs simulation Δ in mean
+cast-on-curve: 17 −4.9 / −5.0; 28 −9.6 / −7.2; 29 −6.4 / −5.7; 35a −4.3 / −6.1; 69b
+−1.8 / −4.0; 58 −4.4 / −3.5; 45a −3.5 / −2.7; 19 −3.2 / −3.9; 06 −2.8 / −3.1. Mean absolute
+disagreement **~1.1 points**, against a bias of **4.6 points** the old count carried. The
+two-lands framing over-corrects slightly on deck 28 and under-corrects on 69b and 35a; a
+three-lands framing was not adopted because it would trade those errors rather than remove
+them, and it would stop agreeing with the checkland floor.
+
+### Roster impact
+
+**93 of 114 decks** run at least one gated land (Gathering Place alone: 69 copies).
+**42** changed a source count, every change a decrease — distribution of sources removed
+per deck: −1 ×14, −2 ×9, −3 ×10, −4 ×4, −5 ×4, −8 ×1 (deck 28, eight MSH lands against few
+basics). **0 tier floors moved**: `tier_band` reads no source count. The rationale audit
+and the flex-note sweep flagged three stale source figures (decks 78 ×3, 68a ×1), all
+re-grounded in the same change; deck 17's tier block was rewritten because it described
+the old behaviour.
+
+### Residuals — named, not fixed here
+
+- **The recommender half.** `suggest --lands` and `wishlist._land_value` read `free`, so a
+  Verge still scores as a full dual in a deck that cannot enable it. The scoring change is
+  a separate measurement (G-40: reaching a new caller is not free).
+- **Two answers to "do I control a land of type X".** `tapland_kind`'s checkland gate
+  counts the deck's BASICS only; this gate counts typed nonbasics too. A shockland meets
+  both gates in play, so the checkland side is the conservative one — but it is a parallel
+  definition, the G-70 shape.
+- **Leyline of the Guildpact** makes every land every basic type and satisfies every gate;
+  it is one card and is ignored, which reads conservative.
+- **Per-card percentages in prose are unaudited** (G-26: an "N% on turn 5" has no
+  deck-level value to look up). 42 decks' source counts moved; a percentage quoted in a
+  `#: tier:` or note before this change may be stale without any warning.
+
 ## [K-16] `deck.py tribes` reads a card's OWN NAME as a tribal reference
 
 `cmd_tribes`' type-matters scan asks, for each creature type the deck fields, whether any

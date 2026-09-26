@@ -5,6 +5,7 @@ definition and the load/save logic live here in one place.
 """
 
 import csv
+import math
 import os
 import re
 import shutil
@@ -543,6 +544,23 @@ _GRANTED_ABILITY_RE = re.compile(
 _FETCH_BASIC_RE = re.compile(
     r"search your library for (?:a|an|up to \w+|one or more) basic "
     r"(?:land|plains|island|swamp|mountain|forest)\b", re.I)
+# A mana ability that works only while you control a land of a named TYPE. Two templatings
+# exist in the pool, and they are the only two (surveyed 2026-09-26 over every pool land
+# with an "activate only if" mana line — 15 of 17 are these two; the other two are an
+# artifact gate and an entered-this-turn gate, both board states outside this question):
+#   the Verge cycle      "{T}: Add {R}. Activate only if you control a Mountain or a Plains."
+#   the MSH basic cycle  "{T}: Add {G} or {W}. Activate only if this land entered this turn
+#                         or if you control a basic land."
+# Until 2026-09-26 both read as FREE, so every consumer of the source count treated a
+# Verge's second colour as always on — deck 17, with ten Verges and few typed lands, read
+# ~6 points higher on cast-on-curve than a simulation honouring the gate (G-87). The
+# `basic` alternative is captured separately because it names no type: ANY basic land
+# satisfies it, the same distinction `tapland_check_types` draws for checklands.
+_LAND_GATE_RE = re.compile(
+    r"activate only if (?:this land entered this turn or if )?you control "
+    r"(?:(?P<basic>a basic land)"
+    r"|an? (?P<g1>Plains|Island|Swamp|Mountain|Forest)"
+    r"(?: or an? (?P<g2>Plains|Island|Swamp|Mountain|Forest))?)\b", re.I)
 
 
 _TAPLAND_RE = re.compile(r"enters(?: the battlefield)? tapped", re.I)
@@ -676,6 +694,16 @@ def land_production(text, colors_cell=None):
       fetch        True when it searches for a BASIC land (Evolving Wilds, Fabled
                    Passage, the Halflingcycling-style riders excluded because they need
                    a creature type)
+      gated        {colour: frozenset of WUBRG letters} for a colour in `free` that the
+                   land adds ONLY while you control a land of a named basic TYPE — the
+                   Verge cycle's second colour ("Activate only if you control a Mountain
+                   or a Plains" -> {"R", "W"}). An EMPTY frozenset means the gate is "a
+                   basic land" of any type (the MSH cycle). Like `chosen`, it is a subset
+                   of `free` rather than a separate bucket, so a caller that only asks
+                   "can this land ever make R" is unaffected; a caller that COUNTS a
+                   deck's sources prices it against the deck's own lands
+                   (`gated_source_credit`, G-87). A colour also added ungated on another
+                   line is not gated.
 
     Rules, and why: reminder text is stripped first (a Treasure reminder quotes "Add one
     mana of any color" — every Treasure maker would read as a rainbow land); each
@@ -688,6 +716,7 @@ def land_production(text, colors_cell=None):
     """
     txt = _LAND_REMINDER_RE.sub(" ", text or "")
     free, restricted, conditional, chosen = set(), set(), set(), set()
+    gated, ungated = {}, set()
     any_color = fetch = False
     for line in txt.splitlines():
         # Production you can only reach by transforming the card is not production you
@@ -719,6 +748,12 @@ def land_production(text, colors_cell=None):
             conditional |= cols
         else:
             free |= cols
+            need = land_gate_types(line)
+            if need is None:
+                ungated |= cols
+            else:
+                for col in cols:
+                    gated[col] = need
             if line_chosen:
                 chosen |= cols
     if _FETCH_BASIC_RE.search(txt):
@@ -733,8 +768,59 @@ def land_production(text, colors_cell=None):
     free |= ident - restricted - conditional
     # A colour reachable by a route OTHER than the choose-once clause is not choose-once.
     chosen &= free - (ident - restricted - conditional)
+    gated = {c: need for c, need in gated.items() if c in free and c not in ungated}
     return {"free": free, "restricted": restricted, "conditional": conditional,
-            "chosen": chosen, "any": any_color, "fetch": fetch}
+            "chosen": chosen, "any": any_color, "fetch": fetch, "gated": gated}
+
+
+def land_gate_types(line):
+    """The basic TYPES a land's mana-ability gate names, as WUBRG letters.
+
+    None when the line carries no such gate; an EMPTY frozenset for "you control a basic
+    land" (any basic satisfies it); otherwise the named types ("a Mountain or a Plains" ->
+    {"R", "W"}). The same return convention as `tapland_check_types`, which answers the
+    checkland version of this question."""
+    m = _LAND_GATE_RE.search(line or "")
+    if not m:
+        return None
+    if m.group("basic"):
+        return frozenset()
+    return frozenset(BASIC_TYPE_COLORS[g.lower()]
+                     for g in (m.group("g1"), m.group("g2")) if g)
+
+
+def land_basic_types(type_line):
+    """The basic land TYPES a land carries on its FRONT face, as WUBRG letters —
+    "Land — Mountain Forest" -> {"R", "G"}; a basic Forest -> {"G"}; a Verge -> empty.
+    What satisfies a type-named gate is the TYPE, not the name, so a shockland enables
+    a Verge exactly as a basic of that type does."""
+    front = (type_line or "").split("//")[0]
+    return frozenset(col for t, col in BASIC_TYPE_COLORS.items()
+                     if re.search(rf"\b{t}\b", front, re.I))
+
+
+# How many OTHER lands a gated land is assumed to be checked against: "the chance at
+# least one of the two lands you already control on turn three" satisfies it. It is the
+# framing `wishlist._CHECKLAND_BASIC_FLOOR` already rests on for the checkland version of
+# the same question ("do I control a land of this type yet"), so the two cannot disagree
+# about what "met" means. Turn three rather than later because a source count feeds the
+# cast-on-curve table, and a colour you only have from turn six is not a curve source.
+GATE_LANDS_IN_PLAY = 2
+
+
+def gated_source_credit(enablers, nlands):
+    """0.0–1.0 — how much of a SOURCE a type-gated colour is in a deck.
+
+    P(at least one of the GATE_LANDS_IN_PLAY other lands you control satisfies the gate),
+    hypergeometric over the deck's OTHER lands: `enablers` of them qualify, out of
+    `nlands - 1`. At 12 enablers in a 24-land deck it reads 0.78 (the checkland floor's
+    76% figure); at 5 it reads 0.40; with none it is 0 — the colour cannot be made."""
+    others = nlands - 1
+    if enablers <= 0 or others <= 0:
+        return 0.0
+    k = min(GATE_LANDS_IN_PLAY, others)
+    e = min(enablers, others)
+    return 1.0 - math.comb(others - e, k) / math.comb(others, k)
 
 
 class WrongSchema(Exception):

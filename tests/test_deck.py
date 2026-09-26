@@ -3815,6 +3815,34 @@ class TestDeckColorSources:
         assert [n for _q, n in notes["fetch"]] == ["Wild Passage"]
         assert deck.deck_color_sources(cards, {}, cd) == src, "one count, two names"
 
+    SUNBILLOW = {"type": "Land", "colors": "R/W",
+                 "text": "{T}: Add {W}.\n{T}: Add {R}. Activate only if you control a "
+                         "Mountain or a Plains."}
+
+    def test_a_verge_with_no_enabler_contributes_no_gated_source(self):
+        """G-87: the R is only there while you control a Mountain or a Plains. With none
+        in the deck it can never be made, so it must not count — until 2026-09-26 it did."""
+        cards = [(10, "Island", "X", "1"), (4, "Sunbillow Verge", "X", "2")]
+        src, _nl, _t, notes = deck.deck_source_profile(
+            cards, {}, {}, {"sunbillow verge": self.SUNBILLOW})
+        assert src["W"] == 4, "the primary colour is unconditional"
+        assert src["R"] == 0, "no Mountain, no Plains: the gated R is never on"
+        assert [n for _q, n in notes["gated"]] == ["Sunbillow Verge (R 0%)"]
+
+    def test_enablers_include_typed_nonbasics_and_credit_rounds_per_colour(self):
+        """A shockland carrying the Mountain type enables it as a basic would. Twelve
+        enablers in a 24-land deck credit each Verge ~78%, so four Verges are worth 3."""
+        cards = [(8, "Mountain", "X", "1"), (4, "Sacred Foundry", "X", "2"),
+                 (8, "Island", "X", "3"), (4, "Sunbillow Verge", "X", "4")]
+        cd = {"sunbillow verge": self.SUNBILLOW,
+              "sacred foundry": {"type": "Land — Mountain Plains", "colors": "R/W",
+                                 "text": "({T}: Add {R} or {W}.)\nAs this land enters, you "
+                                         "may pay 2 life. If you don't, it enters tapped."}}
+        src, nlands, _t, _n = deck.deck_source_profile(cards, {}, {}, cd)
+        assert nlands == 24
+        assert src["R"] == 8 + 4 + 3, "basics + shocks + round(4 x 0.78)"
+        assert src["W"] == 4 + 4, "shocks + the Verges' unconditional W"
+
     def test_counts_basics_and_nonbasic_lands_only(self):
         cards = [(4, "Plains", "X", "1"), (2, "Sacred Foundry", "X", "2"),
                  (1, "Llanowar Elves", "X", "3")]

@@ -10,13 +10,13 @@
 #: tier:    two tri-lands and Starting Town; later the Island and a Forest became Godless
 #: tier:    Shrine and Commercial District, which carry the Plains and Mountain types the
 #: tier:    red and white Verges need. `consistency 17` now puts Cosmic Spider-Man on curve
-#: tier:    61% of the time, Avatar Aang 60% and Thanos 59%, where the basics-heavy base
-#: tier:    read 12% / 15% / 16%. Read those two ways: the model counts each Verge's second
-#: tier:    colour as always on, though it needs a matching land type (a gated simulation
-#: tier:    runs several points lower), and it leaves out five mana creatures, Great Divide
-#: tier:    Guide's any-colour lands and Leyline of the Guildpact. Super-Skrull's {B}{B}{B}
-#: tier:    is still 26% on turn four, and keepable 84% is the curve, not the colours — no
-#: tier:    land count moves it.
+#: tier:    53% of the time, Avatar Aang 52% and Thanos 52%, where the basics-heavy base
+#: tier:    read 12% / 15% / 16%. Since G-87 each Verge's second colour counts only by the
+#: tier:    chance its land type is out (40–58% here), which tracks a gate-honouring
+#: tier:    simulation within a point; the figures are still FLOORS, because the model
+#: tier:    leaves out five mana creatures, Great Divide Guide's any-colour lands and Leyline
+#: tier:    of the Guildpact. Super-Skrull's {B}{B}{B} is 21% on turn four, and keepable 84%
+#: tier:    is the curve, not the colours — no land count moves it.
 #: tier: 2. The spine. 12 central themes around a real colour-count core (vivid, converge,
 #: tier:    both Leylines, five-colour power-ups) is still a singleton pile, and it still
 #: tier:    wins by drawing its bombs. Whether that alone holds it at C is the open call.
