@@ -8,12 +8,12 @@
 #: tier: real fixing") on the first:
 #: tier: 1. The manabase. Nineteen basics and colourless lands became owned Verges,
 #: tier:    shocklands, two tri-lands and Starting Town. `consistency 17` now puts Cosmic
-#: tier:    Spider-Man on curve 57% of the time, Avatar Aang 57%, Thanos 52%, Sokka 62%,
-#: tier:    where the basics-heavy base read 12% / 15% / 16% / 20%. Those are FLOORS: the
+#: tier:    Spider-Man on curve 57% of the time, Avatar Aang 57% and Thanos 52%, where
+#: tier:    the basics-heavy base read 12% / 15% / 16%. Those are FLOORS: the
 #: tier:    model leaves out five mana creatures, Great Divide Guide's any-colour lands and
 #: tier:    Leyline of the Guildpact. Super-Skrull's {B}{B}{B} is still 21% on turn four,
 #: tier:    and keepable 84% is the curve, not the colours — no land count moves it.
-#: tier: 2. The spine. 14 central themes around a real colour-count core (vivid, converge,
+#: tier: 2. The spine. 13 central themes around a real colour-count core (vivid, converge,
 #: tier:    both Leylines, five-colour power-ups) is still a singleton pile, and it still
 #: tier:    wins by drawing its bombs. Whether that alone holds it at C is the open call.
 #: colors: WUBRG
@@ -52,6 +52,12 @@
 #: notes: artifact for each multicolored permanent, which is both halves of Iron Man's text
 #: notes: that turn (+1/+0 per artifact; draw when an artifact entered), and it attacks for a
 #: notes: card per multicolored permanent once stationed to 12. Card advantage 7→8.
+#: notes: 2026-09-26 fifth pass — −Sokka, Tenacious Tactician/+Oltec Matterweaver (CRAFT,
+#: notes: mythic; rotates ~2026, crafted to use while it lasts). Sokka triggers on noncreature
+#: notes: spells, of which the deck runs nine; Oltec triggers on each of its 27 creature spells,
+#: notes: making a 1/1 Gnome artifact or copying an artifact token (Station's 2/2 Robots).
+#: notes: Every token is an artifact for Iron Man and fodder for Station; under Enduring
+#: notes: Vitality each taps for any colour, at once with Shang-Chi, twice with Captain America.
 
 # Nonland
 1 Great Divide Guide (TLA) 181
@@ -80,7 +86,7 @@
 1 Leyline of Mutation (DSK) 188
 1 Archaic's Agony (SOS) 107
 1 The Legend of Kyoshi (TLA) 186
-1 Sokka, Tenacious Tactician (TLA) 242
+1 Oltec Matterweaver (BIG) 3
 1 Aang, Swift Savior (TLA) 204
 1 Aang, at the Crossroads (TLA) 203
 1 Captain America, Living Legend (MSH) 210

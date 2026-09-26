@@ -1,4 +1,7 @@
 Card Name,Type,Card Text,Color(s),Synergies,Set Code,Collector #,Rarity,Target,Note,Power,Power Source
+Oltec Matterweaver,Creature — Human Artificer,"Whenever you cast a creature spell, choose one —
+• Create a 1/1 colorless Gnome artifact creature token.
+• Create a token that's a copy of target artifact token you control.",W,Human; Artificer; tokens,BIG,3,Mythic,17,Deck 17 craft (2026-09-26): Gnome/artifact-token copier; rotates ~2026,6.5,seed
 "Alania, Divergent Storm",Legendary Creature — Otter Wizard,"Whenever you cast a spell, if it's the first instant spell, the first sorcery spell, or the first Otter spell other than Alania you've cast this turn, you may have target opponent draw a card. If you do, copy that spell. You may choose new targets for the copy.",U/R,Otter; Wizard; card draw,BLB,204,Rare,25,copy your first spell of each type each turn,6.0,hand
 Essence Channeler,Creature — Bat Cleric,"As long as you've lost life this turn, this creature has flying and vigilance.
 Whenever you gain life, put a +1/+1 counter on this creature.
