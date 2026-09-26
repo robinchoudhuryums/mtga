@@ -69,9 +69,6 @@ Whenever an artifact you control enters, put a +1/+1 counter on target creature.
 Sunstar Expansionist,Creature — Human Knight,"When this creature enters, if an opponent controls more lands than you, create a Lander token. (It's an artifact with ""{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."")
 Landfall — Whenever a land you control enters, this creature gets +1/+0 until end of turn.",W,Human; Knight; sacrifice; tokens; ramp; etb; landfall; pump; lands,EOE,41,Uncommon,36,,3.0,hand
 "Muldrotha, the Gravetide",Legendary Creature — Elemental Avatar,"During each of your turns, you may play a land and cast a permanent spell of each permanent type from your graveyard. (If a card has multiple permanent types, choose one as you play it.)",U/B/G,Elemental; Avatar; graveyard,FDN,243,Mythic,,,5.5,seed
-"Ramos, Dragon Engine",Legendary Artifact Creature — Dragon,"Flying
-Whenever you cast a spell, put a +1/+1 counter on Ramos for each of that spell's colors.
-Remove five +1/+1 counters from Ramos: Add {W}{W}{U}{U}{B}{B}{R}{R}{G}{G}. Activate only once each turn.",W/U/B/R/G,Dragon; counters; flying; evasion,FDN,678,Mythic,17; 51,"Deck 51: cost is {6} COLORLESS so it casts on Islands — the identity column (WUBRG, from its MANA ABILITY) is what hid it. Five +1/+1 counters convert to TEN mana, and Fractured Realm doubles the counter trigger. 4/4 flier.",8,hand
 Abyssal Harvester,Creature — Demon Warlock,"{T}: Exile target creature card from a graveyard that was put there this turn. Create a token that's a copy of it, except it's a Nightmare in addition to its other types. Then exile all other Nightmare tokens you control.",B,Demon; Warlock; Nightmare; graveyard; tokens; removal,FDN,54,Rare,52a,,7.0,seed
 Adaptive Automaton,Artifact Creature — Construct,"As this creature enters, choose a creature type.
 This creature is the chosen type in addition to its other types.

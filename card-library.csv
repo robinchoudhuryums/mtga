@@ -6002,3 +6002,11 @@ Herd Heirloom,Artifact,"{T}: Add one mana of any color. Spend this mana only to 
 {T}: Until end of turn, target creature you control with power 4 or greater gains trample and ""Whenever this creature deals combat damage to a player, draw a card.""",G,card draw; mana; trample; evasion,TDM,144,1
 "Kraven, Proud Predator",Legendary Creature — Human Warrior Villain,"Vigilance
 Top of the Food Chain — Kraven's power is equal to the greatest mana value among permanents you control.",R/G,Human; Warrior; Villain; food; vigilance; combat,SPM,132,1
+Sundering Archaic,Creature — Avatar,"Converge — When this creature enters, exile target nonland permanent an opponent controls with mana value less than or equal to the number of colors of mana spent to cast this creature.
+{2}: Put target card from a graveyard on the bottom of its owner's library.",Colorless,Avatar; graveyard; removal; etb; converge; multicolor,SOS,3,4
+The Wandering Minstrel,Legendary Creature — Human Bard,"Lands you control enter untapped.
+The Minstrel's Ballad — At the beginning of combat on your turn, if you control five or more Towns, create a 2/2 Elemental creature token that's all colors.
+{3}{W}{U}{B}{R}{G}: Other creatures you control get +X/+X until end of turn, where X is the number of Towns you control.",W/U/B/R/G,Human; Bard; Town; tokens; pump,FIN,249,1
+"Ramos, Dragon Engine",Legendary Artifact Creature — Dragon,"Flying
+Whenever you cast a spell, put a +1/+1 counter on Ramos for each of that spell's colors.
+Remove five +1/+1 counters from Ramos: Add {W}{W}{U}{U}{B}{B}{R}{R}{G}{G}. Activate only once each turn.",W/U/B/R/G,Dragon; counters; flying; evasion,FDN,678,1

@@ -2,7 +2,7 @@
 #: format: Standard
 #: tier: C — 5-color superhero goodstuff. RE-GRADE CANDIDATE after the 2026-09-26 tune,
 #: tier: pending the owner's call; the letter is unchanged until then. The live vector is
-#: tier: interaction 5 / card advantage 5 / protection 3, a B floor. The C was never about
+#: tier: interaction 6 / card advantage 5 / protection 3, a B floor. The C was never about
 #: tier: that count — it rested on MANA and SPINE, the two things the floor cannot see, and
 #: tier: the tune took the path the old block named ("add real fixing") on the first:
 #: tier: 1. The manabase. Nineteen basics and colourless lands became owned Verges,
@@ -12,7 +12,7 @@
 #: tier:    model leaves out five mana creatures, Great Divide Guide's any-colour lands and
 #: tier:    Leyline of the Guildpact. Super-Skrull's {B}{B}{B} is still 21% on turn four,
 #: tier:    and keepable 84% is the curve, not the colours — no land count moves it.
-#: tier: 2. The spine. 14 central themes around a real colour-count core (vivid, converge,
+#: tier: 2. The spine. 13 central themes around a real colour-count core (vivid, converge,
 #: tier:    both Leylines, five-colour power-ups) is still a singleton pile, and it still
 #: tier:    wins by drawing its bombs. Whether that alone holds it at C is the open call.
 #: colors: WUBRG
@@ -33,10 +33,18 @@
 #: notes: advantage count does not show it). Energybending was Hermitic Herbalist's only
 #: notes: Lesson, so the Herbalist's Lesson-only mana has no target now; it still taps for
 #: notes: any colour.
+#: notes: 2026-09-26 second pass — −Flamehold Grappler/+Sundering Archaic (the Grappler's
+#: notes: "copy the next spell you cast this turn" on a 3/3 cast on curve 54% of the time, for
+#: notes: a second answer to a noncreature permanent: "exile target nonland permanent … with mana
+#: notes: value less than or equal to the number of colors of mana spent", five for five mana via
+#: notes: Leyline of Mutation); −Undercover Skrull/+Enduring Vitality (a 1/1 that tapped for one
+#: notes: colour, for "Creatures you control have '{T}: Add one mana of any color'" — with Captain
+#: notes: America's first-tap untap every creature taps twice, and Shang-Chi lets a new one tap at
+#: notes: once). Interaction 5→6. Earthen Ally kept at the owner's call.
 
 # Nonland
 1 Great Divide Guide (TLA) 181
-1 Undercover Skrull (MSH) 194
+1 Enduring Vitality (DSK) 176
 1 Shang-Chi, Master of Kung Fu (MSH) 187
 1 Hermitic Herbalist (TLA) 226
 1 Sanar, Innovative First-Year (ECL) 241
@@ -66,7 +74,7 @@
 1 Aang, at the Crossroads (TLA) 203
 1 Captain America, Living Legend (MSH) 210
 1 Absolute Virtue (FIN) 212
-1 Flamehold Grappler (TDM) 185
+1 Sundering Archaic (SOS) 3
 1 Tony Stark (MSH) 80
 1 Iron Man Armor (MSH) 248
 1 Planetarium of Wan Shi Tong (TLA) 259
