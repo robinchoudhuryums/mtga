@@ -1,6 +1,6 @@
 #: name: Fractalandtastic (Fractals + counter doublers)
 #: format: Standard
-#: tier: A — Temur Fractals counters/ramp; a doubler engine (Loading Zone, Doubling Season, Growth Curve, Zimone, Bristly Bill) over card advantage + ramp, with adequate interaction. The first interaction package (+Shock, plus a Plasma Bolt that was later CUT for Felling Blow; Spell Pierce was part of it and was later swapped out for Sab-Sunen) took interaction 2→5 and lifted the measurable floor to A; the 2026-09-26 pass holds interaction at 7 with card advantage 6 and protection 5. Held at A (not an S conversation) by the 3-color GUR mana and a top-heavy curve (10 early drops). Earlier B was correct pre-package; re-graded B→A once the metrics floor reached A.
+#: tier: A — Temur Fractals counters/ramp; a doubler engine (Loading Zone, Doubling Season, Growth Curve, Zimone, Bristly Bill) over card advantage + ramp, with adequate interaction. The first interaction package (+Shock, plus a Plasma Bolt that was later CUT for Felling Blow; Spell Pierce was part of it and was later swapped out for Sab-Sunen) took interaction 2→5 and lifted the measurable floor to A; the 2026-09-26 passes hold interaction at 7 with card advantage 5 and protection 5. Held at A (not an S conversation) by the 3-color GUR mana and a top-heavy curve (11 early drops). Earlier B was correct pre-package; re-graded B→A once the metrics floor reached A.
 #: colors: GUR
 #: protect: Emil, Vastlands Roamer; Loading Zone; Growth Curve; Quandrix Charm; Doubling Season
 #: archetype: Temur (G/U/R) +1/+1 counters & Fractals on a lands-matter ramp shell. Built from the
@@ -34,6 +34,15 @@
 #: notes: Parked (owned): Temple of Abandon for Swiftwater Cliffs (under-90% 25→21 by the tune
 #: notes: analysis, but blue cards drop ~4 points); Jadzi, Steward of Fate // Oracle's Gift is
 #: notes: the one craft worth a rare here (pumps every Fractal at once).
+#: notes: 2026-09-26 second pass (owned): −Sylvan Scavenging/+Warden of the Grove (single-G
+#: notes: 3-drop that grows every end step and endures X onto each nontoken creature that
+#: notes: enters); −Broodguard Elite/+Goldvein Hydra ({X}{G} over {X}{G}{G}, haste + trample,
+#: notes: Treasures on death — ⚠ rotates ~2026 with Bristly Bill); −Garruk's Uprising/+Cheering
+#: notes: Crowd (a 2-drop ramp piece that taps for {C} per counter, doubled here; Uprising's
+#: notes: trample duplicated Emil and its draw rarely fired because Fractals enter as 0/0). The
+#: notes: Crowd is symmetric: each opponent may add a counter on THEIR first main for mana too,
+#: notes: and your doublers double their counters as well. Card advantage 6→5 (A floor holds,
+#: notes: int+CA 12), early drops 10→11, printed avg MV 3.57→3.51.
 
 # Fractals & counter engine
 1 Emil, Vastlands Roamer (SOS) 146
@@ -45,18 +54,17 @@
 1 Loading Zone (EOE) 196
 1 Topiary Lecturer (SOS) 165
 1 Quandrix Charm (SOS) 217
-1 Sylvan Scavenging (FDN) 113
+1 Warden of the Grove (TDM) 166
 1 Doubling Season (FDN) 216
 
 # Counter payoffs / creatures
-1 Broodguard Elite (EOE) 175
+1 Goldvein Hydra (OTJ) 167
 
 # Card advantage / dig
 1 Sab-Sunen, Luxa Embodied (DFT) 221
 1 Mind into Matter (SOS) 202
 1 Lasting Tarfire (ECL) 149
 1 Shock (ANB) 84
-1 Garruk's Uprising (FDN) 220
 1 Inspiring Call (TLE) 168
 
 # Lands-matter ramp / bombs
@@ -81,6 +89,7 @@
 # Land-fetch / ramp value
 1 Proctor's Gaze (SOS) 213
 1 Improvisation Capstone (SOS) 120
+1 Cheering Crowd (SPM) 126
 
 # Lands (25 — Temur fixing: 12 owned duals/tri + Terramorphic + 12 basics; many differently-named for Emil)
 1 Breeding Pool (EOE) 251
