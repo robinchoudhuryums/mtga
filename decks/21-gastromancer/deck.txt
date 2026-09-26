@@ -1,6 +1,6 @@
 #: name: Gastromancer (Food sac)
 #: format: Standard
-#: tier: A — Abzan (WBG) food-aristocrats; dense interaction (12) + low curve (2.81). Re-graded B→A after the mana fix: dropping the 1-card red splash (Ragost → variant 21a) collapsed a stretched 4-color base to a focused Abzan, so every land now serves the three real colors. A-floor on interaction; the residual is a still-thin black (19 pips / 12 sources) that the wishlist WBG verges finish. The intentional 4-color version is variant 21a.
+#: tier: A — Abzan (WBG) food-aristocrats; dense interaction (12) + low curve (2.78). Re-graded B→A after the mana fix: dropping the 1-card red splash (Ragost → variant 21a) collapsed a stretched 4-color base to a focused Abzan, so every land now serves the three real colors. A-floor on interaction; the residual is a still-thin black (19 pips / 12 sources) that the wishlist WBG verges finish. The intentional 4-color version is variant 21a.
 #: colors: WBG
 #: archetype: Abzan (W/B/G) Food-sacrifice / artifact-aristocrats — a deep sac-payoff web. The namesake Ragost moved to variant 21a along with the red splash.
 #: notes: Abzan (W/B/G) Food-sacrifice / artifact-aristocrats with a LIGHT red splash
@@ -14,6 +14,9 @@
 #: notes: is just -Ragost +Vayne's Treachery and reverting 3 lands — no separate list.)
 #: notes: 2026-09-06 LAND SWEEP (owned four-ofs of the untapped-beside-a-basic duals): −Blossoming Sands
 #: notes: +Gathering Place. Sources W 10 / U 1 / B 13 / R 1 / G 11 → W 10 / U 1 / B 13 / R 1 / G 11; unconditional taplands 7 → 6. Same colours, no tempo tax.
+#: notes: 2026-09-26 — −White Widow, Free Agent/+Oltec Matterweaver (CRAFT, mythic; rotates ~2026).
+#: notes: Each creature spell makes a 1/1 Gnome artifact or copies a Food token: fodder for G'raha
+#: notes: Tia's draw and Cauldron of Essence's drain, and a cheaper sacrifice for Deadly Precision.
 
 # Nonland — sac payoffs / aristocrats
 1 Pizza Face, Gastromancer (TMT) 163
@@ -52,7 +55,7 @@
 
 # Nonland — value / light artifact package
 1 Sidequest: Hunt the Mark (FIN) 119
-1 White Widow, Free Agent (MSH) 42
+1 Oltec Matterweaver (BIG) 3
 1 White Auracite (FIN) 41
 1 Welcome to Sweettooth (WOE) 198
 1 Momo, Playful Pet (TLA) 30

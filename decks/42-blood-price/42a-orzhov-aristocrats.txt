@@ -187,6 +187,9 @@
 #: notes: that draws. It is the most efficient slot in the deck.
 #: notes: Craft targets: Eirdu, Carrier of Dawn (M), Agent Venom (R), Baron Bertram
 #: notes: Graywater (U), Al Bhed Salvagers (U), Restoration Magic (U). Else all owned.
+#: notes: 2026-09-26 — −Angel of Vitality/+Oltec Matterweaver (CRAFT, mythic; rotates ~2026). Each
+#: notes: creature spell makes a 1/1 Gnome artifact creature: sacrifice fodder for the five outlets,
+#: notes: and each one dying drains 1 through Al Bhed Salvagers (it triggers once per creature or artifact).
 
 Deck
 # Sacrifice outlets — what makes the death triggers an engine
@@ -225,7 +228,7 @@ Deck
 # Value
 1 Treacherous Greed (MKM) 237
 1 Vein Ripper (MKM) 110
-1 Angel of Vitality (ANB) 1
+1 Oltec Matterweaver (BIG) 3
 1 Dreaded Bat-Cloud (HOB) 66
 
 # Rebuild / protect the engine
