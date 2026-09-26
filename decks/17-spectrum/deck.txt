@@ -2,7 +2,7 @@
 #: format: Standard
 #: tier: C — 5-color superhero goodstuff. RE-GRADE CANDIDATE after the 2026-09-26 tune,
 #: tier: pending the owner's call; the letter is unchanged until then. The live vector is
-#: tier: interaction 7 / card advantage 7 / protection 3, an A floor — two bands over the
+#: tier: interaction 7 / card advantage 8 / protection 3, an A floor — two bands over the
 #: tier: letter. The C was never about that count — it rested on MANA and SPINE, the two
 #: tier: things the floor cannot see, and the tune took the path the old block named ("add
 #: tier: real fixing") on the first:
@@ -46,6 +46,12 @@
 #: notes: Arkenstone // Seek the Heart. Interaction 6→7, card advantage 5→7, which moves the
 #: notes: floor from B to A. Iron Man, Master of Machines now has four other artifacts to
 #: notes: count (Dragonfire Blade, Barrels of Blasting Jelly, Planetarium, The Arkenstone).
+#: notes: 2026-09-26 fourth pass — −Tony Stark/+Infinite Guideline Station. Tony's "{1}, {T}:
+#: notes: look at the top four … reveal an artifact card" hit about 30% of the time off four
+#: notes: artifacts, and his front face is mono-blue. Station's ETB makes a tapped 2/2 Robot
+#: notes: artifact for each multicolored permanent, which is both halves of Iron Man's text
+#: notes: that turn (+1/+0 per artifact; draw when an artifact entered), and it attacks for a
+#: notes: card per multicolored permanent once stationed to 12. Card advantage 7→8.
 
 # Nonland
 1 Great Divide Guide (TLA) 181
@@ -80,7 +86,7 @@
 1 Captain America, Living Legend (MSH) 210
 1 Absolute Virtue (FIN) 212
 1 Sundering Archaic (SOS) 3
-1 Tony Stark (MSH) 80
+1 Infinite Guideline Station (EOE) 219
 1 Loot, the Pathfinder (DFT) 212
 1 Planetarium of Wan Shi Tong (TLA) 259
 1 Bloom Tender (ECL) 166
