@@ -1,6 +1,6 @@
 #: name: Fractalandtastic (Fractals + counter doublers)
 #: format: Standard
-#: tier: A — Temur Fractals counters/ramp; a doubler engine (Loading Zone, Doubling Season, Growth Curve, Zimone, Bristly Bill) over card advantage + ramp, with adequate interaction. The first interaction package (+Shock, plus a Plasma Bolt that was later CUT for Felling Blow; Spell Pierce was part of it and was later swapped out for Sab-Sunen) took interaction 2→5 and lifted the measurable floor to A; the 2026-09-26 passes hold interaction at 7 with card advantage 5 and protection 5. Held at A (not an S conversation) by the 3-color GUR mana and a top-heavy curve (11 early drops). Earlier B was correct pre-package; re-graded B→A once the metrics floor reached A.
+#: tier: A — Temur Fractals counters/ramp; a doubler engine (Loading Zone, Doubling Season, Growth Curve, Zimone, Bristly Bill) over card advantage + ramp, with adequate interaction. The first interaction package (+Shock, plus a Plasma Bolt that was later CUT for Felling Blow; Spell Pierce was part of it and was later swapped out for Sab-Sunen) took interaction 2→5 and lifted the measurable floor to A; the 2026-09-26 passes hold interaction at 7 with card advantage 5 and protection 4. Held at A (not an S conversation) by the 3-color GUR mana and a top-heavy curve (10 early drops). Earlier B was correct pre-package; re-graded B→A once the metrics floor reached A.
 #: colors: GUR
 #: protect: Emil, Vastlands Roamer; Loading Zone; Growth Curve; Quandrix Charm; Doubling Season
 #: archetype: Temur (G/U/R) +1/+1 counters & Fractals on a lands-matter ramp shell. Built from the
@@ -43,6 +43,11 @@
 #: notes: Crowd is symmetric: each opponent may add a counter on THEIR first main for mana too,
 #: notes: and your doublers double their counters as well. Card advantage 6→5 (A floor holds,
 #: notes: int+CA 12), early drops 10→11, printed avg MV 3.57→3.51.
+#: notes: −Claim the Kingdom/+Applied Geometry: Claim overlapped Bristly Bill (both put a counter
+#: notes: on landfall; Bill never stops). Geometry copies a NONLEGENDARY permanent as a Fractal
+#: notes: with six counters (doubled here) — Doubling Season, Loading Zone, Warden of the Grove,
+#: notes: Fractal Tender or Topiary Lecturer; a legendary copy (Emil/Berta/Zimone/Bill) dies to the
+#: notes: legend rule. Cost: protection 5→4 (Claim's indestructible counter), early drops 11→10.
 
 # Fractals & counter engine
 1 Emil, Vastlands Roamer (SOS) 146
@@ -56,6 +61,7 @@
 1 Quandrix Charm (SOS) 217
 1 Warden of the Grove (TDM) 166
 1 Doubling Season (FDN) 216
+1 Applied Geometry (SOS) 172
 
 # Counter payoffs / creatures
 1 Goldvein Hydra (OTJ) 167
@@ -70,7 +76,6 @@
 # Lands-matter ramp / bombs
 1 Lumra, Bellow of the Woods (BLB) 183
 1 Terra, Magical Adept (FIN) 245
-1 Claim the Kingdom (MSH) 163
 1 Bristly Bill, Spine Sower (OTJ) 157
 
 # Interaction / red value
