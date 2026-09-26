@@ -310,6 +310,7 @@ Pain 101
 Paradox Surveyor
 Personify
 Peter Parker
+Peter Parker // Amazing Spider-Man
 Picklock Prankster // Free the Fae
 Pond Prophet
 Pride of the Road
@@ -360,7 +361,6 @@ Self-Reflection
 Servant of the Stinger
 Shark Shredder, Killer Clone
 Sheriff of Safe Passage
-Shimmercreep
 Shredder, Unrelenting
 Shrike Force
 Silent Hallcreeper

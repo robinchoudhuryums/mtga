@@ -6,14 +6,17 @@
 #: tier: letter. The C was never about that count — it rested on MANA and SPINE, the two
 #: tier: things the floor cannot see, and the tune took the path the old block named ("add
 #: tier: real fixing") on the first:
-#: tier: 1. The manabase. Nineteen basics and colourless lands became owned Verges,
-#: tier:    shocklands, two tri-lands and Starting Town. `consistency 17` now puts Cosmic
-#: tier:    Spider-Man on curve 57% of the time, Avatar Aang 57% and Thanos 52%, where
-#: tier:    the basics-heavy base read 12% / 15% / 16%. Those are FLOORS: the
-#: tier:    model leaves out five mana creatures, Great Divide Guide's any-colour lands and
-#: tier:    Leyline of the Guildpact. Super-Skrull's {B}{B}{B} is still 21% on turn four,
-#: tier:    and keepable 84% is the curve, not the colours — no land count moves it.
-#: tier: 2. The spine. 13 central themes around a real colour-count core (vivid, converge,
+#: tier: 1. The manabase. Nineteen basics and colourless lands became Verges, shocklands,
+#: tier:    two tri-lands and Starting Town, and three more shocklands later replaced the
+#: tier:    Island and two Forests. `consistency 17` now puts Cosmic
+#: tier:    Spider-Man on curve 63% of the time, Avatar Aang 64% and Thanos 59%, where
+#: tier:    the basics-heavy base read 12% / 15% / 16%. Read those two ways: the model
+#: tier:    counts each Verge's second colour as always on, though it needs a matching land
+#: tier:    type (a gated simulation runs about 5 points lower), and it leaves out five mana
+#: tier:    creatures, Great Divide Guide's any-colour lands and Leyline of the Guildpact.
+#: tier:    Super-Skrull's {B}{B}{B} is still 21% on turn four, and keepable 84% is the
+#: tier:    curve, not the colours — no land count moves it.
+#: tier: 2. The spine. 12 central themes around a real colour-count core (vivid, converge,
 #: tier:    both Leylines, five-colour power-ups) is still a singleton pile, and it still
 #: tier:    wins by drawing its bombs. Whether that alone holds it at C is the open call.
 #: colors: WUBRG
@@ -58,6 +61,16 @@
 #: notes: making a 1/1 Gnome artifact or copying an artifact token (Station's 2/2 Robots).
 #: notes: Every token is an artifact for Iron Man and fodder for Station; under Enduring
 #: notes: Vitality each taps for any colour, at once with Shang-Chi, twice with Captain America.
+#: notes: 2026-09-26 sixth pass — −Shimmercreep/+Peter Parker. His back face gives every coloured
+#: notes: legendary spell web-slinging {G}{W}{U}: sixteen qualify, Absolute Virtue (8 mana) and the
+#: notes: five-colour Station and Cosmic Spider-Man among them. Explosive Prodigy was the other
+#: notes: candidate and was kept: it is interaction piece seven of seven, and the A floor needs 7.
+#: notes: 2026-09-26 LANDS (3 rare crafts) — −Island/+Steam Vents, −2 Forest/+Stomping Ground,
+#: notes: +Temple Garden. Each keeps the basic's colour and type and adds a second colour plus a
+#: notes: Mountain or Plains type, which turns on the red and white Verge secondaries. Measured with
+#: notes: a simulation that honours the Verge gates (the tools count them as always on): average
+#: notes: cast-on-curve given land drops 71.6% → 76.5%; Wonder Man 55→74, Thanos 39→51, Station
+#: notes: 59→69, Peter 69→74. Sources W 9→10, R 9→11.
 
 # Nonland
 1 Great Divide Guide (TLA) 181
@@ -82,7 +95,7 @@
 1 Aurora Awakener (ECL) 165
 1 Transcendent Archaic (SOS) 5
 1 Iron Man, Master of Machines (MSH) 216
-1 Shimmercreep (ECL) 120
+1 Peter Parker // Amazing Spider-Man (SPM) 10
 1 Leyline of Mutation (DSK) 188
 1 Archaic's Agony (SOS) 107
 1 The Legend of Kyoshi (TLA) 186
@@ -101,7 +114,9 @@
 1 Starting Town (FIN) 289
 1 Frontier Bivouac (TDM) 256
 1 Surveillance Room (MSH) 274
-3 Forest (MSH) 295
+1 Forest (MSH) 295
+1 Temple Garden (ECL) 268
+1 Stomping Ground (EOE) 258
 1 Breeding Pool (EOE) 251
 1 Willowrush Verge (DFT) 270
 1 Hushwood Verge (DSK) 261
@@ -109,7 +124,7 @@
 1 Hallowed Fountain (ECL) 265
 1 Bleachbone Verge (DFT) 250
 1 Sunbillow Verge (DFT) 264
-1 Island (MSH) 289
+1 Steam Vents (ECL) 267
 1 Watery Grave (EOE) 261
 1 Gloomlake Verge (DSK) 260
 1 Floodfarm Verge (DSK) 259
