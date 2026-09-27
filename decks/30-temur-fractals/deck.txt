@@ -1,5 +1,6 @@
 #: name: Fractalandtastic (Fractals + counter doublers)
 #: format: Standard
+#: arena: 30 Fractalandtastic, 82c75185-a6ed-4f8f-8cac-bcc75bba128f
 #: tier: A — Temur Fractals counters/ramp; a doubler engine (Loading Zone, Doubling Season, Growth Curve, Zimone, Bristly Bill) over card advantage + ramp, with adequate interaction. The first interaction package (+Shock, plus a Plasma Bolt that was later CUT for Felling Blow; Spell Pierce was part of it and was later swapped out for Sab-Sunen) took interaction 2→5 and lifted the measurable floor to A; the 2026-09-26 passes hold interaction at 7 with card advantage 7 and protection 4. Held at A (not an S conversation) by the 3-color GUR mana and a top-heavy curve (10 early drops). Earlier B was correct pre-package; re-graded B→A once the metrics floor reached A.
 #: colors: GUR
 #: protect: Emil, Vastlands Roamer; Loading Zone; Growth Curve; Quandrix Charm; Doubling Season

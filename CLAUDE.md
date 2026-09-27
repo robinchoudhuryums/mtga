@@ -1506,12 +1506,12 @@ earned it: [C-01]
 
 **Subsystems:**
 - Data: card-library.csv, card-pool.csv, card-mana.csv, card-wishlist.csv, matches.csv
-  (LIVE since 2026-08-10 — 188 matches, 185 attributed across 47 decks, pooled 96-91-1; the
+  (LIVE since 2026-08-10 — 191 matches, 188 attributed across 48 decks, pooled 96-94-1; the
   best per-deck row is n=16 (deck 79) against the 20-match floor after seven weeks, which is
-  why `--report` also POOLS, and why the four HAND columns exist at all — G-74; all four are
-  still EMPTY in all 188 rows, so scenario 11 remains the only thing that can prove that
-  loop closes — On Play now also fills from the play-by-play, so it will stop being a
-  hand-only signal), recommendations.csv,
+  why `--report` also POOLS, and why the four HAND columns exist at all — G-74; the three
+  hand-only ones are still EMPTY in all 191 rows, so scenario 11 remains the only thing that
+  can prove that loop closes, while On Play is filled on 9 from the play-by-play, which
+  reached its first real rows 2026-09-27), recommendations.csv,
   collection-stamp.json (written only by `import_collection.py --apply` — the date owned
   counts were last EXACT; absent until the first run, and since 2026-09-20 `check_all`
   says so once per session as well as every craft surface saying it inline) [C-02]

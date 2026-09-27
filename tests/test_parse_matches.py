@@ -1953,6 +1953,11 @@ class TestGameDetails:
         # Only the OPPONENT's cards, first-seen order, unnamed ones kept as #<id>.
         assert f["Opponent Cards"] == "#95779; Kraven, Proud Predator; #88001"
 
+    def test_a_face_down_object_is_not_a_card(self):
+        """Seen in the first real log: an opponent object with grpId 3 (face-down)."""
+        f, _p = pm.match_details([dict(self.GAME, cards=self.GAME["cards"] + ["1:3:"])])
+        assert "#3" not in f["Opponent Cards"]
+
     def test_no_seat_means_no_details_rather_than_a_guess(self):
         f, problem = pm.match_details([dict(self.GAME, seat=0)])
         assert f == {} and "seat" in problem

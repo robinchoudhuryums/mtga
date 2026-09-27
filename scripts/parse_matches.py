@@ -477,12 +477,20 @@ def parse_game_facts(text):
     return {mid: [g[n] for n in sorted(g)] for mid, g in games.items()}, warnings
 
 
+# Arena ids below this are rules objects, not printed cards: the first real log (2026-09-27)
+# showed an opponent object with grpId 3 — a face-down permanent, which has no name to
+# look up and would sit in Opponent Cards as "#3" forever. Real card ids run from ~5000.
+_MIN_CARD_GRPID = 1000
+
+
 def _game_cards(game):
     """[(owner seat, grpId, colours, is_land)] from a game line's "owner:grpId:flags"."""
     out = []
     for tok in game.get("cards") or []:
         parts = str(tok).split(":")
         if len(parts) != 3 or not parts[0].isdigit() or not parts[1].isdigit():
+            continue
+        if int(parts[1]) < _MIN_CARD_GRPID:
             continue
         flags = parts[2]
         out.append((int(parts[0]), int(parts[1]),
