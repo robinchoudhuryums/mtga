@@ -6010,3 +6010,15 @@ The Minstrel's Ballad — At the beginning of combat on your turn, if you contro
 "Ramos, Dragon Engine",Legendary Artifact Creature — Dragon,"Flying
 Whenever you cast a spell, put a +1/+1 counter on Ramos for each of that spell's colors.
 Remove five +1/+1 counters from Ramos: Add {W}{W}{U}{U}{B}{B}{R}{R}{G}{G}. Activate only once each turn.",W/U/B/R/G,Dragon; counters; flying; evasion,FDN,678,1
+Popular Egotist,Creature — Human Rogue,"{1}{B}, Sacrifice another creature or enchantment: This creature gains indestructible until end of turn. Tap it. (Damage and effects that say ""destroy"" don't destroy it.)
+Whenever you sacrifice a permanent, target opponent loses 1 life and you gain 1 life.",B,Human; Rogue; lifegain; sacrifice; indestructible; resilience,DSK,114,1
+Heaped Harvest,Artifact — Food,"When this artifact enters and when you sacrifice it, you may search your library for a basic land card, put it onto the battlefield tapped, then shuffle.
+{2}, {T}, Sacrifice this artifact: You gain 3 life.",G,Food; lifegain; sacrifice; ramp; etb,BLB,175,1
+Deadly Brew,Sorcery,"Each player sacrifices a creature or planeswalker of their choice. If you sacrificed a permanent this way, you may return another permanent card from your graveyard to your hand.",B/G,graveyard; sacrifice,FDN,654,1
+Oltec Matterweaver,Creature — Human Artificer,"Whenever you cast a creature spell, choose one —
+• Create a 1/1 colorless Gnome artifact creature token.
+• Create a token that's a copy of target artifact token you control.",W,Human; Artificer; tokens,BIG,3,1
+"Lord Dregg, Insect Invader",Legendary Creature — Insect Warrior,"Flying
+Disappear — At the beginning of your end step, if a permanent left the battlefield under your control this turn, create a 1/1 black Insect Warrior creature token with flying.
+{3}{G}, Sacrifice a token: Draw a card.",B/G,Insect; Warrior; card draw; sacrifice; tokens; flying; evasion; disappear; aristocrats,TMT,65,1
+Moogles' Valor,Instant,"For each creature you control, create a 1/2 white Moogle creature token with lifelink. Then creatures you control gain indestructible until end of turn.",W,Then; lifegain; tokens; indestructible; resilience,FIN,27,1

@@ -454,8 +454,8 @@ is protecting.
   **THE LIST IS A WINDOW AND THE RANKING IS THEME FIT, so read a card's ABSENCE as neither
   (BS10-05).** The footer counted the TRUNCATION, so it read "20 suggestion(s)" whether the
   ranking held 20 candidates or 958; it now prints "top N of M ranked candidate(s)"
-  (`--limit 0` for all). Why it matters is measured, not asserted: across **995 applied swaps
-  that recorded a rank for the card ADDED, the MEDIAN rank is 373** and only **11%** fell
+  (`--limit 0` for all). Why it matters is measured, not asserted: across **1018 applied swaps
+  that recorded a rank for the card ADDED, the MEDIAN rank is 360** and only **11%** fell
   inside the default top 20. `deck.py feedback` reports that distribution. A card chosen for
   a mechanical interaction the tags do not encode ranks far down BY CONSTRUCTION — a
   different problem from the theme gate G-38 describes, and K-15 was its largest single
@@ -656,7 +656,7 @@ is protecting.
   for a deck that can never meet it (81 pairs, 54 of 114 decks).** Test
   `TAPLAND_CONDITIONAL_KINDS`, not a string.
   **NONLAND sources are DISCLOSED since 2026-09-18, never counted**: `consistency` prints
-  `ⓘ N NONLAND mana source(s) are NOT in the counts above` (**78 of 112 decks**). The
+  `ⓘ N NONLAND mana source(s) are NOT in the counts above` (**77 of 112 decks**). The
   exclusion is right — a rock is not a land drop — but its SILENCE was not, because
   `suggest --ramp` recommends exactly what this count cannot see.
   `uncounted_mana_sources` runs `land_production` on a NONLAND's text, so the spend-only
@@ -1256,20 +1256,24 @@ is protecting.
   renaming, so today's agreement is a snapshot, not a reason to add the gate — docs cite it
   with examples that now read as agreements *because* the sync ran. Re-measure first. [G-73]
 
-- **THE LOG CANNOT SEE WHAT YOU FACED, WHETHER YOU WERE ON THE PLAY, OR WHY YOU LOST — and
-  a PHONE GAME never reaches the desktop log at all** (`Player.log` is written by the
-  install that played the match). Four hand-only columns fill that gap. **Which writer
-  depends on whether Arena logged the match**: `--add` (`<deck> <W|L|D>` + `opp= why=
-  play= note=`) for one it never saw; **`--annotate` (`<matchId> …`) for one it DID** —
-  it joins on Arena's id and UPDATES, where `--add` would append a SECOND row, because a
-  hand row has no matchId to dedupe on. `deck`/`result`/`date` are refused by `--annotate`;
-  the log owns them. The **loss vocabulary is CLOSED so it can be COUNTED** (`flood screw
-  slow answer removed keep misplay outclassed`) — free text cannot answer "which decks
-  flood out". Validation is asymmetric: an unknown DECK or matchId is REFUSED (it would
-  invent or silently skip a row), an unknown `why` is warned about and RECORDED. The
-  dashboard's **"Log a match"** panel does both from a phone — the page is STATIC, so it
-  queues in `localStorage` and hands back lines; it parses a pasted log only to LABEL
-  rows, and emits only the id, so a misparse there cannot corrupt a stored W/L. [G-74]
+- **THE RESULT LINES CANNOT SEE WHAT YOU FACED OR WHY YOU LOST; THE PLAY-BY-PLAY SEES MOST
+  OF IT; a PHONE GAME never reaches the desktop log at all** (`Player.log` is written by
+  the install that played the match). This rule said "the log cannot see" for a month —
+  true of the three line shapes being grepped, not of the log. Since 2026-09-27
+  `scripts/mtga_extract.sh` (the Mac's `~/mtga-logs/extract.sh`, embedded VERBATIM in
+  `/log-matches` and pinned by a test) reduces each game's game-state stream — 1.0–2.4 MB
+  per match — to one `[MTGA-GAME]` line, and the parser fills On Play (BLANK cells only; a
+  typed value wins and a disagreement is reported), mulligans, Turns (Arena counts BOTH
+  players' turns), opponent colours and cards, named through Scryfall's Arena-id lookup
+  and cached in `arena-cards.csv`. Opponent ARCHETYPE and why you lost stay hand-only.
+  **Which writer depends on whether Arena logged the match**: `--add` for one it never
+  saw; **`--annotate` (`<matchId> …`) for one it DID** — it UPDATES, where `--add` would
+  append a SECOND row, since a hand row has no matchId to dedupe on. The **loss vocabulary
+  is CLOSED so it can be COUNTED** (`flood screw slow answer removed keep misplay
+  outclassed`). Validation is asymmetric: an unknown DECK or matchId is REFUSED, an
+  unknown `why` is warned about and RECORDED. The dashboard's **"Log a match"** panel does
+  both from a phone — it is STATIC, queues in `localStorage` and hands back lines, and
+  emits only the id, so a misparse there cannot corrupt a stored W/L. [G-74]
 
 - **AN EARLY DROP THAT ONLY MAKES MANA IS NOT A CLOCK, and `early_drops` counted them
   alike.** A turn-two mana dork and a turn-two beater are one number to
@@ -1502,16 +1506,19 @@ earned it: [C-01]
 
 **Subsystems:**
 - Data: card-library.csv, card-pool.csv, card-mana.csv, card-wishlist.csv, matches.csv
-  (LIVE since 2026-08-10 — 186 matches, 183 attributed across 46 decks, pooled 95-90-1; the
+  (LIVE since 2026-08-10 — 191 matches, 188 attributed across 48 decks, pooled 96-94-1; the
   best per-deck row is n=16 (deck 79) against the 20-match floor after seven weeks, which is
-  why `--report` also POOLS, and why the four HAND columns exist at all — G-74; all four are
-  still EMPTY in all 186 rows, so scenario 11 remains the only thing that can prove that
-  loop closes), recommendations.csv,
+  why `--report` also POOLS, and why the four HAND columns exist at all — G-74; the three
+  hand-only ones are still EMPTY in all 191 rows, so scenario 11 remains the only thing that
+  can prove that loop closes, while On Play is filled on 9 from the play-by-play, which
+  reached its first real rows 2026-09-27), recommendations.csv,
   collection-stamp.json (written only by `import_collection.py --apply` — the date owned
   counts were last EXACT; absent until the first run, and since 2026-09-20 `check_all`
   says so once per session as well as every craft surface saying it inline) [C-02]
-- Outcomes: scripts/parse_matches.py, recommendations.csv + `deck.py feedback` — the only
-  subsystems that have seen a real game or a real decision [C-03]
+- Outcomes: scripts/parse_matches.py, scripts/mtga_extract.sh (the play-by-play reducer,
+  also the Mac's `~/mtga-logs/extract.sh`), arena-cards.csv (Arena id → card name cache),
+  recommendations.csv + `deck.py feedback` — the only subsystems that have seen a real
+  game or a real decision [C-03]
 - Ingest & Enrich: scripts/import_arena.py, scripts/import_collection.py,
   scripts/verify_ingest.py, scripts/enrich.py, scripts/tag_synergies.py,
   scripts/build_pool.py, scripts/build_mana.py, scripts/reconcile_crafts.py,
@@ -1678,8 +1685,12 @@ format.
    the ROUTE that resolved it; re-running is idempotent (dedup by matchId); the rename
    re-maps in the SAME run, because header sync precedes the mapping. A match whose
    deck selection is missing stays blank rather than borrowing a neighbour's, and
-   `--report` refuses a percentage under 20 matches. Full steps + the launchd archive
-   setup: `.claude/commands/log-matches.md`. [C-12]
+   `--report` refuses a percentage under 20 matches. With `extract.sh` installed, each
+   match whose play-by-play was captured also gets a `Game details` line — check its
+   play/draw against what you remember, since an inverted seat read would flip every row
+   the same way (first real paste, 9 games, confirmed correct by the owner 2026-09-27;
+   still unchecked on a best-of-three). Full steps + the launchd archive setup:
+   `.claude/commands/log-matches.md`. [C-12]
 10. Log-a-match panel — selected state and focus ring | Subsystem: Presentation & Interface
     Steps: open `dashboard.html`, expand "Log a match" (starts collapsed); click W, L, D
     and then Play / Draw; Tab into the Deck select, the Opponent input, each segment

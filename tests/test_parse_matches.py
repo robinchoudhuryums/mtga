@@ -1547,7 +1547,8 @@ class TestManualEntry:
         rows, _ = pm.parse_manual("49 W opp=mono-red", deck_ids={"49"}, today="2026-08-20")
         r = rows[0]
         for col in ("Arena Deck", "Arena Deck ID", "My Avatar", "Opponent Avatar",
-                    "Games Won", "Games Lost", "Reason", "Ended By"):
+                    "Games Won", "Games Lost", "Reason", "Ended By",
+                    *pm.LOG_DETAIL_COLUMNS):
             assert r[col] == "", f"{col} should be blank on a hand-entered row"
         assert set(r) == set(pm.HEADER)
 
@@ -1794,3 +1795,286 @@ class TestLogDeckFlagIsValidated:
         r = subprocess.run([sys.executable, "scripts/parse_matches.py", "--deck", "06",
                             str(empty)], capture_output=True, text=True, timeout=120)
         assert "no deck with that id" not in (r.stdout + r.stderr)
+
+
+# ── The play-by-play (2026-09-27): `scripts/mtga_extract.sh` + `[MTGA-GAME]` lines ──
+#
+# The fixtures below are built from the shapes Arena actually wrote, read off a real
+# Player.log on 2026-09-27 (key order, spacing, `systemSeatIds`, a `mulliganCount` that
+# is ABSENT rather than 0 when nobody mulliganed, `name` as a numeric localisation id).
+# The grpIds are real Arena ids so a live Scryfall lookup would name them; the tests
+# never make one.
+
+import os as _os
+import subprocess as _sp
+
+_EXTRACT = _os.path.join(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))),
+                         "scripts", "mtga_extract.sh")
+
+
+def _gre(seats, gsm):
+    return json.dumps({"transactionId": "t", "requestId": 1, "timestamp": "1790520582977",
+                       "greToClientEvent": {"greToClientMessages": [
+                           {"type": "GREMessageType_GameStateMessage", "systemSeatIds": seats,
+                            "msgId": 1, "gameStateId": 1, "gameStateMessage": gsm}]}},
+                      separators=(", ", ": "))
+
+
+def _obj(iid, grp, owner, types, colours=(), vis="Visibility_Public"):
+    o = {"instanceId": iid, "grpId": grp, "type": "GameObjectType_Card", "zoneId": 28,
+         "visibility": vis, "ownerSeatId": owner, "controllerSeatId": owner,
+         "cardTypes": list(types)}
+    if colours:
+        o["color"] = list(colours)
+    o.update({"name": 1000 + iid, "overlayGrpId": grp})
+    if "CardType_Creature" in types:
+        o.update({"power": {"value": 2}, "toughness": {"value": 2}})
+    o["uniqueAbilities"] = [{"id": 1, "grpId": 1001}]
+    return o
+
+
+def _players(mull=None, life=(20, 20)):
+    out = []
+    for s in (1, 2):
+        p = {"lifeTotal": life[s - 1], "systemSeatNumber": s,
+             "status": "PlayerStatus_InGame", "maxHandSize": 7}
+        if mull and mull.get(s):
+            p["mulliganCount"] = mull[s]
+        p.update({"teamId": s, "timerIds": [1, 2], "controllerSeatId": s,
+                  "controllerType": "ControllerType_Player", "startingLifeTotal": 20})
+        out.append(p)
+    return out
+
+
+def _ginfo(mid, results=None):
+    g = {"matchID": mid, "gameNumber": 1, "stage": "GameStage_Play",
+         "type": "GameType_Duel", "mulliganType": "MulliganType_London",
+         "deckConstraintInfo": {"minDeckSize": 60}}
+    if results:
+        g["results"] = results
+    return g
+
+
+RED_GREEN = ["CardColor_Red", "CardColor_Green"]
+OPP_CARDS = [(95779, ["CardType_Land"], []),                 # Blossoming Sands
+             (97950, ["CardType_Creature"], RED_GREEN),      # Kraven, Proud Predator
+             (88001, ["CardType_Instant"], ["CardColor_Blue"])]
+
+
+def _played(mid="m-1", my_seat=2, first=1, last_turn=14, winner=2, mull=None,
+            finished=True, opp_cards=OPP_CARDS):
+    """One match as the log holds it: header, play-by-play, result."""
+    opp = 3 - my_seat
+    lines = [_header(date="9/27/2026", time="9:50:18 AM"),
+             _gre([my_seat], {"type": "GameStateType_Full", "gameInfo": _ginfo(mid),
+                              "players": _players(), "turnInfo": {"decisionPlayer": first},
+                              "gameObjects": [_obj(160, 105179, my_seat, ["CardType_Land"],
+                                                   vis="Visibility_Private")]}),
+             _gre([1, 2], {"type": "GameStateType_Diff", "players": _players(mull),
+                           "turnInfo": {"phase": "Phase_Beginning", "step": "Step_Upkeep",
+                                        "turnNumber": 1, "activePlayer": first,
+                                        "priorityPlayer": first, "decisionPlayer": first}}),
+             _gre([my_seat], {"type": "GameStateType_Diff",
+                              "turnInfo": {"turnNumber": last_turn - 1, "activePlayer": opp},
+                              "gameObjects": [_obj(200 + i, g, opp, t, c)
+                                              for i, (g, t, c) in enumerate(opp_cards)]})]
+    if finished:
+        res = [{"scope": "MatchScope_Game", "result": "ResultType_WinLoss",
+                "winningTeamId": winner, "reason": "ResultReason_Concede"}]
+        lines.append(_gre([my_seat], {"type": "GameStateType_Full",
+                                      "gameInfo": _ginfo(mid, res),
+                                      "players": _players(mull, (20, 7)),
+                                      "turnInfo": {"turnNumber": last_turn,
+                                                   "activePlayer": opp}}))
+        lines += [_header(date="9/27/2026", time="9:55:50 AM"),
+                  _event(match_id=mid, my_team=my_seat, winner=winner,
+                         games=((winner,),), ended_by="ResultReason_Concede")]
+    return lines
+
+
+def _extract(tmp_path, lines):
+    log = tmp_path / "Player.log"
+    log.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    r = _sp.run(["sh", _EXTRACT, str(log)], capture_output=True, text=True, timeout=60)
+    assert r.returncode == 0, r.stderr
+    return r.stdout
+
+
+class TestTheExtractor:
+    """`scripts/mtga_extract.sh` runs on the Mac, where nothing can be debugged after the
+    fact — a wrong summary there is a silent gap in every later paste."""
+
+    def test_one_game_line_per_finished_game_with_the_facts(self, tmp_path):
+        out = _extract(tmp_path, _played(my_seat=2, first=1, mull={2: 1}))
+        games = [ln for ln in out.splitlines() if ln.startswith(pm.GAME_FACT_PREFIX)]
+        assert len(games) == 1
+        fact = pm.parse_game_facts(out)[0]["m-1"][0]
+        assert (fact["seat"], fact["first"], fact["turns"]) == (2, 1, 14)
+        assert fact["mulligans"] == {"1": 0, "2": 1}       # absent in the log = 0
+        assert (fact["winner"], fact["reason"]) == (2, "Concede")
+        assert fact["cards"] == ["2:105179:L", "1:95779:L", "1:97950:RG", "1:88001:U"]
+        assert games[0].startswith("[MTGA-GAME]9/27/2026 9:50:18 AM: ")
+
+    def test_the_match_lines_pass_through_and_the_play_by_play_does_not(self, tmp_path):
+        out = _extract(tmp_path, [_setdeck(when="2026-09-27T09:50:10.66422-05:00")]
+                       + _played())
+        assert "GREMessageType_GameStateMessage" not in out
+        assert "EventSetDeckV3" in out and '"finalMatchResult"' in out
+        rows, warnings = pm.parse_log(out)
+        assert warnings == [] and [r["Result"] for r in rows] == ["W"]
+
+    def test_an_unfinished_game_writes_no_line(self, tmp_path):
+        """A game still in progress when the 15-minute snapshot runs must not leave a
+        half-summary in the archive — the finished one would then be a second line."""
+        out = _extract(tmp_path, _played(finished=False))
+        assert pm.GAME_FACT_PREFIX not in out
+
+    def test_two_matches_keep_their_own_seats_and_cards(self, tmp_path):
+        out = _extract(tmp_path, _played("m-1", my_seat=2, first=1)
+                       + _played("m-2", my_seat=1, first=1,
+                                 opp_cards=[(77001, ["CardType_Creature"], ["CardColor_White"])]))
+        facts, _w = pm.parse_game_facts(out)
+        assert (facts["m-1"][0]["seat"], facts["m-2"][0]["seat"]) == (2, 1)
+        assert facts["m-2"][0]["cards"][-1] == "2:77001:W"
+
+
+class TestGameDetails:
+    GAME = {"matchId": "m-1", "game": 1, "seat": 2, "first": 1, "turns": 14, "winner": 2,
+            "mulligans": {"1": 0, "2": 1}, "teams": {"1": 1, "2": 2},
+            "cards": ["2:105179:L", "1:95779:L", "1:97950:RG", "1:88001:U"]}
+
+    def test_seat_two_after_seat_one_went_first_is_the_draw(self):
+        f, problem = pm.match_details([self.GAME], {97950: "Kraven, Proud Predator"})
+        assert problem is None
+        assert f["On Play"] == "draw"
+        assert (f["My Mulligans"], f["Opp Mulligans"], f["Turns"]) == ("1", "0", "14")
+        # Colours come from NONLAND cards only, in WUBRG order; lands carry none.
+        assert f["Opponent Colors"] == "URG"
+        # Only the OPPONENT's cards, first-seen order, unnamed ones kept as #<id>.
+        assert f["Opponent Cards"] == "#95779; Kraven, Proud Predator; #88001"
+
+    def test_a_face_down_object_is_not_a_card(self):
+        """Seen in the first real log: an opponent object with grpId 3 (face-down)."""
+        f, _p = pm.match_details([dict(self.GAME, cards=self.GAME["cards"] + ["1:3:"])])
+        assert "#3" not in f["Opponent Cards"]
+
+    def test_no_seat_means_no_details_rather_than_a_guess(self):
+        f, problem = pm.match_details([dict(self.GAME, seat=0)])
+        assert f == {} and "seat" in problem
+
+    def test_several_games_join_per_game(self):
+        g2 = dict(self.GAME, game=2, first=2, turns=9, mulligans={"1": 1, "2": 0})
+        f, _p = pm.match_details([self.GAME, g2])
+        assert (f["My Mulligans"], f["Opp Mulligans"], f["Turns"]) == ("1/0", "0/1", "14/9")
+        assert f["On Play"] == "draw"                 # game 1's die roll
+
+    def test_a_repeated_line_counts_once_and_a_cut_line_warns(self):
+        line = "[MTGA-GAME]9/27/2026 9:50:18 AM: " + json.dumps(self.GAME)
+        facts, warnings = pm.parse_game_facts("\n".join([line, line, line[:60]]))
+        assert len(facts["m-1"]) == 1
+        assert len(warnings) == 1 and "truncated" in warnings[0]
+
+    def test_on_play_typed_by_hand_is_kept_and_the_disagreement_reported(self):
+        row = {"Match ID": "m-1", "On Play": "play", "Opponent Cards": "#97950"}
+        changes, orphans, notes = pm.apply_game_details(
+            {"m-1": row}, {"m-1": [self.GAME]}, {97950: "Kraven, Proud Predator"})
+        assert row["On Play"] == "play"
+        assert "kept yours" in notes[0]
+        # The derived columns ARE recomputed — a placeholder becomes the name.
+        assert "Kraven, Proud Predator" in row["Opponent Cards"]
+        assert orphans == 0 and changes and "On Play" not in changes[0][2]
+
+    def test_a_game_with_no_recorded_match_waits(self):
+        _c, orphans, _n = pm.apply_game_details({}, {"m-1": [self.GAME]}, {})
+        assert orphans == 1
+
+
+class TestGameDetailsThroughMain:
+    """Driven through `main()` (G-40): the fill has to happen on the path a user runs,
+    including for a match an EARLIER run already recorded — that is the backfill."""
+
+    def _run(self, tmp_path, monkeypatch, capsys, lines, *flags, lookup=None):
+        calls = []
+
+        def fake(grp):
+            calls.append(grp)
+            if lookup == "down":
+                import scryfall
+                raise scryfall.ScryfallUnavailable("offline")
+            return {95779: "Blossoming Sands", 97950: "Kraven, Proud Predator"}.get(grp)
+        monkeypatch.setattr(pm, "_scryfall_arena_name", fake)
+        src = tmp_path / "s.log"
+        src.write_text(_extract(tmp_path, lines), encoding="utf-8")
+        monkeypatch.setattr("sys.argv", ["parse_matches.py", str(src),
+                                         "--out", str(tmp_path / "m.csv"), *flags])
+        assert pm.main() == 0
+        return capsys.readouterr().out, calls
+
+    def test_a_new_match_is_written_with_its_details(self, tmp_path, monkeypatch, capsys):
+        out, _c = self._run(tmp_path, monkeypatch, capsys, _played(), "--apply")
+        row = pm.load_matches(str(tmp_path / "m.csv"))[0]
+        assert row["On Play"] == "draw" and row["Turns"] == "14"
+        assert row["Opponent Cards"] == "Blossoming Sands; Kraven, Proud Predator; #88001"
+        assert "on the draw" in out and "Kraven" in out
+        cache = (tmp_path / "arena-cards.csv").read_text(encoding="utf-8")
+        assert "97950" in cache and "88001" not in cache     # a miss is not cached
+
+    def test_the_dry_run_writes_neither_file(self, tmp_path, monkeypatch, capsys):
+        self._run(tmp_path, monkeypatch, capsys, _played())
+        assert not (tmp_path / "m.csv").exists()
+        assert not (tmp_path / "arena-cards.csv").exists()
+
+    def test_a_recorded_match_is_backfilled(self, tmp_path, monkeypatch, capsys):
+        csvp = tmp_path / "m.csv"
+        pm.write_matches([{"Date": "2026-09-27", "Match ID": "m-1", "Deck": "21",
+                           "Result": "W"}], str(csvp))
+        out, _c = self._run(tmp_path, monkeypatch, capsys, _played(), "--apply")
+        rows = pm.load_matches(str(csvp))
+        assert len(rows) == 1 and rows[0]["Opponent Colors"] == "URG"
+        assert "filled on 1 match(es) already recorded" in out
+
+    def test_the_cache_is_read_before_scryfall(self, tmp_path, monkeypatch, capsys):
+        pm.write_arena_cards({95779: "Blossoming Sands", 97950: "Kraven, Proud Predator"},
+                             str(tmp_path / "arena-cards.csv"))
+        _out, calls = self._run(tmp_path, monkeypatch, capsys, _played())
+        assert calls == [88001]
+
+    def test_an_outage_writes_placeholders_and_says_so(self, tmp_path, monkeypatch, capsys):
+        out, _c = self._run(tmp_path, monkeypatch, capsys, _played(), "--apply",
+                            lookup="down")
+        row = pm.load_matches(str(tmp_path / "m.csv"))[0]
+        assert row["Opponent Cards"] == "#95779; #97950; #88001"
+        assert "Scryfall unavailable" in out
+
+
+class TestGameLinesAndTheRestOfTheParser:
+    def test_the_since_filter_dates_a_game_line_by_its_own_stamp(self):
+        old = '[MTGA-GAME]9/20/2026 9:00:00 AM: {"matchId": "old"}'
+        new = '[MTGA-GAME]9/27/2026 9:00:00 AM: {"matchId": "new"}'
+        kept, dropped = pm.filter_since("\n".join([old, new]), "2026-09-25")
+        assert dropped == 1 and "new" in kept and "old" not in kept
+
+    def test_the_previous_header_still_migrates(self, tmp_path):
+        """Five columns were appended; a matches.csv written before them must be
+        rewritten, not refused as a foreign schema."""
+        csvp = tmp_path / "m.csv"
+        old = pm.HEADER[:pm.HEADER.index("Note") + 1]
+        csvp.write_text(",".join(old) + "\n2026-09-27,m-1" + "," * (len(old) - 2) + "\n",
+                        encoding="utf-8")
+        pm.write_matches(pm.load_matches(str(csvp)), str(csvp))
+        assert csvp.read_text(encoding="utf-8").splitlines()[0] == ",".join(pm.HEADER)
+
+
+class TestTheSkillCarriesTheExtractorVerbatim:
+    """The Mac has no checkout, so /log-matches ships the extractor as a paste-in block.
+    Two copies of one program is the drift shape this repo keeps paying for (K-09,
+    G-70) — so the copy is pinned byte-for-byte to the file the tests exercise."""
+
+    def test_the_embedded_copy_matches_the_script(self):
+        root = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+        doc = open(_os.path.join(root, ".claude", "commands", "log-matches.md"),
+                   encoding="utf-8").read()
+        start = "cat > ~/mtga-logs/extract.sh <<'EXTRACT_EOF'\n"
+        assert start in doc, "the install block for extract.sh is missing"
+        body = doc.split(start, 1)[1].split("\nEXTRACT_EOF\n", 1)[0] + "\n"
+        assert body == open(_EXTRACT, encoding="utf-8").read()

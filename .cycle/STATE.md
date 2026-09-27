@@ -19,7 +19,7 @@ Phase: implement — **scan #10 is FULLY IMPLEMENTED**. All four batches plus ev
 Scope: broad
 Test Command: `python3 scripts/check_all.py`
 Subsystem cycles since last Seams audit: 2 (counter adopted 2026-09-08; no Seams audit has run)
-Updated: 2026-09-27 (G-87 shipped; decks 17 and 30 tuned; `/sync-docs` pass — see Where I left off)
+Updated: 2026-09-27 (G-87 shipped; decks 17 and 30 tuned; `/sync-docs` pass; decks 17/42a/47 re-graded to A — see Where I left off)
 
 ## In progress (facts to carry forward — NOT judgments)
 - **Broad scan #10 is fully implemented — nothing outstanding from the scan.** Four
@@ -28,15 +28,19 @@ Updated: 2026-09-27 (G-87 shipped; decks 17 and 30 tuned; `/sync-docs` pass — 
 - **One finding was REFUTED rather than fixed: BS10-02.** The one-turn tap-down exclusion is
   deliberate and documented; widening it would have added 36 cards to the axis `tier_band`
   grades. Recorded at the exclusion itself so a re-file lands on it.
-- **ONE OPEN HUMAN DECISION: deck 47's tier letter.** It claims B and its metrics floor is
-  now A (BS10-01 gave Trade the Helm a removal role). The rubric permits one band under when
-  the prose argues it, and this block names three risks — but the deck also prints the
-  possibly-under-graded nudge. Never auto-written.
+- **Deck 47's tier letter is CLOSED** — re-graded B → A on 2026-09-27 at the owner's call,
+  with decks 17 (C → A) and 42a (B → A); all three now match their A floors.
 - The cycle's number was `suggest`'s rank median **407**; batch 2 disclosed it and batch 3
   fixed its largest cause (deck 47's own picks: median 310 → 144).
 
 ## Completed this cycle
 
+- **2026-09-27 — decks 17, 42a and 47 re-graded to A at the owner's call.** Each `#: tier:`
+  block rewritten to argue the A (the old blocks argued a cap below the floor) and to carry
+  the real risks as caveats; `tier` reads "consistent" and `--audit-rationale` is current on
+  all three. Stale facts corrected in the same pass: 42a and 47 were called unplayed (3-3
+  each, n=6), 47 "unbuilt with ten craft targets" (fully owned), 42a cited Hero's Downfall
+  as staying (cut) and a 2.91 curve (live 3.14) | decks/17, decks/42a, decks/47
 - **2026-09-26/27 — decks 17 and 30 tuned; three tooling holes documented.** Deck 17's
   manabase rebuilt from owned fixing plus several swaps (Oltec Matterweaver the one craft,
   also slotted into 21, 74a, 42a). Deck 30: fifteen owned swaps across six commits, green
@@ -167,15 +171,32 @@ Updated: 2026-09-27 (G-87 shipped; decks 17 and 30 tuned; `/sync-docs` pass — 
   67/41/60% → 68/40/61% | scripts/deck.py, decks/47, decks/43, CLAUDE.md, docs/gotchas.md
 
 ## Pending / not yet done
-- **Deck 47's tier LETTER** — claimed B, floor now A. A human call; see above.
-- **Decks 17 and 42a's tier LETTERS** — 17 claims C and 42a claims B, both against an A
-  floor (17 prints "possibly UNDER-graded"). Human calls, never auto-written.
 - The unapplied cross-deck homes and earlier proposed swaps — NEXT-SESSION.md §0-current.
 - Four G-67 role-pattern holes, baselined not fixed: Kitnap, Eluge, Soul Immolation (a
   combined "each opponent and each creature" target list) and Cheering Crowd (conditional
   mana) — K-12's long form has the probe.
 
 ## Open follow-on items
+- **`consistency`'s NONLAND disclosure (G-35) is silent on two real mana engines (found
+  2026-09-27, deck 21).** `lib.land_production` reads Bloom Tender's Vivid clause ("For each
+  color among permanents you control, add one mana of that color") as producing NOTHING, so
+  `uncounted_mana_sources` omits it and the page prints no `ⓘ NONLAND` line at all; Enduring
+  Vitality ("Creatures you control have '{T}: Add one mana of any color'") is a GRANTED
+  ability, excluded by G-35's design. Deck 21 now runs both, so its cast-on-curve figures are
+  floors with nothing saying so. The Vivid pattern is a G-67 pattern hole (measure the pool
+  before widening); the granted case is a disclosure question, not a counting one.
+- **Three stale `#: tier:` claims passed `--audit-rationale` on deck 42a (found 2026-09-27
+  while re-grading it).** (1) "…what the uncounted pieces cannot replace is a cheap
+  unconditional answer on demand, which is why Hero's Downfall stays" — Hero's Downfall had
+  been cut, and the citation was suppressed by `_HISTORY_CUES` matching the ORDINARY verb
+  "replace" in the same clause (probed: removing the sentence's "CUT" changes nothing). The
+  `remov\w*` / `over` / `rather than` shape again, one word over. (2) "the reported 2.91 is the real
+  number" against a live avg MV 3.14: no curve cue adjacent to the figure (G-26's
+  adjacency residual). (3) "PROVISIONAL (unplayed brew)" with six logged matches: the
+  audit reads no match record, by design. Deck 47 carried (3) too, plus "ten craft
+  targets" on a fully owned list. All corrected by hand. For (1), measure what a narrower
+  `replac\w*` cue (e.g. requiring "replaced"/"replacing"/"replaced by") would surface on the
+  roster before changing it — G-26: keep the cue lists narrow, let a sweep be the check.
 - **`doubler_axis` returns ONE axis (G-33 KNOWN GAP 2).** Doubling Season is priced as a
   tokens-only doubler everywhere (`✱`, `screen`, `suggest-homes`, `cuts`), and a doubler
   that says bare "counters" gets no `counters` tag (Doubling Season, Loading Zone, Doc
@@ -312,21 +333,19 @@ Updated: 2026-09-27 (G-87 shipped; decks 17 and 30 tuned; `/sync-docs` pass — 
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
-**2026-09-27 — `/sync-docs` pass after G-87 and the deck 17/30 tunes.** Branch
-`claude/sync-commands-mmmsdb`; PR #194 had already merged earlier work, so this batch goes
-out as a new PR. Doc edits: CLAUDE.md G-33 (KNOWN GAP 2, with the calibration paragraph
-trimmed to stay under the 300-word cap — the detail survives verbatim in the long form),
-G-38 (`--needs` source holdout), K-12 (one-sided sweeper); matching dated sections in
-`docs/gotchas.md`; NEXT-SESSION.md stamp 2026-09-27.
+**2026-09-27 — decks 17, 42a and 47 re-graded to A at the owner's call.** Branch
+`claude/sync-commands-mmmsdb`, restarted from main after PR #195 (the `/sync-docs` pass
+after G-87 and the deck 17/30 tunes) merged. Header-only change: three `#: tier:` blocks
+rewritten, no card lines touched. All three read "consistent — A matches the metrics floor"
+and each `--audit-rationale` is current. No open tier call remains on the roster.
 
-**Nothing in scripts/ changed in this pass** — the three holes are documented, not fixed,
-because each needs its roster measurement first (G-40, G-67). The Open follow-on list names
-the fix shape for the first two.
+**The rewrite found three stale claims the audit reported CLEAN** — see Open follow-on.
 
-**The deck-30 tune is the worked case for G-22.** Every add in that tune — Doubling Season,
-Bristly Bill, Terrasymbiosis, Applied Geometry — was found by an effect-shape search
-(`pool.py --regex`) or by the user naming it; the ledger recorded "suggest surfaced: no"
-for every add in the deck-30 passes, and Doubling Season ranked 1,325th of 1,469.
+**Still open from the 2026-09-27 `/sync-docs` pass:** the three tooling holes it documented
+(G-33 KNOWN GAP 2, the G-38 `--needs` holdout, the K-12 sweeper) are unfixed, because each
+needs its roster measurement first (G-40, G-67). The deck-30 tune remains the worked case for
+G-22: every add was found by `pool.py --regex` or named by the user, and Doubling Season
+ranked 1,325th of 1,469.
 
 **THE 2026-09-20 PROCESS RULE STILL HOLDS:** never edit source while a suite is running,
 and never report such a run red.

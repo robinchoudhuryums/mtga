@@ -1,5 +1,6 @@
 #: name: Soul Inversion (gain, drain, swap totals)
 #: format: Standard
+#: arena: 41 Soul Inversion, 5be2b0b9-923b-44f6-9c64-ac5f9f99ef57
 #: colors: WB
 #: plan: control
 #: archetype: Orzhov (W/B) LIFEGAIN-DRAIN control on a blink shell. Life is the resource.

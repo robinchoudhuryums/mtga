@@ -1,79 +1,134 @@
-#: name: Gastromancer (Food sac)
+#: name: Gastromancer — MM…FOOD (Food sac)
 #: format: Standard
-#: tier: A — Abzan (WBG) food-aristocrats; dense interaction (12) + low curve (2.78). Re-graded B→A after the mana fix: dropping the 1-card red splash (Ragost → variant 21a) collapsed a stretched 4-color base to a focused Abzan, so every land now serves the three real colors. A-floor on interaction; the residual is a still-thin black (19 pips / 12 sources) that the wishlist WBG verges finish. The intentional 4-color version is variant 21a.
+#: arena: 21 Gastromancer- MM…FOOD, 56ef3380-0337-46a8-8b53-5848d577c615
+#: tier: A — Abzan (WBG) food-aristocrats; interaction 9 on a 3.28 curve, and card advantage 8 since the 2026-09-27 tunes turned the sacrifices into draws (Sephiroth, Baron Bertram Graywater, Liliana) and into drains (The Sackville-Bagginses, Popular Egotist). Re-graded B→A after the mana fix: dropping the 1-card red splash (Ragost → variant 21a) collapsed a stretched 4-color base to a focused Abzan. A-floor on interaction. The residual is the mana: three primary colours on 24 lands, so a two-pip card still lands late — Enduring Vitality's {G}{G} is 58.0% on turn 3 and West Wind Avatar's 70.5% by turn 5, even after the owned-dual rebuild and the Evolving Wilds pass. Bloom Tender and Enduring Vitality are the answer, and no probability model here counts their mana. The intentional 4-color version is variant 21a.
 #: colors: WBG
 #: archetype: Abzan (W/B/G) Food-sacrifice / artifact-aristocrats — a deep sac-payoff web. The namesake Ragost moved to variant 21a along with the red splash.
-#: notes: Abzan (W/B/G) Food-sacrifice / artifact-aristocrats with a LIGHT red splash
-#: notes: for the namesake Ragost, Deft Gastronaut ({R}{W} — makes all your artifacts
-#: notes: Food, then sacs Food to drain 3 each). Food generators feed a deep sac-payoff
-#: notes: web: G'raha Tia draws off any artifact/creature death, Pizza Face makes
-#: notes: counters, Cauldron of Essence drains + reanimates, Ice Cream Kitty draws.
-#: notes: ~4 red-capable sources (Bloodfell Caves x2, Wind-Scarred Crag, Capital City)
-#: notes: enable Ragost without derailing the WBG core. See variant 21a for the
-#: notes: 4-color big-artifact-goodstuff version. (A pure-WBG build that cuts Ragost
-#: notes: is just -Ragost +Vayne's Treachery and reverting 3 lands — no separate list.)
+#: notes: Abzan (W/B/G) Food-sacrifice / artifact-aristocrats. Food generators feed a deep
+#: notes: sac-payoff web: G'raha Tia draws off any artifact/creature death (every eaten Food is an
+#: notes: artifact dying), Pizza Face makes counters, Cauldron of Essence drains + reanimates, Ice
+#: notes: Cream Kitty draws. The red splash for Ragost, Deft Gastronaut moved to variant 21a (the
+#: notes: 4-color big-artifact-goodstuff version) together with its red sources.
 #: notes: 2026-09-06 LAND SWEEP (owned four-ofs of the untapped-beside-a-basic duals): −Blossoming Sands
 #: notes: +Gathering Place. Sources W 10 / U 1 / B 13 / R 1 / G 11 → W 10 / U 1 / B 13 / R 1 / G 11; unconditional taplands 7 → 6. Same colours, no tempo tax.
 #: notes: 2026-09-26 — −White Widow, Free Agent/+Oltec Matterweaver (CRAFT, mythic; rotates ~2026).
 #: notes: Each creature spell makes a 1/1 Gnome artifact or copies a Food token: fodder for G'raha
 #: notes: Tia's draw and Cauldron of Essence's drain, and a cheaper sacrifice for Deadly Precision.
+#: notes: 2026-09-27 tune (all owned, 0 wildcards). LANDS: −Insomnia/+Godless Shrine, −2 Swamp/
+#: notes: +Overgrown Tomb +Bleachbone Verge, −Forest/+Wastewood Verge, −2 Jungle Hollow/+2 Sandsteppe
+#: notes: Citadel, −Scoured Barrens/+Shattered Sanctum, −Capital City/+Starting Town. Sources W 9 /
+#: notes: B 13 / G 11 → W 12 / B 14 / G 11, unconditional taplands 6 → 4, White Auracite 46.7 → 64.6%
+#: notes: on turn 4. Cost: three gain-1-life land triggers (Cat Collector / Heroic Feast fuel) and
+#: notes: Capital City's cycling. NONLAND: −Ant-Man's Army/+Sephiroth (sacrifice to draw, and a drain
+#: notes: on every creature death); −Hei Bai/+Baron Bertram Graywater (a lifelink Vampire each turn a
+#: notes: token enters, plus instant-speed sacrifice-to-draw); −Feed the Cauldron/+Tainted Treats (any
+#: notes: creature or artifact, not just MV 3 or less); −Gingerbrute/+Carrot Cake (a Rabbit on
+#: notes: entering AND on being eaten); −Sidequest: Hunt the Mark/+Liliana, Dreadhorde General (a draw
+#: notes: per creature death, and her −4 is a double edict); −Eager Trufflesnout/+Moseo (Infusion
+#: notes: returns a creature with MV up to the life gained that turn — one eaten Food is a 3-drop back
+#: notes: every end step). Card advantage 5 → 8, interaction held at 12, avg MV 2.78 → 2.83.
+#: notes: Protection 2 → 1: Yiazmat's indestructible left with the Sidequest; Ygra's ward remains.
+#: notes: 2026-09-27 second pass: −White Auracite/+Prayer of Binding (the same exile for {3}{W} at
+#: notes: instant speed, and an enchantment, so no artifact outlet can hand their card back);
+#: notes: −Sweettooth Witch/+The Sackville-Bagginses ("Whenever you sacrifice a token, target
+#: notes: opponent loses 1 life" — every eaten Food token drains, no mana); −Party Dude/+Mutagen Man
+#: notes: (artifact tokens' abilities cost {1} less, so a Food token eats for {1}); −Welcome to
+#: notes: Sweettooth/+Popular Egotist (CRAFT, uncommon: drain 1 + gain 1 on every sacrifice);
+#: notes: −Bumbleflower's Sharepot/+Tragedy Feaster (a 7/6 trample for 4 whose "sacrifice a
+#: notes: permanent unless you gained life this turn" is nearly free here). Interaction 12 → 11 (the
+#: notes: Sharepot) and card advantage 8 → 7 (Party Dude's level-2 draw), both accepted; board power
+#: notes: 40 → 51, protection 1 → 3, avg MV 2.83 → 2.92. Food-token makers 16 → 12 (other token makers 5 → 7).
+#: notes: 2026-09-27 third pass (owner's picks): −Judge Magister Gabranth/+Super Shredder (grows on
+#: notes: ANY permanent leaving, both sides); −Guac & Marshmallow Pizza/+Heaped Harvest (CRAFT, C: a
+#: notes: Food that puts a basic onto the battlefield on entering AND on being eaten); −Leaves from
+#: notes: the Vine/+Midnight Snack (sacrifice it to drain the life gained this turn — a finisher);
+#: notes: −Courier of Comestibles/+Bristlebud Farmer (CRAFT, M: 5/5 trample, two Foods, eats a Food
+#: notes: on attack to mill 3 and keep a permanent); −Stomped by the Foot/+Deadly Brew (CRAFT, U: an
+#: notes: edict you pay with a token, then regrow a permanent card); −Anchovy & Banana Pizza/+Lord
+#: notes: Dregg (CRAFT, U: a flying 1/1 every end step something left the battlefield — nearly every
+#: notes: turn here); −M.O.D.O.K./+Starseer Mentor (its "gained or lost life this turn" end-step
+#: notes: gate is free here, so it taxes 3 life / a permanent / a card every turn). Interaction
+#: notes: 11 → 9 (Anchovy & Banana and M.O.D.O.K.'s -1/-1 left), accepted; card advantage 7 → 8,
+#: notes: board power 51 → 58, avg MV 2.92 → 3.06. Food-token makers stay 12, other token makers 7 → 8.
+#: notes: 2026-09-27 fourth pass (owner's picks): −Momo/+Bloom Tender ({1}{G}; taps for one mana of
+#: notes: each colour among your permanents — usually 2-3 from turn 3); −Omni-Cheese Pizza/+Enduring
+#: notes: Vitality (every creature, tokens included, taps for any colour; returns as an enchantment
+#: notes: when it dies); −G'raha Tia/+West Wind Avatar (the same once-a-turn draw off things leaving,
+#: notes: on a 7/7 trample); −Bristlebud Farmer/+Moogles' Valor (CRAFT, R: a lifelink 1/2 per
+#: notes: creature, then team indestructible — wipe insurance and fodder); −Scavenger's Talent/
+#: notes: +Felidar Retreat (landfall: a 2/2 Cat Beast or team counters; Heaped Harvest and Cabbage
+#: notes: Merchant add extra land drops). Interaction held at 9, protection 3 → 4, board power 58 →
+#: notes: 60, avg MV 3.06 → 3.28, 1-drops down to one (Deadly Precision). Reanimation is now Cauldron
+#: notes: of Essence and Moseo only. West Wind Avatar costs 7: plan to reach it through Bloom Tender,
+#: notes: Enduring Vitality, Sackville's Treasure and Heaped Harvest, not through land drops.
+#: notes: 2026-09-27 land pass (all owned): −2 Jungle Hollow/+2 Evolving Wilds, −Castle Doom/+Evolving
+#: notes: Wilds. The fourth pass had put three double-green cards against 11 green sources. Sources
+#: notes: W 12 / B 14 / G 11 → W 15 / B 15 / G 12; cards under 90% on curve 27 → 17 (Enduring
+#: notes: Vitality 52 → 58%, West Wind Avatar 65 → 70%, Moogles' Valor 70 → 83%). Each Wilds crack is
+#: notes: a sacrifice (Popular Egotist drains, Super Shredder grows, Pizza Face / Lord Dregg / West
+#: notes: Wind Avatar's leave-the-battlefield triggers switch on) and two landfall triggers for
+#: notes: Felidar Retreat. Cost: the Jungle Hollows' gain-1-life ETB, Castle Doom's Doombot outlet,
+#: notes: and one more land that effectively enters tapped (the fetched basic does). Parked: −Swamp/
+#: notes: +Forest tilts to G 13 / B 14 (Vitality 63%, Avatar 75%, Tragedy Feaster 78 → 74%).
 
 # Nonland — sac payoffs / aristocrats
 1 Pizza Face, Gastromancer (TMT) 163
 1 Unlucky Cabbage Merchant (TLA) 201
-1 G'raha Tia (FIN) 21
+1 West Wind Avatar (TMT) 137
 1 Cauldron of Essence (SOS) 179
 1 Ice Cream Kitty (TMT) 150
-1 Hei Bai, Spirit of Balance (TLA) 225
-1 Scavenger's Talent (BLB) 111
+1 Baron Bertram Graywater (OTJ) 195
 1 Witherbloom Charm (SOS) 244
 1 Ygra, Eater of All (BLB) 241
 1 Bullseye, Death Dealer (MSH) 209
+1 Sephiroth, Fabled SOLDIER // Sephiroth, One-Winged Angel (FIN) 115
+1 Liliana, Dreadhorde General (FDN) 176
+1 The Sackville-Bagginses (HOB) 83
+1 Popular Egotist (DSK) 114
+1 Super Shredder (TMT) 83
+1 Starseer Mentor (BLB) 233
 
 # Nonland — Food generators / enablers
 1 Cat Collector (FDN) 4
-1 Eager Trufflesnout (FDN) 102
-1 Leaves from the Vine (TLA) 185
-1 Party Dude (TMT) 128
-1 Guac & Marshmallow Pizza (TMT) 116
-1 Gingerbrute (ELD) 219
-1 Bumbleflower's Sharepot (BLB) 244
+1 Midnight Snack (FDN) 65
+1 Mutagen Man, Living Ooze (TMT) 124
+1 Heaped Harvest (BLB) 175
+1 Carrot Cake (BLB) 7
 1 Heroic Feast (MSH) 172
-1 Ant-Man's Army (MSH) 161
-1 Omni-Cheese Pizza (TMT) 176
+1 Enduring Vitality (DSK) 176
 1 Lita, Little Orphan Amphibian (TMT) 19
+1 Bloom Tender (ECL) 166
+1 Felidar Retreat (FDN) 574
 
 # Nonland — removal
-1 Anchovy & Banana Pizza (TMT) 57
 1 Bake into a Pie (FDN) 169
-1 Feed the Cauldron (WOE) 91
+1 Tainted Treats (TMT) 170
 1 Deadly Precision (TLA) 95
-1 Stomped by the Foot (TMT) 82
-1 Courier of Comestibles (TMT) 112
+1 Deadly Brew (FDN) 654
 1 Professor Dellian Fel (SOS) 214
-1 Judge Magister Gabranth (FIN) 230
+1 Prayer of Binding (FDN) 739
 
 # Nonland — value / light artifact package
-1 Sidequest: Hunt the Mark (FIN) 119
 1 Oltec Matterweaver (BIG) 3
-1 White Auracite (FIN) 41
-1 Welcome to Sweettooth (WOE) 198
-1 Momo, Playful Pet (TLA) 30
-1 Sweettooth Witch (WOE) 111
-1 M.O.D.O.K. (MSH) 106
+1 Moseo, Vein's New Dean (SOS) 91
+1 Tragedy Feaster (SOS) 102
+1 Lord Dregg, Insect Invader (TMT) 65
+1 Moogles' Valor (FIN) 27
 
-# Lands (owned tempo fixes: −Opulent Palace (dead U tapland), −1 Bloodfell Caves
-# (red was 3 sources for 1 pip) → +2 Swamp for the 19-pip black primary. The 4
-# vanilla WBG taplands are queued for craft-upgrade to fastlands/surveil lands — see wishlist.)
-4 Jungle Hollow (M21) 247
-1 Scoured Barrens (M21) 250
-1 Insomnia, Crown City (FIN) 282
+# Lands (24 — owned Abzan fixing: 2 shocklands, 3 Verges, 2 Gathering Place, Shattered Sanctum,
+# Starting Town, 2 Sandsteppe Citadel, 3 Evolving Wilds + 10 basics)
+1 Godless Shrine (EOE) 254
+1 Overgrown Tomb (ECL) 266
+1 Bleachbone Verge (DFT) 250
+1 Wastewood Verge (DFT) 268
+2 Sandsteppe Citadel (TDM) 266
+1 Shattered Sanctum (SOS) 260
+1 Starting Town (FIN) 289
+3 Evolving Wilds (ECL) 264
 1 Hushwood Verge (DSK) 261
 2 Gathering Place (MSH) 266
-1 Castle Doom (MSH) 263
-1 Capital City (FIN) 274
-3 Forest (MSH) 296
-6 Swamp (MSH) 292
+2 Forest (MSH) 296
+4 Swamp (MSH) 292
 4 Plains (MSH) 288
 
 # Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 21

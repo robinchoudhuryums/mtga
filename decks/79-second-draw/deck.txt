@@ -1,6 +1,6 @@
 #: name: Gambit's Draw
 #: format: Standard
-#: arena: 79 Gambit's Draw, 2fde6f4f-8de8-49a5-8a44-0980735f14c6
+#: arena: 79 Gambit’s Draw, b7c0e639-dfb6-463d-a896-20e2c512cc54
 #: colors: WU
 #: plan: midrange
 #: tier: B (PROVISIONAL, AND NOW A RE-GRADE CANDIDATE) — still one band under the metrics floor, which reads A on

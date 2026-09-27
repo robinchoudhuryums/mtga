@@ -6682,7 +6682,7 @@ only; the convention is family-dir plus variant-suffix (`54-grand-lotus/54b-come
 distinguishing half alone.
 
 
-## [G-74] The log cannot see what you faced, play/draw, or why you lost — nor a phone game
+## [G-74] The result lines cannot see what you faced or why you lost; the play-by-play sees most of it — a phone game, nothing
 
 **The incident.** After the 2026-08-20 ingest took the record from 15 matches to 58, the
 obvious next question was what the record could actually answer. Measured across all 58
@@ -6766,6 +6766,46 @@ Measured anyway on the 57-match sample: the page's result agreed with the stored
 result on 57 of 57, with 0 ids found by one and not the other. Re-measure if either
 parser's seat logic is touched — the containment is what makes a disagreement survivable,
 not acceptable.
+
+**2026-09-27: the play-by-play, and why this entry's title was half wrong.** Everything
+above describes the three line shapes the extraction grepped. The log itself holds more:
+with Detailed Logs on, Arena writes the whole game state as
+`GREMessageType_GameStateMessage` lines, which name the active player on each turn, each
+player's `mulliganCount`, and every card object with its owner, colours and Arena id
+(`grpId`). A diagnostic on a real log measured 301 such lines / 6.5 MB for the session
+and 1.0–2.4 MB per match across the 8 matches still on disk, single lines up to 88 KB.
+
+What that settled, in order:
+- **Summarise on the Mac, not in the repo.** Raw, the archive would grow by hundreds of MB
+  and the 15-minute snapshot rewrites all of it each run; no paste could carry it.
+  `scripts/mtga_extract.sh` keeps one ~1 KB `[MTGA-GAME]` line per finished game. That is
+  the one exception to "slim at paste time, never at capture time", and it is taken only
+  because the raw form cannot be kept.
+- **BSD awk decides the implementation.** macOS awk scans a regex at ~3 MB/s: a full-line
+  `match()` or regex `split()` cost ~10 s per pass on a 36 MB synthetic log, 70 s for the
+  first draft. Splitting on the literal `{` and reading fields with `index()` took it to
+  4 s (1 s under mawk), outputs byte-identical across the two awks. Tested against
+  `original-awk`, the same lineage as macOS's.
+- **Absent means zero.** `mulliganCount` is omitted when it is 0 (protobuf JSON drops
+  defaults) — the first diagnostic's key list had no such key at all because nobody had
+  mulliganed; the second found 14. The extractor reads absent as 0.
+- **Names are not in the log.** An object's `name` is a localisation number; the card is
+  its `grpId`, resolved through Scryfall's `/cards/arena/{id}` and cached in
+  `arena-cards.csv`. A miss is not cached, and an outage writes `#<id>` that a later run
+  replaces, because the derived columns are recomputed whenever a run sees the game line.
+- **`On Play` is shared with the human, so it is filled only when blank** and a
+  disagreement is reported, never resolved — the one place the log and a person both
+  write the same cell.
+- **Verified on the first real paste (2026-09-27):** 9 games across Player.log and
+  Player-prev.log, every one producing a line; the owner confirmed the play/draw reads
+  against memory, which is the check that catches an inverted seat. The only real-data
+  surprise was an opponent object with grpId 3 (a face-down permanent), now skipped as a
+  rules object rather than written as "#3".
+- **Unverified:** best-of-three. The extractor assumes `gameInfo.results` accumulates one
+  game entry per game played; no Bo3 log has been read.
+
+The archive held no game-state lines before this change, so matches older than the
+current `Player.log` / `Player-prev.log` can never be backfilled.
 
 ## [G-75] A tutor is worth the number of things it can find in THIS deck
 
