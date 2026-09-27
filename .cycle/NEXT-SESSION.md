@@ -20,7 +20,7 @@ commands disagree.
 ## 0-current. THE 2026-08-24 SESSION (READ THIS FIRST — supersedes §0-latest below)
 
 > **STATE STAMP, 2026-09-27 (NEWEST — supersedes the 2026-09-25 stamp below).** Two
-> threads since the last stamp, both committed on `claude/sync-commands-mmmsdb`.
+> threads since the last stamp (plus the tier re-grades closed at the end), both committed on `claude/sync-commands-mmmsdb`.
 >
 > **1. G-87 SHIPPED** — a Verge's second colour and the MSH basic-gated colours are priced
 > by the chance the gate is met, not as full sources (`lib.gated_source_credit`). 42 decks'
@@ -41,9 +41,12 @@ commands disagree.
 > on decks 30/17/1 (G-38); (c) a one-sided sweeper worded "each opponent and each creature
 > they control" scores ZERO roles (K-12). Each needs its roster measurement before a fix.
 >
-> **OPEN HUMAN CALLS (never auto-written):** deck 17 claims C against an A floor (the tool
-> prints "possibly UNDER-graded"); deck 42a claims B against A; deck 47 claims B against A.
-> The match-digest Step 0 below is still waiting on the owner.
+> **TIER CALLS CLOSED (2026-09-27, the owner's call):** decks 17 (C → A), 42a (B → A) and
+> 47 (B → A) now claim A, matching their floors; `tier` reads "consistent" on all three and
+> each `--audit-rationale` is current. The rewrite also corrected facts the audit could not
+> see: 42a and 47 are no longer unplayed (3-3 each, n=6) and 47 is fully owned; 42a's block
+> still said "Hero's Downfall stays" (cut long ago) and quoted a 2.91 curve against a live
+> 3.14. The match-digest Step 0 below is still waiting on the owner.
 >
 > **STATE STAMP, 2026-09-25.** One thing in flight: the **match digest** —
 > recording play/draw, mulligans, land drops and the opponent's cards from Arena's full

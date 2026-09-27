@@ -88,74 +88,53 @@
 #: archetype: THREE nonland cards are shared. vs the core 42: opposite
 #: archetype: resource. 42 spends life and holds creatures; this spends creatures and
 #: archetype: gains life.
-#: tier: B — Orzhov aristocrats, PROVISIONAL (unplayed brew). The claimed letter now sits
-#: tier: one band BELOW the metrics floor, deliberately. The interaction suite is built
-#: tier: from cheap unconditional answers plus edicts that double as fodder sinks: Social
-#: tier: Snub COPIES itself, so it answers two creatures and drains twice while you feed
-#: tier: it a spare token. Vengeful Bloodwitch was CUT for Deadly Precision, a one-mana
-#: tier: unconditional kill whose additional cost — sacrifice a creature or artifact — is
-#: tier: an ENGINE TRIGGER here rather than a drawback, which is the whole reason it beat
-#: tier: a 2-drop drain payoff for the slot.
-#: tier: BE PRECISE ABOUT THE FLOOR, because "restore the interaction" was not the whole
-#: tier: fix: the A floor wants interaction >=7 AND interaction+card-advantage >=11 (the
-#: tier: table was re-derived 2026-09-02, BS8-06; it used to read 5 and 7). Both
-#: tier: clauses are now MET — interaction 8 and card advantage 9 — so the MEASURABLE
-#: tier: FLOOR IS A and the claimed B is a deliberate call one band BELOW it, on the three
-#: tier: risks listed further down that no metric can see. Note how the second clause was
-#: tier: cleared: not by a swap, but by a classifier fix — TWICE now. The card advantage
-#: tier: here read 1 for as long as this deck existed because the role model matched a
-#: tier: repeatable draw only when it was templated on the UPKEEP, and this deck's draws
-#: tier: are not. It then went 4 -> 8 under K-14, and 8 -> 9 on 2026-09-12 when My Precious
-#: tier: came in; K-14 taught the model that a draw you
-#: tier: reach by PAYING a cost is still a draw: Vampiric Rites, Ravenous Amulet, Baron
-#: tier: Bertram, Lunar Convocation and Fountainport are all sacrifice-to-draw outlets
-#: tier: and all read as zero. This deck is the roster's largest single correction, which
-#: tier: is not a coincidence — sacrifice-for-value IS the archetype.
-#: tier: THE MEASURED 5 UNDER-READS THIS DECK and `tier` says so itself, printing 5 +2?
-#: tier: and naming both misses. Liliana's -4 (each player sacrifices two creatures) and
-#: tier: Jecht's chapter III (each OPPONENT sacrifices two) are unambiguous interaction the
-#: tier: classifier cannot see, because loyalty abilities and Saga chapters are not in its
-#: tier: patterns; Arnyn's deathtouch is soft interaction that also feeds the death triggers
-#: tier: when it trades. Call the real figure 7. Heartless Act was CUT on exactly that
-#: tier: reasoning — it was the one CONDITIONAL answer ("creature with no counters"), and
-#: tier: what the uncounted pieces cannot replace is a cheap unconditional answer on demand,
-#: tier: which is why Hero's Downfall stays. Erode was CUT for Ruthless Lawbringer, which
-#: tier: answers ANY nonland permanent and pays its sacrifice cost into the engine instead
-#: tier: of ramping the opponent a basic — at the price of sorcery speed, taking the suite
-#: tier: to 1 instant against 4 sorcery.
-#: tier: Held at B by three further things the floor cannot see:
-#: tier: 1. CARD ADVANTAGE 9 IS REAL BUT CONDITIONAL, which is the part the number still
-#: tier:    cannot express. Treacherous Greed's draw-three clears the bar outright;
-#: tier:    Vampiric Rites, Baron Bertram and Agent Venom each draw exactly ONE
-#: tier:    card off a sacrifice, and that is a WASH when the fodder is a card from hand.
+#: tier: A — Orzhov aristocrats. Re-graded B→A on 2026-09-27 at the owner's call; the letter
+#: tier: now sits on the metrics floor. The A floor wants interaction >=7 AND
+#: tier: interaction+card-advantage >=11 (the table was re-derived 2026-09-02, BS8-06), and
+#: tier: both clauses are met: interaction 8, card advantage 9, protection 4. The record is
+#: tier: 3-3 over six logged matches, far under the 20 it takes to read, so the letter
+#: tier: credits the list.
+#: tier: The interaction suite is built from cheap unconditional answers plus edicts that
+#: tier: double as fodder sinks. Social Snub COPIES itself, so it answers two creatures and
+#: tier: drains twice while you feed it a spare token. Deadly Precision is a one-mana
+#: tier: unconditional kill whose additional cost — sacrifice a creature or artifact — is an
+#: tier: ENGINE TRIGGER here rather than a drawback (Vengeful Bloodwitch was CUT for it).
+#: tier: Ruthless Lawbringer answers ANY nonland permanent and pays its sacrifice into the
+#: tier: engine instead of ramping the opponent a basic (Erode was CUT for it), and Liliana's
+#: tier: -4 makes each player sacrifice two creatures. The profile is 3 instant-speed against
+#: tier: 5 sorcery-speed, with 2 pieces that answer a noncreature permanent. Heartless Act was
+#: tier: CUT as the one CONDITIONAL answer ("creature with no counters").
+#: tier: The card-advantage clause was cleared by classifier fixes, not swaps. The role model
+#: tier: once matched a repeatable draw only when it was templated on the UPKEEP, so this
+#: tier: deck's figure read 1 for as long as it existed; it went 4 -> 8 under K-14, which
+#: tier: taught the model that a draw you reach by PAYING a cost is still a draw (Vampiric
+#: tier: Rites, Ravenous Amulet, Baron Bertram, Lunar Convocation and Fountainport had all
+#: tier: read as zero), and 8 -> 9 when My Precious came in on 2026-09-12. Sacrifice-for-value
+#: tier: IS the archetype, which is why this deck was the roster's largest single correction.
+#: tier: Three risks the A carries, none of which a metric can see:
+#: tier: 1. CARD ADVANTAGE 9 IS REAL BUT CONDITIONAL. Treacherous Greed's draw-three clears
+#: tier:    the bar outright; Vampiric Rites, Baron Bertram and Agent Venom each draw exactly
+#: tier:    ONE card off a sacrifice, and that is a WASH when the fodder is a card from hand.
 #: tier:    It is advantage only when the fodder is a TOKEN, which is why the token base is
-#: tier:    built to recur. So the engine has to be online first — a metric cannot see that
-#: tier:    precondition, and it is why this axis is listed as a risk rather than a
-#: tier:    strength even now that it counts.
+#: tier:    built to recur — the engine has to be online first.
 #: tier: 2. AN ARISTOCRATS DECK NEEDS TWO HALVES AT ONCE — an outlet AND a payoff on the
 #: tier:    battlefield — and a singleton build draws one half far more often than both.
 #: tier:    Five outlets against six drain payoffs is the virtual-redundancy answer, but
-#: tier:    virtual copies are not 4-ofs, and the protection 4 is thinner than it reads:
-#: tier:    only Restoration Magic can be pointed at anything, while Tragedy Feaster's and
-#: tier:    Vein Ripper's ward defend those two bodies alone — so the three `#: protect:`
-#: tier:    build-arounds still have exactly ONE answer between them.
-#: tier: 3. THE CLOCK IS SLOW AND WIPE-FRAGILE. Drain 1 per death is a turn-12 kill
-#: tier:    without Eirdu, and a board wipe is strictly worse for this deck than for the
-#: tier:    core — it takes the fodder and the payoffs in the same breath, where the core
-#: tier:    42 survives a wipe on its card engine.
-#: tier: NOTE ON THE CURVE: this deck is what surfaced the split-cost bug. Funeral Room
-#: tier: is a Room, and its stored cost is the MERGED `{2}{B} // {6}{B}{B}` at MV 11, so
-#: tier: `stats` read the curve as 2.8 and `consistency` read the card as a {B}{B}{B}
-#: tier: turn-5 play — when the door this deck casts is `{2}{B}`, one black pip on turn
-#: tier: 3. `parse_pips` and `load_mana` now read the FRONT face, so the reported 2.91
-#: tier: is the real number and Funeral Room no longer shows up as a castability risk.
-#: tier: PATH TO A: the MEASURABLE floor is already there, so the work left is the three
-#: tier: risks above rather than an axis. Eirdu is the biggest real lever (persist turns a
-#: tier: 12-turn drain into a 6-turn one); after that, a second POINTABLE protection effect
-#: tier: for the payoff enchantments, since the ward on Tragedy Feaster and Vein Ripper
-#: tier: does nothing for them. Promote the letter to A once it has been PLAYED and the
-#: tier: two-halves risk has either shown up or not — that is a question games answer and
-#: tier: a list cannot.
+#: tier:    virtual copies are not 4-ofs, and protection 4 is thinner than it reads:
+#: tier:    Restoration Magic is the only effect that reaches the two enchantment
+#: tier:    build-arounds (Funeral Room, Scavenger's Talent); My Precious can hold Baron
+#: tier:    Bertram, and Tragedy Feaster's and Vein Ripper's ward defend those two bodies
+#: tier:    alone.
+#: tier: 3. THE CLOCK IS SLOW AND WIPE-FRAGILE. Drain 1 per death is a turn-12 kill until
+#: tier:    Eirdu transforms — Isilu gives every other nontoken creature persist, which
+#: tier:    roughly halves it — and a board wipe is strictly worse for this deck than for the
+#: tier:    core: it takes the fodder and the payoffs in the same breath, where the core 42
+#: tier:    survives a wipe on its card engine.
+#: tier: NOTE ON THE CURVE: this deck surfaced the split-cost bug. Funeral Room is a Room,
+#: tier: and its stored cost is the MERGED `{2}{B} // {6}{B}{B}`, so `consistency` once read
+#: tier: it as a {B}{B}{B} turn-5 play when the door this deck casts is `{2}{B}`, one black
+#: tier: pip on turn 3. `parse_pips` and `load_mana` now read the FRONT face, so the live avg
+#: tier: MV 3.14 is the real curve and Funeral Room is not a castability risk.
 #: protect: Funeral Room // Awakening Hall; Baron Bertram Graywater; Scavenger's Talent
 #: notes: WHAT WAS CUT FROM THE CORE AND WHY. Mister Negative, Lunar Convocation's
 #: notes: pay-2-life-draw mode, Phyrexian Arena, Visions of Villainy, Cruel Truths,
