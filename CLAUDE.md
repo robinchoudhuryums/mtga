@@ -1687,8 +1687,9 @@ format.
    deck selection is missing stays blank rather than borrowing a neighbour's, and
    `--report` refuses a percentage under 20 matches. With `extract.sh` installed, each
    match whose play-by-play was captured also gets a `Game details` line — check its
-   play/draw against what you remember, since an inverted seat read would flip it and no
-   test has seen a real game-state line. Full steps + the launchd archive setup:
+   play/draw against what you remember, since an inverted seat read would flip every row
+   the same way (first real paste, 9 games, confirmed correct by the owner 2026-09-27;
+   still unchecked on a best-of-three). Full steps + the launchd archive setup:
    `.claude/commands/log-matches.md`. [C-12]
 10. Log-a-match panel — selected state and focus ring | Subsystem: Presentation & Interface
     Steps: open `dashboard.html`, expand "Log a match" (starts collapsed); click W, L, D

@@ -6796,6 +6796,11 @@ What that settled, in order:
 - **`On Play` is shared with the human, so it is filled only when blank** and a
   disagreement is reported, never resolved — the one place the log and a person both
   write the same cell.
+- **Verified on the first real paste (2026-09-27):** 9 games across Player.log and
+  Player-prev.log, every one producing a line; the owner confirmed the play/draw reads
+  against memory, which is the check that catches an inverted seat. The only real-data
+  surprise was an opponent object with grpId 3 (a face-down permanent), now skipped as a
+  rules object rather than written as "#3".
 - **Unverified:** best-of-three. The extractor assumes `gameInfo.results` accumulates one
   game entry per game played; no Bo3 log has been read.
 
