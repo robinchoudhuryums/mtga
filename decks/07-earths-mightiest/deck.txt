@@ -1,6 +1,6 @@
 #: name: Earth's Mightiest
 #: format: Standard
-#: arena: 07 Earth’s Mightiest, e3a6c595-914d-4809-bd6d-630b3758ca89
+#: arena: 07 Earth's Mightiest, e14b11b7-c30e-4567-8519-5fe03e4d1e6f
 #: tier: A — Selesnya go-wide heroes (counters + tokens). Re-graded B -> A on 2026-09-12, when it sat
 #: tier: exactly AT its metrics floor. Live after the 2026-09-25 tune: interaction 7, card advantage 5,
 #: tier: sum 12 against the 11 an A floor wants, protection 5, curve 3.72.

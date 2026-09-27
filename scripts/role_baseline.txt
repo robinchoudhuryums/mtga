@@ -85,6 +85,7 @@ Cephalid Inkmage
 Chameleon, Master of Disguise
 Champions of the Shoal
 Charging Strifeknight
+Cheering Crowd
 Claim Jumper
 Collector's Vault
 Colossification
@@ -310,6 +311,7 @@ Pain 101
 Paradox Surveyor
 Personify
 Peter Parker
+Peter Parker // Amazing Spider-Man
 Picklock Prankster // Free the Fae
 Pond Prophet
 Pride of the Road
@@ -346,6 +348,7 @@ Rockalanche
 Rough Rhino Cavalry
 Rustler Rampage
 Salvation Swan
+Sanar, Innovative First-Year
 Savage Land Dinosaur
 Savage Ventmaw
 Scarlet Spider, Ben Reilly
@@ -359,7 +362,6 @@ Self-Reflection
 Servant of the Stinger
 Shark Shredder, Killer Clone
 Sheriff of Safe Passage
-Shimmercreep
 Shredder, Unrelenting
 Shrike Force
 Silent Hallcreeper
@@ -468,7 +470,6 @@ Welcome to Sweettooth
 Whirlwing Stormbrood
 Whirlwing Stormbrood // Dynamic Soar
 White Tiger, Ava Ayala
-Wild Hypothesis
 Wisecrack
 Wonder Man, Hollywood Hero
 Y'shtola Rhul

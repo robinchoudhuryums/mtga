@@ -1,4 +1,4 @@
-#: name: Iron Forge — Ancient Decay
+#: name: Iron Colossi — Ancient Decay
 #: format: Standard
 #: arena: 26b Ancient Decay, 99251dba-9f43-4b00-885f-f4e3893cd7f4
 #: colors: UR
@@ -69,7 +69,7 @@
 #: notes: BUILT 2026-07 from the same 122-card pile as 48 and 48a.
 #: notes: UNGRADED ON PURPOSE — no `#: tier:` until played.
 #: notes: WHY THIS IS NOT THE DECK ORIGINALLY PROPOSED. The plan floated for a 26 variant was
-#: notes: "Treasure ramp into unique heavy-hitters". That is exactly what 48a Motor Pool already
+#: notes: "Treasure ramp into unique heavy-hitters". That is exactly what 48a Autopilot already
 #: notes: does — Treasure engine, Brass's Bounty, Radiant Lotus, Summon: Bahamut — so building
 #: notes: it here would have produced a near-duplicate of a deck finished the same day. The
 #: notes: DESTROY-TO-DAMAGE half of that brief had no home anywhere on the roster, so the

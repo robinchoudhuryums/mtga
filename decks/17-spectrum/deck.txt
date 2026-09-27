@@ -1,35 +1,91 @@
 #: name: Spectrum (5c good-stuff)
 #: format: Standard
-#: tier: C — 5-color superhero goodstuff. The old rationale capped this on "thin
-#: tier: interaction (2)"; that figure was a classifier under-read and the live vector is
-#: tier: interaction 3 / card advantage 5 / protection 3, a B floor. The letter STAYS at
-#: tier: C anyway, because the cap here was never really the interaction count — it is
-#: tier: MANA and SPINE, the two things the floor cannot see:
-#: tier: 1. The manabase. `consistency 17` reads keepable 84%, land-drop 63% by turn 4,
-#: tier:    and a 3-source red splash — so Cosmic Spider-Man casts on curve 6% of the
-#: tier:    time, Avatar Aang 8%, Thanos 9%, and {B}{B}{B} Super-Skrull 1%. A deck whose
-#: tier:    marquee cards are single-digit percentages to be castable when they are
-#: tier:    supposed to be castable is capped regardless of how good those cards are.
-#: tier: 2. No spine. 23 central themes across a rainbow singleton pile is the textbook
-#: tier:    "thin themes / heavy variance" C, not a coherent engine with one weakness.
-#: tier: The bombs are real and this deck wins games off them — that is the point of the
-#: tier: build — but they win by drawing well, which is what a C grade describes.
-#: tier: PATH TO B: cut to 3–4 colors so the splashes are castable on curve, or add real
-#: tier: fixing; the interaction count is not what is holding it back.
+#: tier: C — 5-color superhero goodstuff. RE-GRADE CANDIDATE after the 2026-09-26 tune,
+#: tier: pending the owner's call; the letter is unchanged until then. The live vector is
+#: tier: interaction 7 / card advantage 8 / protection 3, an A floor — two bands over the
+#: tier: letter. The C was never about that count — it rested on MANA and SPINE, the two
+#: tier: things the floor cannot see, and the tune took the path the old block named ("add
+#: tier: real fixing") on the first:
+#: tier: 1. The manabase. Nineteen basics and colourless lands became Verges, shocklands,
+#: tier:    two tri-lands and Starting Town; later the Island and a Forest became Godless
+#: tier:    Shrine and Commercial District, which carry the Plains and Mountain types the
+#: tier:    red and white Verges need. `consistency 17` now puts Cosmic Spider-Man on curve
+#: tier:    53% of the time, Avatar Aang 52% and Thanos 52%, where the basics-heavy base
+#: tier:    read 12% / 15% / 16%. Since G-87 each Verge's second colour counts only by the
+#: tier:    chance its land type is out (40–58% here), which tracks a gate-honouring
+#: tier:    simulation within a point; the figures are still FLOORS, because the model
+#: tier:    leaves out five mana creatures, Great Divide Guide's any-colour lands and Leyline
+#: tier:    of the Guildpact. Super-Skrull's {B}{B}{B} is 21% on turn four, and keepable 84%
+#: tier:    is the curve, not the colours — no land count moves it.
+#: tier: 2. The spine. 12 central themes around a real colour-count core (vivid, converge,
+#: tier:    both Leylines, five-colour power-ups) is still a singleton pile, and it still
+#: tier:    wins by drawing its bombs. Whether that alone holds it at C is the open call.
 #: colors: WUBRG
 #: archetype: Five-color rainbow good-stuff / superheroes.
 #: notes: Five-color rainbow good-stuff / superheroes.
+#: notes: 2026-09-26 tune — MANABASE (all owned, 0 wildcards): −2 Baxter Building, −3 Forest,
+#: notes: −3 Island, −4 Plains, −4 Swamp, −3 Mountain for all ten Verges, six shocklands
+#: notes: (Breeding Pool, Overgrown Tomb, Sacred Foundry, Hallowed Fountain, Blood Crypt,
+#: notes: Watery Grave), Frontier Bivouac, Sandsteppe Citadel and Starting Town. Chosen over
+#: notes: ten other candidate bases measured on scratch copies; it led on every card. Cost:
+#: notes: two unconditional taplands and shockland life. The Verges, tri-lands and Starting
+#: notes: Town rotate ~2027, the shocklands ~2028.
+#: notes: 2026-09-26 tune — SPELLS: −Diamond Pick-Axe/+Dragonfire Blade (hexproof from
+#: notes: monocolored; equip costs {1} less per colour, so {0} on a four- or five-colour
+#: notes: creature or anything under the Guildpact); −Goldvein Pick/+Explosive Prodigy (vivid
+#: notes: ETB burn, the fifth interaction piece); −Energybending/+Sanar, Innovative First-Year
+#: notes: (vivid card advantage every turn — the classifier finds no role for it, so the card
+#: notes: advantage count does not show it). Energybending was Hermitic Herbalist's only
+#: notes: Lesson, so the Herbalist's Lesson-only mana has no target now; it still taps for
+#: notes: any colour.
+#: notes: 2026-09-26 second pass — −Flamehold Grappler/+Sundering Archaic (the Grappler's
+#: notes: "copy the next spell you cast this turn" on a 3/3 cast on curve 54% of the time, for
+#: notes: a second answer to a noncreature permanent: "exile target nonland permanent … with mana
+#: notes: value less than or equal to the number of colors of mana spent", five for five mana via
+#: notes: Leyline of Mutation); −Undercover Skrull/+Enduring Vitality (a 1/1 that tapped for one
+#: notes: colour, for "Creatures you control have '{T}: Add one mana of any color'" — with Captain
+#: notes: America's first-tap untap every creature taps twice, and Shang-Chi lets a new one tap at
+#: notes: once). Interaction 5→6. Earthen Ally kept at the owner's call.
+#: notes: 2026-09-26 third pass — −Iron Man Armor/+Loot, the Pathfinder; −Doc Samson/+The
+#: notes: Arkenstone // Seek the Heart. Interaction 6→7, card advantage 5→7, which moves the
+#: notes: floor from B to A. Iron Man, Master of Machines now has four other artifacts to
+#: notes: count (Dragonfire Blade, Barrels of Blasting Jelly, Planetarium, The Arkenstone).
+#: notes: 2026-09-26 fourth pass — −Tony Stark/+Infinite Guideline Station. Tony's "{1}, {T}:
+#: notes: look at the top four … reveal an artifact card" hit about 30% of the time off four
+#: notes: artifacts, and his front face is mono-blue. Station's ETB makes a tapped 2/2 Robot
+#: notes: artifact for each multicolored permanent, which is both halves of Iron Man's text
+#: notes: that turn (+1/+0 per artifact; draw when an artifact entered), and it attacks for a
+#: notes: card per multicolored permanent once stationed to 12. Card advantage 7→8.
+#: notes: 2026-09-26 fifth pass — −Sokka, Tenacious Tactician/+Oltec Matterweaver (CRAFT,
+#: notes: mythic; rotates ~2026, crafted to use while it lasts). Sokka triggers on noncreature
+#: notes: spells, of which the deck runs nine; Oltec triggers on each of its 27 creature spells,
+#: notes: making a 1/1 Gnome artifact or copying an artifact token (Station's 2/2 Robots).
+#: notes: Every token is an artifact for Iron Man and fodder for Station; under Enduring
+#: notes: Vitality each taps for any colour, at once with Shang-Chi, twice with Captain America.
+#: notes: 2026-09-26 sixth pass — −Shimmercreep/+Peter Parker. His back face gives every coloured
+#: notes: legendary spell web-slinging {G}{W}{U}: sixteen qualify, Absolute Virtue (8 mana) and the
+#: notes: five-colour Station and Cosmic Spider-Man among them. Explosive Prodigy was the other
+#: notes: candidate and was kept: it is interaction piece seven of seven, and the A floor needs 7.
+#: notes: 2026-09-26 LANDS — three rare shocklands (Steam Vents, Stomping Ground, Temple Garden)
+#: notes: went in for the Island and two Forests and were REVERSED the same day: the owner does not
+#: notes: want rare crafts for this. Owned replacement: −Island/+Godless Shrine, −Forest/+Commercial
+#: notes: District. Each adds a Plains or Mountain type, which turns on the red and white Verge
+#: notes: secondaries. A simulation that honours the Verge gates (the tools count them as always
+#: notes: on) puts average cast-on-curve given land drops at 71.6% → 74.6%, against 76.6% for the
+#: notes: shocks. Commercial District enters tapped, its surveil triggers Planetarium, and it rotates
+#: notes: ~2026. Sources W 9→10, U 11→10, B 10→11, R 9→10. Next owned step if wanted: −Forest/+Mystic
+#: notes: Monastery (76.1%, but a fourth tapland and Enduring Vitality's {G}{G} 65%→58%).
 
 # Nonland
 1 Great Divide Guide (TLA) 181
-1 Undercover Skrull (MSH) 194
+1 Enduring Vitality (DSK) 176
 1 Shang-Chi, Master of Kung Fu (MSH) 187
 1 Hermitic Herbalist (TLA) 226
-1 Energybending (TLA) 2
+1 Sanar, Innovative First-Year (ECL) 241
 1 Leyline of the Guildpact (MKM) 217
-1 Doc Samson, Super Psychiatrist (MSH) 164
-1 Diamond Pick-Axe (LCI) 143
-1 Goldvein Pick (FDN) 253
+1 The Arkenstone // Seek the Heart (HOB) 170
+1 Dragonfire Blade (TDM) 240
+1 Explosive Prodigy (ECL) 136
 1 Barrels of Blasting Jelly (TLA) 254
 1 Overlord of the Hauntwoods (DSK) 194
 1 Super-Skrull (MSH) 115
@@ -43,31 +99,47 @@
 1 Aurora Awakener (ECL) 165
 1 Transcendent Archaic (SOS) 5
 1 Iron Man, Master of Machines (MSH) 216
-1 Shimmercreep (ECL) 120
+1 Peter Parker // Amazing Spider-Man (SPM) 10
 1 Leyline of Mutation (DSK) 188
 1 Archaic's Agony (SOS) 107
 1 The Legend of Kyoshi (TLA) 186
-1 Sokka, Tenacious Tactician (TLA) 242
+1 Oltec Matterweaver (BIG) 3
 1 Aang, Swift Savior (TLA) 204
 1 Aang, at the Crossroads (TLA) 203
 1 Captain America, Living Legend (MSH) 210
 1 Absolute Virtue (FIN) 212
-1 Flamehold Grappler (TDM) 185
-1 Tony Stark (MSH) 80
-1 Iron Man Armor (MSH) 248
-
-# Lands
+1 Sundering Archaic (SOS) 3
+1 Infinite Guideline Station (EOE) 219
+1 Loot, the Pathfinder (DFT) 212
 1 Planetarium of Wan Shi Tong (TLA) 259
 1 Bloom Tender (ECL) 166
-2 Baxter Building (MSH) 261
+
+# Lands
+1 Starting Town (FIN) 289
+1 Frontier Bivouac (TDM) 256
 1 Surveillance Room (MSH) 274
-6 Forest (MSH) 295
-4 Plains (MSH) 287
-4 Island (MSH) 289
-4 Swamp (MSH) 291
-3 Mountain (MSH) 293
+2 Forest (MSH) 295
+1 Commercial District (MKM) 259
+1 Breeding Pool (EOE) 251
+1 Willowrush Verge (DFT) 270
+1 Hushwood Verge (DSK) 261
+1 Sandsteppe Citadel (TDM) 266
+1 Hallowed Fountain (ECL) 265
+1 Bleachbone Verge (DFT) 250
+1 Sunbillow Verge (DFT) 264
+1 Godless Shrine (EOE) 254
+1 Watery Grave (EOE) 261
+1 Gloomlake Verge (DSK) 260
+1 Floodfarm Verge (DSK) 259
+1 Blood Crypt (ECL) 262
+1 Overgrown Tomb (ECL) 266
+1 Blazemire Verge (DSK) 256
+1 Wastewood Verge (DFT) 268
+1 Sacred Foundry (EOE) 256
+1 Riverpyre Verge (DFT) 260
+1 Thornspire Verge (DSK) 270
 
 # Flex — cross-deck craft notes. See: deck.py flex 17
 #~ note: CROSS-DECK CRAFT — Betor, Kin to All (WBG M) is a strong good-stuff pickup here: a 5/7 flyer that draws off total toughness >=10 and untaps your board at >=20. Abzan Monument (WBG U) is cheap 5c fixing + a token mana-sink. Both share one wildcard across decks 20b, 6, and 17 (best value-per-wildcard of the WBG craft targets; see cross-deck analysis).
 
-#~ +Urban Retreat | SIDEGRADE (owned): Bant (W/U/G) tri-land fixing for the 5-color mana; swap over a basic or tapland.
+#~ note: RETIRED 2026-09-26 — the +Urban Retreat sidegrade was superseded by the manabase pass that replaced 19 basics/colourless lands with owned Verges, shocklands and tri-lands; measured, Urban Retreat in place of Sandsteppe Citadel was a wash, trading a black source for a blue one.

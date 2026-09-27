@@ -169,7 +169,7 @@ castability · curve · central-theme density), with the intangibles moving a de
   model can't see those), so it **under-rates by design.** An uncastable stray CAPS the floor at C
   rather than SETTING it, so a dead card can no longer RAISE a D-floor deck, and a card
   the deck's `#: uncastable-ok:` header declares intentional is not counted at all.
-- **A GOOD DECK CAN SIT AT A LOW FLOOR, AND THAT IS THE MODEL WORKING (investigated 2026-09-03, prompted by deck 78 playing above its B).** The floor reads TWO of the eleven terms `deck_quality_vector` produces; **21 of deck 78's 36 nonland cards contribute nothing to it** — 11 payoff/engine plus 10 with no role at all, Doubling Season / Starfield Vocalist / Katara among them, i.e. the entire trigger-doubling thesis. That is not deck-78-specific: the roster's MEDIAN deck has 71% of its nonland cards invisible to the floor (78 is 75%, rank 42 of 115). **A payoff-density term was simulated and DECLINED**: +1 per 4 payoff cards capped at +3 moved 16 decks, cut the C band 9→1 and pushed A to 62% — re-starting the saturation BS8-06 had just fixed — **and left deck 78 at B anyway.** So the answer to "does a well-playing deck mean the rubric is wrong" is no on both halves: the intended remedy is the human letter, which the rubric already lets sit ONE band above the floor. Three things say leave the table alone: the spread is healthy (A 67 / B 45 / C 0, that band now EMPTY — deck 73 was its last member — top band 60% against the 85% alarm; the 2026-09-22 plan-header pass moved four decks A→B and widened it further), the record cannot arbitrate (**79 matches, and int+ca correlates with winning at r = −0.03**; nothing clears the ±0.22 noise band, so this is not evidence the floor is wrong, it is evidence the sample sees nothing), and deck 78's 5-2 is one win above the 54% pooled baseline at n=7 against a 20-match floor. **Re-derive the table when `tier_floor_spread` says so; do not re-derive it because a deck outperformed its letter.**
+- **A GOOD DECK CAN SIT AT A LOW FLOOR, AND THAT IS THE MODEL WORKING (investigated 2026-09-03, prompted by deck 78 playing above its B).** The floor reads TWO of the eleven terms `deck_quality_vector` produces; **21 of deck 78's 36 nonland cards contribute nothing to it** — 11 payoff/engine plus 10 with no role at all, Doubling Season / Starfield Vocalist / Katara among them, i.e. the entire trigger-doubling thesis. That is not deck-78-specific: the roster's MEDIAN deck has 71% of its nonland cards invisible to the floor (78 is 75%, rank 42 of 115). **A payoff-density term was simulated and DECLINED**: +1 per 4 payoff cards capped at +3 moved 16 decks, cut the C band 9→1 and pushed A to 62% — re-starting the saturation BS8-06 had just fixed — **and left deck 78 at B anyway.** So the answer to "does a well-playing deck mean the rubric is wrong" is no on both halves: the intended remedy is the human letter, which the rubric already lets sit ONE band above the floor. Three things say leave the table alone: the spread is healthy (A 68 / B 44 / C 0, that band now EMPTY — deck 73 was its last member — top band 61% against the 85% alarm; the 2026-09-22 plan-header pass moved four decks A→B and widened it further), the record cannot arbitrate (**79 matches, and int+ca correlates with winning at r = −0.03**; nothing clears the ±0.22 noise band, so this is not evidence the floor is wrong, it is evidence the sample sees nothing), and deck 78's 5-2 is one win above the 54% pooled baseline at n=7 against a 20-match floor. **Re-derive the table when `tier_floor_spread` says so; do not re-derive it because a deck outperformed its letter.**
 - **The floor is ARCHETYPE-aware** (#4): an aggro deck closes on a fast clock, not an
   interaction suite, so for an **aggro** plan a bounded `_clock_score` (low curve +
   cheap threats + reach, 0–7) SUBSTITUTES for the interaction the resilience floor
@@ -454,8 +454,8 @@ is protecting.
   **THE LIST IS A WINDOW AND THE RANKING IS THEME FIT, so read a card's ABSENCE as neither
   (BS10-05).** The footer counted the TRUNCATION, so it read "20 suggestion(s)" whether the
   ranking held 20 candidates or 958; it now prints "top N of M ranked candidate(s)"
-  (`--limit 0` for all). Why it matters is measured, not asserted: across **970 applied swaps
-  that recorded a rank for the card ADDED, the MEDIAN rank is 364** and only **11%** fell
+  (`--limit 0` for all). Why it matters is measured, not asserted: across **995 applied swaps
+  that recorded a rank for the card ADDED, the MEDIAN rank is 373** and only **11%** fell
   inside the default top 20. `deck.py feedback` reports that distribution. A card chosen for
   a mechanical interaction the tags do not encode ranks far down BY CONSTRUCTION — a
   different problem from the theme gate G-38 describes, and K-15 was its largest single
@@ -622,15 +622,15 @@ is protecting.
   (Splinter's Ninja clause) is counted against the whole deck — 27 feeders in deck 20
   against a correct 12. Read a `✱ multiplier` figure on a tribal doubler as an upper bound
   until that is fixed.
-  **A BOUNDED TERM IS ONLY BOUNDED USEFULLY IF THE ROSTER SPANS ITS RANGE (fixed
-  2026-09-03).** The floor/key/cap were ONE set of globals across all axes, and `triggers`
-  has a roster MINIMUM above the old floor — so every deck cleared it, 92% pinned the cap,
-  and the term was constant roster-wide on the axis holding most of the pool's doublers.
-  `_DOUBLER_CALIB` sets floor/key per axis at that axis's OWN p25/p75, and growth is
-  measured ABOVE the floor rather than from zero, since counting the baseline every deck
-  has is what saturates. **Re-derive when a distribution moves** (the `TIER_FLOOR_REQ`
-  hazard), and **never read one axis discriminating as evidence all four do** — the
-  `damage` axis was calibrated separately for exactly that reason. [G-33]
+  **KNOWN GAP 2 (2026-09-26): `doubler_axis` returns ONE axis, the first match**, so
+  Doubling Season is priced as a TOKEN doubler only — its counters half is unread by `✱`,
+  `screen` and `suggest-homes`, and it carries just a `tokens` tag, as does every doubler
+  that says bare "counters" (Loading Zone, Doc Samson). Deck 30's `cuts` ranked it
+  2nd-weakest; `#: protect:` such a card until this is fixed.
+  **A BOUNDED TERM IS ONLY BOUNDED USEFULLY IF THE ROSTER SPANS ITS RANGE (2026-09-03)**:
+  `_DOUBLER_CALIB` sets floor/key per axis at that axis's OWN p25/p75 — one global set let
+  every deck clear `triggers` and 92% pin the cap. **Re-derive when a distribution moves**,
+  and **never read one axis discriminating as evidence all four do**. [G-33]
 - **Before committing a deck edit run `deck.py preflight <id>`, and grade a cut/swap with
   `deck.py quality`.** `preflight` folds legal + owned + castable + a full `check_all`
   into one READY/BLOCKED verdict. `quality --json` before, `--vs FILE` after, flags
@@ -701,7 +701,11 @@ is protecting.
   the honest stance for a fuzzy signal. Their castability filter reads the PRINTED COST
   via `_candidate_castability`, same as `suggest` proper — they were the two siblings the
   G-58 fix missed, hiding 34 castable interaction cards and 25 mana sources from
-  mono-color decks on exactly the paths this rule routes deficits to (BS-01). [G-38]
+  mono-color decks on exactly the paths this rule routes deficits to (BS-01).
+  **`--needs`' header source count is the one G-35 holdout (found 2026-09-26)**:
+  `deck_needs` sums land colour IDENTITY rather than calling `deck_source_profile`, so it
+  prints a different count than `consistency` — deck 30 reads G 15 / R 10 / U 12 there
+  against U 13 / R 11 / G 15, and decks 1 and 17 disagree too. Trust `consistency`'s. [G-38]
 - **`cuts` folds a card-QUALITY (power) co-signal**, so an on-theme-but-weak card sorts
   UP the cut list and an on-theme bomb is protected. Bounded and neutral-centred, so it
   only breaks near-ties; a `Pw` column shows it. Still grade from the oracle text, not
@@ -956,6 +960,26 @@ is protecting.
   read ZERO, so a card making two 3/3s contributes nothing; and VEHICLES are counted
   apart, not being creatures until crewed. Read the figure as a FLOOR on what the deck can
   present, never a ceiling. [G-86]
+- **A COLOUR A LAND MAKES ONLY WHILE YOU CONTROL A LAND OF A NAMED TYPE IS NOT A FULL
+  SOURCE, and until 2026-09-26 every count here read it as one.** Two templatings: the
+  Verge cycle's second colour ("Activate only if you control a Mountain or a Plains") and
+  the MSH basic cycle ("…or if you control a basic land" — Gathering Place, Training
+  Compound, Dark Fortress, Gleaming Bastion). `lib.land_production` now reports them in
+  **`gated`** (a subset of `free`, like `chosen`), and `deck.deck_source_profile` prices each
+  by **`lib.gated_source_credit`** — the chance one of the two other lands you control on
+  turn three carries a named type, the framing `_CHECKLAND_BASIC_FLOOR` already rests on —
+  rounded per COLOUR. Enablers are TYPES, not names: a shockland enables a Verge exactly as a
+  basic does. **Validated, not asserted**: on nine decks the tool's cast-on-curve change
+  tracks a gate-honouring simulation within ~1 point on average, against the 4.6-point bias
+  it removes. Roster: **93 of 114 decks** run a gated land; **42** changed source counts, all
+  down; **0 tier floors moved** (the floor reads no sources). `mana`/`consistency` list each
+  gated land with its credit. **Residuals:** `suggest --lands` and `wishlist._land_value`
+  still score a gated colour as full fixing (they read `free`, the recommender half); the
+  checkland gate in `tapland_kind` counts BASICS only while this one counts typed nonbasics
+  too — two answers to "do I control a land of type X"; board-state gates (Spire of
+  Industry's artifact, Mirrex's entered-this-turn) and Leyline of the Guildpact are
+  unmodelled; and a per-card "N% on curve" in deck prose is unaudited (G-26), so a figure
+  quoted before this change may be stale without a warning. [G-87]
 - **BEFORE DISMISSING A CARD, COUNT THE DECK PROPERTY ITS VALUE DEPENDS ON.** Four
   dismissals were overturned in one cycle, all the same shape — a card judged on its own
   text when the decision belonged to a number in the LIST. Michelangelo was called
@@ -1378,7 +1402,9 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   all. The castability lint reads the deck's `#: colors:` header, so a stale header
   manufactures phantom strays — a flag is a review signal, not a hard failure.
   **CONNIVE is an unread keyword here**, so a FLAT metric after a tune is not proof the
-  tune failed. [K-12]
+  tune failed. **Live instance (2026-09-26): a ONE-SIDED sweep scores zero roles** —
+  Soul Immolation's "deals X damage to each opponent and each creature they control"
+  leaves deck 30 reading interaction 7 against a real 8. [K-12]
 - **A LITERAL TYPE-NAME SEARCH CANNOT SEE THE CHOOSE-A-TYPE CATEGORY, and a false negative
   there reads as a finished answer.** A sweep for "Robots you control get" / "for each
   Robot" returned zero and an archetype was declined in writing as "bodies without a
@@ -1476,10 +1502,10 @@ earned it: [C-01]
 
 **Subsystems:**
 - Data: card-library.csv, card-pool.csv, card-mana.csv, card-wishlist.csv, matches.csv
-  (LIVE since 2026-08-10 — 135 matches, 132 attributed across 40 decks, pooled 69-66; the
-  best per-deck row is n=15 (deck 45) against the 20-match floor after six weeks, which is
+  (LIVE since 2026-08-10 — 186 matches, 183 attributed across 46 decks, pooled 95-90-1; the
+  best per-deck row is n=16 (deck 79) against the 20-match floor after seven weeks, which is
   why `--report` also POOLS, and why the four HAND columns exist at all — G-74; all four are
-  still EMPTY in all 135 rows, so scenario 11 remains the only thing that can prove that
+  still EMPTY in all 186 rows, so scenario 11 remains the only thing that can prove that
   loop closes), recommendations.csv,
   collection-stamp.json (written only by `import_collection.py --apply` — the date owned
   counts were last EXACT; absent until the first run, and since 2026-09-20 `check_all`

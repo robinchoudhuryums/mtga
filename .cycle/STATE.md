@@ -19,7 +19,7 @@ Phase: implement — **scan #10 is FULLY IMPLEMENTED**. All four batches plus ev
 Scope: broad
 Test Command: `python3 scripts/check_all.py`
 Subsystem cycles since last Seams audit: 2 (counter adopted 2026-09-08; no Seams audit has run)
-Updated: 2026-09-23 (deck-aware checkland gate + `/tune-deck` runs `--lands` every run — see Where I left off)
+Updated: 2026-09-27 (G-87 shipped; decks 17 and 30 tuned; `/sync-docs` pass — see Where I left off)
 
 ## In progress (facts to carry forward — NOT judgments)
 - **Broad scan #10 is fully implemented — nothing outstanding from the scan.** Four
@@ -36,6 +36,28 @@ Updated: 2026-09-23 (deck-aware checkland gate + `/tune-deck` runs `--lands` eve
   fixed its largest cause (deck 47's own picks: median 310 → 144).
 
 ## Completed this cycle
+
+- **2026-09-26/27 — decks 17 and 30 tuned; three tooling holes documented.** Deck 17's
+  manabase rebuilt from owned fixing plus several swaps (Oltec Matterweaver the one craft,
+  also slotted into 21, 74a, 42a). Deck 30: fifteen owned swaps across six commits, green
+  sources 12 → 15, cards under 90% on curve 33 → 21, floor held A at interaction 7 / card
+  advantage 7. The tune surfaced three holes, written up under G-33, G-38 and K-12 by the
+  `/sync-docs` pass rather than fixed — see Open follow-on.
+
+- **2026-09-26 — G-87: a colour gated on a land TYPE was counted as a full source.**
+  The Verge cycle ("Activate only if you control a Mountain or a Plains") and the MSH
+  basic cycle ("…or if you control a basic land") read as FREE in `lib.land_production`,
+  so `mana` / `consistency` / `pip_depth_warning` / the rationale audit all treated them as
+  always on. Now `land_production` reports `gated` (subset of `free`), and
+  `deck_source_profile` credits each by `lib.gated_source_credit` (P one of the two other
+  lands on turn three carries a named type — the `_CHECKLAND_BASIC_FLOOR` framing), rounded
+  per colour. Validated against a gate-honouring Monte Carlo on nine decks: tool Δ tracks
+  sim Δ within ~1.1 points mean, against a 4.6-point bias removed. Roster: 93/114 decks
+  run a gated land, 42 changed source counts (all down), **0 tier floors moved**. Three
+  stale source figures re-grounded (decks 78, 68a) and deck 17's tier block rewritten.
+  `_LAND_GATE_RE` registered in `check_patterns`; tests watched to fail with the pattern
+  dead. Residuals (recommender half, `tapland_kind` basics-only twin, Leyline of the
+  Guildpact, unaudited per-card %) are in the G-87 long form and under Open follow-on.
 
 - **2026-09-23 — F-LAND-01/02/03: the checkland gate read the basic COUNT, never the
   basic TYPE, and `/tune-deck` was not running the land recommender at all.** Both
@@ -146,12 +168,26 @@ Updated: 2026-09-23 (deck-aware checkland gate + `/tune-deck` runs `--lands` eve
 
 ## Pending / not yet done
 - **Deck 47's tier LETTER** — claimed B, floor now A. A human call; see above.
-- A `/sync-docs` pass: G-02/G-43/G-58 do not mention BS10-08's back-half flag, and G-38/G-22
-  do not mention the ranking-window footer or the median-407 measurement.
+- **Decks 17 and 42a's tier LETTERS** — 17 claims C and 42a claims B, both against an A
+  floor (17 prints "possibly UNDER-graded"). Human calls, never auto-written.
 - The unapplied cross-deck homes and earlier proposed swaps — NEXT-SESSION.md §0-current.
-- Two G-67 role-pattern holes (Kitnap, Eluge), baselined not fixed.
+- Four G-67 role-pattern holes, baselined not fixed: Kitnap, Eluge, Soul Immolation (a
+  combined "each opponent and each creature" target list) and Cheering Crowd (conditional
+  mana) — K-12's long form has the probe.
 
 ## Open follow-on items
+- **`doubler_axis` returns ONE axis (G-33 KNOWN GAP 2).** Doubling Season is priced as a
+  tokens-only doubler everywhere (`✱`, `screen`, `suggest-homes`, `cuts`), and a doubler
+  that says bare "counters" gets no `counters` tag (Doubling Season, Loading Zone, Doc
+  Samson). Fix shape: multi-axis return taking the best-supported axis + a `counters` tag
+  for the generic replacement — measure roster-wide first (G-40).
+- **`deck_needs` counts land sources from colour IDENTITY (G-38).** The one surface not on
+  `deck_source_profile`; it also chooses the "scarcest" colour the fixing list is nudged
+  toward. Route it through the profile and re-measure the fixing picks.
+- **G-87 recommender half** — `suggest --lands` and `wishlist._land_value` still score a
+  Verge's gated colour as full fixing (they read `free`). Pricing the gate there is a
+  separate measurement (G-40). Also: `tapland_kind`'s checkland type gate counts basics
+  only while G-87's source gate counts typed nonbasics — two answers to one question.
 - **No surface computes P(a tapped land in your first N land drops).** Hand-rolled six
   times on 2026-09-20 and it decided both manabases. The G-86 `board_power` shape. MUST
   stay report-only — `tapland_profile`'s docstring already commits to never feeding a
@@ -276,37 +312,21 @@ Updated: 2026-09-23 (deck-aware checkland gate + `/tune-deck` runs `--lands` eve
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
-**2026-09-23 — two deck tunes, then the land findings they surfaced.** Branch
-`claude/sync-commands-mmmsdb`. Decks 1 and 2 both tuned and committed; then
-`/broad-implement all 3` shipped F-LAND-01/02/03. `check_all` green, full pytest 1904
-passed, `check_docs` 114 rules, `check_commands` OK.
+**2026-09-27 — `/sync-docs` pass after G-87 and the deck 17/30 tunes.** Branch
+`claude/sync-commands-mmmsdb`; PR #194 had already merged earlier work, so this batch goes
+out as a new PR. Doc edits: CLAUDE.md G-33 (KNOWN GAP 2, with the calibration paragraph
+trimmed to stay under the 300-word cap — the detail survives verbatim in the long form),
+G-38 (`--needs` source holdout), K-12 (one-sided sweeper); matching dated sections in
+`docs/gotchas.md`; NEXT-SESSION.md stamp 2026-09-27.
 
-**THE FIXES ARE IN THE BLOCK FILE** — read it rather than re-deriving:
-`.cycle/blocks/2026-09-checkland-types-and-tune-deck-land-gate-broad-implement.md`.
+**Nothing in scripts/ changed in this pass** — the three holes are documented, not fixed,
+because each needs its roster measurement first (G-40, G-67). The Open follow-on list names
+the fix shape for the first two.
 
-**The finding was found from the OTHER end, and that is the transferable part.** Nobody
-audited `tapland_kind`; a manabase pass on deck 2 put Cori Mountain Monastery at #2 in its
-own land list, labelled `·check`, in a deck with 23 Mountains and no Plains or Island.
-Reading a tool's output AS A USER is what surfaced a bug 54 decks wide.
-
-**F-LAND-02 is the G-53 shape one layer up.** The land recommender was correct and
-reachable and simply never RUN, because `/tune-deck` gated it on a scorecard mana deficit
-— and G-37's 2026-09-20 change made its best advice apply to manabases that are NOT
-deficient. A capability that works and is never reached is invisible to every gate.
-
-**THE WORD CAP BIT, and the right move is to check the long form FIRST.** G-35 sat at
-297/300 and G-37 at 286/300, so both new clauses needed evidence moved out. Every trimmed
-figure was grepped in `docs/gotchas.md` BEFORE cutting — the 81 back-face lands, the ten
-any-colour lands, decks 23/41's `#: notes:` workaround — and all three survive verbatim
-there. Trim only what the long form already carries.
-
-**I TRUNCATED THIS FILE WHILE WRITING THIS ENTRY, in the exact way its own header warns
-about.** `t.index("## Where I left off")` matched the WARNING TEXT at line 11, not the
-heading, and the write took 392 lines to 41. Restored with `git checkout` and redone by
-matching a LINE equal to the heading, with an assert that exactly one matches. The header
-says a second `## Where I left off` shadows the real one; the mirror is that the header's
-own quotation of it shadows the heading for anything doing a substring search. Never
-`str.index` a heading in this file.
+**The deck-30 tune is the worked case for G-22.** Every add in that tune — Doubling Season,
+Bristly Bill, Terrasymbiosis, Applied Geometry — was found by an effect-shape search
+(`pool.py --regex`) or by the user naming it; the ledger recorded "suggest surfaced: no"
+for every add in the deck-30 passes, and Doubling Season ranked 1,325th of 1,469.
 
 **THE 2026-09-20 PROCESS RULE STILL HOLDS:** never edit source while a suite is running,
-and never report such a run red. The full suite was run twice here, both on a settled tree.
+and never report such a run red.

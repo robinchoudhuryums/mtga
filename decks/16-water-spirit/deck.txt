@@ -1,6 +1,6 @@
-#: name: Moon Spirit
+#: name: Water Tribe Moon Spirit
 #: format: Standard
-#: arena: 16 Moon Spirit, 697e3fd9-7143-4ef4-af0f-fda0b908eb1f
+#: arena: 16 Water Tribe Moon Spirit, 8c067cc4-f4d0-48a1-b20b-0ad911eba2ac
 #: tier: A — Azorius WATERBEND tempo-value, and since the 2026-09-19 pass the letter
 #: tier: MATCHES its metrics floor rather than sitting a band above it. Interaction is
 #: tier: 7 on the counted number, which is what moved the floor: Amazing Acrobatics,

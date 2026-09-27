@@ -1053,6 +1053,172 @@ class TestAdoptingArenaDeckNames:
         assert "cited in" not in "\n".join(said)
 
 
+class TestRenameWarningsSeeThroughGlossCaseAndCards:
+    """The three faults the 2026-09-25 rename pass hit, each reproduced on the real roster
+    shape that exposed it. That pass adopted Arena names for ten decks and had to find
+    every orphaned variant and stranded citation by hand, because the warnings meant to
+    find them compared the gloss-bearing `#: name:` and matched plain English."""
+
+    GUID = TestAdoptingArenaDeckNames.GUID
+
+    def _roster(self, tmp_path, monkeypatch, **decks):
+        return TestArenaHeaderWriting._roster(self, tmp_path, monkeypatch, **decks)
+
+    def _cored(self, *a, **k):
+        return TestAdoptingArenaDeckNames._cored(self, *a, **k)
+
+    def _variant(self, tmp_path, folder, fname, body):
+        (tmp_path / "decks" / folder / fname).write_text(body, encoding="utf-8")
+
+    def _said(self, paste):
+        said = []
+        pm.sync_deck_names(paste, out=said.append)
+        return "\n".join(said)
+
+    # ---- 1. the gloss --------------------------------------------------------------
+
+    def test_a_glossed_parent_rename_flags_its_orphaned_variants(self, tmp_path,
+                                                                 monkeypatch):
+        """26 "Iron Forge (ramp into artifact bombs)" -> "Iron Colossi". No variant
+        repeats the parent's premise line, so a raw-name substring test flagged neither
+        26a nor 26b."""
+        self._roster(tmp_path, monkeypatch, **{
+            "26-iron-forge": self._cored("Iron Forge (ramp into artifact bombs)",
+                                         "26 Iron Forge")})
+        self._variant(tmp_path, "26-iron-forge", "26a-virulent.txt",
+                      self._cored("Iron Forge — Virulent"))
+        self._variant(tmp_path, "26-iron-forge", "26b-ancient-decay.txt",
+                      self._cored("Iron Forge — Ancient Decay"))
+        out = self._said(_setdeck(name="26 Iron Colossi", guid=self.GUID))
+        assert "VARIANT(S) carry the old parent name" in out, out
+        assert "26a 'Iron Forge — Virulent'" in out
+        assert "26b 'Iron Forge — Ancient Decay'" in out
+
+    def test_a_glossed_parent_cited_by_id_elsewhere_is_flagged(self, tmp_path,
+                                                               monkeypatch):
+        """41 "Darkforce Inversion (gain, drain, swap totals)" is cited in deck 42's prose
+        as "41 Darkforce Inversion" — the premise line never travels with a citation."""
+        self._roster(tmp_path, monkeypatch, **{
+            "41-darkforce": self._cored("Darkforce Inversion (gain, drain, swap totals)",
+                                        "41 Darkforce Inversion"),
+            "42-blood-price": self._cored(
+                "Blood Price (pay life, get paid)", "42 Blood Price", guid="g-42",
+                extra="#: archetype: a fair deck. DISTINCTNESS vs 41 Darkforce Inversion, "
+                      "the other Mister Negative\n"),
+        })
+        out = self._said(_setdeck(name="41 Soul Inversion", guid=self.GUID))
+        assert "old name cited in 1 other deck file(s): 42" in out, out
+
+    def test_a_name_wrapped_across_two_header_lines_is_still_a_citation(
+            self, tmp_path, monkeypatch):
+        """Deck 43 cites "12 Drawn / Conclusions" across a line break. Joining the prose
+        lines line-by-line with "\\n" kept the name in two halves no test could match."""
+        self._roster(tmp_path, monkeypatch, **{
+            "12-drawn": self._cored("Drawn Conclusions", "12 Drawn Conclusions"),
+            "43-uatu": self._cored(
+                "Uatu The Watcher", "43 Uatu", guid="g-43",
+                extra="#: archetype: Against the Dimir draw decks: 12 Drawn\n"
+                      "#: archetype: Conclusions is a UB control deck that draws.\n"),
+        })
+        out = self._said(_setdeck(name="12 Foregone", guid=self.GUID))
+        assert "old name cited in 1 other deck file(s): 43" in out, out
+
+    # ---- 2. plain English and card names -------------------------------------------
+
+    def test_a_plain_english_name_is_not_a_citation(self, tmp_path, monkeypatch):
+        """79 "Second Draw" was reported as cited in four decks whose prose only said
+        "second draw". A deck name is a proper noun, so the match is case-sensitive."""
+        self._roster(tmp_path, monkeypatch, **{
+            "79-second-draw": self._cored("Second Draw", "79 Second Draw"),
+            "12-drawn": self._cored(
+                "Drawn Conclusions", "12 Drawn Conclusions", guid="g-12",
+                extra="#: notes: it skips the second draw of the turn on purpose.\n"),
+            "08-sac": self._cored(
+                "Sacrifices", "08 Sacrifices", guid="g-08",
+                extra="#: notes: each player sacrifices two creatures.\n"),
+        })
+        assert "cited in" not in self._said(_setdeck(name="79 Gambit's Draw",
+                                                     guid=self.GUID))
+
+    def test_a_card_name_containing_the_deck_name_is_not_a_citation(
+            self, tmp_path, monkeypatch):
+        """"Herd Heirloom" and "Web of Life and Destiny" are CARDS. Deck 69's tier line
+        wraps "Herd / Heirloom", so the mask only sees the card once lines are joined."""
+        import deck as dk
+        monkeypatch.setattr(dk, "load_card_data", lambda: {
+            "herd heirloom": {"name": "Herd Heirloom"},
+            "web of life and destiny": {"name": "Web of Life and Destiny"}})
+        self._roster(tmp_path, monkeypatch, **{
+            "63-heirloom": self._cored("Heirloom", "63 Heirloom"),
+            "69-bear-wolf": self._cored(
+                "Bear-Wolf", "69 Bear-Wolf", guid="g-69",
+                extra="#: tier: recovered, mostly by Herd\n"
+                      "#: tier: Heirloom and Twitching Doll.\n"),
+        })
+        assert "cited in" not in self._said(_setdeck(name="63 Keepsake", guid=self.GUID))
+
+    def test_the_id_beside_a_card_shaped_name_makes_it_a_citation(self, tmp_path,
+                                                                  monkeypatch):
+        """Deck 23 is named "Avengers Assemble!", which is also a card. Deck 7's prose
+        about the CARD must stay quiet; deck 46's "23 Avengers Assemble!" cites the DECK."""
+        import deck as dk
+        monkeypatch.setattr(dk, "load_card_data", lambda: {
+            "avengers assemble!": {"name": "Avengers Assemble!"}})
+        self._roster(tmp_path, monkeypatch, **{
+            "23-avengers": self._cored("Avengers Assemble!", "23 Avengers Assemble!"),
+            "07-earths": self._cored(
+                "Earth's Mightiest", "07 Earth's Mightiest", guid="g-07",
+                extra="#: tier: Avengers Assemble! had been read as ZERO card draw.\n"),
+            "46-lightwing": self._cored(
+                "Lightwing", "46 Lightwing", guid="g-46",
+                extra="#: archetype: (3 Knight's Edge, 23 Avengers Assemble!) go WIDE\n"),
+        })
+        out = self._said(_setdeck(name="23 Heroes", guid=self.GUID))
+        assert "old name cited in 1 other deck file(s): 46" in out, out
+
+    def test_a_variant_is_cited_by_its_own_half_beside_its_id(self, tmp_path,
+                                                              monkeypatch):
+        """Prose cites "48a Motor Pool", never "Doombots — Motor Pool": the 2026-09-25
+        rename of 48a had three such citations and none was reported. The half is
+        matched only beside the id, since a variant half is often a common word."""
+        self._roster(tmp_path, monkeypatch, **{
+            "48-doombots": self._cored("Doombots", "48 Doombots", guid="g-48"),
+            "61-pony": self._cored(
+                "Pony Express", "61 Pony Express", guid="g-61",
+                extra="#: archetype: Distinct from 48a Motor Pool (UR Vehicles).\n"),
+            "74-forge": self._cored(
+                "Iron Hills Forge", "74 IHF", guid="g-74",
+                extra="#: notes: the Motor Pool of a dwarf hold is its forge.\n"),
+        })
+        self._variant(tmp_path, "48-doombots", "48a-motor-pool.txt",
+                      self._cored("Doombots — Motor Pool", "48a Motor Pool"))
+        out = self._said(_setdeck(name="48a Autopilot", guid=self.GUID))
+        assert "old name cited in 1 other deck file(s): 61" in out, out
+
+    # ---- 3. the colon --------------------------------------------------------------
+
+    def test_a_colon_separated_variant_name_leaves_no_stray_colon(self, tmp_path,
+                                                                  monkeypatch):
+        """Arena writes "69a Bear-Wolf: Ursa Major", repeating the parent with a colon.
+        Only " —-" were stripped, so the adopted name was "Bear-Wolf — : Ursa Major"."""
+        self._roster(tmp_path, monkeypatch, **{
+            "69-bear-wolf": self._cored("Bear-Wolf (payoffs gated on power 4)",
+                                        "69 Bear-Wolf", guid="g-69")})
+        self._variant(tmp_path, "69-bear-wolf", "69a-beorn.txt",
+                      self._cored("Warg and Woodland — Bear-Wolf: Ursa Major", "69a Old"))
+        _w, plan = pm.sync_deck_names(_setdeck(name="69a Bear-Wolf: Ursa Major",
+                                               guid=self.GUID), out=lambda *_a: None)
+        assert [(p[0], p[3]) for p in plan] == [("69a", "Bear-Wolf — Ursa Major")]
+
+    def test_the_colon_fix_at_the_primitive(self):
+        rec = {"name": "Warg and Woodland — Bear-Wolf: Ursa Major", "variant": True}
+        assert pm._adopted_name("69a Bear-Wolf: Ursa Major", rec,
+                                "Bear-Wolf") == "Bear-Wolf — Ursa Major"
+        # The em-dash form Arena cannot type still resolves as before.
+        assert pm._adopted_name("54b Grand Lotus- Comet", {"variant": True},
+                                "Grand Lotus") == "Grand Lotus — Comet"
+
+
 class TestSourcelessNameReconcile:
     """`--sync-names` with no log. The repo already holds Arena's name for every
     GUID-paired deck, so reconciling a months-old divergence must not require a paste

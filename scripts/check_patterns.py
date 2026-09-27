@@ -354,7 +354,12 @@ def _pattern_groups():
                  # non-mana tap cost, and an ability GRANTED to other permanents. If any
                  # goes dead the land comes back as a rainbow source, silently.
                  "_CHOSEN_COLOR_RE", "_TRANSFORM_GATED_RE", "_EXTRA_TAP_COST_RE",
-                 "_GRANTED_ABILITY_RE"):
+                 "_GRANTED_ABILITY_RE",
+                 # 2026-09-26 (G-87): the land-TYPE gate on a mana ability. If it goes
+                 # dead every Verge's second colour and every MSH basic-gated colour is
+                 # back to a full source in every deck — the over-count it was added to
+                 # remove, and invisible because a larger count breaks no invariant.
+                 "_LAND_GATE_RE"):
         out.append((f"lib.{name}", getattr(lib, name), "raw"))
     out += [("tag_synergies._TRIBAL_PAYOFF_RES", p, "raw")
             for p in tag_synergies._TRIBAL_PAYOFF_RES]

@@ -1,5 +1,6 @@
 #: name: Knight's Edge
 #: format: Standard
+#: arena: 03 Knight’s Edge, 22398c4c-ccff-4305-96ea-a3b3d468caed
 #: tier: A — Mono-W go-wide aggro; fast, anthems, 9 interaction on a 3.50 curve.
 #: tier: 2026-09-21: the letter is now BACKED by the floor rather than sitting a band
 #: tier: above it. Card advantage was the capping axis — it read 1 — and a seven-swap

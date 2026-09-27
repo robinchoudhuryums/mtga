@@ -2792,6 +2792,9 @@ Overlord of the Balemurk,{3}{B}{B},5,Impending;Mill
 "Brigid, Clachan's Heart",{2}{W},3,Transform
 Herd Heirloom,{1}{G},2,
 "Kraven, Proud Predator",{1}{R}{G},3,Vigilance;Top of the Food Chain
+Sundering Archaic,{6},6,Converge
+The Wandering Minstrel,{G}{U},2,
+"Ramos, Dragon Engine",{6},6,Flying
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -5418,7 +5421,6 @@ Darksteel Colossus,{11},11,Indestructible;Trample
 Feldon's Cane,{1},1,
 Gate Colossus,{8},8,Affinity
 Mazemind Tome,{2},2,Scry
-"Ramos, Dragon Engine",{6},6,Flying
 Sorcerous Spyglass,{2},2,
 Soul-Guide Lantern,{1},1,
 Steel Hellkite,{6},6,Flying
@@ -5577,7 +5579,6 @@ Serah Farron // Crystallized Serah,{1}{G}{W},3,Transform
 "Terra, Magical Adept // Esper Terra",{1}{R}{G},3,Flying;Transform;Mill;Trance
 "Tidus, Blitzball Star",{1}{W}{U},3,
 "Ultimecia, Time Sorceress // Ultimecia, Omnipotent",{3}{U}{B},5,Surveil;Transform;Menace;Time Compression
-The Wandering Minstrel,{G}{U},2,
 Blitzball,{3},3,GOOOOAAAALLL!
 Excalibur II,{1},1,Equip
 Instant Ramen,{2},2,Flash
@@ -12897,7 +12898,6 @@ One with Nothing,{B},1,
 Kuldotha Rebirth,{R},1,
 Molten Psyche,{1}{R}{R},3,Metalcraft
 Myr Battlesphere,{7},7,
-Sundering Archaic,{6},6,Converge
 Together as One,{6},6,Converge
 Ajani's Response,{4}{W},5,
 Ascendant Dustspeaker,{4}{W},5,Flying

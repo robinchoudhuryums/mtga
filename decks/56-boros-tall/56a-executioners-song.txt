@@ -1,4 +1,4 @@
-#: name: One Fell Swoop — Executioner’s Song
+#: name: One Fell Swoop — Executioner’s
 #: format: Standard
 #: arena: 56a Executioner’s, 19b10a39-bfc6-4cf3-8150-8b1f16665df3
 #: colors: RG

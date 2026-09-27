@@ -2397,6 +2397,27 @@ grades on `role_tally`, which reads TEXT) and **1 of 111 `cuts` top-3 sets chang
 That deck's own thesis card had been ranked its second-weakest, the same shape G-40 records
 for Delney in deck 46. `check_suggest`'s doubler probe tested only the passive form and so
 could not have caught this; it now covers both voices and both near-miss families.
+
+### 2026-09-26 — `doubler_axis` returns ONE axis, and Doubling Season's counter half is unread
+
+Found tuning deck 30, a counters/Fractal deck whose thesis is doubling. The owned Doubling
+Season ranked **1,325th of 1,469** owned candidates in `suggest`, `screen` called it
+*tangential* with `✱ multiplier — doubles tokens (6 feeders)`, and once it was added `cuts`
+ranked it the deck's **2nd-weakest card**. Two causes, neither the BS11 voice fix:
+
+- `doubler_axis` walks `_DOUBLER_AXES` and returns the FIRST axis whose pattern matches.
+  BS11 taught both the tokens and counters patterns the active voice, so Doubling Season
+  matches both — but tokens is tried first, so every consumer (`doubler_support`, the
+  `cuts` ✱ term, `screen`, `suggest-homes`) prices it against 6 token feeders instead of
+  17 counter feeders.
+- The tagger gives no `counters` tag to a doubler that says bare "counters" rather than
+  "+1/+1 counters": Doubling Season carries only `tokens`; Loading Zone carries
+  `exile cast; warp; tempo; cost-reduction`; Doc Samson carries `Gamma; Doctor; Hero; mana`.
+  The Earth Crystal and Michelangelo, which say "+1/+1 counters", ARE tagged.
+
+Workaround applied: Doubling Season is in deck 30's `#: protect:`. The fix is a
+multi-axis return (take the axis with the most support) plus a `counters` tag for the
+generic replacement — measure both roster-wide before landing (G-40).
 ## [G-83] A cost that SCALES with a deck count, priced by nothing
 
 Every model in this repo prices a card at its PRINTED cost. That is right for most cards
@@ -2942,6 +2963,24 @@ not printed cost — the G-58 bug re-introduced on exactly the paths this rule r
 deficits to, hiding a measured 34 castable interaction cards + 25 mana sources from
 mono-color decks. Both now use `_candidate_castability`, the same filter as `suggest`
 proper. Full incident under G-58's 2026-08 addendum.
+
+### 2026-09-26 — `--needs` prints its own source count
+
+`cmd_suggest_needs` prints `sources …` from `deck_needs`, which sums each land's colour
+IDENTITY (plus basics). Every other surface reads `deck_source_profile` (G-35). The two
+disagree whenever a deck runs a basic fetch (counted per basic colour by G-35, colourless
+by identity), a type-gated colour (G-87 credit vs a full source) or an off-colour dual:
+
+| deck | `--needs` | `consistency` |
+|---|---|---|
+| 30 | G 15, R 10, U 12 | U 13, R 11, G 15 |
+| 17 | B 9, G 11, R 8, U 8, W 8 | W 9, U 9, B 10, R 9, G 12 |
+| 1  | B 17, R 16 | B 16, R 15 |
+
+`deck_needs` also uses the figure to pick the "scarcest" colour it nudges the fixing
+list toward, so the disagreement can change a recommendation, not just a header. Not
+fixed here (a sync-docs pass writes no code); the fix is to route `deck_needs` through
+`deck_source_profile` and re-measure the fixing picks.
 
 
 ## [G-39] `deck.py cuts` folds a card-QUALITY (power) co-signal into the ranking (#3)
@@ -4968,6 +5007,19 @@ Ghost-Spider repeatable (loyalty and a counter-sink genuinely are, in principle)
 human counting "engines" would say only Charred Foyer. Read it as a structural split, not
 a power judgment — which is the whole point of not building the scale.
 
+### 2026-09-26 — a one-sided sweeper scores no role
+
+Soul Immolation ("deals X damage to each opponent and each creature they control") scores
+ZERO roles, so deck 30's interaction reads 7 — exactly the A-floor minimum — against a
+real 8, and every cut decision in that tune had to treat the deck as having no slack.
+Probed: the miss is the COMBINED target list — "damage to each creature they control"
+scores Sweeper alone, but "to each opponent and each creature …" scores nothing (and with
+"your opponents control" scores only Burn / drain). Same
+pass: Cheering Crowd ("that player may put a +1/+1 counter on this creature. If they do,
+they add {C} for each counter on it") was acknowledged into `role_baseline.txt` as
+zero-role — a conditional mana ability the Ramp patterns do not read. Both are G-67
+PATTERN holes, not taxonomy holes; measure the roster before widening either.
+
 ## [K-13] A literal type-name search cannot see the choose-a-type category — and the false negative reads as an answer
 
 **A literal type-name search cannot see the choose-a-creature-type category, and a false
@@ -6583,6 +6635,38 @@ Four rules keep it from doing damage, and each was earned rather than assumed:
    `Bird Brain — Bant`), where the citation keeps reading correctly and flagging it would
    bury the real cases.
 
+**Both warnings were blind to the GLOSS, and the citation half matched plain English
+(fixed 2026-09-25).** The owner's rule that day adopted Arena's name for every deck whose
+number matched, ten decks at once. Every orphan and stranded citation had to be found by
+hand, because `_variant_orphans` and `_name_citations` tested the RAW `#: name:`, trailing
+"(...)" premise included, and no variant or citation repeats a premise. 26
+"Iron Forge (ramp into artifact bombs)" therefore flagged neither 26a nor 26b. 41 flagged
+no citation, though 42 names "41 Darkforce Inversion". Meanwhile "Second Draw" was
+"cited" in four decks that only say "second draw". Orphans now compare `_name_key`
+(gloss-blind), and roster-wide that takes the flag from **9 to 34** variants, all 34
+genuine `<parent> — <variant>` names. Citations were measured against a hand-labelled
+sweep: every deck's name searched in every other deck's prose, 82 real deck→file
+citations.
+
+| Rule | Flagged | Precision | Recall |
+|---|---|---|---|
+| Old: raw name, case-insensitive, line by line | 53 | 58% | 40% |
+| Bare name, case-insensitive | 120 | 65% | 100% |
+| Bare, case-sensitive, word-bounded | 105 | 74% | 100% |
+| **Shipped:** that, minus CARD names containing the deck name unless the id sits beside it, lines joined | **85** | **96%** | **100%** |
+| Id-adjacent only | 58 | 100% | 74% |
+
+Two findings came with the fix. Joining the prose lines recovered three real citations
+split across a line break ("12 Drawn / Conclusions"), which the old `"\n".join` could
+never match. And a VARIANT is cited by its own half ("48a Motor Pool", never "Doombots —
+Motor Pool"), so that half is searched too, beside its id only: 4 roster hits, all real,
+three of them the 48a citations the 2026-09-25 pass fixed by hand. The 3 residual false
+hits are card SHORTHANDS ("Triceraton" for Triceraton Commander). Masking prefixes would
+cost real bare citations, so they are left in.
+The companion bug: Arena's "69a Bear-Wolf: Ursa Major" adopted as "Bear-Wolf — : Ursa
+Major", because only " —-" were stripped after a repeated parent. `_VARIANT_SEPARATORS`
+now includes the colon.
+
 **THE DIVERGENCE REGROWS, and that is the part most likely to be misread later.** It is
 generated by how decks get named in the client, not by a one-time drift, and the sync is
 opt-in — so the roster is only ever as reconciled as the last run. Several docs cite the
@@ -7554,6 +7638,83 @@ note that a number not on the list is unguarded.
 Verification at the time: roster sweep reported **0 stale figures, unchanged**, so no new
 false positives; the patterns were watched to FAIL on a mutated copy in all three prose
 forms and to stay quiet on the correct value and on a verbless delta's FROM side.
+
+## [G-87] A colour gated on a land TYPE is not a full source
+
+### How it was found
+
+The 2026-09-26 deck 17 tune (ten Verges, few typed lands). `deck.py mana` read
+W 10 / U 10 / B 11 / R 10 / G 13 and `consistency` priced the five-colour cards around
+57–67% on curve. A Monte Carlo that honoured each Verge's gate ("{T}: Add {R}. Activate only
+if you control a Mountain or a Plains") put the same deck's average cast-on-curve, given
+land drops, about **6 points lower** than the same simulation with the gates ignored. The
+tool had no concept of the gate: `lib.land_production` filed the second colour as `free`.
+
+### Scope — two templatings, and only two
+
+Surveyed over every pool land with an "activate only if" mana line: 17 lines, of which 15
+are the Verge cycle ("…a Mountain or a Plains", all ten) and the MSH basic cycle ("…if this
+land entered this turn or if you control a basic land" — Gathering Place, Training Compound,
+Dark Fortress, Gleaming Bastion and Hidden Lair). The other two are board states — Spire of
+Industry ("you control an artifact") and Mirrex ("this land entered this turn") — and are
+deliberately left unmodelled rather than answered wrongly.
+
+### The model
+
+`land_production` returns **`gated`**: `{colour: frozenset of WUBRG letters}`, an EMPTY set
+meaning "any basic land". It is a SUBSET of `free`, following `chosen`'s precedent, so a
+caller that only asks "can this land ever make R" (the recommender) is unchanged, and only
+the COUNT prices the gate.
+
+`deck_source_profile` now makes two passes — the whole manabase must be known before any
+land is priced — and credits each gated colour by `gated_source_credit(enablers, nlands)`:
+P(at least one of the TWO other lands you control is an enabler), hypergeometric over the
+deck's other lands. Two lands on turn three is exactly the framing
+`wishlist._CHECKLAND_BASIC_FLOOR` rests on for the checkland version of the same question,
+so "met" means one thing. At 12 enablers in 24 lands it reads 0.78 (the floor's 76%), at 5
+it reads 0.40, with none it is 0. Credits are summed and **rounded per colour**, not per
+land: three Verges at 40% are one real source, where rounding each would make them zero.
+
+Enablers are land TYPES, read from the front type line by `lib.land_basic_types`, so a
+shockland ("Land — Mountain Plains") enables a Verge exactly as a basic does. A land is
+never its own enabler.
+
+### Validated against the simulation, not just asserted
+
+The two models answer different questions (per-colour hypergeometric independence vs a
+joint pip matching given land drops), so their LEVELS differ by construction. What must
+agree is the CHANGE the gate makes. Nine decks, tool Δ vs simulation Δ in mean
+cast-on-curve: 17 −4.9 / −5.0; 28 −9.6 / −7.2; 29 −6.4 / −5.7; 35a −4.3 / −6.1; 69b
+−1.8 / −4.0; 58 −4.4 / −3.5; 45a −3.5 / −2.7; 19 −3.2 / −3.9; 06 −2.8 / −3.1. Mean absolute
+disagreement **~1.1 points**, against a bias of **4.6 points** the old count carried. The
+two-lands framing over-corrects slightly on deck 28 and under-corrects on 69b and 35a; a
+three-lands framing was not adopted because it would trade those errors rather than remove
+them, and it would stop agreeing with the checkland floor.
+
+### Roster impact
+
+**93 of 114 decks** run at least one gated land (Gathering Place alone: 69 copies).
+**42** changed a source count, every change a decrease — distribution of sources removed
+per deck: −1 ×14, −2 ×9, −3 ×10, −4 ×4, −5 ×4, −8 ×1 (deck 28, eight MSH lands against few
+basics). **0 tier floors moved**: `tier_band` reads no source count. The rationale audit
+and the flex-note sweep flagged three stale source figures (decks 78 ×3, 68a ×1), all
+re-grounded in the same change; deck 17's tier block was rewritten because it described
+the old behaviour.
+
+### Residuals — named, not fixed here
+
+- **The recommender half.** `suggest --lands` and `wishlist._land_value` read `free`, so a
+  Verge still scores as a full dual in a deck that cannot enable it. The scoring change is
+  a separate measurement (G-40: reaching a new caller is not free).
+- **Two answers to "do I control a land of type X".** `tapland_kind`'s checkland gate
+  counts the deck's BASICS only; this gate counts typed nonbasics too. A shockland meets
+  both gates in play, so the checkland side is the conservative one — but it is a parallel
+  definition, the G-70 shape.
+- **Leyline of the Guildpact** makes every land every basic type and satisfies every gate;
+  it is one card and is ignored, which reads conservative.
+- **Per-card percentages in prose are unaudited** (G-26: an "N% on turn 5" has no
+  deck-level value to look up). 42 decks' source counts moved; a percentage quoted in a
+  `#: tier:` or note before this change may be stale without any warning.
 
 ## [K-16] `deck.py tribes` reads a card's OWN NAME as a tribal reference
 

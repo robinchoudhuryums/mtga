@@ -1,4 +1,7 @@
 Card Name,Type,Card Text,Color(s),Synergies,Set Code,Collector #,Rarity,Target,Note,Power,Power Source
+Oltec Matterweaver,Creature — Human Artificer,"Whenever you cast a creature spell, choose one —
+• Create a 1/1 colorless Gnome artifact creature token.
+• Create a token that's a copy of target artifact token you control.",W,Human; Artificer; tokens,BIG,3,Mythic,17; 21; 74a; 42a,"Craft (2026-09-26): Gnome/artifact-token copier in 17, 21, 74a, 42a; rotates ~2026",6.5,seed
 "Alania, Divergent Storm",Legendary Creature — Otter Wizard,"Whenever you cast a spell, if it's the first instant spell, the first sorcery spell, or the first Otter spell other than Alania you've cast this turn, you may have target opponent draw a card. If you do, copy that spell. You may choose new targets for the copy.",U/R,Otter; Wizard; card draw,BLB,204,Rare,25,copy your first spell of each type each turn,6.0,hand
 Essence Channeler,Creature — Bat Cleric,"As long as you've lost life this turn, this creature has flying and vigilance.
 Whenever you gain life, put a +1/+1 counter on this creature.
@@ -35,8 +38,6 @@ Whenever one or more land cards are put into your graveyard from your library, p
 Crew 1 (Tap any number of creatures you control with total power 1 or more: This Vehicle becomes an artifact creature until end of turn.)",G,Vehicle; reanimator; graveyard; mill; vehicle; crew; vehicles,DSK,183,Rare,,,3.0,seed
 The Mindskinner,Legendary Enchantment Creature — Nightmare,"The Mindskinner can't be blocked.
 If a source you control would deal damage to an opponent, prevent that damage and each opponent mills that many cards.",U,Nightmare; mill; graveyard,DSK,66,Rare,51a,"Deck 51a: converts every damage source you control into mill, +4 each with the Water Crystal. Pure upside HERE because the deck has no combat plan to lose - it would be a trap in parent 51, which wins with Krang and the Terrors.",7.2,hand
-Thornspire Verge,Land,"{T}: Add {R}.
-{T}: Add {G}. Activate only if you control a Mountain or a Forest.",R/G,mana,DSK,270,Rare,9,deck 9 manabase: 3 more copies (4 total) replace Castle Doom + 2 Forest; red sources 12 -> 15,4.0,seed
 Unholy Annex // Ritual Chamber,Enchantment — Room // Enchantment — Room,"At the beginning of your end step, draw a card. If you control a Demon, each opponent loses 2 life and you gain 2 life. Otherwise, you lose 2 life.
 (You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.) // When you unlock this door, create a 6/6 black Demon creature token with flying.
 (You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",B,Room; lifegain; pay life; card draw; tokens,DSK,118,Rare,52a,,6.5,seed
@@ -71,9 +72,6 @@ Whenever an artifact you control enters, put a +1/+1 counter on target creature.
 Sunstar Expansionist,Creature — Human Knight,"When this creature enters, if an opponent controls more lands than you, create a Lander token. (It's an artifact with ""{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."")
 Landfall — Whenever a land you control enters, this creature gets +1/+0 until end of turn.",W,Human; Knight; sacrifice; tokens; ramp; etb; landfall; pump; lands,EOE,41,Uncommon,36,,3.0,hand
 "Muldrotha, the Gravetide",Legendary Creature — Elemental Avatar,"During each of your turns, you may play a land and cast a permanent spell of each permanent type from your graveyard. (If a card has multiple permanent types, choose one as you play it.)",U/B/G,Elemental; Avatar; graveyard,FDN,243,Mythic,,,5.5,seed
-"Ramos, Dragon Engine",Legendary Artifact Creature — Dragon,"Flying
-Whenever you cast a spell, put a +1/+1 counter on Ramos for each of that spell's colors.
-Remove five +1/+1 counters from Ramos: Add {W}{W}{U}{U}{B}{B}{R}{R}{G}{G}. Activate only once each turn.",W/U/B/R/G,Dragon; counters; flying; evasion,FDN,678,Mythic,17; 51,"Deck 51: cost is {6} COLORLESS so it casts on Islands — the identity column (WUBRG, from its MANA ABILITY) is what hid it. Five +1/+1 counters convert to TEN mana, and Fractured Realm doubles the counter trigger. 4/4 flier.",8,hand
 Abyssal Harvester,Creature — Demon Warlock,"{T}: Exile target creature card from a graveyard that was put there this turn. Create a token that's a copy of it, except it's a Nightmare in addition to its other types. Then exile all other Nightmare tokens you control.",B,Demon; Warlock; Nightmare; graveyard; tokens; removal,FDN,54,Rare,52a,,7.0,seed
 Adaptive Automaton,Artifact Creature — Construct,"As this creature enters, choose a creature type.
 This creature is the chosen type in addition to its other types.

@@ -64,7 +64,8 @@ from lib import (BASICS as lib_BASICS, DEFAULT_CSV, MATCHES_CSV, REPO_ROOT,
                  load_rows, eprint, card_colors, owned_qty,
                  card_distinctiveness, backup_path, card_power, front_face_cost,
                  mana_value, primary_type, atomic_write, alias_front,
-                 land_production, tapland_kind, TAPLAND_CONDITIONAL_KINDS,
+                 land_production, land_basic_types, gated_source_credit,
+                 tapland_kind, TAPLAND_CONDITIONAL_KINDS,
                  BASIC_TYPE_COLORS)
 from scryfall import post_collection, ScryfallUnavailable
 
@@ -6559,7 +6560,8 @@ def _commitment(n):
 _SOURCE_KINDS = (("any", "any colour, no extra cost"),
                  ("any-cost", "any colour for an extra mana (counted — a real source from the turn after it lands, a filter on curve)"),
                  ("fetch", "basic-land fetch (counted for each colour the deck runs a basic of)"),
-                 ("restricted", "spend-only mana (NOT counted — read the restriction)"))
+                 ("restricted", "spend-only mana (NOT counted — read the restriction)"),
+                 ("gated", "colour gated on a land TYPE (counted by the chance a land of that type is out by turn three — G-87)"))
 
 
 def deck_source_profile(cards, by_key, by_name, carddata, meta=None):
@@ -6590,14 +6592,17 @@ def deck_source_profile(cards, by_key, by_name, carddata, meta=None):
         if base in BASICS and BASIC_COLOR.get(base):
             basics_present.add(BASIC_COLOR[base])
     notes = {k: [] for k, _ in _SOURCE_KINDS}
+    # Pass 1: every land, with the basic TYPES it carries — a gated colour is priced
+    # against the rest of the deck's lands (G-87), so the whole manabase must be known
+    # before any one land is counted.
+    lands = []          # (q, name, prod-or-None, types, is_basic)
     for q, n, s, c in cards:
         total += q
         nl = n.lower()
         base = nl[len("snow-covered "):] if nl.startswith("snow-covered ") else nl
         if base in BASICS:
             col = BASIC_COLOR.get(base)
-            if col:
-                sources[col] += q
+            lands.append((q, n, None, frozenset({col}) if col else frozenset(), True))
             nlands += q
             continue
         row = by_key.get((nl, s.lower(), c.lower())) or by_name.get(nl)
@@ -6610,8 +6615,30 @@ def deck_source_profile(cards, by_key, by_name, carddata, meta=None):
         if not colid and meta and meta.get(nl):
             colid = "".join(sorted(meta[nl].get("colors") or ()))
         text = (cd.get("text") if cd else "") or (row.get("Card Text") if row else "") or ""
-        prod = land_production(text, colid)
-        counted = set(prod["free"]) | set(prod["conditional"])
+        lands.append((q, n, land_production(text, colid), land_basic_types(tline),
+                      "Basic" in _primary_type(tline)))
+    gated_credit = {c: 0.0 for c in "WUBRG"}
+    for q, n, prod, types, is_basic in lands:
+        if prod is None:
+            col = next(iter(types), None)
+            if col:
+                sources[col] += q
+            continue
+        gated = prod.get("gated") or {}
+        counted = (set(prod["free"]) | set(prod["conditional"])) - set(gated)
+        if gated:
+            shares = []
+            for col, need in sorted(gated.items()):
+                # "a basic land" (empty need) is met by any basic; a type-named gate by
+                # any land carrying one of the types — a shockland as much as a basic.
+                en = sum(qq for qq, _n, _p, tt, bb in lands
+                         if (bb if not need else tt & need))
+                if (is_basic if not need else types & need):
+                    en -= q          # a land cannot be its own enabler
+                share = gated_source_credit(en, nlands)
+                gated_credit[col] += q * share
+                shares.append(f"{col} {round(share * 100)}%")
+            notes["gated"].append((q, f"{n} ({', '.join(shares)})"))
         if prod["fetch"]:
             counted |= basics_present
             notes["fetch"].append((q, n))
@@ -6627,6 +6654,10 @@ def deck_source_profile(cards, by_key, by_name, carddata, meta=None):
         for col in counted:
             if col in sources:
                 sources[col] += q
+    # Rounded per COLOUR, not per land: three Verges at 40% are one real source, where
+    # rounding each would have made them zero.
+    for col, credit in gated_credit.items():
+        sources[col] += int(credit + 0.5)
     for k in notes:
         notes[k].sort(key=lambda t: t[1])
     return sources, nlands, total, notes

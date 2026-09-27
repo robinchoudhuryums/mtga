@@ -1,4 +1,4 @@
-#: name: Second Draw
+#: name: Gambit's Draw
 #: format: Standard
 #: arena: 79 Gambit's Draw, 2fde6f4f-8de8-49a5-8a44-0980735f14c6
 #: colors: WU

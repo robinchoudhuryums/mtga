@@ -612,6 +612,13 @@ def _name_key(s):
     return re.sub(r"[^a-z0-9]+", "", _name_bare(s).lower())
 
 
+# What may sit between a parent name Arena repeats and the variant's own name. `_name_key`
+# ignores punctuation, so the tail search in `_adopted_name` stops AT the separator and
+# this strips it. The colon is the one that cost something: "69a Bear-Wolf: Ursa Major"
+# adopted as "Bear-Wolf — : Ursa Major" while only " —-" were stripped (2026-09-25).
+_VARIANT_SEPARATORS = " \t—–-:|/,"
+
+
 def _adopted_name(arena_name, rec, parent_name):
     """The repo `#: name:` that adopting `arena_name` implies, or '' if it cannot tell.
 
@@ -638,7 +645,7 @@ def _adopted_name(arena_name, rec, parent_name):
         tail = rest
         while tail and _name_key(tail) != rk[len(pk):]:
             tail = tail[1:]
-        rest = tail.lstrip(" —-").strip() or rest
+        rest = tail.lstrip(_VARIANT_SEPARATORS).strip() or rest
     out = f"{parent_name} — {rest}" if _name_key(rest) != pk else parent_name
     return (out + " " + gloss).strip() if gloss else out
 
@@ -713,8 +720,17 @@ def _variant_orphans(old_name, own_id, adopted):
     by hand. Those variants have no Arena pairing of their own — a GUID is per Arena
     deck and the repo's variants mostly are not separate Arena decks — so nothing here can
     rename them from evidence. Flagged rather than cascaded: picking the new variant name
-    is editorial, and this tool adopts, it does not compose."""
+    is editorial, and this tool adopts, it does not compose.
+
+    Compared on the BARE name through `_name_key`. The raw `#: name:` carries the
+    parent's "(...)" gloss, which no variant repeats, so a raw substring test could never
+    fire on a glossed parent: renaming 26 "Iron Forge (ramp into artifact bombs)" flagged
+    neither "Iron Forge — Virulent" nor "Iron Forge — Ancient Decay" (2026-09-25), and 69
+    the same for both of its variants."""
     if not old_name or _name_key(old_name) in _name_key(adopted):
+        return []
+    old_key = _name_key(old_name)
+    if not old_key:
         return []
     try:
         import deck as dk
@@ -726,11 +742,40 @@ def _variant_orphans(old_name, own_id, adopted):
         return []                          # only a PARENT rename can orphan anything
     return [(d["id"], d["name"]) for d in decks
             if d["id"] != own_id and d.get("core") == own.get("core")
-            and old_name.lower() in (d.get("name") or "").lower()]
+            and old_key in _name_key(d.get("name") or "")]
+
+
+# The marker a `#` line opens with — "#:", "#~" or a bare "#" — plus one "key:" label.
+# Stripped so a name WRAPPED across two header lines reads as one phrase once the lines
+# are joined: deck 43 cites "12 Drawn\n#: tier: Conclusions", which no line-at-a-time
+# test can see.
+_PROSE_PREFIX_RE = re.compile(r"^#[:~]?\s*(?:[a-z][a-z-]*\s*:)?\s*", re.I)
+# Header lines that NAME a deck rather than cite one. A variant's `#: name:` carrying
+# the parent is `_variant_orphans`' report, not a stranded citation, and `#: arena:` is
+# Arena's string, which a repo rename does not touch.
+_NAME_LINE_RE = re.compile(r"^#:\s*(?:name|arena)\s*:", re.I)
+
+
+def _citation_prose(path):
+    """A deck file's `#` prose as ONE line — markers stripped, name/arena lines dropped,
+    curly apostrophes folded to straight so Arena's typography cannot hide a match."""
+    with open(path, encoding="utf-8") as fh:
+        lines = [_PROSE_PREFIX_RE.sub("", ln.rstrip("\n")) for ln in fh
+                 if ln.startswith("#") and not _NAME_LINE_RE.match(ln)]
+    return " ".join(lines).replace("’", "'")
+
+
+def _cited_by_id(text, start, end, deck_id):
+    """True when the deck's own id sits beside the name: "41 Soul Inversion",
+    "deck 24 (Eternal Flame", "Black Sun (1)", "04 Quantum Realm" for deck 4."""
+    n = re.escape((deck_id or "").lstrip("0") or "0")
+    before, after = text[max(0, start - 16):start], text[end:end + 16]
+    return bool(re.search(rf"(?<![\w.])(?:deck[\s-]*)?0*{n}\s*\(?\s*$", before, re.I)
+                or re.match(rf"\s*\(\s*(?:deck\s*)?0*{n}\s*\)", after, re.I))
 
 
 def _name_citations(old_name, own_id, adopted):
-    """Deck ids whose `#:` header prose names `old_name` and would be left stale.
+    """Deck ids whose `#` header prose names `old_name` and would be left stale.
 
     A rename is not a local edit: 50 of the 106 decks are named inside another deck's
     header prose, so adopting Arena's name can strand a reference the rationale audit
@@ -740,26 +785,72 @@ def _name_citations(old_name, own_id, adopted):
 
     Suppressed when the adopted name still CONTAINS the old one ("Unlock" -> "Unlocked",
     "Bird Brain" -> "Bird Brain — Bant"): the citation keeps reading correctly, and
-    flagging it would bury the five real cases in noise."""
+    flagging it would bury the five real cases in noise.
+
+    WHAT COUNTS AS A CITATION, measured 2026-09-25 against a hand-labelled roster sweep
+    (every deck's name searched in every other deck's prose, 78 real deck->file
+    citations). The rule it replaced — the raw `#: name:` as a case-insensitive substring,
+    line by line — flagged 53 pairs at 58% precision and 40% recall. Three independent
+    faults, each fixed here:
+      * the GLOSS: the raw name carries its "(...)" premise, which prose never repeats,
+        so every glossed deck was invisible (41 in 42, 71 in 25, 26 in 26a and 56b);
+      * CASE: "Second Draw" matched "second draw" and "Sacrifices" matched the verb in 15
+        decks, so a name is matched case-sensitively on word boundaries;
+      * CARD NAMES that contain a deck name — "Web of Life and Destiny", "Team Avatar",
+        "Herd Heirloom", "Secret of Bloodbending" — are masked, unless the deck's id sits
+        beside the name ("23 Avengers Assemble!" cites the deck; "Avengers Assemble!"
+        alone is the card). Joining wrapped lines is what lets the mask see "Herd /
+        Heirloom", and it also recovered three real citations split across a line break.
+    Result: 81 flagged, 78 real (96%), recall 100%. Requiring the id adjacent everywhere
+    was measured too — 100% precision but 74% recall, since prose often names a deck bare
+    ("vs Zaffai's Maelstrom"). The 3 residual false hits are card SHORTHANDS
+    ("Triceraton" for Triceraton Commander, "Web of Life" for Web of Life and Destiny);
+    masking prefixes too would cost real bare citations, so they are left.
+
+    A VARIANT is cited by its OWN half: "48a Motor Pool", never "Doombots — Motor Pool".
+    So the part after " — " is searched as well, but only with the id beside it — a tail
+    is often a common word ("Competitive", "Brawl", "Encore") and the id is what makes it
+    a reference. Measured: 4 such citations on the roster, 4 real. The 2026-09-25 rename
+    of 48a had three (26b, 61, 74a) and this function reported none."""
     if _name_key(old_name) in _name_key(adopted):
         return []
-    if len(old_name or "") < 6:            # too short to match on without false hits
+    bare = _name_bare(old_name).replace("’", "'")
+    tail = bare.split(" — ", 1)[1].strip() if " — " in bare else ""
+    if tail and _name_key(tail) in _name_key(adopted):
+        tail = ""                          # the adopted name still reads for it
+    tail_re = re.compile(rf"(?<!\w){re.escape(tail)}(?!\w)") if tail else None
+    if len(bare) < 6 and not tail_re:      # too short to match on without false hits
         return []
     try:
         import deck as dk
         decks = dk.discover_decks()
     except Exception:
         return []
+    try:
+        cards = {f.strip().replace("’", "'") for v in dk.load_card_data().values()
+                 for f in (v.get("name") or "").split(" // ")}
+    except Exception:
+        cards = set()
+    containing = sorted(c for c in cards if bare in c)
+    name_re = re.compile(rf"(?<!\w){re.escape(bare)}(?!\w)")
     hits = []
     for d in decks:
         if d["id"] == own_id:
             continue
         try:
-            with open(d["path"], encoding="utf-8") as fh:
-                prose = "\n".join(ln for ln in fh if ln.startswith("#"))
+            text = _citation_prose(d["path"])
         except OSError:
             continue
-        if old_name.lower() in prose.lower():
+        masked = [m.span() for c in containing
+                  for m in re.finditer(rf"(?<!\w){re.escape(c)}(?!\w)", text)]
+        cited = len(bare) >= 6 and any(
+            _cited_by_id(text, *m.span(), own_id)
+            or not any(a <= m.start() and m.end() <= b for a, b in masked)
+            for m in name_re.finditer(text))
+        if not cited and tail_re:
+            cited = any(_cited_by_id(text, *m.span(), own_id)
+                        for m in tail_re.finditer(text))
+        if cited:
             hits.append(d["id"])
     return hits
 

@@ -1,4 +1,4 @@
-#: name: Warg and Woodland — Crooked Way
+#: name: Bear-Wolf — Crooked Way
 #: format: Standard
 #: colors: GWB
 #: based-on: deck.txt
