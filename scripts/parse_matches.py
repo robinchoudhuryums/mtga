@@ -191,6 +191,12 @@ _DECK_NAME_RE = re.compile(r'"Name":"([^"]*)"')
 _LASTPLAYED_RE = re.compile(r'"LastPlayed".{0,40}?'
                             r'(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?'
                             r'(?:[+-]\d{2}:\d{2}|Z)?)')
+# The deck's last EDIT. A deck deleted in the client and re-imported as a new deck gets a
+# new DeckId with a fresh LastUpdated, which is how the newest of several same-named
+# copies is told apart (`_newest_copy`).
+_LASTUPDATED_RE = re.compile(r'"LastUpdated".{0,40}?'
+                             r'(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?'
+                             r'(?:[+-]\d{2}:\d{2}|Z)?)')
 # An Arena deck named for its repo deck ("07 Earth's Mightiest", "19b …"). The letter is
 # case-SENSITIVE and may not be separated by a space: with `[a-z]` case-insensitive and
 # `\s*` in front, "07 Earth's Mightiest" resolved to deck id "7e".
@@ -647,6 +653,124 @@ def apply_game_details(rows_by_id, facts, names):
     return changes, orphans, notes
 
 
+def opponent_spells(games, names, limit=4):
+    """The opponent's first NONLAND cards, by name, in the order Arena first showed them.
+
+    A land says little about what beat you, and the stored `Opponent Cards` keeps them all
+    (they give the colours), so a one-line prompt reads better from this subset."""
+    out = []
+    for g in games:
+        _me, opp = _seats(g)
+        for owner, grp, _c, land in _game_cards(g):
+            if owner == opp and not land:
+                label = names.get(grp) or f"#{grp}"
+                if label not in out:
+                    out.append(label)
+    return out[:limit]
+
+
+def _print_missing_details(fresh, facts, out=print):
+    """Name the NEW matches that have no play-by-play line (item 5, 2026-09-27).
+
+    Without this a match with no details was simply absent from the details block, so a
+    phone game and an extractor that is not installed looked the same as nothing at all."""
+    if not fresh:
+        return
+    bare = [r for r in fresh if (r.get("Match ID") or "").strip() not in facts]
+    if not bare:
+        return
+    if not facts:
+        out(f"\nNo game details in this paste for the {len(fresh)} new match(es) — either "
+            f"`extract.sh` is not installed on the Mac (see /log-matches Stage 0) or they "
+            f"were played on another device.")
+        return
+    out(f"\n{len(bare)} new match(es) have no play-by-play line — a phone game, or a log "
+        f"that rotated before the extractor saw it:")
+    for r in bare:
+        out(f"   {r.get('Date') or '?'}  {r.get('Result') or '?'}  deck "
+            f"{r.get('Deck') or '?':<4} {(r.get('Match ID') or '')[:8]}")
+
+
+def _print_loss_prompt(losses, facts, names, out=print):
+    """Ready-to-fill `--annotate` lines for the losses this run WROTE (item 1).
+
+    The why column was empty on all 94 recorded losses: the fill-in step lived on the
+    dashboard and in the skill's prose, and a paste that has just landed is the one moment
+    the owner still remembers the game. The comment line carries the game details so the
+    question can be answered from it; a value left blank records nothing."""
+    if not losses:
+        return
+    out(f"\nWhy did the {len(losses)} new loss(es) happen? One word each — "
+        f"{' / '.join(LOSS_REASONS)} — then run the lines through --annotate "
+        f"(a blank value records nothing):")
+    for r in losses:
+        mid = (r.get("Match ID") or "").strip()
+        bits = [f"{r.get('Date') or '?'}  deck {r.get('Deck') or '?'}"]
+        if r.get("On Play"):
+            bits.append(f"on the {r['On Play']}")
+        if r.get("Turns"):
+            bits.append(f"turn {r['Turns']}")
+        seen = opponent_spells(facts.get(mid, []), names) if mid in facts else []
+        opp = r.get("Opponent Colors") or ""
+        if seen or opp:
+            bits.append(f"vs {opp or '?'}" + (f": {'; '.join(seen)}" if seen else ""))
+        elif mid not in facts:
+            bits.append("no game details")
+        out(f"   # {' · '.join(bits)}")
+        out(f"   {mid} why= opp=")
+
+
+_BASIC_NAMES = {"Plains", "Island", "Swamp", "Mountain", "Forest", "Wastes"}
+
+
+def deck_history(rows, deck_id, out=print):
+    """`--report --deck <id>`: one deck's matches, one line each (item 4, 2026-09-27).
+
+    The pooled report answers "am I winning"; this answers "what does THIS deck meet and
+    lose to", which is the question a tune actually asks. The same restraint applies and is
+    printed: below `_MIN_SAMPLE` there is no rate, the loss tallies are COUNTS, and nothing
+    here is evidence for a swap or a tier letter."""
+    want = _norm_id(deck_id)
+    mine = sorted((r for r in rows if _norm_id(r.get("Deck") or "") == want),
+                  key=lambda r: (r.get("Date") or "", r.get("Match ID") or ""))
+    if not mine:
+        out(f"No recorded matches for deck {deck_id}.")
+        return 0
+    b = {"W": 0, "L": 0, "D": 0}
+    for r in mine:
+        res = (r.get("Result") or "").strip().upper()
+        if res in b:
+            b[res] += 1
+    n = b["W"] + b["L"]
+    read = (f"n={n} — too few to read (need ~{_MIN_SAMPLE})" if n < _MIN_SAMPLE
+            else f"{100 * b['W'] / n:.0f}%  (95% CI %.0f–%.0f%%)" % _wilson(b["W"], n))
+    out(f"Deck {deck_id} — {len(mine)} match(es), {b['W']}-{b['L']}-{b['D']}   {read}\n")
+    out(f"  {'Date':10}  R  {'On':4}  {'Turns':5}  {'Opp':5}  {'Why':10}  Opponent cards")
+    out("  " + "-" * 86)
+    for r in mine:
+        cards = [c for c in (r.get("Opponent Cards") or "").split("; ")
+                 if c and c not in _BASIC_NAMES]
+        shown = "; ".join(cards[:4]) + (f"  (+{len(cards) - 4})" if len(cards) > 4 else "")
+        out(f"  {r.get('Date') or '?':10}  {(r.get('Result') or '?')[:1]}  "
+            f"{(r.get('On Play') or '·')[:4]:4}  {(r.get('Turns') or '·')[:5]:5}  "
+            f"{(r.get('Opponent Colors') or '·')[:5]:5}  {(r.get('Loss Reason') or '·')[:10]:10}"
+            f"  {shown[:48] or '·'}")
+    losses = [r for r in mine if (r.get("Result") or "").upper() == "L"]
+    for title, key in (("losses by opponent colours", "Opponent Colors"),
+                       ("losses by reason", "Loss Reason")):
+        tally = {}
+        for r in losses:
+            k = (r.get(key) or "").strip() or "(not recorded)"
+            tally[k] = tally.get(k, 0) + 1
+        if tally:
+            out(f"\n  {title.capitalize()} — COUNTS, not rates: "
+                + ", ".join(f"{k} {v}" for k, v in sorted(tally.items(),
+                                                        key=lambda kv: (-kv[1], kv[0]))))
+    out("\nA handful of games says what this deck has MET, not how good it is. Read it for "
+        "patterns worth a closer look, never as a reason to cut a card or move a tier.")
+    return 0
+
+
 def arena_deck_map():
     """{key: deck_id} learned from `#: arena:` headers on deck files.
 
@@ -765,13 +889,72 @@ def parse_deck_names(text):
     return out
 
 
-def _arena_header_plan(names):
+def _log_dt(match):
+    """A naive datetime from a `_LASTPLAYED_RE` / `_LASTUPDATED_RE` match, or None."""
+    if not match:
+        return None
+    try:
+        return datetime.datetime.fromisoformat(match.group(1)).replace(tzinfo=None)
+    except ValueError:
+        return None
+
+
+def parse_deck_times(text):
+    """{DeckId GUID: (last_updated, last_played)} — the latest of each seen in the paste.
+
+    Read only from a line carrying exactly ONE deck summary, so a timestamp can never be
+    credited to a neighbouring deck. Either half may be None."""
+    out = {}
+    for raw in (text or "").splitlines():
+        flat = raw.replace("\\", "")
+        found = _SUMMARY_RE.findall(flat)
+        if len(found) != 1:
+            continue
+        guid = found[0][0]
+        upd, played = _log_dt(_LASTUPDATED_RE.search(flat)), _log_dt(_LASTPLAYED_RE.search(flat))
+        old_upd, old_played = out.get(guid, (None, None))
+        out[guid] = (max(filter(None, (upd, old_upd)), default=None),
+                     max(filter(None, (played, old_played)), default=None))
+    return out
+
+
+def _newest_copy(hits, times):
+    """(name, guid) of the newest of several Arena decks claiming one repo deck, or None.
+
+    THE OWNER'S WORKFLOW (2026-09-27): after a significant edit the old Arena deck is
+    deleted and the new version imported as a NEW deck, so the client can hold several
+    copies under one name and the MOST RECENT is the correct one. Deck 58 had three
+    "58 Treasure Planet" copies and warned on every ingest because this used to refuse.
+
+    Newest-wins applies only when every claimant carries the SAME name (typography-blind)
+    and a timestamp. NOT `_name_key`: that drops a trailing "(...)" as a repo-side gloss,
+    and in an ARENA name the parentheses are part of the name — "07 Earth's Mightiest
+    (old)" is a different deck, which the first draft of this treated as a copy. Two differently named decks resolving to one repo deck
+    are not copies of one deck, so that stays a conflict: a header naming the wrong one is
+    worse than no header. Ordered by LastUpdated, then LastPlayed, then the GUID, so a tie
+    cannot make the pick depend on iteration order (G-54)."""
+    if len({re.sub(r"[^a-z0-9]+", "", (n or "").lower()) for n, _g in hits}) != 1:
+        return None
+    floor = datetime.datetime.min
+    keyed = []
+    for name, guid in hits:
+        upd, played = (times or {}).get(guid, (None, None))
+        if upd is None and played is None:
+            return None
+        keyed.append(((upd or floor, played or floor, guid), name, guid))
+    _key, name, guid = max(keyed)
+    return name, guid
+
+
+def _arena_header_plan(names, times=None, notes=None):
     """[(deck_id, path, header_line, status)] for the decks `names` resolves to.
 
     Status is one of `add` / `update` / `unchanged` / `conflict`. A CONFLICT — two Arena
-    decks resolving to one repo deck, which is what an old copy left in the client looks
-    like — writes nothing: a header naming the wrong one of two decks is worse than no
-    header, because the parser would then attribute matches to it with full confidence."""
+    decks resolving to one repo deck — writes nothing: a header naming the wrong one of two
+    decks is worse than no header, because the parser would then attribute matches to it
+    with full confidence. The exception is several same-named COPIES, which is how the
+    owner replaces a deck (`_newest_copy`): the newest is written, and a line naming the
+    superseded copies is appended to `notes` when a list is passed."""
     try:
         import deck as dk
         records = {d["id"]: d for d in dk.discover_decks()}
@@ -787,9 +970,17 @@ def _arena_header_plan(names):
     for did, hits in sorted(claims.items()):
         rec = records[did]
         if len(hits) > 1:
-            plan.append((did, rec["path"], "; ".join(n for n, _ in hits), "conflict"))
-            continue
-        name, guid = hits[0]
+            pick = _newest_copy(hits, times)
+            if pick is None:
+                plan.append((did, rec["path"], "; ".join(n for n, _ in hits), "conflict"))
+                continue
+            name, guid = pick
+            if notes is not None:
+                notes.append((did, f"{len(hits)} Arena decks named {name!r} claim deck "
+                                   f"{did}; using the newest ({guid[:8]}). The older "
+                                   f"copies' matches still resolve by name."))
+        else:
+            name, guid = hits[0]
         line = f"#: arena: {name}, {guid}"
         try:
             with open(rec["path"], encoding="utf-8") as fh:
@@ -1221,7 +1412,8 @@ def map_decks(text, apply=False, out=print):
             "{\"DeckId\":…,\"Name\":…} object — EventSetDeckV3, DeckUpsertDeckV3 or a "
             "DeckGetDeckSummariesV3 response.")
         return 0, []
-    plan = _arena_header_plan(names)
+    notes = []
+    plan = _arena_header_plan(names, parse_deck_times(text), notes)
     matched = {p[0] for p in plan}
     out(f"{len(names)} Arena deck(s) in the paste; {len(matched)} resolved to a repo "
         f"deck.\n")
@@ -1231,6 +1423,9 @@ def map_decks(text, apply=False, out=print):
         if status == "conflict":
             out(f"      ^ two Arena decks claim deck {did} — resolve by hand, nothing "
                 f"written")
+        for note_did, note in notes:
+            if note_did == did:
+                out(f"      ^ {note}")
     # Hoisted: both loaders re-parse every deck file, so calling them per candidate made
     # the roster cost quadratic for a line of diagnostics.
     mapping, known = arena_deck_map(), deck_ids()
@@ -1265,12 +1460,18 @@ def sync_headers(text, apply=False, out=print):
     the same `_arena_header_plan` (same conflict refusal, same `.bak`-writing
     `_write_arena_header`) but reports only what CHANGES, so a routine log ingest is not
     buried under an all-unchanged roster listing. Returns (written, plan)."""
-    plan = _arena_header_plan(parse_deck_names(text))
+    notes = []
+    plan = _arena_header_plan(parse_deck_names(text), parse_deck_times(text), notes)
     for did, _path, names, _status in plan:
         if _status == "conflict":
             out(f"⚠ deck {did}: two Arena decks claim it ({names}) — no header written; "
                 f"resolve by hand")
     todo = [p for p in plan if p[3] in ("add", "update")]
+    # A superseded copy is news only on the run that moves the header to the newest one;
+    # once the header holds it, repeating the note every ingest is the noise this removed.
+    for did, note in notes:
+        if did in {p[0] for p in todo}:
+            out(f"ⓘ {note}")
     if not todo:
         return 0, plan
     if not apply:
@@ -2128,7 +2329,8 @@ def main():
             open(args.source, encoding="utf-8", errors="replace").read()
         return add_manual(text, args.out, apply=args.apply, report_after=args.report)
     if args.report and not args.source:
-        return report(load_matches(args.out))
+        rows = load_matches(args.out)
+        return deck_history(rows, args.deck) if args.deck else report(rows)
     if args.sync_names and not args.source:
         # Sourceless reconcile. The repo ALREADY holds Arena's name for every deck with
         # an `#: arena:` header — harvested from real pastes by previous runs — so the
@@ -2187,7 +2389,8 @@ def main():
         dry run honestly describes the record as it STANDS, not as it would stand."""
         if args.report:
             print()
-            report(load_matches(args.out))
+            rows = load_matches(args.out)
+            deck_history(rows, args.deck) if args.deck else report(rows)
         return rc
 
     if args.map_decks:
@@ -2305,6 +2508,7 @@ def main():
         detail_changes, orphans, notes = apply_game_details(by_id, facts, names)
         _print_game_details(detail_changes, orphans, notes, lookup_err,
                             n_facts=sum(len(g) for g in facts.values()))
+    _print_missing_details(fresh, facts)
 
     if not args.apply:
         print("\n(dry run — pass --apply to write matches.csv)")
@@ -2320,6 +2524,9 @@ def main():
     print(f"\nWrote {args.out} ({len(existing) + len(fresh)} total"
           + (f"; game details filled on {filled} match(es) already recorded" if filled else "")
           + "). See the record with: parse_matches.py --report")
+    # Printed AFTER the write, because --annotate refuses an id matches.csv does not hold.
+    _print_loss_prompt([r for r in fresh if (r.get("Result") or "").upper() == "L"],
+                       facts, names)
     return _with_report(0)
 
 

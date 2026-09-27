@@ -6807,6 +6807,39 @@ What that settled, in order:
 The archive held no game-state lines before this change, so matches older than the
 current `Player.log` / `Player-prev.log` can never be backfilled.
 
+**2026-09-27, the same day: what the first real run changed.** Six follow-ups, each from a
+measurement on that paste rather than from a guess:
+- **Nobody reached the why column.** 0 of 191 rows carried any hand column, across 94
+  losses, although `--annotate` and the dashboard panel both existed. The fill-in lived
+  somewhere the owner had to go; it now comes to them. `--apply` prints a commented
+  `<matchId> why= opp=` line per new loss, carrying the game details, and `/log-matches`
+  Stage 1d asks for one word per loss right after the ingest. The reason is never
+  inferred: the details say what happened, not what decided it.
+- **The paste carried other people's ids.** 184 Arena user ids belonging to 47 people.
+  `mtga-matches` now rewrites the local id to `ME` and every other `"userId"` to `OPP`
+  before copying. Both seat readers (the parser and the dashboard's paste reader) match
+  the header id against a seat id, so `ME`/`ME` resolves exactly as the real id did. It is
+  applied at PASTE time; the Mac's archive keeps the real ids.
+- **The date had to be remembered.** 43 of that paste's 46 matches were already
+  recorded. `mtga-matches` with no argument now resumes from the day of its previous
+  successful copy (`~/mtga-logs/.last-copy`). It records what was COPIED, not what was
+  ingested, so a copy that is never pasted can skip earlier days; the message names
+  `mtga-matches all` for that, and dedup by matchId keeps any over-paste harmless.
+- **A match with no details was simply absent** from the details block, so a phone game
+  and a missing extractor looked like nothing. Both are now named.
+- **Deck 58 warned on every ingest**: three Arena decks named "58 Treasure Planet". The
+  owner replaces a deck by deleting it and importing the new version as a new deck, so
+  same-named copies are expected and the newest (latest `LastUpdated`) is correct. Two
+  DIFFERENTLY named claimants remain a conflict. The name comparison could NOT reuse
+  `_name_key`: it drops a trailing "(...)" as a repo-side gloss, which would have read
+  "07 Earth's Mightiest (old)" as a copy of "07 Earth's Mightiest". The existing conflict
+  test caught that.
+- **Per-deck history** (`--report --deck <id>`) answers what a deck meets and loses to;
+  `/tune-deck` 2e shows it as context only, never as a reason for a swap or a letter.
+
+Residual: a paste restricted to a period when only an OLD copy was played would move the
+header back to that copy. Attribution is unaffected, because every copy resolves by name.
+
 ## [G-75] A tutor is worth the number of things it can find in THIS deck
 
 **The incident.** Deck 76 (Spirit Call, five-colour Dragons) ran **zero basic lands**

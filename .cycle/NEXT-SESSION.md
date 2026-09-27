@@ -19,7 +19,24 @@ commands disagree.
 
 ## 0-current. THE 2026-08-24 SESSION (READ THIS FIRST — supersedes §0-latest below)
 
-> **STATE STAMP, 2026-09-27 (NEWEST — supersedes the 2026-09-25 stamp below).** Two
+> **STATE STAMP, 2026-09-27, LATER (NEWEST — supersedes both stamps below on matches).**
+> **THE MATCH DIGEST IS BUILT; the 2026-09-25 stamp's "NOTHING IS BUILT" is history.**
+> PR #196 shipped `scripts/mtga_extract.sh` (the Mac's `~/mtga-logs/extract.sh`, embedded
+> in `/log-matches`) and the parser's `[MTGA-GAME]` join: On Play, mulligans, Turns and the
+> opponent's colours and cards now fill from the play-by-play. The owner ran Step 0, the
+> first real paste was ingested, and the seat read was confirmed on nine games.
+> `.cycle/match-digest-plan.md` was deleted as its header asked; the one decision it held
+> that was NOT built (a `Suggested Why` column) is under STATE.md Open follow-on.
+> Six follow-ups from that first run then landed (block:
+> `.cycle/blocks/2026-09-match-logging-followups-broad-implement.md`): the ingest asks for
+> a one-word reason per new loss (`/log-matches` Stage 1d — never fill one in yourself),
+> the paste is anonymised (`ME`/`OPP`), `mtga-matches` remembers its last copy's date,
+> `--report --deck <id>` gives one deck's history, a match without details is named, and
+> the newest of several same-named Arena decks wins the `#: arena:` header (deck 58 now
+> points at its newest copy). **The Mac needs the function re-installed** for the
+> anonymising and the date memory — the block is in `/log-matches` Stage 0.
+>
+> **STATE STAMP, 2026-09-27 (supersedes the 2026-09-25 stamp below).** Two
 > threads since the last stamp (plus the tier re-grades closed at the end), both committed on `claude/sync-commands-mmmsdb`.
 >
 > **1. G-87 SHIPPED** — a Verge's second colour and the MSH basic-gated colours are priced
