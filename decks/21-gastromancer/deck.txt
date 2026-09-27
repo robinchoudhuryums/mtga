@@ -1,5 +1,6 @@
 #: name: Gastromancer (Food sac)
 #: format: Standard
+#: arena: 21 Gastromancer- MM…FOOD, 56ef3380-0337-46a8-8b53-5848d577c615
 #: tier: A — Abzan (WBG) food-aristocrats; interaction 9 on a 3.28 curve, and card advantage 8 since the 2026-09-27 tunes turned the sacrifices into draws (Sephiroth, Baron Bertram Graywater, Liliana) and into drains (The Sackville-Bagginses, Popular Egotist). Re-graded B→A after the mana fix: dropping the 1-card red splash (Ragost → variant 21a) collapsed a stretched 4-color base to a focused Abzan. A-floor on interaction. The residual is the mana: three primary colours on 24 lands, so a two-pip card still lands late — Enduring Vitality's {G}{G} is 58.0% on turn 3 and West Wind Avatar's 70.5% by turn 5, even after the owned-dual rebuild and the Evolving Wilds pass. Bloom Tender and Enduring Vitality are the answer, and no probability model here counts their mana. The intentional 4-color version is variant 21a.
 #: colors: WBG
 #: archetype: Abzan (W/B/G) Food-sacrifice / artifact-aristocrats — a deep sac-payoff web. The namesake Ragost moved to variant 21a along with the red splash.
