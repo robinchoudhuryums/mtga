@@ -723,6 +723,15 @@ class TestRosterWideModels:
             "2026-08-07,m2,90,A,g,Av,Play,?,0,0,Av2,Success"])
         assert deck.load_match_counts() == {"90": 2}
 
+    def test_a_voided_match_is_not_a_match_played(self, world, tmp_path):
+        """The owner voided it (stepped away). The row stays so a re-paste cannot re-add
+        it, but it tested nothing — the one thing this column answers."""
+        import parse_matches as pm
+        self._record(world, tmp_path, [
+            "2026-08-07,m1,90,A,g,Av,Play,W,1,0,Av2,Success",
+            f"2026-08-07,m2,90,A,g,Av,Play,{pm.VOID},0,1,Av2,Success"])
+        assert deck.load_match_counts() == {"90": 1}
+
     def test_an_unattributed_match_belongs_to_no_deck(self, world, tmp_path):
         self._record(world, tmp_path,
                      ["2026-07-27,m1,,,,Av,Play,L,0,1,Av2,Success"])

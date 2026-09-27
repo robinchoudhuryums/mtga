@@ -8543,7 +8543,9 @@ def load_match_counts():
     out = {}
     for r in rows:
         did = (r.get("Deck") or "").strip()
-        if did:
+        # A VOIDED row (the owner stepped away) is kept only so a re-paste cannot re-add
+        # it; it tested nothing, so it is not a match played.
+        if did and (r.get("Result") or "").strip().upper() != getattr(pm, "VOID", "X"):
             out[did] = out.get(did, 0) + 1
     return out
 

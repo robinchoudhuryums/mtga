@@ -2191,6 +2191,72 @@ class TestTheFollowUpsPrintedByAnIngest:
         assert "extract.sh` is not installed" in out
 
 
+class TestVoidingAMatch:
+    """`--annotate <id> void=<why>`: the owner throws a match out (stepped away, 2026-09-27).
+
+    Deleting the row does not remove the match. Dedup keys on the row, and the next paste
+    starts from the last copy's day, so the match would come straight back as a loss; the
+    row is kept with Result VOID, which every tally already skips as not W/L/D."""
+
+    def _rows(self, note=""):
+        r = dict.fromkeys(pm.HEADER, "")
+        r.update({"Date": "2026-09-27", "Match ID": "abc123", "Deck": "17", "Event": "Play",
+                  "Result": "L", "Games Won": "0", "Games Lost": "1", "Note": note})
+        return [r]
+
+    def test_void_keeps_the_row_and_stops_it_counting(self, tmp_path):
+        csvp = tmp_path / "m.csv"
+        pm.write_matches(self._rows(), str(csvp))
+        pm.annotate("abc123 void=afk", str(csvp), apply=True)
+        rows = pm.load_matches(str(csvp))
+        assert len(rows) == 1 and rows[0]["Result"] == pm.VOID
+        assert rows[0]["Note"] == "void: afk"
+        assert pm._tally(rows) == {"W": 0, "L": 0, "D": 0}
+
+    def test_void_no_restores_the_result_from_the_game_score(self, tmp_path):
+        csvp = tmp_path / "m.csv"
+        pm.write_matches(self._rows(note="bad keep"), str(csvp))
+        pm.annotate("abc123 void=afk", str(csvp), apply=True)
+        assert pm.load_matches(str(csvp))[0]["Note"] == "void: afk · bad keep"
+        pm.annotate("abc123 void=no", str(csvp), apply=True)
+        r = pm.load_matches(str(csvp))[0]
+        assert (r["Result"], r["Note"]) == ("L", "bad keep")
+
+    def test_a_void_needs_a_reason(self):
+        pairs, warns = pm.parse_annotations("abc123 void=")
+        assert pairs == [] and any("needs a reason" in w for w in warns)
+
+    def test_report_names_it_and_does_not_call_it_unreadable(self, capsys):
+        rows = self._rows()
+        rows[0].update({"Result": pm.VOID, "Note": "void: afk"})
+        pm.report(rows)
+        said = capsys.readouterr().out
+        assert "1 voided match(es)" in said and "void: afk" in said
+        assert "unreadable" not in said
+
+    def test_deck_history_leaves_it_out_of_the_count(self):
+        rows = self._rows() + self._rows()
+        rows[0].update({"Result": pm.VOID})
+        rows[1].update({"Match ID": "def456", "Result": "W"})
+        said = []
+        pm.deck_history(rows, "17", out=said.append)
+        assert "1 match(es) (+1 voided, not counted), 1-0-0" in said[0]
+
+    def test_a_re_paste_does_not_bring_it_back(self, tmp_path, monkeypatch, capsys):
+        """The reason the row is kept at all, driven through main() (G-40)."""
+        monkeypatch.setattr(pm, "_scryfall_arena_name", lambda grp: None)
+        src, csvp = tmp_path / "s.log", tmp_path / "m.csv"
+        src.write_text(_extract(tmp_path, _played(winner=1)), encoding="utf-8")
+        run = ["parse_matches.py", str(src), "--out", str(csvp), "--apply"]
+        monkeypatch.setattr("sys.argv", run)
+        assert pm.main() == 0
+        pm.annotate("m-1 void=afk", str(csvp), apply=True)
+        monkeypatch.setattr("sys.argv", run)
+        assert pm.main() == 0
+        rows = pm.load_matches(str(csvp))
+        assert [(r["Match ID"], r["Result"]) for r in rows] == [("m-1", pm.VOID)]
+
+
 class TestDeckHistory:
     """Item 4: `--report --deck <id>`."""
 

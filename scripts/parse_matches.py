@@ -149,6 +149,15 @@ LOSS_REASONS = {
 }
 _ON_PLAY = {"play", "draw"}
 
+# A match the owner VOIDS — stepped away mid-game, a misclick into a queue — keeps its row
+# with this Result. Deleting the row would not remove the match: dedup keys on the row, so
+# the next paste (which `mtga-matches` starts from the last copy's day) would re-add it as
+# a live loss. Every tally already skips a Result that is not W/L/D; `--report` names the
+# voided ones instead of flagging them as unreadable, and the original result stays
+# derivable from Games Won / Games Lost, so `void=no` restores it.
+VOID = "X"
+_UNVOID = {"no", "undo", "restore"}
+
 # TWO reason fields, and for a year only the uninformative one was stored.
 #   `Reason`   = `matchCompletedReason`, which is `Success` for every match that
 #                COMPLETED — by construction. All 15 rows of the first real record read
@@ -737,14 +746,18 @@ def deck_history(rows, deck_id, out=print):
         out(f"No recorded matches for deck {deck_id}.")
         return 0
     b = {"W": 0, "L": 0, "D": 0}
+    voided = 0
     for r in mine:
         res = (r.get("Result") or "").strip().upper()
         if res in b:
             b[res] += 1
+        voided += res == VOID
     n = b["W"] + b["L"]
     read = (f"n={n} — too few to read (need ~{_MIN_SAMPLE})" if n < _MIN_SAMPLE
             else f"{100 * b['W'] / n:.0f}%  (95% CI %.0f–%.0f%%)" % _wilson(b["W"], n))
-    out(f"Deck {deck_id} — {len(mine)} match(es), {b['W']}-{b['L']}-{b['D']}   {read}\n")
+    extra = f" (+{voided} voided, not counted)" if voided else ""
+    out(f"Deck {deck_id} — {len(mine) - voided} match(es){extra}, "
+        f"{b['W']}-{b['L']}-{b['D']}   {read}\n")
     out(f"  {'Date':10}  R  {'On':4}  {'Turns':5}  {'Opp':5}  {'Why':10}  Opponent cards")
     out("  " + "-" * 86)
     for r in mine:
@@ -1927,11 +1940,11 @@ def parse_annotations(text):
             kv[k.strip().lower()] = v.strip()
         if bad:
             continue
-        unknown = set(kv) - {"opp", "why", "play", "note"}
+        unknown = set(kv) - {"opp", "why", "play", "note", "void"}
         if unknown:
             warnings.append(f"line {lineno}: unknown key(s) {sorted(unknown)} — skipped. "
-                            f"Annotation takes opp, why, play, note; the deck, result and "
-                            f"date come from the log and are not editable here.")
+                            f"Annotation takes opp, why, play, note, void; the deck, result "
+                            f"and date come from the log and are not editable here.")
             continue
         fields = {}
         if "opp" in kv:
@@ -1951,9 +1964,36 @@ def parse_annotations(text):
                                 f"applied anyway, but it will not group with "
                                 f"{', '.join(sorted(LOSS_REASONS))}.")
             fields["Loss Reason"] = v
+        if "void" in kv:
+            # Not an edit of the result: the match stays recorded and stops COUNTING.
+            # The reason is required so a voided row always says why it is out.
+            v = kv["void"].strip()
+            if not v:
+                warnings.append(f"line {lineno}: void= needs a reason (void=afk), or "
+                                f"void=no to restore — dropped")
+            else:
+                fields["_void"] = v
         if fields:
             out.append((mid, fields))
     return out, warnings
+
+
+def _void_fields(row, why):
+    """The column changes `void=<why>` (or `void=no`) makes to one row.
+
+    Voiding sets Result to VOID and puts the reason at the front of Note; restoring
+    re-derives W/L/D from the row's own game score — the fact the log wrote, which
+    nothing here edits — and takes the reason back out."""
+    note = (row.get("Note") or "").strip()
+    if note.startswith("void: "):                 # an earlier void reason is replaced
+        note = note.split(" · ", 1)[1] if " · " in note else ""
+    if why.lower() in _UNVOID:
+        try:
+            won, lost = int(row.get("Games Won") or 0), int(row.get("Games Lost") or 0)
+        except ValueError:
+            won = lost = 0
+        return {"Result": "W" if won > lost else "L" if lost > won else "D", "Note": note}
+    return {"Result": VOID, "Note": f"void: {why}" + (f" · {note}" if note else "")}
 
 
 def annotate(text, out=MATCHES_CSV, apply=False):
@@ -1975,6 +2015,9 @@ def annotate(text, out=MATCHES_CSV, apply=False):
             eprint(f"WARN:  no match {mid!r} in {os.path.basename(out)} — skipped. "
                    f"Annotation joins on the Arena match id; ingest the log first.")
             continue
+        fields = dict(fields)
+        if "_void" in fields:
+            fields.update(_void_fields(row, fields.pop("_void")))
         if fields.get("Loss Reason") and (row.get("Result") or "").upper() != "L":
             eprint(f"WARN:  {mid[:8]}: why={fields['Loss Reason']!r} on a "
                    f"{row.get('Result')} — dropped, the rest applied.")
@@ -2167,7 +2210,7 @@ def report(rows):
     # — a bucket printed in no column and excluded from `n = W+L`. The header count and
     # the per-deck totals then disagreed with nothing said, which is the "reads as data,
     # not as a gap" failure this module is otherwise built to avoid (BS4-24).
-    unreadable = []
+    unreadable, voided = [], []
     for r in rows:
         # An unattributed row buckets by its ARENA DECK NAME, never by the avatar: the
         # avatar is a cosmetic shared across decks and changed at whim, so keying on it
@@ -2177,6 +2220,9 @@ def report(rows):
         key = r.get("Deck") or f"(unattributed: {r.get('Arena Deck') or 'deck unknown'})"
         b = by.setdefault(key, {"W": 0, "L": 0, "D": 0})
         res = (r.get("Result") or "").strip().upper()
+        if res == VOID:
+            voided.append((key, r.get("Date") or "?", r.get("Note") or ""))
+            continue
         if res not in ("W", "L", "D"):
             unreadable.append((key, r.get("Date") or "?", r.get("Result") or ""))
             continue
@@ -2196,6 +2242,11 @@ def report(rows):
     _print_pooled(rows)
     _print_manual_axes(rows)
     _print_log_axes(rows)
+    if voided:
+        print(f"\n{len(voided)} voided match(es) — recorded so a re-paste cannot re-add "
+              f"them, counted nowhere above (`--annotate <id> void=no` restores one):")
+        for key, date, note in voided[:10]:
+            print(f"    {date}  {key[:32]:32} {note}")
     if unreadable:
         print(f"\n⚠ {len(unreadable)} row(s) have an unreadable Result and are in NO "
               f"column above — the per-deck totals therefore do not sum to "
