@@ -1,6 +1,6 @@
 #: name: Blood Price (pay life, get paid)
 #: format: Standard
-#: arena: 42 Blood Price, 4b5c7dca-1167-4175-b39e-86ac3f4087a6
+#: arena: 42 Blood Price, af830371-eaff-4e2c-9879-3ddaf5beb6bd
 #: colors: WB
 #: plan: control
 #: archetype: Orzhov (W/B) LIFE-AS-CURRENCY attrition. The premise: cards whose strong
