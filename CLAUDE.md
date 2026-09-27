@@ -1265,7 +1265,9 @@ is protecting.
   per match — to one `[MTGA-GAME]` line, and the parser fills On Play (BLANK cells only; a
   typed value wins and a disagreement is reported), mulligans, Turns (Arena counts BOTH
   players' turns), opponent colours and cards, named through Scryfall's Arena-id lookup
-  and cached in `arena-cards.csv`. Opponent ARCHETYPE and why you lost stay hand-only.
+  and cached in `arena-cards.csv`. Opponent ARCHETYPE and why you lost stay hand-only —
+  so `--apply` prints a ready `--annotate` line per new loss and `/log-matches` Stage 1d
+  asks for the word; never fill one in yourself. The paste is anonymised (`ME`/`OPP`).
   **Which writer depends on whether Arena logged the match**: `--add` for one it never
   saw; **`--annotate` (`<matchId> …`) for one it DID** — it UPDATES, where `--add` would
   append a SECOND row, since a hand row has no matchId to dedupe on. The **loss vocabulary

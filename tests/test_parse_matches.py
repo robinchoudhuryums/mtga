@@ -2078,3 +2078,224 @@ class TestTheSkillCarriesTheExtractorVerbatim:
         assert start in doc, "the install block for extract.sh is missing"
         body = doc.split(start, 1)[1].split("\nEXTRACT_EOF\n", 1)[0] + "\n"
         assert body == open(_EXTRACT, encoding="utf-8").read()
+
+
+# ── 2026-09-27 follow-ups from the first real play-by-play run (items 1, 4, 5, 6) ──
+
+def _copy(guid, updated, name="07 Earth’s Mightiest", played="2026-08-07T07:33:23.850462-05:00"):
+    """A full (uncut) deck selection whose LastUpdated is `updated`."""
+    return _setdeck(name=name, guid=guid, when=played, cut=0).replace(
+        "2026-07-21T08:41:23.805305-05:00", updated)
+
+
+class TestTheNewestSameNamedCopyWins:
+    """Item 6. The owner replaces a deck by deleting it in Arena and importing the new
+    version as a NEW deck, so the client can hold several same-named copies and the newest
+    is the correct one. Deck 58 carried three and warned on every ingest."""
+
+    def _roster(self, tmp_path, monkeypatch, **decks):
+        return TestArenaHeaderWriting._roster(self, tmp_path, monkeypatch, **decks)
+
+    PLAIN = TestArenaHeaderWriting.PLAIN
+
+    def test_the_most_recently_updated_copy_is_written(self, tmp_path, monkeypatch):
+        d = self._roster(tmp_path, monkeypatch, **{"07-earths": self.PLAIN})
+        log = "\n".join([_copy("g-old", "2026-09-11T18:04:56.659224-05:00"),
+                         _copy("g-new", "2026-09-21T18:34:05.386356-05:00"),
+                         _copy("g-mid", "2026-09-20T16:03:47.72441-05:00")])
+        said = []
+        written, plan = pm.map_decks(log, apply=True, out=said.append)
+        assert written == 1 and [p[3] for p in plan] == ["add"]
+        body = (d / "07-earths" / "deck.txt").read_text(encoding="utf-8")
+        assert "#: arena: 07 Earth’s Mightiest, g-new" in body
+        assert any("using the newest" in s for s in said)
+
+    def test_the_timestamps_are_read_per_deck(self):
+        times = pm.parse_deck_times(_copy("g-a", "2026-09-21T18:34:05.386356-05:00"))
+        assert times["g-a"][0].isoformat().startswith("2026-09-21T18:34:05")
+
+    def test_differently_named_decks_are_still_a_conflict(self, tmp_path, monkeypatch):
+        """Not copies of one deck — a wrong header is worse than none."""
+        d = self._roster(tmp_path, monkeypatch, **{"07-earths": self.PLAIN})
+        log = "\n".join([_copy("g-a", "2026-09-21T18:34:05-05:00"),
+                         _copy("g-b", "2026-09-11T18:34:05-05:00",
+                               name="07 Earth’s Mightiest (old)")])
+        written, plan = pm.map_decks(log, apply=True, out=lambda *_a: None)
+        assert written == 0 and [p[3] for p in plan] == ["conflict"]
+        assert "#: arena:" not in (d / "07-earths" / "deck.txt").read_text(encoding="utf-8")
+
+    def test_copies_with_no_timestamp_stay_a_conflict(self, tmp_path, monkeypatch):
+        self._roster(tmp_path, monkeypatch, **{"07-earths": self.PLAIN})
+        bare = ('[UnityCrossThreadLogger]==> EventSetDeckV3 {"id":"x","request":'
+                '"{\\"Summary\\":{\\"DeckId\\":\\"%s\\",\\"Name\\":\\"07 Earth’s Mightiest\\"}}"}')
+        written, plan = pm.map_decks("\n".join([bare % "g-a", bare % "g-b"]), apply=True,
+                                     out=lambda *_a: None)
+        assert written == 0 and [p[3] for p in plan] == ["conflict"]
+
+    def test_the_note_prints_once_then_the_ingest_is_quiet(self, tmp_path, monkeypatch):
+        self._roster(tmp_path, monkeypatch, **{"07-earths": self.PLAIN})
+        log = "\n".join([_copy("g-old", "2026-09-11T18:04:56-05:00"),
+                         _copy("g-new", "2026-09-21T18:34:05-05:00")])
+        first, second = [], []
+        pm.sync_headers(log, apply=True, out=first.append)
+        pm.sync_headers(log, apply=True, out=second.append)
+        assert any("using the newest" in s for s in first)
+        assert second == []
+
+
+class TestTheFollowUpsPrintedByAnIngest:
+    """Items 1 and 5, driven through main() (G-40)."""
+
+    def _run(self, tmp_path, monkeypatch, capsys, text, *flags):
+        monkeypatch.setattr(pm, "_scryfall_arena_name",
+                            lambda grp: {97950: "Kraven, Proud Predator"}.get(grp))
+        src = tmp_path / "s.log"
+        src.write_text(text, encoding="utf-8")
+        monkeypatch.setattr("sys.argv", ["parse_matches.py", str(src),
+                                         "--out", str(tmp_path / "m.csv"), *flags])
+        assert pm.main() == 0
+        return capsys.readouterr().out
+
+    def test_a_new_loss_gets_a_ready_to_fill_annotate_line(self, tmp_path, monkeypatch,
+                                                           capsys):
+        out = self._run(tmp_path, monkeypatch, capsys,
+                        _extract(tmp_path, _played(winner=1)), "--apply")
+        assert "Why did the 1 new loss(es) happen?" in out
+        assert "on the draw · turn 14 · vs URG: Kraven, Proud Predator; #88001" in out
+        line = next(ln.strip() for ln in out.splitlines() if ln.strip().startswith("m-1 "))
+        assert line == "m-1 why= opp="
+        pm.annotate(line.replace("why=", "why=flood"), str(tmp_path / "m.csv"), apply=True)
+        assert pm.load_matches(str(tmp_path / "m.csv"))[0]["Loss Reason"] == "flood"
+
+    def test_the_prompt_waits_for_the_write(self, tmp_path, monkeypatch, capsys):
+        """--annotate refuses an id matches.csv does not hold, so a dry run must not
+        hand out lines that cannot be used yet."""
+        out = self._run(tmp_path, monkeypatch, capsys, _extract(tmp_path, _played(winner=1)))
+        assert "Why did" not in out
+
+    def test_a_win_is_not_asked_about(self, tmp_path, monkeypatch, capsys):
+        out = self._run(tmp_path, monkeypatch, capsys,
+                        _extract(tmp_path, _played(winner=2)), "--apply")
+        assert "Why did" not in out
+
+    def test_a_new_match_without_a_game_line_is_named(self, tmp_path, monkeypatch, capsys):
+        text = _extract(tmp_path, _played("m-1")) + "\n".join(
+            [_header(date="9/27/2026", time="11:00:00 AM"), _event(match_id="m-2")]) + "\n"
+        out = self._run(tmp_path, monkeypatch, capsys, text)
+        assert "1 new match(es) have no play-by-play line" in out
+        assert "m-2" in out.split("no play-by-play line")[1]
+
+    def test_a_paste_with_no_game_lines_points_at_the_extractor(self, tmp_path,
+                                                                monkeypatch, capsys):
+        out = self._run(tmp_path, monkeypatch, capsys, _log(_event()))
+        assert "extract.sh` is not installed" in out
+
+
+class TestDeckHistory:
+    """Item 4: `--report --deck <id>`."""
+
+    ROWS = [
+        {"Date": "2026-09-27", "Match ID": "b", "Deck": "21", "Result": "L", "On Play": "play",
+         "Turns": "16", "Opponent Colors": "WB", "Loss Reason": "outclassed",
+         "Opponent Cards": "Plains; Ajani's Pridemate; Swamp; Vampire Nighthawk"},
+        {"Date": "2026-09-26", "Match ID": "a", "Deck": "21", "Result": "W", "On Play": "draw",
+         "Turns": "14", "Opponent Colors": "UR", "Opponent Cards": "Island; Opt"},
+        {"Date": "2026-09-27", "Match ID": "c", "Deck": "41", "Result": "L"},
+    ]
+
+    def test_it_lists_only_that_deck_oldest_first(self):
+        said = []
+        pm.deck_history(self.ROWS, "21", out=said.append)
+        body = "\n".join(said)
+        assert "2 match(es), 1-1-0" in body and "too few to read" in body
+        rows = [ln for ln in said if ln.startswith("  2026")]
+        assert [r.split()[0] for r in rows] == ["2026-09-26", "2026-09-27"]
+        assert "Ajani's Pridemate; Vampire Nighthawk" in rows[1]     # basics dropped
+        assert "Plains" not in rows[1]
+        assert "COUNTS, not rates: WB 1" in body and "outclassed 1" in body
+        assert "never as a reason to cut a card" in body
+
+    def test_a_padded_id_matches(self):
+        said = []
+        pm.deck_history(self.ROWS, "021", out=said.append)
+        assert "2 match(es)" in said[0]
+
+    def test_report_with_deck_routes_to_the_history(self, tmp_path, monkeypatch, capsys):
+        csvp = tmp_path / "m.csv"
+        pm.write_matches(self.ROWS, str(csvp))
+        monkeypatch.setattr("sys.argv", ["parse_matches.py", "--report", "--deck", "21",
+                                         "--out", str(csvp)])
+        assert pm.main() == 0
+        assert capsys.readouterr().out.startswith("Deck 21 — 2 match(es)")
+
+
+class TestTheMacFunction:
+    """Items 2 and 3 — the `mtga-matches` function /log-matches installs, run from the
+    skill's OWN text under bash (zsh is not in CI; the function is written to run in
+    both). The Mac cannot be debugged after the fact, so the copy in the doc is the thing
+    under test, not a re-typed twin of it."""
+
+    def _setup(self, tmp_path, lines):
+        import shutil
+        root = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+        doc = open(_os.path.join(root, ".claude", "commands", "log-matches.md"),
+                   encoding="utf-8").read()
+        body = doc.split("cat > ~/mtga-logs/mtga-matches.zsh <<'MTGA_EOF'\n", 1)[1]
+        body = body.split("\nMTGA_EOF\n", 1)[0]
+        home = tmp_path / "home"
+        logs = home / "Library" / "Logs" / "Wizards Of The Coast" / "MTGA"
+        logs.mkdir(parents=True)
+        (home / "mtga-logs").mkdir()
+        shutil.copy(_EXTRACT, home / "mtga-logs" / "extract.sh")
+        (logs / "Player.log").write_text("\n".join(lines) + "\n", encoding="utf-8")
+        bindir = tmp_path / "bin"
+        bindir.mkdir()
+        (bindir / "pbcopy").write_text(f"#!/bin/sh\ncat > '{tmp_path}/clip.txt'\n")
+        (bindir / "pbcopy").chmod(0o755)
+        func = tmp_path / "mtga-matches.sh"
+        func.write_text(body + "\n", encoding="utf-8")
+        return home, func, bindir
+
+    def _run(self, tmp_path, home, func, bindir, *args):
+        env = dict(_os.environ, HOME=str(home), PATH=f"{bindir}:{_os.environ['PATH']}")
+        r = _sp.run(["bash", "-c", f'source "{func}"; mtga-matches {" ".join(args)}'],
+                    env=env, capture_output=True, text=True, timeout=120)
+        clip = tmp_path / "clip.txt"
+        return r, (clip.read_text(encoding="utf-8") if clip.exists() else "")
+
+    def test_the_paste_carries_no_arena_user_id_and_still_parses(self, tmp_path):
+        home, func, bindir = self._setup(tmp_path, _played(winner=1))
+        r, clip = self._run(tmp_path, home, func, bindir, "all")
+        assert r.returncode == 0, r.stderr
+        assert ME not in clip and OPP not in clip
+        assert "Match to ME:" in clip and '"userId": "OPP"' in clip
+        rows, warnings = pm.parse_log(clip)
+        assert warnings == [] and [r_["Result"] for r_ in rows] == ["L"]
+        assert pm.GAME_FACT_PREFIX in clip
+
+    def test_no_argument_resumes_from_the_last_copy(self, tmp_path):
+        import datetime as _dt
+        home, func, bindir = self._setup(tmp_path, _played())
+        stamp = home / "mtga-logs" / ".last-copy"
+        r, clip = self._run(tmp_path, home, func, bindir)
+        assert r.returncode == 0 and clip.strip()                # first run: everything
+        assert stamp.read_text().strip() == _dt.date.today().isoformat()
+        stamp.write_text("2026-09-27\n")
+        r, _clip = self._run(tmp_path, home, func, bindir)
+        assert "since 2026-09-27 (since your last copy" in r.stdout
+        assert "mtga-matches all" in r.stdout
+
+    def test_an_empty_copy_does_not_advance_the_stamp(self, tmp_path):
+        home, func, bindir = self._setup(tmp_path, _played())       # dated 9/27
+        stamp = home / "mtga-logs" / ".last-copy"
+        stamp.write_text("2026-09-28\n")
+        r, _clip = self._run(tmp_path, home, func, bindir)
+        assert "copied 0 lines" in r.stdout
+        assert stamp.read_text().strip() == "2026-09-28"
+
+    def test_all_and_a_bad_date(self, tmp_path):
+        home, func, bindir = self._setup(tmp_path, _played())
+        r, _clip = self._run(tmp_path, home, func, bindir, "all")
+        assert "(everything)" in r.stdout
+        r, _clip = self._run(tmp_path, home, func, bindir, "2026-9-2")
+        assert r.returncode == 2 and "YYYY-MM-DD or 'all'" in r.stderr

@@ -229,9 +229,16 @@ cat > ~/mtga-logs/mtga-matches.zsh <<'MTGA_EOF'
 mtga-matches() {
   local p="$HOME/Library/Logs/Wizards Of The Coast/MTGA"
   local d="$HOME/mtga-logs"
-  local cut="$1"                        # optional YYYY-MM-DD: skip what is already in
+  local stamp="$d/.last-copy"          # the day of the previous copy, written below
+  local cut="$1" how=""
+  if [ "$cut" = "all" ]; then
+    cut=""; how=" (everything)"
+  elif [ -z "$cut" ] && [ -r "$stamp" ]; then
+    cut=$(cat "$stamp")
+    how=" (since your last copy; if that one was never pasted, run: mtga-matches all)"
+  fi
   if [ -n "$cut" ] && ! [[ "$cut" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]; then
-    echo "mtga-matches: date must be YYYY-MM-DD (got '$cut')" >&2
+    echo "mtga-matches: date must be YYYY-MM-DD or 'all' (got '$cut')" >&2
     echo "  a malformed date filters SILENTLY: '2026-9-2' keeps NOTHING, '09-02-2026' keeps EVERYTHING" >&2
     return 2
   fi
@@ -243,6 +250,21 @@ mtga-matches() {
     | awk '!seen[$0]++' \
     | sed -E 's/\\"(MainDeck|Sideboard)\\":\[[^]]*\]/\\"\1\\":[]/g' \
     | sed -E 's/"(playerName|platformId|systemSeatId|transactionId|requestId)"[[:space:]]*:[[:space:]]*("[^"]*"|[0-9]+)[[:space:]]*,[[:space:]]*//g; s/[[:space:]]*,[[:space:]]*"(playerName|platformId|systemSeatId|transactionId|requestId)"[[:space:]]*:[[:space:]]*("[^"]*"|[0-9]+)//g' \
+    | awk '
+        match($0, /Match to [A-Za-z0-9_-]+:/) {
+          me = substr($0, RSTART + 9, RLENGTH - 10)
+          $0 = substr($0, 1, RSTART - 1) "Match to ME:" substr($0, RSTART + RLENGTH)
+        }
+        index($0, "\"userId\"") {
+          s = $0; o = ""
+          while (match(s, /"userId": *"[^"]*"/)) {
+            v = substr(s, RSTART, RLENGTH); sub(/^"userId": *"/, "", v); sub(/"$/, "", v)
+            o = o substr(s, 1, RSTART - 1) "\"userId\": \"" (v == me ? "ME" : "OPP") "\""
+            s = substr(s, RSTART + RLENGTH)
+          }
+          $0 = o s
+        }
+        { print }' \
     | awk -v cut="$cut" '
         function iso(s,   a) { split(s, a, "/"); return sprintf("%04d-%02d-%02d", a[3], a[1], a[2]) }
         cut == "" { print; next }
@@ -257,9 +279,10 @@ mtga-matches() {
   local n=0
   if [ -n "$out" ]; then printf '%s\n' "$out" | pbcopy; n=$(printf '%s\n' "$out" | wc -l | tr -d ' ')
   else : | pbcopy; fi
-  echo "copied $n lines to the clipboard${cut:+ (since $cut)}"
+  echo "copied $n lines to the clipboard${cut:+ since $cut}$how"
+  if [ "$n" -gt 0 ]; then date +%Y-%m-%d > "$stamp"; fi
   if [ "$n" -eq 0 ] && [ -n "$cut" ]; then
-    echo "  nothing since $cut — re-run with no date if that looks wrong; the parser dedupes by matchId" >&2
+    echo "  nothing since $cut — run 'mtga-matches all' if that looks wrong; the parser dedupes by matchId" >&2
   fi
 }
 MTGA_EOF
@@ -324,12 +347,29 @@ pasteboard a second time just to count lines, and read whatever was on the clipb
 rather than what was just written — a race if anything else copied in between. The output
 is held once and counted directly.
 
+**The paste carries no Arena user ids (2026-09-27).** One real paste held 184 of them
+belonging to 47 people — you and 46 opponents — and the parser only needs to know which
+seat is YOURS. The function's third `awk` rewrites your id to `ME` (read from the
+`Match to <id>:` header) and every other `"userId"` to `OPP` before copying. The parser
+and the dashboard's paste reader both find your seat by matching the header id to a seat
+id, so `ME` = `ME` resolves exactly as the real id did; `tests/test_parse_matches.py`
+runs this function from this file under bash and parses its output. The archive on the
+Mac keeps the real ids — anonymise at PASTE time, the same rule as the slimming.
+
+**It remembers the last copy (2026-09-27).** `mtga-matches` with no argument copies from
+the day of its previous successful copy, kept in `~/mtga-logs/.last-copy`, and says so;
+`mtga-matches all` copies everything; `mtga-matches <YYYY-MM-DD>` still works. The stamp
+advances only when something was copied. The one way to lose a match is to copy and then
+never paste that copy: the next copy starts from its day, so anything only in the unpasted
+copy from EARLIER days is skipped — the message names `mtga-matches all` for that case,
+and re-pasting everything is always safe because dedup is by matchId.
+
 `mtga-matches` then puts a pasteable export on the clipboard. It reads the rolling
 archive first and the live `Player.log` second, so it covers history Arena has already
 overwritten.
 
-**Pass the watermark to skip what is already recorded.** `mtga-matches 2026-08-25` emits
-only that day onward. The log is NEVER trimmed — this filters the CLIPBOARD, not the
+**A date by hand still works** — `mtga-matches 2026-08-25` emits only that day onward —
+and is what the default above computes for you. The log is NEVER trimmed — this filters the CLIPBOARD, not the
 archive, which is the distinction that keeps re-ingest and `--annotate` working. Get the
 date from the repo side:
 
@@ -337,14 +377,11 @@ date from the repo side:
 python3 scripts/parse_matches.py --watermark      # prints the newest ingested date
 ```
 
-**THE DEDUPE DOES NOT REMEMBER PREVIOUS RUNS, and reading it that way is the easy
-mistake.** It removes lines duplicated WITHIN one invocation (the archive/Player.log
-overlap). It has no memory: a bare `mtga-matches` still emits the whole archive from the
-beginning, including every match already in `matches.csv`. Nothing on the Mac knows what
-has been ingested — the watermark lives in `matches.csv`, in the repo. So the date
-argument is still the only thing that shortens a paste across sessions, and
-`--since-last` (below) is the zero-effort alternative: paste everything and let the repo
-filter, since it reads the watermark itself.
+**The `awk '!seen[$0]++'` dedupe still has no memory of its own** — it removes lines
+duplicated WITHIN one invocation (the archive/Player.log overlap). What shortens a paste
+ACROSS sessions is the `.last-copy` stamp above, which records what was COPIED, not what
+was ingested: nothing on the Mac knows what `matches.csv` holds. `--since-last` (below) is
+the repo-side filter, reading the watermark from the CSV itself.
 
 **Why this is worth doing, and why it is only a convenience.** The archive is deliberately
 never consumed, so every extraction re-emits the whole history: a real paste ran 280 lines
@@ -438,9 +475,10 @@ paste. Older games are gone: the archive did not keep these lines before this ch
 A best-of-three is handled per game (values joined with `/`) but has never been checked
 against a real Bo3 log; read the first one's dry run closely.
 
-**Privacy:** the parser deliberately stores no `userId` and no `playerName`. If a raw
-paste lands in the conversation it still contains both; don't echo them back, and don't
-put them in a commit. Both players' avatar cosmetics are kept — that is a cosmetic, not
+**Privacy:** the parser deliberately stores no `userId` and no `playerName`, and since
+2026-09-27 `mtga-matches` removes both before anything is copied (`ME` / `OPP`). A paste
+made by hand — the raw `grep` above, or an older copy of the function — still contains
+them; don't echo them back, and don't put them in a commit. Both players' avatar cosmetics are kept — that is a cosmetic, not
 a person — as is the user's own Arena deck name.
 
 ## Stage 1 — Parse (dry run first)
@@ -460,6 +498,9 @@ opponent deck. Check two things before applying:
 - **Do the game details look right?** Each match with a `[MTGA-GAME]` line prints on the
   play/draw, mulligans, the last turn and the opponent's colours and first cards. Play or
   draw is the one you can check from memory; an inverted seat read would flip it.
+- **Does every new match have details?** A new match with no `[MTGA-GAME]` line is named
+  under "have no play-by-play line" — a phone game, or a log that rotated first. If NONE
+  of the paste has game lines, the run says `extract.sh` is probably not installed.
 - **Is the deck attributed?** The run prints a `Deck attribution` block: every Arena deck
   name it saw, the repo deck it resolved to, and *how* (`#: arena: header` or the
   `name prefix` guess). Read it — the prefix step assigns data from a naming convention,
@@ -475,6 +516,36 @@ python3 scripts/parse_matches.py <file> --apply --deck 12   # tag one session's 
 
 Rows dedupe by Arena's `matchId`, so re-pasting an overlapping log is safe and re-running
 is not destructive.
+
+**End every log report with the next command:** `mtga-matches` with no argument — it
+resumes from this copy. (`mtga-matches all` if the owner says a copy went unpasted.)
+
+## Stage 1d — Ask why each new loss happened (right after `--apply`)
+
+**Do this every time an ingest wrote a loss.** The loss-reason column was empty on all 94
+recorded losses when this stage was added (2026-09-27): the fill-in path existed on the
+dashboard and in Stage 1c, and nobody reached it, because the moment to ask is right after
+the game, while the owner still remembers it — which is exactly now.
+
+`--apply` prints, after the write, one block per new loss:
+
+```
+   # 2026-09-27  deck 21 · on the play · turn 16 · vs WB: Ajani's Pridemate; Fisk Tower; …
+   c6bfb302-0aa2-49e5-886c-b5bf7c69b60e why= opp=
+```
+
+1. Show the owner each loss as a short line — deck, play/draw, turns, opponent colours and
+   the cards they showed — and ask for ONE word from the vocabulary (`flood screw slow
+   answer removed keep misplay outclassed`), plus the opponent's archetype if they want
+   to name it. Ask once for all of them together.
+2. **Never fill a reason in yourself.** The details say what happened, not what decided
+   the game — a 16-turn loss to a lifegain deck can be `outclassed` or `misplay`, and only
+   the owner knows which. A loss they do not remember stays blank.
+3. Write their answers with Stage 1c's `--annotate` (dry run, then `--apply`), keeping
+   the ids the block printed. A value left empty records nothing.
+
+Skip the stage if the owner would rather not; it is the one step that must never be
+guessed.
 
 **Headers keep themselves current.** The same `--apply` also harvests the paste's deck
 summaries and writes any new or renamed `#: arena:` header (with `.bak`s, conflicts
@@ -614,7 +685,15 @@ loudly, because the ids are not in `matches.csv` yet.
 
 ```
 python3 scripts/parse_matches.py --report
+python3 scripts/parse_matches.py --report --deck 21     # one deck, one line per match
 ```
+
+**`--report --deck <id>` is the per-deck history (2026-09-27)**: each match with its
+result, play/draw, turns, opponent colours, the loss reason and the opponent's first
+non-basic cards, then the losses tallied by opponent colours and by reason as COUNTS. It
+answers "what does this deck meet and lose to" — the question a tune asks — where the
+pooled report answers "am I winning". The same floor applies and is printed: no rate
+under 20 matches, and nothing in it is a reason to cut a card or move a tier.
 
 **Read this the way the tool prints it, not the way a percentage invites.** Below ~20
 matches it refuses to show a rate at all, and above it the 95% Wilson interval is usually
@@ -672,10 +751,15 @@ python3 scripts/parse_matches.py <file> --map-decks --apply   # writes, with .ba
 
 It harvests every `{"DeckId":…,"Name":…}` the paste contains, matches each to a repo deck
 by the leading-number convention, and writes `#: arena: <name>, <GUID>`. Read the dry run:
-`+` add, `~` update, `=` unchanged, `!` conflict. **A conflict writes nothing** — two Arena
-decks claiming one repo deck (an old copy left in the client) has to be resolved by hand,
-because a header naming the wrong one of the two is worse than no header. Arena decks
-whose names carry no repo deck number are listed, never forced.
+`+` add, `~` update, `=` unchanged, `!` conflict. **Several copies of one deck resolve to
+the newest (2026-09-27, owner decision)**: the owner replaces a deck by deleting it in
+Arena and importing the new version as a NEW deck, so same-named copies are expected and
+the most recent is correct. When every claimant carries the same name and a timestamp,
+the one with the latest `LastUpdated` (then `LastPlayed`) is written and the older copies
+are named once; their matches still resolve by name. **A conflict still writes nothing**
+when the claimants' NAMES differ or carry no timestamp — that is not a copy, and a header
+naming the wrong deck is worse than no header. Arena decks whose names carry no repo deck
+number are listed, never forced.
 
 To set one by hand, the header takes the name, the GUID, or both:
 

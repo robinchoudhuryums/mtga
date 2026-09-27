@@ -65,6 +65,14 @@ Read the actual card text — never judge by mana value or a single subtype:
    `#: archetype:` prose instead of measuring produced a real misread (deck 30 was
    called a wide deck from its own header while the open question was whether a
    TALL plan duplicated it). The header is the older claim; the measurement wins.
+2e. `python3 scripts/parse_matches.py --report --deck <id>` — the deck's PLAYED record,
+   if it has one: each match with play/draw, turns, the opponent's colours and cards, and
+   the owner's loss reason. **Context only, and say so in the report.** At a few games it
+   says what the deck has MET, not how good it is: never cite it as the reason for a cut,
+   an add or a tier letter (G-57 — and the rubric's own finding that the record correlates
+   with nothing at this sample size). Its use is a QUESTION to check in the card text: if
+   three losses were all to fliers, does the list hold any answer to one? The card text
+   and the tools above settle that, not the record.
 2b. `python3 scripts/deck.py tier <id>` — the claimed `#: tier:` vs the tier its
    measurable quality vector supports. If the deck is being tuned to climb a tier,
    add `--to <NEXT>` (e.g. `--to A`): it prints the **exact measurable gap** (e.g.

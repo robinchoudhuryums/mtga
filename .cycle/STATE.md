@@ -19,7 +19,7 @@ Phase: implement — **scan #10 is FULLY IMPLEMENTED**. All four batches plus ev
 Scope: broad
 Test Command: `python3 scripts/check_all.py`
 Subsystem cycles since last Seams audit: 2 (counter adopted 2026-09-08; no Seams audit has run)
-Updated: 2026-09-27 (G-87 shipped; decks 17 and 30 tuned; `/sync-docs` pass; decks 17/42a/47 re-graded to A — see Where I left off)
+Updated: 2026-09-27 (match digest built in PR #196, then six match-logging follow-ups — see Where I left off)
 
 ## In progress (facts to carry forward — NOT judgments)
 - **Broad scan #10 is fully implemented — nothing outstanding from the scan.** Four
@@ -35,6 +35,20 @@ Updated: 2026-09-27 (G-87 shipped; decks 17 and 30 tuned; `/sync-docs` pass; dec
 
 ## Completed this cycle
 
+- **2026-09-27 — six match-logging follow-ups from the first real play-by-play run.**
+  The ingest now asks for a one-word reason per NEW loss and prints a ready `--annotate`
+  line with the game details (0 of 191 rows had any hand column); `mtga-matches`
+  anonymises the paste to `ME`/`OPP` and remembers its last copy's date (`all` copies
+  everything); `--report --deck <id>` prints one deck's history, shown by `/tune-deck` 2e
+  as context only; a new match with no play-by-play is named; and the newest of several
+  same-named Arena decks wins the `#: arena:` header instead of warning every run (deck 58
+  moved to its newest copy). Block: `2026-09-match-logging-followups-broad-implement.md`.
+  Net 5 − 2 = 3 | scripts/parse_matches.py, tests, `/log-matches`, `/tune-deck`, G-74
+- **2026-09-27 — the match digest (PR #196).** `scripts/mtga_extract.sh` reduces each
+  game's play-by-play to one `[MTGA-GAME]` line; the parser fills On Play (blank cells
+  only), mulligans, Turns and opponent colours/cards, naming cards via Scryfall's Arena-id
+  lookup cached in `arena-cards.csv`. Seat read confirmed by the owner on nine real games.
+  `.cycle/match-digest-plan.md` deleted as its header asked.
 - **2026-09-27 — decks 17, 42a and 47 re-graded to A at the owner's call.** Each `#: tier:`
   block rewritten to argue the A (the old blocks argued a cap below the floor) and to carry
   the real risks as caveats; `tier` reads "consistent" and `--audit-rationale` is current on
@@ -177,6 +191,15 @@ Updated: 2026-09-27 (G-87 shipped; decks 17 and 30 tuned; `/sync-docs` pass; dec
   mana) — K-12's long form has the probe.
 
 ## Open follow-on items
+- **The match digest plan's decision 2 is unbuilt: a `Suggested Why` column** the owner
+  confirms in one reply (owner, 2026-09-25). What shipped asks for the word with the game
+  details beside it and suggests nothing. Build it only if the owner still wants a
+  suggestion; it would slot into `parse_matches._print_loss_prompt`.
+- **Best-of-three play-by-play is unverified** — `mtga_extract.sh` assumes game N is the
+  Nth `MatchScope_Game` result; no Bo3 log has been read.
+- **A paste covering only an OLD Arena copy's period moves the `#: arena:` header back to
+  that copy** (one claimant, so nothing to compare). Attribution is unaffected; the next
+  paste carrying the newer copy moves it forward again.
 - **`consistency`'s NONLAND disclosure (G-35) is silent on two real mana engines (found
   2026-09-27, deck 21).** `lib.land_production` reads Bloom Tender's Vivid clause ("For each
   color among permanents you control, add one mana of that color") as producing NOTHING, so
@@ -268,6 +291,13 @@ Updated: 2026-09-27 (G-87 shipped; decks 17 and 30 tuned; `/sync-docs` pass; dec
 - Regression scenarios 5–8 and 10–19 need a person at a browser; several never walked.
 
 ## Decisions made (so the next session doesn't re-litigate)
+- **Same-named Arena decks: the NEWEST wins (owner, 2026-09-27).** An edited deck is
+  re-imported as a new Arena deck and the old one deleted, so copies are expected and the
+  latest `LastUpdated` is correct. Two DIFFERENTLY named claimants are still a conflict,
+  and the comparison is typography-only — never `_name_key`, whose gloss strip reads
+  "X (old)" as a copy of "X".
+- **Never fill a loss reason in yourself.** `/log-matches` Stage 1d asks the owner; the
+  game details say what happened, not what decided it.
 - **BS10-02 IS REFUTED, NOT DEFERRED. Do not re-file it.** The one-turn tap-down family
   (39 cards, disjoint from the 37 permanent ones) is excluded because a one-turn effect is
   TEMPO, not an answer — widening it adds 36 cards to the axis the tier floor grades on,
@@ -333,19 +363,16 @@ Updated: 2026-09-27 (G-87 shipped; decks 17 and 30 tuned; `/sync-docs` pass; dec
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
-**2026-09-27 — decks 17, 42a and 47 re-graded to A at the owner's call.** Branch
-`claude/sync-commands-mmmsdb`, restarted from main after PR #195 (the `/sync-docs` pass
-after G-87 and the deck 17/30 tunes) merged. Header-only change: three `#: tier:` blocks
-rewritten, no card lines touched. All three read "consistent — A matches the metrics floor"
-and each `--audit-rationale` is current. No open tier call remains on the roster.
+**2026-09-27 — six match-logging follow-ups implemented** (`/broad-implement 1-6`) on
+`claude/sync-commands-mmmsdb`, restarted from main after PR #196 (the match digest)
+merged. Full suite and `check_all` green. Deck 58's `#: arena:` header now names its
+newest copy (e96eca40). **The owner still has to re-install `mtga-matches` on the Mac** —
+the anonymising and the date memory live only in that function; the first run after the
+re-install has no stamp and copies everything, once.
 
-**The rewrite found three stale claims the audit reported CLEAN** — see Open follow-on.
-
-**Still open from the 2026-09-27 `/sync-docs` pass:** the three tooling holes it documented
-(G-33 KNOWN GAP 2, the G-38 `--needs` holdout, the K-12 sweeper) are unfixed, because each
-needs its roster measurement first (G-40, G-67). The deck-30 tune remains the worked case for
-G-22: every add was found by `pool.py --regex` or named by the user, and Doubling Season
-ranked 1,325th of 1,469.
+**Still open from earlier today:** the three tooling holes the deck 30 tune documented
+(G-33 KNOWN GAP 2, the G-38 `--needs` holdout, the K-12 sweeper) — each needs its roster
+measurement first (G-40, G-67).
 
 **THE 2026-09-20 PROCESS RULE STILL HOLDS:** never edit source while a suite is running,
 and never report such a run red.
