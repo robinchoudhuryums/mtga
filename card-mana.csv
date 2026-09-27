@@ -2795,6 +2795,12 @@ Herd Heirloom,{1}{G},2,
 Sundering Archaic,{6},6,Converge
 The Wandering Minstrel,{G}{U},2,
 "Ramos, Dragon Engine",{6},6,Flying
+Popular Egotist,{2}{B},3,
+Heaped Harvest,{2}{G},3,
+Deadly Brew,{B}{G},2,
+Oltec Matterweaver,{2}{W},3,
+"Lord Dregg, Insect Invader",{3}{B},4,Flying;Disappear
+Moogles' Valor,{3}{W}{W},5,
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -3429,7 +3435,6 @@ Sentinel Spider,{3}{G}{G},5,Reach;Vigilance
 Putrid Warrior,{W}{B},2,
 Enlisted Wurm,{4}{G}{W},6,Cascade
 Sanctum of Ugin,,0,
-Oltec Matterweaver,{2}{W},3,
 Worldwalker Helm,{2}{U},3,Explore
 Greed's Gambit,{3}{B},4,
 Hostile Investigator,{3}{B},4,Investigate
@@ -3523,7 +3528,6 @@ Druid of the Spade,{2}{G},3,
 Fecund Greenshell,{3}{G}{G},5,Reach
 Galewind Moose,{4}{G}{G},6,Reach;Vigilance;Trample;Flash
 Hazardroot Herbalist,{2}{G},3,
-Heaped Harvest,{2}{G},3,
 High Stride,{G},1,
 Hivespine Wolverine,{3}{G}{G},5,Fight
 Innkeeper's Talent,{1}{G},2,
@@ -4569,7 +4573,6 @@ Let's Play a Game,{3}{B},4,Delirium
 Leyline of the Void,{2}{B}{B},4,
 Live or Die,{3}{B}{B},5,
 Miasma Demon,{4}{B}{B},6,Flying
-Popular Egotist,{2}{B},3,
 Resurrected Cultist,{2}{B},3,Delirium
 Spectral Snatcher,{4}{B}{B},6,Landcycling;Ward;Typecycling;Cycling;Swampcycling
 Unholy Annex // Ritual Chamber,{2}{B} // {3}{B}{B},8,
@@ -5404,7 +5407,6 @@ Gnarlback Rhino,{2}{G}{G},4,Trample
 Heroes' Bane,{3}{G}{G},5,
 Mold Adder,{G},1,
 Predator Ooze,{G}{G}{G},3,Indestructible
-Deadly Brew,{B}{G},2,
 Drogskol Reaver,{5}{W}{U},7,Flying;Lifelink;Double strike
 Dryad Militant,{G/W},1,
 "Garna, Bloodfist of Keld",{1}{B}{R}{R},4,
@@ -5492,7 +5494,6 @@ Delivery Moogle,{3}{W},4,Flying
 From Father to Son,{1}{W},2,Flashback
 Machinist's Arsenal,{4}{W},5,Machina;Job select;Equip
 "Minwu, White Mage",{3}{W}{W},5,Lifelink;Vigilance
-Moogles' Valor,{3}{W}{W},5,
 Phoenix Down,{W},1,
 Sidequest: Catch a Fish // Cooking Campsite,{2}{W},3,Transform;Food
 "Stiltzkin, Moogle Merchant",{W},1,Lifelink
@@ -14060,7 +14061,6 @@ Does Machines,{1}{U},2,Mill
 Donatello's Technique,{2}{U},3,Sneak
 Return to the Sewers,{3}{U},4,
 Foot Mystic,{3}{B},4,Disappear;Lifelink
-"Lord Dregg, Insect Invader",{3}{B},4,Flying;Disappear
 "Madame Null, Power Broker",{2}{B},3,Deathtouch
 "Rat King, Verminister",{1}{B},2,Disappear
 "Savanti Romero, Time's Exile",{3}{B}{B},5,Trample
