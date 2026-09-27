@@ -63,6 +63,7 @@ Boneyard Desecrator
 Brass's Bounty
 Brazen Collector
 Brightspear Zealot
+Bristlebud Farmer
 Broodguard Elite
 Bulk Up
 Bumi, King of Three Trials
@@ -90,7 +91,6 @@ Claim Jumper
 Collector's Vault
 Colossification
 Corrupt Court Official
-Courier of Comestibles
 Crashing Wave
 Craterhoof Behemoth
 Crow of Dark Tidings
