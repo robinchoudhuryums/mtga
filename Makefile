@@ -101,8 +101,7 @@ MTGA_LOGS ?= $(HOME)/Library/Logs/Wizards Of The Coast/MTGA
 MATCHES_OUT ?= /tmp/mtga-matches.log
 matches:
 	@echo "==> reading $(MTGA_LOGS)"
-	@grep -hE 'Match to .*MatchGameRoomStateChangedEvent|"finalMatchResult"|==> EventSetDeckV3' \
-	    "$(MTGA_LOGS)"/Player*.log \
+	@sh scripts/mtga_extract.sh "$(MTGA_LOGS)"/Player*.log \
 	  | sed -E 's/\\"(MainDeck|Sideboard)\\":\[[^]]*\]/\\"\1\\":[]/g' > $(MATCHES_OUT)
 	@echo "==> wrote $(MATCHES_OUT) ($$(wc -l < $(MATCHES_OUT)) lines)"
 	python3 scripts/parse_matches.py $(MATCHES_OUT) $(if $(APPLY),--apply,)

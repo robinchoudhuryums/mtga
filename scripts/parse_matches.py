@@ -18,6 +18,15 @@ the record attributable to a deck:
     [UnityCrossThreadLogger]==> EventSetDeckV3 {"id":"...","request":"{\"EventName\":\"Play\",
         \"Summary\":{\"DeckId\":\"<guid>\",...,\"Name\":\"07 Earth's Mightiest\",...}}"}
 
+A fourth shape is optional and comes from `scripts/mtga_extract.sh` (the Mac's
+~/mtga-logs/extract.sh), which boils each finished game's play-by-play down to one line:
+
+    [MTGA-GAME]9/27/2026 9:50:18 AM: {"matchId": "...", "game": 1, "seat": 2, "first": 1,
+        "turns": 14, "mulligans": {"1": 0, "2": 1}, ..., "cards": ["1:97950:RG", ...]}
+
+It joins to a match on the matchId and fills who went first, mulligans, the last turn
+number and the cards the opponent showed — see `GAME_FACT_PREFIX`.
+
 The JSON carries the result and both players' seats — but NOT which seat is yours. The
 local player's userId appears only in the `Match to <userId>:` header prefix, so a paste
 of the JSON alone is unparseable: every result would be a coin flip between win and loss.
@@ -113,13 +122,15 @@ from lib import (MATCHES_CSV, REPO_ROOT, atomic_write,  # noqa: E402,F401
 HEADER = ["Date", "Match ID", "Deck", "Arena Deck", "Arena Deck ID", "My Avatar",
           "Event", "Result", "Games Won", "Games Lost", "Opponent Avatar", "Reason",
           "Ended By",
-          # HAND-ENTERED, appended 2026-08-20 (`--add`). The log cannot supply any of
-          # these: Arena records the deck YOU submitted and the raw outcome, and nothing
-          # about what you faced, whether you were on the play, or why you lost. They are
-          # also the only fields that answer "what should I change", which is why they
-          # exist. All four are OPTIONAL and blank on every log-parsed row by
-          # construction — a reader must treat blank as "not recorded", never as a value.
-          "On Play", "Opponent Archetype", "Loss Reason", "Note"]
+          # HAND-ENTERED, appended 2026-08-20 (`--add` / `--annotate`). The match-result
+          # lines say nothing about what you faced, whether you were on the play, or why
+          # you lost, and these are the fields that answer "what should I change". All
+          # four are OPTIONAL — a reader must treat blank as "not recorded", never as a
+          # value. `On Play` is ALSO filled from the play-by-play since 2026-09-27 (see
+          # `GAME_FACT_PREFIX`), but only when blank: a value you typed is never replaced.
+          "On Play", "Opponent Archetype", "Loss Reason", "Note",
+          # FROM THE PLAY-BY-PLAY, appended 2026-09-27 — see `LOG_DETAIL_COLUMNS`.
+          "My Mulligans", "Opp Mulligans", "Turns", "Opponent Colors", "Opponent Cards"]
 
 # The loss-reason vocabulary. CLOSED so it can be COUNTED — free text cannot answer
 # "which decks flood out", which is the whole reason to record it. An unrecognized value
@@ -407,6 +418,225 @@ def parse_log(text, me=None):
         pending.append((order, current_dt, row))
     warnings.extend(attribute_selections(pending, selections))
     return rows, warnings
+
+
+# ── The play-by-play: one `[MTGA-GAME]` line per finished game ──────────────────────
+#
+# G-74 recorded the match log as blind to what you faced, whether you were on the play
+# and why you lost. That was true of the lines this module read, NOT of the log: with
+# Detailed Logs on, Arena also writes the full game state (GREMessageType_GameStateMessage)
+# — the turn structure, each player's mulligans and every card either side showed. It is
+# 1.0-2.4 MB per match, so `scripts/mtga_extract.sh` reduces each finished game to one
+# `[MTGA-GAME]` line on the Mac and this module only reads that line. It carries no
+# userId and no player name.
+#
+# "Why you lost" stays a human call (`--annotate`): the log shows what happened, not
+# which part of it decided the game.
+GAME_FACT_PREFIX = "[MTGA-GAME]"
+_GAME_FACT_RE = re.compile(r"^\[MTGA-GAME\][^{]*(\{.*\})\s*$")
+# Filled only from those lines, and RECOMPUTED whenever a run sees a match's game lines:
+# they are derived, so the log is their authority, which is also what lets a later run
+# replace a `#<id>` placeholder once Scryfall can name the card. `Turns` is Arena's own
+# turn number, which counts BOTH players' turns — 14 is each player's 7th. A match of
+# several games joins each game's value with "/".
+LOG_DETAIL_COLUMNS = ("My Mulligans", "Opp Mulligans", "Turns", "Opponent Colors",
+                      "Opponent Cards")
+# grpId -> card name, cached so each card costs one Scryfall request ever. The log names
+# a card only by Arena's numeric id (its `name` field is a localisation id, not text).
+ARENA_CARDS_CSV = os.path.join(REPO_ROOT, "arena-cards.csv")
+_ARENA_CARDS_HEADER = ["Arena ID", "Card Name"]
+ARENA_CARD_URL = "https://api.scryfall.com/cards/arena/{}"
+
+
+def _int(v):
+    try:
+        return int(v)
+    except (TypeError, ValueError):
+        return 0
+
+
+def parse_game_facts(text):
+    """({match_id: [game, ...] ordered by game number}, [warning, ...]).
+
+    One entry per (match, game); a repeated line replaces the earlier one, so a paste
+    carrying both the archived and the live copy of a game counts it once."""
+    games, warnings = {}, []
+    for raw in (text or "").splitlines():
+        if not raw.startswith(GAME_FACT_PREFIX):
+            continue
+        m = _GAME_FACT_RE.match(raw.strip())
+        try:
+            fact = json.loads(m.group(1)) if m else None
+        except json.JSONDecodeError:
+            fact = None
+        if not isinstance(fact, dict) or not fact.get("matchId"):
+            warnings.append(f"a {GAME_FACT_PREFIX} line did not parse — it looks truncated; "
+                            f"that game's details are skipped (the match itself is not).")
+            continue
+        games.setdefault(fact["matchId"], {})[_int(fact.get("game")) or 1] = fact
+    return {mid: [g[n] for n in sorted(g)] for mid, g in games.items()}, warnings
+
+
+def _game_cards(game):
+    """[(owner seat, grpId, colours, is_land)] from a game line's "owner:grpId:flags"."""
+    out = []
+    for tok in game.get("cards") or []:
+        parts = str(tok).split(":")
+        if len(parts) != 3 or not parts[0].isdigit() or not parts[1].isdigit():
+            continue
+        flags = parts[2]
+        out.append((int(parts[0]), int(parts[1]),
+                    "".join(c for c in "WUBRG" if c in flags), "L" in flags))
+    return out
+
+
+def _seats(game):
+    """(your seat, the opponent's seat); 0 where the line cannot say."""
+    me = _int(game.get("seat"))
+    known = {_int(x) for x in (game.get("mulligans") or {})} | {1, 2}
+    others = sorted(x for x in known if x and x != me)
+    return me, (others[0] if me and others else 0)
+
+
+def opponent_card_ids(games):
+    """Every grpId the opponent showed across a match's games."""
+    ids = set()
+    for g in games:
+        _me, opp = _seats(g)
+        ids |= {grp for owner, grp, _c, _l in _game_cards(g) if owner == opp}
+    return ids
+
+
+def match_details(games, names=None):
+    """(fields, problem) — the matches.csv cells a match's game lines imply.
+
+    `problem` is a one-line reason when nothing can be derived. Without YOUR seat nothing
+    here has an owner — "first" and every mulligan count are per SEAT — so the match is
+    skipped rather than guessed, the same stance `parse_log` takes on a missing header."""
+    names = names or {}
+    if not games:
+        return {}, "no game lines"
+    seat, _opp = _seats(games[0])
+    if not seat:
+        return {}, "the game lines do not say which seat was yours"
+    out = {}
+    first = _int(games[0].get("first"))
+    if first:
+        out["On Play"] = "play" if first == seat else "draw"
+
+    def per_game(fn):
+        return "/".join(str(fn(g)) for g in games)
+    out["My Mulligans"] = per_game(
+        lambda g: _int((g.get("mulligans") or {}).get(str(_seats(g)[0]))))
+    out["Opp Mulligans"] = per_game(
+        lambda g: _int((g.get("mulligans") or {}).get(str(_seats(g)[1]))))
+    out["Turns"] = per_game(lambda g: _int(g.get("turns")))
+    colours, cards = set(), []
+    for g in games:
+        _me, opp = _seats(g)
+        for owner, grp, col, _land in _game_cards(g):
+            if owner != opp:
+                continue
+            colours |= set(col)
+            label = names.get(grp) or f"#{grp}"
+            if label not in cards:
+                cards.append(label)
+    # Colours of the opponent's NONLAND cards as Arena reports them — a card's colours,
+    # not its identity or its mana; lands carry none, so a deck seen only as lands reads
+    # blank rather than guessed.
+    out["Opponent Colors"] = "".join(c for c in "WUBRG" if c in colours)
+    out["Opponent Cards"] = "; ".join(cards)
+    return out, None
+
+
+def load_arena_cards(path=None):
+    """{grpId: card name} from the cache; {} when there is none yet."""
+    path = path or ARENA_CARDS_CSV
+    if not os.path.exists(path):
+        return {}
+    with open(path, newline="", encoding="utf-8") as fh:
+        return {int(r["Arena ID"]): r["Card Name"] for r in csv.DictReader(fh)
+                if (r.get("Arena ID") or "").strip().isdigit()
+                and (r.get("Card Name") or "").strip()}
+
+
+def write_arena_cards(names, path=None):
+    path = path or ARENA_CARDS_CSV
+
+    def _w(fh):
+        w = csv.writer(fh)
+        w.writerow(_ARENA_CARDS_HEADER)
+        for grp in sorted(names):
+            w.writerow([grp, names[grp]])
+    atomic_write(path, _w, backup=False)
+
+
+def _scryfall_arena_name(grp):
+    """The card Scryfall files under Arena id `grp`, or None if it has none (a token,
+    or a card Scryfall has not indexed yet). ScryfallUnavailable propagates."""
+    import time
+    import scryfall
+    time.sleep(0.1)                        # Scryfall asks for 50-100 ms between requests
+    try:
+        card = scryfall.get_json(ARENA_CARD_URL.format(int(grp)))
+    except scryfall.NotFound:
+        return None
+    return (card or {}).get("name") or None
+
+
+def resolve_arena_names(grpids, cache, fetch=None):
+    """({grpId: name} for everything known, {grpId: name} newly fetched, error or None).
+
+    A miss is NOT cached, so a card Scryfall indexes later still resolves on a later
+    run. An outage stops the lookups and is reported: the match is still written, with
+    `#<id>` for the cards it could not name, and the next run that sees the game line
+    names them."""
+    import scryfall
+    fetch = fetch or _scryfall_arena_name
+    names, new = dict(cache), {}
+    for grp in sorted(set(grpids) - set(names)):
+        try:
+            name = fetch(grp)
+        except scryfall.ScryfallUnavailable as e:
+            return names, new, str(e)
+        if name:
+            names[grp] = new[grp] = name
+    return names, new, None
+
+
+def apply_game_details(rows_by_id, facts, names):
+    """Fill each recorded match's play-by-play columns. Returns (changes, orphans, notes).
+
+    `changes` is [(match_id, row, {column: (old, new)})] for rows whose cells moved;
+    `orphans` counts matches with game lines but no row (their result line was not in
+    this paste and they are not recorded yet); `notes` are per-match warnings. `On Play`
+    is written only into a BLANK cell — a value typed by hand is kept even when the log
+    disagrees, and the disagreement is reported rather than resolved."""
+    changes, notes, orphans = [], [], 0
+    for mid, games in facts.items():
+        row = rows_by_id.get(mid)
+        if row is None:
+            orphans += 1
+            continue
+        fields, problem = match_details(games, names)
+        if problem:
+            notes.append(f"{mid[:8]}: {problem} — details skipped")
+            continue
+        moved = {}
+        for col, new in fields.items():
+            old = (row.get(col) or "").strip()
+            if col == "On Play" and old:
+                if old != new:
+                    notes.append(f"{mid[:8]}: On Play is {old!r} by hand but the log says "
+                                 f"{new!r} — kept yours; fix it with --annotate if the "
+                                 f"log is right")
+                continue
+            if old != new:
+                moved[col] = (old, new)
+                row[col] = new
+        if moved:
+            changes.append((mid, row, moved))
+    return changes, orphans, notes
 
 
 def arena_deck_map():
@@ -1186,6 +1416,8 @@ def parse_manual(text, existing_ids=(), deck_ids=None, today=None):
             "Reason": "", "Ended By": "",
             "On Play": on_play, "Opponent Archetype": _slug(kv.get("opp")),
             "Loss Reason": why, "Note": (kv.get("note") or "").strip(),
+            # A hand row has no play-by-play; these stay blank, never guessed.
+            **{c: "" for c in LOG_DETAIL_COLUMNS},
         })
     return rows, warnings
 
@@ -1609,6 +1841,7 @@ def add_manual(text, out=MATCHES_CSV, apply=False, report_after=False):
 
 def _print_manual_axes(rows):
     """The hand-entered axes: what you faced, whether you were on the play, why you lost.
+    (`On Play` is also filled from the play-by-play since 2026-09-27; a hand value wins.)
 
     Each obeys the SAME read floor as the per-deck table, and for the same reason — these
     columns are the newest and therefore the thinnest, so they are the likeliest place to
@@ -1670,6 +1903,45 @@ def _print_manual_axes(rows):
               "\n  explain are not a random sample of your losses. Read the big bars.")
 
 
+def _print_log_axes(rows):
+    """Two reads the play-by-play makes possible: record by the opponent's COLOURS and
+    by whether you mulliganed. Same floor as every other table here — these are the
+    newest columns, so they are the thinnest. Printed only once something is recorded.
+
+    Colours are those of the opponent's NONLAND cards Arena showed, so a match conceded
+    before they cast anything is blank and not counted, rather than read as colourless."""
+    def _table(title, keyfn, order=None):
+        by = {}
+        for r in rows:
+            k = keyfn(r)
+            res = (r.get("Result") or "").strip().upper()
+            if not k or res not in ("W", "L", "D"):
+                continue
+            by.setdefault(k, {"W": 0, "L": 0, "D": 0})[res] += 1
+        if not by:
+            return
+        print(f"\n  {title:32}  {'W':>3} {'L':>3} {'D':>3}   Read")
+        print("  " + "-" * 68)
+        keys = order or sorted(by, key=lambda k: (-(by[k]["W"] + by[k]["L"] + by[k]["D"]), k))
+        for k in keys:
+            b = by.get(k)
+            if not b:
+                continue
+            n = b["W"] + b["L"]
+            read = (f"n={n} — too few to read (need ~{_MIN_SAMPLE})" if n < _MIN_SAMPLE
+                    else f"{100*b['W']/n:.0f}%  (95% CI %.0f–%.0f%%)" % _wilson(b["W"], n))
+            print(f"  {k[:32]:32}  {b['W']:>3} {b['L']:>3} {b['D']:>3}   {read}")
+
+    _table("Opponent colours (from the log)", lambda r: (r.get("Opponent Colors") or "").strip())
+
+    def _mull(r):
+        v = (r.get("My Mulligans") or "").strip()
+        if not v:
+            return ""
+        return "kept 7" if all(x.strip() == "0" for x in v.split("/")) else "mulliganed"
+    _table("Your mulligans (from the log)", _mull, order=["kept 7", "mulliganed"])
+
+
 def report(rows):
     """Win/loss per deck, with an explicit refusal to read a small sample.
 
@@ -1714,6 +1986,7 @@ def report(rows):
         print(f"  {key[:32]:32}  {b['W']:>3} {b['L']:>3} {b['D']:>3}   {read}")
     _print_pooled(rows)
     _print_manual_axes(rows)
+    _print_log_axes(rows)
     if unreadable:
         print(f"\n⚠ {len(unreadable)} row(s) have an unreadable Result and are in NO "
               f"column above — the per-deck totals therefore do not sum to "
@@ -1738,6 +2011,38 @@ def report(rows):
     print("\nA win rate separates a BROKEN deck from a fine one; it will not separate a "
           "55% deck from a 45% one without hundreds of games. Read it for disasters.")
     return 0
+
+
+def _print_game_details(changes, orphans, notes, lookup_err, n_facts, out=print):
+    """Show what the play-by-play is about to write, per match (G-52: a surface that
+    fills data prints the data it filled)."""
+    out(f"\nGame details from the play-by-play — {n_facts} game line(s), "
+        f"{len(changes)} match(es) to fill:")
+    for mid, row, moved in sorted(changes, key=lambda c: (c[1].get("Date") or "", c[0])):
+        val = {c: new for c, (_old, new) in moved.items()}
+        cur = lambda c: val.get(c, row.get(c) or "")          # noqa: E731
+        bits = []
+        if cur("On Play"):
+            bits.append(f"on the {cur('On Play')}")
+        bits.append(f"mulligans {cur('My Mulligans') or '?'} vs {cur('Opp Mulligans') or '?'}")
+        bits.append(f"turn {cur('Turns') or '?'}")
+        bits.append(f"opponent {cur('Opponent Colors') or '(no coloured card seen)'}")
+        out(f"   {row.get('Date') or '?'}  {row.get('Result') or '?'}  "
+            f"deck {row.get('Deck') or '?':<4} {mid[:8]}   " + " · ".join(bits))
+        cards = [c for c in (cur("Opponent Cards") or "").split("; ") if c]
+        if cards:
+            more = f"  … (+{len(cards) - 8})" if len(cards) > 8 else ""
+            out(f"        {'; '.join(cards[:8])}{more}")
+    if orphans:
+        out(f"   {orphans} match(es) have game lines but no result in this paste or in "
+            f"matches.csv — their details wait for the result line.")
+    for n in notes:
+        out(f"   ⚠ {n}")
+    if lookup_err:
+        out(f"   ⚠ Scryfall unavailable ({lookup_err}) — unnamed cards are written as "
+            f"#<Arena id> and named by the next run that sees these game lines.")
+    out("   Turn is Arena's count of BOTH players' turns (14 = each player's 7th). "
+        "Mulligans are yours vs theirs.")
 
 
 def main():
@@ -1885,7 +2190,8 @@ def main():
         return _with_report(0)
 
     rows, warnings = parse_log(text, me=args.me)
-    for w in warnings:
+    facts, fact_warnings = parse_game_facts(text)
+    for w in warnings + fact_warnings:
         eprint(f"WARN:  {w}")
 
     # Header upkeep rides along with every ingest — BEFORE the mapping is built, so a
@@ -1904,7 +2210,7 @@ def main():
     # ingest never renames a deck as a side effect — the rename must be asked for.
     sync_deck_names(text, apply=(args.sync_names and args.apply))
 
-    if not rows:
+    if not rows and not facts:
         if parse_deck_names(text):
             print("No completed matches in this paste — deck summaries only. Header "
                   "changes, if any, are reported above"
@@ -1974,15 +2280,38 @@ def main():
               "winning\n   team, L when it is not, D when there is none. Check it — an "
               "inverted seat\n   read would make every row here wrong in the same "
               "direction.")
+    # The play-by-play joins on the match id, so it fills this paste's new rows AND rows
+    # recorded by an earlier run — which is how matches logged before the extractor
+    # existed get their details, from whatever game lines the logs still hold.
+    detail_changes, names, names_new = [], {}, {}
+    cards_csv = os.path.join(os.path.dirname(os.path.abspath(args.out)),
+                             os.path.basename(ARENA_CARDS_CSV))
+    if facts:
+        by_id = {mid: r for r in existing + fresh
+                 if (mid := (r.get("Match ID") or "").strip())}
+        wanted = set()
+        for mid, games in facts.items():
+            if mid in by_id:
+                wanted |= opponent_card_ids(games)
+        names, names_new, lookup_err = resolve_arena_names(wanted, load_arena_cards(cards_csv))
+        detail_changes, orphans, notes = apply_game_details(by_id, facts, names)
+        _print_game_details(detail_changes, orphans, notes, lookup_err,
+                            n_facts=sum(len(g) for g in facts.values()))
+
     if not args.apply:
         print("\n(dry run — pass --apply to write matches.csv)")
         return _with_report(0)
-    if not fresh:
+    if not fresh and not detail_changes:
         print("\nNothing new to write.")
         return _with_report(0)
     write_matches(existing + fresh, args.out)
-    print(f"\nWrote {args.out} ({len(existing) + len(fresh)} total). "
-          f"See the record with: parse_matches.py --report")
+    if names_new:
+        write_arena_cards(names, cards_csv)
+    fresh_ids = {id(r) for r in fresh}
+    filled = sum(1 for _m, r, _c in detail_changes if id(r) not in fresh_ids)
+    print(f"\nWrote {args.out} ({len(existing) + len(fresh)} total"
+          + (f"; game details filled on {filled} match(es) already recorded" if filled else "")
+          + "). See the record with: parse_matches.py --report")
     return _with_report(0)
 
 

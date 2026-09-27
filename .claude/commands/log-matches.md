@@ -19,15 +19,144 @@ every launch**, so any session not extracted before the next launch is gone (the
 roster's 2026-07-27 match is a permanent casualty of exactly this). A launchd job that
 appends the filtered lines to `~/mtga-logs/arena.log` every 15 minutes makes that loss
 structurally impossible; re-ingesting the archive is always safe because dedup is by
-`matchId`. Run once on the Mac running Arena:
+`matchId`. Run once on the Mac running Arena. Three files: the extractor, the snapshot
+job that calls it, and the launchd entry that runs the snapshot.
+
+**The extractor is `scripts/mtga_extract.sh`, copied verbatim** — the Mac has no checkout,
+so this block carries it, and `tests/test_parse_matches.py` fails if this copy and the
+script differ. Edit the script, then paste it here; never edit only this copy. It passes
+the four match/deck line shapes through untouched and turns each finished game's
+play-by-play into one `[MTGA-GAME]` line (see "The play-by-play" below).
 
 ```sh
-mkdir -p ~/mtga-logs && cat > ~/mtga-logs/snapshot.sh <<'EOF'
+mkdir -p ~/mtga-logs && cat > ~/mtga-logs/extract.sh <<'EXTRACT_EOF'
+#!/bin/sh
+# mtga_extract.sh — reduce Arena's Player.log to the lines parse_matches.py reads.
+#
+#   sh scripts/mtga_extract.sh Player-prev.log Player.log > capture.log
+#
+# Output is IN LOG ORDER and must never be sorted: the parser pairs each match result
+# with the `Match to` header above it. Two kinds of line come out:
+#
+#   * the four shapes the match record has always used, verbatim — match headers,
+#     finalMatchResult, EventSetDeckV3 (the deck you played) and DeckUpsertDeckV3;
+#   * one `[MTGA-GAME]<local time>: {json}` line per FINISHED game, boiled down from
+#     the play-by-play (GREMessageType_GameStateMessage): your seat, who went first,
+#     the last turn number, each seat's mulligans, life totals, the game result, and
+#     every card each seat showed as "owner:grpId:colours" (L = land).
+#
+# WHY SUMMARISE HERE rather than keep the raw lines: the play-by-play is 1.0-2.4 MB per
+# match (measured 2026-09-27, 8 matches; single lines up to 88 KB). Archived raw, the
+# 15-minute snapshot would rewrite hundreds of MB, and no paste could carry it. A fact
+# line is about 1 KB.
+#
+# Plain POSIX sh + awk, because macOS ships BSD awk, not gawk — and that awk's regex
+# engine scans about 3 MB/s, so a regex over a whole 88 KB line is the one thing this
+# must not do (measured: each full-line match() or regex split() cost ~10 s on a 36 MB
+# log). The line is split on the single character "{" instead, which is literal and
+# fast, and regexes only ever run on the short pieces between braces.
+#
+# This file is ALSO the Mac's ~/mtga-logs/extract.sh: /log-matches embeds it verbatim,
+# and tests/test_parse_matches.py fails if the two copies differ.
+
+grep -hE 'Match to .*MatchGameRoomStateChangedEvent|"finalMatchResult"|==> EventSetDeckV3|==> DeckUpsertDeckV3|GREMessageType_GameStateMessage' "$@" 2>/dev/null |
+awk '
+# The value after "key": in s, or "" when the key is absent. index(), not match():
+# the regex engine is the slow part even on short pieces (see above).
+function num(s, key,   i) {
+    i = index(s, "\"" key "\":"); if (!i) return ""
+    return substr(s, i + length(key) + 3) + 0
+}
+function str(s, key,   i, r) {
+    i = index(s, "\"" key "\":"); if (!i) return ""
+    r = substr(s, i + length(key) + 3); i = index(r, "\""); if (!i) return ""
+    r = substr(r, i + 1); i = index(r, "\""); return i ? substr(r, 1, i - 1) : ""
+}
+function colours(s,   c) {
+    c = ""
+    if (index(s, "CardColor_White")) c = c "W"
+    if (index(s, "CardColor_Blue"))  c = c "U"
+    if (index(s, "CardColor_Black")) c = c "B"
+    if (index(s, "CardColor_Red"))   c = c "R"
+    if (index(s, "CardColor_Green")) c = c "G"
+    return c
+}
+function perseat(arr, k,   n, s, i, o) {
+    n = split(seats[k], s, " "); o = ""
+    for (i = 1; i <= n; i++) o = o (o == "" ? "" : ", ") "\"" s[i] "\": " ((k, s[i]) in arr ? arr[k, s[i]] : 0)
+    return "{" o "}"
+}
+function emit(k, e,   res, why) {
+    res = str(e, "result"); sub(/^ResultType_/, "", res)
+    why = str(e, "reason"); sub(/^ResultReason_/, "", why)
+    print "[MTGA-GAME]" stamp ": {\"matchId\": \"" mid "\", \"game\": " game \
+        ", \"seat\": " (k in seat ? seat[k] : 0) ", \"first\": " (k in first ? first[k] : 0) \
+        ", \"turns\": " (k in turns ? turns[k] : 0) ", \"winner\": " (num(e, "winningTeamId") + 0) \
+        ", \"result\": \"" res "\", \"reason\": \"" why "\"" \
+        ", \"mulligans\": " perseat(mull, k) ", \"teams\": " perseat(team, k) \
+        ", \"life\": " perseat(life, k) ", \"cards\": [" cards[k] "]}"
+    done[k] = 1
+}
+index($0, "GREMessageType_GameStateMessage") == 0 {
+    if (match($0, /\][0-9]+\/[0-9]+\/[0-9]+ [0-9]+:[0-9]+:[0-9]+( [AP]M)?/))
+        stamp = substr($0, RSTART + 1, RLENGTH - 1)
+    print; next
+}
+{
+    n = split($0, t, "{")
+    for (i = 2; i <= n; i++)
+        if (index(t[i], "\"matchID\"")) {
+            v = str(t[i], "matchID")
+            if (v != "") { mid = v; g = num(t[i], "gameNumber"); game = (g == "" ? 1 : g) }
+        }
+    if (mid == "") next
+    k = mid SUBSEP game
+    inres = 0; resseen = 0; ng = 0
+    for (i = 2; i <= n; i++) {
+        p = t[i]; j = index(p, "}"); body = j ? substr(p, 1, j - 1) : p
+        e = t[i - 1]; tail = substr(e, length(e) - 15); h = substr(p, 1, 16)
+        if (!(k in seat) && index(p, "\"systemSeatIds\"") && match(p, /"systemSeatIds": *\[ *[0-9]+ *\]/)) {
+            v = substr(p, RSTART, RLENGTH); gsub(/[^0-9]/, "", v); seat[k] = v
+        }
+        if (index(tail, "\"turnInfo\":")) {
+            tn = num(body, "turnNumber"); a = num(body, "activePlayer")
+            if (tn != "") {
+                if (!(k in turns) || tn > turns[k]) turns[k] = tn
+                if (tn == 1 && a != "" && !(k in first)) first[k] = a
+            }
+        } else if (index(h, "\"lifeTotal\"")) {
+            s = num(body, "systemSeatNumber")
+            if (s != "") {
+                if (!((k, s) in life)) seats[k] = seats[k] (seats[k] == "" ? "" : " ") s
+                life[k, s] = num(body, "lifeTotal")
+                v = num(body, "mulliganCount")
+                if (v != "" && (!((k, s) in mull) || v > mull[k, s])) mull[k, s] = v
+                v = num(body, "teamId"); if (v != "") team[k, s] = v
+            }
+        } else if (index(h, "\"instanceId\"") && index(body, "\"GameObjectType_Card\"")) {
+            o = num(body, "ownerSeatId"); gid = num(body, "grpId")
+            if (o != "" && gid != "" && !((k, o ":" gid) in have)) {
+                have[k, o ":" gid] = 1
+                cards[k] = cards[k] (cards[k] == "" ? "" : ", ") "\"" o ":" gid ":" colours(body) \
+                    (index(body, "CardType_Land") ? "L" : "") "\""
+            }
+        }
+        # One MatchScope_Game entry per game played SO FAR, so game N is entry N. A
+        # best-of-three is assumed to accumulate them; no Bo3 log has been read yet.
+        if (index(tail, "\"results\":")) { inres = !resseen; resseen = 1 }
+        if (inres) {
+            if (index(body, "MatchScope_Game")) gr[++ng] = body
+            if (j && index(substr(p, j), "]")) inres = 0
+        }
+    }
+    if (!(k in done) && ng >= game) emit(k, gr[game])
+}'
+EXTRACT_EOF
+cat > ~/mtga-logs/snapshot.sh <<'EOF'
 #!/bin/sh
 p="$HOME/Library/Logs/Wizards Of The Coast/MTGA"
 d="$HOME/mtga-logs"
-grep -hE 'Match to .*MatchGameRoomStateChangedEvent|"finalMatchResult"|==> EventSetDeckV3|==> DeckUpsertDeckV3' \
-    "$p"/Player*.log > "$d/.capture" 2>/dev/null
+sh "$d/extract.sh" "$p"/Player*.log > "$d/.capture" 2>/dev/null
 cat "$d/arena.log" "$d/.capture" 2>/dev/null | awk '!seen[$0]++' > "$d/.merged" \
     && mv "$d/.merged" "$d/arena.log"
 EOF
@@ -45,6 +174,10 @@ cat > ~/Library/LaunchAgents/com.mtga.logsnapshot.plist <<'EOF'
 EOF
 launchctl load ~/Library/LaunchAgents/com.mtga.logsnapshot.plist
 ```
+
+**Updating an existing install** needs only the `extract.sh` and `snapshot.sh` halves of
+that block (and the `mtga-matches` file below): launchd runs `snapshot.sh` by path, so the
+next run picks the new one up, and reloading the plist is unnecessary.
 
 The dedupe is line-identical and safe: every captured line shape is unique (match
 headers carry timestamps, the JSON payloads carry ids). With the archive in place, the
@@ -64,6 +197,13 @@ own dedupe. If the paste is still too big and no decks were renamed, additionall
 `==> DeckUpsertDeckV3` lines — but they are what keeps `#: arena:` headers current
 through a rename, so prefer the sed.
 
+**The one thing reduced at CAPTURE time is the play-by-play, and only because raw is not
+an option.** Measured on a real log 2026-09-27: 1.0–2.4 MB per match across 8 matches,
+single lines up to 88 KB. Kept raw, the archive would grow by hundreds of MB and the
+15-minute job would rewrite all of it every run, and no paste could carry it. The
+extractor keeps one ~1 KB `[MTGA-GAME]` line per game instead; the four match/deck line
+shapes still go into the archive verbatim.
+
 **Without the archive**, grab the log before relaunching Arena. Ask the user to run
 this on the machine running Arena and paste the output.
 
@@ -79,11 +219,16 @@ never cloned the repo at all.
 path for Windows or a non-default install.
 
 **Repo is NOT on the Arena machine** (the common case — Arena on a Mac, this repo only in
-Claude sessions) → a shell function in `~/.zshrc`, which needs nothing checked out:
+Claude sessions) → a shell function kept in `~/mtga-logs/mtga-matches.zsh` and loaded
+from `~/.zshrc`, which needs nothing checked out. Keeping it in its own file makes an
+update one paste; if an older copy sits inline in `~/.zshrc`, delete it (the `source`
+line comes later, so the file's version wins either way):
 
 ```sh
+cat > ~/mtga-logs/mtga-matches.zsh <<'MTGA_EOF'
 mtga-matches() {
   local p="$HOME/Library/Logs/Wizards Of The Coast/MTGA"
+  local d="$HOME/mtga-logs"
   local cut="$1"                        # optional YYYY-MM-DD: skip what is already in
   if [ -n "$cut" ] && ! [[ "$cut" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]; then
     echo "mtga-matches: date must be YYYY-MM-DD (got '$cut')" >&2
@@ -91,8 +236,10 @@ mtga-matches() {
     return 2
   fi
   local out
-  out=$(grep -hE 'Match to .*MatchGameRoomStateChangedEvent|"finalMatchResult"|==> EventSetDeckV3' \
-      "$HOME/mtga-logs/arena.log" "$p"/Player*.log 2>/dev/null \
+  out=$({ cat "$d/arena.log" 2>/dev/null
+          if [ -r "$d/extract.sh" ]; then sh "$d/extract.sh" "$p"/Player*.log
+          else grep -hE 'Match to .*MatchGameRoomStateChangedEvent|"finalMatchResult"|==> EventSetDeckV3' "$p"/Player*.log 2>/dev/null; fi; } \
+    | grep -E 'Match to .*MatchGameRoomStateChangedEvent|"finalMatchResult"|==> EventSetDeckV3|^\[MTGA-GAME\]' \
     | awk '!seen[$0]++' \
     | sed -E 's/\\"(MainDeck|Sideboard)\\":\[[^]]*\]/\\"\1\\":[]/g' \
     | sed -E 's/"(playerName|platformId|systemSeatId|transactionId|requestId)"[[:space:]]*:[[:space:]]*("[^"]*"|[0-9]+)[[:space:]]*,[[:space:]]*//g; s/[[:space:]]*,[[:space:]]*"(playerName|platformId|systemSeatId|transactionId|requestId)"[[:space:]]*:[[:space:]]*("[^"]*"|[0-9]+)//g' \
@@ -115,6 +262,9 @@ mtga-matches() {
     echo "  nothing since $cut — re-run with no date if that looks wrong; the parser dedupes by matchId" >&2
   fi
 }
+MTGA_EOF
+grep -q 'mtga-matches.zsh' ~/.zshrc 2>/dev/null || echo 'source ~/mtga-logs/mtga-matches.zsh' >> ~/.zshrc
+source ~/mtga-logs/mtga-matches.zsh
 ```
 
 **Three things in there are not obvious, and the date `awk` is deliberately NOT one of
@@ -162,6 +312,12 @@ silently get nothing from a trimmed paste. What makes that acceptable is the sam
 that governs the existing MainDeck/Sideboard slim — **slim at PASTE time, never at
 capture time**. `snapshot.sh` keeps `arena.log` full-fidelity, so any field dropped here
 is one re-extraction away.
+
+**The live log goes through the extractor too** (2026-09-27), so a paste carries the
+`[MTGA-GAME]` lines for games the 15-minute snapshot has not reached yet. The second
+`grep` keeps them alongside the three match shapes and still leaves `DeckUpsertDeckV3`
+out of the paste. If `extract.sh` is missing the function falls back to the plain grep —
+the matches still arrive, only their game details do not.
 
 **`pbpaste` is gone from the count.** It round-tripped the entire clipboard through the
 pasteboard a second time just to count lines, and read whatever was on the clipboard
@@ -252,7 +408,35 @@ One grep, not three pastes: the parser joins matches to decks on the log's own
 timestamps, so a split paste still resolves — but a `cut`-truncated line loses its
 timestamp and then only the ORDER is left, which a split paste destroys.
 
-Do not ask for the whole log — it is tens of MB of game-state spam. The grep is the ask.
+Do not ask for the whole log — it is tens of MB, almost all of it the play-by-play. That
+part is worth having, but only through the extractor, which reduces each game to one
+line; the grep (or `mtga-matches`) is the ask.
+
+### The play-by-play (`[MTGA-GAME]` lines, 2026-09-27)
+
+With Detailed Logs on, Arena also writes the full game state
+(`GREMessageType_GameStateMessage`). The extractor reads it and emits, per finished game:
+your seat, who went first, the last turn number, each seat's mulligans, the life totals,
+the result, and every card each seat showed (Arena id + colours). The parser joins it to
+the match on the match id and fills **On Play** (only when blank — a value you typed is
+kept, and a disagreement is reported), **My Mulligans**, **Opp Mulligans**, **Turns**,
+**Opponent Colors** and **Opponent Cards**. It fills rows recorded by EARLIER runs too, so
+the matches still in `Player.log` / `Player-prev.log` get their details on the next
+paste. Older games are gone: the archive did not keep these lines before this change.
+
+- **Card names** come from Scryfall's Arena-id lookup and are cached in
+  `arena-cards.csv`, so each card costs one request ever. A card Scryfall cannot name, or
+  any card during an outage, is written as `#<Arena id>` and named by a later run that sees
+  the same game line.
+- **Turns** is Arena's turn counter, which counts both players' turns — 14 is each
+  player's 7th.
+- **Opponent Colors** are the colours of the NONLAND cards they showed; a match conceded
+  before they cast anything reads blank rather than guessed.
+- **Why you lost stays yours** (`--annotate`). The log shows what happened, not which part
+  of it decided the game.
+
+A best-of-three is handled per game (values joined with `/`) but has never been checked
+against a real Bo3 log; read the first one's dry run closely.
 
 **Privacy:** the parser deliberately stores no `userId` and no `playerName`. If a raw
 paste lands in the conversation it still contains both; don't echo them back, and don't
@@ -273,6 +457,9 @@ opponent deck. Check two things before applying:
 - **Does the date look right?** The parser prefers the log line's LOCAL timestamp and
   falls back to the JSON's UTC epoch, which files an evening session a day late. A blank
   or shifted date means the header lines were stripped from the paste.
+- **Do the game details look right?** Each match with a `[MTGA-GAME]` line prints on the
+  play/draw, mulligans, the last turn and the opponent's colours and first cards. Play or
+  draw is the one you can check from memory; an inverted seat read would flip it.
 - **Is the deck attributed?** The run prints a `Deck attribution` block: every Arena deck
   name it saw, the repo deck it resolved to, and *how* (`#: arena: header` or the
   `name prefix` guess). Read it — the prefix step assigns data from a naming convention,
@@ -342,10 +529,11 @@ knows whether Arena's name or the repo's is the one they meant.
 
 ## Stage 1b — Hand-entered matches (`--add`)
 
-**The log cannot see four things that matter, and one whole platform.** Arena records the
-deck you submitted and the raw outcome; it records nothing about the opponent's
-archetype, whether you were on the play, or why you lost. And a **phone game never
-reaches the desktop `Player.log` at all** — that log is written by the install that
+**The log cannot see two things that matter, and one whole platform.** Arena records the
+deck you submitted, the outcome and — through the extractor — who went first, mulligans
+and the cards the opponent showed; it records no archetype LABEL for their deck and
+nothing about why you lost. And a **phone game never reaches the desktop `Player.log` at
+all** — that log is written by the install that
 played the match, so a couch session on iOS is invisible to Stage 1 no matter how you
 extract it. `--add` is the path for both.
 
@@ -389,8 +577,8 @@ browser would discard an evening's matches.
 ## Stage 1c — Annotate matches the log DID record (`--annotate`)
 
 Stage 1b is for matches Arena never saw. This is the other half: a match Arena *did*
-log already has a row with a real deck, result and date — what it lacks is the four
-things only you know. **Do not re-enter those through `--add`.** `--add` cannot dedupe
+log already has a row with a real deck, result and date — what it lacks is what only you
+know (and `play`, when the game lines were not captured). **Do not re-enter those through `--add`.** `--add` cannot dedupe
 (no Arena `matchId` on a hand row), so it would append a second row for a match already
 recorded — double-counting precisely the matches you cared enough to annotate.
 
