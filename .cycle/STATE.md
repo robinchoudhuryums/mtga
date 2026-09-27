@@ -177,6 +177,14 @@ Updated: 2026-09-27 (G-87 shipped; decks 17 and 30 tuned; `/sync-docs` pass; dec
   mana) — K-12's long form has the probe.
 
 ## Open follow-on items
+- **`consistency`'s NONLAND disclosure (G-35) is silent on two real mana engines (found
+  2026-09-27, deck 21).** `lib.land_production` reads Bloom Tender's Vivid clause ("For each
+  color among permanents you control, add one mana of that color") as producing NOTHING, so
+  `uncounted_mana_sources` omits it and the page prints no `ⓘ NONLAND` line at all; Enduring
+  Vitality ("Creatures you control have '{T}: Add one mana of any color'") is a GRANTED
+  ability, excluded by G-35's design. Deck 21 now runs both, so its cast-on-curve figures are
+  floors with nothing saying so. The Vivid pattern is a G-67 pattern hole (measure the pool
+  before widening); the granted case is a disclosure question, not a counting one.
 - **Three stale `#: tier:` claims passed `--audit-rationale` on deck 42a (found 2026-09-27
   while re-grading it).** (1) "…what the uncounted pieces cannot replace is a cheap
   unconditional answer on demand, which is why Hero's Downfall stays" — Hero's Downfall had

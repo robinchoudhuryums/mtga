@@ -1,6 +1,6 @@
 #: name: Gastromancer (Food sac)
 #: format: Standard
-#: tier: A — Abzan (WBG) food-aristocrats; interaction 9 on a 3.06 curve, and card advantage 8 since the 2026-09-27 tunes turned the sacrifices into draws (Sephiroth, Baron Bertram Graywater, Liliana) and into drains (The Sackville-Bagginses, Popular Egotist). Re-graded B→A after the mana fix: dropping the 1-card red splash (Ragost → variant 21a) collapsed a stretched 4-color base to a focused Abzan. A-floor on interaction. The residual is the mana: three primary colours on 24 lands, so a two-pip card still lands late — Bristlebud Farmer's {G}{G} is 59.1% on turn 4 and Tragedy Feaster's {B}{B} 74.1%, even after the owned-dual rebuild. The intentional 4-color version is variant 21a.
+#: tier: A — Abzan (WBG) food-aristocrats; interaction 9 on a 3.28 curve, and card advantage 8 since the 2026-09-27 tunes turned the sacrifices into draws (Sephiroth, Baron Bertram Graywater, Liliana) and into drains (The Sackville-Bagginses, Popular Egotist). Re-graded B→A after the mana fix: dropping the 1-card red splash (Ragost → variant 21a) collapsed a stretched 4-color base to a focused Abzan. A-floor on interaction. The residual is the mana: three primary colours on 24 lands, so a two-pip card still lands late — Enduring Vitality's {G}{G} is 52.5% on turn 3 and Moogles' Valor's {W}{W} 70.5% on turn 5, even after the owned-dual rebuild. Bloom Tender and Enduring Vitality are the answer, and no probability model here counts their mana. The intentional 4-color version is variant 21a.
 #: colors: WBG
 #: archetype: Abzan (W/B/G) Food-sacrifice / artifact-aristocrats — a deep sac-payoff web. The namesake Ragost moved to variant 21a along with the red splash.
 #: notes: Abzan (W/B/G) Food-sacrifice / artifact-aristocrats. Food generators feed a deep
@@ -49,15 +49,25 @@
 #: notes: gate is free here, so it taxes 3 life / a permanent / a card every turn). Interaction
 #: notes: 11 → 9 (Anchovy & Banana and M.O.D.O.K.'s -1/-1 left), accepted; card advantage 7 → 8,
 #: notes: board power 51 → 58, avg MV 2.92 → 3.06. Food-token makers stay 12, other token makers 7 → 8.
+#: notes: 2026-09-27 fourth pass (owner's picks): −Momo/+Bloom Tender ({1}{G}; taps for one mana of
+#: notes: each colour among your permanents — usually 2-3 from turn 3); −Omni-Cheese Pizza/+Enduring
+#: notes: Vitality (every creature, tokens included, taps for any colour; returns as an enchantment
+#: notes: when it dies); −G'raha Tia/+West Wind Avatar (the same once-a-turn draw off things leaving,
+#: notes: on a 7/7 trample); −Bristlebud Farmer/+Moogles' Valor (CRAFT, R: a lifelink 1/2 per
+#: notes: creature, then team indestructible — wipe insurance and fodder); −Scavenger's Talent/
+#: notes: +Felidar Retreat (landfall: a 2/2 Cat Beast or team counters; Heaped Harvest and Cabbage
+#: notes: Merchant add extra land drops). Interaction held at 9, protection 3 → 4, board power 58 →
+#: notes: 60, avg MV 3.06 → 3.28, 1-drops down to one (Deadly Precision). Reanimation is now Cauldron
+#: notes: of Essence and Moseo only. West Wind Avatar costs 7: plan to reach it through Bloom Tender,
+#: notes: Enduring Vitality, Sackville's Treasure and Heaped Harvest, not through land drops.
 
 # Nonland — sac payoffs / aristocrats
 1 Pizza Face, Gastromancer (TMT) 163
 1 Unlucky Cabbage Merchant (TLA) 201
-1 G'raha Tia (FIN) 21
+1 West Wind Avatar (TMT) 137
 1 Cauldron of Essence (SOS) 179
 1 Ice Cream Kitty (TMT) 150
 1 Baron Bertram Graywater (OTJ) 195
-1 Scavenger's Talent (BLB) 111
 1 Witherbloom Charm (SOS) 244
 1 Ygra, Eater of All (BLB) 241
 1 Bullseye, Death Dealer (MSH) 209
@@ -75,9 +85,10 @@
 1 Heaped Harvest (BLB) 175
 1 Carrot Cake (BLB) 7
 1 Heroic Feast (MSH) 172
-1 Omni-Cheese Pizza (TMT) 176
+1 Enduring Vitality (DSK) 176
 1 Lita, Little Orphan Amphibian (TMT) 19
-1 Bristlebud Farmer (BIG) 17
+1 Bloom Tender (ECL) 166
+1 Felidar Retreat (FDN) 574
 
 # Nonland — removal
 1 Bake into a Pie (FDN) 169
@@ -89,10 +100,10 @@
 
 # Nonland — value / light artifact package
 1 Oltec Matterweaver (BIG) 3
-1 Momo, Playful Pet (TLA) 30
 1 Moseo, Vein's New Dean (SOS) 91
 1 Tragedy Feaster (SOS) 102
 1 Lord Dregg, Insect Invader (TMT) 65
+1 Moogles' Valor (FIN) 27
 
 # Lands (24 — owned Abzan fixing: 2 shocklands, 3 Verges, 2 Gathering Place, Shattered Sanctum,
 # Starting Town, 2 Sandsteppe Citadel, 2 Jungle Hollow, Castle Doom + 10 basics)

@@ -1,7 +1,4 @@
 Card Name,Type,Card Text,Color(s),Synergies,Set Code,Collector #,Rarity,Target,Note,Power,Power Source
-Bristlebud Farmer,Creature — Plant Druid,"Trample
-When this creature enters, create two Food tokens. (They're artifacts with ""{2}, {T}, Sacrifice this token: You gain 3 life."")
-Whenever this creature attacks, you may sacrifice a Food. If you do, mill three cards. You may put a permanent card from among them into your hand.",G,Plant; Druid; mill; lifegain; sacrifice; tokens; etb; food; trample; evasion; graveyard,BIG,17,Mythic,21,Craft (2026-09-27): chosen for deck 21 (Gastromancer) from the owner's candidate pile,4.5,seed
 Oltec Matterweaver,Creature — Human Artificer,"Whenever you cast a creature spell, choose one —
 • Create a 1/1 colorless Gnome artifact creature token.
 • Create a token that's a copy of target artifact token you control.",W,Human; Artificer; tokens,BIG,3,Mythic,17; 21; 74a; 42a,"Craft (2026-09-26): Gnome/artifact-token copier in 17, 21, 74a, 42a; rotates ~2026",6.5,seed
@@ -126,7 +123,7 @@ III — Other creatures you control get +2/+2 and gain trample until end of turn
 Machinist's Arsenal,Artifact — Equipment,"Job select (When this Equipment enters, create a 1/1 colorless Hero creature token, then attach this to it.)
 Equipped creature gets +2/+2 for each artifact you control and is an Artificer in addition to its other types.
 Machina — Equip {4} ({4}: Attach to target creature you control. Equip only as a sorcery.)",W,Equipment; tokens; etb; equipment; pump; machina; job select; equip,FIN,23,Rare,21a,"artifact payoff — +2/+2 per artifact, Job-select token; fits the big-artifact goodstuff shell",5.0,hand
-Moogles' Valor,Instant,"For each creature you control, create a 1/2 white Moogle creature token with lifelink. Then creatures you control gain indestructible until end of turn.",W,Then; lifegain; tokens; indestructible; resilience,FIN,27,Rare,,,4.0,seed
+Moogles' Valor,Instant,"For each creature you control, create a 1/2 white Moogle creature token with lifelink. Then creatures you control gain indestructible until end of turn.",W,Then; lifegain; tokens; indestructible; resilience,FIN,27,Rare,21,Craft (2026-09-27): deck 21 (Gastromancer) — a lifelink 1/2 per creature then team indestructible; wipe insurance and Sackville/Egotist fodder,4.0,seed
 The Water Crystal,Legendary Artifact,"Blue spells you cast cost {1} less to cast.
 If an opponent would mill one or more cards, they mill that many cards plus four instead.
 {4}{U}{U}, {T}: Each opponent mills cards equal to the number of cards in your hand.",U,mill; cost-reduction; graveyard,FIN,85,Rare,51,,5.5,seed
