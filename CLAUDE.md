@@ -622,15 +622,15 @@ is protecting.
   (Splinter's Ninja clause) is counted against the whole deck — 27 feeders in deck 20
   against a correct 12. Read a `✱ multiplier` figure on a tribal doubler as an upper bound
   until that is fixed.
-  **A BOUNDED TERM IS ONLY BOUNDED USEFULLY IF THE ROSTER SPANS ITS RANGE (fixed
-  2026-09-03).** The floor/key/cap were ONE set of globals across all axes, and `triggers`
-  has a roster MINIMUM above the old floor — so every deck cleared it, 92% pinned the cap,
-  and the term was constant roster-wide on the axis holding most of the pool's doublers.
-  `_DOUBLER_CALIB` sets floor/key per axis at that axis's OWN p25/p75, and growth is
-  measured ABOVE the floor rather than from zero, since counting the baseline every deck
-  has is what saturates. **Re-derive when a distribution moves** (the `TIER_FLOOR_REQ`
-  hazard), and **never read one axis discriminating as evidence all four do** — the
-  `damage` axis was calibrated separately for exactly that reason. [G-33]
+  **KNOWN GAP 2 (2026-09-26): `doubler_axis` returns ONE axis, the first match**, so
+  Doubling Season is priced as a TOKEN doubler only — its counters half is unread by `✱`,
+  `screen` and `suggest-homes`, and it carries just a `tokens` tag, as does every doubler
+  that says bare "counters" (Loading Zone, Doc Samson). Deck 30's `cuts` ranked it
+  2nd-weakest; `#: protect:` such a card until this is fixed.
+  **A BOUNDED TERM IS ONLY BOUNDED USEFULLY IF THE ROSTER SPANS ITS RANGE (2026-09-03)**:
+  `_DOUBLER_CALIB` sets floor/key per axis at that axis's OWN p25/p75 — one global set let
+  every deck clear `triggers` and 92% pin the cap. **Re-derive when a distribution moves**,
+  and **never read one axis discriminating as evidence all four do**. [G-33]
 - **Before committing a deck edit run `deck.py preflight <id>`, and grade a cut/swap with
   `deck.py quality`.** `preflight` folds legal + owned + castable + a full `check_all`
   into one READY/BLOCKED verdict. `quality --json` before, `--vs FILE` after, flags
@@ -701,7 +701,11 @@ is protecting.
   the honest stance for a fuzzy signal. Their castability filter reads the PRINTED COST
   via `_candidate_castability`, same as `suggest` proper — they were the two siblings the
   G-58 fix missed, hiding 34 castable interaction cards and 25 mana sources from
-  mono-color decks on exactly the paths this rule routes deficits to (BS-01). [G-38]
+  mono-color decks on exactly the paths this rule routes deficits to (BS-01).
+  **`--needs`' header source count is the one G-35 holdout (found 2026-09-26)**:
+  `deck_needs` sums land colour IDENTITY rather than calling `deck_source_profile`, so it
+  prints a different count than `consistency` — deck 30 reads G 15 / R 10 / U 12 there
+  against U 13 / R 11 / G 15, and decks 1 and 17 disagree too. Trust `consistency`'s. [G-38]
 - **`cuts` folds a card-QUALITY (power) co-signal**, so an on-theme-but-weak card sorts
   UP the cut list and an on-theme bomb is protected. Bounded and neutral-centred, so it
   only breaks near-ties; a `Pw` column shows it. Still grade from the oracle text, not
@@ -1398,7 +1402,9 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   all. The castability lint reads the deck's `#: colors:` header, so a stale header
   manufactures phantom strays — a flag is a review signal, not a hard failure.
   **CONNIVE is an unread keyword here**, so a FLAT metric after a tune is not proof the
-  tune failed. [K-12]
+  tune failed. **Live instance (2026-09-26): a ONE-SIDED sweep scores zero roles** —
+  Soul Immolation's "deals X damage to each opponent and each creature they control"
+  leaves deck 30 reading interaction 7 against a real 8. [K-12]
 - **A LITERAL TYPE-NAME SEARCH CANNOT SEE THE CHOOSE-A-TYPE CATEGORY, and a false negative
   there reads as a finished answer.** A sweep for "Robots you control get" / "for each
   Robot" returned zero and an archetype was declined in writing as "bodies without a

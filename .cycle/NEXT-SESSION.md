@@ -19,7 +19,33 @@ commands disagree.
 
 ## 0-current. THE 2026-08-24 SESSION (READ THIS FIRST — supersedes §0-latest below)
 
-> **STATE STAMP, 2026-09-25 (NEWEST).** One thing in flight: the **match digest** —
+> **STATE STAMP, 2026-09-27 (NEWEST — supersedes the 2026-09-25 stamp below).** Two
+> threads since the last stamp, both committed on `claude/sync-commands-mmmsdb`.
+>
+> **1. G-87 SHIPPED** — a Verge's second colour and the MSH basic-gated colours are priced
+> by the chance the gate is met, not as full sources (`lib.gated_source_credit`). 42 decks'
+> source counts moved, all down; 0 tier floors. Long form + residuals in `docs/gotchas.md`
+> [G-87]; the recommender half (`suggest --lands`, `wishlist._land_value`) is still open.
+>
+> **2. DECKS 17 AND 30 TUNED, all from owned cards except one craft.** Deck 17: several
+> passes plus an owned manabase (Oltec Matterweaver is the one craft; it also went into 21,
+> 74a and 42a). Deck 30: fifteen swaps across six commits — among them Doubling Season,
+> Bristly Bill, Berta, Warden of the Grove, Goldvein Hydra, Applied Geometry, Mikey & Leo,
+> Loot and Terrasymbiosis — plus a rebuilt green manabase (G 12 → 15, cards under 90% on
+> curve 33 → 21). Floor holds A; each commit message and the deck's `#: notes:` carry the why.
+>
+> **THREE TOOLING HOLES THE DECK 30 TUNE SURFACED — documented, NOT fixed:**
+> (a) `doubler_axis` returns ONE axis, so Doubling Season is priced as tokens-only and
+> generic-"counters" doublers get no `counters` tag (G-33, KNOWN GAP 2); (b) `suggest
+> --needs` prints a source count from colour IDENTITY that disagrees with `consistency`
+> on decks 30/17/1 (G-38); (c) a one-sided sweeper worded "each opponent and each creature
+> they control" scores ZERO roles (K-12). Each needs its roster measurement before a fix.
+>
+> **OPEN HUMAN CALLS (never auto-written):** deck 17 claims C against an A floor (the tool
+> prints "possibly UNDER-graded"); deck 42a claims B against A; deck 47 claims B against A.
+> The match-digest Step 0 below is still waiting on the owner.
+>
+> **STATE STAMP, 2026-09-25.** One thing in flight: the **match digest** —
 > recording play/draw, mulligans, land drops and the opponent's cards from Arena's full
 > game-state log, so loss reasons stop depending on memory. The plan, the owner's three
 > decisions and the Step 0 check are in **`.cycle/match-digest-plan.md`**. NOTHING IS

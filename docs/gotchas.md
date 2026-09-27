@@ -2397,6 +2397,27 @@ grades on `role_tally`, which reads TEXT) and **1 of 111 `cuts` top-3 sets chang
 That deck's own thesis card had been ranked its second-weakest, the same shape G-40 records
 for Delney in deck 46. `check_suggest`'s doubler probe tested only the passive form and so
 could not have caught this; it now covers both voices and both near-miss families.
+
+### 2026-09-26 — `doubler_axis` returns ONE axis, and Doubling Season's counter half is unread
+
+Found tuning deck 30, a counters/Fractal deck whose thesis is doubling. The owned Doubling
+Season ranked **1,325th of 1,469** owned candidates in `suggest`, `screen` called it
+*tangential* with `✱ multiplier — doubles tokens (6 feeders)`, and once it was added `cuts`
+ranked it the deck's **2nd-weakest card**. Two causes, neither the BS11 voice fix:
+
+- `doubler_axis` walks `_DOUBLER_AXES` and returns the FIRST axis whose pattern matches.
+  BS11 taught both the tokens and counters patterns the active voice, so Doubling Season
+  matches both — but tokens is tried first, so every consumer (`doubler_support`, the
+  `cuts` ✱ term, `screen`, `suggest-homes`) prices it against 6 token feeders instead of
+  17 counter feeders.
+- The tagger gives no `counters` tag to a doubler that says bare "counters" rather than
+  "+1/+1 counters": Doubling Season carries only `tokens`; Loading Zone carries
+  `exile cast; warp; tempo; cost-reduction`; Doc Samson carries `Gamma; Doctor; Hero; mana`.
+  The Earth Crystal and Michelangelo, which say "+1/+1 counters", ARE tagged.
+
+Workaround applied: Doubling Season is in deck 30's `#: protect:`. The fix is a
+multi-axis return (take the axis with the most support) plus a `counters` tag for the
+generic replacement — measure both roster-wide before landing (G-40).
 ## [G-83] A cost that SCALES with a deck count, priced by nothing
 
 Every model in this repo prices a card at its PRINTED cost. That is right for most cards
@@ -2942,6 +2963,24 @@ not printed cost — the G-58 bug re-introduced on exactly the paths this rule r
 deficits to, hiding a measured 34 castable interaction cards + 25 mana sources from
 mono-color decks. Both now use `_candidate_castability`, the same filter as `suggest`
 proper. Full incident under G-58's 2026-08 addendum.
+
+### 2026-09-26 — `--needs` prints its own source count
+
+`cmd_suggest_needs` prints `sources …` from `deck_needs`, which sums each land's colour
+IDENTITY (plus basics). Every other surface reads `deck_source_profile` (G-35). The two
+disagree whenever a deck runs a basic fetch (counted per basic colour by G-35, colourless
+by identity), a type-gated colour (G-87 credit vs a full source) or an off-colour dual:
+
+| deck | `--needs` | `consistency` |
+|---|---|---|
+| 30 | G 15, R 10, U 12 | U 13, R 11, G 15 |
+| 17 | B 9, G 11, R 8, U 8, W 8 | W 9, U 9, B 10, R 9, G 12 |
+| 1  | B 17, R 16 | B 16, R 15 |
+
+`deck_needs` also uses the figure to pick the "scarcest" colour it nudges the fixing
+list toward, so the disagreement can change a recommendation, not just a header. Not
+fixed here (a sync-docs pass writes no code); the fix is to route `deck_needs` through
+`deck_source_profile` and re-measure the fixing picks.
 
 
 ## [G-39] `deck.py cuts` folds a card-QUALITY (power) co-signal into the ranking (#3)
@@ -4967,6 +5006,19 @@ Note the automated split is MORE generous than a hand read: on deck 57 it calls 
 Ghost-Spider repeatable (loyalty and a counter-sink genuinely are, in principle) where a
 human counting "engines" would say only Charred Foyer. Read it as a structural split, not
 a power judgment — which is the whole point of not building the scale.
+
+### 2026-09-26 — a one-sided sweeper scores no role
+
+Soul Immolation ("deals X damage to each opponent and each creature they control") scores
+ZERO roles, so deck 30's interaction reads 7 — exactly the A-floor minimum — against a
+real 8, and every cut decision in that tune had to treat the deck as having no slack.
+Probed: the miss is the COMBINED target list — "damage to each creature they control"
+scores Sweeper alone, but "to each opponent and each creature …" scores nothing (and with
+"your opponents control" scores only Burn / drain). Same
+pass: Cheering Crowd ("that player may put a +1/+1 counter on this creature. If they do,
+they add {C} for each counter on it") was acknowledged into `role_baseline.txt` as
+zero-role — a conditional mana ability the Ramp patterns do not read. Both are G-67
+PATTERN holes, not taxonomy holes; measure the roster before widening either.
 
 ## [K-13] A literal type-name search cannot see the choose-a-type category — and the false negative reads as an answer
 
