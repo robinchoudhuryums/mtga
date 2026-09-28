@@ -11455,13 +11455,17 @@ def cmd_resolve(args):
     # Ascension, a TLE supplemental card, reached a finished 60 and was only caught two
     # validation steps later by `deck.py legal`. Surfacing it here means the name list is
     # checked at the moment it becomes deck lines.
+    # Checked against the POOL's key, not the raw name (G-08/BS8-04): `Historic Brawl`
+    # matched no Scryfall key, so every card read illegal, and `Brawl` tested Scryfall's
+    # `brawl` (the 100-card format), so a non-Standard card passed a 60-card Brawl deck.
     fmt = (getattr(args, "format", None) or "standard").strip().lower()
-    if fmt and fmt != "any":
+    lkey = pool_format_key(fmt) if fmt != "any" else ""
+    if lkey:
         resolved = [_card_line_name(ln) or "" for ln in lines]
         legal = _legality_of([n for n in resolved if n])
         illegal = [n for n in resolved
                    if n and legal.get(n.lower()) is not None
-                   and fmt not in legal.get(n.lower(), set())]
+                   and lkey not in legal.get(n.lower(), set())]
         if illegal:
             eprint(f"\n⚠ NOT legal in {fmt} ({len(illegal)}): {', '.join(illegal)}")
             eprint("   Resolving a printing is not a legality check — pass --format any to "

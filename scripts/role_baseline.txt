@@ -213,6 +213,7 @@ Improvisation Capstone
 Ingenious Leonin
 Insatiable Skittermaw
 Interface Ace
+Invasion Reinforcements
 Invasion Submersible
 Involuntary Employment
 Iron Hills Stalwart
@@ -221,6 +222,7 @@ Ironpaw Aspirant
 Jadelight Spelunker
 Jeong Jeong, the Deserter
 Jeskai Brushmaster
+Jet, Rebel Leader
 Joo Dee, One of Many
 K'un-Lun Warrior
 Kastral, the Windcrested
@@ -332,6 +334,7 @@ Raph & Mikey, Troublemakers
 Raphael, the Nightwatcher
 Reckless Velocitaur
 Red Room Recruit
+Relief Captain
 Relm's Sketching
 Reno and Rude
 Resentful Revelation

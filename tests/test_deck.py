@@ -6414,6 +6414,24 @@ class TestPoolFormatKey:
         rep = deck.legality_report(meta, cards, "Brawl", leg)
         assert any("Historic Only Card" in p for p in rep["problems"])
 
+    def _resolve_warning(self, monkeypatch, capsys, fmt):
+        import argparse
+        monkeypatch.setattr(deck, "_printing_index",
+                            lambda: {"historic only card": ("Historic Only Card", "XYZ", "1")})
+        monkeypatch.setattr(deck, "_legality_of",
+                            lambda names: {"historic only card": {"brawl", "historic"}})
+        rc = deck.cmd_resolve(argparse.Namespace(names=["Historic Only Card"], format=fmt,
+                                                 expect=None, check=None, fix=None))
+        assert rc in (0, None)
+        return capsys.readouterr().err
+
+    def test_resolve_checks_the_pool_key_not_the_raw_name(self, monkeypatch, capsys):
+        # `Historic Brawl` matched no Scryfall key, so resolve called EVERY card illegal;
+        # `Brawl` tested Scryfall's 100-card `brawl`, so a non-Standard card passed.
+        assert "NOT legal" not in self._resolve_warning(monkeypatch, capsys, "Historic Brawl")
+        assert "NOT legal" in self._resolve_warning(monkeypatch, capsys, "Brawl")
+        assert "NOT legal" not in self._resolve_warning(monkeypatch, capsys, "any")
+
 
 class TestFillerCastability:
     """BS8-05: the `tier --to` / `redundancy` fillers read the PRINTED COST, like every
