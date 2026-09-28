@@ -1,81 +1,66 @@
-#: name: Team Avatar — Brawl
-#: format: Historic Brawl
+#: name: Team Avatar — Standard Brawl
+#: format: Brawl
 #: colors: GWU
 #: based-on: deck.txt
 #: commander: Katara, the Fearless
-#: archetype: 100-card Brawl (Arena's "Brawl" queue, which uses the Historic card pool)
-#: archetype: built from the Bant Ally trigger-doubling deck (deck 78). Katara, the
-#: archetype: Fearless leads from the command zone, and every triggered ability of an Ally
-#: archetype: you control fires twice while she is out. Deck 78's 60 carry over, with one
-#: archetype: colour-identity swap. The 40 added cards deepen the same plan rather than
-#: archetype: change it: three more trigger multipliers (Elesh Norn, Roaming Throne naming
-#: archetype: Ally, Virtue of Knowledge), a third token doubler (Exalted Sunborn), ten more
-#: archetype: Allies whose enter or attack triggers are worth doubling, two non-Ally
-#: archetype: enter payoffs (Galadriel, Rumor Gatherer), five cheap answers,
-#: archetype: protection for the engine, two mana rocks/dorks and a 38-land manabase.
-#: tier: B — PROVISIONAL, held at B by DENSITY although the metrics floor reads A. The
-#: tier: floor counts cards, not cards per 60, and this list is 100. Interaction 11 and
-#: tier: card advantage 5 clear the A requirement as raw counts, but scaled to 60 cards
-#: tier: they are about 6.6 and 3, which is B territory (A wants 7 and a sum of 11 in a
-#: tier: 60). So on the resilience axis this list is level with deck 78, not ahead of it.
-#: tier: It is ahead on the engine and on cheap answers: five trigger multipliers
-#: tier: where deck 78 has two (eight multipliers in all, against its four), and Swords
-#: tier: to Plowshares, Path to Exile and Get Lost on top of the tricks deck 78 relies
-#: tier: on. Card advantage is the thin axis: the new draw (Rumor Gatherer, Galadriel,
-#: tier: The Blue Spirit, Forecasting Fortune Teller) depends on creatures entering, like
-#: tier: the old. PROVISIONAL because no Brawl game has been played with it, and 32 of
-#: tier: the 100 are not yet owned.
-#: protect: Katara, the Fearless; South Pole Voyager; Avatar Enthusiasts; Haru, Hidden Talent; Suki, Kyoshi Warrior; Starfield Vocalist; Doubling Season; Elesh Norn, Mother of Machines; Roaming Throne
-#: notes: THE ONE COLOUR-IDENTITY SWAP: Jet, Freedom Fighter is {2}{R/W}{R/W}{R/W}, and
-#: notes: a hybrid symbol counts toward colour identity, so he is red and illegal under a
-#: notes: G/W/U commander. Prayer of Binding ({3}{W}, flash, exile a nonland permanent)
-#: notes: replaces him. Its enters trigger is doubled by Starfield Vocalist, Elesh Norn and
-#: notes: Virtue of Knowledge (they double enters-caused triggers of any permanent), not by
-#: notes: Katara or Roaming Throne (it is not an Ally).
-#: notes: THE MULTIPLIERS STACK. Each "triggers an additional time" effect adds one more
-#: notes: trigger, so they add together rather than multiply. An Ally's triggers fire once
-#: notes: more for Katara and once more for Roaming Throne (name Ally as it enters). An
-#: notes: enters trigger of any permanent fires once more for each of Starfield Vocalist,
-#: notes: Elesh Norn and Virtue of Knowledge. Elesh Norn also stops opponents' permanents
-#: notes: from triggering when anything enters. The token doublers (Doubling Season,
-#: notes: Elspeth, Exalted Sunborn) double the OUTPUT of those triggers, so they multiply.
-#: notes: Naming Ally makes Roaming Throne an Ally itself, so White Lotus
-#: notes: Reinforcements pumps it and the Ally-enters payoffs fire when it lands. Its
-#: notes: doubling is static, so there is nothing of Throne's for Katara to double, and
-#: notes: it reaches the attack and death triggers the enters-only doublers miss.
-#: notes: JET, REBEL LEADER AND THE BLUE SPIRIT ARE A PAIR. Jet puts a creature with mana
-#: notes: value 3 or less from the top five onto the battlefield attacking; 22 of the 100
-#: notes: qualify, so one look hits about 72% of the time, and Katara gives two looks.
-#: notes: A creature Jet puts in enters during combat, which is what The Blue Spirit draws
-#: notes: on (also doubled; both are Allies). The Blue Spirit's flash also lets the first
-#: notes: creature each turn be cast during combat for the same draw.
-#: notes: AANG, AIRBENDING MASTER CAN TARGET YOUR OWN CREATURE. Airbending an Ally you
-#: notes: control exiles it and lets you recast it for {2}, which re-fires its enters
-#: notes: trigger, and a creature leaving without dying gives Aang an experience counter,
-#: notes: which makes an Ally token every upkeep.
-#: notes: MANA. 38 lands (12 basics) plus Arcane Signet, Hermitic Herbalist and Great
-#: notes: Divide Guide. W 23 / U 18 / G 20 sources. Katara herself is 68% on turn
-#: notes: three, up from 57% in deck 78. Katara, Water Tribe's Hope was parked in deck 78
-#: notes: waiting for blue sources, and is in now, but {2}{W}{U}{U} is still only 60% on
-#: notes: turn five, among the list's worst castability rows. `consistency`'s "consider more lands
-#: notes: (23–26)" advice is written for 60 cards; 38 of 100 is normal for Brawl.
-#: notes: NO SWEEPER, deliberately. The deck wins with a wide board, so Farewell, Sunfall
-#: notes: and Doomskar would hit it hardest. Heroic Intervention is the answer to an
-#: notes: opposing sweeper instead. Time Wipe (keeps one creature) is the one to try if
-#: notes: board stalls turn out to be the problem.
-#: notes: CONSIDERED AND LEFT OUT: Mondrak, Glory Dominus and Parallel Lives (a fourth
-#: notes: token doubler), Panharmonicon (a fourth enters doubler), Appa, the Vigilant
-#: notes: (seven mana), Toph, Earthbending Master and Master Piandao. Any of them is a
-#: notes: reasonable swap for a weak slot once games show which slots are weak.
-#: notes: TOOLING CAVEATS for this list, the roster's first Historic Brawl deck. `check`
-#: notes: marks Roaming Throne, Virtue of Knowledge, Get Lost and Botanical Sanctum as
-#: notes: rotating, but Standard rotation does not affect Brawl legality. `targets` labels
-#: notes: Jet and Skyclave Apparition's mana-value limits as "in the yard"; the counts are
-#: notes: right, the wording is not. The tier floor counts absolute cards (see tier).
-#: notes: CRAFT COST, as information only: 32 of the 100 are not in the library, which is
-#: notes: 6 mythic, 20 rare, 4 uncommon, 2 common.
+#: archetype: Brawl conversion of the Bant Ally trigger-doubling deck (deck 78). The
+#: archetype: Standard list was already 60-card singleton and built AROUND Katara, so she
+#: archetype: is the natural commander: every Ally's triggered ability fires twice while
+#: archetype: she is out, and from the command zone she is always available. The plan is
+#: archetype: unchanged — Allies entering, South Pole Voyager / Avatar Enthusiasts / Haru
+#: archetype: paying off each entry, with Starfield Vocalist, Elspeth and Doubling Season
+#: archetype: multiplying the same events Katara doubles.
+#: tier: B — PROVISIONAL, AT its B metrics floor, the same letter as deck 78, because the
+#: tier: two lists differ by one card and the floor did not move: interaction 6 (Prayer of
+#: tier: Binding replaces Jet's one answer), card advantage 3, protection 3, avg MV 3.39.
+#: tier: PROVISIONAL because no Brawl game has been played with it. Deck 78's record comes
+#: tier: from Bo1 Standard, so it says nothing about this format. The format argues both ways.
+#: tier: UP: the engine is always in the command zone, and slower 1v1 singleton games
+#: tier: give a four-multiplier board more time to assemble.
+#: tier: DOWN: every opposing removal spell has a guaranteed target, and there is still no
+#: tier: sweeper. Re-grade after games, not before.
+#: protect: Katara, the Fearless; South Pole Voyager; Avatar Enthusiasts; Haru, Hidden Talent; Suki, Kyoshi Warrior
+#: notes: ARENA'S STANDARD BRAWL QUEUE (60 cards, Standard card pool). The 100-card
+#: notes: version for Arena's Brawl queue is 78-historic-brawl-team-avatar.txt; it
+#: notes: keeps these 60 and adds 40 from the Historic pool.
+#: notes: ONE COLOUR-IDENTITY SWAP, and it is the only card that needed to change: Jet,
+#: notes: Freedom Fighter is {2}{R/W}{R/W}{R/W}. Paid all-white he is castable in deck 78
+#: notes: (G-58), but a hybrid symbol still counts toward colour identity, so the {R/W}
+#: notes: pips make him R and illegal under a G/W/U commander. He is out for Prayer of
+#: notes: Binding ({3}{W}, owned).
+#: notes: WHY PRAYER OF BINDING. No other G/W/U Ally removal exists in the pool —
+#: notes: owned or craftable — beyond Earth Kingdom Jailer and Ty Lee, which the deck already
+#: notes: runs. Among the non-Ally answers it is the one this list wants, for four reasons.
+#: notes: (1) It keeps interaction level: Jet's ETB was one targeted creature answer, and
+#: notes: Prayer is one exile. (2) It covers a gap Jet did not: it has flash and can
+#: notes: exile any nonland permanent, and the Standard list has only two answers to a
+#: notes: noncreature permanent. (3) Its enters trigger is doubled by
+#: notes: Starfield Vocalist ("If a permanent entering the battlefield causes a triggered
+#: notes: ability of a permanent you control to trigger, that ability triggers an
+#: notes: additional time"), so with her out it is TWO exiles and 4 life. (4) The life gain
+#: notes: is the first rung of Belladonna Took's ladder. Katara does not double it; it is
+#: notes: not an Ally.
+#: notes: WHAT JET TOOK WITH HIM. He was an Ally, so under Katara his ETB fired twice, and
+#: notes: his death trigger spread counters. Prayer is not an Ally and adds no body. The
+#: notes: Ally count drops by one, and so does the fodder for South Pole Voyager and
+#: notes: Avatar Enthusiasts.
+#: notes: Jet's damage also scaled with the board. Prayer's exile is fixed but unbounded
+#: notes: in what it hits.
+#: notes: Prayer can be undone: removing the enchantment returns the card. That risk is
+#: notes: small in Bo1 Brawl.
+#: notes: Screened and passed over (all tangential to the engine): Stasis Snare, Liminal
+#: notes: Hold (Prayer is Liminal Hold plus flash), Oko, Vivien Reid, Ajani Outland
+#: notes: Chaperone, Season of the Burrow, Exclusion Mage, Wistfulness, Hardlight
+#: notes: Containment, Parting Gust, Crib Swap and Season of Gathering.
+#: notes: WHAT THE FORMAT CHANGES. The single point of failure that deck 78's tier block
+#: notes: worries about (the engine is one legendary 3/3) is softened, not removed. She can
+#: notes: be recast from the command zone, but each recast costs {2} more. Her turn-three
+#: notes: castability is unchanged ({G}{W}{U} against the same 24 lands). Being in the
+#: notes: command zone guarantees she is available; it does not make her castable earlier.
+#: notes: Protection is 3 in this list. It matters more here than in the Standard deck,
+#: notes: because every answer the opponent draws has a guaranteed target.
 
-# Commander (leads from the command zone; also one of the 100)
+# Commander (leads from the command zone; also one of the 60)
 1 Katara, the Fearless (TLA) 230
 
 # Engine — the doubler and what it doubles
@@ -96,12 +81,6 @@
 1 Elspeth, Storm Slayer (TDM) 11
 1 The Millennium Calendar (LCI) 257
 1 Bard, King of Dale (HOB) 144
-1 Elesh Norn, Mother of Machines (ONE) 10
-1 Roaming Throne (LCI) 258
-1 Virtue of Knowledge // Vantress Visions (WOE) 76
-1 Exalted Sunborn (EOE) 15
-1 Galadriel, Light of Valinor (HOC) 32
-1 Rumor Gatherer (SNC) 29
 
 # Ally bodies and token makers
 1 Appa, Steadfast Guardian (TLA) 10
@@ -117,16 +96,6 @@
 1 Appa, Loyal Sky Bison (TLA) 9
 1 Starry-Eyed Skyrider (TDM) 25
 1 Overlord of the Mistmoors (DSK) 23
-1 Aang and Katara (TLE) 69
-1 Jet, Rebel Leader (TLE) 78
-1 Aang, Airbending Master (TLE) 74
-1 Katara, Heroic Healer (TLE) 215
-1 Invasion Reinforcements (TLA) 24
-1 Forecasting Fortune Teller (TLA) 51
-1 Relief Captain (J25) 241
-1 The Blue Spirit (TLE) 90
-1 Katara, Water Tribe's Hope (TLA) 231
-1 White Lotus Reinforcements (TLA) 251
 
 # Interaction
 1 Sheltered by Ghosts (DSK) 30
@@ -134,20 +103,8 @@
 1 Duty Beyond Death (TDM) 10
 1 Prayer of Binding (FDN) 739
 1 The Eagles Are Coming! (HOB) 12
-1 Swords to Plowshares (SPG) 54
-1 Path to Exile (MAR) 47
-1 Get Lost (LCI) 14
-1 Skyclave Apparition (ZNR) 39
-1 Knight of Autumn (GRN) 183
-1 Aang, the Last Airbender (TLA) 4
 
-# Protection and ramp
-1 Heroic Intervention (M21) 188
-1 Earth Kingdom Protectors (TLA) 17
-1 Arcane Signet (ELD) 331
-1 Hermitic Herbalist (TLA) 226
-
-# Lands (38)
+# Lands (24)
 1 Hushwood Verge (DSK) 261
 1 Etched Cornfield (DSK) 258
 1 Gathering Place (MSH) 266
@@ -159,24 +116,9 @@
 1 Breeding Pool (EOE) 251
 1 Starting Town (FIN) 289
 1 Secluded Courtyard (FDN) 267
-1 Three Tree City (BLB) 260
-1 Command Tower (ELD) 333
-1 Spara's Headquarters (SNC) 257
-1 Temple Garden (ECL) 268
-1 Hengegate Pathway // Mistgate Pathway (KHM) 260
-1 Barkchannel Pathway // Tidechannel Pathway (KHM) 251
-1 Branchloft Pathway // Boulderloft Pathway (ZNR) 258
-1 Glacial Fortress (XLN) 255
-1 Sunpetal Grove (XLN) 257
-1 Hinterland Harbor (DOM) 240
-1 Seachrome Coast (ONE) 258
-1 Botanical Sanctum (OTJ) 267
-1 Deserted Beach (MID) 260
-1 Dreamroot Cascade (SOS) 254
-1 Overgrown Farmland (MID) 265
 6 Plains (HOB) 189
+1 Three Tree City (BLB) 260
 4 Forest (HOB) 193
 2 Island (HOB) 190
-
-# Flex — Brawl notes (comments; not part of the 100)
+# Flex — Brawl notes (comments; not part of the 60)
 #~ note: Colour-identity swap vs the Standard list: −Jet, Freedom Fighter (R/W hybrid → R in identity, illegal under G/W/U Katara) / +Prayer of Binding.
