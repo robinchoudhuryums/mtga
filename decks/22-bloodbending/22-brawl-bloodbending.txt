@@ -1,4 +1,4 @@
-#: name: Bloodbending — Brawl
+#: name: Bloodbending — Standard Brawl
 #: format: Brawl
 #: colors: UB
 #: based-on: deck.txt

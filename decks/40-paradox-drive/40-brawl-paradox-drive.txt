@@ -1,4 +1,4 @@
-#: name: Paradox Drive — Brawl
+#: name: Paradox Drive — Standard Brawl
 #: format: Brawl
 #: colors: GU
 #: based-on: deck.txt

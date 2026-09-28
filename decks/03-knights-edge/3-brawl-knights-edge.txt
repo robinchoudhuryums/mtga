@@ -1,4 +1,4 @@
-#: name: Knight's Edge — Brawl
+#: name: Knight's Edge — Standard Brawl
 #: format: Brawl
 #: colors: W
 #: based-on: deck.txt
