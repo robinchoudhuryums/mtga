@@ -1,0 +1,121 @@
+#: name: Team Avatar — Brawl
+#: format: Brawl
+#: colors: GWU
+#: based-on: deck.txt
+#: commander: Katara, the Fearless
+#: archetype: Brawl conversion of the Bant Ally trigger-doubling deck (deck 78). The
+#: archetype: Standard list was already 60-card singleton and built AROUND Katara, so she
+#: archetype: is the natural commander: every Ally's triggered ability fires twice while
+#: archetype: she is out, and from the command zone she is always available. The plan is
+#: archetype: unchanged — Allies entering, South Pole Voyager / Avatar Enthusiasts / Haru
+#: archetype: paying off each entry, with Starfield Vocalist, Elspeth and Doubling Season
+#: archetype: multiplying the same events Katara doubles.
+#: tier: B — PROVISIONAL, AT its B metrics floor, the same letter as deck 78, because the
+#: tier: two lists differ by one card and the floor did not move: interaction 6 (Prayer of
+#: tier: Binding replaces Jet's one answer), card advantage 3, protection 3, avg MV 3.39.
+#: tier: PROVISIONAL because no Brawl game has been played with it. Deck 78's record comes
+#: tier: from Bo1 Standard, so it says nothing about this format. The format argues both ways.
+#: tier: UP: the engine is always in the command zone, and slower 1v1 singleton games
+#: tier: give a four-multiplier board more time to assemble.
+#: tier: DOWN: every opposing removal spell has a guaranteed target, and there is still no
+#: tier: sweeper. Re-grade after games, not before.
+#: protect: Katara, the Fearless; South Pole Voyager; Avatar Enthusiasts; Haru, Hidden Talent; Suki, Kyoshi Warrior
+#: notes: ONE COLOUR-IDENTITY SWAP, and it is the only card that needed to change: Jet,
+#: notes: Freedom Fighter is {2}{R/W}{R/W}{R/W}. Paid all-white he is castable in deck 78
+#: notes: (G-58), but a hybrid symbol still counts toward colour identity, so the {R/W}
+#: notes: pips make him R and illegal under a G/W/U commander. He is out for Prayer of
+#: notes: Binding ({3}{W}, owned).
+#: notes: WHY PRAYER OF BINDING. No other G/W/U Ally removal exists in the pool —
+#: notes: owned or craftable — beyond Earth Kingdom Jailer and Ty Lee, which the deck already
+#: notes: runs. Among the non-Ally answers it is the one this list wants, for four reasons.
+#: notes: (1) It keeps interaction level: Jet's ETB was one targeted creature answer, and
+#: notes: Prayer is one exile. (2) It covers a gap Jet did not: it has flash and can
+#: notes: exile any nonland permanent, and the Standard list has only two answers to a
+#: notes: noncreature permanent. (3) Its enters trigger is doubled by
+#: notes: Starfield Vocalist ("If a permanent entering the battlefield causes a triggered
+#: notes: ability of a permanent you control to trigger, that ability triggers an
+#: notes: additional time"), so with her out it is TWO exiles and 4 life. (4) The life gain
+#: notes: is the first rung of Belladonna Took's ladder. Katara does not double it; it is
+#: notes: not an Ally.
+#: notes: WHAT JET TOOK WITH HIM. He was an Ally, so under Katara his ETB fired twice, and
+#: notes: his death trigger spread counters. Prayer is not an Ally and adds no body. The
+#: notes: Ally count drops by one, and so does the fodder for South Pole Voyager and
+#: notes: Avatar Enthusiasts.
+#: notes: Jet's damage also scaled with the board. Prayer's exile is fixed but unbounded
+#: notes: in what it hits.
+#: notes: Prayer can be undone: removing the enchantment returns the card. That risk is
+#: notes: small in Bo1 Brawl.
+#: notes: Screened and passed over (all tangential to the engine): Stasis Snare, Liminal
+#: notes: Hold (Prayer is Liminal Hold plus flash), Oko, Vivien Reid, Ajani Outland
+#: notes: Chaperone, Season of the Burrow, Exclusion Mage, Wistfulness, Hardlight
+#: notes: Containment, Parting Gust, Crib Swap and Season of Gathering.
+#: notes: WHAT THE FORMAT CHANGES. The single point of failure that deck 78's tier block
+#: notes: worries about (the engine is one legendary 3/3) is softened, not removed. She can
+#: notes: be recast from the command zone, but each recast costs {2} more. Her turn-three
+#: notes: castability is unchanged ({G}{W}{U} against the same 24 lands). Being in the
+#: notes: command zone guarantees she is available; it does not make her castable earlier.
+#: notes: Protection is 3 in this list. It matters more here than in the Standard deck,
+#: notes: because every answer the opponent draws has a guaranteed target.
+
+# Commander (leads from the command zone; also one of the 60)
+1 Katara, the Fearless (TLA) 230
+
+# Engine — the doubler and what it doubles
+1 Great Divide Guide (TLA) 181
+1 Haru, Hidden Talent (TLA) 182
+1 South Pole Voyager (TLA) 35
+1 Doubling Season (FDN) 216
+1 Starfield Vocalist (EOE) 78
+1 Belladonna Took (HOB) 4
+1 Avatar Enthusiasts (TLA) 11
+1 Dazzling Theater // Prop Room (DSK) 3
+1 The Astonishing Ant-Man (MSH) 204
+1 Earth Kingdom Jailer (TLA) 16
+1 Toph, the Blind Bandit (TLA) 198
+1 Ty Lee, Chi Blocker (TLA) 76
+1 Sokka, Lateral Strategist (TLA) 241
+1 Niko, Light of Hope (DSK) 224
+1 Elspeth, Storm Slayer (TDM) 11
+1 The Millennium Calendar (LCI) 257
+1 Bard, King of Dale (HOB) 144
+
+# Ally bodies and token makers
+1 Appa, Steadfast Guardian (TLA) 10
+1 Suki, Kyoshi Warrior (TLA) 243
+1 Kyoshi Warriors (TLA) 26
+1 Hakoda, Selfless Commander (TLA) 23
+1 Aang, Swift Savior // Aang and La, Ocean's Fury (TLA) 204
+1 The Earth King (TLA) 172
+1 Earth Kingdom General (TLA) 173
+1 Earth King's Lieutenant (TLA) 217
+1 United Front (TLA) 39
+1 Aang, at the Crossroads // Aang, Destined Savior (TLA) 203
+1 Appa, Loyal Sky Bison (TLA) 9
+1 Starry-Eyed Skyrider (TDM) 25
+1 Overlord of the Mistmoors (DSK) 23
+
+# Interaction
+1 Sheltered by Ghosts (DSK) 30
+1 Allies at Last (TLA) 164
+1 Duty Beyond Death (TDM) 10
+1 Prayer of Binding (FDN) 739
+1 The Eagles Are Coming! (HOB) 12
+
+# Lands (24)
+1 Hushwood Verge (DSK) 261
+1 Etched Cornfield (DSK) 258
+1 Gathering Place (MSH) 266
+1 Floodfarm Verge (DSK) 259
+1 Hallowed Fountain (ECL) 265
+1 Urban Retreat (SPM) 187
+1 Gleaming Bastion (MSH) 267
+1 Willowrush Verge (DFT) 270
+1 Breeding Pool (EOE) 251
+1 Starting Town (FIN) 289
+1 Secluded Courtyard (FDN) 267
+6 Plains (HOB) 189
+1 Three Tree City (BLB) 260
+4 Forest (HOB) 193
+2 Island (HOB) 190
+# Flex — Brawl notes (comments; not part of the 60)
+#~ note: Colour-identity swap vs the Standard list: −Jet, Freedom Fighter (R/W hybrid → R in identity, illegal under G/W/U Katara) / +Prayer of Binding.
