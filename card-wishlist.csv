@@ -146,6 +146,8 @@ Ixalli's Lorekeeper,Creature — Human Druid,{T}: Add one mana of any color. Spe
 Poison Dart Frog,Creature — Frog,"Reach
 {T}: Add one mana of any color.
 {2}: This creature gains deathtouch until end of turn.",G,Frog; mana; reach; defense,LCI,207,Common,50,,1.5,seed
+Flowering of the White Tree,Legendary Enchantment,"Legendary creatures you control get +2/+1 and have ward {1}.
+Nonlegendary creatures you control get +1/+1.",W,Nonlegendary; pump; ward; protection,LTR,15,Rare,78-historic-brawl,craft for 78-historic-brawl (applied 2026-09-29),4.5,seed
 Ill-Timed Explosion,Sorcery,"Draw two cards. Then you may discard two cards. When you do, Ill-Timed Explosion deals X damage to each creature, where X is the greatest mana value among cards discarded this way.",U/R,card draw; burn,MKM,207,Rare,25,draw two + scalable board sweep/burn,7.0,hand
 "Izoni, Center of the Web",Legendary Creature — Elf Detective,"Menace
 Whenever Izoni enters or attacks, you may collect evidence 4. If you do, create two 2/1 black and green Spider creature tokens with menace and reach.
@@ -179,6 +181,10 @@ When this creature dies, investigate. (Create a Clue token. It's an artifact wit
 Loxodon Eavesdropper,Creature — Elephant Detective,"When this creature enters, investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")
 Whenever you draw your second card each turn, this creature gets +1/+1 and gains vigilance until end of turn.",G,Elephant; Detective; card draw; sacrifice; tokens; etb; clue; pump; investigate,MKM,168,Common,34,,2.5,hand
 Novice Inspector,Creature — Human Detective,"When this creature enters, investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",W,Human; Detective; card draw; sacrifice; tokens; etb; clue; investigate,MKM,29,Common,36a,,3.5,hand
+Multiversal Recruitment,Sorcery,"Create a token that's a copy of target creature you control, except it isn't legendary.
+Flashback {5}{U}{U} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",U,graveyard; tokens; flashback; recursion; spellslinger,MSC,629,Uncommon,78-historic-brawl,craft for 78-historic-brawl (applied 2026-09-29),2.0,seed
+Vault Guardsman,Artifact Creature — Human Advisor,"Convoke (Your creatures can help cast this spell. Each creature you tap while casting this spell pays for {1} or one mana of that creature's color.)
+When this creature enters, exile target artifact or creature an opponent controls until this creature leaves the battlefield.",W,Human; Advisor; removal; etb; convoke; go-wide,MSC,612,Uncommon,78-historic-brawl,craft for 78-historic-brawl (applied 2026-09-29),5.5,seed
 Kang the Conqueror,Legendary Creature — Human Villain,"Flying
 Power-up — {5}{U}{U}{U}: Put a +1/+1 counter on Kang. Take an extra turn after this one. During that turn, power-up abilities can't be activated. (Activate each power-up ability only once. Reduce the cost by his mana cost if he entered this turn.)",U,Human; Villain; counters; flying; evasion; power-up; payoff,MSH,62,Mythic,12,blue control finisher — evasive body + extra-turn power-up; UUU castable in Dimir,6.5,hand
 Fisk Tower,Land,"This land enters tapped.

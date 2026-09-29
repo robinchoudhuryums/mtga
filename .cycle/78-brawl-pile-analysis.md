@@ -280,6 +280,35 @@ or interaction piece, so a second wave has to cut owned cards.
 | Don't Move | ✗ | "whenever a creature becomes tapped, destroy it" kills your own attackers and convoke |
 | Mister Fantastic | ✗ | illegal: R in identity |
 
+### Batch 4 — applied, and the cut candidates for the rest (2026-09-29)
+
+**Applied:** Vault Guardsman −Earth Kingdom Protectors, Flowering of the White Tree −Duty
+Beyond Death, Multiversal Recruitment −Starry-Eyed Skyrider. Now interaction 12 (clears the
+scaled A line), card advantage 6 (sum 18 against 19): **one more counted draw reaches A.**
+Protection 6 -> 5 (both cuts granted indestructible; Flowering's ward replaces one).
+
+Cut candidates, measured one pair at a time on scratch copies. Primaries are DISTINCT so all
+nine could land together; protected cards are never offered.
+
+| Add | Primary cut | Floor | Alternates (floor) |
+|---|---|---|---|
+| Wan Shi Tong, All-Knowing | Katara, Water Tribe's Hope | A | Aang, Airbending Master (A); Aang, the Last Airbender (A) |
+| Inspiring Call | The Eagles Are Coming! | A | Hermitic Herbalist (A); White Lotus Reinforcements (A) |
+| Dawn of a New Age | Arcane Signet | A | The Millennium Calendar (A, spice); Belladonna Took (A) |
+| Coastal Piracy | Dazzling Theater // Prop Room | A | Niko, Light of Hope (A); Sokka, Lateral Strategist (B) |
+| Whirlwind Technique | Aang, Airbending Master | A | Aang, the Last Airbender (A); The Earth King (A) |
+| Black Panther, Wakandan King | Hermitic Herbalist | B | The Astonishing Ant-Man (B); Arcane Signet (B) |
+| Beastmaster Ascension | White Lotus Reinforcements | B | The Millennium Calendar (B); An Unexpected Party (B) |
+| Fiend Hunter | Aang, the Last Airbender | A | Allies at Last (B); Ty Lee, Chi Blocker (B) |
+| Andúril, Narsil Reforged | The Astonishing Ant-Man | B | Belladonna Took (B); White Lotus Reinforcements (B) |
+
+Cautions: Dawn's and Black Panther's primaries are two of the three nonland mana sources, so
+take an alternate for one if both go in. Swapping like for like on the counted axis (Coastal
+for Sokka, Fiend Hunter for Allies at Last or Ty Lee) cannot move the floor. Ty Lee is an Ally,
+so its "tap up to one target creature" is copied by Katara, Roaming Throne and the three
+enters-doublers — it may be the stronger card here. Black Panther's "{3}: Move … and draw a
+card" is real card advantage the classifier does not count.
+
 ## 5. Consolidated plan (live)
 
 **Measured on a scratch copy (Tier 1 package, 2026-09-29):**

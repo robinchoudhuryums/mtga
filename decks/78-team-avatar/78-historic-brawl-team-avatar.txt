@@ -15,10 +15,10 @@
 #: archetype: attack triggers are worth doubling, cheap exile effects, protection for the
 #: archetype: engine, and a 38-land manabase.
 #: tier: B — PROVISIONAL, and the metrics floor agrees: B. A 100-card deck is graded
-#: tier: per 60 cards (the floor's thresholds scale ×1.67), so interaction 11 and card
-#: tier: advantage 6 read as about 6.6 and 3.6 per 60, under the A line (A wants 7 and a
-#: tier: sum of 11 in a 60). Reaching A takes one more answer AND one more draw: an answer
-#: tier: that also draws does both, and a plain answer needs a draw engine beside it.
+#: tier: per 60 cards (the floor's thresholds scale ×1.67), so interaction 12 and card
+#: tier: advantage 6 read as about 7.2 and 3.6 per 60: interaction now clears the A line
+#: tier: (A wants 7 and a sum of 11 in a 60), the sum is one card short of it. One more
+#: tier: card-advantage card reaches the A floor.
 #: tier: It is ahead of deck 78 on the engine, on cheap answers and on card advantage:
 #: tier: five trigger multipliers where deck 78 has two, Swords to Plowshares, Path to
 #: tier: Exile, Leyline Binding and Buried in the Garden on top of deck 78's tricks, and
@@ -38,6 +38,14 @@
 #: notes: craft targets the owner does not have. Then, the owner's pick: Kellan Joins Up
 #: notes: in, Forecasting Fortune Teller out ("create a Clue token" was one of the deck's
 #: notes: counted draws); Inspiring Commander is parked in the flex block.
+#: notes: CRAFT-LIST SWAPS, 2026-09-29 (the owner's list, graded in the pile doc): Vault
+#: notes: Guardsman in for Earth Kingdom Protectors ("exile target artifact or creature an
+#: notes: opponent controls until this creature leaves", an enters trigger the three
+#: notes: enters-doublers copy); Flowering of the White Tree in for Duty Beyond Death
+#: notes: (legends +2/+1 and ward {1}, the rest +1/+1, so Katara carries ward); Multiversal
+#: notes: Recruitment in for Starry-Eyed Skyrider (a non-legendary token copy of Elesh
+#: notes: Norn or Starfield Vocalist is one more trigger doubler; flashback). Both cuts
+#: notes: that granted indestructible are gone, so Heroic Intervention is the sweeper answer.
 #: notes: WHY THE ADDS: Henge ("whenever a nontoken creature you control enters, put a
 #: notes: +1/+1 counter on it and draw a card") and Tribute ("draw a card if its power is 3
 #: notes: or greater. Otherwise, put two +1/+1 counters on it") are enters triggers, so
@@ -127,6 +135,7 @@
 1 The Great Henge (ELD) 161
 1 Tribute to the World Tree (MOM) 211
 1 Kellan Joins Up (OTJ) 212
+1 Multiversal Recruitment (MSC) 629
 
 # Ally bodies and token makers
 1 Appa, Steadfast Guardian (TLA) 10
@@ -139,7 +148,6 @@
 1 United Front (TLA) 39
 1 Aang, at the Crossroads // Aang, Destined Savior (TLA) 203
 1 Appa, Loyal Sky Bison (TLA) 9
-1 Starry-Eyed Skyrider (TDM) 25
 1 Overlord of the Mistmoors (DSK) 23
 1 Aang and Katara (TLE) 69
 1 Jet, Rebel Leader (TLE) 78
@@ -153,7 +161,6 @@
 # Interaction
 1 Sheltered by Ghosts (DSK) 30
 1 Allies at Last (TLA) 164
-1 Duty Beyond Death (TDM) 10
 1 Prayer of Binding (FDN) 739
 1 The Eagles Are Coming! (HOB) 12
 1 Swords to Plowshares (SPG) 54
@@ -162,12 +169,13 @@
 1 Leyline Binding (DMU) 24
 1 Knight of Autumn (GRN) 183
 1 Aang, the Last Airbender (TLA) 4
+1 Vault Guardsman (MSC) 612
 
 # Protection and ramp
 1 Heroic Intervention (M21) 188
-1 Earth Kingdom Protectors (TLA) 17
 1 Arcane Signet (ELD) 331
 1 Hermitic Herbalist (TLA) 226
+1 Flowering of the White Tree (LTR) 15
 
 # Lands (38)
 1 Hushwood Verge (DSK) 261
@@ -202,4 +210,4 @@
 
 # Flex — Brawl notes (comments; not part of the 100)
 #~ note: Colour-identity swap vs the Standard list: −Jet, Freedom Fighter (R/W hybrid → R in identity, illegal under G/W/U Katara) / +Prayer of Binding.
-#~ -Earth Kingdom Protectors | +Inspiring Commander | OWNED per the 2026-09-29 pile (not yet catalogued, so `check` still reads it as a rare craft): "Whenever another creature you control with power 2 or less enters, you gain 1 life and draw a card." Every 1/1 Ally token draws, it is an enters-caused trigger that Starfield Vocalist, Elesh Norn and Virtue of Knowledge each copy, and the token doublers double what enters. Six mana. Protectors only sacrifices itself to give one Ally indestructible. Measured: card advantage +1, interaction unchanged, protection 6 to 5.
+#~ -Katara, Water Tribe's Hope | +Inspiring Commander | OWNED per the 2026-09-29 pile (not yet catalogued, so `check` still reads it as a rare craft): "Whenever another creature you control with power 2 or less enters, you gain 1 life and draw a card." Every 1/1 Ally token draws, it is an enters-caused trigger that Starfield Vocalist, Elesh Norn and Virtue of Knowledge each copy, and the token doublers double what enters. Six mana. Retargeted 2026-09-29: its first cut, Earth Kingdom Protectors, went out for Vault Guardsman; Katara, Water Tribe's Hope is 60% castable on turn five.
