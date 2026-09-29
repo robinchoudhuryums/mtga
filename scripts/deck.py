@@ -5390,6 +5390,7 @@ def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_form
 
     dmeta, cards = parse_deck_file(d["path"])
     meta = load_card_meta()
+    _ident_lock = commander_identity_lock(dmeta)   # Brawl: identity is the rule
 
     # Format filter: default to the deck's own `#: format:` (--format overrides,
     # --any-format disables). Only bites when the pool carries legality data.
@@ -5487,7 +5488,7 @@ def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_form
         ccolors = card_colors(r.get("Color(s)"))
         cast_ok, _ = _candidate_castability(
             (mana_map.get(nl) or mana_map.get(nl.split(" // ")[0]) or ("", None))[0],
-            ccolors, deck_colors)
+            ccolors, deck_colors, lock=_ident_lock)
         if not cast_ok:
             continue  # genuinely uncastable for this deck
         if apply_fmt and lkey not in {x.strip() for x in
@@ -5621,6 +5622,7 @@ def suggest_lands(d, unowned=False, owned=False, limit=20, fmt=None, any_format=
     import wishlist
     meta = load_card_meta()
     dmeta, cards = parse_deck_file(d["path"])
+    _ident_lock = commander_identity_lock(dmeta)   # Brawl: identity is the rule
     mana_map = load_mana()
     carddata = load_card_data()
     pool_rot, _has_released = _pool_rotation_index()
@@ -5751,6 +5753,8 @@ def suggest_lands(d, unowned=False, owned=False, limit=20, fmt=None, any_format=
         on_color = prod & deck_colors
         if not on_color:
             continue  # off-color / colorless-only: doesn't fix THIS deck's manabase
+        if _ident_lock is not None and card_colors(r.get("Color(s)")) - _ident_lock:
+            continue  # a land making a colour outside the commander's identity is illegal
         h = owned_of(nl)
         if unowned and h > 0:
             continue
@@ -5904,6 +5908,7 @@ def suggest_mana(d, needs, unowned=False, owned=False, limit=20, fmt=None):
     """
     dc, deficit, ts = needs["colors"], needs["deficit"], needs["type_share"]
     mana_map = load_mana()
+    _ident_lock = commander_identity_lock(parse_deck_file(d["path"])[0])
     with open(POOL_CSV, newline="", encoding="utf-8") as fh:
         pool = list(csv.DictReader(fh))
     has_leg = bool(pool) and "Legalities" in pool[0]
@@ -5934,7 +5939,7 @@ def suggest_mana(d, needs, unowned=False, owned=False, limit=20, fmt=None):
         # for that bug: per G-38 this recommender IS the fix path for a mana deficit.
         cast_ok, _ = _candidate_castability(
             (mana_map.get(nl) or mana_map.get(nl.split(" // ")[0]) or ("", None))[0],
-            card_colors(r.get("Color(s)")), dc)
+            card_colors(r.get("Color(s)")), dc, lock=_ident_lock)
         if not cast_ok:
             continue  # genuinely uncastable for this deck
         if apply_fmt and lkey not in {x.strip() for x in (r.get("Legalities") or "").split(";")}:
@@ -5979,6 +5984,7 @@ def suggest_interaction(d, needs, unowned=False, owned=False, limit=20, fmt=None
     FLAGGED with the deck metric so the human confirms — it's never a silent boost."""
     dc = needs["colors"]
     mana_map = load_mana()
+    _ident_lock = commander_identity_lock(parse_deck_file(d["path"])[0])
     with open(POOL_CSV, newline="", encoding="utf-8") as fh:
         pool = list(csv.DictReader(fh))
     has_leg = bool(pool) and "Legalities" in pool[0]
@@ -6006,7 +6012,7 @@ def suggest_interaction(d, needs, unowned=False, owned=False, limit=20, fmt=None
         # place for that bug: per G-38 this IS the fix path for an interaction deficit.
         cast_ok, _ = _candidate_castability(
             (mana_map.get(nl) or mana_map.get(nl.split(" // ")[0]) or ("", None))[0],
-            card_colors(r.get("Color(s)")), dc)
+            card_colors(r.get("Color(s)")), dc, lock=_ident_lock)
         if not cast_ok:
             continue
         if apply_fmt and lkey not in {x.strip() for x in (r.get("Legalities") or "").split(";")}:
@@ -8593,6 +8599,32 @@ def pool_format_key(fmt):
 _COMMANDER_FORMATS = {"brawl", "historic brawl", "commander", "duel"}
 
 
+def commander_identity_lock(meta, carddata=None):
+    """The colour identity every card in a Brawl / Commander deck must sit within — the
+    `#: commander:` card's identity (a union for partners) — or None when no lock applies:
+    not a commander format, no commander header, or a commander the card data cannot place.
+
+    Castability is not legality in these formats. `legal` has always checked identity, but
+    every RECOMMENDER gated on castability alone, so Brawl decks were offered cards they
+    cannot run: measured 2026-09-29, 53 of 78-historic-brawl's 1,237 `--interaction` picks
+    and 52 of its 410 `--ramp` picks sat outside Katara's G/W/U, and a hybrid like Jet,
+    Freedom Fighter reached the first Brawl draft that way. Read by `_candidate_castability`
+    (`lock=`), `_filler_castable` and `suggest_lands`, so every surface agrees with `legal`."""
+    if normalize_format((meta or {}).get("format")) not in _COMMANDER_FORMATS:
+        return None
+    keys = _header_card_keys(meta, "commander")
+    if not keys:
+        return None
+    carddata = carddata if carddata is not None else load_card_data()
+    lock = set()
+    for k in keys:
+        cd = carddata.get(k)
+        if cd is None:
+            return None
+        lock |= card_colors(cd.get("colors"))
+    return frozenset(lock)
+
+
 @_file_memo("MATCHES_CSV")
 def load_match_counts():
     """deck_id -> matches PLAYED, from matches.csv. `{}` when no record exists.
@@ -10937,9 +10969,14 @@ def _resolve_card_name(query, table, display, squashed):
     return None, []
 
 
-def _candidate_castability(cost, ident, declared):
+def _candidate_castability(cost, ident, declared, lock=None):
     """`(castable, note)` for a CANDIDATE card against a deck's declared colors, read from
     the PRINTED COST rather than from color identity.
+
+    `lock` is a Brawl / Commander deck's commander identity (`commander_identity_lock`).
+    There, identity IS the construction rule, so a card that falls outside it is refused
+    whatever its cost: `{2}{R/W}{R/W}{R/W}` is castable from white sources and still
+    illegal under a G/W/U commander. Checked FIRST, before any cost reading.
 
     Identity and cost disagree in precisely the cases a pile is full of: `{1}{U/R}` is
     payable with Islands alone, `{6}` is payable anywhere, and BOTH read as off-color in
@@ -10947,6 +10984,9 @@ def _candidate_castability(cost, ident, declared):
     eight of which were castable (G-58, bulk-triage variant). Mirrors `_castability_lint`
     so the two surfaces cannot drift: only a TRUE multicolor hybrid constrains
     castability; a monocolor (`{2/W}`) or Phyrexian (`{W/P}`) hybrid never does."""
+    if lock is not None and ident - lock:
+        return False, ("⚠ outside the commander's identity — has "
+                       + "/".join(sorted(ident - lock)) + ", illegal in this deck")
     strict, hybrid = parse_pips(cost or "")
     off_strict = sorted(set(strict) - declared)
     bad_hybrid = sorted({x for h in hybrid
@@ -11259,6 +11299,7 @@ def cmd_screen(args):
     sig = _strong_signature_themes(dmeta, cards, cardmeta)
     in_deck = {_ms_key(n) for q, n, s, c in cards}   # G-63: front-face join
     declared = set(_declared_colors(dmeta) or _deck_castable_colors(dmeta, cards, mana))
+    ident_lock = commander_identity_lock(dmeta, carddata)   # Brawl: identity is the rule
 
     raw = list(args.names or [])
     if not raw or raw == ["-"]:
@@ -11296,7 +11337,7 @@ def cmd_screen(args):
         ups = strict_upgrades(name, text, mv, cards, carddata, mana,
                               cand_pt=(cd.get("power"), cd.get("toughness")))
         legs = legal.get(nl) or legal.get(nl.split(" // ")[0]) or set()
-        cast_ok, cast_note = _candidate_castability(cost, ident, declared)
+        cast_ok, cast_note = _candidate_castability(cost, ident, declared, lock=ident_lock)
         # Only meaningful when the FRONT half is castable — otherwise "front half only
         # here" contradicts the `⚠ NOT castable` flag printed right above it.
         back_off = (split_back_offcolor(cost, declared, cd.get("type") or "")
@@ -11711,10 +11752,11 @@ def cmd_suggest_homes(args):
         # colours — a land's whole value is the colours it produces. `wishlist`'s
         # `_castable_in` already resolves this exact case the same way ("no cost data
         # -> identity fallback"); this is that convention, not a new one.
+        _lock = commander_identity_lock(dmeta, carddata)   # a Brawl home is identity-locked
         if _ce and _ce[0]:
-            cast_ok, _cnote = _candidate_castability(_ce[0], ccols, castable)
+            cast_ok, _cnote = _candidate_castability(_ce[0], ccols, castable, lock=_lock)
         else:
-            cast_ok = ccols.issubset(castable)
+            cast_ok = ccols.issubset(castable) and not (_lock is not None and ccols - _lock)
         if not cast_ok:
             continue
         # Castability above reads the cost but still cannot see pip DEPTH;
@@ -12587,7 +12629,7 @@ def tier_gap(vec, target):
             "met": not [p for p in parts if not p.startswith("(aggro:")], "summary": parts}
 
 
-def _filler_castable(cost, ident, declared):
+def _filler_castable(cost, ident, declared, lock=None):
     """Castability for a FILLER candidate (`tier --to`, `redundancy`): the PRINTED COST
     through `_candidate_castability`, exactly as `suggest` / `screen` / `suggest-homes`
     read it (G-58). The three filler functions were the last identity-subset holdouts —
@@ -12595,7 +12637,10 @@ def _filler_castable(cost, ident, declared):
     was excluded from mono-black 52a and 10–17 castable owned interaction cards per
     deck were hidden from the wildcard-spend planner (BS8-05). Identity stays as the
     FALLBACK for a card with no cost on file, which is the only case where it is the
-    best evidence available."""
+    best evidence available. `lock` is a Brawl deck's commander identity
+    (`commander_identity_lock`): outside it a card is illegal, whatever it costs."""
+    if lock is not None and ident - lock:
+        return False
     if not cost:
         return ident <= declared
     ok, _note = _candidate_castability(cost, ident, declared)
@@ -12630,6 +12675,7 @@ def owned_role_fillers(d, roles, *, limit=10):
     # can't help — the two entries were separate dicts.
     in_deck = {_ms_key(n) for q, n, s, c in cards}
     declared = set(_declared_colors(meta) or _deck_castable_colors(meta, cards, mana))
+    ident_lock = commander_identity_lock(meta)   # Brawl: identity is the rule
     out = []
     for nl, cd in carddata.items():
         if _ms_key(nl) in in_deck or nl in BASICS:
@@ -12642,7 +12688,7 @@ def owned_role_fillers(d, roles, *, limit=10):
             continue
         ident = card_colors(cd.get("colors"))
         entry = mana.get(nl)
-        if not _filler_castable(entry[0] if entry else "", ident, declared):
+        if not _filler_castable(entry[0] if entry else "", ident, declared, lock=ident_lock):
             continue
         legs = legalities.get(nl) or legalities.get(nl.split(" // ")[0]) or set()
         if fmt and legs and fmt not in legs:
@@ -12683,6 +12729,7 @@ def craft_role_fillers(d, roles, *, limit=8):
     # (the owned_qty skip below only masks the owned case).
     in_deck = {_ms_key(n) for q, n, s, c in cards}
     declared = set(_declared_colors(meta) or _deck_castable_colors(meta, cards, mana))
+    ident_lock = commander_identity_lock(meta)   # Brawl: identity is the rule
     fmt = pool_format_key(meta.get("format"))     # BS8-04: the pool's key
     RANK = {"Common": 0, "Uncommon": 1, "Rare": 2, "Mythic": 3}
     pool_rot, _has_released = _pool_rotation_index()
@@ -12703,7 +12750,7 @@ def craft_role_fillers(d, roles, *, limit=8):
                 continue
             ident = card_colors(r.get("Color(s)"))
             entry = mana.get(nl)
-            if not _filler_castable(entry[0] if entry else "", ident, declared):
+            if not _filler_castable(entry[0] if entry else "", ident, declared, lock=ident_lock):
                 continue
             legs = {x.strip().lower() for x in (r.get("Legalities") or "").split(";") if x.strip()}
             if fmt and legs and fmt not in legs:
@@ -12793,6 +12840,7 @@ def functional_theme_options(d, theme, *, limit=8):
     _, _, qty = load_collection()
     in_deck = {_ms_key(n) for q, n, s, c in cards}   # G-63: front-face join
     declared = set(_declared_colors(meta) or _deck_castable_colors(meta, cards, mana))
+    ident_lock = commander_identity_lock(meta)   # Brawl: identity is the rule
     fmt = pool_format_key(meta.get("format"))     # BS8-04: the pool's key
     out, seen = [], set()
     for nl, m in cardmeta.items():
@@ -12806,7 +12854,7 @@ def functional_theme_options(d, theme, *, limit=8):
         name = cd.get("name") or nl
         entry = mana.get(nl)
         if not _filler_castable(entry[0] if entry else "", card_colors(cd.get("colors")),
-                                declared):
+                                declared, lock=ident_lock):
             continue
         legs = leg.get(nl)
         if fmt and legs is not None and fmt not in legs:

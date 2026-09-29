@@ -6431,6 +6431,52 @@ class TestPossessiveDeckCitationSuppression:
 
 
 
+class TestCommanderIdentityLock:
+    """In Brawl / Commander, colour IDENTITY is the construction rule, and castability is not
+    legality: every recommender gated on castability alone, so on 2026-09-29 205 of
+    78-historic-brawl's 435 land picks and 385 of its 8,054 `suggest` picks were cards the
+    deck cannot legally run. One lock, read by the shared gates."""
+
+    def test_the_lock_is_the_commander_identity(self):
+        lock = deck.commander_identity_lock(
+            {"format": "Historic Brawl", "commander": "Katara, the Fearless"})
+        assert lock == frozenset("GWU")
+
+    def test_no_lock_outside_a_commander_format_or_without_a_commander(self):
+        assert deck.commander_identity_lock(
+            {"format": "Standard", "commander": "Katara, the Fearless"}) is None
+        assert deck.commander_identity_lock({"format": "Brawl"}) is None
+
+    def test_a_castable_hybrid_outside_the_identity_is_refused(self):
+        """Jet, Freedom Fighter's shape: every pip payable with white, identity R/W."""
+        cost, ident, declared = "{2}{R/W}{R/W}{R/W}", {"R", "W"}, {"G", "W", "U"}
+        assert deck._candidate_castability(cost, ident, declared)[0]
+        ok, note = deck._candidate_castability(cost, ident, declared, lock=frozenset("GWU"))
+        assert not ok and "outside the commander's identity" in note
+        assert deck._filler_castable(cost, ident, declared)
+        assert not deck._filler_castable(cost, ident, declared, lock=frozenset("GWU"))
+
+    def test_no_brawl_recommender_offers_an_off_identity_card(self):
+        import csv
+        from lib import card_colors
+        pool = {r["Card Name"].lower(): r for r in
+                csv.DictReader(open(deck.POOL_CSV, encoding="utf-8"))}
+        checked = 0
+        for d in deck.roster_decks():
+            lock = deck.commander_identity_lock(d.get("meta") or {})
+            if lock is None:
+                continue
+            needs = deck.deck_needs(d)
+            fmt = ((d.get("meta") or {}).get("format") or "").lower()
+            picks = (deck.suggest_lands(d, limit=0)["picks"]
+                     + deck.suggest_interaction(d, needs, limit=0, fmt=fmt))
+            for p in picks:
+                r = pool.get(p["name"].lower())
+                assert r is None or not (card_colors(r["Color(s)"]) - lock), (d["id"], p["name"])
+            checked += 1
+        assert checked, "no commander-format deck on the roster to check"
+
+
 class TestPoolFormatKey:
     """BS8-04: the pool's Legalities keys are Scryfall's, whose `brawl` is Historic
     Brawl; the repo's 60-card `Brawl` (G-08) is checked against `standard`."""

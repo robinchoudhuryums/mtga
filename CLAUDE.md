@@ -200,7 +200,15 @@ castability · curve · central-theme density), with the intangibles moving a de
   (`deck_needs`, through the shared `_scale_count`: 5 per 60, 9 at 100 cards). It is a
   MINIMUM, not the A floor, so `suggest --interaction` printing "adequate (11 ≥ 9)" beside a
   `tier --to A` gap on the same axis is two different bars, not a contradiction; 0 decks
-  flipped SHORT/adequate. Two more Brawl facts the tools read now: Arena's Brawl queues give
+  flipped SHORT/adequate. **Castability is not legality in Brawl**: a card outside the
+  commander's colour identity is illegal however payable it is (`{2}{R/W}{R/W}{R/W}` under a
+  G/W/U commander), and every RECOMMENDER gated on castability alone — measured 2026-09-29,
+  205 of 78-historic-brawl's 435 `--lands` picks and 385 of its 8,054 `suggest` picks were
+  illegal there. `commander_identity_lock` is now read by the shared gates
+  (`_candidate_castability`'s `lock=`, `_filler_castable`, `suggest_lands`), so `suggest`,
+  `--ramp/--interaction/--lands`, `screen`, `suggest-homes` and the `tier --to` fillers agree
+  with `legal`; residual: `cross_deck_breadth`'s Decks count (variants collapse to their
+  parent, so it barely moves). Two more Brawl facts the tools read now: Arena's Brawl queues give
   a FREE first mulligan, so `consistency` prints a within-two-sevens keepable figure and
   bases its land advice on it (with a 36–40 land norm at 100 cards); and **Historic Brawl
   does not rotate** (`format_rotates`), so every ⚠rot flag, `check`'s owned-rotation footer
