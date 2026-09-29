@@ -333,6 +333,14 @@ Read from text:
   tapped artifacts and/or creatures you control" on enter AND attack, which Katara,
   Throne and all four token doublers multiply.
 
+**Owner's pick, same day:** Kellan Joins Up in for Forecasting Fortune Teller (applied);
+Inspiring Commander parked in the flex block against Earth Kingdom Protectors. Fortune
+Teller's Clue was a counted draw, so card advantage fell 7 to 6, and the A gap is now one
+answer AND one draw. Measured on scratch copies, cutting Aang, Airbending Master: any plain
+answer reaches interaction 12 but a sum of 18 (still B). Water Whip (TLE) or Origin of Iron
+Man (MSC) reach A alone, because each also draws two. Any answer plus the flexed Inspiring
+Commander also reaches A.
+
 ### Tier 2 — a second wave, if play shows the need
 
 Adds, in order:

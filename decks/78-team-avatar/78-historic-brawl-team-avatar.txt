@@ -14,10 +14,11 @@
 #: archetype: Tree, Galadriel and The Blue Spirit. Beside them sit Allies whose enter or
 #: archetype: attack triggers are worth doubling, cheap exile effects, protection for the
 #: archetype: engine, and a 38-land manabase.
-#: tier: B — PROVISIONAL, and the metrics floor now agrees: B. A 100-card deck is
-#: tier: graded per 60 cards (the floor's thresholds scale ×1.67), so interaction 11 and
-#: tier: card advantage 7 read as about 6.6 and 4.2 per 60, just under the A line (A
-#: tier: wants 7 and a sum of 11 in a 60). One more cheap answer or draw engine closes it.
+#: tier: B — PROVISIONAL, and the metrics floor agrees: B. A 100-card deck is graded
+#: tier: per 60 cards (the floor's thresholds scale ×1.67), so interaction 11 and card
+#: tier: advantage 6 read as about 6.6 and 3.6 per 60, under the A line (A wants 7 and a
+#: tier: sum of 11 in a 60). Reaching A takes one more answer AND one more draw: an answer
+#: tier: that also draws does both, and a plain answer needs a draw engine beside it.
 #: tier: It is ahead of deck 78 on the engine, on cheap answers and on card advantage:
 #: tier: five trigger multipliers where deck 78 has two, Swords to Plowshares, Path to
 #: tier: Exile, Leyline Binding and Buried in the Garden on top of deck 78's tricks, and
@@ -34,7 +35,9 @@
 #: notes: Invasion Reinforcements. OWNER DECISIONS on the same day: keep Appa, Loyal Sky
 #: notes: Bison, Earth Kingdom General, Toph, Earth King's Lieutenant, Katara, Heroic
 #: notes: Healer and The Blue Spirit (now protected). Where a cut was needed, it came from
-#: notes: craft targets the owner does not have.
+#: notes: craft targets the owner does not have. Then, the owner's pick: Kellan Joins Up
+#: notes: in, Forecasting Fortune Teller out ("create a Clue token" was one of the deck's
+#: notes: counted draws); Inspiring Commander is parked in the flex block.
 #: notes: WHY THE ADDS: Henge ("whenever a nontoken creature you control enters, put a
 #: notes: +1/+1 counter on it and draw a card") and Tribute ("draw a card if its power is 3
 #: notes: or greater. Otherwise, put two +1/+1 counters on it") are enters triggers, so
@@ -123,6 +126,7 @@
 1 An Unexpected Party // At the Door (HOB) 29
 1 The Great Henge (ELD) 161
 1 Tribute to the World Tree (MOM) 211
+1 Kellan Joins Up (OTJ) 212
 
 # Ally bodies and token makers
 1 Appa, Steadfast Guardian (TLA) 10
@@ -142,7 +146,6 @@
 1 Aang, Airbending Master (TLE) 74
 1 Katara, Heroic Healer (TLE) 215
 1 Silk, Web Weaver (SPM) 145
-1 Forecasting Fortune Teller (TLA) 51
 1 The Blue Spirit (TLE) 90
 1 Katara, Water Tribe's Hope (TLA) 231
 1 White Lotus Reinforcements (TLA) 251
@@ -199,3 +202,4 @@
 
 # Flex — Brawl notes (comments; not part of the 100)
 #~ note: Colour-identity swap vs the Standard list: −Jet, Freedom Fighter (R/W hybrid → R in identity, illegal under G/W/U Katara) / +Prayer of Binding.
+#~ -Earth Kingdom Protectors | +Inspiring Commander | OWNED per the 2026-09-29 pile (not yet catalogued, so `check` still reads it as a rare craft): "Whenever another creature you control with power 2 or less enters, you gain 1 life and draw a card." Every 1/1 Ally token draws, it is an enters-caused trigger that Starfield Vocalist, Elesh Norn and Virtue of Knowledge each copy, and the token doublers double what enters. Six mana. Protectors only sacrifices itself to give one Ally indestructible. Measured: card advantage +1, interaction unchanged, protection 6 to 5.
