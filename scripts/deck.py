@@ -1750,6 +1750,20 @@ _ROLE_PATTERNS = {
         # read as removal — graveyard hate and a recursion cost, neither an answer to a
         # permanent. `[^.]` keeps the lookahead inside the same sentence, so "Destroy
         # target creature." is untouched. With it: 11 matches, zero false positives.
+        # "ANOTHER / OTHER target" (2026-09-29, the G-67 family-disagreement shape). The
+        # pattern above reads "exile target creature" but not "exile ANOTHER target
+        # creature" (Fiend Hunter, Hostage Taker, Noxious Gearhulk) or "exile up to one
+        # OTHER target creature" (Solitude, Azog, Faller's Faithful): 23 pool cards scored
+        # nothing, most of them removal on a body. BLINKS stay out, on the permanence line
+        # drawn below: a card returned to the battlefield in the same ability ("then return
+        # it", "return that card … at the beginning of the next end step" — Flickerwisp,
+        # Eldrazi Displacer, Phelia) is tempo, and so is exiling something to hand its owner
+        # a token copy (Dedicated Dollmaker). A return gated on THIS permanent leaving
+        # (Fiend Hunter, Mysterious Limousine) is an O-ring on a line of its own, and counts.
+        rf"(?:destroy|exile) (?:up to \w+ )?(?:another|other) target (?:[a-z-]+,? ){{0,2}}?"
+        rf"{_PERM_TYPE_LIST}{_NOT_OWN_OR_CARD}"
+        r"(?![^\n]*?\breturn (?:it|that card|them|those cards) to the battlefield)"
+        r"(?![^\n]*?creates? a token that'?s a copy of it)",
         rf"(?:destroy|exile) (?:up to \w+ )?target (?:[a-z-]+,? ){{3,5}}?{_PERM_TYPE_LIST}"
         rf"{_NOT_OWN_OR_CARD}(?![^.]{{0,40}}?\bgraveyard\b)",
         # REMOVAL AURA. `enchanted creature can't attack or block` (Pacifism) is already
@@ -2012,7 +2026,11 @@ _ROLE_PATTERNS = {
         # which is why an earlier tier note wrongly wrote it off as "taps and stuns
         # rather than answers" (session finding — the same card twice).
         r"shuffle[^.]{0,80}?target (?:creature|permanent)[^.]{0,60}?librar",
-        r"target creature[^.]{0,80}?into (?:their|its) (?:owner'?s? )?librar",
+        # Any permanent type since 2026-09-29: this read "target CREATURE" only, while the
+        # PUT-on-top/bottom pattern above already took any permanent — so Happy Hogan's
+        # creature tuck scored and Wan Shi Tong's "target nonland permanent's owner puts it
+        # into their library" did not (9 pool cards, Chaos Warp and Deem Inferior among them).
+        rf"target {_PERM_TYPE}[^.]{{0,80}}?into (?:their|its) (?:owner'?s? )?librar",
     ],
     # SCOPED since BS8-11: "exile all" matched graveyards, hands, libraries and every
     # "End the turn" reminder (Rest in Peace, Hex Magic, Time Stop — 20 pool cards), and
@@ -2103,6 +2121,15 @@ _ROLE_PATTERNS = {
                        # pool cards, both true positives.
                        r"at the beginning of combat on your turn"
                        r"[^.]{0,60}?draws? a card",
+                       # REMOVE A COUNTER, THEN DRAW (2026-09-29): Dawn of a New Age's "At the
+                       # beginning of your end step, remove a hope counter from this
+                       # enchantment. If you do, draw a card." The sentence break stopped the
+                       # pattern above short of the draw; per G-67 the fix is this CLAUSE,
+                       # not a wider window. The counter supply is what repeats it.
+                       r"at the beginning of (?:your|each|the) "
+                       r"(?:upkeep|end step|draw step|combat|precombat main phase)"
+                       r"[^.]{0,60}?\bremove an? [a-z-]+ counters? from (?:this|it)\b"
+                       r"[^.]{0,30}\.\s*if you do, (?:you )?draws? a card",
                        # The draw must fall AFTER the trigger's comma. Magic templates a
                        # triggered ability as "Whenever <condition>, <effect>", so the
                        # comma is what separates a card that DRAWS from a card that CARES

@@ -715,6 +715,49 @@ class TestClassifyRoles:
             "{1}{U}, {T}: Shuffle this creature and target creature with a stun counter "
             "on it into their owners' libraries.")
 
+    def test_a_tuck_of_any_permanent_is_removal(self):
+        """Family disagreement (G-67, 2026-09-29): the INTO-library tuck read "target
+        creature" only, so Happy Hogan's creature tuck scored and Wan Shi Tong's
+        "target nonland permanent's owner puts it …" did not."""
+        assert "Removal (spot)" in deck.classify_roles(
+            "When Wan Shi Tong enters, target nonland permanent's owner puts it into their "
+            "library second from the top or on the bottom.")
+        assert "Removal (spot)" in deck.classify_roles(
+            "The owner of target permanent shuffles it into their library, then reveals "
+            "the top card of their library.")
+
+    def test_another_or_other_target_is_removal(self):
+        assert "Removal (spot)" in deck.classify_roles(
+            "When this creature enters, you may exile another target creature.\n"
+            "When this creature leaves the battlefield, return the exiled card to the "
+            "battlefield under its owner's control.")                     # Fiend Hunter
+        assert "Removal (spot)" in deck.classify_roles(
+            "When this creature enters, exile up to one other target creature. That "
+            "creature's controller gains life equal to its power.")       # Solitude
+
+    def test_a_blink_of_another_target_is_not_removal(self):
+        """NEGATIVE, and the one that pins the guard: dropping the return lookahead makes
+        the pattern BROADER, which a positive test cannot catch (the G-67 mass-bounce
+        lesson). A card returned in the same ability is tempo, not an answer."""
+        for blink in (
+            "When this creature enters, exile another target permanent. Return that card "
+            "to the battlefield under its owner's control at the beginning of the next "
+            "end step.",                                                  # Flickerwisp
+            "{2}{C}: Exile another target creature, then return it to the battlefield "
+            "tapped under its owner's control.",                          # Eldrazi Displacer
+            "When Dedicated Dollmaker enters, exile up to one other target nonland, "
+            "nontoken permanent. Its controller creates a token that's a copy of it."):
+            assert "Removal (spot)" not in deck.classify_roles(blink), blink
+
+    def test_remove_a_counter_then_draw_is_card_advantage(self):
+        """Dawn of a New Age: the sentence break stopped the end-step draw pattern short.
+        Fixed on the CLAUSE, not by widening the window (G-67)."""
+        assert "Card advantage" in deck.classify_roles(
+            "This enchantment enters with a hope counter on it for each creature you "
+            "control.\nAt the beginning of your end step, remove a hope counter from this "
+            "enchantment. If you do, draw a card. Then if this enchantment has no hope "
+            "counters on it, sacrifice it and you gain 4 life.")
+
     def test_equal_draw_discard_loot_is_not_card_advantage(self):
         # Kiora, the Rising Tide: net zero cards, so not advantage — the same rule that
         # excludes a single-draw cantrip.

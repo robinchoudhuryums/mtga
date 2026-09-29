@@ -6,7 +6,6 @@
 # This list should only ever SHRINK. A new entry means either a deck edit
 # introduced an untriaged card or a pattern regressed.
 # `check_roles.py --update-baseline` to acknowledge the current set.
-Aang's Iceberg
 Aang, at the Crossroads
 Aang, at the Crossroads // Aang, Destined Savior
 Absorbing Man
@@ -39,7 +38,6 @@ Auron's Inspiration
 Aurora Awakener
 Avenger of the Fallen
 Avengers: Under Siege
-Azog, Moria's Ruin
 Azula, Cunning Usurper
 Badgermole
 Ball Lightning
