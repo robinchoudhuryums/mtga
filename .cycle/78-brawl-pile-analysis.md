@@ -89,6 +89,17 @@ The numbered rules:
   - 1 Hero (The Astonishing Ant-Man), 5 Soldiers, 0 first strikers.
   - 1 creature that taps opposing creatures (Ty Lee).
   - The lands carry all three of Forest, Island and Plains.
+- **E4 — `screen` repeated E2 in batch 2.** The Great Henge and Tribute to the World Tree
+  screened tangential. Both draw from an enters trigger on a permanent, which the
+  enters-doublers multiply.
+- **E5 — Deck-property counts behind batch 2**, taken 2026-09-29:
+  - 16 noncreature nonland spells, for The Mechanist's Clues.
+  - 21 creatures with power ≥3, for Tribute to the World Tree's draw half.
+  - Largest power 4–6 (The Earth King's 4/4 Bears, Exalted Sunborn, Overlord of the
+    Mistmoors 6), so The Great Henge costs about {3}{G}{G}–{5}{G}{G}.
+  - Great Divide Guide gives "each land and Ally you control" a mana ability. Badgermole
+    Cub adds {G} "whenever you tap a creature for mana", so with Guide out every Ally is a
+    two-mana creature. Without Guide, only Hermitic Herbalist and earthbent lands count.
 
 ## 3. Cross-batch observations
 
@@ -101,6 +112,13 @@ The numbered rules:
   Soldiers). This deck has 1 Hero and 5 Soldiers, so the Hero payoffs (Wondrous Revival,
   Captain America, Unbowed) are dead here. That is a variant signal only if more Hero
   payoffs turn up in batches 2–3.
+- **O4 — Batch 2 answers F4 three times over.** The Great Henge, Tribute to the World Tree
+  and Reed Richards are each a repeatable draw engine. The first two are enters triggers,
+  so they are doubled. Card advantage is the thin axis, so these outrank everything else.
+- **O5 — The Hero cluster grew and still has no home here.** Five Iron Man / Vision /
+  Goliath / Giant-Man / Blue Marvel cards key on artifacts or power ≥4, which this deck
+  does not build around. Together with batch 1's Hero payoffs, they look like a separate
+  Marvel Heroes deck, not a 78 variant. Decide at the end (skill rule 7).
 
 ## 4. Running verdicts
 
@@ -141,12 +159,52 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | Hawkeye, Clint Barton | ✗ | 3/5 vigilance, no other text |
 | Wondrous Revival | ✗ | returns Hero cards; 1 Hero in the deck (E3) |
 
+### Batch 2 (cards 31–60)
+
+| Card | Verdict | Operative text → reason |
+|---|---|---|
+| The Great Henge | ★★★ | "whenever a nontoken creature you control enters, put a +1/+1 counter on it and draw a card": an enters trigger, doubled by the enters-doublers (F1, O4). "{T}: Add {G}{G}. You gain 2 life" feeds F8. Costs about {3}{G}{G}–{5}{G}{G} here (E5) |
+| Tribute to the World Tree | ★★★ | "whenever a creature you control enters, draw a card if its power is 3 or greater. Otherwise, put two +1/+1 counters on it": tokens included, doubled (F1, F3). 21 bodies draw (E5). GGG against 20 green sources is a turn-4-plus cast |
+| Reed Richards, Smartest Man | ★★ | "the first time you would draw a card each turn except the first card you draw during each of your draw steps, you draw four instead": every turn's first extra draw, yours and theirs, becomes four (F4). Static, so face value (F2). A 6-mana 2/4 that removal ends |
+| Silver Surfer, Cosmic Voyager | ★★ | flash; ETB "exile any number of other target permanents you control. Return those cards … at the beginning of the next end step": a mass re-buy of every enters trigger on the board, and an instant-speed sweeper dodge. TOKENS exiled this way are gone, and counters reset (the G-42 shape) |
+| Black Panther, Wakandan King | ★★ | "whenever Black Panther or another creature you control enters, put a +1/+1 counter on target land you control" (enters-doubled, tokens included); "{3}: Move all +1/+1 counters from target land … If one or more … are moved this way, you gain that much life and draw a card". A 2-drop that is card advantage plus F8 |
+| Triumph of the Hordes | ★★ | "creatures you control get +1/+1 and gain trample and infect": with a wide board, ten poison in one swing. Face value (F2); a finisher, not an engine |
+| Fractured Identity | ★★ | "exile target nonland permanent. Each player other than its controller creates a token that's a copy of it": in 1v1 a removal spell that also steals. The copy is a token, so the token doublers make TWO copies |
+| The Mechanist, Aerial Artisan | ★ | an Ally: "whenever you cast a noncreature spell, create a Clue token", doubled by Katara and Roaming Throne (F1, F3). 16 noncreature spells (E5), so about one Clue batch every few turns. `screen` KEY |
+| Badgermole Cub | ★ | "whenever you tap a creature for mana, add an additional {G}": with Great Divide Guide out, every Ally makes two mana (E5). ETB earthbend is doubled. Banned in Standard, legal here. Conditional on one card (Guide) |
+| Bloom Tender | ★ | "for each color among permanents you control, add one mana of that color": three mana from a 2-drop in G/W/U. Ramp, which the deck has 4 of |
+| Hindering Light | ★ | {W}{U}: "counter target spell that targets you or a permanent you control. Draw a card": protects Katara and replaces itself (F7) |
+| Stark's Ingenuity | ◇ | ETB "you may pay {X}. If you do, draw X cards", doubled by the enters-doublers (pay twice). An Aura, so it dies with its creature |
+| Hulk, Brutal Brawler | ◇ | "whenever Hulk attacks, put a +1/+1 counter on each other creature you control" (Doubling Season doubles); must attack each combat |
+| Gamma Grotesque | ◇ | power-up {4}{G}{G}: "draw a card for each creature you control with a counter on it". One-shot; big in a counters-heavy board |
+| Ms. Marvel, Elastic Ally | ◇ | draws once a turn when a pumped creature connects; anthems and counters make that routine. Hybrid {G/W} |
+| Iron Man, Futurist Paragon | ◇ | combat: target creature "becomes an artifact creature with base power and toughness 5/5 and gains flying" — a 1/1 token becomes a 5/5 flier. 6 mana |
+| Blue Marvel, Adam Brashear | ◇ | 3/5 flier with ward {2}; grows on a second draw each turn. Face value |
+| War Machine, James Rhodes | ◇ | attack: "tap up to one target creature"; a second tapper for The Wasp and Momo-style cards |
+| Cytoplast Manipulator | ◇ | steals a creature "with a +1/+1 counter on it" for {U},{T}; graft can move a counter onto an opposing creature as it enters. Clunky |
+| Algorithmic Ferocity | ◇ | 1-mana fight plus indestructible; needs a big creature |
+| Unstoppable Plan | △ | untaps your nonland permanents at your end step — pseudo-vigilance after convoke or waterbend |
+| Fantastic Bounce | △ | sorcery bounce plus a card; Cyclonic Rift does the job at instant speed |
+| Goliath, Mass Manipulator | △ | power-up draws per power-≥4 creature; few of those |
+| Giant-Man, Gargantuan Genius | △ | mana per power-≥4 creature; few of those |
+| Nature's Will | △ | combat damage taps their lands and untaps yours |
+| Flora Colossus | △ | 7-mana hexproof */* equal to your lands |
+| Vision, Spectral Synthezoid | △ | 8 mana; one free noncreature spell a turn |
+| Iron Man, Modern Marvel | ✗ | pumps and draws off ARTIFACT creatures; the deck runs 1 (Roaming Throne) |
+| Iron Man, Bleeding Edge | ✗ | copies artifact spells; the deck runs 2 artifacts |
+| Through the Forest Gate | ✗ | 8-mana land ramp; the deck does not need lands late |
+
 ## 5. Consolidated plan (live)
 
-After batch 1, before cuts are chosen:
+After batch 2, before cuts are chosen:
 
-- **Tier 1 adds:** Inspiring Commander, An Unexpected Party, Leyline Binding.
-- **Tier 2 adds:** Cyclonic Rift, Leonin Warleader, Virtue of Loyalty, Echo, The Falcon.
-- **Tier 3 (fun budget / if slots allow):** Suki, Shi'ar Soldier.
+- **Tier 1 adds (card advantage, the thin axis — F4):** The Great Henge, Tribute to the
+  World Tree, Inspiring Commander.
+- **Tier 1 adds (other):** An Unexpected Party, Leyline Binding.
+- **Tier 2 adds:** Reed Richards, Silver Surfer, Black Panther, Wakandan King, Cyclonic
+  Rift, Fractured Identity, Triumph of the Hordes, Leonin Warleader, Virtue of Loyalty,
+  Echo, The Falcon.
+- **Tier 3 (fun budget / if slots allow):** The Mechanist, Badgermole Cub, Bloom Tender,
+  Hindering Light, Suki, Shi'ar Soldier.
 
 Cuts come after batch 3, from `deck.py cuts` plus a text read.
