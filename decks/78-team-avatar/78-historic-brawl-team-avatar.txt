@@ -7,28 +7,40 @@
 #: archetype: built from the Bant Ally trigger-doubling deck (deck 78). Katara, the
 #: archetype: Fearless leads from the command zone, and every triggered ability of your
 #: archetype: Allies fires twice while she is out. Deck 78's 60 carry over, with one
-#: archetype: colour-identity swap. The 40 added cards deepen the same plan rather than
-#: archetype: change it: three more trigger multipliers (Elesh Norn, Roaming Throne naming
-#: archetype: Ally, Virtue of Knowledge), a third token doubler (Exalted Sunborn), ten more
-#: archetype: Allies whose enter or attack triggers are worth doubling, two non-Ally
-#: archetype: enter payoffs (Galadriel, Rumor Gatherer), five cheap answers,
-#: archetype: protection for the engine, two mana rocks/dorks and a 38-land manabase.
+#: archetype: colour-identity swap, and the other 40 deepen the same plan. There are five
+#: archetype: trigger multipliers (Katara, Starfield Vocalist, Elesh Norn, Roaming Throne
+#: archetype: naming Ally, Virtue of Knowledge) and four token doublers. The draw engines
+#: archetype: all fire off creatures entering: The Great Henge, Tribute to the World
+#: archetype: Tree, Galadriel and The Blue Spirit. Beside them sit Allies whose enter or
+#: archetype: attack triggers are worth doubling, cheap exile effects, protection for the
+#: archetype: engine, and a 38-land manabase.
 #: tier: B — PROVISIONAL, held at B by DENSITY although the metrics floor reads A. The
 #: tier: floor counts cards, not cards per 60, and this list is 100. Interaction 11 and
-#: tier: card advantage 5 clear the A requirement as raw counts, but scaled to 60 cards
-#: tier: they are about 6.6 and 3, which is B territory (A wants 7 and a sum of 11 in a
-#: tier: 60). So on the resilience axis this list is level with deck 78, not ahead of it.
-#: tier: It is ahead on the engine and on cheap answers: five trigger multipliers
-#: tier: where deck 78 has two (eight multipliers in all, against its four), and Swords
-#: tier: to Plowshares, Path to Exile and Get Lost on top of the tricks deck 78 relies
-#: tier: on. Card advantage is the thin axis: the new draw (Rumor Gatherer, Galadriel,
-#: tier: The Blue Spirit, Forecasting Fortune Teller) depends on creatures entering, like
-#: tier: the old. PROVISIONAL because no Brawl game has been played with it, and 32 of
-#: tier: the 100 are not yet owned.
-#: protect: Katara, the Fearless; South Pole Voyager; Avatar Enthusiasts; Haru, Hidden Talent; Suki, Kyoshi Warrior; Starfield Vocalist; Doubling Season; Elesh Norn, Mother of Machines; Roaming Throne
+#: tier: card advantage 7 clear the A requirement as raw counts, but scaled to 60 cards
+#: tier: they are about 6.6 and 4.2, just under the A line (A wants 7 and a sum of 11 in a
+#: tier: 60). It is ahead of deck 78 on the engine, on cheap answers and on card advantage:
+#: tier: five trigger multipliers where deck 78 has two, Swords to Plowshares, Path to
+#: tier: Exile, Leyline Binding and Buried in the Garden on top of deck 78's tricks, and
+#: tier: two draw engines (The Great Henge, Tribute to the World Tree) that the enters-
+#: tier: doublers multiply. PROVISIONAL because no Brawl game has been played with it.
+#: protect: Katara, the Fearless; South Pole Voyager; Avatar Enthusiasts; Haru, Hidden Talent; Suki, Kyoshi Warrior; Starfield Vocalist; Doubling Season; Elesh Norn, Mother of Machines; Roaming Throne; Appa, Loyal Sky Bison; Earth Kingdom General; Toph, the Blind Bandit; Earth King's Lieutenant; Katara, Heroic Healer; The Blue Spirit
 #: notes: ARENA'S BRAWL QUEUE (100 cards, Historic card pool). The 60-card version
 #: notes: for Arena's Standard Brawl queue is 78-brawl-team-avatar.txt; this list is
 #: notes: that 60 plus 40 cards the Standard pool does not have.
+#: notes: PILE SWAPS, 2026-09-29, from a 73-card owned pile (.cycle/78-brawl-pile-
+#: notes: analysis.md). In: The Great Henge, Tribute to the World Tree, An Unexpected
+#: notes: Party (name Ally), Leyline Binding, Buried in the Garden, Silk, Web Weaver. Out:
+#: notes: Kyoshi Warriors, Relief Captain, Rumor Gatherer, Skyclave Apparition, Get Lost,
+#: notes: Invasion Reinforcements. OWNER DECISIONS on the same day: keep Appa, Loyal Sky
+#: notes: Bison, Earth Kingdom General, Toph, Earth King's Lieutenant, Katara, Heroic
+#: notes: Healer and The Blue Spirit (now protected). Where a cut was needed, it came from
+#: notes: craft targets the owner does not have.
+#: notes: WHY THE ADDS: Henge ("whenever a nontoken creature you control enters, put a
+#: notes: +1/+1 counter on it and draw a card") and Tribute ("draw a card if its power is 3
+#: notes: or greater. Otherwise, put two +1/+1 counters on it") are enters triggers, so
+#: notes: Starfield, Elesh Norn and Virtue each add a copy, and Bard doubles the draws.
+#: notes: Leyline Binding costs {2}{W} once Plains, Island and Forest are all out.
+#: notes: Tribute's {G}{G}{G} is a turn-5-or-later cast against 20 green sources.
 #: notes: THE ONE COLOUR-IDENTITY SWAP: Jet, Freedom Fighter is {2}{R/W}{R/W}{R/W}, and
 #: notes: a hybrid symbol counts toward colour identity, so he is red and illegal under a
 #: notes: G/W/U commander. Prayer of Binding ({3}{W}, flash, exile a nonland permanent)
@@ -104,12 +116,13 @@
 1 Virtue of Knowledge // Vantress Visions (WOE) 76
 1 Exalted Sunborn (EOE) 15
 1 Galadriel, Light of Valinor (HOC) 32
-1 Rumor Gatherer (SNC) 29
+1 An Unexpected Party // At the Door (HOB) 29
+1 The Great Henge (ELD) 161
+1 Tribute to the World Tree (MOM) 211
 
 # Ally bodies and token makers
 1 Appa, Steadfast Guardian (TLA) 10
 1 Suki, Kyoshi Warrior (TLA) 243
-1 Kyoshi Warriors (TLA) 26
 1 Hakoda, Selfless Commander (TLA) 23
 1 Aang, Swift Savior // Aang and La, Ocean's Fury (TLA) 204
 1 The Earth King (TLA) 172
@@ -124,9 +137,8 @@
 1 Jet, Rebel Leader (TLE) 78
 1 Aang, Airbending Master (TLE) 74
 1 Katara, Heroic Healer (TLE) 215
-1 Invasion Reinforcements (TLA) 24
+1 Silk, Web Weaver (SPM) 145
 1 Forecasting Fortune Teller (TLA) 51
-1 Relief Captain (J25) 241
 1 The Blue Spirit (TLE) 90
 1 Katara, Water Tribe's Hope (TLA) 231
 1 White Lotus Reinforcements (TLA) 251
@@ -139,8 +151,8 @@
 1 The Eagles Are Coming! (HOB) 12
 1 Swords to Plowshares (SPG) 54
 1 Path to Exile (MAR) 47
-1 Get Lost (LCI) 14
-1 Skyclave Apparition (ZNR) 39
+1 Buried in the Garden (MKM) 191
+1 Leyline Binding (DMU) 24
 1 Knight of Autumn (GRN) 183
 1 Aang, the Last Airbender (TLA) 4
 
