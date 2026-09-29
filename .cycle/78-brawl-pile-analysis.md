@@ -244,18 +244,52 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 Per 60 cards, interaction ≈7.2 and interaction + card advantage ≈12, which is A density.
 It is 100 cards and legal. Tier stays a human call.
 
-### Tier 1 — the package (each add paired with its cut, graded from text)
+### Tier 1 — the package, REVISED 2026-09-29 on the owner's decision
 
-| # | Add | Cut | Why the cut goes |
-|---|---|---|---|
-| 1 | The Great Henge | Kyoshi Warriors | "When this creature enters, create a 1/1 white Ally creature token" — a 4-mana 3/3 plus a token; 11 other token makers do this, and Henge draws off every one |
-| 2 | Tribute to the World Tree | Relief Captain | support 3 is a one-shot; Tribute puts two counters on EVERY small creature for the rest of the game. Katara, Heroic Healer and United Front already cover the one-shot |
-| 3 | Inspiring Commander | Appa, Loyal Sky Bison | a 6-mana 4/4 flier whose modal trigger grants flying or airbends your own card; Commander is the 6-drop that draws cards |
-| 4 | An Unexpected Party | Earth Kingdom General | a 4-mana 2/2 whose lifegain rider is "only once each turn"; Party is +2/+2 to every Ally |
-| 5 | Leyline Binding | Prayer of Binding | the same flash exile of a nonland permanent, at {2}{W} instead of {3}{W} once all three basic types are out; Prayer's only edge is 2 life |
-| 6 | Buried in the Garden | Toph, the Blind Bandit | deck 78's flex notes already call Toph the softest slot (earthbend 2, power = counters on lands); Buried is removal that also ramps |
-| 7 | Silk, Web Weaver | Invasion Reinforcements | Reinforcements is one token once; Silk is a token per creature spell for the rest of the game |
-| 8 | Kellan Joins Up | Earth King's Lieutenant | Lieutenant puts counters on Allies once and grows itself; Kellan Joins Up puts a counter on every creature whenever any of 25 legends enters |
+**Owner decision:** do NOT cut Appa, Loyal Sky Bison, Earth Kingdom General, Toph, the
+Blind Bandit or Earth King's Lieutenant. Cut unowned craft targets in the list instead,
+rares first. The owner raised wildcards in this conversation, so the Player Profile lets
+them weigh. Each pair below is still like-for-like, graded from text, and the
+by-the-numbers cost of each is stated.
+
+| # | Add (owned) | Cut | Cut's craft | Trade, from text |
+|---|---|---|---|---|
+| 1 | The Great Henge | Kyoshi Warriors | owned C | a 4-mana 3/3 plus one Ally token, for a draw engine |
+| 2 | Tribute to the World Tree | Relief Captain | U | a one-shot support 3, for counters on every small creature and draws off every big one |
+| 3 | Inspiring Commander | The Blue Spirit | R | draw for draw. Blue Spirit draws only when a NONTOKEN creature enters DURING COMBAT, but it also gives a creature a turn flash. Commander draws on every power-≤2 creature, tokens included. Costs: the Jet, Rebel Leader pairing loses its half, and the deck loses the flash |
+| 4 | An Unexpected Party | Rumor Gatherer | U | Gatherer draws at most once a turn ("if this is the second time this ability has resolved this turn, draw a card instead"). With Henge, Tribute and Commander in, a +2/+2 Ally anthem is worth more |
+| 5 | Leyline Binding | Skyclave Apparition | R | Skyclave hits "nontoken permanent … mana value 4 or less" and leaves a body; Leyline hits ANY nonland permanent, at instant speed, for about {2}{W}. Both are doubled. Prayer of Binding (owned) STAYS |
+| 6 | Buried in the Garden | Get Lost | R | by the numbers Get Lost is the more efficient answer ({1}{W}, instant). Buried is 4 mana, sorcery speed and an Aura, but it hits any nonland permanent, is doubled, and ramps |
+| 7 | Silk, Web Weaver | Invasion Reinforcements | owned U | one token once, for a token per creature spell |
+| 8 | Kellan Joins Up | Katara, Heroic Healer | U | the same effect: a +1/+1 counter on each other creature. Healer does it once, as an Ally, so Katara and Throne double it, on a lifelink body. Kellan Joins Up repeats it on each of 25 legends entering |
+
+**Measured on a scratch copy:**
+
+| | Now | Revised package |
+|---|---|---|
+| Card advantage | 5 | 7 |
+| Interaction | 11 | 11 |
+| Anthems | 2 | 4 |
+| Average MV | 3.39 | 3.58 |
+
+The deck is legal. Per 60 cards, interaction + card advantage ≈10.8, just under the A line
+of 11; the first package reached it, mainly by cutting Rumor Gatherer's draw less often.
+
+**Crafting this removes** from the deck's own list: 3 rares (The Blue Spirit, Skyclave
+Apparition, Get Lost) and 3 uncommons (Relief Captain, Rumor Gatherer, Katara, Heroic
+Healer). The 8 adds are owned per the owner. The library does not record 6 of them yet
+(G-10), so `check` still lists them until an ingest.
+
+**If the owner prefers unowned cuts for rows 1 and 7 too:** Earth Kingdom Protectors (U)
+and Knight of Autumn (R) are the remaining unowned candidates, read from text:
+- Protectors: a 1-drop that sacrifices itself for one Ally's indestructibility.
+- Knight of Autumn: modal ETB (counters, artifact/enchantment removal, or 4 life).
+
+The multipliers are unowned too (Elesh Norn, Roaming Throne, Virtue of Knowledge). They
+are the thesis, so they are NOT offered.
+
+**Header change to carry with the swaps:** add the four owner-kept cards to
+`#: protect:`, so `cuts` and future tunes stop proposing them.
 
 ### Tier 2 — a second wave, if play shows the need
 
