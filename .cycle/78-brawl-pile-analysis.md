@@ -245,19 +245,20 @@ Measured on scratch copies (cuts: Earth Kingdom Protectors + Aang, Airbending Ma
 | Vault Guardsman + Inspiring Call (owned) | **A** | protection stays 6; both castable ≥88% |
 | Vault Guardsman + Coastal Piracy / Whirlwind Technique / Elemental Bond | A | UU cards 57-63% on curve |
 | Raise the Palisade / Counterspell / Righteous Fury + Coastal Piracy | A | |
-| Wan Shi Tong / Fiend Hunter + Coastal Piracy | B | classifier-blind removal (G-67) |
-| Vault Guardsman + Dawn of a New Age | B | classifier-blind draw (G-67) |
+| Wan Shi Tong / Fiend Hunter + Coastal Piracy | A | read B until the 2026-09-29 classifier fix (G-67) |
+| Vault Guardsman + Dawn of a New Age | A | read B until the 2026-09-29 classifier fix (G-67) |
 
 Second wave, measured on top of the core pair (still A, protection 6): +Wan Shi Tong
 −The Eagles Are Coming!, +Flowering of the White Tree −Duty Beyond Death, +Multiversal
-Recruitment −Starry-Eyed Skyrider. Every remaining unprotected UNOWNED card is an engine
+Recruitment −Starry-Eyed Skyrider (interaction 13 now that Wan Shi Tong's tuck counts).
+Every remaining unprotected UNOWNED card is an engine
 or interaction piece, so a second wave has to cut owned cards.
 
 | Card | Verdict | Why, from text |
 |---|---|---|
 | Vault Guardsman | ★★★ | convoke; "exile target artifact or creature an opponent controls until this creature leaves", copied by all three enters-doublers |
 | Inspiring Call (owned) | ★★★ | instant; draws per creature with a +1/+1 counter, and they gain indestructible |
-| Wan Shi Tong, All-Knowing | ★★★ | enters: tuck a nonland permanent (copied ×3), each tuck makes two Spirits (doubled). UU 63% T5; classifier sees no removal |
+| Wan Shi Tong, All-Knowing | ★★★ | enters: tuck a nonland permanent (copied ×3), each tuck makes two Spirits (doubled). UU 63% T5; counted as removal since the classifier fix |
 | Multiversal Recruitment | ★★ | non-legendary token copy of Elesh Norn or Starfield Vocalist = another multiplier; flashback |
 | Flowering of the White Tree | ★★ | legends +2/+1 and ward {1}, the rest +1/+1; ward covers Katara |
 | Coastal Piracy | ★★ | draw per creature connecting; UU 57% T4 |
@@ -269,7 +270,7 @@ or interaction piece, so a second wave has to cut owned cards.
 | Righteous Fury | ★ | destroy all tapped creatures, pre-combat that is their attackers |
 | Counterspell | ★ | UU 44% T2 |
 | Captain Marvel, Shooting Star | ★ | seven mana; enters/attacks exile |
-| Dawn of a New Age | ★ | draws each end step, one per creature on entry; classifier sees only lifegain |
+| Dawn of a New Age | ★ | draws each end step, one per creature on entry; counted as draw since the fix |
 | Fiend Hunter | ★ | exile until it leaves, copied ×3 but all return together |
 | Katara, Waterbending Master | ◇ | needs spells on the opponent's turn |
 | Ephemerate | ◇ | re-buys enters triggers, but blink erases +1/+1 counters (G-42) |
