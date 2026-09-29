@@ -46,6 +46,11 @@
 #: notes: Recruitment in for Starry-Eyed Skyrider (a non-legendary token copy of Elesh
 #: notes: Norn or Starfield Vocalist is one more trigger doubler; flashback). Both cuts
 #: notes: that granted indestructible are gone, so Heroic Intervention is the sweeper answer.
+#: notes: Black Panther, Wakandan King in for Arcane Signet: "whenever Black Panther or
+#: notes: another creature you control enters, put a +1/+1 counter on target land you
+#: notes: control" is one more enters trigger the three enters-doublers copy, the counters
+#: notes: grow Toph's land creatures, and {3} moves them onto a creature to gain that much
+#: notes: life and draw a card. The draw is conditional, so card advantage still reads 6.
 #: notes: WHY THE ADDS: Henge ("whenever a nontoken creature you control enters, put a
 #: notes: +1/+1 counter on it and draw a card") and Tribute ("draw a card if its power is 3
 #: notes: or greater. Otherwise, put two +1/+1 counters on it") are enters triggers, so
@@ -79,8 +84,8 @@
 #: notes: control exiles it and lets you recast it for {2}, which re-fires its enters
 #: notes: trigger, and a creature leaving without dying gives Aang an experience counter,
 #: notes: which makes an Ally token every upkeep.
-#: notes: MANA. 38 lands (12 basics) plus Arcane Signet, Hermitic Herbalist and Great
-#: notes: Divide Guide. W 23 / U 18 / G 20 sources. Katara herself is 68% on turn
+#: notes: MANA. 38 lands (12 basics) plus Hermitic Herbalist and Great Divide Guide
+#: notes: (Arcane Signet went out for Black Panther, Wakandan King). W 23 / U 18 / G 20 sources. Katara herself is 68% on turn
 #: notes: three, up from 57% in deck 78. Katara, Water Tribe's Hope was parked in deck 78
 #: notes: waiting for blue sources, and is in now, but {2}{W}{U}{U} is still only 60% on
 #: notes: turn five, among the list's worst castability rows. 38 of 100 is inside the
@@ -100,8 +105,8 @@
 #: notes: Historic Brawl, which does not rotate. Still open: `targets` labels Jet's and
 #: notes: Aang, at the Crossroads's mana-value limits as "in the yard" (both look at the
 #: notes: top five); the counts are right, the wording is not.
-#: notes: CRAFT COST, as information only: 32 of the 100 are not in the library (7
-#: notes: mythic, 20 rare, 3 uncommon, 2 common). The Great Henge, Tribute to the World
+#: notes: CRAFT COST, as information only: 35 of the 100 are not in the library (8
+#: notes: mythic, 22 rare, 4 uncommon, 1 common). The Great Henge, Tribute to the World
 #: notes: Tree, Leyline Binding and Buried in the Garden are among them but came from the
 #: notes: owner's own pile, so they are owned and simply not catalogued yet.
 
@@ -136,6 +141,7 @@
 1 Tribute to the World Tree (MOM) 211
 1 Kellan Joins Up (OTJ) 212
 1 Multiversal Recruitment (MSC) 629
+1 Black Panther, Wakandan King (MAR) 87
 
 # Ally bodies and token makers
 1 Appa, Steadfast Guardian (TLA) 10
@@ -173,7 +179,6 @@
 
 # Protection and ramp
 1 Heroic Intervention (M21) 188
-1 Arcane Signet (ELD) 331
 1 Hermitic Herbalist (TLA) 226
 1 Flowering of the White Tree (LTR) 15
 

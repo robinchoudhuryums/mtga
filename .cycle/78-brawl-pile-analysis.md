@@ -309,6 +309,13 @@ so its "tap up to one target creature" is copied by Katara, Roaming Throne and t
 enters-doublers — it may be the stronger card here. Black Panther's "{3}: Move … and draw a
 card" is real card advantage the classifier does not count.
 
+**Applied 2026-09-29:** Black Panther, Wakandan King in for Arcane Signet (the owner's pick,
+not the table's primary). Hermitic Herbalist and Great Divide Guide are now the only nonland
+mana sources, so Dawn of a New Age's primary cut is gone — its alternates stand. Measured on
+scratch copies afterwards: Beastmaster for An Unexpected Party and for White Lotus
+Reinforcements both stay floor B; Wan Shi Tong for Swords to Plowshares stays B (interaction
+12, instant-speed 6 → 5), and for Katara, Water Tribe's Hope reaches A (interaction 13).
+
 ## 5. Consolidated plan (live)
 
 **Measured on a scratch copy (Tier 1 package, 2026-09-29):**

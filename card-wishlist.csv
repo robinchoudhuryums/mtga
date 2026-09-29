@@ -148,6 +148,9 @@ Poison Dart Frog,Creature — Frog,"Reach
 {2}: This creature gains deathtouch until end of turn.",G,Frog; mana; reach; defense,LCI,207,Common,50,,1.5,seed
 Flowering of the White Tree,Legendary Enchantment,"Legendary creatures you control get +2/+1 and have ward {1}.
 Nonlegendary creatures you control get +1/+1.",W,Nonlegendary; pump; ward; protection,LTR,15,Rare,78-historic-brawl,craft for 78-historic-brawl (applied 2026-09-29),4.5,seed
+"Black Panther, Wakandan King",Legendary Creature — Human Noble Hero,"First strike
+Survey the Realm — Whenever Black Panther or another creature you control enters, put a +1/+1 counter on target land you control.
+Mine Vibranium — {3}: Move all +1/+1 counters from target land you control onto target creature. If one or more +1/+1 counters are moved this way, you gain that much life and draw a card.",W/G,Human; Noble; Hero; counters; lifegain; card draw; first strike; combat,MAR,87,Mythic,78-historic-brawl,78-historic-brawl craft-list swap for Arcane Signet: enters trigger feeds land counters (Toph) and a {3} draw sink,7.0,seed
 Ill-Timed Explosion,Sorcery,"Draw two cards. Then you may discard two cards. When you do, Ill-Timed Explosion deals X damage to each creature, where X is the greatest mana value among cards discarded this way.",U/R,card draw; burn,MKM,207,Rare,25,draw two + scalable board sweep/burn,7.0,hand
 "Izoni, Center of the Web",Legendary Creature — Elf Detective,"Menace
 Whenever Izoni enters or attacks, you may collect evidence 4. If you do, create two 2/1 black and green Spider creature tokens with menace and reach.
