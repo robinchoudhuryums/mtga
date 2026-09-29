@@ -2585,6 +2585,26 @@ class TestTierBand:
         assert max(bands.values()) / sum(bands.values()) <= deck.TIER_SPREAD_MAX_SHARE
         assert set(bands) == {"A", "B", "C", "D"}
 
+    def test_a_100_card_format_is_graded_per_60(self):
+        # The table is per 60 cards. The 100-card 78-historic-brawl read A on 11
+        # interaction and 5 card advantage: about 6.6 and 3 per 60, which is B density.
+        big = dict(_vec("midrange", 11, 5), size=100,
+                   floor_scale=deck._floor_scale("Historic Brawl", 100))
+        assert deck.tier_band(big) == "B"
+        ai, ar = deck.floor_requirements(big, "A")
+        assert (ai, ar) == (12, 19)            # ceil(7 * 100/60), ceil(11 * 100/60)
+        assert deck.tier_band(dict(big, interaction=ai, card_advantage=ar - ai)) == "A"
+        # the gap diagnostic reads the same scaled requirement
+        assert deck.tier_gap(big, "A")["add_interaction"] == ai - 11
+
+    def test_scaling_is_keyed_on_the_format_not_the_count(self):
+        # A 61-card Standard deck must not need an extra removal spell.
+        assert deck._floor_scale("Standard", 61) == 1.0
+        assert deck._floor_scale("Brawl", 60) == 1.0          # 60-card Standard Brawl
+        assert deck._floor_scale("Historic Brawl", 100) == pytest.approx(100 / 60)
+        v = _vec("midrange", 7, 4)                            # no floor_scale key at all
+        assert deck.floor_requirements(v, "A") == deck.TIER_FLOOR_REQ["A"]
+
     def test_aggro_clock_only_raises(self):
         fast = deck.tier_band(_vec("aggro", 2, 0, avg_mv=2.0, early=16, reach=10))
         mid = deck.tier_band(_vec("midrange", 2, 0, avg_mv=2.0, early=16, reach=10))
@@ -6424,6 +6444,18 @@ class TestPoolFormatKey:
                                                  expect=None, check=None, fix=None))
         assert rc in (0, None)
         return capsys.readouterr().err
+
+    def test_only_standard_and_alchemy_rotate(self):
+        # 2026-09-29: `check` flagged four craft targets in the 100-card Historic Brawl
+        # deck as rotating; Standard rotation never removes a card from that format.
+        assert deck.format_rotates("Standard") and deck.format_rotates(None)
+        assert deck.format_rotates("Brawl")                   # 60-card Standard Brawl
+        assert deck.format_rotates("Alchemy")
+        assert not deck.format_rotates("Historic Brawl")
+        assert not deck.format_rotates("historic-brawl")
+        assert not deck.format_rotates("Commander")
+        pool_rot = {"old card": ("2022-01-01", {"standard", "historic"}, "XYZ")}
+        assert deck.craft_rot_note("Old Card", pool_rot, rotates=False) == ""
 
     def test_resolve_checks_the_pool_key_not_the_raw_name(self, monkeypatch, capsys):
         # `Historic Brawl` matched no Scryfall key, so resolve called EVERY card illegal;

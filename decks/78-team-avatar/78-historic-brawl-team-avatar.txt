@@ -14,11 +14,11 @@
 #: archetype: Tree, Galadriel and The Blue Spirit. Beside them sit Allies whose enter or
 #: archetype: attack triggers are worth doubling, cheap exile effects, protection for the
 #: archetype: engine, and a 38-land manabase.
-#: tier: B — PROVISIONAL, held at B by DENSITY although the metrics floor reads A. The
-#: tier: floor counts cards, not cards per 60, and this list is 100. Interaction 11 and
-#: tier: card advantage 7 clear the A requirement as raw counts, but scaled to 60 cards
-#: tier: they are about 6.6 and 4.2, just under the A line (A wants 7 and a sum of 11 in a
-#: tier: 60). It is ahead of deck 78 on the engine, on cheap answers and on card advantage:
+#: tier: B — PROVISIONAL, and the metrics floor now agrees: B. A 100-card deck is
+#: tier: graded per 60 cards (the floor's thresholds scale ×1.67), so interaction 11 and
+#: tier: card advantage 7 read as about 6.6 and 4.2 per 60, just under the A line (A
+#: tier: wants 7 and a sum of 11 in a 60). One more cheap answer or draw engine closes it.
+#: tier: It is ahead of deck 78 on the engine, on cheap answers and on card advantage:
 #: tier: five trigger multipliers where deck 78 has two, Swords to Plowshares, Path to
 #: tier: Exile, Leyline Binding and Buried in the Garden on top of deck 78's tricks, and
 #: tier: two draw engines (The Great Henge, Tribute to the World Tree) that the enters-
@@ -72,8 +72,9 @@
 #: notes: Divide Guide. W 23 / U 18 / G 20 sources. Katara herself is 68% on turn
 #: notes: three, up from 57% in deck 78. Katara, Water Tribe's Hope was parked in deck 78
 #: notes: waiting for blue sources, and is in now, but {2}{W}{U}{U} is still only 60% on
-#: notes: turn five, among the list's worst castability rows. `consistency`'s "consider more lands
-#: notes: (23–26)" advice is written for 60 cards; 38 of 100 is normal for Brawl.
+#: notes: turn five, among the list's worst castability rows. 38 of 100 is inside the
+#: notes: usual 36–40 for Brawl. A single seven is keepable 81.2% of the time, and with
+#: notes: Brawl's free first mulligan it is 96.5% within two sevens.
 #: notes: NO SWEEPER, deliberately. The deck wins with a wide board, so Farewell, Sunfall
 #: notes: and Doomskar would hit it hardest. Heroic Intervention is the answer to an
 #: notes: opposing sweeper instead. Time Wipe (keeps one creature) is the one to try if
@@ -82,13 +83,16 @@
 #: notes: token doubler), Panharmonicon (a fourth enters doubler), Appa, the Vigilant
 #: notes: (seven mana), Toph, Earthbending Master and Master Piandao. Any of them is a
 #: notes: reasonable swap for a weak slot once games show which slots are weak.
-#: notes: TOOLING CAVEATS for this list, the roster's first Historic Brawl deck. `check`
-#: notes: marks Roaming Throne, Virtue of Knowledge, Get Lost and Botanical Sanctum as
-#: notes: rotating, but Standard rotation does not affect Brawl legality. `targets` labels
-#: notes: Jet and Skyclave Apparition's mana-value limits as "in the yard"; the counts are
-#: notes: right, the wording is not. The tier floor counts absolute cards (see tier).
-#: notes: CRAFT COST, as information only: 32 of the 100 are not in the library, which is
-#: notes: 6 mythic, 20 rare, 4 uncommon, 2 common.
+#: notes: TOOLING, 2026-09-29, for the roster's first Historic Brawl deck. The tier
+#: notes: floor is graded per 60 cards for a 100-card format, `consistency` prices the
+#: notes: free first mulligan and the Brawl land count, and rotation flags are off for
+#: notes: Historic Brawl, which does not rotate. Still open: `targets` labels Jet's and
+#: notes: Aang, at the Crossroads's mana-value limits as "in the yard" (both look at the
+#: notes: top five); the counts are right, the wording is not.
+#: notes: CRAFT COST, as information only: 32 of the 100 are not in the library (7
+#: notes: mythic, 20 rare, 3 uncommon, 2 common). The Great Henge, Tribute to the World
+#: notes: Tree, Leyline Binding and Buried in the Garden are among them but came from the
+#: notes: owner's own pile, so they are owned and simply not catalogued yet.
 
 # Commander (leads from the command zone; also one of the 100)
 1 Katara, the Fearless (TLA) 230

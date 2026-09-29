@@ -383,3 +383,33 @@ class TestRotationTakesADeckId:
         assert rc == 0 and TRACEBACK not in out and "Deck scratch:" in out
         rc, out = _run(["scripts/deck.py", "swap", str(p), "--cut", _CUT_CARD, "--add", _ADD_CARD])
         assert rc != 0 and "No deck with id" in out
+
+
+class TestBrawlFormatAwareness:
+    """The 100-card Brawl pass (2026-09-29): Arena's Brawl queues give a FREE first
+    mulligan, and Historic Brawl is an eternal pool, so `consistency` and `rotation` must
+    read the deck's `#: format:` rather than assume 60-card Standard. Pinned at the CLI
+    because both are printed lines, not model outputs."""
+
+    @staticmethod
+    def _as_format(tmp_path, fmt):
+        import deck                                   # sys.path is set by _pick_deck
+        src = open(deck.find_deck(_DECK)["path"], encoding="utf-8").read()
+        body = "\n".join(l for l in src.splitlines() if not l.startswith("#: format:"))
+        p = tmp_path / f"scratch-{fmt.replace(' ', '-').lower()}.txt"
+        p.write_text(f"#: format: {fmt}\n{body}\n", encoding="utf-8")
+        return str(p)
+
+    def test_brawl_formats_price_the_free_mulligan_and_standard_does_not(self, tmp_path):
+        rc, out = _run(["scripts/deck.py", "consistency", self._as_format(tmp_path, "Historic Brawl")])
+        assert rc == 0 and TRACEBACK not in out
+        assert "free first mulligan" in out
+        rc, out = _run(["scripts/deck.py", "consistency", self._as_format(tmp_path, "Standard")])
+        assert rc == 0 and "free first mulligan" not in out
+
+    def test_an_eternal_format_does_not_rotate(self, tmp_path):
+        rc, out = _run(["scripts/deck.py", "rotation", self._as_format(tmp_path, "Historic Brawl")])
+        assert rc == 0 and TRACEBACK not in out
+        assert "does not rotate" in out
+        rc, out = _run(["scripts/deck.py", "rotation", self._as_format(tmp_path, "Standard")])
+        assert rc == 0 and "does not rotate" not in out

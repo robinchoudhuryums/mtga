@@ -169,7 +169,7 @@ castability · curve · central-theme density), with the intangibles moving a de
   model can't see those), so it **under-rates by design.** An uncastable stray CAPS the floor at C
   rather than SETTING it, so a dead card can no longer RAISE a D-floor deck, and a card
   the deck's `#: uncastable-ok:` header declares intentional is not counted at all.
-- **A GOOD DECK CAN SIT AT A LOW FLOOR, AND THAT IS THE MODEL WORKING (investigated 2026-09-03, prompted by deck 78 playing above its B).** The floor reads TWO of the eleven terms `deck_quality_vector` produces; **21 of deck 78's 36 nonland cards contribute nothing to it** — 11 payoff/engine plus 10 with no role at all, Doubling Season / Starfield Vocalist / Katara among them, i.e. the entire trigger-doubling thesis. That is not deck-78-specific: the roster's MEDIAN deck has 71% of its nonland cards invisible to the floor (78 is 75%, rank 42 of 115). **A payoff-density term was simulated and DECLINED**: +1 per 4 payoff cards capped at +3 moved 16 decks, cut the C band 9→1 and pushed A to 62% — re-starting the saturation BS8-06 had just fixed — **and left deck 78 at B anyway.** So the answer to "does a well-playing deck mean the rubric is wrong" is no on both halves: the intended remedy is the human letter, which the rubric already lets sit ONE band above the floor. Three things say leave the table alone: the spread is healthy (A 69 / B 45 / C 0, that band now EMPTY — deck 73 was its last member — top band 61% against the 85% alarm; the 2026-09-22 plan-header pass moved four decks A→B and widened it further), the record cannot arbitrate (**79 matches, and int+ca correlates with winning at r = −0.03**; nothing clears the ±0.22 noise band, so this is not evidence the floor is wrong, it is evidence the sample sees nothing), and deck 78's 5-2 is one win above the 54% pooled baseline at n=7 against a 20-match floor. **Re-derive the table when `tier_floor_spread` says so; do not re-derive it because a deck outperformed its letter.**
+- **A GOOD DECK CAN SIT AT A LOW FLOOR, AND THAT IS THE MODEL WORKING (investigated 2026-09-03, prompted by deck 78 playing above its B).** The floor reads TWO of the eleven terms `deck_quality_vector` produces; **21 of deck 78's 36 nonland cards contribute nothing to it** — 11 payoff/engine plus 10 with no role at all, Doubling Season / Starfield Vocalist / Katara among them, i.e. the entire trigger-doubling thesis. That is not deck-78-specific: the roster's MEDIAN deck has 71% of its nonland cards invisible to the floor (78 is 75%, rank 42 of 115). **A payoff-density term was simulated and DECLINED**: +1 per 4 payoff cards capped at +3 moved 16 decks, cut the C band 9→1 and pushed A to 62% — re-starting the saturation BS8-06 had just fixed — **and left deck 78 at B anyway.** So the answer to "does a well-playing deck mean the rubric is wrong" is no on both halves: the intended remedy is the human letter, which the rubric already lets sit ONE band above the floor. Three things say leave the table alone: the spread is healthy (A 68 / B 46 / C 0, that band now EMPTY — deck 73 was its last member — top band 60% against the 85% alarm; the 2026-09-22 plan-header pass moved four decks A→B and widened it further, and the 2026-09-29 per-60 scaling moved one more, the 100-card 78-historic-brawl), the record cannot arbitrate (**79 matches, and int+ca correlates with winning at r = −0.03**; nothing clears the ±0.22 noise band, so this is not evidence the floor is wrong, it is evidence the sample sees nothing), and deck 78's 5-2 is one win above the 54% pooled baseline at n=7 against a 20-match floor. **Re-derive the table when `tier_floor_spread` says so; do not re-derive it because a deck outperformed its letter.**
 - **The floor is ARCHETYPE-aware** (#4): an aggro deck closes on a fast clock, not an
   interaction suite, so for an **aggro** plan a bounded `_clock_score` (low curve +
   cheap threats + reach, 0–7) SUBSTITUTES for the interaction the resilience floor
@@ -187,6 +187,23 @@ castability · curve · central-theme density), with the intangibles moving a de
   the archetype prose disagree, the prose is usually the honest one**; check them against
   each other whenever a deck's letter looks generous, and re-check after a pivot, since
   a draft-time change of plan does not rewrite the header.
+- **A 100-CARD BRAWL DECK IS GRADED PER 60 (2026-09-29).** Interaction and card advantage
+  are COUNTS and `TIER_FLOOR_REQ` was derived from 60-card decks, so an unscaled 100-card
+  list clears A on size alone: 78-historic-brawl read A on interaction 11, about 6.6 per 60.
+  For a `BIG_DECK_FORMATS` deck over 60 cards, `floor_requirements` scales the table by
+  size / 60 and rounds UP (A at 100 cards needs 12 and a sum of 19). It is the one reader
+  of the table for both `tier_band` and `tier_gap`, so `tier --to` aims at the scaled gap.
+  `tier` prints the scale and the per-60 density. **Keyed on the FORMAT, not the count** —
+  a 61-card Standard deck and a 60-card Standard Brawl deck are unscaled. The bounded 0–7
+  aggro clock is NOT scaled (it is a score, not a count). Roster diff: 1 of 116 decks moved,
+  78-historic-brawl A→B. Two more Brawl facts the tools read now: Arena's Brawl queues give
+  a FREE first mulligan, so `consistency` prints a within-two-sevens keepable figure and
+  bases its land advice on it (with a 36–40 land norm at 100 cards); and **Historic Brawl
+  does not rotate** (`format_rotates`), so every ⚠rot flag, `check`'s owned-rotation footer
+  and `rotation <id>` are off for it — Standard Brawl still rotates with Standard. What
+  stays a human read in a Brawl tune: the commander is a card you always have (taxed {2}
+  per recast), singleton means redundancy is VIRTUAL copies only (G-46), and a game is 1v1
+  at 25 life, a slightly longer clock than 20.
 - **The bands (what the letter means):**
   - **S** — measurably A-floor AND a human call that it's top-meta capable: real
     bombs, a protection/interaction suite, proven to close fast. Rare.
