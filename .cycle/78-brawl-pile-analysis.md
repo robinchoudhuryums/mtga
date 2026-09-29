@@ -229,6 +229,56 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | Mindslaver | △ | 10 mana total to take one turn |
 | Ultron, Machine Overlord | ✗ | pumps Robots and Constructs; the deck has none |
 
+### Batch 4 — the owner's 37-card craft list (2026-09-29)
+
+All 37 resolve and are Historic Brawl legal. **Mister Fantastic is out: its `{R}{G}{W}{U}`
+ability puts R in its identity, illegal under Katara.** Before this batch no recommender and
+not `screen` checked identity (now fixed: `commander_identity_lock`). Water Whip, raised by
+the owner as not legal on Arena, is `brawl: legal` / `standardbrawl: not_legal` on Scryfall
+(Arena id 98189), the same status as the five TLE cards already in the list.
+
+Gap to A (per 60, scaled): interaction 11 -> 12 AND interaction + card advantage 17 -> 19.
+Measured on scratch copies (cuts: Earth Kingdom Protectors + Aang, Airbending Master):
+
+| Adds | Floor | Note |
+|---|---|---|
+| Vault Guardsman + Inspiring Call (owned) | **A** | protection stays 6; both castable ≥88% |
+| Vault Guardsman + Coastal Piracy / Whirlwind Technique / Elemental Bond | A | UU cards 57-63% on curve |
+| Raise the Palisade / Counterspell / Righteous Fury + Coastal Piracy | A | |
+| Wan Shi Tong / Fiend Hunter + Coastal Piracy | B | classifier-blind removal (G-67) |
+| Vault Guardsman + Dawn of a New Age | B | classifier-blind draw (G-67) |
+
+Second wave, measured on top of the core pair (still A, protection 6): +Wan Shi Tong
+−The Eagles Are Coming!, +Flowering of the White Tree −Duty Beyond Death, +Multiversal
+Recruitment −Starry-Eyed Skyrider. Every remaining unprotected UNOWNED card is an engine
+or interaction piece, so a second wave has to cut owned cards.
+
+| Card | Verdict | Why, from text |
+|---|---|---|
+| Vault Guardsman | ★★★ | convoke; "exile target artifact or creature an opponent controls until this creature leaves", copied by all three enters-doublers |
+| Inspiring Call (owned) | ★★★ | instant; draws per creature with a +1/+1 counter, and they gain indestructible |
+| Wan Shi Tong, All-Knowing | ★★★ | enters: tuck a nonland permanent (copied ×3), each tuck makes two Spirits (doubled). UU 63% T5; classifier sees no removal |
+| Multiversal Recruitment | ★★ | non-legendary token copy of Elesh Norn or Starfield Vocalist = another multiplier; flashback |
+| Flowering of the White Tree | ★★ | legends +2/+1 and ward {1}, the rest +1/+1; ward covers Katara |
+| Coastal Piracy | ★★ | draw per creature connecting; UU 57% T4 |
+| Whirlwind Technique | ★★ | draw 2 discard 1 + airbend two (own: re-buy enters triggers, feeds Appa, Steadfast Guardian) |
+| Black Panther, Wakandan King | ★★ | 2-drop legend; counters on lands per creature entering (Toph's power), copied by the doublers |
+| Beastmaster Ascension | ★★ | go-wide finisher, one wide attack turns it on |
+| Andúril, Narsil Reforged | ★★ | counters on every creature per attack, two with the city's blessing |
+| Raise the Palisade | ★ | mass bounce of every type but one (name Ally); returns your non-Allies too |
+| Righteous Fury | ★ | destroy all tapped creatures, pre-combat that is their attackers |
+| Counterspell | ★ | UU 44% T2 |
+| Captain Marvel, Shooting Star | ★ | seven mana; enters/attacks exile |
+| Dawn of a New Age | ★ | draws each end step, one per creature on entry; classifier sees only lifegain |
+| Fiend Hunter | ★ | exile until it leaves, copied ×3 but all return together |
+| Katara, Waterbending Master | ◇ | needs spells on the opponent's turn |
+| Ephemerate | ◇ | re-buys enters triggers, but blink erases +1/+1 counters (G-42) |
+| Return to the Ranks, Match the Odds, Elemental Bond, Loki, Commander's Plate, Rivendell | ◇ | situational or overlapping |
+| Empty City Ruse, Tangle, Comeuppance | ◇ | fogs; not interaction |
+| Air Nomad Student, Concerted Effort, Dramatic Reversal, Mystic Remora, Training Grounds, Thriving Isle, Ant-Man, Reformed Rogue | △ | little for this engine |
+| Don't Move | ✗ | "whenever a creature becomes tapped, destroy it" kills your own attackers and convoke |
+| Mister Fantastic | ✗ | illegal: R in identity |
+
 ## 5. Consolidated plan (live)
 
 **Measured on a scratch copy (Tier 1 package, 2026-09-29):**
