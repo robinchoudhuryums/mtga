@@ -291,6 +291,48 @@ are the thesis, so they are NOT offered.
 **Header change to carry with the swaps:** add the four owner-kept cards to
 `#: protect:`, so `cuts` and future tunes stop proposing them.
 
+### Tier 1 status and the two open rows (2026-09-29, after the tooling change)
+
+**Applied (commit 9b575b0):** rows 1, 2, 4, 5, 6 and 7. **Owner decision:** keep The Blue
+Spirit and Katara, Heroic Healer (both now in `#: protect:`), so rows 3 and 8 need other
+cuts. The adds stay: Inspiring Commander and Kellan Joins Up.
+
+**The floor changed under this analysis (commit 6a7e53e).** A 100-card deck is now graded
+per 60 cards, so the deck reads B, not A: at 100 cards, A needs interaction 12 and a sum of
+19, and the deck has 11 and 7. That makes INTERACTION the axis to protect in the two open
+cuts: every package that cuts an interaction piece widens the gap to A.
+
+Measured on scratch copies (interaction · card advantage · protection):
+
+| Pkg | Commander's cut | Kellan's cut | Int | CA | Prot | Gap to A |
+|---|---|---|---|---|---|---|
+| a | Earth Kingdom Protectors (U) | Knight of Autumn (R) | 10 | 8 | 5 | +2 int |
+| b | Forecasting Fortune Teller (owned) | Duty Beyond Death (owned) | 11 | 7 | 5 | +1 int, +1 sum |
+| c | Katara, Water Tribe's Hope (owned) | Allies at Last (owned) | 10 | 8 | 6 | +2 int |
+| d | Earth Kingdom Protectors (U) | Arcane Signet (C) | 11 | 8 | 5 | +1 int |
+| e | Earth Kingdom Protectors (U) | Aang and Katara (R) | 11 | 8 | 5 | +1 int |
+| f | Earth Kingdom Protectors (U) | Jet, Rebel Leader (R) | 11 | 8 | 5 | +1 int |
+| h | Earth Kingdom Protectors (U) | Aang, Airbending Master (M) | 11 | 8 | 5 | +1 int |
+
+Read from text:
+- **Protectors is the Commander cut in every good package.** It is a 1-drop whose only
+  job is "Sacrifice this creature: Another target Ally you control gains indestructible";
+  it has no enters trigger, so none of the five multipliers touch it. Heroic Intervention
+  stays as the anti-sweeper answer.
+- **Knight of Autumn is no longer a good cut.** It is interaction AND one of the deck's
+  noncreature answers ("Destroy target artifact or enchantment"). Package a was the
+  recommendation before the floor scaled; it is the worst unowned option now.
+- **Kellan's slot, by the owner's unowned-first rule:** Aang, Airbending Master (mythic,
+  the biggest saving) or Arcane Signet (common, the smallest). Airbending Master's tokens
+  come "at the beginning of your upkeep … for each experience counter", and a counter
+  only when creatures "leave the battlefield without dying"; the deck's other exits of
+  that kind are the two Appas and Niko, so it builds slowly. Signet is one of three
+  nonland mana sources beside 38 lands.
+- **Not recommended:** Jet (f) is The Blue Spirit's other half, which the owner kept, and
+  Aang and Katara (e) makes "X 1/1 white Ally creature tokens, where X is the number of
+  tapped artifacts and/or creatures you control" on enter AND attack, which Katara,
+  Throne and all four token doublers multiply.
+
 ### Tier 2 — a second wave, if play shows the need
 
 Adds, in order:
