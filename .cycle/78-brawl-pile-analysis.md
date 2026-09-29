@@ -48,6 +48,10 @@ The numbered rules:
 - **F3 — Token OUTPUT is multiplied separately.** Doubling Season, Elspeth, Storm Slayer and
   Exalted Sunborn double tokens created, so a token maker is multiplied twice: once by the
   trigger doublers and once by the token doublers.
+- **F3b — Bard, King of Dale is a FOURTH token doubler and a DRAW doubler** ("if you
+  would draw a card except the first one you draw in each of your draw steps, draw two
+  cards instead"). F3 missed him until the cut read (E6). Every draw engine the pile adds
+  is doubled again while Bard is out.
 - **F4 — The thin axis is card advantage.** It is 5 cards, about 3 per 60. Repeatable draw
   that fires off creatures entering or attacking is the highest-priority add. Interaction is
   close to the A density already, so a new removal spell must beat an existing one, not
@@ -100,6 +104,15 @@ The numbered rules:
   - Great Divide Guide gives "each land and Ally you control" a mana ability. Badgermole
     Cub adds {G} "whenever you tap a creature for mana", so with Guide out every Ally is a
     two-mana creature. Without Guide, only Hermitic Herbalist and earthbent lands count.
+- **E6 — The framework under-counted the doublers.** F3 listed three token doublers and
+  missed Bard, King of Dale, who doubles tokens AND non-draw-step draws. Found on the cut
+  read; now F3b.
+- **E7 — Counts behind batch 3:** 25 legendary creatures, for Kellan Joins Up.
+- **E8 — Castability of the package** (scratch copy, `consistency`, 2026-09-29):
+  - Tribute to the World Tree ({G}{G}{G}) is 26% on turn 3 against 20 green sources, so it
+    is a turn-5-or-later card here.
+  - The Great Henge's {G}{G} is 69% by turn 5.
+  - Kellan Joins Up is 68% on turn 3; Inspiring Commander ({W}{W}) is 78% on turn 5.
 
 ## 3. Cross-batch observations
 
@@ -119,6 +132,10 @@ The numbered rules:
   Goliath / Giant-Man / Blue Marvel cards key on artifacts or power ≥4, which this deck
   does not build around. Together with batch 1's Hero payoffs, they look like a separate
   Marvel Heroes deck, not a 78 variant. Decide at the end (skill rule 7).
+- **O6 — Batch 3 closes the variant question.** No Hero payoff in batch 3 fits this deck.
+  The Hero / artifact cluster runs to about a dozen cards: the Iron Men, Vision, Ultron,
+  Goliath, Giant-Man, Blue Marvel, both Captain Americas, Wondrous Revival, Hawkeye,
+  Kwende. That is a real "Marvel Heroes" shell for `/draft-deck`, not a home in deck 78.
 
 ## 4. Running verdicts
 
@@ -194,17 +211,92 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | Iron Man, Bleeding Edge | ✗ | copies artifact spells; the deck runs 2 artifacts |
 | Through the Forest Gate | ✗ | 8-mana land ramp; the deck does not need lands late |
 
+### Batch 3 (cards 61–73)
+
+| Card | Verdict | Operative text → reason |
+|---|---|---|
+| Kellan Joins Up | ★★★ | "whenever a legendary creature you control enters, put a +1/+1 counter on each creature you control": 25 legendary creatures (E7). An enters trigger, so doubled; counters doubled again by Doubling Season. Its enters trigger plots a card of MV 3 or less |
+| Buried in the Garden | ★★★ | Aura on a land; ETB "exile target nonland permanent you don't control until this Aura leaves", doubled by the enters-doublers, so it can exile TWO. The enchanted land makes an extra mana of any colour. Removal plus ramp for {2}{G}{W} |
+| Silk, Web Weaver | ★★★ | "whenever you cast a creature spell, create a 1/1 green and white Human Citizen creature token": a token per creature spell, and 41–46 creatures, multiplied by four token doublers (F3, F3b). Every token is power 1, so it feeds Inspiring Commander and Tribute. "{3}{G}{W}: Creatures you control get +2/+2 and gain vigilance" is a repeatable anthem |
+| Contagion Engine | ★★ | ETB "put a -1/-1 counter on each creature target player controls", doubled, so -2/-2 to their whole board. "{4}, {T}: Proliferate twice" on your own +1/+1 counters. A one-sided sweeper that becomes a counter engine |
+| Kellan, the Kid | ★ | "whenever you cast a spell from anywhere other than your hand, you may cast a permanent spell with equal or lesser mana value from your hand without paying its mana cost": Katara from the command zone qualifies, as do the three adventure cards cast from exile. 3/3 flier with lifelink (F8) |
+| Akroma's Memorial | ★ | "creatures you control have flying, first strike, vigilance, trample, haste": a finisher on a 41–46 creature board. 7 mana; face value |
+| Storm, Windrider | ◇ | 4/4 flier; opposing fliers "can't attack you or block creatures you control". Face value |
+| Decisive Denial | ◇ | fight, or counter a noncreature spell unless they pay {3} |
+| Planetarium of Wan Shi Tong | ◇ | a free cast off each scry, once a turn; the deck's scry sources are few (Galadriel, Niko's Shards) |
+| Rumble Arena | ◇ | untapped land, ETB scry 1 (doubled). Colourless unless you pay {1}, so it costs fixing in a three-colour deck. Only as a swap for an unconditional tapland |
+| Ant-Man, Reformed Rogue | △ | draws on combat damage; needs green/blue spells to enable |
+| Mindslaver | △ | 10 mana total to take one turn |
+| Ultron, Machine Overlord | ✗ | pumps Robots and Constructs; the deck has none |
+
 ## 5. Consolidated plan (live)
 
-After batch 2, before cuts are chosen:
+**Measured on a scratch copy (Tier 1 package, 2026-09-29):**
 
-- **Tier 1 adds (card advantage, the thin axis — F4):** The Great Henge, Tribute to the
-  World Tree, Inspiring Commander.
-- **Tier 1 adds (other):** An Unexpected Party, Leyline Binding.
-- **Tier 2 adds:** Reed Richards, Silver Surfer, Black Panther, Wakandan King, Cyclonic
-  Rift, Fractured Identity, Triumph of the Hordes, Leonin Warleader, Virtue of Loyalty,
-  Echo, The Falcon.
-- **Tier 3 (fun budget / if slots allow):** The Mechanist, Badgermole Cub, Bloom Tender,
-  Hindering Light, Suki, Shi'ar Soldier.
+| | Now | With the 8 swaps |
+|---|---|---|
+| Card advantage | 5 | 8 (repeatable 2 → 4) |
+| Interaction | 11 | 12 |
+| Anthems | 2 | 4 |
+| Creatures | 46 | 41 |
+| Average MV | 3.39 | 3.55 |
 
-Cuts come after batch 3, from `deck.py cuts` plus a text read.
+Per 60 cards, interaction ≈7.2 and interaction + card advantage ≈12, which is A density.
+It is 100 cards and legal. Tier stays a human call.
+
+### Tier 1 — the package (each add paired with its cut, graded from text)
+
+| # | Add | Cut | Why the cut goes |
+|---|---|---|---|
+| 1 | The Great Henge | Kyoshi Warriors | "When this creature enters, create a 1/1 white Ally creature token" — a 4-mana 3/3 plus a token; 11 other token makers do this, and Henge draws off every one |
+| 2 | Tribute to the World Tree | Relief Captain | support 3 is a one-shot; Tribute puts two counters on EVERY small creature for the rest of the game. Katara, Heroic Healer and United Front already cover the one-shot |
+| 3 | Inspiring Commander | Appa, Loyal Sky Bison | a 6-mana 4/4 flier whose modal trigger grants flying or airbends your own card; Commander is the 6-drop that draws cards |
+| 4 | An Unexpected Party | Earth Kingdom General | a 4-mana 2/2 whose lifegain rider is "only once each turn"; Party is +2/+2 to every Ally |
+| 5 | Leyline Binding | Prayer of Binding | the same flash exile of a nonland permanent, at {2}{W} instead of {3}{W} once all three basic types are out; Prayer's only edge is 2 life |
+| 6 | Buried in the Garden | Toph, the Blind Bandit | deck 78's flex notes already call Toph the softest slot (earthbend 2, power = counters on lands); Buried is removal that also ramps |
+| 7 | Silk, Web Weaver | Invasion Reinforcements | Reinforcements is one token once; Silk is a token per creature spell for the rest of the game |
+| 8 | Kellan Joins Up | Earth King's Lieutenant | Lieutenant puts counters on Allies once and grows itself; Kellan Joins Up puts a counter on every creature whenever any of 25 legends enters |
+
+### Tier 2 — a second wave, if play shows the need
+
+Adds, in order:
+1. Reed Richards
+2. Silver Surfer
+3. Cyclonic Rift
+4. Fractured Identity
+5. Black Panther, Wakandan King
+6. Contagion Engine
+7. Virtue of Loyalty
+8. Echo
+9. Triumph of the Hordes
+10. Leonin Warleader
+11. The Falcon
+
+Cut candidates for this wave, weakest first, each read from text:
+- Katara, Water Tribe's Hope: 60% castable on turn 5.
+- Allies at Last: creature-only removal.
+- Forecasting Fortune Teller: a single Clue.
+- Hermitic Herbalist: a mana dork; it only earns its slot beside Badgermole Cub.
+- Duty Beyond Death.
+- Earth Kingdom Protectors.
+
+The Millennium Calendar is fun-budget: keep it unless a slot is truly needed.
+
+### Tier 3 — fun budget / situational
+
+The Mechanist, Badgermole Cub, Bloom Tender, Hindering Light, Suki, Shi'ar Soldier,
+Kellan, the Kid, Akroma's Memorial, Storm, Rumble Arena.
+
+### Protect list (what `cuts` cannot see — F9)
+
+`cuts` ranks these near the top of its weakest-fit list, and they are not weak:
+- **Path to Exile and Swords to Plowshares** — ranked #1 and #7, a shortlist artefact.
+- **Dazzling Theater** — ranked #2; convoke across 41–46 creatures.
+- **Virtue of Knowledge** — ranked #3; an enters-doubler.
+- **Heroic Intervention** — the sweeper answer (F7).
+- **Starfield Vocalist, Elesh Norn, Roaming Throne, Doubling Season** — multipliers.
+- **Bard, King of Dale** — the draw and token doubler (F3b).
+
+### Not for this deck
+
+**The Marvel Heroes cluster (O6)** is about a dozen cards and a `/draft-deck` candidate.
