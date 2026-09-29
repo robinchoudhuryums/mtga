@@ -3528,6 +3528,10 @@ def _int_scaling_boost(axis, deck_metric):
     return round(min(_INT_SCALE_CAP, _INT_SCALE_CAP * m), 2)
 
 
+# The needs model's interaction minimum for a 60-card deck (`deck_needs` scales it).
+_NEEDS_INT_TARGET = 5
+
+
 def deck_needs(d):
     """The deck's STRUCTURAL profile — the axes suggest_scored's theme model can't see.
     Returns {colors, sources, deficit, avg_mv, accel, interaction, int_target, int_short,
@@ -3606,11 +3610,17 @@ def deck_needs(d):
     tally = role_tally(cards, carddata)
     ts = (lambda x: round(x / nonland, 2) if nonland else 0.0)
     central = _central_themes(theme_w)
+    # The one COUNT on this profile, so the one term a 100-card deck clears on size alone:
+    # scaled per 60 exactly as the tier floor is (`_floor_scale`), else a Brawl deck read
+    # "adequate" here while `tier` called it short on the same axis. Every other axis
+    # above is a ratio or an average and is already size-free.
+    int_target = _scale_count(_NEEDS_INT_TARGET, _floor_scale(dmeta.get("format"),
+                                                              sum(q for q, *_ in cards)))
     return {
         "colors": deck_colors, "sources": sources, "deficit": deficit, "avg_mv": avg_mv,
         "accel": _accel_want(avg_mv, heavy_share),
-        "interaction": tally.get("interaction", 0), "int_target": 5,
-        "int_short": tally.get("interaction", 0) < 5,
+        "interaction": tally.get("interaction", 0), "int_target": int_target,
+        "int_short": tally.get("interaction", 0) < int_target,
         "type_share": {"creature": ts(cre), "artifact": ts(arti), "equipment": ts(equip),
                        "instant": ts(inst), "sorcery": ts(sorc), "enchantment": ts(ench)},
         "board_density": round(min(1.0, (cre + equip) / max(1, nonland)), 2),
@@ -6102,12 +6112,16 @@ def cmd_suggest_interaction(args, d):
     picks = suggest_interaction(d, needs, unowned=args.unowned, owned=getattr(args, "owned", False),
                                 limit=args.limit, fmt=fmt)
     it, tgt = needs["interaction"], needs["int_target"]
-    state = f"SHORT ({it} < {tgt})" if needs["int_short"] else f"adequate ({it})"
+    # The target is printed in BOTH states: it is a MINIMUM (5 per 60, scaled for a
+    # 100-card deck), not the tier floor, so "adequate" and a `tier --to A` gap on the
+    # same axis can both be true, and a bare "adequate (11)" read as a contradiction.
+    state = (f"SHORT ({it} < {tgt})" if needs["int_short"] else f"adequate ({it} ≥ {tgt})")
     print(f"Deck {d['id']}: {d['name'] or d['path']} — INTERACTION suggestions (incl. off-theme)\n")
     print(f"Colors: {'/'.join(sorted(needs['colors'])) or 'Colorless'}  ·  "
           f"current interaction: {state}")
     if not needs["int_short"]:
-        print("  (already at target — showing anyway; a board-scaling pick may still upgrade.)")
+        print("  (meets the needs minimum — showing anyway; a board-scaling pick may still "
+              f"upgrade, and `deck.py tier {d['id']} --to A` prices the tier gap on this axis.)")
     if not picks:
         print("\nNo on-color interaction to suggest.")
         return 0
@@ -12488,16 +12502,20 @@ def _floor_scale(fmt, size):
     return 1.0
 
 
+def _scale_count(n, k):
+    """A per-60 card count `n` in a deck scaled by `k` (`_floor_scale`), rounded UP.
+    round() before ceil: 7 * 100/60 is 11.666…, but 6 * 60/60 must stay exactly 6.
+    Shared by the tier floor and the needs model so the two cannot round differently."""
+    return n if k == 1.0 else math.ceil(round(n * k, 6))
+
+
 def floor_requirements(vec, band):
     """(min interaction, min interaction + card advantage) for `band`, in THIS deck's raw
     card counts. The ONE reader of `TIER_FLOOR_REQ` for a deck, shared by `tier_band` and
     `tier_gap` so the floor and its gap cannot disagree (G-40)."""
     need_i, need_r = TIER_FLOOR_REQ[band]
     k = vec.get("floor_scale") or 1.0
-    if k == 1.0:
-        return need_i, need_r
-    # round() before ceil: 7 * 100/60 is 11.666…, but 6 * 60/60 must stay exactly 6.
-    return math.ceil(round(need_i * k, 6)), math.ceil(round(need_r * k, 6))
+    return _scale_count(need_i, k), _scale_count(need_r, k)
 
 # The share of the roster one floor band may hold before `check_all` warns that the
 # floor has stopped discriminating. 104 of 117 (89%) is where BS8-06 found it.

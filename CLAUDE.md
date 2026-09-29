@@ -196,7 +196,11 @@ castability · curve · central-theme density), with the intangibles moving a de
   `tier` prints the scale and the per-60 density. **Keyed on the FORMAT, not the count** —
   a 61-card Standard deck and a 60-card Standard Brawl deck are unscaled. The bounded 0–7
   aggro clock is NOT scaled (it is a score, not a count). Roster diff: 1 of 116 decks moved,
-  78-historic-brawl A→B. Two more Brawl facts the tools read now: Arena's Brawl queues give
+  78-historic-brawl A→B. **The needs model's interaction minimum scales the same way**
+  (`deck_needs`, through the shared `_scale_count`: 5 per 60, 9 at 100 cards). It is a
+  MINIMUM, not the A floor, so `suggest --interaction` printing "adequate (11 ≥ 9)" beside a
+  `tier --to A` gap on the same axis is two different bars, not a contradiction; 0 decks
+  flipped SHORT/adequate. Two more Brawl facts the tools read now: Arena's Brawl queues give
   a FREE first mulligan, so `consistency` prints a within-two-sevens keepable figure and
   bases its land advice on it (with a 36–40 land norm at 100 cards); and **Historic Brawl
   does not rotate** (`format_rotates`), so every ⚠rot flag, `check`'s owned-rotation footer
