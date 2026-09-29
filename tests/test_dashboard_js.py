@@ -82,7 +82,7 @@ PASTES = [
 ]
 
 
-def _extract_js():
+def _extract_js(names=None):
     """The named functions, lifted brace-balanced out of build_dashboard.py's source.
 
     Reads the SHIPPED source rather than a copied fixture: a fixture would be a third
@@ -90,7 +90,7 @@ def _extract_js():
     breaks extraction loudly instead of silently testing stale code."""
     src = open(BUILD_DASHBOARD, encoding="utf-8").read()
     out = []
-    for name in _JS_FUNCS:
+    for name in (names or _JS_FUNCS):
         marker = f"function {name}("
         assert marker in src, (
             f"{name} is no longer defined in build_dashboard.py — the extraction is stale, "
@@ -304,3 +304,45 @@ class TestExpandedPanelsDoNotSurviveARefresh:
         """The other half: this must not have thrown out the state that SHOULD persist."""
         assert state_side["theme"] == "light", state_side
         assert state_side["pinned"] == {"41": True}, state_side
+
+
+# ---------------------------------------------------------------------------- #
+# The SPLIT that runs before the matcher. A Brawl export puts its `Commander` section
+# BEFORE `Deck`, and both splitters used to open a new block at the marker alone, so a
+# real Brawl paste became a lone-commander block plus a 99-card deck (2026-09-29). Fixed
+# on both sides together; this pins that they still cut the same pastes the same way.
+_SPLIT_PASTES = [
+    "Commander\n1 K (TLA) 1\n\nDeck\n1 A (TLA) 2\n1 B (TLA) 3\n",
+    "About\nName X\n\nCommander\n1 K (TLA) 1\n\nDeck\n1 A (TLA) 2\n\n"
+    "Commander\n1 J (TLA) 4\n\nDeck\n1 B (TLA) 3\n",
+    "Deck\n1 A (TLA) 2\n\nCommander\n1 K (TLA) 1\n",
+    "Deck\n4 A (M21) 2\n\nDeck\n4 B (M21) 3\n",
+]
+_SPLIT_HARNESS = """
+const fs = require('fs');
+const SECTION = /^(sideboard|commander|companion|maybeboard|about)\\b/i;
+eval(fs.readFileSync(process.argv[2], 'utf8'));
+const input = JSON.parse(fs.readFileSync(process.argv[3], 'utf8'));
+console.log(JSON.stringify(input.map(t => splitDecks(t).map(
+  seg => seg.map(l => l.trim()).filter(l => l)))));
+"""
+
+
+class TestDashboardSplitterAgreesWithPython:
+    def test_both_splitters_keep_a_commander_with_its_deck(self, tmp_path):
+        node = shutil.which("node")
+        if not node:
+            pytest.skip("node not installed (CI sets PYTEST_NO_SKIPS, which fails on this)")
+        (tmp_path / "m.js").write_text(_extract_js(["leadTail", "splitDecks"]),
+                                       encoding="utf-8")
+        (tmp_path / "h.js").write_text(_SPLIT_HARNESS, encoding="utf-8")
+        (tmp_path / "in.json").write_text(json.dumps(_SPLIT_PASTES), encoding="utf-8")
+        r = subprocess.run([node, str(tmp_path / "h.js"), str(tmp_path / "m.js"),
+                            str(tmp_path / "in.json")],
+                           capture_output=True, text=True, timeout=60)
+        assert r.returncode == 0, f"node failed:\n{r.stderr[:2000]}"
+        js = json.loads(r.stdout)
+        py = [[[l.strip() for l in seg if l.strip()] for seg in deckmod.split_paste(t)]
+              for t in _SPLIT_PASTES]
+        assert js == py, f"\n  JS: {js}\n  PY: {py}"
+        assert [len(x) for x in py] == [1, 2, 1, 2]

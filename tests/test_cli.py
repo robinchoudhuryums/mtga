@@ -407,6 +407,29 @@ class TestBrawlFormatAwareness:
         rc, out = _run(["scripts/deck.py", "consistency", self._as_format(tmp_path, "Standard")])
         assert rc == 0 and "free first mulligan" not in out
 
+    def test_a_brawl_export_names_its_commander_and_round_trips(self, tmp_path):
+        """`arena` prints a Brawl deck's commander under its own `Commander` heading, as
+        Arena exports it, and that export must read back as the same deck: `verify`
+        identical with no multi-block warning. A Standard deck gets no Commander section."""
+        import deck                                   # sys.path is set by _pick_deck
+        src = open(deck.find_deck(_DECK)["path"], encoding="utf-8").read()
+        _m, cards = deck.parse_deck_file(deck.find_deck(_DECK)["path"])
+        lead = next(n for q, n, _s, _c in cards if n.lower() not in deck.BASICS)
+        body = "\n".join(l for l in src.splitlines()
+                         if not l.startswith(("#: format:", "#: commander:")))
+        p = tmp_path / "scratch-brawl.txt"
+        p.write_text(f"#: format: Historic Brawl\n#: commander: {lead}\n{body}\n",
+                     encoding="utf-8")
+        rc, out = _run(["scripts/deck.py", "arena", str(p)])
+        assert rc == 0 and TRACEBACK not in out
+        lines = out.splitlines()
+        assert lines[0] == "Commander" and lines[1].startswith(f"1 {lead}")
+        assert lines[3] == "Deck"
+        rc, ver = _run(["scripts/deck.py", "verify", str(p)], stdin=out)
+        assert rc == 0 and "identical" in ver and "`Deck` blocks" not in ver, ver[-400:]
+        rc, out = _run(["scripts/deck.py", "arena", self._as_format(tmp_path, "Standard")])
+        assert out.splitlines()[0] == "Deck"
+
     def test_an_eternal_format_does_not_rotate(self, tmp_path):
         rc, out = _run(["scripts/deck.py", "rotation", self._as_format(tmp_path, "Historic Brawl")])
         assert rc == 0 and TRACEBACK not in out

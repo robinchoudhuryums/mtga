@@ -1150,17 +1150,41 @@ def cmd_diff(args):
     return 0
 
 
+def _arena_line(q, n, s, c):
+    line = f"{q} {n}"
+    if s:
+        line += f" ({s})" + (f" {c}" if c else "")
+    return line
+
+
 def cmd_arena(args):
+    """The Arena import block. A Brawl / Commander deck's `#: commander:` goes under its
+    own `Commander` heading BEFORE `Deck`, the shape Arena itself exports and imports.
+    Printed as the first `Deck` line instead, it imported as an ordinary card and the
+    commander had to be set by hand in the client. The commander stays one of the 100:
+    the Deck section carries the other 99."""
     d = find_deck(args.id, allow_path=True)
     if not d:
         eprint(f"No deck with id {args.id!r}.")
         return 1
-    _, cards = parse_deck_file(d["path"])
-    print("Deck")
+    meta, cards = parse_deck_file(d["path"])
+    lead = set()
+    if normalize_format(meta.get("format")) in _COMMANDER_FORMATS:
+        lead = _header_card_keys(meta, "commander")
+    head, body = [], []
     for q, n, s, c in cards:
-        line = f"{q} {n}"
-        if s:
-            line += f" ({s})" + (f" {c}" if c else "")
+        if lead and _ms_key(n) in lead and not head:
+            head.append(_arena_line(1, n, s, c))
+            if q > 1:
+                body.append(_arena_line(q - 1, n, s, c))
+            continue
+        body.append(_arena_line(q, n, s, c))
+    if head:
+        print("Commander")
+        print("\n".join(head))
+        print()
+    print("Deck")
+    for line in body:
         print(line)
     return 0
 
@@ -9363,14 +9387,49 @@ def strip_boards(block):
     return keep, dropped_n
 
 
+# Sections Arena prints BEFORE the `Deck` line they belong to (see `split_paste`).
+_LEAD_SECTIONS = ("commander", "companion", "about")
+
+
+def _lead_tail(block):
+    """Index where `block` ends in a run of lead sections (Commander / Companion /
+    About), or None. A lead heading opens the run and any later non-lead heading
+    (Sideboard, Maybeboard) closes it again; card lines in between belong to the run."""
+    from import_arena import SECTIONS
+    start = None
+    for i, ln in enumerate(block):
+        s = ln.strip().lower()
+        if s in SECTIONS:
+            if s in _LEAD_SECTIONS:
+                start = i if start is None else start
+            else:
+                start = None
+    return start
+
+
 def split_paste(text):
     """An Arena paste containing one or MANY decks -> a list of line-blocks. Arena
     exports start each deck with a bare `Deck` line; text before the first one is
-    treated as its own block, so a single-deck paste with no marker still works."""
-    segs, cur = [], None
+    treated as its own block, so a single-deck paste with no marker still works.
+
+    A Brawl export puts its `Commander` section (and a `Companion` / `About` one) BEFORE
+    that `Deck` line, so a lead section sitting just before a marker belongs to the deck
+    the marker opens. Split on the marker alone, a real Brawl export became two blocks:
+    the commander by itself and a 99-card deck, which `sync` read as the stored deck
+    having lost its commander and `--apply` would have deleted it (2026-09-29). A lead
+    section AFTER a deck's cards with no marker following (a single Deck-first paste)
+    still stays with that deck."""
+    segs, cur, body = [], None, 0
     for ln in (text or "").splitlines():
         if _DECK_MARKER_RE.match(ln.strip()):
-            cur = []
+            carry = []
+            if cur is not None:
+                # Scan only past the lead section this block was OPENED with (`body`),
+                # or a deck's own Commander would be read as the next deck's.
+                i = _lead_tail(cur[body:])
+                if i is not None:
+                    carry, cur[body + i:] = cur[body + i:], []
+            cur, body = carry, len(carry)
             segs.append(cur)
             continue
         if cur is None:

@@ -2290,7 +2290,12 @@ renderWishlist(); renderSim();
   // decks are maindeck-only, so a 7-card sideboard must not read as drift (BS-07; the JS
   // half previously dropped only the headings and counted the cards). Headings are KEPT
   // in the segment (parseLine ignores them) so the format hint below can see `Commander`.
-  function splitDecks(text){ const segs = []; let cur = null, started = false, skipping = false; for (const ln of text.split(/\r?\n/)){ const t = ln.trim(); if (/^deck\s*$/i.test(t)){ cur = []; segs.push(cur); started = true; skipping = false; continue; } if (SECTION.test(t)){ skipping = /^(sideboard|maybeboard)\b/i.test(t); if (!started){ cur = []; segs.push(cur); started = true; } cur.push(ln); continue; } if (skipping) continue; if (!started){ cur = []; segs.push(cur); started = true; } cur.push(ln); } return segs.filter(s => s.length); }
+  // A Brawl export puts its Commander (and a Companion / About) section BEFORE the `Deck`
+  // line it belongs to, so a lead section just before a marker moves into the deck the
+  // marker opens — mirroring deck._lead_tail / split_paste. Split on the marker alone, a
+  // real Brawl paste became a lone-commander block plus a 99-card deck (2026-09-29).
+  function leadTail(seg){ let start = -1; for (let i = 0; i < seg.length; i++){ const t = seg[i].trim().toLowerCase(); const m = t.match(/^(deck|sideboard|commander|companion|maybeboard|about)$/); if (!m) continue; if (/^(commander|companion|about)$/.test(t)){ if (start < 0) start = i; } else start = -1; } return start; }
+  function splitDecks(text){ const segs = []; let cur = null, body = 0, started = false, skipping = false; for (const ln of text.split(/\r?\n/)){ const t = ln.trim(); if (/^deck\s*$/i.test(t)){ let carry = []; if (cur){ const i = leadTail(cur.slice(body)); if (i >= 0) carry = cur.splice(body + i); } cur = carry; body = carry.length; segs.push(cur); started = true; skipping = false; continue; } if (SECTION.test(t)){ skipping = /^(sideboard|maybeboard)\b/i.test(t); if (!started){ cur = []; segs.push(cur); started = true; } cur.push(ln); continue; } if (skipping) continue; if (!started){ cur = []; segs.push(cur); started = true; } cur.push(ln); } return segs.filter(s => s.length); }
   // 'commander' | 'sixty' | null — mirrors deck.paste_format_hint: a Commander heading
   // or ~100-card size says commander-shaped; <=75 says sixty; between is ambiguous.
   function formatHint(seg, nCards){ for (const ln of seg){ if (/^commander\s*$/i.test(ln.trim())) return 'commander'; } if (nCards >= 90) return 'commander'; if (nCards > 0 && nCards <= 75) return 'sixty'; return null; }

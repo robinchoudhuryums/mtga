@@ -3215,6 +3215,27 @@ class TestSyncPaste:
     def test_split_ignores_empty_blocks(self):
         assert deck.split_paste("Deck\n\nDeck\n1 A\n") == [["1 A"]]
 
+    def test_a_leading_commander_section_stays_with_its_deck(self):
+        """Arena exports a Brawl deck as `Commander` / card / `Deck` / 99 cards. Split
+        on the marker alone that was two blocks, the commander alone and a 99-card deck,
+        and `sync --apply` would have deleted the commander from the stored file."""
+        segs = deck.split_paste("Commander\n1 K\n\nDeck\n1 A\n1 B\n")
+        assert len(segs) == 1
+        assert [l for l in segs[0] if l.strip()] == ["Commander", "1 K", "1 A", "1 B"]
+
+    def test_each_deck_in_a_brawl_multi_paste_keeps_its_own_commander(self):
+        segs = deck.split_paste("About\nName X\n\nCommander\n1 K\n\nDeck\n1 A\n\n"
+                                "Commander\n1 J\n\nDeck\n1 B\n\nSideboard\n1 S\n")
+        assert len(segs) == 2
+        assert [l for l in segs[0] if l.strip()] == ["About", "Name X", "Commander", "1 K", "1 A"]
+        assert [l for l in segs[1] if l.strip()] == ["Commander", "1 J", "1 B", "Sideboard", "1 S"]
+
+    def test_a_trailing_commander_with_no_later_deck_stays_put(self):
+        """A single Deck-first paste keeps its commander: only a lead section that a
+        LATER `Deck` marker follows is moved."""
+        segs = deck.split_paste("Deck\n1 A\n\nCommander\n1 K\n")
+        assert len(segs) == 1 and "1 K" in segs[0]
+
     def test_diff_direction(self):
         added, removed, diffs = deck._ms_diff(self._ms(A=3, B=1), self._ms(A=1, C=2))
         assert (added, removed) == (2 + 1, 2)          # +2 A, +1 B, -2 C
