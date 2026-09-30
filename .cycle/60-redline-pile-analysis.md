@@ -145,3 +145,47 @@ None is in the repo yet, so `own` is unknown and no tool has scored them.
 | Pyre Rhymer // Molten Tide | {1}{R}{R} | △ | RR 3-drop ramp (F4). |
 
 ## 5. Consolidated plan (live)
+
+### Wave 1 — owned cards, applicable today (measured on a scratch copy)
+
+| # | Out | In | Why (rule) |
+|---|---|---|---|
+| 1 | Burnout Bashtronaut ×1 (required) | Gingerbrute (owned, not in the pile) | The pile holds no owned 1-drop ticker; Gingerbrute's "{1}: can't be blocked except by creatures with haste" connects every turn (F1, F3). Interim — Voxmancer replaces it in wave 2. |
+| 2 | Far Fortune ×1 (required) | Chandra, Spark Hunter | A hasty 3/2 Vehicle the turn she lands and every turn after; single R (F4). Alt: The Ruinous Wrecking Crew at X=2. |
+| 3 | Endrider Catalyzer | Hawkeye, Master Marksman | 2 damage to a player on every attack, blocked or not (F1). |
+| 4 | Endrider Catalyzer | Speed, Young Avenger | Haste 2-drop ticks on arrival (F1). |
+| 5 | Gastal Raider | The Infamous Cruelclaw | Menace 3/3 that casts free cards on hit. |
+| 6 | Gastal Raider | Alesha, Who Laughs at Fate | Grows each attack; rebuys Thrillseeker's ETB ping. |
+| 7 | Mutant Surveyor ×1 | Black Widow, Super Spy | Menace 2-drop with value on hit; lowers the curve (F3). |
+| 8 | Swamp ×1 | Realm of Koh | Same black source, untapped with a basic out, plus an evasive token sink. |
+
+**Measured (scratch copy vs live):** floor A → A; interaction 8 → 9, card advantage 4 → 5;
+avg MV 2.71 → 2.69; 2-drops 13 → 14, 3-drops 11 → 10; B 13 / R 14 unchanged; keepable 86.0%
+unchanged; the gold 3-drops cast on curve 84.0%, the new 2-drops 87.7–89.8%. Engine cards
+33 → 26 of 60 (F2 floor ~20). Board power 64 → 59 (Far Fortune's 4/5 and the Catalyzers' 3
+power are gone; the replacements are evasive rather than big).
+
+### Wave 2 — Reality Fracture, once FRA is in the pool or the cards are cataloged (F7)
+
+Hand-graded; no tool can score these yet.
+
+| Out | In | Why |
+|---|---|---|
+| Gingerbrute (wave-1 interim) | Stingerquill Voxmancer | A guaranteed tick every turn for {B/R}; hybrid 1-drop Goblin. |
+| Goblin Surveyor | Koth, the Geomancer | A tick on every land drop; Mountains add {R}. |
+| Goblin Surveyor | Screeching Soulbreaker | Flying, and a ping on every attack. |
+| Mutant Surveyor (last) | Samut, Hazoret's Champion | Team haste — every later creature ticks on arrival. |
+| Streaking Oilgorger ×2 | Whiplash Wordsmith ×2 | A 4-mana 3/3 flier with haste once any ping has landed, which waves 1–2 make routine. |
+| Lightning Strike ×1 (optional) | Stingerquill Charm | Same 3 damage plus two more modes; {B}{R} instead of {1}{R}. |
+
+### Protect — what the ranking cannot see
+
+`cuts` ranked the deck's REMOVAL as its weakest fit (theme-fit term), so it must not drive
+these cuts. Keep: Gas Guzzler, Hazoret, the remaining Far Fortune, The Speed Demon (the
+header); Kickoff Celebrations (the only discard outlet); Hour of Victory (tutors The Speed
+Demon at max speed); Gastal Thrillseeker (its ETB ping is a guaranteed tick).
+
+### Variant parked
+
+A Rakdos Vehicles build (§3) — the 17-card cluster is coherent but is a different deck;
+`/draft-deck` if wanted.
