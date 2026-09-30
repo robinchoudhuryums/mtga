@@ -43,6 +43,18 @@
 #: notes: attacker. Outpace Oblivion's sac mode hits every player without max
 #: notes: speed — including us below 4; time it. ROTATION: the deck is ~90% DFT
 #: notes: (rotates ~2027) — this is a two-year deck by construction; accepted.
+#: notes: PILE SWAPS, 2026-09-30 (the owner's 67-card pile; see
+#: notes: .cycle/60-redline-pile-analysis.md). APPLIED: Chandra, Spark Hunter for one Far
+#: notes: Fortune ("0: Create a 3/2 … Vehicle token", animated with haste each combat),
+#: notes: Hawkeye for one Endrider Catalyzer ("whenever Hawkeye becomes tapped… 2 damage to
+#: notes: target player"), The Infamous Cruelclaw for one Gastal Raider, Realm of Koh for a
+#: notes: Swamp. PENDING until Reality Fracture (FRA) is in card-pool.csv — on Arena now,
+#: notes: Scryfall-dated 2026-10-02; run `make refresh REFETCH=1` after that date, catalog
+#: notes: the owned FRA cards, then apply: Stingerquill Voxmancer for a Burnout
+#: notes: Bashtronaut, Koth, the Geomancer for a Goblin Surveyor, Screeching Soulbreaker
+#: notes: for a Mutant Surveyor, Whiplash Wordsmith for a Streaking Oilgorger, and Samut,
+#: notes: Hazoret's Champion for an Hour of Victory. The owner's Arena list already runs all
+#: notes: nine; until those land, this file is part-way between the two.
 
 # One-drops (start the clock)
 2 Gas Guzzler (DFT) 85
@@ -52,11 +64,13 @@
 # Two-drops (keep hitting)
 2 Gastal Thrillseeker (DFT) 205
 2 Momentum Breaker (DFT) 97
-2 Endrider Catalyzer (DFT) 124
+1 Endrider Catalyzer (DFT) 124
+1 Hawkeye, Master Marksman (MSH) 130
 2 Kickoff Celebrations (DFT) 135
 
 # Three-drops (engine bodies)
-2 Gastal Raider (DFT) 86
+1 Gastal Raider (DFT) 86
+1 The Infamous Cruelclaw (BLB) 219
 2 Hour of Victory (DFT) 91
 2 Goblin Surveyor (DFT) 131
 2 Mutant Surveyor (DFT) 98
@@ -64,7 +78,8 @@
 2 Outpace Oblivion (DFT) 139
 
 # Payoffs (max-speed top end)
-2 Far Fortune, End Boss (DFT) 203
+1 Far Fortune, End Boss (DFT) 203
+1 Chandra, Spark Hunter (DFT) 116
 1 The Speed Demon (DFT) 105
 1 Risen Necroregent (DFT) 102
 2 Streaking Oilgorger (DFT) 107
@@ -82,4 +97,5 @@
 1 Boiling Rock Prison (TLA) 267
 2 Amonkhet Raceway (DFT) 248
 10 Mountain (MSH) 293
-9 Swamp (MSH) 291
+8 Swamp (MSH) 291
+1 Realm of Koh (TLA) 276
