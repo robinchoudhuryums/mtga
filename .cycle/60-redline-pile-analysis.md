@@ -213,6 +213,8 @@ are the first reserves if a cut above disappoints).
   five above.
 - **APPLIED (round 3):** War Balloon for a Momentum Breaker (Chandra animates it; five
   power-3+ ground bodies crew it). Interaction 11 to 10, engine cards 17 to 16 on the full list.
+- **APPLIED (round 4):** Raven Eagle for Kickoff Celebrations. **QUEUED with part B:** Chandra,
+  Torch of Defiance for a Lightning Strike (FRA reprint; waits for the refresh).
 - **Not taken:** Coalstoke Gearhulk.
 
 ### Cut candidates for the ten (against the full part-A+B list; measured in the sandbox)
