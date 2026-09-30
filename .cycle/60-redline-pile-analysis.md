@@ -42,6 +42,69 @@ one of each; the repo still reads 0 — owned counts lag, G-10). Open to upgradi
   (the discard outlet), Hour of Victory (tutors The Speed Demon), Gas Guzzler; `#: protect:`.
 
 ## 2. Standing error list
+- **The repo's owned count for Burnout Bashtronaut and Far Fortune reads 0**; the owner holds
+  one of each. Treat every `own=` column as a lower bound (G-10), never as a reason.
 ## 3. Cross-batch observations
+- **VEHICLE / PILOT CLUSTER (batch 1): 17 cards** — The Last Ride, Tundra Tank, The Fire
+  Nation Drill, War Balloon, Apocalypse Runner, Spire Mechcycle, Chandra Spark Hunter,
+  Reckless Velocitaur, Deathless Pilot, Dynamite Diver, Calamity, Dracosaur Auxiliary, Push
+  the Limit, Road Rage, Rocky Roads, Foul Roads, Adrenaline Jockey (exhaust). Each is weak
+  alone in deck 60 for the same reason (F6), which is the variant signal the skill warns about:
+  a Rakdos Vehicles build is a different deck, not a pile of cuts. Chandra, Spark Hunter is the
+  exception — she brings her own Vehicle and animates it, so she works without the shell.
+- **The owned pool already covers both required slots**, and several 2-drop/3-drop tickers
+  (Hawkeye, Speed, Black Widow, Cruelclaw, Alesha) beat the soft 2-ofs on F1 outright.
 ## 4. Running verdicts
+
+### Batch 1 — the 46 cards the pool holds (read in full, 2026-09-30)
+
+Legend: ★★★ take · ★★ strong · ★ real · ◇ situational · △ marginal · ✗ out. `own` = repo count.
+
+| Card | Cost | own | Verdict | Grounds (operative clause, framework rule) |
+|---|---|---|---|---|
+| Hawkeye, Master Marksman | {1}{R} | 1 | ★★★ | "Whenever Hawkeye becomes tapped, you may pay {1}… Explosive — deals 2 damage to target player": attacking IS the tick, blocked or not (F1). 2-drop, legend (F5). |
+| The Infamous Cruelclaw | {1}{B}{R} | 1 | ★★★ | 3/3 menace; combat damage → cast the next nonland card free by discarding. Evasive 3-drop that snowballs (F1, F3). |
+| Speed, Young Avenger | {1}{R} | 1 | ★★ | "Haste" 2-drop ticks the turn it lands; noncreature spell + {1}: a haste creature can't be blocked except by haste. Deck casts 12 noncreature spells. |
+| Alesha, Who Laughs at Fate | {1}{B}{R} | 1 | ★★ | First strike, grows each attack, "return target creature card with MV ≤ Alesha's power" every end step you attacked — rebuys Thrillseeker's ping. |
+| Black Widow, Super Spy | {1}{B} | 1 | ★★ | 2/1 menace 2-drop; combat damage → free card or +1/+1. Evasive and value (F1). Mythic, owned. |
+| The Ruinous Wrecking Crew | {X}{B}{R} | 1 | ★★ | X=1: 3/3 + "target opponent loses 2 life" (a tick); X=2 adds an edict. Scales into a 4-drop slot (F9). |
+| Chandra, Spark Hunter | {3}{R} | 1 | ★★ | "0: Create a 3/2 … Vehicle token", then "at the beginning of combat… it becomes an artifact creature and gains haste" — a 3-power hasty attacker the turn she lands, every turn; +2 loots. Single R (F4). Far Fortune slot. |
+| Ninja Teen | {2}{B} | 1 | ★★ | "Whenever a creature you control leaves the battlefield, each opponent loses 1 life" (tick on trades/sacs); Level 2 "+1/+0 and menace" to the team. Slow (5 mana to level 2). |
+| Realm of Koh | land | 1 | ★★ | A Swamp that is untapped with a basic out, plus "{3}{B}, {T}: 1/1 Spirit… can't block or be blocked by non-Spirit" — an evasive ticker from a land slot. |
+| Lightning, Security Sergeant | {2}{R} | 1 | ★ | 2/3 menace; combat damage → impulse card. Evasive 3-drop with card flow. |
+| Vindictive Warden | {2}{B/R} | 1 | ★ | Hybrid 2/3 menace, firebending 1, "{3}: 1 damage to each opponent" — a guaranteed tick sink late (F1, F8). |
+| Shriek, Treblemaker | {2}{B/R} | 1 | ★ | Discard → "target creature can't block"; opponent creature dies → 1 damage (tick with removal). Discard feeds nothing else here. |
+| Jet's Brainwashing | {R} | 1 | ★ | "Target creature can't block" + a Clue for 1 mana; kicked, a threaten. Makes an attack connect (F1). |
+| Road Rage `*` | {R} | 1 | ★ | 1-mana instant, "2 plus the number of Mounts and Vehicles" damage. Cheap removal at 2; better in a Vehicle shell (F6). |
+| The Fire Nation Drill `*` | {2}{B}{B} | 0 | ★ | Enters → tap it → "destroy target creature with power 4 or less"; then a 6/3 trample Vehicle (crew 2). BB at 4 and a rare craft. |
+| My Precious | {3} | 1 | ◇ | "hexproof and can't be blocked" on a creature — the deck's only protection answer (protection 1) — but 3 + equip {2} and 2 life is slow for aggro. |
+| Underfoot Underdogs | {2}{R} | 0 | ◇ | 1/2 + a 1/1 Goblin; "{1}, {T}: power ≤2 creature can't be blocked". Enabler, weak bodies; common craft. |
+| Apocalypse Runner | {2}{B}{R} | 0 | ◇ | "{T}: power ≤2 creature … can't be blocked" works uncrewed — an unblockable engine for Bashtronaut/Guzzler. Crew 3 for the 6/5 is hard (F6). |
+| The Last Ride | {B} | 1 | ◇ | Repeatable "{2}{B}, Pay 2 life: Draw a card". Card flow, but the body is dead above 12 life in aggro. |
+| Tundra Tank | {2}{B} | 1 | ◇ | 4/4 Vehicle, crew 1, ETB indestructible trick. Ground body, no tick of its own (F6). |
+| War Balloon `*` | {2}{R} | 1 | ◇ | 4/3 flier but crew 3, or three {1} fire counters to become a creature. Slow (F6). |
+| Dynamite Diver | {R} | 0 | ◇ | 1-drop; "when this creature dies, it deals 1 damage to any target". A tick on a trade; pilot text is Vehicle-only. Common craft. |
+| Brambleback Brute | {2}{R} | 1 | ◇ | 2/3 that grows; "target creature can't block" as a sorcery. Enabler, not a ticker. |
+| Goblin Negotiation | {X}{R}{R} | 1 | ◇ | Scaling removal + Goblins from excess; RR (F4). |
+| Adrenaline Jockey `*` | {2}{R} | 0 | ◇ | 3/3; punishes off-turn spells for 4. Meta-dependent. |
+| Garrison Excavator | {3}{R} | 1 | ◇ | 3/4 menace; cards leaving your graveyard → 2/2 Spirit. The Surveyors exile themselves — synergy, but a 4-drop. |
+| Arnim Zola, Bio-Fanatic | {2}{B} | 1 | △ | Token maker needs two creature cards in the yard and {3} a turn. Slow. |
+| Reno and Rude | {1}{B} | 0 | ◇ | 2/1 menace, card theft on hit. Black Widow does this job, owned. |
+| Fated Firepower | {X}{R}{R}{R} | 1 | △ | +X to every source — but RRR on 14 red sources (F4). |
+| Coalstoke Gearhulk `*` | {1}{B}{B}{R}{R} | 1 | △ | 5/4 menace deathtouch + reanimate MV ≤4. BBRR (F4). |
+| Dracosaur Auxiliary `*` | {4}{R}{R} | 1 | △ | 6-drop flier; saddle 3 for the ping. Above the curve (F3). |
+| Calamity, Galloping Inferno | {4}{R}{R} | 1 | △ | 6-drop Mount. (F3, F6) |
+| Fear of Burning Alive | {4}{R}{R} | 0 | △ | "deals 4 damage to each opponent" on ETB — reach, but a 6-drop (F3). |
+| Spider-Man Noir | {4}{B} | 1 | △ | Rewards attacking ALONE — the deck goes wide (shape: WIDE). |
+| June, Bounty Hunter | {1}{B} | 1 | △ | Unblockable only after drawing two in a turn — rare before max speed. |
+| Hog-Monkey | {2}{B} | 1 | △ | Menace for a creature with a +1/+1 counter; few counters here. |
+| Alien Symbiosis | {1}{B} | 1 | △ | Aura +1/+1 menace; card disadvantage into removal. |
+| Along the Crooked Way | {2}{B} | 1 | △ | Regrowth + amass Goblins; no tick. |
+| Yathan Tombguard | {2}{B} | 0 | △ | Draw needs creatures with counters (few). |
+| Deathless Pilot | {1}{B} | 1 | △ | Recursive 2/2; crew text is Vehicle-only (F6). |
+| Reckless Velocitaur | {3}{R} | 1 | △ | Only does anything crewing (F6). |
+| Spire Mechcycle | {4}{R} | 0 | △ | Vehicle payoff (F6). |
+| Rocky Roads / Foul Roads | lands | 2 / 0 | △ | Untapped only with a Vehicle or Mount out (F6). |
+| Push the Limit | {5}{R}{R} | 1 | ✗ | 7 mana (F3). |
+| Chandra, Torch of Defiance | {2}{R}{R} | 0 | ✗ | Not Standard-legal (F7). |
 ## 5. Consolidated plan (live)
