@@ -30,7 +30,8 @@ common/uncommon crafts. **The 21 Reality Fracture cards are OWNED and playable o
 - **F6 — Vehicles are a PACKAGE question.** 23 creature copies, mostly power 1–3; a lone
   Vehicle with crew 2–3 costs an attack to turn on. Grade a Vehicle as part of a Vehicle
   shell, not singly (see §3).
-- **F7 — Legality / availability.** Standard only (Chandra, Torch of Defiance is not).
+- **F7 — Legality / availability.** Standard only. (CORRECTED 2026-09-30: Chandra, Torch of
+  Defiance IS legal — Reality Fracture reprints it, FRA 244, Arena and Standard per Scryfall.)
   21 cards are **Reality Fracture (FRA), dated 2026-10-02** — not in `card-pool.csv` by
   design (G-79 `date<=now`), so no tool here scores them: graded from Scryfall text by hand.
   A deck line needs the set in the pool (`make refresh` after 10-02) or the card cataloged.
@@ -44,6 +45,10 @@ common/uncommon crafts. **The 21 Reality Fracture cards are OWNED and playable o
   (the discard outlet), Hour of Victory (tutors The Speed Demon), Gas Guzzler; `#: protect:`.
 
 ## 2. Standing error list
+- **Legality read off the pool for a card the UPCOMING set reprints.** `card.py` said Chandra,
+  Torch of Defiance was not Standard-legal because the pool holds only its KLR printing; the FRA
+  reprint is excluded by `date<=now` (G-79) until 10-02. Check an unreleased set's reprints on
+  Scryfall before calling a card illegal.
 - **The repo's owned count for Burnout Bashtronaut and Far Fortune reads 0**; the owner holds
   one of each. Treat every `own=` column as a lower bound (G-10), never as a reason.
 ## 3. Cross-batch observations
@@ -117,7 +122,7 @@ Legend: ★★★ take · ★★ strong · ★ real · ◇ situational · △ ma
 | Spire Mechcycle | {4}{R} | 0 | △ | Vehicle payoff (F6). |
 | Rocky Roads / Foul Roads | lands | 2 / 0 | △ | Untapped only with a Vehicle or Mount out (F6). |
 | Push the Limit | {5}{R}{R} | 1 | ✗ | 7 mana (F3). |
-| Chandra, Torch of Defiance | {2}{R}{R} | 0 | ✗ | Not Standard-legal (F7). |
+| Chandra, Torch of Defiance | {2}{R}{R} | 0 | ★★★ | WAS ✗ "not Standard-legal" — WRONG: FRA reprints it (see §2). +1 is a card or 2 damage every turn; −3 is removal. |
 ### Batch 2 — the 21 Reality Fracture (FRA) cards, from Scryfall text (F7)
 
 None is in the repo yet, so `own` is unknown and no tool has scored them.
@@ -252,6 +257,24 @@ both worth a triage pass when FRA lands.
 `cuts` ranks the removal as weakest fit (theme term), so it must not drive these cuts. Keep:
 Gas Guzzler, Hazoret, the remaining Far Fortune, The Speed Demon (header); Kickoff
 Celebrations (discard outlet); Hour of Victory (tutors The Speed Demon); Gastal Thrillseeker.
+
+### Card advantage (asked 2026-09-30, after round 3) — measured on the full part-A+B list
+
+Live CA: The Speed Demon, Kickoff Celebrations, Chandra Spark Hunter's +2 (card-adv 3), plus
+Gas Guzzler at max speed. Fit test: does the card draw WITHOUT costing a turn of pressure, and
+does it tick speed? Discard-then-draw also pings via Tinybones (FRA) and Tomik adds 1 to
+noncombat damage. Engine cards are 16; every weak card left is one (16 → 14 = 95.2% → 92.5%).
+
+| Pick | Cut (primary · alt) | Measured |
+|---|---|---|
+| Chandra, Torch of Defiance (FRA) | Risen Necroregent · Tetsuko (keeps engines) | RR 74.1% T4; card-adv +1, interaction +1 |
+| Grab the Prize (DSK, common) | Gastal Raider · Hawkeye | 89.8% T2; card-adv +1 |
+| Elegy Acolyte (owned) | Risen Necroregent · Streaking Oilgorger | BB 69.6% T4 |
+| Cast Away Doubt (FRA, common) | Gastal Raider | single B at 3 |
+| Lightning, Security Sergeant / Raven Eagle (owned) | Gastal Raider · Adrenaline Jockey | 3-drop evasive bodies |
+Declined: Bonehoard Dracosaur (LCI rotates 2026), Phyrexian Arena (no board, more life loss),
+Buster Sword / Racers' Scoreboard / Starting Column (tempo), Emberheart Challenger (one valiant
+enabler).
 
 ### Variant parked
 
