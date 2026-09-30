@@ -14,11 +14,12 @@
 #: archetype: Tree, Galadriel and The Blue Spirit. Beside them sit Allies whose enter or
 #: archetype: attack triggers are worth doubling, cheap exile effects, protection for the
 #: archetype: engine, and a 38-land manabase.
-#: tier: B — PROVISIONAL, and the metrics floor agrees: B. A 100-card deck is graded
-#: tier: per 60 cards (the floor's thresholds scale ×1.67), so interaction 12 and card
-#: tier: advantage 6 read as about 7.2 and 3.6 per 60: interaction now clears the A line
-#: tier: (A wants 7 and a sum of 11 in a 60), the sum is one card short of it. One more
-#: tier: card-advantage card reaches the A floor.
+#: tier: B — PROVISIONAL and a RE-GRADE CANDIDATE: the metrics floor reads A since Wan
+#: tier: Shi Tong came in, one band above this letter, pending the owner's call. A
+#: tier: 100-card deck is graded per 60 cards (the floor's thresholds scale ×1.67), so
+#: tier: interaction 13 and card advantage 6 read as about 7.8 and 3.6 per 60, which clears
+#: tier: the A line (A wants 7 and a sum of 11 in a 60) with nothing to spare: losing one
+#: tier: interaction or card-advantage card puts the floor back at B.
 #: tier: It is ahead of deck 78 on the engine, on cheap answers and on card advantage:
 #: tier: five trigger multipliers where deck 78 has two, Swords to Plowshares, Path to
 #: tier: Exile, Leyline Binding and Buried in the Garden on top of deck 78's tricks, and
@@ -51,6 +52,13 @@
 #: notes: control" is one more enters trigger the three enters-doublers copy, the counters
 #: notes: grow Toph's land creatures, and {3} moves them onto a creature to gain that much
 #: notes: life and draw a card. The draw is conditional, so card advantage still reads 6.
+#: notes: Beastmaster Ascension in for Hermitic Herbalist: "whenever a creature you control
+#: notes: attacks, you may put a quest counter", and at seven "creatures you control get
+#: notes: +5/+5". Doubling Season doubles the quest counters, so four attackers turn it on.
+#: notes: Wan Shi Tong, All-Knowing in for The Millennium Calendar: its enters trigger puts
+#: notes: a nonland permanent into its owner's library (second from the top or the bottom,
+#: notes: THEIR choice, so a bomb can come back two draws later), and that trigger makes
+#: notes: two Spirit tokens, four with a token doubler. Interaction 12 -> 13.
 #: notes: WHY THE ADDS: Henge ("whenever a nontoken creature you control enters, put a
 #: notes: +1/+1 counter on it and draw a card") and Tribute ("draw a card if its power is 3
 #: notes: or greater. Otherwise, put two +1/+1 counters on it") are enters triggers, so
@@ -84,8 +92,9 @@
 #: notes: control exiles it and lets you recast it for {2}, which re-fires its enters
 #: notes: trigger, and a creature leaving without dying gives Aang an experience counter,
 #: notes: which makes an Ally token every upkeep.
-#: notes: MANA. 38 lands (12 basics) plus Hermitic Herbalist and Great Divide Guide
-#: notes: (Arcane Signet went out for Black Panther, Wakandan King). W 23 / U 18 / G 20 sources. Katara herself is 68% on turn
+#: notes: MANA. 38 lands (12 basics) plus Great Divide Guide ("each land and Ally you
+#: notes: control has '{T}: Add one mana of any color'"). Arcane Signet and Hermitic
+#: notes: Herbalist went out on 2026-09-29/30, so it is the only early mana creature. W 23 / U 18 / G 20 sources. Katara herself is 68% on turn
 #: notes: three, up from 57% in deck 78. Katara, Water Tribe's Hope was parked in deck 78
 #: notes: waiting for blue sources, and is in now, but {2}{W}{U}{U} is still only 60% on
 #: notes: turn five, among the list's worst castability rows. 38 of 100 is inside the
@@ -105,7 +114,7 @@
 #: notes: Historic Brawl, which does not rotate. Still open: `targets` labels Jet's and
 #: notes: Aang, at the Crossroads's mana-value limits as "in the yard" (both look at the
 #: notes: top five); the counts are right, the wording is not.
-#: notes: CRAFT COST, as information only: 35 of the 100 are not in the library (8
+#: notes: CRAFT COST, as information only: 37 of the 100 are not in the library (10
 #: notes: mythic, 22 rare, 4 uncommon, 1 common). The Great Henge, Tribute to the World
 #: notes: Tree, Leyline Binding and Buried in the Garden are among them but came from the
 #: notes: owner's own pile, so they are owned and simply not catalogued yet.
@@ -129,7 +138,6 @@
 1 Sokka, Lateral Strategist (TLA) 241
 1 Niko, Light of Hope (DSK) 224
 1 Elspeth, Storm Slayer (TDM) 11
-1 The Millennium Calendar (LCI) 257
 1 Bard, King of Dale (HOB) 144
 1 Elesh Norn, Mother of Machines (ONE) 10
 1 Roaming Throne (LCI) 258
@@ -142,6 +150,7 @@
 1 Kellan Joins Up (OTJ) 212
 1 Multiversal Recruitment (MSC) 629
 1 Black Panther, Wakandan King (MAR) 87
+1 Beastmaster Ascension (TLE) 39
 
 # Ally bodies and token makers
 1 Appa, Steadfast Guardian (TLA) 10
@@ -176,10 +185,10 @@
 1 Knight of Autumn (GRN) 183
 1 Aang, the Last Airbender (TLA) 4
 1 Vault Guardsman (MSC) 612
+1 Wan Shi Tong, All-Knowing (TLE) 98
 
 # Protection and ramp
 1 Heroic Intervention (M21) 188
-1 Hermitic Herbalist (TLA) 226
 1 Flowering of the White Tree (LTR) 15
 
 # Lands (38)

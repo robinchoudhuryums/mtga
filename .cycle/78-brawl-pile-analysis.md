@@ -316,6 +316,12 @@ scratch copies afterwards: Beastmaster for An Unexpected Party and for White Lot
 Reinforcements both stay floor B; Wan Shi Tong for Swords to Plowshares stays B (interaction
 12, instant-speed 6 → 5), and for Katara, Water Tribe's Hope reaches A (interaction 13).
 
+**Applied 2026-09-30 (owner's picks):** Beastmaster Ascension in for Hermitic Herbalist and
+Wan Shi Tong, All-Knowing in for The Millennium Calendar. Interaction 12 → 13, floor B → A
+(sum 19, exactly the scaled line); the letter stays B pending the owner's re-grade. Great
+Divide Guide is now the only early mana creature. Bloom Tender (owned) measured against
+seven cuts on scratch copies — every one keeps the A floor.
+
 ## 5. Consolidated plan (live)
 
 **Measured on a scratch copy (Tier 1 package, 2026-09-29):**
