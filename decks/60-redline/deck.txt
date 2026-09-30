@@ -50,7 +50,11 @@
 #: notes: damage to target player"), The Infamous Cruelclaw for one Gastal Raider, Realm of
 #: notes: Koh for a Swamp. APPLIED, round 2: The Fire Nation Drill for Endrider
 #: notes: Spikespitter, Road Rage for one Kickoff Celebrations, Adrenaline Jockey for one
-#: notes: Gastal Thrillseeker, Dracosaur Auxiliary for one Outpace Oblivion. TRADE TAKEN
+#: notes: Gastal Thrillseeker, Dracosaur Auxiliary for one Outpace Oblivion. APPLIED, round
+#: notes: 3: War Balloon for one Momentum Breaker — Chandra's combat trigger animates it with
+#: notes: haste for free, and five ground bodies of power 3+ (Necroregent, Far Fortune,
+#: notes: Jockey, and FRA's Massacre Girl and Koth) can crew it; costs one interaction piece
+#: notes: and one engine card. TRADE TAKEN
 #: notes: KNOWINGLY: card advantage fell 5 to 3 in round 2 (the quality guard's warning),
 #: notes: and Adrenaline Jockey deals 4 to US whenever we cast a spell on an OPPONENT'S
 #: notes: turn — Lightning Strike, Bitter Triumph, Heartless Act and Road Rage are all
@@ -72,7 +76,7 @@
 
 # Two-drops (keep hitting)
 1 Gastal Thrillseeker (DFT) 205
-2 Momentum Breaker (DFT) 97
+1 Momentum Breaker (DFT) 97
 1 Endrider Catalyzer (DFT) 124
 1 Hawkeye, Master Marksman (MSH) 130
 1 Kickoff Celebrations (DFT) 135
@@ -86,6 +90,7 @@
 1 Howlsquad Heavy (DFT) 134
 1 Outpace Oblivion (DFT) 139
 1 Adrenaline Jockey (DFT) 112
+1 War Balloon (TLA) 159
 
 # Payoffs (max-speed top end)
 1 Far Fortune, End Boss (DFT) 203

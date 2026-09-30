@@ -206,7 +206,9 @@ are the first reserves if a cut above disappoints).
   Tetsuko Umezawa, Pursuer for the second Goblin Surveyor, Tomik, Izzet Sparkmage for the last
   Endrider Catalyzer, Tinybones, Pocket Nuisance for a Gas Guzzler. All FRA; they join the
   five above.
-- **Not taken:** War Balloon, Coalstoke Gearhulk.
+- **APPLIED (round 3):** War Balloon for a Momentum Breaker (Chandra animates it; five
+  power-3+ ground bodies crew it). Interaction 11 to 10, engine cards 17 to 16 on the full list.
+- **Not taken:** Coalstoke Gearhulk.
 
 ### Cut candidates for the ten (against the full part-A+B list; measured in the sandbox)
 
