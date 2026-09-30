@@ -97,8 +97,8 @@
 #: notes: Bloom Tender ("for each color among permanents you control, add one mana of
 #: notes: that color" — with Katara out that is {G}{W}{U}, one of each). Arcane Signet and
 #: notes: Hermitic Herbalist went out on 2026-09-29/30, and Bloom Tender took a Plains on
-#: notes: 2026-09-30. W 22 / U 18 / G 19 land sources; neither creature is in that count,
-#: notes: so every cast-on-curve figure is a floor. Katara herself is 66% on turn three,
+#: notes: 2026-09-30. W 21 / U 18 / G 19 land sources; neither creature is in that count,
+#: notes: so every cast-on-curve figure is a floor. Katara herself is 65% on turn three,
 #: notes: up from 57% in deck 78. Katara, Water Tribe's Hope was parked in deck 78 waiting
 #: notes: for blue sources, and is in now, but {2}{W}{U}{U} is still only 59.5% on turn
 #: notes: five, among the list's worst castability rows. 37 of 100 is inside the usual
@@ -113,6 +113,20 @@
 #: notes: Both enter tapped unless you control a basic land, and so do Gathering Place
 #: notes: and Gleaming Bastion's colours, so do not trade away more basics: a third
 #: notes: basic-for-utility swap measured W 22 -> 21.
+#: notes: OWNED MANABASE, 2026-09-30, at the owner's request: the ten unowned rare lands
+#: notes: were the main thing keeping the deck from being crafted, so each went out for an
+#: notes: owned land of the same colours. Glacial Fortress, Sunpetal Grove and Hinterland
+#: notes: Harbor became the three Temples (Enlightenment, Plenty, Mystery: "scry 1" on
+#: notes: entering, which the enters-doublers copy); Hengegate, Branchloft and Barkchannel
+#: notes: Pathway became North Pole Gates, Kyoshi Village and Meditation Pools ("{4}, {T},
+#: notes: Sacrifice this land: Draw a card"); Seachrome Coast, Temple Garden and Botanical
+#: notes: Sanctum became Tranquil Cove, Blossoming Sands and Thornwood Falls (gain 1 life
+#: notes: on entering); Spara's Headquarters became Evolving Wilds. Sources moved only W
+#: notes: 22 -> 21. The cost is TEMPO, which no probability figure here prices: ten lands
+#: notes: now always enter tapped where two did. The upgrade path, if tempo shows in play:
+#: notes: Mana Confluence for Evolving Wilds and Prismatic Vista for Thornwood Falls
+#: notes: (both mythic, both untapped); measured, that pair restores W 22 / U 18 / G 19.
+#: notes: Vista for Blossoming Sands instead gives U 19 / W 21, for the double-blue cards.
 #: notes: NO SWEEPER, deliberately. The deck wins with a wide board, so Farewell, Sunfall
 #: notes: and Doomskar would hit it hardest. Heroic Intervention is the answer to an
 #: notes: opposing sweeper instead. Time Wipe (keeps one creature) is the one to try if
@@ -127,8 +141,8 @@
 #: notes: Historic Brawl, which does not rotate. Still open: `targets` labels Jet's and
 #: notes: Aang, at the Crossroads's mana-value limits as "in the yard" (both look at the
 #: notes: top five); the counts are right, the wording is not.
-#: notes: CRAFT COST, as information only: 37 of the 100 are not in the library (10
-#: notes: mythic, 22 rare, 4 uncommon, 1 common). The Great Henge, Tribute to the World
+#: notes: CRAFT COST, as information only: 27 of the 100 are not in the library (10
+#: notes: mythic, 12 rare, 4 uncommon, 1 common). The Great Henge, Tribute to the World
 #: notes: Tree, Leyline Binding and Buried in the Garden are among them but came from the
 #: notes: owner's own pile, so they are owned and simply not catalogued yet.
 
@@ -219,16 +233,16 @@
 1 Secluded Courtyard (FDN) 267
 1 Three Tree City (BLB) 260
 1 Command Tower (ELD) 333
-1 Spara's Headquarters (SNC) 257
-1 Temple Garden (ECL) 268
-1 Hengegate Pathway // Mistgate Pathway (KHM) 260
-1 Barkchannel Pathway // Tidechannel Pathway (KHM) 251
-1 Branchloft Pathway // Boulderloft Pathway (ZNR) 258
-1 Glacial Fortress (XLN) 255
-1 Sunpetal Grove (XLN) 257
-1 Hinterland Harbor (DOM) 240
-1 Seachrome Coast (ONE) 258
-1 Botanical Sanctum (OTJ) 267
+1 Evolving Wilds (ECL) 264
+1 Blossoming Sands (M21) 244
+1 North Pole Gates (TLA) 274
+1 Meditation Pools (TLA) 272
+1 Kyoshi Village (TLA) 271
+1 Temple of Enlightenment (FDN) 698
+1 Temple of Plenty (FDN) 703
+1 Temple of Mystery (FDN) 702
+1 Tranquil Cove (TDM) 270
+1 Thornwood Falls (FDN) 269
 1 Deserted Beach (MID) 260
 1 Dreamroot Cascade (SOS) 254
 1 Overgrown Farmland (MID) 265

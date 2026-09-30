@@ -328,6 +328,11 @@ and Noble Hierarch was by hand.
 Land pass, same day (owned or non-rare only, per the owner): Ba Sing Se for a Forest and
 Abandoned Air Temple for Etched Cornfield. W 22 / U 18 / G 19; Agna Qel'a held back because a
 third basic-for-utility swap erodes the basic-gated lands (W 22 -> 21).
+Owned manabase, same day, at the owner's request: the ten unowned rare lands (three
+pathways, three checklands, two fastlands, Temple Garden, Spara's Headquarters) went out for
+owned same-colour lands (three Temples, the three TLA sac-to-draw lands, three gain lands,
+Evolving Wilds). W 22 -> 21; always-tapped lands 2 -> 10. Mythic upgrade path measured:
+Mana Confluence for Wilds + Prismatic Vista for Thornwood Falls restores W 22 / U 18 / G 19.
 
 ## 5. Consolidated plan (live)
 
