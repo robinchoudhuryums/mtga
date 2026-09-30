@@ -188,6 +188,45 @@ power 61, Charm 78.8% on turn 2.
 Black Widow (still ★★, but the one-copy rule leaves no slot without cutting a 1-of — they
 are the first reserves if a cut above disappoints).
 
+
+### Status 2026-09-30 (owner's picks)
+
+- **APPLIED (part A, commit c45187e):** Chandra for a Far Fortune, Hawkeye for an Endrider
+  Catalyzer, Cruelclaw for a Gastal Raider, Realm of Koh for a Swamp.
+- **PENDING (part B, after FRA reaches the pool):** Voxmancer for a Bashtronaut, Koth for a
+  Goblin Surveyor, Soulbreaker for a Mutant Surveyor, Wordsmith for an Oilgorger, Samut for an
+  Hour of Victory. Recorded in the deck's `#: notes:` too. The owner plays the full list on
+  Arena now (import block built in the sandbox).
+- **Owner wants The Fire Nation Drill in; cut not yet chosen.** Nine more are "strongly
+  considered" (Tinybones, Road Rage, Massacre Girl, Tetsuko, War Balloon, Adrenaline Jockey,
+  Tomik, Dracosaur, Coalstoke) — owner reads the deck as short on top-end.
+
+### Cut candidates for the ten (against the full part-A+B list; measured in the sandbox)
+
+The full list holds 25 engine cards; nearly every cut candidate is one (F2). Taking all ten
+on their primary cuts leaves 15 — P(an engine permanent by turn 3) 99.5% → 94.0%.
+
+**Top-end reading:** the list already runs 7 cards at 4+ (Far Fortune, Chandra, Spikespitter,
+Wordsmith; The Speed Demon, Necroregent, Oilgorger). Three of those — Spikespitter,
+Necroregent, Oilgorger — do little before max speed, so the fix is to UPGRADE those slots,
+not add more: Drill / Gearhulk / Dracosaur on them keeps the curve (avg MV 2.66 → 2.69),
+interaction 9 → 11, protection 1 → 2 (the Drill strips hexproof/indestructible), engine
+cards 25 → 22. Costs: Drill {B}{B} 69.6% on turn 4, Gearhulk {B}{B}{R}{R} 59.8% on turn 5,
+Dracosaur {R}{R} 79.5% by turn 5 (13 B / 14 R sources).
+
+| Add | Cut candidates (primary first) |
+|---|---|
+| The Fire Nation Drill | Endrider Spikespitter · Momentum Breaker (1) · Bitter Triumph |
+| Coalstoke Gearhulk | Risen Necroregent · Streaking Oilgorger (last) |
+| Dracosaur Auxiliary | Streaking Oilgorger (last) · Risen Necroregent · Endrider Spikespitter |
+| Massacre Girl, Most Wanted | Risen Necroregent · Mutant Surveyor (last) · Streaking Oilgorger (last) |
+| Tetsuko Umezawa, Pursuer | Endrider Spikespitter · Goblin Surveyor (last) · Howlsquad Heavy |
+| Tinybones, Pocket Nuisance | Gastal Raider (last) · Mutant Surveyor (last) · Goblin Surveyor (last) |
+| Tomik, Izzet Sparkmage | Endrider Catalyzer (last) · Kickoff Celebrations (1) |
+| Road Rage | Momentum Breaker (1) · Bitter Triumph · Heartless Act |
+| Adrenaline Jockey | Goblin Surveyor (last) · Mutant Surveyor (last) · Gastal Raider (last) |
+| War Balloon | Streaking Oilgorger (last) · Kickoff Celebrations (1) · Mutant Surveyor (last) |
+
 ### Repo availability (F7)
 
 FRA is on Arena now but not in `card-pool.csv` (Scryfall dates it 2026-10-02; the pool's
