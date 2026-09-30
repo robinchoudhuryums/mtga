@@ -92,18 +92,27 @@
 #: notes: control exiles it and lets you recast it for {2}, which re-fires its enters
 #: notes: trigger, and a creature leaving without dying gives Aang an experience counter,
 #: notes: which makes an Ally token every upkeep.
-#: notes: MANA. 37 lands (11 basics) plus two early mana creatures: Great Divide Guide
+#: notes: MANA. 37 lands (10 basics) plus two early mana creatures: Great Divide Guide
 #: notes: ("each land and Ally you control has '{T}: Add one mana of any color'") and
 #: notes: Bloom Tender ("for each color among permanents you control, add one mana of
 #: notes: that color" — with Katara out that is {G}{W}{U}, one of each). Arcane Signet and
 #: notes: Hermitic Herbalist went out on 2026-09-29/30, and Bloom Tender took a Plains on
-#: notes: 2026-09-30. W 22 / U 18 / G 20 land sources; neither creature is in that count,
-#: notes: so every cast-on-curve figure is a floor. Katara herself is 67% on turn three,
+#: notes: 2026-09-30. W 22 / U 18 / G 19 land sources; neither creature is in that count,
+#: notes: so every cast-on-curve figure is a floor. Katara herself is 66% on turn three,
 #: notes: up from 57% in deck 78. Katara, Water Tribe's Hope was parked in deck 78 waiting
 #: notes: for blue sources, and is in now, but {2}{W}{U}{U} is still only 59.5% on turn
 #: notes: five, among the list's worst castability rows. 37 of 100 is inside the usual
 #: notes: 36–40 for Brawl. A single seven is keepable 79.9% of the time, and with Brawl's
 #: notes: free first mulligan it is 95.9% within two sevens.
+#: notes: LAND SWAPS, 2026-09-30, both owned: Ba Sing Se for a Forest ("{2}{G}, {T}:
+#: notes: Earthbend 2" puts counters on a land, which is Toph's power, and Earth Kingdom
+#: notes: General's lifegain; no source count moved) and Abandoned Air Temple for Etched
+#: notes: Cornfield, which entered tapped unless a player was at 13 life or less, i.e.
+#: notes: almost always in a 25-life game ("{3}{W}, {T}: Put a +1/+1 counter on each
+#: notes: creature you control", doubled by Doubling Season; costs one green source).
+#: notes: Both enter tapped unless you control a basic land, and so do Gathering Place
+#: notes: and Gleaming Bastion's colours, so do not trade away more basics: a third
+#: notes: basic-for-utility swap measured W 22 -> 21.
 #: notes: NO SWEEPER, deliberately. The deck wins with a wide board, so Farewell, Sunfall
 #: notes: and Doomskar would hit it hardest. Heroic Intervention is the answer to an
 #: notes: opposing sweeper instead. Time Wipe (keeps one creature) is the one to try if
@@ -198,7 +207,7 @@
 
 # Lands (37)
 1 Hushwood Verge (DSK) 261
-1 Etched Cornfield (DSK) 258
+1 Abandoned Air Temple (TLA) 263
 1 Gathering Place (MSH) 266
 1 Floodfarm Verge (DSK) 259
 1 Hallowed Fountain (ECL) 265
@@ -224,7 +233,8 @@
 1 Dreamroot Cascade (SOS) 254
 1 Overgrown Farmland (MID) 265
 5 Plains (HOB) 189
-4 Forest (HOB) 193
+3 Forest (HOB) 193
+1 Ba Sing Se (TLA) 266
 2 Island (HOB) 190
 
 # Flex — Brawl notes (comments; not part of the 100)

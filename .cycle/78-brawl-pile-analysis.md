@@ -325,6 +325,9 @@ Applied the same day: Bloom Tender in for a Plains (37 lands, 11 basics). Keepab
 79.9%, 96.5 → 95.9% within two sevens; floor A unchanged. `suggest --ramp` cannot see Bloom
 Tender (its colour-count mana does not parse), so the comparison against Birds of Paradise
 and Noble Hierarch was by hand.
+Land pass, same day (owned or non-rare only, per the owner): Ba Sing Se for a Forest and
+Abandoned Air Temple for Etched Cornfield. W 22 / U 18 / G 19; Agna Qel'a held back because a
+third basic-for-utility swap erodes the basic-gated lands (W 22 -> 21).
 
 ## 5. Consolidated plan (live)
 
