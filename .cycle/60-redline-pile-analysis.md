@@ -4,12 +4,14 @@
 `decks/60-redline/deck.txt`'s `#: notes:`. A scratchpad, not a source of truth — decks/ are.
 
 **Source list:** 67 cards from the owner, 2026-09-30 (chat). None are already in deck 60
-(Alesha was proposed for it the same day). 11 carry a `*` in the owner's list; the star's
-meaning was not stated, so it is recorded per row and does not move a grade.
+(Alesha was proposed for it the same day). 11 carry a `*`: the owner's mark for "especially worth consideration, or re-read if
+dismissed" (clarified 2026-09-30) — re-read in §4b.
 
 **Required:** replace one Burnout Bashtronaut and one Far Fortune, End Boss (the owner holds
-one of each; the repo still reads 0 — owned counts lag, G-10). Open to upgrading the other
-2-ofs. Craft preference this session: owned, or common/uncommon crafts.
+one of each; the repo still reads 0 — owned counts lag, G-10). Open to upgrading ONE copy of
+each other 2-of (clarified), plus any swap the pile justifies. Craft preference: owned, or
+common/uncommon crafts. **The 21 Reality Fracture cards are OWNED and playable on Arena now**
+(owner, 2026-09-30) — Arena released the set before Scryfall's 2026-10-02 date.
 
 ## 1. The decision framework (rules cited by number below)
 
@@ -144,48 +146,65 @@ None is in the repo yet, so `own` is unknown and no tool has scored them.
 | Jiang Yanggu, Alone | {4}{R} | △ | Rewards attacking alone in a wide deck. |
 | Pyre Rhymer // Molten Tide | {1}{R}{R} | △ | RR 3-drop ramp (F4). |
 
-## 5. Consolidated plan (live)
+### 4b. Re-read of the starred cards (owner's `*`)
 
-### Wave 1 — owned cards, applicable today (measured on a scratch copy)
-
-| # | Out | In | Why (rule) |
+| Card | Was | Now | What changed on the re-read (a count, per G-61) |
 |---|---|---|---|
-| 1 | Burnout Bashtronaut ×1 (required) | Gingerbrute (owned, not in the pile) | The pile holds no owned 1-drop ticker; Gingerbrute's "{1}: can't be blocked except by creatures with haste" connects every turn (F1, F3). Interim — Voxmancer replaces it in wave 2. |
-| 2 | Far Fortune ×1 (required) | Chandra, Spark Hunter | A hasty 3/2 Vehicle the turn she lands and every turn after; single R (F4). Alt: The Ruinous Wrecking Crew at X=2. |
-| 3 | Endrider Catalyzer | Hawkeye, Master Marksman | 2 damage to a player on every attack, blocked or not (F1). |
-| 4 | Endrider Catalyzer | Speed, Young Avenger | Haste 2-drop ticks on arrival (F1). |
-| 5 | Gastal Raider | The Infamous Cruelclaw | Menace 3/3 that casts free cards on hit. |
-| 6 | Gastal Raider | Alesha, Who Laughs at Fate | Grows each attack; rebuys Thrillseeker's ETB ping. |
-| 7 | Mutant Surveyor ×1 | Black Widow, Super Spy | Menace 2-drop with value on hit; lowers the curve (F3). |
-| 8 | Swamp ×1 | Realm of Koh | Same black source, untapped with a basic out, plus an evasive token sink. |
+| Koth, the Geomancer | ★★★ | ★★★ | Unchanged: 25 lands, a tick per land drop from turn 3. |
+| The Fire Nation Drill | ★ | ★★ | Chandra, Spark Hunter animates "one target Vehicle you control… gains haste" each combat, so with her the Drill needs no crew; alone it is still a 4-mana kill spell (power ≤4) that leaves a 6/3 trampler. The Far Fortune slot's removal option. Rare, repo reads unowned. |
+| War Balloon | ◇ | ★ | "{1}: Put a fire counter" is instant-speed and permanent: cast turn 3, pay {3} on turn 4 and it is a 4/3 flier that never needs crew — 4 flying power a turn earlier than Streaking Oilgorger's 3. Owned. |
+| Adrenaline Jockey | ◇ | ★ | "Whenever a player casts a spell, if it's not their turn, deals 4 damage to them" — an opponent's removal in YOUR combat costs them 4, on your turn: a tick and a tax. A 3/3 for 3 over a Surveyor. It hits you too, so cast your instants on your own turn. |
+| Tomik, Izzet Sparkmage | ◇ | ★ | With the ping package in, "noncombat damage… plus 1" upgrades Voxmancer, Koth, Soulbreaker, Thrillseeker, Hawkeye, Lightning Strike and Outpace Oblivion — Far Fortune's max-speed amp for pings, online from turn 2. Payoff only; 1/2 body. |
+| Tinybones, Pocket Nuisance | ★ | ★ | Discard sources counted: Kickoff Celebrations ×2, Bitter Triumph, Hawkeye's Boomerang, its own ETB. Real, 2/1 body. |
+| Road Rage | ★ | ★ | 1-mana removal at 2; with Chandra's token or a Drill out, 3–4. |
+| Dracosaur Auxiliary | △ | ◇ | A hasty 4/4 flier is a tick on arrival and saddle 3 adds a 2-damage ping; the problem is only the 6th mana — Whiplash Wordsmith does the job at 4. |
+| Coalstoke Gearhulk | △ | ◇ | Its ETB reanimates a MV ≤4 creature from ANY graveyard with haste — a tick the turn it lands, and a second Thrillseeker ping. Held back by {B}{B}{R}{R} on 13 B / 14 R. |
+| Massacre Girl, Most Wanted | △ | ◇ | Every trade pings, and every ping grows her; a 5-drop with no evasion. |
+| Tetsuko Umezawa, Pursuer | ◇ | ◇ | A 2/4 double striker with no evasion; its ping needs THEIR small blockers. |
 
-**Measured (scratch copy vs live):** floor A → A; interaction 8 → 9, card advantage 4 → 5;
-avg MV 2.71 → 2.69; 2-drops 13 → 14, 3-drops 11 → 10; B 13 / R 14 unchanged; keepable 86.0%
-unchanged; the gold 3-drops cast on curve 84.0%, the new 2-drops 87.7–89.8%. Engine cards
-33 → 26 of 60 (F2 floor ~20). Board power 64 → 59 (Far Fortune's 4/5 and the Catalyzers' 3
-power are gone; the replacements are evasive rather than big).
+## 5. Consolidated plan (live) — REVISED 2026-09-30: one copy per 2-of, FRA owned
 
-### Wave 2 — Reality Fracture, once FRA is in the pool or the cards are cataloged (F7)
+| # | Out (1 copy) | In | Grounds |
+|---|---|---|---|
+| 1 | Burnout Bashtronaut (required) | Stingerquill Voxmancer | A tick every turn for {B/R}; hybrid 1-drop Goblin (F1, F3). |
+| 2 | Far Fortune (required) | Chandra, Spark Hunter | A hasty 3-power attacker every turn she is out; single R. Alt: The Fire Nation Drill `*` (removal + trampler; rare, repo reads unowned). |
+| 3 | Endrider Catalyzer | Hawkeye, Master Marksman | 2 damage to a player every attack, blocked or not. |
+| 4 | Gastal Raider | The Infamous Cruelclaw | Menace 3/3, free spells on hit. |
+| 5 | Goblin Surveyor | Koth, the Geomancer `*` | A tick per land drop. |
+| 6 | Mutant Surveyor | Screeching Soulbreaker | Flier; pings on every attack. |
+| 7 | Streaking Oilgorger | Whiplash Wordsmith | Enters prepared, so its own Verse turns on flying + haste: a 3/3 hasty flier for 4 (+1). Alt: War Balloon `*` (owned). |
+| 8 | Swamp | Realm of Koh | Same source; evasive token sink. |
+| opt | Lightning Strike | Stingerquill Charm | Same 3 damage + two modes; {B}{R} on turn 2 is 78.8% vs Strike's ~90% — a castability cost. |
+| opt | Hour of Victory | Samut, Hazoret's Champion | Team haste; keeps the other Hour as The Speed Demon's tutor. |
+| opt | Kickoff Celebrations | Tomik, Izzet Sparkmage `*` | Ping amplifier once 1–7 are in; the other Kickoff stays as the discard outlet. |
 
-Hand-graded; no tool can score these yet.
+**Measured in a sandbox copy with the FRA cards injected from Scryfall (rows 1–8):** floor
+A → A; interaction 8 → 9; card advantage 4 → 5; avg MV 2.71 → 2.69; curve 4/13/11/4/3; B 13 /
+R 14 and keepable 86.0% unchanged; every FRA add ≥90% on curve, Cruelclaw 84.0%, Hawkeye
+89.8%. Engine cards 33 → 26 (F2). **With both optional Charm and Samut:** avg MV 2.66, board
+power 61, Charm 78.8% on turn 2.
 
-| Out | In | Why |
-|---|---|---|
-| Gingerbrute (wave-1 interim) | Stingerquill Voxmancer | A guaranteed tick every turn for {B/R}; hybrid 1-drop Goblin. |
-| Goblin Surveyor | Koth, the Geomancer | A tick on every land drop; Mountains add {R}. |
-| Goblin Surveyor | Screeching Soulbreaker | Flying, and a ping on every attack. |
-| Mutant Surveyor (last) | Samut, Hazoret's Champion | Team haste — every later creature ticks on arrival. |
-| Streaking Oilgorger ×2 | Whiplash Wordsmith ×2 | A 4-mana 3/3 flier with haste once any ping has landed, which waves 1–2 make routine. |
-| Lightning Strike ×1 (optional) | Stingerquill Charm | Same 3 damage plus two more modes; {B}{R} instead of {1}{R}. |
+**Wave-1 alternates superseded:** Gingerbrute (Voxmancer does the job), Speed / Alesha /
+Black Widow (still ★★, but the one-copy rule leaves no slot without cutting a 1-of — they
+are the first reserves if a cut above disappoints).
+
+### Repo availability (F7)
+
+FRA is on Arena now but not in `card-pool.csv` (Scryfall dates it 2026-10-02; the pool's
+`date<=now` gate). Cataloging it as owned before the pool holds it would fail INV-01b, and a
+deck line would fail INV-04. After 2026-10-02: `make refresh REFETCH=1` (the pool is reused
+for 7 days otherwise), then catalog the owned FRA cards (`/ingest`), then apply rows 1, 5–7.
+Rows 2–4 and 8 can land today. **Tooling notes for that ingest:** `prepared` is a new keyword
+the tagger does not index (Voxmancer and Wordsmith screen as "tangential" because their
+Verse half reads as no role), and the `date<=now` gate lags Arena's early digital release —
+both worth a triage pass when FRA lands.
 
 ### Protect — what the ranking cannot see
 
-`cuts` ranked the deck's REMOVAL as its weakest fit (theme-fit term), so it must not drive
-these cuts. Keep: Gas Guzzler, Hazoret, the remaining Far Fortune, The Speed Demon (the
-header); Kickoff Celebrations (the only discard outlet); Hour of Victory (tutors The Speed
-Demon at max speed); Gastal Thrillseeker (its ETB ping is a guaranteed tick).
+`cuts` ranks the removal as weakest fit (theme term), so it must not drive these cuts. Keep:
+Gas Guzzler, Hazoret, the remaining Far Fortune, The Speed Demon (header); Kickoff
+Celebrations (discard outlet); Hour of Victory (tutors The Speed Demon); Gastal Thrillseeker.
 
 ### Variant parked
 
-A Rakdos Vehicles build (§3) — the 17-card cluster is coherent but is a different deck;
-`/draft-deck` if wanted.
+A Rakdos Vehicles build (§3); War Balloon and The Fire Nation Drill would anchor it.
