@@ -54,6 +54,15 @@ one of each; the repo still reads 0 — owned counts lag, G-10). Open to upgradi
   exception — she brings her own Vehicle and animates it, so she works without the shell.
 - **The owned pool already covers both required slots**, and several 2-drop/3-drop tickers
   (Hawkeye, Speed, Black Widow, Cruelclaw, Alesha) beat the soft 2-ofs on F1 outright.
+- **FRA is a NONCOMBAT PING package, and that is deck 60's own axis (F1, F8).** Voxmancer
+  (every upkeep), Koth (every land), Screeching Soulbreaker (every attack), Tinybones (ETB),
+  Stingerquill Charm and Cast Away Doubt all make an opponent lose life without connecting in
+  combat — the one failure mode an aggro speed deck has (a stalled board). Unlike the Vehicle
+  cluster, these fold straight into deck 60 rather than asking for a variant.
+- **Availability gate (F7):** the FRA picks cannot be written to the deck file until FRA is in
+  the pool (after 2026-10-02, `make refresh`) or the cards are cataloged as owned. The owned
+  plan in §5 stands on its own today; the FRA picks are a second wave.
+
 ## 4. Running verdicts
 
 ### Batch 1 — the 46 cards the pool holds (read in full, 2026-09-30)
@@ -107,4 +116,32 @@ Legend: ★★★ take · ★★ strong · ★ real · ◇ situational · △ ma
 | Rocky Roads / Foul Roads | lands | 2 / 0 | △ | Untapped only with a Vehicle or Mount out (F6). |
 | Push the Limit | {5}{R}{R} | 1 | ✗ | 7 mana (F3). |
 | Chandra, Torch of Defiance | {2}{R}{R} | 0 | ✗ | Not Standard-legal (F7). |
+### Batch 2 — the 21 Reality Fracture (FRA) cards, from Scryfall text (F7)
+
+None is in the repo yet, so `own` is unknown and no tool has scored them.
+
+| Card | Cost | Verdict | Grounds |
+|---|---|---|---|
+| Stingerquill Voxmancer // Vicious Verse | {B/R} // {B/R} | ★★★ | Hybrid 1-drop Goblin; "at the beginning of your upkeep, if this creature isn't prepared, it becomes prepared" and Verse "deals 1 damage to target opponent" — a guaranteed tick EVERY turn from turn 2 for {B/R}, blockers irrelevant (F1). The Bashtronaut slot's natural heir (F9). Noncombat, so it also switches on the F8 payoffs. |
+| Koth, the Geomancer | {2}{R} | ★★★ | "Landfall — whenever a land you control enters, Koth deals 1 damage to each opponent" — every land drop from turn 3 is a tick; "if that land is a Mountain, add {R}" (10 Mountains). Legend (F5). |
+| Samut, Hazoret's Champion | {1}{R} | ★★ | "Creatures you control have haste" — every later creature ticks the turn it lands (F1). Gas Guzzler still enters tapped. Legend, rare. |
+| Screeching Soulbreaker | {2}{B} | ★★ | 1/4 flier; "whenever this creature attacks, it deals 1 damage to each opponent and you gain 1 life" — the tick fires on the ATTACK, blocked or not. Common. A Surveyor's slot. |
+| Stingerquill Charm | {B}{R} | ★★ | "3 damage to any target" / first strike + deathtouch / a 2/2 hasty Cadet. Lightning Strike with two more modes; {B}{R} on turn 2 is 78.8% (F4). |
+| Tinybones, Pocket Nuisance | {2}{B} | ★ | ETB "each opponent discards a card", and "whenever a player discards… 1 damage to each opponent" — so the ETB itself ticks; Kickoff Celebrations and Bitter Triumph discard for more. 2/1 body. Legend. |
+| Gallia, the Merrymaker | {1}{R} | ★ | Haste 2/1 2-drop (a tick the turn it lands); counter-haste is narrow here. Legend. |
+| Cast Away Doubt | {2}{B} | ★ | "Draw two cards… deals 2 damage to each player" — card advantage (deck reads 4) plus a tick. Common. |
+| Whiplash Wordsmith // Vicious Verse | {3}{B/R} | ★ | "Enters prepared", and "as long as an opponent was dealt noncombat damage this turn, this creature has flying and haste": with any ping that turn it is a hasty 3/3 flier for 4. Beats Streaking Oilgorger (5 MV 3/3 flying haste). Common. |
+| Extended Absence | {3}{B} | ◇ | Instant exile + 1 damage. Good removal at 4 MV; the deck's removal sits at 2–3. |
+| Tomik, Izzet Sparkmage | {1}{R} | ◇ | "Noncombat damage… plus 1" — Far Fortune's amp for pings only. A payoff that needs the ping package first (F8). |
+| Grim Repriser | {B}{R} | ◇ | 2/2 prowess that returns for {B}{R} if an opponent took noncombat damage this turn (F8). |
+| Gideon the Oathless | {2}{B} | ◇ | 3/3, "Ward—Discard a card"; its pings trigger on THEIR creatures entering — mostly the opponent's turn, which does not tick (F1). |
+| Tetsuko Umezawa, Pursuer | {3}{R} | ◇ | 2/4 double strike, prowess. A 4-drop with no evasion. |
+| Winter, Tormented Loner | {2}{B} | ◇ | Sacrifice → edict; 0/3 that grows with your yard. |
+| Garruk, Veiled Butcher | {3}{B}{B} | ◇ | Strong planeswalker (−4/−1, edict + 4/4, discard two) but BB at 5, above the curve (F3, F4). |
+| Massacre Girl, Most Wanted | {4}{B} | △ | 5-drop drain/counters payoff (F3). |
+| Liliana the Repentant | {1}{B} | △ | Mills you on creatures entering; exhaust reanimation at {5}{B}. No tick. |
+| Danitha, Spear of Agony | {2}{B} | △ | Counters when you target their stuff; 2/2 first strike. |
+| Jiang Yanggu, Alone | {4}{R} | △ | Rewards attacking alone in a wide deck. |
+| Pyre Rhymer // Molten Tide | {1}{R}{R} | △ | RR 3-drop ramp (F4). |
+
 ## 5. Consolidated plan (live)
