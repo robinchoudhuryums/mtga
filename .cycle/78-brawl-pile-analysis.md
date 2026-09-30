@@ -321,6 +321,10 @@ Wan Shi Tong, All-Knowing in for The Millennium Calendar. Interaction 12 → 13,
 (sum 19, exactly the scaled line); the letter stays B pending the owner's re-grade. Great
 Divide Guide is now the only early mana creature. Bloom Tender (owned) measured against
 seven cuts on scratch copies — every one keeps the A floor.
+Applied the same day: Bloom Tender in for a Plains (37 lands, 11 basics). Keepable 81.2 →
+79.9%, 96.5 → 95.9% within two sevens; floor A unchanged. `suggest --ramp` cannot see Bloom
+Tender (its colour-count mana does not parse), so the comparison against Birds of Paradise
+and Noble Hierarch was by hand.
 
 ## 5. Consolidated plan (live)
 

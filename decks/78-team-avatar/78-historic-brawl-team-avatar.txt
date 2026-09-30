@@ -13,7 +13,7 @@
 #: archetype: all fire off creatures entering: The Great Henge, Tribute to the World
 #: archetype: Tree, Galadriel and The Blue Spirit. Beside them sit Allies whose enter or
 #: archetype: attack triggers are worth doubling, cheap exile effects, protection for the
-#: archetype: engine, and a 38-land manabase.
+#: archetype: engine, and a 37-land manabase with two early mana creatures.
 #: tier: B — PROVISIONAL and a RE-GRADE CANDIDATE: the metrics floor reads A since Wan
 #: tier: Shi Tong came in, one band above this letter, pending the owner's call. A
 #: tier: 100-card deck is graded per 60 cards (the floor's thresholds scale ×1.67), so
@@ -92,14 +92,18 @@
 #: notes: control exiles it and lets you recast it for {2}, which re-fires its enters
 #: notes: trigger, and a creature leaving without dying gives Aang an experience counter,
 #: notes: which makes an Ally token every upkeep.
-#: notes: MANA. 38 lands (12 basics) plus Great Divide Guide ("each land and Ally you
-#: notes: control has '{T}: Add one mana of any color'"). Arcane Signet and Hermitic
-#: notes: Herbalist went out on 2026-09-29/30, so it is the only early mana creature. W 23 / U 18 / G 20 sources. Katara herself is 68% on turn
-#: notes: three, up from 57% in deck 78. Katara, Water Tribe's Hope was parked in deck 78
-#: notes: waiting for blue sources, and is in now, but {2}{W}{U}{U} is still only 60% on
-#: notes: turn five, among the list's worst castability rows. 38 of 100 is inside the
-#: notes: usual 36–40 for Brawl. A single seven is keepable 81.2% of the time, and with
-#: notes: Brawl's free first mulligan it is 96.5% within two sevens.
+#: notes: MANA. 37 lands (11 basics) plus two early mana creatures: Great Divide Guide
+#: notes: ("each land and Ally you control has '{T}: Add one mana of any color'") and
+#: notes: Bloom Tender ("for each color among permanents you control, add one mana of
+#: notes: that color" — with Katara out that is {G}{W}{U}, one of each). Arcane Signet and
+#: notes: Hermitic Herbalist went out on 2026-09-29/30, and Bloom Tender took a Plains on
+#: notes: 2026-09-30. W 22 / U 18 / G 20 land sources; neither creature is in that count,
+#: notes: so every cast-on-curve figure is a floor. Katara herself is 67% on turn three,
+#: notes: up from 57% in deck 78. Katara, Water Tribe's Hope was parked in deck 78 waiting
+#: notes: for blue sources, and is in now, but {2}{W}{U}{U} is still only 59.5% on turn
+#: notes: five, among the list's worst castability rows. 37 of 100 is inside the usual
+#: notes: 36–40 for Brawl. A single seven is keepable 79.9% of the time, and with Brawl's
+#: notes: free first mulligan it is 95.9% within two sevens.
 #: notes: NO SWEEPER, deliberately. The deck wins with a wide board, so Farewell, Sunfall
 #: notes: and Doomskar would hit it hardest. Heroic Intervention is the answer to an
 #: notes: opposing sweeper instead. Time Wipe (keeps one creature) is the one to try if
@@ -190,8 +194,9 @@
 # Protection and ramp
 1 Heroic Intervention (M21) 188
 1 Flowering of the White Tree (LTR) 15
+1 Bloom Tender (ECL) 166
 
-# Lands (38)
+# Lands (37)
 1 Hushwood Verge (DSK) 261
 1 Etched Cornfield (DSK) 258
 1 Gathering Place (MSH) 266
@@ -218,10 +223,10 @@
 1 Deserted Beach (MID) 260
 1 Dreamroot Cascade (SOS) 254
 1 Overgrown Farmland (MID) 265
-6 Plains (HOB) 189
+5 Plains (HOB) 189
 4 Forest (HOB) 193
 2 Island (HOB) 190
 
 # Flex — Brawl notes (comments; not part of the 100)
 #~ note: Colour-identity swap vs the Standard list: −Jet, Freedom Fighter (R/W hybrid → R in identity, illegal under G/W/U Katara) / +Prayer of Binding.
-#~ -Katara, Water Tribe's Hope | +Inspiring Commander | OWNED per the 2026-09-29 pile (not yet catalogued, so `check` still reads it as a rare craft): "Whenever another creature you control with power 2 or less enters, you gain 1 life and draw a card." Every 1/1 Ally token draws, it is an enters-caused trigger that Starfield Vocalist, Elesh Norn and Virtue of Knowledge each copy, and the token doublers double what enters. Six mana. Retargeted 2026-09-29: its first cut, Earth Kingdom Protectors, went out for Vault Guardsman; Katara, Water Tribe's Hope is 60% castable on turn five.
+#~ -Katara, Water Tribe's Hope | +Inspiring Commander | OWNED per the 2026-09-29 pile (not yet catalogued, so `check` still reads it as a rare craft): "Whenever another creature you control with power 2 or less enters, you gain 1 life and draw a card." Every 1/1 Ally token draws, it is an enters-caused trigger that Starfield Vocalist, Elesh Norn and Virtue of Knowledge each copy, and the token doublers double what enters. Six mana. Retargeted 2026-09-29: its first cut, Earth Kingdom Protectors, went out for Vault Guardsman; Katara, Water Tribe's Hope is 59.5% castable on turn five.
