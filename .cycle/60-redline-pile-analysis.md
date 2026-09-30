@@ -197,9 +197,16 @@ are the first reserves if a cut above disappoints).
   Goblin Surveyor, Soulbreaker for a Mutant Surveyor, Wordsmith for an Oilgorger, Samut for an
   Hour of Victory. Recorded in the deck's `#: notes:` too. The owner plays the full list on
   Arena now (import block built in the sandbox).
-- **Owner wants The Fire Nation Drill in; cut not yet chosen.** Nine more are "strongly
-  considered" (Tinybones, Road Rage, Massacre Girl, Tetsuko, War Balloon, Adrenaline Jockey,
-  Tomik, Dracosaur, Coalstoke) — owner reads the deck as short on top-end.
+- **APPLIED (round 2):** The Fire Nation Drill for Endrider Spikespitter, Road Rage for a
+  Kickoff Celebrations, Adrenaline Jockey for a Gastal Thrillseeker, Dracosaur Auxiliary for
+  an Outpace Oblivion. Quality guard: card advantage 5 to 3 (soft; accepted by the owner's
+  pick). Floor still A, aggro clock 5/7. Jockey added to the wishlist (Target 60); the Drill
+  was already there (Target 14).
+- **PENDING (part B, extended):** Massacre Girl, Most Wanted for the second Mutant Surveyor,
+  Tetsuko Umezawa, Pursuer for the second Goblin Surveyor, Tomik, Izzet Sparkmage for the last
+  Endrider Catalyzer, Tinybones, Pocket Nuisance for a Gas Guzzler. All FRA; they join the
+  five above.
+- **Not taken:** War Balloon, Coalstoke Gearhulk.
 
 ### Cut candidates for the ten (against the full part-A+B list; measured in the sandbox)
 
