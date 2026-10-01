@@ -7212,6 +7212,24 @@ per-card surface asks *is this out yet*. A pool built with a custom `--query`, o
 built before this bound existed, re-opens the whole failure; the soft sweep is what tells
 you.
 
+### The inverse: a set you can play before the pool can hold it (2026-09-30)
+
+The same date bound runs the other way. Arena released **Reality Fracture (FRA)** on
+2026-09-30, two days before Scryfall's release date of 2026-10-02, and the owner opened
+and played it at once. Because `date<=now` excludes a set until its Scryfall date, the
+pool held none of it, and a deck line naming an FRA printing failed INV-04 as an unknown
+set. Thirteen FRA swaps were confirmed across decks 55 and 60 in those two days and none
+could be written to a deck file.
+
+What worked: queue each confirmed FRA swap in the deck's `#: notes:` (card, collector
+number, the card it replaces and why), and build the Arena import block from a scratch
+copy of the repo with the FRA rows added to its pool and mana files, so the owner's deck
+and the import agree. Card text for an unreleased set comes from Scryfall, which indexes a
+set's cards before release, never from memory. After the date,
+`make refresh REFETCH=1` brings the set in, and the queued swaps are applied with
+`deck.py swap` like any other. Do not loosen `date<=now` to admit an early set: the bound
+exists because the pool's newest printing becomes the one `resolve` writes.
+
 ## [G-80] A card that grants a keyword is a card about that keyword
 
 The tagger's keyword tags came from Scryfall's `keywords` field — what a card **has**.

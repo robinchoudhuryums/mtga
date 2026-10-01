@@ -363,6 +363,13 @@ Updated: 2026-09-27 (match digest built in PR #196, then six match-logging follo
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
+**2026-10-01 — `/sync-docs` over the 47 commits since PR #197**, then a PR. README now
+describes the play-by-play columns, `void=`, `--report --deck`, the Brawl commander export
+and per-60 Brawl grading; CLAUDE.md lists the two live pile docs and G-79 carries the
+early-release inverse (Reality Fracture). **Next:** after 2026-10-02, `make refresh
+REFETCH=1` and apply the 13 queued FRA swaps (decks 55 and 60) — NEXT-SESSION.md has the
+list. Loss reasons for three new losses are still with the owner.
+
 **2026-09-27 — six match-logging follow-ups implemented** (`/broad-implement 1-6`) on
 `claude/sync-commands-mmmsdb`, restarted from main after PR #196 (the match digest)
 merged. Full suite and `check_all` green. Deck 58's `#: arena:` header now names its

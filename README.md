@@ -479,7 +479,7 @@ python3 scripts/deck.py resolve --check 76   # verify a WRITTEN deck's (SET) COL
 python3 scripts/deck.py resolve --fix 76 --apply   # ...and REPAIR the bad ones in place (never by hand)
 python3 scripts/deck.py check 20a      # owned vs needed + a castability lint (off-color cards)
 python3 scripts/deck.py diff 20 20a   # what variant 20a changes vs base deck 20
-python3 scripts/deck.py arena 20a      # emit an Arena-importable decklist to paste back
+python3 scripts/deck.py arena 20a      # emit an Arena-importable decklist to paste back (a Brawl deck's commander goes under its own Commander heading, as Arena exports it)
 python3 scripts/deck.py stats 20a      # curve, colors, types, cost flags, roles + interaction profile
 python3 scripts/deck.py mana 20a       # hybrid-aware color requirements + castability lint
 python3 scripts/deck.py consistency 20a # opening-hand keepable %, land drops, P(cast on curve) + source fix
@@ -1078,6 +1078,12 @@ since the pick costs no wildcard but still costs a deck slot. (Only the craft ha
 checked that at first, which is how Deadly Dispute and Dovin's Veto, neither
 Standard-legal, were offered to Standard decks.)
 
+**A 100-card Brawl deck is graded per 60.** Interaction and card advantage are counts, so a
+100-card list would clear the 60-card floor on size alone; for `#: format: Historic Brawl`
+the floor (and `suggest --needs`' interaction minimum) scales by size / 60. Every Brawl
+recommender also holds to the commander's colour identity, `consistency` counts Arena's
+free first mulligan, and Historic Brawl does not rotate, so it shows no rotation flags.
+
 A deck's **change history is git** — no in-file changelog to go unwieldy or drift.
 `deck.py history <id>` prints the deck file's commit log (each message states the
 thematic + technical *why*), and `deck.py quality <id> --at <hash>` re-scores that
@@ -1434,6 +1440,7 @@ make matches                                           # extract from Player.log
 make matches APPLY=1                                   # …and write matches.csv
 python3 scripts/parse_matches.py session.log --apply   # or point it at a paste yourself
 python3 scripts/parse_matches.py --report              # win/loss per deck
+python3 scripts/parse_matches.py --report --deck 21    # one deck's matches: play/draw, turns, opponent colours and cards, loss reason
 ```
 
 `make matches` wraps the grep below so neither it nor the log path has to be
@@ -1523,12 +1530,13 @@ full confidence.
 
 #### The four things the log cannot see — and the one platform it misses
 
-Arena records the deck you submitted and the raw outcome. It records **nothing about the
-opponent's archetype, whether you were on the play, or why you lost** — and a **phone
-game never reaches the desktop log at all**, because `Player.log` is written by the
-install that played the match. Four optional columns fill that gap: `On Play`,
-`Opponent Archetype`, `Loss Reason`, `Note`. They are blank on every log-parsed row, so
-blank always means "not recorded", never a value.
+Arena records the deck you submitted and the raw outcome. With the play-by-play extractor
+installed (`/log-matches` Stage 0), it also fills `On Play`, both players' mulligans,
+`Turns` and the opponent's colours and cards. It records **nothing about the opponent's
+archetype or why you lost** — and a **phone game never reaches the desktop log at all**,
+because `Player.log` is written by the install that played the match. Three columns are
+yours to fill: `Opponent Archetype`, `Loss Reason` and `Note` (and `On Play` for a match
+the play-by-play did not capture). Blank always means "not recorded", never a value.
 
 **Which writer depends on whether Arena logged the match.**
 
@@ -1546,7 +1554,9 @@ right one: a match Arena already logged has a row, and `--add` cannot dedupe (a 
 has no Arena match id), so pushing logged matches through it would double-count exactly
 the ones you cared enough to annotate. `--annotate` refuses `deck`, `result` and `date` —
 the log owns those — and an empty value clears a field, so a wrong annotation is fixable
-without editing the CSV.
+without editing the CSV. To throw a match out (you stepped away, misclicked into a queue),
+annotate it `void=<why>`; never delete the row, because the next paste would add it back
+as a live result. A voided match counts in no tally, and `void=no` restores it.
 
 The loss vocabulary is **closed so it can be counted**: `flood screw slow answer removed
 keep misplay outclassed`, with free-text `note=` beside it. Free text cannot answer "which

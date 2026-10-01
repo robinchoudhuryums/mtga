@@ -19,6 +19,38 @@ commands disagree.
 
 ## 0-current. THE 2026-08-24 SESSION (READ THIS FIRST — supersedes §0-latest below)
 
+> **STATE STAMP, 2026-10-01 (NEWEST — supersedes the stamps below where they disagree).**
+> 47 commits since PR #197, on `claude/sync-commands-mmmsdb`. Four threads.
+>
+> **1. BRAWL TOOLING.** A 100-card Historic Brawl deck is graded per 60 (tier floor and
+> the needs model's interaction minimum), every recommender holds to the commander's colour
+> identity, `consistency` counts the free first mulligan, Historic Brawl does not rotate,
+> and `deck.py arena` puts the commander under its own `Commander` heading (the paste
+> splitters keep it on the way back in). CLAUDE.md's rubric section carries it.
+>
+> **2. THREE ROLE-CLASSIFIER HOLES CLOSED** (permanent tuck, "another/other target",
+> remove-a-counter-then-draw); long form under `[G-67]`. The three holes the deck 30 tune
+> documented are STILL OPEN, re-checked 2026-10-01: Doubling Season prices as tokens only
+> (G-33 KNOWN GAP 2), `--needs` counts sources from identity (G-38), and Soul Immolation
+> scores zero roles (K-12).
+>
+> **3. DECKS TUNED:** 78-historic-brawl (pile doc live), 60 Redline (pile doc live), 55
+> Mardu Waves (after a 1-4 start: haste via The Fire Crystal, instant-speed removal,
+> protection, Hardened Tactician, Alesha), and deck 1's manabase. Tier letters the owner
+> still has to call: 55 (A, PROVISIONAL), 60 and 78.
+>
+> **4. MATCHES:** 22 logged (213 recorded). The Mac re-install happened: the 2026-10-01
+> paste arrived anonymised with game lines. **Three new losses still need a reason** from
+> the owner (4061b76a deck 17, 06c655a7 and 99712739 deck 30) — never fill one in.
+>
+> **OPERATOR ACTION, after 2026-10-02:** Reality Fracture (FRA) is playable on Arena but not
+> in the pool until its Scryfall date (G-79's inverse). Run `make refresh REFETCH=1`,
+> catalog the owned FRA cards (`/ingest`), then apply the 13 queued swaps written in the
+> deck notes: deck 55 (Ajani Unrelenting for Team Avatar, Liliana the Faultless for Mardu
+> Devotee, Ingris Stingerquill for Zurgo's Vanguard) and deck 60 (ten, listed in its
+> `#: notes:` and `.cycle/60-redline-pile-analysis.md`). Re-run `tier --audit-rationale`
+> on both after.
+>
 > **STATE STAMP, 2026-09-27, LATER (NEWEST — supersedes both stamps below on matches).**
 > **THE MATCH DIGEST IS BUILT; the 2026-09-25 stamp's "NOTHING IS BUILT" is history.**
 > PR #196 shipped `scripts/mtga_extract.sh` (the Mac's `~/mtga-logs/extract.sh`, embedded

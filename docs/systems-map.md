@@ -91,7 +91,7 @@ resolve two answers by hand. Everything else is context for those.
 
 The longest path, and the one that most needs a map.
 
-**Gather (`/tune-deck` Stage 1)** — 13 commands, ~10s total:
+**Gather (`/tune-deck` Stage 1)** — 15 commands, ~11s total:
 
 | Command | Answers | Cost |
 |---|---|---|
@@ -101,6 +101,8 @@ The longest path, and the one that most needs a map.
 | `consistency` | keepable %, land drops, P(cast on curve) | 0.6s |
 | `engines` | enabler ↔ payoff balance | 0.5s |
 | `shape` | wide vs tall | 0.3s |
+| `targets` | does the deck hold what its gated cards need; state gates met for free | 0.5s |
+| `parse_matches.py --report --deck` | what the deck has met and lost to — context only, never a reason for a swap | <1s |
 | `tier` / `tier --to A` | claimed letter vs floor / the measurable gap | 0.6s |
 | `mana` | hybrid-aware pip demand + source lint | 0.3s |
 | `tribes` | type-matters payoffs | 0.3s |
@@ -181,9 +183,12 @@ from a file Arena overwrites on every launch.
 | # | Command | Returns | Cost |
 |---|---|---|---|
 | 0 | launchd `snapshot.sh` (one-time) | a rolling `~/mtga-logs/arena.log` | 15-min timer |
-| 1 | `parse_matches.py <file>` | dry run + the deck-attribution routes | <1s |
-| 2 | `parse_matches.py <file> --apply` | matches.csv rows + refreshed `#: arena:` headers | <1s |
+| 0b | `extract.sh` (one-time, with the snapshot) | one `[MTGA-GAME]` line per game: play/draw, mulligans, turns, opponent cards | in the timer |
+| 1 | `parse_matches.py <file>` | dry run + the deck-attribution routes + game details | <1s |
+| 2 | `parse_matches.py <file> --apply` | matches.csv rows + refreshed `#: arena:` headers + one `--annotate` line per new loss | <1s |
+| 2b | `parse_matches.py <file> --annotate --apply` | the owner's loss reason / archetype per match, or `void=<why>` to throw one out | <1s |
 | 3 | `parse_matches.py --report` | W/L per deck, or a refusal to read it | <1s |
+| 3b | `parse_matches.py --report --deck <id>` | one deck's matches with play/draw, turns, opponent colours and cards | <1s |
 | — | `parse_matches.py <file> --map-decks` | roster-wide header pass (rarely needed now) | <1s |
 
 Step 0 is the load-bearing one, and it is the only step that cannot be re-run to fix a

@@ -1113,7 +1113,10 @@ is protecting.
   (G-77: `--check`'s only remedy was a hand edit). Backstop: a `check_all` soft sweep on
   the POOL, since one report covers every craft recommender at once. **Residual:
   `Released` is still read only for rotation elsewhere — no per-card surface asks "is this
-  out yet", so a stale or custom-query pool re-opens it.** [G-79]
+  out yet", so a stale or custom-query pool re-opens it.** **The INVERSE happens too**: Arena
+  can release a set before Scryfall's date (Reality Fracture, 2026-09-30 against 10-02), and
+  its cards cannot enter a deck file until `make refresh REFETCH=1` after that date. Queue
+  such swaps in `#: notes:`; do not loosen the bound. [G-79]
 
 - **A CARD THAT GRANTS A KEYWORD IS A CARD ABOUT THAT KEYWORD, and the tagger only read
   what a card HAS.** Keyword tags came from Scryfall's `keywords` field, so a lord handing
@@ -1941,10 +1944,12 @@ is invisible, and a handoff nobody is told to read is the same failure one layer
   consolidated swap plan; it is TEMPORARY and says so, and it is deleted once the
   swaps land. Named here because a fresh session loads nothing else, and the whole
   point of committing it per batch is that it outlives one context window.
-  **NONE are live as of 2026-09-23** — the last four (`prune-analysis.md`,
-  `wylie-tap-analysis.md`, `hob-followup-analysis.md`, `uw-equipment-analysis.md`,
-  1,407 lines) were cleared at the owner's instruction with their proposals still
-  unapplied. **That is a deliberate abandonment, not a completion, and the difference
+  **TWO are live as of 2026-10-01**: `78-brawl-pile-analysis.md` (78-historic-brawl —
+  Tier 1 applied, the Tier 2 and Tier 3 waves still open) and `60-redline-pile-analysis.md`
+  (deck 60 — ten Reality Fracture swaps queued until the pool holds that set, G-79). The
+  four before them (`prune-analysis.md`, `wylie-tap-analysis.md`,
+  `hob-followup-analysis.md`, `uw-equipment-analysis.md`, 1,407 lines) were cleared on
+  2026-09-23 at the owner's instruction with their proposals still unapplied. **That is a deliberate abandonment, not a completion, and the difference
   matters**: a future session that wants those analyses must `git show` them
   (`git log --diff-filter=D -- .cycle/`), because nothing was folded into decks/ first.
   What they held, and the one thing salvaged, is in `.cycle/HISTORY.md` under
