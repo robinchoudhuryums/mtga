@@ -9,23 +9,23 @@
 #: archetype: attack-triggers, Exalted Sunborn doubles every token created, Delney doubles
 #: archetype: power<=2 triggers, Neriv doubles entered-this-turn damage; Raph & Leo and
 #: archetype: Aurelia add whole extra combats = extra waves); converters turn each wave into
-#: archetype: damage (Impact Tremors, Shocking Sharpshooter, Slash), cards (Enduring
-#: archetype: Innocence), mana (Sun Warriors), removal (Sothera: every token that dies at
+#: archetype: damage (Impact Tremors, Shocking Sharpshooter, Slash, Garna), cards (Enduring
+#: archetype: Innocence; Garna, when an attacker dies), mana (Sun Warriors), removal (Sothera: every token that dies at
 #: archetype: end step makes each opponent exile a creature), drain (Stormsinger), and
 #: archetype: permanent board (EPF Point Squad counters, Suki's Ally, Zurgo TD making waves
 #: archetype: PERMANENT). Distinct from every other token deck on the roster: the width is
 #: archetype: a per-combat PULSE, not a built board — no other deck runs Mobilize at all.
 #: protect: Zurgo, Thunder's Decree; Windcrag Siege; Delney, Streetwise Lookout; Suki, Courageous Rescuer; Mardu Siegebreaker; Fire Navy Trebuchet
-#: tier: A (PROVISIONAL, RE-GRADE CANDIDATE) — set when the metrics floor read A. After
-#: tier: the 2026-10-01 swaps the floor reads B: the curve rose to 3.11 (3.03 counting
-#: tier: Sunborn's warp), which drops the aggro clock to 3/7, and card advantage is 2 against
-#: tier: interaction 5. What the floor cannot see: Sothera's exile-per-dying-token is an
-#: tier: edict engine the classifier does not count as interaction, and Sunborn and Slash
-#: tier: multiply every wave. A is one band above the floor, which the rubric allows;
-#: tier: pending the owner's call between keeping it and B. Unproven in matches; the honest
-#: tier: weaknesses are thin card advantage (Enduring Innocence and Stormbeacon Blade, not
-#: tier: a draw suite) and double-white on turn 3 in a three-color manabase (Suki and
-#: tier: Enduring Innocence cast late more often than on curve). Re-grade after real games.
+#: tier: A (PROVISIONAL) — the metrics floor reads A. The 2026-10-01 swaps first dropped the
+#: tier: floor a band (curve up, card advantage thin); Garna and a 25th land restored it, with
+#: tier: card advantage 3 (Garna draws whenever an attacking creature dies), interaction 5, a
+#: tier: 3.20 curve (3.11 counting Sunborn's warp) and an aggro clock of 3/7. What the floor
+#: tier: cannot see: Sothera's exile-per-dying-token is an edict engine the classifier does
+#: tier: not count as interaction, and Sunborn and Slash multiply every wave. Unproven in
+#: tier: matches; the honest weaknesses are thin card advantage (Garna, Enduring Innocence and
+#: tier: Stormbeacon Blade, not a draw suite) and double-white on turn 3 in a three-color
+#: tier: manabase (Suki and Enduring Innocence cast late more often than on curve). Re-grade
+#: tier: after real games.
 #: notes: BUILT from the 131-card pile analysis (55-mardu working doc). Timing spine the
 #: notes: tooling can't see: (1) Zurgo TD's end-step clause DEFEATS the wave's delayed
 #: notes: sac trigger permanently — waves become permanent width while he's out. (2)
@@ -60,11 +60,18 @@
 #: notes: Prison (W 13 / B 10 / R 12, from 12 / 9 / 12). TIMING: the death payoffs (Sothera,
 #: notes: Stormsinger) fire on the END-STEP sacrifice, and Zurgo TD's clause stops Warrior
 #: notes: tokens being sacrificed — while Zurgo is out only the Boulders and Siegebreaker
-#: notes: copies die. Considered and parked: G'raha Tia (the card-advantage pick that kept
-#: notes: the floor at A), Garna (B+RR, 54% on turn 4), Marshal of
-#: notes: the Lost, Enduring Courage (RR against a three-colour base). Then Voice of Victory
-#: notes: for one EPF Point Squad: a 2-drop Mobilize 2 that Delney doubles, and "your
-#: notes: opponents can't cast spells during your turn" protects the attack turn.
+#: notes: copies die. Considered and parked: G'raha Tia, Marshal of the Lost, Enduring
+#: notes: Courage (RR against a three-colour base). Then Voice of Victory for one EPF Point
+#: notes: Squad: a 2-drop Mobilize 2 that Delney doubles, and "your opponents can't cast
+#: notes: spells during your turn" protects the attack turn. Then Garna, Bloodfist of Keld
+#: notes: for Frontline Rush, with the land fix that justifies her: Dark Fortress for Mardu
+#: notes: Monument (a 25th land) and for a Swamp (W 13 / B 10 / R 14; Garna 56% -> 64% on
+#: notes: turn 4, nothing else got worse). Garna draws when an ATTACKING creature dies and
+#: notes: pings 1 when a non-attacker dies — the end-step Mobilize sacrifice is the ping half.
+#: notes: PENDING the Reality Fracture pool refresh (FRA is not in card-pool.csv yet, so its
+#: notes: lines cannot be written here): Ajani Unrelenting (FRA) 242 for Team Avatar. His −2
+#: notes: discards your hand then draws one per creature you control — use it in main phase 2
+#: notes: while the wave's tokens are alive; his −3 also kills your own NONTOKEN creatures.
 
 # Wave engines
 1 Zurgo, Thunder's Decree (TDM) 237
@@ -72,7 +79,6 @@
 1 Zurgo's Vanguard (TDM) 133
 1 Venerated Stormsinger (TDM) 97
 1 Stadium Headliner (TDM) 122
-1 Mardu Monument (TDM) 245
 2 Bone-Cairn Butcher (TDM) 173
 1 Fire Navy Trebuchet (TLA) 100
 1 Mardu Siegebreaker (TDM) 206
@@ -101,9 +107,9 @@
 1 Stormbeacon Blade (TDM) 27
 1 Sothera, the Supervoid (EOE) 115
 1 Slash, Reptile Rampager (TMT) 108
+1 Garna, Bloodfist of Keld (FDN) 658
 
 # Pulse tricks
-1 Frontline Rush (TDM) 186
 1 Boros Charm (FDN) 721
 
 # Removal (spot)
@@ -122,10 +128,10 @@
 1 Sun-Blessed Peak (TLA) 280
 1 Scoured Barrens (M21) 250
 5 Mountain (MSH) 293
-2 Dark Fortress (MSH) 264
+4 Dark Fortress (MSH) 264
 6 Plains (MSH) 287
 1 Godless Shrine (EOE) 254
-2 Swamp (MSH) 291
+1 Swamp (MSH) 291
 
 # Flex — from the 2026-08-15 HOB ingest
 #~ -Raph & Leo, Sibling Rivals | +Bolg of the North | owned: ETB sacrifice a creature, deal its power to another, and amass the excess as a Goblin Army. Graded here over deck 58 (which scored higher) because Bolg wants CREATURE fodder and this deck mints 16 sources of attacking tokens where 58's 27 token-makers are mostly Treasures. Cut is the deck's lowest-fit card, off the central themes. Cost: Bolg is MV 5 on an aggro curve.

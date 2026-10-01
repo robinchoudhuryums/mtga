@@ -102,6 +102,7 @@ Threshold — This creature can't be blocked as long as there are seven or more 
 Dreadwing Scavenger,Creature — Nightmare Bird,"Flying
 Whenever this creature enters or attacks, draw a card, then discard a card.
 Threshold — This creature gets +1/+1 and has deathtouch as long as there are seven or more cards in your graveyard.",U/B,Nightmare; Bird; graveyard; card draw; pump; flying; evasion; threshold,FDN,118,Uncommon,,,4.0,seed
+"Garna, Bloodfist of Keld",Legendary Creature — Human Berserker,"Whenever another creature you control dies, draw a card if it was attacking. Otherwise, Garna deals 1 damage to each opponent.",B/R,Human; Berserker; card draw; burn; noncombat damage,FDN,658,Uncommon,55,"Deck 55 converter: draws when an attacking creature dies, pings 1 otherwise (the end-step Mobilize sac). Uncommon.",7.0,seed
 Hoarding Dragon,Creature — Dragon,"Flying
 When this creature enters, you may search your library for an artifact card, exile it, then shuffle.
 When this creature dies, you may put the exiled card into its owner's hand.",R,Dragon; etb; flying; evasion,FDN,626,Uncommon,49,,5.0,hand
