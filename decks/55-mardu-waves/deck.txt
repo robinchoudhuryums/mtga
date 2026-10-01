@@ -11,7 +11,8 @@
 #: archetype: power<=2 triggers, Neriv doubles entered-this-turn damage; Raph & Leo and
 #: archetype: Aurelia add whole extra combats = extra waves); converters turn each wave into
 #: archetype: damage (Impact Tremors, Shocking Sharpshooter, Slash, Garna), cards (Enduring
-#: archetype: Innocence; Garna, when an attacker dies; Hardened Tactician, a card per token), removal (Sothera: every token that dies at
+#: archetype: Innocence; Garna, when an attacker dies; Hardened Tactician, a card per token),
+#: archetype: recursion (Alesha returns a dead creature card at end step after an attack), removal (Sothera: every token that dies at
 #: archetype: end step makes each opponent exile a creature), drain (Stormsinger), and
 #: archetype: permanent board (EPF Point Squad counters, Suki's Ally, Zurgo TD making waves
 #: archetype: PERMANENT). Distinct from every other token deck on the roster: the width is
@@ -20,8 +21,8 @@
 #: tier: A (PROVISIONAL) — the metrics floor reads A. The 2026-10-01 swaps first dropped the
 #: tier: floor a band (curve up, card advantage thin); Garna and a 25th land restored it, with
 #: tier: card advantage 3 (Garna draws whenever an attacking creature dies), interaction 8
-#: tier: (Coordinated Maneuver, Valorous Stance and Pyrrhic Strike, all instants), a 3.26
-#: tier: curve (3.17 counting Sunborn's warp) and an aggro clock of 2/7. What the floor
+#: tier: (Coordinated Maneuver, Valorous Stance and Pyrrhic Strike, all instants), a 3.23
+#: tier: curve (3.14 counting Sunborn's warp) and an aggro clock of 2/7. What the floor
 #: tier: cannot see: Sothera's exile-per-dying-token is an edict engine the classifier does
 #: tier: not count as interaction, and Sunborn and Slash multiply every wave. Unproven in
 #: tier: matches; the honest weaknesses are card advantage that needs mana (Garna, Enduring
@@ -93,6 +94,14 @@
 #: notes: hexproof"; 1 life per creature entering) and Ingris Stingerquill (FRA) 137 for Zurgo's
 #: notes: Vanguard (each DECLARED attacker deals 1 to each opponent, doubled by Windcrag Siege and
 #: notes: by Delney; Mobilize tokens enter attacking and never trigger it; {4} gives team haste).
+#: notes: Then Alesha, Who Laughs at Fate for one Bone-Cairn Butcher (owner's pick over EPF Point
+#: notes: Squad). Her attack trigger is doubled by Delney (she is a 2/2) and by Windcrag Siege, so
+#: notes: one attack can make her 6/6; Raid then returns a creature card with mana value up to
+#: notes: her power at end step. The cost: one Bone-Cairn left, the only card giving tokens
+#: notes: deathtouch. LANDS re-checked after the swaps: no colour shift helps (Plains to Swamp
+#: notes: moves about 5 points from the WW cards to the black ones); the real gain is tempo —
+#: notes: Scoured Barrens and Sun-Blessed Peak enter tapped, and a 2nd Godless Shrine and 2nd
+#: notes: Sacred Foundry make the same colours untapped.
 
 # Wave engines
 1 Zurgo, Thunder's Decree (TDM) 237
@@ -100,7 +109,7 @@
 1 Zurgo's Vanguard (TDM) 133
 1 Venerated Stormsinger (TDM) 97
 1 Stadium Headliner (TDM) 122
-2 Bone-Cairn Butcher (TDM) 173
+1 Bone-Cairn Butcher (TDM) 173
 1 Fire Navy Trebuchet (TLA) 100
 1 Mardu Siegebreaker (TDM) 206
 1 Sonic Shrieker (TDM) 226
@@ -128,6 +137,7 @@
 1 Sothera, the Supervoid (EOE) 115
 1 Slash, Reptile Rampager (TMT) 108
 1 Garna, Bloodfist of Keld (FDN) 658
+1 Alesha, Who Laughs at Fate (FDN) 115
 
 # Pulse tricks
 1 Boros Charm (FDN) 721
