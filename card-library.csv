@@ -2050,7 +2050,7 @@ Increment (Whenever you cast a spell, if the amount of mana you spent is greater
 Kyoshi Island Plaza,Legendary Enchantment — Shrine,"When Kyoshi Island Plaza enters, search your library for up to X basic land cards, where X is the number of Shrines you control. Put those cards onto the battlefield tapped, then shuffle.
 Whenever another Shrine you control enters, search your library for a basic land card, put it onto the battlefield tapped, then shuffle.",G,Shrine; ramp; etb,TLA,184,1
 Loading Zone,Enchantment,"If one or more counters would be put on a creature, Spacecraft, or Planet you control, twice that many of each of those kinds of counters are put on it instead.
-Warp {G} (You may cast this card from your hand for its warp cost. Exile this enchantment at the beginning of the next end step, then you may cast it from exile on a later turn.)",G,warp; tempo; cost-reduction; exile cast,EOE,196,1
+Warp {G} (You may cast this card from your hand for its warp cost. Exile this enchantment at the beginning of the next end step, then you may cast it from exile on a later turn.)",G,warp; tempo; cost-reduction; exile cast; counters,EOE,196,1
 "Michelangelo, Mutant BFF",Legendary Creature — Mutant Ninja Turtle,"Each creature you control with a counter on it can't be blocked by more than one creature.
 Whenever Michelangelo enters or attacks, create a Mutagen token. (It's an artifact with ""{1}, {T}, Sacrifice this token: Put a +1/+1 counter on target creature. Activate only as a sorcery."")",G,Mutant; Ninja; Turtle; counters; sacrifice; tokens,TMT,120,1
 "Michelangelo, Improviser",Legendary Creature — Mutant Ninja Turtle,"Sneak {2}{G}{G} (You may cast this spell for {2}{G}{G} if you also return an unblocked attacker you control to hand during the declare blockers step. He enters tapped and attacking.)
@@ -2094,7 +2094,7 @@ Badgermole,Creature — Badger Mole,"When this creature enters, earthbend 2. (Ta
 Creatures you control with +1/+1 counters on them have trample.",G,Badger; Mole; counters; etb; blink; earthbend; bending; trample; evasion,TLA,166,1
 Elemental Teachings,Instant — Lesson,"Search your library for up to four land cards with different names and reveal them. An opponent chooses two of those cards. Put the chosen cards into your graveyard and the rest onto the battlefield tapped, then shuffle.",G,Lesson; graveyard,TLA,178,1
 "Doc Samson, Super Psychiatrist",Legendary Creature — Gamma Doctor Hero,"If you would put one or more counters on a permanent you control, put that many plus one of each of those kinds of counters on that permanent instead.
-{T}: Add X mana of any one color, where X is Doc Samson's power.",G,Gamma; Doctor; Hero; mana,MSH,164,1
+{T}: Add X mana of any one color, where X is Doc Samson's power.",G,Gamma; Doctor; Hero; mana; counters,MSH,164,1
 Germinating Wurm,Creature — Plant Wurm,"When this creature enters, you gain 2 life.
 Warp {1}{G} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",G,Plant; Wurm; lifegain; etb; warp; tempo; cost-reduction; exile cast,EOE,187,1
 Germination Practicum,Sorcery — Lesson,"Put two +1/+1 counters on each creature you control.
@@ -3953,7 +3953,7 @@ Interdimensional Web Watch,Artifact,"When this artifact enters, exile the top tw
 Bioengineered Future,Enchantment,"When this enchantment enters, create a Lander token. (It's an artifact with ""{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."")
 Each creature you control enters with an additional +1/+1 counter on it for each land that entered the battlefield under your control this turn.",G,counters; sacrifice; tokens; ramp; etb,EOE,172,1
 Doubling Season,Enchantment,"If an effect would create one or more tokens under your control, it creates twice that many of those tokens instead.
-If an effect would put one or more counters on a permanent you control, it puts twice that many of those counters on that permanent instead.",G,tokens,FDN,216,1
+If an effect would put one or more counters on a permanent you control, it puts twice that many of those counters on that permanent instead.",G,tokens; counters,FDN,216,1
 "Wingnut, Bat on the Belfry",Legendary Creature — Bat Mutant,"Alliance — Whenever another creature you control enters, Wingnut gains your choice of flying, menace, or haste until end of turn.
 Whenever Wingnut attacks, each other attacking creature gets +1/+0 until end of turn.",R,Bat; Mutant; pump; alliance; aggro; value; flying; evasion; menace; haste,TMT,110,1
 The Soul Stone,Legendary Artifact — Infinity Stone,"Indestructible
@@ -5936,7 +5936,7 @@ Equipped creature gets +1/+0 and has menace.
 Equip {4}",B/R,Equipment; counters; tokens; etb; equipment; pump; amass; go-wide; equip; menace; evasion,HOB,157,1
 Fearsome Goblin Pair,Creature — Goblin Soldier,"When this creature dies, amass Goblins 4. (Put four +1/+1 counters on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)",B/R,Goblin; Soldier; counters; tokens; amass; go-wide,HOB,156,1
 The Great Goblin,Legendary Creature — Goblin Noble,"Whenever you put one or more counters on a Goblin, Orc, or Army you control, The Great Goblin deals 2 damage to target opponent.
-Whenever another Goblin, Orc, or Army you control dies, exile the top card of your library. You may play it until the end of your next turn.",B/R,Goblin; Noble; burn; impulse; noncombat damage,HOB,158,1
+Whenever another Goblin, Orc, or Army you control dies, exile the top card of your library. You may play it until the end of your next turn.",B/R,Goblin; Noble; burn; impulse; noncombat damage; counters,HOB,158,1
 Rhovanion Rampager,Creature — Wolf,"Whenever this creature attacks, you may sacrifice another creature. If you do, put a number of +1/+1 counters on this creature equal to the sacrificed creature's power.
 When this creature dies, amass Goblins X, where X is this creature's power. (Put X +1/+1 counters on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)",B,Wolf; counters; sacrifice; tokens; amass; go-wide,HOB,82,1
 "Calamity, Galloping Inferno",Legendary Creature — Horse Mount,"Haste

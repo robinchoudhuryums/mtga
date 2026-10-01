@@ -198,6 +198,11 @@ Updated: 2026-10-01 (three tool gaps closed — see Where I left off)
   (conditional mana) — K-12's long form has the probe. (Soul Immolation closed 2026-10-01.)
 
 ## Open follow-on items
+- **HIGH — pytest reverts the real card-library.csv.** `test_app_editor.py`'s
+  `test_a_post_with_no_origin_is_allowed` posts `/api/revert` without the `library`
+  fixture, restoring the newest `.bak` over the repo's library on every run — it undid
+  this session's tag merge (restored and re-committed). Commit library writes BEFORE
+  running the suite until the test is fixed. Detail in the 2026-10 three-tool-gaps block.
 - **suggest-homes' KEY-saturation warning misattributes a doubler-density KEY** to theme
   overlap ("KEY scores THEME OVERLAP ALONE") — the whole counter-doubler family now trips
   it at ~23–28% of the roster, which the counters key-at-p75 calibration predicts.
