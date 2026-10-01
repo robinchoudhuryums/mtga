@@ -30,9 +30,11 @@ commands disagree.
 >
 > **2. THREE ROLE-CLASSIFIER HOLES CLOSED** (permanent tuck, "another/other target",
 > remove-a-counter-then-draw); long form under `[G-67]`. The three holes the deck 30 tune
-> documented are STILL OPEN, re-checked 2026-10-01: Doubling Season prices as tokens only
-> (G-33 KNOWN GAP 2), `--needs` counts sources from identity (G-38), and Soul Immolation
-> scores zero roles (K-12).
+> documented were CLOSED later on 2026-10-01 (`/broad-implement`, block
+> `2026-10-three-tool-gaps-broad-implement.md`): a doubler is priced on its best axis
+> (`doubler_best`) and counter doublers carry the `counters` tag (G-33), `--needs` reads
+> the shared source count (G-38), and a one-sided damage sweep scores Sweeper (K-12).
+> 0 tier floors moved.
 >
 > **3. DECKS TUNED:** 78-historic-brawl (pile doc live), 60 Redline (pile doc live), 55
 > Mardu Waves (after a 1-4 start: haste via The Fire Crystal, instant-speed removal,
@@ -83,12 +85,12 @@ commands disagree.
 > Loot and Terrasymbiosis — plus a rebuilt green manabase (G 12 → 15, cards under 90% on
 > curve 33 → 21). Floor holds A; each commit message and the deck's `#: notes:` carry the why.
 >
-> **THREE TOOLING HOLES THE DECK 30 TUNE SURFACED — documented, NOT fixed:**
+> **THREE TOOLING HOLES THE DECK 30 TUNE SURFACED — CLOSED 2026-10-01 (see the stamp above):**
 > (a) `doubler_axis` returns ONE axis, so Doubling Season is priced as tokens-only and
 > generic-"counters" doublers get no `counters` tag (G-33, KNOWN GAP 2); (b) `suggest
 > --needs` prints a source count from colour IDENTITY that disagrees with `consistency`
 > on decks 30/17/1 (G-38); (c) a one-sided sweeper worded "each opponent and each creature
-> they control" scores ZERO roles (K-12). Each needs its roster measurement before a fix.
+> they control" scores ZERO roles (K-12). Each was measured roster-wide before landing.
 >
 > **TIER CALLS CLOSED (2026-09-27, the owner's call):** decks 17 (C → A), 42a (B → A) and
 > 47 (B → A) now claim A, matching their floors; `tier` reads "consistent" on all three and

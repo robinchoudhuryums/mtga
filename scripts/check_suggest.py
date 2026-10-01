@@ -462,6 +462,17 @@ def check():
                          "permanent or player instead.") != "counters":
         errs.append("doubler_axis no longer detects an ACTIVE-voice counter doubler "
                     "(Vorinclex / Innkeeper's Talent).")
+    # TWO AXES IN ONE CARD. Doubling Season doubles tokens AND counters, and the probes
+    # above each hold one sentence — so nothing saw that only the FIRST axis was ever read
+    # (G-33 gap 2). Every pricing caller goes through `doubler_best`, which needs both.
+    if deck.doubler_axes("If an effect would create one or more tokens under your control, "
+                         "it creates twice that many of those tokens instead.\nIf an effect "
+                         "would put one or more counters on a permanent you control, it puts "
+                         "twice that many of those counters on that permanent "
+                         "instead.") != ("tokens", "counters"):
+        errs.append("doubler_axes must report EVERY axis a doubler doubles — Doubling "
+                    "Season doubles tokens AND counters, and a counters deck prices it on "
+                    "the second (G-33 gap 2).")
     if deck.doubler_axis("If you would put one or more counters on a permanent you control, "
                          "put that many plus one of each of those kinds of counters on that "
                          "permanent instead.") is not None:

@@ -19,7 +19,7 @@ Phase: implement — **scan #10 is FULLY IMPLEMENTED**. All four batches plus ev
 Scope: broad
 Test Command: `python3 scripts/check_all.py`
 Subsystem cycles since last Seams audit: 2 (counter adopted 2026-09-08; no Seams audit has run)
-Updated: 2026-09-27 (match digest built in PR #196, then six match-logging follow-ups — see Where I left off)
+Updated: 2026-10-01 (three tool gaps closed — see Where I left off)
 
 ## In progress (facts to carry forward — NOT judgments)
 - **Broad scan #10 is fully implemented — nothing outstanding from the scan.** Four
@@ -35,6 +35,14 @@ Updated: 2026-09-27 (match digest built in PR #196, then six match-logging follo
 
 ## Completed this cycle
 
+- **2026-10-01 — three tool gaps from the deck 30 tune closed** (`/broad-implement`).
+  G-33 gap 2: `doubler_best` prices a two-axis doubler (Doubling Season) on the axis the
+  deck feeds most, and the tagger's `counters` rule reads "one or more counters" (12 pool
+  cards). G-38: `deck_needs` reads `deck_color_sources` — 53 of 114 `--needs` headers
+  changed, 0 now disagree with `consistency`. K-12: one-sided damage sweeps score Sweeper
+  (15 pool cards; decks 30 and 56a +1 interaction). 0 tier floors moved. Block:
+  `2026-10-three-tool-gaps-broad-implement.md`. Net 3 − 0 = 3 | scripts/deck.py,
+  scripts/tag_synergies.py, pool rebuild, tests, G-33/G-38/K-12
 - **2026-09-27 — six match-logging follow-ups from the first real play-by-play run.**
   The ingest now asks for a one-word reason per NEW loss and prints a ready `--annotate`
   line with the game details (0 of 191 rows had any hand column); `mtga-matches`
@@ -186,11 +194,15 @@ Updated: 2026-09-27 (match digest built in PR #196, then six match-logging follo
 
 ## Pending / not yet done
 - The unapplied cross-deck homes and earlier proposed swaps — NEXT-SESSION.md §0-current.
-- Four G-67 role-pattern holes, baselined not fixed: Kitnap, Eluge, Soul Immolation (a
-  combined "each opponent and each creature" target list) and Cheering Crowd (conditional
-  mana) — K-12's long form has the probe.
+- Three G-67 role-pattern holes, baselined not fixed: Kitnap, Eluge and Cheering Crowd
+  (conditional mana) — K-12's long form has the probe. (Soul Immolation closed 2026-10-01.)
 
 ## Open follow-on items
+- **suggest-homes' KEY-saturation warning misattributes a doubler-density KEY** to theme
+  overlap ("KEY scores THEME OVERLAP ALONE") — the whole counter-doubler family now trips
+  it at ~23–28% of the roster, which the counters key-at-p75 calibration predicts.
+- **`structural_overlay_hit` ignores a doubler's power restriction** while `doubler_best`
+  applies it (G-70 shape, pre-existing).
 - **The match digest plan's decision 2 is unbuilt: a `Suggested Why` column** the owner
   confirms in one reply (owner, 2026-09-25). What shipped asks for the word with the game
   details beside it and suggests nothing. Build it only if the owner still wants a
@@ -363,6 +375,14 @@ Updated: 2026-09-27 (match digest built in PR #196, then six match-logging follo
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
+**2026-10-01 (later) — deck 55 shocklands, then the three tool gaps.** Deck 55 swapped
+Scoured Barrens and Sun-Blessed Peak for second copies of Godless Shrine and Sacred Foundry
+(commit fde63e2). Then `/broad-implement` closed G-33 gap 2, G-38 and K-12 (block
+`2026-10-three-tool-gaps-broad-implement.md`); full suite and `check_all` green. The pool
+rebuild also pulled 9 Reality Fracture reprints into Standard legality. **Next:** unchanged
+— after 2026-10-02, `make refresh REFETCH=1` and apply the 13 queued FRA swaps; loss
+reasons for three losses and tier letters for 55/60/78 are with the owner.
+
 **2026-10-01 — `/sync-docs` over the 47 commits since PR #197**, then a PR. README now
 describes the play-by-play columns, `void=`, `--report --deck`, the Brawl commander export
 and per-60 Brawl grading; CLAUDE.md lists the two live pile docs and G-79 carries the

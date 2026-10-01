@@ -651,11 +651,10 @@ is protecting.
   (Splinter's Ninja clause) is counted against the whole deck — 27 feeders in deck 20
   against a correct 12. Read a `✱ multiplier` figure on a tribal doubler as an upper bound
   until that is fixed.
-  **KNOWN GAP 2 (2026-09-26): `doubler_axis` returns ONE axis, the first match**, so
-  Doubling Season is priced as a TOKEN doubler only — its counters half is unread by `✱`,
-  `screen` and `suggest-homes`, and it carries just a `tokens` tag, as does every doubler
-  that says bare "counters" (Loading Zone, Doc Samson). Deck 30's `cuts` ranked it
-  2nd-weakest; `#: protect:` such a card until this is fixed.
+  **GAP 2 CLOSED 2026-10-01: a doubler can double MORE THAN ONE axis** (Doubling Season
+  was priced as tokens only). **`doubler_best`** prices it on the axis THIS deck feeds most
+  — density above each axis's floor, the MAX since one card can feed two — for `✱`,
+  `screen` and `suggest-homes` alike; the `counters` tag reads "one or more counters".
   **A BOUNDED TERM IS ONLY BOUNDED USEFULLY IF THE ROSTER SPANS ITS RANGE (2026-09-03)**:
   `_DOUBLER_CALIB` sets floor/key per axis at that axis's OWN p25/p75 — one global set let
   every deck clear `triggers` and 92% pin the cap. **Re-derive when a distribution moves**,
@@ -671,7 +670,8 @@ is protecting.
   check cannot see. A review signal; it doesn't gate `check_all`. **Sources are read
   from the land's TEXT through `lib.land_production` (BS8-01) — ONE count,
   `deck.deck_source_profile`, behind `mana`, `consistency`, `deck_color_sources`,
-  `pip_depth_warning`, `suggest --lands` and the rationale audit's colour figures.**
+  `pip_depth_warning`, `suggest --lands`/`--needs`/`--ramp` and the rationale audit's
+  colour figures.**
   An extra-cost any-colour land IS counted and labelled; spend-only mana is NOT; a basic
   fetch counts for each colour the deck runs a basic of. **`free` MEANT FOUR THINGS
   until 2026-09-04**:
@@ -731,10 +731,10 @@ is protecting.
   via `_candidate_castability`, same as `suggest` proper — they were the two siblings the
   G-58 fix missed, hiding 34 castable interaction cards and 25 mana sources from
   mono-color decks on exactly the paths this rule routes deficits to (BS-01).
-  **`--needs`' header source count is the one G-35 holdout (found 2026-09-26)**:
-  `deck_needs` sums land colour IDENTITY rather than calling `deck_source_profile`, so it
-  prints a different count than `consistency` — deck 30 reads G 15 / R 10 / U 12 there
-  against U 13 / R 11 / G 15, and decks 1 and 17 disagree too. Trust `consistency`'s. [G-38]
+  **`--needs`' source count was the last G-35 holdout, CLOSED 2026-10-01**: `deck_needs`
+  summed land colour IDENTITY (an any-colour land read zero, a gated Verge full) and now
+  reads `deck_color_sources`. 53 of 114 decks' headers changed; 0 disagree with
+  `consistency`; `deficit`, which `--ramp` ranks on, follows it. [G-38]
 - **`cuts` folds a card-QUALITY (power) co-signal**, so an on-theme-but-weak card sorts
   UP the cut list and an on-theme bomb is protected. Bounded and neutral-centred, so it
   only breaks near-ties; a `Pw` column shows it. Still grade from the oracle text, not
@@ -1440,9 +1440,10 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   all. The castability lint reads the deck's `#: colors:` header, so a stale header
   manufactures phantom strays — a flag is a review signal, not a hard failure.
   **CONNIVE is an unread keyword here**, so a FLAT metric after a tune is not proof the
-  tune failed. **Live instance (2026-09-26): a ONE-SIDED sweep scores zero roles** —
-  Soul Immolation's "deals X damage to each opponent and each creature they control"
-  leaves deck 30 reading interaction 7 against a real 8. [K-12]
+  tune failed. **The ONE-SIDED sweep hole is CLOSED (2026-10-01)**: "deals X damage to each
+  opponent and each creature they control" (Soul Immolation) scored zero roles while the
+  weaker symmetric sweep scored Sweeper — 15 pool cards, interaction +1 in decks 30 and
+  56a, 0 tier floors moved. Balefire Dragon's on-hit sweep stays out on purpose. [K-12]
 - **A LITERAL TYPE-NAME SEARCH CANNOT SEE THE CHOOSE-A-TYPE CATEGORY, and a false negative
   there reads as a finished answer.** A sweep for "Robots you control get" / "for each
   Robot" returned zero and an archetype was declined in writing as "bodies without a

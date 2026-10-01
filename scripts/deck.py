@@ -2048,6 +2048,24 @@ _ROLE_PATTERNS = {
                 r"creature with mana value.{0,20}?or less.{0,40}?destroy",
                 r"destroy those creatures",
                 r"deals? (?:\d+|x) damage to each (?:other )?creature",
+                # ONE-SIDED damage sweep (K-12, 2026-10-01). The symmetric pattern above
+                # needs "damage to each creature" contiguous, so the templating that names
+                # the OPPONENT first — "deals X damage to each opponent and each creature
+                # they control" (Soul Immolation), "to target player and 1 damage to each
+                # creature that player controls" (Radiating Lightning) — scored ZERO roles
+                # while the strictly WORSE symmetric version scored Sweeper. G-67's family
+                # disagreement again. 15 pool cards; the 1-damage members (End the
+                # Festivities, Goblin Chainwhirler) are counted because the symmetric
+                # pattern already counts a 1-damage sweep. The owner clause is required, so
+                # "each other creature WITH THE SAME NAME" (Homing Lightning, spot removal)
+                # stays out. Balefire Dragon ("deals THAT MUCH damage to each creature that
+                # player controls" on combat damage) is left out deliberately: a sweep gated
+                # on connecting is an attack trigger, not an answer you can cast.
+                r"deals? (?:\d+|x) damage to (?:each opponent|target (?:player|opponent)|that player)"
+                r" and (?:(?:\d+|x) damage to )?each creature(?: and planeswalker)?"
+                r" (?:they|that player|target player|your opponents) controls?",
+                r"deals? damage to each creature (?:your opponents|they|that player|target player)"
+                r" controls? equal to",
                 r"(?:destroy|exile) each (?:other )?(?:[a-z-]+ ){0,2}?(?:creature|nonland permanent|permanent)s?\b(?! card)",
                 r"deals? damage (?:equal to|to each (?:other )?creature equal to)[^.]{0,60}?(?:to each (?:other )?creature|for each)",
                 # "each player sacrifices all other creatures they control" (Bringer of
@@ -3579,24 +3597,26 @@ def deck_needs(d):
         deck_colors = _deck_castable_colors(dmeta, cards, mana_map)
 
     theme_w, names = {}, set()
-    sources = {c: 0 for c in deck_colors}
+    # Sources come from THE manabase count (`deck_color_sources` → `deck_source_profile`,
+    # BS8-01/G-35), the one `consistency`, `mana` and `suggest --lands` print. This was
+    # the last holdout (G-38): it summed each land's colour IDENTITY, so a Verge's gated
+    # second colour (G-87), a basic fetch and a spend-only land all read as full sources,
+    # and deck 30's `--needs` header said G 15 / R 10 / U 12 beside `consistency`'s
+    # U 13 / R 11 / G 15. `deficit` is derived from these numbers and feeds `--ramp`'s
+    # fixing term and the "scarcest" label, so the disagreement reached a ranking too.
+    _all_src = deck_color_sources(cards, meta, carddata)
+    sources = {c: _all_src.get(c, 0) for c in deck_colors}
     demand = {c: 0 for c in deck_colors}
     nonland = mv_sum = mv_n = heavy = cre = equip = arti = inst = sorc = ench = 0
     for q, n, _s, _c in cards:
         nl = n.lower()
         names.add(nl.split(" // ")[0])
         if nl in BASICS:
-            col = BASIC_COLOR.get(nl)
-            if col in sources:
-                sources[col] += q
             continue
         m = meta.get(nl)
         cd = carddata.get(nl)
         tline = (cd["type"] if cd else "") or ""
         if "Land" in _primary_type(tline):
-            for col in (m["colors"] if m else set()):
-                if col in sources:
-                    sources[col] += q
             continue
         if m:
             for t in m["synergies"]:
@@ -4835,9 +4855,9 @@ def structural_overlay_hit(card_text, cards, carddata):
     exactly what these three primitives measure.
     """
     txt = card_text or ""
-    ax = doubler_axis(txt)
-    if ax:
-        axis = ax[0] if isinstance(ax, (list, tuple)) else ax
+    # EVERY axis the card doubles, not the first (G-33 gap 2): Doubling Season engages a
+    # counters deck's spine through its second sentence.
+    for axis in doubler_axes(txt):
         try:
             if doubler_support(axis, cards, carddata):
                 return True
@@ -9065,10 +9085,7 @@ def cut_keep_score(ctx, tline, text, tags, rarity="", qty=1):
     # nor role-credit can see that. Routed through the SAME doubler primitives
     # `suggest-homes` uses, so the two models can't disagree (see _cuts_multiplier_adj
     # / check_suggest #16).
-    mult_axis = doubler_axis(text)
-    mult_support = (doubler_support(mult_axis, ctx["cards"], ctx["carddata"],
-                                    doubler_restriction(text))
-                    if mult_axis else 0)
+    mult_axis, mult_support = doubler_best(text, ctx["cards"], ctx["carddata"])
     # …and the cost-scaling twin: a card the deck makes CHEAP is not filler, and both
     # halves of the cut score price it at its printed cost. Same primitives
     # `suggest-homes` uses, for the reason the comment above gives.
@@ -10533,15 +10550,51 @@ def doubler_calib(axis):
     return _DOUBLER_CALIB.get(axis, (_DOUBLER_MIN_SOURCES, _DOUBLER_KEY_SOURCES))
 
 
-def doubler_axis(text):
-    """Which quantity this card DOUBLES ('tokens' / 'counters' / 'triggers' / 'lifegain' /
-    'damage'), or None."""
+def doubler_axes(text):
+    """EVERY quantity this card doubles, in `_DOUBLER_AXES` order — () for a non-doubler.
+
+    A doubler can double more than one thing. Doubling Season doubles tokens AND counters
+    in two sentences, and `doubler_axis` returned only the first match, so every surface
+    priced it as a TOKEN doubler: in deck 30 (Fractal counters) it read 9 token feeders
+    while the counters it was built for numbered 18, and `cuts` ranked it 5th-weakest with
+    `#: protect:` the only thing holding it in (G-33 KNOWN GAP 2). Two pool cards today
+    (Doubling Season, Primal Vigor). Price one through `doubler_best`, not this."""
     if not text:
-        return None
-    for axis, (dbl, _feed) in _DOUBLER_AXES.items():
-        if dbl.search(text):
-            return axis
-    return None
+        return ()
+    return tuple(axis for axis, (dbl, _feed) in _DOUBLER_AXES.items() if dbl.search(text))
+
+
+def doubler_axis(text):
+    """The FIRST quantity this card doubles ('tokens' / 'counters' / 'triggers' /
+    'lifegain' / 'damage'), or None. A label, not a price: a multi-axis doubler is worth
+    its best axis in a given deck, which only `doubler_best` can say."""
+    axes = doubler_axes(text)
+    return axes[0] if axes else None
+
+
+def doubler_best(text, cards, carddata):
+    """(axis, support) — the axis this doubler is worth MOST on in this deck, and that
+    axis's feeder count; (None, 0) for a non-doubler. The one pricing primitive behind
+    `cuts`' ✱ term, `screen` and `suggest-homes`, so the three cannot disagree (G-70).
+
+    "Most" is density ABOVE the axis's own floor (`doubler_calib`), the quantity both
+    boosts grow with — raw feeder counts are not comparable across axes whose floors
+    differ (triggers' is 20). Ties keep `_DOUBLER_AXES` order. The MAX, not a sum: one
+    card can feed two axes ("create a 1/1 token with a +1/+1 counter on it"), so a sum
+    would count it twice, and both boosts are capped well below what a sum would reach.
+    The doubler's own power scope (`doubler_restriction`) applies on every axis.
+    """
+    axes = doubler_axes(text)
+    if not axes:
+        return None, 0
+    restrict = doubler_restriction(text)
+    best = None
+    for ax in axes:
+        sup = doubler_support(ax, cards, carddata, restrict)
+        key = sup - doubler_calib(ax)[0]
+        if best is None or key > best[0]:
+            best = (key, ax, sup)
+    return best[1], best[2]
 
 
 # Some doublers only apply to a SUBSET of the axis — Delney, Streetwise Lookout doubles
@@ -11359,8 +11412,7 @@ def cmd_screen(args):
             shared, theme_w, text, d_int, d_ca, sig,
             overlay=lambda t=text: structural_overlay_hit(t, cards, carddata))
         roles = sorted(classify_roles(text))
-        ax = doubler_axis(text)
-        sup = doubler_support(ax, cards, carddata, doubler_restriction(text)) if ax else 0
+        ax, sup = doubler_best(text, cards, carddata)
         ups = strict_upgrades(name, text, mv, cards, carddata, mana,
                               cand_pt=(cd.get("power"), cd.get("toughness")))
         legs = legal.get(nl) or legal.get(nl.split(" // ")[0]) or set()
@@ -11746,8 +11798,9 @@ def cmd_suggest_homes(args):
 
     # Which quantity (if any) this card DOUBLES — computed once; the per-deck half is the
     # density of that quantity, which is what the boost scales with.
-    _daxis = doubler_axis(cd.get("text") or "")
-    _drestrict = doubler_restriction(cd.get("text") or "") if _daxis else None
+    # A multi-axis doubler (Doubling Season) is priced on its BEST axis per deck, so the
+    # axis is resolved inside the loop by `doubler_best`; this only says whether to ask.
+    _is_doubler = bool(doubler_axes(cd.get("text") or ""))
     # …and which TYPE (if any) this card's COST falls with. Same shape one step earlier in
     # the turn: the printed cost is what every model here prices, so a discount the deck
     # earns is invisible without this. Wizard's Staff — "Equip Wizard {1}" against
@@ -11853,8 +11906,8 @@ def cmd_suggest_homes(args):
         # counters / triggers is worth the deck's DENSITY of that thing, which theme
         # overlap cannot see (it reads membership, not magnitude). Bounded, and it only
         # ever promotes a tangential fit one step — never demotes, never overrides a KEY.
-        dsupport = (doubler_support(_daxis, cards, carddata, _drestrict)
-                    if _daxis else 0)
+        _daxis, dsupport = (doubler_best(cd.get("text") or "", cards, carddata)
+                            if _is_doubler else (None, 0))
         if dsupport:
             _dboost = doubler_boost(dsupport, _daxis)
             fit += _dboost
