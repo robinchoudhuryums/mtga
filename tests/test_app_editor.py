@@ -15,6 +15,31 @@ import app  # noqa: E402
 import deck as deckmod  # noqa: E402
 
 
+@pytest.fixture(autouse=True)
+def _sandboxed_library(tmp_path, monkeypatch):
+    """EVERY test here runs against a COPY of the library, never the repo's own file.
+
+    `app.DEFAULT_CSV` is the repo's real `card-library.csv`, and the write endpoints act on
+    whatever it names. One test that forgot the `library` fixture — `/api/revert` with no
+    Origin — restored the newest `.bak` over the real inventory on every pytest run, which
+    UNDID the last library write (it discarded a `tag_synergies --merge` twice on
+    2026-10-01, once via the SessionStart hook's suite). It went unnoticed for weeks
+    because the newest backup usually held identical content. Opting in per test is the
+    shape that failed, so this is opt-OUT: a test that wants a specific library still
+    takes `library`, whose later monkeypatch wins; everything else gets a copy here.
+    `tests/conftest.py`'s session guard is the cross-module backstop."""
+    sandbox = tmp_path / "sandbox-library"
+    sandbox.mkdir()
+    for attr in ("DEFAULT_CSV", "MANA_CSV"):
+        real = getattr(app, attr, None)
+        if not real:
+            continue
+        copy = sandbox / os.path.basename(real)
+        if os.path.exists(real):
+            copy.write_bytes(open(real, "rb").read())
+        monkeypatch.setattr(app, attr, str(copy), raising=False)
+
+
 @pytest.fixture
 def world(tmp_path, monkeypatch):
     folder = tmp_path / "99-scratch"
@@ -219,10 +244,15 @@ class TestRequestGuard:
         r = c.post("/api/revert", headers={"Origin": "http://localhost"})
         assert r.status_code != 403
 
-    def test_a_post_with_no_origin_is_allowed(self):
+    def test_a_post_with_no_origin_is_allowed(self, library):
         """Documented and deliberate: no Origin means a non-browser client (curl, a
         script), which CSRF does not apply to. Pinned so the reasoning is visible if
-        someone tightens it."""
+        someone tightens it.
+
+        `library` is load-bearing, not decoration: without it this POST reached the REAL
+        `/api/revert`, which restored the repo library's newest `.bak` over it on every
+        run (2026-10-01). A 409 from the empty temp library is the endpoint's own answer,
+        which is all this test needs — it proves the guard let the request through."""
         c = app.app.test_client()
         assert c.post("/api/revert").status_code != 403
 
