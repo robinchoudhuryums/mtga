@@ -58,7 +58,11 @@
 #: notes: 2/3 flier whose "exile up to one target card from a graveyard" makes a Clue off a
 #: notes: creature card (aim it at THEIR yard while the Surveyors still recycle from ours), and
 #: notes: "whenever you draw your second card each turn, each opponent loses 1 life" turns The
-#: notes: Speed Demon's end-step draws into a speed tick. TRADE TAKEN
+#: notes: Speed Demon's end-step draws into a speed tick. LANDS, round 4: four Dark Fortress
+#: notes: for Boiling Rock Prison, Razortrap Gorge, a Mountain and a Swamp — untapped {B}/{R}
+#: notes: while we control a basic (16 basics remain), taking sources to B 14 / R 15 and the
+#: notes: tapped nonbasics from 4 to 2. More Fortresses for basics measured as no gain (each
+#: notes: weakens the basic gate). TRADE TAKEN
 #: notes: KNOWINGLY: card advantage fell 5 to 3 in round 2 (the quality guard's warning),
 #: notes: and Adrenaline Jockey deals 4 to US whenever we cast a spell on an OPPONENT'S
 #: notes: turn — Lightning Strike, Bitter Triumph, Heartless Act and Road Rage are all
@@ -116,9 +120,8 @@
 # Lands
 1 Blood Crypt (ECL) 262
 1 Blazemire Verge (DSK) 256
-1 Razortrap Gorge (DSK) 267
-1 Boiling Rock Prison (TLA) 267
+4 Dark Fortress (MSH) 264
 2 Amonkhet Raceway (DFT) 248
-10 Mountain (MSH) 293
-8 Swamp (MSH) 291
+9 Mountain (MSH) 293
+7 Swamp (MSH) 291
 1 Realm of Koh (TLA) 276
