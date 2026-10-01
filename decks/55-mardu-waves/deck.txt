@@ -100,8 +100,10 @@
 #: notes: her power at end step. The cost: one Bone-Cairn left, the only card giving tokens
 #: notes: deathtouch. LANDS re-checked after the swaps: no colour shift helps (Plains to Swamp
 #: notes: moves about 5 points from the WW cards to the black ones); the real gain is tempo —
-#: notes: Scoured Barrens and Sun-Blessed Peak enter tapped, and a 2nd Godless Shrine and 2nd
-#: notes: Sacred Foundry make the same colours untapped.
+#: notes: Scoured Barrens and Sun-Blessed Peak entered tapped, so on 2026-10-01 they were CUT for
+#: notes: a 2nd Godless Shrine and a 2nd Sacred Foundry (same colours, untapped for 2 life). Source
+#: notes: counts unchanged (W 13 / B 10 / R 14, keepable 86%); the only unconditional tapland left is
+#: notes: Nomad Outpost. Lost: Barrens' 1 life and Peak's {4} sacrifice-to-draw flood sink.
 
 # Wave engines
 1 Zurgo, Thunder's Decree (TDM) 237
@@ -156,13 +158,11 @@
 1 Blazemire Verge (DSK) 256
 1 Bleachbone Verge (DFT) 250
 1 Nomad Outpost (TDM) 263
-1 Sacred Foundry (EOE) 256
-1 Sun-Blessed Peak (TLA) 280
-1 Scoured Barrens (M21) 250
+2 Sacred Foundry (EOE) 256
 5 Mountain (MSH) 293
 4 Dark Fortress (MSH) 264
 6 Plains (MSH) 287
-1 Godless Shrine (EOE) 254
+2 Godless Shrine (EOE) 254
 1 Swamp (MSH) 291
 
 # Flex — from the 2026-08-15 HOB ingest
