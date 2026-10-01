@@ -18,7 +18,7 @@ Cycle: 10 — a fresh `/broad-scan` ran 2026-09-14 out of the deck 47 tuning pos
 Phase: implement — **scan #10 is FULLY IMPLEMENTED**. All four batches plus every follow-on.
 Scope: broad
 Test Command: `python3 scripts/check_all.py`
-Subsystem cycles since last Seams audit: 2 (counter adopted 2026-09-08; no Seams audit has run)
+Subsystem cycles since last Seams audit: 3 (counter adopted 2026-09-08; no Seams audit has run)
 Updated: 2026-10-01 (three tool gaps closed — see Where I left off)
 
 ## In progress (facts to carry forward — NOT judgments)
