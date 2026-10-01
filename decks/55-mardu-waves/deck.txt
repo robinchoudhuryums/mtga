@@ -2,8 +2,8 @@
 #: format: Standard
 #: colors: RWB
 #: plan: aggro
-#: archetype: MARDU MOBILIZE WAVES. Wave engines (Zurgo, Dalkovan Packbeasts, Venerated
-#: archetype: Stormsinger, Zurgo's Vanguard, Stadium Headliner, Bone-Cairn, Trebuchet,
+#: archetype: MARDU MOBILIZE WAVES. Wave engines (Zurgo, Dalkovan Packbeasts, Voice of
+#: archetype: Victory, Venerated Stormsinger, Zurgo's Vanguard, Stadium Headliner, Bone-Cairn, Trebuchet,
 #: archetype: Siegebreaker) put tapped-and-attacking tokens onto the battlefield EVERY
 #: archetype: combat; four doubler layers multiply the wave (Windcrag Siege doubles
 #: archetype: attack-triggers, Exalted Sunborn doubles every token created, Delney doubles
@@ -17,7 +17,7 @@
 #: archetype: a per-combat PULSE, not a built board — no other deck runs Mobilize at all.
 #: protect: Zurgo, Thunder's Decree; Windcrag Siege; Delney, Streetwise Lookout; Suki, Courageous Rescuer; Mardu Siegebreaker; Fire Navy Trebuchet
 #: tier: A (PROVISIONAL, RE-GRADE CANDIDATE) — set when the metrics floor read A. After
-#: tier: the 2026-10-01 swaps the floor reads B: the curve rose to 3.14 (3.06 counting
+#: tier: the 2026-10-01 swaps the floor reads B: the curve rose to 3.11 (3.03 counting
 #: tier: Sunborn's warp), which drops the aggro clock to 3/7, and card advantage is 2 against
 #: tier: interaction 5. What the floor cannot see: Sothera's exile-per-dying-token is an
 #: tier: edict engine the classifier does not count as interaction, and Sunborn and Slash
@@ -61,8 +61,10 @@
 #: notes: Stormsinger) fire on the END-STEP sacrifice, and Zurgo TD's clause stops Warrior
 #: notes: tokens being sacrificed — while Zurgo is out only the Boulders and Siegebreaker
 #: notes: copies die. Considered and parked: G'raha Tia (the card-advantage pick that kept
-#: notes: the floor at A), Voice of Victory (owned), Garna (B+RR, 54% on turn 4), Marshal of
-#: notes: the Lost, Enduring Courage (RR against a three-colour base).
+#: notes: the floor at A), Garna (B+RR, 54% on turn 4), Marshal of
+#: notes: the Lost, Enduring Courage (RR against a three-colour base). Then Voice of Victory
+#: notes: for one EPF Point Squad: a 2-drop Mobilize 2 that Delney doubles, and "your
+#: notes: opponents can't cast spells during your turn" protects the attack turn.
 
 # Wave engines
 1 Zurgo, Thunder's Decree (TDM) 237
@@ -76,6 +78,7 @@
 1 Mardu Siegebreaker (TDM) 206
 1 Sonic Shrieker (TDM) 226
 1 Jet, Freedom Fighter (TLA) 229
+1 Voice of Victory (TDM) 33
 
 # Doublers
 1 Delney, Streetwise Lookout (MKM) 12
@@ -88,7 +91,7 @@
 # Converters
 2 Impact Tremors (FDN) 717
 1 Shocking Sharpshooter (TDM) 121
-2 EPF Point Squad (TMT) 145
+1 EPF Point Squad (TMT) 145
 1 Enduring Innocence (DSK) 6
 1 Suki, Courageous Rescuer (TLA) 37
 1 Sun Warriors (TLA) 244
