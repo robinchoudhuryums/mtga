@@ -17,7 +17,6 @@ Agrus Kos, Spirit of Justice
 Ainok Wayfarer
 Airbending Lesson
 Ajani, Caller of the Pride
-Akul the Unrepentant
 Aloe Alchemist
 Ambitious Augmenter
 Angel of Vitality
@@ -97,6 +96,7 @@ Cryogen Relic
 Crypt Feaster
 Cuboid Colony
 Daggerfang Duo
+Dalkovan Packbeasts
 Dark Confidant
 Darkstar Augur
 Daydream

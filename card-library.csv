@@ -6022,3 +6022,7 @@ Oltec Matterweaver,Creature — Human Artificer,"Whenever you cast a creature sp
 Disappear — At the beginning of your end step, if a permanent left the battlefield under your control this turn, create a 1/1 black Insect Warrior creature token with flying.
 {3}{G}, Sacrifice a token: Draw a card.",B/G,Insect; Warrior; card draw; sacrifice; tokens; flying; evasion; disappear; aristocrats,TMT,65,1
 Moogles' Valor,Instant,"For each creature you control, create a 1/2 white Moogle creature token with lifelink. Then creatures you control gain indestructible until end of turn.",W,Then; lifegain; tokens; indestructible; resilience,FIN,27,1
+Dalkovan Packbeasts,Creature — Ox,"Vigilance
+Mobilize 3 (Whenever this creature attacks, create three tapped and attacking 1/1 red Warrior creature tokens. Sacrifice them at the beginning of the next end step.)",W,Ox; tokens; vigilance; combat; mobilize; go-wide; aggro,TDM,7,1
+Voice of Victory,Creature — Human Bard,"Mobilize 2 (Whenever this creature attacks, create two tapped and attacking 1/1 red Warrior creature tokens. Sacrifice them at the beginning of the next end step.)
+Your opponents can't cast spells during your turn.",W,Human; Bard; tokens; mobilize; go-wide; aggro,TDM,33,1

@@ -2,24 +2,30 @@
 #: format: Standard
 #: colors: RWB
 #: plan: aggro
-#: archetype: MARDU MOBILIZE WAVES. Six wave engines (two Zurgos, Stadium Headliner,
-#: archetype: Bone-Cairn, Trebuchet, Siegebreaker) put tapped-and-attacking tokens onto
-#: archetype: the battlefield EVERY combat; three doubler layers multiply the wave
-#: archetype: (Windcrag Siege doubles attack-triggers, Delney doubles power<=2 triggers,
-#: archetype: Neriv doubles entered-this-turn damage; Raph & Leo and Aurelia add whole
-#: archetype: extra combats = extra waves); converters turn each wave into damage
-#: archetype: (Impact Tremors, Shocking Sharpshooter), cards (Enduring Innocence),
-#: archetype: mana (Sun Warriors), and permanent board (EPF Point
-#: archetype: Squad counters, Suki's Ally, Zurgo TD making waves PERMANENT). Distinct
-#: archetype: from every other token deck on the roster: the width is a per-combat
-#: archetype: PULSE, not a built board — no other deck runs Mobilize at all.
+#: archetype: MARDU MOBILIZE WAVES. Wave engines (Zurgo, Dalkovan Packbeasts, Venerated
+#: archetype: Stormsinger, Zurgo's Vanguard, Stadium Headliner, Bone-Cairn, Trebuchet,
+#: archetype: Siegebreaker) put tapped-and-attacking tokens onto the battlefield EVERY
+#: archetype: combat; four doubler layers multiply the wave (Windcrag Siege doubles
+#: archetype: attack-triggers, Exalted Sunborn doubles every token created, Delney doubles
+#: archetype: power<=2 triggers, Neriv doubles entered-this-turn damage; Raph & Leo and
+#: archetype: Aurelia add whole extra combats = extra waves); converters turn each wave into
+#: archetype: damage (Impact Tremors, Shocking Sharpshooter, Slash), cards (Enduring
+#: archetype: Innocence), mana (Sun Warriors), removal (Sothera: every token that dies at
+#: archetype: end step makes each opponent exile a creature), drain (Stormsinger), and
+#: archetype: permanent board (EPF Point Squad counters, Suki's Ally, Zurgo TD making waves
+#: archetype: PERMANENT). Distinct from every other token deck on the roster: the width is
+#: archetype: a per-combat PULSE, not a built board — no other deck runs Mobilize at all.
 #: protect: Zurgo, Thunder's Decree; Windcrag Siege; Delney, Streetwise Lookout; Suki, Courageous Rescuer; Mardu Siegebreaker; Fire Navy Trebuchet
-#: tier: A (PROVISIONAL) — graded at the measurable floor, not above it: aggro plan
-#: tier: with a real clock, nine interaction slots, and a sub-3 curve. Unproven in
-#: tier: matches, and the two honest weaknesses are thin card advantage (the engine
-#: tier: draws through Enduring Innocence and impulse effects, not a draw suite)
-#: tier: and double-white on turn 3 in a three-color manabase (Suki and Enduring
-#: tier: Innocence cast late more often than on curve). Re-grade after real games.
+#: tier: A (PROVISIONAL, RE-GRADE CANDIDATE) — set when the metrics floor read A. After
+#: tier: the 2026-10-01 swaps the floor reads B: the curve rose to 3.14 (3.06 counting
+#: tier: Sunborn's warp), which drops the aggro clock to 3/7, and card advantage is 2 against
+#: tier: interaction 5. What the floor cannot see: Sothera's exile-per-dying-token is an
+#: tier: edict engine the classifier does not count as interaction, and Sunborn and Slash
+#: tier: multiply every wave. A is one band above the floor, which the rubric allows;
+#: tier: pending the owner's call between keeping it and B. Unproven in matches; the honest
+#: tier: weaknesses are thin card advantage (Enduring Innocence and Stormbeacon Blade, not
+#: tier: a draw suite) and double-white on turn 3 in a three-color manabase (Suki and
+#: tier: Enduring Innocence cast late more often than on curve). Re-grade after real games.
 #: notes: BUILT from the 131-card pile analysis (55-mardu working doc). Timing spine the
 #: notes: tooling can't see: (1) Zurgo TD's end-step clause DEFEATS the wave's delayed
 #: notes: sac trigger permanently — waves become permanent width while he's out. (2)
@@ -44,10 +50,25 @@
 #: notes: (55a holds 3). Bench if a slot opens (screened KEY, in grade order): Cruel
 #: notes: Administrator, Shock Brigade, Reigning Victor, Sami. (Jolly Balloon Man
 #: notes: was promoted from this bench into the Converters block, for Snow.)
+#: notes: SWAPS, 2026-10-01 (owner's picks from a 26-card candidate list): Dalkovan
+#: notes: Packbeasts for the 2nd Zurgo (legendary, so the 2nd copy only covered draws;
+#: notes: Mobilize 3 on a power-0 body Delney doubles), Exalted Sunborn for the 2nd Windcrag
+#: notes: Siege (doubles every token; Warp {1}{W} makes it a 2-mana one-turn doubler),
+#: notes: Sothera for Duty Beyond Death, Slash for Akul (so note (2)'s Akul line is history),
+#: notes: Venerated Stormsinger for a Zurgo's Vanguard; lands: Sacred Foundry, Godless Shrine
+#: notes: and two Dark Fortress for Razortrap Gorge, a Plains, a Mountain and Boiling Rock
+#: notes: Prison (W 13 / B 10 / R 12, from 12 / 9 / 12). TIMING: the death payoffs (Sothera,
+#: notes: Stormsinger) fire on the END-STEP sacrifice, and Zurgo TD's clause stops Warrior
+#: notes: tokens being sacrificed — while Zurgo is out only the Boulders and Siegebreaker
+#: notes: copies die. Considered and parked: G'raha Tia (the card-advantage pick that kept
+#: notes: the floor at A), Voice of Victory (owned), Garna (B+RR, 54% on turn 4), Marshal of
+#: notes: the Lost, Enduring Courage (RR against a three-colour base).
 
 # Wave engines
-2 Zurgo, Thunder's Decree (TDM) 237
-2 Zurgo's Vanguard (TDM) 133
+1 Zurgo, Thunder's Decree (TDM) 237
+1 Dalkovan Packbeasts (TDM) 7
+1 Zurgo's Vanguard (TDM) 133
+1 Venerated Stormsinger (TDM) 97
 1 Stadium Headliner (TDM) 122
 1 Mardu Monument (TDM) 245
 2 Bone-Cairn Butcher (TDM) 173
@@ -58,7 +79,8 @@
 
 # Doublers
 1 Delney, Streetwise Lookout (MKM) 12
-2 Windcrag Siege (TDM) 235
+1 Windcrag Siege (TDM) 235
+1 Exalted Sunborn (EOE) 15
 1 Neriv, Heart of the Storm (TDM) 210
 1 Raph & Leo, Sibling Rivals (TMT) 166
 1 Aurelia, the Warleader (FDN) 651
@@ -74,17 +96,15 @@
 1 The Jolly Balloon Man (DSK) 219
 1 Taii Wakeen, Perfect Shot (OTJ) 234
 1 Stormbeacon Blade (TDM) 27
+1 Sothera, the Supervoid (EOE) 115
+1 Slash, Reptile Rampager (TMT) 108
 
 # Pulse tricks
 1 Frontline Rush (TDM) 186
-1 Duty Beyond Death (TDM) 10
 1 Boros Charm (FDN) 721
 
 # Removal (spot)
 1 Lorehold Charm (SOS) 200
-
-# Payoff sink
-1 Akul the Unrepentant (OTJ) 189
 
 # Ramp / fixing
 1 Mardu Devotee (TDM) 16
@@ -95,12 +115,13 @@
 1 Blazemire Verge (DSK) 256
 1 Bleachbone Verge (DFT) 250
 1 Nomad Outpost (TDM) 263
-1 Razortrap Gorge (DSK) 267
+1 Sacred Foundry (EOE) 256
 1 Sun-Blessed Peak (TLA) 280
-1 Boiling Rock Prison (TLA) 267
 1 Scoured Barrens (M21) 250
-6 Mountain (MSH) 293
-7 Plains (MSH) 287
+5 Mountain (MSH) 293
+2 Dark Fortress (MSH) 264
+6 Plains (MSH) 287
+1 Godless Shrine (EOE) 254
 2 Swamp (MSH) 291
 
 # Flex — from the 2026-08-15 HOB ingest

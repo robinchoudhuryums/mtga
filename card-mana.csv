@@ -2801,6 +2801,8 @@ Deadly Brew,{B}{G},2,
 Oltec Matterweaver,{2}{W},3,
 "Lord Dregg, Insect Invader",{3}{B},4,Flying;Disappear
 Moogles' Valor,{3}{W}{W},5,
+Dalkovan Packbeasts,{2}{W},3,Vigilance;Mobilize
+Voice of Victory,{1}{W},2,Mobilize
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -13414,7 +13416,6 @@ Zurgo Stormrender,{R}{W}{B},3,Mobilize
 Arashin Sunshield,{3}{W},4,
 Bearer of Glory,{1}{W},2,
 Clarion Conqueror,{2}{W},3,Flying
-Dalkovan Packbeasts,{2}{W},3,Vigilance;Mobilize
 Descendant of Storms,{W},1,Endure
 Lightfoot Technique,{1}{W},2,
 Loxodon Battle Priest,{4}{W},5,
@@ -13424,7 +13425,6 @@ Riling Dawnbreaker // Signaling Roar,{4}{W} // {1}{W},5,Flying;Vigilance
 Stormbeacon Blade,{1}{W},2,Equip
 Teeming Dragonstorm,{3}{W},4,
 Tempest Hawk,{2}{W},3,Flying
-Voice of Victory,{1}{W},2,Mobilize
 Wayspeaker Bodyguard,{3}{W},4,Flurry
 Aegis Sculptor,{3}{U},4,Flying;Ward
 Agent of Kotis,{1}{U},2,Renew
