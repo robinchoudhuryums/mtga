@@ -11,7 +11,7 @@
 #: archetype: power<=2 triggers, Neriv doubles entered-this-turn damage; Raph & Leo and
 #: archetype: Aurelia add whole extra combats = extra waves); converters turn each wave into
 #: archetype: damage (Impact Tremors, Shocking Sharpshooter, Slash, Garna), cards (Enduring
-#: archetype: Innocence; Garna, when an attacker dies), removal (Sothera: every token that dies at
+#: archetype: Innocence; Garna, when an attacker dies; Hardened Tactician, a card per token), removal (Sothera: every token that dies at
 #: archetype: end step makes each opponent exile a creature), drain (Stormsinger), and
 #: archetype: permanent board (EPF Point Squad counters, Suki's Ally, Zurgo TD making waves
 #: archetype: PERMANENT). Distinct from every other token deck on the roster: the width is
@@ -19,13 +19,13 @@
 #: protect: Zurgo, Thunder's Decree; Windcrag Siege; Delney, Streetwise Lookout; Suki, Courageous Rescuer; Mardu Siegebreaker; Fire Navy Trebuchet
 #: tier: A (PROVISIONAL) — the metrics floor reads A. The 2026-10-01 swaps first dropped the
 #: tier: floor a band (curve up, card advantage thin); Garna and a 25th land restored it, with
-#: tier: card advantage 3 (Garna draws whenever an attacking creature dies), interaction 7
-#: tier: (Coordinated Maneuver and Valorous Stance added at instant speed), a 3.20 curve
-#: tier: (3.11 counting Sunborn's warp) and an aggro clock of 3/7. What the floor
+#: tier: card advantage 3 (Garna draws whenever an attacking creature dies), interaction 8
+#: tier: (Coordinated Maneuver, Valorous Stance and Pyrrhic Strike, all instants), a 3.26
+#: tier: curve (3.17 counting Sunborn's warp) and an aggro clock of 2/7. What the floor
 #: tier: cannot see: Sothera's exile-per-dying-token is an edict engine the classifier does
 #: tier: not count as interaction, and Sunborn and Slash multiply every wave. Unproven in
-#: tier: matches; the honest weaknesses are thin card advantage (Garna, Enduring Innocence and
-#: tier: Stormbeacon Blade, not a draw suite) and double-white on turn 3 in a three-color
+#: tier: matches; the honest weaknesses are card advantage that needs mana (Garna, Enduring
+#: tier: Innocence and Hardened Tactician's {1} per token, not a draw suite) and double-white on turn 3 in a three-color
 #: tier: manabase (Suki and Enduring Innocence cast late more often than on curve). Re-grade
 #: tier: after real games.
 #: notes: BUILT from the 131-card pile analysis (55-mardu working doc). Timing spine the
@@ -83,6 +83,16 @@
 #: notes: planeswalker, or destroy an enchantment). Valorous Stance for Taii Wakeen
 #: notes: (indestructible, or destroy a creature with toughness 4+). Proposed and not taken:
 #: notes: Restoration Magic for Mardu Devotee ({W}: hexproof and indestructible on any permanent).
+#: notes: Then Hardened Tactician for Stormbeacon Blade ("{1}, Sacrifice a token: Draw a card" —
+#: notes: sacrifice Mobilize tokens during combat, after damage, and Garna draws too; never in
+#: notes: your end step, where Zurgo TD makes Warrior tokens unsacrificeable) and Pyrrhic Strike
+#: notes: for Lorehold Charm (blight 2 on a doomed token and choose both: destroy an artifact or
+#: notes: enchantment AND a creature with mana value 3+; the token's death also fires Sothera).
+#: notes: ALSO PENDING the Reality Fracture refresh, alongside Ajani: Liliana the Faultless (FRA)
+#: notes: 200 for Mardu Devotee ("{1}, {T}, Discard a card: another target creature gains
+#: notes: hexproof"; 1 life per creature entering) and Ingris Stingerquill (FRA) 137 for Zurgo's
+#: notes: Vanguard (each DECLARED attacker deals 1 to each opponent, doubled by Windcrag Siege and
+#: notes: by Delney; Mobilize tokens enter attacking and never trigger it; {4} gives team haste).
 
 # Wave engines
 1 Zurgo, Thunder's Decree (TDM) 237
@@ -114,7 +124,7 @@
 1 Suki, Courageous Rescuer (TLA) 37
 1 Team Avatar (TLA) 38
 1 The Jolly Balloon Man (DSK) 219
-1 Stormbeacon Blade (TDM) 27
+1 Hardened Tactician (TDM) 191
 1 Sothera, the Supervoid (EOE) 115
 1 Slash, Reptile Rampager (TMT) 108
 1 Garna, Bloodfist of Keld (FDN) 658
@@ -123,7 +133,7 @@
 1 Boros Charm (FDN) 721
 
 # Removal (spot)
-1 Lorehold Charm (SOS) 200
+1 Pyrrhic Strike (ECL) 30
 1 Coordinated Maneuver (TDM) 6
 1 Valorous Stance (FDN) 583
 
