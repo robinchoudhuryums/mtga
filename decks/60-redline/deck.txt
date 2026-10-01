@@ -1,6 +1,6 @@
 #: name: Redline (max speed — hit every turn)
 #: format: Standard
-#: arena: 60 Redline, 3ce6b040-075a-4110-9764-3e1f5924c2da
+#: arena: 60 Redline Racer, 0b02f446-0457-4e57-951d-51d550a111cd
 #: colors: BR
 #: plan: aggro
 #: archetype: RAKDOS MAX SPEED — the roster's first Start your engines! deck, one of
