@@ -1,6 +1,6 @@
 #: name: Blood Price (pay life, get paid)
 #: format: Standard
-#: arena: 42 Blood Price, 4b5c7dca-1167-4175-b39e-86ac3f4087a6
+#: arena: 42 Blood Price, af830371-eaff-4e2c-9879-3ddaf5beb6bd
 #: colors: WB
 #: plan: control
 #: archetype: Orzhov (W/B) LIFE-AS-CURRENCY attrition. The premise: cards whose strong
@@ -54,7 +54,7 @@
 #: notes: deterrent that taxes their interaction while this deck happily pays, and Mister Negative refunds
 #: notes: the difference. Do not 'fix' this into a cut on the symmetry argument alone.
 #: tier: B — Orzhov life-as-currency attrition, held ONE BAND UNDER an A metrics floor, deliberately.
-#: tier: Live vector: interaction 7 (SIX of it instant-speed, three answering a noncreature permanent),
+#: tier: Live vector: interaction 8 (SIX of it instant-speed, three answering a noncreature permanent),
 #: tier: card advantage 12, protection 3, curve 2.94, 13 central themes. The 2026-09-12 tunes cleared the
 #: tier: interaction gap this block used to name as the only thing between the deck and an A floor.
 #: tier: THAT CARD-ADVANTAGE NUMBER IS REAL, unlike a pile of cantrips: Cruel Truths, Circle of Power,

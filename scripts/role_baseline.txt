@@ -6,7 +6,6 @@
 # This list should only ever SHRINK. A new entry means either a deck edit
 # introduced an untriaged card or a pattern regressed.
 # `check_roles.py --update-baseline` to acknowledge the current set.
-Aang's Iceberg
 Aang, at the Crossroads
 Aang, at the Crossroads // Aang, Destined Savior
 Absorbing Man
@@ -18,7 +17,6 @@ Agrus Kos, Spirit of Justice
 Ainok Wayfarer
 Airbending Lesson
 Ajani, Caller of the Pride
-Akul the Unrepentant
 Aloe Alchemist
 Ambitious Augmenter
 Angel of Vitality
@@ -39,7 +37,6 @@ Auron's Inspiration
 Aurora Awakener
 Avenger of the Fallen
 Avengers: Under Siege
-Azog, Moria's Ruin
 Azula, Cunning Usurper
 Badgermole
 Ball Lightning
@@ -99,6 +96,7 @@ Cryogen Relic
 Crypt Feaster
 Cuboid Colony
 Daggerfang Duo
+Dalkovan Packbeasts
 Dark Confidant
 Darkstar Augur
 Daydream
@@ -221,6 +219,7 @@ Ironpaw Aspirant
 Jadelight Spelunker
 Jeong Jeong, the Deserter
 Jeskai Brushmaster
+Jet, Rebel Leader
 Joo Dee, One of Many
 K'un-Lun Warrior
 Kastral, the Windcrested
@@ -264,7 +263,6 @@ Mai, Scornful Striker
 Malboro
 Mammoth Bellow
 Mardu Devotee
-Mardu Monument
 Masked Meower
 Master Pakku
 Mechanical Mobster
@@ -286,6 +284,7 @@ Morcant's Eyes
 Morningtide's Light
 Most Decrepit Old Bird
 Multiversal Incursion
+Multiversal Recruitment
 Mutable Explorer
 Namazu Trader
 Nashi, Searcher in the Dark
@@ -400,7 +399,6 @@ Super-Soldier Serum
 Surrak, Elusive Hunter
 Sweettooth Witch
 Swiftblade Vindicator
-Taii Wakeen, Perfect Shot
 Tangle Tumbler
 Tannuk, Steadfast Second
 Tapestry Warden

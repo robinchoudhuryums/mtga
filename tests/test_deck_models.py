@@ -358,6 +358,28 @@ class TestDeckNeeds:
             ["2 Zap", "2 Slow Zap", "2 Shatter", "1 Bear", "20 Swamp"]))
         assert needs["interaction"] >= 6 and needs["int_short"] == 0
 
+    def test_a_100_card_format_scales_the_interaction_minimum(self, synth):
+        """The one COUNT on the needs profile is scaled per 60 like the tier floor: six
+        answers clear a 60-card deck's minimum of 5 but not a 100-card deck's 9. Before
+        2026-09-29 a Historic Brawl deck read "adequate" here on a 60-card target."""
+        hdr = "#: name: Synth\n#: format: Historic Brawl\n#: colors: B\n"
+        big = deck.deck_needs(synth(
+            ["2 Zap", "2 Slow Zap", "2 Shatter", "54 Bear", "40 Swamp"], header=hdr))
+        assert big["int_target"] == 9
+        assert 6 <= big["interaction"] < 9 and big["int_short"]
+
+    def test_the_scaling_is_keyed_on_the_format_not_the_count(self, synth):
+        """A 61-card Standard deck and a 60-card (Standard) Brawl deck keep the 60-card
+        minimum; only a 100-card format scales, the same rule `floor_requirements` uses."""
+        std = deck.deck_needs(synth(["2 Zap", "2 Slow Zap", "2 Shatter", "35 Bear", "20 Swamp"]))
+        assert std["int_target"] == 5 and not std["int_short"]
+        hdr = "#: name: Synth\n#: format: Brawl\n#: colors: B\n"
+        b60 = deck.deck_needs(synth(
+            ["2 Zap", "2 Slow Zap", "2 Shatter", "34 Bear", "20 Swamp"], header=hdr))
+        assert b60["int_target"] == 5
+        assert deck._scale_count(7, 100 / 60) == deck.floor_requirements(
+            {"floor_scale": 100 / 60}, "A")[0]
+
     def test_a_top_heavy_deck_wants_acceleration(self, synth):
         heavy = deck.deck_needs(synth(["8 Big Bear", "20 Swamp"]))
         light = deck.deck_needs(synth(["8 Bear", "20 Swamp"]))
@@ -722,6 +744,15 @@ class TestRosterWideModels:
             "2026-08-07,m1,90,A,g,Av,Play,,0,0,Av2,Success",
             "2026-08-07,m2,90,A,g,Av,Play,?,0,0,Av2,Success"])
         assert deck.load_match_counts() == {"90": 2}
+
+    def test_a_voided_match_is_not_a_match_played(self, world, tmp_path):
+        """The owner voided it (stepped away). The row stays so a re-paste cannot re-add
+        it, but it tested nothing — the one thing this column answers."""
+        import parse_matches as pm
+        self._record(world, tmp_path, [
+            "2026-08-07,m1,90,A,g,Av,Play,W,1,0,Av2,Success",
+            f"2026-08-07,m2,90,A,g,Av,Play,{pm.VOID},0,1,Av2,Success"])
+        assert deck.load_match_counts() == {"90": 1}
 
     def test_an_unattributed_match_belongs_to_no_deck(self, world, tmp_path):
         self._record(world, tmp_path,

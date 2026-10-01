@@ -1,7 +1,7 @@
 #: name: Honor Among Thieves — Toughness Swap
 #: format: Standard
 #: tier: B — Honor Among Thieves P/T-swap. Re-graded C->B: the old C read the deck as a
-#: tier: combo novelty, but the measurable spine doesn't support a hard cap — interaction 6
+#: tier: combo novelty, but the measurable spine doesn't support a hard cap — interaction 7
 #: tier: (the classifier now reads the removal it used to miss; 2 noncreature spells stay
 #: tier: unclassified — Bark of Doran / Pain 101) over 13 central themes is a coherent
 #: tier: toughness-matters engine, not

@@ -740,6 +740,10 @@ def cmd_wildcards(args):
         fetch_missing_rarities(short_names, rarities)
     rar_of = lambda name: rarities.get(name.lower(), "?")
     pool_rot, _ = _pool_rotation_index()
+    # A card needed by several decks rotates for the purpose of this plan if ANY deck
+    # that needs it is in a rotating format (`format_rotates`).
+    _deck_rotates = {d["id"]: format_rotates((d.get("meta") or {}).get("format")) for d in decks}
+    _rotates_for = lambda ids: any(_deck_rotates.get(i, True) for i in ids)
 
     if getattr(args, "dedup", False):
         # Cross-deck union: one row per distinct craft target. copies = what the
@@ -759,7 +763,7 @@ def cmd_wildcards(args):
         print(f"{'Copies':>6}  {'R':1}  {'Decks':>5}  Card")
         print("-" * 72)
         for name, rar, copies, ids in rows:
-            rot = craft_rot_note(name, pool_rot)
+            rot = craft_rot_note(name, pool_rot, rotates=_rotates_for(ids))
             print(f"{copies:>6}  {rar:1}  {len(ids):>5}  {name}{rot}   [{', '.join(ids)}]")
         if not rows:
             print("  Nothing to craft — the whole roster is buildable. ✓")
@@ -791,7 +795,7 @@ def cmd_wildcards(args):
         print("\nHighest-leverage crafts (one card, multiple decks):")
         for nl, ids in multi[:15]:
             decks_s = ", ".join(sorted(ids, key=lambda x: (len(x), x)))
-            rot = craft_rot_note(display[nl], pool_rot)
+            rot = craft_rot_note(display[nl], pool_rot, rotates=_rotates_for(ids))
             print(f"  {display[nl]} ({rar_of(display[nl])})  — {len(ids)} decks: {decks_s}{rot}")
 
     # Roster totals: one shared collection, so per card only max(0, maxneed-owned).
@@ -1003,6 +1007,7 @@ def cmd_check(args):
     # one a wildcard is about to be spent on, and the deck 28 plan bought four
     # rotating cards past this view with nothing said (broad-implement #1).
     pool_rot, _ = _pool_rotation_index()
+    _rotates = format_rotates(meta.get("format"))
     missing, short, rot_flagged = [], [], []
     for nl in order:
         n, s = printing[nl]
@@ -1016,7 +1021,7 @@ def cmd_check(args):
             flag = f"  <- short {req - have}"
             short.append(n)
         if flag:
-            rot = craft_rot_note(n, pool_rot)
+            rot = craft_rot_note(n, pool_rot, rotates=_rotates)
             if rot:
                 flag += rot
                 rot_flagged.append(n)
@@ -1042,7 +1047,8 @@ def cmd_check(args):
     # owned card costs no wildcard, G-30) and so the half nothing on this surface said.
     # Same window as `craft_rot_note` (within=1); one line, names capped, pointer to the
     # full per-deck view.
-    _atr, _rmeta = deck_rotation(d, within=1)
+    _atr, _rmeta = (deck_rotation(d, within=1) if _rotates
+                    else ([], {"has_released": False}))
     _own_rot = [c for c in _atr
                 if owned_qty(by_name_qty, c["name"].lower()) >= c["qty"]]
     if _own_rot and _rmeta["has_released"]:
@@ -1144,17 +1150,41 @@ def cmd_diff(args):
     return 0
 
 
+def _arena_line(q, n, s, c):
+    line = f"{q} {n}"
+    if s:
+        line += f" ({s})" + (f" {c}" if c else "")
+    return line
+
+
 def cmd_arena(args):
+    """The Arena import block. A Brawl / Commander deck's `#: commander:` goes under its
+    own `Commander` heading BEFORE `Deck`, the shape Arena itself exports and imports.
+    Printed as the first `Deck` line instead, it imported as an ordinary card and the
+    commander had to be set by hand in the client. The commander stays one of the 100:
+    the Deck section carries the other 99."""
     d = find_deck(args.id, allow_path=True)
     if not d:
         eprint(f"No deck with id {args.id!r}.")
         return 1
-    _, cards = parse_deck_file(d["path"])
-    print("Deck")
+    meta, cards = parse_deck_file(d["path"])
+    lead = set()
+    if normalize_format(meta.get("format")) in _COMMANDER_FORMATS:
+        lead = _header_card_keys(meta, "commander")
+    head, body = [], []
     for q, n, s, c in cards:
-        line = f"{q} {n}"
-        if s:
-            line += f" ({s})" + (f" {c}" if c else "")
+        if lead and _ms_key(n) in lead and not head:
+            head.append(_arena_line(1, n, s, c))
+            if q > 1:
+                body.append(_arena_line(q - 1, n, s, c))
+            continue
+        body.append(_arena_line(q, n, s, c))
+    if head:
+        print("Commander")
+        print("\n".join(head))
+        print()
+    print("Deck")
+    for line in body:
         print(line)
     return 0
 
@@ -1720,6 +1750,20 @@ _ROLE_PATTERNS = {
         # read as removal — graveyard hate and a recursion cost, neither an answer to a
         # permanent. `[^.]` keeps the lookahead inside the same sentence, so "Destroy
         # target creature." is untouched. With it: 11 matches, zero false positives.
+        # "ANOTHER / OTHER target" (2026-09-29, the G-67 family-disagreement shape). The
+        # pattern above reads "exile target creature" but not "exile ANOTHER target
+        # creature" (Fiend Hunter, Hostage Taker, Noxious Gearhulk) or "exile up to one
+        # OTHER target creature" (Solitude, Azog, Faller's Faithful): 23 pool cards scored
+        # nothing, most of them removal on a body. BLINKS stay out, on the permanence line
+        # drawn below: a card returned to the battlefield in the same ability ("then return
+        # it", "return that card … at the beginning of the next end step" — Flickerwisp,
+        # Eldrazi Displacer, Phelia) is tempo, and so is exiling something to hand its owner
+        # a token copy (Dedicated Dollmaker). A return gated on THIS permanent leaving
+        # (Fiend Hunter, Mysterious Limousine) is an O-ring on a line of its own, and counts.
+        rf"(?:destroy|exile) (?:up to \w+ )?(?:another|other) target (?:[a-z-]+,? ){{0,2}}?"
+        rf"{_PERM_TYPE_LIST}{_NOT_OWN_OR_CARD}"
+        r"(?![^\n]*?\breturn (?:it|that card|them|those cards) to the battlefield)"
+        r"(?![^\n]*?creates? a token that'?s a copy of it)",
         rf"(?:destroy|exile) (?:up to \w+ )?target (?:[a-z-]+,? ){{3,5}}?{_PERM_TYPE_LIST}"
         rf"{_NOT_OWN_OR_CARD}(?![^.]{{0,40}}?\bgraveyard\b)",
         # REMOVAL AURA. `enchanted creature can't attack or block` (Pacifism) is already
@@ -1982,7 +2026,11 @@ _ROLE_PATTERNS = {
         # which is why an earlier tier note wrongly wrote it off as "taps and stuns
         # rather than answers" (session finding — the same card twice).
         r"shuffle[^.]{0,80}?target (?:creature|permanent)[^.]{0,60}?librar",
-        r"target creature[^.]{0,80}?into (?:their|its) (?:owner'?s? )?librar",
+        # Any permanent type since 2026-09-29: this read "target CREATURE" only, while the
+        # PUT-on-top/bottom pattern above already took any permanent — so Happy Hogan's
+        # creature tuck scored and Wan Shi Tong's "target nonland permanent's owner puts it
+        # into their library" did not (9 pool cards, Chaos Warp and Deem Inferior among them).
+        rf"target {_PERM_TYPE}[^.]{{0,80}}?into (?:their|its) (?:owner'?s? )?librar",
     ],
     # SCOPED since BS8-11: "exile all" matched graveyards, hands, libraries and every
     # "End the turn" reminder (Rest in Peace, Hex Magic, Time Stop — 20 pool cards), and
@@ -2073,6 +2121,15 @@ _ROLE_PATTERNS = {
                        # pool cards, both true positives.
                        r"at the beginning of combat on your turn"
                        r"[^.]{0,60}?draws? a card",
+                       # REMOVE A COUNTER, THEN DRAW (2026-09-29): Dawn of a New Age's "At the
+                       # beginning of your end step, remove a hope counter from this
+                       # enchantment. If you do, draw a card." The sentence break stopped the
+                       # pattern above short of the draw; per G-67 the fix is this CLAUSE,
+                       # not a wider window. The counter supply is what repeats it.
+                       r"at the beginning of (?:your|each|the) "
+                       r"(?:upkeep|end step|draw step|combat|precombat main phase)"
+                       r"[^.]{0,60}?\bremove an? [a-z-]+ counters? from (?:this|it)\b"
+                       r"[^.]{0,30}\.\s*if you do, (?:you )?draws? a card",
                        # The draw must fall AFTER the trigger's comma. Magic templates a
                        # triggered ability as "Whenever <condition>, <effect>", so the
                        # comma is what separates a card that DRAWS from a card that CARES
@@ -3498,6 +3555,10 @@ def _int_scaling_boost(axis, deck_metric):
     return round(min(_INT_SCALE_CAP, _INT_SCALE_CAP * m), 2)
 
 
+# The needs model's interaction minimum for a 60-card deck (`deck_needs` scales it).
+_NEEDS_INT_TARGET = 5
+
+
 def deck_needs(d):
     """The deck's STRUCTURAL profile — the axes suggest_scored's theme model can't see.
     Returns {colors, sources, deficit, avg_mv, accel, interaction, int_target, int_short,
@@ -3576,11 +3637,17 @@ def deck_needs(d):
     tally = role_tally(cards, carddata)
     ts = (lambda x: round(x / nonland, 2) if nonland else 0.0)
     central = _central_themes(theme_w)
+    # The one COUNT on this profile, so the one term a 100-card deck clears on size alone:
+    # scaled per 60 exactly as the tier floor is (`_floor_scale`), else a Brawl deck read
+    # "adequate" here while `tier` called it short on the same axis. Every other axis
+    # above is a ratio or an average and is already size-free.
+    int_target = _scale_count(_NEEDS_INT_TARGET, _floor_scale(dmeta.get("format"),
+                                                              sum(q for q, *_ in cards)))
     return {
         "colors": deck_colors, "sources": sources, "deficit": deficit, "avg_mv": avg_mv,
         "accel": _accel_want(avg_mv, heavy_share),
-        "interaction": tally.get("interaction", 0), "int_target": 5,
-        "int_short": tally.get("interaction", 0) < 5,
+        "interaction": tally.get("interaction", 0), "int_target": int_target,
+        "int_short": tally.get("interaction", 0) < int_target,
         "type_share": {"creature": ts(cre), "artifact": ts(arti), "equipment": ts(equip),
                        "instant": ts(inst), "sorcery": ts(sorc), "enchantment": ts(ench)},
         "board_density": round(min(1.0, (cre + equip) / max(1, nonland)), 2),
@@ -5085,7 +5152,24 @@ def unreleased_pool_cards(pool_path=None):
     return out
 
 
-def craft_rot_note(name, pool_rot):
+# Formats whose card pool ROTATES with Standard. Everything else — Historic Brawl,
+# Historic, Timeless, Commander — keeps a card after its set leaves Standard, so a ⚠rot
+# on one of those decks reports a legality change that never happens to it: on
+# 2026-09-29 `check` flagged four craft targets in the 100-card 78-historic-brawl, while
+# `suggest` (BS8-12) already knew better. ONE predicate, read by every craft view, so the
+# views cannot disagree about which decks rotate (G-40). It takes a deck FORMAT NAME, never
+# a pool key: the repo's `Brawl` is Scryfall's `standard`, and Scryfall's `brawl` is the
+# repo's `Historic Brawl` (G-08), so passing a key here would invert the answer.
+_ROTATING_POOL_KEYS = frozenset({"standard", "alchemy"})
+
+
+def format_rotates(fmt):
+    """True if a deck in format `fmt` (its `#: format:` value) loses cards when Standard
+    rotates. No header means the repo default, Standard."""
+    return (not fmt) or pool_format_key(fmt) in _ROTATING_POOL_KEYS
+
+
+def craft_rot_note(name, pool_rot, rotates=True):
     """'⚠rot~YYYY' if `name`'s pool printing is Standard-legal but its set rotates
     this year or next, else ''. The CRAFT-TARGET views (`check`, `wildcards`) join
     through this so a card is flagged at the exact moment a wildcard decision is
@@ -5094,7 +5178,10 @@ def craft_rot_note(name, pool_rot):
     never reached the wishlist bypassed it entirely. Same `rotation_year` primitive
     and same this-year-or-next window as the wishlist's ⚠rot, so the two surfaces
     cannot disagree. Degrades to '' with no pool / no Released column, like
-    `rotation_risk`."""
+    `rotation_risk`. `rotates=False` (a deck whose format does not rotate, see
+    `format_rotates`) always returns ''."""
+    if not rotates:
+        return ""
     info = pool_rot.get((name or "").strip().lower())
     if not info:
         return ""
@@ -5330,6 +5417,7 @@ def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_form
 
     dmeta, cards = parse_deck_file(d["path"])
     meta = load_card_meta()
+    _ident_lock = commander_identity_lock(dmeta)   # Brawl: identity is the rule
 
     # Format filter: default to the deck's own `#: format:` (--format overrides,
     # --any-format disables). Only bites when the pool carries legality data.
@@ -5427,7 +5515,7 @@ def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_form
         ccolors = card_colors(r.get("Color(s)"))
         cast_ok, _ = _candidate_castability(
             (mana_map.get(nl) or mana_map.get(nl.split(" // ")[0]) or ("", None))[0],
-            ccolors, deck_colors)
+            ccolors, deck_colors, lock=_ident_lock)
         if not cast_ok:
             continue  # genuinely uncastable for this deck
         if apply_fmt and lkey not in {x.strip() for x in
@@ -5482,7 +5570,7 @@ def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_form
     # ⚠rot is a CRAFT flag (G-30: an owned card costs no wildcard) and a STANDARD flag —
     # a Brawl deck's picks do not rotate out of Brawl. Until BS8-12 it printed on owned
     # rows and on 20–29 of 40 picks for each Brawl deck.
-    _rot_deck = pool_format_key(dmeta.get("format")) == "standard" if not any_format else False
+    _rot_deck = format_rotates(dmeta.get("format")) if not any_format else False
     picks, hi_reuse = [], []
     for score, name, r, shared in top:
         h = owned_of(name.lower())
@@ -5561,6 +5649,7 @@ def suggest_lands(d, unowned=False, owned=False, limit=20, fmt=None, any_format=
     import wishlist
     meta = load_card_meta()
     dmeta, cards = parse_deck_file(d["path"])
+    _ident_lock = commander_identity_lock(dmeta)   # Brawl: identity is the rule
     mana_map = load_mana()
     carddata = load_card_data()
     pool_rot, _has_released = _pool_rotation_index()
@@ -5691,6 +5780,8 @@ def suggest_lands(d, unowned=False, owned=False, limit=20, fmt=None, any_format=
         on_color = prod & deck_colors
         if not on_color:
             continue  # off-color / colorless-only: doesn't fix THIS deck's manabase
+        if _ident_lock is not None and card_colors(r.get("Color(s)")) - _ident_lock:
+            continue  # a land making a colour outside the commander's identity is illegal
         h = owned_of(nl)
         if unowned and h > 0:
             continue
@@ -5743,7 +5834,7 @@ def suggest_lands(d, unowned=False, owned=False, limit=20, fmt=None, any_format=
             # all flag a rotating craft target; this recommender — which exists to be
             # spent on — said nothing, and deck 28's plan bought four rotating cards past
             # views that were quiet in exactly this way (BS4-11).
-            "rot": craft_rot_note(name, pool_rot),
+            "rot": craft_rot_note(name, pool_rot, rotates=format_rotates(fmt)),
         })
     # Ownership is NOT a ranking term — the same decision `suggest_scored` records and
     # explains: the goal is the best LIST, not the cheapest one, and this repo's
@@ -5844,6 +5935,7 @@ def suggest_mana(d, needs, unowned=False, owned=False, limit=20, fmt=None):
     """
     dc, deficit, ts = needs["colors"], needs["deficit"], needs["type_share"]
     mana_map = load_mana()
+    _ident_lock = commander_identity_lock(parse_deck_file(d["path"])[0])
     with open(POOL_CSV, newline="", encoding="utf-8") as fh:
         pool = list(csv.DictReader(fh))
     has_leg = bool(pool) and "Legalities" in pool[0]
@@ -5874,7 +5966,7 @@ def suggest_mana(d, needs, unowned=False, owned=False, limit=20, fmt=None):
         # for that bug: per G-38 this recommender IS the fix path for a mana deficit.
         cast_ok, _ = _candidate_castability(
             (mana_map.get(nl) or mana_map.get(nl.split(" // ")[0]) or ("", None))[0],
-            card_colors(r.get("Color(s)")), dc)
+            card_colors(r.get("Color(s)")), dc, lock=_ident_lock)
         if not cast_ok:
             continue  # genuinely uncastable for this deck
         if apply_fmt and lkey not in {x.strip() for x in (r.get("Legalities") or "").split(";")}:
@@ -5899,7 +5991,8 @@ def suggest_mana(d, needs, unowned=False, owned=False, limit=20, fmt=None):
                       "score": score, "mv": mv if mv is not None else "?",
                       "produces": "".join(c for c in "WUBRG" if c in prod) or "?",
                       "restricted": _RESTRICT_RE.search(txt) is not None, "text": txt,
-                      "rot": craft_rot_note(name, pool_rot)})   # G-30 (BS4-11)
+                      "rot": craft_rot_note(name, pool_rot,
+                                            rotates=format_rotates(fmt))})   # G-30 (BS4-11)
     # Ownership is NOT a ranking term — the same decision `suggest_scored` records and
     # explains: the goal is the best LIST, not the cheapest one, and this repo's
     # owned/unowned data is hand-maintained and may be weeks stale (G-10 saw five wrong
@@ -5918,6 +6011,7 @@ def suggest_interaction(d, needs, unowned=False, owned=False, limit=20, fmt=None
     FLAGGED with the deck metric so the human confirms — it's never a silent boost."""
     dc = needs["colors"]
     mana_map = load_mana()
+    _ident_lock = commander_identity_lock(parse_deck_file(d["path"])[0])
     with open(POOL_CSV, newline="", encoding="utf-8") as fh:
         pool = list(csv.DictReader(fh))
     has_leg = bool(pool) and "Legalities" in pool[0]
@@ -5945,7 +6039,7 @@ def suggest_interaction(d, needs, unowned=False, owned=False, limit=20, fmt=None
         # place for that bug: per G-38 this IS the fix path for an interaction deficit.
         cast_ok, _ = _candidate_castability(
             (mana_map.get(nl) or mana_map.get(nl.split(" // ")[0]) or ("", None))[0],
-            card_colors(r.get("Color(s)")), dc)
+            card_colors(r.get("Color(s)")), dc, lock=_ident_lock)
         if not cast_ok:
             continue
         if apply_fmt and lkey not in {x.strip() for x in (r.get("Legalities") or "").split(";")}:
@@ -5963,7 +6057,8 @@ def suggest_interaction(d, needs, unowned=False, owned=False, limit=20, fmt=None
         picks.append({"name": name, "rarity": (r.get("Rarity") or "").strip(), "owned": h,
                       "roles": sorted(roles & _INTERACTION_ROLES), "axis": axis, "boost": boost,
                       "power": round(power, 1), "score": score, "text": txt,
-                      "rot": craft_rot_note(name, pool_rot)})   # G-30 (BS4-11)
+                      "rot": craft_rot_note(name, pool_rot,
+                                            rotates=format_rotates(fmt))})   # G-30 (BS4-11)
     # Ownership is NOT a ranking term — the same decision `suggest_scored` records and
     # explains: the goal is the best LIST, not the cheapest one, and this repo's
     # owned/unowned data is hand-maintained and may be weeks stale (G-10 saw five wrong
@@ -6050,12 +6145,16 @@ def cmd_suggest_interaction(args, d):
     picks = suggest_interaction(d, needs, unowned=args.unowned, owned=getattr(args, "owned", False),
                                 limit=args.limit, fmt=fmt)
     it, tgt = needs["interaction"], needs["int_target"]
-    state = f"SHORT ({it} < {tgt})" if needs["int_short"] else f"adequate ({it})"
+    # The target is printed in BOTH states: it is a MINIMUM (5 per 60, scaled for a
+    # 100-card deck), not the tier floor, so "adequate" and a `tier --to A` gap on the
+    # same axis can both be true, and a bare "adequate (11)" read as a contradiction.
+    state = (f"SHORT ({it} < {tgt})" if needs["int_short"] else f"adequate ({it} ≥ {tgt})")
     print(f"Deck {d['id']}: {d['name'] or d['path']} — INTERACTION suggestions (incl. off-theme)\n")
     print(f"Colors: {'/'.join(sorted(needs['colors'])) or 'Colorless'}  ·  "
           f"current interaction: {state}")
     if not needs["int_short"]:
-        print("  (already at target — showing anyway; a board-scaling pick may still upgrade.)")
+        print("  (meets the needs minimum — showing anyway; a board-scaling pick may still "
+              f"upgrade, and `deck.py tier {d['id']} --to A` prices the tier gap on this axis.)")
     if not picks:
         print("\nNo on-color interaction to suggest.")
         return 0
@@ -6855,9 +6954,23 @@ def cmd_consistency(args):
         print(f"  ⓘ taplands: {_tapped} of {_tl_n} nonbasic land(s) enter tapped "
               f"({'; '.join(bits)}) — every figure here prices color ACCESS, not the "
               f"turn a tapland costs; that tempo is invisible to this model.")
+    # Arena's Brawl queues (60-card Standard Brawl and 100-card Brawl) make the FIRST
+    # mulligan free: a bad seven costs a redraw, not a card. So the number that decides
+    # whether the land count is wrong is the chance of a keepable hand within two sevens,
+    # 1 - (1 - k)^2. Reading the single-seven figure there told the 100-card
+    # 78-historic-brawl to "consider more lands (most 60-card decks run 23–26)" at 81%,
+    # which is 96% once the free mulligan is counted (2026-09-29).
+    _dfmt = normalize_format(meta.get("format"))
+    _free_mull = _dfmt in _FREE_MULLIGAN_FORMATS
+    _eff = (lambda k: 1 - (1 - k) ** 2) if _free_mull else (lambda k: k)
+    if _free_mull:
+        print(f"  with Brawl's free first mulligan: {100 * _eff(ls['keepable']):5.1f}% keepable "
+              f"within two sevens — the figure the land-count advice below reads")
+    _land_norm = ("most 100-card Brawl/Commander decks run 36–40, plus ramp"
+                  if _dfmt in BIG_DECK_FORMATS else "most 60-card decks run 23–26")
     # A gentle land-count read — the classic 17-source floor is deck-dependent, so flag
     # only clear extremes rather than prescribe a number.
-    if ls["keepable"] < 0.85:
+    if _eff(ls["keepable"]) < 0.85:
         # Both directions were reachable, and on a low-curve list BOTH trip. Deck 52 at 24
         # lands read "consider FEWER"; the same list at 23 read "consider MORE", at a WORSE
         # keepable (82.5%) with three cards falling under 90% on curve. An advisory that
@@ -6868,14 +6981,15 @@ def cmd_consistency(args):
         want = "more" if nlands < N * 0.40 else "fewer"
         step = 1 if want == "more" else -1
         alt = _keepable_at(nlands + step, N)
-        if alt is not None and alt <= ls["keepable"]:
-            print(f"  △ keepable {100*ls['keepable']:.0f}% is low, and moving to "
+        alt = _eff(alt) if alt is not None else None
+        if alt is not None and alt <= _eff(ls["keepable"]):
+            print(f"  △ keepable {100*_eff(ls['keepable']):.0f}% is low, and moving to "
                   f"{nlands + step} lands does not improve it ({100*alt:.0f}%) — this curve "
                   "cannot clear the threshold at any land count. Optimise on the "
                   "cast-on-curve table below instead.")
         else:
-            print(f"  △ keepable {100*ls['keepable']:.0f}% is low — consider {want} lands "
-                  f"(most 60-card decks run 23–26).")
+            print(f"  △ keepable {100*_eff(ls['keepable']):.0f}% is low — consider {want} lands "
+                  f"({_land_norm}).")
 
     # Color sources.
     active = [c for c in "WUBRG" if sources[c]]
@@ -8465,6 +8579,8 @@ def cmd_apply_flex(args):
 # larger minimum size than the 60-card constructed default.
 SINGLETON_FORMATS = {"brawl", "historic brawl", "commander", "oathbreaker", "duel"}
 BIG_DECK_FORMATS = {"commander", "historic brawl", "oathbreaker"}
+# Arena's Brawl queues, both sizes, give a free first mulligan (see cmd_consistency).
+_FREE_MULLIGAN_FORMATS = {"brawl", "historic brawl"}
 # ARENA RENAMED THESE AND THE REPO KEPT THE OLD NAMES, so the two labels are INVERTED
 # against the client's UI: Arena's "Brawl" is 100-card Historic Brawl (`historic brawl`
 # here) and Arena's "Standard Brawl" is the 60-card one (`brawl` here). A `#: format:`
@@ -8510,6 +8626,32 @@ def pool_format_key(fmt):
 _COMMANDER_FORMATS = {"brawl", "historic brawl", "commander", "duel"}
 
 
+def commander_identity_lock(meta, carddata=None):
+    """The colour identity every card in a Brawl / Commander deck must sit within — the
+    `#: commander:` card's identity (a union for partners) — or None when no lock applies:
+    not a commander format, no commander header, or a commander the card data cannot place.
+
+    Castability is not legality in these formats. `legal` has always checked identity, but
+    every RECOMMENDER gated on castability alone, so Brawl decks were offered cards they
+    cannot run: measured 2026-09-29, 53 of 78-historic-brawl's 1,237 `--interaction` picks
+    and 52 of its 410 `--ramp` picks sat outside Katara's G/W/U, and a hybrid like Jet,
+    Freedom Fighter reached the first Brawl draft that way. Read by `_candidate_castability`
+    (`lock=`), `_filler_castable` and `suggest_lands`, so every surface agrees with `legal`."""
+    if normalize_format((meta or {}).get("format")) not in _COMMANDER_FORMATS:
+        return None
+    keys = _header_card_keys(meta, "commander")
+    if not keys:
+        return None
+    carddata = carddata if carddata is not None else load_card_data()
+    lock = set()
+    for k in keys:
+        cd = carddata.get(k)
+        if cd is None:
+            return None
+        lock |= card_colors(cd.get("colors"))
+    return frozenset(lock)
+
+
 @_file_memo("MATCHES_CSV")
 def load_match_counts():
     """deck_id -> matches PLAYED, from matches.csv. `{}` when no record exists.
@@ -8543,7 +8685,9 @@ def load_match_counts():
     out = {}
     for r in rows:
         did = (r.get("Deck") or "").strip()
-        if did:
+        # A VOIDED row (the owner stepped away) is kept only so a re-paste cannot re-add
+        # it; it tested nothing, so it is not a match played.
+        if did and (r.get("Result") or "").strip().upper() != getattr(pm, "VOID", "X"):
             out[did] = out.get(did, 0) + 1
     return out
 
@@ -9316,14 +9460,49 @@ def strip_boards(block):
     return keep, dropped_n
 
 
+# Sections Arena prints BEFORE the `Deck` line they belong to (see `split_paste`).
+_LEAD_SECTIONS = ("commander", "companion", "about")
+
+
+def _lead_tail(block):
+    """Index where `block` ends in a run of lead sections (Commander / Companion /
+    About), or None. A lead heading opens the run and any later non-lead heading
+    (Sideboard, Maybeboard) closes it again; card lines in between belong to the run."""
+    from import_arena import SECTIONS
+    start = None
+    for i, ln in enumerate(block):
+        s = ln.strip().lower()
+        if s in SECTIONS:
+            if s in _LEAD_SECTIONS:
+                start = i if start is None else start
+            else:
+                start = None
+    return start
+
+
 def split_paste(text):
     """An Arena paste containing one or MANY decks -> a list of line-blocks. Arena
     exports start each deck with a bare `Deck` line; text before the first one is
-    treated as its own block, so a single-deck paste with no marker still works."""
-    segs, cur = [], None
+    treated as its own block, so a single-deck paste with no marker still works.
+
+    A Brawl export puts its `Commander` section (and a `Companion` / `About` one) BEFORE
+    that `Deck` line, so a lead section sitting just before a marker belongs to the deck
+    the marker opens. Split on the marker alone, a real Brawl export became two blocks:
+    the commander by itself and a 99-card deck, which `sync` read as the stored deck
+    having lost its commander and `--apply` would have deleted it (2026-09-29). A lead
+    section AFTER a deck's cards with no marker following (a single Deck-first paste)
+    still stays with that deck."""
+    segs, cur, body = [], None, 0
     for ln in (text or "").splitlines():
         if _DECK_MARKER_RE.match(ln.strip()):
-            cur = []
+            carry = []
+            if cur is not None:
+                # Scan only past the lead section this block was OPENED with (`body`),
+                # or a deck's own Commander would be read as the next deck's.
+                i = _lead_tail(cur[body:])
+                if i is not None:
+                    carry, cur[body + i:] = cur[body + i:], []
+            cur, body = carry, len(carry)
             segs.append(cur)
             continue
         if cur is None:
@@ -10817,9 +10996,14 @@ def _resolve_card_name(query, table, display, squashed):
     return None, []
 
 
-def _candidate_castability(cost, ident, declared):
+def _candidate_castability(cost, ident, declared, lock=None):
     """`(castable, note)` for a CANDIDATE card against a deck's declared colors, read from
     the PRINTED COST rather than from color identity.
+
+    `lock` is a Brawl / Commander deck's commander identity (`commander_identity_lock`).
+    There, identity IS the construction rule, so a card that falls outside it is refused
+    whatever its cost: `{2}{R/W}{R/W}{R/W}` is castable from white sources and still
+    illegal under a G/W/U commander. Checked FIRST, before any cost reading.
 
     Identity and cost disagree in precisely the cases a pile is full of: `{1}{U/R}` is
     payable with Islands alone, `{6}` is payable anywhere, and BOTH read as off-color in
@@ -10827,6 +11011,9 @@ def _candidate_castability(cost, ident, declared):
     eight of which were castable (G-58, bulk-triage variant). Mirrors `_castability_lint`
     so the two surfaces cannot drift: only a TRUE multicolor hybrid constrains
     castability; a monocolor (`{2/W}`) or Phyrexian (`{W/P}`) hybrid never does."""
+    if lock is not None and ident - lock:
+        return False, ("⚠ outside the commander's identity — has "
+                       + "/".join(sorted(ident - lock)) + ", illegal in this deck")
     strict, hybrid = parse_pips(cost or "")
     off_strict = sorted(set(strict) - declared)
     bad_hybrid = sorted({x for h in hybrid
@@ -11139,6 +11326,7 @@ def cmd_screen(args):
     sig = _strong_signature_themes(dmeta, cards, cardmeta)
     in_deck = {_ms_key(n) for q, n, s, c in cards}   # G-63: front-face join
     declared = set(_declared_colors(dmeta) or _deck_castable_colors(dmeta, cards, mana))
+    ident_lock = commander_identity_lock(dmeta, carddata)   # Brawl: identity is the rule
 
     raw = list(args.names or [])
     if not raw or raw == ["-"]:
@@ -11176,7 +11364,7 @@ def cmd_screen(args):
         ups = strict_upgrades(name, text, mv, cards, carddata, mana,
                               cand_pt=(cd.get("power"), cd.get("toughness")))
         legs = legal.get(nl) or legal.get(nl.split(" // ")[0]) or set()
-        cast_ok, cast_note = _candidate_castability(cost, ident, declared)
+        cast_ok, cast_note = _candidate_castability(cost, ident, declared, lock=ident_lock)
         # Only meaningful when the FRONT half is castable — otherwise "front half only
         # here" contradicts the `⚠ NOT castable` flag printed right above it.
         back_off = (split_back_offcolor(cost, declared, cd.get("type") or "")
@@ -11453,13 +11641,17 @@ def cmd_resolve(args):
     # Ascension, a TLE supplemental card, reached a finished 60 and was only caught two
     # validation steps later by `deck.py legal`. Surfacing it here means the name list is
     # checked at the moment it becomes deck lines.
+    # Checked against the POOL's key, not the raw name (G-08/BS8-04): `Historic Brawl`
+    # matched no Scryfall key, so every card read illegal, and `Brawl` tested Scryfall's
+    # `brawl` (the 100-card format), so a non-Standard card passed a 60-card Brawl deck.
     fmt = (getattr(args, "format", None) or "standard").strip().lower()
-    if fmt and fmt != "any":
+    lkey = pool_format_key(fmt) if fmt != "any" else ""
+    if lkey:
         resolved = [_card_line_name(ln) or "" for ln in lines]
         legal = _legality_of([n for n in resolved if n])
         illegal = [n for n in resolved
                    if n and legal.get(n.lower()) is not None
-                   and fmt not in legal.get(n.lower(), set())]
+                   and lkey not in legal.get(n.lower(), set())]
         if illegal:
             eprint(f"\n⚠ NOT legal in {fmt} ({len(illegal)}): {', '.join(illegal)}")
             eprint("   Resolving a printing is not a legality check — pass --format any to "
@@ -11587,10 +11779,11 @@ def cmd_suggest_homes(args):
         # colours — a land's whole value is the colours it produces. `wishlist`'s
         # `_castable_in` already resolves this exact case the same way ("no cost data
         # -> identity fallback"); this is that convention, not a new one.
+        _lock = commander_identity_lock(dmeta, carddata)   # a Brawl home is identity-locked
         if _ce and _ce[0]:
-            cast_ok, _cnote = _candidate_castability(_ce[0], ccols, castable)
+            cast_ok, _cnote = _candidate_castability(_ce[0], ccols, castable, lock=_lock)
         else:
-            cast_ok = ccols.issubset(castable)
+            cast_ok = ccols.issubset(castable) and not (_lock is not None and ccols - _lock)
         if not cast_ok:
             continue
         # Castability above reads the cost but still cannot see pip DEPTH;
@@ -11941,6 +12134,7 @@ def deck_quality_vector(d):
     _tally = role_tally(cards, carddata)
     _bp = board_power(cards, carddata)
     d_int, d_ca = _tally["interaction"], _tally["card_advantage"]
+    size = sum(q for q, _n, _s, _c in cards)
     return {
         "buildable": missing == 0 and short == 0, "missing": missing, "short": short,
         # Whether castability was audited against a DECLARED identity. Without a
@@ -11980,6 +12174,9 @@ def deck_quality_vector(d):
         # Full per-theme copy counts — lets the F10 guard tell a theme that truly LEFT
         # the deck (0 copies) from one merely demoted below the centrality cutoff (F#2).
         "theme_copies": dict(theme_w),
+        # Deck SIZE and the factor the tier floor's per-60 thresholds are scaled by (see
+        # `floor_requirements`). 1.0 for every 60-card format, including Standard Brawl.
+        "size": size, "floor_scale": _floor_scale(dmeta.get("format"), size),
     }
 
 
@@ -12326,11 +12523,16 @@ def tier_band(vec):
     # from the roster distribution 2026-09-02: A at (7, 11) ≈ the roster median on both
     # axes, B at (4, 7) ≈ its 10th percentile, C unchanged. `check_all` now warns when
     # the floor collapses into one band again (`tier_floor_spread`).
-    if ir >= TIER_FLOOR_REQ["A"][0] and resil >= TIER_FLOOR_REQ["A"][1]:
+    # Requirements in this deck's raw counts: the per-60 table, scaled for a 100-card
+    # format (`floor_requirements`). The aggro clock is a bounded 0–7 score, not a count,
+    # so it is NOT scaled — for a 100-card aggro deck it buys proportionally less, which
+    # is conservative. No such deck exists today.
+    req_a, req_b, req_c = (floor_requirements(vec, b) for b in ("A", "B", "C"))
+    if ir >= req_a[0] and resil >= req_a[1]:
         band = "A"                        # measurable ceiling; S is a human call on top
-    elif ir >= TIER_FLOOR_REQ["B"][0] and resil >= TIER_FLOOR_REQ["B"][1]:
+    elif ir >= req_b[0] and resil >= req_b[1]:
         band = "B"
-    elif resil >= TIER_FLOOR_REQ["C"][1]:
+    elif resil >= req_c[1]:
         band = "C"
     else:
         band = "D"
@@ -12351,6 +12553,38 @@ def tier_band(vec):
 # deck on the roster at A or B. `check_tier.py` anchors the shape, `tier_floor_spread`
 # watches the roster for the collapse that motivated the change.
 TIER_FLOOR_REQ = {"S": (7, 11), "A": (7, 11), "B": (4, 7), "C": (0, 2), "D": (0, 0)}
+
+# The table above is PER 60 CARDS: it was derived from a roster of 60-card decks, and
+# interaction / card advantage are COUNTS, so a 100-card deck clears it on size alone. On
+# 2026-09-29 the 100-card 78-historic-brawl read floor A on interaction 11 and card
+# advantage 5 — about 6.6 and 3 per 60, which is B density. A 100-card FORMAT
+# (`BIG_DECK_FORMATS`) therefore has its requirements scaled by size / 60, in raw card
+# counts, rounded UP. Keyed on the FORMAT, never on the card count alone: a 61-card
+# Standard deck must not need an extra removal spell because it runs one card over.
+_TIER_REF_SIZE = 60
+
+
+def _floor_scale(fmt, size):
+    """size / 60 for a 100-card format, else 1.0."""
+    if normalize_format(fmt) in BIG_DECK_FORMATS and size > _TIER_REF_SIZE:
+        return size / _TIER_REF_SIZE
+    return 1.0
+
+
+def _scale_count(n, k):
+    """A per-60 card count `n` in a deck scaled by `k` (`_floor_scale`), rounded UP.
+    round() before ceil: 7 * 100/60 is 11.666…, but 6 * 60/60 must stay exactly 6.
+    Shared by the tier floor and the needs model so the two cannot round differently."""
+    return n if k == 1.0 else math.ceil(round(n * k, 6))
+
+
+def floor_requirements(vec, band):
+    """(min interaction, min interaction + card advantage) for `band`, in THIS deck's raw
+    card counts. The ONE reader of `TIER_FLOOR_REQ` for a deck, shared by `tier_band` and
+    `tier_gap` so the floor and its gap cannot disagree (G-40)."""
+    need_i, need_r = TIER_FLOOR_REQ[band]
+    k = vec.get("floor_scale") or 1.0
+    return _scale_count(need_i, k), _scale_count(need_r, k)
 
 # The share of the roster one floor band may hold before `check_all` warns that the
 # floor has stopped discriminating. 104 of 117 (89%) is where BS8-06 found it.
@@ -12395,7 +12629,7 @@ def tier_gap(vec, target):
     target = (target or "").upper()
     if target not in TIER_FLOOR_REQ:
         return None
-    need_i, need_r = TIER_FLOOR_REQ[target]
+    need_i, need_r = floor_requirements(vec, target)
     inter, ca = vec["interaction"], vec["card_advantage"]
     # For an aggro plan the clock already counts toward the floor (see tier_band), so
     # the interaction the deck still needs is measured against interaction + clock (#4).
@@ -12422,7 +12656,7 @@ def tier_gap(vec, target):
             "met": not [p for p in parts if not p.startswith("(aggro:")], "summary": parts}
 
 
-def _filler_castable(cost, ident, declared):
+def _filler_castable(cost, ident, declared, lock=None):
     """Castability for a FILLER candidate (`tier --to`, `redundancy`): the PRINTED COST
     through `_candidate_castability`, exactly as `suggest` / `screen` / `suggest-homes`
     read it (G-58). The three filler functions were the last identity-subset holdouts —
@@ -12430,7 +12664,10 @@ def _filler_castable(cost, ident, declared):
     was excluded from mono-black 52a and 10–17 castable owned interaction cards per
     deck were hidden from the wildcard-spend planner (BS8-05). Identity stays as the
     FALLBACK for a card with no cost on file, which is the only case where it is the
-    best evidence available."""
+    best evidence available. `lock` is a Brawl deck's commander identity
+    (`commander_identity_lock`): outside it a card is illegal, whatever it costs."""
+    if lock is not None and ident - lock:
+        return False
     if not cost:
         return ident <= declared
     ok, _note = _candidate_castability(cost, ident, declared)
@@ -12465,6 +12702,7 @@ def owned_role_fillers(d, roles, *, limit=10):
     # can't help — the two entries were separate dicts.
     in_deck = {_ms_key(n) for q, n, s, c in cards}
     declared = set(_declared_colors(meta) or _deck_castable_colors(meta, cards, mana))
+    ident_lock = commander_identity_lock(meta)   # Brawl: identity is the rule
     out = []
     for nl, cd in carddata.items():
         if _ms_key(nl) in in_deck or nl in BASICS:
@@ -12477,7 +12715,7 @@ def owned_role_fillers(d, roles, *, limit=10):
             continue
         ident = card_colors(cd.get("colors"))
         entry = mana.get(nl)
-        if not _filler_castable(entry[0] if entry else "", ident, declared):
+        if not _filler_castable(entry[0] if entry else "", ident, declared, lock=ident_lock):
             continue
         legs = legalities.get(nl) or legalities.get(nl.split(" // ")[0]) or set()
         if fmt and legs and fmt not in legs:
@@ -12518,6 +12756,7 @@ def craft_role_fillers(d, roles, *, limit=8):
     # (the owned_qty skip below only masks the owned case).
     in_deck = {_ms_key(n) for q, n, s, c in cards}
     declared = set(_declared_colors(meta) or _deck_castable_colors(meta, cards, mana))
+    ident_lock = commander_identity_lock(meta)   # Brawl: identity is the rule
     fmt = pool_format_key(meta.get("format"))     # BS8-04: the pool's key
     RANK = {"Common": 0, "Uncommon": 1, "Rare": 2, "Mythic": 3}
     pool_rot, _has_released = _pool_rotation_index()
@@ -12538,7 +12777,7 @@ def craft_role_fillers(d, roles, *, limit=8):
                 continue
             ident = card_colors(r.get("Color(s)"))
             entry = mana.get(nl)
-            if not _filler_castable(entry[0] if entry else "", ident, declared):
+            if not _filler_castable(entry[0] if entry else "", ident, declared, lock=ident_lock):
                 continue
             legs = {x.strip().lower() for x in (r.get("Legalities") or "").split(";") if x.strip()}
             if fmt and legs and fmt not in legs:
@@ -12552,7 +12791,7 @@ def craft_role_fillers(d, roles, *, limit=8):
             # G-30: `tier --to` is described in CLAUDE.md as doubling as a WILDCARD-SPEND
             # PLANNER, and this is its craft half — the one list here that costs real
             # wildcards — so a rotating pick must say so (BS4-11).
-            rot = craft_rot_note(name, pool_rot)
+            rot = craft_rot_note(name, pool_rot, rotates=format_rotates(meta.get("format")))
             out.append((RANK.get(rar, 9), mv, name, "".join(sorted(ident)) or "C", rar,
                         (r.get("Card Text") or "").split("\n")[0][:56], rot))
     out.sort(key=lambda x: (x[0], x[1], x[2]))
@@ -12628,6 +12867,7 @@ def functional_theme_options(d, theme, *, limit=8):
     _, _, qty = load_collection()
     in_deck = {_ms_key(n) for q, n, s, c in cards}   # G-63: front-face join
     declared = set(_declared_colors(meta) or _deck_castable_colors(meta, cards, mana))
+    ident_lock = commander_identity_lock(meta)   # Brawl: identity is the rule
     fmt = pool_format_key(meta.get("format"))     # BS8-04: the pool's key
     out, seen = [], set()
     for nl, m in cardmeta.items():
@@ -12641,7 +12881,7 @@ def functional_theme_options(d, theme, *, limit=8):
         name = cd.get("name") or nl
         entry = mana.get(nl)
         if not _filler_castable(entry[0] if entry else "", card_colors(cd.get("colors")),
-                                declared):
+                                declared, lock=ident_lock):
             continue
         legs = leg.get(nl)
         if fmt and legs is not None and fmt not in legs:
@@ -14245,6 +14485,13 @@ def cmd_tier(args):
     print(f"Tier — deck {d['id']}: {d['name'] or d['path']}")
     print(f"  claimed tier  : {claimed or '(untiered)'}")
     print(f"  metrics floor : {implied}   (measurable-only — blind to bombs/meta, so it under-rates)")
+    _k = vec.get("floor_scale") or 1.0
+    if _k != 1.0:
+        _ra, _rb = floor_requirements(vec, "A"), floor_requirements(vec, "B")
+        print(f"  ⓘ {vec['size']}-card deck: the floor is defined per 60 cards, so its thresholds "
+              f"are scaled ×{_k:.2f} here — A needs interaction {_ra[0]} and a sum of {_ra[1]}, "
+              f"B needs {_rb[0]} and {_rb[1]}. Per 60 this deck is interaction "
+              f"{vec['interaction'] / _k:.1f} · card advantage {vec['card_advantage'] / _k:.1f}.")
     print(f"  plan          : {vec.get('plan', 'midrange')}"
           + (f"  ·  clock {_clock_score(vec)}/7 (curve/threats/reach substitutes for interaction)"
              if vec.get('plan') == 'aggro' else "  (floor weights interaction + card advantage)"))
@@ -15374,6 +15621,13 @@ def _cmd_rotation_deck(args):
         eprint("card-pool.csv has no Released column — rebuild it (build_pool.py --all) so "
                "rotation dates are available. Nothing to report until then.")
         return 1
+    if not args.fmt and not format_rotates(meta["fmt"]):
+        # Historic Brawl / Historic / Timeless are eternal pools: Standard's rotation is not
+        # a legality fact about them, so any count here would be answering the wrong format.
+        print(f"Deck {d['id']}: {d['name'] or d['path']} — rotation: `{meta['fmt']}` does not "
+              "rotate, so no card leaves this deck. (Pass --format standard to see what "
+              "rotates out of Standard.)")
+        return 0
     _, _, by_name_qty = load_collection()
     print(f"Deck {d['id']}: {d['name'] or d['path']} — rotation ({meta['fmt'] or 'any format'}, "
           f"~{args.years}y window, next {args.within}y): {len(atrisk)} rotating card line(s).")

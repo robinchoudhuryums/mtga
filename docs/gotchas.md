@@ -3943,6 +3943,46 @@ predicate (`<= declared`), not by remembering which functions were converted.
 
 ## [G-67] A pattern set is a whitelist, and a whitelist's misses are invisible
 
+### 2026-09-29 — three holes from one craft list, and the guard that kept a fourth out
+
+Found by grading a 37-card craft list for 78-historic-brawl, not by a gate: three cards read
+as nothing the tier floor counts while their text is removal or card advantage.
+
+**Tuck, family disagreement.** `target creature[^.]{0,80}?into (their|its) … library` read
+CREATURE only, while the PUT-on-top/bottom tuck beside it already took any permanent — so
+Happy Hogan's "the owner of target creature … puts it into their library" scored and Wan Shi
+Tong's "target nonland permanent's owner puts it into their library" did not. Widened to
+`_PERM_TYPE` (the noun, not the window): 9 pool cards, Chaos Warp and Deem Inferior among them.
+
+**"ANOTHER / OTHER target".** The main destroy/exile pattern had no slot for "another"
+(Fiend Hunter, Hostage Taker, Noxious Gearhulk) or its sibling "up to one OTHER target"
+(Solitude, Azog) — the second spelling is the same family, so both went in. **This one needed a
+guard**, because the shape is shared with BLINKS: Flickerwisp, Eldrazi Displacer, Wiccan and
+Phelia return the card in the same ability, and Dedicated Dollmaker hands its owner a token
+copy. The negative lookahead is line-scoped (`[^\n]`), which is what keeps Fiend Hunter IN — its
+"When this creature leaves the battlefield, return the exiled card" is an O-ring on its own
+line. The negative test is the load-bearing one: dropping the lookahead makes the pattern
+BROADER, so a positive fixture passes either way (the mass-bounce lesson again); the unguarded
+pattern was confirmed to match Flickerwisp.
+
+**Remove-a-counter, then draw.** Dawn of a New Age's "At the beginning of your end step, remove
+a hope counter from this enchantment. If you do, draw a card." — the sentence break stopped the
+end-step draw pattern short. Fixed on the CLAUSE (a counter removed from this permanent, then
+"if you do, draw"), not by letting `[^.]` cross a period: 1 pool card, exactly the target.
+
+**Measured**: 26 pool cards gained a role, 0 lost one; 25 are unambiguous answers or draw, the
+26th (Invasion of New Phyrexia) scores off its transformed back face, as every DFC's full text
+already does. Roster: **6 decks +1 interaction (15, 16, 20a, 20b, 42, 72), 0 tier floors
+moved**; three `#: tier:` blocks quoted the old figure and were corrected in the same change.
+
+**RESIDUAL, measured and NOT fixed here:** the plain `exile target …` pattern has no blink guard,
+so 15 pool cards whose ability returns the card score as removal (Flicker of Fate, Spaceshift,
+Hallowed Respite…). Several are real removal in another mode (Parting Gust, Touch the Spirit
+Realm, Conciliator's Duelist), so the fix is not simply "add the same lookahead" — it LOWERS
+existing counts and needs its own roster diff. The two branches of one family now disagree in
+the conservative direction only.
+
+
 ### 2026-09-21 — the proximity window's mirror: the WINDOW was innocent
 
 Two holes, found while tuning deck 3 by hand — again not by a gate.
@@ -7171,6 +7211,24 @@ K-12 roster diff was needed.
 per-card surface asks *is this out yet*. A pool built with a custom `--query`, or one
 built before this bound existed, re-opens the whole failure; the soft sweep is what tells
 you.
+
+### The inverse: a set you can play before the pool can hold it (2026-09-30)
+
+The same date bound runs the other way. Arena released **Reality Fracture (FRA)** on
+2026-09-30, two days before Scryfall's release date of 2026-10-02, and the owner opened
+and played it at once. Because `date<=now` excludes a set until its Scryfall date, the
+pool held none of it, and a deck line naming an FRA printing failed INV-04 as an unknown
+set. Thirteen FRA swaps were confirmed across decks 55 and 60 in those two days and none
+could be written to a deck file.
+
+What worked: queue each confirmed FRA swap in the deck's `#: notes:` (card, collector
+number, the card it replaces and why), and build the Arena import block from a scratch
+copy of the repo with the FRA rows added to its pool and mana files, so the owner's deck
+and the import agree. Card text for an unreleased set comes from Scryfall, which indexes a
+set's cards before release, never from memory. After the date,
+`make refresh REFETCH=1` brings the set in, and the queued swaps are applied with
+`deck.py swap` like any other. Do not loosen `date<=now` to admit an early set: the bound
+exists because the pool's newest printing becomes the one `resolve` writes.
 
 ## [G-80] A card that grants a keyword is a card about that keyword
 

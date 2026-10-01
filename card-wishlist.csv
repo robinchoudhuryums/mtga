@@ -24,6 +24,8 @@ When this creature enters, choose target opponent. If they lost life this turn, 
 Daggerfang Duo,Creature — Rat Squirrel,"Deathtouch
 When this creature enters, you may mill two cards. (You may put the top two cards of your library into your graveyard.)",B,Rat; Squirrel; graveyard; mill; etb; deathtouch; combat; removal,BLB,89,Common,,,1.0,seed
 Unstoppable Plan,Enchantment,"At the beginning of your end step, untap all nonland permanents you control.",U,,DFT,72,Rare,16,deck 16 waterbend rebuild 2026-09-19,3.0,seed
+Adrenaline Jockey,Creature — Minotaur Pilot,"Whenever a player casts a spell, if it's not their turn, this creature deals 4 damage to them.
+Whenever you activate an exhaust ability, put a +1/+1 counter on this creature.",R,Minotaur; Pilot; counters; burn,DFT,112,Uncommon,60,speed aggro 3-drop (deck 60 round-2 pile swap); pings us for off-turn spells,4.0,seed
 Central Elevator // Promising Stairs,Enchantment — Room // Enchantment — Room,"When you unlock this door, search your library for a Room card that doesn't have the same name as a Room you control, reveal it, put it into your hand, then shuffle.
 (You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.) // At the beginning of your upkeep, surveil 1. You win the game if there are eight or more different names among unlocked doors of Rooms you control.
 (You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",U,Room; surveil; graveyard,DSK,44,Rare,51,,5.5,hand
@@ -100,6 +102,7 @@ Threshold — This creature can't be blocked as long as there are seven or more 
 Dreadwing Scavenger,Creature — Nightmare Bird,"Flying
 Whenever this creature enters or attacks, draw a card, then discard a card.
 Threshold — This creature gets +1/+1 and has deathtouch as long as there are seven or more cards in your graveyard.",U/B,Nightmare; Bird; graveyard; card draw; pump; flying; evasion; threshold,FDN,118,Uncommon,,,4.0,seed
+"Garna, Bloodfist of Keld",Legendary Creature — Human Berserker,"Whenever another creature you control dies, draw a card if it was attacking. Otherwise, Garna deals 1 damage to each opponent.",B/R,Human; Berserker; card draw; burn; noncombat damage,FDN,658,Uncommon,55,"Deck 55 converter: draws when an attacking creature dies, pings 1 otherwise (the end-step Mobilize sac). Uncommon.",7.0,seed
 Hoarding Dragon,Creature — Dragon,"Flying
 When this creature enters, you may search your library for an artifact card, exile it, then shuffle.
 When this creature dies, you may put the exiled card into its owner's hand.",R,Dragon; etb; flying; evasion,FDN,626,Uncommon,49,,5.0,hand
@@ -146,6 +149,11 @@ Ixalli's Lorekeeper,Creature — Human Druid,{T}: Add one mana of any color. Spe
 Poison Dart Frog,Creature — Frog,"Reach
 {T}: Add one mana of any color.
 {2}: This creature gains deathtouch until end of turn.",G,Frog; mana; reach; defense,LCI,207,Common,50,,1.5,seed
+Flowering of the White Tree,Legendary Enchantment,"Legendary creatures you control get +2/+1 and have ward {1}.
+Nonlegendary creatures you control get +1/+1.",W,Nonlegendary; pump; ward; protection,LTR,15,Rare,78-historic-brawl,craft for 78-historic-brawl (applied 2026-09-29),4.5,seed
+"Black Panther, Wakandan King",Legendary Creature — Human Noble Hero,"First strike
+Survey the Realm — Whenever Black Panther or another creature you control enters, put a +1/+1 counter on target land you control.
+Mine Vibranium — {3}: Move all +1/+1 counters from target land you control onto target creature. If one or more +1/+1 counters are moved this way, you gain that much life and draw a card.",W/G,Human; Noble; Hero; counters; lifegain; card draw; first strike; combat,MAR,87,Mythic,78-historic-brawl,78-historic-brawl craft-list swap for Arcane Signet: enters trigger feeds land counters (Toph) and a {3} draw sink,7.0,seed
 Ill-Timed Explosion,Sorcery,"Draw two cards. Then you may discard two cards. When you do, Ill-Timed Explosion deals X damage to each creature, where X is the greatest mana value among cards discarded this way.",U/R,card draw; burn,MKM,207,Rare,25,draw two + scalable board sweep/burn,7.0,hand
 "Izoni, Center of the Web",Legendary Creature — Elf Detective,"Menace
 Whenever Izoni enters or attacks, you may collect evidence 4. If you do, create two 2/1 black and green Spider creature tokens with menace and reach.
@@ -179,6 +187,10 @@ When this creature dies, investigate. (Create a Clue token. It's an artifact wit
 Loxodon Eavesdropper,Creature — Elephant Detective,"When this creature enters, investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")
 Whenever you draw your second card each turn, this creature gets +1/+1 and gains vigilance until end of turn.",G,Elephant; Detective; card draw; sacrifice; tokens; etb; clue; pump; investigate,MKM,168,Common,34,,2.5,hand
 Novice Inspector,Creature — Human Detective,"When this creature enters, investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",W,Human; Detective; card draw; sacrifice; tokens; etb; clue; investigate,MKM,29,Common,36a,,3.5,hand
+Multiversal Recruitment,Sorcery,"Create a token that's a copy of target creature you control, except it isn't legendary.
+Flashback {5}{U}{U} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",U,graveyard; tokens; flashback; recursion; spellslinger,MSC,629,Uncommon,78-historic-brawl,craft for 78-historic-brawl (applied 2026-09-29),2.0,seed
+Vault Guardsman,Artifact Creature — Human Advisor,"Convoke (Your creatures can help cast this spell. Each creature you tap while casting this spell pays for {1} or one mana of that creature's color.)
+When this creature enters, exile target artifact or creature an opponent controls until this creature leaves the battlefield.",W,Human; Advisor; removal; etb; convoke; go-wide,MSC,612,Uncommon,78-historic-brawl,craft for 78-historic-brawl (applied 2026-09-29),5.5,seed
 Kang the Conqueror,Legendary Creature — Human Villain,"Flying
 Power-up — {5}{U}{U}{U}: Put a +1/+1 counter on Kang. Take an extra turn after this one. During that turn, power-up abilities can't be activated. (Activate each power-up ability only once. Reduce the cost by his mana cost if he entered this turn.)",U,Human; Villain; counters; flying; evasion; power-up; payoff,MSH,62,Mythic,12,blue control finisher — evasive body + extra-turn power-up; UUU castable in Dimir,6.5,hand
 Fisk Tower,Land,"This land enters tapped.
@@ -266,10 +278,13 @@ III — Double the power and toughness of each creature you control until end of
 Stillness in Motion,Enchantment,"At the beginning of your upkeep, mill three cards. Then if your library has no cards in it, exile this enchantment and put five cards from your graveyard on top of your library in any order.",U,graveyard; mill,TDM,59,Rare,,,4.0,seed
 Encroaching Dragonstorm,Enchantment,"When this enchantment enters, search your library for up to two basic land cards, put them onto the battlefield tapped, then shuffle.
 When a Dragon you control enters, return this enchantment to its owner's hand.",G,etb; bounce,TDM,142,Uncommon,,,2.5,seed
+Hardened Tactician,Creature — Human Warrior,"{1}, Sacrifice a token: Draw a card.",W/B,Human; Warrior; card draw; sacrifice,TDM,191,Uncommon,55,"Deck 55: {1}, sacrifice a token: draw a card. Converts doomed Mobilize tokens into cards.",4.0,seed
 Karakyk Guardian,Creature — Dragon,"Flying, vigilance, trample
 This creature has hexproof as long as it hasn't dealt damage yet. (It can't be the target of spells or abilities your opponents control.)",U/R/G,Dragon; flying; evasion; vigilance; combat; trample,TDM,198,Uncommon,,,2.5,seed
 Runescale Stormbrood // Chilling Screech,Creature — Dragon // Instant — Omen,"Flying
 Whenever you cast a noncreature spell or a Dragon spell, this creature gets +2/+0 until end of turn. // Counter target spell with mana value 2 or less. (Then shuffle this card into its owner's library.)",U/R,Dragon; Omen; counterspell; pump; flying; evasion,TDM,221,Uncommon,49,Deck 49: a 4-drop DRAGON that is also a Dragon payoff (+2/+0 on every noncreature or Dragon spell). Hidden from every red filter because its identity is U/R from the {1}{U} Omen half - the FRONT face is {3}{R} and mono-red castable (G-58 bulk-triage variant).,7.2,hand
+Venerated Stormsinger,Creature — Orc Cleric,"Mobilize 1 (Whenever this creature attacks, create a tapped and attacking 1/1 red Warrior creature token. Sacrifice it at the beginning of the next end step.)
+Whenever this creature or another creature you control dies, each opponent loses 1 life and you gain 1 life.",B,Orc; Cleric; lifegain; tokens; mobilize; go-wide; aggro,TDM,97,Uncommon,55,"Mobilize 1 + drains 1 per creature death, i.e. per end-step token sacrifice",5.5,seed
 "Azula, Cunning Usurper",Legendary Creature — Human Noble Rogue,"Firebending 2 (Whenever this creature attacks, add {R}{R}. This mana lasts until end of combat.)
 When Azula enters, target opponent exiles a nontoken creature they control, then they exile a nonland card from their graveyard.
 During your turn, you may cast cards exiled with Azula and you may cast them as though they had flash. Mana of any type can be spent to cast those spells.",U/B,Human; Noble; Rogue; graveyard; etb; firebending; bending,TLA,208,Rare,22,"best 22 (Bloodbending); also 17,12",6.0,hand
@@ -289,6 +304,11 @@ Nonbasic lands enter tapped.
 As long as Zhao has a conqueror counter on him, nonbasic lands are Mountains. (They lose all other land types and abilities and have ""{T}: Add {R}."")",R,Human; Soldier; counters; mana; menace; evasion,TLA,162,Rare,14,"Fire Nation flavor (heuristic top 13 on counters/mana) | fits: 13,17",4.0,hand
 Geyser Leaper,Creature — Human Warrior Ally,"Flying
 Waterbend {4}: Draw a card, then discard a card. (While paying a waterbend cost, you can tap your artifacts and creatures to help. Each one pays for {1}.)",U,Human; Warrior; Ally; card draw; flying; evasion; waterbend; bending,TLA,52,Common,16,waterbend {4} loot on a flier; the 2026-09-18 waterbend rebuild's one craft,1.0,seed
+Beastmaster Ascension,Enchantment,"Whenever a creature you control attacks, you may put a quest counter on this enchantment.
+As long as this enchantment has seven or more quest counters on it, creatures you control get +5/+5.",G,counters; pump,TLE,39,Mythic,78-historic-brawl,78-historic-brawl swap for Hermitic Herbalist: +5/+5 team finisher; Doubling Season doubles its quest counters,5.0,seed
+"Wan Shi Tong, All-Knowing",Legendary Creature — Bird Spirit,"Flying
+When Wan Shi Tong enters, target nonland permanent's owner puts it into their library second from the top or on the bottom.
+Whenever one or more cards are put into a library from anywhere, create two 1/1 colorless Spirit creature tokens with ""This token can't block or be blocked by non-Spirit creatures.""",U,Bird; Spirit; tokens; etb; flying; evasion,TLE,98,Mythic,78-historic-brawl,78-historic-brawl swap for The Millennium Calendar: enters tuck of any nonland permanent plus two Spirit tokens; interaction 12 -> 13 (A floor),8.0,seed
 Bebop & Rocksteady,Legendary Creature — Boar Rhino Mutant,"Whenever Bebop & Rocksteady attack or block, sacrifice a permanent unless you discard a card.",B/G,Boar; Rhino; Mutant; sacrifice,TMT,140,Rare,8,"best 8 (Sacrifices); also 21,21a,5",3.5,hand
 "Madame Null, Power Broker",Legendary Creature — Demon Advisor,"Deathtouch
 Whenever another creature you control enters, you may pay life equal to its power. If you do, put that many +1/+1 counters on it.",B,Demon; Advisor; counters; deathtouch; combat; removal,TMT,66,Rare,31,"retargeted 2026-09-11 (20b retired): best 31 Pox — `suggest-homes` rates it KEY at 57, a clear lead over 42 at 32; also 11,8,21",5.5,hand

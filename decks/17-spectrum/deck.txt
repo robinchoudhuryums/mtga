@@ -1,5 +1,6 @@
 #: name: Spectrum (5c good-stuff)
 #: format: Standard
+#: arena: 17 Spectrum 5c, baf21f8b-eb61-4e32-84ba-3a599b7334ff
 #: tier: A — 5-color superhero goodstuff. Re-graded C→A on 2026-09-27 at the owner's call,
 #: tier: after the 2026-09-26 tune. The live vector is interaction 7 / card advantage 8 /
 #: tier: protection 3, an A floor, and the letter now sits on it. The old C never rested on

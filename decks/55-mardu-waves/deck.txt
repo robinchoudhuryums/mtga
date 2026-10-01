@@ -2,24 +2,33 @@
 #: format: Standard
 #: colors: RWB
 #: plan: aggro
-#: archetype: MARDU MOBILIZE WAVES. Six wave engines (two Zurgos, Stadium Headliner,
-#: archetype: Bone-Cairn, Trebuchet, Siegebreaker) put tapped-and-attacking tokens onto
-#: archetype: the battlefield EVERY combat; three doubler layers multiply the wave
-#: archetype: (Windcrag Siege doubles attack-triggers, Delney doubles power<=2 triggers,
-#: archetype: Neriv doubles entered-this-turn damage; Raph & Leo and Aurelia add whole
-#: archetype: extra combats = extra waves); converters turn each wave into damage
-#: archetype: (Impact Tremors, Shocking Sharpshooter), cards (Enduring Innocence),
-#: archetype: mana (Sun Warriors), and permanent board (EPF Point
-#: archetype: Squad counters, Suki's Ally, Zurgo TD making waves PERMANENT). Distinct
-#: archetype: from every other token deck on the roster: the width is a per-combat
-#: archetype: PULSE, not a built board — no other deck runs Mobilize at all.
+#: archetype: MARDU MOBILIZE WAVES. Wave engines (Zurgo, Dalkovan Packbeasts, Voice of
+#: archetype: Victory, Venerated Stormsinger, Zurgo's Vanguard, Stadium Headliner, Bone-Cairn, Trebuchet,
+#: archetype: Siegebreaker) put tapped-and-attacking tokens onto the battlefield EVERY
+#: archetype: combat, and The Fire Crystal gives every creature haste so a Mobilize body
+#: archetype: attacks the turn it lands; four doubler layers multiply the wave (Windcrag Siege doubles
+#: archetype: attack-triggers, Exalted Sunborn doubles every token created, Delney doubles
+#: archetype: power<=2 triggers, Neriv doubles entered-this-turn damage; Raph & Leo and
+#: archetype: Aurelia add whole extra combats = extra waves); converters turn each wave into
+#: archetype: damage (Impact Tremors, Shocking Sharpshooter, Slash, Garna), cards (Enduring
+#: archetype: Innocence; Garna, when an attacker dies; Hardened Tactician, a card per token),
+#: archetype: recursion (Alesha returns a dead creature card at end step after an attack), removal (Sothera: every token that dies at
+#: archetype: end step makes each opponent exile a creature), drain (Stormsinger), and
+#: archetype: permanent board (EPF Point Squad counters, Suki's Ally, Zurgo TD making waves
+#: archetype: PERMANENT). Distinct from every other token deck on the roster: the width is
+#: archetype: a per-combat PULSE, not a built board — no other deck runs Mobilize at all.
 #: protect: Zurgo, Thunder's Decree; Windcrag Siege; Delney, Streetwise Lookout; Suki, Courageous Rescuer; Mardu Siegebreaker; Fire Navy Trebuchet
-#: tier: A (PROVISIONAL) — graded at the measurable floor, not above it: aggro plan
-#: tier: with a real clock, nine interaction slots, and a sub-3 curve. Unproven in
-#: tier: matches, and the two honest weaknesses are thin card advantage (the engine
-#: tier: draws through Enduring Innocence and impulse effects, not a draw suite)
-#: tier: and double-white on turn 3 in a three-color manabase (Suki and Enduring
-#: tier: Innocence cast late more often than on curve). Re-grade after real games.
+#: tier: A (PROVISIONAL) — the metrics floor reads A. The 2026-10-01 swaps first dropped the
+#: tier: floor a band (curve up, card advantage thin); Garna and a 25th land restored it, with
+#: tier: card advantage 3 (Garna draws whenever an attacking creature dies), interaction 8
+#: tier: (Coordinated Maneuver, Valorous Stance and Pyrrhic Strike, all instants), a 3.23
+#: tier: curve (3.14 counting Sunborn's warp) and an aggro clock of 2/7. What the floor
+#: tier: cannot see: Sothera's exile-per-dying-token is an edict engine the classifier does
+#: tier: not count as interaction, and Sunborn and Slash multiply every wave. Unproven in
+#: tier: matches; the honest weaknesses are card advantage that needs mana (Garna, Enduring
+#: tier: Innocence and Hardened Tactician's {1} per token, not a draw suite) and double-white on turn 3 in a three-color
+#: tier: manabase (Suki and Enduring Innocence cast late more often than on curve). Re-grade
+#: tier: after real games.
 #: notes: BUILT from the 131-card pile analysis (55-mardu working doc). Timing spine the
 #: notes: tooling can't see: (1) Zurgo TD's end-step clause DEFEATS the wave's delayed
 #: notes: sac trigger permanently — waves become permanent width while he's out. (2)
@@ -44,47 +53,99 @@
 #: notes: (55a holds 3). Bench if a slot opens (screened KEY, in grade order): Cruel
 #: notes: Administrator, Shock Brigade, Reigning Victor, Sami. (Jolly Balloon Man
 #: notes: was promoted from this bench into the Converters block, for Snow.)
+#: notes: SWAPS, 2026-10-01 (owner's picks from a 26-card candidate list): Dalkovan
+#: notes: Packbeasts for the 2nd Zurgo (legendary, so the 2nd copy only covered draws;
+#: notes: Mobilize 3 on a power-0 body Delney doubles), Exalted Sunborn for the 2nd Windcrag
+#: notes: Siege (doubles every token; Warp {1}{W} makes it a 2-mana one-turn doubler),
+#: notes: Sothera for Duty Beyond Death, Slash for Akul (so note (2)'s Akul line is history),
+#: notes: Venerated Stormsinger for a Zurgo's Vanguard; lands: Sacred Foundry, Godless Shrine
+#: notes: and two Dark Fortress for Razortrap Gorge, a Plains, a Mountain and Boiling Rock
+#: notes: Prison (W 13 / B 10 / R 12, from 12 / 9 / 12). TIMING: the death payoffs (Sothera,
+#: notes: Stormsinger) fire on the END-STEP sacrifice, and Zurgo TD's clause stops Warrior
+#: notes: tokens being sacrificed — while Zurgo is out only the Boulders and Siegebreaker
+#: notes: copies die. Considered and parked: G'raha Tia, Marshal of the Lost, Enduring
+#: notes: Courage (RR against a three-colour base). Then Voice of Victory for one EPF Point
+#: notes: Squad: a 2-drop Mobilize 2 that Delney doubles, and "your opponents can't cast
+#: notes: spells during your turn" protects the attack turn. Then Garna, Bloodfist of Keld
+#: notes: for Frontline Rush, with the land fix that justifies her: Dark Fortress for Mardu
+#: notes: Monument (a 25th land) and for a Swamp (W 13 / B 10 / R 14; Garna 56% -> 64% on
+#: notes: turn 4, nothing else got worse). Garna draws when an ATTACKING creature dies and
+#: notes: pings 1 when a non-attacker dies — the end-step Mobilize sacrifice is the ping half.
+#: notes: PENDING the Reality Fracture pool refresh (FRA is not in card-pool.csv yet, so its
+#: notes: lines cannot be written here): Ajani Unrelenting (FRA) 242 for Team Avatar. His −2
+#: notes: discards your hand then draws one per creature you control — use it in main phase 2
+#: notes: while the wave's tokens are alive; his −3 also kills your own NONTOKEN creatures.
+#: notes: SWAPS, 2026-10-01 (after a 1-4 start; the owner named three gaps — protection,
+#: notes: flexible interaction, haste): The Fire Crystal for Sun Warriors ("Creatures you
+#: notes: control have haste" — eleven creatures only do something when they attack, so each
+#: notes: one used to give the opponent a turn to kill it first; red spells also cost {1}
+#: notes: less, and it is an artifact, out of reach of creature removal). Coordinated Maneuver
+#: notes: for one Impact Tremors (instant: damage equal to your creature count to a creature or
+#: notes: planeswalker, or destroy an enchantment). Valorous Stance for Taii Wakeen
+#: notes: (indestructible, or destroy a creature with toughness 4+). Proposed and not taken:
+#: notes: Restoration Magic for Mardu Devotee ({W}: hexproof and indestructible on any permanent).
+#: notes: Then Hardened Tactician for Stormbeacon Blade ("{1}, Sacrifice a token: Draw a card" —
+#: notes: sacrifice Mobilize tokens during combat, after damage, and Garna draws too; never in
+#: notes: your end step, where Zurgo TD makes Warrior tokens unsacrificeable) and Pyrrhic Strike
+#: notes: for Lorehold Charm (blight 2 on a doomed token and choose both: destroy an artifact or
+#: notes: enchantment AND a creature with mana value 3+; the token's death also fires Sothera).
+#: notes: ALSO PENDING the Reality Fracture refresh, alongside Ajani: Liliana the Faultless (FRA)
+#: notes: 200 for Mardu Devotee ("{1}, {T}, Discard a card: another target creature gains
+#: notes: hexproof"; 1 life per creature entering) and Ingris Stingerquill (FRA) 137 for Zurgo's
+#: notes: Vanguard (each DECLARED attacker deals 1 to each opponent, doubled by Windcrag Siege and
+#: notes: by Delney; Mobilize tokens enter attacking and never trigger it; {4} gives team haste).
+#: notes: Then Alesha, Who Laughs at Fate for one Bone-Cairn Butcher (owner's pick over EPF Point
+#: notes: Squad). Her attack trigger is doubled by Delney (she is a 2/2) and by Windcrag Siege, so
+#: notes: one attack can make her 6/6; Raid then returns a creature card with mana value up to
+#: notes: her power at end step. The cost: one Bone-Cairn left, the only card giving tokens
+#: notes: deathtouch. LANDS re-checked after the swaps: no colour shift helps (Plains to Swamp
+#: notes: moves about 5 points from the WW cards to the black ones); the real gain is tempo —
+#: notes: Scoured Barrens and Sun-Blessed Peak enter tapped, and a 2nd Godless Shrine and 2nd
+#: notes: Sacred Foundry make the same colours untapped.
 
 # Wave engines
-2 Zurgo, Thunder's Decree (TDM) 237
-2 Zurgo's Vanguard (TDM) 133
+1 Zurgo, Thunder's Decree (TDM) 237
+1 Dalkovan Packbeasts (TDM) 7
+1 Zurgo's Vanguard (TDM) 133
+1 Venerated Stormsinger (TDM) 97
 1 Stadium Headliner (TDM) 122
-1 Mardu Monument (TDM) 245
-2 Bone-Cairn Butcher (TDM) 173
+1 Bone-Cairn Butcher (TDM) 173
 1 Fire Navy Trebuchet (TLA) 100
 1 Mardu Siegebreaker (TDM) 206
 1 Sonic Shrieker (TDM) 226
 1 Jet, Freedom Fighter (TLA) 229
+1 Voice of Victory (TDM) 33
+1 The Fire Crystal (FIN) 135
 
 # Doublers
 1 Delney, Streetwise Lookout (MKM) 12
-2 Windcrag Siege (TDM) 235
+1 Windcrag Siege (TDM) 235
+1 Exalted Sunborn (EOE) 15
 1 Neriv, Heart of the Storm (TDM) 210
 1 Raph & Leo, Sibling Rivals (TMT) 166
 1 Aurelia, the Warleader (FDN) 651
 
 # Converters
-2 Impact Tremors (FDN) 717
+1 Impact Tremors (FDN) 717
 1 Shocking Sharpshooter (TDM) 121
-2 EPF Point Squad (TMT) 145
+1 EPF Point Squad (TMT) 145
 1 Enduring Innocence (DSK) 6
 1 Suki, Courageous Rescuer (TLA) 37
-1 Sun Warriors (TLA) 244
 1 Team Avatar (TLA) 38
 1 The Jolly Balloon Man (DSK) 219
-1 Taii Wakeen, Perfect Shot (OTJ) 234
-1 Stormbeacon Blade (TDM) 27
+1 Hardened Tactician (TDM) 191
+1 Sothera, the Supervoid (EOE) 115
+1 Slash, Reptile Rampager (TMT) 108
+1 Garna, Bloodfist of Keld (FDN) 658
+1 Alesha, Who Laughs at Fate (FDN) 115
 
 # Pulse tricks
-1 Frontline Rush (TDM) 186
-1 Duty Beyond Death (TDM) 10
 1 Boros Charm (FDN) 721
 
 # Removal (spot)
-1 Lorehold Charm (SOS) 200
-
-# Payoff sink
-1 Akul the Unrepentant (OTJ) 189
+1 Pyrrhic Strike (ECL) 30
+1 Coordinated Maneuver (TDM) 6
+1 Valorous Stance (FDN) 583
 
 # Ramp / fixing
 1 Mardu Devotee (TDM) 16
@@ -95,13 +156,14 @@
 1 Blazemire Verge (DSK) 256
 1 Bleachbone Verge (DFT) 250
 1 Nomad Outpost (TDM) 263
-1 Razortrap Gorge (DSK) 267
+1 Sacred Foundry (EOE) 256
 1 Sun-Blessed Peak (TLA) 280
-1 Boiling Rock Prison (TLA) 267
 1 Scoured Barrens (M21) 250
-6 Mountain (MSH) 293
-7 Plains (MSH) 287
-2 Swamp (MSH) 291
+5 Mountain (MSH) 293
+4 Dark Fortress (MSH) 264
+6 Plains (MSH) 287
+1 Godless Shrine (EOE) 254
+1 Swamp (MSH) 291
 
 # Flex — from the 2026-08-15 HOB ingest
 #~ -Raph & Leo, Sibling Rivals | +Bolg of the North | owned: ETB sacrifice a creature, deal its power to another, and amass the excess as a Goblin Army. Graded here over deck 58 (which scored higher) because Bolg wants CREATURE fodder and this deck mints 16 sources of attacking tokens where 58's 27 token-makers are mostly Treasures. Cut is the deck's lowest-fit card, off the central themes. Cost: Bolg is MV 5 on an aggro curve.

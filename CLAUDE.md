@@ -169,7 +169,7 @@ castability · curve · central-theme density), with the intangibles moving a de
   model can't see those), so it **under-rates by design.** An uncastable stray CAPS the floor at C
   rather than SETTING it, so a dead card can no longer RAISE a D-floor deck, and a card
   the deck's `#: uncastable-ok:` header declares intentional is not counted at all.
-- **A GOOD DECK CAN SIT AT A LOW FLOOR, AND THAT IS THE MODEL WORKING (investigated 2026-09-03, prompted by deck 78 playing above its B).** The floor reads TWO of the eleven terms `deck_quality_vector` produces; **21 of deck 78's 36 nonland cards contribute nothing to it** — 11 payoff/engine plus 10 with no role at all, Doubling Season / Starfield Vocalist / Katara among them, i.e. the entire trigger-doubling thesis. That is not deck-78-specific: the roster's MEDIAN deck has 71% of its nonland cards invisible to the floor (78 is 75%, rank 42 of 115). **A payoff-density term was simulated and DECLINED**: +1 per 4 payoff cards capped at +3 moved 16 decks, cut the C band 9→1 and pushed A to 62% — re-starting the saturation BS8-06 had just fixed — **and left deck 78 at B anyway.** So the answer to "does a well-playing deck mean the rubric is wrong" is no on both halves: the intended remedy is the human letter, which the rubric already lets sit ONE band above the floor. Three things say leave the table alone: the spread is healthy (A 68 / B 44 / C 0, that band now EMPTY — deck 73 was its last member — top band 61% against the 85% alarm; the 2026-09-22 plan-header pass moved four decks A→B and widened it further), the record cannot arbitrate (**79 matches, and int+ca correlates with winning at r = −0.03**; nothing clears the ±0.22 noise band, so this is not evidence the floor is wrong, it is evidence the sample sees nothing), and deck 78's 5-2 is one win above the 54% pooled baseline at n=7 against a 20-match floor. **Re-derive the table when `tier_floor_spread` says so; do not re-derive it because a deck outperformed its letter.**
+- **A GOOD DECK CAN SIT AT A LOW FLOOR, AND THAT IS THE MODEL WORKING (investigated 2026-09-03, prompted by deck 78 playing above its B).** The floor reads TWO of the eleven terms `deck_quality_vector` produces; **21 of deck 78's 36 nonland cards contribute nothing to it** — 11 payoff/engine plus 10 with no role at all, Doubling Season / Starfield Vocalist / Katara among them, i.e. the entire trigger-doubling thesis. That is not deck-78-specific: the roster's MEDIAN deck has 71% of its nonland cards invisible to the floor (78 is 75%, rank 42 of 115). **A payoff-density term was simulated and DECLINED**: +1 per 4 payoff cards capped at +3 moved 16 decks, cut the C band 9→1 and pushed A to 62% — re-starting the saturation BS8-06 had just fixed — **and left deck 78 at B anyway.** So the answer to "does a well-playing deck mean the rubric is wrong" is no on both halves: the intended remedy is the human letter, which the rubric already lets sit ONE band above the floor. Three things say leave the table alone: the spread is healthy (A 69 / B 45 / C 0, that band now EMPTY — deck 73 was its last member — top band 61% against the 85% alarm; the 2026-09-22 plan-header pass moved four decks A→B and widened it further, and the 2026-09-29 per-60 scaling moved one more, the 100-card 78-historic-brawl, which a removal add took back to A on 2026-09-30, and deck 55, whose 2026-10-01 swaps raised its curve and moved it A→B until a card-advantage add and a 25th land took it back to A the same day), the record cannot arbitrate (**79 matches, and int+ca correlates with winning at r = −0.03**; nothing clears the ±0.22 noise band, so this is not evidence the floor is wrong, it is evidence the sample sees nothing), and deck 78's 5-2 is one win above the 54% pooled baseline at n=7 against a 20-match floor. **Re-derive the table when `tier_floor_spread` says so; do not re-derive it because a deck outperformed its letter.**
 - **The floor is ARCHETYPE-aware** (#4): an aggro deck closes on a fast clock, not an
   interaction suite, so for an **aggro** plan a bounded `_clock_score` (low curve +
   cheap threats + reach, 0–7) SUBSTITUTES for the interaction the resilience floor
@@ -187,6 +187,35 @@ castability · curve · central-theme density), with the intangibles moving a de
   the archetype prose disagree, the prose is usually the honest one**; check them against
   each other whenever a deck's letter looks generous, and re-check after a pivot, since
   a draft-time change of plan does not rewrite the header.
+- **A 100-CARD BRAWL DECK IS GRADED PER 60 (2026-09-29).** Interaction and card advantage
+  are COUNTS and `TIER_FLOOR_REQ` was derived from 60-card decks, so an unscaled 100-card
+  list clears A on size alone: 78-historic-brawl read A on interaction 11, about 6.6 per 60.
+  For a `BIG_DECK_FORMATS` deck over 60 cards, `floor_requirements` scales the table by
+  size / 60 and rounds UP (A at 100 cards needs 12 and a sum of 19). It is the one reader
+  of the table for both `tier_band` and `tier_gap`, so `tier --to` aims at the scaled gap.
+  `tier` prints the scale and the per-60 density. **Keyed on the FORMAT, not the count** —
+  a 61-card Standard deck and a 60-card Standard Brawl deck are unscaled. The bounded 0–7
+  aggro clock is NOT scaled (it is a score, not a count). Roster diff: 1 of 116 decks moved,
+  78-historic-brawl A→B. **The needs model's interaction minimum scales the same way**
+  (`deck_needs`, through the shared `_scale_count`: 5 per 60, 9 at 100 cards). It is a
+  MINIMUM, not the A floor, so `suggest --interaction` printing "adequate (11 ≥ 9)" beside a
+  `tier --to A` gap on the same axis is two different bars, not a contradiction; 0 decks
+  flipped SHORT/adequate. **Castability is not legality in Brawl**: a card outside the
+  commander's colour identity is illegal however payable it is (`{2}{R/W}{R/W}{R/W}` under a
+  G/W/U commander), and every RECOMMENDER gated on castability alone — measured 2026-09-29,
+  205 of 78-historic-brawl's 435 `--lands` picks and 385 of its 8,054 `suggest` picks were
+  illegal there. `commander_identity_lock` is now read by the shared gates
+  (`_candidate_castability`'s `lock=`, `_filler_castable`, `suggest_lands`), so `suggest`,
+  `--ramp/--interaction/--lands`, `screen`, `suggest-homes` and the `tier --to` fillers agree
+  with `legal`; residual: `cross_deck_breadth`'s Decks count (variants collapse to their
+  parent, so it barely moves). Two more Brawl facts the tools read now: Arena's Brawl queues give
+  a FREE first mulligan, so `consistency` prints a within-two-sevens keepable figure and
+  bases its land advice on it (with a 36–40 land norm at 100 cards); and **Historic Brawl
+  does not rotate** (`format_rotates`), so every ⚠rot flag, `check`'s owned-rotation footer
+  and `rotation <id>` are off for it — Standard Brawl still rotates with Standard. What
+  stays a human read in a Brawl tune: the commander is a card you always have (taxed {2}
+  per recast), singleton means redundancy is VIRTUAL copies only (G-46), and a game is 1v1
+  at 25 life, a slightly longer clock than 20.
 - **The bands (what the letter means):**
   - **S** — measurably A-floor AND a human call that it's top-meta capable: real
     bombs, a protection/interaction suite, proven to close fast. Rare.
@@ -454,8 +483,8 @@ is protecting.
   **THE LIST IS A WINDOW AND THE RANKING IS THEME FIT, so read a card's ABSENCE as neither
   (BS10-05).** The footer counted the TRUNCATION, so it read "20 suggestion(s)" whether the
   ranking held 20 candidates or 958; it now prints "top N of M ranked candidate(s)"
-  (`--limit 0` for all). Why it matters is measured, not asserted: across **1018 applied swaps
-  that recorded a rank for the card ADDED, the MEDIAN rank is 360** and only **11%** fell
+  (`--limit 0` for all). Why it matters is measured, not asserted: across **1054 applied swaps
+  that recorded a rank for the card ADDED, the MEDIAN rank is 364** and only **10%** fell
   inside the default top 20. `deck.py feedback` reports that distribution. A card chosen for
   a mechanical interaction the tags do not encode ranks far down BY CONSTRUCTION — a
   different problem from the theme gate G-38 describes, and K-15 was its largest single
@@ -656,7 +685,7 @@ is protecting.
   for a deck that can never meet it (81 pairs, 54 of 114 decks).** Test
   `TAPLAND_CONDITIONAL_KINDS`, not a string.
   **NONLAND sources are DISCLOSED since 2026-09-18, never counted**: `consistency` prints
-  `ⓘ N NONLAND mana source(s) are NOT in the counts above` (**77 of 112 decks**). The
+  `ⓘ N NONLAND mana source(s) are NOT in the counts above` (**78 of 112 decks**). The
   exclusion is right — a rock is not a land drop — but its SILENCE was not, because
   `suggest --ramp` recommends exactly what this count cannot see.
   `uncounted_mana_sources` runs `land_production` on a NONLAND's text, so the spend-only
@@ -938,9 +967,9 @@ is protecting.
   two primitives the ◊ list and the effective figure already use so the three cannot
   disagree (G-40). **DISCLOSURE, never pricing** — report-only for G-25/G-60's reason, and do
   not "finish" it by feeding `tier_band`. **`_UNPRICED_DISCLOSE_FLOOR = 3` is p75 of its own
-  axis, not 1**: across the **55 decks that print an effective figure** the unpriced count
-  runs p25 1 / p50 2 / p75 3 / p90 5 / max 11, so a floor of 1 fires on 84% (the G-07
-  saturation shape) against **17 of 55 (31%)** at 3. BOTH figures are registered in
+  axis, not 1**: across the **58 decks that print an effective figure** the unpriced count
+  runs p25 1 / p50 2 / p75 3 / p90 5 / max 11, so a floor of 1 fires on 83% (the G-07
+  saturation shape) against **18 of 58 (31%)** at 3. BOTH figures are registered in
   `figure_drift`, which is what caught the population move when impending joined. [G-85]
 - **BOARD PRESENCE IS AN AXIS AND NOTHING HERE MEASURED IT until 2026-09-18.** The tier
   floor reads interaction + card advantage, `cuts` reads theme fit and role credit, and
@@ -948,14 +977,14 @@ is protecting.
   A floor on resilience while fielding nothing that ends a game, and the only way to see
   that was to hand-roll the sum, done six times in one session before `board_power`
   existed. It is a SEPARATE axis, not a restatement of the floor: **r = −0.147 against a
-  ±0.188 noise band at n=112**. Roster distribution min 23 / p10 37 / **p50 55** / p90 73
+  ±0.188 noise band at n=112**. Roster distribution min 23 / p10 37 / **p50 56** / p90 73
   / max 120. **REPORT-ONLY, and it must stay so** — a new `tier_band` term silently
   re-grades the roster, the reason the protection axis (G-25) and the X-cost advisory
   (G-60) are kept out and the reason the payoff-density term was simulated and DECLINED
   2026-09-03. `deck_quality_vector` publishes it, `tier_band` ignores it, and a test pins
   that two decks differing only in creature SIZE land in the same band. **THREE THINGS IT
   CANNOT SEE, disclosed rather than guessed at:** a printed `*`/X power is counted APART
-  and never coerced to 0 (G-16), which is no corner case — **71 of 112 decks** hold one,
+  and never coerced to 0 (G-16), which is no corner case — **73 of 112 decks** hold one,
   so a bare sum would under-report on 63% of the roster; TOKENS and other created bodies
   read ZERO, so a card making two 3/3s contributes nothing; and VEHICLES are counted
   apart, not being creatures until crewed. Read the figure as a FLOOR on what the deck can
@@ -1084,7 +1113,10 @@ is protecting.
   (G-77: `--check`'s only remedy was a hand edit). Backstop: a `check_all` soft sweep on
   the POOL, since one report covers every craft recommender at once. **Residual:
   `Released` is still read only for rotation elsewhere — no per-card surface asks "is this
-  out yet", so a stale or custom-query pool re-opens it.** [G-79]
+  out yet", so a stale or custom-query pool re-opens it.** **The INVERSE happens too**: Arena
+  can release a set before Scryfall's date (Reality Fracture, 2026-09-30 against 10-02), and
+  its cards cannot enter a deck file until `make refresh REFETCH=1` after that date. Queue
+  such swaps in `#: notes:`; do not loosen the bound. [G-79]
 
 - **A CARD THAT GRANTS A KEYWORD IS A CARD ABOUT THAT KEYWORD, and the tagger only read
   what a card HAS.** Keyword tags came from Scryfall's `keywords` field, so a lord handing
@@ -1267,7 +1299,7 @@ is protecting.
   players' turns), opponent colours and cards, named through Scryfall's Arena-id lookup
   and cached in `arena-cards.csv`. Opponent ARCHETYPE and why you lost stay hand-only —
   so `--apply` prints a ready `--annotate` line per new loss and `/log-matches` Stage 1d
-  asks for the word; never fill one in yourself. The paste is anonymised (`ME`/`OPP`).
+  asks for the word; never fill one in yourself. The paste is anonymised (`ME`/`OPP`). A match to throw out is `void=<why>`, never a deleted row — the next paste re-adds it.
   **Which writer depends on whether Arena logged the match**: `--add` for one it never
   saw; **`--annotate` (`<matchId> …`) for one it DID** — it UPDATES, where `--add` would
   append a SECOND row, since a hand row has no matchId to dedupe on. The **loss vocabulary
@@ -1508,12 +1540,13 @@ earned it: [C-01]
 
 **Subsystems:**
 - Data: card-library.csv, card-pool.csv, card-mana.csv, card-wishlist.csv, matches.csv
-  (LIVE since 2026-08-10 — 191 matches, 188 attributed across 48 decks, pooled 96-94-1; the
-  best per-deck row is n=16 (deck 79) against the 20-match floor after seven weeks, which is
-  why `--report` also POOLS, and why the four HAND columns exist at all — G-74; the three
-  hand-only ones are still EMPTY in all 191 rows, so scenario 11 remains the only thing that
-  can prove that loop closes, while On Play is filled on 9 from the play-by-play, which
-  reached its first real rows 2026-09-27), recommendations.csv,
+  (LIVE since 2026-08-10 — 213 matches, 210 attributed across 50 decks, pooled 108-103-1 plus
+  1 voided; the best per-deck row is n=16 (deck 79) against the 20-match floor after eight
+  weeks, which is why `--report` also POOLS, and why the four HAND columns exist at all —
+  G-74; Opponent Archetype and Loss Reason are still EMPTY in all 213 rows (Note holds only
+  the one void reason), so scenario 11 remains the only thing that can prove that loop
+  closes, while On Play is filled on 31 from the play-by-play, which reached its first real
+  rows 2026-09-27), recommendations.csv,
   collection-stamp.json (written only by `import_collection.py --apply` — the date owned
   counts were last EXACT; absent until the first run, and since 2026-09-20 `check_all`
   says so once per session as well as every craft surface saying it inline) [C-02]
@@ -1911,10 +1944,12 @@ is invisible, and a handoff nobody is told to read is the same failure one layer
   consolidated swap plan; it is TEMPORARY and says so, and it is deleted once the
   swaps land. Named here because a fresh session loads nothing else, and the whole
   point of committing it per batch is that it outlives one context window.
-  **NONE are live as of 2026-09-23** — the last four (`prune-analysis.md`,
-  `wylie-tap-analysis.md`, `hob-followup-analysis.md`, `uw-equipment-analysis.md`,
-  1,407 lines) were cleared at the owner's instruction with their proposals still
-  unapplied. **That is a deliberate abandonment, not a completion, and the difference
+  **TWO are live as of 2026-10-01**: `78-brawl-pile-analysis.md` (78-historic-brawl —
+  Tier 1 applied, the Tier 2 and Tier 3 waves still open) and `60-redline-pile-analysis.md`
+  (deck 60 — ten Reality Fracture swaps queued until the pool holds that set, G-79). The
+  four before them (`prune-analysis.md`, `wylie-tap-analysis.md`,
+  `hob-followup-analysis.md`, `uw-equipment-analysis.md`, 1,407 lines) were cleared on
+  2026-09-23 at the owner's instruction with their proposals still unapplied. **That is a deliberate abandonment, not a completion, and the difference
   matters**: a future session that wants those analyses must `git show` them
   (`git log --diff-filter=D -- .cycle/`), because nothing was folded into decks/ first.
   What they held, and the one thing salvaged, is in `.cycle/HISTORY.md` under

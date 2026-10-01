@@ -715,6 +715,49 @@ class TestClassifyRoles:
             "{1}{U}, {T}: Shuffle this creature and target creature with a stun counter "
             "on it into their owners' libraries.")
 
+    def test_a_tuck_of_any_permanent_is_removal(self):
+        """Family disagreement (G-67, 2026-09-29): the INTO-library tuck read "target
+        creature" only, so Happy Hogan's creature tuck scored and Wan Shi Tong's
+        "target nonland permanent's owner puts it …" did not."""
+        assert "Removal (spot)" in deck.classify_roles(
+            "When Wan Shi Tong enters, target nonland permanent's owner puts it into their "
+            "library second from the top or on the bottom.")
+        assert "Removal (spot)" in deck.classify_roles(
+            "The owner of target permanent shuffles it into their library, then reveals "
+            "the top card of their library.")
+
+    def test_another_or_other_target_is_removal(self):
+        assert "Removal (spot)" in deck.classify_roles(
+            "When this creature enters, you may exile another target creature.\n"
+            "When this creature leaves the battlefield, return the exiled card to the "
+            "battlefield under its owner's control.")                     # Fiend Hunter
+        assert "Removal (spot)" in deck.classify_roles(
+            "When this creature enters, exile up to one other target creature. That "
+            "creature's controller gains life equal to its power.")       # Solitude
+
+    def test_a_blink_of_another_target_is_not_removal(self):
+        """NEGATIVE, and the one that pins the guard: dropping the return lookahead makes
+        the pattern BROADER, which a positive test cannot catch (the G-67 mass-bounce
+        lesson). A card returned in the same ability is tempo, not an answer."""
+        for blink in (
+            "When this creature enters, exile another target permanent. Return that card "
+            "to the battlefield under its owner's control at the beginning of the next "
+            "end step.",                                                  # Flickerwisp
+            "{2}{C}: Exile another target creature, then return it to the battlefield "
+            "tapped under its owner's control.",                          # Eldrazi Displacer
+            "When Dedicated Dollmaker enters, exile up to one other target nonland, "
+            "nontoken permanent. Its controller creates a token that's a copy of it."):
+            assert "Removal (spot)" not in deck.classify_roles(blink), blink
+
+    def test_remove_a_counter_then_draw_is_card_advantage(self):
+        """Dawn of a New Age: the sentence break stopped the end-step draw pattern short.
+        Fixed on the CLAUSE, not by widening the window (G-67)."""
+        assert "Card advantage" in deck.classify_roles(
+            "This enchantment enters with a hope counter on it for each creature you "
+            "control.\nAt the beginning of your end step, remove a hope counter from this "
+            "enchantment. If you do, draw a card. Then if this enchantment has no hope "
+            "counters on it, sacrifice it and you gain 4 life.")
+
     def test_equal_draw_discard_loot_is_not_card_advantage(self):
         # Kiora, the Rising Tide: net zero cards, so not advantage — the same rule that
         # excludes a single-draw cantrip.
@@ -2585,6 +2628,26 @@ class TestTierBand:
         assert max(bands.values()) / sum(bands.values()) <= deck.TIER_SPREAD_MAX_SHARE
         assert set(bands) == {"A", "B", "C", "D"}
 
+    def test_a_100_card_format_is_graded_per_60(self):
+        # The table is per 60 cards. The 100-card 78-historic-brawl read A on 11
+        # interaction and 5 card advantage: about 6.6 and 3 per 60, which is B density.
+        big = dict(_vec("midrange", 11, 5), size=100,
+                   floor_scale=deck._floor_scale("Historic Brawl", 100))
+        assert deck.tier_band(big) == "B"
+        ai, ar = deck.floor_requirements(big, "A")
+        assert (ai, ar) == (12, 19)            # ceil(7 * 100/60), ceil(11 * 100/60)
+        assert deck.tier_band(dict(big, interaction=ai, card_advantage=ar - ai)) == "A"
+        # the gap diagnostic reads the same scaled requirement
+        assert deck.tier_gap(big, "A")["add_interaction"] == ai - 11
+
+    def test_scaling_is_keyed_on_the_format_not_the_count(self):
+        # A 61-card Standard deck must not need an extra removal spell.
+        assert deck._floor_scale("Standard", 61) == 1.0
+        assert deck._floor_scale("Brawl", 60) == 1.0          # 60-card Standard Brawl
+        assert deck._floor_scale("Historic Brawl", 100) == pytest.approx(100 / 60)
+        v = _vec("midrange", 7, 4)                            # no floor_scale key at all
+        assert deck.floor_requirements(v, "A") == deck.TIER_FLOOR_REQ["A"]
+
     def test_aggro_clock_only_raises(self):
         fast = deck.tier_band(_vec("aggro", 2, 0, avg_mv=2.0, early=16, reach=10))
         mid = deck.tier_band(_vec("midrange", 2, 0, avg_mv=2.0, early=16, reach=10))
@@ -3194,6 +3257,27 @@ class TestSyncPaste:
 
     def test_split_ignores_empty_blocks(self):
         assert deck.split_paste("Deck\n\nDeck\n1 A\n") == [["1 A"]]
+
+    def test_a_leading_commander_section_stays_with_its_deck(self):
+        """Arena exports a Brawl deck as `Commander` / card / `Deck` / 99 cards. Split
+        on the marker alone that was two blocks, the commander alone and a 99-card deck,
+        and `sync --apply` would have deleted the commander from the stored file."""
+        segs = deck.split_paste("Commander\n1 K\n\nDeck\n1 A\n1 B\n")
+        assert len(segs) == 1
+        assert [l for l in segs[0] if l.strip()] == ["Commander", "1 K", "1 A", "1 B"]
+
+    def test_each_deck_in_a_brawl_multi_paste_keeps_its_own_commander(self):
+        segs = deck.split_paste("About\nName X\n\nCommander\n1 K\n\nDeck\n1 A\n\n"
+                                "Commander\n1 J\n\nDeck\n1 B\n\nSideboard\n1 S\n")
+        assert len(segs) == 2
+        assert [l for l in segs[0] if l.strip()] == ["About", "Name X", "Commander", "1 K", "1 A"]
+        assert [l for l in segs[1] if l.strip()] == ["Commander", "1 J", "1 B", "Sideboard", "1 S"]
+
+    def test_a_trailing_commander_with_no_later_deck_stays_put(self):
+        """A single Deck-first paste keeps its commander: only a lead section that a
+        LATER `Deck` marker follows is moved."""
+        segs = deck.split_paste("Deck\n1 A\n\nCommander\n1 K\n")
+        assert len(segs) == 1 and "1 K" in segs[0]
 
     def test_diff_direction(self):
         added, removed, diffs = deck._ms_diff(self._ms(A=3, B=1), self._ms(A=1, C=2))
@@ -6390,6 +6474,52 @@ class TestPossessiveDeckCitationSuppression:
 
 
 
+class TestCommanderIdentityLock:
+    """In Brawl / Commander, colour IDENTITY is the construction rule, and castability is not
+    legality: every recommender gated on castability alone, so on 2026-09-29 205 of
+    78-historic-brawl's 435 land picks and 385 of its 8,054 `suggest` picks were cards the
+    deck cannot legally run. One lock, read by the shared gates."""
+
+    def test_the_lock_is_the_commander_identity(self):
+        lock = deck.commander_identity_lock(
+            {"format": "Historic Brawl", "commander": "Katara, the Fearless"})
+        assert lock == frozenset("GWU")
+
+    def test_no_lock_outside_a_commander_format_or_without_a_commander(self):
+        assert deck.commander_identity_lock(
+            {"format": "Standard", "commander": "Katara, the Fearless"}) is None
+        assert deck.commander_identity_lock({"format": "Brawl"}) is None
+
+    def test_a_castable_hybrid_outside_the_identity_is_refused(self):
+        """Jet, Freedom Fighter's shape: every pip payable with white, identity R/W."""
+        cost, ident, declared = "{2}{R/W}{R/W}{R/W}", {"R", "W"}, {"G", "W", "U"}
+        assert deck._candidate_castability(cost, ident, declared)[0]
+        ok, note = deck._candidate_castability(cost, ident, declared, lock=frozenset("GWU"))
+        assert not ok and "outside the commander's identity" in note
+        assert deck._filler_castable(cost, ident, declared)
+        assert not deck._filler_castable(cost, ident, declared, lock=frozenset("GWU"))
+
+    def test_no_brawl_recommender_offers_an_off_identity_card(self):
+        import csv
+        from lib import card_colors
+        pool = {r["Card Name"].lower(): r for r in
+                csv.DictReader(open(deck.POOL_CSV, encoding="utf-8"))}
+        checked = 0
+        for d in deck.roster_decks():
+            lock = deck.commander_identity_lock(d.get("meta") or {})
+            if lock is None:
+                continue
+            needs = deck.deck_needs(d)
+            fmt = ((d.get("meta") or {}).get("format") or "").lower()
+            picks = (deck.suggest_lands(d, limit=0)["picks"]
+                     + deck.suggest_interaction(d, needs, limit=0, fmt=fmt))
+            for p in picks:
+                r = pool.get(p["name"].lower())
+                assert r is None or not (card_colors(r["Color(s)"]) - lock), (d["id"], p["name"])
+            checked += 1
+        assert checked, "no commander-format deck on the roster to check"
+
+
 class TestPoolFormatKey:
     """BS8-04: the pool's Legalities keys are Scryfall's, whose `brawl` is Historic
     Brawl; the repo's 60-card `Brawl` (G-08) is checked against `standard`."""
@@ -6413,6 +6543,36 @@ class TestPoolFormatKey:
         leg = {"historic only card": {"brawl", "historic"}}
         rep = deck.legality_report(meta, cards, "Brawl", leg)
         assert any("Historic Only Card" in p for p in rep["problems"])
+
+    def _resolve_warning(self, monkeypatch, capsys, fmt):
+        import argparse
+        monkeypatch.setattr(deck, "_printing_index",
+                            lambda: {"historic only card": ("Historic Only Card", "XYZ", "1")})
+        monkeypatch.setattr(deck, "_legality_of",
+                            lambda names: {"historic only card": {"brawl", "historic"}})
+        rc = deck.cmd_resolve(argparse.Namespace(names=["Historic Only Card"], format=fmt,
+                                                 expect=None, check=None, fix=None))
+        assert rc in (0, None)
+        return capsys.readouterr().err
+
+    def test_only_standard_and_alchemy_rotate(self):
+        # 2026-09-29: `check` flagged four craft targets in the 100-card Historic Brawl
+        # deck as rotating; Standard rotation never removes a card from that format.
+        assert deck.format_rotates("Standard") and deck.format_rotates(None)
+        assert deck.format_rotates("Brawl")                   # 60-card Standard Brawl
+        assert deck.format_rotates("Alchemy")
+        assert not deck.format_rotates("Historic Brawl")
+        assert not deck.format_rotates("historic-brawl")
+        assert not deck.format_rotates("Commander")
+        pool_rot = {"old card": ("2022-01-01", {"standard", "historic"}, "XYZ")}
+        assert deck.craft_rot_note("Old Card", pool_rot, rotates=False) == ""
+
+    def test_resolve_checks_the_pool_key_not_the_raw_name(self, monkeypatch, capsys):
+        # `Historic Brawl` matched no Scryfall key, so resolve called EVERY card illegal;
+        # `Brawl` tested Scryfall's 100-card `brawl`, so a non-Standard card passed.
+        assert "NOT legal" not in self._resolve_warning(monkeypatch, capsys, "Historic Brawl")
+        assert "NOT legal" in self._resolve_warning(monkeypatch, capsys, "Brawl")
+        assert "NOT legal" not in self._resolve_warning(monkeypatch, capsys, "any")
 
 
 class TestFillerCastability:

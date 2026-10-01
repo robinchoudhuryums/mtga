@@ -543,6 +543,11 @@ the game, while the owner still remembers it — which is exactly now.
    the owner knows which. A loss they do not remember stays blank.
 3. Write their answers with Stage 1c's `--annotate` (dry run, then `--apply`), keeping
    the ids the block printed. A value left empty records nothing.
+4. **A match the owner wants thrown out** (they stepped away, misclicked into a queue):
+   `<id> void=<why>` — e.g. `void=stepped-away`. Never delete the row. Dedup keys on it,
+   and the next paste starts from the last copy's day, so a deleted match comes straight
+   back as a live loss. A voided row keeps Result `X`, counts in no tally and no `Pld`,
+   and `--report` lists it by name; `void=no` restores the result from its game score.
 
 Skip the stage if the owner would rather not; it is the one step that must never be
 guessed.

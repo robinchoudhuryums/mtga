@@ -275,6 +275,12 @@ them, don't decide unilaterally.
 - **Show before/after deltas** for each change.
 - **Respect singleton-vs-playset context** — tuning a 60-card highlander differs
   from a 4-of Standard list.
+- **A Brawl deck (`#: format: Brawl` or `Historic Brawl`) is graded and tuned as Brawl.**
+  The 100-card tier floor is scaled per 60, so `tier --to` already asks for the right
+  number of cards; `consistency` includes Arena's free first mulligan; and Historic Brawl
+  does not rotate, so no ⚠rot flag appears there (CLAUDE.md, Competitive Tiering). Count
+  the commander as a card the deck always has, taxed {2} per recast, and build
+  consistency from virtual copies only, since every card is a singleton.
 
 ## Play-style weighting (creative ↔ competitive)
 

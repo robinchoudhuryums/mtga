@@ -1,6 +1,6 @@
 #: name: Redline (max speed — hit every turn)
 #: format: Standard
-#: arena: 60 Redline, 3ce6b040-075a-4110-9764-3e1f5924c2da
+#: arena: 60 Redline Racer, 0b02f446-0457-4e57-951d-51d550a111cd
 #: colors: BR
 #: plan: aggro
 #: archetype: RAKDOS MAX SPEED — the roster's first Start your engines! deck, one of
@@ -43,6 +43,41 @@
 #: notes: attacker. Outpace Oblivion's sac mode hits every player without max
 #: notes: speed — including us below 4; time it. ROTATION: the deck is ~90% DFT
 #: notes: (rotates ~2027) — this is a two-year deck by construction; accepted.
+#: notes: PILE SWAPS, 2026-09-30 (the owner's 67-card pile; see
+#: notes: .cycle/60-redline-pile-analysis.md). APPLIED, round 1: Chandra, Spark Hunter
+#: notes: for one Far Fortune ("0: Create a 3/2 … Vehicle token", animated with haste each
+#: notes: combat), Hawkeye for one Endrider Catalyzer ("whenever Hawkeye becomes tapped… 2
+#: notes: damage to target player"), The Infamous Cruelclaw for one Gastal Raider, Realm of
+#: notes: Koh for a Swamp. APPLIED, round 2: The Fire Nation Drill for Endrider
+#: notes: Spikespitter, Road Rage for one Kickoff Celebrations, Adrenaline Jockey for one
+#: notes: Gastal Thrillseeker, Dracosaur Auxiliary for one Outpace Oblivion. APPLIED, round
+#: notes: 3: War Balloon for one Momentum Breaker — Chandra's combat trigger animates it with
+#: notes: haste for free, and five ground bodies of power 3+ (Necroregent, Far Fortune,
+#: notes: Jockey, and FRA's Massacre Girl and Koth) can crew it; costs one interaction piece
+#: notes: and one engine card. APPLIED, round 4: Raven Eagle for Kickoff Celebrations — a
+#: notes: 2/3 flier whose "exile up to one target card from a graveyard" makes a Clue off a
+#: notes: creature card (aim it at THEIR yard while the Surveyors still recycle from ours), and
+#: notes: "whenever you draw your second card each turn, each opponent loses 1 life" turns The
+#: notes: Speed Demon's end-step draws into a speed tick. LANDS, round 4: four Dark Fortress
+#: notes: for Boiling Rock Prison, Razortrap Gorge, a Mountain and a Swamp — untapped {B}/{R}
+#: notes: while we control a basic (16 basics remain), taking sources to B 14 / R 15 and the
+#: notes: tapped nonbasics from 4 to 2. More Fortresses for basics measured as no gain (each
+#: notes: weakens the basic gate). TRADE TAKEN
+#: notes: KNOWINGLY: card advantage fell 5 to 3 in round 2 (the quality guard's warning),
+#: notes: and Adrenaline Jockey deals 4 to US whenever we cast a spell on an OPPONENT'S
+#: notes: turn — Lightning Strike, Bitter Triumph, Heartless Act and Road Rage are all
+#: notes: instants, so cast them on our own turn while Jockey is out. PENDING until Reality
+#: notes: Fracture (FRA) is in card-pool.csv — on Arena now, Scryfall-dated 2026-10-02; run
+#: notes: `make refresh REFETCH=1` after that date, catalog the owned FRA cards, then apply:
+#: notes: Stingerquill Voxmancer for a Burnout Bashtronaut, Koth, the Geomancer for a Goblin
+#: notes: Surveyor, Screeching Soulbreaker for a Mutant Surveyor, Whiplash Wordsmith for a
+#: notes: Streaking Oilgorger, Samut, Hazoret's Champion for an Hour of Victory, Massacre
+#: notes: Girl, Most Wanted for the other Mutant Surveyor, Tetsuko Umezawa, Pursuer for the
+#: notes: other Goblin Surveyor, Tomik, Izzet Sparkmage for the last Endrider Catalyzer, and
+#: notes: Tinybones, Pocket Nuisance for one Gas Guzzler, and Chandra, Torch of Defiance for
+#: notes: one Lightning Strike (FRA reprints it; the pool holds only its KLR printing, which
+#: notes: reads not-Standard until the refresh). The owner's Arena list already
+#: notes: runs all of them; until those land, this file is part-way between the two.
 
 # One-drops (start the clock)
 2 Gas Guzzler (DFT) 85
@@ -50,36 +85,43 @@
 1 Hazoret, Godseeker (DFT) 133
 
 # Two-drops (keep hitting)
-2 Gastal Thrillseeker (DFT) 205
-2 Momentum Breaker (DFT) 97
-2 Endrider Catalyzer (DFT) 124
-2 Kickoff Celebrations (DFT) 135
+1 Gastal Thrillseeker (DFT) 205
+1 Momentum Breaker (DFT) 97
+1 Endrider Catalyzer (DFT) 124
+1 Hawkeye, Master Marksman (MSH) 130
 
 # Three-drops (engine bodies)
-2 Gastal Raider (DFT) 86
+1 Gastal Raider (DFT) 86
+1 The Infamous Cruelclaw (BLB) 219
 2 Hour of Victory (DFT) 91
 2 Goblin Surveyor (DFT) 131
 2 Mutant Surveyor (DFT) 98
 1 Howlsquad Heavy (DFT) 134
-2 Outpace Oblivion (DFT) 139
+1 Outpace Oblivion (DFT) 139
+1 Adrenaline Jockey (DFT) 112
+1 War Balloon (TLA) 159
+1 Raven Eagle (TLA) 116
 
 # Payoffs (max-speed top end)
-2 Far Fortune, End Boss (DFT) 203
+1 Far Fortune, End Boss (DFT) 203
+1 Chandra, Spark Hunter (DFT) 116
 1 The Speed Demon (DFT) 105
 1 Risen Necroregent (DFT) 102
 2 Streaking Oilgorger (DFT) 107
-1 Endrider Spikespitter (DFT) 125
+1 The Fire Nation Drill (TLA) 98
+1 Dracosaur Auxiliary (DFT) 122
 
 # Removal
 2 Lightning Strike (TLA) 146
 1 Bitter Triumph (SOA) 26
 1 Heartless Act (TLA) 103
+1 Road Rage (DFT) 145
 
 # Lands
 1 Blood Crypt (ECL) 262
 1 Blazemire Verge (DSK) 256
-1 Razortrap Gorge (DSK) 267
-1 Boiling Rock Prison (TLA) 267
+4 Dark Fortress (MSH) 264
 2 Amonkhet Raceway (DFT) 248
-10 Mountain (MSH) 293
-9 Swamp (MSH) 291
+9 Mountain (MSH) 293
+7 Swamp (MSH) 291
+1 Realm of Koh (TLA) 276

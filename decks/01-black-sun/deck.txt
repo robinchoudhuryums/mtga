@@ -46,11 +46,11 @@
 
 # Lands
 1 Fire Nation Palace (TLA) 268
-2 Blazemire Verge (DSK) 256
+1 Blazemire Verge (DSK) 256
 1 Razortrap Gorge (DSK) 267
-8 Swamp (MSH) 292
-2 Blood Crypt (ECL) 262
-6 Mountain (MSH) 294
+9 Swamp (MSH) 292
+1 Blood Crypt (ECL) 262
+7 Mountain (MSH) 294
 4 Dark Fortress (MSH) 264
 
 # Flex — STANDARD-LEGAL craftable aristocrats upgrades. See: deck.py flex 1

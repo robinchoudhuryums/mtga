@@ -1,0 +1,256 @@
+#: name: Team Avatar — Brawl
+#: format: Historic Brawl
+#: colors: GWU
+#: based-on: deck.txt
+#: commander: Katara, the Fearless
+#: archetype: 100-card Brawl (Arena's "Brawl" queue, which uses the Historic card pool)
+#: archetype: built from the Bant Ally trigger-doubling deck (deck 78). Katara, the
+#: archetype: Fearless leads from the command zone, and every triggered ability of your
+#: archetype: Allies fires twice while she is out. Deck 78's 60 carry over, with one
+#: archetype: colour-identity swap, and the other 40 deepen the same plan. There are five
+#: archetype: trigger multipliers (Katara, Starfield Vocalist, Elesh Norn, Roaming Throne
+#: archetype: naming Ally, Virtue of Knowledge) and four token doublers. The draw engines
+#: archetype: all fire off creatures entering: The Great Henge, Tribute to the World
+#: archetype: Tree, Galadriel and The Blue Spirit. Beside them sit Allies whose enter or
+#: archetype: attack triggers are worth doubling, cheap exile effects, protection for the
+#: archetype: engine, and a 37-land manabase with two early mana creatures.
+#: tier: B — PROVISIONAL and a RE-GRADE CANDIDATE: the metrics floor reads A since Wan
+#: tier: Shi Tong came in, one band above this letter, pending the owner's call. A
+#: tier: 100-card deck is graded per 60 cards (the floor's thresholds scale ×1.67), so
+#: tier: interaction 13 and card advantage 6 read as about 7.8 and 3.6 per 60, which clears
+#: tier: the A line (A wants 7 and a sum of 11 in a 60) with nothing to spare: losing one
+#: tier: interaction or card-advantage card puts the floor back at B.
+#: tier: It is ahead of deck 78 on the engine, on cheap answers and on card advantage:
+#: tier: five trigger multipliers where deck 78 has two, Swords to Plowshares, Path to
+#: tier: Exile, Leyline Binding and Buried in the Garden on top of deck 78's tricks, and
+#: tier: two draw engines (The Great Henge, Tribute to the World Tree) that the enters-
+#: tier: doublers multiply. PROVISIONAL because no Brawl game has been played with it.
+#: protect: Katara, the Fearless; South Pole Voyager; Avatar Enthusiasts; Haru, Hidden Talent; Suki, Kyoshi Warrior; Starfield Vocalist; Doubling Season; Elesh Norn, Mother of Machines; Roaming Throne; Appa, Loyal Sky Bison; Earth Kingdom General; Toph, the Blind Bandit; Earth King's Lieutenant; Katara, Heroic Healer; The Blue Spirit
+#: notes: ARENA'S BRAWL QUEUE (100 cards, Historic card pool). The 60-card version
+#: notes: for Arena's Standard Brawl queue is 78-brawl-team-avatar.txt; this list is
+#: notes: that 60 plus 40 cards the Standard pool does not have.
+#: notes: PILE SWAPS, 2026-09-29, from a 73-card owned pile (.cycle/78-brawl-pile-
+#: notes: analysis.md). In: The Great Henge, Tribute to the World Tree, An Unexpected
+#: notes: Party (name Ally), Leyline Binding, Buried in the Garden, Silk, Web Weaver. Out:
+#: notes: Kyoshi Warriors, Relief Captain, Rumor Gatherer, Skyclave Apparition, Get Lost,
+#: notes: Invasion Reinforcements. OWNER DECISIONS on the same day: keep Appa, Loyal Sky
+#: notes: Bison, Earth Kingdom General, Toph, Earth King's Lieutenant, Katara, Heroic
+#: notes: Healer and The Blue Spirit (now protected). Where a cut was needed, it came from
+#: notes: craft targets the owner does not have. Then, the owner's pick: Kellan Joins Up
+#: notes: in, Forecasting Fortune Teller out ("create a Clue token" was one of the deck's
+#: notes: counted draws); Inspiring Commander is parked in the flex block.
+#: notes: CRAFT-LIST SWAPS, 2026-09-29 (the owner's list, graded in the pile doc): Vault
+#: notes: Guardsman in for Earth Kingdom Protectors ("exile target artifact or creature an
+#: notes: opponent controls until this creature leaves", an enters trigger the three
+#: notes: enters-doublers copy); Flowering of the White Tree in for Duty Beyond Death
+#: notes: (legends +2/+1 and ward {1}, the rest +1/+1, so Katara carries ward); Multiversal
+#: notes: Recruitment in for Starry-Eyed Skyrider (a non-legendary token copy of Elesh
+#: notes: Norn or Starfield Vocalist is one more trigger doubler; flashback). Both cuts
+#: notes: that granted indestructible are gone, so Heroic Intervention is the sweeper answer.
+#: notes: Black Panther, Wakandan King in for Arcane Signet: "whenever Black Panther or
+#: notes: another creature you control enters, put a +1/+1 counter on target land you
+#: notes: control" is one more enters trigger the three enters-doublers copy, the counters
+#: notes: grow Toph's land creatures, and {3} moves them onto a creature to gain that much
+#: notes: life and draw a card. The draw is conditional, so card advantage still reads 6.
+#: notes: Beastmaster Ascension in for Hermitic Herbalist: "whenever a creature you control
+#: notes: attacks, you may put a quest counter", and at seven "creatures you control get
+#: notes: +5/+5". Doubling Season doubles the quest counters, so four attackers turn it on.
+#: notes: Wan Shi Tong, All-Knowing in for The Millennium Calendar: its enters trigger puts
+#: notes: a nonland permanent into its owner's library (second from the top or the bottom,
+#: notes: THEIR choice, so a bomb can come back two draws later), and that trigger makes
+#: notes: two Spirit tokens, four with a token doubler. Interaction 12 -> 13.
+#: notes: WHY THE ADDS: Henge ("whenever a nontoken creature you control enters, put a
+#: notes: +1/+1 counter on it and draw a card") and Tribute ("draw a card if its power is 3
+#: notes: or greater. Otherwise, put two +1/+1 counters on it") are enters triggers, so
+#: notes: Starfield, Elesh Norn and Virtue each add a copy, and Bard doubles the draws.
+#: notes: Leyline Binding costs {2}{W} once Plains, Island and Forest are all out.
+#: notes: Tribute's {G}{G}{G} is a turn-5-or-later cast against 20 green sources.
+#: notes: THE ONE COLOUR-IDENTITY SWAP: Jet, Freedom Fighter is {2}{R/W}{R/W}{R/W}, and
+#: notes: a hybrid symbol counts toward colour identity, so he is red and illegal under a
+#: notes: G/W/U commander. Prayer of Binding ({3}{W}, flash, exile a nonland permanent)
+#: notes: replaces him. Its enters trigger is doubled by Starfield Vocalist, Elesh Norn and
+#: notes: Virtue of Knowledge (they double enters-caused triggers of any permanent), not by
+#: notes: Katara or Roaming Throne (it is not an Ally).
+#: notes: THE MULTIPLIERS STACK. Each "triggers an additional time" effect adds one more
+#: notes: trigger, so they add together rather than multiply. An Ally's triggers fire once
+#: notes: more for Katara and once more for Roaming Throne (name Ally as it enters). An
+#: notes: enters trigger of any permanent fires once more for each of Starfield Vocalist,
+#: notes: Elesh Norn and Virtue of Knowledge. Elesh Norn also stops opponents' permanents
+#: notes: from triggering when anything enters. The token doublers (Doubling Season,
+#: notes: Elspeth, Exalted Sunborn) double the OUTPUT of those triggers, so they multiply.
+#: notes: Naming Ally makes Roaming Throne an Ally itself, so White Lotus
+#: notes: Reinforcements pumps it and the Ally-enters payoffs fire when it lands. Its
+#: notes: doubling is static, so there is nothing of Throne's for Katara to double, and
+#: notes: it reaches the attack and death triggers the enters-only doublers miss.
+#: notes: JET, REBEL LEADER AND THE BLUE SPIRIT ARE A PAIR. Jet puts a creature with mana
+#: notes: value 3 or less from the top five onto the battlefield attacking; 22 of the 100
+#: notes: qualify, so one look hits about 72% of the time, and Katara gives two looks.
+#: notes: A creature Jet puts in enters during combat, which is what The Blue Spirit draws
+#: notes: on (also doubled; both are Allies). The Blue Spirit's flash also lets the first
+#: notes: creature each turn be cast during combat for the same draw.
+#: notes: AANG, AIRBENDING MASTER CAN TARGET YOUR OWN CREATURE. Airbending an Ally you
+#: notes: control exiles it and lets you recast it for {2}, which re-fires its enters
+#: notes: trigger, and a creature leaving without dying gives Aang an experience counter,
+#: notes: which makes an Ally token every upkeep.
+#: notes: MANA. 37 lands (10 basics) plus two early mana creatures: Great Divide Guide
+#: notes: ("each land and Ally you control has '{T}: Add one mana of any color'") and
+#: notes: Bloom Tender ("for each color among permanents you control, add one mana of
+#: notes: that color" — with Katara out that is {G}{W}{U}, one of each). Arcane Signet and
+#: notes: Hermitic Herbalist went out on 2026-09-29/30, and Bloom Tender took a Plains on
+#: notes: 2026-09-30. W 21 / U 18 / G 19 land sources; neither creature is in that count,
+#: notes: so every cast-on-curve figure is a floor. Katara herself is 65% on turn three,
+#: notes: up from 57% in deck 78. Katara, Water Tribe's Hope was parked in deck 78 waiting
+#: notes: for blue sources, and is in now, but {2}{W}{U}{U} is still only 59.5% on turn
+#: notes: five, among the list's worst castability rows. 37 of 100 is inside the usual
+#: notes: 36–40 for Brawl. A single seven is keepable 79.9% of the time, and with Brawl's
+#: notes: free first mulligan it is 95.9% within two sevens.
+#: notes: LAND SWAPS, 2026-09-30, both owned: Ba Sing Se for a Forest ("{2}{G}, {T}:
+#: notes: Earthbend 2" puts counters on a land, which is Toph's power, and Earth Kingdom
+#: notes: General's lifegain; no source count moved) and Abandoned Air Temple for Etched
+#: notes: Cornfield, which entered tapped unless a player was at 13 life or less, i.e.
+#: notes: almost always in a 25-life game ("{3}{W}, {T}: Put a +1/+1 counter on each
+#: notes: creature you control", doubled by Doubling Season; costs one green source).
+#: notes: Both enter tapped unless you control a basic land, and so do Gathering Place
+#: notes: and Gleaming Bastion's colours, so do not trade away more basics: a third
+#: notes: basic-for-utility swap measured W 22 -> 21.
+#: notes: OWNED MANABASE, 2026-09-30, at the owner's request: the ten unowned rare lands
+#: notes: were the main thing keeping the deck from being crafted, so each went out for an
+#: notes: owned land of the same colours. Glacial Fortress, Sunpetal Grove and Hinterland
+#: notes: Harbor became the three Temples (Enlightenment, Plenty, Mystery: "scry 1" on
+#: notes: entering, which the enters-doublers copy); Hengegate, Branchloft and Barkchannel
+#: notes: Pathway became North Pole Gates, Kyoshi Village and Meditation Pools ("{4}, {T},
+#: notes: Sacrifice this land: Draw a card"); Seachrome Coast, Temple Garden and Botanical
+#: notes: Sanctum became Tranquil Cove, Blossoming Sands and Thornwood Falls (gain 1 life
+#: notes: on entering); Spara's Headquarters became Evolving Wilds. Sources moved only W
+#: notes: 22 -> 21. The cost is TEMPO, which no probability figure here prices: ten lands
+#: notes: now always enter tapped where two did. The upgrade path, if tempo shows in play:
+#: notes: Mana Confluence for Evolving Wilds and Prismatic Vista for Thornwood Falls
+#: notes: (both mythic, both untapped); measured, that pair restores W 22 / U 18 / G 19.
+#: notes: Vista for Blossoming Sands instead gives U 19 / W 21, for the double-blue cards.
+#: notes: NO SWEEPER, deliberately. The deck wins with a wide board, so Farewell, Sunfall
+#: notes: and Doomskar would hit it hardest. Heroic Intervention is the answer to an
+#: notes: opposing sweeper instead. Time Wipe (keeps one creature) is the one to try if
+#: notes: board stalls turn out to be the problem.
+#: notes: CONSIDERED AND LEFT OUT: Mondrak, Glory Dominus and Parallel Lives (a fourth
+#: notes: token doubler), Panharmonicon (a fourth enters doubler), Appa, the Vigilant
+#: notes: (seven mana), Toph, Earthbending Master and Master Piandao. Any of them is a
+#: notes: reasonable swap for a weak slot once games show which slots are weak.
+#: notes: TOOLING, 2026-09-29, for the roster's first Historic Brawl deck. The tier
+#: notes: floor is graded per 60 cards for a 100-card format, `consistency` prices the
+#: notes: free first mulligan and the Brawl land count, and rotation flags are off for
+#: notes: Historic Brawl, which does not rotate. Still open: `targets` labels Jet's and
+#: notes: Aang, at the Crossroads's mana-value limits as "in the yard" (both look at the
+#: notes: top five); the counts are right, the wording is not.
+#: notes: CRAFT COST, as information only: 27 of the 100 are not in the library (10
+#: notes: mythic, 12 rare, 4 uncommon, 1 common). The Great Henge, Tribute to the World
+#: notes: Tree, Leyline Binding and Buried in the Garden are among them but came from the
+#: notes: owner's own pile, so they are owned and simply not catalogued yet.
+
+# Commander (leads from the command zone; also one of the 100)
+1 Katara, the Fearless (TLA) 230
+
+# Engine — the doubler and what it doubles
+1 Great Divide Guide (TLA) 181
+1 Haru, Hidden Talent (TLA) 182
+1 South Pole Voyager (TLA) 35
+1 Doubling Season (FDN) 216
+1 Starfield Vocalist (EOE) 78
+1 Belladonna Took (HOB) 4
+1 Avatar Enthusiasts (TLA) 11
+1 Dazzling Theater // Prop Room (DSK) 3
+1 The Astonishing Ant-Man (MSH) 204
+1 Earth Kingdom Jailer (TLA) 16
+1 Toph, the Blind Bandit (TLA) 198
+1 Ty Lee, Chi Blocker (TLA) 76
+1 Sokka, Lateral Strategist (TLA) 241
+1 Niko, Light of Hope (DSK) 224
+1 Elspeth, Storm Slayer (TDM) 11
+1 Bard, King of Dale (HOB) 144
+1 Elesh Norn, Mother of Machines (ONE) 10
+1 Roaming Throne (LCI) 258
+1 Virtue of Knowledge // Vantress Visions (WOE) 76
+1 Exalted Sunborn (EOE) 15
+1 Galadriel, Light of Valinor (HOC) 32
+1 An Unexpected Party // At the Door (HOB) 29
+1 The Great Henge (ELD) 161
+1 Tribute to the World Tree (MOM) 211
+1 Kellan Joins Up (OTJ) 212
+1 Multiversal Recruitment (MSC) 629
+1 Black Panther, Wakandan King (MAR) 87
+1 Beastmaster Ascension (TLE) 39
+
+# Ally bodies and token makers
+1 Appa, Steadfast Guardian (TLA) 10
+1 Suki, Kyoshi Warrior (TLA) 243
+1 Hakoda, Selfless Commander (TLA) 23
+1 Aang, Swift Savior // Aang and La, Ocean's Fury (TLA) 204
+1 The Earth King (TLA) 172
+1 Earth Kingdom General (TLA) 173
+1 Earth King's Lieutenant (TLA) 217
+1 United Front (TLA) 39
+1 Aang, at the Crossroads // Aang, Destined Savior (TLA) 203
+1 Appa, Loyal Sky Bison (TLA) 9
+1 Overlord of the Mistmoors (DSK) 23
+1 Aang and Katara (TLE) 69
+1 Jet, Rebel Leader (TLE) 78
+1 Aang, Airbending Master (TLE) 74
+1 Katara, Heroic Healer (TLE) 215
+1 Silk, Web Weaver (SPM) 145
+1 The Blue Spirit (TLE) 90
+1 Katara, Water Tribe's Hope (TLA) 231
+1 White Lotus Reinforcements (TLA) 251
+
+# Interaction
+1 Sheltered by Ghosts (DSK) 30
+1 Allies at Last (TLA) 164
+1 Prayer of Binding (FDN) 739
+1 The Eagles Are Coming! (HOB) 12
+1 Swords to Plowshares (SPG) 54
+1 Path to Exile (MAR) 47
+1 Buried in the Garden (MKM) 191
+1 Leyline Binding (DMU) 24
+1 Knight of Autumn (GRN) 183
+1 Aang, the Last Airbender (TLA) 4
+1 Vault Guardsman (MSC) 612
+1 Wan Shi Tong, All-Knowing (TLE) 98
+
+# Protection and ramp
+1 Heroic Intervention (M21) 188
+1 Flowering of the White Tree (LTR) 15
+1 Bloom Tender (ECL) 166
+
+# Lands (37)
+1 Hushwood Verge (DSK) 261
+1 Abandoned Air Temple (TLA) 263
+1 Gathering Place (MSH) 266
+1 Floodfarm Verge (DSK) 259
+1 Hallowed Fountain (ECL) 265
+1 Urban Retreat (SPM) 187
+1 Gleaming Bastion (MSH) 267
+1 Willowrush Verge (DFT) 270
+1 Breeding Pool (EOE) 251
+1 Starting Town (FIN) 289
+1 Secluded Courtyard (FDN) 267
+1 Three Tree City (BLB) 260
+1 Command Tower (ELD) 333
+1 Evolving Wilds (ECL) 264
+1 Blossoming Sands (M21) 244
+1 North Pole Gates (TLA) 274
+1 Meditation Pools (TLA) 272
+1 Kyoshi Village (TLA) 271
+1 Temple of Enlightenment (FDN) 698
+1 Temple of Plenty (FDN) 703
+1 Temple of Mystery (FDN) 702
+1 Tranquil Cove (TDM) 270
+1 Thornwood Falls (FDN) 269
+1 Deserted Beach (MID) 260
+1 Dreamroot Cascade (SOS) 254
+1 Overgrown Farmland (MID) 265
+5 Plains (HOB) 189
+3 Forest (HOB) 193
+1 Ba Sing Se (TLA) 266
+2 Island (HOB) 190
+
+# Flex — Brawl notes (comments; not part of the 100)
+#~ note: Colour-identity swap vs the Standard list: −Jet, Freedom Fighter (R/W hybrid → R in identity, illegal under G/W/U Katara) / +Prayer of Binding.
+#~ -Katara, Water Tribe's Hope | +Inspiring Commander | OWNED per the 2026-09-29 pile (not yet catalogued, so `check` still reads it as a rare craft): "Whenever another creature you control with power 2 or less enters, you gain 1 life and draw a card." Every 1/1 Ally token draws, it is an enters-caused trigger that Starfield Vocalist, Elesh Norn and Virtue of Knowledge each copy, and the token doublers double what enters. Six mana. Retargeted 2026-09-29: its first cut, Earth Kingdom Protectors, went out for Vault Guardsman; Katara, Water Tribe's Hope is 59.5% castable on turn five.
