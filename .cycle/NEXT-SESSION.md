@@ -34,7 +34,10 @@ commands disagree.
 > `2026-10-three-tool-gaps-broad-implement.md`): a doubler is priced on its best axis
 > (`doubler_best`) and counter doublers carry the `counters` tag (G-33), `--needs` reads
 > the shared source count (G-38), and a one-sided damage sweep scores Sweeper (K-12).
-> 0 tier floors moved.
+> 0 tier floors moved. **And the test suite was found reverting the real `card-library.csv`
+> on every run** (an editor test's `/api/revert` without its fixture) — fixed 2026-10-01
+> with a library sandbox plus a `tests/conftest.py` guard that FAILS a run which changed a
+> data file, a deck file or a `.bak` beside one (G-88). Never edit data mid-suite.
 >
 > **3. DECKS TUNED:** 78-historic-brawl (pile doc live), 60 Redline (pile doc live), 55
 > Mardu Waves (after a 1-4 start: haste via The Fire Crystal, instant-speed removal,

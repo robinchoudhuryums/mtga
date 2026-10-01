@@ -8029,3 +8029,60 @@ without re-measuring; the numbers above are the starting point.
 
 `tribes` remains **report-only** — it feeds no score and no tier floor, so neither the bug
 nor the residual can move a deck's grade.
+
+## [G-88] The test suite must not write the repo's own data
+
+**The incident (2026-10-01).** `tests/test_app_editor.py::TestRequestGuard::
+test_a_post_with_no_origin_is_allowed` posted `/api/revert` with no Origin header to prove
+the CSRF guard lets a non-browser client through. Every other write-endpoint test in that
+module took the `library` fixture, which monkeypatches `app.DEFAULT_CSV` to a tmp file; this
+one did not, so the request reached the REAL endpoint against the REAL `card-library.csv`.
+`revert()` backs up the current file and restores the newest `.bak` by creation stamp — so
+every pytest run undid the last write to the library.
+
+It was invisible for weeks because the usual state is "the newest backup equals the current
+file" (most library writes are committed before the suite next runs, and the revert's own
+backup then makes the newest `.bak` identical again). The only trace was an extra `.bak`
+per run in a gitignored pile of 224. It surfaced in the three-tool-gaps session:
+
+- 15:54 `make refresh` → `tag_synergies --merge` tags four rows (Loading Zone, Doc Samson,
+  Doubling Season, The Great Goblin) with `counters`.
+- 16:08 the full suite runs; the probe backs the tagged file up
+  (`card-library.csv.20261001-160850-*.bak`) and restores the 02:52 content — mtime and all,
+  since backups are made with `copy2`. The commit that followed went out WITHOUT the tags.
+- Restored by re-running the merge and committed (d4bd193).
+- 18:47 the SessionStart hook's suite (code had changed since the last green run) reverted
+  it AGAIN. The backups stamped 13:23 and 14:20 the same day are earlier runs of the same
+  test, invisible because nothing had been written since the newest backup.
+
+**Why a hook makes this worse than a dev-box annoyance.** `scripts/session_check.sh` runs the
+whole suite at session start whenever the code tree changed. An ingest left uncommitted at
+the end of one session would be silently reverted at the start of the next, and the next
+commit would then carry the OLDER library — a data loss with every gate green.
+
+**The fix has three layers.**
+
+1. The test takes `library`. A 409 from the empty temp library is the endpoint's own answer,
+   which is all it needs — it proves the guard let the request through.
+2. An **autouse** `_sandboxed_library` fixture in `test_app_editor.py` copies the real
+   library and mana files into `tmp_path` and points `app.DEFAULT_CSV` / `app.MANA_CSV` at the
+   copies for every test. `library` still wins (its monkeypatch runs later). Opt-OUT, because
+   opting in per test is exactly the shape that failed.
+3. **`tests/conftest.py` fingerprints the repo's data** at `pytest_sessionstart` — the sha256
+   of `card-library.csv`, `card-mana.csv`, `card-pool.csv`, `card-wishlist.csv`,
+   `matches.csv`, `recommendations.csv`, `arena-cards.csv` and `collection-stamp.json`, every
+   file under `decks/`, and the NAMES of the `.bak` files beside each — and
+   `pytest_sessionfinish` fails the session (`ExitCode.TESTS_FAILED`, with the file list
+   printed red) if any moved. **The `.bak` half is load-bearing**: a revert that restores
+   identical bytes changes no content hash but always writes a backup.
+
+**Watched it fail.** With only the guard in place and the OLD test file restored, the editor
+module ran 27 tests, all passing, and the session exited 1 with
+`card-library.csv (.bak files)` — the content-identical case, caught only by the `.bak`
+half. The new `.bak` was deleted and the file checked out afterwards. With the fix, the full
+suite (1,995 tests) exits 0 under the guard: no other test writes repo data.
+
+**Standing rule this adds.** Never edit a data or deck file while a suite runs — the guard
+will fail the run, and that is correct (it is the 2026-09-20 "no source edits mid-suite"
+rule extended to data). If it fires: `git checkout -- <file>`, delete the new `.bak`, and
+give the offending test a fixture that repoints the path.

@@ -35,6 +35,12 @@ Updated: 2026-10-01 (three tool gaps closed — see Where I left off)
 
 ## Completed this cycle
 
+- **2026-10-01 — the test suite no longer reverts the real card library (G-88).** An editor
+  test POSTed `/api/revert` without its fixture, so every pytest run (including the
+  SessionStart hook's) restored the newest `.bak` over `card-library.csv`. Fixed the test,
+  added an autouse library sandbox to `test_app_editor.py`, and a `tests/conftest.py`
+  session guard over the data files, deck files and `.bak` names (watched it fail on the
+  old test). Commit 10e273f.
 - **2026-10-01 — three tool gaps from the deck 30 tune closed** (`/broad-implement`).
   G-33 gap 2: `doubler_best` prices a two-axis doubler (Doubling Season) on the axis the
   deck feeds most, and the tagger's `counters` rule reads "one or more counters" (12 pool
@@ -198,11 +204,6 @@ Updated: 2026-10-01 (three tool gaps closed — see Where I left off)
   (conditional mana) — K-12's long form has the probe. (Soul Immolation closed 2026-10-01.)
 
 ## Open follow-on items
-- **HIGH — pytest reverts the real card-library.csv.** `test_app_editor.py`'s
-  `test_a_post_with_no_origin_is_allowed` posts `/api/revert` without the `library`
-  fixture, restoring the newest `.bak` over the repo's library on every run — it undid
-  this session's tag merge (restored and re-committed). Commit library writes BEFORE
-  running the suite until the test is fixed. Detail in the 2026-10 three-tool-gaps block.
 - **suggest-homes' KEY-saturation warning misattributes a doubler-density KEY** to theme
   overlap ("KEY scores THEME OVERLAP ALONE") — the whole counter-doubler family now trips
   it at ~23–28% of the roster, which the counters key-at-p75 calibration predicts.
@@ -380,6 +381,11 @@ Updated: 2026-10-01 (three tool gaps closed — see Where I left off)
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
+**2026-10-01 (latest) — G-88 fixed, docs synced, PR opened.** The revert-test leak is closed
+(10e273f) and `/sync-docs` landed G-88, the README doubler/`--needs` lines, the systems-map
+inventory rows and the cycle-config C-07 note. **Trap for every later session: never edit a
+data or deck file while a suite runs — the new conftest guard fails the run.**
+
 **2026-10-01 (later) — deck 55 shocklands, then the three tool gaps.** Deck 55 swapped
 Scoured Barrens and Sun-Blessed Peak for second copies of Godless Shrine and Sacred Foundry
 (commit fde63e2). Then `/broad-implement` closed G-33 gap 2, G-38 and K-12 (block

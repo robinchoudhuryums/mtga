@@ -47,3 +47,7 @@ FOLLOW-ON ITEMS:
 DOCUMENTATION UPDATES NEEDED:
 - None outstanding — CLAUDE.md (G-33, G-35 caller list, G-38, K-12) and docs/gotchas.md (dated closure sections under [G-33], [G-38], [K-12]) updated in this change.
 ---END BROAD SCAN IMPLEMENTATION SUMMARY---
+
+Addendum (2026-10-01, after the block was written): the HIGH follow-on above — the editor
+test reverting the real `card-library.csv` — is FIXED in 10e273f (G-88). The other
+follow-ons stand.

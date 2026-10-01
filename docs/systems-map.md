@@ -236,7 +236,8 @@ Every place two implementations answer one question. Measured, not asserted.
 | Derived-data rebuild order | `Makefile` | every prose copy | one definition | `tests/test_verify_ingest.py` |
 | A "specific" theme | `_theme_is_generic` denylist | wishlist idf cutoff | **deliberately different** | — |
 | A deck's signature themes | `_signature_themes` (loose) | `_strong_signature_themes` (strict) | **diverge — see §7** | — |
-| Colour sources of a deck | ~~`cmd_mana` / `_deck_source_counts` / `deck_color_sources`~~ | **one** `deck_source_profile` | n/a — retired 2026-09-02 | BS8-01 |
+| Colour sources of a deck | ~~`cmd_mana` / `_deck_source_counts` / `deck_color_sources`~~ / ~~`deck_needs`~~ | **one** `deck_source_profile` | n/a — retired 2026-09-02; `deck_needs` (`suggest --needs`/`--ramp`) was the last holdout until 2026-10-01 (53 of 114 headers had differed) | BS8-01, G-38 |
+| What a doubler is worth in a deck | ~~`doubler_axis` (first axis only)~~ | **one** `doubler_best` for `cuts` ✱, `screen`, `suggest-homes` | n/a — retired 2026-10-01 (Doubling Season was priced as tokens only) | G-33 |
 | Does this card rotate? | ~~`rotation_risk` / `craft_rot_note`~~ | **one** predicate; the note delegates | n/a — retired 2026-09-02 | BS8-12 |
 | Can this deck cast this card? | `_candidate_castability` (cost) | `_filler_castable` / `wishlist._castable` delegate to it | one rule at every site | BS8-05/14/36 |
 | Which legality key is this format? | `pool_format_key` | — | one mapping (60-card Brawl → `standard`) | BS8-04 |

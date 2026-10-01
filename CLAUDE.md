@@ -1324,6 +1324,19 @@ is protecting.
   drops of which **6** are mana, a different deck than "12". The bare int still feeds
   `tier_band` and the F10 guard, like `count_conf` (G-48). [G-81]
 
+- **THE TEST SUITE MUST NOT WRITE THE REPO'S OWN DATA, and for weeks one test did on every
+  run.** `test_app_editor`'s no-Origin `/api/revert` probe ran without the fixture that
+  repoints `app.DEFAULT_CSV`, so each pytest run restored the newest `.bak` over
+  `card-library.csv` — UNDOING the last library write. Invisible because the newest backup
+  usually held the same bytes; on 2026-10-01 it discarded a `tag_synergies --merge` twice,
+  once through the SessionStart hook's suite. **Two guards now:** an autouse fixture gives
+  every editor test a COPY of the library and mana files (opt-OUT, since opt-in is the
+  shape that failed), and `tests/conftest.py` fingerprints the canonical data files, every
+  deck file and the `.bak` NAMES beside them, failing the session if any moved — the
+  `.bak` half catches a revert that restores identical bytes. **Never edit data or deck
+  files while a suite runs** (the guard fails it, correctly); if it fires, `git checkout
+  -- <file>`, delete the new `.bak`, and give the offending test a path fixture. [G-88]
+
 ## Known Issues
 
 Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
@@ -1587,7 +1600,9 @@ earned it: [C-01]
   (CI installs BOTH, and sets PYTEST_NO_SKIPS so a skip FAILS, at collection too since BS8-07 — installing only -dev
   silently skipped the editor's six write-safety pins on every run),
   pytest.ini, .github/workflows/tests.yml, + test_templates.py's TOKEN gate (a GENERATED
-  page must define every `var(--x)` it emits — G-72 one file over) [C-07]
+  page must define every `var(--x)` it emits — G-72 one file over), + conftest's
+  REPO-DATA guard (the run fails if a test wrote a canonical CSV, a deck file or a `.bak`
+  beside one — G-88) [C-07]
 - Decks: decks/
 
 **Invariant Library:**
