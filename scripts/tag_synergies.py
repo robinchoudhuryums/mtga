@@ -403,8 +403,15 @@ def is_noise_keyword(kw, freq=None, corpus=None):
 
 # (tag, predicate(type_line_lower, text_lower)) — order defines output order.
 MECHANIC_RULES = [
+    # The last alternation is the REPLACEMENT templating (G-33 gap 2, 2026-10-01): a
+    # counter doubler names no counter KIND and says "counters on", never "counter on",
+    # so Doubling Season carried only `tokens`, and Loading Zone, Doc Samson and Winding
+    # Constrictor carried no counters tag at all. 12 pool cards, every one a counters card.
+    # The plural "counters on" was measured and NOT used: 90 cards, mostly "remove all
+    # counters on" / "the number of counters on" (Chalice of the Void, Grimdancer).
     ("counters", lambda t, x: "+1/+1 counter" in x or "-1/-1 counter" in x
-        or "counter on" in x or "stun counter" in x),
+        or "counter on" in x or "stun counter" in x
+        or re.search(r"\bone or more counters\b|\bcounters? would be put\b", x) is not None),
     ("counterspell", lambda t, x: "counter target" in x),
     # STRICT since BS8-31: the bag-of-words form ("graveyard" + "battlefield" + return/put
     # + "creature", anywhere in the text) was 36% false (Long Feng, Rancor, a "put into a

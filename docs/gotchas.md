@@ -2418,6 +2418,55 @@ ranked it the deck's **2nd-weakest card**. Two causes, neither the BS11 voice fi
 Workaround applied: Doubling Season is in deck 30's `#: protect:`. The fix is a
 multi-axis return (take the axis with the most support) plus a `counters` tag for the
 generic replacement — measure both roster-wide before landing (G-40).
+
+### 2026-10-01 — closed: multi-axis pricing, and the `counters` tag reads the replacement
+
+**Code half.** `doubler_axes(text)` returns every axis a card doubles; `doubler_axis` keeps
+returning the first, as a LABEL. Pricing goes through one new primitive, `doubler_best(text,
+cards, carddata)` → `(axis, support)`, which picks the axis whose support sits furthest
+above that axis's own floor (`doubler_calib`) — raw counts are not comparable when the
+triggers floor is 20 and the token floor 5. It is the MAX, not a sum: one card can feed
+two axes ("create a token with a +1/+1 counter on it"), and a sum would count it twice
+toward boosts that are capped below what a sum reaches anyway. `cut_keep_score`'s ✱ term,
+`screen` and `suggest-homes` all call it, so they cannot disagree (G-70);
+`structural_overlay_hit` asks whether ANY axis has support. Only two pool cards double
+two axes (Doubling Season, Primal Vigor).
+
+- Code alone, roster: `✱` re-priced Doubling Season on **counters** in decks 4 (27
+  feeders, was tokens 14), 78 (13, was 11) and 78-brawl (12, was 11); in deck 30 (scratch
+  copy without `#: protect:`) counters 18 against tokens 9, keep-score 11.77 → 12.67.
+  0 tier floors, 0 interaction/card-advantage changes, 0 `cuts` #1 changes.
+- `suggest-homes "Doubling Season"`: 40 of 42 rows re-ordered, 6 counters decks promoted
+  role-player → KEY (30, 68, 7, 29a, 13, 40a), 2 tangential → role-player; #1 unchanged.
+
+**Tag half.** The tagger's `counters` rule (`"+1/+1 counter"`, `"counter on"`…) never saw
+the replacement templating, which names no counter kind and says "count**ers** on". A third
+alternation, `one or more counters | counters? would be put`, tags **12 pool cards, every
+one a counters card** (Doubling Season, Loading Zone, Doc Samson, Winding Constrictor,
+Vorinclex, Rikku, Goldberry, Aragorn Company Leader, Captain Marvel Apex Avenger, All Will
+Be One, Putrid Hexhag, The Great Goblin). The plural `counters on` was measured and
+rejected: 90 cards, mostly "remove all counters on" / "the number of counters on".
+`make refresh` rebuilt the pool (the stamp hash saw the tagger change, K-10) and
+`--merge` tagged 4 library rows.
+
+- Tags, roster: Doubling Season left the `cuts` top 3 in **5 decks** (4, 58, 69b, 78,
+  78-brawl) and Doc Samson left deck 4's; 0 `cuts` #1 changes; 0 tier floors. Deck 7's
+  central themes moved 14 → 12 (Doc Samson's tag concentrated its weight on counters) and
+  its `#: tier:` figure was re-grounded.
+- `suggest-homes "Loading Zone"`: 13 rows / KEY 4 → **47 / 26** — the same as its
+  already-tagged siblings (Innkeeper's Talent and The Earth Crystal 47 / 24, Michelangelo
+  52 / 28). It had been the family outlier, not now an inflated one. KEY at ~23% is what
+  the counters axis's key-at-p75 calibration predicts, and the KEY-saturation warning
+  fires for the whole family; that warning's "KEY scores THEME OVERLAP ALONE" wording is
+  wrong for a doubler-density KEY (follow-on, not fixed here).
+
+The same refetch carried three days of Scryfall drift unrelated to this change: nine
+Reality Fracture reprints became Standard-legal at the oracle level (Chandra Torch of
+Defiance, Tarmogoyf, the five slowlands, Tetsuko Umezawa, Yargle), which re-ordered 8
+decks' `--ramp` lists and changed 2 decks' #1 pick to Chandra.
+
+Deck 30 keeps Doubling Season in `#: protect:` — it is a signature card, which is a
+reason that outlives the workaround.
 ## [G-83] A cost that SCALES with a deck count, priced by nothing
 
 Every model in this repo prices a card at its PRINTED cost. That is right for most cards
@@ -2981,6 +3030,28 @@ by identity), a type-gated colour (G-87 credit vs a full source) or an off-colou
 list toward, so the disagreement can change a recommendation, not just a header. Not
 fixed here (a sync-docs pass writes no code); the fix is to route `deck_needs` through
 `deck_source_profile` and re-measure the fixing picks.
+
+### 2026-10-01 — closed: `deck_needs` reads the shared count
+
+`deck_needs` now takes its sources from `deck_color_sources` (→ `deck_source_profile`),
+restricted to the deck's colours — the call `suggest_lands` already made, one function
+over. Its land loop no longer counts anything; it only skips lands so they stay out of
+the pip demand and the type shares.
+
+Measured over the 114-deck roster against the pre-fix snapshot:
+
+- **53 of 114** decks' `--needs` source counts changed, in BOTH directions. Under:
+  any-colour and basic-fetch lands carry colourless identity, so deck 21a read
+  B 5 / G 6 / R 3 / W 3 against a real 12 / 13 / 10 / 10. Over: a Verge's gated second
+  colour (G-87) read as a full source, so deck 28 read G 16 against 12.
+- **0 of 114** now disagree with `consistency`'s count (checked with the library-row
+  inputs `consistency` itself uses, not just the carddata path).
+- `deficit` is derived from these numbers and feeds `--ramp`'s fixing term: **5 decks'**
+  `--ramp` top-10 re-ordered, **0** changed their #1 pick. 0 tier floors moved (the floor
+  reads no sources).
+
+Pinned by `test_deck_models.TestDeckNeeds.test_sources_are_the_shared_manabase_count`,
+which uses an any-colour land the identity sum read as zero and fails on the old code.
 
 
 ## [G-39] `deck.py cuts` folds a card-QUALITY (power) co-signal into the ranking (#3)
@@ -5059,6 +5130,32 @@ pass: Cheering Crowd ("that player may put a +1/+1 counter on this creature. If 
 they add {C} for each counter on it") was acknowledged into `role_baseline.txt` as
 zero-role — a conditional mana ability the Ramp patterns do not read. Both are G-67
 PATTERN holes, not taxonomy holes; measure the roster before widening either.
+
+### 2026-10-01 — the one-sided sweep closed (Cheering Crowd still open)
+
+Two `Sweeper` patterns: "deals N/X damage to (each opponent | target player/opponent |
+that player) and [N damage to] each creature [and planeswalker] (they | that player |
+target player | your opponents) control(s)", and the scalable "deals damage to each
+creature your opponents control equal to …" (Call Forth the Tempest).
+
+**15 pool cards, all real one-sided sweeps** on a full-text read: Soul Immolation,
+Tectonic Hazard, End the Festivities, Goblin Chainwhirler, Dagger Caster, Radiating
+Lightning, The Fall of Kroog, Chandra's Flame Wave, Call Forth the Tempest, Sarkhan's
+Unsealing, Ashling Flame Dancer, Urabrask // The Great Work, Sarkhan Dragonsoul and the
+two Chandra ultimates. The 1-damage members count because the symmetric pattern already
+counts a 1-damage sweep — the family rule, not a new one.
+
+Deliberately OUT: Homing Lightning ("each other creature WITH THE SAME NAME" — spot
+removal; the owner clause excludes it) and Balefire Dragon ("deals that much damage to
+each creature that player controls" on combat damage — an attack trigger, not an answer
+you can cast). Both are pinned as negatives.
+
+Roster: interaction **+1 in decks 30 (7→8) and 56a (5→6)**, **0 tier floors moved**,
+card advantage unchanged. `cuts`' #1 changed in one deck (56a, where Soul Immolation had
+been the top cut candidate as a zero-role card). The suite's roster figure sweep caught
+56a's `#: tier:` prose quoting interaction 5 — G-67's "run the SUITE" rule doing its job —
+and both decks' prose was re-grounded in the same change. Cheering Crowd's conditional
+mana ability is untouched: a separate pattern hole, not this family.
 
 ## [K-13] A literal type-name search cannot see the choose-a-type category — and the false negative reads as an answer
 
@@ -7932,3 +8029,60 @@ without re-measuring; the numbers above are the starting point.
 
 `tribes` remains **report-only** — it feeds no score and no tier floor, so neither the bug
 nor the residual can move a deck's grade.
+
+## [G-88] The test suite must not write the repo's own data
+
+**The incident (2026-10-01).** `tests/test_app_editor.py::TestRequestGuard::
+test_a_post_with_no_origin_is_allowed` posted `/api/revert` with no Origin header to prove
+the CSRF guard lets a non-browser client through. Every other write-endpoint test in that
+module took the `library` fixture, which monkeypatches `app.DEFAULT_CSV` to a tmp file; this
+one did not, so the request reached the REAL endpoint against the REAL `card-library.csv`.
+`revert()` backs up the current file and restores the newest `.bak` by creation stamp — so
+every pytest run undid the last write to the library.
+
+It was invisible for weeks because the usual state is "the newest backup equals the current
+file" (most library writes are committed before the suite next runs, and the revert's own
+backup then makes the newest `.bak` identical again). The only trace was an extra `.bak`
+per run in a gitignored pile of 224. It surfaced in the three-tool-gaps session:
+
+- 15:54 `make refresh` → `tag_synergies --merge` tags four rows (Loading Zone, Doc Samson,
+  Doubling Season, The Great Goblin) with `counters`.
+- 16:08 the full suite runs; the probe backs the tagged file up
+  (`card-library.csv.20261001-160850-*.bak`) and restores the 02:52 content — mtime and all,
+  since backups are made with `copy2`. The commit that followed went out WITHOUT the tags.
+- Restored by re-running the merge and committed (d4bd193).
+- 18:47 the SessionStart hook's suite (code had changed since the last green run) reverted
+  it AGAIN. The backups stamped 13:23 and 14:20 the same day are earlier runs of the same
+  test, invisible because nothing had been written since the newest backup.
+
+**Why a hook makes this worse than a dev-box annoyance.** `scripts/session_check.sh` runs the
+whole suite at session start whenever the code tree changed. An ingest left uncommitted at
+the end of one session would be silently reverted at the start of the next, and the next
+commit would then carry the OLDER library — a data loss with every gate green.
+
+**The fix has three layers.**
+
+1. The test takes `library`. A 409 from the empty temp library is the endpoint's own answer,
+   which is all it needs — it proves the guard let the request through.
+2. An **autouse** `_sandboxed_library` fixture in `test_app_editor.py` copies the real
+   library and mana files into `tmp_path` and points `app.DEFAULT_CSV` / `app.MANA_CSV` at the
+   copies for every test. `library` still wins (its monkeypatch runs later). Opt-OUT, because
+   opting in per test is exactly the shape that failed.
+3. **`tests/conftest.py` fingerprints the repo's data** at `pytest_sessionstart` — the sha256
+   of `card-library.csv`, `card-mana.csv`, `card-pool.csv`, `card-wishlist.csv`,
+   `matches.csv`, `recommendations.csv`, `arena-cards.csv` and `collection-stamp.json`, every
+   file under `decks/`, and the NAMES of the `.bak` files beside each — and
+   `pytest_sessionfinish` fails the session (`ExitCode.TESTS_FAILED`, with the file list
+   printed red) if any moved. **The `.bak` half is load-bearing**: a revert that restores
+   identical bytes changes no content hash but always writes a backup.
+
+**Watched it fail.** With only the guard in place and the OLD test file restored, the editor
+module ran 27 tests, all passing, and the session exited 1 with
+`card-library.csv (.bak files)` — the content-identical case, caught only by the `.bak`
+half. The new `.bak` was deleted and the file checked out afterwards. With the fix, the full
+suite (1,995 tests) exits 0 under the guard: no other test writes repo data.
+
+**Standing rule this adds.** Never edit a data or deck file while a suite runs — the guard
+will fail the run, and that is correct (it is the 2026-09-20 "no source edits mid-suite"
+rule extended to data). If it fires: `git checkout -- <file>`, delete the new `.bak`, and
+give the offending test a fixture that repoints the path.

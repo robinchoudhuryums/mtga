@@ -70,6 +70,10 @@ UNIVERSE = {
     # A ritual is one-shot, not a source — and an instant/sorcery is excluded by type.
     "ritual": _card("Ritual", "Sorcery", "Add {B}{B}{B}.", "B"),
     "swamp": _card("Swamp", "Basic Land — Swamp", "", ""),
+    # An any-colour land has COLOURLESS identity, so a count that sums land identity reads
+    # it as no source at all — the G-38 holdout in `deck_needs`. Only `deck_source_profile`
+    # reads what the land's TEXT produces.
+    "prism land": _card("Prism Land", "Land", "{T}: Add one mana of any color.", ""),
 }
 
 MANA = {
@@ -79,6 +83,7 @@ MANA = {
     "star bear": ("{1}{B}", 2), "zero bear": ("{1}{B}", 2), "wagon": ("{2}", 2),
     "dork": ("{B}", 1), "rock": ("{2}", 2), "filter rock": ("{2}", 2),
     "narrow dork": ("{B}", 1), "grantor": ("{1}{B}", 2), "ritual": ("{B}", 1),
+    "prism land": ("", 0),
 }
 
 META = {
@@ -98,6 +103,7 @@ META = {
     "narrow dork": {"colors": {"B"}, "synergies": ["ramp"]},
     "grantor": {"colors": {"B"}, "synergies": ["ramp"]},
     "ritual": {"colors": {"B"}, "synergies": ["ramp"]},
+    "prism land": {"colors": set(), "synergies": []},
 }
 
 
@@ -379,6 +385,19 @@ class TestDeckNeeds:
         assert b60["int_target"] == 5
         assert deck._scale_count(7, 100 / 60) == deck.floor_requirements(
             {"floor_scale": 100 / 60}, "A")[0]
+
+    def test_sources_are_the_shared_manabase_count(self, synth):
+        """G-38: `deck_needs` summed land colour IDENTITY, so an any-colour land (colourless
+        identity) read as NO source while `consistency` counted it — deck 30's `--needs`
+        header said G 15 / R 10 / U 12 beside U 13 / R 11 / G 15. It now reads
+        `deck_color_sources`, the count `consistency`, `mana` and `suggest --lands` print,
+        so the two cannot disagree; `deficit` (which `--ramp` ranks on) follows it."""
+        d = synth(["4 Bear", "4 Prism Land", "16 Swamp"])
+        needs = deck.deck_needs(d)
+        _m, cards = deck.parse_deck_file(d["path"])
+        shared = deck.deck_color_sources(cards, deck.load_card_meta(), deck.load_card_data())
+        assert needs["sources"]["B"] == 20             # identity-summing read 16
+        assert needs["sources"] == {c: shared[c] for c in needs["colors"]}
 
     def test_a_top_heavy_deck_wants_acceleration(self, synth):
         heavy = deck.deck_needs(synth(["8 Big Bear", "20 Swamp"]))

@@ -27,12 +27,13 @@
 #: tier: deck read 4/7) for the interaction a resilience floor demands, which floated
 #: tier: the floor to A. Graded as midrange the floor was B then, read C after
 #: tier: `TIER_FLOOR_REQ` was re-derived 2026-09-02 (BS8-06), and is B again since the
-#: tier: 2026-09-05/06 pile tunes: interaction 5 with card advantage 3 puts the resilience
-#: tier: sum at 8, one over the B floor, so the letter sits AT the floor with a point to spare. The rubric's A wants at
+#: tier: 2026-09-05/06 pile tunes: interaction 6 with card advantage 3 puts the resilience
+#: tier: sum at 9, two over the B floor, so the letter sits AT the floor with points to spare
+#: tier: (the classifier read Soul Immolation's one-sided sweep as nothing until 2026-10-01, K-12). The rubric's A wants at
 #: tier: most ONE clear weakness. This list has three:
 #: tier: 1. CARD ADVANTAGE 3 since Nexus of Becoming (2026-09-06) — a card every combat — where
 #: tier:    the first grading named 2 with no refuel; still the thinnest axis.
-#: tier: 2. INTERACTION 5, and only ONE piece (Origin of Metalbending's first mode) answers a
+#: tier: 2. INTERACTION 6, and only ONE piece (Origin of Metalbending's first mode) answers a
 #: tier:    NONCREATURE permanent — artifact OR enchantment (the artifact-only answer was CUT for it). For an aggro deck that is survivable (you are racing);
 #: tier:    for a midrange deck an enchantment or planeswalker that blanks the plan is
 #: tier:    still nearly unanswerable.

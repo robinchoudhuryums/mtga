@@ -71,3 +71,77 @@ def pytest_make_collect_report(collector):
             "  A module skipped at collection is not coverage. Install the missing "
             "dependency in CI, or delete the module — see the note in tests/conftest.py."
         )
+
+
+# ── The suite must not write the repo's own data ─────────────────────────────────────
+#
+# On 2026-10-01 `test_app_editor.py` was found reverting the REAL card-library.csv on every
+# run: one test POSTed `/api/revert` without the fixture that repoints `app.DEFAULT_CSV`,
+# so the endpoint restored the newest `.bak` over the inventory — i.e. it UNDID the last
+# library write. It discarded a tag merge twice in one day (once through the SessionStart
+# hook's suite run) and had gone unnoticed for weeks, because the newest backup usually held
+# the same bytes, so the only trace was an extra `.bak` nobody looked at.
+#
+# The fix there is local; this is the class. Fingerprint every canonical data file and deck
+# file — CONTENT, plus the NAMES of the `.bak` files beside them — at session start, and
+# fail the run if any moved. The `.bak` half is what makes it deterministic: a revert that
+# restores identical bytes changes no content but always writes a new backup.
+#
+# Do not edit data or deck files while the suite runs (the 2026-09-20 process rule already
+# says so for source); a deliberate edit mid-run will trip this, and that is correct.
+_GUARDED_DATA = ("card-library.csv", "card-mana.csv", "card-pool.csv", "card-wishlist.csv",
+                 "matches.csv", "recommendations.csv", "arena-cards.csv",
+                 "collection-stamp.json")
+
+
+def _repo_data_fingerprint(root):
+    import glob
+    import hashlib
+
+    def digest(path):
+        try:
+            with open(path, "rb") as fh:
+                return hashlib.sha256(fh.read()).hexdigest()
+        except OSError:
+            return None
+
+    fp = {}
+    for name in _GUARDED_DATA:
+        path = os.path.join(root, name)
+        fp[name] = digest(path)
+        fp[name + " (.bak files)"] = tuple(sorted(
+            os.path.basename(b) for b in glob.glob(glob.escape(path) + ".*bak*")))
+    for path in sorted(glob.glob(os.path.join(root, "decks", "**", "*"), recursive=True)):
+        if os.path.isfile(path):
+            rel = os.path.relpath(path, root)
+            fp[rel] = "bak" if ".bak" in os.path.basename(path) else digest(path)
+    return fp
+
+
+_REPO_ROOT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
+
+
+def pytest_sessionstart(session):
+    session.config._repo_data_fp = _repo_data_fingerprint(_REPO_ROOT)
+
+
+def pytest_sessionfinish(session, exitstatus):
+    before = getattr(session.config, "_repo_data_fp", None)
+    if before is None:
+        return
+    after = _repo_data_fingerprint(_REPO_ROOT)
+    changed = sorted(k for k in set(before) | set(after) if before.get(k) != after.get(k))
+    if not changed:
+        return
+    tr = session.config.pluginmanager.get_plugin("terminalreporter")
+    msg = ("REPO DATA CHANGED DURING THE TEST RUN — a test wrote the repo's own files "
+           "instead of a tmp copy:\n" + "\n".join(f"  {k}" for k in changed[:20])
+           + ("\n  …" if len(changed) > 20 else "")
+           + "\nRestore with `git checkout -- <file>` (and delete any new .bak), then give "
+             "the offending test a fixture that repoints the path. See tests/conftest.py.")
+    if tr is not None:
+        tr.write_line("")
+        tr.write_line(msg, red=True, bold=True)
+    else:
+        print(msg)
+    session.exitstatus = pytest.ExitCode.TESTS_FAILED

@@ -488,7 +488,7 @@ python3 scripts/deck.py engines 20a    # enabler ↔ payoff balance for the deck
 python3 scripts/deck.py targets 20a    # TARGETS for its own gated effects (MV caps, sac costs) + STATE gates (dead / free / CONFLICT — an attacks-alone card in a go-wide deck)
 python3 scripts/deck.py suggest 20a --owned   # pool cards that fit; --owned = 0-wildcard upgrades
 python3 scripts/deck.py suggest 20a --lands --owned  # MANABASE recommender: owned lands that fix your colors (fixing + synergy + scarce-color nudges; any-colour lands and basic fetches included). A land ALREADY in the deck is a candidate — an `In` column shows the copies you run, since "play a second one of that untapped dual" is the commonest real manabase fix; only the format copy limit and basics are excluded.
-python3 scripts/deck.py suggest 20a --needs   # STRUCTURAL needs the theme model can't see: fixing · acceleration (--ramp) · interaction (--interaction, board-scalers flagged)
+python3 scripts/deck.py suggest 20a --needs   # STRUCTURAL needs the theme model can't see: fixing · acceleration (--ramp) · interaction (--interaction, board-scalers flagged); its colour sources are the same count `consistency` prints
 python3 scripts/deck.py legal 20a      # construction lint: deck size, copy limits, format legality
 python3 scripts/deck.py shape 20a      # wide vs tall, fast vs slow — the structural read themes can't give
 python3 scripts/deck.py cuts 20a       # rank the deck's weakest-fit cards as cut candidates
@@ -996,7 +996,7 @@ scores theme fit and role credit, neither of which has a fixing term, so a fixer
 tags, no classified role) used to sort straight to the top of the cut list in exactly the
 multi-color decks that need it. Adding a fixer therefore proposed cutting a *better* one.
 Incumbent fixers are now excluded when the add is itself a fixer.
-A **doubler** (tokens / counters / triggers / lifegain) is weighed against how much
+A **doubler** (tokens / counters / triggers / lifegain / damage) is weighed against how much
 this deck actually has to double — Exalted Sunborn shares `tokens` with a 14-token deck
 and a 6-token deck, and theme overlap scored them identically — so its feeder count
 drives a bounded fit bump and promotes it to KEY past a threshold. The doubler's own
@@ -1007,7 +1007,10 @@ trigger doubling reads 27 feeders in deck 20 against a real 12). Treat a `✱ mu
 figure on a tribal doubler as an upper bound. The **lifegain** axis was added last, because The Wind Crystal read
 as no doubler at all while the list stopped at three; it requires the literal "twice
 that much", since a replacement that is *not* a doubling is templated identically
-(Angel of Vitality's "plus 1 instead" is +1, not ×2).
+(Angel of Vitality's "plus 1 instead" is +1, not ×2). A card that doubles **two** things —
+Doubling Season, tokens *and* counters — is priced on whichever this deck feeds more
+(`doubler_best`, shared by `cuts`, `screen` and `suggest-homes`); until 2026-10-01 only the
+first axis was read, so it scored as a token doubler in counters decks.
 Castability here is an **identity subset** test, which says nothing about whether you
 can pay the pips: Anti-Venom (`{W}{W}{W}{W}{W}`) read KEY for decks with 10 white
 sources, roughly 1% castable on turn five. A cost demanding 3+ strict pips of one

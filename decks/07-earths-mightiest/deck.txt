@@ -38,7 +38,8 @@
 #: tier: and asked to be re-graded. Being UNPLAYED is not a weakness of the LIST and is not what
 #: tier: holds a letter down here; it is why the deck is not S.
 #: tier: NOT S: that needs proven top-meta capability, and this deck has no recorded matches.
-#: tier: The spine is no longer thin: 14 central themes, level with the roster median of 14,
+#: tier: The spine is no longer thin: 12 central themes against a roster median of 14 (it read
+#: tier: 14 until 2026-10-01, when Doc Samson's counters tag concentrated the weight on counters),
 #: tier: up from 6 before the 2026-09-24 tunes, for a deck that still does two things —
 #: tier: counters and tokens, with 17 and 8 enablers — and now a mana engine under them.
 #: tier: Re-read after /log-matches.

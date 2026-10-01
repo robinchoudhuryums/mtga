@@ -841,6 +841,36 @@ class TestClassifyRoles:
         assert "Sweeper" in deck.classify_roles(
             "Return all nonland permanents to their owners' hands.")
 
+    def test_one_sided_damage_sweep_is_a_sweeper(self):
+        """K-12's live instance. The symmetric pattern needs "damage to each creature"
+        contiguous, so naming the OPPONENT first — the one-sided, strictly better form —
+        scored ZERO roles. Soul Immolation is the card that surfaced it (deck 30 read
+        interaction 7 against a real 8). Real oracle text."""
+        for text in (
+                "Soul Immolation deals X damage to each opponent and each creature they "
+                "control.",
+                "Radiating Lightning deals 3 damage to target player and 1 damage to each "
+                "creature that player controls.",
+                "When this creature enters, it deals 1 damage to each opponent and each "
+                "creature and planeswalker they control.",                   # Chainwhirler
+                "When this creature enters, it deals 1 damage to each opponent and 1 damage "
+                "to each creature your opponents control.",                  # Dagger Caster
+                "Call Forth the Tempest deals damage to each creature your opponents "
+                "control equal to the total mana value of other spells you've cast this "
+                "turn."):
+            assert "Sweeper" in deck.classify_roles(text), text
+
+    def test_one_sided_sweep_pattern_needs_the_owner_clause(self):
+        """The owner clause is the guard. Homing Lightning hits "each other creature WITH
+        THE SAME NAME" — spot removal, not a sweep — and Balefire Dragon's sweep is gated
+        on dealing combat damage, an attack trigger rather than an answer you can cast."""
+        assert "Sweeper" not in deck.classify_roles(
+            "Homing Lightning deals 4 damage to target creature and each other creature "
+            "with the same name as that creature.")
+        assert "Sweeper" not in deck.classify_roles(
+            "Flying\nWhenever this creature deals combat damage to a player, it deals that "
+            "much damage to each creature that player controls.")
+
     def test_graveyard_recursion_is_not_a_mass_bounce(self):
         """Excluded BY CONSTRUCTION, not by a guard: recursion returns cards to YOUR hand,
         never to their owner's. Wisdom of Ages is the live case."""
@@ -4003,6 +4033,44 @@ class TestDoublerCoSignal:
         is templated identically. Angel of Vitality is +1, not x2, and would qualify on the
         other axes' looser `instead` alternative."""
         assert deck.doubler_axis(self.LIFE_PLUS1) != "lifegain"
+
+    # Doubling Season's real oracle text: two sentences, two axes.
+    DOUBLING_SEASON = TOKEN_DBL_ACTIVE + "\n" + (
+        "If an effect would put one or more counters on a permanent you control, it puts "
+        "twice that many of those counters on that permanent instead.")
+
+    def test_a_two_axis_doubler_reports_both_axes(self):
+        """G-33 KNOWN GAP 2: `doubler_axis` returned the FIRST match, so Doubling Season
+        was a token doubler only and its counters sentence was unread everywhere."""
+        assert deck.doubler_axes(self.DOUBLING_SEASON) == ("tokens", "counters")
+        assert deck.doubler_axis(self.DOUBLING_SEASON) == "tokens"     # label unchanged
+        assert deck.doubler_axes("Shock deals 2 damage to any target.") == ()
+
+    def test_a_two_axis_doubler_is_priced_on_its_best_axis_for_the_deck(self):
+        """Deck 30's shape: 18 counter feeders and 9 token feeders. Priced as a token
+        doubler it read 9 and ranked 5th-weakest in `cuts`; its best axis is counters."""
+        cd = {"maker": {"type": "Sorcery", "text": "Create a 1/1 green Saproling creature token."},
+              "grower": {"type": "Sorcery", "text": "Put a +1/+1 counter on target creature."}}
+        counters_deck = [(3, "Maker", "X", "1"), (12, "Grower", "X", "2")]
+        tokens_deck = [(12, "Maker", "X", "1"), (3, "Grower", "X", "2")]
+        assert deck.doubler_best(self.DOUBLING_SEASON, counters_deck, cd) == ("counters", 12)
+        assert deck.doubler_best(self.DOUBLING_SEASON, tokens_deck, cd) == ("tokens", 12)
+        # A single-axis doubler is unchanged by the selection, and a non-doubler is (None, 0).
+        assert deck.doubler_best(self.TOKEN_DBL, counters_deck, cd) == ("tokens", 3)
+        assert deck.doubler_best("Shock deals 2 damage to any target.",
+                                 counters_deck, cd) == (None, 0)
+
+    def test_best_axis_compares_density_above_each_axis_floor(self):
+        """Raw counts are not comparable across axes whose floors differ: 22 trigger
+        feeders sit 2 over the triggers floor (20) while 8 token feeders sit 3 over the
+        default (5), so the token axis is the one this deck feeds."""
+        both = self.TOKEN_DBL + "\n" + self.TRIG_DBL.replace(" with power 2 or less", "")
+        cd = {"maker": {"type": "Sorcery", "text": "Create a 1/1 green Saproling creature token."},
+              "trig": {"type": "Creature — Elf", "text": "Whenever you attack, scry 1.",
+                       "power": "1"}}
+        cards = [(8, "Maker", "X", "1"), (22, "Trig", "X", "2")]
+        assert deck.doubler_axes(both) == ("tokens", "triggers")
+        assert deck.doubler_best(both, cards, cd)[0] == "tokens"
 
 
     def test_boost_is_zero_below_the_floor_and_rises_then_caps(self):
