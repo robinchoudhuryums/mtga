@@ -48,9 +48,17 @@ NAMED_URL = "https://api.scryfall.com/cards/named"
 # Verified by issubclass against the old tuple: both False. A --refetch
 # `build_mana.py --pool` dropping TLS at page 40 raised a traceback past main()'s
 # `except ScryfallUnavailable` — no data loss, but no clean abort and no retry either.
+#
+# Two more were still escaping (broad-scan BS11-25), same shape:
+#   * UnicodeDecodeError — a non-UTF-8 body (a proxy's HTML error page) fails inside
+#     `json.load` BEFORE decoding JSON, and it is a ValueError, not a JSONDecodeError.
+#   * http.client.HTTPException at large — BadStatusLine / LineTooLong come from
+#     `getresponse()`, which urllib does not wrap the way it wraps `request()`'s OSError.
+#     IncompleteRead is one of its subclasses, kept by name for the history above.
 _TRANSIENT = (socket.timeout, TimeoutError, ConnectionError,
               json.JSONDecodeError, urllib.error.URLError,
-              http.client.IncompleteRead, ssl.SSLError)
+              http.client.IncompleteRead, ssl.SSLError,
+              UnicodeDecodeError, http.client.HTTPException)
 
 
 class NotFound(Exception):

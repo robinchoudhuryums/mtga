@@ -52,7 +52,8 @@ python3 scripts/import_collection.py collection.csv      # dry run; --apply to w
 `import_arena.py` parses MTG Arena's `<qty> <Name> (<SET>) <collector#>` format and
 merges into `card-library.csv`, keyed by Card Name + Set Code + Collector # (one row per
 printing). Re-imports take the **max** quantity seen (decks share one collection, so
-counts don't sum); `--skip-basics` ignores basic lands. A line with **no collector
+counts don't sum); basic lands are skipped by default (`--include-basics` imports them;
+`--skip-basics` is still accepted). A line with **no collector
 number** — `4 Llanowar Elves`, or `4 Llanowar Elves (DOM)` from a website list — is
 treated as a NAME-level claim rather than a printing: it is compared against the summed
 total across every printing you own and tops up the first row only if it exceeds that,

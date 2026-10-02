@@ -96,6 +96,19 @@ class TestPresence:
         assert "--map" in joined          # the remedy, not just the failure
 
 
+class TestQuantityFirstTsv:
+    """BS11-22: the Arena regex's `\\s+` matched a TAB, so a quantity-first tracker TSV
+    "succeeded" as Arena lines named 'Llanowar Elves\\tDOM\\t168' and the CSV/TSV
+    fallback never ran — every card reported missing from the library."""
+
+    def test_a_quantity_first_tsv_is_read_as_an_export(self):
+        tsv = "Count\tName\tEdition\tCollector Number\n4\tLlanowar Elves\tDOM\t168\n"
+        res, _ = vi.verify(tsv, lib=_lib([("Llanowar Elves", 4)]),
+                           mana={"llanowar elves"})
+        assert [r["name"] for r in res] == ["Llanowar Elves"]
+        assert res[0]["present"]
+
+
 class TestQuantitiesLowerBoundVsAuthoritative:
     """The one conceptual distinction the whole ingest subsystem turns on. Applying the
     wrong reading either invents a failure or hides one."""

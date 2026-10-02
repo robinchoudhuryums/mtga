@@ -30,6 +30,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from lib import (BASICS as lib_BASICS, REPO_ROOT, eprint, atomic_write,  # noqa: E402
                  alias_front)
+import import_arena  # noqa: E402
 
 LIB = os.path.join(REPO_ROOT, "card-library.csv")
 MANA = os.path.join(REPO_ROOT, "card-mana.csv")
@@ -124,17 +125,30 @@ def reconcile(export_lines, apply=False, set_exact=False):
     added, bumped, mana_added, wish_removed, notfound, unparsed = [], [], [], [], [], []
     basics = []
 
+    # Report a line that looks like a card but lacks the `(SET) #` this tool needs —
+    # never silently drop it (audit F18). Section headers (Deck / Sideboard / Commander /
+    # Companion / About) are structure, not cards, and the About block's `Name <deck>`
+    # line is not a card either.
+    section = "deck"
     for raw in export_lines:
         s = raw.strip()
-        if not s or s.lower() == "deck" or s.startswith("#"):
+        if not s or s.startswith("#") or s.startswith("//"):
             continue
-        m = LINE_RE.match(s)
-        if not m:
-            # Don't silently drop a line that looks like a card but didn't parse
-            # (e.g. missing the `(SET) #` an Arena export carries) — audit F18.
+        if s.lower() in import_arena.SECTIONS:
+            section = s.lower()
+            continue
+        if section != "about" and not LINE_RE.match(s):
             unparsed.append(s)
-            continue
-        qty, name, setc, coll = int(m.group(1)), m.group(2).strip(), m.group(3).strip(), m.group(4).strip()
+
+    # QUANTITIES come from `import_arena.parse`, the one section-aware aggregation: Deck
+    # and Sideboard copies of a printing SUM (a Bo3 export with 2 maindeck + 2 sideboard
+    # proves 4), a repeat within a section is one holding stated twice, a Companion line
+    # duplicates its Sideboard row. Reading line by line here took max() across sections
+    # and recorded 2 — and listed "Sideboard" itself as unparseable (broad-scan BS11-24).
+    entries, _warns = import_arena.parse("\n".join(export_lines))
+    for qty, name, setc, coll in entries:
+        if not setc or not coll:
+            continue                       # reported above as COULD NOT PARSE
         # Skip basics BEFORE any pool lookup — REPORTED, not silently dropped, so a
         # user pasting a full deck list can see why those lines produced nothing.
         if _front(name).strip().lower() in BASICS:

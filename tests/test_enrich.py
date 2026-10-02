@@ -70,6 +70,20 @@ class TestQueueing:
         assert called == []                          # nothing queued at all
         assert "Nothing to enrich" in capsys.readouterr().out
 
+    def test_a_run_that_changes_nothing_writes_nothing(self, tmp_path, monkeypatch):
+        """BS11-29: a 0-change run rewrote the file and left a .bak of identical bytes."""
+        import glob
+        p = _write_lib(tmp_path, [{"Card Name": "Shock", "Type": "Instant",
+                                   "Card Text": "Card text.", "Color(s)": "R",
+                                   "Set Code": "M21", "Collector #": "9",
+                                   "Quantity Owned": "1"}])
+        monkeypatch.setattr(en, "resolve_cards",
+                            lambda names: {"shock": {**_card("Shock"),
+                                                     "color_identity": ["R"]}})
+        # --force queues every row; the resolver agrees with every stored field.
+        assert en.enrich(p, force=True) == 0
+        assert glob.glob(str(p) + ".*bak*") == []
+
     def test_hand_curated_synergies_survive(self, tmp_path, monkeypatch):
         """Synergies is not a FILLABLE column — an enrich pass must never clobber
         hand-curated tags (the --merge/--force discipline lives in tag_synergies)."""

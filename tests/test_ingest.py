@@ -572,6 +572,22 @@ class TestCollectionPlan:
         assert r["updated"] == [] and len(r["ambiguous"]) == 1
         assert r["ambiguous"][0][0] == "Shock"
 
+    def test_a_printed_entry_for_an_unheld_printing_is_folded_not_dropped(self):
+        """BS11-19: with the card held in TWO printings, an export row naming a THIRD
+        printing (set + collector) was filed as a name-only ambiguity and its copies
+        were dropped — a planned total of 2 against a real 4. The total must be right."""
+        rows = [self._row("Foo", "AAA", "1", "1"), self._row("Foo", "BBB", "2", "1")]
+        r = ic.plan(rows, [(1, "Foo", "AAA", "1"), (1, "Foo", "BBB", "2"),
+                           (2, "Foo", "CCC", "3")])
+        assert r["ambiguous"] == [] and r["added"] == []
+        assert sum(int(x["Quantity Owned"]) for x in rows) == 4
+
+    def test_the_fold_prefers_a_row_from_the_same_set(self):
+        rows = [self._row("Foo", "AAA", "1", "1"), self._row("Foo", "BBB", "2", "1")]
+        ic.plan(rows, [(1, "Foo", "AAA", "1"), (1, "Foo", "BBB", "2"),
+                       (2, "Foo", "BBB", "9")])
+        assert [x["Quantity Owned"] for x in rows] == ["1", "3"]
+
     def test_ambiguous_names_are_reported_once(self):
         rows = [self._row("Shock", "M21", "159", "2"), self._row("Shock", "DAR", "12", "2")]
         r = ic.plan(rows, [(3, "Shock", "", ""), (3, "Shock", "", "")])
@@ -673,6 +689,16 @@ class TestSetlessLines:
         return [{"Card Name": "Llanowar Elves", "Set Code": "M19", "Collector #": "314",
                  "Quantity Owned": "4", "Type": "", "Card Text": "", "Color(s)": "",
                  "Synergies": ""}]
+
+    def test_a_setless_line_BEFORE_the_printed_line_does_not_phantom(self):
+        """BS11-23: BS8-35 handled printed-then-set-less in one paste; the reverse order
+        still appended a blank-set phantom, so `3 Foo` + `2 Foo (AA1) 5` read owned 5."""
+        for order in ([(3, "Foo Bar", "", ""), (2, "Foo Bar", "AA1", "5")],
+                      [(2, "Foo Bar", "AA1", "5"), (3, "Foo Bar", "", "")]):
+            rows = []
+            import_arena.merge(rows, order, sum_mode=False)
+            assert len(rows) == 1, order
+            assert sum(int(r["Quantity Owned"]) for r in rows) == 3, order
 
     def test_covered_setless_line_changes_nothing(self):
         rows = self._rows()
@@ -952,3 +978,79 @@ class TestTagRulesReadTheCardNotItsReminder:
 
     def test_noncreature_spell_triggers_are_spellslinger(self):
         assert "spellslinger" in self._tags("Whenever you cast a noncreature spell, put a +1/+1 counter on this creature.")
+
+
+class TestImportCollectionLibraryOverride:
+    """BS11-20: `--library <path>` redirected only the library write — the blank mana
+    rows and the collection-freshness stamp still went to the REPO's files, so a scratch
+    `--apply` certified the real collection as exactly reconciled."""
+
+    HEADER = ("Card Name,Type,Card Text,Color(s),Synergies,Set Code,Collector #,"
+              "Quantity Owned\n")
+
+    def test_stamp_and_mana_rows_land_beside_the_library(self, tmp_path, monkeypatch):
+        import sys
+        lib_csv = tmp_path / "card-library.csv"
+        lib_csv.write_text(self.HEADER + "Shock,Instant,x,R,,M21,159,4\n", encoding="utf-8")
+        (tmp_path / "card-mana.csv").write_text(
+            "Card Name,Mana Cost,Mana Value,Keywords\nShock,{R},1,\n", encoding="utf-8")
+        export = tmp_path / "export.csv"
+        export.write_text("Name,Set,Number,Quantity\nShock,M21,159,2\nBrand New,M21,9,1\n",
+                          encoding="utf-8")
+        monkeypatch.setattr(sys, "argv", ["import_collection.py", str(export),
+                                          "--library", str(lib_csv), "--apply",
+                                          "--allow-shrink"])
+        assert ic.main() == 0
+        assert (tmp_path / "collection-stamp.json").exists()
+        assert "Brand New" in (tmp_path / "card-mana.csv").read_text(encoding="utf-8")
+
+    def test_the_default_library_keeps_the_repo_paths(self):
+        mana, stamp = ic._sibling_paths(ic.DEFAULT_CSV)
+        assert mana == ic.MANA_CSV
+        assert stamp == lib.COLLECTION_STAMP
+
+
+class TestImportArenaSkipsBasicsByDefault:
+    """BS11-28: lib.BASICS says every ingest writer skips basics, and the other two
+    writers do — but `import_arena` imported them unless --skip-basics was passed."""
+
+    def _run(self, tmp_path, monkeypatch, *flags):
+        import sys
+        lib_csv = tmp_path / "card-library.csv"
+        lib_csv.write_text(",".join(lib.HEADER) + "\n", encoding="utf-8")
+        src = tmp_path / "deck.txt"
+        src.write_text("Deck\n2 Llanowar Elves (DOM) 168\n9 Forest (DOM) 266\n",
+                       encoding="utf-8")
+        monkeypatch.setattr(sys, "argv", ["import_arena.py", str(src),
+                                          "--library", str(lib_csv), *flags])
+        assert import_arena.main() == 0
+        _, rows = lib.load_rows(str(lib_csv))
+        return {r["Card Name"] for r in rows}
+
+    def test_a_plain_run_skips_basics(self, tmp_path, monkeypatch):
+        assert self._run(tmp_path, monkeypatch) == {"Llanowar Elves"}
+
+    def test_include_basics_opts_in(self, tmp_path, monkeypatch):
+        assert "Forest" in self._run(tmp_path, monkeypatch, "--include-basics")
+
+    def test_the_documented_flag_is_still_accepted(self, tmp_path, monkeypatch):
+        assert self._run(tmp_path, monkeypatch, "--skip-basics") == {"Llanowar Elves"}
+
+
+class TestTagSynergiesNoOpWritesNothing:
+    """BS11-29: a --merge pass that changed 0 rows still rewrote the library and left
+    a timestamped .bak of byte-identical content."""
+
+    def test_a_second_merge_writes_no_backup(self, tmp_path, monkeypatch):
+        import glob
+        import sys
+        p = tmp_path / "card-library.csv"
+        p.write_text(",".join(lib.HEADER) + "\n"
+                     "Shock,Instant,Shock deals 2 damage to any target.,R,,M21,159,1\n",
+                     encoding="utf-8")
+        monkeypatch.setattr(ts, "MANA_CSV", str(tmp_path / "absent-mana.csv"))
+        monkeypatch.setattr(sys, "argv", ["tag_synergies.py", str(p), "--merge"])
+        assert ts.main() == 0                     # first pass tags the row
+        baks = glob.glob(str(p) + ".*bak*")
+        assert ts.main() == 0                     # second pass changes nothing
+        assert glob.glob(str(p) + ".*bak*") == baks

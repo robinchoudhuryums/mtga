@@ -1024,6 +1024,10 @@ def main():
         print(f"\n[dry-run] {changed} row(s) would be tagged. Nothing written.")
         return 0
 
+    # Nothing changed => nothing written (no byte-identical rewrite, no .bak; BS11-29).
+    if not changed:
+        print(f"Tagged 0 row(s). {args.path} left untouched.")
+        return 0
     write_rows(rows, args.path)
     print(f"Tagged {changed} row(s). Wrote {args.path}.")
     return 0

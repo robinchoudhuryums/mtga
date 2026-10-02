@@ -106,6 +106,18 @@ class TestRunClassification:
             scryfall.get_json("http://x", retries=2)
         assert r.calls == 2
 
+    def test_a_non_utf8_body_and_a_bad_status_line_are_transient(self, monkeypatch):
+        """BS11-25: a proxy's non-UTF-8 HTML page raises UnicodeDecodeError (a ValueError,
+        not a JSONDecodeError) and BadStatusLine is a bare HTTPException — both escaped
+        as tracebacks past every caller's `except ScryfallUnavailable`."""
+        import http.client
+        bad = UnicodeDecodeError("utf-8", b"\xe9", 0, 1, "invalid continuation byte")
+        r = _Responder([bad, http.client.BadStatusLine("garbage")])
+        _wire(monkeypatch, r)
+        with pytest.raises(scryfall.ScryfallUnavailable):
+            scryfall.get_json("http://x", retries=2)
+        assert r.calls == 2
+
     def test_transient_then_success_recovers(self, monkeypatch):
         r = _Responder([TimeoutError("blip"), {"ok": 2}])
         _wire(monkeypatch, r)

@@ -13,13 +13,12 @@
 > HISTORY.md; per-run summaries belong in `.cycle/blocks/`.
 
 ## Current
-Cycle: 10 — a fresh `/broad-scan` ran 2026-09-14 out of the deck 47 tuning post-mortem
-("why does the tooling not propose the cards I propose?"). Cycle 9 is reflected and closed.
-Phase: implement — **scan #10 is FULLY IMPLEMENTED**. All four batches plus every follow-on.
+Cycle: 11 — `/broad-scan` #11 ran 2026-10-01 (81 findings, BS11-01…BS11-81, nine batches).
+Phase: implement — **Batch 1 (ingest correctness) DONE 2026-10-02**; Batches 2–9 not started.
 Scope: broad
 Test Command: `python3 scripts/check_all.py`
 Subsystem cycles since last Seams audit: 3 (counter adopted 2026-09-08; no Seams audit has run)
-Updated: 2026-10-01 (three tool gaps closed — see Where I left off)
+Updated: 2026-10-02 (Batch 1 — see Where I left off)
 
 ## In progress (facts to carry forward — NOT judgments)
 - **Broad scan #10 is fully implemented — nothing outstanding from the scan.** Four
@@ -381,6 +380,16 @@ Updated: 2026-10-01 (three tool gaps closed — see Where I left off)
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
+**2026-10-02 (latest) — scan #11 Batch 1 implemented** (block
+`11-batch1-ingest-correctness-broad-implement.md`): BS11-19/20/21/22/23/24/25/26/27/28/29/30.
+Full suite and `check_all` green. The pool fingerprint value changed, so the next `make refresh`
+rebuilds the pool once. **Next:** Batch 2 (deck legality + parse gates: BS11-01/02/03/04/05/07/
+08/09/10/11/12/73). The scan's batch plan is in the 2026-10-01 chat only — Batches 2–9 list:
+2 legality/parse, 3 search filters (BS11-39/34/41/54), 4 tagger (75–79, needs network + roster
+diff), 5 recommender math (16/31/61/67–72/74), 6 format drift (06/13/14/15/17/18/40), 7 matches
+(32/33/35–38), 8 editor/dashboard (42–53), 9 docs (55–60, 62–66). Deferred: BS11-80, BS11-81.
+Same day, earlier: Reality Fracture refreshed into the pool; decks 55 and 60 FRA swaps applied.
+
 **2026-10-01 (latest) — G-88 fixed, docs synced, PR opened.** The revert-test leak is closed
 (10e273f) and `/sync-docs` landed G-88, the README doubler/`--needs` lines, the systems-map
 inventory rows and the cycle-config C-07 note. **Trap for every later session: never edit a

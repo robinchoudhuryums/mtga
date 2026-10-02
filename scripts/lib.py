@@ -851,6 +851,17 @@ def csv_schema_error(path, header=None):
         return f"could not read the existing header of {os.path.basename(path)}: {e}"
     if existing is None or existing == header:
         return None
+    # An OLDER version of this writer's own schema is not a different schema. Every
+    # derived file here grew by APPENDING columns (the pool gained Legalities/Released,
+    # then Power/Toughness), so a header that is a PREFIX of the one being written loses
+    # nothing — and refusing it blocked exactly the rebuild G-21 and INV-03 prescribe for
+    # a pre-column pool ("would DROP columns", with nothing to drop; broad-scan BS11-21).
+    # Prefix, not subset, and at least half the columns: a file that merely shares a few
+    # leading names (a 1-column list, or the library beside the pool, which diverge at
+    # column 8) is still refused.
+    if (len(existing) >= max(2, len(header) // 2)
+            and existing == header[:len(existing)]):
+        return None
     lost = [c for c in existing if c not in header]
     # Direction-NEUTRAL wording. F-02 was "a library writer pointed at a derived
     # file", and the message said so literally — which read backwards the moment the
@@ -1116,7 +1127,17 @@ def collection_stamp_note(max_age_days=30, path=None):
     try:
         with open(p, encoding="utf-8") as fh:
             stamp = _json.load(fh)
+        # A stamp that is valid JSON but not an OBJECT (a bare list, a string) raised
+        # AttributeError on `.get` — past the except below and into every craft-cost
+        # surface that prints this note (broad-scan BS11-30). It is unreadable, so it
+        # reads as "never reconciled", the conservative state.
+        if not isinstance(stamp, dict):
+            raise ValueError("collection stamp is not a JSON object")
         when = _dt.date.fromisoformat(str(stamp.get("reconciled", "")))
+        # A FUTURE date (a hand edit, a clock error) gave a negative age and read as
+        # fresh forever. Nothing reconciles in the future, so it cannot vouch either.
+        if when > _dt.date.today():
+            raise ValueError("collection stamp is dated in the future")
     except (OSError, ValueError):
         return ("ⓘ owned counts are LOWER BOUNDS — the collection has never been "
                 "exactly reconciled (run import_collection.py with a tracker export; "

@@ -35,6 +35,14 @@ class TestInv01:
     def test_duplicate_printing_fails(self, tmp_path):
         assert validate(_write(tmp_path, [_row("Shock"), _row("Shock")])) == 1
 
+    def test_front_and_full_name_rows_of_one_printing_fail(self, tmp_path):
+        """BS11-27: every writer treats `A // B` and `A` at one (set, collector) as ONE
+        printing; a row under each spelling splits the owned count, and INV-01 keyed
+        on the exact name passed it."""
+        rows = [_row("Bottomless Pool // Locker Room", "DSK", "43"),
+                _row("Bottomless Pool", "DSK", "43")]
+        assert validate(_write(tmp_path, rows)) == 1
+
     def test_same_name_different_printing_passes(self, tmp_path):
         assert validate(_write(tmp_path, [_row("Shock", cn="1"), _row("Shock", cn="2")])) == 0
 
