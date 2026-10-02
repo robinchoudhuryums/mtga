@@ -14,7 +14,7 @@
 
 ## Current
 Cycle: 11 — `/broad-scan` #11 ran 2026-10-01 (81 findings, BS11-01…BS11-81, nine batches).
-Phase: implement — **Batch 1 (ingest correctness) DONE 2026-10-02**; Batches 2–9 not started.
+Phase: implement — **Batches 1 (ingest) and 2 (deck legality + parse gates) DONE 2026-10-02**; Batches 3–9 not started.
 Scope: broad
 Test Command: `python3 scripts/check_all.py`
 Subsystem cycles since last Seams audit: 3 (counter adopted 2026-09-08; no Seams audit has run)
@@ -380,6 +380,13 @@ Updated: 2026-10-02 (Batch 1 — see Where I left off)
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
+**2026-10-02 (latest) — scan #11 Batch 2 implemented** (block
+`11-batch2-deck-legality-parse-gates-broad-implement.md`): BS11-01/02/03/04/05/07/08/09/10/11/12/73.
+Full suite and `check_all` green; dashboard rebuilt (its paste matcher gained the OVERSIZED flag).
+**Next:** Batch 3 (search filters: BS11-39/34/41/54), then 4–9 as listed below. Docs for Batch 2
+need a `/sync-docs` pass (the block lists them). Also today: deck 23 swapped Origin of the
+Avengers for Captain America's Shield (owner's swap).
+
 **2026-10-02 (latest) — scan #11 Batch 1 implemented** (block
 `11-batch1-ingest-correctness-broad-implement.md`): BS11-19/20/21/22/23/24/25/26/27/28/29/30.
 Full suite and `check_all` green. The pool fingerprint value changed, so the next `make refresh`

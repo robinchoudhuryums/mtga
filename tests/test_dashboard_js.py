@@ -58,7 +58,7 @@ const out = input.pastes.map(seg => analyzeOne(seg));
 console.log(JSON.stringify(out.map(r => r && (r.unmatched ? {unmatched: true} : {
   id: r.deck.id, added: r.added, removed: r.removed, shared: r.shared,
   sync: r.sync, lowconf: !!r.lowconf, runnerUp: r.runnerUp ? r.runnerUp.id : null,
-  truncated: !!r.truncated,
+  truncated: !!r.truncated, oversized: !!r.oversized,
 }))));
 """
 
@@ -79,6 +79,8 @@ PASTES = [
     # 10 removed", inviting a sync that would cut the deck down to the fragment — agreed
     # with Python on every pinned field and the mirror drift stayed invisible (BS8-43).
     ["4 Shock (M21) 159", "10 Island (M21) 1", "4 Opt (M21) 2"],
+    # The MIRROR (BS11-10): 40 cards against a 28-card deck — two decks run together.
+    ["4 Shock (M21) 159", "20 Island (M21) 1", "4 Opt (M21) 2", "12 Forest (M21) 9"],
 ]
 
 
@@ -128,7 +130,8 @@ def _python_side():
                      "shared": m["shared"], "sync": bool(m["drift"] == 0),
                      "lowconf": bool(m.get("lowconf")),
                      "runnerUp": (ru or {}).get("id") if m.get("lowconf") and ru else None,
-                     "truncated": bool(m.get("truncated"))})
+                     "truncated": bool(m.get("truncated")),
+                     "oversized": bool(m.get("oversized"))})
     return rows
 
 
@@ -175,6 +178,14 @@ class TestDashboardMatcherAgreesWithPython:
         assert [r.get("truncated") for r in js_side] == [
             r.get("truncated") for r in _python_side()]
         assert js_side[0]["truncated"] is False, "a full paste is not a fragment"
+
+    def test_both_flag_an_oversized_paste(self, js_side):
+        """BS11-10: `sync --apply` would have written another deck's cards into the
+        match; the panel must label the same paste the same way."""
+        assert js_side[4]["oversized"] is True, js_side[4]
+        assert [r.get("oversized") for r in js_side] == [
+            r.get("oversized") for r in _python_side()]
+        assert js_side[0]["oversized"] is False
 
     def test_the_codepoint_tiebreak_is_what_decides_an_exact_tie(self, js_side):
         """Decks 3 and 10 are identical here, so only the id tie-break separates them.

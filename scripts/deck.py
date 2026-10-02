@@ -175,6 +175,7 @@ def parse_deck_file(path):
     the last `#: notes:` line was kept, which truncated a deck's documented intent
     to a mid-sentence fragment in every tool that reads it."""
     meta, cards = {}, []
+    in_board = False
     with open(path, encoding="utf-8") as fh:
         for raw in fh:
             m = META_RE.match(raw.strip())
@@ -188,6 +189,16 @@ def parse_deck_file(path):
             line = raw.split("#", 1)[0].strip()
             if not line:
                 continue
+            # A deck file is the MAINDECK. Card lines under a pasted `Sideboard` /
+            # `Maybeboard` / `Companion` heading are not part of it: they were counted
+            # in, so a 60 with a 5-card sideboard read 65 with every gate green
+            # (broad-scan BS11-05). `malformed_deck_lines` fails INV-04 on them; this
+            # keeps the analysis honest until the file is fixed.
+            if line.lower() in _STRAY_MARKERS:
+                in_board = line.lower() in _BOARD_MARKERS
+                continue
+            if in_board:
+                continue
             cm = LINE_RE.match(line)
             if cm:
                 cards.append((int(cm.group(1)), cm.group(2).strip(),
@@ -200,6 +211,8 @@ def parse_deck_file(path):
 # harmless — but ONLY these: anything else that fails LINE_RE is a card the deck
 # silently isn't playing.
 _STRAY_MARKERS = {"deck", "sideboard", "commander", "companion", "maybeboard", "about"}
+# The markers whose card lines are NOT maindeck (the `strip_boards` set).
+_BOARD_MARKERS = {"sideboard", "maybeboard", "companion"}
 
 
 def malformed_deck_lines(path):
@@ -215,15 +228,29 @@ def malformed_deck_lines(path):
     (broad-scan BS2-14). The `(SET) COLLECTOR#` half of this exact function was
     hardened for G-65; this is the line-syntax half of the same sentence."""
     out = []
+    in_board = None
     with open(path, encoding="utf-8") as fh:
         for i, raw in enumerate(fh, start=1):
             s = raw.strip()
             if not s or s.startswith("#"):
                 continue
             line = s.split("#", 1)[0].strip()
-            if not line or LINE_RE.match(line):
+            if not line:
                 continue
             if line.lower() in _STRAY_MARKERS:
+                in_board = line if line.lower() in _BOARD_MARKERS else None
+                continue
+            cm = LINE_RE.match(line)
+            if cm:
+                # A card under a Sideboard/Maybeboard/Companion heading: the file is
+                # maindeck-only, so this card is silently not in the deck (BS11-05).
+                if in_board:
+                    out.append((i, f"{line}  (under a `{in_board}` heading — deck files "
+                                   f"hold the maindeck only)"))
+                # A 0-copy line is a card the deck lists and does not play: `consistency`
+                # priced it at 100% and `cuts` offered it as the top cut (BS11-73).
+                elif int(cm.group(1)) < 1:
+                    out.append((i, f"{line}  (quantity 0)"))
                 continue
             out.append((i, line))
     return out
@@ -962,9 +989,13 @@ def deck_requirements(cards):
     Extracted so the answer has ONE definition. Three implementations of one question is
     the shape `check_agreement.py` exists to catch, and the two that drifted were the two
     that had copied the loop instead of calling it."""
+    # Keyed on `_ms_key` (front face), like `legality_report`: a deck listing
+    # `Bottomless Pool // Locker Room` and `Bottomless Pool` needs TWO copies of one
+    # card, and a raw-name key read it as one of each — "buildable" while owning one
+    # (broad-scan BS11-07, the G-63 shape).
     need, order, printing = {}, [], {}
     for q, n, s, c in cards:
-        nl = n.lower()
+        nl = _ms_key(n)
         if nl not in need:
             order.append(nl)
             printing[nl] = (n, s)
@@ -7135,10 +7166,14 @@ def _parse_flex_line(s):
     if not s.startswith("#~"):
         return None
     e = {"out": "", "in": "", "note": ""}
+    # Only the FIRST `-` column and the FIRST `+` column are card fields. A later one is
+    # REASON text that happens to start with a sign ("+1 reach", "-0.1 avg MV"), and it
+    # used to overwrite the card: `#~ -Shock | +Lightning Strike | +1 reach` proposed
+    # adding a card called "1 reach" (broad-scan BS11-09).
     for col in (c.strip() for c in s[2:].split("|")):
-        if col.startswith("-"):
+        if col.startswith("-") and not e["out"]:
             e["out"] = col[1:].strip()
-        elif col.startswith("+"):
+        elif col.startswith("+") and not e["in"]:
             e["in"] = col[1:].strip()
         elif col:
             e["note"] = (e["note"] + "  " + col).strip()
@@ -8729,6 +8764,36 @@ def load_legalities():
     return alias_front(out)
 
 
+# A card can override the copy limit in its OWN text (CR 100.2a / 903.5b):
+# "A deck can have any number of cards named X" (Slime Against Humanity, Hare Apparent,
+# Tempest Hawk…) or "A deck can have up to seven cards named X" (Seven Dwarves; Nazgûl
+# says nine). The override applies in a singleton format too. `legal` read neither, so
+# a legal 10-Slime deck was flagged "max 4" (broad-scan BS11-01).
+_ANY_NUMBER_NAMED_RE = re.compile(r"\ba deck can have any number of cards named\b", re.I)
+_UP_TO_N_NAMED_RE = re.compile(r"\ba deck can have up to (\w+) cards named\b", re.I)
+_NUMBER_WORDS = {"two": 2, "three": 3, "four": 4, "five": 5, "six": 6, "seven": 7,
+                 "eight": 8, "nine": 9, "ten": 10}
+
+
+def card_copy_limit(name, carddata, default):
+    """The copy limit this card's OWN text sets, else `default`. None = unlimited.
+    Without card data there is nothing to read, so the format default stands."""
+    if not carddata:
+        return default
+    nl = name.lower()
+    cd = carddata.get(nl) or carddata.get(nl.split(" // ")[0])
+    txt = (cd or {}).get("text", "") or ""
+    if _ANY_NUMBER_NAMED_RE.search(txt):
+        return None
+    m = _UP_TO_N_NAMED_RE.search(txt)
+    if m:
+        w = m.group(1).lower()
+        n = int(w) if w.isdigit() else _NUMBER_WORDS.get(w)
+        if n:
+            return n
+    return default
+
+
 def legality_report(meta, cards, fmt, leg, carddata=None):
     """Pure legality computation shared by `legal` (verbose, one deck) and `audit`
     (one line per deck) so both apply IDENTICAL size/copy/format rules. Returns a
@@ -8751,6 +8816,7 @@ def legality_report(meta, cards, fmt, leg, carddata=None):
     # two "singletons" passed Brawl (broad-scan BS-06). The first-seen spelling is kept
     # for display; `leg` / `carddata` lookups below already alias the front face.
     counts, order, disp, total = {}, [], {}, 0
+    basics_seen = {}
     for q, n, s, c in cards:
         total += q
         nl = n.lower()
@@ -8760,6 +8826,9 @@ def legality_report(meta, cards, fmt, leg, carddata=None):
         # also means "unlimited in the Arena collection", and snow basics are real
         # craftable cards there, so the ownership sites must keep counting them.
         if nl in BASICS or nl.startswith("snow-covered "):
+            # Exempt from the COPY limit only — a basic still has a colour identity,
+            # and a Mountain in a G/W/U Brawl deck is illegal (BS11-03).
+            basics_seen.setdefault(nl, n)
             continue
         key = _ms_key(n)
         if key not in counts:
@@ -8775,11 +8844,17 @@ def legality_report(meta, cards, fmt, leg, carddata=None):
     problems, unknown, notes = [], [], []
     if fmt and total < min_size:
         problems.append(f"deck has {total} cards — {fmt} minimum is {min_size}")
+    elif fmt and singleton and total > min_size:
+        # Brawl and Commander decks are an EXACT size (60 / 100), not a minimum: a
+        # 107-card Historic Brawl list read "✓ No construction issues" (BS11-02).
+        problems.append(f"deck has {total} cards — {fmt} is exactly {min_size}")
 
     for nl in order:
-        if counts[nl] > copy_limit:
-            problems.append(f"{disp[nl]}: {counts[nl]} copies (max {copy_limit}"
-                            + (", singleton format" if singleton else "") + ")")
+        limit = card_copy_limit(disp[nl], carddata, copy_limit)
+        if limit is not None and counts[nl] > limit:
+            why = (", its own text" if limit != copy_limit
+                   else ", singleton format" if singleton else "")
+            problems.append(f"{disp[nl]}: {counts[nl]} copies (max {limit}{why})")
 
     lkey = pool_format_key(fmt)
     if fmt and lkey and leg:
@@ -8838,6 +8913,10 @@ def legality_report(meta, cards, fmt, leg, carddata=None):
                     cd2 = carddata.get(nl) or carddata.get(nl.split(" // ")[0])
                     if cd2 and not card_colors(cd2.get("colors", "")) <= cident:
                         strays.append(disp[nl])
+                for bnl, bdisp in basics_seen.items():
+                    cd2 = carddata.get(bnl)
+                    if cd2 and not card_colors(cd2.get("colors", "")) <= cident:
+                        strays.append(bdisp)
                 if strays:
                     ident_s = "".join(sorted(cident)) or "C"
                     problems.append(f"outside commander's color identity ({ident_s}): "
@@ -9398,7 +9477,12 @@ def cmd_verify(args):
                f"`verify` compares ONE deck and merges them all into a single list, so "
                f"the extra blocks will read as additions. Paste deck {d['id']} alone, "
                f"or use `deck.py sync` for a multi-deck paste.")
-    entries, warnings = parse_arena(text)
+    # Drop Sideboard / Maybeboard / Companion card lines with the SAME rule `sync`
+    # applies (`strip_boards`). `verify` only warned and kept them, so on the same paste
+    # it reported "+2 Duress" and exited 1 while `sync` said "in sync" — the read half
+    # and the write half disagreeing about one export (broad-scan BS11-08).
+    kept, board_n = strip_boards(text.splitlines())
+    entries, warnings = parse_arena("\n".join(kept))
     for w in warnings:
         eprint(f"WARN:  {w}")
     if not entries:
@@ -9410,9 +9494,9 @@ def cmd_verify(args):
     pasted = _multiset(entries)
     print(f"Deck {d['id']}: {d['name'] or d['id']} — vs pasted export")
     print("-" * 48)
-    if "sideboard" in {ln.strip().lower() for ln in text.splitlines()}:
-        eprint("Note: the export has a Sideboard section — its cards are included "
-               "in this comparison (stored decks are maindeck-only).")
+    if board_n:
+        eprint(f"Note: ignored {board_n} sideboard/companion card(s) in the export — "
+               f"stored decks are maindeck-only (the same rule `sync` uses).")
     added = removed = 0
     diffs = []
     for nl in sorted(set(stored) | set(pasted)):
@@ -9458,14 +9542,18 @@ def strip_boards(block):
     WRITE half: stored decks are maindeck-only, so an in-sync deck exported with a
     7-card sideboard read "drifted: 7 added" and `--apply` wrote those cards into the
     60. `verify`, the READ half, had warned about exactly this since it shipped; the
-    write half didn't even detect it (broad-scan BS-07). Commander / Companion
-    sections are KEPT — a stored Brawl deck lists its commander among the 100."""
+    write half didn't even detect it (broad-scan BS-07). A Commander section is KEPT —
+    a stored Brawl deck lists its commander among the 100. A COMPANION is not: it
+    starts outside the game (Arena also lists it as a Sideboard row), and since
+    `split_paste` began carrying a leading `Companion` block into the deck that follows
+    it, keeping its lines made `sync` read an in-sync deck as "+1 <companion>" and
+    `--apply` would have written a 61st card (broad-scan BS11-12)."""
     from import_arena import SECTIONS, LINE_RE as _ALINE
     keep, dropped_n, skipping = [], 0, False
     for ln in block:
         s = ln.strip().lower()
         if s in SECTIONS:
-            skipping = s in ("sideboard", "maybeboard")
+            skipping = s in ("sideboard", "maybeboard", "companion")
             keep.append(ln)               # headings are skipped by parse either way
             continue
         if skipping:
@@ -9626,6 +9714,12 @@ def match_paste(pasted, decks, fmt_hint=None):
     best["paste_total"] = sum(q for _disp, q in pasted.values())
     best["deck_total"] = sum(q for _disp, q in best["_ms"].values())
     best["truncated"] = best["paste_total"] < best["deck_total"] * 0.75
+    # The MIRROR guard (broad-scan BS11-10). A paste far LARGER than its match — a deck
+    # block with another deck's cards run into it — matched deck 64 at full confidence as
+    # "19 added", and `--apply` would have written 79 cards. Legitimate growth is a few
+    # cards (an oversized draft), so over 125% of the stored total is the same
+    # "not an edit" shape as a fragment: flagged, and skipped by --apply unless --force.
+    best["oversized"] = best["paste_total"] > best["deck_total"] * 1.25
     for r in ranked:
         del r["_ms"]
     return best
@@ -9755,6 +9849,9 @@ def cmd_sync(args):
         if m.get("truncated"):
             conf += (f"   ⚠ TRUNCATED? paste holds {m['paste_total']} cards vs the "
                      f"stored {m['deck_total']} — looks like a partial paste, not an edit")
+        if m.get("oversized"):
+            conf += (f"   ⚠ OVERSIZED? paste holds {m['paste_total']} cards vs the "
+                     f"stored {m['deck_total']} — looks like two decks run together")
         print(f"  ⟳ {label} — drifted: {m['added']} added / {m['removed']} removed{conf}")
         for sign, qty, nm in m["diffs"]:
             print(f"        {sign}{qty}  {nm}")
@@ -9779,6 +9876,13 @@ def cmd_sync(args):
                    f"against the stored {m['deck_total']}, which looks like a TRUNCATED "
                    "paste, not a deck edit; writing it would discard the rest of the "
                    "list. Re-paste the full export, or pass --force for a deliberate cut.")
+            failures += 1
+            continue
+        if m.get("oversized") and not getattr(args, "force", False):
+            eprint(f"  ✗ #{d['id']}: skipped — the paste holds {m['paste_total']} cards "
+                   f"against the stored {m['deck_total']}, which looks like two decks run "
+                   "together, not a deck edit. Re-paste that deck alone, or pass --force "
+                   "for a deliberate expansion.")
             failures += 1
             continue
         with open(d["path"], encoding="utf-8") as fh:
@@ -9844,16 +9948,11 @@ def audit_deck(d, *, by_name_qty, carddata, mana, leg, cmeta, played=None):
     meta, cards = parse_deck_file(d["path"])
     fmt = (meta.get("format") or "").strip().lower()
 
-    # Ownership: unique cards that are missing or short of the deck's need.
-    need = {}
-    for q, n, s, c in cards:
-        need[n.lower()] = need.get(n.lower(), 0) + q
-    short = 0
-    for nl, req in need.items():
-        disp = next(n for q, n, s, c in cards if n.lower() == nl)
-        have, found = owned(by_name_qty, disp)
-        if not found or have < req:
-            short += 1
+    # Ownership: unique cards that are missing or short of the deck's need — through
+    # `deck_build_gap`, the ONE definition (G-70). This was a fourth copy of the loop,
+    # keyed on the raw lowercased name, so `A // B` + `A` read as two cards (BS11-07).
+    _missing, _short = deck_build_gap(cards, by_name_qty)
+    short = _missing + _short
 
     rep = legality_report(meta, cards, fmt, leg, carddata=carddata)
     n_illegal = len(rep["problems"])
@@ -11230,20 +11329,23 @@ def printing_problems(cards):
                     pool keys ONE printing per card by construction, so a legitimate
                     alternate printing lands here too.
 
-    BASIC LANDS ARE EXEMPT. Arena prints several arts per set (Swamp MSH 291 and 292 are
-    both real) while the pool carries one, so a hard rule would have failed 61 of 78 deck
-    files on basics alone — measured before choosing the split. A line with no printing
+    BASIC LANDS ARE EXEMPT FROM THE COLLECTOR-NUMBER HALF ONLY. Arena prints several arts
+    per set (Swamp MSH 291 and 292 are both real) while the pool carries one, so a hard
+    rule on the NUMBER would have failed 61 of 78 deck files on basics alone — measured
+    before choosing the split. A SET CODE that exists nowhere is wrong for a basic too:
+    `5 Forest (ZZZ) 193` passed INV-04 and `resolve --check` while `resolve --fix`
+    proposed a correction for the same line (broad-scan BS11-04). A line with no printing
     stated at all is also skipped: that is a legal, if under-specified, deck line."""
     by_name, set_codes = known_printings()
     bad_set, unverified = [], []
     for _q, n, s, c in cards:
         nl = n.lower()
-        if nl in BASICS or nl.startswith("snow-covered "):
-            continue
         if not s and not c:
             continue
         if s and s.lower() not in set_codes:
             bad_set.append((n, s, c))
+            continue
+        if nl in BASICS or nl.startswith("snow-covered "):
             continue
         known = by_name.get(nl) or by_name.get(nl.split(" // ")[0])
         if not known:
@@ -11584,6 +11686,12 @@ def _resolve_fix(target, idx, apply):
     if not os.path.exists(path):
         eprint(f"--fix: no deck id or file {target!r}.")
         return 1
+    # WRITERS never take a path (G-56): a dry run may read any file, but `--apply` only
+    # rewrites a ROSTER deck (broad-scan BS11-11).
+    if apply and not d:
+        eprint(f"--fix --apply: {target!r} is not a roster deck id — writers take an id, "
+               f"never a path. Dry-run it without --apply, or fix it by id.")
+        return 1
     _meta, cards = parse_deck_file(path)
     if not cards:
         eprint(f"--fix: no parseable card lines in {path}.")
@@ -11594,16 +11702,11 @@ def _resolve_fix(target, idx, apply):
     # objects to are considered — a card correctly listed twice under two printings must
     # not have its good line rewritten because its bad twin matched by name.
     wanted = {(n, s, c) for n, s, c in bad_set} | {(n, s, c) for n, s, c, _k in unverified}
-    # BASICS: `printing_problems` exempts them, correctly — Arena prints several arts per
-    # set and the pool carries one, so their collector numbers cannot be validated. But a
-    # basic whose SET CODE exists nowhere is wrong for exactly the same reason a nonbasic
-    # is, and it is equally unimportable. 76 of the 109 lines the 2026-08-24 audit found
-    # were basics pointing at an unreleased set, invisible to the check that was supposed
-    # to catch them. Only the set-code half is applied here; a basic's number stays exempt.
-    _known_sets = known_printings()[1]
-    for _q, n, sc, cl in cards:
-        if n.lower() in BASICS and sc and sc.lower() not in _known_sets:
-            wanted.add((n, sc, cl or ""))
+    # BASICS: a basic whose SET CODE exists nowhere is wrong for exactly the same reason a
+    # nonbasic is — 76 of the 109 lines the 2026-08-24 audit found were basics pointing at
+    # an unreleased set. This loop used to add them here because `printing_problems`
+    # skipped basics entirely; since BS11-04 it reports their set-code half itself (a
+    # basic's collector NUMBER stays exempt), so `--check` and `--fix` now agree.
     if not wanted:
         print(f"✓ {label}: every stated printing is a known one — nothing to fix.")
         return 0
@@ -11626,8 +11729,17 @@ def _resolve_fix(target, idx, apply):
         if not pref:
             unresolved.append(name)
             continue
-        comment = _line_comment(ln)
-        new = f"{qty} {pref[0]} ({pref[1]}) {pref[2]}" + (f"  {comment}" if comment else "")
+        # Replace ONLY the printing fields, in place. Rebuilding the line from parts
+        # re-cased the name from the index ("the ooze" -> "The Ooze"), dropped its
+        # indentation and re-spaced the comment — more than this docstring promises
+        # (broad-scan BS11-11). The name, quantity, spacing and comment stay verbatim.
+        code = ln.split("#", 1)[0]
+        tail = ln[len(code):]
+        pm = re.search(r"\(([^)]+)\)(\s*)(\S+)?(\s*)$", code)
+        if not pm:
+            unresolved.append(name)
+            continue
+        new = code[:pm.start()] + f"({pref[1]}) {pref[2]}" + pm.group(4) + tail
         if new != ln:
             fixed.append((ln.strip(), new.strip()))
             lines[i] = new

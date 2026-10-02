@@ -299,6 +299,65 @@ class TestLegalityReport:
         assert not any("Zap" in str(p) for p in rep["problems"])
 
 
+class TestLegalityCardRulesAndBrawlShape:
+    """BS11-01/02/03: a card's own copy-limit text, the EXACT Brawl size, and the
+    colour identity of basic lands in a commander deck."""
+
+    CD = {
+        "slime": {"name": "Slime", "type": "Sorcery", "colors": "G",
+                  "text": "A deck can have any number of cards named Slime."},
+        "dwarves": {"name": "Dwarves", "type": "Creature", "colors": "R",
+                    "text": "A deck can have up to seven cards named Dwarves."},
+        "zap": {"name": "Zap", "type": "Instant", "colors": "G", "text": "Zap."},
+        "hero": {"name": "Hero", "type": "Legendary Creature — Human", "colors": "G",
+                 "text": ""},
+        "forest": {"name": "Forest", "type": "Basic Land — Forest", "colors": "G",
+                   "text": ""},
+        "mountain": {"name": "Mountain", "type": "Basic Land — Mountain", "colors": "R",
+                     "text": ""},
+    }
+
+    def _cards(self, *pairs):
+        return [(q, n, None, None) for q, n in pairs]
+
+    def test_any_number_named_is_not_capped(self):
+        rep = deck.legality_report({}, self._cards((10, "Slime"), (50, "Forest")),
+                                   "standard", {}, carddata=self.CD)
+        assert rep["problems"] == []
+
+    def test_up_to_seven_named_caps_at_seven(self):
+        ok = deck.legality_report({}, self._cards((7, "Dwarves"), (53, "Forest")),
+                                  "standard", {}, carddata=self.CD)
+        bad = deck.legality_report({}, self._cards((8, "Dwarves"), (52, "Forest")),
+                                   "standard", {}, carddata=self.CD)
+        assert ok["problems"] == []
+        assert any("max 7" in p for p in bad["problems"])
+
+    def test_the_override_also_lifts_singleton(self):
+        rep = deck.legality_report({"commander": "Hero"},
+                                   self._cards((1, "Hero"), (9, "Slime"), (50, "Forest")),
+                                   "Brawl", {}, carddata=self.CD)
+        assert not any("Slime" in p for p in rep["problems"])
+
+    def test_a_brawl_deck_over_its_size_is_illegal(self):
+        rep = deck.legality_report({"commander": "Hero"},
+                                   self._cards((1, "Hero"), (61, "Forest")),
+                                   "Brawl", {}, carddata=self.CD)
+        assert any("exactly 60" in p for p in rep["problems"])
+
+    def test_a_standard_deck_over_sixty_is_fine(self):
+        rep = deck.legality_report({}, self._cards((4, "Zap"), (57, "Forest")),
+                                   "standard", {}, carddata=self.CD)
+        assert rep["problems"] == []
+
+    def test_an_off_identity_basic_is_flagged_in_brawl(self):
+        rep = deck.legality_report({"commander": "Hero"},
+                                   self._cards((1, "Hero"), (55, "Forest"), (4, "Mountain")),
+                                   "Brawl", {}, carddata=self.CD)
+        assert any("Mountain" in p and "identity" in p for p in rep["problems"])
+        assert not any("copies" in p for p in rep["problems"])
+
+
 class TestPureHelpers:
     """Small pure functions with no test at all — cheap to pin, and each one feeds a
     display or a flag someone reads."""

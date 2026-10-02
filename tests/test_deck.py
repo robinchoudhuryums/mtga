@@ -5489,9 +5489,11 @@ class TestMalformedDeckLines:
         assert len(deck.malformed_deck_lines(p)) == 1
 
     def test_arena_markers_comments_and_headers_are_tolerated(self, tmp_path):
+        # The MARKERS stay tolerated. A card line UNDER a Sideboard heading does not
+        # (BS11-05) — see TestScan11Batch2DeckGates.
         p = self._deck(tmp_path,
                        "Deck\n#: name: T\n# Creatures\n#~ -A | +B\n4 Shock (M21) 159\n"
-                       "Sideboard\n2 Negate (M21) 69\n")
+                       "Sideboard\n")
         assert deck.malformed_deck_lines(p) == []
 
     def test_a_trailing_comment_on_a_card_line_is_fine(self, tmp_path):
@@ -6178,7 +6180,35 @@ class TestResolveFix:
         p.write_text(body, encoding="utf-8")
         return str(p)
 
+    @pytest.fixture(autouse=True)
+    def _roster_ids(self, monkeypatch):
+        """`--fix --apply` takes a roster deck id, never a path (BS11-11). These tests
+        write tmp files, so resolve each tmp path as if it were a roster deck."""
+        real = deck.find_deck
+        monkeypatch.setattr(deck, "find_deck",
+                            lambda t, **kw: ({"id": "T", "path": t}
+                                             if str(t).endswith("deck.txt") else real(t, **kw)))
+
     IDX = {"shock": ("Shock", "M21", "159"), "forest": ("Forest", "HOB", "193")}
+
+    def test_only_the_printing_changes_name_case_indent_and_comment_stay(self, tmp_path,
+                                                                        monkeypatch):
+        """BS11-11: the line was rebuilt from parts, re-casing the name from the index,
+        dropping indentation and re-spacing the comment."""
+        p = self._deck(tmp_path, "  4 shock (ZZZ) 999   # keep me\n")
+        monkeypatch.setattr(deck, "printing_problems",
+                            lambda cards: ([("shock", "ZZZ", "999")], []))
+        assert deck._resolve_fix(p, self.IDX, True) == 0
+        assert open(p, encoding="utf-8").read() == "  4 shock (M21) 159   # keep me\n"
+
+    def test_apply_refuses_a_path_that_is_not_a_roster_deck(self, tmp_path, monkeypatch):
+        p = tmp_path / "scratch.txt"
+        p.write_text("4 Shock (ZZZ) 999\n", encoding="utf-8")
+        monkeypatch.setattr(deck, "printing_problems",
+                            lambda cards: ([("Shock", "ZZZ", "999")], []))
+        assert deck._resolve_fix(str(p), self.IDX, True) == 1
+        assert "ZZZ" in p.read_text(encoding="utf-8")
+        assert deck._resolve_fix(str(p), self.IDX, False) == 0      # a dry run may read it
 
     def test_a_bad_printing_is_rewritten_and_the_rest_of_the_line_survives(self, tmp_path, monkeypatch):
         p = self._deck(tmp_path, "#: name: T\n\n# Burn\n4 Shock (ZZZ) 999  # the good one\n")
@@ -6209,12 +6239,11 @@ class TestResolveFix:
         assert "1 Shock (FDN) 1" in out and "ZZZ" not in out
 
     def test_a_BASIC_with_a_nonexistent_set_code_is_fixed_too(self, tmp_path, monkeypatch):
-        """printing_problems exempts basics — correctly, since Arena prints several arts
-        per set. But a basic whose SET CODE exists nowhere is equally unimportable, and 76
-        of the audit's 109 lines were exactly that: invisible to the check meant to catch
-        them."""
+        """A basic's COLLECTOR number is exempt (Arena prints several arts per set), but a
+        basic whose SET CODE exists nowhere is equally unimportable, and 76 of the audit's
+        109 lines were exactly that. Since BS11-04 `printing_problems` reports it itself,
+        so `--check` and `--fix` agree; this runs the real check."""
         p = self._deck(tmp_path, "5 Forest (ZZZ) 1\n")
-        monkeypatch.setattr(deck, "printing_problems", lambda cards: ([], []))
         monkeypatch.setattr(deck, "known_printings", lambda: ({}, {"hob", "m21"}))
         assert deck._resolve_fix(p, self.IDX, True) == 0
         assert "5 Forest (HOB) 193" in open(p, encoding="utf-8").read()
@@ -6223,7 +6252,6 @@ class TestResolveFix:
         """The collector-number exemption must survive: Swamp MSH 291 and 292 are both
         real, so a basic in a known set is never second-guessed."""
         p = self._deck(tmp_path, "5 Forest (M21) 999\n")
-        monkeypatch.setattr(deck, "printing_problems", lambda cards: ([], []))
         monkeypatch.setattr(deck, "known_printings", lambda: ({}, {"hob", "m21"}))
         deck._resolve_fix(p, self.IDX, True)
         assert "5 Forest (M21) 999" in open(p, encoding="utf-8").read()
@@ -7206,3 +7234,66 @@ class TestEquipmentBucket:
     def test_it_is_credit_not_interaction_and_last_in_the_order(self):
         assert "Equipment / attach" not in deck._INTERACTION_ROLES
         assert deck.ROLE_ORDER[-1] == "Equipment / attach"
+
+
+class TestScan11Batch2DeckGates:
+    """Broad-scan #11 Batch 2: boards in pastes and deck files, quantity-0 lines, a
+    basic's set code, front-face buildability, and the oversized-paste guard."""
+
+    def test_strip_boards_drops_a_companion_block(self):
+        """BS11-12: a leading Companion block is carried into the deck it precedes, and
+        keeping its lines made an in-sync deck read '+1 <companion>'."""
+        keep, n = deck.strip_boards(["Companion", "1 Jegantha (IKO) 1", "Deck",
+                                     "4 Shock (M21) 159"])
+        assert n == 1
+        assert "1 Jegantha (IKO) 1" not in keep and "4 Shock (M21) 159" in keep
+
+    def test_a_sideboard_block_in_a_deck_file_is_not_maindeck(self, tmp_path):
+        """BS11-05: the 60 read 65 with every gate green."""
+        p = tmp_path / "d.txt"
+        p.write_text("4 Shock (M21) 159\nSideboard\n2 Duress (M21) 96\nDeck\n"
+                     "1 Opt (M21) 2\n", encoding="utf-8")
+        _meta, cards = deck.parse_deck_file(str(p))
+        assert [n for _q, n, _s, _c in cards] == ["Shock", "Opt"]
+        bad = deck.malformed_deck_lines(str(p))
+        assert len(bad) == 1 and "Duress" in bad[0][1] and bad[0][0] == 3
+
+    def test_a_quantity_zero_line_fails_inv04(self, tmp_path):
+        """BS11-73: `consistency` priced it at 100% and `cuts` offered it as a cut."""
+        p = tmp_path / "d.txt"
+        p.write_text("0 Shock (M21) 159\n4 Opt (M21) 2\n", encoding="utf-8")
+        bad = deck.malformed_deck_lines(str(p))
+        assert len(bad) == 1 and "quantity 0" in bad[0][1]
+
+    def test_a_basic_with_a_fabricated_set_code_is_a_bad_set(self, monkeypatch):
+        """BS11-04: the set-code half now applies to basics; the number half stays exempt."""
+        monkeypatch.setattr(deck, "known_printings", lambda: ({}, {"msh"}))
+        bad, unver = deck.printing_problems([(5, "Forest", "ZZZ", "193"),
+                                             (5, "Forest", "MSH", "999")])
+        assert bad == [("Forest", "ZZZ", "193")] and unver == []
+
+    def test_buildability_joins_both_spellings_of_one_card(self):
+        """BS11-07: `A // B` + `A` is two copies of ONE card."""
+        cards = [(1, "Bottomless Pool // Locker Room", "DSK", "43"),
+                 (1, "Bottomless Pool", "DSK", "43")]
+        reqs = deck.deck_requirements(cards)
+        assert len(reqs) == 1 and reqs[0][3] == 2
+        assert deck.deck_build_gap(cards, {"bottomless pool": 1}) == (0, 1)
+
+    def test_match_paste_flags_an_oversized_paste(self):
+        """BS11-10: two decks run together matched one with full confidence."""
+        ms = lambda **kw: {k.lower(): (k, v) for k, v in kw.items()}
+        m = deck.match_paste(ms(A=4, B=4, C=4, D=4, E=4),
+                             [({"id": "1", "name": "d", "path": ""}, ms(A=4, B=4, C=4))])
+        assert m["oversized"] is True and not m.get("truncated")
+
+    def test_verify_ignores_a_sideboard_like_sync_does(self, tmp_path, capsys):
+        """BS11-08: verify reported '+2 Duress' and exited 1 while sync said in sync."""
+        import argparse
+        d = tmp_path / "d.txt"
+        d.write_text("#: name: T\n4 Shock (M21) 159\n", encoding="utf-8")
+        paste = tmp_path / "p.txt"
+        paste.write_text("Deck\n4 Shock (M21) 159\n\nSideboard\n2 Duress (M21) 96\n",
+                         encoding="utf-8")
+        rc = deck.cmd_verify(argparse.Namespace(id=str(d), source=str(paste)))
+        assert rc == 0 and "identical" in capsys.readouterr().out

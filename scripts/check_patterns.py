@@ -280,6 +280,10 @@ def _pattern_groups():
     out.append(("deck._ALT_COST_RE", deck._ALT_COST_RE, "norm"))
     out.append(("deck._ALT_COST_GRANT_RE", deck._ALT_COST_GRANT_RE, "norm"))
     out.append(("deck._IMPENDING_RE", deck._IMPENDING_RE, "norm"))
+    # A card's own copy-limit override (BS11-01). Dead means `legal` flags a legal
+    # 10-Slime deck "max 4" again — or passes an eighth Seven Dwarves.
+    out.append(("deck._ANY_NUMBER_NAMED_RE", deck._ANY_NUMBER_NAMED_RE, "norm"))
+    out.append(("deck._UP_TO_N_NAMED_RE", deck._UP_TO_N_NAMED_RE, "norm"))
     # The typed-sink qualifier reads ORIGINAL case (Magic capitalizes creature types).
     out.append(("deck._LAND_SINK_TYPED_RE", deck._LAND_SINK_TYPED_RE, "raw"))
     # `suggest --lands`' rider tie-break. Each cue must still match a real land, else the
