@@ -317,6 +317,11 @@ python3 scripts/pool.py --regex 'artifacts you control (get|have)' --within U --
 python3 scripts/pool.py --regex 'exchange control of|gain control of target' --unowned --full
 ```
 
+`--legal` takes the repo's format names and reads them the way `deck.py legal` does:
+`brawl` is the 60-card Standard Brawl and `historic brawl` the 100-card format (Scryfall's
+`brawl` key), with a one-line note when the two spellings differ. An unknown format is
+refused with the list, rather than silently matching nothing.
+
 `--color` matches the identity set, as in `query.py` (`--color R` excludes
 Colorless; `--color colorless` for colorless cards). **`--within` is its
 complement and the one to reach for when surveying for a DECK**: `--color` asks
@@ -1110,6 +1115,10 @@ Standard-legal, were offered to Standard decks.)
 the floor (and `suggest --needs`' interaction minimum) scales by size / 60. Every Brawl
 recommender also holds to the commander's colour identity, `consistency` counts Arena's
 free first mulligan, and Historic Brawl does not rotate, so it shows no rotation flags.
+The same per-60 scale reaches `cuts`, `audit` and `mana`'s thresholds, and a
+"commander's color identity" land such as Command Tower counts as the commander's colours
+in `mana`, `consistency` and the dashboard (the `suggest` recommenders still read it as
+any colour).
 
 A deck's **change history is git** — no in-file changelog to go unwieldy or drift.
 `deck.py history <id>` prints the deck file's commit log (each message states the
@@ -1584,7 +1593,14 @@ the ones you cared enough to annotate. `--annotate` refuses `deck`, `result` and
 the log owns those — and an empty value clears a field, so a wrong annotation is fixable
 without editing the CSV. To throw a match out (you stepped away, misclicked into a queue),
 annotate it `void=<why>`; never delete the row, because the next paste would add it back
-as a live result. A voided match counts in no tally, and `void=no` restores it.
+as a live result. A voided match counts in no tally — not the per-deck table, not the
+loss reasons, not `feedback`'s games — and its note keeps the result it replaced
+(`void (was L): stepped-away`), so `void=no` restores exactly that. A void older than that
+note format restores from its game score, and is refused rather than guessed when the
+score is tied; `void=no` on a match that was never voided is refused too.
+
+A zero-padded deck id (`06`) is accepted everywhere and stored canonical (`6`), so one
+deck never splits across two report rows.
 
 The loss vocabulary is **closed so it can be counted**: `flood screw slow answer removed
 keep misplay outclassed`, with free-text `note=` beside it. Free text cannot answer "which

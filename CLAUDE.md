@@ -196,6 +196,8 @@ castability · curve · central-theme density), with the intangibles moving a de
   For a `BIG_DECK_FORMATS` deck over 60 cards, `floor_requirements` scales the table by
   size / 60 and rounds UP (A at 100 cards needs 12 and a sum of 19). It is the one reader
   of the table for both `tier_band` and `tier_gap`, so `tier --to` aims at the scaled gap.
+  The same scale (`deck_floor_scale` → `_scale_count`) reaches `fit_strength`, `cuts`' short-axis
+  and interaction notes, `audit`'s thin check and `mana`'s pip-source check (BS11-15).
   `tier` prints the scale and the per-60 density. **Keyed on the FORMAT, not the count** —
   a 61-card Standard deck and a 60-card Standard Brawl deck are unscaled. The bounded 0–7
   aggro clock is NOT scaled (it is a score, not a count). Roster diff: 1 of 116 decks moved,
@@ -207,7 +209,10 @@ castability · curve · central-theme density), with the intangibles moving a de
   commander's colour identity is illegal however payable it is (`{2}{R/W}{R/W}{R/W}` under a
   G/W/U commander), and every RECOMMENDER gated on castability alone — measured 2026-09-29,
   205 of 78-historic-brawl's 435 `--lands` picks and 385 of its 8,054 `suggest` picks were
-  illegal there. `commander_identity_lock` is now read by the shared gates
+  illegal there. A "commander's color identity" land (Command Tower) produces the COMMANDER's colours in
+  `mana`, `consistency` and the dashboard (`land_production(commander=)`, BS11-17) — residual:
+  `deck_color_sources`, `pip_depth_warning` and `_land_value` still read it as five colours.
+  `commander_identity_lock` is now read by the shared gates
   (`_candidate_castability`'s `lock=`, `_filler_castable`, `suggest_lands`), so `suggest`,
   `--ramp/--interaction/--lands`, `screen`, `suggest-homes` and the `tier --to` fillers agree
   with `legal`; residual: `cross_deck_breadth`'s Decks count (variants collapse to their
@@ -350,7 +355,9 @@ is protecting.
   `brawl` is the 100-card Historic Brawl — so every legality/recommender surface reads
   the deck's format through `deck.pool_format_key` (60-card `Brawl` → `standard`,
   `Historic Brawl` → `brawl`), never the raw string: until BS8-04 a Historic-only card
-  passed `legal` in 3-brawl and `suggest` on it returned 2,238 non-Standard picks.** [G-08]
+  passed `legal` in 3-brawl and `suggest` on it returned 2,238 non-Standard picks.** `pool.py
+  --legal` and the rotation views read it too since BS11-06/40, so `--legal brawl` is the
+  60-card format and an unknown name is refused. [G-08]
 - **`check` answers "do I own this deck"; `legal <id>` answers "is it a LEGAL deck"** —
   size, copy limit and each nonbasic's legality in the deck's `#: format:`, format-aware
   for Alchemy and Brawl (a Brawl deck also validates `#: commander:`, every card's colour
@@ -580,7 +587,8 @@ is protecting.
   gate passed an off-colour one). **The year is the STANDARD YEAR, not release + 3
   (BS8-13)**; reprints: `_SET_ROTATION_OVERRIDE`, verify. **`deck.py rotation <id>`** lists
   one deck's rotating cards, OWNED included (invisible everywhere until 2026-09-06), and
-  `check` ends with an `ⓘ N OWNED card(s) rotate` footer. Run it before a tune — **but
+  `check` ends with an `ⓘ N OWNED card(s) rotate` footer. `--any-format` drops the LEGALITY
+  filter, not the deck's own rotation flag (BS11-14; plain `suggest` still drops both). Run it before a tune — **but
   `/tune-deck` deliberately does NOT: recommendations ignore rotation so the human decides.
   A design choice, not drift; do not "fix" it into that skill.** [G-30]
 - **A COST THAT SCALES WITH A DECK COUNT IS INVISIBLE TO EVERY MODEL HERE, because they all price the PRINTED cost (added 2026-09-03).** Three templatings, one effect — `Affinity for artifacts` (52 pool instances), `costs {1} less to cast for each Equipment you control` (134), and a type-scoped `Equip Wizard {1}` beside a plain `Equip {3}` (16 cards); **64 pool cards** resolve to a countable type. Found because `suggest-homes` ranked Wizard's Staff into a **ONE-Wizard** deck above two **20-Wizard** decks: the printed cost is identical everywhere. `cost_scale_resource` / `cost_scale_support` / `cost_scale_boost` mirror the doubler trio, feed `suggest-homes` and `cut_keep_score`, and read the **TYPE LINE, never a tag** (K-04 — Salt Road Packbeast is tagged `artifacts` off its affinity KEYWORD while its real resource is creatures). **SCOPE IS THE G-76 LINE:** only a count the DECK'S COMPOSITION decides; "for each card exiled this way" / "in your party" / "in your graveyard" are game state (55 instances) and are left alone rather than answered wrongly. Calibrated from the measured distribution per `_DOUBLER_CALIB`'s lesson — nonzero support runs p25 2 / p50 3 / p75 10 / p90 22, so the floor is **4** (three artifacts is not an artifact deck), key 10, cap 12 (under the doubler's 18: a discount changes WHEN you cast, a doubler changes what the card DOES). Roster diff: **17 of 64 scaler cards re-ordered, 5 changed top pick; 2 of 115 `cuts` top-3 moved, 0 changed #1.** Plural resources singularise against the real type list — a naive `[:-1]` makes "Allies" → "allie", a type nothing carries, so the count is a silent 0. [G-83]
@@ -1228,7 +1236,9 @@ is protecting.
   was the one form every by-id command rejected. `_norm_deck_id` normalizes BOTH sides, and
   **INV-04's duplicate-id gate was re-keyed to it in the same change** — `06` and `6` now
   collide, so the raw-keyed gate would have been blind to the one new way of making the
-  collision it exists to catch. **Widen a resolver, widen its gate.** [G-82]
+  collision it exists to catch. **Widen a resolver, widen its gate.** And STORE the canonical
+  form: accepting `06` but writing it verbatim split one deck across two `--report` rows, so
+  `--add`, `--deck` and `wishlist --add --target` now write `6` (BS11-33). [G-82]
 
 - **A `#:` HEADER THAT LISTS CARD NAMES GOES STALE, AND UNTIL 2026-08-07 NOTHING CHECKED
   ONE.** `#: protect:` and `#: uncastable-ok:` are read by the tooling as INSTRUCTIONS, so
@@ -1308,7 +1318,10 @@ is protecting.
   orphans its variants — flagged, never cascaded; a rename **strands prose citations** (50
   of 106 decks are named in another's prose). **The divergence REGROWS** from client-side
   renaming, so today's agreement is a snapshot, not a reason to add the gate — docs cite it
-  with examples that now read as agreements *because* the sync ran. Re-measure first. [G-73]
+  with examples that now read as agreements *because* the sync ran. Re-measure first.
+  The rename test strips only the REPO's gloss (`_rename_key`), so an Arena-side
+  "(old)"→"(new)" is a rename; a parent that only prefixes a WORD ("Dino"/"Dinosaur") is
+  not stripped from a variant (BS11-37/38). [G-73]
 
 - **THE RESULT LINES CANNOT SEE WHAT YOU FACED OR WHY YOU LOST; THE PLAY-BY-PLAY SEES MOST
   OF IT; a PHONE GAME never reaches the desktop log at all** (`Player.log` is written by

@@ -395,8 +395,9 @@ Updated: 2026-10-02 (Batch 1 — see Where I left off)
 `11-batch7-matches-broad-implement.md`): BS11-32/33/35/36/37/38. Voids record and restore the
 prior result (`void (was L): …`); padded deck ids are stored canonical; VOID is excluded from
 report rows, the loss tally and swap_outcomes; `--sync-names` sees Arena parenthetical renames
-and no longer splits "Dino"/"Dinosaur". Suite + check_all green. **Next:** `/sync-docs` for
-Batches 6 + 7, then Batch 8 (editor/dashboard: BS11-42–53), then Batch 9 (docs).
+and no longer splits "Dino"/"Dinosaur". Suite + check_all green. **Docs for Batches 6 + 7
+synced** (G-08/G-30/G-73/G-82, the per-60 Brawl bullet, gotchas.md long forms, README,
+/log-matches). **Next:** Batch 8 (editor/dashboard: BS11-42–53), then Batch 9 (docs).
 
 **2026-10-02 (latest) — scan #11 Batch 6 implemented** (block
 `11-batch6-format-drift-broad-implement.md`): BS11-06/13/14/15/17/18/40. Format names now go

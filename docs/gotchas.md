@@ -434,6 +434,8 @@ something needs attention.
   same paste read "+2 Duress", exit 1, under `verify` and "in sync" under `sync`. Both
   run `strip_boards` now.
 
+**2026-10-02 (BS11-06/40) — two more readers of the raw string.** `pool.py --legal` compared the typed name against the pool's Scryfall keys, so `--legal "historic brawl"` matched nothing and `--legal brawl` silently meant the 100-card format; it now resolves through `deck.pool_format_key`, refuses an unknown name with the list, and prints a note when the repo name maps to a different key. `rotation_sweep` selected decks by the raw header, so the roster rotation view held 109 decks against 113 that rotate; it selects by pool key now, leaving out only the non-rotating Historic Brawl deck. One pool test fixture had encoded `--legal brawl` as the 100-card format, i.e. it pinned the bug.
+
 ## [G-09] Legality lint and cut candidates are separate from ownership
 
 **Legality lint and cut candidates are separate from ownership.** `deck.py check`
@@ -2126,6 +2128,8 @@ card that leaves Standard next year. A 2026-09-08 discoverability review first r
 omission as skill drift (G-53's shape) and was corrected by the owner. Recorded here because
 the rule's own imperative is what would make the next session "fix" it back.
 
+**2026-10-02 (BS11-13/14).** Under `--any-format` the filter format is the empty string, and `suggest --lands/--ramp/--interaction` took that as "no format, so no rotation" — 78-historic-brawl and every Standard deck alike lost the ⚠rot flag on exactly the run meant to widen the search. They fall back to the deck's own `#: format:` now. `suggest_lands`' copy limit had the same confusion the other way, reading `--format` instead of the deck. **Residual:** plain `suggest` (`suggest_scored`) still drops ⚠rot entirely under `--any-format`, now the one surface that differs from its siblings.
+
 ## [G-31] `deck.py suggest-homes <card>` automates the "which of my decks does this new card improve" fit 
 
 **`deck.py suggest-homes <card>` automates the "which of my decks does this new
@@ -2855,6 +2859,8 @@ The empty-frozenset-vs-`None` distinction is the part that is easy to get wrong 
 pinned by its own test: `if not types` merges "any basic satisfies this" with "this is
 not a checkland", and merging them would hand the generic cycle to the type check, where
 `need & basic_types` is empty for every deck and every checkland reads unconditional.
+
+**2026-10-02 (BS11-17) — "your commander's color identity" is not five colours.** Command Tower and its kin were read as any-colour lands, so a G/W/U Brawl deck counted a black and a red source it could never produce. `lib.land_production(commander=)` resolves the clause to the commander's colours (an EMPTY set — no commander — produces nothing, which is the rules answer; `None` keeps the old all-five read for callers that cannot know). `deck_source_profile` and `uncounted_mana_sources` take `deck_meta=`, passed by `mana`, `consistency` and the dashboard. **Residual:** `deck_color_sources` — what `pip_depth_warning` and the `suggest` recommenders read — and `wishlist._land_value` take no deck header, so they still read Command Tower as five colours.
 
 ## [G-36] `deck.py consistency <id>` is the PROBABILITY layer `mana` lacks
 
@@ -6421,6 +6427,8 @@ concept forms), `feedback` refuses an unknown deck by name, and `_status_label` 
 `_audit_target_issues` read padded ids. The transferable point: a validator written
 against the resolver's OLD form is exactly the drift this rule describes, one file over.
 
+**2026-10-02 (BS11-33) — accept the padded form, store the canonical one.** BS8-17 made `06` ACCEPTED by `parse_matches --add` / `--deck` and `wishlist --add --target`, but all three wrote the typed spelling, so a match logged as `06` and one logged as `6` were two rows in `--report`, and `load_match_counts` (keyed on the roster id) missed the padded one entirely. Each now maps the accepted id to its roster spelling before writing; the wishlist joins multiple targets with `; `. The BS8-17 test asserted the padded STORAGE and was split. 0 padded ids were live in either file.
+
 ## [G-68] A `#:` header that lists card names goes stale, and nothing checked one
 
 Two deck headers are a semicolon-separated list of CARD NAMES rather than prose:
@@ -6960,6 +6968,7 @@ only; the convention is family-dir plus variant-suffix (`54-grand-lotus/54b-come
 "Grand Lotus — Comet"), NOT slug-equals-name, so a variant file is slugged on its
 distinguishing half alone.
 
+**2026-10-02 (BS11-37/38) — two misses in the rename plan.** The comparison keyed both sides with `_name_key`, which drops ANY trailing parenthetical; that is right for the repo's premise gloss and wrong when Arena wrote the parenthetical, so "Foo (old)" → "Foo (new)" keyed `foo` both times and was never proposed. `_rename_key(name, current)` strips only the current name's own gloss. And `_adopted_name`'s repeated-parent strip compared letters-only keys, so parent "Dino" matched the front of "Dinosaur Party" and the variant would have adopted "Dino — saur Party"; a cut that falls inside a word is no longer a repeated parent. Neither fired on the live roster. **Residual:** the rename WARNING path still keys on `_name_key`, so it misses the same Arena-side parenthetical change.
 
 ## [G-74] The result lines cannot see what you faced or why you lost; the play-by-play sees most of it — a phone game, nothing
 
@@ -7118,6 +7127,8 @@ measurement on that paste rather than from a guess:
 
 Residual: a paste restricted to a period when only an OLD copy was played would move the
 header back to that copy. Attribution is unaffected, because every copy resolves by name.
+
+**2026-10-02 (BS11-32/35/36) — the void round-trip.** `void=no` restored a result GUESSED from the game score (W if more game wins, else L), which inverts a match conceded in game one of a best-of-three and cannot read a blank score at all; it also silently accepted `void=no` on a row that was never voided. The void now writes the result it replaces into the note (`void (was L): <why>`), restores exactly that, keeps the ORIGINAL on a re-void, and refuses — with a warning, the row's other fields still applied — a never-voided row or a legacy `void: ` note whose score is tied. Voided rows also left three tallies: `--report` created the per-deck bucket before skipping them (a voided-only deck read 0-0-0), the loss-reason tally counted a voided loss's `why=`, and `deck.swap_outcomes` counted it as a game, so deck 17's `feedback` read 3 games against `audit`'s 2 — the one instance live in the record. The post-ingest prompt had said a blank value "records nothing"; the tested contract is that it CLEARS, and the prompt and `/log-matches` say so now.
 
 ## [G-75] A tutor is worth the number of things it can find in THIS deck
 
