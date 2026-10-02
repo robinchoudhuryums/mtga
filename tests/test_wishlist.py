@@ -303,6 +303,13 @@ class TestAddStampsTargetAndNote:
         wishlist.cmd_add(batch, target="6")
         assert wishlist.load_wishlist()[0]["Target"] == "42"
 
+    def test_a_padded_target_is_written_canonical(self, tmp_path, monkeypatch):
+        """BS11-33: `--target 06` was accepted and stored as "06", which no exact-id
+        reader of the Target column (the dashboard join, `--target` itself) matches."""
+        batch = self._world(tmp_path, monkeypatch)
+        assert wishlist.cmd_add(batch, target="06, 21") == 0
+        assert wishlist.load_wishlist()[0]["Target"] == "6; 21"
+
     def test_add_without_the_flags_is_unchanged(self, tmp_path, monkeypatch):
         batch = self._world(tmp_path, monkeypatch)
         assert wishlist.cmd_add(batch) == 0

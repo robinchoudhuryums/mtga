@@ -310,6 +310,10 @@ def cmd_add(path, target=None, note=None):
                 eprint(f"--target {target!r}: no deck with id {bad[0]!r}. Try: deck.py list "
                        "(or `general` / `concept: …`)")
                 return 1
+            # Store each id in its CANONICAL spelling (BS11-33): validated normalised but
+            # written as typed, a `06` Target missed the colour map keyed on `6`.
+            _canon = {dk._norm_deck_id(d["id"]): d["id"] for d in dk.roster_decks()}
+            target = "; ".join(_canon.get(dk._norm_deck_id(t), t) for t in toks)
     if path == "-":
         text = sys.stdin.read()
     else:

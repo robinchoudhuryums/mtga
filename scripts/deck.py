@@ -8363,9 +8363,16 @@ def swap_outcomes(rows, matches):
         e["first_swap"] = min(e["first_swap"], date)
 
     played = {}
+    try:
+        import parse_matches as _pm
+        _void = _pm.VOID
+    except Exception:
+        _void = "X"
     for m in matches:
         did = (m.get("Deck") or "").strip()
-        if did:
+        # A VOIDED match tested nothing (BS11-36) — the same exclusion `load_match_counts`
+        # makes, so `feedback`'s games and `audit`'s Pld agree (deck 17 read 3 vs 2).
+        if did and (m.get("Result") or "").strip().upper() != _void:
             played.setdefault(did, []).append(m)
 
     out = []

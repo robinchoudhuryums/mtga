@@ -34,6 +34,8 @@ Updated: 2026-10-02 (Batch 1 — see Where I left off)
 
 ## Completed this cycle
 
+- **2026-10-02 — scan #11 Batch 7: match record** (BS11-32/33/35/36/37/38). Block
+  `11-batch7-matches-broad-implement.md`. Net 1 − 0 = 1.
 - **2026-10-02 — scan #11 Batch 6: format drift** (BS11-06/13/14/15/17/18/40). Block
   `11-batch6-format-drift-broad-implement.md`. Net 7 − 0 = 7.
 - **2026-10-02 — scan #11 Batch 5: recommender maths** (BS11-16/31/61/67–72/74). Block
@@ -389,6 +391,13 @@ Updated: 2026-10-02 (Batch 1 — see Where I left off)
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
+**2026-10-02 (latest) — scan #11 Batch 7 implemented** (block
+`11-batch7-matches-broad-implement.md`): BS11-32/33/35/36/37/38. Voids record and restore the
+prior result (`void (was L): …`); padded deck ids are stored canonical; VOID is excluded from
+report rows, the loss tally and swap_outcomes; `--sync-names` sees Arena parenthetical renames
+and no longer splits "Dino"/"Dinosaur". Suite + check_all green. **Next:** `/sync-docs` for
+Batches 6 + 7, then Batch 8 (editor/dashboard: BS11-42–53), then Batch 9 (docs).
+
 **2026-10-02 (latest) — scan #11 Batch 6 implemented** (block
 `11-batch6-format-drift-broad-implement.md`): BS11-06/13/14/15/17/18/40. Format names now go
 through `normalize_format` / `pool_format_key` on the rotation, lands, pool --legal and resolve
