@@ -3,14 +3,14 @@
 #: colors: RWB
 #: plan: aggro
 #: archetype: MARDU MOBILIZE WAVES. Wave engines (Zurgo, Dalkovan Packbeasts, Voice of
-#: archetype: Victory, Venerated Stormsinger, Zurgo's Vanguard, Stadium Headliner, Bone-Cairn, Trebuchet,
+#: archetype: Victory, Venerated Stormsinger, Stadium Headliner, Bone-Cairn, Trebuchet, Ajani Unrelenting,
 #: archetype: Siegebreaker) put tapped-and-attacking tokens onto the battlefield EVERY
 #: archetype: combat, and The Fire Crystal gives every creature haste so a Mobilize body
 #: archetype: attacks the turn it lands; four doubler layers multiply the wave (Windcrag Siege doubles
 #: archetype: attack-triggers, Exalted Sunborn doubles every token created, Delney doubles
 #: archetype: power<=2 triggers, Neriv doubles entered-this-turn damage; Raph & Leo and
 #: archetype: Aurelia add whole extra combats = extra waves); converters turn each wave into
-#: archetype: damage (Impact Tremors, Shocking Sharpshooter, Slash, Garna), cards (Enduring
+#: archetype: damage (Impact Tremors, Shocking Sharpshooter, Slash, Garna, Ingris Stingerquill), cards (Enduring
 #: archetype: Innocence; Garna, when an attacker dies; Hardened Tactician, a card per token),
 #: archetype: recursion (Alesha returns a dead creature card at end step after an attack), removal (Sothera: every token that dies at
 #: archetype: end step makes each opponent exile a creature), drain (Stormsinger), and
@@ -20,9 +20,9 @@
 #: protect: Zurgo, Thunder's Decree; Windcrag Siege; Delney, Streetwise Lookout; Suki, Courageous Rescuer; Mardu Siegebreaker; Fire Navy Trebuchet
 #: tier: A (PROVISIONAL) — the metrics floor reads A. The 2026-10-01 swaps first dropped the
 #: tier: floor a band (curve up, card advantage thin); Garna and a 25th land restored it, with
-#: tier: card advantage 3 (Garna draws whenever an attacking creature dies), interaction 8
-#: tier: (Coordinated Maneuver, Valorous Stance and Pyrrhic Strike, all instants), a 3.23
-#: tier: curve (3.14 counting Sunborn's warp) and an aggro clock of 2/7. What the floor
+#: tier: card advantage 4 after the 2026-10-02 Reality Fracture swaps (Garna draws whenever an attacking creature dies; Ajani's −2), interaction 8
+#: tier: (Coordinated Maneuver, Valorous Stance and Pyrrhic Strike, all instants), a 3.31
+#: tier: curve (3.23 counting Sunborn's warp; Ajani is a second 6-drop) and an aggro clock of 3/7. What the floor
 #: tier: cannot see: Sothera's exile-per-dying-token is an edict engine the classifier does
 #: tier: not count as interaction, and Sunborn and Slash multiply every wave. Unproven in
 #: tier: matches; the honest weaknesses are card advantage that needs mana (Garna, Enduring
@@ -71,8 +71,8 @@
 #: notes: Monument (a 25th land) and for a Swamp (W 13 / B 10 / R 14; Garna 56% -> 64% on
 #: notes: turn 4, nothing else got worse). Garna draws when an ATTACKING creature dies and
 #: notes: pings 1 when a non-attacker dies — the end-step Mobilize sacrifice is the ping half.
-#: notes: PENDING the Reality Fracture pool refresh (FRA is not in card-pool.csv yet, so its
-#: notes: lines cannot be written here): Ajani Unrelenting (FRA) 242 for Team Avatar. His −2
+#: notes: APPLIED 2026-10-02, once the Reality Fracture pool refresh landed (it had been queued
+#: notes: because FRA was not yet in card-pool.csv): Ajani Unrelenting (FRA) 242 for Team Avatar. His −2
 #: notes: discards your hand then draws one per creature you control — use it in main phase 2
 #: notes: while the wave's tokens are alive; his −3 also kills your own NONTOKEN creatures.
 #: notes: SWAPS, 2026-10-01 (after a 1-4 start; the owner named three gaps — protection,
@@ -89,7 +89,7 @@
 #: notes: your end step, where Zurgo TD makes Warrior tokens unsacrificeable) and Pyrrhic Strike
 #: notes: for Lorehold Charm (blight 2 on a doomed token and choose both: destroy an artifact or
 #: notes: enchantment AND a creature with mana value 3+; the token's death also fires Sothera).
-#: notes: ALSO PENDING the Reality Fracture refresh, alongside Ajani: Liliana the Faultless (FRA)
+#: notes: ALSO APPLIED 2026-10-02, alongside Ajani: Liliana the Faultless (FRA)
 #: notes: 200 for Mardu Devotee ("{1}, {T}, Discard a card: another target creature gains
 #: notes: hexproof"; 1 life per creature entering) and Ingris Stingerquill (FRA) 137 for Zurgo's
 #: notes: Vanguard (each DECLARED attacker deals 1 to each opponent, doubled by Windcrag Siege and
@@ -104,11 +104,16 @@
 #: notes: a 2nd Godless Shrine and a 2nd Sacred Foundry (same colours, untapped for 2 life). Source
 #: notes: counts unchanged (W 13 / B 10 / R 14, keepable 86%); the only unconditional tapland left is
 #: notes: Nomad Outpost. Lost: Barrens' 1 life and Peak's {4} sacrifice-to-draw flood sink.
+#: notes: 2026-10-02 (owner's call, to save two rare wildcards): the 2nd Godless Shrine became
+#: notes: Shattered Sanctum (owned; untapped once you control two other lands, so tapped only as
+#: notes: a turn-1/2 drop) and the 2nd Sacred Foundry became Dedicated Commons (owned; enters
+#: notes: tapped unless you control a planeswalker — Ajani is the only one, at 6 mana, so treat it
+#: notes: as a tapland). Sun-Blessed Peak is the strictly better R/W tapland if Commons disappoints.
 
 # Wave engines
 1 Zurgo, Thunder's Decree (TDM) 237
 1 Dalkovan Packbeasts (TDM) 7
-1 Zurgo's Vanguard (TDM) 133
+1 Ingris Stingerquill (FRA) 137
 1 Venerated Stormsinger (TDM) 97
 1 Stadium Headliner (TDM) 122
 1 Bone-Cairn Butcher (TDM) 173
@@ -133,7 +138,7 @@
 1 EPF Point Squad (TMT) 145
 1 Enduring Innocence (DSK) 6
 1 Suki, Courageous Rescuer (TLA) 37
-1 Team Avatar (TLA) 38
+1 Ajani Unrelenting (FRA) 242
 1 The Jolly Balloon Man (DSK) 219
 1 Hardened Tactician (TDM) 191
 1 Sothera, the Supervoid (EOE) 115
@@ -143,14 +148,12 @@
 
 # Pulse tricks
 1 Boros Charm (FDN) 721
+1 Liliana the Faultless (FRA) 200
 
 # Removal (spot)
 1 Pyrrhic Strike (ECL) 30
 1 Coordinated Maneuver (TDM) 6
 1 Valorous Stance (FDN) 583
-
-# Ramp / fixing
-1 Mardu Devotee (TDM) 16
 
 # Lands
 1 Blood Crypt (ECL) 262
@@ -158,11 +161,13 @@
 1 Blazemire Verge (DSK) 256
 1 Bleachbone Verge (DFT) 250
 1 Nomad Outpost (TDM) 263
-2 Sacred Foundry (EOE) 256
+1 Sacred Foundry (EOE) 256
+1 Dedicated Commons (FRA) 175
 5 Mountain (MSH) 293
 4 Dark Fortress (MSH) 264
 6 Plains (MSH) 287
-2 Godless Shrine (EOE) 254
+1 Godless Shrine (EOE) 254
+1 Shattered Sanctum (SOS) 260
 1 Swamp (MSH) 291
 
 # Flex — from the 2026-08-15 HOB ingest

@@ -48,14 +48,23 @@ commands disagree.
 > paste arrived anonymised with game lines. **Three new losses still need a reason** from
 > the owner (4061b76a deck 17, 06c655a7 and 99712739 deck 30) — never fill one in.
 >
-> **OPERATOR ACTION, after 2026-10-02:** Reality Fracture (FRA) is playable on Arena but not
-> in the pool until its Scryfall date (G-79's inverse). Run `make refresh REFETCH=1`,
-> catalog the owned FRA cards (`/ingest`), then apply the 13 queued swaps written in the
-> deck notes: deck 55 (Ajani Unrelenting for Team Avatar, Liliana the Faultless for Mardu
-> Devotee, Ingris Stingerquill for Zurgo's Vanguard) and deck 60 (ten, listed in its
-> `#: notes:` and `.cycle/60-redline-pile-analysis.md`). Re-run `tier --audit-rationale`
-> on both after.
->
+> **OPERATOR ACTION — PARTLY DONE 2026-10-02.** Reality Fracture (FRA) is now in the pool
+> (16,047 cards, from 15,761). **Deck 55's three FRA swaps are APPLIED** (Ajani Unrelenting,
+> Liliana the Faultless, Ingris Stingerquill), plus two owner-chosen land swaps (2nd Godless
+> Shrine → Shattered Sanctum, 2nd Sacred Foundry → Dedicated Commons); rationale audit
+> current, floor A. **STILL OPEN:** deck 60's ten FRA swaps (its `#: notes:` and
+> `.cycle/60-redline-pile-analysis.md`), and cataloguing the owned FRA cards (`/ingest`) —
+> only Dedicated Commons is in the library so far, so Ajani/Liliana/Ingris read as crafts.
+> **TRAP found doing it:** Scryfall's search sits behind Cloudflare with `max-age=57600`
+> (16h), so on a set's release day `make refresh REFETCH=1` re-read a CACHED pre-release
+> response for the canonical `game:arena date<=now` URL (`cf-cache-status: HIT`, age 9.4h) and
+> silently rebuilt the old 15,761-card pool. The pool was fetched with the equivalent query
+> `date<=now game:arena` (a different URL, so a cache miss); `card-pool.build` records that
+> query, so the next `make refresh` refetches once on the canonical URL — after the cache
+> expires (~08:00 UTC 2026-10-02) that is harmless; before it, it would drop FRA again.
+> Verify the pool count after any release-day refresh. A cache-busting fix in `build_pool`
+> is not built.
+
 > **STATE STAMP, 2026-09-27, LATER (NEWEST — supersedes both stamps below on matches).**
 > **THE MATCH DIGEST IS BUILT; the 2026-09-25 stamp's "NOTHING IS BUILT" is history.**
 > PR #196 shipped `scripts/mtga_extract.sh` (the Mac's `~/mtga-logs/extract.sh`, embedded

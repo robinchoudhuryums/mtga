@@ -4334,7 +4334,6 @@ Rescue,{U},1,
 Sage of Lat-Nam,{1}{U},2,
 Sentinel of the Pearl Trident,{4}{U},5,Flash
 "Slinn Voda, the Rising Deep",{6}{U}{U},8,Kicker
-"Tetsuko Umezawa, Fugitive",{1}{U},2,
 Time of Ice,{3}{U},4,
 Unwind,{2}{U},3,
 Weight of Memory,{3}{U}{U},5,Mill
@@ -4369,7 +4368,6 @@ Thallid Soothsayer,{3}{B},4,
 Vicious Offering,{1}{B},2,Kicker
 "Whisper, Blood Liturgist",{3}{B},4,
 Windgrace Acolyte,{4}{B},5,Flying;Mill
-"Yargle, Glutton of Urborg",{4}{B},5,
 Yawgmoth's Vile Offering,{4}{B},5,
 Bloodstone Goblin,{1}{R},2,
 Champion of the Flame,{1}{R},2,Trample
@@ -5093,9 +5091,7 @@ Gluttonous Troll,{2}{B}{G},4,Food;Trample
 Knights' Charge,{1}{W}{B},3,
 "Korvold, Fae-Cursed King",{2}{B}{R}{G},5,Flying
 "Syr Gwyn, Hero of Ashvale",{3}{R}{W}{B},6,Vigilance;Menace
-Arcane Signet,{2},2,
 Tome of Legends,{2},2,
-Command Tower,,0,
 "Hearthhull, the Worldseed",{1}{B}{R}{G},4,Station
 "Inspirit, Flagship Vessel",{U}{R}{W},3,Station
 "Kilo, Apogee Mind",{U}{R}{W},3,Haste;Proliferate
@@ -5612,6 +5608,303 @@ Judgment Bolt,{3}{R},4,
 "Xande, Dark Mage",{2}{U}{B},4,Menace
 Magitek Scythe,{4},4,Equip;A Test of Your Reflexes!
 Ultima Weapon,{7},7,Equip
+"Emrakul, the Exigent Doom",{10},10,Flying;Trample;Ward
+Academic Ascent,{1}{W},2,Surveil;Empower Jace
+Blossom-Blessed Angel // Seed Suture,{3}{W} // {G/W},4,Flying;Vigilance;Prepared
+Campus Crier,{1}{W},2,Surveil;Empower Jace
+Enlightened Confidant,{1}{W},2,Surveil;Lifelink
+Fateshaper Aspirant,{4}{W},5,
+Flickering Hound,{3}{W},4,
+Generous Revival,{2}{W},3,Flashback
+Germinate Recruits,{2}{W},3,
+Graft Surgeon,{2}{W},3,
+Guiding Hydra,{X}{W},1,
+Hexhaven Battalion,{4}{W}{W},6,Surveil;Empower Jace;Landcycling;Basic landcycling;Typecycling;Cycling
+Kindred Judgment,{5}{W}{W},7,
+Loyal Tutor,{W},1,
+Memory Trap,{2}{W},3,
+Predictive Preparations,{1}{W},2,Flashback
+Prophesied End,{1}{W},2,
+Refute Destiny,{1}{W},2,Surveil
+Repurposed Enforcer,{1}{W},2,Surveil;Empower Jace
+Return to the Light Realms,{7}{W}{W},9,
+Shatterwing Pegasus,{2}{W},3,Flying
+Surgical Precision,{1}{W},2,
+Unflinching Hortimancer,{1}{W},2,Ward
+Your Fate Ends Here,{2}{W},3,Surveil
+Countersculpt,{U}{U},2,Surveil;Empower Jace;Behold
+Cruel Calculations,{2}{U},3,
+Cryotheory Adept,{1}{U},2,Prowess
+Diviner of Victory // Unwind History,{U} // {1}{U},1,Surveil;Prepared
+Divining Duelist,{2}{U},3,Flash
+Icy Reception,{1}{U},2,
+Infinite Coursework,{2}{U},3,Enchant;Prepared
+Jace's Machinations,{2}{U},3,Surveil;Empower Jace
+Mindseeker Oculus,{2}{U},3,Surveil;Empower Jace
+Perfected Theory,{U},1,
+Plan for All Outcomes,{3}{U},4,Surveil;Empower Jace
+Precise Redaction,{1}{U},2,
+Protege's Awakening,{3}{U},4,Surveil;Empower Jace
+Seasoned Cryomancer,{1}{U}{U},3,
+Semester Foreseer // Peer Review,{3}{U} // {2}{W/U},4,Surveil;Prepared
+Sphinx of False Conclusions,{2}{U}{U},4,Flying;Flash
+Sphinx's Approach,{1}{U}{U},3,
+Surveillance Phantasm,{1}{U},2,Flying;Surveil;Vigilance;Defender
+"The Theorist, Jace Beleren",{2}{U}{U},4,
+Theorist's Proxy,{1}{U},2,Surveil;Empower Jace;Flash
+Undulating Witness,{4}{U},5,Flying;Landcycling;Basic landcycling;Typecycling;Cycling
+Variable Chaser // Arc of Fortune,{2}{U} // {2}{U},3,Flying;Prowess;Prepared
+Apex Witchstalker,{4}{B}{B},6,Landcycling;Menace;Basic landcycling;Typecycling;Cycling
+Bloodline Recollector // Ancestral Craving,{1}{B} // {B},2,Prepared
+Break Under Pressure,{2}{B},3,
+Cast Away Doubt,{2}{B},3,
+Dark Matter Manipulator,{B},1,Mill
+Darklight Phoenix,{3}{B},4,Flying;Haste
+Extended Absence,{3}{B},4,
+Extrapolate the Impossible,{1}{B},2,
+Lich's Relic,{B},1,Equip
+Multiply by Zero,{1}{B},2,
+Overwrite the Multiverse,{4}{B}{B},6,Surveil;Empower Jace
+Rampart Hunter,{3}{B},4,Deathtouch
+Rank Rat,{1}{B},2,
+Rewrite Regrets,{3}{B},4,Surveil;Empower Jace
+Rise of the Deathbringer,{4}{B},5,
+Sanctum Lurker,{2}{B},3,Empower Jace
+Screeching Soulbreaker,{2}{B},3,Flying
+Silence the Echo,{1}{B},2,
+Solve for Disappointment,{1}{B},2,Surveil;Empower Jace
+Terminal Criticism,{1}{B},2,
+Theoretical Necromancer,{2}{B},3,
+Void Extrapolator // Omit Variables,{1}{B} // {U/B},2,Threshold;Prepared;Mill
+Vraska's Final Mercy,{B}{B},2,Surveil;Empower Jace
+Ajani's Anguish,{X}{R},1,
+Artifist Acumen,{R},1,
+Awaken the Inferno,{4}{R},5,Landcycling;Basic landcycling;Typecycling;Cycling
+Chandra's Emberling,{2}{R},3,Haste
+Command the Stage,{2}{R},3,
+Craterclaw Colossus,{4}{R}{R}{R},7,Haste
+Curse-Marred Demon,{2}{R}{R},4,Flying;Trample
+Draconic Visitor,{3}{R}{R},5,Flying
+Eardrum Rattler,{1}{R},2,
+Essence Burn,{1}{R},2,
+Face Yourself,{5}{R}{R},7,
+Fulminous Forte,{2}{R},3,
+Hallway Heckler // Vicious Verse,{2}{R} // {B/R},3,Prepared
+Heartstring Puller,{3}{R},4,Trample
+Identity Echo,{2}{R},3,
+Master of Barbs,{1}{R},2,Menace
+No Admittance,{1}{R},2,Surveil;Empower Jace
+Pompous Battlemage // Improvised Act,{R} // {R},1,Prowess;Prepared
+Pyre Rhymer // Molten Tide,{1}{R}{R} // {R},3,Prowess;Prepared
+Skilled Battlecarver,{1}{R},2,
+Stingcaster Mage,{1}{R},2,Haste
+Tether Technician,{4}{R},5,Reach
+Violent Echoes,{2}{R}{R},4,Surveil;Empower Jace
+Wrath of the Bloodmane,{2}{R},3,
+Arcane Amphisbaena,{1}{G},2,Surveil;Empower Jace;Deathtouch
+Bestial Incursion,{3}{G},4,Flashback
+Budding Insurgent,{2}{G},3,Vigilance
+Carnivorous Cultivator // Enroot,{1}{G} // {G},2,Prepared;Deathtouch
+Compel Brutality,{1}{G},2,
+Flourishing Grapple,{G},1,
+Gardenize,{1}{G}{G},3,
+Greenhouse Propagator,{2}{G},3,
+Heartwood Crafter // Soul Tether,{G} // {2}{R/G},1,Prepared
+Hexhaven Invigorator,{G}{G}{G}{G},4,Vigilance
+Hungering Puppetbeast,{3}{G}{G},5,
+Hunter's Axe,{G},1,Equip
+Inspired Tethermage,{2}{G},3,Surveil;Empower Jace
+Omnipresence,{5}{G}{G}{G},8,
+Puppet Crafting,{1}{G},2,Enchant
+Restore with Empathy,{2}{G},3,
+Simulacrum Shaper,{1}{G}{G},3,
+Something Worth Saving,{1}{G},2,Mill
+Sureshot Sower,{1}{G},2,Reach
+Tarmogoyf,{1}{G},2,
+Tethermage's Advantage,{G},1,
+Verdant Kraken,{4}{G}{G}{G},7,
+Vinelasher Adept,{4}{G}{G},6,Reach;Landcycling;Basic landcycling;Typecycling;Cycling
+Wrecking Gecko,{4}{G},5,Ward
+Aerid Konstrari,{1}{R}{G}{G},4,Flying
+Avatar of Burgeoning Echoes,{G}{U},2,Surveil;Empower Jace;Landfall
+Blessed Ghoul,{W/B},1,Lifelink
+Bloombrute,{2}{G}{W},4,
+Charge the Sanctum,{2}{R/W},3,
+Clash of Elements,{1}{U}{R},3,
+Craftwork Crusher,{3}{R}{R}{G}{G},7,Trample
+Denzilore Fatehold,{1}{W}{U}{U},4,Flying;Flash
+Desperate Futurescribe,{2}{W}{U},4,Flying
+Emergency Phytomedic // Seed Suture,{G/W} // {G/W},1,Prepared
+Entrust the Spark,{3}{G}{U},5,
+Fatehold Charm,{W}{U},2,Empower Jace
+Fatehold Chronologist // Peer Review,{1}{W/U} // {2}{W/U},2,Flying;Surveil;Prepared
+Ferocity of the Hunt,{1}{B/G},2,Enchant;Flash
+Frostbite Pyromental,{U}{R}{R},3,Haste;Trample
+Grim Repriser,{B}{R},2,Prowess
+Ingris Stingerquill,{B}{R}{R},3,Flying
+Konstrari Charm,{R}{G},2,
+Konstrari Improviser // Soul Tether,{1}{R/G} // {2}{R/G},2,Prepared
+Kwia Vigorbloom,{3}{G}{W}{W},6,Flying;Lifelink;Vigilance;Ward
+Mind Meanderer,{3}{G}{U}{U},6,Flying;Fight
+Null Summoner,{2}{U}{B},4,Threshold
+Paradox Shaper // Omit Variables,{1}{U/B} // {U/B},2,Prepared;Mill
+Primal Witchstalker,{1}{B}{G},3,Menace;Mill
+Proctor of Potential,{W}{U},2,Surveil
+Prudent Fateseer // Peer Review,{1}{W/U}{W/U} // {2}{W/U},3,Surveil;Prepared
+Recursive Recruitment,{2}{U}{B},4,Flashback
+Solarium Sentry,{G}{W},2,
+Solitary Cell,{R}{W},2,
+Stingerquill Charm,{B}{R},2,
+Stingerquill Voxmancer // Vicious Verse,{B/R} // {B/R},1,Prepared
+Stinging Vitriol,{B}{R},2,
+Tam's Resistance,{1}{G/U},2,Surveil;Empower Jace
+Tenured Tethermage,{1}{R}{G},3,
+Theorix Charm,{U}{B},2,Mill
+Theorix Metamage // Omit Variables,{2}{U/B} // {U/B},3,Threshold;Prepared;Mill
+Twinned Vision,{1}{U/R},2,Flashback
+Twisted Fates,{2}{W}{W}{B},5,
+Uldaros Theorix,{3}{U}{B}{B},6,Flying
+Vigorbloom Charm,{G}{W},2,Fight
+Vigorbloom Vanguard // Seed Suture,{1}{G/W} // {G/W},2,Prepared
+Vindictive Triumph,{W}{B}{B},3,
+Warrior's Blades,{2}{R}{W},4,Equip
+Whiplash Wordsmith // Vicious Verse,{3}{B/R} // {B/R},4,Prepared
+Woodwork Prodigy // Soul Tether,{2}{R/G} // {2}{R/G},3,Prepared
+Afterthought Sentry,{2},2,
+Archive Arbiter,{6},6,Flying
+"Codie, Ravenous Codex",{3},3,Prepared
+The Echoverse Fulcrum,{2},2,
+Eye of Jace,{1},1,Surveil
+Keeper of the Quiet Hour,{3},3,Surveil;Empower Jace
+Living Library,{2},2,
+Medic's Kitesail,{2},2,Equip
+Murmuring Volume,{3},3,
+Dedicated Commons,,0,
+Deserted Beach,,0,
+Fatehold Annex,,0,
+Formidable Commons,,0,
+Hall of Echoes,,0,
+Haunted Ridge,,0,
+Hexhaven Dueling Arena,,0,Prepared
+Innovative Commons,,0,
+Konstrari Annex,,0,
+Meticulous Commons,,0,
+Overgrown Farmland,,0,
+Rockfall Vale,,0,
+Roiling Canopy,,0,
+Room of Refuge,,0,
+Shipwreck Marsh,,0,
+Stingerquill Annex,,0,
+Theorist's Sanctum,,0,Empower Jace;Behold
+Theorix Annex,,0,
+Transformative Commons,,0,
+Vigorbloom Annex,,0,
+Ajani Resolute,{1}{W},2,
+"Danitha, Sword of Hope",{2}{W},3,First strike
+Ghalta the Immovable,{8}{W},9,
+Gideon's Memorial,{1}{W},2,
+Koth of the Homestead,{2}{W},3,Landfall
+Liliana the Faultless,{W},1,
+"Lyra, Archangel of Dawn",{2}{W},3,Flying
+"Rescue Girl, First Responder",{2}{W},3,Flying
+"Saheeli, Consul of Oversight",{3}{W}{W},5,Flying
+"Teyo, Lightshield Expert",{1}{W},2,Flash
+"Thalia, the Survivor",{3}{W},4,Lifelink
+"Tomik, Orzhov Lawmage",{1}{W},2,Flying
+Way of the Healer,{3}{W},4,Surveil;Empower Jace
+Way of the Mentor,{2}{W},3,Surveil;Empower Jace
+"Yoshimaru, Beloved Companion",{2}{W},3,
+"Yuriko, Blade of the Mighty",{3}{W},4,
+"Arni, Humble Scribe",{2}{U},3,
+"Chandra, Chill of Compliance",{1}{U}{U},3,Surveil
+"Fblthp, Impossibly Lost",{1}{U},2,
+Geist of Saint Thalia,{1}{U},2,Flying
+"Hapatra, the Desert Frost",{3}{U},4,
+"Jace, Reality Sculptor",{3}{U}{U},5,Empower Jace
+"Lyra, Tolarian Archangel",{1}{U}{U},3,Flying
+"Proft, Consulting Detective",{1}{U},2,
+"Ruric Thar, Biomagus",{4}{U}{U},6,Flying;Prowess
+"Samut, Tyrant of Naktamun",{1}{U},2,
+"Tetsuko Umezawa, Fugitive",{1}{U},2,
+"Traxos, Academy Guardian",{3}{U},4,Flying;Prowess;Vigilance
+Way of the Cryomancer,{2}{U},3,Surveil;Empower Jace
+Way of the Mind Sculptor,{4}{U},5,Surveil;Empower Jace
+"Yargle, Goliath of Otaria",{4}{U},5,
+"Yuriko, Hope from the Shadows",{U},1,Surveil;Flash
+"Danitha, Spear of Agony",{2}{B},3,First strike
+"Gallia, Tragic Host",{1}{B},2,Menace
+"Garruk, Veiled Butcher",{3}{B}{B},5,
+Gideon the Oathless,{2}{B},3,Ward
+Liliana the Repentant,{1}{B},2,Exhaust;Mill
+"Loot, the Anomaly",{2}{B},3,Threshold
+"Mabel, Bitter Recluse",{B},1,Deathtouch
+"Massacre Girl, Most Wanted",{4}{B},5,
+"Proft, Sinister Mastermind",{2}{B},3,Threshold;Menace
+"Teyo, Diamondblade Mage",{3}{B},4,Flash
+"Tinybones, Pocket Nuisance",{2}{B},3,
+Way of the Deathbringer,{2}{B},3,Surveil;Empower Jace
+Way of the Necromancer,{1}{B},2,Surveil;Empower Jace
+"Winter, Tormented Loner",{2}{B},3,
+"Yargle, Glutton of Urborg",{4}{B},5,
+Ajani Unrelenting,{4}{R}{R},6,
+"Arni, Renowned Champion",{3}{R},4,Trample
+"Chandra, Torch of Defiance",{2}{R}{R},4,
+"Gallia, the Merrymaker",{1}{R},2,Haste
+"Jiang Yanggu, Alone",{4}{R},5,Menace
+Kiora of Fire and Ashes,{4}{R}{R},6,
+"Koth, the Geomancer",{2}{R},3,Reach;Landfall
+"Marwyn, the Clearcutter",{R},1,
+"Pia, Determined Rebuilder",{2}{R},3,
+"Samut, Hazoret's Champion",{1}{R},2,
+"Tetsuko Umezawa, Pursuer",{3}{R},4,Prowess;Double strike
+"Tomik, Izzet Sparkmage",{1}{R},2,Prowess
+Way of the Pyromancer,{1}{R},2,Surveil;Empower Jace
+Way of the Warlord,{2}{R},3,Surveil;Empower Jace
+"Winter, Team Player",{4}{R},5,Convoke
+"Edgar, Moonlit Sovereign",{3}{G}{G},5,Flash
+"Fblthp, Knows the Way",{X}{G}{G},2,Domain
+"Garruk, Curse Breaker",{3}{G}{G},5,
+Ghalta the Unstoppable,{8}{G},9,Trample
+"Jiang Yanggu, Never Alone",{3}{G},4,
+"Loot, the Nexus",{2}{G},3,
+"Marwyn, the Preserver",{1}{G},2,
+"Pia, Aether Ascetic",{2}{G},3,
+"Ruric Thar, Magecrusher",{5}{G}{G},7,Reach;Vigilance;Trample
+"Titanbones, Towering Heart",{3}{G},4,Reach
+Way of the Paradox,{2}{G},3,Surveil;Empower Jace
+Way of the Wildspeaker,{4}{G},5,Surveil;Empower Jace
+"Yoshimaru, Scrappy Stray",{1}{G},2,Fight
+"Edgar, Ancient Bloodlord",{W}{B},2,
+"Hapatra, the Desert Fang",{2}{B}{B}{G},5,
+"Karn, Gilded Guardian",{2/W}{2/U}{2/B}{2/R}{2/G},10,Vigilance;Trample
+Kiora of Salt and Sand,{1}{G}{U},3,
+"Mabel, Valley Hero",{1}{R}{W},3,
+"Saheeli, Jewel of Avishkar",{2}{U}{R},4,
+"Tam, the Possibility",{1}{G}{U},3,Proliferate
+"Vraska, Soul of Stone",{U}{R}{W},3,Treasure
+"Vraska, the Cutting Glare",{B}{B}{G},3,Treasure;Deathtouch
+"Karn, Argent Defender",{2},2,
+"Traxos, Scourge Eternal",{4},4,Trample
+Plains,,0,
+Island,,0,
+Swamp,,0,
+Mountain,,0,
+Forest,,0,
+"Jace, Multiverse Architect",{1}{W}{U}{B}{R},5,
+"Nissa, Leyline Tamer",{3}{W}{U}{B}{R},7,Vigilance;Deathtouch;Landfall
+"Omnath, Locus of the Void",{7},7,Landfall
+"Ob Nixilis, the Ascended",{5}{W}{W},7,Flying
+"Avacyn, Angel of Horror",{5}{B}{B}{B},8,Deathtouch;Flying
+"Jhoira, Weatherlight Corsair",{4}{B}{B},6,
+"Venser, Fervent Forger",{4}{R}{R},6,Flash
+"Niv-Mizzet, Ghost Counsel",{2}{W}{W}{B}{B},6,Flying
+"Tamiyo, Upriser Crowned",{4}{R}{W},6,Flying;Haste;Double strike
+The Ur-Sphinx,{6}{W}{U}{B},9,Flying;Eminence;Mill
+"Ginger, Queen of Sweets",{6},6,
+"Memnarch, the Warden",{10},10,Indestructible
+Arcane Signet,{2},2,
+Command Tower,,0,
+Reflecting Pool,,0,
 Coalition Relic,{3},3,
 Angler Turtle,{5}{U}{U},7,Hexproof
 Vengeant Vampire,{4}{B}{B},6,Lifelink
@@ -5922,7 +6215,6 @@ Relic of Progenitus,{1},1,
 Phyrexian Metamorph,{3}{U/P},4,
 Night of Souls' Betrayal,{2}{B}{B},4,
 Go-Shintai of Life's Origin,{3}{G},4,
-Tarmogoyf,{1}{G},2,
 Glimpse the Unthinkable,{U}{B},2,Mill
 Chalice of the Void,{X}{X},0,
 Retrofitter Foundry,{1},1,
@@ -6194,11 +6486,6 @@ Well-Worn Spatula,{1},1,Equip
 Elvenking's Halls,,0,
 Goblin-town,,0,
 Lake-town,,0,
-Plains,,0,
-Island,,0,
-Swamp,,0,
-Mountain,,0,
-Forest,,0,
 "Fíli and Kíli, Joyous",{2}{R},3,Haste
 "Gandalf, Party Guest",{1}{U}{R}{W},4,
 "Thorin, King of Durin's Folk",{3}{R}{W},5,Treasure
@@ -7837,7 +8124,6 @@ Yahenni's Expertise,{2}{B}{B},4,
 Aether Chaser,{1}{R},2,First strike
 Aethertorch Renegade,{2}{R},3,
 Built to Smash,{R},1,
-"Chandra, Torch of Defiance",{2}{R}{R},4,
 Chandra's Revolution,{3}{R},4,
 Combustible Gearhulk,{4}{R}{R},6,First strike;Mill
 Enraged Giant,{5}{R},6,Improvise;Haste;Trample
@@ -10048,13 +10334,8 @@ Mystic Skull // Mystic Monstrosity,{2},2,Transform
 Pithing Needle,{1},1,
 Silver Bolt,{1},1,
 Stuffed Bear,{2},2,
-Deserted Beach,,0,
 Field of Ruin,,0,
-Haunted Ridge,,0,
 Hostile Hostel // Creeping Inn,,0,Transform
-Overgrown Farmland,,0,
-Rockfall Vale,,0,
-Shipwreck Marsh,,0,
 Enlightened Tutor,{W},1,
 Mystical Tutor,{U},1,
 Case of the Shattered Pact,{2},2,Solved
@@ -12323,7 +12604,6 @@ Prismatic Omen,{1}{G},2,
 Woodfall Primus,{5}{G}{G}{G},8,Persist;Trample
 Murderous Redcap,{2}{B/R}{B/R},4,Persist
 Painter's Servant,{2},2,
-Reflecting Pool,,0,
 Chittering Host,,7,Haste;Menace
 "Hanweir, the Writhing Township",,3,Haste;Trample
 "Brisela, Voice of Nightmares",,11,Flying;Lifelink;Vigilance;First strike
@@ -13061,6 +13341,12 @@ Grim Haruspex,{2}{B},3,Morph
 Magus of the Library,{G}{G},2,
 Sylvan Library,{1}{G},2,
 "Adrix and Nev, Twincasters",{2}{G}{U},4,Ward
+Eye of Ugin,,0,
+Austere Command,{4}{W}{W},6,
+Flesh Duplicate,{U}{U},2,
+Mind Twist,{X}{B},1,
+Splinter Twin,{2}{R}{R},4,Enchant
+Root Maze,{G},1,
 "Arachne, Psionic Weaver",{2}{W},3,Web-slinging
 Origin of Spider-Man,{1}{W},2,
 Peter Parker // Amazing Spider-Man,{1}{W} // {1}{G}{W}{U},2,Reach;Vigilance;Transform
