@@ -1,7 +1,7 @@
 #: name: Avengers Assemble!
 #: format: Standard
 #: tier: A — Mono-W go-wide/counters. Re-graded B -> A on 2026-09-12, AT its metrics floor, not above it.
-#: tier: Live vector: interaction 7, card advantage 5, protection 8, curve 3.33, 12 one-two-drops, 14 central themes.
+#: tier: Live vector: interaction 7, card advantage 5, protection 9, curve 3.33, 12 one-two-drops, 15 central themes.
 #: tier: An A floor wants interaction >= 7 AND interaction+card-advantage >= 11; this reads 7 and 12.
 #: tier: TWO THINGS MOVED, AND ONLY ONE OF THEM WAS THE DECK. The 2026-09-11/12 tune took interaction 5 -> 7
 #: tier: (Banishing Light, Sheltered by Ghosts and White Auracite came in for three softer slots; see the notes
@@ -41,9 +41,9 @@
 #: colors: W
 #: plan: midrange
 #: archetype: MONO-WHITE HERO GO-WIDE, and the engine is +1/+1 COUNTERS SPREAD BOARD-WIDE
-#: archetype: rather than an anthem pile. EIGHT cards put a counter on EACH creature you
-#: archetype: control at once — Leader's Talent at level 3 (on every spell you cast), Origin
-#: archetype: of the Avengers chapter III, Duty Beyond Death, Virtue of Loyalty at each end
+#: archetype: rather than an anthem pile. SEVEN cards put a counter on EACH creature you
+#: archetype: control at once — Leader's Talent at level 3 (on every spell you cast),
+#: archetype: Duty Beyond Death, Virtue of Loyalty at each end
 #: archetype: step, Elspeth's 0, Monica Rambeau's back face, Cosmogrand Zenith on your
 #: archetype: second spell each turn, and Abandoned Air Temple, which is a LAND that does it
 #: archetype: — plus Agent Phil Coulson tapping for a counter on each other Hero. THAT PULSE
@@ -59,7 +59,7 @@
 #: archetype: Storm Slayer and Exalted Sunborn both read "twice that many of those tokens
 #: archetype: are created instead" — so Okoye's two Soldiers, Elspeth's +1 and a kicked The
 #: archetype: Eagles Are Coming! all arrive doubled. Measured WIDE 7 / tall 5 on a slow 3.33
-#: archetype: curve, interaction 7, board power 52, and protection 8, the joint highest on
+#: archetype: curve, interaction 7, board power 52, and protection 9, among the highest on
 #: archetype: the roster — Captain America's shield counter gives hexproof to you AND your
 #: archetype: other Heroes, over Duty Beyond Death, Sheltered by Ghosts' ward and The
 #: archetype: Sentry's indestructible. DISTINCTNESS vs the roster's other white go-wide
@@ -193,6 +193,9 @@ Deck
 #: notes: whenever he and another creature attack) takes card advantage 3 → 4 and the sum to 11. Measured floor A with
 #: notes: Origin of the Avengers as the cut, which keeps protection at 8. Origin is the one judgment call: the floor
 #: notes: detects no role for it, but scry 2 → a free Hero MV<=3 or a draw → counters on the whole board is real value.
+#: notes: 2026-10-02 (owner's swap, made in Arena): Origin of the Avengers was CUT for Captain America's Shield
+#: notes: (indestructible Equipment, equip {2}: +0/+8 and vigilance, and each attack taps a creature the defending
+#: notes: player controls). Protection 8 → 9; interaction and card advantage unchanged; floor still A.
 
 # Hero core — anthems, counters, tempo
 1 Avengers Assemble! (MSH) 6
@@ -209,7 +212,7 @@ Deck
 1 Exemplar of Light (FDN) 733
 1 Coordinated Maneuver (TDM) 6
 1 Delney, Streetwise Lookout (MKM) 12
-1 Origin of the Avengers (MSH) 28
+1 Captain America's Shield (MSH) 244
 1 The Sentry, Golden Guardian (MSH) 35
 1 Spider-UK (MSC) 777
 
