@@ -220,6 +220,9 @@
     const dirty = baseline() !== ORIG;
     saveBtn.textContent = NEW ? 'Create deck' : (dirty ? 'Save deck' : 'No changes');
     saveBtn.classList.toggle('ready', dirty || NEW);
+    // A no-op click is not a disabled control to a screen reader unless it says so
+    // (BS11-53); `disabled` itself would drop it from the tab order mid-edit.
+    saveBtn.setAttribute('aria-disabled', String(!(dirty || NEW)));
     renderAnalysisNote(dirty);
   }
 
@@ -305,7 +308,7 @@
       // without it, Save silently reverted that change (BS2-26).
       const res = await fetch(url, {method:'POST', headers:{'Content-Type':'application/json'},
         body: JSON.stringify({id: DATA.id, meta: META, body: BODY, doc_token: DATA.doc_token || ''})});
-      const d = await res.json();
+      const d = await jsonOf(res);
       if (d.ok) {
         bypassUnloadGuard = true;
         if (NEW) { location.href = '/deck/' + encodeURIComponent(d.id); }
@@ -376,7 +379,7 @@
     let text;
     try {
       const res = await fetch(`/api/deck/analysis/${encodeURIComponent(DATA.id)}/${kind}`);
-      const d = await res.json();
+      const d = await jsonOf(res);
       if (d.ok) { cache[kind] = d.text; text = d.text; }
       else text = 'error: ' + (d.error||'unknown') + ' — click the tab to retry';
     } catch (err) { text = 'error: ' + err.message + ' — click the tab to retry'; }
@@ -388,6 +391,12 @@
     if (dirty) n.textContent = 'Unsaved changes — analysis reflects the last saved version. Save to refresh.';
   }
 
+  // A non-JSON body (a Flask 500 page, a proxy error) made `res.json()` throw a bare
+  // "Unexpected token '<'" into the toast (BS11-53); name the HTTP status instead.
+  async function jsonOf(res) {
+    try { return await res.json(); }
+    catch (err) { throw new Error(`server returned a non-JSON response (HTTP ${res.status})`); }
+  }
   let toastT;
   function toast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show');
     clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove('show'),4000); }

@@ -34,6 +34,8 @@ Updated: 2026-10-02 (Batch 1 — see Where I left off)
 
 ## Completed this cycle
 
+- **2026-10-02 — scan #11 Batch 8: editor + dashboard** (BS11-42–53). Block
+  `11-batch8-editor-dashboard-broad-implement.md`. Net 2 − 0 = 2.
 - **2026-10-02 — scan #11 Batch 7: match record** (BS11-32/33/35/36/37/38). Block
   `11-batch7-matches-broad-implement.md`. Net 1 − 0 = 1.
 - **2026-10-02 — scan #11 Batch 6: format drift** (BS11-06/13/14/15/17/18/40). Block
@@ -391,6 +393,14 @@ Updated: 2026-10-02 (Batch 1 — see Where I left off)
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
+**2026-10-02 (latest) — scan #11 Batch 8 implemented** (block
+`11-batch8-editor-dashboard-broad-implement.md`): BS11-42–53. Editor Add aliases + validates
+the set (INV-01b), Revert carries `lib_token` and re-adds pruned mana rows (INV-02), bare-list
+save refused; dashboard toast is a live region, copy fallback honest, JS colours on tokens,
+MV-0 curve bucket, roster-panel failures shown + WARNed, Pages annotates WARNs. Suite +
+check_all green; dashboard rebuilt. **Next:** `/sync-docs` for Batch 8, then Batch 9 (docs:
+BS11-55–60, 62–66). Deferred: BS11-80/81.
+
 **2026-10-02 (latest) — scan #11 Batch 7 implemented** (block
 `11-batch7-matches-broad-implement.md`): BS11-32/33/35/36/37/38. Voids record and restore the
 prior result (`void (was L): …`); padded deck ids are stored canonical; VOID is excluded from

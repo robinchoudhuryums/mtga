@@ -325,7 +325,11 @@
       const res = await fetch('/api/save', {
         method: 'POST', headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({edits, lib_token: dataEl.dataset.libToken || ''})});
-      const data = await res.json();
+      // Same non-JSON guard as postJSON below (BS11-53): a 500 page used to surface as
+      // "Unexpected token '<'" rather than the status that explains it.
+      let data;
+      try { data = await res.json(); }
+      catch (err) { throw new Error(`server returned a non-JSON response (HTTP ${res.status})`); }
       if (data.ok) {
         if (data.lib_token) dataEl.dataset.libToken = data.lib_token;
         for (const [key, e] of staged) {
@@ -440,12 +444,12 @@
   // Revert last save.
   document.getElementById('revert').addEventListener('click', async () => {
     if (!confirmDiscardStaged('revert')) return;
-    if (!confirm('Revert the last save? Restores the most recent backup and discards changes since then.')) return;
+    if (!confirm('Revert the last change? Restores the most recent backup of card-library.csv — whichever tool wrote it — and discards changes since then.')) return;
     // Same guard as remove() above — this is the most destructive action in the app,
     // and it was one of the two that failed silently (broad-scan F-02).
     try {
-      const d = await postJSON('/api/revert', {});
-      if (d.ok) { sessionStorage.setItem('flash', `Reverted to ${d.restored}`); location.reload(); }
+      const d = await postJSON('/api/revert', {lib_token: document.getElementById('data').dataset.libToken || ''});
+      if (d.ok) { sessionStorage.setItem('flash', d.warning || `Reverted to ${d.restored}`); location.reload(); }
       else toast('Revert failed: ' + (d.errors || ['unknown']).join('  |  '));
     } catch (err) {
       toast('Revert failed (is the server running?): ' + err.message);

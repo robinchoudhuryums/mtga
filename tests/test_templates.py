@@ -204,6 +204,16 @@ class TestToastIsAnnounced:
             assert 'role="status"' in m.group(0), name
             assert 'aria-live="polite"' in m.group(0), name
 
+    def test_the_dashboard_toast_is_a_live_region(self):
+        """BS11-45: the dashboard's toast reports every copy, sync and filter result and
+        was visual-only for 1.7s. It is GENERATED, so it is pinned at its source — the
+        pin above reads templates/ only and could not see it."""
+        src = open(os.path.join(os.path.dirname(TEMPLATES), "scripts", "build_dashboard.py"),
+                   encoding="utf-8").read()
+        m = re.search(r'<div class="toast" id="toast"[^>]*>', src)
+        assert m, "dashboard toast not found (or its attribute order changed)"
+        assert 'role="status"' in m.group(0) and 'aria-live="polite"' in m.group(0)
+
 
 class TestFocusIsVisibleWhereverHoverIs:
     """A control that styles :hover and nothing else gives a keyboard user a weaker
@@ -842,3 +852,81 @@ class TestGallerySynergyChipsFilterOnTheTag:
                 {"Card Name": "Blank", "Synergies": "lifegain"}]
         cards = build_gallery.build_cards(rows, {}, {"crumb": "food"})
         assert [c["synergies"] for c in cards] == ["food", "lifegain"]
+
+
+class TestScan11Batch8Dashboard:
+    """BS11-45…52 — dashboard feedback, keyboard and colour fixes, pinned at the source
+    (the page is GENERATED, so the template-file pins above cannot see it)."""
+
+    def _src(self):
+        p = os.path.join(os.path.dirname(TEMPLATES), "scripts", "build_dashboard.py")
+        with open(p, encoding="utf-8") as fh:
+            return fh.read()
+
+    def test_a11y_keys_only_fire_for_the_node_itself(self):
+        """BS11-47: Enter on the ↗ link inside a leverage card toggled the card."""
+        src = self._src()
+        i = src.find("if (!o.native) node.addEventListener('keydown'")
+        assert "if (e.target !== node) return;" in src[i:i + 400]
+
+    def test_the_variant_row_button_is_native(self):
+        src = self._src()
+        assert "role:null, native:true});" in src[src.find("const row = el('button','vrow'"):][:900]
+
+    def test_show_all_is_a_button_with_expanded_state(self):
+        """BS11-53: the toggle was a focusable <td> with no role and no state."""
+        src = self._src()
+        j = src.find("const tr = el('tr','morerow')")
+        assert j != -1 and "b.setAttribute('aria-expanded'" in src[j:j + 700]
+        assert "a11y(el('td'), {role:null})" not in src
+
+    def test_copy_fallback_honours_execCommands_return(self):
+        """BS11-46: `false` from execCommand was toasted as a successful copy."""
+        src = self._src()
+        i = src.find("function fallbackCopy(")
+        body = src[i:i + 700]
+        assert "ok = document.execCommand('copy')" in body and "if (ok) done();" in body
+
+    def test_js_painted_colours_use_the_theme_tokens(self):
+        """BS11-52: hex constants bypassed the light-theme `--W…--Cc` overrides."""
+        src = self._src()
+        m = re.search(r"const COLBG = \{[^}]*\}", src)
+        assert m and "#" not in m.group(0) and "var(--W)" in m.group(0)
+
+    def test_the_curves_keep_an_mv0_bucket(self):
+        """BS11-51 / P-10: `Math.max(1, mv)` folded MV 0 into the 1 bar."""
+        src = self._src()
+        assert "Math.min(6, Math.max(1, mv))" not in src
+        assert "function curveBuckets(" in src
+
+    def test_curve_buckets_split_mv0_only_when_present(self, tmp_path):
+        import json as _json
+        import shutil
+        import subprocess
+        node = shutil.which("node")
+        if not node:
+            pytest.skip("node not installed (CI sets PYTEST_NO_SKIPS, which fails on this)")
+        src = self._src()
+        i = src.find("function curveBuckets(")
+        j = src.find("\nfunction miniCurve(", i)
+        fn = src[i:j]
+        h = tmp_path / "c.js"
+        h.write_text(fn + "\nconsole.log(JSON.stringify([curveBuckets([{'0':2,'1':3,'7':1}]),"
+                     " curveBuckets([{'1':3,'6':1,'7':1}])]));", encoding="utf-8")
+        out = _json.loads(subprocess.run([node, str(h)], capture_output=True, text=True,
+                                         timeout=60).stdout)
+        assert out[0] == {"b": [2, 3, 0, 0, 0, 0, 1], "labels": ["0", "1", "2", "3", "4", "5", "6+"]}
+        assert out[1] == {"b": [3, 0, 0, 0, 0, 2], "labels": ["1", "2", "3", "4", "5", "6+"]}
+
+    def test_a_failed_roster_panel_says_so(self):
+        """BS11-49: a failed rotation read "rebuild the pool"; a failed wishlist vanished."""
+        src = self._src()
+        assert "if (R.error){" in src and "if (D.wishlist_error){" in src
+        assert '"wishlist_error": wishlist_error,' in src
+
+    def test_pages_annotates_build_warnings(self):
+        """BS11-50: a sub-majority WARN lived only in a log nobody opens on a green deploy."""
+        p = os.path.join(os.path.dirname(TEMPLATES), ".github", "workflows", "pages.yml")
+        wf = open(p, encoding="utf-8").read()
+        assert "::warning title=Dashboard build::" in wf
+        assert "exit $rc" in wf and 'blob.count("[analysis error")' in wf

@@ -138,6 +138,11 @@ def library(tmp_path, monkeypatch):
     return lib
 
 
+def _revert(client):
+    return client.post("/api/revert", data=json.dumps({"lib_token": app._lib_token()}),
+                       headers={"Content-Type": "application/json"})
+
+
 def _csv_save(client, edits, token=None):
     body = {"edits": edits}
     if token is not None:
@@ -173,18 +178,22 @@ class TestCsvSaveStaleness:
 
     def test_an_absent_token_is_now_REFUSED(self, library):
         """BS9-06, the CSV half — see the deck-save twin above. A DICT body is the
-        CURRENT wire format and must carry a token; `test_a_bare_list_body_still_saves`
-        below pins the one shape that legitimately cannot."""
+        CURRENT wire format and must carry a token; the bare-list body is refused too
+        (BS11-53, `test_a_bare_list_body_is_refused`)."""
         c = app.app.test_client()
         r = _csv_save(c, self.EDIT)
         assert r.status_code == 409
         assert "staleness token" in r.get_json()["errors"][0]
 
-    def test_a_bare_list_body_still_saves(self, library):
+    def test_a_bare_list_body_is_refused(self, library):
+        """BS11-53 REVERSES the old `test_a_bare_list_body_still_saves`: the pre-token
+        list format skipped the staleness check entirely, and nothing sends it any more."""
         c = app.app.test_client()
+        before = library.read_text(encoding="utf-8")
         r = c.post("/api/save", data=json.dumps(self.EDIT),
                    headers={"Content-Type": "application/json"})
-        assert r.status_code == 200
+        assert r.status_code == 409 and "old list format" in r.get_json()["errors"][0]
+        assert library.read_text(encoding="utf-8") == before
 
 
 class TestDeckSaveGateEqualsInv04:
@@ -308,9 +317,63 @@ class TestDestructiveEndpoints:
         assert c.post("/api/remove", data=json.dumps({"key": self.KEY}),
                       headers={"Content-Type": "application/json"}).status_code == 200
         assert "Shock" not in library.read_text(encoding="utf-8")
-        r = c.post("/api/revert")
+        r = _revert(c)
         assert r.status_code == 200 and r.get_json()["ok"]
         assert "Shock" in library.read_text(encoding="utf-8"), "the revert restored it"
+
+    def test_revert_restores_the_mana_row_remove_pruned(self, library, monkeypatch):
+        """BS11-44: Remove prunes a card's mana row with its last printing; Revert brought
+        the card back WITHOUT one, and the next check_all failed INV-02."""
+        monkeypatch.setattr(app, "_pool_has", lambda n: False)
+        mana = os.path.join(os.path.dirname(str(library)), "card-mana.csv")
+        c = app.app.test_client()
+        assert c.post("/api/remove", data=json.dumps({"key": self.KEY}),
+                      headers={"Content-Type": "application/json"}).status_code == 200
+        assert "Shock" not in open(mana, encoding="utf-8").read(), "the prune ran"
+        r = _revert(c)
+        assert r.status_code == 200 and r.get_json()["mana_restored"] == 1
+        assert "Shock" in open(mana, encoding="utf-8").read(), "INV-02 after revert"
+
+    def test_revert_with_a_stale_token_is_refused(self, library):
+        """BS11-43: a page open across a CLI write must not revert THAT write — the
+        newest `.bak` is whoever wrote last, not necessarily this page."""
+        c = app.app.test_client()
+        stale = app._lib_token()
+        assert c.post("/api/remove", data=json.dumps({"key": self.KEY}),
+                      headers={"Content-Type": "application/json"}).status_code == 200
+        r = c.post("/api/revert", data=json.dumps({"lib_token": stale}),
+                   headers={"Content-Type": "application/json"})
+        assert r.status_code == 409 and "CHANGED" in r.get_json()["errors"][0]
+        assert "Shock" not in library.read_text(encoding="utf-8"), "nothing restored"
+
+    def test_revert_without_a_token_is_refused(self, library):
+        c = app.app.test_client()
+        c.post("/api/remove", data=json.dumps({"key": self.KEY}),
+               headers={"Content-Type": "application/json"})
+        r = c.post("/api/revert")
+        assert r.status_code == 409 and "staleness token" in r.get_json()["errors"][0]
+
+    def test_add_stores_the_scryfall_set_code(self, library, monkeypatch):
+        """BS11-42: Arena's `DAR` was stored as typed and failed INV-01b next run."""
+        monkeypatch.setattr(app, "_lookup_card", lambda n: (None, "offline"))
+        monkeypatch.setattr(app, "_pool_set_codes", lambda: {"dom", "m21"})
+        c = app.app.test_client()
+        r = c.post("/api/add", data=json.dumps({"name": "Opt", "set": "dar",
+                                                "collector": "60", "quantity": "1"}),
+                   headers={"Content-Type": "application/json"})
+        assert r.status_code == 200, r.get_json()
+        assert "Opt,,,,,DOM,60,1" in library.read_text(encoding="utf-8")
+
+    def test_add_refuses_a_set_no_pool_printing_carries(self, library, monkeypatch):
+        monkeypatch.setattr(app, "_lookup_card", lambda n: (None, "offline"))
+        monkeypatch.setattr(app, "_pool_set_codes", lambda: {"dom", "m21"})
+        c = app.app.test_client()
+        before = library.read_text(encoding="utf-8")
+        r = c.post("/api/add", data=json.dumps({"name": "Opt", "set": "ZZZ",
+                                                "collector": "1", "quantity": "1"}),
+                   headers={"Content-Type": "application/json"})
+        assert r.status_code == 400 and "INV-01b" in r.get_json()["errors"][0]
+        assert library.read_text(encoding="utf-8") == before
 
     def test_revert_with_no_backup_is_a_clean_409_not_a_crash(self, library):
         c = app.app.test_client()
