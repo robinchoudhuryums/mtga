@@ -50,6 +50,8 @@ docs. This file is the source of truth for the workflow commands in
   `{x for x in … if x in "WUBRG"}` idiom — the gap that once let the bug regress into
   `wishlist.py`/`app.py` undetected — and a second scan fails any `in` test whose
   container is a raw `Color(s)` cell, the substring shape the first scan could not see.
+  **The `--type` filter is the same trap one column over** (BS11-39): `"elf" in "Shapeshifter"`,
+  so pool/query/wishlist routed every `--type` through `lib.type_matches()` (whole word).
 - **Write canonical files through `lib.atomic_write()` (+ `lib.backup_path()`).**
   Every mutation of `card-library.csv` / `card-mana.csv` / `card-pool.csv` /
   `card-wishlist.csv` goes temp-file → timestamped `.bak` → atomic `os.replace`, so
@@ -465,6 +467,8 @@ is protecting.
   0–10 and range-ENFORCED at rank time**: a finite out-of-range cell flags `pow!` and
   scores 0 — 15 live cells carried 0–100-style grades ('84', '78'…) and were silently
   LEADING `--rank`/`--budget` until the flag landed (batch 6).
+  **`--target` matches deck-id TOKENS and `--set` is exact** (BS11-34: `--target 4` used to
+  match 14/40a/54); `--note` alone stays a substring search.
   **The file's rows end in CRLF** (the `csv` default); a rewrite with `lineterminator='\n'` touches
   every row, so a one-cell edit reads as a 164-line diff. Write it through `wishlist.py`'s own
   writer or the default terminator. [G-19]
@@ -1419,6 +1423,10 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   MODEL (BS9-01)**: `load_card_meta` was library-first, so every OWNED card fed
   `cuts`/`suggest`/centrality the STALE row (219 of 2,576; 105 of 113 decks). POOL-first
   now; a BLANK pool cell never overrides; `check_agreement._agree_synergy_store` holds it.
+  **Two READERS kept the library-first order (BS11-41)**: `card.py` (`synergy_cell`) and the
+  gallery (`load_pool_tags`) read pool-first now, and `load_card_meta`'s correction reaches a
+  library row stored under a DFC FRONT name (10 cards, 8 decks had missed it);
+  `check_agreement._agree_card_synergies` holds `card.py` to the model.
   **Residual: 348 pool blanks — a new theme for four cards is not the fix.** [K-09]
 - **THE TAGGER HAD NO `artifacts` RULE AT ALL, the largest single cause of the median-rank
   finding G-22 records (added 2026-09-14).** Every `artifacts` tag came from the KEYWORD map (affinity /

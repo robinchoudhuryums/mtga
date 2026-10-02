@@ -228,7 +228,8 @@ only colorless cards. (The old substring match returned every Colorless card for
 `--color R` — the word contains an "r".) Table output by default.
 `--min-owned` sums copies across printings (they're fungible in Arena), and
 `--count` reports **distinct cards**, not CSV rows — a card printed in two sets is
-one card. `query.py` searches only cards you **own** (`card-library.csv`); to search
+one card. `--type` is a whole-word match (`--type Elf` does not hit Shapeshifter), in
+`query.py`, `pool.py` and `wishlist.py` alike. `query.py` searches only cards you **own** (`card-library.csv`); to search
 the full set of cards you *could* play, use `pool.py` below.
 
 ### Card — inspect one card in full
@@ -241,7 +242,8 @@ python3 scripts/card.py "Ghalta, Primal Hunger"  # exact
 Every printout ends with a `━━ end · <name> ━━` bar. That is not decoration: piping this
 command through `head`/`sed` silently re-creates the partial-text read it exists to
 prevent — and it has happened, from the inside, during grading. No closing bar means you
-did not see the whole card.
+did not see the whole card. Its synergy tags come from `card-pool.csv` first (the corrected store, K-09), the
+library row only where the pool cell is blank.
 
 Prints one card's **complete, untruncated oracle text** alongside its mana cost,
 **format legality** (from the pool's `Legalities` column), owned quantity,
@@ -339,7 +341,7 @@ below, which blends it with theme fit).
 python3 scripts/wishlist.py --add batch.txt   # append a batch (enriches + AUTO-seeds a Power estimate)
 python3 scripts/wishlist.py --add batch.txt --target 6 --note "why"   # ...stamping the home deck + note onto the NEW rows (an unknown deck id is refused before any Scryfall work)
 python3 scripts/wishlist.py                    # browse the whole wishlist
-python3 scripts/wishlist.py --set SOS --rarity rare,mythic   # filter (substring, AND-ed)
+python3 scripts/wishlist.py --set SOS --rarity rare,mythic   # filter (AND-ed; --set exact, --target per deck id, --note substring)
 python3 scripts/wishlist.py --color R --synergy firebending  # by color/theme (--color is set-matched, like query.py)
 python3 scripts/wishlist.py --target 14        # what you've earmarked for a deck
 python3 scripts/wishlist.py --by-set           # PACK OPTIMIZATION: cards per set, by rarity
@@ -1147,7 +1149,8 @@ open gallery.html                    # (macOS) view it in your browser
 Generates a self-contained `gallery.html`: a **collection dashboard** (totals,
 color/type/set breakdowns, and clickable top-synergy chips) above a filterable
 grid of your cards with real card art, quantity badges, and set/collector labels.
-Search by name/type/text/synergy, filter by color (WUBRG/Colorless) or set, and
+Search by name/type/text/synergy (a synergy chip searches `tag:<name>`, an exact-tag
+match; tags come from the pool first), filter by color (WUBRG/Colorless) or set, and
 sort by name/set/quantity — all in the browser, no server. Card data is embedded
 in the file; images are hotlinked from Scryfall's CDN (so you need internet to see
 the art, but the file stays tiny and portable).

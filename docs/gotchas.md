@@ -1232,6 +1232,13 @@ terminator). A scripted one-cell retarget written with `lineterminator='\n'` pro
 164-insertion / 164-deletion diff; rewriting with the default terminator made it one line.
 `wishlist.py`'s `_write` already uses the default — route edits through it.
 
+**BS11-34 (2026-10-02) — `--target` and `--set` were SUBSTRING filters.** The Target cell
+holds deck ids (`14; 40a`), so `--target 4` matched every deck id containing a 4 — 14, 40a,
+54 — and `--set M` matched every set code with an M in it. `_target_tokens` now splits the
+cell on `;`/`,`, strips zero padding (G-82's `06` = `6`) and matches the requested ids as a
+token SET; `--set` compares the code exactly. `--note` stays a substring search on purpose —
+a note is prose, and a word inside it is exactly what you are looking for.
+
 ## [G-20] Auto-targeting a wishlist batch: trust STRONG, judge `review`
 
 **Auto-targeting a wishlist batch: trust STRONG, judge `review`.** `wishlist.py
@@ -4955,6 +4962,20 @@ Held by `check_agreement._agree_synergy_store`, mutation-proven in `tests/test_g
 axes** — every accessor signature was off (`rank_cut_candidates` takes a deck record,
 `tier_band` a vector, `_central_themes` theme weights), so all 113 decks fell into `except`.
 G-01's shape exactly. The rerun asserts >100 decks produced a real ranking before reporting.
+
+**BS11-41 (2026-10-02) — the pool-first fix reached the MODEL and missed two READERS.**
+BS9-01 flipped `load_card_meta` to pool-first, but `card.py` (the surface G-01 mandates
+before grading a card) and the gallery's synergy chips still printed the LIBRARY cell, so the
+card you inspected showed the stale tags while the recommenders scored the corrected ones.
+Both now read pool-first (`card.synergy_cell`, `build_gallery.load_pool_tags`, the latter
+registered in `check_dfc`'s aliased loaders since it keys pool names). Wiring a TENTH
+`check_agreement` pair (`_agree_card_synergies`) to hold `card.py` against `load_card_meta`
+immediately exposed a gap in the model itself: a library row stored under a DFC's FRONT name
+never picked up the pool row keyed `Front // Back`, so 10 cards across 8 decks (14, 34, 45,
+51, 52, 54, 55, 62) still fed the stale library tags. `load_card_meta` now applies a second
+front-name pass — only where no exact pool row exists, per G-63's never-in-pass rule. The
+gallery search also gained `tag:<name>` as an EXACT token match, so a chip for `tokens` no
+longer matched every `token`-substring card.
 
 ## [K-10] `tag_synergies.py` also text-tags MECHANICAL-SYNERGY payoffs the keyword map missed (tagging-mis
 
