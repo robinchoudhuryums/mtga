@@ -419,6 +419,20 @@ the same deck is reported ("✗ block N: ALSO matched #id, already claimed by bl
 and skipped — re-paste it alone if it is the real list. Exit is non-zero, since
 something needs attention.
 
+### Boards, companions and an oversized paste (scan #11 Batch 2, 2026-10-02)
+
+- **Companion (BS11-12).** When `split_paste` began carrying a LEADING `Companion` block
+  into the deck it precedes (so a Brawl commander stays with its deck), `strip_boards`
+  still kept Companion lines — so an in-sync deck exported with a companion read
+  "+1 Jegantha" and `--apply` would have written a 61st card. A companion starts outside
+  the game, so it is a board now, in `strip_boards` and the dashboard's `splitDecks` alike.
+- **Oversized (BS11-10).** TRUNCATED guarded the lower bound only. A 79-card block (deck 64
+  plus 22 cards of deck 63) matched deck 64 at full confidence as "19 added". Over 125% of
+  the stored total is flagged OVERSIZED and skipped by `--apply` unless `--force`; the
+  dashboard matcher carries the same flag, pinned by the cross-language test.
+- **`verify` vs `sync` (BS11-08).** `verify` kept sideboard lines and only warned, so the
+  same paste read "+2 Duress", exit 1, under `verify` and "in sync" under `sync`. Both
+  run `strip_boards` now.
 
 ## [G-09] Legality lint and cut candidates are separate from ownership
 
@@ -638,6 +652,19 @@ COUNTERS-ON-PERMANENTS ("the number of +1/+1 counters on lands you control" — 
 Blind Bandit) both fell out of it. Measured across the pool: **781 in-scope clauses, 46
 missed across 39 cards → 1**, with **+8 cards** gaining an axis they wholly lacked. The
 widening deliberately did NOT cross G-76's scope line.
+
+### Copy limits a card sets itself, Brawl's exact size, and basics' identity (BS11-01/02/03, 2026-10-02)
+
+`legal` applied the format's copy limit to every nonbasic. Fourteen pool cards override
+it in their own text — "A deck can have any number of cards named Slime Against Humanity"
+(also Hare Apparent, Tempest Hawk, Relentless Rats…) and "up to seven" (Seven Dwarves) /
+"up to nine" (Nazgûl) — so a legal 10-Slime deck read "max 4" (deck 64 runs three).
+`card_copy_limit` reads that text, in singleton formats too. Brawl and Commander decks are
+an EXACT size, and `legal` checked only the minimum, so a 107-card Historic Brawl list
+read clean. And the copy-count loop skipped basics before the identity check ran, so four
+Mountains in a G/W/U Katara deck passed; basics now go through the identity check while
+staying exempt from the copy limit. Roster sweep after the change: 0 decks with problems.
+
 ## [G-10] "Not in library" for a card you own is the deck-dump undercount symptom
 
 **"Not in library" for a card you own is the deck-dump undercount symptom.**
@@ -5847,6 +5874,20 @@ keys ONE printing per card by construction — which is why the collector-number
 WARNING. The set-code check is HARD because a code appearing in no card anywhere cannot be
 right, and because it was measured at **zero roster hits** first: a check that fails
 nothing today can safely be made hard.
+
+### A basic's set code, board lines, quantity 0, and a verbatim `--fix` (scan #11 Batch 2, 2026-10-02)
+
+- **Basics (BS11-04).** `printing_problems` skipped basics entirely, so `5 Forest (ZZZ) 193`
+  passed INV-04 and `resolve --check` while `resolve --fix` — which had its own basics
+  loop — proposed a correction for the same line. The SET-code half now applies to basics
+  (the collector-number half stays exempt), and `--fix`'s private loop is gone.
+- **Board and zero lines (BS11-05/73).** A pasted `Sideboard` block in a deck file was
+  counted as maindeck (65 cards, every gate green), and `0 Shock` passed INV-04 while
+  `consistency` priced it at 100% and `cuts` offered it as the top cut. Both are malformed
+  lines now; `parse_deck_file` also stops counting board lines.
+- **`resolve --fix` (BS11-11).** It rebuilt each line from parts — re-casing the name from
+  the index, dropping indentation, re-spacing the comment — and accepted any filesystem path
+  on `--apply`. It now replaces only the `(SET) #` span and writes a roster deck id only.
 
 ## [G-66] Nothing counted whether a deck holds targets for its own gated effects
 

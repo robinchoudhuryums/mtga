@@ -484,7 +484,7 @@ python3 scripts/deck.py audit         # roster triage: one line per deck — whi
 python3 scripts/deck.py similar 40    # decks most alike by central-theme overlap (is it distinct?)
 python3 scripts/deck.py resolve "Bloom Tender" "2 Island"   # names → deck lines `<qty> Name (SET) #`
 python3 scripts/deck.py resolve --check 76   # verify a WRITTEN deck's (SET) COLLECTOR# fields (strict)
-python3 scripts/deck.py resolve --fix 76 --apply   # ...and REPAIR the bad ones in place (never by hand)
+python3 scripts/deck.py resolve --fix 76 --apply   # ...and REPAIR the bad ones in place (never by hand; a deck id, not a path — only the (SET) # part of each line changes)
 python3 scripts/deck.py check 20a      # owned vs needed + a castability lint (off-color cards)
 python3 scripts/deck.py diff 20 20a   # what variant 20a changes vs base deck 20
 python3 scripts/deck.py arena 20a      # emit an Arena-importable decklist to paste back (a Brawl deck's commander goes under its own Commander heading, as Arena exports it)
@@ -649,7 +649,9 @@ and `#~` flex lines survive. If a block matches two variants nearly equally it's
 A block holding fewer than 75% of the matched deck's cards is flagged **TRUNCATED?**
 and skipped the same way — a partial paste is a subset, so it would otherwise match
 with full confidence and rewrite the stored deck down to the fragment (`--force` for
-a deliberate cut).
+a deliberate cut). The mirror case — a block more than 125% the size of its match, which
+is usually two decks run together — is flagged **OVERSIZED?** and skipped too. A
+`Companion` block is treated like a sideboard: a companion starts outside the game.
 Before this, spotting drift and repairing it were separate jobs: you read a diff, then
 hand-edited each file.
 
@@ -677,7 +679,9 @@ its **Arena export** (`<qty> <Name> (SET) <#>`) and it reports **identical** or 
 `+/−` differential by card — `+` = the paste has more, `−` = the repo has more. It
 compares by card **name and quantity** (printings and basic-land art of the same
 card count as a match, since Arena copies are fungible), includes basics, and exits
-non-zero when they differ, so it's scriptable.
+non-zero when they differ, so it's scriptable. Sideboard, Maybeboard and Companion lines
+in the paste are ignored (stored decks are the maindeck) — the same rule `sync` applies,
+so the two can't disagree about one export.
 
 `suggest` fingerprints a deck by its **colors** — the deck's declared
 `#: colors:`, falling back to its cards' mana **costs** (never color *identity*,
@@ -944,8 +948,10 @@ Spirit Water Revival" makes a draw spell a Spirit payoff. 16 roster cards are th
 (K-16). Report-only, so it misleads a reader rather than moving a score.
 
 `legal` is a **deck-construction lint**: it checks deck size against the format
-minimum (60, or 100 for Commander-likes), the copy limit (4 of any nonbasic — or 1
-in singleton formats like Brawl), and every nonbasic card's legality in the deck's
+minimum (60, or 100 for Commander-likes — and in Brawl/Commander the size is EXACT), the
+copy limit (4 of any nonbasic — or 1 in singleton formats like Brawl — unless the card's
+own text says otherwise: "any number of cards named …" or "up to seven …"), basic lands
+against a Brawl commander's colour identity, and every nonbasic card's legality in the deck's
 `#: format:` (using the pool's `Legalities` column; `--format` overrides). The pool's
 keys are Scryfall's, whose `brawl` is the 100-card Historic Brawl, so a 60-card `Brawl`
 deck is checked against `standard` and a `Historic Brawl` deck against `brawl`

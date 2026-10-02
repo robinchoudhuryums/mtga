@@ -343,15 +343,17 @@ is protecting.
   deck's total is flagged **TRUNCATED** and skipped too — a partial paste is a strict
   SUBSET, so the shared-card floor alone read it as a full-confidence match and
   `--apply` would have rewritten the 60 down to the fragment (`--force` overrides,
-  for a deliberate cut). **The pool's `Legalities` keys are SCRYFALL's, and Scryfall's
+  for a deliberate cut); an OVERSIZED paste (>125%) is skipped the same way, and a
+  `Companion` block is a board like `Sideboard` (BS11-10/12). **The pool's `Legalities` keys are SCRYFALL's, and Scryfall's
   `brawl` is the 100-card Historic Brawl — so every legality/recommender surface reads
   the deck's format through `deck.pool_format_key` (60-card `Brawl` → `standard`,
   `Historic Brawl` → `brawl`), never the raw string: until BS8-04 a Historic-only card
   passed `legal` in 3-brawl and `suggest` on it returned 2,238 non-Standard picks.** [G-08]
 - **`check` answers "do I own this deck"; `legal <id>` answers "is it a LEGAL deck"** —
   size, copy limit and each nonbasic's legality in the deck's `#: format:`, format-aware
-  for Alchemy and Brawl (a Brawl deck also validates `#: commander:` and every card's
-  colour identity). **ARENA'S BRAWL LABELS ARE INVERTED HERE**: Arena's "Brawl" is
+  for Alchemy and Brawl (a Brawl deck also validates `#: commander:`, every card's colour
+  identity, basics too, and its EXACT size); a card's own copy-limit text wins.
+  **ARENA'S BRAWL LABELS ARE INVERTED HERE**: Arena's "Brawl" is
   100-card = `#: format: Historic Brawl`; Arena's "Standard Brawl" is 60-card =
   `#: format: Brawl` (`normalize_format` aliases the spellings — `historic-brawl` once
   matched NEITHER set). A pool-absent card is *unverified*, not illegal. `deck.py brawl` is
@@ -487,7 +489,7 @@ is protecting.
   **THE LIST IS A WINDOW AND THE RANKING IS THEME FIT, so read a card's ABSENCE as neither
   (BS10-05).** The footer counted the TRUNCATION, so it read "20 suggestion(s)" whether the
   ranking held 20 candidates or 958; it now prints "top N of M ranked candidate(s)"
-  (`--limit 0` for all). Why it matters is measured, not asserted: across **1067 applied swaps
+  (`--limit 0` for all). Why it matters is measured, not asserted: across **1068 applied swaps
   that recorded a rank for the card ADDED, the MEDIAN rank is 364** and only **10%** fell
   inside the default top 20. `deck.py feedback` reports that distribution. A card chosen for
   a mechanical interaction the tags do not encode ranks far down BY CONSTRUCTION — a
@@ -1074,8 +1076,10 @@ is protecting.
   `preflight` READY and passed `check_all`. A deck file could be integrity-clean and
   un-importable at once, and deck 52 was written with `(FDN) 610` against a real 172. Now:
   a set code that exists nowhere is a HARD INV-04 failure; an unheld collector number in a
-  real set is a SOFT warning, since the pool keys ONE printing per card. Basics are exempt
-  — Arena prints several arts per set. `deck.py legal <id>` lists both. [G-65]
+  real set is a SOFT warning, since the pool keys ONE printing per card. A basic's
+  NUMBER is exempt — Arena prints several arts per set — but its SET code is checked
+  (BS11-04). `resolve --fix --apply` takes a deck id, never a path, and rewrites only the
+  `(SET) #` span. `deck.py legal <id>` lists both. [G-65]
 - **`deck.py targets <id>` answers whether the deck holds TARGETS for its own gated
   effects** — MV caps ("reanimate a creature MV 4 or less"), sacrifice costs, count
   thresholds. Every other model here grades a card in ISOLATION, so a gate with nothing
@@ -1618,7 +1622,7 @@ earned it: [C-01]
 - INV-01b | Every card-library.csv row's Set Code is one some card-pool.csv printing carries — the library twin of INV-04's `bad_set` (BS8-34: a fabricated `(ZZZ) 999` printing became owned inventory with every gate green; the exact collector pairing is deliberately not checked, since the pool keys one printing per card) | Subsystem: Data | Verify: scripts/check_all.py (`check_library_printings`)
 - INV-02 | Every Card Name in card-library.csv has a row in card-mana.csv | Subsystem: Data | Verify: scripts/check_all.py
 - INV-03 | Derived reference files exist AND keep their own schema: card-mana.csv (Card Name/Mana Cost/Mana Value/Keywords), card-pool.csv (…/Rarity; Legalities+Released+Power+Toughness warn if absent), gallery.html AND dashboard.html (each has usable CONTENT — non-trivial size + the `#data` island — since existence alone passed a truncated build) | Subsystem: Data/Presentation | Verify: scripts/check_all.py
-- INV-04 | Every deck file under decks/ parses with no malformed card lines, AND every line's `(SET)` code exists in the pool or library (an unheld COLLECTOR # within a real set is a soft warning, since the pool keys one printing per card), AND the roster's ids are unambiguous — no two files claim one deck id, and no top-level decks/ directory is variant-shaped (`73a-…`), both of which let a by-id command silently validate one file while editing another | Subsystem: Decks | Verify: scripts/check_all.py
+- INV-04 | Every deck file under decks/ parses with no malformed card lines, AND every line's `(SET)` code exists in the pool or library (an unheld COLLECTOR # within a real set is a soft warning, since the pool keys one printing per card), AND card lines under a `Sideboard`/`Maybeboard`/`Companion` heading and quantity-0 lines are malformed (deck files are the maindeck — BS11-05/73), AND the roster's ids are unambiguous — no two files claim one deck id, and no top-level decks/ directory is variant-shaped (`73a-…`), both of which let a by-id command silently validate one file while editing another | Subsystem: Decks | Verify: scripts/check_all.py
 - INV-05 | Color(s) stores color identity; actual mana cost lives only in card-mana.csv | Subsystem: Data | Verify: design/manual
 - INV-06 | Synergy tags are keyword-aware — regenerate via build_mana.py then tag_synergies.py --merge after imports (--merge preserves hand-curated tags; --force replaces them) | Subsystem: Ingest | Verify: manual
 
