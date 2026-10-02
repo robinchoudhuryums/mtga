@@ -48,6 +48,11 @@ commands disagree.
 > paste arrived anonymised with game lines. **Three new losses still need a reason** from
 > the owner (4061b76a deck 17, 06c655a7 and 99712739 deck 30) — never fill one in.
 >
+> **SCAN #11 (2026-10-01): 81 findings in nine batches; Batch 1 (ingest correctness, twelve
+> fixes) DONE 2026-10-02**, docs synced. The batch list and what is next live in
+> `.cycle/STATE.md` → Where I left off; the per-batch record is in `.cycle/blocks/11-*`.
+> The pool fingerprint changed in Batch 1, so the next `make refresh` rebuilds the pool once.
+>
 > **OPERATOR ACTION — PARTLY DONE 2026-10-02.** Reality Fracture (FRA) is now in the pool
 > (16,047 cards, from 15,761). **Deck 55's three FRA swaps are APPLIED** (Ajani Unrelenting,
 > Liliana the Faultless, Ingris Stingerquill), plus two owner-chosen land swaps (2nd Godless

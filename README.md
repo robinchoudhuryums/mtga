@@ -86,7 +86,11 @@ were silently dropped: the row landed on 1 or 2 depending on the order the expor
 to list them, and the report printed one clean line and looked right. A *repeated*
 printing is the opposite case and is not summed — a tracker emitting the same
 `(name, set, collector)` twice is stating one holding twice, not two holdings, so
-identical export keys collapse on `max` first.
+identical export keys collapse on `max` first. The same holds when the library keeps the
+card in *several* printings and the export names one it does not have: those copies fold
+onto an existing printing (one from the same set when there is one) rather than being
+filed as ambiguous and dropped. Only a row with **no** set or collector number, for a card
+held in several printings, is reported as ambiguous and left alone.
 
 Two more `import_collection.py` safety rules, both about mis-shaped exports. A row whose
 quantity cell can't be read as a plain integer (`"1,024"`, `"4 (foil)"`, `"2.0"`) is
@@ -448,7 +452,10 @@ from `card-wishlist.csv`, and lists the decks that reference it so you can re-ch
 buildability. For a **new** card the line's quantity is the owned count; for a card
 **already** in the library it takes `max(existing, line)`, so pasting a deck-dump
 slice (each line a lower bound) can't silently drop a real count — pass
-`--set-exact` to set the count exactly (allowing a deliberate decrease). Lines that
+`--set-exact` to set the count exactly (allowing a deliberate decrease). Within one
+pasted deck, `Deck` and `Sideboard` copies of a printing **add up** (a Bo3 export with 2
+maindeck and 2 sideboard proves 4), using the same section-aware reading as
+`import_arena.py`; the section headers themselves are not reported as cards. Lines that
 look like a card but don't parse are reported (not silently skipped), and **basic lands
 are skipped** — they aren't part of the collection (unlimited in Arena), so pasting a
 full deck list here is safe; the skipped lines are listed rather than silently dropped.

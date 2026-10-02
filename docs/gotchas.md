@@ -743,6 +743,20 @@ which is deliberate. It is one binary fact about the repo with a one-command rem
 clears it permanently — not a per-row verdict firing on most of a table, which is the shape
 G-07 is about.
 
+### Four ingest holes closed before the first full reconcile (scan #11 Batch 1, 2026-10-02)
+
+- `import_collection` filed a PRINTED row for a printing the library lacked, for a card held
+  in two or more printings, as a name-only ambiguity and dropped its copies (library AAA×1 +
+  BBB×1, export adding CCC×2 planned 2 against a real 4). It now folds onto an existing
+  printing, as the single-printing branch always did (BS11-19).
+- `import_collection --library <path>` wrote the REPO's stamp and mana rows; a scratch
+  `--apply` certified the real collection as exactly reconciled (BS11-20).
+- `reconcile_crafts` read line by line and took `max()` across Deck and Sideboard — a Bo3
+  export proving 4 recorded 2 — and listed the `Sideboard` header as unparseable. It now
+  takes quantities from `import_arena.parse`, the one section-aware aggregation (BS11-24).
+- `import_arena` imported basics unless `--skip-basics` was passed; it skips them by
+  default now (BS11-28).
+
 ## [G-11] MTG Arena set codes can differ from Scryfall
 
 **MTG Arena set codes can differ from Scryfall** (e.g. Arena `DAR` = Scryfall
@@ -818,6 +832,16 @@ Nothing between them ran `build_mana`, so every deck that added a new card left 
 failing at the exact gate the tail demands — `import_arena` even printed the warning
 pointing at `make refresh`. The step now says `make refresh`, the one definition of the
 order this rule exists for; the gallery step that followed is folded into it.
+
+### Two more exception types escaped `_TRANSIENT` (BS11-25, 2026-10-02)
+
+Same shape as the Batch G pair. A non-UTF-8 body — a proxy's HTML error page — fails
+inside `json.load` with `UnicodeDecodeError` before any JSON is decoded, and that is a
+`ValueError`, not a `JSONDecodeError`. And `http.client.BadStatusLine` / `LineTooLong`
+come from `getresponse()`, which urllib does not wrap the way it wraps `request()`'s
+`OSError`. Both escaped as tracebacks past every caller's `except ScryfallUnavailable`.
+No data was lost (the rebuilders write atomically), but the clean abort and the retry
+were skipped. Both are in the tuple now, pinned by `tests/test_scryfall.py`.
 
 ## [G-15] The optional editing app (`scripts/app.py`) mutates `card-library.csv`
 
@@ -1077,6 +1101,17 @@ one" — and judging a Standard-only pool by the full Arena population is scorin
 population with another, the very thing this change removes. But 4,887 against 5,000 is
 close: a Standard rotation can move the narrow build across the threshold in either
 direction, so read a narrow pool's bare keyword tags as unfiltered by default.
+
+### The fingerprint missed two inputs, and a blank one read as a match (BS11-26, 2026-10-02)
+
+`tags_for` strips reminder text with `lib.REMINDER_RE`, which had moved into lib.py, so a
+reminder-regex edit re-tagged the pool while the hash of `tag_synergies.py`'s bytes stayed
+the same; and `row_for`'s Legalities cell is joined from `POOL_FORMATS`. Both are hashed
+now. Separately, a run whose fingerprint could not be computed stamped `""`, and the next
+failure's `""` compared EQUAL — reuse forever, the opposite of the rule the function's own
+comment states. `read_stamp` now reads a blank third line as unknown (rebuild once), and
+an uncomputable current fingerprint counts as changed. The fingerprint VALUE changed with
+this fix, so the first `make refresh` after it rebuilds the pool once — expected.
 
 ## [G-19] `card-wishlist.csv` is UNOWNED craft targets
 
@@ -7326,6 +7361,23 @@ set's cards before release, never from memory. After the date,
 `make refresh REFETCH=1` brings the set in, and the queued swaps are applied with
 `deck.py swap` like any other. Do not loosen `date<=now` to admit an early set: the bound
 exists because the pool's newest printing becomes the one `resolve` writes.
+
+### The release day itself: a CDN-cached search (2026-10-02, Reality Fracture)
+
+Reality Fracture's Scryfall date was 2026-10-02. `make refresh REFETCH=1` run that day
+fetched 15,761 cards — the pre-release count — while a hand `curl` of the same query read
+16,047. The difference was the URL ENCODING: Python's `urlencode` and curl's
+`--data-urlencode` produce different strings, Cloudflare caches per URL, and the response
+for the canonical `game:arena date<=now` URL was a `cf-cache-status: HIT` with
+`age: 33805` against `max-age=57600` — a 9-hour-old pre-release copy, good for 16 hours.
+Nothing failed: the pool was rebuilt byte-for-byte as it was, `check_all` was green, and
+the only symptom was that the new set's cards were not there. The pool was fetched with
+`--query "date<=now game:arena"` (same semantics, different URL, a cache miss), and the
+stamp records that query, so the next `make refresh` refetches once on the canonical URL.
+**Lesson: on a set's release day, check the pool count, or that a known new card is in
+it, after the refresh — do not trust the step announcing itself** (K-10's lesson, one
+cause over). A tooling fix (a cache-busting parameter, or a post-fetch "newest Released
+vs today" check) is not built.
 
 ## [G-80] A card that grants a keyword is a card about that keyword
 

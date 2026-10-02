@@ -95,7 +95,8 @@ docs. This file is the source of truth for the workflow commands in
   than picking one by hand; choosing wrong either undercounts the collection or
   overwrites it.
 - **Basic lands are not in the collection** (unlimited in Arena). `deck.py`
-  treats them as unlimited; imports skip them with `--skip-basics`.
+  treats them as unlimited; every ingest writer skips them — `import_arena` by DEFAULT
+  since BS11-28 (`--include-basics` opts in; `--skip-basics` is still accepted).
 - **Owned copies are fungible across printings.** For buildability, `deck.py`
   and `pool.py` both sum a card's `Quantity Owned` across every printing (a card
   owned 1× in two sets counts as 2) — never count a single printing in isolation.
@@ -404,7 +405,9 @@ is protecting.
   over good data. A new call that bypasses it will hit the same class of bug — a read
   TIMEOUT is not a `URLError`, `http.client.IncompleteRead` is not a `JSONDecodeError`,
   and `ssl.SSLError` subclasses `OSError` rather than `ConnectionError` (all three now in
-  `_TRANSIENT`; the last two were escaping as tracebacks). Needs `api.scryfall.com` +
+  `_TRANSIENT`; the last two were escaping as tracebacks), and since BS11-25 so are
+  `UnicodeDecodeError` (a non-UTF-8 proxy page) and any `http.client.HTTPException`.
+  Needs `api.scryfall.com` +
   `*.scryfall.io` reachable.
   [G-14]
 - **The optional editor (`scripts/app.py`) mutates `card-library.csv`** via validated
@@ -444,7 +447,8 @@ is protecting.
   plus the VALUE of `deck.ENGINE_THEMES` (BS2-23; BS4-37 hashed all of deck.py, BS5-06
   narrowed it back because that staled the pool every cycle) — and a mismatch defeats it. An ABSENT hash means UNKNOWN and rebuilds ONCE (the
   reuse path returned before writing a stamp, so "unknown = reuse" could never arm —
-  BS3-02). **The card-mana.csv noise-floor dependency is GONE, not accepted (2026-09-09)** —
+  BS3-02); a BLANK hash is unknown too, and the hash also covers `lib.REMINDER_RE` and
+  `POOL_FORMATS` (BS11-26). **The card-mana.csv noise-floor dependency is GONE, not accepted (2026-09-09)** —
   build_pool runs at step 2 and card-mana.csv is rebuilt at step 3, so the floor judged the
   pool by the PREVIOUS cycle's population; it now scores against its OWN fetched corpus
   (0 of 15,977 cells moved). `--refetch` (`make refresh REFETCH=1`). [G-18]
@@ -483,7 +487,7 @@ is protecting.
   **THE LIST IS A WINDOW AND THE RANKING IS THEME FIT, so read a card's ABSENCE as neither
   (BS10-05).** The footer counted the TRUNCATION, so it read "20 suggestion(s)" whether the
   ranking held 20 candidates or 958; it now prints "top N of M ranked candidate(s)"
-  (`--limit 0` for all). Why it matters is measured, not asserted: across **1054 applied swaps
+  (`--limit 0` for all). Why it matters is measured, not asserted: across **1067 applied swaps
   that recorded a rank for the card ADDED, the MEDIAN rank is 364** and only **10%** fell
   inside the default top 20. `deck.py feedback` reports that distribution. A card chosen for
   a mechanical interaction the tags do not encode ranks far down BY CONSTRUCTION — a
@@ -575,7 +579,7 @@ is protecting.
   A design choice, not drift; do not "fix" it into that skill.** [G-30]
 - **A COST THAT SCALES WITH A DECK COUNT IS INVISIBLE TO EVERY MODEL HERE, because they all price the PRINTED cost (added 2026-09-03).** Three templatings, one effect — `Affinity for artifacts` (52 pool instances), `costs {1} less to cast for each Equipment you control` (134), and a type-scoped `Equip Wizard {1}` beside a plain `Equip {3}` (16 cards); **64 pool cards** resolve to a countable type. Found because `suggest-homes` ranked Wizard's Staff into a **ONE-Wizard** deck above two **20-Wizard** decks: the printed cost is identical everywhere. `cost_scale_resource` / `cost_scale_support` / `cost_scale_boost` mirror the doubler trio, feed `suggest-homes` and `cut_keep_score`, and read the **TYPE LINE, never a tag** (K-04 — Salt Road Packbeast is tagged `artifacts` off its affinity KEYWORD while its real resource is creatures). **SCOPE IS THE G-76 LINE:** only a count the DECK'S COMPOSITION decides; "for each card exiled this way" / "in your party" / "in your graveyard" are game state (55 instances) and are left alone rather than answered wrongly. Calibrated from the measured distribution per `_DOUBLER_CALIB`'s lesson — nonzero support runs p25 2 / p50 3 / p75 10 / p90 22, so the floor is **4** (three artifacts is not an artifact deck), key 10, cap 12 (under the doubler's 18: a discount changes WHEN you cast, a doubler changes what the card DOES). Roster diff: **17 of 64 scaler cards re-ordered, 5 changed top pick; 2 of 115 `cuts` top-3 moved, 0 changed #1.** Plural resources singularise against the real type list — a naive `[:-1]` makes "Allies" → "allie", a type nothing carries, so the count is a silent 0. [G-83]
 - **A CHOSEN-TYPE PAYOFF IS WORTH THE DECK'S BIGGEST CREATURE TYPE, and K-13 says why
-  nothing could see it (added 2026-09-09).** **44 pool cards** are this family — they
+  nothing could see it (added 2026-09-09).** **45 pool cards** are this family — they
   template "choose a creature type … of that type" and so **name no type at all**, which is
   why a literal type-name search returns nothing and reads as a finished answer. They share
   ONE deciding number, the largest creature type the deck can field. **The type is chosen ON
@@ -685,7 +689,7 @@ is protecting.
   for a deck that can never meet it (81 pairs, 54 of 114 decks).** Test
   `TAPLAND_CONDITIONAL_KINDS`, not a string.
   **NONLAND sources are DISCLOSED since 2026-09-18, never counted**: `consistency` prints
-  `ⓘ N NONLAND mana source(s) are NOT in the counts above` (**78 of 112 decks**). The
+  `ⓘ N NONLAND mana source(s) are NOT in the counts above` (**77 of 112 decks**). The
   exclusion is right — a rock is not a land drop — but its SILENCE was not, because
   `suggest --ramp` recommends exactly what this count cannot see.
   `uncounted_mana_sources` runs `land_production` on a NONLAND's text, so the spend-only
@@ -984,7 +988,7 @@ is protecting.
   2026-09-03. `deck_quality_vector` publishes it, `tier_band` ignores it, and a test pins
   that two decks differing only in creature SIZE land in the same band. **THREE THINGS IT
   CANNOT SEE, disclosed rather than guessed at:** a printed `*`/X power is counted APART
-  and never coerced to 0 (G-16), which is no corner case — **73 of 112 decks** hold one,
+  and never coerced to 0 (G-16), which is no corner case — **72 of 112 decks** hold one,
   so a bare sum would under-report on 63% of the roster; TOKENS and other created bodies
   read ZERO, so a card making two 3/3s contributes nothing; and VEHICLES are counted
   apart, not being creatures until crewed. Read the figure as a FLOOR on what the deck can
@@ -1116,12 +1120,16 @@ is protecting.
   out yet", so a stale or custom-query pool re-opens it.** **The INVERSE happens too**: Arena
   can release a set before Scryfall's date (Reality Fracture, 2026-09-30 against 10-02), and
   its cards cannot enter a deck file until `make refresh REFETCH=1` after that date. Queue
-  such swaps in `#: notes:`; do not loosen the bound. [G-79]
+  such swaps in `#: notes:`; do not loosen the bound. **On the release day itself, CHECK
+  THE POOL COUNT**: Scryfall's search sits behind a 16-hour Cloudflare cache, so the
+  canonical `game:arena date<=now` URL served a pre-release copy and the refresh rebuilt
+  the OLD pool silently (2026-10-02, Reality Fracture); an equivalent reordered `--query`
+  is a different URL and fetched it. Unfixed in the tooling. [G-79]
 
 - **A CARD THAT GRANTS A KEYWORD IS A CARD ABOUT THAT KEYWORD, and the tagger only read
   what a card HAS.** Keyword tags came from Scryfall's `keywords` field, so a lord handing
   the team deathtouch carried no `deathtouch` tag and looked like a card with nothing to do
-  with the deck built on it. **1,912 pool cards grant one of the twelve evergreens**, and
+  with the deck built on it. **1,953 pool cards grant one of the twelve evergreens**, and
   for FOUR the granted case is the MAJORITY, so the tag tracked the exception (haste has since crossed to a FIFTH at 366 grant vs 359 have — a 7-card margin that can flip on any pool rebuild, so do not harden the count). `tags_for`
   reads grants from TEXT now (`granted_keywords`, reminder text stripped, opponent- and
   loss-scoped clauses excluded). Tags feed `cuts` / `suggest` / centrality (deck 31's Venom
@@ -1367,7 +1375,7 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   cue is still invisible — grade those from full text. The type-naming half is CLOSED
   (2026-08-20): a card whose text names a CARD TYPE it interacts with but never is —
   Gilgamesh digging for "Equipment cards" — now carries that tag via
-  `_TYPE_MATTERS_RES`, 270 tags across 189 pool cards, nothing lost. A "what does this
+  `_TYPE_MATTERS_RES`, 281 tags across 200 pool cards, nothing lost. A "what does this
   card look for" read still beats the tags for the fixer half.** [K-03]
 - **Never gate a predicate on a derived TAG — it inherits every hole in the tagger.**
   `_is_color_fixer` did, so the roster's two best fixers (keying off unindexed Vivid) read
@@ -1379,7 +1387,7 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   rule one layer over and the costliest instance:** `cuts`' fit term is gated on derived
   tags, so when the tagger read only the keywords a card HAS, a deck-31 engine piece
   scored fit 17 and was offered as a cut. The user caught it; no gate could. [K-04]
-- **`pay life` is a tagged theme** (351 pool cards, 2.2% — specific enough to build
+- **`pay life` is a tagged theme** (353 pool cards, 2.2% — specific enough to build
   around): YOU losing life as a cost, plus the cards that only CARE. "Each opponent loses
   2 life" is a DRAIN effect — the opposite card, deliberately not tagged. [K-05]
 - **CHECK `MECHANIC_RULES` FOR THE NAME BEFORE ADDING A THEME.** `heist` (cast a card
@@ -1407,7 +1415,7 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   MODEL (BS9-01)**: `load_card_meta` was library-first, so every OWNED card fed
   `cuts`/`suggest`/centrality the STALE row (219 of 2,576; 105 of 113 decks). POOL-first
   now; a BLANK pool cell never overrides; `check_agreement._agree_synergy_store` holds it.
-  **Residual: 338 pool blanks — a new theme for four cards is not the fix.** [K-09]
+  **Residual: 348 pool blanks — a new theme for four cards is not the fix.** [K-09]
 - **THE TAGGER HAD NO `artifacts` RULE AT ALL, the largest single cause of the median-rank
   finding G-22 records (added 2026-09-14).** Every `artifacts` tag came from the KEYWORD map (affinity /
   improvise / modular / craft…), so a card whose whole text is "artifacts you control get
@@ -1415,7 +1423,7 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   all theme-fit driven. **NOT an `_TYPE_MATTERS` entry**: that table's first pattern is
   `(a|an|target|…) <TYPE>`, which for artifacts matches **427 pool cards** — every "destroy
   target artifact", i.e. artifact HATE tagged as synergy (the G-42 shape).
-  `_ARTIFACT_MATTERS_RE` matches **272 pool cards, 1.73%** — beside `exile cast` (1.79%) and
+  `_ARTIFACT_MATTERS_RE` matches **280 pool cards, 1.74%** — beside `exile cast` (1.79%) and
   `pay life` (2.2%), under the 3.86% `exile cast` was capped to avoid. **The `(?<!or )` /
   `(?! or creature)` guards and the `an|another|one or more` anchor are load-bearing**: without
   the anchor it matches "when THIS artifact enters" (every artifact with an ETB), and `artifact
@@ -1606,7 +1614,7 @@ earned it: [C-01]
 - Decks: decks/
 
 **Invariant Library:**
-- INV-01 | card-library.csv has the canonical 8-column header, every row has 8 fields, no duplicate (Card Name, Set Code, Collector #) printing, and Quantity Owned is blank or a non-negative integer | Subsystem: Data | Verify: scripts/check_all.py (via validate.py)
+- INV-01 | card-library.csv has the canonical 8-column header, every row has 8 fields, no duplicate (Card Name — front face, so `A // B` and `A` collide — Set Code, Collector #) printing, and Quantity Owned is blank or a non-negative integer | Subsystem: Data | Verify: scripts/check_all.py (via validate.py)
 - INV-01b | Every card-library.csv row's Set Code is one some card-pool.csv printing carries — the library twin of INV-04's `bad_set` (BS8-34: a fabricated `(ZZZ) 999` printing became owned inventory with every gate green; the exact collector pairing is deliberately not checked, since the pool keys one printing per card) | Subsystem: Data | Verify: scripts/check_all.py (`check_library_printings`)
 - INV-02 | Every Card Name in card-library.csv has a row in card-mana.csv | Subsystem: Data | Verify: scripts/check_all.py
 - INV-03 | Derived reference files exist AND keep their own schema: card-mana.csv (Card Name/Mana Cost/Mana Value/Keywords), card-pool.csv (…/Rarity; Legalities+Released+Power+Toughness warn if absent), gallery.html AND dashboard.html (each has usable CONTENT — non-trivial size + the `#data` island — since existence alone passed a truncated build) | Subsystem: Data/Presentation | Verify: scripts/check_all.py
