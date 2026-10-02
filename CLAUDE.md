@@ -1511,6 +1511,24 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   references AND creates in one sentence is under-counted; excising just the create-span
   admits 17 more at **12 real / 5 false**. A separate bug in the opposite direction — do not
   fold it in without its own measurement. [K-16]
+- **THE TAGGER'S TRIBES COME FROM A REAL TYPE LIST, AND EVERY THEME HAS ONE SPELLING
+  (BS11-75/78, 2026-10-02).** The tribal-payoff regexes chopped an `s`, so "Elves you
+  control" minted `Elve` (and `Heroe`, `Allie`, `Werewolve`, `Dwarve` — 97 tags on 38
+  non-types, plus junk capitals like `Nontoken`) while the payoff never got its real tribe:
+  G-83's "Allies → allie" bug, one file over. `_resolve_tribe` now checks candidates against
+  `_TRIBE_VOCAB` (Scryfall's subtype catalogs, embedded so the pool fingerprint covers it),
+  including same-form plurals (Merfolk, Kithkin) and Mice/Oxen. **A new set's new tribe is
+  untagged until that list grows** — `check_all`'s soft `unknown subtype` radar
+  (`check_keywords.unknown_subtypes`) says so. And `Equipment`/`equipment` (plus Aura, Saga,
+  Vehicle, Planeswalker, Food, Clue, Treasure) were TWO tags on 1,358 pool cards, doubling
+  the theme's weight while a card with only one spelling shared nothing with the other:
+  `canonical_tags` keeps the LOWERCASE theme spelling, in `tags_for` and in `--merge`.
+  Same batch: `blink` ignores transform returns and earthbend reminders, `graveyard`
+  ignores the crime / Role / madness reminders (a blanket reminder strip was measured and
+  REJECTED — it dropped real descend/retrace/explore cards), and self-damage is not `burn`.
+  Roster diff: **0 tier floors moved**, `cuts` top-3 changed in 10 of 114 decks. **Residual:**
+  a SINGULAR reference ("a Dragon you control attacks") is still uncaptured — 492 tags if
+  widened, a measured pass of its own. [K-17]
 - **A DRAW REACHED BY PAYING A COST IS A DRAW — FIXED 2026-08-07, and the fix's SHAPE is
   the rule.** Every Card-advantage pattern was TRIGGER-shaped, so `+1: Draw a card`,
   `{3},{T}: Draw a card` and every planeswalker's draw ability scored ZERO (187 pool cards,
@@ -1538,7 +1556,7 @@ commands read them, so the field structure is load-bearing. Detail belongs in
 exits non-zero on any hard invariant break. INV-01…04 plus **thirteen model-sanity
 gates** (`check_rankings`, `check_colors`, `check_dfc`, `check_suggest`, `check_engines`,
 `check_tier`, `check_patterns`, `check_commands`, `check_agreement`, `check_docs`, and the
-soft `check_keywords` / `check_roles` / `check_themes` / rationale-and-flex sweeps) — plus
+soft `check_keywords` (+ its unknown-subtype radar, K-17) / `check_roles` / `check_themes` / rationale-and-flex sweeps) — plus
 EIGHT further SOFT roster sweeps this list used to omit: wishlist target drift, the G-68
 card-name-header staleness pass, the tier-mismatch pass, (2026-08-11) the `#~ note:`
 figure sweep, (2026-08-19) the tag/role disagreement sweep (`check_roles --tags`) and

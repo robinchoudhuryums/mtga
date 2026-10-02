@@ -191,6 +191,11 @@ green. Check `MECHANIC_RULES` for the name before adding a theme. These make `qu
 hand-editable. Rerun `build_mana.py` then `tag_synergies.py --merge` after
 importing new cards to refresh keyword-aware tags without losing curation.
 
+Each theme has ONE spelling: a type tag and its theme collapse to the lowercase form
+(`equipment`, not `Equipment` + `equipment`), and a tribe named in a card's text ("Elves you
+control") resolves to the real type (`Elf`) against the subtype list embedded in
+`tag_synergies.py`; `check_all` warns when a pool card carries a subtype that list lacks.
+
 Keyword tags read what a card **grants**, not only what it has. Scryfall's `keywords`
 field describes the printed card, so a lord handing the whole team deathtouch used to
 carry no `deathtouch` tag at all — and for four evergreens the granted case is the

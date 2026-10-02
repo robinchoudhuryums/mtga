@@ -8200,3 +8200,63 @@ suite (1,995 tests) exits 0 under the guard: no other test writes repo data.
 will fail the run, and that is correct (it is the 2026-09-20 "no source edits mid-suite"
 rule extended to data). If it fires: `git checkout -- <file>`, delete the new `.bak`, and
 give the offending test a fixture that repoints the path.
+
+## [K-17] The tagger invented tribes and split every type theme into two spellings
+
+**Found by scan #11 (BS11-75…79), fixed 2026-10-02.**
+
+**Invented tribes.** `_TRIBAL_PAYOFF_RES` captured `([A-Z][a-z]+)s you control`, i.e. the
+plural minus one `s`. That is right for Knights and wrong for every other plural shape:
+Elves → `Elve` (19 pool tags), Werewolves → `Werewolve` (8), Heroes → `Heroe` (8), Allies →
+`Allie` (6), Dwarves → `Dwarve` (4) — 97 tags on 38 words that are not types, plus capitals
+that are not types at all (`Equipped`, `Nontoken`, `Then`). The cost ran both ways: the junk
+tag shared a theme with nothing, and the real tribe was missing from exactly the payoff
+cards (Tyvar Kell, Voja, Allied Teamwork, Sokka's Charge, Immerwolf, Avengers Assemble!).
+G-83 had fixed the identical singularisation bug in `deck.cost_scale_resource` a month
+earlier; the fix reuses its shape — candidates (ies→y, ves→f/fe, es, s) checked against the
+REAL type list, so a wrong guess fails to match instead of minting a type. The list is
+Scryfall's creature / land / artifact / enchantment subtype catalogs, single-word entries,
+embedded in `tag_synergies.py` so `build_pool`'s tagger fingerprint (G-18) re-derives the
+pool when it changes. Follow-on the same day: same-form plurals (`Merfolk you control`,
+26 pool cards' worth of text) and Mice/Oxen never reached the resolver because the template
+demanded an `s` — 5 cards gained their tribe. `check_keywords.unknown_subtypes()` is the
+list's falsifier (0 unknown today; soft, since a new set is a data refresh — G-69).
+Library rows kept 20 junk tags after the rebuild because `--merge` only adds (K-09); they
+were removed by name in the same commit.
+
+**Two spellings per theme.** Type-line and `_TYPE_MATTERS` tags are Title-case
+(`Equipment`), the theme rules lowercase (`equipment`), and `tags_for` de-duplicated
+case-SENSITIVELY. Every consumer compares case-sensitively too, so 1,358 pool cards carried
+both and double-counted the theme (deck 38: `Equipment 30` beside `equipment 23`), while a
+card carrying only one spelling shared nothing with a card carrying only the other.
+`--merge` de-duplicated case-insensitively, so library and pool also disagreed.
+`canonical_tags` maps every tag to ONE spelling — the lowercase theme vocabulary
+(`MECHANIC_RULES` names + `KEYWORD_THEMES` values) wins — and is applied at the end of
+`tags_for` and to `--merge`'s kept tags. Eight collisions existed: Equipment, Aura, Saga,
+Vehicle, Planeswalker, Food, Clue, Treasure.
+
+**Three rule guards, same batch.**
+- `blink` (BS11-76): 189 hits, ~37% false — 34 transform returns ("return it to the
+  battlefield transformed") and 28 earthbend reminders. Now reminder-stripped (quotes kept,
+  so a self-blink granted in quotes still counts) with a `(?! transformed)` guard: 130 hits,
+  and the flashback blinks whose reminder said "graveyard" (Momentary Blink, Daydream) now
+  count.
+- `graveyard` (BS11-77): the crime definition, a Role token's upkeep rule and madness's
+  "or put it into your graveyard" minted the theme on ~70 cards that never use the zone. A
+  blanket reminder strip was measured first and REJECTED: 116 cards lost the tag, about 40
+  of them real (descend, retrace, explore, collect evidence on cards Scryfall does not
+  keyword). The fix strips only those three reminder families.
+- `burn` (BS11-79): "deals 1 damage to you" (Talismans, painlands, Ancient Tomb — 37 cards
+  whose only damage was that) is a cost. Inside quotes "you" is whoever received the ability
+  (Relic Robber's token), so a quoted damage clause still counts.
+
+**Roster diff (114 decks):** 0 tier floors moved (the floor reads role TEXT, not tags —
+G-80), `cuts` top-3 changed in 10, cut #1 in one (deck 37), central-theme sets in 18; 1,773
+pool tag cells changed. Deck 50a's `#: tier:` quoted 34 central themes against a live 33 and
+was re-grounded.
+
+**Residual, measured and left:** a SINGULAR reference — "Whenever a Dragon you control
+attacks", "a Samurai or Warrior you control" — is not captured. Widening the first template
+to singulars adds 492 pool tags across ~100 types, 59 of them `Army` from the amass reminder
+alone; that is a G-67 widening needing its own measured pass, not a follow-on fix.
+
