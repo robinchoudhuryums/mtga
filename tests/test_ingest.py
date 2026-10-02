@@ -980,6 +980,97 @@ class TestTagRulesReadTheCardNotItsReminder:
         assert "spellslinger" in self._tags("Whenever you cast a noncreature spell, put a +1/+1 counter on this creature.")
 
 
+class TestScan11TaggerFixes:
+    """BS11-75…79 — invented tribes, blink / graveyard / burn false positives, and the
+    case-duplicate tags. Real oracle text from card-pool.csv."""
+
+    def _tags(self, type_line, text, keywords=None):
+        return ts.tags_for({"Type": type_line, "Card Text": text}, keywords)
+
+    def test_plural_tribes_resolve_to_the_real_type(self):
+        tags = self._tags("Legendary Planeswalker — Tyvar",
+                          'Elves you control have "{T}: Add {B}."\n+1: Put a +1/+1 counter '
+                          'on up to one target Elf.')
+        assert "Elf" in tags and "Elve" not in tags
+        tags = self._tags("Enchantment", "When this enchantment enters, create a 1/1 white "
+                          "Ally creature token.\nAllies you control get +1/+1.")
+        assert "Ally" in tags and "Allie" not in tags
+        for word, real in (("Werewolves", "Werewolf"), ("Heroes", "Hero"),
+                           ("Dwarves", "Dwarf"), ("Sphinxes", "Sphinx"),
+                           ("Humans", "Human"), ("Plains", "Plains"), ("Merfolk", "Merfolk")):
+            assert ts._resolve_tribe(word) == real, word
+
+    def test_a_capitalised_word_that_is_no_type_mints_nothing(self):
+        for junk in ("Equipped", "Nontoken", "Then", "Jace", "Multicolored", "Green"):
+            assert ts._resolve_tribe(junk) is None, junk
+        tags = self._tags("Creature — Human", "Other Nontoken creatures you control get +1/+1.")
+        assert "Nontoken" not in tags
+
+    def test_a_transform_return_and_an_earthbend_reminder_are_not_blink(self):
+        assert "blink" not in self._tags(
+            "Enchantment — Saga", "III — Exile this Saga, then return it to the battlefield "
+            "transformed under your control.")
+        assert "blink" not in self._tags(
+            "Creature — Badger Mole", "When this creature enters, earthbend 2. (Target land you "
+            "control becomes a 0/0 creature with haste that's still a land. Put two +1/+1 "
+            "counters on it. When it dies or is exiled, return it to the battlefield tapped.)")
+        # …and a real blink whose FLASHBACK reminder says "graveyard" now counts.
+        assert "blink" in self._tags(
+            "Instant", "Exile target creature you control, then return it to the battlefield "
+            "under its owner's control.\nFlashback {3}{U} (You may cast this card from your "
+            "graveyard for its flashback cost. Then exile it.)")
+
+    def test_incidental_reminders_do_not_mint_graveyard(self):
+        assert "graveyard" not in self._tags(
+            "Creature — Nightmare Dog", "Discard a card: This creature gets +1/+1 until end of "
+            "turn.\nMadness {2}{B} (If you discard this card, discard it into exile. When you "
+            "do, cast it for its madness cost or put it into your graveyard.)")
+        assert "graveyard" not in self._tags(
+            "Creature", "Whenever you commit a crime, draw a card. (Targeting opponents, "
+            "anything they control, and/or cards in their graveyards is a crime.)")
+        assert "graveyard" not in self._tags(
+            "Sorcery", "Create a Wicked Role token attached to target creature you control. "
+            "(If you control another Role on it, put that one into the graveyard. Enchanted "
+            "creature gets +1/+1.)")
+        # A reminder that describes a REAL graveyard mechanic still counts.
+        assert "graveyard" in self._tags(
+            "Creature", "Whenever this creature attacks, if you descended this turn, draw a "
+            "card. (You descended if a permanent card was put into your graveyard from "
+            "anywhere.)")
+
+    def test_damage_to_yourself_is_not_burn(self):
+        assert "burn" not in self._tags(
+            "Artifact", "{T}: Add {C}.\n{T}: Add {U} or {B}. This artifact deals 1 damage to you.")
+        assert "burn" not in self._tags("Land", "{T}: Add {C}{C}. This land deals 2 damage to you.")
+        # Inside QUOTES "you" is the opponent who received the ability.
+        assert "burn" in self._tags(
+            "Creature — Goblin Rogue", 'Whenever this creature deals combat damage to a '
+            'player, that player creates a 0/1 token with "At the beginning of your upkeep, '
+            'this token deals 1 damage to you."')
+        assert "burn" in self._tags("Instant", "Shock deals 2 damage to any target.")
+
+    def test_one_spelling_per_theme(self):
+        tags = self._tags("Artifact — Equipment", "Equipped creature gets +1/+1.\nEquip {1}",
+                          ["Equip"])
+        assert "equipment" in tags and "Equipment" not in tags
+        assert ts.canonical_tags(["Aura", "aura", "Saga", "Elf", "Food"]) == \
+            ["aura", "saga", "Elf", "food"]
+
+    def test_merge_canonicalises_the_kept_library_tags(self, tmp_path, monkeypatch):
+        import sys
+        lib_csv = tmp_path / "card-library.csv"
+        lib_csv.write_text(",".join(lib.HEADER) + "\n" +
+                           'Bonesplitter,Artifact — Equipment,"Equipped creature gets +2/+0.\n'
+                           'Equip {1}",,Equipment; my-hand-tag,M21,1,1\n', encoding="utf-8")
+        monkeypatch.setattr(ts, "MANA_CSV", str(tmp_path / "absent.csv"))
+        monkeypatch.setattr(sys, "argv", ["tag_synergies.py", str(lib_csv), "--merge"])
+        assert ts.main() == 0
+        _, rows = lib.load_rows(str(lib_csv))
+        tags = [t.strip() for t in rows[0]["Synergies"].split(";")]
+        assert "equipment" in tags and "Equipment" not in tags
+        assert "my-hand-tag" in tags
+
+
 class TestImportCollectionLibraryOverride:
     """BS11-20: `--library <path>` redirected only the library write — the blank mana
     rows and the collection-freshness stamp still went to the REPO's files, so a scratch

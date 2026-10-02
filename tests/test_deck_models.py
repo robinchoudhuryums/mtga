@@ -1107,7 +1107,8 @@ class TestTaggerSeesTypesTheCardOnlyTALKSAbout:
                           "Whenever this creature saddles a Mount or crews a Vehicle "
                           "during your main phase, that Mount or Vehicle gains flying "
                           "until end of turn.")
-        assert {"Mount", "Vehicle"} <= tags
+        # `vehicle`, not `Vehicle`: one spelling per theme since BS11-78.
+        assert {"Mount", "vehicle"} <= tags
 
     def test_MOUNTAIN_IS_NOT_A_MOUNT(self):
         """`'Mount' in type_line` matches 'Mountain' — the substring trap `card_colors`

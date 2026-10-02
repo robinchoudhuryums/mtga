@@ -146,6 +146,9 @@ _EXCLUDED = {
     ("tag_synergies", "_QUOTED_TEXT_RE"): "a QUOTE stripper (the ability a token or emblem "
                                           "carries), applied before a rule reads the text — "
                                           "BS8-31; not a card-text pattern",
+    ("tag_synergies", "_BURN_QUOTE_RE"): "a QUOTE splitter for the burn rule (BS11-79) — it "
+                                         "separates quoted from unquoted text, the same job as "
+                                         "_QUOTED_TEXT_RE; not a card-text pattern",
     ("deck", "_SHARING_CUES"): "tier-RATIONALE prose (a SHARING claim asserts the card "
                                "is in THIS deck, so the cross-deck suppression is "
                                "skipped there); unit-tested in test_deck.py",
@@ -379,8 +382,17 @@ def _pattern_groups():
                  # `_clean_text(x)`, already lowercased and reminder-stripped, so
                  # registering it "raw" would be the wrong-corpus mistake this file's
                  # own docstring warns about.
-                 "_ARTIFACT_MATTERS_RE"):
+                 "_ARTIFACT_MATTERS_RE",
+                 # BS11-76/77/79 rule guards, all run on the lowercased text. A dead
+                 # `_BLINK_RETURN_RE` empties the blink tag; a dead incidental-reminder
+                 # filter silently restores the ~70 crime/Role/madness false positives;
+                 # a dead burn pattern empties `burn`.
+                 "_BLINK_RETURN_RE", "_BURN_ANY_RE", "_BURN_NOT_SELF_RE"):
         out.append((f"tag_synergies.{name}", getattr(tag_synergies, name), "norm"))
+    # "raw", not "norm": it matches the REMINDER parenthetical itself, which the norm form
+    # has already stripped — registered "norm" it reads as dead (0 of the pool).
+    out.append(("tag_synergies._GY_INCIDENTAL_REMINDER_RE",
+                tag_synergies._GY_INCIDENTAL_REMINDER_RE, "raw"))
     # GRANTED-keyword scan. One pattern per evergreen keyword, nested in a dict rather
     # than bound as module attributes, so the completeness check cannot see them
     # individually — the same shape that let `_TARGET_GATES` ship a gate matching nothing.

@@ -34,6 +34,9 @@ Updated: 2026-10-02 (Batch 1 — see Where I left off)
 
 ## Completed this cycle
 
+- **2026-10-02 — scan #11 Batch 4: tagger accuracy** (BS11-75–79). Block
+  `11-batch4-tagger-accuracy-broad-implement.md`. Net 5 − 0 = 5 | scripts/tag_synergies.py,
+  scripts/check_patterns.py, pool rebuild, tests.
 - **2026-10-01 — the test suite no longer reverts the real card library (G-88).** An editor
   test POSTed `/api/revert` without its fixture, so every pytest run (including the
   SessionStart hook's) restored the newest `.bak` over `card-library.csv`. Fixed the test,
@@ -380,6 +383,14 @@ Updated: 2026-10-02 (Batch 1 — see Where I left off)
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
+**2026-10-02 (latest) — scan #11 Batch 4 implemented** (block
+`11-batch4-tagger-accuracy-broad-implement.md`): BS11-75/76/77/78/79. Tribal tags resolve
+against the real type list; blink/graveyard/burn false positives closed; one spelling per
+theme. Pool rebuilt with the stamped query (16,047 rows); 0 tier floors moved, cuts top-3
+changed in 10 of 114 decks. Full suite and `check_all` green. **Next:** `/sync-docs` for
+Batch 4 (K-09 figure 348→350 is the one soft drift), then Batch 5 (recommender maths:
+BS11-16/31/61/67–72/74).
+
 **2026-10-02 (latest) — scan #11 Batch 3 implemented** (block
 `11-batch3-search-filter-semantics-broad-implement.md`): BS11-39/34/41/54. The new card.py
 agreement pair found load_card_meta's pool-first tag correction missing front-named DFC rows;

@@ -2803,6 +2803,29 @@ Oltec Matterweaver,{2}{W},3,
 Moogles' Valor,{3}{W}{W},5,
 Dalkovan Packbeasts,{2}{W},3,Vigilance;Mobilize
 Voice of Victory,{1}{W},2,Mobilize
+Dedicated Commons,,0,
+Stingerquill Voxmancer,{B/R} // {B/R},1,Prepared
+"Koth, the Geomancer",{2}{R},3,Reach;Landfall
+"Samut, Hazoret's Champion",{1}{R},2,
+Screeching Soulbreaker,{2}{B},3,Flying
+Stingerquill Charm,{B}{R},2,
+"Tinybones, Pocket Nuisance",{2}{B},3,
+"Gallia, the Merrymaker",{1}{R},2,Haste
+Cast Away Doubt,{2}{B},3,
+Whiplash Wordsmith,{3}{B/R} // {B/R},4,Prepared
+Extended Absence,{3}{B},4,
+"Tomik, Izzet Sparkmage",{1}{R},2,Prowess
+Grim Repriser,{B}{R},2,Prowess
+Gideon the Oathless,{2}{B},3,Ward
+"Tetsuko Umezawa, Pursuer",{3}{R},4,Prowess;Double strike
+"Winter, Tormented Loner",{2}{B},3,
+"Garruk, Veiled Butcher",{3}{B}{B},5,
+"Massacre Girl, Most Wanted",{4}{B},5,
+Liliana the Repentant,{1}{B},2,Exhaust;Mill
+"Danitha, Spear of Agony",{2}{B},3,First strike
+"Jiang Yanggu, Alone",{4}{R},5,Menace
+Pyre Rhymer,{1}{R}{R} // {R},3,Prowess;Prepared
+"Chandra, Torch of Defiance",{2}{R}{R},4,
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -5657,10 +5680,8 @@ Variable Chaser // Arc of Fortune,{2}{U} // {2}{U},3,Flying;Prowess;Prepared
 Apex Witchstalker,{4}{B}{B},6,Landcycling;Menace;Basic landcycling;Typecycling;Cycling
 Bloodline Recollector // Ancestral Craving,{1}{B} // {B},2,Prepared
 Break Under Pressure,{2}{B},3,
-Cast Away Doubt,{2}{B},3,
 Dark Matter Manipulator,{B},1,Mill
 Darklight Phoenix,{3}{B},4,Flying;Haste
-Extended Absence,{3}{B},4,
 Extrapolate the Impossible,{1}{B},2,
 Lich's Relic,{B},1,Equip
 Multiply by Zero,{1}{B},2,
@@ -5670,7 +5691,6 @@ Rank Rat,{1}{B},2,
 Rewrite Regrets,{3}{B},4,Surveil;Empower Jace
 Rise of the Deathbringer,{4}{B},5,
 Sanctum Lurker,{2}{B},3,Empower Jace
-Screeching Soulbreaker,{2}{B},3,Flying
 Silence the Echo,{1}{B},2,
 Solve for Disappointment,{1}{B},2,Surveil;Empower Jace
 Terminal Criticism,{1}{B},2,
@@ -5740,7 +5760,6 @@ Fatehold Charm,{W}{U},2,Empower Jace
 Fatehold Chronologist // Peer Review,{1}{W/U} // {2}{W/U},2,Flying;Surveil;Prepared
 Ferocity of the Hunt,{1}{B/G},2,Enchant;Flash
 Frostbite Pyromental,{U}{R}{R},3,Haste;Trample
-Grim Repriser,{B}{R},2,Prowess
 Ingris Stingerquill,{B}{R}{R},3,Flying
 Konstrari Charm,{R}{G},2,
 Konstrari Improviser // Soul Tether,{1}{R/G} // {2}{R/G},2,Prepared
@@ -5754,7 +5773,6 @@ Prudent Fateseer // Peer Review,{1}{W/U}{W/U} // {2}{W/U},3,Surveil;Prepared
 Recursive Recruitment,{2}{U}{B},4,Flashback
 Solarium Sentry,{G}{W},2,
 Solitary Cell,{R}{W},2,
-Stingerquill Charm,{B}{R},2,
 Stingerquill Voxmancer // Vicious Verse,{B/R} // {B/R},1,Prepared
 Stinging Vitriol,{B}{R},2,
 Tam's Resistance,{1}{G/U},2,Surveil;Empower Jace
@@ -5779,7 +5797,6 @@ Keeper of the Quiet Hour,{3},3,Surveil;Empower Jace
 Living Library,{2},2,
 Medic's Kitesail,{2},2,Equip
 Murmuring Volume,{3},3,
-Dedicated Commons,,0,
 Deserted Beach,,0,
 Fatehold Annex,,0,
 Formidable Commons,,0,
@@ -5831,33 +5848,19 @@ Way of the Cryomancer,{2}{U},3,Surveil;Empower Jace
 Way of the Mind Sculptor,{4}{U},5,Surveil;Empower Jace
 "Yargle, Goliath of Otaria",{4}{U},5,
 "Yuriko, Hope from the Shadows",{U},1,Surveil;Flash
-"Danitha, Spear of Agony",{2}{B},3,First strike
 "Gallia, Tragic Host",{1}{B},2,Menace
-"Garruk, Veiled Butcher",{3}{B}{B},5,
-Gideon the Oathless,{2}{B},3,Ward
-Liliana the Repentant,{1}{B},2,Exhaust;Mill
 "Loot, the Anomaly",{2}{B},3,Threshold
 "Mabel, Bitter Recluse",{B},1,Deathtouch
-"Massacre Girl, Most Wanted",{4}{B},5,
 "Proft, Sinister Mastermind",{2}{B},3,Threshold;Menace
 "Teyo, Diamondblade Mage",{3}{B},4,Flash
-"Tinybones, Pocket Nuisance",{2}{B},3,
 Way of the Deathbringer,{2}{B},3,Surveil;Empower Jace
 Way of the Necromancer,{1}{B},2,Surveil;Empower Jace
-"Winter, Tormented Loner",{2}{B},3,
 "Yargle, Glutton of Urborg",{4}{B},5,
 Ajani Unrelenting,{4}{R}{R},6,
 "Arni, Renowned Champion",{3}{R},4,Trample
-"Chandra, Torch of Defiance",{2}{R}{R},4,
-"Gallia, the Merrymaker",{1}{R},2,Haste
-"Jiang Yanggu, Alone",{4}{R},5,Menace
 Kiora of Fire and Ashes,{4}{R}{R},6,
-"Koth, the Geomancer",{2}{R},3,Reach;Landfall
 "Marwyn, the Clearcutter",{R},1,
 "Pia, Determined Rebuilder",{2}{R},3,
-"Samut, Hazoret's Champion",{1}{R},2,
-"Tetsuko Umezawa, Pursuer",{3}{R},4,Prowess;Double strike
-"Tomik, Izzet Sparkmage",{1}{R},2,Prowess
 Way of the Pyromancer,{1}{R},2,Surveil;Empower Jace
 Way of the Warlord,{2}{R},3,Surveil;Empower Jace
 "Winter, Team Player",{4}{R},5,Convoke
@@ -16158,6 +16161,3 @@ Cragcrown Pathway // Timbercrown Pathway,,0,
 Needleverge Pathway // Pillarverge Pathway,,0,
 Riverglide Pathway // Lavaglide Pathway,,0,
 Throne of Makindi,,0,
-Stingerquill Voxmancer,{B/R} // {B/R},1,Prepared
-Whiplash Wordsmith,{3}{B/R} // {B/R},4,Prepared
-Pyre Rhymer,{1}{R}{R} // {R},3,Prowess;Prepared
