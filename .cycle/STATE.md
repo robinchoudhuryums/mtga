@@ -34,6 +34,8 @@ Updated: 2026-10-02 (Batch 1 — see Where I left off)
 
 ## Completed this cycle
 
+- **2026-10-02 — scan #11 Batch 5: recommender maths** (BS11-16/31/61/67–72/74). Block
+  `11-batch5-recommender-maths-broad-implement.md`. Net 9 − 0 = 9.
 - **2026-10-02 — Batch 4 follow-ons** (irregular plurals, subtype radar, K-09 figure; merge
   removal declined). Block `11-batch4-follow-ons-broad-implement.md`. Net 2 − 0 = 2.
 - **2026-10-02 — scan #11 Batch 4: tagger accuracy** (BS11-75–79). Block
@@ -385,6 +387,13 @@ Updated: 2026-10-02 (Batch 1 — see Where I left off)
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
+**2026-10-02 (latest) — scan #11 Batch 5 implemented** (block
+`11-batch5-recommender-maths-broad-implement.md`): BS11-16/31/61/67/68/69/70/71/72/74. The
+structural-overlay gate now honours each floor (305 KEY verdicts → role-player); consistency's
+source advice is a JOINT plan; front-face fixes in target_counts / x_cost_cards /
+card_advantage_split. 0 tier floors, 0 cuts rankings moved. Suite + check_all green.
+**Next:** `/sync-docs` for Batch 5, then Batch 6 (format drift: BS11-06/13/14/15/17/18/40).
+
 **2026-10-02 (latest) — Batch 4 follow-ons implemented** (block
 `11-batch4-follow-ons-broad-implement.md`): irregular-plural tribes (5 cards gain their tribe),
 a soft `unknown subtype` radar for the embedded type list, K-09 figure 350. The `--merge`

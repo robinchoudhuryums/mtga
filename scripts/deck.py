@@ -476,12 +476,25 @@ def binding_pips(cost, sources):
     strict, hybrid = parse_pips(cost or "")
     out = dict(strict)
     for h in hybrid:
-        if len(h) < 2:
-            continue
-        live = [c for c in sorted(h) if (sources or {}).get(c, 0) > 0]
-        if len(live) == 1:
-            out[live[0]] = out.get(live[0], 0) + 1
+        live = hybrid_binding(h, sources)
+        if live:
+            out[live] = out.get(live, 0) + 1
     return out
+
+
+def hybrid_binding(h, sources):
+    """The ONE colour a hybrid pip set `h` binds to with these sources, or None.
+
+    The per-symbol rule inside `binding_pips`, exposed so the two REPORT surfaces that
+    print a hybrid's binding (`cmd_mana`, `build_dashboard`) call it instead of each
+    re-implementing the loop (BS11-61, the G-70 shape: they agreed when found, which is a
+    property of the day, not of the code). None for a single-colour/Phyrexian hybrid, for
+    two or more live halves, and for no live half (the castability lint owns that).
+    """
+    if len(h) < 2:
+        return None
+    live = [c for c in sorted(h) if (sources or {}).get(c, 0) > 0]
+    return live[0] if len(live) == 1 else None
 
 
 def pip_depth_warning(cost, sources, total=None):
@@ -509,10 +522,6 @@ def pip_depth_warning(cost, sources, total=None):
     strict = binding_pips(cost, sources)
     if not strict:
         return None
-    col, pips = max(strict.items(), key=lambda kv: kv[1])
-    if pips < _PIP_DEPTH_MIN:
-        return None
-    have = sources.get(col, 0)
     seen = cards_seen(_PIP_DEPTH_TURN)
     # Deck SIZE is a parameter, not a constant 60 (broad-scan Batch G). The docstring
     # says this shares `consistency`'s model, and `cmd_consistency` reads the real
@@ -523,9 +532,25 @@ def pip_depth_warning(cost, sources, total=None):
     # hardest. Latent today (every roster deck is 60), and `legality_report` already
     # contemplates min_size 100 for BIG_DECK_FORMATS.
     n = total or 60
-    target = _PIP_DEPTH_TARGET_BY_PIPS.get(pips, _PIP_DEPTH_TARGET)
-    if hypergeom_at_least(n, have, seen, pips) >= target:
+    # The colour that FAILS its bar worst, not the one with the most pips (BS11-67).
+    # `max(pips)` keyed on pip count and broke ties by the cost STRING's order, so
+    # {W}{W}{U}{U} off W=15 / U=6 returned None while {U}{U}{W}{W} flagged U — and deck
+    # 73a's Aurelia (W-2 at P 0.525) went unflagged. `cmd_consistency` fixed the same
+    # choice with `worst_col` (lowest P; tiebreak more pips, then name — a total order,
+    # G-54). Each colour is judged against ITS OWN pip-count bar first, so a 2-pip colour
+    # that clears 0.55 cannot mask a 3-pip colour failing 0.70.
+    failing = []
+    for col, pips in strict.items():
+        if pips < _PIP_DEPTH_MIN:
+            continue
+        have = sources.get(col, 0)
+        target = _PIP_DEPTH_TARGET_BY_PIPS.get(pips, _PIP_DEPTH_TARGET)
+        prob = hypergeom_at_least(n, have, seen, pips)
+        if prob < target:
+            failing.append((prob, -pips, col, pips, have, target))
+    if not failing:
         return None
+    _p, _np, col, pips, have, target = min(failing)
     want = next((s for s in range(have + 1, 41)
                  if hypergeom_at_least(n, s, seen, pips) >= target), None)
     return (col, pips, have, want)
@@ -1445,7 +1470,9 @@ def x_cost_cards(cards, carddata, mana):
             continue
         entry = mana.get(n.lower())
         cost = (entry[0] if entry else "") or ""
-        if "{X}" in cost.upper():
+        # The FRONT face's cost (BS11-71, G-02): a split card's stored cost covers both
+        # halves, so An Unexpected Party read as an X spell off its other half.
+        if "{X}" in front_face_cost(cost).upper():
             seen.add(n)
             out.append((n, cost))
     return sorted(out)
@@ -4174,9 +4201,13 @@ def cmd_stats(args):
 
     xs = x_cost_cards(cards, carddata, mana)
     if xs:
-        print("\nX-COST cards — the curve books these at MV 1, X counts as 0 (✕):")
+        # "MV 1" was wrong for most of them (BS11-71): X counts as 0, so {X}{R}{R} books
+        # at MV 2 and {X}{X}{U} at 1 — print the booked MV each card actually gets.
+        print("\nX-COST cards — the curve books these with X counted as 0 (✕):")
         for n, c in xs:
-            print(f"  ✕ {n} — {c}")
+            _e = mana.get(n.lower())
+            _bk = (f" (books at MV {_e[1]})" if _e and _e[1] is not None else "")
+            print(f"  ✕ {n} — {c}{_bk}")
         print(f"  Read avg MV and the early-drop count with that in mind: {len(xs)} card(s) "
               "register cheaper than you will cast them.")
 
@@ -4731,7 +4762,10 @@ def card_advantage_split(cards, carddata):
     for q, n, _s, _c in cards:
         row = carddata.get((n or "").lower()) or {}
         typ, txt = row.get("type") or "", row.get("text") or ""
-        if "Land" in typ or _ms_key(n) in BASICS:
+        # FRONT-face type, the same skip `role_tally` uses (BS11-69): a raw `"Land" in typ`
+        # dropped every `… // Land` DFC that role_tally COUNTS, so repeatable + one-shot
+        # fell short of the card-advantage total it splits in 6 decks (deck 3: 5 vs 3+1).
+        if "Land" in _primary_type(typ) or _ms_key(n) in BASICS:
             continue
         if "Card advantage" not in classify_roles(txt):
             continue
@@ -4902,24 +4936,29 @@ def structural_overlay_hit(card_text, cards, carddata):
     exactly what these three primitives measure.
     """
     txt = card_text or ""
-    # EVERY axis the card doubles, not the first (G-33 gap 2): Doubling Season engages a
-    # counters deck's spine through its second sentence.
-    for axis in doubler_axes(txt):
-        try:
-            if doubler_support(axis, cards, carddata):
-                return True
-        except Exception:
-            pass
+    # Each branch clears only at its axis's FLOOR — the same bar its boost uses — never at
+    # "any feeder at all" (BS11-16). The truthy tests this replaced passed Delney in 114 of
+    # 114 decks while its floor was reached in 0, and `type_scale_support` returns a TUPLE,
+    # so the chosen-type branch was a tautology. Below the floor a deck does not do the
+    # thing, which is exactly what the boost already says by returning 0.
+    # Doubler: `doubler_best` prices EVERY axis (G-33 gap 2) under the card's own power
+    # scope (`doubler_restriction`), which the per-axis loop here used to skip.
+    try:
+        ax, sup = doubler_best(txt, cards, carddata)
+        if ax and sup >= doubler_calib(ax)[0]:
+            return True
+    except Exception:
+        pass
     res = cost_scale_resource(txt)
     if res:
         try:
-            if cost_scale_support(res, cards, carddata):
+            if cost_scale_support(res, cards, carddata) >= _COST_SCALE_MIN_SOURCES:
                 return True
         except Exception:
             pass
     if type_scale_payoff(txt):
         try:
-            if type_scale_support(cards, carddata):
+            if type_scale_support(cards, carddata)[0] >= _TYPE_SCALE_MIN_SOURCES:
                 return True
         except Exception:
             pass
@@ -5883,7 +5922,11 @@ def suggest_lands(d, unowned=False, owned=False, limit=20, fmt=None, any_format=
         # turns, so the marker now NAMES which one (G-52: a verdict surface prints its
         # evidence). `·fast` is untapped turns 1-3; `·check` depends on this deck's basic
         # count, which the score above already applied.
-        cond_label = {"fast": "·fast", "check": "·check"}.get(_tkind, "·tapped?")
+        # `·shock` joined BS11-31: a shockland earns the untapped premium (pay 2 life at
+        # will — lib.tapland_kind) yet printed the bare `·tapped?`, whose legend says
+        # "scored as tapped" — the marker contradicted the score beside it.
+        cond_label = {"shock": "·shock", "fast": "·fast",
+                      "check": "·check"}.get(_tkind, "·tapped?")
         # Restricted production ("Spend this mana only to cast a creature spell"). The
         # score already discounts it; this is what lets a human tell WHY.
         restricted = "spend this mana only" in low
@@ -5975,10 +6018,11 @@ def cmd_suggest_lands(args, d):
     if any(p.get("cond_tapped") for p in res["picks"]):
         print("\n·tapped? = enters tapped UNLESS a condition this model cannot settle (a "
               "board state, or 'two or MORE other lands', which is false exactly when "
-              "tempo matters) — scored as tapped, conservatively. ·fast = untapped on "
+              "tempo matters) — scored as tapped, conservatively. ·shock = untapped if you "
+              "pay 2 life, payable at will; ·fast = untapped on "
               "turns 1-3 ('two or fewer other lands'); ·check = gated on a basic land, "
-              "and this deck's basic count is already in the score. Both of those earn "
-              "the untapped premium; the bare ·tapped? does not.")
+              "and this deck's basic count is already in the score. All three of those "
+              "earn the untapped premium; the bare ·tapped? does not.")
     if any(p.get("restricted") for p in res["picks"]):
         print("·restricted = the colored mana has a 'spend this only to…' clause. Its "
               "fixing premium is halved; judge it against what your deck actually casts.")
@@ -6533,6 +6577,31 @@ def min_sources_for(N, turn, pip_count, target=0.90, on_play=True):
     return N
 
 
+def joint_source_plan(N, sources, turn, pips, target, on_play=True, cap=None):
+    """{colour: sources wanted} that lifts a MULTI-colour cost's JOINT cast probability to
+    `target`, or None when no plan fits under `cap` sources per colour (BS11-68).
+
+    `cast_probability` multiplies the per-colour terms, so "want N of the worst colour"
+    — `min_sources_for` on one colour alone — can never be the answer for a two-colour
+    cost: deck 30's Cuboid Colony reached its per-colour target and still sat at 83.9%
+    jointly, and a row whose every colour cleared the target ALONE (136 of them across the
+    roster) got no note at all while sitting below it. Greedy, one source at a time to the
+    colour whose term is lowest (tiebreak more pips, then name — a total order, G-54), so
+    the plan is the cheapest the per-colour terms allow. A single-colour cost reduces to
+    `min_sources_for` exactly.
+    """
+    cap = N if cap is None else cap
+    plan = {c: sources.get(c, 0) for c, n in pips.items() if n > 0}
+    seen = cards_seen(turn, on_play)
+    while cast_probability(N, plan, turn, pips, on_play) < target:
+        col = min(plan, key=lambda c: (hypergeom_at_least(N, plan[c], seen, pips[c]),
+                                       -pips[c], c))
+        if plan[col] + 1 > cap:
+            return None
+        plan[col] += 1
+    return plan
+
+
 def opening_land_stats(N, lands, on_play=True):
     """Opening-hand + land-drop consistency for a deck of N with `lands` lands:
     keepable (2–5 lands in the opening 7), screw (0–1), flood (6–7), and P(≥n lands
@@ -6618,13 +6687,8 @@ def cmd_mana(args):
     # half, {B/G} IS {B}, and this surface's blanket reassurance was the sentence that made
     # deck 14 look fine while Long Feng, Grand Secretariat sat at a true 52.5%. Same
     # primitive the probability surfaces use, so `mana` and `consistency` cannot disagree.
-    dead_half = {}
-    for h in hybrid_pips:
-        if len(h) < 2:
-            continue
-        live = [c for c in sorted(h) if sources.get(c, 0) > 0]
-        if len(live) == 1:
-            dead_half[h] = live[0]
+    dead_half = {h: hybrid_binding(h, sources) for h in hybrid_pips
+                 if hybrid_binding(h, sources)}
 
     print(f"Deck {d['id']}: {d['name'] or d['path']} — mana requirements (hybrid-aware)\n")
     print("Strict color requirements (must be paid with that color):")
@@ -6994,7 +7058,13 @@ def cmd_consistency(args):
         eprint(f"--target must be a fraction strictly between 0 and 1 (got {target}); "
                f"e.g. 0.90 for 'castable on curve 90% of the time'.")
         return 2
-    N = total or 60
+    # An EMPTY list has nothing to price (BS11-74). `total or 60` labelled it a "60-card
+    # deck" and printed probabilities for 60 cards that do not exist; say so instead.
+    if not total:
+        eprint(f"Deck {d['id']}: the file holds no cards — nothing to price. "
+               "(Check the card lines, or that a `Deck` heading did not end up as a board.)")
+        return 1
+    N = total
     coin = "on the play" if on_play else "on the draw"
 
     print(f"Deck {d['id']}: {d['name'] or d['path']} — consistency ({N}-card deck, {coin})\n")
@@ -7146,23 +7216,31 @@ def cmd_consistency(args):
             pipstr = "".join(f"{{{col}}}" * cnt for col, cnt in sorted(strict.items()))
             have_col = sources.get(worst_col, 0)
             flag = ""
-            if p < target and need > have_col:
-                if have_col <= SPLASH_MAX:
+            # The plan is JOINT (BS11-68): every colour's term multiplies into `p`, so the
+            # advice must lift the product, and a row whose colours each clear the target
+            # alone still needs a note when together they do not.
+            plan = (joint_source_plan(N, sources, turn, strict, target, on_play,
+                                      cap=nlands) if p < target else None)
+            if p < target:
+                if need > have_col and have_col <= SPLASH_MAX:
                     # Genuine splash: too few sources to ever be on-curve at this turn.
                     # Reframe as cast-late/cut rather than print an absurd land count
                     # (a {B}{R} 2-drop off 1 red source "wanting" 15 R sources).
                     flag = (f"   → {worst_col} is a {have_col}-source splash — cast it late "
                             f"(once you've drawn a source) or cut it; don't chase "
                             f"{100*target:.0f}% on curve")
-                elif need > nlands:
+                elif need > nlands or plan is None:
                     # A main color, but a color-hungry EARLY cost (e.g. {B}{B} on T2) that no
                     # realistic land base guarantees on time — say so instead of "+N sources".
-                    flag = (f"   → color-hungry: {100*target:.0f}% at T{turn} would need {need} "
-                            f"{worst_col} sources (> the deck's {nlands} lands) — expect it a "
-                            f"turn or two later than T{turn}")
+                    flag = (f"   → color-hungry: {100*target:.0f}% at T{turn} would need more "
+                            f"{worst_col} sources than the deck's {nlands} lands can carry"
+                            + (" alongside its other colour(s)" if need <= nlands else "")
+                            + f" — expect it a turn or two later than T{turn}")
                 else:
-                    flag = (f"   → want {need} {worst_col} sources "
-                            f"(have {have_col}, +{need - have_col})")
+                    adds = [(c, plan[c], plan[c] - sources.get(c, 0))
+                            for c in sorted(plan) if plan[c] > sources.get(c, 0)]
+                    flag = "   → want " + ", ".join(
+                        f"{w} {c} sources (have {w - a}, +{a})" for c, w, a in adds)
             print(f"  {100*p:5.1f}%  T{turn}  {pipstr:10} {n[:30]:30}{flag}")
         if below:
             print(f"\n  {len(below)} card(s) below {100*target:.0f}% on curve — the → note is the "
@@ -12333,6 +12411,9 @@ def deck_quality_vector(d):
         "interaction_conf": count_conf(_tally, "interaction"),
         "card_advantage_conf": count_conf(_tally, "card_advantage"),
         "avg_mv": round(sum(mvs) / len(mvs), 2) if mvs else 0.0, "early_drops": early,
+        # How many nonland copies the avg was taken over — 0 means `avg_mv` 0.0 is "no
+        # data", not a measured zero curve (BS11-72; `_clock_score` reads it).
+        "avg_mv_n": len(mvs),
         # How many of those early drops only make MANA. Reported beside the count so a
         # human reading it for a CURVE argument sees what it is made of, and subtracted
         # from the aggro `_clock_score` where "cheap threat" is what the term means.
@@ -12567,7 +12648,13 @@ def _clock_score(vec):
     # mis-graded, but the shape must not be copied. `None` is the real "no data" case and
     # is what deserves the sentinel; a measured 0.0 curve is a fact about the deck.
     mv = vec.get("avg_mv")
-    mv = 99.0 if mv is None else mv
+    # …and a 0.0 taken over ZERO priced cards is the same no-data case wearing a number
+    # (BS11-72): an all-land file, or one whose nonland costs are all missing, read a
+    # 0.0 curve, collected the full 3/7 curve credit under `#: plan: aggro` and floored
+    # at C instead of D. `avg_mv_n` is absent on a hand-built vector, which keeps the
+    # old reading there.
+    if mv is None or vec.get("avg_mv_n") == 0:
+        mv = 99.0
     # THREATS, not bodies: a turn-two mana dork does not shorten the clock, and this
     # term is the substitute for interaction that lets an aggro deck float its floor.
     # Measured before shipping (K-14): 0 of 114 decks change band, and no deck on an
@@ -14682,7 +14769,7 @@ def cmd_tier(args):
           f"protection {vec.get('protection', 0)} · "
           f"board power {vec.get('board_power', 0)} · "
           f"avg MV {vec['avg_mv']} · central themes {vec['central_themes']}")
-    # An {X} spell is priced at MV 1 (X counts as 0 off the stack), so the avg MV printed
+    # An {X} spell is priced with X = 0 (its rules MV off the stack), so the avg MV printed
     # just above under-reads a list that runs several. REPORT-only, like protection — a
     # new term in tier_band would silently re-grade the roster.
     _cd = load_card_data()
@@ -14698,7 +14785,7 @@ def cmd_tier(args):
     if _xs:
         print(f"  ⚠ avg MV under-reads: {len(_xs)} X-cost card(s) "
               f"({', '.join(n for n, _c in _xs[:3])}{'…' if len(_xs) > 3 else ''}) "
-              "book as MV 1 because X counts as 0 — see `deck.py stats` for the list.")
+              "book with X counted as 0 — see `deck.py stats` for each one's booked MV.")
     _ch = cheat_cost_cards(_cards, _cd, _mana)
     if _ch:
         print(f"  ⚠ avg MV over-reads: {len(_ch)} cheat-cost card(s) "
@@ -15365,7 +15452,13 @@ def target_counts(cards, carddata, mana):
         # BOTH forms of the text, because the gate families disagree about which one is
         # the card. Kept side by side and chosen per gate KIND below (`_TARGET_KEEP_REM`).
         raw = cd.get("text") or ""
-        pool.append({"n": n, "q": q, "type": (cd.get("type") or "").lower(),
+        # FRONT-face type (BS11-70, the G-63 class): the whole `Front // Back` line made a
+        # Saga that flips into a creature count as a creature card to return, and an
+        # `Artifact // Land` read as a land and dropped out of every gate. A card in a
+        # library or graveyard has only its front face's characteristics, and the front is
+        # the half you cast — the same reason `mv` above is front-faced.
+        pool.append({"n": n, "q": q,
+                     "type": (cd.get("type") or "").split("//")[0].strip().lower(),
                      "text": raw, "no_rem": _REMINDER_RE.sub(" ", raw), "mv": mv})
     out, seen = [], set()
     for c in pool:

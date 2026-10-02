@@ -242,13 +242,9 @@ def deck_viz(meta, cards, carddata, mana, keywords, by_key, by_name):
     # fine, and the dashboard becomes the surface that disagrees, which is the failure the
     # note just below records for `#: uncastable-ok:`.
     _src = deckmod.deck_source_profile(cards, by_key, by_name, carddata)[0]
-    _binds = {}
-    for h in hyb_sets:
-        if len(h) < 2:
-            continue
-        _live = [c for c in sorted(h) if _src.get(c, 0) > 0]
-        if len(_live) == 1:
-            _binds["/".join(sorted(h))] = _live[0]
+    # `deckmod.hybrid_binding` — the one per-symbol rule `binding_pips` uses (BS11-61).
+    _binds = {"/".join(sorted(h)): deckmod.hybrid_binding(h, _src) for h in hyb_sets
+              if deckmod.hybrid_binding(h, _src)}
 
     # `#: uncastable-ok:` exempts a reanimator's intended-uncastable bombs (F-02), so the
     # dashboard must pass the same exemption the CLI does — otherwise a deck reads BLOCKED

@@ -1571,3 +1571,96 @@ class TestCardMetaPoolFirstForFrontNamedRows:
         assert meta["oko"]["synergies"] == ["tokens"]
         # Exact name wins: a distinct card named like another's front keeps its OWN row.
         assert meta["life"]["synergies"] == ["lifegain", "heal"]
+
+
+class TestScan11Batch5RecommenderMaths:
+    """BS11-16/31/61/67/68/69/70/71/72/74 — synthetic card data, so the pins hold whatever
+    the roster does."""
+
+    DOUBLER = ("If one or more tokens would be created under your control, twice that many "
+               "of those tokens are created instead.")
+    MAKER = "When this creature enters, create a 1/1 white Soldier creature token."
+
+    def _cd(self, rows):
+        return {n.lower(): {"name": n, "type": t, "text": x, "power": p}
+                for n, t, x, p in rows}
+
+    def test_overlay_clears_only_at_the_doubler_floor(self):
+        floor = deck.doubler_calib("tokens")[0]
+        cd = self._cd([("Maker", "Creature — Human", self.MAKER, "1")])
+        below = [(floor - 1, "Maker", "", "")]
+        at = [(floor, "Maker", "", "")]
+        assert not deck.structural_overlay_hit(self.DOUBLER, below, cd)
+        assert deck.structural_overlay_hit(self.DOUBLER, at, cd)
+
+    def test_overlay_chosen_type_branch_is_no_longer_a_tautology(self):
+        text = ("As this creature enters, choose a creature type. Creatures you control "
+                "of the chosen type get +1/+1.")
+        cd = self._cd([("Elfy", "Creature — Elf", "", "1")])
+        few = [(deck._TYPE_SCALE_MIN_SOURCES - 1, "Elfy", "", "")]
+        many = [(deck._TYPE_SCALE_MIN_SOURCES, "Elfy", "", "")]
+        if deck.type_scale_payoff(text):
+            assert not deck.structural_overlay_hit(text, few, cd)
+            assert deck.structural_overlay_hit(text, many, cd)
+
+    def test_hybrid_binding_is_the_rule_binding_pips_applies(self):
+        assert deck.hybrid_binding(frozenset("BG"), {"B": 11, "G": 0}) == "B"
+        assert deck.hybrid_binding(frozenset("BG"), {"B": 11, "G": 3}) is None
+        assert deck.hybrid_binding(frozenset("BG"), {}) is None
+        assert deck.hybrid_binding(frozenset("W"), {"W": 9}) is None
+
+    def test_pip_depth_warning_does_not_depend_on_cost_order(self):
+        src = {"W": 15, "U": 6}
+        a = deck.pip_depth_warning("{W}{W}{U}{U}", src)
+        b = deck.pip_depth_warning("{U}{U}{W}{W}", src)
+        assert a == b and a is not None and a[0] == "U"
+
+    def test_joint_plan_lifts_the_product_not_one_colour(self):
+        N, turn, pips, tgt = 60, 2, {"G": 1, "U": 1}, 0.90
+        src = {"G": 15, "U": 13}
+        plan = deck.joint_source_plan(N, src, turn, pips, tgt)
+        assert plan is not None
+        assert deck.cast_probability(N, plan, turn, pips) >= tgt
+        # one colour alone reduces to the Karsten number
+        solo = deck.joint_source_plan(N, {"B": 5}, 3, {"B": 2}, tgt)
+        assert solo == {"B": deck.min_sources_for(N, 3, 2, tgt)}
+        assert deck.joint_source_plan(N, {"B": 5}, 2, {"B": 2}, tgt, cap=10) is None
+
+    def test_card_advantage_split_reads_the_front_face(self):
+        cd = {"relic": {"type": "Legendary Artifact // Legendary Artifact Land",
+                        "text": "{T}: Draw a card."}}
+        rep, one, _ = deck.card_advantage_split([(1, "Relic", "", "")], cd)
+        tally = deck.role_tally([(1, "Relic", "", "")], cd)
+        assert rep + one == tally["card_advantage"] == 1
+
+    def test_target_counts_types_a_card_by_its_front_face(self):
+        cd = {"reanimate": {"type": "Sorcery",
+                            "text": "Return target creature card from your graveyard to "
+                                    "the battlefield."},
+              "flip saga": {"type": "Enchantment — Saga // Enchantment Creature — Spirit",
+                            "text": "I — Draw a card."}}
+        rows = deck.target_counts([(1, "Reanimate", "", ""), (2, "Flip Saga", "", "")],
+                                  cd, {})
+        creat = [r for r in rows if r[0] == "Reanimate" and "creature cards" in r[1]]
+        assert creat and creat[0][2] == 0
+
+    def test_x_cost_reads_the_front_face_only(self):
+        cd = {"party // after": {"type": "Sorcery // Sorcery", "text": "x"},
+              "fireball": {"type": "Sorcery", "text": "x"}}
+        mana = {"party // after": ("{2}{G} // {X}{G}", 3), "fireball": ("{X}{R}", 1)}
+        out = deck.x_cost_cards([(1, "Party // After", "", ""), (1, "Fireball", "", "")],
+                                cd, mana)
+        assert out == [("Fireball", "{X}{R}")]
+
+    def test_clock_gives_no_curve_credit_without_cost_data(self):
+        vec = {"avg_mv": 0.0, "avg_mv_n": 0, "early_drops": 0, "reach": 0}
+        assert deck._clock_score(vec) == 0
+        assert deck._clock_score(dict(vec, avg_mv_n=20)) == 3   # a measured 0.0 curve
+        assert deck._clock_score({"avg_mv": 0.0}) == 3          # hand-built vector
+
+    def test_consistency_refuses_an_empty_deck(self, tmp_path, capsys):
+        f = tmp_path / "empty.txt"
+        f.write_text("#: name: Empty\n#: format: Standard\n", encoding="utf-8")
+        args = argparse.Namespace(id=str(f), target=None, on_draw=False)
+        assert deck.cmd_consistency(args) == 1
+        assert "60-card" not in capsys.readouterr().out
