@@ -3206,7 +3206,7 @@ Sygg's Command,Kindred Sorcery — Merfolk,"Choose two —
 • Creatures target player controls gain lifelink until end of turn.
 • Target player draws a card.
 • Tap target creature. Put a stun counter on it.",W/U,Merfolk; counters; lifegain; tokens; lifelink,ECL,244,1
-Deeproot Pilgrimage,Enchantment,"Whenever one or more nontoken Merfolk you control become tapped, create a 1/1 blue Merfolk creature token with hexproof.",U,tokens,LCI,52,1
+Deeproot Pilgrimage,Enchantment,"Whenever one or more nontoken Merfolk you control become tapped, create a 1/1 blue Merfolk creature token with hexproof.",U,tokens; Merfolk,LCI,52,1
 Into the Flood Maw,Instant,"Gift a tapped Fish (You may promise an opponent a gift as you cast this spell. If you do, they create a tapped 1/1 blue Fish creature token before its other effects.)
 Return target creature an opponent controls to its owner's hand. If the gift was promised, instead return target nonland permanent an opponent controls to its owner's hand.",U,tokens; bounce; gift; value,BLB,52,1
 Champions of the Shoal,Creature — Merfolk Soldier,"As an additional cost to cast this spell, behold a Merfolk and exile it. (Exile a Merfolk you control or a Merfolk card from your hand.)

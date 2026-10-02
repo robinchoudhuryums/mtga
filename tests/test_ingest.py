@@ -1071,6 +1071,34 @@ class TestScan11TaggerFixes:
         assert "my-hand-tag" in tags
 
 
+class TestScan11TaggerFollowOns:
+    """Batch 4 follow-ons: irregular-plural tribes, and the radar that notices a new
+    subtype the embedded vocabulary does not hold."""
+
+    def test_invariant_and_irregular_plurals_reach_the_resolver(self):
+        def tags(text):
+            return ts.tags_for({"Type": "Enchantment", "Card Text": text})
+        assert "Merfolk" in tags("Merfolk you control get +1/+1.")
+        assert "Kithkin" in tags("Kithkin you control have flying.")
+        assert "Mouse" in tags("Mice you control get +1/+0.")
+        assert ts._resolve_tribe("Oxen") == "Ox"
+        # A singular-only type is NOT admitted through the invariant set.
+        assert "Ninja" not in ts._INVARIANT_PLURAL_TRIBES
+
+    def test_unknown_subtype_radar_fires_on_a_type_the_vocab_lacks(self, tmp_path,
+                                                                     monkeypatch):
+        import check_keywords as ck
+        pool = tmp_path / "card-pool.csv"
+        pool.write_text(
+            "Card Name,Type,Card Text\n"
+            "Real Elf,Creature — Elf Druid,x\n"
+            "New Thing,Creature — Glorbnak Warrior,x\n"
+            "Some Walker,Legendary Planeswalker — Zzyzx,x\n", encoding="utf-8")
+        monkeypatch.setattr(ck, "POOL_CSV", str(pool))
+        # The planeswalker subtype is not tribal vocabulary and is not asked about.
+        assert ck.unknown_subtypes() == [("Glorbnak", "New Thing")]
+
+
 class TestImportCollectionLibraryOverride:
     """BS11-20: `--library <path>` redirected only the library write — the blank mana
     rows and the collection-freshness stamp still went to the REPO's files, so a scratch

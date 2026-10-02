@@ -34,6 +34,8 @@ Updated: 2026-10-02 (Batch 1 — see Where I left off)
 
 ## Completed this cycle
 
+- **2026-10-02 — Batch 4 follow-ons** (irregular plurals, subtype radar, K-09 figure; merge
+  removal declined). Block `11-batch4-follow-ons-broad-implement.md`. Net 2 − 0 = 2.
 - **2026-10-02 — scan #11 Batch 4: tagger accuracy** (BS11-75–79). Block
   `11-batch4-tagger-accuracy-broad-implement.md`. Net 5 − 0 = 5 | scripts/tag_synergies.py,
   scripts/check_patterns.py, pool rebuild, tests.
@@ -383,6 +385,12 @@ Updated: 2026-10-02 (Batch 1 — see Where I left off)
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
+**2026-10-02 (latest) — Batch 4 follow-ons implemented** (block
+`11-batch4-follow-ons-broad-implement.md`): irregular-plural tribes (5 cards gain their tribe),
+a soft `unknown subtype` radar for the embedded type list, K-09 figure 350. The `--merge`
+stale-tag removal was DECLINED (design: it cannot tell auto from hand tags). Suite + check_all
+green. **Next:** `/sync-docs` for Batch 4 + follow-ons, then Batch 5 (BS11-16/31/61/67–72/74).
+
 **2026-10-02 (latest) — scan #11 Batch 4 implemented** (block
 `11-batch4-tagger-accuracy-broad-implement.md`): BS11-75/76/77/78/79. Tribal tags resolve
 against the real type list; blink/graveyard/burn false positives closed; one spelling per

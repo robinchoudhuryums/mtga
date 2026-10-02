@@ -1448,7 +1448,7 @@ Starfall Invocation,Sorcery,"Gift a card (You may promise an opponent a gift as 
 Destroy all creatures. If the gift was promised, return a creature card put into your graveyard this way to the battlefield under your control.",W,graveyard; card draw; gift; value,BLB,34,Rare,standard;pioneer;modern;legacy;vintage;historic;timeless;alchemy;brawl,2024-08-02,,
 Thistledown Players,Creature — Mouse Bard,"Whenever this creature attacks, untap target nonland permanent.",W,Mouse; Bard,BLB,35,Common,standard;pioneer;modern;legacy;vintage;pauper;historic;timeless;alchemy;brawl,2024-08-02,3,3
 Valley Questcaller,Creature — Rabbit Warrior,"Whenever one or more other Rabbits, Bats, Birds, and/or Mice you control enter, scry 1.
-Other Rabbits, Bats, Birds, and Mice you control get +1/+1.",W,Rabbit; Warrior; scry; pump; selection,BLB,36,Rare,standard;pioneer;modern;legacy;vintage;historic;timeless;alchemy;brawl,2024-08-02,2,3
+Other Rabbits, Bats, Birds, and Mice you control get +1/+1.",W,Rabbit; Warrior; Mouse; scry; pump; selection,BLB,36,Rare,standard;pioneer;modern;legacy;vintage;historic;timeless;alchemy;brawl,2024-08-02,2,3
 Warren Elder,Creature — Rabbit Cleric,{3}{W}: Creatures you control get +1/+1 until end of turn.,W,Rabbit; Cleric; pump,BLB,37,Common,standard;pioneer;modern;legacy;vintage;pauper;historic;timeless;alchemy;brawl,2024-08-02,2,2
 Warren Warleader,Creature — Rabbit Knight,"Offspring {2} (You may pay an additional {2} as you cast this spell. If you do, when this creature enters, create a 1/1 token copy of it.)
 Whenever you attack, choose one —
@@ -6555,7 +6555,7 @@ Pay 1 life, Sacrifice another creature: Put a -1/-1 counter on up to one target 
 Ancient Copper Dragon,Creature — Elder Dragon,"Flying
 Whenever this creature deals combat damage to a player, roll a d20. You create a number of Treasure tokens equal to the result.",R,Elder; Dragon; tokens; treasure; flying; evasion,FCA,12,Mythic,legacy;vintage;historic;timeless;brawl,2025-06-13,6,5
 "Godo, Bandit Warlord",Legendary Creature — Human Barbarian,"When Godo enters, you may search your library for an Equipment card, put it onto the battlefield, then shuffle.
-Whenever Godo attacks for the first time each turn, untap it and all Samurai you control. After this phase, there is an additional combat phase.",R,Human; Barbarian; equipment; etb,FCA,13,Rare,modern;legacy;vintage;historic;timeless;brawl,2025-06-13,3,3
+Whenever Godo attacks for the first time each turn, untap it and all Samurai you control. After this phase, there is an additional combat phase.",R,Human; Barbarian; Samurai; equipment; etb,FCA,13,Rare,modern;legacy;vintage;historic;timeless;brawl,2025-06-13,3,3
 "Purphoros, God of the Forge",Legendary Enchantment Creature — God,"Indestructible
 As long as your devotion to red is less than five, Purphoros isn't a creature.
 Whenever another creature you control enters, Purphoros deals 2 damage to each opponent.
@@ -13966,7 +13966,7 @@ Confounding Riddle,Instant,"Choose one —
 • Counter target spell unless its controller pays {4}.",U,counterspell; graveyard; selection,LCI,50,Uncommon,standard;pioneer;modern;legacy;vintage;historic;timeless;brawl,2023-11-17,,
 Council of Echoes,Creature — Spirit Advisor,"Flying
 Descend 4 — When this creature enters, if there are four or more permanent cards in your graveyard, return up to one target nonland permanent other than this creature to its owner's hand.",U,Spirit; Advisor; graveyard; etb; bounce; flying; evasion; descend,LCI,51,Uncommon,standard;pioneer;modern;legacy;vintage;historic;timeless;brawl,2023-11-17,4,4
-Deeproot Pilgrimage,Enchantment,"Whenever one or more nontoken Merfolk you control become tapped, create a 1/1 blue Merfolk creature token with hexproof.",U,tokens,LCI,52,Rare,standard;pioneer;modern;legacy;vintage;historic;timeless;brawl,2023-11-17,,
+Deeproot Pilgrimage,Enchantment,"Whenever one or more nontoken Merfolk you control become tapped, create a 1/1 blue Merfolk creature token with hexproof.",U,Merfolk; tokens,LCI,52,Rare,standard;pioneer;modern;legacy;vintage;historic;timeless;brawl,2023-11-17,,
 Didact Echo,Creature — Spirit Cleric,"When this creature enters, draw a card.
 Descend 4 — This creature has flying as long as there are four or more permanent cards in your graveyard.",U,Spirit; Cleric; graveyard; card draw; etb; descend; flying; evasion,LCI,53,Common,standard;pioneer;modern;legacy;vintage;pauper;historic;timeless;brawl,2023-11-17,3,2
 The Enigma Jewel // Locus of Enlightenment,Legendary Artifact // Legendary Artifact,"The Enigma Jewel enters tapped.
@@ -16822,7 +16822,7 @@ Enchanted creature gets +1/+1 for each +1/+1 counter on this Aura and has reach 
 Path of Annihilation,Enchantment,"Devoid (This card has no color.)
 When this enchantment enters, create two 0/1 colorless Eldrazi Spawn creature tokens with ""Sacrifice this token: Add {C}.""
 Eldrazi you control have ""{T}: Add one mana of any color.""
-Whenever you cast a creature spell with mana value 7 or greater, you gain 4 life.",G,lifegain; tokens; mana; etb; devoid,MH3,165,Uncommon,modern;legacy;vintage;historic;timeless;brawl,2024-06-14,,
+Whenever you cast a creature spell with mana value 7 or greater, you gain 4 life.",G,Eldrazi; lifegain; tokens; mana; etb; devoid,MH3,165,Uncommon,modern;legacy;vintage;historic;timeless;brawl,2024-06-14,,
 Primal Prayers,Enchantment,"When this enchantment enters, you get {E}{E} (two energy counters).
 You may cast creature spells with mana value 3 or less by paying {E} rather than paying their mana costs. If you cast a spell this way, you may cast it as though it had flash.",G,etb; energy,MH3,166,Rare,modern;legacy;vintage;historic;timeless;brawl,2024-06-14,,
 Propagator Drone,Creature — Eldrazi Drone,"Devoid (This card has no color.)
@@ -21937,7 +21937,7 @@ Whenever you attack, draw a card, then you may put a land card from your hand or
 "Breeches, the Blastmaker",Legendary Creature — Goblin Pirate,"Menace
 Whenever you cast your second spell each turn, you may sacrifice an artifact. If you do, flip a coin. When you win the flip, copy that spell. You may choose new targets for the copy. When you lose the flip, Breeches deals damage equal to that spell's mana value to any target.",U/R,Goblin; Pirate; sacrifice; spell copy; menace; evasion,OTJ,197,Rare,standard;pioneer;modern;legacy;vintage;historic;timeless;brawl,2024-04-19,3,3
 "Bruse Tarl, Roving Rancher",Legendary Creature — Human Warrior,"Oxen you control have double strike.
-Whenever Bruse Tarl enters or attacks, exile the top card of your library. If it's a land card, create a 2/2 white Ox creature token. Otherwise, you may cast it until the end of your next turn.",W/R,Human; Warrior; tokens; double strike; combat; aggro,OTJ,198,Rare,standard;pioneer;modern;legacy;vintage;historic;timeless;brawl,2024-04-19,4,3
+Whenever Bruse Tarl enters or attacks, exile the top card of your library. If it's a land card, create a 2/2 white Ox creature token. Otherwise, you may cast it until the end of your next turn.",W/R,Human; Warrior; Ox; tokens; double strike; combat; aggro,OTJ,198,Rare,standard;pioneer;modern;legacy;vintage;historic;timeless;brawl,2024-04-19,4,3
 Cactusfolk Sureshot,Creature — Plant Mercenary,"Reach
 Ward {2} (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {2}.)
 At the beginning of combat on your turn, other creatures you control with power 4 or greater gain trample and haste until end of turn.",R/G,Plant; Mercenary; reach; defense; ward; protection; trample; evasion; haste; aggro,OTJ,199,Uncommon,standard;pioneer;modern;legacy;vintage;historic;timeless;brawl,2024-04-19,4,4

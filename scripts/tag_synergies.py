@@ -683,6 +683,16 @@ _OTHER_SUBTYPES = frozenset("""
     Tower Town Treasure Vehicle
 """.split())
 _TRIBE_VOCAB = _CREATURE_TYPES | _OTHER_SUBTYPES
+# Types whose plural is NOT the type plus `s`. The "Xs you control" template demanded an
+# `s`, so "Merfolk you control" (26 pool cards), "Kithkin you control" and "Mice you
+# control" never reached the resolver at all. Invariant plurals are matched as-is; the
+# two irregular ones map back to their type in `_resolve_tribe`. Ninja / Phyrexian are
+# deliberately absent: their plurals take an `s`, so a bare "Ninja you control" is a
+# singular reference, not this template.
+_INVARIANT_PLURAL_TRIBES = frozenset({
+    "Merfolk", "Kithkin", "Moonfolk", "Treefolk", "Eldrazi", "Samurai", "Kor", "Djinn",
+    "Efreet", "Fish", "Sheep", "Jellyfish"}) & _TRIBE_VOCAB
+_IRREGULAR_PLURALS = {"Mice": "Mouse", "Oxen": "Ox"}
 
 
 def _resolve_tribe(word):
@@ -694,6 +704,8 @@ def _resolve_tribe(word):
     if not word or word in _NON_TRIBE_WORDS:
         return None
     cands = [word]
+    if word in _IRREGULAR_PLURALS:
+        cands.append(_IRREGULAR_PLURALS[word])
     if word.endswith("ies"):
         cands.append(word[:-3] + "y")
     if word.endswith("ves"):
@@ -780,7 +792,8 @@ _TYPE_MATTERS_RES = [
 # Each capture is the WHOLE word, plural included; `_resolve_tribe` maps it to the real
 # subtype. Capturing the stem (`([A-Z][a-z]+)s`) was the BS11-75 bug.
 _TRIBAL_PAYOFF_RES = [
-    re.compile(r"\b([A-Z][a-z]+s) you control\b"),
+    re.compile(r"\b([A-Z][a-z]+s|%s) you control\b" % "|".join(
+        sorted(_INVARIANT_PLURAL_TRIBES | set(_IRREGULAR_PLURALS)))),
     # "search your HAND AND/OR library for a Dragon card" (Last Light of Durin's Day)
     # matched nothing while the pattern demanded "search your library for" verbatim —
     # so a Dragon TUTOR carried no Dragon theme and `suggest-homes` never offered it to

@@ -1427,7 +1427,7 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   gallery (`load_pool_tags`) read pool-first now, and `load_card_meta`'s correction reaches a
   library row stored under a DFC FRONT name (10 cards, 8 decks had missed it);
   `check_agreement._agree_card_synergies` holds `card.py` to the model.
-  **Residual: 348 pool blanks — a new theme for four cards is not the fix.** [K-09]
+  **Residual: 350 pool blanks — a new theme for four cards is not the fix.** [K-09]
 - **THE TAGGER HAD NO `artifacts` RULE AT ALL, the largest single cause of the median-rank
   finding G-22 records (added 2026-09-14).** Every `artifacts` tag came from the KEYWORD map (affinity /
   improvise / modular / craft…), so a card whose whole text is "artifacts you control get

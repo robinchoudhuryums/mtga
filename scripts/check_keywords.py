@@ -366,3 +366,40 @@ def stale_registry_entries():
 
 if __name__ == "__main__":
     sys.exit(main())
+
+
+# Faces whose subtypes are TRIBES / permanent types the tagger's vocabulary must hold.
+# Planeswalker (Jace), instant / sorcery (Adventure, Lesson) and battle (Siege) subtypes
+# are not tribal-payoff vocabulary, so they are not asked about.
+_VOCAB_FACE_TYPES = ("Creature", "Kindred", "Tribal", "Land", "Artifact", "Enchantment")
+
+
+def unknown_subtypes():
+    """Pool subtypes the tagger's embedded `_TRIBE_VOCAB` does not hold.
+
+    `tag_synergies._resolve_tribe` maps a payoff's "Elves you control" to a REAL type
+    from an embedded list (BS11-75), so a type a new set introduces is silently untagged
+    on every payoff that names it until someone adds it there. This is that list's
+    falsifier: a type printed on a pool card's type line but absent from the vocabulary.
+    SOFT, like the keyword radar it sits beside — a new set is a data refresh, and a
+    hard failure there is the G-69 soft/hard trap. Returns [(subtype, example card)],
+    empty == healthy, sorted so the output is a total order (G-54). Never raises.
+    """
+    try:
+        import tag_synergies
+        vocab = tag_synergies._TRIBE_VOCAB
+        seen = {}
+        with open(POOL_CSV, newline="", encoding="utf-8") as fh:
+            for r in csv.DictReader(fh):
+                for face in (r.get("Type") or "").split("//"):
+                    if "—" not in face:
+                        continue
+                    main, sub = face.split("—", 1)
+                    if not any(k in main for k in _VOCAB_FACE_TYPES):
+                        continue
+                    for w in sub.split():
+                        if w.isalpha() and w not in vocab and w not in seen:
+                            seen[w] = r.get("Card Name") or ""
+    except Exception as e:                      # pragma: no cover - pool unavailable
+        return [("(subtype radar)", f"skipped: {e}")]
+    return sorted(seen.items())
