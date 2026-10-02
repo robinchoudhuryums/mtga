@@ -34,6 +34,8 @@ Updated: 2026-10-02 (Batch 1 — see Where I left off)
 
 ## Completed this cycle
 
+- **2026-10-02 — scan #11 Batch 6: format drift** (BS11-06/13/14/15/17/18/40). Block
+  `11-batch6-format-drift-broad-implement.md`. Net 7 − 0 = 7.
 - **2026-10-02 — scan #11 Batch 5: recommender maths** (BS11-16/31/61/67–72/74). Block
   `11-batch5-recommender-maths-broad-implement.md`. Net 9 − 0 = 9.
 - **2026-10-02 — Batch 4 follow-ons** (irregular plurals, subtype radar, K-09 figure; merge
@@ -387,6 +389,13 @@ Updated: 2026-10-02 (Batch 1 — see Where I left off)
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
+**2026-10-02 (latest) — scan #11 Batch 6 implemented** (block
+`11-batch6-format-drift-broad-implement.md`): BS11-06/13/14/15/17/18/40. Format names now go
+through `normalize_format` / `pool_format_key` on the rotation, lands, pool --legal and resolve
+paths; 100-card scaling reaches cuts/fit_strength/audit/mana; Command Tower reads the commander's
+colours. 0 tier floors / cuts rankings moved. Suite + check_all green. **Next:** `/sync-docs` for
+Batch 6, then Batch 7 (matches: BS11-32/33/35/36/37/38).
+
 **2026-10-02 (latest) — scan #11 Batch 5 implemented** (block
 `11-batch5-recommender-maths-broad-implement.md`): BS11-16/31/61/67/68/69/70/71/72/74. The
 structural-overlay gate now honours each floor (305 KEY verdicts → role-player); consistency's

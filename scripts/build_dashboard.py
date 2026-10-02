@@ -241,7 +241,8 @@ def deck_viz(meta, cards, carddata, mana, keywords, by_key, by_name):
     # this panel repeats the blanket "payable with either color" that made deck 14 look
     # fine, and the dashboard becomes the surface that disagrees, which is the failure the
     # note just below records for `#: uncastable-ok:`.
-    _src = deckmod.deck_source_profile(cards, by_key, by_name, carddata)[0]
+    _src = deckmod.deck_source_profile(cards, by_key, by_name, carddata,
+                                       deck_meta=meta)[0]
     # `deckmod.hybrid_binding` — the one per-symbol rule `binding_pips` uses (BS11-61).
     _binds = {"/".join(sorted(h)): deckmod.hybrid_binding(h, _src) for h in hyb_sets
               if deckmod.hybrid_binding(h, _src)}

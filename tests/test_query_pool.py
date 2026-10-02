@@ -22,7 +22,7 @@ def _qargs(**kw):
 def _pargs(**kw):
     base = dict(name=None, type=None, text=None, color=None, within=None, synergy=None,
                 rarity=None, legal=None, role=None, owned=False, unowned=False,
-                _roles=set())
+                _roles=set(), _legal_key="")
     base.update(kw)
     return argparse.Namespace(**base)
 
@@ -89,8 +89,19 @@ class TestPoolFilters:
         assert not pool.matches(_ROCK, _pargs(rarity="rare,mythic"), {})
 
     def test_legal_filter_reads_the_legalities_cell(self):
-        assert pool.matches(_ROCK, _pargs(legal="brawl"), {})
-        assert not pool.matches(_ROCK, _pargs(legal="standard"), {})
+        # matches() reads the RESOLVED pool key main() sets (BS11-40): the repo's
+        # `Historic Brawl` is the pool's `brawl`, and the repo's `Brawl` is `standard`.
+        assert pool.matches(_ROCK, _pargs(legal="historic brawl", _legal_key="brawl"), {})
+        assert not pool.matches(_ROCK, _pargs(legal="standard", _legal_key="standard"), {})
+
+    def test_legal_resolves_through_pool_format_key_and_refuses_a_typo(self, monkeypatch,
+                                                                      capsys):
+        monkeypatch.setattr(sys, "argv", ["pool.py", "--legal", "bogus", "--count"])
+        assert pool.main() == 2
+        assert "unknown format" in capsys.readouterr().err
+        import deck
+        assert deck.pool_format_key("historic brawl") == "brawl"
+        assert deck.pool_format_key("brawl") == "standard"
 
     def test_role_filter_routes_through_the_lazy_deck_proxy(self):
         """pool.classify_roles is a lazy import proxy (batch 5) — --role must

@@ -366,7 +366,11 @@ def _pattern_groups():
                  # dead every Verge's second colour and every MSH basic-gated colour is
                  # back to a full source in every deck — the over-count it was added to
                  # remove, and invisible because a larger count breaks no invariant.
-                 "_LAND_GATE_RE"):
+                 "_LAND_GATE_RE",
+                 # BS11-17: "commander's color identity" production. If it goes dead,
+                 # Command Tower / Arcane Signet read as five-colour sources again in
+                 # every Brawl deck — an over-count no invariant notices.
+                 "_COMMANDER_IDENTITY_RE"):
         out.append((f"lib.{name}", getattr(lib, name), "raw"))
     out += [("tag_synergies._TRIBAL_PAYOFF_RES", p, "raw")
             for p in tag_synergies._TRIBAL_PAYOFF_RES]

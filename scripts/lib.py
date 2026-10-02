@@ -527,6 +527,9 @@ _ADD_CLAUSE_RE = re.compile(r"\badds?\b[^.\n]*", re.I)
 _ANY_COLOR_RE = re.compile(
     r"\b(?:one |two |three |X |that much |an amount of )?mana (?:in any combination )?of any "
     r"(?:one )?(?:color|type)|\bany color\b|\bthe chosen color\b", re.I)
+# "…of any color in your commander's color identity" — bounded by the commander, so it is
+# NOT the open any-colour clause `_ANY_COLOR_RE` reads it as (BS11-17).
+_COMMANDER_IDENTITY_RE = re.compile(r"\bcommander'?s? colou?r identity\b", re.I)
 _EXTRA_MANA_COST_RE = re.compile(r"\{[0-9XC]\}|\{[WUBRG]\}|\{[WUBRG]/[WUBRG]\}")
 # A cost that taps something OTHER than the land itself ("{T}, Tap an untapped creature
 # you control: Add one mana of any color" — Scene of the Crime). `{T}` is a symbol, so the
@@ -691,7 +694,7 @@ def tapland_kind(text, basic_types=None):
     return "conditional" if _TAPLAND_COND_RE.search(text) else "unconditional"
 
 
-def land_production(text, colors_cell=None):
+def land_production(text, colors_cell=None, commander=None):
     """What a LAND produces, from its oracle text plus its identity cell.
 
     Returns a dict with four sets of WUBRG letters and two booleans:
@@ -728,6 +731,12 @@ def land_production(text, colors_cell=None):
     mana symbol in the cost IS, because the land is then a filter, not a source on the
     turn you need the colour. A colour that is free on one line is free, whatever other
     lines say. Pure (regex only), so the counters and the recommender share it.
+
+    `commander` (BS11-17): the deck's commander colour identity, for "Add one mana of any
+    color in your commander's color identity" (Command Tower, Arcane Signet). None means
+    UNKNOWN (a deckless caller) and keeps the old all-five reading; a set — empty for a
+    deck with no commander — is what the card really adds there. Without it a G/W/U Brawl
+    deck read Command Tower as a black and red source and printed a "B (2), R (2)" splash.
     """
     txt = _LAND_REMINDER_RE.sub(" ", text or "")
     free, restricted, conditional, chosen = set(), set(), set(), set()
@@ -749,6 +758,13 @@ def land_production(text, colors_cell=None):
         line_chosen = False
         for m in _ADD_CLAUSE_RE.finditer(line):
             clause = m.group(0)
+            if _COMMANDER_IDENTITY_RE.search(clause):
+                if commander is None:
+                    any_color = True
+                    cols |= set("WUBRG")
+                else:
+                    cols |= set(commander) & set("WUBRG")
+                continue
             cols |= {c for c in "WUBRG" if "{" + c + "}" in clause}
             if _ANY_COLOR_RE.search(clause):
                 any_color = True

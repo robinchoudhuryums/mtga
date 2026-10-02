@@ -1664,3 +1664,43 @@ class TestScan11Batch5RecommenderMaths:
         args = argparse.Namespace(id=str(f), target=None, on_draw=False)
         assert deck.cmd_consistency(args) == 1
         assert "60-card" not in capsys.readouterr().out
+
+
+class TestScan11Batch6FormatDrift:
+    """BS11-06/13/14/15/17/18 — format names read through the shared normalisers."""
+
+    def test_standard_brawl_is_a_commander_class_deck(self):
+        assert deck._deck_format_class({"meta": {"format": "Standard Brawl"}}) == "commander"
+        assert deck._deck_format_class({"meta": {"format": "historic-brawl"}}) == "commander"
+
+    def test_rotation_sweep_includes_the_standard_pool_brawl_decks(self):
+        brawl = [d["id"] for d in deck.roster_decks()
+                 if deck.normalize_format(
+                     (deck.parse_deck_file(d["path"])[0].get("format") or "")) == "brawl"]
+        ids = {x["id"] for x in deck.rotation_sweep("standard")[0]}
+        assert brawl and set(brawl) <= ids
+
+    def test_lands_keep_the_decks_singleton_rule_and_rotation(self):
+        d = deck.find_deck("78-historic-brawl")
+        res = deck.suggest_lands(d, limit=0, fmt="standard")
+        assert not any((p.get("in_deck") or 0) for p in res["picks"])
+        res = deck.suggest_lands(d, limit=0, any_format=True)
+        assert not any(p.get("rot") for p in res["picks"])
+
+    def test_role_gap_threshold_scales_for_a_100_card_deck(self):
+        args = (["x"], {"x": 1, "y": 9}, "Destroy target creature.", 7, 10)
+        assert deck.fit_strength(*args, scale=100 / 60) == "KEY"       # 7 < ceil(5*1.67)=9
+        assert deck.fit_strength(*args, scale=1.0) != "KEY"            # 7 ≥ 5 at 60 cards
+        assert deck._scale_count(5, 100 / 60) == 9
+
+    def test_commander_identity_land_adds_only_the_commanders_colours(self):
+        import lib
+        t = "{T}: Add one mana of any color in your commander's color identity."
+        assert lib.land_production(t, commander={"G", "W", "U"})["free"] == {"G", "W", "U"}
+        assert lib.land_production(t, commander=set())["free"] == set()
+        assert lib.land_production(t)["free"] == set("WUBRG")          # unknown: unchanged
+
+    def test_an_unplaceable_commander_says_the_lock_is_off(self, capsys):
+        meta = {"format": "Brawl", "commander": "Zzz Not A Card Batch Six"}
+        assert deck.commander_identity_lock(meta, {}) is None
+        assert "lock is OFF" in capsys.readouterr().err

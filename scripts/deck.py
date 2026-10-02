@@ -4966,7 +4966,7 @@ def structural_overlay_hit(card_text, cards, carddata):
 
 
 def fit_strength(shared, theme_w, card_text, deck_int, deck_ca, signature=frozenset(),
-                 overlay=None):
+                 overlay=None, scale=1.0):
     """Classify a card→deck fit as KEY / role-player / tangential (F04).
 
       KEY          – shares the deck's SIGNATURE theme (top central theme, OR a theme
@@ -5043,8 +5043,9 @@ def fit_strength(shared, theme_w, card_text, deck_int, deck_ca, signature=frozen
     if not specific:
         return "tangential"
     roles = set(classify_roles(card_text or ""))
-    gap = (bool(roles & _INTERACTION_ROLES) and deck_int < 5) or \
-          ("Card advantage" in roles and deck_ca < 3)
+    # Per-60 thresholds, scaled for a 100-card deck (`scale`, BS11-15) like the tier floor.
+    gap = (bool(roles & _INTERACTION_ROLES) and deck_int < _scale_count(5, scale)) or \
+          ("Card advantage" in roles and deck_ca < _scale_count(3, scale))
     if gap:                       # on a specific theme AND fills a role the deck lacks
         return "KEY"
     top = max(theme_w.values()) if theme_w else 0
@@ -5325,7 +5326,12 @@ def _deck_atrisk(cards, fmt, pool, years, within, this_year):
     """The per-deck half of `rotation_sweep`: one deck's rotating card lines ->
     (atrisk, unverified). `atrisk` = [{name, set, rotates, qty}] sorted soonest first;
     `unverified` counts lines the pool cannot place. Shared with `deck_rotation` so the
-    roster sweep and the single-deck view cannot disagree on what rotates."""
+    roster sweep and the single-deck view cannot disagree on what rotates.
+
+    `fmt` is a POOL KEY (`pool_format_key`), never a raw `#: format:` string (BS11-06): the
+    repo's `Brawl` is Scryfall's `standard`, and Scryfall's `brawl` is the repo's
+    `Historic Brawl` (G-08), so the raw string tested a Brawl deck's cards against the
+    wrong format's legality."""
     atrisk, unverified = [], 0
     for q, n, s, _c in cards:
         nl = n.lower()
@@ -5363,8 +5369,11 @@ def deck_rotation(d, fmt=None, years=3, within=2):
     pool, has_released = _pool_rotation_index()
     dm, cards = parse_deck_file(d["path"])
     fmt = (dm.get("format") if fmt is None else fmt) or ""
-    fmt = fmt.strip().lower()
-    atrisk, unverified = _deck_atrisk(cards, fmt, pool, years, within, this_year)
+    # `fmt` stays a FORMAT NAME (callers pass it to `format_rotates`); the legality test
+    # takes its pool key (BS11-06), which also folds `Standard Brawl` into `Brawl`.
+    fmt = normalize_format(fmt)
+    atrisk, unverified = _deck_atrisk(cards, pool_format_key(fmt), pool, years, within,
+                                      this_year)
     meta = {"has_released": has_released, "stale_days": pool_staleness_days(),
             "unverified": unverified, "this_year": this_year, "within": within,
             "fmt": fmt}
@@ -5397,13 +5406,17 @@ def rotation_sweep(fmt="standard", years=3, within=2):
     import datetime
     this_year = datetime.date.today().year
     pool, has_released = _pool_rotation_index()
-    fmt = (fmt or "").strip().lower()
+    # Decks are selected by the POOL a format draws from, not by the raw header string
+    # (BS11-06): a 60-card `Brawl` (or `Standard Brawl`) deck plays Standard's pool and
+    # rotates with it, and the string test left all four of them out of the roster view.
+    # A deck with no header is the repo default, Standard.
+    key = pool_format_key(fmt) if fmt else ""
     decks_out, rollup, unverified = [], {}, 0
     for d in roster_decks():
         dm, cards = parse_deck_file(d["path"])
-        if fmt and (dm.get("format") or "").strip().lower() != fmt:
+        if fmt and pool_format_key(dm.get("format") or "standard") != key:
             continue
-        atrisk, unv = _deck_atrisk(cards, fmt, pool, years, within, this_year)
+        atrisk, unv = _deck_atrisk(cards, key, pool, years, within, this_year)
         unverified += unv
         for c in atrisk:
             rr = rollup.setdefault(c["rotates"], {"slots": 0, "cards": set(), "decks": set()})
@@ -5834,7 +5847,10 @@ def suggest_lands(d, unowned=False, owned=False, limit=20, fmt=None, any_format=
     # Only the FORMAT COPY LIMIT excludes now (and basics, which are unlimited in Arena
     # and would just propose a 25th land — the same carve-out G-04 makes). `in_deck` rides
     # along so the caller can label a duplicate rather than let it read as a new card.
-    cfmt = normalize_format(fmt or dmeta.get("format"))
+    # The DECK's construction format, never `--format`'s (BS11-13): that flag picks the
+    # LEGALITY pool to filter on, and letting it replace the construction rules offered a
+    # singleton Brawl deck a second Hallowed Fountain (`In` = 1) under `--format standard`.
+    cfmt = normalize_format(dmeta.get("format"))
     copy_limit = 1 if cfmt in SINGLETON_FORMATS else 4
     in_deck = {}
     deck_basics = 0
@@ -5944,7 +5960,10 @@ def suggest_lands(d, unowned=False, owned=False, limit=20, fmt=None, any_format=
             # all flag a rotating craft target; this recommender — which exists to be
             # spent on — said nothing, and deck 28's plan bought four rotating cards past
             # views that were quiet in exactly this way (BS4-11).
-            "rot": craft_rot_note(name, pool_rot, rotates=format_rotates(fmt)),
+            # `fmt` is "" under --any-format, and format_rotates("") means Standard
+            # (BS11-14) — so fall back to the DECK's format, which is what rotates.
+            "rot": craft_rot_note(name, pool_rot,
+                                  rotates=format_rotates(fmt or dmeta.get("format"))),
         })
     # Ownership is NOT a ranking term — the same decision `suggest_scored` records and
     # explains: the goal is the best LIST, not the cheapest one, and this repo's
@@ -6102,8 +6121,9 @@ def suggest_mana(d, needs, unowned=False, owned=False, limit=20, fmt=None):
                       "score": score, "mv": mv if mv is not None else "?",
                       "produces": "".join(c for c in "WUBRG" if c in prod) or "?",
                       "restricted": _RESTRICT_RE.search(txt) is not None, "text": txt,
-                      "rot": craft_rot_note(name, pool_rot,
-                                            rotates=format_rotates(fmt))})   # G-30 (BS4-11)
+                      "rot": craft_rot_note(name, pool_rot,   # G-30 (BS4-11)
+                                            # BS11-14: "" under --any-format → deck's own
+                                            rotates=format_rotates(fmt or needs["format"]))})
     # Ownership is NOT a ranking term — the same decision `suggest_scored` records and
     # explains: the goal is the best LIST, not the cheapest one, and this repo's
     # owned/unowned data is hand-maintained and may be weeks stale (G-10 saw five wrong
@@ -6168,8 +6188,9 @@ def suggest_interaction(d, needs, unowned=False, owned=False, limit=20, fmt=None
         picks.append({"name": name, "rarity": (r.get("Rarity") or "").strip(), "owned": h,
                       "roles": sorted(roles & _INTERACTION_ROLES), "axis": axis, "boost": boost,
                       "power": round(power, 1), "score": score, "text": txt,
-                      "rot": craft_rot_note(name, pool_rot,
-                                            rotates=format_rotates(fmt))})   # G-30 (BS4-11)
+                      "rot": craft_rot_note(name, pool_rot,   # G-30 (BS4-11)
+                                            # BS11-14: "" under --any-format → deck's own
+                                            rotates=format_rotates(fmt or needs["format"]))})
     # Ownership is NOT a ranking term — the same decision `suggest_scored` records and
     # explains: the goal is the best LIST, not the cheapest one, and this repo's
     # owned/unowned data is hand-maintained and may be weeks stale (G-10 saw five wrong
@@ -6680,7 +6701,8 @@ def cmd_mana(args):
     # Computed BEFORE the hybrid report below, which needs it: this call sat after that
     # report until 2026-09-17, which is why the report could only speak in the abstract.
     carddata = load_card_data()
-    sources, nlands, _total, source_notes = deck_source_profile(cards, by_key, by_name, carddata)
+    sources, nlands, _total, source_notes = deck_source_profile(cards, by_key, by_name, carddata,
+                                                                deck_meta=meta)
 
     # A hybrid pip is "payable with EITHER color" only while the deck can actually produce
     # either one. `binding_pips` is the rule (added with BS13-01): at ZERO sources of one
@@ -6728,6 +6750,10 @@ def cmd_mana(args):
         for line in format_source_notes(source_notes, indent="    "):
             print(line)
         thin, seen_t = [], set()
+        # Source counts are per-60 rules of thumb; a 100-card deck needs proportionally
+        # more of a colour for the same draw odds (BS11-15).
+        _k = deck_floor_scale(meta, cards)
+        _two, _one = _scale_count(9, _k), _scale_count(4, _k)
         for q, n, s, c in cards:
             nl = n.lower()
             if nl in BASICS or n in seen_t:
@@ -6738,11 +6764,11 @@ def cmd_mana(args):
                 continue
             strict, _hy = parse_pips(entry[0])
             for col, cnt in sorted(strict.items(), key=lambda kv: -kv[1]):
-                if cnt >= 2 and sources[col] < 9:
+                if cnt >= 2 and sources[col] < _two:
                     thin.append((n, f"wants {col}{col} but only {sources[col]} {col} sources"))
                     seen_t.add(n)
                     break
-                if cnt == 1 and sources[col] < 4:
+                if cnt == 1 and sources[col] < _one:
                     thin.append((n, f"wants {col} but only {sources[col]} {col} source(s)"))
                     seen_t.add(n)
                     break
@@ -6794,7 +6820,7 @@ _SOURCE_KINDS = (("any", "any colour, no extra cost"),
                  ("gated", "colour gated on a land TYPE (counted by the chance a land of that type is out by turn three — G-87)"))
 
 
-def deck_source_profile(cards, by_key, by_name, carddata, meta=None):
+def deck_source_profile(cards, by_key, by_name, carddata, meta=None, deck_meta=None):
     """(sources{WUBRG:count}, nlands, total, notes) for a cards list — THE manabase count
     behind `mana`, `consistency`, `deck_color_sources` (and through it `pip_depth_warning`
     and the rationale audit's colour-source figures). One implementation, because three
@@ -6812,7 +6838,12 @@ def deck_source_profile(cards, by_key, by_name, carddata, meta=None):
     `notes` maps each `_SOURCE_KINDS` label to a sorted [(qty, name)] list so a surface
     can print what the count is made of; `_deck_source_counts` drops it for callers that
     only want the numbers.
+
+    `meta` is the CARD-meta fallback (`load_card_meta`); `deck_meta` is the DECK header
+    (BS11-17), read only for the commander identity a "commander's color identity" land
+    produces (`deck_commander_colors`). Omitted, such a land reads as all five colours.
     """
+    _cmdr = deck_commander_colors(deck_meta, carddata)
     sources = {c: 0 for c in "WUBRG"}
     nlands = total = 0
     basics_present = set()
@@ -6845,7 +6876,8 @@ def deck_source_profile(cards, by_key, by_name, carddata, meta=None):
         if not colid and meta and meta.get(nl):
             colid = "".join(sorted(meta[nl].get("colors") or ()))
         text = (cd.get("text") if cd else "") or (row.get("Card Text") if row else "") or ""
-        lands.append((q, n, land_production(text, colid), land_basic_types(tline),
+        lands.append((q, n, land_production(text, colid, commander=_cmdr),
+                      land_basic_types(tline),
                       "Basic" in _primary_type(tline)))
     gated_credit = {c: 0.0 for c in "WUBRG"}
     for q, n, prod, types, is_basic in lands:
@@ -6912,7 +6944,19 @@ def format_source_notes(notes, indent="  "):
     return out
 
 
-def uncounted_mana_sources(cards, carddata):
+def deck_commander_colors(deck_meta, carddata=None):
+    """The colours a "commander's color identity" mana ability adds in this deck, for
+    `lib.land_production(commander=)` (BS11-17): the commander's identity in a commander
+    format, the EMPTY set in any other (no commander, no mana), and None — unknown, so the
+    old all-five reading — when there is no deck header or the commander cannot be placed."""
+    if deck_meta is None:
+        return None
+    if normalize_format(deck_meta.get("format")) not in _COMMANDER_FORMATS:
+        return set()
+    return commander_identity_lock(deck_meta, carddata)
+
+
+def uncounted_mana_sources(cards, carddata, deck_meta=None):
     """[(qty, name, colours, conditional)] — NONLAND permanents that produce mana.
 
     `deck_source_profile` counts LANDS and only lands (G-35), which is deliberate and
@@ -6970,7 +7014,8 @@ def uncounted_mana_sources(cards, carddata):
             continue
         if not any(t in tline.split("//")[0] for t in perm):
             continue
-        prod = land_production(cd.get("text") or "")
+        prod = land_production(cd.get("text") or "",
+                               commander=deck_commander_colors(deck_meta, carddata))
         # NO `colors_cell` — `land_production` folds a LAND's identity in because a
         # land's identity IS its mana symbols, which is false for a nonland card, where
         # identity is its casting cost. Passing it would make every coloured permanent a
@@ -7046,7 +7091,8 @@ def cmd_consistency(args):
     nonland = [n for q, n, s, c in cards if n.lower() not in BASICS]
     fetch_missing_mana(sorted(set(nonland)), mana)
 
-    sources, nlands, total, source_notes = deck_source_profile(cards, by_key, by_name, carddata)
+    sources, nlands, total, source_notes = deck_source_profile(cards, by_key, by_name, carddata,
+                                                               deck_meta=meta)
     on_play = not getattr(args, "on_draw", False)
     # `or 0.90` made `--target 0` silently mean 0.90, and nothing range-checked the
     # value: `--target 90` (the obvious mis-read of "as a fraction") made
@@ -7151,7 +7197,7 @@ def cmd_consistency(args):
     # `suggest --ramp` recommends the nonland sources that count cannot see; the two
     # surfaces disagreed by construction and neither disclosed it. DISCLOSURE ONLY: no
     # number above or below moves, because a rock is not a land drop.
-    _nonland_src = uncounted_mana_sources(cards, carddata)
+    _nonland_src = uncounted_mana_sources(cards, carddata, deck_meta=meta)
     if _nonland_src:
         _n = sum(q for q, _nm, _cl, _cond in _nonland_src)
         _shown = ", ".join(
@@ -8796,9 +8842,19 @@ def commander_identity_lock(meta, carddata=None):
     for k in keys:
         cd = carddata.get(k)
         if cd is None:
+            # Unplaceable commander: every recommender then drops the colour lock, so say
+            # so ONCE per commander rather than degrade in silence (BS11-18).
+            if k not in _UNPLACED_COMMANDERS:
+                _UNPLACED_COMMANDERS.add(k)
+                eprint(f"⚠ commander {k!r} is not in the card data — the colour-identity "
+                       "lock is OFF, so off-identity cards can be recommended "
+                       "(run build_pool.py / reconcile the library).")
             return None
         lock |= card_colors(cd.get("colors"))
     return frozenset(lock)
+
+
+_UNPLACED_COMMANDERS = set()
 
 
 @_file_memo("MATCHES_CSV")
@@ -9426,7 +9482,9 @@ def cmd_cuts(args):
         print(f"Protected (kept OFF the cut list via #: protect:): {'; '.join(prot_present)}")
     print("Heuristic shortlist — read the text; it can't see spice/signature cards "
           "beyond the #: protect: header.\n")
-    if deck_int < 5:
+    _vec = deck_quality_vector(d)
+    _k = _vec.get("floor_scale") or 1.0       # per-60 thresholds, scaled (BS11-15)
+    if deck_int < _scale_count(5, _k):
         print(f"⚠ deck runs only {deck_int} interaction piece(s) — rows tagged "
               f"⚠interaction are your removal/counters; cutting them lowers resilience.")
     # Zone conflicts (the mirror of ⚡): a card that EMPTIES a graveyard this deck needs
@@ -9454,13 +9512,12 @@ def cmd_cuts(args):
     # `tier --to` and `suggest --needs` both know what a deck is short on; `cuts` did not,
     # so it optimised the axis it could see. Stated rather than scored — the ranking is a
     # shortlist and this is the context that makes it readable.
-    _vec = deck_quality_vector(d)
     _short = []
-    if _vec["interaction"] < 5:
+    if _vec["interaction"] < _scale_count(5, _k):
         _short.append(f"interaction {_vec['interaction']}")
-    if _vec["card_advantage"] < 3:
+    if _vec["card_advantage"] < _scale_count(3, _k):
         _short.append(f"card advantage {_vec['card_advantage']}")
-    if _vec.get("early_drops", 99) < 18:
+    if _vec.get("early_drops", 99) < _scale_count(18, _k):
         _short.append(f"early drops {_early_drops_note(_vec)} (avg MV {_vec['avg_mv']})")
     if _short:
         print(f"  ⓘ This deck is short on {', '.join(_short)} — weigh a `⚠interaction` note "
@@ -9750,7 +9807,8 @@ def paste_format_hint(block, total):
 
 def _deck_format_class(d):
     """'commander' | 'sixty' | None for a stored deck record — from `#: format:`."""
-    fmt = ((d.get("meta") or {}).get("format") or d.get("format") or "").strip().lower()
+    # normalize_format (BS11-06): `Standard Brawl` / `historic-brawl` are Brawl decks too.
+    fmt = normalize_format((d.get("meta") or {}).get("format") or d.get("format") or "")
     if not fmt:
         return None
     return "commander" if fmt in ("brawl", "commander", "historic brawl") else "sixty"
@@ -10072,7 +10130,9 @@ def audit_deck(d, *, by_name_qty, carddata, mana, leg, cmeta, played=None):
     n_themes = len(_central_themes(theme_w))
 
     # Verdict: hard problems first (a tune target), then unbuilt, then soft.
-    thin = interaction < (5 if rep["min_size"] >= 100 else 3)
+    # The per-60 floor of 3, scaled like every other count threshold (BS11-15) — this was
+    # a hand-written `5 if min_size >= 100 else 3`, the same answer at exactly 100 cards.
+    thin = interaction < _scale_count(3, deck_floor_scale(meta, cards))
     reasons = []
     if n_illegal:
         reasons.append(f"illegal ×{n_illegal}")
@@ -11606,7 +11666,8 @@ def cmd_screen(args):
         shared = sorted(ctags & central)
         strength = fit_strength(
             shared, theme_w, text, d_int, d_ca, sig,
-            overlay=lambda t=text: structural_overlay_hit(t, cards, carddata))
+            overlay=lambda t=text: structural_overlay_hit(t, cards, carddata),
+            scale=deck_floor_scale(dmeta, cards))
         roles = sorted(classify_roles(text))
         ax, sup = doubler_best(text, cards, carddata)
         ups = strict_upgrades(name, text, mv, cards, carddata, mana,
@@ -11904,6 +11965,11 @@ def cmd_resolve(args):
     # `brawl` (the 100-card format), so a non-Standard card passed a 60-card Brawl deck.
     fmt = (getattr(args, "format", None) or "standard").strip().lower()
     lkey = pool_format_key(fmt) if fmt != "any" else ""
+    if fmt != "any" and not lkey:
+        # An untracked format used to skip the check SILENTLY (BS11-18), so a typo'd
+        # `--format standrad` read exactly like "every card is legal".
+        eprint(f"\n⚠ format {fmt!r} is not tracked — legality NOT checked "
+               f"(known: {', '.join(sorted(POOL_FORMATS))}; or --format any).")
     if lkey:
         resolved = [_card_line_name(ln) or "" for ln in lines]
         legal = _legality_of([n for n in resolved if n])
@@ -12089,7 +12155,8 @@ def cmd_suggest_homes(args):
         strength = fit_strength(
             shared, theme_w, cd.get("text") or "", d_int, d_ca, sig,
             overlay=lambda t=(cd.get("text") or ""): structural_overlay_hit(
-                t, cards, carddata))
+                t, cards, carddata),
+            scale=deck_floor_scale(dmeta, cards))
         # Color-fixer overlay: a rainbow fixer's worth scales with the deck's color
         # count, which theme-overlap can't see. In a 3+-color deck it's at least a
         # role-player manabase upgrade; in a 4+-color deck it's a KEY one (the fixing
@@ -12569,7 +12636,8 @@ def cmd_quality(args):
         strength = fit_strength(
             shared, theme_w, (cd or {}).get("text") or "", d_int, d_ca, sig,
             overlay=lambda t=((cd or {}).get("text") or ""): structural_overlay_hit(
-                t, cards, carddata))
+                t, cards, carddata),
+            scale=deck_floor_scale(dmeta, cards))
         if strength == "tangential":
             weak_add = f"add {args.add!r} is only a TANGENTIAL fit (generic themes only)"
 
@@ -12844,6 +12912,18 @@ def _scale_count(n, k):
     round() before ceil: 7 * 100/60 is 11.666…, but 6 * 60/60 must stay exactly 6.
     Shared by the tier floor and the needs model so the two cannot round differently."""
     return n if k == 1.0 else math.ceil(round(n * k, 6))
+
+
+def deck_floor_scale(meta, cards):
+    """`_floor_scale` for a parsed deck — size / 60 for a 100-card format, else 1.0.
+
+    For the call sites that hold a deck but no quality vector (BS11-15): the tier floor
+    and the needs model scaled their per-60 counts, while `cuts`' short-axis note,
+    `fit_strength`'s role-gap KEY test, `audit`'s thin-interaction check and `mana`'s
+    pip-source check compared a 100-card deck against 60-card numbers — so
+    `suggest --interaction` called deck 78 SHORT at interaction 7 while `cuts` said
+    nothing."""
+    return _floor_scale((meta or {}).get("format"), sum(q for q, *_ in cards))
 
 
 def floor_requirements(vec, band):
