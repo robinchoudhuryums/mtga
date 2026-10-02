@@ -4518,7 +4518,7 @@ def load_card_meta():
     cannot theme must keep whatever the library holds rather than be silently emptied.
     (Measured at 0 such cards today — the guard is for the next pool rebuild.)
     """
-    meta, pool_tags = {}, {}
+    meta, pool_tags, pool_names = {}, {}, set()
     for path in (DEFAULT_CSV, POOL_CSV):
         if not os.path.exists(path):
             continue
@@ -4530,14 +4530,30 @@ def load_card_meta():
                 tags = [t.strip() for t in (r.get("Synergies") or "").split(";") if t.strip()]
                 # Collect the pool's tags BEFORE the library-precedence skip below —
                 # the rows that need correcting are precisely the ones already in `meta`.
-                if path == POOL_CSV and tags and nl not in pool_tags:
-                    pool_tags[nl] = tags
+                if path == POOL_CSV:
+                    pool_names.add(nl)
+                    if tags and nl not in pool_tags:
+                        pool_tags[nl] = tags
                 if nl in meta:
                     continue
                 meta[nl] = {"colors": card_colors(r.get("Color(s)")), "synergies": tags}
     for nl, tags in pool_tags.items():
         if nl in meta:
             meta[nl]["synergies"] = tags
+    # ...and for a library row stored under a DFC / split card's FRONT name, whose pool
+    # row is the full `Front // Back`. The exact-name pass above never reached those, so
+    # 10 owned cards (Oko, Lorwyn Liege; Norman Osborn; Push; the Rooms…) kept the stale
+    # library tags the correction exists to replace — found by the card.py agreement pair
+    # the moment card.py itself went pool-first (broad-scan BS11-41). Exact name wins: a
+    # front-face lookup applies only when the pool holds NO row of that exact name, so a
+    # distinct card named like another's front is never overwritten (G-63).
+    pool_front = {}
+    for nl in sorted(pool_tags):
+        if " // " in nl:
+            pool_front.setdefault(nl.split(" // ")[0], pool_tags[nl])
+    for nl in meta:
+        if nl not in pool_names and nl in pool_front:
+            meta[nl]["synergies"] = pool_front[nl]
     # SECOND pass, per lib.alias_front's contract (BS2-40): this was the last loader
     # still aliasing IN-pass, and its `nl in meta: continue` made the order-dependence
     # into row LOSS — a real card named like an earlier DFC's front hit the alias and

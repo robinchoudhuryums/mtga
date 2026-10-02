@@ -31,7 +31,7 @@ import os
 import sys
 import textwrap
 
-from lib import (DEFAULT_CSV, REPO_ROOT, load_rows, eprint, owned_qty, color_matches,
+from lib import (DEFAULT_CSV, REPO_ROOT, load_rows, eprint, owned_qty, color_matches, type_matches,
                  color_within, alias_front)
 
 
@@ -142,7 +142,7 @@ def matches(card, args, owned):
     def has(col, needle):
         return needle is None or needle.lower() in (card.get(col) or "").lower()
 
-    if not (has("Card Name", args.name) and has("Type", args.type)
+    if not (has("Card Name", args.name) and type_matches(card.get("Type"), args.type)
             and has("Card Text", args.text)
             and has("Synergies", args.synergy)):
         return False

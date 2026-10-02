@@ -36,7 +36,7 @@ import urllib.parse
 import urllib.request
 
 from lib import (DEFAULT_CSV, REPO_ROOT, load_rows, eprint, atomic_write,
-                 primary_type as _primary_type)
+                 primary_type as _primary_type, alias_front)
 import scryfall
 from scryfall import NotFound, ScryfallUnavailable
 
@@ -194,7 +194,31 @@ def color_letters(s):
     return letters or ["C"]
 
 
-def build_cards(rows, cache):
+def load_pool_tags(path=None):
+    """name_lower -> the POOL's Synergies cell (non-blank only), front-face aliased.
+
+    The pool is the corrected tag store (K-09): `tag_synergies --merge` can ADD to a
+    library cell but never remove a tag the rules stopped deriving, so the library keeps
+    stale ones (a Food card's `sacrifice` from its reminder text). The models read the
+    pool first since BS9-01; the gallery read the library, so its chips and search showed
+    tags the models had already dropped (broad-scan BS11-41). Same rule as
+    `deck.load_card_meta`: a BLANK pool cell never overrides the library."""
+    import csv as _csv
+    path = path or os.path.join(REPO_ROOT, "card-pool.csv")
+    out = {}
+    if not os.path.exists(path):
+        return out
+    with open(path, newline="", encoding="utf-8") as fh:
+        for r in _csv.DictReader(fh):
+            nl = (r.get("Card Name") or "").strip().lower()
+            tags = (r.get("Synergies") or "").strip()
+            if nl and tags and nl not in out:
+                out[nl] = tags
+    return alias_front(out)
+
+
+def build_cards(rows, cache, pool_tags=None):
+    pool_tags = pool_tags or {}
     cards = []
     for r in rows:
         name = (r.get("Card Name") or "").strip()
@@ -206,7 +230,8 @@ def build_cards(rows, cache):
             "text": (r.get("Card Text") or "").strip(),
             "colors": color_letters(r.get("Color(s)")),
             "colorStr": (r.get("Color(s)") or "").strip(),
-            "synergies": (r.get("Synergies") or "").strip(),
+            "synergies": (pool_tags.get(name.lower())
+                          or (r.get("Synergies") or "").strip()),
             "set": (r.get("Set Code") or "").strip(),
             "cn": (r.get("Collector #") or "").strip(),
             "qty": (r.get("Quantity Owned") or "").strip(),
@@ -271,7 +296,7 @@ def render_stats(stats):
         chips.append(
             f'<span class="chip" role="button" tabindex="0" '
             f'onclick="var q=document.getElementById(\'q\');'
-            f'q.value=\'{attr}\';q.dispatchEvent(new Event(\'input\'));'
+            f'q.value=\'tag:{attr}\';q.dispatchEvent(new Event(\'input\'));'
             f'window.scrollTo(0,0)">{html.escape(tag)} <span class="n">{n}</span></span>')
 
     return f"""<details class="dash" open>
@@ -417,7 +442,7 @@ HTML_TEMPLATE = """<!doctype html>
     <span class="stats" id="stats"></span>
   </div>
   <div class="controls">
-    <input type="search" id="q" placeholder="Search name, type, or text…" autocomplete="off"
+    <input type="search" id="q" placeholder="Search name, type, or text… (tag:&lt;name&gt; for one synergy tag)" autocomplete="off"
            aria-label="Search cards by name, type, or text">
     <!-- Keyboard-accessible filter controls: the gallery predates the I-01 pass its
          sibling collection.html received, so the identical pips had drifted —
@@ -479,8 +504,17 @@ __STATS__
   sortSel.addEventListener('change', render);
 
   function matches(c) {
-    const term = q.value.trim().toLowerCase();
-    if (term && !(c.name + ' ' + c.type + ' ' + c.text + ' ' + c.synergies)
+    const raw = q.value.trim();
+    const term = raw.toLowerCase();
+    // A synergy chip searches `tag:<name>` — an EXACT tag token, the same thing the
+    // chip's count counts. It used to put the bare word in the free-text box, which
+    // substring-matched name/type/text too: "mana" (233) showed 590 cards, every one
+    // with "mana value" in its text (broad-scan BS11-54).
+    const tm = raw.match(/^tag:(.+)$/i);
+    if (tm) {
+      const want = tm[1].trim();
+      if (!(c.synergies || '').split(';').map(t => t.trim()).includes(want)) return false;
+    } else if (term && !(c.name + ' ' + c.type + ' ' + c.text + ' ' + c.synergies)
         .toLowerCase().includes(term)) return false;
     if (setSel.value && c.set !== setSel.value) return false;
     if (activeColors.size && !c.colors.some(x => activeColors.has(x))) return false;
@@ -544,7 +578,7 @@ def main():
     # rebuilds (and anyone who clones the repo) keep their art.
     save_manifest(cache)
 
-    cards = build_cards(rows, cache)
+    cards = build_cards(rows, cache, load_pool_tags())
     with_img = sum(1 for c in cards if c["img"])
     # Escape "<" as < so a card field containing "</script>" can't terminate
     # the embedded <script type="application/json"> block (JSON.parse decodes it

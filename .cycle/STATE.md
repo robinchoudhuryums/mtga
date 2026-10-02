@@ -14,7 +14,7 @@
 
 ## Current
 Cycle: 11 — `/broad-scan` #11 ran 2026-10-01 (81 findings, BS11-01…BS11-81, nine batches).
-Phase: implement — **Batches 1 (ingest) and 2 (deck legality + parse gates) DONE 2026-10-02**; Batches 3–9 not started.
+Phase: implement — **Batches 1 (ingest), 2 (deck legality + parse gates) and 3 (search filters) DONE 2026-10-02**; Batches 4–9 not started.
 Scope: broad
 Test Command: `python3 scripts/check_all.py`
 Subsystem cycles since last Seams audit: 3 (counter adopted 2026-09-08; no Seams audit has run)
@@ -380,6 +380,13 @@ Updated: 2026-10-02 (Batch 1 — see Where I left off)
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
+**2026-10-02 (latest) — scan #11 Batch 3 implemented** (block
+`11-batch3-search-filter-semantics-broad-implement.md`): BS11-39/34/41/54. The new card.py
+agreement pair found load_card_meta's pool-first tag correction missing front-named DFC rows;
+fixed in the same batch (10 cards, 8 decks). Full suite and `check_all` green; gallery and
+dashboard rebuilt. **Next:** `/sync-docs` for Batch 3, then Batch 4 (tagger: BS11-75–79 —
+needs `make refresh` (network) and a roster diff).
+
 **2026-10-02 (latest) — scan #11 Batch 2 implemented** (block
 `11-batch2-deck-legality-parse-gates-broad-implement.md`): BS11-01/02/03/04/05/07/08/09/10/11/12/73.
 Full suite and `check_all` green; dashboard rebuilt (its paste matcher gained the OVERSIZED flag).

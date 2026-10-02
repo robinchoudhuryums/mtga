@@ -27,7 +27,7 @@ import os
 import sys
 import textwrap
 
-from lib import csv_schema_error, HEADER, DEFAULT_CSV, REPO_ROOT, load_rows, eprint, color_matches
+from lib import csv_schema_error, HEADER, DEFAULT_CSV, REPO_ROOT, load_rows, eprint, color_matches, type_matches
 
 
 def keywords_map():
@@ -69,7 +69,8 @@ def matches(row, args):
 
     if not has("Card Name", args.name):
         return False
-    if not has("Type", args.type):
+    # Whole-word, not substring: "orc" is in "Sorcery" (BS11-39).
+    if not type_matches(row.get("Type"), args.type):
         return False
     if not has("Card Text", args.text):
         return False

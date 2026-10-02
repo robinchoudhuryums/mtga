@@ -44,7 +44,7 @@ import sys
 
 from lib import (DEFAULT_CSV, REPO_ROOT, load_rows, eprint, atomic_write, owned_qty,
                  alias_front, card_colors, card_distinctiveness, color_matches,
-                 primary_type, land_production, tapland_kind)
+                 primary_type, land_production, tapland_kind, type_matches)
 from scryfall import ScryfallUnavailable
 
 WISHLIST_CSV = os.path.join(REPO_ROOT, "card-wishlist.csv")
@@ -453,13 +453,36 @@ def cmd_add(path, target=None, note=None):
 # --------------------------------------------------------------------------- #
 # Query / summary
 # --------------------------------------------------------------------------- #
+def _target_tokens(cell):
+    """The deck ids (and other labels) a `Target` cell names — split on `;`/`,`, with a
+    zero-padded numeric prefix stripped the way `deck._norm_deck_id` does it."""
+    out = set()
+    for tok in re.split(r"[;,]", cell or ""):
+        t = tok.strip().lower()
+        if t:
+            m = re.match(r"^0+(\d.*)$", t)
+            out.add(m.group(1) if m else t)
+    return out
+
+
 def _match(card, args):
     def has(col, needle):
         return needle is None or needle.lower() in (card.get(col) or "").lower()
-    if not (has("Card Name", args.name) and has("Type", args.type)
+    # `--target` and `--set` are EXACT, token-wise. They were substring tests — the BS-10
+    # trap in two more columns — so `--target 6` matched 20 rows of which 7 were deck 6
+    # (16, 26, 36, 60, 66… all contain a "6"), and `--budget --target 6` planned crafts for
+    # other decks inside what read as a deck-6 plan (broad-scan BS11-34). `--type` is
+    # whole-word (lib.type_matches, BS11-39). `--note` stays a substring search: it is
+    # free text, and searching inside it is the point.
+    tgt = getattr(args, "target", None)
+    if tgt is not None and not (_target_tokens(tgt) <= _target_tokens(card.get("Target"))):
+        return False
+    st = getattr(args, "set", None)
+    if st is not None and st.strip().lower() != (card.get("Set Code") or "").strip().lower():
+        return False
+    if not (has("Card Name", args.name) and type_matches(card.get("Type"), args.type)
             and has("Card Text", args.text)
-            and has("Synergies", args.synergy) and has("Set Code", args.set)
-            and has("Target", args.target) and has("Note", args.note)):
+            and has("Synergies", args.synergy) and has("Note", args.note)):
         return False
     # Identity is SET-matched via lib.color_matches, never substring — "r" is in
     # "colorless", so the substring test matched every Colorless card (BS-10).

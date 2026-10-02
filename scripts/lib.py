@@ -327,6 +327,21 @@ def color_matches(cell, needle):
     return want <= have if want else not have
 
 
+def type_matches(type_line, needle):
+    """Does a ``Type`` line match a user's ``--type`` filter, as WHOLE WORDS?
+
+    The substring test the filters used is the BS-10 trap one column over:
+    ``"orc" in "sorcery"`` and ``"ant" in "instant"`` are True, so ``pool.py --type Orc
+    --count`` answered 1,938 (1,789 of them Sorceries) and ``--type Ant`` 3,845 with no
+    Ants at all — the tribe survey G-59 tells you to run, returning a number that reads
+    as a fact (broad-scan BS11-39). Case-insensitive; a multi-word needle
+    ("Legendary Creature") must appear as that whole phrase. None/blank matches all."""
+    if needle is None or not str(needle).strip():
+        return True
+    pat = r"(?<![A-Za-z])" + re.escape(str(needle).strip()) + r"(?![A-Za-z])"
+    return re.search(pat, type_line or "", re.I) is not None
+
+
 def color_within(cell, needle):
     """Does a ``Color(s)`` identity cell fit WITHIN a deck of the given colors?
 

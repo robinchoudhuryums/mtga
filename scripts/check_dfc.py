@@ -196,6 +196,8 @@ _ALIASED_LOADERS = (
     ("card", "_owned_index", None, lambda full, front: (_library_rows(),)),
     ("verify_ingest", "library_index", 0),
     ("wishlist", "owned_index", None),
+    # BS11-41: the gallery's pool-first synergy tags (a non-blank-only name index).
+    ("build_gallery", "load_pool_tags", None),
 )
 
 

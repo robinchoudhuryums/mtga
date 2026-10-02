@@ -71,6 +71,16 @@ def _rank(query, rows):
     return sorted(rows, key=key)
 
 
+def synergy_cell(lib_row, pool_row):
+    """The `synergy tags` this surface prints: POOL first, the library only when the pool
+    cell is blank — `deck.load_card_meta`'s rule (K-09/BS9-01). The library keeps tags the
+    corrected rules no longer derive (--merge cannot remove one), so reading it first
+    showed `sacrifice` on Food cards the models had already dropped — on the surface G-01
+    says to read before grading a card (216 owned cards differed; broad-scan BS11-41).
+    `check_agreement._agree_card_synergies` holds this against the model."""
+    return ((pool_row or {}).get("Synergies") or (lib_row or {}).get("Synergies") or "")
+
+
 def _exact(query, rows):
     """Rows whose name — or DFC FRONT face — equals the query, case-insensitive."""
     nl = query.strip().lower()
@@ -223,7 +233,7 @@ def main():
                 if (pr.get("Type") or lr.get("Type"))
                 else "(no oracle text on file — card not resolved; enrich/build the pool)")
     colors = lr.get("Color(s)") or pr.get("Color(s)") or ""
-    syn = lr.get("Synergies") or pr.get("Synergies") or ""
+    syn = synergy_cell(lr, pr)
     cost = (m.get("Mana Cost") or "").strip()
     mv = (m.get("Mana Value") or "").strip()
     # G-02 residual 2, closed. card-mana.csv stores Scryfall's Mana Value, which for a

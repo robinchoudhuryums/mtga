@@ -1547,3 +1547,26 @@ class TestUncountedManaSources:
         s2, l2, _t2, _n2 = deck.deck_source_profile(c2, by_key, by_name, UNIVERSE)
         assert s1["B"] == s2["B"] and l1 == l2
         assert deck.uncounted_mana_sources(c2, UNIVERSE)      # …yet it IS disclosed
+
+
+class TestCardMetaPoolFirstForFrontNamedRows:
+    """BS11-41: the pool-first tag correction matched EXACT names only, so a library row
+    stored under a DFC's FRONT name kept its stale library tags (10 owned cards)."""
+
+    def test_a_front_named_library_row_takes_the_full_named_pool_tags(self, tmp_path,
+                                                                      monkeypatch):
+        lib_csv = tmp_path / "lib.csv"
+        lib_csv.write_text("Card Name,Color(s),Synergies\n"
+                           "Oko,G/U,removal; tokens\nLife,W,lifegain\n", encoding="utf-8")
+        pool_csv = tmp_path / "pool.csv"
+        pool_csv.write_text("Card Name,Color(s),Synergies\n"
+                            "\"Oko // Scion\",G/U,tokens\n"
+                            "\"Life // Death\",W/B,reanimator\nLife,W,lifegain; heal\n",
+                            encoding="utf-8")
+        monkeypatch.setattr(deck, "DEFAULT_CSV", str(lib_csv))
+        monkeypatch.setattr(deck, "POOL_CSV", str(pool_csv))
+        fn = getattr(deck.load_card_meta, "__wrapped__", deck.load_card_meta)
+        meta = fn()
+        assert meta["oko"]["synergies"] == ["tokens"]
+        # Exact name wins: a distinct card named like another's front keeps its OWN row.
+        assert meta["life"]["synergies"] == ["lifegain", "heal"]

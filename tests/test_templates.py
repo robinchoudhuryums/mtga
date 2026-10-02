@@ -791,3 +791,54 @@ class TestDashboardSurfacesTheDeckFileProse:
         assert '"synopsis"' in window and '"flex"' in window and '"notes"' in window, (
             "the modal reads d.synopsis / d.flex / d.notes — dropping any restores the "
             "'…' or an empty tab")
+
+
+class TestGallerySynergyChipsFilterOnTheTag:
+    """BS11-54 / BS11-41: the gallery's synergy chips put the bare word in the free-text
+    box, which substring-matched name/type/text too ("mana" 233 → 590 cards), and its
+    tags came from the stale LIBRARY store rather than the pool the models read."""
+
+    def _matches_js(self):
+        import sys
+        sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(
+            os.path.abspath(__file__))), "scripts"))
+        import build_gallery
+        src = open(build_gallery.__file__, encoding="utf-8").read()
+        i = src.index("function matches(c) {")
+        depth, start = 0, src.index("{", i)
+        for k in range(start, len(src)):
+            depth += {"{": 1, "}": -1}.get(src[k], 0)
+            if depth == 0:
+                return src[i:k + 1]
+        raise AssertionError("unbalanced braces in matches()")
+
+    def test_a_tag_search_matches_the_tag_token_only(self, tmp_path):
+        import json
+        import shutil
+        import subprocess
+        node = shutil.which("node")
+        if not node:
+            pytest.skip("node not installed (CI sets PYTEST_NO_SKIPS, which fails on this)")
+        cards = [{"name": "A", "type": "Land", "text": "", "synergies": "mana; ramp"},
+                 {"name": "B", "type": "Instant", "text": "mana value 3", "synergies": "burn"},
+                 {"name": "C", "type": "Creature", "text": "", "synergies": "manaflow"}]
+        harness = ("const q = {value: process.argv[2]}; const setSel = {value: ''};"
+                   "const activeColors = new Set();\n" + self._matches_js() +
+                   "\nconst CARDS = " + json.dumps(cards) + ";"
+                   "\nconsole.log(JSON.stringify(CARDS.filter(matches).map(c => c.name)));")
+        (tmp_path / "h.js").write_text(harness, encoding="utf-8")
+        run = lambda term: json.loads(subprocess.run(
+            [node, str(tmp_path / "h.js"), term], capture_output=True, text=True,
+            timeout=60).stdout)
+        assert run("tag:mana") == ["A"]               # not B (text) nor C (prefix)
+        assert run("mana") == ["A", "B", "C"]          # free text is still free text
+
+    def test_build_cards_prefers_the_pools_tags(self):
+        import sys
+        sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(
+            os.path.abspath(__file__))), "scripts"))
+        import build_gallery
+        rows = [{"Card Name": "Crumb", "Synergies": "food; sacrifice"},
+                {"Card Name": "Blank", "Synergies": "lifegain"}]
+        cards = build_gallery.build_cards(rows, {}, {"crumb": "food"})
+        assert [c["synergies"] for c in cards] == ["food", "lifegain"]
