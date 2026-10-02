@@ -52,9 +52,11 @@ commands disagree.
 > (16,047 cards, from 15,761). **Deck 55's three FRA swaps are APPLIED** (Ajani Unrelenting,
 > Liliana the Faultless, Ingris Stingerquill), plus two owner-chosen land swaps (2nd Godless
 > Shrine → Shattered Sanctum, 2nd Sacred Foundry → Dedicated Commons); rationale audit
-> current, floor A. **STILL OPEN:** deck 60's ten FRA swaps (its `#: notes:` and
-> `.cycle/60-redline-pile-analysis.md`), and cataloguing the owned FRA cards (`/ingest`) —
-> only Dedicated Commons is in the library so far, so Ajani/Liliana/Ingris read as crafts.
+> current, floor A. **Deck 60's ten FRA swaps are APPLIED too** (pile doc folded into its
+> notes and deleted); deck 60's floor now reads A against a claimed B — the owner's call.
+> The 21 FRA cards the owner said they hold, plus Chandra, Torch of Defiance (FRA), are
+> catalogued at 1 copy each (lower bounds). **STILL OPEN:** whether Ajani, Liliana the
+> Faultless and Ingris (deck 55) are owned — they read as crafts until an export says so.
 > **TRAP found doing it:** Scryfall's search sits behind Cloudflare with `max-age=57600`
 > (16h), so on a set's release day `make refresh REFETCH=1` re-read a CACHED pre-release
 > response for the canonical `game:arena date<=now` URL (`cf-cache-status: HIT`, age 9.4h) and

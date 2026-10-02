@@ -346,6 +346,7 @@ Rockalanche
 Rough Rhino Cavalry
 Rustler Rampage
 Salvation Swan
+Samut, Hazoret's Champion
 Sanar, Innovative First-Year
 Savage Land Dinosaur
 Savage Ventmaw
@@ -389,6 +390,7 @@ Starry-Eyed Skyrider
 Stegron the Dinosaur Man
 Stickytongue Sentinel
 Stingerback Terror
+Stingerquill Voxmancer // Vicious Verse
 Stony-Voiced Goblins
 Sultai Devotee
 Sun Warriors
@@ -406,6 +408,7 @@ Team Tactics
 Temporal Intervention
 Terra, Magical Adept
 Terrapact Intimidator
+Tetsuko Umezawa, Pursuer
 The Boulder, Ready to Rumble
 The Cave of Two Lovers
 The Final Days
@@ -426,6 +429,7 @@ Thunderous Velocipede
 Tidings of War
 Tiger-Dillo
 Time Stop
+Tomik, Izzet Sparkmage
 Toph, the Blind Bandit
 Topiary Lecturer
 Transit Mage
@@ -463,6 +467,7 @@ Waxen Shapethief
 Weapons Vendor
 Web-Warriors
 Welcome to Sweettooth
+Whiplash Wordsmith // Vicious Verse
 Whirlwing Stormbrood
 Whirlwing Stormbrood // Dynamic Soar
 White Tiger, Ava Ayala

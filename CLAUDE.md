@@ -1399,7 +1399,7 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   worse, because nothing is blank**: Dead Weight is tagged `removal` by the tagger and
   scored ZERO roles by the classifier — and it is the ROLE model that feeds `tier_band`
   (BS6-10). It is a GATE now: `check_roles.py --tags` sweeps the pool for it,
-  baselined at 173 and soft in `check_all`, reading `MECHANIC_RULES` live, never a copy.
+  baselined at 174 and soft in `check_all`, reading `MECHANIC_RULES` live, never a copy.
   **The rules read the CARD, not what it describes (BS8-31; `target_counts` joined 2026-09-09, minus the library-search family whose riders LIVE in reminder text)** — `sacrifice`/`removal`
   on reminder-stripped text, `reanimator` needs a graveyard→battlefield clause,
   `landfall`/`convoke` no longer map to `ramp`; `--merge` cannot REMOVE a stale library
@@ -1960,9 +1960,10 @@ is invisible, and a handoff nobody is told to read is the same failure one layer
   consolidated swap plan; it is TEMPORARY and says so, and it is deleted once the
   swaps land. Named here because a fresh session loads nothing else, and the whole
   point of committing it per batch is that it outlives one context window.
-  **TWO are live as of 2026-10-01**: `78-brawl-pile-analysis.md` (78-historic-brawl —
-  Tier 1 applied, the Tier 2 and Tier 3 waves still open) and `60-redline-pile-analysis.md`
-  (deck 60 — ten Reality Fracture swaps queued until the pool holds that set, G-79). The
+  **ONE is live as of 2026-10-02**: `78-brawl-pile-analysis.md` (78-historic-brawl —
+  Tier 1 applied, the Tier 2 and Tier 3 waves still open). `60-redline-pile-analysis.md`
+  was deleted 2026-10-02 when its ten Reality Fracture swaps landed (findings folded into
+  deck 60's `#: notes:`). The
   four before them (`prune-analysis.md`, `wylie-tap-analysis.md`,
   `hob-followup-analysis.md`, `uw-equipment-analysis.md`, 1,407 lines) were cleared on
   2026-09-23 at the owner's instruction with their proposals still unapplied. **That is a deliberate abandonment, not a completion, and the difference

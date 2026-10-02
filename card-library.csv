@@ -6028,3 +6028,52 @@ Voice of Victory,Creature — Human Bard,"Mobilize 2 (Whenever this creature att
 Your opponents can't cast spells during your turn.",W,Human; Bard; tokens; mobilize; go-wide; aggro,TDM,33,1
 Dedicated Commons,Land,"This land enters tapped unless you control a planeswalker.
 {T}: Add {R} or {W}.",W/R,mana,FRA,175,1
+Stingerquill Voxmancer,Creature — Goblin Sorcerer // Sorcery,"At the beginning of your upkeep, if this creature isn't prepared, it becomes prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.) // Vicious Verse deals 1 damage to target opponent.",B/R,Goblin; Sorcerer; burn; prepared; spellslinger; tempo,FRA,151,1
+"Koth, the Geomancer",Legendary Creature — Human Warrior,"Reach
+Landfall — Whenever a land you control enters, Koth deals 1 damage to each opponent. If that land is a Mountain, add {R}.",R,Human; Warrior; burn; landfall; noncombat damage; reach; defense; lands,FRA,248,1
+"Samut, Hazoret's Champion",Legendary Creature — Human Warrior Cleric,Creatures you control have haste.,R,Human; Warrior; Cleric; haste; aggro,FRA,251,1
+Screeching Soulbreaker,Creature — Siren Bard,"Flying
+Whenever this creature attacks, it deals 1 damage to each opponent and you gain 1 life.",B,Siren; Bard; lifegain; burn; noncombat damage; flying; evasion,FRA,65,1
+Stingerquill Charm,Instant,"Choose one —
+• Stingerquill Charm deals 3 damage to any target.
+• Target creature gains first strike and deathtouch until end of turn.
+• Create a 2/2 colorless Wizard Soldier creature token named Cadet. It gains haste until end of turn.",B/R,tokens; burn; deathtouch; combat; removal; first strike; haste; aggro,FRA,150,1
+"Tinybones, Pocket Nuisance",Legendary Creature — Skeleton Rogue,"When Tinybones enters, each opponent discards a card.
+Whenever a player discards one or more cards, Tinybones deals 1 damage to each opponent.",B,Skeleton; Rogue; burn; etb; discard; noncombat damage,FRA,237,1
+"Gallia, the Merrymaker",Legendary Creature — Satyr,"Haste
+Each other creature you control with a +1/+1 counter on it has haste.
+{1}{R}, {T}: Put a +1/+1 counter on target creature that entered this turn.",R,Satyr; counters; haste; aggro,FRA,245,1
+Cast Away Doubt,Sorcery,Draw two cards. Cast Away Doubt deals 2 damage to each player.,B,card draw; burn,FRA,51,1
+Whiplash Wordsmith,Creature — Vampire Sorcerer // Sorcery,"This creature enters prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.)
+As long as an opponent was dealt noncombat damage this turn, this creature has flying and haste. // Vicious Verse deals 1 damage to target opponent.",B/R,Vampire; Sorcerer; burn; noncombat damage; prepared; spellslinger; tempo,FRA,164,1
+Extended Absence,Instant,Exile target creature or planeswalker. Extended Absence deals 1 damage to each opponent and you gain 1 life.,B,lifegain; removal; burn,FRA,54,1
+"Tomik, Izzet Sparkmage",Legendary Creature — Human Wizard,"Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
+If a source you control would deal noncombat damage to an opponent or a permanent an opponent controls, it deals that much damage plus 1 instead.",R,Human; Wizard; pump; spellslinger; noncombat damage; prowess; tempo,FRA,253,1
+Grim Repriser,Creature — Zombie Bard,"Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
+{B}{R}: Return this card from your graveyard to the battlefield with a finality counter on it. Activate only if an opponent has been dealt noncombat damage this turn. (If a creature with a finality counter on it would die, exile it instead.)",B/R,Zombie; Bard; counters; reanimator; graveyard; pump; spellslinger; noncombat damage; prowess; tempo,FRA,136,1
+Gideon the Oathless,Legendary Creature — Human Mercenary,"Ward—Discard a card.
+Whenever a creature an opponent controls enters, Gideon deals 1 damage to that player.
+Whenever an opponent activates a loyalty ability, Gideon deals 1 damage to that player.",B,Human; Mercenary; burn; noncombat damage; ward; protection,FRA,230,1
+"Tetsuko Umezawa, Pursuer",Legendary Creature — Human Mercenary,"Double strike
+Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
+Whenever a creature an opponent controls with power or toughness 1 or less blocks, Tetsuko Umezawa deals 1 damage to that creature's controller.",R,Human; Mercenary; burn; pump; spellslinger; prowess; tempo; double strike; combat; aggro,FRA,252,1
+"Winter, Tormented Loner",Legendary Creature — Human Warlock,"When Winter enters, you may sacrifice a creature or planeswalker. When you do, each opponent sacrifices a creature of their choice.
+Winter gets +1/+0 for each creature and planeswalker card in your graveyard.",B,Human; Warlock; graveyard; sacrifice; etb; pump,FRA,240,1
+"Garruk, Veiled Butcher",Legendary Planeswalker — Garruk,"If a creature an opponent controls would die, exile it instead.
++2: Up to one target creature gets -4/-1 until your next turn.
+−2: Each player sacrifices a creature of their choice. If you sacrificed a creature this way, create a 4/4 green Beast creature token with trample.
+−3: Each opponent discards two cards. For each opponent who didn't discard two nonland cards this way, you draw a card.",B,Garruk; Planeswalker; card draw; sacrifice; tokens; planeswalker; removal; discard,FRA,229,1
+"Massacre Girl, Most Wanted",Legendary Creature — Human Assassin,"Whenever another creature or planeswalker you control dies, Massacre Girl deals 1 damage to target opponent and you gain 1 life.
+Whenever an opponent is dealt noncombat damage, put a +1/+1 counter on Massacre Girl.",B,Human; Assassin; counters; lifegain; burn; noncombat damage,FRA,234,1
+Liliana the Repentant,Legendary Creature — Human Warlock,"Whenever another creature or planeswalker you control enters, mill two cards.
+Exhaust — {5}{B}: Return target creature or planeswalker card from your graveyard to the battlefield. Put a +1/+1 counter on Liliana. Activate only as a sorcery. (Activate each exhaust ability only once.)",B,Human; Warlock; counters; reanimator; graveyard; mill; exhaust; payoff,FRA,231,1
+"Danitha, Spear of Agony",Legendary Creature — Human Knight,"First strike
+Whenever you cast a spell that targets an opponent or a creature an opponent controls, put a +1/+1 counter on Danitha.",B,Human; Knight; counters; first strike; combat,FRA,227,1
+"Jiang Yanggu, Alone",Legendary Creature — Human Berserker,"Menace (This creature can't be blocked except by two or more creatures.)
+Whenever a creature you control attacks a player alone, discard a card, then draw a card. Then put a +1/+1 counter on that creature for each card you've discarded this turn.",R,Human; Berserker; counters; card draw; menace; evasion,FRA,246,1
+Pyre Rhymer,Creature — Elemental Sorcerer // Instant,"Prowess
+This creature enters prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.) // Until end of turn, whenever you tap a Mountain for mana, add an additional {R}.",R,Elemental; Sorcerer; prowess; spellslinger; tempo; prepared,FRA,91,1
+"Chandra, Torch of Defiance",Legendary Planeswalker — Chandra,"+1: Exile the top card of your library. You may cast that card. If you don't, Chandra deals 2 damage to each opponent.
++1: Add {R}{R}.
+−3: Chandra deals 4 damage to target creature.
+−7: You get an emblem with ""Whenever you cast a spell, this emblem deals 5 damage to any target.""",R,Chandra; Planeswalker; burn; planeswalker; noncombat damage,FRA,244,1

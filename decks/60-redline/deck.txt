@@ -66,9 +66,9 @@
 #: notes: KNOWINGLY: card advantage fell 5 to 3 in round 2 (the quality guard's warning),
 #: notes: and Adrenaline Jockey deals 4 to US whenever we cast a spell on an OPPONENT'S
 #: notes: turn — Lightning Strike, Bitter Triumph, Heartless Act and Road Rage are all
-#: notes: instants, so cast them on our own turn while Jockey is out. PENDING until Reality
-#: notes: Fracture (FRA) is in card-pool.csv — on Arena now, Scryfall-dated 2026-10-02; run
-#: notes: `make refresh REFETCH=1` after that date, catalog the owned FRA cards, then apply:
+#: notes: instants, so cast them on our own turn while Jockey is out. APPLIED 2026-10-02, once
+#: notes: Reality Fracture (FRA) reached card-pool.csv and the owned FRA cards were catalogued
+#: notes: (they had been queued since it was on Arena before its Scryfall date):
 #: notes: Stingerquill Voxmancer for a Burnout Bashtronaut, Koth, the Geomancer for a Goblin
 #: notes: Surveyor, Screeching Soulbreaker for a Mutant Surveyor, Whiplash Wordsmith for a
 #: notes: Streaking Oilgorger, Samut, Hazoret's Champion for an Hour of Victory, Massacre
@@ -76,43 +76,59 @@
 #: notes: other Goblin Surveyor, Tomik, Izzet Sparkmage for the last Endrider Catalyzer, and
 #: notes: Tinybones, Pocket Nuisance for one Gas Guzzler, and Chandra, Torch of Defiance for
 #: notes: one Lightning Strike (FRA reprints it; the pool holds only its KLR printing, which
-#: notes: reads not-Standard until the refresh). The owner's Arena list already
-#: notes: runs all of them; until those land, this file is part-way between the two.
+#: notes: reads not-Standard until the refresh). The file now matches the owner's Arena list.
+#: notes: After the ten: avg MV 2.86 -> 3.00, interaction 10, card advantage 4, metrics floor A
+#: notes: (claimed B). Tinybones, Samut, Tetsuko and Massacre Girl were moved to the curve
+#: notes: section matching their cost.
+#: notes: From the 2026-09-30 pile (67 cards; working doc deleted when these landed): first
+#: notes: reserves if a cut disappoints are Speed, Alesha and Black Widow (2-3 drop tickers);
+#: notes: card-advantage reserves Grab the Prize, Cast Away Doubt and Elegy Acolyte (BB at 4).
+#: notes: Not taken: Coalstoke Gearhulk (BBRR at 5). Parked: a Rakdos Vehicles variant built
+#: notes: around War Balloon and The Fire Nation Drill — 17 Vehicle/pilot cards in that pile
+#: notes: were each weak alone here. FRA's `prepared` keyword is not indexed by the tagger, so
+#: notes: Voxmancer and Wordsmith read as tangential in screen/cuts; grade them from text.
 
 # One-drops (start the clock)
-2 Gas Guzzler (DFT) 85
-2 Burnout Bashtronaut (DFT) 115
+1 Gas Guzzler (DFT) 85
+1 Burnout Bashtronaut (DFT) 115
+1 Stingerquill Voxmancer // Vicious Verse (FRA) 151
 1 Hazoret, Godseeker (DFT) 133
 
 # Two-drops (keep hitting)
 1 Gastal Thrillseeker (DFT) 205
 1 Momentum Breaker (DFT) 97
-1 Endrider Catalyzer (DFT) 124
+1 Tomik, Izzet Sparkmage (FRA) 253
 1 Hawkeye, Master Marksman (MSH) 130
+1 Samut, Hazoret's Champion (FRA) 251
 
 # Three-drops (engine bodies)
 1 Gastal Raider (DFT) 86
 1 The Infamous Cruelclaw (BLB) 219
-2 Hour of Victory (DFT) 91
-2 Goblin Surveyor (DFT) 131
-2 Mutant Surveyor (DFT) 98
+1 Hour of Victory (DFT) 91
+1 Koth, the Geomancer (FRA) 248
+1 Screeching Soulbreaker (FRA) 65
 1 Howlsquad Heavy (DFT) 134
 1 Outpace Oblivion (DFT) 139
 1 Adrenaline Jockey (DFT) 112
 1 War Balloon (TLA) 159
 1 Raven Eagle (TLA) 116
+1 Tinybones, Pocket Nuisance (FRA) 237
 
 # Payoffs (max-speed top end)
 1 Far Fortune, End Boss (DFT) 203
 1 Chandra, Spark Hunter (DFT) 116
 1 The Speed Demon (DFT) 105
 1 Risen Necroregent (DFT) 102
-2 Streaking Oilgorger (DFT) 107
+1 Streaking Oilgorger (DFT) 107
+1 Whiplash Wordsmith // Vicious Verse (FRA) 164
 1 The Fire Nation Drill (TLA) 98
 1 Dracosaur Auxiliary (DFT) 122
+1 Tetsuko Umezawa, Pursuer (FRA) 252
+1 Massacre Girl, Most Wanted (FRA) 234
 
 # Removal
-2 Lightning Strike (TLA) 146
+1 Lightning Strike (TLA) 146
+1 Chandra, Torch of Defiance (FRA) 244
 1 Bitter Triumph (SOA) 26
 1 Heartless Act (TLA) 103
 1 Road Rage (DFT) 145
