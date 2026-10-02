@@ -2261,6 +2261,18 @@ It REPORTS and never re-scores, the protection-axis and count-confidence stance.
 worked case: Volley Veteran ("damage equal to the number of Goblins you control") read KEY
 for deck 39, a Humans/Equipment deck, on the `etb` tag alone — the count that decides the
 card is zero.
+
+**BS11-16 (2026-10-02) — the overlay gate passed BELOW the floor.** `structural_overlay_hit`
+tested `doubler_support(...)`, `cost_scale_support(...)` and `type_scale_support(...)` for
+truthiness, so one feeder cleared it — Delney passed in 114 of 114 decks and reached its
+floor in 0 — and the chosen-type branch tested a TUPLE, which is always true. The finding
+named the doubler branch; the other two were the same defect in the same function and were
+fixed with it. Each branch now clears only at the floor its own boost uses (doubler via
+`doubler_best`, which also applies the card's power restriction). Measured with `screen`'s
+inputs over every structural pool card × 114 decks: 305 of 2,035 KEY verdicts fell to
+role-player (doubler 120, cost-scale 132, chosen-type 51, both 2), deck 46's Elspeth (4
+token feeders, floor 5) among them. The KEY 18.6% → 10.2% figure above predates this.
+
 ## [G-32] `suggest-homes` reads CASTABILITY as an identity SUBSET — which says nothing about whether you c
 
 **`suggest-homes` reads CASTABILITY as an identity SUBSET — which says nothing about
@@ -2312,6 +2324,14 @@ band isolates the real class: 2 pips on **3–9** sources — Wonder Man on 3 re
 and Appa on 4 white, deck 21's black cards on 5, Overlord on 6, Elegy Acolyte on 8. The
 3+ band keeps 0.70 so its meaning is untouched, and a test pins that it is unchanged.
 
+**BS11-61 / BS11-67 (2026-10-02).** `cmd_mana` and `build_dashboard` each re-implemented
+the "which colour does this hybrid bind to" loop that `binding_pips` holds; they agreed when
+found, which is a property of that day. `hybrid_binding(h, sources)` is now the per-symbol
+rule all three call. Separately, `pip_depth_warning` chose the colour with the MOST pips and
+broke ties by the cost string's order, so `{W}{W}{U}{U}` off W15/U6 returned None while
+`{U}{U}{W}{W}` flagged U, and deck 73a's Aurelia (W-2 at 0.525) went unflagged. It now judges
+each colour against its own pip-count bar and returns the worst FAILING one (lowest P, then
+more pips, then name) — the choice `cmd_consistency`'s `worst_col` already made.
 
 ## [G-33] `suggest-homes` also weighs a DOUBLER against the deck's magnitude on its axis
 
@@ -2859,6 +2879,14 @@ aid, not a guarantee (mulligans/scry/draw shift the real numbers) — it doesn't
 `check_all.py`. Pure math helpers (`hypergeom_at_least`, `cards_seen`, `cast_probability`,
 `min_sources_for`, `opening_land_stats`) are unit-tested in `tests/test_deck.py`.
 
+**BS11-68 / BS11-74 (2026-10-02).** The → note asked for `min_sources_for` on the worst
+colour alone, but `cast_probability` multiplies every colour's term, so following the advice
+could still leave the card under target (deck 30's Cuboid Colony at 83.9%), and a row whose
+colours each cleared the target ALONE printed nothing while jointly below it — 136 such rows
+roster-wide. `joint_source_plan` adds one source at a time to the colour with the lowest term
+until the product reaches target (reducing to `min_sources_for` for one colour) and returns
+None past the land count, which routes to the colour-hungry note. Every below-target row now
+has a note. Separately, `total or 60` labelled an empty file a "60-card deck"; it is refused.
 
 ## [G-37] `deck.py suggest --lands <id>` is the manabase RECOMMENDER `consistency` was missing
 
@@ -3053,6 +3081,10 @@ buried: Temple of Malice (FDN) was legal to ~2029 and the two adds run to ~2027 
 The transferable half: *a filter copied between two surfaces carries the assumption that
 justified it.* Skip-what-you-run encodes "one copy is enough", which is true of a spell
 and false of a land.
+
+**BS11-31 (2026-10-02).** Shocklands earned the untapped premium from 2026-09-04 but still
+printed the bare `·tapped?`, whose legend says "scored as tapped" — the marker contradicted
+the score beside it. They print `·shock` now, and the legend names it.
 
 ## [G-38] `deck.py suggest --ramp / --interaction / --needs` are the NEEDS model — the structural axes the
 
@@ -5489,6 +5521,12 @@ pattern must also be in `CHEAPER_KW`.
 left alone; if a future card reads "creatures in your hand have impending 2—{1}", the grant
 path will not see it.
 
+**BS11-71 (2026-10-02).** Two corrections to this rule's own wording. "Priced at MV 1" was
+true only of a one-pip X spell: X counts as 0, so `{X}{R}{R}` books at 2 and 26 of the
+roster's 37 X cards booked above 1. `stats` now prints each card's booked MV and the
+advisories say "X counted as 0". And `x_cost_cards` scanned the stored cost, which covers
+both halves of a split card, so An Unexpected Party read as an X spell off its other half;
+it reads `front_face_cost` now (G-02).
 
 ## [G-61] Before dismissing a card, count the deck property its value depends on
 
@@ -5990,6 +6028,13 @@ family (`_TARGET_KEEP_REM` — `lib_type`, `basic_any`, `basic_named`), because 
 fetch rider is written ONLY in its reminder and a global strip would have deleted G-75's own
 worked example silently. And a generic "create a token that's a copy of that creature" is
 not counted, because what it copies is unknowable here.
+
+**BS11-70 (2026-10-02).** `target_counts` typed each card from the whole `Front // Back`
+line. A Saga that transforms into a creature counted as a creature card to return; an
+Adventure creature (`Creature // Sorcery — Adventure`) failed the permanent-card test; and an
+`Artifact // Land` read as a land and was skipped as a gate source. A card in a library or
+graveyard has only its front face's characteristics, so the type is the front face's now —
+the same reason `mv` already was. 67 gate counts moved across 18 decks.
 
 ## [K-14] A draw clause behind an activation cost was invisible to the role tally (fixed 2026-08-07)
 

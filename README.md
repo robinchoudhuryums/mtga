@@ -778,8 +778,8 @@ each describe a different face than you expect — see gotcha **G-63**.
 `stats` also flags **cost nature** — `◊` for cards whose text reduces their cost
 or grants flash (convoke/delve/"costs {1} less", so the printed mana value doesn't
 mislead), `△` for abilities/modes that carry an added or conditional cost, `✕` for
-**X-cost cards**, which the curve books at **MV 1** because X counts as 0 off the
-stack (right for castability, wrong as a curve reading — a card you cast for four
+**X-cost cards**, which the curve books with X counted as 0 off the stack (so `{X}{G}`
+reads MV 1 and `{X}{R}{R}` MV 2; `stats` prints each card's booked MV) (right for castability, wrong as a curve reading — a card you cast for four
 registers as a one-drop *and* as an early drop; `tier` prints a matching "avg MV
 under-reads" advisory beside the vector) — and
 breaks the nonland spells into **functional roles**: a heuristic read of card text
@@ -832,6 +832,9 @@ after adding it. The annotation is display-only; the ranking never reads the led
 `deck.py consistency` no longer prescribes a land
 count when moving that way makes things worse — on a low curve both directions used to
 trip, so it now says the keepable threshold is unreachable and points at cast-on-curve.
+Its `→ want N sources` note is a **joint** plan: a two-colour card's probability is the
+product of both colours, so the advice raises whichever colours it takes to reach the
+target together, and every card below target gets a note.
 It also prints a **tapland line** — how many nonbasics enter tapped, unconditional vs
 conditional — because every probability it computes prices color *access*, and a land
 pass once raised every castability figure while quietly taking the deck to 7 unconditional

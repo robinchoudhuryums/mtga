@@ -622,7 +622,7 @@ is protecting.
   dead. A GENERIC signature theme must now EARN its KEY by also clearing
   **`structural_overlay_hit`** — ONE definition across all THREE callers (G-40/G-70) —
   while a SPECIFIC one still mints alone. KEY 18.6% → 10.2%; top-theme 1.2% → 63.8%.
-  Prefer the NARROW matches. **TWO RESIDUALS, measurements in the gotchas section:** a
+  Each overlay clears only at its FLOOR (BS11-16 — 305 sub-floor KEYs fell to role-player). **TWO RESIDUALS, measurements in the gotchas section:** a
   ZERO-ROW result is a THEME miss, not a colour-identity fact (reporting the second
   produced a written "you have no Abzan deck" claim against FOUR WBG decks); and a
   SPECIFIC signature theme still mints on overlap alone, so a structurally-valued card can
@@ -636,8 +636,8 @@ is protecting.
   surface dropped it entirely, reporting **100%** because nothing was left to constrain
   on: 41 roster cards, 27 overstated by 5+ points, the worst at 100% against a true
   52.5% and absent from `consistency`'s table while its strictly EASIER twin was
-  flagged. ONE definition, `binding_pips` (2026-09-17), read by `pip_depth_warning`,
-  `consistency`, `mana` and the dashboard so all four agree. **Two 2026-08-13 fixes, and both are the G-40 shape
+  flagged. ONE definition, `binding_pips` (per symbol: `hybrid_binding`, BS11-61), read by all
+  four surfaces; `pip_depth_warning` flags the worst-FAILING colour, not the deepest (BS11-67). **Two 2026-08-13 fixes, and both are the G-40 shape
   — a working primitive nothing asked.** It had ONE caller, `suggest-homes`, so the
   DECK-level recommender that surfaces craft targets never ran it; `cmd_suggest` calls it
   now. And the floor was 3 pips, so `{2}{B}{B}` Elegy Acolyte was recommended into a deck
@@ -711,14 +711,17 @@ is protecting.
   now says the threshold is unreachable and points at cast-on-curve — which is the number
   that settles the question anyway. A planning aid, not a guarantee. Its pips are
   `binding_pips`, so a hybrid whose deck has sources for only ONE half is priced as
-  that colour rather than skipped (G-32). [G-36]
+  that colour rather than skipped (G-32). **Its → note is a JOINT plan** (`joint_source_plan`,
+  BS11-68): the probability multiplies across colours, so per-colour advice left a
+  two-colour card below target, and 136 below-target rows printed no note at all. An
+  empty deck file is refused, not priced as 60 cards. [G-36]
 - **`deck.py suggest --lands <id>` is the manabase RECOMMENDER** — plain `suggest` is
   structurally blind to lands (it filters to cards sharing a synergy theme). Scored on
   FIXING value plus bounded synergy/scarce-colour nudges, and it applies the deck's
   `#: format:`. RESTRICTED mana is half-premium, `·restricted`. `·tapped?` is
   the human read for a condition this model cannot settle, and it has been WRONG twice:
-  for SHOCKLANDS until 2026-09-04, and for FASTLANDS and met CHECKLANDS until 2026-09-20 — both earn the premium
-  now and print `·fast` / `·check` (G-35). **The G-35 breadth credit re-ranks the #1 pick
+  for SHOCKLANDS until 2026-09-04, and for FASTLANDS and met CHECKLANDS until 2026-09-20 — all three earn the premium
+  and print `·shock` / `·fast` / `·check` (G-35, BS11-31). **The G-35 breadth credit re-ranks the #1 pick
   in 22 of 115 decks** — fetches beat untapped duals on FIXING; `_LAND_BREADTH_PER_COLOR`
   is the dial. **A LAND ALREADY IN THE DECK IS A PICK (2026-09-20)** — it had inherited
   `suggest` proper's skip-what-you-run filter (right there, G-04's `+In` bug), so it could
@@ -951,11 +954,12 @@ is protecting.
   each X", "X spells you cast"), and only then ask whether the bodies exist. The inverse
   reading — that a deep tribe must be supportable — is what makes a shallow archetype look
   buildable right up until the deck has no reason to share a type. [G-59]
-- **An `{X}` SPELL IS PRICED AT MV 1, so a curve reading UNDER-reads any deck running
+- **An `{X}` SPELL IS PRICED WITH X = 0, so a curve reading UNDER-reads any deck running
   several — and the distortion runs BOTH ways.** `mana_value` counts X as 0, which is what
   the rules say off the stack: right for castability and cast-on-curve probability, wrong
   as a CURVE reading. Deck 50a was misread twice in one cycle, in both directions, while
-  its real curve barely moved. `stats` lists `✕ X-COST cards`; `tier` prints an advisory.
+  its real curve barely moved. `stats` lists `✕ X-COST cards` with each one's BOOKED MV (MV 1 only for a one-pip X
+  spell; X read off the FRONT face — BS11-71); `tier` prints an advisory.
   REPORT-ONLY and it must stay so — a new term in `tier_band` would silently re-grade the
   roster, exactly as the protection axis is kept out. **A CHEAT COST is the same distortion
   the other way (2026-09-06)**: an alternative cost books at the PRINTED cost, so Bygone
@@ -1097,7 +1101,9 @@ is protecting.
   surface that reads it, so wiring a primitive to a RANKING surface re-prices every residual
   it carries.** **Live residuals:** gates match reminder-STRIPPED text except the
   library-search family (`_TARGET_KEEP_REM`, where G-75's riders live), and a generic
-  "create a token that's a copy" is not counted — what it copies is unknowable. [G-66]
+  "create a token that's a copy" is not counted — what it copies is unknowable. Types come
+  from the FRONT face (BS11-70: the whole `A // B` line made a flip-Saga a creature card and
+  dropped `Artifact // Land`; 67 counts moved). [G-66]
 
 - **A GATE THE DECK MEETS FOR FREE IS NOT A COST, AND EVERY MODEL HERE READ IT AS ONE.**
   G-66's `targets` counts CARDS IN THE LIST, so a card gated on a GAME STATE was invisible
@@ -1338,7 +1344,8 @@ is protecting.
   114 decks change band** — no aggro-plan deck is mana-dense today, so this buys nothing
   now and stops a future one buying a band. SIX decks read mana-dense; deck 17 is 12 early
   drops of which **6** are mana, a different deck than "12". The bare int still feeds
-  `tier_band` and the F10 guard, like `count_conf` (G-48). [G-81]
+  `tier_band` and the F10 guard, like `count_conf` (G-48). A curve averaged over ZERO priced
+  cards is no data, not 0.0 (`avg_mv_n`, BS11-72), so it earns no clock credit. [G-81]
 
 - **THE TEST SUITE MUST NOT WRITE THE REPO'S OWN DATA, and for weeks one test did on every
   run.** `test_app_editor`'s no-Origin `/api/revert` probe ran without the fixture that
@@ -1464,7 +1471,8 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   silently UNDER-count.** So every count carries its own uncertainty: `stats`/`tier`
   print `7`, `3 +2?`, or `8 +4? (3 unclassified)` plus a "⚠ Possible UNDER-COUNT" list,
   and card advantage splits `(N repeatable, M one-shot)` — a 1-3 quality SCALE was
-  DECLINED, report-only. **Read the uncertainty, not just the number** — deck 40a was
+  DECLINED, report-only; the split skips lands by FRONT face like `role_tally`, so it sums
+  to the total (BS11-69). **Read the uncertainty, not just the number** — deck 40a was
   once graded on interaction
   3 against a hand count of 7. `role_tally` is the ONE canonical counter, so the number
   `stats` shows is the number the tier floor grades on. **When editing a role pattern,
