@@ -335,7 +335,6 @@ Reckless Velocitaur
 Red Room Recruit
 Relm's Sketching
 Reno and Rude
-Repurposed Enforcer
 Resentful Revelation
 Resolute Reinforcements
 Restorative Technique
@@ -451,6 +450,7 @@ Unstoppable Plan
 Unstoppable Slasher
 Vastlands Scavenger // Bind to Life
 Venomized Cat
+Verdant Kraken
 Veteran Ice Climber
 Virulent Silencer
 Virus Beetle
