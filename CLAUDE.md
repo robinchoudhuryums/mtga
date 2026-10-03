@@ -427,8 +427,11 @@ is protecting.
   `printing_problems` and `malformed_deck_lines`, the two checks `check_all` runs; until
   BS8-19 only fidelity was checked, so an unknown `(SET)` saved green and the gate went
   red. The CSV save carries a content-hash `lib_token` like the deck save (BS8-18): a stale
-  tab is refused with a 409, not silently written. Run `/refresh` after an app session so
-  derived data catches up. [G-15]
+  tab is refused with a 409, not silently written. Revert carries the same token (BS11-43:
+  the newest `.bak` is whoever wrote last, so a stale page reverted a CLI import) and re-adds
+  the mana rows a Remove pruned (BS11-44); Add stores Scryfall's set code and refuses one no
+  pool printing carries (BS11-42, INV-01b); the token-less bare-list save is refused.
+  Run `/refresh` after an app session so derived data catches up. [G-15]
 - **`card-pool.csv` carries printed `Power`/`Toughness` — parse them with
   `lib.card_power()`**, which returns `None` for the `*`/`X` printings instead of
   inventing a number; note `card_power(0)` is a real 0, so neither the helper NOR ITS
@@ -1706,6 +1709,8 @@ format.
    an add appends a card-mana.csv row; INV-04 since a deck save re-parses cleanly). A
    deck save against a file changed underneath (e.g. a CLI `swap --apply` while the tab
    was open) is refused with a 409 "reload the page" toast, never silently overwritten.
+   So is a REVERT from a collection page loaded before a CLI write (BS11-43); and a
+   Remove followed by Revert leaves check_all green, the mana row restored (BS11-44).
 5. Light-mode status colors | Subsystem: Presentation & Interface
    Steps:
      - Open `dashboard.html`, press `t` (or click the theme toggle) for light mode
@@ -1861,8 +1866,9 @@ format.
 17. Mini curve vs Stats tab | Subsystem: Presentation & Interface
     Steps: find a deck running a 0-MV nonland card; compare the deck card's mini curve "1"
     bar with the Stats tab's 0 and 1 columns.
-    Expected: they agree. Open item P-10 — the mini curve folds MV 0 into the 1 bar while
-    the Stats tab splits them; this scenario is what confirms a fix.
+    Expected: they agree. P-10 was FIXED at BS11-51 — both curves now draw a separate "0"
+    bar when a deck has an MV-0 nonland. No roster deck has one today, so the fix is
+    unverified on real data: this scenario confirms it the first time one is added.
 18. Live-sync failure honesty, and a truncated paste | Subsystem: Presentation & Interface
     Steps: open `dashboard.html` in a browser with site storage blocked (or a Safari private
     window) and click ⟳; then paste a TRUNCATED deck export into the stale-deck panel.
@@ -1880,7 +1886,29 @@ format.
     shipped to Pages with a green build and silent output — up to 57 decks. The
     sub-majority WARN added there is what a fresh run surfaces; this walk is what catches
     it on a page already published. `--out` writes a throwaway copy, so it is safe to run
-    against the real data at any time.
+    against the real data at any time. Since BS11-50 the Pages run ANNOTATES each `WARN`
+    and the page's `[analysis error` count, so also check the latest deploy's annotations.
+
+20. Dashboard JS-painted colours in light mode | Subsystem: Presentation & Interface
+    Steps: press `t` for light mode; look at a deck card's colour pie, the roster
+    colour-distribution bars, and a colour filter chip in its "on" state.
+    Expected: every colour is a mid-tone visible on the white panel, matching the Stats
+    tab's identity bars. Those three are painted from JS inline styles, which used hex
+    constants that bypassed the light tokens until BS11-52 — washed-out pastels mean it
+    regressed.
+21. Leverage card and its nested link by keyboard | Subsystem: Presentation & Interface
+    Steps: Tab to an impact/leverage card, then to its ↗ link; press Enter on each.
+    Expected: the card shows a focus ring and toggles its filter; the link opens Scryfall
+    and does NOT toggle the card (BS11-47: a bubbled Enter used to reach the card).
+22. Toast legibility | Subsystem: Presentation & Interface
+    Steps: trigger a live-sync failure (storage blocked), a copy, and a queued match.
+    Expected: each message can be read in full before it disappears. Open: the dashboard
+    toast clears after 1.7s (the editor's after 4s); it is a live region since BS11-45, so
+    a screen reader hears it, but a slow sighted reader may not.
+23. Variant row layout | Subsystem: Presentation & Interface
+    Steps: open a deck that has variants, in both themes and two browsers.
+    Expected: the badges inside each variant row (a native `<button>` since BS11-48) sit on
+    one line aligned like the parent row, and the focus ring frames the whole row.
 
 **Frozen Subsystems:** none.
 
@@ -1891,7 +1919,8 @@ publishes `dashboard.html` to GitHub Pages on every push to `main`.
 Data + local tooling ship by commit/push (no build/release step). The
 one deployed artifact is the roster **dashboard**, and since 2026-08-24 the workflow
 INSPECTS the page it is about to publish (non-trivial size + the `#data` island, the same
-two facts INV-03 checks on the committed copy) — nothing looked at it before:
+two facts INV-03 checks on the committed copy) — nothing looked at it before — and since
+BS11-50 turns every build `WARN` and the page's `[analysis error` count into run annotations:
 `.github/workflows/pages.yml` rebuilds
 `build_dashboard.py` offline and publishes it to GitHub Pages on every push to `main`.
 `build_dashboard.py` restyles are **template-only** — the data pipeline feeding the

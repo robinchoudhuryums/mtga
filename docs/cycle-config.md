@@ -367,6 +367,15 @@ snapshot. `build_dashboard.py` restyles are **template-only**: the data pipeline
 (`collect`/`deck_viz`/`craft_rows` → the `#data` island) is the source of truth and must
 stay untouched by any restyle (the payload shape is what `deck.py`/`wishlist.py` produce).
 
+**What a green deploy can still hide, and how it now says so (BS11-50).** The build refuses
+success only when half or more decks degrade; below that it publishes and prints `WARN:`
+lines to a log nobody opens on a green run. The build step now turns every `WARN` into a
+`::warning title=Dashboard build::` annotation (exit status preserved), and the verify step
+annotates how many `[analysis error` markers the page carries. Since BS11-49 the build also
+WARNs for the three roster-level panels the per-deck scan cannot see — the craft plan, the
+wishlist ranking and rotation — and the page renders each failure as an explicit error
+rather than a misleading hint or a hidden section.
+
 
 ## [C-11] Regression Scenario 7 — keyboard-only traversal, in full
 

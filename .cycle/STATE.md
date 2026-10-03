@@ -398,8 +398,8 @@ Updated: 2026-10-02 (Batch 1 — see Where I left off)
 the set (INV-01b), Revert carries `lib_token` and re-adds pruned mana rows (INV-02), bare-list
 save refused; dashboard toast is a live region, copy fallback honest, JS colours on tokens,
 MV-0 curve bucket, roster-panel failures shown + WARNed, Pages annotates WARNs. Suite +
-check_all green; dashboard rebuilt. **Next:** `/sync-docs` for Batch 8, then Batch 9 (docs:
-BS11-55–60, 62–66). Deferred: BS11-80/81.
+check_all green; dashboard rebuilt. **Docs for Batch 8 synced** (G-15, scenarios 4/17/19 +
+new 20–23, C-10, README, gotchas.md G-15/G-72). **Next:** Batch 9 (docs: BS11-55–60, 62–66). Deferred: BS11-80/81.
 
 **2026-10-02 (latest) — scan #11 Batch 7 implemented** (block
 `11-batch7-matches-broad-implement.md`): BS11-32/33/35/36/37/38. Voids record and restore the

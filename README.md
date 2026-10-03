@@ -1270,7 +1270,9 @@ bookmarkable URL with no local setup. One-time operator steps:
 2. **Settings → Pages → Build and deployment → Source: "GitHub Actions."**
 
 Once enabled, the site publishes at `https://<owner>.github.io/<repo>/` on the next
-push to `main`. Prefer not to host it? The self-contained `dashboard.html` opens
+push to `main`. A build that degrades a few panels still publishes, but every warning it
+printed shows as an annotation on the workflow run, so a green deploy cannot hide one.
+Prefer not to host it? The self-contained `dashboard.html` opens
 straight from disk — no server, no setup.
 
 **Theme.** The dashboard has its own toggle (`t`), and a first visit follows your OS: the
@@ -1301,6 +1303,14 @@ Two behaviours worth knowing before you edit:
   Save: you get a "the deck file CHANGED since this page loaded it" toast instead of
   a silent overwrite of the swap. Reload, re-apply your edit, save again. The
   collection CSV has always worked this way; the deck editor joined it later.
+- **Revert is refused from a page that is out of date.** Revert restores the newest
+  backup, whichever tool wrote it — so if `import_collection --apply` (or any CLI write)
+  ran after the page loaded, Revert says the file changed instead of undoing the import.
+  Reload, then revert from there if you still mean to. Reverting a Remove also brings back
+  the card's `card-mana.csv` row.
+- **Add checks the set code.** It is stored the way Scryfall spells it (Arena's `DAR`
+  becomes `DOM`), and a code no card-pool printing carries is refused — leave the field
+  blank, or `make refresh` first when the set is brand new.
 - **The editor follows your OS colour scheme.** All three pages ship a light palette
   and switch on `prefers-color-scheme`; there is no in-page toggle. The dashboard's
   toggle can't drive them — it lives on a different origin (a `file://` or Pages URL

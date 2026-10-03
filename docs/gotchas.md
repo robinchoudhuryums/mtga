@@ -905,6 +905,8 @@ Three findings from one live exercise of every mutating route (~80 requests, zer
   that `lib.atomic_write` documents fixing, and `test_writer_mutations.py` pins the
   property on `lib.atomic_write` only. Masked locally because git ignores non-exec bits.
 
+**2026-10-02 (BS11-42/43/44/53) — the collection editor's other three writers.** BS8-18 gave Save a staleness token; Revert, Add and the legacy save body did not follow. **Revert** restored the newest `card-library.csv.*.bak` — whoever wrote it — with no token, so a page left open across `import_collection --apply` undid the import while still showing the pre-import state and calling it "the last save"; it now requires the page's `lib_token` (absent or stale → 409). It also restored the LIBRARY only, while Remove prunes a card's mana row with its last printing, so remove-then-revert brought the card back with no mana row and broke INV-02; `_restore_mana_rows` re-adds a blank row per restored name. **Add** stored the Set Code exactly as typed — Arena's `DAR`, or a typo — which saved with a success toast and failed INV-01b on the next `check_all` (BS8-19's deck hole, on the CSV side); it now aliases through `enrich.SET_ALIASES`, stores uppercase, and refuses a set no card-pool.csv printing carries. The **bare-list** save body, kept for a "cached pre-token page", skipped the token check entirely; nothing sends it, so it is refused. None of the four had fired on record.
+
 ## [G-16] `card-pool.csv` carries printed `Power` / `Toughness`
 
 **`card-pool.csv` carries printed `Power` / `Toughness`** (front face for a DFC), so
@@ -6840,6 +6842,8 @@ it must not override an explicit dark choice.
 (BS8-20 — `isTyping` checked INPUT/TEXTAREA/contentEditable, so `t` toggled the theme on a
 115-option deck picker), `syncLive` stores the payload before it claims success (P-05), and
 the deck editor guards unsaved changes (P-08).
+
+**2026-10-02 (BS11-45/47/48/52/53) — the generated page again.** The dashboard toast was not a live region (the editor templates' toasts were, and the pin read templates/ only), so every result was visual-only for 1.7s; it is pinned at the generator source now. `COLBG`/`COLFG` were dark-theme HEX constants painted through inline styles — the deck pie, the roster colour bars, an "on" colour chip — so they bypassed the `--W…--Cc` light tokens (the BS6-02 class, through `style=` rather than a stylesheet, which the token gate cannot see because no `var(--x)` was emitted); they are `var(--…)` strings now. `a11y()`'s keydown handled keys BUBBLED from a focusable child, so Enter on a leverage card's ↗ link toggled the card — it returns unless `e.target === node`. The variant-row `<button>` got the synthetic role and key handler a native control must not (the P-07 shape), and the "show all" row was a focusable `<td>` with no role or expanded state — it holds a `<button aria-expanded>` now.
 
 ## [G-73] A deck's repo name and its Arena name are different strings, and neither is authoritative
 
