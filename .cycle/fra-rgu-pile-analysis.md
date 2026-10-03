@@ -70,6 +70,30 @@ or artifact tokens. Nearest neighbours: 49 Big Draco (mono-red Dragons), 59 Stam
   Thopter, and with Visitor each Thopter becomes a 5/5 Dragon. The rest of blue is either the
   Jace / superfriends shell (deck 81's lane, R8) or spell-prowess bodies.
 
+- **The blue cards: mono-blue, measured 2026-10-03.** Same 31-card blue Jace core
+  (both Jaces, Chandra Chill, Machinations, both blue Ways, Plan, Countersculpt ×2, Proxy ×3,
+  Oculus ×2, Protege's Awakening, Keeper, Geist, Traxos, Lyra, Sphinx ×2, Foreseer,
+  Chronologist ×2, Flood Maw, Desculpting Blast, Three Steps Ahead, 4 Theorist's Sanctum),
+  plus nine cards and the lands of each second colour. 24 lands in every version.
+
+  | Build | Floor | Int | CA | Sources | Cards < 90% on curve | Worst |
+  |---|---|---|---|---|---|---|
+  | **mono-U** | A | 13 | 6 | U 24 | **0** (lowest 91%) | Countersculpt 91% |
+  | UR (Saheeli, No Admittance ×2, Violent Echoes, Warlord, Pyromancer, Clash, Pyromental) | A | 12 | 6 | U16/R12 | 13 | Pyromental 55%, Echoes 65%, Countersculpt 69% |
+  | UG (Avatar, Kiora, Tam, Meanderer, green Ways) | A | 9 | 5 | U16/G12 | 12 | Countersculpt 69% |
+  | UW (Bant draft C's white half) | A | 12 | 5 | U15/W11 | 17 | Countersculpt 65%, Elspeth 65% |
+  | UB (Vraska's Final Mercy ×2, Overwrite, Ways, Lurker) | A | 11 | 5 | U14/B10 | 19 | Final Mercy 40% |
+
+  Every version clears floor A, so the floor does not decide this; the MANA does. The blue
+  cards are a UU deck (Countersculpt, Chandra, Lyra, Theorist, Sphinx, Jace RS), and a second
+  colour costs those cards 15–30 points each. Jace, Reality Sculptor's +1 empowers by the
+  ISLAND count: 24 in mono-U (Sanctum is an Island) against 10–14 in a pair, which makes the
+  25-loyalty finish roughly twice as fast. `similar`: ≤1 shared card with any roster deck.
+  **Best pair if a second colour is wanted: UR**, whose empower cards are also removal (No
+  Admittance, Violent Echoes, Warlord's −4) and which adds Saheeli; drop Pyromental (RRU).
+  UB has the best single card (Final Mercy) and the worst mana. This also answers the Bant
+  doc's deck-2 UW-vs-UG question: the measurement favours neither over mono-U.
+
 ## 4. Running verdicts
 
 Legend: ★★★ take · ★★ strong · ★ real · ◇ situational · △ marginal · ✗ out.

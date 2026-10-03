@@ -195,6 +195,8 @@ outside the pile: Theorist's Proxy, Mindseeker Oculus, Protege's Awakening, Camp
 Academic Ascent, and Theorist's Sanctum lands. UU costs on 13 U sources (Countersculpt 63%,
 Chandra 70%) argue for more Islands than Plains.
 
+**2026-10-03 cross-pile measurement (fra-rgu-pile-analysis.md §3):** mono-U beat every pair on the same blue core (0 cards under 90% on curve against 12–19 for UR/UG/UW/UB, all floor A), so deck 2 may be better as mono-blue than UW or UG.
+
 ### Not used in either deck
 
 Vindictive Triumph, Return to the Light Realms, Hexhaven Invigorator, Roiling Canopy, Fblthp
