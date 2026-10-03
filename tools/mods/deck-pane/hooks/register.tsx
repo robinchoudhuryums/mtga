@@ -96,19 +96,45 @@ async function collect($: EngineInterface, id: string): Promise<DeckSnapshot> {
   }
 }
 
-async function refresh($: EngineInterface): Promise<void> {
+// Re-reads the deck and stores the result; resolves to the snapshot, or to the
+// error text when deck.py failed, so a command can answer with either.
+async function refresh($: EngineInterface): Promise<DeckSnapshot | string | null> {
   const id = await read($, deckId)
-  if (id === null) return
+  if (id === null) return null
   await update($, isLoading, () => true)
   try {
     const snap = await collect($, id)
     await update($, snapshot, () => snap)
     await update($, error, () => null)
+    return snap
   } catch (err) {
-    await update($, error, () => (err instanceof Error ? err.message : String(err)))
+    const why = err instanceof Error ? err.message : String(err)
+    await update($, error, () => why)
+    return why
   } finally {
     await update($, isLoading, () => false)
   }
+}
+
+// The same numbers the pane draws, as plain text, for the command's reply: a
+// client that draws no panes (the mobile and web views of a cloud session)
+// still gets the dashboard.
+export function formatSnapshot(snap: DeckSnapshot): string {
+  const build = snap.buildable
+    ? 'buildable from owned cards'
+    : `${snap.missing} missing, ${snap.short} short`
+  const lines = [
+    `Deck ${snap.id} · ${snap.name}`,
+    `Tier ${snap.claimed} · floor ${snap.floor} (${snap.plan})`,
+    `Interaction ${snap.interaction} · card advantage ${snap.cardAdvantage}`,
+    `Protection ${snap.protection} · board power ${snap.boardPower}`,
+    `Avg MV ${snap.avgMv.toFixed(2)} · early drops ${snap.earlyDrops}`,
+    `Sources ${snap.sources} · keepable ${snap.keepable}`,
+    'Weakest on curve:',
+    ...(snap.worst.length === 0 ? ['  (none listed)'] : snap.worst.map(row => `  ${row}`)),
+    `Build: ${build}`,
+  ]
+  return lines.join('\n')
 }
 
 function clock(ms: number): string {
@@ -141,8 +167,10 @@ export const register: Register = on => {
     }
     await update($, deckId, () => id)
     await $.ui.open({ id: PANE, title: `Deck ${id}` })
-    $.clock.after(1, () => void refresh($))
-    return { text: `Deck ${id} dashboard opened; it refreshes after deck edits.` }
+    const got = await refresh($)
+    if (got === null) return { text: 'Usage: /deck <deck id>, e.g. /deck 81' }
+    if (typeof got === 'string') return { text: `deck-pane: ${got}` }
+    return { text: `${formatSnapshot(got)}\n(The pane, where your client draws one, refreshes after deck edits.)` }
   })
 
   on('tool.call', async ($, e, next) => {

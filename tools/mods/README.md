@@ -6,7 +6,7 @@ they can never disagree with the tools.
 
 | Mod | What it does |
 |---|---|
-| `deck-pane/` | `/deck <id>` opens a side pane for one deck: claimed tier vs metrics floor, interaction and card advantage (with their uncertainty), protection, board power, avg MV, early drops, colour sources, keepable %, the three weakest cast-on-curve cards, and buildability. It re-reads itself after any `deck.py swap/move/resolve/sync`, `make postedit`, git checkout/pull, or edit under `decks/`. Refresh button, hotkey `r`. |
+| `deck-pane/` | `/deck <id>` opens a side pane for one deck: claimed tier vs metrics floor, interaction and card advantage (with their uncertainty), protection, board power, avg MV, early drops, colour sources, keepable %, the three weakest cast-on-curve cards, and buildability. It re-reads itself after any `deck.py swap/move/resolve/sync`, `make postedit`, git checkout/pull, or edit under `decks/`. Refresh button, hotkey `r`. The command also REPLIES with the same snapshot as text, so it works in clients that draw no panes (the mobile and web views of a cloud session). |
 | `pile-tracker/` | A band above the prompt naming every live `/pile-analysis` doc (`.cycle/*-analysis.md`) with its `**Status: …**` line. Rescans at session start and after every turn. **Hide** dismisses it for the session; `/piles` lists them all and shows it again. |
 
 ## Loading them
@@ -26,13 +26,19 @@ reloads the mod.
 
 ```
 claude plugin validate tools/mods/deck-pane
-claude plugin test tools/mods/deck-pane        # 4 tests
+claude plugin test tools/mods/deck-pane        # 6 tests
 claude plugin validate tools/mods/pile-tracker
 claude plugin test tools/mods/pile-tracker     # 3 tests
 ```
 
 Once loaded, the engine lays its type declarations in each mod's `.claude-plugin/types/`
 (generated, git-ignored) and `tsc -p tools/mods/<mod>` type-checks it.
+
+## Where they show
+
+Panes and the band above the prompt are drawn only by Claude Code's own interface — a
+terminal session or the desktop app's Code tab. The mobile and web views of a cloud
+session run the hooks but draw neither, which is why `/deck` answers in text too.
 
 ## Coupling to know about
 
