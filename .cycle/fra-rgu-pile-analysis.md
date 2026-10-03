@@ -151,7 +151,7 @@ Columns: **RG** (red-green artifacts/Dragons) / **+U** (a Temur version).
 |---|---|---|---|
 | Sandstorm Salvager | ★★ | ★★ | 3-mana: a 3/3 Golem ARTIFACT token; {2},{T}: counters + trample on every creature TOKEN |
 | Konstrari Improviser | ★★ | ★★ | 2-drop {R/G} hybrid: prepared Soul Tether = a Heartwood |
-| Ultron, Artificial Malevolence | ★ | ★ | {3}: pay {2} to copy each NONTOKEN artifact entering (Gearhulk, Crusher, Traxos, Puppetbeast, Colossus) — a token copy is a Dragon under Visitor only if it is a token ARTIFACT being created… it is: R2 applies |
+| Ultron, Artificial Malevolence | ★ | ★ | {3}: pay {2} to copy each NONTOKEN artifact entering (Gearhulk, Crusher, Traxos, Puppetbeast, Colossus, Heirloom). The copy is an artifact TOKEN, so under Visitor it arrives as a 5/5 Dragon instead (R2) |
 | Geist of Saint Thalia | — | ★ | noncreature spells cost {1} less; few here |
 | Countersculpt | — | △ | UU counter; Jace lane |
 | Tetsuko Umezawa, Fugitive | — | △ | unblockable small creatures; Thopters/Cadets |
@@ -177,3 +177,38 @@ Columns: **RG** (red-green artifacts/Dragons) / **+U** (a Temur version).
 | The Echoverse Fulcrum | ◇ | ◇ | colourless loot + a sweeper for {5} later |
 | Living Library | △ | △ | 0/4 wall; {6} tuck |
 | Archive Arbiter | ★ | ★ | 6-mana colourless 4/4 flier; destroys a noncreature permanent |
+
+## 5. Consolidated plan (live)
+
+**Measured 2026-10-03 on scratch lists** (none written to decks/):
+
+| Build | Sources | Worst on-curve | Notes |
+|---|---|---|---|
+| Red-green, 3 duals + basics | R 13 / G 14 | Craterclaw 44%, gold 6–7s 60% | fails R7's bar for its own colours |
+| **Red-green, optimal duals** (4 Stomping Ground, 4 Training Compound, Thornspire Verge, Rockfall Vale, 2 Konstrari Annex) | **R 17 / G 17** | Craterclaw 66% (a 7-drop), gold 6s 79% | floor A (interaction 12, card adv 4); avg MV 3.94, top-heavy |
+| Temur: + Saheeli, 8 Commons for basics | U 8 / R 15 / G 15 | Saheeli 76%; every RG gold card −10 points | 15 of 20 nonbasics can enter tapped — **rejected** for one blue card |
+
+Distinctness (red-green scratch): closest by theme 49 Big Draco 82% with **0** shared cards;
+closest by cards deck 81 (6: Chandra Torch, Spark Hunter, Ajani, Samut, Kiora, Fulminous
+Forte). No gated card is thin or dead.
+
+**Recommended: red-green Heartwood artifacts, Draconic Visitor as the one-of top payoff.**
+- Makers (R1): Heartwood Crafter, Konstrari Improviser, Biotech Specialist, Rocketeer
+  Boostbuggy, Mutagen Man, Woodwork Prodigy, Sandstorm Salvager, Tenured Tethermage, Aerid
+  Konstrari, Chandra Spark Hunter, Hungering Puppetbeast, Eusocial Engineering, Ultron.
+- Payoffs: Draconic Visitor, Craterclaw Colossus, Pyrewood Gearhulk, Traxos Scourge Eternal,
+  Herd Heirloom; Dragons Bloomvine Regent and Savage Ventmaw.
+- Interaction: Molten Exhale, Piercing Exhale, Compel Brutality, Wrath of the Bloodmane,
+  Fulminous Forte, Chandra Torch, Vivien Reid; Ajani's −3 spares all your tokens.
+- Trim targets when drafting (curve 3.94): Archive Arbiter, Kiora, Craftwork Crusher, Sagu
+  Wildling.
+
+Variants surfaced (decide after the main build):
+- **Dragon-forge lean** (R3): more Visitor support (Bloomvine, Encroaching Dragonstorm,
+  Exhales, Sagu) instead of the artifact-count payoffs. Same makers, different finishers.
+- **Blue**: only as more than a Saheeli splash. The Jace/Ways cards belong to the open
+  deck-2 (UW/UG Jace) question, or to deck 81's lane (R8).
+- **Wizards**: not viable (R4: two payoffs).
+
+PROTECT (once built): Draconic Visitor, Woodwork Prodigy, Aerid Konstrari — their value is
+in the token count, which `cuts` cannot see.
