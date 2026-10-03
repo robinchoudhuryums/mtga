@@ -5,7 +5,7 @@
 #: plan: midrange
 #: tier: A — PROVISIONAL (untested brew). Metrics floor A: interaction 8 (Erode, Bite Down, Compel Brutality, Vigorbloom Charm, Your Fate Ends Here, Gideon's Memorial, plus Elspeth's and Ajani, Outland Chaperone's minus abilities) and card advantage that reads 3 but plays higher — the Jace token's draw from every empower sits in reminder text the role model strips. Exactly on the A line, so one interaction cut drops it. Weaknesses: the GG Garruk on 11 green sources, the WW three-drop Ajanis on 15 white, and a list of singletons with no redundancy for the two Ways the loop needs. Re-grade after 20 matches.
 #: protect: Way of the Mentor; Way of the Paradox; Liliana the Faultless; Greenhouse Propagator; Ajani Resolute; Elspeth, Storm Slayer; Yoshimaru, Beloved Companion; Michelangelo, Weirdness to 11
-#: notes: Drafted 2026-10-03 from the FRA pile (.cycle/fra-bant-pile-analysis.md). 3-colour Bant was measured and rejected on MANA (33 of 36 spells under 90% on curve, five tapped duals); mono-W is ~10 cards short. Vivien Reid was the GG walker cut (owner's call) — Garruk stays for his Beast/draw synergy with the token doublers. Astelli Reclaimer, Rinoa, Solarium Sentry and Loyal Tutor were the last cuts. The empower cards' card draw (the Jace token's −3) sits in reminder text, so `stats`/`tier` under-count card advantage here.
+#: notes: Drafted 2026-10-03 from the FRA pile (.cycle/fra-bant-pile-analysis.md). 3-colour Bant was measured and rejected on MANA (33 of 36 spells under 90% on curve, five tapped duals); mono-W is ~10 cards short. Vivien Reid was the GG walker cut (owner's call) — Garruk stays for his Beast/draw synergy with the token doublers. Astelli Reclaimer, Rinoa and Loyal Tutor were the last cuts. 2026-10-03: Solarium Sentry in for Tam's Resistance (owner's call, after `screen` rated it KEY) — a 2-mana 3/3 for a deck short on early drops, and its life gain on the OPPONENT's turn still puts loyalty on every walker through Way of the Mentor; the trade gives up Tam's empower 4. The empower cards' card draw (the Jace token's −3) sits in reminder text, so `stats`/`tier` under-count card advantage here.
 
 # Planeswalkers
 1 Ajani Resolute (FRA) 195
@@ -29,6 +29,7 @@
 1 Blossom-Blessed Angel // Seed Suture (FRA) 3
 1 Kwia Vigorbloom (FRA) 140
 1 Exalted Sunborn (EOE) 15
+1 Solarium Sentry (FRA) 148
 
 # Payoffs — lifegain and loyalty into counters, cards and bodies
 1 Unflinching Hortimancer (FRA) 23
@@ -39,7 +40,6 @@
 1 Lyra, Archangel of Dawn (FRA) 201
 1 Germinate Recruits (FRA) 9
 1 Repurposed Enforcer (FRA) 19
-1 Tam's Resistance (FRA) 153
 
 # Counter doublers and spreaders
 1 Michelangelo, Weirdness to 11 (TMT) 121

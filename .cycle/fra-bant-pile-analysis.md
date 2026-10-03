@@ -170,7 +170,7 @@ Legend: ★★★ take · ★★ strong · ★ real · ◇ situational · △ ma
 
 ### Deck 1 — GW Lifegain Superfriends — LANDED as deck 80 (draft A2 was 61 cards; the final list is A3)
 
-**Re-read finding (2026-10-03):** Liliana the Faultless and Greenhouse Propagator gain life for EACH creature or token that enters, so every token is two life gains, which Way of the Mentor turns into two loyalty on every walker. That raised Germinate Recruits, Starfield Shepherd (a warp-cost tutor for Liliana) and the token makers. `screen` afterwards rates Solarium Sentry KEY — the standing flex for an early-drop slot.
+**Re-read finding (2026-10-03):** Liliana the Faultless and Greenhouse Propagator gain life for EACH creature or token that enters, so every token is two life gains, which Way of the Mentor turns into two loyalty on every walker. That raised Germinate Recruits, Starfield Shepherd (a warp-cost tutor for Liliana) and the token makers. `screen` afterwards rated Solarium Sentry KEY; it went in for Tam's Resistance on 2026-10-03 (owner's call).
 
 **Adds from outside the pile (all OWNED):** Elspeth, Storm Slayer (token doubler + walker +
 removal), Vivien Reid (selection + removal), Erode, Bite Down. **From the pile, cut from draft A:**
