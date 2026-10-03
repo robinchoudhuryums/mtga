@@ -1,6 +1,6 @@
 # Reality Fracture Bant pile — analysis (TEMPORARY working doc)
 
-**Status: IN PROGRESS (2026-10-03).** Delete once the deck(s) are drafted and the findings are
+**Status: IN PROGRESS (2026-10-03). Deck 1 LANDED as `decks/80-bloom-council` (owner chose option 1: Vivien Reid cut, Garruk kept; Loyal Tutor → Germinate Recruits, Starfield Shepherd back, Astelli Reclaimer cut after the re-read). Deck 2 (UW vs UG Jace, and its six fills) is still the owner's call.** Delete once the deck(s) are drafted and the findings are
 folded into their `#: notes:` blocks. A scratchpad, not a source of truth — decks/ are.
 
 **Source list:** 73 cards (mostly FRA), pasted 2026-10-03; the user asked whether to build it as
@@ -168,7 +168,9 @@ Legend: ★★★ take · ★★ strong · ★ real · ◇ situational · △ ma
 
 ## 5. Consolidated plan (live)
 
-### Deck 1 — GW Lifegain Superfriends (draft A2: floor A)
+### Deck 1 — GW Lifegain Superfriends — LANDED as deck 80 (draft A2 was 61 cards; the final list is A3)
+
+**Re-read finding (2026-10-03):** Liliana the Faultless and Greenhouse Propagator gain life for EACH creature or token that enters, so every token is two life gains, which Way of the Mentor turns into two loyalty on every walker. That raised Germinate Recruits, Starfield Shepherd (a warp-cost tutor for Liliana) and the token makers. `screen` afterwards rates Solarium Sentry KEY — the standing flex for an early-drop slot.
 
 **Adds from outside the pile (all OWNED):** Elspeth, Storm Slayer (token doubler + walker +
 removal), Vivien Reid (selection + removal), Erode, Bite Down. **From the pile, cut from draft A:**

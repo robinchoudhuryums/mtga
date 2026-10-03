@@ -169,6 +169,7 @@ Gangly Stompling
 Gas Guzzler
 Gastal Raider
 Gather the White Lotus
+Germinate Recruits
 Germination Practicum
 Ghalta, Primal Hunger
 Ghired, Mirror of the Wilds
@@ -188,6 +189,7 @@ Groundchuck & Dirtbag
 Group Project
 Growth Curve
 Guidelight Matrix
+Guiding Hydra
 Hama, the Bloodbender
 Hauntwoods Shrieker
 Hawkeye, Master Marksman
@@ -333,6 +335,7 @@ Reckless Velocitaur
 Red Room Recruit
 Relm's Sketching
 Reno and Rude
+Repurposed Enforcer
 Resentful Revelation
 Resolute Reinforcements
 Restorative Technique
@@ -400,6 +403,7 @@ Super-Soldier Serum
 Surrak, Elusive Hunter
 Sweettooth Witch
 Swiftblade Vindicator
+Tam's Resistance
 Tangle Tumbler
 Tannuk, Steadfast Second
 Tapestry Warden
@@ -464,6 +468,8 @@ Water Tribe Rallier
 Waterbender Ascension
 Waterwind Scout
 Waxen Shapethief
+Way of the Healer
+Way of the Wildspeaker
 Weapons Vendor
 Web-Warriors
 Welcome to Sweettooth
@@ -474,5 +480,6 @@ White Tiger, Ava Ayala
 Wisecrack
 Wonder Man, Hollywood Hero
 Y'shtola Rhul
+Yoshimaru, Beloved Companion
 Zog, Triceraton Castaway
 Zurgo, Thunder's Decree
