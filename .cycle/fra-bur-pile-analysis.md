@@ -104,3 +104,80 @@ BR (black-red) / UB / UR. "—" = off-colour for that build.
 | Extended Absence | ★★ | ★★ | — | instant exile creature/walker + 1 noncombat damage (R4) |
 | Garruk, Veiled Butcher | ★★★ | ★★★ | — | +2 shrink, −2 edict-and-Beast (a death on your side too, R2), −3 discard/draw |
 | Massacre Girl, Most Wanted | ★★ | ★★ | — | R1 converter: each death of yours drains 1; grows on noncombat damage |
+
+### Batch 2 (cards 23–44)
+
+| Card | BR | UB | UR | Note |
+|---|---|---|---|---|
+| Overwrite the Multiverse | ★ | ★ | — | the walker deck's natural wrath (walkers survive, empower X) — but EXILE fires no death payoff (R3); 1-of at most |
+| Gallia, the Merrymaker | △ | — | △ | haste only for creatures with counters; the deck makes few |
+| Samut, Hazoret's Champion | ★ | — | ★ | team haste: Beasts, Cadets, Zombies and Kiora's Dragon attack at once |
+| Stingcaster Mage | ★ | — | ★ | hasty 2-drop that flashes back Rewrite Regrets / Break / Absence / Forte / a charm; fodder after |
+| Chandra's Emberling | ◇ | — | ★ | grows per noncreature spell; Ways, walkers and removal all count, but a 2/2 body |
+| Way of the Pyromancer | ★★ | — | ★ | walkers gain +1: add {R} (ramp + loyalty); under Ajani Unrelenting every +1 is also a Cadet |
+| Command the Stage | ★★ | — | ◇ | Cadet + grows other Wizard tokens; returns to hand every upkeep after noncombat damage (R4) — repeatable fodder (R6) |
+| Fulminous Forte | ★★ | — | ★★ | instant: 1 to each of their creatures/walkers, or 5 to one |
+| Identity Echo | ◇ | — | ◇ | exiles your own creature/walker for the next one off the top (R3 — an exile, not a death); 4 mana per sorcery-speed use |
+| Pyre Rhymer | △ | — | ◇ | prowess 3/3; prepared ritual needs Mountains |
+| Way of the Warlord | ★★ | — | ★★ | every walker gains −4: 2 to a creature/walker + 2 to a player (R4); the Jace token it makes can use it at once |
+| Arni, Renowned Champion | △ | — | △ | trample; pumps off entering power |
+| Chandra, Torch of Defiance | ★★★ | — | ★★★ | card/damage +1, ramp +1, −3 removal |
+| Ajani Unrelenting | ★★★ | — | ★★ | EVERY loyalty activation (any walker, the Jace token included) makes a Cadet — the fodder engine for R2; −3 sweeps all but your tokens |
+| Kiora of Fire and Ashes | ★ | — | ★ | 6-mana top end: 2/2 + 5/5 flying Dragon; the 2/2 is fodder |
+| Theorix Charm | — | ★ | — | counter-tax / −2/−2 / mill-3-draw |
+| Uldaros Theorix | — | ★★ | — | cast copies of a yard Way, walker and removal spell (total MV ≤6) for free |
+| Saheeli, Jewel of Avishkar | — | — | ★★ | noncreature spell → hasty Thopter; with Draconic Visitor each Thopter is a 5/5 flying Dragon |
+| Stingerquill Charm | ★★ | — | — | 3 damage any target / deathtouch trick / hasty Cadet |
+| Ingris Stingerquill | ★★ | — | — | flier; every attacker pings each opponent (R4); {4}: Cadet + team haste |
+| Draconic Visitor | ◇ | — | ★★ | 5/5 flier; artifact tokens become 5/5 Dragons. In black-red only Chandra, Spark Hunter's 0 (a Vehicle token) feeds it |
+| Ral Zarek, Guest Lecturer | ★★ | ★★ | — | +1 surveil 2 fills the yard; −2 reanimates a ≤3 (Liliana R, Winter, Gideon, Ingris, Stingcaster) |
+
+Owned non-pile support graded for the black-red build (read in full 2026-10-03):
+
+| Card | BR | Note |
+|---|---|---|
+| Liliana, Dreadhorde General | ★★★ | death → draw; +1 Zombie = fodder; −4 each player sacrifices two |
+| Sothera, the Supervoid | ★★★ | each of YOUR creature deaths → each opponent exiles a creature: Deathbringer's −2 becomes a repeatable edict |
+| Funeral Room | ★ | death → drain 1 (the Massacre Girl effect on an enchantment) |
+| Midnight Reaper | ◇ | draws on NONTOKEN deaths only — the fodder here is tokens |
+| Meathook Massacre II | ◇ | {B}{B}{B}{B} — mono-black only |
+| Chandra, Spark Hunter | ◇ | 0: a Vehicle token each turn (Draconic Visitor food); +2 rummage |
+| Chandra, Flameshaper / Ugin / Tezzeret / The Aetherspark | △ | 7-mana or artifact-themed; off-engine |
+
+## 5. Consolidated plan (live)
+
+**Recommended: a black-red planeswalker-aristocrats deck.** The engine (R1/R2):
+- walkers activate;
+- Ajani makes a Cadet on every activation;
+- Deathbringer's −2 sacrifices it for a 4/4 Beast;
+- Necromancer puts +1 on every walker;
+- Liliana Dreadhorde draws, Massacre Girl drains and Sothera makes them exile a creature.
+
+Black-red mana is two double-pip colours (RR: Chandra, Ajani, Kiora, Ingris; BB: Garruk, Ral,
+Liliana DG, Sothera) on deep dual support.
+
+Core (~30 of 36 nonland):
+- Walkers (5–6): Chandra Torch, Garruk VB, Ral Zarek, Ajani Unrelenting, Liliana DG
+  (+ Chandra Spark Hunter optional).
+- Ways (4): Necromancer, Deathbringer, Pyromancer, Warlord.
+- Creatures (~10): Liliana the Repentant, Winter, Gideon the Oathless, Ingris, Darklight Phoenix,
+  Massacre Girl, Samut, Stingcaster Mage, Loot, Kiora.
+- Enchantment: Sothera.
+- Spells (~7): Break Under Pressure, Extended Absence, Fulminous Forte, Stingerquill Charm,
+  Rewrite Regrets, Command the Stage, Overwrite the Multiverse.
+
+Fodder count (R6): Ajani (per activation), Liliana DG +1, Command the Stage (recurring),
+Stingerquill Charm, Ingris {4}, Garruk −2 Beast, Kiora's 2/2 — seven sources before any body.
+
+Variants the pile surfaced (decide after the main build):
+- **UB "Theorist"** — swaps red for Theorist Jace, Chandra Chill, Mind Sculptor, Uldaros,
+  Theorix Charm, Sphinx of False Conclusions on the same black core. Best as a variant of the
+  black-red deck (shared core = near-duplicate as a separate deck).
+- **Mono-black** — Necromancer/Deathbringer/Garruk/Ral/Liliana DG + Sothera, Meathook II; walker
+  count thin (3 + Jace token).
+- **UR Saheeli + Draconic Visitor** — a real combo but this pile supplies only ~6 of its cards; a
+  collection-driven build, out of this pile's scope.
+- **Grixis** — rejected on R7: UU (Theorist, Chill) + BB + RR across three colours.
+
+PROTECT (once built): Way of the Necromancer, Way of the Deathbringer, Ajani Unrelenting,
+Sothera — their value is in the rest of the deck, which `cuts` cannot see.
