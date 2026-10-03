@@ -1,0 +1,1 @@
+{ "name": "deck-pane", "version": "0.1.0", "description": "Live deck dashboard pane for the MTG card library: /deck <id> shows tier floor, interaction, card advantage, sources, worst on-curve card and buildability, refreshed after deck edits", "types": "./types/index.d.ts" }
