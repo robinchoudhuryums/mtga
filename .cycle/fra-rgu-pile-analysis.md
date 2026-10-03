@@ -1,6 +1,6 @@
 # FRA RG+U pile — analysis (TEMPORARY working doc)
 
-**Status: IN PROGRESS — framework + all three batches graded; consolidated plan awaiting the owner's pick.** Delete once the deck(s) land and the findings are folded into the deck files' `#: notes:` blocks. A scratchpad, not a source of truth — decks/ are.
+**Status: IN PROGRESS — red-green build DRAFTED 2026-10-03 as deck 81 (Heartwood Foundry), replacing the black-red Detention Hall; the Dragon-forge lean and any blue build are still open.** Delete once the deck(s) land and the findings are folded into the deck files' `#: notes:` blocks. A scratchpad, not a source of truth — decks/ are.
 
 **Source list:** 88 distinct cards (95 with the land copies), pasted 2026-10-03. The
 owner reworked deck 81's list into a red-green pile plus blue cards, for a NEW deck: 2- or

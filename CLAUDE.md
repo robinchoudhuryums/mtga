@@ -992,9 +992,9 @@ is protecting.
   two primitives the ◊ list and the effective figure already use so the three cannot
   disagree (G-40). **DISCLOSURE, never pricing** — report-only for G-25/G-60's reason, and do
   not "finish" it by feeding `tier_band`. **`_UNPRICED_DISCLOSE_FLOOR = 3` is p75 of its own
-  axis, not 1**: across the **59 decks that print an effective figure** the unpriced count
+  axis, not 1**: across the **60 decks that print an effective figure** the unpriced count
   runs p25 1 / p50 2 / p75 3 / p90 5 / max 11, so a floor of 1 fires on 83% (the G-07
-  saturation shape) against **18 of 59 (31%)** at 3. BOTH figures are registered in
+  saturation shape) against **19 of 60 (32%)** at 3. BOTH figures are registered in
   `figure_drift`, which is what caught the population move when impending joined. [G-85]
 - **BOARD PRESENCE IS AN AXIS AND NOTHING HERE MEASURED IT until 2026-09-18.** The tier
   floor reads interaction + card advantage, `cuts` reads theme fit and role credit, and
@@ -1002,7 +1002,7 @@ is protecting.
   A floor on resilience while fielding nothing that ends a game, and the only way to see
   that was to hand-roll the sum, done six times in one session before `board_power`
   existed. It is a SEPARATE axis, not a restatement of the floor: **r = −0.147 against a
-  ±0.188 noise band at n=112**. Roster distribution min 23 / p10 37 / **p50 56** / p90 73
+  ±0.188 noise band at n=112**. Roster distribution min 23 / p10 37 / **p50 57** / p90 73
   / max 120. **REPORT-ONLY, and it must stay so** — a new `tier_band` term silently
   re-grades the roster, the reason the protection axis (G-25) and the X-cost advisory
   (G-60) are kept out and the reason the payoff-density term was simulated and DECLINED

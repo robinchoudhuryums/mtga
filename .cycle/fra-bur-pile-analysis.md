@@ -1,6 +1,6 @@
 # FRA BUR pile — analysis (TEMPORARY working doc)
 
-**Status: IN PROGRESS — black-red build DRAFTED 2026-10-03 as deck 81 (Detention Hall); the blue-black Theorist variant and the UR Saheeli idea are still open.** Delete once the deck(s) land and the findings are folded into the
+**Status: IN PROGRESS — the black-red build (deck 81 Detention Hall) was SUPERSEDED 2026-10-03: the owner reworked the pile into red-green, and deck 81 is now Heartwood Foundry (see fra-rgu-pile-analysis.md). The black-red list is in git history; the blue-black Theorist variant is still open.** Delete once the deck(s) land and the findings are folded into the
 deck files' `#: notes:` blocks. A scratchpad, not a source of truth — decks/ are.
 
 **Source list:** 44-card Reality Fracture (FRA) pile in blue/black/red, pasted 2026-10-03

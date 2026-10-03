@@ -1,63 +1,61 @@
-#: name: Detention Hall (Rakdos superfriends-aristocrats)
+#: name: Heartwood Foundry (RG artifact tokens + Dragon forge)
 #: format: Standard
-#: colors: BR
+#: colors: RG
 #: plan: midrange
-#: tier: A — PROVISIONAL (untested brew). Metrics floor A on interaction 15 + card advantage 6, the widest margin above the A line of any recent draft; the role model cannot see the Jace token's draws (reminder text) or Liliana, Dreadhorde General's draw-per-death beyond one count. Weaknesses: printed board power 23 counts no tokens, so the real board (4/4 Beasts, Cadets, Zombies, Kiora's Dragon) arrives a turn behind the walkers, and a fast aggro start can kill walkers before the loop runs; four 6-drops (Ajani, Liliana DG, Kiora, Overwrite) make the top heavy; protection 1 — the engine pieces (Necromancer, Deathbringer, Sothera) are enchantments with no way to defend them. Re-grade after 20 matches.
-#: archetype: RAKDOS PLANESWALKER-ARISTOCRATS, drafted 2026-10-03 from the Reality Fracture blue/black/red pile (.cycle/fra-bur-pile-analysis.md). THE LOOP: every loyalty activation makes a 2/2 Cadet (Ajani Unrelenting); Way of the Deathbringer gives every walker "−2: sacrifice a creature → 4/4 trample Beast", so the Cadet becomes a Beast; every death puts +1 loyalty on EVERY walker (Way of the Necromancer), draws (Liliana, Dreadhorde General), drains (Massacre Girl, Most Wanted; Funeral Room) and makes the opponent exile a creature (Sothera). Sanctum Lurker keeps walkers alive at 0 loyalty and gives each "+2: 1 damage to each opponent, gain 1 life", so the big minuses (Deathbringer −2, Warlord −4) can be spent freely. Way of the Pyromancer's +1 makes red mana. The Ways put their abilities on EVERY walker, the Jace token included, so a modest walker (The Aetherspark, Chandra Spark Hunter) is still a carrier for all four. DISTINCT from 60 Redline (black-red max-speed aggro) and 55 Mardu Waves (attack-trigger tokens): the win here is walker loyalty and repeated edicts, not combat speed.
-#: protect: Way of the Necromancer; Way of the Deathbringer; Ajani Unrelenting; Sothera, the Supervoid; Sanctum Lurker
-#: notes: Drafted 2026-10-03. Built OPTIMAL per the Player Profile: the Reality Fracture cards are not yet ingested, so the library reads most of them as unowned; the owner holds the pile. Lands are the optimal black-red set (4 Blood Crypt, 4 Stingerquill Annex — untapped with a walker out) rather than gated on ownership. Drafting swaps (re-screen of the rejected pile): Nocturnal Hunger for Murder (the same instant kill at {2}{B} instead of {1}{B}{B}); The Aetherspark for Tezzeret, Cruel Captain (both are cheap colourless Way-ability carriers, but Tezzeret's own abilities find nothing here while Aetherspark protects itself and its −5 draws two). Left out and why: Tinybones (only Ral −1 / Garruk −3 make discards), Chandra Flameshaper (a 7-drop on an already heavy top), Meathook Massacre II ({B}{B}{B}{B}), Midnight Reaper (draws on NONTOKEN deaths only — the fodder here is tokens), Draconic Visitor (Chandra Spark Hunter's Vehicle is the only artifact token).
+#: tier: A — PROVISIONAL (untested brew). Metrics floor A on interaction 12 + card advantage 4: five burn/fight spells, Legion Extruder and Mouser Foundry's damage, Chandra Torch, Vivien Reid, and Ajani Unrelenting's −3, which spares every one of this deck's tokens. Weaknesses: card advantage is the thin axis (Spark Hunter's +2, Vivien's +1 and Ajani's −2 carry it); 7 of 12 nonbasic lands can enter tapped; and the forge is ONE card — without Draconic Visitor the tokens are mana and chump-blockers until Craterclaw or Pyrewood cashes them in. Re-grade after 20 matches.
+#: archetype: RED-GREEN ARTIFACT TOKENS, drafted 2026-10-03 from the owner's Reality Fracture red-green(+blue) pile (.cycle/fra-rgu-pile-analysis.md), REPLACING the black-red walker deck that held this slot (git history keeps it). THE ENGINE: Reality Fracture's Heartwood is a red/green mana artifact, and this list makes artifact tokens from fourteen sources — Woodwork Prodigy re-prepares every upkeep (a Heartwood each turn), Eusocial Engineering makes a Robot per land, Chandra Spark Hunter a Vehicle per turn, Rocketeer Boostbuggy a Treasure per attack, plus Aerid Konstrari, Tenured Tethermage, Konstrari Improviser, Heartwood Crafter, Mutagen Man, Sandstorm Salvager, Legion Extruder, Mouser Foundry, Biotech Specialist and Galactic Wayfarer. Those tokens are mana, so the 6- and 7-drops (Pyrewood Gearhulk, Craterclaw Colossus, Savage Ventmaw, Ajani) arrive on time, and they are bodies for Craterclaw's +X-per-artifact and Puppetbeast's / Biotech's / Extruder's sacrifice outlets. THE FORGE: Draconic Visitor turns every artifact token into a 5/5 flying Dragon instead — Prodigy becomes a Dragon a turn, Engineering a Dragon per land — and the Dragon cards (Bloomvine Regent's life, Sarkhan, Encroaching Dragonstorm's rebuy, the Exhales' behold) pay for it. Its Dragons are NOT artifacts, so with Visitor out the artifact-count payoffs stop growing: it is a one-of finisher, not the plan. DISTINCT from 49 Big Draco (mono-red Dragons, 0 shared cards) and 59 Stampede (red-green attack-for-mana).
+#: protect: Draconic Visitor; Woodwork Prodigy // Soul Tether; Aerid Konstrari; Eusocial Engineering
+#: notes: Drafted 2026-10-03 in place of the black-red Detention Hall (owner's call: the pile was reworked into red-green). Built OPTIMAL per the Player Profile (4 Stomping Ground are the main craft; Reality Fracture cards are not yet ingested, so the library reads most of them as unowned). Cut from the measured scratch list to lower the curve (3.94 avg): Archive Arbiter, Kiora of Fire and Ashes, Craftwork Crusher, Sagu Wildling, Chandra Flameshaper. Owned additions from a maker survey: Legion Extruder, Mouser Foundry, Sarkhan Dragon Ascendant, Jolene Plundering Pugilist, Galactic Wayfarer. Temur (+Saheeli) was measured and rejected: every red-green gold card lost ~10 points on curve for one blue card.
 
-# Planeswalkers — every one carries all four Ways' abilities
-1 Ral Zarek, Guest Lecturer (SOS) 97
-1 The Aetherspark (DFT) 231
-1 Chandra, Torch of Defiance (FRA) 244
-1 Chandra, Spark Hunter (DFT) 116
-1 Garruk, Veiled Butcher (FRA) 229
-1 Ajani Unrelenting (FRA) 242
-1 Liliana, Dreadhorde General (FDN) 176
+# Makers — artifact tokens (Heartwood, Lander, Treasure, Robot, Golem, Mutagen, Vehicle)
+1 Heartwood Crafter // Soul Tether (FRA) 105
+1 Konstrari Improviser // Soul Tether (FRA) 139
+1 Biotech Specialist (EOE) 214
+1 Rocketeer Boostbuggy (DFT) 220
+1 Legion Extruder (BIG) 12
+1 Mouser Foundry (TMT) 96
+1 Mutagen Man, Living Ooze (TMT) 124
+1 Woodwork Prodigy // Soul Tether (FRA) 165
+1 Sandstorm Salvager (BIG) 19
+1 Tenured Tethermage (FRA) 154
+1 Galactic Wayfarer (EOE) 185
+1 Aerid Konstrari (FRA) 121
+1 Hungering Puppetbeast (FRA) 107
+1 Eusocial Engineering (EOE) 181
 
-# The Ways — each enters empowering Jace (a walker) and arms every walker
-1 Way of the Necromancer (FRA) 239
-1 Way of the Pyromancer (FRA) 254
-1 Way of the Deathbringer (FRA) 238
-1 Way of the Warlord (FRA) 255
+# Payoffs — artifact count, the forge, Dragons
+1 Herd Heirloom (TDM) 144
+1 Sarkhan, Dragon Ascendant (TDM) 118
+1 Jolene, Plundering Pugilist (OTJ) 210
+1 Ultron, Artificial Malevolence (MSH) 252
+1 Traxos, Scourge Eternal (FRA) 280
+1 Draconic Visitor (FRA) 80
+1 Bloomvine Regent // Claim Territory (TDM) 136
+1 Savage Ventmaw (FDN) 665
+1 Pyrewood Gearhulk (DFT) 216
+1 Craterclaw Colossus (FRA) 78
 
-# Engine — keep walkers alive, turn deaths into loyalty, damage and edicts
-1 Sanctum Lurker (FRA) 64
-1 Sothera, the Supervoid (EOE) 115
-1 Funeral Room // Awakening Hall (DSK) 100
-1 Phyrexian Arena (FDN) 180
-
-# Creatures — fodder, sacrifice outlets and death payoffs
-1 Liliana the Repentant (FRA) 231
-1 Stingcaster Mage (FRA) 93
-1 Umbral Collar Zealot (EOE) 123
+# Planeswalkers and support
 1 Samut, Hazoret's Champion (FRA) 251
-1 Winter, Tormented Loner (FRA) 240
-1 Gideon the Oathless (FRA) 230
-1 Ingris Stingerquill (FRA) 137
-1 Loot, the Anomaly (FRA) 232
-1 Darklight Phoenix (FRA) 53
-1 Massacre Girl, Most Wanted (FRA) 234
-1 Kiora of Fire and Ashes (FRA) 247
+1 Radagast of Rhosgobel (HOB) 136
+1 Chandra, Spark Hunter (DFT) 116
+1 Chandra, Torch of Defiance (FRA) 244
+1 Encroaching Dragonstorm (TDM) 142
+1 Vivien Reid (FDN) 234
+1 Ajani Unrelenting (FRA) 242
 
-# Interaction and recursion
-1 Hellish Sideswipe (DFT) 90
-1 Fell (BLB) 95
-1 Stingerquill Charm (FRA) 150
-1 Nocturnal Hunger (BLB) 102
-1 Break Under Pressure (FRA) 50
-1 Command the Stage (FRA) 77
+# Interaction
+1 Molten Exhale (TDM) 113
+1 Piercing Exhale (TDM) 151
+1 Compel Brutality (FRA) 101
+1 Wrath of the Bloodmane (FRA) 96
 1 Fulminous Forte (FRA) 84
-1 Extended Absence (FRA) 54
-1 Rewrite Regrets (FRA) 62
-1 Overwrite the Multiverse (FRA) 59
 
 # Lands
-4 Blood Crypt (ECL) 262
-4 Stingerquill Annex (FRA) 190
-4 Dark Fortress (MSH) 264
-1 Blazemire Verge (DSK) 256
-1 Temple of Malice (FDN) 701
-6 Swamp (FRA) 285
-4 Mountain (FRA) 287
+4 Stomping Ground (EOE) 258
+4 Training Compound (MSH) 275
+1 Thornspire Verge (DSK) 270
+1 Rockfall Vale (FRA) 186
+2 Konstrari Annex (FRA) 183
+6 Mountain (FRA) 287
+6 Forest (FRA) 289

@@ -11,6 +11,7 @@ Aang, at the Crossroads // Aang, Destined Savior
 Absorbing Man
 Accumulate Wisdom
 Aerial Doombot
+Aerid Konstrari
 Agent Phil Coulson
 Agents of HYDRA
 Agrus Kos, Spirit of Justice
@@ -88,6 +89,7 @@ Collector's Vault
 Colossification
 Corrupt Court Official
 Crashing Wave
+Craterclaw Colossus
 Craterhoof Behemoth
 Crow of Dark Tidings
 Cruelclaw's Heist
@@ -116,6 +118,7 @@ Dori, Bearer of Friends
 Doubling Season
 Dracogenesis
 Draconautics Engineer
+Draconic Visitor
 Dragon Fodder
 Dragonback Lancer
 Dragoon's Wyvern
@@ -164,6 +167,7 @@ Frontier Seeker
 Frontline Rush
 Full Throttle
 Fynn, the Fangbearer
+Galactic Wayfarer
 Galuf's Final Act
 Gangly Stompling
 Gas Guzzler
@@ -229,13 +233,13 @@ Katara, Water Tribe's Hope
 Kav Landseeker
 Kavaron Skywarden
 Kindle the Inner Flame
-Kiora of Fire and Ashes
 Kirol, Attentive First-Year
 Kitnap
 Kitsune's Technique
 Klaw, Sonic Subjugator
 Knight Luminary
 Kona, Rescue Beastie
+Konstrari Improviser // Soul Tether
 Koya, Death from Above
 Kraven the Hunter
 Kraven, Proud Predator
@@ -257,7 +261,6 @@ Loading Zone
 Loki Laufeyson
 Long Feng, Grand Secretariat
 Loot, Exuberant Explorer
-Loot, the Anomaly
 Lorehold, the Historian
 Madame Web, Clairvoyant
 Magic Pot
@@ -352,6 +355,7 @@ Rustler Rampage
 Salvation Swan
 Samut, Hazoret's Champion
 Sanar, Innovative First-Year
+Sandstorm Salvager
 Savage Land Dinosaur
 Savage Ventmaw
 Scarlet Spider, Ben Reilly
@@ -410,6 +414,7 @@ Tapestry Warden
 Taskmaster, Mercenary Mimic
 Team Tactics
 Temporal Intervention
+Tenured Tethermage
 Terra, Magical Adept
 Terrapact Intimidator
 Tetsuko Umezawa, Pursuer
@@ -469,8 +474,6 @@ Water Tribe Rallier
 Waterbender Ascension
 Waterwind Scout
 Waxen Shapethief
-Way of the Deathbringer
-Way of the Pyromancer
 Way of the Wildspeaker
 Weapons Vendor
 Web-Warriors
@@ -481,6 +484,7 @@ Whirlwing Stormbrood // Dynamic Soar
 White Tiger, Ava Ayala
 Wisecrack
 Wonder Man, Hollywood Hero
+Woodwork Prodigy // Soul Tether
 Y'shtola Rhul
 Yoshimaru, Beloved Companion
 Zog, Triceraton Castaway
