@@ -78,6 +78,8 @@ stamps below it where they disagree.
 > The 21 FRA cards the owner said they hold, plus Chandra, Torch of Defiance (FRA), are
 > catalogued at 1 copy each (lower bounds). **STILL OPEN:** whether Ajani, Liliana the
 > Faultless and Ingris (deck 55) are owned — they read as crafts until an export says so.
+> **2026-10-03:** Liliana the Faultless is now OWNED (deck 80, Bloom Council, ingested as
+> fully owned — 27 new library rows, all its FRA cards); Ajani Unrelenting and Ingris remain open.
 > **TRAP found doing it:** Scryfall's search sits behind Cloudflare with `max-age=57600`
 > (16h), so on a set's release day `make refresh REFETCH=1` re-read a CACHED pre-release
 > response for the canonical `game:arena date<=now` URL (`cf-cache-status: HIT`, age 9.4h) and

@@ -503,8 +503,8 @@ is protecting.
   **THE LIST IS A WINDOW AND THE RANKING IS THEME FIT, so read a card's ABSENCE as neither
   (BS10-05).** The footer counted the TRUNCATION, so it read "20 suggestion(s)" whether the
   ranking held 20 candidates or 958; it now prints "top N of M ranked candidate(s)"
-  (`--limit 0` for all). Why it matters is measured, not asserted: across **1069 applied swaps
-  that recorded a rank for the card ADDED, the MEDIAN rank is 364** and only **10%** fell
+  (`--limit 0` for all). Why it matters is measured, not asserted: across **1075 applied swaps
+  that recorded a rank for the card ADDED, the MEDIAN rank is 371** and only **10%** fell
   inside the default top 20. `deck.py feedback` reports that distribution. A card chosen for
   a mechanical interaction the tags do not encode ranks far down BY CONSTRUCTION — a
   different problem from the theme gate G-38 describes, and K-15 was its largest single
@@ -1002,7 +1002,7 @@ is protecting.
   A floor on resilience while fielding nothing that ends a game, and the only way to see
   that was to hand-roll the sum, done six times in one session before `board_power`
   existed. It is a SEPARATE axis, not a restatement of the floor: **r = −0.147 against a
-  ±0.188 noise band at n=112**. Roster distribution min 23 / p10 37 / **p50 55** / p90 73
+  ±0.188 noise band at n=112**. Roster distribution min 23 / p10 37 / **p50 56** / p90 73
   / max 120. **REPORT-ONLY, and it must stay so** — a new `tier_band` term silently
   re-grades the roster, the reason the protection axis (G-25) and the X-cost advisory
   (G-60) are kept out and the reason the payoff-density term was simulated and DECLINED
