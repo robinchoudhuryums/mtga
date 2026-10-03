@@ -315,6 +315,11 @@ def check():
 
 
 def main():
+    # `--help` prints this module's docstring and exits (BS11-56): the gates took no
+    # arguments, so `--help` was ignored and the CI smoke step ran every gate in full.
+    if any(a in ("-h", "--help") for a in sys.argv[1:]):
+        print(__doc__)
+        return 0
     errs = check()
     # `check()` converts an unparseable deck.py into a clean error list; re-deriving the
     # same parse here raised the RuntimeError it had just handled, so the STANDALONE

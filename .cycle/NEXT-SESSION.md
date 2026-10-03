@@ -17,7 +17,23 @@ commands disagree.
 
 ---
 
-## 0-current. THE 2026-08-24 SESSION (READ THIS FIRST — supersedes §0-latest below)
+## 0-current. STATE STAMPS, 2026-08-24 → 2026-10-03 (READ THIS FIRST — supersedes §0-latest below)
+
+The heading used to read "THE 2026-08-24 SESSION" while the stamps under it ran to
+2026-10-01 (BS11-65). The NEWEST stamp is always the first one; each supersedes the
+stamps below it where they disagree.
+
+> **STATE STAMP, 2026-10-03 (NEWEST).** **Scan #11 is fully implemented**: all nine
+> batches (BS11-01…79, minus the two deferred below) landed on
+> `claude/epic-heisenberg-38ii7y`, each with a block in `.cycle/blocks/11-*` and a
+> `/sync-docs` pass. Measured roster impact across the scan: 0 tier floors moved.
+> **Deferred, deliberately:** BS11-80 and BS11-81. **Still the owner's, unchanged:** a
+> one-word reason for the three losses named in the 2026-10-01 stamp; the tier letters for
+> 55 / 60 / 78; whether Ajani / Liliana the Faultless / Ingris (deck 55) are owned. **New
+> for a person at a browser:** regression scenarios 20–23 (JS colours in light mode, the
+> nested ↗ link by keyboard, toast legibility, variant-row layout). Live pile doc:
+> `78-brawl-pile-analysis.md` only.
+
 
 > **STATE STAMP, 2026-10-01 (NEWEST — supersedes the stamps below where they disagree).**
 > 47 commits since PR #197, on `claude/sync-commands-mmmsdb`. Four threads.
@@ -116,7 +132,8 @@ commands disagree.
 > each `--audit-rationale` is current. The rewrite also corrected facts the audit could not
 > see: 42a and 47 are no longer unplayed (3-3 each, n=6) and 47 is fully owned; 42a's block
 > still said "Hero's Downfall stays" (cut long ago) and quoted a 2.91 curve against a live
-> 3.14. The match-digest Step 0 below is still waiting on the owner.
+> 3.14. (The match-digest Step 0 the 2026-09-25 stamp below waits on was RUN and the digest
+> BUILT — see the 2026-09-27 LATER stamp above. That stamp superseded this line.)
 >
 > **STATE STAMP, 2026-09-25.** One thing in flight: the **match digest** —
 > recording play/draw, mulligans, land drops and the opponent's cards from Arena's full
@@ -561,8 +578,9 @@ name an absent card.
 
 `.cycle/team-avatar-pile-analysis.md` was DELETED 2026-09-02, its contract satisfied — the
 swaps landed and its findings are folded into deck 78's 57 `#: notes:` lines. The other
-three working docs (prune, wylie-tap, hob-followup) are still live and still awaiting the
-user's calls. Standing items the user has explicitly deferred: the Endstone shell, Wylie
+three working docs (prune, wylie-tap, hob-followup) were DELETED 2026-09-23 at the owner's
+instruction with their proposals unapplied (CLAUDE.md → Session state; `git log
+--diff-filter=D -- .cycle/` recovers them) — the line that called them live predates that. Standing items the user has explicitly deferred: the Endstone shell, Wylie
 Variant B, the Army/amass deck, 26a near-mono-blue rebuild, deck 76 second-wave crafts, and
 the unexamined fit-pass leads (Innocuous Rat → 62, Graveshifter → 77, Carrot Cake → 42a,
 Fanatic of the Harrowing → 70, six deck 31 suitors). Deck 8 still carries a pre-existing

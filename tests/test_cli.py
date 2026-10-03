@@ -101,6 +101,20 @@ class TestScriptEntryPoints:
                 problems.append(f"{f}: rc={rc}, first line {out.strip()[:80]!r}")
         assert not problems, "\n".join(problems)
 
+    def test_the_gates_and_validate_answer_help_instead_of_running(self, script_help):
+        """BS11-56: the check_*.py gates ignored `--help` and ran in full (so the CI smoke
+        step ran every gate), and `validate.py` read `--help` as a FILE PATH. Each must
+        exit 0 and print its docstring rather than a gate verdict or "file not found"."""
+        problems = []
+        for f, (rc, out) in script_help.items():
+            if not (f.startswith("check_") or f == "validate.py") or _uses_argparse(f):
+                continue
+            if rc != 0 or "file not found" in out or "FAIL" in out.split("\n", 1)[0]:
+                problems.append(f"{f}: rc={rc}, first line {out.strip()[:80]!r}")
+            elif not out.strip():
+                problems.append(f"{f}: printed nothing on --help")
+        assert not problems, "\n".join(problems)
+
     def test_the_f01_regression_specifically(self):
         """A bare `%` in any argparse help string takes the WHOLE top-level help
         down, because rendering expands every subaction. deck.py has dozens of

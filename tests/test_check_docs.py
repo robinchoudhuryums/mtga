@@ -207,3 +207,22 @@ class TestFigureDriftIsWiredIntoTheGate:
         against a real 13. A count of files is a measurement, so the radar holds it."""
         assert all("model-sanity gates" not in lbl for lbl, _s, _l in cd.figure_drift()), \
             cd.figure_drift()
+
+
+class TestFigureDenominatorsAreRegistered:
+    """BS11-59: G-86's and G-35's numerator patterns hard-coded `of 112 decks`, so the
+    numerators matched while the roster they were counted over grew to 114 — invisible,
+    and correcting the denominator would have killed the numerator's pattern."""
+
+    def _entries(self):
+        return {label: pat for label, pat, _fn in cd._live_figures()}
+
+    def test_no_numerator_pattern_hardcodes_a_roster_size(self):
+        import re
+        for label in ("G-86 decks with an unknown-power creature",
+                      "G-35 decks with an uncounted nonland mana source"):
+            assert not re.search(r"of \d{3} decks", self._entries()[label]), label
+
+    def test_the_denominators_are_figures_of_their_own(self):
+        e = self._entries()
+        assert "G-86 roster walked" in e and "G-35 roster walked" in e

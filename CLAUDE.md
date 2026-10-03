@@ -679,7 +679,7 @@ is protecting.
   **A BOUNDED TERM IS ONLY BOUNDED USEFULLY IF THE ROSTER SPANS ITS RANGE (2026-09-03)**:
   `_DOUBLER_CALIB` sets floor/key per axis at that axis's OWN p25/p75 — one global set let
   every deck clear `triggers` and 92% pin the cap. **Re-derive when a distribution moves**,
-  and **never read one axis discriminating as evidence all four do**. [G-33]
+  and **never read one axis discriminating as evidence all five do**. [G-33]
 - **Before committing a deck edit run `deck.py preflight <id>`, and grade a cut/swap with
   `deck.py quality`.** `preflight` folds legal + owned + castable + a full `check_all`
   into one READY/BLOCKED verdict. `quality --json` before, `--vs FILE` after, flags
@@ -706,7 +706,7 @@ is protecting.
   for a deck that can never meet it (81 pairs, 54 of 114 decks).** Test
   `TAPLAND_CONDITIONAL_KINDS`, not a string.
   **NONLAND sources are DISCLOSED since 2026-09-18, never counted**: `consistency` prints
-  `ⓘ N NONLAND mana source(s) are NOT in the counts above` (**77 of 112 decks**). The
+  `ⓘ N NONLAND mana source(s) are NOT in the counts above` (**77 of 114 decks**). The
   exclusion is right — a rock is not a land drop — but its SILENCE was not, because
   `suggest --ramp` recommends exactly what this count cannot see.
   `uncounted_mana_sources` runs `land_production` on a NONLAND's text, so the spend-only
@@ -904,7 +904,7 @@ is protecting.
   so `make check` alone misses this class and `make verify` catches it. [G-54]
 - **NO GATE BUILT AN ARGPARSE TREE, so a broken `--help` was invisible** for four days
   with three green workflows. `check_all` imports `deck` as a MODULE and calls its MODEL
-  functions — 16 of them, and **zero `cmd_*`**, which this rule claimed for a year: the
+  functions — 18 of them (re-counted 2026-10-03), and **zero `cmd_*`**, which this rule claimed for a year: the
   untested surface is therefore the whole COMMAND layer, not just the argparse tree.
   `tier --to` pairing a filler with a cut that undid its own gap (2026-08-24) lived
   exactly there. The CLI is covered by `tests/test_cli.py` and a CI smoke step. Note argparse renders help through `help % params`, so **a bare `%` in a
@@ -1009,7 +1009,7 @@ is protecting.
   2026-09-03. `deck_quality_vector` publishes it, `tier_band` ignores it, and a test pins
   that two decks differing only in creature SIZE land in the same band. **THREE THINGS IT
   CANNOT SEE, disclosed rather than guessed at:** a printed `*`/X power is counted APART
-  and never coerced to 0 (G-16), which is no corner case — **72 of 112 decks** hold one,
+  and never coerced to 0 (G-16), which is no corner case — **72 of 114 decks** hold one,
   so a bare sum would under-report on 63% of the roster; TOKENS and other created bodies
   read ZERO, so a card making two 3/3s contributes nothing; and VEHICLES are counted
   apart, not being creatures until crewed. Read the figure as a FLOOR on what the deck can
@@ -1656,8 +1656,8 @@ earned it: [C-01]
   test_check_dfc.py, which pins the G-63 builder SCAN rather than the registry it
   feeds; test_writer_mutations.py, which runs each write-safety property against a
   mutant writer so the property is proven load-bearing; and test_gates_fire.py, the
-  watched-it-fail layer for the seven gates that had none — so all fourteen now have
-  one; and test_dashboard_js.py, the CROSS-LANGUAGE layer running the dashboard's JS
+  watched-it-fail layer for the seven gates that had none — so all thirteen model-sanity
+  gates now have one; and test_dashboard_js.py, the CROSS-LANGUAGE layer running the dashboard's JS
   matcher under Node against `match_paste`), requirements-dev.txt + requirements-app.txt
   (CI installs BOTH, and sets PYTEST_NO_SKIPS so a skip FAILS, at collection too since BS8-07 — installing only -dev
   silently skipped the editor's six write-safety pins on every run),
@@ -1674,7 +1674,7 @@ earned it: [C-01]
 - INV-03 | Derived reference files exist AND keep their own schema: card-mana.csv (Card Name/Mana Cost/Mana Value/Keywords), card-pool.csv (…/Rarity; Legalities+Released+Power+Toughness warn if absent), gallery.html AND dashboard.html (each has usable CONTENT — non-trivial size + the `#data` island — since existence alone passed a truncated build) | Subsystem: Data/Presentation | Verify: scripts/check_all.py
 - INV-04 | Every deck file under decks/ parses with no malformed card lines, AND every line's `(SET)` code exists in the pool or library (an unheld COLLECTOR # within a real set is a soft warning, since the pool keys one printing per card), AND card lines under a `Sideboard`/`Maybeboard`/`Companion` heading and quantity-0 lines are malformed (deck files are the maindeck — BS11-05/73), AND the roster's ids are unambiguous — no two files claim one deck id, and no top-level decks/ directory is variant-shaped (`73a-…`), both of which let a by-id command silently validate one file while editing another | Subsystem: Decks | Verify: scripts/check_all.py
 - INV-05 | Color(s) stores color identity; actual mana cost lives only in card-mana.csv | Subsystem: Data | Verify: design/manual
-- INV-06 | Synergy tags are keyword-aware — regenerate via build_mana.py then tag_synergies.py --merge after imports (--merge preserves hand-curated tags; --force replaces them) | Subsystem: Ingest | Verify: manual
+- INV-06 | Synergy tags are keyword-aware — regenerate after imports with `make refresh` (G-13: the Makefile is the ONE executable order, never retyped here; its tag step runs `--merge`, which preserves hand-curated tags, where `--force` replaces them) | Subsystem: Ingest | Verify: manual
 
 **Policy Configuration:**
 Policy threshold: 6/10
@@ -1828,8 +1828,9 @@ format.
     either copies or focuses-and-selects the textarea with the "Select-and-copy the box
     below" toast (a `file://` open is not a secure context, so the fallback is the
     EXPECTED path, not a failure); `--report`'s manual-axis section shows a non-empty Loss
-    Reason tally for the first time. The four hand-only columns (G-74) are empty in all 66
-    rows today, so this scenario is the only thing that can prove the loop closes at all.
+    Reason tally for the first time. The hand-only columns (G-74) are still empty in every
+    row (C-02 carries the live count), so this scenario is the only thing that can prove
+    the loop closes at all.
 
 12. Dashboard first paint on a light-OS machine | Subsystem: Presentation & Interface
     Steps: set the OS to light, clear the page's `localStorage` (`mtga-prefs`), hard-reload
@@ -1985,7 +1986,7 @@ read-only, so the file would sit empty while reading as a live status board.
 The `.cycle/` state dir was never part of what was declined — this project uses one
 (see "Session state" below). And **`systems-map` was re-tested, and the vendoring stays declined** — but
 the MAP itself landed: **`docs/systems-map.md`** is a hand-written, TASK-first map (the
-four things the user does: ingest · draft · tune+apply · prioritize crafts), not the
+five things the user does: ingest · draft · tune+apply · prioritize crafts · log matches), not the
 module map the generic Tier-3 command produces. That distinction is why the command was
 still not worth vendoring: the module structure was never the friction. The map's
 deliverable is the list of **reconciliation points** — every place a human must resolve
@@ -2097,10 +2098,10 @@ is invisible, and a handoff nobody is told to read is the same failure one layer
   `[K-nn]` anchor the rule carries. CLAUDE.md holds the rule and any live residual so a
   session can act safely without opening this; open it to find out WHY. Live.
 - **`docs/systems-map.md`** — the TASK-first map, and **the router from what the user
-  ASKED to which skill answers it**. Its four sections are named for the four things
+  ASKED to which skill answers it**. Its five task sections are named for the five things
   Robin does — *Ingest new cards* (`/ingest`), *Build a new deck* (`/draft-deck`),
   *Refine a deck* (`/tune-deck` → `/apply-changes`), *Prioritize crafts*
-  (`/add-wishlist`) — each with the real command path, per-command costs, and every
+  (`/add-wishlist`), *Log matches* (`/log-matches`, §5b) — each with the real command path, per-command costs, and every
   **reconciliation point** where a human must settle two answers, plus the
   overlapping-answer inventory with measured agreement.
   **Open it whenever a request names a deck task in the user's own words** ("refine

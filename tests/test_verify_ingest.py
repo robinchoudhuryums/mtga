@@ -37,7 +37,13 @@ def _restates_chain(src):
         if b != -1:
             return True
         a = src.find("python3 scripts/build_mana", a + 1)
-    return any("build_mana" in ln and "build_pool" in ln and ("->" in ln or "→" in ln)
+    # A PARTIAL recipe is the same staleness (BS11-64): INV-06 read "regenerate via
+    # build_mana.py then tag_synergies.py --merge", which omits build_pool — and the old
+    # line test needed BOTH build_mana and build_pool, so a chain missing a step was the
+    # one shape it could not see. Any two rebuild steps joined as a SEQUENCE count.
+    steps = ("build_pool", "build_mana", "tag_synergies", "build_gallery")
+    seq = re.compile(r"->|→|\bthen\b")
+    return any(sum(s in ln for s in steps) >= 2 and seq.search(ln)
                for ln in src.splitlines())
 
 

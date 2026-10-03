@@ -21,7 +21,10 @@ Examples:
     # Just count how many Merfolk exist vs. how many you own
     python3 scripts/pool.py --type Merfolk --count
 
-Filters are case-insensitive substring matches, AND-ed together.
+Filters are case-insensitive and AND-ed together. `--name`, `--text` and `--synergy` are
+substring matches; `--type` matches whole words (`lib.type_matches`), `--color` /
+`--within` are colour-SET tests, and `--regex` is a regular expression over
+reminder-stripped oracle text.
 """
 
 import argparse

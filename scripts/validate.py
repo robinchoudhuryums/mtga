@@ -114,5 +114,9 @@ def _report(errors, warnings):
 
 
 if __name__ == "__main__":
+    # `--help` was read as a FILE PATH ("file not found: --help") — BS11-56.
+    if len(sys.argv) > 1 and sys.argv[1] in ("-h", "--help"):
+        print(__doc__)
+        sys.exit(0)
     target = sys.argv[1] if len(sys.argv) > 1 else DEFAULT_CSV
     sys.exit(validate(target))

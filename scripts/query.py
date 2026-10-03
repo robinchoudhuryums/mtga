@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 """Search and filter the card library from the command line.
 
-All text filters are case-insensitive substring matches and are AND-ed together,
-so you can narrow a collection quickly during deck-building.
+Filters are case-insensitive and AND-ed together, so you can narrow a collection
+quickly during deck-building. Most are substring matches; two are not (BS11-63):
+`--type` matches whole words (`lib.type_matches` — "orc" is in "Sorcery") and
+`--color` matches the identity as a SET (`lib.color_matches` — "r" is in "colorless").
 
 Examples:
     # All blue Merfolk you own
@@ -118,9 +120,9 @@ def main():
     ap = argparse.ArgumentParser(description="Search the MTG Arena card library.")
     ap.add_argument("path", nargs="?", default=DEFAULT_CSV, help="CSV path")
     ap.add_argument("--name", help="substring match on Card Name")
-    ap.add_argument("--type", help="substring match on Type line")
+    ap.add_argument("--type", help="whole-word match on Type line (Elf does not match Shapeshifter)")
     ap.add_argument("--text", help="substring match on Card Text")
-    ap.add_argument("--color", help="substring match on Color(s) (e.g. U, B/G)")
+    ap.add_argument("--color", help="identity CONTAINS these colors, matched as a set (e.g. U, B/G; 'colorless' for colorless)")
     ap.add_argument("--synergy", help="substring match on Synergies tags")
     ap.add_argument("--set", help="substring match on Set Code")
     ap.add_argument("--min-owned", type=int, metavar="N",

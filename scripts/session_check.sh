@@ -18,7 +18,21 @@
 set -u
 cd "${CLAUDE_PROJECT_DIR:-.}" || exit 0
 
-python3 scripts/check_all.py --quiet 2>/dev/null
+# A CRASH must be visible (BS11-55): `2>/dev/null` swallowed the traceback, so a broken
+# gate simply printed no integrity line at all — which reads as "nothing to report".
+# stderr stays out of the banner on a normal run (the soft warnings go there), but a
+# non-zero exit with no `[card-library]` line is reported with the traceback's tail.
+ca_err=$(mktemp 2>/dev/null || echo "/tmp/check_all.$$.err")
+ca_line=$(python3 scripts/check_all.py --quiet 2>"$ca_err"); ca_rc=$?
+[ -n "$ca_line" ] && echo "$ca_line"
+case "$ca_line" in
+    *"[card-library]"*) ;;
+    *) if [ "$ca_rc" -ne 0 ]; then
+           echo "[card-library] check_all CRASHED (exit $ca_rc) — run: python3 scripts/check_all.py"
+           tail -3 "$ca_err"
+       fi ;;
+esac
+rm -f "$ca_err"
 
 if ! python3 -c 'import pytest' 2>/dev/null; then
     echo '[unit tests] pytest not installed — run: make test-units'

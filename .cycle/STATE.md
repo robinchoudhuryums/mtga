@@ -34,6 +34,9 @@ Updated: 2026-10-02 (Batch 1 — see Where I left off)
 
 ## Completed this cycle
 
+- **2026-10-03 — scan #11 Batch 9: docs + housekeeping** (BS11-55–60, 62–66). Block
+  `11-batch9-docs-broad-implement.md`. Net 1 − 0 = 1. **Scan #11 complete** (BS11-80/81
+  deferred).
 - **2026-10-02 — scan #11 Batch 8: editor + dashboard** (BS11-42–53). Block
   `11-batch8-editor-dashboard-broad-implement.md`. Net 2 − 0 = 2.
 - **2026-10-02 — scan #11 Batch 7: match record** (BS11-32/33/35/36/37/38). Block
@@ -393,6 +396,15 @@ Updated: 2026-10-02 (Batch 1 — see Where I left off)
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
+**2026-10-03 (latest) — scan #11 Batch 9 implemented; SCAN #11 IS COMPLETE** (block
+`11-batch9-docs-broad-implement.md`): hook surfaces a check_all crash, gates/validate answer
+`--help`, `/refresh` corrected per G-18, ROADMAP currency pass, figure_drift denominators
+registered (CLAUDE.md now 72/77 of 114), INV-06 → `make refresh` (+ the recipe detector now
+catches a partial chain — it found one live in verify_ingest), NEXT-SESSION §0 retitled with
+a 2026-10-03 stamp. Suite + check_all green. **Next:** the owner's open calls (three loss
+reasons, tier letters 55/60/78, deck-55 FRA ownership), browser scenarios 20–23, then a
+fresh `/broad-scan` or `/roadmap` when the next cycle starts. Deferred: BS11-80/81.
+
 **2026-10-02 (latest) — scan #11 Batch 8 implemented** (block
 `11-batch8-editor-dashboard-broad-implement.md`): BS11-42–53. Editor Add aliases + validates
 the set (INV-01b), Revert carries `lib_token` and re-adds pruned mana rows (INV-02), bare-list

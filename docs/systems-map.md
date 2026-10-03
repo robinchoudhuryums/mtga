@@ -1,11 +1,12 @@
 # Systems map — task-first
 
 **Status: LIVE.** Regenerate when a cycle adds a subcommand or a skill stage.
-Figures and the reconciliation inventory re-measured **2026-09-03** against 117 deck
-files, 2,537 owned printings, a 15,973-card pool, 35 `deck.py` subcommands and 82 logged
-matches (broad-scan #8, BS8-26 — the header had carried the 2026-07-29 measurement at 64
-decks while calling itself LIVE, which is the "a handoff that IS read and is wrong"
-shape). The WORKFLOW prose below is unchanged from 2026-07-29 and still holds; §5b was
+The repo's size today (re-taken **2026-10-03**, BS11-62): 116 deck files, 2,832 owned
+printings, a 16,047-card pool, 35 `deck.py` subcommands and 213 logged matches. The
+reconciliation inventory in §6 and the measured agreement rates were last re-measured
+**2026-09-03** (broad-scan #8, BS8-26 — the header had carried the 2026-07-29 measurement
+at 64 decks while calling itself LIVE, which is the "a handoff that IS read and is wrong"
+shape); re-measure them before quoting a rate as current. The WORKFLOW prose below is unchanged from 2026-07-29 and still holds; §5b was
 added 2026-08-10 when match logging went from a written-but-unused tool to a live
 workflow.
 

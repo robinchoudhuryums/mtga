@@ -773,6 +773,11 @@ def _wiring_flags():
 
 
 def main():
+    # `--help` prints this module's docstring and exits (BS11-56): the gates took no
+    # arguments, so `--help` was ignored and the CI smoke step ran every gate in full.
+    if any(a in ("-h", "--help") for a in sys.argv[1:]):
+        print(__doc__)
+        return 0
     errs = check()
     if errs:
         print("Suggest scoring sanity: FAIL")

@@ -306,8 +306,9 @@ def report(results, warnings, *, exact=False, mana_missing=False):
               f"tags are blank:")
         for r in nomana:
             print(f"    {r['name']}")
-        print("  This is the step that gets skipped. Run: make refresh  "
-              "(or at minimum build_mana.py --pool, then tag_synergies.py --merge)\n")
+        # `make refresh` alone (BS11-64): the "at minimum" shortcut here was a partial
+        # chain (no build_pool), the stale-recipe shape G-13 forbids.
+        print("  This is the step that gets skipped. Run: make refresh\n")
 
     if not (absent or short or nomana or mana_missing or blocking):
         print("✓ Everything you pasted is in the library at the expected count, with "

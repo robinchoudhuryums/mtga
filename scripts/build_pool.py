@@ -204,10 +204,12 @@ def tagger_fingerprint():
     lists today, but a future set would silently make this hash-seed dependent — the exact
     G-54 shape, in the mechanism meant to detect change).
 
-    NOT hashed: card-mana.csv's keyword frequencies, which also feed the noise floor. A
-    content hash of a 2k-row derived file would change on every mana rebuild and make the
-    reuse fire essentially never — the honest bound is that a keyword crossing the
-    one-card floor is still invisible here, and `--refetch` is the escape hatch."""
+    card-mana.csv is NOT a dependency (it used to be — its keyword frequencies fed the
+    noise floor, so a keyword crossing the one-card floor was invisible to this hash).
+    Since 2026-09-09 the floor is scored against the build's OWN fetched corpus (G-18;
+    see the "Score the keyword noise floor" comment in `main`), so nothing outside these
+    hashed values changes the tags and there is nothing left for `--refetch` to cover on
+    that account."""
     import hashlib
     here = os.path.dirname(os.path.abspath(__file__))
     h = hashlib.sha1()
