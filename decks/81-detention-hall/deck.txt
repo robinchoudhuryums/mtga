@@ -1,0 +1,63 @@
+#: name: Detention Hall (Rakdos superfriends-aristocrats)
+#: format: Standard
+#: colors: BR
+#: plan: midrange
+#: tier: A — PROVISIONAL (untested brew). Metrics floor A on interaction 15 + card advantage 6, the widest margin above the A line of any recent draft; the role model cannot see the Jace token's draws (reminder text) or Liliana, Dreadhorde General's draw-per-death beyond one count. Weaknesses: printed board power 23 counts no tokens, so the real board (4/4 Beasts, Cadets, Zombies, Kiora's Dragon) arrives a turn behind the walkers, and a fast aggro start can kill walkers before the loop runs; four 6-drops (Ajani, Liliana DG, Kiora, Overwrite) make the top heavy; protection 1 — the engine pieces (Necromancer, Deathbringer, Sothera) are enchantments with no way to defend them. Re-grade after 20 matches.
+#: archetype: RAKDOS PLANESWALKER-ARISTOCRATS, drafted 2026-10-03 from the Reality Fracture blue/black/red pile (.cycle/fra-bur-pile-analysis.md). THE LOOP: every loyalty activation makes a 2/2 Cadet (Ajani Unrelenting); Way of the Deathbringer gives every walker "−2: sacrifice a creature → 4/4 trample Beast", so the Cadet becomes a Beast; every death puts +1 loyalty on EVERY walker (Way of the Necromancer), draws (Liliana, Dreadhorde General), drains (Massacre Girl, Most Wanted; Funeral Room) and makes the opponent exile a creature (Sothera). Sanctum Lurker keeps walkers alive at 0 loyalty and gives each "+2: 1 damage to each opponent, gain 1 life", so the big minuses (Deathbringer −2, Warlord −4) can be spent freely. Way of the Pyromancer's +1 makes red mana. The Ways put their abilities on EVERY walker, the Jace token included, so a modest walker (The Aetherspark, Chandra Spark Hunter) is still a carrier for all four. DISTINCT from 60 Redline (black-red max-speed aggro) and 55 Mardu Waves (attack-trigger tokens): the win here is walker loyalty and repeated edicts, not combat speed.
+#: protect: Way of the Necromancer; Way of the Deathbringer; Ajani Unrelenting; Sothera, the Supervoid; Sanctum Lurker
+#: notes: Drafted 2026-10-03. Built OPTIMAL per the Player Profile: the Reality Fracture cards are not yet ingested, so the library reads most of them as unowned; the owner holds the pile. Lands are the optimal black-red set (4 Blood Crypt, 4 Stingerquill Annex — untapped with a walker out) rather than gated on ownership. Drafting swaps (re-screen of the rejected pile): Nocturnal Hunger for Murder (the same instant kill at {2}{B} instead of {1}{B}{B}); The Aetherspark for Tezzeret, Cruel Captain (both are cheap colourless Way-ability carriers, but Tezzeret's own abilities find nothing here while Aetherspark protects itself and its −5 draws two). Left out and why: Tinybones (only Ral −1 / Garruk −3 make discards), Chandra Flameshaper (a 7-drop on an already heavy top), Meathook Massacre II ({B}{B}{B}{B}), Midnight Reaper (draws on NONTOKEN deaths only — the fodder here is tokens), Draconic Visitor (Chandra Spark Hunter's Vehicle is the only artifact token).
+
+# Planeswalkers — every one carries all four Ways' abilities
+1 Ral Zarek, Guest Lecturer (SOS) 97
+1 The Aetherspark (DFT) 231
+1 Chandra, Torch of Defiance (FRA) 244
+1 Chandra, Spark Hunter (DFT) 116
+1 Garruk, Veiled Butcher (FRA) 229
+1 Ajani Unrelenting (FRA) 242
+1 Liliana, Dreadhorde General (FDN) 176
+
+# The Ways — each enters empowering Jace (a walker) and arms every walker
+1 Way of the Necromancer (FRA) 239
+1 Way of the Pyromancer (FRA) 254
+1 Way of the Deathbringer (FRA) 238
+1 Way of the Warlord (FRA) 255
+
+# Engine — keep walkers alive, turn deaths into loyalty, damage and edicts
+1 Sanctum Lurker (FRA) 64
+1 Sothera, the Supervoid (EOE) 115
+1 Funeral Room // Awakening Hall (DSK) 100
+1 Phyrexian Arena (FDN) 180
+
+# Creatures — fodder, sacrifice outlets and death payoffs
+1 Liliana the Repentant (FRA) 231
+1 Stingcaster Mage (FRA) 93
+1 Umbral Collar Zealot (EOE) 123
+1 Samut, Hazoret's Champion (FRA) 251
+1 Winter, Tormented Loner (FRA) 240
+1 Gideon the Oathless (FRA) 230
+1 Ingris Stingerquill (FRA) 137
+1 Loot, the Anomaly (FRA) 232
+1 Darklight Phoenix (FRA) 53
+1 Massacre Girl, Most Wanted (FRA) 234
+1 Kiora of Fire and Ashes (FRA) 247
+
+# Interaction and recursion
+1 Hellish Sideswipe (DFT) 90
+1 Fell (BLB) 95
+1 Stingerquill Charm (FRA) 150
+1 Nocturnal Hunger (BLB) 102
+1 Break Under Pressure (FRA) 50
+1 Command the Stage (FRA) 77
+1 Fulminous Forte (FRA) 84
+1 Extended Absence (FRA) 54
+1 Rewrite Regrets (FRA) 62
+1 Overwrite the Multiverse (FRA) 59
+
+# Lands
+4 Blood Crypt (ECL) 262
+4 Stingerquill Annex (FRA) 190
+4 Dark Fortress (MSH) 264
+1 Blazemire Verge (DSK) 256
+1 Temple of Malice (FDN) 701
+6 Swamp (FRA) 285
+4 Mountain (FRA) 287

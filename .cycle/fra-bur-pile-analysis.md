@@ -1,6 +1,6 @@
 # FRA BUR pile — analysis (TEMPORARY working doc)
 
-**Status: IN PROGRESS.** Delete once the deck(s) land and the findings are folded into the
+**Status: IN PROGRESS — black-red build DRAFTED 2026-10-03 as deck 81 (Detention Hall); the blue-black Theorist variant and the UR Saheeli idea are still open.** Delete once the deck(s) land and the findings are folded into the
 deck files' `#: notes:` blocks. A scratchpad, not a source of truth — decks/ are.
 
 **Source list:** 44-card Reality Fracture (FRA) pile in blue/black/red, pasted 2026-10-03
@@ -181,3 +181,14 @@ Variants the pile surfaced (decide after the main build):
 
 PROTECT (once built): Way of the Necromancer, Way of the Deathbringer, Ajani Unrelenting,
 Sothera — their value is in the rest of the deck, which `cuts` cannot see.
+
+## 6. Build log
+
+- **2026-10-03 — deck 81 Detention Hall drafted** from §5's core. Additions beyond the pile,
+  from the owned pool: Sanctum Lurker (walkers survive at 0 loyalty; +2 drain on every walker —
+  makes the big minuses free), The Aetherspark and Chandra, Spark Hunter (cheap walkers = Way
+  carriers), Liliana Dreadhorde, Sothera, Funeral Room, Phyrexian Arena, Umbral Collar Zealot
+  (free sac outlet), Hellish Sideswipe, Fell, Nocturnal Hunger. Re-screen swaps: Nocturnal
+  Hunger > Murder (strict upgrade), Aetherspark > Tezzeret. Floor A (interaction 15, card adv 6),
+  sources B 19 / R 17, lowest on-curve Ingris 78%. Closest deck by theme is 1 Black Sun (0 shared
+  cards); by cards, 60 Redline (4).

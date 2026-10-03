@@ -229,6 +229,7 @@ Katara, Water Tribe's Hope
 Kav Landseeker
 Kavaron Skywarden
 Kindle the Inner Flame
+Kiora of Fire and Ashes
 Kirol, Attentive First-Year
 Kitnap
 Kitsune's Technique
@@ -256,6 +257,7 @@ Loading Zone
 Loki Laufeyson
 Long Feng, Grand Secretariat
 Loot, Exuberant Explorer
+Loot, the Anomaly
 Lorehold, the Historian
 Madame Web, Clairvoyant
 Magic Pot
@@ -467,6 +469,8 @@ Water Tribe Rallier
 Waterbender Ascension
 Waterwind Scout
 Waxen Shapethief
+Way of the Deathbringer
+Way of the Pyromancer
 Way of the Wildspeaker
 Weapons Vendor
 Web-Warriors
