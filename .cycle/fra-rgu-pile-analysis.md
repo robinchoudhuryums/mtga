@@ -109,3 +109,71 @@ Columns: **RG** (red-green artifacts/Dragons) / **+U** (a Temur version).
 | Encroaching Dragonstorm | ★ | ★ | 4-mana: two basics; returns to hand when a Dragon enters, so it can be recast |
 | Goliath Daydreamer | ◇ | ★ | casts exiled instants/sorceries free on attack; spell-dense list only |
 | Vivien Reid | ★★ | ★★ | +1 digs for a creature or land; −3 hits artifacts/enchantments/fliers |
+
+### Batch 2 (cards 31–60)
+
+| Card | RG | +U | Note |
+|---|---|---|---|
+| Unsparing Boltcaster | ◇ | ◇ | 5 damage only to a creature already dealt damage this turn — needs a pinger first |
+| Command the Stage | △ | △ | Wizard-token payoff (R4); its recursion needs noncombat damage this deck rarely deals |
+| Fulminous Forte | ★★ | ★★ | instant: 1 to each of their creatures/walkers, or 5 to one |
+| Hall of Echoes | △ | △ | colourless land; {5} copy of a creature |
+| Emrakul, the Exigent Doom | ◇ | ◇ | 10 colourless; the {3} exile mode turns a land into a {C}{C} source until cast. A real target only at heavy ramp density (R5) |
+| Aerid Konstrari | ★★★ | ★★★ | 4-mana 5/4 flier; a Heartwood on enter AND on death; {6}: another + pump per artifact (R3 tension under Visitor) |
+| Craterclaw Colossus | ★★ | ★★ | 7-mana haste; team trample and +X per ARTIFACT — the go-wide finisher (R3: weaker under Visitor) |
+| Draconic Visitor | ★★★ | ★★★ | R2: every artifact token becomes a 5/5 flying Dragon |
+| Winter, Team Player | ◇ | ★ | convoke 5-drop; +1/+0 team per noncreature spell |
+| Face Yourself | ◇ | ◇ | 7 mana: copies of THEIR creatures, sacrificed unless you control a walker |
+| Wrath of the Bloodmane | ★★ | ★★ | 4 damage instant, {2} with a legendary creature out |
+| Tenured Tethermage | ★★ | ★★ | sac a land → TWO Heartwoods (net ramp +1 colour fix); tap two artifacts: +2 counters (R3) |
+| Gardenize | △ | △ | graded before: no sacrifice outlet beyond Puppetbeast/Biotech (artifacts, not creatures) |
+| Identity Echo | ◇ | ◇ | exiles your own creature or walker for the next one off the top; 4 mana per sorcery-speed use |
+| Arni, Renowned Champion | △ | △ | pumps off entering power; Dragon tokens make it a real swing, otherwise a 1/5 |
+| Skilled Battlecarver | △ | △ | vanilla-ish 2-drop |
+| Koth, the Geomancer | ◇ | ◇ | landfall ping; Mountain → {R} |
+| Sagu Wildling | ★ | ★ | 5-mana 3/3 flying Dragon + 3 life; Omen half fetches a basic |
+| Savage Ventmaw | ★★ | ★★ | 6-mana 4/4 flying Dragon; each attack adds {R}{R}{R}{G}{G}{G} — casts the top end the same turn |
+| Dragonclaw Strike | ◇ | ★ | {2/G}{2/U}{2/R} — 3 coloured, or 6; double + fight |
+| Herd Heirloom | ★ | ★ | 2-mana any-colour for creatures; power 4+ gets trample and draws on hit |
+| Summoner's Grimoire | ◇ | ◇ | 1/1 Hero + attack-cheat; the deck's big creatures are its top end, so a cheat has targets |
+| Sledge-Class Seedship | ◇ | ◇ | station 7 for a 4/5 flier that cheats on attack |
+| Hungering Puppetbeast | ★★ | ★★ | 5-mana 5/5 + Heartwood; sac another artifact: counter + trample/hexproof/haste — a sink for spent Heartwoods |
+| Eusocial Engineering | ★★ | ★★ | a 2/2 Robot ARTIFACT per land drop (R1); warp {1}{G} for one turn |
+| Mutagen Man, Living Ooze | ★★ | ★★ | X Mutagen artifact tokens; artifact TOKENS' abilities cost {1} less (Lander, Treasure, Mutagen) |
+| Biotech Specialist | ★★ | ★★ | 2-drop with a Lander; every artifact sacrificed pings 2 — Treasures, Landers, Mutagens, Puppetbeast's sac |
+| Rocketeer Boostbuggy | ★★ | ★★ | 2-mana vehicle: a Treasure per attack, exhausts into a creature |
+| Pyrewood Gearhulk | ★★ | ★★ | 6-mana 7/7: team +2/+2, vigilance and menace for the turn — the go-wide finisher |
+| Heartwood Crafter | ★★ | ★★ | 1-drop: prepared Soul Tether = a Heartwood |
+
+### Batch 3 (cards 61–88)
+
+| Card | RG | +U | Note |
+|---|---|---|---|
+| Sandstorm Salvager | ★★ | ★★ | 3-mana: a 3/3 Golem ARTIFACT token; {2},{T}: counters + trample on every creature TOKEN |
+| Konstrari Improviser | ★★ | ★★ | 2-drop {R/G} hybrid: prepared Soul Tether = a Heartwood |
+| Ultron, Artificial Malevolence | ★ | ★ | {3}: pay {2} to copy each NONTOKEN artifact entering (Gearhulk, Crusher, Traxos, Puppetbeast, Colossus) — a token copy is a Dragon under Visitor only if it is a token ARTIFACT being created… it is: R2 applies |
+| Geist of Saint Thalia | — | ★ | noncreature spells cost {1} less; few here |
+| Countersculpt | — | △ | UU counter; Jace lane |
+| Tetsuko Umezawa, Fugitive | — | △ | unblockable small creatures; Thopters/Cadets |
+| Chandra, Chill of Compliance | — | ★ | UU walker (R7 cost) |
+| Lyra, Tolarian Archangel | — | ◇ | needs three draws a turn |
+| Way of the Cryomancer | — | ◇ | walker package only |
+| Plan for All Outcomes | — | ★ | 4-mana removal-ish + empower; Jace lane |
+| Semester Foreseer | — | △ | 4-mana 3/4 + Cadet |
+| Sphinx of False Conclusions | — | ★ | flash flier, loots, returns once as a token |
+| The Theorist, Jace Beleren | — | ★★ | strong walker; Jace lane (R8) |
+| Traxos, Academy Guardian | — | ◇ | prowess flier |
+| Jace, Reality Sculptor | — | ◇ | Islands-based alt-win; wrong deck |
+| Way of the Mind Sculptor | — | ◇ | walker package only |
+| Ruric Thar, Biomagus | — | △ | 6-mana prowess flier |
+| Fatehold Chronologist | — | △ | {W/U} flier + Cadet |
+| Clash of Elements | — | ★ | instant: tuck a nonland permanent (or 2 damage) |
+| Frostbite Pyromental | — | ◇ | hasty 4/4 draws two on hit, then dies |
+| Saheeli, Jewel of Avishkar | — | ★★★ | the blue reason to splash: noncreature spell → hasty flying Thopter ARTIFACT token, a 5/5 Dragon under Visitor (R2/R6) |
+| Innovative Commons (×4) | — | ★ | UR dual, untapped only with a walker |
+| Transformative Commons (×4) | — | ★ | GU dual, untapped only with a walker |
+| Murmuring Volume | ◇ | ◇ | 3-mana any-colour rock + rummage |
+| Keeper of the Quiet Hour | △ | △ | 3-mana 3/2 + empower 2 |
+| The Echoverse Fulcrum | ◇ | ◇ | colourless loot + a sweeper for {5} later |
+| Living Library | △ | △ | 0/4 wall; {6} tuck |
+| Archive Arbiter | ★ | ★ | 6-mana colourless 4/4 flier; destroys a noncreature permanent |
