@@ -39,10 +39,18 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+      # Every `WARN:` the build prints becomes a run ANNOTATION (BS11-50). Below the
+      # majority refusal the build exits 0 and publishes, so a sub-majority deck-analysis
+      # failure, an empty craft table or a failed roster panel otherwise lives only in a
+      # log nobody opens on a green deploy. The exit status is preserved.
       - name: Build dashboard (offline, from committed data)
         run: |
           mkdir -p _site
-          python3 scripts/build_dashboard.py --out _site/index.html
+          rc=0
+          python3 scripts/build_dashboard.py --out _site/index.html 2> build.err || rc=$?
+          cat build.err >&2
+          grep '^WARN' build.err | sed 's/^WARN:* */::warning title=Dashboard build::/' || true
+          exit $rc
       # Look at the artifact before publishing it. The build writes through
       # `lib.atomic_write`, so a CRASH fails the step above rather than leaving a partial
       # file — the reachable case is a build that SUCCEEDS with degraded content (an empty
@@ -64,6 +72,12 @@ jobs:
               sys.exit(f"Refusing to deploy: _site/index.html is {len(blob)} bytes, "
                        f"data island present={island}")
           print(f"OK: {len(blob)} bytes, data island present")
+          # Degraded panels publish by design below the majority threshold; say how
+          # many, so a green deploy cannot hide them (BS11-50).
+          n = blob.count("[analysis error")
+          if n:
+              print(f"::warning title=Degraded panels::{n} `[analysis error` "
+                    f"marker(s) in the published page")
           PY
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

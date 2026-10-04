@@ -46,8 +46,12 @@ import sys
 from lib import BASICS as lib_BASICS, DEFAULT_CSV, load_rows, write_rows, eprint
 
 # <qty> <name> optionally followed by (SET) and a collector number.
+# The NAME may not contain a TAB. An Arena line never does, while a quantity-first
+# tracker TSV ("4\tLlanowar Elves\tDOM\t168") otherwise matched with the whole tail as
+# the card name — `verify_ingest` then never tried the CSV/TSV reading and reported the
+# card missing, and `import_arena` appended a junk-named row (broad-scan BS11-22).
 LINE_RE = re.compile(
-    r"^\s*(\d+)\s*[xX]?\s+(.+?)\s*(?:\(([^)]+)\)\s*([^\s]+)?)?\s*$"
+    r"^\s*(\d+)\s*[xX]?\s+([^\t]+?)\s*(?:\(([^)\t]+)\)\s*([^\s]+)?)?\s*$"
 )
 # Section headers Arena emits that aren't cards.
 SECTIONS = {"deck", "sideboard", "commander", "companion", "maybeboard", "about"}
@@ -151,6 +155,12 @@ def merge(rows, entries, sum_mode):
 
     added = updated = 0
     notes = []
+    # PRINTED lines first, set-less lines after. BS8-35 kept `by_front` current so a
+    # set-less line could see a printed line appended EARLIER in the same paste — but
+    # only in that order: `3 Foo` then `2 Foo (AA1) 5` appended a blank-set phantom (3)
+    # and then the real printing (2), reading owned 5 where the reverse order read 3
+    # (broad-scan BS11-23). A stable sort makes the result independent of line order.
+    entries = sorted(entries, key=lambda e: not e[3])
     for qty, name, set_code, collector in entries:
         # A line with no COLLECTOR NUMBER (`4 Llanowar Elves`, a website list; or
         # `4 Llanowar Elves (DOM)`, a set-stamped list) is a NAME-level claim, not a
@@ -234,8 +244,17 @@ def main():
     ap.add_argument("--sum", action="store_true",
                     help="add quantities on re-import instead of taking the max")
     ap.add_argument("--dry-run", action="store_true", help="report only, write nothing")
+    # Basics are skipped BY DEFAULT (broad-scan BS11-28). They are not part of the
+    # collection, lib.BASICS says every ingest writer skips them, and the other two
+    # writers hard-skip them — but this one imported them unless --skip-basics was
+    # remembered, so a bare `import_arena.py deck.txt` wrote a "9 Forest" row into the
+    # inventory. --skip-basics stays accepted (it is the documented spelling and is now
+    # a no-op); --include-basics is the explicit opt-in for the rare case that wants them.
     ap.add_argument("--skip-basics", action="store_true",
-                    help="ignore basic lands (use when reconciling from a deck list)")
+                    help="ignore basic lands (the default; kept for compatibility)")
+    ap.add_argument("--include-basics", action="store_true",
+                    help="import basic lands too (they are not normally part of the "
+                         "collection — Arena gives unlimited copies)")
     args = ap.parse_args()
 
     # A bad path was a raw traceback here, while import_collection / verify_ingest /
@@ -246,7 +265,7 @@ def main():
     except OSError as e:
         eprint(f"Could not read {args.source!r}: {e}")
         return 1
-    entries, warnings = parse(text, skip_basics=args.skip_basics)
+    entries, warnings = parse(text, skip_basics=not args.include_basics)
     for w in warnings:
         eprint(f"WARN:  {w}")
     if not entries:

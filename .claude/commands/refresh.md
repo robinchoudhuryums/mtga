@@ -12,10 +12,13 @@ Rebuild them in dependency order (all require Scryfall egress except the last
 two):
 
 1. `python3 scripts/enrich.py` — fill blank Type/Card Text/Color(s)/Collector #
-2. `python3 scripts/build_pool.py --all` — refresh the full Arena card pool (drop
-   `--all` for a smaller Standard-only pool). Run this BEFORE `build_mana --pool`,
-   which reads card-pool.csv — otherwise a just-released set's new pool cards
-   wouldn't be covered by card-mana.csv until the next cycle.
+2. `python3 scripts/build_pool.py --all` — refresh the full Arena card pool. Keep
+   `--all`: without it the build is Standard-only, and the >50% shrink guard (G-18)
+   refuses to write a pool that small over the full one. It REUSES a pool built within
+   the last week for the same query and tag fingerprint, so it is usually fast; pass
+   `--refetch` (`make refresh REFETCH=1`) to force a fetch. Run this BEFORE
+   `build_mana --pool`, which reads card-pool.csv — otherwise a just-released set's new
+   pool cards wouldn't be covered by card-mana.csv until the next cycle.
 3. `python3 scripts/build_mana.py --pool` — refresh card-mana.csv (mana costs +
    keywords). `--pool` keeps costs for the full Arena pool (unowned cards), which
    is slow; omit it for a fast library-only build (but that drops pool coverage)
@@ -31,8 +34,11 @@ two):
 6. `python3 scripts/check_all.py` — confirm all invariants hold
 
 Notes:
-- Skip step 1 if no new/blank cards were added. Skip step 2 unless card-library
-  changed (the full-pool build is the slowest step).
+- Skip step 1 if no new/blank cards were added. Step 2 does NOT depend on what you own
+  (G-18): an ingest cannot change the pool, so card-library edits are no reason to run
+  it. What stales it is time (`Legalities`, a new set) and a tag-pattern edit — both of
+  which its own freshness check detects, so leaving step 2 in costs nothing when the
+  pool is current. On a set's release day, check the pool's row count went up (G-79).
 - If Scryfall is unreachable, report which steps were skipped and why; steps 5–6
   still run from cache.
 - End by reporting check_all's result. Suggest `/sync-docs` if the code/data

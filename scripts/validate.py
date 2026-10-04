@@ -73,9 +73,16 @@ def validate(path):
                     f"integer or blank, got {qty!r}"
                 )
 
-        # Duplicate printing detection: same card + set + collector number.
+        # Duplicate printing detection: same card + set + collector number. Keyed on the
+        # FRONT face: the library stores most DFCs under the front name and a handful
+        # under the full `A // B`, and every writer (`import_arena.key`, reconcile_crafts,
+        # import_collection) treats the two spellings as ONE printing — so a front-name
+        # row beside a full-name row of the same (set, collector) is the split-count
+        # shape BS2-02 fixed in the writers, and this gate could not see it (broad-scan
+        # BS11-27). A collector number is unique within a set, so two DISTINCT cards can
+        # never collide on (front, set, collector).
         key = (
-            name.lower(),
+            name.split(" // ")[0].strip().lower(),
             (row.get("Set Code") or "").strip().lower(),
             (row.get("Collector #") or "").strip().lower(),
         )
@@ -107,5 +114,9 @@ def _report(errors, warnings):
 
 
 if __name__ == "__main__":
+    # `--help` was read as a FILE PATH ("file not found: --help") — BS11-56.
+    if len(sys.argv) > 1 and sys.argv[1] in ("-h", "--help"):
+        print(__doc__)
+        sys.exit(0)
     target = sys.argv[1] if len(sys.argv) > 1 else DEFAULT_CSV
     sys.exit(validate(target))

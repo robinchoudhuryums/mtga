@@ -572,6 +572,22 @@ class TestCollectionPlan:
         assert r["updated"] == [] and len(r["ambiguous"]) == 1
         assert r["ambiguous"][0][0] == "Shock"
 
+    def test_a_printed_entry_for_an_unheld_printing_is_folded_not_dropped(self):
+        """BS11-19: with the card held in TWO printings, an export row naming a THIRD
+        printing (set + collector) was filed as a name-only ambiguity and its copies
+        were dropped — a planned total of 2 against a real 4. The total must be right."""
+        rows = [self._row("Foo", "AAA", "1", "1"), self._row("Foo", "BBB", "2", "1")]
+        r = ic.plan(rows, [(1, "Foo", "AAA", "1"), (1, "Foo", "BBB", "2"),
+                           (2, "Foo", "CCC", "3")])
+        assert r["ambiguous"] == [] and r["added"] == []
+        assert sum(int(x["Quantity Owned"]) for x in rows) == 4
+
+    def test_the_fold_prefers_a_row_from_the_same_set(self):
+        rows = [self._row("Foo", "AAA", "1", "1"), self._row("Foo", "BBB", "2", "1")]
+        ic.plan(rows, [(1, "Foo", "AAA", "1"), (1, "Foo", "BBB", "2"),
+                       (2, "Foo", "BBB", "9")])
+        assert [x["Quantity Owned"] for x in rows] == ["1", "3"]
+
     def test_ambiguous_names_are_reported_once(self):
         rows = [self._row("Shock", "M21", "159", "2"), self._row("Shock", "DAR", "12", "2")]
         r = ic.plan(rows, [(3, "Shock", "", ""), (3, "Shock", "", "")])
@@ -673,6 +689,16 @@ class TestSetlessLines:
         return [{"Card Name": "Llanowar Elves", "Set Code": "M19", "Collector #": "314",
                  "Quantity Owned": "4", "Type": "", "Card Text": "", "Color(s)": "",
                  "Synergies": ""}]
+
+    def test_a_setless_line_BEFORE_the_printed_line_does_not_phantom(self):
+        """BS11-23: BS8-35 handled printed-then-set-less in one paste; the reverse order
+        still appended a blank-set phantom, so `3 Foo` + `2 Foo (AA1) 5` read owned 5."""
+        for order in ([(3, "Foo Bar", "", ""), (2, "Foo Bar", "AA1", "5")],
+                      [(2, "Foo Bar", "AA1", "5"), (3, "Foo Bar", "", "")]):
+            rows = []
+            import_arena.merge(rows, order, sum_mode=False)
+            assert len(rows) == 1, order
+            assert sum(int(r["Quantity Owned"]) for r in rows) == 3, order
 
     def test_covered_setless_line_changes_nothing(self):
         rows = self._rows()
@@ -952,3 +978,198 @@ class TestTagRulesReadTheCardNotItsReminder:
 
     def test_noncreature_spell_triggers_are_spellslinger(self):
         assert "spellslinger" in self._tags("Whenever you cast a noncreature spell, put a +1/+1 counter on this creature.")
+
+
+class TestScan11TaggerFixes:
+    """BS11-75…79 — invented tribes, blink / graveyard / burn false positives, and the
+    case-duplicate tags. Real oracle text from card-pool.csv."""
+
+    def _tags(self, type_line, text, keywords=None):
+        return ts.tags_for({"Type": type_line, "Card Text": text}, keywords)
+
+    def test_plural_tribes_resolve_to_the_real_type(self):
+        tags = self._tags("Legendary Planeswalker — Tyvar",
+                          'Elves you control have "{T}: Add {B}."\n+1: Put a +1/+1 counter '
+                          'on up to one target Elf.')
+        assert "Elf" in tags and "Elve" not in tags
+        tags = self._tags("Enchantment", "When this enchantment enters, create a 1/1 white "
+                          "Ally creature token.\nAllies you control get +1/+1.")
+        assert "Ally" in tags and "Allie" not in tags
+        for word, real in (("Werewolves", "Werewolf"), ("Heroes", "Hero"),
+                           ("Dwarves", "Dwarf"), ("Sphinxes", "Sphinx"),
+                           ("Humans", "Human"), ("Plains", "Plains"), ("Merfolk", "Merfolk")):
+            assert ts._resolve_tribe(word) == real, word
+
+    def test_a_capitalised_word_that_is_no_type_mints_nothing(self):
+        for junk in ("Equipped", "Nontoken", "Then", "Jace", "Multicolored", "Green"):
+            assert ts._resolve_tribe(junk) is None, junk
+        tags = self._tags("Creature — Human", "Other Nontoken creatures you control get +1/+1.")
+        assert "Nontoken" not in tags
+
+    def test_a_transform_return_and_an_earthbend_reminder_are_not_blink(self):
+        assert "blink" not in self._tags(
+            "Enchantment — Saga", "III — Exile this Saga, then return it to the battlefield "
+            "transformed under your control.")
+        assert "blink" not in self._tags(
+            "Creature — Badger Mole", "When this creature enters, earthbend 2. (Target land you "
+            "control becomes a 0/0 creature with haste that's still a land. Put two +1/+1 "
+            "counters on it. When it dies or is exiled, return it to the battlefield tapped.)")
+        # …and a real blink whose FLASHBACK reminder says "graveyard" now counts.
+        assert "blink" in self._tags(
+            "Instant", "Exile target creature you control, then return it to the battlefield "
+            "under its owner's control.\nFlashback {3}{U} (You may cast this card from your "
+            "graveyard for its flashback cost. Then exile it.)")
+
+    def test_incidental_reminders_do_not_mint_graveyard(self):
+        assert "graveyard" not in self._tags(
+            "Creature — Nightmare Dog", "Discard a card: This creature gets +1/+1 until end of "
+            "turn.\nMadness {2}{B} (If you discard this card, discard it into exile. When you "
+            "do, cast it for its madness cost or put it into your graveyard.)")
+        assert "graveyard" not in self._tags(
+            "Creature", "Whenever you commit a crime, draw a card. (Targeting opponents, "
+            "anything they control, and/or cards in their graveyards is a crime.)")
+        assert "graveyard" not in self._tags(
+            "Sorcery", "Create a Wicked Role token attached to target creature you control. "
+            "(If you control another Role on it, put that one into the graveyard. Enchanted "
+            "creature gets +1/+1.)")
+        # A reminder that describes a REAL graveyard mechanic still counts.
+        assert "graveyard" in self._tags(
+            "Creature", "Whenever this creature attacks, if you descended this turn, draw a "
+            "card. (You descended if a permanent card was put into your graveyard from "
+            "anywhere.)")
+
+    def test_damage_to_yourself_is_not_burn(self):
+        assert "burn" not in self._tags(
+            "Artifact", "{T}: Add {C}.\n{T}: Add {U} or {B}. This artifact deals 1 damage to you.")
+        assert "burn" not in self._tags("Land", "{T}: Add {C}{C}. This land deals 2 damage to you.")
+        # Inside QUOTES "you" is the opponent who received the ability.
+        assert "burn" in self._tags(
+            "Creature — Goblin Rogue", 'Whenever this creature deals combat damage to a '
+            'player, that player creates a 0/1 token with "At the beginning of your upkeep, '
+            'this token deals 1 damage to you."')
+        assert "burn" in self._tags("Instant", "Shock deals 2 damage to any target.")
+
+    def test_one_spelling_per_theme(self):
+        tags = self._tags("Artifact — Equipment", "Equipped creature gets +1/+1.\nEquip {1}",
+                          ["Equip"])
+        assert "equipment" in tags and "Equipment" not in tags
+        assert ts.canonical_tags(["Aura", "aura", "Saga", "Elf", "Food"]) == \
+            ["aura", "saga", "Elf", "food"]
+
+    def test_merge_canonicalises_the_kept_library_tags(self, tmp_path, monkeypatch):
+        import sys
+        lib_csv = tmp_path / "card-library.csv"
+        lib_csv.write_text(",".join(lib.HEADER) + "\n" +
+                           'Bonesplitter,Artifact — Equipment,"Equipped creature gets +2/+0.\n'
+                           'Equip {1}",,Equipment; my-hand-tag,M21,1,1\n', encoding="utf-8")
+        monkeypatch.setattr(ts, "MANA_CSV", str(tmp_path / "absent.csv"))
+        monkeypatch.setattr(sys, "argv", ["tag_synergies.py", str(lib_csv), "--merge"])
+        assert ts.main() == 0
+        _, rows = lib.load_rows(str(lib_csv))
+        tags = [t.strip() for t in rows[0]["Synergies"].split(";")]
+        assert "equipment" in tags and "Equipment" not in tags
+        assert "my-hand-tag" in tags
+
+
+class TestScan11TaggerFollowOns:
+    """Batch 4 follow-ons: irregular-plural tribes, and the radar that notices a new
+    subtype the embedded vocabulary does not hold."""
+
+    def test_invariant_and_irregular_plurals_reach_the_resolver(self):
+        def tags(text):
+            return ts.tags_for({"Type": "Enchantment", "Card Text": text})
+        assert "Merfolk" in tags("Merfolk you control get +1/+1.")
+        assert "Kithkin" in tags("Kithkin you control have flying.")
+        assert "Mouse" in tags("Mice you control get +1/+0.")
+        assert ts._resolve_tribe("Oxen") == "Ox"
+        # A singular-only type is NOT admitted through the invariant set.
+        assert "Ninja" not in ts._INVARIANT_PLURAL_TRIBES
+
+    def test_unknown_subtype_radar_fires_on_a_type_the_vocab_lacks(self, tmp_path,
+                                                                     monkeypatch):
+        import check_keywords as ck
+        pool = tmp_path / "card-pool.csv"
+        pool.write_text(
+            "Card Name,Type,Card Text\n"
+            "Real Elf,Creature — Elf Druid,x\n"
+            "New Thing,Creature — Glorbnak Warrior,x\n"
+            "Some Walker,Legendary Planeswalker — Zzyzx,x\n", encoding="utf-8")
+        monkeypatch.setattr(ck, "POOL_CSV", str(pool))
+        # The planeswalker subtype is not tribal vocabulary and is not asked about.
+        assert ck.unknown_subtypes() == [("Glorbnak", "New Thing")]
+
+
+class TestImportCollectionLibraryOverride:
+    """BS11-20: `--library <path>` redirected only the library write — the blank mana
+    rows and the collection-freshness stamp still went to the REPO's files, so a scratch
+    `--apply` certified the real collection as exactly reconciled."""
+
+    HEADER = ("Card Name,Type,Card Text,Color(s),Synergies,Set Code,Collector #,"
+              "Quantity Owned\n")
+
+    def test_stamp_and_mana_rows_land_beside_the_library(self, tmp_path, monkeypatch):
+        import sys
+        lib_csv = tmp_path / "card-library.csv"
+        lib_csv.write_text(self.HEADER + "Shock,Instant,x,R,,M21,159,4\n", encoding="utf-8")
+        (tmp_path / "card-mana.csv").write_text(
+            "Card Name,Mana Cost,Mana Value,Keywords\nShock,{R},1,\n", encoding="utf-8")
+        export = tmp_path / "export.csv"
+        export.write_text("Name,Set,Number,Quantity\nShock,M21,159,2\nBrand New,M21,9,1\n",
+                          encoding="utf-8")
+        monkeypatch.setattr(sys, "argv", ["import_collection.py", str(export),
+                                          "--library", str(lib_csv), "--apply",
+                                          "--allow-shrink"])
+        assert ic.main() == 0
+        assert (tmp_path / "collection-stamp.json").exists()
+        assert "Brand New" in (tmp_path / "card-mana.csv").read_text(encoding="utf-8")
+
+    def test_the_default_library_keeps_the_repo_paths(self):
+        mana, stamp = ic._sibling_paths(ic.DEFAULT_CSV)
+        assert mana == ic.MANA_CSV
+        assert stamp == lib.COLLECTION_STAMP
+
+
+class TestImportArenaSkipsBasicsByDefault:
+    """BS11-28: lib.BASICS says every ingest writer skips basics, and the other two
+    writers do — but `import_arena` imported them unless --skip-basics was passed."""
+
+    def _run(self, tmp_path, monkeypatch, *flags):
+        import sys
+        lib_csv = tmp_path / "card-library.csv"
+        lib_csv.write_text(",".join(lib.HEADER) + "\n", encoding="utf-8")
+        src = tmp_path / "deck.txt"
+        src.write_text("Deck\n2 Llanowar Elves (DOM) 168\n9 Forest (DOM) 266\n",
+                       encoding="utf-8")
+        monkeypatch.setattr(sys, "argv", ["import_arena.py", str(src),
+                                          "--library", str(lib_csv), *flags])
+        assert import_arena.main() == 0
+        _, rows = lib.load_rows(str(lib_csv))
+        return {r["Card Name"] for r in rows}
+
+    def test_a_plain_run_skips_basics(self, tmp_path, monkeypatch):
+        assert self._run(tmp_path, monkeypatch) == {"Llanowar Elves"}
+
+    def test_include_basics_opts_in(self, tmp_path, monkeypatch):
+        assert "Forest" in self._run(tmp_path, monkeypatch, "--include-basics")
+
+    def test_the_documented_flag_is_still_accepted(self, tmp_path, monkeypatch):
+        assert self._run(tmp_path, monkeypatch, "--skip-basics") == {"Llanowar Elves"}
+
+
+class TestTagSynergiesNoOpWritesNothing:
+    """BS11-29: a --merge pass that changed 0 rows still rewrote the library and left
+    a timestamped .bak of byte-identical content."""
+
+    def test_a_second_merge_writes_no_backup(self, tmp_path, monkeypatch):
+        import glob
+        import sys
+        p = tmp_path / "card-library.csv"
+        p.write_text(",".join(lib.HEADER) + "\n"
+                     "Shock,Instant,Shock deals 2 damage to any target.,R,,M21,159,1\n",
+                     encoding="utf-8")
+        monkeypatch.setattr(ts, "MANA_CSV", str(tmp_path / "absent-mana.csv"))
+        monkeypatch.setattr(sys, "argv", ["tag_synergies.py", str(p), "--merge"])
+        assert ts.main() == 0                     # first pass tags the row
+        baks = glob.glob(str(p) + ".*bak*")
+        assert ts.main() == 0                     # second pass changes nothing
+        assert glob.glob(str(p) + ".*bak*") == baks

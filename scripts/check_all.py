@@ -476,6 +476,11 @@ def main():
         # coverage list. Soft: it breaks no invariant, it's a tidy-up prompt.
         for reg, kw, note in ck.stale_registry_entries():
             soft.append(f"stale {reg} entry '{kw}' — {note}")
+        # A creature / land / artifact type the tagger's tribal vocabulary lacks: every
+        # payoff naming it goes untagged for it (BS11-75's embedded list).
+        for sub, ex in ck.unknown_subtypes():
+            soft.append(f"unknown subtype '{sub}' (e.g. {ex}) — add it to tag_synergies "
+                        "_CREATURE_TYPES/_OTHER_SUBTYPES, or its payoffs stay untagged")
     except Exception as e:
         soft.append(f"keyword radar skipped ({e})")
 

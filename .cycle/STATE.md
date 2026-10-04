@@ -13,13 +13,12 @@
 > HISTORY.md; per-run summaries belong in `.cycle/blocks/`.
 
 ## Current
-Cycle: 10 — a fresh `/broad-scan` ran 2026-09-14 out of the deck 47 tuning post-mortem
-("why does the tooling not propose the cards I propose?"). Cycle 9 is reflected and closed.
-Phase: implement — **scan #10 is FULLY IMPLEMENTED**. All four batches plus every follow-on.
+Cycle: 11 — `/broad-scan` #11 ran 2026-10-01 (81 findings, BS11-01…BS11-81, nine batches).
+Phase: implement — **Batches 1 (ingest), 2 (deck legality + parse gates) and 3 (search filters) DONE 2026-10-02**; Batches 4–9 not started.
 Scope: broad
 Test Command: `python3 scripts/check_all.py`
 Subsystem cycles since last Seams audit: 3 (counter adopted 2026-09-08; no Seams audit has run)
-Updated: 2026-10-01 (three tool gaps closed — see Where I left off)
+Updated: 2026-10-02 (Batch 1 — see Where I left off)
 
 ## In progress (facts to carry forward — NOT judgments)
 - **Broad scan #10 is fully implemented — nothing outstanding from the scan.** Four
@@ -35,6 +34,22 @@ Updated: 2026-10-01 (three tool gaps closed — see Where I left off)
 
 ## Completed this cycle
 
+- **2026-10-03 — scan #11 Batch 9: docs + housekeeping** (BS11-55–60, 62–66). Block
+  `11-batch9-docs-broad-implement.md`. Net 1 − 0 = 1. **Scan #11 complete** (BS11-80/81
+  deferred).
+- **2026-10-02 — scan #11 Batch 8: editor + dashboard** (BS11-42–53). Block
+  `11-batch8-editor-dashboard-broad-implement.md`. Net 2 − 0 = 2.
+- **2026-10-02 — scan #11 Batch 7: match record** (BS11-32/33/35/36/37/38). Block
+  `11-batch7-matches-broad-implement.md`. Net 1 − 0 = 1.
+- **2026-10-02 — scan #11 Batch 6: format drift** (BS11-06/13/14/15/17/18/40). Block
+  `11-batch6-format-drift-broad-implement.md`. Net 7 − 0 = 7.
+- **2026-10-02 — scan #11 Batch 5: recommender maths** (BS11-16/31/61/67–72/74). Block
+  `11-batch5-recommender-maths-broad-implement.md`. Net 9 − 0 = 9.
+- **2026-10-02 — Batch 4 follow-ons** (irregular plurals, subtype radar, K-09 figure; merge
+  removal declined). Block `11-batch4-follow-ons-broad-implement.md`. Net 2 − 0 = 2.
+- **2026-10-02 — scan #11 Batch 4: tagger accuracy** (BS11-75–79). Block
+  `11-batch4-tagger-accuracy-broad-implement.md`. Net 5 − 0 = 5 | scripts/tag_synergies.py,
+  scripts/check_patterns.py, pool rebuild, tests.
 - **2026-10-01 — the test suite no longer reverts the real card library (G-88).** An editor
   test POSTed `/api/revert` without its fixture, so every pytest run (including the
   SessionStart hook's) restored the newest `.bak` over `card-library.csv`. Fixed the test,
@@ -381,6 +396,83 @@ Updated: 2026-10-01 (three tool gaps closed — see Where I left off)
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
+**2026-10-03 (latest) — scan #11 Batch 9 implemented; SCAN #11 IS COMPLETE** (block
+`11-batch9-docs-broad-implement.md`): hook surfaces a check_all crash, gates/validate answer
+`--help`, `/refresh` corrected per G-18, ROADMAP currency pass, figure_drift denominators
+registered (CLAUDE.md now 72/77 of 114), INV-06 → `make refresh` (+ the recipe detector now
+catches a partial chain — it found one live in verify_ingest), NEXT-SESSION §0 retitled with
+a 2026-10-03 stamp. Suite + check_all green. **Next:** the owner's open calls (three loss
+reasons, tier letters 55/60/78, deck-55 FRA ownership), browser scenarios 20–23, then a
+fresh `/broad-scan` or `/roadmap` when the next cycle starts. Deferred: BS11-80/81.
+
+**2026-10-02 (latest) — scan #11 Batch 8 implemented** (block
+`11-batch8-editor-dashboard-broad-implement.md`): BS11-42–53. Editor Add aliases + validates
+the set (INV-01b), Revert carries `lib_token` and re-adds pruned mana rows (INV-02), bare-list
+save refused; dashboard toast is a live region, copy fallback honest, JS colours on tokens,
+MV-0 curve bucket, roster-panel failures shown + WARNed, Pages annotates WARNs. Suite +
+check_all green; dashboard rebuilt. **Docs for Batch 8 synced** (G-15, scenarios 4/17/19 +
+new 20–23, C-10, README, gotchas.md G-15/G-72). **Next:** Batch 9 (docs: BS11-55–60, 62–66). Deferred: BS11-80/81.
+
+**2026-10-02 (latest) — scan #11 Batch 7 implemented** (block
+`11-batch7-matches-broad-implement.md`): BS11-32/33/35/36/37/38. Voids record and restore the
+prior result (`void (was L): …`); padded deck ids are stored canonical; VOID is excluded from
+report rows, the loss tally and swap_outcomes; `--sync-names` sees Arena parenthetical renames
+and no longer splits "Dino"/"Dinosaur". Suite + check_all green. **Docs for Batches 6 + 7
+synced** (G-08/G-30/G-73/G-82, the per-60 Brawl bullet, gotchas.md long forms, README,
+/log-matches). **Next:** Batch 8 (editor/dashboard: BS11-42–53), then Batch 9 (docs).
+
+**2026-10-02 (latest) — scan #11 Batch 6 implemented** (block
+`11-batch6-format-drift-broad-implement.md`): BS11-06/13/14/15/17/18/40. Format names now go
+through `normalize_format` / `pool_format_key` on the rotation, lands, pool --legal and resolve
+paths; 100-card scaling reaches cuts/fit_strength/audit/mana; Command Tower reads the commander's
+colours. 0 tier floors / cuts rankings moved. Suite + check_all green. **Next:** `/sync-docs` for
+Batch 6, then Batch 7 (matches: BS11-32/33/35/36/37/38).
+
+**2026-10-02 (latest) — scan #11 Batch 5 implemented** (block
+`11-batch5-recommender-maths-broad-implement.md`): BS11-16/31/61/67/68/69/70/71/72/74. The
+structural-overlay gate now honours each floor (305 KEY verdicts → role-player); consistency's
+source advice is a JOINT plan; front-face fixes in target_counts / x_cost_cards /
+card_advantage_split. 0 tier floors, 0 cuts rankings moved. Suite + check_all green.
+**Next:** `/sync-docs` for Batch 5, then Batch 6 (format drift: BS11-06/13/14/15/17/18/40).
+
+**2026-10-02 (latest) — Batch 4 follow-ons implemented** (block
+`11-batch4-follow-ons-broad-implement.md`): irregular-plural tribes (5 cards gain their tribe),
+a soft `unknown subtype` radar for the embedded type list, K-09 figure 350. The `--merge`
+stale-tag removal was DECLINED (design: it cannot tell auto from hand tags). Suite + check_all
+green. **Next:** `/sync-docs` for Batch 4 + follow-ons, then Batch 5 (BS11-16/31/61/67–72/74).
+
+**2026-10-02 (latest) — scan #11 Batch 4 implemented** (block
+`11-batch4-tagger-accuracy-broad-implement.md`): BS11-75/76/77/78/79. Tribal tags resolve
+against the real type list; blink/graveyard/burn false positives closed; one spelling per
+theme. Pool rebuilt with the stamped query (16,047 rows); 0 tier floors moved, cuts top-3
+changed in 10 of 114 decks. Full suite and `check_all` green. **Next:** `/sync-docs` for
+Batch 4 (K-09 figure 348→350 is the one soft drift), then Batch 5 (recommender maths:
+BS11-16/31/61/67–72/74).
+
+**2026-10-02 (latest) — scan #11 Batch 3 implemented** (block
+`11-batch3-search-filter-semantics-broad-implement.md`): BS11-39/34/41/54. The new card.py
+agreement pair found load_card_meta's pool-first tag correction missing front-named DFC rows;
+fixed in the same batch (10 cards, 8 decks). Full suite and `check_all` green; gallery and
+dashboard rebuilt. **Next:** `/sync-docs` for Batch 3, then Batch 4 (tagger: BS11-75–79 —
+needs `make refresh` (network) and a roster diff).
+
+**2026-10-02 (latest) — scan #11 Batch 2 implemented** (block
+`11-batch2-deck-legality-parse-gates-broad-implement.md`): BS11-01/02/03/04/05/07/08/09/10/11/12/73.
+Full suite and `check_all` green; dashboard rebuilt (its paste matcher gained the OVERSIZED flag).
+**Next:** Batch 3 (search filters: BS11-39/34/41/54), then 4–9 as listed below. Docs for Batch 2
+need a `/sync-docs` pass (the block lists them). Also today: deck 23 swapped Origin of the
+Avengers for Captain America's Shield (owner's swap).
+
+**2026-10-02 (latest) — scan #11 Batch 1 implemented** (block
+`11-batch1-ingest-correctness-broad-implement.md`): BS11-19/20/21/22/23/24/25/26/27/28/29/30.
+Full suite and `check_all` green. The pool fingerprint value changed, so the next `make refresh`
+rebuilds the pool once. **Next:** Batch 2 (deck legality + parse gates: BS11-01/02/03/04/05/07/
+08/09/10/11/12/73). The scan's batch plan is in the 2026-10-01 chat only — Batches 2–9 list:
+2 legality/parse, 3 search filters (BS11-39/34/41/54), 4 tagger (75–79, needs network + roster
+diff), 5 recommender math (16/31/61/67–72/74), 6 format drift (06/13/14/15/17/18/40), 7 matches
+(32/33/35–38), 8 editor/dashboard (42–53), 9 docs (55–60, 62–66). Deferred: BS11-80, BS11-81.
+Same day, earlier: Reality Fracture refreshed into the pool; decks 55 and 60 FRA swaps applied.
+
 **2026-10-01 (latest) — G-88 fixed, docs synced, PR opened.** The revert-test leak is closed
 (10e273f) and `/sync-docs` landed G-88, the README doubler/`--needs` lines, the systems-map
 inventory rows and the cycle-config C-07 note. **Trap for every later session: never edit a

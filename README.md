@@ -52,7 +52,8 @@ python3 scripts/import_collection.py collection.csv      # dry run; --apply to w
 `import_arena.py` parses MTG Arena's `<qty> <Name> (<SET>) <collector#>` format and
 merges into `card-library.csv`, keyed by Card Name + Set Code + Collector # (one row per
 printing). Re-imports take the **max** quantity seen (decks share one collection, so
-counts don't sum); `--skip-basics` ignores basic lands. A line with **no collector
+counts don't sum); basic lands are skipped by default (`--include-basics` imports them;
+`--skip-basics` is still accepted). A line with **no collector
 number** — `4 Llanowar Elves`, or `4 Llanowar Elves (DOM)` from a website list — is
 treated as a NAME-level claim rather than a printing: it is compared against the summed
 total across every printing you own and tops up the first row only if it exceeds that,
@@ -85,7 +86,11 @@ were silently dropped: the row landed on 1 or 2 depending on the order the expor
 to list them, and the report printed one clean line and looked right. A *repeated*
 printing is the opposite case and is not summed — a tracker emitting the same
 `(name, set, collector)` twice is stating one holding twice, not two holdings, so
-identical export keys collapse on `max` first.
+identical export keys collapse on `max` first. The same holds when the library keeps the
+card in *several* printings and the export names one it does not have: those copies fold
+onto an existing printing (one from the same set when there is one) rather than being
+filed as ambiguous and dropped. Only a row with **no** set or collector number, for a card
+held in several printings, is reported as ambiguous and left alone.
 
 Two more `import_collection.py` safety rules, both about mis-shaped exports. A row whose
 quantity cell can't be read as a plain integer (`"1,024"`, `"4 (foil)"`, `"2.0"`) is
@@ -186,6 +191,11 @@ green. Check `MECHANIC_RULES` for the name before adding a theme. These make `qu
 hand-editable. Rerun `build_mana.py` then `tag_synergies.py --merge` after
 importing new cards to refresh keyword-aware tags without losing curation.
 
+Each theme has ONE spelling: a type tag and its theme collapse to the lowercase form
+(`equipment`, not `Equipment` + `equipment`), and a tribe named in a card's text ("Elves you
+control") resolves to the real type (`Elf`) against the subtype list embedded in
+`tag_synergies.py`; `check_all` warns when a pool card carries a subtype that list lacks.
+
 Keyword tags read what a card **grants**, not only what it has. Scryfall's `keywords`
 field describes the printed card, so a lord handing the whole team deathtouch used to
 carry no `deathtouch` tag at all — and for four evergreens the granted case is the
@@ -223,7 +233,8 @@ only colorless cards. (The old substring match returned every Colorless card for
 `--color R` — the word contains an "r".) Table output by default.
 `--min-owned` sums copies across printings (they're fungible in Arena), and
 `--count` reports **distinct cards**, not CSV rows — a card printed in two sets is
-one card. `query.py` searches only cards you **own** (`card-library.csv`); to search
+one card. `--type` is a whole-word match (`--type Elf` does not hit Shapeshifter), in
+`query.py`, `pool.py` and `wishlist.py` alike. `query.py` searches only cards you **own** (`card-library.csv`); to search
 the full set of cards you *could* play, use `pool.py` below.
 
 ### Card — inspect one card in full
@@ -236,7 +247,8 @@ python3 scripts/card.py "Ghalta, Primal Hunger"  # exact
 Every printout ends with a `━━ end · <name> ━━` bar. That is not decoration: piping this
 command through `head`/`sed` silently re-creates the partial-text read it exists to
 prevent — and it has happened, from the inside, during grading. No closing bar means you
-did not see the whole card.
+did not see the whole card. Its synergy tags come from `card-pool.csv` first (the corrected store, K-09), the
+library row only where the pool cell is blank.
 
 Prints one card's **complete, untruncated oracle text** alongside its mana cost,
 **format legality** (from the pool's `Legalities` column), owned quantity,
@@ -305,6 +317,11 @@ python3 scripts/pool.py --regex 'artifacts you control (get|have)' --within U --
 python3 scripts/pool.py --regex 'exchange control of|gain control of target' --unowned --full
 ```
 
+`--legal` takes the repo's format names and reads them the way `deck.py legal` does:
+`brawl` is the 60-card Standard Brawl and `historic brawl` the 100-card format (Scryfall's
+`brawl` key), with a one-line note when the two spellings differ. An unknown format is
+refused with the list, rather than silently matching nothing.
+
 `--color` matches the identity set, as in `query.py` (`--color R` excludes
 Colorless; `--color colorless` for colorless cards). **`--within` is its
 complement and the one to reach for when surveying for a DECK**: `--color` asks
@@ -334,7 +351,7 @@ below, which blends it with theme fit).
 python3 scripts/wishlist.py --add batch.txt   # append a batch (enriches + AUTO-seeds a Power estimate)
 python3 scripts/wishlist.py --add batch.txt --target 6 --note "why"   # ...stamping the home deck + note onto the NEW rows (an unknown deck id is refused before any Scryfall work)
 python3 scripts/wishlist.py                    # browse the whole wishlist
-python3 scripts/wishlist.py --set SOS --rarity rare,mythic   # filter (substring, AND-ed)
+python3 scripts/wishlist.py --set SOS --rarity rare,mythic   # filter (AND-ed; --set exact, --target per deck id, --note substring)
 python3 scripts/wishlist.py --color R --synergy firebending  # by color/theme (--color is set-matched, like query.py)
 python3 scripts/wishlist.py --target 14        # what you've earmarked for a deck
 python3 scripts/wishlist.py --by-set           # PACK OPTIMIZATION: cards per set, by rarity
@@ -447,7 +464,10 @@ from `card-wishlist.csv`, and lists the decks that reference it so you can re-ch
 buildability. For a **new** card the line's quantity is the owned count; for a card
 **already** in the library it takes `max(existing, line)`, so pasting a deck-dump
 slice (each line a lower bound) can't silently drop a real count — pass
-`--set-exact` to set the count exactly (allowing a deliberate decrease). Lines that
+`--set-exact` to set the count exactly (allowing a deliberate decrease). Within one
+pasted deck, `Deck` and `Sideboard` copies of a printing **add up** (a Bo3 export with 2
+maindeck and 2 sideboard proves 4), using the same section-aware reading as
+`import_arena.py`; the section headers themselves are not reported as cards. Lines that
 look like a card but don't parse are reported (not silently skipped), and **basic lands
 are skipped** — they aren't part of the collection (unlimited in Arena), so pasting a
 full deck list here is safe; the skipped lines are listed rather than silently dropped.
@@ -476,7 +496,7 @@ python3 scripts/deck.py audit         # roster triage: one line per deck — whi
 python3 scripts/deck.py similar 40    # decks most alike by central-theme overlap (is it distinct?)
 python3 scripts/deck.py resolve "Bloom Tender" "2 Island"   # names → deck lines `<qty> Name (SET) #`
 python3 scripts/deck.py resolve --check 76   # verify a WRITTEN deck's (SET) COLLECTOR# fields (strict)
-python3 scripts/deck.py resolve --fix 76 --apply   # ...and REPAIR the bad ones in place (never by hand)
+python3 scripts/deck.py resolve --fix 76 --apply   # ...and REPAIR the bad ones in place (never by hand; a deck id, not a path — only the (SET) # part of each line changes)
 python3 scripts/deck.py check 20a      # owned vs needed + a castability lint (off-color cards)
 python3 scripts/deck.py diff 20 20a   # what variant 20a changes vs base deck 20
 python3 scripts/deck.py arena 20a      # emit an Arena-importable decklist to paste back (a Brawl deck's commander goes under its own Commander heading, as Arena exports it)
@@ -641,7 +661,9 @@ and `#~` flex lines survive. If a block matches two variants nearly equally it's
 A block holding fewer than 75% of the matched deck's cards is flagged **TRUNCATED?**
 and skipped the same way — a partial paste is a subset, so it would otherwise match
 with full confidence and rewrite the stored deck down to the fragment (`--force` for
-a deliberate cut).
+a deliberate cut). The mirror case — a block more than 125% the size of its match, which
+is usually two decks run together — is flagged **OVERSIZED?** and skipped too. A
+`Companion` block is treated like a sideboard: a companion starts outside the game.
 Before this, spotting drift and repairing it were separate jobs: you read a diff, then
 hand-edited each file.
 
@@ -669,7 +691,9 @@ its **Arena export** (`<qty> <Name> (SET) <#>`) and it reports **identical** or 
 `+/−` differential by card — `+` = the paste has more, `−` = the repo has more. It
 compares by card **name and quantity** (printings and basic-land art of the same
 card count as a match, since Arena copies are fungible), includes basics, and exits
-non-zero when they differ, so it's scriptable.
+non-zero when they differ, so it's scriptable. Sideboard, Maybeboard and Companion lines
+in the paste are ignored (stored decks are the maindeck) — the same rule `sync` applies,
+so the two can't disagree about one export.
 
 `suggest` fingerprints a deck by its **colors** — the deck's declared
 `#: colors:`, falling back to its cards' mana **costs** (never color *identity*,
@@ -759,8 +783,8 @@ each describe a different face than you expect — see gotcha **G-63**.
 `stats` also flags **cost nature** — `◊` for cards whose text reduces their cost
 or grants flash (convoke/delve/"costs {1} less", so the printed mana value doesn't
 mislead), `△` for abilities/modes that carry an added or conditional cost, `✕` for
-**X-cost cards**, which the curve books at **MV 1** because X counts as 0 off the
-stack (right for castability, wrong as a curve reading — a card you cast for four
+**X-cost cards**, which the curve books with X counted as 0 off the stack (so `{X}{G}`
+reads MV 1 and `{X}{R}{R}` MV 2; `stats` prints each card's booked MV) (right for castability, wrong as a curve reading — a card you cast for four
 registers as a one-drop *and* as an early drop; `tier` prints a matching "avg MV
 under-reads" advisory beside the vector) — and
 breaks the nonland spells into **functional roles**: a heuristic read of card text
@@ -813,6 +837,9 @@ after adding it. The annotation is display-only; the ranking never reads the led
 `deck.py consistency` no longer prescribes a land
 count when moving that way makes things worse — on a low curve both directions used to
 trip, so it now says the keepable threshold is unreachable and points at cast-on-curve.
+Its `→ want N sources` note is a **joint** plan: a two-colour card's probability is the
+product of both colours, so the advice raises whichever colours it takes to reach the
+target together, and every card below target gets a note.
 It also prints a **tapland line** — how many nonbasics enter tapped, unconditional vs
 conditional — because every probability it computes prices color *access*, and a land
 pass once raised every castability figure while quietly taking the deck to 7 unconditional
@@ -936,8 +963,10 @@ Spirit Water Revival" makes a draw spell a Spirit payoff. 16 roster cards are th
 (K-16). Report-only, so it misleads a reader rather than moving a score.
 
 `legal` is a **deck-construction lint**: it checks deck size against the format
-minimum (60, or 100 for Commander-likes), the copy limit (4 of any nonbasic — or 1
-in singleton formats like Brawl), and every nonbasic card's legality in the deck's
+minimum (60, or 100 for Commander-likes — and in Brawl/Commander the size is EXACT), the
+copy limit (4 of any nonbasic — or 1 in singleton formats like Brawl — unless the card's
+own text says otherwise: "any number of cards named …" or "up to seven …"), basic lands
+against a Brawl commander's colour identity, and every nonbasic card's legality in the deck's
 `#: format:` (using the pool's `Legalities` column; `--format` overrides). The pool's
 keys are Scryfall's, whose `brawl` is the 100-card Historic Brawl, so a 60-card `Brawl`
 deck is checked against `standard` and a `Historic Brawl` deck against `brawl`
@@ -1086,6 +1115,10 @@ Standard-legal, were offered to Standard decks.)
 the floor (and `suggest --needs`' interaction minimum) scales by size / 60. Every Brawl
 recommender also holds to the commander's colour identity, `consistency` counts Arena's
 free first mulligan, and Historic Brawl does not rotate, so it shows no rotation flags.
+The same per-60 scale reaches `cuts`, `audit` and `mana`'s thresholds, and a
+"commander's color identity" land such as Command Tower counts as the commander's colours
+in `mana`, `consistency` and the dashboard (the `suggest` recommenders still read it as
+any colour).
 
 A deck's **change history is git** — no in-file changelog to go unwieldy or drift.
 `deck.py history <id>` prints the deck file's commit log (each message states the
@@ -1133,7 +1166,8 @@ open gallery.html                    # (macOS) view it in your browser
 Generates a self-contained `gallery.html`: a **collection dashboard** (totals,
 color/type/set breakdowns, and clickable top-synergy chips) above a filterable
 grid of your cards with real card art, quantity badges, and set/collector labels.
-Search by name/type/text/synergy, filter by color (WUBRG/Colorless) or set, and
+Search by name/type/text/synergy (a synergy chip searches `tag:<name>`, an exact-tag
+match; tags come from the pool first), filter by color (WUBRG/Colorless) or set, and
 sort by name/set/quantity — all in the browser, no server. Card data is embedded
 in the file; images are hotlinked from Scryfall's CDN (so you need internet to see
 the art, but the file stays tiny and portable).
@@ -1236,7 +1270,9 @@ bookmarkable URL with no local setup. One-time operator steps:
 2. **Settings → Pages → Build and deployment → Source: "GitHub Actions."**
 
 Once enabled, the site publishes at `https://<owner>.github.io/<repo>/` on the next
-push to `main`. Prefer not to host it? The self-contained `dashboard.html` opens
+push to `main`. A build that degrades a few panels still publishes, but every warning it
+printed shows as an annotation on the workflow run, so a green deploy cannot hide one.
+Prefer not to host it? The self-contained `dashboard.html` opens
 straight from disk — no server, no setup.
 
 **Theme.** The dashboard has its own toggle (`t`), and a first visit follows your OS: the
@@ -1267,6 +1303,14 @@ Two behaviours worth knowing before you edit:
   Save: you get a "the deck file CHANGED since this page loaded it" toast instead of
   a silent overwrite of the swap. Reload, re-apply your edit, save again. The
   collection CSV has always worked this way; the deck editor joined it later.
+- **Revert is refused from a page that is out of date.** Revert restores the newest
+  backup, whichever tool wrote it — so if `import_collection --apply` (or any CLI write)
+  ran after the page loaded, Revert says the file changed instead of undoing the import.
+  Reload, then revert from there if you still mean to. Reverting a Remove also brings back
+  the card's `card-mana.csv` row.
+- **Add checks the set code.** It is stored the way Scryfall spells it (Arena's `DAR`
+  becomes `DOM`), and a code no card-pool printing carries is refused — leave the field
+  blank, or `make refresh` first when the set is brand new.
 - **The editor follows your OS colour scheme.** All three pages ship a light palette
   and switch on `prefers-color-scheme`; there is no in-page toggle. The dashboard's
   toggle can't drive them — it lives on a different origin (a `file://` or Pages URL
@@ -1559,7 +1603,14 @@ the ones you cared enough to annotate. `--annotate` refuses `deck`, `result` and
 the log owns those — and an empty value clears a field, so a wrong annotation is fixable
 without editing the CSV. To throw a match out (you stepped away, misclicked into a queue),
 annotate it `void=<why>`; never delete the row, because the next paste would add it back
-as a live result. A voided match counts in no tally, and `void=no` restores it.
+as a live result. A voided match counts in no tally — not the per-deck table, not the
+loss reasons, not `feedback`'s games — and its note keeps the result it replaced
+(`void (was L): stepped-away`), so `void=no` restores exactly that. A void older than that
+note format restores from its game score, and is refused rather than guessed when the
+score is tied; `void=no` on a match that was never voided is refused too.
+
+A zero-padded deck id (`06`) is accepted everywhere and stored canonical (`6`), so one
+deck never splits across two report rows.
 
 The loss vocabulary is **closed so it can be counted**: `flood screw slow answer removed
 keep misplay outclassed`, with free-text `note=` beside it. Free text cannot answer "which

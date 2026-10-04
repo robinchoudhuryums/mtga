@@ -310,6 +310,21 @@ def plan(rows, entries, *, zero_missing=False, unreadable=()):
         nl = aliases[0]
         if len(same_name) == 1:
             _want(same_name[0], qty)
+        elif len(same_name) > 1 and (setc or coll):
+            # A PRINTED entry whose printing the library does not hold, for a card the
+            # library holds in several printings. It is NOT ambiguous — the export says
+            # exactly which printing — and filing it as "AMBIGUOUS — name-only" dropped its
+            # copies outright: library AAA×1 + BBB×1, export AAA 1 / BBB 1 / CCC 2 planned
+            # an owned total of 2 against a real 4 (broad-scan BS11-19). Fold it onto one
+            # existing printing, exactly as the single-printing branch above does (copies
+            # are fungible across printings, so the TOTAL is what must be right), preferring
+            # a row from the same set so a missing collector number lands near its own set.
+            fold = next((r for r in same_name
+                         if (r.get("Set Code") or "").strip().lower() == setc.lower()),
+                        same_name[0])
+            _want(fold, qty)
+            for r in same_name:
+                seen_rows.add(id(r))
         elif len(same_name) > 1:
             # Deduped by name: a name-only export carries one row per printing, so the
             # same unresolvable name would otherwise be reported once per copy.
@@ -354,14 +369,14 @@ def plan(rows, entries, *, zero_missing=False, unreadable=()):
     return {"updated": updated, "added": added, "zeroed": zeroed, "ambiguous": ambiguous}
 
 
-def _ensure_mana_rows(names):
+def _ensure_mana_rows(names, mana_csv=MANA_CSV):
     """Append a BLANK card-mana.csv row per new name so INV-02 (every library name has a
     mana row) holds the moment the library write lands. Same reasoning as
     reconcile_crafts.py: a blank row keeps the invariant and build_mana.py fills in the
     real cost, where a MISSING row is a hard integrity failure. Returns names added."""
     have, header, body = set(), MANA_HEADER, []
-    if os.path.exists(MANA_CSV):
-        with open(MANA_CSV, newline="", encoding="utf-8") as fh:
+    if os.path.exists(mana_csv):
+        with open(mana_csv, newline="", encoding="utf-8") as fh:
             existing = list(csv.reader(fh))
         if existing:
             header, body = existing[0], existing[1:]
@@ -373,8 +388,20 @@ def _ensure_mana_rows(names):
             body.append([n, "", "", ""])
             added.append(n)
     if added:
-        atomic_write(MANA_CSV, lambda fh: csv.writer(fh).writerows([header] + body))
+        atomic_write(mana_csv, lambda fh: csv.writer(fh).writerows([header] + body))
     return added
+
+
+def _sibling_paths(library):
+    """The card-mana.csv and collection-stamp.json that belong WITH `library` — the files
+    beside it. `--library` used to redirect only the library write, while the mana rows
+    and the freshness stamp still went to the REPO's files: a scratch `--apply` certified
+    the real collection as exactly reconciled (silencing G-10's warning) and appended
+    blank mana rows the real library did not need (broad-scan BS11-20). For the default
+    library these ARE the repo files, so a normal run is unchanged."""
+    base = os.path.dirname(os.path.abspath(library))
+    return (os.path.join(base, "card-mana.csv"),
+            os.path.join(base, "collection-stamp.json"))
 
 
 def _report(result, entries, rows, zero_missing, full=False):
@@ -485,12 +512,13 @@ def main():
         print("\n(dry run — pass --apply to write card-library.csv / card-mana.csv "
               "with .bak backups)")
         return 0
+    mana_csv, stamp_path = _sibling_paths(args.library)
     if not changed:
         print("\nNothing to write — the library already matches the export.")
         # A no-op apply still PROVED the counts exact today — that is a reconcile,
         # so the freshness stamp advances (else a clean collection reads as stale).
         try:
-            write_collection_stamp(len(rows))
+            write_collection_stamp(len(rows), path=stamp_path)
         except OSError as e:
             eprint(f"  (could not write collection-stamp.json: {e})")
         return 0
@@ -502,12 +530,12 @@ def main():
     write_rows(rows, args.library)
     # Only AFTER the library write lands, so a rejected write can't strand the mana file
     # out of step with it (the ordering app.py's add()/remove() use for the same reason).
-    mana_added = _ensure_mana_rows([n for n, _s, _c, _q in result["added"]])
+    mana_added = _ensure_mana_rows([n for n, _s, _c, _q in result["added"]], mana_csv)
     print(f"\nApplied to {args.library} (with a .bak).")
     # This is the one EXACT reconcile in the toolchain, so it (alone) advances the
     # collection-freshness stamp the craft-cost surfaces read (lib.collection_stamp_note).
     try:
-        write_collection_stamp(len(rows))
+        write_collection_stamp(len(rows), path=stamp_path)
     except OSError as e:
         eprint(f"  (could not write collection-stamp.json: {e})")
     if mana_added:

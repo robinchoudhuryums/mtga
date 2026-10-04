@@ -22,7 +22,7 @@ def _qargs(**kw):
 def _pargs(**kw):
     base = dict(name=None, type=None, text=None, color=None, within=None, synergy=None,
                 rarity=None, legal=None, role=None, owned=False, unowned=False,
-                _roles=set())
+                _roles=set(), _legal_key="")
     base.update(kw)
     return argparse.Namespace(**base)
 
@@ -89,8 +89,19 @@ class TestPoolFilters:
         assert not pool.matches(_ROCK, _pargs(rarity="rare,mythic"), {})
 
     def test_legal_filter_reads_the_legalities_cell(self):
-        assert pool.matches(_ROCK, _pargs(legal="brawl"), {})
-        assert not pool.matches(_ROCK, _pargs(legal="standard"), {})
+        # matches() reads the RESOLVED pool key main() sets (BS11-40): the repo's
+        # `Historic Brawl` is the pool's `brawl`, and the repo's `Brawl` is `standard`.
+        assert pool.matches(_ROCK, _pargs(legal="historic brawl", _legal_key="brawl"), {})
+        assert not pool.matches(_ROCK, _pargs(legal="standard", _legal_key="standard"), {})
+
+    def test_legal_resolves_through_pool_format_key_and_refuses_a_typo(self, monkeypatch,
+                                                                      capsys):
+        monkeypatch.setattr(sys, "argv", ["pool.py", "--legal", "bogus", "--count"])
+        assert pool.main() == 2
+        assert "unknown format" in capsys.readouterr().err
+        import deck
+        assert deck.pool_format_key("historic brawl") == "brawl"
+        assert deck.pool_format_key("brawl") == "standard"
 
     def test_role_filter_routes_through_the_lazy_deck_proxy(self):
         """pool.classify_roles is a lazy import proxy (batch 5) — --role must
@@ -98,3 +109,38 @@ class TestPoolFilters:
         rr = _pargs(role="removal", _roles={"Removal (spot)"})
         assert pool.matches(_GOLD, rr, {})
         assert not pool.matches(_RED.copy() | {"Card Text": ""}, rr, {})
+
+
+class TestTypeFilterIsWholeWord:
+    """BS11-39: `--type` was a substring test, so "orc" matched every Sorcery and "ant"
+    every Instant — the tribe survey G-59 prescribes returned numbers that read as facts."""
+
+    _SORC = {"Card Name": "Duress", "Type": "Sorcery", "Card Text": "", "Color(s)": "B",
+             "Synergies": "", "Set Code": "M21", "Quantity Owned": "1"}
+    _ORC = {"Card Name": "Orc Raider", "Type": "Creature — Orc Warrior", "Card Text": "",
+            "Color(s)": "R", "Synergies": "", "Set Code": "M21", "Quantity Owned": "1"}
+
+    def test_orc_does_not_match_sorcery(self):
+        for m, a in ((query.matches, _qargs), (pool.matches, _pargs)):
+            assert not m(self._SORC, a(type="Orc"), *([{}] if m is pool.matches else []))
+            assert m(self._ORC, a(type="orc"), *([{}] if m is pool.matches else []))
+
+    def test_ant_does_not_match_instant(self):
+        assert not query.matches(_RED, _qargs(type="Ant"))
+
+    def test_a_multi_word_phrase_still_matches(self):
+        import lib
+        assert lib.type_matches("Legendary Creature — Human", "legendary creature")
+        assert not lib.type_matches("Creature — Legendary", "legendary creature")
+        assert lib.type_matches("Instant", None) and lib.type_matches("Instant", "")
+
+
+class TestCardPyReadsPoolTagsFirst:
+    """BS11-41: card.py printed the LIBRARY's tags, which keep what the corrected rules
+    dropped; the models read the pool first (K-09). A blank pool cell falls back."""
+
+    def test_pool_first_library_on_blank(self):
+        import card
+        assert card.synergy_cell({"Synergies": "food; sacrifice"}, {"Synergies": "food"}) == "food"
+        assert card.synergy_cell({"Synergies": "lifegain"}, {"Synergies": ""}) == "lifegain"
+        assert card.synergy_cell({}, None) == ""

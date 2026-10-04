@@ -241,14 +241,11 @@ def deck_viz(meta, cards, carddata, mana, keywords, by_key, by_name):
     # this panel repeats the blanket "payable with either color" that made deck 14 look
     # fine, and the dashboard becomes the surface that disagrees, which is the failure the
     # note just below records for `#: uncastable-ok:`.
-    _src = deckmod.deck_source_profile(cards, by_key, by_name, carddata)[0]
-    _binds = {}
-    for h in hyb_sets:
-        if len(h) < 2:
-            continue
-        _live = [c for c in sorted(h) if _src.get(c, 0) > 0]
-        if len(_live) == 1:
-            _binds["/".join(sorted(h))] = _live[0]
+    _src = deckmod.deck_source_profile(cards, by_key, by_name, carddata,
+                                       deck_meta=meta)[0]
+    # `deckmod.hybrid_binding` — the one per-symbol rule `binding_pips` uses (BS11-61).
+    _binds = {"/".join(sorted(h)): deckmod.hybrid_binding(h, _src) for h in hyb_sets
+              if deckmod.hybrid_binding(h, _src)}
 
     # `#: uncastable-ok:` exempts a reanimator's intended-uncastable bombs (F-02), so the
     # dashboard must pass the same exemption the CLI does — otherwise a deck reads BLOCKED
@@ -497,6 +494,7 @@ def collect():
     # Wishlist wildcard-priority tiers (structured, from the real _rank_scores).
     tiers = {"A": [], "B": [], "C": []}
     rollup = {"A": {}, "B": {}, "C": {}}
+    wishlist_error = ""
     try:
         wl = wishlist.load_wishlist()
         for s in (wishlist._rank_scores(wl) if wl else []):
@@ -505,6 +503,9 @@ def collect():
             r = s.get("rarity") or "?"
             rollup.setdefault(t, {})[r] = rollup.setdefault(t, {}).get(r, 0) + 1
     except Exception as e:
+        # Carried in the payload (BS11-49): the page HID the whole section on an empty
+        # tier set, so a ranking failure read as "you have no wishlist".
+        wishlist_error = str(e) or e.__class__.__name__
         eprint(f"WARN: wishlist ranking unavailable ({e})")
 
     # Rotation exposure — what rotates next and which decks it hits (serialized from
@@ -542,6 +543,7 @@ def collect():
         "roster_plan": _capture(deckmod.cmd_wildcards, SimpleNamespace()),
         "decks": decks,
         "wishlist": tiers,
+        "wishlist_error": wishlist_error,
         "wishlist_rollup": rollup,
         "rotation": rotation,
         # NOT rendered — build-time diagnostics main()'s self-check reads (BS5-05). Kept
@@ -1096,6 +1098,8 @@ TEMPLATE = r"""<!DOCTYPE html>
   /* "show all / show fewer" row inside a capped sortable table */
   tr.morerow td { cursor:pointer; text-align:center; color:var(--accent-ink); font-size:12px; font-weight:600; padding:10px; background:var(--fill2); border-bottom:none; letter-spacing:.02em; }
   tr.morerow td:hover { background:var(--accent-bg); }
+  tr.morerow .morebtn { all:unset; display:block; width:100%; cursor:pointer; }
+  tr.morerow .morebtn:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
 
   /* ── Mobile / narrow viewports ─────────────────────────────────────────────
      Template-only responsive layer (the #data island / pipeline is untouched).
@@ -1292,7 +1296,7 @@ TEMPLATE = r"""<!DOCTYPE html>
 
 <div id="overlays"></div>
 <div id="preview"></div>
-<div id="toast" class="toast"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script id="data" type="application/json">__DATA__</script>
 <script>
@@ -1329,8 +1333,12 @@ const esc = s => (s==null?'':''+s).replace(/[&<>"]/g, m => ({'&':'&amp;','<':'&l
 const WC = {Mythic:'M',Rare:'R',Uncommon:'U',Common:'C'};
 const RANK = {Mythic:3,Rare:2,Uncommon:1,Common:0};
 const rankOf = r => (r in RANK ? RANK[r] : -1);
-const COLBG = {W:'#efe4bf',U:'#5aa9ec',B:'#b9a6d6',R:'#ec7a63',G:'#6cc684',C:'#b9c0cc'};
-const COLFG = {W:'#2a2618',U:'#06263d',B:'#241833',R:'#350e08',G:'#06280f',C:'#1c2129'};
+// The colour tokens, not their DARK hex values (BS11-52): these paint inline styles — the
+// deck pie, the roster colour bars, an "on" filter chip — so hex literals bypassed the
+// light-theme `--W…--Cc` overrides and painted dark pastels on a white panel (the BS6-02
+// class, through `style=` instead of a stylesheet).
+const COLBG = {W:'var(--W)',U:'var(--U)',B:'var(--B)',R:'var(--R)',G:'var(--G)',C:'var(--Cc)'};
+const COLFG = {W:'var(--Wf)',U:'var(--Uf)',B:'var(--Bf)',R:'var(--Rf)',G:'var(--Gf)',C:'var(--Ccf)'};
 const LIVE_URL = 'https://robinchoudhuryums.github.io/mtga/';   // Pages serves the dashboard AS index.html
 const STALE_DAYS = 7;
 const $ = id => document.getElementById(id);
@@ -1366,6 +1374,10 @@ function a11y(node, opts){
   if (o.expanded != null) node.setAttribute('aria-expanded', String(!!o.expanded));
   if (o.selected != null) node.setAttribute('aria-selected', String(!!o.selected));
   if (!o.native) node.addEventListener('keydown', e => {
+    // Only the node's OWN keystrokes (BS11-47): keydown bubbles, so Enter on a focusable
+    // child — the ↗ Scryfall link inside a leverage card — toggled the card instead of
+    // following the link.
+    if (e.target !== node) return;
     // Space scrolls the page by default, so both keys need preventDefault. Enter and
     // Space are what a real <button> responds to.
     if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar'){
@@ -1447,7 +1459,12 @@ function writeClip(text, done){
 function fallbackCopy(text, done){
   const ta = el('textarea'); ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
   document.body.appendChild(ta); ta.select();
-  try { document.execCommand('copy'); done(); } catch(e){ toast('Copy failed'); }
+  // execCommand REPORTS failure by returning false — it throws only in some engines —
+  // so ignoring the return toasted "copied" over an empty clipboard on file:// and iOS
+  // (BS11-46). Only a true return is a copy.
+  let ok = false;
+  try { ok = document.execCommand('copy'); } catch(e){ ok = false; }
+  if (ok) done(); else toast('Copy failed — this browser blocked clipboard access here');
   document.body.removeChild(ta);
 }
 
@@ -1455,19 +1472,27 @@ function fallbackCopy(text, done){
 function colorCount(colors){ return [...(colors||'')].filter(c => 'WUBRG'.includes(c)).length; }
 function pieFor(colors){
   const cols = [...(colors||'')].filter(c => 'WUBRG'.includes(c));
-  if (!cols.length) return 'conic-gradient(#b9c0cc 0% 100%)';
+  if (!cols.length) return 'conic-gradient(var(--Cc) 0% 100%)';
   if (cols.length === 1) return 'conic-gradient(' + COLBG[cols[0]] + ' 0% 100%)';
   const seg = 100/cols.length; let acc = 0; const stops = [];
   cols.forEach(c => { stops.push(COLBG[c] + ' ' + acc + '% ' + (acc+seg) + '%'); acc += seg; });
   return 'conic-gradient(' + stops.join(',') + ')';
 }
-// Mini curve from the STRUCTURED viz.curve (MV 1..6+), not text-parsed.
+// Curve buckets from the STRUCTURED viz.curve, not text-parsed: MV 1..6+, plus an MV-0
+// bucket when anything costs 0. `Math.max(1, mv)` folded MV 0 into the "1" bar, so the
+// mini and roster curves disagreed with the Stats tab, which splits them (P-10, BS11-51).
+// The 0 bar is shown only when non-empty, so most decks keep the six-bar shape.
+function curveBuckets(curves){
+  const b = [0,0,0,0,0,0,0];
+  curves.forEach(cv => { for (let mv = 0; mv <= 7; mv++){ b[Math.min(6, mv)] += cv[String(mv)] || 0; } });
+  const labels = ['0','1','2','3','4','5','6+'];
+  return b[0] ? {b, labels} : {b: b.slice(1), labels: labels.slice(1)};
+}
 function miniCurve(viz){
   if (!viz || !viz.curve) return null;
-  const b = [0,0,0,0,0,0];
-  for (let mv = 0; mv <= 7; mv++){ const n = viz.curve[String(mv)] || 0; const i = Math.min(6, Math.max(1, mv)) - 1; b[i] += n; }
+  const {b, labels} = curveBuckets([viz.curve]);
   if (!b.some(x => x)) return null;
-  const max = Math.max(...b, 1); const labels = ['1','2','3','4','5','6+'];
+  const max = Math.max(...b, 1);
   return b.map((c,i) => ({mv:labels[i], count:c, h:Math.round(c/max*100) + '%', title:'MV ' + labels[i] + ' · ' + c + ' cards'}));
 }
 D.decks.forEach(d => { d._cc = colorCount(d.colors); d._pie = pieFor(d.colors); d._curve = miniCurve(d.viz); });
@@ -1534,9 +1559,8 @@ $('plan').textContent = D.roster_plan || '(no craft plan)';
   });
 })();
 (function(){
-  const b = [0,0,0,0,0,0];
-  D.decks.forEach(d => { if (!d.viz || !d.viz.curve) return; for (let mv = 0; mv <= 7; mv++){ const n = d.viz.curve[String(mv)] || 0; const i = Math.min(6, Math.max(1, mv)) - 1; b[i] += n; } });
-  const max = Math.max(1, ...b); const labels = ['1','2','3','4','5','6+']; const wrap = $('rosterCurve');
+  const {b, labels} = curveBuckets(D.decks.filter(d => d.viz && d.viz.curve).map(d => d.viz.curve));
+  const max = Math.max(1, ...b); const wrap = $('rosterCurve');
   b.forEach((c,i) => {
     const col = el('div','rcol');
     col.innerHTML = '<span class="rn2">' + c + '</span><div class="rf" title="MV ' + labels[i] + ' · ' + c + ' cards" style="height:' + Math.round(100*c/max) + '%"></div><span class="rm">' + labels[i] + '</span>';
@@ -1660,10 +1684,15 @@ function sortableTable(cls, cols, rows, sortState, onRowExtra, opts){
     });
     // progressive-disclosure toggle row (only when the list is longer than the cap)
     if (opts.limit && rs.length > opts.limit){
-      const tr = el('tr','morerow'); const td = a11y(el('td'), {role:null}); td.colSpan = cols.length;  // role=button inside a <tr> breaks the row's structure
-      td.textContent = opts._exp ? ('▴ show top ' + opts.limit) : ('▾ show all ' + rs.length + '  (+' + (rs.length - opts.limit) + ')');
-      td.onclick = () => { opts._exp = !opts._exp; redraw(); };
-      tr.appendChild(td); tb.appendChild(tr);
+      // A real <button> INSIDE the cell (BS11-53): the cell itself was a focusable <td>
+      // with no role and no expanded state, so it announced as a table cell. role=button
+      // on the <td> would break the row's structure — the P-07 shape (control inside the
+      // structural element, not the element turned into a control).
+      const tr = el('tr','morerow'); const td = el('td'); td.colSpan = cols.length;
+      const b = el('button','morebtn', opts._exp ? ('▴ show top ' + opts.limit) : ('▾ show all ' + rs.length + '  (+' + (rs.length - opts.limit) + ')'));
+      b.type = 'button'; b.setAttribute('aria-expanded', String(!!opts._exp));
+      td.onclick = () => { opts._exp = !opts._exp; redraw(); const nb = tb.querySelector('tr.morerow button'); if (nb) nb.focus(); };
+      td.appendChild(b); tr.appendChild(td); tb.appendChild(tr);
     }
     // rebuild header arrows — and aria-sort, which was set only at construction, so
     // after any sort click a screen reader heard the ORIGINAL sort state (S3).
@@ -1877,7 +1906,10 @@ function deckCard(d, variants){
       row.appendChild(deckBadges(v));
       row.appendChild(el('span','vopen','⤢'));
       row.title = 'Open ' + v.name + ' (#' + v.id + ')';
-      a11y(row, {label:'Open ' + v.name + ' (#' + v.id + ')'});
+      // A real <button>: role:null + native:true (BS11-48) — otherwise a11y() adds a redundant
+      // role and a synthetic Enter/Space click on top of the native one (the P-07 shape).
+      row.type = 'button';
+      a11y(row, {label:'Open ' + v.name + ' (#' + v.id + ')', role:null, native:true});
       row.onclick = () => openModal(v.id);
       vs.appendChild(row);
     });
@@ -2057,6 +2089,9 @@ function renderRecent(){
 function renderRotation(){
   const host = $('rotationout'); if (!host) return; host.innerHTML = '';
   const R = D.rotation || {available:false};
+  // A build FAILURE is not a missing column (BS11-49): the rebuild-the-pool hint was
+  // printed for both, sending you to a 16k-card refetch for a bug in rotation_sweep.
+  if (R.error){ host.appendChild(el('p','auditnote','Rotation view failed to build: ' + R.error + ' — run `python3 scripts/deck.py rotation` to see why.')); return; }
   if (!R.available){ host.appendChild(el('p','auditnote','Rotation dates unavailable — rebuild the pool (build_pool.py --all) so card-pool.csv carries the Released column.')); return; }
   if (!R.by_deck || !R.by_deck.length){ host.appendChild(el('p','auditnote','No cards rotating within the next ' + (R.within||2) + ' year(s). ✓')); return; }
   const soonYear = (R.this_year || 0) + 1;
@@ -2131,6 +2166,7 @@ function rollStr(o){ return ['Mythic','Rare','Uncommon','Common'].filter(k => o 
 const anyWl = ['A','B','C'].some(k => (D.wishlist[k]||[]).length);
 function renderWishlist(){
   const host = $('wishlist'); host.innerHTML = '';
+  if (D.wishlist_error){ host.appendChild(el('p','auditnote','Wishlist ranking failed to build: ' + D.wishlist_error + ' — run `python3 scripts/wishlist.py --rank` to see why.')); return; }
   if (!anyWl){ $('sec-wishlist').style.display = 'none'; return; }
   const q = (STATE.wlFilter||'').toLowerCase().trim();
   const rarSel = Object.keys(STATE.wlRarity||{}).filter(k => STATE.wlRarity[k]);  // empty = all rarities
@@ -2286,7 +2322,7 @@ renderWishlist(); renderSim();
     // spellings differ between Arena and the repo (broad-scan F-02). 14 deck files carry
     // one. Any change to the key belongs on BOTH sides, like match_paste's sort key.
     return {nl:name.toLowerCase().split(' // ')[0], disp:name, qty:parseInt(m[1],10)}; }
-  // Sideboard/maybeboard CARD lines are dropped, mirroring Python strip_boards — stored
+  // Sideboard/maybeboard/companion CARD lines are dropped, mirroring Python strip_boards — stored
   // decks are maindeck-only, so a 7-card sideboard must not read as drift (BS-07; the JS
   // half previously dropped only the headings and counted the cards). Headings are KEPT
   // in the segment (parseLine ignores them) so the format hint below can see `Commander`.
@@ -2295,7 +2331,7 @@ renderWishlist(); renderSim();
   // marker opens — mirroring deck._lead_tail / split_paste. Split on the marker alone, a
   // real Brawl paste became a lone-commander block plus a 99-card deck (2026-09-29).
   function leadTail(seg){ let start = -1; for (let i = 0; i < seg.length; i++){ const t = seg[i].trim().toLowerCase(); const m = t.match(/^(deck|sideboard|commander|companion|maybeboard|about)$/); if (!m) continue; if (/^(commander|companion|about)$/.test(t)){ if (start < 0) start = i; } else start = -1; } return start; }
-  function splitDecks(text){ const segs = []; let cur = null, body = 0, started = false, skipping = false; for (const ln of text.split(/\r?\n/)){ const t = ln.trim(); if (/^deck\s*$/i.test(t)){ let carry = []; if (cur){ const i = leadTail(cur.slice(body)); if (i >= 0) carry = cur.splice(body + i); } cur = carry; body = carry.length; segs.push(cur); started = true; skipping = false; continue; } if (SECTION.test(t)){ skipping = /^(sideboard|maybeboard)\b/i.test(t); if (!started){ cur = []; segs.push(cur); started = true; } cur.push(ln); continue; } if (skipping) continue; if (!started){ cur = []; segs.push(cur); started = true; } cur.push(ln); } return segs.filter(s => s.length); }
+  function splitDecks(text){ const segs = []; let cur = null, body = 0, started = false, skipping = false; for (const ln of text.split(/\r?\n/)){ const t = ln.trim(); if (/^deck\s*$/i.test(t)){ let carry = []; if (cur){ const i = leadTail(cur.slice(body)); if (i >= 0) carry = cur.splice(body + i); } cur = carry; body = carry.length; segs.push(cur); started = true; skipping = false; continue; } if (SECTION.test(t)){ skipping = /^(sideboard|maybeboard|companion)\b/i.test(t); if (!started){ cur = []; segs.push(cur); started = true; } cur.push(ln); continue; } if (skipping) continue; if (!started){ cur = []; segs.push(cur); started = true; } cur.push(ln); } return segs.filter(s => s.length); }
   // 'commander' | 'sixty' | null — mirrors deck.paste_format_hint: a Commander heading
   // or ~100-card size says commander-shaped; <=75 says sixty; between is ambiguous.
   function formatHint(seg, nCards){ for (const ln of seg){ if (/^commander\s*$/i.test(ln.trim())) return 'commander'; } if (nCards >= 90) return 'commander'; if (nCards > 0 && nCards <= 75) return 'sixty'; return null; }
@@ -2330,12 +2366,13 @@ renderWishlist(); renderSim();
     if (best) best.runnerUp = ranked.slice(1).find(r => r.mm === best.mm) || null;
     return best;
   }
+  // `oversized` mirrors deck.match_paste's BS11-10 twin of it (over 125% of the deck).
   // `truncated` mirrors deck.match_paste (BS8-43): a paste under 75% of the matched
   // deck's total is a FRAGMENT, and reporting it as "drifted — 0 added / 44 removed"
   // invited a sync that would cut the sixty down to the fragment (the G-08 guard, which
   // this panel lacked). Same threshold; change both or neither.
-  function analyzeOne(seg){ const pasted = multiset(seg); const nCards = Object.values(pasted).reduce((a,v) => a+v[1], 0); if (!nCards) return null; const uniq = Object.keys(pasted).length; const m = bestMatch(pasted, formatHint(seg, nCards)); if (!m || m.shared < Math.max(3, uniq*0.3)) return {unmatched:true, nCards, uniq}; const ru = m.runnerUp; const lowconf = !!(ru && (ru.drift - m.drift) <= 2 && ru.shared >= m.shared*0.8); const deckTotal = Object.values(m.deck.cards||{}).reduce((a,v) => a+v[1], 0); const truncated = nCards < deckTotal * 0.75; return {unmatched:false, deck:m.deck, sync:m.drift===0, added:m.added, removed:m.removed, diffs:m.diffs, shared:m.shared, nCards, deckTotal, truncated, lowconf, runnerUp:lowconf?ru.deck:null}; }
-  function stalecardEl(r){ const box = el('div','stalecard'); if (r.unmatched){ box.innerHTML = '<h4>Unmatched paste <span class="stale-nomatch">no close deck</span></h4><div class="sub2">' + r.nCards + ' cards, ' + r.uniq + ' unique — doesn’t closely match any stored deck.</div>'; return box; } const d = r.deck; const status = r.sync ? '<span class="stale-sync">✓ in sync</span>' : (r.truncated ? '<span class="stale-nomatch">⚠ TRUNCATED? paste holds ' + r.nCards + ' of ' + r.deckTotal + ' cards — a fragment, not a drift</span>' : '<span class="stale-drift">⟳ drifted — ' + r.added + ' added / ' + r.removed + ' removed</span>'); const conf = r.lowconf && r.runnerUp ? ' · <span class="stale-nomatch">⚠ low confidence — #' + esc(r.runnerUp.id) + ' ' + esc(r.runnerUp.name) + ' is nearly as close</span>' : ''; box.innerHTML = '<h4>#' + esc(d.id) + ' ' + esc(d.name) + ' ' + status + '</h4><div class="sub2">matched by ' + r.shared + ' shared cards' + (d.variant?' · variant':'') + (r.sync?'':' · update it in Arena or in the repo') + conf + '</div>'; if (!r.sync){ const dl = el('div','difflist'); dl.innerHTML = r.diffs.map(x => '<div class="' + (x.sign==='+'?'diffadd':'diffrem') + '">' + x.sign + x.qty + '  ' + esc(x.name) + '</div>').join(''); box.appendChild(dl); const note = el('div','metaline2', '+ = your Arena paste has more · − = the stored repo deck has more'); box.appendChild(note); } return box; }
+  function analyzeOne(seg){ const pasted = multiset(seg); const nCards = Object.values(pasted).reduce((a,v) => a+v[1], 0); if (!nCards) return null; const uniq = Object.keys(pasted).length; const m = bestMatch(pasted, formatHint(seg, nCards)); if (!m || m.shared < Math.max(3, uniq*0.3)) return {unmatched:true, nCards, uniq}; const ru = m.runnerUp; const lowconf = !!(ru && (ru.drift - m.drift) <= 2 && ru.shared >= m.shared*0.8); const deckTotal = Object.values(m.deck.cards||{}).reduce((a,v) => a+v[1], 0); const truncated = nCards < deckTotal * 0.75; const oversized = nCards > deckTotal * 1.25; return {unmatched:false, deck:m.deck, sync:m.drift===0, added:m.added, removed:m.removed, diffs:m.diffs, shared:m.shared, nCards, deckTotal, truncated, oversized, lowconf, runnerUp:lowconf?ru.deck:null}; }
+  function stalecardEl(r){ const box = el('div','stalecard'); if (r.unmatched){ box.innerHTML = '<h4>Unmatched paste <span class="stale-nomatch">no close deck</span></h4><div class="sub2">' + r.nCards + ' cards, ' + r.uniq + ' unique — doesn’t closely match any stored deck.</div>'; return box; } const d = r.deck; const status = r.sync ? '<span class="stale-sync">✓ in sync</span>' : (r.truncated ? '<span class="stale-nomatch">⚠ TRUNCATED? paste holds ' + r.nCards + ' of ' + r.deckTotal + ' cards — a fragment, not a drift</span>' : r.oversized ? '<span class="stale-nomatch">⚠ OVERSIZED? paste holds ' + r.nCards + ' cards vs ' + r.deckTotal + ' — two decks run together?</span>' : '<span class="stale-drift">⟳ drifted — ' + r.added + ' added / ' + r.removed + ' removed</span>'); const conf = r.lowconf && r.runnerUp ? ' · <span class="stale-nomatch">⚠ low confidence — #' + esc(r.runnerUp.id) + ' ' + esc(r.runnerUp.name) + ' is nearly as close</span>' : ''; box.innerHTML = '<h4>#' + esc(d.id) + ' ' + esc(d.name) + ' ' + status + '</h4><div class="sub2">matched by ' + r.shared + ' shared cards' + (d.variant?' · variant':'') + (r.sync?'':' · update it in Arena or in the repo') + conf + '</div>'; if (!r.sync){ const dl = el('div','difflist'); dl.innerHTML = r.diffs.map(x => '<div class="' + (x.sign==='+'?'diffadd':'diffrem') + '">' + x.sign + x.qty + '  ' + esc(x.name) + '</div>').join(''); box.appendChild(dl); const note = el('div','metaline2', '+ = your Arena paste has more · − = the stored repo deck has more'); box.appendChild(note); } return box; }
   const out = $('staleout');
   $('stalego').addEventListener('click', () => { out.innerHTML = ''; const segs = splitDecks($('staletext').value); if (!segs.length){ out.innerHTML = '<div class="metaline2">Nothing to compare — paste an Arena export above.</div>'; return; } const results = segs.map(analyzeOne).filter(Boolean); if (!results.length){ out.innerHTML = '<div class="metaline2">No card lines found in the paste.</div>'; return; } if (results.length > 1){ const drifted = results.filter(r => !r.unmatched && !r.sync); const synced = results.filter(r => !r.unmatched && r.sync).length; const unm = results.filter(r => r.unmatched).length; const s = el('div','staletot'); s.innerHTML = '<b>' + results.length + '</b> decks checked · <span class="stale-sync">' + synced + ' in sync</span> · <span class="stale-drift">' + drifted.length + ' drifted</span>' + (unm?' · <span class="stale-nomatch">'+unm+' unmatched</span>':'') + (drifted.length?'<br>Update in Arena: ' + drifted.map(r => '#'+esc(r.deck.id)+' '+esc(r.deck.name)).join(', '):''); out.appendChild(s); } results.forEach(r => out.appendChild(stalecardEl(r))); });
   $('staleclear').addEventListener('click', () => { $('staletext').value = ''; out.innerHTML = ''; });
@@ -2962,6 +2999,19 @@ def main():
     # table under a green build, reading as "nothing to craft" rather than "the
     # recommender is broken" (BS5-05). Same majority threshold and same posture: the file
     # is still written for inspection, but success is not reported.
+    # The three ROSTER-level panels the per-deck scan above cannot see (BS11-49): the
+    # craft plan is a `_capture` of `cmd_wildcards` (so it fails as an `[analysis error`
+    # string), while the wishlist and rotation builders catch their own exceptions. Each
+    # is one panel, so a failure WARNS and publishes around it, like the sub-majority case.
+    roster_bad = []
+    if MARK in (payload.get("roster_plan") or ""):
+        roster_bad.append("roster craft plan (deck.py wildcards)")
+    if payload.get("wishlist_error"):
+        roster_bad.append(f"wishlist ranking ({payload['wishlist_error']})")
+    if (payload.get("rotation") or {}).get("error"):
+        roster_bad.append(f"rotation ({payload['rotation']['error']})")
+    for what in roster_bad:
+        eprint(f"WARN:  {what} failed — that panel will publish reading an error.")
     craft_bad = payload.get("_craft_problems") or []
     if ndecks and len(craft_bad) * 2 >= ndecks:
         eprint(f"WARN:  craft picks failed for {len(craft_bad)}/{ndecks} decks "

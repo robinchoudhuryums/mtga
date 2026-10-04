@@ -295,6 +295,41 @@ def _pool_has(name):
     return False
 
 
+def _pool_set_codes():
+    """Lowercased Set Codes some card-pool.csv printing carries — INV-01b's own reference
+    set (`check_all.check_library_printings`). Empty when the pool is absent, which turns
+    the add-time check off rather than refusing every add (INV-03 reports a missing pool)."""
+    pool = os.path.join(REPO_ROOT, "card-pool.csv")
+    if not os.path.exists(pool):
+        return set()
+    with open(pool, newline="", encoding="utf-8") as fh:
+        return {(r.get("Set Code") or "").strip().lower()
+                for r in csv.DictReader(fh)} - {""}
+
+
+def _restore_mana_rows(rows):
+    """Append a blank card-mana.csv row for every library name in `rows` that has none.
+
+    Revert restores the LIBRARY only, and Remove prunes a card's mana row when its last
+    printing goes (`_prune_mana`) — so remove-then-revert brought the card back with no
+    mana row and the next `check_all` failed INV-02 (BS11-44). Blank, like an offline add:
+    a later build_mana.py / refresh fills the cost and keywords. Returns the count added."""
+    have = set()
+    if os.path.exists(MANA_CSV):
+        with open(MANA_CSV, newline="", encoding="utf-8") as fh:
+            have = {(r.get("Card Name") or "").strip().lower()
+                    for r in csv.DictReader(fh)}
+    added = 0
+    seen = set()
+    for r in rows:
+        n = (r.get("Card Name") or "").strip()
+        if n and n.lower() not in have and n.lower() not in seen:
+            seen.add(n.lower())
+            _append_mana(n, "", "", "")
+            added += 1
+    return added
+
+
 def _prune_mana(name, rows):
     """Drop `name`'s card-mana.csv row after its LAST library printing was removed.
 
@@ -406,7 +441,14 @@ def save():
     On any failure the real CSV is left untouched and errors are returned.
     """
     data = request.get_json(silent=True)
-    # A bare list (the pre-token page) or {"edits": [...], "lib_token": "…"} (BS8-18).
+    # {"edits": [...], "lib_token": "…"} only (BS8-18). The bare-list body of the
+    # pre-token page was still accepted with NO staleness check (BS11-53) — the one
+    # shape left that could overwrite a CLI import unseen. Nothing sends it any more
+    # (the page is served by this process), so it is refused like an absent token.
+    if isinstance(data, list):
+        return jsonify(ok=False, errors=[
+            "This request used the old list format, which carries no staleness token. "
+            "Reload the page and try again."]), 409
     edits = data.get("edits") if isinstance(data, dict) else data
     if not _list_of_objs(edits):
         return jsonify(ok=False, errors=["Malformed request: expected a JSON list of edit objects."]), 400
@@ -419,18 +461,14 @@ def save():
     # page is served by the same process that validates it, and a successful save
     # reloads. What the hole re-admitted is the exact failure BS8-18 exists to stop —
     # silently overwriting a CLI `import`/`swap --apply`. A DICT body is the CURRENT
-    # wire format and must carry a token; the BARE LIST below is unambiguously the
-    # pre-token page and cannot carry one, so it keeps the old contract.
+    # wire format and must carry a token (the bare list is refused above, BS11-53).
     # To revert: drop the `not sent` clause.
-    if isinstance(data, dict):
-        sent = str(data.get("lib_token") or "")
-        if not sent:
-            return jsonify(ok=False, errors=[
-                "This page did not send a staleness token, so the save cannot be checked "
-                "against the file on disk. Reload the page and try again."]), 409
-    else:
-        sent = ""
-    if sent and sent != _lib_token():
+    sent = str(data.get("lib_token") or "")
+    if not sent:
+        return jsonify(ok=False, errors=[
+            "This page did not send a staleness token, so the save cannot be checked "
+            "against the file on disk. Reload the page and try again."]), 409
+    if sent != _lib_token():
         return jsonify(ok=False, errors=[
             "card-library.csv CHANGED since this page loaded it (an import, a "
             "reconcile, or another tab?). Saving would overwrite that change with the "
@@ -498,6 +536,18 @@ def add():
         return jsonify(ok=False, errors=["Card Name is required."]), 400
     if qty and not qty.isdigit():
         return jsonify(ok=False, errors=[f"Quantity {qty!r} must be a non-negative integer or blank."]), 400
+    # The Set Code is STORED as Scryfall spells it (BS11-42). It was written exactly as
+    # typed: Arena's `DAR` (Scryfall `DOM`, enrich.SET_ALIASES) or a typo saved green and
+    # failed INV-01b on the next check_all — BS8-19's deck-save hole, on the CSV side.
+    if set_code:
+        from enrich import SET_ALIASES
+        set_code = SET_ALIASES.get(set_code.lower(), set_code.lower()).upper()
+        known = _pool_set_codes()
+        if known and set_code.lower() not in known:
+            return jsonify(ok=False, errors=[
+                f"Set code {set_code!r} exists in no card-pool.csv printing, so the row "
+                "would fail INV-01b. Check the code (Arena and Scryfall usually agree), or "
+                "leave it blank."]), 400
 
     _, rows = load_rows(DEFAULT_CSV)
     want = (name.lower(), set_code.lower(), collector.lower())
@@ -645,6 +695,23 @@ def revert():
             if f.startswith(base + ".") and f.endswith(".bak")]
     if not baks:
         return jsonify(ok=False, errors=["No backup to revert to yet — nothing has been saved."]), 409
+    # Staleness gate, the `/api/save` contract (BS11-43). The newest `.bak` is whoever
+    # wrote LAST — an `import_collection --apply`, a reconcile, another tab — so a page
+    # left open across a CLI write reverted THAT write while the page still showed the
+    # pre-import state and called it "the last save". A page that loaded the CURRENT file
+    # has seen whatever the newest backup undoes; one holding an older token has not.
+    data = request.get_json(silent=True)
+    sent = str((data or {}).get("lib_token") or "") if isinstance(data, dict) else ""
+    if not sent:
+        return jsonify(ok=False, errors=[
+            "This page did not send a staleness token, so the revert cannot be checked "
+            "against the file on disk. Reload the page and try again."]), 409
+    if sent != _lib_token():
+        return jsonify(ok=False, errors=[
+            "card-library.csv CHANGED since this page loaded it (an import, a reconcile, "
+            "or another tab?). Revert restores the NEWEST backup, which would undo that "
+            "change rather than yours — reload the page to see the current file, then "
+            "revert from there if you still mean to."]), 409
     # Newest by the CREATION stamp in the name, via the shared `lib.latest_backup`. This
     # used to select on mtime, which is wrong for a file made by `shutil.copy2`: copy2
     # copies the SOURCE's mtime, so after one revert (which restores an old-mtime file)
@@ -673,9 +740,17 @@ def revert():
     finally:
         if tmp and os.path.exists(tmp):
             os.remove(tmp)
+    # INV-02: a Remove pruned the mana row of the card this restore brings back.
+    try:
+        _, restored_rows = load_rows(DEFAULT_CSV)
+        mana_added = _restore_mana_rows(restored_rows)
+    except Exception as e:
+        return jsonify(ok=True, restored=newest_base, mana_restored=0,
+                       warning=(f"Reverted to {newest_base}, but card-mana.csv rows could "
+                                f"not be checked ({e}); run build_mana.py so INV-02 holds."))
     # Report the file actually restored (newest by mtime), not the lexically-last
     # name — they can differ under legacy/mixed .bak naming (audit A13).
-    return jsonify(ok=True, restored=newest_base)
+    return jsonify(ok=True, restored=newest_base, mana_restored=mana_added)
 
 
 # --------------------------------------------------------------------------- #

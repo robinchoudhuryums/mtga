@@ -1765,7 +1765,13 @@ class TestManualDeckIdIsNormalized:
     def test_a_zero_padded_id_is_accepted(self):
         """BS8-17 / G-82: `06 L` was refused while `deck.py stats 06` worked."""
         rows, warnings = pm.parse_manual("06 L", deck_ids={"6", "19b"})
-        assert warnings == [] and rows[0]["Deck"] == "06"
+        assert warnings == []
+
+    def test_a_padded_id_is_STORED_canonical(self):
+        """BS11-33: accepting `06` and then writing it verbatim split one deck across two
+        `report` rows ("06" and "6") and made `load_match_counts` miss it entirely."""
+        rows, _w = pm.parse_manual("06 L\n19B W", deck_ids={"6", "19b"})
+        assert [r["Deck"] for r in rows] == ["6", "19b"]
 
     def test_an_unknown_id_is_still_refused(self):
         rows, warnings = pm.parse_manual("999 L", deck_ids={"6"})
@@ -2210,17 +2216,44 @@ class TestVoidingAMatch:
         pm.annotate("abc123 void=afk", str(csvp), apply=True)
         rows = pm.load_matches(str(csvp))
         assert len(rows) == 1 and rows[0]["Result"] == pm.VOID
-        assert rows[0]["Note"] == "void: afk"
+        assert rows[0]["Note"] == "void (was L): afk"
         assert pm._tally(rows) == {"W": 0, "L": 0, "D": 0}
 
-    def test_void_no_restores_the_result_from_the_game_score(self, tmp_path):
+    def test_void_no_restores_the_recorded_result(self, tmp_path):
         csvp = tmp_path / "m.csv"
         pm.write_matches(self._rows(note="bad keep"), str(csvp))
         pm.annotate("abc123 void=afk", str(csvp), apply=True)
-        assert pm.load_matches(str(csvp))[0]["Note"] == "void: afk · bad keep"
+        assert pm.load_matches(str(csvp))[0]["Note"] == "void (was L): afk · bad keep"
         pm.annotate("abc123 void=no", str(csvp), apply=True)
         r = pm.load_matches(str(csvp))[0]
         assert (r["Result"], r["Note"]) == ("L", "bad keep")
+
+    def test_restore_survives_a_blank_game_score(self, tmp_path):
+        """BS11-32: a hand row has BLANK Games Won/Lost, so W → void → restore read D."""
+        csvp = tmp_path / "m.csv"
+        rows = self._rows()
+        rows[0].update({"Result": "W", "Games Won": "", "Games Lost": ""})
+        pm.write_matches(rows, str(csvp))
+        pm.annotate("abc123 void=afk", str(csvp), apply=True)
+        pm.annotate("abc123 void=no", str(csvp), apply=True)
+        assert pm.load_matches(str(csvp))[0]["Result"] == "W"
+
+    def test_void_no_on_a_live_row_is_refused(self, tmp_path, capsys):
+        csvp = tmp_path / "m.csv"
+        rows = self._rows()
+        rows[0].update({"Result": "W", "Games Won": "0", "Games Lost": "0"})
+        pm.write_matches(rows, str(csvp))
+        pm.annotate("abc123 void=no", str(csvp), apply=True)
+        assert pm.load_matches(str(csvp))[0]["Result"] == "W"
+        assert "refused" in capsys.readouterr().err
+
+    def test_a_legacy_void_with_a_tied_score_is_not_guessed(self, tmp_path):
+        csvp = tmp_path / "m.csv"
+        rows = self._rows(note="void: afk")
+        rows[0].update({"Result": pm.VOID, "Games Won": "0", "Games Lost": "0"})
+        pm.write_matches(rows, str(csvp))
+        pm.annotate("abc123 void=no", str(csvp), apply=True)
+        assert pm.load_matches(str(csvp))[0]["Result"] == pm.VOID
 
     def test_a_void_needs_a_reason(self):
         pairs, warns = pm.parse_annotations("abc123 void=")
@@ -2365,3 +2398,59 @@ class TestTheMacFunction:
         assert "(everything)" in r.stdout
         r, _clip = self._run(tmp_path, home, func, bindir, "2026-9-2")
         assert r.returncode == 2 and "YYYY-MM-DD or 'all'" in r.stderr
+
+
+class TestBatch7MatchRecordFixes:
+    """BS11-36 / 37 / 38 — the report, the rename test and the variant adoption."""
+
+    def test_a_voided_only_deck_gets_no_zero_row(self, capsys):
+        """BS11-36: the bucket was created before the VOID skip, so a deck whose only
+        match was voided printed 0-0-0 in a table that counts matches played."""
+        rows = [{"Date": "2026-09-01", "Match ID": "m1", "Deck": "17", "Result": pm.VOID,
+                 "Note": "void (was L): afk"},
+                {"Date": "2026-09-01", "Match ID": "m2", "Deck": "12", "Result": "W"}]
+        pm.report(rows)
+        table = capsys.readouterr().out.split("voided match")[0]
+        assert "  17 " not in table and "12" in table
+
+    def test_a_voided_loss_does_not_reach_the_loss_reason_tally(self, capsys):
+        rows = [{"Date": "2026-09-01", "Match ID": "m1", "Deck": "17", "Result": pm.VOID,
+                 "Loss Reason": "flood"},
+                {"Date": "2026-09-02", "Match ID": "m2", "Deck": "17", "Result": "L",
+                 "Loss Reason": "screw"}]
+        pm.report(rows)
+        out = capsys.readouterr().out
+        assert "Why 1 loss(es)" in out and "flood" not in out.split("Why")[1]
+
+    def test_swap_outcomes_excludes_a_voided_match(self):
+        import deck
+        recs = [{"Deck": "17", "Date": "2026-08-01"}]
+        ms = [{"Deck": "17", "Date": "2026-08-02", "Result": "W"},
+              {"Deck": "17", "Date": "2026-08-03", "Result": pm.VOID}]
+        (j,) = deck.swap_outcomes(recs, ms)
+        assert j["matches"] == 1
+
+    def test_an_arena_parenthetical_rename_is_seen(self):
+        """BS11-37: `_name_key` drops ANY trailing "(...)", so "Foo (old)" → "Foo (new)"
+        keyed "foo" on both sides and the rename was invisible."""
+        assert pm._rename_key("Foo (new)", "Foo (old)") != pm._rename_key("Foo (old)",
+                                                                           "Foo (old)")
+
+    def test_the_repos_own_gloss_still_does_not_read_as_a_rename(self):
+        cur = "Hoofprint (go-wide tokens)"
+        adopted = pm._adopted_name("50 Hoofprint", {"name": cur}, "")
+        assert pm._rename_key(adopted, cur) == pm._rename_key(cur, cur)
+
+    def test_a_parent_that_prefixes_a_WORD_is_not_a_repeated_parent(self):
+        """BS11-38: parent "Dino" matched the front of "Dinosaur Party" and the adoption
+        read "Dino — saur Party"."""
+        rec = {"name": "Dino — x", "variant": "a"}
+        assert pm._adopted_name("12a Dinosaur Party", rec, "Dino") == "Dino — Dinosaur Party"
+
+    def test_a_real_repeated_parent_is_still_stripped(self):
+        rec = {"name": "Iron Forge — x", "variant": "a"}
+        assert (pm._adopted_name("40a Iron Forge - Ancient Decay", rec, "Iron Forge")
+                == "Iron Forge — Ancient Decay")
+        rec = {"name": "Bear-Wolf — x", "variant": "a"}
+        assert (pm._adopted_name("69a Bear-Wolf: Ursa Major", rec, "Bear-Wolf")
+                == "Bear-Wolf — Ursa Major")

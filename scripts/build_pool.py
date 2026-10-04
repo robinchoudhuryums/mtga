@@ -204,10 +204,12 @@ def tagger_fingerprint():
     lists today, but a future set would silently make this hash-seed dependent — the exact
     G-54 shape, in the mechanism meant to detect change).
 
-    NOT hashed: card-mana.csv's keyword frequencies, which also feed the noise floor. A
-    content hash of a 2k-row derived file would change on every mana rebuild and make the
-    reuse fire essentially never — the honest bound is that a keyword crossing the
-    one-card floor is still invisible here, and `--refetch` is the escape hatch."""
+    card-mana.csv is NOT a dependency (it used to be — its keyword frequencies fed the
+    noise floor, so a keyword crossing the one-card floor was invisible to this hash).
+    Since 2026-09-09 the floor is scored against the build's OWN fetched corpus (G-18;
+    see the "Score the keyword noise floor" comment in `main`), so nothing outside these
+    hashed values changes the tags and there is nothing left for `--refetch` to cover on
+    that account."""
     import hashlib
     here = os.path.dirname(os.path.abspath(__file__))
     h = hashlib.sha1()
@@ -222,6 +224,13 @@ def tagger_fingerprint():
         import deck as _dk
         h.update(json.dumps(getattr(_dk, "ENGINE_THEMES", {}),
                             sort_keys=True, default=str).encode("utf-8"))
+        # Two more inputs a pool ROW depends on that the bytes above do not hold
+        # (broad-scan BS11-26): `tags_for` strips reminder text with `lib.REMINDER_RE`,
+        # which moved INTO lib.py, so a reminder-regex edit re-tags the pool while this
+        # hash stayed the same; and `row_for`'s Legalities cell is POOL_FORMATS-joined.
+        import lib as _lib
+        h.update(_lib.REMINDER_RE.pattern.encode("utf-8"))
+        h.update(json.dumps(POOL_FORMATS).encode("utf-8"))
     except Exception:
         # Unreadable => UNKNOWN, and unknown must not silently mean "unchanged": returning
         # "" makes the stamp compare unequal to nothing and rebuild, the conservative
@@ -247,8 +256,12 @@ def read_stamp():
     date = (lines[0].strip() if lines else "") or None
     # Line 3 (optional) is the tag-pattern fingerprint — absent in a stamp written
     # before BS2-23, which reads as "unknown" and must NOT force a rebuild.
+    # A BLANK third line is UNKNOWN too, never a fingerprint: a run whose fingerprint
+    # failed stamped "", and "" == "" then read as "tags unchanged" and reused the pool
+    # forever — the opposite of the rule the comment in `tagger_fingerprint` states
+    # (broad-scan BS11-26).
     return (date, (lines[1].strip() if len(lines) > 1 else None),
-            (lines[2].strip() if len(lines) > 2 else None))
+            ((lines[2].strip() or None) if len(lines) > 2 else None))
 
 
 def stamp_age_days(date):
@@ -334,7 +347,9 @@ def main():
     # it was bolted onto — a freshness check that cannot see the thing it exists to see.
     # It costs one full rebuild, exactly once per stamp, and then the escape hatch works.
     stamp_date, stamp_query, stamp_tags = read_stamp()
-    tags_changed = stamp_tags is not None and stamp_tags != tagger_fingerprint()
+    fingerprint = tagger_fingerprint()
+    # An UNCOMPUTABLE current fingerprint ("") cannot vouch for the pool either.
+    tags_changed = stamp_tags is not None and (not fingerprint or stamp_tags != fingerprint)
     tags_unknown = stamp_tags is None
     age = stamp_age_days(stamp_date)
     if tags_changed and not args.refetch:

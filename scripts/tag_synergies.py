@@ -401,6 +401,30 @@ def is_noise_keyword(kw, freq=None, corpus=None):
     return 0 < freq.get(k, 0) <= _NOISE_MAX_CARDS
 
 
+# Reminder parentheticals that NAME the graveyard without the card using it (BS11-77).
+_GY_INCIDENTAL_REMINDER_RE = re.compile(
+    r"\([^()]*(?:\bis a crime\b|\banother role on it\b|\bmadness cost\b)[^()]*\)", re.I)
+_BLINK_RETURN_RE = re.compile(r"to the battlefield(?! transformed)")
+
+
+_BURN_ANY_RE = re.compile(r"deals? (?:\d+|x) damage")
+_BURN_NOT_SELF_RE = re.compile(r"deals? (?:\d+|x) damage(?! to you\b)")
+_BURN_QUOTE_RE = re.compile(r'"[^"]*"')
+
+
+def _burn(x):
+    unquoted = _BURN_QUOTE_RE.sub(" ", x)
+    quoted = " ".join(_BURN_QUOTE_RE.findall(x))
+    return (_BURN_NOT_SELF_RE.search(unquoted) is not None
+            or _BURN_ANY_RE.search(quoted) is not None)
+
+
+def _blink(x):
+    c = REMINDER_RE.sub(" ", x)
+    return ("exile" in c and "return" in c and "graveyard" not in c
+            and _BLINK_RETURN_RE.search(c) is not None)
+
+
 # (tag, predicate(type_line_lower, text_lower)) — order defines output order.
 MECHANIC_RULES = [
     # The last alternation is the REPLACEMENT templating (G-33 gap 2, 2026-10-01): a
@@ -423,7 +447,14 @@ MECHANIC_RULES = [
         r"(?:on)?to the battlefield"
         r"|return (?:this|it|that card)[^.]{0,20}?from your graveyard to the battlefield"
         r"|\b(?:unearth|embalm|eternalize|encore|disturb|escape—)\b", x) is not None),
-    ("graveyard", lambda t, x: "graveyard" in x),
+    # Reads the text with the INCIDENTAL reminders removed (BS11-77): crime's definition
+    # ("…cards in their graveyards is a crime"), a Role token's "put that one into the
+    # graveyard" upkeep rule and madness's "…or put it into your graveyard" each name the
+    # zone without the card USING it, and minted the theme on ~70 pool cards. NOT a blanket
+    # reminder strip: descend / retrace / explore / collect-evidence reminders describe a
+    # real graveyard mechanic on cards Scryfall does not keyword, and stripping every
+    # reminder dropped those too (measured: 116 cards lost the tag, ~40 of them real).
+    ("graveyard", lambda t, x: "graveyard" in _GY_INCIDENTAL_REMINDER_RE.sub(" ", x)),
     ("mill", lambda t, x: "mill" in x),
     ("lifegain", lambda t, x: "lifelink" in x or re.search(
         # `gain life equal to ...` (Exsanguinate) is lifegain by any reading, but the
@@ -491,7 +522,11 @@ MECHANIC_RULES = [
     ("removal", lambda t, x: re.search(
         r"(?:destroy|exile) target (?![^.]{0,40}?\bcards?\b)(?![^.]{0,25}?\byou (?:control|own)\b)",
         _clean_text(x)) is not None),
-    ("burn", lambda t, x: re.search(r"deals? \d+ damage|deals x damage", x) is not None),
+    # Not damage to YOURSELF (BS11-79): the Talismans, painlands and Ancient Tomb "deal 1
+    # damage to you", which is a cost, not burn — 37 pool cards whose only damage was that.
+    # Inside QUOTES "you" is whoever receives the ability (Relic Robber hands the opponent
+    # a token that "deals 1 damage to you"), so a quoted damage clause still counts.
+    ("burn", lambda t, x: _burn(x)),
     ("ramp", lambda t, x: "search your library for a" in x and "land" in x),
     # Color fixing — "spend mana of any type / as though it were any color" lets a deck
     # cast off-color cards, a ramp-adjacent value that scales with a deck's color count
@@ -537,8 +572,13 @@ MECHANIC_RULES = [
     ("selection", lambda t, x: "look at the top" in x),
     ("impulse", lambda t, x: "exile the top" in x and "may play" in x),
     ("theft", lambda t, x: "gain control of" in x),
-    ("blink", lambda t, x: "exile" in x and "return" in x
-        and "to the battlefield" in x and "graveyard" not in x),
+    # Reminder-stripped and transform-excluded (BS11-76): "exile it, then return it to the
+    # battlefield TRANSFORMED" is a flip, not a blink (34 pool cards), and earthbend's
+    # reminder ("…when it dies or is exiled, return it to the battlefield") minted the tag
+    # on 28 more — ~37% of the 189 hits. Quoted text is KEPT (a self-blink granted in
+    # quotes, Estrid's Invocation, is still a blink), and stripping the reminder also
+    # restores the flashback blinks whose reminder said "graveyard" (Momentary Blink).
+    ("blink", lambda t, x: _blink(x)),
     ("spellslinger", lambda t, x: "whenever you cast an instant or sorcery" in x
         or "instant and sorcery spell" in x
         # "whenever you cast a NONCREATURE spell" is the same archetype's commonest modern
@@ -589,6 +629,95 @@ _NON_TRIBE_WORDS = {
     # The reasoning that motivated it ("every landcycling reminder would mint a
     # Mountain theme") was plausible and false; the count is what settled it.
 }
+
+# The REAL subtype vocabulary a tribal capture must resolve into (BS11-75). Scryfall's
+# catalogs (creature-types / land-types / artifact-types / enchantment-types, fetched
+# 2026-10-02), single-word entries only, since the captures below are single words.
+# Without it the payoff regexes singularised by chopping an `s`, which INVENTED types —
+# Elves -> "Elve" (19 pool tags), Werewolves -> "Werewolve", Heroes -> "Heroe", Allies ->
+# "Allie" — 97 tags on 38 non-types, plus junk capitals ("Equipped", "Nontoken", "Then"),
+# while the real tribe went untagged on the payoff (Tyvar Kell, Voja, Allied Teamwork,
+# Avengers Assemble!). Same bug G-83 fixed in deck.cost_scale_resource, same remedy:
+# candidates checked against the real list, so a wrong guess fails to match instead of
+# minting a type. A NEW tribe needs adding here; until then its payoffs are simply
+# untagged for it, which is the silent-but-honest direction. In this file, not a data
+# file, so build_pool's tagger fingerprint (G-18) re-derives the pool when it changes.
+_CREATURE_TYPES = frozenset("""
+    Advisor Aetherborn Alien Ally Andorian Angel Antelope Ape Archer Archon Armadillo
+    Army Artificer Assassin Astartes Atog Aurochs Automaton Avatar Azra Badger Balloon
+    Barbarian Bard Basilisk Bat Bear Beast Beaver Beeble Beholder Berserker Bird Bison
+    Blinkmoth Boar Borg Brainiac Bringer Brushwagg Caitian Camarid Camel Capybara
+    Caribou Carrier Cat Centaur Chicken Child Chimera Citizen Cleric Clown Cockatrice
+    Construct Coward Coyote Crab Crocodile Custodes Cyberman Cyclops Dalek Dauthi
+    Demigod Demon Deserter Detective Devil Dinosaur Djinn Doctor Dog Dragon Drake
+    Dreadnought Drix Drone Druid Dryad Dwarf Echidna Efreet Egg Elder Eldrazi Elemental
+    Elephant Elf Elk Employee Eternal Eye Faerie Ferret Fish Flagbearer Fox Fractal Frog
+    Fungus Gamer Gamma Gargoyle Germ Giant Giraffe Gith Glimmer Gnoll Gnome Goat Goblin
+    God Golem Gorgon Gorn Graveborn Gremlin Griffin Guest Hag Halfling Hamster Harpy
+    Head Hedgehog Hellion Hero Hippo Hippogriff Homarid Homunculus Horror Horse Human
+    Hydra Hyena Illusion Imp Incarnation Inhuman Inkling Inquisitor Insect Jackal
+    Jellyfish Juggernaut Kangaroo Kavu Kelpien Kirin Kithkin Klingon Knight Kobold Kor
+    Kraken Kree Lamia Lammasu Lanthanite Leech Lemur Leviathan Lhurgoyf Licid Lizard
+    Llama Lobster Manticore Masticore Mercenary Merfolk Metathran Minion Minotaur Mite
+    Mole Monger Mongoose Monk Monkey Moogle Moonfolk Mount Mouse Mutant Myr Mystic Naga
+    Nautilus Necron Nephilim Nightmare Nightstalker Ninja Noble Noggle Nomad Nymph
+    Octopus Officer Ogre Ooze Orb Orc Orgg Orion Otter Ouphe Ox Oyster Pangolin Peasant
+    Pegasus Pentavite Performer Pest Phelddagrif Phoenix Phyrexian Pilot Pincher Pirate
+    Plant Platypus Porcupine Possum Praetor Primarch Prism Processor Q Qu Rabbit Raccoon
+    Ranger Rat Rebel Reflection Reveler Rhino Rigger Robot Rogue Rukh Sable Salamander
+    Samurai Sand Saproling Satyr Scarecrow Scientist Scion Scorpion Scout Sculpture Seal
+    Serf Serpent Servo Shade Shaman Shapeshifter Shark Sheep Siren Skeleton Skrull Skunk
+    Slith Sliver Sloth Slug Snail Snake Soldier Soltari Sorcerer Spawn Specter
+    Spellshaper Sphinx Spider Spike Spirit Splinter Sponge Spy Squid Squirrel Starfish
+    Surrakar Survivor Symbiote Synth Talosian Teddy Tellarite Tentacle Tetravite
+    Thalakos Tholian Thopter Thrull Tiefling Tosk Toy Treefolk Trilobite Triskelavite
+    Troll Turtle Tyranid Unicorn Urzan Utrom Vampire Varmint Vedalken Villain Volver
+    Vorta Vulcan Wall Walrus Warlock Warrior Weasel Weird Werewolf Whale Wizard Wolf
+    Wolverine Wombat Worm Wraith Wurm Xindi Yeti Zombie Zubera
+""".split())
+_OTHER_SUBTYPES = frozenset("""
+    Attraction Aura Background Blood Bobblehead Book Cartouche Case Cave Class Cloud
+    Clue Contraption Curse Desert Equipment Food Forest Fortification Gate Gold
+    Incubator Infinity Island Junk Lair Locus Map Mine Mountain Plains Plan Planet
+    Powerstone Role Room Rune Saga Shard Shrine Spacecraft Sphere Stone Swamp Terminus
+    Tower Town Treasure Vehicle
+""".split())
+_TRIBE_VOCAB = _CREATURE_TYPES | _OTHER_SUBTYPES
+# Types whose plural is NOT the type plus `s`. The "Xs you control" template demanded an
+# `s`, so "Merfolk you control" (26 pool cards), "Kithkin you control" and "Mice you
+# control" never reached the resolver at all. Invariant plurals are matched as-is; the
+# two irregular ones map back to their type in `_resolve_tribe`. Ninja / Phyrexian are
+# deliberately absent: their plurals take an `s`, so a bare "Ninja you control" is a
+# singular reference, not this template.
+_INVARIANT_PLURAL_TRIBES = frozenset({
+    "Merfolk", "Kithkin", "Moonfolk", "Treefolk", "Eldrazi", "Samurai", "Kor", "Djinn",
+    "Efreet", "Fish", "Sheep", "Jellyfish"}) & _TRIBE_VOCAB
+_IRREGULAR_PLURALS = {"Mice": "Mouse", "Oxen": "Ox"}
+
+
+def _resolve_tribe(word):
+    """The real subtype a captured Title-case word names, or None.
+
+    Tries the word itself (Merfolk, Plains, Sliver), then singular candidates in the
+    order deck._cost_scale_singulars uses — Allies -> Ally, Elves -> Elf, Heroes ->
+    Hero, Knights -> Knight — keeping the first that is a real subtype."""
+    if not word or word in _NON_TRIBE_WORDS:
+        return None
+    cands = [word]
+    if word in _IRREGULAR_PLURALS:
+        cands.append(_IRREGULAR_PLURALS[word])
+    if word.endswith("ies"):
+        cands.append(word[:-3] + "y")
+    if word.endswith("ves"):
+        cands += [word[:-3] + "f", word[:-3] + "fe"]
+    if word.endswith("es"):
+        cands.append(word[:-2])
+    if word.endswith("s"):
+        cands.append(word[:-1])
+    for c in cands:
+        if c in _TRIBE_VOCAB and c not in _NON_TRIBE_WORDS:
+            return c
+    return None
 
 # Card TYPES a deck genuinely builds around, tagged when the card's TEXT names one it
 # interacts with. `_NON_TRIBE_WORDS` deliberately excludes these from the tribal path
@@ -660,14 +789,17 @@ _TYPE_MATTERS_RES = [
 # instead of merely role-player (Huatli → 28/28a was under-read). Matched on ORIGINAL-case
 # text: MTG oracle text capitalizes real tribes ("Dinosaurs you control") but lower-cases
 # the generic "creatures you control", so `[A-Z][a-z]+` is itself a strong tribe filter.
+# Each capture is the WHOLE word, plural included; `_resolve_tribe` maps it to the real
+# subtype. Capturing the stem (`([A-Z][a-z]+)s`) was the BS11-75 bug.
 _TRIBAL_PAYOFF_RES = [
-    re.compile(r"\b([A-Z][a-z]+)s you control\b"),
+    re.compile(r"\b([A-Z][a-z]+s|%s) you control\b" % "|".join(
+        sorted(_INVARIANT_PLURAL_TRIBES | set(_IRREGULAR_PLURALS)))),
     # "search your HAND AND/OR library for a Dragon card" (Last Light of Durin's Day)
     # matched nothing while the pattern demanded "search your library for" verbatim —
     # so a Dragon TUTOR carried no Dragon theme and `suggest-homes` never offered it to
     # the roster's 23-Mountain, 18-Dragon deck. One template, one word, one silent miss.
     re.compile(r"\bsearch [^.]{0,40}?\bfor (?:a|an) ([A-Z][a-z]+) card\b"),
-    re.compile(r"\bother ([A-Z][a-z]+)s?\b"),
+    re.compile(r"\bother ([A-Z][a-z]+)\b"),
     re.compile(r"\b([A-Z][a-z]+) creatures you control\b"),
 ]
 
@@ -899,11 +1031,11 @@ def tags_for(row, keywords=None, freq=None, corpus=None):
             tags.append(sub)
     # Tribal-matters PAYOFF: add the creature type a lord/tutor REWARDS (which it may not
     # itself be) so it shares that tribe's theme — see _TRIBAL_PAYOFF_RES. Scanned on the
-    # original-case text (Title-case = a real tribe); _NON_TRIBE_WORDS drops false hits.
+    # original-case text (Title-case = a candidate); _resolve_tribe keeps a real subtype.
     for rx in _TRIBAL_PAYOFF_RES:
         for m in rx.finditer(text):
-            typ = m.group(1)
-            if typ and typ not in _NON_TRIBE_WORDS and typ not in tags:
+            typ = _resolve_tribe(m.group(1))
+            if typ and typ not in tags:
                 tags.append(typ)
     # Card types the card's TEXT builds around (see _TYPE_MATTERS_RES).
     for rx in _TYPE_MATTERS_RES:
@@ -946,7 +1078,37 @@ def tags_for(row, keywords=None, freq=None, corpus=None):
         for theme in KEYWORD_THEMES.get(kw, []):
             if theme not in tags:
                 tags.append(theme)
-    return tags
+    return canonical_tags(tags)
+
+
+def _canon_case_map():
+    """lower -> the ONE spelling a tag takes (BS11-78). The lowercase THEME vocabulary
+    (MECHANIC_RULES names, KEYWORD_THEMES values) wins over a Title-case TYPE tag, so
+    `Equipment` (type line) and `equipment` (the theme rule) are one tag, not two."""
+    voc = {tag for tag, _ in MECHANIC_RULES}
+    voc |= {th for themes in KEYWORD_THEMES.values() for th in themes}
+    return {t.lower(): t for t in voc}
+
+
+def canonical_tags(tags):
+    """Case-canonicalise and de-duplicate case-insensitively, keeping first-seen order.
+
+    Every consumer compares tags case-SENSITIVELY, so 1,358 pool cards carrying both
+    `Equipment` and `equipment` (likewise Aura, Saga, Vehicle, Planeswalker, Food, Clue,
+    Treasure) double-counted that theme's weight — deck 38 read `Equipment 30` beside
+    `equipment 23` — while a card holding only ONE spelling shared nothing with a card
+    holding only the other. One spelling per theme fixes both."""
+    canon = _CANON_CASE
+    out, seen = [], set()
+    for t in tags:
+        t = canon.get(t.lower(), t)
+        if t.lower() not in seen:
+            seen.add(t.lower())
+            out.append(t)
+    return out
+
+
+_CANON_CASE = _canon_case_map()
 
 
 def load_keywords(path):
@@ -1008,8 +1170,9 @@ def main():
         if args.merge and existing:
             # Union: keep every existing tag (incl. hand-curated), append new ones.
             have = [t.strip() for t in existing.split(";") if t.strip()]
-            haveset = {t.lower() for t in have}
-            merged = have + [t for t in derived if t.lower() not in haveset]
+            # Canonical case on the kept tags too (BS11-78), or the library keeps
+            # `Equipment` where the pool says `equipment` and the two stores disagree.
+            merged = canonical_tags(have + derived)
             value = "; ".join(merged)
         else:
             value = "; ".join(derived)
@@ -1024,6 +1187,10 @@ def main():
         print(f"\n[dry-run] {changed} row(s) would be tagged. Nothing written.")
         return 0
 
+    # Nothing changed => nothing written (no byte-identical rewrite, no .bak; BS11-29).
+    if not changed:
+        print(f"Tagged 0 row(s). {args.path} left untouched.")
+        return 0
     write_rows(rows, args.path)
     print(f"Tagged {changed} row(s). Wrote {args.path}.")
     return 0

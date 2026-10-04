@@ -327,6 +327,21 @@ def color_matches(cell, needle):
     return want <= have if want else not have
 
 
+def type_matches(type_line, needle):
+    """Does a ``Type`` line match a user's ``--type`` filter, as WHOLE WORDS?
+
+    The substring test the filters used is the BS-10 trap one column over:
+    ``"orc" in "sorcery"`` and ``"ant" in "instant"`` are True, so ``pool.py --type Orc
+    --count`` answered 1,938 (1,789 of them Sorceries) and ``--type Ant`` 3,845 with no
+    Ants at all — the tribe survey G-59 tells you to run, returning a number that reads
+    as a fact (broad-scan BS11-39). Case-insensitive; a multi-word needle
+    ("Legendary Creature") must appear as that whole phrase. None/blank matches all."""
+    if needle is None or not str(needle).strip():
+        return True
+    pat = r"(?<![A-Za-z])" + re.escape(str(needle).strip()) + r"(?![A-Za-z])"
+    return re.search(pat, type_line or "", re.I) is not None
+
+
 def color_within(cell, needle):
     """Does a ``Color(s)`` identity cell fit WITHIN a deck of the given colors?
 
@@ -512,6 +527,9 @@ _ADD_CLAUSE_RE = re.compile(r"\badds?\b[^.\n]*", re.I)
 _ANY_COLOR_RE = re.compile(
     r"\b(?:one |two |three |X |that much |an amount of )?mana (?:in any combination )?of any "
     r"(?:one )?(?:color|type)|\bany color\b|\bthe chosen color\b", re.I)
+# "…of any color in your commander's color identity" — bounded by the commander, so it is
+# NOT the open any-colour clause `_ANY_COLOR_RE` reads it as (BS11-17).
+_COMMANDER_IDENTITY_RE = re.compile(r"\bcommander'?s? colou?r identity\b", re.I)
 _EXTRA_MANA_COST_RE = re.compile(r"\{[0-9XC]\}|\{[WUBRG]\}|\{[WUBRG]/[WUBRG]\}")
 # A cost that taps something OTHER than the land itself ("{T}, Tap an untapped creature
 # you control: Add one mana of any color" — Scene of the Crime). `{T}` is a symbol, so the
@@ -676,7 +694,7 @@ def tapland_kind(text, basic_types=None):
     return "conditional" if _TAPLAND_COND_RE.search(text) else "unconditional"
 
 
-def land_production(text, colors_cell=None):
+def land_production(text, colors_cell=None, commander=None):
     """What a LAND produces, from its oracle text plus its identity cell.
 
     Returns a dict with four sets of WUBRG letters and two booleans:
@@ -713,6 +731,12 @@ def land_production(text, colors_cell=None):
     mana symbol in the cost IS, because the land is then a filter, not a source on the
     turn you need the colour. A colour that is free on one line is free, whatever other
     lines say. Pure (regex only), so the counters and the recommender share it.
+
+    `commander` (BS11-17): the deck's commander colour identity, for "Add one mana of any
+    color in your commander's color identity" (Command Tower, Arcane Signet). None means
+    UNKNOWN (a deckless caller) and keeps the old all-five reading; a set — empty for a
+    deck with no commander — is what the card really adds there. Without it a G/W/U Brawl
+    deck read Command Tower as a black and red source and printed a "B (2), R (2)" splash.
     """
     txt = _LAND_REMINDER_RE.sub(" ", text or "")
     free, restricted, conditional, chosen = set(), set(), set(), set()
@@ -734,6 +758,13 @@ def land_production(text, colors_cell=None):
         line_chosen = False
         for m in _ADD_CLAUSE_RE.finditer(line):
             clause = m.group(0)
+            if _COMMANDER_IDENTITY_RE.search(clause):
+                if commander is None:
+                    any_color = True
+                    cols |= set("WUBRG")
+                else:
+                    cols |= set(commander) & set("WUBRG")
+                continue
             cols |= {c for c in "WUBRG" if "{" + c + "}" in clause}
             if _ANY_COLOR_RE.search(clause):
                 any_color = True
@@ -850,6 +881,17 @@ def csv_schema_error(path, header=None):
     except OSError as e:
         return f"could not read the existing header of {os.path.basename(path)}: {e}"
     if existing is None or existing == header:
+        return None
+    # An OLDER version of this writer's own schema is not a different schema. Every
+    # derived file here grew by APPENDING columns (the pool gained Legalities/Released,
+    # then Power/Toughness), so a header that is a PREFIX of the one being written loses
+    # nothing — and refusing it blocked exactly the rebuild G-21 and INV-03 prescribe for
+    # a pre-column pool ("would DROP columns", with nothing to drop; broad-scan BS11-21).
+    # Prefix, not subset, and at least half the columns: a file that merely shares a few
+    # leading names (a 1-column list, or the library beside the pool, which diverge at
+    # column 8) is still refused.
+    if (len(existing) >= max(2, len(header) // 2)
+            and existing == header[:len(existing)]):
         return None
     lost = [c for c in existing if c not in header]
     # Direction-NEUTRAL wording. F-02 was "a library writer pointed at a derived
@@ -1116,7 +1158,17 @@ def collection_stamp_note(max_age_days=30, path=None):
     try:
         with open(p, encoding="utf-8") as fh:
             stamp = _json.load(fh)
+        # A stamp that is valid JSON but not an OBJECT (a bare list, a string) raised
+        # AttributeError on `.get` — past the except below and into every craft-cost
+        # surface that prints this note (broad-scan BS11-30). It is unreadable, so it
+        # reads as "never reconciled", the conservative state.
+        if not isinstance(stamp, dict):
+            raise ValueError("collection stamp is not a JSON object")
         when = _dt.date.fromisoformat(str(stamp.get("reconciled", "")))
+        # A FUTURE date (a hand edit, a clock error) gave a negative age and read as
+        # fresh forever. Nothing reconciles in the future, so it cannot vouch either.
+        if when > _dt.date.today():
+            raise ValueError("collection stamp is dated in the future")
     except (OSError, ValueError):
         return ("ⓘ owned counts are LOWER BOUNDS — the collection has never been "
                 "exactly reconciled (run import_collection.py with a tracker export; "

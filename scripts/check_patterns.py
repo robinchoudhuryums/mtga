@@ -146,6 +146,9 @@ _EXCLUDED = {
     ("tag_synergies", "_QUOTED_TEXT_RE"): "a QUOTE stripper (the ability a token or emblem "
                                           "carries), applied before a rule reads the text — "
                                           "BS8-31; not a card-text pattern",
+    ("tag_synergies", "_BURN_QUOTE_RE"): "a QUOTE splitter for the burn rule (BS11-79) — it "
+                                         "separates quoted from unquoted text, the same job as "
+                                         "_QUOTED_TEXT_RE; not a card-text pattern",
     ("deck", "_SHARING_CUES"): "tier-RATIONALE prose (a SHARING claim asserts the card "
                                "is in THIS deck, so the cross-deck suppression is "
                                "skipped there); unit-tested in test_deck.py",
@@ -280,6 +283,10 @@ def _pattern_groups():
     out.append(("deck._ALT_COST_RE", deck._ALT_COST_RE, "norm"))
     out.append(("deck._ALT_COST_GRANT_RE", deck._ALT_COST_GRANT_RE, "norm"))
     out.append(("deck._IMPENDING_RE", deck._IMPENDING_RE, "norm"))
+    # A card's own copy-limit override (BS11-01). Dead means `legal` flags a legal
+    # 10-Slime deck "max 4" again — or passes an eighth Seven Dwarves.
+    out.append(("deck._ANY_NUMBER_NAMED_RE", deck._ANY_NUMBER_NAMED_RE, "norm"))
+    out.append(("deck._UP_TO_N_NAMED_RE", deck._UP_TO_N_NAMED_RE, "norm"))
     # The typed-sink qualifier reads ORIGINAL case (Magic capitalizes creature types).
     out.append(("deck._LAND_SINK_TYPED_RE", deck._LAND_SINK_TYPED_RE, "raw"))
     # `suggest --lands`' rider tie-break. Each cue must still match a real land, else the
@@ -359,7 +366,11 @@ def _pattern_groups():
                  # dead every Verge's second colour and every MSH basic-gated colour is
                  # back to a full source in every deck — the over-count it was added to
                  # remove, and invisible because a larger count breaks no invariant.
-                 "_LAND_GATE_RE"):
+                 "_LAND_GATE_RE",
+                 # BS11-17: "commander's color identity" production. If it goes dead,
+                 # Command Tower / Arcane Signet read as five-colour sources again in
+                 # every Brawl deck — an over-count no invariant notices.
+                 "_COMMANDER_IDENTITY_RE"):
         out.append((f"lib.{name}", getattr(lib, name), "raw"))
     out += [("tag_synergies._TRIBAL_PAYOFF_RES", p, "raw")
             for p in tag_synergies._TRIBAL_PAYOFF_RES]
@@ -375,8 +386,17 @@ def _pattern_groups():
                  # `_clean_text(x)`, already lowercased and reminder-stripped, so
                  # registering it "raw" would be the wrong-corpus mistake this file's
                  # own docstring warns about.
-                 "_ARTIFACT_MATTERS_RE"):
+                 "_ARTIFACT_MATTERS_RE",
+                 # BS11-76/77/79 rule guards, all run on the lowercased text. A dead
+                 # `_BLINK_RETURN_RE` empties the blink tag; a dead incidental-reminder
+                 # filter silently restores the ~70 crime/Role/madness false positives;
+                 # a dead burn pattern empties `burn`.
+                 "_BLINK_RETURN_RE", "_BURN_ANY_RE", "_BURN_NOT_SELF_RE"):
         out.append((f"tag_synergies.{name}", getattr(tag_synergies, name), "norm"))
+    # "raw", not "norm": it matches the REMINDER parenthetical itself, which the norm form
+    # has already stripped — registered "norm" it reads as dead (0 of the pool).
+    out.append(("tag_synergies._GY_INCIDENTAL_REMINDER_RE",
+                tag_synergies._GY_INCIDENTAL_REMINDER_RE, "raw"))
     # GRANTED-keyword scan. One pattern per evergreen keyword, nested in a dict rather
     # than bound as module attributes, so the completeness check cannot see them
     # individually — the same shape that let `_TARGET_GATES` ship a gate matching nothing.
@@ -543,6 +563,11 @@ def check():
 
 
 def main():
+    # `--help` prints this module's docstring and exits (BS11-56): the gates took no
+    # arguments, so `--help` was ignored and the CI smoke step ran every gate in full.
+    if any(a in ("-h", "--help") for a in sys.argv[1:]):
+        print(__doc__)
+        return 0
     errors = check()
     if errors:
         print(f"check_patterns: {len(errors)} dead/malformed pattern(s)")

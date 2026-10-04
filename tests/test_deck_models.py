@@ -299,6 +299,65 @@ class TestLegalityReport:
         assert not any("Zap" in str(p) for p in rep["problems"])
 
 
+class TestLegalityCardRulesAndBrawlShape:
+    """BS11-01/02/03: a card's own copy-limit text, the EXACT Brawl size, and the
+    colour identity of basic lands in a commander deck."""
+
+    CD = {
+        "slime": {"name": "Slime", "type": "Sorcery", "colors": "G",
+                  "text": "A deck can have any number of cards named Slime."},
+        "dwarves": {"name": "Dwarves", "type": "Creature", "colors": "R",
+                    "text": "A deck can have up to seven cards named Dwarves."},
+        "zap": {"name": "Zap", "type": "Instant", "colors": "G", "text": "Zap."},
+        "hero": {"name": "Hero", "type": "Legendary Creature — Human", "colors": "G",
+                 "text": ""},
+        "forest": {"name": "Forest", "type": "Basic Land — Forest", "colors": "G",
+                   "text": ""},
+        "mountain": {"name": "Mountain", "type": "Basic Land — Mountain", "colors": "R",
+                     "text": ""},
+    }
+
+    def _cards(self, *pairs):
+        return [(q, n, None, None) for q, n in pairs]
+
+    def test_any_number_named_is_not_capped(self):
+        rep = deck.legality_report({}, self._cards((10, "Slime"), (50, "Forest")),
+                                   "standard", {}, carddata=self.CD)
+        assert rep["problems"] == []
+
+    def test_up_to_seven_named_caps_at_seven(self):
+        ok = deck.legality_report({}, self._cards((7, "Dwarves"), (53, "Forest")),
+                                  "standard", {}, carddata=self.CD)
+        bad = deck.legality_report({}, self._cards((8, "Dwarves"), (52, "Forest")),
+                                   "standard", {}, carddata=self.CD)
+        assert ok["problems"] == []
+        assert any("max 7" in p for p in bad["problems"])
+
+    def test_the_override_also_lifts_singleton(self):
+        rep = deck.legality_report({"commander": "Hero"},
+                                   self._cards((1, "Hero"), (9, "Slime"), (50, "Forest")),
+                                   "Brawl", {}, carddata=self.CD)
+        assert not any("Slime" in p for p in rep["problems"])
+
+    def test_a_brawl_deck_over_its_size_is_illegal(self):
+        rep = deck.legality_report({"commander": "Hero"},
+                                   self._cards((1, "Hero"), (61, "Forest")),
+                                   "Brawl", {}, carddata=self.CD)
+        assert any("exactly 60" in p for p in rep["problems"])
+
+    def test_a_standard_deck_over_sixty_is_fine(self):
+        rep = deck.legality_report({}, self._cards((4, "Zap"), (57, "Forest")),
+                                   "standard", {}, carddata=self.CD)
+        assert rep["problems"] == []
+
+    def test_an_off_identity_basic_is_flagged_in_brawl(self):
+        rep = deck.legality_report({"commander": "Hero"},
+                                   self._cards((1, "Hero"), (55, "Forest"), (4, "Mountain")),
+                                   "Brawl", {}, carddata=self.CD)
+        assert any("Mountain" in p and "identity" in p for p in rep["problems"])
+        assert not any("copies" in p for p in rep["problems"])
+
+
 class TestPureHelpers:
     """Small pure functions with no test at all — cheap to pin, and each one feeds a
     display or a flag someone reads."""
@@ -1048,7 +1107,8 @@ class TestTaggerSeesTypesTheCardOnlyTALKSAbout:
                           "Whenever this creature saddles a Mount or crews a Vehicle "
                           "during your main phase, that Mount or Vehicle gains flying "
                           "until end of turn.")
-        assert {"Mount", "Vehicle"} <= tags
+        # `vehicle`, not `Vehicle`: one spelling per theme since BS11-78.
+        assert {"Mount", "vehicle"} <= tags
 
     def test_MOUNTAIN_IS_NOT_A_MOUNT(self):
         """`'Mount' in type_line` matches 'Mountain' — the substring trap `card_colors`
@@ -1488,3 +1548,159 @@ class TestUncountedManaSources:
         s2, l2, _t2, _n2 = deck.deck_source_profile(c2, by_key, by_name, UNIVERSE)
         assert s1["B"] == s2["B"] and l1 == l2
         assert deck.uncounted_mana_sources(c2, UNIVERSE)      # …yet it IS disclosed
+
+
+class TestCardMetaPoolFirstForFrontNamedRows:
+    """BS11-41: the pool-first tag correction matched EXACT names only, so a library row
+    stored under a DFC's FRONT name kept its stale library tags (10 owned cards)."""
+
+    def test_a_front_named_library_row_takes_the_full_named_pool_tags(self, tmp_path,
+                                                                      monkeypatch):
+        lib_csv = tmp_path / "lib.csv"
+        lib_csv.write_text("Card Name,Color(s),Synergies\n"
+                           "Oko,G/U,removal; tokens\nLife,W,lifegain\n", encoding="utf-8")
+        pool_csv = tmp_path / "pool.csv"
+        pool_csv.write_text("Card Name,Color(s),Synergies\n"
+                            "\"Oko // Scion\",G/U,tokens\n"
+                            "\"Life // Death\",W/B,reanimator\nLife,W,lifegain; heal\n",
+                            encoding="utf-8")
+        monkeypatch.setattr(deck, "DEFAULT_CSV", str(lib_csv))
+        monkeypatch.setattr(deck, "POOL_CSV", str(pool_csv))
+        fn = getattr(deck.load_card_meta, "__wrapped__", deck.load_card_meta)
+        meta = fn()
+        assert meta["oko"]["synergies"] == ["tokens"]
+        # Exact name wins: a distinct card named like another's front keeps its OWN row.
+        assert meta["life"]["synergies"] == ["lifegain", "heal"]
+
+
+class TestScan11Batch5RecommenderMaths:
+    """BS11-16/31/61/67/68/69/70/71/72/74 — synthetic card data, so the pins hold whatever
+    the roster does."""
+
+    DOUBLER = ("If one or more tokens would be created under your control, twice that many "
+               "of those tokens are created instead.")
+    MAKER = "When this creature enters, create a 1/1 white Soldier creature token."
+
+    def _cd(self, rows):
+        return {n.lower(): {"name": n, "type": t, "text": x, "power": p}
+                for n, t, x, p in rows}
+
+    def test_overlay_clears_only_at_the_doubler_floor(self):
+        floor = deck.doubler_calib("tokens")[0]
+        cd = self._cd([("Maker", "Creature — Human", self.MAKER, "1")])
+        below = [(floor - 1, "Maker", "", "")]
+        at = [(floor, "Maker", "", "")]
+        assert not deck.structural_overlay_hit(self.DOUBLER, below, cd)
+        assert deck.structural_overlay_hit(self.DOUBLER, at, cd)
+
+    def test_overlay_chosen_type_branch_is_no_longer_a_tautology(self):
+        text = ("As this creature enters, choose a creature type. Creatures you control "
+                "of the chosen type get +1/+1.")
+        cd = self._cd([("Elfy", "Creature — Elf", "", "1")])
+        few = [(deck._TYPE_SCALE_MIN_SOURCES - 1, "Elfy", "", "")]
+        many = [(deck._TYPE_SCALE_MIN_SOURCES, "Elfy", "", "")]
+        if deck.type_scale_payoff(text):
+            assert not deck.structural_overlay_hit(text, few, cd)
+            assert deck.structural_overlay_hit(text, many, cd)
+
+    def test_hybrid_binding_is_the_rule_binding_pips_applies(self):
+        assert deck.hybrid_binding(frozenset("BG"), {"B": 11, "G": 0}) == "B"
+        assert deck.hybrid_binding(frozenset("BG"), {"B": 11, "G": 3}) is None
+        assert deck.hybrid_binding(frozenset("BG"), {}) is None
+        assert deck.hybrid_binding(frozenset("W"), {"W": 9}) is None
+
+    def test_pip_depth_warning_does_not_depend_on_cost_order(self):
+        src = {"W": 15, "U": 6}
+        a = deck.pip_depth_warning("{W}{W}{U}{U}", src)
+        b = deck.pip_depth_warning("{U}{U}{W}{W}", src)
+        assert a == b and a is not None and a[0] == "U"
+
+    def test_joint_plan_lifts_the_product_not_one_colour(self):
+        N, turn, pips, tgt = 60, 2, {"G": 1, "U": 1}, 0.90
+        src = {"G": 15, "U": 13}
+        plan = deck.joint_source_plan(N, src, turn, pips, tgt)
+        assert plan is not None
+        assert deck.cast_probability(N, plan, turn, pips) >= tgt
+        # one colour alone reduces to the Karsten number
+        solo = deck.joint_source_plan(N, {"B": 5}, 3, {"B": 2}, tgt)
+        assert solo == {"B": deck.min_sources_for(N, 3, 2, tgt)}
+        assert deck.joint_source_plan(N, {"B": 5}, 2, {"B": 2}, tgt, cap=10) is None
+
+    def test_card_advantage_split_reads_the_front_face(self):
+        cd = {"relic": {"type": "Legendary Artifact // Legendary Artifact Land",
+                        "text": "{T}: Draw a card."}}
+        rep, one, _ = deck.card_advantage_split([(1, "Relic", "", "")], cd)
+        tally = deck.role_tally([(1, "Relic", "", "")], cd)
+        assert rep + one == tally["card_advantage"] == 1
+
+    def test_target_counts_types_a_card_by_its_front_face(self):
+        cd = {"reanimate": {"type": "Sorcery",
+                            "text": "Return target creature card from your graveyard to "
+                                    "the battlefield."},
+              "flip saga": {"type": "Enchantment — Saga // Enchantment Creature — Spirit",
+                            "text": "I — Draw a card."}}
+        rows = deck.target_counts([(1, "Reanimate", "", ""), (2, "Flip Saga", "", "")],
+                                  cd, {})
+        creat = [r for r in rows if r[0] == "Reanimate" and "creature cards" in r[1]]
+        assert creat and creat[0][2] == 0
+
+    def test_x_cost_reads_the_front_face_only(self):
+        cd = {"party // after": {"type": "Sorcery // Sorcery", "text": "x"},
+              "fireball": {"type": "Sorcery", "text": "x"}}
+        mana = {"party // after": ("{2}{G} // {X}{G}", 3), "fireball": ("{X}{R}", 1)}
+        out = deck.x_cost_cards([(1, "Party // After", "", ""), (1, "Fireball", "", "")],
+                                cd, mana)
+        assert out == [("Fireball", "{X}{R}")]
+
+    def test_clock_gives_no_curve_credit_without_cost_data(self):
+        vec = {"avg_mv": 0.0, "avg_mv_n": 0, "early_drops": 0, "reach": 0}
+        assert deck._clock_score(vec) == 0
+        assert deck._clock_score(dict(vec, avg_mv_n=20)) == 3   # a measured 0.0 curve
+        assert deck._clock_score({"avg_mv": 0.0}) == 3          # hand-built vector
+
+    def test_consistency_refuses_an_empty_deck(self, tmp_path, capsys):
+        f = tmp_path / "empty.txt"
+        f.write_text("#: name: Empty\n#: format: Standard\n", encoding="utf-8")
+        args = argparse.Namespace(id=str(f), target=None, on_draw=False)
+        assert deck.cmd_consistency(args) == 1
+        assert "60-card" not in capsys.readouterr().out
+
+
+class TestScan11Batch6FormatDrift:
+    """BS11-06/13/14/15/17/18 — format names read through the shared normalisers."""
+
+    def test_standard_brawl_is_a_commander_class_deck(self):
+        assert deck._deck_format_class({"meta": {"format": "Standard Brawl"}}) == "commander"
+        assert deck._deck_format_class({"meta": {"format": "historic-brawl"}}) == "commander"
+
+    def test_rotation_sweep_includes_the_standard_pool_brawl_decks(self):
+        brawl = [d["id"] for d in deck.roster_decks()
+                 if deck.normalize_format(
+                     (deck.parse_deck_file(d["path"])[0].get("format") or "")) == "brawl"]
+        ids = {x["id"] for x in deck.rotation_sweep("standard")[0]}
+        assert brawl and set(brawl) <= ids
+
+    def test_lands_keep_the_decks_singleton_rule_and_rotation(self):
+        d = deck.find_deck("78-historic-brawl")
+        res = deck.suggest_lands(d, limit=0, fmt="standard")
+        assert not any((p.get("in_deck") or 0) for p in res["picks"])
+        res = deck.suggest_lands(d, limit=0, any_format=True)
+        assert not any(p.get("rot") for p in res["picks"])
+
+    def test_role_gap_threshold_scales_for_a_100_card_deck(self):
+        args = (["x"], {"x": 1, "y": 9}, "Destroy target creature.", 7, 10)
+        assert deck.fit_strength(*args, scale=100 / 60) == "KEY"       # 7 < ceil(5*1.67)=9
+        assert deck.fit_strength(*args, scale=1.0) != "KEY"            # 7 ≥ 5 at 60 cards
+        assert deck._scale_count(5, 100 / 60) == 9
+
+    def test_commander_identity_land_adds_only_the_commanders_colours(self):
+        import lib
+        t = "{T}: Add one mana of any color in your commander's color identity."
+        assert lib.land_production(t, commander={"G", "W", "U"})["free"] == {"G", "W", "U"}
+        assert lib.land_production(t, commander=set())["free"] == set()
+        assert lib.land_production(t)["free"] == set("WUBRG")          # unknown: unchanged
+
+    def test_an_unplaceable_commander_says_the_lock_is_off(self, capsys):
+        meta = {"format": "Brawl", "commander": "Zzz Not A Card Batch Six"}
+        assert deck.commander_identity_lock(meta, {}) is None
+        assert "lock is OFF" in capsys.readouterr().err

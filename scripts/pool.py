@@ -21,7 +21,10 @@ Examples:
     # Just count how many Merfolk exist vs. how many you own
     python3 scripts/pool.py --type Merfolk --count
 
-Filters are case-insensitive substring matches, AND-ed together.
+Filters are case-insensitive and AND-ed together. `--name`, `--text` and `--synergy` are
+substring matches; `--type` matches whole words (`lib.type_matches`), `--color` /
+`--within` are colour-SET tests, and `--regex` is a regular expression over
+reminder-stripped oracle text.
 """
 
 import argparse
@@ -31,7 +34,7 @@ import os
 import sys
 import textwrap
 
-from lib import (DEFAULT_CSV, REPO_ROOT, load_rows, eprint, owned_qty, color_matches,
+from lib import (DEFAULT_CSV, REPO_ROOT, load_rows, eprint, owned_qty, color_matches, type_matches,
                  color_within, alias_front)
 
 
@@ -142,7 +145,7 @@ def matches(card, args, owned):
     def has(col, needle):
         return needle is None or needle.lower() in (card.get(col) or "").lower()
 
-    if not (has("Card Name", args.name) and has("Type", args.type)
+    if not (has("Card Name", args.name) and type_matches(card.get("Type"), args.type)
             and has("Card Text", args.text)
             and has("Synergies", args.synergy)):
         return False
@@ -168,7 +171,7 @@ def matches(card, args, owned):
             return False
     if args.legal:
         legal = {x.strip() for x in (card.get("Legalities") or "").split(";") if x.strip()}
-        if args.legal.lower() not in legal:
+        if args._legal_key not in legal:
             return False
     if args.role:
         # Resolved + validated in main() (BS2-35): the old inline fallback kept the
@@ -267,6 +270,23 @@ def main():
         eprint("Pool has no Legalities column — rebuild with build_pool.py to use "
                "--legal. Ignoring the filter.")
         args.legal = None
+
+    # --legal through `deck.pool_format_key` (BS11-40), the ONE format→pool-key map every
+    # other legality surface reads (G-08): the raw string made `--legal "historic brawl"`
+    # match nothing, `--legal brawl` silently mean the 100-card format, and a typo return
+    # a clean 0 — the silent-zero shape BS2-35 removed from --role.
+    args._legal_key = ""
+    if args.legal:
+        import deck as _deck
+        args._legal_key = _deck.pool_format_key(args.legal)
+        if not args._legal_key:
+            eprint(f"ERROR: unknown format {args.legal!r} for --legal.\n"
+                   f"       Formats: {', '.join(sorted(_deck.POOL_FORMATS))} "
+                   "(plus `brawl` = 60-card Standard Brawl, `historic brawl`).")
+            return 2
+        if args._legal_key != _deck.normalize_format(args.legal):
+            eprint(f"(--legal {args.legal!r} checks the pool's {args._legal_key!r} legality — "
+                   "the repo's format names, G-08.)")
 
     # Resolve --role names case-insensitively against the canonical labels AND the
     # aliases, and REJECT anything that matches neither (BS2-35): `--role recursion`

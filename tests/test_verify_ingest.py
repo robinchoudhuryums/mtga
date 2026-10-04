@@ -37,7 +37,13 @@ def _restates_chain(src):
         if b != -1:
             return True
         a = src.find("python3 scripts/build_mana", a + 1)
-    return any("build_mana" in ln and "build_pool" in ln and ("->" in ln or "→" in ln)
+    # A PARTIAL recipe is the same staleness (BS11-64): INV-06 read "regenerate via
+    # build_mana.py then tag_synergies.py --merge", which omits build_pool — and the old
+    # line test needed BOTH build_mana and build_pool, so a chain missing a step was the
+    # one shape it could not see. Any two rebuild steps joined as a SEQUENCE count.
+    steps = ("build_pool", "build_mana", "tag_synergies", "build_gallery")
+    seq = re.compile(r"->|→|\bthen\b")
+    return any(sum(s in ln for s in steps) >= 2 and seq.search(ln)
                for ln in src.splitlines())
 
 
@@ -94,6 +100,19 @@ class TestPresence:
         joined = " ".join(warns)
         assert "not readable as a collection CSV/TSV either" in joined
         assert "--map" in joined          # the remedy, not just the failure
+
+
+class TestQuantityFirstTsv:
+    """BS11-22: the Arena regex's `\\s+` matched a TAB, so a quantity-first tracker TSV
+    "succeeded" as Arena lines named 'Llanowar Elves\\tDOM\\t168' and the CSV/TSV
+    fallback never ran — every card reported missing from the library."""
+
+    def test_a_quantity_first_tsv_is_read_as_an_export(self):
+        tsv = "Count\tName\tEdition\tCollector Number\n4\tLlanowar Elves\tDOM\t168\n"
+        res, _ = vi.verify(tsv, lib=_lib([("Llanowar Elves", 4)]),
+                           mana={"llanowar elves"})
+        assert [r["name"] for r in res] == ["Llanowar Elves"]
+        assert res[0]["present"]
 
 
 class TestQuantitiesLowerBoundVsAuthoritative:

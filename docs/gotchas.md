@@ -419,6 +419,22 @@ the same deck is reported ("✗ block N: ALSO matched #id, already claimed by bl
 and skipped — re-paste it alone if it is the real list. Exit is non-zero, since
 something needs attention.
 
+### Boards, companions and an oversized paste (scan #11 Batch 2, 2026-10-02)
+
+- **Companion (BS11-12).** When `split_paste` began carrying a LEADING `Companion` block
+  into the deck it precedes (so a Brawl commander stays with its deck), `strip_boards`
+  still kept Companion lines — so an in-sync deck exported with a companion read
+  "+1 Jegantha" and `--apply` would have written a 61st card. A companion starts outside
+  the game, so it is a board now, in `strip_boards` and the dashboard's `splitDecks` alike.
+- **Oversized (BS11-10).** TRUNCATED guarded the lower bound only. A 79-card block (deck 64
+  plus 22 cards of deck 63) matched deck 64 at full confidence as "19 added". Over 125% of
+  the stored total is flagged OVERSIZED and skipped by `--apply` unless `--force`; the
+  dashboard matcher carries the same flag, pinned by the cross-language test.
+- **`verify` vs `sync` (BS11-08).** `verify` kept sideboard lines and only warned, so the
+  same paste read "+2 Duress", exit 1, under `verify` and "in sync" under `sync`. Both
+  run `strip_boards` now.
+
+**2026-10-02 (BS11-06/40) — two more readers of the raw string.** `pool.py --legal` compared the typed name against the pool's Scryfall keys, so `--legal "historic brawl"` matched nothing and `--legal brawl` silently meant the 100-card format; it now resolves through `deck.pool_format_key`, refuses an unknown name with the list, and prints a note when the repo name maps to a different key. `rotation_sweep` selected decks by the raw header, so the roster rotation view held 109 decks against 113 that rotate; it selects by pool key now, leaving out only the non-rotating Historic Brawl deck. One pool test fixture had encoded `--legal brawl` as the 100-card format, i.e. it pinned the bug.
 
 ## [G-09] Legality lint and cut candidates are separate from ownership
 
@@ -638,6 +654,19 @@ COUNTERS-ON-PERMANENTS ("the number of +1/+1 counters on lands you control" — 
 Blind Bandit) both fell out of it. Measured across the pool: **781 in-scope clauses, 46
 missed across 39 cards → 1**, with **+8 cards** gaining an axis they wholly lacked. The
 widening deliberately did NOT cross G-76's scope line.
+
+### Copy limits a card sets itself, Brawl's exact size, and basics' identity (BS11-01/02/03, 2026-10-02)
+
+`legal` applied the format's copy limit to every nonbasic. Fourteen pool cards override
+it in their own text — "A deck can have any number of cards named Slime Against Humanity"
+(also Hare Apparent, Tempest Hawk, Relentless Rats…) and "up to seven" (Seven Dwarves) /
+"up to nine" (Nazgûl) — so a legal 10-Slime deck read "max 4" (deck 64 runs three).
+`card_copy_limit` reads that text, in singleton formats too. Brawl and Commander decks are
+an EXACT size, and `legal` checked only the minimum, so a 107-card Historic Brawl list
+read clean. And the copy-count loop skipped basics before the identity check ran, so four
+Mountains in a G/W/U Katara deck passed; basics now go through the identity check while
+staying exempt from the copy limit. Roster sweep after the change: 0 decks with problems.
+
 ## [G-10] "Not in library" for a card you own is the deck-dump undercount symptom
 
 **"Not in library" for a card you own is the deck-dump undercount symptom.**
@@ -743,6 +772,20 @@ which is deliberate. It is one binary fact about the repo with a one-command rem
 clears it permanently — not a per-row verdict firing on most of a table, which is the shape
 G-07 is about.
 
+### Four ingest holes closed before the first full reconcile (scan #11 Batch 1, 2026-10-02)
+
+- `import_collection` filed a PRINTED row for a printing the library lacked, for a card held
+  in two or more printings, as a name-only ambiguity and dropped its copies (library AAA×1 +
+  BBB×1, export adding CCC×2 planned 2 against a real 4). It now folds onto an existing
+  printing, as the single-printing branch always did (BS11-19).
+- `import_collection --library <path>` wrote the REPO's stamp and mana rows; a scratch
+  `--apply` certified the real collection as exactly reconciled (BS11-20).
+- `reconcile_crafts` read line by line and took `max()` across Deck and Sideboard — a Bo3
+  export proving 4 recorded 2 — and listed the `Sideboard` header as unparseable. It now
+  takes quantities from `import_arena.parse`, the one section-aware aggregation (BS11-24).
+- `import_arena` imported basics unless `--skip-basics` was passed; it skips them by
+  default now (BS11-28).
+
 ## [G-11] MTG Arena set codes can differ from Scryfall
 
 **MTG Arena set codes can differ from Scryfall** (e.g. Arena `DAR` = Scryfall
@@ -819,6 +862,16 @@ failing at the exact gate the tail demands — `import_arena` even printed the w
 pointing at `make refresh`. The step now says `make refresh`, the one definition of the
 order this rule exists for; the gallery step that followed is folded into it.
 
+### Two more exception types escaped `_TRANSIENT` (BS11-25, 2026-10-02)
+
+Same shape as the Batch G pair. A non-UTF-8 body — a proxy's HTML error page — fails
+inside `json.load` with `UnicodeDecodeError` before any JSON is decoded, and that is a
+`ValueError`, not a `JSONDecodeError`. And `http.client.BadStatusLine` / `LineTooLong`
+come from `getresponse()`, which urllib does not wrap the way it wraps `request()`'s
+`OSError`. Both escaped as tracebacks past every caller's `except ScryfallUnavailable`.
+No data was lost (the rebuilders write atomically), but the clean abort and the retry
+were skipped. Both are in the tuple now, pinned by `tests/test_scryfall.py`.
+
 ## [G-15] The optional editing app (`scripts/app.py`) mutates `card-library.csv`
 
 **The optional editing app (`scripts/app.py`) mutates `card-library.csv`** via
@@ -851,6 +904,8 @@ Three findings from one live exercise of every mutating route (~80 requests, zer
   the add rollback): each did its own `mkstemp` + `os.replace` without the `copymode`
   that `lib.atomic_write` documents fixing, and `test_writer_mutations.py` pins the
   property on `lib.atomic_write` only. Masked locally because git ignores non-exec bits.
+
+**2026-10-02 (BS11-42/43/44/53) — the collection editor's other three writers.** BS8-18 gave Save a staleness token; Revert, Add and the legacy save body did not follow. **Revert** restored the newest `card-library.csv.*.bak` — whoever wrote it — with no token, so a page left open across `import_collection --apply` undid the import while still showing the pre-import state and calling it "the last save"; it now requires the page's `lib_token` (absent or stale → 409). It also restored the LIBRARY only, while Remove prunes a card's mana row with its last printing, so remove-then-revert brought the card back with no mana row and broke INV-02; `_restore_mana_rows` re-adds a blank row per restored name. **Add** stored the Set Code exactly as typed — Arena's `DAR`, or a typo — which saved with a success toast and failed INV-01b on the next `check_all` (BS8-19's deck hole, on the CSV side); it now aliases through `enrich.SET_ALIASES`, stores uppercase, and refuses a set no card-pool.csv printing carries. The **bare-list** save body, kept for a "cached pre-token page", skipped the token check entirely; nothing sends it, so it is refused. None of the four had fired on record.
 
 ## [G-16] `card-pool.csv` carries printed `Power` / `Toughness`
 
@@ -1078,6 +1133,17 @@ population with another, the very thing this change removes. But 4,887 against 5
 close: a Standard rotation can move the narrow build across the threshold in either
 direction, so read a narrow pool's bare keyword tags as unfiltered by default.
 
+### The fingerprint missed two inputs, and a blank one read as a match (BS11-26, 2026-10-02)
+
+`tags_for` strips reminder text with `lib.REMINDER_RE`, which had moved into lib.py, so a
+reminder-regex edit re-tagged the pool while the hash of `tag_synergies.py`'s bytes stayed
+the same; and `row_for`'s Legalities cell is joined from `POOL_FORMATS`. Both are hashed
+now. Separately, a run whose fingerprint could not be computed stamped `""`, and the next
+failure's `""` compared EQUAL — reuse forever, the opposite of the rule the function's own
+comment states. `read_stamp` now reads a blank third line as unknown (rebuild once), and
+an uncomputable current fingerprint counts as changed. The fingerprint VALUE changed with
+this fix, so the first `make refresh` after it rebuilds the pool once — expected.
+
 ## [G-19] `card-wishlist.csv` is UNOWNED craft targets
 
 **`card-wishlist.csv` is UNOWNED craft targets**, separate from the owned library
@@ -1169,6 +1235,13 @@ data (G-17) and stay yours to re-grade — `wishlist.py --rank` lists all 15.
 terminator). A scripted one-cell retarget written with `lineterminator='\n'` produced a
 164-insertion / 164-deletion diff; rewriting with the default terminator made it one line.
 `wishlist.py`'s `_write` already uses the default — route edits through it.
+
+**BS11-34 (2026-10-02) — `--target` and `--set` were SUBSTRING filters.** The Target cell
+holds deck ids (`14; 40a`), so `--target 4` matched every deck id containing a 4 — 14, 40a,
+54 — and `--set M` matched every set code with an M in it. `_target_tokens` now splits the
+cell on `;`/`,`, strips zero padding (G-82's `06` = `6`) and matches the requested ids as a
+token SET; `--set` compares the code exactly. `--note` stays a substring search on purpose —
+a note is prose, and a word inside it is exactly what you are looking for.
 
 ## [G-20] Auto-targeting a wishlist batch: trust STRONG, judge `review`
 
@@ -2057,6 +2130,8 @@ card that leaves Standard next year. A 2026-09-08 discoverability review first r
 omission as skill drift (G-53's shape) and was corrected by the owner. Recorded here because
 the rule's own imperative is what would make the next session "fix" it back.
 
+**2026-10-02 (BS11-13/14).** Under `--any-format` the filter format is the empty string, and `suggest --lands/--ramp/--interaction` took that as "no format, so no rotation" — 78-historic-brawl and every Standard deck alike lost the ⚠rot flag on exactly the run meant to widen the search. They fall back to the deck's own `#: format:` now. `suggest_lands`' copy limit had the same confusion the other way, reading `--format` instead of the deck. **Residual:** plain `suggest` (`suggest_scored`) still drops ⚠rot entirely under `--any-format`, now the one surface that differs from its siblings.
+
 ## [G-31] `deck.py suggest-homes <card>` automates the "which of my decks does this new card improve" fit 
 
 **`deck.py suggest-homes <card>` automates the "which of my decks does this new
@@ -2192,6 +2267,18 @@ It REPORTS and never re-scores, the protection-axis and count-confidence stance.
 worked case: Volley Veteran ("damage equal to the number of Goblins you control") read KEY
 for deck 39, a Humans/Equipment deck, on the `etb` tag alone — the count that decides the
 card is zero.
+
+**BS11-16 (2026-10-02) — the overlay gate passed BELOW the floor.** `structural_overlay_hit`
+tested `doubler_support(...)`, `cost_scale_support(...)` and `type_scale_support(...)` for
+truthiness, so one feeder cleared it — Delney passed in 114 of 114 decks and reached its
+floor in 0 — and the chosen-type branch tested a TUPLE, which is always true. The finding
+named the doubler branch; the other two were the same defect in the same function and were
+fixed with it. Each branch now clears only at the floor its own boost uses (doubler via
+`doubler_best`, which also applies the card's power restriction). Measured with `screen`'s
+inputs over every structural pool card × 114 decks: 305 of 2,035 KEY verdicts fell to
+role-player (doubler 120, cost-scale 132, chosen-type 51, both 2), deck 46's Elspeth (4
+token feeders, floor 5) among them. The KEY 18.6% → 10.2% figure above predates this.
+
 ## [G-32] `suggest-homes` reads CASTABILITY as an identity SUBSET — which says nothing about whether you c
 
 **`suggest-homes` reads CASTABILITY as an identity SUBSET — which says nothing about
@@ -2243,6 +2330,14 @@ band isolates the real class: 2 pips on **3–9** sources — Wonder Man on 3 re
 and Appa on 4 white, deck 21's black cards on 5, Overlord on 6, Elegy Acolyte on 8. The
 3+ band keeps 0.70 so its meaning is untouched, and a test pins that it is unchanged.
 
+**BS11-61 / BS11-67 (2026-10-02).** `cmd_mana` and `build_dashboard` each re-implemented
+the "which colour does this hybrid bind to" loop that `binding_pips` holds; they agreed when
+found, which is a property of that day. `hybrid_binding(h, sources)` is now the per-symbol
+rule all three call. Separately, `pip_depth_warning` chose the colour with the MOST pips and
+broke ties by the cost string's order, so `{W}{W}{U}{U}` off W15/U6 returned None while
+`{U}{U}{W}{W}` flagged U, and deck 73a's Aurelia (W-2 at 0.525) went unflagged. It now judges
+each colour against its own pip-count bar and returns the worst FAILING one (lowest P, then
+more pips, then name) — the choice `cmd_consistency`'s `worst_col` already made.
 
 ## [G-33] `suggest-homes` also weighs a DOUBLER against the deck's magnitude on its axis
 
@@ -2767,6 +2862,8 @@ pinned by its own test: `if not types` merges "any basic satisfies this" with "t
 not a checkland", and merging them would hand the generic cycle to the type check, where
 `need & basic_types` is empty for every deck and every checkland reads unconditional.
 
+**2026-10-02 (BS11-17) — "your commander's color identity" is not five colours.** Command Tower and its kin were read as any-colour lands, so a G/W/U Brawl deck counted a black and a red source it could never produce. `lib.land_production(commander=)` resolves the clause to the commander's colours (an EMPTY set — no commander — produces nothing, which is the rules answer; `None` keeps the old all-five read for callers that cannot know). `deck_source_profile` and `uncounted_mana_sources` take `deck_meta=`, passed by `mana`, `consistency` and the dashboard. **Residual:** `deck_color_sources` — what `pip_depth_warning` and the `suggest` recommenders read — and `wishlist._land_value` take no deck header, so they still read Command Tower as five colours.
+
 ## [G-36] `deck.py consistency <id>` is the PROBABILITY layer `mana` lacks
 
 **`deck.py consistency <id>` is the PROBABILITY layer `mana` lacks.** `mana` diagnoses
@@ -2790,6 +2887,14 @@ aid, not a guarantee (mulligans/scry/draw shift the real numbers) — it doesn't
 `check_all.py`. Pure math helpers (`hypergeom_at_least`, `cards_seen`, `cast_probability`,
 `min_sources_for`, `opening_land_stats`) are unit-tested in `tests/test_deck.py`.
 
+**BS11-68 / BS11-74 (2026-10-02).** The → note asked for `min_sources_for` on the worst
+colour alone, but `cast_probability` multiplies every colour's term, so following the advice
+could still leave the card under target (deck 30's Cuboid Colony at 83.9%), and a row whose
+colours each cleared the target ALONE printed nothing while jointly below it — 136 such rows
+roster-wide. `joint_source_plan` adds one source at a time to the colour with the lowest term
+until the product reaches target (reducing to `min_sources_for` for one colour) and returns
+None past the land count, which routes to the colour-hungry note. Every below-target row now
+has a note. Separately, `total or 60` labelled an empty file a "60-card deck"; it is refused.
 
 ## [G-37] `deck.py suggest --lands <id>` is the manabase RECOMMENDER `consistency` was missing
 
@@ -2984,6 +3089,10 @@ buried: Temple of Malice (FDN) was legal to ~2029 and the two adds run to ~2027 
 The transferable half: *a filter copied between two surfaces carries the assumption that
 justified it.* Skip-what-you-run encodes "one copy is enough", which is true of a spell
 and false of a land.
+
+**BS11-31 (2026-10-02).** Shocklands earned the untapped premium from 2026-09-04 but still
+printed the bare `·tapped?`, whose legend says "scored as tapped" — the marker contradicted
+the score beside it. They print `·shock` now, and the legend names it.
 
 ## [G-38] `deck.py suggest --ramp / --interaction / --needs` are the NEEDS model — the structural axes the
 
@@ -4894,6 +5003,20 @@ axes** — every accessor signature was off (`rank_cut_candidates` takes a deck 
 `tier_band` a vector, `_central_themes` theme weights), so all 113 decks fell into `except`.
 G-01's shape exactly. The rerun asserts >100 decks produced a real ranking before reporting.
 
+**BS11-41 (2026-10-02) — the pool-first fix reached the MODEL and missed two READERS.**
+BS9-01 flipped `load_card_meta` to pool-first, but `card.py` (the surface G-01 mandates
+before grading a card) and the gallery's synergy chips still printed the LIBRARY cell, so the
+card you inspected showed the stale tags while the recommenders scored the corrected ones.
+Both now read pool-first (`card.synergy_cell`, `build_gallery.load_pool_tags`, the latter
+registered in `check_dfc`'s aliased loaders since it keys pool names). Wiring a TENTH
+`check_agreement` pair (`_agree_card_synergies`) to hold `card.py` against `load_card_meta`
+immediately exposed a gap in the model itself: a library row stored under a DFC's FRONT name
+never picked up the pool row keyed `Front // Back`, so 10 cards across 8 decks (14, 34, 45,
+51, 52, 54, 55, 62) still fed the stale library tags. `load_card_meta` now applies a second
+front-name pass — only where no exact pool row exists, per G-63's never-in-pass rule. The
+gallery search also gained `tag:<name>` as an EXACT token match, so a chip for `tokens` no
+longer matched every `token`-substring card.
+
 ## [K-10] `tag_synergies.py` also text-tags MECHANICAL-SYNERGY payoffs the keyword map missed (tagging-mis
 
 **`tag_synergies.py` also text-tags MECHANICAL-SYNERGY payoffs the keyword map missed
@@ -5406,6 +5529,12 @@ pattern must also be in `CHEAPER_KW`.
 left alone; if a future card reads "creatures in your hand have impending 2—{1}", the grant
 path will not see it.
 
+**BS11-71 (2026-10-02).** Two corrections to this rule's own wording. "Priced at MV 1" was
+true only of a one-pip X spell: X counts as 0, so `{X}{R}{R}` books at 2 and 26 of the
+roster's 37 X cards booked above 1. `stats` now prints each card's booked MV and the
+advisories say "X counted as 0". And `x_cost_cards` scanned the stored cost, which covers
+both halves of a split card, so An Unexpected Party read as an X spell off its other half;
+it reads `front_face_cost` now (G-02).
 
 ## [G-61] Before dismissing a card, count the deck property its value depends on
 
@@ -5813,6 +5942,20 @@ WARNING. The set-code check is HARD because a code appearing in no card anywhere
 right, and because it was measured at **zero roster hits** first: a check that fails
 nothing today can safely be made hard.
 
+### A basic's set code, board lines, quantity 0, and a verbatim `--fix` (scan #11 Batch 2, 2026-10-02)
+
+- **Basics (BS11-04).** `printing_problems` skipped basics entirely, so `5 Forest (ZZZ) 193`
+  passed INV-04 and `resolve --check` while `resolve --fix` — which had its own basics
+  loop — proposed a correction for the same line. The SET-code half now applies to basics
+  (the collector-number half stays exempt), and `--fix`'s private loop is gone.
+- **Board and zero lines (BS11-05/73).** A pasted `Sideboard` block in a deck file was
+  counted as maindeck (65 cards, every gate green), and `0 Shock` passed INV-04 while
+  `consistency` priced it at 100% and `cuts` offered it as the top cut. Both are malformed
+  lines now; `parse_deck_file` also stops counting board lines.
+- **`resolve --fix` (BS11-11).** It rebuilt each line from parts — re-casing the name from
+  the index, dropping indentation, re-spacing the comment — and accepted any filesystem path
+  on `--apply`. It now replaces only the `(SET) #` span and writes a roster deck id only.
+
 ## [G-66] Nothing counted whether a deck holds targets for its own gated effects
 
 **The question no command answered.** A card whose text names a resource — "return target
@@ -5893,6 +6036,13 @@ family (`_TARGET_KEEP_REM` — `lib_type`, `basic_any`, `basic_named`), because 
 fetch rider is written ONLY in its reminder and a global strip would have deleted G-75's own
 worked example silently. And a generic "create a token that's a copy of that creature" is
 not counted, because what it copies is unknowable here.
+
+**BS11-70 (2026-10-02).** `target_counts` typed each card from the whole `Front // Back`
+line. A Saga that transforms into a creature counted as a creature card to return; an
+Adventure creature (`Creature // Sorcery — Adventure`) failed the permanent-card test; and an
+`Artifact // Land` read as a land and was skipped as a gate source. A card in a library or
+graveyard has only its front face's characteristics, so the type is the front face's now —
+the same reason `mv` already was. 67 gate counts moved across 18 decks.
 
 ## [K-14] A draw clause behind an activation cost was invisible to the role tally (fixed 2026-08-07)
 
@@ -6278,6 +6428,8 @@ All three normalize through `_norm_deck_id` now (`--target` also accepts the mul
 concept forms), `feedback` refuses an unknown deck by name, and `_status_label` /
 `_audit_target_issues` read padded ids. The transferable point: a validator written
 against the resolver's OLD form is exactly the drift this rule describes, one file over.
+
+**2026-10-02 (BS11-33) — accept the padded form, store the canonical one.** BS8-17 made `06` ACCEPTED by `parse_matches --add` / `--deck` and `wishlist --add --target`, but all three wrote the typed spelling, so a match logged as `06` and one logged as `6` were two rows in `--report`, and `load_match_counts` (keyed on the roster id) missed the padded one entirely. Each now maps the accepted id to its roster spelling before writing; the wishlist joins multiple targets with `; `. The BS8-17 test asserted the padded STORAGE and was split. 0 padded ids were live in either file.
 
 ## [G-68] A `#:` header that lists card names goes stale, and nothing checked one
 
@@ -6691,6 +6843,8 @@ it must not override an explicit dark choice.
 115-option deck picker), `syncLive` stores the payload before it claims success (P-05), and
 the deck editor guards unsaved changes (P-08).
 
+**2026-10-02 (BS11-45/47/48/52/53) — the generated page again.** The dashboard toast was not a live region (the editor templates' toasts were, and the pin read templates/ only), so every result was visual-only for 1.7s; it is pinned at the generator source now. `COLBG`/`COLFG` were dark-theme HEX constants painted through inline styles — the deck pie, the roster colour bars, an "on" colour chip — so they bypassed the `--W…--Cc` light tokens (the BS6-02 class, through `style=` rather than a stylesheet, which the token gate cannot see because no `var(--x)` was emitted); they are `var(--…)` strings now. `a11y()`'s keydown handled keys BUBBLED from a focusable child, so Enter on a leverage card's ↗ link toggled the card — it returns unless `e.target === node`. The variant-row `<button>` got the synthetic role and key handler a native control must not (the P-07 shape), and the "show all" row was a focusable `<td>` with no role or expanded state — it holds a `<button aria-expanded>` now.
+
 ## [G-73] A deck's repo name and its Arena name are different strings, and neither is authoritative
 
 **The measurement, 2026-08-14.** The name-prefix attribution route (`"07 Earth's
@@ -6818,6 +6972,7 @@ only; the convention is family-dir plus variant-suffix (`54-grand-lotus/54b-come
 "Grand Lotus — Comet"), NOT slug-equals-name, so a variant file is slugged on its
 distinguishing half alone.
 
+**2026-10-02 (BS11-37/38) — two misses in the rename plan.** The comparison keyed both sides with `_name_key`, which drops ANY trailing parenthetical; that is right for the repo's premise gloss and wrong when Arena wrote the parenthetical, so "Foo (old)" → "Foo (new)" keyed `foo` both times and was never proposed. `_rename_key(name, current)` strips only the current name's own gloss. And `_adopted_name`'s repeated-parent strip compared letters-only keys, so parent "Dino" matched the front of "Dinosaur Party" and the variant would have adopted "Dino — saur Party"; a cut that falls inside a word is no longer a repeated parent. Neither fired on the live roster. **Residual:** the rename WARNING path still keys on `_name_key`, so it misses the same Arena-side parenthetical change.
 
 ## [G-74] The result lines cannot see what you faced or why you lost; the play-by-play sees most of it — a phone game, nothing
 
@@ -6976,6 +7131,8 @@ measurement on that paste rather than from a guess:
 
 Residual: a paste restricted to a period when only an OLD copy was played would move the
 header back to that copy. Attribution is unaffected, because every copy resolves by name.
+
+**2026-10-02 (BS11-32/35/36) — the void round-trip.** `void=no` restored a result GUESSED from the game score (W if more game wins, else L), which inverts a match conceded in game one of a best-of-three and cannot read a blank score at all; it also silently accepted `void=no` on a row that was never voided. The void now writes the result it replaces into the note (`void (was L): <why>`), restores exactly that, keeps the ORIGINAL on a re-void, and refuses — with a warning, the row's other fields still applied — a never-voided row or a legacy `void: ` note whose score is tied. Voided rows also left three tallies: `--report` created the per-deck bucket before skipping them (a voided-only deck read 0-0-0), the loss-reason tally counted a voided loss's `why=`, and `deck.swap_outcomes` counted it as a game, so deck 17's `feedback` read 3 games against `audit`'s 2 — the one instance live in the record. The post-ingest prompt had said a blank value "records nothing"; the tested contract is that it CLEARS, and the prompt and `/log-matches` say so now.
 
 ## [G-75] A tutor is worth the number of things it can find in THIS deck
 
@@ -7326,6 +7483,23 @@ set's cards before release, never from memory. After the date,
 `make refresh REFETCH=1` brings the set in, and the queued swaps are applied with
 `deck.py swap` like any other. Do not loosen `date<=now` to admit an early set: the bound
 exists because the pool's newest printing becomes the one `resolve` writes.
+
+### The release day itself: a CDN-cached search (2026-10-02, Reality Fracture)
+
+Reality Fracture's Scryfall date was 2026-10-02. `make refresh REFETCH=1` run that day
+fetched 15,761 cards — the pre-release count — while a hand `curl` of the same query read
+16,047. The difference was the URL ENCODING: Python's `urlencode` and curl's
+`--data-urlencode` produce different strings, Cloudflare caches per URL, and the response
+for the canonical `game:arena date<=now` URL was a `cf-cache-status: HIT` with
+`age: 33805` against `max-age=57600` — a 9-hour-old pre-release copy, good for 16 hours.
+Nothing failed: the pool was rebuilt byte-for-byte as it was, `check_all` was green, and
+the only symptom was that the new set's cards were not there. The pool was fetched with
+`--query "date<=now game:arena"` (same semantics, different URL, a cache miss), and the
+stamp records that query, so the next `make refresh` refetches once on the canonical URL.
+**Lesson: on a set's release day, check the pool count, or that a known new card is in
+it, after the refresh — do not trust the step announcing itself** (K-10's lesson, one
+cause over). A tooling fix (a cache-busting parameter, or a post-fetch "newest Released
+vs today" check) is not built.
 
 ## [G-80] A card that grants a keyword is a card about that keyword
 
@@ -8086,3 +8260,63 @@ suite (1,995 tests) exits 0 under the guard: no other test writes repo data.
 will fail the run, and that is correct (it is the 2026-09-20 "no source edits mid-suite"
 rule extended to data). If it fires: `git checkout -- <file>`, delete the new `.bak`, and
 give the offending test a fixture that repoints the path.
+
+## [K-17] The tagger invented tribes and split every type theme into two spellings
+
+**Found by scan #11 (BS11-75…79), fixed 2026-10-02.**
+
+**Invented tribes.** `_TRIBAL_PAYOFF_RES` captured `([A-Z][a-z]+)s you control`, i.e. the
+plural minus one `s`. That is right for Knights and wrong for every other plural shape:
+Elves → `Elve` (19 pool tags), Werewolves → `Werewolve` (8), Heroes → `Heroe` (8), Allies →
+`Allie` (6), Dwarves → `Dwarve` (4) — 97 tags on 38 words that are not types, plus capitals
+that are not types at all (`Equipped`, `Nontoken`, `Then`). The cost ran both ways: the junk
+tag shared a theme with nothing, and the real tribe was missing from exactly the payoff
+cards (Tyvar Kell, Voja, Allied Teamwork, Sokka's Charge, Immerwolf, Avengers Assemble!).
+G-83 had fixed the identical singularisation bug in `deck.cost_scale_resource` a month
+earlier; the fix reuses its shape — candidates (ies→y, ves→f/fe, es, s) checked against the
+REAL type list, so a wrong guess fails to match instead of minting a type. The list is
+Scryfall's creature / land / artifact / enchantment subtype catalogs, single-word entries,
+embedded in `tag_synergies.py` so `build_pool`'s tagger fingerprint (G-18) re-derives the
+pool when it changes. Follow-on the same day: same-form plurals (`Merfolk you control`,
+26 pool cards' worth of text) and Mice/Oxen never reached the resolver because the template
+demanded an `s` — 5 cards gained their tribe. `check_keywords.unknown_subtypes()` is the
+list's falsifier (0 unknown today; soft, since a new set is a data refresh — G-69).
+Library rows kept 20 junk tags after the rebuild because `--merge` only adds (K-09); they
+were removed by name in the same commit.
+
+**Two spellings per theme.** Type-line and `_TYPE_MATTERS` tags are Title-case
+(`Equipment`), the theme rules lowercase (`equipment`), and `tags_for` de-duplicated
+case-SENSITIVELY. Every consumer compares case-sensitively too, so 1,358 pool cards carried
+both and double-counted the theme (deck 38: `Equipment 30` beside `equipment 23`), while a
+card carrying only one spelling shared nothing with a card carrying only the other.
+`--merge` de-duplicated case-insensitively, so library and pool also disagreed.
+`canonical_tags` maps every tag to ONE spelling — the lowercase theme vocabulary
+(`MECHANIC_RULES` names + `KEYWORD_THEMES` values) wins — and is applied at the end of
+`tags_for` and to `--merge`'s kept tags. Eight collisions existed: Equipment, Aura, Saga,
+Vehicle, Planeswalker, Food, Clue, Treasure.
+
+**Three rule guards, same batch.**
+- `blink` (BS11-76): 189 hits, ~37% false — 34 transform returns ("return it to the
+  battlefield transformed") and 28 earthbend reminders. Now reminder-stripped (quotes kept,
+  so a self-blink granted in quotes still counts) with a `(?! transformed)` guard: 130 hits,
+  and the flashback blinks whose reminder said "graveyard" (Momentary Blink, Daydream) now
+  count.
+- `graveyard` (BS11-77): the crime definition, a Role token's upkeep rule and madness's
+  "or put it into your graveyard" minted the theme on ~70 cards that never use the zone. A
+  blanket reminder strip was measured first and REJECTED: 116 cards lost the tag, about 40
+  of them real (descend, retrace, explore, collect evidence on cards Scryfall does not
+  keyword). The fix strips only those three reminder families.
+- `burn` (BS11-79): "deals 1 damage to you" (Talismans, painlands, Ancient Tomb — 37 cards
+  whose only damage was that) is a cost. Inside quotes "you" is whoever received the ability
+  (Relic Robber's token), so a quoted damage clause still counts.
+
+**Roster diff (114 decks):** 0 tier floors moved (the floor reads role TEXT, not tags —
+G-80), `cuts` top-3 changed in 10, cut #1 in one (deck 37), central-theme sets in 18; 1,773
+pool tag cells changed. Deck 50a's `#: tier:` quoted 34 central themes against a live 33 and
+was re-grounded.
+
+**Residual, measured and left:** a SINGULAR reference — "Whenever a Dragon you control
+attacks", "a Samurai or Warrior you control" — is not captured. Widening the first template
+to singulars adds 492 pool tags across ~100 types, 59 of them `Army` from the amass reminder
+alone; that is a G-67 widening needing its own measured pass, not a follow-on fix.
+

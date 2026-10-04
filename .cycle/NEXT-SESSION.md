@@ -17,7 +17,23 @@ commands disagree.
 
 ---
 
-## 0-current. THE 2026-08-24 SESSION (READ THIS FIRST — supersedes §0-latest below)
+## 0-current. STATE STAMPS, 2026-08-24 → 2026-10-03 (READ THIS FIRST — supersedes §0-latest below)
+
+The heading used to read "THE 2026-08-24 SESSION" while the stamps under it ran to
+2026-10-01 (BS11-65). The NEWEST stamp is always the first one; each supersedes the
+stamps below it where they disagree.
+
+> **STATE STAMP, 2026-10-03 (NEWEST).** **Scan #11 is fully implemented**: all nine
+> batches (BS11-01…79, minus the two deferred below) landed on
+> `claude/epic-heisenberg-38ii7y`, each with a block in `.cycle/blocks/11-*` and a
+> `/sync-docs` pass. Measured roster impact across the scan: 0 tier floors moved.
+> **Deferred, deliberately:** BS11-80 and BS11-81. **Still the owner's, unchanged:** a
+> one-word reason for the three losses named in the 2026-10-01 stamp; the tier letters for
+> 55 / 60 / 78; whether Ajani / Liliana the Faultless / Ingris (deck 55) are owned. **New
+> for a person at a browser:** regression scenarios 20–23 (JS colours in light mode, the
+> nested ↗ link by keyboard, toast legibility, variant-row layout). Live pile doc:
+> `78-brawl-pile-analysis.md` only.
+
 
 > **STATE STAMP, 2026-10-01 (NEWEST — supersedes the stamps below where they disagree).**
 > 47 commits since PR #197, on `claude/sync-commands-mmmsdb`. Four threads.
@@ -48,14 +64,32 @@ commands disagree.
 > paste arrived anonymised with game lines. **Three new losses still need a reason** from
 > the owner (4061b76a deck 17, 06c655a7 and 99712739 deck 30) — never fill one in.
 >
-> **OPERATOR ACTION, after 2026-10-02:** Reality Fracture (FRA) is playable on Arena but not
-> in the pool until its Scryfall date (G-79's inverse). Run `make refresh REFETCH=1`,
-> catalog the owned FRA cards (`/ingest`), then apply the 13 queued swaps written in the
-> deck notes: deck 55 (Ajani Unrelenting for Team Avatar, Liliana the Faultless for Mardu
-> Devotee, Ingris Stingerquill for Zurgo's Vanguard) and deck 60 (ten, listed in its
-> `#: notes:` and `.cycle/60-redline-pile-analysis.md`). Re-run `tier --audit-rationale`
-> on both after.
+> **SCAN #11 (2026-10-01): 81 findings in nine batches; Batch 1 (ingest correctness, twelve
+> fixes) DONE 2026-10-02**, docs synced. The batch list and what is next live in
+> `.cycle/STATE.md` → Where I left off; the per-batch record is in `.cycle/blocks/11-*`.
+> The pool fingerprint changed in Batch 1, so the next `make refresh` rebuilds the pool once.
 >
+> **OPERATOR ACTION — PARTLY DONE 2026-10-02.** Reality Fracture (FRA) is now in the pool
+> (16,047 cards, from 15,761). **Deck 55's three FRA swaps are APPLIED** (Ajani Unrelenting,
+> Liliana the Faultless, Ingris Stingerquill), plus two owner-chosen land swaps (2nd Godless
+> Shrine → Shattered Sanctum, 2nd Sacred Foundry → Dedicated Commons); rationale audit
+> current, floor A. **Deck 60's ten FRA swaps are APPLIED too** (pile doc folded into its
+> notes and deleted); deck 60's floor now reads A against a claimed B — the owner's call.
+> The 21 FRA cards the owner said they hold, plus Chandra, Torch of Defiance (FRA), are
+> catalogued at 1 copy each (lower bounds). **STILL OPEN:** whether Ajani, Liliana the
+> Faultless and Ingris (deck 55) are owned — they read as crafts until an export says so.
+> **2026-10-03:** Liliana the Faultless is now OWNED (deck 80, Bloom Council, ingested as
+> fully owned — 27 new library rows, all its FRA cards); Ajani Unrelenting and Ingris remain open.
+> **TRAP found doing it:** Scryfall's search sits behind Cloudflare with `max-age=57600`
+> (16h), so on a set's release day `make refresh REFETCH=1` re-read a CACHED pre-release
+> response for the canonical `game:arena date<=now` URL (`cf-cache-status: HIT`, age 9.4h) and
+> silently rebuilt the old 15,761-card pool. The pool was fetched with the equivalent query
+> `date<=now game:arena` (a different URL, so a cache miss); `card-pool.build` records that
+> query, so the next `make refresh` refetches once on the canonical URL — after the cache
+> expires (~08:00 UTC 2026-10-02) that is harmless; before it, it would drop FRA again.
+> Verify the pool count after any release-day refresh. A cache-busting fix in `build_pool`
+> is not built.
+
 > **STATE STAMP, 2026-09-27, LATER (NEWEST — supersedes both stamps below on matches).**
 > **THE MATCH DIGEST IS BUILT; the 2026-09-25 stamp's "NOTHING IS BUILT" is history.**
 > PR #196 shipped `scripts/mtga_extract.sh` (the Mac's `~/mtga-logs/extract.sh`, embedded
@@ -100,7 +134,8 @@ commands disagree.
 > each `--audit-rationale` is current. The rewrite also corrected facts the audit could not
 > see: 42a and 47 are no longer unplayed (3-3 each, n=6) and 47 is fully owned; 42a's block
 > still said "Hero's Downfall stays" (cut long ago) and quoted a 2.91 curve against a live
-> 3.14. The match-digest Step 0 below is still waiting on the owner.
+> 3.14. (The match-digest Step 0 the 2026-09-25 stamp below waits on was RUN and the digest
+> BUILT — see the 2026-09-27 LATER stamp above. That stamp superseded this line.)
 >
 > **STATE STAMP, 2026-09-25.** One thing in flight: the **match digest** —
 > recording play/draw, mulligans, land drops and the opponent's cards from Arena's full
@@ -545,8 +580,9 @@ name an absent card.
 
 `.cycle/team-avatar-pile-analysis.md` was DELETED 2026-09-02, its contract satisfied — the
 swaps landed and its findings are folded into deck 78's 57 `#: notes:` lines. The other
-three working docs (prune, wylie-tap, hob-followup) are still live and still awaiting the
-user's calls. Standing items the user has explicitly deferred: the Endstone shell, Wylie
+three working docs (prune, wylie-tap, hob-followup) were DELETED 2026-09-23 at the owner's
+instruction with their proposals unapplied (CLAUDE.md → Session state; `git log
+--diff-filter=D -- .cycle/` recovers them) — the line that called them live predates that. Standing items the user has explicitly deferred: the Endstone shell, Wylie
 Variant B, the Army/amass deck, 26a near-mono-blue rebuild, deck 76 second-wave crafts, and
 the unexamined fit-pass leads (Innocuous Rat → 62, Graveshifter → 77, Carrot Cake → 42a,
 Fanatic of the Harrowing → 70, six deck 31 suitors). Deck 8 still carries a pre-existing

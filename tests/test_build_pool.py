@@ -98,6 +98,23 @@ class TestReadStamp:
         a = build_pool.tagger_fingerprint()
         assert a and a == build_pool.tagger_fingerprint()
 
+    def test_a_blank_fingerprint_line_is_unknown_not_a_match(self, tmp_path, monkeypatch):
+        """BS11-26: a failed fingerprint was stamped as "", which then compared equal to
+        the next failure's "" and reused the pool indefinitely."""
+        p = tmp_path / "s"
+        p.write_text("2026-07-01\ngame:arena\n\n")
+        monkeypatch.setattr(build_pool, "POOL_BUILD_STAMP", str(p))
+        assert build_pool.read_stamp() == ("2026-07-01", "game:arena", None)
+
+    def test_the_fingerprint_covers_the_reminder_regex(self, monkeypatch):
+        """BS11-26: `tags_for` strips reminder text with lib.REMINDER_RE, which lives in
+        lib.py — an edit there re-tags the pool and must defeat the reuse."""
+        import re
+        import lib
+        before = build_pool.tagger_fingerprint()
+        monkeypatch.setattr(lib, "REMINDER_RE", re.compile(r"\[[^]]*\]"))
+        assert build_pool.tagger_fingerprint() != before
+
     def test_age_is_computed_from_the_date(self):
         y = (datetime.date.today() - datetime.timedelta(days=3)).isoformat()
         assert build_pool.stamp_age_days(y) == 3
@@ -135,6 +152,12 @@ class TestFreshnessSkip:
         stamp — so treating unknown as "reuse" meant the fingerprint could never be
         recorded and no tag edit would ever defeat the reuse again. Unknown rebuilds."""
         _stamp(env["stamp"], 0, build_pool.QUERY_ALL, tags=None)
+        _run(env)
+        assert env["calls"] == [build_pool.QUERY_ALL]
+
+    def test_an_uncomputable_fingerprint_rebuilds(self, env):
+        _stamp(env["stamp"], 0, build_pool.QUERY_ALL)
+        env["mp"].setattr(build_pool, "tagger_fingerprint", lambda: "")
         _run(env)
         assert env["calls"] == [build_pool.QUERY_ALL]
 

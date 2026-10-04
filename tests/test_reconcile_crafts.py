@@ -185,6 +185,17 @@ class TestInputHygiene:
         out = capsys.readouterr().out
         assert "COULD NOT PARSE" in out and "Bruce Banner" in out
 
+    def test_deck_and_sideboard_copies_sum_and_headers_are_not_cards(self, world, capsys):
+        """BS11-24: a Bo3 export lists Deck and Sideboard copies separately; both draw
+        from the collection at once, so 2 + 2 proves 4. Line-by-line max() recorded 2
+        and reported the `Sideboard` header itself as an unparseable card line."""
+        rc.reconcile(["Deck", "2 Duress (M21) 96", "", "Sideboard", "2 Duress (M21) 96"],
+                     apply=True)
+        out = capsys.readouterr().out
+        assert "COULD NOT PARSE" not in out
+        row = next(r for r in _read_csv(world["LIB"]) if r["Card Name"] == "Duress")
+        assert row["Quantity Owned"] == "4"
+
     def test_pool_absent_card_is_skipped_loudly(self, world, capsys):
         rc.reconcile(["1 Not A Card (XXX) 1"], apply=True)
         out = capsys.readouterr().out

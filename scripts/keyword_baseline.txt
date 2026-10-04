@@ -4,6 +4,7 @@
 # `check_keywords.py --update-baseline` to acknowledge the current set.
 double
 eerie
+empower jace
 enchant
 exert
 ferocious
@@ -17,4 +18,3 @@ tiered
 transform
 treasure
 triple
-undying

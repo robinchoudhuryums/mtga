@@ -706,12 +706,19 @@ def _print_loss_prompt(losses, facts, names, out=print):
     The why column was empty on all 94 recorded losses: the fill-in step lived on the
     dashboard and in the skill's prose, and a paste that has just landed is the one moment
     the owner still remembers the game. The comment line carries the game details so the
-    question can be answered from it; a value left blank records nothing."""
+    question can be answered from it.
+
+    BS11-35: this text used to say "a blank value records nothing" while `--annotate`'s
+    documented, tested contract (log-matches Stage 1c, README) is that an empty value
+    CLEARS the field — the way a wrong annotation is fixed. On these rows the fields are
+    still empty, so a blank left in the template changes nothing; the wording now says
+    what the writer actually does, so the line is not reused against an annotated row
+    on the strength of a false promise."""
     if not losses:
         return
     out(f"\nWhy did the {len(losses)} new loss(es) happen? One word each — "
         f"{' / '.join(LOSS_REASONS)} — then run the lines through --annotate "
-        f"(a blank value records nothing):")
+        f"(a blank value CLEARS that field — on these new rows it is already empty):")
     for r in losses:
         mid = (r.get("Match ID") or "").strip()
         bits = [f"{r.get('Date') or '?'}  deck {r.get('Deck') or '?'}"]
@@ -1087,6 +1094,12 @@ def _adopted_name(arena_name, rec, parent_name):
         tail = rest
         while tail and _name_key(tail) != rk[len(pk):]:
             tail = tail[1:]
+        # …but only if the parent ends on a WORD boundary (BS11-38): the keys are
+        # letters-only, so parent "Dino" matched the front of "Dinosaur Party" and the
+        # adoption read "Dino — saur Party". A cut inside a word is not a repeated parent.
+        cut = len(rest) - len(tail)
+        if tail and cut and rest[cut - 1].isalnum() and tail[0].isalnum():
+            tail = ""
         rest = tail.lstrip(_VARIANT_SEPARATORS).strip() or rest
     out = f"{parent_name} — {rest}" if _name_key(rest) != pk else parent_name
     return (out + " " + gloss).strip() if gloss else out
@@ -1123,9 +1136,24 @@ def deck_name_plan(names):
         parent = records.get(rec.get("core") or "")
         adopted = _adopted_name(arena_name, rec, (parent or {}).get("name", ""))
         current = rec.get("name") or ""
-        if adopted and _name_key(adopted) != _name_key(current):
+        if adopted and _rename_key(adopted, current) != _rename_key(current, current):
             plan.append((did, rec["path"], current, adopted))
     return plan
+
+
+def _rename_key(name, current):
+    """`_name_key` for the rename test, stripping only the REPO's own gloss (BS11-37).
+
+    `_name_key` drops ANY trailing "(...)", which is right for the repo-side premise gloss
+    and wrong when the "(...)" came from ARENA: "Foo (old)" → "Foo (new)" keyed "foo" on
+    both sides and the rename was invisible. `_adopted_name` re-appends the current name's
+    gloss, so removing exactly that gloss (when present) leaves Arena's words — including
+    any parenthetical Arena itself wrote — to compare."""
+    g = _name_gloss(current)
+    s = (name or "").strip()
+    if g and s.endswith(g):
+        s = s[: -len(g)].strip()
+    return re.sub(r"[^a-z0-9]+", "", s.lower())
 
 
 def _write_deck_name(path, new_name):
@@ -1582,11 +1610,17 @@ def parse_manual(text, existing_ids=(), deck_ids=None, today=None):
         if result not in ("W", "L", "D"):
             warnings.append(f"line {lineno}: result {parts[1]!r} is not W, L or D — skipped")
             continue
-        if deck_ids is not None and _norm_id(deck) not in {_norm_id(x) for x in deck_ids}:
-            warnings.append(f"line {lineno}: no deck {deck!r} in decks/ — skipped. An "
-                            f"unknown id would appear in --report as a deck that does "
-                            f"not exist.")
-            continue
+        if deck_ids is not None:
+            _canon = {_norm_id(x): x for x in deck_ids}
+            if _norm_id(deck) not in _canon:
+                warnings.append(f"line {lineno}: no deck {deck!r} in decks/ — skipped. An "
+                                f"unknown id would appear in --report as a deck that does "
+                                f"not exist.")
+                continue
+            # WRITE the canonical id, not the spelling typed (BS11-33): it was validated
+            # normalised and stored as typed, so `06` and `6` became two record rows and
+            # every by-deck count (`load_match_counts`, `swap_outcomes`) missed the first.
+            deck = _canon[_norm_id(deck)]
         kv, bad = {}, False
         for tok in rest:
             if "=" not in tok:
@@ -1978,22 +2012,41 @@ def parse_annotations(text):
     return out, warnings
 
 
-def _void_fields(row, why):
-    """The column changes `void=<why>` (or `void=no`) makes to one row.
+_VOID_NOTE_RE = re.compile(r"^void(?: \(was ([WLD])\))?: ")
 
-    Voiding sets Result to VOID and puts the reason at the front of Note; restoring
-    re-derives W/L/D from the row's own game score — the fact the log wrote, which
-    nothing here edits — and takes the reason back out."""
+
+def _void_fields(row, why):
+    """The column changes `void=<why>` (or `void=no`) makes to one row, or None when the
+    change must be REFUSED.
+
+    Voiding sets Result to VOID and records the reason AND the result it replaced at the
+    front of Note (`void (was W): afk`); restoring puts that result back and takes the
+    reason out. Restoring used to re-derive W/L/D from Games Won/Lost (BS11-32), which are
+    BLANK on every hand-entered row and 0-0 on 44 log rows — so W → void → restore came back
+    a D, and `void=no` on a row that was never voided rewrote its W to D. Now: a row that
+    is not VOID is refused, and a legacy `void: …` note (no recorded result) restores from
+    the game score only when that score can decide — 0-0 is refused, never guessed."""
     note = (row.get("Note") or "").strip()
-    if note.startswith("void: "):                 # an earlier void reason is replaced
+    m = _VOID_NOTE_RE.match(note)
+    was = m.group(1) if m else None
+    if m:                                         # an earlier void reason is replaced
         note = note.split(" · ", 1)[1] if " · " in note else ""
     if why.lower() in _UNVOID:
-        try:
-            won, lost = int(row.get("Games Won") or 0), int(row.get("Games Lost") or 0)
-        except ValueError:
-            won = lost = 0
-        return {"Result": "W" if won > lost else "L" if lost > won else "D", "Note": note}
-    return {"Result": VOID, "Note": f"void: {why}" + (f" · {note}" if note else "")}
+        if (row.get("Result") or "").strip().upper() != VOID:
+            return None
+        if not was:
+            try:
+                won, lost = int(row.get("Games Won") or 0), int(row.get("Games Lost") or 0)
+            except ValueError:
+                won = lost = 0
+            if won == lost:
+                return None
+            was = "W" if won > lost else "L"
+        return {"Result": was, "Note": note}
+    cur = (row.get("Result") or "").strip().upper()
+    prior = was if cur == VOID else cur           # re-voiding keeps the ORIGINAL result
+    tag = f"void (was {prior})" if prior in ("W", "L", "D") else "void"
+    return {"Result": VOID, "Note": f"{tag}: {why}" + (f" · {note}" if note else "")}
 
 
 def annotate(text, out=MATCHES_CSV, apply=False):
@@ -2017,7 +2070,17 @@ def annotate(text, out=MATCHES_CSV, apply=False):
             continue
         fields = dict(fields)
         if "_void" in fields:
-            fields.update(_void_fields(row, fields.pop("_void")))
+            _why = fields.pop("_void")
+            _vf = _void_fields(row, _why)
+            if _vf is None:
+                eprint(f"WARN:  {mid[:8]}: void={_why} refused — the row is "
+                       + ("not voided" if (row.get("Result") or "").upper() != VOID
+                          else "voided with no recorded result and a tied game score")
+                       + "; the rest applied.")
+                if not fields:
+                    continue
+            else:
+                fields.update(_vf)
         if fields.get("Loss Reason") and (row.get("Result") or "").upper() != "L":
             eprint(f"WARN:  {mid[:8]}: why={fields['Loss Reason']!r} on a "
                    f"{row.get('Result')} — dropped, the rest applied.")
@@ -2141,7 +2204,9 @@ def _print_manual_axes(rows):
     why = {}
     for r in rows:
         v = (r.get("Loss Reason") or "").strip()
-        if v:
+        # A reason counts only on a LOSS that still counts (BS11-36): a voided loss kept
+        # its why= and still swelled the tally the report says is "your losses".
+        if v and (r.get("Result") or "").strip().upper() == "L":
             why.setdefault(v, []).append(r.get("Deck") or "?")
     if why:
         total = sum(len(v) for v in why.values())
@@ -2218,11 +2283,13 @@ def report(rows):
         # same misreading that put an `Avatar_Basic_*` value in a column called "Course
         # ID" in the first place. With no Arena deck the honest bucket is "unknown".
         key = r.get("Deck") or f"(unattributed: {r.get('Arena Deck') or 'deck unknown'})"
-        b = by.setdefault(key, {"W": 0, "L": 0, "D": 0})
         res = (r.get("Result") or "").strip().upper()
         if res == VOID:
+            # Before the bucket is created (BS11-36): a deck whose only match was voided
+            # printed a 0-0-0 row, i.e. a deck "played" in a table that counts matches.
             voided.append((key, r.get("Date") or "?", r.get("Note") or ""))
             continue
+        b = by.setdefault(key, {"W": 0, "L": 0, "D": 0})
         if res not in ("W", "L", "D"):
             unreadable.append((key, r.get("Date") or "?", r.get("Result") or ""))
             continue
@@ -2349,7 +2416,10 @@ def main():
     # id for exactly that reason (G-74); the log path that tags every row did not (BS8-23).
     if getattr(args, "deck", None):
         _known = deck_ids()
-        if _known and _norm_id(args.deck) not in {_norm_id(x) for x in _known}:
+        _canon = {_norm_id(x): x for x in _known}
+        if _known and _norm_id(args.deck) in _canon:
+            args.deck = _canon[_norm_id(args.deck)]   # canonical id written (BS11-33)
+        if _known and _norm_id(args.deck) not in _canon:
             eprint(f"--deck {args.deck!r}: no deck with that id in decks/. "
                    f"An unknown id would appear in --report as a deck that does not exist.")
             return 1

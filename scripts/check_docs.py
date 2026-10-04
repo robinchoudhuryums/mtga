@@ -357,7 +357,7 @@ def _live_figures():
                 nonland_decks += 1
         powers.sort()
         median = powers[len(powers) // 2] if powers else 0
-        _board_cache["v"] = (median, unknown_decks, nonland_decks)
+        _board_cache["v"] = (median, unknown_decks, nonland_decks, len(powers))
         return _board_cache["v"]
 
     def _pool_tag(tag):
@@ -529,12 +529,22 @@ def _live_figures():
         # one is not.
         ("G-86 roster median board power",
          r"p10 37 / \*\*p50 (\d+)\*\*", lambda: _board_counts()[0]),
+        # The DENOMINATORS are wildcards in the numerator patterns and registered as their
+        # own figures (BS11-59) — G-85's lesson, unapplied here: a literal `of 112` meant the
+        # numerators could match while the roster they were counted over had grown to 114,
+        # and correcting the denominator would have killed the numerator's pattern.
         ("G-86 decks with an unknown-power creature",
-         r"no corner case — \*\*(\d+) of 112 decks\*\* hold one",
+         r"no corner case — \*\*(\d+) of \d+ decks\*\* hold one",
          lambda: _board_counts()[1]),
+        ("G-86 roster walked",
+         r"no corner case — \*\*\d+ of (\d+) decks\*\* hold one",
+         lambda: _board_counts()[3]),
         ("G-35 decks with an uncounted nonland mana source",
-         r"NOT in the counts above` \(\*\*(\d+) of 112 decks\*\*\)",
+         r"NOT in the counts above` \(\*\*(\d+) of \d+ decks\*\*\)",
          lambda: _board_counts()[2]),
+        ("G-35 roster walked",
+         r"NOT in the counts above` \(\*\*\d+ of (\d+) decks\*\*\)",
+         lambda: _board_counts()[3]),
         # ── Added 2026-09-17. Before this the registry held 14 entries against roughly 40
         # LIVE claims in CLAUDE.md (the other ~1,100 numeric tokens are dated history,
         # which cannot rot). Every entry below is a number the file cites as EVIDENCE that
@@ -594,6 +604,11 @@ def figure_drift():
 
 
 def main():
+    # `--help` prints this module's docstring and exits (BS11-56): the gates took no
+    # arguments, so `--help` was ignored and the CI smoke step ran every gate in full.
+    if any(a in ("-h", "--help") for a in sys.argv[1:]):
+        print(__doc__)
+        return 0
     errs = check()
     for e in errs:
         print(f"FAIL: {e}")

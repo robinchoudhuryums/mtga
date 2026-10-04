@@ -11,6 +11,7 @@ Aang, at the Crossroads // Aang, Destined Savior
 Absorbing Man
 Accumulate Wisdom
 Aerial Doombot
+Aerid Konstrari
 Agent Phil Coulson
 Agents of HYDRA
 Agrus Kos, Spirit of Justice
@@ -88,6 +89,7 @@ Collector's Vault
 Colossification
 Corrupt Court Official
 Crashing Wave
+Craterclaw Colossus
 Craterhoof Behemoth
 Crow of Dark Tidings
 Cruelclaw's Heist
@@ -116,6 +118,7 @@ Dori, Bearer of Friends
 Doubling Season
 Dracogenesis
 Draconautics Engineer
+Draconic Visitor
 Dragon Fodder
 Dragonback Lancer
 Dragoon's Wyvern
@@ -169,6 +172,7 @@ Gangly Stompling
 Gas Guzzler
 Gastal Raider
 Gather the White Lotus
+Germinate Recruits
 Germination Practicum
 Ghalta, Primal Hunger
 Ghired, Mirror of the Wilds
@@ -188,6 +192,7 @@ Groundchuck & Dirtbag
 Group Project
 Growth Curve
 Guidelight Matrix
+Guiding Hydra
 Hama, the Bloodbender
 Hauntwoods Shrieker
 Hawkeye, Master Marksman
@@ -206,6 +211,7 @@ How to Start a Riot
 HYDRA Troopers
 Hymn of the Faller
 I Am Iron Man
+Identity Echo
 Iguana Parrot
 Improvisation Capstone
 Ingenious Leonin
@@ -346,7 +352,9 @@ Rockalanche
 Rough Rhino Cavalry
 Rustler Rampage
 Salvation Swan
+Samut, Hazoret's Champion
 Sanar, Innovative First-Year
+Sandstorm Salvager
 Savage Land Dinosaur
 Savage Ventmaw
 Scarlet Spider, Ben Reilly
@@ -389,6 +397,7 @@ Starry-Eyed Skyrider
 Stegron the Dinosaur Man
 Stickytongue Sentinel
 Stingerback Terror
+Stingerquill Voxmancer // Vicious Verse
 Stony-Voiced Goblins
 Sultai Devotee
 Sun Warriors
@@ -404,8 +413,10 @@ Tapestry Warden
 Taskmaster, Mercenary Mimic
 Team Tactics
 Temporal Intervention
+Tenured Tethermage
 Terra, Magical Adept
 Terrapact Intimidator
+Tetsuko Umezawa, Pursuer
 The Boulder, Ready to Rumble
 The Cave of Two Lovers
 The Final Days
@@ -426,6 +437,7 @@ Thunderous Velocipede
 Tidings of War
 Tiger-Dillo
 Time Stop
+Tomik, Izzet Sparkmage
 Toph, the Blind Bandit
 Topiary Lecturer
 Transit Mage
@@ -444,6 +456,7 @@ Unstoppable Plan
 Unstoppable Slasher
 Vastlands Scavenger // Bind to Life
 Venomized Cat
+Verdant Kraken
 Veteran Ice Climber
 Virulent Silencer
 Virus Beetle
@@ -460,15 +473,18 @@ Water Tribe Rallier
 Waterbender Ascension
 Waterwind Scout
 Waxen Shapethief
+Way of the Wildspeaker
 Weapons Vendor
 Web-Warriors
 Welcome to Sweettooth
+Whiplash Wordsmith // Vicious Verse
 Whirlwing Stormbrood
 Whirlwing Stormbrood // Dynamic Soar
 White Tiger, Ava Ayala
 Wisecrack
 Wonder Man, Hollywood Hero
+Woodwork Prodigy // Soul Tether
 Y'shtola Rhul
+Yoshimaru, Beloved Companion
 Zog, Triceraton Castaway
-Zurgo's Vanguard
 Zurgo, Thunder's Decree

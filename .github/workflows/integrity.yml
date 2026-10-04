@@ -20,8 +20,8 @@ jobs:
           python-version: "3.11"
       - name: Run integrity check (validate + invariants)
         run: python3 scripts/check_all.py
-      # CLI smoke test. check_all.py imports deck as a MODULE and calls cmd_* directly,
-      # so it never builds an argparse tree — which is how a bare `%` in one help string
+      # CLI smoke test. check_all.py imports deck as a MODULE and calls its MODEL
+      # functions (no cmd_* at all), so it never builds an argparse tree — which is how a bare `%` in one help string
       # took `deck.py --help` down for four days with every workflow green (F-01/F-12).
       # tests/test_cli.py covers this properly, but it needs pytest and this workflow is
       # deliberately dependency-free and runs on EVERY push (not just main + PRs), so a

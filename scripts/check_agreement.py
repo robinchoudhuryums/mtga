@@ -517,9 +517,55 @@ def _agree_avg_mv(errs):
                     f"one question ({len(bad)} deck(s)).\n    " + "\n    ".join(bad[:6]))
 
 
+def _agree_card_synergies(errs):
+    """QUESTION: what themes does this OWNED card have — as `card.py` prints it?
+
+    A: `card.synergy_cell(library row, pool row)` — the line `card.py` shows, the surface
+       G-01 makes the mandated read before grading a card.
+    B: `deck.load_card_meta()[name]["synergies"]` — what every theme model scores on.
+
+    `_agree_synergy_store` holds the MODEL to the pool; nothing held the DISPLAY to the
+    model, and `card.py` read the library first while the model read the pool first, so
+    216 owned cards printed tags the model had dropped (broad-scan BS11-41). Both now read
+    pool-first with a blank pool cell falling back to the library.
+    """
+    import card as cardmod
+    meta = deck.load_card_meta()
+    if not meta:
+        errs.append("WARN: the card.py synergy pair did not run — load_card_meta returned "
+                    "nothing, so the display-vs-model tag agreement is UNVERIFIED.")
+        return
+
+    def _first_by_name(path):
+        out = {}
+        with open(path, newline="", encoding="utf-8") as fh:
+            for r in csv.DictReader(fh):
+                nl = (r.get("Card Name") or "").strip().lower()
+                if nl and nl not in out:
+                    out[nl] = r
+        return out
+
+    lib_rows = _first_by_name(deck.DEFAULT_CSV)
+    pool_rows = _first_by_name(deck.POOL_CSV)
+    pool_front = {}
+    for nl, r in pool_rows.items():
+        pool_front.setdefault(nl.split(" // ")[0], r)
+    bad = []
+    for nl, lr in lib_rows.items():
+        pr = pool_rows.get(nl) or pool_front.get(nl.split(" // ")[0])
+        shown = [t.strip() for t in cardmod.synergy_cell(lr, pr).split(";") if t.strip()]
+        model = (meta.get(nl) or {}).get("synergies")
+        if model is not None and shown != model:
+            bad.append(f"{lr.get('Card Name')}: card.py {shown} vs model {model}")
+    if bad:
+        errs.append(f"card.py prints different synergy tags than the model scores on for "
+                    f"{len(bad)} owned card(s):\n    " + "\n    ".join(bad[:6]))
+
+
 PAIRS = (_agree_weakest_cut, _agree_legality, _agree_owned,
          _agree_interaction, _agree_power_seed, _agree_role_fillers,
-         _agree_buildability, _agree_synergy_store, _agree_avg_mv)
+         _agree_buildability, _agree_synergy_store, _agree_avg_mv,
+         _agree_card_synergies)
 
 
 def check():
@@ -536,6 +582,11 @@ def check():
 
 
 def main():
+    # `--help` prints this module's docstring and exits (BS11-56): the gates took no
+    # arguments, so `--help` was ignored and the CI smoke step ran every gate in full.
+    if any(a in ("-h", "--help") for a in sys.argv[1:]):
+        print(__doc__)
+        return 0
     errs = check()
     for e in errs:
         print(f"FAIL: {e}")

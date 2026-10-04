@@ -196,6 +196,8 @@ _ALIASED_LOADERS = (
     ("card", "_owned_index", None, lambda full, front: (_library_rows(),)),
     ("verify_ingest", "library_index", 0),
     ("wishlist", "owned_index", None),
+    # BS11-41: the gallery's pool-first synergy tags (a non-blank-only name index).
+    ("build_gallery", "load_pool_tags", None),
 )
 
 
@@ -538,6 +540,11 @@ def check():
 
 
 def main():
+    # `--help` prints this module's docstring and exits (BS11-56): the gates took no
+    # arguments, so `--help` was ignored and the CI smoke step ran every gate in full.
+    if any(a in ("-h", "--help") for a in sys.argv[1:]):
+        print(__doc__)
+        return 0
     errs = check()
     if errs:
         print("DFC ownership-join sanity: FAIL")

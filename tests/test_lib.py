@@ -327,6 +327,26 @@ class TestWriteRows:
         # ...and the file is untouched.
         assert "Legalities" in p.read_text(encoding="utf-8").splitlines()[0]
 
+    def test_an_older_prefix_of_the_same_schema_may_be_rebuilt(self, tmp_path):
+        """BS11-21: a pool built before Power/Toughness existed was refused by its own
+        builder ("would DROP columns") — the rebuild G-21 tells you to run."""
+        pool_header = ["Card Name", "Type", "Card Text", "Color(s)", "Synergies",
+                       "Set Code", "Collector #", "Rarity", "Legalities", "Released",
+                       "Power", "Toughness"]
+        old = tmp_path / "card-pool.csv"
+        old.write_text(",".join(pool_header[:10]) + "\n", encoding="utf-8")
+        assert lib.csv_schema_error(str(old), pool_header) is None
+        # ...but the library beside it is still refused by the pool writer, and the
+        # pool by a library writer (they diverge at column 8).
+        library = tmp_path / "card-library.csv"
+        library.write_text(",".join(lib.HEADER) + "\n", encoding="utf-8")
+        assert lib.csv_schema_error(str(library), pool_header)
+        assert lib.csv_schema_error(str(old))
+        # ...and a one-column file that happens to share the first name.
+        stub = tmp_path / "stub.csv"
+        stub.write_text("Card Name\n", encoding="utf-8")
+        assert lib.csv_schema_error(str(stub), pool_header)
+
     def test_allows_missing_empty_and_matching_targets(self, tmp_path):
         missing = tmp_path / "new.csv"
         assert lib.csv_schema_error(str(missing)) is None
@@ -514,6 +534,22 @@ class TestCollectionStamp:
                      encoding="utf-8")
         note = lib.collection_stamp_note(path=str(p))
         assert note and "45 days ago" in note
+
+    def test_a_non_object_stamp_degrades_to_never_not_a_crash(self, tmp_path):
+        """BS11-30: valid JSON that is not an object raised AttributeError past the
+        except — into every craft-cost surface that prints this note."""
+        p = tmp_path / "s.json"
+        p.write_text('["2026-01-01"]', encoding="utf-8")
+        note = lib.collection_stamp_note(path=str(p))
+        assert note and "never been exactly reconciled" in note
+
+    def test_a_future_dated_stamp_does_not_read_fresh(self, tmp_path):
+        """BS11-30: a negative age read as fresh forever."""
+        import datetime as dt, json
+        p = tmp_path / "s.json"
+        future = (dt.date.today() + dt.timedelta(days=400)).isoformat()
+        p.write_text(json.dumps({"reconciled": future}), encoding="utf-8")
+        assert lib.collection_stamp_note(path=str(p))
 
     def test_a_corrupt_stamp_degrades_to_never(self, tmp_path):
         p = tmp_path / "s.json"

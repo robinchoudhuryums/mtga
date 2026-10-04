@@ -1,0 +1,1 @@
+{ "name": "pile-tracker", "version": "0.1.0", "description": "Band above the prompt listing each live /pile-analysis working doc (.cycle/*-analysis.md) with its status, so a resumed session sees open pile work without asking", "types": "./types/index.d.ts" }

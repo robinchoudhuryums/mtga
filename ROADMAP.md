@@ -1,22 +1,27 @@
 # Roadmap — MTG Arena Card Library
 
-Regenerated 2026-08-19 with `/roadmap`. Grounded in measured state, not wishes.
+Regenerated 2026-08-19 with `/roadmap`; **currency pass 2026-10-03** (BS11-58 — state
+figures, item statuses and dead references brought current; the tiers' reasoning and
+ordering are still the 2026-08-19 regeneration's, so a full `/roadmap` run is the next
+step for re-PRIORITISING). Grounded in measured state, not wishes.
 Effort: S ≈ <2h, M ≈ ½–2 days, L ≈ 3+ days (one dev + Claude Code).
 
-State at regeneration: **2,368 library printings** · 16,067 pool rows · **113 deck files**
-(111 roster-counted, numbered through 74) · 34 `deck.py` subcommands · 14 model-sanity
-gates · **1,3xx tests in 30 files** · `check_all` green with ZERO soft warnings.
+State at the 2026-10-03 pass: **2,832 library printings** · 16,047 pool rows · **116 deck
+files** (114 roster-counted) · 35 `deck.py` subcommands · 13 model-sanity gates · ~2,100
+tests in 32 files · `check_all` green with 4 soft warnings.
 
-Two figures do most of the work below:
+- **Tier spread (claimed letters): A 44 / B 64 / C 2 / ungraded 4 — 53 PROVISIONAL.**
+- **`matches.csv` holds 213 matches**, 210 attributed across 50 decks; pooled 108-103-1.
+  The best per-deck row is n=16 against the floor of 20 — still no deck is readable alone.
+- Rotation exposure: **390** card-instances ~2026, 1,290 ~2027, 2,369 ~2028.
 
-- **Tier spread: A 39 / B 66 / C 4 / ungraded 6 — of which 55 are PROVISIONAL.** Every one
-  says the same thing in its file: unplayed. That count has GROWN (41 → 55) since the last
-  roadmap, because decks are being added faster than they are being played.
-- **`matches.csv` holds 58 matches** (15 → 58 on 2026-08-20, from one log ingest), 55
-  attributed across 23 decks; `--report` refuses a percentage under 20. The best per-deck
-  row is n=8 against a floor of 20. Pooled: 28-30, 48% (95% CI 36–61%).
-- Buildability: 66 decks fully owned, 45 craft-gated. Rotation exposure: **171**
-  card-instances ~2026, 693 ~2027, 1,715 ~2028.
+**Status of the items below at the 2026-10-03 pass** (each is also marked in place):
+DONE — the launchd log archive (Tier 1.2), the ownership FRESHNESS signal (Tier 2.4,
+`check_all.collection_freshness_soft` since 2026-09-20), the systems-map regeneration
+(Tier 2.5, 2026-09-03; header re-taken 2026-10-03). CLOSED WITHOUT AN ANSWER — the prune
+calls (Tier 1.3): `prune-analysis.md` was deleted 2026-09-23 at the owner's instruction.
+STILL OPEN — the tracker export (Tier 1.1: there is still no `collection-stamp.json`), the
+disagreement worklist (now baselined at 174), the outcome items, rotation, the meta-gate.
 
 ---
 
@@ -59,16 +64,20 @@ Stated because a roadmap that never records its own outcomes is a wishlist.
    precede any wildcard spend (G-10). **The reason it keeps slipping is worth naming: it is
    the only Tier 1 item that cannot be done by the tooling at all.** — **S, ~30m +
    operator export**
-2. **Install the launchd log archive.** The one item with a DEADLINE: `Player.log` is
+2. **[DONE by 2026-10-01 — the Mac's archive and `mtga-matches` run; the 2026-10-01 paste
+   arrived from it.]** **Install the launchd log archive.** The one item with a DEADLINE: `Player.log` is
    overwritten on every Arena launch, so every unextracted session is lost permanently —
    the 2026-07-27 match already is. Written but unverified on the owner's machine (this
    container is Linux; `launchctl` is untestable from it). Verify with
    `~/mtga-logs/snapshot.sh && wc -l ~/mtga-logs/arena.log`. — **S, ~30m, operator-only**
-3. **Make the keep/cut calls in `.cycle/prune-analysis.md`.** The roster is 111 decks
+3. **[CLOSED WITHOUT AN ANSWER 2026-09-23 — the analysis file was deleted at the owner's
+   instruction, proposals unapplied; `git log --diff-filter=D -- .cycle/` recovers it.]**
+   **Make the keep/cut calls in the (deleted) prune analysis.** The roster is 111 decks
    against Arena's 100-deck cap, so some decks in this repo cannot exist in the client at
    all. The analysis is finished and committed — card-overlap matrix, `similar` sweep,
    three-tier candidate list — and blocked on judgment, not work. — **S, ~2h once decided**
-4. **Read down the 138-entry disagreement worklist.** New this cycle: `check_roles --tags`
+4. **Read down the disagreement worklist** (138 entries at 2026-08-19; baselined at 174
+   today, K-09). New this cycle: `check_roles --tags`
    now lists every pool card the tagger calls `removal` while the classifier scores no
    interaction role. The known-legitimate classes are graveyard hate (the tagger's
    `"exile target"` substring) and self-shrinks. What is left is the next batch of
@@ -97,16 +106,19 @@ Stated because a roadmap that never records its own outcomes is a wishlist.
    of two. The restraint machinery already exists — `_MIN_SAMPLE`, Wilson intervals, and a
    pooled read that names the different question it answers — so this is a grouping key,
    not new statistics. — **M, 2–3d**
-3. **The October rotation pass.** 171 card-instances rotate ~2026 across 83 decks. Deck 28's
+3. **The October rotation pass.** 171 card-instances rotated ~2026 across 83 decks at
+   2026-08-19; **390** at the 2026-10-03 pass. Deck 28's
    flex block is the worked pattern (successors pre-named for its owned rotating cards);
    deck 28a has never had the pass. — **M, 3–5d**
-4. **An ownership FRESHNESS signal.** New this cycle, and the structural half of Tier 1.1:
+4. **[DONE 2026-09-20 — `check_all.collection_freshness_soft` plus the stamp note every craft
+   surface prints.]** **An ownership FRESHNESS signal.** New this cycle, and the structural half of Tier 1.1:
    a stamp recording when `import_collection.py` last ran, surfaced as an age warning on
    the three surfaces that spend wildcards (`wildcards`, `wishlist --budget`, `tier --to`).
    It cannot make the data correct, but it makes the premise VISIBLE — the same move
    `card-pool.build` already makes for pool staleness, and the reason a four-cycle-old
    deferral is currently invisible at the point of decision. — **S/M, 1d**
-5. **Regenerate `docs/systems-map.md`.** Measured 2026-07-29 against 64 decks and 1,853
+5. **[DONE 2026-09-03 — regenerated; header figures re-taken 2026-10-03.]** **Regenerate
+   `docs/systems-map.md`.** Measured 2026-07-29 against 64 decks and 1,853
    cards; the roster is now 111 and 2,368. Its reconciliation-point inventory — every place
    a human must settle two answers by hand — is the most load-bearing doc in the repo and
    is aging on stale figures. Its measured agreement RATES are the part most at risk: this

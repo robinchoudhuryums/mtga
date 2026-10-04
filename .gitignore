@@ -33,3 +33,7 @@ credentials*.json
 # because it is machine- and run-specific, not a record anyone should review in a diff.
 .cycle/atomic-writes.log
 .cycle/atomic-writes.log.1
+
+# Claude Code mods: engine-generated type declarations (laid on each load)
+tools/mods/*/.claude-plugin/types/
+tools/mods/*/tsconfig.json

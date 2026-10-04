@@ -303,6 +303,13 @@ class TestAddStampsTargetAndNote:
         wishlist.cmd_add(batch, target="6")
         assert wishlist.load_wishlist()[0]["Target"] == "42"
 
+    def test_a_padded_target_is_written_canonical(self, tmp_path, monkeypatch):
+        """BS11-33: `--target 06` was accepted and stored as "06", which no exact-id
+        reader of the Target column (the dashboard join, `--target` itself) matches."""
+        batch = self._world(tmp_path, monkeypatch)
+        assert wishlist.cmd_add(batch, target="06, 21") == 0
+        assert wishlist.load_wishlist()[0]["Target"] == "6; 21"
+
     def test_add_without_the_flags_is_unchanged(self, tmp_path, monkeypatch):
         batch = self._world(tmp_path, monkeypatch)
         assert wishlist.cmd_add(batch) == 0
@@ -768,3 +775,35 @@ class TestShocklandEarnsTheUntappedPremium:
                 == wishlist._land_value(self._l(self.FLAT), three))
         assert (wishlist._land_value(self._l(self.BOARD_COND), three)
                 < wishlist._land_value(self._l(self.SHOCK), three))
+
+
+class TestFiltersAreTokenNotSubstring:
+    """BS11-34: `--target 6` substring-matched decks 16, 26, 36, 60 and 66 as well, and
+    `--budget --target 6` planned crafts for them inside what read as a deck-6 plan."""
+
+    def _args(self, **kw):
+        import argparse
+        base = dict(name=None, type=None, text=None, synergy=None, set=None,
+                    target=None, note=None, color=None, rarity=None)
+        base.update(kw)
+        return argparse.Namespace(**base)
+
+    def _card(self, target, setc="M21", type_line="Instant"):
+        return {"Card Name": "X", "Type": type_line, "Card Text": "", "Synergies": "",
+                "Set Code": setc, "Target": target, "Note": "", "Color(s)": "R"}
+
+    def test_target_is_a_deck_id_token(self):
+        m = wishlist._match
+        assert m(self._card("6"), self._args(target="6"))
+        assert m(self._card("21; 6"), self._args(target="6"))
+        assert not m(self._card("16"), self._args(target="6"))
+        assert not m(self._card("66"), self._args(target="6"))
+        assert m(self._card("06"), self._args(target="6"))       # zero-padded id (G-82)
+
+    def test_set_is_exact(self):
+        assert wishlist._match(self._card("6", "M21"), self._args(set="m21"))
+        assert not wishlist._match(self._card("6", "M21X"), self._args(set="M21"))
+
+    def test_type_is_whole_word(self):
+        assert not wishlist._match(self._card("6", type_line="Sorcery"),
+                                   self._args(type="Orc"))

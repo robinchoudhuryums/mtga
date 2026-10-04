@@ -86,6 +86,11 @@ def check():
 
 
 def main():
+    # `--help` prints this module's docstring and exits (BS11-56): the gates took no
+    # arguments, so `--help` was ignored and the CI smoke step ran every gate in full.
+    if any(a in ("-h", "--help") for a in sys.argv[1:]):
+        print(__doc__)
+        return 0
     res = flags()
     if not res:
         print("Theme coverage: OK — no owned card is missing a high-confidence theme tag.")

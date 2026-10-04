@@ -265,6 +265,14 @@ def enrich(path, dry_run=False, force=False, only=None):
               f"Nothing written.")
         return 0
 
+    # Nothing changed => nothing written. A no-op rewrite still made a timestamped .bak
+    # and a write-log entry for byte-identical content, which is noise in exactly the
+    # record a later investigation reads to ask "what wrote this file" (BS11-29).
+    if not changed:
+        print(f"Nothing to write — {matched} Scryfall match(es), 0 row(s) changed "
+              + (f"({len(unresolved)} unmatched). " if unresolved else "")
+              + f"{path} left untouched.")
+        return 0
     write_rows(rows, path)
     print(f"Enriched {changed} row(s) from {matched} Scryfall match(es)"
           + (f", {len(unresolved)} unmatched" if unresolved else "")
