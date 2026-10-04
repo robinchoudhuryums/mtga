@@ -2,10 +2,10 @@
 #: format: Standard
 #: colors: RG
 #: plan: midrange
-#: tier: A — PROVISIONAL (untested brew). Metrics floor A on interaction 12 + card advantage 4: five burn/fight spells, Legion Extruder and Mouser Foundry's damage, Chandra Torch, Vivien Reid, and Ajani Unrelenting's −3, which spares every one of this deck's tokens. Weaknesses: card advantage is the thin axis (Spark Hunter's +2, Vivien's +1 and Ajani's −2 carry it); 7 of 12 nonbasic lands can enter tapped; and the forge is ONE card — without Draconic Visitor the tokens are mana and chump-blockers until Craterclaw or Pyrewood cashes them in. Re-grade after 20 matches.
-#: archetype: RED-GREEN ARTIFACT TOKENS, drafted 2026-10-03 from the owner's Reality Fracture red-green(+blue) pile (.cycle/fra-rgu-pile-analysis.md), REPLACING the black-red walker deck that held this slot (git history keeps it). THE ENGINE: Reality Fracture's Heartwood is a red/green mana artifact, and this list makes artifact tokens from fourteen sources — Woodwork Prodigy re-prepares every upkeep (a Heartwood each turn), Eusocial Engineering makes a Robot per land, Chandra Spark Hunter a Vehicle per turn, Rocketeer Boostbuggy a Treasure per attack, plus Aerid Konstrari, Tenured Tethermage, Konstrari Improviser, Heartwood Crafter, Mutagen Man, Sandstorm Salvager, Legion Extruder, Mouser Foundry, Biotech Specialist and Galactic Wayfarer. Those tokens are mana, so the 6- and 7-drops (Pyrewood Gearhulk, Craterclaw Colossus, Savage Ventmaw, Ajani) arrive on time, and they are bodies for Craterclaw's +X-per-artifact and Puppetbeast's / Biotech's / Extruder's sacrifice outlets. THE FORGE: Draconic Visitor turns every artifact token into a 5/5 flying Dragon instead — Prodigy becomes a Dragon a turn, Engineering a Dragon per land — and the Dragon cards (Bloomvine Regent's life, Sarkhan, Encroaching Dragonstorm's rebuy, the Exhales' behold) pay for it. Its Dragons are NOT artifacts, so with Visitor out the artifact-count payoffs stop growing: it is a one-of finisher, not the plan. DISTINCT from 49 Big Draco (mono-red Dragons, 0 shared cards) and 59 Stampede (red-green attack-for-mana).
+#: tier: A — PROVISIONAL (untested brew). Metrics floor A on interaction 13 + card advantage 4: four burn/fight spells, Legion Extruder and Mouser Foundry's damage, Roxanne's 2-damage artifact token and Smaug's attack trigger, Chandra Torch, Vivien Reid, and Ajani Unrelenting's −3, which spares every one of this deck's tokens. Weaknesses: card advantage is the thin axis (Spark Hunter's +2, Vivien's +1 and Ajani's −2 carry it); 3 of 8 nonbasic lands can enter tapped (the Stomping Grounds went to basics 2026-10-04); and the forge is ONE card — without Draconic Visitor the tokens are mana and chump-blockers until Craterclaw or Pyrewood cashes them in. Re-grade after 20 matches.
+#: archetype: RED-GREEN ARTIFACT TOKENS, drafted 2026-10-03 from the owner's Reality Fracture red-green(+blue) pile (.cycle/fra-rgu-pile-analysis.md), REPLACING the black-red walker deck that held this slot (git history keeps it). THE ENGINE: Reality Fracture's Heartwood is a red/green mana artifact, and this list makes artifact tokens from fourteen sources — Woodwork Prodigy re-prepares every upkeep (a Heartwood each turn), Eusocial Engineering makes a Robot per land, Chandra Spark Hunter a Vehicle per turn, Rocketeer Boostbuggy a Treasure per attack, plus Aerid Konstrari, Tenured Tethermage, Konstrari Improviser, Heartwood Crafter, Mutagen Man, Sandstorm Salvager, Legion Extruder, Mouser Foundry, Biotech Specialist, Terrapact Intimidator (two Landers or a 4/3 — the opponent's choice), and Roxanne Starfall Savant, whose tokens are artifacts AND who doubles every artifact token's mana; Smaug the Magnificent adds a Treasure every upkeep. Those tokens are mana, so the 6- and 7-drops (Pyrewood Gearhulk, Craterclaw Colossus, Savage Ventmaw, Ajani) arrive on time, and they are bodies for Craterclaw's +X-per-artifact and Puppetbeast's / Biotech's / Extruder's sacrifice outlets. THE FORGE: Draconic Visitor turns every artifact token into a 5/5 flying Dragon instead — Prodigy becomes a Dragon a turn, Engineering a Dragon per land — and the Dragon cards (Bloomvine Regent's life, Sarkhan, Smaug's upkeep Treasure — itself a Dragon under Visitor — and the Exhales' behold) pay for it. Its Dragons are NOT artifacts, so with Visitor out the artifact-count payoffs stop growing: it is a one-of finisher, not the plan. DISTINCT from 49 Big Draco (mono-red Dragons, 0 shared cards) and 59 Stampede (red-green attack-for-mana).
 #: protect: Draconic Visitor; Woodwork Prodigy // Soul Tether; Aerid Konstrari; Eusocial Engineering
-#: notes: Drafted 2026-10-03 in place of the black-red Detention Hall (owner's call: the pile was reworked into red-green). Built OPTIMAL per the Player Profile (4 Stomping Ground are the main craft; Reality Fracture cards are not yet ingested, so the library reads most of them as unowned). Cut from the measured scratch list to lower the curve (3.94 avg): Archive Arbiter, Kiora of Fire and Ashes, Craftwork Crusher, Sagu Wildling, Chandra Flameshaper. Owned additions from a maker survey: Legion Extruder, Mouser Foundry, Sarkhan Dragon Ascendant, Jolene Plundering Pugilist, Galactic Wayfarer. Temur (+Saheeli) was measured and rejected: every red-green gold card lost ~10 points on curve for one blue card.
+#: notes: Drafted 2026-10-03 in place of the black-red Detention Hall (owner's call: the pile was reworked into red-green). Built OPTIMAL per the Player Profile (4 Stomping Ground were the main craft — swapped for 2 Mountain + 2 Forest 2026-10-04 at the owner's call, costing one R and one G source (17→16 each); Reality Fracture cards are not yet ingested, so the library reads most of them as unowned). Cut from the measured scratch list to lower the curve (3.94 avg): Archive Arbiter, Kiora of Fire and Ashes, Craftwork Crusher, Sagu Wildling, Chandra Flameshaper. Owned additions from a maker survey: Legion Extruder, Mouser Foundry, Sarkhan Dragon Ascendant, Jolene Plundering Pugilist, Galactic Wayfarer (CUT 2026-10-04 for Terrapact Intimidator). 2026-10-04 tune (owned cards): Smaug the Magnificent in for Encroaching Dragonstorm, Roxanne Starfall Savant in for Compel Brutality. Considered from the owner's expanded pile and held out: Seedship Agrarian (a Lander whenever it taps — crew the Boostbuggy; the best next add), Alien Invasion, Gloin the Mighty, Scarlet Spider, Konstrari Charm, Way of the Warlord, Craftwork Crusher; skipped as off-plan: Face Yourself, Improvisation Capstone, Raph & Mikey, Redshift, Getaway Barrel, Identity Echo, Cheering Crowd, Gardenize. Temur (+Saheeli) was measured and rejected: every red-green gold card lost ~10 points on curve for one blue card.
 
 # Makers — artifact tokens (Heartwood, Lander, Treasure, Robot, Golem, Mutagen, Vehicle)
 1 Heartwood Crafter // Soul Tether (FRA) 105
@@ -18,10 +18,11 @@
 1 Woodwork Prodigy // Soul Tether (FRA) 165
 1 Sandstorm Salvager (BIG) 19
 1 Tenured Tethermage (FRA) 154
-1 Galactic Wayfarer (EOE) 185
+1 Terrapact Intimidator (EOE) 164
 1 Aerid Konstrari (FRA) 121
 1 Hungering Puppetbeast (FRA) 107
 1 Eusocial Engineering (EOE) 181
+1 Roxanne, Starfall Savant (OTJ) 228
 
 # Payoffs — artifact count, the forge, Dragons
 1 Herd Heirloom (TDM) 144
@@ -34,28 +35,26 @@
 1 Savage Ventmaw (FDN) 665
 1 Pyrewood Gearhulk (DFT) 216
 1 Craterclaw Colossus (FRA) 78
+1 Smaug the Magnificent (HOB) 110
 
 # Planeswalkers and support
 1 Samut, Hazoret's Champion (FRA) 251
 1 Radagast of Rhosgobel (HOB) 136
 1 Chandra, Spark Hunter (DFT) 116
 1 Chandra, Torch of Defiance (FRA) 244
-1 Encroaching Dragonstorm (TDM) 142
 1 Vivien Reid (FDN) 234
 1 Ajani Unrelenting (FRA) 242
 
 # Interaction
 1 Molten Exhale (TDM) 113
 1 Piercing Exhale (TDM) 151
-1 Compel Brutality (FRA) 101
 1 Wrath of the Bloodmane (FRA) 96
 1 Fulminous Forte (FRA) 84
 
 # Lands
-4 Stomping Ground (EOE) 258
 4 Training Compound (MSH) 275
 1 Thornspire Verge (DSK) 270
 1 Rockfall Vale (FRA) 186
 2 Konstrari Annex (FRA) 183
-6 Mountain (FRA) 287
-6 Forest (FRA) 289
+8 Mountain (FRA) 287
+8 Forest (FRA) 289
