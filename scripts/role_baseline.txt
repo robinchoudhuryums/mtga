@@ -369,7 +369,6 @@ Secret of Bloodbending
 Seedglaive Mentor
 Seismic Sense
 Self-Reflection
-Semester Foreseer // Peer Review
 Servant of the Stinger
 Shark Shredder, Killer Clone
 Sheriff of Safe Passage
@@ -378,6 +377,7 @@ Shrike Force
 Silent Hallcreeper
 Silvergill Mentor
 Silverquill, the Disputant
+Skycoach Conductor // All Aboard
 Skyskipper Duo
 Sledge-Class Seedship
 Slick Imitator
