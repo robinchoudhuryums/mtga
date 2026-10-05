@@ -195,6 +195,8 @@ outside the pile: Theorist's Proxy, Mindseeker Oculus, Protege's Awakening, Camp
 Academic Ascent, and Theorist's Sanctum lands. UU costs on 13 U sources (Countersculpt 63%,
 Chandra 70%) argue for more Islands than Plains.
 
+**2026-10-05: superseded by `fra-surveil-pile-analysis.md`** — the owner's surveil/scry pile is this deck seen from the surveil side; that doc measured UW (8 scry/surveil payoffs, floor A) over mono-U (5 payoffs) and recommends drafting deck 2 from it. Close deck 2 there.
+
 **2026-10-03 cross-pile measurement (fra-rgu-pile-analysis.md §3):** mono-U beat every pair on the same blue core (0 cards under 90% on curve against 12–19 for UR/UG/UW/UB, all floor A), so deck 2 may be better as mono-blue than UW or UG.
 
 ### Not used in either deck
