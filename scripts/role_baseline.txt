@@ -149,6 +149,7 @@ Entropic Battlecruiser
 Esoteric Duplicator
 Falcon, Winged Wonder
 Fated Firepower
+Fatehold Chronologist // Peer Review
 Fearsome Goblin Pair
 Felonious Rage
 Festerleech
@@ -222,6 +223,7 @@ Involuntary Employment
 Iron Hills Stalwart
 Iron Lad, Diverging Destiny
 Ironpaw Aspirant
+Jace's Machinations
 Jadelight Spelunker
 Jeong Jeong, the Deserter
 Jeskai Brushmaster
@@ -275,6 +277,7 @@ Mechanical Mobster
 Metalhead
 Michelangelo, Weirdness to 11
 Mind Transfer Protocol
+Mindseeker Oculus
 Miner's Guidewing
 Mirkwood Pathmaker
 Mistbreath Elder
@@ -304,6 +307,7 @@ North Pole Patrol
 Okoye, Dora Milaje Leader
 Omniscience
 Omnivorous Flytrap
+Opt
 Ori, Keeper of Songs
 Origin of the Avengers
 Orphans of the Wheat
@@ -321,6 +325,7 @@ Pond Prophet
 Pride of the Road
 Prideful Parent
 Procrastinate
+Protege's Awakening
 Psychic Whorl
 Pym Particles
 Quaketusk Boar
@@ -429,6 +434,7 @@ The Mindskinner
 The Misty Mountains Cold
 The Queen of Dale
 The Regalia
+Theorist's Proxy
 Think Twice
 Thor Odinson
 Thought-Stalker Warlock
@@ -473,6 +479,8 @@ Water Tribe Rallier
 Waterbender Ascension
 Waterwind Scout
 Waxen Shapethief
+Way of the Cryomancer
+Way of the Healer
 Way of the Wildspeaker
 Weapons Vendor
 Web-Warriors
