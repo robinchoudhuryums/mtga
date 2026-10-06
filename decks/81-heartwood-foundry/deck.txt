@@ -1,5 +1,6 @@
 #: name: Heartwood Foundry (RG artifact tokens + Dragon forge)
 #: format: Standard
+#: arena: 81 Heartwood, aa57047d-c5ec-4144-bc51-db7ad930cf75
 #: colors: RG
 #: plan: midrange
 #: tier: A — PROVISIONAL (untested brew). Metrics floor A on interaction 11 + card advantage 5: four burn/fight spells, Legion Extruder's damage, Roxanne's 2-damage artifact token and Smaug's attack trigger, Chandra Torch, Vivien Reid, and Ajani Unrelenting's −3, which spares every one of this deck's tokens. Weaknesses: card advantage is still the thinnest axis (Spark Hunter's +2, Vivien's +1, Ajani's −2 and Garruk's Uprising, which draws for every power-4+ creature entering — every 5/5 Dragon token under Draconic Visitor — carry it); 3 of 8 nonbasic lands can enter tapped (the Stomping Grounds went to basics 2026-10-04); and the forge is ONE card — without Draconic Visitor the tokens are mana and chump-blockers until Craterclaw or Pyrewood cashes them in. Re-grade after 20 matches.
