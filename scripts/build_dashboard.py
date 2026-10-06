@@ -886,6 +886,18 @@ TEMPLATE = r"""<!DOCTYPE html>
   table.wt td.re { text-align:right; font-variant-numeric:tabular-nums; color:var(--accent-ink); }
   table.wt td.tg { color:var(--ink2b); }
   table.wt td.sg { color:var(--ink2); font-size:12px; }
+  /* Collection search (sec-coll) */
+  .collctl { display:flex; flex-wrap:wrap; gap:10px 14px; align-items:flex-end; margin:10px 0 12px; }
+  #collq { width:320px; max-width:100%; }
+  .collfield { display:flex; flex-direction:column; gap:4px; font-size:10.5px; font-weight:600; color:var(--ink2); text-transform:uppercase; letter-spacing:.06em; }
+  .collfield select, .collfield input { padding:7px 9px; border:1px solid var(--line2); border-radius:8px; background:var(--fill2); color:var(--ink); font-family:inherit; font-size:12.5px; font-weight:500; text-transform:none; letter-spacing:0; }
+  .collmv { display:flex; align-items:center; gap:4px; color:var(--ink2); }
+  .collmv input { width:62px; }
+  #collpips { width:92px; }
+  .collcheck { display:flex; align-items:center; gap:6px; font-size:12.5px; color:var(--ink2); padding-bottom:7px; }
+  .collctl select:focus-visible, .collctl input:focus-visible { outline:2px solid var(--accent); outline-offset:1px; }
+  .collsum { font-size:12.5px; color:var(--ink2); margin:4px 0 10px; }
+  .collcost { font-family:var(--font-mono); font-size:11.5px; white-space:nowrap; color:var(--ink2b); }
   .wlname { cursor:pointer; border-bottom:1px dotted var(--line2); }
 
   /* roster triage (preserved) */
@@ -1127,7 +1139,7 @@ TEMPLATE = r"""<!DOCTYPE html>
     table.at, table.wt{ min-width:560px; }
     .modal .mbody{ overflow-x:auto; -webkit-overflow-scrolling:touch; }
     /* filter inputs span the row instead of overflowing it */
-    #deckfilter, #wlfilter, #cardfind{ width:100%; }
+    #deckfilter, #wlfilter, #cardfind, #collq{ width:100%; }
     .wltop, .ctl-left{ width:100%; }
   }
   @media (max-width:430px){
@@ -1189,6 +1201,26 @@ TEMPLATE = r"""<!DOCTYPE html>
     <h2 class="sec"><span class="tick"></span>Find a card — which decks run it</h2>
     <input class="filter" id="cardfind" aria-label="Find a card across all decks" style="width:340px;max-width:100%" placeholder="type a card name (incl. variants)…" autocomplete="off" spellcheck="false">
     <div id="cardfindout" style="margin-top:10px"></div>
+  </section>
+
+  <section id="sec-coll">
+    <h2 class="sec"><span class="tick"></span>Collection search — the cards you own, by mana cost</h2>
+    <p class="auditnote">Arena's colour filter answers "has <i>any</i> of these colours", so blue + white also returns every mono-blue and mono-white card. Here the match mode decides: <b>All of</b> (blue + white = cards whose cost has both), <b>Exactly</b> (those colours and no others), <b>Castable within</b> (everything a deck of those colours can cast, colourless included), or <b>Any of</b> (Arena's behaviour). Colours come from the printed <b>mana cost</b> by default — a hybrid {W/U} counts as both — or from colour <b>identity</b>. Searches the owned library (<code>card-library.csv</code>); the data loads the first time you open this section.</p>
+    <div class="collctl">
+      <input class="filter" id="collq" aria-label="Search your collection by name, type or rules text" placeholder="name, type or rules text… (tag:&lt;name&gt; for a synergy tag)" autocomplete="off" spellcheck="false">
+      <div class="colchips" id="collcols" role="group" aria-label="Colours to match"></div>
+      <label class="collfield"><span>Match</span><select id="collmode" aria-label="Colour match mode"><option value="all">All of these</option><option value="exact">Exactly these</option><option value="within">Castable within these</option><option value="any">Any of these</option></select></label>
+      <label class="collfield"><span>Colours from</span><select id="collbasis" aria-label="Read colours from"><option value="cost">Mana cost</option><option value="id">Colour identity</option></select></label>
+      <div class="collfield"><span>Mana value</span><span class="collmv"><input id="collmvmin" type="number" min="0" max="20" inputmode="numeric" placeholder="min" aria-label="Minimum mana value">–<input id="collmvmax" type="number" min="0" max="20" inputmode="numeric" placeholder="max" aria-label="Maximum mana value"></span></div>
+      <label class="collfield"><span>Pips, at least</span><input id="collpips" placeholder="e.g. UU" maxlength="12" autocomplete="off" spellcheck="false" aria-label="Minimum coloured pips, for example UU"></label>
+      <label class="collfield"><span>Type</span><select id="colltype" aria-label="Card type"></select></label>
+      <label class="collfield"><span>Rarity</span><select id="collrar" aria-label="Rarity"></select></label>
+      <label class="collfield"><span>Set</span><select id="collset" aria-label="Set"></select></label>
+      <label class="collcheck"><input type="checkbox" id="collstd"> Standard-legal only</label>
+      <button class="ghostbtn" id="collreset" type="button">Reset</button>
+    </div>
+    <div class="collsum" id="collsum" role="status" aria-live="polite"></div>
+    <div id="collout"></div>
   </section>
 
   <section id="sec-triage">
@@ -1392,7 +1424,7 @@ const scryUrl = name => 'https://scryfall.com/search?q=' + encodeURIComponent('!
 
 // ---------- prefs + deep-link ----------
 const STATE = { theme:'dark', viewMode:'grid', quickFilter:'all', activeColors:{}, open:{}, pinned:{},
-  deckFilter:'', wlFilter:'', wlRarity:{}, simMode:'off', impactCard:'', modalDeck:'', paletteOpen:false, paletteQuery:'', paletteIndex:0, gPrefix:false };
+  deckFilter:'', wlFilter:'', wlRarity:{}, simMode:'off', impactCard:'', modalDeck:'', paletteOpen:false, paletteQuery:'', paletteIndex:0, gPrefix:false, col:null };
 function parseHash(){
   const raw = (location.hash||'').replace(/^#/,''); if (!raw) return {};
   if (raw.startsWith('deck-')) return {d:raw.slice(5)};
@@ -1421,6 +1453,9 @@ function restorePrefs(){
   if (h.q != null) STATE.deckFilter = h.q;
   if (h.c != null) { STATE.activeColors = {}; [...h.c].forEach(c => { if ('WUBRG'.includes(c)) STATE.activeColors[c] = true; }); }
   if (h.d) { h.d.split(',').forEach(id => { if (id) STATE.open[id] = true; }); STATE._jump = h.d.split(',')[0]; }
+  // A shared Collection search (`k=` holds its non-default filters as JSON). Stored RAW
+  // here — the defaults it merges over are defined further down the script.
+  if (h.k) { try { const k = JSON.parse(h.k); if (k && typeof k === 'object') { STATE.col = k; STATE._collOpen = true; } } catch(e){} }
   document.documentElement.setAttribute('data-theme', STATE.theme);
 }
 // `includeOpen` is false for the ADDRESS BAR and true for the 🔗 share button, and the
@@ -1437,6 +1472,15 @@ function buildHash(includeOpen){
   const cols = ['W','U','B','R','G'].filter(c => STATE.activeColors[c]).join('');
   if (cols) p.push('c=' + cols);
   const open = includeOpen ? Object.keys(STATE.open).filter(k => STATE.open[k]) : [];
+  if (STATE.col){
+    // Only the NON-default Collection filters, so an untouched section adds nothing to
+    // the URL and a shared search stays short.
+    const nd = {};
+    Object.keys(STATE.col).forEach(k => { const v = STATE.col[k];
+      if (v === '' || v === false || v == null || (k === 'mode' && v === 'all') || (k === 'basis' && v === 'cost')) return;
+      nd[k] = v; });
+    if (Object.keys(nd).length) p.push('k=' + encodeURIComponent(JSON.stringify(nd)));
+  }
   if (open.length) p.push('d=' + open.join(','));
   return p.length ? '#' + p.join('&') : ' ';
 }
@@ -2853,10 +2897,172 @@ function annoRender(){
 })();
 
 // ---------- collapsible sections + section-nav strip (progressive disclosure) ----------
+// ---------- collection search (sec-coll) ----------
+// Arena's colour filter is "has ANY of these colours" over colour IDENTITY, so blue +
+// white returns every mono-blue and mono-white card too. This searches the owned library
+// by the PRINTED COST with an explicit match mode. The data is a separate file
+// (collection.json, written by `build_dashboard.py --collection-out` in the Pages
+// workflow) fetched the first time the section opens, so the dashboard's own load stays
+// the size it was. The four functions below are pure and are run under Node by
+// tests/test_dashboard_js.py against the Python-side fixtures.
+const COLL_FILE = 'collection.json';
+const COLL_DEF = {q:'', cols:'', mode:'all', basis:'cost', mvMin:'', mvMax:'', pips:'', type:'', rar:'', set:'', std:false};
+const COLL_TYPES = ['Creature','Instant','Sorcery','Enchantment','Artifact','Planeswalker','Land','Battle','Legendary'];
+const COLL_RAR = [['M','Mythic'],['R','Rare'],['U','Uncommon'],['C','Common']];
+let COLL = null, collLoading = false, collTimer = 0;
+const collSort = {key:'n', dir:1};
+const collOpts = {limit:150};
+
+// The colours a card counts as. Cost basis: required pips, both halves of every hybrid
+// {W/U}, and the colour of a {2/W} or {U/P} symbol. Identity basis: Color(s) as stored.
+function collColorSet(c, basis){
+  if (basis === 'id') return new Set([...(c.i||'')]);
+  const s = new Set([...(c.s||''), ...(c.o||'')]);
+  (c.h||[]).forEach(g => [...g].forEach(x => s.add(x)));
+  return s;
+}
+// sel: a string of selected chips from 'WUBRGC'. C means colourless.
+function collMatchColors(c, sel, mode, basis){
+  const want = [...(sel||'')].filter(x => 'WUBRG'.includes(x));
+  const wantC = (sel||'').includes('C');
+  if (!want.length && !wantC) return true;
+  const S = collColorSet(c, basis);
+  const colorless = S.size === 0;
+  if (mode === 'any') return (wantC && colorless) || want.some(x => S.has(x));
+  if (!want.length) return colorless;                  // only C chosen: colourless cards
+  if (mode === 'within'){
+    // Castable by a deck of exactly these colours (colourless always is). On the cost
+    // basis a hybrid needs only ONE of its halves, and a {2/W} or {U/P} symbol needs
+    // neither — which is the difference between "within" and a plain subset test.
+    if (basis === 'id') return [...S].every(x => want.includes(x));
+    if (![...(c.s||'')].every(x => want.includes(x))) return false;
+    return (c.h||[]).every(g => [...g].some(x => want.includes(x)));
+  }
+  if (mode === 'exact') return S.size === want.length && want.every(x => S.has(x));
+  return want.every(x => S.has(x));                    // 'all'
+}
+// "UU" -> {U:2}; anything that is not a colour letter is ignored.
+function collParsePips(str){
+  const o = {};
+  [...(str||'').toUpperCase()].forEach(ch => { if ('WUBRG'.includes(ch)) o[ch] = (o[ch]||0) + 1; });
+  return o;
+}
+function collFilter(cards, f){
+  f = f || {};
+  const q = (f.q||'').trim().toLowerCase();
+  const tag = q.match(/^tag:\s*(.+)$/);
+  const pips = collParsePips(f.pips);
+  const mvMin = (f.mvMin === '' || f.mvMin == null) ? null : +f.mvMin;
+  const mvMax = (f.mvMax === '' || f.mvMax == null) ? null : +f.mvMax;
+  const typeRe = f.type ? new RegExp('\\b' + f.type + '\\b') : null;
+  return cards.filter(c => {
+    if (q){
+      if (tag){ if (!(c.g||'').toLowerCase().split(/;\s*/).includes(tag[1].trim())) return false; }
+      else if (!((c.n||'') + '\n' + (c.t||'') + '\n' + (c.x||'')).toLowerCase().includes(q)) return false;
+    }
+    if (!collMatchColors(c, f.cols, f.mode || 'all', f.basis || 'cost')) return false;
+    if (mvMin != null && !(c.v != null && c.v >= mvMin)) return false;
+    if (mvMax != null && !(c.v != null && c.v <= mvMax)) return false;
+    if (typeRe && !typeRe.test((c.t||'').split(' // ')[0])) return false;   // the front face's type
+    if (f.rar && c.r !== f.rar) return false;
+    if (f.set && !(c.e||'').split(',').includes(f.set)) return false;
+    if (f.std && !c.l) return false;
+    for (const k in pips) if (((c.p||{})[k]||0) < pips[k]) return false;
+    return true;
+  });
+}
+function collRender(){
+  const host = $('collout'), sum = $('collsum');
+  if (!COLL) return;
+  const list = collFilter(COLL.cards, STATE.col);
+  const capped = list.length > collOpts.limit && !collOpts._exp;
+  sum.textContent = list.length + ' of ' + COLL.cards.length + ' owned cards match'
+    + (capped ? ' · showing ' + collOpts.limit + ' (sort, or "show all" below)' : '')
+    + ' · collection data from ' + COLL.generated;
+  host.innerHTML = '';
+  if (!list.length){ host.appendChild(el('div','emptymsg','No owned cards match these filters.')); return; }
+  const RR = {M:3, R:2, U:1, C:0};
+  const rows = list.map(c => ({c, n:c.n, m:c.m||'', t:c.t||'', v:(c.v == null ? -1 : c.v), rr:(c.r in RR ? RR[c.r] : -1), q:c.q||0, d:c.d||0}));
+  const cols = [
+    {key:'n', label:'Card', node:r => { const s = el('span','', r.n); attachHover(s, r.n); return s; }},
+    {key:'m', label:'Cost', cls:'collcost', get:r => r.m || '—'},
+    {key:'t', label:'Type', cls:'sg', get:r => r.t},
+    {key:'v', label:'MV', num:true, get:r => r.v < 0 ? '—' : r.v},
+    {key:'rr', label:'Rarity', get:r => r.c.r || '?'},
+    {key:'q', label:'Owned', num:true, get:r => r.q},
+    {key:'d', label:'In decks', num:true, get:r => r.d || '—'},
+  ];
+  const box = el('div','wltable'); box.appendChild(sortableTable('wt', cols, rows, collSort, null, collOpts)); host.appendChild(box);
+}
+function collChanged(){ collOpts._exp = false; persist(); collRender(); }
+function collFillSets(){
+  const sel = $('collset'); if (!sel || !COLL) return;
+  const sets = [...new Set(COLL.cards.flatMap(c => (c.e||'').split(',').filter(Boolean)))].sort();
+  sel.innerHTML = '';
+  sel.appendChild(new Option('Any set', ''));
+  sets.forEach(x => sel.appendChild(new Option(x, x)));
+  sel.value = STATE.col.set || '';
+}
+function collLoad(){
+  if (COLL || collLoading) return;
+  collLoading = true;
+  $('collsum').textContent = 'Loading your collection…';
+  // Same-site first (the published page), then the live Pages copy — which is what a
+  // dashboard opened from disk reaches, since a file:// page cannot fetch a sibling file.
+  const urls = [];
+  if (/^https?:$/.test(location.protocol)) urls.push(COLL_FILE);
+  urls.push(LIVE_URL + COLL_FILE);
+  const tryNext = i => {
+    if (i >= urls.length){
+      collLoading = false;
+      $('collsum').innerHTML = 'Could not load the collection data. It is published with the GitHub Pages site — open <a href="' + LIVE_URL + '">the live dashboard</a>, or build it with <code>python3 scripts/build_dashboard.py --collection-out collection.json</code> and serve this folder over http.';
+      return;
+    }
+    fetch(urls[i], {cache:'no-cache'})
+      .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+      .then(data => {
+        if (!data || !Array.isArray(data.cards)) throw new Error('not collection data');
+        COLL = data; collLoading = false; collFillSets(); collRender();
+      })
+      .catch(e => { console.warn('collection: ' + urls[i] + ' failed', e); tryNext(i + 1); });
+  };
+  tryNext(0);
+}
+function secOpened(id){ if (id === 'sec-coll') collLoad(); }
+(function collInit(){
+  STATE.col = Object.assign({}, COLL_DEF, STATE.col || {});
+  if (STATE._collOpen){ STATE.secCollapsed = STATE.secCollapsed || {}; STATE.secCollapsed['sec-coll'] = false; }
+  const f = () => STATE.col;
+  const chips = $('collcols'), paints = [];
+  ['W','U','B','R','G','C'].forEach(c => {
+    const chip = a11y(el('span','colchip', c), {label:(c === 'C' ? 'Colourless' : 'Colour ' + c), pressed:f().cols.includes(c)});
+    chip.title = c === 'C' ? 'Colourless' : c;
+    const paint = () => { const on = f().cols.includes(c); chip.style.background = on?COLBG[c]:'var(--fill)'; chip.style.color = on?COLFG[c]:'var(--ink2)'; chip.style.borderColor = on?COLBG[c]:'var(--line2)'; chip.setAttribute('aria-pressed', String(on)); };
+    chip.onclick = () => { const s = f().cols; f().cols = 'WUBRGC'.split('').filter(x => x === c ? !s.includes(c) : s.includes(x)).join(''); paint(); collChanged(); };
+    paint(); paints.push(paint); chips.appendChild(chip);
+  });
+  const ty = $('colltype'); ty.appendChild(new Option('Any type', '')); COLL_TYPES.forEach(t => ty.appendChild(new Option(t, t)));
+  const ra = $('collrar'); ra.appendChild(new Option('Any rarity', '')); COLL_RAR.forEach(([k,l]) => ra.appendChild(new Option(l, k)));
+  $('collset').appendChild(new Option('Any set', ''));
+  const fields = {collq:'q', collmode:'mode', collbasis:'basis', collmvmin:'mvMin', collmvmax:'mvMax', collpips:'pips', colltype:'type', collrar:'rar', collset:'set'};
+  const sync = () => { Object.keys(fields).forEach(id => { $(id).value = f()[fields[id]]; }); $('collstd').checked = !!f().std; paints.forEach(p => p()); };
+  Object.keys(fields).forEach(id => {
+    const node = $(id), key = fields[id];
+    const typing = node.tagName === 'INPUT';
+    node.addEventListener(typing ? 'input' : 'change', () => {
+      f()[key] = node.value;
+      if (typing){ clearTimeout(collTimer); collTimer = setTimeout(collChanged, 160); } else collChanged();
+    });
+  });
+  $('collstd').addEventListener('change', e => { f().std = e.target.checked; collChanged(); });
+  $('collreset').onclick = () => { STATE.col = Object.assign({}, COLL_DEF); sync(); collChanged(); };
+  sync();
+})();
+
 // DOM order; 3rd field = default-collapsed. The utility/lookup sections start CLOSED so
 // the page opens on the planning views, not a wall of every tool at once.
 const SECTIONS = [
-  ['sec-find','Finder',true], ['sec-triage','Triage',false], ['sec-recent','Recent',true],
+  ['sec-find','Finder',true], ['sec-coll','Collection',true], ['sec-triage','Triage',false], ['sec-recent','Recent',true],
   ['sec-stale','Stale',true], ['sec-log','Log match',true], ['sec-rotation','Rotation',true], ['sec-decks','Decks',false],
   ['sec-leverage','Leverage',false], ['sec-wishlist','Wishlist',false], ['sec-plan','Craft plan',false],
 ];
@@ -2874,7 +3080,7 @@ function applyCollapsed(id, collapsed){
     const sec = $(id); if (!sec || sec.style.display === 'none') return;  // skip hidden (e.g. empty wishlist)
     if (nav){
       const chip = a11y(el('span','navchip', label), {label:'Jump to ' + label}); chip.dataset.nav = id;
-      chip.onclick = () => { if (sec.classList.contains('collapsed')){ STATE.secCollapsed[id] = false; applyCollapsed(id, false); persist(); } window.scrollTo({top:sec.getBoundingClientRect().top + window.scrollY - 70, behavior:'smooth'}); };
+      chip.onclick = () => { if (sec.classList.contains('collapsed')){ STATE.secCollapsed[id] = false; applyCollapsed(id, false); persist(); } secOpened(id); window.scrollTo({top:sec.getBoundingClientRect().top + window.scrollY - 70, behavior:'smooth'}); };
       nav.appendChild(chip);
     }
     const h = sec.querySelector('h2.sec'); if (!h) return;
@@ -2883,6 +3089,7 @@ function applyCollapsed(id, collapsed){
     const collapsed = secIsCollapsed(id, def);
     STATE.secCollapsed[id] = collapsed;
     applyCollapsed(id, collapsed);
+    if (!collapsed) secOpened(id);
     // The section headers are the page's primary navigation — every section collapses
     // through them — and they were <h2> with a bare onclick (I-01). BS2-16 kept the <h2>
     // a heading, but a focusable heading carrying aria-expanded is still not a control:
@@ -2895,7 +3102,7 @@ function applyCollapsed(id, collapsed){
     h.appendChild(btn); h.tabIndex = -1; h.removeAttribute('role');
     a11y(btn, {label:label + ' section', expanded:!collapsed, role:null, native:true});  // keep the <h2> a heading
     btn.setAttribute('aria-controls', id);
-    btn.onclick = () => { const c = !sec.classList.contains('collapsed'); STATE.secCollapsed[id] = c; applyCollapsed(id, c); btn.setAttribute('aria-expanded', String(!c)); persist(); };
+    btn.onclick = () => { const c = !sec.classList.contains('collapsed'); STATE.secCollapsed[id] = c; applyCollapsed(id, c); btn.setAttribute('aria-expanded', String(!c)); persist(); if (!c) secOpened(id); };
   });
   // scroll-spy: highlight the nav chip of the last section scrolled past
   const ids = SECTIONS.map(s => s[0]).filter(id => { const e = $(id); return e && e.style.display !== 'none'; });
@@ -2927,6 +3134,126 @@ if (STATE._jump){ setTimeout(() => {
 _LIGHT_BLOCK_RE = re.compile(r'\n  \[data-theme="light"\] \{\n(.*?)\n  \}', re.S)
 
 
+# --- Collection search (the "Collection" section) --------------------------------- #
+# Arena's own colour filter answers "has ANY of these colours", so W+U returns mono-W,
+# mono-U and W/U cards together, and it reads colour IDENTITY rather than the cost. The
+# Collection section searches the owned library by the PRINTED MANA COST instead, with a
+# match mode (all of / exactly / castable within / any of). Its data is a SEPARATE file
+# the page fetches on first open, because embedding ~1.4 MB of card text in the
+# dashboard island would put every phone load past 4 MB for a section most visits never
+# open.
+_COST_SYM_RE = re.compile(r"\{([^}]+)\}")
+_WUBRG = "WUBRG"
+
+
+def cost_colors(cost):
+    """The colour facts of a PRINTED mana cost, for the Collection search.
+
+    Returns ``(strict, hybrid, soft, pips)``:
+      strict — colours some symbol REQUIRES ({U}), across every castable face;
+      hybrid — one sorted colour string per true hybrid symbol ({W/U} -> "WU"); either
+               half pays it;
+      soft   — colours in a symbol payable WITHOUT that colour ({2/W}, {U/P}); the card
+               reads as that colour but a deck without it can still cast it;
+      pips   — {colour: count} of strict pips on the FRONT face only — the face you cast
+               (G-02/G-43), so "at least UU" means the cost you actually pay.
+
+    Colour membership reads EVERY castable face, deliberately unlike the castability
+    models' front-face rule: a search for "blue AND white cards" should find a split card
+    whose two halves are blue and white. A transform DFC's back has no cost, so only
+    castable faces contribute. Colour IDENTITY is a separate field; never derive one from
+    the other (INV-05)."""
+    strict, hybrid, soft, pips = set(), [], set(), {}
+    for face_i, face in enumerate((cost or "").split(" // ")):
+        for sym in _COST_SYM_RE.findall(face):
+            s = sym.upper()
+            if "/" in s:
+                parts = s.split("/")
+                cols = [p for p in parts if p in _WUBRG]
+                if not cols:
+                    continue
+                if len(cols) == len(parts):
+                    hybrid.append("".join(sorted(set(cols), key=_WUBRG.index)))
+                else:
+                    soft.update(cols)
+            elif s in _WUBRG:
+                strict.add(s)
+                if face_i == 0:
+                    pips[s] = pips.get(s, 0) + 1
+    order = lambda cs: "".join(sorted(cs, key=_WUBRG.index))
+    return order(strict), hybrid, order(soft - strict), pips
+
+
+def collection_payload():
+    """The owned library as search records for the Collection section.
+
+    One record per CARD, not per printing: copies are fungible across printings, so the
+    quantity is the sum over every printing (CLAUDE.md, "Owned copies are fungible"), and
+    a DFC stored under both its front and its full name is ONE card (BS6-01) — keyed on
+    the front face, displayed under the longest stored spelling. Compact keys keep the
+    file small; the page's search code is the only reader."""
+    from lib import card_colors
+    _, rows = load_rows(DEFAULT_CSV)
+    mana = deckmod.load_mana()
+    rarities = deckmod.load_rarities()
+    legal = deckmod.load_legalities()
+    meta = deckmod.load_card_meta()
+    carddata = deckmod.load_card_data()
+    front = lambda n: n.split(" // ")[0].strip().lower()
+
+    in_decks = {}
+    for d in deckmod.roster_decks():
+        try:
+            _m, cards = deckmod.parse_deck_file(d["path"])
+        except Exception:                      # a malformed deck is INV-04's business
+            continue
+        for _q, n, _s, _c in cards:
+            in_decks.setdefault(front(n), set()).add(d["id"])
+
+    recs = {}
+    for r in rows:
+        name = (r.get("Card Name") or "").strip()
+        if not name:
+            continue
+        k = front(name)
+        rec = recs.get(k)
+        if rec is None:
+            rec = recs[k] = {"n": name, "qty": 0, "sets": [], "row": r}
+        elif len(name) > len(rec["n"]):
+            rec["n"] = name
+        try:
+            rec["qty"] += int(r.get("Quantity Owned") or 0)
+        except ValueError:
+            pass
+        sc = (r.get("Set Code") or "").strip().upper()
+        if sc and sc not in rec["sets"]:
+            rec["sets"].append(sc)
+
+    out = []
+    for k, rec in recs.items():
+        r, name = rec["row"], rec["n"]
+        nl = name.lower()
+        cost, mv = mana.get(nl) or mana.get(k) or ("", None)
+        strict, hybrid, soft, pips = cost_colors(cost)
+        cd = carddata.get(nl) or carddata.get(k) or {}
+        text = (r.get("Card Text") or "").strip() or (cd.get("text") or "")
+        typ = (r.get("Type") or "").strip() or (cd.get("type") or "")
+        tags = (meta.get(nl) or meta.get(k) or {}).get("synergies") or []
+        rec_out = {
+            "n": name, "t": typ, "x": text, "m": cost, "v": mv,
+            "s": strict, "h": hybrid, "o": soft, "p": pips,
+            "i": "".join(c for c in _WUBRG if c in card_colors(r.get("Color(s)") or "")),
+            "r": (rarities.get(nl) or rarities.get(k) or "?"),
+            "e": ",".join(rec["sets"]), "q": rec["qty"],
+            "g": "; ".join(tags),
+            "d": len(in_decks.get(k, ())),
+            "l": "standard" in (legal.get(nl) or legal.get(k) or set()),
+        }
+        out.append(rec_out)
+    out.sort(key=lambda c: c["n"].lower())
+    return {"generated": time.strftime("%Y-%m-%d %H:%M"), "count": len(out), "cards": out}
+
+
 def _with_light_scheme_fallback(template):
     """Emit every `[data-theme="light"] { … }` token block a second time under
     `@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) { … } }`, so a
@@ -2947,7 +3274,17 @@ def _with_light_scheme_fallback(template):
 def main():
     ap = argparse.ArgumentParser(description="Render the roster dashboard (dashboard.html).")
     ap.add_argument("--out", default=OUT)
+    ap.add_argument("--collection-out", metavar="FILE",
+                    help="also write the Collection section's search data (JSON) to FILE. "
+                         "The Pages workflow publishes it beside the dashboard; the page "
+                         "fetches it the first time the section is opened.")
     args = ap.parse_args()
+
+    if args.collection_out:
+        coll = collection_payload()
+        body = json.dumps(coll, ensure_ascii=False, separators=(",", ":"))
+        atomic_write(args.collection_out, lambda fh: fh.write(body), backup=False)
+        print(f"Wrote {args.collection_out}: {coll['count']} cards.")
 
     eprint("Collecting deck analysis (offline)...")
     payload = collect()

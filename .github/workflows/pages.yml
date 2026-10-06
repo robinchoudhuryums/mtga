@@ -47,7 +47,10 @@ jobs:
         run: |
           mkdir -p _site
           rc=0
-          python3 scripts/build_dashboard.py --out _site/index.html 2> build.err || rc=$?
+          # --collection-out: the Collection section's search data, fetched by the page
+          # the first time that section is opened (kept out of the page itself so the
+          # dashboard's own load does not grow by ~1.2 MB).
+          python3 scripts/build_dashboard.py --out _site/index.html --collection-out _site/collection.json 2> build.err || rc=$?
           cat build.err >&2
           grep '^WARN' build.err | sed 's/^WARN:* */::warning title=Dashboard build::/' || true
           exit $rc
@@ -72,6 +75,17 @@ jobs:
               sys.exit(f"Refusing to deploy: _site/index.html is {len(blob)} bytes, "
                        f"data island present={island}")
           print(f"OK: {len(blob)} bytes, data island present")
+          # The Collection section's data file. A missing or empty one would publish a
+          # section that can only say "could not load" — refuse it like a bad page.
+          import json
+          try:
+              coll = json.load(open("_site/collection.json", encoding="utf-8"))
+              ncards = len(coll.get("cards") or [])
+          except Exception as e:
+              sys.exit(f"Refusing to deploy: _site/collection.json unreadable ({e})")
+          if ncards < 1:
+              sys.exit("Refusing to deploy: _site/collection.json holds no cards")
+          print(f"OK: collection.json holds {ncards} cards")
           # Degraded panels publish by design below the majority threshold; say how
           # many, so a green deploy cannot hide them (BS11-50).
           n = blob.count("[analysis error")

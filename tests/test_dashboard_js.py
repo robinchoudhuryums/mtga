@@ -357,3 +357,99 @@ class TestDashboardSplitterAgreesWithPython:
               for t in _SPLIT_PASTES]
         assert js == py, f"\n  JS: {js}\n  PY: {py}"
         assert [len(x) for x in py] == [1, 2, 1, 2]
+
+
+# ---------------------------------------------------------------------------- #
+# The COLLECTION search's colour match (sec-coll). The whole point of the section is the
+# difference between Arena's "has ANY of these colours" and "has ALL of them", so the
+# modes are pinned card by card. The records are built by the SHIPPED Python builder
+# (`build_dashboard.cost_colors`) from real cost strings, so the two halves — the cost
+# parser and the browser matcher — are exercised together, not against a hand-made copy.
+_COLL_HARNESS = """
+const fs = require('fs');
+eval(fs.readFileSync(process.argv[2], 'utf8'));
+const input = JSON.parse(fs.readFileSync(process.argv[3], 'utf8'));
+console.log(JSON.stringify(input.queries.map(f =>
+  collFilter(input.cards, f).map(c => c.n))));
+"""
+
+# name, printed cost, colour identity, type, synergy tags
+_COLL_FIXTURE = [
+    ("Gold WU", "{1}{W}{U}", "WU", "Creature — Human", ""),
+    ("Mono U", "{U}{U}", "U", "Instant", "counterspell"),
+    ("Mono W", "{1}{W}", "W", "Creature — Kor", ""),
+    ("Hybrid WU", "{1}{W/U}", "WU", "Creature — Bird", ""),
+    ("Esper", "{W}{U}{B}", "WUB", "Legendary Creature — Sphinx", ""),
+    ("Rock", "{2}", "", "Artifact", ""),
+    ("Soft W", "{2/W}{2/W}", "W", "Instant", ""),
+    ("U with W ability", "{2}{U}", "WU", "Creature — Wizard", ""),
+    ("Split WU", "{1}{U} // {W}", "WU", "Instant // Sorcery", ""),
+    ("Dual land", "", "WU", "Land", ""),
+]
+
+
+def _coll_cards():
+    import build_dashboard as bd
+    out = []
+    for name, cost, ident, typ, tags in _COLL_FIXTURE:
+        strict, hybrid, soft, pips = bd.cost_colors(cost)
+        out.append({"n": name, "m": cost, "s": strict, "h": hybrid, "o": soft,
+                    "p": pips, "i": ident, "t": typ, "x": "", "g": tags,
+                    "v": None, "r": "C", "e": "TST", "q": 1, "d": 0, "l": True})
+    return out
+
+
+_COLL_QUERIES = [
+    ({"cols": "WU", "mode": "all"},
+     {"Gold WU", "Hybrid WU", "Esper", "Split WU"}),
+    ({"cols": "WU", "mode": "exact"},
+     {"Gold WU", "Hybrid WU", "Split WU"}),
+    # Castable by a W/U deck: a hybrid needs one half, {2/W} needs neither, and
+    # colourless (the Rock, the land's empty cost) always fits. Esper's {B} does not.
+    ({"cols": "WU", "mode": "within"},
+     {"Gold WU", "Mono U", "Mono W", "Hybrid WU", "Rock", "Soft W",
+      "U with W ability", "Split WU", "Dual land"}),
+    ({"cols": "WU", "mode": "any"},
+     {"Gold WU", "Mono U", "Mono W", "Hybrid WU", "Esper", "Soft W",
+      "U with W ability", "Split WU"}),
+    # IDENTITY basis: the {2}{U} card with a white ability now counts as W/U, and so
+    # does the land — the exact cards the cost basis keeps out.
+    ({"cols": "WU", "mode": "all", "basis": "id"},
+     {"Gold WU", "Hybrid WU", "Esper", "U with W ability", "Split WU", "Dual land"}),
+    ({"cols": "C", "mode": "all"}, {"Rock", "Dual land"}),
+    ({"pips": "UU"}, {"Mono U"}),
+    ({"q": "tag:counterspell"}, {"Mono U"}),
+    ({"cols": "U", "mode": "exact", "type": "Creature"}, {"U with W ability"}),
+    ({"cols": "WU", "mode": "all", "type": "Legendary"}, {"Esper"}),
+    ({}, {n for n, *_ in _COLL_FIXTURE}),
+]
+
+
+class TestCollectionColourMatch:
+    def test_cost_colors_reads_hybrid_soft_and_every_face(self):
+        import build_dashboard as bd
+        assert bd.cost_colors("{1}{W}{U}") == ("WU", [], "", {"W": 1, "U": 1})
+        assert bd.cost_colors("{1}{W/U}") == ("", ["WU"], "", {})
+        assert bd.cost_colors("{2/W}{U/P}") == ("", [], "WU", {})
+        # Colour membership reads every castable face; pips read the FRONT face only.
+        assert bd.cost_colors("{1}{U} // {W}") == ("WU", [], "", {"U": 1})
+        assert bd.cost_colors("") == ("", [], "", {})
+
+    def test_each_mode_returns_exactly_its_cards(self, tmp_path):
+        node = shutil.which("node")
+        if not node:
+            pytest.skip("node not installed (CI sets PYTEST_NO_SKIPS, which fails on this)")
+        (tmp_path / "m.js").write_text(
+            _extract_js(["collColorSet", "collMatchColors", "collParsePips", "collFilter"]),
+            encoding="utf-8")
+        (tmp_path / "h.js").write_text(_COLL_HARNESS, encoding="utf-8")
+        (tmp_path / "in.json").write_text(json.dumps(
+            {"cards": _coll_cards(), "queries": [q for q, _ in _COLL_QUERIES]}),
+            encoding="utf-8")
+        r = subprocess.run([node, str(tmp_path / "h.js"), str(tmp_path / "m.js"),
+                            str(tmp_path / "in.json")],
+                           capture_output=True, text=True, timeout=60)
+        assert r.returncode == 0, f"node failed:\n{r.stderr[:2000]}"
+        got = json.loads(r.stdout)
+        for (q, want), names in zip(_COLL_QUERIES, got):
+            assert set(names) == want, f"{q}: got {sorted(names)}, want {sorted(want)}"
