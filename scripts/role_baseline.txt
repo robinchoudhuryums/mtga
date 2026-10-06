@@ -147,7 +147,6 @@ Enigma Drake
 Enter the Enigma
 Entropic Battlecruiser
 Esoteric Duplicator
-Essence Anchor
 Falcon, Winged Wonder
 Fated Firepower
 Fearsome Goblin Pair
@@ -375,7 +374,6 @@ Shrike Force
 Silent Hallcreeper
 Silvergill Mentor
 Silverquill, the Disputant
-Skycoach Conductor // All Aboard
 Skyskipper Duo
 Sledge-Class Seedship
 Slick Imitator
