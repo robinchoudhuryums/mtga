@@ -222,6 +222,7 @@ Involuntary Employment
 Iron Hills Stalwart
 Iron Lad, Diverging Destiny
 Ironpaw Aspirant
+Jace's Machinations
 Jadelight Spelunker
 Jeong Jeong, the Deserter
 Jeskai Brushmaster
@@ -473,6 +474,8 @@ Water Tribe Rallier
 Waterbender Ascension
 Waterwind Scout
 Waxen Shapethief
+Way of the Cryomancer
+Way of the Healer
 Way of the Wildspeaker
 Weapons Vendor
 Web-Warriors

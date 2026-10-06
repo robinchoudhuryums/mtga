@@ -1,6 +1,6 @@
 # Reality Fracture Bant pile — analysis (TEMPORARY working doc)
 
-**Status: IN PROGRESS (2026-10-03). Deck 1 LANDED as `decks/80-bloom-council` (owner chose option 1: Vivien Reid cut, Garruk kept; Loyal Tutor → Germinate Recruits, Starfield Shepherd back, Astelli Reclaimer cut after the re-read). Deck 2 (UW vs UG Jace, and its six fills) is still the owner's call.** Delete once the deck(s) are drafted and the findings are
+**Status: IN PROGRESS (2026-10-03). Deck 1 LANDED as `decks/80-bloom-council` (owner chose option 1: Vivien Reid cut, Garruk kept; Loyal Tutor → Germinate Recruits, Starfield Shepherd back, Astelli Reclaimer cut after the re-read). Deck 2 LANDED 2026-10-05 as `decks/82-fatehold-foresight` (UW, from the surveil pile).** Delete once the deck(s) are drafted and the findings are
 folded into their `#: notes:` blocks. A scratchpad, not a source of truth — decks/ are.
 
 **Source list:** 73 cards (mostly FRA), pasted 2026-10-03; the user asked whether to build it as
@@ -194,6 +194,8 @@ white empower cards and Elspeth/Erode. **Six slots to fill**, best from the Stan
 outside the pile: Theorist's Proxy, Mindseeker Oculus, Protege's Awakening, Campus Crier,
 Academic Ascent, and Theorist's Sanctum lands. UU costs on 13 U sources (Countersculpt 63%,
 Chandra 70%) argue for more Islands than Plains.
+
+**2026-10-05: CLOSED — deck 2 LANDED as `decks/82-fatehold-foresight`** (UW surveil Jace), drafted from the owner's surveil/scry pile. That analysis measured UW (8 scry/surveil payoffs, floor A) over mono-U (5) and UB (3); its findings live in deck 82's `#: notes:`, and its working doc was deleted.
 
 **2026-10-03 cross-pile measurement (fra-rgu-pile-analysis.md §3):** mono-U beat every pair on the same blue core (0 cards under 90% on curve against 12–19 for UR/UG/UW/UB, all floor A), so deck 2 may be better as mono-blue than UW or UG.
 

@@ -1185,6 +1185,7 @@ manifest/cache without touching the network. Rerun after importing new cards.
 ```
 python3 scripts/build_dashboard.py            # writes a self-contained dashboard.html
 python3 scripts/build_dashboard.py --out x.html
+python3 scripts/build_dashboard.py --collection-out collection.json   # + Collection search data
 ```
 
 Surfaces the two things that otherwise live only behind a terminal prompt — the
@@ -1241,6 +1242,20 @@ A **"Find a card"** search box (top of the page) is the dashboard mirror of
 variants** that runs it (with the copy count), each a click-through chip that
 filters the deck list to that deck. It searches the same per-deck card multisets the
 stale-deck compare uses, entirely in-browser.
+
+A **"Collection search"** section searches the cards you OWN by their **printed mana
+cost**, which Arena's own filter cannot do: Arena matches *any* selected colour over colour
+identity, so blue + white also returns every mono-blue and mono-white card. Pick colours,
+then a **match mode** — *All of* (blue + white = cards whose cost has both), *Exactly*
+(those colours and no others), *Castable within* (everything a deck of those colours can
+cast, colourless included; a hybrid needs only one half, `{2/W}` needs neither) or *Any
+of* (Arena's behaviour) — and optionally read colour **identity** instead of cost. Also
+filters by mana value range, minimum pips (`UU` = at least two blue pips on the face you
+cast), type, rarity, set and Standard legality, plus `tag:<name>` for a synergy tag. The
+search is kept in the URL, so 🔗 shares it. Its data is a separate `collection.json`
+(`build_dashboard.py --collection-out FILE`, run by `pages.yml`) that the page fetches the
+first time the section opens, so the rest of the dashboard loads no slower; a dashboard
+opened from disk fetches the published copy instead.
 
 **Progressive disclosure** keeps the page from reading as a wall: every section
 **collapses** (the utility ones — card finder, stale-check, recently-edited, rotation —
