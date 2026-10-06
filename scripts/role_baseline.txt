@@ -147,6 +147,7 @@ Enigma Drake
 Enter the Enigma
 Entropic Battlecruiser
 Esoteric Duplicator
+Essence Anchor
 Falcon, Winged Wonder
 Fated Firepower
 Fearsome Goblin Pair
