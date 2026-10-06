@@ -323,6 +323,12 @@ _BUILDER_ALLOW = {
         "already aliases its pool map inline via `lib.alias_front` (BS-16 put it there). "
         "It is a whole reconcile RUN with side effects, not a loader that can be called "
         "for its index, so the behavioral registry cannot exercise it.",
+    ("build_dashboard", "collection_payload"):
+        "an AGGREGATION pass, not a lookup index: it groups card-library.csv rows under "
+        "the FRONT face (`name.split(' // ')[0]`) so a DFC stored under both spellings "
+        "becomes one record, which is the G-63 rule applied, not violated. Its lookups "
+        "into the reference tables go through the already-aliased loaders, and the dict "
+        "never leaves the function — the output is a list of records.",
 }
 
 
