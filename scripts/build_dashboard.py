@@ -2986,7 +2986,7 @@ function collRender(){
   const cols = [
     {key:'n', label:'Card', node:r => { const s = el('span','', r.n); attachHover(s, r.n); return s; }},
     {key:'m', label:'Cost', cls:'collcost', get:r => r.m || '—'},
-    {key:'t', label:'Type', cls:'sg', get:r => r.t},
+    {key:'t', label:'Type', cls:'sg', get:r => r.t.split(' // ')[0]},   // the front face; the back's type adds noise, not a filter
     {key:'v', label:'MV', num:true, get:r => r.v < 0 ? '—' : r.v},
     {key:'rr', label:'Rarity', get:r => r.c.r || '?'},
     {key:'q', label:'Owned', num:true, get:r => r.q},
