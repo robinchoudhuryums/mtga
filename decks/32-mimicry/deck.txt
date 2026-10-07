@@ -59,3 +59,6 @@
 # Lands (24)
 23 Island (MSH) 290
 1 Agna Qel'a (TLA) 264
+
+# Flex — queued swaps. See: deck.py flex 32
+#~ -Three Steps Ahead | +Confusticate and Bebother | ROTATION (owned): swap when Three Steps Ahead leaves Standard (~2026). Modal counter-unless-{4} OR draw two, discard one — keeps the counter + draw modes; Refute (hard counter + loot) is the stronger by-the-numbers pick.
