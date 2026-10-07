@@ -10,6 +10,12 @@
 > **Keep this file to the seven sections below.** `/cycle-status` and
 > `/cycle-resume` read the FIRST match of each heading, so a second
 > `## Where I left off` silently shadows the real one. Narrative belongs in
+**2026-10-07 (latest) — the open follow-ons implemented** (block
+`11-followons-broad-implement.md`). check_all green; full suite green on the final tree.
+Open follow-on list pruned to what is still open. **Next:** the owner's calls (11 loss
+reasons, tier letters 55/60/78/82, deck-55 FRA ownership), a collection export for
+`import_collection.py`, browser scenarios, then a fresh `/broad-scan` or `/roadmap`.
+
 > HISTORY.md; per-run summaries belong in `.cycle/blocks/`.
 
 ## Current
@@ -33,6 +39,12 @@ Updated: 2026-10-02 (Batch 1 — see Where I left off)
   fixed its largest cause (deck 47's own picks: median 310 → 144).
 
 ## Completed this cycle
+
+- **2026-10-07 — the STATE.md open follow-ons** (block `11-followons-broad-implement.md`):
+  eleven items, net 7 − 0 = 7. Disclosure covers Vivid / creature-granted mana, land
+  recommender prices gated colours (57 decks' #1 land pick moved), MV-cap target gate no
+  longer reads removal, rationale audit `replace` cue + live-listing fix, arena header
+  never moves to an older copy, P(tapland in first three drops), spread memo.
 
 - **2026-10-03 — scan #11 Batch 9: docs + housekeeping** (BS11-55–60, 62–66). Block
   `11-batch9-docs-broad-implement.md`. Net 1 − 0 = 1. **Scan #11 complete** (BS11-80/81
@@ -219,84 +231,18 @@ Updated: 2026-10-02 (Batch 1 — see Where I left off)
   (conditional mana) — K-12's long form has the probe. (Soul Immolation closed 2026-10-01.)
 
 ## Open follow-on items
-- **suggest-homes' KEY-saturation warning misattributes a doubler-density KEY** to theme
-  overlap ("KEY scores THEME OVERLAP ALONE") — the whole counter-doubler family now trips
-  it at ~23–28% of the roster, which the counters key-at-p75 calibration predicts.
-- **`structural_overlay_hit` ignores a doubler's power restriction** while `doubler_best`
-  applies it (G-70 shape, pre-existing).
+- **CLOSED 2026-10-06 (`/broad-implement` of these follow-ons, block `11-followons-broad-implement.md`):** the KEY-saturation misattribution, the arena-header-moves-back case, the nonland disclosure's Vivid/granted silence (plus three any-colour spellings), the 42a `replace` cue, the comparison-cue blind spot inside a `Measured:` listing, the G-87 recommender half and the checkland type gate, P(tapland in the first three drops), the G-02 loader sweep (no live instance), the `unmet_gate`-at-`redundancy` re-measure (it found the MV-gate bug below), and the `tier_floor_spread` memo. Found already closed: the overlay power restriction (BS11-16), `doubler_axis` and `deck_needs` (2026-10-01). Re-measured, still nothing to build: the BS10-01 Threaten residual (0 live) and wishlist checklands (0 rows).
+- **A typed non-creature card MV gate is unbuilt (G-66 residual, 2026-10-06).** "Return target nonland permanent card with mana value 3 or less" (Primary Research, Season of the Burrow), "instant or sorcery card with mana value N or less" (Daring Waverider, Seifer), "artifact card with mana value 1 or less" (Tezzeret) — the old bare gate counted CREATURES for these; the narrowed one reports nothing. A gate that counts the named type is the fix; measure precision at `redundancy` and `suggest` per G-40.
+- **`wishlist --rank` could pass its Target deck's basics and lands to `_land_value`** (checklands and now gated colours). Re-measured 2026-10-06: still 0 checkland rows in the wishlist, so unmeasurable — revisit when one is wishlisted.
 - **The match digest plan's decision 2 is unbuilt: a `Suggested Why` column** the owner
   confirms in one reply (owner, 2026-09-25). What shipped asks for the word with the game
   details beside it and suggests nothing. Build it only if the owner still wants a
   suggestion; it would slot into `parse_matches._print_loss_prompt`.
 - **Best-of-three play-by-play is unverified** — `mtga_extract.sh` assumes game N is the
   Nth `MatchScope_Game` result; no Bo3 log has been read.
-- **A paste covering only an OLD Arena copy's period moves the `#: arena:` header back to
-  that copy** (one claimant, so nothing to compare). Attribution is unaffected; the next
-  paste carrying the newer copy moves it forward again.
-- **`consistency`'s NONLAND disclosure (G-35) is silent on two real mana engines (found
-  2026-09-27, deck 21).** `lib.land_production` reads Bloom Tender's Vivid clause ("For each
-  color among permanents you control, add one mana of that color") as producing NOTHING, so
-  `uncounted_mana_sources` omits it and the page prints no `ⓘ NONLAND` line at all; Enduring
-  Vitality ("Creatures you control have '{T}: Add one mana of any color'") is a GRANTED
-  ability, excluded by G-35's design. Deck 21 now runs both, so its cast-on-curve figures are
-  floors with nothing saying so. The Vivid pattern is a G-67 pattern hole (measure the pool
-  before widening); the granted case is a disclosure question, not a counting one.
-- **Three stale `#: tier:` claims passed `--audit-rationale` on deck 42a (found 2026-09-27
-  while re-grading it).** (1) "…what the uncounted pieces cannot replace is a cheap
-  unconditional answer on demand, which is why Hero's Downfall stays" — Hero's Downfall had
-  been cut, and the citation was suppressed by `_HISTORY_CUES` matching the ORDINARY verb
-  "replace" in the same clause (probed: removing the sentence's "CUT" changes nothing). The
-  `remov\w*` / `over` / `rather than` shape again, one word over. (2) "the reported 2.91 is the real
-  number" against a live avg MV 3.14: no curve cue adjacent to the figure (G-26's
-  adjacency residual). (3) "PROVISIONAL (unplayed brew)" with six logged matches: the
-  audit reads no match record, by design. Deck 47 carried (3) too, plus "ten craft
-  targets" on a fully owned list. All corrected by hand. For (1), measure what a narrower
-  `replac\w*` cue (e.g. requiring "replaced"/"replacing"/"replaced by") would surface on the
-  roster before changing it — G-26: keep the cue lists narrow, let a sweep be the check.
-- **`doubler_axis` returns ONE axis (G-33 KNOWN GAP 2).** Doubling Season is priced as a
-  tokens-only doubler everywhere (`✱`, `screen`, `suggest-homes`, `cuts`), and a doubler
-  that says bare "counters" gets no `counters` tag (Doubling Season, Loading Zone, Doc
-  Samson). Fix shape: multi-axis return taking the best-supported axis + a `counters` tag
-  for the generic replacement — measure roster-wide first (G-40).
-- **`deck_needs` counts land sources from colour IDENTITY (G-38).** The one surface not on
-  `deck_source_profile`; it also chooses the "scarcest" colour the fixing list is nudged
-  toward. Route it through the profile and re-measure the fixing picks.
-- **G-87 recommender half** — `suggest --lands` and `wishlist._land_value` still score a
-  Verge's gated colour as full fixing (they read `free`). Pricing the gate there is a
-  separate measurement (G-40). Also: `tapland_kind`'s checkland type gate counts basics
-  only while G-87's source gate counts typed nonbasics — two answers to one question.
-- **No surface computes P(a tapped land in your first N land drops).** Hand-rolled six
-  times on 2026-09-20 and it decided both manabases. The G-86 `board_power` shape. MUST
-  stay report-only — `tapland_profile`'s docstring already commits to never feeding a
-  score, and G-25/G-60/G-86 say why.
-- **`wishlist --rank` could pass its Target deck's basics to `_land_value`** and price
-  checklands properly. NOT built: the wishlist holds zero checkland rows today, so the
-  change is unmeasurable and this project measures. Revisit when one is wishlisted.
 - `_central_themes`' relative cutoff moved deck 79's reported count 11 → 8 with no deck
   change (two new tagged lands raised the top weight). Report-only; documented in the
   deck's notes rather than filed as a defect.
-- CLOSED 2026-09-15: `_ALT_COST_RE` now covers `impending`. It was not the count of cards
-  that mattered — `effective_avg_mv` returns None when nothing is priced, so **7 of the 9
-  decks holding an impending card printed NO advisory at all**, a failure that presented as
-  silence. The cost is substituted (right for what the deck PAYS) and the body delay is
-  DISCLOSED by `impending_delay_note` rather than gated, because a gate on the "this
-  permanent" wording would pass all six cards and assert nothing. 7 decks gained a figure,
-  2 moved, **0 of 112 tier floors**. Ride-alongs: `check_patterns` refused the build until
-  `_IMPENDING_RE` was registered; `cmd_tier`'s "Warp/Plot/Foretell" prose named three of
-  nine keywords and now names the shape; G-85's effective-figure POPULATION moved 43 → 50
-  and was only ever hardcoded inside the fire-rate entry's own regex, so it is registered in
-  `figure_drift` as its own figure now. Residual: no impending GRANT form exists, so
-  `_ALT_COST_GRANT_RE` was left alone.
-- **The generalised form of the G-02 fix, unswept:** `load_mana` normalises a value and hands back `(raw, normalised)`; two callers recomputed from `raw` and drifted. No sweep has asked whether any OTHER `load_*` table has the same shape — a loader that fixes something up, and a caller that re-derives it from the untouched input beside it.
-- **THE COMPARISON-CUE SUPPRESSION IS A LIVE BLIND SPOT in the audit K-12 depends on.**
-  `_figure_is_history` silences every figure within ±60 chars of a `_COMPARISON_CUES` word.
-  Deck 47's block hid FIVE figures behind one "rather than" for a full cycle, and both the
-  CLI audit and the pytest roster sweep reported it CURRENT while its interaction figure was
-  wrong. A plausible fix is to stop suppressing inside an explicit live-state listing
-  ("Live vector:"), but that needs G-26's roster-wide precision sweep first.
-- BS10-01 residual: a Threaten whose duration cue sits in a DIFFERENT sentence from the
-  gain-control phrase would be counted. Zero pool instances today; re-check after a rebuild.
-
 - The `or creature` guard in `_ARTIFACT_MATTERS_RE` costs the genuine either-type cards an
   artifact deck would copy or sacrifice (Three Steps Ahead is the measured instance). It is
   holding back 236 cards — do not relax it without re-measuring BOTH sides.
@@ -304,21 +250,12 @@ Updated: 2026-10-02 (Batch 1 — see Where I left off)
   which takes only `vec`, so 112 decks errored identically on both sides and the diff reported
   the answer I expected from a probe that ran nothing (G-63's vacuous shape). The `cuts` half
   compared a set's repr, whose order is nondeterministic (G-54).
-- CLOSED 2026-09-14 (batch 3): the dashboard now renders `back_off` + `craftTotal`; the four
-  reminder-regex copies are one `lib.REMINDER_RE`; `_UNPRICED_DISCLOSE_FLOOR`'s calibration is
-  registered in `figure_drift` as G-85. Nothing left from the batch-1-2 block.
-- `unmet_gate` has three callers now, and `redundancy` is the one never re-measured AT its
-  own surface — the exact lesson the second wiring taught. Small list, so the rate is
-  probably fine; "probably" is what that pass spent the day disproving.
 - G-84's DFC front-face question is closed as "all-faces is the better approximation", NOT as
   correct. A per-face availability read (transform vs modal vs saga-back) would settle it;
   G-63's column list still does not name TYPE on this path.
 - `figure_drift` now covers 13 of CLAUDE.md's ~1,100 numeric claims (K-15 and G-85 joined
   2026-09-14). The rule for what earns an entry is written down; the registry is still
   hand-kept and its misses still invisible.
-- `tier_floor_spread()` is called twice per `check_all` (the BS8-06 sweep and figure_drift)
-  and is not memoized — ~2s of duplicated roster walk, a one-liner nobody has needed yet.
-  G-85's entry adds a further ~1.7s roster walk, lazily.
 - `synergies` LIST ORDER now comes from the pool (258 pure re-orderings). Nothing measured
   moved; any surface showing "the first N themes" shows the pool's order.
 - Regression scenarios 5–8 and 10–19 need a person at a browser; several never walked.

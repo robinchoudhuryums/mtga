@@ -4692,6 +4692,21 @@ class TestTargetCounts:
           "bigguy": {"name": "BigGuy", "type": "Creature — Giant", "text": "", "colors": "B"}}
     MANA = {"reanimate": ("{1}{B}", "2"), "smallguy": ("{1}{B}", "2"), "bigguy": ("{7}{B}", "8")}
 
+
+    def test_the_mv_gate_reads_YOUR_creature_cards_not_a_removal_restriction(self):
+        """2026-10-06: a bare "mana value N or less" fired on 249 pool cards, 160 of them
+        removal or cast restrictions about the OPPONENT's permanents, so Pest Control's
+        sweep printed "creature MV ≤1 in the yard — 0" on `redundancy`."""
+        rx = next(g[0] for g in deck._TARGET_GATES if g[2] == "mv"
+                  and "total" not in g[0].pattern)
+        assert not rx.search("Destroy all nonland permanents with mana value 1 or less.")
+        assert not rx.search("Destroy target creature with mana value 3 or less.")
+        assert rx.search("return target creature card with mana value 1 or less from "
+                         "your graveyard to the battlefield")
+        assert rx.search("Return target creature or Spacecraft card with mana value 5 or "
+                         "less from your graveyard")
+        assert rx.search("Whenever one or more creatures you control with mana value 3 or "
+                         "less deal combat damage")
     def test_mv_cap_counts_only_the_creatures_under_the_cap(self):
         cards = [(1, "Reanimate", "", ""), (1, "SmallGuy", "", ""), (1, "BigGuy", "", "")]
         rows = deck.target_counts(cards, self.CD, self.MANA)
@@ -4815,6 +4830,25 @@ class TestRationaleAuditMisses:
         w = "it attacks the turn it lands. Summon: Bahamut is a {9} that removes two"
         assert not deck._HISTORY_CUES.search(w)
         assert deck._HISTORY_CUES.search("Bahamut was removed for Bringer")
+
+    def test_a_figure_inside_a_live_listing_is_not_hidden_by_a_comparison_cue(self):
+        """Deck 24's "Measured: … 21 central themes" (live 20) sat inside the comparison
+        window of a "would" — suppressed as history although the writer LABELLED it live."""
+        p = "Measured: interaction 9, would rather 21 central themes at a 3.47 curve."
+        i = p.index("21")
+        assert deck._figure_is_history(p, i, i + 2) is False
+        q = "Measured then: compared with 21 central themes."   # not a live label
+        j = q.index("21")
+        assert deck._figure_is_history(q, j, j + 2) is True
+
+    def test_the_bare_verb_replace_is_not_a_history_cue(self):
+        """Deck 42a: "what the uncounted pieces cannot REPLACE is a cheap answer, which
+        is why Hero's Downfall stays" hid a card cut months earlier. Only the tensed
+        swap-history forms suppress (2026-10-06)."""
+        assert not deck._HISTORY_CUES.search("what the uncounted pieces cannot replace is")
+        assert not deck._HISTORY_CUES.search("a replacement effect doubles it")
+        for w in ("Torment replaced Feed", "Binding replaces Jet", "replacing Invasion"):
+            assert deck._HISTORY_CUES.search(w), w
 
     def test_average_is_read_as_well_as_avg(self):
         """"Average nonland MV 4.17" passed while the live value was 4.22 — "avg" is not

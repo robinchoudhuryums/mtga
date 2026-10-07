@@ -563,6 +563,30 @@ class TestLandProduction:
     """`lib.land_production` (BS8-01/02): what a land PRODUCES, from its text — the one
     reader behind every colour-source count and the manabase recommender."""
 
+
+    def test_any_combination_and_different_colors_are_any_colour(self):
+        """Until 2026-10-06 these spellings produced NOTHING (the plural has no "any"
+        after "of"), so Key to the Archive and Firemind Vessel read as colourless."""
+        for t in ("{T}: Add two mana in any combination of colors.",
+                  "{T}: Add two mana of different colors.",
+                  "{2}, {T}: Choose a color. Add an amount of mana of that color equal to "
+                  "your devotion to that color."):
+            p = lib.land_production(t)
+            assert (p["free"] | p["conditional"]) == set("WUBRG"), t
+
+    def test_a_chosen_color_is_choose_once(self):
+        p = lib.land_production("As this land enters, choose up to two colors.\n"
+                                "{T}: Add one mana of a chosen color.")
+        assert p["chosen"] == set("WUBRG")
+
+    def test_board_dependent_colour_is_not_free(self):
+        """Plaza of Heroes / Mox Amber / Vivid read as free rainbow sources (or nothing);
+        what they make depends on the battlefield, so they go to `board`, never `free`."""
+        for t in ("{T}: For each color among permanents you control, add one mana of that "
+                  "color.",
+                  "{T}: Add one mana of any color among legendary creatures you control."):
+            p = lib.land_production(t)
+            assert p["free"] == set() and p["board"] == set("WUBRG"), t
     def test_any_colour_no_extra_cost_is_free_in_all_five(self):
         p = lib.land_production("{T}: Add one mana of any color.", "Colorless")
         assert p["free"] == set("WUBRG") and p["any"] and not p["conditional"]

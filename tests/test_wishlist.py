@@ -612,6 +612,26 @@ class TestRestrictedManaLands:
             "This land enters tapped unless you control a Mount.\n{T}: Add {B}."), {"B"})
 
 
+class TestGatedColourPricing:
+    """G-87's recommender half (2026-10-06): a Verge's second colour was scored as full
+    fixing by `_land_value` while `deck_source_profile` discounted it, so a Verge tied an
+    untapped ungated dual and won the tiebreak in 57 decks' `suggest --lands`."""
+
+    VERGE = {"Card Name": "Probe Verge", "Type": "Land",
+             "Card Text": "{T}: Add {B}.\n{T}: Add {R}. Activate only if you control a "
+                          "Mountain or a Swamp.", "Color(s)": "B/R"}
+
+    def test_no_credit_map_is_the_old_score(self):
+        assert wishlist._land_value(self.VERGE, {"B", "R"}) == \
+            wishlist._land_value(self.VERGE, {"B", "R"}, gate_credit={"R": 1.0})
+
+    def test_a_partly_met_gate_scores_between_mono_and_dual(self):
+        full = wishlist._land_value(self.VERGE, {"B", "R"})
+        half = wishlist._land_value(self.VERGE, {"B", "R"}, gate_credit={"R": 0.5})
+        none = wishlist._land_value(self.VERGE, {"B", "R"}, gate_credit={"R": 0.0})
+        assert none < half < full
+
+
 class TestWishlistCastabilityByCost:
     """BS8-36: `--audit-targets` was pip-aware while `--rank` / `--suggest-targets`
     tested identity ⊆ deck colours — three answers to one question inside one file."""

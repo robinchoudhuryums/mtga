@@ -380,8 +380,8 @@ def _live_figures():
     # ~1,100 numeric claims cannot be complete, so the rule for what earns an entry is:
     # a figure a RULE cites as its evidence, and that a function here can measure.
     #
-    # `tier_floor_spread()` is a roster-wide walk (~2s) and is NOT memoized, so the four
-    # entries share ONE lazy call — `live_fn` only runs on a regex match, so a CLAUDE.md
+    # `tier_floor_spread()` is a roster-wide walk (~2s); the roster call is memoized on
+    # the deck files' and tables' stamps, and the four entries still share ONE lazy call — `live_fn` only runs on a regex match, so a CLAUDE.md
     # that stops making the claim pays nothing.
     _spread = {}
 

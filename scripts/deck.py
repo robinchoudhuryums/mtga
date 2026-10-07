@@ -5865,6 +5865,36 @@ def suggest_lands(d, unowned=False, owned=False, limit=20, fmt=None, any_format=
             _bc = BASIC_TYPE_COLORS.get((n or "").lower())
             if _bc:
                 deck_basic_types.add(_bc)
+    # The deck's lands with the basic TYPES each carries, so a candidate's TYPE-GATED
+    # colour (a Verge's second half, the MSH basic-gated cycle) is priced against THIS
+    # manabase by the same `gated_source_credit` `deck_source_profile` counts with (G-87's
+    # recommender half, 2026-10-06). Until then this recommender scored the gated colour as
+    # full fixing while the count beside it discounted it — two answers to one question.
+    _deck_lands = []          # (qty, types, is_basic)
+    for q, n, _s, _c in cards:
+        nl = (n or "").lower()
+        if nl in BASICS:
+            _bc = BASIC_TYPE_COLORS.get(nl)
+            _deck_lands.append((q, frozenset({_bc}) if _bc else frozenset(), True))
+            continue
+        _tl = (carddata.get(nl) or {}).get("type") or ""
+        if "Land" in _primary_type(_tl):
+            _deck_lands.append((q, land_basic_types(_tl), "Basic" in _primary_type(_tl)))
+    _deck_nlands = sum(q for q, _t, _b in _deck_lands)
+    # A type-named checkland gate ("unless you control a Plains or an Island") is met by
+    # ANY land of that type — a shockland as much as a basic — exactly as G-87's source
+    # gate already counts it. This set held the BASICS' types only, so the two answered
+    # "do I control a land of type X" differently (2026-10-06).
+    for _q, _tt, _bb in _deck_lands:
+        deck_basic_types |= _tt
+
+    def _gate_credit(lp_gated):
+        out = {}
+        for col, need in (lp_gated or {}).items():
+            en = sum(q for q, tt, bb in _deck_lands if (bb if not need else tt & need))
+            # +1: the candidate joins the manabase it is checked against.
+            out[col] = gated_source_credit(en, _deck_nlands + 1)
+        return out
 
     picks = []
     for r in pool:
@@ -5914,7 +5944,8 @@ def suggest_lands(d, unowned=False, owned=False, limit=20, fmt=None, any_format=
         # gate is a fact about the LIST rather than a board state (G-37). Passed, not
         # guessed: `wishlist --rank` has no deck and keeps the conservative score.
         fix = wishlist._land_value(r, deck_colors, basics=deck_basics,
-                                   basic_types=deck_basic_types)
+                                   basic_types=deck_basic_types,
+                                   gate_credit=_gate_credit(lp.get("gated")))
         tags = [t.strip() for t in (r.get("Synergies") or "").split(";") if t.strip()]
         syn = _land_synergy_bonus(tags, central_w)
         short = _land_shortfall_bonus(on_color, deficit)
@@ -6956,6 +6987,10 @@ def deck_commander_colors(deck_meta, carddata=None):
     return commander_identity_lock(deck_meta, carddata)
 
 
+_NONLAND_COND_LABEL = {True: ", extra cost", "board": ", board-dependent",
+                       "granted": ", granted to creatures"}
+
+
 def uncounted_mana_sources(cards, carddata, deck_meta=None):
     """[(qty, name, colours, conditional)] — NONLAND permanents that produce mana.
 
@@ -7014,8 +7049,14 @@ def uncounted_mana_sources(cards, carddata, deck_meta=None):
             continue
         if not any(t in tline.split("//")[0] for t in perm):
             continue
-        prod = land_production(cd.get("text") or "",
-                               commander=deck_commander_colors(deck_meta, carddata))
+        text = cd.get("text") or ""
+        # An ENTERS-triggered Add is a one-shot, like the ritual the type filter drops
+        # ("When this creature enters, if it was bargained, add four mana…" — Realm-
+        # Scorcher Hellkite). A land's Add is an activated ability, so `land_production`
+        # never had to ask; a nonland reader does.
+        text = "\n".join(ln for ln in text.splitlines() if not _TRIGGERED_LINE_RE.match(ln))
+        cmd = deck_commander_colors(deck_meta, carddata)
+        prod = land_production(text, commander=cmd)
         # NO `colors_cell` — `land_production` folds a LAND's identity in because a
         # land's identity IS its mana symbols, which is false for a nonland card, where
         # identity is its casting cost. Passing it would make every coloured permanent a
@@ -7024,7 +7065,65 @@ def uncounted_mana_sources(cards, carddata, deck_meta=None):
         if usable:
             out.append((q, cd.get("name") or n, "".join(sorted(usable)),
                         not prod["free"]))
+            continue
+        # Two shapes that make real mana and that the count deliberately cannot price,
+        # so until 2026-10-06 the disclosure said nothing about them either (found on
+        # deck 21, which runs both). The 4th field is then a LABEL rather than True, so
+        # the extra-cost reading (`is True`) is unchanged:
+        #   "board"   — the colour depends on the battlefield (Vivid: "for each color
+        #               among permanents you control" — Bloom Tender, Faeburrow Elder)
+        #   "granted" — the card GIVES creatures a mana ability (Enduring Vitality,
+        #               Cryptolith Rite). G-35 excludes a granted ability from the card
+        #               that grants it, which is right for a COUNT; a grant to LANDS is a
+        #               land upgrade and stays silent, a grant to creatures is the deck's
+        #               dorks and is disclosed.
+        if prod["board"]:
+            out.append((q, cd.get("name") or n, "".join(sorted(prod["board"])), "board"))
+            continue
+        granted = set()
+        for m in _GRANTED_MANA_RE.finditer(_REMINDER_RE.sub(" ", text)):
+            if _GRANTED_NOT_CREATURE_RE.search(m.group("who")):
+                continue
+            gp = land_production(m.group("ability"), commander=cmd)
+            granted |= gp["free"] | gp["conditional"]
+        if granted:
+            out.append((q, cd.get("name") or n, "".join(sorted(granted)), "granted"))
     return sorted(out, key=lambda r: (-r[0], r[1]))
+
+
+# A triggered line ("When…", "Whenever…", "At the beginning…") — one-shot mana, for the
+# nonland disclosure above.
+# Only an ENTERS trigger: "Whenever this creature attacks, add {R}" (Electro) and "Whenever
+# counters are put on it, add that much" (Berta) recur and ARE sources — a first draft that
+# dropped every triggered line removed 30 real roster disclosures.
+_TRIGGERED_LINE_RE = re.compile(r"\s*when\b[^.,]*\benters\b", re.I)
+# "<who> you control have/has/gain '<ability with an Add clause>'" — the grant itself.
+_GRANTED_MANA_RE = re.compile(
+    r"(?P<who>\b[\w'\- ]{1,40}?)\s+(?:you control\s+)?(?:have|has|gains?)\s+"
+    r"[\"“](?P<ability>[^\"”]*\badd\b[^\"”]*)[\"”]", re.I)
+# Grantees that are not creatures: a land grant upgrades lands already counted; Treasures,
+# Caves and artifacts are the same shape one type over.
+_GRANTED_NOT_CREATURE_RE = re.compile(
+    r"\b(?:lands?|caves?|treasures?|artifacts?|equipment)\b", re.I)
+
+
+TAPPED_DROPS = 3
+
+
+def tapped_in_first_drops(nlands, ntapped, drops=TAPPED_DROPS):
+    """P(at least one of the first `drops` lands you play is one of `ntapped` taplands),
+    hypergeometric over the deck's lands, or None when there is nothing to price.
+
+    Hand-rolled six times on 2026-09-20, and it decided both manabases that day — the
+    G-86 shape (a number every decision needed and no surface computed). The draw ORDER
+    of your lands is a uniformly random arrangement, so the first `drops` are a random
+    `drops`-subset of them. REPORT-ONLY, like `tapland_profile` it sits beside: it must
+    never feed a score (G-25/G-60/G-86)."""
+    if nlands <= 0 or ntapped <= 0:
+        return None
+    k = min(drops, nlands)
+    t = min(ntapped, nlands)
+    return 1.0 - math.comb(nlands - t, k) / math.comb(nlands, k)
 
 
 def tapland_profile(cards, carddata):
@@ -7046,6 +7145,12 @@ def tapland_profile(cards, carddata):
     # decides it for both, so the two cannot disagree.
     deck_basic_types = {c for q, n, _s, _c in cards
                         if (c := BASIC_TYPE_COLORS.get((n or "").lower()))}
+    # …and every TYPED nonbasic (a shockland is a Plains), as `suggest_lands` and G-87's
+    # source gate read it — one answer to "do I control a land of type X" (2026-10-06).
+    for _q, n, _s, _c in cards:
+        _tl = (carddata.get((n or "").lower()) or {}).get("type") or ""
+        if "Land" in _primary_type(_tl):
+            deck_basic_types |= land_basic_types(_tl)
     for q, n, _s, _c in cards:
         row = carddata.get((n or "").lower()) or {}
         typ = row.get("type") or ""
@@ -7137,6 +7242,15 @@ def cmd_consistency(args):
         print(f"  ⓘ taplands: {_tapped} of {_tl_n} nonbasic land(s) enter tapped "
               f"({'; '.join(bits)}) — every figure here prices color ACCESS, not the "
               f"turn a tapland costs; that tempo is invisible to this model.")
+        _pt = tapped_in_first_drops(nlands, sum(q for q, _ in _tl_u))
+        _pt_all = tapped_in_first_drops(nlands, _tapped)
+        if _pt is not None:
+            print(f"    P(≥1 tapland among your first {TAPPED_DROPS} land drops): "
+                  f"{100 * _pt:4.1f}% unconditional"
+                  + (f", {100 * _pt_all:4.1f}% if every conditional one enters tapped"
+                     if _tl_c else "")
+                  + " — a ceiling on the tempo cost, since you choose which land to play "
+                    "and a tapland on turn 1 usually costs nothing.")
     # Arena's Brawl queues (60-card Standard Brawl and 100-card Brawl) make the FIRST
     # mulligan free: a bad seven costs a redraw, not a card. So the number that decides
     # whether the land count is wrong is the chance of a keepable hand within two sevens,
@@ -7201,7 +7315,7 @@ def cmd_consistency(args):
     if _nonland_src:
         _n = sum(q for q, _nm, _cl, _cond in _nonland_src)
         _shown = ", ".join(
-            f"{q}× {nm} ({cl}{', extra cost' if cond else ''})"
+            f"{q}× {nm} ({cl}{_NONLAND_COND_LABEL.get(cond, '')})"
             for q, nm, cl, cond in _nonland_src[:4])
         print(f"\n  ⓘ {_n} NONLAND mana source(s) are NOT in the counts above: {_shown}"
               + ("…" if len(_nonland_src) > 4 else "")
@@ -12164,6 +12278,10 @@ def cmd_suggest_homes(args):
             overlay=lambda t=(cd.get("text") or ""): structural_overlay_hit(
                 t, cards, carddata),
             scale=deck_floor_scale(dmeta, cards))
+        # WHICH branch minted a KEY, for the saturation note below: the overlays promote
+        # on DENSITY, each at its own roster-calibrated key threshold, so a doubler KEY in a
+        # quarter of the roster is that calibration working, not theme overlap saturating.
+        key_via = "theme" if strength == "KEY" else None
         # Color-fixer overlay: a rainbow fixer's worth scales with the deck's color
         # count, which theme-overlap can't see. In a 3+-color deck it's at least a
         # role-player manabase upgrade; in a 4+-color deck it's a KEY one (the fixing
@@ -12179,7 +12297,7 @@ def cmd_suggest_homes(args):
         if is_fixer and len(castable) >= 3:
             fit += _fixer_boost(len(castable), rate=fixer_rate)
             if len(castable) >= 4 and fixer_rate >= _FIXER_KEY_RATE:
-                strength = "KEY"
+                strength, key_via = "KEY", key_via or "fixer"
             elif strength == "tangential":
                 strength = "role-player"
         # DOUBLER overlay, same shape as the fixer one: a card that doubles tokens /
@@ -12196,7 +12314,7 @@ def cmd_suggest_homes(args):
             # without this the boost could not reorder anything: Exalted Sunborn stayed
             # behind every KEY row no matter how many token-makers the deck fielded.
             if dsupport >= doubler_calib(_daxis)[1]:
-                strength = "KEY"
+                strength, key_via = "KEY", key_via or f"doubler ({_daxis})"
             elif _dboost and strength == "tangential":
                 strength = "role-player"
         # The cost-scaling overlay, same contract: bounded, only ever promotes, never
@@ -12206,7 +12324,7 @@ def cmd_suggest_homes(args):
             _cboost = cost_scale_boost(csupport)
             fit += _cboost
             if csupport >= _COST_SCALE_KEY_SOURCES:
-                strength = "KEY"
+                strength, key_via = "KEY", key_via or "cost-scale"
             elif _cboost and strength == "tangential":
                 strength = "role-player"
         # CHOSEN-TYPE overlay, same contract again: bounded, promotes only, never demotes
@@ -12219,7 +12337,7 @@ def cmd_suggest_homes(args):
             _tboost = type_scale_boost(tsupport)
             fit += _tboost
             if tsupport >= _TYPE_SCALE_KEY_SOURCES:
-                strength = "KEY"
+                strength, key_via = "KEY", key_via or "chosen-type"
             elif _tboost and strength == "tangential":
                 strength = "role-player"
         # Bounded curve co-signal (#5): gently sort a top-heavy card BELOW efficient fits
@@ -12235,7 +12353,7 @@ def cmd_suggest_homes(args):
         # per deck, so at most 0.27s across the whole roster.
         gate = "" if already else unmet_gate(card, cards, carddata, mana)
         results.append((fit, dd["id"], already, shared, cut, strength, top_heavy,
-                        pipwarn, tscale if is_tscale else None, gate))
+                        pipwarn, tscale if is_tscale else None, gate, key_via))
 
     if skipped_illegal:
         print(f"({skipped_illegal} castable deck(s) skipped — the card isn't legal in "
@@ -12253,7 +12371,7 @@ def cmd_suggest_homes(args):
     print(f"  {'deck':5} {'strength':11} {'fit':>4}  {'in?':3}  shared themes  ·  suggested cut")
     print("  " + "-" * 82)
     for (fit, did, already, shared, cut, strength, top_heavy, pipwarn,
-         tscale, gate) in results:
+         tscale, gate, _key_via) in results:
         tag = "yes" if already else "no"
         hint = "already maindecked" if already else (f"cut ~ {cut}" if cut else "")
         if tscale and tscale[0]:
@@ -12303,18 +12421,41 @@ def cmd_suggest_homes(args):
     _roster_n = len(roster_decks())
     _keys = [r for r in results if r[5] == "KEY"]
     if _roster_n and len(_keys) / _roster_n >= _HOMES_KEY_SATURATED:
-        _by_theme = {}
+        # Attribute the KEYs before explaining them. This note used to say "KEY scores
+        # THEME OVERLAP ALONE" unconditionally, which was false for a DENSITY overlay's
+        # KEY: the whole counter-doubler family clears its p75-calibrated key threshold in
+        # ~25% of the roster BY CONSTRUCTION, and was told its tags were saturated.
+        _via = {}
         for r in _keys:
-            for t in r[3]:
-                _by_theme[t] = _by_theme.get(t, 0) + 1
-        _top = sorted(_by_theme.items(), key=lambda kv: (-kv[1], kv[0]))[:2]
-        print(f"\n⚠ KEY is SATURATED for this card — KEY in {len(_keys)} of {_roster_n} "
-              f"roster decks ({len(_keys) / _roster_n * 100:.0f}%)"
-              + (f", mostly on `{'`, `'.join(t for t, _ in _top)}`" if _top else "")
-              + ". KEY scores THEME OVERLAP ALONE, so at this rate it is a fact about the "
-                "tags, not a recommendation. Read the ORDER and the shared themes, and "
-                "prefer the NARROW matches — a card KEY in two decks shares something "
-                "specific with them.")
+            _via[r[10] or "theme"] = _via.get(r[10] or "theme", 0) + 1
+        _theme_keys = [r for r in _keys if (r[10] or "theme") == "theme"]
+        _overlay = sorted(((v, n) for v, n in _via.items() if v != "theme"),
+                          key=lambda kv: (-kv[1], kv[0]))
+        _head = (f"\n⚠ KEY is SATURATED for this card — KEY in {len(_keys)} of {_roster_n} "
+                 f"roster decks ({len(_keys) / _roster_n * 100:.0f}%)")
+        if len(_theme_keys) * 2 >= len(_keys):
+            _by_theme = {}
+            for r in _theme_keys:
+                for t in r[3]:
+                    _by_theme[t] = _by_theme.get(t, 0) + 1
+            _top = sorted(_by_theme.items(), key=lambda kv: (-kv[1], kv[0]))[:2]
+            print(_head
+                  + (f", mostly on `{'`, `'.join(t for t, _ in _top)}`" if _top else "")
+                  + (f" ({len(_theme_keys)} on theme overlap; "
+                     + ", ".join(f"{n} via {v}" for v, n in _overlay) + ")"
+                     if _overlay else "")
+                  + ". A theme KEY scores THEME OVERLAP ALONE, so at this rate it is a fact "
+                    "about the tags, not a recommendation. Read the ORDER and the shared "
+                    "themes, and prefer the NARROW matches — a card KEY in two decks shares "
+                    "something specific with them.")
+        else:
+            print(_head + " — " + ", ".join(f"{n} via the {v} overlay" for v, n in _overlay)
+                  + (f", {len(_theme_keys)} on theme overlap" if _theme_keys else "")
+                  + ". An overlay KEY is a DENSITY verdict (the deck holds enough of what "
+                    "this card multiplies), calibrated so roughly the top quarter of the "
+                    "roster clears it — so a wide KEY is the calibration working, not the "
+                    "tags saturating. Rank those homes on the overlay's own count: the "
+                    "densest decks are where the card is worth most.")
     strong = [r for r in results if not r[2]]
     if len(strong) >= 2:
         print(f"\nCastable + on-theme in {len(strong)} decks it's not already in — one owned "
@@ -12946,6 +13087,24 @@ def floor_requirements(vec, band):
 TIER_SPREAD_MAX_SHARE = 0.85
 
 
+_SPREAD_MEMO = {}
+
+
+def _roster_stamp():
+    """(path, mtime_ns, size) for every roster deck file plus the reference CSVs the
+    quality vector reads — the cache key for a roster-wide walk. Same shape as
+    `_file_memo`'s per-file stamp, so an edit to any deck or table invalidates it."""
+    out = []
+    for path in sorted([d["path"] for d in roster_decks()] +
+                       [DEFAULT_CSV, POOL_CSV, MANA_CSV]):
+        try:
+            st = os.stat(path)
+            out.append((path, st.st_mtime_ns, st.st_size))
+        except OSError:
+            out.append((path, None))
+    return tuple(out)
+
+
 def tier_floor_spread(decks=None):
     """{band: count} of the measurable floor across the roster, plus the check_all
     message when one band holds more than `TIER_SPREAD_MAX_SHARE` of it, else None.
@@ -12956,6 +13115,21 @@ def tier_floor_spread(decks=None):
     measurement the saturation guaranteed. This is the distribution check that would
     have shown it. Soft and roster-wide, like the mismatch sweep beside it: a collapsed
     spread is a reason to re-derive the thresholds, not a deck defect."""
+    # Memoized for the ROSTER call only (an explicit `decks` list is the caller's and is
+    # never cached): check_all walked it twice per run, once for the BS8-06 sweep and once
+    # for `check_docs.figure_drift`'s four floor-band figures — ~2s of duplicate work.
+    # Keyed on every deck file's and table's (mtime_ns, size), so a long-running process
+    # (the Flask editor) still sees an edit. The result is copied out: shared state (G-71).
+    if decks is None:
+        key = _roster_stamp()
+        if _SPREAD_MEMO.get("key") != key:
+            _SPREAD_MEMO["key"], _SPREAD_MEMO["val"] = key, _tier_floor_spread_uncached(None)
+        bands, msg = _SPREAD_MEMO["val"]
+        return dict(bands), msg
+    return _tier_floor_spread_uncached(decks)
+
+
+def _tier_floor_spread_uncached(decks):
     from collections import Counter
     bands = Counter()
     for d in (decks if decks is not None else roster_decks()):
@@ -13894,10 +14068,15 @@ _RATIONALE_MIN_LEN = 9
 # language; a rationale states a change in the past or progressive ("removed it",
 # "removing the second wipe"), so those are what the cue needs to match.
 _HISTORY_CUES = re.compile(
-    r"\b(?:was|were|became|becomes|replac\w*|swap\w*|cut\w*|remov(?:ed|ing)|dropp\w*|"
+    r"\b(?:was|were|became|becomes|replac(?:e[sd]|ing)|swap\w*|cut\w*|remov(?:ed|ing)|dropp\w*|"
     r"left|leaves|instead|no longer|previously|earlier|former\w*|queued|flex|"
     r"craft target|alternative|revisit|option|skipped|held out|used to|missing|"
     r"exclud\w*|in over|in for)\b", re.I)
+# `replac(?:e[sd]|ing)`, NOT `replac\w*` (2026-10-06): the bare verb is ordinary English —
+# deck 42a's "what the uncounted pieces cannot REPLACE is a cheap answer, which is why
+# Hero's Downfall stays" hid a card cut months earlier — and so is "replacement" (a rules
+# term). The tensed forms ("X replaced Y", "Binding replaces Jet", "replacing Invasion")
+# are the swap-history idiom. Roster cost when narrowed: 0 claims changed either way.
 # `in over` / `in for` are THIS repo's own replacement idiom — "Boros Charm in over
 # Nurturing Bristleback", "Bard, King of Dale in for Invasion Tactics" — naming the
 # DEPARTING card, which `_cites_as_arriving` (the arriving side) never covered. Added
@@ -14155,8 +14334,26 @@ def _figure_is_history(prose, start, end):
         return True
     if _FIGURE_PAST.search(prose[max(0, start - _FIGURE_BACK_WINDOW):start]):
         return True
+    # Inside an explicit LIVE-STATE listing ("Measured: card advantage 15, …", "Live
+    # vector: …") a figure IS the current claim by the writer's own label, so a comparison
+    # word nearby does not make it history. The ±window cue had hidden FIVE figures in deck
+    # 47's block behind one "rather than" for a cycle, and on 2026-10-06 surfaced deck 24's
+    # "21 central themes" (live 20) behind "rather than" two lines up. Scoped to the label's
+    # own SENTENCE; the past/arrow/quote guards above still apply. Roster: 1 new hit, 1 real.
+    last = None
+    for m in _LIVE_LISTING_RE.finditer(prose, 0, start):
+        last = m
+    if last and not _SENTENCE_END_RE.search(prose, last.end(), start):
+        return False
     lo, hi = max(0, start - _FIGURE_CMP_WINDOW), min(len(prose), end + _FIGURE_CMP_WINDOW)
     return bool(_COMPARISON_CUES.search(prose[lo:hi]))
+
+
+# The labels that introduce a live-state listing — "measured then:" is NOT one (a past
+# cue intervenes, so it does not match).
+_LIVE_LISTING_RE = re.compile(r"\b(?:live vector|measured|live)\s*:", re.I)
+# A sentence break — a decimal point ("3.47") is not one, since no space follows it.
+_SENTENCE_END_RE = re.compile(r"[.;!?](?:\s|$)")
 
 
 # A replacement claim has TWO sides, and only one of them may name an absent card.
@@ -15354,7 +15551,13 @@ def _makes_token(entry, want):
     return False
 
 _TARGET_GATES = [
-    (re.compile(r"mana value (\d+) or less", re.I), "creature MV ≤{0} in the yard", "mv"),
+    # YOUR creature CARDS (a reanimation / cheat / tutor target) or creatures YOU CONTROL —
+    # never a bare "mana value N or less" (2026-10-06). That fired on 249 pool cards, 160 of
+    # them removal or cast restrictions about the OPPONENT's permanents ("Destroy all
+    # nonland permanents with mana value 1 or less" — Pest Control), which `unmet_gate` then
+    # printed as "creature MV ≤1 in the yard — 0" on 3 of its 5 `redundancy` rows.
+    (re.compile(r"(?:creature (?:or \w+ )?cards?\b[^.]{0,60}?\b|creatures? you control with )"
+                r"mana value (\d+) or less", re.I), "creature MV ≤{0} in the yard", "mv"),
     (re.compile(r"total mana value (\d+) or less", re.I), "cards totalling MV ≤{0}", "mv"),
     (re.compile(r"sacrifice (?:an artifact or creature|a creature or artifact)", re.I),
      "artifacts + creatures to sacrifice", "sac_ac"),

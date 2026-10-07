@@ -69,6 +69,19 @@ UNIVERSE = {
                      "Lands you control have \"{T}: Add one mana of any color.\"", "B"),
     # A ritual is one-shot, not a source — and an instant/sorcery is excluded by type.
     "ritual": _card("Ritual", "Sorcery", "Add {B}{B}{B}.", "B"),
+    # 2026-10-06: the two engines the disclosure was silent on (deck 21) — a Vivid dork
+    # whose colour depends on the BOARD, and a grant of a mana ability to CREATURES — plus
+    # an ENTERS-triggered one-shot and an ATTACK-triggered recurring source.
+    "vivid dork": _card("Vivid Dork", "Creature — Elf Druid",
+                        "{T}: For each color among permanents you control, add one mana "
+                        "of that color.", "G", "1", "1"),
+    "dork lord": _card("Dork Lord", "Enchantment",
+                       "Creatures you control have \"{T}: Add one mana of any color.\"", "G"),
+    "etb burst": _card("Etb Burst", "Creature — Dragon",
+                       "When this creature enters, add four mana in any combination of "
+                       "colors.", "R", "4", "4"),
+    "attack battery": _card("Attack Battery", "Creature — Human",
+                            "Whenever this creature attacks, add {R}.", "R", "2", "2"),
     "swamp": _card("Swamp", "Basic Land — Swamp", "", ""),
     # An any-colour land has COLOURLESS identity, so a count that sums land identity reads
     # it as no source at all — the G-38 holdout in `deck_needs`. Only `deck_source_profile`
@@ -1536,6 +1549,19 @@ class TestUncountedManaSources:
         assert by_name["Filter Rock"] is True     # labelled, as a land's would be
         assert by_name["Dork"] is False
 
+    def test_board_dependent_and_creature_grants_are_disclosed_with_a_label(self, synth):
+        """Bloom Tender / Enduring Vitality produced NOTHING here, so deck 21 printed no
+        disclosure at all. Labelled, never counted (the 4th field is a label, so the
+        extra-cost `is True` reading is untouched)."""
+        d = synth(["1 Vivid Dork", "1 Dork Lord", "1 Grantor", "20 Swamp"])
+        _m, cards = deck.parse_deck_file(d["path"])
+        by_name = {n: cond for _q, n, _c, cond in deck.uncounted_mana_sources(cards, UNIVERSE)}
+        assert by_name == {"Vivid Dork": "board", "Dork Lord": "granted"}   # land grant silent
+
+    def test_an_enters_trigger_is_one_shot_but_an_attack_trigger_recurs(self, synth):
+        assert self._names(synth, ["1 Etb Burst", "1 Attack Battery", "20 Swamp"]) == {
+            "Attack Battery"}
+
     def test_it_changes_no_source_count(self, synth):
         """REPORT-ONLY. The disclosure must not move a single figure — a rock is not a
         land drop, which is exactly why `deck_source_profile` excludes it."""
@@ -1704,3 +1730,13 @@ class TestScan11Batch6FormatDrift:
         meta = {"format": "Brawl", "commander": "Zzz Not A Card Batch Six"}
         assert deck.commander_identity_lock(meta, {}) is None
         assert "lock is OFF" in capsys.readouterr().err
+
+
+class TestTappedInFirstDrops:
+    """P(a tapland in your first three land drops) — hand-rolled six times on 2026-09-20."""
+
+    def test_hypergeometric_values(self):
+        assert deck.tapped_in_first_drops(24, 0) is None
+        assert abs(deck.tapped_in_first_drops(24, 1) - 3 / 24) < 1e-9
+        assert deck.tapped_in_first_drops(24, 24) == 1.0
+        assert 0.6 < deck.tapped_in_first_drops(24, 7) < 0.7      # 1 - C(17,3)/C(24,3)

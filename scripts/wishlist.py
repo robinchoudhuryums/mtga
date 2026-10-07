@@ -758,7 +758,7 @@ _LAND_BREADTH_CAP = 1.5
 _CHECKLAND_BASIC_FLOOR = 12
 
 
-def _land_value(row, deck_colors, basics=None, basic_types=None):
+def _land_value(row, deck_colors, basics=None, basic_types=None, gate_credit=None):
     """0–10 MANABASE value of a land for its target deck (F03) — the theme-fit axis
     is meaningless for lands (no synergy tags), so score fixing instead: reward
     producing colors the deck actually runs (a WB dual in mono-W is half-dead),
@@ -789,8 +789,19 @@ def _land_value(row, deck_colors, basics=None, basic_types=None):
     if not prod or not deck_colors:
         return 3.5  # colorless/utility land, or no known target — neutral
     used = prod & deck_colors
-    match = len(used) / len(prod)                 # fraction of its colors the deck uses
-    multi = 1.0 if len(used) >= 2 else 0.5 if len(used) == 1 else 0.0
+    # A TYPE-GATED colour (G-87) counts for the share of games its gate is met in THIS
+    # deck — `gate_credit` is {colour: 0..1} from `lib.gated_source_credit`, the same
+    # pricing `deck_source_profile` counts sources with. None (every deckless caller,
+    # `wishlist --rank` included) keeps the old full credit, so nothing changes there.
+    # At whole-number counts the curve below is the old step function exactly
+    # (0 -> 0, 1 -> 0.5, 2+ -> 1.0); only a fractional colour lands between the steps.
+    gc = gate_credit or {}
+
+    def _eff(cols):
+        return sum(gc.get(c, 1.0) for c in cols)
+    eff_used = _eff(used)
+    match = eff_used / len(prod)                  # fraction of its colors the deck uses
+    multi = min(1.0, 0.5 * eff_used)
     base = 3.5 + 4.5 * match * multi              # ~3.5..8 by color usefulness
     # BREADTH ABOVE TWO. `multi` saturates at two colors, so a source producing all THREE
     # of a three-color deck's colors scored exactly what a two-color dual did — base 8.0
@@ -815,8 +826,9 @@ def _land_value(row, deck_colors, basics=None, basic_types=None):
     # is a source of whichever one you name — but it supplies exactly ONE per game, so
     # crediting it for three is the error that made seven of these outrank real duals.
     simultaneous = used - set(lp["chosen"])
-    if len(simultaneous) > 2:
-        base += min((len(simultaneous) - 2) * _LAND_BREADTH_PER_COLOR, _LAND_BREADTH_CAP)
+    eff_sim = _eff(simultaneous)
+    if eff_sim > 2:
+        base += min((eff_sim - 2) * _LAND_BREADTH_PER_COLOR, _LAND_BREADTH_CAP)
     # Untapped fixing is premium. Read through `lib.tapland_kind`, the same predicate the
     # two REPORTING surfaces use — a substring test for "enters tapped" was the third and
     # last surface of the 2026-09-04 shockland defect: `tapland_profile` and

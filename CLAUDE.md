@@ -543,9 +543,11 @@ is protecting.
   total, and the KEEPABLE patterns added beside them needed a past-tense guard, because the
   shared history cue reaches neither a cue INSIDE the match nor one AFTER it.
   **CLOSED:** the prefix collision (2026-08-11); the copula (2026-09-17); `rather than`,
-  an ORDINARY-ENGLISH cue that silently hid real citations (2026-09-21). **STILL LIVE:** a figure spelled as a WORD is deliberately unbuilt —
-  ~10–20% precision, since "one" and "two" are ordinary prose, so it would put permanent
-  false warnings in `check_all` (the G-78 bar); a per-card "N% on turn 5" has no deck-level
+  an ORDINARY-ENGLISH cue that silently hid real citations (2026-09-21); bare `replace`,
+  the same shape, and a comparison word silencing a figure inside a `Measured:` listing
+  (both 2026-10-06). **STILL LIVE:** a figure spelled as a WORD is deliberately unbuilt —
+  ~10–20% precision ("one" and "two" are ordinary prose — permanent false warnings, the
+  G-78 bar); a per-card "N% on turn 5" has no deck-level
   value to look up; "the swap removes X" about a CUT card reads as live; a 4+-card fragment
   drops as an epithet; a card absent from the POOL is invisible; and a figure needs its cue
   ADJACENT ("the fastest curve here at 2.44", deck 26b). [G-26]
@@ -686,9 +688,8 @@ is protecting.
   regressions so a swap that worsens the deck self-catches — a SOFT guard, since an
   intentional trade is fine. [G-34]
 - **`deck.py mana` also lints color SOURCES, not just pip demand** — it flags cards whose
-  strict pips look thin against the deck's actual sources (`△ Pip-intensive`), catching
-  the "wants UU but this is really a U-splash" problem the identity-subset castability
-  check cannot see. A review signal; it doesn't gate `check_all`. **Sources are read
+  strict pips look thin against the deck's actual sources (`△ Pip-intensive`) — the
+  "wants UU but is really a U-splash" problem. A review signal, not a gate. **Sources are read
   from the land's TEXT through `lib.land_production` (BS8-01) — ONE count,
   `deck.deck_source_profile`, behind `mana`, `consistency`, `deck_color_sources`,
   `pip_depth_warning`, `suggest --lands`/`--needs`/`--ramp` and the rationale audit's
@@ -702,13 +703,14 @@ is protecting.
   opposite behaviours until 2026-09-20: `fast` and `check` (a basic gate, floor 12) now earn
   the premium a shockland already had, while a SLOWLAND and a board state stay conservative —
   false exactly when tempo matters. **A TYPE-NAMED gate ('a Plains or an Island') is read
-  against the deck's OWN basics since 2026-09-23 — pass `basic_types`, or it reads `check`
-  for a deck that can never meet it (81 pairs, 54 of 114 decks).** Test
+  against the deck's OWN lands' types (basics and typed nonbasics) since 2026-09-23 — pass
+  `basic_types`, or it reads `check` for a deck that can never meet it.** Test
   `TAPLAND_CONDITIONAL_KINDS`, not a string.
   **NONLAND sources are DISCLOSED since 2026-09-18, never counted**: `consistency` prints
-  `ⓘ N NONLAND mana source(s) are NOT in the counts above` (**79 of 117 decks**). The
-  exclusion is right — a rock is not a land drop — but its SILENCE was not, because
-  `suggest --ramp` recommends exactly what this count cannot see.
+  `ⓘ N NONLAND mana source(s) are NOT in the counts above` (**80 of 117 decks**). The
+  exclusion is right (a rock is not a land drop); its SILENCE was not. BOARD-dependent colour
+  (Vivid — `land_production`'s `board`, never `free`) and mana GRANTED to creatures are
+  disclosed with a label since 2026-10-06.
   `uncounted_mana_sources` runs `land_production` on a NONLAND's text, so the spend-only
   and granted-ability exclusions are the same ones and the two cannot drift. [G-35]
 - **`deck.py consistency <id>` is the PROBABILITY layer `mana` lacks** — keepable %,
@@ -1027,10 +1029,12 @@ is protecting.
   tracks a gate-honouring simulation within ~1 point on average, against the 4.6-point bias
   it removes. Roster: **93 of 114 decks** run a gated land; **42** changed source counts, all
   down; **0 tier floors moved** (the floor reads no sources). `mana`/`consistency` list each
-  gated land with its credit. **Residuals:** `suggest --lands` and `wishlist._land_value`
-  still score a gated colour as full fixing (they read `free`, the recommender half); the
-  checkland gate in `tapland_kind` counts BASICS only while this one counts typed nonbasics
-  too — two answers to "do I control a land of type X"; board-state gates (Spire of
+  gated land with its credit. **The recommender half CLOSED 2026-10-06**: `suggest --lands`
+  passes `_land_value` a per-colour `gate_credit` from the same `gated_source_credit` (the
+  deckless `wishlist --rank` keeps full credit); 57 of 117 decks' #1 land pick changed, all
+  a Verge that had tied an ungated untapped dual. The checkland gate reads typed nonbasics
+  too now, one answer to "do I control a land of type X" (0 roster changes). **Residuals:**
+  board-state gates (Spire of
   Industry's artifact, Mirrex's entered-this-turn) and Leyline of the Guildpact are
   unmodelled; and a per-card "N% on curve" in deck prose is unaudited (G-26), so a figure
   quoted before this change may be stale without a warning. [G-87]
@@ -1114,7 +1118,10 @@ is protecting.
   library-search family (`_TARGET_KEEP_REM`, where G-75's riders live), and a generic
   "create a token that's a copy" is not counted — what it copies is unknowable. Types come
   from the FRONT face (BS11-70: the whole `A // B` line made a flip-Saga a creature card and
-  dropped `Artifact // Land`; 67 counts moved). [G-66]
+  dropped `Artifact // Land`). **The MV-cap gate reads YOUR creature CARDS since
+  2026-10-06** — a bare "mana value N or less" read removal as a reanimation gate. Residual:
+  a typed non-creature card gate ("permanent card with mana value N or less") is unbuilt.
+  [G-66]
 
 - **A GATE THE DECK MEETS FOR FREE IS NOT A COST, AND EVERY MODEL HERE READ IT AS ONE.**
   G-66's `targets` counts CARDS IN THE LIST, so a card gated on a GAME STATE was invisible
@@ -1616,12 +1623,12 @@ earned it: [C-01]
 
 **Subsystems:**
 - Data: card-library.csv, card-pool.csv, card-mana.csv, card-wishlist.csv, matches.csv
-  (LIVE since 2026-08-10 — 213 matches, 210 attributed across 50 decks, pooled 108-103-1 plus
-  1 voided; the best per-deck row is n=16 (deck 79) against the 20-match floor after eight
+  (LIVE since 2026-08-10 — 228 matches, 225 attributed across 55 decks, pooled 115-111-1 plus
+  1 voided; the best per-deck row is n=16 (deck 79) against the 20-match floor after nine
   weeks, which is why `--report` also POOLS, and why the four HAND columns exist at all —
-  G-74; Opponent Archetype and Loss Reason are still EMPTY in all 213 rows (Note holds only
+  G-74; Opponent Archetype and Loss Reason are still EMPTY in all 228 rows (Note holds only
   the one void reason), so scenario 11 remains the only thing that can prove that loop
-  closes, while On Play is filled on 31 from the play-by-play, which reached its first real
+  closes, while On Play is filled on 46 from the play-by-play, which reached its first real
   rows 2026-09-27), recommendations.csv,
   collection-stamp.json (written only by `import_collection.py --apply` — the date owned
   counts were last EXACT; absent until the first run, and since 2026-09-20 `check_all`

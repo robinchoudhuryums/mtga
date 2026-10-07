@@ -1009,8 +1009,40 @@ def _arena_header_plan(names, times=None, notes=None):
             continue
         existing = [ln for ln in current if _ARENA_HEADER_RE.match(ln)]
         status = "unchanged" if existing == [line] else ("update" if existing else "add")
+        # A paste covering only an OLD copy's period must not move the header BACK to it
+        # (2026-10-06). With one claimant there is nothing to compare inside the paste, so
+        # compare against the record: if the copy the header already names played LATER
+        # (matches.csv) than anything the paste shows for the claimant, the header is
+        # newer and stays. Day resolution, strictly earlier only — a tie still updates.
+        if status == "update" and len(existing) == 1:
+            held = _GUID_RE.search(existing[0])
+            if held and held.group(0).lower() != guid.lower():
+                held_last = _guid_last_played(held.group(0))
+                new_last = _guid_last_played(guid, times)
+                if held_last and new_last and new_last < held_last:
+                    status = "older"
         plan.append((did, rec["path"], line, status))
     return plan
+
+
+def _guid_last_played(guid, times=None):
+    """The latest DAY an Arena deck GUID is known to have been used: the paste's own
+    LastPlayed/LastUpdated stamp when given, else its newest matches.csv row. None when
+    neither knows it."""
+    days = []
+    upd, played = (times or {}).get(guid, (None, None))
+    days += [t.date() for t in (upd, played) if t]
+    try:
+        with open(MATCHES_CSV, newline="", encoding="utf-8") as fh:
+            for r in csv.DictReader(fh):
+                if (r.get("Arena Deck ID") or "").strip().lower() == guid.lower():
+                    try:
+                        days.append(datetime.date.fromisoformat((r.get("Date") or "")[:10]))
+                    except ValueError:
+                        pass
+    except OSError:
+        pass
+    return max(days) if days else None
 
 
 _NAME_HEADER_RE = re.compile(r"^#:\s*name\s*:", re.I)
@@ -1459,8 +1491,12 @@ def map_decks(text, apply=False, out=print):
     out(f"{len(names)} Arena deck(s) in the paste; {len(matched)} resolved to a repo "
         f"deck.\n")
     for did, _path, line, status in plan:
-        mark = {"add": "+", "update": "~", "unchanged": "=", "conflict": "!"}[status]
+        mark = {"add": "+", "update": "~", "unchanged": "=", "conflict": "!",
+                "older": "<"}[status]
         out(f"  {mark} deck {did:<5} {line if status != 'conflict' else line}")
+        if status == "older":
+            out(f"      ^ an OLDER Arena copy than the one the header names (it played "
+                f"later) — header kept, nothing written")
         if status == "conflict":
             out(f"      ^ two Arena decks claim deck {did} — resolve by hand, nothing "
                 f"written")
