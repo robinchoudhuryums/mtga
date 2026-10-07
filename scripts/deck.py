@@ -14068,10 +14068,15 @@ _RATIONALE_MIN_LEN = 9
 # language; a rationale states a change in the past or progressive ("removed it",
 # "removing the second wipe"), so those are what the cue needs to match.
 _HISTORY_CUES = re.compile(
-    r"\b(?:was|were|became|becomes|replac(?:e[sd]|ing)|swap\w*|cut\w*|remov(?:ed|ing)|dropp\w*|"
+    r"\b(?:was|were|became|becomes|replac(?:e[sd]|ing)|(?<!-)(?<!control )(?<!life )swap\w*|cut\w*|remov(?:ed|ing)|dropp\w*|"
     r"left|leaves|instead|no longer|previously|earlier|former\w*|queued|flex|"
     r"craft target|alternative|revisit|option|skipped|held out|used to|missing|"
     r"exclud\w*|in over|in for)\b", re.I)
+# `swap` NOT after `-` / `control ` / `life ` (2026-10-07): those spell a GAME EFFECT
+# ("P/T-swap", "toughness-swap", "control swap", "life swap"), not a deck edit — deck 32's
+# "Kitsune's enter/combat-damage control swap" suppressed every card within the window, so
+# a cut Exclusion Mage cited mid-list audited clean while the same name FIRST in the list
+# was reported. The deck-edit idiom ("swapped in over", "the 2026-10-01 swaps") is untouched.
 # `replac(?:e[sd]|ing)`, NOT `replac\w*` (2026-10-06): the bare verb is ordinary English —
 # deck 42a's "what the uncounted pieces cannot REPLACE is a cheap answer, which is why
 # Hero's Downfall stays" hid a card cut months earlier — and so is "replacement" (a rules

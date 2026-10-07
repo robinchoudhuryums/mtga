@@ -543,9 +543,10 @@ is protecting.
   total, and the KEEPABLE patterns added beside them needed a past-tense guard, because the
   shared history cue reaches neither a cue INSIDE the match nor one AFTER it.
   **CLOSED:** the prefix collision (2026-08-11); the copula (2026-09-17); `rather than`,
-  an ORDINARY-ENGLISH cue that silently hid real citations (2026-09-21); bare `replace`,
+  an ORDINARY-ENGLISH cue hiding real citations (2026-09-21); bare `replace`,
   the same shape, and a comparison word silencing a figure inside a `Measured:` listing
-  (both 2026-10-06). **STILL LIVE:** a figure spelled as a WORD is deliberately unbuilt —
+  (both 2026-10-06); a GAME-EFFECT `swap` ("control swap", 2026-10-07).
+  **STILL LIVE:** a figure spelled as a WORD is deliberately unbuilt —
   ~10–20% precision ("one" and "two" are ordinary prose — permanent false warnings, the
   G-78 bar); a per-card "N% on turn 5" has no deck-level
   value to look up; "the swap removes X" about a CUT card reads as live; a 4+-card fragment

@@ -5650,6 +5650,26 @@ class TestRationaleStalenessLiveMisses:
                 tmp_path, f"#: archetype: Storm, Windrider {idiom} Crib Swap restored interaction to 6.\n")
             assert "Crib Swap" not in got, idiom
 
+    # ---- 2026-10-07: `swap` as a GAME EFFECT is not swap-history ----
+
+    def test_a_game_effect_swap_does_not_suppress_a_list_citation(self, tmp_path):
+        """THE MISS. Deck 32's interaction list described Kitsune as an "enter/combat-
+        damage control swap", and the bare `swap\\w*` cue suppressed every card within the
+        window — a cut Exclusion Mage cited MID-list audited clean, while the same name
+        FIRST in the list (just outside the window) was reported. Same shape as the
+        `rather than` miss above: a positional symptom of an ordinary-domain cue word."""
+        for effect in ("control swap", "P/T-swap", "toughness-swap", "life swap"):
+            got = self._cards(tmp_path,
+                f"#: tier: B. Interaction 4 (Spider-Islanders, Storm, Windrider's {effect}).\n")
+            assert "Spider-Islanders" in got, effect
+
+    def test_a_deck_edit_swap_still_suppresses(self, tmp_path):
+        """The mirror: the swap-HISTORY idiom must stay quiet."""
+        for idiom in ("Spider-Islanders swapped out for the package.",
+                      "The 2026-10-01 swaps took Spider-Islanders out of the list."):
+            got = self._cards(tmp_path, f"#: archetype: {idiom}\n")
+            assert "Spider-Islanders" not in got, idiom
+
     def test_possessive_other_deck_reference_suppresses(self, tmp_path):
         """`_cites_as_history` tested the other-deck frame with `_OTHER_DECK_RE` — the
         word-anchored `deck 42` form alone — while the POSSESSIVE `42's` is the commoner

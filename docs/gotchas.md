@@ -1723,6 +1723,18 @@ including figures the writer LABELLED live. A figure inside an explicit `Measure
 comparison check only (the arrow / quote / past-cue guards still apply). Roster: 1 new hit,
 1 real — deck 24's "21 central themes" against a live 20, fixed in the same change.
 
+**2026-10-07 — a GAME-EFFECT `swap`, the same shape again.** Deck 32's interaction list
+described Kitsune as an "enter/combat-damage control swap", and the bare `swap\w*` cue in
+`_HISTORY_CUES` suppressed every card within the 140-char window. A cut Exclusion Mage cited
+MID-list audited clean, while the same name moved FIRST in the list (just outside the window)
+was reported. It read as a positional bug, exactly as the `rather than` miss did; instrumenting
+the cue search named the word. `swap` is now not a cue right after `-`, `control ` or `life `
+— the roster spells the effect "P/T-swap", "toughness-swap", "control swap" and "life swap" —
+while the deck-edit idiom ("swapped in over", "the 2026-10-01 swaps") still suppresses.
+Roster sweep: 0 findings changed either way (deck 32 had been corrected by hand when the miss
+was noticed). Residual: an unqualified effect verb ("this deck swaps from AHEAD", the
+life-exchange decks 41/42) is still a cue; no citation sits near one today.
+
 ## [G-27] `deck.py tier <id> --audit-rationale` catches a STALE tier argument
 
 **`deck.py tier <id> --audit-rationale` catches a STALE tier argument.** The `#: tier:`
