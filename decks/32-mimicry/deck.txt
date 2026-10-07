@@ -57,7 +57,5 @@
 1 Bilbo, Luckwearer // Burglar's Plot (HOB) 32
 
 # Lands (24)
-21 Island (MSH) 290
-1 Hidden Lair (MSH) 269
-1 Gloomlake Verge (DSK) 260
+23 Island (MSH) 290
 1 Agna Qel'a (TLA) 264
