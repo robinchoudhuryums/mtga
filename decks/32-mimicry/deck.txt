@@ -24,6 +24,7 @@
 1 Multiversal Incursion (MSH) 68
 1 Taigam, Master Opportunist (TDM) 60
 1 Echo, Perceptive Prodigy (MSH) 51
+1 Naga Fleshcrafter (TDM) 52
 
 # Premium copy-targets / value engines
 1 Wan Shi Tong, Librarian (TLA) 78
@@ -53,7 +54,6 @@
 
 # Tempo / enablers
 1 Three Steps Ahead (OTJ) 75
-1 Sokka, Lateral Strategist (TLA) 241
 1 Bilbo, Luckwearer // Burglar's Plot (HOB) 32
 
 # Lands (24)
