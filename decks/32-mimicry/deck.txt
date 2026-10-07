@@ -1,9 +1,9 @@
 #: name: Mimicry
 #: format: Standard
 #: arena: 32 Mimicry, 27b30e8a-7114-44f4-8b4c-df5056758f86
-#: colors: UB
-#: tier: A — Dimir (UB) copy-creatures value/midrange (low A); the UB conversion fixed the two structural holes: added HARD removal (Bitter Triumph / Heartless Act / Feed the Swarm / Gravkill) on top of the soft tempo suite (Tishana / Frozen in Ice / Exclusion Mage / Spider-Woman) — real interaction ~8-9 (heuristic undercounts) — and smoothed the curve. Deep card advantage + a coherent Impostor Syndrome clone engine + Multiversal Incursion finisher. Residual (low-A): singleton variance + a 6-tapped-dual manabase; a clean A would add 2-ofs of the key engines and/or untapped duals.
-#: archetype: Dimir (UB) copy-creatures value/midrange — clone bodies + strong ETB creatures worth copying, now with a black hard-removal splash.
+#: colors: U
+#: tier: A — mono-blue copy-creatures value/midrange (low A). Interaction 8 (Tractor Beam, Enchanted River's Grasp, Noggle the Mind, Three Steps Ahead, Tishana's Tidebinder, Frozen in Ice, Exclusion Mage, Spider-Woman). 2026-10-07: the black splash was CUT (Bitter Triumph, Heartless Act, Feed the Swarm and Gravkill were cast off 6 black sources — 59% on turn 2) for blue lockdown Auras and a spree counter, and the five always-tapped duals became Islands: every card now casts on curve at 90%+ and only Agna Qel'a can enter tapped. Tractor Beam STEALS a creature the clones can then copy. Deep card advantage + a coherent Impostor Syndrome clone engine + Multiversal Incursion finisher. Residual (low-A): no hard removal — every answer is an Aura or a lock that enchantment removal or a bounce undoes — and singleton variance.
+#: archetype: Mono-blue copy-creatures value/midrange — clone bodies + strong ETB creatures worth copying, with Aura lockdowns (and Tractor Beam's steal) for interaction.
 #: notes: Focused from a 93-card pile to a copy-CREATURES primary build. Clone bodies
 #: notes: (Chameleon, Waxen Shapethief, Secret Invasion, Silent Hallcreeper) + copy-token
 #: notes: payoffs (Impostor Syndrome, Relm's Sketching, Ember Island Production,
@@ -45,24 +45,19 @@
 1 Tishana's Tidebinder (LCI) 81
 1 Exclusion Mage (FDN) 508
 1 Spider-Woman, Secret Agent (MSH) 229
-1 Heartless Act (TLA) 103
-1 Feed the Swarm (SOA) 29
-1 Gravkill (EOE) 103
+1 Noggle the Mind (ECL) 60
+1 Enchanted River's Grasp (HOB) 39
+1 Tractor Beam (EOE) 82
 1 Ghost, Spectral Saboteur (MSH) 214
 
 # Tempo / enablers
-1 Bitter Triumph (SOA) 26
+1 Three Steps Ahead (OTJ) 75
 1 Doc Ock's Henchmen (SPM) 30
 1 Sokka, Lateral Strategist (TLA) 241
 1 Hydro-Channeler (SOS) 54
 
 # Lands (24)
-16 Island (MSH) 290
+21 Island (MSH) 290
 1 Hidden Lair (MSH) 269
-1 Undercity Sewers (PZA) 0
 1 Gloomlake Verge (DSK) 260
-1 Soured Springs (OTJ) 264
-1 Serpent's Pass (TLA) 279
-1 Dismal Backwater (FDN) 261
 1 Agna Qel'a (TLA) 264
-1 Uthros, Titanic Godcore (EOE) 260
