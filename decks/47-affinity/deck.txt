@@ -3,9 +3,9 @@
 #: arena: 47 Grid Overload, 6ff4a40e-08bf-41a1-b7ed-3d36ad518807
 #: colors: U
 #: plan: midrange
-#: tier: A — Live vector: interaction 7, card advantage 7, protection 2, avg MV 3.54
+#: tier: A — Live vector: interaction 6 (7 until Desculpting Blast's bounce moved to the report-only tempo line 2026-10-07; the floor now reads B, one band under the letter), card advantage 7, protection 2, avg MV 3.54
 #: tier: (effective 3.51), 10 central themes. Re-graded B→A on 2026-09-27 at the owner's
-#: tier: call: the metrics floor is A and the letter now sits on it. The deck is fully owned —
+#: tier: call: the metrics floor was A and the letter sat on it (B since 2026-10-07, one band under the letter). The deck is fully owned —
 #: tier: Chrome Dome (the lord) and Krang, Master Mind (the finisher) included — and 3-3 over
 #: tier: six logged matches, far under the 20 it takes to read.
 #: tier: THE INTERACTION UNDER-READ IS CLOSED (2026-09-14). This block used to argue that

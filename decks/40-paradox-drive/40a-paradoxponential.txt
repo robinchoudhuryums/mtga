@@ -18,7 +18,7 @@
 #: archetype: body. (Emil is here for its trample line, not its Fractal mana sink.)
 #: tier: A — Simic landfall counters-midrange. Re-graded B->A after the Garruk's Uprising
 #: tier: / The Legend of Kyoshi pass, which closed the last of the three caps the B was
-#: tier: resting on. Metrics floor is A (interaction 7 + card-adv 9 on a 2.94 curve; the
+#: tier: resting on. Metrics floor is B since 2026-10-07 (interaction 6 — Bottomless Pool's bounce moved to the report-only tempo line — + card-adv 9 on a 2.94 curve; the
 #: tier: axis rose when Grappling Kraken was CUT 2026-08-18 for Bonny Pall, Clearcutter,
 #: tier: trading a landfall tap-and-stun for a landfall ENGINE — attack to draw a card and
 #: tier: put a land onto the battlefield from hand or graveyard, plus Beau, whose power
@@ -36,7 +36,7 @@
 #: tier:    creature's power, doubled if kicked, so a huge body answers anything without
 #: tier:    trading; Floodpits Drowner's `{1}{U},{T}` shuffles a stunned creature into its
 #: tier:    owner's library, an unconditional answer an earlier note wrongly dismissed as
-#: tier:    "taps and stuns". 7 interaction pieces, 5 at instant speed, 4 answering a
+#: tier:    "taps and stuns". 6 interaction pieces, 4 at instant speed, 4 answering a
 #: tier:    noncreature permanent, 3 of them unconditional creature answers.
 #: tier: 3. CARD ADVANTAGE (addressed). Garruk's Uprising is the key add and does two jobs:
 #: tier:    it grants the whole team TRAMPLE — previously dependent on keeping Emil or

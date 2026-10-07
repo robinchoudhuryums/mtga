@@ -4,7 +4,7 @@
 #: colors: WU
 #: plan: midrange
 #: tier: B (PROVISIONAL, AND NOW A RE-GRADE CANDIDATE) — still one band under the metrics floor, which reads A on
-#: tier: interaction 8 +1? and card advantage 19 (protection 3, board power 52, a 3.25 printed curve / 3.19 effective,
+#: tier: interaction 7 (Marang River Regent's and Into the Roil's bounce moved to the report-only tempo line 2026-10-07) and card advantage 19 (protection 3, board power 52, a 3.25 printed curve / 3.19 effective,
 #: tier: 24 lands; keepable 84% and `consistency` says no land count improves it). THREE OF THE FOUR REASONS THIS WAS
 #: tier: GRADED UNDER THE FLOOR HAVE WEAKENED, which is why the letter is now a question rather than a settled call.
 #: tier: (1) It is FULLY OWNED as of 2026-09-20 — the "10 craft targets including the keystone" clause was true at the

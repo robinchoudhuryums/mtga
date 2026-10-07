@@ -4,7 +4,7 @@
 #: colors: UR
 #: plan: control
 #: tier: B (PROVISIONAL) — graded deliberately UNDER the A metrics floor (interaction
-#: tier: 12, card advantage 8 — a real control suite). Held at B because: UNTESTED
+#: tier: 13 since 2026-10-07 (Kitnap's steal now counts), card advantage 8 — a real control suite). Held at B because: UNTESTED
 #: tier: first draft; the engine has a real speed question the metrics cannot see
 #: tier: (nothing happens until turn 4-5, and an aggro start punishes a hand of 7-drops
 #: tier: — the keepable/mulligan texture of a 10-haymaker list only shows up in games);

@@ -146,7 +146,10 @@ def zero_role_cards():
     import deck as D
     out = []
     for _key, (name, ctype, text) in _roster_cards().items():
-        if not D.classify_roles(text):
+        # A TEMPO card (bounce / stun / one-turn tap) has no ROLE by design since
+        # 2026-10-07 but is not invisible — `stats`/`tier`/`quality` report it on the
+        # tempo line — so it is not what this radar exists to find.
+        if not D.classify_roles(text) and not D.tempo_effects(text):
             out.append((name, ctype, text))
     return sorted(out, key=lambda r: r[0].lower())
 

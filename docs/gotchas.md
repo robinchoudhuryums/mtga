@@ -1400,6 +1400,26 @@ at risk. It is REPORTED, never fed into `tier_band` — that formula is anchored
 zero-protection decks on first run (2, 37/37a/37b, 40), three of them with `#: protect:`
 headers.
 
+**2026-10-07 — the TEMPO line, and BOUNCE leaves interaction.** Stuns and one-turn taps were
+excluded from interaction on the permanence argument (BS10-02) and so counted nowhere: a deck
+built on them read as answering nothing. `tempo_effects` (bounce / stun / tap, reminder-stripped,
+checked in that order, one kind per card) now feeds a `tempo` count in `role_tally`, counted only
+for a card with NO interaction role — the complement of the axis, so a steal Aura that also stuns
+stays one interaction card. It is printed beside protection in `stats`, `tier` and `quality` and,
+like protection, is never read by `tier_band` (a test pins that the band ignores it).
+
+Single-target bounce was the inconsistent case: it hands the card back after a turn, which is the
+same line, yet 167 of the pool's 194 bounce cards scored `Removal (spot)`. The owner moved it
+(2026-10-07). Measured on the roster, asserting zero errors: 19 decks' interaction changed (17
+down from bounce, 2 up from steal Auras), card advantage 0, **8 tier floors moved down** (18,
+40a, 47 and 51 A→B; 22, 22-brawl, 67 and 68 B→C) against a simulation that predicted 6 — its
+narrower regex missed the multi-target ETB form. No claimed letter ends up two bands above its
+floor. 15 decks' `#: tier:` figures were re-grounded the same day. MASS bounce stays a Sweeper: a
+whole board returned is not a one-card tempo play, and that call was the owner's to revisit.
+The bounce cue also left `_INT_CUES`, so a bounce card is not reported as an interaction
+under-read; `check_roles.zero_role_cards` and the `unclassified` list skip a tempo card, which
+is seen, just not as a role.
+
 
 ## [G-26] `deck.py tier <id> --audit-rationale` catches a STALE tier argument
 
@@ -5343,6 +5363,18 @@ been the top cut candidate as a zero-role card). The suite's roster figure sweep
 56a's `#: tier:` prose quoting interaction 5 — G-67's "run the SUITE" rule doing its job —
 and both decks' prose was re-grounded in the same change. Cheering Crowd's conditional
 mana ability is untouched: a separate pattern hole, not this family.
+
+**2026-10-07 — steal Auras and copy effects.** The steal block's own comment called
+Duskmourn's Domination's "You control enchanted creature" a Control-Magic steal, yet no pattern
+read the templating: Control Magic, Confiscate, Lay Claim, In Bolas's Clutches, Kitnap, Enthralling
+Hold, Grafted Identity and Coerced to Kill scored no interaction (found tuning deck 32). The pattern
+is anchored to a sentence start and closed by its full stop, because Mishra's Domination ("As long
+as you control enchanted creature, it gets +2/+2") is a buff and was the one false positive of the
+unanchored form — 10 matches, 0 false. COPY effects ("a token that's a copy of target/each/that…",
+"enter as a copy of", "becomes a copy of") joined `Payoff / engine` on the doubler argument — a
+card worth what the rest of the deck is; a bare "a copy of it" (self-recursion) is excluded. ~130
+pool cards; Payoff is not a `tier_band` term. Roster: 44 decks' payoff counts moved, `cuts` top-3
+changed in 10, #1 in 2. Role coverage 1,507 → 1,540 of 1,991 roster cards.
 
 ## [K-13] A literal type-name search cannot see the choose-a-type category — and the false negative reads as an answer
 

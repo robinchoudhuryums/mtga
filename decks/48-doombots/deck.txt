@@ -4,7 +4,7 @@
 #: colors: UR
 #: plan: midrange
 #: tier: B — and deliberately ONE BAND BELOW the measurable floor, which reads A on
-#: tier: interaction 8 (4 instant-speed, 6 able to answer a noncreature permanent) plus card
+#: tier: interaction 7 (2 instant-speed, 5 able to answer a noncreature permanent — Into the Flood Maw's bounce moved to the report-only tempo line 2026-10-07) plus card
 #: tier: advantage 4 on a 3.28 curve (Abrade was CUT 2026-08-23 for Esoteric Duplicator,
 #: tier: taking interaction 9 -> 8; Viv Vision was CUT 2026-08-18 for Simulacrum
 #: tier: Synthesizer — her conditional attack-draw for a Construct engine off 14 MV-3+

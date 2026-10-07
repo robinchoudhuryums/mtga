@@ -281,6 +281,10 @@ def _pattern_groups():
         out.append((f"deck.{name}", getattr(deck, name), "norm"))
     for name in ("_NONCREATURE_ANSWER_CUES", "_WIDE_CUES", "_TALL_CUES"):
         out += [(f"deck.{name}", p, "norm") for p in getattr(deck, name)]
+    # The report-only TEMPO line (2026-10-07): bounce / stun / one-turn tap. Dead, a
+    # deck built on bounce would read as answering NOTHING again, the state bounce sat in
+    # for the life of its first pattern.
+    out += [(f"deck._TEMPO_PATTERNS:{kind}", rx, "norm") for kind, rx in deck._TEMPO_PATTERNS]
     # The cheat-cost advisory (Warp / Plot / Foretell priced below the printed cost —
     # the X-cost under-read in reverse). Runs on reminder-stripped text, case-
     # insensitive, so the norm corpus is the right one; dead means every warp body

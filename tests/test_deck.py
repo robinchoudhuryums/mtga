@@ -801,9 +801,13 @@ class TestClassifyRoles:
         "Each opponent sacrifices a permanent of their choice.",
     ]
 
-    def test_bounce_to_owners_hand_is_removal(self):
+    def test_bounce_to_owners_hand_is_tempo_not_removal(self):
+        # The `owner'?s?` spelling fix above still stands — it is what makes these READ
+        # at all — but since 2026-10-07 single-target bounce is TEMPO (the permanence
+        # line BS10-02 drew for stuns and one-turn taps), not interaction.
         for text in self.BOUNCE:
-            assert "Removal (spot)" in deck.classify_roles(text), text
+            assert "Removal (spot)" not in deck.classify_roles(text), text
+            assert deck.tempo_effects(text) == "bounce", text
 
     def test_edict_is_removal(self):
         for text in self.EDICTS:
@@ -7181,8 +7185,13 @@ class TestRolePatternHoles20260906:
             assert "Payoff / engine" in deck.classify_roles(text), text
 
     def test_a_clone_is_not_a_spell_copier(self):
-        assert "Payoff / engine" not in deck.classify_roles(
-            "You may have this creature enter as a copy of any creature on the battlefield.")
+        # The SPELL-copier pattern must not reach a clone. Since 2026-10-07 a clone IS a
+        # payoff — through the separate COPY-EFFECT patterns — so pin the narrow pattern
+        # itself rather than the role, which would now pass for the other reason.
+        import re
+        clone = "you may have this creature enter as a copy of any creature on the battlefield."
+        spell_copy = [p for p in deck._ROLE_PATTERNS["Payoff / engine"] if p.startswith("copy target")]
+        assert spell_copy and not any(re.search(p, clone) for p in spell_copy)
 
     def test_a_lock_and_a_redirect_are_protection_class(self):
         for text in (
@@ -7351,3 +7360,71 @@ class TestScan11Batch2DeckGates:
                          encoding="utf-8")
         rc = deck.cmd_verify(argparse.Namespace(id=str(d), source=str(paste)))
         assert rc == 0 and "identical" in capsys.readouterr().out
+
+
+class TestBatchBRolesAndTempo:
+    """2026-10-07 (deck-32 tune follow-ons, Batch B): steal Auras are interaction, copy
+    effects are payoffs, and bounce / stun / one-turn taps form a REPORT-ONLY tempo line
+    that never reaches `tier_band`."""
+
+    STEALS = ["Enchant creature\nYou control enchanted creature.",
+              "Enchant permanent\nYou control enchanted permanent.\nCycling {2}",
+              "Gift a card\nEnchant creature\nWhen this Aura enters, tap enchanted creature. "
+              "If the gift wasn't promised, put three stun counters on it.\n"
+              "You control enchanted creature."]
+
+    def test_steal_auras_are_removal(self):
+        for text in self.STEALS:
+            assert "Removal (spot)" in deck.classify_roles(text), text
+
+    def test_a_conditional_buff_aura_is_not_a_steal(self):
+        # Mishra's Domination — the one false positive of the unanchored form.
+        assert "Removal (spot)" not in deck.classify_roles(
+            "Enchant creature\nAs long as you control enchanted creature, it gets +2/+2. "
+            "Otherwise, it can't block.")
+
+    def test_copy_effects_are_payoffs(self):
+        for text in ("Target player creates a token that's a copy of target creature you control.",
+                     "For each nontoken creature you control, create a token that's a copy of "
+                     "that creature, except it isn't legendary.",
+                     "You may have this creature enter as a copy of any creature on the battlefield.",
+                     "Enchanted creature becomes a copy of that creature until this Aura leaves."):
+            assert "Payoff / engine" in deck.classify_roles(text), text
+
+    def test_a_self_copy_is_not_a_copy_payoff(self):
+        assert "Payoff / engine" not in deck.classify_roles(
+            "When this creature dies, if it isn't a token, create a token that's a copy of it.")
+
+    def test_tempo_kinds(self):
+        assert deck.tempo_effects("When this creature enters, tap target creature an opponent "
+                                  "controls and put a stun counter on it.") == "stun"
+        assert deck.tempo_effects("Tap target creature. It doesn't untap during its "
+                                  "controller's next untap step.") == "tap"
+        assert deck.tempo_effects("Return target nonland permanent to its owner's hand.") == "bounce"
+
+    def test_tempo_negatives(self):
+        # A self-stun drawback, an untap, a rebuy of YOUR creature, graveyard recursion.
+        for text in ("This creature enters with two stun counters on it.",
+                     "Untap target creature.",
+                     "Return target creature you control to its owner's hand.",
+                     "Return target creature card from your graveyard to your hand."):
+            assert deck.tempo_effects(text) is None, text
+
+    def test_role_tally_counts_tempo_as_the_complement_of_interaction(self):
+        data = {
+            "bouncer": {"type": "Instant", "text": "Return target creature to its owner's hand."},
+            "stunner": {"type": "Creature — Human", "text": "When this creature enters, tap "
+                        "target creature an opponent controls and put a stun counter on it."},
+            "steal": {"type": "Enchantment — Aura", "text": self.STEALS[2]},
+        }
+        cards = [(2, "bouncer", "", ""), (1, "stunner", "", ""), (1, "steal", "", "")]
+        t = deck.role_tally(cards, data)
+        assert t["interaction"] == 1                  # the steal, once
+        assert t["tempo"] == 3                        # 2 bounce + 1 stun; the steal is not tempo
+        assert t["tempo_kinds"] == {"bounce": 2, "stun": 1}
+
+    def test_tempo_never_moves_the_tier_floor(self):
+        base = {"interaction": 6, "card_advantage": 6, "uncastable": 0, "plan": "midrange",
+                "buildable": True, "avg_mv": 3.0, "early_drops": 8, "central_themes": 10}
+        for tempo in (0, 3, 12):
+            assert deck.tier_band(dict(base, tempo=tempo)) == deck.tier_band(base)

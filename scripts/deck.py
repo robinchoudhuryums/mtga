@@ -2007,16 +2007,15 @@ _ROLE_PATTERNS = {
         # controls gets -X/-X" — Cloud of Darkness, Wick's Patrol).
         r"target creature (?:an opponent controls )?gets -[0-9x]",
         r"creature an opponent controls gets -[0-9x]",
-        # BOUNCE. Note `owner'?s?` — MTG templates this as "to its OWNER'S hand", and the
-        # original pattern spelled the alternation `(?:owner|their) hand`, which requires
-        # the literal text "owner hand". So it matched NOTHING: every unconditional bounce
-        # spell in the collection (Boomerang Basics, Into the Flood Maw, ...) scored zero
-        # roles for the entire life of the pattern, while the broad audit cue DID fire —
-        # which is why bounce dominated the roster-wide "possible under-count" list. The
-        # type is a full `_PERM_TYPE_LIST` so "nonland permanent" is covered alongside
-        # "creature", and `[^.]` keeps the span inside one sentence.
-        rf"return (?:up to \w+ )?target (?:[a-z-]+ ){{0,2}}?{_PERM_TYPE_LIST}"
-        rf"[^.]{{0,60}}?(?:owner'?s?|owners'|their) hands?",
+        # SINGLE-TARGET BOUNCE LEFT THIS BUCKET 2026-10-07 (owner's call). It answers a
+        # permanent for a turn and hands the card back, which is the PERMANENCE line the
+        # neutralization block below draws — a one-turn tap-down and a stun were already
+        # excluded on exactly that argument (BS10-02), so bounce scoring full removal was
+        # the inconsistent case: 167 of the pool's 194 bounce cards counted toward the axis
+        # `tier_band` grades. It now counts on the report-only TEMPO line
+        # (`tempo_effects`), beside stuns and one-turn taps. MASS bounce stays a Sweeper
+        # (a whole board is not a one-card tempo play). The pattern, with its history (the
+        # `owner'?s?` spelling that once matched nothing), lives in `_TEMPO_PATTERNS`.
                        # PERMANENT STEAL / EXCHANGE (BS10-01). Taking their creature answers
                        # it AND keeps it — strictly better than destroying it — yet 91 of 98
                        # such pool cards scored no interaction role, against bounce's 4%
@@ -2059,6 +2058,20 @@ _ROLE_PATTERNS = {
                        # permanent, and swapping your worst permanent for their best is an
                        # answer by construction (Trade the Helm, Shrewd Negotiation, Oko).
                        r"\bexchange control of",
+                       # The AURA STEAL (2026-10-07). The comment above already calls
+                       # Duskmourn's Domination's "You control enchanted creature" a
+                       # Control-Magic steal and a real answer, but no pattern read the
+                       # templating, so Control Magic, Confiscate, Lay Claim, In Bolas's
+                       # Clutches, Kitnap, Enthralling Hold, Grafted Identity and Coerced to
+                       # Kill (8 pool cards) scored NO interaction — found tuning deck 32,
+                       # where Kitnap read as a blank. Permanent for as long as the Aura
+                       # stays, the line Pacifism already sits on. Anchored to the START of a
+                       # sentence and closed by its full stop: Mishra's Domination's "As long
+                       # as you control enchanted creature, it gets +2/+2" is a conditional
+                       # BUFF, not a steal, and is the one measured false positive of the
+                       # unanchored form. 10 matches, 0 false positives.
+                       r"(?m)(?:^|\.\s+)you control enchanted (?:creature|permanent|artifact"
+                       r"|planeswalker)\.",
         # EDICT. Sacrifice-a-creature-of-their-choice is removal (it answers hexproof),
         # and it sat in the broad audit cue while missing from this list entirely.
         # EDICTS, generalized (BS8-28): the two narrow forms this replaces ("sacrifices a
@@ -2489,6 +2502,22 @@ _ROLE_PATTERNS = {
         # is what the REST of the deck does is a payoff by definition; the doubler AXIS
         # (`doubler_support`) is a separate, deliberately untaken question.
         r"triggers an additional time",
+        # COPY EFFECTS (2026-10-07), the same argument as the multipliers above: a clone or
+        # a token copy is worth exactly what it copies, so its value is the REST of the
+        # deck. ~130 pool cards scored no role at all — Echocasting Symposium, Multiversal
+        # Incursion, Clone, Mockingbird, Mirrormade, True Polymorph — so `cuts` ranked a
+        # copy deck's ENGINES as its weakest cards (deck 32: Relm's Sketching 1/36,
+        # Multiversal Incursion top-3) while Extravagant Replication alone scored, off its
+        # upkeep trigger. Three templatings: a token copy OF something named ("of target",
+        # "of each", "of that creature" — a bare "a copy of IT" is left out, which keeps
+        # self-recursion like Sphinx of False Conclusions' death trigger off this list),
+        # "enter as a copy of", and "becomes a copy of". Payoff is NOT a `tier_band` term,
+        # so this moves `cuts` / `suggest-homes` credit and no tier floor.
+        r"tokens? (?:that'?s|that are) (?:a )?cop(?:y|ies) of (?:target|another target"
+        r"|up to \w+ (?:other )?target|each|that|those|the chosen|the exiled|enchanted"
+        r"|equipped|a creature|another)",
+        r"enters? as a copy of",
+        r"becomes? a copy of (?:another|target|that|the exiled|up to)",
         r"deals? double that damage",
         r"double all damage that sources you control",
         r"copy target (?:instant|sorcery|creature)[^\n.]{0,25}?spell",
@@ -2873,6 +2902,58 @@ def deck_shape(cards, carddata, mana=None):
             "wide_cards": sorted(set(wide_cards)), "tall_cards": sorted(set(tall_cards))}
 
 
+# TEMPO (2026-10-07): an answer that holds for a turn or two and then lets go — a
+# BOUNCE (the card comes back), a STUN counter, a one-turn TAP-down. The interaction
+# axis deliberately excludes all three (the PERMANENCE line in `Removal (spot)`'s
+# neutralization block; BS10-02), which left them counted NOWHERE, so a deck built on
+# stuns read as having no answers at all. Reported beside interaction and protection,
+# and like protection it is NEVER a `tier_band` term (G-25's shape: a new term there
+# silently re-grades the roster). Kinds are checked in this order and a card counts once.
+_TEMPO_PATTERNS = (
+    # BOUNCE — moved here from `Removal (spot)`. `owner'?s?` is load-bearing: MTG writes
+    # "to its OWNER'S hand", and the original `(?:owner|their) hand` matched NOTHING for
+    # the pattern's whole life. `other` / `two` admit the multi-target ETB form (Marang
+    # River Regent); `_NOT_OWN_OR_CARD` keeps out a save-your-own rebuy and graveyard
+    # recursion ("target creature CARD … to your hand").
+    ("bounce", re.compile(
+        rf"return (?:up to \w+ )?(?:other )?target (?:[a-z-]+,? ){{0,3}}?{_PERM_TYPE_LIST}"
+        rf"{_NOT_OWN_OR_CARD}[^.]{{0,60}}?(?:owner'?s?|owners'|their) hands?", re.I)),
+    # STUN — on something you TARGET or ENCHANT, in the same sentence, so a body that
+    # stuns ITSELF as a drawback ("enters with two stun counters on it") stays out.
+    ("stun", re.compile(
+        r"(?:target|enchanted|creatures? (?:your )?opponents? controls?)[^.]{0,80}?"
+        r"stun counters?", re.I)),
+    # TAP-DOWN for a turn. `\btap` cannot match inside "untap".
+    ("tap", re.compile(
+        r"\btap (?:up to \w+ )?(?:other )?target (?:[a-z-]+ ){0,2}?"
+        r"(?:creature|permanent|artifact|nonland permanent)s?(?! you control)"
+        r"|doesn't untap during its controller's next untap step", re.I)),
+)
+
+
+def _tempo_note(counts):
+    """`4 (2 bounce, 1 stun, 1 tap)` from a tally or vector carrying `tempo` /
+    `tempo_kinds`; a bare `0` when there is none."""
+    n = counts.get("tempo", 0) or 0
+    kinds = counts.get("tempo_kinds") or {}
+    if not n or not kinds:
+        return str(n)
+    return f"{n} (" + ", ".join(f"{v} {k}" for k, v in sorted(kinds.items())) + ")"
+
+
+def tempo_effects(text):
+    """The TEMPO kind a card's text carries ('bounce' / 'stun' / 'tap'), or None.
+
+    Reminder-stripped and lower-cased the way `classify_roles` reads a card. Callers
+    count it only for a card with NO interaction role — tempo is the complement of the
+    interaction axis, so Kitnap (a steal that also stuns) stays one interaction card."""
+    t = _norm_role_text(text)
+    for kind, rx in _TEMPO_PATTERNS:
+        if rx.search(t):
+            return kind
+    return None
+
+
 def protection_effects(text):
     """True if a card grants/has a real protection effect (ward, hexproof,
     indestructible, protection from, untargetable, a counter-that-targets). Counts the
@@ -3197,8 +3278,9 @@ _INT_CUES = re.compile(
     r"|deals? \d+ damage to (?:any target|target creature|each (?:other )?creature|up to \w+ target)"
     r"|\bfights?\b"
     r"|gets? -\d+/-[0-9x]+|gets? \-[0-9x]+/\-[0-9x]+"
-    r"|(?:each opponent|target opponent|target player|each player) sacrifices"
-    r"|return target (?:creature|permanent|nonland permanent)[^.]{0,40}?hand",
+    r"|(?:each opponent|target opponent|target player|each player) sacrifices",
+    # (Bounce — "return target creature … hand" — left this net 2026-10-07 with the role:
+    # it is TEMPO now, reported on its own line, so it is not an interaction under-read.)
     re.I)
 _CA_CUES = re.compile(
     r"draws? (?:two|three|four|five|x|that many) cards?"
@@ -3226,6 +3308,7 @@ def role_coverage_flags(cards, carddata):
     coverage self-audit so a silent under-count becomes an explicit 'read these.'
     Returns (unclassified, under_read):
       • unclassified — noncreature, nonland spells that matched NO functional role
+        (and carry no TEMPO effect either — those are reported on the tempo line)
         (the classifier had nothing to say about them; read the text yourself),
       • under_read   — (name, axis) where a broad interaction / card-advantage cue
         fires but classify_roles tagged no matching role (a likely under-read).
@@ -3271,7 +3354,8 @@ def role_coverage_flags(cards, carddata):
         # noncreature spell but whose BACK is a Creature was dropped from the
         # unclassified list, so the uncertainty channel under-reported on exactly the
         # DFC class this codebase keeps tripping over (broad-scan Batch G).
-        elif not roles and "Creature" not in _primary_type(cd.get("type") or ""):
+        elif (not roles and "Creature" not in _primary_type(cd.get("type") or "")
+              and not tempo_effects(text)):
             unclassified.append(n)
     return unclassified, under_read, no_data
 
@@ -4279,6 +4363,9 @@ def cmd_stats(args):
     prot = role_counts.get("protection", 0)
     print(f"  {'protection':20} {prot:3}  (ward/hexproof/indestructible-class — real "
           "answers to removal, not combat pumps)")
+    print(f"  {'tempo':20} {_tempo_note(role_counts):>3}  (one-turn answers — bounce, stun, "
+          "tap-down — on cards with no interaction role; report-only, never in the tier "
+          "floor)")
     if not prot:
         signature = _protected(meta)
         if signature:
@@ -4663,7 +4750,8 @@ def role_tally(cards, carddata):
     union of Removal/Sweeper/Counter), 'card_advantage', and 'protection' (real
     ward/hexproof/indestructible-class effects — see `protection_effects`)."""
     per_role = {}
-    interaction = ca = prot = 0
+    interaction = ca = prot = tempo = 0
+    tempo_kinds = {}
     for q, n, s, c in cards:
         if n.lower() in BASICS:
             continue
@@ -4679,9 +4767,17 @@ def role_tally(cards, carddata):
             ca += q
         if protection_effects(cd["text"]):
             prot += q
+        if not roles & _INTERACTION_ROLES:
+            kind = tempo_effects(cd["text"])
+            if kind:
+                tempo += q
+                tempo_kinds[kind] = tempo_kinds.get(kind, 0) + q
     per_role["interaction"] = interaction
     per_role["card_advantage"] = ca
     per_role["protection"] = prot
+    # Report-only TEMPO (see `tempo_effects`): never read by `tier_band`.
+    per_role["tempo"] = tempo
+    per_role["tempo_kinds"] = tempo_kinds
     # CONFIDENCE, carried WITH the count. The classifier reports a false negative as a
     # fact: a card it can't parse contributes 0, and `0` reads as "none" rather than
     # "not detected". That is the single most damaging failure this toolkit has had — a
@@ -12620,6 +12716,9 @@ def deck_quality_vector(d):
         # `tier_band` — the floor's formula is anchored by check_tier.py and a new term
         # would silently re-grade the whole roster. Surfaced so a human sees a zero.
         "protection": _tally["protection"],
+        # Report-only TEMPO (bounce / stun / one-turn tap, cards with no interaction
+        # role) — the protection axis's sibling, and like it NEVER a `tier_band` term.
+        "tempo": _tally["tempo"], "tempo_kinds": dict(sorted(_tally["tempo_kinds"].items())),
         # The counts again, rendered WITH their uncertainty (see count_conf). The bare
         # ints stay for the tier floor and the F10 guard, which need numbers to compare;
         # these are what a human should read.
@@ -12726,6 +12825,8 @@ def cmd_quality(args):
     for k in ("buildable", "uncastable", "interaction", "card_advantage",
               "avg_mv", "early_drops", "central_themes"):
         print(f"  {k:15}: {_early_drops_note(vec) if k == 'early_drops' else vec[k]}")
+        if k == "card_advantage":
+            print(f"  {'tempo':15}: {_tempo_note(vec)}   (report-only — not in the tier floor)")
 
     regressions = []
     if getattr(args, "vs", None):
@@ -15056,6 +15157,7 @@ def cmd_tier(args):
           f"interaction {vec.get('interaction_conf') or vec['interaction']} · "
           f"card-adv {vec.get('card_advantage_conf') or vec['card_advantage']} · "
           f"protection {vec.get('protection', 0)} · "
+          f"tempo {vec.get('tempo', 0)} · "
           f"board power {vec.get('board_power', 0)} · "
           f"avg MV {vec['avg_mv']} · central themes {vec['central_themes']}")
     # An {X} spell is priced with X = 0 (its rules MV off the stack), so the avg MV printed
