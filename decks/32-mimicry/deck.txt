@@ -2,7 +2,7 @@
 #: format: Standard
 #: arena: 32 Mimicry, 27b30e8a-7114-44f4-8b4c-df5056758f86
 #: colors: U
-#: tier: A — mono-blue copy-creatures value/midrange (low A). Interaction 8 (Tractor Beam, Enchanted River's Grasp, Noggle the Mind, Three Steps Ahead, Tishana's Tidebinder, Frozen in Ice, Exclusion Mage, Spider-Woman). 2026-10-07: the black splash was CUT (Bitter Triumph, Heartless Act, Feed the Swarm and Gravkill were cast off 6 black sources — 59% on turn 2) for blue lockdown Auras and a spree counter, and the five always-tapped duals became Islands: every card now casts on curve at 90%+ and only Agna Qel'a can enter tapped. Tractor Beam STEALS a creature the clones can then copy. Deep card advantage + a coherent Impostor Syndrome clone engine + Multiversal Incursion finisher. Residual (low-A): no hard removal — every answer is an Aura or a lock that enchantment removal or a bounce undoes — and singleton variance.
+#: tier: A — mono-blue copy-creatures value/midrange (low A). Interaction 9 (Tractor Beam, Enchanted River's Grasp, Noggle the Mind, Three Steps Ahead, Tishana's Tidebinder, Frozen in Ice, Exclusion Mage, Spider-Woman, Kitsune, Dragon's Daughter's enter/combat-damage control swap). 2026-10-07: the black splash was CUT (Bitter Triumph, Heartless Act, Feed the Swarm and Gravkill were cast off 6 black sources — 59% on turn 2) for blue lockdown Auras and a spree counter, and the five always-tapped duals became Islands: every card now casts on curve at 90%+ and only Agna Qel'a can enter tapped. Tractor Beam STEALS a creature the clones can then copy. Deep card advantage + a coherent Impostor Syndrome clone engine + Multiversal Incursion finisher. Residual (low-A): no hard removal — every answer is an Aura or a lock that enchantment removal or a bounce undoes — and singleton variance.
 #: archetype: Mono-blue copy-creatures value/midrange — clone bodies + strong ETB creatures worth copying, with Aura lockdowns (and Tractor Beam's steal) for interaction.
 #: notes: Focused from a 93-card pile to a copy-CREATURES primary build. Clone bodies
 #: notes: (Chameleon, Waxen Shapethief, Secret Invasion, Silent Hallcreeper) + copy-token
@@ -37,8 +37,9 @@
 1 Symbiote Spider-Man (SPM) 156
 1 Daring Waverider (BLB) 44
 1 Silvergill Peddler (ECL) 70
-1 Knowledge Seeker (TLA) 60
+1 Kitsune, Dragon's Daughter (TMT) 41
 1 Messenger Hawk (TLA) 234
+1 Eluge, the Shoreless Sea (BLB) 49
 
 # Interaction
 1 Frozen in Ice (MSH) 54
@@ -54,7 +55,6 @@
 1 Three Steps Ahead (OTJ) 75
 1 Doc Ock's Henchmen (SPM) 30
 1 Sokka, Lateral Strategist (TLA) 241
-1 Hydro-Channeler (SOS) 54
 
 # Lands (24)
 21 Island (MSH) 290
