@@ -1243,6 +1243,10 @@ cell on `;`/`,`, strips zero padding (G-82's `06` = `6`) and matches the request
 token SET; `--set` compares the code exactly. `--note` stays a substring search on purpose —
 a note is prose, and a word inside it is exactly what you are looking for.
 
+**Re-adding a listed card (2026-10-07).** A name-only line matches the listed row by NAME
+(it used to append a duplicate, because the dedupe key carried the input's set/collector),
+and `--target` on a re-add APPENDS the deck id rather than being dropped — see G-82.
+
 ## [G-20] Auto-targeting a wishlist batch: trust STRONG, judge `review`
 
 **Auto-targeting a wishlist batch: trust STRONG, judge `review`.** `wishlist.py
@@ -6465,6 +6469,16 @@ never built while the docs described using it. `cmd_add` now stamps both onto th
 deck id *before any Scryfall work*, which is parse_matches' asymmetric validation (G-74)
 plus the builders' refuse-before-network-work rule. Silent no-op → written value or a
 clean error; there is no third state.
+
+**2026-10-07 — a re-add with `--target` APPENDS.** Giving Uthros Psionicist a second home
+(deck 82 → `82; 32`) had no tool path: a re-add was skipped by design, so it took a scripted
+CSV edit — G-77's shape, a remedy that exists only as a hand edit. "Must not clobber" never
+meant "must not add": `_append_target` adds each missing id (compared through
+`_norm_deck_id`, so `06` is the `6` already there), fills a blank or `—` cell, keeps
+`general` / `concept: …` with the id after it, and never touches Note. Doing it exposed a
+second bug the skip had hidden: the dedupe key carried the INPUT line's set/collector, so a
+name-only `1 Uthros Psionicist` never matched the stored `(EOE) 84` row and appended a
+DUPLICATE. A name-only line now matches a listed row of that name.
 
 **Ten deck directories are zero-padded on disk and no by-id command accepted the padded
 id.** `discover_decks` derives a core id with `str(int(...))`, so `decks/06-dead-or-alive/`

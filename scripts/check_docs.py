@@ -569,7 +569,8 @@ def _live_figures():
          lambda: _type_matters_counts()[1]),
         # G-22's pair. They move on EVERY applied swap — including the ones this repo's own
         # skills make — so they are the fastest-drifting figures in the file, and the
-        # argument the median-rank rule rests on.
+        # argument the median-rank rule rests on. Both carry a ±10% `_DRIFT_TOLERANCE`
+        # (2026-10-07) so an ordinary tune does not re-fire the warning.
         ("G-22 applied swaps with a rank",
          r"across \*\*(\d+) applied swaps", lambda: _ledger_rank_stats()[0]),
         ("G-22 median add rank",
@@ -597,9 +598,37 @@ def figure_drift():
         except Exception as e:                      # missing data file: skip, don't crash
             out.append((label + f" — could not measure ({type(e).__name__})", m.group(1), "?"))
             continue
-        if str(live) != m.group(1):
+        if str(live) != m.group(1) and not _within_tolerance(label, m.group(1), live):
             out.append((label, m.group(1), str(live)))
     return out
+
+
+# Relative tolerance for figures that are COUNTS OVER A GROWING LEDGER. G-22's pair is
+# recomputed from recommendations.csv, which every `swap --apply` appends to — the
+# repo's own skills included — so an exact-match test re-fired this soft warning after
+# EVERY tune (2026-10-07: 1112 -> 1135 and 375 -> 387 inside one deck-32 session) and
+# trained the reader to skip it, the G-07 saturation shape. The rule's ARGUMENT ("the
+# median add sits far outside the suggest window") holds until a figure moves by a real
+# margin, so drift inside ±10% is not reported. Everything not listed here stays an
+# EXACT match: a pool count or a constant should never drift silently. Keyed by label,
+# so `_live_figures`' (label, pattern, fn) triples — unpacked by tests — keep their shape.
+_DRIFT_TOLERANCE = {
+    "G-22 applied swaps with a rank": 0.10,
+    "G-22 median add rank": 0.10,
+}
+
+
+def _within_tolerance(label, stated, live):
+    """True when `label` carries a relative tolerance and `live` is inside it."""
+    tol = _DRIFT_TOLERANCE.get(label)
+    if tol is None:
+        return False
+    try:
+        s = float(str(stated).replace(",", ""))
+        v = float(str(live).replace(",", ""))
+    except ValueError:
+        return False
+    return s != 0 and abs(v - s) <= tol * abs(s)
 
 
 

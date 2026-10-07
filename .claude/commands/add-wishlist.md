@@ -39,7 +39,8 @@ craft target *for*:
   pass **`--target <id>`** (and optionally `--note "…"`) on the SAME `--add` run — a core
   deck for cards shared by its variants (`36`), the variant id for a variant-only card
   (`36a`). It stamps only the rows that run adds, so a re-add never clobbers a Target you
-  set by hand, and an unknown deck id is refused before any Scryfall work rather than
+  set by hand — re-adding a listed card WITH `--target` appends that deck to its Target
+  (`82; 32`) and leaves the Note alone — and an unknown deck id is refused before any Scryfall work rather than
   written as a dangling reference. Until 2026-09-01 those two flags were silently DROPPED
   on `--add` (they are `--rank`/`--budget` filters, and argparse shares them across modes),
   so this stage said to edit the CSV by hand — a documented step with no tool behind it

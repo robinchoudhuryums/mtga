@@ -276,6 +276,24 @@ def _try_seed_power(row, _warned=[]):
         return None
 
 
+def _append_target(row, target):
+    """Add each deck id in `target` (canonical, `; `-joined) that `row`'s Target lacks.
+
+    Never replaces: a blank or `—` Target is simply filled, and `general` / `concept: …`
+    are kept with the id appended after them. Ids compare through `deck._norm_deck_id`,
+    so `6` and `06` are one deck (G-82). Returns True when the cell changed."""
+    import deck as dk
+    cur = (row.get("Target") or "").strip()
+    have = [] if cur in ("", "—") else [t.strip() for t in re.split(r"[;,]", cur) if t.strip()]
+    keys = {dk._norm_deck_id(t) for t in have}
+    add = [t for t in (x.strip() for x in target.split(";")) if t
+           and dk._norm_deck_id(t) not in keys]
+    if not add:
+        return False
+    row["Target"] = "; ".join(have + add)
+    return True
+
+
 def cmd_add(path, target=None, note=None):
     """Append a batch, optionally stamping every NEW row's Target / Note.
 
@@ -285,7 +303,9 @@ def cmd_add(path, target=None, note=None):
     Starcage for deck 6). That is worse than an error, because /add-wishlist's own recipe
     says to "set the home Target" and no flag did it — a documented step with no tool
     behind it, the G-53 shape. Only NEW rows are stamped: a re-add must not clobber a
-    Target somebody set by hand.
+    Target somebody set by hand. A re-add WITH `--target` APPENDS the id to the existing
+    row instead (2026-10-07, `_append_target`) — adding a missing id clobbers nothing —
+    and a name-only line now matches a listed row of that name rather than duplicating it.
 
     An unknown deck id is REFUSED here, BEFORE any Scryfall work, rather than written as
     a dangling Target — the same asymmetry parse_matches uses (G-74) and the same
@@ -351,14 +371,33 @@ def cmd_add(path, target=None, note=None):
                 (r.get("Collector #") or "").strip().lower())
     by_key = {_key(r): r for r in existing}
     seen = set(by_key)
+    # NAME index for a name-only line (2026-10-07). The dedupe key above carries the
+    # input line's set/collector, so `1 Uthros Psionicist` never matched the stored
+    # `(EOE) 84` row and APPENDED A DUPLICATE — which also meant a re-add could never
+    # reach an existing row to give it a second Target.
+    by_name = {}
+    for r in existing:
+        by_name.setdefault((r.get("Card Name") or "").strip().lower(), []).append(r)
 
     added, dupes, owned_hits, reenriched = 0, 0, [], 0
+    retargeted = []
     unenriched_miss, unenriched_err = [], []
     new_rows = []
     for name, setc, cn in entries:
         row, status = enrich(name, setc, cn, pool)
         key = (row["Card Name"].strip().lower(), setc.lower(), cn.lower())
-        if key in seen:
+        listed = [by_key[key]] if key in by_key else (
+            by_name.get(key[0], []) if not setc and not cn else [])
+        if listed and target:
+            # APPEND, never replace (2026-10-07): a re-add with `--target` gives an
+            # already-listed card a second home ("82" -> "82; 32") — the case that took a
+            # hand-edited CSV for Uthros Psionicist. G-82's rule was "a re-add must not
+            # CLOBBER a hand-set Target", and adding a missing id clobbers nothing. Note is
+            # never touched on an existing row.
+            for prev in listed:
+                if _append_target(prev, target):
+                    retargeted.append(prev["Card Name"])
+        if key in seen or listed:
             prev = by_key.get(key)
             # F20: a row added NAME-ONLY during a Scryfall outage (blank Type+Text) is
             # otherwise stuck — a re-add hits the dedupe and never enriches. If this
@@ -394,6 +433,7 @@ def cmd_add(path, target=None, note=None):
         new_rows.append(row)
         seen.add(key)
         by_key[key] = row
+        by_name.setdefault(key[0], []).append(row)
         added += 1
 
     # Stamp the batch annotations onto the rows this run actually added.
@@ -425,6 +465,9 @@ def cmd_add(path, target=None, note=None):
     if reenriched:
         print(f"Re-enriched {reenriched} previously name-only row(s) (added during an "
               "earlier Scryfall outage) now that their details resolved.")
+    if retargeted:
+        print(f"Added Target {target} to {len(retargeted)} already-listed row(s): "
+              f"{', '.join(retargeted[:8])} (existing Target kept; Note untouched).")
     if stamped:
         bits = []
         if target:

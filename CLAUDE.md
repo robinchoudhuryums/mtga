@@ -503,8 +503,8 @@ is protecting.
   **THE LIST IS A WINDOW AND THE RANKING IS THEME FIT, so read a card's ABSENCE as neither
   (BS10-05).** The footer counted the TRUNCATION, so it read "20 suggestion(s)" whether the
   ranking held 20 candidates or 958; it now prints "top N of M ranked candidate(s)"
-  (`--limit 0` for all). Why it matters is measured, not asserted: across **1112 applied swaps
-  that recorded a rank for the card ADDED, the MEDIAN rank is 375** and only **10%** fell
+  (`--limit 0` for all). Why it matters is measured, not asserted: across **1135 applied swaps
+  that recorded a rank for the card ADDED, the MEDIAN rank is 387** and only **10%** fell
   inside the default top 20. `deck.py feedback` reports that distribution. A card chosen for
   a mechanical interaction the tags do not encode ranks far down BY CONSTRUCTION — a
   different problem from the theme gate G-38 describes, and K-15 was its largest single
@@ -1241,7 +1241,7 @@ is protecting.
   "Added 1 card(s)" and wrote BLANK cells, while **`/add-wishlist`'s own recipe names
   "Stage 2 — Set the Target" as a step no flag performed** (G-53 one layer up: documented,
   never built). It now stamps only the rows THAT RUN added — a re-add must not clobber a
-  hand-set Target — and REFUSES an unknown deck id before any Scryfall work (G-74's
+  hand-set Target, so with `--target` it APPENDS the id (`82; 32`, 2026-10-07) — and REFUSES an unknown deck id before any Scryfall work (G-74's
   asymmetry). And ten deck dirs are ZERO-PADDED on disk while `find_deck` matched exactly,
   so `deck.py stats 06` failed for `decks/06-dead-or-alive/`: the id you read off an `ls`
   was the one form every by-id command rejected. `_norm_deck_id` normalizes BOTH sides, and

@@ -349,7 +349,7 @@ below, which blends it with theme fit).
 
 ```
 python3 scripts/wishlist.py --add batch.txt   # append a batch (enriches + AUTO-seeds a Power estimate)
-python3 scripts/wishlist.py --add batch.txt --target 6 --note "why"   # ...stamping the home deck + note onto the NEW rows (an unknown deck id is refused before any Scryfall work)
+python3 scripts/wishlist.py --add batch.txt --target 6 --note "why"   # ...stamping the home deck + note onto the NEW rows (an unknown deck id is refused before any Scryfall work); re-adding a listed card with --target APPENDS that deck to its Target
 python3 scripts/wishlist.py                    # browse the whole wishlist
 python3 scripts/wishlist.py --set SOS --rarity rare,mythic   # filter (AND-ed; --set exact, --target per deck id, --note substring)
 python3 scripts/wishlist.py --color R --synergy firebending  # by color/theme (--color is set-matched, like query.py)
