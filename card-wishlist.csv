@@ -1,4 +1,6 @@
 Card Name,Type,Card Text,Color(s),Synergies,Set Code,Collector #,Rarity,Target,Note,Power,Power Source
+Spider-Sense,Instant,"Web-slinging {U} (You may cast this spell for {U} if you also return a tapped creature you control to its owner's hand.)
+Counter target instant spell, sorcery spell, or triggered ability.",U,counterspell; bounce; web-slinging; evasion; tempo,,,Rare,32,Deck 32 counterspell: counters instants/sorceries/triggered abilities; web-slinging rebuys an ETB creature,4.0,seed
 "Alania, Divergent Storm",Legendary Creature — Otter Wizard,"Whenever you cast a spell, if it's the first instant spell, the first sorcery spell, or the first Otter spell other than Alania you've cast this turn, you may have target opponent draw a card. If you do, copy that spell. You may choose new targets for the copy.",U/R,Otter; Wizard; card draw,BLB,204,Rare,25,copy your first spell of each type each turn,6.0,hand
 Essence Channeler,Creature — Bat Cleric,"As long as you've lost life this turn, this creature has flying and vigilance.
 Whenever you gain life, put a +1/+1 counter on this creature.

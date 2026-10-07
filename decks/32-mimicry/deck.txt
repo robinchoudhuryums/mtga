@@ -2,7 +2,7 @@
 #: format: Standard
 #: arena: 32 Mimicry, 27b30e8a-7114-44f4-8b4c-df5056758f86
 #: colors: U
-#: tier: A — mono-blue copy-creatures value/midrange (low A). Interaction 10 (Tractor Beam, Enchanted River's Grasp, Noggle the Mind, Three Steps Ahead, Tishana's Tidebinder, Frozen in Ice, Glen Elendra Guardian, Secret Invasion, Kitsune, Dragon's Daughter's enter/combat-damage control swap, Bilbo, Luckwearer's Burglar's Plot exchange) plus Kitnap, a steal Aura the classifier does not tag — 11 in play. 2026-10-07: the black splash was CUT (Bitter Triumph, Heartless Act, Feed the Swarm and Gravkill were cast off 6 black sources — 59% on turn 2) for blue lockdown Auras and a spree counter, and the five always-tapped duals became Islands: every card now casts on curve at 90%+ and only Agna Qel'a can enter tapped. Tractor Beam STEALS a creature the clones can then copy. Deep card advantage + a coherent Impostor Syndrome clone engine + Multiversal Incursion finisher. Residual (low-A): no hard removal — every answer is an Aura or a lock that enchantment removal or a bounce undoes — and singleton variance.
+#: tier: A — mono-blue copy-creatures value/midrange (low A). Interaction 11 (Tractor Beam, Enchanted River's Grasp, Noggle the Mind, Three Steps Ahead, Spider-Sense, Tishana's Tidebinder, Frozen in Ice, Glen Elendra Guardian, Secret Invasion, Kitsune, Dragon's Daughter's enter/combat-damage control swap, Bilbo, Luckwearer's Burglar's Plot exchange) plus Kitnap, a steal Aura the classifier does not tag — 12 in play. 2026-10-07: the black splash was CUT (Bitter Triumph, Heartless Act, Feed the Swarm and Gravkill were cast off 6 black sources — 59% on turn 2) for blue lockdown Auras and a spree counter, and the five always-tapped duals became Islands: every card now casts on curve at 90%+ and only Agna Qel'a can enter tapped. Tractor Beam STEALS a creature the clones can then copy. Deep card advantage + a coherent Impostor Syndrome clone engine + Multiversal Incursion finisher. Residual (low-A): no hard removal — every answer is an Aura or a lock that enchantment removal or a bounce undoes — and singleton variance.
 #: archetype: Mono-blue copy-creatures value/midrange — clone bodies + strong ETB creatures worth copying, with Aura lockdowns (and Tractor Beam's steal) for interaction.
 #: notes: Focused from a 93-card pile to a copy-CREATURES primary build. Clone bodies
 #: notes: (Chameleon, Waxen Shapethief, Secret Invasion, Silent Hallcreeper) + copy-token
@@ -32,7 +32,6 @@
 1 Kiora, the Rising Tide (FDN) 45
 1 Mister Fantastic, Reed Richards (MSH) 66
 1 Arcanis the Omnipotent (FDN) 741
-1 April, Reporter of the Weird (TMT) 30
 1 Ms. Marvel, Kamala Khan (MSH) 67
 1 Justice, Vance Astrovik (MSH) 61
 1 Symbiote Spider-Man (SPM) 156
@@ -51,6 +50,7 @@
 1 Tractor Beam (EOE) 82
 1 Ghost, Spectral Saboteur (MSH) 214
 1 Kitnap (BLB) 53
+1 Spider-Sense (SPM) 46
 
 # Tempo / enablers
 1 Three Steps Ahead (OTJ) 75
