@@ -713,7 +713,7 @@ is protecting.
   `basic_types`, or it reads `check` for a deck that can never meet it.** Test
   `TAPLAND_CONDITIONAL_KINDS`, not a string.
   **NONLAND sources are DISCLOSED since 2026-09-18, never counted**: `consistency` prints
-  `ⓘ N NONLAND mana source(s) are NOT in the counts above` (**80 of 117 decks**). The
+  `ⓘ N NONLAND mana source(s) are NOT in the counts above` (**79 of 117 decks**). The
   exclusion is right (a rock is not a land drop); its SILENCE was not. BOARD-dependent colour
   (Vivid — `land_production`'s `board`, never `free`) and mana GRANTED to creatures are
   disclosed with a label since 2026-10-06.
