@@ -6,11 +6,15 @@
 #: archetype: Mono-blue copy-creatures value/midrange — clone bodies + strong ETB creatures worth copying, with Aura lockdowns (and Tractor Beam's steal) for interaction.
 #: notes: Focused from a 93-card pile to a copy-CREATURES primary build. Clone bodies
 #: notes: (Chameleon, Waxen Shapethief, Secret Invasion, Silent Hallcreeper) + copy-token
-#: notes: payoffs (Impostor Syndrome, Relm's Sketching, Ember Island Production,
+#: notes: payoffs (Impostor Syndrome, Relm's Sketching, Mirror Room,
 #: notes: Multiversal Incursion) copy a shell of premium ETB value creatures (Wan Shi Tong,
 #: notes: Marang River Regent, Arcanis, Kiora, Justice, Mister Fantastic). Echo/Taigam are a
 #: notes: light ability/spell-copy secondary. Cut the spellslinger half (prowess/Opus/cast-
 #: notes: matters) as off-plan for a creature deck, plus off-color and high-cost clunkers.
+#: notes: 2026-10-08: Mirror Room // Fractured Realm in for Ember Island Production — a
+#: notes: copy that stays legendary (Ember's nonlegendary rider was weighed) but the room's
+#: notes: second door doubles every ETB/attack trigger the clone shell is built on. Moonlit
+#: notes: Meditation in for Symbiote Spider-Man (Uthros Psionicist kept by owner's call).
 
 # Copy engine — creatures
 1 Impostor Syndrome (SPM) 34
@@ -19,7 +23,7 @@
 1 Secret Invasion (MSH) 72
 1 Silent Hallcreeper (DSK) 72
 1 Echocasting Symposium (SOS) 44
-1 Ember Island Production (TLA) 48
+1 Mirror Room // Fractured Realm (DSK) 67
 1 Extravagant Replication (FDN) 154
 1 Multiversal Incursion (MSH) 68
 1 Taigam, Master Opportunist (TDM) 60
@@ -34,7 +38,7 @@
 1 Starwinder (EOE) 79
 1 Ms. Marvel, Kamala Khan (MSH) 67
 1 Uthros Psionicist (EOE) 84
-1 Symbiote Spider-Man (SPM) 156
+1 Moonlit Meditation (EOE) 69
 1 Emeritus of Ideation // Ancestral Recall (SOS) 45
 1 Kitsune, Dragon's Daughter (TMT) 41
 1 Wingblade Disciple (TDM) 65
