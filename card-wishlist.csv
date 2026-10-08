@@ -29,6 +29,8 @@ Whenever you activate an exhaust ability, put a +1/+1 counter on this creature."
 Central Elevator // Promising Stairs,Enchantment — Room // Enchantment — Room,"When you unlock this door, search your library for a Room card that doesn't have the same name as a Room you control, reveal it, put it into your hand, then shuffle.
 (You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.) // At the beginning of your upkeep, surveil 1. You win the game if there are eight or more different names among unlocked doors of Rooms you control.
 (You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",U,Room; surveil; graveyard,DSK,44,Rare,51,,5.5,hand
+Gloomlake Verge,Land,"{T}: Add {U}.
+{T}: Add {B}. Activate only if you control an Island or a Swamp.",U/B,mana,DSK,260,Rare,22,deck 22 tune 2026-10-08,4.0,seed
 Grievous Wound,Enchantment — Aura,"Enchant player
 Enchanted player can't gain life.
 Whenever enchanted player is dealt damage, they lose half their life, rounded up.",B,Aura; aura; enchant,DSK,102,Rare,,,3.0,seed
@@ -223,7 +225,7 @@ Lassoed by the Law,Enchantment,"When this enchantment enters, exile target nonla
 When this enchantment enters, create a 1/1 red Mercenary creature token with ""{T}: Target creature you control gets +1/+0 until end of turn. Activate only as a sorcery.""",W,tokens; removal; etb; pump,OTJ,18,Uncommon,3; 36a,,5.5,hand
 Make Your Own Luck,Sorcery,"Look at the top three cards of your library. You may exile a nonland card from among them. If you do, it becomes plotted. Put the rest into your hand. (You may cast it as a sorcery on a later turn without paying its mana cost.)",U/G,selection; plot; tempo; cost-reduction,OTJ,218,Uncommon,,,3.5,seed
 Decorum Dissertation,Sorcery — Lesson,"Target player draws two cards and loses 2 life.
-Paradigm (Then exile this spell. After you first resolve a spell with this name, you may cast a copy of it from exile without paying its mana cost at the beginning of each of your first main phases.)",B,Lesson; paradigm; exile cast; card advantage,SOS,78,Mythic,41,Paradigm: a free draw-2 each main phase once resolved; the life is refunded by the Negative swap,6.0,seed
+Paradigm (Then exile this spell. After you first resolve a spell with this name, you may cast a copy of it from exile without paying its mana cost at the beginning of each of your first main phases.)",B,Lesson; paradigm; exile cast; card advantage,SOS,78,Mythic,41; 22,Paradigm: a free draw-2 each main phase once resolved; the life is refunded by the Negative swap,6.0,seed
 Comforting Counsel,Enchantment,"Whenever you gain life, put a growth counter on this enchantment.
 As long as there are five or more growth counters on this enchantment, creatures you control get +3/+3.",G,counters; pump,SOS,143,Rare,7,"broadly useful — best 7 (Earth's Mightiest); also 9,19b,19a",4.0,hand
 Deathcap Glade,Land,"This land enters tapped unless you control two or more other lands.
@@ -308,6 +310,8 @@ At the beginning of your end step, earthbend 2. (Target land you control becomes
 Nonbasic lands enter tapped.
 {7}: Put a conqueror counter on Zhao.
 As long as Zhao has a conqueror counter on him, nonbasic lands are Mountains. (They lose all other land types and abilities and have ""{T}: Add {R}."")",R,Human; Soldier; counters; mana; menace; evasion,TLA,162,Rare,14,"Fire Nation flavor (heuristic top 13 on counters/mana) | fits: 13,17",4.0,hand
+"Lo and Li, Twin Tutors",Legendary Creature — Human Advisor,"When Lo and Li enter, search your library for a Lesson or Noble card, reveal it, put it into your hand, then shuffle.
+Noble creatures you control and Lesson spells you control have lifelink.",B,Human; Advisor; Noble; lifegain; lifelink,TLA,108,Uncommon,22,deck 22 tune 2026-10-08,2.5,seed
 Geyser Leaper,Creature — Human Warrior Ally,"Flying
 Waterbend {4}: Draw a card, then discard a card. (While paying a waterbend cost, you can tap your artifacts and creatures to help. Each one pays for {1}.)",U,Human; Warrior; Ally; card draw; flying; evasion; waterbend; bending,TLA,52,Common,16,waterbend {4} loot on a flier; the 2026-09-18 waterbend rebuild's one craft,1.0,seed
 Beastmaster Ascension,Enchantment,"Whenever a creature you control attacks, you may put a quest counter on this enchantment.

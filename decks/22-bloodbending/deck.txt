@@ -10,9 +10,10 @@
 #: tier: Watery Grasp, Ruinous Waterbending. The mill plan is now an engine, not a sideline:
 #: tier: The Water Crystal adds four to every opponent mill, so Master's Councillors, Exhibition
 #: tier: Tidecaller, Riverchurn Monument, The Ancient One and Master Pakku each become real clocks
-#: tier: beside Jace's library exile and Kitsune's Technique. What still caps it: the {B}{B}
-#: tier: cards (Ral Zarek, Ruinous Waterbending, Liliana) cast a turn late off 11 black sources,
-#: tier: and Bo1 mill is slow against a fast aggro start.
+#: tier: beside Jace's library exile and Kitsune's Technique, and The Master of Lake-town turns
+#: tier: every point of life loss into mill. What still caps it: the {B}{B} cards (Ral Zarek,
+#: tier: Ruinous Waterbending, The Master of Lake-town, Decorum Dissertation, Liliana) cast a turn
+#: tier: late off 13 black sources, the curve is top-heavy, and Bo1 mill is slow against fast aggro.
 #: colors: UB
 #: archetype: Dimir (U/B) mill / card-advantage control — Hama + waterbend, The Water Crystal mill engine (Councillors, Exhibition Tidecaller, Riverchurn Monument, The Ancient One), graveyard payoffs, Jace, Reality Sculptor as the library-out finisher.
 #: notes: Dimir (U/B) mill / card-advantage control, built around Hama, the Bloodbender
@@ -36,6 +37,12 @@
 #: notes: Riverchurn Monument for Inspiration from Beyond, Quag Feast for Abandon Attachments,
 #: notes: Liliana, Dreadhorde General for Spirit Water Revival (its waterbend mode shuffled the
 #: notes: graveyard the descend/threshold cards need), and one Island became a Swamp.
+#: notes: 2026-10-08 third wave: Decorum Dissertation for Waterbending Lesson (Lesson for
+#: notes: Lesson; a free draw-two every turn), Homunculus Horde for Foggy Swamp Spirit Keeper,
+#: notes: The Master of Lake-town for Symbiote Spider-Man (life loss becomes mill, +4 with The
+#: notes: Water Crystal), Lo and Li for Silvergill Peddler (tutors Secret of Bloodbending or
+#: notes: Decorum Dissertation), Serpent of the Pass for Wan Shi Tong. Manabase 10 Island /
+#: notes: 6 Swamp / 2 Gloomlake Verge for the five {B}{B} cards.
 
 # Nonland — mill / graveyard payoffs
 1 Hama, the Bloodbender (TLA) 224
@@ -47,20 +54,19 @@
 1 Ral Zarek, Guest Lecturer (SOS) 97
 1 The Ancient One (LCI) 222
 1 Riverchurn Monument (DFT) 57
+1 The Master of Lake-town (HOB) 77
 
 # Nonland — card-advantage engines
-1 Wan Shi Tong, Librarian (TLA) 78
-1 Silvergill Peddler (ECL) 70
 1 The Water Crystal (FIN) 85
 1 The Everflowing Well (LCI) 56
 1 Leader, Super-Genius (MSH) 64
 1 Secret of Bloodbending (TLA) 69
-1 Waterbending Lesson (TLA) 80
+1 Decorum Dissertation (SOS) 78
 1 Cruel Calculations (FRA) 26
 
 # Nonland — "draw your second card" payoffs
 1 Kaito, Bane of Nightmares (DSK) 220
-1 Foggy Swamp Spirit Keeper (TLA) 222
+1 Homunculus Horde (FDN) 41
 1 Super Intelligence (MSH) 77
 1 Master's Councillors (HOB) 47
 
@@ -77,16 +83,17 @@
 # Nonland — bodies / value
 1 Yue, the Moon Spirit (TLA) 83
 1 Master Pakku (TLA) 63
-1 Symbiote Spider-Man (SPM) 156
 1 Taskmaster, Mercenary Mimic (MSH) 232
 1 The Legend of Kuruk (TLA) 61
 1 Superior Spider-Man (SPM) 155
 1 Liliana, Dreadhorde General (FDN) 176
+1 Lo and Li, Twin Tutors (TLA) 108
+1 Serpent of the Pass (TLA) 70
 
 # Lands
 1 Agna Qel'a (TLA) 264
-1 Gloomlake Verge (DSK) 260
+2 Gloomlake Verge (DSK) 260
 4 Hidden Lair (MSH) 269
 1 Watery Grave (EOE) 261
-12 Island (MSH) 290
-5 Swamp (MSH) 292
+10 Island (MSH) 290
+6 Swamp (MSH) 292
