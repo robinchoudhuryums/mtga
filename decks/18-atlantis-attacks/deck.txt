@@ -2,7 +2,7 @@
 #: format: Standard
 #: tier: A — Blue-white Merfolk tap/convoke tempo, ON the A metrics floor since the 2026-10-08 tune:
 #: tier: interaction 7 (counters Refute, Mana Sculpt, Ooze Spill, Confusticate and Bebother and Tishana's
-#: tier: Tidebinder; Kitnap's steal; Erode), card advantage 10, protection 4, 8 central themes. Six of the
+#: tier: Tidebinder; Kitnap's steal; Erode), card advantage 10, protection 4, 9 central themes. Six of the
 #: tier: seven answers are instant speed and six can hit a noncreature permanent. What the floor cannot see
 #: tier: is the engine: every tap of a nontoken Merfolk makes a hexproof token (Deeproot Pilgrimage), a Faerie
 #: tier: (Pestered Wellguard) or a loot (Silvergill Peddler), and convoke, waterbend, teamwork and Harmonized
@@ -50,7 +50,7 @@
 1 Wanderbrine Trapper (ECL) 42
 1 Sygg's Command (ECL) 244
 1 Deeproot Pilgrimage (LCI) 52
-1 Into the Flood Maw (BLB) 52
+1 Atlantean Cavalry (MSH) 45
 1 Champions of the Shoal (ECL) 46
 1 Erode (SOS) 15
 1 Brineborn Cutthroat (FDN) 152
