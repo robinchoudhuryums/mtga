@@ -500,7 +500,7 @@ python3 scripts/deck.py resolve --fix 76 --apply   # ...and REPAIR the bad ones 
 python3 scripts/deck.py check 20a      # owned vs needed + a castability lint (off-color cards)
 python3 scripts/deck.py diff 20 20a   # what variant 20a changes vs base deck 20
 python3 scripts/deck.py arena 20a      # emit an Arena-importable decklist to paste back (a Brawl deck's commander goes under its own Commander heading, as Arena exports it)
-python3 scripts/deck.py stats 20a      # curve, colors, types, cost flags, roles + interaction profile
+python3 scripts/deck.py stats 20a      # curve, colors, types, cost flags, roles + interaction profile + protection / tempo lines
 python3 scripts/deck.py mana 20a       # hybrid-aware color requirements + castability lint
 python3 scripts/deck.py consistency 20a # opening-hand keepable %, land drops, P(cast on curve) + source fix
 python3 scripts/deck.py tribes 20a     # creature-subtype breakdown + type-matters synergies
@@ -811,6 +811,14 @@ was reporting every warded creature as a missed answer.) `stats` also prints an
 count treats all removal alike, so it breaks interaction down by **speed** (instant
 vs sorcery) and by whether it can answer a **noncreature permanent** (planeswalker /
 enchantment / artifact), flagging "all sorcery-speed" or "no noncreature answer".
+
+**Since 2026-10-07 single-target bounce is not interaction.** It hands the card back after
+a turn, so it now counts on a report-only **tempo** line beside protection — bounce, stun
+counters and one-turn tap-downs on cards with no interaction role, e.g. `tempo 3 (1 bounce,
+1 stun, 1 tap)` in `stats`, `tier` and `quality`. Like protection, tempo never feeds the
+tier floor. Mass bounce still counts as a sweeper. The same pass made **steal Auras**
+("You control enchanted creature" — Control Magic, Kitnap) count as removal and **copy
+effects** (token copies, clones, "becomes a copy") count as payoffs.
 
 Every role **count carries its own uncertainty**. A heuristic classifier reports a
 false negative as a fact — a card it can't parse contributes 0, and `0` reads as
