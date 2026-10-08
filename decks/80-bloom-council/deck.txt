@@ -1,5 +1,6 @@
 #: name: Bloom Council (GW lifegain superfriends)
 #: format: Standard
+#: arena: 80 Bloom Council, cb17cb87-c770-4488-83aa-999a1ea3eeaf
 #: colors: GW
 #: archetype: GW lifegain superfriends built from the Reality Fracture pile. The plan is a TWO-WAY loop: every life gain puts loyalty on every planeswalker (Way of the Mentor; Ajani Resolute on himself), and every loyalty activation gains a life (Way of the Paradox). Liliana the Faultless and Greenhouse Propagator gain life for EACH creature or token that enters, so every token is two life gains and so two loyalty on every walker — and Elspeth, Storm Slayer and Exalted Sunborn double the tokens. The Ways give every walker (the Jace token their own empower creates, included) extra loyalty abilities to spend it on. Distinct from deck 46 Lightwing (growing lifelink fliers): this deck wins through planeswalkers, and shares ≤3 nonland cards with any roster deck.
 #: plan: midrange

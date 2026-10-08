@@ -3,10 +3,10 @@
 #: colors: GUR
 #: plan: midrange
 #: tier: B — PROVISIONAL, GRADED 2026-08 on an UNBUILT list (5 craft targets, zero games).
-#: tier: AT the measurable floor, which reads B on interaction 7 plus card advantage 2
+#: tier: AT the measurable floor, which reads B on interaction 6 (Boomerang Basics' bounce moved to the report-only tempo line 2026-10-07) plus card advantage 2
 #: tier: since the 2026-09-02 re-derivation. Against the rubric an A needs four things
 #: tier: and this list fails three:
-#: tier:   A-FLOOR — no. Interaction 7 meets seven but the sum of 9 is short of eleven;
+#: tier:   A-FLOOR — no. Interaction 6 is one short of seven and the sum of 8 is short of eleven;
 #: tier:     card advantage is the axis (the 7 unclassified cards are the K-12 caveat).
 #: tier:   COHERENT ENGINE — yes, and now MEASURED rather than asserted. `targets` finds
 #: tier:     nine gated effects and reports zero thin or unmet: every Lesson-count gate in
@@ -53,7 +53,7 @@
 #: tier:     engine — but it wants the opposite build from this list, so it belongs in a
 #: tier:     54a, not here. See the parked-directions note below.
 #: tier: WHAT ARGUES UP, and why the letter may move after play: the floor counts
-#: tier: interaction 7, but four more cards read as interaction the classifier could not
+#: tier: interaction 6, but four more cards read as interaction the classifier could not
 #: tier: tag, and a resolved Iroh turns a graveyard of five-drops into a hand of one-drops
 #: tier: — a swing the metrics have no term for at all. Re-grade after it is played.
 #: archetype: Temur LESSONS, and the deck exists because of one clause almost everyone

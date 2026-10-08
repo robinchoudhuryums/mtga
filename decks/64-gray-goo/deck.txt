@@ -1,5 +1,6 @@
 #: name: Gray Goo (eat the yard, grow)
 #: format: Standard
+#: arena: 64 The Ooze, b497a9b0-d270-4599-b9f2-f5d9c5863304
 #: colors: UBG
 #: plan: midrange
 #: tier: B (PROVISIONAL — unplayed brew, graded 2026-08-08; figures re-grounded 2026-09-16).

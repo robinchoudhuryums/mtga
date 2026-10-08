@@ -722,6 +722,23 @@ class TestArenaHeaderWriting:
         assert body.count("#: arena:") == 1
         assert "07 Old Name" not in body
 
+    def test_a_paste_of_an_OLDER_copy_does_not_move_the_header_back(
+            self, tmp_path, monkeypatch):
+        """One claimant means nothing to compare inside the paste, so the header used to
+        follow whichever copy the paste happened to cover. The record decides now: the
+        copy the header names played later, so it stays (2026-10-06)."""
+        new_g, old_g = ("aaaaaaaa-1111-2222-3333-444444444444",
+                        "bbbbbbbb-1111-2222-3333-444444444444")
+        d = self._roster(tmp_path, monkeypatch, **{"07-earths": self.PLAIN})
+        pm.map_decks(_setdeck(guid=new_g), apply=True, out=lambda *_a: None)
+        m = tmp_path / "matches.csv"
+        m.write_text("Date,Match ID,Arena Deck ID\n2026-10-05,x1," + new_g + "\n"
+                     "2026-09-01,x2," + old_g + "\n", encoding="utf-8")
+        monkeypatch.setattr(pm, "MATCHES_CSV", str(m))
+        written, plan = pm.map_decks(_setdeck(guid=old_g), apply=True, out=lambda *_a: None)
+        assert written == 0 and [p[3] for p in plan] == ["older"]
+        assert new_g in (d / "07-earths" / "deck.txt").read_text(encoding="utf-8")
+
     def test_two_arena_decks_claiming_one_repo_deck_write_NOTHING(
             self, tmp_path, monkeypatch):
         """An old copy left in the client looks exactly like this. A header naming the

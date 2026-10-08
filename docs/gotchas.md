@@ -1243,6 +1243,10 @@ cell on `;`/`,`, strips zero padding (G-82's `06` = `6`) and matches the request
 token SET; `--set` compares the code exactly. `--note` stays a substring search on purpose —
 a note is prose, and a word inside it is exactly what you are looking for.
 
+**Re-adding a listed card (2026-10-07).** A name-only line matches the listed row by NAME
+(it used to append a duplicate, because the dedupe key carried the input's set/collector),
+and `--target` on a re-add APPENDS the deck id rather than being dropped — see G-82.
+
 ## [G-20] Auto-targeting a wishlist batch: trust STRONG, judge `review`
 
 **Auto-targeting a wishlist batch: trust STRONG, judge `review`.** `wishlist.py
@@ -1395,6 +1399,26 @@ at risk. It is REPORTED, never fed into `tier_band` — that formula is anchored
 `check_tier.py`, and a new term would silently re-grade the roster. It found 5
 zero-protection decks on first run (2, 37/37a/37b, 40), three of them with `#: protect:`
 headers.
+
+**2026-10-07 — the TEMPO line, and BOUNCE leaves interaction.** Stuns and one-turn taps were
+excluded from interaction on the permanence argument (BS10-02) and so counted nowhere: a deck
+built on them read as answering nothing. `tempo_effects` (bounce / stun / tap, reminder-stripped,
+checked in that order, one kind per card) now feeds a `tempo` count in `role_tally`, counted only
+for a card with NO interaction role — the complement of the axis, so a steal Aura that also stuns
+stays one interaction card. It is printed beside protection in `stats`, `tier` and `quality` and,
+like protection, is never read by `tier_band` (a test pins that the band ignores it).
+
+Single-target bounce was the inconsistent case: it hands the card back after a turn, which is the
+same line, yet 167 of the pool's 194 bounce cards scored `Removal (spot)`. The owner moved it
+(2026-10-07). Measured on the roster, asserting zero errors: 19 decks' interaction changed (17
+down from bounce, 2 up from steal Auras), card advantage 0, **8 tier floors moved down** (18,
+40a, 47 and 51 A→B; 22, 22-brawl, 67 and 68 B→C) against a simulation that predicted 6 — its
+narrower regex missed the multi-target ETB form. No claimed letter ends up two bands above its
+floor. 15 decks' `#: tier:` figures were re-grounded the same day. MASS bounce stays a Sweeper: a
+whole board returned is not a one-card tempo play, and that call was the owner's to revisit.
+The bounce cue also left `_INT_CUES`, so a bounce card is not reported as an interaction
+under-read; `check_roles.zero_role_cards` and the `unclassified` list skip a tempo card, which
+is seen, just not as a role.
 
 
 ## [G-26] `deck.py tier <id> --audit-rationale` catches a STALE tier argument
@@ -1709,6 +1733,31 @@ After all three, the roster sweep reports **0** card citations with 0 false posi
 the deck-69 case that started it flags correctly. Three of the four regression tests fail
 against a mutant carrying the old cue lists; the fourth (a deck citing its own id must still
 audit) passes either way by design — it guards the widening, it does not pin it.
+
+**2026-10-06 — two more suppression holes, one shape.** (1) The bare verb `replace`: deck
+42a's "what the uncounted pieces cannot REPLACE is a cheap unconditional answer, which is
+why Hero's Downfall stays" hid a card cut months earlier, behind `replac\w*` matching
+ordinary English (probed: removing the sentence's "CUT" changed nothing). Narrowed to
+`replac(?:e[sd]|ing)` — the tensed forms the roster uses for swap history ("Torment
+replaced Feed", "Binding replaces Jet", "replacing Invasion"); "replacement" (a rules term)
+dropped too. Roster sweep: 0 claims changed either way (42a had been corrected by hand).
+(2) The ±60-char comparison window silences every figure near a `_COMPARISON_CUES` word,
+including figures the writer LABELLED live. A figure inside an explicit `Measured:` /
+`Live vector:` / `Live:` listing — same sentence, no `.`/`;` break — is now exempt from the
+comparison check only (the arrow / quote / past-cue guards still apply). Roster: 1 new hit,
+1 real — deck 24's "21 central themes" against a live 20, fixed in the same change.
+
+**2026-10-07 — a GAME-EFFECT `swap`, the same shape again.** Deck 32's interaction list
+described Kitsune as an "enter/combat-damage control swap", and the bare `swap\w*` cue in
+`_HISTORY_CUES` suppressed every card within the 140-char window. A cut Exclusion Mage cited
+MID-list audited clean, while the same name moved FIRST in the list (just outside the window)
+was reported. It read as a positional bug, exactly as the `rather than` miss did; instrumenting
+the cue search named the word. `swap` is now not a cue right after `-`, `control ` or `life `
+— the roster spells the effect "P/T-swap", "toughness-swap", "control swap" and "life swap" —
+while the deck-edit idiom ("swapped in over", "the 2026-10-01 swaps") still suppresses.
+Roster sweep: 0 findings changed either way (deck 32 had been corrected by hand when the miss
+was noticed). Residual: an unqualified effect verb ("this deck swaps from AHEAD", the
+life-exchange decks 41/42) is still a cue; no citation sits near one today.
 
 ## [G-27] `deck.py tier <id> --audit-rationale` catches a STALE tier argument
 
@@ -2553,7 +2602,11 @@ rejected: 90 cards, mostly "remove all counters on" / "the number of counters on
   52 / 28). It had been the family outlier, not now an inflated one. KEY at ~23% is what
   the counters axis's key-at-p75 calibration predicts, and the KEY-saturation warning
   fires for the whole family; that warning's "KEY scores THEME OVERLAP ALONE" wording is
-  wrong for a doubler-density KEY (follow-on, not fixed here).
+  wrong for a doubler-density KEY (follow-on, not fixed here — FIXED 2026-10-06:
+  `suggest-homes` records which branch minted each KEY and the note attributes them;
+  Doubling Season reads "10 via the doubler (counters) overlay, 8 via the doubler (tokens)
+  overlay, 16 on theme overlap", and when overlays mint the majority it explains a DENSITY
+  verdict instead of blaming the tags).
 
 The same refetch carried three days of Scryfall drift unrelated to this change: nine
 Reality Fracture reprints became Standard-legal at the oracle level (Chandra Torch of
@@ -2864,6 +2917,30 @@ not a checkland", and merging them would hand the generic cycle to the type chec
 
 **2026-10-02 (BS11-17) — "your commander's color identity" is not five colours.** Command Tower and its kin were read as any-colour lands, so a G/W/U Brawl deck counted a black and a red source it could never produce. `lib.land_production(commander=)` resolves the clause to the commander's colours (an EMPTY set — no commander — produces nothing, which is the rules answer; `None` keeps the old all-five read for callers that cannot know). `deck_source_profile` and `uncounted_mana_sources` take `deck_meta=`, passed by `mana`, `consistency` and the dashboard. **Residual:** `deck_color_sources` — what `pip_depth_warning` and the `suggest` recommenders read — and `wishlist._land_value` take no deck header, so they still read Command Tower as five colours.
 
+**2026-10-06 — the nonland disclosure's two silences, and a wider any-colour read.**
+Deck 21 runs Bloom Tender (Vivid: "For each color among permanents you control, add one
+mana of that color") and Enduring Vitality ("Creatures you control have '{T}: Add one mana
+of any color.'"), and `consistency` printed no `ⓘ NONLAND` line at all: `land_production`
+read the first as producing nothing, and the second is a GRANTED ability, excluded by
+design. Pool survey of permanents whose mana `land_production` read as nothing: 148, most
+of them Treasure-maker reminder text (correctly excluded). Three spellings of "you pick the
+colour" were never matched — "N mana in any combination of colors" (the plural has no
+"any" after "of"), "N mana of different colors", "a chosen color" — and "Choose a color.
+Add … mana of that color" is per-activation any-colour access. 35 pool cards moved from
+nothing to a reading, Desert Cenote (a LAND) among them. A board-dependent colour (Vivid,
+"color among…", "a color of a permanent you control", "the exiled card's colors") goes to
+a new `board` bucket, NEVER `free`, so no count moves — and three cards that WERE read as
+free rainbow sources move out of `free` correctly: Plaza of Heroes, Mox Amber and The Grey
+Havens (their colour depends on which legends you control). The disclosure labels a board
+source `board-dependent` and a creature grant `granted to creatures`; a grant to lands /
+Treasures / Caves / artifacts stays silent (an upgrade of something already counted). An
+ENTERS-triggered Add is excluded as a one-shot (Realm-Scorcher Hellkite, Outcaster
+Trailblazer); attack- and counter-triggered mana recurs and stays (Electro, Berta) — a first
+draft that dropped every triggered line removed 30 real disclosures. Roster: 79 → 80 decks
+disclose; Bloom Tender appears in 10, Enduring Vitality in 10. Nine decks' SOURCE counts
+rose, every one from Baxter Building or Three Tree City now counting as a {4}/{2} filter,
+the existing `conditional` convention; 0 tier floors moved (the floor reads no sources).
+
 ## [G-36] `deck.py consistency <id>` is the PROBABILITY layer `mana` lacks
 
 **`deck.py consistency <id>` is the PROBABILITY layer `mana` lacks.** `mana` diagnoses
@@ -2895,6 +2972,13 @@ roster-wide. `joint_source_plan` adds one source at a time to the colour with th
 until the product reaches target (reducing to `min_sources_for` for one colour) and returns
 None past the land count, which routes to the colour-hungry note. Every below-target row now
 has a note. Separately, `total or 60` labelled an empty file a "60-card deck"; it is refused.
+
+**2026-10-06 — P(a tapland in your first three land drops).** Hand-rolled six times on
+2026-09-20 and it decided both manabases, so `consistency` now prints it under the tapland
+line: hypergeometric over the deck's lands (`deck.tapped_in_first_drops`), unconditional
+taplands first and "if every conditional one enters tapped" beside it. A CEILING on the
+tempo cost — you choose which land to play, and a turn-1 tapland usually costs nothing.
+REPORT-ONLY, like `tapland_profile`, for G-25/G-60/G-86's reason.
 
 ## [G-37] `deck.py suggest --lands <id>` is the manabase RECOMMENDER `consistency` was missing
 
@@ -5280,6 +5364,18 @@ been the top cut candidate as a zero-role card). The suite's roster figure sweep
 and both decks' prose was re-grounded in the same change. Cheering Crowd's conditional
 mana ability is untouched: a separate pattern hole, not this family.
 
+**2026-10-07 — steal Auras and copy effects.** The steal block's own comment called
+Duskmourn's Domination's "You control enchanted creature" a Control-Magic steal, yet no pattern
+read the templating: Control Magic, Confiscate, Lay Claim, In Bolas's Clutches, Kitnap, Enthralling
+Hold, Grafted Identity and Coerced to Kill scored no interaction (found tuning deck 32). The pattern
+is anchored to a sentence start and closed by its full stop, because Mishra's Domination ("As long
+as you control enchanted creature, it gets +2/+2") is a buff and was the one false positive of the
+unanchored form — 10 matches, 0 false. COPY effects ("a token that's a copy of target/each/that…",
+"enter as a copy of", "becomes a copy of") joined `Payoff / engine` on the doubler argument — a
+card worth what the rest of the deck is; a bare "a copy of it" (self-recursion) is excluded. ~130
+pool cards; Payoff is not a `tier_band` term. Roster: 44 decks' payoff counts moved, `cuts` top-3
+changed in 10, #1 in 2. Role coverage 1,507 → 1,540 of 1,991 roster cards.
+
 ## [K-13] A literal type-name search cannot see the choose-a-type category — and the false negative reads as an answer
 
 **A literal type-name search cannot see the choose-a-creature-type category, and a false
@@ -6044,6 +6140,20 @@ Adventure creature (`Creature // Sorcery — Adventure`) failed the permanent-ca
 graveyard has only its front face's characteristics, so the type is the front face's now —
 the same reason `mv` already was. 67 gate counts moved across 18 decks.
 
+**2026-10-06 — the MV-cap gate read the OPPONENT's permanents.** Re-measuring
+`unmet_gate` at `redundancy` (the one caller never measured at its own surface, per G-40)
+found 5 gate flags roster-wide, 3 of them Pest Control: "Destroy all nonland permanents
+with mana value 1 or less" read as "creature MV ≤1 in the yard — 0". The `mv` gate was a
+bare `mana value (\d+) or less`, which matched 249 pool cards; 160 are removal, cast
+restrictions or opponent-spell triggers. Narrowed to "creature card(s) … mana value N or
+less" (also "creature or Spacecraft card") or "creatures you control with mana value N or
+less" — 89 pool cards. Roster `targets` rows with an MV gate: 83 → 47. Of the 15 distinct
+dropped gates, 8 were removal (correct) and 7 were typed NON-creature card gates
+(Primary Research's "nonland permanent card", Daring Waverider's "instant or sorcery
+card", Tezzeret's "artifact card"), which had been counting CREATURES — a wrong number
+replaced by none. A typed-card gate that counts the right type is the follow-on.
+`redundancy`'s gate flags after: 2, both Eddie Brock, both real.
+
 ## [K-14] A draw clause behind an activation cost was invisible to the role tally (fixed 2026-08-07)
 
 `classify_roles` decides "Card advantage" from `_ROLE_PATTERNS`, and **every pattern in
@@ -6391,6 +6501,16 @@ never built while the docs described using it. `cmd_add` now stamps both onto th
 deck id *before any Scryfall work*, which is parse_matches' asymmetric validation (G-74)
 plus the builders' refuse-before-network-work rule. Silent no-op → written value or a
 clean error; there is no third state.
+
+**2026-10-07 — a re-add with `--target` APPENDS.** Giving Uthros Psionicist a second home
+(deck 82 → `82; 32`) had no tool path: a re-add was skipped by design, so it took a scripted
+CSV edit — G-77's shape, a remedy that exists only as a hand edit. "Must not clobber" never
+meant "must not add": `_append_target` adds each missing id (compared through
+`_norm_deck_id`, so `06` is the `6` already there), fills a blank or `—` cell, keeps
+`general` / `concept: …` with the id after it, and never touches Note. Doing it exposed a
+second bug the skip had hidden: the dedupe key carried the INPUT line's set/collector, so a
+name-only `1 Uthros Psionicist` never matched the stored `(EOE) 84` row and appended a
+DUPLICATE. A name-only line now matches a listed row of that name.
 
 **Ten deck directories are zero-padded on disk and no by-id command accepted the padded
 id.** `discover_decks` derives a core id with `str(int(...))`, so `decks/06-dead-or-alive/`
@@ -6973,6 +7093,15 @@ only; the convention is family-dir plus variant-suffix (`54-grand-lotus/54b-come
 distinguishing half alone.
 
 **2026-10-02 (BS11-37/38) — two misses in the rename plan.** The comparison keyed both sides with `_name_key`, which drops ANY trailing parenthetical; that is right for the repo's premise gloss and wrong when Arena wrote the parenthetical, so "Foo (old)" → "Foo (new)" keyed `foo` both times and was never proposed. `_rename_key(name, current)` strips only the current name's own gloss. And `_adopted_name`'s repeated-parent strip compared letters-only keys, so parent "Dino" matched the front of "Dinosaur Party" and the variant would have adopted "Dino — saur Party"; a cut that falls inside a word is no longer a repeated parent. Neither fired on the live roster. **Residual:** the rename WARNING path still keys on `_name_key`, so it misses the same Arena-side parenthetical change.
+
+**2026-10-06 — a paste of an OLDER copy no longer moves the header back.** With one
+claimant in a paste there was nothing to compare, so `_arena_header_plan` wrote whichever
+copy the paste covered — a paste of only an old copy's period moved `#: arena:` back to it
+(attribution unaffected; the next newer paste moved it forward again). The plan now
+compares the GUID the header already holds against the claimant by `_guid_last_played`:
+the paste's own LastPlayed/LastUpdated, else the newest `matches.csv` row for that GUID.
+Strictly earlier (day resolution) → status `older`, nothing written, `map_decks` prints
+`<` with a one-line reason; a tie still updates.
 
 ## [G-74] The result lines cannot see what you faced or why you lost; the play-by-play sees most of it — a phone game, nothing
 
@@ -8117,6 +8246,17 @@ the old behaviour.
 - **Per-card percentages in prose are unaudited** (G-26: an "N% on turn 5" has no
   deck-level value to look up). 42 decks' source counts moved; a percentage quoted in a
   `#: tier:` or note before this change may be stale without any warning.
+
+**2026-10-06 — the recommender half.** `suggest_lands` now builds the deck's land
+list with each land's basic types and passes `_land_value` a `gate_credit` map
+({colour: `gated_source_credit(enablers, lands+1)`}); `_land_value` counts a gated colour
+fractionally (`multi = min(1, 0.5 × effective colours)`, identical to the old step function
+at whole numbers). `wishlist --rank` passes nothing and keeps full credit. Roster: 99 of 117
+decks' land scores moved and 57 changed their #1 pick — in every spot-checked case a Verge
+that had tied an untapped ungated dual on score and won the tiebreak now sits just behind
+it (deck 1: Blood Crypt 11.84 over Blazemire Verge 11.54). The `tapland_kind` caller sets
+(`suggest_lands`, `tapland_profile`) now include typed nonbasics' types, so a shockland
+satisfies "unless you control a Plains" as G-87's gate already said; 0 roster changes.
 
 ## [K-16] `deck.py tribes` reads a card's OWN NAME as a tribal reference
 

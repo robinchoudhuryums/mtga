@@ -1,5 +1,6 @@
 #: name: Mardu Waves (attack-trigger token waves)
 #: format: Standard
+#: arena: 55 Imperial Wave, da0968f5-15cd-4629-87f6-3c5238201330
 #: colors: RWB
 #: plan: aggro
 #: archetype: MARDU MOBILIZE WAVES. Wave engines (Zurgo, Dalkovan Packbeasts, Voice of

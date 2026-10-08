@@ -23,6 +23,19 @@ The heading used to read "THE 2026-08-24 SESSION" while the stamps under it ran 
 2026-10-01 (BS11-65). The NEWEST stamp is always the first one; each supersedes the
 stamps below it where they disagree.
 
+> **STATE STAMP, 2026-10-08 (NEWEST — supersedes the 2026-10-03 stamp where they disagree).**
+> Deck 32 (Mimicry) was rebuilt mono-blue over a long tune and is now **fully owned** (four
+> crafts ingested 2026-10-08). The tune surfaced six tooling gaps, planned as four batches in
+> STATE.md Pending: **A and B are DONE** (blocks `11-batchA-…` / `11-batchB-…`): G-22's ledger
+> figures carry a ±10% drift tolerance; `wishlist.py --add --target` appends to a listed row
+> (and a name-only re-add no longer duplicates); steal Auras score Removal, copy effects score
+> Payoff, a report-only TEMPO line exists, and **single-target bounce left interaction** —
+> 8 tier floors moved down (18 / 40a / 47 / 51 A→B; 22 / 22-brawl / 67 / 68 B→C). **Still
+> open:** Batch C (legend-rule advisory for copy decks) and Batch D (`Suggested Why`); the
+> owner's re-read of those eight letters (none is two bands over); whether mass bounce should
+> follow single-target bounce to tempo. The stun-as-interaction idea was re-filed by mistake
+> and is closed (BS10-02 still stands).
+>
 > **STATE STAMP, 2026-10-03 (NEWEST).** **Scan #11 is fully implemented**: all nine
 > batches (BS11-01…79, minus the two deferred below) landed on
 > `claude/epic-heisenberg-38ii7y`, each with a block in `.cycle/blocks/11-*` and a
@@ -388,7 +401,7 @@ stamps below it where they disagree.
 > Thunder Lasso's three flex lines), and the unresolved card name "Fear of Immortality"
 > (DSK has Fear of Immobility / Fear of Infinity). Mabel, Heir to Cragflame is owned but
 > absent from card-pool.csv — a pool gap to close on the next `make refresh REFETCH=1`.
-> **Two role-pattern holes surfaced by the deck-71 swaps (baselined, not fixed):** Kitnap's
+> **Two role-pattern holes surfaced by the deck-71 swaps (baselined, not fixed — Kitnap's half CLOSED 2026-10-07, Batch B):** Kitnap's
 > Aura-steal wording ("You control enchanted creature") scores no Removal role, and Eluge's
 > "costs {U} (or {1}) less" scores no Cost-reduction role. Both are G-67 pattern holes, not
 > roleless cards — fix each with a K-14 roster floor diff, then prune them from

@@ -226,3 +226,31 @@ class TestFigureDenominatorsAreRegistered:
     def test_the_denominators_are_figures_of_their_own(self):
         e = self._entries()
         assert "G-86 roster walked" in e and "G-35 roster walked" in e
+
+
+class TestLedgerFiguresCarryATolerance:
+    """2026-10-07: G-22's two ledger counts are recomputed from recommendations.csv, which
+    every `swap --apply` appends to, so an exact match re-fired the soft warning after
+    every tune. They carry a ±10% relative tolerance; every other figure stays exact."""
+
+    def _drift(self, monkeypatch, stated, live, label="G-22 median add rank"):
+        monkeypatch.setattr(cd, "_read", lambda _p: f"figure {stated} here")
+        monkeypatch.setattr(cd, "_live_figures",
+                            lambda: [(label, r"figure (\d+) here", lambda: live)])
+        return cd.figure_drift()
+
+    def test_small_ledger_drift_is_not_reported(self, monkeypatch):
+        assert self._drift(monkeypatch, 375, 387) == []
+
+    def test_drift_past_the_tolerance_is_reported(self, monkeypatch):
+        assert self._drift(monkeypatch, 375, 420) == [("G-22 median add rank", "375", "420")]
+
+    def test_an_unlisted_figure_stays_exact(self, monkeypatch):
+        got = self._drift(monkeypatch, 64, 65, label="G-83 cost-scale pool cards")
+        assert got == [("G-83 cost-scale pool cards", "64", "65")]
+
+    def test_only_the_two_ledger_counts_are_tolerant(self):
+        assert set(cd._DRIFT_TOLERANCE) == {"G-22 applied swaps with a rank",
+                                            "G-22 median add rank"}
+        labels = {label for label, _p, _f in cd._live_figures()}
+        assert set(cd._DRIFT_TOLERANCE) <= labels, "a tolerance keyed to a dead label"

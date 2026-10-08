@@ -2853,6 +2853,12 @@ Your Fate Ends Here,{2}{W},3,Surveil
 Gideon's Memorial,{1}{W},2,
 Overgrown Farmland,,0,
 Vigorbloom Annex,,0,
+Theorist's Sanctum,,0,Empower Jace;Behold
+Naga Fleshcrafter,{3}{U},4,Renew
+Starwinder,{5}{U}{U},7,Warp
+Uthros Psionicist,{2}{U},3,
+Seasoned Cryomancer,{1}{U}{U},3,
+Spider-Sense,{1}{U},2,Web-slinging
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -5177,9 +5183,7 @@ Mechan Shieldmate,{1}{U},2,Defender
 "Mm'menon, the Right Hand",{3}{U}{U},5,Flying
 Scour for Scrap,{3}{U},4,
 Selfcraft Mechan,{3}{U},4,
-Starwinder,{5}{U}{U},7,Warp
 Unravel,{1}{U}{U},3,
-Uthros Psionicist,{2}{U},3,
 Uthros Scanship,{3}{U},4,Station
 Archenemy's Charm,{B}{B}{B},3,
 Chorale of the Void,{3}{B},4,Enchant;Void
@@ -5690,7 +5694,6 @@ Perfected Theory,{U},1,
 Plan for All Outcomes,{3}{U},4,Surveil;Empower Jace
 Precise Redaction,{1}{U},2,
 Protege's Awakening,{3}{U},4,Surveil;Empower Jace
-Seasoned Cryomancer,{1}{U}{U},3,
 Semester Foreseer // Peer Review,{3}{U} // {2}{W/U},4,Surveil;Prepared
 Sphinx of False Conclusions,{2}{U}{U},4,Flying;Flash
 Sphinx's Approach,{1}{U}{U},3,
@@ -5823,7 +5826,6 @@ Roiling Canopy,,0,
 Room of Refuge,,0,
 Shipwreck Marsh,,0,
 Stingerquill Annex,,0,
-Theorist's Sanctum,,0,Empower Jace;Behold
 Theorix Annex,,0,
 Transformative Commons,,0,
 "Danitha, Sword of Hope",{2}{W},3,First strike
@@ -13362,7 +13364,6 @@ Hide on the Ceiling,{X}{U},1,
 Norman Osborn // Green Goblin,{1}{U} // {1}{U}{B}{R},2,Flying;Goblin Formula;Transform;Menace;Connive
 Oscorp Research Team,{3}{U},4,
 Secret Identity,{U},1,Conceal
-Spider-Sense,{1}{U},2,Web-slinging
 The Death of Gwen Stacy,{2}{B},3,
 "Eddie Brock // Venom, Lethal Protector",{2}{B} // {3}{B}{R}{G},3,Transform;Haste;Trample;Menace
 Merciless Enforcers,{1}{B},2,Lifelink
@@ -13727,7 +13728,6 @@ Focus the Mind,{4}{U},5,
 Highspire Bell-Ringer,{2}{U},3,Flying
 Iceridge Serpent,{4}{U},5,
 Marang River Regent // Coil and Catch,{4}{U}{U} // {3}{U},6,Flying
-Naga Fleshcrafter,{3}{U},4,Renew
 Riverwalk Technique,{3}{U},4,
 Roiling Dragonstorm,{1}{U},2,
 Sibsig Appraiser,{2}{U},3,

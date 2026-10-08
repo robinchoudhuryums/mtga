@@ -1,9 +1,9 @@
 #: name: Mimicry
 #: format: Standard
 #: arena: 32 Mimicry, 27b30e8a-7114-44f4-8b4c-df5056758f86
-#: colors: UB
-#: tier: A — Dimir (UB) copy-creatures value/midrange (low A); the UB conversion fixed the two structural holes: added HARD removal (Bitter Triumph / Heartless Act / Feed the Swarm / Gravkill) on top of the soft tempo suite (Tishana / Frozen in Ice / Exclusion Mage / Spider-Woman) — real interaction ~8-9 (heuristic undercounts) — and smoothed the curve. Deep card advantage + a coherent Impostor Syndrome clone engine + Multiversal Incursion finisher. Residual (low-A): singleton variance + a 6-tapped-dual manabase; a clean A would add 2-ofs of the key engines and/or untapped duals.
-#: archetype: Dimir (UB) copy-creatures value/midrange — clone bodies + strong ETB creatures worth copying, now with a black hard-removal splash.
+#: colors: U
+#: tier: A — mono-blue copy-creatures value/midrange (low A). Interaction 11 (Tractor Beam, Enchanted River's Grasp, Noggle the Mind, Three Steps Ahead, Spider-Sense, Frozen in Ice, Glen Elendra Guardian, Secret Invasion, Kitsune, Dragon's Daughter's enter/combat-damage control swap, Bilbo, Luckwearer's Burglar's Plot exchange, Kitnap's steal) plus Seasoned Cryomancer's discard-driven stuns, which count on the report-only tempo line (tempo 3, with Marang River Regent's bounce and Spider-Woman's tap) — 12 in play. 2026-10-07: the black splash was CUT (Bitter Triumph, Heartless Act, Feed the Swarm and Gravkill were cast off 6 black sources — 59% on turn 2) for blue lockdown Auras and a spree counter, and the five always-tapped duals became Islands: every card now casts on curve at 90%+ and only Agna Qel'a can enter tapped. Tractor Beam STEALS a creature the clones can then copy. Deep card advantage + a coherent Impostor Syndrome clone engine + Multiversal Incursion finisher. Residual (low-A): no hard removal — every answer is an Aura or a lock that enchantment removal or a bounce undoes — and singleton variance.
+#: archetype: Mono-blue copy-creatures value/midrange — clone bodies + strong ETB creatures worth copying, with Aura lockdowns (and Tractor Beam's steal) for interaction.
 #: notes: Focused from a 93-card pile to a copy-CREATURES primary build. Clone bodies
 #: notes: (Chameleon, Waxen Shapethief, Secret Invasion, Silent Hallcreeper) + copy-token
 #: notes: payoffs (Impostor Syndrome, Relm's Sketching, Ember Island Production,
@@ -18,51 +18,47 @@
 1 Waxen Shapethief (DFT) 74
 1 Secret Invasion (MSH) 72
 1 Silent Hallcreeper (DSK) 72
-1 Relm's Sketching (FIN) 67
+1 Echocasting Symposium (SOS) 44
 1 Ember Island Production (TLA) 48
 1 Extravagant Replication (FDN) 154
 1 Multiversal Incursion (MSH) 68
 1 Taigam, Master Opportunist (TDM) 60
 1 Echo, Perceptive Prodigy (MSH) 51
+1 Naga Fleshcrafter (TDM) 52
 
 # Premium copy-targets / value engines
 1 Wan Shi Tong, Librarian (TLA) 78
 1 Marang River Regent (TDM) 51
 1 Kiora, the Rising Tide (FDN) 45
 1 Mister Fantastic, Reed Richards (MSH) 66
-1 Arcanis the Omnipotent (FDN) 741
-1 April, Reporter of the Weird (TMT) 30
+1 Starwinder (EOE) 79
 1 Ms. Marvel, Kamala Khan (MSH) 67
-1 Justice, Vance Astrovik (MSH) 61
+1 Uthros Psionicist (EOE) 84
 1 Symbiote Spider-Man (SPM) 156
-1 Daring Waverider (BLB) 44
-1 Silvergill Peddler (ECL) 70
-1 Knowledge Seeker (TLA) 60
-1 Messenger Hawk (TLA) 234
+1 Emeritus of Ideation // Ancestral Recall (SOS) 45
+1 Kitsune, Dragon's Daughter (TMT) 41
+1 Wingblade Disciple (TDM) 65
+1 Eluge, the Shoreless Sea (BLB) 49
 
 # Interaction
 1 Frozen in Ice (MSH) 54
-1 Tishana's Tidebinder (LCI) 81
-1 Exclusion Mage (FDN) 508
+1 Seasoned Cryomancer (FRA) 38
+1 Glen Elendra Guardian (ECL) 51
 1 Spider-Woman, Secret Agent (MSH) 229
-1 Heartless Act (TLA) 103
-1 Feed the Swarm (SOA) 29
-1 Gravkill (EOE) 103
+1 Noggle the Mind (ECL) 60
+1 Enchanted River's Grasp (HOB) 39
+1 Tractor Beam (EOE) 82
 1 Ghost, Spectral Saboteur (MSH) 214
+1 Kitnap (BLB) 53
+1 Spider-Sense (SPM) 46
 
 # Tempo / enablers
-1 Bitter Triumph (SOA) 26
-1 Doc Ock's Henchmen (SPM) 30
-1 Sokka, Lateral Strategist (TLA) 241
-1 Hydro-Channeler (SOS) 54
+1 Three Steps Ahead (OTJ) 75
+1 Bilbo, Luckwearer // Burglar's Plot (HOB) 32
 
 # Lands (24)
-16 Island (MSH) 290
-1 Hidden Lair (MSH) 269
-1 Undercity Sewers (PZA) 0
-1 Gloomlake Verge (DSK) 260
-1 Soured Springs (OTJ) 264
-1 Serpent's Pass (TLA) 279
-1 Dismal Backwater (FDN) 261
+23 Island (MSH) 290
 1 Agna Qel'a (TLA) 264
-1 Uthros, Titanic Godcore (EOE) 260
+
+# Flex — queued swaps. See: deck.py flex 32
+#~ -Three Steps Ahead | +Confusticate and Bebother | ROTATION (owned): swap when Three Steps Ahead leaves Standard (~2026). Modal counter-unless-{4} OR draw two, discard one — keeps the counter + draw modes; Refute (hard counter + loot) is the stronger by-the-numbers pick.

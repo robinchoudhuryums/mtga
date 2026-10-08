@@ -80,6 +80,11 @@ _SCANNED_MODULES = (deck, lib, tag_synergies, wishlist)
 #     where their documented false-negative history is pinned.
 _EXCLUDED = {
     ("deck", "LINE_RE"): "deck-file card-line syntax, not card text",
+    ("deck", "_LIVE_LISTING_RE"): ("tier/archetype RATIONALE prose (the 'Measured:' / "
+                                   "'Live vector:' label), not card text; pinned by "
+                                   "test_deck.py's live-listing test"),
+    ("deck", "_SENTENCE_END_RE"): ("a sentence break in RATIONALE prose, not card text; "
+                                   "pinned by the same live-listing test"),
     ("deck", "META_RE"): "deck-file `#:` header syntax, not card text",
     ("deck", "_NAME_GLOSS_RE"): ("the trailing '(...)' premise gloss on a `#: name:` "
                                  "header, not card text; unit-tested via display_name "
@@ -276,6 +281,10 @@ def _pattern_groups():
         out.append((f"deck.{name}", getattr(deck, name), "norm"))
     for name in ("_NONCREATURE_ANSWER_CUES", "_WIDE_CUES", "_TALL_CUES"):
         out += [(f"deck.{name}", p, "norm") for p in getattr(deck, name)]
+    # The report-only TEMPO line (2026-10-07): bounce / stun / one-turn tap. Dead, a
+    # deck built on bounce would read as answering NOTHING again, the state bounce sat in
+    # for the life of its first pattern.
+    out += [(f"deck._TEMPO_PATTERNS:{kind}", rx, "norm") for kind, rx in deck._TEMPO_PATTERNS]
     # The cheat-cost advisory (Warp / Plot / Foretell priced below the printed cost —
     # the X-cost under-read in reverse). Runs on reminder-stripped text, case-
     # insensitive, so the norm corpus is the right one; dead means every warp body
@@ -370,8 +379,18 @@ def _pattern_groups():
                  # BS11-17: "commander's color identity" production. If it goes dead,
                  # Command Tower / Arcane Signet read as five-colour sources again in
                  # every Brawl deck — an over-count no invariant notices.
-                 "_COMMANDER_IDENTITY_RE"):
+                 "_COMMANDER_IDENTITY_RE",
+                 # 2026-10-06: per-activation "choose a color … that color" access and
+                 # board-dependent colour (Vivid, Chrome Mox). Dead, the first drops
+                 # Nykthos-style sources back to nothing and the second hides Bloom
+                 # Tender from the nonland disclosure again.
+                 "_CHOOSE_THEN_THAT_COLOR_RE", "_BOARD_COLOR_RE"):
         out.append((f"lib.{name}", getattr(lib, name), "raw"))
+    # `deck.uncounted_mana_sources` (2026-10-06): the creature-GRANT disclosure and the
+    # enters-trigger exclusion. Dead, Enduring Vitality vanishes from the disclosure again
+    # (the deck-21 silence) or every ETB mana burst reads as a recurring source.
+    for name in ("_GRANTED_MANA_RE", "_GRANTED_NOT_CREATURE_RE", "_TRIGGERED_LINE_RE"):
+        out.append((f"deck.{name}", getattr(deck, name), "raw"))
     out += [("tag_synergies._TRIBAL_PAYOFF_RES", p, "raw")
             for p in tag_synergies._TRIBAL_PAYOFF_RES]
     # Same corpus form and the same reason: a card TYPE the text builds around is

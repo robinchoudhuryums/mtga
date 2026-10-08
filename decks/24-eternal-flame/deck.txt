@@ -21,7 +21,7 @@
 #: archetype: advantage if you can actually cast it before it expires, so firebending and
 #: archetype: Treasures supply the extra mana rather than leaving it to land drops.
 #: archetype: Measured: card advantage 15, among the roster's highest, on interaction 9,
-#: archetype: board power 68 and 21 central themes at a 3.47 curve. That curve and the WIDE
+#: archetype: board power 68 and 20 central themes at a 3.47 curve. That curve and the WIDE
 #: archetype: 7 / tall 1 shape both say MIDRANGE — this is not an aggro deck, and a `#:
 #: archetype: plan:` header claiming otherwise would buy it a tier band it has not earned.
 #: archetype: DISTINCTNESS vs The Exiles (61%, 8 shared cards), the roster's other cast-

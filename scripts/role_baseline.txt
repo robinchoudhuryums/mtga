@@ -8,7 +8,6 @@
 # `check_roles.py --update-baseline` to acknowledge the current set.
 Aang, at the Crossroads
 Aang, at the Crossroads // Aang, Destined Savior
-Absorbing Man
 Accumulate Wisdom
 Aerial Doombot
 Aerid Konstrari
@@ -28,7 +27,6 @@ Anticausal Vestige
 Antiquities on the Loose
 Anzrag, the Quake-Mole
 Appa, Loyal Sky Bison
-Applied Geometry
 Archangel of Tithes
 Armament Dragon
 Arnim Zola, Bio-Fanatic
@@ -80,15 +78,12 @@ Casey Jones, Jury-Rig Justiciar
 Cat-Owl
 Central Elevator // Promising Stairs
 Cephalid Inkmage
-Chameleon, Master of Disguise
-Champions of the Shoal
 Charging Strifeknight
 Cheering Crowd
 Claim Jumper
 Collector's Vault
 Colossification
 Corrupt Court Official
-Crashing Wave
 Craterclaw Colossus
 Craterhoof Behemoth
 Crow of Dark Tidings
@@ -102,16 +97,13 @@ Dalkovan Packbeasts
 Dark Confidant
 Darkstar Augur
 Daydream
-Deceit
 Deepchannel Duelist
 Deepmuck Desperado
 Deepway Navigator
 Defiant Survivor
 Demonic Ruckus
 Desert Were-Worm
-Devastating Onslaught
 Diligent Zookeeper
-Doc Ock's Henchmen
 Don & Leo, Problem Solvers
 Donatello, Mutant Mechanic
 Dori, Bearer of Friends
@@ -135,18 +127,15 @@ Earth's Mightiest Heroes
 Earthbending Lesson
 Earthen Ally
 Echo, Perceptive Prodigy
-Echocasting Symposium
 Eerie Gravestone
 Effortless Master
 Eluge, the Shoreless Sea
-Ember Island Production
 Emeritus of Woe
 Emil, Vastlands Roamer
 End of the Hunt
 Enigma Drake
 Enter the Enigma
 Entropic Battlecruiser
-Esoteric Duplicator
 Falcon, Winged Wonder
 Fated Firepower
 Fearsome Goblin Pair
@@ -175,7 +164,6 @@ Gather the White Lotus
 Germinate Recruits
 Germination Practicum
 Ghalta, Primal Hunger
-Ghired, Mirror of the Wilds
 Ghost, Spectral Saboteur
 Ghostly Keybearer
 Giant Cindermaw
@@ -217,7 +205,6 @@ Improvisation Capstone
 Ingenious Leonin
 Insatiable Skittermaw
 Interface Ace
-Invasion Submersible
 Involuntary Employment
 Iron Hills Stalwart
 Iron Lad, Diverging Destiny
@@ -233,9 +220,7 @@ Kastral, the Windcrested
 Katara, Water Tribe's Hope
 Kav Landseeker
 Kavaron Skywarden
-Kindle the Inner Flame
 Kirol, Attentive First-Year
-Kitnap
 Kitsune's Technique
 Klaw, Sonic Subjugator
 Knight Luminary
@@ -273,7 +258,6 @@ Mardu Devotee
 Masked Meower
 Master Pakku
 Mechanical Mobster
-Metalhead
 Michelangelo, Weirdness to 11
 Mind Transfer Protocol
 Miner's Guidewing
@@ -284,14 +268,11 @@ Mob Lookout
 Mobile Homestead
 Molten Man, Inferno Incarnate
 Momo, Playful Pet
-Moonlit Meditation
 Moonshadow
 Moonshaker Cavalry
 Morcant's Eyes
 Morningtide's Light
 Most Decrepit Old Bird
-Multiversal Incursion
-Multiversal Recruitment
 Mutable Explorer
 Namazu Trader
 Nashi, Searcher in the Dark
@@ -301,7 +282,6 @@ Nighthowl Pursuer
 Nightwhorl Hermit
 Niko, Light of Hope
 Ninja of the Hand
-North Pole Patrol
 Okoye, Dora Milaje Leader
 Omniscience
 Omnivorous Flytrap
@@ -321,14 +301,12 @@ Picklock Prankster // Free the Fae
 Pond Prophet
 Pride of the Road
 Prideful Parent
-Procrastinate
 Psychic Whorl
 Pym Particles
 Quaketusk Boar
 Quicksilver, Brash Blur
 Quina, Qu Gourmet
 Radiant Lotus
-Raft Security Officer
 Rage into the Valley
 Raging Goblinoids
 Rainveil Rejuvenator
@@ -338,7 +316,6 @@ Raph & Mikey, Troublemakers
 Raphael, the Nightwatcher
 Reckless Velocitaur
 Red Room Recruit
-Relm's Sketching
 Reno and Rude
 Resentful Revelation
 Resolute Reinforcements
@@ -365,13 +342,11 @@ Season of Weaving
 Secret of Bloodbending
 Seedglaive Mentor
 Seismic Sense
-Self-Reflection
 Servant of the Stinger
 Shark Shredder, Killer Clone
 Sheriff of Safe Passage
 Shredder, Unrelenting
 Shrike Force
-Silent Hallcreeper
 Silvergill Mentor
 Silverquill, the Disputant
 Skyskipper Duo
@@ -386,8 +361,6 @@ Sozin's Comet
 Spider-Islanders
 Spider-Man, Web-Slinger
 Spider-Punk
-Spider-Woman, Secret Agent
-Splash Lasher
 Splash Portal
 Stalwart Successor
 Starbreach Whale
@@ -411,18 +384,15 @@ Swiftblade Vindicator
 Tangle Tumbler
 Tannuk, Steadfast Second
 Tapestry Warden
-Taskmaster, Mercenary Mimic
 Team Tactics
 Temporal Intervention
 Tenured Tethermage
-Terra, Magical Adept
 Terrapact Intimidator
 Tetsuko Umezawa, Pursuer
 The Boulder, Ready to Rumble
 The Cave of Two Lovers
 The Final Days
 The Infamous Cruelclaw
-The Jolly Balloon Man
 The Kingpin of Crime
 The Last Ronin's Technique
 The Lord of the Eagles
@@ -461,11 +431,9 @@ Verdant Kraken
 Veteran Ice Climber
 Virulent Silencer
 Virus Beetle
-Visage Bandit
 Vision Quest
 Vito's Inquisitor
 Voyager Glidecar
-Wanderbrine Trapper
 War Balloon
 War Machine, Legacy of Iron
 War Squeak
@@ -473,8 +441,6 @@ Wargling
 Water Tribe Rallier
 Waterbender Ascension
 Waterwind Scout
-Waxen Shapethief
-Way of the Cryomancer
 Way of the Healer
 Way of the Wildspeaker
 Weapons Vendor

@@ -2,12 +2,12 @@
 #: format: Standard
 #: colors: U
 #: plan: control
-#: tier: B — GRADED 2026-07. One band below the measurable floor, which reads A on interaction 9
+#: tier: B — GRADED 2026-07. One band below the measurable floor, which reads A on interaction 7
 #: tier: plus card advantage 7 at a 3.22 curve. On the measurables this is the BETTER of the two
-#: tier: Unlock decks and it is worth saying so: against parent 51 it wins on interaction (9 vs
+#: tier: Unlock decks and it is worth saying so: against parent 51 it wins on interaction (7 vs
 #: tier: 6), curve (3.22 vs 4.14), focus (5 central themes vs 11) and engine health — `engines`
 #: tier: reports graveyard 20 enablers / 9 payoffs, balanced, with no warning at all. The
-#: tier: interaction is well shaped too: 7 of 9 instant-speed, 6 answering a noncreature permanent.
+#: tier: interaction is well shaped too: all 7 instant-speed, 6 answering a noncreature permanent (Boomerang Basics' and Bottomless Pool's bounce moved to the report-only tempo line 2026-10-07).
 #: tier: WHAT HOLDS IT AT B IS ONE NUMBER. The deck is a two-card engine and the second card is a
 #: tier: singleton plus one tutor. P(finding The Water Crystal) on the play is 33.6% by turn five,
 #: tier: 38.9% by turn seven, 44.1% by turn nine and 53.7% by turn thirteen — a coin flip on your

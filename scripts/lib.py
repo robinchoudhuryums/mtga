@@ -526,7 +526,28 @@ _LAND_REMINDER_RE = REMINDER_RE
 _ADD_CLAUSE_RE = re.compile(r"\badds?\b[^.\n]*", re.I)
 _ANY_COLOR_RE = re.compile(
     r"\b(?:one |two |three |X |that much |an amount of )?mana (?:in any combination )?of any "
-    r"(?:one )?(?:color|type)|\bany color\b|\bthe chosen color\b", re.I)
+    r"(?:one )?(?:color|type)|\bany color\b|\b(?:a|the) chosen color\b"
+    # Three more spellings of "you pick the colour", none of which this matched until
+    # 2026-10-06, so each produced NOTHING here: "two mana in any combination of COLORS"
+    # (Key to the Archive, Cascading Cataracts — the plural has no "any" after "of"), "two
+    # mana of DIFFERENT colors" (Firemind Vessel), and "a chosen color" (Desert Cenote, a
+    # LAND that read as colourless). Measured over the pool before widening (G-67).
+    r"|\bmana in any combination of colors\b|\bmana of different colors\b", re.I)
+# "Choose a color. Add … mana of that color" — a per-ACTIVATION choice (Astral Cornucopia,
+# Nykthos, Three Tree City), so it is any-colour ACCESS, not the choose-once `chosen` case.
+# Matched on the LINE because the choice sits before the Add clause.
+_CHOOSE_THEN_THAT_COLOR_RE = re.compile(
+    r"\bchoose a colou?r\.\s.*\bmana of that colou?r\b", re.I)
+# A colour that depends on what is on the BATTLEFIELD or in exile: Vivid's "For each color
+# among permanents you control, add one mana of that color" (Bloom Tender, Faeburrow
+# Elder), "a color of a permanent you control" (Meteor Crater), "one of the exiled card's
+# colors" (Chrome Mox, Pit of Offerings). Reported in `board`, never in `free` — what it
+# makes is a fact about the game, not the deck list — so no land count moves; the
+# NONLAND disclosure (`deck.uncounted_mana_sources`) is the reader that needed it, because
+# it reported Bloom Tender as producing nothing at all (found 2026-09-27, deck 21).
+_BOARD_COLOR_RE = re.compile(
+    r"\bfor each colou?r among\b|\bcolou?r of a permanent you control\b"
+    r"|\bexiled cards?'?s? colou?rs\b|\bcolou?rs? among\b", re.I)
 # "…of any color in your commander's color identity" — bounded by the commander, so it is
 # NOT the open any-colour clause `_ANY_COLOR_RE` reads it as (BS11-17).
 _COMMANDER_IDENTITY_RE = re.compile(r"\bcommander'?s? colou?r identity\b", re.I)
@@ -549,7 +570,7 @@ _TRANSFORM_GATED_RE = re.compile(r"\b(?:turned face up|turns? face up|transforme
 # of five. Kept inside `free` because for ACCESS it really is a source of whichever colour
 # you name (the same generosity a fetch gets), but reported separately so a breadth-aware
 # score does not credit it for colours it can never produce at the same time.
-_CHOSEN_COLOR_RE = re.compile(r"\bthe chosen color\b", re.I)
+_CHOSEN_COLOR_RE = re.compile(r"\b(?:a|the) chosen color\b", re.I)
 # An ability this permanent GRANTS to others is not production it has. Forgotten Monument
 # reads `{T}: Add {C}.` then `Other Caves you control have "{T}, Pay 1 life: Add one mana
 # of any color."` — it produces colourless and nothing else, yet was read as a five-colour
@@ -709,6 +730,10 @@ def land_production(text, colors_cell=None, commander=None):
                    Captivating Cave; "{T}, Sacrifice this land: Add …") and not also free
       any          True when some ability reads "mana of any color" (or "the chosen
                    color"), whatever its cost or restriction
+      board        colours added only by a clause whose colour depends on the BOARD or
+                   exile (Vivid's "for each color among permanents you control", Meteor
+                   Crater, Chrome Mox) — never folded into `free`, so no count moves;
+                   the nonland disclosure reports it
       fetch        True when it searches for a BASIC land (Evolving Wilds, Fabled
                    Passage, the Halflingcycling-style riders excluded because they need
                    a creature type)
@@ -739,7 +764,7 @@ def land_production(text, colors_cell=None, commander=None):
     deck read Command Tower as a black and red source and printed a "B (2), R (2)" splash.
     """
     txt = _LAND_REMINDER_RE.sub(" ", text or "")
-    free, restricted, conditional, chosen = set(), set(), set(), set()
+    free, restricted, conditional, chosen, board = set(), set(), set(), set(), set()
     gated, ungated = {}, set()
     any_color = fetch = False
     for line in txt.splitlines():
@@ -756,6 +781,13 @@ def land_production(text, colors_cell=None, commander=None):
         limited = "spend this mana only" in low
         cols = set()
         line_chosen = False
+        if _BOARD_COLOR_RE.search(line) and _ADD_CLAUSE_RE.search(line):
+            if not limited:
+                board |= set("WUBRG")
+            continue
+        if _CHOOSE_THEN_THAT_COLOR_RE.search(line):
+            any_color = True
+            cols |= set("WUBRG")
         for m in _ADD_CLAUSE_RE.finditer(line):
             clause = m.group(0)
             if _COMMANDER_IDENTITY_RE.search(clause):
@@ -801,7 +833,8 @@ def land_production(text, colors_cell=None, commander=None):
     chosen &= free - (ident - restricted - conditional)
     gated = {c: need for c, need in gated.items() if c in free and c not in ungated}
     return {"free": free, "restricted": restricted, "conditional": conditional,
-            "chosen": chosen, "any": any_color, "fetch": fetch, "gated": gated}
+            "chosen": chosen, "any": any_color, "fetch": fetch, "gated": gated,
+            "board": board - free - restricted - conditional}
 
 
 def land_gate_types(line):

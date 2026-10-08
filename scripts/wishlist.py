@@ -276,6 +276,24 @@ def _try_seed_power(row, _warned=[]):
         return None
 
 
+def _append_target(row, target):
+    """Add each deck id in `target` (canonical, `; `-joined) that `row`'s Target lacks.
+
+    Never replaces: a blank or `—` Target is simply filled, and `general` / `concept: …`
+    are kept with the id appended after them. Ids compare through `deck._norm_deck_id`,
+    so `6` and `06` are one deck (G-82). Returns True when the cell changed."""
+    import deck as dk
+    cur = (row.get("Target") or "").strip()
+    have = [] if cur in ("", "—") else [t.strip() for t in re.split(r"[;,]", cur) if t.strip()]
+    keys = {dk._norm_deck_id(t) for t in have}
+    add = [t for t in (x.strip() for x in target.split(";")) if t
+           and dk._norm_deck_id(t) not in keys]
+    if not add:
+        return False
+    row["Target"] = "; ".join(have + add)
+    return True
+
+
 def cmd_add(path, target=None, note=None):
     """Append a batch, optionally stamping every NEW row's Target / Note.
 
@@ -285,7 +303,9 @@ def cmd_add(path, target=None, note=None):
     Starcage for deck 6). That is worse than an error, because /add-wishlist's own recipe
     says to "set the home Target" and no flag did it — a documented step with no tool
     behind it, the G-53 shape. Only NEW rows are stamped: a re-add must not clobber a
-    Target somebody set by hand.
+    Target somebody set by hand. A re-add WITH `--target` APPENDS the id to the existing
+    row instead (2026-10-07, `_append_target`) — adding a missing id clobbers nothing —
+    and a name-only line now matches a listed row of that name rather than duplicating it.
 
     An unknown deck id is REFUSED here, BEFORE any Scryfall work, rather than written as
     a dangling Target — the same asymmetry parse_matches uses (G-74) and the same
@@ -351,14 +371,33 @@ def cmd_add(path, target=None, note=None):
                 (r.get("Collector #") or "").strip().lower())
     by_key = {_key(r): r for r in existing}
     seen = set(by_key)
+    # NAME index for a name-only line (2026-10-07). The dedupe key above carries the
+    # input line's set/collector, so `1 Uthros Psionicist` never matched the stored
+    # `(EOE) 84` row and APPENDED A DUPLICATE — which also meant a re-add could never
+    # reach an existing row to give it a second Target.
+    by_name = {}
+    for r in existing:
+        by_name.setdefault((r.get("Card Name") or "").strip().lower(), []).append(r)
 
     added, dupes, owned_hits, reenriched = 0, 0, [], 0
+    retargeted = []
     unenriched_miss, unenriched_err = [], []
     new_rows = []
     for name, setc, cn in entries:
         row, status = enrich(name, setc, cn, pool)
         key = (row["Card Name"].strip().lower(), setc.lower(), cn.lower())
-        if key in seen:
+        listed = [by_key[key]] if key in by_key else (
+            by_name.get(key[0], []) if not setc and not cn else [])
+        if listed and target:
+            # APPEND, never replace (2026-10-07): a re-add with `--target` gives an
+            # already-listed card a second home ("82" -> "82; 32") — the case that took a
+            # hand-edited CSV for Uthros Psionicist. G-82's rule was "a re-add must not
+            # CLOBBER a hand-set Target", and adding a missing id clobbers nothing. Note is
+            # never touched on an existing row.
+            for prev in listed:
+                if _append_target(prev, target):
+                    retargeted.append(prev["Card Name"])
+        if key in seen or listed:
             prev = by_key.get(key)
             # F20: a row added NAME-ONLY during a Scryfall outage (blank Type+Text) is
             # otherwise stuck — a re-add hits the dedupe and never enriches. If this
@@ -394,6 +433,7 @@ def cmd_add(path, target=None, note=None):
         new_rows.append(row)
         seen.add(key)
         by_key[key] = row
+        by_name.setdefault(key[0], []).append(row)
         added += 1
 
     # Stamp the batch annotations onto the rows this run actually added.
@@ -425,6 +465,9 @@ def cmd_add(path, target=None, note=None):
     if reenriched:
         print(f"Re-enriched {reenriched} previously name-only row(s) (added during an "
               "earlier Scryfall outage) now that their details resolved.")
+    if retargeted:
+        print(f"Added Target {target} to {len(retargeted)} already-listed row(s): "
+              f"{', '.join(retargeted[:8])} (existing Target kept; Note untouched).")
     if stamped:
         bits = []
         if target:
@@ -758,7 +801,7 @@ _LAND_BREADTH_CAP = 1.5
 _CHECKLAND_BASIC_FLOOR = 12
 
 
-def _land_value(row, deck_colors, basics=None, basic_types=None):
+def _land_value(row, deck_colors, basics=None, basic_types=None, gate_credit=None):
     """0–10 MANABASE value of a land for its target deck (F03) — the theme-fit axis
     is meaningless for lands (no synergy tags), so score fixing instead: reward
     producing colors the deck actually runs (a WB dual in mono-W is half-dead),
@@ -789,8 +832,19 @@ def _land_value(row, deck_colors, basics=None, basic_types=None):
     if not prod or not deck_colors:
         return 3.5  # colorless/utility land, or no known target — neutral
     used = prod & deck_colors
-    match = len(used) / len(prod)                 # fraction of its colors the deck uses
-    multi = 1.0 if len(used) >= 2 else 0.5 if len(used) == 1 else 0.0
+    # A TYPE-GATED colour (G-87) counts for the share of games its gate is met in THIS
+    # deck — `gate_credit` is {colour: 0..1} from `lib.gated_source_credit`, the same
+    # pricing `deck_source_profile` counts sources with. None (every deckless caller,
+    # `wishlist --rank` included) keeps the old full credit, so nothing changes there.
+    # At whole-number counts the curve below is the old step function exactly
+    # (0 -> 0, 1 -> 0.5, 2+ -> 1.0); only a fractional colour lands between the steps.
+    gc = gate_credit or {}
+
+    def _eff(cols):
+        return sum(gc.get(c, 1.0) for c in cols)
+    eff_used = _eff(used)
+    match = eff_used / len(prod)                  # fraction of its colors the deck uses
+    multi = min(1.0, 0.5 * eff_used)
     base = 3.5 + 4.5 * match * multi              # ~3.5..8 by color usefulness
     # BREADTH ABOVE TWO. `multi` saturates at two colors, so a source producing all THREE
     # of a three-color deck's colors scored exactly what a two-color dual did — base 8.0
@@ -815,8 +869,9 @@ def _land_value(row, deck_colors, basics=None, basic_types=None):
     # is a source of whichever one you name — but it supplies exactly ONE per game, so
     # crediting it for three is the error that made seven of these outrank real duals.
     simultaneous = used - set(lp["chosen"])
-    if len(simultaneous) > 2:
-        base += min((len(simultaneous) - 2) * _LAND_BREADTH_PER_COLOR, _LAND_BREADTH_CAP)
+    eff_sim = _eff(simultaneous)
+    if eff_sim > 2:
+        base += min((eff_sim - 2) * _LAND_BREADTH_PER_COLOR, _LAND_BREADTH_CAP)
     # Untapped fixing is premium. Read through `lib.tapland_kind`, the same predicate the
     # two REPORTING surfaces use — a substring test for "enters tapped" was the third and
     # last surface of the 2026-09-04 shockland defect: `tapland_profile` and

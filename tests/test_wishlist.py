@@ -294,14 +294,52 @@ class TestAddStampsTargetAndNote:
         assert wishlist.load_wishlist() == []
 
     def test_a_re_add_does_not_clobber_a_hand_set_target(self, tmp_path, monkeypatch):
-        # Only NEW rows are stamped — a second add must not overwrite a Target a human set.
+        # A second add must not OVERWRITE a Target a human set (G-82). Since 2026-10-07 it
+        # APPENDS the new id instead — adding a missing home clobbers nothing — and leaves
+        # the Note alone.
         batch = self._world(tmp_path, monkeypatch)
-        wishlist.cmd_add(batch, target="6")
+        wishlist.cmd_add(batch, target="6", note="first")
         rows = wishlist.load_wishlist()
         rows[0]["Target"] = "42"
         wishlist.write_wishlist(rows)
+        wishlist.cmd_add(batch, target="6", note="second")
+        row = wishlist.load_wishlist()[0]
+        assert row["Target"] == "42; 6" and row["Note"] == "first"
+
+    def test_a_re_add_without_target_leaves_the_target_alone(self, tmp_path, monkeypatch):
+        batch = self._world(tmp_path, monkeypatch)
         wishlist.cmd_add(batch, target="6")
-        assert wishlist.load_wishlist()[0]["Target"] == "42"
+        wishlist.cmd_add(batch)
+        assert wishlist.load_wishlist()[0]["Target"] == "6"
+
+    def test_an_id_already_present_is_not_appended_twice(self, tmp_path, monkeypatch):
+        # Compared through `_norm_deck_id`, so `06` is the `6` already there (G-82).
+        batch = self._world(tmp_path, monkeypatch)
+        wishlist.cmd_add(batch, target="6")
+        wishlist.cmd_add(batch, target="06")
+        assert wishlist.load_wishlist()[0]["Target"] == "6"
+
+    def test_general_and_blank_targets_take_the_id(self, tmp_path, monkeypatch):
+        batch = self._world(tmp_path, monkeypatch)
+        wishlist.cmd_add(batch)
+        for start, want in (("", "6"), ("—", "6"), ("general", "general; 6")):
+            rows = wishlist.load_wishlist()
+            rows[0]["Target"] = start
+            wishlist.write_wishlist(rows)
+            wishlist.cmd_add(batch, target="6")
+            assert wishlist.load_wishlist()[0]["Target"] == want, start
+
+    def test_a_name_only_line_matches_the_listed_printing(self, tmp_path, monkeypatch):
+        """The dedupe key carries the INPUT line's set/collector, so `1 Test Bomb` never
+        matched the stored `(SET) 9` row and appended a DUPLICATE (found 2026-10-07 giving
+        Uthros Psionicist a second home). A name-only line now matches by name."""
+        batch = self._world(tmp_path, monkeypatch)
+        wishlist.cmd_add(batch, target="6")
+        bare = tmp_path / "bare.txt"
+        bare.write_text("1 Test Bomb\n", encoding="utf-8")
+        assert wishlist.cmd_add(str(bare), target="21") == 0
+        rows = wishlist.load_wishlist()
+        assert len(rows) == 1 and rows[0]["Target"] == "6; 21"
 
     def test_a_padded_target_is_written_canonical(self, tmp_path, monkeypatch):
         """BS11-33: `--target 06` was accepted and stored as "06", which no exact-id
@@ -610,6 +648,26 @@ class TestRestrictedManaLands:
         mudflat = self._land(self.RESTRICTED)
         assert wishlist._land_value(mudflat, {"B"}) < wishlist._land_value(self._land(
             "This land enters tapped unless you control a Mount.\n{T}: Add {B}."), {"B"})
+
+
+class TestGatedColourPricing:
+    """G-87's recommender half (2026-10-06): a Verge's second colour was scored as full
+    fixing by `_land_value` while `deck_source_profile` discounted it, so a Verge tied an
+    untapped ungated dual and won the tiebreak in 57 decks' `suggest --lands`."""
+
+    VERGE = {"Card Name": "Probe Verge", "Type": "Land",
+             "Card Text": "{T}: Add {B}.\n{T}: Add {R}. Activate only if you control a "
+                          "Mountain or a Swamp.", "Color(s)": "B/R"}
+
+    def test_no_credit_map_is_the_old_score(self):
+        assert wishlist._land_value(self.VERGE, {"B", "R"}) == \
+            wishlist._land_value(self.VERGE, {"B", "R"}, gate_credit={"R": 1.0})
+
+    def test_a_partly_met_gate_scores_between_mono_and_dual(self):
+        full = wishlist._land_value(self.VERGE, {"B", "R"})
+        half = wishlist._land_value(self.VERGE, {"B", "R"}, gate_credit={"R": 0.5})
+        none = wishlist._land_value(self.VERGE, {"B", "R"}, gate_credit={"R": 0.0})
+        assert none < half < full
 
 
 class TestWishlistCastabilityByCost:
