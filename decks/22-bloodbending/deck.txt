@@ -6,8 +6,8 @@
 #: tier: advantage 7), so B now sits BELOW its floor, which the rubric permits but no longer
 #: tier: requires. Read the interaction figure one low: the classifier counts Jace, Reality
 #: tier: Sculptor's -3 (attackers get -5/-0) as a Sweeper. Instant-speed answers: Theorix Charm,
-#: tier: Swallowed by Leviathan, Extended Absence, Sokka's Haiku; sorcery-speed: Quag Feast,
-#: tier: Watery Grasp, Ruinous Waterbending. The mill plan is now an engine, not a sideline:
+#: tier: Swallowed by Leviathan, Extended Absence; sorcery-speed: Quag Feast, Watery Grasp,
+#: tier: Ruinous Waterbending, plus Azula's enters-exile (unread by the classifier, so +1). The mill plan is now an engine, not a sideline:
 #: tier: The Water Crystal adds four to every opponent mill, so Master's Councillors, Exhibition
 #: tier: Tidecaller, Riverchurn Monument, The Ancient One and Master Pakku each become real clocks
 #: tier: beside Jace's library exile and Kitsune's Technique, and The Master of Lake-town turns
@@ -43,6 +43,7 @@
 #: notes: Water Crystal), Lo and Li for Silvergill Peddler (tutors Secret of Bloodbending or
 #: notes: Decorum Dissertation), Serpent of the Pass for Wan Shi Tong. Manabase 10 Island /
 #: notes: 6 Swamp / 2 Gloomlake Verge for the five {B}{B} cards.
+#: notes: Azula, Cunning Usurper for Sokka's Haiku (removal on a Noble body Lo and Li can find; Master Pakku now counts 3 Lessons).
 
 # Nonland — mill / graveyard payoffs
 1 Hama, the Bloodbender (TLA) 224
@@ -71,7 +72,6 @@
 1 Master's Councillors (HOB) 47
 
 # Nonland — interaction / tempo
-1 Sokka's Haiku (TLA) 71
 1 Ruinous Waterbending (TLA) 118
 1 Swallowed by Leviathan (FIN) 79
 1 Quag Feast (DFT) 100
@@ -89,6 +89,7 @@
 1 Liliana, Dreadhorde General (FDN) 176
 1 Lo and Li, Twin Tutors (TLA) 108
 1 Serpent of the Pass (TLA) 70
+1 Azula, Cunning Usurper (TLA) 208
 
 # Lands
 1 Agna Qel'a (TLA) 264
