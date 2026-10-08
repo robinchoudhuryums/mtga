@@ -127,11 +127,13 @@ Earth's Mightiest Heroes
 Earthbending Lesson
 Earthen Ally
 Echo, Perceptive Prodigy
+Eclipsed Merrow
 Eerie Gravestone
 Effortless Master
 Eluge, the Shoreless Sea
 Emeritus of Woe
 Emil, Vastlands Roamer
+Encumbered Reejerey
 End of the Hunt
 Enigma Drake
 Enter the Enigma
@@ -441,7 +443,6 @@ War Squeak
 Wargling
 Water Tribe Rallier
 Waterbender Ascension
-Waterwind Scout
 Way of the Healer
 Way of the Wildspeaker
 Weapons Vendor
