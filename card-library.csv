@@ -6140,3 +6140,10 @@ As this land enters, you may behold a Jace. If you don't, this land enters tappe
 {2}{U}, {T}: Empower Jace 2.",U,Island; mana; empower jace; behold; dragons,FRA,191,1
 Naga Fleshcrafter,Creature — Snake Shapeshifter,"You may have this creature enter as a copy of any creature on the battlefield.
 Renew — {2}{U}, Exile this card from your graveyard: Put a +1/+1 counter on target nonlegendary creature you control. Each other creature you control becomes a copy of that creature until end of turn. Activate only as a sorcery.",U,Snake; Shapeshifter; counters; graveyard; renew,TDM,52,1
+Starwinder,Creature — Leviathan,"Whenever a creature you control deals combat damage to a player, you may draw that many cards.
+Warp {2}{U}{U} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",U,Leviathan; exile cast; card draw; warp; tempo; cost-reduction,EOE,79,1
+Uthros Psionicist,Creature — Jellyfish Scientist,The second spell you cast each turn costs {2} less to cast.,U,Jellyfish; Scientist; cost-reduction,EOE,84,1
+Seasoned Cryomancer,Creature — Human Wizard,"When this creature enters, draw two cards, then discard two cards. When you discard one or more nonland cards this way, tap up to that many target creatures and put a stun counter on each of them.
+{3}{U}{U}, Exile this card from your graveyard: Draw two cards.",U,Human; Wizard; counters; graveyard; card draw; etb,FRA,38,1
+Spider-Sense,Instant,"Web-slinging {U} (You may cast this spell for {U} if you also return a tapped creature you control to its owner's hand.)
+Counter target instant spell, sorcery spell, or triggered ability.",U,counterspell; bounce; web-slinging; evasion; tempo,SPM,46,1
