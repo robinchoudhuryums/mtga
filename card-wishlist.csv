@@ -146,6 +146,8 @@ Forestcycling {2} ({2}, Discard this card: Search your library for a Forest card
 −6: Draw three cards. Then put X +1/+1 counters on each creature you control, where X is the number of cards in your hand.",U,Jace; planeswalker; counters; card draw; tokens; bounce,FRA,43,Mythic,12,deck 12 tune v2 2026-10-08,8.5,seed
 Uldaros Theorix,Legendary Creature — Elder Sphinx,"Flying
 When Uldaros Theorix enters, if you cast him, exile up to one target nonland card of each card type from your graveyard. Copy those cards. You may cast any number of spells with total mana value 6 or less from among the copies without paying their mana costs. (Permanent spells cast this way become tokens.)",U/B,Elder; Sphinx; graveyard; etb; flying; evasion,FRA,159,Mythic,12,deck 12 tune 2026-10-08,5.5,seed
+Rewrite Regrets,Sorcery,"Return target creature or planeswalker card with mana value 6 or less from your graveyard to the battlefield.
+Empower Jace 2. (Put two loyalty counters on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with ""[−1]: Surveil 1"" and ""[−3]: Draw a card."")",B,reanimator; graveyard; card draw; tokens; surveil; empower jace,FRA,62,Uncommon,12,deck 12 tune pass 3 2026-10-08,4.5,seed
 Theorix Charm,Instant,"Choose one —
 • Counter target noncreature spell unless its controller pays {2}.
 • Target creature gets -2/-2 until end of turn.

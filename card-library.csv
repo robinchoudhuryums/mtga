@@ -2342,7 +2342,7 @@ Deceit,Creature — Elemental Incarnation,"When this creature enters, if {U}{U} 
 When this creature enters, if {B}{B} was spent to cast it, target opponent reveals their hand. You choose a nonland card from it. That player discards that card.
 Evoke {U/B}{U/B}",U/B,Elemental; Incarnation; etb; bounce; discard; evoke; value; sacrifice,ECL,212,1
 Hidden Lair,Land,"{T}: Add {C}.
-{T}: Add {U} or {B}. Activate only if this land entered this turn or if you control a basic land.",U/B,mana,MSH,269,1
+{T}: Add {U} or {B}. Activate only if this land entered this turn or if you control a basic land.",U/B,mana,MSH,269,4
 Dismal Backwater,Land,"This land enters tapped.
 When this land enters, you gain 1 life.
 {T}: Add {U} or {B}.",U/B,lifegain; mana; etb,FDN,261,2
@@ -6147,3 +6147,5 @@ Seasoned Cryomancer,Creature — Human Wizard,"When this creature enters, draw t
 {3}{U}{U}, Exile this card from your graveyard: Draw two cards.",U,Human; Wizard; counters; graveyard; card draw; etb,FRA,38,1
 Spider-Sense,Instant,"Web-slinging {U} (You may cast this spell for {U} if you also return a tapped creature you control to its owner's hand.)
 Counter target instant spell, sorcery spell, or triggered ability.",U,counterspell; bounce; web-slinging; evasion; tempo,SPM,46,1
+Theorix Annex,Land,"This land enters tapped unless you control a planeswalker.
+{T}: Add {U} or {B}.",U/B,mana,FRA,192,4
