@@ -2860,6 +2860,16 @@ Uthros Psionicist,{2}{U},3,
 Seasoned Cryomancer,{1}{U}{U},3,
 Spider-Sense,{1}{U},2,Web-slinging
 Theorix Annex,,0,
+Kang the Conqueror,{2}{U}{U},4,Flying;Power-up
+"The Theorist, Jace Beleren",{2}{U}{U},4,
+"Sephiroth, Planet's Heir",{4}{U}{B},6,Vigilance
+Rewrite Regrets,{3}{B},4,Surveil;Empower Jace
+"Azula, Cunning Usurper",{2}{U}{B}{B},5,Firebending
+"Ultimecia, Time Sorceress",{3}{U}{B},5,Surveil;Transform;Menace;Time Compression
+Locke Cole,{1}{U}{B},3,Lifelink;Deathtouch
+Superior Spider-Man,{2}{U}{B},4,Mind Swap
+Uldaros Theorix,{3}{U}{B}{B},6,Flying
+Theorix Charm,{U}{B},2,Mill
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -5622,7 +5632,6 @@ Hope Estheim,{W}{U},2,Lifelink;Mill
 "Joshua, Phoenix's Dominant // Phoenix, Warden of Fire",{1}{R}{W},3,Flying;Lifelink;Transform
 "Kefka, Court Mage // Kefka, Ruler of Ruin",{2}{U}{B}{R},5,Flying;Transform
 "Kuja, Genome Sorcerer // Trance Kuja, Fate Defied",{2}{B}{R},4,Transform;Flare Star;Double
-Locke Cole,{1}{U}{B},3,Lifelink;Deathtouch
 "Noctis, Prince of Lucis",{1}{W}{U}{B},4,Lifelink
 Rufus Shinra,{1}{W}{B},3,
 "Rydia, Summoner of Mist",{R}{G},2,Summon;Landfall
@@ -5653,7 +5662,6 @@ Clive's Hideaway,,0,Hideaway
 "Windurst, Federation Center",,0,
 "Zanarkand, Ancient Metropolis // Lasting Fayth",{4}{G}{G},0,
 Wastes,,0,
-"Sephiroth, Planet's Heir",{4}{U}{B},6,Vigilance
 "Beatrix, Loyal General",{4}{W}{W},6,Vigilance
 "Ultimecia, Temporal Threat",{4}{U}{U},6,
 Deadly Embrace,{3}{B}{B},5,
@@ -5699,7 +5707,6 @@ Semester Foreseer // Peer Review,{3}{U} // {2}{W/U},4,Surveil;Prepared
 Sphinx of False Conclusions,{2}{U}{U},4,Flying;Flash
 Sphinx's Approach,{1}{U}{U},3,
 Surveillance Phantasm,{1}{U},2,Flying;Surveil;Vigilance;Defender
-"The Theorist, Jace Beleren",{2}{U}{U},4,
 Theorist's Proxy,{1}{U},2,Surveil;Empower Jace;Flash
 Undulating Witness,{4}{U},5,Flying;Landcycling;Basic landcycling;Typecycling;Cycling
 Variable Chaser // Arc of Fortune,{2}{U} // {2}{U},3,Flying;Prowess;Prepared
@@ -5714,7 +5721,6 @@ Multiply by Zero,{1}{B},2,
 Overwrite the Multiverse,{4}{B}{B},6,Surveil;Empower Jace
 Rampart Hunter,{3}{B},4,Deathtouch
 Rank Rat,{1}{B},2,
-Rewrite Regrets,{3}{B},4,Surveil;Empower Jace
 Rise of the Deathbringer,{4}{B},5,
 Sanctum Lurker,{2}{B},3,Empower Jace
 Silence the Echo,{1}{B},2,
@@ -5795,11 +5801,9 @@ Stingerquill Voxmancer // Vicious Verse,{B/R} // {B/R},1,Prepared
 Stinging Vitriol,{B}{R},2,
 Tam's Resistance,{1}{G/U},2,Surveil;Empower Jace
 Tenured Tethermage,{1}{R}{G},3,
-Theorix Charm,{U}{B},2,Mill
 Theorix Metamage // Omit Variables,{2}{U/B} // {U/B},3,Threshold;Prepared;Mill
 Twinned Vision,{1}{U/R},2,Flashback
 Twisted Fates,{2}{W}{W}{B},5,
-Uldaros Theorix,{3}{U}{B}{B},6,Flying
 Vindictive Triumph,{W}{B}{B},3,
 Warrior's Blades,{2}{R}{W},4,Equip
 Whiplash Wordsmith // Vicious Verse,{3}{B/R} // {B/R},4,Prepared
@@ -11161,7 +11165,6 @@ Jennifer Walters // The Sensational She-Hulk,{1}{W} // {3}{G}{W}{W},2,Reach;Tran
 "Patriot, Shield Wielder",{1}{W},2,
 Bruce Banner // The Incredible Hulk,{U} // {2}{R}{R}{G}{G},1,Reach;Enrage;Transform;Trample
 "Iron Lad, Diverging Destiny",{2}{U},3,Flying;Vigilance
-Kang the Conqueror,{2}{U}{U},4,Flying;Power-up
 S.H.I.E.L.D. Flying Car,{2}{U},3,Flying;Crew;Flash
 Tony Stark // The Invincible Iron Man,{1}{U} // {4}{U}{R},2,Flying;Transform;Haste
 "Misty Knight, Hero for Hire",{1}{R},2,
@@ -13387,7 +13390,6 @@ Morbius the Living Vampire,{2}{U}{B},4,Flying;Lifelink;Vigilance
 Spider-Man 2099,{U}{R},2,Vigilance;From the Future;Double strike
 "Spider-Woman, Stunning Savior",{1}{W/U},2,Flying;Venom Blast
 "The Spot, Living Portal",{3}{W}{B},5,
-Superior Spider-Man,{2}{U}{B},4,Mind Swap
 Bagel and Schmear,{1},1,Nosh;Share
 "Living Brain, Mechanical Marvel",{4},4,
 Passenger Ferry,{3},3,Crew
@@ -14105,7 +14107,6 @@ Rocky Rebuke,{1}{G},2,
 "Aang, at the Crossroads // Aang, Destined Savior",{2}{G}{W}{U},5,Flying;Transform;Earthbend
 "Aang, Swift Savior // Aang and La, Ocean's Fury",{1}{W}{U},3,Flying;Reach;Airbend;Transform;Trample;Flash;Waterbend
 "Avatar Aang // Aang, Master of Elements",{R}{G}{W}{U},4,Flying;Transform;Firebending
-"Azula, Cunning Usurper",{2}{U}{B}{B},5,Firebending
 "Iroh, Tea Master",{1}{R}{W},3,Food
 The Lion-Turtle,{1}{G}{U},3,Reach;Vigilance
 "Toph, the First Metalbender",{1}{R}{G}{W},4,Earthbend

@@ -6149,3 +6149,29 @@ Spider-Sense,Instant,"Web-slinging {U} (You may cast this spell for {U} if you a
 Counter target instant spell, sorcery spell, or triggered ability.",U,counterspell; bounce; web-slinging; evasion; tempo,SPM,46,1
 Theorix Annex,Land,"This land enters tapped unless you control a planeswalker.
 {T}: Add {U} or {B}.",U/B,mana,FRA,192,4
+Kang the Conqueror,Legendary Creature — Human Villain,"Flying
+Power-up — {5}{U}{U}{U}: Put a +1/+1 counter on Kang. Take an extra turn after this one. During that turn, power-up abilities can't be activated. (Activate each power-up ability only once. Reduce the cost by his mana cost if he entered this turn.)",U,Human; Villain; counters; flying; evasion; power-up; payoff,MSH,62,1
+"The Theorist, Jace Beleren",Legendary Planeswalker — Jace,"At the beginning of each opponent's draw step, you draw a card.
++1: Create a 1/1 blue Illusion creature token.
+−2: For each opponent, return up to one target artifact or creature that player controls to its owner's hand.
+−6: Draw three cards. Then put X +1/+1 counters on each creature you control, where X is the number of cards in your hand.",U,Jace; planeswalker; counters; card draw; tokens; bounce,FRA,43,1
+"Sephiroth, Planet's Heir",Legendary Creature — Human Avatar Soldier,"Vigilance (Attacking doesn't cause this creature to tap.)
+When Sephiroth enters, creatures your opponents control get -2/-2 until end of turn.
+Whenever a creature an opponent controls dies, put a +1/+1 counter on Sephiroth.",U/B,Human; Avatar; Soldier; counters; etb; vigilance; combat,FIN,553,1
+Rewrite Regrets,Sorcery,"Return target creature or planeswalker card with mana value 6 or less from your graveyard to the battlefield.
+Empower Jace 2. (Put two loyalty counters on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with ""[−1]: Surveil 1"" and ""[−3]: Draw a card."")",B,reanimator; graveyard; card draw; tokens; surveil; empower jace,FRA,62,1
+"Azula, Cunning Usurper",Legendary Creature — Human Noble Rogue,"Firebending 2 (Whenever this creature attacks, add {R}{R}. This mana lasts until end of combat.)
+When Azula enters, target opponent exiles a nontoken creature they control, then they exile a nonland card from their graveyard.
+During your turn, you may cast cards exiled with Azula and you may cast them as though they had flash. Mana of any type can be spent to cast those spells.",U/B,Human; Noble; Rogue; graveyard; heist; etb; firebending; bending,TLA,208,1
+"Ultimecia, Time Sorceress",Legendary Creature — Human Warlock // Legendary Creature — Nightmare Warlock,"Whenever Ultimecia enters or attacks, surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)
+At the beginning of your end step, you may pay {4}{U}{U}{B}{B} and exile eight cards from your graveyard. If you do, transform Ultimecia. // Menace (This creature can't be blocked except by two or more creatures.)
+Time Compression — When this creature transforms into Ultimecia, Omnipotent, take an extra turn after this one.",U/B,Human; Warlock; Nightmare; graveyard; selection; surveil; transform; menace; evasion,FIN,247,1
+Locke Cole,Legendary Creature — Human Rogue,"Deathtouch, lifelink
+Whenever Locke Cole deals combat damage to a player, draw a card, then discard a card.",U/B,Human; Rogue; lifegain; card draw; lifelink; deathtouch; combat; removal,FIN,234,1
+Superior Spider-Man,Legendary Creature — Spider Human Hero,"Mind Swap — You may have Superior Spider-Man enter as a copy of any creature card in a graveyard, except his name is Superior Spider-Man and he's a 4/4 Spider Human Hero in addition to his other types. When you do, exile that card.",U/B,Spider; Human; Hero; graveyard,SPM,155,1
+Uldaros Theorix,Legendary Creature — Elder Sphinx,"Flying
+When Uldaros Theorix enters, if you cast him, exile up to one target nonland card of each card type from your graveyard. Copy those cards. You may cast any number of spells with total mana value 6 or less from among the copies without paying their mana costs. (Permanent spells cast this way become tokens.)",U/B,Elder; Sphinx; graveyard; etb; flying; evasion,FRA,159,1
+Theorix Charm,Instant,"Choose one —
+• Counter target noncreature spell unless its controller pays {2}.
+• Target creature gets -2/-2 until end of turn.
+• Mill three cards, then draw a card. (To mill three cards, put the top three cards of your library into your graveyard.)",U/B,counterspell; graveyard; mill; card draw; removal,FRA,155,1
