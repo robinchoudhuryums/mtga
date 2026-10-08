@@ -1,6 +1,6 @@
 #: name: Drawn Conclusions
 #: format: Standard
-#: tier: A — Dimir second-draw Villain midrange with a self-discard layer, ON the A metrics floor: interaction 8, card advantage 10, avg MV 3.44, protection 2. Six of the eight answers are instant speed (Garruk and Sephiroth's one-sided -2/-2 are not), and five can hit a noncreature permanent; Azula's enters-the-battlefield edict is one the classifier does not read. Card advantage reads LOW against how the deck plays: Monument to Endurance's draw mode, Locke Cole's combat loot, Doctor Octopus's end-step refill to eight and the Jace token Rewrite Regrets makes all sit outside or under that count. What the floor cannot see is the engine — six "draw your second card each turn" payoffs turned on every turn by Super Intelligence's upkeep draw and Leader, Super-Genius's combat draw (which Taskmaster can copy for a second); connive and loot discards that Monument to Endurance turns into a draw, a Treasure or three damage, and that put a Sephiroth or an Azula where Rewrite Regrets and Superior Spider-Man can reach it; and the Villain-token loop (Madame Masque / Construct a Cosmic Cube tokens make Prowler connive, Doctor Octopus gives every Villain +2/+2). Two extra-turn finishers (Ultimecia's transform, Kang the Conqueror's power-up). Weaknesses that keep it from S: protection 2, and black is the thin colour (13 sources) under the {B}{B} of Garruk, Uldaros Theorix and Azula (about 75% on curve).
+#: tier: A — Dimir second-draw Villain midrange with a self-discard layer, ON the A metrics floor: interaction 8, card advantage 10, avg MV 3.44, protection 2. Six of the eight answers are instant speed (Garruk and Sephiroth's one-sided -2/-2 are not), and five can hit a noncreature permanent; Azula's enters-the-battlefield edict is one the classifier does not read. Card advantage reads LOW against how the deck plays: Monument to Endurance's draw mode, Locke Cole's combat loot, Doctor Octopus's end-step refill to eight and the Jace token Rewrite Regrets makes all sit outside or under that count. What the floor cannot see is the engine — six "draw your second card each turn" payoffs turned on every turn by Super Intelligence's upkeep draw and Leader, Super-Genius's combat draw (which Taskmaster can copy for a second); connive and loot discards that Monument to Endurance turns into a draw, a Treasure or three damage, and that put a Sephiroth or an Azula where Rewrite Regrets and Superior Spider-Man can reach it; and the Villain-token loop (Madame Masque / Construct a Cosmic Cube tokens make Prowler connive, Doctor Octopus gives every Villain +2/+2). Two extra-turn finishers (Ultimecia's transform, Kang the Conqueror's power-up). Weaknesses that keep it from S: protection 2, and black is still the thinner colour (15 sources after the 2026-10-08 manabase pass) under the {B}{B} of Garruk, Uldaros Theorix and Azula (about 82% on curve).
 #: colors: UB
 #: archetype: Dimir (U/B) "draw your second card each turn" Villain midrange with a self-discard layer. Cheap payoffs that grow or make tokens on the second draw (Kid Loki, Mischievous Mystic, Foggy Swamp Spirit Keeper, Kang, Madame Masque, Construct a Cosmic Cube); enablers that make the second draw automatic (Super Intelligence, Leader, Emet-Selch, the loot from Kaito, Cunning Infiltrator, Enduring Curiosity off evasive hits, The Theorist's draw on the OPPONENT's draw step, Confusticate's instant-speed draw two); every connive and loot discard feeds Monument to Endurance, and a discarded fatty becomes a Superior Spider-Man target. Cheap black removal and counters hold the board; Doctor Octopus, Uldaros Theorix and two extra turns (Ultimecia's transform for {4}{U}{U}{B}{B} plus eight graveyard cards; Kang the Conqueror's power-up) are the late game. DISTINCTNESS: the second-draw engine also runs in 79 (W/U, built on it) and 43 (Esper, its backup engine); this is the roster's only Dimir one, and the Villain-token and discard angles are its own.
 #: notes: Dimir (U/B) — second-draw Villain midrange. Tuned 2026-10-08 in two passes (22 swaps, see the flex block).
@@ -44,14 +44,13 @@
 1 Garruk, Veiled Butcher (FRA) 229
 
 # Lands
-2 Baxter Building (MSH) 261
-1 Hidden Lair (MSH) 269
+1 Baxter Building (MSH) 261
+4 Hidden Lair (MSH) 269
 1 Gloomlake Verge (DSK) 260
-1 Treno, Dark City (FIN) 290
-1 Dismal Backwater (FDN) 261
+4 Theorix Annex (FRA) 192
 1 Watery Grave (EOE) 261
-6 Swamp (MSH) 292
-9 Island (MSH) 290
+5 Swamp (MSH) 292
+6 Island (MSH) 290
 2 Agna Qel'a (TLA) 264
 
 # Flex — suggested swaps (all OWNED, 0 wildcards — single-black to respect the splash). See: deck.py flex 12
@@ -66,3 +65,4 @@
 #~ note: applied 2026-10-08 (the /tune-deck 12 package) — also Mischievous Mystic for Satoru (its not-cast enter trigger had two enablers), Garruk for Painful Quandary, Foggy Swamp Spirit Keeper for Erudite Wizard, Enduring Curiosity for Grim Reaper, Prowler for one Atlantean Cavalry, Theorix Charm for Last Gasp; Watery Grave for one Dismal Backwater and two Agna Qel'a for two Islands (untapped, and an instant-speed loot sink).
 #~ note: applied 2026-10-08, second pass (v2: the Merfolk package dissolved for Villains + self-discard) — Emet-Selch for Attuma, Monument to Endurance for Atlantean Cavalry, Superior Spider-Man for Harmonized Trio, Azula, Cunning Usurper for High-Society Hunter, The Theorist for I Am Iron Man, Doctor Octopus for Multiversal Incursion, Locke Cole for Messenger Hawk, Sephiroth for Namor (Ultimecia for Roxxon Brutes is noted above).
 #~ note: applied 2026-10-08, third pass — Taskmaster, Mercenary Mimic for Ms. Marvel (one spell left that targets your own creature), Rewrite Regrets for Archmage of Runes, Kang the Conqueror for Sokka's Haiku.
+#~ note: applied 2026-10-08, manabase pass (all owned) — Hidden Lair 1 -> 4 for three Islands; Theorix Annex x4 for Treno, Dismal Backwater, a Swamp and one Baxter Building. No land now always enters tapped (Annex is untapped once a planeswalker is out), and black went 13 -> 15 sources. A second Watery Grave (rare craft) for an Island is the next step if black still stumbles.
