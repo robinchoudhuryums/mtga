@@ -6175,3 +6175,5 @@ Theorix Charm,Instant,"Choose one —
 • Counter target noncreature spell unless its controller pays {2}.
 • Target creature gets -2/-2 until end of turn.
 • Mill three cards, then draw a card. (To mill three cards, put the top three cards of your library into your graveyard.)",U/B,counterspell; graveyard; mill; card draw; removal,FRA,155,1
+Transformative Commons,Land,"This land enters tapped unless you control a planeswalker.
+{T}: Add {G} or {U}.",U/G,mana,FRA,193,4
