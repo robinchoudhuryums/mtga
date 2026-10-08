@@ -120,7 +120,7 @@ Equipped creature gets +2/+2 for each artifact you control and is an Artificer i
 Machina — Equip {4} ({4}: Attach to target creature you control. Equip only as a sorcery.)",W,Equipment; tokens; etb; equipment; pump; machina; job select; equip,FIN,23,Rare,21a,"artifact payoff — +2/+2 per artifact, Job-select token; fits the big-artifact goodstuff shell",5.0,hand
 The Water Crystal,Legendary Artifact,"Blue spells you cast cost {1} less to cast.
 If an opponent would mill one or more cards, they mill that many cards plus four instead.
-{4}{U}{U}, {T}: Each opponent mills cards equal to the number of cards in your hand.",U,mill; cost-reduction; graveyard,FIN,85,Rare,51,,5.5,seed
+{4}{U}{U}, {T}: Each opponent mills cards equal to the number of cards in your hand.",U,mill; cost-reduction; graveyard,FIN,85,Rare,51; 22,,5.5,seed
 Dark Knight's Greatsword,Artifact — Equipment,"Job select (When this Equipment enters, create a 1/1 colorless Hero creature token, then attach this to it.)
 Equipped creature gets +3/+0 and is a Knight in addition to its other types.
 Chaosbringer — Equip—Pay 3 life. Activate only once each turn.",B,Equipment; tokens; etb; equipment; pump; chaosbringer; job select; equip,FIN,95,Uncommon,38,,4.0,hand
@@ -144,6 +144,8 @@ This creature gets +2/+0 for each graveyard with seven or more cards in it.
 Whenever you draw your second card each turn, target player mills three cards. (They put the top three cards of their library into their graveyard.)",U,Human; Advisor; graveyard; mill; pump; vigilance; combat,HOB,47,Uncommon,22,deck 22 tune 2026-10-08,2.0,seed
 Bonehoard Dracosaur,Creature — Dinosaur Dragon,"Flying, first strike
 At the beginning of your upkeep, exile the top two cards of your library. You may play them this turn. If you exiled a land card this way, create a 3/1 red Dinosaur creature token. If you exiled a nonland card this way, create a Treasure token.",R,Dinosaur; Dragon; tokens; treasure; impulse; flying; evasion; first strike; combat,LCI,134,Mythic,49,,7.5,hand
+The Ancient One,Legendary Creature — Spirit God,"Descend 8 — The Ancient One can't attack or block unless there are eight or more permanent cards in your graveyard.
+{2}{U}{B}: Draw a card, then discard a card. When you discard a card this way, target player mills cards equal to its mana value.",U/B,Spirit; God; graveyard; mill; card draw; descend,LCI,222,Mythic,22,deck 22 tune 2026-10-08,5.0,seed
 "Matzalantli, the Great Door // The Core",Legendary Artifact // Legendary Land,"{T}: Draw a card, then discard a card.
 {4}, {T}: Transform Matzalantli. Activate only if there are four or more permanent types among cards in your graveyard. (Artifact, battle, creature, enchantment, land, and planeswalker are permanent types.) // (Transforms from Matzalantli.)
 Fathomless descent — {T}: Add X mana of any one color, where X is the number of permanent cards in your graveyard.",Colorless,graveyard; card draw; mana; transform; fathomless descent,LCI,256,Rare,51,,4.0,seed

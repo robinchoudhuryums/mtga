@@ -2,17 +2,19 @@
 #: format: Standard
 #: arena: 22 Bloodbending, 6904238a-f5a2-49d9-967c-547167fecec2
 #: tier: B — Dimir mill / graveyard-value control. LETTER HELD pending the owner's re-grade:
-#: tier: the 2026-10-08 tune moved the measured floor C -> A (interaction 3 -> 7, card
-#: tier: advantage 8), so B now sits BELOW its floor, which the rubric permits but no longer
-#: tier: requires. What the tune fixed: the deck had one instant-speed answer and now has four
-#: tier: (Theorix Charm, Swallowed by Leviathan, Extended Absence, Sokka's Haiku) beside Watery
-#: tier: Grasp and Ruinous Waterbending, and Jace, Reality Sculptor adds a second library-out
-#: tier: win beside Kitsune's Technique and the Master's Councillors / Consuming Aberration mill.
-#: tier: What still caps it: three of the deck's new pieces are CRAFTS (Jace, Master's
-#: tier: Councillors, Cruel Calculations), Ruinous Waterbending's {B}{B} is a turn-4 card off 10
-#: tier: black sources, and Bo1 mill is slow — Consuming Aberration and Uchbenbak remain the clock.
+#: tier: the 2026-10-08 tunes moved the measured floor C -> A (interaction 3 -> 9, card
+#: tier: advantage 7), so B now sits BELOW its floor, which the rubric permits but no longer
+#: tier: requires. Read the interaction figure one low: the classifier counts Jace, Reality
+#: tier: Sculptor's -3 (attackers get -5/-0) as a Sweeper. Instant-speed answers: Theorix Charm,
+#: tier: Swallowed by Leviathan, Extended Absence, Sokka's Haiku; sorcery-speed: Quag Feast,
+#: tier: Watery Grasp, Ruinous Waterbending. The mill plan is now an engine, not a sideline:
+#: tier: The Water Crystal adds four to every opponent mill, so Master's Councillors, Exhibition
+#: tier: Tidecaller, Riverchurn Monument, The Ancient One and Master Pakku each become real clocks
+#: tier: beside Jace's library exile and Kitsune's Technique. What still caps it: the {B}{B}
+#: tier: cards (Ral Zarek, Ruinous Waterbending, Liliana) cast a turn late off 11 black sources,
+#: tier: and Bo1 mill is slow against a fast aggro start.
 #: colors: UB
-#: archetype: Dimir (U/B) mill / card-advantage control — Hama + waterbend, second-draw mill (Master's Councillors), graveyard payoffs, Jace, Reality Sculptor as the library-out finisher.
+#: archetype: Dimir (U/B) mill / card-advantage control — Hama + waterbend, The Water Crystal mill engine (Councillors, Exhibition Tidecaller, Riverchurn Monument, The Ancient One), graveyard payoffs, Jace, Reality Sculptor as the library-out finisher.
 #: notes: Dimir (U/B) mill / card-advantage control, built around Hama, the Bloodbender
 #: notes: and the waterbend mechanic (tap your board to pay extra costs). Self-mill +
 #: notes: opponent-mill feed graveyard payoffs (Consuming Aberration grows off
@@ -29,30 +31,34 @@
 #: notes: for Boomerang Basics (spice — draws off Kitsune's Technique); Hidden Lair x3 + Watery
 #: notes: Grave for the four always-tapped duals. Symbiote Spider-Man was kept on a re-read: its
 #: notes: dig self-mills and Find New Host reuses it from the yard.
+#: notes: 2026-10-08 second wave: Ral Zarek for Kid Loki, The Water Crystal for Cryogen Relic,
+#: notes: Exhibition Tidecaller for Portent of Calamity, The Ancient One for Professor Zei,
+#: notes: Riverchurn Monument for Inspiration from Beyond, Quag Feast for Abandon Attachments,
+#: notes: Liliana, Dreadhorde General for Spirit Water Revival (its waterbend mode shuffled the
+#: notes: graveyard the descend/threshold cards need), and one Island became a Swamp.
 
 # Nonland — mill / graveyard payoffs
 1 Hama, the Bloodbender (TLA) 224
 1 Consuming Aberration (FDN) 238
 1 Emet-Selch, Unsundered (FIN) 218
 1 Uchbenbak, the Great Mistake (LCI) 242
-1 Portent of Calamity (BLB) 66
+1 Exhibition Tidecaller (SOS) 48
 1 Jace, Reality Sculptor (FRA) 216
+1 Ral Zarek, Guest Lecturer (SOS) 97
+1 The Ancient One (LCI) 222
+1 Riverchurn Monument (DFT) 57
 
 # Nonland — card-advantage engines
 1 Wan Shi Tong, Librarian (TLA) 78
-1 Professor Zei, Anthropologist (TLA) 238
 1 Silvergill Peddler (ECL) 70
-1 Cryogen Relic (EOE) 52
+1 The Water Crystal (FIN) 85
 1 The Everflowing Well (LCI) 56
 1 Leader, Super-Genius (MSH) 64
 1 Secret of Bloodbending (TLA) 69
-1 Inspiration from Beyond (FDN) 43
 1 Waterbending Lesson (TLA) 80
-1 Spirit Water Revival (TLA) 73
 1 Cruel Calculations (FRA) 26
 
 # Nonland — "draw your second card" payoffs
-1 Kid Loki (MSH) 63
 1 Kaito, Bane of Nightmares (DSK) 220
 1 Foggy Swamp Spirit Keeper (TLA) 222
 1 Super Intelligence (MSH) 77
@@ -62,7 +68,7 @@
 1 Sokka's Haiku (TLA) 71
 1 Ruinous Waterbending (TLA) 118
 1 Swallowed by Leviathan (FIN) 79
-1 Abandon Attachments (TLA) 205
+1 Quag Feast (DFT) 100
 1 Watery Grasp (TLA) 82
 1 Kitsune's Technique (TMT) 42
 1 Extended Absence (FRA) 54
@@ -75,11 +81,12 @@
 1 Taskmaster, Mercenary Mimic (MSH) 232
 1 The Legend of Kuruk (TLA) 61
 1 Superior Spider-Man (SPM) 155
+1 Liliana, Dreadhorde General (FDN) 176
 
 # Lands
 1 Agna Qel'a (TLA) 264
 1 Gloomlake Verge (DSK) 260
 4 Hidden Lair (MSH) 269
 1 Watery Grave (EOE) 261
-13 Island (MSH) 290
-4 Swamp (MSH) 292
+12 Island (MSH) 290
+5 Swamp (MSH) 292
