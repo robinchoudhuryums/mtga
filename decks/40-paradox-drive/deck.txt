@@ -15,8 +15,8 @@
 #: tier: after the Divergent Equation / Matterbending Mage / Agna Qel'a swaps and the
 #: tier: Ooze Spill / Amazing Acrobatics counter upgrade (two conditional counters — Essence
 #: tier: Scatter's creatures-only and Reasonable Doubt's pay-{2} — became hard counters, so
-#: tier: 5 of the 6 counters are no longer situational). Metrics floor is A: interaction 10
-#: tier: + card advantage 7 on a tight 2.29 curve. The interaction is well SHAPED, not just
+#: tier: 5 of the 6 counters are no longer situational). Metrics floor is A: interaction 9
+#: tier: + card advantage 7 on a tight 2.35 curve. The interaction is well SHAPED, not just
 #: tier: numerous — most of it is instant-speed and most can answer a noncreature
 #: tier: permanent, so a resolved planeswalker or enchantment isn't a blank. (The count
 #: tier: reads 11 since the role classifier was fixed to credit artifact/enchantment
@@ -33,7 +33,7 @@
 #: tier: variance barely bites — only cost-reduction and reanimation are thin (2 each).
 #: tier: Manabase is clean: 26 lands, 87% keepable openers, 0 uncastable, no color stray
 #: tier: since Opulent Palace left. The one clear weakness A allows is spent on the win-con:
-#: tier: the deck leans on resolving a big X-spell behind a diffuse (good-stuff) 18-theme
+#: tier: the deck leans on resolving a big X-spell behind a diffuse (good-stuff) 16-theme
 #: tier: spine. Held from S by that slow clock and the absence of a format-warping bomb —
 #: tier: it out-resources opponents rather than closing fast. Aspirational WIP (5 craft
 #: tier: targets); per the rubric that doesn't affect the letter, only `check`/`audit`.
@@ -56,7 +56,7 @@ Deck
 1 Paradox Surveyor (SOS) 208
 1 Taigam, Master Opportunist (TDM) 60
 1 Mindspring Merfolk (DFT) 51
-1 Bold Biochemist (MSH) 48
+1 Fblthp, Knows the Way (FRA) 258
 1 Absorbing Man (MSH) 199
 1 Emeritus of Abundance (SOS) 145
 1 Y'shtola Rhul (FIN) 86
@@ -64,6 +64,7 @@ Deck
 1 Goldvein Hydra (OTJ) 167
 1 The Goose Mother (WOE) 204
 1 Namor the Sub-Mariner (MSH) 69
+1 Garruk, Curse Breaker (FRA) 259
 
 # X-spell payoffs / card advantage
 1 Mind into Matter (SOS) 202
@@ -87,7 +88,6 @@ Deck
 # Interaction — removal / tempo
 1 Epic Fight (MSH) 166
 1 Matterbending Mage (SOS) 59
-1 Chelonian Tackle (SOS) 142
 1 Unforgiving Aim (ECL) 200
 
 # Lands — 26, Simic; owned untapped duals over straight basics (Opulent Palace cut —
