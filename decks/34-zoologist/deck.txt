@@ -1,10 +1,10 @@
 #: name: Zoologist (changelings are every type)
 #: format: Standard
-#: tier: B — Simic changeling / Diligent-Zookeeper type-count deck; the metrics floor reads A (interaction 7, card advantage 6,
-#: tier: protection 1). Held at B pending the owner's re-grade: still ONE type-COUNT payoff (Zookeeper), but the 2026-10-09
+#: tier: B — Simic changeling / Diligent-Zookeeper type-count deck; the metrics floor reads A (interaction 7, card advantage 7,
+#: tier: protection 2). Held at B pending the owner's re-grade: still ONE type-COUNT payoff (Zookeeper), but the 2026-10-09
 #: tier: tune added named-type payoffs that changelings satisfy — Beorn (Bears +2/+2, draws two a turn), Spider-Ham (animal
 #: tier: lord) and Patchwork Banner (chosen-type lord + fixing) — so losing Zookeeper no longer blanks the board.
-#: tier: Residual weaknesses: thin protection (1, none aimed at Zookeeper) and rainbow-singleton variance. Fully owned.
+#: tier: Residual weaknesses: thin protection (2: Old Fat Spider Can't See Me, Oko's −6 emblem) and rainbow-singleton variance. Owned except Celestial Reunion.
 #: colors: GU
 #: archetype: Simic (G/U) changeling / creature-type-count — flood the board with all-types creatures, then Diligent Zookeeper makes them enormous; a scaling-removal interaction suite keeps it from being a one-card combo.
 #: notes: The focused, resilient build (promoted from the old 34a variant; the original undirected
@@ -18,6 +18,9 @@
 #: notes: −Ultron (4 nontoken artifacts) +Pet Avengers (six types → 10/10 under Zookeeper); −Spider-Suit +Patchwork Banner
 #: notes: (name Bird); 2 Forest → Breeding Pool + Willowrush Verge (U sources 10 → 12). Celestial Reunion queued as a
 #: notes: virtual second Zookeeper (behold two changelings as Humans, X=4 puts Zookeeper onto the battlefield).
+#: notes: Wave 2 (2026-10-09): −Into the Flood Maw +Old Fat Spider Can't See Me (hexproof on Zookeeper for the Saga's life + two
+#: notes: draws); −Badgermole +Attuma (changelings are Merfolk: lord + draw on attack; trample was redundant with Beorn);
+#: notes: −Turtle-Duck +Celestial Reunion (pending craft).
 
 # Nonland — changeling / type-matters core
 1 Diligent Zookeeper (TLA) 171
@@ -35,9 +38,9 @@
 1 Ray Fillet, Man Ray (TMT) 49
 1 Gangly Stompling (ECL) 226
 1 Iguana Parrot (TLA) 56
-1 Turtle-Duck (TLA) 200
+1 Celestial Reunion (ECL) 170
 1 Chomping Changeling (ECL) 172
-1 Badgermole (TLA) 166
+1 Attuma, Atlantean Warlord (MSH) 47
 1 Flopsie, Bumi's Buddy (TLA) 179
 1 Ember Island Production (TLA) 48
 1 Avatar Destiny (TLA) 165
@@ -54,7 +57,7 @@
 # Nonland — interaction / protection
 1 Bite Down (FDN) 212
 1 Rabid Bite (ANB) 101
-1 Into the Flood Maw (BLB) 52
+1 Old Fat Spider Can't See Me (HOB) 50
 1 Spell Pierce (SOA) 23
 1 Bushwhack (BRO) 174
 1 Unforgiving Aim (ECL) 200
