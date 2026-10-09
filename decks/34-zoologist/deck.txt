@@ -1,6 +1,6 @@
 #: name: Zoologist (changelings are every type)
 #: format: Standard
-#: tier: B — Simic changeling / Diligent-Zookeeper type-count deck; the metrics floor reads A (interaction 7, card advantage 9,
+#: tier: B — Simic changeling / Diligent-Zookeeper type-count deck; the metrics floor reads A (interaction 7, card advantage 8,
 #: tier: protection 5). Held at B pending the owner's re-grade: still ONE type-COUNT payoff (Zookeeper), but the 2026-10-09
 #: tier: tune added named-type payoffs that changelings satisfy — Beorn (Bears +2/+2, draws two a turn), Spider-Ham (animal
 #: tier: lord), Attuma (Merfolk lord + draw) and Imperious Perfect (Elf lord + tokens) — so losing Zookeeper no longer blanks the board.
@@ -42,6 +42,8 @@
 #: notes: each turn costs {2} less and has flash — both players' turns).
 #: notes: Wave 8 (2026-10-09): −Iguana Parrot +Jackal, Genius Geneticist (copies a creature spell whose MV = his power, then
 #: notes: grows; Mutagens / Origin / Thranduil's Company counters start the 2→3→4 ladder that ends in a Zookeeper copy).
+#: notes: Wave 9 (2026-10-09): −Chronicle of Victory +Transdimensional Bovine (two mana of one colour from turn 4 — ramps
+#: notes: to Kraken / Kyoshi / Echocasting; an Ox Avatar, 2/6 flier under Zookeeper). Card advantage 9 → 8, accepted.
 
 # Nonland — changeling / type-matters core
 1 Diligent Zookeeper (TLA) 171
@@ -69,7 +71,7 @@
 1 Applied Geometry (SOS) 172
 1 Radagast of Rhosgobel (HOB) 136
 1 Stalactite Dagger (ECL) 261
-1 Chronicle of Victory (ECL) 253
+1 Transdimensional Bovine (TMT) 134
 1 The Legend of Kyoshi // Avatar Kyoshi (TLA) 186
 1 Champions of the Perfect (ECL) 171
 1 Spider-Ham, Peter Porker (SPM) 114
