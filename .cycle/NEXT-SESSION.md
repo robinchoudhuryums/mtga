@@ -23,6 +23,21 @@ The heading used to read "THE 2026-08-24 SESSION" while the stamps under it ran 
 2026-10-01 (BS11-65). The NEWEST stamp is always the first one; each supersedes the
 stamps below it where they disagree.
 
+> **STATE STAMP, 2026-10-09 (NEWEST — supersedes the 2026-10-08 stamp where they disagree).**
+> PR #204 merged: decks 12 / 18 / 22 / 32 / 34 / 40 tuned, plus two Card-advantage pattern
+> fixes (typed cast-from-top, multi-chapter Saga draws — 14 decks +1/+2, 0 floors moved; block
+> `2026-10-34-tune-tool-gaps-broad-implement.md`). **Deck 34 (Zoologist) owner decisions still
+> open:** Kitnap vs Secret Invasion (an owned, cheaper steal-with-ward that fits the copy theme),
+> plus Three Steps Ahead / Fresh Start — best cuts Undercover Skrull and Applied Geometry; keep
+> Bite Down, the deck's ONLY planeswalker answer. Pending crafts: Celestial Reunion (wishlisted),
+> and optionally 2 Breeding Pool + 1 Willowrush Verge (sources 14/13 → 15/14). **Unfiled tool
+> gaps from this session** (STATE.md Open follow-on): Oko, Lorwyn Liege's "+1: -2/-0" scores
+> Removal (a false positive like deck 22's Jace −3); `deck.py check` calls a HYBRID card an
+> off-colour stray "(cost unknown)" while `mana` reads it correctly (Gangly Stompling); deck 33's
+> Kitsa flex note says "if crafted" though it is owned. **Stalest card lists** (no card change
+> since July–early August): 24b, 15, 3-brawl, 14, 44a, 24, 11, 52/52a/53, 33, 20a, 60a, 35a,
+> 20, 48a, 10, 45a, 55b — the natural next `/tune-deck` or `/roster-review` targets.
+>
 > **STATE STAMP, 2026-10-08 (NEWEST — supersedes the 2026-10-03 stamp where they disagree).**
 > Deck 32 (Mimicry) was rebuilt mono-blue over a long tune and is now **fully owned** (four
 > crafts ingested 2026-10-08). The tune surfaced six tooling gaps, planned as four batches in
