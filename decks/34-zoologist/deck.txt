@@ -1,10 +1,10 @@
 #: name: Zoologist (changelings are every type)
 #: format: Standard
-#: tier: B — Simic changeling / Diligent-Zookeeper type-count deck; the metrics floor reads A (interaction 7, card advantage 7,
-#: tier: protection 2). Held at B pending the owner's re-grade: still ONE type-COUNT payoff (Zookeeper), but the 2026-10-09
+#: tier: B — Simic changeling / Diligent-Zookeeper type-count deck; the metrics floor reads A (interaction 7, card advantage 9,
+#: tier: protection 5). Held at B pending the owner's re-grade: still ONE type-COUNT payoff (Zookeeper), but the 2026-10-09
 #: tier: tune added named-type payoffs that changelings satisfy — Beorn (Bears +2/+2, draws two a turn), Spider-Ham (animal
 #: tier: lord) and Patchwork Banner (chosen-type lord + fixing) — so losing Zookeeper no longer blanks the board.
-#: tier: Residual weaknesses: thin protection (2: Old Fat Spider Can't See Me, Oko's −6 emblem) and rainbow-singleton variance. Owned except Celestial Reunion.
+#: tier: Residual weaknesses: a top-heavy curve (10 plays at MV 2 or less) and rainbow-singleton variance. Owned except Celestial Reunion and Rocky Rebuke.
 #: colors: GU
 #: archetype: Simic (G/U) changeling / creature-type-count — flood the board with all-types creatures, then Diligent Zookeeper makes them enormous; a scaling-removal interaction suite keeps it from being a one-card combo.
 #: notes: The focused, resilient build (promoted from the old 34a variant; the original undirected
@@ -31,6 +31,11 @@
 #: notes: Wave 5 (2026-10-09): −The Goose Mother (rotating ~2026) +Viv Vision (Robot Hero: 4 power under Zookeeper, so every
 #: notes: attack draws); −Lilypad Village +Hall of Echoes ({5}: become a Zookeeper copy for the turn — Lilypad's blue was
 #: notes: creature-only and never counted as a source, so no colour count moved).
+#: notes: Wave 6 (2026-10-09): −Rabid Bite +Rocky Rebuke (same effect at instant speed; craft); −Enter the Enigma +Origin of
+#: notes: Metalbending (artifact/enchantment answer or indestructible); −Earth's Mightiest Heroes +The Legend of Kyoshi (ch. I
+#: notes: draws = greatest power, ~10 under Zookeeper); −Flopsie +Oko, the Ringleader (hexproof Zookeeper copy each combat);
+#: notes: −Wan Shi Tong +Champions of the Perfect (behold a changeling as the Elf); −Bushwhack +Genghis Frog (changelings are
+#: notes: Mutants → Mutagens).
 
 # Nonland — changeling / type-matters core
 1 Diligent Zookeeper (TLA) 171
@@ -51,7 +56,7 @@
 1 Celestial Reunion (ECL) 170
 1 Chomping Changeling (ECL) 172
 1 Attuma, Atlantean Warlord (MSH) 47
-1 Flopsie, Bumi's Buddy (TLA) 179
+1 Oko, the Ringleader (OTJ) 223
 1 Echocasting Symposium (SOS) 44
 1 Imperious Perfect (FDN) 719
 1 March of the World Ooze (DFT) 169
@@ -59,18 +64,18 @@
 1 Patchwork Banner (BLB) 247
 1 Stalactite Dagger (ECL) 261
 1 Chronicle of Victory (ECL) 253
-1 Earth's Mightiest Heroes (MSH) 165
-1 Wan Shi Tong, Librarian (TLA) 78
-1 Enter the Enigma (DSK) 52
+1 The Legend of Kyoshi // Avatar Kyoshi (TLA) 186
+1 Champions of the Perfect (ECL) 171
 1 Spider-Ham, Peter Porker (SPM) 114
 1 Bartz and Boko (FIN) 175
+1 Genghis Frog (TMT) 148
 
 # Nonland — interaction / protection
 1 Bite Down (FDN) 212
-1 Rabid Bite (ANB) 101
+1 Rocky Rebuke (TLA) 193
 1 Old Fat Spider Can't See Me (HOB) 50
 1 Dazzling Denial (BLB) 45
-1 Bushwhack (BRO) 174
+1 Origin of Metalbending (TLA) 187
 
 # Lands
 1 Hall of Echoes (FRA) 179
@@ -78,3 +83,5 @@
 1 Willowrush Verge (DFT) 270
 1 Breeding Pool (EOE) 251
 10 Island (MSH) 290
+
+#~ -Oko, the Ringleader | +Flopsie, Bumi's Buddy | Oko rotates ~2026 (OTJ); Flopsie (counter on each creature, power-4+ attackers can't be double-blocked) is the drop-in return
