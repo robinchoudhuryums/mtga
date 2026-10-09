@@ -24,6 +24,10 @@
 #: notes: Wave 3 (2026-10-09): −Avatar Destiny +Imperious Perfect (changelings are Elves; Elf Warrior tokens are 4/4 under
 #: notes: Zookeeper + Perfect); −Cat-Owl +Thranduil's Company (landfall counters feed Ray Fillet's draw); −Spell Pierce +Dazzling
 #: notes: Denial (any spell; {4} tax while you control a Bird — every changeling is one).
+#: notes: Wave 4 (2026-10-09): −Pet Avengers +Traveling Chocobo (cast Birds — every changeling — off the top); −Unforgiving Aim
+#: notes: +Bartz and Boko (each other Bird deals its power to a creature: removal that scales with Zookeeper); −Ember Island
+#: notes: Production +Echocasting Symposium (Paradigm recopies Zookeeper every turn — Zookeeper is NOT legendary, so copies
+#: notes: stack, each capped at +10 separately); −Glamer Gifter +Mirror Room (3-mana copy, later a trigger doubler).
 
 # Nonland — changeling / type-matters core
 1 Diligent Zookeeper (TLA) 171
@@ -34,10 +38,10 @@
 1 Mutable Explorer (ECL) 186
 1 Three Tree Mascot (FDN) 682
 1 Thranduil's Company (HOB) 168
-1 Glamer Gifter (ECL) 49
+1 Mirror Room // Fractured Realm (DSK) 67
 1 Undercover Skrull (MSH) 194
 1 Beorn the Fierce (HOB) 119
-1 Pet Avengers (MSH) 178
+1 Traveling Chocobo (FIN) 210
 1 Ray Fillet, Man Ray (TMT) 49
 1 Gangly Stompling (ECL) 226
 1 Iguana Parrot (TLA) 56
@@ -45,7 +49,7 @@
 1 Chomping Changeling (ECL) 172
 1 Attuma, Atlantean Warlord (MSH) 47
 1 Flopsie, Bumi's Buddy (TLA) 179
-1 Ember Island Production (TLA) 48
+1 Echocasting Symposium (SOS) 44
 1 Imperious Perfect (FDN) 719
 1 March of the World Ooze (DFT) 169
 1 Applied Geometry (SOS) 172
@@ -56,6 +60,7 @@
 1 Wan Shi Tong, Librarian (TLA) 78
 1 Enter the Enigma (DSK) 52
 1 Spider-Ham, Peter Porker (SPM) 114
+1 Bartz and Boko (FIN) 175
 
 # Nonland — interaction / protection
 1 Bite Down (FDN) 212
@@ -63,7 +68,6 @@
 1 Old Fat Spider Can't See Me (HOB) 50
 1 Dazzling Denial (BLB) 45
 1 Bushwhack (BRO) 174
-1 Unforgiving Aim (ECL) 200
 
 # Lands
 1 Lilypad Village (BLB) 255
