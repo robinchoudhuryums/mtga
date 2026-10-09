@@ -28,11 +28,14 @@
 #: notes: +Bartz and Boko (each other Bird deals its power to a creature: removal that scales with Zookeeper); −Ember Island
 #: notes: Production +Echocasting Symposium (Paradigm recopies Zookeeper every turn — Zookeeper is NOT legendary, so copies
 #: notes: stack, each capped at +10 separately); −Glamer Gifter +Mirror Room (3-mana copy, later a trigger doubler).
+#: notes: Wave 5 (2026-10-09): −The Goose Mother (rotating ~2026) +Viv Vision (Robot Hero: 4 power under Zookeeper, so every
+#: notes: attack draws); −Lilypad Village +Hall of Echoes ({5}: become a Zookeeper copy for the turn — Lilypad's blue was
+#: notes: creature-only and never counted as a source, so no colour count moved).
 
 # Nonland — changeling / type-matters core
 1 Diligent Zookeeper (TLA) 171
 1 Vizier of the Menagerie (FDN) 649
-1 The Goose Mother (WOE) 204
+1 Viv Vision, Teen Synthezoid (MSH) 256
 1 Oko, Lorwyn Liege (ECL) 61
 1 Omni-Changeling (ECL) 62
 1 Mutable Explorer (ECL) 186
@@ -70,7 +73,7 @@
 1 Bushwhack (BRO) 174
 
 # Lands
-1 Lilypad Village (BLB) 255
+1 Hall of Echoes (FRA) 179
 11 Forest (MSH) 296
 1 Willowrush Verge (DFT) 270
 1 Breeding Pool (EOE) 251
