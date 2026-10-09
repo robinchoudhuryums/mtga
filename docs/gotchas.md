@@ -1759,6 +1759,17 @@ Roster sweep: 0 findings changed either way (deck 32 had been corrected by hand 
 was noticed). Residual: an unqualified effect verb ("this deck swaps from AHEAD", the
 life-exchange decks 41/42) is still a cue; no citation sits near one today.
 
+**2026-10-09 — a CONSEQUENCE `no longer`, logged and deliberately NOT fixed.** Deck 34's tier
+note read "…Spider-Ham (animal lord) and Patchwork Banner (chosen-type lord + fixing) — so
+losing Zookeeper no longer blanks the board" after Patchwork Banner had been cut, and the audit
+reported "rationale is current". `no longer` in `_HISTORY_CUES` sat in the same clause (an
+em-dash is not a clause boundary) and suppressed the citation, though it described the BOARD,
+not the card — the `rather than` / `replace` / `swap` shape once more. Caught by hand. Roster
+sweep with `no longer` removed from the cue list: **0** other citations surface across 119
+decks, so one instance does not earn a narrowing (G-78's bar: a fix with no live hit is a
+defensive change, and every cue edit risks the suppressions the audit's trust rests on).
+Re-measure if a second instance turns up.
+
 ## [G-27] `deck.py tier <id> --audit-rationale` catches a STALE tier argument
 
 **`deck.py tier <id> --audit-rationale` catches a STALE tier argument.** The `#: tier:`
@@ -5375,6 +5386,19 @@ unanchored form — 10 matches, 0 false. COPY effects ("a token that's a copy of
 card worth what the rest of the deck is; a bare "a copy of it" (self-recursion) is excluded. ~130
 pool cards; Payoff is not a `tier_band` term. Roster: 44 decks' payoff counts moved, `cuts` top-3
 changed in 10, #1 in 2. Role coverage 1,507 → 1,540 of 1,991 roster cards.
+
+**2026-10-09 — two Card-advantage holes, both found by a hand count during the deck-34 tune.**
+(1) The cast-from-the-top pattern allowed three words between `cast`/`play` and `spells`, so a
+TYPED or COMPOUND permission fell outside it — Traveling Chocobo ("play lands and cast Bird
+spells"), Madame Web ("Spider spells and noncreature spells"), Mystic Forge, Sigarda — while
+Vizier's "creature spells" matched: a family disagreement (G-67). Widened to five; exactly those
+4 pool cards newly match. (2) A Saga chapter line that draws on TWO OR MORE chapters ("III, IV —
+Draw a card", Old Fat Spider Can't See Me) matched nothing; a line-anchored chapter-list pattern
+now counts it, excluding a single-chapter draw (a one-shot cantrip — Leaves from the Vine) and a
+rummage chapter ("you may discard a card. If you do, draw", Summon: G.F. Ifrit), while the loot
+rule already removes a draw-then-discard chapter (The Modern Age). 6 pool cards match, 4 real.
+Roster diff: **14 decks' card advantage +1 or +2, interaction unchanged, 0 of 117 tier floors
+moved**; ten `#: tier:` figures and one `#~ note:` were re-grounded in the same change.
 
 ## [K-13] A literal type-name search cannot see the choose-a-type category — and the false negative reads as an answer
 

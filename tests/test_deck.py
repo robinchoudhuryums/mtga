@@ -571,6 +571,34 @@ class TestClassifyRoles:
             "Whenever Etali attacks, exile the top card of each player's library, then you "
             "may cast any number of spells from among them without paying their mana costs.")
 
+    def test_typed_or_compound_cast_from_top_is_card_advantage(self):
+        # The word gap was {0,3}, so a TYPED or COMPOUND permission fell outside it while
+        # Vizier's "creature spells" matched — a family disagreement (G-67). Traveling
+        # Chocobo and Madame Web both scored no card advantage (2026-10-09).
+        for text in [
+            "You may look at the top card of your library any time.\n"
+            "You may play lands and cast Bird spells from the top of your library.",
+            "You may look at the top card of your library any time.\n"
+            "You may cast Spider spells and noncreature spells from the top of your library.",
+        ]:
+            assert "Card advantage" in deck.classify_roles(text), text
+
+    def test_multi_chapter_saga_draw_is_card_advantage(self):
+        # "III, IV — Draw a card" is two cards over the Saga's life (Old Fat Spider Can't
+        # See Me scored Protection only). The guards: a SINGLE-chapter draw is a one-shot
+        # cantrip, and a rummage chapter ("you may discard a card. If you do, draw a
+        # card") or a loot chapter is card-neutral.
+        assert "Card advantage" in deck.classify_roles(
+            "I — Target creature you control gains hexproof for as long as this Saga "
+            "remains on the battlefield.\nIII, IV — Draw a card.")
+        for text in [
+            "I — Mill three cards.\nIII — Draw a card if there's a creature card in your "
+            "graveyard.",
+            "I, II — You may discard a card. If you do, draw a card.\nIII, IV — Add {R}.",
+            "I, II — Draw a card, then discard a card.\nIII — Exile this Saga.",
+        ]:
+            assert "Card advantage" not in deck.classify_roles(text), text
+
     def test_clue_token_is_card_advantage(self):
         # `investigate` was indexed but the spelled-out token was not, so The Mechanist —
         # a Clue per noncreature spell — scored Payoff/engine only and a deck built on it
@@ -7428,3 +7456,71 @@ class TestBatchBRolesAndTempo:
                 "buildable": True, "avg_mv": 3.0, "early_drops": 8, "central_themes": 10}
         for tempo in (0, 3, 12):
             assert deck.tier_band(dict(base, tempo=tempo)) == deck.tier_band(base)
+
+
+class TestCastabilitySweep:
+    """Batch E (2026-10-08): a maindecked card that cannot be cast on time is swept
+    roster-wide, and an {X} spell is judged at X=2 rather than the X=0 its MV books."""
+
+    def test_x_spell_is_priced_at_x_two_not_zero(self):
+        # Fblthp, Knows the Way: {X}{G}{G} books MV 2, but nobody casts it on turn 2.
+        assert deck.cast_turn("{X}{G}{G}", 2) == (4, True)
+        # two {X} symbols add X_ASSUMED twice, then the cap applies
+        assert deck.cast_turn("{X}{X}{W}{W}", 2) == (deck.CAST_CAP, True)
+
+    def test_non_x_spell_turn_is_its_mana_value_capped(self):
+        assert deck.cast_turn("{1}{W}", 2) == (2, False)
+        assert deck.cast_turn("{5}{U}{U}", 7) == (deck.CAST_CAP, False)
+        assert deck.cast_turn("{0}", 0) == (1, False)
+
+    def test_x_on_a_back_face_only_does_not_count(self):
+        # G-02/BS11-71: only the FRONT face's {X} is the spell you cast on curve.
+        assert deck.cast_turn("{2}{W}{W} // {X}{2}{W}", 4) == (4, False)
+
+    def _rows(self, cost, mv, sources):
+        cards = [(1, "Test Card", "", "")]
+        mana = {"test card": (cost, mv)}
+        return deck.cast_on_curve_rows(cards, mana, sources, 60, {}, {})
+
+    def test_thin_colour_two_drop_reads_low(self):
+        # Deck 18's shape: a {W}{U} two-drop off 4 W sources is well under half on curve.
+        (p, n, turn, strict, col, _need, x), = self._rows("{W}{U}", 2, {"W": 4, "U": 23})
+        assert (n, turn, col, x) == ("Test Card", 2, "W", False)
+        assert p < 0.5
+
+    def test_x_priced_row_moves_the_turn_not_the_pips(self):
+        (p0, *_), = self._rows("{U}{U}", 2, {"U": 16})
+        (px, _n, turn, strict, _c, _need, x), = self._rows("{X}{U}{U}", 2, {"U": 16})
+        assert (turn, strict, x) == (4, {"U": 2}, True)
+        assert px > p0          # later turn, same demand → higher probability
+
+    def _short(self, monkeypatch, cost, mv, sources, meta=None):
+        monkeypatch.setattr(deck, "deck_source_profile",
+                            lambda *a, **k: (dict(sources), 24, 60, {}))
+        cards = [(1, "Test Card", "", "")]
+        return deck.castability_shortfalls(meta or {}, cards, by_key={}, by_name={},
+                                           carddata={}, mana={"test card": (cost, mv)})
+
+    def test_sweep_flags_a_thin_non_splash_colour(self, monkeypatch):
+        hits = self._short(monkeypatch, "{W}{U}", 2, {"W": 4, "U": 23})
+        assert [(n, col, have) for _p, n, _t, col, have, _x in hits] == [("Test Card", "W", 4)]
+
+    def test_sweep_leaves_a_splash_to_consistency(self, monkeypatch):
+        # ≤ SPLASH_MAX sources is reframed "cast late or cut" by `consistency`, a disclosed
+        # choice — the sweep must not re-report it as an unseen gap.
+        assert self._short(monkeypatch, "{W}{U}", 2,
+                           {"W": deck.SPLASH_MAX, "U": 23}) == []
+
+    def test_sweep_honours_uncastable_ok(self, monkeypatch):
+        meta = {"uncastable-ok": "Test Card"}
+        assert self._short(monkeypatch, "{W}{U}", 2, {"W": 4, "U": 23}, meta=meta) == []
+
+    def test_sweep_ignores_late_cards_and_healthy_ones(self, monkeypatch):
+        assert self._short(monkeypatch, "{4}{W}{W}", 6, {"W": 6, "U": 20}) == []  # T5 > T4
+        assert self._short(monkeypatch, "{1}{U}", 2, {"W": 4, "U": 23}) == []     # 90%+
+
+    def test_sweep_is_report_only(self):
+        # It must never reach the tier floor (G-25/G-60/G-86 shape).
+        import inspect
+        assert "castability_shortfalls" not in inspect.getsource(deck.tier_band)
+        assert "castability_shortfalls" not in inspect.getsource(deck.deck_quality_vector)

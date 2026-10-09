@@ -10,6 +10,8 @@
 > **Keep this file to the seven sections below.** `/cycle-status` and
 > `/cycle-resume` read the FIRST match of each heading, so a second
 > `## Where I left off` silently shadows the real one. Narrative belongs in
+**2026-10-08 (latest) — Batch E implemented** (block `11-batchE-castability-sweep-broad-implement.md`): `castability_shortfalls` soft sweep + `audit` Crv column; {X} spells priced at X=2 in `consistency`. Suite + check_all green. **Next:** `/sync-docs` for E, then Batch F (targets gate families), then G.
+
 - 2026-10-07: Batch B landed (steal Auras → removal, copy effects → payoff, report-only tempo line, single-target bounce moved out of interaction; 8 floors moved down, prose re-grounded in 15 decks). Next: Batch C (legend-rule advisory), then D (Suggested Why).
 - 2026-10-07: Batch A of the deck-32 tooling plan landed (figure-drift tolerance for G-22's ledger counts; wishlist `--add --target` appends to listed rows + name-only re-add no longer duplicates). Next: Batch B (steal Auras + copy effects + tempo line + bounce out of interaction), then C, then D.
 **2026-10-07 (latest) — the open follow-ons implemented** (block
@@ -42,6 +44,9 @@ Updated: 2026-10-02 (Batch 1 — see Where I left off)
 
 ## Completed this cycle
 
+- **2026-10-09 — deck-34-tune tool gaps #2/#4/#5** (block `2026-10-34-tune-tool-gaps-broad-implement.md`):
+  Card-advantage patterns (typed cast-from-top, multi-chapter Saga draw) — 14 decks CA +1/+2, 0 floors
+  moved, 10 tier figures re-grounded; Zookeeper protected in deck 34; G-26 `no longer` residual logged. Net 2 − 0 = 2.
 - **2026-10-07 — the STATE.md open follow-ons** (block `11-followons-broad-implement.md`):
   eleven items, net 7 − 0 = 7. Disclosure covers Vivid / creature-granted mana, land
   recommender prices gated colours (57 decks' #1 land pick moved), MV-cap target gate no
@@ -233,12 +238,17 @@ Updated: 2026-10-02 (Batch 1 — see Where I left off)
   - **Batch B — DONE 2026-10-07** (block `11-batchB-tune32-followons-broad-implement.md`; 8 tier floors moved down — owner to re-read 18/40a/47/51 and 22/22-brawl/67/68): classifier — steal Auras (`you control enchanted creature|permanent`, 9 pool cards) into `Removal (spot)`; token-copy / clone effects (≈95 zero-role cards) into `Payoff / engine`, excluding self-copies ("a copy of it"); a report-only **TEMPO** line beside interaction in `stats`/`tier`/`quality` (stuns, one-turn taps, BOUNCE) that never feeds `tier_band` (G-25's shape); and **BOUNCE MOVES OUT of interaction into tempo** (owner, 2026-10-07 — the permanence line applied consistently; 167 of 194 pool bounce cards scored `Removal (spot)`; simulated: 6 of 119 decks' tier floors drop, 13 decks run bounce-only interaction). Roster before/after diff that ASSERTS zero errors; re-ground every `#: tier:` figure the sweep names and report the floor moves (letters are the owner's call); `role_baseline` + `check_roles --tags` (K-09) + tests; CLAUDE.md rubric/G-24/G-25/K-12 text.
   - **Batch C (small-medium, after B):** legend-rule advisory in `deck.py targets` — copy effects that KEEP legendary status vs the deck's legendary creatures, reusing B's copy predicate; report-only, calibrated on the roster so it does not saturate (G-07).
   - **Batch D (medium, independent):** `Suggested Why` (match-digest decision 2) — new matches.csv column through the existing `_is_own_earlier_schema` migration; pre-registered rules keep / screw / flood from the `[MTGA-GAME]` facts, printed with evidence in `_print_loss_prompt`; `--review` and an accept step that writes confirmed reasons through the `--annotate` writer; agreement measured after 20 confirmed losses. G-74, `/log-matches`, README.
+  - **Tuning-pass holes (decks 12/18/40, 2026-10-08) — three more batches:**
+  - **Batch E — DONE 2026-10-08** (block `11-batchE-castability-sweep-broad-implement.md`; floor 50% by T4 → 30 cards / 19 of 117 decks; docs pending /sync-docs): maindeck castability sweep + X-spell on-curve pricing. (1) A soft `check_all` roster sweep and an `audit` column for a MAINDECKED card casting on curve below ~50% by T4 with ≥4 sources of its colour (thin-colour shape: deck 18's two W lords at 44% on 4 W sources, deck 08's {B}{R} 2-drops at 43–48% on 4 R) — `pip_depth_warning`/`consistency` already compute it but only recommendation surfaces ask (G-40 shape). Measured 2026-10-08: 22 decks have a T1–4 card under 50%, 7 of them X-spells. (2) `consistency` books an X-spell's turn at X=0 (Fblthp 65% "T2", Wan Shi Tong, Day of Black Sun, Triceraton Commander) — price it at a minimum useful X or list it apart, so the sweep does not inherit those false alarms. Calibrate the floor on the roster (G-07); report-only, never `tier_band`.
+  - **Batch F (medium): `targets` gate families it misses.** "if at least N mana was spent to cast it" (Ultros, Sahagin, The Prima Vista — 19 pool cards; deck 18 had 1–2 qualifying spells, found by hand), type-presence clauses "if you control a <type>" (Mana Sculpt's Wizard clause with 2 Wizards in deck 40; ~49 pool cards by a rough regex, measure precision first), and "enters … if none of them were cast" (Satoru in deck 12, 2 enablers). Report-only, G-66/G-76 shape; roster diff.
+  - **Batch G (small): lands + convoke disclosure.** (1) `lib.tapland_kind` treats "sacrifice: search for a basic land, put it onto the battlefield tapped" (Hobbit Hole) as a TAPPED land — today `suggest --lands` scores it as an untapped dual (11.5, no `·tapped`). (2) `consistency`'s cast-on-curve table discloses convoke/board-paid discounts it does not price (Winnowing read 59% in deck 18), reusing `unpriced_discount_cards` (G-85) so the surfaces cannot disagree.
 
 - The unapplied cross-deck homes and earlier proposed swaps — NEXT-SESSION.md §0-current.
 - Two G-67 role-pattern holes, baselined not fixed: Eluge and Cheering Crowd (Kitnap closed by Batch B 2026-10-07)
   (conditional mana) — K-12's long form has the probe. (Soul Immolation closed 2026-10-01.)
 
 ## Open follow-on items
+- **Surfaced by the 2026-10-09 deck-34 tune (not yet built):** (1) named-type payoffs satisfied by changelings are invisible to `suggest`/`screen` (G-84's NAMED half — measure first); (3) `early_drops` counts X spells at X=0 (96 cards / 62 decks; `consistency` prices X=2) — needs a tier-floor diff.
 - **CLOSED 2026-10-06 (`/broad-implement` of these follow-ons, block `11-followons-broad-implement.md`):** the KEY-saturation misattribution, the arena-header-moves-back case, the nonland disclosure's Vivid/granted silence (plus three any-colour spellings), the 42a `replace` cue, the comparison-cue blind spot inside a `Measured:` listing, the G-87 recommender half and the checkland type gate, P(tapland in the first three drops), the G-02 loader sweep (no live instance), the `unmet_gate`-at-`redundancy` re-measure (it found the MV-gate bug below), and the `tier_floor_spread` memo. Found already closed: the overlay power restriction (BS11-16), `doubler_axis` and `deck_needs` (2026-10-01). Re-measured, still nothing to build: the BS10-01 Threaten residual (0 live) and wishlist checklands (0 rows).
 - **Surfaced by the 2026-10-07 deck-32 tune (not yet built):**
   - **Steal Auras score ZERO interaction** — "You control enchanted creature" (Kitnap, Control Magic, Confiscate, Lay Claim, In Bolas's Clutches… 9 pool cards). A PATTERN hole (G-67): permanent removal-equivalent, Tractor Beam only scores via its "doesn't untap" clause. Fix + roster before/after diff.
@@ -348,6 +358,10 @@ Updated: 2026-10-02 (Batch 1 — see Where I left off)
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
+**2026-10-09 (latest) — deck 34 (Zoologist) tuned across ten waves, then tool gaps #2/#4/#5
+implemented** (block `2026-10-34-tune-tool-gaps-broad-implement.md`). Suite + check_all green.
+**Next:** follow-ons #1 and #3 above (each needs a roster measurement), then the owner's open calls.
+
 **2026-10-03 (latest) — scan #11 Batch 9 implemented; SCAN #11 IS COMPLETE** (block
 `11-batch9-docs-broad-implement.md`): hook surfaces a check_all crash, gates/validate answer
 `--help`, `/refresh` corrected per G-18, ROADMAP currency pass, figure_drift denominators

@@ -75,7 +75,7 @@ Captain Mar-Vell, Space-Born
 Caradora, Heart of Alacria
 Case of the Stashed Skeleton
 Casey Jones, Jury-Rig Justiciar
-Cat-Owl
+Celestial Reunion
 Central Elevator // Promising Stairs
 Cephalid Inkmage
 Charging Strifeknight
@@ -127,14 +127,15 @@ Earth's Mightiest Heroes
 Earthbending Lesson
 Earthen Ally
 Echo, Perceptive Prodigy
+Eclipsed Merrow
 Eerie Gravestone
 Effortless Master
 Eluge, the Shoreless Sea
 Emeritus of Woe
 Emil, Vastlands Roamer
+Encumbered Reejerey
 End of the Hunt
 Enigma Drake
-Enter the Enigma
 Entropic Battlecruiser
 Falcon, Winged Wonder
 Fated Firepower
@@ -168,7 +169,6 @@ Ghost, Spectral Saboteur
 Ghostly Keybearer
 Giant Cindermaw
 Gilgamesh, Master-at-Arms
-Glamer Gifter
 Glider Kids
 Goblin-town Flunkies
 Gold Rush
@@ -200,7 +200,6 @@ HYDRA Troopers
 Hymn of the Faller
 I Am Iron Man
 Identity Echo
-Iguana Parrot
 Improvisation Capstone
 Ingenious Leonin
 Insatiable Skittermaw
@@ -216,6 +215,7 @@ Jeskai Brushmaster
 Jet, Rebel Leader
 Joo Dee, One of Many
 K'un-Lun Warrior
+Kang the Conqueror
 Kastral, the Windcrested
 Katara, Water Tribe's Hope
 Kav Landseeker
@@ -247,7 +247,6 @@ Loki Laufeyson
 Long Feng, Grand Secretariat
 Loot, Exuberant Explorer
 Lorehold, the Historian
-Madame Web, Clairvoyant
 Magic Pot
 Magitek Armor
 Mai, Jaded Edge
@@ -257,6 +256,7 @@ Mammoth Bellow
 Mardu Devotee
 Masked Meower
 Master Pakku
+Master's Councillors
 Mechanical Mobster
 Michelangelo, Weirdness to 11
 Mind Transfer Protocol
@@ -389,6 +389,7 @@ Temporal Intervention
 Tenured Tethermage
 Terrapact Intimidator
 Tetsuko Umezawa, Pursuer
+The Ancient One
 The Boulder, Ready to Rumble
 The Cave of Two Lovers
 The Final Days
@@ -416,7 +417,6 @@ Treasure Dredger
 Treeguard Duo
 Treetop Snarespinner
 Triceraton Commander
-Turtle-Duck
 Ty Lee, Artful Acrobat
 Ultron Drone
 Umbral Collar Zealot
@@ -440,7 +440,6 @@ War Squeak
 Wargling
 Water Tribe Rallier
 Waterbender Ascension
-Waterwind Scout
 Way of the Healer
 Way of the Wildspeaker
 Weapons Vendor

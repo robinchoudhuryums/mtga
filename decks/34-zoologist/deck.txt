@@ -1,14 +1,13 @@
 #: name: Zoologist (changelings are every type)
 #: format: Standard
-#: tier: B — Simic changeling / Diligent-Zookeeper type-count deck; the metrics floor now reads A, not B (interaction 7 — 9 until Into the Flood Maw and Bounce Off moved to the report-only tempo line 2026-10-07 — card advantage 5
-#: tier: — an older note claimed it was "under-read as 0". CORRECTED TWICE since, and both
-#: tier: times it WAS mis-counted: a 2026-08 pass taught the classifier that Clue tokens,
-#: tier: impulse and casting off the top of your library are card advantage, and a 2026-08
-#: tier: pass added an activated-cost draw (Ray Fillet's "{2}, Remove a +1/+1 counter
-#: tier: from a creature you control: Draw a card", K-14). Four is the
-#: tier: current honest figure and still thin). A single-payoff glass cannon (lives/dies on Zookeeper) defended by scaling removal (Bite Down/Rabid Bite) + bounce + Spell Pierce; held below A by that fragility and rainbow-singleton variance. Now fully owned.
+#: tier: B — Simic changeling / Diligent-Zookeeper type-count deck; the metrics floor reads A (interaction 7, card advantage 10,
+#: tier: protection 5). Held at B pending the owner's re-grade: still ONE type-COUNT payoff (Zookeeper), but the 2026-10-09
+#: tier: tune added named-type payoffs that changelings satisfy — Beorn (Bears +2/+2, draws two a turn), Spider-Ham (animal
+#: tier: lord), Attuma (Merfolk lord + draw) and Imperious Perfect (Elf lord + tokens) — so losing Zookeeper no longer blanks the board.
+#: tier: Residual weaknesses: a top-heavy curve (10 plays at MV 2 or less) and rainbow-singleton variance. Owned except Celestial Reunion.
 #: colors: GU
 #: archetype: Simic (G/U) changeling / creature-type-count — flood the board with all-types creatures, then Diligent Zookeeper makes them enormous; a scaling-removal interaction suite keeps it from being a one-card combo.
+#: protect: Diligent Zookeeper
 #: notes: The focused, resilient build (promoted from the old 34a variant; the original undirected
 #: notes: 58-card pile was retired). Core: changelings (Omni-Changeling, Mutable Explorer, Three
 #: notes: Tree Mascot, Gangly Stompling) + all-types granters (Glamer Gifter, Oko, Stalactite
@@ -16,48 +15,88 @@
 #: notes: Vizier / Goose Mother / Wan Shi Tong / Ray Fillet; interaction from Bite Down + Rabid
 #: notes: Bite (a +10/+10 changeling kills anything), bounces, Spell Pierce, Bushwhack, Unforgiving
 #: notes: Aim. Gangly Stompling ({2}{R/G}) / Cat-Owl ({3}{W/U}) are hybrids paid on-color.
+#: notes: 2026-10-09 tune (route A): −Absorbing Man (a Human — Zookeeper skips Humans) +Beorn the Fierce; −Bounce Off +Spider-Ham;
+#: notes: −Ultron (4 nontoken artifacts) +Pet Avengers (six types → 10/10 under Zookeeper); −Spider-Suit +Patchwork Banner
+#: notes: (name Bird); 2 Forest → Breeding Pool + Willowrush Verge (U sources 10 → 12). Celestial Reunion queued as a
+#: notes: virtual second Zookeeper (behold two changelings as Humans, X=4 puts Zookeeper onto the battlefield).
+#: notes: Wave 2 (2026-10-09): −Into the Flood Maw +Old Fat Spider Can't See Me (hexproof on Zookeeper for the Saga's life + two
+#: notes: draws); −Badgermole +Attuma (changelings are Merfolk: lord + draw on attack; trample was redundant with Beorn);
+#: notes: −Turtle-Duck +Celestial Reunion (pending craft).
+#: notes: Wave 3 (2026-10-09): −Avatar Destiny +Imperious Perfect (changelings are Elves; Elf Warrior tokens are 4/4 under
+#: notes: Zookeeper + Perfect); −Cat-Owl +Thranduil's Company (landfall counters feed Ray Fillet's draw); −Spell Pierce +Dazzling
+#: notes: Denial (any spell; {4} tax while you control a Bird — every changeling is one).
+#: notes: Wave 4 (2026-10-09): −Pet Avengers +Traveling Chocobo (cast Birds — every changeling — off the top); −Unforgiving Aim
+#: notes: +Bartz and Boko (each other Bird deals its power to a creature: removal that scales with Zookeeper); −Ember Island
+#: notes: Production +Echocasting Symposium (Paradigm recopies Zookeeper every turn — Zookeeper is NOT legendary, so copies
+#: notes: stack, each capped at +10 separately); −Glamer Gifter +Mirror Room (3-mana copy, later a trigger doubler).
+#: notes: Wave 5 (2026-10-09): −The Goose Mother (rotating ~2026) +Viv Vision (Robot Hero: 4 power under Zookeeper, so every
+#: notes: attack draws); −Lilypad Village +Hall of Echoes ({5}: become a Zookeeper copy for the turn — Lilypad's blue was
+#: notes: creature-only and never counted as a source, so no colour count moved).
+#: notes: Wave 6 (2026-10-09): −Rabid Bite +Rocky Rebuke (same effect at instant speed; craft); −Enter the Enigma +Origin of
+#: notes: Metalbending (artifact/enchantment answer or indestructible); −Earth's Mightiest Heroes +The Legend of Kyoshi (ch. I
+#: notes: draws = greatest power, ~10 under Zookeeper); −Flopsie +Oko, the Ringleader (hexproof Zookeeper copy each combat);
+#: notes: −Wan Shi Tong +Champions of the Perfect (behold a changeling as the Elf); −Bushwhack +Genghis Frog (changelings are
+#: notes: Mutants → Mutagens).
+#: notes: Wave 7 (2026-10-09): −Dazzling Denial +Quandrix Charm (counter / destroy enchantment / base 5/5); −March of the World
+#: notes: Ooze +Verdant Kraken (a land-creature Tentacle on EACH player's upkeep — each one is landfall for Thranduil's Company,
+#: notes: and Kyoshi's flip side gives them hexproof + trample); −Patchwork Banner +Radagast of Rhosgobel (first creature spell
+#: notes: each turn costs {2} less and has flash — both players' turns).
+#: notes: Wave 8 (2026-10-09): −Iguana Parrot +Jackal, Genius Geneticist (copies a creature spell whose MV = his power, then
+#: notes: grows; Mutagens / Origin / Thranduil's Company counters start the 2→3→4 ladder that ends in a Zookeeper copy).
+#: notes: Wave 9 (2026-10-09): −Chronicle of Victory +Transdimensional Bovine (two mana of one colour from turn 4 — ramps
+#: notes: to Kraken / Kyoshi / Echocasting; an Ox Avatar, 2/6 flier under Zookeeper). Card advantage 9 → 8, accepted.
+#: notes: Wave 10 (2026-10-09): owned-only manabase fix — −1 Forest +Dreamroot Cascade (untapped from turn 3), −1 Island +Temple
+#: notes: of Mystery (tapped, scry). Sources G 13→14, U 12→13. Crafting 2 Breeding Pool + 1 Willowrush Verge would take it to 15/14.
+#: notes: Wave 11 (2026-10-09): −Rocky Rebuke (uncrafted; Bite Down does the same and also hits planeswalkers) +Unforgiving Aim
+#: notes: (flier / enchantment answer, or a 2/2 Elf token that Imperious Perfect and Zookeeper pump to 4/4).
 
 # Nonland — changeling / type-matters core
 1 Diligent Zookeeper (TLA) 171
 1 Vizier of the Menagerie (FDN) 649
-1 The Goose Mother (WOE) 204
+1 Viv Vision, Teen Synthezoid (MSH) 256
 1 Oko, Lorwyn Liege (ECL) 61
 1 Omni-Changeling (ECL) 62
 1 Mutable Explorer (ECL) 186
 1 Three Tree Mascot (FDN) 682
-1 Cat-Owl (TLA) 212
-1 Glamer Gifter (ECL) 49
+1 Thranduil's Company (HOB) 168
+1 Mirror Room // Fractured Realm (DSK) 67
 1 Undercover Skrull (MSH) 194
-1 Absorbing Man (MSH) 199
-1 Ultron, Artificial Malevolence (MSH) 252
+1 Beorn the Fierce (HOB) 119
+1 Traveling Chocobo (FIN) 210
 1 Ray Fillet, Man Ray (TMT) 49
 1 Gangly Stompling (ECL) 226
-1 Iguana Parrot (TLA) 56
-1 Turtle-Duck (TLA) 200
+1 Jackal, Genius Geneticist (SPM) 131
+1 Celestial Reunion (ECL) 170
 1 Chomping Changeling (ECL) 172
-1 Badgermole (TLA) 166
-1 Flopsie, Bumi's Buddy (TLA) 179
-1 Ember Island Production (TLA) 48
-1 Avatar Destiny (TLA) 165
-1 March of the World Ooze (DFT) 169
+1 Attuma, Atlantean Warlord (MSH) 47
+1 Oko, the Ringleader (OTJ) 223
+1 Echocasting Symposium (SOS) 44
+1 Imperious Perfect (FDN) 719
+1 Verdant Kraken (FRA) 118
 1 Applied Geometry (SOS) 172
-1 Spider-Suit (SPM) 176
+1 Radagast of Rhosgobel (HOB) 136
 1 Stalactite Dagger (ECL) 261
-1 Chronicle of Victory (ECL) 253
-1 Earth's Mightiest Heroes (MSH) 165
-1 Wan Shi Tong, Librarian (TLA) 78
-1 Enter the Enigma (DSK) 52
+1 Transdimensional Bovine (TMT) 134
+1 The Legend of Kyoshi // Avatar Kyoshi (TLA) 186
+1 Champions of the Perfect (ECL) 171
+1 Spider-Ham, Peter Porker (SPM) 114
+1 Bartz and Boko (FIN) 175
+1 Genghis Frog (TMT) 148
 
 # Nonland — interaction / protection
 1 Bite Down (FDN) 212
-1 Rabid Bite (ANB) 101
-1 Into the Flood Maw (BLB) 52
-1 Bounce Off (DFT) 39
-1 Spell Pierce (SOA) 23
-1 Bushwhack (BRO) 174
 1 Unforgiving Aim (ECL) 200
+1 Old Fat Spider Can't See Me (HOB) 50
+1 Quandrix Charm (SOS) 217
+1 Origin of Metalbending (TLA) 187
 
 # Lands
-1 Lilypad Village (BLB) 255
-13 Forest (MSH) 296
-10 Island (MSH) 290
+1 Hall of Echoes (FRA) 179
+10 Forest (MSH) 296
+1 Dreamroot Cascade (SOS) 254
+1 Willowrush Verge (DFT) 270
+1 Breeding Pool (EOE) 251
+9 Island (MSH) 290
+1 Temple of Mystery (FDN) 702
+
+#~ -Oko, the Ringleader | +Flopsie, Bumi's Buddy | Oko rotates ~2026 (OTJ); Flopsie (counter on each creature, power-4+ attackers can't be double-blocked) is the drop-in return

@@ -15,25 +15,25 @@
 #: tier: after the Divergent Equation / Matterbending Mage / Agna Qel'a swaps and the
 #: tier: Ooze Spill / Amazing Acrobatics counter upgrade (two conditional counters — Essence
 #: tier: Scatter's creatures-only and Reasonable Doubt's pay-{2} — became hard counters, so
-#: tier: 5 of the 6 counters are no longer situational). Metrics floor is A: interaction 10
-#: tier: + card advantage 7 on a tight 2.32 curve. The interaction is well SHAPED, not just
+#: tier: 5 of the 6 counters are no longer situational). Metrics floor is A: interaction 9
+#: tier: + card advantage 7 on a tight 2.35 curve. The interaction is well SHAPED, not just
 #: tier: numerous — most of it is instant-speed and most can answer a noncreature
 #: tier: permanent, so a resolved planeswalker or enchantment isn't a blank. (The count
 #: tier: reads 11 since the role classifier was fixed to credit artifact/enchantment
 #: tier: destruction and library-tuck removal; run `deck.py stats 40` for the live
 #: tier: split rather than trusting a figure quoted here.)
-#: tier: NOTE: protection is 0 — nothing in the 60 answers targeted removal on Taigam or
-#: tier: Paradox Surveyor, the two `#: protect:` engine pieces. Acceptable for a deck that
-#: tier: wins with a SPELL rather than a permanent (its counterspells protect the plan
-#: tier: instead), but it is the first thing to revisit if the engine keeps getting picked
-#: tier: off.
+#: tier: NOTE: protection is 1 since 2026-10-08 — Octopus Form (hexproof + untap for {U})
+#: tier: answers one targeted removal on Taigam or Paradox Surveyor, the two `#: protect:`
+#: tier: engine pieces. Still thin for a deck whose counterspells protect the plan more
+#: tier: than the board; a second hexproof spell (owned, not yet added) is the next step if the engine
+#: tier: keeps getting picked off.
 #: tier: What carries it past floor-consistency into a real A is FUNCTIONAL REDUNDANCY, the
 #: tier: same argument that grades Wizardz 37a (the Competitive build, 37b until 2026-09-06) an A: `deck.py redundancy 40` reads a virtual
 #: tier: 6-of counterspell, 6-of card advantage, 7-of payoff and 4-of removal, so singleton
 #: tier: variance barely bites — only cost-reduction and reanimation are thin (2 each).
 #: tier: Manabase is clean: 26 lands, 87% keepable openers, 0 uncastable, no color stray
 #: tier: since Opulent Palace left. The one clear weakness A allows is spent on the win-con:
-#: tier: the deck leans on resolving a big X-spell behind a diffuse (good-stuff) 19-theme
+#: tier: the deck leans on resolving a big X-spell behind a diffuse (good-stuff) 16-theme
 #: tier: spine. Held from S by that slow clock and the absence of a format-warping bomb —
 #: tier: it out-resources opponents rather than closing fast. Aspirational WIP (5 craft
 #: tier: targets); per the rubric that doesn't affect the letter, only `check`/`audit`.
@@ -56,15 +56,15 @@ Deck
 1 Paradox Surveyor (SOS) 208
 1 Taigam, Master Opportunist (TDM) 60
 1 Mindspring Merfolk (DFT) 51
-1 Bold Biochemist (MSH) 48
-1 Floodpits Drowner (DSK) 59
+1 Fblthp, Knows the Way (FRA) 258
 1 Absorbing Man (MSH) 199
 1 Emeritus of Abundance (SOS) 145
 1 Y'shtola Rhul (FIN) 86
 1 Wan Shi Tong, Librarian (TLA) 78
-1 Wildwood Scourge (FDN) 236
+1 Goldvein Hydra (OTJ) 167
 1 The Goose Mother (WOE) 204
 1 Namor the Sub-Mariner (MSH) 69
+1 Garruk, Curse Breaker (FRA) 259
 
 # X-spell payoffs / card advantage
 1 Mind into Matter (SOS) 202
@@ -82,12 +82,12 @@ Deck
 1 Disdainful Stroke (WOE) 47
 1 Amazing Acrobatics (SPM) 25
 1 Mana Sculpt (SOS) 57
+1 Spectral Denial (TDM) 58
+1 Octopus Form (TLA) 66
 
 # Interaction — removal / tempo
 1 Epic Fight (MSH) 166
 1 Matterbending Mage (SOS) 59
-1 Procrastinate (SOS) 64
-1 Chelonian Tackle (SOS) 142
 1 Unforgiving Aim (ECL) 200
 
 # Lands — 26, Simic; owned untapped duals over straight basics (Opulent Palace cut —

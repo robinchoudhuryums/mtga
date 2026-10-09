@@ -794,6 +794,8 @@ class TestRosterWideModels:
         rows = deck.audit_roster()
         assert len(rows) == 1 and rows[0]["id"] == "90"
         assert rows[0]["verdict"] in ("TUNE", "craft", "review", "ok")
+        # Batch E's report-only castability count rides on the same row (`Crv` column).
+        assert isinstance(rows[0]["crv"], int) and rows[0]["crv"] >= 0
 
     def test_audit_roster_agrees_with_audit_deck(self, world):
         """`audit_roster` is a composition of `audit_deck`; the CLI and the dashboard both

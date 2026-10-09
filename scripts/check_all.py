@@ -661,6 +661,42 @@ def main():
     except Exception as e:
         soft.append(f"dead-library-search check skipped ({e})")
 
+    # Soft: MAINDECKED CARDS THAT CANNOT BE CAST ON TIME (Batch E, 2026-10-08).
+    #
+    # Deck 18 carried two 2-mana lords at 44% on curve off 4 W sources — while its tier
+    # prose read "zero castability risk" — and every gate stayed green. `consistency` and
+    # `pip_depth_warning` already computed the number; only recommendation surfaces and a
+    # hand-run `consistency` asked it (G-40's "a working primitive nothing asks"). This is
+    # the sweep. Report-only and SOFT: a double pip a turn late is often an accepted
+    # trade, so it names the cards rather than judging the deck. Splash colours and
+    # `#: uncastable-ok:` cards are excluded inside `castability_shortfalls`; {X} spells are
+    # priced at X=2, not X=0 (their X=0 turn supplied 7 of 22 decks' hits before that).
+    # Calibrated 2026-10-08 at a 50% floor by T4: 30 cards in 19 of 117 decks (16%).
+    try:
+        short_curve = []
+        _bk, _bn, _ = deckmod.load_collection()
+        _cd2, _mn2 = deckmod.load_card_data(), deckmod.load_mana()
+        for d in deckmod.roster_decks():
+            _m, _cards = deckmod.parse_deck_file(d["path"])
+            for p, n, turn, col, have, _x in deckmod.castability_shortfalls(
+                    _m, _cards, by_key=_bk, by_name=_bn, carddata=_cd2, mana=_mn2):
+                short_curve.append((p, d["id"], n, turn, col, have))
+        if short_curve:
+            short_curve.sort(key=lambda r: (r[0], r[1], r[2]))
+            n_decks = len({r[1] for r in short_curve})
+            shown = "; ".join(f"deck {i}: {n} {100*p:.0f}% on T{t} ({have} {col} src)"
+                              for p, i, n, t, col, have in short_curve[:3])
+            soft.append(f"castability: {len(short_curve)} maindecked card(s) in {n_decks} "
+                        f"deck(s) cast on curve below "
+                        f"{100*deckmod.CURVE_SWEEP_FLOOR:.0f}% by turn "
+                        f"{deckmod.CURVE_SWEEP_MAX_TURN} off a non-splash colour — {shown}"
+                        + (" …" if len(short_curve) > 3 else "")
+                        + " (`deck.py audit` Crv column per deck, `deck.py consistency <id>` "
+                          "for the fix; often a double pip a turn late, which may be an "
+                          "accepted trade)")
+    except Exception as e:
+        soft.append(f"castability sweep skipped ({e})")
+
     # Soft: UNRELEASED CARDS IN THE POOL. Scryfall indexes previewed cards immediately
     # and `unique=cards` returns the NEWEST printing, so before build_pool grew its
     # `date<=now` bound a spoiled set's reprint became the ONLY printing this repo held —

@@ -1,9 +1,9 @@
 #: name: Drawn Conclusions
 #: format: Standard
-#: tier: A — Dimir card-draw control; a Mythic finisher/engine (Kaito, Bane of Nightmares) + 6 interaction (hard counters + flexible removal like Sokka's Haiku / Bitter Triumph) + card advantage on a clean 2-color base. Re-graded B→A: measurable floor is B and the letter sits one band above it, which the rubric allows (interaction 6 is one short of the A floor's 7, though card advantage 12 clears the resilience sum outright; the floor read A until `TIER_FLOOR_REQ` was re-derived from the roster distribution 2026-09-02) — the raw count is deliberately modest for draw-payoff density, but the interaction QUALITY (hard counters + a mythic finisher) clears the bar. Disdainful Stroke (for the 2nd Super Intelligence) is the queued net-add if more answers are wanted.
+#: tier: A — Dimir second-draw Villain midrange with a self-discard layer, ON the A metrics floor: interaction 8, card advantage 10, avg MV 3.44, protection 2. Six of the eight answers are instant speed (Garruk and Sephiroth's one-sided -2/-2 are not), and five can hit a noncreature permanent; Azula's enters-the-battlefield edict is one the classifier does not read. Card advantage reads LOW against how the deck plays: Monument to Endurance's draw mode, Locke Cole's combat loot, Doctor Octopus's end-step refill to eight and the Jace token Rewrite Regrets makes all sit outside or under that count. What the floor cannot see is the engine — six "draw your second card each turn" payoffs turned on every turn by Super Intelligence's upkeep draw and Leader, Super-Genius's combat draw (which Taskmaster can copy for a second); connive and loot discards that Monument to Endurance turns into a draw, a Treasure or three damage, and that put a Sephiroth or an Azula where Rewrite Regrets and Superior Spider-Man can reach it; and the Villain-token loop (Madame Masque / Construct a Cosmic Cube tokens make Prowler connive, Doctor Octopus gives every Villain +2/+2). Two extra-turn finishers (Ultimecia's transform, Kang the Conqueror's power-up). Weaknesses that keep it from S: protection 2, and black is still the thinner colour (15 sources after the 2026-10-08 manabase pass) under the {B}{B} of Garruk, Uldaros Theorix and Azula (about 82% on curve).
 #: colors: UB
-#: archetype: Dimir (U/B) card-draw control.
-#: notes: Dimir (U/B) — card draw / control.
+#: archetype: Dimir (U/B) "draw your second card each turn" Villain midrange with a self-discard layer. Cheap payoffs that grow or make tokens on the second draw (Kid Loki, Mischievous Mystic, Foggy Swamp Spirit Keeper, Kang, Madame Masque, Construct a Cosmic Cube); enablers that make the second draw automatic (Super Intelligence, Leader, Emet-Selch, the loot from Kaito, Cunning Infiltrator, Enduring Curiosity off evasive hits, The Theorist's draw on the OPPONENT's draw step, Confusticate's instant-speed draw two); every connive and loot discard feeds Monument to Endurance, and a discarded fatty becomes a Superior Spider-Man target. Cheap black removal and counters hold the board; Doctor Octopus, Uldaros Theorix and two extra turns (Ultimecia's transform for {4}{U}{U}{B}{B} plus eight graveyard cards; Kang the Conqueror's power-up) are the late game. DISTINCTNESS: the second-draw engine also runs in 79 (W/U, built on it) and 43 (Esper, its backup engine); this is the roster's only Dimir one, and the Villain-token and discard angles are its own.
+#: notes: Dimir (U/B) — second-draw Villain midrange. Tuned 2026-10-08 in two passes (22 swaps, see the flex block).
 
 # Nonland
 1 Kid Loki (MSH) 63
@@ -13,51 +13,56 @@
 1 Wan Shi Tong, Librarian (TLA) 78
 1 Loki, God of Mischief (MSH) 65
 1 Silent Hallcreeper (DSK) 72
-1 Sokka's Haiku (TLA) 71
-2 Atlantean Cavalry (MSH) 45
-1 I Am Iron Man (MSH) 58
-1 Ms. Marvel, Kamala Khan (MSH) 67
-1 Namor the Sub-Mariner (MSH) 69
+1 Kang the Conqueror (MSH) 62
+1 Monument to Endurance (DFT) 237
+1 Prowler, Clawed Thief (SPM) 138
+1 The Theorist, Jace Beleren (FRA) 43
+1 Taskmaster, Mercenary Mimic (MSH) 232
+1 Sephiroth, Planet's Heir (FIN) 553
 1 Long Goodbye (MKM) 92
-1 Attuma, Atlantean Warlord (MSH) 47
+1 Emet-Selch, Unsundered // Hades, Sorcerer of Eld (FIN) 218
 1 Leader, Super-Genius (MSH) 64
 1 Mister Fantastic, Reed Richards (MSH) 66
-1 Archmage of Runes (FDN) 30
-1 Multiversal Incursion (MSH) 68
+1 Rewrite Regrets (FRA) 62
+1 Doctor Octopus, Master Planner (SPM) 128
 1 Construct a Cosmic Cube (MSH) 90
-1 High-Society Hunter (FDN) 61
-1 Roxxon Brutes (MSH) 113
+1 Azula, Cunning Usurper (TLA) 208
+1 Ultimecia, Time Sorceress // Ultimecia, Omnipotent (FIN) 247
 1 Madame Masque (MSH) 104
-1 Messenger Hawk (TLA) 234
-1 H.E.R.B.I.E. Scout Unit (MSH) 247
+1 Locke Cole (FIN) 234
+1 Glen Elendra Guardian (ECL) 51
 1 Kaito, Bane of Nightmares (DSK) 220
-1 Harmonized Trio (SOS) 52
-1 Erudite Wizard (FDN) 37
+1 Superior Spider-Man (SPM) 155
+1 Foggy Swamp Spirit Keeper (TLA) 222
 1 Kaito, Cunning Infiltrator (FDN) 44
-1 Trickster's Stratagem (MSH) 81
-1 Daring Waverider (BLB) 44
-1 Wanderwine Farewell (ECL) 83
-1 Satoru, the Infiltrator (OTJ) 230
-1 Last Gasp (SOS) 86
-1 Grim Reaper, Lethal Legionnaire (MSH) 98
-1 Painful Quandary (FDN) 179
+1 Confusticate and Bebother (HOB) 35
+1 Uldaros Theorix (FRA) 159
+1 Kang, Temporal Tyrant (MSH) 217
+1 Mischievous Mystic (FDN) 47
+1 Theorix Charm (FRA) 155
+1 Enduring Curiosity (DSK) 51
+1 Garruk, Veiled Butcher (FRA) 229
 
 # Lands
-2 Baxter Building (MSH) 261
-1 Hidden Lair (MSH) 269
+1 Baxter Building (MSH) 261
+4 Hidden Lair (MSH) 269
 1 Gloomlake Verge (DSK) 260
-1 Treno, Dark City (FIN) 290
-2 Dismal Backwater (FDN) 261
-6 Swamp (MSH) 292
-11 Island (MSH) 290
+4 Theorix Annex (FRA) 192
+1 Watery Grave (EOE) 261
+5 Swamp (MSH) 292
+6 Island (MSH) 290
+2 Agna Qel'a (TLA) 264
 
 # Flex — suggested swaps (all OWNED, 0 wildcards — single-black to respect the splash). See: deck.py flex 12
 #~ note: applied — Super Intelligence in for Futurist Forge.
 #~ note: applied — Long Goodbye (uncounterable removal, hits planeswalkers) over Rewrite History, and Heartless Act (cheap hard removal) over Pym Particles. The deck's real gap was HARD removal, not interaction volume (Amazing Acrobatics / Wanderwine Farewell / Trickster's Stratagem are soft answers it already runs). Craft nothing — every answer is in your collection.
 #~ note: applied — Mythic-finisher + interaction-quality pass (all owned, 0 WC): Kaito, Bane of Nightmares (-Yellowjacket, Heartless Marauder, whose Villain-pump was thin here) a self-protecting PW/Ninja that surveils+draws and taps-and-stuns; Sokka's Haiku (-Amazing Acrobatics) a HARD counter that also draws+mills; Bitter Triumph (-1 Super Intelligence, single-black to respect the splash) flexible removal hitting creatures + PWs. Kept 1 Super Intelligence for the draw-matters payoffs (Madame Masque / Construct a Cosmic Cube / Kang).
-#~ +Disdainful Stroke | OWNED (queued net-add): the -2nd Super Intelligence / +Disdainful Stroke swap raises raw interaction if the deck wants more hard answers; declined for now to keep draw-payoff density.
-#~ -H.E.R.B.I.E. Scout Unit | +Glen Elendra Guardian | OWNED — PROPOSED 2026-09-10 (UW-pile option B, not applied): flash flying counter-on-a-body, the deck's fourth instant-speed answer. Measured on a scratch copy: interaction 6→7, metrics floor B→A (matches the claimed A). The one band-mover in the set; HERBIE is a 4-mana filler cantrip.
-#~ -Daring Waverider | +Scrawling Crawler | CRAFT (R) — PROPOSED 2026-09-10: upkeep "each player draws" guarantees the second draw for the 8-card trigger cluster without dying with a creature (Super Intelligence does), and its opponent-drain fires Kaito, Bane of Nightmares' 0 every turn. card-adv 11→12, avg MV 3.44→3.36. Already listed in 60a — decks share the collection.
-#~ -Roxxon Brutes | +Master's Councillors | CRAFT (U) — PROPOSED 2026-09-10: the same second-card trigger at 2 mana instead of 5; the mill-3 may target YOURSELF to feed Grim Reaper, or the opponent to grow it. Vector flat, MV −0.08; Villain count 8→7 with no Villain lord here.
-#~ -Trickster's Stratagem | +Confusticate and Bebother | OWNED — OPTIONAL 2026-09-10: lateral — instant-speed counter-or-draw-two for a sorcery tuck (interaction 6→6, card-adv +1). The classifier COUNTS Stratagem as interaction (a non-answer in its slot reads 5), so it only ever leaves for another answer.
-#~ -Wanderwine Farewell | +Homunculus Horde | CRAFT (R) — OPTIONAL 2026-09-10: self-copying second-card payoff; every copy is a token, so Mister Fantastic draws on each. Measured flat in HERBIE's slot; the Harmonized Trio slot was REJECTED (card-adv 11→10, Merfolk 6→5).
+#~ note: applied — Glen Elendra Guardian in for H.E.R.B.I.E. Scout Unit.
+#~ note: applied — Uldaros Theorix in for Daring Waverider.
+#~ note: applied — Ultimecia, Time Sorceress // Ultimecia, Omnipotent in for Roxxon Brutes.
+#~ note: applied — Confusticate and Bebother in for Trickster's Stratagem.
+#~ note: applied — Kang, Temporal Tyrant in for Wanderwine Farewell.
+#~ note: applied 2026-10-08 (the /tune-deck 12 package) — also Mischievous Mystic for Satoru (its not-cast enter trigger had two enablers), Garruk for Painful Quandary, Foggy Swamp Spirit Keeper for Erudite Wizard, Enduring Curiosity for Grim Reaper, Prowler for one Atlantean Cavalry, Theorix Charm for Last Gasp; Watery Grave for one Dismal Backwater and two Agna Qel'a for two Islands (untapped, and an instant-speed loot sink).
+#~ note: applied 2026-10-08, second pass (v2: the Merfolk package dissolved for Villains + self-discard) — Emet-Selch for Attuma, Monument to Endurance for Atlantean Cavalry, Superior Spider-Man for Harmonized Trio, Azula, Cunning Usurper for High-Society Hunter, The Theorist for I Am Iron Man, Doctor Octopus for Multiversal Incursion, Locke Cole for Messenger Hawk, Sephiroth for Namor (Ultimecia for Roxxon Brutes is noted above).
+#~ note: applied 2026-10-08, third pass — Taskmaster, Mercenary Mimic for Ms. Marvel (one spell left that targets your own creature), Rewrite Regrets for Archmage of Runes, Kang the Conqueror for Sokka's Haiku.
+#~ note: applied 2026-10-08, manabase pass (all owned) — Hidden Lair 1 -> 4 for three Islands; Theorix Annex x4 for Treno, Dismal Backwater, a Swamp and one Baxter Building. No land now always enters tapped (Annex is untapped once a planeswalker is out), and black went 13 -> 15 sources. A second Watery Grave (rare craft) for an Island is the next step if black still stumbles.

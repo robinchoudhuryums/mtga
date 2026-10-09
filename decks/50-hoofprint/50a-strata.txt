@@ -4,7 +4,7 @@
 #: colors: G
 #: based-on: deck.txt
 #: plan: midrange
-#: tier: B — PROVISIONAL. Live vector: interaction 5, card advantage 2, protection 5,
+#: tier: B — PROVISIONAL. Live vector: interaction 5, card advantage 3, protection 5,
 #: tier: avg MV 4.09, 8 early drops, 33 central themes. The metrics floor is B, so the letter
 #: tier: is CONSISTENT with it.
 #: tier: RE-GROUNDED 2026-09-14 after two swaps into the list (see the notes below). They

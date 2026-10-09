@@ -1,67 +1,66 @@
 #: name: Atlantis Attacks (Merfolk tap/convoke)
 #: format: Standard
-#: tier: A — Mono-U Merfolk tempo. Re-graded B->A. The old B was written when the deck
-#: tier: was a WIP and rested on figures that have since moved (it cited a 2.65 curve;
-#: tier: the list is now 3.0 and fully BUILDABLE). On the current list every axis holds
-#: tier: up but one: interaction 5 + card advantage 8 reads the B floor since 2026-10-07 (Harbinger of the Tides and Into the Flood Maw are bounce, now on the report-only tempo line), protection 3 is the
-#: tier: healthiest of the 12 decks that were reading below their floor, and the theme
-#: tier: spine is the TIGHTEST on the roster at 7 central themes — this is a focused
-#: tier: tribal deck, not a good-stuff pile, so tribal redundancy does the work
-#: tier: singleton variance would otherwise undo. Mono-colour mana (23 lands, U 23)
-#: tier: means zero castability risk. Held from S by a low land count (82% keepable
-#: tier: openers — 24 lands would be tighter) and no format-warping bomb.
+#: tier: A — Blue-white Merfolk tap/convoke tempo, ON the A metrics floor since the 2026-10-08 tune:
+#: tier: interaction 7 (counters Refute, Mana Sculpt, Ooze Spill, Confusticate and Bebother and Tishana's
+#: tier: Tidebinder; Kitnap's steal; Erode), card advantage 10, protection 4, 9 central themes. Six of the
+#: tier: seven answers are instant speed and six can hit a noncreature permanent. What the floor cannot see
+#: tier: is the engine: every tap of a nontoken Merfolk makes a hexproof token (Deeproot Pilgrimage), a Faerie
+#: tier: (Pestered Wellguard) or a loot (Silvergill Peddler), and convoke, waterbend, teamwork and Harmonized
+#: tier: Trio all tap on demand; Namor turns the two-blue-pip counters into two Merfolk each. Held from S by
+#: tier: the white: 8 W sources (all owned) carry seven white cards, so the two white lords cast on curve
+#: tier: about 70% of the time — the craft fix is two or three more Floodfarm Verge / Hallowed Fountain for
+#: tier: Islands. 24 lands, 84% keepable.
 #: colors: WU
-#: archetype: Mono-U (light W) Merfolk tribal tempo — tap/convoke token engine (WIP).
-#: notes: Merfolk tribal / tempo — mono-U core with a light (mostly hybrid) W
-#: notes: splash. Runs both Sharae of Numbing Depths (proactive tap-down) and
-#: notes: Ooze Spill (counter); trimmed to 23 lands to fit both.
-#: notes: Tap/convoke token engine (Deeproot Pilgrimage + Pestered Wellguard).
-#: notes: Some cards are still craft targets (WIP).
+#: archetype: Blue-white Merfolk tribal tempo — tap/convoke token engine. Summon: Leviathan's chapter I bounces every creature that is not a Kraken, Leviathan, Merfolk, Octopus or Serpent, YOURS included, so non-sea creatures here are deliberate exceptions (Benevolent River Spirit is recast, Omni-Changeling is every type).
+#: notes: Tuned 2026-10-08 (17 swaps, all owned): land fix (Hallowed Fountain for Uthros, two more
+#: notes: Gleaming Bastion for Islands, Temple of Enlightenment for Hydro-Channeler as the 24th land);
+#: notes: dead-gate cuts (Ultros and Sahagin needed a 4+-mana noncreature spell, Benthic Criminologists an
+#: notes: artifact, Serpent of the Pass a Lesson); narrow counters upgraded to two-blue-pip hard counters
+#: notes: for Namor; Loch Mare, Starwinder and Benevolent River Spirit for card flow and board.
 
 # Nonland
 1 Namor the Sub-Mariner (MSH) 69
 1 Summon: Leviathan (FIN) 77
 1 Merrow Skyswimmer (ECL) 234
 1 Deepway Navigator (ECL) 214
-1 Wanderwine Farewell (ECL) 83
+1 Starwinder (EOE) 79
 1 Attuma, Atlantean Warlord (MSH) 47
-1 Benthic Criminologists (MKM) 40
+1 Confusticate and Bebother (HOB) 35
 1 Silvergill Peddler (ECL) 70
-1 Atlantean Cavalry (MSH) 45
-1 Sahagin (FIN) 71
+1 Unexpected Assistance (ECL) 80
+1 Eclipsed Merrow (ECL) 221
 1 Gravelgill Scoundrel (ECL) 53
-1 Hydro-Channeler (SOS) 54
 1 Harmonized Trio (SOS) 52
 1 Atlantis Attacks (MSH) 46
-1 Ultros, Obnoxious Octopus (FIN) 83
-1 Serpent of the Pass (TLA) 70
+1 Kitnap (BLB) 53
+1 Landscape Painter // Vibrant Idea (SOS) 56
 1 Kiora, the Rising Tide (FDN) 45
-1 Waterwind Scout (LCI) 84
-1 Harbinger of the Tides (FDN) 593
+1 Loch Mare (ECL) 57
+1 Benevolent River Spirit (TLA) 45
 1 Deepchannel Duelist (ECL) 213
-1 Voracious Tome-Skimmer (ECL) 250
-1 Negate (TMT) 47
+1 Omni-Changeling (ECL) 62
+1 Refute (FDN) 48
 1 Ooze Spill (TMT) 48
-1 Essence Scatter (SOS) 47
+1 Mana Sculpt (SOS) 57
 1 Mindspring Merfolk (DFT) 51
 1 Tishana's Tidebinder (LCI) 81
 1 Silvergill Mentor (ECL) 69
-1 Mistway Spy (MKM) 65
+1 Encumbered Reejerey (ECL) 14
 1 Pestered Wellguard (ECL) 63
 1 Wanderbrine Trapper (ECL) 42
 1 Sygg's Command (ECL) 244
 1 Deeproot Pilgrimage (LCI) 52
-1 Into the Flood Maw (BLB) 52
+1 Atlantean Cavalry (MSH) 45
 1 Champions of the Shoal (ECL) 46
-1 Floodpits Drowner (DSK) 59
+1 Erode (SOS) 15
 1 Brineborn Cutthroat (FDN) 152
 1 Sharae of Numbing Depths (WOE) 213
 
 # Lands
 1 Agna Qel'a (TLA) 264
-1 Uthros, Titanic Godcore (EOE) 260
-1 Hallowed Fountain (ECL) 265
-1 Gleaming Bastion (MSH) 267
+2 Hallowed Fountain (ECL) 265
+3 Gleaming Bastion (MSH) 267
 1 Floodfarm Verge (DSK) 259
 1 Tranquil Cove (TDM) 270
-17 Island (MSH) 289
+15 Island (MSH) 289
+1 Temple of Enlightenment (FDN) 698

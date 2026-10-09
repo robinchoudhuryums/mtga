@@ -2373,7 +2373,26 @@ _ROLE_PATTERNS = {
                        r"you may (?:play lands and )?cast spells from among cards exiled with this",
                        # CASTING OFF THE TOP of your own library is a permanent draw
                        # substitute — Vizier of the Menagerie, Mm'menon. Scored nothing.
-                       r"you may (?:cast|play) (?:\w+ ){0,3}(?:spells|cards?) from the top of your library",
+                       # The word gap is {0,5}, not {0,3} (2026-10-09): a TYPED or COMPOUND
+                       # permission runs longer — Traveling Chocobo's "play lands and cast
+                       # Bird spells", Madame Web's "cast Spider spells and noncreature
+                       # spells", Mystic Forge's "artifact spells and colorless spells",
+                       # Sigarda's "Angel and Human spells" — and all four scored no card
+                       # advantage while Vizier's "creature spells" did: a family
+                       # disagreement (G-67). The widening admits exactly those 4 pool cards.
+                       r"you may (?:cast|play) (?:\w+ ){0,5}(?:spells|cards?) from the top of your library",
+                       # A SAGA CHAPTER LINE THAT DRAWS ON TWO OR MORE CHAPTERS ("III, IV —
+                       # Draw a card", Old Fat Spider Can't See Me) is two cards over the
+                       # Saga's life, and the line-anchored chapter list is what repeats it.
+                       # A single-chapter draw ("III — Draw a card…", Leaves from the Vine)
+                       # is a one-shot cantrip and stays out, by the same rule as an ETB
+                       # draw. `you may discard` is excluded because a rummage chapter
+                       # (Summon: G.F. Ifrit) is card-neutral and the loot rule cannot see
+                       # its period-and-"if you do" form; the draw-then-discard chapter
+                       # (The Modern Age) is removed by the loot rule in classify_roles.
+                       # 6 pool cards match; 4 are real advantage (Jecht, Summon: Anima,
+                       # The Legend of Kuruk, Old Fat Spider).
+                       r"(?m)^[ivx]+(?:, [ivx]+)+ — (?![^\n]*\byou may discard\b)[^\n]{0,60}?\bdraws? a card",
                        # AN ACTIVATED ABILITY IS REPEATABLE BY CONSTRUCTION, which is the
                        # same argument the "whenever" pattern above rests on — but every
                        # pattern in this bucket was TRIGGER-shaped, so a draw you reach by
@@ -7265,6 +7284,117 @@ def tapland_profile(cards, carddata):
     return sorted(uncond, key=lambda t: t[1]), sorted(cond, key=lambda t: t[1]), total
 
 
+# Cast-on-curve model constants, shared by `consistency` and the roster castability sweep.
+# The cast turn is the card's mana value, capped so a 7-drop is not judged as if cast on
+# turn 7 verbatim (colours have usually stabilised by ~turn 5).
+CAST_CAP = 5
+# A "splash" colour has so few sources that a card demanding it on curve is effectively a
+# late-game card — `consistency` reframes those as "cast late or cut" rather than printing
+# an impractical land count, and the roster sweep leaves them to that reframing.
+SPLASH_MAX = 3
+# An {X} spell is priced at THIS X rather than at the X=0 its mana value books (G-60).
+# Batch E (2026-10-08): pricing at X=0 put Fblthp at "65% on T2" and Wan Shi Tong at
+# "69% on T2" — turns nobody casts them on — and supplied 7 of the 22 decks the first
+# castability sweep flagged. X=2 is the smallest X that does something for every {X}
+# card on the roster (draw two, two counters, two lands); it moves the TURN, never the
+# pip demand, so a card that is genuinely short of its colour still reads short.
+X_ASSUMED = 2
+
+
+def cast_turn(cost, mv, cap=CAST_CAP):
+    """(turn, x_priced) — the turn a card is judged on in the cast-on-curve table.
+
+    Mana value (min 1), capped at `cap`; an {X} spell adds `X_ASSUMED` per {X} on its
+    FRONT face (G-02/BS11-71) before the cap, and reports that it did."""
+    base = int(mv) if mv else 0
+    xn = front_face_cost(cost or "").upper().count("{X}")
+    if xn:
+        return max(1, min(base + X_ASSUMED * xn, cap)), True
+    return max(1, min(base if base else 1, cap)), False
+
+
+def cast_on_curve_rows(cards, mana, sources, N, by_key, by_name, on_play=True, target=0.90):
+    """[(p, name, turn, strict_pips, worst_col, need, x_priced)] sorted by p — the per-card
+    cast-on-curve table, ONE implementation behind `consistency` and the roster sweep
+    (`castability_shortfalls`). Strict pips via `binding_pips`, so a hybrid whose deck
+    has sources for only one half is priced as that colour (G-32). Lands, basics and
+    cards with no cost data are skipped; each name is priced once."""
+    rows, seen = [], set()
+    for q, n, s, c in cards:
+        nl = n.lower()
+        if nl in BASICS or nl in seen:
+            continue
+        row = by_key.get((nl, s.lower(), c.lower())) or by_name.get(nl)
+        if row and "Land" in _primary_type((row.get("Type") or "")):
+            continue
+        entry = mana.get(nl)
+        if not entry or not entry[0]:
+            continue
+        strict = binding_pips(entry[0], sources)
+        if not strict:
+            continue
+        seen.add(nl)
+        mv = entry[1] if entry[1] is not None else sum(strict.values())
+        turn, x_priced = cast_turn(entry[0], mv)
+        p = cast_probability(N, sources, turn, strict, on_play)
+        # The BINDING single-color demand drives the fix recommendation — the color
+        # whose per-color hypergeometric term is LOWEST, not the one with the most
+        # pips: a {B}{B}{R} cost off B=16/R=2 is dragged down by the one-pip R
+        # splash, and keying on pip count pointed the → note (and the splash
+        # reframing) at B, prescribing sources for the color that wasn't the
+        # problem. Tiebreak: more pips, then name (a total order, G-54).
+        seen_by_turn = cards_seen(turn, on_play)
+        worst_col = min(strict, key=lambda col: (
+            hypergeom_at_least(N, sources.get(col, 0), seen_by_turn, strict[col]),
+            -strict[col], col))
+        need = min_sources_for(N, turn, strict[worst_col], target, on_play)
+        rows.append((p, n, turn, strict, worst_col, need, x_priced))
+    rows.sort(key=lambda r: (r[0], r[1]))
+    return rows
+
+
+# Roster castability sweep (Batch E, 2026-10-08). Calibrated on the roster: see
+# `castability_shortfalls`.
+CURVE_SWEEP_FLOOR = 0.50
+CURVE_SWEEP_MAX_TURN = 4
+
+
+def castability_shortfalls(meta, cards, *, by_key=None, by_name=None, carddata=None,
+                           mana=None, on_play=True):
+    """[(p, name, turn, worst_col, sources_of_it, x_priced)] — MAINDECKED cards that cast
+    on curve below `CURVE_SWEEP_FLOOR` by turn `CURVE_SWEEP_MAX_TURN`, off a colour the
+    deck runs as a real colour (more than `SPLASH_MAX` sources). REPORT-ONLY: it feeds a
+    soft `check_all` sweep and `audit`'s `Crv` column, never `tier_band` or a verdict.
+
+    Why it exists: `consistency` and `pip_depth_warning` already computed this number,
+    but only recommendation surfaces and a hand-run `consistency` asked it (the G-40
+    shape). Deck 18 carried two 2-mana lords at 44% on curve off 4 W sources — and tier
+    prose calling it "zero castability risk" — with every gate green. A splash colour
+    (≤ `SPLASH_MAX` sources) is excluded on purpose: `consistency` already reframes those
+    as "cast late or cut", a disclosed choice rather than an unseen gap. A card the
+    deck's `#: uncastable-ok:` header names is excluded too (G-64). Offline: reads the
+    built mana table and fetches nothing."""
+    if by_key is None or by_name is None:
+        by_key, by_name, _ = load_collection()
+    carddata = carddata if carddata is not None else load_card_data()
+    mana = mana if mana is not None else load_mana()
+    sources, _nlands, total, _notes = deck_source_profile(cards, by_key, by_name, carddata,
+                                                          deck_meta=meta)
+    if not total:
+        return []
+    exempt = {_ms_key(x) for x in _uncastable_ok(meta)}
+    out = []
+    for p, n, turn, _strict, worst_col, _need, x_priced in cast_on_curve_rows(
+            cards, mana, sources, total, by_key, by_name, on_play):
+        if p >= CURVE_SWEEP_FLOOR or turn > CURVE_SWEEP_MAX_TURN:
+            continue
+        have = sources.get(worst_col, 0)
+        if have <= SPLASH_MAX or _ms_key(n) in exempt:
+            continue
+        out.append((p, n, turn, worst_col, have, x_priced))
+    return out
+
+
 def cmd_consistency(args):
     """Manabase + opening-hand CONSISTENCY (#1/#2): the probability layer `mana` lacks.
     Given the deck's land count and per-color sources, model P(keepable opening hand),
@@ -7390,7 +7520,6 @@ def cmd_consistency(args):
     # effectively a late-game card, not an on-curve one — so the per-card
     # recommendation below reframes as "cast later or cut" instead of printing an
     # impractical land count (a {B}{R} 2-drop off 1 red source wants ~15 R sources).
-    SPLASH_MAX = 3
     splash = [c for c in active if sources[c] <= SPLASH_MAX]
     if active:
         print("\nColor sources (lands producing each color):")
@@ -7420,47 +7549,17 @@ def cmd_consistency(args):
                 "cast-on-curve figure below is a FLOOR for this deck, and that "
                 "`suggest --ramp` can recommend acceleration this page will never price.")
 
-    # #1 — per-card cast probability on curve. Cast turn = the card's MV (min 1),
-    # capped so a 7-drop isn't judged as if cast on turn 7 verbatim (you've usually
-    # stabilized your colors by ~turn 5). Strict pips only; hybrids are easier and
-    # excluded (they don't demand their own sources — same rule `mana` uses).
-    CAST_CAP = 5
-    rows = []
-    seen = set()
-    for q, n, s, c in cards:
-        nl = n.lower()
-        if nl in BASICS or nl in seen:
-            continue
-        row = by_key.get((nl, s.lower(), c.lower())) or by_name.get(nl)
-        if row and "Land" in _primary_type((row.get("Type") or "")):
-            continue
-        entry = mana.get(nl)
-        if not entry or not entry[0]:
-            continue
-        strict = binding_pips(entry[0], sources)
-        if not strict:
-            continue
-        seen.add(nl)
-        mv = entry[1] if entry[1] is not None else sum(strict.values())
-        turn = max(1, min(int(mv) if mv else 1, CAST_CAP))
-        p = cast_probability(N, sources, turn, strict, on_play)
-        # The BINDING single-color demand drives the fix recommendation — the color
-        # whose per-color hypergeometric term is LOWEST, not the one with the most
-        # pips: a {B}{B}{R} cost off B=16/R=2 is dragged down by the one-pip R
-        # splash, and keying on pip count pointed the → note (and the splash
-        # reframing) at B, prescribing sources for the color that wasn't the
-        # problem. Tiebreak: more pips, then name (a total order, G-54).
-        seen_by_turn = cards_seen(turn, on_play)
-        worst_col = min(strict, key=lambda col: (
-            hypergeom_at_least(N, sources.get(col, 0), seen_by_turn, strict[col]),
-            -strict[col], col))
-        need = min_sources_for(N, turn, strict[worst_col], target, on_play)
-        rows.append((p, n, turn, strict, worst_col, need))
-
+    # #1 — per-card cast probability on curve, from the ONE row builder the roster
+    # castability sweep (`check_all`, `audit`) reads too, so the two cannot disagree.
+    rows = cast_on_curve_rows(cards, mana, sources, N, by_key, by_name, on_play, target)
+    _x_rows = {r[1] for r in rows if r[6]}
     rows.sort(key=lambda r: r[0])
     below = [r for r in rows if r[0] < target]
     print(f"\nCast-on-curve probability (turn = mana value, capped at {CAST_CAP}; "
           f"target {100*target:.0f}%):")
+    if _x_rows:
+        print(f"  ˣ an {{X}} spell is priced at X={X_ASSUMED}, not X=0 — the turn you would "
+              f"really cast it, not the turn its mana value books (G-60).")
     if not rows:
         print("  (no colored-pip cards with cost data)")
     else:
@@ -7468,7 +7567,7 @@ def cmd_consistency(args):
         if not below:
             print(f"  ✓ every colored card casts on curve at ≥{100*target:.0f}% — "
                   "manabase supports the deck. Lowest 5:")
-        for p, n, turn, strict, worst_col, need in show:
+        for p, n, turn, strict, worst_col, need, _xs in show:
             pipstr = "".join(f"{{{col}}}" * cnt for col, cnt in sorted(strict.items()))
             have_col = sources.get(worst_col, 0)
             flag = ""
@@ -7497,7 +7596,8 @@ def cmd_consistency(args):
                             for c in sorted(plan) if plan[c] > sources.get(c, 0)]
                     flag = "   → want " + ", ".join(
                         f"{w} {c} sources (have {w - a}, +{a})" for c, w, a in adds)
-            print(f"  {100*p:5.1f}%  T{turn}  {pipstr:10} {n[:30]:30}{flag}")
+            _tcell = f"T{turn}" + ("ˣ" if _xs else " ")
+            print(f"  {100*p:5.1f}%  {_tcell} {pipstr:10} {n[:30]:30}{flag}")
         if below:
             print(f"\n  {len(below)} card(s) below {100*target:.0f}% on curve — the → note is the "
                   f"Karsten source count to reach target, a splash flag for a thin (≤{SPLASH_MAX}-source) "
@@ -10334,6 +10434,9 @@ def audit_deck(d, *, by_name_qty, carddata, mana, leg, cmeta, played=None):
         cards, declared, mana, carddata, _uncastable_ok(meta))
 
     interaction = _interaction_count(cards, carddata)
+    # REPORT-ONLY (Batch E): maindecked cards that cast on curve below the sweep floor off
+    # a real (non-splash) colour. Read by the `Crv` column; never reaches `verdict`.
+    crv = castability_shortfalls(meta, cards, carddata=carddata, mana=mana)
 
     theme_w = {}
     for q, n, s, c in cards:
@@ -10383,6 +10486,8 @@ def audit_deck(d, *, by_name_qty, carddata, mana, leg, cmeta, played=None):
         "stray_ability": len(off_ability),
         "int": interaction,
         "thm": n_themes,
+        # REPORT-ONLY, like `played`: the castability-sweep count (`Crv`).
+        "crv": len(crv),
         "thin": thin,
         # REPORT-ONLY — deliberately below `verdict`, which is computed above and never
         # reads it. See the docstring.
@@ -10461,7 +10566,7 @@ def cmd_audit(args):
     # glossed one widens only as far as it must. Longest today is 46.
     name_w = min(48, max(4, max((len(r["name"]) for r in rows), default=4)))
     hdr = (f"  {'ID':<4}  {'Deck':<{name_w}}  {'Tier':<4}  {'Sz':>3}  {'Own':<4}  {'Legal':<5}  "
-           f"{'Cast':<7}  {'Int':>3}  {'Thm':>3}  {'Pld':>3}  Action")
+           f"{'Cast':<7}  {'Int':>3}  {'Thm':>3}  {'Crv':>3}  {'Pld':>3}  Action")
     print(hdr)
     print("  " + "-" * (len(hdr) - 2))
     for r in rows:
@@ -10470,12 +10575,15 @@ def cmd_audit(args):
         print(f"  {r['id']:<4}  {display_name(r['name'], name_w):<{name_w}}  "
               f"{(r['tier'] or '·'):<4}  "
               f"{r['sz']:>3}  {r['own']:<4}  {r['legal']:<5}  {r['cast']:<7}  {r['int']:>3}  "
-              f"{r['thm']:>3}  {(str(r['played']) if r['played'] else '·'):>3}  {action}")
+              f"{r['thm']:>3}  {(str(r['crv']) if r['crv'] else '·'):>3}  "
+              f"{(str(r['played']) if r['played'] else '·'):>3}  {action}")
 
     print(f"\nLegend: Tier S→D competitive/win-capability (· = ungraded) · "
           f"Own/Legal ✓ clean · Cast Nu=uncastable Ns=identity stray "
           f"Na=of those, off-color ABILITY (the rest are hybrids you pay on-color) · "
           f"Int=removal+sweeper+counter · Thm=central themes · "
+          f"Crv=cards casting on curve <{100*CURVE_SWEEP_FLOOR:.0f}% by T{CURVE_SWEEP_MAX_TURN} "
+          f"off a non-splash colour (`consistency <id>`), report-only · "
           f"Pld=matches played (· = none), report-only — never a verdict input")
 
     # A column of dots means two different things, and only one of them is about the

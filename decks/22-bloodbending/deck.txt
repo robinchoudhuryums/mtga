@@ -1,24 +1,21 @@
 #: name: Bloodbending (mill control)
 #: format: Standard
 #: arena: 22 Bloodbending, 6904238a-f5a2-49d9-967c-547167fecec2
-#: tier: B — Dimir mill / graveyard-value control. RE-GRADED UP from C: the C rested on
-#: tier: "thin interaction (2)", and that 2 was a classifier under-read, not the deck —
-#: tier: the bounce and edict patterns were broken, so the count read interaction 4 (3 since 2026-10-07, when Boomerang Basics' bounce moved to the report-only tempo line — the floor now reads C)
-#: tier: against card advantage 8, which was the B floor rather than the near-zero
-#: tier: interaction C is meant to cap. The card advantage is a real engine, not a pile
-#: tier: of cantrips (Portent of Calamity, Inspiration from Beyond, the draw-two
-#: tier: waterbenders), and it feeds the graveyard payoffs directly, so the mill plan and
-#: tier: the value plan are the same cards. That claim is now MEASURED rather than
-#: tier: asserted: the figure fell 11 -> 8 when K-14 taught the loot filter the singular
-#: tier: pair, and all three cards it dropped (Emet-Selch, Gran-Gran, Silvergill Peddler)
-#: tier: were card-neutral looters. The 8 that remain are real draws.
-#: tier: HELD AT B by one real gap, per the rubric: the interaction is 3 pieces and only
-#: tier: ONE of them is instant-speed, so a resolved threat is usually a resolved threat.
-#: tier: Mill also remains a slow Bo1 ladder plan — Consuming Aberration and Uchbenbak
-#: tier: are the actual clock, and mill is what makes them big. PATH TO A: two more
-#: tier: instant-speed answers, which also fixes the "all sorcery-speed" profile flag.
+#: tier: B — Dimir mill / graveyard-value control. LETTER HELD pending the owner's re-grade:
+#: tier: the 2026-10-08 tunes moved the measured floor C -> A (interaction 3 -> 8, card
+#: tier: advantage 7 with The Legend of Kuruk's chapter draws counted), so B now sits BELOW its floor, which the rubric permits but no longer
+#: tier: requires. Read the interaction figure one low: the classifier counts Jace, Reality
+#: tier: Sculptor's -3 (attackers get -5/-0) as a Sweeper. Instant-speed answers: Theorix Charm,
+#: tier: Swallowed by Leviathan, Extended Absence; sorcery-speed: Quag Feast, Watery Grasp,
+#: tier: Ruinous Waterbending, plus Azula's enters-exile (unread by the classifier, so +1). The mill plan is now an engine, not a sideline:
+#: tier: The Water Crystal adds four to every opponent mill, so Master's Councillors, Exhibition
+#: tier: Tidecaller, Riverchurn Monument, The Ancient One and Master Pakku each become real clocks
+#: tier: beside Jace's library exile and Kitsune's Technique, and The Master of Lake-town turns
+#: tier: every point of life loss into mill. What still caps it: the {B}{B} cards (Ral Zarek,
+#: tier: Ruinous Waterbending, The Master of Lake-town, Decorum Dissertation, Liliana) cast a turn
+#: tier: late off 13 black sources, the curve is top-heavy, and Bo1 mill is slow against fast aggro.
 #: colors: UB
-#: archetype: Dimir (U/B) mill / card-advantage control — Hama + waterbend, graveyard payoffs.
+#: archetype: Dimir (U/B) mill / card-advantage control — Hama + waterbend, The Water Crystal mill engine (Councillors, Exhibition Tidecaller, Riverchurn Monument, The Ancient One), graveyard payoffs, Jace, Reality Sculptor as the library-out finisher.
 #: notes: Dimir (U/B) mill / card-advantage control, built around Hama, the Bloodbender
 #: notes: and the waterbend mechanic (tap your board to pay extra costs). Self-mill +
 #: notes: opponent-mill feed graveyard payoffs (Consuming Aberration grows off
@@ -27,63 +24,78 @@
 #: notes: the deck's core (Consuming Aberration, Emet-Selch, Uchbenbak, double-black
 #: notes: Ruinous Waterbending) needs real black, so the manabase is now U/B. Cut the
 #: notes: lone white card (Katara, Water Tribe's Hope) + the weakest waterbend bodies.
+#: notes: 2026-10-08 tune (all owned except Jace, Master's Councillors, Cruel Calculations):
+#: notes: Extended Absence / Theorix Charm / Swallowed by Leviathan in for Mister Fantastic,
+#: notes: Madame Web and Crashing Wave (instant answers); Master's Councillors for Katara (a
+#: notes: second-draw mill trigger); Superior Spider-Man for Kitsa (copies creatures you mill
+#: notes: out of their yard); Jace, Reality Sculptor for North Pole Patrol; Cruel Calculations
+#: notes: for Boomerang Basics (spice — draws off Kitsune's Technique); Hidden Lair x3 + Watery
+#: notes: Grave for the four always-tapped duals. Symbiote Spider-Man was kept on a re-read: its
+#: notes: dig self-mills and Find New Host reuses it from the yard.
+#: notes: 2026-10-08 second wave: Ral Zarek for Kid Loki, The Water Crystal for Cryogen Relic,
+#: notes: Exhibition Tidecaller for Portent of Calamity, The Ancient One for Professor Zei,
+#: notes: Riverchurn Monument for Inspiration from Beyond, Quag Feast for Abandon Attachments,
+#: notes: Liliana, Dreadhorde General for Spirit Water Revival (its waterbend mode shuffled the
+#: notes: graveyard the descend/threshold cards need), and one Island became a Swamp.
+#: notes: 2026-10-08 third wave: Decorum Dissertation for Waterbending Lesson (Lesson for
+#: notes: Lesson; a free draw-two every turn), Homunculus Horde for Foggy Swamp Spirit Keeper,
+#: notes: The Master of Lake-town for Symbiote Spider-Man (life loss becomes mill, +4 with The
+#: notes: Water Crystal), Lo and Li for Silvergill Peddler (tutors Secret of Bloodbending or
+#: notes: Decorum Dissertation), Serpent of the Pass for Wan Shi Tong. Manabase 10 Island /
+#: notes: 6 Swamp / 2 Gloomlake Verge for the five {B}{B} cards.
+#: notes: Azula, Cunning Usurper for Sokka's Haiku (removal on a Noble body Lo and Li can find; Master Pakku now counts 3 Lessons).
+#: notes: Kiora, the Rising Tide for The Everflowing Well (same two draws, chosen discards, an 8/8 at threshold, a Noble for Lo and Li); Accumulate Wisdom for Yue (a 4th Lesson for Master Pakku and Serpent of the Pass; Watery Grasp kept as cheap interaction).
 
 # Nonland — mill / graveyard payoffs
 1 Hama, the Bloodbender (TLA) 224
 1 Consuming Aberration (FDN) 238
 1 Emet-Selch, Unsundered (FIN) 218
 1 Uchbenbak, the Great Mistake (LCI) 242
-1 Portent of Calamity (BLB) 66
+1 Exhibition Tidecaller (SOS) 48
+1 Jace, Reality Sculptor (FRA) 216
+1 Ral Zarek, Guest Lecturer (SOS) 97
+1 The Ancient One (LCI) 222
+1 Riverchurn Monument (DFT) 57
+1 The Master of Lake-town (HOB) 77
 
 # Nonland — card-advantage engines
-1 Wan Shi Tong, Librarian (TLA) 78
-1 Professor Zei, Anthropologist (TLA) 238
-1 Kitsa, Otterball Elite (BLB) 54
-1 Silvergill Peddler (ECL) 70
-1 Cryogen Relic (EOE) 52
-1 The Everflowing Well (LCI) 56
+1 The Water Crystal (FIN) 85
 1 Leader, Super-Genius (MSH) 64
-1 Mister Fantastic, Reed Richards (MSH) 66
-1 Madame Web, Clairvoyant (SPM) 36
 1 Secret of Bloodbending (TLA) 69
-1 Inspiration from Beyond (FDN) 43
-1 Waterbending Lesson (TLA) 80
-1 Spirit Water Revival (TLA) 73
+1 Decorum Dissertation (SOS) 78
+1 Cruel Calculations (FRA) 26
+1 Accumulate Wisdom (TLA) 44
 
 # Nonland — "draw your second card" payoffs
-1 Kid Loki (MSH) 63
 1 Kaito, Bane of Nightmares (DSK) 220
-1 Foggy Swamp Spirit Keeper (TLA) 222
+1 Homunculus Horde (FDN) 41
 1 Super Intelligence (MSH) 77
+1 Master's Councillors (HOB) 47
 
 # Nonland — interaction / tempo
-1 Sokka's Haiku (TLA) 71
 1 Ruinous Waterbending (TLA) 118
-1 Boomerang Basics (TLA) 46
-1 Crashing Wave (TLA) 47
-1 Abandon Attachments (TLA) 205
+1 Swallowed by Leviathan (FIN) 79
+1 Quag Feast (DFT) 100
 1 Watery Grasp (TLA) 82
 1 Kitsune's Technique (TMT) 42
-1 Katara, Bending Prodigy (TLA) 59
+1 Extended Absence (FRA) 54
+1 Theorix Charm (FRA) 155
 
 # Nonland — bodies / value
-1 Yue, the Moon Spirit (TLA) 83
 1 Master Pakku (TLA) 63
-1 North Pole Patrol (TLA) 65
-1 Symbiote Spider-Man (SPM) 156
 1 Taskmaster, Mercenary Mimic (MSH) 232
 1 The Legend of Kuruk (TLA) 61
+1 Superior Spider-Man (SPM) 155
+1 Liliana, Dreadhorde General (FDN) 176
+1 Lo and Li, Twin Tutors (TLA) 108
+1 Serpent of the Pass (TLA) 70
+1 Azula, Cunning Usurper (TLA) 208
+1 Kiora, the Rising Tide (FDN) 45
 
 # Lands
 1 Agna Qel'a (TLA) 264
-1 Dismal Backwater (FDN) 261
-1 Gloomlake Verge (DSK) 260
-1 Soured Springs (OTJ) 264
-1 Treno, Dark City (FIN) 290
-1 Hidden Lair (MSH) 269
-1 Serpent's Pass (TLA) 279
-13 Island (MSH) 290
-4 Swamp (MSH) 292
-
-# Flex — notes (comments; not part of the 60).
-#~ note: NEW PACK CARD — Bloodchief Ascension (owned; 'Bloodbender's Rise' reskin, {B} Mythic): after 3 quest counters, EVERY opponent-mill drains 2 (they lose 2 / you gain 2). The kill this mill deck lacks + flavor-perfect (Hama bloodbending). Slot when we tune deck 22.
+2 Gloomlake Verge (DSK) 260
+4 Hidden Lair (MSH) 269
+1 Watery Grave (EOE) 261
+10 Island (MSH) 290
+6 Swamp (MSH) 292
