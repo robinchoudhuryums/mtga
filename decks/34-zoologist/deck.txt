@@ -44,6 +44,8 @@
 #: notes: grows; Mutagens / Origin / Thranduil's Company counters start the 2→3→4 ladder that ends in a Zookeeper copy).
 #: notes: Wave 9 (2026-10-09): −Chronicle of Victory +Transdimensional Bovine (two mana of one colour from turn 4 — ramps
 #: notes: to Kraken / Kyoshi / Echocasting; an Ox Avatar, 2/6 flier under Zookeeper). Card advantage 9 → 8, accepted.
+#: notes: Wave 10 (2026-10-09): owned-only manabase fix — −1 Forest +Dreamroot Cascade (untapped from turn 3), −1 Island +Temple
+#: notes: of Mystery (tapped, scry). Sources G 13→14, U 12→13. Crafting 2 Breeding Pool + 1 Willowrush Verge would take it to 15/14.
 
 # Nonland — changeling / type-matters core
 1 Diligent Zookeeper (TLA) 171
@@ -87,9 +89,11 @@
 
 # Lands
 1 Hall of Echoes (FRA) 179
-11 Forest (MSH) 296
+10 Forest (MSH) 296
+1 Dreamroot Cascade (SOS) 254
 1 Willowrush Verge (DFT) 270
 1 Breeding Pool (EOE) 251
-10 Island (MSH) 290
+9 Island (MSH) 290
+1 Temple of Mystery (FDN) 702
 
 #~ -Oko, the Ringleader | +Flopsie, Bumi's Buddy | Oko rotates ~2026 (OTJ); Flopsie (counter on each creature, power-4+ attackers can't be double-blocked) is the drop-in return
