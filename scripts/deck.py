@@ -16021,15 +16021,19 @@ def target_counts(cards, carddata, mana):
                         if o["n"].lower().replace("snow-covered ", "") == want]
             elif kind == "lib_type":
                 # TYPE LINE, not name: "an Island card" is satisfied by any land with the
-                # Island subtype (a shock, a triland), not only by the basic.
-                want = groups[-1].lower()
-                hits = [o for o in others if want in o["type"].lower()]
+                # Island subtype (a shock, a triland), not only by the basic. WHOLE WORDS
+                # via `lib.type_matches` (BS11-39's trap one column over): a substring test
+                # read "Plan" inside "Planeswalker", so The Masters of Evil's Plan tutor
+                # counted Liliana as a Plan in deck 11.
+                want = groups[-1]
+                hits = [o for o in others if lib.type_matches(o["type"], want)]
             elif kind == "gy_type":
                 # The captured word is a TYPE or SUBTYPE ("Lesson", "creature", "artifact"),
                 # so match the type LINE. Case-insensitive: Magic capitalizes a real subtype
                 # but lower-cases the generic nouns, and both spellings appear in gate text.
-                want = groups[-1].lower()
-                hits = [o for o in others if want in o["type"].lower()]
+                # Whole words, for the same reason as `lib_type` above.
+                want = groups[-1]
+                hits = [o for o in others if lib.type_matches(o["type"], want)]
             else:
                 hits = [o for o in others if "land" not in o["type"]]
             # Normalise a word-number in the label ("needs three" -> "needs 3") so the

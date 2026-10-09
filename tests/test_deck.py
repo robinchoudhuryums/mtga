@@ -4832,6 +4832,31 @@ class TestTargetCounts:
         isl = [r for r in rows if "Island cards in the deck" in r[1]]
         assert len(isl) == 1 and isl[0][2] == 1     # the shock counts
 
+    def test_a_type_search_matches_whole_words_not_substrings(self):
+        """2026-10-09, REAL text: The Masters of Evil tutors "a Plan card", and the
+        substring test read "plan" inside "Planeswalker", so deck 11 reported THREE Plans
+        (Liliana, Dreadhorde General counted) against a real two. "Plant" is the same
+        trap. BS11-39's `--type` fix (`lib.type_matches`), one function over."""
+        cd = {"the masters of evil": {
+                  "name": "The Masters of Evil", "type": "Legendary Creature — Human Villain",
+                  "text": "Other Villains you control get +2/+1.\n{1}{B}, Discard this "
+                          "card: Search your library for a Plan card, reveal it, put it "
+                          "into your hand, then shuffle.", "colors": "B"},
+              "robot domination": {"name": "Robot Domination", "type": "Enchantment — Plan",
+                                   "text": "", "colors": "B"},
+              "liliana, dreadhorde general": {
+                  "name": "Liliana, Dreadhorde General",
+                  "type": "Legendary Planeswalker — Liliana", "text": "", "colors": "B"},
+              "sproutling": {"name": "Sproutling", "type": "Creature — Plant",
+                             "text": "", "colors": "G"}}
+        mana = {k: ("{1}", "1") for k in cd}
+        rows = deck.target_counts([(1, "The Masters of Evil", "", ""),
+                                   (1, "Robot Domination", "", ""),
+                                   (1, "Liliana, Dreadhorde General", "", ""),
+                                   (1, "Sproutling", "", "")], cd, mana)
+        plan = [r for r in rows if "Plan cards in the deck" in r[1]]
+        assert len(plan) == 1 and plan[0][2] == 1   # Robot Domination only
+
     def test_gy_type_gate_reads_both_copula_spellings(self):
         """DD-3: "there is an Elf card" (Dawnhand Eulogist, REAL text) was invisible while
         "there's a Lesson card" (Dragonfly Swarm) was caught — the gate only knew the
