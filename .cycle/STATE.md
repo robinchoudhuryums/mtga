@@ -44,6 +44,9 @@ Updated: 2026-10-02 (Batch 1 — see Where I left off)
 
 ## Completed this cycle
 
+- **2026-10-09 — deck-34-tune tool gaps #2/#4/#5** (block `2026-10-34-tune-tool-gaps-broad-implement.md`):
+  Card-advantage patterns (typed cast-from-top, multi-chapter Saga draw) — 14 decks CA +1/+2, 0 floors
+  moved, 10 tier figures re-grounded; Zookeeper protected in deck 34; G-26 `no longer` residual logged. Net 2 − 0 = 2.
 - **2026-10-07 — the STATE.md open follow-ons** (block `11-followons-broad-implement.md`):
   eleven items, net 7 − 0 = 7. Disclosure covers Vivid / creature-granted mana, land
   recommender prices gated colours (57 decks' #1 land pick moved), MV-cap target gate no
@@ -245,6 +248,7 @@ Updated: 2026-10-02 (Batch 1 — see Where I left off)
   (conditional mana) — K-12's long form has the probe. (Soul Immolation closed 2026-10-01.)
 
 ## Open follow-on items
+- **Surfaced by the 2026-10-09 deck-34 tune (not yet built):** (1) named-type payoffs satisfied by changelings are invisible to `suggest`/`screen` (G-84's NAMED half — measure first); (3) `early_drops` counts X spells at X=0 (96 cards / 62 decks; `consistency` prices X=2) — needs a tier-floor diff.
 - **CLOSED 2026-10-06 (`/broad-implement` of these follow-ons, block `11-followons-broad-implement.md`):** the KEY-saturation misattribution, the arena-header-moves-back case, the nonland disclosure's Vivid/granted silence (plus three any-colour spellings), the 42a `replace` cue, the comparison-cue blind spot inside a `Measured:` listing, the G-87 recommender half and the checkland type gate, P(tapland in the first three drops), the G-02 loader sweep (no live instance), the `unmet_gate`-at-`redundancy` re-measure (it found the MV-gate bug below), and the `tier_floor_spread` memo. Found already closed: the overlay power restriction (BS11-16), `doubler_axis` and `deck_needs` (2026-10-01). Re-measured, still nothing to build: the BS10-01 Threaten residual (0 live) and wishlist checklands (0 rows).
 - **Surfaced by the 2026-10-07 deck-32 tune (not yet built):**
   - **Steal Auras score ZERO interaction** — "You control enchanted creature" (Kitnap, Control Magic, Confiscate, Lay Claim, In Bolas's Clutches… 9 pool cards). A PATTERN hole (G-67): permanent removal-equivalent, Tractor Beam only scores via its "doesn't untap" clause. Fix + roster before/after diff.
@@ -354,6 +358,10 @@ Updated: 2026-10-02 (Batch 1 — see Where I left off)
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
+**2026-10-09 (latest) — deck 34 (Zoologist) tuned across ten waves, then tool gaps #2/#4/#5
+implemented** (block `2026-10-34-tune-tool-gaps-broad-implement.md`). Suite + check_all green.
+**Next:** follow-ons #1 and #3 above (each needs a roster measurement), then the owner's open calls.
+
 **2026-10-03 (latest) — scan #11 Batch 9 implemented; SCAN #11 IS COMPLETE** (block
 `11-batch9-docs-broad-implement.md`): hook surfaces a check_all crash, gates/validate answer
 `--help`, `/refresh` corrected per G-18, ROADMAP currency pass, figure_drift denominators

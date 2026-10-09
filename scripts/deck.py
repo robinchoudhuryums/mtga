@@ -2373,7 +2373,26 @@ _ROLE_PATTERNS = {
                        r"you may (?:play lands and )?cast spells from among cards exiled with this",
                        # CASTING OFF THE TOP of your own library is a permanent draw
                        # substitute — Vizier of the Menagerie, Mm'menon. Scored nothing.
-                       r"you may (?:cast|play) (?:\w+ ){0,3}(?:spells|cards?) from the top of your library",
+                       # The word gap is {0,5}, not {0,3} (2026-10-09): a TYPED or COMPOUND
+                       # permission runs longer — Traveling Chocobo's "play lands and cast
+                       # Bird spells", Madame Web's "cast Spider spells and noncreature
+                       # spells", Mystic Forge's "artifact spells and colorless spells",
+                       # Sigarda's "Angel and Human spells" — and all four scored no card
+                       # advantage while Vizier's "creature spells" did: a family
+                       # disagreement (G-67). The widening admits exactly those 4 pool cards.
+                       r"you may (?:cast|play) (?:\w+ ){0,5}(?:spells|cards?) from the top of your library",
+                       # A SAGA CHAPTER LINE THAT DRAWS ON TWO OR MORE CHAPTERS ("III, IV —
+                       # Draw a card", Old Fat Spider Can't See Me) is two cards over the
+                       # Saga's life, and the line-anchored chapter list is what repeats it.
+                       # A single-chapter draw ("III — Draw a card…", Leaves from the Vine)
+                       # is a one-shot cantrip and stays out, by the same rule as an ETB
+                       # draw. `you may discard` is excluded because a rummage chapter
+                       # (Summon: G.F. Ifrit) is card-neutral and the loot rule cannot see
+                       # its period-and-"if you do" form; the draw-then-discard chapter
+                       # (The Modern Age) is removed by the loot rule in classify_roles.
+                       # 6 pool cards match; 4 are real advantage (Jecht, Summon: Anima,
+                       # The Legend of Kuruk, Old Fat Spider).
+                       r"(?m)^[ivx]+(?:, [ivx]+)+ — (?![^\n]*\byou may discard\b)[^\n]{0,60}?\bdraws? a card",
                        # AN ACTIVATED ABILITY IS REPEATABLE BY CONSTRUCTION, which is the
                        # same argument the "whenever" pattern above rests on — but every
                        # pattern in this bucket was TRIGGER-shaped, so a draw you reach by

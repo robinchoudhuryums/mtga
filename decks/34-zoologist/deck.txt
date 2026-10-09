@@ -1,12 +1,13 @@
 #: name: Zoologist (changelings are every type)
 #: format: Standard
-#: tier: B — Simic changeling / Diligent-Zookeeper type-count deck; the metrics floor reads A (interaction 7, card advantage 8,
+#: tier: B — Simic changeling / Diligent-Zookeeper type-count deck; the metrics floor reads A (interaction 7, card advantage 10,
 #: tier: protection 5). Held at B pending the owner's re-grade: still ONE type-COUNT payoff (Zookeeper), but the 2026-10-09
 #: tier: tune added named-type payoffs that changelings satisfy — Beorn (Bears +2/+2, draws two a turn), Spider-Ham (animal
 #: tier: lord), Attuma (Merfolk lord + draw) and Imperious Perfect (Elf lord + tokens) — so losing Zookeeper no longer blanks the board.
 #: tier: Residual weaknesses: a top-heavy curve (10 plays at MV 2 or less) and rainbow-singleton variance. Owned except Celestial Reunion and Rocky Rebuke.
 #: colors: GU
 #: archetype: Simic (G/U) changeling / creature-type-count — flood the board with all-types creatures, then Diligent Zookeeper makes them enormous; a scaling-removal interaction suite keeps it from being a one-card combo.
+#: protect: Diligent Zookeeper
 #: notes: The focused, resilient build (promoted from the old 34a variant; the original undirected
 #: notes: 58-card pile was retired). Core: changelings (Omni-Changeling, Mutable Explorer, Three
 #: notes: Tree Mascot, Gangly Stompling) + all-types granters (Glamer Gifter, Oko, Stalactite

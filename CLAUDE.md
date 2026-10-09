@@ -555,8 +555,8 @@ is protecting.
   ~10–20% precision ("one" and "two" are ordinary prose — permanent false warnings, the
   G-78 bar); a per-card "N% on turn 5" has no deck-level
   value to look up; "the swap removes X" about a CUT card reads as live; a 4+-card fragment
-  drops as an epithet; a card absent from the POOL is invisible; and a figure needs its cue
-  ADJACENT ("the fastest curve here at 2.44", deck 26b). [G-26]
+  drops as an epithet; a card absent from the POOL is invisible; a consequence `no longer`
+  hides a citation (deck 34); a cue must sit ADJACENT. [G-26]
 - **Run `tier <id> --audit-rationale` after ANY deck edit.** The tier guard checks the
   LETTER; this checks the ARGUMENT — cards the prose cites that the deck no longer runs,
   and figures the live quality vector contradicts. A swap moves those numbers by

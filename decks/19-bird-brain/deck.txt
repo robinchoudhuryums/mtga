@@ -13,7 +13,7 @@
 #: tier: rose to 3 (Bard doubles every draw after the first each turn), putting the floor
 #: tier: at B. REOPENED 2026-08-15: Dawnwing Marshal was CUT (a five-mana anthem body
 #: tier: the deck's 20 payoffs outclassed) and Dazzling Denial returned in its slot, so
-#: tier: interaction is 5 again with card advantage 3 — the floor reads B and the letter
+#: tier: interaction is 5 again with card advantage 4 (Traveling Chocobo counted since 2026-10-09) — the floor reads B and the letter
 #: tier: sits AT it. THE UNDER-GRADED FLAG IS GONE, and not because the list moved: it
 #: tier: rested on the pre-2026-09-02 thresholds, where interaction 5 alone cleared an A
 #: tier: floor. The A case is still worth a human weighing: Elspeth is three cards in one (token doubler across 13
@@ -128,4 +128,4 @@
 #~ note: all three are 0-wildcard and Standard-legal. Cuts are distinct because the cut
 #~ note: pool is shared; two of the three are interaction and this deck runs 5, so taking
 #~ note: more than one of Dazzling Denial / Stroke of Midnight / Bushwhack moves the floor.
-#~ note: applied — Dazzling Denial back in for Dawnwing Marshal (2026-08-15, user call): the counter returns, the five-mana anthem body goes; interaction 5 / card-adv 3, floor back to A with the letter held at B.
+#~ note: applied — Dazzling Denial back in for Dawnwing Marshal (2026-08-15, user call): the counter returns, the five-mana anthem body goes; interaction 5 / card-adv 4 (3 before the 2026-10-09 classifier fix counted Traveling Chocobo), floor back to A with the letter held at B.

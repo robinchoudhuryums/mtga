@@ -12,8 +12,9 @@
 #: tier: Swift Savior's airbend exiles a creature OR a spell on the stack, and
 #: tier: Unstoppable Plan answers the deck's own tapped-out vulnerability every turn.
 #: tier: The classifier requires removal to say "an opponent controls"; these do not.
-#: tier: Board power 64 and card advantage 8 both sit slightly below where the
-#: tier: 2026-09-18 rebuild left them (68 and 9) — a deliberate trade of two draw
+#: tier: Board power 64 sits slightly below where the 2026-09-18 rebuild left it (68), and
+#: tier: card advantage reads 9 (8 until a 2026-10-09 classifier fix counted The Legend of Kuruk's
+#: tier: two chapter draws) — a deliberate trade of two draw
 #: tier: pieces and two large bodies for interaction and untappers. Board power 64 is
 #: tier: above the roster median of 54 and the figure counts printed power only, so it
 #: tier: under-reads a list that now runs three token engines. The manabase is

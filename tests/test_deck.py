@@ -571,6 +571,34 @@ class TestClassifyRoles:
             "Whenever Etali attacks, exile the top card of each player's library, then you "
             "may cast any number of spells from among them without paying their mana costs.")
 
+    def test_typed_or_compound_cast_from_top_is_card_advantage(self):
+        # The word gap was {0,3}, so a TYPED or COMPOUND permission fell outside it while
+        # Vizier's "creature spells" matched — a family disagreement (G-67). Traveling
+        # Chocobo and Madame Web both scored no card advantage (2026-10-09).
+        for text in [
+            "You may look at the top card of your library any time.\n"
+            "You may play lands and cast Bird spells from the top of your library.",
+            "You may look at the top card of your library any time.\n"
+            "You may cast Spider spells and noncreature spells from the top of your library.",
+        ]:
+            assert "Card advantage" in deck.classify_roles(text), text
+
+    def test_multi_chapter_saga_draw_is_card_advantage(self):
+        # "III, IV — Draw a card" is two cards over the Saga's life (Old Fat Spider Can't
+        # See Me scored Protection only). The guards: a SINGLE-chapter draw is a one-shot
+        # cantrip, and a rummage chapter ("you may discard a card. If you do, draw a
+        # card") or a loot chapter is card-neutral.
+        assert "Card advantage" in deck.classify_roles(
+            "I — Target creature you control gains hexproof for as long as this Saga "
+            "remains on the battlefield.\nIII, IV — Draw a card.")
+        for text in [
+            "I — Mill three cards.\nIII — Draw a card if there's a creature card in your "
+            "graveyard.",
+            "I, II — You may discard a card. If you do, draw a card.\nIII, IV — Add {R}.",
+            "I, II — Draw a card, then discard a card.\nIII — Exile this Saga.",
+        ]:
+            assert "Card advantage" not in deck.classify_roles(text), text
+
     def test_clue_token_is_card_advantage(self):
         # `investigate` was indexed but the spelled-out token was not, so The Mechanist —
         # a Clue per noncreature spell — scored Payoff/engine only and a deck built on it

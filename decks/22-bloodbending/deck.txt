@@ -3,7 +3,7 @@
 #: arena: 22 Bloodbending, 6904238a-f5a2-49d9-967c-547167fecec2
 #: tier: B — Dimir mill / graveyard-value control. LETTER HELD pending the owner's re-grade:
 #: tier: the 2026-10-08 tunes moved the measured floor C -> A (interaction 3 -> 8, card
-#: tier: advantage 6), so B now sits BELOW its floor, which the rubric permits but no longer
+#: tier: advantage 7 with The Legend of Kuruk's chapter draws counted), so B now sits BELOW its floor, which the rubric permits but no longer
 #: tier: requires. Read the interaction figure one low: the classifier counts Jace, Reality
 #: tier: Sculptor's -3 (attackers get -5/-0) as a Sweeper. Instant-speed answers: Theorix Charm,
 #: tier: Swallowed by Leviathan, Extended Absence; sorcery-speed: Quag Feast, Watery Grasp,
