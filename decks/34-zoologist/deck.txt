@@ -21,6 +21,9 @@
 #: notes: Wave 2 (2026-10-09): −Into the Flood Maw +Old Fat Spider Can't See Me (hexproof on Zookeeper for the Saga's life + two
 #: notes: draws); −Badgermole +Attuma (changelings are Merfolk: lord + draw on attack; trample was redundant with Beorn);
 #: notes: −Turtle-Duck +Celestial Reunion (pending craft).
+#: notes: Wave 3 (2026-10-09): −Avatar Destiny +Imperious Perfect (changelings are Elves; Elf Warrior tokens are 4/4 under
+#: notes: Zookeeper + Perfect); −Cat-Owl +Thranduil's Company (landfall counters feed Ray Fillet's draw); −Spell Pierce +Dazzling
+#: notes: Denial (any spell; {4} tax while you control a Bird — every changeling is one).
 
 # Nonland — changeling / type-matters core
 1 Diligent Zookeeper (TLA) 171
@@ -30,7 +33,7 @@
 1 Omni-Changeling (ECL) 62
 1 Mutable Explorer (ECL) 186
 1 Three Tree Mascot (FDN) 682
-1 Cat-Owl (TLA) 212
+1 Thranduil's Company (HOB) 168
 1 Glamer Gifter (ECL) 49
 1 Undercover Skrull (MSH) 194
 1 Beorn the Fierce (HOB) 119
@@ -43,7 +46,7 @@
 1 Attuma, Atlantean Warlord (MSH) 47
 1 Flopsie, Bumi's Buddy (TLA) 179
 1 Ember Island Production (TLA) 48
-1 Avatar Destiny (TLA) 165
+1 Imperious Perfect (FDN) 719
 1 March of the World Ooze (DFT) 169
 1 Applied Geometry (SOS) 172
 1 Patchwork Banner (BLB) 247
@@ -58,7 +61,7 @@
 1 Bite Down (FDN) 212
 1 Rabid Bite (ANB) 101
 1 Old Fat Spider Can't See Me (HOB) 50
-1 Spell Pierce (SOA) 23
+1 Dazzling Denial (BLB) 45
 1 Bushwhack (BRO) 174
 1 Unforgiving Aim (ECL) 200
 
