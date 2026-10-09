@@ -3,7 +3,7 @@
 #: tier: B — Simic changeling / Diligent-Zookeeper type-count deck; the metrics floor reads A (interaction 7, card advantage 9,
 #: tier: protection 5). Held at B pending the owner's re-grade: still ONE type-COUNT payoff (Zookeeper), but the 2026-10-09
 #: tier: tune added named-type payoffs that changelings satisfy — Beorn (Bears +2/+2, draws two a turn), Spider-Ham (animal
-#: tier: lord) and Patchwork Banner (chosen-type lord + fixing) — so losing Zookeeper no longer blanks the board.
+#: tier: lord), Attuma (Merfolk lord + draw) and Imperious Perfect (Elf lord + tokens) — so losing Zookeeper no longer blanks the board.
 #: tier: Residual weaknesses: a top-heavy curve (10 plays at MV 2 or less) and rainbow-singleton variance. Owned except Celestial Reunion and Rocky Rebuke.
 #: colors: GU
 #: archetype: Simic (G/U) changeling / creature-type-count — flood the board with all-types creatures, then Diligent Zookeeper makes them enormous; a scaling-removal interaction suite keeps it from being a one-card combo.
@@ -36,6 +36,10 @@
 #: notes: draws = greatest power, ~10 under Zookeeper); −Flopsie +Oko, the Ringleader (hexproof Zookeeper copy each combat);
 #: notes: −Wan Shi Tong +Champions of the Perfect (behold a changeling as the Elf); −Bushwhack +Genghis Frog (changelings are
 #: notes: Mutants → Mutagens).
+#: notes: Wave 7 (2026-10-09): −Dazzling Denial +Quandrix Charm (counter / destroy enchantment / base 5/5); −March of the World
+#: notes: Ooze +Verdant Kraken (a land-creature Tentacle on EACH player's upkeep — each one is landfall for Thranduil's Company,
+#: notes: and Kyoshi's flip side gives them hexproof + trample); −Patchwork Banner +Radagast of Rhosgobel (first creature spell
+#: notes: each turn costs {2} less and has flash — both players' turns).
 
 # Nonland — changeling / type-matters core
 1 Diligent Zookeeper (TLA) 171
@@ -59,9 +63,9 @@
 1 Oko, the Ringleader (OTJ) 223
 1 Echocasting Symposium (SOS) 44
 1 Imperious Perfect (FDN) 719
-1 March of the World Ooze (DFT) 169
+1 Verdant Kraken (FRA) 118
 1 Applied Geometry (SOS) 172
-1 Patchwork Banner (BLB) 247
+1 Radagast of Rhosgobel (HOB) 136
 1 Stalactite Dagger (ECL) 261
 1 Chronicle of Victory (ECL) 253
 1 The Legend of Kyoshi // Avatar Kyoshi (TLA) 186
@@ -74,7 +78,7 @@
 1 Bite Down (FDN) 212
 1 Rocky Rebuke (TLA) 193
 1 Old Fat Spider Can't See Me (HOB) 50
-1 Dazzling Denial (BLB) 45
+1 Quandrix Charm (SOS) 217
 1 Origin of Metalbending (TLA) 187
 
 # Lands
