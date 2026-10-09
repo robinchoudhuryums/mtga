@@ -4,7 +4,7 @@
 #: tier: protection 5). Held at B pending the owner's re-grade: still ONE type-COUNT payoff (Zookeeper), but the 2026-10-09
 #: tier: tune added named-type payoffs that changelings satisfy — Beorn (Bears +2/+2, draws two a turn), Spider-Ham (animal
 #: tier: lord), Attuma (Merfolk lord + draw) and Imperious Perfect (Elf lord + tokens) — so losing Zookeeper no longer blanks the board.
-#: tier: Residual weaknesses: a top-heavy curve (10 plays at MV 2 or less) and rainbow-singleton variance. Owned except Celestial Reunion and Rocky Rebuke.
+#: tier: Residual weaknesses: a top-heavy curve (10 plays at MV 2 or less) and rainbow-singleton variance. Owned except Celestial Reunion.
 #: colors: GU
 #: archetype: Simic (G/U) changeling / creature-type-count — flood the board with all-types creatures, then Diligent Zookeeper makes them enormous; a scaling-removal interaction suite keeps it from being a one-card combo.
 #: protect: Diligent Zookeeper
@@ -47,6 +47,8 @@
 #: notes: to Kraken / Kyoshi / Echocasting; an Ox Avatar, 2/6 flier under Zookeeper). Card advantage 9 → 8, accepted.
 #: notes: Wave 10 (2026-10-09): owned-only manabase fix — −1 Forest +Dreamroot Cascade (untapped from turn 3), −1 Island +Temple
 #: notes: of Mystery (tapped, scry). Sources G 13→14, U 12→13. Crafting 2 Breeding Pool + 1 Willowrush Verge would take it to 15/14.
+#: notes: Wave 11 (2026-10-09): −Rocky Rebuke (uncrafted; Bite Down does the same and also hits planeswalkers) +Unforgiving Aim
+#: notes: (flier / enchantment answer, or a 2/2 Elf token that Imperious Perfect and Zookeeper pump to 4/4).
 
 # Nonland — changeling / type-matters core
 1 Diligent Zookeeper (TLA) 171
@@ -83,7 +85,7 @@
 
 # Nonland — interaction / protection
 1 Bite Down (FDN) 212
-1 Rocky Rebuke (TLA) 193
+1 Unforgiving Aim (ECL) 200
 1 Old Fat Spider Can't See Me (HOB) 50
 1 Quandrix Charm (SOS) 217
 1 Origin of Metalbending (TLA) 187

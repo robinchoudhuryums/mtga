@@ -316,7 +316,6 @@ As long as Zhao has a conqueror counter on him, nonbasic lands are Mountains. (T
 Noble creatures you control and Lesson spells you control have lifelink.",B,Human; Advisor; Noble; lifegain; lifelink,TLA,108,Uncommon,22,deck 22 tune 2026-10-08,2.5,seed
 Geyser Leaper,Creature — Human Warrior Ally,"Flying
 Waterbend {4}: Draw a card, then discard a card. (While paying a waterbend cost, you can tap your artifacts and creatures to help. Each one pays for {1}.)",U,Human; Warrior; Ally; card draw; flying; evasion; waterbend; bending,TLA,52,Common,16,waterbend {4} loot on a flier; the 2026-09-18 waterbend rebuild's one craft,1.0,seed
-Rocky Rebuke,Instant,Target creature you control deals damage equal to its power to target creature an opponent controls.,G,removal,TLA,193,Common,34,instant-speed Rabid Bite; replaced it in deck 34,2.0,seed
 Beastmaster Ascension,Enchantment,"Whenever a creature you control attacks, you may put a quest counter on this enchantment.
 As long as this enchantment has seven or more quest counters on it, creatures you control get +5/+5.",G,counters; pump,TLE,39,Mythic,78-historic-brawl,78-historic-brawl swap for Hermitic Herbalist: +5/+5 team finisher; Doubling Season doubles its quest counters,5.0,seed
 "Wan Shi Tong, All-Knowing",Legendary Creature — Bird Spirit,"Flying
