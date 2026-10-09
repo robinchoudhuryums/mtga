@@ -6177,3 +6177,5 @@ Theorix Charm,Instant,"Choose one —
 • Mill three cards, then draw a card. (To mill three cards, put the top three cards of your library into your graveyard.)",U/B,counterspell; graveyard; mill; card draw; removal,FRA,155,1
 Transformative Commons,Land,"This land enters tapped unless you control a planeswalker.
 {T}: Add {G} or {U}.",U/G,mana,FRA,193,4
+"Jackal, Genius Geneticist",Legendary Creature — Human Scientist Villain,"Trample
+Whenever you cast a creature spell with mana value equal to Jackal's power, copy that spell, except the copy isn't legendary. Then put a +1/+1 counter on Jackal. (The copy becomes a token.)",U/G,Human; Scientist; Villain; counters; spell copy; trample; evasion,SPM,131,1

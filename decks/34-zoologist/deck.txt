@@ -40,6 +40,8 @@
 #: notes: Ooze +Verdant Kraken (a land-creature Tentacle on EACH player's upkeep — each one is landfall for Thranduil's Company,
 #: notes: and Kyoshi's flip side gives them hexproof + trample); −Patchwork Banner +Radagast of Rhosgobel (first creature spell
 #: notes: each turn costs {2} less and has flash — both players' turns).
+#: notes: Wave 8 (2026-10-09): −Iguana Parrot +Jackal, Genius Geneticist (copies a creature spell whose MV = his power, then
+#: notes: grows; Mutagens / Origin / Thranduil's Company counters start the 2→3→4 ladder that ends in a Zookeeper copy).
 
 # Nonland — changeling / type-matters core
 1 Diligent Zookeeper (TLA) 171
@@ -56,7 +58,7 @@
 1 Traveling Chocobo (FIN) 210
 1 Ray Fillet, Man Ray (TMT) 49
 1 Gangly Stompling (ECL) 226
-1 Iguana Parrot (TLA) 56
+1 Jackal, Genius Geneticist (SPM) 131
 1 Celestial Reunion (ECL) 170
 1 Chomping Changeling (ECL) 172
 1 Attuma, Atlantean Warlord (MSH) 47
