@@ -153,6 +153,8 @@ When Fblthp enters, search your library for up to X basic land cards with differ
 Warrior's Blades,Artifact — Equipment,"When this Equipment enters, it deals 3 damage to any target and you gain 3 life.
 Equipped creature gets +2/+1.
 Equip {3}. This ability costs {1} less to activate for each +1/+1 counter on the creature it targets.",W/R,equipment; counters; lifegain; cost-reduction; burn; etb; pump; noncombat damage; equip,FRA,163,Uncommon,24,,4.0,seed
+Way of the Healer,Legendary Enchantment,"When Way of the Healer enters, empower Jace 5. (Put five loyalty counters on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with ""[−1]: Surveil 1"" and ""[−3]: Draw a card."")
+Planeswalkers you control have ""[−2]: Create a 2/2 colorless Wizard Soldier creature token named Cadet. Surveil 1.""",W,planeswalker; card draw; tokens; etb; surveil; graveyard; empower jace,FRA,207,Uncommon,24,,2.5,seed
 Way of the Pyromancer,Legendary Enchantment,"When Way of the Pyromancer enters, empower Jace 2. (Put two loyalty counters on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with ""[−1]: Surveil 1"" and ""[−3]: Draw a card."")
 Planeswalkers you control have ""[+1]: Add {R}.""",R,planeswalker; card draw; tokens; etb; surveil; graveyard; empower jace,FRA,254,Uncommon,24,,2.5,seed
 Way of the Warlord,Legendary Enchantment,"When Way of the Warlord enters, empower Jace 5. (Put five loyalty counters on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with ""[−1]: Surveil 1"" and ""[−3]: Draw a card."")

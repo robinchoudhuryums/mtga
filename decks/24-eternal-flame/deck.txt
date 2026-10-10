@@ -1,6 +1,6 @@
 #: name: Eternal Flame (impulse — play off the top)
 #: format: Standard
-#: tier: A — Boros (WR) impulse/cast-from-exile; one of the deepest synergy webs on the roster (Thm 26), card-advantage engine (Quintorius Kand + Thor + Charred Foyer + Chandra + Ajani Unrelenting), 13 interaction, curve lowered on the A-track pass. Promoted from B: 2-color consistency + engine + interaction + deep synergy.
+#: tier: A — Boros (WR) impulse/cast-from-exile; one of the deepest synergy webs on the roster (Thm 28), card-advantage engine (Quintorius Kand + Thor + Charred Foyer + Chandra + Ajani Unrelenting), 13 interaction, curve lowered on the A-track pass. Promoted from B: 2-color consistency + engine + interaction + deep synergy.
 #: colors: WR
 #: plan: midrange
 #: archetype: BOROS IMPULSE, and what separates it from every other cast-from-exile deck
@@ -8,7 +8,7 @@
 #: archetype: The top of YOUR library is exiled and played that turn by Zuko's {3} activation,
 #: archetype: Daredevil on attack, Lightning on combat damage, Jessica
 #: archetype: Jones for X cards at once, Blazing Crescendo stapled to a
-#: archetype: combat trick, Superior Foes whenever you cast something of mana value 4 or greater,
+#: archetype: combat trick,
 #: archetype: Charred Foyer every upkeep, Chandra's +1 and The Legend of Roku's first chapter —
 #: archetype: while Etali exiles the top of EACH player's library and casts those for free. A
 #: archetype: second set reaches the GRAVEYARD instead: Practiced Scrollsmith, Thor's ETB (which
@@ -29,10 +29,11 @@
 #: archetype: every loyalty activation (Chandra's and Quintorius's included) that the next
 #: archetype: Command the Stage pumps. Way of the Warlord gives every planeswalker a -4 that deals
 #: archetype: 2 to a creature or planeswalker and 2 to a player, and Way of the Pyromancer gives
-#: archetype: each a +1 that adds {R}; each Way also makes a Jace token to activate.
+#: archetype: each a +1 that adds {R}, and Way of the Healer gives each a -2 that makes a Cadet and
+#: archetype: surveils 1; each Way also makes or grows a Jace token to activate.
 #: archetype: Measured: card advantage 12 (plus Seifer's and Command the Stage's recursion, which
-#: archetype: no count sees), on interaction 13, board power 51 and 26 central themes at a
-#: archetype: 3.58 curve. That curve and the WIDE 5 / tall 2
+#: archetype: no count sees), on interaction 13, board power 48 and 28 central themes at a
+#: archetype: 3.61 curve. That curve and the WIDE 6 / tall 2
 #: archetype: shape both say MIDRANGE — this is not an aggro deck, and a `#: plan:` header
 #: archetype: claiming otherwise would buy it a tier band it has not earned.
 #: archetype: DISTINCTNESS vs The Exiles (71% theme overlap, 8 of 34 distinct nonland cards shared), the
@@ -62,8 +63,8 @@ Deck
 1 Spider-Verse (SPM) 93
 1 Tomik, Izzet Sparkmage (FRA) 253
 1 Command the Stage (FRA) 77
+1 Way of the Healer (FRA) 207
 # Impulse enablers
-1 Superior Foes of Spider-Man (SPM) 96
 1 Practiced Scrollsmith (SOS) 210
 1 Daredevil, Man Without Fear (MSH) 213
 1 Jessica Jones, Private Eye (MSH) 139
