@@ -51,7 +51,6 @@ Black Widow, Super Spy
 Blasphemous Edict
 Blitzball Shot
 Bloodthirsty Conqueror
-Bloodtithe Collector
 Bolg's Company
 Bone-Cairn Butcher
 Boneclub Berserker
@@ -383,7 +382,6 @@ Tangle Tumbler
 Tannuk, Steadfast Second
 Tapestry Warden
 Team Tactics
-Temporal Intervention
 Tenured Tethermage
 Terrapact Intimidator
 Tetsuko Umezawa, Pursuer
@@ -401,7 +399,6 @@ The Queen of Dale
 The Regalia
 Think Twice
 Thor Odinson
-Thought-Stalker Warlock
 Three Tree Scribe
 Thunderous Velocipede
 Tidings of War

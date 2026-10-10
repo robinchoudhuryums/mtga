@@ -255,6 +255,7 @@ Together as One,Sorcery,"Converge — Target player draws X cards, Together as O
 Traumatic Critique,Instant,"Traumatic Critique deals X damage to any target. Draw two cards, then discard a card.",U/R,card draw; burn,SOS,239,Rare,general,UR X-burn + card advantage — good in any UR/spellslinger shell (cf. Prismari concept),5.5,hand
 Foolish Fate,Instant,"Destroy target creature.
 Infusion — If you gained life this turn, that creature's controller loses 3 life.",B,lifegain; removal; infusion; payoff,SOS,83,Uncommon,41,"drain/value package: unconditional removal + life-to-mana, refunded by the Mister Negative swap",3.0,seed
+Send in the Pest,Sorcery,"Each opponent discards a card. You create a 1/1 black and green Pest creature token with ""Whenever this token attacks, you gain 1 life.""",B,lifegain; tokens; discard,SOS,100,Common,70,,1.5,seed
 "Hydro-Man, Fluid Felon",Legendary Creature — Elemental Villain,"Whenever you cast a blue spell, if Hydro-Man is a creature, he gets +1/+1 until end of turn.
 At the beginning of your end step, untap Hydro-Man. Until your next turn, he becomes a land and gains ""{T}: Add {U}."" (He's not a creature during that time.)",U,Elemental; Villain; mana; pump,SPM,33,Rare,16,deck 16 waterbend rebuild 2026-09-19,6.5,seed
 Multiversal Passage,Land,"As this land enters, choose a basic land type. Then you may pay 2 life. If you don't, it enters tapped.

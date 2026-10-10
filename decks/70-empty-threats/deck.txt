@@ -2,7 +2,7 @@
 #: format: Standard
 #: colors: B
 #: tier: B (PROVISIONAL) — graded deliberately UNDER the A metrics floor, and the floor
-#: tier: itself needs a caveat in both directions: interaction reads 8 with 4 possible
+#: tier: itself needs a caveat in both directions: interaction reads 9 with 3 possible
 #: tier: under-counts, while card advantage reads 6 (Jecht's chapter draws counted since 2026-10-09; Primal Odin's chapter III since 2026-10-10) against a real engine the classifier
 #: tier: cannot see (Hostile Investigator's investigate-per-discard, Aclazotz's
 #: tier: draw-when-they-can't, Bandit's Talent level 3, Hollow Marauder — 5 cards sit
@@ -31,10 +31,10 @@
 #: notes: Case of the Crimson Pulse) is SELF-discard, a mechanically different deck, and
 #: notes: unioning the two would be the K-06 mistake. Self-discard payoffs (Monument to
 #: notes: Endurance, Moonstone) deliberately excluded for the same reason.
-#: notes: WIP — 8 craft targets (Tinybones, Aclazotz, Hostile Investigator, Entropic
-#: notes: Battlecruiser, Bloodtithe Collector, Arbiter of Woe, Rush of Dread,
-#: notes: Thought-Stalker Warlock: 2 mythic / 3 rare / 3 uncommon). The
-#: notes: owned core (28 of 36 nonland) already plays the plan.
+#: notes: WIP — 7 craft targets (Tinybones, Aclazotz, Hostile Investigator, Entropic
+#: notes: Battlecruiser, Arbiter of Woe, Rush of Dread, Send in the Pest: 2 mythic /
+#: notes: 3 rare / 1 uncommon / 1 common). The owned core (29 of 36 nonland) already
+#: notes: plays the plan.
 #: notes: TUNED 2026-10-10 (4 swaps, all owned): -Savor/+Garruk, Veiled Butcher (-3 "each
 #: notes: opponent discards two cards", draws when they can't; +2/-2 keep the removal),
 #: notes: -Ripclaw Wrangler/+Tinybones, Pocket Nuisance (same ETB discard a mana cheaper,
@@ -43,6 +43,14 @@
 #: notes: discard-or-lose-3 tax is the cost), -1 Swamp/+Realm of Koh (untapped beside
 #: notes: basics, a Spirit-token mana sink that crews/stations). Garruk's exile clause
 #: notes: costs nothing here: Klaw / Hollow Marauder / Ral count YOUR graveyard.
+#: notes: TUNED 2026-10-10 (round 2): -Temporal Intervention/+Gideon the Oathless (pings each
+#: notes: creature they topdeck; "Ward—Discard a card" is unpayable from an empty hand),
+#: notes: -Bloodtithe Collector/+Momentum Breaker (2-drop edict; "who can't discards"),
+#: notes: -Thought-Stalker Warlock/+Grave Researcher // Reanimate (Reanimate takes a creature
+#: notes: from ANY graveyard — the ones they discarded; prepares at 3+ creature cards in
+#: notes: yours), -Corrupt Court Official/+Send in the Pest (same discard, plus a token).
+#: notes: While Tinybones, Bauble Burglar is out their discards are exiled, not binned —
+#: notes: Reanimate loses those targets but Tinybones lets you play them instead.
 #: notes: Arbiter of Woe's sacrifice cost is COST-AS-UPSIDE here (G-41): the deck fields
 #: notes: nine 1-2 MV bodies whose ETB value is already spent by the time they feed him.
 #: notes: TUNED 2026-09-16 (5 swaps): -Rankle's Prank/+Maha, -Momentum Breaker/+The Death
@@ -85,31 +93,31 @@
 1 Thornplate Intimidator (BLB) 117
 1 Jecht, Reluctant Guardian (FIN) 104
 1 Maha, Its Feathers Night (BLB) 100
+1 Gideon the Oathless (FRA) 230
+1 Grave Researcher // Reanimate (SOS) 85
 
 # Enabler bodies — ETB / attack discard triggers
 1 Virus Beetle (EOE) 124
 1 Hecteyes (FIN) 103
 1 Stony-Voiced Goblins (HOB) 85
-1 Corrupt Court Official (TLA) 92
 1 Dream Seizer (ECL) 101
 1 Malboro (FIN) 106
 1 Klaw, Sonic Subjugator (MSH) 103
-1 Bloodtithe Collector (FDN) 751
 1 Hollow Marauder (OTJ) 90
 1 Arbiter of Woe (FDN) 55
 1 Tinybones, Pocket Nuisance (FRA) 237
-1 Thought-Stalker Warlock (BLB) 118
 
 # Discard spells / enchantment enablers
 1 Shredder's Revenge (TMT) 76
 1 Auntie's Sentence (ECL) 85
 1 Seeker's Folly (FDN) 69
 1 Ozai's Cruelty (TLA) 113
-1 Temporal Intervention (EOE) 120
 1 Down, Down to Goblin-town (HOB) 65
 1 Rush of Dread (OTJ) 104
 1 HYDRA Infiltration (MSH) 100
 1 Ral Zarek, Guest Lecturer (SOS) 97
+1 Momentum Breaker (DFT) 97
+1 Send in the Pest (SOS) 100
 
 # Removal / card advantage
 1 Nocturnal Hunger (BLB) 102
