@@ -1,13 +1,16 @@
 #: name: Sacrifices
 #: format: Standard
-#: tier: A — Rakdos aristocrats; coherent sac engine + 12 interaction (11 spot removal) + 10 card advantage on a clean 2-color base. Re-graded B→A: measurable floor is A and the earlier note already read "near A" — a coherent 2-color engine with strong interaction and no offsetting weakness clears the bar.
-#: colors: BRG
-#: archetype: Rakdos (B/R, light green) sacrifice / aristocrats.
-#: notes: Rakdos (B/R) sacrifice / aristocrats, black-primary with a light green splash.
+#: tier: A — black-green aristocrats; coherent sac engine + 11 interaction + 11 card advantage on a clean 2-color base (red splash dropped 2026-10-10). Re-graded B→A: measurable floor is A and the earlier note already read "near A" — a coherent 2-color engine with strong interaction and no offsetting weakness clears the bar.
+#: colors: BG
+#: archetype: Black-primary aristocrats with a light green splash (B/G) — sacrifice outlets fed into death-trigger payoffs (Sephiroth, Funeral Room, Popular Egotist, Vein Ripper, Liliana).
+#: notes: Black-primary sacrifice / aristocrats with a light green splash (Killmonger, Ygra). 2026-10-10 tune: red splash
+#: notes: dropped (Perforating Artist, The Ruinous Wrecking Crew were 48–52% on curve off 4 red sources); drain payoffs
+#: notes: added (Funeral Room, Popular Egotist, Vein Ripper, Liliana); lands: Overgrown Tomb + Wastewood Verge for
+#: notes: Bloodfell Caves + Baxter Building, and a 23rd land (Swamp) for Goldvein Pick. Remaining {B/R} pips are hybrid.
 
 # Nonland
 1 Sephiroth, Fabled SOLDIER (FIN) 115
-1 Perforating Artist (FDN) 124
+1 Funeral Room // Awakening Hall (DSK) 100
 1 Buzzard-Wasp Colony (TLA) 88
 1 Vito's Inquisitor (LCI) 130
 1 Beetle-Headed Merchants (TLA) 86
@@ -28,42 +31,41 @@
 1 Obsessive Pursuit (TLA) 112
 1 Super Shredder (TMT) 83
 1 Vampiric Rites (WOT) 37
-1 The Ruinous Wrecking Crew (MSH) 224
+1 Popular Egotist (DSK) 114
 1 Deadly Precision (TLA) 95
 1 Zuko's Conviction (TLA) 123
 1 Lively Dirge (OTJ) 93
-1 Cat-Gator (TLA) 91
-1 Too Evil to Stay Dead (MSH) 118
+1 Vein Ripper (MKM) 110
+1 Liliana, Dreadhorde General (FDN) 176
 1 Robot Domination (MSH) 111
 1 Foggy Swamp Visions (TLA) 102
 1 Ygra, Eater of All (BLB) 241
 1 Bloodthirsty Conqueror (FDN) 58
 1 Morlun, Devourer of Spiders (SPM) 59
-1 Goldvein Pick (FDN) 253
 1 Long Feng, Grand Secretariat (TLA) 233
 1 Season of Loss (BLB) 112
 1 Forum Necroscribe (SOS) 84
 
-# Lands (owned tempo fixes: this is a ~mono-black deck — red was 10 sources for
-# 2 pips. −2 Boiling Rock Prison, −1 Bloodfell Caves → +3 Swamp: 3 fewer taplands,
-# black primary shored up, R/G splashes still covered. Untapped splash duals wishlisted.)
+# Lands (black-primary with a green splash: Overgrown Tomb + Wastewood Verge + Jungle Hollows carry
+# green; the red splash was dropped 2026-10-10, so no red-producing duals remain.)
 1 Surveillance Room (MSH) 274
 2 Castle Doom (MSH) 263
 1 Captivating Cave (LCI) 268
-1 Bloodfell Caves (TDM) 250
-1 Baxter Building (MSH) 261
+1 Overgrown Tomb (ECL) 266
+1 Wastewood Verge (DFT) 268
 1 Villainous Hideout (MSH) 276
 3 Jungle Hollow (M21) 247
-11 Swamp (MSH) 292
+12 Swamp (MSH) 292
 1 Susur Secundi, Void Altar (EOE) 259
 
 # Flex — STANDARD-LEGAL craft targets, weighted so you don't waste wildcards. See: deck.py flex 8
-#~ -Fire Navy Trebuchet | +Deep-Cavern Bat | CRAFT (U) ★ MARKED UPGRADE: {1}{B} flying lifelink + Thoughtseize-on-a-body hand disruption — a unique effect the deck lacks
+#~ note: Deep-Cavern Bat is now OWNED, but Fire Navy Trebuchet stays — its token is sacrificed every end step you
+#~ note: attacked, free fodder for Zhao / Pirate Peddlers / Super Shredder / Long Feng. Former line: -Fire Navy Trebuchet | +Deep-Cavern Bat | CRAFT (U) ★ MARKED UPGRADE: {1}{B} flying lifelink + Thoughtseize-on-a-body hand disruption — a unique effect the deck lacks
 #~ note: RETIRED 2026-08-11 — The Ruinous Wrecking Crew is now IN the 60, so this line no
 #~ note: longer proposes a change. Beetle-Headed Merchants is still here, i.e. the Crew came
 #~ note: in over a different slot and the cut half was never taken. The reasoning is kept
 #~ note: because its cross-roster half still stands: a flexible {X}{B}{R} modal (loot, drain,
 #~ note: edict, token-kill) that is lateral HERE but a marked upgrade for Black Sun (1) and
 #~ note: Mad Villainy (10) — one wildcard, three BR aristocrats decks.
-#~ -Bumbleflower's Sharepot | +Disturbing Mirth | CRAFT (U) ~ SIDEGRADE: more sac->draw 2 card advantage, but you already run sac-to-draw (Sephiroth, Raven Eagle, High-Society Hunter) — skip unless you want more
+#~ note: RETIRED 2026-10-10 — Disturbing Mirth is {B}{R}, off-colour since the red splash was dropped. Former line: -Bumbleflower's Sharepot | +Disturbing Mirth | CRAFT (U) ~ SIDEGRADE: more sac->draw 2 card advantage, but you already run sac-to-draw (Sephiroth, Raven Eagle, High-Society Hunter) — skip unless you want more
 #~ note: only Deep-Cavern Bat is a clear marked upgrade for THIS deck. Wrecking Crew earns its wildcard via cross-deck reuse (decks 1, 8, 10).
