@@ -97,16 +97,15 @@ Deck
 1 Way of the Warlord (FRA) 255
 
 # Lands
-9 Mountain (MSH) 294
-8 Plains (MSH) 288
+11 Mountain (MSH) 294
+7 Plains (MSH) 288
 1 The Legend of Roku (TLA) 145
 1 Fire Nation Palace (TLA) 268
-1 Kavaron, Memorial World (EOE) 255
 1 Sunbillow Verge (DFT) 264
 1 Sun-Blessed Peak (TLA) 280
 1 Sacred Foundry (EOE) 256
 1 Temple of Triumph (FDN) 705
-1 Wind-Scarred Crag (FDN) 271
+1 Dedicated Commons (FRA) 175
 
 # Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 24
 #~ -Raph & Leo, Sibling Rivals | +Mardu Devotee | OWNED: a {W} 1-drop mana dork (taps W/B/R — fixes the thin red: 16 R sources for 42 R pips) + scry 2 on ETB. Lowers the curve and smooths draws into the bombs; swap in over the off-theme Raph & Leo if you want more consistency.
