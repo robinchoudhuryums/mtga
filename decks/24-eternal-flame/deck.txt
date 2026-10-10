@@ -6,7 +6,7 @@
 #: archetype: BOROS IMPULSE, and what separates it from every other cast-from-exile deck
 #: archetype: here is that this one MANUFACTURES the exile rather than waiting for one.
 #: archetype: The top of YOUR library is exiled and played that turn by Zuko's {3} activation,
-#: archetype: Kellan once he has connected and become a Detective, Daredevil on attack, Jessica
+#: archetype: Daredevil on attack, Lightning on combat damage, Jessica
 #: archetype: Jones for X cards at once, Crimson Operative's ETB, Blazing Crescendo stapled to a
 #: archetype: combat trick, Superior Foes whenever you cast something of mana value 4 or greater,
 #: archetype: Charred Foyer every upkeep, Chandra's +1 and The Legend of Roku's first chapter —
@@ -23,8 +23,8 @@
 #: archetype: Warriors, Fire Nation Palace), Smaug's upkeep Treasure and Chandra's +1 supply the
 #: archetype: extra mana, Electro keeps unspent red mana past combat so firebending mana pays for
 #: archetype: second-main-phase casts, and Warped Space makes one exile cast a turn free.
-#: archetype: Measured: card advantage 15, among the roster's highest, on interaction 11, board
-#: archetype: power 57 and 19 central themes at a 3.53 curve. That curve and the WIDE 4 / tall 1
+#: archetype: Measured: card advantage 13 (plus Seifer's free recasts, which no count sees), on
+#: archetype: interaction 11, board power 58 and 19 central themes at a 3.64 curve. That curve and the WIDE 4 / tall 1
 #: archetype: shape both say MIDRANGE — this is not an aggro deck, and a `#: plan:` header
 #: archetype: claiming otherwise would buy it a tier band it has not earned.
 #: archetype: DISTINCTNESS vs The Exiles (66% theme overlap, 10 of 35 nonland cards shared), the
@@ -52,6 +52,7 @@ Deck
 1 Shadow of the Goblin (SPM) 87
 1 Etali, Primal Storm (FDN) 194
 1 Spider-Verse (SPM) 93
+1 Tomik, Izzet Sparkmage (FRA) 253
 # Impulse enablers
 1 Superior Foes of Spider-Man (SPM) 96
 1 Practiced Scrollsmith (SOS) 210
@@ -62,10 +63,8 @@ Deck
 1 Solstice Revelations (TLA) 153
 1 Hex Magic (MSH) 133
 # Firebending / ramp / artifacts
-1 Clockwork Percussionist (DSK) 130
 1 Sun Warriors (TLA) 244
 1 Zuko, Exiled Prince (TLA) 163
-1 Kellan, Planar Trailblazer (FDN) 91
 1 Electro, Assaulting Battery (SPM) 76
 # Threats / combat
 1 Aurelia, the Warleader (FDN) 651
@@ -76,6 +75,7 @@ Deck
 1 Clive, Ifrit's Dominant (FIN) 133
 1 The Super Hero Civil War (MSH) 231
 1 Smaug the Magnificent (HOB) 110
+1 Seifer Almasy (FIN) 156
 # Card advantage
 1 Charred Foyer // Warped Space (DSK) 129
 # Removal / reach
@@ -103,4 +103,4 @@ Deck
 #~ -Raph & Leo, Sibling Rivals | +Mardu Devotee | OWNED: a {W} 1-drop mana dork (taps W/B/R — fixes the thin red: 16 R sources for 42 R pips) + scry 2 on ETB. Lowers the curve and smooths draws into the bombs; swap in over the off-theme Raph & Leo if you want more consistency.
 #~ note: applied — Chandra, Torch of Defiance in for Lightning Strike.
 #~ note: A-track curve-lowering applied — -Sozin's Comet/+Clockwork Percussionist, -Sami/+Kellan, -Brass's Bounty/+Zuko, -Thor Odinson/+Ennis (exile-grows). Kept Raph & Leo for now (Mardu Devotee parked above).
-#~ -Clockwork Percussionist | +Goliath Daydreamer | OWNED: 4/4 for {2}{R}{R}; instants/sorceries cast from HAND are exiled with dream counters and recast FREE on each attack — a free cast from exile triggers Quintorius, Spider-Verse (not from hand → copy), Thor and Shadow of the Goblin. Cost: it diverts spells from the graveyard that Thor's ETB, Practiced Scrollsmith and the Solstice/Nibelheim flashbacks want (G-42), and the 4-slot is crowded.
+#~ note: applied — Tomik, Izzet Sparkmage in for Clockwork Percussionist.
