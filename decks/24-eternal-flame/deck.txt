@@ -1,13 +1,13 @@
 #: name: Eternal Flame (impulse — play off the top)
 #: format: Standard
-#: tier: A — Boros (WR) impulse/cast-from-exile; one of the deepest synergy webs on the roster (Thm 19), card-advantage engine (Quintorius Kand + Thor + Charred Foyer + Chandra), 11 interaction, curve lowered on the A-track pass. Promoted from B: 2-color consistency + engine + interaction + deep synergy.
+#: tier: A — Boros (WR) impulse/cast-from-exile; one of the deepest synergy webs on the roster (Thm 20), card-advantage engine (Quintorius Kand + Thor + Charred Foyer + Chandra + Ajani Unrelenting), 12 interaction, curve lowered on the A-track pass. Promoted from B: 2-color consistency + engine + interaction + deep synergy.
 #: colors: WR
 #: plan: midrange
 #: archetype: BOROS IMPULSE, and what separates it from every other cast-from-exile deck
 #: archetype: here is that this one MANUFACTURES the exile rather than waiting for one.
 #: archetype: The top of YOUR library is exiled and played that turn by Zuko's {3} activation,
 #: archetype: Daredevil on attack, Lightning on combat damage, Jessica
-#: archetype: Jones for X cards at once, Crimson Operative's ETB, Blazing Crescendo stapled to a
+#: archetype: Jones for X cards at once, Blazing Crescendo stapled to a
 #: archetype: combat trick, Superior Foes whenever you cast something of mana value 4 or greater,
 #: archetype: Charred Foyer every upkeep, Chandra's +1 and The Legend of Roku's first chapter —
 #: archetype: while Etali exiles the top of EACH player's library and casts those for free. A
@@ -23,11 +23,17 @@
 #: archetype: Warriors, Fire Nation Palace), Smaug's upkeep Treasure and Chandra's +1 supply the
 #: archetype: extra mana, Electro keeps unspent red mana past combat so firebending mana pays for
 #: archetype: second-main-phase casts, and Warped Space makes one exile cast a turn free.
-#: archetype: Measured: card advantage 13 (plus Seifer's free recasts, which no count sees), on
-#: archetype: interaction 11, board power 58 and 19 central themes at a 3.64 curve. That curve and the WIDE 4 / tall 1
+#: archetype: A PLANESWALKER SUB-ENGINE rides on the noncombat damage: Command the Stage returns
+#: archetype: to hand every upkeep after an opponent took noncombat damage, so it is a
+#: archetype: noncreature spell for Thor every turn, and Ajani Unrelenting makes a Cadet on
+#: archetype: every loyalty activation (Chandra's and Quintorius's included) that the next
+#: archetype: Command the Stage pumps.
+#: archetype: Measured: card advantage 12 (plus Seifer's and Command the Stage's recursion, which
+#: archetype: no count sees), on interaction 12, board power 55 and 20 central themes at a
+#: archetype: 3.69 curve. That curve and the WIDE 5 / tall 2
 #: archetype: shape both say MIDRANGE — this is not an aggro deck, and a `#: plan:` header
 #: archetype: claiming otherwise would buy it a tier band it has not earned.
-#: archetype: DISTINCTNESS vs The Exiles (66% theme overlap, 10 of 35 nonland cards shared), the
+#: archetype: DISTINCTNESS vs The Exiles (65% theme overlap, 8 of 34 distinct nonland cards shared), the
 #: archetype: roster's other cast-from-exile deck: that one is Mardu and is built so that the
 #: archetype: CASTING pays — three payoffs on one event, with the exile coming from anywhere,
 #: archetype: including the opponent's library. This deck is Boros and supplies its own exile off
@@ -36,7 +42,7 @@
 #: archetype: grindy Treasure-ramp-into-bombs route and now shares 15 nonland cards.
 #: notes: Boros impulse / cast-from-exile. Quintorius Kand, Thor, God of Thunder and
 #: notes: Spider-Verse as payoffs; a dense "exile the top card, play it" package (Practiced
-#: notes: Scrollsmith, Daredevil, Jessica Jones, Crimson Operative, Charred Foyer, Chandra,
+#: notes: Scrollsmith, Daredevil, Jessica Jones, Charred Foyer, Chandra,
 #: notes: Blazing Crescendo, Etali, Clive). Firebending, Treasure and Electro's persistent red
 #: notes: mana cast the exiled cards; deep removal holds the board. Promoted from variant 24c;
 #: notes: the earlier midrange list is kept as variant 24b. 2026-10-10 tune: Sacred Foundry,
@@ -53,13 +59,13 @@ Deck
 1 Etali, Primal Storm (FDN) 194
 1 Spider-Verse (SPM) 93
 1 Tomik, Izzet Sparkmage (FRA) 253
+1 Command the Stage (FRA) 77
 # Impulse enablers
 1 Superior Foes of Spider-Man (SPM) 96
 1 Practiced Scrollsmith (SOS) 210
 1 Daredevil, Man Without Fear (MSH) 213
 1 Jessica Jones, Private Eye (MSH) 139
-1 Crimson Operative (MSH) 126
-2 Blazing Crescendo (MSH) 125
+1 Blazing Crescendo (MSH) 125
 1 Solstice Revelations (TLA) 153
 1 Hex Magic (MSH) 133
 # Firebending / ramp / artifacts
@@ -73,7 +79,7 @@ Deck
 1 Lightning, Army of One (FIN) 233
 1 War Machine, Legacy of Iron (MSH) 238
 1 Clive, Ifrit's Dominant (FIN) 133
-1 The Super Hero Civil War (MSH) 231
+1 Ajani Unrelenting (FRA) 242
 1 Smaug the Magnificent (HOB) 110
 1 Seifer Almasy (FIN) 156
 # Card advantage
@@ -86,6 +92,7 @@ Deck
 1 Solitary Cell (FRA) 149
 1 Valorous Stance (FDN) 583
 1 Lightning, Security Sergeant (FIN) 560
+1 Warrior's Blades (FRA) 163
 
 # Lands
 9 Mountain (MSH) 294
