@@ -153,6 +153,10 @@ When Fblthp enters, search your library for up to X basic land cards with differ
 Warrior's Blades,Artifact — Equipment,"When this Equipment enters, it deals 3 damage to any target and you gain 3 life.
 Equipped creature gets +2/+1.
 Equip {3}. This ability costs {1} less to activate for each +1/+1 counter on the creature it targets.",W/R,equipment; counters; lifegain; cost-reduction; burn; etb; pump; noncombat damage; equip,FRA,163,Uncommon,24,,4.0,seed
+Way of the Pyromancer,Legendary Enchantment,"When Way of the Pyromancer enters, empower Jace 2. (Put two loyalty counters on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with ""[−1]: Surveil 1"" and ""[−3]: Draw a card."")
+Planeswalkers you control have ""[+1]: Add {R}.""",R,planeswalker; card draw; tokens; etb; surveil; graveyard; empower jace,FRA,254,Uncommon,24,,2.5,seed
+Way of the Warlord,Legendary Enchantment,"When Way of the Warlord enters, empower Jace 5. (Put five loyalty counters on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with ""[−1]: Surveil 1"" and ""[−3]: Draw a card."")
+Planeswalkers you control have ""[−4]: This planeswalker deals 2 damage to up to one target creature or planeswalker and 2 damage to target player.""",R,planeswalker; card draw; tokens; burn; etb; surveil; graveyard; empower jace,FRA,255,Uncommon,24,,4.0,seed
 Inside Information,Sorcery,"Exile the top X cards of target opponent's library. You may play those cards this turn. If you cast a spell this way, pay life equal to its mana value rather than pay its mana cost.",B,pay life; heist; impulse,HOB,76,Mythic,41,"drain/value package: unconditional removal + life-to-mana, refunded by the Mister Negative swap",4.5,seed
 Master's Councillors,Creature — Human Advisor,"Vigilance
 This creature gets +2/+0 for each graveyard with seven or more cards in it.

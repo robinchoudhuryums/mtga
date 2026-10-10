@@ -1,6 +1,6 @@
 #: name: Eternal Flame (impulse — play off the top)
 #: format: Standard
-#: tier: A — Boros (WR) impulse/cast-from-exile; one of the deepest synergy webs on the roster (Thm 20), card-advantage engine (Quintorius Kand + Thor + Charred Foyer + Chandra + Ajani Unrelenting), 12 interaction, curve lowered on the A-track pass. Promoted from B: 2-color consistency + engine + interaction + deep synergy.
+#: tier: A — Boros (WR) impulse/cast-from-exile; one of the deepest synergy webs on the roster (Thm 26), card-advantage engine (Quintorius Kand + Thor + Charred Foyer + Chandra + Ajani Unrelenting), 13 interaction, curve lowered on the A-track pass. Promoted from B: 2-color consistency + engine + interaction + deep synergy.
 #: colors: WR
 #: plan: midrange
 #: archetype: BOROS IMPULSE, and what separates it from every other cast-from-exile deck
@@ -27,19 +27,21 @@
 #: archetype: to hand every upkeep after an opponent took noncombat damage, so it is a
 #: archetype: noncreature spell for Thor every turn, and Ajani Unrelenting makes a Cadet on
 #: archetype: every loyalty activation (Chandra's and Quintorius's included) that the next
-#: archetype: Command the Stage pumps.
+#: archetype: Command the Stage pumps. Way of the Warlord gives every planeswalker a -4 that deals
+#: archetype: 2 to a creature or planeswalker and 2 to a player, and Way of the Pyromancer gives
+#: archetype: each a +1 that adds {R}; each Way also makes a Jace token to activate.
 #: archetype: Measured: card advantage 12 (plus Seifer's and Command the Stage's recursion, which
-#: archetype: no count sees), on interaction 12, board power 55 and 20 central themes at a
-#: archetype: 3.69 curve. That curve and the WIDE 5 / tall 2
+#: archetype: no count sees), on interaction 13, board power 51 and 26 central themes at a
+#: archetype: 3.58 curve. That curve and the WIDE 5 / tall 2
 #: archetype: shape both say MIDRANGE — this is not an aggro deck, and a `#: plan:` header
 #: archetype: claiming otherwise would buy it a tier band it has not earned.
-#: archetype: DISTINCTNESS vs The Exiles (65% theme overlap, 8 of 34 distinct nonland cards shared), the
+#: archetype: DISTINCTNESS vs The Exiles (71% theme overlap, 8 of 34 distinct nonland cards shared), the
 #: archetype: roster's other cast-from-exile deck: that one is Mardu and is built so that the
 #: archetype: CASTING pays — three payoffs on one event, with the exile coming from anywhere,
 #: archetype: including the opponent's library. This deck is Boros and supplies its own exile off
 #: archetype: the top, and its kill is burn (Thor, Mjölnir, Quintorius, Shadow of the Goblin) and
 #: archetype: copies (Spider-Verse) rather than counters and tokens. Its own variant 24b is the
-#: archetype: grindy Treasure-ramp-into-bombs route and now shares 15 nonland cards.
+#: archetype: grindy Treasure-ramp-into-bombs route and now shares 13 nonland cards.
 #: notes: Boros impulse / cast-from-exile. Quintorius Kand, Thor, God of Thunder and
 #: notes: Spider-Verse as payoffs; a dense "exile the top card, play it" package (Practiced
 #: notes: Scrollsmith, Daredevil, Jessica Jones, Charred Foyer, Chandra,
@@ -72,12 +74,11 @@ Deck
 1 Sun Warriors (TLA) 244
 1 Zuko, Exiled Prince (TLA) 163
 1 Electro, Assaulting Battery (SPM) 76
+1 Way of the Pyromancer (FRA) 254
 # Threats / combat
-1 Aurelia, the Warleader (FDN) 651
 1 Raph & Leo, Sibling Rivals (TMT) 166
 1 The Sentry, Golden Guardian (MSH) 35
 1 Lightning, Army of One (FIN) 233
-1 War Machine, Legacy of Iron (MSH) 238
 1 Clive, Ifrit's Dominant (FIN) 133
 1 Ajani Unrelenting (FRA) 242
 1 Smaug the Magnificent (HOB) 110
@@ -93,6 +94,7 @@ Deck
 1 Valorous Stance (FDN) 583
 1 Lightning, Security Sergeant (FIN) 560
 1 Warrior's Blades (FRA) 163
+1 Way of the Warlord (FRA) 255
 
 # Lands
 9 Mountain (MSH) 294
