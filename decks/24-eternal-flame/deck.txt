@@ -1,6 +1,6 @@
 #: name: Eternal Flame (impulse — play off the top)
 #: format: Standard
-#: tier: A — Boros (WR) impulse/cast-from-exile; one of the deepest synergy webs on the roster (Thm 28), card-advantage engine (Quintorius Kand + Thor + Charred Foyer + Chandra + Ajani Unrelenting), 13 interaction, curve lowered on the A-track pass. Promoted from B: 2-color consistency + engine + interaction + deep synergy.
+#: tier: A — Boros (WR) impulse/cast-from-exile; one of the deepest synergy webs on the roster (Thm 29), card-advantage engine (Quintorius Kand + Thor + Charred Foyer + Chandra + Ajani Unrelenting), 12 interaction, curve lowered on the A-track pass. Promoted from B: 2-color consistency + engine + interaction + deep synergy.
 #: colors: WR
 #: plan: midrange
 #: archetype: BOROS IMPULSE, and what separates it from every other cast-from-exile deck
@@ -32,7 +32,7 @@
 #: archetype: each a +1 that adds {R}, and Way of the Healer gives each a -2 that makes a Cadet and
 #: archetype: surveils 1; each Way also makes or grows a Jace token to activate.
 #: archetype: Measured: card advantage 12 (plus Seifer's and Command the Stage's recursion, which
-#: archetype: no count sees), on interaction 13, board power 48 and 28 central themes at a
+#: archetype: no count sees), on interaction 12, board power 51 and 29 central themes at a
 #: archetype: 3.61 curve. That curve and the WIDE 6 / tall 2
 #: archetype: shape both say MIDRANGE — this is not an aggro deck, and a `#: plan:` header
 #: archetype: claiming otherwise would buy it a tier band it has not earned.
@@ -84,12 +84,12 @@ Deck
 1 Ajani Unrelenting (FRA) 242
 1 Smaug the Magnificent (HOB) 110
 1 Seifer Almasy (FIN) 156
+1 Tersa Lightshatter (TDM) 127
 # Card advantage
 1 Charred Foyer // Warped Space (DSK) 129
 # Removal / reach
 1 Mjölnir, Hammer of Thor (MSH) 146
 1 Nibelheim Aflame (FIN) 146
-1 Fiery Annihilation (FDN) 86
 1 Chandra, Torch of Defiance (FRA) 244
 1 Solitary Cell (FRA) 149
 1 Valorous Stance (FDN) 583
