@@ -140,6 +140,8 @@ Cruel Calculations,Sorcery,"Draw X cards, where X is the number of cards that we
 "Jace, Reality Sculptor",Legendary Planeswalker — Jace,"+1: Empower Jace X, where X is the number of Islands you control.
 −3: Until your next turn, whenever a creature attacks you or a planeswalker you control, it gets -5/-0 until end of turn.
 0: Exile all but the bottom card of each opponent's library. Activate only if there are twenty-five or more loyalty counters among Jaces you control.",U,Jace; Island; planeswalker; empower jace,FRA,216,Rare,22,deck 22 tune 2026-10-08,8.0,seed
+Solitary Cell,Artifact,"When this artifact enters, exile target nonland permanent an opponent controls with mana value 3 or less until this artifact leaves the battlefield.
+{1}, {T}, Discard a legendary card: Draw a card.",W/R,card draw; removal; etb,FRA,149,Rare,24,,5.5,seed
 "Fblthp, Knows the Way",Legendary Creature — Homunculus Scout,"Domain — Fblthp's power is equal to the number of basic land types among lands you control.
 When Fblthp enters, search your library for up to X basic land cards with different names, reveal them, put them into your hand, then shuffle.",G,Homunculus; Scout; etb; domain; lands,FRA,258,Uncommon,40,deck 40 tune 2026-10-08,3.0,seed
 Inside Information,Sorcery,"Exile the top X cards of target opponent's library. You may play those cards this turn. If you cast a spell this way, pay life equal to its mana value rather than pay its mana cost.",B,pay life; heist; impulse,HOB,76,Mythic,41,"drain/value package: unconditional removal + life-to-mana, refunded by the Mister Negative swap",4.5,seed
