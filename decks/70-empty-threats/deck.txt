@@ -5,7 +5,7 @@
 #: tier: itself needs a caveat in both directions: interaction reads 9 with 3 possible
 #: tier: under-counts, while card advantage reads 6 (Jecht's chapter draws counted since 2026-10-09; Primal Odin's chapter III since 2026-10-10) against a real engine the classifier
 #: tier: cannot see (Hostile Investigator's investigate-per-discard, Aclazotz's
-#: tier: draw-when-they-can't, Bandit's Talent level 3, Hollow Marauder — 5 cards sit
+#: tier: draw-when-they-can't, Bandit's Talent level 3 — the cards that sit
 #: tier: unclassified, the K-12 shape). Held at B because: this is an UNTESTED first
 #: tier: draft; the two best payoffs (Tinybones, Aclazotz) plus Hostile Investigator are
 #: tier: uncrafted, so the list that would earn the letter is not the list on the table;
@@ -15,7 +15,7 @@
 #: archetype: Mono-black OPPONENT-DISCARD attrition (the roster's first hand-attack deck).
 #: archetype: PLAN: strip the hand with a wall of ETB-discard bodies (Virus Beetle, Hecteyes,
 #: archetype: Stony-Voiced Goblins, Malboro, Klaw) and discard spells (Shredder's Revenge,
-#: archetype: Ozai's Cruelty, Seeker's Folly, Rush of Dread), then win the empty-hand state three
+#: archetype: Ozai's Cruelty, Seeker's Folly, Momentum Breaker, Send in the Pest), then win the empty-hand state three
 #: archetype: ways: PUNISH it (Bandit's Talent level 2 upkeep drain + level 3 extra draws,
 #: archetype: Aclazotz drawing when they can't discard, Entropic Battlecruiser turning each
 #: archetype: discard into 3 life, Painful Quandary taxing every topdeck 5 life), STEAL it
@@ -32,7 +32,7 @@
 #: notes: unioning the two would be the K-06 mistake. Self-discard payoffs (Monument to
 #: notes: Endurance, Moonstone) deliberately excluded for the same reason.
 #: notes: WIP — 7 craft targets (Tinybones, Aclazotz, Hostile Investigator, Entropic
-#: notes: Battlecruiser, Arbiter of Woe, Rush of Dread, Send in the Pest: 2 mythic /
+#: notes: Battlecruiser, Arbiter of Woe, Send in the Pest, Vraska's Final Mercy: 2 mythic /
 #: notes: 3 rare / 1 uncommon / 1 common). The owned core (29 of 36 nonland) already
 #: notes: plays the plan.
 #: notes: TUNED 2026-10-10 (4 swaps, all owned): -Savor/+Garruk, Veiled Butcher (-3 "each
@@ -42,7 +42,7 @@
 #: notes: Stacy/+Summon: Primal Odin (unrestricted creature kill + draw two; the chapter-II
 #: notes: discard-or-lose-3 tax is the cost), -1 Swamp/+Realm of Koh (untapped beside
 #: notes: basics, a Spirit-token mana sink that crews/stations). Garruk's exile clause
-#: notes: costs nothing here: Klaw / Hollow Marauder / Ral count YOUR graveyard.
+#: notes: costs nothing here: Klaw / Ral / Winter count YOUR graveyard.
 #: notes: TUNED 2026-10-10 (round 2): -Temporal Intervention/+Gideon the Oathless (pings each
 #: notes: creature they topdeck; "Ward—Discard a card" is unpayable from an empty hand),
 #: notes: -Bloodtithe Collector/+Momentum Breaker (2-drop edict; "who can't discards"),
@@ -51,6 +51,12 @@
 #: notes: yours), -Corrupt Court Official/+Send in the Pest (same discard, plus a token).
 #: notes: While Tinybones, Bauble Burglar is out their discards are exiled, not binned —
 #: notes: Reanimate loses those targets but Tinybones lets you play them instead.
+#: notes: TUNED 2026-10-10 (round 3): -Hollow Marauder/+Titania, Rugged Rumbler (a 5/5 for 3;
+#: notes: its discard-or-pay-{2} cost pings off Tinybones, Pocket Nuisance), -Rush of Dread/
+#: notes: +Ninja Teen (level 3 recasts the ETB-discard bodies from the graveyard via sneak),
+#: notes: -Dream Seizer/+Winter, Tormented Loner (sacrifice a spent body -> each opponent
+#: notes: sacrifices), -Nocturnal Hunger/+Vraska's Final Mercy (2-mana kill that also hits
+#: notes: planeswalkers; sorcery speed is the cost). Avg MV 3.47 -> 3.31.
 #: notes: Arbiter of Woe's sacrifice cost is COST-AS-UPSIDE here (G-41): the deck fields
 #: notes: nine 1-2 MV bodies whose ETB value is already spent by the time they feed him.
 #: notes: TUNED 2026-09-16 (5 swaps): -Rankle's Prank/+Maha, -Momentum Breaker/+The Death
@@ -76,9 +82,8 @@
 #: notes: Archive's {C}{C} cannot pay the BBB, Solemn Simulacrum ramps 1 for 4, Three Tree
 #: notes: City costs a Swamp in a manabase where everything already casts on curve at
 #: notes: >=90%. It must be HARD-CAST (no divinity counter = no indestructible and no
-#: notes: ability), so cheating it in is not a route either. Rush of Dread's "+{2} --
-#: notes: target opponent discards half the cards in their hand" is the castable version
-#: notes: of that effect and is already on the craft list; Myojin (FDN, rotates ~2029) is
+#: notes: ability), so cheating it in is not a route either. Rush of Dread (CUT 2026-10-10 for Ninja
+#: notes: Teen) was the castable version of that half-the-hand effect; Myojin (FDN, rotates ~2029) is
 #: notes: the only version that survives rotation. Revisit only in a 26-27-land build.
 #: protect: Bandit's Talent; Tinybones, Bauble Burglar; Aclazotz, Deepest Betrayal; Painful Quandary; Jecht, Reluctant Guardian
 
@@ -95,15 +100,15 @@
 1 Maha, Its Feathers Night (BLB) 100
 1 Gideon the Oathless (FRA) 230
 1 Grave Researcher // Reanimate (SOS) 85
+1 Ninja Teen (TMT) 67
 
 # Enabler bodies — ETB / attack discard triggers
 1 Virus Beetle (EOE) 124
 1 Hecteyes (FIN) 103
 1 Stony-Voiced Goblins (HOB) 85
-1 Dream Seizer (ECL) 101
 1 Malboro (FIN) 106
 1 Klaw, Sonic Subjugator (MSH) 103
-1 Hollow Marauder (OTJ) 90
+1 Titania, Rugged Rumbler (MSH) 235
 1 Arbiter of Woe (FDN) 55
 1 Tinybones, Pocket Nuisance (FRA) 237
 
@@ -113,18 +118,18 @@
 1 Seeker's Folly (FDN) 69
 1 Ozai's Cruelty (TLA) 113
 1 Down, Down to Goblin-town (HOB) 65
-1 Rush of Dread (OTJ) 104
 1 HYDRA Infiltration (MSH) 100
 1 Ral Zarek, Guest Lecturer (SOS) 97
 1 Momentum Breaker (DFT) 97
 1 Send in the Pest (SOS) 100
 
 # Removal / card advantage
-1 Nocturnal Hunger (BLB) 102
+1 Vraska's Final Mercy (FRA) 71
 1 Garruk, Veiled Butcher (FRA) 229
 1 Bitter Triumph (SOA) 26
 1 Phyrexian Arena (FDN) 180
 1 Summon: Primal Odin (FIN) 121
+1 Winter, Tormented Loner (FRA) 240
 
 # Lands — 24, mono-black
 23 Swamp (HOB) 191
