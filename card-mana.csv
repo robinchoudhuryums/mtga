@@ -2871,6 +2871,18 @@ Superior Spider-Man,{2}{U}{B},4,Mind Swap
 Uldaros Theorix,{3}{U}{B}{B},6,Flying
 Theorix Charm,{U}{B},2,Mill
 Transformative Commons,,0,
+"Jackal, Genius Geneticist",{G}{U},2,Trample
+Command the Stage,{2}{R},3,
+Way of the Healer,{3}{W},4,Surveil;Empower Jace
+Way of the Pyromancer,{1}{R},2,Surveil;Empower Jace
+Ajani Unrelenting,{4}{R}{R},6,
+Tersa Lightshatter,{2}{R},3,Haste
+Solitary Cell,{R}{W},2,
+Warrior's Blades,{2}{R}{W},4,Equip
+Way of the Warlord,{2}{R},3,Surveil;Empower Jace
+Hall of Echoes,,0,
+Celestial Reunion,{X}{G},1,Behold
+Thief's Knife,{2}{U},3,Job select;Equip
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -4875,7 +4887,6 @@ Warren Torchmaster,{1}{R},2,Blight
 Assert Perfection,{1}{G},2,
 Blossoming Defense,{G},1,
 Bristlebane Battler,{1}{G},2,Trample;Ward
-Celestial Reunion,{X}{G},1,Behold
 Crossroads Watcher,{2}{G},3,Trample
 Dundoolin Weaver,{1}{G},2,
 Formidable Speaker,{2}{G},3,
@@ -5577,7 +5588,6 @@ Sidequest: Card Collection // Magicked Card,{3}{U},4,Flying;Transform;Crew
 Sleep Magic,{U},1,Enchant
 Stolen Uniform,{U},1,
 Stuck in Summoner's Sanctum,{2}{U},3,Enchant;Flash
-Thief's Knife,{2}{U},3,Job select;Equip
 The Water Crystal,{2}{U}{U},4,Mill
 "Cecil, Dark Knight // Cecil, Redeemed Paladin",{B},1,Lifelink;Protect;Transform;Darkness;Deathtouch
 Dark Knight's Greatsword,{2}{B},3,Chaosbringer;Job select;Equip
@@ -5734,7 +5744,6 @@ Ajani's Anguish,{X}{R},1,
 Artifist Acumen,{R},1,
 Awaken the Inferno,{4}{R},5,Landcycling;Basic landcycling;Typecycling;Cycling
 Chandra's Emberling,{2}{R},3,Haste
-Command the Stage,{2}{R},3,
 Craterclaw Colossus,{4}{R}{R}{R},7,Haste
 Curse-Marred Demon,{2}{R}{R},4,Flying;Trample
 Draconic Visitor,{3}{R}{R},5,Flying
@@ -5797,7 +5806,6 @@ Primal Witchstalker,{1}{B}{G},3,Menace;Mill
 Proctor of Potential,{W}{U},2,Surveil
 Prudent Fateseer // Peer Review,{1}{W/U}{W/U} // {2}{W/U},3,Surveil;Prepared
 Recursive Recruitment,{2}{U}{B},4,Flashback
-Solitary Cell,{R}{W},2,
 Stingerquill Voxmancer // Vicious Verse,{B/R} // {B/R},1,Prepared
 Stinging Vitriol,{B}{R},2,
 Tam's Resistance,{1}{G/U},2,Surveil;Empower Jace
@@ -5806,7 +5814,6 @@ Theorix Metamage // Omit Variables,{2}{U/B} // {U/B},3,Threshold;Prepared;Mill
 Twinned Vision,{1}{U/R},2,Flashback
 Twisted Fates,{2}{W}{W}{B},5,
 Vindictive Triumph,{W}{B}{B},3,
-Warrior's Blades,{2}{R}{W},4,Equip
 Whiplash Wordsmith // Vicious Verse,{3}{B/R} // {B/R},4,Prepared
 Woodwork Prodigy // Soul Tether,{2}{R/G} // {2}{R/G},3,Prepared
 Afterthought Sentry,{2},2,
@@ -5821,7 +5828,6 @@ Murmuring Volume,{3},3,
 Deserted Beach,,0,
 Fatehold Annex,,0,
 Formidable Commons,,0,
-Hall of Echoes,,0,
 Haunted Ridge,,0,
 Hexhaven Dueling Arena,,0,Prepared
 Innovative Commons,,0,
@@ -5840,7 +5846,6 @@ Ghalta the Immovable,{8}{W},9,
 "Teyo, Lightshield Expert",{1}{W},2,Flash
 "Thalia, the Survivor",{3}{W},4,Lifelink
 "Tomik, Orzhov Lawmage",{1}{W},2,Flying
-Way of the Healer,{3}{W},4,Surveil;Empower Jace
 "Yuriko, Blade of the Mighty",{3}{W},4,
 "Arni, Humble Scribe",{2}{U},3,
 "Chandra, Chill of Compliance",{1}{U}{U},3,Surveil
@@ -5866,13 +5871,10 @@ Way of the Mind Sculptor,{4}{U},5,Surveil;Empower Jace
 Way of the Deathbringer,{2}{B},3,Surveil;Empower Jace
 Way of the Necromancer,{1}{B},2,Surveil;Empower Jace
 "Yargle, Glutton of Urborg",{4}{B},5,
-Ajani Unrelenting,{4}{R}{R},6,
 "Arni, Renowned Champion",{3}{R},4,Trample
 Kiora of Fire and Ashes,{4}{R}{R},6,
 "Marwyn, the Clearcutter",{R},1,
 "Pia, Determined Rebuilder",{2}{R},3,
-Way of the Pyromancer,{1}{R},2,Surveil;Empower Jace
-Way of the Warlord,{2}{R},3,Surveil;Empower Jace
 "Winter, Team Player",{4}{R},5,Convoke
 "Edgar, Moonlit Sovereign",{3}{G}{G},5,Flash
 "Fblthp, Knows the Way",{X}{G}{G},2,Domain
@@ -13384,7 +13386,6 @@ Supportive Parents,{2}{G},3,
 "Araña, Heart of the Spider",{1}{R}{W},3,
 Biorganic Carapace,{2}{W}{U},4,Equip
 "Green Goblin, Revenant",{3}{B}{R},5,Deathtouch;Flying
-"Jackal, Genius Geneticist",{G}{U},2,Trample
 Mary Jane Watson,{1}{G/W},2,
 Morbius the Living Vampire,{2}{U}{B},4,Flying;Lifelink;Vigilance
 Spider-Man 2099,{U}{R},2,Vigilance;From the Future;Double strike
@@ -13768,7 +13769,6 @@ Rescue Leopard,{2}{R},3,
 Seize Opportunity,{2}{R},3,
 Shock Brigade,{1}{R},2,Menace;Mobilize
 Stormshriek Feral // Flush Out,{4}{R} // {1}{R},5,Flying;Haste
-Tersa Lightshatter,{2}{R},3,Haste
 Twin Bolt,{1}{R},2,
 Underfoot Underdogs,{2}{R},3,
 Wild Ride,{R},1,Harmonize

@@ -59,8 +59,6 @@ Whenever this creature enters or attacks, each opponent loses 2 life. You gain 2
 Valgavoth's Faithful,Creature — Human Cleric,"{3}{B}, Sacrifice this creature: Return target creature card from your graveyard to the battlefield. Activate only as a sorcery.",B,Human; Cleric; reanimator; graveyard; sacrifice,DSK,121,Uncommon,52a,,5.0,seed
 Spineseeker Centipede,Creature — Insect,"When this creature enters, search your library for a basic land card, reveal it, put it into your hand, then shuffle.
 Delirium — This creature gets +1/+2 and has vigilance as long as there are four or more card types among cards in your graveyard.",G,Insect; graveyard; ramp; etb; pump; delirium,DSK,199,Common,50,,1.5,seed
-Celestial Reunion,Sorcery,"As an additional cost to cast this spell, you may choose a creature type and behold two creatures of that type.
-Search your library for a creature card with mana value X or less, reveal it, put it into your hand, then shuffle. If this spell's additional cost was paid and the revealed card is the chosen type, put that card onto the battlefield instead of putting it into your hand.",G,behold; dragons,ECL,170,Mythic,34,"virtual 2nd Diligent Zookeeper: behold two changelings as Humans, X=4 puts Zookeeper onto the battlefield",4.5,seed
 End-Blaze Epiphany,Instant,"End-Blaze Epiphany deals X damage to target creature. When that creature dies this turn, exile a number of cards from the top of your library equal to its power, then choose a card exiled this way. Until the end of your next turn, you may play that card.",R,burn,ECL,134,Rare,24,X-burn removal + impulse; Quintorius/exile payoff,6.0,hand
 Iron-Shield Elf,Creature — Elf Warrior,"Discard a card: This creature gains indestructible until end of turn. Tap it. (Damage and effects that say ""destroy"" don't destroy it. If its toughness is 0 or less, it still dies.)",B,Elf; Warrior,ECL,108,Uncommon,52a,,2.5,seed
 Spell Snare,Instant,Counter target spell with mana value 2.,U,counterspell,ECL,71,Uncommon,51,,3.0,seed
@@ -136,29 +134,12 @@ When Ragnarok dies, destroy target permanent and return target nonlegendary perm
 Balamb T-Rexaur,Creature — Dinosaur,"Trample
 When this creature enters, you gain 3 life.
 Forestcycling {2} ({2}, Discard this card: Search your library for a Forest card, reveal it, put it into your hand, then shuffle.)",G,Dinosaur; lifegain; etb; landcycling; card draw; lands; trample; evasion; forestcycling; typecycling; cycling,FIN,173,Common,28,,2.0,hand
-Ajani Unrelenting,Legendary Planeswalker — Ajani,"Whenever you activate a loyalty ability, create a 2/2 colorless Wizard Soldier creature token named Cadet.
-+1: Creatures you control get +1/+0 and gain haste until end of turn.
-−2: Discard your hand, then draw a card for each creature you control.
-−3: Ajani deals 4 damage to each creature except for tokens you control.",R,Ajani; planeswalker; card draw; tokens; burn; pump; haste; aggro,FRA,242,Mythic,24,,10.0,seed
 Cruel Calculations,Sorcery,"Draw X cards, where X is the number of cards that were put into target player's graveyard from their library this turn.",U,graveyard; card draw,FRA,26,Rare,22,deck 22 tune 2026-10-08,4.5,seed
 "Jace, Reality Sculptor",Legendary Planeswalker — Jace,"+1: Empower Jace X, where X is the number of Islands you control.
 −3: Until your next turn, whenever a creature attacks you or a planeswalker you control, it gets -5/-0 until end of turn.
 0: Exile all but the bottom card of each opponent's library. Activate only if there are twenty-five or more loyalty counters among Jaces you control.",U,Jace; Island; planeswalker; empower jace,FRA,216,Rare,22,deck 22 tune 2026-10-08,8.0,seed
-Solitary Cell,Artifact,"When this artifact enters, exile target nonland permanent an opponent controls with mana value 3 or less until this artifact leaves the battlefield.
-{1}, {T}, Discard a legendary card: Draw a card.",W/R,card draw; removal; etb,FRA,149,Rare,24,,5.5,seed
-Command the Stage,Sorcery,"Create a 2/2 colorless Wizard Soldier creature token named Cadet, then put a +1/+1 counter on each other Wizard token you control.
-At the beginning of each upkeep, if an opponent was dealt noncombat damage last turn, return this card from your graveyard to your hand.",R,Wizard; counters; graveyard; tokens; noncombat damage,FRA,77,Uncommon,24,,2.5,seed
 "Fblthp, Knows the Way",Legendary Creature — Homunculus Scout,"Domain — Fblthp's power is equal to the number of basic land types among lands you control.
 When Fblthp enters, search your library for up to X basic land cards with different names, reveal them, put them into your hand, then shuffle.",G,Homunculus; Scout; etb; domain; lands,FRA,258,Uncommon,40,deck 40 tune 2026-10-08,3.0,seed
-Warrior's Blades,Artifact — Equipment,"When this Equipment enters, it deals 3 damage to any target and you gain 3 life.
-Equipped creature gets +2/+1.
-Equip {3}. This ability costs {1} less to activate for each +1/+1 counter on the creature it targets.",W/R,equipment; counters; lifegain; cost-reduction; burn; etb; pump; noncombat damage; equip,FRA,163,Uncommon,24,,4.0,seed
-Way of the Healer,Legendary Enchantment,"When Way of the Healer enters, empower Jace 5. (Put five loyalty counters on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with ""[−1]: Surveil 1"" and ""[−3]: Draw a card."")
-Planeswalkers you control have ""[−2]: Create a 2/2 colorless Wizard Soldier creature token named Cadet. Surveil 1.""",W,planeswalker; card draw; tokens; etb; surveil; graveyard; empower jace,FRA,207,Uncommon,24,,2.5,seed
-Way of the Pyromancer,Legendary Enchantment,"When Way of the Pyromancer enters, empower Jace 2. (Put two loyalty counters on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with ""[−1]: Surveil 1"" and ""[−3]: Draw a card."")
-Planeswalkers you control have ""[+1]: Add {R}.""",R,planeswalker; card draw; tokens; etb; surveil; graveyard; empower jace,FRA,254,Uncommon,24,,2.5,seed
-Way of the Warlord,Legendary Enchantment,"When Way of the Warlord enters, empower Jace 5. (Put five loyalty counters on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with ""[−1]: Surveil 1"" and ""[−3]: Draw a card."")
-Planeswalkers you control have ""[−4]: This planeswalker deals 2 damage to up to one target creature or planeswalker and 2 damage to target player.""",R,planeswalker; card draw; tokens; burn; etb; surveil; graveyard; empower jace,FRA,255,Uncommon,24,,4.0,seed
 Inside Information,Sorcery,"Exile the top X cards of target opponent's library. You may play those cards this turn. If you cast a spell this way, pay life equal to its mana value rather than pay its mana cost.",B,pay life; heist; impulse,HOB,76,Mythic,41,"drain/value package: unconditional removal + life-to-mana, refunded by the Mister Negative swap",4.5,seed
 Master's Councillors,Creature — Human Advisor,"Vigilance
 This creature gets +2/+0 for each graveyard with seven or more cards in it.
@@ -306,9 +287,6 @@ Roar of Endless Song,Enchantment — Saga,"(As this Saga enters and after your d
 I, II — Create a 5/5 green Elephant creature token.
 III — Double the power and toughness of each creature you control until end of turn.",U/R/G,Saga; sacrifice; tokens; saga; double,TDM,220,Rare,17,Temur (URG) go-wide Saga (5/5 Elephants + team P/T double) — only castable in 5c Spectrum,5.5,hand
 Stillness in Motion,Enchantment,"At the beginning of your upkeep, mill three cards. Then if your library has no cards in it, exile this enchantment and put five cards from your graveyard on top of your library in any order.",U,graveyard; mill,TDM,59,Rare,,,4.0,seed
-Tersa Lightshatter,Legendary Creature — Orc Wizard,"Haste
-When Tersa Lightshatter enters, discard up to two cards, then draw that many cards.
-Whenever Tersa Lightshatter attacks, if there are seven or more cards in your graveyard, exile a card at random from your graveyard. You may play that card this turn.",R,Orc; Wizard; graveyard; card draw; etb; haste; aggro,TDM,127,Rare,24,,4.0,seed
 Encroaching Dragonstorm,Enchantment,"When this enchantment enters, search your library for up to two basic land cards, put them onto the battlefield tapped, then shuffle.
 When a Dragon you control enters, return this enchantment to its owner's hand.",G,etb; bounce,TDM,142,Uncommon,,,2.5,seed
 Hardened Tactician,Creature — Human Warrior,"{1}, Sacrifice a token: Draw a card.",W/B,Human; Warrior; card draw; sacrifice,TDM,191,Uncommon,55,"Deck 55: {1}, sacrifice a token: draw a card. Converts doomed Mobilize tokens into cards.",4.0,seed
