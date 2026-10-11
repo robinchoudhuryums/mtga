@@ -109,6 +109,15 @@ pay-the-cost read applies.
   target face-down permanent. If it's a creature card, you may turn it face up", with no
   mana-cost payment. F2's "worth paying full cost" therefore does not apply while a Shrieker
   is out. See F9.
+- **E2 (batch 4): turning a card face up is NOT entering the battlefield.** ETB triggers
+  and "enters with" riders never fire on a flipped dread creature. That makes these WORSE
+  lottery hits: Omega's Wave Cannon, Hapatra's −1/−1 counters, Zegana's draw, Lotuslight
+  Dancers' tutor, Fangkeeper's Familiar's mode, Leatherhead's hexproof counter and Lasyd
+  Prowler's mill. Good hits are STATIC or ATTACK/DAMAGE-triggered: Koma, Muldrotha, Teval,
+  Sin (the attack trigger works), Quandrix (a 6/6 flying trample body; the cascade is lost
+  because it is a cast trigger), and Witherbloom the Balancer.
+- **E3 (batch 4): a face-down creature has mana value 0.** Vicious Rivalry kills your own
+  manifests even at X=0. This is the G-42 shape: a fine card that fights the engine.
 
 ## 3. Cross-batch observations
 
@@ -187,6 +196,19 @@ pay-the-cost read applies.
   Roots, Kraven's Last Hunt, Deadly Brew, Witherbloom Charm, Professor Dellian Fel. That is
   13 candidates so far. Prefer instant speed, cheap costs, and cards that also fill or
   leave the yard.
+
+- **(batch 4) Muldrotha and Glarb are the two engines that make the leave cluster
+  REPEATABLE.**
+  - Muldrotha plays a land and casts one permanent of each type from the yard every turn.
+    Each one is a leave event (Kishla, Goldkeeper, Attuned Hunter) and also F5's land
+    replay.
+  - Glarb surveils 2 every turn, which fills the yard, and casts MV ≥4 spells off the top.
+- **(batch 4) VARIANT SIGNAL 2: a Temur-less "big lottery" ramp shell.** Koma, Quandrix,
+  Omega, Zegana, Bonny Pall, Sin and Witherbloom the Balancer, with Shrieker flipping them
+  for {1}{G}. Only Shrieker ×2 and Bustle flip for free, so this is too thin to build
+  around. Run 2–3 of them as top-end that is ALSO a dread hit, not more.
+- **(batch 4) The F5 lands sub-engine reached about 14 cards.** Additions: Bonny Pall,
+  Silvan Reveler, Tam Observant Sequencer, Thranduil Sindarin Liege, Muldrotha.
 
 ## 4. Running verdicts
 
@@ -296,4 +318,87 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | Way of the Paradox | △ | Jace token plus an extra land. Off-plan. |
 | Skystinger | △ | Reach hoser. |
 
+### Batch 4 (cards 91–118)
+
+| Card | Verdict | Note |
+|---|---|---|
+| Muldrotha, the Gravetide | ★★ | A permanent of each type plus a land from the yard every turn. The leave engine's best card. Also a good dread hit (static). |
+| Glarb, Calamity's Augur | ★★ | BGU 3-drop with deathtouch. Surveil 2 each turn fills the yard; casts MV ≥4 off the top. |
+| Quandrix, the Proof | ★ | 6/6 flying trample with cascade. A good dread hit (the body survives a flip). |
+| Koma, World-Eater | ★ | Hard to cast (31%→61% on curve), but the best Shrieker flip in the pile. |
+| Sin, Spira's Punishment | ★ | 7/7 flier. Enter/attack copies a yard permanent (a leave event). The attack trigger survives a flip. |
+| Hapatra, the Desert Fang | ★ | ETB −1/−1 counters equal to the yard's best MV. BB, and a bad flip (E2). |
+| The Coming of Galactus | ★ | 5-MV saga: kill, drain 4, then a 16/16. BB. |
+| Witherbloom, the Balancer | ★ | Affinity for creatures, and face-down 2/2s count. A cheap 5/5 flying deathtouch on a wide board. |
+| Tom, Bert, and William | ◇ | Sacrifice outlet: a dud noncreature manifest becomes a 2-card loot. |
+| Bonny Pall, Clearcutter | ◇ | Draw and a land from the yard on every attack. GUU at 6. F5 card. |
+| Mimeoplasm, Revered One | ◇ | A big leave event (exiles X creature cards). |
+| Berta, Wise Extrapolator | ◇ | Counters into mana. |
+| Absorbing Man | ◇ | 4/4 vigilance for 3 that copies a land, artifact or enchantment. |
+| Mind into Matter | ◇ | Draw X and put a permanent down. |
+| Wardens of the Cycle | ◇ | Morbid draw. |
+| Root Manipulation | ◇ | One-turn overrun. |
+| Aatchik, Emerald Radian | ◇ | Insects per artifact or creature card in the yard. BB at 6. |
+| Silvan Reveler · Tam, Observant Sequencer · Thranduil, Sindarin Liege | ◇ | F5 landfall cards. |
+| Prime Speaker Zegana | ◇ | GGUU at 6, and its ETB draw is lost on a flip (E2). |
+| Omega, Heartless Evolution | ◇ | Its ETB is lost on a flip (E2); 7 MV to cast. |
+| Vicious Rivalry | ✗ | Kills your own face-down creatures (E3). |
+| Tam, Mindful First-Year | △ | Hexproof from each of a creature's colours, and face-down creatures are colourless. |
+| Kiora of Salt and Sand · Maralen · Thranduil, the Elvenking | △ | Planeswalker, Faerie and Elf shells. |
+| Codie, Ravenous Codex | ✗ | Prepare plus WUBRG activation. |
+
 ## 5. Consolidated plan (live)
+
+**Thesis:** Sultai dread midrange. Every dread is a body plus a binned card. The leave-the-
+graveyard cluster (Kishla, Goldkeeper, Attuned Hunter, Teval, Muldrotha) converts the
+binned cards into draws, Treasure and counters. Hollowmurk and Warden convert counters
+into cards. Interaction comes from the Sultai removal suite. Measured on a scratch list
+(`scratchpad/sultai-draft2.txt`):
+- metrics floor **A**: interaction 9, card advantage 4 (+2 unclassified);
+- avg MV 3.42, board power 77;
+- keepable 84%.
+
+**Distinct:** no deck shares more than 3 nonland cards with it (deck 21). The theme
+neighbours (64, 62) share 1–2 cards.
+
+**Proposed 60** (36 spells, 24 lands):
+- **Dread core (8):** Shrieker ×2, Abhorrent Oculus, Growing Dread, Under the Skin,
+  Break Down the Door, Valgavoth's Onslaught, Paranormal Analyst.
+- **Leave + counters engine (9):** Kishla Skimmer, Kheru Goldkeeper, Attuned Hunter,
+  Champion of Dusan, Hollowmurk Siege, Warden of the Grove, Cryptid Inspector, Glarb,
+  Tarmogoyf.
+- **Fixing (5):** Sultai Devotee ×4, Enduring Vitality.
+- **Interaction (8):** Kin-Tree Severance, Lie in Wait, Fangkeeper's Familiar, Awaken the
+  Honored Dead, Drag to the Roots, Kraven's Last Hunt, Witherbloom Charm, Professor
+  Dellian Fel.
+- **Card flow (1):** Rakshasa's Bargain.
+- **Top end, all good dread hits (5):** Teval, Muldrotha, Quandrix, Sin, Koma.
+- **Lands (24):**
+  - Opulent Palace ×2, Overgrown Tomb ×3, Breeding Pool ×3, Watery Grave ×2;
+  - Wastewood, Willowrush and Gloomlake Verge;
+  - 6 Forest, 3 Island, 2 Swamp.
+
+  This gives sources U 12 / B 11 / G 16. The three-pip 3-drops (Glarb, Lie in Wait,
+  Awaken) cast on curve 73% of the time; Devotee and Vitality make that a floor.
+
+**Bench, in order:** Moon-Vigil Adherents, Stalwart Successor, Witherbloom the Balancer,
+Jenova, The Coming of Galactus, Hapatra, Omnivorous Flytrap, Oblivious Bookworm, Exdeath,
+Lasyd Prowler, Deadly Brew, Weight Room.
+
+**Protect list (what `cuts` cannot see):**
+- Sultai Devotee is FIXING; it is tagged only removal (F8).
+- Paranormal Analyst's value is the dread count.
+- Koma and Quandrix are valued as Shrieker flips (F9).
+- Kishla and Goldkeeper: their trigger sources are the whole yard-leave cluster.
+
+**Rotation (a legality fact):** 27 of the 36 spell lines are DSK/TDM/BLB and leave Standard
+around 2027. The deck has roughly one rotation of life.
+
+**Tool holes seen (G-67, batch-fix later, not now):** Rakshasa's Bargain ("put two into
+your hand") reads as no role, so card advantage is under-counted. The deck's real card
+advantage (dread selection, Analyst, Kishla, Hollowmurk) is mostly invisible to the floor.
+
+**Variant signals:**
+1. Lands-from-graveyard Simic/Sultai (F5, about 14 cards).
+2. "Big lottery" top end. Too thin to build around; noted only.
+
