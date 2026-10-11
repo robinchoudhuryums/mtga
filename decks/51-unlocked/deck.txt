@@ -4,12 +4,12 @@
 #: colors: U
 #: plan: control
 #: tier: B — GRADED 2026-07, held one band UNDER the measurable floor since the 2026-10-11 tune,
-#: tier: which reads A on interaction 9 plus card advantage 12 at a 3.92 curve. RE-GRADE PENDING
+#: tier: which reads A on interaction 9 plus card advantage 10 at a 4.03 curve. RE-GRADE PENDING
 #: tier: the owner's call. Against the rubric an A needs four things:
 #: tier:   A-FLOOR — yes since 2026-10-11: interaction 9 clears the (re-derived, 2026-09-02)
 #: tier:     threshold of seven (Ugin, Mana Sculpt, Three Steps Ahead, Get Out came in).
 #: tier:   COHERENT ENGINE — yes. Rooms into Fractured Realm into Omniscience, with real doubling.
-#: tier:   TIGHT CURVE — no. 3.92 is among the slowest on the roster, on 11 early drops.
+#: tier:   TIGHT CURVE — no. 4.03 is among the slowest on the roster, on 10 early drops.
 #: tier:   AT MOST ONE CLEAR WEAKNESS — no, and the two COMPOUND: a 3.97-curve deck holding seven
 #: tier:   answers loses to a fast start in a way neither problem would cause alone. Secret
 #: tier:   Invasion narrowed both gaps at once — it is the deck's only card that is removal, a
@@ -22,8 +22,8 @@
 #: tier: greedier each round. If a first session is lost to a resolved threat rather than to a
 #: tier: slow start, that sequence is what was wrong, not any one swap.
 #: tier: TWO THINGS THE FLOOR CANNOT SEE, both arguing DOWN. `deck.py engines` reports "counters:
-#: tier: enablers, no payoff — your engine has no reward": Pensive Professor still makes +1/+1
-#: tier: counters and nothing in the deck cares (Ramos and Norman Osborn were cut 2026-10-11). And 11 central themes with `shape` reading BALANCED/neither is diffuse.
+#: tier: enablers, no payoff" — that finding is RETIRED: Ramos, Norman Osborn and Pensive Professor,
+#: tier: the +1/+1 counter makers nothing cared about, were all cut 2026-10-11. And 12 central themes with `shape` reading BALANCED/neither is diffuse.
 #: tier: WHAT ARGUES UP, and A is genuinely close. The bombs are PRESENT, not aspirational —
 #: tier: Omniscience, Summon: Bahamut (four unconditional destroys under Fractured Realm), Ugin
 #: tier: and The Walls of Ba Sing Se are all in the 60, and Walls is the broadest
@@ -67,7 +67,7 @@
 #: archetype: THE BIGGEST TARGET IS NOT A ROOM. Archmage of Runes reads "whenever you cast an
 #: archetype: instant or sorcery spell, draw a card" — doubled, that is TWO cards per spell, and it
 #: archetype: is the single largest thing Fractured Realm does in this deck. The other permanents it
-#: archetype: doubles: Pensive Professor, Ghostly Keybearer's unlock, Tishana's Tidebinder, Tanufel Rimespeaker's draws,
+#: archetype: doubles: Ghostly Keybearer's unlock, Echo's and Gogo's copies, Tishana's Tidebinder, Tanufel Rimespeaker's draws,
 #: archetype: The Dawning Archaic — and Summon: Bahamut, whose SAGA CHAPTERS are
 #: archetype: triggered abilities, so I and II each destroy TWO nonland permanents and III draws
 #: archetype: four. That is the deck's only effect that DESTROYS anything.
@@ -201,7 +201,7 @@
 #: notes: +Agna Qel'a. UGIN exiles a coloured permanent on every COLORLESS spell — Eternity Elevator,
 #: notes: Bahamut, Walls, Planetarium, Dawning Archaic, Keys (Ramos and Krang since cut) — and its 0 adds {C}{C}{C}
 #: notes: in place of Lotus. MANA SCULPT refunds the countered spell's mana with a Wizard out
-#: notes: (Archmage, Pensive Professor, Tidebinder). Gilded Lotus left the protect header by request.
+#: notes: (Archmage, Tidebinder, Tanufel, Gogo; Pensive Professor since cut). Gilded Lotus left the protect header by request.
 #: notes: Then -Bruce Banner/+Tanufel Rimespeaker ("whenever you cast a spell with mana value 4 or
 #: notes: greater, draw a card" — Rooms count at their combined MV; Fractured Realm doubles it; a
 #: notes: Wizard for Mana Sculpt) and -Floodpits Drowner/+Yue, the Moon Spirit ("Waterbend {5}, {T}:
@@ -216,6 +216,11 @@
 #: notes: Crystal), -Spellgyre/+Jace, Reality Sculptor (+1 empowers the Jace token by your Island
 #: notes: count; 0 exiles all but the bottom card of their library once Jaces total 25 loyalty).
 #: notes: Protection 3 -> 2 (Krang). Ugin now has six colorless spells to trigger on.
+#: notes: Then -Finale of Revelation/+Weftwalking ("The first spell each player casts during each of
+#: notes: their turns may be cast without paying its mana cost" — a free bomb every turn; it also
+#: notes: shuffles your graveyard away, which costs Dawning Archaic and Kiora) and -Pensive Professor/
+#: notes: +Echo, Perceptive Prodigy (copies Yue's free cast, Archmage/Tanufel draws, Bahamut's
+#: notes: chapters). Card advantage reads 12 -> 10 because the classifier sees neither card's draw.
 
 # Rooms — cheap on the front, a mana sink on the back
 1 Underwater Tunnel // Slimy Aquarium (DSK) 79
@@ -231,11 +236,10 @@
 1 Geist of Saint Thalia (FRA) 214
 1 Yue, the Moon Spirit (TLA) 83
 1 Creeping Peeper (DSK) 46
+1 Weftwalking (EOE) 86
 
 # Card advantage — Omniscience needs a hand to spend
 1 Cerebral Download (EOE) 48
-1 Finale of Revelation (FDN) 589
-1 Pensive Professor (SOS) 63
 1 Tanufel Rimespeaker (ECL) 77
 1 The Theorist, Jace Beleren (FRA) 43
 
@@ -262,6 +266,7 @@
 1 Kiora, the Rising Tide (FDN) 45
 1 Overlord of the Floodpits (DSK) 68
 1 Gogo, Master of Mimicry (FIN) 54
+1 Echo, Perceptive Prodigy (MSH) 51
 
 # The top end
 1 Summon: Bahamut (FIN) 1
