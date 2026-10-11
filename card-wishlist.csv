@@ -78,6 +78,8 @@ Whenever a face-down permanent you control enters and whenever this creature or 
 Spineseeker Centipede,Creature — Insect,"When this creature enters, search your library for a basic land card, reveal it, put it into your hand, then shuffle.
 Delirium — This creature gets +1/+2 and has vigilance as long as there are four or more card types among cards in your graveyard.",G,Insect; graveyard; ramp; etb; pump; delirium,DSK,199,Common,50,,1.5,seed
 End-Blaze Epiphany,Instant,"End-Blaze Epiphany deals X damage to target creature. When that creature dies this turn, exile a number of cards from the top of your library equal to its power, then choose a card exiled this way. Until the end of your next turn, you may play that card.",R,burn,ECL,134,Rare,24,X-burn removal + impulse; Quintorius/exile payoff,6.0,hand
+"Tam, Mindful First-Year",Legendary Creature — Gorgon Wizard,"Each other creature you control has hexproof from each of its colors.
+{T}: Target creature you control becomes all colors until end of turn.",U/G,Gorgon; Wizard; hexproof; protection,ECL,245,Rare,83,,4.0,seed
 Iron-Shield Elf,Creature — Elf Warrior,"Discard a card: This creature gains indestructible until end of turn. Tap it. (Damage and effects that say ""destroy"" don't destroy it. If its toughness is 0 or less, it still dies.)",B,Elf; Warrior,ECL,108,Uncommon,52a,,2.5,seed
 Spell Snare,Instant,Counter target spell with mana value 2.,U,counterspell,ECL,71,Uncommon,51,,3.0,seed
 Archenemy's Charm,Instant,"Choose one —
@@ -199,6 +201,9 @@ Nonlegendary creatures you control get +1/+1.",W,Nonlegendary; pump; ward; prote
 "Black Panther, Wakandan King",Legendary Creature — Human Noble Hero,"First strike
 Survey the Realm — Whenever Black Panther or another creature you control enters, put a +1/+1 counter on target land you control.
 Mine Vibranium — {3}: Move all +1/+1 counters from target land you control onto target creature. If one or more +1/+1 counters are moved this way, you gain that much life and draw a card.",W/G,Human; Noble; Hero; counters; lifegain; card draw; first strike; combat,MAR,87,Mythic,78-historic-brawl,78-historic-brawl craft-list swap for Arcane Signet: enters trigger feeds land counters (Toph) and a {3} draw sink,7.0,seed
+"Etrata, Deadly Fugitive",Legendary Creature — Vampire Assassin,"Deathtouch
+Face-down creatures you control have ""{2}{U}{B}: Turn this creature face up. If you can't, exile it, then you may cast the exiled card without paying its mana cost.""
+Whenever an Assassin you control deals combat damage to an opponent, cloak the top card of that player's library.",U/B,Vampire; Assassin; heist; cloak; deathtouch; combat; removal,MKM,200,Mythic,83,,7.0,seed
 Ill-Timed Explosion,Sorcery,"Draw two cards. Then you may discard two cards. When you do, Ill-Timed Explosion deals X damage to each creature, where X is the greatest mana value among cards discarded this way.",U/R,card draw; burn,MKM,207,Rare,25,draw two + scalable board sweep/burn,7.0,hand
 "Izoni, Center of the Web",Legendary Creature — Elf Detective,"Menace
 Whenever Izoni enters or attacks, you may collect evidence 4. If you do, create two 2/1 black and green Spider creature tokens with menace and reach.
@@ -326,6 +331,8 @@ When this creature enters, choose one —
 Hollowmurk Siege,Enchantment,"As this enchantment enters, choose Sultai or Abzan.
 • Sultai — Whenever a counter is put on a creature you control, draw a card. This ability triggers only once each turn.
 • Abzan — Whenever you attack, put a +1/+1 counter on target attacking creature. It gains menace until end of turn.",B/G,counters; card draw; menace; evasion,TDM,192,Rare,83,,6.5,seed
+"Kotis, the Fangkeeper",Legendary Creature — Zombie Warrior,"Indestructible
+Whenever Kotis deals combat damage to a player, exile the top X cards of their library, where X is the amount of damage dealt. You may cast any number of spells with mana value X or less from among them without paying their mana costs.",U/B/G,Zombie; Warrior; heist; indestructible; resilience,TDM,202,Rare,83,,4.0,seed
 Maelstrom of the Spirit Dragon,Land,"{T}: Add {C}.
 {T}: Add one mana of any color. Spend this mana only to cast a Dragon spell or an Omen spell.
 {4}, {T}, Sacrifice this land: Search your library for a Dragon card, reveal it, put it into your hand, then shuffle.",Colorless,sacrifice; ramp; mana,TDM,260,Rare,,,4.0,seed
@@ -345,8 +352,6 @@ This creature has hexproof as long as it hasn't dealt damage yet. (It can't be t
 Kheru Goldkeeper,Creature — Dragon,"Flying
 Whenever one or more cards leave your graveyard during your turn, create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")
 Renew — {2}{B}{G}{U}, Exile this card from your graveyard: Put two +1/+1 counters and a flying counter on target creature. Activate only as a sorcery.",U/B/G,Dragon; counters; graveyard; tokens; treasure; flying; evasion; renew,TDM,199,Uncommon,83,,5.0,seed
-Kin-Tree Severance,Instant,Exile target permanent with mana value 3 or greater.,W/B/G,removal,TDM,200,Uncommon,83,,4.0,seed
-Rakshasa's Bargain,Instant,Look at the top four cards of your library. Put two of them into your hand and the rest into your graveyard.,U/B/G,graveyard; selection,TDM,214,Uncommon,83,,2.0,seed
 Runescale Stormbrood // Chilling Screech,Creature — Dragon // Instant — Omen,"Flying
 Whenever you cast a noncreature spell or a Dragon spell, this creature gets +2/+0 until end of turn. // Counter target spell with mana value 2 or less. (Then shuffle this card into its owner's library.)",U/R,Dragon; Omen; counterspell; pump; flying; evasion,TDM,221,Uncommon,49,Deck 49: a 4-drop DRAGON that is also a Dragon payoff (+2/+0 on every noncreature or Dragon spell). Hidden from every red filter because its identity is U/R from the {1}{U} Omen half - the FRONT face is {3}{R} and mono-red castable (G-58 bulk-triage variant).,7.2,hand
 Venerated Stormsinger,Creature — Orc Cleric,"Mobilize 1 (Whenever this creature attacks, create a tapped and attacking 1/1 red Warrior creature token. Sacrifice it at the beginning of the next end step.)
