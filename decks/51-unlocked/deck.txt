@@ -4,12 +4,12 @@
 #: colors: U
 #: plan: control
 #: tier: B — GRADED 2026-07, held one band UNDER the measurable floor since the 2026-10-11 tune,
-#: tier: which reads A on interaction 10 plus card advantage 12 at a 3.92 curve. RE-GRADE PENDING
+#: tier: which reads A on interaction 9 plus card advantage 12 at a 4.06 curve. RE-GRADE PENDING
 #: tier: the owner's call. Against the rubric an A needs four things:
-#: tier:   A-FLOOR — yes since 2026-10-11: interaction 10 clears the (re-derived, 2026-09-02)
+#: tier:   A-FLOOR — yes since 2026-10-11: interaction 9 clears the (re-derived, 2026-09-02)
 #: tier:     threshold of seven (Ugin, Mana Sculpt, Three Steps Ahead, Get Out came in).
 #: tier:   COHERENT ENGINE — yes. Rooms into Fractured Realm into Omniscience, with real doubling.
-#: tier:   TIGHT CURVE — no. 3.92 is among the slowest on the roster, on 13 early drops.
+#: tier:   TIGHT CURVE — no. 4.06 is among the slowest on the roster, on 11 early drops.
 #: tier:   AT MOST ONE CLEAR WEAKNESS — no, and the two COMPOUND: a 3.97-curve deck holding seven
 #: tier:   answers loses to a fast start in a way neither problem would cause alone. Secret
 #: tier:   Invasion narrowed both gaps at once — it is the deck's only card that is removal, a
@@ -22,9 +22,8 @@
 #: tier: greedier each round. If a first session is lost to a resolved threat rather than to a
 #: tier: slow start, that sequence is what was wrong, not any one swap.
 #: tier: TWO THINGS THE FLOOR CANNOT SEE, both arguing DOWN. `deck.py engines` reports "counters:
-#: tier: 6 enablers, no payoff — your engine has no reward": Ramos, Pensive Professor, Bruce
-#: tier: Banner and Norman Osborn all make +1/+1 counters and nothing in the
-#: tier: deck cares. And 14 central themes with `shape` reading BALANCED/neither is diffuse.
+#: tier: enablers, no payoff — your engine has no reward": Ramos, Pensive Professor and
+#: tier: Norman Osborn all make +1/+1 counters and nothing in the deck cares. And 13 central themes with `shape` reading BALANCED/neither is diffuse.
 #: tier: WHAT ARGUES UP, and A is genuinely close. The bombs are PRESENT, not aspirational —
 #: tier: Omniscience, Summon: Bahamut (four unconditional destroys under Fractured Realm), Krang
 #: tier: Utrom Warlord and The Walls of Ba Sing Se are all in the 60, and Walls is the broadest
@@ -70,7 +69,7 @@
 #: archetype: is the single largest thing Fractured Realm does in this deck. The other permanents it
 #: archetype: doubles: Pensive Professor, Ramos's counters, Norman Osborn's connive,
 #: archetype: Ghostly Keybearer's unlock, Lady Octopus's ingenuity counters (two per turn ->
-#: archetype: FOUR), Scrabbling Skullcrab's Eerie mill, Tishana's Tidebinder, Floodpits Drowner,
+#: archetype: FOUR), Scrabbling Skullcrab's Eerie mill, Tishana's Tidebinder, Tanufel Rimespeaker's draws,
 #: archetype: The Dawning Archaic — and Summon: Bahamut, whose SAGA CHAPTERS are
 #: archetype: triggered abilities, so I and II each destroy TWO nonland permanents and III draws
 #: archetype: four. That is the deck's only effect that DESTROYS anything.
@@ -146,7 +145,7 @@
 #: notes: two ingenuity counters a turn become FOUR under Fractured Realm, and "{T}: cast an
 #: notes: artifact spell with mana value <= counters WITHOUT paying its mana cost" points at the
 #: notes: deck's artifacts, including Planetarium, The Eternity Elevator and a 9-mana Krang.
-#: notes: BRUCE BANNER AND RAMOS ARE BOTH CASTABILITY CORRECTIONS. Banner's identity is U/R/G and
+#: notes: (Bruce Banner was CUT 2026-10-11 for Tanufel Rimespeaker.) BRUCE BANNER AND RAMOS WERE CASTABILITY CORRECTIONS. Banner's identity is U/R/G and
 #: notes: its cost is {U}; Ramos's identity is WUBRG and its cost is {6}. Neither is a hybrid —
 #: notes: Banner's stray comes from a TRANSFORM cost and Ramos's from a MANA ABILITY, two routes
 #: notes: into the identity column that the hybrid framing alone does not cover. Banner is also
@@ -197,7 +196,7 @@
 #: notes: 2026-09-07: −Tolarian Terror +Overlord of the Floodpits (owned). Terror's discount counted instants and
 #: notes: sorceries in a Rooms deck that runs few; Overlord is a three-mana impending enchantment that becomes a 6/6
 #: notes: flier and loots on entry and attack — a trigger Fractured Realm doubles to draw four. Floodpits Drowner
-#: notes: was considered and kept (interaction, and a doubled stun). Protection 4 → 3 (Terror's ward), card
+#: notes: was considered and kept then (it was CUT 2026-10-11 for Yue, the Moon Spirit). Protection 4 → 3 (Terror's ward), card
 #: notes: advantage 9 → 10, avg MV 4.03 → 3.97.
 #: notes: 2026-10-11 tune (interaction 6 -> 10, floor B -> A): -Stormkeld Prowler/+Get Out, -2 Gilded
 #: notes: Lotus/+Ugin, Eye of the Storms and +Mana Sculpt, -Matzalantli/+Three Steps Ahead, -1 Island/
@@ -205,6 +204,11 @@
 #: notes: Ramos, Bahamut, Walls, Planetarium, Dawning Archaic, Krang, Keys — and its 0 adds {C}{C}{C}
 #: notes: in place of Lotus. MANA SCULPT refunds the countered spell's mana with a Wizard out
 #: notes: (Archmage, Pensive Professor, Tidebinder). Gilded Lotus left the protect header by request.
+#: notes: Then -Bruce Banner/+Tanufel Rimespeaker ("whenever you cast a spell with mana value 4 or
+#: notes: greater, draw a card" — Rooms count at their combined MV; Fractured Realm doubles it; a
+#: notes: Wizard for Mana Sculpt) and -Floodpits Drowner/+Yue, the Moon Spirit ("Waterbend {5}, {T}:
+#: notes: cast a noncreature spell from your hand without paying its mana cost" — Omniscience,
+#: notes: Ugin, Planetarium, Rooms; waterbend taps artifacts and creatures). Interaction 10 -> 9.
 
 # Rooms — cheap on the front, a mana sink on the back
 1 Underwater Tunnel // Slimy Aquarium (DSK) 79
@@ -219,13 +223,14 @@
 1 Archmage of Runes (FDN) 30
 1 Lady Octopus, Inspired Inventor (SPM) 35
 1 Ramos, Dragon Engine (FDN) 678
+1 Yue, the Moon Spirit (TLA) 83
 
 # Card advantage — Omniscience needs a hand to spend
 1 Cerebral Download (EOE) 48
 1 Finale of Revelation (FDN) 589
 1 Spellgyre (BLB) 72
 1 Pensive Professor (SOS) 63
-1 Bruce Banner (MSH) 49
+1 Tanufel Rimespeaker (ECL) 77
 
 # Counters
 1 Long River's Pull (BLB) 58
@@ -236,7 +241,6 @@
 
 # Bounce and tempo — blue's answer to a resolved threat
 1 Secret Invasion (MSH) 72
-1 Floodpits Drowner (DSK) 59
 
 # Mill — the alternate clock. The Water Crystal turns every mill here into +4
 1 Riverchurn Monument (DFT) 57
