@@ -163,6 +163,31 @@ pay-the-cost read applies.
   Monument, Essence Anchor and Goldkeeper Treasure. Face-down dread creatures are NOT
   tokens.
 
+- **(batch 3) A dread creature is a NONTOKEN creature entering.** So Warden of the Grove
+  endures X on every dread. That makes it a repeatable counter source that scales with
+  dread density. It also feeds Hollowmurk (draw) and Stalwart Successor (+1). Bogwater
+  Lumaret and Quina's frogs do not care about this, but Warden does.
+- **(batch 3) Jenova ↔ Shrieker.** Shrieker is printed a Beast **Mutant**. Jenova puts
+  counters every combat (a Hollowmurk trigger) and draws on a Mutant dying on your turn.
+  It is a small synergy, not a reason to build.
+- **(batch 3) The graveyard splits into two clusters. Count both before choosing.**
+  - **STAY-FULL:** Exdeath (needs 6 permanent cards), Moon-Vigil, Tarmogoyf, Avatar Destiny,
+    Flytrap and Spineseeker (delirium), Drag to the Roots (delirium discount), and Kraven's
+    Last Hunt (reads the greatest power in the yard).
+  - **LEAVE:** Kishla, Goldkeeper, Attuned Hunter, Cosmogoyf (counts exile), Teval,
+    Oculus, renew.
+
+  Delirium survives the leave engine because it counts TYPES, not cards. Exdeath's
+  6 permanents and Oculus's 6 cards compete directly.
+- **(batch 3) F5's lands-from-yard signal is GROWING.** New this batch: Primal Witchstalker
+  (mill 4 and put a land back), Lasyd Prowler (renew scales with lands in the yard),
+  Lluwen, Imperfect Naturalist (Worms per land), Traveling Chocobo. That is about 10 cards.
+  Still a sub-theme; it may become a variant.
+- **(batch 3) Interaction is now ABUNDANT, so be picky about quality.** New: Drag to the
+  Roots, Kraven's Last Hunt, Deadly Brew, Witherbloom Charm, Professor Dellian Fel. That is
+  13 candidates so far. Prefer instant speed, cheap costs, and cards that also fill or
+  leave the yard.
+
 ## 4. Running verdicts
 
 Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ marginal · ✗ out`.
@@ -235,5 +260,40 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | Gardenize | △ | Mana from creature deaths. Not this deck's axis. |
 | Quina, Qu Gourmet | △ | Token doubler with almost no tokens (face-down creatures are not tokens). |
 | Death Begets Life | △ | 8-MV wrath in a creature deck. It already lives in deck 62. |
+
+### Batch 3 (cards 61–90)
+
+| Card | Verdict | Note |
+|---|---|---|
+| Drag to the Roots | ★★ | Instant: destroy a nonland permanent. 2 mana with delirium. |
+| Kraven's Last Hunt | ★★ | Saga: I mills 5 and deals damage equal to the yard's best power (removal); II pumps +2/+2; III regrows a creature. |
+| Warden of the Grove | ★★ | Grows each end step; every dread (a nontoken creature) endures X. A counters engine. |
+| Witherbloom Charm | ★ | Instant modes: sacrifice and draw 2, 5 life, or kill a nonland permanent with MV ≤2. |
+| Deadly Brew | ★ | 2-mana edict. Sacrifice a dud face-down 2/2, then regrow a permanent. |
+| Professor Dellian Fel | ★ | 4-MV walker: −3 kills a creature; 0 draws. |
+| Exdeath ×2 | ★ | 3-MV 3/3 that gains 3 life and flips at 6 permanent cards in the yard. Stay-full cluster. |
+| Lasyd Prowler | ★ | 5/5 for 4 that mills (one per land you control). Renew counters scale with yard lands. |
+| Primal Witchstalker | ★ | 3-MV menace that mills 4 and puts a land back (ramp). F5. |
+| Seedship Broodtender | ★ | 2-MV 2/3 that mills 3; late, a sorcery-speed reanimation. |
+| Jenova, Ancient Calamity | ★ | Counters every combat; draws when a Mutant dies (Shrieker is one). |
+| Leatherhead, Swamp Stalker | ★ | 5/4 trample hexproof for 4. Spend a counter to kill an artifact or enchantment. |
+| Cosmogoyf | ◇ | Power equals cards you own in exile. Big only with Oculus, Teval or renew. |
+| Avatar Destiny | ◇ | +1/+1 per creature card in the yard; reanimates on death. |
+| Kona, Rescue Beastie | ◇ | 4/3. When it attacks, cheat a permanent from hand. |
+| Lluwen, Imperfect Naturalist | ◇ | 2-MV mill 4 with setup. Worms per land is F5. |
+| Lluwen, Exchange Student | ◇ | 3/4. Exiles a creature card (a leave event) to re-prepare a Pest. |
+| Rite of Renewal | ◇ | Regrows two permanents. Sorcery, and exiles itself. |
+| Essenceknit Scholar | ◇ | Draws if a creature died. Sacrifice outlets are thin here. |
+| Long Feng, Grand Secretariat | ◇ | A counter when a creature or land hits the yard from play. |
+| Beifong's Bounty Hunters | ◇ | 4/4. Earthbends on creature death. |
+| The Chief Warg | ◇ | Menace; draws on attack with power ≥4 (Moon-Vigil, Lasyd, Leatherhead). |
+| Traveling Chocobo | ◇ | Lands from the top. F5 only. |
+| Zanarkand // Lasting Fayth | ◇ | Tapped G land with a late Hero token. |
+| Bogwater Lumaret | △ | Lifegain on creature entry. No lifegain payoff here. |
+| Old-Growth Educator | △ | Infusion 4/4 reach. Lifegain is thin. |
+| Blech, Loafing Pest | △ | Counts only Snake, Insect and Pest bodies plus lifegain. |
+| Chief Warg's Company | △ | Wolf gate. |
+| Way of the Paradox | △ | Jace token plus an extra land. Off-plan. |
+| Skystinger | △ | Reach hoser. |
 
 ## 5. Consolidated plan (live)
