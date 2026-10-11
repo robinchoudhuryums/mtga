@@ -86,6 +86,14 @@ it shows up as a COUNT or only as incidental riders.
 A (`TIER_FLOOR_REQ`). The pile is creature-heavy green, so interaction is the axis most
 likely to be short. Count it per batch.
 
+**F9 (added in batch 1, from reading Shrieker in full). A big creature in the LIBRARY is a
+dread lottery ticket, not dead weight.** Shrieker ({1}{G}, repeatable) and Bustle both turn
+a manifested creature face up without paying its cost. So a 6–8 MV creature is a premium hit
+whenever a dread lands on it. With Paranormal Analyst or Under the Skin, a binned fatty is
+also not lost. The deciding number is how many **high-MV creatures you would happily flip
+for {1}{G}**, set against Shrieker density (2 in the pile). Without Shrieker, F2's
+pay-the-cost read applies.
+
 **F8. Structurally invisible to the tools (watch these by hand):**
 - *Manifest dread IS tagged* (`manifest dread`), but turn-face-up value (F2) has no tag.
 - *"Leaves your graveyard"* triggers have no specific theme; they ride `graveyard`.
@@ -97,10 +105,76 @@ likely to be short. Count it per batch.
 
 (Every misreading goes here, so a later batch does not repeat it.)
 
+- **E1 (caught while writing F2): Shrieker's `{1}{G}` flip is FREE.** It reads "Reveal
+  target face-down permanent. If it's a creature card, you may turn it face up", with no
+  mana-cost payment. F2's "worth paying full cost" therefore does not apply while a Shrieker
+  is out. See F9.
+
 ## 3. Cross-batch observations
+
+- **(batch 1) The dread core is DEEP.** There are 10 makers in the first 30:
+  - repeatable: Shrieker ×2, Oculus, Defiant Survivor;
+  - one-shot: Under the Skin, Onslaught, Threats, Weight Room, Dissection Tools,
+    Growing Dread, Break Down the Door.
+
+  The payoffs alone (Analyst, Inspector, Bookworm, Growing Dread, Threats) are not enough
+  to anchor the deck. **The real anchor is that each dread is a 2-for-1 already**: a body
+  plus a binned card plus selection.
+- **(batch 1) "Leaves your graveyard" is a live cross-engine.** Kishla Skimmer and Essence
+  Anchor read it. Many sources feed it:
+  - Oculus's exile cost;
+  - Paranormal Analyst (the binned card moves to hand);
+  - Under the Skin and Restore with Empathy regrowth;
+  - every land played from the yard (Mole Man, Icetill, Glacierwood Sultai, Recon).
+
+  Kishla is the cheapest repeatable draw so far.
+- **(batch 1) VARIANT SIGNAL — lands-from-graveyard (F5).** Five cards: Mole Man, Icetill,
+  Glacierwood Siege, Undergrowth Recon, Elemental Teachings. Too few on its own. Hold it
+  and decide at the end.
+- **(batch 1) Counters (F6).** Members: Hollowmurk Siege, Growing Dread, Cryptid Inspector,
+  Onslaught, Weight Room, Host, Flytrap. Hollowmurk's Sultai mode needs about one counter
+  event per turn. The repeatable sources so far are Inspector (each face-down entry or flip)
+  and Flytrap (attacks, when delirium is on). Thin but real.
+- **(batch 1) Interaction is SHORT already.** In 30 cards: Break Down the Door (artifact or
+  enchantment exile), Devotee deathtouch and Dissection Tools deathtouch. There is no
+  creature removal yet. This is the F7 axis to watch.
 
 ## 4. Running verdicts
 
 Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ marginal · ✗ out`.
+
+### Batch 1 (cards 1–30)
+
+| Card | Verdict | Note |
+|---|---|---|
+| Hauntwoods Shrieker ×2 | ★★★ | Anchor. Repeatable dread on attack, and `{1}{G}` is a FREE flip (F9). |
+| Abhorrent Oculus | ★★ | 3-MV 5/5 flier with a dread every opponent upkeep. Its 6-card exile fights delirium and Moon-Vigil, but feeds Kishla (F3). |
+| Growing Dread | ★★ | 2-mana flash dread; puts a counter on each flip (F6). |
+| Paranormal Analyst | ★★ | Every dread becomes +1 card in hand. Also a "leaves yard" trigger. Pulls against delirium (F3). |
+| Valgavoth's Onslaught | ★★ | X=2 at 5 mana gives two 3/3s, 2 binned cards and selection. Scales late. |
+| Under the Skin | ★★ | Dread plus regrowth of a permanent card (lands included). A 3-mana 3-for-1. |
+| Sultai Devotee ×4 | ★★ | The deck's fixing (F4) on a deathtouch 2-drop. U and B come from the ability only. |
+| Kishla Skimmer | ★★ | GU 2/2 flier. Draws once per turn when a card leaves the yard, and many sources feed it. |
+| Hollowmurk Siege | ★★ | Sultai mode draws once a turn per counter. Abzan mode makes counters itself (attack: +1 counter and menace). Pick the mode per game. |
+| Break Down the Door | ★ | Instant modal: artifact or enchantment exile, OR dread. Interaction (F7). |
+| Moon-Vigil Adherents | ★ | Face-down 2/2s count as creatures, and dread bins creature cards. Often 6/6+ trample. |
+| Omnivorous Flytrap | ★ | Delirium counters on ETB and attack. Dread bins varied types (F3). |
+| Cryptid Inspector | ★ | Grows on each face-down entry and flip. Repeatable counters for Hollowmurk. |
+| Oblivious Bookworm | ★ | End-step draw that skips the discard on any dread or flip turn. |
+| Moldering Gym // Weight Room | ★ | 3-MV ramp front; 6-MV back gives a dread with 3 counters (a 5/5). |
+| Threats Around Every Corner | ◇ | A dread plus a land per face-down entry. Ramp needs a sink. |
+| Defiant Survivor | ◇ | A dread when it attacks, but a 3/2 attacker for 3 dies early. |
+| Dissection Tools | ◇ | 5 colourless for a 4/4 deathtouch lifelink face-down. Equip costs a creature. |
+| Hustle // Bustle | ◇ | The Bustle half is a G-castable overrun plus a free flip. Hustle is {U/R}, castable with U. |
+| Riddles in the Dark | ◇ | Instant pile split: +2 cards and 2 binned. |
+| Essence Anchor | ◇ | Upkeep surveil plus Zombies on any turn a card left the yard. |
+| Spineseeker Centipede | ◇ | Basic land to hand; delirium makes it a 3/3 vigilance. |
+| Sultai Monument | ◇ | Fetches a basic for 2; late, two Zombies. |
+| Glacierwood Siege | ◇ | F5 card (Sultai mode); Temur mode self-mills 4 per spell. |
+| Mole Man, Moloid Master | ◇ | F5. Lands from the yard plus landfall Moloids. |
+| Icetill Explorer | ◇ | F5. Extra land, lands from the yard, landfall mill. |
+| Undergrowth Recon | ◇ | F5. Needs lands in the yard, which dread supplies. |
+| Restore with Empathy | △ | 3-mana instant regrowth +4 life. Under the Skin does more. |
+| Elemental Teachings | △ | 5-MV ramp. Only interesting under F5. |
 
 ## 5. Consolidated plan (live)
