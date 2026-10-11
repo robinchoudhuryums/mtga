@@ -57,6 +57,12 @@
 #: notes: -Dream Seizer/+Winter, Tormented Loner (sacrifice a spent body -> each opponent
 #: notes: sacrifices), -Nocturnal Hunger/+Vraska's Final Mercy (2-mana kill that also hits
 #: notes: planeswalkers; sorcery speed is the cost). Avg MV 3.47 -> 3.31.
+#: notes: TUNED 2026-10-11 (round 4): -HYDRA Infiltration/+Shark Shredder, Killer Clone (combat
+#: notes: damage steals a creature card from THEIR graveyard — the ones the deck made them
+#: notes: discard; Ninja Teen level 2 menace gets it through), -Down, Down to Goblin-town/
+#: notes: +The Cloning of Shredder (three token copies of one creature card in YOUR yard —
+#: notes: Arbiter of Woe's ETB fires three times, and tokens skip its sacrifice cost). Klaw
+#: notes: was kept over HYDRA: its reveal grows with the creature cards in your graveyard.
 #: notes: Arbiter of Woe's sacrifice cost is COST-AS-UPSIDE here (G-41): the deck fields
 #: notes: nine 1-2 MV bodies whose ETB value is already spent by the time they feed him.
 #: notes: TUNED 2026-09-16 (5 swaps): -Rankle's Prank/+Maha, -Momentum Breaker/+The Death
@@ -101,6 +107,8 @@
 1 Gideon the Oathless (FRA) 230
 1 Grave Researcher // Reanimate (SOS) 85
 1 Ninja Teen (TMT) 67
+1 Shark Shredder, Killer Clone (TMT) 73
+1 The Cloning of Shredder (TMT) 60
 
 # Enabler bodies — ETB / attack discard triggers
 1 Virus Beetle (EOE) 124
@@ -117,8 +125,6 @@
 1 Auntie's Sentence (ECL) 85
 1 Seeker's Folly (FDN) 69
 1 Ozai's Cruelty (TLA) 113
-1 Down, Down to Goblin-town (HOB) 65
-1 HYDRA Infiltration (MSH) 100
 1 Ral Zarek, Guest Lecturer (SOS) 97
 1 Momentum Breaker (DFT) 97
 1 Send in the Pest (SOS) 100
