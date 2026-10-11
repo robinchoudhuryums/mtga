@@ -6178,6 +6178,19 @@ card", Tezzeret's "artifact card"), which had been counting CREATURES — a wron
 replaced by none. A typed-card gate that counts the right type is the follow-on.
 `redundancy`'s gate flags after: 2, both Eddie Brock, both real.
 
+**2026-10-09 — the type-named gates matched SUBSTRINGS.** The `lib_type` (library search
+for "a Plan card") and `gy_type` ("Elf cards in your graveyard") branches tested
+`want in type_line`, so "Plan" matched every **Planeswalker** and **Plant**: deck 11's The
+Masters of Evil reported three Plans to tutor against a real two, counting Liliana,
+Dreadhorde General. Both branches now go through `lib.type_matches` (whole words, BS11-39).
+Measured: of the 29 distinct words these gates capture across the pool, `plan` was the
+only one a substring test mis-read (95 pool type lines); the roster diff was **1 of 407
+target rows** (deck 11, 3 → 2, verdict unchanged at `⚠ thin`). A static guard for
+`<var> in <type line>` was considered and not built: the 56 remaining `in` type tests all
+use fixed card-type literals, and the one variable-needle site left
+(`_grant_scope_matches`) iterates a fixed tuple of card types, so a scan would flag only
+false positives.
+
 ## [K-14] A draw clause behind an activation cost was invisible to the role tally (fixed 2026-08-07)
 
 `classify_roles` decides "Card advantage" from `_ROLE_PATTERNS`, and **every pattern in

@@ -23,6 +23,8 @@ Thought-Stalker Warlock,Creature — Lizard Warlock,"Menace (This creature can't
 When this creature enters, choose target opponent. If they lost life this turn, they reveal their hand, you choose a nonland card from it, and they discard that card. Otherwise, they discard a card.",B,Lizard; Warlock; etb; menace; evasion,BLB,118,Uncommon,70,"Deck 70: Menace body + the reveal-and-choose discard Pilfer did, upgraded — full Thoughtseize mode once they have lost life this turn (Painful Quandary / Bandit's Talent L2 / Thornplate all feed it). Rotates ~2027.",2.0,seed
 Daggerfang Duo,Creature — Rat Squirrel,"Deathtouch
 When this creature enters, you may mill two cards. (You may put the top two cards of your library into your graveyard.)",B,Rat; Squirrel; graveyard; mill; etb; deathtouch; combat; removal,BLB,89,Common,,,1.0,seed
+Cursecloth Wrappings,Artifact,"Zombies you control get +1/+1.
+{T}: Target creature card in your graveyard gains embalm until end of turn. The embalm cost is equal to its mana cost. (Exile that card and pay its embalm cost: Create a token that's a copy of it, except it's a white Zombie in addition to its other types and has no mana cost. Embalm only as a sorcery.)",B,Zombie; reanimator; graveyard; tokens; pump,DFT,81,Rare,53,,6.5,seed
 Unstoppable Plan,Enchantment,"At the beginning of your end step, untap all nonland permanents you control.",U,,DFT,72,Rare,16,deck 16 waterbend rebuild 2026-09-19,3.0,seed
 Adrenaline Jockey,Creature — Minotaur Pilot,"Whenever a player casts a spell, if it's not their turn, this creature deals 4 damage to them.
 Whenever you activate an exhaust ability, put a +1/+1 counter on this creature.",R,Minotaur; Pilot; counters; burn,DFT,112,Uncommon,60,speed aggro 3-drop (deck 60 round-2 pile swap); pings us for off-turn spells,4.0,seed
@@ -59,15 +61,13 @@ Whenever this creature enters or attacks, each opponent loses 2 life. You gain 2
 Valgavoth's Faithful,Creature — Human Cleric,"{3}{B}, Sacrifice this creature: Return target creature card from your graveyard to the battlefield. Activate only as a sorcery.",B,Human; Cleric; reanimator; graveyard; sacrifice,DSK,121,Uncommon,52a,,5.0,seed
 Spineseeker Centipede,Creature — Insect,"When this creature enters, search your library for a basic land card, reveal it, put it into your hand, then shuffle.
 Delirium — This creature gets +1/+2 and has vigilance as long as there are four or more card types among cards in your graveyard.",G,Insect; graveyard; ramp; etb; pump; delirium,DSK,199,Common,50,,1.5,seed
-Celestial Reunion,Sorcery,"As an additional cost to cast this spell, you may choose a creature type and behold two creatures of that type.
-Search your library for a creature card with mana value X or less, reveal it, put it into your hand, then shuffle. If this spell's additional cost was paid and the revealed card is the chosen type, put that card onto the battlefield instead of putting it into your hand.",G,behold; dragons,ECL,170,Mythic,34,"virtual 2nd Diligent Zookeeper: behold two changelings as Humans, X=4 puts Zookeeper onto the battlefield",4.5,seed
 End-Blaze Epiphany,Instant,"End-Blaze Epiphany deals X damage to target creature. When that creature dies this turn, exile a number of cards from the top of your library equal to its power, then choose a card exiled this way. Until the end of your next turn, you may play that card.",R,burn,ECL,134,Rare,24,X-burn removal + impulse; Quintorius/exile payoff,6.0,hand
 Iron-Shield Elf,Creature — Elf Warrior,"Discard a card: This creature gains indestructible until end of turn. Tap it. (Damage and effects that say ""destroy"" don't destroy it. If its toughness is 0 or less, it still dies.)",B,Elf; Warrior,ECL,108,Uncommon,52a,,2.5,seed
 Spell Snare,Instant,Counter target spell with mana value 2.,U,counterspell,ECL,71,Uncommon,51,,3.0,seed
 Archenemy's Charm,Instant,"Choose one —
 • Exile target creature or planeswalker.
 • Return one or two target creature and/or planeswalker cards from your graveyard to your hand.
-• Put two +1/+1 counters on target creature you control. It gains lifelink until end of turn.",B,counters; graveyard; lifegain; removal,EOE,88,Rare,52a,,6.0,seed
+• Put two +1/+1 counters on target creature you control. It gains lifelink until end of turn.",B,counters; graveyard; lifegain; removal,EOE,88,Rare,52a; 11,,6.0,seed
 Pinnacle Starcage,Artifact,"When this artifact enters, exile all artifacts and creatures with mana value 2 or less until this artifact leaves the battlefield.
 {6}{W}{W}: Put each card exiled with this artifact into its owner's graveyard, then create a 2/2 colorless Robot artifact creature token for each card put into a graveyard this way. Sacrifice this artifact.",W,reanimator; graveyard; sacrifice; tokens; etb,EOE,33,Rare,6,,6,hand
 "Mm'menon, Uthros Exile",Legendary Creature — Jellyfish Advisor,"Flying
@@ -98,6 +98,8 @@ Menace (This creature can't be blocked except by two or more creatures.)
 When this creature enters, if it was kicked, return target creature card from your graveyard to the battlefield.",B,Vampire; Cleric; reanimator; graveyard; lifegain; etb; lifelink; menace; evasion; kicker; value,FDN,611,Rare,11,,6.0,hand
 Rite of Replication,Sorcery,"Kicker {5} (You may pay an additional {5} as you cast this spell.)
 Create a token that's a copy of target creature. If this spell was kicked, create five of those tokens instead.",U,tokens; kicker; value,FDN,711,Rare,25,Copy engine for Spellstorm (25): clone your best creature (kicker = 5 copies) — payoff redundancy,6.5,hand
+"Zul Ashur, Lich Lord",Legendary Creature — Zombie Warlock,"Ward—Pay 2 life. (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays 2 life.)
+{T}: You may cast target Zombie creature card from your graveyard this turn.",B,Zombie; Warlock; graveyard; ward; protection,FDN,77,Rare,53,,4.5,seed
 Billowing Shriekmass,Creature — Spirit,"Flying
 When this creature enters, mill three cards. (Put the top three cards of your library into your graveyard.)
 Threshold — This creature gets +2/+1 as long as there are seven or more cards in your graveyard.",B,Spirit; graveyard; mill; etb; pump; flying; evasion; threshold,FDN,56,Uncommon,,,2.0,seed
@@ -140,6 +142,9 @@ Cruel Calculations,Sorcery,"Draw X cards, where X is the number of cards that we
 "Jace, Reality Sculptor",Legendary Planeswalker — Jace,"+1: Empower Jace X, where X is the number of Islands you control.
 −3: Until your next turn, whenever a creature attacks you or a planeswalker you control, it gets -5/-0 until end of turn.
 0: Exile all but the bottom card of each opponent's library. Activate only if there are twenty-five or more loyalty counters among Jaces you control.",U,Jace; Island; planeswalker; empower jace,FRA,216,Rare,22,deck 22 tune 2026-10-08,8.0,seed
+Vraska's Final Mercy,Sorcery,"Choose one —
+• You lose 2 life. Destroy target creature or planeswalker.
+• You lose 2 life. Empower Jace 6. (Put six loyalty counters on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with ""[−1]: Surveil 1"" and ""[−3]: Draw a card."")",B,pay life; card draw; tokens; removal; surveil; graveyard; empower jace,FRA,71,Rare,70,,5.0,seed
 "Fblthp, Knows the Way",Legendary Creature — Homunculus Scout,"Domain — Fblthp's power is equal to the number of basic land types among lands you control.
 When Fblthp enters, search your library for up to X basic land cards with different names, reveal them, put them into your hand, then shuffle.",G,Homunculus; Scout; etb; domain; lands,FRA,258,Uncommon,40,deck 40 tune 2026-10-08,3.0,seed
 Inside Information,Sorcery,"Exile the top X cards of target opponent's library. You may play those cards this turn. If you cast a spell this way, pay life equal to its mana value rather than pay its mana cost.",B,pay life; heist; impulse,HOB,76,Mythic,41,"drain/value package: unconditional removal + life-to-mana, refunded by the Mister Negative swap",4.5,seed
@@ -257,6 +262,7 @@ Together as One,Sorcery,"Converge — Target player draws X cards, Together as O
 Traumatic Critique,Instant,"Traumatic Critique deals X damage to any target. Draw two cards, then discard a card.",U/R,card draw; burn,SOS,239,Rare,general,UR X-burn + card advantage — good in any UR/spellslinger shell (cf. Prismari concept),5.5,hand
 Foolish Fate,Instant,"Destroy target creature.
 Infusion — If you gained life this turn, that creature's controller loses 3 life.",B,lifegain; removal; infusion; payoff,SOS,83,Uncommon,41,"drain/value package: unconditional removal + life-to-mana, refunded by the Mister Negative swap",3.0,seed
+Send in the Pest,Sorcery,"Each opponent discards a card. You create a 1/1 black and green Pest creature token with ""Whenever this token attacks, you gain 1 life.""",B,lifegain; tokens; discard,SOS,100,Common,70,,1.5,seed
 "Hydro-Man, Fluid Felon",Legendary Creature — Elemental Villain,"Whenever you cast a blue spell, if Hydro-Man is a creature, he gets +1/+1 until end of turn.
 At the beginning of your end step, untap Hydro-Man. Until your next turn, he becomes a land and gains ""{T}: Add {U}."" (He's not a creature during that time.)",U,Elemental; Villain; mana; pump,SPM,33,Rare,16,deck 16 waterbend rebuild 2026-09-19,6.5,seed
 Multiversal Passage,Land,"As this land enters, choose a basic land type. Then you may pay 2 life. If you don't, it enters tapped.

@@ -51,7 +51,6 @@ Black Widow, Super Spy
 Blasphemous Edict
 Blitzball Shot
 Bloodthirsty Conqueror
-Bloodtithe Collector
 Bolg's Company
 Bone-Cairn Butcher
 Boneclub Berserker
@@ -73,9 +72,7 @@ Caparocti Sunborn
 Captain America, Living Legend
 Captain Mar-Vell, Space-Born
 Caradora, Heart of Alacria
-Case of the Stashed Skeleton
 Casey Jones, Jury-Rig Justiciar
-Celestial Reunion
 Central Elevator // Promising Stairs
 Cephalid Inkmage
 Charging Strifeknight
@@ -118,7 +115,6 @@ Drake Hatcher
 Dread Summons
 Dreaded Bat-Cloud
 Dream Harvest
-Dream Seizer
 Dreams of Laguna
 Drix Fatemaker
 Dwalin, Weaponmaster
@@ -315,14 +311,12 @@ Raph & Leo, Sibling Rivals
 Raph & Mikey, Troublemakers
 Raphael, the Nightwatcher
 Reckless Velocitaur
-Red Room Recruit
 Reno and Rude
 Resentful Revelation
 Resolute Reinforcements
 Restorative Technique
 Retrieve the Esper
 Rhovanion Rampager
-Ripclaw Wrangler
 Rise of the Dark Realms
 Rise of the Varmints
 Riverchurn Monument
@@ -385,7 +379,6 @@ Tangle Tumbler
 Tannuk, Steadfast Second
 Tapestry Warden
 Team Tactics
-Temporal Intervention
 Tenured Tethermage
 Terrapact Intimidator
 Tetsuko Umezawa, Pursuer
@@ -403,7 +396,6 @@ The Queen of Dale
 The Regalia
 Think Twice
 Thor Odinson
-Thought-Stalker Warlock
 Three Tree Scribe
 Thunderous Velocipede
 Tidings of War
@@ -441,6 +433,7 @@ Wargling
 Water Tribe Rallier
 Waterbender Ascension
 Way of the Healer
+Way of the Pyromancer
 Way of the Wildspeaker
 Weapons Vendor
 Web-Warriors

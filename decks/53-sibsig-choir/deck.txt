@@ -2,20 +2,20 @@
 #: format: Standard
 #: colors: B
 #: plan: midrange
-#: tier: B — PROVISIONAL, GRADED 2026-08 on an UNBUILT list (17 craft targets, zero games).
+#: tier: B — PROVISIONAL, GRADED 2026-08 on an UNBUILT list (11 craft targets as of 2026-10-11, zero games).
 #: tier: One band BELOW the measurable floor, which reads A on interaction 8 plus card
-#: tier: advantage 3. Against the rubric an A needs four things and this list fails two:
-#: tier:   A-FLOOR — yes, narrowly. Interaction 8 clears seven; the sum of 11 meets
-#: tier:     eleven exactly (thresholds re-derived 2026-09-02) — one lost draw engine drops it.
+#: tier: advantage 6. Against the rubric an A needs four things and this list fails two:
+#: tier:   A-FLOOR — yes, narrowly. Interaction 8 clears seven; the sum of 14 clears
+#: tier:     eleven by three (thresholds re-derived 2026-09-02) — one lost draw engine drops it.
 #: tier:   COHERENT ENGINE — yes, and `shape` measures it rather than taking the header's
 #: tier:     word: WIDE 10 against tall 5, on ten distinct effects that scale with creature
 #: tier:     COUNT. Tokens feed anthems, anthems make the tokens a clock, and the removal
 #: tier:     suite feeds Gisa by committing a crime every turn.
-#: tier:   TIGHT CURVE — borderline. 3.39 average on 9 early drops, and it UNDER-reads
+#: tier:   TIGHT CURVE — borderline. 3.56 average on 7 early drops, and it UNDER-reads
 #: tier:     because Dread Summons books as MV 1 (X counts as 0); you cast it for four or
 #: tier:     five. The 2026-08 pass cost 0.20 of curve and two early drops for three
 #: tier:     stronger cards; watch this axis before the next add.
-#: tier:   AT MOST ONE CLEAR WEAKNESS — no, and the two COMPOUND. Protection is 2 on a deck
+#: tier:   AT MOST ONE CLEAR WEAKNESS — no, and the two COMPOUND. Protection is 4 on a deck
 #: tier:     whose whole plan is a board, so one sweeper undoes several turns. THIS IS A
 #: tier:     COLOUR CONSTRAINT, NOT AN OVERSIGHT, and it was measured rather than assumed:
 #: tier:     a pool sweep for mono-black/colorless Standard cards protecting MULTIPLE
@@ -26,9 +26,9 @@
 #: tier:     Teen and Funeral Room both drain per creature that leaves. And the
 #: tier:     engine needs BOTH halves — bodies and an anthem — in a singleton list, so the
 #: tier:     draws where you hold one and not the other are common and are the games you
-#: tier:     lose. Card advantage 3 is real but arrives late (Chronicle of Victory is {6}).
+#: tier:     lose. Card advantage 6 is real, part of it late (Chronicle and Doctor Doom are {6}).
 #: tier: A further caution the floor cannot see: Gisa, the deck's best card, rotates ~2027,
-#: tier: as do four of the other sixteen craft targets. Re-grade after it is built.
+#: tier: as do several of the other craft targets. Re-grade after it is built.
 #: archetype: Mono-black ZOMBIE/SKELETON GO-WIDE, and the third deck the Void Demons
 #: archetype: concept pile was hiding. It is NOT a graveyard deck and that is the whole
 #: archetype: reason it exists: its bodies are TOKENS, and a token is not a card, so every
@@ -41,7 +41,7 @@
 #: archetype: (2) ANTHEMS, and the reason this tribe is buildable at all. A literal name
 #: archetype: search finds three Zombie lords; searching the EFFECT SHAPE finds nineteen,
 #: archetype: because most of them never say "Zombie" — they say "as this enters, choose a
-#: archetype: creature type" (Chronicle of Victory, Patchwork Banner, Adaptive Automaton).
+#: archetype: creature type" (Chronicle of Victory, Lifecraft Engine).
 #: archetype: Measured, the tribe is 40 bodies / 19 payoffs — second only to Dragon among
 #: archetype: the tribes surveyed, and far past Vampire's 69/3.
 #: archetype: (3) CRIME. Gisa's trigger is "target an opponent, anything they control, or
@@ -63,32 +63,58 @@
 #: notes: +3/+0. Below rate. Withering Curse and Villainous Wrath are out for the opposite
 #: notes: reason to their inclusion elsewhere: a symmetric sweeper in a 2/2-token deck
 #: notes: kills your own board first.
+#: notes: TUNED 2026-10-11 (4 swaps, all owned): -Adaptive Automaton/+Doctor Doom,
+#: notes: -Stomped by the Foot/+Robot Domination, -Monument to Endurance/+Winter, Tormented
+#: notes: Loner, -1 Swamp/+Realm of Koh. THE SIBSIG CEREMONY DESTROYS EVERY CREATURE YOU
+#: notes: CAST ("if you cast it, destroy that creature") — Gisa, Death Baron, Avenger and
+#: notes: Abyssal Harvester included — so cast lords BEFORE Ceremony. Doom survives it: put
+#: notes: its Doombot trigger first and "as long as you control an artifact creature" makes
+#: notes: it indestructible. Robot Domination draws off every creature Ceremony bins.
+#: notes: ROUND 2 (2026-10-11, all owned): -White Lotus Tile/+Midnight Reaper (draws off every
+#: notes: nontoken creature Ceremony destroys; a Zombie), -Case of the Stashed Skeleton/
+#: notes: +Sothera, the Supervoid (each creature of yours that dies exiles one of theirs),
+#: notes: -Macabre Waltz/+Collector's Vault (a REPEATABLE loot = a Chariot Zombie each turn),
+#: notes: -Cursecloth Wrappings/+Lifecraft Engine (name Zombie: +1/+1 and Vehicles become
+#: notes: Zombies, Cryptcaller Chariot included). Craft targets 11 -> 9.
+#: notes: ROUND 3 (2026-10-11, owned): -Patchwork Banner/+Agent Venom (a second "nontoken
+#: notes: creature dies -> draw" beside Midnight Reaper; anthems were already deep),
+#: notes: -Red Room Recruit/+Bitterbloom Bearer (a flying 1/1 every upkeep). Collector's
+#: notes: Vault and Ral's -1 are now Cryptcaller Chariot's discard sources.
+#: notes: ROUND 4 (2026-10-11): Soul-Shackled Zombie 3 -> 1 (its drain needs a creature card
+#: notes: in the target graveyard; one copy is enough once Zul Ashur can recast it), +Risen
+#: notes: Necroregent (owned; max speed comes from the deck's per-turn drains and a 2/2 Zombie
+#: notes: every end step — cast it BEFORE Ceremony), -Sidisi/+Zul Ashur, Lich Lord ("{T}: you
+#: notes: may cast target Zombie creature card from your graveyard" — a Ceremony loop: recast,
+#: notes: die, token, draws), +Cursecloth Wrappings back in: its embalm makes a token COPY, which
+#: notes: is not cast, so it is the deck's way to keep a Ceremony-killed Gisa or Death Baron.
 
 # Nonland
-1 Case of the Stashed Skeleton (MKM) 80
+1 Sothera, the Supervoid (EOE) 115
 1 Death Baron (FDN) 521
 1 Hour of Victory (DFT) 91
 1 The Sibsig Ceremony (TDM) 91
 1 Cryptcaller Chariot (DFT) 80
-1 Cursecloth Wrappings (DFT) 81
+1 Lifecraft Engine (DFT) 234
 1 Dread Summons (FDN) 604
 1 Gisa, the Hellraiser (OTJ) 89
 1 Unstoppable Slasher (DSK) 119
-3 Soul-Shackled Zombie (FDN) 70
+1 Soul-Shackled Zombie (FDN) 70
+1 Cursecloth Wrappings (DFT) 81
+1 Risen Necroregent (DFT) 102
 1 Avenger of the Fallen (TDM) 73
 1 Deathless Pilot (DFT) 82
-1 Sidisi, Regent of the Mire (TDM) 92
+1 Zul Ashur, Lich Lord (FDN) 77
 1 Ninja Teen (TMT) 67
-1 Patchwork Banner (BLB) 247
-1 Adaptive Automaton (FDN) 723
+1 Agent Venom (SPM) 49
+1 Doctor Doom (MSH) 95
 1 Chronicle of Victory (ECL) 253
-1 Monument to Endurance (DFT) 237
-1 Macabre Waltz (FDN) 177
-1 Red Room Recruit (MSH) 110
+1 Winter, Tormented Loner (FRA) 240
+1 Collector's Vault (WOE) 244
+1 Bitterbloom Bearer (ECL) 88
 1 Ral Zarek, Guest Lecturer (SOS) 97
 1 Deadly Precision (TLA) 95
 1 Eaten Alive (FDN) 172
-1 Stomped by the Foot (TMT) 82
+1 Robot Domination (MSH) 111
 1 Funeral Room // Awakening Hall (DSK) 100
 1 Sidequest: Hunt the Mark (FIN) 119
 1 Withering Torment (DSK) 124
@@ -97,8 +123,9 @@
 1 Liliana, Dreadhorde General (FDN) 176
 1 Massacre Wurm (FDN) 714
 1 Blasphemous Edict (FDN) 57
-1 White Lotus Tile (TLA) 262
+1 Midnight Reaper (FDN) 609
 1 Abyssal Harvester (FDN) 54
 
 # Lands
-24 Swamp (MSH) 291
+23 Swamp (MSH) 291
+1 Realm of Koh (TLA) 276

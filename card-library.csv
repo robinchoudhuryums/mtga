@@ -6027,7 +6027,7 @@ Mobilize 3 (Whenever this creature attacks, create three tapped and attacking 1/
 Voice of Victory,Creature — Human Bard,"Mobilize 2 (Whenever this creature attacks, create two tapped and attacking 1/1 red Warrior creature tokens. Sacrifice them at the beginning of the next end step.)
 Your opponents can't cast spells during your turn.",W,Human; Bard; tokens; mobilize; go-wide; aggro,TDM,33,1
 Dedicated Commons,Land,"This land enters tapped unless you control a planeswalker.
-{T}: Add {R} or {W}.",W/R,mana,FRA,175,1
+{T}: Add {R} or {W}.",W/R,mana,FRA,175,4
 Stingerquill Voxmancer,Creature — Goblin Sorcerer // Sorcery,"At the beginning of your upkeep, if this creature isn't prepared, it becomes prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.) // Vicious Verse deals 1 damage to target opponent.",B/R,Goblin; Sorcerer; burn; prepared; spellslinger; tempo,FRA,151,1
 "Koth, the Geomancer",Legendary Creature — Human Warrior,"Reach
 Landfall — Whenever a land you control enters, Koth deals 1 damage to each opponent. If that land is a Mountain, add {R}.",R,Human; Warrior; burn; landfall; noncombat damage; reach; defense; lands,FRA,248,1
@@ -6179,3 +6179,30 @@ Transformative Commons,Land,"This land enters tapped unless you control a planes
 {T}: Add {G} or {U}.",U/G,mana,FRA,193,4
 "Jackal, Genius Geneticist",Legendary Creature — Human Scientist Villain,"Trample
 Whenever you cast a creature spell with mana value equal to Jackal's power, copy that spell, except the copy isn't legendary. Then put a +1/+1 counter on Jackal. (The copy becomes a token.)",U/G,Human; Scientist; Villain; counters; spell copy; trample; evasion,SPM,131,1
+Command the Stage,Sorcery,"Create a 2/2 colorless Wizard Soldier creature token named Cadet, then put a +1/+1 counter on each other Wizard token you control.
+At the beginning of each upkeep, if an opponent was dealt noncombat damage last turn, return this card from your graveyard to your hand.",R,Wizard; counters; graveyard; tokens; noncombat damage,FRA,77,1
+Way of the Healer,Legendary Enchantment,"When Way of the Healer enters, empower Jace 5. (Put five loyalty counters on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with ""[−1]: Surveil 1"" and ""[−3]: Draw a card."")
+Planeswalkers you control have ""[−2]: Create a 2/2 colorless Wizard Soldier creature token named Cadet. Surveil 1.""",W,planeswalker; card draw; tokens; etb; surveil; graveyard; empower jace,FRA,207,1
+Way of the Pyromancer,Legendary Enchantment,"When Way of the Pyromancer enters, empower Jace 2. (Put two loyalty counters on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with ""[−1]: Surveil 1"" and ""[−3]: Draw a card."")
+Planeswalkers you control have ""[+1]: Add {R}.""",R,planeswalker; card draw; tokens; etb; surveil; graveyard; empower jace,FRA,254,1
+Ajani Unrelenting,Legendary Planeswalker — Ajani,"Whenever you activate a loyalty ability, create a 2/2 colorless Wizard Soldier creature token named Cadet.
++1: Creatures you control get +1/+0 and gain haste until end of turn.
+−2: Discard your hand, then draw a card for each creature you control.
+−3: Ajani deals 4 damage to each creature except for tokens you control.",R,Ajani; planeswalker; card draw; tokens; burn; pump; haste; aggro,FRA,242,1
+Tersa Lightshatter,Legendary Creature — Orc Wizard,"Haste
+When Tersa Lightshatter enters, discard up to two cards, then draw that many cards.
+Whenever Tersa Lightshatter attacks, if there are seven or more cards in your graveyard, exile a card at random from your graveyard. You may play that card this turn.",R,Orc; Wizard; graveyard; card draw; etb; haste; aggro,TDM,127,1
+Solitary Cell,Artifact,"When this artifact enters, exile target nonland permanent an opponent controls with mana value 3 or less until this artifact leaves the battlefield.
+{1}, {T}, Discard a legendary card: Draw a card.",W/R,card draw; removal; etb,FRA,149,1
+Warrior's Blades,Artifact — Equipment,"When this Equipment enters, it deals 3 damage to any target and you gain 3 life.
+Equipped creature gets +2/+1.
+Equip {3}. This ability costs {1} less to activate for each +1/+1 counter on the creature it targets.",W/R,equipment; counters; lifegain; cost-reduction; burn; etb; pump; noncombat damage; equip,FRA,163,1
+Way of the Warlord,Legendary Enchantment,"When Way of the Warlord enters, empower Jace 5. (Put five loyalty counters on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with ""[−1]: Surveil 1"" and ""[−3]: Draw a card."")
+Planeswalkers you control have ""[−4]: This planeswalker deals 2 damage to up to one target creature or planeswalker and 2 damage to target player.""",R,planeswalker; card draw; tokens; burn; etb; surveil; graveyard; empower jace,FRA,255,1
+Hall of Echoes,Land,"{T}: Add {C}.
+{5}: This land becomes a copy of target creature you control until end of turn. The ""legend rule"" doesn't apply to permanents you control this turn.",Colorless,mana,FRA,179,1
+Celestial Reunion,Sorcery,"As an additional cost to cast this spell, you may choose a creature type and behold two creatures of that type.
+Search your library for a creature card with mana value X or less, reveal it, put it into your hand, then shuffle. If this spell's additional cost was paid and the revealed card is the chosen type, put that card onto the battlefield instead of putting it into your hand.",G,behold; dragons,ECL,170,1
+Thief's Knife,Artifact — Equipment,"Job select (When this Equipment enters, create a 1/1 colorless Hero creature token, then attach this to it.)
+Equipped creature gets +1/+1, has ""Whenever this creature deals combat damage to a player, draw a card,"" and is a Rogue in addition to its other types.
+Equip {4}",U,equipment; card draw; tokens; etb; pump; job select; equip,FIN,81,1

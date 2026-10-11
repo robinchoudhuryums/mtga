@@ -1,14 +1,14 @@
 #: name: Villainous
 #: format: Standard
-#: tier: A — Mono-B Villain tribal control; perfect mono-B mana, bomb-rich top end (Liliana/Doctor Doom/Massacre Wurm/Bringer), deep interaction (6 removal + 3 sweepers), and an on-tribe card-advantage suite (Robot Domination + Tombstone + Arnim Zola) + anthem (Masters of Evil). Promoted from B: mono-color consistency + bombs + interaction + card advantage. Residual: slightly top-heavy curve (flex-out Masters of Evil first if racing aggro).
+#: tier: A — Mono-B Villain tribal control; perfect mono-B mana, bomb-rich top end (Liliana/Doctor Doom/Massacre Wurm/Bringer), deep interaction (9 removal + 6 sweepers, 4 at instant speed), and an on-tribe card-advantage suite (Robot Domination + Tombstone + Arnim Zola) + anthem (Masters of Evil). Promoted from B: mono-color consistency + bombs + interaction + card advantage. Residual: slightly top-heavy curve (flex-out Masters of Evil first if racing aggro).
 #: colors: B
 #: archetype: Mono-black villains control-midrange — graveyard / sacrifice.
 #: notes: Mono-black villains / control-midrange.
 
 # Nonland
 1 Too Evil to Stay Dead (MSH) 118
-1 Bloodthirsty Conqueror (FDN) 58
-1 Agents of HYDRA (MSH) 85
+1 Black Cat, Cunning Thief (SPM) 52
+1 Construct a Cosmic Cube (MSH) 90
 1 Baron Strucker, HYDRA Overlord (MSH) 88
 1 Doom Reigns Supreme (MSH) 96
 1 Baron Helmut Zemo (MSH) 87
@@ -20,10 +20,10 @@
 1 Armaggon, Future Shark (TMT) 58
 1 M.O.D.O.K. (MSH) 106
 1 Madame Masque (MSH) 104
-1 Venom, Evil Unleashed (SPM) 71
-1 Venom's Hunger (SPM) 73
+1 Sephiroth, Fabled SOLDIER // Sephiroth, One-Winged Angel (FIN) 115
+1 Archenemy's Charm (EOE) 88
 1 Morlun, Devourer of Spiders (SPM) 59
-1 Fire Navy Trebuchet (TLA) 100
+1 The Soul Stone (SPM) 66
 1 Hero's Downfall (FDN) 175
 1 Season of Loss (BLB) 112
 1 Liliana, Dreadhorde General (FDN) 176
@@ -34,7 +34,7 @@
 1 Doctor Doom (MSH) 95
 1 Tombstone, Career Criminal (SPM) 70
 1 Super-Adaptoid (MSH) 250
-1 Lively Dirge (OTJ) 93
+1 Meathook Massacre II (DSK) 108
 1 Stomped by the Foot (TMT) 82
 1 Bullseye, Death Dealer (MSH) 209
 1 Funeral Room // Awakening Hall (DSK) 100
@@ -44,7 +44,7 @@
 1 Scrounge for Eternity (EOE) 114
 
 # Lands
-1 Castle Doom (MSH) 263
+1 Realm of Koh (TLA) 276
 1 Villainous Hideout (MSH) 276
 22 Swamp (MSH) 292
 
@@ -53,5 +53,6 @@
 #~ note: applied — Baron Strucker (tribe-wide {1}-off + connive engine) over Decoy Ploy (most redundant recursion, hand-only), and Kingpin's Enforcers (Villain sac-to-draw) over Vito's Inquisitor. Fire Navy Trebuchet kept: a two-way Defender+reach blocker / recurring 2/1 flyer.
 #~ note: applied — on-tribe card-advantage/engine suite (all owned, 0 WC): Robot Domination (-Emeritus of Woe) draws on creature-death + makes 3 Villain tokens; Tombstone, Career Criminal (-Auntie's Sentence) recurs a Villain + 2nd {1}-off cost reducer; Arnim Zola, Bio-Fanatic (-1 HYDRA Troopers, now 1x) repeatable Villain-token mana sink; Bullseye, Death Dealer (-Anchovy & Banana Pizza) repeatable removal/reach + finisher (B/R hybrid, cast for {2}{B}).
 #~ note: applied — The Masters of Evil (-Ultron Drone): {5}{B} tribal anthem (+2/+1 to 15 Villains) + discard-to-tutor a Plan (finds Robot Domination). Traded out the weakest filler body for a real finisher.
-#~ CAUTION: top-heavy — avg nonland MV is now ~3.97 with four+ cards at 5+ MV beyond the bombs (Masters of Evil, Liliana, Massacre Wurm, Doctor Doom, Bringer, Villainous Wrath). Masters is the FIRST flex-out if the deck stumbles to fast/aggro starts; if so, revert -The Masters of Evil / +Ultron Drone (or a cheaper 2-drop) to smooth the curve.
+#~ CAUTION: top-heavy — avg nonland MV was ~3.97 (2026-10-09 tune: 3.89) with four+ cards at 5+ MV beyond the bombs (Masters of Evil, Liliana, Massacre Wurm, Doctor Doom, Bringer, Villainous Wrath). Masters is the FIRST flex-out if the deck stumbles to fast/aggro starts; if so, revert -The Masters of Evil / +Ultron Drone (or a cheaper 2-drop) to smooth the curve.
 #~ note: CRAFT — Overlord of the Balemurk (M): off-tribe (Avatar Horror, no payoff synergy) here — primarily a deck-5 card; the owned Robot Domination now fills the on-tribe card-advantage role it would have.
+#~ note: applied 2026-10-09 — Meathook Massacre II (-Lively Dirge): every wipe (Wrath / Liliana −4 / Season / Bringer) returns your creatures for 3 life and steals theirs unless they pay 3; let Thunderbolts' free return resolve first. Realm of Koh (-Castle Doom, B sources 22→23); The Soul Stone (-Fire Navy Trebuchet, ramp + late upkeep reanimation); Black Cat (-Bloodthirsty Conqueror, a Villain 5-drop that steals two cards); Archenemy's Charm (-Venom's Hunger, instant exile — CRAFT, rare); Construct a Cosmic Cube (-Agents of HYDRA, 3rd Plan for Masters/Doom); Sephiroth (-Venom, Evil Unleashed, drain per death). Do NOT add Garruk, Veiled Butcher: its exile-instead clause turns off Meathook's steal and Massacre Wurm's drain.
