@@ -139,6 +139,30 @@ pay-the-cost read applies.
   enchantment exile), Devotee deathtouch and Dissection Tools deathtouch. There is no
   creature removal yet. This is the F7 axis to watch.
 
+- **(batch 2) "Cards LEAVE your graveyard during your turn" is TDM-Sultai's own mechanic,
+  and the pile carries the full cluster.** Payoffs: Kishla Skimmer (draw), Kheru Goldkeeper
+  (Treasure) and Attuned Hunter (+1/+1 counter, which feeds F6). Feeders added in this batch:
+  - renew (Champion of Dusan, Goldkeeper itself);
+  - Teval's delve on every spell;
+  - Auroral Procession, Lie in Wait, True Ancestry, Awaken's chapter III.
+
+  The three payoffs each trigger once per turn, so ONE leave event per turn saturates them,
+  and that is easy to reach. **This is the second engine, and it CONSUMES what dread FILLS.**
+  The deck's shape is dread → yard → leave-yard payoffs. Delirium and Moon-Vigil are the
+  cards that want the yard to STAY full (F3), so they rank below the leave cluster.
+- **(batch 2) Interaction is SOLVED in this batch.** Eight cards: Kin-Tree Severance,
+  Lie in Wait, Fangkeeper's Familiar, Awaken the Honored Dead, Felling Blow, Dragonclaw
+  Strike, Budding Insurgent, plus Break Down the Door from batch 1. An A floor (7) is
+  reachable without strain.
+- **(batch 2) Fixing (F4).** Enduring Vitality makes every creature tap for any colour, and
+  that includes face-down 2/2s, so it is fixing on a body. Other sources: Opulent Palace ×2,
+  Ancient Cornucopia, Devotee ×4. The {2/B}{2/G}{2/U} hybrids (Gurmag Nightwatch, Rakshasa's
+  Bargain, Kin-Tree, Dragonclaw) cost 3 with all colours and are castable with ANY, so they
+  are never a mana failure, only a tempo tax.
+- **(batch 2) Tokens are thin.** Quina doubles tokens, and the token makers so far are
+  Monument, Essence Anchor and Goldkeeper Treasure. Face-down dread creatures are NOT
+  tokens.
+
 ## 4. Running verdicts
 
 Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ marginal · ✗ out`.
@@ -176,5 +200,40 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | Undergrowth Recon | ◇ | F5. Needs lands in the yard, which dread supplies. |
 | Restore with Empathy | △ | 3-mana instant regrowth +4 life. Under the Skin does more. |
 | Elemental Teachings | △ | 5-MV ramp. Only interesting under F5. |
+
+### Batch 2 (cards 31–60)
+
+| Card | Verdict | Note |
+|---|---|---|
+| Kin-Tree Severance | ★★ | Instant exile of any permanent with MV ≥3. {2/W}{2/B}{2/G}, so 4 mana in BG. |
+| Lie in Wait | ★★ | Regrow a creature, then bite for its power. Removal plus card advantage plus a leave event. A BGU 3-drop, so it needs fixing on curve. |
+| Fangkeeper's Familiar | ★★ | Flash 3/3 with three modes: surveil 3 and 3 life, enchantment kill, or counter a creature spell. |
+| Awaken the Honored Dead | ★★ | Saga: I kills a nonland permanent, II mills 3, III regrows a creature or land. |
+| Teval, Arbiter of Virtue | ★★ | 5-MV 6/6 flying lifelink that gives delve to everything. Delve is a leave engine (F3 tension with delirium). |
+| Enduring Vitality | ★★ | Every creature taps for any colour, face-down ones included. Fixing (F4) on a recursive body. |
+| Opulent Palace ×2 | ★★ | Tapped tri-land. Take both. |
+| Kheru Goldkeeper | ★ | 4-MV 3/3 flier; Treasure on leave events; renew grants 2 counters and flying. |
+| Attuned Hunter | ★ | 3/3 trample that gains a counter on leave events. Bridges the leave and counters engines. |
+| Champion of Dusan | ★ | 4/2 trample for 3. Renew from the yard gives a counter and trample. Dread bins it, so it is value either way. |
+| Stalwart Successor | ★ | 3/2 menace. Adds +1 counter to each creature's first counter of the turn. |
+| Auroral Procession | ★ | 2-mana instant regrowth of ANY card. A leave event on your turn. |
+| Rakshasa's Bargain | ★ | Instant: dig 4, keep 2, bin 2. Fills and draws. |
+| Tarmogoyf | ★ | 2-drop that reads every graveyard. Dread plus mill makes it 4/5+. |
+| Something Worth Saving | ★ | 2-mana mill 4, keep a permanent. Delirium fuel. |
+| Felling Blow | ★ | Counter plus bite (sorcery). Interaction and F6. |
+| Dragonclaw Strike | ◇ | Double P/T, then fight. 4 mana in GU. Interaction, but sorcery and creature-dependent. |
+| Gurmag Nightwatch ×2 | ◇ | 3/3 that mills 2 or 3 with selection. Filler fuel. |
+| Lotuslight Dancers | ◇ | 5-MV 3/6 lifelink that entombs a B, a G and a U card. Feeds Lie in Wait and delirium. |
+| True Ancestry | ◇ | Regrow a permanent plus a Clue. |
+| Kotis, the Fangkeeper | ◇ | Indestructible 2/1. Its free-cast trigger needs connected damage. |
+| Budding Insurgent | ◇ | 3/3 vigilance; sacrifice it to kill an artifact or enchantment. |
+| Ancient Cornucopia | ◇ | Mana rock plus life. Vitality does the fixing better. |
+| Emil, Vastlands Roamer | ◇ | Trample for creatures with counters; a Fractal maker as a mana sink. |
+| Inspiring Call | ◇ | Draws per creature with a counter. Needs Onslaught-level density. |
+| Cycle of Renewal | △ | Land-swap ramp. Only interesting under F5. |
+| Michelangelo, Game Master | △ | Disappear counter. Few leave-battlefield events here. |
+| Gardenize | △ | Mana from creature deaths. Not this deck's axis. |
+| Quina, Qu Gourmet | △ | Token doubler with almost no tokens (face-down creatures are not tokens). |
+| Death Begets Life | △ | 8-MV wrath in a creature deck. It already lives in deck 62. |
 
 ## 5. Consolidated plan (live)
