@@ -4,12 +4,12 @@
 #: colors: U
 #: plan: control
 #: tier: B — GRADED 2026-07, held one band UNDER the measurable floor since the 2026-10-11 tune,
-#: tier: which reads A on interaction 9 plus card advantage 12 at a 4.06 curve. RE-GRADE PENDING
+#: tier: which reads A on interaction 9 plus card advantage 12 at a 3.92 curve. RE-GRADE PENDING
 #: tier: the owner's call. Against the rubric an A needs four things:
 #: tier:   A-FLOOR — yes since 2026-10-11: interaction 9 clears the (re-derived, 2026-09-02)
 #: tier:     threshold of seven (Ugin, Mana Sculpt, Three Steps Ahead, Get Out came in).
 #: tier:   COHERENT ENGINE — yes. Rooms into Fractured Realm into Omniscience, with real doubling.
-#: tier:   TIGHT CURVE — no. 4.06 is among the slowest on the roster, on 11 early drops.
+#: tier:   TIGHT CURVE — no. 3.92 is among the slowest on the roster, on 11 early drops.
 #: tier:   AT MOST ONE CLEAR WEAKNESS — no, and the two COMPOUND: a 3.97-curve deck holding seven
 #: tier:   answers loses to a fast start in a way neither problem would cause alone. Secret
 #: tier:   Invasion narrowed both gaps at once — it is the deck's only card that is removal, a
@@ -22,15 +22,14 @@
 #: tier: greedier each round. If a first session is lost to a resolved threat rather than to a
 #: tier: slow start, that sequence is what was wrong, not any one swap.
 #: tier: TWO THINGS THE FLOOR CANNOT SEE, both arguing DOWN. `deck.py engines` reports "counters:
-#: tier: enablers, no payoff — your engine has no reward": Ramos, Pensive Professor and
-#: tier: Norman Osborn all make +1/+1 counters and nothing in the deck cares. And 13 central themes with `shape` reading BALANCED/neither is diffuse.
+#: tier: enablers, no payoff — your engine has no reward": Pensive Professor still makes +1/+1
+#: tier: counters and nothing in the deck cares (Ramos and Norman Osborn were cut 2026-10-11). And 11 central themes with `shape` reading BALANCED/neither is diffuse.
 #: tier: WHAT ARGUES UP, and A is genuinely close. The bombs are PRESENT, not aspirational —
-#: tier: Omniscience, Summon: Bahamut (four unconditional destroys under Fractured Realm), Krang
-#: tier: Utrom Warlord and The Walls of Ba Sing Se are all in the 60, and Walls is the broadest
-#: tier: of the THREE sources behind protection 3: "other permanents you control have
-#: tier: indestructible" covers every one of them, while Krang carries its own indestructible
-#: tier: and grants it to other artifact creatures, and Secret Invasion
-#: tier: brings ward {2}. (This line read "protection reads 3" until 2026-07-31; the figure had
+#: tier: Omniscience, Summon: Bahamut (four unconditional destroys under Fractured Realm), Ugin
+#: tier: and The Walls of Ba Sing Se are all in the 60, and Walls is the broadest
+#: tier: of the TWO sources behind protection 2: "other permanents you control have
+#: tier: indestructible" covers every one of them, and Secret Invasion
+#: tier: brings ward {2} (Krang, the third source, was cut 2026-10-11). (This line read "protection reads 3" until 2026-07-31; the figure had
 #: tier: moved and --audit-rationale cannot see it, because a copula between a label and its
 #: tier: number hides the figure from the sweep — the live G-26 residual, so check this one by
 #: tier: hand.) Every coloured card casts on curve at >=90% — and distinctness is the
@@ -43,7 +42,8 @@
 #: tier: converts into a mana sink.
 #: tier: THE SECOND WIN CONDITION costs two slots because the payoff was already here. The Water
 #: tier: Crystal's "if an opponent would mill, they mill that many plus four" was earning its slot
-#: tier: as a cost reducer; Riverchurn Monument and Scrabbling Skullcrab convert it into a clock.
+#: tier: as a cost reducer; Riverchurn Monument and Master's Councillors (3 a turn, 7 with the Crystal)
+#: tier: convert it into a clock, and Jace, Reality Sculptor's 25-loyalty 0 is the mill-shaped kill.
 #: tier: Read it as inevitability that needs one specific card, not a second archetype — and read
 #: tier: it as a CLOCK, never as interaction (G-62).
 #: tier: TO RE-GRADE TO A, the measurable gap is interaction, and `deck.py tier 51 --to A` prints
@@ -67,9 +67,7 @@
 #: archetype: THE BIGGEST TARGET IS NOT A ROOM. Archmage of Runes reads "whenever you cast an
 #: archetype: instant or sorcery spell, draw a card" — doubled, that is TWO cards per spell, and it
 #: archetype: is the single largest thing Fractured Realm does in this deck. The other permanents it
-#: archetype: doubles: Pensive Professor, Ramos's counters, Norman Osborn's connive,
-#: archetype: Ghostly Keybearer's unlock, Lady Octopus's ingenuity counters (two per turn ->
-#: archetype: FOUR), Scrabbling Skullcrab's Eerie mill, Tishana's Tidebinder, Tanufel Rimespeaker's draws,
+#: archetype: doubles: Pensive Professor, Ghostly Keybearer's unlock, Tishana's Tidebinder, Tanufel Rimespeaker's draws,
 #: archetype: The Dawning Archaic — and Summon: Bahamut, whose SAGA CHAPTERS are
 #: archetype: triggered abilities, so I and II each destroy TWO nonland permanents and III draws
 #: archetype: four. That is the deck's only effect that DESTROYS anything.
@@ -201,7 +199,7 @@
 #: notes: 2026-10-11 tune (interaction 6 -> 10, floor B -> A): -Stormkeld Prowler/+Get Out, -2 Gilded
 #: notes: Lotus/+Ugin, Eye of the Storms and +Mana Sculpt, -Matzalantli/+Three Steps Ahead, -1 Island/
 #: notes: +Agna Qel'a. UGIN exiles a coloured permanent on every COLORLESS spell — Eternity Elevator,
-#: notes: Ramos, Bahamut, Walls, Planetarium, Dawning Archaic, Krang, Keys — and its 0 adds {C}{C}{C}
+#: notes: Bahamut, Walls, Planetarium, Dawning Archaic, Keys (Ramos and Krang since cut) — and its 0 adds {C}{C}{C}
 #: notes: in place of Lotus. MANA SCULPT refunds the countered spell's mana with a Wizard out
 #: notes: (Archmage, Pensive Professor, Tidebinder). Gilded Lotus left the protect header by request.
 #: notes: Then -Bruce Banner/+Tanufel Rimespeaker ("whenever you cast a spell with mana value 4 or
@@ -209,6 +207,15 @@
 #: notes: Wizard for Mana Sculpt) and -Floodpits Drowner/+Yue, the Moon Spirit ("Waterbend {5}, {T}:
 #: notes: cast a noncreature spell from your hand without paying its mana cost" — Omniscience,
 #: notes: Ugin, Planetarium, Rooms; waterbend taps artifacts and creatures). Interaction 10 -> 9.
+#: notes: Then six more (2026-10-11): -Krang/+Gogo, Master of Mimicry ("{X}{X}, {T}: Copy target
+#: notes: activated or triggered ability you control X times" — Bahamut's destroys, Drowned Diner,
+#: notes: Yue's free cast, Ugin's exile trigger), -Ramos/+The Theorist, Jace Beleren, -Lady Octopus/
+#: notes: +Geist of Saint Thalia (noncreature spells cost {1} less), -Norman Osborn/+Creeping Peeper
+#: notes: (its {U} pays for enchantments and door unlocks — Omniscience is an enchantment),
+#: notes: -Scrabbling Skullcrab/+Master's Councillors (mill 3 on your second draw, 7 with the
+#: notes: Crystal), -Spellgyre/+Jace, Reality Sculptor (+1 empowers the Jace token by your Island
+#: notes: count; 0 exiles all but the bottom card of their library once Jaces total 25 loyalty).
+#: notes: Protection 3 -> 2 (Krang). Ugin now has six colorless spells to trigger on.
 
 # Rooms — cheap on the front, a mana sink on the back
 1 Underwater Tunnel // Slimy Aquarium (DSK) 79
@@ -221,16 +228,16 @@
 1 The Eternity Elevator (EOE) 241
 1 The Water Crystal (FIN) 85
 1 Archmage of Runes (FDN) 30
-1 Lady Octopus, Inspired Inventor (SPM) 35
-1 Ramos, Dragon Engine (FDN) 678
+1 Geist of Saint Thalia (FRA) 214
 1 Yue, the Moon Spirit (TLA) 83
+1 Creeping Peeper (DSK) 46
 
 # Card advantage — Omniscience needs a hand to spend
 1 Cerebral Download (EOE) 48
 1 Finale of Revelation (FDN) 589
-1 Spellgyre (BLB) 72
 1 Pensive Professor (SOS) 63
 1 Tanufel Rimespeaker (ECL) 77
+1 The Theorist, Jace Beleren (FRA) 43
 
 # Counters
 1 Long River's Pull (BLB) 58
@@ -244,16 +251,17 @@
 
 # Mill — the alternate clock. The Water Crystal turns every mill here into +4
 1 Riverchurn Monument (DFT) 57
-1 Scrabbling Skullcrab (DSK) 71
+1 Master's Councillors (HOB) 47
+1 Jace, Reality Sculptor (FRA) 216
 
 # Room access — Keys unlocks Fractured Realm's {5}{U}{U} door for four total mana
 1 Keys to the House (DSK) 251
 
 # Threats — the clock, now eight cards rather than five
-1 Norman Osborn (SPM) 39
 1 Ghostly Keybearer (DSK) 61
 1 Kiora, the Rising Tide (FDN) 45
 1 Overlord of the Floodpits (DSK) 68
+1 Gogo, Master of Mimicry (FIN) 54
 
 # The top end
 1 Summon: Bahamut (FIN) 1
@@ -261,7 +269,6 @@
 1 Planetarium of Wan Shi Tong (TLA) 259
 1 Omniscience (FDN) 161
 1 The Dawning Archaic (SOS) 1
-1 Krang, Utrom Warlord (TMT) 175
 1 Ugin, Eye of the Storms (TDM) 1
 
 # Lands (24)
@@ -270,7 +277,7 @@
 1 Agna Qel'a (TLA) 264
 
 # Flex — options (comments; not part of the 60). See: deck.py flex 51
-#~ -Krang, Utrom Warlord | +Island | THE 25TH LAND, deliberately NOT taken 2026-07-31 — the
+#~ note: applied — Gogo, Master of Mimicry in for Krang, Utrom Warlord.
 #~   list stands as is. Re-opened by the front-face type fix: Matzalantli was being counted as
 #~   a land, so this deck runs 24, not 25, and keepable is 84.4% (not the 86.0% the tier block
 #~   once quoted), which `consistency` flags as low. What the 25th buys: keepable 84.4 -> 86.0%,
