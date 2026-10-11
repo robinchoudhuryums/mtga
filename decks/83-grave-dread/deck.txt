@@ -54,6 +54,10 @@
 #: notes: Fearless l'Cie for Warden of the Grove, Defiled Crypt for Break Down the Door. The
 #: notes: deck now leans on leave-the-graveyard payoffs (Kishla, Fang, Goldkeeper, Roots, Crypt)
 #: notes: over the counters layer. Interaction 8 -> 7 (the A edge), card advantage 4 -> 6.
+#: notes: 2026-10-11 manabase (owner's call, option A of two measured): Breeding Pool 3 -> 4,
+#: notes: Watery Grave 2 -> 4, one fewer Forest, Island and Swamp. Sources U 12/B 13/G 15 ->
+#: notes: U 14/B 14/G 15; cards under 90% on curve 28 -> 23. Option B (a second copy of each Verge
+#: notes: for two more basics) measured 15/14/16 and 19 under 90%, held back.
 
 # Dread engine
 2 Hauntwoods Shrieker (DSK) 182
@@ -103,11 +107,11 @@
 # Lands
 2 Opulent Palace (TDM) 264
 4 Overgrown Tomb (ECL) 266
-3 Breeding Pool (EOE) 251
-2 Watery Grave (EOE) 261
+4 Breeding Pool (EOE) 251
+4 Watery Grave (EOE) 261
 1 Wastewood Verge (DFT) 268
 1 Willowrush Verge (DFT) 270
 1 Gloomlake Verge (DSK) 260
-4 Forest (FRA) 289
-3 Island (FRA) 283
-3 Swamp (FRA) 285
+3 Forest (FRA) 289
+2 Island (FRA) 283
+2 Swamp (FRA) 285
