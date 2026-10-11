@@ -398,6 +398,25 @@ around 2027. The deck has roughly one rotation of life.
 your hand") reads as no role, so card advantage is under-counted. The deck's real card
 advantage (dread selection, Analyst, Kishla, Hollowmurk) is mostly invisible to the floor.
 
+**REVISION 1 (owner, 2026-10-11): one Sultai Devotee instead of four.**
+- Changes: −3 Devotee and −Cryptid Inspector; +Jenova, +The Coming of Galactus,
+  +Stalwart Successor, +Exdeath.
+- Manabase rebalanced toward black: Overgrown Tomb 3→4, Breeding Pool 3, Watery Grave 2,
+  Forest 6→4, Island 3, Swamp 2→3. Sources are now U 12 / B 13 / G 15.
+- On-curve changes, measured on the same 60 spells under the old and new manabase:
+  - Galactus 64→73%;
+  - Glarb, Lie in Wait and Awaken 73→76%;
+  - Hollowmurk and Witherbloom Charm 77→80%;
+  - Exdeath and Stalwart 82→85%;
+  - Shrieker and Vitality 76→72% (one fewer G source).
+- The Devotees were never counted in those figures, since dorks are not land drops (G-35).
+  Their loss is real fixing the model does not price. Vitality is now the only creature
+  fixing.
+- Floor still A: interaction 10, card advantage 5, avg MV 3.58.
+- Cryptid Inspector was the 4th cut; alternatives are Tarmogoyf and Rakshasa's Bargain.
+- Exdeath (6 permanent cards in the yard) sits in the stay-full cluster against the
+  leave engine (F3). Muldrotha and Oculus drain the same yard it counts.
+
 **Variant signals:**
 1. Lands-from-graveyard Simic/Sultai (F5, about 14 cards).
 2. "Big lottery" top end. Too thin to build around; noted only.
