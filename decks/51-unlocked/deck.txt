@@ -3,13 +3,13 @@
 #: arena: 51 Unlocked, e96f57e6-cc01-4a39-aa39-ec607462ee3b
 #: colors: U
 #: plan: control
-#: tier: B — GRADED 2026-07. AT the measurable floor since 2026-10-07, which reads B on
-#: tier: interaction 6 plus card advantage 10 at a 3.97 curve (it read A on 7 until Bottomless Pool's bounce moved to the report-only tempo line). The floor is metric-only and says
-#: tier: so; against the rubric an A needs four things and this list fails three.
-#: tier:   A-FLOOR — no since 2026-10-07: interaction 6 is one short of the (re-derived, 2026-09-02) threshold of
-#: tier:     seven, though the sum of 16 clears eleven.
+#: tier: B — GRADED 2026-07, held one band UNDER the measurable floor since the 2026-10-11 tune,
+#: tier: which reads A on interaction 10 plus card advantage 12 at a 3.92 curve. RE-GRADE PENDING
+#: tier: the owner's call. Against the rubric an A needs four things:
+#: tier:   A-FLOOR — yes since 2026-10-11: interaction 10 clears the (re-derived, 2026-09-02)
+#: tier:     threshold of seven (Ugin, Mana Sculpt, Three Steps Ahead, Get Out came in).
 #: tier:   COHERENT ENGINE — yes. Rooms into Fractured Realm into Omniscience, with real doubling.
-#: tier:   TIGHT CURVE — no. 3.97 is among the slowest on the roster, on 12 early drops.
+#: tier:   TIGHT CURVE — no. 3.92 is among the slowest on the roster, on 13 early drops.
 #: tier:   AT MOST ONE CLEAR WEAKNESS — no, and the two COMPOUND: a 3.97-curve deck holding seven
 #: tier:   answers loses to a fast start in a way neither problem would cause alone. Secret
 #: tier:   Invasion narrowed both gaps at once — it is the deck's only card that is removal, a
@@ -23,8 +23,8 @@
 #: tier: slow start, that sequence is what was wrong, not any one swap.
 #: tier: TWO THINGS THE FLOOR CANNOT SEE, both arguing DOWN. `deck.py engines` reports "counters:
 #: tier: 6 enablers, no payoff — your engine has no reward": Ramos, Pensive Professor, Bruce
-#: tier: Banner, Norman Osborn and Stormkeld Prowler all make +1/+1 counters and nothing in the
-#: tier: deck cares. And 13 central themes with `shape` reading BALANCED/neither is diffuse.
+#: tier: Banner and Norman Osborn all make +1/+1 counters and nothing in the
+#: tier: deck cares. And 14 central themes with `shape` reading BALANCED/neither is diffuse.
 #: tier: WHAT ARGUES UP, and A is genuinely close. The bombs are PRESENT, not aspirational —
 #: tier: Omniscience, Summon: Bahamut (four unconditional destroys under Fractured Realm), Krang
 #: tier: Utrom Warlord and The Walls of Ba Sing Se are all in the 60, and Walls is the broadest
@@ -37,8 +37,8 @@
 #: tier: hand.) Every coloured card casts on curve at >=90% — and distinctness is the
 #: tier: cleanest on the roster at 71% with ZERO shared cards. The manabase was described as
 #: tier: FLAWLESS on the strength of 86.0% keepable; that figure was wrong. It counted
-#: tier: Matzalantli as a land, which it is not — you cast it for {3} and only its BACK face
-#: tier: is a land. The deck runs 24 lands, not 25, and keepable is 84.4%, which `consistency`
+#: tier: the since-cut Matzalantli as a land, which it was not — only its BACK face
+#: tier: was a land. The deck runs 24 lands, not 25, and keepable is 84.4%, which `consistency`
 #: tier: flags as low. The on-curve half of the claim still holds; the keepable half does not.
 #: tier: The Room suite also means this deck has no dead late-game cards: every cheap answer
 #: tier: converts into a mana sink.
@@ -49,7 +49,7 @@
 #: tier: it as a CLOCK, never as interaction (G-62).
 #: tier: TO RE-GRADE TO A, the measurable gap is interaction, and `deck.py tier 51 --to A` prints
 #: tier: the fillers. Unplayed, with 20 craft targets.
-#: protect: Mirror Room // Fractured Realm; Omniscience; Gilded Lotus; The Eternity Elevator; Archmage of Runes; The Dawning Archaic; Kiora, the Rising Tide
+#: protect: Mirror Room // Fractured Realm; Omniscience; The Eternity Elevator; Archmage of Runes; The Dawning Archaic; Kiora, the Rising Tide
 #: archetype: MONO-BLUE ROOMS CONTROL. Every Room is two spells stapled together at opposite
 #: archetype: ends of the curve — a one-mana play on turn one and a five-to-seven-mana play on
 #: archetype: turn eight, from the same card. That is exactly the shape a control deck wants,
@@ -68,7 +68,7 @@
 #: archetype: THE BIGGEST TARGET IS NOT A ROOM. Archmage of Runes reads "whenever you cast an
 #: archetype: instant or sorcery spell, draw a card" — doubled, that is TWO cards per spell, and it
 #: archetype: is the single largest thing Fractured Realm does in this deck. The other permanents it
-#: archetype: doubles: Pensive Professor, Stormkeld Prowler, Ramos's counters, Norman Osborn's connive,
+#: archetype: doubles: Pensive Professor, Ramos's counters, Norman Osborn's connive,
 #: archetype: Ghostly Keybearer's unlock, Lady Octopus's ingenuity counters (two per turn ->
 #: archetype: FOUR), Scrabbling Skullcrab's Eerie mill, Tishana's Tidebinder, Floodpits Drowner,
 #: archetype: The Dawning Archaic — and Summon: Bahamut, whose SAGA CHAPTERS are
@@ -94,8 +94,8 @@
 #: archetype: OMNISCIENCE IS THE ONE HONEST TEN-DROP and it is a single copy on purpose. Once it
 #: archetype: resolves every card in hand is free, which is why the deck runs four unconditional
 #: archetype: draw spells and an X-spell: the enchantment does nothing without cards to spend
-#: archetype: it on. Gilded Lotus, The Eternity Elevator and Matzalantli are the ramp that makes
-#: archetype: turn eight realistic rather than aspirational.
+#: archetype: it on. The Eternity Elevator, Ugin's "0: Add {C}{C}{C}" and Mana Sculpt's refund are the
+#: archetype: ramp that makes turn eight realistic; Planetarium can free-cast it outright.
 #: archetype: DISTINCTNESS from deck 47 Grid Overload, the other mono-blue deck. 47 is an
 #: archetype: AFFINITY AGGRO deck: it floods cheap artifacts to shrink its own spells and attacks
 #: archetype: with oversized bodies. This deck fields almost no creatures, wins by resolving
@@ -145,7 +145,7 @@
 #: notes: free-cast target under Omniscience or Planetarium. LADY OCTOPUS reads its own engine:
 #: notes: two ingenuity counters a turn become FOUR under Fractured Realm, and "{T}: cast an
 #: notes: artifact spell with mana value <= counters WITHOUT paying its mana cost" points at the
-#: notes: deck's EIGHT artifacts, including Gilded Lotus, Planetarium and a 9-mana Krang.
+#: notes: deck's artifacts, including Planetarium, The Eternity Elevator and a 9-mana Krang.
 #: notes: BRUCE BANNER AND RAMOS ARE BOTH CASTABILITY CORRECTIONS. Banner's identity is U/R/G and
 #: notes: its cost is {U}; Ramos's identity is WUBRG and its cost is {6}. Neither is a hybrid —
 #: notes: Banner's stray comes from a TRANSFORM cost and Ramos's from a MANA ABILITY, two routes
@@ -176,8 +176,8 @@
 #: notes: and a deck built for one is usually bad at the other. Rooms resolve that: their unlock
 #: notes: abilities are triggers (for Fractured Realm) printed on cards that are cheap early and
 #: notes: expensive late (for the curve Omniscience needs). Nothing else in blue does both.
-#: notes: THE HONEST PROBLEM IS SPEED. Blue's ramp is thin below four mana — Gilded Lotus is
-#: notes: {5}, The Eternity Elevator {5}, Matzalantli {3} — so this deck cannot accelerate out
+#: notes: THE HONEST PROBLEM IS SPEED. Blue's ramp is thin below four mana — The Eternity
+#: notes: Elevator is {5} and Ugin {7} (Gilded Lotus and Matzalantli were cut 2026-10-11) — so this deck cannot accelerate out
 #: notes: of trouble the way a green deck can. It survives on counters and bounce instead, which
 #: notes: means a resolved threat it cannot answer is a much bigger problem here than in any
 #: notes: other deck on the roster.
@@ -188,8 +188,8 @@
 #: notes: 89% with nine shared. The two mono-blue decks are opposite ends of the same colour.
 #: notes: THE MANABASE IS FLAWLESS, the mono-colour payoff this deck shares only with 47 and 49:
 #: notes: every coloured card casts on curve at >=90%, keepable 84.4% (see the tier block —
-#: notes: the earlier 86.0% counted Matzalantli as a land), nothing enters tapped
-#: notes: except Matzalantli's back face. Uthros, Titanic Godcore is the single nonbasic.
+#: notes: the earlier 86.0% counted the since-cut Matzalantli as a land). Two nonbasics: Uthros,
+#: notes: Titanic Godcore enters TAPPED; Agna Qel'a enters untapped beside a basic and loots.
 #: notes: TOLARIAN TERROR IS THE PAYOFF NOBODY EXPECTS. "{6}{U}, costs {1} less for each instant
 #: notes: and sorcery in your graveyard" in a deck running six counterspells and five draw
 #: notes: spells is routinely a turn-five 5/5 with ward {2} — a threat that gets cheaper exactly
@@ -199,6 +199,12 @@
 #: notes: flier and loots on entry and attack — a trigger Fractured Realm doubles to draw four. Floodpits Drowner
 #: notes: was considered and kept (interaction, and a doubled stun). Protection 4 → 3 (Terror's ward), card
 #: notes: advantage 9 → 10, avg MV 4.03 → 3.97.
+#: notes: 2026-10-11 tune (interaction 6 -> 10, floor B -> A): -Stormkeld Prowler/+Get Out, -2 Gilded
+#: notes: Lotus/+Ugin, Eye of the Storms and +Mana Sculpt, -Matzalantli/+Three Steps Ahead, -1 Island/
+#: notes: +Agna Qel'a. UGIN exiles a coloured permanent on every COLORLESS spell — Eternity Elevator,
+#: notes: Ramos, Bahamut, Walls, Planetarium, Dawning Archaic, Krang, Keys — and its 0 adds {C}{C}{C}
+#: notes: in place of Lotus. MANA SCULPT refunds the countered spell's mana with a Wizard out
+#: notes: (Archmage, Pensive Professor, Tidebinder). Gilded Lotus left the protect header by request.
 
 # Rooms — cheap on the front, a mana sink on the back
 1 Underwater Tunnel // Slimy Aquarium (DSK) 79
@@ -208,9 +214,7 @@
 1 Mirror Room // Fractured Realm (DSK) 67
 
 # Ramp — what makes turn eight real
-2 Gilded Lotus (FDN) 725
 1 The Eternity Elevator (EOE) 241
-1 Matzalantli, the Great Door // The Core (LCI) 256
 1 The Water Crystal (FIN) 85
 1 Archmage of Runes (FDN) 30
 1 Lady Octopus, Inspired Inventor (SPM) 35
@@ -226,6 +230,9 @@
 # Counters
 1 Long River's Pull (BLB) 58
 1 Tishana's Tidebinder (LCI) 81
+1 Mana Sculpt (SOS) 57
+1 Three Steps Ahead (OTJ) 75
+1 Get Out (DSK) 60
 
 # Bounce and tempo — blue's answer to a resolved threat
 1 Secret Invasion (MSH) 72
@@ -243,7 +250,6 @@
 1 Ghostly Keybearer (DSK) 61
 1 Kiora, the Rising Tide (FDN) 45
 1 Overlord of the Floodpits (DSK) 68
-1 Stormkeld Prowler (WOE) 71
 
 # The top end
 1 Summon: Bahamut (FIN) 1
@@ -252,10 +258,12 @@
 1 Omniscience (FDN) 161
 1 The Dawning Archaic (SOS) 1
 1 Krang, Utrom Warlord (TMT) 175
+1 Ugin, Eye of the Storms (TDM) 1
 
 # Lands (24)
 1 Uthros, Titanic Godcore (EOE) 260
-23 Island (MSH) 289
+22 Island (MSH) 289
+1 Agna Qel'a (TLA) 264
 
 # Flex — options (comments; not part of the 60). See: deck.py flex 51
 #~ -Krang, Utrom Warlord | +Island | THE 25TH LAND, deliberately NOT taken 2026-07-31 — the
