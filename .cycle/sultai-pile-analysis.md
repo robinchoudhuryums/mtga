@@ -1,7 +1,8 @@
 # Sultai Manifest Dread pile — analysis (TEMPORARY working doc)
 
-**Status: IN PROGRESS.** Delete this file once the deck is drafted (`/draft-deck`) and the
-findings are folded into its `#: notes:` block. It is a scratchpad, not a source of truth;
+**Status: DRAFTED as deck 83 (`decks/83-grave-dread/`) on 2026-10-11; the owner is still
+refining it.** The durable findings are already in deck 83's `#: notes:`. Delete this file
+when refinement ends; until then, its per-card verdicts are the bench. It is a scratchpad, not a source of truth;
 decks/ are.
 
 **Source list:** Robin's pile, 2026-10-11. It has 118 distinct names (≈126 copies) and

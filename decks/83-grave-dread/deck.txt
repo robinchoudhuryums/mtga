@@ -1,0 +1,98 @@
+#: name: Grave Dread (Sultai manifest dread)
+#: format: Standard
+#: colors: BGU
+#: plan: midrange
+#: archetype: SULTAI MANIFEST-DREAD x LEAVE-THE-GRAVEYARD MIDRANGE, drafted 2026-10-11 from
+#: archetype: Robin's Sultai pile (.cycle/sultai-pile-analysis.md). Every manifest dread is
+#: archetype: already a 2-for-1: a 2/2 body, one card binned, and a choice of two. Ten dread
+#: archetype: sources (Hauntwoods Shrieker x2 on attack, Abhorrent Oculus each opponent upkeep,
+#: archetype: Growing Dread, Under the Skin, Break Down the Door, Valgavoth's Onslaught)
+#: archetype: stock the yard, and Tarkir-Sultai's "a card leaves your graveyard during your
+#: archetype: turn" cluster cashes it in: Kishla Skimmer draws, Kheru Goldkeeper makes
+#: archetype: Treasure, Attuned Hunter grows. Muldrotha, Teval's delve, renew, Oculus's
+#: archetype: exile cost and the regrowth cards are the leave events. A +1/+1-counter layer
+#: archetype: (Warden of the Grove enduring on every face-down entry, Cryptid Inspector,
+#: archetype: Growing Dread, Stalwart Successor, Jenova) feeds Hollowmurk Siege's draw.
+#: archetype: Shrieker's {1}{G} flips a face-down creature WITHOUT paying its cost, so the
+#: archetype: top end (Koma, Quandrix, Muldrotha, Teval, Sin) doubles as dread hits — chosen
+#: archetype: for static/attack abilities, since a flipped card never "enters".
+#: archetype: Distinct: no deck shares more than 3 nonland cards; deck 62 (UBG wrath-reanimator)
+#: archetype: is the nearest theme neighbour.
+#: tier: B (PROVISIONAL) — an unplayed first draft, held one band UNDER the A floor
+#: tier: (interaction 10, card advantage 5). Residual cap: a three-colour manabase whose
+#: tier: three-pip 3-drops (Glarb, Lie in Wait, Awaken the Honored Dead) cast on curve about
+#: tier: 76% of the time, with one Sultai Devotee and Enduring Vitality as the only nonland
+#: tier: fixing, plus singleton variance across the engine pieces. The floor cannot see the
+#: tier: deck's real card advantage (dread selection, Paranormal Analyst, Kishla, Hollowmurk),
+#: tier: so A is the case to make after games show the mana holds.
+#: protect: Hauntwoods Shrieker; Paranormal Analyst; Kishla Skimmer; Kheru Goldkeeper; Koma, World-Eater; Quandrix, the Proof; Sultai Devotee
+#: notes: Drafted 2026-10-11 from the 118-card Sultai pile (pile analysis, batches 1-4 + revision 1).
+#: notes: Owner's calls: 1 Sultai Devotee rather than 4 (three slots to Jenova, The Coming of
+#: notes: Galactus, Stalwart Successor), Exdeath in for Cryptid Inspector, then Cryptid Inspector
+#: notes: back for Tarmogoyf (its power counts card types across all graveyards — about 3-4 by
+#: notes: turn five, a ceiling near 5-6 — and it feeds none of the deck's engines). The manabase
+#: notes: was moved toward black for those four cards (Overgrown Tomb 4, Forest 4, Swamp 3).
+#: notes: Rules the read surfaced: turning a dread card face up is NOT entering, so ETB
+#: notes: creatures are weak hits; a face-down creature has mana value 0 (Vicious Rivalry was
+#: notes: left out because it kills your own manifests); Exdeath (6 permanent cards in the yard)
+#: notes: and Oculus/Muldrotha draw on the same graveyard. Bench: Moon-Vigil Adherents,
+#: notes: Witherbloom the Balancer, Hapatra, Omnivorous Flytrap, Oblivious Bookworm, Lasyd Prowler,
+#: notes: Deadly Brew, Tarmogoyf. Variant signal held for later: a lands-from-graveyard
+#: notes: Simic/Sultai deck (Mole Man, Icetill Explorer, Glacierwood Siege, Bonny Pall, ~14 cards).
+
+# Dread engine
+2 Hauntwoods Shrieker (DSK) 182
+1 Abhorrent Oculus (DSK) 42
+1 Growing Dread (DSK) 216
+1 Under the Skin (DSK) 203
+1 Break Down the Door (DSK) 170
+1 Valgavoth's Onslaught (DSK) 204
+1 Paranormal Analyst (DSK) 69
+
+# Graveyard-leave + counters engine
+1 Kishla Skimmer (TDM) 201
+1 Kheru Goldkeeper (TDM) 199
+1 Attuned Hunter (TDM) 135
+1 Champion of Dusan (TDM) 137
+1 Glarb, Calamity's Augur (BLB) 215
+1 Hollowmurk Siege (TDM) 192
+1 Warden of the Grove (TDM) 166
+1 Cryptid Inspector (DSK) 174
+1 Stalwart Successor (TDM) 227
+1 Jenova, Ancient Calamity (FIN) 228
+1 Exdeath, Void Warlock (FIN) 220
+
+# Fixing
+1 Sultai Devotee (TDM) 160
+1 Enduring Vitality (DSK) 176
+
+# Interaction + card flow
+1 Kin-Tree Severance (TDM) 200
+1 Lie in Wait (TDM) 203
+1 Fangkeeper's Familiar (TDM) 183
+1 Awaken the Honored Dead (TDM) 170
+1 Drag to the Roots (DSK) 213
+1 Kraven's Last Hunt (SPM) 105
+1 Witherbloom Charm (SOS) 244
+1 Professor Dellian Fel (SOS) 214
+1 Rakshasa's Bargain (TDM) 214
+1 The Coming of Galactus (MSH) 212
+
+# Top end (good dread flips)
+1 Teval, Arbiter of Virtue (TDM) 230
+1 Muldrotha, the Gravetide (FDN) 243
+1 Quandrix, the Proof (SOS) 218
+1 Sin, Spira's Punishment (FIN) 242
+1 Koma, World-Eater (FDN) 121
+
+# Lands
+2 Opulent Palace (TDM) 264
+4 Overgrown Tomb (ECL) 266
+3 Breeding Pool (EOE) 251
+2 Watery Grave (EOE) 261
+1 Wastewood Verge (DFT) 268
+1 Willowrush Verge (DFT) 270
+1 Gloomlake Verge (DSK) 260
+4 Forest (FRA) 289
+3 Island (FRA) 283
+3 Swamp (FRA) 285

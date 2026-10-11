@@ -44,6 +44,11 @@ If a source you control would deal damage to an opponent, prevent that damage an
 Unholy Annex // Ritual Chamber,Enchantment — Room // Enchantment — Room,"At the beginning of your end step, draw a card. If you control a Demon, each opponent loses 2 life and you gain 2 life. Otherwise, you lose 2 life.
 (You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.) // When you unlock this door, create a 6/6 black Demon creature token with flying.
 (You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",B,Room; lifegain; pay life; card draw; tokens,DSK,118,Rare,52a,,6.5,seed
+Valgavoth's Onslaught,Sorcery,"Manifest dread X times, then put X +1/+1 counters on each of those creatures. (To manifest dread, look at the top two cards of your library, then put one onto the battlefield face down as a 2/2 creature and the other into your graveyard. Turn it face up any time for its mana cost if it's a creature card.)",G,counters; graveyard; selection; manifest; tokens; manifest dread,DSK,204,Rare,83,,3.0,seed
+Break Down the Door,Instant,"Choose one —
+• Exile target artifact.
+• Exile target enchantment.
+• Manifest dread. (Look at the top two cards of your library. Put one onto the battlefield face down as a 2/2 creature and the other into your graveyard. Turn it face up any time for its mana cost if it's a creature card.)",G,graveyard; removal; selection; manifest; tokens; manifest dread,DSK,170,Uncommon,83,,3.0,seed
 Conductive Machete,Artifact — Equipment,"When this Equipment enters, manifest dread, then attach this Equipment to that creature. (Look at the top two cards of your library. Put one onto the battlefield face down as a 2/2 creature and the other into your graveyard. Turn it face up any time for its mana cost if it's a creature card.)
 Equipped creature gets +2/+1.
 Equip {4}",Colorless,Equipment; reanimator; graveyard; etb; equipment; pump; selection; manifest; tokens; manifest dread; equip,DSK,244,Uncommon,38,,4.5,hand
@@ -53,15 +58,23 @@ Flying",U,Nightmare; bounce; flying; evasion,DSK,58,Uncommon,51,,2.0,seed
 Get Out,Instant,"Choose one —
 • Counter target creature or enchantment spell.
 • Return one or two target creatures and/or enchantments you own to your hand.",U,counterspell,DSK,60,Uncommon,51,,3.0,seed
+Growing Dread,Enchantment,"Flash
+When this enchantment enters, manifest dread. (Look at the top two cards of your library. Put one onto the battlefield face down as a 2/2 creature and the other into your graveyard. Turn it face up any time for its mana cost if it's a creature card.)
+Whenever you turn a permanent face up, put a +1/+1 counter on it.",U/G,counters; graveyard; etb; selection; manifest; tokens; manifest dread; flash; tempo,DSK,216,Uncommon,83,,4.0,seed
 Keys to the House,Artifact,"{1}, {T}, Sacrifice this artifact: Search your library for a basic land card, reveal it, put it into your hand, then shuffle.
 {3}, {T}, Sacrifice this artifact: Lock or unlock a door of target Room you control. Activate only as a sorcery.",Colorless,sacrifice; ramp,DSK,251,Uncommon,51,"Deck 51: the case is Fractured Realm specifically - its {5}{U}{U} door for {1} cast + {3} activate = 4 total, split across turns. Saves 0-1 on the other four Rooms. Also a 'fully unlock' trigger for Eerie.",5.2,hand
 Overgrown Zealot,Creature — Elf Druid,"{T}: Add one mana of any color.
 {T}: Add two mana of any one color. Spend this mana only to turn permanents face up.",G,Elf; Druid; mana,DSK,193,Uncommon,50,,6.0,hand
+Paranormal Analyst,Creature — Human Detective,"Whenever you manifest dread, put a card you put into your graveyard this way into your hand.",U,Human; Detective; graveyard; manifest; tokens; manifest dread,DSK,69,Uncommon,83,,2.0,seed
 Scrabbling Skullcrab,Creature — Crab Skeleton,"Eerie — Whenever an enchantment you control enters and whenever you fully unlock a Room, target player mills two cards. (They put the top two cards of their library into their graveyard.)",U,Crab; Skeleton; graveyard; mill; eerie,DSK,71,Uncommon,51; 51a,"Deck 51: Eerie mills 2 on every enchantment entering and every Room fully unlocked -> 6 with Water Crystal, and Fractured Realm DOES double it (triggered ability) for 12. The on-theme mill card.",7,hand
 Shroudstomper,Creature — Elemental,"Deathtouch
 Whenever this creature enters or attacks, each opponent loses 2 life. You gain 2 life and draw a card.",W/B,Elemental; lifegain; card draw; deathtouch; combat; removal,DSK,233,Uncommon,20,,5.0,hand
+Under the Skin,Sorcery,"Manifest dread. (Look at the top two cards of your library. Put one onto the battlefield face down as a 2/2 creature and the other into your graveyard. Turn it face up any time for its mana cost if it's a creature card.)
+You may return a permanent card from your graveyard to your hand.",G,graveyard; selection; manifest; tokens; manifest dread,DSK,203,Uncommon,83,,2.5,seed
 Valgavoth's Faithful,Creature — Human Cleric,"{3}{B}, Sacrifice this creature: Return target creature card from your graveyard to the battlefield. Activate only as a sorcery.",B,Human; Cleric; reanimator; graveyard; sacrifice,DSK,121,Uncommon,52a,,5.0,seed
 Creeping Peeper,Creature — Eye,"{T}: Add {U}. Spend this mana only to cast an enchantment spell, unlock a door, or turn a permanent face up.",U,Eye; mana,DSK,46,Common,51,,1.5,seed
+Cryptid Inspector,Creature — Elf Warrior,"Vigilance
+Whenever a face-down permanent you control enters and whenever this creature or another permanent you control is turned face up, put a +1/+1 counter on this creature.",G,Elf; Warrior; counters; vigilance; combat,DSK,174,Common,83,,3.0,seed
 Spineseeker Centipede,Creature — Insect,"When this creature enters, search your library for a basic land card, reveal it, put it into your hand, then shuffle.
 Delirium — This creature gets +1/+2 and has vigilance as long as there are four or more card types among cards in your graveyard.",G,Insect; graveyard; ramp; etb; pump; delirium,DSK,199,Common,50,,1.5,seed
 End-Blaze Epiphany,Instant,"End-Blaze Epiphany deals X damage to target creature. When that creature dies this turn, exile a number of cards from the top of your library equal to its power, then choose a card exiled this way. Until the end of your next turn, you may play that card.",R,burn,ECL,134,Rare,24,X-burn removal + impulse; Quintorius/exile payoff,6.0,hand
@@ -77,7 +90,7 @@ Pinnacle Starcage,Artifact,"When this artifact enters, exile all artifacts and c
 Whenever an artifact you control enters, put a +1/+1 counter on target creature.",U/R,Jellyfish; Advisor; counters; flying; evasion,EOE,221,Uncommon,48,Holds Adaptive Automaton's slot in 48 at Uncommon cost.,4.0,hand
 Sunstar Expansionist,Creature — Human Knight,"When this creature enters, if an opponent controls more lands than you, create a Lander token. (It's an artifact with ""{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."")
 Landfall — Whenever a land you control enters, this creature gets +1/+0 until end of turn.",W,Human; Knight; sacrifice; tokens; ramp; etb; landfall; pump; lands,EOE,41,Uncommon,36,,3.0,hand
-"Muldrotha, the Gravetide",Legendary Creature — Elemental Avatar,"During each of your turns, you may play a land and cast a permanent spell of each permanent type from your graveyard. (If a card has multiple permanent types, choose one as you play it.)",U/B/G,Elemental; Avatar; graveyard,FDN,243,Mythic,,,5.5,seed
+"Muldrotha, the Gravetide",Legendary Creature — Elemental Avatar,"During each of your turns, you may play a land and cast a permanent spell of each permanent type from your graveyard. (If a card has multiple permanent types, choose one as you play it.)",U/B/G,Elemental; Avatar; graveyard,FDN,243,Mythic,83,,5.5,seed
 Abyssal Harvester,Creature — Demon Warlock,"{T}: Exile target creature card from a graveyard that was put there this turn. Create a token that's a copy of it, except it's a Nightmare in addition to its other types. Then exile all other Nightmare tokens you control.",B,Demon; Warlock; Nightmare; graveyard; tokens; removal,FDN,54,Rare,52a,,7.0,seed
 Adaptive Automaton,Artifact Creature — Construct,"As this creature enters, choose a creature type.
 This creature is the chosen type in addition to its other types.
@@ -88,6 +101,9 @@ Desecration Demon,Creature — Demon,"Flying
 At the beginning of each combat, any opponent may sacrifice a creature of their choice. If a player does, tap this creature and put a +1/+1 counter on it.",B,Demon; counters; sacrifice; flying; evasion,FDN,603,Rare,general,efficient 6/6 flying B beater (opp-sac edict) — any black midrange,5.5,hand
 Dread Summons,Sorcery,"Each player mills X cards. For each creature card put into a graveyard this way, you create a tapped 2/2 black Zombie creature token. (To mill a card, a player puts the top card of their library into their graveyard.)",B,graveyard; mill; tokens,FDN,604,Rare,,,3.0,seed
 Gilded Lotus,Artifact,{T}: Add three mana of any one color.,Colorless,mana,FDN,725,Rare,51,,7.0,hand
+"Koma, World-Eater",Legendary Creature — Serpent,"This spell can't be countered.
+Trample, ward {4}
+Whenever Koma deals combat damage to a player, create four 3/3 blue Serpent creature tokens named Koma's Coil.",U/G,Serpent; tokens; trample; evasion; ward; protection,FDN,121,Rare,83,,6.0,seed
 "Kykar, Zephyr Awakener",Legendary Creature — Bird Wizard,"Flying
 Whenever you cast a noncreature spell, choose one —
 • Exile another target creature you control. Return that card to the battlefield under its owner's control at the beginning of the next end step.
@@ -293,8 +309,23 @@ Landfall — Whenever a land you control enters, create a 4/4 red Dragon creatur
 Mox Jasper,Legendary Artifact,{T}: Add one mana of any color. Activate only if you control a Dragon.,Colorless,mana,TDM,246,Mythic,,,5.5,seed
 "Neriv, Heart of the Storm",Legendary Creature — Spirit Dragon,"Flying
 If a creature you control that entered this turn would deal damage, it deals twice that much damage instead.",W/B/R,Spirit; Dragon; flying; evasion,TDM,210,Mythic,concept: Mardu,Lost its home when deck 14 converted Mardu->Rakdos (BR) for consistency; needs a Mardu (WBR) shell — no current deck. Build-around concept.,6.5,hand
+"Teval, Arbiter of Virtue",Legendary Creature — Spirit Dragon,"Flying, lifelink
+Spells you cast have delve. (Each card you exile from your graveyard while casting those spells pays for {1}.)
+Whenever you cast a spell, you lose life equal to its mana value.",U/B/G,Spirit; Dragon; graveyard; lifegain; pay life; flying; evasion; lifelink,TDM,230,Mythic,83,,7.0,seed
+Awaken the Honored Dead,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
+I — Destroy target nonland permanent.
+II — Mill three cards.
+III — You may discard a card. When you do, return target creature or land card from your graveyard to your hand.",U/B/G,saga; graveyard; mill; removal,TDM,170,Rare,83,,6.5,seed
 Bloomvine Regent // Claim Territory,Creature — Dragon // Sorcery — Omen,"Flying
 Whenever this creature or another Dragon you control enters, you gain 3 life. // Search your library for up to two basic Forest cards, reveal them, put one onto the battlefield tapped and the other into your hand, then shuffle. (Also shuffle this card.)",G,Dragon; Omen; lifegain; flying; evasion,TDM,136,Rare,,,3.5,seed
+Fangkeeper's Familiar,Creature — Snake,"Flash
+When this creature enters, choose one —
+• You gain 3 life and surveil 3. (Look at the top three cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)
+• Destroy target enchantment.
+• Counter target creature spell.",U/B/G,Snake; counterspell; graveyard; lifegain; removal; etb; selection; surveil; flash; tempo,TDM,183,Rare,83,,6.0,seed
+Hollowmurk Siege,Enchantment,"As this enchantment enters, choose Sultai or Abzan.
+• Sultai — Whenever a counter is put on a creature you control, draw a card. This ability triggers only once each turn.
+• Abzan — Whenever you attack, put a +1/+1 counter on target attacking creature. It gains menace until end of turn.",B/G,counters; card draw; menace; evasion,TDM,192,Rare,83,,6.5,seed
 Maelstrom of the Spirit Dragon,Land,"{T}: Add {C}.
 {T}: Add one mana of any color. Spend this mana only to cast a Dragon spell or an Omen spell.
 {4}, {T}, Sacrifice this land: Search your library for a Dragon card, reveal it, put it into your hand, then shuffle.",Colorless,sacrifice; ramp; mana,TDM,260,Rare,,,4.0,seed
@@ -304,11 +335,18 @@ Roar of Endless Song,Enchantment — Saga,"(As this Saga enters and after your d
 I, II — Create a 5/5 green Elephant creature token.
 III — Double the power and toughness of each creature you control until end of turn.",U/R/G,Saga; sacrifice; tokens; saga; double,TDM,220,Rare,17,Temur (URG) go-wide Saga (5/5 Elephants + team P/T double) — only castable in 5c Spectrum,5.5,hand
 Stillness in Motion,Enchantment,"At the beginning of your upkeep, mill three cards. Then if your library has no cards in it, exile this enchantment and put five cards from your graveyard on top of your library in any order.",U,graveyard; mill,TDM,59,Rare,,,4.0,seed
+Attuned Hunter,Creature — Human Ranger,"Trample
+Whenever one or more cards leave your graveyard during your turn, put a +1/+1 counter on this creature.",G,Human; Ranger; counters; graveyard; trample; evasion,TDM,135,Uncommon,83,,4.0,seed
 Encroaching Dragonstorm,Enchantment,"When this enchantment enters, search your library for up to two basic land cards, put them onto the battlefield tapped, then shuffle.
 When a Dragon you control enters, return this enchantment to its owner's hand.",G,etb; bounce,TDM,142,Uncommon,,,2.5,seed
 Hardened Tactician,Creature — Human Warrior,"{1}, Sacrifice a token: Draw a card.",W/B,Human; Warrior; card draw; sacrifice,TDM,191,Uncommon,55,"Deck 55: {1}, sacrifice a token: draw a card. Converts doomed Mobilize tokens into cards.",4.0,seed
 Karakyk Guardian,Creature — Dragon,"Flying, vigilance, trample
 This creature has hexproof as long as it hasn't dealt damage yet. (It can't be the target of spells or abilities your opponents control.)",U/R/G,Dragon; flying; evasion; vigilance; combat; trample,TDM,198,Uncommon,,,2.5,seed
+Kheru Goldkeeper,Creature — Dragon,"Flying
+Whenever one or more cards leave your graveyard during your turn, create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")
+Renew — {2}{B}{G}{U}, Exile this card from your graveyard: Put two +1/+1 counters and a flying counter on target creature. Activate only as a sorcery.",U/B/G,Dragon; counters; graveyard; tokens; treasure; flying; evasion; renew,TDM,199,Uncommon,83,,5.0,seed
+Kin-Tree Severance,Instant,Exile target permanent with mana value 3 or greater.,W/B/G,removal,TDM,200,Uncommon,83,,4.0,seed
+Rakshasa's Bargain,Instant,Look at the top four cards of your library. Put two of them into your hand and the rest into your graveyard.,U/B/G,graveyard; selection,TDM,214,Uncommon,83,,2.0,seed
 Runescale Stormbrood // Chilling Screech,Creature — Dragon // Instant — Omen,"Flying
 Whenever you cast a noncreature spell or a Dragon spell, this creature gets +2/+0 until end of turn. // Counter target spell with mana value 2 or less. (Then shuffle this card into its owner's library.)",U/R,Dragon; Omen; counterspell; pump; flying; evasion,TDM,221,Uncommon,49,Deck 49: a 4-drop DRAGON that is also a Dragon payoff (+2/+0 on every noncreature or Dragon spell). Hidden from every red filter because its identity is U/R from the {1}{U} Omen half - the FRONT face is {3}{R} and mono-red castable (G-58 bulk-triage variant).,7.2,hand
 Venerated Stormsinger,Creature — Orc Cleric,"Mobilize 1 (Whenever this creature attacks, create a tapped and attacking 1/1 red Warrior creature token. Sacrifice it at the beginning of the next end step.)

@@ -166,6 +166,7 @@ Ghost, Spectral Saboteur
 Ghostly Keybearer
 Giant Cindermaw
 Gilgamesh, Master-at-Arms
+Glarb, Calamity's Augur
 Glider Kids
 Goblin-town Flunkies
 Gogo, Master of Mimicry
@@ -292,6 +293,7 @@ Outrageous Robbery
 Ozai's Cruelty
 Pain 101
 Paradox Surveyor
+Paranormal Analyst
 Personify
 Peter Parker
 Peter Parker // Amazing Spider-Man
@@ -308,6 +310,7 @@ Radiant Lotus
 Rage into the Valley
 Raging Goblinoids
 Rainveil Rejuvenator
+Rakshasa's Bargain
 Rapacious Dragon
 Raph & Leo, Sibling Rivals
 Raph & Mikey, Troublemakers
@@ -419,6 +422,7 @@ United Front
 Unstable Experiment
 Unstoppable Plan
 Unstoppable Slasher
+Valgavoth's Onslaught
 Vastlands Scavenger // Bind to Life
 Venomized Cat
 Verdant Kraken
