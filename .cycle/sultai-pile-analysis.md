@@ -422,3 +422,47 @@ advantage (dread selection, Analyst, Kishla, Hollowmurk) is mostly invisible to 
 1. Lands-from-graveyard Simic/Sultai (F5, about 14 cards).
 2. "Big lottery" top end. Too thin to build around; noted only.
 
+
+## 6. Refinement round 1 (owner pushback on 16 cards + new search), 2026-10-11
+
+**Upgraded after a full re-read:**
+- *Seedship Broodtender* ★★ — a 2-drop that mills 3. Its reanimation is a REAL enter
+  (ETB fires, unlike a flip), with 5 MV5+ targets, and it is a creature-card leave event.
+- *Bonny Pall* ★★ — every attack draws and puts a land from the yard into play, which is
+  a leave event. A flip loses only Beau.
+- *Tam, Mindful First-Year* ★ — its tap makes a creature all colours, so the static gives
+  it hexproof from all colours, at instant speed. Protection 1→2.
+- *Absorbing Man* ★ — 4/4 vigilance for 3. Copying Opulent Palace makes a BGU mana source.
+  It cannot usefully copy a Siege, because the mode is chosen as the card enters and a copy
+  never enters.
+- *Beifong's Bounty Hunters* ★ — the earthbend puts counters on a land creature, which is a
+  Hollowmurk and Stalwart trigger.
+- *Threats Around Every Corner* ★ — with Devotee ×1, its per-face-down basic fetch is the
+  fixing that left with the other three.
+- *Kotis* ★ spice — Kheru renew (2 counters plus flying) or Jenova counters make it connect.
+
+**Held:**
+- *Gardenize* ✗ — it adds only {G}, so it is not fixing.
+- *Cosmogoyf* ◇ — about 0–3 power until Oculus's one-time 6.
+- *Mind into Matter*, *Essence Anchor*, *Defiant Survivor* (only the one Vitality tap),
+  *Zegana*, *Wardens*, *Lotuslight Dancers*, *Chief Warg's Company*: all ◇.
+
+**New (pool regex: face-down / leave-your-graveyard / renew):**
+- Etrata, Deadly Fugitive ★★★ (a noncreature manifest is exiled and cast free);
+- Fang, Fearless l'Cie ★★;
+- Insidious Roots ★★;
+- Overgrown Zealot ★★;
+- Vannifar ★;
+- Soul Enervation ★;
+- Defiled Crypt ★;
+- Qarsi Revenant ★;
+- Sage of the Fang ★;
+- Agent of Kotis ★;
+- Manifest Dread ★;
+- Cryptic Coat ◇.
+
+**ROTATION (a legality fact):** MKM and OTJ leave Standard in 2026. That covers Etrata,
+Insidious Roots, Vannifar, Soul Enervation, Cryptic Coat and Bonny Pall.
+
+**Measured package** (−Bargain +Etrata, −Sin +Bonny, −Champion +Broodtender,
+−Witherbloom Charm +Tam): interaction 10→9, protection 1→2, avg MV 3.61→3.47.
