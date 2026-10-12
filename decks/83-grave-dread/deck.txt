@@ -9,7 +9,7 @@
 #: archetype: Growing Dread, Under the Skin) and Liliana's mill-two stock the yard, and Etrata
 #: archetype: turns a face-down NONCREATURE into a free cast. Tarkir-Sultai's "a card leaves
 #: archetype: your graveyard" cluster cashes the yard in: Kishla Skimmer draws, Kheru
-#: archetype: Goldkeeper makes Treasure, Defiled Crypt makes a Horror, Insidious Roots grows a
+#: archetype: Goldkeeper makes Treasure, Insidious Roots grows a
 #: archetype: Plant army that taps for any colour. Muldrotha, renew (Goldkeeper,
 #: archetype: Qarsi), Seedship Broodtender, Oculus's exile cost and the regrowth cards are the
 #: archetype: leave events. +1/+1 counters (Growing Dread, Jenova, Beifong's earthbend, Roots'
@@ -22,8 +22,8 @@
 #: tier: B (PROVISIONAL) — a lightly played draft, AT the measurable B floor (interaction 7,
 #: tier: card advantage 3, protection 5). Residual cap: a three-colour manabase whose
 #: tier: three-pip 3-drops (Glarb, Lie in Wait, Awaken the Honored Dead) cast on curve about
-#: tier: 76% of the time, with Sultai Devotee, Enduring Vitality, Twitching Doll and Insidious
-#: tier: Roots' tokens as the only nonland fixing, plus singleton variance across the engine pieces. The floor
+#: tier: 76% of the time, with Bloom Tender, Sultai Devotee, Enduring Vitality, Twitching Doll and
+#: tier: Insidious Roots' tokens as the only nonland fixing, plus singleton variance across the engine pieces. The floor
 #: tier: cannot see the deck's real card advantage (dread selection, Paranormal Analyst, Kishla,
 #: tier: Hollowmurk drawing off Innkeeper's Talent and Velocipede counters), so A is the case to make after games show the mana holds.
 #: protect: Hauntwoods Shrieker; Paranormal Analyst; Kishla Skimmer; Kheru Goldkeeper; Koma, World-Eater; Sultai Devotee
@@ -81,6 +81,9 @@
 #: notes: doubles every counter (Velocipede's +1 becomes +2). Card advantage 4 -> 3 on the role
 #: notes: count (Bonny's attack draw), protection 4 -> 5; the metrics floor reads B until a draw
 #: notes: card (Inspiring Call / Terrasymbiosis) lands.
+#: notes: 2026-10-12: Bloom Tender for Defiled Crypt — a 2-drop that taps for all three colours
+#: notes: (Vivid) beats a 4-mana Room that does nothing the turn it lands; the Horror-per-turn
+#: notes: leave payoff was the cost. Leave payoffs now: Kishla, Goldkeeper, Insidious Roots.
 
 # Dread engine
 2 Hauntwoods Shrieker (DSK) 182
@@ -103,7 +106,6 @@
 1 Jenova, Ancient Calamity (FIN) 228
 1 Exdeath, Void Warlock (FIN) 220
 1 Kotis, the Fangkeeper (TDM) 202
-1 Defiled Crypt // Cadaver Lab (DSK) 91
 1 Thunderous Velocipede (DFT) 183
 1 Innkeeper's Talent (BLB) 180
 
@@ -112,6 +114,7 @@
 1 Enduring Vitality (DSK) 176
 1 Tam, Mindful First-Year (ECL) 245
 1 Twitching Doll (DSK) 201
+1 Bloom Tender (ECL) 166
 
 # Interaction + card flow
 1 Lie in Wait (TDM) 203
