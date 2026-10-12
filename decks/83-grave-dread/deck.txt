@@ -4,8 +4,8 @@
 #: plan: midrange
 #: archetype: SULTAI MANIFEST-DREAD x LEAVE-THE-GRAVEYARD MIDRANGE, drafted 2026-10-11 from
 #: archetype: Robin's Sultai pile (.cycle/sultai-pile-analysis.md). Every manifest dread is
-#: archetype: already a 2-for-1: a 2/2 body, one card binned, and a choice of two. Five dread
-#: archetype: cards (Hauntwoods Shrieker x2 on attack, Abhorrent Oculus each opponent upkeep,
+#: archetype: already a 2-for-1: a 2/2 body, one card binned, and a choice of two. Four dread
+#: archetype: cards (Hauntwoods Shrieker on attack, Abhorrent Oculus each opponent upkeep,
 #: archetype: Growing Dread, Under the Skin) and Liliana's mill-two stock the yard, and Etrata
 #: archetype: turns a face-down NONCREATURE into a free cast. Tarkir-Sultai's "a card leaves
 #: archetype: your graveyard" cluster cashes the yard in: Kishla Skimmer draws, Kheru
@@ -20,12 +20,12 @@
 #: archetype: Distinct: no deck shares more than 3 nonland cards; deck 62 (UBG wrath-reanimator)
 #: archetype: is the nearest theme neighbour.
 #: tier: B (PROVISIONAL) — a lightly played draft, AT the measurable B floor (interaction 6,
-#: tier: card advantage 3, protection 5). The interaction count under-reads the list: Muldrotha,
+#: tier: card advantage 4, protection 5). The interaction count under-reads the list: Muldrotha,
 #: tier: Under the Skin, Lie in Wait, Seedship Broodtender and Liliana re-buy Fangkeeper's
 #: tier: Familiar, Awaken the Honored Dead and Galactus from the yard, and four deathtouch bodies
 #: tier: (Glarb, Devotee, Etrata, Qarsi) tax combat. Residual cap: a three-colour manabase whose
 #: tier: three-pip 3-drops (Glarb, Lie in Wait, Awaken the Honored Dead) cast on curve about
-#: tier: 76% of the time, with Bloom Tender, Sultai Devotee, Enduring Vitality, Twitching Doll and
+#: tier: 76% of the time, with Bloom Tender, Sultai Devotee, Twitching Doll and
 #: tier: Insidious Roots' tokens as the only nonland fixing, plus singleton variance across the engine pieces. The floor
 #: tier: cannot see the deck's real card advantage (dread selection, Paranormal Analyst, Kishla,
 #: tier: Hollowmurk drawing off Innkeeper's Talent and Velocipede counters), so A is the case to make after games show the mana holds.
@@ -91,9 +91,15 @@
 #: notes: keeps two creature/land cards (a leave event on your turn for Kishla / Goldkeeper / Roots),
 #: notes: cheats Koma or Sin in at instant speed, and gives power-4+ creatures hexproof and
 #: notes: indestructible. Cost: the 2-mana flier kill; interaction 7 -> 6 (floor stays B).
+#: notes: 2026-10-12: Terrasymbiosis for Enduring Vitality (the counters engine now draws: Jenova,
+#: notes: Innkeeper's Talent and Velocipede put counters every turn; Bloom Tender, Doll, Devotee,
+#: notes: Roots and Goldkeeper carry the ramp) and Absorbing Man for the 2nd Hauntwoods Shrieker
+#: notes: (a 3-mana 4/4 that copies Innkeeper's Talent, Terrasymbiosis, Insidious Roots, Velocipede
+#: notes: or a dual land each turn; a copied Siege gets no mode and a copied Saga no chapters).
+#: notes: Dread cards 5 -> 4. Card advantage 3 -> 4.
 
 # Dread engine
-2 Hauntwoods Shrieker (DSK) 182
+1 Hauntwoods Shrieker (DSK) 182
 1 Abhorrent Oculus (DSK) 42
 1 Growing Dread (DSK) 216
 1 Under the Skin (DSK) 203
@@ -115,10 +121,11 @@
 1 Kotis, the Fangkeeper (TDM) 202
 1 Thunderous Velocipede (DFT) 183
 1 Innkeeper's Talent (BLB) 180
+1 Terrasymbiosis (EOE) 210
+1 Absorbing Man (MSH) 199
 
 # Fixing + protection
 1 Sultai Devotee (TDM) 160
-1 Enduring Vitality (DSK) 176
 1 Tam, Mindful First-Year (ECL) 245
 1 Twitching Doll (DSK) 201
 1 Bloom Tender (ECL) 166
