@@ -1,6 +1,6 @@
 #: name: Dragon King Roku
 #: format: Standard
-#: tier: A — Rakdos (BR) dragons midrange; bombs + 11 interaction (Terror of the Peaks turning every token into damage, 3 sweepers counting Iroh's Demonstration's ping mode), low curve base (14 cards at 1-2 MV) with a dragon payoff cluster at 5. Promoted from B: tightened Mardu->2-color for consistency; A-caliber interaction + closing power.
+#: tier: A — Rakdos (BR) dragons midrange; bombs + 10 interaction (Terror of the Peaks turning every token into damage, 3 sweepers counting Iroh's Demonstration's ping mode), low curve base (14 cards at 1-2 MV) with a dragon payoff cluster at 5. Promoted from B: tightened Mardu->2-color for consistency; A-caliber interaction + closing power.
 #: colors: BR
 #: archetype: Rakdos (B/R) Fire Nation dragons / firebending midrange.
 #: notes: Rakdos (B/R) — Fire Nation / dragons midrange. Tightened from the old Mardu build:
@@ -19,6 +19,9 @@
 #: notes: — card advantage 3 -> 4) and Smaug the Magnificent (an upkeep Treasure every turn, a Dragon
 #: notes: for Sarkhan / Globe / Lathliss); Combustion Technique for Lightning Strike (a 4th Lesson,
 #: notes: instant, exiles). Day of Black Sun kept: choose X under the Dragons' MV 5 to keep them.
+#: notes: Solstice Revelations for the 2nd Firebending Lesson — Lesson count stays 4, and it is card
+#: notes: advantage the classifier does not count (a nonland card to hand, or cast free under the
+#: notes: Mountain count; instant, so firebending combat mana can pay it or its {6}{R} flashback).
 
 # Nonland
 1 The Legend of Roku (TLA) 145
@@ -33,7 +36,8 @@
 1 Firebending Student (TLA) 139
 1 Firebender Ascension (TLA) 137
 1 Fire Nation Cadets (TLA) 134
-2 Firebending Lesson (TLA) 138
+1 Firebending Lesson (TLA) 138
+1 Solstice Revelations (TLA) 153
 1 The Rise of Sozin (TLA) 117
 1 Draconautics Engineer (DFT) 121
 1 Corroding Dragonstorm (TDM) 75
