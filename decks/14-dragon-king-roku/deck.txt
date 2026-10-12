@@ -1,6 +1,6 @@
 #: name: Dragon King Roku
 #: format: Standard
-#: tier: A — Rakdos (BR) dragons midrange; bombs + 11 interaction (Terror of the Peaks turning every token into damage, 3 sweepers counting Iroh's Demonstration's ping mode), low curve base (14 cards at 1-2 MV) with a dragon payoff cluster at 5. Promoted from B: tightened Mardu->2-color for consistency; A-caliber interaction + closing power.
+#: tier: A — Rakdos (BR) dragons midrange; bombs + 13 interaction (Terror of the Peaks turning every token into damage, 3 sweepers counting Iroh's Demonstration's ping mode), low curve base (14 cards at 1-2 MV) with a dragon payoff cluster at 5. Promoted from B: tightened Mardu->2-color for consistency; A-caliber interaction + closing power.
 #: colors: BR
 #: archetype: Rakdos (B/R) Fire Nation dragons / firebending midrange.
 #: notes: Rakdos (B/R) — Fire Nation / dragons midrange. Tightened from the old Mardu build:
@@ -29,6 +29,10 @@
 #: notes: was CUT in this round; the hybrid note above is history.
 #: notes: Improvisation Capstone for Long Feng (CUT — BB at 3 cast on curve 63%): a 5th Lesson and a
 #: notes: late engine (Paradigm recasts it free each first main phase); avg MV 3.56 -> 3.67.
+#: notes: The Last Agni Kai for Zuko's Conviction (instant fight removal that keeps red mana for the
+#: notes: turn) and Electro, Assaulting Battery for Dragonstorm Globe (CUT): 'You don't lose unspent
+#: notes: red mana as steps and phases end' banks every firebending burst for the main phase and
+#: notes: later turns. Cost: the Globe's any-colour mana (black for the BB cards) and its Dragon counters.
 
 # Nonland
 1 The Legend of Roku (TLA) 145
@@ -50,7 +54,7 @@
 1 Corroding Dragonstorm (TDM) 75
 1 Sarkhan, Dragon Ascendant (TDM) 118
 1 Nova Hellkite (EOE) 148
-1 Dragonstorm Globe (TDM) 241
+1 Electro, Assaulting Battery (SPM) 76
 1 Ajani Unrelenting (FRA) 242
 1 Sozin's Comet (TLA) 154
 1 Combustion Technique (TLA) 128
@@ -60,7 +64,7 @@
 1 Chandra, Torch of Defiance (FRA) 244
 1 Uncle Iroh (TLA) 248
 1 Terror of the Peaks (OTJ) 149
-1 Zuko's Conviction (TLA) 123
+1 The Last Agni Kai (TLA) 144
 1 Day of Black Sun (TLA) 94
 1 War Balloon (TLA) 159
 1 Improvisation Capstone (SOS) 120
