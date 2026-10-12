@@ -15,7 +15,7 @@
 #: archetype: adventure (Heartflame Duelist), Appa's own airbend returns
 #: archetype: at {2}, and Bre's end-step free cast off lifegain — which the
 #: archetype: interaction package (Lightning Helix, Sheltered by Ghosts, Prayer of
-#: archetype: Binding, Defibrillating Current, Heartflame's lifelink) feeds on purpose.
+#: archetype: Binding, Heartflame's lifelink) feeds on purpose.
 #: archetype: White token base (Suki, Frontline Rush, Cosmogrand) keeps the board wide,
 #: archetype: and Exalted Sunborn DOUBLES every token it makes — Appa's Allies,
 #: archetype: Antiquities' Spirits, Cosmogrand's Soldiers, Frontline Rush's Goblins.
@@ -31,8 +31,8 @@
 #: tier: credits the interaction suite, but the engine's payoff half concentrates in
 #: tier: a handful of removal-magnet permanents with almost no protection behind
 #: tier: them, and without a payoff on board the exile-cast enablers are fair value
-#: tier: cards. Measured card advantage is near zero (the counter under-reads Bre
-#: tier: and Discover, but not by much). The pile analysis called this the thinnest
+#: tier: cards. Measured card advantage was near zero; the 2026-10-12
+#: tier: impulse adds (Charred Foyer, Lightning) bring it to 3, still thin. The pile analysis called this the thinnest
 #: tier: of the three Mardu builds and the letter should say so. Re-grade after
 #: tier: real games or once the enabler suite proves it can win through removal.
 #: notes: BUILT from the 55-mardu pile analysis (C1 axis; built third per the plan —
@@ -70,7 +70,12 @@
 #: notes: (all duplicates) to 1 mythic + 1 rare (2nd Appa — kept, flash wrath-save has
 #: notes: no substitute — and Shadow). Cosmogrand was never short: library undercounted
 #: notes: it at 1, corrected to the real 2 this same day.
-#~ -Snow Villiers | +Red Tiger Mechan (craft C) | warp is a 10th exile-cast enabler feeding Zuko/Appa/Quintorius on the recast; Snow is the least engine-connected body. Confirmed direction 2026-08; craft when wildcards allow.
+#: notes: 2026-10-12 tune: mana — Sacred Foundry for Scoured Barrens, Godless Shrine for Boiling Rock
+#: notes: Prison, a Mountain for a Plains (tapped-land odds in the first 3 drops 44% -> 24%; R 10 -> 12;
+#: notes: Lightning Helix 73.5 -> 79%). Charred Foyer // Warped Space for Defibrillating Current (an
+#: notes: upkeep impulse = an exile-cast every turn; Warped Space makes one exile-cast a turn free) and
+#: notes: Lightning, Security Sergeant for Snow Villiers (impulse on combat damage). Interaction 10 -> 9.
+#~ note: applied — Lightning, Security Sergeant in for Snow Villiers.
 
 # Exile-cast payoffs
 1 Fire Lord Zuko (TLA) 221
@@ -92,12 +97,13 @@
 1 Exalted Sunborn (EOE) 15
 1 Auron's Inspiration (FIN) 8
 1 Practiced Offense (SOS) 25
+1 Charred Foyer // Warped Space (DSK) 129
 
 # White token base
 2 Cosmogrand Zenith (EOE) 9
 1 Suki, Courageous Rescuer (TLA) 37
 2 Frontline Rush (TDM) 186
-1 Snow Villiers (FIN) 33
+1 Lightning, Security Sergeant (FIN) 560
 
 # Interaction (lifegain-heavy on purpose — it feeds Bre)
 2 Lightning Helix (MKM) 218
@@ -105,7 +111,6 @@
 1 Push // Pull (MKM) 250
 1 Sheltered by Ghosts (DSK) 30
 1 Prayer of Binding (FDN) 739
-1 Defibrillating Current (TDM) 177
 1 Avatar's Wrath (TLA) 12
 
 # Recursion / fixing
@@ -120,7 +125,7 @@
 1 Nomad Outpost (TDM) 263
 1 Razortrap Gorge (DSK) 267
 1 Sun-Blessed Peak (TLA) 280
-1 Boiling Rock Prison (TLA) 267
-1 Scoured Barrens (M21) 250
-11 Plains (MSH) 287
-4 Mountain (MSH) 293
+1 Godless Shrine (EOE) 254
+1 Sacred Foundry (EOE) 256
+10 Plains (MSH) 287
+5 Mountain (MSH) 293
