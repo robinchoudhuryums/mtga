@@ -3,15 +3,16 @@
 #: arena: 50 Hoofprint, a634cf3c-01e0-426e-b46a-38a89f15d7d0
 #: colors: G
 #: plan: midrange
-#: tier: B — PROVISIONAL, AT the measurable floor, which reads B on interaction 6 plus card
-#: tier: advantage 4 at a 3.61 curve (Ghalta's printed {8}{G} inflates that; it costs X less). Two of the three weaknesses this deck was first
+#: tier: B — PROVISIONAL, AT the measurable floor, which reads B on interaction 5 plus card
+#: tier: advantage 4 at a 3.64 curve (Ghalta's printed {8}{G} inflates that; it costs X less). Two of the three weaknesses this deck was first
 #: tier: graded on have since been ADDRESSED, and the letter is held pending play rather than on
 #: tier: the original argument. What remains:
 #: tier: 1. THE REMOVAL IS NEARLY ALL FIGHT EFFECTS, so the interaction and the board are mostly
 #: tier:    the SAME resource. A sweeper still takes both in one card. SOFTENED 2026-08-09:
 #: tier:    Vivien Reid's -3 (flier / artifact / enchantment) is the one removal effect here
-#: tier:    that works with an EMPTY board; the other five remain coupled to the creatures.
-#: tier: 2. THE FINISHERS ARE STILL SORCERY-SPEED PERMANENTS. Protection is now 3 rather than 2 —
+#: tier:    that works with an EMPTY board; of the rest, Heritage Reclamation is the one
+#: tier:    noncreature answer and Hard-Hitting Question, Bite Down and Plow Through are fights.
+#: tier: 2. THE FINISHERS ARE STILL SORCERY-SPEED PERMANENTS. Protection reads 5 —
 #: tier:    Inspiring Call grants indestructible to the whole countered board and Swiftfoot Boots
 #: tier:    covers one creature — but a removal spell on the turn Craterhoof resolves still costs
 #: tier:    the game plan rather than a card.
@@ -21,8 +22,8 @@
 #: tier:    survive. The floor without them is a pile of small mana creatures.
 #: tier: WHAT ARGUES UP: card advantage went 2 -> 3 on a card the classifier UNDER-reads badly —
 #: tier:    Inspiring Call draws one per countered creature, which in a deck multiplying counters
-#: tier:    is routinely three or four cards for {2}{G}. `shape` reads BALANCED 6 / 6 on 21
-#: tier: creatures with 15 early drops: the 2026-10-12 earthbend package added a TALL route. The
+#: tier:    is routinely three or four cards for {2}{G}. `shape` reads BALANCED 6 / 7 on 21
+#: tier: creatures with 14 early drops: the 2026-10-12 earthbend package added a TALL route. The
 #: tier: kill is redundant five ways (Craterhoof, Jumbo Cactuar, Colossification, Famished
 #: tier: Worldsire, and an earthbent land creature under the counter multipliers) rather than one
 #: tier: card deep, and no metric here can see mana PRODUCTION, which is the deck's real engine.
@@ -275,6 +276,13 @@
 #: notes: one target once), Vigorbloom Vanguard in for Druid of the Cowl (still a Druid for Three
 #: notes: Tree City; "each creature you control with a +1/+1 counter on it has vigilance", so a
 #: notes: counter creature attacks and still taps for mana). Card advantage 3 -> 4.
+#: notes: 2026-10-12 (owner's calls): Rockalanche in for Pawpatch Formation ("earthbend X, where X
+#: notes: is the number of Forests you control", flashback {5}{G} — the land-creature kill; fights
+#: notes: and Vivien's -3 still answer a flier, Heritage Reclamation and Vivien an enchantment),
+#: notes: Hexhaven Invigorator in for Summoner's Grimoire (6/6 vigilance; "whenever this creature
+#: notes: is dealt damage, search for up to that many land cards" — Plow Through is the fight that
+#: notes: triggers it; {G}{G}{G}{G} lands on turn four 59% of the time). Interaction 6 -> 5, the
+#: notes: first instant answer gone; Omnipresence now carries the cheat role Grimoire held.
 
 # Mana creatures — bodies, ramp, and Craterhoof's X, all at once
 1 Llanowar Elves (M19) 314
@@ -289,6 +297,7 @@
 1 The Earth Crystal (FIN) 184
 1 Transdimensional Bovine (TMT) 134
 1 Wildwood Scourge (FDN) 236
+1 Hexhaven Invigorator (FRA) 106
 
 # The board-to-mana converter
 1 Enduring Vitality (DSK) 176
@@ -301,11 +310,11 @@
 # Earthbend — a land creature becomes the threat (multiplied counters)
 1 The Legend of Kyoshi // Avatar Kyoshi (TLA) 186
 1 Toph, the Blind Bandit (TLA) 198
+1 Rockalanche (TLA) 192
 
 
 # Haste + hexproof, so a finisher connects the turn it lands
 1 Swiftfoot Boots (BRR) 58
-1 Summoner's Grimoire (FIN) 205
 
 # Trample — without this the finishers are chump-blocked
 1 Garruk's Uprising (M21) 186
@@ -324,7 +333,6 @@
 1 Vivien Reid (FDN) 234
 1 Hard-Hitting Question (MKM) 164
 1 Bite Down (FDN) 212
-1 Pawpatch Formation (BLB) 186
 1 Heritage Reclamation (TDM) 145
 1 Inspiring Call (TLE) 168
 1 Plow Through (DFT) 174
