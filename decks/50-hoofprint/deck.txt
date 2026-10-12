@@ -4,7 +4,7 @@
 #: colors: G
 #: plan: midrange
 #: tier: B — PROVISIONAL, AT the measurable floor, which reads B on interaction 6 plus card
-#: tier: advantage 3 at a 3.61 curve (Ghalta's printed {8}{G} inflates that; it costs X less). Two of the three weaknesses this deck was first
+#: tier: advantage 4 at a 3.61 curve (Ghalta's printed {8}{G} inflates that; it costs X less). Two of the three weaknesses this deck was first
 #: tier: graded on have since been ADDRESSED, and the letter is held pending play rather than on
 #: tier: the original argument. What remains:
 #: tier: 1. THE REMOVAL IS NEARLY ALL FIGHT EFFECTS, so the interaction and the board are mostly
@@ -269,6 +269,12 @@
 #: notes: earthbent land takes +1/+1 counters, so Michelangelo, The Earth Crystal and Doc Samson
 #: notes: multiply it into a second kill that returns when it dies. Kyoshi's chapter-I draw is
 #: notes: not read by the role classifier, so card advantage under-counts here.
+#: notes: 2026-10-12 (owner's calls): Herd Heirloom in for Aloe Alchemist ("target creature you
+#: notes: control with power 4 or greater gains trample and 'whenever this creature deals combat
+#: notes: damage to a player, draw a card'" — repeatable trample AND a draw, where Aloe's plot was
+#: notes: one target once), Vigorbloom Vanguard in for Druid of the Cowl (still a Druid for Three
+#: notes: Tree City; "each creature you control with a +1/+1 counter on it has vigilance", so a
+#: notes: counter creature attacks and still taps for mana). Card advantage 3 -> 4.
 
 # Mana creatures — bodies, ramp, and Craterhoof's X, all at once
 1 Llanowar Elves (M19) 314
@@ -277,7 +283,6 @@
 1 Shang-Chi, Master of Kung Fu (MSH) 187
 1 Topiary Lecturer (SOS) 165
 1 Noxious Newt (SOS) 155
-1 Druid of the Cowl (M19) 177
 1 Elvish Archdruid (FDN) 219
 1 Mona Lisa, Science Geek (TMT) 123
 1 Doc Samson, Super Psychiatrist (MSH) 164
@@ -287,6 +292,7 @@
 
 # The board-to-mana converter
 1 Enduring Vitality (DSK) 176
+1 Vigorbloom Vanguard // Seed Suture (FRA) 161
 
 # The cheat — connects, then puts Craterhoof into play from hand
 1 Michelangelo, Improviser (TMT) 119
@@ -304,7 +310,7 @@
 # Trample — without this the finishers are chump-blocked
 1 Garruk's Uprising (M21) 186
 1 Ghalta the Unstoppable (FRA) 260
-1 Aloe Alchemist (OTJ) 152
+1 Herd Heirloom (TDM) 144
 
 # The four kills
 1 Goldvein Hydra (OTJ) 167
