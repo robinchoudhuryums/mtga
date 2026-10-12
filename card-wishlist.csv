@@ -154,7 +154,7 @@ Dark Knight's Greatsword,Artifact — Equipment,"Job select (When this Equipment
 Equipped creature gets +3/+0 and is a Knight in addition to its other types.
 Chaosbringer — Equip—Pay 3 life. Activate only once each turn.",B,Equipment; tokens; etb; equipment; pump; chaosbringer; job select; equip,FIN,95,Uncommon,38,,4.0,hand
 "Fang, Fearless l'Cie",Legendary Creature — Human Warrior,"Whenever one or more cards leave your graveyard, you draw a card and you lose 1 life. This ability triggers only once each turn.
-(Melds with Vanille, Cheerful l'Cie.)",B,Human; Warrior; graveyard; pay life; card draw,FIN,99,Uncommon,83; 83a,,5.5,seed
+(Melds with Vanille, Cheerful l'Cie.)",B,Human; Warrior; graveyard; pay life; card draw,FIN,99,Uncommon,83a,,5.5,seed
 Lion Heart,Artifact — Equipment,"When this Equipment enters, it deals 2 damage to any target.
 Equipped creature gets +2/+1.
 Equip {2}",Colorless,Equipment; burn; etb; equipment; pump; equip,FIN,261,Uncommon,38,,4.5,hand

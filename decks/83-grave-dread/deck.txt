@@ -8,7 +8,7 @@
 #: archetype: cards (Hauntwoods Shrieker x2 on attack, Abhorrent Oculus each opponent upkeep,
 #: archetype: Growing Dread, Under the Skin, Valgavoth's Onslaught) stock the yard, and Etrata
 #: archetype: turns a face-down NONCREATURE into a free cast. Tarkir-Sultai's "a card leaves
-#: archetype: your graveyard" cluster cashes the yard in: Kishla Skimmer and Fang draw, Kheru
+#: archetype: your graveyard" cluster cashes the yard in: Kishla Skimmer draws, Kheru
 #: archetype: Goldkeeper makes Treasure, Defiled Crypt makes a Horror, Insidious Roots grows a
 #: archetype: Plant army that taps for any colour. Muldrotha, Teval's delve, renew (Goldkeeper,
 #: archetype: Qarsi), Seedship Broodtender, Oculus's exile cost and the regrowth cards are the
@@ -20,12 +20,12 @@
 #: archetype: Distinct: no deck shares more than 3 nonland cards; deck 62 (UBG wrath-reanimator)
 #: archetype: is the nearest theme neighbour.
 #: tier: B (PROVISIONAL) — an unplayed first draft, held one band UNDER the A floor
-#: tier: (interaction 7, card advantage 6, protection 3). Residual cap: a three-colour manabase whose
+#: tier: (interaction 7, card advantage 5, protection 3). Residual cap: a three-colour manabase whose
 #: tier: three-pip 3-drops (Glarb, Lie in Wait, Awaken the Honored Dead) cast on curve about
 #: tier: 76% of the time, with Sultai Devotee, Enduring Vitality and Insidious Roots' tokens as
 #: tier: the only nonland fixing, plus singleton variance across the engine pieces. The floor
 #: tier: cannot see the deck's real card advantage (dread selection, Paranormal Analyst, Kishla,
-#: tier: Fang, Hollowmurk), so A is the case to make after games show the mana holds.
+#: tier: Hollowmurk), so A is the case to make after games show the mana holds.
 #: protect: Hauntwoods Shrieker; Paranormal Analyst; Kishla Skimmer; Kheru Goldkeeper; Koma, World-Eater; Sultai Devotee
 #: notes: Drafted 2026-10-11 from the 118-card Sultai pile (pile analysis, batches 1-4 + revision 1).
 #: notes: Owner's calls: 1 Sultai Devotee rather than 4 (three slots to Jenova, The Coming of
@@ -64,6 +64,10 @@
 #: notes: Measured against option A: cards under 90% on curve 23 -> 28, and the chance of at least
 #: notes: one unconditional tapland among the first three land drops 24% -> 44%. Each extra
 #: notes: Breeding Pool or Watery Grave (for a basic) buys back about one card; Overgrown Tomb none.
+#: notes: 2026-10-12 (owner's call): Liliana the Repentant in for Fang, Fearless l'Cie ("whenever
+#: notes: another creature … you control enters, mill two cards" — face-down dread creatures and
+#: notes: tokens count, so it fills the graveyard every turn; Kishla Skimmer keeps the once-a-turn
+#: notes: leave-the-graveyard draw Fang duplicated). Card advantage 6 -> 5.
 
 # Dread engine
 2 Hauntwoods Shrieker (DSK) 182
@@ -81,7 +85,7 @@
 1 Seedship Broodtender (EOE) 227
 1 Glarb, Calamity's Augur (BLB) 215
 1 Hollowmurk Siege (TDM) 192
-1 Fang, Fearless l'Cie (FIN) 99
+1 Liliana the Repentant (FRA) 231
 1 Insidious Roots (MKM) 208
 1 Qarsi Revenant (TDM) 86
 1 Jenova, Ancient Calamity (FIN) 228
