@@ -27,6 +27,8 @@
 #: notes: every loyalty activation feeds Terror of the Peaks), Draconic Visitor (craft) for Stormshriek
 #: notes: Feral (Smaug's and Sarkhan's Treasures arrive as 5/5 flying Dragons instead). Professor Zei
 #: notes: was CUT in this round; the hybrid note above is history.
+#: notes: Improvisation Capstone for Long Feng (CUT — BB at 3 cast on curve 63%): a 5th Lesson and a
+#: notes: late engine (Paradigm recasts it free each first main phase); avg MV 3.56 -> 3.67.
 
 # Nonland
 1 The Legend of Roku (TLA) 145
@@ -61,7 +63,7 @@
 1 Zuko's Conviction (TLA) 123
 1 Day of Black Sun (TLA) 94
 1 War Balloon (TLA) 159
-1 Long Feng, Grand Secretariat (TLA) 233
+1 Improvisation Capstone (SOS) 120
 1 Draconic Visitor (FRA) 80
 1 Red Hulk (MSH) 149
 1 Iroh's Demonstration (TLA) 141
