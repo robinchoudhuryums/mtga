@@ -1,6 +1,6 @@
 #: name: Dragon King Roku
 #: format: Standard
-#: tier: A — Rakdos (BR) dragons midrange; bombs + 9 interaction (7 removal + 2 sweepers), low curve base (14 cards at 1-2 MV) with a dragon payoff cluster at 5. Promoted from B: tightened Mardu->2-color for consistency; A-caliber interaction + closing power.
+#: tier: A — Rakdos (BR) dragons midrange; bombs + 10 interaction (Terror of the Peaks turning every token into damage, 3 sweepers counting Iroh's Demonstration's ping mode), low curve base (14 cards at 1-2 MV) with a dragon payoff cluster at 5. Promoted from B: tightened Mardu->2-color for consistency; A-caliber interaction + closing power.
 #: colors: BR
 #: archetype: Rakdos (B/R) Fire Nation dragons / firebending midrange.
 #: notes: Rakdos (B/R) — Fire Nation / dragons midrange. Tightened from the old Mardu build:
@@ -8,6 +8,12 @@
 #: notes: and the white lands re-fixed to red/black — 2-color for A-track consistency. The
 #: notes: former U/G identity cards (Professor Zei, Uncle Iroh, Long Feng) are all hybrids
 #: notes: castable in R/B, so they stay. Craft target: Blazemire Verge (untapped B/R) — wishlisted.
+#: notes: 2026-10-12 tune: -2 Mountain +2 Dark Fortress (B sources 11 -> 13; the BB cards Long Feng /
+#: notes: Day of Black Sun / Ozai / The Rise of Sozin each gain ~8-10 points on curve), Terror of the
+#: notes: Peaks for Wandering Musicians (every token maker — Lathliss, Roku, Draconautics, Ran and
+#: notes: Shaw, Cruel Administrator — now also deals damage), Iroh's Demonstration for Photon Blast
+#: notes: Barrage (a Lesson for Iroh / Jeong Jeong / Cadets / Ran and Shaw; 1 to each opposing creature
+#: notes: or 4 to one, for 2 mana).
 
 # Nonland
 1 The Legend of Roku (TLA) 145
@@ -36,14 +42,14 @@
 1 Combustion Man (TLA) 127
 1 Professor Zei, Anthropologist (TLA) 238
 1 Uncle Iroh (TLA) 248
-1 Wandering Musicians (TLA) 250
+1 Terror of the Peaks (OTJ) 149
 1 Zuko's Conviction (TLA) 123
 1 Day of Black Sun (TLA) 94
 1 War Balloon (TLA) 159
 1 Long Feng, Grand Secretariat (TLA) 233
 1 Stormshriek Feral (TDM) 124
 1 Red Hulk (MSH) 149
-1 Photon Blast Barrage (MSH) 147
+1 Iroh's Demonstration (TLA) 141
 
 # Lands (pure-Rakdos re-fix: −Sun-Blessed Peak (W/R tapland) & −2 Plains → +2 Mountain
 # for the 37-pip red primary + Razortrap Gorge (owned, untapped-cond B/R). White cut with Sun Warriors.)
@@ -51,10 +57,10 @@
 1 Blood Crypt (ECL) 262
 1 Blazemire Verge (DSK) 256
 2 Boiling Rock Prison (TLA) 267
-1 Dark Fortress (MSH) 264
+3 Dark Fortress (MSH) 264
 1 Razortrap Gorge (DSK) 267
 5 Swamp (MSH) 292
-11 Mountain (MSH) 294
+9 Mountain (MSH) 294
 
 # Flex — suggested swaps. See: deck.py flex 14
 #~ note: RETIRED 2026-08-11 — the deck now runs BOTH cards, so the either/or this line framed
