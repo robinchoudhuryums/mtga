@@ -1,6 +1,6 @@
 #: name: Dragon King Roku
 #: format: Standard
-#: tier: A — Rakdos (BR) dragons midrange; bombs + 10 interaction (Terror of the Peaks turning every token into damage, 3 sweepers counting Iroh's Demonstration's ping mode), low curve base (14 cards at 1-2 MV) with a dragon payoff cluster at 5. Promoted from B: tightened Mardu->2-color for consistency; A-caliber interaction + closing power.
+#: tier: A — Rakdos (BR) dragons midrange; bombs + 11 interaction (Terror of the Peaks turning every token into damage, 3 sweepers counting Iroh's Demonstration's ping mode), low curve base (14 cards at 1-2 MV) with a dragon payoff cluster at 5. Promoted from B: tightened Mardu->2-color for consistency; A-caliber interaction + closing power.
 #: colors: BR
 #: archetype: Rakdos (B/R) Fire Nation dragons / firebending midrange.
 #: notes: Rakdos (B/R) — Fire Nation / dragons midrange. Tightened from the old Mardu build:
@@ -14,6 +14,11 @@
 #: notes: Shaw, Cruel Administrator — now also deals damage), Iroh's Demonstration for Photon Blast
 #: notes: Barrage (a Lesson for Iroh / Jeong Jeong / Cadets / Ran and Shaw; 1 to each opposing creature
 #: notes: or 4 to one, for 2 mana).
+#: notes: 2026-10-12 round 2: both Rough Rhino Cavalry out (a 5-mana 5/5 whose only extra is an {8}
+#: notes: exhaust) for Zuko, Exiled Prince (firebending 3 + '{3}: exile the top card, you may play it'
+#: notes: — card advantage 3 -> 4) and Smaug the Magnificent (an upkeep Treasure every turn, a Dragon
+#: notes: for Sarkhan / Globe / Lathliss); Combustion Technique for Lightning Strike (a 4th Lesson,
+#: notes: instant, exiles). Day of Black Sun kept: choose X under the Dragons' MV 5 to keep them.
 
 # Nonland
 1 The Legend of Roku (TLA) 145
@@ -21,7 +26,8 @@
 1 Charging Strifeknight (SOS) 110
 1 Ozai, the Phoenix King (TLA) 235
 1 Cruel Administrator (TLA) 213
-2 Rough Rhino Cavalry (TLA) 152
+1 Smaug the Magnificent (HOB) 110
+1 Zuko, Exiled Prince (TLA) 163
 1 Jeong Jeong, the Deserter (TLA) 142
 1 Fire Sages (TLA) 136
 1 Firebending Student (TLA) 139
@@ -36,7 +42,7 @@
 1 Dragonstorm Globe (TDM) 241
 1 Summon: Bahamut (FIN) 1
 1 Sozin's Comet (TLA) 154
-1 Lightning Strike (TLA) 146
+1 Combustion Technique (TLA) 128
 1 Lathliss, Dragon Queen (FDN) 627
 1 Spinerock Tyrant (ECL) 159
 1 Combustion Man (TLA) 127
