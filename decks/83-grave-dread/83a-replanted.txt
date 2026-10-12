@@ -1,0 +1,81 @@
+#: name: Grave Dread — Replanted
+#: format: Standard
+#: colors: BGU
+#: plan: midrange
+#: archetype: SULTAI LANDS-FROM-THE-GRAVEYARD — the variant of 83 that makes its leave events
+#: archetype: out of LANDS. The parent's "a card leaves your graveyard" payoffs (Kishla Skimmer,
+#: archetype: Fang, Kheru Goldkeeper, Defiled Crypt) each fire once per turn, and the parent feeds
+#: archetype: them with Muldrotha, renew and regrowth. Here a LAND played or returned from the
+#: archetype: yard is the leave event, every turn: Mole Man, Icetill Explorer, Glacierwood Siege
+#: archetype: (Sultai), Walk-In Closet and Muldrotha let you play lands from the graveyard;
+#: archetype: Undergrowth Recon, Primal Witchstalker, Blossoming Tortoise, Lumra, Pull Through
+#: archetype: the Weft and Aftermath Analyst put them back. Manifest dread, mill and the fetch
+#: archetype: lands (Evolving Wilds, Fabled Passage — a sacrificed fetch is a land to replay)
+#: archetype: stock the yard, and each land entering is also LANDFALL: Tatyova draws, Bristly
+#: archetype: Bill adds a counter (Hollowmurk Siege draws), Grappling Kraken stuns.
+#: archetype: Distinct from 50a Strata and 69a Ursa Major (mono-green decks that COUNT lands):
+#: archetype: this deck RECYCLES them through the graveyard for card flow.
+#: tier: B (PROVISIONAL) — an unplayed first draft, held one band UNDER the A floor
+#: tier: (interaction 7, card advantage 7). Residual cap: protection 0 (the parent runs Tam
+#: tier: and Kotis), a three-colour manabase leaning on two Sultai Devotees, and an engine that
+#: tier: needs a land in the yard before the replay permissions do anything. The floor cannot
+#: tier: see a land replayed every turn as card flow, so A is the case to make after games.
+#: protect: Mole Man, Moloid Master; Icetill Explorer; Glacierwood Siege; Walk-In Closet; Kishla Skimmer; Fang, Fearless l'Cie; Evolving Wilds; Fabled Passage
+#: notes: Drafted 2026-10-11 from the lands-from-graveyard variant signal in the Sultai pile
+#: notes: analysis (F5). Bloodghast was drafted and cut for Witherbloom Charm: its {B}{B} cast on
+#: notes: turn two only 56% of the time on 13 black sources. Glacierwood Siege: choose SULTAI.
+
+# Lands-from-graveyard engine
+1 Mole Man, Moloid Master (MSH) 177
+1 Icetill Explorer (EOE) 192
+1 Glacierwood Siege (TDM) 189
+1 Walk-In Closet (DSK) 205
+1 Undergrowth Recon (MKM) 181
+1 Primal Witchstalker (FRA) 144
+1 Blossoming Tortoise (WOE) 163
+1 Aftermath Analyst (MKM) 148
+1 Pull Through the Weft (EOE) 202
+1 Lumra, Bellow of the Woods (BLB) 183
+1 Muldrotha, the Gravetide (FDN) 243
+1 Sandman, Shifting Scoundrel (SPM) 112
+
+# Graveyard fill
+2 Hauntwoods Shrieker (DSK) 182
+1 Growing Dread (DSK) 216
+1 Under the Skin (DSK) 203
+1 Carnivorous Cultivator // Enroot (FRA) 100
+1 Lasyd Prowler (TDM) 149
+
+# Leave-the-graveyard + landfall payoffs
+1 Kishla Skimmer (TDM) 201
+1 Fang, Fearless l'Cie (FIN) 99
+1 Kheru Goldkeeper (TDM) 199
+1 Defiled Crypt // Cadaver Lab (DSK) 91
+1 Tatyova, Benthic Druid (FDN) 247
+1 Bristly Bill, Spine Sower (OTJ) 157
+1 Hollowmurk Siege (TDM) 192
+1 Bonny Pall, Clearcutter (OTJ) 196
+
+# Fixing
+2 Sultai Devotee (TDM) 160
+
+# Interaction
+1 Lie in Wait (TDM) 203
+1 Awaken the Honored Dead (TDM) 170
+1 Drag to the Roots (DSK) 213
+1 Kraven's Last Hunt (SPM) 105
+1 Fangkeeper's Familiar (TDM) 183
+1 Professor Dellian Fel (SOS) 214
+1 Witherbloom Charm (SOS) 244
+1 Grappling Kraken (FDN) 39
+
+# Lands
+2 Opulent Palace (TDM) 264
+4 Overgrown Tomb (ECL) 266
+4 Breeding Pool (EOE) 251
+2 Watery Grave (EOE) 261
+2 Evolving Wilds (ECL) 264
+1 Fabled Passage (BLB) 252
+5 Forest (FRA) 289
+2 Island (FRA) 283
+2 Swamp (FRA) 285

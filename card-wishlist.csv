@@ -3,6 +3,7 @@ Card Name,Type,Card Text,Color(s),Synergies,Set Code,Collector #,Rarity,Target,N
 Essence Channeler,Creature — Bat Cleric,"As long as you've lost life this turn, this creature has flying and vigilance.
 Whenever you gain life, put a +1/+1 counter on this creature.
 When this creature dies, put its counters on target creature you control.",W,Bat; Cleric; counters,BLB,12,Rare,20,"W lifegain payoff: gain life -> counters, life-loss -> flying — fits Orzhov lifegain (20)",5.0,hand
+Fabled Passage,Land,"{T}, Sacrifice this land: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle. Then if you control four or more lands, untap that land.",Colorless,sacrifice; ramp,BLB,252,Rare,83a,,4.0,seed
 Tender Wildguide,Creature — Possum Druid,"Offspring {2} (You may pay an additional {2} as you cast this spell. If you do, when this creature enters, create a 1/1 token copy of it.)
 {T}: Add one mana of any color.
 {T}: Put a +1/+1 counter on this creature.",G,Possum; Druid; counters; tokens; mana; etb; offspring; go-wide,BLB,196,Rare,50,,4.0,seed
@@ -51,7 +52,7 @@ Equip {4}",Colorless,Equipment; reanimator; graveyard; etb; equipment; pump; sel
 Coordinated Clobbering,Sorcery,Tap one or two target untapped creatures you control. They each deal damage equal to their power to target creature an opponent controls.,G,,DSK,173,Uncommon,50,,2.0,seed
 Defiled Crypt // Cadaver Lab,Enchantment — Room // Enchantment — Room,"Whenever one or more cards leave your graveyard, create a 2/2 black Horror enchantment creature token. This ability triggers only once each turn.
 (You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.) // When you unlock this door, return target creature card from your graveyard to your hand.
-(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",B,Room; graveyard; tokens,DSK,91,Uncommon,83,,5.0,seed
+(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",B,Room; graveyard; tokens,DSK,91,Uncommon,83; 83a,,5.0,seed
 Fear of Isolation,Enchantment Creature — Nightmare,"As an additional cost to cast this spell, return a permanent you control to its owner's hand.
 Flying",U,Nightmare; bounce; flying; evasion,DSK,58,Uncommon,51,,2.0,seed
 Get Out,Instant,"Choose one —
@@ -59,7 +60,7 @@ Get Out,Instant,"Choose one —
 • Return one or two target creatures and/or enchantments you own to your hand.",U,counterspell,DSK,60,Uncommon,51,,3.0,seed
 Growing Dread,Enchantment,"Flash
 When this enchantment enters, manifest dread. (Look at the top two cards of your library. Put one onto the battlefield face down as a 2/2 creature and the other into your graveyard. Turn it face up any time for its mana cost if it's a creature card.)
-Whenever you turn a permanent face up, put a +1/+1 counter on it.",U/G,counters; graveyard; etb; selection; manifest; tokens; manifest dread; flash; tempo,DSK,216,Uncommon,83,,4.0,seed
+Whenever you turn a permanent face up, put a +1/+1 counter on it.",U/G,counters; graveyard; etb; selection; manifest; tokens; manifest dread; flash; tempo,DSK,216,Uncommon,83; 83a,,4.0,seed
 Keys to the House,Artifact,"{1}, {T}, Sacrifice this artifact: Search your library for a basic land card, reveal it, put it into your hand, then shuffle.
 {3}, {T}, Sacrifice this artifact: Lock or unlock a door of target Room you control. Activate only as a sorcery.",Colorless,sacrifice; ramp,DSK,251,Uncommon,51,"Deck 51: the case is Fractured Realm specifically - its {5}{U}{U} door for {1} cast + {3} activate = 4 total, split across turns. Saves 0-1 on the other four Rooms. Also a 'fully unlock' trigger for Eerie.",5.2,hand
 Overgrown Zealot,Creature — Elf Druid,"{T}: Add one mana of any color.
@@ -69,7 +70,7 @@ Scrabbling Skullcrab,Creature — Crab Skeleton,"Eerie — Whenever an enchantme
 Shroudstomper,Creature — Elemental,"Deathtouch
 Whenever this creature enters or attacks, each opponent loses 2 life. You gain 2 life and draw a card.",W/B,Elemental; lifegain; card draw; deathtouch; combat; removal,DSK,233,Uncommon,20,,5.0,hand
 Under the Skin,Sorcery,"Manifest dread. (Look at the top two cards of your library. Put one onto the battlefield face down as a 2/2 creature and the other into your graveyard. Turn it face up any time for its mana cost if it's a creature card.)
-You may return a permanent card from your graveyard to your hand.",G,graveyard; selection; manifest; tokens; manifest dread,DSK,203,Uncommon,83,,2.5,seed
+You may return a permanent card from your graveyard to your hand.",G,graveyard; selection; manifest; tokens; manifest dread,DSK,203,Uncommon,83; 83a,,2.5,seed
 Valgavoth's Faithful,Creature — Human Cleric,"{3}{B}, Sacrifice this creature: Return target creature card from your graveyard to the battlefield. Activate only as a sorcery.",B,Human; Cleric; reanimator; graveyard; sacrifice,DSK,121,Uncommon,52a,,5.0,seed
 Creeping Peeper,Creature — Eye,"{T}: Add {U}. Spend this mana only to cast an enchantment spell, unlock a door, or turn a permanent face up.",U,Eye; mana,DSK,46,Common,51,,1.5,seed
 Spineseeker Centipede,Creature — Insect,"When this creature enters, search your library for a basic land card, reveal it, put it into your hand, then shuffle.
@@ -89,7 +90,7 @@ Pinnacle Starcage,Artifact,"When this artifact enters, exile all artifacts and c
 Whenever an artifact you control enters, put a +1/+1 counter on target creature.",U/R,Jellyfish; Advisor; counters; flying; evasion,EOE,221,Uncommon,48,Holds Adaptive Automaton's slot in 48 at Uncommon cost.,4.0,hand
 Sunstar Expansionist,Creature — Human Knight,"When this creature enters, if an opponent controls more lands than you, create a Lander token. (It's an artifact with ""{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."")
 Landfall — Whenever a land you control enters, this creature gets +1/+0 until end of turn.",W,Human; Knight; sacrifice; tokens; ramp; etb; landfall; pump; lands,EOE,41,Uncommon,36,,3.0,hand
-"Muldrotha, the Gravetide",Legendary Creature — Elemental Avatar,"During each of your turns, you may play a land and cast a permanent spell of each permanent type from your graveyard. (If a card has multiple permanent types, choose one as you play it.)",U/B/G,Elemental; Avatar; graveyard,FDN,243,Mythic,83,,5.5,seed
+"Muldrotha, the Gravetide",Legendary Creature — Elemental Avatar,"During each of your turns, you may play a land and cast a permanent spell of each permanent type from your graveyard. (If a card has multiple permanent types, choose one as you play it.)",U/B/G,Elemental; Avatar; graveyard,FDN,243,Mythic,83; 83a,,5.5,seed
 Abyssal Harvester,Creature — Demon Warlock,"{T}: Exile target creature card from a graveyard that was put there this turn. Create a token that's a copy of it, except it's a Nightmare in addition to its other types. Then exile all other Nightmare tokens you control.",B,Demon; Warlock; Nightmare; graveyard; tokens; removal,FDN,54,Rare,52a,,7.0,seed
 Adaptive Automaton,Artifact Creature — Construct,"As this creature enters, choose a creature type.
 This creature is the chosen type in addition to its other types.
@@ -153,7 +154,7 @@ Dark Knight's Greatsword,Artifact — Equipment,"Job select (When this Equipment
 Equipped creature gets +3/+0 and is a Knight in addition to its other types.
 Chaosbringer — Equip—Pay 3 life. Activate only once each turn.",B,Equipment; tokens; etb; equipment; pump; chaosbringer; job select; equip,FIN,95,Uncommon,38,,4.0,hand
 "Fang, Fearless l'Cie",Legendary Creature — Human Warrior,"Whenever one or more cards leave your graveyard, you draw a card and you lose 1 life. This ability triggers only once each turn.
-(Melds with Vanille, Cheerful l'Cie.)",B,Human; Warrior; graveyard; pay life; card draw,FIN,99,Uncommon,83,,5.5,seed
+(Melds with Vanille, Cheerful l'Cie.)",B,Human; Warrior; graveyard; pay life; card draw,FIN,99,Uncommon,83; 83a,,5.5,seed
 Lion Heart,Artifact — Equipment,"When this Equipment enters, it deals 2 damage to any target.
 Equipped creature gets +2/+1.
 Equip {2}",Colorless,Equipment; burn; etb; equipment; pump; equip,FIN,261,Uncommon,38,,4.5,hand
@@ -162,6 +163,9 @@ When Ragnarok dies, destroy target permanent and return target nonlegendary perm
 Balamb T-Rexaur,Creature — Dinosaur,"Trample
 When this creature enters, you gain 3 life.
 Forestcycling {2} ({2}, Discard this card: Search your library for a Forest card, reveal it, put it into your hand, then shuffle.)",G,Dinosaur; lifegain; etb; landcycling; card draw; lands; trample; evasion; forestcycling; typecycling; cycling,FIN,173,Common,28,,2.0,hand
+Carnivorous Cultivator // Enroot,Creature — Elf Warlock // Sorcery,"Deathtouch
+This creature enters prepared.
+Whenever this creature deals combat damage to a player, return target land card from your graveyard to your hand. // Search your library for a land card, put it into your graveyard, then shuffle.",G,Elf; Warlock; graveyard; ramp; prepared; spellslinger; tempo; deathtouch; combat; removal,FRA,100,Rare,83a,,4.5,seed
 Cruel Calculations,Sorcery,"Draw X cards, where X is the number of cards that were put into target player's graveyard from their library this turn.",U,graveyard; card draw,FRA,26,Rare,22,deck 22 tune 2026-10-08,4.5,seed
 "Jace, Reality Sculptor",Legendary Planeswalker — Jace,"+1: Empower Jace X, where X is the number of Islands you control.
 −3: Until your next turn, whenever a creature attacks you or a planeswalker you control, it gets -5/-0 until end of turn.
@@ -173,6 +177,8 @@ Vraska's Final Mercy,Sorcery,"Choose one —
 When Fblthp enters, search your library for up to X basic land cards with different names, reveal them, put them into your hand, then shuffle.",G,Homunculus; Scout; etb; domain; lands,FRA,258,Uncommon,40,deck 40 tune 2026-10-08,3.0,seed
 Geist of Saint Thalia,Legendary Creature — Spirit Cleric,"Flying
 Noncreature spells you cast cost {1} less to cast.",U,Spirit; Cleric; cost-reduction; flying; evasion,FRA,214,Uncommon,51,,4.5,seed
+Primal Witchstalker,Creature — Wolf,"Menace (This creature can't be blocked except by two or more creatures.)
+When this creature enters, mill four cards. When you do, return target land card from your graveyard to the battlefield tapped. (To mill four cards, put the top four cards of your library into your graveyard.)",B/G,Wolf; reanimator; graveyard; mill; etb; menace; evasion,FRA,144,Uncommon,83a,,5.0,seed
 Inside Information,Sorcery,"Exile the top X cards of target opponent's library. You may play those cards this turn. If you cast a spell this way, pay life equal to its mana value rather than pay its mana cost.",B,pay life; heist; impulse,HOB,76,Mythic,41,"drain/value package: unconditional removal + life-to-mana, refunded by the Mister Negative swap",4.5,seed
 Master's Councillors,Creature — Human Advisor,"Vigilance
 This creature gets +2/+0 for each graveyard with seven or more cards in it.
@@ -321,19 +327,24 @@ Whenever you cast a spell, you lose life equal to its mana value.",U/B/G,Spirit;
 Awaken the Honored Dead,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
 I — Destroy target nonland permanent.
 II — Mill three cards.
-III — You may discard a card. When you do, return target creature or land card from your graveyard to your hand.",U/B/G,saga; graveyard; mill; removal,TDM,170,Rare,83,,6.5,seed
+III — You may discard a card. When you do, return target creature or land card from your graveyard to your hand.",U/B/G,saga; graveyard; mill; removal,TDM,170,Rare,83; 83a,,6.5,seed
 Bloomvine Regent // Claim Territory,Creature — Dragon // Sorcery — Omen,"Flying
 Whenever this creature or another Dragon you control enters, you gain 3 life. // Search your library for up to two basic Forest cards, reveal them, put one onto the battlefield tapped and the other into your hand, then shuffle. (Also shuffle this card.)",G,Dragon; Omen; lifegain; flying; evasion,TDM,136,Rare,,,3.5,seed
 Fangkeeper's Familiar,Creature — Snake,"Flash
 When this creature enters, choose one —
 • You gain 3 life and surveil 3. (Look at the top three cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)
 • Destroy target enchantment.
-• Counter target creature spell.",U/B/G,Snake; counterspell; graveyard; lifegain; removal; etb; selection; surveil; flash; tempo,TDM,183,Rare,83,,6.0,seed
+• Counter target creature spell.",U/B/G,Snake; counterspell; graveyard; lifegain; removal; etb; selection; surveil; flash; tempo,TDM,183,Rare,83; 83a,,6.0,seed
+Glacierwood Siege,Enchantment,"As this enchantment enters, choose Temur or Sultai.
+• Temur — Whenever you cast an instant or sorcery spell, target player mills four cards.
+• Sultai — You may play lands from your graveyard.",U/G,graveyard; mill; spellslinger,TDM,189,Rare,83a,,6.0,seed
 Hollowmurk Siege,Enchantment,"As this enchantment enters, choose Sultai or Abzan.
 • Sultai — Whenever a counter is put on a creature you control, draw a card. This ability triggers only once each turn.
-• Abzan — Whenever you attack, put a +1/+1 counter on target attacking creature. It gains menace until end of turn.",B/G,counters; card draw; menace; evasion,TDM,192,Rare,83,,6.5,seed
+• Abzan — Whenever you attack, put a +1/+1 counter on target attacking creature. It gains menace until end of turn.",B/G,counters; card draw; menace; evasion,TDM,192,Rare,83; 83a,,6.5,seed
 "Kotis, the Fangkeeper",Legendary Creature — Zombie Warrior,"Indestructible
 Whenever Kotis deals combat damage to a player, exile the top X cards of their library, where X is the amount of damage dealt. You may cast any number of spells with mana value X or less from among them without paying their mana costs.",U/B/G,Zombie; Warrior; heist; indestructible; resilience,TDM,202,Rare,83,,4.0,seed
+Lasyd Prowler,Creature — Snake Ranger,"When this creature enters, you may mill cards equal to the number of lands you control.
+Renew — {1}{G}, Exile this card from your graveyard: Put X +1/+1 counters on target creature, where X is the number of land cards in your graveyard. Activate only as a sorcery.",G,Snake; Ranger; counters; graveyard; mill; etb; renew,TDM,149,Rare,83a,,4.0,seed
 Maelstrom of the Spirit Dragon,Land,"{T}: Add {C}.
 {T}: Add one mana of any color. Spend this mana only to cast a Dragon spell or an Omen spell.
 {4}, {T}, Sacrifice this land: Search your library for a Dragon card, reveal it, put it into your hand, then shuffle.",Colorless,sacrifice; ramp; mana,TDM,260,Rare,,,4.0,seed
@@ -352,7 +363,7 @@ Karakyk Guardian,Creature — Dragon,"Flying, vigilance, trample
 This creature has hexproof as long as it hasn't dealt damage yet. (It can't be the target of spells or abilities your opponents control.)",U/R/G,Dragon; flying; evasion; vigilance; combat; trample,TDM,198,Uncommon,,,2.5,seed
 Kheru Goldkeeper,Creature — Dragon,"Flying
 Whenever one or more cards leave your graveyard during your turn, create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")
-Renew — {2}{B}{G}{U}, Exile this card from your graveyard: Put two +1/+1 counters and a flying counter on target creature. Activate only as a sorcery.",U/B/G,Dragon; counters; graveyard; tokens; treasure; flying; evasion; renew,TDM,199,Uncommon,83,,5.0,seed
+Renew — {2}{B}{G}{U}, Exile this card from your graveyard: Put two +1/+1 counters and a flying counter on target creature. Activate only as a sorcery.",U/B/G,Dragon; counters; graveyard; tokens; treasure; flying; evasion; renew,TDM,199,Uncommon,83; 83a,,5.0,seed
 Runescale Stormbrood // Chilling Screech,Creature — Dragon // Instant — Omen,"Flying
 Whenever you cast a noncreature spell or a Dragon spell, this creature gets +2/+0 until end of turn. // Counter target spell with mana value 2 or less. (Then shuffle this card into its owner's library.)",U/R,Dragon; Omen; counterspell; pump; flying; evasion,TDM,221,Uncommon,49,Deck 49: a 4-drop DRAGON that is also a Dragon payoff (+2/+0 on every noncreature or Dragon spell). Hidden from every red filter because its identity is U/R from the {1}{U} Omen half - the FRONT face is {3}{R} and mono-red castable (G-58 bulk-triage variant).,7.2,hand
 Venerated Stormsinger,Creature — Orc Cleric,"Mobilize 1 (Whenever this creature attacks, create a tapped and attacking 1/1 red Warrior creature token. Sacrifice it at the beginning of the next end step.)
@@ -408,6 +419,9 @@ Weather Maker,Artifact,"Landfall — Whenever a land you control enters, put a c
 Foot Headquarters,Land,"This land enters tapped.
 When this land enters, you gain 1 life.
 {T}: Add {W} or {B}.",W/B,lifegain; mana; etb,TMT,185,Common,41,"manabase: WB dual for a basic — +1 source to the off-colour, gain 1 life",2.0,seed
+Blossoming Tortoise,Creature — Turtle,"Whenever this creature enters or attacks, mill three cards, then return a land card from your graveyard to the battlefield tapped.
+Activated abilities of lands you control cost {1} less to activate.
+Land creatures you control get +1/+1.",G,Turtle; reanimator; graveyard; mill; cost-reduction; pump,WOE,163,Mythic,83a,,9.5,seed
 Realm-Scorcher Hellkite,Creature — Dragon,"Bargain (You may sacrifice an artifact, enchantment, or token as you cast this spell.)
 Flying, haste
 When this creature enters, if it was bargained, add four mana in any combination of colors.
