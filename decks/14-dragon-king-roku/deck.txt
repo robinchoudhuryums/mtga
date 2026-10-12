@@ -1,6 +1,6 @@
 #: name: Dragon King Roku
 #: format: Standard
-#: tier: A — Rakdos (BR) dragons midrange; bombs + 13 interaction (Terror of the Peaks turning every token into damage, 3 sweepers counting Iroh's Demonstration's ping mode), low curve base (14 cards at 1-2 MV) with a dragon payoff cluster at 5. Promoted from B: tightened Mardu->2-color for consistency; A-caliber interaction + closing power.
+#: tier: A — Rakdos (BR) dragons midrange; bombs + 14 interaction (Terror of the Peaks turning every token into damage, 3 sweepers counting Iroh's Demonstration's ping mode), low curve base (14 cards at 1-2 MV) with a dragon payoff cluster at 5. Promoted from B: tightened Mardu->2-color for consistency; A-caliber interaction + closing power.
 #: colors: BR
 #: archetype: Rakdos (B/R) Fire Nation dragons / firebending midrange.
 #: notes: Rakdos (B/R) — Fire Nation / dragons midrange. Tightened from the old Mardu build:
@@ -33,11 +33,13 @@
 #: notes: turn) and Electro, Assaulting Battery for Dragonstorm Globe (CUT): 'You don't lose unspent
 #: notes: red mana as steps and phases end' banks every firebending burst for the main phase and
 #: notes: later turns. Cost: the Globe's any-colour mana (black for the BB cards) and its Dragon counters.
+#: notes: Glóin the Mighty for Charging Strifeknight (CUT): {R}{R} every first main phase, and its
+#: notes: Easy Pickings adventure is a one-sided 1-damage sweep before Glóin is cast from exile.
 
 # Nonland
 1 The Legend of Roku (TLA) 145
 1 Ran and Shaw (TLA) 150
-1 Charging Strifeknight (SOS) 110
+1 Glóin the Mighty // Easy Pickings (HOB) 99
 1 Ozai, the Phoenix King (TLA) 235
 1 Cruel Administrator (TLA) 213
 1 Smaug the Magnificent (HOB) 110
