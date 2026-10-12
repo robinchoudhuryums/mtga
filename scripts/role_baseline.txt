@@ -161,6 +161,7 @@ Gastal Raider
 Gather the White Lotus
 Germinate Recruits
 Germination Practicum
+Ghalta the Unstoppable
 Ghalta, Primal Hunger
 Ghost, Spectral Saboteur
 Ghostly Keybearer
@@ -208,7 +209,6 @@ Iron Hills Stalwart
 Iron Lad, Diverging Destiny
 Ironpaw Aspirant
 Jace's Machinations
-Jadelight Spelunker
 Jeong Jeong, the Deserter
 Jeskai Brushmaster
 Jet, Rebel Leader
@@ -282,6 +282,7 @@ Nightwhorl Hermit
 Niko, Light of Hope
 Ninja of the Hand
 Okoye, Dora Milaje Leader
+Omnipresence
 Omniscience
 Omnivorous Flytrap
 Ori, Keeper of Songs

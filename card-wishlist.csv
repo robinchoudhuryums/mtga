@@ -163,6 +163,7 @@ When Ragnarok dies, destroy target permanent and return target nonlegendary perm
 Balamb T-Rexaur,Creature — Dinosaur,"Trample
 When this creature enters, you gain 3 life.
 Forestcycling {2} ({2}, Discard this card: Search your library for a Forest card, reveal it, put it into your hand, then shuffle.)",G,Dinosaur; lifegain; etb; landcycling; card draw; lands; trample; evasion; forestcycling; typecycling; cycling,FIN,173,Common,28,,2.0,hand
+Omnipresence,Enchantment,You may cast spells with mana value less than or equal to the number of creatures you control from your hand without paying their mana costs.,G,,FRA,110,Mythic,50,,4.5,seed
 Carnivorous Cultivator // Enroot,Creature — Elf Warlock // Sorcery,"Deathtouch
 This creature enters prepared.
 Whenever this creature deals combat damage to a player, return target land card from your graveyard to your hand. // Search your library for a land card, put it into your graveyard, then shuffle.",G,Elf; Warlock; graveyard; ramp; prepared; spellslinger; tempo; deathtouch; combat; removal,FRA,100,Rare,83a,,4.5,seed
@@ -177,6 +178,9 @@ Vraska's Final Mercy,Sorcery,"Choose one —
 When Fblthp enters, search your library for up to X basic land cards with different names, reveal them, put them into your hand, then shuffle.",G,Homunculus; Scout; etb; domain; lands,FRA,258,Uncommon,40,deck 40 tune 2026-10-08,3.0,seed
 Geist of Saint Thalia,Legendary Creature — Spirit Cleric,"Flying
 Noncreature spells you cast cost {1} less to cast.",U,Spirit; Cleric; cost-reduction; flying; evasion,FRA,214,Uncommon,51,,4.5,seed
+Ghalta the Unstoppable,Legendary Creature — Elder Dinosaur,"This spell costs {X} less to cast, where X is the greatest power among creatures you control.
+Trample
+Other creatures you control have trample.",G,Elder; Dinosaur; cost-reduction; trample; evasion,FRA,260,Uncommon,50,,2.5,seed
 Primal Witchstalker,Creature — Wolf,"Menace (This creature can't be blocked except by two or more creatures.)
 When this creature enters, mill four cards. When you do, return target land card from your graveyard to the battlefield tapped. (To mill four cards, put the top four cards of your library into your graveyard.)",B/G,Wolf; reanimator; graveyard; mill; etb; menace; evasion,FRA,144,Uncommon,83a,,5.0,seed
 Inside Information,Sorcery,"Exile the top X cards of target opponent's library. You may play those cards this turn. If you cast a spell this way, pay life equal to its mana value rather than pay its mana cost.",B,pay life; heist; impulse,HOB,76,Mythic,41,"drain/value package: unconditional removal + life-to-mana, refunded by the Mister Negative swap",4.5,seed

@@ -3,8 +3,8 @@
 #: arena: 50 Hoofprint, a634cf3c-01e0-426e-b46a-38a89f15d7d0
 #: colors: G
 #: plan: midrange
-#: tier: B — PROVISIONAL, one band below the measurable floor, which reads A on interaction 6
-#: tier: plus card advantage 3 at a 3.31 curve. Two of the three weaknesses this deck was first
+#: tier: B — PROVISIONAL, AT the measurable floor, which reads B on interaction 6 plus card
+#: tier: advantage 3 at a 3.61 curve (Ghalta's printed {8}{G} inflates that; it costs X less). Two of the three weaknesses this deck was first
 #: tier: graded on have since been ADDRESSED, and the letter is held pending play rather than on
 #: tier: the original argument. What remains:
 #: tier: 1. THE REMOVAL IS NEARLY ALL FIGHT EFFECTS, so the interaction and the board are mostly
@@ -21,9 +21,10 @@
 #: tier:    survive. The floor without them is a pile of small mana creatures.
 #: tier: WHAT ARGUES UP: card advantage went 2 -> 3 on a card the classifier UNDER-reads badly —
 #: tier:    Inspiring Call draws one per countered creature, which in a deck multiplying counters
-#: tier:    is routinely three or four cards for {2}{G}. `shape` reads WIDE 10 / TALL 7 on 23
-#: tier: creatures with 16 early drops, so plan and measurement agree. The kill is redundant four
-#: tier: ways (Craterhoof x2, Jumbo Cactuar, Colossification, Famished Worldsire) rather than one
+#: tier:    is routinely three or four cards for {2}{G}. `shape` reads BALANCED 6 / 6 on 21
+#: tier: creatures with 15 early drops: the 2026-10-12 earthbend package added a TALL route. The
+#: tier: kill is redundant five ways (Craterhoof, Jumbo Cactuar, Colossification, Famished
+#: tier: Worldsire, and an earthbent land creature under the counter multipliers) rather than one
 #: tier: card deep, and no metric here can see mana PRODUCTION, which is the deck's real engine.
 #: tier: PROVISIONAL: unplayed, and the craft list is long — this was built as the best version
 #: tier: with ownership ignored by request, so the letter grades the LIST, not the pile.
@@ -257,6 +258,17 @@
 #: notes: for this deck. Cutting AGGRESSIVE MAMMOTH for it measured BEST on every axis and was
 #: notes: rejected on text: "Other creatures you control have trample" makes it the deck's third
 #: notes: board-wide trample source, and no metric here can see that trample is load-bearing.
+#: notes: 2026-10-12 (owner's calls) — OMNIPRESENCE AND AN EARTHBEND ROUTE. Omnipresence in for
+#: notes: one Craterhoof ("cast spells with mana value <= the number of creatures you control from
+#: notes: your hand without paying" — the creature count pays for the rest of the hand). Ghalta
+#: notes: in for one Garruk's Uprising ("other creatures you control have trample", and it costs X
+#: notes: less for the greatest power). The Legend of Kyoshi in for Loot, Exuberant Explorer
+#: notes: (I: draw cards equal to the greatest power; II: earthbend X; Avatar Kyoshi gives LANDS
+#: notes: trample and hexproof), Toph in for Jadelight Spelunker (earthbend 2; her power is the
+#: notes: counters on your lands), Ba Sing Se x2 for two Forests (repeatable earthbend 2). An
+#: notes: earthbent land takes +1/+1 counters, so Michelangelo, The Earth Crystal and Doc Samson
+#: notes: multiply it into a second kill that returns when it dies. Kyoshi's chapter-I draw is
+#: notes: not read by the role classifier, so card advantage under-counts here.
 
 # Mana creatures — bodies, ramp, and Craterhoof's X, all at once
 1 Llanowar Elves (M19) 314
@@ -272,16 +284,17 @@
 1 The Earth Crystal (FIN) 184
 1 Transdimensional Bovine (TMT) 134
 1 Wildwood Scourge (FDN) 236
-1 Jadelight Spelunker (LCI) 196
 
 # The board-to-mana converter
 1 Enduring Vitality (DSK) 176
 
 # The cheat — connects, then puts Craterhoof into play from hand
 1 Michelangelo, Improviser (TMT) 119
+1 Omnipresence (FRA) 110
 
-# Bodies that also find lands
-1 Loot, Exuberant Explorer (FDN) 106
+# Earthbend — a land creature becomes the threat (multiplied counters)
+1 The Legend of Kyoshi // Avatar Kyoshi (TLA) 186
+1 Toph, the Blind Bandit (TLA) 198
 
 
 # Haste + hexproof, so a finisher connects the turn it lands
@@ -289,12 +302,13 @@
 1 Summoner's Grimoire (FIN) 205
 
 # Trample — without this the finishers are chump-blocked
-2 Garruk's Uprising (M21) 186
+1 Garruk's Uprising (M21) 186
+1 Ghalta the Unstoppable (FRA) 260
 1 Aloe Alchemist (OTJ) 152
 
 # The four kills
 1 Goldvein Hydra (OTJ) 167
-2 Craterhoof Behemoth (TDM) 138
+1 Craterhoof Behemoth (TDM) 138
 1 Earth's Mightiest Heroes (MSH) 165
 1 Famished Worldsire (EOE) 182
 1 Colossification (BLB) 392
@@ -312,7 +326,8 @@
 # Lands (24) — Three Tree City names Druid; Rogue's Passage is the 2nd evasion route
 1 Three Tree City (BLB) 260
 1 Rogue's Passage (HOC) 212
-21 Forest (MSH) 295
+19 Forest (MSH) 295
+2 Ba Sing Se (TLA) 266
 1 Evendo, Waking Haven (EOE) 253
 
 # Flex — measured and parked. See: deck.py flex 50
