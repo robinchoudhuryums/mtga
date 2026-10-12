@@ -58,6 +58,12 @@
 #: notes: Watery Grave 2 -> 4, one fewer Forest, Island and Swamp. Sources U 12/B 13/G 15 ->
 #: notes: U 14/B 14/G 15; cards under 90% on curve 28 -> 23. Option B (a second copy of each Verge
 #: notes: for two more basics) measured 15/14/16 and 19 under 90%, held back.
+#: notes: 2026-10-12 ZERO-RARE MANABASE (owner's call — no rare land crafts): 4 Opulent Palace,
+#: notes: 1 each Overgrown Tomb / Breeding Pool / Watery Grave / Wastewood / Willowrush, 2 Gloomlake
+#: notes: Verge, 2 Hidden Lair, Dreamroot Cascade, Starting Town, 4 Forest, 2 Island, 3 Swamp.
+#: notes: Measured against option A: cards under 90% on curve 23 -> 28, and the chance of at least
+#: notes: one unconditional tapland among the first three land drops 24% -> 44%. Each extra
+#: notes: Breeding Pool or Watery Grave (for a basic) buys back about one card; Overgrown Tomb none.
 
 # Dread engine
 2 Hauntwoods Shrieker (DSK) 182
@@ -105,13 +111,16 @@
 1 Koma, World-Eater (FDN) 121
 
 # Lands
-2 Opulent Palace (TDM) 264
-4 Overgrown Tomb (ECL) 266
-4 Breeding Pool (EOE) 251
-4 Watery Grave (EOE) 261
+4 Opulent Palace (TDM) 264
+1 Overgrown Tomb (ECL) 266
+1 Breeding Pool (EOE) 251
+1 Dreamroot Cascade (SOS) 254
+2 Hidden Lair (MSH) 269
+1 Watery Grave (EOE) 261
+1 Starting Town (FIN) 289
 1 Wastewood Verge (DFT) 268
 1 Willowrush Verge (DFT) 270
-1 Gloomlake Verge (DSK) 260
-3 Forest (FRA) 289
+2 Gloomlake Verge (DSK) 260
+4 Forest (FRA) 289
 2 Island (FRA) 283
-2 Swamp (FRA) 285
+3 Swamp (FRA) 285
