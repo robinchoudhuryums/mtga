@@ -1,6 +1,6 @@
 #: name: Dragon King Roku
 #: format: Standard
-#: tier: A — Rakdos (BR) dragons midrange; bombs + 10 interaction (Terror of the Peaks turning every token into damage, 3 sweepers counting Iroh's Demonstration's ping mode), low curve base (14 cards at 1-2 MV) with a dragon payoff cluster at 5. Promoted from B: tightened Mardu->2-color for consistency; A-caliber interaction + closing power.
+#: tier: A — Rakdos (BR) dragons midrange; bombs + 11 interaction (Terror of the Peaks turning every token into damage, 3 sweepers counting Iroh's Demonstration's ping mode), low curve base (14 cards at 1-2 MV) with a dragon payoff cluster at 5. Promoted from B: tightened Mardu->2-color for consistency; A-caliber interaction + closing power.
 #: colors: BR
 #: archetype: Rakdos (B/R) Fire Nation dragons / firebending midrange.
 #: notes: Rakdos (B/R) — Fire Nation / dragons midrange. Tightened from the old Mardu build:
@@ -22,6 +22,11 @@
 #: notes: Solstice Revelations for the 2nd Firebending Lesson — Lesson count stays 4, and it is card
 #: notes: advantage the classifier does not count (a nonland card to hand, or cast free under the
 #: notes: Mountain count; instant, so firebending combat mana can pay it or its {6}{R} flashback).
+#: notes: Round 3: Chandra, Torch of Defiance for Professor Zei (impulse card / {R}{R} / 4 to a
+#: notes: creature on one 4-drop), Ajani Unrelenting for Summon: Bahamut (6 instead of 9; a Cadet on
+#: notes: every loyalty activation feeds Terror of the Peaks), Draconic Visitor (craft) for Stormshriek
+#: notes: Feral (Smaug's and Sarkhan's Treasures arrive as 5/5 flying Dragons instead). Professor Zei
+#: notes: was CUT in this round; the hybrid note above is history.
 
 # Nonland
 1 The Legend of Roku (TLA) 145
@@ -44,20 +49,20 @@
 1 Sarkhan, Dragon Ascendant (TDM) 118
 1 Nova Hellkite (EOE) 148
 1 Dragonstorm Globe (TDM) 241
-1 Summon: Bahamut (FIN) 1
+1 Ajani Unrelenting (FRA) 242
 1 Sozin's Comet (TLA) 154
 1 Combustion Technique (TLA) 128
 1 Lathliss, Dragon Queen (FDN) 627
 1 Spinerock Tyrant (ECL) 159
 1 Combustion Man (TLA) 127
-1 Professor Zei, Anthropologist (TLA) 238
+1 Chandra, Torch of Defiance (FRA) 244
 1 Uncle Iroh (TLA) 248
 1 Terror of the Peaks (OTJ) 149
 1 Zuko's Conviction (TLA) 123
 1 Day of Black Sun (TLA) 94
 1 War Balloon (TLA) 159
 1 Long Feng, Grand Secretariat (TLA) 233
-1 Stormshriek Feral (TDM) 124
+1 Draconic Visitor (FRA) 80
 1 Red Hulk (MSH) 149
 1 Iroh's Demonstration (TLA) 141
 
