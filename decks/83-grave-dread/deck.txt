@@ -3,7 +3,7 @@
 #: colors: BGU
 #: plan: midrange
 #: archetype: SULTAI MANIFEST-DREAD x LEAVE-THE-GRAVEYARD MIDRANGE, drafted 2026-10-11 from
-#: archetype: Robin's Sultai pile (.cycle/sultai-pile-analysis.md). Every manifest dread is
+#: archetype: Robin's Sultai pile (analysis doc retired to git history). Every manifest dread is
 #: archetype: already a 2-for-1: a 2/2 body, one card binned, and a choice of two. Four dread
 #: archetype: cards (Hauntwoods Shrieker on attack, Abhorrent Oculus each opponent upkeep,
 #: archetype: Growing Dread, Under the Skin) and Liliana's mill-two stock the yard, and Etrata
@@ -25,7 +25,7 @@
 #: tier: Familiar, Awaken the Honored Dead and Galactus from the yard, and four deathtouch bodies
 #: tier: (Glarb, Devotee, Etrata, Qarsi) tax combat. Residual cap: a three-colour manabase whose
 #: tier: three-pip 3-drops (Glarb, Lie in Wait, Awaken the Honored Dead) cast on curve about
-#: tier: 76% of the time, with Bloom Tender, Sultai Devotee, Twitching Doll and
+#: tier: 80% of the time, with Bloom Tender, Sultai Devotee, Twitching Doll and
 #: tier: Insidious Roots' tokens as the only nonland fixing, plus singleton variance across the engine pieces. The floor
 #: tier: cannot see the deck's real card advantage (dread selection, Paranormal Analyst, Kishla,
 #: tier: Hollowmurk drawing off Innkeeper's Talent and Velocipede counters), so A is the case to make after games show the mana holds.
@@ -97,6 +97,11 @@
 #: notes: (a 3-mana 4/4 that copies Innkeeper's Talent, Terrasymbiosis, Insidious Roots, Velocipede
 #: notes: or a dual land each turn; a copied Siege gets no mode and a copied Saga no chapters).
 #: notes: Dread cards 5 -> 4. Card advantage 3 -> 4.
+#: notes: 2026-10-12: Evolving Wilds for an Island — a basic fetch counts for all three colours
+#: notes: (sources 14/13/14 -> U14 B14 G15; cards below 90% on curve 31 -> 24) at the cost of one
+#: notes: more tapped land drop, and it feeds the yard (Muldrotha replays it as a leave event,
+#: notes: Drag's delirium, Exdeath, Sin). Considered and passed: Overgrown Tomb + Watery Grave
+#: notes: (rare crafts, B 13 -> 15, 31 -> 27) and a 2nd fetch (-> 20, but ~60% tapped-by-turn-3).
 
 # Dread engine
 1 Hauntwoods Shrieker (DSK) 182
@@ -156,5 +161,6 @@
 1 Willowrush Verge (DFT) 270
 2 Gloomlake Verge (DSK) 260
 4 Forest (FRA) 289
-2 Island (FRA) 283
+1 Island (FRA) 283
+1 Evolving Wilds (ECL) 264
 3 Swamp (FRA) 285
