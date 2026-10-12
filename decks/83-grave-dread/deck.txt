@@ -19,8 +19,11 @@
 #: archetype: for static/attack abilities, since a flipped card never "enters".
 #: archetype: Distinct: no deck shares more than 3 nonland cards; deck 62 (UBG wrath-reanimator)
 #: archetype: is the nearest theme neighbour.
-#: tier: B (PROVISIONAL) — a lightly played draft, AT the measurable B floor (interaction 7,
-#: tier: card advantage 3, protection 5). Residual cap: a three-colour manabase whose
+#: tier: B (PROVISIONAL) — a lightly played draft, AT the measurable B floor (interaction 6,
+#: tier: card advantage 3, protection 5). The interaction count under-reads the list: Muldrotha,
+#: tier: Under the Skin, Lie in Wait, Seedship Broodtender and Liliana re-buy Fangkeeper's
+#: tier: Familiar, Awaken the Honored Dead and Galactus from the yard, and four deathtouch bodies
+#: tier: (Glarb, Devotee, Etrata, Qarsi) tax combat. Residual cap: a three-colour manabase whose
 #: tier: three-pip 3-drops (Glarb, Lie in Wait, Awaken the Honored Dead) cast on curve about
 #: tier: 76% of the time, with Bloom Tender, Sultai Devotee, Enduring Vitality, Twitching Doll and
 #: tier: Insidious Roots' tokens as the only nonland fixing, plus singleton variance across the engine pieces. The floor
@@ -84,6 +87,10 @@
 #: notes: 2026-10-12: Bloom Tender for Defiled Crypt — a 2-drop that taps for all three colours
 #: notes: (Vivid) beats a 4-mana Room that does nothing the turn it lands; the Horror-per-turn
 #: notes: leave payoff was the cost. Leave payoffs now: Kishla, Goldkeeper, Insidious Roots.
+#: notes: 2026-10-12: Smuggler's Surprise for Warg Tactics — one spree card that mills four and
+#: notes: keeps two creature/land cards (a leave event on your turn for Kishla / Goldkeeper / Roots),
+#: notes: cheats Koma or Sin in at instant speed, and gives power-4+ creatures hexproof and
+#: notes: indestructible. Cost: the 2-mana flier kill; interaction 7 -> 6 (floor stays B).
 
 # Dread engine
 2 Hauntwoods Shrieker (DSK) 182
@@ -122,7 +129,7 @@
 1 Awaken the Honored Dead (TDM) 170
 1 Drag to the Roots (DSK) 213
 1 Kraven's Last Hunt (SPM) 105
-1 Warg Tactics (HOB) 139
+1 Smuggler's Surprise (OTJ) 180
 1 The Coming of Galactus (MSH) 212
 
 # Top end (good dread flips)
