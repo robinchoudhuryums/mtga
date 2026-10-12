@@ -15,17 +15,17 @@
 #: archetype: leave events. +1/+1 counters (Growing Dread, Jenova, Beifong's earthbend, Roots'
 #: archetype: Plants, renew) feed Hollowmurk Siege's draw.
 #: archetype: Shrieker's {1}{G} flips a face-down creature WITHOUT paying its cost, so the
-#: archetype: top end (Koma, Bonny Pall, Muldrotha, Sin) doubles as dread hits — chosen
+#: archetype: top end (Koma, Muldrotha, Sin) doubles as dread hits — chosen
 #: archetype: for static/attack abilities, since a flipped card never "enters".
 #: archetype: Distinct: no deck shares more than 3 nonland cards; deck 62 (UBG wrath-reanimator)
 #: archetype: is the nearest theme neighbour.
-#: tier: B (PROVISIONAL) — an unplayed first draft, held one band UNDER the A floor
-#: tier: (interaction 7, card advantage 4, protection 4). Residual cap: a three-colour manabase whose
+#: tier: B (PROVISIONAL) — a lightly played draft, AT the measurable B floor (interaction 7,
+#: tier: card advantage 3, protection 5). Residual cap: a three-colour manabase whose
 #: tier: three-pip 3-drops (Glarb, Lie in Wait, Awaken the Honored Dead) cast on curve about
-#: tier: 76% of the time, with Sultai Devotee, Enduring Vitality and Insidious Roots' tokens as
-#: tier: the only nonland fixing, plus singleton variance across the engine pieces. The floor
+#: tier: 76% of the time, with Sultai Devotee, Enduring Vitality, Twitching Doll and Insidious
+#: tier: Roots' tokens as the only nonland fixing, plus singleton variance across the engine pieces. The floor
 #: tier: cannot see the deck's real card advantage (dread selection, Paranormal Analyst, Kishla,
-#: tier: Hollowmurk), so A is the case to make after games show the mana holds.
+#: tier: Hollowmurk drawing off Innkeeper's Talent and Velocipede counters), so A is the case to make after games show the mana holds.
 #: protect: Hauntwoods Shrieker; Paranormal Analyst; Kishla Skimmer; Kheru Goldkeeper; Koma, World-Eater; Sultai Devotee
 #: notes: Drafted 2026-10-11 from the 118-card Sultai pile (pile analysis, batches 1-4 + revision 1).
 #: notes: Owner's calls: 1 Sultai Devotee rather than 4 (three slots to Jenova, The Coming of
@@ -75,6 +75,12 @@
 #: notes: mana value 0, so each one arrives a 3/3 and Hollowmurk draws), Warg Tactics in for
 #: notes: Professor Dellian Fel (instant: kill a flier, or a counter plus trample and hexproof).
 #: notes: Card advantage 5 -> 4, protection 3 -> 4. Kraven's Last Hunt kept for its turn-four mill 5.
+#: notes: 2026-10-12 (owner's call): Innkeeper's Talent in for Bonny Pall (rotates 2026; a 6-drop
+#: notes: in a deck being made faster). Level 1 puts a +1/+1 counter on a creature at each combat, so
+#: notes: Hollowmurk Siege draws every turn; level 2 gives countered permanents ward {1}; level 3
+#: notes: doubles every counter (Velocipede's +1 becomes +2). Card advantage 4 -> 3 on the role
+#: notes: count (Bonny's attack draw), protection 4 -> 5; the metrics floor reads B until a draw
+#: notes: card (Inspiring Call / Terrasymbiosis) lands.
 
 # Dread engine
 2 Hauntwoods Shrieker (DSK) 182
@@ -99,6 +105,7 @@
 1 Kotis, the Fangkeeper (TDM) 202
 1 Defiled Crypt // Cadaver Lab (DSK) 91
 1 Thunderous Velocipede (DFT) 183
+1 Innkeeper's Talent (BLB) 180
 
 # Fixing + protection
 1 Sultai Devotee (TDM) 160
@@ -117,7 +124,6 @@
 
 # Top end (good dread flips)
 1 Muldrotha, the Gravetide (FDN) 243
-1 Bonny Pall, Clearcutter (OTJ) 196
 1 Sin, Spira's Punishment (FIN) 242
 1 Koma, World-Eater (FDN) 121
 

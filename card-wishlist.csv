@@ -4,6 +4,12 @@ Essence Channeler,Creature — Bat Cleric,"As long as you've lost life this turn
 Whenever you gain life, put a +1/+1 counter on this creature.
 When this creature dies, put its counters on target creature you control.",W,Bat; Cleric; counters,BLB,12,Rare,20,"W lifegain payoff: gain life -> counters, life-loss -> flying — fits Orzhov lifegain (20)",5.0,hand
 Fabled Passage,Land,"{T}, Sacrifice this land: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle. Then if you control four or more lands, untap that land.",Colorless,sacrifice; ramp,BLB,252,Rare,83a,,4.0,seed
+Innkeeper's Talent,Enchantment — Class,"(Gain the next level as a sorcery to add its ability.)
+At the beginning of combat on your turn, put a +1/+1 counter on target creature you control.
+{G}: Level 2
+Permanents you control with counters on them have ward {1}.
+{3}{G}: Level 3
+If you would put one or more counters on a permanent or player, put twice that many of each of those kinds of counters on that permanent or player instead.",G,Class; counters; ward; protection,BLB,180,Rare,83,,5.5,seed
 Tender Wildguide,Creature — Possum Druid,"Offspring {2} (You may pay an additional {2} as you cast this spell. If you do, when this creature enters, create a 1/1 token copy of it.)
 {T}: Add one mana of any color.
 {T}: Put a +1/+1 counter on this creature.",G,Possum; Druid; counters; tokens; mana; etb; offspring; go-wide,BLB,196,Rare,50,,4.0,seed
