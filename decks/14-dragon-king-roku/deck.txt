@@ -35,6 +35,8 @@
 #: notes: later turns. Cost: the Globe's any-colour mana (black for the BB cards) and its Dragon counters.
 #: notes: Glóin the Mighty for Charging Strifeknight (CUT): {R}{R} every first main phase, and its
 #: notes: Easy Pickings adventure is a one-sided 1-damage sweep before Glóin is cast from exile.
+#: notes: Raph & Leo, Sibling Rivals for Draconic Visitor (CUT — only Smaug fed it repeatably): an
+#: notes: extra combat every turn, so the untapped firebenders attack, and firebend, twice.
 
 # Nonland
 1 The Legend of Roku (TLA) 145
@@ -70,7 +72,7 @@
 1 Day of Black Sun (TLA) 94
 1 War Balloon (TLA) 159
 1 Improvisation Capstone (SOS) 120
-1 Draconic Visitor (FRA) 80
+1 Raph & Leo, Sibling Rivals (TMT) 166
 1 Red Hulk (MSH) 149
 1 Iroh's Demonstration (TLA) 141
 
