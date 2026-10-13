@@ -10,7 +10,7 @@
 #: archetype: Treasures), the velocity layer
 #: archetype: pays it off per second spell (Cosmogrand Zenith, Sunstar Lightsmith, Rally
 #: archetype: the Monastery), and the payoff layer converts each cast into damage and
-#: archetype: life (Judith, Cori Mountain Stalwart, Thor, Monica, Heartflame Duelist).
+#: archetype: life (Judith, Cori Mountain Stalwart, Thor, Monica, Bre of Clan Stoutarm).
 #: archetype: The graveyard half keeps the storm going: Kirol grows on every card that
 #: archetype: LEAVES the yard, which the flashback suite (Pursue the Past and
 #: archetype: Practiced Offense) and Electro's Bolt mayhem provide, with
@@ -36,8 +36,8 @@
 #: notes: Cruelclaw's free cast all count; blind self-mill does not fill him alone.
 #: notes: Electro's mana persists across steps within the turn — combat firebending/Agni Kai
 #: notes: mana plus Electro rebates fund a post-combat second spell every turn.
-#: notes: Exemplar of Light parked: the lifegain is real (Heartflame's static gives
-#: notes: every instant/sorcery lifelink; Cori, Pursue, Judith add more) but its WW
+#: notes: Exemplar of Light parked: the lifegain is real (Helix, Cori, Pursue,
+#: notes: Restoration Magic, Sage's lifelink fliers, Judith's lifelink mode) but its WW
 #: notes: four-slot competes with Sunstar and screened tangential — revisit if the
 #: notes: deck ever wants a fifth second-spell payoff over interaction.
 #: notes: 2026-10-13 tune: manabase re-centred on red (R 12→15 sources, B 8→7, W 13→12;
@@ -58,16 +58,26 @@
 #: notes: card each end step); Bre of Clan Stoutarm for Brazen Collector (free cast at end
 #: notes: step off the life gained); The Last Agni Kai for Thunder Salvo (fight that refunds
 #: notes: excess damage as red mana and keeps ALL red mana through the turn).
+#: notes: Round 4 (free-cast engines): Buster Sword for 1 Pursue (on a flier: draw + free
+#: notes: cast from hand), Seifer Almasy for 1 Cori (attacks alone with double strike → two
+#: notes: free graveyard casts), Loki for Heartflame Duelist (rotating; Loki copies a
+#: notes: two-mana spell every turn — a copy is NOT a cast), Goliath Daydreamer for 1 Kirol
+#: notes: (hand-cast spells exile with dream counters; recast free on attack, after which a
+#: notes: flashback card lands in the yard for its flashback), Sage of the Skies for Frantic
+#: notes: Firebolt. Seifer and Daydreamer pull from opposite zones — pick per spell. Bre no
+#: notes: longer has Heartflame's lifelink; its own {1}{W} lifelink grant on an attacker
+#: notes: feeds it. Interaction 14→12 by design.
 
 # Payoffs (per-cast converters)
 1 Judith, Carnage Connoisseur (MKM) 210
 1 Thunder Magic (FIN) 165
-2 Cori Mountain Stalwart (TDM) 175
+1 Cori Mountain Stalwart (TDM) 175
 1 Thor Odinson (MSH) 234
 1 Monica Rambeau (MSH) 23
-1 Heartflame Duelist // Heartflame Slash (WOE) 228
+1 Loki Laufeyson (MSH) 143
 1 The Vision (MSH) 255
 1 Bre of Clan Stoutarm (ECL) 207
+1 Buster Sword (FIN) 255
 
 # Mana engine (spells fund spells)
 1 Electro, Assaulting Battery (SPM) 76
@@ -84,19 +94,21 @@
 1 Sunstar Lightsmith (EOE) 42
 1 Rally the Monastery (TDM) 19
 1 Stingerquill Voxmancer // Vicious Verse (FRA) 151
+1 Sage of the Skies (TDM) 22
 
 # Graveyard half (Kirol + the yard-leaving suite)
-2 Kirol, History Buff // Pack a Punch (SOS) 198
-2 Pursue the Past (SOS) 216
+1 Kirol, History Buff // Pack a Punch (SOS) 198
+1 Goliath Daydreamer (ECL) 143
+1 Pursue the Past (SOS) 216
 1 Ultimate Green Goblin (SPM) 157
 1 The Infamous Cruelclaw (BLB) 219
 1 Electro's Bolt (SPM) 77
 1 Practiced Offense (SOS) 25
+1 Seifer Almasy (FIN) 156
 
 # Removal (scales with the spell count)
 1 The Last Agni Kai (TLA) 144
 1 Lightning Helix (MKM) 218
-1 Frantic Firebolt (WOE) 130
 1 Burst Lightning (FDN) 192
 1 Boros Charm (FDN) 721
 1 Sheltered by Ghosts (DSK) 30
@@ -114,19 +126,5 @@
 1 Sacred Foundry (EOE) 256
 7 Mountain (MSH) 293
 7 Plains (MSH) 287
-#~ -Frantic Firebolt | +Molten Note | CRAFT (U) — DEFERRED UNTIL ROTATION, on purpose.
-#~   Frantic Firebolt is the BETTER card and stays for now: {2}{R} mono-red against Molten
-#~   Note's {X}{R}{W}, cheaper, and it scales off the graveyard for FREE ("X is 2 plus the
-#~   number of instant and sorcery cards in your graveyard") where Molten Note scales off
-#~   mana you actually spend. Nothing about power argues for the swap.
-#~   WHAT ARGUES FOR IT IS THE CALENDAR: Frantic Firebolt rotates ~2026 — the only card in
-#~   this deck that does — and the one remaining copy is OWNED, so it simply plays until
-#~   it rotates (the other slot went to Burst Lightning on 2026-10-13). Molten Note does the same job (scalable damage
-#~   removal) and rotates ~2029, outliving Judith (2027).
-#~   TRIGGER: make this swap when Frantic Firebolt rotates, NOT before. Until then the two
-#~   slots are better left uncrafted than replaced.
-#~   COST WHEN YOU DO: Molten Note is {R}{W}, and every gold two-drop here already casts at
-#~   78.1% on curve; its Flashback {6}{R}{W} is 8 mana and effectively a dead mode at this
-#~   deck's 2.89 curve. Burst Lightning's kicker and Thunder Magic's Tiered
-#~   modes already cover scalable damage, so check the slot still wants it.
+#~ note: the Frantic Firebolt→Molten Note rotation line was retired 2026-10-13 — Sage of the Skies took the slot.
 #~ note: the Brazen Collector→Moment of Glory line was retired 2026-10-13 — Bre of Clan Stoutarm took that slot.
