@@ -1,0 +1,166 @@
+#: name: Grave Dread (Sultai manifest dread)
+#: format: Standard
+#: colors: BGU
+#: plan: midrange
+#: archetype: SULTAI MANIFEST-DREAD x LEAVE-THE-GRAVEYARD MIDRANGE, drafted 2026-10-11 from
+#: archetype: Robin's Sultai pile (analysis doc retired to git history). Every manifest dread is
+#: archetype: already a 2-for-1: a 2/2 body, one card binned, and a choice of two. Four dread
+#: archetype: cards (Hauntwoods Shrieker on attack, Abhorrent Oculus each opponent upkeep,
+#: archetype: Growing Dread, Under the Skin) and Liliana's mill-two stock the yard, and Etrata
+#: archetype: turns a face-down NONCREATURE into a free cast. Tarkir-Sultai's "a card leaves
+#: archetype: your graveyard" cluster cashes the yard in: Kishla Skimmer draws, Kheru
+#: archetype: Goldkeeper makes Treasure, Insidious Roots grows a
+#: archetype: Plant army that taps for any colour. Muldrotha, renew (Goldkeeper,
+#: archetype: Qarsi), Seedship Broodtender, Oculus's exile cost and the regrowth cards are the
+#: archetype: leave events. +1/+1 counters (Growing Dread, Jenova, Beifong's earthbend, Roots'
+#: archetype: Plants, renew) feed Hollowmurk Siege's draw.
+#: archetype: Shrieker's {1}{G} flips a face-down creature WITHOUT paying its cost, so the
+#: archetype: top end (Koma, Muldrotha, Sin) doubles as dread hits — chosen
+#: archetype: for static/attack abilities, since a flipped card never "enters".
+#: archetype: Distinct: no deck shares more than 3 nonland cards; deck 62 (UBG wrath-reanimator)
+#: archetype: is the nearest theme neighbour.
+#: tier: B (PROVISIONAL) — a lightly played draft, AT the measurable B floor (interaction 6,
+#: tier: card advantage 4, protection 5). The interaction count under-reads the list: Muldrotha,
+#: tier: Under the Skin, Lie in Wait, Seedship Broodtender and Liliana re-buy Fangkeeper's
+#: tier: Familiar, Awaken the Honored Dead and Galactus from the yard, and four deathtouch bodies
+#: tier: (Glarb, Devotee, Etrata, Qarsi) tax combat. Residual cap: a three-colour manabase whose
+#: tier: three-pip 3-drops (Glarb, Lie in Wait, Awaken the Honored Dead) cast on curve about
+#: tier: 80% of the time, with Bloom Tender, Sultai Devotee, Twitching Doll and
+#: tier: Insidious Roots' tokens as the only nonland fixing, plus singleton variance across the engine pieces. The floor
+#: tier: cannot see the deck's real card advantage (dread selection, Paranormal Analyst, Kishla,
+#: tier: Hollowmurk drawing off Innkeeper's Talent and Velocipede counters), so A is the case to make after games show the mana holds.
+#: protect: Hauntwoods Shrieker; Paranormal Analyst; Kishla Skimmer; Kheru Goldkeeper; Koma, World-Eater; Sultai Devotee
+#: notes: Drafted 2026-10-11 from the 118-card Sultai pile (pile analysis, batches 1-4 + revision 1).
+#: notes: Owner's calls: 1 Sultai Devotee rather than 4 (three slots to Jenova, The Coming of
+#: notes: Galactus, Stalwart Successor), Exdeath in for Cryptid Inspector, then Cryptid Inspector
+#: notes: back for Tarmogoyf (its power counts card types across all graveyards — about 3-4 by
+#: notes: turn five, a ceiling near 5-6 — and it feeds none of the deck's engines). The manabase
+#: notes: was moved toward black for those four cards (Overgrown Tomb 4, Forest 4, Swamp 3).
+#: notes: Rules the read surfaced: turning a dread card face up is NOT entering, so ETB
+#: notes: creatures are weak hits; a face-down creature has mana value 0 (Vicious Rivalry was
+#: notes: left out because it kills your own manifests); Exdeath (6 permanent cards in the yard)
+#: notes: and Oculus/Muldrotha draw on the same graveyard. Bench: Moon-Vigil Adherents,
+#: notes: Witherbloom the Balancer, Hapatra, Omnivorous Flytrap, Oblivious Bookworm, Lasyd Prowler,
+#: notes: Deadly Brew, Tarmogoyf. Variant signal held for later: a lands-from-graveyard
+#: notes: Simic/Sultai deck (Mole Man, Icetill Explorer, Glacierwood Siege, Bonny Pall, ~14 cards).
+#: notes: 2026-10-11 (owner's calls, round 1): Seedship Broodtender in for Champion of Dusan (a
+#: notes: 2-drop that mills 3; its reanimation is a real enter, unlike a flip), Etrata, Deadly
+#: notes: Fugitive in for Rakshasa's Bargain (a face-down NONCREATURE is exiled and cast free for
+#: notes: {2}{U}{B}, so a manifested saga, walker or removal spell is no longer a vanilla 2/2),
+#: notes: Tam, Mindful First-Year in for Witherbloom Charm (tap: a creature becomes all colours, so
+#: notes: Tam's static gives it hexproof from all colours), Kotis in for Kin-Tree Severance (Kheru
+#: notes: renew or Jenova counters make the indestructible 2/1 connect). Interaction 10 -> 8,
+#: notes: card advantage 5 -> 4, protection 1 -> 3. Etrata and Bonny Pall rotate in 2026 (MKM/OTJ).
+#: notes: 2026-10-11 (owner's calls, round 2): Bonny Pall in for Quandrix (draw + a land from the
+#: notes: yard on every attack — a leave event), Beifong's Bounty Hunters for Attuned Hunter,
+#: notes: Insidious Roots for Cryptid Inspector, Qarsi Revenant for Stalwart Successor, Fang,
+#: notes: Fearless l'Cie for Warden of the Grove, Defiled Crypt for Break Down the Door. The
+#: notes: deck now leans on leave-the-graveyard payoffs (Kishla, Fang, Goldkeeper, Roots, Crypt)
+#: notes: over the counters layer. Interaction 8 -> 7 (the A edge), card advantage 4 -> 6.
+#: notes: 2026-10-11 manabase (owner's call, option A of two measured): Breeding Pool 3 -> 4,
+#: notes: Watery Grave 2 -> 4, one fewer Forest, Island and Swamp. Sources U 12/B 13/G 15 ->
+#: notes: U 14/B 14/G 15; cards under 90% on curve 28 -> 23. Option B (a second copy of each Verge
+#: notes: for two more basics) measured 15/14/16 and 19 under 90%, held back.
+#: notes: 2026-10-12 ZERO-RARE MANABASE (owner's call — no rare land crafts): 4 Opulent Palace,
+#: notes: 1 each Overgrown Tomb / Breeding Pool / Watery Grave / Wastewood / Willowrush, 2 Gloomlake
+#: notes: Verge, 2 Hidden Lair, Dreamroot Cascade, Starting Town, 4 Forest, 2 Island, 3 Swamp.
+#: notes: Measured against option A: cards under 90% on curve 23 -> 28, and the chance of at least
+#: notes: one unconditional tapland among the first three land drops 24% -> 44%. Each extra
+#: notes: Breeding Pool or Watery Grave (for a basic) buys back about one card; Overgrown Tomb none.
+#: notes: 2026-10-12 (owner's call): Liliana the Repentant in for Fang, Fearless l'Cie ("whenever
+#: notes: another creature … you control enters, mill two cards" — face-down dread creatures and
+#: notes: tokens count, so it fills the graveyard every turn; Kishla Skimmer keeps the once-a-turn
+#: notes: leave-the-graveyard draw Fang duplicated). Card advantage 6 -> 5.
+#: notes: 2026-10-12 (owner's calls, slow-start fixes): Twitching Doll in for Teval ("{T}: Add one
+#: notes: mana of any color" on a 2-drop; Teval's life loss per spell and its delve, which ate the
+#: notes: graveyard the deck fills, under-performed), Thunderous Velocipede in for Valgavoth's
+#: notes: Onslaught (every other creature enters with a +1/+1 counter — a face-down dread creature has
+#: notes: mana value 0, so each one arrives a 3/3 and Hollowmurk draws), Warg Tactics in for
+#: notes: Professor Dellian Fel (instant: kill a flier, or a counter plus trample and hexproof).
+#: notes: Card advantage 5 -> 4, protection 3 -> 4. Kraven's Last Hunt kept for its turn-four mill 5.
+#: notes: 2026-10-12 (owner's call): Innkeeper's Talent in for Bonny Pall (rotates 2026; a 6-drop
+#: notes: in a deck being made faster). Level 1 puts a +1/+1 counter on a creature at each combat, so
+#: notes: Hollowmurk Siege draws every turn; level 2 gives countered permanents ward {1}; level 3
+#: notes: doubles every counter (Velocipede's +1 becomes +2). Card advantage 4 -> 3 on the role
+#: notes: count (Bonny's attack draw), protection 4 -> 5; the metrics floor reads B until a draw
+#: notes: card (Inspiring Call / Terrasymbiosis) lands.
+#: notes: 2026-10-12: Bloom Tender for Defiled Crypt — a 2-drop that taps for all three colours
+#: notes: (Vivid) beats a 4-mana Room that does nothing the turn it lands; the Horror-per-turn
+#: notes: leave payoff was the cost. Leave payoffs now: Kishla, Goldkeeper, Insidious Roots.
+#: notes: 2026-10-12: Smuggler's Surprise for Warg Tactics — one spree card that mills four and
+#: notes: keeps two creature/land cards (a leave event on your turn for Kishla / Goldkeeper / Roots),
+#: notes: cheats Koma or Sin in at instant speed, and gives power-4+ creatures hexproof and
+#: notes: indestructible. Cost: the 2-mana flier kill; interaction 7 -> 6 (floor stays B).
+#: notes: 2026-10-12: Terrasymbiosis for Enduring Vitality (the counters engine now draws: Jenova,
+#: notes: Innkeeper's Talent and Velocipede put counters every turn; Bloom Tender, Doll, Devotee,
+#: notes: Roots and Goldkeeper carry the ramp) and Absorbing Man for the 2nd Hauntwoods Shrieker
+#: notes: (a 3-mana 4/4 that copies Innkeeper's Talent, Terrasymbiosis, Insidious Roots, Velocipede
+#: notes: or a dual land each turn; a copied Siege gets no mode and a copied Saga no chapters).
+#: notes: Dread cards 5 -> 4. Card advantage 3 -> 4.
+#: notes: 2026-10-12: Evolving Wilds for an Island — a basic fetch counts for all three colours
+#: notes: (sources 14/13/14 -> U14 B14 G15; cards below 90% on curve 31 -> 24) at the cost of one
+#: notes: more tapped land drop, and it feeds the yard (Muldrotha replays it as a leave event,
+#: notes: Drag's delirium, Exdeath, Sin). Considered and passed: Overgrown Tomb + Watery Grave
+#: notes: (rare crafts, B 13 -> 15, 31 -> 27) and a 2nd fetch (-> 20, but ~60% tapped-by-turn-3).
+
+# Dread engine
+1 Hauntwoods Shrieker (DSK) 182
+1 Abhorrent Oculus (DSK) 42
+1 Growing Dread (DSK) 216
+1 Under the Skin (DSK) 203
+1 Paranormal Analyst (DSK) 69
+1 Etrata, Deadly Fugitive (MKM) 200
+
+# Graveyard-leave + counters engine
+1 Kishla Skimmer (TDM) 201
+1 Kheru Goldkeeper (TDM) 199
+1 Beifong's Bounty Hunters (TLA) 209
+1 Seedship Broodtender (EOE) 227
+1 Glarb, Calamity's Augur (BLB) 215
+1 Hollowmurk Siege (TDM) 192
+1 Liliana the Repentant (FRA) 231
+1 Insidious Roots (MKM) 208
+1 Qarsi Revenant (TDM) 86
+1 Jenova, Ancient Calamity (FIN) 228
+1 Exdeath, Void Warlock (FIN) 220
+1 Kotis, the Fangkeeper (TDM) 202
+1 Thunderous Velocipede (DFT) 183
+1 Innkeeper's Talent (BLB) 180
+1 Terrasymbiosis (EOE) 210
+1 Absorbing Man (MSH) 199
+
+# Fixing + protection
+1 Sultai Devotee (TDM) 160
+1 Tam, Mindful First-Year (ECL) 245
+1 Twitching Doll (DSK) 201
+1 Bloom Tender (ECL) 166
+
+# Interaction + card flow
+1 Lie in Wait (TDM) 203
+1 Fangkeeper's Familiar (TDM) 183
+1 Awaken the Honored Dead (TDM) 170
+1 Drag to the Roots (DSK) 213
+1 Kraven's Last Hunt (SPM) 105
+1 Smuggler's Surprise (OTJ) 180
+1 The Coming of Galactus (MSH) 212
+
+# Top end (good dread flips)
+1 Muldrotha, the Gravetide (FDN) 243
+1 Sin, Spira's Punishment (FIN) 242
+1 Koma, World-Eater (FDN) 121
+
+# Lands
+4 Opulent Palace (TDM) 264
+1 Overgrown Tomb (ECL) 266
+1 Breeding Pool (EOE) 251
+1 Dreamroot Cascade (SOS) 254
+2 Hidden Lair (MSH) 269
+1 Watery Grave (EOE) 261
+1 Starting Town (FIN) 289
+1 Wastewood Verge (DFT) 268
+1 Willowrush Verge (DFT) 270
+2 Gloomlake Verge (DSK) 260
+4 Forest (FRA) 289
+1 Island (FRA) 283
+1 Evolving Wilds (ECL) 264
+3 Swamp (FRA) 285

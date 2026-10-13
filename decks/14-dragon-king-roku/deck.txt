@@ -1,6 +1,6 @@
 #: name: Dragon King Roku
 #: format: Standard
-#: tier: A — Rakdos (BR) dragons midrange; bombs + 9 interaction (7 removal + 2 sweepers), low curve base (14 cards at 1-2 MV) with a dragon payoff cluster at 5. Promoted from B: tightened Mardu->2-color for consistency; A-caliber interaction + closing power.
+#: tier: A — Rakdos (BR) dragons midrange; bombs + 14 interaction (Terror of the Peaks turning every token into damage, 3 sweepers counting Iroh's Demonstration's ping mode), low curve base (14 cards at 1-2 MV) with a dragon payoff cluster at 5. Promoted from B: tightened Mardu->2-color for consistency; A-caliber interaction + closing power.
 #: colors: BR
 #: archetype: Rakdos (B/R) Fire Nation dragons / firebending midrange.
 #: notes: Rakdos (B/R) — Fire Nation / dragons midrange. Tightened from the old Mardu build:
@@ -8,42 +8,75 @@
 #: notes: and the white lands re-fixed to red/black — 2-color for A-track consistency. The
 #: notes: former U/G identity cards (Professor Zei, Uncle Iroh, Long Feng) are all hybrids
 #: notes: castable in R/B, so they stay. Craft target: Blazemire Verge (untapped B/R) — wishlisted.
+#: notes: 2026-10-12 tune: -2 Mountain +2 Dark Fortress (B sources 11 -> 13; the BB cards Long Feng /
+#: notes: Day of Black Sun / Ozai / The Rise of Sozin each gain ~8-10 points on curve), Terror of the
+#: notes: Peaks for Wandering Musicians (every token maker — Lathliss, Roku, Draconautics, Ran and
+#: notes: Shaw, Cruel Administrator — now also deals damage), Iroh's Demonstration for Photon Blast
+#: notes: Barrage (a Lesson for Iroh / Jeong Jeong / Cadets / Ran and Shaw; 1 to each opposing creature
+#: notes: or 4 to one, for 2 mana).
+#: notes: 2026-10-12 round 2: both Rough Rhino Cavalry out (a 5-mana 5/5 whose only extra is an {8}
+#: notes: exhaust) for Zuko, Exiled Prince (firebending 3 + '{3}: exile the top card, you may play it'
+#: notes: — card advantage 3 -> 4) and Smaug the Magnificent (an upkeep Treasure every turn, a Dragon
+#: notes: for Sarkhan / Globe / Lathliss); Combustion Technique for Lightning Strike (a 4th Lesson,
+#: notes: instant, exiles). Day of Black Sun kept: choose X under the Dragons' MV 5 to keep them.
+#: notes: Solstice Revelations for the 2nd Firebending Lesson — Lesson count stays 4, and it is card
+#: notes: advantage the classifier does not count (a nonland card to hand, or cast free under the
+#: notes: Mountain count; instant, so firebending combat mana can pay it or its {6}{R} flashback).
+#: notes: Round 3: Chandra, Torch of Defiance for Professor Zei (impulse card / {R}{R} / 4 to a
+#: notes: creature on one 4-drop), Ajani Unrelenting for Summon: Bahamut (6 instead of 9; a Cadet on
+#: notes: every loyalty activation feeds Terror of the Peaks), Draconic Visitor (craft) for Stormshriek
+#: notes: Feral (Smaug's and Sarkhan's Treasures arrive as 5/5 flying Dragons instead). Professor Zei
+#: notes: was CUT in this round; the hybrid note above is history.
+#: notes: Improvisation Capstone for Long Feng (CUT — BB at 3 cast on curve 63%): a 5th Lesson and a
+#: notes: late engine (Paradigm recasts it free each first main phase); avg MV 3.56 -> 3.67.
+#: notes: The Last Agni Kai for Zuko's Conviction (instant fight removal that keeps red mana for the
+#: notes: turn) and Electro, Assaulting Battery for Dragonstorm Globe (CUT): 'You don't lose unspent
+#: notes: red mana as steps and phases end' banks every firebending burst for the main phase and
+#: notes: later turns. Cost: the Globe's any-colour mana (black for the BB cards) and its Dragon counters.
+#: notes: Glóin the Mighty for Charging Strifeknight (CUT): {R}{R} every first main phase, and its
+#: notes: Easy Pickings adventure is a one-sided 1-damage sweep before Glóin is cast from exile.
+#: notes: Raph & Leo, Sibling Rivals for Draconic Visitor (CUT — only Smaug fed it repeatably): an
+#: notes: extra combat every turn, so the untapped firebenders attack, and firebend, twice.
+#: notes: Fated Firepower for Jeong Jeong (CUT, user's choice over War Balloon): flash, so X is paid
+#: notes: from firebending combat mana (or Electro's banked red); every damage source then hits harder.
 
 # Nonland
 1 The Legend of Roku (TLA) 145
 1 Ran and Shaw (TLA) 150
-1 Charging Strifeknight (SOS) 110
+1 Glóin the Mighty // Easy Pickings (HOB) 99
 1 Ozai, the Phoenix King (TLA) 235
 1 Cruel Administrator (TLA) 213
-2 Rough Rhino Cavalry (TLA) 152
-1 Jeong Jeong, the Deserter (TLA) 142
+1 Smaug the Magnificent (HOB) 110
+1 Zuko, Exiled Prince (TLA) 163
+1 Fated Firepower (TLA) 132
 1 Fire Sages (TLA) 136
 1 Firebending Student (TLA) 139
 1 Firebender Ascension (TLA) 137
 1 Fire Nation Cadets (TLA) 134
-2 Firebending Lesson (TLA) 138
+1 Firebending Lesson (TLA) 138
+1 Solstice Revelations (TLA) 153
 1 The Rise of Sozin (TLA) 117
 1 Draconautics Engineer (DFT) 121
 1 Corroding Dragonstorm (TDM) 75
 1 Sarkhan, Dragon Ascendant (TDM) 118
 1 Nova Hellkite (EOE) 148
-1 Dragonstorm Globe (TDM) 241
-1 Summon: Bahamut (FIN) 1
+1 Electro, Assaulting Battery (SPM) 76
+1 Ajani Unrelenting (FRA) 242
 1 Sozin's Comet (TLA) 154
-1 Lightning Strike (TLA) 146
+1 Combustion Technique (TLA) 128
 1 Lathliss, Dragon Queen (FDN) 627
 1 Spinerock Tyrant (ECL) 159
 1 Combustion Man (TLA) 127
-1 Professor Zei, Anthropologist (TLA) 238
+1 Chandra, Torch of Defiance (FRA) 244
 1 Uncle Iroh (TLA) 248
-1 Wandering Musicians (TLA) 250
-1 Zuko's Conviction (TLA) 123
+1 Terror of the Peaks (OTJ) 149
+1 The Last Agni Kai (TLA) 144
 1 Day of Black Sun (TLA) 94
 1 War Balloon (TLA) 159
-1 Long Feng, Grand Secretariat (TLA) 233
-1 Stormshriek Feral (TDM) 124
+1 Improvisation Capstone (SOS) 120
+1 Raph & Leo, Sibling Rivals (TMT) 166
 1 Red Hulk (MSH) 149
-1 Photon Blast Barrage (MSH) 147
+1 Iroh's Demonstration (TLA) 141
 
 # Lands (pure-Rakdos re-fix: −Sun-Blessed Peak (W/R tapland) & −2 Plains → +2 Mountain
 # for the 37-pip red primary + Razortrap Gorge (owned, untapped-cond B/R). White cut with Sun Warriors.)
@@ -51,10 +84,10 @@
 1 Blood Crypt (ECL) 262
 1 Blazemire Verge (DSK) 256
 2 Boiling Rock Prison (TLA) 267
-1 Dark Fortress (MSH) 264
+3 Dark Fortress (MSH) 264
 1 Razortrap Gorge (DSK) 267
 5 Swamp (MSH) 292
-11 Mountain (MSH) 294
+9 Mountain (MSH) 294
 
 # Flex — suggested swaps. See: deck.py flex 14
 #~ note: RETIRED 2026-08-11 — the deck now runs BOTH cards, so the either/or this line framed

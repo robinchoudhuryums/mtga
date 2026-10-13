@@ -21,8 +21,8 @@
 #: protect: Zurgo, Thunder's Decree; Windcrag Siege; Delney, Streetwise Lookout; Suki, Courageous Rescuer; Mardu Siegebreaker; Fire Navy Trebuchet
 #: tier: A (PROVISIONAL) — the metrics floor reads A. The 2026-10-01 swaps first dropped the
 #: tier: floor a band (curve up, card advantage thin); Garna and a 25th land restored it, with
-#: tier: card advantage 4 after the 2026-10-02 Reality Fracture swaps (Garna draws whenever an attacking creature dies; Ajani's −2), interaction 8
-#: tier: (Coordinated Maneuver, Valorous Stance and Pyrrhic Strike, all instants), a 3.31
+#: tier: card advantage 4 after the 2026-10-02 Reality Fracture swaps (Garna draws whenever an attacking creature dies; Ajani's −2), interaction 7
+#: tier: (Valorous Stance and Pyrrhic Strike, both instants), a 3.31
 #: tier: curve (3.23 counting Sunborn's warp; Ajani is a second 6-drop) and an aggro clock of 3/7. What the floor
 #: tier: cannot see: Sothera's exile-per-dying-token is an edict engine the classifier does
 #: tier: not count as interaction, and Sunborn and Slash multiply every wave. Unproven in
@@ -110,6 +110,9 @@
 #: notes: a turn-1/2 drop) and the 2nd Sacred Foundry became Dedicated Commons (owned; enters
 #: notes: tapped unless you control a planeswalker — Ajani is the only one, at 6 mana, so treat it
 #: notes: as a tapland). Sun-Blessed Peak is the strictly better R/W tapland if Commons disappoints.
+#: notes: 2026-10-13: Super Shredder for Coordinated Maneuver (CUT) — a 2-drop menace body that
+#: notes: gains a +1/+1 counter whenever another permanent leaves the battlefield, so every Mobilize
+#: notes: token sacrificed at end step grows it. Interaction 8 -> 7 (still at the A floor).
 
 # Wave engines
 1 Zurgo, Thunder's Decree (TDM) 237
@@ -146,6 +149,7 @@
 1 Slash, Reptile Rampager (TMT) 108
 1 Garna, Bloodfist of Keld (FDN) 658
 1 Alesha, Who Laughs at Fate (FDN) 115
+1 Super Shredder (TMT) 83
 
 # Pulse tricks
 1 Boros Charm (FDN) 721
@@ -153,7 +157,6 @@
 
 # Removal (spot)
 1 Pyrrhic Strike (ECL) 30
-1 Coordinated Maneuver (TDM) 6
 1 Valorous Stance (FDN) 583
 
 # Lands

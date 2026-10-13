@@ -9,16 +9,20 @@
 #: archetype: board from a wrath, and Shadow of the Goblin — an ENCHANTMENT, so it
 #: archetype: dodges the creature removal the tier note worries about — pings each
 #: archetype: opponent per exile-cast. The enabler suite is every exile-cast shape in
-#: archetype: the colors: warp (Knight Luminary, Haliya, Weftstalker Ardent, Starfield
-#: archetype: Shepherd, Exalted Sunborn), plot (Aven Interrupter plotting a spell —
-#: archetype: theirs or ours — off the stack, Demonic Ruckus, Longhorn Sharpshooter),
-#: archetype: adventure (Heartflame Duelist), Appa's own airbend returns
-#: archetype: at {2}, and Bre's end-step free cast off lifegain — which the
+#: archetype: the colors: warp (Haliya, All-Fates Stalker, Exalted Sunborn), plot (Aven Interrupter plotting a spell —
+#: archetype: theirs or ours — off the stack), adventure (Bofur, whose Concerted Care
+#: archetype: is also the deck's hexproof/indestructible save), airbend (Appa, Airbending
+#: archetype: Lesson, Airbender's Reversal, Yangchen, Avatar's Wrath — all recast for
+#: archetype: {2}), impulse (Gwen Stacy, Charred Foyer, Lightning), Joshua's transform
+#: archetype: (returns from exile), and Bre's end-step free cast off lifegain — which the
 #: archetype: interaction package (Lightning Helix, Sheltered by Ghosts, Prayer of
-#: archetype: Binding, Defibrillating Current, Heartflame's lifelink) feeds on purpose.
-#: archetype: White token base (Suki, Frontline Rush, Cosmogrand) keeps the board wide,
-#: archetype: and Exalted Sunborn DOUBLES every token it makes — Appa's Allies,
-#: archetype: Antiquities' Spirits, Cosmogrand's Soldiers, Frontline Rush's Goblins.
+#: archetype: Binding) feeds on purpose, alongside the lifegain payoffs Exemplar of
+#: archetype: Light and Unflinching Hortimancer. Krang & Shredder free-casts off
+#: archetype: an opponent's exiled card at end step. Ketramose draws off
+#: archetype: every warp/airbend exile on your turn; Venat draws off the legend count.
+#: archetype: White token base (Suki, Cosmogrand) keeps the board wide, and Exalted
+#: archetype: Sunborn DOUBLES every token it makes — Appa's Allies, Antiquities'
+#: archetype: Spirits, Cosmogrand's Soldiers.
 #: archetype: Distinct from 55 (combat pulse) and 55a (cast cadence). Deck 45 Exile
 #: archetype: Dividend shares the trigger and two payoffs (Zuko, Appa — same copies,
 #: archetype: decks share the collection): the decks differ in HOW the exile-cast
@@ -31,8 +35,8 @@
 #: tier: credits the interaction suite, but the engine's payoff half concentrates in
 #: tier: a handful of removal-magnet permanents with almost no protection behind
 #: tier: them, and without a payoff on board the exile-cast enablers are fair value
-#: tier: cards. Measured card advantage is near zero (the counter under-reads Bre
-#: tier: and Discover, but not by much). The pile analysis called this the thinnest
+#: tier: cards. Measured card advantage was near zero; the 2026-10-12
+#: tier: impulse adds (Charred Foyer, Lightning) and the 2026-10-13 package bring it to 7. The pile analysis called this the thinnest
 #: tier: of the three Mardu builds and the letter should say so. Re-grade after
 #: tier: real games or once the enabler suite proves it can win through removal.
 #: notes: BUILT from the 55-mardu pile analysis (C1 axis; built third per the plan —
@@ -41,14 +45,14 @@
 #: notes: spell as tempo or plot OUR OWN spell off the stack — the self-plot is a
 #: notes: real exile-cast enabler for Zuko/Appa, not just disruption. TIMING SPINE the
 #: notes: tooling can't see: Zuko and Appa trigger on casts FROM EXILE only — the
-#: notes: flashback spells (Antiquities, Auron's, Practiced) cast from the GRAVEYARD
+#: notes: flashback spells (Antiquities, Practiced) cast from the GRAVEYARD
 #: notes: and do NOT feed them; flashback is here for Antiquities' own not-from-hand
 #: notes: bonus and raw value. The exile-cast count that feeds the payoffs: 11 enabler
 #: notes: cards (warp 6, plot 4, adventure 1), plus Appa's airbend returns and Bre's
 #: notes: end-step cast generating more from the payoff side. E-04: exiled
 #: notes: TOKENS die, so Appa's wrath-dodge saves only the nontoken board — Suki's
 #: notes: Allies and Antiquities' Spirits are lost; weigh that before dodging. Scout
-#: notes: for Survivors' MV<=3-total mass reanimate has real targets here (Mardu
+#: notes: for Survivors (CUT 2026-10-13 for Yangchen) — its MV<=3-total mass reanimate has real targets here (Mardu
 #: notes: Devotee, Aven Interrupter, plus the MV-3 warp bodies Haliya and Weftstalker
 #: notes: singly; Bre at MV 4 never qualified). Deliberately NOT
 #: notes: included: Group Project (E-02 — its flashback taps three untapped creatures
@@ -70,7 +74,34 @@
 #: notes: (all duplicates) to 1 mythic + 1 rare (2nd Appa — kept, flash wrath-save has
 #: notes: no substitute — and Shadow). Cosmogrand was never short: library undercounted
 #: notes: it at 1, corrected to the real 2 this same day.
-#~ -Snow Villiers | +Red Tiger Mechan (craft C) | warp is a 10th exile-cast enabler feeding Zuko/Appa/Quintorius on the recast; Snow is the least engine-connected body. Confirmed direction 2026-08; craft when wildcards allow.
+#: notes: 2026-10-12 tune: mana — Sacred Foundry for Scoured Barrens, Godless Shrine for Boiling Rock
+#: notes: Prison, a Mountain for a Plains (tapped-land odds in the first 3 drops 44% -> 24%; R 10 -> 12;
+#: notes: Lightning Helix 73.5 -> 79%). Charred Foyer // Warped Space for Defibrillating Current (an
+#: notes: upkeep impulse = an exile-cast every turn; Warped Space makes one exile-cast a turn free) and
+#: notes: Lightning, Security Sergeant for Snow Villiers (impulse on combat damage). Interaction 10 -> 9.
+#: notes: 2026-10-13: Airbending Lesson for Auron's Inspiration (airbend + draw, an exile-cast for {2}),
+#: notes: Airbender's Reversal for Push // Pull (kill an attacker, or airbend Zuko / Appa in response to
+#: notes: removal and recast it — the deck's missing protection), The Legend of Yangchen for Scout for
+#: notes: Survivors (exile their MV3+ permanents, draw three, then airbend on every second spell), and
+#: notes: Spider-Verse for a Frontline Rush (copies one not-from-hand cast a turn — warp recasts, plot,
+#: notes: AND the graveyard flashbacks Zuko/Appa ignore).
+#: notes: 2026-10-13 package: Exemplar of Light (Frontline Rush), Gwen Stacy and Bofur (both
+#: notes: Demonic Ruckus), All-Fates Stalker (Longhorn Sharpshooter), Ketramose (Practiced Offense),
+#: notes: Resplendent Angel (a Knight Luminary; Angel later CUT for Krang & Shredder — the other was CUT later for Boiling Rock Rioter), Venat (a Cosmogrand Zenith), Unflinching
+#: notes: Hortimancer (Heartflame Duelist), Joshua (Weftstalker Ardent), Starting Town (Razortrap
+#: notes: Gorge — any colour, so Gwen's {2}{U}{R}{W} transform is reachable). Card advantage 4 -> 7,
+#: notes: protection 2 -> 6. Cost: Ketramose is {1}{W}{B} on 6 black sources (~61% on turn 3).
+#: notes: Boiling Rock Rioter for the last Knight Luminary: Allies (Zuko, Appa x2, Suki and Appa's
+#: notes: Ally tokens) tap to exile graveyard cards (Ketramose draws), and an attacking Rioter recasts
+#: notes: a dead Zuko/Appa/Suki from exile. Craft R; black is still only 6-7 sources.
+#: notes: Super Shredder for Starfield Shepherd (CUT — its MV<=1 tutor had 2 targets): a 2-drop
+#: notes: that grows whenever another permanent leaves (warp exiles, airbends, dying tokens).
+#: notes: Krang & Shredder for Resplendent Angel (CUT, rotates ~2026, WW) plus 2 Dark Fortress for 2
+#: notes: Mountains: black 6 -> 8 sources for the five black cards (Zuko, Ketramose, Rioter, Super
+#: notes: Shredder, Krang). Krang needs two black/blue: ~51% by turn 6, ~61% by turn 8.
+#: notes: Shattered Sanctum (owned) for a Plains: W/B, untapped from the third land on; black 8 -> 9
+#: notes: sources with no white or red lost. Craft next: Godless Shrine x2 (for Sun-Blessed Peak, a Plains).
+#~ note: applied — Lightning, Security Sergeant in for Snow Villiers.
 
 # Exile-cast payoffs
 1 Fire Lord Zuko (TLA) 221
@@ -79,37 +110,41 @@
 1 Bre of Clan Stoutarm (ECL) 207
 1 Haliya, Guided by Light (EOE) 19
 1 Quintorius Kand (LCI) 238
+1 Spider-Verse (SPM) 93
+1 Krang & Shredder (TMT) 153
 
 # Exile-cast enablers (warp / plot / adventure / flashback)
-2 Knight Luminary (EOE) 23
+1 Boiling Rock Rioter (TLA) 87
 1 Aven Interrupter (OTJ) 4
-1 Weftstalker Ardent (EOE) 169
+1 Joshua, Phoenix's Dominant // Phoenix, Warden of Fire (FIN) 229
 1 Antiquities on the Loose (SOS) 7
-1 Starfield Shepherd (EOE) 37
-2 Demonic Ruckus (OTJ) 120
-1 Longhorn Sharpshooter (OTJ) 132
-1 Heartflame Duelist // Heartflame Slash (WOE) 228
+1 Super Shredder (TMT) 83
+1 Bofur, Reliable Guardian // Concerted Care (HOB) 6
+1 Gwen Stacy // Ghost-Spider (SPM) 78
+1 All-Fates Stalker (EOE) 3
 1 Exalted Sunborn (EOE) 15
-1 Auron's Inspiration (FIN) 8
-1 Practiced Offense (SOS) 25
+1 Airbending Lesson (TLA) 8
+1 Ketramose, the New Dawn (DFT) 209
+1 Charred Foyer // Warped Space (DSK) 129
+1 The Legend of Yangchen // Avatar Yangchen (TLA) 27
 
 # White token base
-2 Cosmogrand Zenith (EOE) 9
+1 Cosmogrand Zenith (EOE) 9
+1 Venat, Heart of Hydaelyn // Hydaelyn, the Mothercrystal (FIN) 39
 1 Suki, Courageous Rescuer (TLA) 37
-2 Frontline Rush (TDM) 186
-1 Snow Villiers (FIN) 33
+1 Exemplar of Light (FDN) 733
+1 Lightning, Security Sergeant (FIN) 560
+1 Unflinching Hortimancer (FRA) 23
 
 # Interaction (lifegain-heavy on purpose — it feeds Bre)
 2 Lightning Helix (MKM) 218
 1 Boros Charm (FDN) 721
-1 Push // Pull (MKM) 250
+1 Airbender's Reversal (TLA) 7
 1 Sheltered by Ghosts (DSK) 30
 1 Prayer of Binding (FDN) 739
-1 Defibrillating Current (TDM) 177
 1 Avatar's Wrath (TLA) 12
 
 # Recursion / fixing
-1 Scout for Survivors (EOE) 33
 1 Mardu Devotee (TDM) 16
 
 # Lands
@@ -118,9 +153,11 @@
 1 Blazemire Verge (DSK) 256
 1 Bleachbone Verge (DFT) 250
 1 Nomad Outpost (TDM) 263
-1 Razortrap Gorge (DSK) 267
+1 Starting Town (FIN) 289
 1 Sun-Blessed Peak (TLA) 280
-1 Boiling Rock Prison (TLA) 267
-1 Scoured Barrens (M21) 250
-11 Plains (MSH) 287
-4 Mountain (MSH) 293
+1 Godless Shrine (EOE) 254
+1 Sacred Foundry (EOE) 256
+9 Plains (MSH) 287
+1 Shattered Sanctum (SOS) 260
+3 Mountain (MSH) 293
+2 Dark Fortress (MSH) 264
