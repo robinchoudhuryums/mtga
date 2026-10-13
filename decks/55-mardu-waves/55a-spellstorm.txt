@@ -12,8 +12,8 @@
 #: archetype: the Monastery), and the payoff layer converts each cast into damage and
 #: archetype: life (Judith, Cori Mountain Stalwart, Thor, Monica, Heartflame Duelist).
 #: archetype: The graveyard half keeps the storm going: Kirol grows on every card that
-#: archetype: LEAVES the yard, which the flashback suite (Pursue the Past, Practiced
-#: archetype: Offense, Duel Tactics) and Electro's Bolt mayhem provide, with
+#: archetype: LEAVES the yard, which the flashback suite (Pursue the Past and
+#: archetype: Practiced Offense) and Electro's Bolt mayhem provide, with
 #: archetype: Ultimate Green Goblin and Cruelclaw as the discard outlets that fill it.
 #: archetype: Distinct from deck 25 (UR Spellstorm), the roster's other spellslinger:
 #: archetype: 25 magnifies ONE big turn (storm copies of big spells); this deck rewards
@@ -47,6 +47,11 @@
 #: notes: Overwhelming Surge→Lightning Helix, Auron's Inspiration→Boros Charm, Antiquities
 #: notes: on the Loose→Sheltered by Ghosts, Equilibrium Adept→Chandra, Torch of Defiance,
 #: notes: one Tablet of Discovery→The Vision: interaction 13→16, protection 1→4.
+#: notes: Same day, round 2: 1 Frantic Firebolt→Burst Lightning (one-mana instant, any
+#: notes: target), 1 Rally→Stingerquill Voxmancer (prepared every upkeep, so Vicious Verse
+#: notes: is an extra sorcery cast EVERY turn — a second spell for {B/R}, free with Electro's
+#: notes: refund), Duel Tactics→Restoration Magic (hexproof + indestructible for {W}).
+#: notes: Interaction 16→14 by design (Rally's and Duel Tactics' modes), protection up.
 
 # Payoffs (per-cast converters)
 1 Judith, Carnage Connoisseur (MKM) 210
@@ -70,7 +75,8 @@
 2 Cosmogrand Zenith (EOE) 9
 1 Sunstar Lightsmith (EOE) 42
 1 Iroh's Demonstration (TLA) 141
-2 Rally the Monastery (TDM) 19
+1 Rally the Monastery (TDM) 19
+1 Stingerquill Voxmancer // Vicious Verse (FRA) 151
 
 # Graveyard half (Kirol + the yard-leaving suite)
 2 Kirol, History Buff // Pack a Punch (SOS) 198
@@ -78,15 +84,16 @@
 1 Ultimate Green Goblin (SPM) 157
 1 The Infamous Cruelclaw (BLB) 219
 1 Electro's Bolt (SPM) 77
-1 Duel Tactics (SOS) 112
 1 Practiced Offense (SOS) 25
 
 # Removal (scales with the spell count)
 1 Thunder Salvo (OTJ) 150
 1 Lightning Helix (MKM) 218
-2 Frantic Firebolt (WOE) 130
+1 Frantic Firebolt (WOE) 130
+1 Burst Lightning (FDN) 192
 1 Boros Charm (FDN) 721
 1 Sheltered by Ghosts (DSK) 30
+1 Restoration Magic (FIN) 30
 
 # Lands
 1 Blood Crypt (ECL) 262
@@ -106,8 +113,8 @@
 #~   number of instant and sorcery cards in your graveyard") where Molten Note scales off
 #~   mana you actually spend. Nothing about power argues for the swap.
 #~   WHAT ARGUES FOR IT IS THE CALENDAR: Frantic Firebolt rotates ~2026 — the only card in
-#~   this deck that does — and both copies are now OWNED, so it simply plays until it
-#~   rotates. Molten Note does the same job (scalable damage
+#~   this deck that does — and the one remaining copy is OWNED, so it simply plays until
+#~   it rotates (the other slot went to Burst Lightning on 2026-10-13). Molten Note does the same job (scalable damage
 #~   removal) and rotates ~2029, outliving Judith (2027) and Brazen Collector (2027).
 #~   TRIGGER: make this swap when Frantic Firebolt rotates, NOT before. Until then the two
 #~   slots are better left uncrafted than replaced.
