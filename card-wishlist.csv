@@ -322,6 +322,9 @@ Multiversal Passage,Land,"As this land enters, choose a basic land type. Then yo
 This land is the chosen type.",Colorless,,SPM,180,Rare,general,basic-type fixing land — any deck,6.0,hand
 Radioactive Spider,Creature — Spider,"Reach, deathtouch
 Fateful Bite — {2}, Sacrifice this creature: Search your library for a Spider Hero card, reveal it, put it into your hand, then shuffle. Activate only as a sorcery.",G,Spider; sacrifice; reach; defense; deathtouch; combat; removal,SPM,111,Rare,66,"PRIORITY of the two: the only MV-1 Spider available to fix Eddie Brock's flagged thin reanimation gate (2 targets). Deathtouch/reach body, sac outlet, and a tutor for any Spider Hero. Cut candidate on craft: Alien Symbiosis or Grub's Command.",3.0,seed
+Spider-Man 2099,Legendary Creature — Spider Human Hero,"From the Future — You can't cast Spider-Man 2099 during your first, second, or third turns of the game.
+Double strike, vigilance
+At the beginning of your end step, if you've played a land or cast a spell this turn from anywhere other than your hand, Spider-Man 2099 deals damage equal to his power to any target.",U/R,Spider; Human; Hero; vigilance; combat; double strike; aggro,SPM,150,Rare,54b,,6.5,seed
 Strength of Will,Instant,"Until end of turn, target creature you control gains indestructible and ""Whenever this creature is dealt damage, put that many +1/+1 counters on it.""",G,counters,SPM,118,Rare,general,green protect + damage->counters combat trick — any green deck,4.0,hand
 The Death of Gwen Stacy,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
 I — Destroy target creature.
