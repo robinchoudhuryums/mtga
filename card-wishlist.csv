@@ -155,6 +155,9 @@ Machina — Equip {4} ({4}: Attach to target creature you control. Equip only as
 The Water Crystal,Legendary Artifact,"Blue spells you cast cost {1} less to cast.
 If an opponent would mill one or more cards, they mill that many cards plus four instead.
 {4}{U}{U}, {T}: Each opponent mills cards equal to the number of cards in your hand.",U,mill; cost-reduction; graveyard,FIN,85,Rare,51; 22,,5.5,seed
+"Venat, Heart of Hydaelyn // Hydaelyn, the Mothercrystal",Legendary Creature — Elder Wizard // Legendary Creature — God,"Whenever you cast a legendary spell, draw a card. This ability triggers only once each turn.
+Hero's Sundering — {7}, {T}: Exile target nonland permanent. Transform Venat. Activate only as a sorcery. // Indestructible
+Blessing of Light — At the beginning of combat on your turn, put a +1/+1 counter on another target creature you control. Until your next turn, it gains indestructible. If that creature is legendary, draw a card.",W,Elder; Wizard; God; counters; card draw; removal; indestructible; resilience; transform,FIN,39,Rare,55b,,9.0,seed
 Dark Knight's Greatsword,Artifact — Equipment,"Job select (When this Equipment enters, create a 1/1 colorless Hero creature token, then attach this to it.)
 Equipped creature gets +3/+0 and is a Knight in addition to its other types.
 Chaosbringer — Equip—Pay 3 life. Activate only once each turn.",B,Equipment; tokens; etb; equipment; pump; chaosbringer; job select; equip,FIN,95,Uncommon,38,,4.0,hand

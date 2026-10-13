@@ -9,16 +9,20 @@
 #: archetype: board from a wrath, and Shadow of the Goblin — an ENCHANTMENT, so it
 #: archetype: dodges the creature removal the tier note worries about — pings each
 #: archetype: opponent per exile-cast. The enabler suite is every exile-cast shape in
-#: archetype: the colors: warp (Knight Luminary, Haliya, Weftstalker Ardent, Starfield
+#: archetype: the colors: warp (Knight Luminary, Haliya, All-Fates Stalker, Starfield
 #: archetype: Shepherd, Exalted Sunborn), plot (Aven Interrupter plotting a spell —
-#: archetype: theirs or ours — off the stack, Demonic Ruckus, Longhorn Sharpshooter),
-#: archetype: adventure (Heartflame Duelist), Appa's own airbend returns
-#: archetype: at {2}, and Bre's end-step free cast off lifegain — which the
+#: archetype: theirs or ours — off the stack), adventure (Bofur, whose Concerted Care
+#: archetype: is also the deck's hexproof/indestructible save), airbend (Appa, Airbending
+#: archetype: Lesson, Airbender's Reversal, Yangchen, Avatar's Wrath — all recast for
+#: archetype: {2}), impulse (Gwen Stacy, Charred Foyer, Lightning), Joshua's transform
+#: archetype: (returns from exile), and Bre's end-step free cast off lifegain — which the
 #: archetype: interaction package (Lightning Helix, Sheltered by Ghosts, Prayer of
-#: archetype: Binding, Heartflame's lifelink) feeds on purpose.
-#: archetype: White token base (Suki, Frontline Rush, Cosmogrand) keeps the board wide,
-#: archetype: and Exalted Sunborn DOUBLES every token it makes — Appa's Allies,
-#: archetype: Antiquities' Spirits, Cosmogrand's Soldiers, Frontline Rush's Goblins.
+#: archetype: Binding) feeds on purpose, alongside the lifegain payoffs Exemplar of
+#: archetype: Light, Resplendent Angel and Unflinching Hortimancer. Ketramose draws off
+#: archetype: every warp/airbend exile on your turn; Venat draws off the legend count.
+#: archetype: White token base (Suki, Cosmogrand) keeps the board wide, and Exalted
+#: archetype: Sunborn DOUBLES every token it makes — Appa's Allies, Antiquities'
+#: archetype: Spirits, Cosmogrand's Soldiers, Resplendent's Angels.
 #: archetype: Distinct from 55 (combat pulse) and 55a (cast cadence). Deck 45 Exile
 #: archetype: Dividend shares the trigger and two payoffs (Zuko, Appa — same copies,
 #: archetype: decks share the collection): the decks differ in HOW the exile-cast
@@ -32,7 +36,7 @@
 #: tier: a handful of removal-magnet permanents with almost no protection behind
 #: tier: them, and without a payoff on board the exile-cast enablers are fair value
 #: tier: cards. Measured card advantage was near zero; the 2026-10-12
-#: tier: impulse adds (Charred Foyer, Lightning) bring it to 3, still thin. The pile analysis called this the thinnest
+#: tier: impulse adds (Charred Foyer, Lightning) and the 2026-10-13 package bring it to 7. The pile analysis called this the thinnest
 #: tier: of the three Mardu builds and the letter should say so. Re-grade after
 #: tier: real games or once the enabler suite proves it can win through removal.
 #: notes: BUILT from the 55-mardu pile analysis (C1 axis; built third per the plan —
@@ -81,6 +85,12 @@
 #: notes: Survivors (exile their MV3+ permanents, draw three, then airbend on every second spell), and
 #: notes: Spider-Verse for a Frontline Rush (copies one not-from-hand cast a turn — warp recasts, plot,
 #: notes: AND the graveyard flashbacks Zuko/Appa ignore).
+#: notes: 2026-10-13 package: Exemplar of Light (Frontline Rush), Gwen Stacy and Bofur (both
+#: notes: Demonic Ruckus), All-Fates Stalker (Longhorn Sharpshooter), Ketramose (Practiced Offense),
+#: notes: Resplendent Angel (a Knight Luminary), Venat (a Cosmogrand Zenith), Unflinching
+#: notes: Hortimancer (Heartflame Duelist), Joshua (Weftstalker Ardent), Starting Town (Razortrap
+#: notes: Gorge — any colour, so Gwen's {2}{U}{R}{W} transform is reachable). Card advantage 4 -> 7,
+#: notes: protection 2 -> 6. Cost: Ketramose is {1}{W}{B} on 6 black sources (~61% on turn 3).
 #~ note: applied — Lightning, Security Sergeant in for Snow Villiers.
 
 # Exile-cast payoffs
@@ -93,25 +103,28 @@
 1 Spider-Verse (SPM) 93
 
 # Exile-cast enablers (warp / plot / adventure / flashback)
-2 Knight Luminary (EOE) 23
+1 Knight Luminary (EOE) 23
 1 Aven Interrupter (OTJ) 4
-1 Weftstalker Ardent (EOE) 169
+1 Joshua, Phoenix's Dominant // Phoenix, Warden of Fire (FIN) 229
 1 Antiquities on the Loose (SOS) 7
 1 Starfield Shepherd (EOE) 37
-2 Demonic Ruckus (OTJ) 120
-1 Longhorn Sharpshooter (OTJ) 132
-1 Heartflame Duelist // Heartflame Slash (WOE) 228
+1 Bofur, Reliable Guardian // Concerted Care (HOB) 6
+1 Gwen Stacy // Ghost-Spider (SPM) 78
+1 All-Fates Stalker (EOE) 3
 1 Exalted Sunborn (EOE) 15
 1 Airbending Lesson (TLA) 8
-1 Practiced Offense (SOS) 25
+1 Ketramose, the New Dawn (DFT) 209
 1 Charred Foyer // Warped Space (DSK) 129
 1 The Legend of Yangchen // Avatar Yangchen (TLA) 27
 
 # White token base
-2 Cosmogrand Zenith (EOE) 9
+1 Cosmogrand Zenith (EOE) 9
+1 Venat, Heart of Hydaelyn // Hydaelyn, the Mothercrystal (FIN) 39
 1 Suki, Courageous Rescuer (TLA) 37
-1 Frontline Rush (TDM) 186
+1 Exemplar of Light (FDN) 733
 1 Lightning, Security Sergeant (FIN) 560
+1 Resplendent Angel (LCI) 32
+1 Unflinching Hortimancer (FRA) 23
 
 # Interaction (lifegain-heavy on purpose — it feeds Bre)
 2 Lightning Helix (MKM) 218
@@ -130,7 +143,7 @@
 1 Blazemire Verge (DSK) 256
 1 Bleachbone Verge (DFT) 250
 1 Nomad Outpost (TDM) 263
-1 Razortrap Gorge (DSK) 267
+1 Starting Town (FIN) 289
 1 Sun-Blessed Peak (TLA) 280
 1 Godless Shrine (EOE) 254
 1 Sacred Foundry (EOE) 256
