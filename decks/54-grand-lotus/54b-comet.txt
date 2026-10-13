@@ -152,6 +152,16 @@
 #: notes: Soloist does its job with a 3-damage upside and reach.
 #: notes: 2026-09-06 LAND SWEEP (owned four-ofs of the untapped-beside-a-basic duals): −2x Rugged Highlands
 #: notes: +2x Training Compound. Sources W 2 / U 13 / B 2 / R 21 / G 9 → W 2 / U 13 / B 2 / R 21 / G 9; unconditional taplands 9 → 0. Same colours, no tempo tax.
+#: notes: 2026-10-13 LAND REWORK for Azula (kept on purpose — her only deck): Steam Vents
+#: notes: and Watery Grave for the two Swiftwater Cliffs, Starting Town for Temple of
+#: notes: Epiphany, Blood Crypt for Spectacle Summit, Dark Fortress for a Mountain. Sources
+#: notes: U 13→12, B 2→6, R 20→18, G 7→8; Azula on curve 28%→61%, Iroh 73%→76%, Great
+#: notes: Divide Guide 65%→71%; P(tapland in first three drops) 64.5%→33%. Cost: Sphinx
+#: notes: of Forgotten Lore 70%→65% and Fated Firepower's hard-cast 79%→71% (it is meant
+#: notes: to be flashed in off firebending mana). The Azula paragraph above ("black from
+#: notes: three places only", 0.0% on curve) predates this rework. Bloom Tender stays:
+#: notes: Vivid taps for 2-3 (G + R + U among your permanents), which the source counts
+#: notes: cannot see. Spider-Man 2099 replaced Emeritus of Conflict the same day (craft R).
 # Firebending — the mana engine
 1 Redirect Lightning (TLA) 151
 1 Fire Sages (TLA) 136
@@ -200,17 +210,19 @@
 # Lands — red-primary. Fire Nation Palace grants firebending 4 to a
 # creature that lacks it, which is a second copy of the deck's engine.
 2 Fire Nation Palace (TLA) 268
-2 Swiftwater Cliffs (MOM) 273
+1 Watery Grave (EOE) 261
+1 Steam Vents (ECL) 267
 1 Riverpyre Verge (DFT) 260
 2 Stark Industries (MSH) 272
 1 Daily Bugle Building (SPM) 179
-1 Spectacle Summit (SOS) 262
-1 Temple of Epiphany (FDN) 699
+1 Blood Crypt (ECL) 262
+1 Starting Town (FIN) 289
 3 Training Compound (MSH) 275
 1 Thornspire Verge (DSK) 270
 1 Frontier Bivouac (TDM) 256
 1 Breeding Pool (EOE) 251
-5 Mountain (MSH) 293
+4 Mountain (MSH) 293
+1 Dark Fortress (MSH) 264
 2 Island (MSH) 289
 1 Forest (MSH) 295
 1 Captivating Cave (LCI) 268

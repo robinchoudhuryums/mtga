@@ -2883,6 +2883,7 @@ Way of the Warlord,{2}{R},3,Surveil;Empower Jace
 Hall of Echoes,,0,
 Celestial Reunion,{X}{G},1,Behold
 Thief's Knife,{2}{U},3,Job select;Equip
+Steam Vents,,0,
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -4921,7 +4922,6 @@ Dawn-Blessed Pennant,{1},1,
 Firdoch Core,{3},3,Changeling
 Gathering Stone,{4},4,
 Puca's Eye,{2},2,
-Steam Vents,,0,
 Temple Garden,,0,
 Acclaimed Contender,{2}{W},3,
 All That Glitters,{1}{W},2,Enchant
@@ -15576,6 +15576,37 @@ Volatile Orbit,{R}{G},2,Conjure
 "Vv'viza, Orbital Overseer",{1}{G}{W}{U},4,Flying;Vigilance;Conjure
 Drix Interlacer,{1},1,Intensity
 Spirited Simulacrum,{4},4,Seek;Warp
+"Oko, Lord of the Fae",{1}{W}{W},3,Conjure
+Prophet of the Planeswalker,{1}{W},2,Behold
+"Valgavoth, the Lifeline",{2}{W},3,Flying
+Asymmetry Sage,{U},1,Flying;Magecraft
+Crux of the Theory,{1}{U},2,Actualize;Empower Jace;Heist
+Echogoyfs,{U},1,Actualize;Double team
+Jace's Saga,,0,Empower Jace;Conjure
+Paradox Kraken,{4}{U}{U},6,Conjure
+Remnants of Beleren,{1}{U},2,Draft from a spellbook;Empower Jace
+Avoided Stairwurm,{B},1,Menace
+Bend Mortal Limits,{B},1,Conjure
+Boisterous Clique,{1}{B}{B},3,Flying;Flash;Conjure
+Searing Soloist,{2}{R}{R},4,Conjure
+Sparks Ablaze,{R},1,
+"Etali, Primal Garden",{6}{G},7,Actualize;Trample;Conjure
+Nylea's Oracle,{G}{G},2,Conjure
+Selfless Germinator,{G},1,Exhaust;Conjure
+Banescale Serpent,{3}{U}{R},5,Vigilance;Protection;Haste
+The Bloodbile Swarm,{3}{B}{R},5,Ward
+Change the Narrative,{1}{W}{U},3,Conjure
+Diabolic Formula,{U}{B},2,Conjure
+"Dina, Flesh Sower",{G}{W},2,Lifelink
+Enter the Eternities,{G}{U},2,
+Flourishing Forces,{G}{W}{W},3,
+"Killian, Spotlight Chaser",{B}{R},2,Seek
+"Quintorius, Fate Splitter",{3}{W}{U},5,Seek;Proliferate
+"Rootha, Ardent Artisan // Next Iteration",{R}{G} // {X}{R},2,Prepared;Conjure
+Salvaged Imitations,{X}{R}{G},2,Conjure
+Zimone the Calculating // Simple Subtraction,{U}{B} // {1}{U},2,Prepared
+Willbound Quill,{4},4,Actualize
+Potential Horizon,,0,
 Cogwork Progenitor,{1}{W},2,Seek
 Legion's Chant,{2}{W},3,Intensity
 Radiant Smite,{1}{W},2,Cycling

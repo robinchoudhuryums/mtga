@@ -6206,3 +6206,5 @@ Search your library for a creature card with mana value X or less, reveal it, pu
 Thief's Knife,Artifact — Equipment,"Job select (When this Equipment enters, create a 1/1 colorless Hero creature token, then attach this to it.)
 Equipped creature gets +1/+1, has ""Whenever this creature deals combat damage to a player, draw a card,"" and is a Rogue in addition to its other types.
 Equip {4}",U,equipment; card draw; tokens; etb; pump; job select; equip,FIN,81,1
+Steam Vents,Land — Island Mountain,"({T}: Add {U} or {R}.)
+As this land enters, you may pay 2 life. If you don't, it enters tapped.",U/R,Island; Mountain; pay life; mana,ECL,267,1
