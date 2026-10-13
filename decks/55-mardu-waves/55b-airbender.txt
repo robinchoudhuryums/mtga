@@ -99,6 +99,8 @@
 #: notes: Krang & Shredder for Resplendent Angel (CUT, rotates ~2026, WW) plus 2 Dark Fortress for 2
 #: notes: Mountains: black 6 -> 8 sources for the five black cards (Zuko, Ketramose, Rioter, Super
 #: notes: Shredder, Krang). Krang needs two black/blue: ~51% by turn 6, ~61% by turn 8.
+#: notes: Shattered Sanctum (owned) for a Plains: W/B, untapped from the third land on; black 8 -> 9
+#: notes: sources with no white or red lost. Craft next: Godless Shrine x2 (for Sun-Blessed Peak, a Plains).
 #~ note: applied — Lightning, Security Sergeant in for Snow Villiers.
 
 # Exile-cast payoffs
@@ -155,6 +157,7 @@
 1 Sun-Blessed Peak (TLA) 280
 1 Godless Shrine (EOE) 254
 1 Sacred Foundry (EOE) 256
-10 Plains (MSH) 287
+9 Plains (MSH) 287
+1 Shattered Sanctum (SOS) 260
 3 Mountain (MSH) 293
 2 Dark Fortress (MSH) 264
