@@ -9,8 +9,7 @@
 #: archetype: board from a wrath, and Shadow of the Goblin — an ENCHANTMENT, so it
 #: archetype: dodges the creature removal the tier note worries about — pings each
 #: archetype: opponent per exile-cast. The enabler suite is every exile-cast shape in
-#: archetype: the colors: warp (Haliya, All-Fates Stalker, Starfield
-#: archetype: Shepherd, Exalted Sunborn), plot (Aven Interrupter plotting a spell —
+#: archetype: the colors: warp (Haliya, All-Fates Stalker, Exalted Sunborn), plot (Aven Interrupter plotting a spell —
 #: archetype: theirs or ours — off the stack), adventure (Bofur, whose Concerted Care
 #: archetype: is also the deck's hexproof/indestructible save), airbend (Appa, Airbending
 #: archetype: Lesson, Airbender's Reversal, Yangchen, Avatar's Wrath — all recast for
@@ -94,6 +93,8 @@
 #: notes: Boiling Rock Rioter for the last Knight Luminary: Allies (Zuko, Appa x2, Suki and Appa's
 #: notes: Ally tokens) tap to exile graveyard cards (Ketramose draws), and an attacking Rioter recasts
 #: notes: a dead Zuko/Appa/Suki from exile. Craft R; black is still only 6-7 sources.
+#: notes: Super Shredder for Starfield Shepherd (CUT — its MV<=1 tutor had 2 targets): a 2-drop
+#: notes: that grows whenever another permanent leaves (warp exiles, airbends, dying tokens).
 #~ note: applied — Lightning, Security Sergeant in for Snow Villiers.
 
 # Exile-cast payoffs
@@ -110,7 +111,7 @@
 1 Aven Interrupter (OTJ) 4
 1 Joshua, Phoenix's Dominant // Phoenix, Warden of Fire (FIN) 229
 1 Antiquities on the Loose (SOS) 7
-1 Starfield Shepherd (EOE) 37
+1 Super Shredder (TMT) 83
 1 Bofur, Reliable Guardian // Concerted Care (HOB) 6
 1 Gwen Stacy // Ghost-Spider (SPM) 78
 1 All-Fates Stalker (EOE) 3
