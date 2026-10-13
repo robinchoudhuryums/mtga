@@ -17,11 +17,12 @@
 #: archetype: (returns from exile), and Bre's end-step free cast off lifegain — which the
 #: archetype: interaction package (Lightning Helix, Sheltered by Ghosts, Prayer of
 #: archetype: Binding) feeds on purpose, alongside the lifegain payoffs Exemplar of
-#: archetype: Light, Resplendent Angel and Unflinching Hortimancer. Ketramose draws off
+#: archetype: Light and Unflinching Hortimancer. Krang & Shredder free-casts off
+#: archetype: an opponent's exiled card at end step. Ketramose draws off
 #: archetype: every warp/airbend exile on your turn; Venat draws off the legend count.
 #: archetype: White token base (Suki, Cosmogrand) keeps the board wide, and Exalted
 #: archetype: Sunborn DOUBLES every token it makes — Appa's Allies, Antiquities'
-#: archetype: Spirits, Cosmogrand's Soldiers, Resplendent's Angels.
+#: archetype: Spirits, Cosmogrand's Soldiers.
 #: archetype: Distinct from 55 (combat pulse) and 55a (cast cadence). Deck 45 Exile
 #: archetype: Dividend shares the trigger and two payoffs (Zuko, Appa — same copies,
 #: archetype: decks share the collection): the decks differ in HOW the exile-cast
@@ -86,7 +87,7 @@
 #: notes: AND the graveyard flashbacks Zuko/Appa ignore).
 #: notes: 2026-10-13 package: Exemplar of Light (Frontline Rush), Gwen Stacy and Bofur (both
 #: notes: Demonic Ruckus), All-Fates Stalker (Longhorn Sharpshooter), Ketramose (Practiced Offense),
-#: notes: Resplendent Angel (a Knight Luminary — the other was CUT later for Boiling Rock Rioter), Venat (a Cosmogrand Zenith), Unflinching
+#: notes: Resplendent Angel (a Knight Luminary; Angel later CUT for Krang & Shredder — the other was CUT later for Boiling Rock Rioter), Venat (a Cosmogrand Zenith), Unflinching
 #: notes: Hortimancer (Heartflame Duelist), Joshua (Weftstalker Ardent), Starting Town (Razortrap
 #: notes: Gorge — any colour, so Gwen's {2}{U}{R}{W} transform is reachable). Card advantage 4 -> 7,
 #: notes: protection 2 -> 6. Cost: Ketramose is {1}{W}{B} on 6 black sources (~61% on turn 3).
@@ -95,6 +96,9 @@
 #: notes: a dead Zuko/Appa/Suki from exile. Craft R; black is still only 6-7 sources.
 #: notes: Super Shredder for Starfield Shepherd (CUT — its MV<=1 tutor had 2 targets): a 2-drop
 #: notes: that grows whenever another permanent leaves (warp exiles, airbends, dying tokens).
+#: notes: Krang & Shredder for Resplendent Angel (CUT, rotates ~2026, WW) plus 2 Dark Fortress for 2
+#: notes: Mountains: black 6 -> 8 sources for the five black cards (Zuko, Ketramose, Rioter, Super
+#: notes: Shredder, Krang). Krang needs two black/blue: ~51% by turn 6, ~61% by turn 8.
 #~ note: applied — Lightning, Security Sergeant in for Snow Villiers.
 
 # Exile-cast payoffs
@@ -105,6 +109,7 @@
 1 Haliya, Guided by Light (EOE) 19
 1 Quintorius Kand (LCI) 238
 1 Spider-Verse (SPM) 93
+1 Krang & Shredder (TMT) 153
 
 # Exile-cast enablers (warp / plot / adventure / flashback)
 1 Boiling Rock Rioter (TLA) 87
@@ -127,7 +132,6 @@
 1 Suki, Courageous Rescuer (TLA) 37
 1 Exemplar of Light (FDN) 733
 1 Lightning, Security Sergeant (FIN) 560
-1 Resplendent Angel (LCI) 32
 1 Unflinching Hortimancer (FRA) 23
 
 # Interaction (lifegain-heavy on purpose — it feeds Bre)
@@ -152,4 +156,5 @@
 1 Godless Shrine (EOE) 254
 1 Sacred Foundry (EOE) 256
 10 Plains (MSH) 287
-5 Mountain (MSH) 293
+3 Mountain (MSH) 293
+2 Dark Fortress (MSH) 264
