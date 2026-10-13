@@ -50,6 +50,7 @@ Black Widow, Super Spy
 Blasphemous Edict
 Blitzball Shot
 Bloodthirsty Conqueror
+Boiling Rock Rioter
 Bolg's Company
 Bone-Cairn Butcher
 Boneclub Berserker
@@ -220,7 +221,6 @@ Kavaron Skywarden
 Kirol, Attentive First-Year
 Kitsune's Technique
 Klaw, Sonic Subjugator
-Knight Luminary
 Kona, Rescue Beastie
 Koya, Death from Above
 Kraven the Hunter
