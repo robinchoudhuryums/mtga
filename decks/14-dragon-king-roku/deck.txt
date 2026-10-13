@@ -37,6 +37,8 @@
 #: notes: Easy Pickings adventure is a one-sided 1-damage sweep before Glóin is cast from exile.
 #: notes: Raph & Leo, Sibling Rivals for Draconic Visitor (CUT — only Smaug fed it repeatably): an
 #: notes: extra combat every turn, so the untapped firebenders attack, and firebend, twice.
+#: notes: Fated Firepower for Jeong Jeong (CUT, user's choice over War Balloon): flash, so X is paid
+#: notes: from firebending combat mana (or Electro's banked red); every damage source then hits harder.
 
 # Nonland
 1 The Legend of Roku (TLA) 145
@@ -46,7 +48,7 @@
 1 Cruel Administrator (TLA) 213
 1 Smaug the Magnificent (HOB) 110
 1 Zuko, Exiled Prince (TLA) 163
-1 Jeong Jeong, the Deserter (TLA) 142
+1 Fated Firepower (TLA) 132
 1 Fire Sages (TLA) 136
 1 Firebending Student (TLA) 139
 1 Firebender Ascension (TLA) 137
