@@ -41,14 +41,14 @@
 #: notes: spell as tempo or plot OUR OWN spell off the stack — the self-plot is a
 #: notes: real exile-cast enabler for Zuko/Appa, not just disruption. TIMING SPINE the
 #: notes: tooling can't see: Zuko and Appa trigger on casts FROM EXILE only — the
-#: notes: flashback spells (Antiquities, Auron's, Practiced) cast from the GRAVEYARD
+#: notes: flashback spells (Antiquities, Practiced) cast from the GRAVEYARD
 #: notes: and do NOT feed them; flashback is here for Antiquities' own not-from-hand
 #: notes: bonus and raw value. The exile-cast count that feeds the payoffs: 11 enabler
 #: notes: cards (warp 6, plot 4, adventure 1), plus Appa's airbend returns and Bre's
 #: notes: end-step cast generating more from the payoff side. E-04: exiled
 #: notes: TOKENS die, so Appa's wrath-dodge saves only the nontoken board — Suki's
 #: notes: Allies and Antiquities' Spirits are lost; weigh that before dodging. Scout
-#: notes: for Survivors' MV<=3-total mass reanimate has real targets here (Mardu
+#: notes: for Survivors (CUT 2026-10-13 for Yangchen) — its MV<=3-total mass reanimate has real targets here (Mardu
 #: notes: Devotee, Aven Interrupter, plus the MV-3 warp bodies Haliya and Weftstalker
 #: notes: singly; Bre at MV 4 never qualified). Deliberately NOT
 #: notes: included: Group Project (E-02 — its flashback taps three untapped creatures
@@ -75,6 +75,12 @@
 #: notes: Lightning Helix 73.5 -> 79%). Charred Foyer // Warped Space for Defibrillating Current (an
 #: notes: upkeep impulse = an exile-cast every turn; Warped Space makes one exile-cast a turn free) and
 #: notes: Lightning, Security Sergeant for Snow Villiers (impulse on combat damage). Interaction 10 -> 9.
+#: notes: 2026-10-13: Airbending Lesson for Auron's Inspiration (airbend + draw, an exile-cast for {2}),
+#: notes: Airbender's Reversal for Push // Pull (kill an attacker, or airbend Zuko / Appa in response to
+#: notes: removal and recast it — the deck's missing protection), The Legend of Yangchen for Scout for
+#: notes: Survivors (exile their MV3+ permanents, draw three, then airbend on every second spell), and
+#: notes: Spider-Verse for a Frontline Rush (copies one not-from-hand cast a turn — warp recasts, plot,
+#: notes: AND the graveyard flashbacks Zuko/Appa ignore).
 #~ note: applied — Lightning, Security Sergeant in for Snow Villiers.
 
 # Exile-cast payoffs
@@ -84,6 +90,7 @@
 1 Bre of Clan Stoutarm (ECL) 207
 1 Haliya, Guided by Light (EOE) 19
 1 Quintorius Kand (LCI) 238
+1 Spider-Verse (SPM) 93
 
 # Exile-cast enablers (warp / plot / adventure / flashback)
 2 Knight Luminary (EOE) 23
@@ -95,26 +102,26 @@
 1 Longhorn Sharpshooter (OTJ) 132
 1 Heartflame Duelist // Heartflame Slash (WOE) 228
 1 Exalted Sunborn (EOE) 15
-1 Auron's Inspiration (FIN) 8
+1 Airbending Lesson (TLA) 8
 1 Practiced Offense (SOS) 25
 1 Charred Foyer // Warped Space (DSK) 129
+1 The Legend of Yangchen // Avatar Yangchen (TLA) 27
 
 # White token base
 2 Cosmogrand Zenith (EOE) 9
 1 Suki, Courageous Rescuer (TLA) 37
-2 Frontline Rush (TDM) 186
+1 Frontline Rush (TDM) 186
 1 Lightning, Security Sergeant (FIN) 560
 
 # Interaction (lifegain-heavy on purpose — it feeds Bre)
 2 Lightning Helix (MKM) 218
 1 Boros Charm (FDN) 721
-1 Push // Pull (MKM) 250
+1 Airbender's Reversal (TLA) 7
 1 Sheltered by Ghosts (DSK) 30
 1 Prayer of Binding (FDN) 739
 1 Avatar's Wrath (TLA) 12
 
 # Recursion / fixing
-1 Scout for Survivors (EOE) 33
 1 Mardu Devotee (TDM) 16
 
 # Lands
