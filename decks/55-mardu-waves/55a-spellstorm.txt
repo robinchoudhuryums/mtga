@@ -5,8 +5,8 @@
 #: plan: midrange
 #: archetype: MARDU SPELLS-VELOCITY with a graveyard half — the C2+D+E merge from the
 #: archetype: 131-card pile analysis. Cast two-plus spells a turn: the mana engine funds
-#: archetype: it (Electro rebates per spell and his mana persists, Brazen Collector adds
-#: archetype: {R} per attack, Death to Our Enemies pays for the next four spells in
+#: archetype: it (Electro rebates per spell and his mana persists, Glóin adds
+#: archetype: {R}{R} every main phase, The Last Agni Kai keeps red mana through the turn, Death to Our Enemies pays for the next four spells in
 #: archetype: Treasures), the velocity layer
 #: archetype: pays it off per second spell (Cosmogrand Zenith, Sunstar Lightsmith, Rally
 #: archetype: the Monastery), and the payoff layer converts each cast into damage and
@@ -29,14 +29,13 @@
 #: tier: rebuilds on velocity. Re-grade after real games.
 #: notes: BUILT from the 55-mardu pile analysis (C2+D+E merged per the consolidated
 #: notes: plan). Gated cards left OUT, each with the count that parks it (G-61): The
-#: notes: Scarlet Witch needs ~6+ MV>=4 instants/sorceries (this list has 1 — Rally;
-#: notes: Thunder Salvo only via X); Crime Novelist needs ~8+ artifact producers (this list has
-#: notes: 3 — Death to Our Enemies, Tablet, UGG's Treasures); Lorehold the Historian rides
+#: notes: Scarlet Witch needs ~6+ MV>=4 instants/sorceries (this list has 1 — Rally); Crime Novelist needs ~8+ artifact producers (this list has
+#: notes: 2 — Death to Our Enemies and UGG's Treasures); Lorehold the Historian rides
 #: notes: only with the big-spell tilt that Scarlet Witch's gate also waits on. Kirol
 #: notes: triggers on cards LEAVING the graveyard — flashback casts, mayhem casts and
 #: notes: Cruelclaw's free cast all count; blind self-mill does not fill him alone.
-#: notes: Electro's mana persists across steps within the turn — combat {R} from Brazen
-#: notes: Collector plus Electro rebates fund a post-combat second spell every turn.
+#: notes: Electro's mana persists across steps within the turn — combat firebending/Agni Kai
+#: notes: mana plus Electro rebates fund a post-combat second spell every turn.
 #: notes: Exemplar of Light parked: the lifegain is real (Heartflame's static gives
 #: notes: every instant/sorcery lifelink; Cori, Pursue, Judith add more) but its WW
 #: notes: four-slot competes with Sunstar and screened tangential — revisit if the
@@ -52,6 +51,13 @@
 #: notes: is an extra sorcery cast EVERY turn — a second spell for {B/R}, free with Electro's
 #: notes: refund), Duel Tactics→Restoration Magic (hexproof + indestructible for {W}).
 #: notes: Interaction 16→14 by design (Rally's and Duel Tactics' modes), protection up.
+#: notes: Round 3 (free casts + red mana): Starting Town for Sun-Blessed Peak; Legend of
+#: notes: Yangchen for 1 Cosmogrand (its back face airbends on every second spell); Glóin
+#: notes: for Iroh's Demonstration (RR each main phase, Easy Pickings is the sweeper);
+#: notes: The Arkenstone for Tablet (Seek the Heart tutors Electro/Judith, then +1/+1 and a
+#: notes: card each end step); Bre of Clan Stoutarm for Brazen Collector (free cast at end
+#: notes: step off the life gained); The Last Agni Kai for Thunder Salvo (fight that refunds
+#: notes: excess damage as red mana and keeps ALL red mana through the turn).
 
 # Payoffs (per-cast converters)
 1 Judith, Carnage Connoisseur (MKM) 210
@@ -61,20 +67,21 @@
 1 Monica Rambeau (MSH) 23
 1 Heartflame Duelist // Heartflame Slash (WOE) 228
 1 The Vision (MSH) 255
+1 Bre of Clan Stoutarm (ECL) 207
 
 # Mana engine (spells fund spells)
 1 Electro, Assaulting Battery (SPM) 76
 1 Joshua, Phoenix's Dominant // Phoenix, Warden of Fire (FIN) 229
-1 Brazen Collector (BLB) 128
-1 Tablet of Discovery (SOS) 132
+1 The Arkenstone // Seek the Heart (HOB) 170
 1 Death to Our Enemies (MSH) 127
 1 Chandra, Torch of Defiance (FRA) 244
+1 Glóin the Mighty // Easy Pickings (HOB) 99
 
 # Velocity (second-spell layer)
 1 Aziza, Mage Tower Captain (SOS) 174
-2 Cosmogrand Zenith (EOE) 9
+1 Cosmogrand Zenith (EOE) 9
+1 The Legend of Yangchen // Avatar Yangchen (TLA) 27
 1 Sunstar Lightsmith (EOE) 42
-1 Iroh's Demonstration (TLA) 141
 1 Rally the Monastery (TDM) 19
 1 Stingerquill Voxmancer // Vicious Verse (FRA) 151
 
@@ -87,7 +94,7 @@
 1 Practiced Offense (SOS) 25
 
 # Removal (scales with the spell count)
-1 Thunder Salvo (OTJ) 150
+1 The Last Agni Kai (TLA) 144
 1 Lightning Helix (MKM) 218
 1 Frantic Firebolt (WOE) 130
 1 Burst Lightning (FDN) 192
@@ -102,7 +109,7 @@
 1 Bleachbone Verge (DFT) 250
 1 Nomad Outpost (TDM) 263
 1 Razortrap Gorge (DSK) 267
-1 Sun-Blessed Peak (TLA) 280
+1 Starting Town (FIN) 289
 2 Dark Fortress (MSH) 264
 1 Sacred Foundry (EOE) 256
 7 Mountain (MSH) 293
@@ -115,20 +122,11 @@
 #~   WHAT ARGUES FOR IT IS THE CALENDAR: Frantic Firebolt rotates ~2026 — the only card in
 #~   this deck that does — and the one remaining copy is OWNED, so it simply plays until
 #~   it rotates (the other slot went to Burst Lightning on 2026-10-13). Molten Note does the same job (scalable damage
-#~   removal) and rotates ~2029, outliving Judith (2027) and Brazen Collector (2027).
+#~   removal) and rotates ~2029, outliving Judith (2027).
 #~   TRIGGER: make this swap when Frantic Firebolt rotates, NOT before. Until then the two
 #~   slots are better left uncrafted than replaced.
 #~   COST WHEN YOU DO: Molten Note is {R}{W}, and every gold two-drop here already casts at
 #~   78.1% on curve; its Flashback {6}{R}{W} is 8 mana and effectively a dead mode at this
-#~   deck's 2.81 curve. Also note the deck would then hold three scalable-damage spells
-#~   (Thunder Salvo, Molten Note, the 2nd Firebolt) plus Thunder Magic's Tiered modes —
-#~   trim the redundancy rather than stacking it.
-#~ -Brazen Collector | +Moment of Glory | OWNED (HOB, 2026-08-13 ingest): fit 55. "{W} Put a
-#~   +1/+1 counter on target creature you control. If this spell was cast from a GRAVEYARD,
-#~   also put a +1/+1 counter on each OTHER creature you control. Flashback {4}{W}" — a
-#~   one-mana spell whose second cast is a board-wide anthem, so it triggers the nine
-#~   second-spell payoffs twice for one card slot. Brazen Collector is `cuts` #1 at fit 5,
-#~   is now owned and rotates ~2027.
-#~ note: Pinecone Strike (OWNED, HOB) is the weaker second option at fit 15 — {1}{R} instant,
-#~ note: 3 damage WITH EXILE plus a kill-an-artifact-token mode. It deals damage, so unlike
-#~ note: most cheap spells here Judith's deathtouch/lifelink grant is live on it.
+#~   deck's 2.89 curve. Burst Lightning's kicker and Thunder Magic's Tiered
+#~   modes already cover scalable damage, so check the slot still wants it.
+#~ note: the Brazen Collector→Moment of Glory line was retired 2026-10-13 — Bre of Clan Stoutarm took that slot.
