@@ -150,6 +150,8 @@
 #: notes: already makes the {1} recasts free — Bilbo replaces Doc when OTJ rotates, early 2027);
 #: notes: Claim the Kingdom for Solstice Revelations (landfall counters, then an INDESTRUCTIBLE
 #: notes: counter — permanent protection for Iroh). Lessons 16 -> 15.
+#: notes: Lands: both Rugged Highlands -> Evolving Wilds (fetch whichever basic is missing; two landfall
+#: notes: triggers each for Claim the Kingdom; 8 basics: 2 Island, 3 Forest, 3 Mountain).
 # Nonland
 1 Iroh, Grand Lotus (TLA) 227
 1 Toph, the Blind Bandit (TLA) 198
@@ -194,7 +196,7 @@
 1 Capital City (FIN) 274
 1 Swiftwater Cliffs (MOM) 273
 1 Steam Vents (ECL) 267
-2 Rugged Highlands (M21) 249
+2 Evolving Wilds (ECL) 264
 1 Training Compound (MSH) 275
 1 Breeding Pool (EOE) 251
 1 Thornwood Falls (FDN) 269
