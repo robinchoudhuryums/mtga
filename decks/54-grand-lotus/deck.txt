@@ -3,12 +3,12 @@
 #: colors: GUR
 #: plan: midrange
 #: tier: B — PROVISIONAL, GRADED 2026-08 on an UNBUILT list (5 craft targets, zero games).
-#: tier: AT the measurable floor, which reads B on interaction 6 (Boomerang Basics' bounce moved to the report-only tempo line 2026-10-07) plus card advantage 5
+#: tier: AT the measurable floor, which reads B on interaction 6 (Boomerang Basics' bounce moved to the report-only tempo line 2026-10-07) plus card advantage 6
 #: tier: since the 2026-09-02 re-derivation. Against the rubric an A needs four things
 #: tier: and this list fails three:
 #: tier:   A-FLOOR — no, by ONE measured point. Interaction 6 is one short of seven; the sum of
-#: tier:     11 clears. The 2026-10-14 pass took card advantage 2 -> 5 (Kishla Skimmer, The Mechanist,
-#: tier:     Old Fat Spider Can't See Me). Redirect Lightning, added the same day, is real protection
+#: tier:     12 clears. The 2026-10-14 pass took card advantage 2 -> 6 (Kishla Skimmer, The Mechanist,
+#: tier:     Old Fat Spider Can't See Me, Nibelheim Aflame's draw-four). Redirect Lightning, added the same day, is real protection
 #: tier:     the classifier does not count, and Accumulate Wisdom draws three with 3+ Lessons
 #: tier:     binned while scoring zero roles — both K-12 under-counts, not a list weakness.
 #: tier:   COHERENT ENGINE — yes, and now MEASURED rather than asserted. `targets` finds
@@ -23,13 +23,13 @@
 #: tier:     two payoffs SCALE with the count rather than switching on — Combustion
 #: tier:     Technique and Bumi's X — and those lost about a fifth of their ceiling. Price a
 #: tier:     Lesson cut against them, not against the gates.
-#: tier:   TIGHT CURVE — yes. 3.43 average after the 2026-10-14 pass; most of the rise is The
-#: tier:   Dawning Archaic's printed 10, which it costs less one per instant/sorcery binned.
+#: tier:   TIGHT CURVE — yes. 3.54 average after the 2026-10-14 pass; most of the rise is The
+#: tier:   Dawning Archaic's printed 10 (it costs one less per instant/sorcery binned) and Prismari's 7.
 #: tier:   AT MOST ONE CLEAR WEAKNESS — no, and the two COMPOUND badly.
 #: tier:     (1) THE MANABASE, and the 2026-08 pass was aimed squarely at it. Three colours
 #: tier:     on 25 lands, deepest colour 12 sources; Improvisation Capstone still casts on
 #: tier:     curve at 52.5% and Echocasting Symposium at 59.1%. Hermitic Herbalist,
-#: tier:     Greenhouse (and New Horizons, since cut) were added as NON-LAND any-colour sources, which is
+#: tier:     Greenhouse and New Horizons (all three since CUT, 2026-10-14) were added as NON-LAND any-colour sources, which is
 #: tier:     the only way to move this axis without cutting spells for lands. The older
 #: tier:     mitigation still holds: with Iroh out every Lesson costs {1} GENERIC, so the
 #: tier:     pips stop mattering — the deck is only colour-screwed in the games where its
@@ -132,6 +132,12 @@
 #: notes: Starting Town, one Rugged Highlands -> Training Compound (tapped-land risk 70% -> 50%).
 #: notes: Zuko's Exile was the measured interaction pick (floor A); the owner preferred Redirect
 #: notes: Lightning, so the floor stays B on paper while protection is really higher.
+#: notes: Same day, second wave: Nibelheim Aflame for Sokka's Haiku (owner's call over the measured
+#: notes: pick, Earthbending Lesson, which would have kept the only counterspell and read floor A;
+#: notes: Nibelheim recast via Iroh at {2}{R}{R} discards the hand and draws four, but its sweep hits
+#: notes: OUR creatures too — pick the source's power deliberately); Jeong Jeong for Greenhouse
+#: notes: (copy one Lesson — a doubled Capstone); Prismari for Hermitic Herbalist (storm on every
+#: notes: instant/sorcery; Spinerock Tyrant copies only single-target ones, 8 of 17 here). Lessons 17 -> 16.
 # Nonland
 1 Iroh, Grand Lotus (TLA) 227
 1 Uncle Iroh (TLA) 248
@@ -143,7 +149,7 @@
 1 Old Fat Spider Can't See Me (HOB) 50
 1 The Dawning Archaic (SOS) 1
 1 Guru Pathik (TLA) 223
-1 Hermitic Herbalist (TLA) 226
+1 Prismari, the Inspiration (SOS) 212
 1 Bloom Tender (ECL) 166
 1 Accumulate Wisdom (TLA) 44
 1 Thor, God of Thunder (MSH) 156
@@ -156,7 +162,7 @@
 1 Solstice Revelations (TLA) 153
 1 Leaves from the Vine (TLA) 185
 1 Waterbending Lesson (TLA) 80
-1 Sokka's Haiku (TLA) 71
+1 Nibelheim Aflame (FIN) 146
 1 Sokka, Bold Boomeranger (TLA) 240
 1 The Mechanist, Aerial Artisan (TLA) 64
 1 Germination Practicum (SOS) 149
@@ -167,7 +173,7 @@
 1 Earthbending Lesson (TLA) 176
 1 Toph, Hardheaded Teacher (TLA) 246
 1 Doc Aurlock, Grizzled Genius (OTJ) 201
-1 Greenhouse // Rickety Gazebo (DSK) 181
+1 Jeong Jeong, the Deserter (TLA) 142
 
 # Lands
 1 White Lotus Hideout (TLA) 281
