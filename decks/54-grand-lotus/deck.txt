@@ -3,11 +3,14 @@
 #: colors: GUR
 #: plan: midrange
 #: tier: B — PROVISIONAL, GRADED 2026-08 on an UNBUILT list (5 craft targets, zero games).
-#: tier: AT the measurable floor, which reads B on interaction 6 (Boomerang Basics' bounce moved to the report-only tempo line 2026-10-07) plus card advantage 2
+#: tier: AT the measurable floor, which reads B on interaction 6 (Boomerang Basics' bounce moved to the report-only tempo line 2026-10-07) plus card advantage 5
 #: tier: since the 2026-09-02 re-derivation. Against the rubric an A needs four things
 #: tier: and this list fails three:
-#: tier:   A-FLOOR — no. Interaction 6 is one short of seven and the sum of 8 is short of eleven;
-#: tier:     card advantage is the axis (the 7 unclassified cards are the K-12 caveat).
+#: tier:   A-FLOOR — no, by ONE measured point. Interaction 6 is one short of seven; the sum of
+#: tier:     11 clears. The 2026-10-14 pass took card advantage 2 -> 5 (Kishla Skimmer, The Mechanist,
+#: tier:     Old Fat Spider Can't See Me). Redirect Lightning, added the same day, is real protection
+#: tier:     the classifier does not count, and Accumulate Wisdom draws three with 3+ Lessons
+#: tier:     binned while scoring zero roles — both K-12 under-counts, not a list weakness.
 #: tier:   COHERENT ENGINE — yes, and now MEASURED rather than asserted. `targets` finds
 #: tier:     nine gated effects and reports zero thin or unmet: every Lesson-count gate in
 #: tier:     the list — Serpent's three, Bumi's X, Combustion Technique's scaling damage,
@@ -20,13 +23,13 @@
 #: tier:     two payoffs SCALE with the count rather than switching on — Combustion
 #: tier:     Technique and Bumi's X — and those lost about a fifth of their ceiling. Price a
 #: tier:     Lesson cut against them, not against the gates.
-#: tier:   TIGHT CURVE — yes. 3.29 average after the 2026-08 plan pass and the
-#: tier:   Mammoth Bellow add.
+#: tier:   TIGHT CURVE — yes. 3.43 average after the 2026-10-14 pass; most of the rise is The
+#: tier:   Dawning Archaic's printed 10, which it costs less one per instant/sorcery binned.
 #: tier:   AT MOST ONE CLEAR WEAKNESS — no, and the two COMPOUND badly.
 #: tier:     (1) THE MANABASE, and the 2026-08 pass was aimed squarely at it. Three colours
 #: tier:     on 25 lands, deepest colour 12 sources; Improvisation Capstone still casts on
 #: tier:     curve at 52.5% and Echocasting Symposium at 59.1%. Hermitic Herbalist,
-#: tier:     Greenhouse and New Horizons were added as NON-LAND any-colour sources, which is
+#: tier:     Greenhouse (and New Horizons, since cut) were added as NON-LAND any-colour sources, which is
 #: tier:     the only way to move this axis without cutting spells for lands. The older
 #: tier:     mitigation still holds: with Iroh out every Lesson costs {1} GENERIC, so the
 #: tier:     pips stop mattering — the deck is only colour-screwed in the games where its
@@ -36,7 +39,8 @@
 #: tier:     Empath (any MV 6+ creature — Iroh, Bumi or Serpent) and Formidable Speaker
 #: tier:     (discard a fat Lesson, then tutor any creature) were added specifically for
 #: tier:     this, taking the deck from one copy to three ways to find it. That is
-#: tier:     mitigation, not redundancy.
+#: tier:     mitigation, not redundancy. The REDUNDANCY arrived 2026-10-14: The Dawning Archaic
+#: tier:     casts any yard instant/sorcery free each time it attacks — a second recast source.
 #: tier:     (3) BOARD-DEPENDENT PAYOFFS IN A DECK WITH NO BOARD. `shape` measures this
 #: tier:     list as TALL with a WIDE score of ZERO on 15 creature copies, and two of the
 #: tier:     marquee Lessons want the opposite: Germination Practicum puts two counters on
@@ -79,8 +83,8 @@
 #: archetype: THE PAYOFFS READ THE COUNT, not just the cards. Combustion Technique deals
 #: archetype: 2 plus the Lessons in your graveyard; Bumi, King of Three Trials chooses up
 #: archetype: to X modes where X is that same number (Serpent of the Pass, whose flash
-#: archetype: gate read the same count, was CUT for the plan's engine adds); First-Time
-#: archetype: Flyer and Fire Nation Cadets turn on at one. So the
+#: archetype: gate read the same count, was CUT for the plan's engine adds); the one-Lesson
+#: archetype: switches (two cheap bodies) were CUT 2026-10-14 for card advantage. So the
 #: archetype: graveyard is simultaneously the resource, the second hand, and the clock.
 #: archetype: DISTINCTIVENESS. Deck 51a is the roster's other Lesson deck and is MONO-BLUE
 #: archetype: LESSON MILL — it mills Lessons as a resource; this recurs them as a second
@@ -118,16 +122,26 @@
 #: notes: BENCH (2026-08 plan, next in line if a slot opens): Ember Island Production
 #: notes: (non-legendary Iroh copy — gave its seat back to the Lesson-count constraint),
 #: notes: Ovika (MV of each {1}-flashback in hasty bodies), Guru Pathik, Omenpath Journey.
+#: notes: 2026-10-14 pass, from a 319-card read of every card considered for 54b
+#: notes: (.cycle/54-from-54b-pile-analysis.md): Redirect Lightning for Fire Nation Cadets (a Lesson
+#: notes: that redirects removal off Iroh, `{1}`+`{2}` from the yard every turn); Kishla Skimmer for
+#: notes: First-Time Flyer (draws whenever a card leaves the yard on your turn — every recast);
+#: notes: The Mechanist for New Horizons (a Clue per noncreature spell); The Dawning Archaic for
+#: notes: Mammoth Bellow (second recast engine); Old Fat Spider Can't See Me for Dragonfly Swarm
+#: notes: (hexproof on Iroh, two cards). Lands: Swiftwater Cliffs -> Steam Vents, Guadosalam ->
+#: notes: Starting Town, one Rugged Highlands -> Training Compound (tapped-land risk 70% -> 50%).
+#: notes: Zuko's Exile was the measured interaction pick (floor A); the owner preferred Redirect
+#: notes: Lightning, so the floor stays B on paper while protection is really higher.
 # Nonland
 1 Iroh, Grand Lotus (TLA) 227
 1 Uncle Iroh (TLA) 248
 1 Bumi, King of Three Trials (TLA) 169
 1 Shared Roots (TLA) 196
 1 Death to Our Enemies (MSH) 127
-1 First-Time Flyer (TLA) 49
-1 Fire Nation Cadets (TLA) 134
-1 Dragonfly Swarm (TLA) 215
-1 Mammoth Bellow (TDM) 205
+1 Kishla Skimmer (TDM) 201
+1 Redirect Lightning (TLA) 151
+1 Old Fat Spider Can't See Me (HOB) 50
+1 The Dawning Archaic (SOS) 1
 1 Guru Pathik (TLA) 223
 1 Hermitic Herbalist (TLA) 226
 1 Bloom Tender (ECL) 166
@@ -144,7 +158,7 @@
 1 Waterbending Lesson (TLA) 80
 1 Sokka's Haiku (TLA) 71
 1 Sokka, Bold Boomeranger (TLA) 240
-1 New Horizons (FDN) 557
+1 The Mechanist, Aerial Artisan (TLA) 64
 1 Germination Practicum (SOS) 149
 1 Echocasting Symposium (SOS) 44
 1 Improvisation Capstone (SOS) 120
@@ -160,12 +174,14 @@
 2 Rumble Arena (TLA) 277
 2 Surveillance Room (MSH) 274
 1 Capital City (FIN) 274
-2 Swiftwater Cliffs (MOM) 273
-3 Rugged Highlands (M21) 249
+1 Swiftwater Cliffs (MOM) 273
+1 Steam Vents (ECL) 267
+2 Rugged Highlands (M21) 249
+1 Training Compound (MSH) 275
 1 Breeding Pool (EOE) 251
 1 Thornwood Falls (FDN) 269
 1 Mutant Town (TMT) 187
-1 Guadosalam, Farplane Gateway (FIN) 281
+1 Starting Town (FIN) 289
 1 Riverpyre Verge (DFT) 260
 1 Thornspire Verge (DSK) 270
 1 Willowrush Verge (DFT) 270
