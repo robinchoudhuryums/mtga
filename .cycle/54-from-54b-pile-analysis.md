@@ -54,6 +54,8 @@ A needs +1 interaction, +2 card advantage).
 - **Iroh insurance is a real category:** Auroral Procession and True Ancestry return a dead Iroh; Bilbo and The Dawning Archaic are second recast sources.
 - **Batch 2: the counters axis has enablers and no payoff** (`engines`: 10 enablers, 0 payoffs). Doc Samson is the first real payoff seen. Watch for more.
 - **A copy that renames itself dodges the legend rule** (Chameleon) — a second Iroh or Uncle Iroh is possible.
+- **Batch 3: a red-mana REFUND is the 54b idea that transfers best.** Electro adds `{R}` per instant/sorcery cast and keeps it; with `{1}` Lesson recasts that is a near-free chain. Emeritus of Conflict (third spell → Lightning Bolt) is the same "many cheap casts" payoff in interaction form.
+- **Second-Iroh paths so far:** Chameleon (renamed copy), Ember Island Production (non-legendary token), plus the recast sources Bilbo / The Dawning Archaic.
 
 ## 4. Running verdicts
 
@@ -136,6 +138,41 @@ Legend of Yangchen, Uldaros Theorix, Wayspeaker Bodyguard, Winter Misanthropic G
 | **Dragonback Assault** (craft M) | ★ | `{3}{G}{U}{R}`: 3 to each creature and planeswalker, then "Landfall — create a 4/4 flying Dragon." Elemental Teachings for `{1}` puts TWO lands in a turn → two Dragons. Kills our own 2-drops; Iroh/Thor/Bumi survive. |
 | Dragonclaw Strike | △ | Double P/T + fight, 6 mana non-Lesson. |
 | Dundoolin Weaver (craft U) | △ | Needs three creatures; 14 here. |
+
+### Batch 3 (61–90)
+
+| Card | 54 | Note (rule) |
+|---|---|---|
+| **Earth's Mightiest Heroes** | ★ | Top eight: put a creature onto the battlefield (all of them with teamwork 5), "Put the rest into your graveyard" — mills ~7, i.e. Lessons into the yard (R2), and finds Iroh/Bumi/Thor. Non-Lesson, so a full-cost recast (R1). |
+| Echo, Perceptive Prodigy | ◇ | `{1}`, T: copy a triggered ability from a creature — a second Bumi / Guru Pathik / Toph enter trigger. |
+| **Eddymurk Crab** | ★ | Flash 5/5, "{1} less for each instant and sorcery card in your graveyard" (17 in the list, R2) — often 2–4 mana; taps two creatures on entry. A body for a deck with 33 power (R3). BLB, early 2027 (R9). |
+| **Electro, Assaulting Battery** | ★★ | "Whenever you cast an instant or sorcery spell, add {R}" and red mana never empties — each `{1}` Lesson flashback refunds itself (R7). With Iroh the recast chain is close to free. 2/3 flier; leaves → X damage. |
+| Electroduplicate (craft R) | ◇ | Hasty token copy of your creature for a turn — a second Bumi enter trigger; flashback. |
+| Elementalist Adept | △ | Flash prowess body. |
+| Ember Island Production | ◇ | 5-mana sorcery: a token copy "except it's not legendary" — a permanent SECOND IROH (R5). Non-Lesson. |
+| **Emeritus of Conflict // Lightning Bolt** | ★ | Third spell each turn → prepared → cast a copy of Lightning Bolt. Iroh makes three spells a turn routine: a repeatable 3-damage instant (interaction). |
+| Emeritus of Ideation // Ancestral Recall | ★ | Enters prepared: Ancestral Recall, draw three. 5/5 flier, ward 2. Its re-prepare EXILES eight yard cards — optional, and it fights the engine (R8); do not use it. |
+| Enduring Curiosity | △ | Combat-damage draw (R3). |
+| **Energybending** | ★ | Lesson `{2}` instant: "Draw a card"; lands gain all basic types this turn. With Iroh a `{1}` cantrip every turn; same turn, Rockalanche earthbends for EVERY land and Solstice Revelations' Mountain count is your land count. |
+| Eshki Dragonclaw (craft R) | ◇ | Creature + noncreature same turn → draw and two counters. 14 creatures here; real but conditional. |
+| Essence Burn (craft U) | △ | Black/green targets only. |
+| Explosive Derailment | △ | 4 damage or kill an artifact; non-Lesson; OTJ. |
+| Extravagant Replication | △ | Upkeep token copy; Iroh copies die to the legend rule. |
+| Fated Firepower | △ | Damage amplifier; only Thor and Death to Our Enemies ping. |
+| Fear of Impostors (craft U) | ◇ | Flash counterspell on a 3/2. DSK. |
+| Fear of Missing Out (craft R) | ✗ | Attack/delirium combat. |
+| Festival of Embers | ✗ | Exiles everything bound for your graveyard (R8). |
+| Fiery Annihilation | △ | 5 damage, non-Lesson. |
+| Fire Magic | △ | Tiered sweeper, non-Lesson. |
+| Fire Sages | ✗ | Firebending attacker (R3). |
+| Fire-Rim Form | ✗ | Aura trick. |
+| Firebender Ascension | ✗ | Attack triggers (R3). |
+| **Firebending Lesson** | ★★ | Lesson `{R}` instant: 2 damage, kicked 5. Flashback `{1}` (+`{4}` to kick). Removal on the deck's own terms (R1). Owned ×2. |
+| Firebending Student | ✗ | Attack mana (R3). |
+| Flame Lash (craft C) | △ | 4 damage, 4 mana. |
+| Flashback (craft R) | ✗ | Iroh already grants flashback to everything. |
+| Floodpits Drowner | ◇ | Flash: tap + stun, then `{1}{U}`, T shuffles the stunned creature away — real removal on a 2-drop. DSK. |
+| Frantic Firebolt | ◇ | X = 2 + instants/sorceries in your yard — often 7+ here (R2). Non-Lesson; WOE, early 2027. Owned ×2. |
 
 ## 5. Consolidated plan (live)
 
