@@ -23,7 +23,7 @@
 #: archetype: blue and green pips sit on PERMANENTS you cast off lands in your main phase.
 #: archetype: Blue is the graveyard half (Archmage's Newt, Sphinx of Forgotten Lore) plus the
 #: archetype: 2026-10-14 combat-copy layer, and green is two mana dorks and Iroh's pip. The red
-#: archetype: instants (Thunder Magic, Vibrant Outburst, Agni Kai, Return the Favor, Solstice)
+#: archetype: instants (Thunder Magic, Vibrant Outburst, Agni Kai, Return the Favor)
 #: archetype: are the combat-mana sinks.
 #: archetype: TWO CARDS BREAK THE "UNTIL END OF COMBAT" LIMIT and they are the deck's real
 #: archetype: engine. Electro, Assaulting Battery reads "you don't lose unspent red mana as
@@ -176,6 +176,8 @@
 #: notes: Lockpicker. Graveyard granters now FIVE (Newt, Sphinx, Seifer, Dawning Archaic,
 #: notes: Norman) — the abandon line above is four, and Newt rotates ~2026. Eshki's draw is
 #: notes: checked at BEGINNING of combat, so Sneak / Azula-copied casts do not count for it.
+#: notes: Yue, the Moon Spirit replaced Solstice Revelations (waterbend {5}: a free noncreature
+#: notes: cast from hand, activatable while Azula attacks; never on Fated Firepower — free X is 0).
 # Firebending — the mana engine
 1 Zuko, Exiled Prince (TLA) 163
 1 Uncle Iroh (TLA) 248
@@ -202,6 +204,7 @@
 1 Eshki Dragonclaw (TDM) 182
 1 Echo, Perceptive Prodigy (MSH) 51
 1 Raphael, the Nightwatcher (TMT) 103
+1 Yue, the Moon Spirit (TLA) 83
 
 # Red instants — the combat-mana sinks
 1 Improvisation Capstone (SOS) 120
@@ -209,7 +212,6 @@
 1 Spider-Man 2099 (SPM) 150
 1 Vibrant Outburst (SOS) 240
 1 Return the Favor (SOA) 47
-1 Solstice Revelations (TLA) 153
 1 Thunder Magic (FIN) 165
 1 Donatello's Technique (TMT) 39
 
