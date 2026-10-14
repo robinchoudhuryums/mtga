@@ -1,6 +1,6 @@
 # 54b pile → deck 54 (Grand Lotus) — analysis (TEMPORARY working doc)
 
-**Status: IN PROGRESS.** Delete once the swaps land and the findings are folded into deck
+**Status: ALL 11 BATCHES GRADED — plan in §5 awaiting the owner's picks.** Delete once the swaps land and the findings are folded into deck
 54's `#: notes:` block. A scratchpad, not a source of truth — decks/ are.
 
 **Source list:** every card named while tuning deck 54b on 2026-10-13/14 (user suggestions,
@@ -47,6 +47,9 @@ A needs +1 interaction, +2 card advantage).
 ## 2. Standing error list
 
 1. Rotation: the repo's `rotation_year` still models a fall-2026 rotation; the real one is early 2027 and takes BLB/DSK too, while DFT/TDM/FIN stay to early 2028 (2025 sets). Do not trust a `~2026` flag literally (R9).
+2. **Lost Days was over-sold in the 2026-10-14 tune report.** "The OWNER of target creature or enchantment puts it into their library second from the top or on the bottom" — the opponent chooses, and will choose second from the top, so it is a two-turn delay, not removal. Zuko's Exile (exile) replaces it in the plan.
+3. **Classifier holes found (Stage 4 — fix as one batch later, not mid-analysis):** (a) Accumulate Wisdom scores ZERO roles though it draws three with 3+ Lessons in the yard; (b) Redirect Lightning ('change the target of target spell') is not counted as protection; (c) The Vision's 'Technopathy — Draw a card' mode is not counted as card advantage; (d) My Precious is credited card advantage from its BLACK Adventure half (Allure of Power), which this deck cannot cast — the G-43 back-face shape.
+4. 'Mana value' vs 'mana spent' (R6) decided more cards than any other rule: Shantotto, Prompto, Colorstorm Stallion, Cuboid Colony and the Emperor all fail here for the same reason Thor, Ovika and Niv-Mizzet succeed.
 
 ## 3. Cross-batch observations
 
@@ -429,6 +432,98 @@ Legend of Yangchen, Uldaros Theorix, Wayspeaker Bodyguard, Winter Misanthropic G
 | Visage Bandit | △ | Copy keeps the name. |
 | **Vision of Love** | ★ | "Sacrifice an artifact or discard a card. If you do, draw two" — discard a fat Lesson into the yard (R2) and draw two. Instant `{1}{R}`; Iroh recasts it every turn at full price (`{1}{R}`): loot-two each turn. Owned. |
 
+### Batch 11 (301–319)
+
+| Card | 54 | Note (rule) |
+|---|---|---|
+| Viv Vision, Teen Synthezoid | △ | Attack draw at power 4 (R3). |
+| Voracious Greatshark (craft R) | ◇ | Flash 5/4 that counters an artifact/creature spell. |
+| Walk-In Closet // Forgotten Cellar | ◇ | Play lands from the yard — Elemental Teachings bins two a cast. The Cellar half exiles everything that turn (R8). |
+| Wan Shi Tong, Librarian | ◇ | X-sized flash flier, draws half X. |
+| Warg Tactics | ◇ | Kill a flier, or counter + hexproof for a turn. Instant, non-Lesson. |
+| Waxen Shapethief | △ | Copy keeps the name (legend rule); cycling. |
+| Way of the Cryomancer (craft U) | ◇ | Jace token; its −3 copies your next instant/sorcery. |
+| Web of Life and Destiny | △ | 8-mana creature cheat. |
+| Whirlwing Stormbrood // Dynamic Soar | △ | Sorceries at flash speed — only on your turn does Iroh grant them. Omen: three counters (Terrasymbiosis). |
+| Wild Ride (craft C) | ✗ | Trick. |
+| Winter, Team Player (craft U) | ✗ | Team pump (R3). |
+| Winternight Stories (craft R) | ◇ | Draw three, discard two (fat Lessons, R2); Iroh recasts it at `{2}{U}` each turn. Strong, but a rare craft and Twinned Vision is a common. |
+| Wisecrack | △ | Self-damage removal. |
+| Wishing Well (craft R) | ◇ | A coin counter a turn; cast the yard instant/sorcery with MV = counters free — Combustion t2, Solstice t3 … Capstone at seven. A second, slow engine. Spice. |
+| World War Hulk | ◇ | Free red/green creature (Iroh, Bumi, Thor); II counters (Terrasymbiosis, Doc Samson); a Saga (Guru). |
+| **Yue, the Moon Spirit** | ★ | Waterbend `{5}` (tap creatures to help): cast a noncreature spell from HAND free — a drawn Capstone / Symposium / Germination cast free, starting its Paradigm without the yard. |
+| Zaffai and the Tempests | ◇ | Once a turn, cast an instant/sorcery from hand free. 7 mana. |
+| **Zuko's Exile** | ★★ | LESSON `{5}` instant: "Exile target artifact, creature, or enchantment" (they get a Clue). From the yard with Iroh: `{1}`. The deck's thesis in removal form (R1). |
+| Zuko, Exiled Prince | ◇ | `{3}`: impulse a card — a mana sink; firebending is R3. |
+
+### Lands (30, read separately)
+
+| Land | 54 | Note |
+|---|---|---|
+| **Steam Vents** (owned) | ★★ | Untapped U/R; replaces a Swiftwater Cliffs. |
+| **Starting Town** (owned) | ★ | Untapped turns 1–3, any colour for 1 life; replaces Guadosalam. |
+| **Training Compound** (owned) | ★ | R/G with a basic out (7 basics); replaces a Rugged Highlands. |
+| Stomping Ground (craft R) | ★ | Untapped R/G; replaces a Rugged Highlands. |
+| Spirebluff Canal (craft R) | ◇ | U/R fastland. |
+| Temple of Epiphany (owned) | ◇ | Tapped U/R with scry 1 — a Swiftwater sidegrade; scry triggers Planetarium. |
+| Elven Passage (owned) | ◇ | Fetches a basic; Bloom Tender is the Elf that untaps it. |
+| Multiversal Passage (craft R) | △ | Shock land of ONE basic type. |
+| Frontier Bivouac, Spectacle Summit, Stark Industries (owned) | △ | Tapped. |
+| Fire Nation Palace (owned) | △ | Red only; firebending grant is R3. |
+| Captivating Cave, Daily Bugle Building (owned) | △ | The deck already runs five filter lands. |
+| Command Bridge, Demolition Field, Branch of Vitu-Ghazi, Uthros, Skycoach Waypoint, Hexhaven Dueling Arena | △ | No fixing gain here. |
+| Gathering Place (G/W), Lake-town (W/U), Razortrap Gorge (B/R), Blood Crypt, Dark Fortress, Overgrown Tomb, Watery Grave, Raucous Theater, Sacred Foundry, Oscorp Industries | ✗ | Off-colour or one colour only. |
+
 ## 5. Consolidated plan (live)
 
-(after batch 1)
+### Tier 1 — the recommended package (all OWNED, 0 wildcards; measured together)
+
+| Swap | Why (text) |
+|---|---|
+| − Fire Nation Cadets / **+ Zuko's Exile** | A 1-drop attacker (R3) for a LESSON that exiles any artifact, creature or enchantment — `{1}` from the yard (R1). Lesson count 16 → 17. |
+| − First-Time Flyer / **+ Kishla Skimmer** | A vanilla 2/3 flier for a 2/2 flier that draws a card every turn Iroh recasts anything ("a card leaves your graveyard during your turn"). |
+| − New Horizons / **+ The Mechanist** | A ramp aura for a Clue on every noncreature spell (R7). |
+| − Mammoth Bellow / **+ The Dawning Archaic** | A non-Lesson 5/5 token for the second recast engine: on attack, cast any yard instant/sorcery free (R5). |
+| − Dragonfly Swarm / **+ Old Fat Spider Can't See Me** | Hexproof on Iroh for the Saga's life, neutralise one creature, draw two; a Saga for Guru Pathik. |
+| Lands: Swiftwater Cliffs → Steam Vents · Guadosalam → Starting Town · one Rugged Highlands → Training Compound | Tapped-land risk 70% → 50%, red 14 → 15, below-90% rows 15 → 11. |
+
+**Measured:** floor B → **A**, interaction 6 → 7, card advantage 2 → 5 (and the tool under-reads it — Accumulate Wisdom and Kishla, §2), protection 2 → 2 (+1 Old Fat Spider, −1 Swarm's ward), board power 33 → 41, avg MV 3.29 → 3.54 (the Archaic's printed 10).
+
+### Tier 2 — strong OWNED adds that need a slot (in rough order)
+1. **Electro, Assaulting Battery** — each instant/sorcery adds `{R}` that never empties; `{1}` recasts refund themselves.
+2. **Redirect Lightning** — Lesson protection for Iroh, recast every turn (the tool scores it 0 protection — §2).
+3. **Bilbo, Thief in the Night** — Doc Aurlock's successor (OTJ leaves early 2027); recasts become free.
+4. **Firebending Lesson** — cheapest Lesson removal; pair with Zuko's Exile.
+5. **Vision of Love** — discard a fat Lesson, draw two; full-price recast is still a loot-two each turn.
+6. **Bruce Banner** — `{X}{X}`: draw X; flips into a Temur Hulk.
+7. **Terrasymbiosis** — Guru Pathik puts a counter on every Lesson cast → a card a turn.
+8. **Garrison Excavator** — a 2/2 for every recast.
+9. **Steal the Show** — damage = instants/sorceries in your yard; or wheel away fat Lessons.
+10. **My Precious** — permanent hexproof for Iroh, colourless.
+11. **Leyline of the Guildpact**, **Energybending** — fixing + Rockalanche/Solstice scale with every land.
+
+Second-wave CUTS for these (Lesson-for-Lesson where possible, R2): Earthbending Lesson → Firebending Lesson / Redirect Lightning; Greenhouse // Rickety Gazebo (redundant once the lands are fixed); Hermitic Herbalist (if Leyline lands); Death to Our Enemies (if Mechanist/Kishla cover the noncreature-spell payoff).
+
+### Tier 3 — spice finishers (R6/R7: they scale with each recast's MANA VALUE or with cast count)
+Spider-Verse (copy a recast each turn), Spinerock Tyrant (copy single-target removal), Prismari (storm), Niv-Mizzet, Visionary (+Thor = draw seven off a `{1}` Capstone), Ovika (seven Goblins off the same), Ugin, Eye of the Storms, Planetarium of Wan Shi Tong, Breaching Dragonstorm, Jeong Jeong (copy one Lesson), Yue (free fat Lesson from hand).
+
+### Crafts
+- ★ **Twinned Vision** (common, FRA) — draws TWO whenever not cast from hand, i.e. every Iroh turn. The best wildcard in the pile.
+- ★ **Temur Battlecrier** (rare) — recasts free per power-4 creature.
+- ★ Survey Mechan (uncommon) — ~16 land names make its draw-three nearly free.
+- ★ Sanar, Unfinished Genius (uncommon) — tutor for Capstone/Combustion.
+- ~ Spider-Man 2099 (rare) — already wishlisted for 54b; free here once crafted.
+- · Winternight Stories (rare), Wishing Well (rare), Dragonback Assault (mythic) — real, but not before the above.
+- ✗ **Saheeli, the Sun's Brilliance** — LCI leaves Standard early 2027 (~3 months). Do not craft a mythic for that window.
+
+### PROTECT list (what `cuts` cannot see)
+- **Accumulate Wisdom** — with 3+ Lessons in the yard it is DRAW THREE, recast for `{1}` every turn; the classifier gives it zero roles (§2).
+- **Elemental Teachings** — two lands onto the battlefield for `{1}` each turn.
+- **Boomerang Basics** — `{1}` rebuy of Bumi / Guru Pathik enter triggers + a card.
+- **Guru Pathik** — the counter-per-Lesson engine that powers Terrasymbiosis / Doc Samson.
+- **Shared Roots, Earthbending Lesson, Rockalanche** — Lesson count (R2) and repeatable value at `{1}`.
+- **Doc Aurlock, Uncle Iroh** — the cost layer, until Bilbo replaces Doc.
+
+### Routes
+- **54c "Storm Lotus" (variant signal, R7):** the copy cards rejected for slots, not for fit — Spider-Verse, Spinerock Tyrant, Prismari, Jeong Jeong, Choreographed Sparks, Teach by Example, Pyromancer's Goggles, Return the Favor. Each turns one `{1}` recast into two. Enough for a variant; decide after Tier 1 lands.
+- **"Leaves the graveyard" sub-theme:** Kishla Skimmer + Garrison Excavator both reward the recast itself.
