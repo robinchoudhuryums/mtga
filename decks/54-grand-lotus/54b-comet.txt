@@ -181,6 +181,9 @@
 #: notes: Raph & Leo, Sibling Rivals replaced Uncle Iroh (an extra combat EVERY turn from a three-drop:
 #: notes: firebending triggers again and Azula copies again; Uncle Iroh's Lesson discount had
 #: notes: shrunk to Improvisation Capstone alone). The deck-14 overlap list above predates this.
+#: notes: Gogo, Master of Mimicry replaced Echo the same day ({X}{X}, {T}: copy an activated or
+#: notes: triggered ability X times, from ANY source; X is generic, so firebending mana pays it —
+#: notes: X=2 on Savage Ventmaw's trigger nets twelve mana). The Echo line above is history.
 # Firebending — the mana engine
 1 Zuko, Exiled Prince (TLA) 163
 1 Raph & Leo, Sibling Rivals (TMT) 166
@@ -205,7 +208,7 @@
 1 Savage Ventmaw (FDN) 665
 1 Electro, Assaulting Battery (SPM) 76
 1 Eshki Dragonclaw (TDM) 182
-1 Echo, Perceptive Prodigy (MSH) 51
+1 Gogo, Master of Mimicry (FIN) 54
 1 Raphael, the Nightwatcher (TMT) 103
 1 Yue, the Moon Spirit (TLA) 83
 
