@@ -212,6 +212,8 @@
 #: notes: firebending triggers first and their red mana pays — and taxes every non-hand cast {1}
 #: notes: less (Iroh's flashback, Sphinx's, Comet's foretell, Foyer / Roku exile plays). Granters
 #: notes: stay five. The Newt lines above are history.
+#~ -Gogo, Master of Mimicry | +Tam, Mindful First-Year | PROTECTION (owned): protection 4 -> 5, nothing else moves. Each other creature has hexproof from its own colours (Azula is safe from U/B/R removal, Iroh and Eshki from G/U/R); with Leyline out that becomes hexproof from ALL colours. Its free {T} makes a creature all colours in response to removal, and pointed at anything it makes Bloom Tender tap for five. Tam itself is unprotected and will eat the first removal spell. Alternative cuts: Norman Osborn (Bilbo now covers his graveyard discount) or Improvisation Capstone (curve 3.66 -> 3.51).
+
 # Firebending — the mana engine
 1 Firebending Student (TLA) 139
 1 Raph & Leo, Sibling Rivals (TMT) 166
