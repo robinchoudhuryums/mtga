@@ -35,11 +35,10 @@
 #: tier:     pips stop mattering — the deck is only colour-screwed in the games where its
 #: tier:     engine has not arrived.
 #: tier:     (2) A ONE-CARD ENGINE. Iroh, Grand Lotus is the ONLY card that grants the
-#: tier:     flashback; Uncle Iroh is a cost reducer and does not substitute. Fierce
-#: tier:     Empath (any MV 6+ creature — Iroh, Bumi or Serpent) and Formidable Speaker
-#: tier:     (discard a fat Lesson, then tutor any creature) were added specifically for
-#: tier:     this, taking the deck from one copy to three ways to find it. That is
-#: tier:     mitigation, not redundancy. The REDUNDANCY arrived 2026-10-14: The Dawning Archaic
+#: tier:     flashback; Uncle Iroh is a cost reducer and does not substitute. The creature
+#: tier:     tutors once added for this are no longer in the list (checked 2026-10-14 — the
+#: tier:     prose still claimed them), so Iroh is found by drawing him, and True Ancestry is
+#: tier:     the only way back if he dies. The REDUNDANCY arrived 2026-10-14: The Dawning Archaic
 #: tier:     casts any yard instant/sorcery free each time it attacks — a second recast source.
 #: tier:     (3) BOARD-DEPENDENT PAYOFFS IN A DECK WITH NO BOARD. `shape` measures this
 #: tier:     list as TALL with a WIDE score of ZERO on 15 creature copies, and two of the
@@ -186,11 +185,10 @@
 1 Training Compound (MSH) 275
 1 Breeding Pool (EOE) 251
 1 Thornwood Falls (FDN) 269
-1 Mutant Town (TMT) 187
 1 Starting Town (FIN) 289
 1 Riverpyre Verge (DFT) 260
 1 Thornspire Verge (DSK) 270
 1 Willowrush Verge (DFT) 270
 2 Island (MSH) 289
 3 Forest (MSH) 295
-2 Mountain (MSH) 293
+3 Mountain (MSH) 293
