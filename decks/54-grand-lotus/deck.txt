@@ -12,18 +12,19 @@
 #: tier:     the classifier does not count, and Accumulate Wisdom draws three with 3+ Lessons
 #: tier:     binned while scoring zero roles — both K-12 under-counts, not a list weakness.
 #: tier:   COHERENT ENGINE — yes, and now MEASURED rather than asserted. `targets` finds
-#: tier:     nine gated effects and reports zero thin or unmet: every Lesson-count gate in
-#: tier:     the list — Serpent's three, Bumi's X, Combustion Technique's scaling damage,
-#: tier:     four one-Lesson switches — sits against 17 Lessons. `engines` reads the
-#: tier:     graveyard axis as balanced 18 enablers / 16 payoffs. Lessons are instants and
+#: tier:     four gated effects and reports zero thin or unmet: both Lesson-count gates in
+#: tier:     the list — Accumulate Wisdom's three and Combustion Technique's scaling damage —
+#: tier:     sit against 15 Lessons. `engines` reads the
+#: tier:     graveyard axis as balanced 12 enablers / 10 payoffs. Lessons are instants and
 #: tier:     sorceries, so casting them IS filling the yard; the engine feeds itself.
 #: tier:     WATCH THIS NUMBER. The 2026-08 fixing pass cut four Lessons and added none, so
 #: tier:     the count fell 21 -> 17, and the 2026-08 plan pass moved it to 16 (three
 #: tier:     Lesson cuts against Elemental Teachings and Shared Roots added). Every GATE still clears (they need one to three), but
-#: tier:     two payoffs SCALE with the count rather than switching on — Combustion
-#: tier:     Technique and Bumi's X — and those lost about a fifth of their ceiling. Price a
+#: tier:     Combustion Technique SCALES with the count rather than switching on, and it
+#: tier:     lost about a fifth of its ceiling (the second scaler, Bumi, King of Three
+#: tier:     Trials, was CUT 2026-10-14 for Bumi, Unleashed, whose earthbend 4 reads no count). Price a
 #: tier:     Lesson cut against them, not against the gates.
-#: tier:   TIGHT CURVE — no longer. 3.8 average after the 2026-10-14 passes: The Dawning Archaic's
+#: tier:   TIGHT CURVE — no longer. 3.77 average after the 2026-10-14 passes: The Dawning Archaic's
 #: tier:   printed 10 (one less per instant/sorcery binned), Prismari's 7 and Doc Samson's 5;
 #: tier:   Weather Maker's mana and Icetill Explorer's extra land drops are not in that figure.
 #: tier:   AT MOST ONE CLEAR WEAKNESS — no, and the two COMPOUND badly.
@@ -81,8 +82,8 @@
 #: archetype: checks whether a cited card is still in the deck and whether a quoted FIGURE
 #: archetype: matches, not whether a claim about a card's TEXT is true.
 #: archetype: THE PAYOFFS READ THE COUNT, not just the cards. Combustion Technique deals
-#: archetype: 2 plus the Lessons in your graveyard; Bumi, King of Three Trials chooses up
-#: archetype: to X modes where X is that same number (Serpent of the Pass, whose flash
+#: archetype: 2 plus the Lessons in your graveyard; Bumi, King of Three Trials, CUT 2026-10-14
+#: archetype: for Bumi, Unleashed, chose up to X modes where X is that same number (Serpent of the Pass, whose flash
 #: archetype: gate read the same count, was CUT for the plan's engine adds); the one-Lesson
 #: archetype: switches (two cheap bodies) were CUT 2026-10-14 for card advantage. So the
 #: archetype: graveyard is simultaneously the resource, the second hand, and the clock.
@@ -93,7 +94,7 @@
 #: archetype: instants and sorceries; this runs seventeen (down from twenty-three before the
 #: archetype: 2026-08 fixing pass traded four spells for permanents), because here they ARE
 #: archetype: the deck. Neither shares this one's colours.
-#: protect: Iroh, Grand Lotus; Thor, God of Thunder; Bumi, King of Three Trials; Combustion Technique; Improvisation Capstone; Echocasting Symposium
+#: protect: Iroh, Grand Lotus; Thor, God of Thunder; Bumi, Unleashed; Combustion Technique; Improvisation Capstone; Echocasting Symposium
 #: notes: WIP — but unusually close to buildable for a from-scratch brew: 26 of the 27
 #: notes: Temur-castable Lessons in Standard were already in the collection, and so were
 #: notes: 15 of the 17 cards that read the Lesson count. The archetype was sitting there.
@@ -164,7 +165,7 @@
 # Nonland
 1 Iroh, Grand Lotus (TLA) 227
 1 Toph, the Blind Bandit (TLA) 198
-1 Bumi, King of Three Trials (TLA) 169
+1 Bumi, Unleashed (TLA) 211
 1 Shared Roots (TLA) 196
 1 Death to Our Enemies (MSH) 127
 1 Pensive Professor (SOS) 63
