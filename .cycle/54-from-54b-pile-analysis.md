@@ -65,6 +65,7 @@ A needs +1 interaction, +2 card advantage).
 - **Batch 8: COPY engines keyed on 'cast from anywhere other than your hand' or 'single target' are R7 in its purest form** (Spider-Verse, Spinerock Tyrant, Spider-Man 2099's end-step shot). They make each `{1}` recast worth two. A 'copy' route is a real variant direction — see §5 Routes.
 - **Batch 9: a 'make the recast free' cluster** — Bilbo (−1 non-hand), Temur Battlecrier (−1 per power-4 creature), The Scarlet Witch (−2 on MV 4+), The Fire Crystal (−1 red). Iroh's `{1}` is already cheap, so these only matter at volume; one is plenty.
 - **Guru Pathik turns every Lesson cast into a counter** — which is what makes Terrasymbiosis a reliable card a turn here (the counters axis finally has a payoff, with Doc Samson from batch 2).
+- **Batch 10: cheap non-Lesson DRAW spells are the exception to R1.** Twinned Vision (draws two when not cast from hand) and Vision of Love (discard a fat Lesson, draw two) are cheap enough that Iroh's full-price recast is still a card-advantage engine every turn — and the discard half FEEDS the yard.
 
 ## 4. Running verdicts
 
@@ -392,6 +393,41 @@ Legend of Yangchen, Uldaros Theorix, Wayspeaker Bodyguard, Winter Misanthropic G
 | **The Mechanist, Aerial Artisan** | ★ | A Clue per noncreature spell (R7) — 21 here plus every recast. |
 | The Scarlet Witch | ◇ | Instants/sorceries MV 4+ cost `{X}` less (X = her power, 2) — a recast Capstone/Symposium/Germination is FREE (`{1}` − 2); hard-casts shrink too. |
 | The Unagi of Kyoshi Island | △ | Draws only when the OPPONENT draws two. |
+
+### Batch 10 (271–300)
+
+| Card | 54 | Note (rule) |
+|---|---|---|
+| **The Vision** | ★ | Colourless 2/5 flier: per noncreature spell, one unused mode a turn — "Draw a card", indestructible, double strike. A card a turn plus self-protection (R5, R7). |
+| The Wondrous Wasp | ◇ | Flash: tap a creature, it loses all abilities while Wasp stays — soft removal on a 2-drop. |
+| Theorist's Proxy (craft R) | ◇ | Flash 0/3; a Jace token that surveils/draws. |
+| Thief's Knife | △ | Combat-damage draw (R3). |
+| Thrill of Possibility (craft C) | ◇ | Discard (a fat Lesson, R2), draw two. Instant. |
+| Thunder Magic | ◇ | 2 / 4 / 8 damage by tier; non-Lesson, so its `{R}`+tier recasts at full price (R1). |
+| Thunderdrum Soloist | ◇ | 1 damage to each opponent per instant/sorcery — a `{1}` recast pings. |
+| Tishana's Tidebinder | ◇ | Flash: counter an activated/triggered ability and blank the source. LCI (R9). |
+| Trade the Helm | △ | Exchange control; cycling. |
+| Traxos, Academy Guardian (craft U) | △ | Cheap flier after a noncreature spell. |
+| Truck Toss | △ | 4 damage, no Vehicles. |
+| Tweeze | ◇ | 3 damage any target, then rummage — discard a fat Lesson. Non-Lesson. |
+| Twin Blades | ✗ | Combat equipment. |
+| Twin Bolt (craft C) | △ | 2 damage split. |
+| Twinflame Tyrant | ◇ | Doubles our damage to them: Thor's MV pings, Death to Our Enemies' 7 becomes 14. 5-mana flier. Spice. |
+| **Twinned Vision** (craft C) | ★ | "Draw a card. If this spell wasn't cast from your hand, draw two cards instead." Iroh recasts it (non-Lesson, `{1}{U/R}`) → TWO cards every turn; it also has its own flashback. A common (R5). |
+| Ty Lee, Chi Blocker | ◇ | Flash: lock a creature down while Ty Lee stays. |
+| **Ugin, Eye of the Storms** | ★ | `{7}` colourless: on cast, exile a coloured permanent; +2: gain 3, draw a card. Removal + CA in one finisher. Spice. |
+| Unending Whisper (craft C) | △ | `{U}` cantrip sorcery, non-Lesson. |
+| Unstoppable Plan (craft R) | △ | Untap nonland permanents each end step — mana creatures twice. |
+| Unsubtle Mockery | ◇ | 4 damage + surveil 1 (surveil feeds Planetarium); non-Lesson. |
+| Ureni's Rebuff (craft U) | △ | Bounce sorcery. |
+| Ureni, the Song Unending | ◇ | 8-mana 10/10 flier: enters, deal damage = lands you control, divided among their creatures — a one-sided sweep. Spice top end. |
+| Valley Floodcaller | △ | Flash for sorceries; Iroh's grant is your turn only. |
+| Vanille, Cheerful l'Cie | ◇ | Enters: mill two, return a permanent card — a dead Iroh. |
+| Venus, Torn Between Worlds | △ | Combat draw (R3). |
+| Vibrant Outburst | ◇ | 3 damage any target + tap; non-Lesson (full `{U}{R}` recast). |
+| Violent Urge (craft U) | ✗ | Trick. |
+| Visage Bandit | △ | Copy keeps the name. |
+| **Vision of Love** | ★ | "Sacrifice an artifact or discard a card. If you do, draw two" — discard a fat Lesson into the yard (R2) and draw two. Instant `{1}{R}`; Iroh recasts it every turn at full price (`{1}{R}`): loot-two each turn. Owned. |
 
 ## 5. Consolidated plan (live)
 
