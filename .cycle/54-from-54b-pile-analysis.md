@@ -57,6 +57,8 @@ A needs +1 interaction, +2 card advantage).
 - **Batch 3: a red-mana REFUND is the 54b idea that transfers best.** Electro adds `{R}` per instant/sorcery cast and keeps it; with `{1}` Lesson recasts that is a near-free chain. Emeritus of Conflict (third spell → Lightning Bolt) is the same "many cheap casts" payoff in interaction form.
 - **Second-Iroh paths so far:** Chameleon (renamed copy), Ember Island Production (non-legendary token), plus the recast sources Bilbo / The Dawning Archaic.
 - **Batch 4: "cards leave your graveyard" is an unmodelled payoff axis.** Garrison Excavator turns every Iroh recast into a 2/2; no tool counts this. Two anti-synergy cards so far (Festival of Embers, Goliath Daydreamer) both REDIRECT cards away from the yard.
+- **Batch 5: the card-advantage gap has an owned, cheap answer that reads THIS deck's engine.** Kishla Skimmer draws whenever a card leaves the yard on your turn — which is every Iroh recast. With Garrison Excavator (batch 4), 'leaves the graveyard' is now two payoffs deep.
+- **Card-advantage candidates are now plentiful** (Kishla, Kraum, Mechanist, Loot, Marang River Regent, Mind into Matter, Inspiring Call, Bruce Banner, Charred Foyer, Energybending). The constraint is SLOTS, not options.
 
 ## 4. Running verdicts
 
@@ -209,6 +211,41 @@ Legend of Yangchen, Uldaros Theorix, Wayspeaker Bodyguard, Winter Misanthropic G
 | Hire a Crew | ✗ | Combat token trick. |
 | How to Start a Riot | △ | Lesson (+1 count, R2) with a combat effect (R3). Filler only. |
 | Humbling Elder | △ | Flash -2/-0. |
+
+### Batch 5 (121–150)
+
+| Card | 54 | Note (rule) |
+|---|---|---|
+| Identity Echo (craft R) | △ | Polymorph a creature into the next creature off the top. |
+| Idol of the Deep King | △ | Flash, 2 damage on entry. |
+| Illusion Spinners | △ | 5-mana flier, hexproof while untapped. |
+| Impossible Inferno (craft C) | △ | 6 damage, non-Lesson. |
+| Impostor Syndrome | ✗ | Combat damage (R3). |
+| **Inspiring Call** | ★ | "Draw a card for each creature you control with a +1/+1 counter" + indestructible to them. Counters here: Bumi, Germination (two on EACH creature), Leaves II, Guru, Sokka, and every earthbent land is a creature with counters. CA + protection (R5). |
+| Inti, Seneschal of the Sun | △ | Attack-triggered discard (R3). |
+| Iron Fist, Living Weapon | △ | Needs spells targeting your own creature. |
+| Iron Spider, Stark Upgrade | △ | Artifact-creature counters; none here. |
+| **Jeong Jeong, the Deserter** | ★ | Exhaust `{3}`: "When you next cast a Lesson spell this turn, copy it." One copied Capstone / Symposium / Germination from a `{1}` flashback. Once per game, but huge. |
+| Judgment Bolt (craft R) | △ | 5 damage, Equipment rider dead here. |
+| Kindle the Inner Flame | △ | Hasty copy for a turn; flashback needs Elementals. |
+| Kirol, Attentive First-Year | ◇ | Tap two creatures: copy a triggered ability (Bumi/Guru/Toph). R/W hybrid, castable on R. |
+| **Kishla Skimmer** | ★★ | `{G}{U}` 2/2 flier: "Whenever a card leaves your graveyard during your turn, draw a card" (once a turn). Every Iroh recast is a card leaving the yard → a card every turn for two mana (R5, R7). |
+| Kitnap | ◇ | Steal a creature (stun if no gift). Interaction since 2026-10-07 steal-aura fix. |
+| Kraum, Violent Cacophony | ★ | Second spell each turn: counter + draw (R7). |
+| **Leyline of the Guildpact** | ★ | Perfect fixing; makes Rockalanche earthbend for EVERY land and Solstice's Mountain count your land count; Bloom Tender taps for five. Free from the opening hand. |
+| Light of Judgment (craft C) | △ | 6 damage, non-Lesson. |
+| Lithobraking (craft U) | △ | Sweeper needing an artifact. |
+| Loki Laufeyson | ◇ | Copy the next instant/sorcery with MV ≤ his power (2, or 4 powered up): a second Combustion Technique / Iroh's Demonstration. |
+| Long River Lurker | △ | Combat blink (R3). |
+| Long-Bodied Grey Dog (craft C) | △ | Flash reach + Treasure. |
+| **Loot, the Pathfinder** | ★ | `{2}{G}{U}{R}` double strike, vigilance, haste; three once-each exhausts: add three mana, **draw three**, deal 3. CA + ramp + removal on one Temur card (R5). |
+| Maelstrom Artisan (craft R) | ✗ | Land destruction. |
+| Mai, Jaded Edge | ✗ | Combat (R3). |
+| **Marang River Regent // Coil and Catch** | ★ | Omen instant `{3}{U}`: "Draw three cards, then discard a card" — discard a fat Lesson into the yard (R2); or a 6/7 flier that bounces two. Non-Lesson. |
+| Meltstrider Eulogist | △ | Draws when a creature with a counter dies. |
+| Might of the Meek | △ | `{R}` cantrip. |
+| **Mind into Matter** | ★ | `{X}{G}{U}`: draw X, then put a permanent with MV ≤ X from hand onto the battlefield — X=6 is draw six and a free Iroh/Bumi. Scales with the deck's ramp. |
+| Mirror Room // Fractured Realm | ◇ | Fractured Realm (7): every triggered ability triggers twice — Bumi, Thor, Death to Our Enemies. Expensive. |
 
 ## 5. Consolidated plan (live)
 
