@@ -192,6 +192,10 @@
 #: notes: Student's firebending X IS its power. What Hulk cost: Full Throttle was a sorcery the
 #: notes: graveyard engine rebought (Iroh, a saddled Newt's {0} flashback in main 2), and {G}{G}
 #: notes: lands on turn 5 ~43% counting the three nonland fixers vs ~59% for a generic 5-drop.
+#: notes: Then one Stark Industries (tapped, U/R) became a second Forest: G 8->9, R 18->17, U 12->11,
+#: notes: Hulk 45->53% lands-only. A Mountain was the WRONG cut — the basic count feeds Dark
+#: notes: Fortress / Training Compound / Fire Nation Palace, and B fell 6->5. The uncrafted better
+#: notes: version is both Starks -> Stomping Ground + a second Steam Vents (G 9, R 18, tapland 12%).
 # Firebending — the mana engine
 1 Firebending Student (TLA) 139
 1 Raph & Leo, Sibling Rivals (TMT) 166
@@ -243,7 +247,7 @@
 1 Watery Grave (EOE) 261
 1 Steam Vents (ECL) 267
 1 Riverpyre Verge (DFT) 260
-2 Stark Industries (MSH) 272
+1 Stark Industries (MSH) 272
 1 Daily Bugle Building (SPM) 179
 1 Blood Crypt (ECL) 262
 1 Starting Town (FIN) 289
@@ -254,5 +258,5 @@
 4 Mountain (MSH) 293
 1 Dark Fortress (MSH) 264
 2 Island (MSH) 289
-1 Forest (MSH) 295
+2 Forest (MSH) 295
 1 Captivating Cave (LCI) 268
