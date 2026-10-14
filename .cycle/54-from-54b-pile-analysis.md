@@ -46,12 +46,14 @@ A needs +1 interaction, +2 card advantage).
 
 ## 2. Standing error list
 
-(none yet)
+1. Rotation: the repo's `rotation_year` still models a fall-2026 rotation; the real one is early 2027 and takes BLB/DSK too, while DFT/TDM/FIN stay to early 2028 (2025 sets). Do not trust a `~2026` flag literally (R9).
 
 ## 3. Cross-batch observations
 
 - **Batch 1: R1 sinks most of 54b's red burn here.** A non-Lesson removal spell recasts at full price; a Lesson one at `{1}`. Lesson removal in the owned pool (Firebending Lesson, Lost Days, Zuko's Exile) beats every Burst Lightning / Bombard in this pile.
 - **Iroh insurance is a real category:** Auroral Procession and True Ancestry return a dead Iroh; Bilbo and The Dawning Archaic are second recast sources.
+- **Batch 2: the counters axis has enablers and no payoff** (`engines`: 10 enablers, 0 payoffs). Doc Samson is the first real payoff seen. Watch for more.
+- **A copy that renames itself dodges the legend rule** (Chameleon) — a second Iroh or Uncle Iroh is possible.
 
 ## 4. Running verdicts
 
@@ -99,6 +101,41 @@ Legend of Yangchen, Uldaros Theorix, Wayspeaker Bodyguard, Winter Misanthropic G
 | Buster Sword | ✗ | Combat damage (R3). |
 | Captain Howler, Sea Scourge | △ | Discard payoff; only Sokka discards here. |
 | Caught in the Crossfire | △ | 2 to each non-outlaw creature — a sweeper, non-Lesson, OTJ (R9). Iroh's Demonstration already pings. |
+
+### Batch 2 (31–60)
+
+| Card | 54 | Note (rule) |
+|---|---|---|
+| **Chameleon, Master of Disguise** | ★ | Enters as a copy of a creature you control "except his name is Chameleon" — so NO legend rule. A second Iroh (insurance, R5), a second Uncle Iroh (Lessons `{2}` cheaper), or a re-run of Bumi's / Guru Pathik's / Toph's enter trigger. |
+| Channeled Dragonfire (craft U) | △ | 2 damage sorcery, non-Lesson (R1). |
+| Charred Foyer // Warped Space | ★ | Upkeep: exile the top card, play it this turn — repeatable card advantage (R5). Doc Aurlock makes those casts `{2}` cheaper; Warped Space casts one free. |
+| Choreographed Sparks | ◇ | `{R}{R}` instant: copy an instant/sorcery you control — a second Capstone or Germination off one `{1}` flashback. Non-Lesson. |
+| Coati Scavenger (craft U) | △ | Descend 4 counts PERMANENT cards; Lessons are instants/sorceries (R2), so it rarely turns on. |
+| Colorstorm Stallion | △ | Opus needs 5+ mana SPENT (R6). |
+| Colossal Rattlewurm (craft R) | ✗ | Desert deck card. |
+| Conduct Electricity | △ | 6 damage, 5 mana, non-Lesson (R1). |
+| Coral Sword | ✗ | Equipment trick. |
+| Cosmic Cube | △ | Free cast on ATTACK up to the greatest attacking power — Thor/Iroh 5 — but the deck rarely attacks (R3). |
+| Crash and Burn | △ | 6 damage `{3}{R}` instant, non-Lesson (R1). |
+| Cuboid Colony | △ | Increment reads mana SPENT (R6). |
+| Cunning Maneuver | ✗ | Trick. |
+| Curious Forager (craft U) | △ | Forage exiles three yard cards to return a permanent — eats Lessons (R8). |
+| Daring Waverider | △ | One free MV≤4 instant/sorcery from the yard on entry; Iroh already does that for `{1}`. |
+| Decadent Dragon (craft R) | △ | Front `{2}{R}{R}` flier castable; back `{2}{B}` is not (⚠back:B). Attack trigger (R3). |
+| Desert Were-Worm | ✗ | Mountain-count beater. |
+| Devoted Duelist | △ | 1 damage on second spell; tiny. |
+| Disruptor of Currents (craft R) | △ | Flash convoke bounce body. |
+| Divergent Equation | △ | Returns X instants/sorceries to HAND — with Iroh they are better left in the yard at `{1}`. |
+| Divining Duelist (craft C) | △ | Flash body, loot or tap. |
+| Doc Ock's Henchmen | △ | Connives on attack (R3). |
+| **Doc Samson, Super Psychiatrist** | ★ | "Put that many plus one" counters — `engines` reads 10 counter enablers and NO payoff; this is the payoff (Bumi, Earthbending Lesson, Rockalanche, Germination, Leaves II, Guru, Toph). Also "{T}: Add X mana of any one color, X = power" — a 3+ mana rock. |
+| Don & Raph, Hard Science | ✗ | Attack-gated affinity, almost no artifacts here (R3). |
+| Donatello's Technique (craft U) | ◇ | Draw two for `{2}{U}`; non-Lesson so Iroh recasts it at full cost (R1). Sneak is combat (R3). |
+| Donatello, Gadget Master | ✗ | Sneak/combat artifact copy. |
+| Dracosaur Auxiliary | ✗ | Saddle attacker. |
+| **Dragonback Assault** (craft M) | ★ | `{3}{G}{U}{R}`: 3 to each creature and planeswalker, then "Landfall — create a 4/4 flying Dragon." Elemental Teachings for `{1}` puts TWO lands in a turn → two Dragons. Kills our own 2-drops; Iroh/Thor/Bumi survive. |
+| Dragonclaw Strike | △ | Double P/T + fight, 6 mana non-Lesson. |
+| Dundoolin Weaver (craft U) | △ | Needs three creatures; 14 here. |
 
 ## 5. Consolidated plan (live)
 
