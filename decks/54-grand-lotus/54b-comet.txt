@@ -178,9 +178,12 @@
 #: notes: checked at BEGINNING of combat, so Sneak / Azula-copied casts do not count for it.
 #: notes: Yue, the Moon Spirit replaced Solstice Revelations (waterbend {5}: a free noncreature
 #: notes: cast from hand, activatable while Azula attacks; never on Fated Firepower — free X is 0).
+#: notes: Raph & Leo, Sibling Rivals replaced Uncle Iroh (an extra combat EVERY turn from a three-drop:
+#: notes: firebending triggers again and Azula copies again; Uncle Iroh's Lesson discount had
+#: notes: shrunk to Improvisation Capstone alone). The deck-14 overlap list above predates this.
 # Firebending — the mana engine
 1 Zuko, Exiled Prince (TLA) 163
-1 Uncle Iroh (TLA) 248
+1 Raph & Leo, Sibling Rivals (TMT) 166
 1 Iroh, Grand Lotus (TLA) 227
 1 Full Throttle (DFT) 127
 1 Firebender Ascension (TLA) 137
