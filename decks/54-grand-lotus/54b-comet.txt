@@ -54,19 +54,20 @@
 #: archetype: aggro with no graveyard axis at all. Verify with `deck.py similar 54b`.
 #: tier: C — PROVISIONAL, GRADED 2026-08 on an UNBUILT, UNPLAYED, FIRST-DRAFT list.
 #: tier: Deliberately graded WELL BELOW the measurable floor, which reads A on interaction 6
-#: tier: plus card advantage 5 under the aggro plan (B if the plan were midrange; the 2026-08 plan pass traded three narrow removal
+#: tier: plus card advantage 4 under the aggro plan (B if the plan were midrange; the 2026-08 plan pass traded three narrow removal
 #: tier: spells for the mana-spent engine; Muse Seeker was then CUT for Savage
 #: tier: Ventmaw — six persistent mana per attack, the engine's biggest source —
 #: tier: giving back one draw slot for the deck's defining effect). The guard permits grading under the floor when the prose
 #: tier: argues for it; here is the argument, in measured terms:
-#: tier:   CARD ADVANTAGE 5 NOW, AND ITS FIRST READING ONLY EXISTED BECAUSE THE CLASSIFIER WAS FIXED.
+#: tier:   CARD ADVANTAGE 4 NOW, AND ITS FIRST READING ONLY EXISTED BECAUSE THE CLASSIFIER WAS FIXED.
 #: tier:     The first draft measured ZERO. Adding The Mechanist, Aerial Artisan (since cut, a Clue per
 #: tier:     noncreature spell) did not move the number at all, which exposed two gaps: a
 #: tier:     spelled-out CLUE TOKEN was not read as card advantage (only the `investigate`
 #: tier:     keyword was), and IMPULSE — "exile the top card of your library, you may play
-#: tier:     it" — was not read at all, so Zuko, Exiled Prince scored zero roles. Both were
+#: tier:     it" — was not read at all, so Zuko, Exiled Prince (since CUT) scored zero roles. Both were
 #: tier:     fixed 2026-08; 31 decks moved upward. The 2026-10-14 package (Eshki, Wan Shi Tong,
-#: tier:     Charred Foyer, Donatello's Technique) is what took it from three to five.
+#: tier:     Charred Foyer, Donatello's Technique) is what took it from three to five; cutting
+#: tier:     Zuko for Firebending Student the same day gave one back.
 #: tier:   THE MANABASE IS FOUR COLOURS ON 25 LANDS; black reached 6 sources in the
 #: tier:     2026-10-13 land rework and Leyline of the Guildpact (2026-10-14) makes every land
 #: tier:     every type when it lands. See the `#: notes:` block for what the splash costs.
@@ -184,11 +185,18 @@
 #: notes: Gogo, Master of Mimicry replaced Echo the same day ({X}{X}, {T}: copy an activated or
 #: notes: triggered ability X times, from ANY source; X is generic, so firebending mana pays it —
 #: notes: X=2 on Savage Ventmaw's trigger nets twelve mana). The Echo line above is history.
+#: notes: Same day: World War Hulk replaced Full Throttle and Firebending Student replaced Zuko,
+#: notes: Exiled Prince. Raph & Leo already supplies an extra combat every turn, so Full Throttle's
+#: notes: job was half-covered; Hulk's chapter I free-casts Ovika / Iroh / Ventmaw / Thor (Dawning
+#: notes: Archaic is colorless and does NOT qualify), II and III grow a creature's POWER, and
+#: notes: Student's firebending X IS its power. What Hulk cost: Full Throttle was a sorcery the
+#: notes: graveyard engine rebought (Iroh, a saddled Newt's {0} flashback in main 2), and {G}{G}
+#: notes: lands on turn 5 ~43% counting the three nonland fixers vs ~59% for a generic 5-drop.
 # Firebending — the mana engine
-1 Zuko, Exiled Prince (TLA) 163
+1 Firebending Student (TLA) 139
 1 Raph & Leo, Sibling Rivals (TMT) 166
 1 Iroh, Grand Lotus (TLA) 227
-1 Full Throttle (DFT) 127
+1 World War Hulk (MSH) 197
 1 Firebender Ascension (TLA) 137
 1 Sozin's Comet (TLA) 154
 1 The Legend of Roku (TLA) 145
