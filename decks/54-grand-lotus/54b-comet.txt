@@ -65,8 +65,9 @@
 #: tier:     spelled-out CLUE TOKEN was not read as card advantage (only the `investigate`
 #: tier:     keyword was), and IMPULSE — "exile the top card of your library, you may play
 #: tier:     it" — was not read at all, so Zuko, Exiled Prince (since CUT) scored zero roles. Both were
-#: tier:     fixed 2026-08; 31 decks moved upward. The 2026-10-14 package (Eshki, Wan Shi Tong,
-#: tier:     Charred Foyer, Donatello's Technique) is what took it from three to five; cutting
+#: tier:     fixed 2026-08; 31 decks moved upward. The 2026-10-14 package (Eshki, Charred
+#: tier:     Foyer, Donatello's Technique, and a Librarian since CUT for Old Fat Spider Can't See
+#: tier:     Me, which draws two of its own) is what took it from three to five; cutting
 #: tier:     Zuko for Firebending Student the same day gave one back.
 #: tier:   THE MANABASE IS FOUR COLOURS ON 25 LANDS; black reached 6 sources in the
 #: tier:     2026-10-13 land rework and Leyline of the Guildpact (2026-10-14) makes every land
@@ -201,6 +202,10 @@
 #: notes: Origin of Metalbending replaced Yue, the Moon Spirit (her free cast needs waterbend {5}):
 #: notes: the deck's only artifact/enchantment answer, or +1/+1 and indestructible on Azula/Iroh,
 #: notes: and the counter is permanent power for Firebending Student. Interaction 6 -> 7.
+#: notes: Old Fat Spider Can't See Me replaced Wan Shi Tong, Librarian: the Librarian's {X}{U}{U}
+#: notes: cast on curve ~59% and needed six mana to draw two. The saga needs one blue, gives Azula
+#: notes: or Iroh hexproof for three turns, neutralises one creature's damage, then draws two.
+#: notes: Protection 3 -> 4, card advantage unchanged at 4.
 # Firebending — the mana engine
 1 Firebending Student (TLA) 139
 1 Raph & Leo, Sibling Rivals (TMT) 166
@@ -244,7 +249,7 @@
 1 Leyline of the Guildpact (MKM) 217
 1 Fire Lord Azula (TLA) 220
 1 Charred Foyer // Warped Space (DSK) 129
-1 Wan Shi Tong, Librarian (TLA) 78
+1 Old Fat Spider Can't See Me (HOB) 50
 
 # Lands — red-primary. Fire Nation Palace grants firebending 4 to a
 # creature that lacks it, which is a second copy of the deck's engine.
