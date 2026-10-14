@@ -21,8 +21,9 @@
 #: archetype: THAT DICTATES THE COLOUR OF EVERY CARD, and it is the build rule to hold:
 #: archetype: FIREBENDING MANA IS RED-ONLY AND COMBAT-ONLY, so the INSTANTS are red and the
 #: archetype: blue and green pips sit on PERMANENTS you cast off lands in your main phase.
-#: archetype: Blue is the graveyard half (Archmage's Newt, Slickshot Lockpicker, Sphinx of
-#: archetype: Forgotten Lore) and green is two mana dorks and Iroh's pip. Nine red instants
+#: archetype: Blue is the graveyard half (Archmage's Newt, Sphinx of Forgotten Lore) plus the
+#: archetype: 2026-10-14 combat-copy layer, and green is two mana dorks and Iroh's pip. The red
+#: archetype: instants (Thunder Magic, Vibrant Outburst, Agni Kai, Return the Favor, Solstice)
 #: archetype: are the combat-mana sinks.
 #: archetype: TWO CARDS BREAK THE "UNTIL END OF COMBAT" LIMIT and they are the deck's real
 #: archetype: engine. Electro, Assaulting Battery reads "you don't lose unspent red mana as
@@ -35,10 +36,8 @@
 #: archetype: {X}{R}{R}{R} is an {X} cost on triple red — but both objections dissolve here.
 #: archetype: You cast it DURING combat off firebending mana, which is produced in fours and
 #: archetype: fives and is red by definition, so X is large and the pips are free. Then
-#: archetype: every damage source you control deals X more: firebending attackers, nine burn
-#: archetype: instants, Thor, Thunderdrum Soloist (Guttersnipe was CUT for it — same
-#: archetype: job, 3-damage upside when five-plus mana was spent, plus reach) and
-#: archetype: Ovika's token swarm.
+#: archetype: every damage source you control deals X more: firebending attackers, the burn
+#: archetype: instants, Thor, Spider-Man 2099's end-step shot and Ovika's token swarm.
 #: archetype: THE ATTACK IS THE DRAW STEP. Seven creatures turn combat into cards or spells:
 #: archetype: Archmage's Newt grants flashback on damage and flashback {0} when SADDLED;
 #: archetype: Sphinx of Forgotten Lore and The Dawning Archaic grant and free-cast on
@@ -46,34 +45,34 @@
 #: archetype: Osborn is unblockable and connives; and Firebender Ascension counts every
 #: archetype: attack trigger — firebending IS an attack trigger, so four firebenders swinging
 #: archetype: fill it in ONE combat, after which it copies every trigger that follows.
-#: archetype: DISTINCTIVENESS. vs 54: no fat Lessons, no Improvisation Capstone, an aggro
-#: archetype: plan and a mana curve built around instants. vs 54a: 54a is a spell deck that
+#: archetype: DISTINCTIVENESS. vs 54: no fat Lesson package (one Capstone, cast mid-combat
+#: archetype: off firebending mana under High Fae Trickster), an aggro plan and a curve built
+#: archetype: around instants. vs 54a: 54a is a spell deck that
 #: archetype: happens to have creatures; this is a creature deck whose spells are combat
 #: archetype: tricks, and it takes the attack-payoff cards 54a deliberately declined. vs
 #: archetype: deck 24 (Eternal Flame, Boros) and 02 (Thundergod): both are WHITE or mono-red
 #: archetype: aggro with no graveyard axis at all. Verify with `deck.py similar 54b`.
 #: tier: C — PROVISIONAL, GRADED 2026-08 on an UNBUILT, UNPLAYED, FIRST-DRAFT list.
-#: tier: Deliberately graded WELL BELOW the measurable floor, which reads A on interaction 4
-#: tier: plus card advantage 3 (the 2026-08 plan pass traded three narrow removal
+#: tier: Deliberately graded WELL BELOW the measurable floor, which reads A on interaction 6
+#: tier: plus card advantage 5 under the aggro plan (B if the plan were midrange; the 2026-08 plan pass traded three narrow removal
 #: tier: spells for the mana-spent engine; Muse Seeker was then CUT for Savage
 #: tier: Ventmaw — six persistent mana per attack, the engine's biggest source —
 #: tier: giving back one draw slot for the deck's defining effect). The guard permits grading under the floor when the prose
 #: tier: argues for it; here is the argument, in measured terms:
-#: tier:   CARD ADVANTAGE 3, AND IT ONLY READS THAT BECAUSE THE CLASSIFIER WAS FIXED FOR IT.
-#: tier:     The first draft measured ZERO. Adding The Mechanist, Aerial Artisan (a Clue per
+#: tier:   CARD ADVANTAGE 5 NOW, AND ITS FIRST READING ONLY EXISTED BECAUSE THE CLASSIFIER WAS FIXED.
+#: tier:     The first draft measured ZERO. Adding The Mechanist, Aerial Artisan (since cut, a Clue per
 #: tier:     noncreature spell) did not move the number at all, which exposed two gaps: a
 #: tier:     spelled-out CLUE TOKEN was not read as card advantage (only the `investigate`
 #: tier:     keyword was), and IMPULSE — "exile the top card of your library, you may play
 #: tier:     it" — was not read at all, so Zuko, Exiled Prince scored zero roles. Both were
-#: tier:     fixed 2026-08; 31 decks moved upward. Three is still thin for an aggro deck that
-#: tier:     stalls, and Clues double as an instant-speed sink for leftover combat mana.
-#: tier:   THE MANABASE IS FOUR COLOURS ON 25 LANDS and one of them has effectively three
-#: tier:     sources. See the `#: notes:` block for what the black splash cost the other
-#: tier:     three colours; it was a deliberate trade, not an oversight.
+#: tier:     fixed 2026-08; 31 decks moved upward. The 2026-10-14 package (Eshki, Wan Shi Tong,
+#: tier:     Charred Foyer, Donatello's Technique) is what took it from three to five.
+#: tier:   THE MANABASE IS FOUR COLOURS ON 25 LANDS; black reached 6 sources in the
+#: tier:     2026-10-13 land rework and Leyline of the Guildpact (2026-10-14) makes every land
+#: tier:     every type when it lands. See the `#: notes:` block for what the splash costs.
 #: tier:   AGGRO PLAN — the floor substitutes a bounded clock for the interaction a midrange
-#: tier:     deck would need (rubric #4), and it scores clock 4 of 7. `shape` reads WIDE 6 on
-#: tier:     23 creature copies with 8 evasive, which is the one axis where this list beats
-#: tier:     both siblings (54 and 54a are TALL with wide 0-1).
+#: tier:     deck would need (rubric #4), and it scores clock 3 of 7. `shape` reads it WIDE,
+#: tier:     which is the one axis where this list beats deck 54 (TALL).
 #: tier:   THE ENGINE IS UNPROVEN AND CONDITIONAL. Every other deck on this branch has an
 #: tier:     engine that works from the battlefield; this one must ATTACK PROFITABLY first.
 #: tier:     Against a deck that blocks well the mana never arrives and the list is a pile of
@@ -162,10 +161,22 @@
 #: notes: three places only", 0.0% on curve) predates this rework. Bloom Tender stays:
 #: notes: Vivid taps for 2-3 (G + R + U among your permanents), which the source counts
 #: notes: cannot see. Spider-Man 2099 replaced Emeritus of Conflict the same day (craft R).
+#: notes: 2026-10-14 PACKAGE C — the Azula combat-copy turn (Fire Lord Azula copies every
+#: notes: spell cast while she attacks; a copy of a permanent spell is a token, a copy is
+#: notes: NOT a cast, an X copy keeps X). Enablers: High Fae Trickster (all spells flash),
+#: notes: Raphael the Nightwatcher (Sneak during combat, attackers double strike), Echo
+#: notes: (copies a firebending / Ventmaw / Azula trigger — firebending's add-{R} is an
+#: notes: attack TRIGGER, not a mana ability, so it can be targeted). Fixing: Leyline of the
+#: notes: Guildpact (every land every type; Bloom Tender taps for five). Engine/cards:
+#: notes: Improvisation Capstone (all red/generic, castable mid-combat; Paradigm exiles it, so
+#: notes: Iroh never flashes it back), Charred Foyer // Warped Space, Eshki, Wan Shi Tong,
+#: notes: Donatello's Technique (Sneak {U}), Thunder Magic, Vibrant Outburst. Cut: Redirect
+#: notes: Lightning, Prompto, Spider Manifestation, Fire Sages, Shantotto, Thunderdrum
+#: notes: Soloist, The Mechanist, Jeong Jeong, Balmor, Sword of Wealth and Power, Slickshot
+#: notes: Lockpicker. Graveyard granters now FIVE (Newt, Sphinx, Seifer, Dawning Archaic,
+#: notes: Norman) — the abandon line above is four, and Newt rotates ~2026. Eshki's draw is
+#: notes: checked at BEGINNING of combat, so Sneak / Azula-copied casts do not count for it.
 # Firebending — the mana engine
-1 Redirect Lightning (TLA) 151
-1 Fire Sages (TLA) 136
-1 Jeong Jeong, the Deserter (TLA) 142
 1 Zuko, Exiled Prince (TLA) 163
 1 Uncle Iroh (TLA) 248
 1 Iroh, Grand Lotus (TLA) 227
@@ -176,7 +187,6 @@
 
 # Attack unlocks the graveyard
 1 Archmage's Newt (OTJ) 39
-1 Slickshot Lockpicker (OTJ) 67
 1 Sphinx of Forgotten Lore (FDN) 51
 1 Seifer Almasy (FIN) 156
 1 The Dawning Archaic (SOS) 1
@@ -186,26 +196,30 @@
 1 Fated Firepower (TLA) 132
 1 Thor, God of Thunder (MSH) 156
 1 Ovika, Enigma Goliath (FDN) 663
-1 Balmor, Battlemage Captain (FDN) 237
+1 High Fae Trickster (FDN) 40
 1 Savage Ventmaw (FDN) 665
 1 Electro, Assaulting Battery (SPM) 76
+1 Eshki Dragonclaw (TDM) 182
+1 Echo, Perceptive Prodigy (MSH) 51
+1 Raphael, the Nightwatcher (TMT) 103
 
 # Red instants — the combat-mana sinks
-1 Sword of Wealth and Power (BIG) 26
+1 Improvisation Capstone (SOS) 120
 1 The Last Agni Kai (TLA) 144
-1 Prompto Argentum (FIN) 148
 1 Spider-Man 2099 (SPM) 150
-1 Shantotto, Tactician Magician (FIN) 241
-1 Thunderdrum Soloist (SOS) 134
+1 Vibrant Outburst (SOS) 240
 1 Return the Favor (SOA) 47
-1 The Mechanist, Aerial Artisan (TLA) 64
 1 Solstice Revelations (TLA) 153
+1 Thunder Magic (FIN) 165
+1 Donatello's Technique (TMT) 39
 
 # Fixing and selection — cast off lands, not off combat mana
 1 Bloom Tender (ECL) 166
 1 Great Divide Guide (TLA) 181
-1 Spider Manifestation (SPM) 148
+1 Leyline of the Guildpact (MKM) 217
 1 Fire Lord Azula (TLA) 220
+1 Charred Foyer // Warped Space (DSK) 129
+1 Wan Shi Tong, Librarian (TLA) 78
 
 # Lands — red-primary. Fire Nation Palace grants firebending 4 to a
 # creature that lacks it, which is a second copy of the deck's engine.
