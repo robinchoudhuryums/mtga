@@ -59,6 +59,8 @@ A needs +1 interaction, +2 card advantage).
 - **Batch 4: "cards leave your graveyard" is an unmodelled payoff axis.** Garrison Excavator turns every Iroh recast into a 2/2; no tool counts this. Two anti-synergy cards so far (Festival of Embers, Goliath Daydreamer) both REDIRECT cards away from the yard.
 - **Batch 5: the card-advantage gap has an owned, cheap answer that reads THIS deck's engine.** Kishla Skimmer draws whenever a card leaves the yard on your turn — which is every Iroh recast. With Garrison Excavator (batch 4), 'leaves the graveyard' is now two payoffs deep.
 - **Card-advantage candidates are now plentiful** (Kishla, Kraum, Mechanist, Loot, Marang River Regent, Mind into Matter, Inspiring Call, Bruce Banner, Charred Foyer, Energybending). The constraint is SLOTS, not options.
+- **Batch 6: R6 makes MANA-VALUE payoffs the deck's finishers.** Thor (already in), Ovika and Niv-Mizzet all scale with the RECAST spell's mana value, so a `{1}` Capstone is worth 7. Prismari (storm) and Planetarium (free top card) are the same 'many cheap casts' idea. A spicy top-end package exists; it competes for the 5–7 slot with Bumi/Iroh/Thor.
+- **Protection for Iroh found:** My Precious (permanent hexproof, colourless) is the first answer that does not expire.
 
 ## 4. Running verdicts
 
@@ -246,6 +248,41 @@ Legend of Yangchen, Uldaros Theorix, Wayspeaker Bodyguard, Winter Misanthropic G
 | Might of the Meek | △ | `{R}` cantrip. |
 | **Mind into Matter** | ★ | `{X}{G}{U}`: draw X, then put a permanent with MV ≤ X from hand onto the battlefield — X=6 is draw six and a free Iroh/Bumi. Scales with the deck's ramp. |
 | Mirror Room // Fractured Realm | ◇ | Fractured Realm (7): every triggered ability triggers twice — Bumi, Thor, Death to Our Enemies. Expensive. |
+
+### Batch 6 (151–180)
+
+| Card | 54 | Note (rule) |
+|---|---|---|
+| Mister Fantastic, Reed Richards | ◇ | Draws when tokens enter — Death to Our Enemies makes a Treasure per noncreature spell (R7), plus Clues/Food. |
+| Mockingbird | △ | Copy keeps the name — an Iroh copy dies to the legend rule. |
+| Monastery Messenger | △ | Puts a yard card back on top — worse than leaving it for Iroh. |
+| Mondo Gecko | △ | Combat-damage draw (R3). |
+| Mouth of the Storm | △ | 7-mana flier. |
+| **My Precious // Allure of Power** | ★ | `{3}` Equipment: "Equipped creature has hexproof and can't be blocked." Equip `{2}` + 2 life onto Iroh = permanent protection for the engine (R5). Colourless. The Adventure needs black — ignore it. |
+| Naga Fleshcrafter | △ | Copy keeps the name (legend rule). |
+| Nature's Rhythm (craft R) | ◇ | `{X}{G}{G}`: tutor a creature MV ≤ X onto the battlefield — X=6 is Iroh. Harmonize recast. |
+| Nebula Dragon | △ | 7-mana flier, 3 damage. |
+| New Generation's Technique | △ | Two basics for 4; non-Lesson. Elemental Teachings does this better at `{1}`. |
+| **Niv-Mizzet, Visionary** | ★ | "Whenever a source you control deals noncombat damage to an opponent, you draw that many cards." Thor deals each spell's MANA VALUE (R6): a `{1}` Capstone flashback = 7 to face, draw 7. Death to Our Enemies' 7 too. Spice finisher. |
+| Norman Osborn // Green Goblin | △ | Flip needs black. |
+| North Wind Avatar | ✗ | "From outside the game" — nothing to fetch in Bo1. |
+| Nova Hellkite | △ | Flier, ping. |
+| **Oko, the Ringleader** | ★ | +1: draw two, discard one or two — discard the fat Lessons into the yard (R2). −1 Elks. CA (R5). |
+| Old Fat Spider | △ | 6/7 reach; draws only when targeted. |
+| Old Fat Spider Can't See Me | ★ | Hexproof on Iroh for the Saga's life, neutralise one creature, draw two (R5). Saga → Guru Pathik finds it. |
+| Omni-Changeling | △ | Copy keeps the name. |
+| Opera Love Song (craft U) | ◇ | Exile two, play them — +2 cards at instant speed. Non-Lesson. |
+| Outlaws' Fury | ✗ | Combat pump. |
+| Overprotect | ◇ | One-shot hexproof + indestructible for Iroh. BLB. |
+| **Ovika, Enigma Goliath** | ★ | "Create X 1/1 Goblins, X = the mana VALUE" (R6): a `{1}` Capstone recast is seven hasty Goblins. 7 mana. Spice finisher. |
+| Peerless Recycling (craft U) | ◇ | Return one or two permanent cards — a dead Iroh. |
+| Pigment Wrangler (craft U) | △ | Prepared: copy your next instant/sorcery. |
+| Pitiless Fists (craft U) | ◇ | Fight aura +2/+2 — Iroh fights at 7. |
+| **Planetarium of Wan Shi Tong** | ★ | `{1}`, T: scry 2, and "whenever you scry or surveil, look at the top card… you may cast that card without paying its mana cost" (once a turn). A free spell every turn; Bumi's scry mode and Surveillance Room also trigger it. 6 mana, colourless. Spice. |
+| Plumecreed Escort (craft U) | △ | Flash 2/1 flier, hexproof for a turn. |
+| Price of Freedom | ◇ | LESSON: destroy an artifact (or land) + "Draw a card" — a `{1}` cantrip answer every turn. |
+| **Prismari, the Inspiration** | ★ | "Instant and sorcery spells you cast have storm." Iroh chains three or four Lessons a turn → each copied once per earlier spell. 7/7 flier, ward–5 life. The spiciest finisher in the pile. |
+| Prompto Argentum | ✗ | Needs 4 mana SPENT (R6). |
 
 ## 5. Consolidated plan (live)
 
