@@ -50,7 +50,8 @@ A needs +1 interaction, +2 card advantage).
 
 ## 3. Cross-batch observations
 
-(none yet)
+- **Batch 1: R1 sinks most of 54b's red burn here.** A non-Lesson removal spell recasts at full price; a Lesson one at `{1}`. Lesson removal in the owned pool (Firebending Lesson, Lost Days, Zuko's Exile) beats every Burst Lightning / Bombard in this pile.
+- **Iroh insurance is a real category:** Auroral Procession and True Ancestry return a dead Iroh; Bilbo and The Dawning Archaic are second recast sources.
 
 ## 4. Running verdicts
 
@@ -63,6 +64,41 @@ Ugly-Looking Goblin, Heartflame Duelist, Lake-town Toymaker, Lightning Helix, Li
 M.O.D.O.K., Nowhere to Run, Oltec Matterweaver, Poised Practitioner, Prayer of Binding,
 Pursue the Past, Restoration Magic, Sage of the Skies, Sheltered by Ghosts, Sun Warriors, The
 Legend of Yangchen, Uldaros Theorix, Wayspeaker Bodyguard, Winter Misanthropic Guide, Xande.
+
+### Batch 1 (1–30)
+
+| Card | 54 | Note (rule) |
+|---|---|---|
+| Aang's Journey | △ | Lesson `{2}`: basic to HAND, +2 life. With Iroh a `{1}` land each turn; +1 Lesson (R2). Shared Roots already does the job better (to battlefield). |
+| Abstract Paintmage (craft U) | ◇ | Adds `{U}{R}` each first main, instants/sorceries only — flashback casts count. Ramp for the hard-cast turns. |
+| Ancestors' Aid | ✗ | Combat trick (R3). |
+| Anzrag, the Quake-Mole (craft M) | ✗ | Extra combat on block (R3). |
+| Aquitect's Defenses | ◇ | Flash aura: hexproof until end of turn + `+1/+2`. One-shot cover for Iroh (R5 protection). |
+| Archmage's Newt | △ | Needs combat damage (R3); OTJ, rotates early 2027 (R9). |
+| Asinine Antics (craft M) | △ | Every opposing creature becomes 1/1 — real mass answer, but a mythic craft from WOE, gone early 2027 (R9), non-Lesson (R1). |
+| Auroral Procession | ★ | `{G}{U}` instant: "Return target card from your graveyard to your hand." Returns a DEAD IROH (R5 single engine) or any Lesson. Card-neutral. |
+| Balmor, Battlemage Captain | ✗ | Team pump on spell cast — attack payoff (R3). |
+| Balthier and Fran (craft R) | ✗ | Vehicles. |
+| Bear Trap (craft C) | △ | Colourless flash artifact, `{3}`, sac: 3 damage to a creature. Works; DSK (R9). |
+| Beast, Erudite Aerialist | △ | Draws on combat damage only (R3). |
+| **Bilbo, Thief in the Night** | ★★ | "Spells you cast from anywhere other than your hand cost {1} less" — Iroh's `{1}` Lesson flashback becomes **free**, and it stacks with Doc Aurlock. Attack trigger casts an instant/sorcery from the yard — a second recast source (R5) that only needs to ATTACK (R3). The Doc Aurlock replacement when OTJ rotates. |
+| Bitter Work | ◇ | Draws when a power-4+ creature attacks: Iroh 5/5, Thor 5/5 flier, Bumi, earthbent lands. Rarely attacks (R3). Exhaust earthbend 4 is real. |
+| Blazing Crescendo | ✗ | Trick (R3). |
+| Blazing Firesinger // Seething Song | ◇ | Enters prepared: a free copy of "Add {R}{R}{R}{R}{R}" — one big hard-cast turn (Capstone from hand turn 5). One-shot. |
+| Blooming Blast (craft U) | △ | 2 damage, non-Lesson (R1). Firebending Lesson does it as a Lesson. |
+| Bombard | △ | 4 damage instant `{2}{R}`, non-Lesson (R1). Best non-Lesson burn here if wanted. |
+| Brazen Collector | ✗ | Attack mana (R3). |
+| Breaching Dragonstorm | ★ | 5-mana enchantment: free-cast the first nonland card off the top if MV ≤ 8. Hits here: Capstone (7, starts its Paradigm), Symposium, Germination, Iroh, Bumi, Thor. Noncreature cast (R7). |
+| Brineborn Cutthroat | ✗ | Opponent's-turn casting. |
+| **Bruce Banner // The Incredible Hulk** | ★★ | `{U}` 1/1: "{X}{X}, {T}: Draw X cards" — a mana sink that turns the deck's ramp into cards (R5, CA). Flips for `{2}{R}{R}{G}{G}`, exactly Temur, into a reach/trample Hulk. |
+| Bulk Up | ✗ | Trick. |
+| Bumi, Unleashed | ◇ | 5/4 trample, earthbend 4 on entry; the land-only extra combat needs damage (R3). |
+| Burner Rocket | ✗ | Vehicle trick. |
+| Burrog Befuddler (craft C) | ✗ | Flash -1/-0. |
+| Burst Lightning | △ | 2/4 damage any target, non-Lesson (R1). |
+| Buster Sword | ✗ | Combat damage (R3). |
+| Captain Howler, Sea Scourge | △ | Discard payoff; only Sokka discards here. |
+| Caught in the Crossfire | △ | 2 to each non-outlaw creature — a sweeper, non-Lesson, OTJ (R9). Iroh's Demonstration already pings. |
 
 ## 5. Consolidated plan (live)
 
