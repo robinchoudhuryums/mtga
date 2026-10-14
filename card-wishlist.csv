@@ -294,8 +294,6 @@ Whenever you cast an instant or sorcery spell, creatures you control get +1/+0 u
 Moment of Reckoning,Sorcery,"Choose up to four. You may choose the same mode more than once.
 • Destroy target nonland permanent.
 • Return target nonland permanent card from your graveyard to the battlefield.",W/B,graveyard; removal,SOS,205,Rare,6,"best 6 (Dead or Alive); also 20b,20a,20",6.5,hand
-Pensive Professor,Creature — Human Wizard,"Increment (Whenever you cast a spell, if the amount of mana you spent is greater than this creature's power or toughness, put a +1/+1 counter on this creature.)
-Whenever one or more +1/+1 counters are put on this creature, draw a card.",U,Human; Wizard; counters; card draw; increment,SOS,63,Rare,51,"Deck 51: 0/2 Increment, so nearly every spell in a 3.80-curve deck puts a counter on it and draws a card. Card-advantage engine and a growing threat in one card.",7.8,hand
 Planar Engineering,Sorcery,"Sacrifice two lands. Search your library for four basic land cards, put them onto the battlefield tapped, then shuffle.",G,sacrifice,SOS,158,Rare,13,"ramp: sac 2 lands -> fetch 4 basics — feeds Earth Kingdom's ramp ('sacrifice' tag was a red herring, not aristocrats)",4.0,hand
 Postmortem Professor,Creature — Zombie Warlock,"This creature can't block.
 Whenever this creature attacks, each opponent loses 1 life and you gain 1 life.
@@ -431,10 +429,6 @@ Turtles you control get +2/+2.",G,pump; flash; tempo,TMT,135,Rare,concept: Turtl
 Turtle Van,Artifact — Vehicle,"Whenever this Vehicle attacks, put a +1/+1 counter on target creature that crewed it this turn. Then if that creature is a Mutant, Ninja, or Turtle, double the number of +1/+1 counters on it.
 Crew 1 (Tap any number of creatures you control with total power 1 or more: This Vehicle becomes an artifact creature until end of turn.)",Colorless,Vehicle; counters; vehicle; crew; vehicles; double,TMT,181,Rare,concept,"TMNT payoff: crew -> counters, doubled for Mutant/Ninja/Turtle — a TMNT-tribal build-around",4.5,hand
 Turtles Forever,Instant,"Search your library and/or outside the game for exactly four legendary creature cards you own with different names, then reveal those cards. An opponent chooses two of them. Put the chosen cards into your hand and shuffle the rest into your library.",W,,TMT,27,Rare,general,legendary toolbox — needs a legend-dense white shell; niche build-around,3.0,hand
-Weather Maker,Artifact,"Landfall — Whenever a land you control enters, put a charge counter on this artifact.
-{T}: Add one mana of any color.
-{T}, Remove two charge counters from this artifact: Add {C}{C}.
-{T}, Remove three charge counters from this artifact: It deals 3 damage to any target.",Colorless,counters; burn; mana; landfall; lands; ramp,TMT,182,Rare,general,landfall any-color ramp rock — flexible fixing/ramp (also 13/19a landfall),5.5,hand
 Donatello's Technique,Sorcery,"Sneak {U} (You may cast this spell for {U} if you also return an unblocked attacker you control to hand during the declare blockers step.)
 Draw two cards.",U,card draw; sneak; tempo; cost-reduction,TMT,39,Uncommon,54b,,3.5,seed
 Foot Headquarters,Land,"This land enters tapped.
