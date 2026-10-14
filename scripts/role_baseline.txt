@@ -31,7 +31,6 @@ Armament Dragon
 Arnim Zola, Bio-Fanatic
 Ashroot Animist
 Aurelia, the Warleader
-Auron's Inspiration
 Aurora Awakener
 Avenger of the Fallen
 Avengers: Under Siege
@@ -56,7 +55,6 @@ Bone-Cairn Butcher
 Boneclub Berserker
 Boneyard Desecrator
 Brass's Bounty
-Brazen Collector
 Brightspear Zealot
 Broodguard Elite
 Bulk Up
@@ -151,7 +149,6 @@ Foggy Swamp Visions
 Fortune, Loyal Steed
 Frantic Strength
 Frontier Seeker
-Full Throttle
 Fynn, the Fangbearer
 Galuf's Final Act
 Gangly Stompling
@@ -208,7 +205,6 @@ Iron Hills Stalwart
 Iron Lad, Diverging Destiny
 Ironpaw Aspirant
 Jace's Machinations
-Jeong Jeong, the Deserter
 Jeskai Brushmaster
 Jet, Rebel Leader
 Joo Dee, One of Many
@@ -358,7 +354,6 @@ Spider-Man, Web-Slinger
 Spider-Punk
 Splash Portal
 Stalwart Successor
-Starbreach Whale
 Starfield Shepherd
 Stargaze
 Stark Industries Executive

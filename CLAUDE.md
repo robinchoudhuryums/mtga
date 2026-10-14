@@ -1451,7 +1451,7 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   worse, because nothing is blank**: Dead Weight is tagged `removal` by the tagger and
   scored ZERO roles by the classifier — and it is the ROLE model that feeds `tier_band`
   (BS6-10). It is a GATE now: `check_roles.py --tags` sweeps the pool for it,
-  baselined at 174 and soft in `check_all`, reading `MECHANIC_RULES` live, never a copy.
+  baselined at 68 and soft in `check_all`, reading `MECHANIC_RULES` live, never a copy.
   **The rules read the CARD, not what it describes (BS8-31; `target_counts` joined 2026-09-09, minus the library-search family whose riders LIVE in reminder text)** — `sacrifice`/`removal`
   on reminder-stripped text, `reanimator` needs a graveyard→battlefield clause,
   `landfall`/`convoke` no longer map to `ramp`; `--merge` cannot REMOVE a stale library
