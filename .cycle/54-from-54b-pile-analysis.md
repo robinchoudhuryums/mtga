@@ -63,6 +63,8 @@ A needs +1 interaction, +2 card advantage).
 - **Protection for Iroh found:** My Precious (permanent hexproof, colourless) is the first answer that does not expire.
 - **Batch 7: owned Lesson protection exists.** Redirect Lightning is a Lesson, so it is a `{1}`+`{2}` answer to removal on Iroh EVERY turn from the yard — the strongest R1+R5 overlap in the pile.
 - **Batch 8: COPY engines keyed on 'cast from anywhere other than your hand' or 'single target' are R7 in its purest form** (Spider-Verse, Spinerock Tyrant, Spider-Man 2099's end-step shot). They make each `{1}` recast worth two. A 'copy' route is a real variant direction — see §5 Routes.
+- **Batch 9: a 'make the recast free' cluster** — Bilbo (−1 non-hand), Temur Battlecrier (−1 per power-4 creature), The Scarlet Witch (−2 on MV 4+), The Fire Crystal (−1 red). Iroh's `{1}` is already cheap, so these only matter at volume; one is plenty.
+- **Guru Pathik turns every Lesson cast into a counter** — which is what makes Terrasymbiosis a reliable card a turn here (the counters axis finally has a payoff, with Doc Samson from batch 2).
 
 ## 4. Running verdicts
 
@@ -355,6 +357,41 @@ Legend of Yangchen, Uldaros Theorix, Wayspeaker Bodyguard, Winter Misanthropic G
 | Stoic Sphinx (craft R) | △ | Flash flier, conditional hexproof. |
 | Stormscale Scion | ◇ | Storm on a 4/4 flying Dragon — Iroh turns cast several spells first. |
 | Stormsplitter | △ | Hasty copies per instant/sorcery (R3). |
+
+### Batch 9 (241–270)
+
+| Card | 54 | Note (rule) |
+|---|---|---|
+| Strife Scholar // Awaken the Ages | △ | Prepared: two 2/2 Spirits for 6. |
+| Summon: Leviathan | ✗ | Chapter I bounces OUR non-sea creatures too — Iroh included. |
+| **Summon: Titan** | ★ | Saga 7/7: I "Mill five" (Lessons into the yard, R2); II "Return all land cards from your graveyard to the battlefield" — Elemental Teachings sends two lands to the yard every cast. A Saga (Guru Pathik finds it). |
+| Super Speed | ✗ | Aura trick. |
+| Super Strength | △ | +4/+4, trample, ward 1 on Iroh — thin protection. |
+| **Survey Mechan** (craft U) | ★ | Hexproof flier; `{10}` sac costs `{X}` less per DIFFERENTLY NAMED land — this manabase runs ~16 names, so it is close to free: 3 damage, draw three, +3 life. CA + interaction, colourless. |
+| Sword of Wealth and Power | ◇ | Equipped creature has protection from instants AND sorceries — most removal — so Iroh is safe. The copy half needs combat damage (R3). BIG, early 2027 (R9). |
+| Sygg (craft R) | △ | Transform needs white. |
+| Synchronized Charge | △ | Two counters + harmonize. |
+| Tam, Mindful First-Year | ◇ | Iroh (G/U/R) gets hexproof from green, blue and red; with Leyline, from every colour. Tam itself is exposed. |
+| Teach by Example (craft U) | ◇ | Copy your next instant/sorcery — a second Capstone. |
+| Technodrome | △ | Artifact sac engine; few artifacts. |
+| **Temur Battlecrier** (craft R) | ★ | "During your turn, spells you cast cost {1} less for each creature you control with power 4 or greater" — it is 4/3 itself; Iroh, Thor, Bumi and every earthbent 4/4 land count. Every `{1}` Lesson recast goes FREE, and hard-cast Lessons shrink. |
+| Temur Tawnyback | △ | 6-mana loot body. |
+| Terrapact Intimidator | △ | Landers or counters. |
+| **Terrasymbiosis** | ★ | "Whenever you put one or more +1/+1 counters on a creature you control, you may draw that many cards" (once a turn). Guru Pathik puts a counter on every Lesson cast — a card per turn; Germination draws two. CA (R5). |
+| Terror of the Peaks | △ | Pings on creatures entering; earthbend does not make a land ENTER. |
+| Tetsuko Umezawa, Pursuer | ✗ | Combat (R3). |
+| **The Arkenstone // Seek the Heart** | ★ | `{5}` colourless: "Creatures you control get +1/+1" and "At the beginning of your end step, draw a card" — repeatable CA. The Adventure needs white. |
+| The Dawning Archaic | ★★ | Already in the tune plan (second recast engine). |
+| The Earth King | ◇ | 4/4 Bear on entry; land ramp on power-4 attacks (R3). |
+| The Emperor of Palamecia | △ | Flip needs 4 mana SPENT (R6); its mana is noncreature-only ramp. |
+| The Fire Crystal | ◇ | Red spells `{1}` less — red Lesson recasts (Combustion, Capstone, Firebending Lesson, Demonstration, Solstice) go free. |
+| The Last Agni Kai | △ | Fight, non-Lesson. |
+| The Legend of Kyoshi // Avatar Kyoshi | ◇ | I: draw = greatest power (Iroh 5); III flips into a mana Avatar. 6 mana, GG. A Saga (Guru). |
+| **The Legend of Roku // Avatar Roku** | ★ | I: exile three, play them — +3 cards (R5); II: a mana; III: a firebending 4 Avatar. A Saga (Guru). |
+| The Lord of the Eagles | △ | Flier-cost discount; few fliers. |
+| **The Mechanist, Aerial Artisan** | ★ | A Clue per noncreature spell (R7) — 21 here plus every recast. |
+| The Scarlet Witch | ◇ | Instants/sorceries MV 4+ cost `{X}` less (X = her power, 2) — a recast Capstone/Symposium/Germination is FREE (`{1}` − 2); hard-casts shrink too. |
+| The Unagi of Kyoshi Island | △ | Draws only when the OPPONENT draws two. |
 
 ## 5. Consolidated plan (live)
 
