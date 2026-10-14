@@ -53,7 +53,7 @@
 #: archetype: deck 24 (Eternal Flame, Boros) and 02 (Thundergod): both are WHITE or mono-red
 #: archetype: aggro with no graveyard axis at all. Verify with `deck.py similar 54b`.
 #: tier: C — PROVISIONAL, GRADED 2026-08 on an UNBUILT, UNPLAYED, FIRST-DRAFT list.
-#: tier: Deliberately graded WELL BELOW the measurable floor, which reads A on interaction 6
+#: tier: Deliberately graded WELL BELOW the measurable floor, which reads A on interaction 7
 #: tier: plus card advantage 4 under the aggro plan (B if the plan were midrange; the 2026-08 plan pass traded three narrow removal
 #: tier: spells for the mana-spent engine; Muse Seeker was then CUT for Savage
 #: tier: Ventmaw — six persistent mana per attack, the engine's biggest source —
@@ -138,8 +138,10 @@
 #: notes: shared with a tier-A deck that already does firebending better.
 #: notes: THE BUILD RULE, stated so a later edit does not break it: red instants, coloured
 #: notes: permanents. A blue or green INSTANT cannot be paid for with firebending mana, so
-#: notes: it competes for land mana with the permanents. Origin of Metalbending, Overprotect
-#: notes: and Galuf's Final Act are all fine cards that were cut for exactly this reason.
+#: notes: it competes for land mana with the permanents. Overprotect and Galuf's Final Act
+#: notes: were cut for exactly this reason. Origin of Metalbending was too, and came BACK on
+#: notes: 2026-10-14 as the rule's one exception: it is a LESSON, so Iroh recasts it for a
+#: notes: generic {1} that combat mana pays. Only its first cast competes for land mana.
 #: notes: Deliberately NOT included: Rough Rhino Cavalry (five mana for firebending 2 — the
 #: notes: worst rate in the package); Fire Nation Attacks (two 2/2s for five, flashback
 #: notes: {8}{R}); Photon Blast Barrage (an {X} spell whose copies are not CAST, so Thor
@@ -196,6 +198,9 @@
 #: notes: Hulk 45->53% lands-only. A Mountain was the WRONG cut — the basic count feeds Dark
 #: notes: Fortress / Training Compound / Fire Nation Palace, and B fell 6->5. The uncrafted better
 #: notes: version is both Starks -> Stomping Ground + a second Steam Vents (G 9, R 18, tapland 12%).
+#: notes: Origin of Metalbending replaced Yue, the Moon Spirit (her free cast needs waterbend {5}):
+#: notes: the deck's only artifact/enchantment answer, or +1/+1 and indestructible on Azula/Iroh,
+#: notes: and the counter is permanent power for Firebending Student. Interaction 6 -> 7.
 # Firebending — the mana engine
 1 Firebending Student (TLA) 139
 1 Raph & Leo, Sibling Rivals (TMT) 166
@@ -222,7 +227,6 @@
 1 Eshki Dragonclaw (TDM) 182
 1 Gogo, Master of Mimicry (FIN) 54
 1 Raphael, the Nightwatcher (TMT) 103
-1 Yue, the Moon Spirit (TLA) 83
 
 # Red instants — the combat-mana sinks
 1 Improvisation Capstone (SOS) 120
@@ -232,6 +236,7 @@
 1 Return the Favor (SOA) 47
 1 Thunder Magic (FIN) 165
 1 Donatello's Technique (TMT) 39
+1 Origin of Metalbending (TLA) 187
 
 # Fixing and selection — cast off lands, not off combat mana
 1 Bloom Tender (ECL) 166
