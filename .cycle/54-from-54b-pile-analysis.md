@@ -56,6 +56,7 @@ A needs +1 interaction, +2 card advantage).
 - **A copy that renames itself dodges the legend rule** (Chameleon) — a second Iroh or Uncle Iroh is possible.
 - **Batch 3: a red-mana REFUND is the 54b idea that transfers best.** Electro adds `{R}` per instant/sorcery cast and keeps it; with `{1}` Lesson recasts that is a near-free chain. Emeritus of Conflict (third spell → Lightning Bolt) is the same "many cheap casts" payoff in interaction form.
 - **Second-Iroh paths so far:** Chameleon (renamed copy), Ember Island Production (non-legendary token), plus the recast sources Bilbo / The Dawning Archaic.
+- **Batch 4: "cards leave your graveyard" is an unmodelled payoff axis.** Garrison Excavator turns every Iroh recast into a 2/2; no tool counts this. Two anti-synergy cards so far (Festival of Embers, Goliath Daydreamer) both REDIRECT cards away from the yard.
 
 ## 4. Running verdicts
 
@@ -173,6 +174,41 @@ Legend of Yangchen, Uldaros Theorix, Wayspeaker Bodyguard, Winter Misanthropic G
 | Flashback (craft R) | ✗ | Iroh already grants flashback to everything. |
 | Floodpits Drowner | ◇ | Flash: tap + stun, then `{1}{U}`, T shuffles the stunned creature away — real removal on a 2-drop. DSK. |
 | Frantic Firebolt | ◇ | X = 2 + instants/sorceries in your yard — often 7+ here (R2). Non-Lesson; WOE, early 2027. Owned ×2. |
+
+### Batch 4 (91–120)
+
+| Card | 54 | Note (rule) |
+|---|---|---|
+| Fuel the Flames | △ | 2 to each creature (ours too), cycling; non-Lesson. |
+| Full Throttle | ✗ | Extra combats (R3). |
+| Fulminous Forte (craft U) | ◇ | 1 to each opposing creature, or 5 to one. Flexible, non-Lesson (R1). |
+| Galuf's Final Act | ✗ | Combat trick. |
+| Galvanize | △ | 3 damage, 5 if you drew two this turn; non-Lesson; MKM (R9). |
+| **Garrison Excavator** | ★ | "Whenever one or more cards leave your graveyard, create a 2/2" — every Iroh recast is a card leaving the yard (R7): a token per flashback. Board for a 33-power deck (R3). 3/4 menace. |
+| Genji Glove | ✗ | Combat equipment. |
+| Giant-Sized Flying Ant | △ | Flash flier, tap/untap. |
+| Giantfall | ◇ | Your creature deals its power to theirs (Iroh/Thor 5), or kill an artifact; non-Lesson. |
+| Glacial Dragonhunt (craft U) | ◇ | Loot, and discarding a NONLAND card deals 3 — discard a fat Lesson straight into the yard (R2). Sorcery, non-Lesson. |
+| Glamer Gifter | △ | Flash flier trick. |
+| Glamermite | △ | Flash flier tap/untap. |
+| Gleaming Geardrake | △ | One Clue on a 1/1 flier. |
+| Glen Elendra Guardian | ◇ | Flash 2/3 flier that counters one noncreature spell (`{1}{U}`, remove its counter) and becomes a 3/4. |
+| Goblin Firebomb (craft C) | △ | `{7}`: destroy any permanent; colourless. |
+| Gogo, Master of Mimicry | ◇ | Copies Bumi/Guru/Toph triggers X times; slow. |
+| Goldvein Hydra | △ | X-sized hasty trampler; mana sink. OTJ. |
+| Goliath Daydreamer | ✗ | Instants/sorceries cast from hand are EXILED instead of hitting the yard — starves Iroh (R8). |
+| Great Train Heist | ✗ | Combat spree. |
+| Guttersnipe (craft U) | ◇ | 2 to each opponent per instant/sorcery — with `{1}` recasts that is a real clock (R7). |
+| Gwen Stacy // Ghost-Spider | ◇ | Enters, exiles the top card, playable while she stays — +1 card; flip needs white. |
+| Harbinger of the Tides | △ | UU bounce of a tapped creature. |
+| Hazoret, Godseeker | ✗ | Speed deck card. |
+| Heated Argument | △ | 6 damage; its bonus exiles a yard card (R8, optional). |
+| Herd Heirloom | △ | Creature-only mana. |
+| Hidetsugu's Second Rite | ✗ | Exact-10-life kill. |
+| High Fae Trickster | △ | Flash for sorceries — but Iroh's grant is "during your turn" only, so it doesn't extend the recasts. |
+| Hire a Crew | ✗ | Combat token trick. |
+| How to Start a Riot | △ | Lesson (+1 count, R2) with a combat effect (R3). Filler only. |
+| Humbling Elder | △ | Flash -2/-0. |
 
 ## 5. Consolidated plan (live)
 
