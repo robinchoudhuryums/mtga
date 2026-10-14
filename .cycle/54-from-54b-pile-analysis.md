@@ -61,6 +61,7 @@ A needs +1 interaction, +2 card advantage).
 - **Card-advantage candidates are now plentiful** (Kishla, Kraum, Mechanist, Loot, Marang River Regent, Mind into Matter, Inspiring Call, Bruce Banner, Charred Foyer, Energybending). The constraint is SLOTS, not options.
 - **Batch 6: R6 makes MANA-VALUE payoffs the deck's finishers.** Thor (already in), Ovika and Niv-Mizzet all scale with the RECAST spell's mana value, so a `{1}` Capstone is worth 7. Prismari (storm) and Planetarium (free top card) are the same 'many cheap casts' idea. A spicy top-end package exists; it competes for the 5–7 slot with Bumi/Iroh/Thor.
 - **Protection for Iroh found:** My Precious (permanent hexproof, colourless) is the first answer that does not expire.
+- **Batch 7: owned Lesson protection exists.** Redirect Lightning is a Lesson, so it is a `{1}`+`{2}` answer to removal on Iroh EVERY turn from the yard — the strongest R1+R5 overlap in the pile.
 
 ## 4. Running verdicts
 
@@ -283,6 +284,41 @@ Legend of Yangchen, Uldaros Theorix, Wayspeaker Bodyguard, Winter Misanthropic G
 | Price of Freedom | ◇ | LESSON: destroy an artifact (or land) + "Draw a card" — a `{1}` cantrip answer every turn. |
 | **Prismari, the Inspiration** | ★ | "Instant and sorcery spells you cast have storm." Iroh chains three or four Lessons a turn → each copied once per earlier spell. 7/7 flier, ward–5 life. The spiciest finisher in the pile. |
 | Prompto Argentum | ✗ | Needs 4 mana SPENT (R6). |
+
+### Batch 7 (181–210)
+
+| Card | 54 | Note (rule) |
+|---|---|---|
+| Pull Through the Weft | ◇ | Two nonland permanents back to hand (a dead Iroh) and two lands back to play — earthbent lands that died. 5 mana, GG. |
+| Pym Particles | △ | Unblockable cantrip (R3). |
+| Pyre Rhymer // Molten Tide | △ | Prepared ritual: Mountains add an extra `{R}` this turn; only 2 Mountains here. |
+| Pyromancer's Goggles | ◇ | Its `{R}` spent on a red instant/sorcery copies it — a `{1}` Capstone flashback paid with Goggles mana is copied. 5-mana artifact. Spice. |
+| Quistis Trepe | ◇ | Enters: cast an instant/sorcery from ANY graveyard, any mana. One-shot. |
+| Radagast of Rhosgobel | △ | Creature discount + flash; 14 creatures. |
+| Raiding Schemes (craft R) | ◇ | Noncreature spells gain conspire: tap two creatures sharing its colour → copy it. A copied Capstone each turn, if the board has two creatures. |
+| Rapacious Dragon | △ | Flier + two Treasures. |
+| Raph & Leo, Sibling Rivals | ✗ | Extra combat (R3). |
+| Raphael, Ninja Destroyer | ✗ | Enrage mana (R3). |
+| Raphael, the Nightwatcher | ✗ | Double strike / Sneak (R3). |
+| Reckless Ransacking | ✗ | Trick. |
+| Red Hulk | △ | 6/7 enrage pinger. |
+| **Redirect Lightning** | ★ | LESSON: "Change the target of target spell or ability with a single target" (+ `{2}` or 5 life). Protection for Iroh at `{1}`+`{2}` from the yard, every turn (R1, R5). |
+| Renet, Temporal Apprentice | ◇ | Flash: bounce every nonland permanent that entered this turn — an opponent's whole turn of plays. |
+| Restore with Empathy (craft U) | ◇ | A dead Iroh back to hand, +4 life. |
+| Return the Favor | ◇ | `{R}{R}`+`{1}`: copy an instant/sorcery (a recast Capstone) or redirect. Non-Lesson. |
+| Riku of Many Paths (craft R) | △ | Modal spells — only Iroh's Demonstration and Origin of Metalbending are modal here. |
+| Rimefire Torque | △ | Choose Human (9 here); three counters → copy an instant/sorcery. Slow. |
+| Rite of Replication (craft R) | ◇ | Kicked: five token Bumis — five enter triggers (the legend rule then trims them). |
+| Roamer's Routine | △ | Basic land ramp, non-Lesson. |
+| Roar of Endless Song (craft R) | ◇ | Two 5/5 Elephants, then double the team. A Saga (Guru Pathik). Board for a tall deck. |
+| Roving Actuator (craft U) | △ | Void-gated free cast. |
+| Runaway Boulder (craft C) | △ | Flash 6 damage, colourless, LCI (R9). |
+| Rydia's Return | ◇ | Two permanent cards back (Iroh), or +3/+3 team. |
+| Rydia, Summoner of Mist (craft U) | ◇ | Landfall rummage — discard fat Lessons on every Elemental Teachings / Shared Roots land (R2); Summon replays Leaves from the Vine / Old Fat Spider Can't See Me. |
+| **Sab-Sunen, Luxa Embodied** | ★ | Indestructible 6/6; "if it has an odd number of counters on it, draw two cards" — two cards every other turn (R5). Owned ×2. |
+| Saheeli, Jewel of Avishkar (craft U) | ◇ | A flying Thopter per noncreature spell (R7) — board, no cards. |
+| **Sanar, Unfinished Genius // Wild Idea** (craft U) | ★ | `{U}{R}` 0/4 that enters prepared: cast Wild Idea — "Search your library for an instant or sorcery card" — a tutor for Capstone / Combustion / Germination. Treasures on spell turns. |
+| Savage Ventmaw | ◇ | Attacks → six mana that lasts the turn: a post-combat hard-cast of a fat Lesson. Rarely attacks (R3). |
 
 ## 5. Consolidated plan (live)
 
