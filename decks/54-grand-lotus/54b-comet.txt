@@ -21,7 +21,7 @@
 #: archetype: THAT DICTATES THE COLOUR OF EVERY CARD, and it is the build rule to hold:
 #: archetype: FIREBENDING MANA IS RED-ONLY AND COMBAT-ONLY, so the INSTANTS are red and the
 #: archetype: blue and green pips sit on PERMANENTS you cast off lands in your main phase.
-#: archetype: Blue is the graveyard half (Archmage's Newt, Sphinx of Forgotten Lore) plus the
+#: archetype: Blue is the graveyard half (Bilbo, Thief in the Night, Sphinx of Forgotten Lore) plus the
 #: archetype: 2026-10-14 combat-copy layer, and green is two mana dorks and Iroh's pip. The red
 #: archetype: instants (Thunder Magic, Vibrant Outburst, Agni Kai, Return the Favor)
 #: archetype: are the combat-mana sinks.
@@ -39,7 +39,8 @@
 #: archetype: every damage source you control deals X more: firebending attackers, the burn
 #: archetype: instants, Thor, Spider-Man 2099's end-step shot and Ovika's token swarm.
 #: archetype: THE ATTACK IS THE DRAW STEP. Seven creatures turn combat into cards or spells:
-#: archetype: Archmage's Newt grants flashback on damage and flashback {0} when SADDLED;
+#: archetype: Bilbo, Thief in the Night casts a graveyard spell on ATTACK (firebending mana pays)
+#: archetype: and makes every spell cast from outside the hand {1} cheaper;
 #: archetype: Sphinx of Forgotten Lore and The Dawning Archaic grant and free-cast on
 #: archetype: attack; Seifer Almasy free-casts an MV 3-or-less spell on damage; Norman
 #: archetype: Osborn is unblockable and connives; and Firebender Ascension counts every
@@ -206,6 +207,11 @@
 #: notes: cast on curve ~59% and needed six mana to draw two. The saga needs one blue, gives Azula
 #: notes: or Iroh hexproof for three turns, neutralises one creature's damage, then draws two.
 #: notes: Protection 3 -> 4, card advantage unchanged at 4.
+#: notes: Bilbo, Thief in the Night replaced Archmage's Newt (rotating ~2026): Newt's grant needed
+#: notes: a 2/2 to CONNECT, early, when the graveyard is empty; Bilbo's fires on ATTACK — stack the
+#: notes: firebending triggers first and their red mana pays — and taxes every non-hand cast {1}
+#: notes: less (Iroh's flashback, Sphinx's, Comet's foretell, Foyer / Roku exile plays). Granters
+#: notes: stay five. The Newt lines above are history.
 # Firebending — the mana engine
 1 Firebending Student (TLA) 139
 1 Raph & Leo, Sibling Rivals (TMT) 166
@@ -216,7 +222,7 @@
 1 The Legend of Roku (TLA) 145
 
 # Attack unlocks the graveyard
-1 Archmage's Newt (OTJ) 39
+1 Bilbo, Thief in the Night (HOB) 33
 1 Sphinx of Forgotten Lore (FDN) 51
 1 Seifer Almasy (FIN) 156
 1 The Dawning Archaic (SOS) 1

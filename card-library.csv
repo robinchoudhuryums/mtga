@@ -6208,3 +6208,5 @@ Equipped creature gets +1/+1, has ""Whenever this creature deals combat damage t
 Equip {4}",U,equipment; card draw; tokens; etb; pump; job select; equip,FIN,81,1
 Steam Vents,Land — Island Mountain,"({T}: Add {U} or {R}.)
 As this land enters, you may pay 2 life. If you don't, it enters tapped.",U/R,Island; Mountain; pay life; mana,ECL,267,1
+"Tam, Mindful First-Year",Legendary Creature — Gorgon Wizard,"Each other creature you control has hexproof from each of its colors.
+{T}: Target creature you control becomes all colors until end of turn.",U/G,Gorgon; Wizard; hexproof; protection,ECL,245,1
