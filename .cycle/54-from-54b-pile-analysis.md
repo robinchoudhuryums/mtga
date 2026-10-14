@@ -62,6 +62,7 @@ A needs +1 interaction, +2 card advantage).
 - **Batch 6: R6 makes MANA-VALUE payoffs the deck's finishers.** Thor (already in), Ovika and Niv-Mizzet all scale with the RECAST spell's mana value, so a `{1}` Capstone is worth 7. Prismari (storm) and Planetarium (free top card) are the same 'many cheap casts' idea. A spicy top-end package exists; it competes for the 5–7 slot with Bumi/Iroh/Thor.
 - **Protection for Iroh found:** My Precious (permanent hexproof, colourless) is the first answer that does not expire.
 - **Batch 7: owned Lesson protection exists.** Redirect Lightning is a Lesson, so it is a `{1}`+`{2}` answer to removal on Iroh EVERY turn from the yard — the strongest R1+R5 overlap in the pile.
+- **Batch 8: COPY engines keyed on 'cast from anywhere other than your hand' or 'single target' are R7 in its purest form** (Spider-Verse, Spinerock Tyrant, Spider-Man 2099's end-step shot). They make each `{1}` recast worth two. A 'copy' route is a real variant direction — see §5 Routes.
 
 ## 4. Running verdicts
 
@@ -319,6 +320,41 @@ Legend of Yangchen, Uldaros Theorix, Wayspeaker Bodyguard, Winter Misanthropic G
 | Saheeli, Jewel of Avishkar (craft U) | ◇ | A flying Thopter per noncreature spell (R7) — board, no cards. |
 | **Sanar, Unfinished Genius // Wild Idea** (craft U) | ★ | `{U}{R}` 0/4 that enters prepared: cast Wild Idea — "Search your library for an instant or sorcery card" — a tutor for Capstone / Combustion / Germination. Treasures on spell turns. |
 | Savage Ventmaw | ◇ | Attacks → six mana that lasts the turn: a post-combat hard-cast of a fat Lesson. Rarely attacks (R3). |
+
+### Batch 8 (211–240)
+
+| Card | 54 | Note (rule) |
+|---|---|---|
+| Saved by the Shell (craft U) | ◇ | One-shot hexproof + indestructible; no Turtles here for the discount. |
+| Scorching Dragonfire (craft C) | △ | 3 damage, exile; non-Lesson. |
+| Season of Gathering | ◇ | Modes: counters, destroy all artifacts or enchantments, or draw = greatest power (Iroh/Thor 5, a pumped Bumi more). 6 mana, non-Lesson. |
+| Seifer Almasy | △ | Free MV≤3 recast only on combat DAMAGE (R3); Iroh already makes those `{1}`. |
+| Seize Opportunity (craft C) | ◇ | Instant: exile two, play them — +2 cards. |
+| Self-Destruct | △ | Your creature deals its power to a target and itself. |
+| Self-Reflection | △ | Token copy keeps the name (legend rule). |
+| Serpent of the Pass | ◇ | `{1}` less per noncreature, nonland card in the yard (R2), flash with three Lessons — a cheap 6/5. Cut from 54 once already for engine slots. |
+| Shantotto, Tactician Magician | ✗ | Reads mana SPENT (R6). |
+| Slickshot Lockpicker | △ | One flashback grant; Iroh makes it redundant. OTJ. |
+| Smuggler's Surprise (craft R) | ◇ | Mill four (Lessons into the yard, R2) and take two creatures/lands; `{1}` mode: hexproof + indestructible to power-4+ creatures (Iroh, Thor). Instant. OTJ, gone early 2027 (R9). |
+| Songcrafter Mage (craft R) | △ | One harmonize grant; redundant with Iroh. |
+| Sorceress's Schemes | △ | Returns an instant/sorcery to HAND — worse than Iroh's `{1}`. |
+| Sozin's Comet | ✗ | Firebending (R3). |
+| **Spectral Sailor** | ★ | `{U}` flash flier; "{3}{U}: Draw a card" — a repeatable mana sink for a ramp deck (R5). |
+| Sphinx of False Conclusions (craft R) | △ | Loots on attack (R3). |
+| Sphinx of Forgotten Lore | △ | Flashback at FULL cost on attack; Iroh's `{1}` is strictly better for Lessons (R1). |
+| Spider Manifestation | ◇ | R/G mana dork that untaps on a MV 4+ spell — a `{1}` Capstone recast is MV 7. |
+| **Spider-Man 2099** (craft R) | ★ | End step: if you cast a spell from anywhere other than your hand, deal damage equal to his power — every Iroh turn. Double strike makes it 2 per turn as written (power 2). Interaction (R5). |
+| Spider-Punk | △ | Uncounterable spells; Spider tribal. |
+| **Spider-Verse** | ★ | "Whenever you cast a spell from anywhere other than your hand, you may copy it" (once a turn) — every Iroh turn copies the best recast: a second Capstone / Germination / Combustion. 5 mana. Spice engine. |
+| **Spinerock Tyrant** | ★ | 6/6 flier: "Whenever you cast an instant or sorcery spell with a single target, you may copy it" — Combustion Technique, Firebending Lesson, Iroh's Demonstration (4-damage mode), True Ancestry. Repeat removal (R5). |
+| Spinneret and Spiderling | ✗ | Spider attacks. |
+| Starfield Vocalist | ◇ | ETB triggers fire twice — Bumi, Guru Pathik, Toph. |
+| **Steal the Show** | ★ | Mode 2: damage = instants/sorceries in YOUR yard (R2, often 5–8); mode 1: discard any number and redraw — dump fat Lessons into the yard. Interaction + enabler. |
+| Stingcaster Mage (craft M) | △ | One flashback grant on a hasty 2/1. |
+| Stingerquill Voxmancer // Vicious Verse | △ | 1 damage each upkeep (B/R hybrid, castable). |
+| Stoic Sphinx (craft R) | △ | Flash flier, conditional hexproof. |
+| Stormscale Scion | ◇ | Storm on a 4/4 flying Dragon — Iroh turns cast several spells first. |
+| Stormsplitter | △ | Hasty copies per instant/sorcery (R3). |
 
 ## 5. Consolidated plan (live)
 
