@@ -3,19 +3,22 @@
 #: colors: GUR
 #: plan: midrange
 #: tier: B — PROVISIONAL, GRADED 2026-08 on an UNBUILT list (5 craft targets, zero games).
-#: tier: ONE BAND UNDER the measurable floor, which reads A on interaction 7 (Boomerang Basics' bounce moved to the report-only tempo line 2026-10-07) plus card advantage 7
+#: tier: ONE BAND UNDER the measurable floor, which reads A on interaction 7 plus card advantage 6
 #: tier: since the 2026-09-02 re-derivation. The letter stays B pending a re-grade by the owner
 #: tier: (the list is unplayed). Against the rubric an A needs four things:
 #: tier:   A-FLOOR — yes since 2026-10-14: Weather Maker (landfall charges -> 3 damage) took
-#: tier:     interaction to seven; the sum of 14 clears. The 2026-10-14 pass took card advantage 2 -> 7 (Pensive Professor, Terrasymbiosis,
-#: tier:     Inspiring Call, Old Fat Spider Can't See Me, Nibelheim Aflame's draw-four). Redirect Lightning, added the same day, is real protection
+#: tier:     interaction to seven; the sum of 13 clears. The 2026-10-14 pass took card advantage 2 -> 7 (Pensive Professor, Terrasymbiosis,
+#: tier:     Inspiring Call, Old Fat Spider Can't See Me); the 2026-10-15 package reads six — the draw-four
+#: tier:     flashback and Waterbending's draw-three were CUT for Ashling's Command and Terra. The tool cannot
+#: tier:     see Applied Geometry's six counters becoming a six-card Terrasymbiosis draw, Terra's
+#: tier:     enchantment from a five-card mill, or Rydia's loot on every land. Redirect Lightning is real protection
 #: tier:     the classifier does not count, and Accumulate Wisdom draws three with 3+ Lessons
 #: tier:     binned while scoring zero roles — both K-12 under-counts, not a list weakness.
 #: tier:   COHERENT ENGINE — yes, and now MEASURED rather than asserted. `targets` finds
 #: tier:     four gated effects and reports zero thin or unmet: both Lesson-count gates in
 #: tier:     the list — Accumulate Wisdom's three and Combustion Technique's scaling damage —
-#: tier:     sit against 15 Lessons. `engines` reads the
-#: tier:     graveyard axis as balanced 12 enablers / 10 payoffs. Lessons are instants and
+#: tier:     sit against 12 Lessons. `engines` reads the
+#: tier:     graveyard axis as balanced 11 enablers / 9 payoffs. Lessons are instants and
 #: tier:     sorceries, so casting them IS filling the yard; the engine feeds itself.
 #: tier:     WATCH THIS NUMBER. The 2026-08 fixing pass cut four Lessons and added none, so
 #: tier:     the count fell 21 -> 17, and the 2026-08 plan pass moved it to 16 (three
@@ -24,7 +27,7 @@
 #: tier:     lost about a fifth of its ceiling (the second scaler, Bumi, King of Three
 #: tier:     Trials, was CUT 2026-10-14 for Bumi, Unleashed, whose earthbend 4 reads no count). Price a
 #: tier:     Lesson cut against them, not against the gates.
-#: tier:   TIGHT CURVE — no longer. 3.77 average after the 2026-10-14 passes: The Dawning Archaic's
+#: tier:   TIGHT CURVE — no longer. 3.8 average after the 2026-10-15 package: The Dawning Archaic's
 #: tier:   printed 10 (one less per instant/sorcery binned), Prismari's 7 and Doc Samson's 5;
 #: tier:   Weather Maker's mana and Icetill Explorer's extra land drops are not in that figure.
 #: tier:   AT MOST ONE CLEAR WEAKNESS — no, and the two COMPOUND badly.
@@ -58,8 +61,10 @@
 #: tier:     engine — but it wants the opposite build from this list, so it belongs in a
 #: tier:     54a, not here. See the parked-directions note below.
 #: tier: WHAT ARGUES UP, and why the letter may move after play: the floor counts
-#: tier: interaction 7, but more cards read as interaction the classifier could not
-#: tier: tag, and a resolved Iroh turns a graveyard of five-drops into a hand of one-drops
+#: tier: interaction 7 ONCE EACH, and with Iroh out the removal Lessons recur every turn —
+#: tier: Iroh's Demonstration and Combustion Technique for {1}, Clash of the Eikons for {G},
+#: tier: Ashling's Command at its cost — so live interaction is several times the count while
+#: tier: he survives (and only while he survives: the one-card-engine caveat above). A resolved Iroh turns a graveyard of five-drops into a hand of one-drops
 #: tier: — a swing the metrics have no term for at all. Re-grade after it is played.
 #: archetype: Temur LESSONS, and the deck exists because of one clause almost everyone
 #: archetype: skims. Iroh, Grand Lotus gives every non-Lesson instant and sorcery in your
@@ -162,12 +167,27 @@
 #: notes: targets: Icetill Explorer (each copy is another extra land drop), Summon: Titan if added,
 #: notes: an earthbended land (the copy is just the land: ramp + landfall), Pensive Professor;
 #: notes: Bumi / Toph / Guru Pathik for their enter triggers. Great Divide Guide copies did nothing.
+#: notes: 2026-10-14: Bumi, Unleashed for Bumi, King of Three Trials (earthbend 4 reads no Lesson count).
+#: notes: 2026-10-15 package, six swaps: Applied Geometry for Toph, Hardheaded Teacher; Summon: Titan for
+#: notes: Rockalanche (3 Forests + Breeding Pool made its X small); Clash of the Eikons for Nibelheim
+#: notes: Aflame (its sweep hit our own counters board); Terra, Magical Adept for Waterbending Lesson
+#: notes: (Accumulate Wisdom is the same +2 for half the mana once 3 Lessons are binned); Rydia,
+#: notes: Summoner of Mist for Boomerang Basics; Ashling's Command for Death to Our Enemies (instant,
+#: notes: one-sided 2 to each creature + draw two or two Treasures, and Iroh recasts it — Death could
+#: notes: not be recast). Lessons 15 -> 12; the new mill effects refill the yard faster.
+#: notes: APPLIED GEOMETRY TRAP: never let Echocasting copy a Geometry token — the 0/0 Fractal part
+#: notes: is copied, the six counters are not, so the copy dies at once. Point Geometry at the real
+#: notes: card: Icetill Explorer, Weather Maker, Summon: Titan or a land (the land copy is landfall).
+#: notes: ESPER TERRA + TITAN: each of chapters I-III copies Titan with up to three lore counters —
+#: notes: mill five AND return every land from the graveyard, three turns running. Clash can remove a
+#: notes: lore counter from Titan so chapter II fires again. Rydia's Summon targets: Titan (X=5) and
+#: notes: Old Fat Spider (X=3); Terra is a creature card in the graveyard, not a Saga.
 # Nonland
 1 Iroh, Grand Lotus (TLA) 227
 1 Toph, the Blind Bandit (TLA) 198
 1 Bumi, Unleashed (TLA) 211
 1 Shared Roots (TLA) 196
-1 Death to Our Enemies (MSH) 127
+1 Ashling's Command (ECL) 205
 1 Pensive Professor (SOS) 63
 1 Redirect Lightning (TLA) 151
 1 Old Fat Spider Can't See Me (HOB) 50
@@ -181,21 +201,21 @@
 1 Combustion Technique (TLA) 128
 1 Origin of Metalbending (TLA) 187
 1 True Ancestry (TLA) 199
-1 Boomerang Basics (TLA) 46
+1 Rydia, Summoner of Mist (FIN) 239
 1 Icetill Explorer (EOE) 192
 1 Claim the Kingdom (MSH) 163
 1 Inspiring Call (TLE) 168
-1 Waterbending Lesson (TLA) 80
-1 Nibelheim Aflame (FIN) 146
+1 Terra, Magical Adept // Esper Terra (FIN) 245
+1 Clash of the Eikons (FIN) 180
 1 Zimone, Paradox Sculptor (FDN) 126
 1 Terrasymbiosis (EOE) 210
 1 Germination Practicum (SOS) 149
 1 Echocasting Symposium (SOS) 44
 1 Improvisation Capstone (SOS) 120
 1 Elemental Teachings (TLA) 178
-1 Rockalanche (TLA) 192
+1 Summon: Titan (FIN) 204
 1 Earthbending Lesson (TLA) 176
-1 Toph, Hardheaded Teacher (TLA) 246
+1 Applied Geometry (SOS) 172
 1 Weather Maker (TMT) 182
 1 Jeong Jeong, the Deserter (TLA) 142
 
