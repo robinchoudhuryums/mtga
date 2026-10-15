@@ -184,10 +184,12 @@
 #: notes: Terrasymbiosis draws THAT MANY cards once a turn — the payoff for Toph's per-spell earthbend,
 #: notes: Bumi's earthbend 4, Earthbending Lesson's 4 and Applied Geometry's 6. Lessons 12 -> 11.
 #: notes: Lands: Swiftwater Cliffs and Thornwood Falls -> 2 Frontier Bivouac (same tapped land, all
-#: notes: three colours; 10 -> 8 cards under 90% on curve). Measured craft upgrade: Stomping Ground
-#: notes: for Capital City plus a second Breeding Pool for White Lotus Hideout (G 16 -> 17, R 17,
-#: notes: U 16; Icetill 82 -> 85%, Titan/Germination 86 -> 89%; the typed shocks also turn on the
-#: notes: Verges' second colour). Pensive Professor's {U}{U} stays the soft spot (76%).
+#: notes: three colours; 10 -> 8 cards under 90% on curve). Then a second Breeding Pool (owned) for
+#: notes: White Lotus Hideout, whose colour only casts Lessons: U/R/G 16/17/16 -> 17/17/17; Icetill
+#: notes: 82 -> 85%, Titan/Germination 86 -> 89%, Pensive Professor 76 -> 79.5%. Optional next:
+#: notes: Rockfall Vale (owned) for Capital City — the tool reads it as -1 blue because it credits
+#: notes: Capital's {1}-to-filter, but Rockfall is real R/G untapped from the third land. Stomping
+#: notes: Ground (craft) for Capital City is the other candidate.
 #: notes: APPLIED GEOMETRY TRAP: never let Echocasting copy a Geometry token — the 0/0 Fractal part
 #: notes: is copied, the six counters are not, so the copy dies at once. Point Geometry at the real
 #: notes: card: Icetill Explorer, Weather Maker, Summon: Titan or a land (the land copy is landfall).
@@ -196,6 +198,7 @@
 #: notes: lore counter from Titan so chapter II fires again. Rydia's Summon targets: Titan (X=5) and
 #: notes: Old Fat Spider (X=3); Terra is a creature card in the graveyard, not a Saga.
 #~ -Kid Loki | +Claim the Kingdom | OWNED: swap back if Kid Loki's own-turn hexproof proves thin. Landfall puts a +1/+1 counter on a creature every land (two a turn with Icetill — Terrasymbiosis and Kid Loki both read it), then an INDESTRUCTIBLE counter on the fourth land: permanent protection for Iroh. Alternative cut: Inspiring Call.
+#~ -The Dawning Archaic | +The Lion-Turtle | CRAFT (R): {1}{G}{U} 3/6 reach, taps for ANY colour — five mana on turn four and fixing for the {G}{G}/{R}{R}/{U}{U} cards from outside the land count; a sturdy counter body (can't attack or block until 3 Lessons are binned, irrelevant to the mana job). Legendary, so not an Echocasting target. Archaic is the only swap that holds every number (avg MV 3.83 -> 3.63) but loses the Iroh-independent recast; alternative cuts Inspiring Call (CA and protection -1) or Pensive Professor.
 # Nonland
 1 Iroh, Grand Lotus (TLA) 227
 1 Toph, the Blind Bandit (TLA) 198
@@ -234,7 +237,6 @@
 1 Jeong Jeong, the Deserter (TLA) 142
 
 # Lands
-1 White Lotus Hideout (TLA) 281
 2 Rumble Arena (TLA) 277
 2 Surveillance Room (MSH) 274
 1 Capital City (FIN) 274
@@ -242,7 +244,7 @@
 1 Steam Vents (ECL) 267
 2 Evolving Wilds (ECL) 264
 1 Training Compound (MSH) 275
-1 Breeding Pool (EOE) 251
+2 Breeding Pool (EOE) 251
 1 Starting Town (FIN) 289
 1 Riverpyre Verge (DFT) 260
 1 Thornspire Verge (DSK) 270
