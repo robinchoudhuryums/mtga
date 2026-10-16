@@ -4,7 +4,7 @@
 #: plan: control
 #: tier: B — GRADED 2026-07, re-grounded 2026-10-16 after a twelve-swap pass and a four-swap
 #: tier: answers follow-up the same day. The measurable floor now reads A: interaction 8 plus
-#: tier: card advantage 7 at a 3.0 curve. The letter stays B pending the human re-grade.
+#: tier: card advantage 6 at a 3.03 curve. The letter stays B pending the human re-grade.
 #: tier: All 8 interaction pieces are instant-speed. The follow-up fixed what the counter-heavy
 #: tier: suite could not do — answer a permanent that has ALREADY resolved: Lost Days, Noggle the
 #: tier: Mind and Riverwalk Technique joined Zuko's Exile, four such answers where there was one.
@@ -76,12 +76,21 @@
 #: archetype: two now share eight nonland cards, Mirror Room // Fractured Realm among them, and
 #: archetype: Fractured Realm's {5}{U}{U} half is this list's one seven-mana spell. Here it is a
 #: archetype: trigger doubler for Riverchurn, Councillors and Pakku, not a finisher.
+#: notes: ECHOCASTING SYMPOSIUM REPLACED CEREBRAL DOWNLOAD (2026-10-16), the five-mana draw-three
+#: notes: traded for a Lesson engine at the same end of the curve. "Target player creates a
+#: notes: token that's a copy of target creature you control", then Paradigm recasts it free at
+#: notes: the start of each of your first main phases. Copy targets, best first: Deepmuck
+#: notes: Desperado (each copy has its OWN once-per-turn crime trigger, so +7 per copy per turn),
+#: notes: Exhibition Tidecaller (each copy mills on every instant or sorcery), Master's
+#: notes: Councillors, Veteran Ice Climber. Never a LEGENDARY creature — the token dies to the
+#: notes: legend rule. It needs a creature you control as a target, at cast and at each recast.
+#: notes: Cost: card advantage 7 -> 6 (the floor stays A); Lessons 8 -> 9 (Master Pakku's X).
 #: notes: DEEPMUCK DESPERADO CAME BACK for the second Riverchurn Monument (2026-10-16, after the
 #: notes: answers follow-up). "Whenever you commit a crime, each opponent mills three" — and nearly
 #: notes: every mill trigger and answer here TARGETS the opponent, so it is a free 7 (with the
 #: notes: Crystal) once per turn, on both players' turns. One Riverchurn stays for the instant-speed
 #: notes: mill that bins a card Lost Days or Riverwalk Technique tucked second from the top. Cost:
-#: notes: one artifact (Cerebral Download's surveil X, Fugitive Droid) and a second late exhaust.
+#: notes: one artifact (Fugitive Droid's unblockability) and a second late exhaust.
 #: notes: THE 2026-10-16 ANSWERS FOLLOW-UP (four swaps, the same day as the pass below). The
 #: notes: twelve-swap pass left the deck able to counter but not to ANSWER: five of six
 #: notes: interaction pieces worked only on the stack, and Zuko's Exile at {5} was the one card
@@ -202,6 +211,7 @@ Deck
 1 The Theorist, Jace Beleren (FRA) 43
 1 Master's Councillors (HOB) 47
 1 Bilbo, Thief in the Night (HOB) 33
+1 Echocasting Symposium (SOS) 44
 
 # The amplifier — now a SINGLETON plus a tutor: same outs, no dead legendary draw
 1 The Water Crystal (FIN) 85
@@ -235,7 +245,6 @@ Deck
 
 # Card advantage
 1 Aether Syphon (DFT) 38
-1 Cerebral Download (EOE) 48
 1 Spellgyre (BLB) 72
 1 Inspiration from Beyond (FDN) 43
 1 Most Decrepit Old Bird // Speak Secrets (HOB) 49
