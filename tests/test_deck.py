@@ -6010,16 +6010,20 @@ class TestOpponentGraveyardEngines:
             f"44a casts from THEIR yard four ways; got {verdict!r}")
         # And the count must be the CONSUME-only one. 44a scores the same under either
         # predicate, so it cannot tell them apart — deck 51a can: the broad predicate
-        # also matches opponent-MILL cards (Riverchurn Monument, Deepmuck Desperado),
-        # which are enablers, and inflated it from 9 payoffs to 12.
+        # also matches opponent-MILL cards (Riverchurn Monument), which are enablers.
+        # Asserted on the CARD, not a pinned count: 51a is tuned often, and a literal
+        # "/ 9 payoff" broke on the 2026-10-16 pass with the predicate still correct.
         d2 = deck.find_deck("51a")
         meta2, cards2 = deck.parse_deck_file(d2["path"])
         w2 = deck._deck_central_weights(meta2, cards2, cmeta)
         v2 = deck.engine_balance(cards2, cd, deck._central_themes(w2),
                                  deck._signature_themes(meta2, cards2, cmeta), w2)
-        assert "/ 9 payoff" in v2.get("graveyard", {}).get("verdict", ""), (
+        gy = v2.get("graveyard", {})
+        assert any(n == "Riverchurn Monument" for n, _q in gy.get("enablers", [])), (
+            "fixture drifted: 51a should still run Riverchurn Monument as an enabler")
+        assert not any(n == "Riverchurn Monument" for n, _q in gy.get("payoffs", [])), (
             "51a's opponent-mill cards are ENABLERS — counting them as payoffs is the "
-            f"broad-predicate bug: {v2.get('graveyard', {}).get('verdict', '')!r}")
+            f"broad-predicate bug: {gy.get('verdict', '')!r}")
 
 
 class TestProposedAddGateCheck:

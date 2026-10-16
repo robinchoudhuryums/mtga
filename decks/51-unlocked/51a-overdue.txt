@@ -2,11 +2,13 @@
 #: format: Standard
 #: colors: U
 #: plan: control
-#: tier: B — GRADED 2026-07, re-grounded 2026-10-16 after a twelve-swap pass. The measurable
-#: tier: floor now ALSO reads B: interaction 6 plus card advantage 7 at a 2.89 curve. The pass
-#: tier: CUT two interaction slots (Floodpits Drowner, Tishana's Tidebinder were CUT for Mirror
-#: tier: Room and Bilbo, Thief in the Night) by choice, so the letter and the floor agree.
-#: tier: All 6 interaction pieces are instant-speed and all 6 answer a noncreature permanent.
+#: tier: B — GRADED 2026-07, re-grounded 2026-10-16 after a twelve-swap pass and a four-swap
+#: tier: answers follow-up the same day. The measurable floor now reads A: interaction 8 plus
+#: tier: card advantage 7 at a 2.97 curve. The letter stays B pending the human re-grade.
+#: tier: All 8 interaction pieces are instant-speed. The follow-up fixed what the counter-heavy
+#: tier: suite could not do — answer a permanent that has ALREADY resolved: Lost Days, Noggle the
+#: tier: Mind and Riverwalk Technique joined Zuko's Exile, four such answers where there was one.
+#: tier: Two of them put the card into the opponent's LIBRARY, where the next mill bins it.
 #: tier: THE ENGINE IS NOW FINDABLE. The deck is a two-card engine and The Water Crystal is a
 #: tier: singleton; Scour for Scrap ("search your library for an artifact card … and/or return
 #: tier: target artifact card from your graveyard") is the THIRD out beside the Crystal and
@@ -20,8 +22,8 @@
 #: tier: WHAT ARGUES UP: Kitsune's Technique and Jidoor each mill HALF a library (half plus four
 #: tier: with the Crystal), and Inspiration from Beyond, Most Decrepit Old Bird and Bilbo all
 #: tier: rebuy the Technique; Donatello copies Riverchurn Monument for a second exhaust; Mirror
-#: tier: Room's Fractured Realm doubles every mill trigger. What holds it at B: interaction 6 and
-#: tier: an unplayed list. Re-grade after play; `deck.py tier 51a --to A` names the gap.
+#: tier: Room's Fractured Realm doubles every mill trigger. What holds the letter at B: an
+#: tier: unplayed list and a two-card engine. Re-grade after play.
 #: protect: The Water Crystal; Master Pakku; Riverchurn Monument; The Mindskinner; Exhibition Tidecaller
 #: archetype: MONO-BLUE LESSON MILL. The parent deck 51 wins by resolving enormous spells and
 #: archetype: carries mill as a two-card side plan. This variant inverts that: mill IS the deck,
@@ -34,15 +36,15 @@
 #: archetype: three outs (58.5% by turn nine). "If an opponent would
 #: archetype: mill one or more cards, they mill that many cards
 #: archetype: plus four instead" applies to EVERY mill event separately, so it is not a +4, it is a
-#: archetype: +4 per trigger. Riverchurn Monument's {1}, {T} goes from 2 to 6. Scrabbling Skullcrab
-#: archetype: goes from 2 to 6 per enchantment or Room unlock. Exhibition Tidecaller goes from 3 to
+#: archetype: +4 per trigger. Riverchurn Monument's {1}, {T} goes from 2 to 6.
+#: archetype: Exhibition Tidecaller goes from 3 to
 #: archetype: 7 per instant or sorcery, and from 10 to 14 when five or more mana was spent. It also
 #: archetype: still does its day job — {1} off every blue spell — so it is never a dead draw.
 #: archetype: THE LESSON SUBTYPE IS NOT FLAVOUR, it is a set of payoffs that read the same graveyard.
 #: archetype: Master Pakku mills X where X is the number of LESSON cards in your graveyard, which
 #: archetype: with the Crystal is X+4 every time he becomes tapped. Accumulate Wisdom stops being
 #: archetype: "look at three, take one" and becomes TAKE ALL THREE for {1}{U} at a three-Lesson
-#: archetype: threshold. Guru Pathik digs five deep for a Lesson. (Gran-Gran was the broadest of
+#: archetype: threshold. (Gran-Gran was the broadest of
 #: archetype: these — {1} off every NONCREATURE spell at the same threshold, so it discounted the
 #: archetype: Rooms and the Crystal too — and was BANNED out of Standard 2026-08-11. Nothing owned
 #: archetype: replaces that clause.)
@@ -74,6 +76,24 @@
 #: archetype: two now share eight nonland cards, Mirror Room // Fractured Realm among them, and
 #: archetype: Fractured Realm's {5}{U}{U} half is this list's one seven-mana spell. Here it is a
 #: archetype: trigger doubler for Riverchurn, Councillors and Pakku, not a finisher.
+#: notes: THE 2026-10-16 ANSWERS FOLLOW-UP (four swaps, the same day as the pass below). The
+#: notes: twelve-swap pass left the deck able to counter but not to ANSWER: five of six
+#: notes: interaction pieces worked only on the stack, and Zuko's Exile at {5} was the one card
+#: notes: that touched a resolved permanent. In: Lost Days (instant Lesson — a creature or
+#: notes: enchantment goes second from the top or to the bottom, and Riverchurn Monument's
+#: notes: instant-speed {1},{T} mills the top case before they draw it), Noggle the Mind (flash,
+#: notes: loses all abilities, 1/1), Riverwalk Technique (any nonland permanent to the top or
+#: notes: bottom of its owner's library, or counter a noncreature spell), Nightwhorl Hermit (a 1/4
+#: notes: blocker that turns unblockable at threshold — a Sneak enabler for Kitsune's Technique
+#: notes: and Donatello). CUT: Guru Pathik, an It'll Quench Ya! (the soft counter dies late, when
+#: notes: this deck plays), a Waterbending Lesson (Accumulate Wisdom is the better Lesson draw),
+#: notes: and Scrabbling Skullcrab (only two Rooms to trigger it). Interaction 6 -> 8, card
+#: notes: advantage held at 7, Lessons 9 -> 8 (Master Pakku's X), floor B -> A.
+#: notes: BOARD POWER IS LOW ON PURPOSE (30, under the roster's p10): damage is not the win. What
+#: notes: the bodies owe is EVASION — every unblocked attacker is a separate mill event under The
+#: notes: Mindskinner, so the Crystal adds +4 per creature — not size. Ruric Thar, Biomagus was
+#: notes: considered as a big flier and parked: a {4}{U}{U} 4/6 that wins by damage, at the top of
+#: notes: a 2.97 curve, where Emeritus of Ideation already fills the one big-flier slot.
 #: notes: THE 2026-10-16 PASS (twelve swaps, newest first; entries below it are HISTORY). In:
 #: notes: Scour for Scrap, Inspiration from Beyond, Master's Councillors, Aether Syphon,
 #: notes: Octopus Form, Fugitive Droid, The Theorist, Emeritus of Ideation, Most Decrepit Old
@@ -149,8 +169,8 @@
 #: notes: the opponent draws library positions M+1..M+D instead of 1..D, and any fixed set of D
 #: notes: positions in a shuffled library has the same contents, so their chance of finding an
 #: notes: answer is unchanged. This deck therefore still needs REAL answers, which is why it
-#: notes: keeps six of them (It'll Quench Ya! x2, Sokka's Haiku, Spellgyre, Fugitive Droid,
-#: notes: Zuko's Exile) rather than becoming all mill.
+#: notes: keeps eight of them (It'll Quench Ya!, Sokka's Haiku, Spellgyre, Fugitive Droid, Zuko's
+#: notes: Exile, Lost Days, Noggle the Mind, Riverwalk Technique) rather than becoming all mill.
 #: notes: KNOWN LIABILITY, and it is worse here than in the parent: milling an opponent FEEDS a
 #: notes: graveyard deck — the G-42 shape. A deck built entirely on mill hands a recursion deck
 #: notes: its whole library. Blue/colorless Standard has the exile answers (Ghost Vacuum,
@@ -167,7 +187,6 @@ Deck
 1 Kitsune's Technique (TMT) 42
 1 The Tale of Tamiyo (DSK) 75
 2 Riverchurn Monument (DFT) 57
-1 Scrabbling Skullcrab (DSK) 71
 1 Exhibition Tidecaller (SOS) 48
 1 The Mindskinner (DSK) 66
 1 Master Pakku (TLA) 63
@@ -182,27 +201,30 @@ Deck
 1 Transit Mage (DFT) 70
 1 Scour for Scrap (EOE) 73
 
-# Lesson payoffs — both read the same graveyard (was three; Gran-Gran was banned 2026-08-11)
-1 Guru Pathik (TLA) 223
+# Threshold body — surveil 3, unblockable at seven cards in the yard (Guru Pathik cut 2026-10-16)
 1 Cephalid Inkmage (FDN) 32
 
 # Lessons — cards the deck wants anyway, with the subtype as a rider
-2 It'll Quench Ya! (TLA) 58
+1 It'll Quench Ya! (TLA) 58
 2 Accumulate Wisdom (TLA) 44
 1 Octopus Form (TLA) 66
 1 Sokka's Haiku (TLA) 71
 1 Zuko's Exile (TLA) 3
-2 Waterbending Lesson (TLA) 80
+1 Waterbending Lesson (TLA) 80
 
-# Rooms — Eerie triggers for Skullcrab, cheap interaction on the front
+# Rooms — two-stage enchantments; Fractured Realm doubles the mill triggers
 1 Underwater Tunnel // Slimy Aquarium (DSK) 79
 1 Mirror Room // Fractured Realm (DSK) 67
 
 # Real answers — mill is a clock, so these do the interacting
 1 Fugitive Droid (TMT) 40
+1 Lost Days (TLA) 62
+1 Noggle the Mind (ECL) 60
+1 Riverwalk Technique (TDM) 54
 
-# Threats — a warded flier that also draws three
+# Threats — a warded flier that draws three, and a blocker that turns unblockable
 1 Emeritus of Ideation // Ancestral Recall (SOS) 45
+1 Nightwhorl Hermit (BLB) 62
 
 # Card advantage
 1 Aether Syphon (DFT) 38
