@@ -23,8 +23,8 @@
 #: archetype: blue and green pips sit on PERMANENTS you cast off lands in your main phase.
 #: archetype: Blue is the graveyard half (Bilbo, Thief in the Night, Sphinx of Forgotten Lore) plus the
 #: archetype: 2026-10-14 combat-copy layer, and green is two mana dorks and Iroh's pip. The red
-#: archetype: instants (Thunder Magic, Vibrant Outburst, Agni Kai, Return the Favor)
-#: archetype: are the combat-mana sinks.
+#: archetype: instants (Vibrant Outburst, Agni Kai, Return the Favor) are the combat-mana
+#: archetype: sinks; Iroh's Demonstration is a SORCERY and spends combat mana only with Electro out.
 #: archetype: TWO CARDS BREAK THE "UNTIL END OF COMBAT" LIMIT and they are the deck's real
 #: archetype: engine. Electro, Assaulting Battery reads "you don't lose unspent red mana as
 #: archetype: steps and phases end" — firebending mana stops expiring, so a big attack
@@ -92,6 +92,13 @@
 #: tier:   not that the cards are weak — Thor, Ovika and Fated Firepower are the same bombs
 #: tier:   the other two lists want.
 #: protect: Iroh, Grand Lotus; Sozin's Comet; The Last Agni Kai; Return the Favor; Fated Firepower; Thor, God of Thunder; Electro, Assaulting Battery; Firebender Ascension
+#: notes: IROH'S DEMONSTRATION REPLACED THUNDER MAGIC (2026-10-16), after a loss to BG go-wide:
+#: notes: the double-strikers (Raphael, Spider-Man 2099, Seifer's attack-alone grant) were
+#: notes: chump-blocked by 1/1s until the opponent board-wiped. "1 damage to each creature your
+#: notes: opponents control" clears exactly that board without touching yours, and the other mode
+#: notes: keeps Thunder Magic's job (4 damage to a creature). The cost: it is a SORCERY, so it
+#: notes: is not a combat-mana sink unless Electro is keeping red mana alive past combat. The
+#: notes: other half of that loss — no trample to punch through chump blocks — is still open.
 #: notes: WIP / aspirational — drafted 2026-08 out of the 54 pile re-analysis. See
 #: notes: `.cycle/54-pile-reanalysis.md` for the framework that produced it.
 #: notes: THE DISTINCTIVENESS RISK IS DECK 14, NOT ITS OWN FAMILY, and it was measured
@@ -247,7 +254,7 @@
 1 Spider-Man 2099 (SPM) 150
 1 Vibrant Outburst (SOS) 240
 1 Return the Favor (SOA) 47
-1 Thunder Magic (FIN) 165
+1 Iroh's Demonstration (TLA) 141
 1 Donatello's Technique (TMT) 39
 1 Origin of Metalbending (TLA) 187
 
