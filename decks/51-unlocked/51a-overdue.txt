@@ -2,44 +2,36 @@
 #: format: Standard
 #: colors: U
 #: plan: control
-#: tier: B — GRADED 2026-07. One band below the measurable floor, which reads A on interaction 7
-#: tier: plus card advantage 7 at a 3.22 curve. On the measurables this is the BETTER of the two
-#: tier: Unlock decks and it is worth saying so: against parent 51 it wins on interaction (7 vs
-#: tier: 6), curve (3.22 vs 4.14), focus (5 central themes vs 11) and engine health — `engines`
-#: tier: reports graveyard 20 enablers / 9 payoffs, balanced, with no warning at all. The
-#: tier: interaction is well shaped too: all 7 instant-speed, 6 answering a noncreature permanent (Boomerang Basics' and Bottomless Pool's bounce moved to the report-only tempo line 2026-10-07).
-#: tier: WHAT HOLDS IT AT B IS ONE NUMBER. The deck is a two-card engine and the second card is a
-#: tier: singleton plus one tutor. P(finding The Water Crystal) on the play is 33.6% by turn five,
-#: tier: 38.9% by turn seven, 44.1% by turn nine and 53.7% by turn thirteen — a coin flip on your
-#: tier: engine that late. Without it the mill halves and the clock roughly doubles, so a third of
-#: tier: games are played as a mediocre tempo deck rather than the deck described above. Transit
-#: tier: Mage came in for the SECOND Water Crystal, which changed the dead-draw problem but NOT
-#: tier: this number: two outs before, two outs after. A THIRD out (a second tutor, or restoring
-#: tier: the second copy over Gilded Lotus) would read 58.5% by turn nine, and that is the single
-#: tier: change most likely to earn this deck an A.
-#: tier: PROTECTION IS 1, close to the zero the rubric flags, in a deck whose plan rests on two
-#: tier: specific permanents surviving — The Water Crystal and Master Pakku. Losing the second
-#: tier: Tolarian Terror to Hama took its ward {2} with it; that was a knowing trade for mill, but
-#: tier: it is the reason this axis reads 1 rather than 2.
-#: tier: THE THIRD MARK is self-inflicted and recorded in the notes: cutting Lost Days for Eddymurk
-#: tier: Crab left Zuko's Exile as the only recursion-proof answer, and the recursion matchup was
-#: tier: already this deck's worst because blind mill FEEDS a graveyard deck (G-42, G-62).
+#: tier: B — GRADED 2026-07, re-grounded 2026-10-16 after a twelve-swap pass. The measurable
+#: tier: floor now ALSO reads B: interaction 6 plus card advantage 7 at a 2.89 curve. The pass
+#: tier: CUT two interaction slots (Floodpits Drowner, Tishana's Tidebinder were CUT for Mirror
+#: tier: Room and Bilbo, Thief in the Night) by choice, so the letter and the floor agree.
+#: tier: All 6 interaction pieces are instant-speed and all 6 answer a noncreature permanent.
+#: tier: THE ENGINE IS NOW FINDABLE. The deck is a two-card engine and The Water Crystal is a
+#: tier: singleton; Scour for Scrap ("search your library for an artifact card … and/or return
+#: tier: target artifact card from your graveyard") is the THIRD out beside the Crystal and
+#: tier: Transit Mage, which the 2026-07 grade named as the single change most likely to earn
+#: tier: an A: 58.5% by turn nine instead of 44.1%. Scour also rebuys a destroyed Crystal.
+#: tier: PROTECTION 3, up from 1: Fugitive Droid counters a spell that targets the Crystal or a
+#: tier: creature, Octopus Form gives Master Pakku hexproof (and untaps him for a second mill),
+#: tier: and Emeritus of Ideation carries ward {2}.
+#: tier: CARD FLOW IS REPEATABLE NOW: Aether Syphon draws every turn, The Theorist draws on each
+#: tier: opponent draw step, and both feed Master's Councillors' second-draw mill on BOTH turns.
 #: tier: WHAT ARGUES UP: Kitsune's Technique and Jidoor each mill HALF a library (half plus four
-#: tier: with the Crystal), so the clock is not incremental once it starts; the Lesson subtype
-#: tier: gives three payoffs reading one graveyard for close to no deckbuilding cost; and
-#: tier: distinctness is 83% with ZERO shared cards. If the Crystal proves findable in practice,
-#: tier: A is the right letter.
-#: tier: TO RE-GRADE TO A, run `deck.py tier 51a --to A`. Unplayed, with 16 craft targets.
+#: tier: with the Crystal), and Inspiration from Beyond, Most Decrepit Old Bird and Bilbo all
+#: tier: rebuy the Technique; Donatello copies Riverchurn Monument for a second exhaust; Mirror
+#: tier: Room's Fractured Realm doubles every mill trigger. What holds it at B: interaction 6 and
+#: tier: an unplayed list. Re-grade after play; `deck.py tier 51a --to A` names the gap.
 #: protect: The Water Crystal; Master Pakku; Riverchurn Monument; The Mindskinner; Exhibition Tidecaller
 #: archetype: MONO-BLUE LESSON MILL. The parent deck 51 wins by resolving enormous spells and
 #: archetype: carries mill as a two-card side plan. This variant inverts that: mill IS the deck,
 #: archetype: and the Lesson subtype is the engine that feeds it. Every card is chosen to make one
 #: archetype: of three numbers go up — mill per turn, Lessons in the graveyard, or cards in hand.
 #: archetype: THE WATER CRYSTAL IS THE WHOLE DECK, and it is now a SINGLETON plus Transit Mage
-#: archetype: rather than a 2-of. One copy plus a tutor finds it exactly as often as two copies —
-#: archetype: two outs either way, 44.1% by turn nine on the play — but the tutor is never the dead
-#: archetype: draw the second LEGENDARY copy becomes once one has resolved, and Transit Mage's
-#: archetype: "artifact card with mana value 4 or 5" also finds Gilded Lotus. "If an opponent would
+#: archetype: and Scour for Scrap rather than a 2-of. One copy plus a tutor finds it exactly as often as two copies —
+#: archetype: two outs either way — but the tutor is never the dead
+#: archetype: draw the second LEGENDARY copy becomes once one has resolved; Scour for Scrap made it
+#: archetype: three outs (58.5% by turn nine). "If an opponent would
 #: archetype: mill one or more cards, they mill that many cards
 #: archetype: plus four instead" applies to EVERY mill event separately, so it is not a +4, it is a
 #: archetype: +4 per trigger. Riverchurn Monument's {1}, {T} goes from 2 to 6. Scrabbling Skullcrab
@@ -53,7 +45,7 @@
 #: archetype: threshold. Guru Pathik digs five deep for a Lesson. (Gran-Gran was the broadest of
 #: archetype: these — {1} off every NONCREATURE spell at the same threshold, so it discounted the
 #: archetype: Rooms and the Crystal too — and was BANNED out of Standard 2026-08-11. Nothing owned
-#: archetype: replaces that clause; her slot went to Plan the Heist for the card flow instead.)
+#: archetype: replaces that clause.)
 #: archetype: THE LESSONS ARE NOT A TAX, and that is what makes this build work rather than merely
 #: archetype: cohere. It'll Quench Ya! is Spell Pierce that hits creatures too. Zuko's Exile is
 #: archetype: unconditional exile of an artifact, creature or enchantment — removal deck 51 does not
@@ -61,9 +53,8 @@
 #: archetype: anyway; the subtype is a rider, so the engine costs close to nothing.
 #: archetype: WATERBENDING LESSON IS THE HIDDEN COMBO. Its waterbend cost is paid by TAPPING your
 #: archetype: artifacts and creatures — and Master Pakku mills whenever he BECOMES TAPPED. So you
-#: archetype: draw three, tap Pakku to avoid the discard, and mill for it. (Octopus Form
-#: archetype: untapped him for a second loop, but it was CUT for the manabase — first card
-#: archetype: back in if a land can be spared; see notes.)
+#: archetype: draw three, tap Pakku to avoid the discard, and mill for it. Octopus Form, back
+#: archetype: in since 2026-10-16, untaps him for a second loop and gives him hexproof.
 #: archetype: THE MINDSKINNER CONVERTS THE COMBAT PLAN INSTEAD OF ADDING ONE, and in this deck that
 #: archetype: is pure upside because there was no combat plan to lose. "If a source you control would
 #: archetype: deal damage to an opponent, prevent that damage and each opponent mills that many
@@ -74,12 +65,32 @@
 #: archetype: is untapped for a waterbend cost.
 #: archetype: SELF-MILL IS A SECOND RESOURCE, not a cost. Sokka's Haiku, the surveil off Underwater
 #: archetype: Tunnel and Spellgyre, and Waterbending Lesson's discard all fill YOUR graveyard, which
-#: archetype: is what prices Tolarian Terror — routinely a turn-five 5/5 with ward {2} here — and
-#: archetype: what feeds Master Pakku's Lesson count. The two halves of the graveyard do different
+#: archetype: is what feeds Master Pakku's Lesson count and finds Kitsune's Technique again
+#: archetype: (Inspiration from Beyond, Most Decrepit Old Bird, Bilbo, Thief in the Night). The two halves of the graveyard do different
 #: archetype: jobs and neither competes with the other.
-#: archetype: DISTINCTNESS from parent 51: 51 fields Omniscience, Fractured Realm, Krang Utrom
-#: archetype: Warlord and The Dawning Archaic and wins by casting a huge spell. This list runs NONE
-#: archetype: of them, has no card above five mana, and never needs to resolve a threat at all.
+#: archetype: DISTINCTNESS from parent 51: 51 wins by casting a huge spell (Omniscience, Krang
+#: archetype: Utrom Warlord, The Dawning Archaic). This list runs none of those and never needs to
+#: archetype: resolve a threat — it wins by decking. The overlap GREW in the 2026-10-16 pass: the
+#: archetype: two now share eight nonland cards, Mirror Room // Fractured Realm among them, and
+#: archetype: Fractured Realm's {5}{U}{U} half is this list's one seven-mana spell. Here it is a
+#: archetype: trigger doubler for Riverchurn, Councillors and Pakku, not a finisher.
+#: notes: THE 2026-10-16 PASS (twelve swaps, newest first; entries below it are HISTORY). In:
+#: notes: Scour for Scrap, Inspiration from Beyond, Master's Councillors, Aether Syphon,
+#: notes: Octopus Form, Fugitive Droid, The Theorist, Emeritus of Ideation, Most Decrepit Old
+#: notes: Bird, Donatello, Mirror Room // Fractured Realm, Bilbo, Thief in the Night. CUT:
+#: notes: Gilded Lotus, Matzalantli, Meat Locker, Plan the Heist, Boomerang Basics, Eddymurk
+#: notes: Crab, Hama, Tolarian Terror, Bottomless Pool, Deepmuck Desperado, Floodpits Drowner,
+#: notes: Tishana's Tidebinder. The aim was FINDING the engine: Scour for Scrap is a third way
+#: notes: to The Water Crystal (58.5% by turn nine), and repeatable draw replaced one-shot
+#: notes: bodies. Protection rose 1 -> 3. Interaction FELL 7 -> 6 and the floor went A -> B:
+#: notes: the original package kept Floodpits Drowner and Tishana's Tidebinder, and the owner
+#: notes: chose Mirror Room and Bilbo over them. That is a deliberate trade of answers for
+#: notes: engine; if games are lost to a resolved threat, those two are the first back.
+#: notes: TWO SELF-CONFLICTS, stated because nothing flags them (G-42): The Mindskinner
+#: notes: PREVENTS your damage, so Aether Syphon's speed never climbs while it is out, and
+#: notes: Donatello's combat-damage trigger never fires. Donatello's real job is copying a
+#: notes: Riverchurn Monument (non-legendary, so the copy has its own exhaust); Way of the
+#: notes: Cryomancer was rejected because it copies only instant and sorcery spells.
 #: notes: KITSUNE'S TECHNIQUE IS THE BIGGEST SINGLE MILL IN THE DECK and was missed on the
 #: notes: first pass because its name never resolved in triage. "Target opponent mills HALF
 #: notes: their library, rounded up" — with The Water Crystal that is half plus four, off one
@@ -138,8 +149,8 @@
 #: notes: the opponent draws library positions M+1..M+D instead of 1..D, and any fixed set of D
 #: notes: positions in a shuffled library has the same contents, so their chance of finding an
 #: notes: answer is unchanged. This deck therefore still needs REAL answers, which is why it
-#: notes: keeps five of them (Zuko's Exile, It'll Quench Ya! x2, Floodpits Drowner, Tishana's
-#: notes: Tidebinder) rather than becoming all mill.
+#: notes: keeps six of them (It'll Quench Ya! x2, Sokka's Haiku, Spellgyre, Fugitive Droid,
+#: notes: Zuko's Exile) rather than becoming all mill.
 #: notes: KNOWN LIABILITY, and it is worse here than in the parent: milling an opponent FEEDS a
 #: notes: graveyard deck — the G-42 shape. A deck built entirely on mill hands a recursion deck
 #: notes: its whole library. Blue/colorless Standard has the exile answers (Ghost Vacuum,
@@ -148,8 +159,8 @@
 #: notes: GURU PATHIK is {2}{G/U}{G/U} — HYBRID, so it is payable entirely with Islands and
 #: notes: `#: colors:` stays U (G-58). `deck.py mana` reports it as a hybrid stray paid on-color.
 #: notes: THE HONEST RISK: the deck is a two-card engine at heart. Without The Water Crystal the
-#: notes: mill halves and the clock roughly doubles in length. Two copies plus eleven cantrips and
-#: notes: dig effects is the mitigation, not a fix.
+#: notes: mill halves and the clock roughly doubles in length. One copy plus Transit Mage, Scour
+#: notes: for Scrap and the draw suite is the mitigation, not a fix.
 
 Deck
 # Mill engines — the clock
@@ -161,52 +172,47 @@ Deck
 1 The Mindskinner (DSK) 66
 1 Master Pakku (TLA) 63
 1 Veteran Ice Climber (TDM) 64
-1 Deepmuck Desperado (OTJ) 42
-1 Hama, the Bloodbender (TLA) 224
+1 Donatello, Gadget Master (TMT) 35
+1 The Theorist, Jace Beleren (FRA) 43
+1 Master's Councillors (HOB) 47
+1 Bilbo, Thief in the Night (HOB) 33
 
 # The amplifier — now a SINGLETON plus a tutor: same outs, no dead legendary draw
 1 The Water Crystal (FIN) 85
 1 Transit Mage (DFT) 70
+1 Scour for Scrap (EOE) 73
 
-# Lesson payoffs — both read the same graveyard (was three; Gran-Gran was banned
-# 2026-08-11 and her slot went to Plan the Heist under Card advantage)
+# Lesson payoffs — both read the same graveyard (was three; Gran-Gran was banned 2026-08-11)
 1 Guru Pathik (TLA) 223
 1 Cephalid Inkmage (FDN) 32
 
 # Lessons — cards the deck wants anyway, with the subtype as a rider
 2 It'll Quench Ya! (TLA) 58
 2 Accumulate Wisdom (TLA) 44
-1 Boomerang Basics (TLA) 46
+1 Octopus Form (TLA) 66
 1 Sokka's Haiku (TLA) 71
 1 Zuko's Exile (TLA) 3
 2 Waterbending Lesson (TLA) 80
 
 # Rooms — Eerie triggers for Skullcrab, cheap interaction on the front
 1 Underwater Tunnel // Slimy Aquarium (DSK) 79
-1 Bottomless Pool // Locker Room (DSK) 43
-1 Meat Locker // Drowned Diner (DSK) 65
+1 Mirror Room // Fractured Realm (DSK) 67
 
 # Real answers — mill is a clock, so these do the interacting
-1 Tishana's Tidebinder (LCI) 81
-1 Floodpits Drowner (DSK) 59
+1 Fugitive Droid (TMT) 40
 
-# Threats — both priced by the self-mill the deck does anyway (G-46 virtual copies)
-1 Tolarian Terror (FDN) 167
-1 Eddymurk Crab (BLB) 48
+# Threats — a warded flier that also draws three
+1 Emeritus of Ideation // Ancestral Recall (SOS) 45
 
 # Card advantage
-1 Plan the Heist (OTJ) 62
+1 Aether Syphon (DFT) 38
 1 Cerebral Download (EOE) 48
 1 Spellgyre (BLB) 72
-
-# Ramp
-1 Gilded Lotus (FDN) 725
-1 Matzalantli, the Great Door // The Core (LCI) 256
+1 Inspiration from Beyond (FDN) 43
+1 Most Decrepit Old Bird // Speak Secrets (HOB) 49
 
 # Lands (24)
 1 Jidoor, Aristocratic Capital // Overture (FIN) 284
 23 Island (MSH) 289
 
 # Flex — options (comments; not part of the 60). See: deck.py flex 51a
-#~ note: applied — Eddymurk Crab in for Lost Days (the cut was Lost Days, not the
-#~   Tolarian Terror this line originally proposed).

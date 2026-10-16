@@ -91,6 +91,9 @@ Pinnacle Starcage,Artifact,"When this artifact enters, exile all artifacts and c
 {6}{W}{W}: Put each card exiled with this artifact into its owner's graveyard, then create a 2/2 colorless Robot artifact creature token for each card put into a graveyard this way. Sacrifice this artifact.",W,reanimator; graveyard; sacrifice; tokens; etb,EOE,33,Rare,6,,6,hand
 "Mm'menon, Uthros Exile",Legendary Creature — Jellyfish Advisor,"Flying
 Whenever an artifact you control enters, put a +1/+1 counter on target creature.",U/R,Jellyfish; Advisor; counters; flying; evasion,EOE,221,Uncommon,48,Holds Adaptive Automaton's slot in 48 at Uncommon cost.,4.0,hand
+Scour for Scrap,Instant,"Choose one or both —
+• Search your library for an artifact card, reveal it, put it into your hand, then shuffle.
+• Return target artifact card from your graveyard to your hand.",U,graveyard,EOE,73,Uncommon,51a,,2.5,seed
 Sunstar Expansionist,Creature — Human Knight,"When this creature enters, if an opponent controls more lands than you, create a Lander token. (It's an artifact with ""{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."")
 Landfall — Whenever a land you control enters, this creature gets +1/+0 until end of turn.",W,Human; Knight; sacrifice; tokens; ramp; etb; landfall; pump; lands,EOE,41,Uncommon,36,,3.0,hand
 "Muldrotha, the Gravetide",Legendary Creature — Elemental Avatar,"During each of your turns, you may play a land and cast a permanent spell of each permanent type from your graveyard. (If a card has multiple permanent types, choose one as you play it.)",U/B/G,Elemental; Avatar; graveyard,FDN,243,Mythic,83; 83a,,5.5,seed
@@ -198,7 +201,7 @@ When this creature enters, mill four cards. When you do, return target land card
 Inside Information,Sorcery,"Exile the top X cards of target opponent's library. You may play those cards this turn. If you cast a spell this way, pay life equal to its mana value rather than pay its mana cost.",B,pay life; heist; impulse,HOB,76,Mythic,41,"drain/value package: unconditional removal + life-to-mana, refunded by the Mister Negative swap",4.5,seed
 Master's Councillors,Creature — Human Advisor,"Vigilance
 This creature gets +2/+0 for each graveyard with seven or more cards in it.
-Whenever you draw your second card each turn, target player mills three cards. (They put the top three cards of their library into their graveyard.)",U,Human; Advisor; graveyard; mill; pump; vigilance; combat,HOB,47,Uncommon,22; 51,deck 22 tune 2026-10-08,2.0,seed
+Whenever you draw your second card each turn, target player mills three cards. (They put the top three cards of their library into their graveyard.)",U,Human; Advisor; graveyard; mill; pump; vigilance; combat,HOB,47,Uncommon,22; 51; 51a,deck 22 tune 2026-10-08,2.0,seed
 Bonehoard Dracosaur,Creature — Dinosaur Dragon,"Flying, first strike
 At the beginning of your upkeep, exile the top two cards of your library. You may play them this turn. If you exiled a land card this way, create a 3/1 red Dinosaur creature token. If you exiled a nonland card this way, create a Treasure token.",R,Dinosaur; Dragon; tokens; treasure; impulse; flying; evasion; first strike; combat,LCI,134,Mythic,49,,7.5,hand
 The Ancient One,Legendary Creature — Spirit God,"Descend 8 — The Ancient One can't attack or block unless there are eight or more permanent cards in your graveyard.

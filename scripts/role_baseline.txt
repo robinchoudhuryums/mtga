@@ -92,7 +92,6 @@ Dark Confidant
 Darkstar Augur
 Daydream
 Deepchannel Duelist
-Deepmuck Desperado
 Deepway Navigator
 Defiant Survivor
 Demonic Ruckus
@@ -265,6 +264,7 @@ Moonshaker Cavalry
 Morcant's Eyes
 Morningtide's Light
 Most Decrepit Old Bird
+Most Decrepit Old Bird // Speak Secrets
 Mutable Explorer
 Namazu Trader
 Nashi, Searcher in the Dark
