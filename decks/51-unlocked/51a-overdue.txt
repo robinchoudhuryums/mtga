@@ -4,7 +4,7 @@
 #: plan: control
 #: tier: B — GRADED 2026-07, re-grounded 2026-10-16 after a twelve-swap pass and a four-swap
 #: tier: answers follow-up the same day. The measurable floor now reads A: interaction 8 plus
-#: tier: card advantage 7 at a 2.97 curve. The letter stays B pending the human re-grade.
+#: tier: card advantage 7 at a 3.0 curve. The letter stays B pending the human re-grade.
 #: tier: All 8 interaction pieces are instant-speed. The follow-up fixed what the counter-heavy
 #: tier: suite could not do — answer a permanent that has ALREADY resolved: Lost Days, Noggle the
 #: tier: Mind and Riverwalk Technique joined Zuko's Exile, four such answers where there was one.
@@ -76,6 +76,12 @@
 #: archetype: two now share eight nonland cards, Mirror Room // Fractured Realm among them, and
 #: archetype: Fractured Realm's {5}{U}{U} half is this list's one seven-mana spell. Here it is a
 #: archetype: trigger doubler for Riverchurn, Councillors and Pakku, not a finisher.
+#: notes: DEEPMUCK DESPERADO CAME BACK for the second Riverchurn Monument (2026-10-16, after the
+#: notes: answers follow-up). "Whenever you commit a crime, each opponent mills three" — and nearly
+#: notes: every mill trigger and answer here TARGETS the opponent, so it is a free 7 (with the
+#: notes: Crystal) once per turn, on both players' turns. One Riverchurn stays for the instant-speed
+#: notes: mill that bins a card Lost Days or Riverwalk Technique tucked second from the top. Cost:
+#: notes: one artifact (Cerebral Download's surveil X, Fugitive Droid) and a second late exhaust.
 #: notes: THE 2026-10-16 ANSWERS FOLLOW-UP (four swaps, the same day as the pass below). The
 #: notes: twelve-swap pass left the deck able to counter but not to ANSWER: five of six
 #: notes: interaction pieces worked only on the stack, and Zuko's Exile at {5} was the one card
@@ -186,7 +192,8 @@ Deck
 # Mill engines — the clock
 1 Kitsune's Technique (TMT) 42
 1 The Tale of Tamiyo (DSK) 75
-2 Riverchurn Monument (DFT) 57
+1 Riverchurn Monument (DFT) 57
+1 Deepmuck Desperado (OTJ) 42
 1 Exhibition Tidecaller (SOS) 48
 1 The Mindskinner (DSK) 66
 1 Master Pakku (TLA) 63
