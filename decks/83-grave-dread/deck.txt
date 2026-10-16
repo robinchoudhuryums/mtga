@@ -1,5 +1,6 @@
 #: name: Grave Dread (Sultai manifest dread)
 #: format: Standard
+#: arena: 83 Manifest Destiny, 9799d5df-7e5d-4c9a-b90e-647efbb2c502
 #: colors: BGU
 #: plan: midrange
 #: archetype: SULTAI MANIFEST-DREAD x LEAVE-THE-GRAVEYARD MIDRANGE, drafted 2026-10-11 from

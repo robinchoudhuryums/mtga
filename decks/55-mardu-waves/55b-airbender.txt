@@ -1,5 +1,6 @@
 #: name: Mardu Airbender
 #: format: Standard
+#: arena: 55b Imperial Monks, 4895b5d6-5533-4b2f-b5b6-f0f02256fa2c
 #: colors: RWB
 #: plan: midrange
 #: archetype: MARDU EXILE-CAST (the C1 axis from the 131-card pile analysis). Three

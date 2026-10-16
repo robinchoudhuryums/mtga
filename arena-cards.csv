@@ -1,7 +1,10 @@
 Arena ID,Card Name
+36802,Forest
 62155,Forest
 68310,Llanowar Elves
+68740,Watery Grave
 69394,Breeding Pool
+69396,Godless Shrine
 70391,Fabled Passage
 70763,Swamp
 72032,Scoured Barrens
@@ -11,18 +14,27 @@ Arena ID,Card Name
 75457,Pacifism
 76388,Mountain
 77497,Negate
+78637,Shipwreck Marsh
 79085,Deathcap Glade
+79714,Scoured Barrens
+80312,Venom Connoisseur
 82124,Tolarian Terror
 82393,Mountain
 82747,Demolition Field
 85544,"Fynn, the Fangbearer"
+86688,Break the Spell
 86722,Virtue of Loyalty // Ardenvale Fealty
 86758,Sleight of Hand
+86798,Rankle's Prank
 86830,"Goddric, Cloaked Reveler"
 86853,Stonesplitter Bolt
 86865,Beanstalk Wurm // Plant Beans
 86890,Rootrider Faun
+86983,Soul-Guide Lantern
+86989,Restless Bivouac
 87227,Waterwind Scout
+87235,Bitter Triumph
+87246,Deep-Cavern Bat
 87254,Greedy Freebooter
 87298,Dreadmaw's Ire
 87323,Tectonic Hazard
@@ -30,48 +42,80 @@ Arena ID,Card Name
 87346,Huatli's Final Strike
 87368,River Herald Guide
 87388,Deepfathom Echo
+87393,"Kutzil, Malamet Exemplar"
 87434,Captivating Cave
+87435,Cavern of Souls
 87445,Promising Vein
 87578,Plains
 87585,Forest
+88930,Case of the Uneaten Feast
 88932,"Delney, Streetwise Lookout"
 88942,Make Your Move
+88947,No Witnesses
 88948,Not on My Watch
+89022,Toxin Analysis
 89088,Rubblebelt Maverick
+89093,Topiary Panther
+89188,Raucous Theater
 89210,Mountain
 90356,Eriette's Lullaby
 90366,Nurturing Pixie
+90373,Rustler Rampage
 90393,Failed Fording
+90421,Three Steps Ahead
+90437,Insatiable Avarice
 90452,Shoot the Sheriff
+90486,Reckless Lackey
+90561,Laughing Jasper Flint
+90601,Creosote Heath
+90603,Festering Gulch
 90604,Forlorn Flats
 90605,Jagged Barrens
 90607,Lush Oasis
+90611,Jace Reawakened
+90613,Blooming Marsh
 90616,Inspiring Vantage
 91541,Builder's Talent
+91546,Dewdrop Cure
 91548,Essence Channeler
+91572,Valley Questcaller
+91619,Bandit's Talent
 91628,Downwind Ambusher
 91631,Fell
 91652,Starscape Cleric
 91666,Coruscation Mage
+91716,Innkeeper's Talent
+91739,Wear Down
 91759,Lunar Convocation
 91778,"Zoraline, Cosmos Caller"
+92064,Enduring Innocence
+92081,Optimistic Scavenger
 92157,Cackling Slasher
 92176,Funeral Room // Awakening Hall
 92248,Turn Inside Out
+92277,"Kona, Rescue Beastie"
 92289,Say Its Name
+92361,Hushwood Verge
 92371,Valgavoth's Lair
+93122,Opt
 93636,Hinterland Sanctifier
 93645,Inspiring Overseer
 93648,Leonin Vanguard
+93652,Twinblade Paladin
 93657,Exclusion Mage
 93661,Opt
 93668,Crow of Dark Tidings
+93684,Dragon Fodder
 93694,Scorching Dragonfire
+93696,Skyraker Giant
 93703,Druid of the Cowl
 93705,Magnigoth Sentry
 93717,Cat Collector
 93722,Dazzling Angel
+93728,Hare Apparent
+93729,Helpful Hunter
 93732,Joust Through
+93735,Raise the Past
 93741,Vanguard Seraph
 93742,Arcane Epiphany
 93744,Bigfin Bouncer
@@ -84,6 +128,7 @@ Arena ID,Card Name
 93767,Abyssal Harvester
 93768,Arbiter of Woe
 93769,Billowing Shriekmass
+93770,Blasphemous Edict
 93771,Bloodthirsty Conqueror
 93776,Infernal Vessel
 93784,Stab
@@ -92,6 +137,7 @@ Arena ID,Card Name
 93795,Courageous Goblin
 93799,Fiery Annihilation
 93807,Slumbering Cerberus
+93810,Twinflame Tyrant
 93812,Apothecary Stomper
 93813,Beast-Kin Ranger
 93815,Eager Trufflesnout
@@ -99,6 +145,7 @@ Arena ID,Card Name
 93818,Felling Blow
 93819,"Loot, Exuberant Explorer"
 93820,Mossborn Hydra
+93824,Quilled Greatwurm
 93825,Spinner of Souls
 93827,Treetop Snarespinner
 93829,Anthem of Champions
@@ -113,6 +160,8 @@ Arena ID,Card Name
 93853,Day of Judgment
 93854,"Giada, Font of Hope"
 93855,Healer's Hawk
+93858,Resolute Reinforcements
+93859,Savannah Lions
 93862,Youthful Valkyrie
 93863,Aegis Turtle
 93865,Brineborn Cutthroat
@@ -121,18 +170,28 @@ Arena ID,Card Name
 93884,Diregraf Ghoul
 93885,Eaten Alive
 93888,Hero's Downfall
+93889,"Liliana, Dreadhorde General"
+93892,Painful Quandary
+93893,Phyrexian Arena
 93899,Vampire Nighthawk
 93900,Zombify
 93902,Axgard Cavalry
 93905,Burst Lightning
+93908,Fanatical Firebrand
+93912,Frenzied Goblin
+93913,Goblin Surprise
 93914,Heartfire Immolator
+93917,"Krenko, Mob Boss"
 93928,Bushwhack
+93933,Garruk's Uprising
 93940,Llanowar Elves
 93941,Mild-Mannered Librarian
 93942,Nessian Hornbeetle
+93946,Snakeskin Veil
 93947,Vivien Reid
 93950,"Balmor, Battlemage Captain"
 93952,Empyrean Eagle
+93953,Good-Fortune Unicorn
 93958,"Ruby, Daring Tracker"
 93960,"Tatyova, Benthic Druid"
 93965,Gleaming Barrier
@@ -146,10 +205,15 @@ Arena ID,Card Name
 93983,Tranquil Cove
 93984,Wind-Scarred Crag
 93993,Angelic Destiny
+93997,Crusader of Odric
+93998,Dawnwing Marshal
 94007,Regal Caracal
+94008,Release the Dogs
 94009,Stasis Snare
+94011,Valorous Stance
 94014,Chart a Course
 94019,Fog Bank
+94042,Tribute to Hunger
 94051,Ghitu Lavarunner
 94052,Giant Cindermaw
 94063,Circuitous Route
@@ -164,16 +228,19 @@ Arena ID,Card Name
 94118,Gruul Guildgate
 94120,Orzhov Guildgate
 94121,Rakdos Guildgate
+94122,Selesnya Guildgate
 94123,Simic Guildgate
 94124,Temple of Abandon
 94125,Temple of Deceit
 94126,Temple of Enlightenment
 94129,Temple of Malice
 94132,Temple of Silence
+94133,Temple of Triumph
 94135,Lyra Dawnbringer
 94142,Massacre Wurm
 95056,Dismal Backwater
 95069,Tranquil Cove
+95070,Wastewood Verge
 95076,Plains
 95175,Mountain
 95191,Plains
@@ -188,12 +255,18 @@ Arena ID,Card Name
 95200,Forest
 95526,"Elspeth, Storm Slayer"
 95549,Voice of Victory
+95605,Qarsi Revenant
 95614,Strategic Betrayal
+95619,Worthy Cost
+95625,Dracogenesis
 95633,Molten Exhale
+95642,Stadium Headliner
 95652,War Effort
+95667,Heritage Reclamation
 95696,Bone-Cairn Butcher
 95730,Mardu Siegebreaker
 95736,Perennation
+95769,Dragonstorm Globe
 95779,Blossoming Sands
 95786,Jungle Hollow
 95791,Nomad Outpost
@@ -202,6 +275,7 @@ Arena ID,Card Name
 95799,Wind-Scarred Crag
 95805,Swamp
 95809,Forest
+95853,Summon: Bahamut
 95856,Aerith Gainsborough
 95883,Phoenix Down
 95887,Slash of Light
@@ -211,39 +285,73 @@ Arena ID,Card Name
 95899,The Wind Crystal
 95948,Black Mage's Rod
 96007,Item Shopkeep
+96030,Suplex
 96050,The Earth Crystal
+96055,Goobbue Gardener
 96057,Gysahl Greens
 96067,Sazh's Chocobo
 96070,Summon: Fat Chocobo
+96071,Summon: Fenrir
 96078,Traveling Chocobo
+96096,Gladiolus Amicitia
 96101,"Joshua, Phoenix's Dominant // Phoenix, Warden of Fire"
+96127,The Wandering Minstrel
 96133,Buster Sword
 96134,Elixir
 96135,Excalibur II
 96147,Ring of the Lucii
 96153,Capital City
+96155,Crossroads Village
 96170,"Rabanastre, Royal City"
 96179,Plains
+96185,Swamp
 96188,Mountain
 96190,Mountain
 96191,Forest
 96197,"Beatrix, Loyal General"
+96201,Seymour Flux
 96580,Banishing Light
 96581,Beyond the Quiet
+96583,Cosmogrand Zenith
 96588,Emergency Eject
 96601,Pinnacle Starcage
+96627,Cryoshatter
+96662,Archenemy's Charm
+96663,Beamsaw Prospector
 96679,Hullcarver
+96687,Requiem Monolith
+96688,Scrounge for Eternity
+96694,Temporal Intervention
+96712,Kav Landseeker
+96716,Lithobraking
+96723,Orbital Plunge
+96727,Possibility Technician
+96738,Terrapact Intimidator
+96744,Zookeeper Mechan
+96753,Edge Rover
 96754,Eumidian Terrabotanist
 96757,Frenzied Baloth
+96775,Ouroboroid
 96784,Terrasymbiosis
+96807,"Tannuk, Memorial Ensign"
 96824,"Adagia, Windswept Bastion"
+96829,"Kavaron, Memorial World"
+96830,Sacred Foundry
+97169,Island
+97170,Swamp
+97276,Zuko's Exile
+97279,Airbender Ascension
 97287,Curious Farm Animals
+97288,Destined Confrontation
 97352,The Unagi of Kyoshi Island
 97354,Waterbender Ascension
+97369,Day of Black Sun
+97399,Zuko's Conviction
 97417,Iroh's Demonstration
 97435,"Ty Lee, Artful Acrobat"
 97478,Turtle-Duck
 97535,Barrels of Blasting Jelly
+97544,Abandoned Air Temple
 97547,Ba Sing Se
 97834,Sudden Strike
 97871,"Eddie Brock // Venom, Lethal Protector"
@@ -251,10 +359,19 @@ Arena ID,Card Name
 97929,Radioactive Spider
 97963,"Silk, Web Weaver"
 97999,Ominous Asylum
+98339,Kinscaer Sentry
+98407,Bitterbloom Bearer
 98467,Impolite Entrance
+98489,Bristlebane Battler
 98577,Firdoch Core
 98584,Blood Crypt
+98590,Temple Garden
 98591,Plains
+100465,Hamato Guardian Stance
+100480,Quintessential Katana
+100514,Anchovy & Banana Pizza
+100571,Frog Butler
+100642,Foot Headquarters
 102472,Emeritus of Truce // Swords to Plowshares
 102482,Joined Researchers // Secret Rendezvous
 102505,Encouraging Aviator // Jump
@@ -264,17 +381,22 @@ Arena ID,Card Name
 102526,Skycoach Conductor // All Aboard
 102538,Dissection Practice
 102559,Send in the Pest
+102576,Goblin Glasswright // Craft with Pride
 102609,Glorious Decay
 102630,Abstract Paintmage
 102635,"Blech, Loafing Pest"
 102636,Bogwater Lumaret
+102638,Cauldron of Essence
 102716,Great Hall of the Biblioplex
 102719,Shattered Sanctum
+102725,Titan's Grave
 102732,Plains
 102734,Island
 102736,Swamp
 102740,Forest
 102757,Helping Hand
+102781,Feed the Swarm
+102786,Stargaze
 102789,Abrade
 102792,Bulk Up
 102793,Burst Lightning
@@ -288,6 +410,7 @@ Arena ID,Card Name
 103383,Gleaming Splendor
 103385,Kíli the Resourceful
 103388,Magnificent End
+103389,Moment of Glory
 103390,The Mountain-king's Return
 103391,"Ori, Keeper of Songs"
 103392,The Queen of Dale
@@ -295,17 +418,24 @@ Arena ID,Card Name
 103395,Stone by Sunlight
 103397,An Unexpected Party // At the Door
 103401,Vow to Erebor
+103405,"Bilbo Baggins, Burglar // Take a Glance"
 103409,Elven Raft-Steerer
 103416,Lake-town Mariners // Gone Fishing
 103421,Mirkwood Meditator
+103453,The Master of Lake-town
+103456,Ravening Warg
 103470,"Dori, Bearer of Friends"
 103472,"Gandalf, Goblins' Bane // Flameshape"
+103478,Goblin-town Flunkies
 103480,Iron Hills Stalwart
 103486,Ragged Short Spear
 103487,"Smaug, the Great Calamity // Spew Flame"
 103489,Smaug the Magnificent
+103494,Tidings of War
 103500,Beorn's Hospitality
 103527,"Bifur, Melodic Rider"
+103529,Bolg's Company
+103537,Goblin Plate Mail
 103541,"Nori, Teller of Tales"
 103549,Thranduil's Company
 103551,The Arkenstone // Seek the Heart
@@ -319,15 +449,22 @@ Arena ID,Card Name
 103581,Mountain
 104842,Swamp
 104901,"Captain America, Wings of Freedom"
+104906,Helicarrier Strike
 104913,The Mind Stone
 104915,"Monica Rambeau // Photon, Living Light"
+104921,Origin of the Avengers
+104924,Political Triumph
+104930,Super Villain Lockup
 104932,Take Up the Shield
 104935,"White Widow, Free Agent"
 104942,Bruce Banner // The Incredible Hulk
 104994,Hour of Defeat
 105005,Red Room Recruit
+105026,"Hawkeye, Young Avenger"
+105027,Hawkeye's Bow
 105032,HYDRA Assault Robot
 105041,"Mjölnir, Hammer of Thor"
+105071,"Mister Hyde, Monster Within"
 105078,Restorative Technique
 105083,"She-Hulk, Jade Defender"
 105088,The Unbeatable Squirrel Girl
@@ -335,6 +472,7 @@ Arena ID,Card Name
 105097,"Ares, God of War"
 105099,The Astonishing Ant-Man
 105100,Avengers: Under Siege
+105136,"Wolverine, Fierce Fighter"
 105144,Iron Man Armor
 105161,Fisk Tower
 105173,Plains

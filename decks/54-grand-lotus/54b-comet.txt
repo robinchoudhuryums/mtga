@@ -1,6 +1,6 @@
 #: name: Grand Lotus — Comet
 #: format: Standard
-#: arena: 54b Grand Lotus- Comet, bc4d5b7d-1298-4c3d-bb38-247dab5a070b
+#: arena: 54b Grand Lotus: Meteoric Rise, dbe00c5e-ab1e-4ce9-8acf-41cd8062d142
 #: colors: BGUR
 #: based-on: deck.txt
 #: plan: aggro
