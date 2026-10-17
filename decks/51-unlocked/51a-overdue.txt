@@ -4,7 +4,7 @@
 #: plan: control
 #: tier: B — GRADED 2026-07, re-grounded 2026-10-16 after a twelve-swap pass and a four-swap
 #: tier: answers follow-up the same day. The measurable floor now reads A: interaction 8 plus
-#: tier: card advantage 6 at a 3.03 curve. The letter stays B pending the human re-grade.
+#: tier: card advantage 6 at a 3.0 curve. The letter stays B pending the human re-grade.
 #: tier: All 8 interaction pieces are instant-speed. The follow-up fixed what the counter-heavy
 #: tier: suite could not do — answer a permanent that has ALREADY resolved: Lost Days, Noggle the
 #: tier: Mind and Riverwalk Technique joined Zuko's Exile, four such answers where there was one.
@@ -132,7 +132,12 @@
 #: notes: card. Its Sneak cost of {1}{U} is LIVE here rather than theoretical, because the deck
 #: notes: fields unblockable attackers (Veteran Ice Climber, The Mindskinner) to return; Kitsa
 #: notes: then copies it for {2} at power 3, which halves what is left again.
-#: notes: THE TALE OF TAMIYO IS SELF-MILL AND THAT IS THE POINT. Its chapters bin YOUR cards,
+#: notes: TAIGAM, MASTER OPPORTUNIST REPLACED THE TALE OF TAMIYO (2026-10-17; the Tale was an unowned
+#: notes: rare craft whose two jobs other cards already do). "Whenever you cast your second spell each
+#: notes: turn, copy it, then exile the spell you cast with four time counters on it" — so Kitsune's
+#: notes: Technique as the second spell mills half twice now and once more, free, four turns later.
+#: notes: The cost: the original goes to exile, so a Lesson cast that way reaches the yard late.
+#: notes: (HISTORY) THE TALE OF TAMIYO IS SELF-MILL AND THAT IS THE POINT. Its chapters bin YOUR cards,
 #: notes: which is how LESSONS reach the graveyard — Master Pakku mills X for exactly that
 #: notes: count — and chapter IV then exiles instants and sorceries from the yard and copies
 #: notes: them free. Read it next to Pakku, not next to Riverchurn.
@@ -200,7 +205,7 @@
 Deck
 # Mill engines — the clock
 1 Kitsune's Technique (TMT) 42
-1 The Tale of Tamiyo (DSK) 75
+1 Taigam, Master Opportunist (TDM) 60
 1 Riverchurn Monument (DFT) 57
 1 Deepmuck Desperado (OTJ) 42
 1 Exhibition Tidecaller (SOS) 48
