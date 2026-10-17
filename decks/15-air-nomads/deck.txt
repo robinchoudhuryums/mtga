@@ -5,11 +5,11 @@
 #: tier: measurable floor reads A: interaction 7 plus card advantage 7 at a 3.11 curve.
 #: tier: Kept at B, one band below the floor, as a deliberate call like 35a and 21a: this is
 #: tier: a flavour-first singleton build with a DIFFUSE spine (21 central themes), and the
-#: tier: pass is unplayed. What it fixed: protection 1 -> 3 (Liliana the Faultless's
-#: tier: hexproof, Moogles' Valor's team indestructible, Hakoda), three Gleaming Bastions
+#: tier: pass is unplayed. What it fixed: protection 1 -> 5 (Liliana the Faultless's
+#: tier: hexproof, Moogles' Valor's team indestructible, Sheltered by Ghosts' ward, Hakoda), three Gleaming Bastions
 #: tier: for basics (cards below 90% on curve 23 -> 17), and a lifegain/token layer —
 #: tier: Exalted Sunborn doubles every token, The Wind Crystal doubles every life gain and
-#: tier: gives the whole board flying and lifelink. What still argues down: only 2 of the 7
+#: tier: gives the whole board flying and lifelink. What still argues down: only 3 of the 7
 #: tier: interaction pieces answer a noncreature permanent.
 #: colors: WU
 #: archetype: Azorius (W/U) Air Nomads fliers / airbend tempo, going WIDE with Ally tokens
@@ -32,6 +32,11 @@
 #: notes: AJANI RESOLUTE gains loyalty per lifegain EVENT, and Liliana makes one per token.
 #: notes: TEAM AVATAR vs SOKKA: Team Avatar wants one attacker, Sokka draws only when two
 #: notes: attack — a per-turn choice, not a conflict.
+#: notes: SHELTERED BY GHOSTS REPLACED THE WONDROUS WASP (2026-10-17): the same 2-mana slot,
+#: notes: but it exiles ANY nonland permanent, and the enchanted creature gains lifelink (fed
+#: notes: to The Wind Crystal and Ajani) and ward {2}. THE TRAP: if the enchanted creature leaves
+#: notes: — airbend, Thor, a harnessed Mind Stone, Appa — the aura falls off and their card
+#: notes: comes back. Put it on a creature you will not reuse.
 #: notes: FOLLOW-UP, same day: The Mind Stone replaced Path to Redemption (interaction 8 -> 7,
 #: notes: the A floor exactly), chosen over cutting a Plains so the 24 lands stay intact. It
 #: notes: is an indestructible {W} rock that ramps turn 2 into turn-4 five-drops, and its
@@ -52,7 +57,7 @@
 1 Momo, Playful Pet (TLA) 30
 1 Glider Kids (TLA) 21
 1 Denzilore Fatehold (FRA) 128
-1 The Wondrous Wasp (MSH) 84
+1 Sheltered by Ghosts (DSK) 30
 1 Sokka, Lateral Strategist (TLA) 241
 1 The Mechanist, Aerial Artisan (TLA) 64
 1 Sage of the Skies (TDM) 22
