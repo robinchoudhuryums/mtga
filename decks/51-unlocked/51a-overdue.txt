@@ -3,19 +3,20 @@
 #: colors: U
 #: plan: control
 #: tier: B — GRADED 2026-07, re-grounded 2026-10-17 after a twelve-swap pass, a four-swap
-#: tier: answers follow-up, a five-swap copy-engine pass and seven more swaps the same day. The
-#: tier: measurable floor reads A, at its edge: interaction 7 plus card advantage 7 at a 3.03
-#: tier: curve. Five of the 7 interaction pieces are instant-speed counters; two sorceries answer
-#: tier: a permanent that has already resolved — Temporal Cleansing tucks it where the next mill
-#: tier: bins it, and Bilbo, Luckwearer's Burglar's Plot trades your worst permanent for it.
+#: tier: answers follow-up, a five-swap copy-engine pass and nine more swaps the same day. The
+#: tier: measurable floor reads A: interaction 8 plus card advantage 7 at a 3.08 curve. Five of
+#: tier: the 8 interaction pieces are instant-speed counters; three answer a permanent that has
+#: tier: already resolved — Temporal Cleansing tucks it where the next mill bins it, Bilbo,
+#: tier: Luckwearer's Burglar's Plot trades your worst permanent for it, and Secret Invasion
+#: tier: exiles a creature and makes one of yours a warded copy of it.
 #: tier: Jill, Shiva's Dominant adds a repeatable bounce on top (tempo, not counted above).
 #: tier: THE ENGINE HAS TWO OUTS. The deck is a two-card engine and The Water Crystal is a
 #: tier: singleton; Scour for Scrap ("search your library for an artifact card … and/or return
 #: tier: target artifact card from your graveyard") finds it or rebuys a destroyed one. A third
 #: tier: out was cut on 2026-10-17 for a copy engine, so it is 44.1% by turn nine; the draw
 #: tier: suite (School Daze, Three Steps Ahead, Aether Syphon, The Theorist) digs for it.
-#: tier: PROTECTION 3, up from 1: Octopus Form gives Master Pakku hexproof (and untaps him for a
-#: tier: second mill), and Emeritus of Ideation and Campus Composer each carry ward {2}.
+#: tier: PROTECTION 3, up from 1: Emeritus of Ideation, Campus Composer and the creature wearing
+#: tier: Secret Invasion each carry ward {2}.
 #: tier: CARD FLOW IS REPEATABLE NOW: Aether Syphon draws every turn, The Theorist draws on each
 #: tier: opponent draw step, and both feed Master's Councillors' second-draw mill on BOTH turns.
 #: tier: WHAT ARGUES UP: Kitsune's Technique and Jidoor each mill HALF a library (half plus four
@@ -48,13 +49,13 @@
 #: archetype: Rooms and the Crystal too — and was BANNED out of Standard 2026-08-11. Nothing owned
 #: archetype: replaces that clause.)
 #: archetype: THE LESSONS ARE NOT A TAX, and that is what makes this build work rather than merely
-#: archetype: cohere. It'll Quench Ya! is Spell Pierce that hits creatures too, Octopus Form protects
-#: archetype: and untaps Master Pakku, and Waterbending Lesson draws three. Each is a card the deck would want
+#: archetype: cohere. It'll Quench Ya! is Spell Pierce that hits creatures too, Sokka's Haiku
+#: archetype: counters and draws, and Waterbending Lesson draws three. Each is a card the deck would want
 #: archetype: anyway; the subtype is a rider, so the engine costs close to nothing.
 #: archetype: WATERBENDING LESSON IS THE HIDDEN COMBO. Its waterbend cost is paid by TAPPING your
 #: archetype: artifacts and creatures — and Master Pakku mills whenever he BECOMES TAPPED. So you
-#: archetype: draw three, tap Pakku to avoid the discard, and mill for it. Octopus Form, back
-#: archetype: in since 2026-10-16, untaps him for a second loop and gives him hexproof.
+#: archetype: draw three, tap Pakku to avoid the discard, and mill for it. Amazing Acrobatics' tap mode
+#: archetype: and Temporal Cleansing's convoke tap him the same way.
 #: archetype: THE MINDSKINNER CONVERTS THE COMBAT PLAN INSTEAD OF ADDING ONE, and in this deck that
 #: archetype: is pure upside because there was no combat plan to lose. "If a source you control would
 #: archetype: deal damage to an opponent, prevent that damage and each opponent mills that many
@@ -74,6 +75,18 @@
 #: archetype: two now share eight nonland cards, Mirror Room // Fractured Realm among them, and
 #: archetype: Fractured Realm's {5}{U}{U} half is this list's one seven-mana spell. Here it is a
 #: archetype: trigger doubler for Riverchurn, Councillors and Pakku, not a finisher.
+#: notes: SECRET INVASION REPLACED OCTOPUS FORM, KAITO, CUNNING INFILTRATOR REPLACED ECHO (2026-10-17).
+#: notes: Secret Invasion ({1}{U}{U} Aura on a creature you control) exiles a creature until it
+#: notes: leaves and makes the host a copy of it with ward {2}. Host it on a body whose own text you
+#: notes: do not need (Most Decrepit Old Bird, the Luckwearer 1/1, a token) and never blink or
+#: notes: bounce that host — Don & Leo's end step or Jill would return their creature. Kaito's +1
+#: notes: makes a creature unblockable and loots, so a Sneak cost (Kitsune's Technique, Donatello)
+#: notes: is payable every turn; his -2 makes a 2/1 Ninja; Gogo can copy the +1. Echo was the
+#: notes: narrower of two ability-copiers (creature sources only). Interaction 7 -> 8.
+#: notes: COST: Octopus Form was Master Pakku's only untap and a Lesson — only four Lessons can now
+#: notes: reach the graveyard (Echocasting Symposium exiles itself), so Pakku often mills 1 + 4.
+#: notes: One Lesson is enough with the Crystal; if he keeps tapping with NONE in the yard, Kaito
+#: notes: for Pakku was the measured alternative (floor A). Accumulate Wisdom's take-all is now rare.
 #: notes: BILBO, LUCKWEARER // BURGLAR'S PLOT REPLACED NIGHTWHORL HERMIT (2026-10-17). Burglar's
 #: notes: Plot ({4}{U} sorcery): "Exchange control of two target nonland permanents that share a
 #: notes: card type" — give a Most Decrepit Old Bird or a token, take their best permanent of ANY
@@ -98,7 +111,7 @@
 #: notes: owner's call). School Daze is counter-and-draw or draw three at exactly five mana, so
 #: notes: every cast makes Exhibition Tidecaller mill ten (fourteen with the Crystal). Jill's
 #: notes: enters trigger returns any other nonland permanent to its owner's hand; Don & Leo
-#: notes: re-runs it at each end step and Echo or Gogo copy it, and bouncing the opponent's card
+#: notes: re-runs it at each end step and Gogo copies it, and bouncing the opponent's card
 #: notes: is a crime for Deepmuck Desperado. Jill is an unowned rare. COST: interaction 8 -> 7
 #: notes: (bounce is tempo, not interaction), Lessons 7 -> 6, and Temporal Cleansing is now the
 #: notes: only answer to a resolved permanent. If a resolved threat beats the deck, Lost Days is
@@ -272,12 +285,11 @@ Deck
 
 # Copy engines — each copied mill trigger is its own event, so the Crystal adds +4 to each
 1 Gogo, Master of Mimicry (FIN) 54
-1 Echo, Perceptive Prodigy (MSH) 51
+1 Kaito, Cunning Infiltrator (FDN) 44
 
 # Lessons — cards the deck wants anyway, with the subtype as a rider
 1 It'll Quench Ya! (TLA) 58
 1 Accumulate Wisdom (TLA) 44
-1 Octopus Form (TLA) 66
 1 Sokka's Haiku (TLA) 71
 1 Waterbending Lesson (TLA) 80
 
@@ -292,6 +304,7 @@ Deck
 1 Temporal Cleansing (ECL) 78
 1 Amazing Acrobatics (SPM) 25
 1 Bilbo, Luckwearer // Burglar's Plot (HOB) 32
+1 Secret Invasion (MSH) 72
 
 # Threats — warded bodies and fliers; each unblocked attacker is a mill event under The Mindskinner
 1 Emeritus of Ideation // Ancestral Recall (SOS) 45
