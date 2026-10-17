@@ -93,7 +93,8 @@
 2 Fire Nation Palace (TLA) 268
 1 Blood Crypt (ECL) 262
 1 Blazemire Verge (DSK) 256
-2 Boiling Rock Prison (TLA) 267
+1 Boiling Rock Prison (TLA) 267
+1 Temple of Malice (FDN) 701
 3 Dark Fortress (MSH) 264
 1 Razortrap Gorge (DSK) 267
 5 Swamp (MSH) 292
