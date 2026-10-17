@@ -3,24 +3,23 @@
 #: colors: U
 #: plan: control
 #: tier: B — GRADED 2026-07, re-grounded 2026-10-17 after a twelve-swap pass, a four-swap
-#: tier: answers follow-up, a five-swap copy-engine pass and two more swaps the same day. The
-#: tier: measurable floor reads A, at its edge: interaction 7 plus card advantage 8 at a 3.06
-#: tier: curve. The letter stays B pending the human re-grade. Six of the 7 interaction pieces
-#: tier: are instant-speed counters; Temporal Cleansing, a sorcery, is the ONE answer to a
+#: tier: answers follow-up, a five-swap copy-engine pass and six more swaps the same day. The
+#: tier: measurable floor reads B: interaction 6 plus card advantage 7 at a 3.06 curve — one
+#: tier: interaction short of A. Five of the 6 interaction pieces are instant-speed counters;
+#: tier: Temporal Cleansing, a sorcery, is the ONE answer to a
 #: tier: permanent that has already resolved, and it tucks the card where the next mill bins it.
 #: tier: Jill, Shiva's Dominant adds a repeatable bounce on top (tempo, not counted above).
 #: tier: THE ENGINE HAS TWO OUTS. The deck is a two-card engine and The Water Crystal is a
 #: tier: singleton; Scour for Scrap ("search your library for an artifact card … and/or return
 #: tier: target artifact card from your graveyard") finds it or rebuys a destroyed one. A third
 #: tier: out was cut on 2026-10-17 for a copy engine, so it is 44.1% by turn nine; the draw
-#: tier: suite (The Everflowing Well, Three Steps Ahead, Aether Syphon, The Theorist) digs for it.
-#: tier: PROTECTION 3, up from 1: Fugitive Droid counters a spell that targets the Crystal or a
-#: tier: creature, Octopus Form gives Master Pakku hexproof (and untaps him for a second mill),
-#: tier: and Emeritus of Ideation carries ward {2}.
+#: tier: suite (School Daze, Three Steps Ahead, Aether Syphon, The Theorist) digs for it.
+#: tier: PROTECTION 3, up from 1: Octopus Form gives Master Pakku hexproof (and untaps him for a
+#: tier: second mill), and Emeritus of Ideation and Campus Composer each carry ward {2}.
 #: tier: CARD FLOW IS REPEATABLE NOW: Aether Syphon draws every turn, The Theorist draws on each
 #: tier: opponent draw step, and both feed Master's Councillors' second-draw mill on BOTH turns.
 #: tier: WHAT ARGUES UP: Kitsune's Technique and Jidoor each mill HALF a library (half plus four
-#: tier: with the Crystal), and Inspiration from Beyond, Most Decrepit Old Bird and Bilbo all
+#: tier: with the Crystal), and Most Decrepit Old Bird and Bilbo, Thief in the Night both
 #: tier: rebuy the Technique; Donatello copies Riverchurn Monument for a second exhaust; Mirror
 #: tier: Room's Fractured Realm doubles every mill trigger. What holds the letter at B: an
 #: tier: unplayed list and a two-card engine. Re-grade after play.
@@ -64,10 +63,10 @@
 #: archetype: VETERAN ICE CLIMBER is the same idea on a two-drop: unblockable, vigilance, and mills
 #: archetype: its own power on attack. Vigilance matters twice — it attacks and still blocks, and it
 #: archetype: is untapped for a waterbend cost.
-#: archetype: SELF-MILL IS A SECOND RESOURCE, not a cost. Sokka's Haiku, The Everflowing
-#: archetype: Well's mill two, Spellgyre's surveil, and Waterbending Lesson's discard all fill YOUR graveyard, which
+#: archetype: SELF-MILL IS A SECOND RESOURCE, not a cost. Sokka's Haiku's mill three and
+#: archetype: Waterbending Lesson's discard fill YOUR graveyard, which
 #: archetype: is what feeds Master Pakku's Lesson count and finds Kitsune's Technique again
-#: archetype: (Inspiration from Beyond, Most Decrepit Old Bird, Bilbo, Thief in the Night). The two halves of the graveyard do different
+#: archetype: (Most Decrepit Old Bird, Bilbo, Thief in the Night). The two halves of the graveyard do different
 #: archetype: jobs and neither competes with the other.
 #: archetype: DISTINCTNESS from parent 51: 51 wins by casting a huge spell (Omniscience, Krang
 #: archetype: Utrom Warlord, The Dawning Archaic). This list runs none of those and never needs to
@@ -75,6 +74,19 @@
 #: archetype: two now share eight nonland cards, Mirror Room // Fractured Realm among them, and
 #: archetype: Fractured Realm's {5}{U}{U} half is this list's one seven-mana spell. Here it is a
 #: archetype: trigger doubler for Riverchurn, Councillors and Pakku, not a finisher.
+#: notes: FOUR MORE SWAPS (2026-10-17, owner's calls): Lyra, Tolarian Archangel for Inspiration
+#: notes: from Beyond, Campus Composer // Aqueous Aria for The Everflowing Well, Pym Particles for
+#: notes: Fugitive Droid, Amazing Acrobatics for Spellgyre. Lyra makes a 3/3 flying Angel at EACH
+#: notes: end step in which you drew three or more cards (School Daze, Waterbending Lesson and
+#: notes: Ancestral Recall do it alone). Composer is a 3/4 with ward {2} that enters prepared: its
+#: notes: {4}{U} Aqueous Aria makes a 3/3 flier, and five mana spent makes Exhibition Tidecaller
+#: notes: mill ten; Don & Leo's blink prepares it again. Pym Particles makes any creature an
+#: notes: unblocked attacker for the Sneak costs (Kitsune's Technique, Donatello) and draws; do not
+#: notes: aim it at an attacking Master Pakku, whose mill needs him to TAP. The Everflowing Well
+#: notes: was the soonest card to rotate and its descend 8 rarely turns on in an instant-and-
+#: notes: sorcery graveyard. Acrobatics is a hard counter that can also tap Pakku to mill. COST:
+#: notes: interaction 7 -> 6 (Fugitive Droid was a counter; Pym is not), card advantage 8 -> 7
+#: notes: (Spellgyre's draw-two mode), floor A -> B. Lyra and Composer are crafts (rare, uncommon).
 #: notes: SCHOOL DAZE REPLACED LOST DAYS, JILL, SHIVA'S DOMINANT REPLACED NOGGLE THE MIND (2026-10-17,
 #: notes: owner's call). School Daze is counter-and-draw or draw three at exactly five mana, so
 #: notes: every cast makes Exhibition Tidecaller mill ten (fourteen with the Crystal). Jill's
@@ -217,8 +229,8 @@
 #: notes: the opponent draws library positions M+1..M+D instead of 1..D, and any fixed set of D
 #: notes: positions in a shuffled library has the same contents, so their chance of finding an
 #: notes: answer is unchanged. This deck therefore still needs REAL answers, which is why it
-#: notes: keeps seven of them (It'll Quench Ya!, Sokka's Haiku, Spellgyre, Fugitive Droid, Three
-#: notes: Steps Ahead, Temporal Cleansing, School Daze) rather than becoming all mill.
+#: notes: keeps six of them (It'll Quench Ya!, Sokka's Haiku, Three Steps Ahead, Temporal Cleansing,
+#: notes: School Daze, Amazing Acrobatics) rather than becoming all mill.
 #: notes: KNOWN LIABILITY, and it is worse here than in the parent: milling an opponent FEEDS a
 #: notes: graveyard deck — the G-42 shape. A deck built entirely on mill hands a recursion deck
 #: notes: its whole library. Blue/colorless Standard has the exile answers (Ghost Vacuum,
@@ -266,22 +278,22 @@ Deck
 1 Mirror Room // Fractured Realm (DSK) 67
 
 # Real answers — mill is a clock, so these do the interacting
-1 Fugitive Droid (TMT) 40
+1 Pym Particles (MSH) 70
 1 School Daze (SPM) 42
 1 Jill, Shiva's Dominant // Shiva, Warden of Ice (FIN) 58
 1 Three Steps Ahead (OTJ) 75
 1 Temporal Cleansing (ECL) 78
+1 Amazing Acrobatics (SPM) 25
 
 # Threats — a warded flier that draws three, and a blocker that turns unblockable
 1 Emeritus of Ideation // Ancestral Recall (SOS) 45
 1 Nightwhorl Hermit (BLB) 62
+1 Lyra, Tolarian Archangel (FRA) 217
+1 Campus Composer // Aqueous Aria (SOS) 40
 
 # Card advantage
 1 Aether Syphon (DFT) 38
-1 Spellgyre (BLB) 72
-1 Inspiration from Beyond (FDN) 43
 1 Most Decrepit Old Bird // Speak Secrets (HOB) 49
-1 The Everflowing Well // The Myriad Pools (LCI) 56
 
 # Lands (24)
 1 Jidoor, Aristocratic Capital // Overture (FIN) 284

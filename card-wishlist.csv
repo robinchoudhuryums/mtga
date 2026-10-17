@@ -1,4 +1,9 @@
 Card Name,Type,Card Text,Color(s),Synergies,Set Code,Collector #,Rarity,Target,Note,Power,Power Source
+"Lyra, Tolarian Archangel",Legendary Creature — Angel Wizard,"Flying
+At the beginning of each end step, if you've drawn three or more cards this turn, create a 3/3 blue Angel creature token with flying.
+{3}{U}{U}: Until end of turn, whenever Lyra deals combat damage to a player, draw two cards.",U,Angel; Wizard; card draw; tokens; flying; evasion,,,Rare,51a,,5.5,seed
+Campus Composer // Aqueous Aria,Creature — Merfolk Bard // Sorcery,"Ward {2}
+This creature enters prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.) // Create a 3/3 blue and red Elemental creature token with flying.",U,Merfolk; Bard; tokens; prepared; spellslinger; tempo; ward; protection,,,Uncommon,51a,,2.5,seed
 "Alania, Divergent Storm",Legendary Creature — Otter Wizard,"Whenever you cast a spell, if it's the first instant spell, the first sorcery spell, or the first Otter spell other than Alania you've cast this turn, you may have target opponent draw a card. If you do, copy that spell. You may choose new targets for the copy.",U/R,Otter; Wizard; card draw,BLB,204,Rare,25,copy your first spell of each type each turn,6.0,hand
 Essence Channeler,Creature — Bat Cleric,"As long as you've lost life this turn, this creature has flying and vigilance.
 Whenever you gain life, put a +1/+1 counter on this creature.
