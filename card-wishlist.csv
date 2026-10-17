@@ -149,7 +149,7 @@ III — Other creatures you control get +2/+2 and gain trample until end of turn
 "Jill, Shiva's Dominant // Shiva, Warden of Ice",Legendary Creature — Human Noble Warrior // Legendary Enchantment Creature — Saga Elemental,"When Jill enters, return up to one other target nonland permanent to its owner's hand.
 {3}{U}{U}, {T}: Exile Jill, then return it to the battlefield transformed under its owner's control. Activate only as a sorcery. // (As this Saga enters and after your draw step, add a lore counter.)
 I, II — Mesmerize — Target creature can't be blocked this turn.
-III — Cold Snap — Tap all lands your opponents control. Exile Shiva, then return it to the battlefield (front face up).",U,Human; Noble; Warrior; saga; Elemental; etb; bounce; blink; transform,FIN,58,Rare,51,,3.5,seed
+III — Cold Snap — Tap all lands your opponents control. Exile Shiva, then return it to the battlefield (front face up).",U,Human; Noble; Warrior; saga; Elemental; etb; bounce; blink; transform,FIN,58,Rare,51; 51a,,3.5,seed
 Machinist's Arsenal,Artifact — Equipment,"Job select (When this Equipment enters, create a 1/1 colorless Hero creature token, then attach this to it.)
 Equipped creature gets +2/+2 for each artifact you control and is an Artificer in addition to its other types.
 Machina — Equip {4} ({4}: Attach to target creature you control. Equip only as a sorcery.)",W,Equipment; tokens; etb; equipment; pump; machina; job select; equip,FIN,23,Rare,21a,"artifact payoff — +2/+2 per artifact, Job-select token; fits the big-artifact goodstuff shell",5.0,hand

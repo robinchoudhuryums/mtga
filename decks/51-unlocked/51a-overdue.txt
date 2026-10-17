@@ -3,12 +3,12 @@
 #: colors: U
 #: plan: control
 #: tier: B — GRADED 2026-07, re-grounded 2026-10-17 after a twelve-swap pass, a four-swap
-#: tier: answers follow-up and a five-swap copy-engine pass. The measurable floor reads A:
-#: tier: interaction 8 plus card advantage 8 at a 3.03 curve. The letter stays B pending the
-#: tier: human re-grade. Seven of the 8 interaction pieces are instant-speed; Temporal Cleansing
-#: tier: is the sorcery. Three answer a permanent that has ALREADY resolved (Lost Days, Noggle
-#: tier: the Mind, Temporal Cleansing), and two of those put the card into the opponent's
-#: tier: LIBRARY, where the next mill bins it.
+#: tier: answers follow-up, a five-swap copy-engine pass and two more swaps the same day. The
+#: tier: measurable floor reads A, at its edge: interaction 7 plus card advantage 8 at a 3.06
+#: tier: curve. The letter stays B pending the human re-grade. Six of the 7 interaction pieces
+#: tier: are instant-speed counters; Temporal Cleansing, a sorcery, is the ONE answer to a
+#: tier: permanent that has already resolved, and it tucks the card where the next mill bins it.
+#: tier: Jill, Shiva's Dominant adds a repeatable bounce on top (tempo, not counted above).
 #: tier: THE ENGINE HAS TWO OUTS. The deck is a two-card engine and The Water Crystal is a
 #: tier: singleton; Scour for Scrap ("search your library for an artifact card … and/or return
 #: tier: target artifact card from your graveyard") finds it or rebuys a destroyed one. A third
@@ -49,9 +49,8 @@
 #: archetype: Rooms and the Crystal too — and was BANNED out of Standard 2026-08-11. Nothing owned
 #: archetype: replaces that clause.)
 #: archetype: THE LESSONS ARE NOT A TAX, and that is what makes this build work rather than merely
-#: archetype: cohere. It'll Quench Ya! is Spell Pierce that hits creatures too, Lost Days tucks a
-#: archetype: creature or enchantment where the next mill bins it, and Waterbending Lesson draws
-#: archetype: three. Each is a card the deck would want
+#: archetype: cohere. It'll Quench Ya! is Spell Pierce that hits creatures too, Octopus Form protects
+#: archetype: and untaps Master Pakku, and Waterbending Lesson draws three. Each is a card the deck would want
 #: archetype: anyway; the subtype is a rider, so the engine costs close to nothing.
 #: archetype: WATERBENDING LESSON IS THE HIDDEN COMBO. Its waterbend cost is paid by TAPPING your
 #: archetype: artifacts and creatures — and Master Pakku mills whenever he BECOMES TAPPED. So you
@@ -76,6 +75,15 @@
 #: archetype: two now share eight nonland cards, Mirror Room // Fractured Realm among them, and
 #: archetype: Fractured Realm's {5}{U}{U} half is this list's one seven-mana spell. Here it is a
 #: archetype: trigger doubler for Riverchurn, Councillors and Pakku, not a finisher.
+#: notes: SCHOOL DAZE REPLACED LOST DAYS, JILL, SHIVA'S DOMINANT REPLACED NOGGLE THE MIND (2026-10-17,
+#: notes: owner's call). School Daze is counter-and-draw or draw three at exactly five mana, so
+#: notes: every cast makes Exhibition Tidecaller mill ten (fourteen with the Crystal). Jill's
+#: notes: enters trigger returns any other nonland permanent to its owner's hand; Don & Leo
+#: notes: re-runs it at each end step and Echo or Gogo copy it, and bouncing the opponent's card
+#: notes: is a crime for Deepmuck Desperado. Jill is an unowned rare. COST: interaction 8 -> 7
+#: notes: (bounce is tempo, not interaction), Lessons 7 -> 6, and Temporal Cleansing is now the
+#: notes: only answer to a resolved permanent. If a resolved threat beats the deck, Lost Days is
+#: notes: the first card back.
 #: notes: THE 2026-10-17 COPY-ENGINE PASS (five swaps). In: Don & Leo, Problem Solvers, The
 #: notes: Everflowing Well // The Myriad Pools, Three Steps Ahead, Echo, Perceptive Prodigy, Temporal
 #: notes: Cleansing. CUT: Underwater Tunnel // Slimy Aquarium, one Accumulate Wisdom, Riverwalk
@@ -104,7 +112,7 @@
 #: notes: answers follow-up). "Whenever you commit a crime, each opponent mills three" — and nearly
 #: notes: every mill trigger and answer here TARGETS the opponent, so it is a free 7 (with the
 #: notes: Crystal) once per turn, on both players' turns. One Riverchurn stays for the instant-speed
-#: notes: mill that bins a card Lost Days or Temporal Cleansing tucked second from the top. Cost:
+#: notes: mill that bins a card Temporal Cleansing tucked second from the top. Cost:
 #: notes: one artifact (Fugitive Droid's unblockability) and a second late exhaust.
 #: notes: THE 2026-10-16 ANSWERS FOLLOW-UP (four swaps, the same day as the pass below). The
 #: notes: twelve-swap pass left the deck able to counter but not to ANSWER: five of six
@@ -209,8 +217,8 @@
 #: notes: the opponent draws library positions M+1..M+D instead of 1..D, and any fixed set of D
 #: notes: positions in a shuffled library has the same contents, so their chance of finding an
 #: notes: answer is unchanged. This deck therefore still needs REAL answers, which is why it
-#: notes: keeps eight of them (It'll Quench Ya!, Sokka's Haiku, Spellgyre, Fugitive Droid, Lost
-#: notes: Days, Noggle the Mind, Three Steps Ahead, Temporal Cleansing) rather than becoming all mill.
+#: notes: keeps seven of them (It'll Quench Ya!, Sokka's Haiku, Spellgyre, Fugitive Droid, Three
+#: notes: Steps Ahead, Temporal Cleansing, School Daze) rather than becoming all mill.
 #: notes: KNOWN LIABILITY, and it is worse here than in the parent: milling an opponent FEEDS a
 #: notes: graveyard deck — the G-42 shape. A deck built entirely on mill hands a recursion deck
 #: notes: its whole library. Blue/colorless Standard has the exile answers (Ghost Vacuum,
@@ -259,8 +267,8 @@ Deck
 
 # Real answers — mill is a clock, so these do the interacting
 1 Fugitive Droid (TMT) 40
-1 Lost Days (TLA) 62
-1 Noggle the Mind (ECL) 60
+1 School Daze (SPM) 42
+1 Jill, Shiva's Dominant // Shiva, Warden of Ice (FIN) 58
 1 Three Steps Ahead (OTJ) 75
 1 Temporal Cleansing (ECL) 78
 
