@@ -2,14 +2,14 @@
 #: format: Standard
 #: arena: 15 Air Nomads, 8dc84eb5-b2e3-450c-9a00-b2d6a7ec516d
 #: tier: B — Azorius fliers tempo, re-grounded 2026-10-17 after a twelve-swap pass. The
-#: tier: measurable floor reads A: interaction 8 plus card advantage 7 at a 3.11 curve.
+#: tier: measurable floor reads A: interaction 7 plus card advantage 7 at a 3.11 curve.
 #: tier: Kept at B, one band below the floor, as a deliberate call like 35a and 21a: this is
 #: tier: a flavour-first singleton build with a DIFFUSE spine (21 central themes), and the
 #: tier: pass is unplayed. What it fixed: protection 1 -> 3 (Liliana the Faultless's
 #: tier: hexproof, Moogles' Valor's team indestructible, Hakoda), three Gleaming Bastions
 #: tier: for basics (cards below 90% on curve 23 -> 17), and a lifegain/token layer —
 #: tier: Exalted Sunborn doubles every token, The Wind Crystal doubles every life gain and
-#: tier: gives the whole board flying and lifelink. What still argues down: only 2 of the 8
+#: tier: gives the whole board flying and lifelink. What still argues down: only 2 of the 7
 #: tier: interaction pieces answer a noncreature permanent.
 #: colors: WU
 #: archetype: Azorius (W/U) Air Nomads fliers / airbend tempo, going WIDE with Ally tokens
@@ -21,7 +21,7 @@
 #: archetype: creature count while the rest of the board stays home.
 #: notes: THE 2026-10-17 PASS (twelve swaps; entries below are HISTORY). Lands: -2 Island
 #: notes: -1 Plains +3 Gleaming Bastion ("{T}: Add {W} or {U}. Activate only if ... you control
-#: notes: a basic land" — 18 basics remain). In: The Mighty Thor, Jane Foster; Liliana the
+#: notes: a basic land" — 17 basics remain after the follow-up below). In: The Mighty Thor, Jane Foster; Liliana the
 #: notes: Faultless; Exalted Sunborn; Moogles' Valor; Denzilore Fatehold; The Wind Crystal;
 #: notes: Sage of the Skies; Ajani Resolute; Team Avatar. CUT: Water Tribe Rallier, It'll
 #: notes: Quench Ya!, Falcon, Winged Wonder, Gather the White Lotus, Teo, Spirited Glider,
@@ -32,7 +32,12 @@
 #: notes: AJANI RESOLUTE gains loyalty per lifegain EVENT, and Liliana makes one per token.
 #: notes: TEAM AVATAR vs SOKKA: Team Avatar wants one attacker, Sokka draws only when two
 #: notes: attack — a per-turn choice, not a conflict.
-#: notes: The Mind Stone was under consideration 2026-10-17: it needs a land slot or an answer slot.
+#: notes: FOLLOW-UP, same day: The Mind Stone replaced Path to Redemption (interaction 8 -> 7,
+#: notes: the A floor exactly), chosen over cutting a Plains so the 24 lands stay intact. It
+#: notes: is an indestructible {W} rock that ramps turn 2 into turn-4 five-drops, and its
+#: notes: harnessed ability flickers a permanent every end step (Aang, Jailer, Katara again).
+#: notes: Then a second OWNED Hallowed Fountain replaced a Plains: blue 13 -> 14, Denzilore
+#: notes: Fatehold 67% -> 72% on curve, Wan Shi Tong 70% -> 74%, white unchanged at 16.
 #: notes: Azorius (W/U) — Air Nomads fliers / tempo. A-track pass: +Wan Shi Tong (owned card-advantage
 #: notes: bomb) + It'll Quench Ya! (counter) + Watery Grasp (on-theme lockdown), firmed blue to 12 sources.
 #: notes: Kept the waterbend token fuel (Gather the White Lotus / United Front) — it pays the
@@ -72,16 +77,16 @@
 1 United Front (TLA) 39
 1 Team Avatar (TLA) 38
 1 Liliana the Faultless (FRA) 200
-1 Path to Redemption (TLA) 31
+1 The Mind Stone (MSH) 21
 1 Aang's Iceberg (TLA) 5
 1 The Wind Crystal (FIN) 43
 
 # Lands
 1 Abandoned Air Temple (TLA) 263
-10 Plains (ANB) 115
+9 Plains (ANB) 115
 8 Island (ANB) 113
 3 Gleaming Bastion (MSH) 267
-1 Hallowed Fountain (ECL) 265
+2 Hallowed Fountain (ECL) 265
 1 Floodfarm Verge (DSK) 259
 
 # Flex — suggested craft. See: deck.py flex 15
