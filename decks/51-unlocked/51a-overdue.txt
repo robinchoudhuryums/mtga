@@ -132,6 +132,11 @@
 #: notes: card. Its Sneak cost of {1}{U} is LIVE here rather than theoretical, because the deck
 #: notes: fields unblockable attackers (Veteran Ice Climber, The Mindskinner) to return; Kitsa
 #: notes: then copies it for {2} at power 3, which halves what is left again.
+#: notes: GOGO, MASTER OF MIMICRY REPLACED CEPHALID INKMAGE (2026-10-17). "{X}{X}, {T}: Copy target
+#: notes: activated or triggered ability you control X times" — every Pakku, Desperado, Councillors,
+#: notes: Tidecaller or Ice Climber mill trigger, and Riverchurn's exhaust (a copy is not an
+#: notes: activation, so "only once" does not stop it). Each copy is its own mill event, so The
+#: notes: Water Crystal adds +4 to each. It cannot copy Kitsune's Technique — that is a spell.
 #: notes: TAIGAM, MASTER OPPORTUNIST REPLACED THE TALE OF TAMIYO (2026-10-17; the Tale was an unowned
 #: notes: rare craft whose two jobs other cards already do). "Whenever you cast your second spell each
 #: notes: turn, copy it, then exile the spell you cast with four time counters on it" — so Kitsune's
@@ -224,7 +229,7 @@ Deck
 1 Scour for Scrap (EOE) 73
 
 # Threshold body — surveil 3, unblockable at seven cards in the yard (Guru Pathik cut 2026-10-16)
-1 Cephalid Inkmage (FDN) 32
+1 Gogo, Master of Mimicry (FIN) 54
 
 # Lessons — cards the deck wants anyway, with the subtype as a rider
 1 It'll Quench Ya! (TLA) 58
