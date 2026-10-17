@@ -3,11 +3,11 @@
 #: colors: U
 #: plan: control
 #: tier: B — GRADED 2026-07, re-grounded 2026-10-17 after a twelve-swap pass, a four-swap
-#: tier: answers follow-up, a five-swap copy-engine pass and six more swaps the same day. The
-#: tier: measurable floor reads B: interaction 6 plus card advantage 7 at a 3.06 curve — one
-#: tier: interaction short of A. Five of the 6 interaction pieces are instant-speed counters;
-#: tier: Temporal Cleansing, a sorcery, is the ONE answer to a
-#: tier: permanent that has already resolved, and it tucks the card where the next mill bins it.
+#: tier: answers follow-up, a five-swap copy-engine pass and seven more swaps the same day. The
+#: tier: measurable floor reads A, at its edge: interaction 7 plus card advantage 7 at a 3.03
+#: tier: curve. Five of the 7 interaction pieces are instant-speed counters; two sorceries answer
+#: tier: a permanent that has already resolved — Temporal Cleansing tucks it where the next mill
+#: tier: bins it, and Bilbo, Luckwearer's Burglar's Plot trades your worst permanent for it.
 #: tier: Jill, Shiva's Dominant adds a repeatable bounce on top (tempo, not counted above).
 #: tier: THE ENGINE HAS TWO OUTS. The deck is a two-card engine and The Water Crystal is a
 #: tier: singleton; Scour for Scrap ("search your library for an artifact card … and/or return
@@ -74,6 +74,13 @@
 #: archetype: two now share eight nonland cards, Mirror Room // Fractured Realm among them, and
 #: archetype: Fractured Realm's {5}{U}{U} half is this list's one seven-mana spell. Here it is a
 #: archetype: trigger doubler for Riverchurn, Councillors and Pakku, not a finisher.
+#: notes: BILBO, LUCKWEARER // BURGLAR'S PLOT REPLACED NIGHTWHORL HERMIT (2026-10-17). Burglar's
+#: notes: Plot ({4}{U} sorcery): "Exchange control of two target nonland permanents that share a
+#: notes: card type" — give a Most Decrepit Old Bird or a token, take their best permanent of ANY
+#: notes: type. Five mana spent means Exhibition Tidecaller mills ten, the steal is a crime for
+#: notes: Deepmuck Desperado, and Taigam can copy it as the second spell. Bilbo is then cast from
+#: notes: exile as an unblockable 1/1 looter — a standing unblocked attacker for the Sneak costs.
+#: notes: Interaction 6 -> 7, floor B -> A.
 #: notes: FOUR MORE SWAPS (2026-10-17, owner's calls): Lyra, Tolarian Archangel for Inspiration
 #: notes: from Beyond, Campus Composer // Aqueous Aria for The Everflowing Well, Pym Particles for
 #: notes: Fugitive Droid, Amazing Acrobatics for Spellgyre. Lyra makes a 3/3 flying Angel at EACH
@@ -284,10 +291,10 @@ Deck
 1 Three Steps Ahead (OTJ) 75
 1 Temporal Cleansing (ECL) 78
 1 Amazing Acrobatics (SPM) 25
+1 Bilbo, Luckwearer // Burglar's Plot (HOB) 32
 
-# Threats — a warded flier that draws three, and a blocker that turns unblockable
+# Threats — warded bodies and fliers; each unblocked attacker is a mill event under The Mindskinner
 1 Emeritus of Ideation // Ancestral Recall (SOS) 45
-1 Nightwhorl Hermit (BLB) 62
 1 Lyra, Tolarian Archangel (FRA) 217
 1 Campus Composer // Aqueous Aria (SOS) 40
 
