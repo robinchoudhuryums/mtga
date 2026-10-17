@@ -130,7 +130,6 @@ Encumbered Reejerey
 End of the Hunt
 Enigma Drake
 Entropic Battlecruiser
-Falcon, Winged Wonder
 Fated Firepower
 Fear of Isolation
 Fearsome Goblin Pair
@@ -153,7 +152,6 @@ Galuf's Final Act
 Gangly Stompling
 Gas Guzzler
 Gastal Raider
-Gather the White Lotus
 Germinate Recruits
 Germination Practicum
 Ghalta the Unstoppable
@@ -426,7 +424,6 @@ War Balloon
 War Machine, Legacy of Iron
 War Squeak
 Wargling
-Water Tribe Rallier
 Waterbender Ascension
 Way of the Healer
 Way of the Pyromancer

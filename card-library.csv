@@ -6218,3 +6218,6 @@ Weather Maker,Artifact,"Landfall — Whenever a land you control enters, put a c
 {T}, Remove three charge counters from this artifact: It deals 3 damage to any target.",Colorless,counters; burn; mana; landfall; noncombat damage; lands,TMT,182,1
 Rockfall Vale,Land,"This land enters tapped unless you control two or more other lands.
 {T}: Add {R} or {G}.",R/G,mana,FRA,186,1
+Denzilore Fatehold,Legendary Creature — Elder Sphinx,"Flash
+Flying
+Whenever you scry or surveil, put a +1/+1 counter on each creature you control.",W/U,Elder; Sphinx; counters; scry; flying; evasion; flash; tempo,FRA,128,1
