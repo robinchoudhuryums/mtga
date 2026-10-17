@@ -411,6 +411,8 @@ At the beginning of your end step, earthbend 2. (Target land you control becomes
 Nonbasic lands enter tapped.
 {7}: Put a conqueror counter on Zhao.
 As long as Zhao has a conqueror counter on him, nonbasic lands are Mountains. (They lose all other land types and abilities and have ""{T}: Add {R}."")",R,Human; Soldier; counters; mana; menace; evasion,TLA,162,Rare,14,"Fire Nation flavor (heuristic top 13 on counters/mana) | fits: 13,17",4.0,hand
+"Azula, On the Hunt",Legendary Creature — Human Noble,"Firebending 2 (Whenever this creature attacks, add {R}{R}. This mana lasts until end of combat.)
+Whenever Azula attacks, you lose 1 life and create a Clue token. (It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",B,Human; Noble; pay life; card draw; tokens; clue; firebending; bending,TLA,85,Uncommon,14,,5.5,seed
 "Lo and Li, Twin Tutors",Legendary Creature — Human Advisor,"When Lo and Li enter, search your library for a Lesson or Noble card, reveal it, put it into your hand, then shuffle.
 Noble creatures you control and Lesson spells you control have lifelink.",B,Human; Advisor; Noble; lifegain; lifelink,TLA,108,Uncommon,22,deck 22 tune 2026-10-08,2.5,seed
 Geyser Leaper,Creature — Human Warrior Ally,"Flying

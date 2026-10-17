@@ -42,7 +42,11 @@
 #: notes: (a Clue if it was a creature) and drains on your second draw each turn. Clive draws
 #: notes: "cards equal to your devotion to red" after discarding your hand, and its {4}{R}{R}
 #: notes: flip fights, adds {R}{R}{R}{R} twice and returns to draw again; best on an empty hand.
-#: notes: Azula, On the Hunt (uncommon craft) is the next add under consideration.
+#: notes: Then Azula, On the Hunt (uncommon craft, wishlisted) for Corroding Dragonstorm: "Firebending 2.
+#: notes: Whenever Azula attacks, you lose 1 life and create a Clue token" — card advantage 6 -> 7,
+#: notes: and Raph & Leo's extra combat makes it two Clues a turn. The cost: a cheap Dragon payoff
+#: notes: that rebought itself off every Dragon entering, and the curve rises (3.72 -> 3.78).
+#: notes: Improvisation Capstone was the alternative cut and is the first card out if the curve bites.
 #: notes: Fated Firepower for Jeong Jeong (CUT, user's choice over War Balloon): flash, so X is paid
 #: notes: from firebending combat mana (or Electro's banked red); every damage source then hits harder.
 
@@ -63,7 +67,7 @@
 1 Solstice Revelations (TLA) 153
 1 The Rise of Sozin (TLA) 117
 1 Draconautics Engineer (DFT) 121
-1 Corroding Dragonstorm (TDM) 75
+1 Azula, On the Hunt (TLA) 85
 1 Sarkhan, Dragon Ascendant (TDM) 118
 1 Nova Hellkite (EOE) 148
 1 Electro, Assaulting Battery (SPM) 76
