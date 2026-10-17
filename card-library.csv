@@ -2462,7 +2462,7 @@ Temple of Malice,Land,"This land enters tapped.
 When this land enters, scry 1. (Look at the top card of your library. You may put that card on the bottom.)
 {T}: Add {B} or {R}.",B/R,mana; etb; scry; selection,FDN,701,1
 Razortrap Gorge,Land,"This land enters tapped unless a player has 13 or less life.
-{T}: Add {B} or {R}.",B/R,mana,DSK,267,1
+{T}: Add {B} or {R}.",B/R,mana,DSK,267,2
 Ice Cream Kitty,Artifact Creature — Food Cat Mutant,"{2}, Sacrifice another creature or token: Draw a card. Activate only as a sorcery.
 {2}, {T}, Sacrifice this creature: You gain 3 life.",B/G,food; Cat; Mutant; lifegain; card draw; sacrifice,TMT,150,1
 "Blech, Loafing Pest",Legendary Creature — Pest,"Whenever you gain life, put a +1/+1 counter on each Pest, Bat, Insect, Snake, and Spider you control.",B/G,Pest; counters; lifegain,SOS,176,1
