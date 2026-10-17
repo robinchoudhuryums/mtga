@@ -2,8 +2,9 @@
 #: format: Standard
 #: colors: U
 #: plan: control
-#: tier: B — GRADED 2026-07, re-grounded 2026-10-17 after a twelve-swap pass, a four-swap
-#: tier: answers follow-up, a five-swap copy-engine pass and nine more swaps the same day. The
+#: tier: A — RE-GRADED 2026-10-17 by the owner (B since 2026-07), re-grounded the same day
+#: tier: after a twelve-swap pass, a four-swap answers follow-up, a five-swap copy-engine pass and
+#: tier: nine more swaps the same day. The
 #: tier: measurable floor reads A: interaction 8 plus card advantage 7 at a 3.08 curve. Five of
 #: tier: the 8 interaction pieces are instant-speed counters; three answer a permanent that has
 #: tier: already resolved — Temporal Cleansing tucks it where the next mill bins it, Bilbo,
@@ -22,8 +23,8 @@
 #: tier: WHAT ARGUES UP: Kitsune's Technique and Jidoor each mill HALF a library (half plus four
 #: tier: with the Crystal), and Most Decrepit Old Bird and Bilbo, Thief in the Night both
 #: tier: rebuy the Technique; Donatello copies Riverchurn Monument for a second exhaust; Mirror
-#: tier: Room's Fractured Realm doubles every mill trigger. What holds the letter at B: an
-#: tier: unplayed list and a two-card engine. Re-grade after play.
+#: tier: Room's Fractured Realm doubles every mill trigger. What keeps it from S: an
+#: tier: unplayed list and a two-card engine — the Crystal has two outs. Re-check after play.
 #: protect: The Water Crystal; Master Pakku; Riverchurn Monument; The Mindskinner; Exhibition Tidecaller
 #: archetype: MONO-BLUE LESSON MILL. The parent deck 51 wins by resolving enormous spells and
 #: archetype: carries mill as a two-card side plan. This variant inverts that: mill IS the deck,
