@@ -398,7 +398,6 @@ Time Stop
 Tomik, Izzet Sparkmage
 Toph, the Blind Bandit
 Topiary Lecturer
-Transit Mage
 Treasure Dredger
 Treeguard Duo
 Treetop Snarespinner

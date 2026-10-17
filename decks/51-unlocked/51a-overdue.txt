@@ -2,18 +2,18 @@
 #: format: Standard
 #: colors: U
 #: plan: control
-#: tier: B — GRADED 2026-07, re-grounded 2026-10-16 after a twelve-swap pass and a four-swap
-#: tier: answers follow-up the same day. The measurable floor now reads A: interaction 8 plus
-#: tier: card advantage 6 at a 3.0 curve. The letter stays B pending the human re-grade.
-#: tier: All 8 interaction pieces are instant-speed. The follow-up fixed what the counter-heavy
-#: tier: suite could not do — answer a permanent that has ALREADY resolved: Lost Days, Noggle the
-#: tier: Mind and Riverwalk Technique joined Zuko's Exile, four such answers where there was one.
-#: tier: Two of them put the card into the opponent's LIBRARY, where the next mill bins it.
-#: tier: THE ENGINE IS NOW FINDABLE. The deck is a two-card engine and The Water Crystal is a
+#: tier: B — GRADED 2026-07, re-grounded 2026-10-17 after a twelve-swap pass, a four-swap
+#: tier: answers follow-up and a five-swap copy-engine pass. The measurable floor reads A:
+#: tier: interaction 8 plus card advantage 8 at a 3.03 curve. The letter stays B pending the
+#: tier: human re-grade. Seven of the 8 interaction pieces are instant-speed; Temporal Cleansing
+#: tier: is the sorcery. Three answer a permanent that has ALREADY resolved (Lost Days, Noggle
+#: tier: the Mind, Temporal Cleansing), and two of those put the card into the opponent's
+#: tier: LIBRARY, where the next mill bins it.
+#: tier: THE ENGINE HAS TWO OUTS. The deck is a two-card engine and The Water Crystal is a
 #: tier: singleton; Scour for Scrap ("search your library for an artifact card … and/or return
-#: tier: target artifact card from your graveyard") is the THIRD out beside the Crystal and
-#: tier: Transit Mage, which the 2026-07 grade named as the single change most likely to earn
-#: tier: an A: 58.5% by turn nine instead of 44.1%. Scour also rebuys a destroyed Crystal.
+#: tier: target artifact card from your graveyard") finds it or rebuys a destroyed one. A third
+#: tier: out was cut on 2026-10-17 for a copy engine, so it is 44.1% by turn nine; the draw
+#: tier: suite (The Everflowing Well, Three Steps Ahead, Aether Syphon, The Theorist) digs for it.
 #: tier: PROTECTION 3, up from 1: Fugitive Droid counters a spell that targets the Crystal or a
 #: tier: creature, Octopus Form gives Master Pakku hexproof (and untaps him for a second mill),
 #: tier: and Emeritus of Ideation carries ward {2}.
@@ -29,11 +29,11 @@
 #: archetype: carries mill as a two-card side plan. This variant inverts that: mill IS the deck,
 #: archetype: and the Lesson subtype is the engine that feeds it. Every card is chosen to make one
 #: archetype: of three numbers go up — mill per turn, Lessons in the graveyard, or cards in hand.
-#: archetype: THE WATER CRYSTAL IS THE WHOLE DECK, and it is now a SINGLETON plus Transit Mage
-#: archetype: and Scour for Scrap rather than a 2-of. One copy plus a tutor finds it exactly as often as two copies —
-#: archetype: two outs either way — but the tutor is never the dead
-#: archetype: draw the second LEGENDARY copy becomes once one has resolved; Scour for Scrap made it
-#: archetype: three outs (58.5% by turn nine). "If an opponent would
+#: archetype: THE WATER CRYSTAL IS THE WHOLE DECK, and it is a SINGLETON plus Scour for Scrap
+#: archetype: rather than a 2-of. One copy plus a tutor finds it exactly as often as two copies —
+#: archetype: two outs either way (44.1% by turn nine) — but the tutor is never the dead draw the
+#: archetype: second LEGENDARY copy becomes once one has resolved, and it rebuys a destroyed
+#: archetype: Crystal. "If an opponent would
 #: archetype: mill one or more cards, they mill that many cards
 #: archetype: plus four instead" applies to EVERY mill event separately, so it is not a +4, it is a
 #: archetype: +4 per trigger. Riverchurn Monument's {1}, {T} goes from 2 to 6.
@@ -49,9 +49,9 @@
 #: archetype: Rooms and the Crystal too — and was BANNED out of Standard 2026-08-11. Nothing owned
 #: archetype: replaces that clause.)
 #: archetype: THE LESSONS ARE NOT A TAX, and that is what makes this build work rather than merely
-#: archetype: cohere. It'll Quench Ya! is Spell Pierce that hits creatures too. Zuko's Exile is
-#: archetype: unconditional exile of an artifact, creature or enchantment — removal deck 51 does not
-#: archetype: have at all. Each is a card the deck would want
+#: archetype: cohere. It'll Quench Ya! is Spell Pierce that hits creatures too, Lost Days tucks a
+#: archetype: creature or enchantment where the next mill bins it, and Waterbending Lesson draws
+#: archetype: three. Each is a card the deck would want
 #: archetype: anyway; the subtype is a rider, so the engine costs close to nothing.
 #: archetype: WATERBENDING LESSON IS THE HIDDEN COMBO. Its waterbend cost is paid by TAPPING your
 #: archetype: artifacts and creatures — and Master Pakku mills whenever he BECOMES TAPPED. So you
@@ -65,8 +65,8 @@
 #: archetype: VETERAN ICE CLIMBER is the same idea on a two-drop: unblockable, vigilance, and mills
 #: archetype: its own power on attack. Vigilance matters twice — it attacks and still blocks, and it
 #: archetype: is untapped for a waterbend cost.
-#: archetype: SELF-MILL IS A SECOND RESOURCE, not a cost. Sokka's Haiku, the surveil off Underwater
-#: archetype: Tunnel and Spellgyre, and Waterbending Lesson's discard all fill YOUR graveyard, which
+#: archetype: SELF-MILL IS A SECOND RESOURCE, not a cost. Sokka's Haiku, The Everflowing
+#: archetype: Well's mill two, Spellgyre's surveil, and Waterbending Lesson's discard all fill YOUR graveyard, which
 #: archetype: is what feeds Master Pakku's Lesson count and finds Kitsune's Technique again
 #: archetype: (Inspiration from Beyond, Most Decrepit Old Bird, Bilbo, Thief in the Night). The two halves of the graveyard do different
 #: archetype: jobs and neither competes with the other.
@@ -76,6 +76,21 @@
 #: archetype: two now share eight nonland cards, Mirror Room // Fractured Realm among them, and
 #: archetype: Fractured Realm's {5}{U}{U} half is this list's one seven-mana spell. Here it is a
 #: archetype: trigger doubler for Riverchurn, Councillors and Pakku, not a finisher.
+#: notes: THE 2026-10-17 COPY-ENGINE PASS (five swaps). In: Don & Leo, Problem Solvers, The
+#: notes: Everflowing Well // The Myriad Pools, Three Steps Ahead, Echo, Perceptive Prodigy, Temporal
+#: notes: Cleansing. CUT: Underwater Tunnel // Slimy Aquarium, one Accumulate Wisdom, Riverwalk
+#: notes: Technique, Transit Mage, Zuko's Exile. Don & Leo exiles an artifact and a creature you
+#: notes: control at each end step and returns them as NEW objects: Riverchurn Monument comes back
+#: notes: with its exhaust unused, and The Everflowing Well re-runs "mill two, then draw two". Echo
+#: notes: ("{1}, {T}: copy target activated or triggered ability you control from a creature
+#: notes: source") is a second Gogo for Pakku, Desperado, Councillors, Tidecaller and Ice Climber;
+#: notes: each copy is its own mill event, so the Crystal adds +4 to each. Three Steps Ahead is a
+#: notes: counter, a token copy of Desperado or Tidecaller, or draw two. Temporal Cleansing tucks
+#: notes: any nonland permanent and its convoke taps Master Pakku, which mills. Interaction held at
+#: notes: 8, card advantage 6 -> 8, board power 34 -> 37, avg MV 3.00 -> 3.03. COSTS: Lessons
+#: notes: 9 -> 7 (Master Pakku's X), and Transit Mage was cut, so the Crystal is down to two outs
+#: notes: (58.5% -> 44.1% by turn nine). Don & Leo is {3}{W/U}{W/U}, hybrid, so `#: colors:`
+#: notes: stays U (G-58).
 #: notes: ECHOCASTING SYMPOSIUM REPLACED CEREBRAL DOWNLOAD (2026-10-16), the five-mana draw-three
 #: notes: traded for a Lesson engine at the same end of the curve. "Target player creates a
 #: notes: token that's a copy of target creature you control", then Paradigm recasts it free at
@@ -89,7 +104,7 @@
 #: notes: answers follow-up). "Whenever you commit a crime, each opponent mills three" — and nearly
 #: notes: every mill trigger and answer here TARGETS the opponent, so it is a free 7 (with the
 #: notes: Crystal) once per turn, on both players' turns. One Riverchurn stays for the instant-speed
-#: notes: mill that bins a card Lost Days or Riverwalk Technique tucked second from the top. Cost:
+#: notes: mill that bins a card Lost Days or Temporal Cleansing tucked second from the top. Cost:
 #: notes: one artifact (Fugitive Droid's unblockability) and a second late exhaust.
 #: notes: THE 2026-10-16 ANSWERS FOLLOW-UP (four swaps, the same day as the pass below). The
 #: notes: twelve-swap pass left the deck able to counter but not to ANSWER: five of six
@@ -194,8 +209,8 @@
 #: notes: the opponent draws library positions M+1..M+D instead of 1..D, and any fixed set of D
 #: notes: positions in a shuffled library has the same contents, so their chance of finding an
 #: notes: answer is unchanged. This deck therefore still needs REAL answers, which is why it
-#: notes: keeps eight of them (It'll Quench Ya!, Sokka's Haiku, Spellgyre, Fugitive Droid, Zuko's
-#: notes: Exile, Lost Days, Noggle the Mind, Riverwalk Technique) rather than becoming all mill.
+#: notes: keeps eight of them (It'll Quench Ya!, Sokka's Haiku, Spellgyre, Fugitive Droid, Lost
+#: notes: Days, Noggle the Mind, Three Steps Ahead, Temporal Cleansing) rather than becoming all mill.
 #: notes: KNOWN LIABILITY, and it is worse here than in the parent: milling an opponent FEEDS a
 #: notes: graveyard deck — the G-42 shape. A deck built entirely on mill hands a recursion deck
 #: notes: its whole library. Blue/colorless Standard has the exile answers (Ghost Vacuum,
@@ -204,8 +219,8 @@
 #: notes: GURU PATHIK is {2}{G/U}{G/U} — HYBRID, so it is payable entirely with Islands and
 #: notes: `#: colors:` stays U (G-58). `deck.py mana` reports it as a hybrid stray paid on-color.
 #: notes: THE HONEST RISK: the deck is a two-card engine at heart. Without The Water Crystal the
-#: notes: mill halves and the clock roughly doubles in length. One copy plus Transit Mage, Scour
-#: notes: for Scrap and the draw suite is the mitigation, not a fix.
+#: notes: mill halves and the clock roughly doubles in length. One copy plus Scour for Scrap and
+#: notes: the draw suite is the mitigation, not a fix.
 
 Deck
 # Mill engines — the clock
@@ -222,32 +237,32 @@ Deck
 1 Master's Councillors (HOB) 47
 1 Bilbo, Thief in the Night (HOB) 33
 1 Echocasting Symposium (SOS) 44
+1 Don & Leo, Problem Solvers (TMT) 143
 
-# The amplifier — now a SINGLETON plus a tutor: same outs, no dead legendary draw
+# The amplifier — a SINGLETON plus a tutor: same outs as two copies, no dead legendary draw
 1 The Water Crystal (FIN) 85
-1 Transit Mage (DFT) 70
 1 Scour for Scrap (EOE) 73
 
-# Threshold body — surveil 3, unblockable at seven cards in the yard (Guru Pathik cut 2026-10-16)
+# Copy engines — each copied mill trigger is its own event, so the Crystal adds +4 to each
 1 Gogo, Master of Mimicry (FIN) 54
+1 Echo, Perceptive Prodigy (MSH) 51
 
 # Lessons — cards the deck wants anyway, with the subtype as a rider
 1 It'll Quench Ya! (TLA) 58
-2 Accumulate Wisdom (TLA) 44
+1 Accumulate Wisdom (TLA) 44
 1 Octopus Form (TLA) 66
 1 Sokka's Haiku (TLA) 71
-1 Zuko's Exile (TLA) 3
 1 Waterbending Lesson (TLA) 80
 
-# Rooms — two-stage enchantments; Fractured Realm doubles the mill triggers
-1 Underwater Tunnel // Slimy Aquarium (DSK) 79
+# Room — a two-stage enchantment; Fractured Realm doubles the mill triggers
 1 Mirror Room // Fractured Realm (DSK) 67
 
 # Real answers — mill is a clock, so these do the interacting
 1 Fugitive Droid (TMT) 40
 1 Lost Days (TLA) 62
 1 Noggle the Mind (ECL) 60
-1 Riverwalk Technique (TDM) 54
+1 Three Steps Ahead (OTJ) 75
+1 Temporal Cleansing (ECL) 78
 
 # Threats — a warded flier that draws three, and a blocker that turns unblockable
 1 Emeritus of Ideation // Ancestral Recall (SOS) 45
@@ -258,6 +273,7 @@ Deck
 1 Spellgyre (BLB) 72
 1 Inspiration from Beyond (FDN) 43
 1 Most Decrepit Old Bird // Speak Secrets (HOB) 49
+1 The Everflowing Well // The Myriad Pools (LCI) 56
 
 # Lands (24)
 1 Jidoor, Aristocratic Capital // Overture (FIN) 284
