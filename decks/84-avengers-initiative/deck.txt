@@ -22,10 +22,21 @@
 #: archetype: Staff on Nick Fury makes his attack dig trigger twice.
 #: protect: Director Nick Fury; Hawkeye, Trick Shot; Captain America, Team Leader; Avengers Assemble!; Agent Phil Coulson; Wizard's Staff; Herald's Horn
 #: notes: TIER UNSET pending the owner's call. The measurable floor reads A at 100 cards
-#: notes: (interaction 19 and card advantage 11, against an A line of 12 and a sum of 19),
-#: notes: protection 11. Unplayed. THE COST is the three-colour manabase: 22 W, 18 U, 19 R
+#: notes: (interaction 17 and card advantage 8, against an A line of 12 and a sum of 19),
+#: notes: protection 13. Unplayed. THE COST is the three-colour manabase: 22 W, 18 U, 19 R
 #: notes: sources, so the double-pip cards are turn-five-plus (Captain America, Super-Soldier
 #: notes: and the {U}{U} fliers at about 63% on curve, Hyperion's {W}{W}{W} 45% on turn five).
+#: notes: FIVE MORE SWAPS, 2026-10-18 (owner's picks after Option A). In: War Machine (an
+#: notes: artifact Hero — cutting it in Option A was an error, it is the Iron Legion overlap),
+#: notes: Vision, Spectral Synthezoid (casts a noncreature spell free each turn: an Equipment),
+#: notes: Captain Marvel, Apex Avenger (flying, double strike, indestructible — the best
+#: notes: carrier), The Sentry and Hyperion. Out: Jessica Jones, Thief's Knife, Spider-Woman,
+#: notes: Jeskai Revelation, Happy Hogan. THE SENTRY'S VOID: it "attacks each combat if able"
+#: notes: and has no vigilance, so it is tapped on your turn and cannot block; The Sentry has
+#: notes: vigilance, so it attacks AND blocks The Void each turn. The risk is The Sentry being
+#: notes: exiled or bounced. Answers to The Void: The Super Hero Civil War steals it (a token
+#: notes: has mana value 0), Fractured Identity, Vault Guardsman. Interaction 19 -> 17, card
+#: notes: advantage 11 -> 8, protection 11 -> 13, board power 118 -> 131.
 #: notes: OPTION A, 2026-10-18 (eighteen swaps, from .cycle/84-marvel-pile-analysis.md). In:
 #: notes: Captain America, Liberator; Tony Stark // The Invincible Iron Man; Iron Man, Modern
 #: notes: Marvel; Iron Man, Bleeding Edge; Iron Lad; The Vision; Captain America, First
@@ -67,7 +78,6 @@
 1 Herald's Horn (JMP) 469
 
 # Heroes — the attacking body of the deck
-1 Jessica Jones, Private Eye (MSH) 139
 1 Captain America, Wings of Freedom (MSH) 10
 1 Spider-Man, Web-Spinner (MSC) 832
 1 The Vision and Scarlet Witch (MSC) 707
@@ -81,6 +91,8 @@
 1 Iron Man, Futurist Paragon (MSC) 501
 1 Silver Surfer, Cosmic Voyager (MSC) 639
 1 Daredevil, Man Without Fear (MSH) 213
+1 Captain Marvel, Apex Avenger (MSC) 78
+1 The Sentry, Golden Guardian (MSH) 35
 
 # Equipment and artifact Heroes — the Iron Legion and the gear they carry
 1 Captain America, Liberator (MSC) 587
@@ -94,7 +106,8 @@
 1 Hard-Won Jitte (TMT) 91
 1 Falcon's Wing Harness (MSH) 53
 1 Iron Man Armor (MSH) 248
-1 Thief's Knife (FIN) 81
+1 Vision, Spectral Synthezoid (MSC) 644
+1 War Machine, Legacy of Iron (MSH) 238
 
 # Protection
 1 Captain America, Super-Soldier (MSH) 9
@@ -102,6 +115,7 @@
 1 Valorous Stance (FDN) 583
 1 Boros Charm (FDN) 721
 1 Conqueror's Flail (PZA) 15
+1 Hyperion, Supreme Hero (MSC) 599
 
 # Interaction
 1 Counterspell (MAR) 52
@@ -109,14 +123,11 @@
 1 Three Steps Ahead (OTJ) 75
 1 Lightning Helix (MKM) 218
 1 Abrade (FDN) 188
-1 Jeskai Revelation (TDM) 196
 1 Fractured Identity (OTP) 45
 1 The Super Hero Civil War (MSH) 231
 1 Mjölnir, Hammer of Thor (MSH) 146
 1 The Wondrous Wasp (MSH) 84
-1 Spider-Woman, Secret Agent (MSH) 229
 1 Vault Guardsman (MSC) 612
-1 Happy Hogan, Bodyguard (MSC) 622
 1 Captain Marvel, Shooting Star (MSC) 589
 
 # Card advantage and selection

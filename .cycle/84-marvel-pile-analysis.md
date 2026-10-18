@@ -52,7 +52,16 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 
 ## 2. Standing error list
 
-(none yet)
+- **E1 — War Machine was cut in Option A as a plain Hero; it is a Legendary ARTIFACT
+  Creature Hero**, the exact F1/F3 overlap. Restored 2026-10-18. Read the TYPE LINE, not the
+  name, before sorting a card into "Hero" or "artifact".
+- **E2 — The Sentry was graded ✗ for handing over The Void.** Wrong: The Void has no
+  vigilance and must attack, so it is tapped on your turn and never blocks you, while The
+  Sentry (vigilance) attacks and still blocks it. Now in the deck.
+- **E3 — The Iron Legion was graded at a 13-artifact count.** At 21 artifacts / 11
+  artifact creatures (after Option A) the artifact-COUNT cards (Iron Man, Master of
+  Machines; Ironheart; Iron Spider; Vision Quest; Fateful Discovery; Kíli) are worth more
+  than their batch grades (F3). Re-rank them, do not re-read them.
 
 ## 3. Cross-batch observations
 
