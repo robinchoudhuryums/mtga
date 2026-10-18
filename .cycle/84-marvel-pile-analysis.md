@@ -313,6 +313,32 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | Sami, Ship's Engineer | ◇ | a Robot when two creatures are tapped |
 | Vraska, Soul of Stone | ★ / commander | R/W/U; noncreature spells make Treasure-creature tokens; artifact creatures have vigilance — another Jeskai commander option (artifacts) |
 
+### Batch 7 (cards 181–201)
+
+| Card | Verdict | Note (from full text) |
+|---|---|---|
+| Chrome Dome | ◇ | artifact-creature anthem, {5} temporary copies |
+| Daily Bugle Newspaper | ◇+ | {2},{T}: loot and a Treasure |
+| Glamdring | ◇ | scales with instants/sorceries in the graveyard — few here |
+| Super-Adaptoid | ◇+ | a Villain; power = legendary creatures you control (most of them); copies a creature's keywords |
+| The Ooze | ◇ | Mutagen tokens from countered creatures leaving |
+| Chromatic Lantern | ★★ | every land taps for any colour — the cure for 22 W / 18 U / 19 R sources against double pips |
+| Herald's Horn | ★★★ | name HERO: Hero spells cost {1} more less (stacks with Nick Fury) and every upkeep a Hero on top goes to hand |
+| Tezzeret, Cruel Captain | ★ | loyalty per artifact entering; −3 tutors an MV ≤1 artifact (Dragonfire Blade, Ninja's Kunai, Shadowspear, Doc Ock's Tentacles) |
+| Ultron, Artificial Malevolence | ◇+ | a Villain; {2}: token copy of each nontoken artifact entering |
+| Weather Maker | ◇+ | rock that pings once landfall charges it |
+| Arc Reactor | ◇ | improvise {C}{C}{C} rock |
+| Cosmic Cube | ★★ | ward {2}; whenever you attack, cast a spell from the top six with MV ≤ the greatest attacking power, free — an equipped attacker makes it huge |
+| Meteorite | ◇ | 5-mana rock that pings 2 |
+| Ultron, Machine Overlord | ◇ | Robot/Construct lord |
+| Secluded Starforge | ◇+ | land: pump by tapping artifacts, or make Robots |
+| Murdock's Crusade | ◇+ | teamwork exile of a toughness-4+ creature |
+| We Say Thee Nay! | ◇ | a soft counter, harder with teamwork |
+| Timeline Inquiry | ★ | instant draw three (no discard with teamwork) |
+| Crossover Collaboration | ◇ | impulse two |
+| Team Tactics | ◇ | a double-strike trick |
+| Kang the Conqueror | ◇ | a Villain; an extra turn at 8 mana |
+
 ## 5. Consolidated plan (live)
 
 (after the last batch)
