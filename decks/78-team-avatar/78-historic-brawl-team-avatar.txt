@@ -27,6 +27,17 @@
 #: tier: two draw engines (The Great Henge, Tribute to the World Tree) that the enters-
 #: tier: doublers multiply. PROVISIONAL because no Brawl game has been played with it.
 #: protect: Katara, the Fearless; South Pole Voyager; Avatar Enthusiasts; Haru, Hidden Talent; Suki, Kyoshi Warrior; Starfield Vocalist; Doubling Season; Elesh Norn, Mother of Machines; Appa, Loyal Sky Bison; Earth Kingdom General; Toph, the Blind Bandit; Earth King's Lieutenant; Katara, Heroic Healer; The Blue Spirit
+#: notes: FIVE MORE SWAPS, 2026-10-18 (owner's picks). In: Ms. Marvel, Elastic Ally, Sage of the
+#: notes: Skies, Gideon Blackblade, Ajani Resolute, Brimaz, King of Oreskos. Out: Virtue of
+#: notes: Knowledge (Starfield Vocalist stays, since Mirror Room's best target is a copy of it),
+#: notes: An Unexpected Party, Swords to Plowshares, Niko, Light of Hope, Overlord of the
+#: notes: Mistmoors. Gideon replaces Swords as the answer (-6: exile target nonland permanent),
+#: notes: and Way of the Mentor's loyalty-per-lifegain brings the -6 back round; on your turn he
+#: notes: is an indestructible 4/4 and his +1 grants indestructible. Ajani Resolute is the second
+#: notes: loyalty sink for the same lifegain events. Ms. Marvel draws when a creature with power
+#: notes: above its base connects, which every creature with a +1/+1 counter is. Interaction held
+#: notes: at 13, protection 5 -> 6. The cost is WHITE: Brimaz, Gideon and In the Trenches are
+#: notes: {W}{W} three-drops at about 63% on turn three against 22 white sources.
 #: notes: NINE SWAPS, 2026-10-17 (owner's picks). In: Gandalf the White, Mirror Room //
 #: notes: Fractured Realm, Fractured Identity, In the Trenches, Heliod, Sun-Crowned, Ajani's
 #: notes: Welcome, Final Showdown, Way of the Mentor, Toph, Earthbending Master. Out: Roaming
@@ -178,15 +189,15 @@
 1 Toph, the Blind Bandit (TLA) 198
 1 Ty Lee, Chi Blocker (TLA) 76
 1 Sokka, Lateral Strategist (TLA) 241
-1 Niko, Light of Hope (DSK) 224
+1 Ajani Resolute (FRA) 195
 1 Elspeth, Storm Slayer (TDM) 11
 1 Bard, King of Dale (HOB) 144
 1 Elesh Norn, Mother of Machines (ONE) 10
 1 Gandalf the White (LTR) 19
-1 Virtue of Knowledge // Vantress Visions (WOE) 76
+1 Ms. Marvel, Elastic Ally (MSC) 744
 1 Exalted Sunborn (EOE) 15
 1 Galadriel, Light of Valinor (HOC) 32
-1 An Unexpected Party // At the Door (HOB) 29
+1 Sage of the Skies (TDM) 22
 1 The Great Henge (ELD) 161
 1 Tribute to the World Tree (MOM) 211
 1 Kellan Joins Up (OTJ) 212
@@ -205,7 +216,7 @@
 1 United Front (TLA) 39
 1 Aang, at the Crossroads // Aang, Destined Savior (TLA) 203
 1 Appa, Loyal Sky Bison (TLA) 9
-1 Overlord of the Mistmoors (DSK) 23
+1 Brimaz, King of Oreskos (J25) 58
 1 Aang and Katara (TLE) 69
 1 Toph, Earthbending Master (TLE) 145
 1 Aang, Airbending Master (TLE) 74
@@ -220,7 +231,7 @@
 1 Final Showdown (OTJ) 11
 1 Prayer of Binding (FDN) 739
 1 The Eagles Are Coming! (HOB) 12
-1 Swords to Plowshares (SPG) 54
+1 Gideon Blackblade (WAR) 13
 1 Fractured Identity (OTP) 45
 1 Buried in the Garden (MKM) 191
 1 Leyline Binding (DMU) 24
