@@ -90,6 +90,11 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 - **O9 — Commander options in these colours:** Director Nick Fury (Heroes), Captain America,
   First Avenger (Equipment as ammunition), Sokka and Suki (Allies carrying Equipment — but
   Allies are deck 78's identity).
+- **O10 — The pile holds about 45 Equipment.** Even a pure equipment 99 runs ~20 of them, so
+  the cut is on QUALITY: self-attaching (Iron Man Armor, Falcon's Wing Harness, Embercleave,
+  job select), protection (Conqueror's Flail, Dragonfire Blade, Swords, Captain America's
+  Shield), double strike (Jitte, Genji Glove) and card flow (Buster Sword, Sword of Fire and
+  Ice) beat a plain stat stick.
 
 ## 4. Running verdicts
 
@@ -232,6 +237,41 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | Nahiri, Forged in Fury | ★★ | affinity for Equipment; equipped attackers exile the top card to play, Equipment cast FREE |
 | Axgard Armory | ★ | a land that tutors an Aura and an Equipment |
 | Sokka and Suki | ★ / commander | R/W/U Ally: attaches an Equipment to each entering Ally; each Equipment entering makes an Ally token — a second equipment COMMANDER option, but Allies are the Avatar deck's theme |
+
+### Batch 5 (cards 121–150)
+
+| Card | Verdict | Note (from full text) |
+|---|---|---|
+| Doc Ock's Tentacles | ★ | {1}: +4/+4, attaches free whenever a mana-value-5+ creature enters (about a dozen here); equip {5} otherwise |
+| Dragonfire Blade | ★★ | {1}: +2/+2 and hexproof from monocolored; equip {4} minus one per colour of the target — {1} or {2} on most of these Heroes (F5) |
+| Excalibur II | ◇ | grows with lifegain; no lifegain engine |
+| Ninja's Kunai | ★ | {1}, equip {1}: sacrifice for 3 damage — cheap removal ammunition |
+| Shadowspear | ★★ | +1/+1, trample, lifelink; {1}: their permanents lose hexproof and indestructible (rare craft) |
+| Captain America's Shield | ★★ | indestructible; +0/+8, vigilance; on attack taps a defender; equip {2} |
+| Andúril, Narsil Reforged | ★★ | on attack: a +1/+1 counter on EACH creature (two with the city's blessing) — go-wide AND voltron (mythic craft) |
+| Conqueror's Flail | ★★ | +3/+3 here (three colours) and "your opponents can't cast spells during your turn" — protection for every combat |
+| Hero's Heirloom | ★ | +2/+1; a legendary carrier (nearly all of them) gets trample and haste |
+| Buster Sword | ★★ | +3/+2; combat damage: draw, then cast a spell of MV ≤ that damage free |
+| Orcrist, Goblin-cleaver | ★★ | +2/+2 trample; combat damage: a Treasure per creature of a chosen type — name Hero |
+| Sword of Fire and Ice | ★★★ | +2/+2, protection from red and blue; combat damage: 2 damage and a card (mythic craft) |
+| Sword of Wealth and Power | ★★ | +2/+2, protection from instants and sorceries; Treasure and a spell copy on damage |
+| Helm of the Host | ★★ | each combat a non-legendary hasty copy of the equipped creature (a Team Leader or Trick Shot copy re-fires); equip {5} |
+| Genji Glove | ★★ | double strike AND an extra combat — Nick Fury's "whenever you attack" fires again in the second combat |
+| The Mind Stone | ★ | indestructible {W} rock; harnessed, it blinks a permanent every end step |
+| Ashe, Princess of Dalmasca | ★ | not a Hero; on attack, look at five for an artifact |
+| Saheeli, Consul of Oversight | ◇ | scry/surveil → Thopter, once a turn |
+| Ishgard, the Holy See // Faith & Grief | ★ | a land whose adventure returns two artifacts/enchantments from the graveyard |
+| Lady Octopus, Inspired Inventor | ◇ | a Villain; free artifact casts up to her counters |
+| Donatello, Gadget Master | ◇ | not a Hero; copies an artifact on combat damage |
+| Donatello, Way with Machines | ◇ | grows on artifacts entering |
+| I Am Iron Man | ◇+ | instant: a 4/4 flying artifact creature and a card |
+| Moonlit Meditation | ◇ | token-copy Aura |
+| Simulacrum Synthesizer | ◇+ | scry 2; MV-3+ artifacts make scaling Constructs |
+| The Mechanist, Aerial Artisan | ★ | noncreature spell → Clue (O4), an Artificer for Cid; an Ally |
+| Donatello, Mutant Mechanic | ◇ | animates an artifact with three counters |
+| Mechanized Production | ◇ | an alt-win Aura (mythic) — spice only |
+| Scour for Scrap | ★ | tutor or rebuy an artifact, instant |
+| Fateful Discovery | ★★ | "whenever an artifact you control enters, draw a card" — Equipment, Treasure, Robot tokens |
 
 ## 5. Consolidated plan (live)
 
