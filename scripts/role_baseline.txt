@@ -191,6 +191,7 @@ Hour of Victory
 How to Start a Riot
 HYDRA Troopers
 Hymn of the Faller
+Hyperion, Supreme Hero
 I Am Iron Man
 Identity Echo
 Improvisation Capstone
@@ -200,6 +201,7 @@ Interface Ace
 Involuntary Employment
 Iron Hills Stalwart
 Iron Lad, Diverging Destiny
+Iron Man, Futurist Paragon
 Ironpaw Aspirant
 Jace's Machinations
 Jeong Jeong, the Deserter
@@ -290,8 +292,10 @@ Perigee Beckoner
 Personify
 Peter Parker
 Peter Parker // Amazing Spider-Man
+Photon, Lady of Light
 Picklock Prankster // Free the Fae
 Pond Prophet
+Ponder
 Pride of the Road
 Prideful Parent
 Psychic Whorl
@@ -336,6 +340,7 @@ Shark Shredder, Killer Clone
 Sheriff of Safe Passage
 Shredder, Unrelenting
 Shrike Force
+Silver Surfer, Cosmic Voyager
 Silvergill Mentor
 Silverquill, the Disputant
 Skyskipper Duo
@@ -348,6 +353,7 @@ Souls of the Lost
 Sozin's Comet
 Spider-Islanders
 Spider-Man, Web-Slinger
+Spider-Man, Web-Spinner
 Spider-Punk
 Splash Portal
 Stalwart Successor
@@ -389,6 +395,8 @@ The Queen of Dale
 The Regalia
 Think Twice
 Thor Odinson
+Thor, Asgard's Avenger
+Thor, Guardian of Midgard
 Three Tree Scribe
 Thunderous Velocipede
 Tidings of War
@@ -436,6 +444,7 @@ White Tiger, Ava Ayala
 Wisecrack
 Wonder Man, Hollywood Hero
 Woodwork Prodigy // Soul Tether
+Wraith, Vicious Vigilante
 Y'shtola Rhul
 Yoshimaru, Beloved Companion
 Zog, Triceraton Castaway

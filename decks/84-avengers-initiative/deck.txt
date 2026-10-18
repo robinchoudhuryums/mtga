@@ -1,0 +1,136 @@
+#: name: Avengers Initiative — Brawl
+#: format: Historic Brawl
+#: colors: WUR
+#: commander: Director Nick Fury
+#: plan: midrange
+#: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool), JESKAI HERO TRIBAL
+#: archetype: around Director Nick Fury: "Hero spells you cast cost {1} less" and "whenever
+#: archetype: you attack, look at the top four cards of your library. You may reveal a Hero
+#: archetype: card … put that card into your hand", so every attack is a card. The payoffs
+#: archetype: reward Heroes ENTERING and ATTACKING: Hawkeye, Trick Shot deals damage equal to
+#: archetype: the number of Heroes you control whenever one enters (Thor, Asgard's Avenger and
+#: archetype: Hawkeye, Young Avenger add to each hit; Echo copies the trigger), Captain America,
+#: archetype: Team Leader gives each new Hero haste and a counter, and Photon and The Mighty
+#: archetype: Thor re-buy enters triggers on attack. Avengers Assemble! draws each end step a
+#: archetype: Hero attacked or entered. DISTINCT from the Avatar Brawl deck (78, Bant): no
+#: archetype: tokens, no enters-doublers, no lifegain engine; red damage and Hero density.
+#: protect: Director Nick Fury; Hawkeye, Trick Shot; Captain America, Team Leader; Avengers Assemble!; Agent Phil Coulson
+#: notes: TIER UNSET pending the owner's call. The measurable floor reads A at 100 cards
+#: notes: (interaction 19 and card advantage 7, against an A line of 12 and a sum of 19),
+#: notes: protection 11. Unplayed. THE COST is the three-colour manabase: 22 W, 18 U, 19 R
+#: notes: sources, so the double-pip cards are turn-five-plus (Captain America, Super-Soldier
+#: notes: and the {U}{U} fliers at about 63% on curve, Hyperion's {W}{W}{W} 45% on turn five).
+#: notes: DRAFTED 2026-10-18 from the owner's 38-card Marvel pile plus owned Hero support,
+#: notes: interaction and lands. LEFT OUT from the pile: Hulk, Always Angry ("When Hulk
+#: notes: enters, destroy all artifacts" — it kills Iron Man, Vision, The Vision and Scarlet
+#: notes: Witch and Vault Guardsman), Black Panther, Claws of Bast (attacks-alone rewards fight
+#: notes: Falcon's and Captain America, Skybound's battalion), and the discard / artifact / blink
+#: notes: sub-theme cards the list does not support (Daredevil, Fearless Fighter, Spider-Man,
+#: notes: New Champion, Astonishing Spider-Man, Hulkling, The Immortal Weapons, Mockingbird,
+#: notes: Bobbi Morse, Imperial Cosmographer). Most MSC cards read as unowned in the library;
+#: notes: the owner listed them as their pile, so that is stale catalogue data, not a gap.
+
+# Commander (leads from the command zone; also one of the 100)
+1 Director Nick Fury (MSC) 81
+
+# Hero engines — what makes each Hero entering or attacking pay off
+1 Hawkeye, Trick Shot (MSC) 506
+1 Captain America, Team Leader (MSC) 5
+1 Agent Phil Coulson (MSH) 4
+1 Avengers Assemble! (MSH) 6
+1 Thor, Asgard's Avenger (MSC) 756
+1 Hawkeye, Young Avenger (MSH) 131
+1 Echo, Perceptive Prodigy (MSH) 51
+1 Photon, Lady of Light (MSC) 606
+1 The Mighty Thor, Jane Foster (MSH) 222
+1 Wondrous Revival (MSC) 528
+1 Origin of the Avengers (MSH) 28
+
+# Heroes — the attacking body of the deck
+1 Matt Murdock, Justice Seeker (MSC) 602
+1 Hero in Training (MSH) 16
+1 Falcon, Joaquin Torres (MSC) 593
+1 Black Panther, Most Dangerous (MSC) 584
+1 Hawkeye, Bowslinger (MSC) 596
+1 Wraith, Vicious Vigilante (SPM) 160
+1 Jessica Jones, Private Eye (MSH) 139
+1 Human Torch, Johnny Storm (MSH) 136
+1 War Machine, Legacy of Iron (MSH) 238
+1 Captain America, Wings of Freedom (MSH) 10
+1 Spider-Man, Web-Spinner (MSC) 832
+1 Iceman and Firestar (MSC) 742
+1 The Vision and Scarlet Witch (MSC) 707
+1 SP//dr, Piloted by Peni (SPM) 147
+1 Blue Marvel, Adam Brashear (MSC) 530
+1 Captain America, Steve Rogers (MSC) 835
+1 Captain America, Skybound (MSC) 588
+1 Thor, God of Thunder (MSH) 156
+1 Thor, Guardian of Midgard (MSC) 503
+1 Iron Man, Titan of Innovation (MAR) 91
+1 Iron Man, Futurist Paragon (MSC) 501
+1 Silver Surfer, Cosmic Voyager (MSC) 639
+1 Captain Marvel, Apex Avenger (MSC) 78
+1 Hyperion, Supreme Hero (MSC) 599
+1 Vision, Spectral Synthezoid (MSC) 644
+
+# Protection
+1 Captain America, Super-Soldier (MSH) 9
+1 Captain America, Unbowed (MSC) 505
+1 Valorous Stance (FDN) 583
+1 Boros Charm (FDN) 721
+1 Swiftfoot Boots (BRR) 58
+
+# Interaction
+1 Counterspell (MAR) 52
+1 Dovin's Veto (FCA) 51
+1 Three Steps Ahead (OTJ) 75
+1 Lightning Helix (MKM) 218
+1 Abrade (FDN) 188
+1 Crib Swap (ECL) 11
+1 Jeskai Revelation (TDM) 196
+1 Fractured Identity (OTP) 45
+1 Liminal Hold (ECL) 24
+1 Mjölnir, Hammer of Thor (MSH) 146
+1 The Wondrous Wasp (MSH) 84
+1 Spider-Woman, Secret Agent (MSH) 229
+1 Vault Guardsman (MSC) 612
+1 Happy Hogan, Bodyguard (MSC) 622
+1 Captain Marvel, Shooting Star (MSC) 589
+
+# Card advantage and selection
+1 Rhystic Study (FCA) 31
+1 Ponder (LRW) 79
+
+# Ramp
+1 Patchwork Banner (BLB) 247
+1 Arcane Signet (FRC) 20
+1 Talisman of Conviction (AA1) 17
+1 Mind Stone (HA1) 19
+
+# Lands (37)
+1 Avengers Tower (MSH) 260
+1 Hallowed Fountain (ECL) 265
+1 Steam Vents (ECL) 267
+1 Sacred Foundry (EOE) 256
+1 Riverpyre Verge (DFT) 260
+1 Sunbillow Verge (DFT) 264
+1 Floodfarm Verge (DSK) 259
+1 Gleaming Bastion (MSH) 267
+1 Mystic Monastery (TDM) 262
+1 Secluded Courtyard (FDN) 267
+1 Starting Town (FIN) 289
+1 Evolving Wilds (ECL) 264
+1 Daily Bugle Building (SPM) 179
+1 Temple of Enlightenment (FDN) 698
+1 Temple of Epiphany (FDN) 699
+1 Temple of Triumph (FDN) 705
+1 Swiftwater Cliffs (MOM) 273
+1 Tranquil Cove (TDM) 270
+1 Wind-Scarred Crag (FDN) 271
+1 Stark Industries (MSH) 272
+1 Avengers Hangar (MSH) 259
+1 Asgardian Citadel (MSH) 258
+1 Raucous Carnival (DSK) 266
+6 Plains (FRA) 281
+4 Island (FRA) 283
+4 Mountain (FRA) 287
