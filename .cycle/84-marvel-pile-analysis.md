@@ -71,6 +71,13 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 - **O5 — The artifact-creature Iron Men form their own sub-engine** (Master of Machines,
   Modern Marvel, Bleeding Edge, Tony Stark, Iron Lad, Ironheart, Repulsor Bots — all Heroes,
   all artifacts). That is the F1/F3 overlap: an "Iron Legion" package costs no Hero density.
+- **O6 — The EQUIPMENT ENGINE is mostly NOT Heroes.** The pieces that make equipment cheap
+  or free — Kíli (free first equip), Danitha Capashen (cost reducer), Danitha, Sword of Hope
+  (draw), Sokka, Swordmaster (free attach), Weapons Vendor, Halvar (double strike + move),
+  Super-Soldier Serum — are a Dwarf, two Knights, an Ally, an Artificer, a God and an Aura.
+  Under Nick Fury each costs Hero density (F1). Under Captain America, First Avenger
+  (F6), who does not care about Heroes, they are the core. **Variant signal is now strong:**
+  an equipment deck led by Captain America, First Avenger, distinct from the Hero-tribal 84.
 
 ## 4. Running verdicts
 
@@ -143,6 +150,41 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | Patriot, Young Avenger | ★ | prowess; "as long as Patriot is equipped, other creatures you control get +1/+0" |
 | Daredevil, Man Without Fear | ★★ | haste, vigilance; whenever you attack, exile the top card — a Hero gives +2/+1 — and you may play it: a second Nick Fury dig |
 | The Super Hero Civil War | ★★ | Saga: steal up to two creatures (total MV ≤6), team pump, then a fight — interaction |
+
+### Batch 3 (cards 61–90)
+
+| Card | Verdict | Note (from full text) |
+|---|---|---|
+| Thor Odinson | ★ | flying vigilance, prowess twice — every Equipment cast is +2/+2 (O4) |
+| Captain America, First Avenger | ★★ / commander | free attach every combat ("Catch") and "{3}, unattach: damage equal to that Equipment's MV divided among up to three targets" (F6). In the 99 a strong card; as COMMANDER, a different deck |
+| Iron Man Armor | ★★ | attaches itself on entry (F2), +2/+1 flying; {2} turns it into a Construct HERO that grows with your artifact count |
+| Team Transmitter | ★ | a 3-mana any-colour rock that gains 1 per Hero entering |
+| Viv Vision, Teen Synthezoid | ★ | 3-mana artifact Robot Hero flier; draws on attack at power 4+ (one Equipment gets there) |
+| Iron Spider, Stark Upgrade | ★ | {T}: a counter on each artifact creature; {2}, remove two counters: draw (O5) |
+| The Vision | ★★ | 4-mana artifact Hero flier; each noncreature spell: double strike / indestructible / draw (O4) |
+| Silver Surfer, Galactus's Herald | △ | a 5-mana 4/5 flier whose value is tutoring a 10-drop |
+| Galactus, Devourer of Worlds | △ | {10}; not a Hero; spice only |
+| Crystal Fragments // Summon: Alexander | ◇+ | {W}, equip {1}, +1/+1; at seven mana flips to a Saga that fogs twice and taps their team |
+| Iconic Shield | ◇ | +1/+2, gives another attacker indestructible; equip {3} |
+| Quintessential Katana | ◇ | untap + 2 life on combat damage; its free attach is for Ninjas |
+| S.H.I.E.L.D. Spy Kit | ◇ | equip {1}; attacks ALONE: untap and scry (O2) |
+| Ancestral Katana | △ | Samurai/Warrior attacking alone only |
+| Bark of Doran | △ | toughness-as-damage; only a few high-toughness Heroes |
+| Kíli the Resourceful | ★★★ | not a Hero (Dwarf), but storied is trivial here (three artifacts/LEGENDARIES) → "pay {0} rather than the equip cost of the first equip ability you activate each turn", and draws when an Equipment enters (once a turn) — the equipment engine (O6) |
+| Rune of Sustenance | ◇ | Aura that draws; can enchant an Equipment to grant lifelink |
+| Spectral Steel | ◇ | +2/+2 Aura that later rebuys an Equipment |
+| Super-Soldier Serum | ★★ | Aura: +2/+2, first strike, vigilance; "whenever enchanted creature attacks or blocks, attach ANY NUMBER of Equipment you control to it" — free mass equip, but an Aura dies with its creature (F5) |
+| Danitha Capashen, Paragon | ★★ | not a Hero; Aura and Equipment SPELLS cost {1} less; first strike, vigilance, lifelink body (O6) |
+| Danitha, Sword of Hope | ★★ | not a Hero; draws when you cast an Equipment (or target your creature), once a turn (O6) |
+| Godsend | ★ | mythic; +3/+3, exiles a blocker/blocked creature; equip {3} |
+| Infinity Formula | ◇ | self-attaching +1/+2 and 2 life per attack |
+| One Last Job | ★ | spree: reanimate a creature AND return an Equipment attached to it |
+| Plate Armor | ★★ | +3/+3 and ward {1}; equip {3} minus {1} per other Equipment |
+| Sokka, Swordmaster | ★ | an Ally, not a Hero; attaches an Equipment to himself every combat for free (the Ally discount is idle here) |
+| Halvar, God of Battle // Sword of the Realms | ★★★ | "creatures you control that are enchanted or equipped have DOUBLE STRIKE" and moves an Equipment each combat; back face is itself an Equipment (mythic) |
+| With Great Power . . . | ◇+ | +2/+2 per Aura/Equipment on it, and redirects damage you'd take onto it |
+| Weapons Vendor | ★ | an Artificer, not a Hero; draws on entry, pays {1} to attach each combat |
+| Machinist's Arsenal | ★★ | makes a 1/1 Hero TOKEN and attaches to it; +2/+2 per artifact you control; makes it an Artificer (Cid) |
 
 ## 5. Consolidated plan (live)
 
