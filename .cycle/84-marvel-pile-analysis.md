@@ -78,6 +78,18 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
   Under Nick Fury each costs Hero density (F1). Under Captain America, First Avenger
   (F6), who does not care about Heroes, they are the core. **Variant signal is now strong:**
   an equipment deck led by Captain America, First Avenger, distinct from the Hero-tribal 84.
+  Batch 4 deepens it: Gilgamesh, Bruenor, Thorin, Dáin, Danitha, Benalia's Hope, Beatrix and
+  Firion are all non-Hero equipment engines.
+- **O7 — DOUBLE STRIKE is everywhere** (Hard-Won Jitte, Halvar, Blacksmith's Talent level 3,
+  Dáin, Embercleave, Sweeping Cleave). One double striker with two Equipment is the voltron
+  clock. **Wizard's Staff is the one doubler that serves the HERO deck**: equipped to Nick
+  Fury, "whenever you attack" fires twice.
+- **O8 — Job-select Equipment make HERO tokens** (Thief's Knife, Samurai's Katana, Machinist's
+  Arsenal): an Equipment that is also a Hero entering, so it fires Hawkeye and Team Leader.
+  The bridge between the two plans.
+- **O9 — Commander options in these colours:** Director Nick Fury (Heroes), Captain America,
+  First Avenger (Equipment as ammunition), Sokka and Suki (Allies carrying Equipment — but
+  Allies are deck 78's identity).
 
 ## 4. Running verdicts
 
@@ -185,6 +197,41 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | With Great Power . . . | ◇+ | +2/+2 per Aura/Equipment on it, and redirects damage you'd take onto it |
 | Weapons Vendor | ★ | an Artificer, not a Hero; draws on entry, pays {1} to attach each combat |
 | Machinist's Arsenal | ★★ | makes a 1/1 Hero TOKEN and attaches to it; +2/+2 per artifact you control; makes it an Artificer (Cid) |
+
+### Batch 4 (cards 91–120)
+
+| Card | Verdict | Note (from full text) |
+|---|---|---|
+| Danitha, Benalia's Hope | ★★ | not a Hero; enters: put an Aura or Equipment from HAND OR GRAVEYARD onto the battlefield attached to her |
+| Beatrix, Loyal General | ★★ | not a Hero; each combat: attach ANY NUMBER of Equipment to one creature. 6 mana |
+| Falcon's Wing Harness | ★★ | {1}{U}, attaches itself, +1/+1, flying and ward {1} — evasion and protection for the carrier (F4, F5) |
+| The Key to the Vault | ★ | combat damage → look at that many, cast a nonland one free |
+| Wizard's Staff | ★★★ | "if a triggered ability of equipped creature triggers, that ability triggers an additional time" — on Nick Fury his attack dig fires TWICE; on Hawkeye, Trick Shot every Hero entering hits twice (O7) |
+| Bespoke Bō | ★★ | enters: return up to one other nonland permanent to hand (tempo/interaction), then +2/+1 vigilance |
+| Acquisition Octopus | ★ | reconfigure {2}; draws on combat damage |
+| Thief's Knife | ★★ | job select: makes a 1/1 HERO token and attaches; the carrier draws on combat damage (O8) |
+| Blacksmith's Talent | ★★★ | {R}: a Sword token; level 2 attaches an Equipment free each combat; level 3: "equipped creatures you control have double strike and haste" on your turn |
+| Cori-Steel Cutter | ★ | trample, haste; second spell each turn makes a prowess Monk you may attach it to |
+| Daredevil's Billy Club | ★ | enters: 2 damage to any target; +1/+0 menace |
+| Hard-Won Jitte | ★★★ | {1}{R}: double strike, equip {2} — the cheapest doubler (O7) |
+| Improvised Arsenal | ★ | +1/+0 per artifact, equip {R}; copies itself at {4}{R} |
+| Dáin Ironfoot | ★★ | not a Hero (Dwarf); makes an Axe token attached; whenever he attacks, equipped attackers gain double strike |
+| Firion, Wild Rose Warrior | ★ | not a Hero; equipped creatures have haste; each nontoken Equipment entering makes a temporary copy with cheaper equip |
+| Samurai's Katana | ★★ | job select: a 1/1 HERO token, +2/+2 trample haste (O8) |
+| Two-Handed Axe // Sweeping Cleave | ★ | doubles power on attack; the adventure gives double strike first |
+| Unexpected Request | ◇ | threaten with an Equipment loan |
+| Thorin, Mountain-king | ★★ | not a Hero; enters: attach any number of Equipment to one creature, which then deals damage equal to its power to a creature — mass equip AND removal |
+| Embercleave | ★★★ | flash, {1} less per attacker, self-attaching double strike + trample (mythic craft) |
+| Gilgamesh, Master-at-Arms | ★★★ | not a Hero; enters AND attacks: look at six, put ANY NUMBER of Equipment onto the battlefield — the best equipment card advantage in the pile |
+| Dwalin, Weaponmaster | ◇+ | first strike; hone counters on every Equipment when he enters or attacks |
+| Hook Swords | ◇ | makes an Ally token and attaches; first strike on your turn |
+| Mabel, Heir to Cragflame | ★ | not a Hero (Mouse); Cragflame token: +1/+1, vigilance, trample, haste |
+| Bruenor Battlehammer | ★★★ | not a Hero; +2/+0 per Equipment attached to each creature, and the first equip each turn is free (O6) |
+| Warrior's Blades | ★★ | enters: 3 damage to any target and 3 life (a Lightning Helix that stays), +2/+1 |
+| Nahiri, Heir of the Ancients | ★★ | +1: Kor token and attach; −2: dig six for an Equipment; −3: damage = twice your Equipment count (mythic craft) |
+| Nahiri, Forged in Fury | ★★ | affinity for Equipment; equipped attackers exile the top card to play, Equipment cast FREE |
+| Axgard Armory | ★ | a land that tutors an Aura and an Equipment |
+| Sokka and Suki | ★ / commander | R/W/U Ally: attaches an Equipment to each entering Ally; each Equipment entering makes an Ally token — a second equipment COMMANDER option, but Allies are the Avatar deck's theme |
 
 ## 5. Consolidated plan (live)
 
