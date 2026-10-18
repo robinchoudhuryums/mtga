@@ -63,7 +63,14 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
   of Bast's attacks-alone, Mockingbird's double strike). It pulls against the go-wide Hero
   plan (Falcon, Skybound battalion, Trick Shot). Variant signal for F6 — keep counting.
 - **O3 — Hero TOKEN makers** (Aerith Rescue Mission, The Crystal's Chosen) feed every
-  "Hero enters" payoff but are not Hero CARDS for Nick Fury's dig.
+  "Hero enters" payoff but are not Hero CARDS for Nick Fury's dig. Batch 2 adds two
+  repeatable makers: Iron Man, Tony Stark (red spell → Robot Hero token) and Tellah
+  (noncreature spell → Hero token).
+- **O4 — An Equipment is a NONCREATURE SPELL.** Wiccan, Tellah, Iron Lad, Ironheart and the
+  prowess Heroes all read "noncreature spell", so the equipment package powers them for free.
+- **O5 — The artifact-creature Iron Men form their own sub-engine** (Master of Machines,
+  Modern Marvel, Bleeding Edge, Tony Stark, Iron Lad, Ironheart, Repulsor Bots — all Heroes,
+  all artifacts). That is the F1/F3 overlap: an "Iron Legion" package costs no Hero density.
 
 ## 4. Running verdicts
 
@@ -101,6 +108,41 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | Mister Fantastic, Reed Richards | ◇+ | draws when tokens enter — Hero tokens, Treasure, Robots |
 | Immortus, Master of Eternity | ◇ | a mana engine for noncreature spells, wheel power-up |
 | Iron Man, Modern Marvel | ★★ | Hero-TYPED artifact lord: other artifact creatures +1/+1, draws on attack with another artifact creature (the F1/F3 overlap) |
+
+### Batch 2 (cards 31–60)
+
+| Card | Verdict | Note (from full text) |
+|---|---|---|
+| Ironheart, Clever Champion | ★★ | artifact Hero flier; "noncreature spells you cast have improvise" — every Equipment is a noncreature spell (O4) |
+| Iron Man, Bleeding Edge | ★★★ | "whenever you cast an artifact spell, you may copy it, except the copy isn't legendary" once a turn — a second copy of every Equipment |
+| Reed Richards, Smartest Man | ★ | 6 mana; the first extra draw each turn becomes FOUR — pairs with Venat, Daredevil, Tony Stark |
+| Repulsor Bots | ★ | Robot Hero artifact flier; enters: return up to two artifacts/creatures (theirs, or your own enters-trigger Heroes) |
+| Heartfire Hero | ◇/★ | NOT a Hero (Mouse Soldier). Valiant: an EQUIP targets it, so it grows each equip; dies → damage equal to its power to each opponent. A classic carrier, but F1 |
+| Gwen Stacy // Ghost-Spider | ◇+ | 2-drop Hero that exiles a card to play; {2}{U}{R}{W} flips to a flying haste grower |
+| Hawkeye, Master Marksman | ★ | 2-drop; when tapped (attacking) pay {1} up to three times: can't block / 2 damage / loot |
+| Iron Fist, Hero for Hire | ◇ | 2-drop trample prowess; the power-up is 8 mana |
+| Iron Fist, Living Weapon | ◇ | needs SPELLS that target your creature (equip is not a spell) |
+| The Scarlet Witch | ✗ | discounts instants/sorceries of MV ≥4 — the deck runs few |
+| Nico Minoru, Runaway | ◇ | needs casting from outside the hand |
+| Photon, Mighty Marvel | ◇ | flier; combat damage → that much mana |
+| The Whizzer, Classic Speedster | △ | vanilla 3/3 first strike haste — a carrier at best |
+| Wiccan, Young Avenger | ★ | "whenever you cast a noncreature spell, exile the top card … you may play that card" — Equipment fire it (O4) |
+| Iron Man, Tony Stark | ★★ | artifact Hero flier; attacking creatures +1/+0; every RED spell makes a 2/1 flying Robot HERO artifact token (O3, F3) |
+| Wonder Man, Hollywood Hero | ◇ | power-ups twice; the deck has few power-ups |
+| Captain America, Living Legend | ★ | untaps each creature the first time it taps on your turn: Tony Stark's dig and Hawkeye's arrows twice, attackers stay back as blockers |
+| King T'Challa // Black Panther, Hope Enduring | ◇+ | flash; draws when anyone draws a second card; back: double strike, damage prevented |
+| Cid, Timeless Artificer | ★ | NOT a Hero, but "artifact creatures AND Heroes get +1/+1 for each Artificer you control and in your graveyard" — and "a deck can have any number of cards named Cid", so Brawl's singleton rule does not bind it (spice) |
+| Spider-Man 2099 | ◇+ | {U}{R} double strike vigilance (castable turn 4+) — a carrier |
+| Iron Lad, Young Avenger | ★★ | artifact Hero flier; "noncreature spells you cast cost {1} less" — Equipment included |
+| Speedball, New Warrior | ◇ | needs spells that target it |
+| Iron Man, Master of Machines | ★★ | +1/+0 per other artifact; draws on attack if an artifact entered this turn (F3) |
+| Teferi, Hero of Dominaria | ★★ | +1 draw and untap two lands; −3 tucks any nonland permanent — card advantage AND interaction (mythic craft) |
+| Tellah, Great Sage | ★ | NOT a Hero, but every noncreature spell makes a 1/1 Hero TOKEN; four+ mana spent draws two (O3, O4) |
+| Marvel Boy, Noh-Varr | ◇ | grows on creatures entering |
+| Mabel, Valley Hero | ◇ | not a Hero (Mouse Soldier); counters on entering creatures |
+| Patriot, Young Avenger | ★ | prowess; "as long as Patriot is equipped, other creatures you control get +1/+0" |
+| Daredevil, Man Without Fear | ★★ | haste, vigilance; whenever you attack, exile the top card — a Hero gives +2/+1 — and you may play it: a second Nick Fury dig |
+| The Super Hero Civil War | ★★ | Saga: steal up to two creatures (total MV ≤6), team pump, then a fight — interaction |
 
 ## 5. Consolidated plan (live)
 
