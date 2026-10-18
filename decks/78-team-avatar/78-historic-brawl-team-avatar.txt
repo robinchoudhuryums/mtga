@@ -8,8 +8,9 @@
 #: archetype: Fearless leads from the command zone, and every triggered ability of your
 #: archetype: Allies fires twice while she is out. Deck 78's 60 carry over, with one
 #: archetype: colour-identity swap, and the other 40 deepen the same plan. There are five
-#: archetype: trigger multipliers (Katara, Starfield Vocalist, Elesh Norn, Roaming Throne
-#: archetype: naming Ally, Virtue of Knowledge) and four token doublers. The draw engines
+#: archetype: trigger multipliers (Katara, Starfield Vocalist, Elesh Norn, Virtue of
+#: archetype: Knowledge, and Gandalf the White for legendary permanents), Mirror Room's
+#: archetype: Fractured Realm doubling every trigger, and four token doublers. The draw engines
 #: archetype: all fire off creatures entering: The Great Henge, Tribute to the World
 #: archetype: Tree, Galadriel and The Blue Spirit. Beside them sit Allies whose enter or
 #: archetype: attack triggers are worth doubling, cheap exile effects, protection for the
@@ -21,11 +22,26 @@
 #: tier: the A line (A wants 7 and a sum of 11 in a 60) with nothing to spare: losing one
 #: tier: interaction or card-advantage card puts the floor back at B.
 #: tier: It is ahead of deck 78 on the engine, on cheap answers and on card advantage:
-#: tier: five trigger multipliers where deck 78 has two, Swords to Plowshares, Path to
-#: tier: Exile, Leyline Binding and Buried in the Garden on top of deck 78's tricks, and
+#: tier: five trigger multipliers where deck 78 has two, Swords to Plowshares, Fractured
+#: tier: Identity, Leyline Binding and Buried in the Garden on top of deck 78's tricks, and
 #: tier: two draw engines (The Great Henge, Tribute to the World Tree) that the enters-
 #: tier: doublers multiply. PROVISIONAL because no Brawl game has been played with it.
-#: protect: Katara, the Fearless; South Pole Voyager; Avatar Enthusiasts; Haru, Hidden Talent; Suki, Kyoshi Warrior; Starfield Vocalist; Doubling Season; Elesh Norn, Mother of Machines; Roaming Throne; Appa, Loyal Sky Bison; Earth Kingdom General; Toph, the Blind Bandit; Earth King's Lieutenant; Katara, Heroic Healer; The Blue Spirit
+#: protect: Katara, the Fearless; South Pole Voyager; Avatar Enthusiasts; Haru, Hidden Talent; Suki, Kyoshi Warrior; Starfield Vocalist; Doubling Season; Elesh Norn, Mother of Machines; Appa, Loyal Sky Bison; Earth Kingdom General; Toph, the Blind Bandit; Earth King's Lieutenant; Katara, Heroic Healer; The Blue Spirit
+#: notes: NINE SWAPS, 2026-10-17 (owner's picks). In: Gandalf the White, Mirror Room //
+#: notes: Fractured Realm, Fractured Identity, In the Trenches, Heliod, Sun-Crowned, Ajani's
+#: notes: Welcome, Final Showdown, Way of the Mentor, Toph, Earthbending Master. Out: Roaming
+#: notes: Throne, Knight of Autumn, Path to Exile, Flowering of the White Tree, Bloom Tender,
+#: notes: Multiversal Recruitment (Mirror Room makes the Starfield copy now), Allies at Last,
+#: notes: The Astonishing Ant-Man, Jet, Rebel Leader. A LIFEGAIN SUB-ENGINE: the deck already
+#: notes: makes many separate lifegain events (South Pole Voyager fires once per Ally entering
+#: notes: plus once per doubler, Earth Kingdom General, The Great Henge, the lifelinkers) and
+#: notes: had no payoff. Ajani's Welcome adds one per creature entering (an enters trigger, so
+#: notes: doubled); Heliod turns each event into a +1/+1 counter (doubled by Doubling Season);
+#: notes: Way of the Mentor turns each into loyalty on every planeswalker, so its Jace token
+#: notes: (-3: draw a card) and Elspeth's -3 removal come round again. Final Showdown is the
+#: notes: protection Flowering's ward and Throne's ward {2} took out: {1}{W} makes Katara
+#: notes: indestructible, and {3}{W}{W} more is a board wipe. Interaction held at 13, the
+#: notes: A line exactly (13 + card advantage 6 = 19); cut no answer without a replacement.
 #: notes: ARENA'S BRAWL QUEUE (100 cards, Historic card pool). The 60-card version
 #: notes: for Arena's Standard Brawl queue is 78-brawl-team-avatar.txt; this list is
 #: notes: that 60 plus 40 cards the Standard pool does not have.
@@ -70,18 +86,17 @@
 #: notes: G/W/U commander. Prayer of Binding ({3}{W}, flash, exile a nonland permanent)
 #: notes: replaces him. Its enters trigger is doubled by Starfield Vocalist, Elesh Norn and
 #: notes: Virtue of Knowledge (they double enters-caused triggers of any permanent), not by
-#: notes: Katara or Roaming Throne (it is not an Ally).
+#: notes: Katara (it is not an Ally).
 #: notes: THE MULTIPLIERS STACK. Each "triggers an additional time" effect adds one more
 #: notes: trigger, so they add together rather than multiply. An Ally's triggers fire once
-#: notes: more for Katara and once more for Roaming Throne (name Ally as it enters). An
+#: notes: more for Katara. An
 #: notes: enters trigger of any permanent fires once more for each of Starfield Vocalist,
 #: notes: Elesh Norn and Virtue of Knowledge. Elesh Norn also stops opponents' permanents
 #: notes: from triggering when anything enters. The token doublers (Doubling Season,
 #: notes: Elspeth, Exalted Sunborn) double the OUTPUT of those triggers, so they multiply.
-#: notes: Naming Ally makes Roaming Throne an Ally itself, so White Lotus
-#: notes: Reinforcements pumps it and the Ally-enters payoffs fire when it lands. Its
-#: notes: doubling is static, so there is nothing of Throne's for Katara to double, and
-#: notes: it reaches the attack and death triggers the enters-only doublers miss.
+#: notes: Fractured Realm ({5}{U}{U}) is the one doubler that reaches attack and death
+#: notes: triggers as well as enters triggers; Gandalf doubles what a LEGENDARY permanent
+#: notes: entering or leaving causes, which is most of the Allies and Kellan Joins Up.
 #: notes: JET, REBEL LEADER AND THE BLUE SPIRIT ARE A PAIR. Jet puts a creature with mana
 #: notes: value 3 or less from the top five onto the battlefield attacking; 22 of the 100
 #: notes: qualify, so one look hits about 72% of the time, and Katara gives two looks.
@@ -158,7 +173,7 @@
 1 Belladonna Took (HOB) 4
 1 Avatar Enthusiasts (TLA) 11
 1 Dazzling Theater // Prop Room (DSK) 3
-1 The Astonishing Ant-Man (MSH) 204
+1 Way of the Mentor (FRA) 208
 1 Earth Kingdom Jailer (TLA) 16
 1 Toph, the Blind Bandit (TLA) 198
 1 Ty Lee, Chi Blocker (TLA) 76
@@ -167,7 +182,7 @@
 1 Elspeth, Storm Slayer (TDM) 11
 1 Bard, King of Dale (HOB) 144
 1 Elesh Norn, Mother of Machines (ONE) 10
-1 Roaming Throne (LCI) 258
+1 Gandalf the White (LTR) 19
 1 Virtue of Knowledge // Vantress Visions (WOE) 76
 1 Exalted Sunborn (EOE) 15
 1 Galadriel, Light of Valinor (HOC) 32
@@ -175,7 +190,7 @@
 1 The Great Henge (ELD) 161
 1 Tribute to the World Tree (MOM) 211
 1 Kellan Joins Up (OTJ) 212
-1 Multiversal Recruitment (MSC) 629
+1 Ajani's Welcome (M19) 6
 1 Black Panther, Wakandan King (MAR) 87
 1 Beastmaster Ascension (TLE) 39
 
@@ -192,7 +207,7 @@
 1 Appa, Loyal Sky Bison (TLA) 9
 1 Overlord of the Mistmoors (DSK) 23
 1 Aang and Katara (TLE) 69
-1 Jet, Rebel Leader (TLE) 78
+1 Toph, Earthbending Master (TLE) 145
 1 Aang, Airbending Master (TLE) 74
 1 Katara, Heroic Healer (TLE) 215
 1 Silk, Web Weaver (SPM) 145
@@ -202,22 +217,22 @@
 
 # Interaction
 1 Sheltered by Ghosts (DSK) 30
-1 Allies at Last (TLA) 164
+1 Final Showdown (OTJ) 11
 1 Prayer of Binding (FDN) 739
 1 The Eagles Are Coming! (HOB) 12
 1 Swords to Plowshares (SPG) 54
-1 Path to Exile (MAR) 47
+1 Fractured Identity (OTP) 45
 1 Buried in the Garden (MKM) 191
 1 Leyline Binding (DMU) 24
-1 Knight of Autumn (GRN) 183
+1 Mirror Room // Fractured Realm (DSK) 67
 1 Aang, the Last Airbender (TLA) 4
 1 Vault Guardsman (MSC) 612
 1 Wan Shi Tong, All-Knowing (TLE) 98
 
 # Protection and ramp
 1 Heroic Intervention (M21) 188
-1 Flowering of the White Tree (LTR) 15
-1 Bloom Tender (ECL) 166
+1 In the Trenches (BRO) 8
+1 Heliod, Sun-Crowned (THB) 18
 
 # Lands (37)
 1 Hushwood Verge (DSK) 261

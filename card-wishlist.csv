@@ -1,7 +1,19 @@
 Card Name,Type,Card Text,Color(s),Synergies,Set Code,Collector #,Rarity,Target,Note,Power,Power Source
+Gandalf the White,Legendary Creature — Avatar Wizard,"Flash
+You may cast legendary spells and artifact spells as though they had flash.
+If a legendary permanent or an artifact entering or leaving the battlefield causes a triggered ability of a permanent you control to trigger, that ability triggers an additional time.",W,Avatar; Wizard; flash; tempo,,,Mythic,78-historic-brawl,,7.0,seed
+"Heliod, Sun-Crowned",Legendary Enchantment Creature — God,"Indestructible
+As long as your devotion to white is less than five, Heliod isn't a creature.
+Whenever you gain life, put a +1/+1 counter on target creature or enchantment you control.
+{1}{W}: Another target creature gains lifelink until end of turn.",W,God; counters; lifegain; indestructible; resilience; lifelink,,,Mythic,78-historic-brawl,,7.5,seed
+In the Trenches,Enchantment,"Creatures you control get +1/+1.
+{5}{W}: Exile target nonland permanent you don't control until this enchantment leaves the battlefield. Activate only as a sorcery and only once.",W,removal; pump,,,Mythic,78-historic-brawl,,7.5,seed
+"Toph, Earthbending Master",Legendary Creature — Human Warrior Ally,"Landfall — Whenever a land you control enters, you get an experience counter.
+Whenever you attack, earthbend X, where X is the number of experience counters you have. (Target land you control becomes a 0/0 creature with haste that's still a land. Put X +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)",G,Human; Warrior; Ally; counters; landfall; earthbend; bending; lands,,,Mythic,78-historic-brawl,,7.0,seed
 "Lyra, Tolarian Archangel",Legendary Creature — Angel Wizard,"Flying
 At the beginning of each end step, if you've drawn three or more cards this turn, create a 3/3 blue Angel creature token with flying.
 {3}{U}{U}: Until end of turn, whenever Lyra deals combat damage to a player, draw two cards.",U,Angel; Wizard; card draw; tokens; flying; evasion,,,Rare,51a,,5.5,seed
+Ajani's Welcome,Enchantment,"Whenever a creature you control enters, you gain 1 life.",W,lifegain,,,Uncommon,78-historic-brawl,,4.5,seed
 Campus Composer // Aqueous Aria,Creature — Merfolk Bard // Sorcery,"Ward {2}
 This creature enters prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.) // Create a 3/3 blue and red Elemental creature token with flying.",U,Merfolk; Bard; tokens; prepared; spellslinger; tempo; ward; protection,,,Uncommon,51a,,2.5,seed
 "Alania, Divergent Storm",Legendary Creature — Otter Wizard,"Whenever you cast a spell, if it's the first instant spell, the first sorcery spell, or the first Otter spell other than Alania you've cast this turn, you may have target opponent draw a card. If you do, copy that spell. You may choose new targets for the copy.",U/R,Otter; Wizard; card draw,BLB,204,Rare,25,copy your first spell of each type each turn,6.0,hand
@@ -225,8 +237,6 @@ Ixalli's Lorekeeper,Creature — Human Druid,{T}: Add one mana of any color. Spe
 Poison Dart Frog,Creature — Frog,"Reach
 {T}: Add one mana of any color.
 {2}: This creature gains deathtouch until end of turn.",G,Frog; mana; reach; defense,LCI,207,Common,50,,1.5,seed
-Flowering of the White Tree,Legendary Enchantment,"Legendary creatures you control get +2/+1 and have ward {1}.
-Nonlegendary creatures you control get +1/+1.",W,Nonlegendary; pump; ward; protection,LTR,15,Rare,78-historic-brawl,craft for 78-historic-brawl (applied 2026-09-29),4.5,seed
 "Black Panther, Wakandan King",Legendary Creature — Human Noble Hero,"First strike
 Survey the Realm — Whenever Black Panther or another creature you control enters, put a +1/+1 counter on target land you control.
 Mine Vibranium — {3}: Move all +1/+1 counters from target land you control onto target creature. If one or more +1/+1 counters are moved this way, you gain that much life and draw a card.",W/G,Human; Noble; Hero; counters; lifegain; card draw; first strike; combat,MAR,87,Mythic,78-historic-brawl,78-historic-brawl craft-list swap for Arcane Signet: enters trigger feeds land counters (Toph) and a {3} draw sink,7.0,seed
@@ -268,8 +278,6 @@ When this creature dies, investigate. (Create a Clue token. It's an artifact wit
 Loxodon Eavesdropper,Creature — Elephant Detective,"When this creature enters, investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")
 Whenever you draw your second card each turn, this creature gets +1/+1 and gains vigilance until end of turn.",G,Elephant; Detective; card draw; sacrifice; tokens; etb; clue; pump; investigate,MKM,168,Common,34,,2.5,hand
 Novice Inspector,Creature — Human Detective,"When this creature enters, investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",W,Human; Detective; card draw; sacrifice; tokens; etb; clue; investigate,MKM,29,Common,36a,,3.5,hand
-Multiversal Recruitment,Sorcery,"Create a token that's a copy of target creature you control, except it isn't legendary.
-Flashback {5}{U}{U} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",U,graveyard; tokens; flashback; recursion; spellslinger,MSC,629,Uncommon,78-historic-brawl,craft for 78-historic-brawl (applied 2026-09-29),2.0,seed
 Vault Guardsman,Artifact Creature — Human Advisor,"Convoke (Your creatures can help cast this spell. Each creature you tap while casting this spell pays for {1} or one mana of that creature's color.)
 When this creature enters, exile target artifact or creature an opponent controls until this creature leaves the battlefield.",W,Human; Advisor; removal; etb; convoke; go-wide,MSC,612,Uncommon,78-historic-brawl,craft for 78-historic-brawl (applied 2026-09-29),5.5,seed
 Fisk Tower,Land,"This land enters tapped.
