@@ -341,4 +341,56 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 
 ## 5. Consolidated plan (live)
 
-(after the last batch)
+**The pile splits into two decks, not one.** The equipment ENGINE (O6: Kíli, Bruenor, the
+Danithas, Halvar, Gilgamesh, Thorin, Dáin, Beatrix, Blacksmith's Talent, Nahiri) is almost
+entirely non-Hero, and Nick Fury's discount and dig read Hero CARDS (F1). So:
+
+### Option A — keep deck 84 Hero-first, add the Hero-compatible equipment/artifact package
+
+Measured on a scratch copy (18 swaps): floor A held; interaction 19, card advantage 7 → 11,
+protection 11, avg MV 3.75 → 3.67, Heroes 39 → 36 (P(top four holds a Hero) ≈ 85%),
+artifacts 13 → ~21, Equipment 2 → 7. Legal, 100 cards.
+
+| Cut (from 84) | Add | Why |
+|---|---|---|
+| Hawkeye, Bowslinger | Captain America, Liberator | Hero that puts an Equipment of MV ≤3 onto the battlefield |
+| Falcon, Joaquin Torres | Tony Stark // The Invincible Iron Man | Hero; digs four for an artifact, flips into a free artifact + auto-attach each combat |
+| Black Panther, Most Dangerous | Iron Man, Modern Marvel | artifact Hero lord that draws on attack |
+| War Machine, Legacy of Iron | Iron Man, Bleeding Edge | copies each artifact spell once a turn |
+| Wraith, Vicious Vigilante | Iron Lad, Young Avenger | artifact Hero; noncreature spells (Equipment) cost {1} less |
+| Matt Murdock, Justice Seeker | The Vision | artifact Hero; each noncreature spell: double strike / indestructible / draw |
+| Vision, Spectral Synthezoid | Captain America, First Avenger | free attach every combat; throws Equipment as removal |
+| Captain Marvel, Apex Avenger | Daredevil, Man Without Fear | a second attack-trigger dig; haste |
+| Iceman and Firestar | Herald's Horn | name Hero: another {1} off and a Hero per upkeep |
+| Human Torch, Johnny Storm | Wizard's Staff | on Nick Fury his attack dig fires twice |
+| Ponder | Hard-Won Jitte | double strike for {1}{R}, equip {2} |
+| Swiftfoot Boots | Falcon's Wing Harness | self-attaching flying + ward {1} |
+| Mind Stone | Iron Man Armor | self-attaching +2/+1 flying, or a Hero that scales with artifacts |
+| Talisman of Conviction | Chromatic Lantern | every land taps any colour (the double-pip problem) |
+| Hyperion, Supreme Hero | Venat, Heart of Hydaelyn | a card per turn off legendary spells |
+| Liminal Hold | The Super Hero Civil War | steals two creatures, then fights |
+| Crib Swap | Conqueror's Flail | +3/+3 and opponents can't cast spells on your turn |
+| Hero in Training | Thief's Knife | a Hero TOKEN (fires Trick Shot) that draws on combat damage |
+
+**Next tier for A, if more slots open:** Sword of Fire and Ice, Embercleave, Buster Sword,
+Captain America's Shield, Dragonfire Blade, Cosmic Cube, Samurai's Katana, Machinist's
+Arsenal, Teferi, Hero of Dominaria, Vision Quest, Brilliance Unleashed, Aerith Rescue Mission.
+
+### Option B — a variant deck (84a): Captain America, First Avenger, Jeskai Equipment
+
+Same colours, a different deck: the commander attaches an Equipment to himself every
+combat and throws it as damage equal to its mana value. Core from this pile: Kíli,
+Bruenor, Danitha Capashen, Danitha, Sword of Hope, Danitha, Benalia's Hope, Halvar,
+Gilgamesh, Thorin, Mountain-king, Thorin Oakenshield, Dáin, Beatrix, Blacksmith's Talent,
+Nahiri ×2, Captain America, Liberator, Tony Stark, Super-Soldier Serum; ~20 Equipment
+(Jitte, Embercleave, both Swords, Buster Sword, Conqueror's Flail, Captain America's
+Shield, Harness, Iron Man Armor, Dragonfire Blade, Plate Armor, Genji Glove, Andúril,
+Shadowspear, Warrior's Blades, Billy Club, Bespoke Bō, Helm of the Host, job-select
+Katana/Knife/Arsenal). The owner said Brawl deck slots are scarce, so this is offered as
+an alternative to A, not an addition, unless the owner wants both.
+
+### Protect list (what `cuts` cannot see — F7)
+
+Director Nick Fury (commander), Hawkeye, Trick Shot, Captain America, Team Leader, Avengers
+Assemble!, Agent Phil Coulson — and once added, Wizard's Staff (its value is Nick Fury's
+trigger) and Herald's Horn (its value is Hero density).
