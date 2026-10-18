@@ -56,9 +56,51 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 
 ## 3. Cross-batch observations
 
-(none yet)
+- **O1 — Equipment TUTORS are Heroes** (Captain America, Liberator; Bucky; Tony Stark's dig),
+  which is how an equipment package stays inside F1. Count them; a tutor in a 6-Equipment
+  deck is worse than in a 15-Equipment deck.
+- **O2 — A VOLTRON cluster is forming** (Zarda's exalted, Luke Cage and Black Panther, Claws
+  of Bast's attacks-alone, Mockingbird's double strike). It pulls against the go-wide Hero
+  plan (Falcon, Skybound battalion, Trick Shot). Variant signal for F6 — keep counting.
+- **O3 — Hero TOKEN makers** (Aerith Rescue Mission, The Crystal's Chosen) feed every
+  "Hero enters" payoff but are not Hero CARDS for Nick Fury's dig.
 
 ## 4. Running verdicts
+
+### Batch 1 (cards 1–30)
+
+| Card | Verdict | Note (from full text) |
+|---|---|---|
+| Bucky Barnes, Eager Ally | ★ | 2-drop Hero; dies → look at four, take an Equipment, Hero or Soldier. Serves both plans |
+| Donald Blake, Guise of Thor | △ | a Human Doctor (NOT a Hero) until a {4}{W}{W} power-up (F1) |
+| Patriot, Shield Wielder | ★ | 2-drop Hero; "{2},{T}: another target creature gets +2/+0 and gains hexproof" — protects the carrier (F5) |
+| Aerith Rescue Mission | ★★ | three 1/1 colorless HERO tokens: three Hawkeye, Trick Shot triggers, three Team Leader counters; or tap three + stun |
+| The Wasp, Janet Van Dyne | ◇ | 1/1 flier, enters: 4 to a TAPPED creature — conditional removal |
+| Silver Sable, Mercenary Leader | ◇ | enters: a counter; attacks: a modified creature (Equipment counts) gains lifelink |
+| Venat, Heart of Hydaelyn | ★★ | not a Hero, but "whenever you cast a legendary spell, draw a card" (once a turn) in a deck of ~40 legends is a card every turn; flips to an indestructible-granter that draws on legends |
+| Hawkeye, Clint Barton | ✗ | a vanilla 3/5 vigilance for 4 |
+| Luke Cage, Power Man | ◇ | attacks ALONE: +2/+0, indestructible — the voltron cluster (see §3) |
+| Mockingbird, Ace Agent | ★ | double strike — the best possible Equipment carrier; counters only from targeting SPELLS (equip is an ability) |
+| The Sentry, Golden Guardian | ✗ | gives the opponent a 5/5 flying INDESTRUCTIBLE Villain — a threat handed over (G-42 shape) |
+| Spider-UK | ◇ | end step: draw + 2 life if two creatures entered |
+| Okoye, Dora Milaje Leader | ◇ | two Soldier tokens, tokens get first strike attacking |
+| Zarda, the Power Princess | ◇/★ | "other Heroes you control have exalted": strong for ONE big attacker (voltron), weak for go-wide |
+| Anti-Venom, Horrifying Healer | ◇ | {W}{W}{W}{W}{W} reanimation; 22 W sources make it a late card |
+| Captain Marvel, Earth's Protector | ★ | flash 5/4 flying lifelink |
+| Captain America, Liberator | ★★★ | enters: search for an Equipment of MV ≤3 and put it ONTO THE BATTLEFIELD; attacks: a Soldier token per Equipment attached. The equipment pivot's best Hero |
+| Captain Mar-Vell, Space-Born | ◇ | 4/4 flier for 5, conditional flash |
+| Invisible Woman, Sue Storm | ◇ | Walls when Heroes get counters |
+| Doctor Strange, Surgeon | ◇ | lifegain doubler — no lifegain engine here |
+| The Falcon, Sam Wilson | ★ | flier; enters: a counter on each other creature (Captain Marvel, Apex Avenger copies counters) |
+| The Crystal's Chosen | ◇+ | 7 mana: four Hero tokens then a counter on everything — four scaling Trick Shot hits |
+| Secret Identity | ★ | {U} instant: hexproof (or becomes a 3/4 flying Hero) — cheap carrier protection |
+| Kid Loki | ◇ | needs counters-and-draw-two |
+| Tony Stark // The Invincible Iron Man | ★★★ | "{1},{T}: look at four, take an artifact" is the equipment deck's card advantage; the back face puts an artifact from hand onto the battlefield each combat and AUTO-ATTACHES an Equipment (F2) |
+| Virtual Assistant | ✗ | needs teamwork; the deck has none |
+| Wasp, Shrinking Savior | ◇ | its draw needs creatures with NEGATIVE power |
+| Mister Fantastic, Reed Richards | ◇+ | draws when tokens enter — Hero tokens, Treasure, Robots |
+| Immortus, Master of Eternity | ◇ | a mana engine for noncreature spells, wheel power-up |
+| Iron Man, Modern Marvel | ★★ | Hero-TYPED artifact lord: other artifact creatures +1/+1, draws on attack with another artifact creature (the F1/F3 overlap) |
 
 ## 5. Consolidated plan (live)
 
