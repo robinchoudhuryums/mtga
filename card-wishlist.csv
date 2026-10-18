@@ -26,6 +26,10 @@ This creature enters prepared. (While it's prepared, you may cast a copy of its 
 "Ms. Marvel, Elastic Ally",Legendary Creature — Mutant Inhuman Hero,"Reach
 When Ms. Marvel enters, target creature gets +2/+0 until end of turn.
 Whenever a creature you control with power greater than its base power deals combat damage to a player, draw a card. This ability triggers only once each turn.",W/G,Mutant; Inhuman; Hero; card draw; pump; reach; defense,,,Uncommon,78-historic-brawl,,2.5,seed
+Brokers Hideout,Land,"When this land enters, sacrifice it. When you do, search your library for a basic Forest, Plains, or Island card, put it onto the battlefield tapped, then shuffle and you gain 1 life.",Colorless,lifegain; sacrifice; ramp; etb,,,Common,78-historic-brawl,,1.5,seed
+Tranquil Landscape,Land,"{T}: Add {C}.
+{T}, Sacrifice this land: Search your library for a basic Forest, Plains, or Island card, put it onto the battlefield tapped, then shuffle.
+Cycling {G}{W}{U} ({G}{W}{U}, Discard this card: Draw a card.)",W/U/G,card draw; sacrifice; ramp; mana; cycling,,,Common,78-historic-brawl,,1.5,seed
 "Alania, Divergent Storm",Legendary Creature — Otter Wizard,"Whenever you cast a spell, if it's the first instant spell, the first sorcery spell, or the first Otter spell other than Alania you've cast this turn, you may have target opponent draw a card. If you do, copy that spell. You may choose new targets for the copy.",U/R,Otter; Wizard; card draw,BLB,204,Rare,25,copy your first spell of each type each turn,6.0,hand
 Essence Channeler,Creature — Bat Cleric,"As long as you've lost life this turn, this creature has flying and vigilance.
 Whenever you gain life, put a +1/+1 counter on this creature.

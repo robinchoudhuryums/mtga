@@ -27,6 +27,14 @@
 #: tier: two draw engines (The Great Henge, Tribute to the World Tree) that the enters-
 #: tier: doublers multiply. PROVISIONAL because no Brawl game has been played with it.
 #: protect: Katara, the Fearless; South Pole Voyager; Avatar Enthusiasts; Haru, Hidden Talent; Suki, Kyoshi Warrior; Starfield Vocalist; Doubling Season; Elesh Norn, Mother of Machines; Appa, Loyal Sky Bison; Earth Kingdom General; Toph, the Blind Bandit; Earth King's Lieutenant; Katara, Heroic Healer; The Blue Spirit
+#: notes: LAND SWAPS, 2026-10-18: Tranquil Landscape for Temple of Mystery (a green-blue
+#: notes: tapped land with no white) and Brokers Hideout for a Forest. Both fetch a basic
+#: notes: Forest, Plains or Island, so each counts for all three colours: sources W 22 -> 24,
+#: notes: U 19 -> 20, G 20, and the {W}{W} three-drops 63% -> 69% on turn three. The cost is
+#: notes: tempo (each puts the basic in tapped, where the Forest was untapped). Brokers Hideout
+#: notes: also gains 1 life, one more event for Heliod and Way of the Mentor; Tranquil
+#: notes: Landscape cycles for {G}{W}{U} late. Temple Garden and Spara's Headquarters were the
+#: notes: rare alternative (same white count, better tempo).
 #: notes: FIVE MORE SWAPS, 2026-10-18 (owner's picks). In: Ms. Marvel, Elastic Ally, Sage of the
 #: notes: Skies, Gideon Blackblade, Ajani Resolute, Brimaz, King of Oreskos. Out: Virtue of
 #: notes: Knowledge (Starfield Vocalist stays, since Mirror Room's best target is a copy of it),
@@ -37,7 +45,8 @@
 #: notes: loyalty sink for the same lifegain events. Ms. Marvel draws when a creature with power
 #: notes: above its base connects, which every creature with a +1/+1 counter is. Interaction held
 #: notes: at 13, protection 5 -> 6. The cost is WHITE: Brimaz, Gideon and In the Trenches are
-#: notes: {W}{W} three-drops at about 63% on turn three against 22 white sources.
+#: notes: {W}{W} three-drops at about 63% on turn three against 22 white sources (69%
+#: notes: against 24 after the land swaps above).
 #: notes: NINE SWAPS, 2026-10-17 (owner's picks). In: Gandalf the White, Mirror Room //
 #: notes: Fractured Realm, Fractured Identity, In the Trenches, Heliod, Sun-Crowned, Ajani's
 #: notes: Welcome, Final Showdown, Way of the Mentor, Toph, Earthbending Master. Out: Roaming
@@ -266,14 +275,15 @@
 1 Kyoshi Village (TLA) 271
 1 Temple of Enlightenment (FDN) 698
 1 Temple of Plenty (FDN) 703
-1 Temple of Mystery (FDN) 702
+1 Tranquil Landscape (MH3) 231
 1 Tranquil Cove (TDM) 270
 1 Thornwood Falls (FDN) 269
 1 Deserted Beach (MID) 260
 1 Dreamroot Cascade (SOS) 254
 1 Overgrown Farmland (MID) 265
 5 Plains (HOB) 189
-3 Forest (HOB) 193
+2 Forest (HOB) 193
+1 Brokers Hideout (SNC) 248
 1 Ba Sing Se (TLA) 266
 2 Island (HOB) 190
 
