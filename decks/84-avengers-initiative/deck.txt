@@ -14,12 +14,31 @@
 #: archetype: Thor re-buy enters triggers on attack. Avengers Assemble! draws each end step a
 #: archetype: Hero attacked or entered. DISTINCT from the Avatar Brawl deck (78, Bant): no
 #: archetype: tokens, no enters-doublers, no lifegain engine; red damage and Hero density.
-#: protect: Director Nick Fury; Hawkeye, Trick Shot; Captain America, Team Leader; Avengers Assemble!; Agent Phil Coulson
+#: archetype: THE IRON LEGION (2026-10-18): the equipment and artifacts are chosen so they do
+#: archetype: NOT cost Hero density — Nick Fury's discount and dig read Hero cards only. The
+#: archetype: artifacts are Heroes (Tony Stark, Iron Man, Modern Marvel, Iron Man, Bleeding Edge, Iron
+#: archetype: Lad, The Vision); the Equipment tutor is a Hero (Captain America, Liberator); and
+#: archetype: Captain America, First Avenger attaches an Equipment free every combat. Wizard's
+#: archetype: Staff on Nick Fury makes his attack dig trigger twice.
+#: protect: Director Nick Fury; Hawkeye, Trick Shot; Captain America, Team Leader; Avengers Assemble!; Agent Phil Coulson; Wizard's Staff; Herald's Horn
 #: notes: TIER UNSET pending the owner's call. The measurable floor reads A at 100 cards
-#: notes: (interaction 19 and card advantage 7, against an A line of 12 and a sum of 19),
+#: notes: (interaction 19 and card advantage 11, against an A line of 12 and a sum of 19),
 #: notes: protection 11. Unplayed. THE COST is the three-colour manabase: 22 W, 18 U, 19 R
 #: notes: sources, so the double-pip cards are turn-five-plus (Captain America, Super-Soldier
 #: notes: and the {U}{U} fliers at about 63% on curve, Hyperion's {W}{W}{W} 45% on turn five).
+#: notes: OPTION A, 2026-10-18 (eighteen swaps, from .cycle/84-marvel-pile-analysis.md). In:
+#: notes: Captain America, Liberator; Tony Stark // The Invincible Iron Man; Iron Man, Modern
+#: notes: Marvel; Iron Man, Bleeding Edge; Iron Lad; The Vision; Captain America, First
+#: notes: Avenger; Daredevil, Man Without Fear; Herald's Horn; Wizard's Staff; Hard-Won Jitte;
+#: notes: Falcon's Wing Harness; Iron Man Armor; Chromatic Lantern; Venat; The Super Hero
+#: notes: Civil War; Conqueror's Flail; Thief's Knife. Out: Hawkeye, Bowslinger; Falcon,
+#: notes: Joaquin Torres; Black Panther, Most Dangerous; War Machine; Wraith; Matt Murdock;
+#: notes: Vision, Spectral Synthezoid; Captain Marvel, Apex Avenger; Iceman and Firestar; Human
+#: notes: Torch; Ponder; Swiftfoot Boots; Mind Stone; Talisman of Conviction; Hyperion; Liminal
+#: notes: Hold; Crib Swap; Hero in Training. Card advantage 7 -> 11, interaction held at 19,
+#: notes: avg MV 3.75 -> 3.67, Heroes 39 -> 36 (Nick Fury's dig finds one about 85% of the
+#: notes: time), artifacts 13 -> 21. The owner has pushback on War Machine, Hyperion, Vision,
+#: notes: Spectral Synthezoid, Captain Marvel, Apex Avenger and Mind Stone — revisit them.
 #: notes: DRAFTED 2026-10-18 from the owner's 38-card Marvel pile plus owned Hero support,
 #: notes: interaction and lands. LEFT OUT from the pile: Hulk, Always Angry ("When Hulk
 #: notes: enters, destroy all artifacts" — it kills Iron Man, Vision, The Vision and Scarlet
@@ -45,20 +64,12 @@
 1 The Mighty Thor, Jane Foster (MSH) 222
 1 Wondrous Revival (MSC) 528
 1 Origin of the Avengers (MSH) 28
+1 Herald's Horn (JMP) 469
 
 # Heroes — the attacking body of the deck
-1 Matt Murdock, Justice Seeker (MSC) 602
-1 Hero in Training (MSH) 16
-1 Falcon, Joaquin Torres (MSC) 593
-1 Black Panther, Most Dangerous (MSC) 584
-1 Hawkeye, Bowslinger (MSC) 596
-1 Wraith, Vicious Vigilante (SPM) 160
 1 Jessica Jones, Private Eye (MSH) 139
-1 Human Torch, Johnny Storm (MSH) 136
-1 War Machine, Legacy of Iron (MSH) 238
 1 Captain America, Wings of Freedom (MSH) 10
 1 Spider-Man, Web-Spinner (MSC) 832
-1 Iceman and Firestar (MSC) 742
 1 The Vision and Scarlet Witch (MSC) 707
 1 SP//dr, Piloted by Peni (SPM) 147
 1 Blue Marvel, Adam Brashear (MSC) 530
@@ -69,16 +80,28 @@
 1 Iron Man, Titan of Innovation (MAR) 91
 1 Iron Man, Futurist Paragon (MSC) 501
 1 Silver Surfer, Cosmic Voyager (MSC) 639
-1 Captain Marvel, Apex Avenger (MSC) 78
-1 Hyperion, Supreme Hero (MSC) 599
-1 Vision, Spectral Synthezoid (MSC) 644
+1 Daredevil, Man Without Fear (MSH) 213
+
+# Equipment and artifact Heroes — the Iron Legion and the gear they carry
+1 Captain America, Liberator (MSC) 587
+1 Tony Stark // The Invincible Iron Man (MSH) 80
+1 Iron Man, Modern Marvel (MSC) 830
+1 Iron Man, Bleeding Edge (MSC) 626
+1 Iron Lad, Young Avenger (MSC) 569
+1 The Vision (MSH) 255
+1 Captain America, First Avenger (MAR) 88
+1 Wizard's Staff (HOB) 59
+1 Hard-Won Jitte (TMT) 91
+1 Falcon's Wing Harness (MSH) 53
+1 Iron Man Armor (MSH) 248
+1 Thief's Knife (FIN) 81
 
 # Protection
 1 Captain America, Super-Soldier (MSH) 9
 1 Captain America, Unbowed (MSC) 505
 1 Valorous Stance (FDN) 583
 1 Boros Charm (FDN) 721
-1 Swiftfoot Boots (BRR) 58
+1 Conqueror's Flail (PZA) 15
 
 # Interaction
 1 Counterspell (MAR) 52
@@ -86,10 +109,9 @@
 1 Three Steps Ahead (OTJ) 75
 1 Lightning Helix (MKM) 218
 1 Abrade (FDN) 188
-1 Crib Swap (ECL) 11
 1 Jeskai Revelation (TDM) 196
 1 Fractured Identity (OTP) 45
-1 Liminal Hold (ECL) 24
+1 The Super Hero Civil War (MSH) 231
 1 Mjölnir, Hammer of Thor (MSH) 146
 1 The Wondrous Wasp (MSH) 84
 1 Spider-Woman, Secret Agent (MSH) 229
@@ -99,13 +121,12 @@
 
 # Card advantage and selection
 1 Rhystic Study (FCA) 31
-1 Ponder (LRW) 79
+1 Venat, Heart of Hydaelyn // Hydaelyn, the Mothercrystal (FIN) 39
 
 # Ramp
 1 Patchwork Banner (BLB) 247
 1 Arcane Signet (FRC) 20
-1 Talisman of Conviction (AA1) 17
-1 Mind Stone (HA1) 19
+1 Chromatic Lantern (GRN) 233
 
 # Lands (37)
 1 Avengers Tower (MSH) 260
