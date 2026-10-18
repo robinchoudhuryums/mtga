@@ -20,12 +20,13 @@ Imperial Cosmographer · Silver Surfer, Cosmic Voyager · Spider-Man, New Champi
 damage) · Astonishing Spider-Man (discard hand, redraw) · Iceman and Firestar (red spell →
 loot) · Photon, Lady of Light / The Mighty Thor (attack-blink).
 
-## From deck 84
-- **Move to 85 (85-only):** Thor, Guardian of Midgard; Silver Surfer, Cosmic Voyager; Hawkeye,
-  Young Avenger.
-- **Run in both:** Thor, Asgard's Avenger; Daredevil, Man Without Fear; Hawkeye, Trick Shot;
-  Thor, God of Thunder; Mjölnir; Lightning Helix; Photon, Lady of Light; Captain Marvel,
-  Shooting Star; The Mighty Thor, Jane Foster.
+## From deck 84 (owner's call, 2026-10-18: all 85-only)
+Thor, Guardian of Midgard; Silver Surfer, Cosmic Voyager; Hawkeye, Young Avenger (already
+out of 84); Thor, Asgard's Avenger; Daredevil, Man Without Fear; Hawkeye, Trick Shot (leave 84
+once their replacements are picked). Under consideration for 85-only: Spider-Man,
+Web-Spinner; Photon, Lady of Light. Still shareable: Thor, God of Thunder; Mjölnir; Lightning
+Helix; Captain Marvel, Shooting Star; The Mighty Thor.
+**Iron-Spider, Civil Warrior** (raised for 84) is also NOT FOUND in the pool.
 
 ## Commander options (Jeskai — the identity the core already fits)
 1. **Gwen Stacy // Ghost-Spider** (U/R/W): {1}{R} front exiles the top card to play; the back
