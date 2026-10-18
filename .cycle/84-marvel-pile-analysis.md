@@ -95,6 +95,11 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
   job select), protection (Conqueror's Flail, Dragonfire Blade, Swords, Captain America's
   Shield), double strike (Jitte, Genji Glove) and card flow (Buster Sword, Sword of Fire and
   Ice) beat a plain stat stick.
+- **O11 — A separate ARTIFACT-TOKEN thread** (Saheeli, Vraska, Draconic Visitor, Mechan
+  Assembler, Fateful Discovery, Mm'menon) is a THIRD direction — noncreature spells into
+  artifact tokens — and does not need Equipment or Heroes. Too thin to stand alone in this
+  pile; the cards that help BOTH equipment and Heroes (Thorin's ward, Don & Leo's blink, Vision
+  Quest fetching an Iron Man) are the ones worth taking from it.
 
 ## 4. Running verdicts
 
@@ -272,6 +277,41 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | Mechanized Production | ◇ | an alt-win Aura (mythic) — spice only |
 | Scour for Scrap | ★ | tutor or rebuy an artifact, instant |
 | Fateful Discovery | ★★ | "whenever an artifact you control enters, draw a card" — Equipment, Treasure, Robot tokens |
+
+### Batch 6 (cards 151–180)
+
+| Card | Verdict | Note (from full text) |
+|---|---|---|
+| Mechan Assembler | ◇+ | an artifact entering makes a 2/2 Robot, once a turn |
+| Krang, the All-Powerful | ◇ | doubles draw-caused triggers; little to double here |
+| Mm'menon, the Right Hand | ★★ | not a Hero; cast artifact spells from the top of the library, and artifacts tap for {U} to cast from anywhere but hand — Equipment card advantage |
+| Origin of Iron Man | ★★ | Saga: lock down a creature, draw two, then put an artifact of MV ≤5 from hand onto the battlefield |
+| Victor Timely, Wily Tycoon | ◇+ | a Villain; recasts an artifact/instant/sorcery of MV ≤4 from the graveyard free |
+| Cyberdrive Awakener | ◇ | animates noncreature artifacts — which UNATTACHES Equipment (G-42 shape) |
+| Krang, Master Mind | ◇+ | affinity for artifacts; refills the hand to four |
+| Valkyrie Aerial Unit | ◇+ | affinity for artifacts 5/4 flier, surveil 2 |
+| Uthros, Titanic Godcore | ◇+ | a land: once stationed, {U} per artifact |
+| Legion Extruder | ★ | enters: 2 damage; sacrifice an artifact for a 3/3 Golem |
+| Lithobraking | ◇ | 2 to each creature (yours too) plus a Lander |
+| Draconic Visitor | ★ (spice) | artifact TOKENS become 5/5 flying Dragons instead — Treasure, Clue and Robot Hero tokens (the job-select Hero tokens are not artifacts) |
+| Craterclaw Colossus | ★ | {4}{R}{R}{R} haste; team trample and +X/+0 for each artifact |
+| Terminal Velocity | ◇ | a one-turn cheat |
+| Shuri, Vibranium Technologist | ★ | Hero; a Robot Hero artifact token or a card |
+| Tidus, Blitzball Star | ◇+ | grows on artifacts entering; taps a blocker on attack |
+| Don & Leo, Problem Solvers | ★★ | not a Hero; end step: blink an artifact AND a creature you control — re-fires Warrior's Blades / Billy Club / Bespoke Bō / Iron Man Armor's attach and any Hero's enters trigger |
+| Sokka, Bold Boomeranger | ◇ | an Ally looter |
+| Don & Raph, Hard Science | ◇ | menace; next noncreature spell gets affinity |
+| Mm'menon, Uthros Exile | ◇+ | artifact entering → a +1/+1 counter |
+| Saheeli, Jewel of Avishkar | ★ | not a Hero; noncreature spell → hasty Thopter (O4) |
+| Baxter Stockman | ◇ | a Robot token and a +3/+0 first strike buff for an artifact creature |
+| Vision Quest | ★★ | X: put an artifact creature of MV ≤X from library OR graveyard onto the battlefield with X counters — fetches an Iron Man Hero |
+| Brilliance Unleashed | ★★ | 5 damage to a creature and/or return an artifact (a non-creature one comes back as a 3/3 flier) |
+| Thorin Oakenshield | ★★ | not a Hero; {R}{W} 3/2 trample; storied (trivial here) → "artifacts and creatures you control have ward {1}" — protects every Equipment carrier |
+| Sami, Wildcat Captain | ★ | double strike vigilance; "spells you cast have affinity for artifacts" |
+| Alibou, Ancient Witness | ★★ | artifact creatures have haste; their attack deals X damage and scries X, X = tapped artifacts (mythic craft) |
+| Jeskai Monument | ◇+ | fetches a basic; later two flying Birds |
+| Sami, Ship's Engineer | ◇ | a Robot when two creatures are tapped |
+| Vraska, Soul of Stone | ★ / commander | R/W/U; noncreature spells make Treasure-creature tokens; artifact creatures have vigilance — another Jeskai commander option (artifacts) |
 
 ## 5. Consolidated plan (live)
 
