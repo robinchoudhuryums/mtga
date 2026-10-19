@@ -263,6 +263,8 @@ Ixalli's Lorekeeper,Creature — Human Druid,{T}: Add one mana of any color. Spe
 Poison Dart Frog,Creature — Frog,"Reach
 {T}: Add one mana of any color.
 {2}: This creature gains deathtouch until end of turn.",G,Frog; mana; reach; defense,LCI,207,Common,50,,1.5,seed
+"Alibou, Ancient Witness",Legendary Artifact Creature — Golem,"Other artifact creatures you control have haste.
+Whenever one or more artifact creatures you control attack, Alibou deals X damage to any target and you scry X, where X is the number of tapped artifacts you control.",W/R,Golem; burn; scry; artifacts; noncombat damage; selection; haste; aggro,MAR,39,Mythic,84,,7.5,seed
 "Black Panther, Wakandan King",Legendary Creature — Human Noble Hero,"First strike
 Survey the Realm — Whenever Black Panther or another creature you control enters, put a +1/+1 counter on target land you control.
 Mine Vibranium — {3}: Move all +1/+1 counters from target land you control onto target creature. If one or more +1/+1 counters are moved this way, you gain that much life and draw a card.",W/G,Human; Noble; Hero; counters; lifegain; card draw; first strike; combat,MAR,87,Mythic,78-historic-brawl,78-historic-brawl craft-list swap for Arcane Signet: enters trigger feeds land counters (Toph) and a {3} draw sink,7.0,seed

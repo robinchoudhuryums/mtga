@@ -22,11 +22,14 @@
 #: archetype: doublers, no lifegain engine; red damage, Hero density and artifacts.
 #: protect: Director Nick Fury; Captain America, Team Leader; Avengers Assemble!; Agent Phil Coulson; Wizard's Staff
 #: notes: TIER UNSET pending the owner's call. The measurable floor reads A at 100 cards
-#: notes: (interaction 15 and card advantage 9, against an A line of 12 and a sum of 19),
-#: notes: protection 14, board power 127, avg MV 3.76, 35 Heroes (Nick Fury's dig finds one
+#: notes: (interaction 16 and card advantage 9, against an A line of 12 and a sum of 19),
+#: notes: protection 14, board power 131, avg MV 3.83, 35 Heroes (Nick Fury's dig finds one
 #: notes: about 80% of the time), 27 artifacts. Unplayed. THE COST is the three-colour
 #: notes: manabase: 21 W, 18 U, 19 R sources, so the double-pip cards are turn-five-plus
 #: notes: (Counterspell's {U}{U} 44% on turn two, Hyperion's {W}{W}{W} 42% on turn five).
+#: notes: TWO MORE, 2026-10-19: Warrior's Blades in for Abrade (the same 3 damage, now on an
+#: notes: Equipment), Alibou, Ancient Witness in for Patchwork Banner (haste for the artifact
+#: notes: creatures; Vraska's vigilance keeps attackers untapped, so its X is smaller than it looks).
 #: notes: SIX MORE, 2026-10-19 (owner's picks). In: Team Transmitter (life per Hero entering
 #: notes: closes games), Mister Fantastic, Reed Richards (draws whenever tokens enter: Vraska,
 #: notes: Tony Stark's Robots, Treasures, Soldiers), Captain America, Living Legend (Coulson and
@@ -134,6 +137,8 @@
 1 Plate Armor (AFR) 32
 1 Cid, Timeless Artificer (FIN) 216
 1 Andúril, Narsil Reforged (HOC) 40
+1 Warrior's Blades (FRA) 163
+1 Alibou, Ancient Witness (MAR) 39
 
 # Protection
 1 Captain America, Super-Soldier (MSH) 9
@@ -147,7 +152,6 @@
 1 Counterspell (MAR) 52
 1 Three Steps Ahead (OTJ) 75
 1 Lightning Helix (MKM) 218
-1 Abrade (FDN) 188
 1 Fractured Identity (OTP) 45
 1 The Super Hero Civil War (MSH) 231
 1 Mjölnir, Hammer of Thor (MSH) 146
@@ -160,7 +164,6 @@
 1 Venat, Heart of Hydaelyn // Hydaelyn, the Mothercrystal (FIN) 39
 
 # Ramp
-1 Patchwork Banner (BLB) 247
 1 Team Transmitter (MSC) 573
 1 Chromatic Lantern (GRN) 233
 
