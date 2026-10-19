@@ -19,9 +19,9 @@
 #: protect: The Fantastic Four; Mister Fantastic; Doc Samson, Super Psychiatrist; Michelangelo, Weirdness to 11; Shang-Chi, Martial Mentor; Annie Joins Up
 #: notes: DRAFTED 2026-10-19 from the owner's 79-card Fantastic Four pile
 #: notes: (.cycle/86-fantastic-four-pile-analysis.md) plus owned mana-value-4 interaction,
-#: notes: ramp and a four-colour manabase. Left out from the pile: the Mutant-tribal half that
-#: notes: needs a Mutant count this list does not have (X-23, Wolverine, Claws Out, Colossus,
-#: notes: Mikey & Don, Genghis Frog, Biomancer's Familiar, Irma), and the 7-drops.
+#: notes: ramp and a four-colour manabase. The pile's other Mutants are set aside for deck 87
+#: notes: (.cycle/87-mutant-pile.md). This list already runs 20 Mutants, so Mutant payoffs
+#: notes: (X-23, Wolverine, Claws Out, Colossus) would work here too if a slot opens.
 #: notes: TIER UNSET pending the owner's call. The measurable floor reads A at 100 cards
 #: notes: (interaction 15 and card advantage 7, against an A line of 12 and a sum of 19);
 #: notes: protection 4, board power 125. The tools undercount card flow here: the commander's
