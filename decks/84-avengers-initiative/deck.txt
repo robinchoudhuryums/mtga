@@ -22,11 +22,14 @@
 #: archetype: doublers, no lifegain engine; red damage, Hero density and artifacts.
 #: protect: Director Nick Fury; Captain America, Team Leader; Avengers Assemble!; Agent Phil Coulson; Wizard's Staff
 #: notes: TIER UNSET pending the owner's call. The measurable floor reads A at 100 cards
-#: notes: (interaction 15 and card advantage 9, against an A line of 12 and a sum of 19),
-#: notes: protection 12, board power 130, avg MV 3.79, 34 Heroes (Nick Fury's dig finds one
-#: notes: about 81% of the time), 27 artifacts. Unplayed. THE COST is the three-colour
+#: notes: (interaction 15 and card advantage 10, against an A line of 12 and a sum of 19),
+#: notes: protection 11, board power 124, avg MV 3.78, 33 Heroes (Nick Fury's dig finds one
+#: notes: about 80% of the time), 27 artifacts. Unplayed. THE COST is the three-colour
 #: notes: manabase: 21 W, 18 U, 19 R sources, so the double-pip cards are turn-five-plus
 #: notes: (Counterspell's {U}{U} 44% on turn two, Hyperion's {W}{W}{W} 42% on turn five).
+#: notes: Origin of Iron Man in for Captain America, Unbowed and Ironheart, Clever Champion in for
+#: notes: Captain Marvel, Shooting Star (2026-10-19, owner's picks): the Saga's lock-down replaces
+#: notes: the exile, and Ironheart gives every noncreature spell improvise.
 #: notes: FOUR MORE, 2026-10-19: Donatello, Mutant Mechanic for Captain America, Steve Rogers
 #: notes: (three counters a turn on an artifact creature, twice with Living Legend; aim it at
 #: notes: artifact CREATURES, since it animates an Equipment off its creature), The Key to the
@@ -146,10 +149,10 @@
 1 Alibou, Ancient Witness (MAR) 39
 1 Donatello, Mutant Mechanic (TMT) 36
 1 Lady Octopus, Inspired Inventor (SPM) 35
+1 Ironheart, Clever Champion (MSH) 60
 
 # Protection
 1 Captain America, Super-Soldier (MSH) 9
-1 Captain America, Unbowed (MSC) 505
 1 Valorous Stance (FDN) 583
 1 Boros Charm (FDN) 721
 1 Conqueror's Flail (PZA) 15
@@ -163,11 +166,11 @@
 1 Mjölnir, Hammer of Thor (MSH) 146
 1 The Wondrous Wasp (MSH) 84
 1 Vault Guardsman (MSC) 612
-1 Captain Marvel, Shooting Star (MSC) 589
 
 # Card advantage and selection
 1 Mister Fantastic, Reed Richards (MSH) 66
 1 Venat, Heart of Hydaelyn // Hydaelyn, the Mothercrystal (FIN) 39
+1 Origin of Iron Man (MSC) 633
 
 # Ramp
 1 Team Transmitter (MSC) 573

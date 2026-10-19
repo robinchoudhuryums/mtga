@@ -306,6 +306,10 @@ When this creature dies, investigate. (Create a Clue token. It's an artifact wit
 Loxodon Eavesdropper,Creature — Elephant Detective,"When this creature enters, investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")
 Whenever you draw your second card each turn, this creature gets +1/+1 and gains vigilance until end of turn.",G,Elephant; Detective; card draw; sacrifice; tokens; etb; clue; pump; investigate,MKM,168,Common,34,,2.5,hand
 Novice Inspector,Creature — Human Detective,"When this creature enters, investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",W,Human; Detective; card draw; sacrifice; tokens; etb; clue; investigate,MKM,29,Common,36a,,3.5,hand
+Origin of Iron Man,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
+I — Tap up to one target creature. It doesn't untap during its controller's untap step for as long as this Saga remains on the battlefield.
+II — Draw two cards.
+III — You may put an artifact card with mana value 5 or less from your hand onto the battlefield.",U,saga; card draw,MSC,633,Uncommon,84,,5.0,seed
 Team Transmitter,Artifact,"Whenever a Hero you control enters, you gain 1 life.
 {T}: Add one mana of any color.",Colorless,lifegain; mana,MSC,573,Uncommon,84,,5.0,seed
 Vault Guardsman,Artifact Creature — Human Advisor,"Convoke (Your creatures can help cast this spell. Each creature you tap while casting this spell pays for {1} or one mana of that creature's color.)
