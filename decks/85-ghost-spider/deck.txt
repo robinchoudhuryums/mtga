@@ -25,11 +25,18 @@
 #: notes: The Talismans are spice: each deals 1 damage to you, which Daredevil, Fearless Fighter
 #: notes: redirects to an opponent and Stick turns into an impulse card.
 #: notes: TIER UNSET pending the owner's call. The measurable floor reads A at 100 cards
-#: notes: (interaction 21 and card advantage 15, against an A line of 12 and a sum of 19), but
-#: notes: protection is 3 and board power 89: the deck wins through pings, not bodies, and has
-#: notes: little to stop removal. Sources 16 W, 16 U, 25 R; Silver Surfer's {U}{U} is the worst
+#: notes: (interaction 16 and card advantage 16, against an A line of 12 and a sum of 19);
+#: notes: protection 6 and board power 100. The deck wins through pings, not bodies; Thorin
+#: notes: Oakenshield's ward and the Sword are most of what stops removal. Sources 16 W, 16 U, 25 R; Silver Surfer's {U}{U} is the worst
 #: notes: on curve. Artist's Talent replaced Thunder Magic in the draft (a +2 amplifier and a
 #: notes: loot engine for Spider-Man, New Champion, with interaction to spare).
+#: notes: NINE SWAPS, 2026-10-19 (owner's picks): In: Thorin Oakenshield (ward {1} once storied),
+#: notes: Kumano Faces Kakkazan, Tellah, Great Sage (Hero tokens for Hawkeye, Trick Shot), Solphim,
+#: notes: Mayhem Dominus (doubles noncombat damage), Sword of Fire and Ice, Hawkeye, Master
+#: notes: Marksman, Spider-Man, Web-Spinner, Echo, Perceptive Prodigy (copies Trick Shot, Nico,
+#: notes: Thor and Niv-Mizzet triggers), Crossover Collaboration. Out: Abrade, Burst Lightning, Luke
+#: notes: Cage, Hero for Hire, Soul Immolation, Hypothesizzle, Sif's Spearmaster, Fiery
+#: notes: Annihilation, Three Steps Ahead, Hawkeye's Bow. Interaction 21 -> 16, protection 3 -> 6.
 #: notes: COMMANDER: Gwen Stacy // Ghost-Spider, the only Jeskai option that plays cards from
 #: notes: exile itself. Considered: Daredevil, Man Without Fear (two colours only) and Captain
 #: notes: America, First Avenger (an Equipment commander, deck 84's idea).
@@ -43,11 +50,13 @@
 1 Tomik, Izzet Sparkmage (FRA) 253
 1 Ojer Axonil, Deepest Might (LCI) 158
 1 Artist's Talent (BLB) 124
+1 Solphim, Mayhem Dominus (ONE) 150
 
 # Damage into cards — noncombat damage to an opponent digs or draws
 1 Thor, Guardian of Midgard (MSC) 503
 1 Niv-Mizzet, Visionary (FDN) 123
 1 Virtue of Courage // Embereth Blaze (WOE) 157
+1 Sword of Fire and Ice (MAR) 100
 
 # Cast-from-exile payoffs
 1 Nico Minoru, Runaway (MSC) 700
@@ -69,6 +78,7 @@
 1 Stick, Fearless Mentor (MSC) 706
 1 Season of the Bold (BLB) 152
 1 Chase Stein, Runaway (MSC) 682
+1 Crossover Collaboration (MSC) 684
 
 # Pingers and Hero bodies
 1 Hawkeye, Trick Shot (MSC) 506
@@ -76,7 +86,7 @@
 1 Iron Fist, Living Weapon (MSH) 138
 1 Iron Fist, Hero for Hire (MSC) 692
 1 Heartfire Hero (BLB) 138
-1 Sif's Spearmaster (MSC) 765
+1 Hawkeye, Master Marksman (MSH) 130
 1 Vivi Ornitier (FIN) 248
 1 Photon, Mighty Marvel (MSC) 58
 1 Hulkling, Young Avenger (MSC) 689
@@ -84,9 +94,11 @@
 1 Matt Murdock, Justice Seeker (MSC) 602
 1 Monica Rambeau (MSH) 23
 1 Thor, God of Thunder (MSH) 156
-1 Luke Cage, Hero for Hire (MSC) 696
-1 Hawkeye's Bow (MSH) 132
+1 Tellah, Great Sage (FIN) 244
 1 Daredevil's Billy Club (MSC) 686
+1 Spider-Man, Web-Spinner (MSC) 832
+1 Echo, Perceptive Prodigy (MSH) 51
+1 Kumano Faces Kakkazan // Etching of Kumano (NEO) 152
 
 # Discard and loot — Spider-Man, New Champion turns each discard into damage
 1 Astonishing Spider-Man (MSC) 740
@@ -97,18 +109,13 @@
 # Blink — re-buy enters triggers and protect the board
 1 Photon, Lady of Light (MSC) 606
 1 Silver Surfer, Cosmic Voyager (MSC) 639
+1 Thorin Oakenshield (HOB) 165
 
 # Interaction
 1 Lightning Helix (MKM) 218
-1 Abrade (FDN) 188
-1 Burst Lightning (FDN) 192
-1 Fiery Annihilation (FDN) 86
-1 Hypothesizzle (GRN) 178
 1 Fractured Identity (OTP) 45
-1 Three Steps Ahead (OTJ) 75
 1 Elektra, Femme Fatale (MSC) 687
 1 Glassworks // Shattered Yard (DSK) 137
-1 Soul Immolation (ECL) 156
 1 Mjölnir, Hammer of Thor (MSH) 146
 1 Murdock's Crusade (MSH) 24
 1 Boros Charm (FDN) 721

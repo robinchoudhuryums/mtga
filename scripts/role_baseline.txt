@@ -340,7 +340,6 @@ Shark Shredder, Killer Clone
 Sheriff of Safe Passage
 Shredder, Unrelenting
 Shrike Force
-Sif's Spearmaster
 Silver Surfer, Cosmic Voyager
 Silvergill Mentor
 Silverquill, the Disputant
@@ -354,6 +353,7 @@ Souls of the Lost
 Sozin's Comet
 Spider-Islanders
 Spider-Man, Web-Slinger
+Spider-Man, Web-Spinner
 Spider-Punk
 Splash Portal
 Stalwart Successor
