@@ -22,11 +22,13 @@
 #: archetype: doublers, no lifegain engine; red damage, Hero density and artifacts.
 #: protect: Director Nick Fury; Captain America, Team Leader; Avengers Assemble!; Agent Phil Coulson; Wizard's Staff
 #: notes: TIER UNSET pending the owner's call. The measurable floor reads A at 100 cards
-#: notes: (interaction 15 and card advantage 10, against an A line of 12 and a sum of 19),
-#: notes: protection 11, board power 124, avg MV 3.78, 33 Heroes (Nick Fury's dig finds one
+#: notes: (interaction 15 and card advantage 11, against an A line of 12 and a sum of 19),
+#: notes: protection 10, board power 124, avg MV 3.79, 33 Heroes (Nick Fury's dig finds one
 #: notes: about 80% of the time), 27 artifacts. Unplayed. THE COST is the three-colour
 #: notes: manabase: 21 W, 18 U, 19 R sources, so the double-pip cards are turn-five-plus
 #: notes: (Counterspell's {U}{U} 44% on turn two, Hyperion's {W}{W}{W} 42% on turn five).
+#: notes: Buster Sword in for Falcon's Wing Harness (2026-10-19): most carriers already fly, and
+#: notes: Buster draws a card and casts a spell free on every hit.
 #: notes: Origin of Iron Man in for Captain America, Unbowed and Ironheart, Clever Champion in for
 #: notes: Captain Marvel, Shooting Star (2026-10-19, owner's picks): the Saga's lock-down replaces
 #: notes: the exile, and Ironheart gives every noncreature spell improvise.
@@ -130,7 +132,7 @@
 1 Captain America, First Avenger (MAR) 88
 1 Wizard's Staff (HOB) 59
 1 Two-Handed Axe // Sweeping Cleave (HBG) 191
-1 Falcon's Wing Harness (MSH) 53
+1 Buster Sword (FIN) 255
 1 Iron Man Armor (MSH) 248
 1 Vision, Spectral Synthezoid (MSC) 644
 1 War Machine, Legacy of Iron (MSH) 238
