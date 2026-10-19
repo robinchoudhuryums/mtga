@@ -3,29 +3,39 @@
 #: colors: WUR
 #: commander: Director Nick Fury
 #: plan: midrange
-#: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool), JESKAI HERO TRIBAL
-#: archetype: around Director Nick Fury: "Hero spells you cast cost {1} less" and "whenever
-#: archetype: you attack, look at the top four cards of your library. You may reveal a Hero
-#: archetype: card … put that card into your hand", so every attack is a card. The payoffs
-#: archetype: reward Heroes ENTERING and ATTACKING: Hawkeye, Trick Shot deals damage equal to
-#: archetype: the number of Heroes you control whenever one enters (Thor, Asgard's Avenger
-#: archetype: adds to each hit; Echo copies the trigger), Captain America,
-#: archetype: Team Leader gives each new Hero haste and a counter, and Photon and The Mighty
-#: archetype: Thor re-buy enters triggers on attack. Avengers Assemble! draws each end step a
-#: archetype: Hero attacked or entered. DISTINCT from the Avatar Brawl deck (78, Bant): no
-#: archetype: tokens, no enters-doublers, no lifegain engine; red damage and Hero density.
-#: archetype: THE IRON LEGION (2026-10-18): the equipment and artifacts are chosen so they do
-#: archetype: NOT cost Hero density — Nick Fury's discount and dig read Hero cards only. The
-#: archetype: artifacts are Heroes (Tony Stark, Iron Man, Modern Marvel, Iron Man, Bleeding Edge, Iron
-#: archetype: Lad, The Vision); the Equipment tutor is a Hero (Captain America, Liberator); and
-#: archetype: Captain America, First Avenger attaches an Equipment free every combat. Wizard's
-#: archetype: Staff on Nick Fury makes his attack dig trigger twice.
-#: protect: Director Nick Fury; Hawkeye, Trick Shot; Captain America, Team Leader; Avengers Assemble!; Agent Phil Coulson; Wizard's Staff; Herald's Horn
+#: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool), JESKAI HEROES AND THE IRON
+#: archetype: LEGION around Director Nick Fury: "Hero spells you cast cost {1} less" and "whenever you
+#: archetype: attack, look at the top four cards of your library. You may reveal a Hero card … put
+#: archetype: that card into your hand", so every attack is a card. Captain America, Team Leader gives
+#: archetype: each new Hero haste and a counter, Avengers Assemble! draws each end step a Hero
+#: archetype: attacked or entered, and The Mighty Thor, Jane Foster re-buys enters triggers on attack.
+#: archetype: THE IRON LEGION is the second half of the deck, not a splash: 27 artifacts, 9 of them
+#: archetype: Equipment, and most of the artifacts are Heroes (Tony Stark, Iron Man, Modern Marvel,
+#: archetype: Iron Man, Bleeding Edge, Iron Lad, The Vision, Iron Spider, Stark Upgrade, War Machine)
+#: archetype: so they do not cost Nick Fury's dig its Hero density. The artifact count is a resource:
+#: archetype: Sami, Wildcat Captain gives every spell affinity for artifacts, Shuri, Wakandan Inventor
+#: archetype: discounts them again, Iron Man, Master of Machines and Machinist's Arsenal scale with
+#: archetype: them, and Vraska, Soul of Stone turns each Equipment or other noncreature spell into
+#: archetype: another artifact body. Captain America, First Avenger attaches an Equipment free every
+#: archetype: combat, Captain America, Liberator tutors one, and Wizard's Staff on Nick Fury makes his
+#: archetype: attack dig trigger twice. DISTINCT from the Avatar Brawl deck (78, Bant): no enters-
+#: archetype: doublers, no lifegain engine; red damage, Hero density and artifacts.
+#: protect: Director Nick Fury; Captain America, Team Leader; Avengers Assemble!; Agent Phil Coulson; Wizard's Staff; Herald's Horn
 #: notes: TIER UNSET pending the owner's call. The measurable floor reads A at 100 cards
-#: notes: (interaction 17 and card advantage 8, against an A line of 12 and a sum of 19),
-#: notes: protection 13. Unplayed. THE COST is the three-colour manabase: 22 W, 18 U, 19 R
-#: notes: sources, so the double-pip cards are turn-five-plus (Captain America, Super-Soldier
-#: notes: and the {U}{U} fliers at about 63% on curve, Hyperion's {W}{W}{W} 45% on turn five).
+#: notes: (interaction 16 and card advantage 10, against an A line of 12 and a sum of 19),
+#: notes: protection 14, board power 118, avg MV 3.70, 33 Heroes (Nick Fury's dig finds one
+#: notes: about 81% of the time), 27 artifacts. Unplayed. THE COST is the three-colour
+#: notes: manabase: 21 W, 18 U, 18 R sources, so the double-pip cards are turn-five-plus
+#: notes: (Counterspell's {U}{U} 44% on turn two, Hyperion's {W}{W}{W} 42% on turn five).
+#: notes: IRON LEGION PACKAGE, 2026-10-19 (seven swaps; the cut cards go to deck 85). In: Sami,
+#: notes: Wildcat Captain, Shuri, Wakandan Inventor, Iron Spider, Stark Upgrade, Vraska, Soul of
+#: notes: Stone, Orcrist, Goblin-cleaver, Plate Armor, Plaza of Heroes. Out (to 85): Thor,
+#: notes: Asgard's Avenger, Daredevil, Man Without Fear, Hawkeye, Trick Shot, Spider-Man,
+#: notes: Web-Spinner, Photon, Lady of Light, Echo, Perceptive Prodigy (its copy target, Trick
+#: notes: Shot, left with it), and Raucous Carnival (Plaza of Heroes replaced it). Interaction 17 -> 16,
+#: notes: card advantage 9 -> 10, protection 13 -> 14, Heroes 37 -> 33, artifacts 21 -> 27.
+#: notes: Iron Spider, Civil Warrior is NOT a separate card: it is the Marvel re-skin of Alibou,
+#: notes: Ancient Witness, so search the pool under the Alibou name.
 #: notes: DECK 85 SPLIT, 2026-10-18: a Hero damage-and-exile deck (85) takes Thor, Guardian of
 #: notes: Midgard, Silver Surfer, Cosmic Voyager and Hawkeye, Young Avenger (85-only); in their
 #: notes: place Machinist's Arsenal (a Hero token with +2/+2 per artifact), Iron Man, Master of
@@ -70,13 +80,9 @@
 1 Director Nick Fury (MSC) 81
 
 # Hero engines — what makes each Hero entering or attacking pay off
-1 Hawkeye, Trick Shot (MSC) 506
 1 Captain America, Team Leader (MSC) 5
 1 Agent Phil Coulson (MSH) 4
 1 Avengers Assemble! (MSH) 6
-1 Thor, Asgard's Avenger (MSC) 756
-1 Echo, Perceptive Prodigy (MSH) 51
-1 Photon, Lady of Light (MSC) 606
 1 The Mighty Thor, Jane Foster (MSH) 222
 1 Wondrous Revival (MSC) 528
 1 Origin of the Avengers (MSH) 28
@@ -84,7 +90,6 @@
 
 # Heroes — the attacking body of the deck
 1 Captain America, Wings of Freedom (MSH) 10
-1 Spider-Man, Web-Spinner (MSC) 832
 1 The Vision and Scarlet Witch (MSC) 707
 1 SP//dr, Piloted by Peni (SPM) 147
 1 Blue Marvel, Adam Brashear (MSC) 530
@@ -93,7 +98,6 @@
 1 Thor, God of Thunder (MSH) 156
 1 Iron Man, Titan of Innovation (MAR) 91
 1 Iron Man, Futurist Paragon (MSC) 501
-1 Daredevil, Man Without Fear (MSH) 213
 1 Captain Marvel, Apex Avenger (MSC) 78
 1 The Sentry, Golden Guardian (MSH) 35
 
@@ -114,6 +118,12 @@
 1 Machinist's Arsenal (FIN) 23
 1 Iron Man, Master of Machines (MSH) 216
 1 Iron Man, Tony Stark (MSC) 851
+1 Sami, Wildcat Captain (EOE) 226
+1 Shuri, Wakandan Inventor (MSH) 75
+1 Iron Spider, Stark Upgrade (SPM) 166
+1 Vraska, Soul of Stone (FRA) 277
+1 Orcrist, Goblin-cleaver (HOB) 177
+1 Plate Armor (AFR) 32
 
 # Protection
 1 Captain America, Super-Soldier (MSH) 9
@@ -168,7 +178,7 @@
 1 Stark Industries (MSH) 272
 1 Avengers Hangar (MSH) 259
 1 Asgardian Citadel (MSH) 258
-1 Raucous Carnival (DSK) 266
+1 Plaza of Heroes (DMU) 252
 6 Plains (FRA) 281
 4 Island (FRA) 283
 4 Mountain (FRA) 287

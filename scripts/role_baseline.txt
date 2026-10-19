@@ -293,7 +293,6 @@ Perigee Beckoner
 Personify
 Peter Parker
 Peter Parker // Amazing Spider-Man
-Photon, Lady of Light
 Picklock Prankster // Free the Fae
 Pond Prophet
 Pride of the Road
@@ -352,7 +351,6 @@ Souls of the Lost
 Sozin's Comet
 Spider-Islanders
 Spider-Man, Web-Slinger
-Spider-Man, Web-Spinner
 Spider-Punk
 Splash Portal
 Stalwart Successor
@@ -394,7 +392,6 @@ The Queen of Dale
 The Regalia
 Think Twice
 Thor Odinson
-Thor, Asgard's Avenger
 Three Tree Scribe
 Thunderous Velocipede
 Tidings of War

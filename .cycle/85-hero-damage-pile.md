@@ -20,13 +20,15 @@ Imperial Cosmographer · Silver Surfer, Cosmic Voyager · Spider-Man, New Champi
 damage) · Astonishing Spider-Man (discard hand, redraw) · Iceman and Firestar (red spell →
 loot) · Photon, Lady of Light / The Mighty Thor (attack-blink).
 
-## From deck 84 (owner's call, 2026-10-18: all 85-only)
-Thor, Guardian of Midgard; Silver Surfer, Cosmic Voyager; Hawkeye, Young Avenger (already
-out of 84); Thor, Asgard's Avenger; Daredevil, Man Without Fear; Hawkeye, Trick Shot (leave 84
-once their replacements are picked). Under consideration for 85-only: Spider-Man,
-Web-Spinner; Photon, Lady of Light. Still shareable: Thor, God of Thunder; Mjölnir; Lightning
-Helix; Captain Marvel, Shooting Star; The Mighty Thor.
-**Iron-Spider, Civil Warrior** (raised for 84) is also NOT FOUND in the pool.
+## From deck 84 (owner's call, 2026-10-18/19: all 85-only, now OUT of 84)
+Thor, Guardian of Midgard; Silver Surfer, Cosmic Voyager; Hawkeye, Young Avenger; Thor,
+Asgard's Avenger; Daredevil, Man Without Fear; Hawkeye, Trick Shot; Spider-Man, Web-Spinner;
+Photon, Lady of Light; Echo, Perceptive Prodigy (copies Trick Shot's trigger — it follows
+Trick Shot here). Matt Murdock, Justice Seeker also belongs here. Still shareable (in 84):
+Thor, God of Thunder; Mjölnir; Lightning Helix; Captain Marvel, Shooting Star; The Mighty
+Thor, Jane Foster.
+**Iron-Spider, Civil Warrior** is NOT a missing card: it is the Marvel re-skin of Alibou,
+Ancient Witness (look it up under that name). It is an 84 candidate, not an 85 one.
 
 ## Commander options (Jeskai — the identity the core already fits)
 1. **Gwen Stacy // Ghost-Spider** (U/R/W): {1}{R} front exiles the top card to play; the back
