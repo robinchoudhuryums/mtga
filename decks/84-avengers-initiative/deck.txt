@@ -20,13 +20,19 @@
 #: archetype: combat, Captain America, Liberator tutors one, and Wizard's Staff on Nick Fury makes his
 #: archetype: attack dig trigger twice. DISTINCT from the Avatar Brawl deck (78, Bant): no enters-
 #: archetype: doublers, no lifegain engine; red damage, Hero density and artifacts.
-#: protect: Director Nick Fury; Captain America, Team Leader; Avengers Assemble!; Agent Phil Coulson; Wizard's Staff; Herald's Horn
+#: protect: Director Nick Fury; Captain America, Team Leader; Avengers Assemble!; Agent Phil Coulson; Wizard's Staff
 #: notes: TIER UNSET pending the owner's call. The measurable floor reads A at 100 cards
-#: notes: (interaction 15 and card advantage 10, against an A line of 12 and a sum of 19),
-#: notes: protection 14, board power 122, avg MV 3.73, 33 Heroes (Nick Fury's dig finds one
-#: notes: about 81% of the time), 27 artifacts. Unplayed. THE COST is the three-colour
-#: notes: manabase: 21 W, 18 U, 18 R sources, so the double-pip cards are turn-five-plus
+#: notes: (interaction 15 and card advantage 9, against an A line of 12 and a sum of 19),
+#: notes: protection 14, board power 127, avg MV 3.76, 35 Heroes (Nick Fury's dig finds one
+#: notes: about 80% of the time), 27 artifacts. Unplayed. THE COST is the three-colour
+#: notes: manabase: 21 W, 18 U, 19 R sources, so the double-pip cards are turn-five-plus
 #: notes: (Counterspell's {U}{U} 44% on turn two, Hyperion's {W}{W}{W} 42% on turn five).
+#: notes: SIX MORE, 2026-10-19 (owner's picks). In: Team Transmitter (life per Hero entering
+#: notes: closes games), Mister Fantastic, Reed Richards (draws whenever tokens enter: Vraska,
+#: notes: Tony Stark's Robots, Treasures, Soldiers), Captain America, Living Legend (Coulson and
+#: notes: Iron Spider activate twice), Andúril, Narsil Reforged, Reflecting Pool, Uthros, Titanic
+#: notes: Godcore (one Island). Out: Arcane Signet, Rhystic Study (the opponent pays the {1} in a
+#: notes: 1v1 game), Herald's Horn, Origin of the Avengers, Tranquil Cove, one Island.
 #: notes: CID, 2026-10-19: Cid, Timeless Artificer in for Dovin's Veto (cut as the narrowest
 #: notes: counter, with interaction to spare). Sami, Shuri and Cid are Artificers, and Machinist's
 #: notes: Arsenal makes the equipped creature one, so Heroes and artifact creatures get about +2/+2.
@@ -88,8 +94,6 @@
 1 Avengers Assemble! (MSH) 6
 1 The Mighty Thor, Jane Foster (MSH) 222
 1 Wondrous Revival (MSC) 528
-1 Origin of the Avengers (MSH) 28
-1 Herald's Horn (JMP) 469
 
 # Heroes — the attacking body of the deck
 1 Captain America, Wings of Freedom (MSH) 10
@@ -103,6 +107,7 @@
 1 Iron Man, Futurist Paragon (MSC) 501
 1 Captain Marvel, Apex Avenger (MSC) 78
 1 The Sentry, Golden Guardian (MSH) 35
+1 Captain America, Living Legend (MSH) 210
 
 # Equipment and artifact Heroes — the Iron Legion and the gear they carry
 1 Captain America, Liberator (MSC) 587
@@ -128,6 +133,7 @@
 1 Orcrist, Goblin-cleaver (HOB) 177
 1 Plate Armor (AFR) 32
 1 Cid, Timeless Artificer (FIN) 216
+1 Andúril, Narsil Reforged (HOC) 40
 
 # Protection
 1 Captain America, Super-Soldier (MSH) 9
@@ -150,12 +156,12 @@
 1 Captain Marvel, Shooting Star (MSC) 589
 
 # Card advantage and selection
-1 Rhystic Study (FCA) 31
+1 Mister Fantastic, Reed Richards (MSH) 66
 1 Venat, Heart of Hydaelyn // Hydaelyn, the Mothercrystal (FIN) 39
 
 # Ramp
 1 Patchwork Banner (BLB) 247
-1 Arcane Signet (FRC) 20
+1 Team Transmitter (MSC) 573
 1 Chromatic Lantern (GRN) 233
 
 # Lands (37)
@@ -176,12 +182,13 @@
 1 Temple of Epiphany (FDN) 699
 1 Temple of Triumph (FDN) 705
 1 Swiftwater Cliffs (MOM) 273
-1 Tranquil Cove (TDM) 270
+1 Reflecting Pool (FRC) 23
 1 Wind-Scarred Crag (FDN) 271
 1 Stark Industries (MSH) 272
 1 Avengers Hangar (MSH) 259
 1 Asgardian Citadel (MSH) 258
 1 Plaza of Heroes (DMU) 252
 6 Plains (FRA) 281
-4 Island (FRA) 283
+3 Island (FRA) 283
+1 Uthros, Titanic Godcore (EOE) 260
 4 Mountain (FRA) 287
