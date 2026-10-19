@@ -1,0 +1,145 @@
+#: name: Ghost-Spider's Gauntlet — Brawl
+#: format: Historic Brawl
+#: colors: WUR
+#: commander: Gwen Stacy // Ghost-Spider
+#: plan: midrange
+#: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool), JESKAI HERO DAMAGE AND
+#: archetype: EXILE around Gwen Stacy // Ghost-Spider: Gwen exiles a card to play on entering, and
+#: archetype: Ghost-Spider grows on every land played or spell cast from exile and spends counters to
+#: archetype: exile more. Three engines feed each other. IMPULSE: Daredevil, Chandra, Charred Foyer,
+#: archetype: Jessica Jones, Wiccan and The Legend of Roku play cards off the top. CAST-FROM-EXILE
+#: archetype: PAYOFFS turn each of those plays into damage: Nico Minoru, Quintorius Kand, Shadow of the
+#: archetype: Goblin, Unstable Amulet and Spider-Man 2099, with Spider-Verse copying one a turn.
+#: archetype: AMPLIFIED NONCOMBAT DAMAGE closes the loop: Thor, Asgard's Avenger, Hawkeye, Young
+#: archetype: Avenger, Tomik and Ojer Axonil make every ping bigger, and Thor, Guardian of Midgard,
+#: archetype: Niv-Mizzet, Visionary and Virtue of Courage turn damage to an opponent into more cards.
+#: archetype: Sub-plans from the set-aside pile: discard (Spider-Man, New Champion pays off every
+#: archetype: loot) and blink (Photon, Lady of Light, Silver Surfer). DISTINCT from deck 84 (the same
+#: archetype: colours, but an Equipment and artifact Hero deck led by Nick Fury) and from deck 24
+#: archetype: (Standard Boros impulse, 60 cards) and deck 2 (Standard mono-red burn): this one is
+#: archetype: the noncombat-damage loop, in Brawl.
+#: protect: Gwen Stacy // Ghost-Spider; Thor, Guardian of Midgard; Nico Minoru, Runaway; Thor, Asgard's Avenger; Hawkeye, Young Avenger
+#: notes: DRAFTED 2026-10-19 from the deck 85 set-aside pile (.cycle/85-hero-damage-pile.md)
+#: notes: plus owned impulse, damage and interaction. Hawkeye, Avenging Archer from the owner's
+#: notes: list is NOT in the card pool (not yet indexed, or a different name); add it when found.
+#: notes: The Talismans are spice: each deals 1 damage to you, which Daredevil, Fearless Fighter
+#: notes: redirects to an opponent and Stick turns into an impulse card.
+#: notes: TIER UNSET pending the owner's call. The measurable floor reads A at 100 cards
+#: notes: (interaction 21 and card advantage 15, against an A line of 12 and a sum of 19), but
+#: notes: protection is 3 and board power 89: the deck wins through pings, not bodies, and has
+#: notes: little to stop removal. Sources 16 W, 16 U, 25 R; Silver Surfer's {U}{U} is the worst
+#: notes: on curve. Artist's Talent replaced Thunder Magic in the draft (a +2 amplifier and a
+#: notes: loot engine for Spider-Man, New Champion, with interaction to spare).
+#: notes: COMMANDER: Gwen Stacy // Ghost-Spider, the only Jeskai option that plays cards from
+#: notes: exile itself. Considered: Daredevil, Man Without Fear (two colours only) and Captain
+#: notes: America, First Avenger (an Equipment commander, deck 84's idea).
+
+# Commander (leads from the command zone; also one of the 100)
+1 Gwen Stacy // Ghost-Spider (SPM) 78
+
+# Damage amplifiers — every ping hits harder
+1 Thor, Asgard's Avenger (MSC) 756
+1 Hawkeye, Young Avenger (MSH) 131
+1 Tomik, Izzet Sparkmage (FRA) 253
+1 Ojer Axonil, Deepest Might (LCI) 158
+1 Artist's Talent (BLB) 124
+
+# Damage into cards — noncombat damage to an opponent digs or draws
+1 Thor, Guardian of Midgard (MSC) 503
+1 Niv-Mizzet, Visionary (FDN) 123
+1 Virtue of Courage // Embereth Blaze (WOE) 157
+
+# Cast-from-exile payoffs
+1 Nico Minoru, Runaway (MSC) 700
+1 Quintorius Kand (LCI) 238
+1 Spider-Man 2099 (SPM) 150
+1 Shadow of the Goblin (SPM) 87
+1 Spider-Verse (SPM) 93
+1 Unstable Amulet (MH3) 142
+
+# Impulse engines — exile the top card and play it
+1 Daredevil, Fearless Fighter (MSC) 685
+1 Daredevil, Man Without Fear (MSH) 213
+1 Chandra, Torch of Defiance (FRA) 244
+1 Charred Foyer (DSK) 129
+1 Interdimensional Web Watch (SPM) 165
+1 The Legend of Roku (TLA) 145
+1 Jessica Jones, Private Eye (MSH) 139
+1 Wiccan, Young Avenger (MSC) 557
+1 Stick, Fearless Mentor (MSC) 706
+1 Season of the Bold (BLB) 152
+1 Chase Stein, Runaway (MSC) 682
+
+# Pingers and Hero bodies
+1 Hawkeye, Trick Shot (MSC) 506
+1 Spider-Man, New Champion (MSC) 705
+1 Iron Fist, Living Weapon (MSH) 138
+1 Iron Fist, Hero for Hire (MSC) 692
+1 Heartfire Hero (BLB) 138
+1 Sif's Spearmaster (MSC) 765
+1 Vivi Ornitier (FIN) 248
+1 Photon, Mighty Marvel (MSC) 58
+1 Hulkling, Young Avenger (MSC) 689
+1 The Immortal Weapons (MSC) 547
+1 Matt Murdock, Justice Seeker (MSC) 602
+1 Monica Rambeau (MSH) 23
+1 Thor, God of Thunder (MSH) 156
+1 Luke Cage, Hero for Hire (MSC) 696
+1 Hawkeye's Bow (MSH) 132
+1 Daredevil's Billy Club (MSC) 686
+
+# Discard and loot — Spider-Man, New Champion turns each discard into damage
+1 Astonishing Spider-Man (MSC) 740
+1 Iceman and Firestar (MSC) 742
+1 Origin of Thor (MSC) 701
+1 Cool but Rude (TMT) 89
+
+# Blink — re-buy enters triggers and protect the board
+1 Photon, Lady of Light (MSC) 606
+1 Silver Surfer, Cosmic Voyager (MSC) 639
+
+# Interaction
+1 Lightning Helix (MKM) 218
+1 Abrade (FDN) 188
+1 Burst Lightning (FDN) 192
+1 Fiery Annihilation (FDN) 86
+1 Hypothesizzle (GRN) 178
+1 Fractured Identity (OTP) 45
+1 Three Steps Ahead (OTJ) 75
+1 Elektra, Femme Fatale (MSC) 687
+1 Glassworks // Shattered Yard (DSK) 137
+1 Soul Immolation (ECL) 156
+1 Mjölnir, Hammer of Thor (MSH) 146
+1 Murdock's Crusade (MSH) 24
+1 Boros Charm (FDN) 721
+
+# Ramp — the Talismans' 1 damage to you feeds Daredevil, Fearless Fighter and Stick
+1 Arcane Signet (FRC) 20
+1 Talisman of Conviction (AA1) 17
+1 Talisman of Creativity (AA1) 18
+
+# Lands (36)
+1 Steam Vents (ECL) 267
+1 Sacred Foundry (EOE) 256
+1 Hallowed Fountain (ECL) 265
+1 Riverpyre Verge (DFT) 260
+1 Sunbillow Verge (DFT) 264
+1 Floodfarm Verge (DSK) 259
+1 Mystic Monastery (TDM) 262
+1 Starting Town (FIN) 289
+1 Evolving Wilds (ECL) 264
+1 Daily Bugle Building (SPM) 179
+1 Temple of Epiphany (FDN) 699
+1 Temple of Triumph (FDN) 705
+1 Stark Industries (MSH) 272
+1 Asgardian Citadel (MSH) 258
+1 Avengers Tower (MSH) 260
+1 Secluded Courtyard (FDN) 267
+1 Swiftwater Cliffs (MOM) 273
+1 Wind-Scarred Crag (FDN) 271
+1 Spirebluff Canal (OTJ) 270
+1 Reflecting Pool (FRC) 23
+1 Avengers Hangar (MSH) 259
+9 Mountain (FRA) 287
+3 Island (FRA) 283
+3 Plains (FRA) 281

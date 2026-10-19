@@ -89,6 +89,7 @@ Crypt Feaster
 Cuboid Colony
 Daggerfang Duo
 Dalkovan Packbeasts
+Daredevil, Fearless Fighter
 Dark Confidant
 Darkstar Augur
 Daydream
@@ -292,6 +293,7 @@ Perigee Beckoner
 Personify
 Peter Parker
 Peter Parker // Amazing Spider-Man
+Photon, Lady of Light
 Picklock Prankster // Free the Fae
 Pond Prophet
 Pride of the Road
@@ -338,6 +340,8 @@ Shark Shredder, Killer Clone
 Sheriff of Safe Passage
 Shredder, Unrelenting
 Shrike Force
+Sif's Spearmaster
+Silver Surfer, Cosmic Voyager
 Silvergill Mentor
 Silverquill, the Disputant
 Skyskipper Duo
@@ -391,6 +395,8 @@ The Queen of Dale
 The Regalia
 Think Twice
 Thor Odinson
+Thor, Asgard's Avenger
+Thor, Guardian of Midgard
 Three Tree Scribe
 Thunderous Velocipede
 Tidings of War
