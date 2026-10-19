@@ -431,3 +431,16 @@ Ancient Witness (a re-skin, not a missing card).
 Proposed core: -Wondrous Revival +Andúril; -Blue Marvel +Captain America, Living Legend;
 -Captain America, Steve Rogers +Mister Fantastic; -Dovin's Veto +Cid. Simulated: floor A,
 interaction 15, card advantage 11, protection 12, board power 120, avg MV 3.62.
+
+### 6a. Correction (2026-10-19, owner's pushback)
+The §6 grades of the TMNT / artifact-helper cards were too low, for two reasons: they were
+first graded before Vraska, Sami, Cid, Mister Fantastic and Captain America, Living Legend
+were in the list, and "Vraska already holds that slot" treated a redundant engine piece as a
+reason to leave it out. Re-graded: Krang, Master Mind ★★ (Sami's grant plus its own affinity
+reduce the cost twice per artifact), Lady Octopus ★★ (a 1-drop; Living Legend untaps her for
+a second free artifact), The Mechanist ★★ (a Clue per noncreature spell feeds Mister
+Fantastic, the artifact count and Cid), Donatello, Way with Machines ★ and Donatello, Mutant
+Mechanic ★ (counters that Captain Marvel, Apex Avenger copies; aim Mechanic at artifact
+CREATURES, since it animates an Equipment off its creature), Donatello, Gadget Master ◇+
+(copies of the legendary Legion die to the legend rule), Don & Raph ◇+ (Sami already gives
+affinity), Krang, the All-Powerful ◇ (only Blue Marvel and Lady Octopus trigger on drawing).
