@@ -22,11 +22,14 @@
 #: archetype: doublers, no lifegain engine; red damage, Hero density and artifacts.
 #: protect: Director Nick Fury; Captain America, Team Leader; Avengers Assemble!; Agent Phil Coulson; Wizard's Staff; Herald's Horn
 #: notes: TIER UNSET pending the owner's call. The measurable floor reads A at 100 cards
-#: notes: (interaction 16 and card advantage 10, against an A line of 12 and a sum of 19),
-#: notes: protection 14, board power 118, avg MV 3.70, 33 Heroes (Nick Fury's dig finds one
+#: notes: (interaction 15 and card advantage 10, against an A line of 12 and a sum of 19),
+#: notes: protection 14, board power 122, avg MV 3.73, 33 Heroes (Nick Fury's dig finds one
 #: notes: about 81% of the time), 27 artifacts. Unplayed. THE COST is the three-colour
 #: notes: manabase: 21 W, 18 U, 18 R sources, so the double-pip cards are turn-five-plus
 #: notes: (Counterspell's {U}{U} 44% on turn two, Hyperion's {W}{W}{W} 42% on turn five).
+#: notes: CID, 2026-10-19: Cid, Timeless Artificer in for Dovin's Veto (cut as the narrowest
+#: notes: counter, with interaction to spare). Sami, Shuri and Cid are Artificers, and Machinist's
+#: notes: Arsenal makes the equipped creature one, so Heroes and artifact creatures get about +2/+2.
 #: notes: IRON LEGION PACKAGE, 2026-10-19 (seven swaps; the cut cards go to deck 85). In: Sami,
 #: notes: Wildcat Captain, Shuri, Wakandan Inventor, Iron Spider, Stark Upgrade, Vraska, Soul of
 #: notes: Stone, Orcrist, Goblin-cleaver, Plate Armor, Plaza of Heroes. Out (to 85): Thor,
@@ -124,6 +127,7 @@
 1 Vraska, Soul of Stone (FRA) 277
 1 Orcrist, Goblin-cleaver (HOB) 177
 1 Plate Armor (AFR) 32
+1 Cid, Timeless Artificer (FIN) 216
 
 # Protection
 1 Captain America, Super-Soldier (MSH) 9
@@ -135,7 +139,6 @@
 
 # Interaction
 1 Counterspell (MAR) 52
-1 Dovin's Veto (FCA) 51
 1 Three Steps Ahead (OTJ) 75
 1 Lightning Helix (MKM) 218
 1 Abrade (FDN) 188
