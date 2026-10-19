@@ -23,10 +23,13 @@
 #: protect: Director Nick Fury; Captain America, Team Leader; Avengers Assemble!; Agent Phil Coulson; Wizard's Staff
 #: notes: TIER UNSET pending the owner's call. The measurable floor reads A at 100 cards
 #: notes: (interaction 15 and card advantage 11, against an A line of 12 and a sum of 19),
-#: notes: protection 10, board power 124, avg MV 3.79, 33 Heroes (Nick Fury's dig finds one
+#: notes: protection 11, board power 124, avg MV 3.77, 33 Heroes (Nick Fury's dig finds one
 #: notes: about 80% of the time), 27 artifacts. Unplayed. THE COST is the three-colour
-#: notes: manabase: 21 W, 18 U, 19 R sources, so the double-pip cards are turn-five-plus
-#: notes: (Counterspell's {U}{U} 44% on turn two, Hyperion's {W}{W}{W} 42% on turn five).
+#: notes: manabase: 20 W, 18 U, 19 R sources, so the double-pip cards are turn-five-plus
+#: notes: (Iron Man, Modern Marvel's {U}{U} 57% on turn four, Hyperion's {W}{W}{W} 38% on turn five).
+#: notes: The Mind Stone in for a Plains (2026-10-19): 36 lands plus three rocks; it taps for {W}
+#: notes: from turn two and, once harnessed, blinks an enters-trigger permanent each end step
+#: notes: (Warrior's Blades, Mjölnir, Liberator, Machinist's Arsenal) — not a creature with counters.
 #: notes: Buster Sword in for Falcon's Wing Harness (2026-10-19): most carriers already fly, and
 #: notes: Buster draws a card and casts a spell free on every hit.
 #: notes: Origin of Iron Man in for Captain America, Unbowed and Ironheart, Clever Champion in for
@@ -177,8 +180,9 @@
 # Ramp
 1 Team Transmitter (MSC) 573
 1 Chromatic Lantern (GRN) 233
+1 The Mind Stone (MSH) 21
 
-# Lands (37)
+# Lands (36)
 1 Avengers Tower (MSH) 260
 1 Hallowed Fountain (ECL) 265
 1 Steam Vents (ECL) 267
@@ -202,7 +206,7 @@
 1 Avengers Hangar (MSH) 259
 1 Asgardian Citadel (MSH) 258
 1 Plaza of Heroes (DMU) 252
-6 Plains (FRA) 281
+5 Plains (FRA) 281
 3 Island (FRA) 283
 1 Uthros, Titanic Godcore (EOE) 260
 4 Mountain (FRA) 287
