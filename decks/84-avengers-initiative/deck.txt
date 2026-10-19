@@ -22,11 +22,17 @@
 #: archetype: doublers, no lifegain engine; red damage, Hero density and artifacts.
 #: protect: Director Nick Fury; Captain America, Team Leader; Avengers Assemble!; Agent Phil Coulson; Wizard's Staff
 #: notes: TIER UNSET pending the owner's call. The measurable floor reads A at 100 cards
-#: notes: (interaction 16 and card advantage 9, against an A line of 12 and a sum of 19),
-#: notes: protection 14, board power 131, avg MV 3.83, 35 Heroes (Nick Fury's dig finds one
-#: notes: about 80% of the time), 27 artifacts. Unplayed. THE COST is the three-colour
+#: notes: (interaction 15 and card advantage 9, against an A line of 12 and a sum of 19),
+#: notes: protection 12, board power 130, avg MV 3.79, 34 Heroes (Nick Fury's dig finds one
+#: notes: about 81% of the time), 27 artifacts. Unplayed. THE COST is the three-colour
 #: notes: manabase: 21 W, 18 U, 19 R sources, so the double-pip cards are turn-five-plus
 #: notes: (Counterspell's {U}{U} 44% on turn two, Hyperion's {W}{W}{W} 42% on turn five).
+#: notes: FOUR MORE, 2026-10-19: Donatello, Mutant Mechanic for Captain America, Steve Rogers
+#: notes: (three counters a turn on an artifact creature, twice with Living Legend; aim it at
+#: notes: artifact CREATURES, since it animates an Equipment off its creature), The Key to the
+#: notes: Vault for Plate Armor, Two-Handed Axe for Hard-Won Jitte (Sami and Captain Marvel,
+#: notes: Apex Avenger already have double strike, so the Axe doubles their power instead), Lady
+#: notes: Octopus for Counterspell (its {U}{U} was 44% on turn two in a deck that taps out).
 #: notes: TWO MORE, 2026-10-19: Warrior's Blades in for Abrade (the same 3 damage, now on an
 #: notes: Equipment), Alibou, Ancient Witness in for Patchwork Banner (haste for the artifact
 #: notes: creatures; Vraska's vigilance keeps attackers untapped, so its X is smaller than it looks).
@@ -103,7 +109,6 @@
 1 The Vision and Scarlet Witch (MSC) 707
 1 SP//dr, Piloted by Peni (SPM) 147
 1 Blue Marvel, Adam Brashear (MSC) 530
-1 Captain America, Steve Rogers (MSC) 835
 1 Captain America, Skybound (MSC) 588
 1 Thor, God of Thunder (MSH) 156
 1 Iron Man, Titan of Innovation (MAR) 91
@@ -121,7 +126,7 @@
 1 The Vision (MSH) 255
 1 Captain America, First Avenger (MAR) 88
 1 Wizard's Staff (HOB) 59
-1 Hard-Won Jitte (TMT) 91
+1 Two-Handed Axe // Sweeping Cleave (HBG) 191
 1 Falcon's Wing Harness (MSH) 53
 1 Iron Man Armor (MSH) 248
 1 Vision, Spectral Synthezoid (MSC) 644
@@ -134,11 +139,13 @@
 1 Iron Spider, Stark Upgrade (SPM) 166
 1 Vraska, Soul of Stone (FRA) 277
 1 Orcrist, Goblin-cleaver (HOB) 177
-1 Plate Armor (AFR) 32
+1 The Key to the Vault (OTJ) 54
 1 Cid, Timeless Artificer (FIN) 216
 1 Andúril, Narsil Reforged (HOC) 40
 1 Warrior's Blades (FRA) 163
 1 Alibou, Ancient Witness (MAR) 39
+1 Donatello, Mutant Mechanic (TMT) 36
+1 Lady Octopus, Inspired Inventor (SPM) 35
 
 # Protection
 1 Captain America, Super-Soldier (MSH) 9
@@ -149,7 +156,6 @@
 1 Hyperion, Supreme Hero (MSC) 599
 
 # Interaction
-1 Counterspell (MAR) 52
 1 Three Steps Ahead (OTJ) 75
 1 Lightning Helix (MKM) 218
 1 Fractured Identity (OTP) 45
