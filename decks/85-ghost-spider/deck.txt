@@ -26,7 +26,7 @@
 #: notes: redirects to an opponent and Stick turns into an impulse card.
 #: notes: TIER UNSET pending the owner's call. The measurable floor reads A at 100 cards
 #: notes: (interaction 16 and card advantage 16, against an A line of 12 and a sum of 19);
-#: notes: protection 6 and board power 100. The deck wins through pings, not bodies; Thorin
+#: notes: protection 6 and board power 106. The deck wins through pings, not bodies; Thorin
 #: notes: Oakenshield's ward and the Sword are most of what stops removal. Sources 16 W, 16 U, 25 R; Silver Surfer's {U}{U} is the worst
 #: notes: on curve. Artist's Talent replaced Thunder Magic in the draft (a +2 amplifier and a
 #: notes: loot engine for Spider-Man, New Champion, with interaction to spare).
@@ -37,6 +37,8 @@
 #: notes: Thor and Niv-Mizzet triggers), Crossover Collaboration. Out: Abrade, Burst Lightning, Luke
 #: notes: Cage, Hero for Hire, Soul Immolation, Hypothesizzle, Sif's Spearmaster, Fiery
 #: notes: Annihilation, Three Steps Ahead, Hawkeye's Bow. Interaction 21 -> 16, protection 3 -> 6.
+#: notes: Captain Marvel, Shooting Star in for Lightning Helix (2026-10-19): a repeatable creature
+#: notes: exile on a 6/6 flying Hero; her {W}{W} is the worst cast-on-curve figure with Silver Surfer.
 #: notes: COMMANDER: Gwen Stacy // Ghost-Spider, the only Jeskai option that plays cards from
 #: notes: exile itself. Considered: Daredevil, Man Without Fear (two colours only) and Captain
 #: notes: America, First Avenger (an Equipment commander, deck 84's idea).
@@ -99,6 +101,7 @@
 1 Spider-Man, Web-Spinner (MSC) 832
 1 Echo, Perceptive Prodigy (MSH) 51
 1 Kumano Faces Kakkazan // Etching of Kumano (NEO) 152
+1 Captain Marvel, Shooting Star (MSC) 589
 
 # Discard and loot — Spider-Man, New Champion turns each discard into damage
 1 Astonishing Spider-Man (MSC) 740
@@ -112,7 +115,6 @@
 1 Thorin Oakenshield (HOB) 165
 
 # Interaction
-1 Lightning Helix (MKM) 218
 1 Fractured Identity (OTP) 45
 1 Elektra, Femme Fatale (MSC) 687
 1 Glassworks // Shattered Yard (DSK) 137
