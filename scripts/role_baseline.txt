@@ -40,6 +40,7 @@ Ball Lightning
 Bandit's Talent
 Baxter Stockman
 Bejeweled Warg
+Big Bertha
 Billowing Shriekmass
 Bioengineered Future
 Biogenic Upgrade
@@ -191,6 +192,8 @@ Honored Knight-Captain
 Hop to It
 Hour of Victory
 How to Start a Riot
+Hulk, Strongest There Is
+Human Torch
 HYDRA Troopers
 Hymn of the Faller
 Hyperion, Supreme Hero
@@ -268,6 +271,7 @@ Most Decrepit Old Bird
 Most Decrepit Old Bird // Speak Secrets
 Mutable Explorer
 Namazu Trader
+Namor, Scourge of the Seas
 Nashi, Searcher in the Dark
 Neriv, Heart of the Storm
 Nick Fury, Agent of S.H.I.E.L.D.
@@ -310,6 +314,7 @@ Rainveil Rejuvenator
 Rapacious Dragon
 Raph & Leo, Sibling Rivals
 Raph & Mikey, Troublemakers
+Raphael, the Muscle
 Raphael, the Nightwatcher
 Reckless Velocitaur
 Reno and Rude
@@ -321,6 +326,7 @@ Rhovanion Rampager
 Rise of the Dark Realms
 Rise of the Varmints
 Riverchurn Monument
+Roalesk, Apex Hybrid
 Rockalanche
 Rustler Rampage
 Salvation Swan
@@ -336,7 +342,9 @@ Secret of Bloodbending
 Seedglaive Mentor
 Seismic Sense
 Servant of the Stinger
+Shang-Chi, Martial Mentor
 Shark Shredder, Killer Clone
+She-Hulk, Attorney-at-Law
 Sheriff of Safe Passage
 Shredder, Unrelenting
 Shrike Force
@@ -366,6 +374,7 @@ Stickytongue Sentinel
 Stingerback Terror
 Stingerquill Voxmancer // Vicious Verse
 Stony-Voiced Goblins
+Storm, Force of Nature
 Sultai Devotee
 Sun Warriors
 Sun-Spider, Nimble Webber
@@ -393,6 +402,7 @@ The Mindskinner
 The Misty Mountains Cold
 The Queen of Dale
 The Regalia
+The Thing
 Think Twice
 Thor Odinson
 Thor, Asgard's Avenger

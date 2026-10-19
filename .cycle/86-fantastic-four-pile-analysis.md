@@ -1,6 +1,6 @@
 # Fantastic Four Brawl pile (deck 86) — analysis (TEMPORARY working doc)
 
-**Status: IN PROGRESS.** Delete once deck 86 is drafted and these findings are folded into
+**Status: DRAFTED as decks/86-fantastic-four (2026-10-19); keep until the owner signs off on the list, then fold into its notes and delete.** Delete once deck 86 is drafted and these findings are folded into
 its `#: notes:`. A scratchpad, not a source of truth — decks/ are.
 
 **Source list:** the owner's 79-card pile (2026-10-19), commander The Fantastic Four

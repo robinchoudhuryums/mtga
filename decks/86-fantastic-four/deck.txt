@@ -1,0 +1,142 @@
+#: name: Fantastic Four — Brawl
+#: format: Historic Brawl
+#: colors: WURG
+#: commander: The Fantastic Four
+#: plan: midrange
+#: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool), FOUR-COLOUR "FOURS" AND
+#: archetype: COUNTERS around The Fantastic Four: on entering and whenever you cast a spell with
+#: archetype: power, toughness or mana value 4, it picks a mode not yet used that turn — a 0/4
+#: archetype: Wall, 3 damage to each opponent, two +1/+1 counters, or a card. 41 of the 62 nonland
+#: archetype: cards are fours, so two or three triggers a turn is the norm. The counters land on a
+#: archetype: stack of multipliers (Doc Samson and Michelangelo, Weirdness to 11 add one each,
+#: archetype: Shang-Chi, Martial Mentor doubles), and Raphael, the Muscle doubles the damage of
+#: archetype: every countered creature. The four members (Human Torch, Mister Fantastic,
+#: archetype: Invisible Woman, The Thing) each pay off a noncreature spell cast before combat, so
+#: archetype: the interaction is noncreature and mana value 4 by design: each removal spell
+#: archetype: triggers the commander and the members at once. Annie Joins Up makes the
+#: archetype: commander's trigger happen twice. DISTINCT from the other Brawl decks (78 Bant
+#: archetype: tokens, 84 Jeskai Iron Legion, 85 Jeskai damage): green counters, four colours.
+#: protect: The Fantastic Four; Mister Fantastic; Doc Samson, Super Psychiatrist; Michelangelo, Weirdness to 11; Shang-Chi, Martial Mentor; Annie Joins Up
+#: notes: DRAFTED 2026-10-19 from the owner's 79-card Fantastic Four pile
+#: notes: (.cycle/86-fantastic-four-pile-analysis.md) plus owned mana-value-4 interaction,
+#: notes: ramp and a four-colour manabase. Left out from the pile: the Mutant-tribal half that
+#: notes: needs a Mutant count this list does not have (X-23, Wolverine, Claws Out, Colossus,
+#: notes: Mikey & Don, Genghis Frog, Biomancer's Familiar, Irma), and the 7-drops.
+#: notes: TIER UNSET pending the owner's call. The measurable floor reads A at 100 cards
+#: notes: (interaction 15 and card advantage 7, against an A line of 12 and a sum of 19);
+#: notes: protection 4, board power 125. The tools undercount card flow here: the commander's
+#: notes: draw mode, Mister Fantastic, Goliath and Ms. Marvel are triggers, not draw spells.
+#: notes: THE COST is four colours: 18 W, 18 U, 16 R, 20 G land sources and the commander's
+#: notes: {G}{R}{U}{W} at 58% on turn four. The draft swapped the Temples for tri-lands, two
+#: notes: Forests for Stomping Ground and Temple Garden, and the double-pip Thorin's Last Stand,
+#: notes: Tractor Beam and Slash, Reptile Rampager for single-pip Kraven's Last Hunt,
+#: notes: Trickster's Stratagem and Storm, Force of Nature.
+
+# Commander (leads from the command zone; also one of the 100)
+1 The Fantastic Four (MSC) 741
+
+# The Fantastic Four — members who reward a noncreature spell before combat
+1 Human Torch (MSC) 3
+1 Mister Fantastic (MSC) 2
+1 Invisible Woman (MSC) 1
+1 The Thing (MSC) 4
+
+# Counter multipliers — the commander's two counters become many
+1 Doc Samson, Super Psychiatrist (MSH) 164
+1 Shang-Chi, Martial Mentor (MSC) 732
+1 Michelangelo, Weirdness to 11 (TMT) 121
+1 Hulk, Strongest There Is (MSC) 724
+1 Miles Morales (SPM) 108
+1 She-Hulk, Attorney-at-Law (MSC) 745
+
+# Four-power bodies — each one a commander trigger (power, toughness or mana value 4)
+1 Hulk, Brutal Brawler (MSC) 833
+1 Wolverine, Fierce Fighter (MSH) 240
+1 Black Panther, Vanguard (MSH) 207
+1 Storm, Windrider (MSH) 230
+1 Spider-Man India (SPM) 151
+1 Michelangelo, Mutant BFF (TMT) 120
+1 Michelangelo, Improviser (TMT) 119
+1 Raphael, the Nightwatcher (TMT) 103
+1 Raphael, the Muscle (TMC) 4
+1 Storm, Shaker of Skies (MSC) 733
+1 Scarlet Spider, Ben Reilly (SPM) 142
+1 Silk, Web Weaver (SPM) 145
+1 Sigarda, Heron's Grace (SIR) 242
+1 Web-Warriors (SPM) 159
+1 Beast, Erudite Aerialist (MSH) 206
+1 Leatherhead, Swamp Stalker (TMT) 117
+1 Roalesk, Apex Hybrid (WAR) 213
+1 Ms. Marvel, Kamala Khan (MSH) 67
+1 Namor, Scourge of the Seas (MSC) 631
+1 Wiccan, Rising Magician (MSH) 83
+1 Big Bertha (MSC) 714
+1 Mutagen Man, Living Ooze (TMT) 124
+1 Storm, Force of Nature (MAR) 94
+
+# Support Heroes — card flow, mana and protection
+1 Peter Parker (SPM) 10
+1 Bruce Banner (MSH) 49
+1 Jennifer Walters (MSH) 18
+1 Goliath, Mass Manipulator (MSC) 766
+1 Shang-Chi, Master of Kung Fu (MSH) 187
+1 Hulk, Gamma Goliath (MSH) 215
+1 Ms. Marvel, Elastic Ally (MSC) 744
+1 Mona Lisa, Science Geek (TMT) 123
+1 Mikey & Leo, Chaos & Order (TMT) 158
+
+# Noncreature spells — mana value 4 where possible, so each one triggers the commander AND the members
+1 Annie Joins Up (OTJ) 191
+1 Ajani, Mentor of Heroes (PIO) 351
+1 Terrific Team-Up (MSC) 819
+1 Polliwallop (BLB) 189
+1 Troll Negotiations (HOB) 138
+1 Prayer of Binding (FDN) 739
+1 Celebrate the Mountain-king (HOB) 7
+1 Trickster's Stratagem (MSH) 81
+1 Glen Elendra's Answer (ECL) 52
+1 Kraven's Last Hunt (SPM) 105
+1 Sandbenders' Storm (TLA) 34
+1 Rally the Monastery (TDM) 19
+1 Liminal Hold (ECL) 24
+1 Heroic Intervention (M21) 188
+1 Proctor's Gaze (SOS) 213
+
+# Ramp and fixing
+1 Prismatic Undercurrents (ECL) 189
+1 Arcane Signet (FRC) 20
+1 Bender's Waterskin (TLA) 255
+1 Herd Heirloom (TDM) 144
+1 Patchwork Banner (BLB) 247
+
+# Lands (37)
+1 Steam Vents (ECL) 267
+1 Sacred Foundry (EOE) 256
+1 Hallowed Fountain (ECL) 265
+1 Breeding Pool (EOE) 251
+1 Frontier Bivouac (TDM) 256
+1 Mystic Monastery (TDM) 262
+1 Urban Retreat (SPM) 187
+1 Riverpyre Verge (DFT) 260
+1 Sunbillow Verge (DFT) 264
+1 Willowrush Verge (DFT) 270
+1 Floodfarm Verge (DSK) 259
+1 Hushwood Verge (DSK) 261
+1 Thornspire Verge (DSK) 270
+1 Starting Town (FIN) 289
+1 Evolving Wilds (ECL) 264
+1 Terramorphic Expanse (MSC) 828
+1 Secluded Courtyard (FDN) 267
+1 Avengers Tower (MSH) 260
+1 Ketria Triome (IKO) 250
+1 Spara's Headquarters (SNC) 257
+1 Jetmir's Garden (SNC) 250
+1 Reflecting Pool (FRC) 23
+1 Training Compound (MSH) 275
+4 Forest (FRA) 289
+1 Temple Garden (ECL) 268
+1 Stomping Ground (EOE) 258
+3 Plains (FRA) 281
+3 Island (FRA) 283
+1 Mountain (FRA) 287
+1 Command Tower (FRC) 22
