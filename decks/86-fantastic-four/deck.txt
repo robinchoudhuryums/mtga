@@ -19,12 +19,15 @@
 #: protect: The Fantastic Four; Mister Fantastic; Doc Samson, Super Psychiatrist; Michelangelo, Weirdness to 11; Shang-Chi, Martial Mentor; Annie Joins Up
 #: notes: DRAFTED 2026-10-19 from the owner's 79-card Fantastic Four pile
 #: notes: (.cycle/86-fantastic-four-pile-analysis.md) plus owned mana-value-4 interaction,
-#: notes: ramp and a four-colour manabase. The pile's other Mutants are set aside for deck 87
-#: notes: (.cycle/87-mutant-pile.md). This list already runs 20 Mutants, so Mutant payoffs
-#: notes: (X-23, Wolverine, Claws Out, Colossus) would work here too if a slot opens.
+#: notes: ramp and a four-colour manabase. MUTANTS FOLDED IN (owner's call, 2026-10-19): no
+#: notes: separate Mutant deck — the pile's Mutant payoffs join this list instead. In: Colossus,
+#: notes: Steel Stalwart, Wolverine, Claws Out, Mikey & Don, Party Planners, Genghis Frog, with
+#: notes: The Earth Crystal, Loading Zone, Vizier of the Menagerie and Vigorbloom Charm. Out:
+#: notes: Celebrate the Mountain-king, Glen Elendra's Answer, Liminal Hold, Prismatic
+#: notes: Undercurrents, Patchwork Banner, Herd Heirloom, Bender's Waterskin, Web-Warriors.
 #: notes: TIER UNSET pending the owner's call. The measurable floor reads A at 100 cards
-#: notes: (interaction 15 and card advantage 7, against an A line of 12 and a sum of 19);
-#: notes: protection 4, board power 125. The tools undercount card flow here: the commander's
+#: notes: (interaction 13 and card advantage 7, against an A line of 12 and a sum of 19);
+#: notes: protection 7, board power 134. The tools undercount card flow here: the commander's
 #: notes: draw mode, Mister Fantastic, Goliath and Ms. Marvel are triggers, not draw spells.
 #: notes: THE COST is four colours: 18 W, 18 U, 16 R, 20 G land sources and the commander's
 #: notes: {G}{R}{U}{W} at 58% on turn four. The draft swapped the Temples for tri-lands, two
@@ -48,6 +51,8 @@
 1 Hulk, Strongest There Is (MSC) 724
 1 Miles Morales (SPM) 108
 1 She-Hulk, Attorney-at-Law (MSC) 745
+1 The Earth Crystal (FIN) 184
+1 Loading Zone (EOE) 196
 
 # Four-power bodies — each one a commander trigger (power, toughness or mana value 4)
 1 Hulk, Brutal Brawler (MSC) 833
@@ -63,7 +68,7 @@
 1 Scarlet Spider, Ben Reilly (SPM) 142
 1 Silk, Web Weaver (SPM) 145
 1 Sigarda, Heron's Grace (SIR) 242
-1 Web-Warriors (SPM) 159
+1 Wolverine, Claws Out (MSC) 737
 1 Beast, Erudite Aerialist (MSH) 206
 1 Leatherhead, Swamp Stalker (TMT) 117
 1 Roalesk, Apex Hybrid (WAR) 213
@@ -73,6 +78,7 @@
 1 Big Bertha (MSC) 714
 1 Mutagen Man, Living Ooze (TMT) 124
 1 Storm, Force of Nature (MAR) 94
+1 Colossus, Steel Stalwart (MSC) 717
 
 # Support Heroes — card flow, mana and protection
 1 Peter Parker (SPM) 10
@@ -84,6 +90,9 @@
 1 Ms. Marvel, Elastic Ally (MSC) 744
 1 Mona Lisa, Science Geek (TMT) 123
 1 Mikey & Leo, Chaos & Order (TMT) 158
+1 Mikey & Don, Party Planners (TMT) 157
+1 Genghis Frog (TMT) 148
+1 Vizier of the Menagerie (FDN) 649
 
 # Noncreature spells — mana value 4 where possible, so each one triggers the commander AND the members
 1 Annie Joins Up (OTJ) 191
@@ -92,22 +101,16 @@
 1 Polliwallop (BLB) 189
 1 Troll Negotiations (HOB) 138
 1 Prayer of Binding (FDN) 739
-1 Celebrate the Mountain-king (HOB) 7
 1 Trickster's Stratagem (MSH) 81
-1 Glen Elendra's Answer (ECL) 52
+1 Vigorbloom Charm (FRA) 160
 1 Kraven's Last Hunt (SPM) 105
 1 Sandbenders' Storm (TLA) 34
 1 Rally the Monastery (TDM) 19
-1 Liminal Hold (ECL) 24
 1 Heroic Intervention (M21) 188
 1 Proctor's Gaze (SOS) 213
 
 # Ramp and fixing
-1 Prismatic Undercurrents (ECL) 189
 1 Arcane Signet (FRC) 20
-1 Bender's Waterskin (TLA) 255
-1 Herd Heirloom (TDM) 144
-1 Patchwork Banner (BLB) 247
 
 # Lands (37)
 1 Steam Vents (ECL) 267
