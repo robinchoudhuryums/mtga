@@ -403,3 +403,31 @@ an alternative to A, not an addition, unless the owner wants both.
 Director Nick Fury (commander), Hawkeye, Trick Shot, Captain America, Team Leader, Avengers
 Assemble!, Agent Phil Coulson — and once added, Wizard's Staff (its value is Nick Fury's
 trigger) and Herald's Horn (its value is Hero density).
+
+## 6. Re-evaluation after the Iron Legion package (2026-10-19)
+
+Live list: 33 Heroes, 27 artifacts (14 artifact creatures, 9 Equipment), 26 noncreature
+spells, 9 token makers, 17 early drops, avg MV 3.70, interaction 16 / card advantage 10
+(A line 12 / sum 19, so 4 interaction to spare). Iron-Spider, Civil Warrior = Alibou,
+Ancient Witness (a re-skin, not a missing card).
+
+| Card | Was | Now | Why it moved |
+|---|---|---|---|
+| Andúril, Narsil Reforged | ★★ | ★★★ | counters on EVERY creature per attack; Captain Marvel, Apex Avenger copies each one; Iron Spider turns counters into cards; MV 2 = Liberator tutor target |
+| Captain America, Living Legend | ★ | ★★ | untaps CREATURES only (not rocks): Coulson and Iron Spider activate twice, attackers stay back; 3-MV Hero for a thin early curve |
+| Mister Fantastic, Reed Richards | ◇+ | ★★ | 9 token makers now (Vraska per noncreature spell, Tony Stark per red spell, Treasures, Soldiers); no once-a-turn limit |
+| Cid, Timeless Artificer | ★ | ★★ | Sami and Shuri are Artificers now (Machinist's Arsenal makes a third): +2/+2 to ~40 Heroes and artifact creatures |
+| Origin of Iron Man | ★★ | ★★ | lock-down + draw two + free artifact; replaces a mana rock without losing interaction |
+| Reed Richards, Smartest Man | ★ | ★ | 10 card-advantage sources make the "draw four" live, but a 6-drop 2/4 |
+| Alibou, Ancient Witness | ★★ | ★ | haste for 14 artifact creatures, but X counts TAPPED artifacts and Vraska, Living Legend and five vigilance bodies keep attackers UNTAPPED (G-42) |
+| Reflecting Pool / Uthros | ◇ | ★ (lands) | untapped tri-colour for Tranquil Cove; Uthros {U} per artifact for an Island |
+| Mechanized Production | ★★ | ★ spice | copying Machinist's Arsenal is a growing Hero-token army; the eight-copy win is slow |
+| The Key to the Vault, Two-Handed Axe, Iconic Shield | ★/◇ | bench | good Equipment, but no weak Equipment slot to replace |
+| Cyberdrive Awakener | ★ | ◇ | most of the Legion already flies; animating unattaches the Equipment |
+| Saheeli, The Mechanist, Mm'menon | ★/◇ | ◇ | Vraska already holds that slot |
+| King T'Challa, Marvel Boy, Mabel, I Am Iron Man | ◇ | ◇+ | early-drop fillers if the curve needs them |
+| Zarda, Black Panther (Claws), Doctor Strange, Ultron ×2, Krang ×2, Lady Octopus, Donatello ×3, Don & Raph, Baxter, Glamdring, Motorcycle, Team Transmitter | — | ✗ | attacks-alone / lifegain / Robot / draw-trigger axes this deck lacks, or a weaker version of a card already in |
+
+Proposed core: -Wondrous Revival +Andúril; -Blue Marvel +Captain America, Living Legend;
+-Captain America, Steve Rogers +Mister Fantastic; -Dovin's Veto +Cid. Simulated: floor A,
+interaction 15, card advantage 11, protection 12, board power 120, avg MV 3.62.
