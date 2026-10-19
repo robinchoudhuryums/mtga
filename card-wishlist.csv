@@ -188,6 +188,7 @@ III — Cold Snap — Tap all lands your opponents control. Exile Shiva, then re
 Machinist's Arsenal,Artifact — Equipment,"Job select (When this Equipment enters, create a 1/1 colorless Hero creature token, then attach this to it.)
 Equipped creature gets +2/+2 for each artifact you control and is an Artificer in addition to its other types.
 Machina — Equip {4} ({4}: Attach to target creature you control. Equip only as a sorcery.)",W,Equipment; tokens; etb; equipment; pump; machina; job select; equip,FIN,23,Rare,21a,"artifact payoff — +2/+2 per artifact, Job-select token; fits the big-artifact goodstuff shell",5.0,hand
+"Tellah, Great Sage",Legendary Creature — Human Wizard,"Whenever you cast a noncreature spell, create a 1/1 colorless Hero creature token. If four or more mana was spent to cast that spell, draw two cards. If eight or more mana was spent to cast that spell, sacrifice Tellah and it deals that much damage to each opponent.",U/R,Human; Wizard; card draw; sacrifice; tokens; spellslinger; noncombat damage,FIN,244,Rare,85,,8.0,seed
 The Water Crystal,Legendary Artifact,"Blue spells you cast cost {1} less to cast.
 If an opponent would mill one or more cards, they mill that many cards plus four instead.
 {4}{U}{U}, {T}: Each opponent mills cards equal to the number of cards in your hand.",U,mill; cost-reduction; graveyard,FIN,85,Rare,51; 22,,5.5,seed
@@ -268,6 +269,9 @@ Whenever one or more artifact creatures you control attack, Alibou deals X damag
 "Black Panther, Wakandan King",Legendary Creature — Human Noble Hero,"First strike
 Survey the Realm — Whenever Black Panther or another creature you control enters, put a +1/+1 counter on target land you control.
 Mine Vibranium — {3}: Move all +1/+1 counters from target land you control onto target creature. If one or more +1/+1 counters are moved this way, you gain that much life and draw a card.",W/G,Human; Noble; Hero; counters; lifegain; card draw; first strike; combat,MAR,87,Mythic,78-historic-brawl,78-historic-brawl craft-list swap for Arcane Signet: enters trigger feeds land counters (Toph) and a {3} draw sink,7.0,seed
+Sword of Fire and Ice,Artifact — Equipment,"Equipped creature gets +2/+2 and has protection from red and from blue.
+Whenever equipped creature deals combat damage to a player, this Equipment deals 2 damage to any target and you draw a card.
+Equip {2}",Colorless,equipment; card draw; burn; pump; noncombat damage; equip,MAR,100,Mythic,85,,8.0,seed
 "Etrata, Deadly Fugitive",Legendary Creature — Vampire Assassin,"Deathtouch
 Face-down creatures you control have ""{2}{U}{B}: Turn this creature face up. If you can't, exile it, then you may cast the exiled card without paying its mana cost.""
 Whenever an Assassin you control deals combat damage to an opponent, cloak the top card of that player's library.",U/B,Vampire; Assassin; heist; cloak; deathtouch; combat; removal,MKM,200,Mythic,83,,7.0,seed
@@ -314,9 +318,18 @@ Team Transmitter,Artifact,"Whenever a Hero you control enters, you gain 1 life.
 {T}: Add one mana of any color.",Colorless,lifegain; mana,MSC,573,Uncommon,84,,5.0,seed
 Vault Guardsman,Artifact Creature — Human Advisor,"Convoke (Your creatures can help cast this spell. Each creature you tap while casting this spell pays for {1} or one mana of that creature's color.)
 When this creature enters, exile target artifact or creature an opponent controls until this creature leaves the battlefield.",W,Human; Advisor; removal; etb; convoke; go-wide,MSC,612,Uncommon,78-historic-brawl,craft for 78-historic-brawl (applied 2026-09-29),5.5,seed
+Crossover Collaboration,Instant,"Teamwork 2 (As an additional cost to cast this spell, you may tap any number of creatures you control with total power 2 or more.)
+Exile the top two cards of your library. Until the end of your next turn, you may play those cards. If this spell was cast using teamwork, create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")",R,tokens; treasure; impulse; teamwork; go-wide; combat,MSC,684,Common,85,,2.5,seed
 Fisk Tower,Land,"This land enters tapped.
 When this land enters, you gain 1 life.
 {T}: Add {W} or {B}.",W/B,lifegain; mana; etb,MSH,265,Common,41,"manabase: WB dual for a basic — +1 source to the off-colour, gain 1 life",2.0,seed
+Kumano Faces Kakkazan // Etching of Kumano,Enchantment — Saga // Enchantment Creature — Human Shaman,"(As this Saga enters and after your draw step, add a lore counter.)
+I — This Saga deals 1 damage to each opponent and each planeswalker they control.
+II — When you next cast a creature spell this turn, that creature enters with an additional +1/+1 counter on it.
+III — Exile this Saga, then return it to the battlefield transformed under your control. // Haste
+If a creature dealt damage this turn by a source you controlled would die, exile it instead.",R,saga; Human; Shaman; counters; burn; etb; noncombat damage; transform; haste; aggro,NEO,152,Uncommon,85,,3.0,seed
+"Solphim, Mayhem Dominus",Legendary Creature — Phyrexian Horror,"If a source you control would deal noncombat damage to an opponent or a permanent an opponent controls, it deals double that damage to that player or permanent instead.
+{1}{R/P}{R/P}, Discard two cards: Put an indestructible counter on Solphim. ({R/P} can be paid with either {R} or 2 life.)",R,Phyrexian; Horror; counters; noncombat damage; double,ONE,150,Mythic,85,,7.5,seed
 Blooming Marsh,Land,"This land enters tapped unless you control two or fewer other lands.
 {T}: Add {B} or {G}.",B/G,mana,OTJ,266,Rare,21; 6,Manabase upgrade: de-tapland Gastromancer (21) B->A; reusable across WB/BG/GW decks. Also firms deck 8's thin green (Killmonger/Ygra) — fungible. | Also Abzan reanimator deck 6 (Dead or Alive) — same WBG fixing; fungible craft.,6.5,hand
 Concealed Courtyard,Land,"This land enters tapped unless you control two or fewer other lands.
