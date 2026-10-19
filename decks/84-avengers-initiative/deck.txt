@@ -212,3 +212,6 @@
 3 Island (FRA) 283
 1 Uthros, Titanic Godcore (EOE) 260
 4 Mountain (FRA) 287
+
+# Flex — options cut from the list that can come back. See: deck.py flex 84
+#~ -Blue Marvel, Adam Brashear | +Iron Man, Futurist Paragon | CRAFT (R): 6-mana artifact Hero; each combat makes an artifact or creature a 5/5 flier (cut 2026-10-19 for Chronicle of Victory)
