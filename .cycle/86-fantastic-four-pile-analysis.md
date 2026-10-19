@@ -36,7 +36,23 @@ counters on target creature; draw a card."
 - **F7 — COLOURS.** Four colours, no black. The pile leans hard green; fixing is the cost.
 
 ## 2. Standing error list
-(none yet)
+- E1: Moon Girl and Devil Dinosaur graded on its second-draw clause only; its "whenever an
+  artifact you control enters, draw a card (once a turn)" is live every turn off Mutagen
+  tokens (Genghis Frog, Michelangelo, Mutant BFF, Mutagen Man, Raphael, the Muscle).
+- E2: Earth's Mightiest Heroes undersold as a dig: with teamwork 5 (one or two of the
+  deck's 19 power-4+ creatures) it puts EVERY creature among the top eight onto the
+  battlefield — about four, with 47 creatures in the 99. A finisher.
+- E3: The Thing, Ben Grimm dismissed partly because "the deck runs The Thing" — irrelevant.
+  32 Heroes feed it, and every counter multiplier applies to its two counters.
+- E4: Zanarkand graded as a tapped land; its adventure half is a Hero token with a counter
+  per land (doubled by Doc Samson, Michelangelo, Shang-Chi, The Earth Crystal, Loading Zone),
+  and the card still becomes a land afterwards. It replaces a basic, not a spell.
+- E5: Black Tom Cassidy and Giant-Man dismissed for making only green — green is the
+  deck's main colour (20 sources) and its double-green cards are the hungriest.
+- E6: the Ant-Man counter cards graded alone; The Astonishing Ant-Man's one counter per draw
+  becomes 12+ under the multipliers, cashed out as that many Insect tokens.
+- E7: Venus graded as a 5-mana body; with 27 counter-placing cards nearly every attacker
+  carries a counter, so it draws per connecting creature ({U} each).
 
 ## 3. Cross-batch observations
 - O1: the pile is 79 creatures-and-friends and almost nothing else: 4 noncreature spells
