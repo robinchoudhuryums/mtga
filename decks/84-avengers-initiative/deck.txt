@@ -22,11 +22,13 @@
 #: archetype: doublers, no lifegain engine; red damage, Hero density and artifacts.
 #: protect: Director Nick Fury; Captain America, Team Leader; Avengers Assemble!; Agent Phil Coulson; Wizard's Staff
 #: notes: TIER UNSET pending the owner's call. The measurable floor reads A at 100 cards
-#: notes: (interaction 15 and card advantage 11, against an A line of 12 and a sum of 19),
-#: notes: protection 11, board power 124, avg MV 3.77, 33 Heroes (Nick Fury's dig finds one
-#: notes: about 80% of the time), 27 artifacts. Unplayed. THE COST is the three-colour
+#: notes: (interaction 15 and card advantage 12, against an A line of 12 and a sum of 19),
+#: notes: protection 11, board power 119, avg MV 3.77, 32 Heroes (Nick Fury's dig finds one
+#: notes: about 78% of the time), 27 artifacts. Unplayed. THE COST is the three-colour
 #: notes: manabase: 20 W, 18 U, 19 R sources, so the double-pip cards are turn-five-plus
 #: notes: (Iron Man, Modern Marvel's {U}{U} 57% on turn four, Hyperion's {W}{W}{W} 38% on turn five).
+#: notes: Chronicle of Victory in for Iron Man, Futurist Paragon (2026-10-19): name Hero, so
+#: notes: Heroes get +2/+2, first strike and trample, and every Hero spell draws a card.
 #: notes: The Mind Stone in for a Plains (2026-10-19): 36 lands plus three rocks; it taps for {W}
 #: notes: from turn two and, once harnessed, blinks an enters-trigger permanent each end step
 #: notes: (Warrior's Blades, Mjölnir, Liberator, Machinist's Arsenal) — not a creature with counters.
@@ -111,6 +113,7 @@
 1 Avengers Assemble! (MSH) 6
 1 The Mighty Thor, Jane Foster (MSH) 222
 1 Wondrous Revival (MSC) 528
+1 Chronicle of Victory (ECL) 253
 
 # Heroes — the attacking body of the deck
 1 Captain America, Wings of Freedom (MSH) 10
@@ -120,7 +123,6 @@
 1 Captain America, Skybound (MSC) 588
 1 Thor, God of Thunder (MSH) 156
 1 Iron Man, Titan of Innovation (MAR) 91
-1 Iron Man, Futurist Paragon (MSC) 501
 1 Captain Marvel, Apex Avenger (MSC) 78
 1 The Sentry, Golden Guardian (MSH) 35
 1 Captain America, Living Legend (MSH) 210
