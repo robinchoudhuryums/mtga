@@ -8017,62 +8017,194 @@ def _cards_after_swap(cards, cut, add, add_printing):
 # Only sections whose meaning is UNAMBIGUOUS are checked. "# Counter DOUBLERS" means
 # +1/+1 counters, not counterspells, and "# Threats" / "# Creatures" / "# Payoff" are
 # too broad to contradict — a false warning on every swap would train the reader to
-# ignore the real ones.
-_SECTION_EXPECTATIONS = [
-    (re.compile(r"card advantage|card draw", re.I), {"Card advantage"}),
-    (re.compile(r"\bremoval\b|\binteraction\b|counterspell", re.I),
-     {"Removal (spot)", "Sweeper", "Counter"}),
-    (re.compile(r"\bramp\b|\bfixing\b|\bdorks?\b", re.I), {"Ramp / fixing"}),
+# ignore the real ones. (This was a substring table, `_SECTION_EXPECTATIONS`, until
+# Batch 7 replaced it with the head-only label tables below.)
+#
+# A section header's CLAIM (Batch 7, 2026-10-20). Headers are prose, so a type or role
+# word inside a longer description is not a claim: measured over the roster's 5,439
+# existing card placements, a substring reading called 260 of them misfiled, and most were
+# the header's DESCRIPTION talking ("# Lands-from-graveyard engine", "# Interaction /
+# tricks", "# Planeswalkers and support", "# Treasure producers — creatures and crew").
+# So only the header's HEAD — the text before a dash, paren or colon — is read, split on
+# `/ + , & ; and`, and it claims something only when EVERY piece is a known label. A head
+# with any unknown piece ("tricks", "support", "engine") claims nothing.
+_SECTION_TYPE_LABELS = [
+    (re.compile(r"non-?lands?(?: cards| spells| permanents)?"), lambda t: "land" not in t),
+    (re.compile(r"lands?"), lambda t: "land" in t),
+    (re.compile(r"non-?creatures?(?: cards| spells| permanents)?"),
+     lambda t: "creature" not in t),
+    (re.compile(r"creatures?"), lambda t: "creature" in t),
+    (re.compile(r"planeswalkers?"), lambda t: "planeswalker" in t),
 ]
+_SECTION_ROLE_LABELS = [
+    (re.compile(r"(?:spot |cheap |instant-speed )?(?:removal|interaction)|counterspells?"),
+     {"Removal (spot)", "Sweeper", "Counter"}),
+    (re.compile(r"card (?:advantage|draw)|draw"), {"Card advantage"}),
+    (re.compile(r"ramp|fixing|(?:mana )?dorks?"), {"Ramp / fixing"}),
+]
+
+
+def _section_claims(header):
+    """(type_predicates, wanted_roles) a header's HEAD claims, or None when it claims
+    nothing classifiable (see `_SECTION_TYPE_LABELS`)."""
+    head = re.split(r"\s+-\s+|[—–(:]", (header or "").strip().strip("—–- ").strip())[0]
+    pieces = [re.sub(r"^\d+\s+|\s+\d+$", "", x.strip().lower())
+              for x in re.split(r"\s*(?:/|\+|,|&|;|\band\b)\s*", head)]
+    pieces = [x for x in pieces if x]
+    if not pieces:
+        return None
+    types, roles = [], set()
+    for piece in pieces:
+        t = next((ok for rx, ok in _SECTION_TYPE_LABELS if rx.fullmatch(piece)), None)
+        if t is not None:
+            types.append(t)
+            continue
+        r = next((exp for rx, exp in _SECTION_ROLE_LABELS if rx.fullmatch(piece)), None)
+        if r is None:
+            return None
+        roles |= r
+    return types, roles
+
+
+def section_fit(header, add_name, carddata):
+    """Does `add_name` belong under `# header`? Returns (verdict, reason, kind):
+    True — the header's claims hold; False — one DEFINITELY fails, `kind` saying whether
+    it was the card's TYPE (an objective fact) or its ROLE (the K-12 heuristic); None —
+    the header claims nothing classifiable, or the only claim is a role the classifier
+    could not read (a lexicon gap more often than a misfile; `reason` then says so).
+    Claims within a group are a UNION ("# Removal / card advantage" holds either), and
+    the type and role groups are JOINT. The type is the FRONT face's (G-63).
+    ONE definition behind `section_mismatch` and `auto_section` (G-40)."""
+    cd = carddata.get((add_name or "").strip().lower())
+    claims = _section_claims(header)
+    if not cd or claims is None:
+        return None, "", ""
+    types, wanted = claims
+    tline = (cd.get("type") or "").split("//")[0].lower()
+    if types and not any(ok(tline) for ok in types):
+        return False, f"is a {tline.split('—')[0].strip() or 'card'}", "type"
+    if wanted:
+        roles = classify_roles(cd.get("text") or "")
+        if not roles:
+            return None, "nothing in its text matched a functional role", ""
+        if not roles & wanted:
+            return False, f"classifies as {', '.join(sorted(roles))}", "role"
+    return True, "", ""
+
+
+def _card_section_header(lines, idx):
+    """(header_index, header_text) of the `# section` a card line at `idx` sits under,
+    else (None, None). Skips other cards, metadata, flex lines and blanks."""
+    for j in range(idx - 1, -1, -1):
+        ln = lines[j].strip()
+        if _card_line_name(lines[j]):
+            continue
+        if ln.startswith("#:") or ln.startswith("#~") or not ln:
+            continue
+        if ln.startswith("#"):
+            while j > 0 and _is_section_comment(lines[j - 1]):
+                j -= 1                    # a wrapped header: its FIRST line names it
+            return j, lines[j].strip().lstrip("# ").strip()
+    return None, None
+
+
+def auto_section(lines, idx, add_name, carddata):
+    """Plan where a just-swapped-in card should live — the owner's call (2026-10-20):
+    section placement is AUTOMATIC by default, with a warning when it is not decidable.
+
+    Only an objective TYPE misfit moves a line (a land under `# Nonland`, a spell under
+    `# Lands`), and only to the ONE other header whose type claim it satisfies. A ROLE
+    misfit is the K-12 heuristic reading a header written by a person who may file
+    protection under "Interaction" on purpose, so it warns and names the candidates.
+
+    Returns None when the inherited section is fine or claims nothing, else
+      {"move": header_index, "to": header, "from": header, "why": reason}, or
+      {"warn": message, "from": header, "candidates": [headers]}."""
+    hidx, header = _card_section_header(lines, idx)
+    if header is None:
+        return None
+    fit, why, kind = section_fit(header, add_name, carddata)
+    # A LAND is the one card whose home is a convention rather than a judgment: when the
+    # deck has exactly one header that claims lands, a land anywhere else is misfiled
+    # however that header reads ("# Interaction", "# Pingers and Hero bodies") — role
+    # headers like "# Ramp" also "fit" a land by role, which is why this is decided on
+    # the type claim alone. Measured on the roster's existing placements before landing.
+    cd = carddata.get((add_name or "").strip().lower()) or {}
+    if fit is not True and "land" in (cd.get("type") or "").split("//")[0].lower():
+        land_heads = [(i, h) for i, h in _section_headers(lines)
+                      if i != hidx and (_section_claims(h) or ([], set()))[0]
+                      and section_fit(h, add_name, carddata)[0] is True]
+        if len(land_heads) == 1:
+            return {"move": land_heads[0][0], "to": land_heads[0][1], "from": header,
+                    "why": why or "is a land"}
+    if fit is None and why:
+        return {"warn": section_mismatch(lines, idx, add_name, carddata),
+                "from": header, "candidates": []}
+    if fit is not False:
+        return None
+    heads = [(i, h) for i, h in _section_headers(lines) if i != hidx]
+    fits = [(i, h) for i, h in heads if section_fit(h, add_name, carddata)[0] is True]
+    if kind == "type":
+        typed = [(i, h) for i, h in fits if (_section_claims(h) or ([], set()))[0]]
+        if len(typed) == 1:
+            return {"move": typed[0][0], "to": typed[0][1], "from": header, "why": why}
+    names = [h for _i, h in fits]
+    if names:
+        msg = (f"{add_name} now sits under `# {header}` (inherited from the cut card's "
+               f"slot) but {why}; " + ("it fits " if len(names) == 1 else
+                                       f"{len(names)} sections fit it: ")
+               + "; ".join(f"`# {h}`" for h in names) + ".")
+    else:
+        msg = (f"{add_name} now sits under `# {header}` (inherited from the cut card's "
+               f"slot) but {why}, and no other section header describes it — move the "
+               f"line or retitle the section so the file doesn't mislead.")
+    return {"warn": msg, "from": header, "candidates": names}
 
 
 def section_mismatch(lines, idx, add_name, carddata):
     """A warning string when the card now sitting at `lines[idx]` doesn't do what its
     enclosing `# section` comment claims, else None. Advisory only — it never edits the
     file, and it stays silent for ambiguous or absent section headers."""
-    header = None
-    for j in range(idx - 1, -1, -1):
-        ln = lines[j].strip()
-        if _card_line_name(lines[j]):
-            continue                      # another card in the same section
-        if ln.startswith("#:") or ln.startswith("#~") or not ln:
-            continue                      # metadata / flex / blank
-        if ln.startswith("#"):
-            header = ln.lstrip("# ").strip()
-            break
+    _hidx, header = _card_section_header(lines, idx)
     if not header:
         return None
-    cd = carddata.get((add_name or "").strip().lower())
-    if not cd:
-        return None
-    roles = classify_roles(cd.get("text") or "")
-    for rx, expected in _SECTION_EXPECTATIONS:
-        if not rx.search(header):
-            continue
-        if roles & expected:
-            return None
-        if roles:
-            # High confidence: we know what the card does, and it isn't this.
-            return (f"{add_name} now sits under `# {header}` (inherited from the cut "
-                    f"card's slot) but classifies as {', '.join(sorted(roles))} — move "
-                    f"the line or retitle the section so the file doesn't mislead.")
-        # Low confidence: the classifier found NO role. This session established that
-        # "no role" often means a lexicon gap rather than a weak card, so this is
-        # phrased as a prompt to look, not as an assertion that the card is misfiled.
+    fit, why, _kind = section_fit(header, add_name, carddata)
+    if fit is False:
+        # High confidence: we know what the card is or does, and it isn't this.
+        return (f"{add_name} now sits under `# {header}` (inherited from the cut "
+                f"card's slot) but {why} — move the line or retitle the section so the "
+                f"file doesn't mislead.")
+    if fit is None and why:
+        # Low confidence: the classifier found NO role. "No role" often means a lexicon
+        # gap rather than a weak card, so this is a prompt to look, not an assertion.
         return (f"{add_name} now sits under `# {header}` (inherited from the cut card's "
                 f"slot); nothing in its text matched a functional role, so verify the "
                 f"section still describes it.")
     return None
 
 
-def _section_headers(lines):
+def _is_section_comment(ln):
+    s = ln.strip()
+    return s.startswith("#") and not s.startswith("#:") and not s.startswith("#~")
+
+
+def _section_headers(lines, full=False):
     """[(index, header_text)] for the `# section` comments that group card lines.
-    Metadata (`#:`) and flex (`#~`) lines are not sections."""
+    Metadata (`#:`) and flex (`#~`) lines are not sections. A header WRAPS onto several
+    adjacent `#` lines on most of the roster ("# Lands (24 — owned Abzan fixing …" then
+    "# Starting Town, 2 Sandsteppe Citadel, …"), and those are ONE header: index and text
+    are the block's first line (`full=True` gives the whole block's text, for matching).
+    Reading each continuation as its own section put a land "under" its own header's
+    second line and planned to move 73 roster lands out of the section they were in."""
     out = []
     for i, ln in enumerate(lines):
-        s = ln.strip()
-        if s.startswith("#") and not s.startswith("#:") and not s.startswith("#~"):
-            out.append((i, s.lstrip("# ").strip()))
+        if not _is_section_comment(ln):
+            continue
+        if i > 0 and _is_section_comment(lines[i - 1]) and out:
+            if full:
+                out[-1] = (out[-1][0], out[-1][1] + " " + ln.strip().lstrip("# ").strip())
+            continue
+        out.append((i, ln.strip().lstrip("# ").strip()))
     return out
 
 
@@ -8106,7 +8238,7 @@ def _relocate_card_line(lines, card_name, needle):
         raise ValueError(f"{card_name!r} appears on {len(idxs)} card line(s) — expected "
                          "exactly one to move.")
     src = idxs[0]
-    heads = _section_headers(lines)
+    heads = _section_headers(lines, full=True)
     hits = [(i, h) for i, h in heads if needle.strip().lower() in h.lower()]
     if not hits:
         avail = "; ".join(h for _i, h in heads) or "(none)"
@@ -8114,7 +8246,22 @@ def _relocate_card_line(lines, card_name, needle):
     if len(hits) > 1:
         raise ValueError(f"{needle!r} matches {len(hits)} headers "
                          f"({'; '.join(h for _i, h in hits)}) — be more specific.")
-    hidx = hits[0][0]
+    return _relocate_to_header(lines, card_name, hits[0][0])
+
+
+def _relocate_to_header(lines, card_name, hidx):
+    """`_relocate_card_line`'s mechanics with the header already chosen, by INDEX —
+    for `auto_section`, whose target is a header it identified, not a substring a person
+    typed (a header's full text can be a substring of another's, so re-matching it by
+    text could refuse as ambiguous a target that is not). Same verbatim line, same rules."""
+    key = _ms_key(card_name or "")
+    idxs = [i for i, ln in enumerate(lines)
+            if _ms_key(_card_line_name(ln) or "") == key]
+    if len(idxs) != 1:
+        raise ValueError(f"{card_name!r} appears on {len(idxs)} card line(s) — expected "
+                         "exactly one to move.")
+    src = idxs[0]
+    heads = _section_headers(lines)
     # End of that section's card block: the last card line before the next header.
     nxt = next((i for i, _h in heads if i > hidx), len(lines))
     last = max((i for i in range(hidx + 1, min(nxt, len(lines)))
@@ -8973,7 +9120,38 @@ def cmd_feedback(args):
     return 0
 
 
-def _do_swap(d, cut, add, apply, flex_entry=None, section=None):
+def _place_swapped_line(new_lines, add, carddata, section=None, keep_section=False):
+    """Decide where the swapped-in `add` line lives. Returns (lines, notes, warn):
+    an explicit `--section` wins (and raises ValueError on an absent/ambiguous header,
+    so the caller aborts before writing); otherwise `auto_section` moves it on a TYPE
+    misfit with one clear target (Batch 7, G-05) unless `keep_section`; anything it
+    cannot decide comes back as `warn` text for the caller to print."""
+    if section:
+        return _relocate_card_line(new_lines, add, section), [], None
+    # `_ms_key` both sides (S1-02): a BUMPED add keeps its existing line's face spelling.
+    ai = next((i for i, ln in enumerate(new_lines)
+               if _ms_key(_card_line_name(ln) or "") == _ms_key(add)), None)
+    if ai is None:
+        return new_lines, [], None
+    plan = auto_section(new_lines, ai, add.strip(), carddata)
+    if not plan:
+        return new_lines, [], None
+    if "move" in plan and not keep_section:
+        try:
+            moved = _relocate_to_header(new_lines, add, plan["move"])
+        except ValueError as e:
+            return new_lines, [], f"{plan['from']}: {e}"
+        return moved, [f"↪ section: placed under `# {plan['to']}` — the cut card's "
+                       f"`# {plan['from']}` did not fit ({add} {plan['why']}). "
+                       f"Line moved verbatim; `--keep-section` leaves it in place."], None
+    if "move" in plan:
+        return new_lines, [], (f"{add} now sits under `# {plan['from']}` but {plan['why']}; "
+                               f"`# {plan['to']}` fits (kept in place by --keep-section).")
+    return new_lines, [], plan["warn"]
+
+
+def _do_swap(d, cut, add, apply, flex_entry=None, section=None,
+             keep_section=False):
     """Shared engine for `swap` and `apply-flex`: preview deltas, and on --apply
     perform the edit with a .bak + INV-04 re-check."""
     cut = lib.normalize_card_name(cut)
@@ -9092,6 +9270,21 @@ def _do_swap(d, cut, add, apply, flex_entry=None, section=None):
     print(f"    color identity  {b_col} → {a_col}"
           + ("   (adds a color!)" if after_s["colors"] - before_s["colors"] else ""))
 
+    # Section placement, previewed on the same edit `--apply` would make (Batch 7), so
+    # the dry run says where the line will land rather than surprising you after.
+    try:
+        with open(d["path"], encoding="utf-8") as fh:
+            _sim = _swap_edit_lines(fh.read().split("\n"), cut, add, (add_set, add_cn),
+                                    drop_flex=flex_entry)
+        _l, _notes, _warn = _place_swapped_line(_sim, add, carddata, section, keep_section)
+    except ValueError as e:
+        _notes, _warn = [], f"--section: {e}"
+    if not apply:
+        for n in _notes:
+            print(f"  {n.replace('placed under', 'will place under')}")
+        if _warn:
+            print(f"  ⚠ section comment: {_warn}")
+
     if not apply:
         print("\n(dry run — pass --apply to write the change with a .bak)")
         return 0
@@ -9124,8 +9317,8 @@ def _do_swap(d, cut, add, apply, flex_entry=None, section=None):
         # `--section` aborts the swap entirely rather than leaving the line misfiled
         # with an error printed after the fact. `_safe_write_lines`' card-total guard
         # still applies — a move preserves the total by construction.
-        if section:
-            new_lines = _relocate_card_line(new_lines, add, section)
+        new_lines, _notes, warn = _place_swapped_line(new_lines, add, carddata,
+                                                      section, keep_section)
         bak = _safe_write_lines(d["path"], new_lines, before_s["total"])
     except ValueError as e:
         eprint(f"Not saved: {e}")
@@ -9134,23 +9327,17 @@ def _do_swap(d, cut, add, apply, flex_entry=None, section=None):
           f"(backup: {os.path.basename(bak)}).")
     if flex_entry is not None:
         print("Removed the consumed flex line.")
-    # The add inherits the cut's line slot, and therefore the cut's `# section` comment.
-    # Warn when that makes the file lie (advisory — the swap is already written, and
-    # moving a line is a human editorial call, not something to do automatically).
-    # `_ms_key` both sides, same reason as `_relocate_card_line` above (S1-02): when the
-    # add was BUMPED onto an existing line rather than written fresh, that line keeps its
-    # own face spelling, so a raw comparison returned None and the G-05 advisory was
-    # skipped WITHOUT saying it had been skipped — a warning that silently does not run
-    # is worse than one that fires, since the file then lies to the next reader unflagged.
-    ai = next((i for i, ln in enumerate(new_lines)
-               if _ms_key(_card_line_name(ln) or "") == _ms_key(add)), None)
-    if ai is not None:
-        warn = section_mismatch(new_lines, ai, add.strip(), load_card_data())
-        if warn:
-            print(f"  ⚠ section comment: {warn}")
-            print(f'     Move it mechanically (never by hand — G-65): '
-                  f'deck.py move {d["id"]} "{add}" --section "<header substring>" '
-                  f'--apply relocates the line verbatim, with no ledger row.')
+    for n in _notes:
+        print(f"  {n}")
+    # The add inherits the cut's line slot, and with it the cut's `# section`. A TYPE
+    # misfit with one clear target was already moved above (the dry run printed that
+    # note); what `auto_section` could not decide is printed here, with the mechanical
+    # remedy — never a hand edit (G-65).
+    if warn:
+        print(f"  ⚠ section comment: {warn}")
+        print(f'     Move it mechanically (never by hand — G-65): '
+              f'deck.py move {d["id"]} "{add}" --section "<header substring>" '
+              f'--apply relocates the line verbatim, with no ledger row.')
     # Record how the recommenders scored this decision. Written AFTER the edit lands, so
     # a rejected write leaves no phantom row; announced rather than silent, because a
     # command that writes a second file should say so.
@@ -9317,12 +9504,13 @@ def _package_preview(d, raw_pairs):
             print(f"       ⛔ identity {ident or 'C'} is outside the commander's "
                   f"{''.join(c for c in 'WUBRG' if c in lock) or 'C'} — `--apply` will refuse it")
             off += 1
-        ai = next((j for j, ln in enumerate(lines)
-                   if _ms_key(_card_line_name(ln) or "") == _ms_key(add)), None)
-        if ai is not None:
-            warn = section_mismatch(lines, ai, add, carddata)
-            if warn:
-                print(f"       ⚠ section: {warn}")
+        # The same placement `--apply` makes (Batch 7), applied to the simulated lines
+        # so a later pair sees the file as it would really stand.
+        lines, notes, warn = _place_swapped_line(lines, add, carddata)
+        for n in notes:
+            print(f"       {n.replace('placed under', 'will place under')}")
+        if warn:
+            print(f"       ⚠ section: {warn}")
     if bad:
         eprint(f"\n{bad} pair(s) could not be applied — fix them and preview again.")
         return 1
@@ -9377,6 +9565,7 @@ def cmd_swap(args):
         clash = [f for f, v in (("--cut", args.cut), ("--add", args.add),
                                 ("--undo", getattr(args, "undo", False)),
                                 ("--section", getattr(args, "section", None)),
+                                ("--keep-section", getattr(args, "keep_section", False)),
                                 ("--apply", args.apply)) if v]
         if clash:
             eprint(f"--package is a preview and takes no {', '.join(clash)}: apply the "
@@ -9391,8 +9580,12 @@ def cmd_swap(args):
     if not args.cut or not args.add:
         eprint("swap needs --cut and --add (or --undo to reverse the last swap).")
         return 1
+    if getattr(args, "section", None) and getattr(args, "keep_section", False):
+        eprint("--section and --keep-section contradict each other: pick one.")
+        return 1
     return _do_swap(d, args.cut, args.add, args.apply,
-                    section=getattr(args, "section", None))
+                    section=getattr(args, "section", None),
+                    keep_section=getattr(args, "keep_section", False))
 
 
 def cmd_apply_flex(args):
@@ -16949,7 +17142,14 @@ def main():
                         "contains this substring, instead of inheriting the cut card's "
                         "slot (G-05). Moves the line VERBATIM, so the (SET) COLLECTOR# "
                         "fields cannot be mistyped the way a hand edit can (G-65). "
-                        "Refuses an absent or ambiguous header without writing.")
+                        "Refuses an absent or ambiguous header without writing. "
+                        "Without it, an add whose TYPE contradicts the inherited "
+                        "header (a land under `# Nonland`) is moved automatically to "
+                        "the one header that fits; anything undecidable is warned.")
+    p.add_argument("--keep-section", action="store_true",
+                   help="leave the added line in the cut card's slot even when its type "
+                        "contradicts that section header (the automatic placement only "
+                        "warns)")
     p = sub.add_parser("move",
                        help="relocate one card line under a different `# section` "
                             "header, verbatim (the mechanical form of the hand edit "

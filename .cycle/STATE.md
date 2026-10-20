@@ -28,7 +28,7 @@ Phase: implement — **Batches 1 (ingest), 2 (deck legality + parse gates) and 3
 Scope: broad
 Test Command: `python3 scripts/check_all.py`
 Subsystem cycles since last Seams audit: 3 (counter adopted 2026-09-08; no Seams audit has run)
-Updated: 2026-10-20 (Brawl tooling plan Batch 6 — see Where I left off)
+Updated: 2026-10-20 (Brawl tooling plan Batch 7 — see Where I left off)
 
 ## In progress (facts to carry forward — NOT judgments)
 - **Broad scan #10 is fully implemented — nothing outstanding from the scan.** Four
@@ -44,6 +44,11 @@ Updated: 2026-10-20 (Brawl tooling plan Batch 6 — see Where I left off)
 
 ## Completed this cycle
 
+- **2026-10-20 — Brawl tooling plan, Batch 7** (block `tooling-batch7-broad-implement.md`): swap
+  section placement is AUTOMATIC on an objective TYPE misfit, and a land always goes to the one land
+  header. Role misfits warn. `--keep-section` opts out. Header claims are read from the HEAD only
+  (260 → 57 flagged roster placements), and wrapped headers are one section. The first replay
+  would have moved 73 lands. The final replay moves 4 of 4 real misfiles. Net 2 − 0.
 - **2026-10-20 — Brawl tooling plan, Batch 6** (block `tooling-batch6-broad-implement.md`): PROFILE
   only, no code. The per-swap cost is not `swap`. `swap --apply` takes 6.9s; the tail around it
   does not: preflight (check_all) takes about 80s and `make postedit` about 305s, of which the dashboard is 227s. Hot
@@ -255,8 +260,7 @@ Updated: 2026-10-20 (Brawl tooling plan Batch 6 — see Where I left off)
 
 ## Pending / not yet done
 - **PLANNED 2026-10-20 — Brawl tooling plan (9 items from the decks 84–86 builds), 7 batches:**
-  Batches 1–6 DONE. Remaining: **7** section placement automatic by default with a
-  warning when ambiguous (changes G-05). Plus Batch 1's open half: suggest/screen/cuts still exclude
+  Batches 1–7 DONE (plan complete; docs for 6–7 pending /sync-docs). Plus Batch 1's open half: suggest/screen/cuts still exclude
   a blank-Legalities row silently.
 - **PLANNED 2026-10-07 — deck-32 tooling follow-ons, four `/broad-implement` batches, in order:**
   - **Batch A — DONE 2026-10-07** (block `11-batchA-tune32-followons-broad-implement.md`; also fixed the name-only re-add DUPLICATE row it exposed): G-22 `figure_drift` — refresh the two ledger figures in CLAUDE.md and give ledger-count entries a relative tolerance (~10%) so a tune stops re-firing the warning; and `wishlist.py --add` APPENDS a `--target` token to an already-listed row (never replaces it, never touches Note; validates the id) instead of skipping it — G-82/G-19 text updated.
@@ -387,6 +391,11 @@ Updated: 2026-10-20 (Brawl tooling plan Batch 6 — see Where I left off)
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
+**2026-10-20 (latest) — Brawl tooling plan, Batch 7 done; THE 9-ITEM PLAN IS COMPLETE**
+(block `tooling-batch7-broad-implement.md`). Suite 2186 passed, check_all OK. **Next:** `/sync-docs`
+for Batches 6–7 (G-05/G-77 text, README `--keep-section`, /apply-changes Stage 2). Then optionally the
+Batch 6 speed-up batch, and the owner's call on 4 auto-movable roster misfiles (35a, 37a).
+
 **2026-10-20 (latest) — Brawl tooling plan, Batch 6 done** (profile only; block
 `tooling-batch6-broad-implement.md`). **Next:** Batch 7 (automatic section placement). Then optionally
 a speed-up batch from the block's ranked candidates (classify_roles memo, rationale_staleness guard,

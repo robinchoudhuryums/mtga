@@ -7739,6 +7739,135 @@ class TestSwapUndo:
                                 apply=True)) == 1
 
 
+class TestAutoSection:
+    """Batch 7 of the 2026-10-20 tooling plan: section placement is AUTOMATIC by default
+    (the owner's call), with a warning when it is not decidable. Only an objective TYPE
+    misfit moves a line; a ROLE misfit is the K-12 heuristic, so it warns."""
+
+    CD = {
+        "shock": {"type": "Instant", "colors": "R", "text": "Shock deals 2 damage to any target."},
+        "divination": {"type": "Sorcery", "colors": "U", "text": "Draw two cards."},
+        "sundown pass": {"type": "Land", "colors": "", "text": "{T}: Add {R} or {W}."},
+        "llanowar elves": {"type": "Creature — Elf Druid", "colors": "G",
+                           "text": "{T}: Add {G}."},
+    }
+
+    def test_only_the_HEAD_of_a_header_is_a_claim(self):
+        # Measured: reading type/role words anywhere called 260 of 5,439 roster
+        # placements misfiled — mostly a header's description talking.
+        assert deck._section_claims("Lands-from-graveyard engine") is None
+        assert deck._section_claims("Interaction / tricks") is None
+        assert deck._section_claims("Planeswalkers and support") is None
+        types, roles = deck._section_claims("Lands (24) — dual-heavy, every Verge")
+        assert len(types) == 1 and not roles
+        types, roles = deck._section_claims("Noncreature — token spells / interaction")
+        assert len(types) == 1 and not roles
+        _t, roles = deck._section_claims("Removal / card advantage")
+        assert "Card advantage" in roles and "Removal (spot)" in roles
+
+    def test_nonland_is_not_read_as_land(self):
+        assert deck.section_fit("Nonland", "Sundown Pass", self.CD)[0] is False
+        assert deck.section_fit("Nonland", "Shock", self.CD)[0] is True
+        assert deck.section_fit("Lands", "Sundown Pass", self.CD)[0] is True
+
+    def test_a_role_union_header_holds_either_role(self):
+        assert deck.section_fit("Removal / card advantage", "Divination", self.CD)[0] is True
+        assert deck.section_fit("Removal / card advantage", "Shock", self.CD)[0] is True
+
+    def test_a_type_misfit_with_one_target_moves(self):
+        lines = ["# Nonland", "4 Shock (M21) 159", "1 Sundown Pass (SOS) 264",
+                 "", "# Lands", "20 Mountain"]
+        plan = deck.auto_section(lines, 2, "Sundown Pass", self.CD)
+        assert plan["move"] == 4 and plan["to"] == "Lands"
+
+    def test_a_ROLE_misfit_warns_and_never_moves(self):
+        lines = ["# Card advantage", "1 Shock (M21) 159", "", "# Removal", "1 Lava Coil (M21) 152"]
+        plan = deck.auto_section(lines, 1, "Shock", self.CD)
+        assert "move" not in plan and plan["candidates"] == ["Removal"]
+
+    def test_two_typed_targets_warn_rather_than_guess(self):
+        lines = ["# Nonland", "1 Sundown Pass (SOS) 264", "", "# Lands", "20 Mountain",
+                 "", "# Creatures and lands", "1 Llanowar Elves (M21) 168"]
+        plan = deck.auto_section(lines, 1, "Sundown Pass", self.CD)
+        assert "move" not in plan and len(plan["candidates"]) == 2
+
+    def test_a_fitting_or_silent_header_plans_nothing(self):
+        assert deck.auto_section(["# Lands", "1 Sundown Pass (SOS) 264"], 1,
+                                 "Sundown Pass", self.CD) is None
+        assert deck.auto_section(["# Dragons", "1 Sundown Pass (SOS) 264"], 1,
+                                 "Sundown Pass", self.CD) is None
+
+    def test_a_WRAPPED_header_is_one_section(self):
+        # Most roster headers wrap onto adjacent `#` lines. Read line by line, a land
+        # sat "under" its own header's second line and 73 roster lands planned a move.
+        lines = ["# Spells", "4 Shock (M21) 159", "", "# Lands (24 — owned fixing:",
+                 "# Starting Town, 2 Sandsteppe Citadel, the rest basics)",
+                 "1 Sundown Pass (SOS) 264", "20 Mountain"]
+        assert deck._card_section_header(lines, 5) == (3, "Lands (24 — owned fixing:")
+        assert deck.auto_section(lines, 5, "Sundown Pass", self.CD) is None
+        assert [i for i, _h in deck._section_headers(lines)] == [0, 3]
+
+    def test_a_LAND_goes_to_the_one_land_header_even_from_a_role_header(self):
+        # "# Ramp" also fits a land BY ROLE; the land's home is decided on type alone.
+        lines = ["# Interaction", "1 Sundown Pass (SOS) 264", "", "# Ramp",
+                 "1 Llanowar Elves (M21) 168", "", "# Lands (36)", "20 Mountain"]
+        plan = deck.auto_section(lines, 1, "Sundown Pass", self.CD)
+        assert plan["move"] == 6 and plan["to"] == "Lands (36)"
+        silent = ["# Pingers", "1 Sundown Pass (SOS) 264", "", "# Lands", "20 Mountain"]
+        assert deck.auto_section(silent, 1, "Sundown Pass", self.CD)["move"] == 3
+
+    LINES = ["#: name: T", "#: colors: R", "", "# Nonland", "4 Shock (M21) 159",
+             "", "# Lands", "56 Mountain"]
+
+    def _setup(self, tmp_path, monkeypatch):
+        from types import SimpleNamespace as NS
+        d = tmp_path / "decks" / "99-t"
+        d.mkdir(parents=True)
+        path = d / "deck.txt"
+        path.write_text("\n".join(self.LINES) + "\n")
+        monkeypatch.setattr(deck, "DECKS_DIR", str(tmp_path / "decks"))
+        monkeypatch.setattr(deck, "RECS_CSV", str(tmp_path / "recs.csv"))
+        monkeypatch.setattr(deck, "recommendation_row",
+                            lambda d, cut, add, source, today=None:
+                            {"Date": "2026-10-20", "Deck": d["id"], "Source": source,
+                             "Cut": cut, "Add": add})
+        return path, NS
+
+    def _swap(self, NS, apply=True, keep=False):
+        return deck.cmd_swap(NS(id="99", cut="Shock", add="Sundown Pass", apply=apply,
+                                undo=False, section=None, keep_section=keep, package=None))
+
+    def test_apply_moves_a_land_out_of_Nonland(self, tmp_path, monkeypatch, capsys):
+        path, NS = self._setup(tmp_path, monkeypatch)
+        assert self._swap(NS) == 0
+        lines = path.read_text().split("\n")
+        assert lines.index("1 Sundown Pass (SOS) 264") > lines.index("# Lands")
+        assert "placed under `# Lands`" in capsys.readouterr().out
+
+    def test_the_dry_run_says_where_it_will_land_and_writes_nothing(self, tmp_path,
+                                                                     monkeypatch, capsys):
+        path, NS = self._setup(tmp_path, monkeypatch)
+        before = path.read_text()
+        assert self._swap(NS, apply=False) == 0
+        assert "will place under `# Lands`" in capsys.readouterr().out
+        assert path.read_text() == before
+
+    def test_keep_section_leaves_it_and_warns(self, tmp_path, monkeypatch, capsys):
+        path, NS = self._setup(tmp_path, monkeypatch)
+        assert self._swap(NS, keep=True) == 0
+        lines = path.read_text().split("\n")
+        assert lines.index("1 Sundown Pass (SOS) 264") < lines.index("# Lands")
+        assert "kept in place by --keep-section" in capsys.readouterr().out
+
+    def test_undo_still_restores_after_an_automatic_move(self, tmp_path, monkeypatch):
+        path, NS = self._setup(tmp_path, monkeypatch)
+        original = path.read_text()
+        assert self._swap(NS) == 0
+        assert deck.cmd_swap(NS(id="99", cut=None, add=None, section=None, undo=True,
+                                apply=True)) == 0
+        assert path.read_text() == original
+
+
 class TestSwapPackage:
     """Batch 4 of the 2026-10-20 tooling plan: `swap <id> --package "cut=add" …` previews
     several swaps as one change and writes nothing. It replaces a hand-rolled simulator

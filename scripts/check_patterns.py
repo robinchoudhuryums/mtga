@@ -202,8 +202,10 @@ _EXCLUDED = {
     # reasoning as their _HISTORY_CUES siblings.
     ("deck", "_RATIONALE_FIGURES"): "tier-RATIONALE prose (quoted figures); "
                                     "unit-tested in test_deck.py",
-    ("deck", "_SECTION_EXPECTATIONS"): "deck-file `# section` comment prose, not card "
-                                       "text; unit-tested via section_mismatch tests",
+    ("deck", "_SECTION_TYPE_LABELS"): "full-match labels over a `# section` header's HEAD, "
+                                      "not card text; unit-tested via TestAutoSection",
+    ("deck", "_SECTION_ROLE_LABELS"): "full-match labels over a `# section` header's HEAD, "
+                                      "not card text; unit-tested via TestAutoSection",
 }
 
 
