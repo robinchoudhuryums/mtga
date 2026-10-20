@@ -33,7 +33,8 @@
 #: notes: MUTANT/FOUR PASS, 2026-10-20: X-23 for Peter Parker, Black Tom Cassidy for Big
 #: notes: Bertha, Sally Pride for Ajani, Mentor of Heroes, Giant-Man for Hulk, Gamma Goliath,
 #: notes: Raph & Mikey for Ms. Marvel, Elastic Ally, Black Panther, Wakandan King for Mona Lisa.
-#: notes: Reed Richards, Smartest Man is the open add; Sigarda was weighed as its cut and KEPT —
+#: notes: Donatello, the Brains for Shang-Chi, Master of Kung Fu (2026-10-20): every token also
+#: notes: brings a Mutagen token. Reed Richards, Smartest Man is the open add; Sigarda was weighed as its cut and KEPT —
 #: notes: it gives you and 15 Humans hexproof, the commander and all four members among them.
 #: notes: TIER UNSET pending the owner's call. The measurable floor reads A at 100 cards
 #: notes: (interaction 13 and card advantage 8, against an A line of 12 and a sum of 19);
@@ -95,7 +96,7 @@
 1 Bruce Banner (MSH) 49
 1 Jennifer Walters (MSH) 18
 1 Goliath, Mass Manipulator (MSC) 766
-1 Shang-Chi, Master of Kung Fu (MSH) 187
+1 Donatello, the Brains (TMC) 2
 1 Black Panther, Wakandan King (MAR) 87
 1 Mikey & Leo, Chaos & Order (TMT) 158
 1 Mikey & Don, Party Planners (TMT) 157

@@ -2,6 +2,8 @@ Card Name,Type,Card Text,Color(s),Synergies,Set Code,Collector #,Rarity,Target,N
 "Brimaz, King of Oreskos",Legendary Creature — Cat Soldier,"Vigilance
 Whenever Brimaz attacks, create a 1/1 white Cat Soldier creature token with vigilance that's attacking.
 Whenever Brimaz blocks a creature, create a 1/1 white Cat Soldier creature token with vigilance that's blocking that creature.",W,Cat; Soldier; tokens; vigilance; combat,,,Mythic,78-historic-brawl,,7.0,seed
+"Donatello, the Brains",Legendary Creature — Mutant Ninja Turtle,"If one or more tokens would be created under your control, those tokens plus a Mutagen token are created instead.
+Partner—Character select (You can have two commanders if both have this ability.)",U,Mutant; Ninja; Turtle; tokens; partner,,,Mythic,86,,5.0,seed
 Gandalf the White,Legendary Creature — Avatar Wizard,"Flash
 You may cast legendary spells and artifact spells as though they had flash.
 If a legendary permanent or an artifact entering or leaving the battlefield causes a triggered ability of a permanent you control to trigger, that ability triggers an additional time.",W,Avatar; Wizard; flash; tempo,,,Mythic,78-historic-brawl,,7.0,seed
