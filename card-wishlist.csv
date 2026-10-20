@@ -17,6 +17,10 @@ Whenever you gain life, put a +1/+1 counter on target creature or enchantment yo
 {1}{W}: Another target creature gains lifelink until end of turn.",W,God; counters; lifegain; indestructible; resilience; lifelink,,,Mythic,78-historic-brawl,,7.5,seed
 In the Trenches,Enchantment,"Creatures you control get +1/+1.
 {5}{W}: Exile target nonland permanent you don't control until this enchantment leaves the battlefield. Activate only as a sorcery and only once.",W,removal; pump,,,Mythic,78-historic-brawl,,7.5,seed
+"Minsc & Boo, Timeless Heroes",Legendary Planeswalker — Minsc,"When Minsc & Boo enters and at the beginning of your upkeep, you may create Boo, a legendary 1/1 red Hamster creature token with trample and haste.
++1: Put three +1/+1 counters on up to one target creature with trample or haste.
+−2: Sacrifice a creature. When you do, Minsc & Boo deals X damage to any target, where X is that creature's power. If the sacrificed creature was a Hamster, draw X cards.
+Minsc & Boo, Timeless Heroes can be your commander.",R/G,Minsc; planeswalker; counters; card draw; sacrifice; tokens; burn; etb; noncombat damage,,,Mythic,86,,10.0,seed
 Parallel Lives,Enchantment,"If an effect would create one or more tokens under your control, it creates twice that many of those tokens instead.",G,tokens,,,Mythic,86,,4.5,seed
 The Wandering Emperor,Legendary Planeswalker,"Flash
 As long as The Wandering Emperor entered this turn, you may activate her loyalty abilities any time you could cast an instant.

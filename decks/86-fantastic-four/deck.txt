@@ -50,8 +50,9 @@
 #: notes: Mutagen with them), The Wandering Emperor for Trickster's Stratagem and Origin of
 #: notes: Metalbending for Sandbenders' Storm (cheap noncreature spells that answer artifacts and
 #: notes: enchantments or protect a creature). Shuri was weighed for Moon Girl and passed on.
+#: notes: Minsc & Boo, Timeless Heroes for Polliwallop: a token every upkeep, three counters, a fling.
 #: notes: TIER UNSET pending the owner's call. The measurable floor reads A at 100 cards
-#: notes: (interaction 12 and card advantage 9, against an A line of 12 and a sum of 19);
+#: notes: (interaction 12 and card advantage 10, against an A line of 12 and a sum of 19);
 #: notes: protection 8, board power 143. The tools undercount card flow here: the commander's
 #: notes: draw mode, Mister Fantastic, Goliath and Reed Richards are triggers, not draw spells.
 #: notes: THE COST is four colours: 18 W, 18 U, 16 R, 20 G land sources and the commander's
@@ -121,7 +122,7 @@
 # Noncreature spells — mana value 4 where possible, so each one triggers the commander AND the members
 1 Annie Joins Up (OTJ) 191
 1 Terrific Team-Up (MSC) 819
-1 Polliwallop (BLB) 189
+1 Minsc & Boo, Timeless Heroes (HBG) 243
 1 Troll Negotiations (HOB) 138
 1 Prayer of Binding (FDN) 739
 1 Vigorbloom Charm (FRA) 160
