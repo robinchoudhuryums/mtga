@@ -6,8 +6,8 @@
 #: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool), FOUR-COLOUR "FOURS" AND
 #: archetype: COUNTERS around The Fantastic Four: on entering and whenever you cast a spell with
 #: archetype: power, toughness or mana value 4, it picks a mode not yet used that turn — a 0/4
-#: archetype: Wall, 3 damage to each opponent, two +1/+1 counters, or a card. 41 of the 62 nonland
-#: archetype: cards are fours, so two or three triggers a turn is the norm. The counters land on a
+#: archetype: Wall, 3 damage to each opponent, two +1/+1 counters, or a card. 33 of the other 62
+#: archetype: nonland cards are fours, so two or three triggers a turn is the norm. The counters land on a
 #: archetype: stack of multipliers (Doc Samson and Michelangelo, Weirdness to 11 add one each,
 #: archetype: Shang-Chi, Martial Mentor doubles), and Raphael, the Muscle doubles the damage of
 #: archetype: every countered creature. The four members (Human Torch, Mister Fantastic,
@@ -16,6 +16,12 @@
 #: archetype: triggers the commander and the members at once. Annie Joins Up makes the
 #: archetype: commander's trigger happen twice. DISTINCT from the other Brawl decks (78 Bant
 #: archetype: tokens, 84 Jeskai Iron Legion, 85 Jeskai damage): green counters, four colours.
+#: tier: A — set by the owner 2026-10-20. The measurable floor reads A at 100 cards: interaction 13
+#: tier: and card advantage 11 against an A line of 12 and a sum of 19, protection 8. The engine is
+#: tier: layered: counter multipliers, two token doublers (Parallel Lives and Donatello's Mutagen),
+#: tier: and Reed Richards turning each turn's first extra draw into four. Weaknesses: four colours
+#: tier: (the commander is 58% on turn four from lands alone), several double-pip cards, and removal
+#: tier: that mostly needs one of your own creatures to fight or deal the damage.
 #: protect: The Fantastic Four; Mister Fantastic; Doc Samson, Super Psychiatrist; Michelangelo, Weirdness to 11; Shang-Chi, Martial Mentor; Annie Joins Up
 #: notes: DRAFTED 2026-10-19 from the owner's 79-card Fantastic Four pile
 #: notes: (.cycle/86-fantastic-four-pile-analysis.md) plus owned mana-value-4 interaction,
@@ -56,7 +62,7 @@
 #: notes: LANDS RE-CHECKED after Teferi: W 18, U 18, R 16, G 20 land sources, 95.9% keepable within
 #: notes: two sevens; left as is. Great Divide Guide, Avengers Tower and Secluded Courtyard make far
 #: notes: more coloured mana than the land counts show. Thinnest card: Raphael, the Nightwatcher {R}{R}.
-#: notes: TIER UNSET pending the owner's call. The measurable floor reads A at 100 cards
+#: notes: TIER A (owner, 2026-10-20). The measurable floor reads A at 100 cards
 #: notes: (interaction 13 and card advantage 11, against an A line of 12 and a sum of 19);
 #: notes: protection 8, board power 139. The tools undercount card flow here: the commander's
 #: notes: draw mode, Mister Fantastic, Goliath and Reed Richards are triggers, not draw spells.
