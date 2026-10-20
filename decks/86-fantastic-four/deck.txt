@@ -34,16 +34,21 @@
 #: notes: Bertha, Sally Pride for Ajani, Mentor of Heroes, Giant-Man for Hulk, Gamma Goliath,
 #: notes: Raph & Mikey for Ms. Marvel, Elastic Ally, Black Panther, Wakandan King for Mona Lisa.
 #: notes: Donatello, the Brains for Shang-Chi, Master of Kung Fu (2026-10-20): every token also
-#: notes: brings a Mutagen token. Reed Richards, Smartest Man is the open add; Sigarda was weighed as its cut and KEPT —
-#: notes: it gives you and 15 Humans hexproof, the commander and all four members among them.
+#: notes: brings a Mutagen token. TOKEN PASS (owner's picks, 2026-10-20): Invisible Woman,
+#: notes: Sue Storm for Silk, Web Weaver, Matt Murdock
+#: notes: for Sigarda, Heron's Grace (ward {1} on every countered creature in place of hexproof on
+#: notes: the Humans), Reed Richards, Smartest Man for Ms. Marvel, Kamala Khan, World War Hulk for
+#: notes: Kraven's Last Hunt. Leonardo, the Balance was cut again the same day: his {W}{U}{B}{R}{G}
+#: notes: ability puts BLACK in his colour identity, so he is illegal under this commander.
+#: notes: Interaction sits ON the A line, the next thing to rebuild.
 #: notes: TIER UNSET pending the owner's call. The measurable floor reads A at 100 cards
-#: notes: (interaction 13 and card advantage 8, against an A line of 12 and a sum of 19);
-#: notes: protection 7, board power 149. The tools undercount card flow here: the commander's
-#: notes: draw mode, Mister Fantastic, Goliath and Ms. Marvel are triggers, not draw spells.
+#: notes: (interaction 12 and card advantage 8, against an A line of 12 and a sum of 19);
+#: notes: protection 7, board power 147. The tools undercount card flow here: the commander's
+#: notes: draw mode, Mister Fantastic, Goliath and Reed Richards are triggers, not draw spells.
 #: notes: THE COST is four colours: 18 W, 18 U, 16 R, 20 G land sources and the commander's
 #: notes: {G}{R}{U}{W} at 58% on turn four. The draft swapped the Temples for tri-lands, two
 #: notes: Forests for Stomping Ground and Temple Garden, and the double-pip Thorin's Last Stand,
-#: notes: Tractor Beam and Slash, Reptile Rampager for single-pip Kraven's Last Hunt,
+#: notes: Tractor Beam and Slash, Reptile Rampager for single-pip Kraven's Last Hunt (since cut),
 #: notes: Trickster's Stratagem and Storm, Force of Nature.
 
 # Commander (leads from the command zone; also one of the 100)
@@ -64,6 +69,7 @@
 1 The Earth Crystal (FIN) 184
 1 Loading Zone (EOE) 196
 1 X-23, Deadly Weapon (MSC) 738
+1 Matt Murdock, Justice Seeker (MSC) 602
 
 # Four-power bodies — each one a commander trigger (power, toughness or mana value 4)
 1 Hulk, Brutal Brawler (MSC) 833
@@ -77,12 +83,9 @@
 1 Raphael, the Muscle (TMC) 4
 1 Storm, Shaker of Skies (MSC) 733
 1 Scarlet Spider, Ben Reilly (SPM) 142
-1 Silk, Web Weaver (SPM) 145
-1 Sigarda, Heron's Grace (SIR) 242
 1 Wolverine, Claws Out (MSC) 737
 1 Leatherhead, Swamp Stalker (TMT) 117
 1 Roalesk, Apex Hybrid (WAR) 213
-1 Ms. Marvel, Kamala Khan (MSH) 67
 1 Venus, Torn Between Worlds (TMT) 136
 1 Wiccan, Rising Magician (MSH) 83
 1 Mutagen Man, Living Ooze (TMT) 124
@@ -104,6 +107,8 @@
 1 Vizier of the Menagerie (FDN) 649
 1 The Thing, Ben Grimm (MSH) 190
 1 Moon Girl and Devil Dinosaur (MSH) 223
+1 Reed Richards, Smartest Man (MSC) 636
+1 Invisible Woman, Sue Storm (MSH) 17
 
 # Noncreature spells — mana value 4 where possible, so each one triggers the commander AND the members
 1 Annie Joins Up (OTJ) 191
@@ -111,13 +116,13 @@
 1 Polliwallop (BLB) 189
 1 Troll Negotiations (HOB) 138
 1 Prayer of Binding (FDN) 739
-1 Trickster's Stratagem (MSH) 81
 1 Vigorbloom Charm (FRA) 160
-1 Kraven's Last Hunt (SPM) 105
+1 World War Hulk (MSH) 197
 1 Sandbenders' Storm (TLA) 34
 1 Rally the Monastery (TDM) 19
 1 Heroic Intervention (M21) 188
 1 Earth's Mightiest Heroes (MSH) 165
+1 Trickster's Stratagem (MSH) 81
 
 # Ramp and fixing
 1 Arcane Signet (FRC) 20
