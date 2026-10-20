@@ -754,6 +754,18 @@ def cmd_wildcards(args):
     if not decks:
         print("No decks yet. Add one under decks/<NN-name>/deck.txt.")
         return 0
+    if getattr(args, "decks", None):
+        # Scope to the named decks (2026-10-20): "which packs serve THESE decks" was
+        # answered by a hand script that joined ownership on the wrong key.
+        sel = []
+        for i in args.decks:
+            dd = find_deck(i)
+            if not dd:
+                eprint(f"No deck with id {i!r}. Try: deck.py list")
+                return 1
+            if dd["id"] not in {x["id"] for x in sel}:
+                sel.append(dd)
+        decks = sel
     _fresh = lib.collection_stamp_note()
     if _fresh:
         print(_fresh + "\n")
@@ -767,6 +779,7 @@ def cmd_wildcards(args):
     max_need = {}         # name_lower -> max copies any single deck needs
     display = {}          # name_lower -> display name
     needed_by = {}        # name_lower -> set(deck ids short on it)
+    set_of = {}           # name_lower -> the (SET) its first deck line names
     for d in decks:
         _, cards = parse_deck_file(d["path"])
         need = {}
@@ -774,6 +787,7 @@ def cmd_wildcards(args):
             if n.lower() in BASICS:
                 continue  # basics are free/unlimited in Arena
             need[n] = need.get(n, 0) + q
+            set_of.setdefault(n.lower(), (s or "?").strip().upper() or "?")
         shorts = []
         for n, req in need.items():
             nl = n.lower()
@@ -796,6 +810,48 @@ def cmd_wildcards(args):
     # that needs it is in a rotating format (`format_rotates`).
     _deck_rotates = {d["id"]: format_rotates((d.get("meta") or {}).get("format")) for d in decks}
     _rotates_for = lambda ids: any(_deck_rotates.get(i, True) for i in ids)
+
+    if getattr(args, "by_set", False):
+        # Pack planning: the same shared-collection shortfall `--dedup` uses (a card short
+        # in several decks counts ONCE, at the most any deck needs), grouped by the set its
+        # deck line names. Built from the DECKS, not the wishlist: on 2026-10-20 the wishlist
+        # held only 35 of the 96 cards decks 84–86 were missing.
+        rar_rank = {r: i for i, (r, _) in enumerate(WC_NAMES)}
+        groups = {}
+        for nl, ids in needed_by.items():
+            have, _f = owned(by_name_qty, display[nl])
+            copies = max(0, max_need[nl] - have)
+            if copies:
+                groups.setdefault(set_of.get(nl, "?"), []).append(
+                    (display[nl], rar_of(display[nl]), copies,
+                     sorted(ids, key=lambda x: (len(x), x))))
+        scope = ("decks " + ", ".join(d["id"] for d in decks)
+                 if getattr(args, "decks", None) else "the whole roster")
+        print(f"Craft targets by set — {scope} (shared collection; a card short in "
+              "several decks counts once)\n")
+        if not groups:
+            print("  Nothing to craft — every deck in scope is buildable. ✓")
+            return 0
+
+        def _weight(rows):  # mythic/rare first: they are what packs are opened for
+            return (-sum(1 for r in rows if r[1] in ("M", "R")), -len(rows))
+        total = 0
+        for setc, rows in sorted(groups.items(), key=lambda kv: (_weight(kv[1]), kv[0])):
+            rows.sort(key=lambda r: (rar_rank.get(r[1], 99), r[0]))
+            breakdown = "  ".join(f"{sum(1 for r in rows if r[1] == code)} {label}"
+                                  for code, label in WC_NAMES
+                                  if any(r[1] == code for r in rows))
+            print(f"  {setc:5} {len(rows):>3} card(s)   {breakdown}")
+            for name, rar, copies, ids in rows:
+                rot = craft_rot_note(name, pool_rot, rotates=_rotates_for(ids))
+                cp = f" ×{copies}" if copies > 1 else ""
+                print(f"        {rar}  {name}{cp}{rot}   [{', '.join(ids)}]")
+            total += len(rows)
+        print(f"\n{total} distinct card(s) across {len(groups)} set(s). Set = the printing each "
+              "deck line names; a card printed in several sets may also come from another "
+              "set's packs, and whether a supplemental set opens in packs at all is a store "
+              "question this file cannot answer.")
+        return 0
 
     if getattr(args, "dedup", False):
         # Cross-deck union: one row per distinct craft target. copies = what the
@@ -6119,10 +6175,18 @@ def suggest_lands(d, unowned=False, owned=False, limit=20, fmt=None, any_format=
     # possibly-better unowned one on exactly the wildcard-spend surfaces (BS4-36).
     # UTILITY breaks ties only — a rider never outranks fixing (see _LAND_UTILITY_CUES).
     picks.sort(key=lambda p: (-p["score"], -p["util"], p["name"].lower()))
+    # Counted BEFORE the window cuts the list: the default view leads with craft targets,
+    # so the owned options sat below it unseen (2026-10-20, deck 85 — the owned Boros duals
+    # surfaced only once `--owned` was added by hand).
+    owned_rows = [(i, p) for i, p in enumerate(picks, 1) if p["owned"]]
+    owned_info = {"total": len(owned_rows), "candidates": len(picks),
+                  "best": ((owned_rows[0][1]["name"], owned_rows[0][1]["score"], owned_rows[0][0])
+                           if owned_rows else None)}
     if limit and limit > 0:
         picks = picks[:limit]
     return {"ok": True, "colors": deck_colors, "picks": picks, "fmt": fmt,
-            "apply_fmt": apply_fmt, "has_leg": has_leg, "sources": sources, "deficit": deficit}
+            "apply_fmt": apply_fmt, "has_leg": has_leg, "sources": sources, "deficit": deficit,
+            "owned_info": owned_info}
 
 
 def cmd_suggest_lands(args, d):
@@ -6191,6 +6255,14 @@ def cmd_suggest_lands(args, d):
     if any(p.get("restricted") for p in res["picks"]):
         print("·restricted = the colored mana has a 'spend this only to…' clause. Its "
               "fixing premium is halved; judge it against what your deck actually casts.")
+    oi = res.get("owned_info") or {}
+    if not args.unowned and not getattr(args, "owned", False) and oi.get("total"):
+        shown = sum(1 for p in res["picks"] if p["owned"])
+        if shown < oi["total"]:
+            name, score, rank = oi["best"]
+            print(f"\nⓘ {oi['total']} owned land(s) qualify, {shown} shown here; the best owned is "
+                  f"{name} (score {score:.1f}, #{rank} of {oi['candidates']}). "
+                  "`--owned --limit 0` lists them all.")
     print("\nScore = FIXING value (0–10, dominant: produces your colors, untapped premium) "
           "+ bounded SYNERGY (land ability hits a deck theme) + bounded SHORTFALL (produces "
           "the scarce color). Rider (creature / draw / scry / surveil / sink / ping / life; "
@@ -16742,6 +16814,11 @@ def main():
     p = sub.add_parser("wildcards", help="roster-wide crafting plan (wildcards to finish decks)")
     p.add_argument("--dedup", action="store_true",
                    help="cross-deck union of craft targets, ranked by decks served per copy")
+    p.add_argument("--by-set", action="store_true",
+                   help="group the craft targets by the set each deck line names — the "
+                        "pack-planning view (a card short in several decks counts once)")
+    p.add_argument("--decks", nargs="+", metavar="ID",
+                   help="only these decks (default: the whole roster)")
     p = sub.add_parser("audit", help="roster-wide triage scorecard — which decks need a tune (offline)")
     p.add_argument("--flagged", action="store_true",
                    help="show only decks with a flag (hide the 'ok' rows)")

@@ -32,7 +32,8 @@ REGRESSION RISKS:
     blank cell as "not in the format" (excluded). Unchanged in this batch; see follow-on.
 INVARIANTS AT RISK: INV-03 (pool still carries its own columns — verified by check_all);
   INV-01b/INV-04 unaffected. None violated.
-NET SCORE: production fixes 2 (Searing Soloist false FAIL in `legal`/preflight; `///` lookups) −
+NET SCORE (AMENDED 2026-10-20 in Batch 5: the normaliser collapsed a bare `//` and mis-keyed
+  the real card SP//dr — one new failure mode, fixed in Batch 5, so this batch nets 2 − 1 = 1): production fixes 2 (Searing Soloist false FAIL in `legal`/preflight; `///` lookups) −
   new failure modes 0 = net +2. (A None-storage regression was caught in review, before commit.)
 
 OPERATOR ACTIONS / DEPLOY:

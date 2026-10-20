@@ -7565,6 +7565,13 @@ class TestBatch1NameAndLegality:
         assert lib.normalize_card_name("Ojer Axonil,  Deepest Might ///Temple of Power") == \
             "Ojer Axonil, Deepest Might // Temple of Power"
         assert lib.normalize_card_name("Sol Ring") == "Sol Ring"
+        assert lib.normalize_card_name("Fire //Ice") == "Fire // Ice"
+
+    def test_an_unspaced_double_slash_inside_a_name_survives(self):
+        # SP//dr is a real card (deck 65); the first normaliser keyed it as "sp".
+        assert lib.normalize_card_name("SP//dr, Piloted by Peni") == "SP//dr, Piloted by Peni"
+        assert deck._ms_key("SP//dr, Piloted by Peni") == "sp//dr, piloted by peni"
+        assert deck._printing_of("SP//dr, Piloted by Peni")[0] == "SP//dr, Piloted by Peni"
 
     def test_triple_slash_name_resolves_to_its_printing(self):
         name, _set, _cn = deck._printing_of("Insult /// Injury")
@@ -7803,3 +7810,62 @@ class TestSwapPackage:
         assert self._pkg(NS, ["Storm, Windrider=Leonardo, the Balance"]) == 0
         out = capsys.readouterr().out
         assert "⛔ identity WUBRG is outside the commander's WURG" in out
+
+
+class TestWildcardsBySet:
+    """Batch 5 of the 2026-10-20 tooling plan, item 7: `wildcards --by-set [--decks …]`
+    groups the craft shortfall by set for pack planning, built from the DECKS (the
+    wishlist held only 35 of the 96 cards decks 84–86 were missing)."""
+
+    def _roster(self, tmp_path, monkeypatch):
+        for did, lines in (("97-a", ["#: name: A", "4 Shock (M21) 159", "56 Mountain"]),
+                           ("98-b", ["#: name: B", "2 Shock (M21) 159", "1 Lava Coil (M21) 152",
+                                     "57 Mountain"])):
+            d = tmp_path / "decks" / did
+            d.mkdir(parents=True)
+            (d / "deck.txt").write_text("\n".join(lines) + "\n")
+        monkeypatch.setattr(deck, "DECKS_DIR", str(tmp_path / "decks"))
+        monkeypatch.setattr(deck, "load_collection", lambda: ({}, {}, {}))  # nothing owned
+
+    def _run(self, **kw):
+        from types import SimpleNamespace as NS
+        base = dict(dedup=False, by_set=True, decks=None)
+        base.update(kw)
+        return deck.cmd_wildcards(NS(**base))
+
+    def test_groups_by_set_and_counts_a_shared_card_once(self, tmp_path, monkeypatch, capsys):
+        self._roster(tmp_path, monkeypatch)
+        assert self._run() == 0
+        out = capsys.readouterr().out
+        assert "M21" in out and "2 distinct card(s) across 1 set(s)" in out
+        assert "Shock ×4" in out, "copies = the most any one deck needs (shared collection)"
+
+    def test_decks_scopes_the_view(self, tmp_path, monkeypatch, capsys):
+        self._roster(tmp_path, monkeypatch)
+        assert self._run(decks=["98"]) == 0
+        out = capsys.readouterr().out
+        assert "decks 98" in out and "Shock ×2" in out and "Lava Coil" in out
+
+    def test_unknown_deck_is_refused(self, tmp_path, monkeypatch):
+        self._roster(tmp_path, monkeypatch)
+        assert self._run(decks=["555"]) == 1
+
+
+class TestLandsOwnedFooter:
+    """Batch 5 item 9: `suggest --lands` says how many OWNED lands the craft-led window hid."""
+
+    def test_owned_info_is_counted_before_the_window(self):
+        res = deck.suggest_lands(deck.find_deck("85"), limit=1)
+        oi = res["owned_info"]
+        assert oi["total"] >= 1 and oi["candidates"] >= oi["total"]
+        assert oi["best"] and oi["best"][2] >= 1
+
+    def test_footer_prints_only_on_the_default_view(self, capsys):
+        from types import SimpleNamespace as NS
+        d = deck.find_deck("85")
+        deck.cmd_suggest_lands(NS(unowned=False, owned=False, limit=1, fmt=None,
+                                  any_format=False), d)
+        assert "owned land(s) qualify" in capsys.readouterr().out
+        deck.cmd_suggest_lands(NS(unowned=False, owned=True, limit=1, fmt=None,
+                                  any_format=False), d)
+        assert "owned land(s) qualify" not in capsys.readouterr().out

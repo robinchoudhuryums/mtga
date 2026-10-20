@@ -289,9 +289,16 @@ def normalize_card_name(name):
     a hand-typed or pasted name often arrives as `Insult /// Injury`, and no lookup keyed on the
     two-slash form matched it (2026-10-20: `_printing_of` returned no printing and `_ms_key`
     kept the three slashes, so the bare front key never reached the pool). Every name-facing
-    lookup that accepts typed input routes through here, so the separator is fixed once."""
+    lookup that accepts typed input routes through here, so the separator is fixed once.
+
+    A BARE two-slash run inside a word is part of a NAME, not a separator, and must survive:
+    `SP//dr, Piloted by Peni` is a real card (deck 65). The first version collapsed every
+    `//` and keyed it as "sp" (caught 2026-10-20 by `wildcards --by-set` disagreeing with a
+    direct count by one card). So only a run of THREE or more slashes, or a `//` that
+    already touches whitespace, is normalised."""
     s = " ".join((name or "").split())
-    return re.sub(r"\s*/{2,}\s*", " // ", s)
+    s = re.sub(r"\s*/{3,}\s*", " // ", s)
+    return re.sub(r"\s+//\s*|\s*//\s+", " // ", s)
 
 
 def alias_front(index):
