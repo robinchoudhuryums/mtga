@@ -79,11 +79,9 @@
 1 Sawblade Skinripper (DSK) 231
 
 # Push-through / evasion + burn spells
-1 Capital City (FIN) 274
 1 Untimely Malfunction (DSK) 161
 1 Leyline of Mutation (DSK) 188
 1 Mona Lisa, Science Geek (TMT) 123
-1 Captivating Cave (LCI) 268
 1 Burst Lightning (FDN) 192
 1 Vibrant Outburst (SOS) 240
 
@@ -106,6 +104,8 @@
 3 Forest (MSH) 296
 1 Great Divide Guide (TLA) 181
 1 Bloom Tender (ECL) 166
+1 Capital City (FIN) 274
+1 Captivating Cave (LCI) 268
 
 # Flex — craft upgrade for the manabase. See: deck.py flex 35a
 #~ note: applied — Leyline of Mutation in for How to Start a Riot.
