@@ -15,7 +15,7 @@ Item 3 | scripts/deck.py | `_ms_key`, `_printing_of`, `_resolve_card_name`, and 
   route through the normaliser
 Item 2 | scripts/deck.py | `load_legalities` keeps a blank cell as an empty set; `legality_report`
   treats a falsy legality entry as unknown (unverified), not illegal; roster brawl count
-  (cmd_brawl) reads a falsy entry as unknown too
+  (brawl_readiness) reads a falsy entry as unknown too
 Item 2 | card-pool.csv | rebuilt with `build_pool.py --all --refetch`: 31 blank rows now carry
   Brawl legality (all 31 legal on Scryfall); 18 other rows changed upstream (17 oracle text,
   13 synergy tags, 1 release date) — 49 rows total
