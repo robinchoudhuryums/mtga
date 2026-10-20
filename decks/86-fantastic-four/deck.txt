@@ -41,8 +41,13 @@
 #: notes: Kraven's Last Hunt. Leonardo, the Balance was cut again the same day: his {W}{U}{B}{R}{G}
 #: notes: ability puts BLACK in his colour identity, so he is illegal under this commander.
 #: notes: Interaction sits ON the A line, the next thing to rebuild.
+#: notes: Same day: Ray Fillet, Wave Warrior for Invisible Woman, Sue Storm (a card draw per
+#: notes: creature with a counter that connects; Sue's Wall trigger repeated the other Invisible
+#: notes: Woman), and Great Divide Guide for Arcane Signet (every land taps for any colour).
+#: notes: Leyline of the Guildpact was weighed for that slot and is ILLEGAL: its {B/G} hybrid
+#: notes: puts black in its colour identity.
 #: notes: TIER UNSET pending the owner's call. The measurable floor reads A at 100 cards
-#: notes: (interaction 12 and card advantage 8, against an A line of 12 and a sum of 19);
+#: notes: (interaction 12 and card advantage 9, against an A line of 12 and a sum of 19);
 #: notes: protection 7, board power 147. The tools undercount card flow here: the commander's
 #: notes: draw mode, Mister Fantastic, Goliath and Reed Richards are triggers, not draw spells.
 #: notes: THE COST is four colours: 18 W, 18 U, 16 R, 20 G land sources and the commander's
@@ -108,7 +113,7 @@
 1 The Thing, Ben Grimm (MSH) 190
 1 Moon Girl and Devil Dinosaur (MSH) 223
 1 Reed Richards, Smartest Man (MSC) 636
-1 Invisible Woman, Sue Storm (MSH) 17
+1 Ray Fillet, Wave Warrior (TMC) 14
 
 # Noncreature spells — mana value 4 where possible, so each one triggers the commander AND the members
 1 Annie Joins Up (OTJ) 191
@@ -125,7 +130,7 @@
 1 Trickster's Stratagem (MSH) 81
 
 # Ramp and fixing
-1 Arcane Signet (FRC) 20
+1 Great Divide Guide (TLA) 181
 1 Black Tom Cassidy (MSC) 715
 
 # Lands (37)
