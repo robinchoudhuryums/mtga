@@ -1,20 +1,48 @@
 #: name: Air Nomads
 #: format: Standard
 #: arena: 15 Air Nomads, 8dc84eb5-b2e3-450c-9a00-b2d6a7ec516d
-#: tier: B — Azorius fliers tempo (strong B); airbend/waterbend tempo + a counter (It'll Quench Ya!) + Wan Shi Tong card advantage. The interaction metric now reads 6 (the classifier was fixed to
-#: tier: credit artifact/enchantment removal and library-tuck answers), and airbend
-#: tier: exile / waterbend / Watery Grasp lockdown still aren't tallied on top of that —
-#: tier: so the real figure is higher again. Kept at B anyway, one band below the floor:
-#: tier: this is a flavour-first singleton build with a DIFFUSE spine (18 central themes)
-#: tier: and only 1 protection effect, which is more than the single weakness an A
-#: tier: tolerates. A deliberate below-floor call, like 35a and 21a.
+#: tier: B — Azorius fliers tempo, re-grounded 2026-10-17 after a twelve-swap pass. The
+#: tier: measurable floor reads A: interaction 7 plus card advantage 7 at a 3.11 curve.
+#: tier: Kept at B, one band below the floor, as a deliberate call like 35a and 21a: this is
+#: tier: a flavour-first singleton build with a DIFFUSE spine (21 central themes), and the
+#: tier: pass is unplayed. What it fixed: protection 1 -> 5 (Liliana the Faultless's
+#: tier: hexproof, Moogles' Valor's team indestructible, Sheltered by Ghosts' ward, Hakoda), three Gleaming Bastions
+#: tier: for basics (cards below 90% on curve 23 -> 17), and a lifegain/token layer —
+#: tier: Exalted Sunborn doubles every token, The Wind Crystal doubles every life gain and
+#: tier: gives the whole board flying and lifelink. What still argues down: only 3 of the 7
+#: tier: interaction pieces answer a noncreature permanent.
 #: colors: WU
-#: archetype: Azorius (W/U) Air Nomads fliers / airbend tempo, with a small waterbend
-#: archetype: sub-package. The header claimed the waterbend axis outright until
-#: archetype: 2026-09-23; that axis belongs to deck 16, which was split off this deck
-#: archetype: and rebuilt 2026-09-19. Measured: 8 airbend cards here against 16's ZERO,
-#: archetype: and 5 waterbend against its 14. The five that stay are cost fuel, not a
-#: archetype: theme — see the `#: notes:` line below.
+#: archetype: Azorius (W/U) Air Nomads fliers / airbend tempo, going WIDE with Ally tokens
+#: archetype: and a lifegain layer. The waterbend axis belongs to deck 16, split off this
+#: archetype: deck and rebuilt 2026-09-19; the 2026-10-17 pass cut the leftover waterbend
+#: archetype: cards here down to Katara, Aang's Iceberg and Aang, Swift Savior's transform.
+#: archetype: TWO WAYS TO CLOSE: The Wind Crystal's {4}{W}{W} gives a wide ground board
+#: archetype: flying and lifelink for one swing, or Team Avatar pumps one attacker by the
+#: archetype: creature count while the rest of the board stays home.
+#: notes: THE 2026-10-17 PASS (twelve swaps; entries below are HISTORY). Lands: -2 Island
+#: notes: -1 Plains +3 Gleaming Bastion ("{T}: Add {W} or {U}. Activate only if ... you control
+#: notes: a basic land" — 17 basics remain after the follow-up below). In: The Mighty Thor, Jane Foster; Liliana the
+#: notes: Faultless; Exalted Sunborn; Moogles' Valor; Denzilore Fatehold; The Wind Crystal;
+#: notes: Sage of the Skies; Ajani Resolute; Team Avatar. CUT: Water Tribe Rallier, It'll
+#: notes: Quench Ya!, Falcon, Winged Wonder, Gather the White Lotus, Teo, Spirited Glider,
+#: notes: Crashing Wave, First-Time Flyer, Momo, Friendly Flier, Watery Grasp.
+#: notes: DENZILORE NEEDS SCRY: "+1/+1 counter on each creature you control" per scry or
+#: notes: surveil. Compassionate Healer (every time it taps), Glider Kids, Momo, Playful Pet
+#: notes: and Aang's Iceberg are the sources; they are why Healer and Glider Kids stayed.
+#: notes: AJANI RESOLUTE gains loyalty per lifegain EVENT, and Liliana makes one per token.
+#: notes: TEAM AVATAR vs SOKKA: Team Avatar wants one attacker, Sokka draws only when two
+#: notes: attack — a per-turn choice, not a conflict.
+#: notes: SHELTERED BY GHOSTS REPLACED THE WONDROUS WASP (2026-10-17): the same 2-mana slot,
+#: notes: but it exiles ANY nonland permanent, and the enchanted creature gains lifelink (fed
+#: notes: to The Wind Crystal and Ajani) and ward {2}. THE TRAP: if the enchanted creature leaves
+#: notes: — airbend, Thor, a harnessed Mind Stone, Appa — the aura falls off and their card
+#: notes: comes back. Put it on a creature you will not reuse.
+#: notes: FOLLOW-UP, same day: The Mind Stone replaced Path to Redemption (interaction 8 -> 7,
+#: notes: the A floor exactly), chosen over cutting a Plains so the 24 lands stay intact. It
+#: notes: is an indestructible {W} rock that ramps turn 2 into turn-4 five-drops, and its
+#: notes: harnessed ability flickers a permanent every end step (Aang, Jailer, Katara again).
+#: notes: Then a second OWNED Hallowed Fountain replaced a Plains: blue 13 -> 14, Denzilore
+#: notes: Fatehold 67% -> 72% on curve, Wan Shi Tong 70% -> 74%, white unchanged at 16.
 #: notes: Azorius (W/U) — Air Nomads fliers / tempo. A-track pass: +Wan Shi Tong (owned card-advantage
 #: notes: bomb) + It'll Quench Ya! (counter) + Watery Grasp (on-theme lockdown), firmed blue to 12 sources.
 #: notes: Kept the waterbend token fuel (Gather the White Lotus / United Front) — it pays the
@@ -25,18 +53,18 @@
 1 Aang, Swift Savior (TLA) 204
 1 Appa, Steadfast Guardian (TLA) 10
 1 Appa, Loyal Sky Bison (TLA) 9
-1 Momo, Friendly Flier (TLA) 29
+1 Ajani Resolute (FRA) 195
 1 Momo, Playful Pet (TLA) 30
 1 Glider Kids (TLA) 21
-1 Teo, Spirited Glider (TLA) 74
-1 The Wondrous Wasp (MSH) 84
+1 Denzilore Fatehold (FRA) 128
+1 Sheltered by Ghosts (DSK) 30
 1 Sokka, Lateral Strategist (TLA) 241
 1 The Mechanist, Aerial Artisan (TLA) 64
-1 First-Time Flyer (TLA) 49
-1 Falcon, Winged Wonder (MSH) 52
+1 Sage of the Skies (TDM) 22
+1 Exalted Sunborn (EOE) 15
 1 Captain America, Living Legend (MSH) 210
 1 Katara, Water Tribe's Hope (TLA) 231
-1 Water Tribe Rallier (TLA) 42
+1 The Mighty Thor, Jane Foster (MSH) 222
 1 Earth Kingdom Jailer (TLA) 16
 1 Hakoda, Selfless Commander (TLA) 23
 1 Ty Lee, Chi Blocker (TLA) 76
@@ -48,22 +76,23 @@
 1 Wan Shi Tong, Librarian (TLA) 78
 1 Avatar's Wrath (TLA) 12
 1 Glider Staff (TLA) 22
-1 Gather the White Lotus (TLA) 20
+1 Moogles' Valor (FIN) 27
 1 Air Nomad Legacy (TLA) 206
 1 The Legend of Yangchen (TLA) 27
 1 United Front (TLA) 39
-1 Watery Grasp (TLA) 82
-1 It'll Quench Ya! (TLA) 58
-1 Path to Redemption (TLA) 31
+1 Team Avatar (TLA) 38
+1 Liliana the Faultless (FRA) 200
+1 The Mind Stone (MSH) 21
 1 Aang's Iceberg (TLA) 5
-1 Crashing Wave (TLA) 47
-1 Floodfarm Verge (DSK) 259
+1 The Wind Crystal (FIN) 43
 
 # Lands
 1 Abandoned Air Temple (TLA) 263
-11 Plains (ANB) 115
-10 Island (ANB) 113
-1 Hallowed Fountain (ECL) 265
+9 Plains (ANB) 115
+8 Island (ANB) 113
+3 Gleaming Bastion (MSH) 267
+2 Hallowed Fountain (ECL) 265
+1 Floodfarm Verge (DSK) 259
 
 # Flex — suggested craft. See: deck.py flex 15
 #~ note: applied — Wan Shi Tong, Librarian maindecked (now owned) for -1 Airbending Lesson, with blue firmed to 12 sources.

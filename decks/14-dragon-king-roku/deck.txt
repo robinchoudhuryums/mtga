@@ -1,6 +1,6 @@
 #: name: Dragon King Roku
 #: format: Standard
-#: tier: A — Rakdos (BR) dragons midrange; bombs + 14 interaction (Terror of the Peaks turning every token into damage, 3 sweepers counting Iroh's Demonstration's ping mode), low curve base (14 cards at 1-2 MV) with a dragon payoff cluster at 5. Promoted from B: tightened Mardu->2-color for consistency; A-caliber interaction + closing power.
+#: tier: A — Rakdos (BR) dragons midrange; bombs + 15 interaction (Terror of the Peaks turning every token into damage, 3 sweepers counting Iroh's Demonstration's ping mode), low curve base (11 cards at 1-2 MV) with a dragon payoff cluster at 5. Promoted from B: tightened Mardu->2-color for consistency; A-caliber interaction + closing power.
 #: colors: BR
 #: archetype: Rakdos (B/R) Fire Nation dragons / firebending midrange.
 #: notes: Rakdos (B/R) — Fire Nation / dragons midrange. Tightened from the old Mardu build:
@@ -37,6 +37,16 @@
 #: notes: Easy Pickings adventure is a one-sided 1-damage sweep before Glóin is cast from exile.
 #: notes: Raph & Leo, Sibling Rivals for Draconic Visitor (CUT — only Smaug fed it repeatably): an
 #: notes: extra combat every turn, so the untapped firebenders attack, and firebend, twice.
+#: notes: 2026-10-17: Raven Eagle for Fire Nation Cadets and Clive, Ifrit's Dominant for Red Hulk
+#: notes: (card advantage 4 -> 6). Raven Eagle exiles a graveyard card on entering and attacking
+#: notes: (a Clue if it was a creature) and drains on your second draw each turn. Clive draws
+#: notes: "cards equal to your devotion to red" after discarding your hand, and its {4}{R}{R}
+#: notes: flip fights, adds {R}{R}{R}{R} twice and returns to draw again; best on an empty hand.
+#: notes: Then Azula, On the Hunt (uncommon craft, wishlisted) for Corroding Dragonstorm: "Firebending 2.
+#: notes: Whenever Azula attacks, you lose 1 life and create a Clue token" — card advantage 6 -> 7,
+#: notes: and Raph & Leo's extra combat makes it two Clues a turn. The cost: a cheap Dragon payoff
+#: notes: that rebought itself off every Dragon entering, and the curve rises (3.72 -> 3.78).
+#: notes: Improvisation Capstone was the alternative cut and is the first card out if the curve bites.
 #: notes: Fated Firepower for Jeong Jeong (CUT, user's choice over War Balloon): flash, so X is paid
 #: notes: from firebending combat mana (or Electro's banked red); every damage source then hits harder.
 
@@ -52,12 +62,12 @@
 1 Fire Sages (TLA) 136
 1 Firebending Student (TLA) 139
 1 Firebender Ascension (TLA) 137
-1 Fire Nation Cadets (TLA) 134
+1 Raven Eagle (TLA) 116
 1 Firebending Lesson (TLA) 138
 1 Solstice Revelations (TLA) 153
 1 The Rise of Sozin (TLA) 117
 1 Draconautics Engineer (DFT) 121
-1 Corroding Dragonstorm (TDM) 75
+1 Azula, On the Hunt (TLA) 85
 1 Sarkhan, Dragon Ascendant (TDM) 118
 1 Nova Hellkite (EOE) 148
 1 Electro, Assaulting Battery (SPM) 76
@@ -75,7 +85,7 @@
 1 War Balloon (TLA) 159
 1 Improvisation Capstone (SOS) 120
 1 Raph & Leo, Sibling Rivals (TMT) 166
-1 Red Hulk (MSH) 149
+1 Clive, Ifrit's Dominant // Ifrit, Warden of Inferno (FIN) 133
 1 Iroh's Demonstration (TLA) 141
 
 # Lands (pure-Rakdos re-fix: −Sun-Blessed Peak (W/R tapland) & −2 Plains → +2 Mountain
@@ -83,7 +93,8 @@
 2 Fire Nation Palace (TLA) 268
 1 Blood Crypt (ECL) 262
 1 Blazemire Verge (DSK) 256
-2 Boiling Rock Prison (TLA) 267
+1 Boiling Rock Prison (TLA) 267
+1 Temple of Malice (FDN) 701
 3 Dark Fortress (MSH) 264
 1 Razortrap Gorge (DSK) 267
 5 Swamp (MSH) 292

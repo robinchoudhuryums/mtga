@@ -1,5 +1,6 @@
 #: name: Zoologist (changelings are every type)
 #: format: Standard
+#: arena: 34 Delusional Zoologist, 71f9f553-3e74-41a7-9678-cd4421144c53
 #: tier: B — Simic changeling / Diligent-Zookeeper type-count deck; the metrics floor reads A (interaction 7, card advantage 10,
 #: tier: protection 5). Held at B pending the owner's re-grade: still ONE type-COUNT payoff (Zookeeper), but the 2026-10-09
 #: tier: tune added named-type payoffs that changelings satisfy — Beorn (Bears +2/+2, draws two a turn), Spider-Ham (animal

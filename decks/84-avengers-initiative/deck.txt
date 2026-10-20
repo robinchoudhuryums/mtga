@@ -1,0 +1,217 @@
+#: name: Avengers Initiative — Brawl
+#: format: Historic Brawl
+#: colors: WUR
+#: commander: Director Nick Fury
+#: plan: midrange
+#: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool), JESKAI HEROES AND THE IRON
+#: archetype: LEGION around Director Nick Fury: "Hero spells you cast cost {1} less" and "whenever you
+#: archetype: attack, look at the top four cards of your library. You may reveal a Hero card … put
+#: archetype: that card into your hand", so every attack is a card. Captain America, Team Leader gives
+#: archetype: each new Hero haste and a counter, Avengers Assemble! draws each end step a Hero
+#: archetype: attacked or entered, and The Mighty Thor, Jane Foster re-buys enters triggers on attack.
+#: archetype: THE IRON LEGION is the second half of the deck, not a splash: 27 artifacts, 9 of them
+#: archetype: Equipment, and most of the artifacts are Heroes (Tony Stark, Iron Man, Modern Marvel,
+#: archetype: Iron Man, Bleeding Edge, Iron Lad, The Vision, Iron Spider, Stark Upgrade, War Machine)
+#: archetype: so they do not cost Nick Fury's dig its Hero density. The artifact count is a resource:
+#: archetype: Sami, Wildcat Captain gives every spell affinity for artifacts, Shuri, Wakandan Inventor
+#: archetype: discounts them again, Iron Man, Master of Machines and Machinist's Arsenal scale with
+#: archetype: them, and Vraska, Soul of Stone turns each Equipment or other noncreature spell into
+#: archetype: another artifact body. Captain America, First Avenger attaches an Equipment free every
+#: archetype: combat, Captain America, Liberator tutors one, and Wizard's Staff on Nick Fury makes his
+#: archetype: attack dig trigger twice. DISTINCT from the Avatar Brawl deck (78, Bant): no enters-
+#: archetype: doublers, no lifegain engine; red damage, Hero density and artifacts.
+#: protect: Director Nick Fury; Captain America, Team Leader; Avengers Assemble!; Agent Phil Coulson; Wizard's Staff
+#: notes: TIER UNSET pending the owner's call. The measurable floor reads A at 100 cards
+#: notes: (interaction 15 and card advantage 12, against an A line of 12 and a sum of 19),
+#: notes: protection 11, board power 119, avg MV 3.77, 32 Heroes (Nick Fury's dig finds one
+#: notes: about 78% of the time), 27 artifacts. Unplayed. THE COST is the three-colour
+#: notes: manabase: 20 W, 18 U, 19 R sources, so the double-pip cards are turn-five-plus
+#: notes: (Iron Man, Modern Marvel's {U}{U} 57% on turn four, Hyperion's {W}{W}{W} 38% on turn five).
+#: notes: Chronicle of Victory in for Iron Man, Futurist Paragon (2026-10-19): name Hero, so
+#: notes: Heroes get +2/+2, first strike and trample, and every Hero spell draws a card.
+#: notes: The Mind Stone in for a Plains (2026-10-19): 36 lands plus three rocks; it taps for {W}
+#: notes: from turn two and, once harnessed, blinks an enters-trigger permanent each end step
+#: notes: (Warrior's Blades, Mjölnir, Liberator, Machinist's Arsenal) — not a creature with counters.
+#: notes: Buster Sword in for Falcon's Wing Harness (2026-10-19): most carriers already fly, and
+#: notes: Buster draws a card and casts a spell free on every hit.
+#: notes: Origin of Iron Man in for Captain America, Unbowed and Ironheart, Clever Champion in for
+#: notes: Captain Marvel, Shooting Star (2026-10-19, owner's picks): the Saga's lock-down replaces
+#: notes: the exile, and Ironheart gives every noncreature spell improvise.
+#: notes: FOUR MORE, 2026-10-19: Donatello, Mutant Mechanic for Captain America, Steve Rogers
+#: notes: (three counters a turn on an artifact creature, twice with Living Legend; aim it at
+#: notes: artifact CREATURES, since it animates an Equipment off its creature), The Key to the
+#: notes: Vault for Plate Armor, Two-Handed Axe for Hard-Won Jitte (Sami and Captain Marvel,
+#: notes: Apex Avenger already have double strike, so the Axe doubles their power instead), Lady
+#: notes: Octopus for Counterspell (its {U}{U} was 44% on turn two in a deck that taps out).
+#: notes: TWO MORE, 2026-10-19: Warrior's Blades in for Abrade (the same 3 damage, now on an
+#: notes: Equipment), Alibou, Ancient Witness in for Patchwork Banner (haste for the artifact
+#: notes: creatures; Vraska's vigilance keeps attackers untapped, so its X is smaller than it looks).
+#: notes: SIX MORE, 2026-10-19 (owner's picks). In: Team Transmitter (life per Hero entering
+#: notes: closes games), Mister Fantastic, Reed Richards (draws whenever tokens enter: Vraska,
+#: notes: Tony Stark's Robots, Treasures, Soldiers), Captain America, Living Legend (Coulson and
+#: notes: Iron Spider activate twice), Andúril, Narsil Reforged, Reflecting Pool, Uthros, Titanic
+#: notes: Godcore (one Island). Out: Arcane Signet, Rhystic Study (the opponent pays the {1} in a
+#: notes: 1v1 game), Herald's Horn, Origin of the Avengers, Tranquil Cove, one Island.
+#: notes: CID, 2026-10-19: Cid, Timeless Artificer in for Dovin's Veto (cut as the narrowest
+#: notes: counter, with interaction to spare). Sami, Shuri and Cid are Artificers, and Machinist's
+#: notes: Arsenal makes the equipped creature one, so Heroes and artifact creatures get about +2/+2.
+#: notes: IRON LEGION PACKAGE, 2026-10-19 (seven swaps; the cut cards go to deck 85). In: Sami,
+#: notes: Wildcat Captain, Shuri, Wakandan Inventor, Iron Spider, Stark Upgrade, Vraska, Soul of
+#: notes: Stone, Orcrist, Goblin-cleaver, Plate Armor, Plaza of Heroes. Out (to 85): Thor,
+#: notes: Asgard's Avenger, Daredevil, Man Without Fear, Hawkeye, Trick Shot, Spider-Man,
+#: notes: Web-Spinner, Photon, Lady of Light, Echo, Perceptive Prodigy (its copy target, Trick
+#: notes: Shot, left with it), and Raucous Carnival (Plaza of Heroes replaced it). Interaction 17 -> 16,
+#: notes: card advantage 9 -> 10, protection 13 -> 14, Heroes 37 -> 33, artifacts 21 -> 27.
+#: notes: Iron Spider, Civil Warrior is NOT a separate card: it is the Marvel re-skin of Alibou,
+#: notes: Ancient Witness, so search the pool under the Alibou name.
+#: notes: DECK 85 SPLIT, 2026-10-18: a Hero damage-and-exile deck (85) takes Thor, Guardian of
+#: notes: Midgard, Silver Surfer, Cosmic Voyager and Hawkeye, Young Avenger (85-only); in their
+#: notes: place Machinist's Arsenal (a Hero token with +2/+2 per artifact), Iron Man, Master of
+#: notes: Machines (+1/+0 per other artifact) and Iron Man, Tony Stark (a Robot Hero token per
+#: notes: red spell). Thor, Asgard's Avenger, Daredevil, Man Without Fear and Hawkeye, Trick
+#: notes: Shot are ALSO going to 85 once their 84 replacements are chosen.
+#: notes: FIVE MORE SWAPS, 2026-10-18 (owner's picks after Option A). In: War Machine (an
+#: notes: artifact Hero — cutting it in Option A was an error, it is the Iron Legion overlap),
+#: notes: Vision, Spectral Synthezoid (casts a noncreature spell free each turn: an Equipment),
+#: notes: Captain Marvel, Apex Avenger (flying, double strike, indestructible — the best
+#: notes: carrier), The Sentry and Hyperion. Out: Jessica Jones, Thief's Knife, Spider-Woman,
+#: notes: Jeskai Revelation, Happy Hogan. THE SENTRY'S VOID: it "attacks each combat if able"
+#: notes: and has no vigilance, so it is tapped on your turn and cannot block; The Sentry has
+#: notes: vigilance, so it attacks AND blocks The Void each turn. The risk is The Sentry being
+#: notes: exiled or bounced. Answers to The Void: The Super Hero Civil War steals it (a token
+#: notes: has mana value 0), Fractured Identity, Vault Guardsman. Interaction 19 -> 17, card
+#: notes: advantage 11 -> 8, protection 11 -> 13, board power 118 -> 131.
+#: notes: OPTION A, 2026-10-18 (eighteen swaps, from .cycle/84-marvel-pile-analysis.md). In:
+#: notes: Captain America, Liberator; Tony Stark // The Invincible Iron Man; Iron Man, Modern
+#: notes: Marvel; Iron Man, Bleeding Edge; Iron Lad; The Vision; Captain America, First
+#: notes: Avenger; Daredevil, Man Without Fear; Herald's Horn; Wizard's Staff; Hard-Won Jitte;
+#: notes: Falcon's Wing Harness; Iron Man Armor; Chromatic Lantern; Venat; The Super Hero
+#: notes: Civil War; Conqueror's Flail; Thief's Knife. Out: Hawkeye, Bowslinger; Falcon,
+#: notes: Joaquin Torres; Black Panther, Most Dangerous; War Machine; Wraith; Matt Murdock;
+#: notes: Vision, Spectral Synthezoid; Captain Marvel, Apex Avenger; Iceman and Firestar; Human
+#: notes: Torch; Ponder; Swiftfoot Boots; Mind Stone; Talisman of Conviction; Hyperion; Liminal
+#: notes: Hold; Crib Swap; Hero in Training. Card advantage 7 -> 11, interaction held at 19,
+#: notes: avg MV 3.75 -> 3.67, Heroes 39 -> 36 (Nick Fury's dig finds one about 85% of the
+#: notes: time), artifacts 13 -> 21. The owner has pushback on War Machine, Hyperion, Vision,
+#: notes: Spectral Synthezoid, Captain Marvel, Apex Avenger and Mind Stone — revisit them.
+#: notes: DRAFTED 2026-10-18 from the owner's 38-card Marvel pile plus owned Hero support,
+#: notes: interaction and lands. LEFT OUT from the pile: Hulk, Always Angry ("When Hulk
+#: notes: enters, destroy all artifacts" — it kills Iron Man, Vision, The Vision and Scarlet
+#: notes: Witch and Vault Guardsman), Black Panther, Claws of Bast (attacks-alone rewards fight
+#: notes: Falcon's and Captain America, Skybound's battalion), and the discard / artifact / blink
+#: notes: sub-theme cards the list does not support (Daredevil, Fearless Fighter, Spider-Man,
+#: notes: New Champion, Astonishing Spider-Man, Hulkling, The Immortal Weapons, Mockingbird,
+#: notes: Bobbi Morse, Imperial Cosmographer). Most MSC cards read as unowned in the library;
+#: notes: the owner listed them as their pile, so that is stale catalogue data, not a gap.
+
+# Commander (leads from the command zone; also one of the 100)
+1 Director Nick Fury (MSC) 81
+
+# Hero engines — what makes each Hero entering or attacking pay off
+1 Captain America, Team Leader (MSC) 5
+1 Agent Phil Coulson (MSH) 4
+1 Avengers Assemble! (MSH) 6
+1 The Mighty Thor, Jane Foster (MSH) 222
+1 Wondrous Revival (MSC) 528
+1 Chronicle of Victory (ECL) 253
+
+# Heroes — the attacking body of the deck
+1 Captain America, Wings of Freedom (MSH) 10
+1 The Vision and Scarlet Witch (MSC) 707
+1 SP//dr, Piloted by Peni (SPM) 147
+1 Blue Marvel, Adam Brashear (MSC) 530
+1 Captain America, Skybound (MSC) 588
+1 Thor, God of Thunder (MSH) 156
+1 Iron Man, Titan of Innovation (MAR) 91
+1 Captain Marvel, Apex Avenger (MSC) 78
+1 The Sentry, Golden Guardian (MSH) 35
+1 Captain America, Living Legend (MSH) 210
+
+# Equipment and artifact Heroes — the Iron Legion and the gear they carry
+1 Captain America, Liberator (MSC) 587
+1 Tony Stark // The Invincible Iron Man (MSH) 80
+1 Iron Man, Modern Marvel (MSC) 830
+1 Iron Man, Bleeding Edge (MSC) 626
+1 Iron Lad, Young Avenger (MSC) 569
+1 The Vision (MSH) 255
+1 Captain America, First Avenger (MAR) 88
+1 Wizard's Staff (HOB) 59
+1 Two-Handed Axe // Sweeping Cleave (HBG) 191
+1 Buster Sword (FIN) 255
+1 Iron Man Armor (MSH) 248
+1 Vision, Spectral Synthezoid (MSC) 644
+1 War Machine, Legacy of Iron (MSH) 238
+1 Machinist's Arsenal (FIN) 23
+1 Iron Man, Master of Machines (MSH) 216
+1 Iron Man, Tony Stark (MSC) 851
+1 Sami, Wildcat Captain (EOE) 226
+1 Shuri, Wakandan Inventor (MSH) 75
+1 Iron Spider, Stark Upgrade (SPM) 166
+1 Vraska, Soul of Stone (FRA) 277
+1 Orcrist, Goblin-cleaver (HOB) 177
+1 The Key to the Vault (OTJ) 54
+1 Cid, Timeless Artificer (FIN) 216
+1 Andúril, Narsil Reforged (HOC) 40
+1 Warrior's Blades (FRA) 163
+1 Alibou, Ancient Witness (MAR) 39
+1 Donatello, Mutant Mechanic (TMT) 36
+1 Lady Octopus, Inspired Inventor (SPM) 35
+1 Ironheart, Clever Champion (MSH) 60
+
+# Protection
+1 Captain America, Super-Soldier (MSH) 9
+1 Valorous Stance (FDN) 583
+1 Boros Charm (FDN) 721
+1 Conqueror's Flail (PZA) 15
+1 Hyperion, Supreme Hero (MSC) 599
+
+# Interaction
+1 Three Steps Ahead (OTJ) 75
+1 Lightning Helix (MKM) 218
+1 Fractured Identity (OTP) 45
+1 The Super Hero Civil War (MSH) 231
+1 Mjölnir, Hammer of Thor (MSH) 146
+1 The Wondrous Wasp (MSH) 84
+1 Vault Guardsman (MSC) 612
+
+# Card advantage and selection
+1 Mister Fantastic, Reed Richards (MSH) 66
+1 Venat, Heart of Hydaelyn // Hydaelyn, the Mothercrystal (FIN) 39
+1 Origin of Iron Man (MSC) 633
+
+# Ramp
+1 Team Transmitter (MSC) 573
+1 Chromatic Lantern (GRN) 233
+1 The Mind Stone (MSH) 21
+
+# Lands (36)
+1 Avengers Tower (MSH) 260
+1 Hallowed Fountain (ECL) 265
+1 Steam Vents (ECL) 267
+1 Sacred Foundry (EOE) 256
+1 Riverpyre Verge (DFT) 260
+1 Sunbillow Verge (DFT) 264
+1 Floodfarm Verge (DSK) 259
+1 Gleaming Bastion (MSH) 267
+1 Mystic Monastery (TDM) 262
+1 Secluded Courtyard (FDN) 267
+1 Starting Town (FIN) 289
+1 Evolving Wilds (ECL) 264
+1 Daily Bugle Building (SPM) 179
+1 Temple of Enlightenment (FDN) 698
+1 Temple of Epiphany (FDN) 699
+1 Temple of Triumph (FDN) 705
+1 Swiftwater Cliffs (MOM) 273
+1 Reflecting Pool (FRC) 23
+1 Wind-Scarred Crag (FDN) 271
+1 Stark Industries (MSH) 272
+1 Avengers Hangar (MSH) 259
+1 Asgardian Citadel (MSH) 258
+1 Plaza of Heroes (DMU) 252
+5 Plains (FRA) 281
+3 Island (FRA) 283
+1 Uthros, Titanic Godcore (EOE) 260
+4 Mountain (FRA) 287
+
+# Flex — options cut from the list that can come back. See: deck.py flex 84
+#~ -Blue Marvel, Adam Brashear | +Iron Man, Futurist Paragon | CRAFT (R): 6-mana artifact Hero; each combat makes an artifact or creature a 5/5 flier (cut 2026-10-19 for Chronicle of Victory)

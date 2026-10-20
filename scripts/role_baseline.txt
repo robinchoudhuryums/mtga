@@ -58,7 +58,6 @@ Brass's Bounty
 Brightspear Zealot
 Broodguard Elite
 Bulk Up
-Bumi, King of Three Trials
 Bumi, Unleashed
 Burnout Bashtronaut
 Burrowguard Mentor
@@ -67,6 +66,7 @@ Bygone Colossus
 Byrke, Long Ear of the Law
 Calamity, Galloping Inferno
 Caparocti Sunborn
+Captain America, First Avenger
 Captain America, Living Legend
 Captain Mar-Vell, Space-Born
 Caradora, Heart of Alacria
@@ -89,6 +89,7 @@ Crypt Feaster
 Cuboid Colony
 Daggerfang Duo
 Dalkovan Packbeasts
+Daredevil, Fearless Fighter
 Dark Confidant
 Darkstar Augur
 Daydream
@@ -101,6 +102,7 @@ Desert Were-Worm
 Diligent Zookeeper
 Don & Leo, Problem Solvers
 Donatello, Mutant Mechanic
+Donatello, the Brains
 Dori, Bearer of Friends
 Doubling Season
 Dracogenesis
@@ -131,7 +133,6 @@ Encumbered Reejerey
 End of the Hunt
 Enigma Drake
 Entropic Battlecruiser
-Falcon, Winged Wonder
 Fated Firepower
 Fear of Isolation
 Fearsome Goblin Pair
@@ -154,7 +155,6 @@ Galuf's Final Act
 Gangly Stompling
 Gas Guzzler
 Gastal Raider
-Gather the White Lotus
 Germinate Recruits
 Germination Practicum
 Ghalta the Unstoppable
@@ -162,6 +162,7 @@ Ghalta, Primal Hunger
 Ghost, Spectral Saboteur
 Ghostly Keybearer
 Giant Cindermaw
+Giant-Man, Gargantuan Genius
 Gilgamesh, Master-at-Arms
 Glarb, Calamity's Augur
 Glider Kids
@@ -192,8 +193,10 @@ Honored Knight-Captain
 Hop to It
 Hour of Victory
 How to Start a Riot
+Human Torch
 HYDRA Troopers
 Hymn of the Faller
+Hyperion, Supreme Hero
 I Am Iron Man
 Identity Echo
 Improvisation Capstone
@@ -205,8 +208,8 @@ Iron Hills Stalwart
 Iron Lad, Diverging Destiny
 Ironpaw Aspirant
 Jace's Machinations
+Jeong Jeong, the Deserter
 Jeskai Brushmaster
-Jet, Rebel Leader
 Joo Dee, One of Many
 K'un-Lun Warrior
 Kang the Conqueror
@@ -245,7 +248,6 @@ Magitek Armor
 Mai, Jaded Edge
 Mai, Scornful Striker
 Malboro
-Mammoth Bellow
 Mardu Devotee
 Masked Meower
 Master Pakku
@@ -266,6 +268,7 @@ Moonshaker Cavalry
 Morcant's Eyes
 Morningtide's Light
 Most Decrepit Old Bird
+Most Decrepit Old Bird // Speak Secrets
 Mutable Explorer
 Namazu Trader
 Nashi, Searcher in the Dark
@@ -288,10 +291,13 @@ Outrageous Robbery
 Ozai's Cruelty
 Pain 101
 Paradox Surveyor
+Parallel Lives
 Paranormal Analyst
+Perigee Beckoner
 Personify
 Peter Parker
 Peter Parker // Amazing Spider-Man
+Photon, Lady of Light
 Picklock Prankster // Free the Fae
 Pond Prophet
 Pride of the Road
@@ -308,6 +314,7 @@ Rainveil Rejuvenator
 Rapacious Dragon
 Raph & Leo, Sibling Rivals
 Raph & Mikey, Troublemakers
+Raphael, the Muscle
 Raphael, the Nightwatcher
 Reckless Velocitaur
 Reno and Rude
@@ -319,6 +326,7 @@ Rhovanion Rampager
 Rise of the Dark Realms
 Rise of the Varmints
 Riverchurn Monument
+Roalesk, Apex Hybrid
 Rockalanche
 Rustler Rampage
 Salvation Swan
@@ -329,16 +337,18 @@ Savage Land Dinosaur
 Savage Ventmaw
 Scarlet Spider, Ben Reilly
 Scarlet Spider, Kaine
-Scrabbling Skullcrab
 Season of Weaving
 Secret of Bloodbending
 Seedglaive Mentor
 Seismic Sense
 Servant of the Stinger
+Shang-Chi, Martial Mentor
 Shark Shredder, Killer Clone
+She-Hulk, Attorney-at-Law
 Sheriff of Safe Passage
 Shredder, Unrelenting
 Shrike Force
+Silver Surfer, Cosmic Voyager
 Silvergill Mentor
 Silverquill, the Disputant
 Skyskipper Duo
@@ -351,6 +361,7 @@ Souls of the Lost
 Sozin's Comet
 Spider-Islanders
 Spider-Man, Web-Slinger
+Spider-Man, Web-Spinner
 Spider-Punk
 Splash Portal
 Stalwart Successor
@@ -363,6 +374,7 @@ Stickytongue Sentinel
 Stingerback Terror
 Stingerquill Voxmancer // Vicious Verse
 Stony-Voiced Goblins
+Storm, Force of Nature
 Sultai Devotee
 Sun Warriors
 Sun-Spider, Nimble Webber
@@ -390,8 +402,11 @@ The Mindskinner
 The Misty Mountains Cold
 The Queen of Dale
 The Regalia
+The Thing
 Think Twice
 Thor Odinson
+Thor, Asgard's Avenger
+Thor, Guardian of Midgard
 Three Tree Scribe
 Thunderous Velocipede
 Tidings of War
@@ -400,7 +415,6 @@ Time Stop
 Tomik, Izzet Sparkmage
 Toph, the Blind Bandit
 Topiary Lecturer
-Transit Mage
 Treasure Dredger
 Treeguard Duo
 Treetop Snarespinner
@@ -426,7 +440,6 @@ War Balloon
 War Machine, Legacy of Iron
 War Squeak
 Wargling
-Water Tribe Rallier
 Waterbender Ascension
 Way of the Healer
 Way of the Pyromancer
@@ -439,6 +452,7 @@ Whirlwing Stormbrood
 Whirlwing Stormbrood // Dynamic Soar
 White Tiger, Ava Ayala
 Wisecrack
+Wolverine, Claws Out
 Wonder Man, Hollywood Hero
 Woodwork Prodigy // Soul Tether
 Y'shtola Rhul

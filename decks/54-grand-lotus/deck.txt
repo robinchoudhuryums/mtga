@@ -3,40 +3,48 @@
 #: colors: GUR
 #: plan: midrange
 #: tier: B — PROVISIONAL, GRADED 2026-08 on an UNBUILT list (5 craft targets, zero games).
-#: tier: AT the measurable floor, which reads B on interaction 6 (Boomerang Basics' bounce moved to the report-only tempo line 2026-10-07) plus card advantage 2
-#: tier: since the 2026-09-02 re-derivation. Against the rubric an A needs four things
-#: tier: and this list fails three:
-#: tier:   A-FLOOR — no. Interaction 6 is one short of seven and the sum of 8 is short of eleven;
-#: tier:     card advantage is the axis (the 7 unclassified cards are the K-12 caveat).
+#: tier: ONE BAND UNDER the measurable floor, which reads A on interaction 7 plus card advantage 6
+#: tier: since the 2026-09-02 re-derivation. The letter stays B pending a re-grade by the owner
+#: tier: (the list is unplayed). Against the rubric an A needs four things:
+#: tier:   A-FLOOR — yes since 2026-10-14: Weather Maker (landfall charges -> 3 damage) took
+#: tier:     interaction to seven; the sum of 13 clears. The 2026-10-14 pass took card advantage 2 -> 7 (Pensive Professor, Terrasymbiosis,
+#: tier:     Inspiring Call, Old Fat Spider Can't See Me); the 2026-10-15 package reads six — the draw-four
+#: tier:     flashback and Waterbending's draw-three were CUT for Ashling's Command and Terra. The tool cannot
+#: tier:     see Applied Geometry's six counters becoming a six-card Terrasymbiosis draw, Terra's
+#: tier:     enchantment from a five-card mill, or Rydia's loot on every land. Redirect Lightning is real protection
+#: tier:     the classifier does not count, and Accumulate Wisdom draws three with 3+ Lessons
+#: tier:     binned while scoring zero roles — both K-12 under-counts, not a list weakness.
 #: tier:   COHERENT ENGINE — yes, and now MEASURED rather than asserted. `targets` finds
-#: tier:     nine gated effects and reports zero thin or unmet: every Lesson-count gate in
-#: tier:     the list — Serpent's three, Bumi's X, Combustion Technique's scaling damage,
-#: tier:     four one-Lesson switches — sits against 17 Lessons. `engines` reads the
-#: tier:     graveyard axis as balanced 18 enablers / 16 payoffs. Lessons are instants and
+#: tier:     three gated effects and reports zero thin or unmet: both Lesson-count gates in
+#: tier:     the list — Accumulate Wisdom's three and Combustion Technique's scaling damage —
+#: tier:     sit against 11 Lessons. `engines` reads the
+#: tier:     graveyard axis as balanced 12 enablers / 10 payoffs. Lessons are instants and
 #: tier:     sorceries, so casting them IS filling the yard; the engine feeds itself.
 #: tier:     WATCH THIS NUMBER. The 2026-08 fixing pass cut four Lessons and added none, so
 #: tier:     the count fell 21 -> 17, and the 2026-08 plan pass moved it to 16 (three
 #: tier:     Lesson cuts against Elemental Teachings and Shared Roots added). Every GATE still clears (they need one to three), but
-#: tier:     two payoffs SCALE with the count rather than switching on — Combustion
-#: tier:     Technique and Bumi's X — and those lost about a fifth of their ceiling. Price a
+#: tier:     Combustion Technique SCALES with the count rather than switching on, and it
+#: tier:     lost about a fifth of its ceiling (the second scaler, Bumi, King of Three
+#: tier:     Trials, was CUT 2026-10-14 for Bumi, Unleashed, whose earthbend 4 reads no count). Price a
 #: tier:     Lesson cut against them, not against the gates.
-#: tier:   TIGHT CURVE — yes. 3.29 average after the 2026-08 plan pass and the
-#: tier:   Mammoth Bellow add.
+#: tier:   TIGHT CURVE — no longer. 3.83 average after the 2026-10-15 package: The Dawning Archaic's
+#: tier:   printed 10 (one less per instant/sorcery binned), Prismari's 7 and Doc Samson's 5;
+#: tier:   Weather Maker's mana and Icetill Explorer's extra land drops are not in that figure.
 #: tier:   AT MOST ONE CLEAR WEAKNESS — no, and the two COMPOUND badly.
 #: tier:     (1) THE MANABASE, and the 2026-08 pass was aimed squarely at it. Three colours
 #: tier:     on 25 lands, deepest colour 12 sources; Improvisation Capstone still casts on
 #: tier:     curve at 52.5% and Echocasting Symposium at 59.1%. Hermitic Herbalist,
-#: tier:     Greenhouse and New Horizons were added as NON-LAND any-colour sources, which is
+#: tier:     Greenhouse and New Horizons (all three since CUT, 2026-10-14) were added as NON-LAND any-colour sources, which is
 #: tier:     the only way to move this axis without cutting spells for lands. The older
 #: tier:     mitigation still holds: with Iroh out every Lesson costs {1} GENERIC, so the
 #: tier:     pips stop mattering — the deck is only colour-screwed in the games where its
 #: tier:     engine has not arrived.
 #: tier:     (2) A ONE-CARD ENGINE. Iroh, Grand Lotus is the ONLY card that grants the
-#: tier:     flashback; Uncle Iroh is a cost reducer and does not substitute. Fierce
-#: tier:     Empath (any MV 6+ creature — Iroh, Bumi or Serpent) and Formidable Speaker
-#: tier:     (discard a fat Lesson, then tutor any creature) were added specifically for
-#: tier:     this, taking the deck from one copy to three ways to find it. That is
-#: tier:     mitigation, not redundancy.
+#: tier:     flashback; Doc Aurlock (since cut) was only a cost reducer and never substituted. The creature
+#: tier:     tutors once added for this are no longer in the list (checked 2026-10-14 — the
+#: tier:     prose still claimed them), so Iroh is found by drawing him, and True Ancestry is
+#: tier:     the only way back if he dies. The REDUNDANCY arrived 2026-10-14: The Dawning Archaic
+#: tier:     casts any yard instant/sorcery free each time it attacks — a second recast source.
 #: tier:     (3) BOARD-DEPENDENT PAYOFFS IN A DECK WITH NO BOARD. `shape` measures this
 #: tier:     list as TALL with a WIDE score of ZERO on 15 creature copies, and two of the
 #: tier:     marquee Lessons want the opposite: Germination Practicum puts two counters on
@@ -53,8 +61,10 @@
 #: tier:     engine — but it wants the opposite build from this list, so it belongs in a
 #: tier:     54a, not here. See the parked-directions note below.
 #: tier: WHAT ARGUES UP, and why the letter may move after play: the floor counts
-#: tier: interaction 6, but four more cards read as interaction the classifier could not
-#: tier: tag, and a resolved Iroh turns a graveyard of five-drops into a hand of one-drops
+#: tier: interaction 7 ONCE EACH, and with Iroh out the removal Lessons recur every turn —
+#: tier: Iroh's Demonstration and Combustion Technique for {1}, Clash of the Eikons for {G},
+#: tier: Ashling's Command at its cost — so live interaction is several times the count while
+#: tier: he survives (and only while he survives: the one-card-engine caveat above). A resolved Iroh turns a graveyard of five-drops into a hand of one-drops
 #: tier: — a swing the metrics have no term for at all. Re-grade after it is played.
 #: archetype: Temur LESSONS, and the deck exists because of one clause almost everyone
 #: archetype: skims. Iroh, Grand Lotus gives every non-Lesson instant and sorcery in your
@@ -77,10 +87,10 @@
 #: archetype: checks whether a cited card is still in the deck and whether a quoted FIGURE
 #: archetype: matches, not whether a claim about a card's TEXT is true.
 #: archetype: THE PAYOFFS READ THE COUNT, not just the cards. Combustion Technique deals
-#: archetype: 2 plus the Lessons in your graveyard; Bumi, King of Three Trials chooses up
-#: archetype: to X modes where X is that same number (Serpent of the Pass, whose flash
-#: archetype: gate read the same count, was CUT for the plan's engine adds); First-Time
-#: archetype: Flyer and Fire Nation Cadets turn on at one. So the
+#: archetype: 2 plus the Lessons in your graveyard; Bumi, King of Three Trials, CUT 2026-10-14
+#: archetype: for Bumi, Unleashed, chose up to X modes where X is that same number (Serpent of the Pass, whose flash
+#: archetype: gate read the same count, was CUT for the plan's engine adds); the one-Lesson
+#: archetype: switches (two cheap bodies) were CUT 2026-10-14 for card advantage. So the
 #: archetype: graveyard is simultaneously the resource, the second hand, and the clock.
 #: archetype: DISTINCTIVENESS. Deck 51a is the roster's other Lesson deck and is MONO-BLUE
 #: archetype: LESSON MILL — it mills Lessons as a resource; this recurs them as a second
@@ -89,7 +99,7 @@
 #: archetype: instants and sorceries; this runs seventeen (down from twenty-three before the
 #: archetype: 2026-08 fixing pass traded four spells for permanents), because here they ARE
 #: archetype: the deck. Neither shares this one's colours.
-#: protect: Iroh, Grand Lotus; Thor, God of Thunder; Bumi, King of Three Trials; Combustion Technique; Improvisation Capstone; Echocasting Symposium
+#: protect: Iroh, Grand Lotus; Thor, God of Thunder; Bumi, Unleashed; Combustion Technique; Improvisation Capstone; Echocasting Symposium
 #: notes: WIP — but unusually close to buildable for a from-scratch brew: 26 of the 27
 #: notes: Temur-castable Lessons in Standard were already in the collection, and so were
 #: notes: 15 of the 17 cards that read the Lesson count. The archetype was sitting there.
@@ -118,57 +128,127 @@
 #: notes: BENCH (2026-08 plan, next in line if a slot opens): Ember Island Production
 #: notes: (non-legendary Iroh copy — gave its seat back to the Lesson-count constraint),
 #: notes: Ovika (MV of each {1}-flashback in hasty bodies), Guru Pathik, Omenpath Journey.
+#: notes: 2026-10-14 pass, from a 319-card read of every card considered for 54b
+#: notes: (.cycle/54-from-54b-pile-analysis.md): Redirect Lightning for Fire Nation Cadets (a Lesson
+#: notes: that redirects removal off Iroh, `{1}`+`{2}` from the yard every turn); Kishla Skimmer for
+#: notes: First-Time Flyer (draws whenever a card leaves the yard on your turn — every recast);
+#: notes: The Mechanist for New Horizons (a Clue per noncreature spell); The Dawning Archaic for
+#: notes: Mammoth Bellow (second recast engine); Old Fat Spider Can't See Me for Dragonfly Swarm
+#: notes: (hexproof on Iroh, two cards). Lands: Swiftwater Cliffs -> Steam Vents, Guadosalam ->
+#: notes: Starting Town, one Rugged Highlands -> Training Compound (tapped-land risk 70% -> 50%).
+#: notes: Zuko's Exile was the measured interaction pick (floor A); the owner preferred Redirect
+#: notes: Lightning, so the floor stays B on paper while protection is really higher.
+#: notes: Same day, second wave: Nibelheim Aflame for Sokka's Haiku (owner's call over the measured
+#: notes: pick, Earthbending Lesson, which would have kept the only counterspell and read floor A;
+#: notes: Nibelheim recast via Iroh at {2}{R}{R} discards the hand and draws four, but its sweep hits
+#: notes: OUR creatures too — pick the source's power deliberately); Jeong Jeong for Greenhouse
+#: notes: (copy one Lesson — a doubled Capstone); Prismari for Hermitic Herbalist (storm on every
+#: notes: instant/sorcery; Spinerock Tyrant copies only single-target ones, 8 of 17 here). Lessons 17 -> 16.
+#: notes: Third wave, the COUNTERS lane (what separates 54 from 54b): Terrasymbiosis for The Mechanist
+#: notes: (draw as many as the counters you place, once a turn — Earthbending Lesson for {1} is draw
+#: notes: four), Inspiring Call for Leaves from the Vine (a card per countered creature + indestructible
+#: notes: at instant speed), Zimone for Sokka (two counters every combat — a guaranteed trigger; can put
+#: notes: one on Iroh so Inspiring Call protects him), Doc Samson for Bloom Tender (+1 on every counter
+#: notes: placement, and taps for mana equal to its power). Kid Loki, Michelangelo, Lilysplash Mentor
+#: notes: are the bench for this lane.
+#: notes: Fourth wave: Pensive Professor for Kishla Skimmer ("whenever one or more +1/+1 counters are
+#: notes: put on this creature, draw a card" — no once-a-turn limit, so Guru Pathik's counter per
+#: notes: Lesson cast is a card per Lesson); Toph, the Blind Bandit for Uncle Iroh (Doc Aurlock
+#: notes: already makes the {1} recasts free — Bilbo replaces Doc when OTJ rotates, early 2027);
+#: notes: Claim the Kingdom for Solstice Revelations (landfall counters, then an INDESTRUCTIBLE
+#: notes: counter — permanent protection for Iroh). Lessons 16 -> 15.
+#: notes: Lands: both Rugged Highlands -> Evolving Wilds (fetch whichever basic is missing; two landfall
+#: notes: triggers each for Claim the Kingdom; 8 basics: 2 Island, 3 Forest, 3 Mountain).
+#: notes: Weather Maker for Doc Aurlock (any-colour mana; every land drop charges it, three charges
+#: notes: = 3 damage — the seventh interaction piece); Icetill Explorer for Great Divide Guide (an
+#: notes: extra land each turn and lands from the graveyard — replay the Wilds every turn).
+#: notes: ECHOCASTING SYMPOSIUM'S TARGET decides several slots: a copy of a LEGENDARY creature dies
+#: notes: to the legend rule (its enters trigger still happens), a NON-legendary copy stays. Best
+#: notes: targets: Icetill Explorer (each copy is another extra land drop), Summon: Titan if added,
+#: notes: an earthbended land (the copy is just the land: ramp + landfall), Pensive Professor;
+#: notes: Bumi / Toph / Guru Pathik for their enter triggers. Great Divide Guide copies did nothing.
+#: notes: 2026-10-14: Bumi, Unleashed for Bumi, King of Three Trials (earthbend 4 reads no Lesson count).
+#: notes: 2026-10-15 package, six swaps: Applied Geometry for Toph, Hardheaded Teacher; Summon: Titan for
+#: notes: Rockalanche (3 Forests + Breeding Pool made its X small); Clash of the Eikons for Nibelheim
+#: notes: Aflame (its sweep hit our own counters board); Terra, Magical Adept for Waterbending Lesson
+#: notes: (Accumulate Wisdom is the same +2 for half the mana once 3 Lessons are binned); Rydia,
+#: notes: Summoner of Mist for Boomerang Basics; Ashling's Command for Death to Our Enemies (instant,
+#: notes: one-sided 2 to each creature + draw two or two Treasures, and Iroh recasts it — Death could
+#: notes: not be recast). Lessons 15 -> 12; the new mill effects refill the yard faster.
+#: notes: Same day: Kid Loki for Claim the Kingdom (Claim parked in the flex block) and Toph,
+#: notes: Hardheaded Teacher back for Shared Roots. KID LOKI'S HEXPROOF IS MOSTLY OWN-TURN — it
+#: notes: covers creatures given a +1/+1 counter THIS turn. On the opponent's turn the line is Guru
+#: notes: Pathik + an instant Lesson in response (Accumulate Wisdom, Combustion Technique, Origin of
+#: notes: Metalbending, Elemental Teachings): Guru's counter lands on the target, Loki makes it
+#: notes: hexproof — {1} with Iroh out. Earthbend counters go on the LAND, so Toph does not protect.
+#: notes: Terrasymbiosis draws THAT MANY cards once a turn — the payoff for Toph's per-spell earthbend,
+#: notes: Bumi's earthbend 4, Earthbending Lesson's 4 and Applied Geometry's 6. Lessons 12 -> 11.
+#: notes: Lands: Swiftwater Cliffs and Thornwood Falls -> 2 Frontier Bivouac (same tapped land, all
+#: notes: three colours; 10 -> 8 cards under 90% on curve). Then a second Breeding Pool (owned) for
+#: notes: White Lotus Hideout, whose colour only casts Lessons: U/R/G 16/17/16 -> 17/17/17; Icetill
+#: notes: 82 -> 85%, Titan/Germination 86 -> 89%, Pensive Professor 76 -> 79.5%. Optional next:
+#: notes: Rockfall Vale (owned) for Capital City — the tool reads it as -1 blue because it credits
+#: notes: Capital's {1}-to-filter, but Rockfall is real R/G untapped from the third land. Stomping
+#: notes: Ground (craft) for Capital City is the other candidate.
+#: notes: APPLIED GEOMETRY TRAP: never let Echocasting copy a Geometry token — the 0/0 Fractal part
+#: notes: is copied, the six counters are not, so the copy dies at once. Point Geometry at the real
+#: notes: card: Icetill Explorer, Weather Maker, Summon: Titan or a land (the land copy is landfall).
+#: notes: ESPER TERRA + TITAN: each of chapters I-III copies Titan with up to three lore counters —
+#: notes: mill five AND return every land from the graveyard, three turns running. Clash can remove a
+#: notes: lore counter from Titan so chapter II fires again. Rydia's Summon targets: Titan (X=5) and
+#: notes: Old Fat Spider (X=3); Terra is a creature card in the graveyard, not a Saga.
+#~ -Kid Loki | +Claim the Kingdom | OWNED: swap back if Kid Loki's own-turn hexproof proves thin. Landfall puts a +1/+1 counter on a creature every land (two a turn with Icetill — Terrasymbiosis and Kid Loki both read it), then an INDESTRUCTIBLE counter on the fourth land: permanent protection for Iroh. Alternative cut: Inspiring Call.
+#~ -The Dawning Archaic | +The Lion-Turtle | CRAFT (R): {1}{G}{U} 3/6 reach, taps for ANY colour — five mana on turn four and fixing for the {G}{G}/{R}{R}/{U}{U} cards from outside the land count; a sturdy counter body (can't attack or block until 3 Lessons are binned, irrelevant to the mana job). Legendary, so not an Echocasting target. Archaic is the only swap that holds every number (avg MV 3.83 -> 3.63) but loses the Iroh-independent recast; alternative cuts Inspiring Call (CA and protection -1) or Pensive Professor.
 # Nonland
 1 Iroh, Grand Lotus (TLA) 227
-1 Uncle Iroh (TLA) 248
-1 Bumi, King of Three Trials (TLA) 169
-1 Shared Roots (TLA) 196
-1 Death to Our Enemies (MSH) 127
-1 First-Time Flyer (TLA) 49
-1 Fire Nation Cadets (TLA) 134
-1 Dragonfly Swarm (TLA) 215
-1 Mammoth Bellow (TDM) 205
+1 Toph, the Blind Bandit (TLA) 198
+1 Bumi, Unleashed (TLA) 211
+1 Toph, Hardheaded Teacher (TLA) 246
+1 Ashling's Command (ECL) 205
+1 Pensive Professor (SOS) 63
+1 Redirect Lightning (TLA) 151
+1 Old Fat Spider Can't See Me (HOB) 50
+1 The Dawning Archaic (SOS) 1
 1 Guru Pathik (TLA) 223
-1 Hermitic Herbalist (TLA) 226
-1 Bloom Tender (ECL) 166
+1 Prismari, the Inspiration (SOS) 212
+1 Doc Samson, Super Psychiatrist (MSH) 164
 1 Accumulate Wisdom (TLA) 44
 1 Thor, God of Thunder (MSH) 156
 1 Iroh's Demonstration (TLA) 141
 1 Combustion Technique (TLA) 128
 1 Origin of Metalbending (TLA) 187
 1 True Ancestry (TLA) 199
-1 Boomerang Basics (TLA) 46
-1 Great Divide Guide (TLA) 181
-1 Solstice Revelations (TLA) 153
-1 Leaves from the Vine (TLA) 185
-1 Waterbending Lesson (TLA) 80
-1 Sokka's Haiku (TLA) 71
-1 Sokka, Bold Boomeranger (TLA) 240
-1 New Horizons (FDN) 557
+1 Rydia, Summoner of Mist (FIN) 239
+1 Icetill Explorer (EOE) 192
+1 Kid Loki (MSH) 63
+1 Inspiring Call (TLE) 168
+1 Terra, Magical Adept // Esper Terra (FIN) 245
+1 Clash of the Eikons (FIN) 180
+1 Zimone, Paradox Sculptor (FDN) 126
+1 Terrasymbiosis (EOE) 210
 1 Germination Practicum (SOS) 149
 1 Echocasting Symposium (SOS) 44
 1 Improvisation Capstone (SOS) 120
 1 Elemental Teachings (TLA) 178
-1 Rockalanche (TLA) 192
+1 Summon: Titan (FIN) 204
 1 Earthbending Lesson (TLA) 176
-1 Toph, Hardheaded Teacher (TLA) 246
-1 Doc Aurlock, Grizzled Genius (OTJ) 201
-1 Greenhouse // Rickety Gazebo (DSK) 181
+1 Applied Geometry (SOS) 172
+1 Weather Maker (TMT) 182
+1 Jeong Jeong, the Deserter (TLA) 142
 
 # Lands
-1 White Lotus Hideout (TLA) 281
 2 Rumble Arena (TLA) 277
 2 Surveillance Room (MSH) 274
 1 Capital City (FIN) 274
-2 Swiftwater Cliffs (MOM) 273
-3 Rugged Highlands (M21) 249
-1 Breeding Pool (EOE) 251
-1 Thornwood Falls (FDN) 269
-1 Mutant Town (TMT) 187
-1 Guadosalam, Farplane Gateway (FIN) 281
+2 Frontier Bivouac (TDM) 256
+1 Steam Vents (ECL) 267
+2 Evolving Wilds (ECL) 264
+1 Training Compound (MSH) 275
+2 Breeding Pool (EOE) 251
+1 Starting Town (FIN) 289
 1 Riverpyre Verge (DFT) 260
 1 Thornspire Verge (DSK) 270
 1 Willowrush Verge (DFT) 270
 2 Island (MSH) 289
 3 Forest (MSH) 295
-2 Mountain (MSH) 293
+3 Mountain (MSH) 293

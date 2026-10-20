@@ -2462,7 +2462,7 @@ Temple of Malice,Land,"This land enters tapped.
 When this land enters, scry 1. (Look at the top card of your library. You may put that card on the bottom.)
 {T}: Add {B} or {R}.",B/R,mana; etb; scry; selection,FDN,701,1
 Razortrap Gorge,Land,"This land enters tapped unless a player has 13 or less life.
-{T}: Add {B} or {R}.",B/R,mana,DSK,267,1
+{T}: Add {B} or {R}.",B/R,mana,DSK,267,2
 Ice Cream Kitty,Artifact Creature — Food Cat Mutant,"{2}, Sacrifice another creature or token: Draw a card. Activate only as a sorcery.
 {2}, {T}, Sacrifice this creature: You gain 3 life.",B/G,food; Cat; Mutant; lifegain; card draw; sacrifice,TMT,150,1
 "Blech, Loafing Pest",Legendary Creature — Pest,"Whenever you gain life, put a +1/+1 counter on each Pest, Bat, Insect, Snake, and Spider you control.",B/G,Pest; counters; lifegain,SOS,176,1
@@ -2709,7 +2709,7 @@ This creature enters with X +1/+1 counters on it.
 When this creature enters, you gain 2 life.",U/G,Dinosaur; Fractal; counters; lifegain; etb; flying; evasion,SOS,215,1
 Mind into Matter,Sorcery,Draw X cards. Then you may put a permanent card with mana value X or less from your hand onto the battlefield tapped.,U/G,card draw,SOS,202,1
 Breeding Pool,Land — Forest Island,"({T}: Add {G} or {U}.)
-As this land enters, you may pay 2 life. If you don't, it enters tapped.",U/G,Forest; Island; mana; pay life,EOE,251,1
+As this land enters, you may pay 2 life. If you don't, it enters tapped.",U/G,Forest; Island; mana; pay life,EOE,251,2
 Dreamroot Cascade,Land,"This land enters tapped unless you control two or more other lands.
 {T}: Add {G} or {U}.",U/G,mana,SOS,254,1
 Meditation Pools,Land,"This land enters tapped.
@@ -6210,3 +6210,14 @@ Steam Vents,Land — Island Mountain,"({T}: Add {U} or {R}.)
 As this land enters, you may pay 2 life. If you don't, it enters tapped.",U/R,Island; Mountain; pay life; mana,ECL,267,1
 "Tam, Mindful First-Year",Legendary Creature — Gorgon Wizard,"Each other creature you control has hexproof from each of its colors.
 {T}: Target creature you control becomes all colors until end of turn.",U/G,Gorgon; Wizard; hexproof; protection,ECL,245,1
+Pensive Professor,Creature — Human Wizard,"Increment (Whenever you cast a spell, if the amount of mana you spent is greater than this creature's power or toughness, put a +1/+1 counter on this creature.)
+Whenever one or more +1/+1 counters are put on this creature, draw a card.",U,Human; Wizard; counters; card draw; increment; spellslinger,SOS,63,1
+Weather Maker,Artifact,"Landfall — Whenever a land you control enters, put a charge counter on this artifact.
+{T}: Add one mana of any color.
+{T}, Remove two charge counters from this artifact: Add {C}{C}.
+{T}, Remove three charge counters from this artifact: It deals 3 damage to any target.",Colorless,counters; burn; mana; landfall; noncombat damage; lands,TMT,182,1
+Rockfall Vale,Land,"This land enters tapped unless you control two or more other lands.
+{T}: Add {R} or {G}.",R/G,mana,FRA,186,1
+Denzilore Fatehold,Legendary Creature — Elder Sphinx,"Flash
+Flying
+Whenever you scry or surveil, put a +1/+1 counter on each creature you control.",W/U,Elder; Sphinx; counters; scry; flying; evasion; flash; tempo,FRA,128,1

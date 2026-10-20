@@ -1,0 +1,183 @@
+#: name: Fantastic Four — Brawl
+#: format: Historic Brawl
+#: colors: WURG
+#: commander: The Fantastic Four
+#: plan: midrange
+#: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool), FOUR-COLOUR "FOURS" AND
+#: archetype: COUNTERS around The Fantastic Four: on entering and whenever you cast a spell with
+#: archetype: power, toughness or mana value 4, it picks a mode not yet used that turn — a 0/4
+#: archetype: Wall, 3 damage to each opponent, two +1/+1 counters, or a card. 33 of the other 62
+#: archetype: nonland cards are fours, so two or three triggers a turn is the norm. The counters land on a
+#: archetype: stack of multipliers (Doc Samson and Michelangelo, Weirdness to 11 add one each,
+#: archetype: Shang-Chi, Martial Mentor doubles), and Raphael, the Muscle doubles the damage of
+#: archetype: every countered creature. The four members (Human Torch, Mister Fantastic,
+#: archetype: Invisible Woman, The Thing) each pay off a noncreature spell cast before combat, so
+#: archetype: the interaction is noncreature and mana value 4 by design: each removal spell
+#: archetype: triggers the commander and the members at once. Annie Joins Up makes the
+#: archetype: commander's trigger happen twice. DISTINCT from the other Brawl decks (78 Bant
+#: archetype: tokens, 84 Jeskai Iron Legion, 85 Jeskai damage): green counters, four colours.
+#: tier: A — set by the owner 2026-10-20. The measurable floor reads A at 100 cards: interaction 13
+#: tier: and card advantage 11 against an A line of 12 and a sum of 19, protection 8. The engine is
+#: tier: layered: counter multipliers, two token doublers (Parallel Lives and Donatello's Mutagen),
+#: tier: and Reed Richards turning each turn's first extra draw into four. Weaknesses: four colours
+#: tier: (the commander is 58% on turn four from lands alone), several double-pip cards, and removal
+#: tier: that mostly needs one of your own creatures to fight or deal the damage.
+#: protect: The Fantastic Four; Mister Fantastic; Doc Samson, Super Psychiatrist; Michelangelo, Weirdness to 11; Shang-Chi, Martial Mentor; Annie Joins Up
+#: notes: DRAFTED 2026-10-19 from the owner's 79-card Fantastic Four pile
+#: notes: (.cycle/86-fantastic-four-pile-analysis.md) plus owned mana-value-4 interaction,
+#: notes: ramp and a four-colour manabase. MUTANTS FOLDED IN (owner's call, 2026-10-19): no
+#: notes: separate Mutant deck — the pile's Mutant payoffs join this list instead. In: Colossus,
+#: notes: Steel Stalwart, Wolverine, Claws Out, Mikey & Don, Party Planners, Genghis Frog, with
+#: notes: The Earth Crystal, Loading Zone, Vizier of the Menagerie and Vigorbloom Charm. Out:
+#: notes: Celebrate the Mountain-king, Glen Elendra's Answer, Liminal Hold, Prismatic
+#: notes: Undercurrents, Patchwork Banner, Herd Heirloom, Bender's Waterskin, Web-Warriors.
+#: notes: RE-READ PASS, 2026-10-19 (owner's pushback): Zanarkand for a Forest (its Adventure is a
+#: notes: Hero token with a counter per land), The Thing, Ben Grimm for Hulk, Strongest There Is,
+#: notes: Earth's Mightiest Heroes for Proctor's Gaze (teamwork puts every creature in the top
+#: notes: eight onto the battlefield), Venus for Namor, Scourge of the Seas, Moon Girl and Devil
+#: notes: Dinosaur for Beast (draws off Mutagen tokens entering).
+#: notes: MUTANT/FOUR PASS, 2026-10-20: X-23 for Peter Parker, Black Tom Cassidy for Big
+#: notes: Bertha, Sally Pride for Ajani, Mentor of Heroes, Giant-Man for Hulk, Gamma Goliath,
+#: notes: Raph & Mikey for Ms. Marvel, Elastic Ally, Black Panther, Wakandan King for Mona Lisa.
+#: notes: Donatello, the Brains for Shang-Chi, Master of Kung Fu (2026-10-20): every token also
+#: notes: brings a Mutagen token. TOKEN PASS (owner's picks, 2026-10-20): Invisible Woman,
+#: notes: Sue Storm for Silk, Web Weaver, Matt Murdock
+#: notes: for Sigarda, Heron's Grace (ward {1} on every countered creature in place of hexproof on
+#: notes: the Humans), Reed Richards, Smartest Man for Ms. Marvel, Kamala Khan, World War Hulk for
+#: notes: Kraven's Last Hunt. Leonardo, the Balance was cut again the same day: his {W}{U}{B}{R}{G}
+#: notes: ability puts BLACK in his colour identity, so he is illegal under this commander.
+#: notes: Interaction sits ON the A line, the next thing to rebuild.
+#: notes: Same day: Ray Fillet, Wave Warrior for Invisible Woman, Sue Storm (a card draw per
+#: notes: creature with a counter that connects; Sue's Wall trigger repeated the other Invisible
+#: notes: Woman), and Great Divide Guide for Arcane Signet (every land taps for any colour).
+#: notes: Leyline of the Guildpact was weighed for that slot and is ILLEGAL: its {B/G} hybrid
+#: notes: puts black in its colour identity.
+#: notes: Then Parallel Lives for Wiccan, Rising Magician (doubles every token, and Donatello's
+#: notes: Mutagen with them), The Wandering Emperor for Trickster's Stratagem and Origin of
+#: notes: Metalbending for Sandbenders' Storm (cheap noncreature spells that answer artifacts and
+#: notes: enchantments or protect a creature). Shuri was weighed for Moon Girl and passed on.
+#: notes: Minsc & Boo, Timeless Heroes for Polliwallop: a token every upkeep, three counters, a fling.
+#: notes: Teferi, Hero of Dominaria for Scarlet Spider, Ben Reilly: +1 is the first draw outside
+#: notes: the draw step, so Reed turns it into four; -3 tucks any nonland permanent.
+#: notes: LANDS RE-CHECKED after Teferi: W 18, U 18, R 16, G 20 land sources, 95.9% keepable within
+#: notes: two sevens; left as is. Great Divide Guide, Avengers Tower and Secluded Courtyard make far
+#: notes: more coloured mana than the land counts show. Thinnest card: Raphael, the Nightwatcher {R}{R}.
+#: notes: TIER A (owner, 2026-10-20). The measurable floor reads A at 100 cards
+#: notes: (interaction 13 and card advantage 11, against an A line of 12 and a sum of 19);
+#: notes: protection 8, board power 139. The tools undercount card flow here: the commander's
+#: notes: draw mode, Mister Fantastic, Goliath and Reed Richards are triggers, not draw spells.
+#: notes: THE COST is four colours: 18 W, 18 U, 16 R, 20 G land sources and the commander's
+#: notes: {G}{R}{U}{W} at 58% on turn four. The draft swapped the Temples for tri-lands, two
+#: notes: Forests for Stomping Ground and Temple Garden, and the double-pip Thorin's Last Stand,
+#: notes: Tractor Beam and Slash, Reptile Rampager for single-pip Kraven's Last Hunt (since cut),
+#: notes: Trickster's Stratagem and Storm, Force of Nature.
+
+# Commander (leads from the command zone; also one of the 100)
+1 The Fantastic Four (MSC) 741
+
+# The Fantastic Four — members who reward a noncreature spell before combat
+1 Human Torch (MSC) 3
+1 Mister Fantastic (MSC) 2
+1 Invisible Woman (MSC) 1
+1 The Thing (MSC) 4
+
+# Counter multipliers — the commander's two counters become many
+1 Doc Samson, Super Psychiatrist (MSH) 164
+1 Shang-Chi, Martial Mentor (MSC) 732
+1 Michelangelo, Weirdness to 11 (TMT) 121
+1 Miles Morales (SPM) 108
+1 She-Hulk, Attorney-at-Law (MSC) 745
+1 The Earth Crystal (FIN) 184
+1 Loading Zone (EOE) 196
+1 X-23, Deadly Weapon (MSC) 738
+1 Matt Murdock, Justice Seeker (MSC) 602
+
+# Four-power bodies — each one a commander trigger (power, toughness or mana value 4)
+1 Hulk, Brutal Brawler (MSC) 833
+1 Wolverine, Fierce Fighter (MSH) 240
+1 Black Panther, Vanguard (MSH) 207
+1 Storm, Windrider (MSH) 230
+1 Spider-Man India (SPM) 151
+1 Michelangelo, Mutant BFF (TMT) 120
+1 Michelangelo, Improviser (TMT) 119
+1 Raphael, the Nightwatcher (TMT) 103
+1 Raphael, the Muscle (TMC) 4
+1 Storm, Shaker of Skies (MSC) 733
+1 Wolverine, Claws Out (MSC) 737
+1 Leatherhead, Swamp Stalker (TMT) 117
+1 Roalesk, Apex Hybrid (WAR) 213
+1 Venus, Torn Between Worlds (TMT) 136
+1 Mutagen Man, Living Ooze (TMT) 124
+1 Storm, Force of Nature (MAR) 94
+1 Colossus, Steel Stalwart (MSC) 717
+1 Sally Pride, Lioness Leader (TMT) 24
+1 Giant-Man, Gargantuan Genius (MSC) 722
+1 Raph & Mikey, Troublemakers (TMT) 167
+
+# Support Heroes — card flow, mana and protection
+1 Bruce Banner (MSH) 49
+1 Jennifer Walters (MSH) 18
+1 Goliath, Mass Manipulator (MSC) 766
+1 Donatello, the Brains (TMC) 2
+1 Black Panther, Wakandan King (MAR) 87
+1 Mikey & Leo, Chaos & Order (TMT) 158
+1 Mikey & Don, Party Planners (TMT) 157
+1 Genghis Frog (TMT) 148
+1 Vizier of the Menagerie (FDN) 649
+1 The Thing, Ben Grimm (MSH) 190
+1 Moon Girl and Devil Dinosaur (MSH) 223
+1 Reed Richards, Smartest Man (MSC) 636
+1 Ray Fillet, Wave Warrior (TMC) 14
+
+# Noncreature spells — mana value 4 where possible, so each one triggers the commander AND the members
+1 Annie Joins Up (OTJ) 191
+1 Terrific Team-Up (MSC) 819
+1 Minsc & Boo, Timeless Heroes (HBG) 243
+1 Troll Negotiations (HOB) 138
+1 Prayer of Binding (FDN) 739
+1 Vigorbloom Charm (FRA) 160
+1 World War Hulk (MSH) 197
+1 Origin of Metalbending (TLA) 187
+1 Rally the Monastery (TDM) 19
+1 Heroic Intervention (M21) 188
+1 Earth's Mightiest Heroes (MSH) 165
+1 The Wandering Emperor (NEO) 42
+1 Parallel Lives (MAR) 36
+1 Teferi, Hero of Dominaria (DOM) 207
+
+# Ramp and fixing
+1 Great Divide Guide (TLA) 181
+1 Black Tom Cassidy (MSC) 715
+
+# Lands (37)
+1 Steam Vents (ECL) 267
+1 Sacred Foundry (EOE) 256
+1 Hallowed Fountain (ECL) 265
+1 Breeding Pool (EOE) 251
+1 Frontier Bivouac (TDM) 256
+1 Mystic Monastery (TDM) 262
+1 Urban Retreat (SPM) 187
+1 Riverpyre Verge (DFT) 260
+1 Sunbillow Verge (DFT) 264
+1 Willowrush Verge (DFT) 270
+1 Floodfarm Verge (DSK) 259
+1 Hushwood Verge (DSK) 261
+1 Thornspire Verge (DSK) 270
+1 Starting Town (FIN) 289
+1 Evolving Wilds (ECL) 264
+1 Terramorphic Expanse (MSC) 828
+1 Secluded Courtyard (FDN) 267
+1 Avengers Tower (MSH) 260
+1 Ketria Triome (IKO) 250
+1 Spara's Headquarters (SNC) 257
+1 Jetmir's Garden (SNC) 250
+1 Reflecting Pool (FRC) 23
+1 Training Compound (MSH) 275
+3 Forest (FRA) 289
+1 Zanarkand, Ancient Metropolis // Lasting Fayth (FIN) 293
+1 Temple Garden (ECL) 268
+1 Stomping Ground (EOE) 258
+3 Plains (FRA) 281
+3 Island (FRA) 283
+1 Mountain (FRA) 287
+1 Command Tower (FRC) 22

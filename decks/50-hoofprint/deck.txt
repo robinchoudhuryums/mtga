@@ -1,6 +1,6 @@
 #: name: Hoofprint (creatures are the mana)
 #: format: Standard
-#: arena: 50 Hoofprint, a634cf3c-01e0-426e-b46a-38a89f15d7d0
+#: arena: 50 Terranova, 5424fe54-90d5-4966-83ca-6a9ca82f758c
 #: colors: G
 #: plan: midrange
 #: tier: B — PROVISIONAL, AT the measurable floor, which reads B on interaction 5 plus card
