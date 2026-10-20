@@ -28,7 +28,7 @@ Phase: implement — **Batches 1 (ingest), 2 (deck legality + parse gates) and 3
 Scope: broad
 Test Command: `python3 scripts/check_all.py`
 Subsystem cycles since last Seams audit: 3 (counter adopted 2026-09-08; no Seams audit has run)
-Updated: 2026-10-02 (Batch 1 — see Where I left off)
+Updated: 2026-10-20 (Brawl tooling plan Batch 2 — see Where I left off)
 
 ## In progress (facts to carry forward — NOT judgments)
 - **Broad scan #10 is fully implemented — nothing outstanding from the scan.** Four
@@ -44,6 +44,11 @@ Updated: 2026-10-02 (Batch 1 — see Where I left off)
 
 ## Completed this cycle
 
+- **2026-10-20 — Brawl tooling plan, Batches 1–2** (blocks `tooling-batch1-broad-implement.md`,
+  `tooling-batch2-broad-implement.md`): (1) `///` names normalised through `lib.normalize_card_name`;
+  a blank pool Legalities cell is UNVERIFIED, not illegal (Searing Soloist), pool rebuilt (31 blank
+  rows filled), soft `check_all` count of blank rows; (2) `swap` warns on and REFUSES an add outside
+  the commander's colour identity (Leonardo into deck 86). Net 2 − 0 and 1 − 0.
 - **2026-10-09 — deck-34-tune tool gaps #2/#4/#5** (block `2026-10-34-tune-tool-gaps-broad-implement.md`):
   Card-advantage patterns (typed cast-from-top, multi-chapter Saga draw) — 14 decks CA +1/+2, 0 floors
   moved, 10 tier figures re-grounded; Zookeeper protected in deck 34; G-26 `no longer` residual logged. Net 2 − 0 = 2.
@@ -233,6 +238,14 @@ Updated: 2026-10-02 (Batch 1 — see Where I left off)
   67/41/60% → 68/40/61% | scripts/deck.py, decks/47, decks/43, CLAUDE.md, docs/gotchas.md
 
 ## Pending / not yet done
+- **PLANNED 2026-10-20 — Brawl tooling plan (9 items from the decks 84–86 builds), 7 batches:**
+  Batches 1–2 DONE. Remaining, in order: **3** one-step `swap --undo` (reverses the last swap and
+  removes its ledger row); **4** `swap --package "cut=add" …` dry-run preview (one vector, legality,
+  identity ⛔, section moves; writes nothing) — needs Batch 2; **5** `wishlist --by-set --decks` +
+  `suggest --lands` owned-options footer; **6** profile `consistency` / `swap --apply` /
+  `make postedit` (measure, no behaviour change); **7** section placement automatic by default with a
+  warning when ambiguous (changes G-05). Plus Batch 1's open half: suggest/screen/cuts still exclude
+  a blank-Legalities row silently.
 - **PLANNED 2026-10-07 — deck-32 tooling follow-ons, four `/broad-implement` batches, in order:**
   - **Batch A — DONE 2026-10-07** (block `11-batchA-tune32-followons-broad-implement.md`; also fixed the name-only re-add DUPLICATE row it exposed): G-22 `figure_drift` — refresh the two ledger figures in CLAUDE.md and give ledger-count entries a relative tolerance (~10%) so a tune stops re-firing the warning; and `wishlist.py --add` APPENDS a `--target` token to an already-listed row (never replaces it, never touches Note; validates the id) instead of skipping it — G-82/G-19 text updated.
   - **Batch B — DONE 2026-10-07** (block `11-batchB-tune32-followons-broad-implement.md`; 8 tier floors moved down — owner to re-read 18/40a/47/51 and 22/22-brawl/67/68): classifier — steal Auras (`you control enchanted creature|permanent`, 9 pool cards) into `Removal (spot)`; token-copy / clone effects (≈95 zero-role cards) into `Payoff / engine`, excluding self-copies ("a copy of it"); a report-only **TEMPO** line beside interaction in `stats`/`tier`/`quality` (stuns, one-turn taps, BOUNCE) that never feeds `tier_band` (G-25's shape); and **BOUNCE MOVES OUT of interaction into tempo** (owner, 2026-10-07 — the permanence line applied consistently; 167 of 194 pool bounce cards scored `Removal (spot)`; simulated: 6 of 119 decks' tier floors drop, 13 decks run bounce-only interaction). Roster before/after diff that ASSERTS zero errors; re-ground every `#: tier:` figure the sweep names and report the floor moves (letters are the owner's call); `role_baseline` + `check_roles --tags` (K-09) + tests; CLAUDE.md rubric/G-24/G-25/K-12 text.
@@ -287,6 +300,9 @@ Updated: 2026-10-02 (Batch 1 — see Where I left off)
 - Regression scenarios 5–8 and 10–19 need a person at a browser; several never walked.
 
 ## Decisions made (so the next session doesn't re-litigate)
+- **Brawl tooling plan (owner, 2026-10-20):** an off-identity add is REFUSED on `swap --apply` and
+  warned in the dry run (no --force); section placement becomes AUTOMATIC by default, warning when
+  it cannot place the card; undo is ONE step, not a history.
 - **Same-named Arena decks: the NEWEST wins (owner, 2026-09-27).** An edited deck is
   re-imported as a new Arena deck and the old one deleted, so copies are expected and the
   latest `LastUpdated` is correct. Two DIFFERENTLY named claimants are still a conflict,
@@ -359,6 +375,10 @@ Updated: 2026-10-02 (Batch 1 — see Where I left off)
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
+**2026-10-20 (latest) — Brawl tooling plan, Batch 2 done** (identity gate on swap; block
+`tooling-batch2-broad-implement.md`). Batch 1 done the same day. Suite + check_all green.
+**Next:** Batch 3 (`swap --undo`), then 4–7 per Pending.
+
 **2026-10-09 (latest) — deck 34 (Zoologist) tuned across ten waves, then tool gaps #2/#4/#5
 implemented** (block `2026-10-34-tune-tool-gaps-broad-implement.md`). Suite + check_all green.
 **Next:** follow-ons #1 and #3 above (each needs a roster measurement), then the owner's open calls.

@@ -8906,7 +8906,7 @@ def _do_swap(d, cut, add, apply, flex_entry=None, section=None):
     # COPY — this function calls `fetch_missing_mana`, which mutates (BS5-13). See the
     # longer note at `cmd_stats`' own copy.
     mana = dict(load_mana())
-    _, cards = parse_deck_file(d["path"])
+    dmeta, cards = parse_deck_file(d["path"])
     after = _cards_after_swap(cards, cut, add, (add_set, add_cn))
     if after is None:
         eprint(f"{cut!r} is not in deck {d['id']}. Nothing swapped.")
@@ -8969,6 +8969,24 @@ def _do_swap(d, cut, add, apply, flex_entry=None, section=None):
     if gate:
         print(f"  {gate}")
 
+    # COLOUR-IDENTITY GATE (tooling batch 2, 2026-10-20). In a Brawl / Commander deck a
+    # card outside the commander's identity is ILLEGAL however payable it is, and `swap`
+    # never asked: Leonardo, the Balance ({W}{U}{B}{R}{G} activation, so B in identity)
+    # was written into a G/R/U/W deck and only `preflight` caught it afterwards. Same
+    # lock and the same `card_colors(colors) <= lock` test `legality_report` applies, so
+    # the two cannot disagree. Warn in the preview; REFUSE on --apply (owner's decision).
+    # No lock (not a commander format, or an unplaceable commander) or an add the card
+    # data cannot place → no gate, rather than a guessed verdict.
+    ident_lock = commander_identity_lock(dmeta, carddata)
+    add_ident = card_colors(add_cd.get("colors", "")) if add_cd else None
+    off_identity = (ident_lock is not None and add_ident is not None
+                    and not add_ident <= ident_lock)
+    if off_identity:
+        lock_s = "".join(c for c in "WUBRG" if c in ident_lock) or "C"
+        add_s = "".join(c for c in "WUBRG" if c in add_ident) or "C"
+        print(f"  ⛔ identity: {add} has colour identity {add_s}, outside the commander's "
+              f"{lock_s} — illegal in this deck; --apply will refuse it.")
+
     def delta(a, b):
         d_ = b - a
         return f"{a} → {b}" + (f"  ({d_:+d})" if d_ else "")
@@ -8986,6 +9004,11 @@ def _do_swap(d, cut, add, apply, flex_entry=None, section=None):
     if not apply:
         print("\n(dry run — pass --apply to write the change with a .bak)")
         return 0
+    if off_identity:
+        # Before the ledger row and before any write: a refused swap is not a decision.
+        eprint(f"Not saved: {add} is outside the commander's colour identity "
+               f"({lock_s}) — it cannot be played in deck {d['id']}.")
+        return 1
 
     # Score the recommenders against this decision BEFORE the edit — the pre-swap deck
     # is the list the human actually chose from. Never fatal: a swap must not fail

@@ -7586,3 +7586,53 @@ class TestBatch1NameAndLegality:
         rep = deck.legality_report({"commander": ""}, [(1, "Sol Ring", "", "")],
                                    "historic-brawl", leg)
         assert any("not legal" in p for p in rep["problems"])
+
+
+class TestSwapIdentityGate:
+    """Batch 2 of the 2026-10-20 tooling plan: `swap` refuses an add outside the
+    commander's colour identity on --apply, and warns in the dry run. Leonardo, the
+    Balance ({W}{U}{B}{R}{G} activation, so B in identity) was written into a G/R/U/W
+    Brawl deck and only `preflight` caught it after the fact."""
+
+    LINES = ["#: name: T", "#: format: Historic Brawl", "#: colors: WURG",
+             "#: commander: The Fantastic Four", "", "# Commander",
+             "1 The Fantastic Four (MSC) 741", "", "# Body",
+             "1 Storm, Windrider (MSH) 230", "", "# Lands", "98 Forest"]
+
+    def _setup(self, tmp_path, monkeypatch):
+        d = tmp_path / "decks" / "99-t"
+        d.mkdir(parents=True)
+        path = d / "deck.txt"
+        path.write_text("\n".join(self.LINES) + "\n")
+        monkeypatch.setattr(deck, "DECKS_DIR", str(tmp_path / "decks"))
+        monkeypatch.setattr(deck, "RECS_CSV", str(tmp_path / "recs.csv"))
+        return path
+
+    def test_off_identity_apply_is_refused_and_writes_nothing(self, tmp_path, monkeypatch, capsys):
+        from types import SimpleNamespace as NS
+        path = self._setup(tmp_path, monkeypatch)
+        before = path.read_text()
+        rc = deck.cmd_swap(NS(id="99", cut="Storm, Windrider", add="Leonardo, the Balance",
+                              apply=True))
+        assert rc == 1
+        assert path.read_text() == before
+        assert not (tmp_path / "recs.csv").exists(), "a refused swap must not reach the ledger"
+        assert not list(path.parent.glob("*.bak")), "a refused swap must not write a backup"
+        assert "outside the commander's colour identity" in capsys.readouterr().err
+
+    def test_dry_run_warns(self, tmp_path, monkeypatch, capsys):
+        from types import SimpleNamespace as NS
+        self._setup(tmp_path, monkeypatch)
+        rc = deck.cmd_swap(NS(id="99", cut="Storm, Windrider", add="Leonardo, the Balance",
+                              apply=False))
+        assert rc == 0
+        assert "⛔ identity: Leonardo, the Balance has colour identity WUBRG" in capsys.readouterr().out
+
+    def test_on_identity_apply_still_works(self, tmp_path, monkeypatch):
+        from types import SimpleNamespace as NS
+        path = self._setup(tmp_path, monkeypatch)
+        rc = deck.cmd_swap(NS(id="99", cut="Storm, Windrider", add="Domri, Anarch of Bolas",
+                              apply=True))
+        assert rc == 0
+        names = {n for _q, n, _s, _c in deck.parse_deck_file(str(path))[1]}
+        assert "Domri, Anarch of Bolas" in names and "Storm, Windrider" not in names
