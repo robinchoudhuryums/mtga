@@ -29,6 +29,8 @@
 #: notes: Asgardian Inspiration for Crossover Collaboration, Bilbo, Thief in the Night for Talisman of
 #: notes: Conviction, Insult // Injury for Wiccan, Young Avenger. Searing Soloist was weighed and NOT
 #: notes: taken: its Aria of Flame gives each opponent 10 life, a large cost to a racing burn plan.
+#: notes: LANDS, 2026-10-20: one Mountain for Boros Guildgate. Red had 61 pips on 25 sources (the
+#: notes: tightest ratio); white double-pips (Appa, Captain Marvel) were the other weak spot. Now W 17.
 #: notes: DRAFTED 2026-10-19 from the deck 85 set-aside pile (.cycle/85-hero-damage-pile.md)
 #: notes: plus owned impulse, damage and interaction. Hawkeye, Avenging Archer from the owner's
 #: notes: list is NOT in the card pool (not yet indexed, or a different name); add it when found.
@@ -162,6 +164,7 @@
 1 Spirebluff Canal (OTJ) 270
 1 Reflecting Pool (FRC) 23
 1 Avengers Hangar (MSH) 259
-9 Mountain (FRA) 287
+8 Mountain (FRA) 287
+1 Boros Guildgate (FDN) 684
 3 Island (FRA) 283
 3 Plains (FRA) 281
