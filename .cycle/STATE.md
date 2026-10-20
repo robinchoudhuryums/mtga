@@ -28,7 +28,7 @@ Phase: implement — **Batches 1 (ingest), 2 (deck legality + parse gates) and 3
 Scope: broad
 Test Command: `python3 scripts/check_all.py`
 Subsystem cycles since last Seams audit: 3 (counter adopted 2026-09-08; no Seams audit has run)
-Updated: 2026-10-20 (Brawl tooling plan Batch 5 — see Where I left off)
+Updated: 2026-10-20 (Brawl tooling plan Batch 6 — see Where I left off)
 
 ## In progress (facts to carry forward — NOT judgments)
 - **Broad scan #10 is fully implemented — nothing outstanding from the scan.** Four
@@ -44,6 +44,12 @@ Updated: 2026-10-20 (Brawl tooling plan Batch 5 — see Where I left off)
 
 ## Completed this cycle
 
+- **2026-10-20 — Brawl tooling plan, Batch 6** (block `tooling-batch6-broad-implement.md`): PROFILE
+  only, no code. The per-swap cost is not `swap`. `swap --apply` takes 6.9s; the tail around it
+  does not: preflight (check_all) takes about 80s and `make postedit` about 305s, of which the dashboard is 227s. Hot
+  spots: `classify_roles` re-run about 39× per pool card (151s of the dashboard), and
+  `rationale_staleness`' shorthand genexpr (143s profiled of check_all). `load_legalities` and
+  `discover_decks` are not memoized. Four ranked fix candidates are in the block. Net 0 − 0.
 - **2026-10-20 — Brawl tooling plan, Batch 5** (block `tooling-batch5-broad-implement.md`):
   `wildcards --by-set [--decks …]` (from the DECKS, not the wishlist — it held 35 of 96 missing cards)
   and the `suggest --lands` owned-options footer; also fixed Batch 1's normaliser regression (SP//dr
@@ -249,8 +255,7 @@ Updated: 2026-10-20 (Brawl tooling plan Batch 5 — see Where I left off)
 
 ## Pending / not yet done
 - **PLANNED 2026-10-20 — Brawl tooling plan (9 items from the decks 84–86 builds), 7 batches:**
-  Batches 1–5 DONE. Remaining, in order: **6** profile `consistency` / `swap --apply` /
-  `make postedit` (measure, no behaviour change); **7** section placement automatic by default with a
+  Batches 1–6 DONE. Remaining: **7** section placement automatic by default with a
   warning when ambiguous (changes G-05). Plus Batch 1's open half: suggest/screen/cuts still exclude
   a blank-Legalities row silently.
 - **PLANNED 2026-10-07 — deck-32 tooling follow-ons, four `/broad-implement` batches, in order:**
@@ -382,6 +387,11 @@ Updated: 2026-10-20 (Brawl tooling plan Batch 5 — see Where I left off)
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
+**2026-10-20 (latest) — Brawl tooling plan, Batch 6 done** (profile only; block
+`tooling-batch6-broad-implement.md`). **Next:** Batch 7 (automatic section placement). Then optionally
+a speed-up batch from the block's ranked candidates (classify_roles memo, rationale_staleness guard,
+load_legalities/discover_decks memo, `_power_seed` hoist), each needing a byte-identical diff.
+
 **2026-10-20 (latest) — Brawl tooling plan, Batch 5 done** (`wildcards --by-set`, lands owned
 footer, SP//dr normaliser regression; block `tooling-batch5-broad-implement.md`). Suite + check_all
 green. **Next:** Batch 6 (profile only), then 7 (auto section placement). Docs for Batches 4–5 SYNCED
