@@ -22,6 +22,9 @@ In the Trenches,Enchantment,"Creatures you control get +1/+1.
 −2: Sacrifice a creature. When you do, Minsc & Boo deals X damage to any target, where X is that creature's power. If the sacrificed creature was a Hamster, draw X cards.
 Minsc & Boo, Timeless Heroes can be your commander.",R/G,Minsc; planeswalker; counters; card draw; sacrifice; tokens; burn; etb; noncombat damage,,,Mythic,86,,10.0,seed
 Parallel Lives,Enchantment,"If an effect would create one or more tokens under your control, it creates twice that many of those tokens instead.",G,tokens,,,Mythic,86,,4.5,seed
+"Teferi, Hero of Dominaria",Legendary Planeswalker — Teferi,"+1: Draw a card. At the beginning of the next end step, untap up to two lands.
+−3: Put target nonland permanent into its owner's library third from the top.
+−8: You get an emblem with ""Whenever you draw a card, exile target permanent an opponent controls.""",W/U,Teferi; planeswalker; card draw,,,Mythic,86,,10.0,seed
 The Wandering Emperor,Legendary Planeswalker,"Flash
 As long as The Wandering Emperor entered this turn, you may activate her loyalty abilities any time you could cast an instant.
 +1: Put a +1/+1 counter on up to one target creature. It gains first strike until end of turn.
