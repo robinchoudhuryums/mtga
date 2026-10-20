@@ -363,7 +363,9 @@ the 60 with `deck.py apply-flex <id> <n>` (dry-run by default; `--apply` writes 
 `.bak` and drops the consumed flex line). To preview any swap's before/after
 deltas first, use `deck.py swap <id> --cut A --add B` — it prints the real card
 types (so a "vanilla flyer" that's actually a Bird won't slip past) plus the
-card-count / creature / avg-MV / color-identity deltas.
+card-count / creature / avg-MV / color-identity deltas. To preview the whole proposed SET
+as one change, use `deck.py swap <id> --package "A=B" "C=D" …` — the combined vector,
+tier floor and legality, plus each pair's identity verdict, with nothing written.
 
 ## Stage 8 — Hand the confirmed swaps to `/apply-changes`
 

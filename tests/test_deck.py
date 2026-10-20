@@ -7553,3 +7553,497 @@ class TestCastabilitySweep:
         import inspect
         assert "castability_shortfalls" not in inspect.getsource(deck.tier_band)
         assert "castability_shortfalls" not in inspect.getsource(deck.deck_quality_vector)
+
+
+class TestBatch1NameAndLegality:
+    """Batch 1 of the 2026-10-20 tooling plan: triple-slash names, and blank legality
+    read as unverified rather than illegal (Searing Soloist, Insult /// Injury)."""
+
+    def test_normalize_card_name_fixes_the_separator(self):
+        assert lib.normalize_card_name("Insult /// Injury") == "Insult // Injury"
+        assert lib.normalize_card_name("insult///injury") == "insult // injury"
+        assert lib.normalize_card_name("Ojer Axonil,  Deepest Might ///Temple of Power") == \
+            "Ojer Axonil, Deepest Might // Temple of Power"
+        assert lib.normalize_card_name("Sol Ring") == "Sol Ring"
+        assert lib.normalize_card_name("Fire //Ice") == "Fire // Ice"
+
+    def test_an_unspaced_double_slash_inside_a_name_survives(self):
+        # SP//dr is a real card (deck 65); the first normaliser keyed it as "sp".
+        assert lib.normalize_card_name("SP//dr, Piloted by Peni") == "SP//dr, Piloted by Peni"
+        assert deck._ms_key("SP//dr, Piloted by Peni") == "sp//dr, piloted by peni"
+        assert deck._printing_of("SP//dr, Piloted by Peni")[0] == "SP//dr, Piloted by Peni"
+
+    def test_triple_slash_name_resolves_to_its_printing(self):
+        name, _set, _cn = deck._printing_of("Insult /// Injury")
+        assert name == "Insult // Injury"
+
+    def test_triple_slash_name_keys_on_the_front_face(self):
+        assert deck._ms_key("Insult /// Injury") == "insult"
+
+    def test_blank_legality_is_unverified_not_illegal(self):
+        # load_legalities stores a blank cell as an empty set; the verdict must not call it illegal.
+        leg = {"searing soloist": set()}
+        rep = deck.legality_report({"commander": ""}, [(1, "Searing Soloist", "", "")],
+                                   "historic-brawl", leg)
+        assert not any("not legal" in p for p in rep["problems"])
+        assert "Searing Soloist" in rep["unknown"]
+
+    def test_real_legality_still_reports_illegal(self):
+        leg = {"sol ring": {"standard"}}
+        rep = deck.legality_report({"commander": ""}, [(1, "Sol Ring", "", "")],
+                                   "historic-brawl", leg)
+        assert any("not legal" in p for p in rep["problems"])
+
+
+class TestSwapIdentityGate:
+    """Batch 2 of the 2026-10-20 tooling plan: `swap` refuses an add outside the
+    commander's colour identity on --apply, and warns in the dry run. Leonardo, the
+    Balance ({W}{U}{B}{R}{G} activation, so B in identity) was written into a G/R/U/W
+    Brawl deck and only `preflight` caught it after the fact."""
+
+    LINES = ["#: name: T", "#: format: Historic Brawl", "#: colors: WURG",
+             "#: commander: The Fantastic Four", "", "# Commander",
+             "1 The Fantastic Four (MSC) 741", "", "# Body",
+             "1 Storm, Windrider (MSH) 230", "", "# Lands", "98 Forest"]
+
+    def _setup(self, tmp_path, monkeypatch):
+        d = tmp_path / "decks" / "99-t"
+        d.mkdir(parents=True)
+        path = d / "deck.txt"
+        path.write_text("\n".join(self.LINES) + "\n")
+        monkeypatch.setattr(deck, "DECKS_DIR", str(tmp_path / "decks"))
+        monkeypatch.setattr(deck, "RECS_CSV", str(tmp_path / "recs.csv"))
+        return path
+
+    def test_off_identity_apply_is_refused_and_writes_nothing(self, tmp_path, monkeypatch, capsys):
+        from types import SimpleNamespace as NS
+        path = self._setup(tmp_path, monkeypatch)
+        before = path.read_text()
+        rc = deck.cmd_swap(NS(id="99", cut="Storm, Windrider", add="Leonardo, the Balance",
+                              apply=True))
+        assert rc == 1
+        assert path.read_text() == before
+        assert not (tmp_path / "recs.csv").exists(), "a refused swap must not reach the ledger"
+        assert not list(path.parent.glob("*.bak")), "a refused swap must not write a backup"
+        assert "outside the commander's colour identity" in capsys.readouterr().err
+
+    def test_dry_run_warns(self, tmp_path, monkeypatch, capsys):
+        from types import SimpleNamespace as NS
+        self._setup(tmp_path, monkeypatch)
+        rc = deck.cmd_swap(NS(id="99", cut="Storm, Windrider", add="Leonardo, the Balance",
+                              apply=False))
+        assert rc == 0
+        assert "⛔ identity: Leonardo, the Balance has colour identity WUBRG" in capsys.readouterr().out
+
+    def test_on_identity_apply_still_works(self, tmp_path, monkeypatch):
+        from types import SimpleNamespace as NS
+        path = self._setup(tmp_path, monkeypatch)
+        rc = deck.cmd_swap(NS(id="99", cut="Storm, Windrider", add="Domri, Anarch of Bolas",
+                              apply=True))
+        assert rc == 0
+        names = {n for _q, n, _s, _c in deck.parse_deck_file(str(path))[1]}
+        assert "Domri, Anarch of Bolas" in names and "Storm, Windrider" not in names
+
+
+class TestSwapUndo:
+    """Batch 3 of the 2026-10-20 tooling plan: `swap <id> --undo` reverses the deck's most
+    recent swap (one step) and removes its ledger row. The Leonardo round trip in deck 86
+    left two ledger rows that had to be pruned by hand."""
+
+    LINES = ["#: name: T", "#: colors: R", "", "# Spells", "4 Shock (M21) 159",
+             "2 Lightning Strike (MSH) 142", "", "# Burn", "1 Lava Coil (M21) 152",
+             "", "# Lands", "53 Mountain"]
+
+    def _setup(self, tmp_path, monkeypatch):
+        from types import SimpleNamespace as NS
+        d = tmp_path / "decks" / "99-t"
+        d.mkdir(parents=True)
+        path = d / "deck.txt"
+        path.write_text("\n".join(self.LINES) + "\n")
+        monkeypatch.setattr(deck, "DECKS_DIR", str(tmp_path / "decks"))
+        monkeypatch.setattr(deck, "RECS_CSV", str(tmp_path / "recs.csv"))
+        # A fixed ledger row: the real recommendation_row runs the cut/suggest rankers.
+        monkeypatch.setattr(deck, "recommendation_row",
+                            lambda d, cut, add, source, today=None:
+                            {"Date": "2026-10-20", "Deck": d["id"], "Source": source,
+                             "Cut": cut, "Add": add})
+        return path, NS
+
+    def _swap(self, NS, **kw):
+        return deck.cmd_swap(NS(id="99", apply=True, undo=False, section=None, **kw))
+
+    def _undo(self, NS, apply=True):
+        return deck.cmd_swap(NS(id="99", cut=None, add=None, section=None, undo=True,
+                                apply=apply))
+
+    def test_undo_restores_the_file_byte_for_byte_and_drops_the_row(self, tmp_path, monkeypatch):
+        path, NS = self._setup(tmp_path, monkeypatch)
+        original = path.read_text()
+        assert self._swap(NS, cut="Shock", add="Lava Coil") == 0
+        assert len(deck.load_recommendations()) == 1
+        assert self._undo(NS) == 0
+        assert path.read_text() == original
+        assert deck.load_recommendations() == []
+
+    def test_dry_run_changes_nothing(self, tmp_path, monkeypatch):
+        path, NS = self._setup(tmp_path, monkeypatch)
+        self._swap(NS, cut="Shock", add="Lava Coil")
+        swapped = path.read_text()
+        assert self._undo(NS, apply=False) == 0
+        assert path.read_text() == swapped
+        assert len(deck.load_recommendations()) == 1
+
+    def test_undo_survives_a_section_move(self, tmp_path, monkeypatch):
+        path, NS = self._setup(tmp_path, monkeypatch)
+        original = path.read_text()
+        self._swap(NS, cut="Shock", add="Lava Coil")
+        assert deck.cmd_move(NS(id="99", card="Lava Coil", section="Spells", apply=True)) == 0
+        assert self._undo(NS) == 0
+        assert path.read_text() == original
+
+    def test_an_unrelated_move_after_the_swap_refuses_the_undo(self, tmp_path, monkeypatch):
+        path, NS = self._setup(tmp_path, monkeypatch)
+        self._swap(NS, cut="Shock", add="Lava Coil")
+        assert deck.cmd_move(NS(id="99", card="Lightning Strike", section="Burn",
+                                apply=True)) == 0
+        moved = path.read_text()
+        assert self._undo(NS) == 1, "restoring would silently revert the unrelated move"
+        assert path.read_text() == moved
+
+    def test_a_later_edit_refuses_the_undo(self, tmp_path, monkeypatch):
+        path, NS = self._setup(tmp_path, monkeypatch)
+        self._swap(NS, cut="Shock", add="Lava Coil")
+        edited = path.read_text().replace("#: colors: R", "#: colors: R\n#: notes: later edit")
+        path.write_text(edited)
+        assert self._undo(NS) == 1
+        assert path.read_text() == edited
+        assert len(deck.load_recommendations()) == 1, "a refused undo keeps the ledger row"
+
+    def test_no_recorded_swap_refuses(self, tmp_path, monkeypatch):
+        path, NS = self._setup(tmp_path, monkeypatch)
+        before = path.read_text()
+        assert self._undo(NS) == 1
+        assert path.read_text() == before
+
+    def test_flex_row_is_refused(self, tmp_path, monkeypatch):
+        path, NS = self._setup(tmp_path, monkeypatch)
+        deck.append_recommendation({"Date": "2026-10-20", "Deck": "99", "Source": "flex",
+                                    "Cut": "Shock", "Add": "Lava Coil"})
+        before = path.read_text()
+        assert self._undo(NS) == 1
+        assert path.read_text() == before
+
+    def test_undo_rejects_cut_and_add(self, tmp_path, monkeypatch):
+        _path, NS = self._setup(tmp_path, monkeypatch)
+        assert deck.cmd_swap(NS(id="99", cut="Shock", add=None, section=None, undo=True,
+                                apply=True)) == 1
+
+
+class TestAutoSection:
+    """Batch 7 of the 2026-10-20 tooling plan: section placement is AUTOMATIC by default
+    (the owner's call), with a warning when it is not decidable. Only an objective TYPE
+    misfit moves a line; a ROLE misfit is the K-12 heuristic, so it warns."""
+
+    CD = {
+        "shock": {"type": "Instant", "colors": "R", "text": "Shock deals 2 damage to any target."},
+        "divination": {"type": "Sorcery", "colors": "U", "text": "Draw two cards."},
+        "sundown pass": {"type": "Land", "colors": "", "text": "{T}: Add {R} or {W}."},
+        "llanowar elves": {"type": "Creature — Elf Druid", "colors": "G",
+                           "text": "{T}: Add {G}."},
+    }
+
+    def test_only_the_HEAD_of_a_header_is_a_claim(self):
+        # Measured: reading type/role words anywhere called 260 of 5,439 roster
+        # placements misfiled — mostly a header's description talking.
+        assert deck._section_claims("Lands-from-graveyard engine") is None
+        assert deck._section_claims("Interaction / tricks") is None
+        assert deck._section_claims("Planeswalkers and support") is None
+        types, roles = deck._section_claims("Lands (24) — dual-heavy, every Verge")
+        assert len(types) == 1 and not roles
+        types, roles = deck._section_claims("Noncreature — token spells / interaction")
+        assert len(types) == 1 and not roles
+        _t, roles = deck._section_claims("Removal / card advantage")
+        assert "Card advantage" in roles and "Removal (spot)" in roles
+
+    def test_nonland_is_not_read_as_land(self):
+        assert deck.section_fit("Nonland", "Sundown Pass", self.CD)[0] is False
+        assert deck.section_fit("Nonland", "Shock", self.CD)[0] is True
+        assert deck.section_fit("Lands", "Sundown Pass", self.CD)[0] is True
+
+    def test_a_role_union_header_holds_either_role(self):
+        assert deck.section_fit("Removal / card advantage", "Divination", self.CD)[0] is True
+        assert deck.section_fit("Removal / card advantage", "Shock", self.CD)[0] is True
+
+    def test_a_type_misfit_with_one_target_moves(self):
+        lines = ["# Nonland", "4 Shock (M21) 159", "1 Sundown Pass (SOS) 264",
+                 "", "# Lands", "20 Mountain"]
+        plan = deck.auto_section(lines, 2, "Sundown Pass", self.CD)
+        assert plan["move"] == 4 and plan["to"] == "Lands"
+
+    def test_a_ROLE_misfit_warns_and_never_moves(self):
+        lines = ["# Card advantage", "1 Shock (M21) 159", "", "# Removal", "1 Lava Coil (M21) 152"]
+        plan = deck.auto_section(lines, 1, "Shock", self.CD)
+        assert "move" not in plan and plan["candidates"] == ["Removal"]
+
+    def test_two_typed_targets_warn_rather_than_guess(self):
+        lines = ["# Nonland", "1 Sundown Pass (SOS) 264", "", "# Lands", "20 Mountain",
+                 "", "# Creatures and lands", "1 Llanowar Elves (M21) 168"]
+        plan = deck.auto_section(lines, 1, "Sundown Pass", self.CD)
+        assert "move" not in plan and len(plan["candidates"]) == 2
+
+    def test_a_fitting_or_silent_header_plans_nothing(self):
+        assert deck.auto_section(["# Lands", "1 Sundown Pass (SOS) 264"], 1,
+                                 "Sundown Pass", self.CD) is None
+        assert deck.auto_section(["# Dragons", "1 Sundown Pass (SOS) 264"], 1,
+                                 "Sundown Pass", self.CD) is None
+
+    def test_a_WRAPPED_header_is_one_section(self):
+        # Most roster headers wrap onto adjacent `#` lines. Read line by line, a land
+        # sat "under" its own header's second line and 73 roster lands planned a move.
+        lines = ["# Spells", "4 Shock (M21) 159", "", "# Lands (24 — owned fixing:",
+                 "# Starting Town, 2 Sandsteppe Citadel, the rest basics)",
+                 "1 Sundown Pass (SOS) 264", "20 Mountain"]
+        assert deck._card_section_header(lines, 5) == (3, "Lands (24 — owned fixing:")
+        assert deck.auto_section(lines, 5, "Sundown Pass", self.CD) is None
+        assert [i for i, _h in deck._section_headers(lines)] == [0, 3]
+
+    def test_a_LAND_goes_to_the_one_land_header_even_from_a_role_header(self):
+        # "# Ramp" also fits a land BY ROLE; the land's home is decided on type alone.
+        lines = ["# Interaction", "1 Sundown Pass (SOS) 264", "", "# Ramp",
+                 "1 Llanowar Elves (M21) 168", "", "# Lands (36)", "20 Mountain"]
+        plan = deck.auto_section(lines, 1, "Sundown Pass", self.CD)
+        assert plan["move"] == 6 and plan["to"] == "Lands (36)"
+        silent = ["# Pingers", "1 Sundown Pass (SOS) 264", "", "# Lands", "20 Mountain"]
+        assert deck.auto_section(silent, 1, "Sundown Pass", self.CD)["move"] == 3
+
+    LINES = ["#: name: T", "#: colors: R", "", "# Nonland", "4 Shock (M21) 159",
+             "", "# Lands", "56 Mountain"]
+
+    def _setup(self, tmp_path, monkeypatch):
+        from types import SimpleNamespace as NS
+        d = tmp_path / "decks" / "99-t"
+        d.mkdir(parents=True)
+        path = d / "deck.txt"
+        path.write_text("\n".join(self.LINES) + "\n")
+        monkeypatch.setattr(deck, "DECKS_DIR", str(tmp_path / "decks"))
+        monkeypatch.setattr(deck, "RECS_CSV", str(tmp_path / "recs.csv"))
+        monkeypatch.setattr(deck, "recommendation_row",
+                            lambda d, cut, add, source, today=None:
+                            {"Date": "2026-10-20", "Deck": d["id"], "Source": source,
+                             "Cut": cut, "Add": add})
+        return path, NS
+
+    def _swap(self, NS, apply=True, keep=False):
+        return deck.cmd_swap(NS(id="99", cut="Shock", add="Sundown Pass", apply=apply,
+                                undo=False, section=None, keep_section=keep, package=None))
+
+    def test_apply_moves_a_land_out_of_Nonland(self, tmp_path, monkeypatch, capsys):
+        path, NS = self._setup(tmp_path, monkeypatch)
+        assert self._swap(NS) == 0
+        lines = path.read_text().split("\n")
+        assert lines.index("1 Sundown Pass (SOS) 264") > lines.index("# Lands")
+        assert "placed under `# Lands`" in capsys.readouterr().out
+
+    def test_the_dry_run_says_where_it_will_land_and_writes_nothing(self, tmp_path,
+                                                                     monkeypatch, capsys):
+        path, NS = self._setup(tmp_path, monkeypatch)
+        before = path.read_text()
+        assert self._swap(NS, apply=False) == 0
+        assert "will place under `# Lands`" in capsys.readouterr().out
+        assert path.read_text() == before
+
+    def test_keep_section_leaves_it_and_warns(self, tmp_path, monkeypatch, capsys):
+        path, NS = self._setup(tmp_path, monkeypatch)
+        assert self._swap(NS, keep=True) == 0
+        lines = path.read_text().split("\n")
+        assert lines.index("1 Sundown Pass (SOS) 264") < lines.index("# Lands")
+        assert "kept in place by --keep-section" in capsys.readouterr().out
+
+    def test_undo_still_restores_after_an_automatic_move(self, tmp_path, monkeypatch):
+        path, NS = self._setup(tmp_path, monkeypatch)
+        original = path.read_text()
+        assert self._swap(NS) == 0
+        assert deck.cmd_swap(NS(id="99", cut=None, add=None, section=None, undo=True,
+                                apply=True)) == 0
+        assert path.read_text() == original
+
+
+class TestSwapPackage:
+    """Batch 4 of the 2026-10-20 tooling plan: `swap <id> --package "cut=add" …` previews
+    several swaps as one change and writes nothing. It replaces a hand-rolled simulator
+    that crashed on a misspelled cut."""
+
+    LINES = ["#: name: T", "#: colors: R", "", "# Spells", "4 Shock (M21) 159",
+             "2 Lightning Strike (MSH) 142", "", "# Burn", "1 Lava Coil (M21) 152",
+             "", "# Lands", "53 Mountain"]
+
+    def _setup(self, tmp_path, monkeypatch, lines=None):
+        from types import SimpleNamespace as NS
+        d = tmp_path / "decks" / "99-t"
+        d.mkdir(parents=True)
+        path = d / "deck.txt"
+        path.write_text("\n".join(lines or self.LINES) + "\n")
+        monkeypatch.setattr(deck, "DECKS_DIR", str(tmp_path / "decks"))
+        monkeypatch.setattr(deck, "RECS_CSV", str(tmp_path / "recs.csv"))
+        monkeypatch.setattr(deck, "recommendation_row",
+                            lambda d, cut, add, source, today=None:
+                            {"Date": "2026-10-20", "Deck": d["id"], "Source": source,
+                             "Cut": cut, "Add": add})
+        return path, NS
+
+    def _pkg(self, NS, pairs, **kw):
+        base = dict(id="99", cut=None, add=None, undo=False, section=None, apply=False)
+        base.update(kw)
+        return deck.cmd_swap(NS(package=pairs, **base))
+
+    def test_preview_writes_nothing(self, tmp_path, monkeypatch, capsys):
+        path, NS = self._setup(tmp_path, monkeypatch)
+        before = path.read_text()
+        rc = self._pkg(NS, ["Shock=Lava Coil", "Lightning Strike=Lava Coil"])
+        assert rc == 0
+        assert path.read_text() == before
+        assert not (tmp_path / "recs.csv").exists()
+        assert not list(path.parent.glob("*.bak"))
+        assert "combined result:" in capsys.readouterr().out
+
+    def test_preview_matches_the_applied_swaps(self, tmp_path, monkeypatch, capsys):
+        path, NS = self._setup(tmp_path, monkeypatch)
+        pairs = [("Shock", "Lava Coil"), ("Lightning Strike", "Lava Coil")]
+        assert self._pkg(NS, [f"{c}={a}" for c, a in pairs]) == 0
+        out = capsys.readouterr().out
+        for cut, add in pairs:
+            assert deck.cmd_swap(NS(id="99", cut=cut, add=add, apply=True, undo=False,
+                                    section=None, package=None)) == 0
+        vec = deck.deck_quality_vector(deck.find_deck("99"))
+        assert f"avg MV          {vec['avg_mv']:.2f}" in out
+        assert f"interaction     {vec['interaction']}" in out
+        assert f"tier floor      {deck.tier_band(vec)}" in out
+
+    def test_a_cut_not_in_the_deck_stops_the_preview(self, tmp_path, monkeypatch, capsys):
+        _path, NS = self._setup(tmp_path, monkeypatch)
+        assert self._pkg(NS, ["Glassworks=Lava Coil"]) == 1
+        assert "'Glassworks' is not a card line" in capsys.readouterr().out
+
+    def test_a_pair_without_equals_is_refused(self, tmp_path, monkeypatch):
+        _path, NS = self._setup(tmp_path, monkeypatch)
+        assert self._pkg(NS, ["Shock"]) == 1
+
+    def test_package_refuses_apply(self, tmp_path, monkeypatch):
+        path, NS = self._setup(tmp_path, monkeypatch)
+        before = path.read_text()
+        assert self._pkg(NS, ["Shock=Lava Coil"], apply=True) == 1
+        assert path.read_text() == before
+
+    def test_identity_verdict_per_pair(self, tmp_path, monkeypatch, capsys):
+        _path, NS = self._setup(tmp_path, monkeypatch, TestSwapIdentityGate.LINES)
+        assert self._pkg(NS, ["Storm, Windrider=Leonardo, the Balance"]) == 0
+        out = capsys.readouterr().out
+        assert "⛔ identity WUBRG is outside the commander's WURG" in out
+
+
+class TestWildcardsBySet:
+    """Batch 5 of the 2026-10-20 tooling plan, item 7: `wildcards --by-set [--decks …]`
+    groups the craft shortfall by set for pack planning, built from the DECKS (the
+    wishlist held only 35 of the 96 cards decks 84–86 were missing)."""
+
+    def _roster(self, tmp_path, monkeypatch):
+        for did, lines in (("97-a", ["#: name: A", "4 Shock (M21) 159", "56 Mountain"]),
+                           ("98-b", ["#: name: B", "2 Shock (M21) 159", "1 Lava Coil (M21) 152",
+                                     "57 Mountain"])):
+            d = tmp_path / "decks" / did
+            d.mkdir(parents=True)
+            (d / "deck.txt").write_text("\n".join(lines) + "\n")
+        monkeypatch.setattr(deck, "DECKS_DIR", str(tmp_path / "decks"))
+        monkeypatch.setattr(deck, "load_collection", lambda: ({}, {}, {}))  # nothing owned
+
+    def _run(self, **kw):
+        from types import SimpleNamespace as NS
+        base = dict(dedup=False, by_set=True, decks=None)
+        base.update(kw)
+        return deck.cmd_wildcards(NS(**base))
+
+    def test_groups_by_set_and_counts_a_shared_card_once(self, tmp_path, monkeypatch, capsys):
+        self._roster(tmp_path, monkeypatch)
+        assert self._run() == 0
+        out = capsys.readouterr().out
+        assert "M21" in out and "2 distinct card(s) across 1 set(s)" in out
+        assert "Shock ×4" in out, "copies = the most any one deck needs (shared collection)"
+
+    def test_decks_scopes_the_view(self, tmp_path, monkeypatch, capsys):
+        self._roster(tmp_path, monkeypatch)
+        assert self._run(decks=["98"]) == 0
+        out = capsys.readouterr().out
+        assert "decks 98" in out and "Shock ×2" in out and "Lava Coil" in out
+
+    def test_unknown_deck_is_refused(self, tmp_path, monkeypatch):
+        self._roster(tmp_path, monkeypatch)
+        assert self._run(decks=["555"]) == 1
+
+
+class TestLandsOwnedFooter:
+    """Batch 5 item 9: `suggest --lands` says how many OWNED lands the craft-led window hid."""
+
+    def test_owned_info_is_counted_before_the_window(self):
+        res = deck.suggest_lands(deck.find_deck("85"), limit=1)
+        oi = res["owned_info"]
+        assert oi["total"] >= 1 and oi["candidates"] >= oi["total"]
+        assert oi["best"] and oi["best"][2] >= 1
+
+    def test_footer_prints_only_on_the_default_view(self, capsys):
+        from types import SimpleNamespace as NS
+        d = deck.find_deck("85")
+        deck.cmd_suggest_lands(NS(unowned=False, owned=False, limit=1, fmt=None,
+                                  any_format=False), d)
+        assert "owned land(s) qualify" in capsys.readouterr().out
+        deck.cmd_suggest_lands(NS(unowned=False, owned=True, limit=1, fmt=None,
+                                  any_format=False), d)
+        assert "owned land(s) qualify" not in capsys.readouterr().out
+
+
+class TestHotPathMemos:
+    """The 2026-10-20 speed-up (Batch 6 profile → check_all 77s → 36s, dashboard 217s →
+    80s, swap --apply 6.9s → 2.7s). Every memo here must be invisible: same answers,
+    fresh objects, and no staleness inside one process."""
+
+    def test_a_SAME_SIZE_rewrite_is_reparsed(self, tmp_path):
+        # A `deck.py move` reorders lines at identical size within one timestamp tick;
+        # the parse memo is keyed on the BYTES so it cannot serve the old order.
+        p = tmp_path / "d.txt"
+        p.write_text("1 Shock (M21) 159\n1 Murder (M21) 109\n")
+        assert [n for _q, n, _s, _c in deck.parse_deck_file(str(p))[1]] == ["Shock", "Murder"]
+        p.write_text("1 Murder (M21) 109\n1 Shock (M21) 159\n")
+        assert [n for _q, n, _s, _c in deck.parse_deck_file(str(p))[1]] == ["Murder", "Shock"]
+
+    def test_parse_results_are_independent_copies(self, tmp_path):
+        p = tmp_path / "d.txt"
+        p.write_text("#: name: T\n1 Shock (M21) 159\n")
+        meta, cards = deck.parse_deck_file(str(p))
+        meta["name"] = "mutated"
+        cards.append((9, "X", "", ""))
+        meta2, cards2 = deck.parse_deck_file(str(p))
+        assert meta2["name"] == "T" and len(cards2) == 1
+
+    def test_the_parse_memo_reads_newlines_like_open_did(self, tmp_path):
+        p = tmp_path / "d.txt"
+        p.write_bytes(b"#: name: T\r\n1 Shock (M21) 159\r\n")
+        meta, cards = deck.parse_deck_file(str(p))
+        assert meta["name"] == "T" and cards == [(1, "Shock", "M21", "159")]
+
+    def test_classify_roles_returns_a_fresh_set(self):
+        text = "Draw two cards."
+        first = deck.classify_roles(text)
+        first.add("bogus")
+        assert "bogus" not in deck.classify_roles(text)
+
+    def test_classify_roles_cache_resets_when_a_table_is_swapped(self, monkeypatch):
+        text = "Destroy target creature."
+        assert "Removal (spot)" in deck.classify_roles(text)
+        monkeypatch.setattr(deck, "_ROLE_COMPILED",
+                            [(lab, pats) for lab, pats in deck._ROLE_COMPILED
+                             if lab != "Removal (spot)"])
+        assert "Removal (spot)" not in deck.classify_roles(text)
+
+    def test_load_legalities_hands_out_a_fresh_dict(self):
+        a = deck.load_legalities()
+        a["__probe__"] = {"standard"}
+        assert "__probe__" not in deck.load_legalities()

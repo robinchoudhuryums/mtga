@@ -50,6 +50,7 @@ import csv
 import functools
 import json
 import math
+import io
 import os
 import re
 import shutil
@@ -167,16 +168,40 @@ FORMAT_VARIANT_RE = re.compile(r"^(\d+)-(" + "|".join(_FORMAT_SLUGS) + r")(?:[-.
 # --------------------------------------------------------------------------- #
 # Deck discovery + parsing
 # --------------------------------------------------------------------------- #
+# path -> (file bytes, (meta, cards)). Keyed on the BYTES, not the mtime: Linux file
+# timestamps tick at ~4ms and a `deck.py move` rewrites a deck at the SAME size, so a
+# (mtime, size) key could serve a stale parse inside one process (swap → undo, the
+# editor). Reading a deck file is cheap; parsing it 87,429 times was 70s of a dashboard
+# build (Batch 6 profile).
+_PARSE_MEMO = {}
+
+
 def parse_deck_file(path):
     """Return (meta_dict, [(qty, name, set, collector), ...]).
 
     A repeated `#:` key (notably a multi-line `#: notes:` block) is concatenated
     in order rather than overwritten, so the FULL note survives — previously only
     the last `#: notes:` line was kept, which truncated a deck's documented intent
-    to a mid-sentence fragment in every tool that reads it."""
+    to a mid-sentence fragment in every tool that reads it.
+
+    Memoized on the file's exact bytes; every call gets its OWN dict and list, so a
+    caller that edits the result cannot change what the next caller sees (G-71)."""
+    with open(path, "rb") as fh:
+        data = fh.read()
+    hit = _PARSE_MEMO.get(path)
+    if hit is None or hit[0] != data:
+        hit = (data, _parse_deck_bytes(data))
+        _PARSE_MEMO[path] = hit
+    meta, cards = hit[1]
+    return dict(meta), list(cards)
+
+
+def _parse_deck_bytes(data):
     meta, cards = {}, []
     in_board = False
-    with open(path, encoding="utf-8") as fh:
+    # A TextIOWrapper reads exactly as `open(path, encoding="utf-8")` did — universal
+    # newlines and the same decode errors — so the memo cannot change a parse.
+    with io.TextIOWrapper(io.BytesIO(data), encoding="utf-8") as fh:
         for raw in fh:
             m = META_RE.match(raw.strip())
             if m:
@@ -754,6 +779,18 @@ def cmd_wildcards(args):
     if not decks:
         print("No decks yet. Add one under decks/<NN-name>/deck.txt.")
         return 0
+    if getattr(args, "decks", None):
+        # Scope to the named decks (2026-10-20): "which packs serve THESE decks" was
+        # answered by a hand script that joined ownership on the wrong key.
+        sel = []
+        for i in args.decks:
+            dd = find_deck(i)
+            if not dd:
+                eprint(f"No deck with id {i!r}. Try: deck.py list")
+                return 1
+            if dd["id"] not in {x["id"] for x in sel}:
+                sel.append(dd)
+        decks = sel
     _fresh = lib.collection_stamp_note()
     if _fresh:
         print(_fresh + "\n")
@@ -767,6 +804,7 @@ def cmd_wildcards(args):
     max_need = {}         # name_lower -> max copies any single deck needs
     display = {}          # name_lower -> display name
     needed_by = {}        # name_lower -> set(deck ids short on it)
+    set_of = {}           # name_lower -> the (SET) its first deck line names
     for d in decks:
         _, cards = parse_deck_file(d["path"])
         need = {}
@@ -774,6 +812,7 @@ def cmd_wildcards(args):
             if n.lower() in BASICS:
                 continue  # basics are free/unlimited in Arena
             need[n] = need.get(n, 0) + q
+            set_of.setdefault(n.lower(), (s or "?").strip().upper() or "?")
         shorts = []
         for n, req in need.items():
             nl = n.lower()
@@ -796,6 +835,48 @@ def cmd_wildcards(args):
     # that needs it is in a rotating format (`format_rotates`).
     _deck_rotates = {d["id"]: format_rotates((d.get("meta") or {}).get("format")) for d in decks}
     _rotates_for = lambda ids: any(_deck_rotates.get(i, True) for i in ids)
+
+    if getattr(args, "by_set", False):
+        # Pack planning: the same shared-collection shortfall `--dedup` uses (a card short
+        # in several decks counts ONCE, at the most any deck needs), grouped by the set its
+        # deck line names. Built from the DECKS, not the wishlist: on 2026-10-20 the wishlist
+        # held only 35 of the 96 cards decks 84–86 were missing.
+        rar_rank = {r: i for i, (r, _) in enumerate(WC_NAMES)}
+        groups = {}
+        for nl, ids in needed_by.items():
+            have, _f = owned(by_name_qty, display[nl])
+            copies = max(0, max_need[nl] - have)
+            if copies:
+                groups.setdefault(set_of.get(nl, "?"), []).append(
+                    (display[nl], rar_of(display[nl]), copies,
+                     sorted(ids, key=lambda x: (len(x), x))))
+        scope = ("decks " + ", ".join(d["id"] for d in decks)
+                 if getattr(args, "decks", None) else "the whole roster")
+        print(f"Craft targets by set — {scope} (shared collection; a card short in "
+              "several decks counts once)\n")
+        if not groups:
+            print("  Nothing to craft — every deck in scope is buildable. ✓")
+            return 0
+
+        def _weight(rows):  # mythic/rare first: they are what packs are opened for
+            return (-sum(1 for r in rows if r[1] in ("M", "R")), -len(rows))
+        total = 0
+        for setc, rows in sorted(groups.items(), key=lambda kv: (_weight(kv[1]), kv[0])):
+            rows.sort(key=lambda r: (rar_rank.get(r[1], 99), r[0]))
+            breakdown = "  ".join(f"{sum(1 for r in rows if r[1] == code)} {label}"
+                                  for code, label in WC_NAMES
+                                  if any(r[1] == code for r in rows))
+            print(f"  {setc:5} {len(rows):>3} card(s)   {breakdown}")
+            for name, rar, copies, ids in rows:
+                rot = craft_rot_note(name, pool_rot, rotates=_rotates_for(ids))
+                cp = f" ×{copies}" if copies > 1 else ""
+                print(f"        {rar}  {name}{cp}{rot}   [{', '.join(ids)}]")
+            total += len(rows)
+        print(f"\n{total} distinct card(s) across {len(groups)} set(s). Set = the printing each "
+              "deck line names; a card printed in several sets may also come from another "
+              "set's packs, and whether a supplemental set opens in packs at all is a store "
+              "question this file cannot answer.")
+        return 0
 
     if getattr(args, "dedup", False):
         # Cross-deck union: one row per distinct craft target. copies = what the
@@ -1146,7 +1227,7 @@ def _ms_key(name):
     un-importable line P8 fixed `_printing_of` to stop writing, re-introduced from the
     other side, past a green INV-04 check (the copy count is unchanged). 14 deck files
     carry a `Front // Back` line. Fifth member of the G-63 class (broad-scan F-02)."""
-    return (name or "").strip().lower().split(" // ")[0]
+    return lib.normalize_card_name(name).lower().split(" // ")[0]
 
 
 def _ms_display(existing, incoming):
@@ -3393,8 +3474,28 @@ def _norm_role_text(text):
     return _REMINDER_RE.sub(" ", (text or "").lower().replace("−", "-"))
 
 
+# text -> frozenset(roles), valid for one identity of the tables the classifier reads.
+# 16,653 calls per `swap --apply` and 620,483 per dashboard build re-classified the same
+# ~16k pool texts (Batch 6 profile: 151s of the dashboard). Keyed on the tables' IDENTITY
+# so a test that monkeypatches `_ROLE_COMPILED` (test_gates_fire) gets a fresh cache.
+_ROLE_MEMO = {"tables": None, "hits": {}}
+
+
 def classify_roles(text):
-    """Return the set of functional-role labels a card's oracle text matches."""
+    """Return the set of functional-role labels a card's oracle text matches.
+    Memoized per text; each call returns a NEW set, so callers may mutate it."""
+    tables = (_ROLE_COMPILED, _ROLE_COMPILED_MAP, _LOOT_RE, _REMINDER_RE)
+    memo = _ROLE_MEMO
+    if memo["tables"] is None or any(a is not b for a, b in zip(memo["tables"], tables)):
+        memo["tables"], memo["hits"] = tables, {}
+    hit = memo["hits"].get(text)
+    if hit is None:
+        hit = frozenset(_classify_roles_uncached(text))
+        memo["hits"][text] = hit
+    return set(hit)
+
+
+def _classify_roles_uncached(text):
     t = _norm_role_text(text)
     roles = {label for label, pats in _ROLE_COMPILED if any(p.search(t) for p in pats)}
     if "Card advantage" in roles and _LOOT_RE.search(t):
@@ -5597,7 +5698,7 @@ def brawl_readiness(fmt_filter="standard"):
             disp.setdefault(nl, n)
         dup = sum(1 for nl, q in tot.items() if q > 1)
         notlegal = sum(1 for nl in tot
-                       if leg.get(nl) is not None
+                       if leg.get(nl)
                        and pool_format_key("brawl") not in leg[nl])
         idents = {nl: card_colors((carddata.get(nl) or carddata.get(nl.split(" // ")[0])
                                    or {}).get("colors", "")) for nl in tot}
@@ -6119,10 +6220,18 @@ def suggest_lands(d, unowned=False, owned=False, limit=20, fmt=None, any_format=
     # possibly-better unowned one on exactly the wildcard-spend surfaces (BS4-36).
     # UTILITY breaks ties only — a rider never outranks fixing (see _LAND_UTILITY_CUES).
     picks.sort(key=lambda p: (-p["score"], -p["util"], p["name"].lower()))
+    # Counted BEFORE the window cuts the list: the default view leads with craft targets,
+    # so the owned options sat below it unseen (2026-10-20, deck 85 — the owned Boros duals
+    # surfaced only once `--owned` was added by hand).
+    owned_rows = [(i, p) for i, p in enumerate(picks, 1) if p["owned"]]
+    owned_info = {"total": len(owned_rows), "candidates": len(picks),
+                  "best": ((owned_rows[0][1]["name"], owned_rows[0][1]["score"], owned_rows[0][0])
+                           if owned_rows else None)}
     if limit and limit > 0:
         picks = picks[:limit]
     return {"ok": True, "colors": deck_colors, "picks": picks, "fmt": fmt,
-            "apply_fmt": apply_fmt, "has_leg": has_leg, "sources": sources, "deficit": deficit}
+            "apply_fmt": apply_fmt, "has_leg": has_leg, "sources": sources, "deficit": deficit,
+            "owned_info": owned_info}
 
 
 def cmd_suggest_lands(args, d):
@@ -6191,6 +6300,14 @@ def cmd_suggest_lands(args, d):
     if any(p.get("restricted") for p in res["picks"]):
         print("·restricted = the colored mana has a 'spend this only to…' clause. Its "
               "fixing premium is halved; judge it against what your deck actually casts.")
+    oi = res.get("owned_info") or {}
+    if not args.unowned and not getattr(args, "owned", False) and oi.get("total"):
+        shown = sum(1 for p in res["picks"] if p["owned"])
+        if shown < oi["total"]:
+            name, score, rank = oi["best"]
+            print(f"\nⓘ {oi['total']} owned land(s) qualify, {shown} shown here; the best owned is "
+                  f"{name} (score {score:.1f}, #{rank} of {oi['candidates']}). "
+                  "`--owned --limit 0` lists them all.")
     print("\nScore = FIXING value (0–10, dominant: produces your colors, untapped premium) "
           "+ bounded SYNERGY (land ability hits a deck theme) + bounded SHORTFALL (produces "
           "the scarce color). Rider (creature / draw / scry / surveil / sink / ping / life; "
@@ -7794,8 +7911,9 @@ def _printing_of(name):
     bare line parses — but the line is not a valid Arena import, so the failure surfaced
     only when a human tried to paste the deck. Returning the display name as well is what
     stops the file recording the front-face shorthand instead of the real card name."""
-    nl = name.strip().lower()
-    best = (name.strip(), "", "")
+    name = lib.normalize_card_name(name)
+    nl = name.lower()
+    best = (name, "", "")
     # The CANONICAL display is the full `Front // Back`, and it must survive an OWNED
     # printing that is filed under the bare front name. reconcile_crafts.py stores a
     # crafted DFC front-name-only BY DESIGN (G-10/G-63), so the moment you own one the
@@ -7944,62 +8062,194 @@ def _cards_after_swap(cards, cut, add, add_printing):
 # Only sections whose meaning is UNAMBIGUOUS are checked. "# Counter DOUBLERS" means
 # +1/+1 counters, not counterspells, and "# Threats" / "# Creatures" / "# Payoff" are
 # too broad to contradict — a false warning on every swap would train the reader to
-# ignore the real ones.
-_SECTION_EXPECTATIONS = [
-    (re.compile(r"card advantage|card draw", re.I), {"Card advantage"}),
-    (re.compile(r"\bremoval\b|\binteraction\b|counterspell", re.I),
-     {"Removal (spot)", "Sweeper", "Counter"}),
-    (re.compile(r"\bramp\b|\bfixing\b|\bdorks?\b", re.I), {"Ramp / fixing"}),
+# ignore the real ones. (This was a substring table, `_SECTION_EXPECTATIONS`, until
+# Batch 7 replaced it with the head-only label tables below.)
+#
+# A section header's CLAIM (Batch 7, 2026-10-20). Headers are prose, so a type or role
+# word inside a longer description is not a claim: measured over the roster's 5,439
+# existing card placements, a substring reading called 260 of them misfiled, and most were
+# the header's DESCRIPTION talking ("# Lands-from-graveyard engine", "# Interaction /
+# tricks", "# Planeswalkers and support", "# Treasure producers — creatures and crew").
+# So only the header's HEAD — the text before a dash, paren or colon — is read, split on
+# `/ + , & ; and`, and it claims something only when EVERY piece is a known label. A head
+# with any unknown piece ("tricks", "support", "engine") claims nothing.
+_SECTION_TYPE_LABELS = [
+    (re.compile(r"non-?lands?(?: cards| spells| permanents)?"), lambda t: "land" not in t),
+    (re.compile(r"lands?"), lambda t: "land" in t),
+    (re.compile(r"non-?creatures?(?: cards| spells| permanents)?"),
+     lambda t: "creature" not in t),
+    (re.compile(r"creatures?"), lambda t: "creature" in t),
+    (re.compile(r"planeswalkers?"), lambda t: "planeswalker" in t),
 ]
+_SECTION_ROLE_LABELS = [
+    (re.compile(r"(?:spot |cheap |instant-speed )?(?:removal|interaction)|counterspells?"),
+     {"Removal (spot)", "Sweeper", "Counter"}),
+    (re.compile(r"card (?:advantage|draw)|draw"), {"Card advantage"}),
+    (re.compile(r"ramp|fixing|(?:mana )?dorks?"), {"Ramp / fixing"}),
+]
+
+
+def _section_claims(header):
+    """(type_predicates, wanted_roles) a header's HEAD claims, or None when it claims
+    nothing classifiable (see `_SECTION_TYPE_LABELS`)."""
+    head = re.split(r"\s+-\s+|[—–(:]", (header or "").strip().strip("—–- ").strip())[0]
+    pieces = [re.sub(r"^\d+\s+|\s+\d+$", "", x.strip().lower())
+              for x in re.split(r"\s*(?:/|\+|,|&|;|\band\b)\s*", head)]
+    pieces = [x for x in pieces if x]
+    if not pieces:
+        return None
+    types, roles = [], set()
+    for piece in pieces:
+        t = next((ok for rx, ok in _SECTION_TYPE_LABELS if rx.fullmatch(piece)), None)
+        if t is not None:
+            types.append(t)
+            continue
+        r = next((exp for rx, exp in _SECTION_ROLE_LABELS if rx.fullmatch(piece)), None)
+        if r is None:
+            return None
+        roles |= r
+    return types, roles
+
+
+def section_fit(header, add_name, carddata):
+    """Does `add_name` belong under `# header`? Returns (verdict, reason, kind):
+    True — the header's claims hold; False — one DEFINITELY fails, `kind` saying whether
+    it was the card's TYPE (an objective fact) or its ROLE (the K-12 heuristic); None —
+    the header claims nothing classifiable, or the only claim is a role the classifier
+    could not read (a lexicon gap more often than a misfile; `reason` then says so).
+    Claims within a group are a UNION ("# Removal / card advantage" holds either), and
+    the type and role groups are JOINT. The type is the FRONT face's (G-63).
+    ONE definition behind `section_mismatch` and `auto_section` (G-40)."""
+    cd = carddata.get((add_name or "").strip().lower())
+    claims = _section_claims(header)
+    if not cd or claims is None:
+        return None, "", ""
+    types, wanted = claims
+    tline = (cd.get("type") or "").split("//")[0].lower()
+    if types and not any(ok(tline) for ok in types):
+        return False, f"is a {tline.split('—')[0].strip() or 'card'}", "type"
+    if wanted:
+        roles = classify_roles(cd.get("text") or "")
+        if not roles:
+            return None, "nothing in its text matched a functional role", ""
+        if not roles & wanted:
+            return False, f"classifies as {', '.join(sorted(roles))}", "role"
+    return True, "", ""
+
+
+def _card_section_header(lines, idx):
+    """(header_index, header_text) of the `# section` a card line at `idx` sits under,
+    else (None, None). Skips other cards, metadata, flex lines and blanks."""
+    for j in range(idx - 1, -1, -1):
+        ln = lines[j].strip()
+        if _card_line_name(lines[j]):
+            continue
+        if ln.startswith("#:") or ln.startswith("#~") or not ln:
+            continue
+        if ln.startswith("#"):
+            while j > 0 and _is_section_comment(lines[j - 1]):
+                j -= 1                    # a wrapped header: its FIRST line names it
+            return j, lines[j].strip().lstrip("# ").strip()
+    return None, None
+
+
+def auto_section(lines, idx, add_name, carddata):
+    """Plan where a just-swapped-in card should live — the owner's call (2026-10-20):
+    section placement is AUTOMATIC by default, with a warning when it is not decidable.
+
+    Only an objective TYPE misfit moves a line (a land under `# Nonland`, a spell under
+    `# Lands`), and only to the ONE other header whose type claim it satisfies. A ROLE
+    misfit is the K-12 heuristic reading a header written by a person who may file
+    protection under "Interaction" on purpose, so it warns and names the candidates.
+
+    Returns None when the inherited section is fine or claims nothing, else
+      {"move": header_index, "to": header, "from": header, "why": reason}, or
+      {"warn": message, "from": header, "candidates": [headers]}."""
+    hidx, header = _card_section_header(lines, idx)
+    if header is None:
+        return None
+    fit, why, kind = section_fit(header, add_name, carddata)
+    # A LAND is the one card whose home is a convention rather than a judgment: when the
+    # deck has exactly one header that claims lands, a land anywhere else is misfiled
+    # however that header reads ("# Interaction", "# Pingers and Hero bodies") — role
+    # headers like "# Ramp" also "fit" a land by role, which is why this is decided on
+    # the type claim alone. Measured on the roster's existing placements before landing.
+    cd = carddata.get((add_name or "").strip().lower()) or {}
+    if fit is not True and "land" in (cd.get("type") or "").split("//")[0].lower():
+        land_heads = [(i, h) for i, h in _section_headers(lines)
+                      if i != hidx and (_section_claims(h) or ([], set()))[0]
+                      and section_fit(h, add_name, carddata)[0] is True]
+        if len(land_heads) == 1:
+            return {"move": land_heads[0][0], "to": land_heads[0][1], "from": header,
+                    "why": why or "is a land"}
+    if fit is None and why:
+        return {"warn": section_mismatch(lines, idx, add_name, carddata),
+                "from": header, "candidates": []}
+    if fit is not False:
+        return None
+    heads = [(i, h) for i, h in _section_headers(lines) if i != hidx]
+    fits = [(i, h) for i, h in heads if section_fit(h, add_name, carddata)[0] is True]
+    if kind == "type":
+        typed = [(i, h) for i, h in fits if (_section_claims(h) or ([], set()))[0]]
+        if len(typed) == 1:
+            return {"move": typed[0][0], "to": typed[0][1], "from": header, "why": why}
+    names = [h for _i, h in fits]
+    if names:
+        msg = (f"{add_name} now sits under `# {header}` (inherited from the cut card's "
+               f"slot) but {why}; " + ("it fits " if len(names) == 1 else
+                                       f"{len(names)} sections fit it: ")
+               + "; ".join(f"`# {h}`" for h in names) + ".")
+    else:
+        msg = (f"{add_name} now sits under `# {header}` (inherited from the cut card's "
+               f"slot) but {why}, and no other section header describes it — move the "
+               f"line or retitle the section so the file doesn't mislead.")
+    return {"warn": msg, "from": header, "candidates": names}
 
 
 def section_mismatch(lines, idx, add_name, carddata):
     """A warning string when the card now sitting at `lines[idx]` doesn't do what its
     enclosing `# section` comment claims, else None. Advisory only — it never edits the
     file, and it stays silent for ambiguous or absent section headers."""
-    header = None
-    for j in range(idx - 1, -1, -1):
-        ln = lines[j].strip()
-        if _card_line_name(lines[j]):
-            continue                      # another card in the same section
-        if ln.startswith("#:") or ln.startswith("#~") or not ln:
-            continue                      # metadata / flex / blank
-        if ln.startswith("#"):
-            header = ln.lstrip("# ").strip()
-            break
+    _hidx, header = _card_section_header(lines, idx)
     if not header:
         return None
-    cd = carddata.get((add_name or "").strip().lower())
-    if not cd:
-        return None
-    roles = classify_roles(cd.get("text") or "")
-    for rx, expected in _SECTION_EXPECTATIONS:
-        if not rx.search(header):
-            continue
-        if roles & expected:
-            return None
-        if roles:
-            # High confidence: we know what the card does, and it isn't this.
-            return (f"{add_name} now sits under `# {header}` (inherited from the cut "
-                    f"card's slot) but classifies as {', '.join(sorted(roles))} — move "
-                    f"the line or retitle the section so the file doesn't mislead.")
-        # Low confidence: the classifier found NO role. This session established that
-        # "no role" often means a lexicon gap rather than a weak card, so this is
-        # phrased as a prompt to look, not as an assertion that the card is misfiled.
+    fit, why, _kind = section_fit(header, add_name, carddata)
+    if fit is False:
+        # High confidence: we know what the card is or does, and it isn't this.
+        return (f"{add_name} now sits under `# {header}` (inherited from the cut "
+                f"card's slot) but {why} — move the line or retitle the section so the "
+                f"file doesn't mislead.")
+    if fit is None and why:
+        # Low confidence: the classifier found NO role. "No role" often means a lexicon
+        # gap rather than a weak card, so this is a prompt to look, not an assertion.
         return (f"{add_name} now sits under `# {header}` (inherited from the cut card's "
                 f"slot); nothing in its text matched a functional role, so verify the "
                 f"section still describes it.")
     return None
 
 
-def _section_headers(lines):
+def _is_section_comment(ln):
+    s = ln.strip()
+    return s.startswith("#") and not s.startswith("#:") and not s.startswith("#~")
+
+
+def _section_headers(lines, full=False):
     """[(index, header_text)] for the `# section` comments that group card lines.
-    Metadata (`#:`) and flex (`#~`) lines are not sections."""
+    Metadata (`#:`) and flex (`#~`) lines are not sections. A header WRAPS onto several
+    adjacent `#` lines on most of the roster ("# Lands (24 — owned Abzan fixing …" then
+    "# Starting Town, 2 Sandsteppe Citadel, …"), and those are ONE header: index and text
+    are the block's first line (`full=True` gives the whole block's text, for matching).
+    Reading each continuation as its own section put a land "under" its own header's
+    second line and planned to move 73 roster lands out of the section they were in."""
     out = []
     for i, ln in enumerate(lines):
-        s = ln.strip()
-        if s.startswith("#") and not s.startswith("#:") and not s.startswith("#~"):
-            out.append((i, s.lstrip("# ").strip()))
+        if not _is_section_comment(ln):
+            continue
+        if i > 0 and _is_section_comment(lines[i - 1]) and out:
+            if full:
+                out[-1] = (out[-1][0], out[-1][1] + " " + ln.strip().lstrip("# ").strip())
+            continue
+        out.append((i, ln.strip().lstrip("# ").strip()))
     return out
 
 
@@ -8033,7 +8283,7 @@ def _relocate_card_line(lines, card_name, needle):
         raise ValueError(f"{card_name!r} appears on {len(idxs)} card line(s) — expected "
                          "exactly one to move.")
     src = idxs[0]
-    heads = _section_headers(lines)
+    heads = _section_headers(lines, full=True)
     hits = [(i, h) for i, h in heads if needle.strip().lower() in h.lower()]
     if not hits:
         avail = "; ".join(h for _i, h in heads) or "(none)"
@@ -8041,7 +8291,22 @@ def _relocate_card_line(lines, card_name, needle):
     if len(hits) > 1:
         raise ValueError(f"{needle!r} matches {len(hits)} headers "
                          f"({'; '.join(h for _i, h in hits)}) — be more specific.")
-    hidx = hits[0][0]
+    return _relocate_to_header(lines, card_name, hits[0][0])
+
+
+def _relocate_to_header(lines, card_name, hidx):
+    """`_relocate_card_line`'s mechanics with the header already chosen, by INDEX —
+    for `auto_section`, whose target is a header it identified, not a substring a person
+    typed (a header's full text can be a substring of another's, so re-matching it by
+    text could refuse as ambiguous a target that is not). Same verbatim line, same rules."""
+    key = _ms_key(card_name or "")
+    idxs = [i for i, ln in enumerate(lines)
+            if _ms_key(_card_line_name(ln) or "") == key]
+    if len(idxs) != 1:
+        raise ValueError(f"{card_name!r} appears on {len(idxs)} card line(s) — expected "
+                         "exactly one to move.")
+    src = idxs[0]
+    heads = _section_headers(lines)
     # End of that section's card block: the last card line before the next header.
     nxt = next((i for i, _h in heads if i > hidx), len(lines))
     last = max((i for i in range(hidx + 1, min(nxt, len(lines)))
@@ -8408,6 +8673,25 @@ def append_recommendation(row, path=None):
     # dropped for all 250+ historical rows on the next `swap --apply`, with no .bak to
     # recover from. CLAUDE.md scopes backup=False to "a scratch temp the caller
     # promotes itself"; the ledger is a Data subsystem (C-02), not a scratch file.
+    atomic_write(path, _w)
+    return len(rows)
+
+
+def drop_recommendation(index, path=None):
+    """Remove ONE ledger row by position, through the same atomic, backed-up rewrite as
+    `append_recommendation` (its own DictWriter on RECS_HEADER, never `lib.write_rows`).
+    Used only by `swap --undo`: an undone swap was never a decision, so its row would
+    otherwise sit in `feedback` as one (the Leonardo round trip had to be pruned by hand,
+    2026-10-20). Returns the remaining row count."""
+    path = path or RECS_CSV
+    rows = load_recommendations(path)
+    del rows[index]
+
+    def _w(fh):
+        w = csv.DictWriter(fh, fieldnames=RECS_HEADER, quoting=csv.QUOTE_MINIMAL)
+        w.writeheader()
+        for r in rows:
+            w.writerow({c: r.get(c, "") for c in RECS_HEADER})
     atomic_write(path, _w)
     return len(rows)
 
@@ -8881,9 +9165,42 @@ def cmd_feedback(args):
     return 0
 
 
-def _do_swap(d, cut, add, apply, flex_entry=None, section=None):
+def _place_swapped_line(new_lines, add, carddata, section=None, keep_section=False):
+    """Decide where the swapped-in `add` line lives. Returns (lines, notes, warn):
+    an explicit `--section` wins (and raises ValueError on an absent/ambiguous header,
+    so the caller aborts before writing); otherwise `auto_section` moves it on a TYPE
+    misfit with one clear target (Batch 7, G-05) unless `keep_section`; anything it
+    cannot decide comes back as `warn` text for the caller to print."""
+    if section:
+        return _relocate_card_line(new_lines, add, section), [], None
+    # `_ms_key` both sides (S1-02): a BUMPED add keeps its existing line's face spelling.
+    ai = next((i for i, ln in enumerate(new_lines)
+               if _ms_key(_card_line_name(ln) or "") == _ms_key(add)), None)
+    if ai is None:
+        return new_lines, [], None
+    plan = auto_section(new_lines, ai, add.strip(), carddata)
+    if not plan:
+        return new_lines, [], None
+    if "move" in plan and not keep_section:
+        try:
+            moved = _relocate_to_header(new_lines, add, plan["move"])
+        except ValueError as e:
+            return new_lines, [], f"{plan['from']}: {e}"
+        return moved, [f"↪ section: placed under `# {plan['to']}` — the cut card's "
+                       f"`# {plan['from']}` did not fit ({add} {plan['why']}). "
+                       f"Line moved verbatim; `--keep-section` leaves it in place."], None
+    if "move" in plan:
+        return new_lines, [], (f"{add} now sits under `# {plan['from']}` but {plan['why']}; "
+                               f"`# {plan['to']}` fits (kept in place by --keep-section).")
+    return new_lines, [], plan["warn"]
+
+
+def _do_swap(d, cut, add, apply, flex_entry=None, section=None,
+             keep_section=False):
     """Shared engine for `swap` and `apply-flex`: preview deltas, and on --apply
     perform the edit with a .bak + INV-04 re-check."""
+    cut = lib.normalize_card_name(cut)
+    add = lib.normalize_card_name(add)
     add_disp, add_set, add_cn = _printing_of(add)
     # Write the CANONICAL name, not the front-face shorthand the caller typed.
     # Resolved BEFORE the self-swap guard, and the guard compares `_ms_key` (front
@@ -8903,7 +9220,7 @@ def _do_swap(d, cut, add, apply, flex_entry=None, section=None):
     # COPY — this function calls `fetch_missing_mana`, which mutates (BS5-13). See the
     # longer note at `cmd_stats`' own copy.
     mana = dict(load_mana())
-    _, cards = parse_deck_file(d["path"])
+    dmeta, cards = parse_deck_file(d["path"])
     after = _cards_after_swap(cards, cut, add, (add_set, add_cn))
     if after is None:
         eprint(f"{cut!r} is not in deck {d['id']}. Nothing swapped.")
@@ -8966,6 +9283,24 @@ def _do_swap(d, cut, add, apply, flex_entry=None, section=None):
     if gate:
         print(f"  {gate}")
 
+    # COLOUR-IDENTITY GATE (tooling batch 2, 2026-10-20). In a Brawl / Commander deck a
+    # card outside the commander's identity is ILLEGAL however payable it is, and `swap`
+    # never asked: Leonardo, the Balance ({W}{U}{B}{R}{G} activation, so B in identity)
+    # was written into a G/R/U/W deck and only `preflight` caught it afterwards. Same
+    # lock and the same `card_colors(colors) <= lock` test `legality_report` applies, so
+    # the two cannot disagree. Warn in the preview; REFUSE on --apply (owner's decision).
+    # No lock (not a commander format, or an unplaceable commander) or an add the card
+    # data cannot place → no gate, rather than a guessed verdict.
+    ident_lock = commander_identity_lock(dmeta, carddata)
+    add_ident = card_colors(add_cd.get("colors", "")) if add_cd else None
+    off_identity = (ident_lock is not None and add_ident is not None
+                    and not add_ident <= ident_lock)
+    if off_identity:
+        lock_s = "".join(c for c in "WUBRG" if c in ident_lock) or "C"
+        add_s = "".join(c for c in "WUBRG" if c in add_ident) or "C"
+        print(f"  ⛔ identity: {add} has colour identity {add_s}, outside the commander's "
+              f"{lock_s} — illegal in this deck; --apply will refuse it.")
+
     def delta(a, b):
         d_ = b - a
         return f"{a} → {b}" + (f"  ({d_:+d})" if d_ else "")
@@ -8980,9 +9315,29 @@ def _do_swap(d, cut, add, apply, flex_entry=None, section=None):
     print(f"    color identity  {b_col} → {a_col}"
           + ("   (adds a color!)" if after_s["colors"] - before_s["colors"] else ""))
 
+    # Section placement, previewed on the same edit `--apply` would make (Batch 7), so
+    # the dry run says where the line will land rather than surprising you after.
+    try:
+        with open(d["path"], encoding="utf-8") as fh:
+            _sim = _swap_edit_lines(fh.read().split("\n"), cut, add, (add_set, add_cn),
+                                    drop_flex=flex_entry)
+        _l, _notes, _warn = _place_swapped_line(_sim, add, carddata, section, keep_section)
+    except ValueError as e:
+        _notes, _warn = [], f"--section: {e}"
+    if not apply:
+        for n in _notes:
+            print(f"  {n.replace('placed under', 'will place under')}")
+        if _warn:
+            print(f"  ⚠ section comment: {_warn}")
+
     if not apply:
         print("\n(dry run — pass --apply to write the change with a .bak)")
         return 0
+    if off_identity:
+        # Before the ledger row and before any write: a refused swap is not a decision.
+        eprint(f"Not saved: {add} is outside the commander's colour identity "
+               f"({lock_s}) — it cannot be played in deck {d['id']}.")
+        return 1
 
     # Score the recommenders against this decision BEFORE the edit — the pre-swap deck
     # is the list the human actually chose from. Never fatal: a swap must not fail
@@ -9007,8 +9362,8 @@ def _do_swap(d, cut, add, apply, flex_entry=None, section=None):
         # `--section` aborts the swap entirely rather than leaving the line misfiled
         # with an error printed after the fact. `_safe_write_lines`' card-total guard
         # still applies — a move preserves the total by construction.
-        if section:
-            new_lines = _relocate_card_line(new_lines, add, section)
+        new_lines, _notes, warn = _place_swapped_line(new_lines, add, carddata,
+                                                      section, keep_section)
         bak = _safe_write_lines(d["path"], new_lines, before_s["total"])
     except ValueError as e:
         eprint(f"Not saved: {e}")
@@ -9017,23 +9372,17 @@ def _do_swap(d, cut, add, apply, flex_entry=None, section=None):
           f"(backup: {os.path.basename(bak)}).")
     if flex_entry is not None:
         print("Removed the consumed flex line.")
-    # The add inherits the cut's line slot, and therefore the cut's `# section` comment.
-    # Warn when that makes the file lie (advisory — the swap is already written, and
-    # moving a line is a human editorial call, not something to do automatically).
-    # `_ms_key` both sides, same reason as `_relocate_card_line` above (S1-02): when the
-    # add was BUMPED onto an existing line rather than written fresh, that line keeps its
-    # own face spelling, so a raw comparison returned None and the G-05 advisory was
-    # skipped WITHOUT saying it had been skipped — a warning that silently does not run
-    # is worse than one that fires, since the file then lies to the next reader unflagged.
-    ai = next((i for i, ln in enumerate(new_lines)
-               if _ms_key(_card_line_name(ln) or "") == _ms_key(add)), None)
-    if ai is not None:
-        warn = section_mismatch(new_lines, ai, add.strip(), load_card_data())
-        if warn:
-            print(f"  ⚠ section comment: {warn}")
-            print(f'     Move it mechanically (never by hand — G-65): '
-                  f'deck.py move {d["id"]} "{add}" --section "<header substring>" '
-                  f'--apply relocates the line verbatim, with no ledger row.')
+    for n in _notes:
+        print(f"  {n}")
+    # The add inherits the cut's line slot, and with it the cut's `# section`. A TYPE
+    # misfit with one clear target was already moved above (the dry run printed that
+    # note); what `auto_section` could not decide is printed here, with the mechanical
+    # remedy — never a hand edit (G-65).
+    if warn:
+        print(f"  ⚠ section comment: {warn}")
+        print(f'     Move it mechanically (never by hand — G-65): '
+              f'deck.py move {d["id"]} "{add}" --section "<header substring>" '
+              f'--apply relocates the line verbatim, with no ledger row.')
     # Record how the recommenders scored this decision. Written AFTER the edit lands, so
     # a rejected write leaves no phantom row; announced rather than silent, because a
     # command that writes a second file should say so.
@@ -9057,14 +9406,231 @@ def _do_swap(d, cut, add, apply, flex_entry=None, section=None):
     return 0
 
 
+def _deck_backups_newest_first(path):
+    """Every stamped `.bak` of `path`, newest CREATION stamp first (never mtime — see
+    `lib.latest_backup`). Unstamped hand-made backups are ignored: undo must know order."""
+    folder, base = os.path.split(os.path.abspath(path))
+    baks = [os.path.join(folder, f) for f in os.listdir(folder)
+            if f.startswith(base + ".") and f.endswith(".bak")]
+    return sorted((b for b in baks if lib.backup_stamp(b)), key=lib.backup_stamp, reverse=True)
+
+
+def _undo_last_swap(d, apply):
+    """`swap <id> --undo`: reverse the deck's most recent `swap --apply` and remove its
+    ledger row. ONE step, by the owner's decision (2026-10-20) — not a history.
+
+    It restores the backup that swap wrote, so the result is byte-identical to the
+    pre-swap file, and it proves first that the backup really is that pre-swap file:
+    re-applying the ledger's cut/add to it must reproduce the CURRENT file, compared as a
+    multiset of lines because `--section` and `deck.py move` only reorder. Backups that
+    are mere reorders of the current file (a `move` after the swap) are stepped over.
+    Anything else changed since the swap — a header or notes edit, another card — and it
+    REFUSES rather than discard that work: reverse it with an ordinary swap instead.
+    `apply-flex` rows are refused too (the consumed flex line is not reproducible here)."""
+    did = str(d["id"])
+    rows = load_recommendations()
+    idx = next((i for i in range(len(rows) - 1, -1, -1)
+                if str(rows[i].get("Deck", "")).strip() == did), None)
+    if idx is None:
+        eprint(f"No recorded swap for deck {did} — nothing to undo.")
+        return 1
+    last = rows[idx]
+    cut, add, src = last.get("Cut", ""), last.get("Add", ""), last.get("Source", "")
+    if src != "swap":
+        eprint(f"Deck {did}'s last recorded change is `{src}` (−{cut} +{add}); "
+               "--undo reverses `swap` only.")
+        return 1
+    path = d["path"]
+    with open(path, encoding="utf-8") as fh:
+        cur = fh.read().rstrip("\n").split("\n")
+    _, cur_cards = parse_deck_file(path)
+    pr = next(((s, c) for _q, n, s, c in cur_cards if _ms_key(n) == _ms_key(add)), ("", ""))
+    def _others(lines):  # every line except the added card's, in order
+        return [ln for ln in lines if _ms_key(_card_line_name(ln) or "") != _ms_key(add)]
+
+    target = None
+    for bak in _deck_backups_newest_first(path):
+        with open(bak, encoding="utf-8") as fh:
+            bl = fh.read().rstrip("\n").split("\n")
+        if sorted(bl) == sorted(cur):
+            # A reorder-only predecessor. Step over it only if what moved was the ADDED
+            # card (a `move` fixing its section); restoring past a reorder of any OTHER
+            # line would silently revert that unrelated `move` too.
+            if _others(bl) != _others(cur):
+                break
+            continue
+        try:
+            expected = _swap_edit_lines(bl, cut, add, pr)
+        except ValueError:
+            expected = None
+        if expected is not None and sorted(expected) == sorted(cur):
+            target = (bak, bl)
+        break                             # only the newest real change may be undone
+    if target is None:
+        eprint(f"Not undone: deck {did} has changed since its last swap (−{cut} +{add}) "
+               "beyond that swap — a header, note or other card edit. Undo restores only "
+               "an unchanged swap; reverse it with `deck.py swap` instead.")
+        return 1
+    bak, bl = target
+    print(f"Deck {did}: undo the last swap  −{cut}  +{add}")
+    print(f"  restores {os.path.basename(bak)} (the pre-swap file) and removes that swap's "
+          "row from recommendations.csv.")
+    if not apply:
+        print("\n(dry run — pass --apply to undo)")
+        return 0
+    try:
+        new_bak = _safe_write_lines(path, bl, sum(q for q, *_ in cur_cards))
+    except ValueError as e:
+        eprint(f"Not undone: {e}")
+        return 1
+    print(f"\nUndone. Wrote {os.path.relpath(path, REPO_ROOT)} "
+          f"(backup of the swapped file: {os.path.basename(new_bak)}).")
+    try:
+        drop_recommendation(idx)
+        print(f"  · removed the ledger row (−{cut} +{add}) — an undone swap is not a decision.")
+    except Exception as e:  # the deck is already restored; never report it as failed
+        eprint(f"  · could not remove the ledger row ({type(e).__name__}: {e}) — "
+               "the deck itself is restored.")
+    return 0
+
+
+def _package_preview(d, raw_pairs):
+    """`swap <id> --package "cut=add" …`: preview SEVERAL swaps as one change — the
+    combined quality vector and tier floor, before → after; one legality check on the
+    resulting list; and, per pair, the identity verdict `--apply` would give (G-06) and
+    the section advisory (G-05). Writes NOTHING and records no ledger row: it is a
+    measurement, and G-56 keeps measurements out of the ledger.
+
+    Built from the SAME primitives an applied swap uses — `_swap_edit_lines` in sequence
+    on the raw lines, `commander_identity_lock`, `section_mismatch`, `deck_quality_vector`
+    on a temp copy (as `_quality_vector_at` does), `legality_report` — so the preview and
+    the real swaps cannot disagree. Replaces the hand-rolled package simulator the
+    2026-10-20 Brawl builds used, which crashed on a misspelled cut with a bare
+    IndexError. A pair whose cut is not in the deck (after the earlier pairs) is named
+    and the preview stops with exit 1."""
+    import tempfile
+    pairs = []
+    for raw in raw_pairs:
+        if "=" not in raw:
+            eprint(f"--package pair {raw!r} is not `cut=add`.")
+            return 1
+        cut, add = (lib.normalize_card_name(x) for x in raw.split("=", 1))
+        if not cut or not add:
+            eprint(f"--package pair {raw!r} needs a card on both sides of `=`.")
+            return 1
+        add_disp, add_set, add_cn = _printing_of(add)
+        pairs.append((cut, add_disp, (add_set, add_cn)))
+    dmeta, _cards = parse_deck_file(d["path"])
+    with open(d["path"], encoding="utf-8") as fh:
+        lines = fh.read().rstrip("\n").split("\n")
+    carddata = load_card_data()
+    lock = commander_identity_lock(dmeta, carddata)
+    print(f"Deck {d['id']}: {d.get('name') or d['id']} — package preview "
+          f"({len(pairs)} swap(s), nothing is written)\n")
+    bad, off = 0, 0
+    for i, (cut, add, pr) in enumerate(pairs, 1):
+        print(f"  {i}. −{cut}  +{add}")
+        if _ms_key(cut) == _ms_key(add):
+            print("       ✗ cut and add are the same card")
+            bad += 1
+            continue
+        try:
+            lines = _swap_edit_lines(lines, cut, add, pr)
+        except ValueError:
+            print(f"       ✗ {cut!r} is not a card line in the deck"
+                  + (" (after the earlier pairs)" if i > 1 else ""))
+            bad += 1
+            continue
+        add_cd = carddata.get(add.lower())
+        if not add_cd:
+            print(f"       ⚠ {add!r} not found in library or pool — check spelling")
+        elif lock is not None and not card_colors(add_cd.get("colors", "")) <= lock:
+            ident = "".join(c for c in "WUBRG" if c in card_colors(add_cd.get("colors", "")))
+            print(f"       ⛔ identity {ident or 'C'} is outside the commander's "
+                  f"{''.join(c for c in 'WUBRG' if c in lock) or 'C'} — `--apply` will refuse it")
+            off += 1
+        # The same placement `--apply` makes (Batch 7), applied to the simulated lines
+        # so a later pair sees the file as it would really stand.
+        lines, notes, warn = _place_swapped_line(lines, add, carddata)
+        for n in notes:
+            print(f"       {n.replace('placed under', 'will place under')}")
+        if warn:
+            print(f"       ⚠ section: {warn}")
+    if bad:
+        eprint(f"\n{bad} pair(s) could not be applied — fix them and preview again.")
+        return 1
+    fd, tmp = tempfile.mkstemp(suffix=".txt")
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as fh:
+            fh.write("\n".join(lines).rstrip("\n") + "\n")
+        before = deck_quality_vector(d)
+        after = deck_quality_vector({"id": d["id"], "path": tmp, "name": d.get("name")})
+        _, after_cards = parse_deck_file(tmp)
+    finally:
+        os.remove(tmp)
+
+    def _row(label, key, fmt="{}"):
+        b, a = before[key], after[key]
+        tail = "" if b == a else f"   ({fmt.format(b)} → {fmt.format(a)})"
+        print(f"    {label:15} {fmt.format(a)}{tail}")
+    print("\n  combined result:")
+    fb, fa = tier_band(before), tier_band(after)
+    print(f"    {'tier floor':15} {fa}" + ("" if fb == fa else f"   ({fb} → {fa})"))
+    for label, key in (("interaction", "interaction"), ("card advantage", "card_advantage"),
+                       ("protection", "protection"), ("board power", "board_power"),
+                       ("early drops", "early_drops"), ("central themes", "central_themes"),
+                       ("uncastable", "uncastable")):
+        _row(label, key)
+    _row("avg MV", "avg_mv", "{:.2f}")
+    rep = legality_report(dmeta, after_cards, dmeta.get("format") or "", load_legalities(),
+                          carddata=carddata)
+    if rep["problems"]:
+        print(f"\n  ✗ legality after the package ({len(rep['problems'])} issue(s)):")
+        for prob in rep["problems"]:
+            print(f"      {prob}")
+    else:
+        print(f"\n  ✓ legal after the package ({dmeta.get('format') or 'no format header'})")
+    if rep["unknown"]:
+        print(f"    unverified (no pool legality data): {', '.join(rep['unknown'][:8])}")
+    if off:
+        print(f"\n  ⛔ {off} add(s) are outside the commander's identity — swap them out first.")
+    print("\n(preview only — nothing written, no ledger row. Apply each pair with "
+          "`swap <id> --cut A --add B --apply`; reverse a mistaken one with `--undo`.)")
+    return 0
+
+
 def cmd_swap(args):
-    """Preview (or --apply) a single -cut/+add swap with before/after deltas."""
+    """Preview (or --apply) a single -cut/+add swap with before/after deltas, or
+    `--undo` the deck's most recent swap."""
     d = find_deck(args.id)
     if not d:
         eprint(f"No deck with id {args.id!r}. Try: deck.py list")
         return 1
+    if getattr(args, "package", None):
+        clash = [f for f, v in (("--cut", args.cut), ("--add", args.add),
+                                ("--undo", getattr(args, "undo", False)),
+                                ("--section", getattr(args, "section", None)),
+                                ("--keep-section", getattr(args, "keep_section", False)),
+                                ("--apply", args.apply)) if v]
+        if clash:
+            eprint(f"--package is a preview and takes no {', '.join(clash)}: apply the "
+                   "pairs one at a time with --cut/--add --apply.")
+            return 1
+        return _package_preview(d, args.package)
+    if getattr(args, "undo", False):
+        if args.cut or args.add or getattr(args, "section", None):
+            eprint("--undo takes no --cut / --add / --section: it reverses the last swap.")
+            return 1
+        return _undo_last_swap(d, args.apply)
+    if not args.cut or not args.add:
+        eprint("swap needs --cut and --add (or --undo to reverse the last swap).")
+        return 1
+    if getattr(args, "section", None) and getattr(args, "keep_section", False):
+        eprint("--section and --keep-section contradict each other: pick one.")
+        return 1
     return _do_swap(d, args.cut, args.add, args.apply,
-                    section=getattr(args, "section", None))
+                    section=getattr(args, "section", None),
+                    keep_section=getattr(args, "keep_section", False))
 
 
 def cmd_apply_flex(args):
@@ -9216,7 +9782,14 @@ def load_match_counts():
 
 def load_legalities():
     """name_lower -> set(formats the card is legal in), from card-pool.csv's
-    Legalities column. Empty if the pool is missing or predates the column."""
+    Legalities column. Empty if the pool is missing or predates the column.
+    Memoized on the pool file (it was re-read 122 times per dashboard build, 45s); the
+    dict is a fresh shallow copy per call, and no caller mutates the sets."""
+    return dict(_load_legalities_cached())
+
+
+@_file_memo("POOL_CSV")
+def _load_legalities_cached():
     out = {}
     if not os.path.exists(POOL_CSV):
         return out
@@ -9227,6 +9800,11 @@ def load_legalities():
                 continue
             legs = {x.strip().lower() for x in (r.get("Legalities") or "").split(";")
                     if x.strip()}
+            # A BLANK cell is stored as an EMPTY set and read as UNVERIFIED by the verdict
+            # (`legality_report` treats a falsy entry as unknown). It must not read as
+            # "legal in nothing": `legal` reported Searing Soloist "not legal in historic
+            # brawl" while Scryfall had it legal (2026-10-20). Kept a set, not None, because
+            # check_agreement iterates every value.
             out.setdefault(n, legs)
     return alias_front(out)
 
@@ -9328,7 +9906,7 @@ def legality_report(meta, cards, fmt, leg, carddata=None):
         illegal, rebalanced = [], []
         for nl in order:
             card_leg = leg.get(nl)
-            if card_leg is None:
+            if not card_leg:  # None (no row) or None/empty (blank legality cell)
                 unknown.append(disp[nl])
             elif lkey not in card_leg:
                 # A Standard card that isn't Alchemy-legal is rebalanced (A- version),
@@ -11606,6 +12184,7 @@ def _resolve_card_name(query, table, display, squashed):
     the fifth of the pile that most needed it, and those cards got graded by hand instead.
     Ambiguity is still reported rather than guessed at (G-47: a shortlist that guesses is
     worse than one that admits it doesn't know)."""
+    query = lib.normalize_card_name(query)
     ql = _name_query(query).lower()
     if ql in table:
         return ql, []
@@ -14834,6 +15413,11 @@ def rationale_staleness(d, carddata=None):
     meta, cards = parse_deck_file(d["path"])
     in_deck = {n for _q, n, _s, _c in cards}
     in_deck |= {n.split(" // ")[0] for n in list(in_deck)}
+    # Every text before a space in an in-deck name: `disp in word_prefixes` is exactly
+    # `any(other.startswith(disp + " ") for other in in_deck)`, the SHORTHAND guard
+    # below, as one set lookup. That generator ran 188M steps per check_all — 143s of a
+    # 233s profile (Batch 6) — because it ran for every pool card in every deck.
+    word_prefixes = {o[:i] for o in in_deck for i, ch in enumerate(o) if ch == " "}
     stale_cards, stale_figures = [], []
     # `#: archetype:` is scanned alongside `#: tier:` because it is equally a CLAIM
     # about the current deck — "these cards push your life total up" is false once those
@@ -14869,7 +15453,7 @@ def rationale_staleness(d, carddata=None):
             # prose never meant. Masking cannot help: the full name is not in the text.
             # A citation that is a strict word-prefix of a card the deck DOES run is an
             # abbreviation of that card, not a reference to a different one.
-            if any(other.startswith(disp + " ") for other in in_deck):
+            if disp in word_prefixes:
                 continue
             # CASE-SENSITIVE: prose capitalizes a card citation, so this is what keeps
             # ordinary vocabulary out. A lowercase "counterspell"/"food"/"negate" in a
@@ -16480,6 +17064,11 @@ def main():
     p = sub.add_parser("wildcards", help="roster-wide crafting plan (wildcards to finish decks)")
     p.add_argument("--dedup", action="store_true",
                    help="cross-deck union of craft targets, ranked by decks served per copy")
+    p.add_argument("--by-set", action="store_true",
+                   help="group the craft targets by the set each deck line names — the "
+                        "pack-planning view (a card short in several decks counts once)")
+    p.add_argument("--decks", nargs="+", metavar="ID",
+                   help="only these decks (default: the whole roster)")
     p = sub.add_parser("audit", help="roster-wide triage scorecard — which decks need a tune (offline)")
     p.add_argument("--flagged", action="store_true",
                    help="show only decks with a flag (hide the 'ok' rows)")
@@ -16593,16 +17182,31 @@ def main():
     p.add_argument("id")
     p = sub.add_parser("swap", help="preview/apply a single -cut/+add swap with deltas")
     p.add_argument("id")
-    p.add_argument("--cut", required=True, help="card to remove")
-    p.add_argument("--add", required=True, help="card to add")
+    p.add_argument("--cut", help="card to remove (required unless --undo)")
+    p.add_argument("--add", help="card to add (required unless --undo)")
     p.add_argument("--apply", action="store_true",
                    help="write the change (with a .bak); default is a dry-run preview")
+    p.add_argument("--package", nargs="+", metavar="CUT=ADD",
+                   help="preview SEVERAL swaps as one change: the combined vector, tier "
+                        "floor and legality, plus each pair's identity and section "
+                        "verdict. Writes nothing and records no ledger row.")
+    p.add_argument("--undo", action="store_true",
+                   help="reverse this deck's most recent `swap --apply` (one step) and "
+                        "remove its recommendations.csv row; refuses if the file changed "
+                        "since beyond that swap. Dry run unless --apply.")
     p.add_argument("--section", metavar="HEADER",
                    help="place the added line under the `# section` whose header "
                         "contains this substring, instead of inheriting the cut card's "
                         "slot (G-05). Moves the line VERBATIM, so the (SET) COLLECTOR# "
                         "fields cannot be mistyped the way a hand edit can (G-65). "
-                        "Refuses an absent or ambiguous header without writing.")
+                        "Refuses an absent or ambiguous header without writing. "
+                        "Without it, an add whose TYPE contradicts the inherited "
+                        "header (a land under `# Nonland`) is moved automatically to "
+                        "the one header that fits; anything undecidable is warned.")
+    p.add_argument("--keep-section", action="store_true",
+                   help="leave the added line in the cut card's slot even when its type "
+                        "contradicts that section header (the automatic placement only "
+                        "warns)")
     p = sub.add_parser("move",
                        help="relocate one card line under a different `# section` "
                             "header, verbatim (the mechanical form of the hand edit "

@@ -491,6 +491,7 @@ breaks no invariant, which is exactly why `verify_ingest.py` exists (see below).
 python3 scripts/deck.py list          # every deck + variant, with buildable status
 python3 scripts/deck.py wildcards     # roster-wide crafting plan (wildcards to finish decks)
 python3 scripts/deck.py wildcards --dedup   # cross-deck union of craft targets, best value-per-copy first
+python3 scripts/deck.py wildcards --by-set --decks 84 85 86   # pack planning: what these decks still need, grouped by set
 python3 scripts/deck.py audit         # roster triage: one line per deck — which decks need a tune
                                       #   (incl. Pld = matches played, report-only)
 python3 scripts/deck.py similar 40    # decks most alike by central-theme overlap (is it distinct?)
@@ -516,6 +517,8 @@ python3 scripts/deck.py screen 20a <names>    # re-score candidate cards against
 python3 scripts/deck.py flex 20a       # suggested swaps (#~ lines) + stale ones: dead -Out, already-run +In, contradicted note figures
 python3 scripts/deck.py swap 20a --cut A --add B   # preview deltas + FULL oracle text of both; --apply writes (.bak) + auto-retires stale #~ flex lines
 python3 scripts/deck.py swap 20a --cut A --add B --apply --section Removal   # ...and file the new line under `# Removal` (verbatim; never hand-move a card line)
+python3 scripts/deck.py swap 20a --undo --apply   # reverse this deck's LAST swap and drop its ledger row; refuses if the file changed since
+python3 scripts/deck.py swap 20a --package "A=B" "C=D"   # preview several swaps as ONE change: combined vector, floor, legality; writes nothing
 python3 scripts/deck.py apply-flex 20a 2      # promote flex swap #2 into the 60 (--apply writes)
 python3 scripts/deck.py feedback             # how cuts/suggest scored against the swaps you applied (report-only)
 pbpaste | python3 scripts/deck.py verify 20a  # diff a pasted Arena export against the stored deck
@@ -667,8 +670,19 @@ is usually two decks run together — is flagged **OVERSIZED?** and skipped too.
 Before this, spotting drift and repairing it were separate jobs: you read a diff, then
 hand-edited each file.
 
+**Placement is automatic when the type settles it.** An added card that inherits a
+section its TYPE contradicts — a land under `# Nonland` or `# Interaction`, a spell under
+`# Lands` — is moved, verbatim and in the same write, to the one header that fits; a land
+always goes to the deck's one land header. The dry run and `--package` say where it will
+land (`↪ section: will place under …`). When the mismatch is about what the card DOES
+(protection under `# Interaction`), or two headers fit, it only warns and names them,
+because a person may have filed it there on purpose. `--keep-section` leaves the line in
+the cut card's slot. Only a header's leading label counts (`# Lands (24) — duals…` claims
+lands; `# Interaction / tricks` claims nothing), and a header that wraps onto several `#`
+lines is one section.
+
 **`swap --section "<header substring>"`** places the added line under a named
-`# section` instead of inheriting the cut card's slot. Use it whenever the swap's
+`# section` and overrides the automatic placement. Use it whenever the swap's
 section-mismatch warning fires, and **never move the line by hand**: relocating four
 lines that way in one session invented two collector numbers, because a hand edit
 retypes the `(SET) COLLECTOR#` fields that only `resolve` is allowed to produce. The

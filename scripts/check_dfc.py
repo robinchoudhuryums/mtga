@@ -173,6 +173,9 @@ def _static_flags():
 _ALIASED_LOADERS = (
     ("deck", "load_keywords", None),
     ("deck", "load_legalities", None),
+    # The memoized builder behind it (2026-10-20 speed-up): the scan finds the dict
+    # being BUILT here, and the public wrapper only copies it.
+    ("deck", "_load_legalities_cached", None),
     ("deck", "load_rarities", None),
     ("deck", "load_card_data", None),
     ("deck", "_pool_rotation_index", 0),

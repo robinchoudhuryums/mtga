@@ -9566,7 +9566,7 @@ When Lizardfolk Librarians enters the battlefield, scry 2.",U,Lizard; etb; scry;
 Seek New Knowledge,Instant,"Seek two nonland cards, then put a card from your hand on the bottom of your library.",U,seek,HBG,36,Uncommon,historic;timeless;brawl,2022-07-07,,
 Signature Spells,Enchantment,"When Signature Spells enters the battlefield, seek two instant and/or sorcery cards with mana value 3, then exile them.
 At the beginning of your upkeep, you may copy a card exiled with Signature Spells. You may cast the copy without paying its mana cost.",U,etb; seek,HBG,37,Rare,historic;timeless;brawl,2022-07-07,,
-Snowborn Simulacra,Sorcery,"Conjure a duplicate of each of X target nontoken permanents into your hand. Those cards perpetually gain ""You may spend mana as though it were mana of any color to cast this spell."" If X is 5 or more, you may put one of them from your hand onto the battlefield.",U,ramp; conjure,HBG,38,Mythic,historic;timeless;brawl,2022-07-07,,
+Snowborn Simulacra,Sorcery,"Conjure a duplicate of each of X target nontoken permanents into your hand. Those cards perpetually gain prismatic. If X is 5 or more, you may put one of them from your hand onto the battlefield.",U,conjure,HBG,38,Mythic,historic;timeless;brawl,2022-07-07,,
 Thayan Evokers,Creature — Human Wizard,"Double team
 When Thayan Evokers enters the battlefield, conjure a card named Lightning Bolt into your hand, then discard a card.
 Whenever you conjure one or more cards, put a +1/+1 counter on Thayan Evokers.",U,Human; Wizard; counters; etb; double team; conjure,HBG,39,Rare,historic;timeless;brawl,2022-07-07,1,1
@@ -9574,7 +9574,7 @@ Undersimplify,Instant,"Choose target spell. If it's a creature spell, it perpetu
 Water Weird,Creature — Elemental Weird,"Whenever Water Weird deals combat damage to a player, put a +1/+1 counter on Water Weird if the top card of your library is a nonland card. Otherwise, you may mill a card.
 {1}{U}: Water Weird gets +1/-1 until end of turn.",U,Elemental; Weird; counters; mill; pump; removal; graveyard,HBG,41,Common,historic;timeless;brawl,2022-07-07,3,4
 Wizened Githzerai,Creature — Gith Monk,"Psionic Adept — Whenever Wizened Githzerai becomes blocked by a creature, that creature perpetually gets -2/-0.",U,Gith; Monk,HBG,42,Common,historic;timeless;brawl,2022-07-07,2,1
-Grave Choice,Instant,"Target opponent sacrifices a nontoken creature. If that creature had mana value 2 or less, conjure a duplicate of it into your hand. That duplicate perpetually gains ""You may spend mana as though it were mana of any color to cast this spell.""",B,sacrifice; ramp; conjure,HBG,43,Uncommon,historic;timeless;brawl,2022-07-07,,
+Grave Choice,Instant,"Target opponent sacrifices a nontoken creature of their choice. If that creature had mana value 2 or less, conjure a duplicate of it into your hand. That duplicate perpetually gains prismatic.",B,sacrifice; conjure,HBG,43,Uncommon,historic;timeless;brawl,2022-07-07,,
 Hook Horror,Creature — Horror,"Molting Exoskeleton — When Hook Horror dies, it perpetually gets -1/-1. Then if that card's toughness is 1 or greater, return it to the battlefield under its owner's control.",B,Horror; removal,HBG,44,Common,historic;timeless;brawl,2022-07-07,3,3
 The Hourglass Coven,Legendary Creature — Hag Warlock,"When The Hourglass Coven enters the battlefield, draft a card from The Hourglass Coven's spellbook twice, then put those cards onto the battlefield.
 Other Warlocks you control get +1/+1.",B,Hag; Warlock; etb; pump; draft from a spellbook,HBG,45,Rare,historic;timeless;brawl,2022-07-07,3,3
@@ -10841,7 +10841,7 @@ Mentor of Evos Isle,Creature — Bird Wizard,"Flying
 When this creature enters, choose a creature card in your hand. It perpetually gains flying.",U,Bird; Wizard; etb; flying; evasion,J21,11,Common,historic;timeless;brawl,2021-08-26,2,1
 Shoreline Scout,Creature — Merfolk Scout,"When Shoreline Scout enters the battlefield, you may exile a Merfolk card or a land card from your hand. If you do, conjure a card named Tropical Island into your hand.
 As long as another Merfolk or an Island entered the battlefield under your control this turn, Shoreline Scout gets +1/+0.",U,Merfolk; Scout; etb; pump; conjure,J21,12,Uncommon,historic;timeless;brawl,2021-08-26,1,1
-Tome of the Infinite,Legendary Artifact — Book,"{U}, {T}: Conjure a random card from Tome of the Infinite's spellbook into your hand. It perpetually gains ""You may spend mana as though it were mana of any color to cast this spell.""",U,Book; ramp; conjure,J21,13,Rare,historic;timeless;brawl,2021-08-26,,
+Tome of the Infinite,Legendary Artifact — Book,"{U}, {T}: Conjure a random card from Tome of the Infinite's spellbook into your hand. It perpetually gains prismatic.",U,Book; conjure,J21,13,Rare,historic;timeless;brawl,2021-08-26,,
 Boneyard Aberration,Creature — Skeleton Dog,"When Boneyard Aberration dies, exile it. If you do, conjure three cards named Reassembling Skeleton into your graveyard.",B,Skeleton; Dog; graveyard; conjure,J21,14,Uncommon,historic;timeless;brawl,2021-08-26,3,3
 "Davriel, Soul Broker",Legendary Planeswalker — Davriel,"+1: Until your next turn, whenever an opponent attacks you and/or planeswalkers you control, they discard a card. If they can't, they sacrifice an attacking creature.
 −2: Accept one of Davriel's offers, then accept one of Davriel's conditions.
@@ -16376,6 +16376,14 @@ Each creature you control has ""Whenever a mana ability of this creature resolve
 At the beginning of your upkeep, add {C} for each artifact you control. This mana can't be spent to cast nonartifact spells. Until end of turn, you don't lose this mana as steps and phases end.",Colorless,Golem; artifacts,MAT,49,Mythic,pioneer;modern;legacy;vintage;historic;timeless;brawl,2023-05-12,*,*
 Drannith Ruins,Land,"{T}: Add {C}.
 {2}, {T}: Put two +1/+1 counters on target non-Human creature that entered this turn.",Colorless,counters; mana,MAT,50,Rare,pioneer;modern;legacy;vintage;historic;timeless;brawl,2023-05-12,,
+Case of the Lost Witness,Enchantment — Case,"When this Case enters, conjure four cards named Fblthp, the Lost into your library, then shuffle. Draw a card.
+To solve — You control a legendary Homunculus.
+Solved — You may look at the top card of your library any time and you may play lands and cast spells from the top of your library.",U,Case; card draw; card advantage; etb; selection; solved; conjure,MBC,62,Uncommon,historic;timeless;brawl,2026-10-19,,
+Oracle of the Alpha,Creature — Bird Wizard,"Flying
+When Oracle of the Alpha enters the battlefield, conjure the Power Nine into your library, then shuffle.
+Whenever Oracle of the Alpha attacks, scry 1.",U,Bird; Wizard; etb; scry; selection; flying; evasion; conjure,MBC,64,Uncommon,historic;timeless;brawl,2026-10-19,2,3
+Perforator Crocodile,Creature — Crocodile,"When Perforator Crocodile enters, for each creature your opponents control, conjure a card named Stab Wound onto the battlefield attached to that creature.
+Cycling {1}{B}",B,Crocodile; etb; cycling; card draw; conjure,MBC,66,Uncommon,historic;timeless;brawl,2026-10-19,6,5
 Leonin Relic-Warder,Creature — Cat Cleric,"When this creature enters, you may exile target artifact or enchantment.
 When this creature leaves the battlefield, return the exiled card to the battlefield under its owner's control.",W,Cat; Cleric; removal; etb; blink,MBS,10,Uncommon,modern;legacy;vintage;historic;timeless;brawl,2011-02-04,2,2
 Green Sun's Zenith,Sorcery,"Search your library for a green creature card with mana value X or less, put it onto the battlefield, then shuffle. Shuffle Green Sun's Zenith into its owner's library.",G,,MBS,81,Rare,modern;legacy;vintage;historic;timeless;brawl,2011-02-04,,
@@ -22791,7 +22799,7 @@ Wear // Tear,Instant // Instant,"Destroy target artifact.
 Fuse (You may cast one or both halves of this card from your hand.) // Destroy target enchantment.
 Fuse (You may cast one or both halves of this card from your hand.)",W/R,removal; fuse,PIO,398,Uncommon,pioneer;modern;legacy;vintage;historic;timeless;brawl,2024-12-10,,
 Echo of Eons,Sorcery,"Each player shuffles their hand and graveyard into their library, then draws seven cards.
-Flashback {2}{U} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",U,graveyard; flashback; recursion; spellslinger,PRM,95469,Rare,modern;legacy;vintage;historic;timeless;brawl,2024-12-10,,
+Flashback {2}{U} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",U,graveyard; flashback; recursion; spellslinger,PRM,95469,Rare,modern;legacy;vintage;historic;timeless;brawl,2024-12-11,,
 Trouble in Pairs,Enchantment,"If an opponent would begin an extra turn, that player skips that turn instead.
 Whenever an opponent attacks you with two or more creatures, draws their second card each turn, or casts their second spell each turn, you draw a card.",W,card draw,PZA,3,Mythic,legacy;vintage;historic;timeless;brawl,2026-03-06,,
 Cytoplast Manipulator,Creature — Human Wizard Mutant,"Graft 2 (This creature enters with two +1/+1 counters on it. Whenever another creature enters, you may move a +1/+1 counter from this creature onto it.)
@@ -30752,7 +30760,7 @@ Unearth {1}{W}",W,Soldier; counters; reanimator; etb; unearth; graveyard; recurs
 Urza's Construction Drone,Artifact Creature — Construct,"When Urza's Construction Drone enters, conjure cards named Urza's Mine, Urza's Power Plant, and Urza's Tower into your library, then shuffle.
 Whenever Urza's Construction Drone attacks or dies, seek an Urza's land card.",Colorless,Construct; etb; seek; conjure,YBRO,29,Rare,historic;timeless;brawl,2022-12-13,3,3
 Warzone Duplicator,Artifact Creature — Construct,"Prototype {3}{U} — 3/3
-When this creature enters, return target creature an opponent controls with power less than this creature's power to its owner's hand. If that creature wasn't a token, conjure a duplicate of it into your hand. It perpetually gains ""You may spend mana as though it were mana of any color to cast this spell.""",U,Construct; ramp; etb; bounce; conjure; prototype; artifacts,YBRO,30,Rare,historic;timeless;brawl,2022-12-13,6,6
+When this creature enters, return target creature an opponent controls with power less than this creature's power to its owner's hand. If that creature wasn't a token, conjure a duplicate of it into your hand. It perpetually gains prismatic.",U,Construct; etb; bounce; conjure; prototype; artifacts,YBRO,30,Rare,historic;timeless;brawl,2022-12-13,6,6
 Hangarback Assembler,Artifact,"Start your engines!
 When this artifact enters, conjure a card named Hangarback Walker onto the battlefield, then put a +1/+1 counter on it.
 Max speed — At the beginning of your end step, put a +1/+1 counter on each artifact creature and/or Vehicle you control.",W,vehicle; counters; etb; max speed; speed; aggro; conjure; start your engines!,YDFT,1,Rare,historic;timeless;alchemy;brawl,2025-03-04,,
@@ -30837,14 +30845,11 @@ Priest of Possibility,Creature — Kor Cleric,"When Priest of Possibility enters
 Pull of the Mist Moon,Enchantment,"Kicker {1}{U}
 When Pull of the Mist Moon enters, exile target nonland permanent an opponent controls until Pull of the Mist Moon leaves the battlefield.
 When Pull of the Mist Moon enters, if it was kicked, choose a nonland permanent card in your hand. It perpetually gains ""When this permanent enters, exile target nonland permanent an opponent controls until this permanent leaves the battlefield.""",W/U,removal; etb; kicker; value,YDMU,3,Uncommon,historic;timeless;brawl,2022-10-05,,
-Oracle of the Alpha,Creature — Bird Wizard,"Flying
-When Oracle of the Alpha enters the battlefield, conjure the Power Nine into your library, then shuffle.
-Whenever Oracle of the Alpha attacks, scry 1.",U,Bird; Wizard; etb; scry; selection; flying; evasion; conjure,YDMU,4,Mythic,historic;timeless;brawl,2022-10-05,2,3
 Skywriter Djinn,Creature — Djinn,"Flying
 Domain — When Skywriter Djinn enters, conjure a random card from Skywriter Djinn's spellbook into your hand. Then if you have fewer cards in hand than the number of basic land types among lands you control, repeat this process.",U,Djinn; etb; flying; evasion; domain; lands; conjure,YDMU,5,Rare,historic;timeless;brawl,2022-10-05,3,4
 Trove Mage,Creature — Human Wizard,"When Trove Mage enters, seek an artifact card from among the top ten cards of your library, then shuffle.",U,Human; Wizard; etb; seek,YDMU,6,Uncommon,historic;timeless;brawl,2022-10-05,2,2
 Vesuvan Mist,Instant,"Kicker {1}{B}
-Return target nontoken, nonland permanent to its owner's hand. If this spell was kicked, conjure a duplicate of that card into your hand. It perpetually gains ""You may spend mana as though it were mana of any color to cast this spell.""",U/B,ramp; bounce; conjure; kicker; value,YDMU,7,Uncommon,historic;timeless;brawl,2022-10-05,,
+Return target nontoken, nonland permanent to its owner's hand. If this spell was kicked, conjure a duplicate of that card into your hand. It perpetually gains prismatic.",U/B,bounce; conjure; kicker; value,YDMU,7,Uncommon,historic;timeless;brawl,2022-10-05,,
 Darigaaz's Whelp,Creature — Dragon,"Kicker {1}{R}
 Flying
 Whenever you draw a Dragon card, it perpetually gets +1/+1.
@@ -30866,7 +30871,7 @@ Spellchain Scatter,Instant,"Kicker {U}
 When you next cast an instant or sorcery spell this turn, conjure a duplicate of that spell into your hand. If this spell wasn't kicked, discard the duplicate at the beginning of your next end step.",U/R,conjure; kicker; value,YDMU,15,Uncommon,historic;timeless;brawl,2022-10-05,,
 Marwyn's Kindred,Sorcery,"Conjure a card named Marwyn, the Nurturer and X cards named Llanowar Elves onto the battlefield.",G,conjure,YDMU,16,Mythic,historic;timeless;brawl,2022-10-05,,
 Nantuko Slicer,Creature — Insect,"Kicker {B}
-When Nantuko Slicer enters, return target card from your graveyard to your hand. If this spell was kicked, conjure a duplicate of target card in an opponent's graveyard into your hand. It perpetually gains ""You may spend mana as though it were mana of any color to cast this spell.""",B/G,Insect; graveyard; ramp; etb; conjure; kicker; value,YDMU,17,Rare,historic;timeless;brawl,2022-10-05,3,2
+When this creature enters, return target card from your graveyard to your hand. If this spell was kicked, conjure a duplicate of target card in an opponent's graveyard into your hand. It perpetually gains prismatic.",B/G,Insect; graveyard; etb; conjure; kicker; value,YDMU,17,Rare,historic;timeless;brawl,2022-10-05,3,2
 Vinesoul Spider,Creature — Elemental Spider,"Reach
 At the beginning of your end step, put a random land card from your library into your graveyard.",G,Elemental; Spider; graveyard; reach; defense,YDMU,18,Uncommon,historic;timeless;brawl,2022-10-05,3,2
 Wandering Treefolk,Creature — Treefolk,"Vigilance
@@ -31085,69 +31090,69 @@ Warp {4}",Colorless,Robot; exile cast; etb; seek; warp; tempo; cost-reduction,YE
 "Oko, Lord of the Fae",Legendary Planeswalker — Oko,"Creatures can't attack planeswalkers you control unless their controller pays {1} for each of those creatures.
 +1: Up to one target artifact or creature loses all abilities until your next turn.
 −1: Create a 2/2 white Ox creature token.
-−7: You get an emblem with ""At the beginning of your upkeep, conjure a random planeswalker card into exile. You may cast that card this turn without paying its mana cost.""",W,Oko; planeswalker; tokens; conjure,YFRA,1,Mythic,,2026-10-13,,
-Prophet of the Planeswalker,Creature — Human Cleric,"When this creature enters, you may behold a planeswalker. If you do, it perpetually gains ""Loyalty abilities of this planeswalker cost an additional [+1] to activate.""",W,Human; Cleric; etb; behold; dragons,YFRA,2,Uncommon,,2026-10-13,1,4
+−7: You get an emblem with ""At the beginning of your upkeep, conjure a random planeswalker card into exile. You may cast that card this turn without paying its mana cost.""",W,Oko; planeswalker; tokens; conjure,YFRA,1,Mythic,historic;timeless;alchemy;brawl,2026-10-13,,
+Prophet of the Planeswalker,Creature — Human Cleric,"When this creature enters, you may behold a planeswalker. If you do, it perpetually gains ""Loyalty abilities of this planeswalker cost an additional [+1] to activate.""",W,Human; Cleric; etb; behold; dragons,YFRA,2,Uncommon,historic;timeless;alchemy;brawl,2026-10-13,1,4
 "Valgavoth, the Lifeline",Legendary Creature — Insect Angel,"Flying
 Whenever you gain life, creature cards in your hand and graveyard perpetually get +1/+1.
-As long as you've gained life this turn, you may cast creature spells from your graveyard. If you cast a spell this way, that creature enters with a finality counter on it.",W,Insect; Angel; counters; graveyard; lifegain; pump; flying; evasion,YFRA,3,Rare,,2026-10-13,2,4
+As long as you've gained life this turn, you may cast creature spells from your graveyard. If you cast a spell this way, that creature enters with a finality counter on it.",W,Insect; Angel; counters; graveyard; lifegain; pump; flying; evasion,YFRA,3,Rare,historic;timeless;alchemy;brawl,2026-10-13,2,4
 Asymmetry Sage,Creature — Human Wizard,"Flying
-Magecraft — Whenever you cast or copy an instant or sorcery spell, target creature you control has base power 3 until end of turn.",U,Human; Wizard; flying; evasion; magecraft; spellslinger,YFRA,4,Uncommon,,2026-10-13,0,2
+Magecraft — Whenever you cast or copy an instant or sorcery spell, target creature you control has base power 3 until end of turn.",U,Human; Wizard; flying; evasion; magecraft; spellslinger,YFRA,4,Uncommon,historic;timeless;alchemy;brawl,2026-10-13,0,2
 Crux of the Theory,Enchantment,"When this enchantment enters, heist target opponent's library.
-Actualize — Whenever you cast a spell that isn't from your starting deck, empower Jace 2.",U,etb; actualize; empower jace; heist,YFRA,5,Uncommon,,2026-10-13,,
+Actualize — Whenever you cast a spell that isn't from your starting deck, empower Jace 2.",U,etb; actualize; empower jace; heist,YFRA,5,Uncommon,historic;timeless;alchemy;brawl,2026-10-13,,
 Echogoyfs,Creature — Lhurgoyf,"Double team
-Actualize — Echogoyfs's power is equal to the number of spells you've cast this game that weren't from your starting deck and its toughness is equal to that number plus 1.",U,Lhurgoyf; actualize; double team,YFRA,6,Rare,,2026-10-13,*,1+*
+Actualize — Echogoyfs's power is equal to the number of spells you've cast this game that weren't from your starting deck and its toughness is equal to that number plus 1.",U,Lhurgoyf; actualize; double team,YFRA,6,Rare,historic;timeless;alchemy;brawl,2026-10-13,*,1+*
 Jace's Saga,Enchantment Land — Saga,"I — This Saga gains ""{T}: Add {U}.""
 II — This Saga gains ""{U}, {T}: Conjure a card named Jace's Sentinel onto the battlefield.""
-III — Empower Jace 3.",U,saga; mana; empower jace; conjure,YFRA,7,Rare,,2026-10-13,,
+III — Empower Jace 3.",U,saga; mana; empower jace; conjure,YFRA,7,Rare,historic;timeless;alchemy;brawl,2026-10-13,,
 Paradox Kraken,Creature — Kraken,"When this card is put into your graveyard from anywhere, conjure a card named Kraken Hatchling into your hand.
-{1}{U}: Return this card from your graveyard to the battlefield. Activate only if there are more cards in your graveyard than your library and only as a sorcery.",U,Kraken; reanimator; graveyard; conjure,YFRA,8,Rare,,2026-10-13,7,7
+{1}{U}: Return this card from your graveyard to the battlefield. Activate only if there are more cards in your graveyard than your library and only as a sorcery.",U,Kraken; reanimator; graveyard; conjure,YFRA,8,Rare,historic;timeless;alchemy;brawl,2026-10-13,7,7
 Remnants of Beleren,Artifact,"If you would empower Jace, you may instead put that many loyalty counters on a Jace you control.
 {T}: Empower Jace 1.
-{1}{U}, {T}: Draft a card from the Beleren Spellbook.",U,draft from a spellbook; empower jace,YFRA,9,Mythic,,2026-10-13,,
+{1}{U}, {T}: Draft a card from the Beleren Spellbook.",U,draft from a spellbook; empower jace,YFRA,9,Mythic,historic;timeless;alchemy;brawl,2026-10-13,,
 Avoided Stairwurm,Artifact Creature — Wurm,"Menace
-This creature gets -1/-1 for each creature card in your library.",B,Wurm; removal; menace; evasion,YFRA,10,Rare,,2026-10-13,5,5
-Bend Mortal Limits,Sorcery,"Look at all creature and planeswalker cards in target player's hand. You may exile one of those cards. If you do, conjure a duplicate of that card into your graveyard.",B,graveyard; conjure,YFRA,11,Uncommon,,2026-10-13,,
+This creature gets -1/-1 for each creature card in your library.",B,Wurm; removal; menace; evasion,YFRA,10,Rare,historic;timeless;alchemy;brawl,2026-10-13,5,5
+Bend Mortal Limits,Sorcery,"Look at all creature and planeswalker cards in target player's hand. You may exile one of those cards. If you do, conjure a duplicate of that card into your graveyard.",B,graveyard; conjure,YFRA,11,Uncommon,historic;timeless;alchemy;brawl,2026-10-13,,
 Boisterous Clique,Creature — Faerie Warlock,"Flash
 Flying
-When this creature enters, look at all nonland cards in target player's hand. You may exile one of those cards. If you do, that player conjures a card named Mind Stone into their hand.",B,Faerie; Warlock; etb; flying; evasion; flash; tempo; conjure,YFRA,12,Rare,,2026-10-13,3,1
+When this creature enters, look at all nonland cards in target player's hand. You may exile one of those cards. If you do, that player conjures a card named Mind Stone into their hand.",B,Faerie; Warlock; etb; flying; evasion; flash; tempo; conjure,YFRA,12,Rare,historic;timeless;alchemy;brawl,2026-10-13,3,1
 Searing Soloist,Creature — Orc Bard,"When this creature enters, conjure a card named Aria of Flame onto the battlefield.
-If a red source you control would deal damage to a permanent or player, it deals that much damage plus 1 instead.",R,Orc; Bard; etb; conjure,YFRA,13,Rare,,2026-10-13,3,3
+If a red source you control would deal damage to a permanent or player, it deals that much damage plus 1 instead.",R,Orc; Bard; etb; conjure,YFRA,13,Rare,historic;timeless;alchemy;brawl,2026-10-13,3,3
 Sparks Ablaze,Instant,"Sparks Ablaze deals 2 damage to target creature or planeswalker. If that creature or planeswalker would die this turn, exile it instead.
-The next planeswalker spell you cast costs {1} less to cast.",R,cost-reduction; burn,YFRA,14,Uncommon,,2026-10-13,,
+The next planeswalker spell you cast costs {1} less to cast.",R,cost-reduction; burn,YFRA,14,Uncommon,historic;timeless;alchemy;brawl,2026-10-13,,
 "Etali, Primal Garden",Legendary Creature — Elder Dinosaur,"Actualize — This spell costs {1} less to cast for each spell you've cast this game that wasn't from your starting deck.
 Trample
-Whenever Etali enters or attacks, conjure a random Dinosaur card into exile. You may cast that card this turn without paying its mana cost.",G,Elder; Dinosaur; cost-reduction; actualize; trample; evasion; conjure,YFRA,15,Rare,,2026-10-13,7,7
-Nylea's Oracle,Creature — Centaur Druid,"When this creature enters, conjure X cards named Nylea's Oracle into your library, where X is your devotion to green, then shuffle. Then if there are more cards in your library than your starting deck, creatures you control get +X/+X and gain haste until end of turn.",G,Centaur; Druid; etb; pump; conjure; haste; aggro,YFRA,16,Rare,,2026-10-13,3,1
-Selfless Germinator,Creature — Treefolk Druid,Exhaust — {1}: Conjure a card named Seed of Hope into your hand.,G,Treefolk; Druid; exhaust; payoff; conjure,YFRA,17,Uncommon,,2026-10-13,2,1
+Whenever Etali enters or attacks, conjure a random Dinosaur card into exile. You may cast that card this turn without paying its mana cost.",G,Elder; Dinosaur; cost-reduction; actualize; trample; evasion; conjure,YFRA,15,Rare,historic;timeless;alchemy;brawl,2026-10-13,7,7
+Nylea's Oracle,Creature — Centaur Druid,"When this creature enters, conjure X cards named Nylea's Oracle into your library, where X is your devotion to green, then shuffle. Then if there are more cards in your library than your starting deck, creatures you control get +X/+X and gain haste until end of turn.",G,Centaur; Druid; etb; pump; conjure; haste; aggro,YFRA,16,Rare,historic;timeless;alchemy;brawl,2026-10-13,3,1
+Selfless Germinator,Creature — Treefolk Druid,Exhaust — {1}: Conjure a card named Seed of Hope into your hand.,G,Treefolk; Druid; exhaust; payoff; conjure,YFRA,17,Uncommon,historic;timeless;alchemy;brawl,2026-10-13,2,1
 Banescale Serpent,Creature — Serpent,"Vigilance
 Haste
 Protection from instants
 As this creature enters, for each opponent, note the most prevalent creature type in their library.
-This creature has protection from each of the noted creature types.",U/R,Serpent; vigilance; combat; protection; haste; aggro,YFRA,18,Rare,,2026-10-13,5,5
+This creature has protection from each of the noted creature types.",U/R,Serpent; vigilance; combat; protection; haste; aggro,YFRA,18,Rare,historic;timeless;alchemy;brawl,2026-10-13,5,5
 The Bloodbile Swarm,Legendary Creature — Elemental Insect,"Ward—Sacrifice a Blood artifact.
 Other creatures are Blood artifacts in addition to their other types and have ""{1}, {T}, Discard a card, Sacrifice this creature: Draw a card.""
-Whenever a player sacrifices a nontoken creature or discards a creature card, exile it. It perpetually gains prismatic. You may cast it until the end of your next turn.",B/R,Elemental; Insect; card draw; sacrifice; discard; ward; protection,YFRA,19,Rare,,2026-10-13,6,6
+Whenever a player sacrifices a nontoken creature or discards a creature card, exile it. It perpetually gains prismatic. You may cast it until the end of your next turn.",B/R,Elemental; Insect; card draw; sacrifice; discard; ward; protection,YFRA,19,Rare,historic;timeless;alchemy;brawl,2026-10-13,6,6
 Change the Narrative,Enchantment,"Planeswalker spells you cast cost {1} less to cast.
-At the beginning of your upkeep, conjure a random planeswalker card into your hand. It perpetually gains prismatic.",W/U,cost-reduction; conjure,YFRA,20,Rare,,2026-10-13,,
-Diabolic Formula,Enchantment,"Whenever one or more instant and/or sorcery cards leave your graveyard, conjure a random creature card with mana value X onto the battlefield, where X is the greatest mana value among those cards.",U/B,graveyard; conjure,YFRA,21,Rare,,2026-10-13,,
+At the beginning of your upkeep, conjure a random planeswalker card into your hand. It perpetually gains prismatic.",W/U,cost-reduction; conjure,YFRA,20,Rare,historic;timeless;alchemy;brawl,2026-10-13,,
+Diabolic Formula,Enchantment,"Whenever one or more instant and/or sorcery cards leave your graveyard, conjure a random creature card with mana value X onto the battlefield, where X is the greatest mana value among those cards.",U/B,graveyard; conjure,YFRA,21,Rare,historic;timeless;alchemy;brawl,2026-10-13,,
 "Dina, Flesh Sower",Legendary Creature — Dryad Cleric,"Lifelink
 Whenever you gain life, Dina perpetually gets +1/+1.
-When Dina dies, choose a creature card in your hand. It perpetually gains trample and gets +X/+X, where X is Dina's power.",W/G,Dryad; Cleric; lifegain; pump; lifelink; trample; evasion,YFRA,22,Uncommon,,2026-10-13,1,1
-Enter the Eternities,Sorcery,"Exile target creature you control. Draft a [+1] ability, a [-2] ability, and a [-8] ability. Create a legendary planeswalker token with the exiled creature's name and colors and the drafted abilities. Put a number of loyalty counters on it equal to the exiled creature's power.",U/G,tokens,YFRA,23,Mythic,,2026-10-13,,
-Flourishing Forces,Sorcery,"Create a 2/2 colorless Wizard Soldier creature token named Cadet. For every 3 life you gained this game, create an additional one of those tokens.",W/G,lifegain; tokens,YFRA,24,Rare,,2026-10-13,,
-"Killian, Spotlight Chaser",Legendary Creature — Human Bard,"Whenever a source you control deals noncombat damage to an opponent, seek a card with mana value equal to the damage dealt. Discard that card at the beginning of the next end step.",B/R,Human; Bard; noncombat damage; seek,YFRA,25,Uncommon,,2026-10-13,2,2
+When Dina dies, choose a creature card in your hand. It perpetually gains trample and gets +X/+X, where X is Dina's power.",W/G,Dryad; Cleric; lifegain; pump; lifelink; trample; evasion,YFRA,22,Uncommon,historic;timeless;alchemy;brawl,2026-10-13,1,1
+Enter the Eternities,Sorcery,"Exile target creature you control. Draft a [+1] ability, a [-2] ability, and a [-8] ability. Create a legendary planeswalker token with the exiled creature's name and colors and the drafted abilities. Put a number of loyalty counters on it equal to the exiled creature's power.",U/G,tokens,YFRA,23,Mythic,historic;timeless;alchemy;brawl,2026-10-13,,
+Flourishing Forces,Sorcery,"Create a 2/2 colorless Wizard Soldier creature token named Cadet. For every 3 life you gained this game, create an additional one of those tokens.",W/G,lifegain; tokens,YFRA,24,Rare,historic;timeless;alchemy;brawl,2026-10-13,,
+"Killian, Spotlight Chaser",Legendary Creature — Human Bard,"Whenever a source you control deals noncombat damage to an opponent, seek a card with mana value equal to the damage dealt. Discard that card at the beginning of the next end step.",B/R,Human; Bard; noncombat damage; seek,YFRA,25,Uncommon,historic;timeless;alchemy;brawl,2026-10-13,2,2
 "Quintorius, Fate Splitter",Legendary Planeswalker — Quintorius,"As long as Quintorius entered this turn, you may activate the loyalty abilities of planeswalkers you control twice this turn rather than only once.
 0: Proliferate. You gain 3 life.
 −1: Seek a non-Quintorius planeswalker card.
-−3: Create a 2/2 colorless Wizard Soldier creature token named Cadet. Then put a +1/+1 counter on each creature you control.",W/U,Quintorius; planeswalker; counters; lifegain; tokens; seek; proliferate,YFRA,26,Mythic,,2026-10-13,,
-"Rootha, Ardent Artisan // Next Iteration",Legendary Creature — Orc Artificer // Sorcery,Sacrifice an artifact: Rootha becomes prepared. Activate only as a sorcery and only once each turn. // Conjure a random artifact card with mana value X plus 1 onto the battlefield.,R/G,Orc; Artificer; sacrifice; prepared; spellslinger; tempo; conjure,YFRA,27,Uncommon,,2026-10-13,2,3
-Salvaged Imitations,Sorcery,"For each number between 1 and X, conjure a random artifact card with that mana value onto the battlefield. X can't be 0.",R/G,conjure,YFRA,28,Rare,,2026-10-13,,
+−3: Create a 2/2 colorless Wizard Soldier creature token named Cadet. Then put a +1/+1 counter on each creature you control.",W/U,Quintorius; planeswalker; counters; lifegain; tokens; seek; proliferate,YFRA,26,Mythic,historic;timeless;alchemy;brawl,2026-10-13,,
+"Rootha, Ardent Artisan // Next Iteration",Legendary Creature — Orc Artificer // Sorcery,Sacrifice an artifact: Rootha becomes prepared. Activate only as a sorcery and only once each turn. // Conjure a random artifact card with mana value X plus 1 onto the battlefield.,R/G,Orc; Artificer; sacrifice; prepared; spellslinger; tempo; conjure,YFRA,27,Uncommon,historic;timeless;alchemy;brawl,2026-10-13,2,3
+Salvaged Imitations,Sorcery,"For each number between 1 and X, conjure a random artifact card with that mana value onto the battlefield. X can't be 0.",R/G,conjure,YFRA,28,Rare,historic;timeless;alchemy;brawl,2026-10-13,,
 Zimone the Calculating // Simple Subtraction,Legendary Creature — Human Warlock // Instant,"Zimone assigns combat damage as though her power were positive.
-Whenever one or more cards are put into your graveyard from your library, Zimone becomes prepared. // Target creature perpetually gets -3/-0.",U/B,Human; Warlock; graveyard; prepared; spellslinger; tempo,YFRA,29,Uncommon,,2026-10-13,-1,4
+Whenever one or more cards are put into your graveyard from your library, Zimone becomes prepared. // Target creature perpetually gets -3/-0.",U/B,Human; Warlock; graveyard; prepared; spellslinger; tempo,YFRA,29,Uncommon,historic;timeless;alchemy;brawl,2026-10-13,-1,4
 Willbound Quill,Artifact,"{T}: Add one mana of any color.
-Actualize — Whenever you cast a spell that isn't from your starting deck, copy that spell. You may choose new targets for the copy.",Colorless,mana; spell copy; actualize,YFRA,30,Mythic,,2026-10-13,,
+Actualize — Whenever you cast a spell that isn't from your starting deck, copy that spell. You may choose new targets for the copy.",Colorless,mana; spell copy; actualize,YFRA,30,Mythic,historic;timeless;alchemy;brawl,2026-10-13,,
 Potential Horizon,Land,"If you were the starting player, this land enters tapped.
-{T}, Sacrifice this land: Search your library for a land card with a basic land type, put it onto the battlefield, then shuffle.",Colorless,sacrifice; ramp,YFRA,31,Rare,,2026-10-13,,
+{T}, Sacrifice this land: Search your library for a land card with a basic land type, put it onto the battlefield, then shuffle.",Colorless,sacrifice; ramp,YFRA,31,Rare,historic;timeless;alchemy;brawl,2026-10-13,,
 Cogwork Progenitor,Artifact Creature — Gnome,"At the beginning of your end step, you may exile another artifact you control or an artifact card in your graveyard. If you do, seek an artifact card. That card perpetually has base power and toughness 1/1 and becomes a Gnome creature in addition to its other types.",W,Gnome; graveyard; artifacts; seek,YLCI,1,Rare,historic;timeless;brawl,2023-12-05,2,2
 Legion's Chant,Sorcery — Chorus,"Starting intensity 3
 Return any number of creature cards with total mana value X or less from your graveyard to the battlefield, where X is Legion's Chant's intensity.
@@ -31236,7 +31241,7 @@ Whenever you sacrifice Slayer's Bounty or another Clue, draft a card from Slayer
 Suntail Squadron,Instant,"Conjure a card named Suntail Hawk into your hand. If you have fewer than seven cards in hand, repeat this process.",W,conjure,YMID,11,Rare,historic;timeless;brawl,2021-12-09,,
 Absorb Energy,Instant,"Counter target spell. Cards in your hand that share a card type with that spell perpetually gain ""This spell costs {1} less to cast.""",U,counterspell; cost-reduction,YMID,12,Rare,historic;timeless;brawl,2021-12-09,,
 Unexpected Conversion,Sorcery,"Draw two cards. Then you may exile an instant or sorcery card from your hand. If you do, search your hand and library for any number of cards with the same name, exile them, then shuffle. Seek an instant or sorcery card for each card exiled from your hand this way.",U,card draw; seek,YMID,13,Rare,historic;timeless;brawl,2021-12-09,,
-Clone Crafter,Creature — Human Wizard,"When Clone Crafter enters the battlefield, conjure a duplicate of a random creature card from your opponent's library into your hand. It perpetually gains ""You may spend mana as though it were mana of any color to cast this spell.""",U,Human; Wizard; ramp; etb; conjure,YMID,14,Rare,historic;timeless;brawl,2021-12-09,1,2
+Clone Crafter,Creature — Human Wizard,"When this creature enters, conjure a duplicate of a random creature card from an opponent's library into your hand. It perpetually gains prismatic.",U,Human; Wizard; etb; conjure,YMID,14,Rare,historic;timeless;brawl,2021-12-09,1,2
 Discover the Formula,Instant,"Seek three nonland cards, then nonland cards in your hand perpetually gain ""This spell costs {1} less to cast.""",U,cost-reduction; seek,YMID,15,Rare,historic;timeless;brawl,2021-12-09,,
 Geist of Regret,Creature — Spirit,"Flying
 When Geist of Regret enters the battlefield, put a random instant card from your library into your graveyard. Then put a random sorcery card from your library into your graveyard.
@@ -31257,8 +31262,8 @@ Break Expectations,Sorcery,"Target player reveals all cards with mana value 2 or
 Citystalker Connoisseur,Creature — Vampire,"Deathtouch
 When this creature enters, target opponent discards a nonland card with the greatest mana value among cards in their hand. Create a Blood token.",B,Vampire; tokens; etb; discard; deathtouch; combat; removal,YMID,27,Rare,historic;timeless;brawl,2021-12-09,3,3
 "Gutmorn, Pactbound Servant",Legendary Creature — Demon,"Flying, deathtouch
-When Gutmorn, Pactbound Servant enters the battlefield, each player discards a nonland card.
-Whenever a player discards a card during your turn, they choose another player. That player conjures a duplicate of that card into their hand. It perpetually gains ""You may spend mana as though it were mana of any color to cast this spell.""",B,Demon; ramp; etb; discard; deathtouch; combat; removal; flying; evasion; conjure,YMID,28,Mythic,historic;timeless;brawl,2021-12-09,1,3
+When Gutmorn enters, each player discards a nonland card.
+Whenever a player discards a card during your turn, they choose another player. That player conjures a duplicate of that card into their hand. It perpetually gains prismatic.",B,Demon; etb; discard; deathtouch; combat; removal; flying; evasion; conjure,YMID,28,Mythic,historic;timeless;brawl,2021-12-09,1,3
 Patient Zero,Creature — Zombie,"Lifelink
 Damage isn't removed from creatures your opponents control during cleanup steps.",B,Zombie; lifegain; lifelink,YMID,29,Rare,historic;timeless;brawl,2021-12-09,2,2
 Predatory Sludge,Creature — Ooze,"Menace
@@ -31327,7 +31332,7 @@ Wickerwing Effigy,Artifact Creature — Scarecrow,"Defender
 You may look at the top card of your library any time.
 You may cast creature spells from the top of your library.
 Whenever you cast a creature spell from your library, it becomes a black Bird in addition to its other colors and types, has flying, and has base power and toughness 1/1.",Colorless,Scarecrow; card advantage; selection; defender; defense; flying; evasion,YMID,61,Rare,historic;timeless;brawl,2021-12-09,1,4
-Ominous Traveler,Creature — Human,"When Ominous Traveler enters the battlefield, draft a card from Ominous Traveler's spellbook. That card perpetually gains ""You may spend mana as though it were mana of any color to cast this spell"" and ""When you cast this spell, return a creature named Ominous Traveler you control to its owner's hand.""",Colorless,Human; ramp; etb; bounce; draft from a spellbook,YMID,62,Rare,historic;timeless;brawl,2021-12-09,1,1
+Ominous Traveler,Creature — Human,"When this creature enters, draft a card from Ominous Traveler's spellbook. That card perpetually gains prismatic and ""When you cast this spell, return a creature named Ominous Traveler you control to its owner's hand.""",Colorless,Human; etb; bounce; draft from a spellbook,YMID,62,Rare,historic;timeless;brawl,2021-12-09,1,1
 Forsaken Crossroads,Land,"Forsaken Crossroads enters the battlefield tapped.
 As Forsaken Crossroads enters the battlefield, choose a color.
 When Forsaken Crossroads enters the battlefield, scry 1. If you weren't the starting player, you may untap Forsaken Crossroads instead.
@@ -31339,9 +31344,6 @@ Whenever Sleuth Instructor or another permanent you control is turned face up, s
 Spotlight Falcon,Artifact Creature — Bird,"As an additional cost to cast this spell, you may collect evidence 5.
 Flying
 When Spotlight Falcon enters, if evidence was collected, conjure a card named Spotlight Falcon into your hand.",W,Bird; etb; flying; evasion; collect evidence; graveyard; conjure,YMKM,3,Rare,historic;timeless;brawl,2024-03-05,4,3
-Case of the Lost Witness,Enchantment — Case,"When this Case enters, conjure four cards named Fblthp, the Lost into your library, then shuffle. Draw a card.
-To solve — You control a legendary Homunculus.
-Solved — You may look at the top card of your library any time and you may play lands and cast spells from the top of your library.",U,Case; card draw; card advantage; etb; selection; solved; conjure,YMKM,4,Mythic,historic;timeless;brawl,2024-03-05,,
 Emporium Thopterist,Creature — Vedalken Artificer,"Thopters you control get +2/+0.
 At the beginning of your upkeep, conjure a card named Ornithopter into your hand.",U,Vedalken; Artificer; Thopter; pump; conjure,YMKM,5,Uncommon,historic;timeless;brawl,2024-03-05,1,1
 Excogitator Sphinx,Creature — Sphinx Detective,"Flying
@@ -31356,8 +31358,6 @@ When Cackling Observer enters, target opponent reveals each nonland card in thei
 When Cackling Observer leaves the battlefield, the exiled card's owner seeks a nonland card with lesser mana value than the exiled card.",B,Imp; etb; flying; evasion; seek,YMKM,9,Rare,historic;timeless;brawl,2024-03-05,3,1
 Lurking Spinecrawler,Creature — Horror,"When Lurking Spinecrawler enters, you may choose a nonland card in your hand. If you do, that card perpetually incorporates {1}{B} and gains ""When you cast this spell, each opponent sacrifices a creature. Each opponent who can't discards a card.""
 Whenever you cast a multicolored spell, for each of that spell's colors, each opponent loses 1 life and you gain 1 life.",B,Horror; lifegain; etb; discard; incorporate,YMKM,10,Uncommon,historic;timeless;brawl,2024-03-05,5,4
-Perforator Crocodile,Creature — Crocodile,"When Perforator Crocodile enters, for each creature your opponents control, conjure a card named Stab Wound onto the battlefield attached to that creature.
-Cycling {1}{B}",B,Crocodile; etb; cycling; card draw; conjure,YMKM,11,Mythic,historic;timeless;brawl,2024-03-05,6,5
 Snarlfang Vermin,Creature — Rat,"Whenever Snarlfang Vermin deals combat damage to a creature, if that creature is still on the battlefield, suspect that creature. It perpetually gains this ability.
 Whenever a suspected creature an opponent controls dies while Snarlfang Vermin is in your graveyard, that opponent loses 1 life.",B,Rat; graveyard; suspect; aristocrats,YMKM,12,Uncommon,historic;timeless;brawl,2024-03-05,2,1
 Case of the Market Melee,Enchantment — Case,"When this Case enters, it deals 1 damage to any target.
@@ -31384,7 +31384,7 @@ When Emmara, Voice of the Conclave enters, draft a card from Emmara, Voice of th
 "Furgul, Quag Nurturer",Legendary Creature — Elf Shaman,"At the beginning of your end step, conjure a card named Slimy Dualleech onto the battlefield if you control no Leeches. Otherwise, put a +1/+1 counter on each Leech you control.
 {T}, Sacrifice a creature: Add an amount of {G} equal to the sacrificed creature's power.",B/G,Elf; Shaman; counters; sacrifice; conjure,YMKM,23,Rare,historic;timeless;brawl,2024-03-05,2,4
 Izzet Polarizer,Creature — Lizard Wizard,"When Izzet Polarizer dies, conjure a card named Ionize or a card named Electrolyze into your hand. (Your choice is not revealed to other players.)",U/R,Lizard; Wizard; conjure,YMKM,24,Rare,historic;timeless;brawl,2024-03-05,2,1
-Juggle the Performance,Sorcery,"Each player discards their hand, then conjures a duplicate of each of seven random cards from the library of the player to their right into their hand. The duplicates perpetually gain ""Mana of any type can be spent to cast this spell.""",B/R,discard; conjure,YMKM,25,Mythic,historic;timeless;brawl,2024-03-05,,
+Juggle the Performance,Sorcery,"Each player discards their hand, then conjures a duplicate of each of seven random cards from the library of the player to their right into their hand. The duplicates perpetually gain prismatic.",B/R,discard; conjure,YMKM,25,Mythic,historic;timeless;brawl,2024-03-05,,
 "Roalesk, Prime Specimen",Legendary Creature — Human Mutant,"Flying
 Whenever Roalesk, Prime Specimen or another permanent you control is turned face up, you may pay {X}. If you do, if X is 1 or more, conjure a duplicate of a random creature card with mana value X into your hand. Cloak it. It gains ""{G/U}: Turn this creature face up"" for as long as it remains face down.
 Disguise {G}{U}",U/G,Human; Mutant; flying; evasion; cloak; disguise; tempo; conjure,YMKM,26,Mythic,historic;timeless;brawl,2024-03-05,4,5
@@ -31412,7 +31412,7 @@ Experimental Pilot,Creature — Human Pilot,"Ward {2}
 Experimental Pilot crews Vehicles as though its power were 2 greater.",U,Human; Pilot; draft from a spellbook; ward; protection,YNEO,6,Uncommon,historic;timeless;brawl,2022-03-17,1,2
 Holographic Double,Creature — Illusion,"{U}, Exile Holographic Double from your hand: Choose a creature card in your hand. Conjure a duplicate of it into your hand.",U,Illusion; conjure,YNEO,7,Rare,historic;timeless;brawl,2022-03-17,1,1
 Futurist Spellthief,Creature — Moonfolk Wizard,"Flash
-When Futurist Spellthief enters the battlefield, conjure a duplicate of target spell into your hand. That card perpetually gains ""You may spend mana as though it were mana of any color to cast this spell.""",U,Moonfolk; Wizard; ramp; etb; flash; tempo; conjure,YNEO,8,Rare,historic;timeless;brawl,2022-03-17,3,2
+When this creature enters, conjure a duplicate of target spell into your hand. That card perpetually gains prismatic.",U,Moonfolk; Wizard; etb; flash; tempo; conjure,YNEO,8,Rare,historic;timeless;brawl,2022-03-17,3,2
 Semblance Scanner,Artifact Creature — Equipment Shapeshifter,"Whenever Semblance Scanner or equipped creature deals combat damage to a player, if it's not a token, conjure a duplicate of it into your hand.
 Reconfigure {1} ({1}: Attach to target creature you control; or unattach from a creature. Reconfigure only as a sorcery. While attached, this isn't a creature.)",U,equipment; Shapeshifter; conjure; reconfigure,YNEO,9,Rare,historic;timeless;brawl,2022-03-17,3,2
 Better Offer,Sorcery,Put a random creature card with mana value X or less from target opponent's library onto the battlefield under your control. It perpetually has base power and toughness X/X and perpetually gains ward {1}.,U,ward; protection,YNEO,10,Rare,historic;timeless;brawl,2022-03-17,,
@@ -31425,8 +31425,8 @@ Swarm Saboteur,Creature — Human Ninja,"Ninjutsu {B}
 Deathtouch
 Whenever this creature deals combat damage to a player, conjure a card named Virus Beetle into your hand.",B,Human; Ninja; ninjutsu; evasion; tempo; conjure; deathtouch; combat; removal,YNEO,13,Rare,historic;timeless;brawl,2022-03-17,2,2
 Kami of Mourning,Creature — Spirit,"Whenever this creature enters, target creature you control or creature card in your graveyard perpetually gains ""Whenever a creature you control with greater mana value than this card dies, return this card from your graveyard to the battlefield tapped.""",B,Spirit; reanimator; graveyard,YNEO,14,Rare,historic;timeless;brawl,2022-03-17,3,2
-Undercity Plunder,Sorcery,"Target opponent discards a card. Then they may discard an additional card. If they don't, conjure a duplicate of a random card from their library into your hand. It perpetually gains ""You may spend mana as though it were mana of any color to cast this spell.""",B,ramp; discard; conjure,YNEO,15,Rare,historic;timeless;brawl,2022-03-17,,
-Soul Servitude,Instant,"Target player sacrifices a nontoken creature. When they do, you may discard a card. If you do, conjure a duplicate of the sacrificed creature into your hand. It perpetually gains ""You may spend mana as though it were mana of any color to cast this spell.""",B,sacrifice; ramp; conjure,YNEO,16,Rare,historic;timeless;brawl,2022-03-17,,
+Undercity Plunder,Sorcery,"Target opponent discards a card. Then they may discard an additional card. If they don't, conjure a duplicate of a random card from their library into your hand. It perpetually gains prismatic.",B,discard; conjure,YNEO,15,Rare,historic;timeless;brawl,2022-03-17,,
+Soul Servitude,Instant,"Target player sacrifices a nontoken creature of their choice. When they do, you may discard a card. If you do, conjure a duplicate of the sacrificed creature into your hand. It perpetually gains prismatic.",B,sacrifice; conjure,YNEO,16,Rare,historic;timeless;brawl,2022-03-17,,
 Consuming Oni,Creature — Ogre Demon,"Flying, menace
 At the beginning of your end step, a random nonland card in your hand perpetually gains ""When you cast this spell, you lose 3 life.""",B,Ogre; Demon; pay life; flying; evasion; menace,YNEO,17,Mythic,historic;timeless;brawl,2022-03-17,6,6
 Artillery Enthusiast,Creature — Goblin Artificer,"Modified creatures you control have menace. (Equipment, Auras you control, and counters are modifications.)
@@ -31573,7 +31573,7 @@ When Jessie Zane enters and whenever you cast a Snake spell, conjure a card name
 Jet Collector,Creature — Merfolk Scout,"At the beginning of your second main phase, if there are four or more cards in your graveyard, conjure a card named Mox Jet into your hand. This ability triggers only once.
 {X}{B}: Return target creature card with mana value X from your graveyard to the battlefield with a finality counter on it. Activate only as a sorcery.",B/G,Merfolk; Scout; counters; reanimator; graveyard; conjure,YOTJ,18,Rare,historic;timeless;brawl,2024-05-07,2,2
 "Albiorix, Goose Tyrant // Wild Goose Chase",Legendary Creature — Bird // Instant — Adventure,"Flying, Trample, Ward {1}
-Whenever you sacrifice a token, Albiorix perpetually gets +1/+1. This ability also triggers if Albiorix is in exile. // Draw two cards, then discard two cards. Create a Food token.",U/G,Bird; Adventure; exile cast; card draw; sacrifice; tokens; food; pump; flying; evasion; trample; ward; protection,YOTJ,19,Rare,historic;timeless;brawl,2024-05-07,3,3
+Whenever you sacrifice a token, Albiorix perpetually gets +1/+1. This ability also triggers if this card is in exile. // Draw two cards, then discard two cards. Create a Food token.",U/G,Bird; Adventure; exile cast; card draw; sacrifice; tokens; food; pump; flying; evasion; trample; ward; protection,YOTJ,19,Rare,historic;timeless;brawl,2024-05-07,3,3
 Cathartic Operation,Instant,"Return up to two target creature cards from your graveyard to your hand, then seek two noncreature, nonland cards.",U/B,graveyard; seek,YOTJ,20,Uncommon,historic;timeless;brawl,2024-05-07,,
 Emperor Apatzec Intli IV,Legendary Creature — Human Noble,"Whenever another creature enters under your control, that creature perpetually gains haste if its power is 4 or greater. If its toughness is 4 or greater, you gain 4 life. If its mana value is 4 or greater, seek a creature card.",W/R/G,Human; Noble; lifegain; seek; haste; aggro,YOTJ,21,Mythic,historic;timeless;brawl,2024-05-07,3,4
 "Grenzo, Crooked Jailer",Legendary Creature — Goblin Rogue,"When Grenzo enters and at the beginning of your upkeep, heist target opponent's library.
@@ -31592,7 +31592,7 @@ Triumphant Getaway,Enchantment,"Flash
 When Triumphant Getaway enters, heist target opponent's library twice.
 Whenever you cast a spell you don't own, each opponent loses 2 life and you gain 2 life.",U/B/R,lifegain; etb; flash; tempo; heist,YOTJ,27,Rare,historic;timeless;brawl,2024-05-07,,
 "Vona de Iedo, the Antifex",Legendary Creature — Vampire Cleric Knight,"Menace
-When Vona de Iedo enters, destroy target nonland, nontoken permanent an opponent controls. Then you may discard a card. If you do, conjure a duplicate of that permanent into your hand, and the duplicate perpetually gains ""Mana of any type can be spent to cast this spell.""",W/B,Vampire; Cleric; Knight; removal; etb; menace; evasion; conjure,YOTJ,28,Rare,historic;timeless;brawl,2024-05-07,4,2
+When Vona de Iedo enters, destroy target nonland, nontoken permanent an opponent controls. Then you may discard a card. If you do, conjure a duplicate of that permanent into your hand, and the duplicate perpetually gains prismatic.",W/B,Vampire; Cleric; Knight; removal; etb; menace; evasion; conjure,YOTJ,28,Rare,historic;timeless;brawl,2024-05-07,4,2
 Weave the Nightmare,Instant,"Choose one. If you control a nonland permanent you don't own as you cast this spell, you may choose two instead.
 • Heist target opponent's library.
 • Target creature gets -5/-5 until end of turn.
@@ -31605,7 +31605,7 @@ Herald of Vengeance,Creature — Angel,"Flying
 When Herald of Vengeance enters the battlefield, destroy each permanent you don't control that has the same name as a permanent that dealt damage to you last turn.",W,Angel; etb; flying; evasion,YSNC,2,Rare,historic;timeless;brawl,2022-06-02,4,5
 Skyline Savior,Creature — Angel,"Flying
 When this creature enters, return a permanent you control to its owner's hand. If it's a non-Angel creature card, it perpetually gets +1/+1, gains flying, and becomes an Angel in addition to its other types.",W,Angel; etb; pump; bounce; flying; evasion,YSNC,3,Uncommon,historic;timeless;brawl,2022-06-02,3,4
-Agent of Raffine,Creature — Human Rogue,"{2}, {T}: Choose target opponent. Conjure a duplicate of the top card of their library into your hand. It perpetually gains ""Mana of any type can be spent to cast this spell."" Then they exile the top card of their library face down.",U,Human; Rogue; conjure,YSNC,4,Rare,historic;timeless;brawl,2022-06-02,1,2
+Agent of Raffine,Creature — Human Rogue,"{2}, {T}: Choose target opponent. Conjure a duplicate of the top card of their library into your hand. It perpetually gains prismatic. Then they exile the top card of their library face down.",U,Human; Rogue; conjure,YSNC,4,Rare,historic;timeless;brawl,2022-06-02,1,2
 Choice of Fortunes,Sorcery,"Seek two cards. You may shuffle them into your library. If you do, seek two cards.
 You have no maximum hand size for the rest of the game.",U,seek,YSNC,5,Uncommon,historic;timeless;brawl,2022-06-02,,
 Nightclub Bouncer,Creature — Human Rogue,"Flash
@@ -31632,8 +31632,8 @@ Back-Alley Gardener,Creature — Elf Druid,"Alliance — Whenever one or more ot
 Bank Job,Enchantment,"At the beginning of your upkeep, exile the bottom creature card of your library. You may cast that card this turn. At the beginning of the next end step, if that card is still exiled, put it into your graveyard and create a Treasure token.",B/R,graveyard; tokens; treasure,YSNC,18,Rare,historic;timeless;brawl,2022-06-02,,
 Bind to Secrecy,Instant,"Choose one —
 • Counter target noncreature spell.
-• Conjure a duplicate of target creature card in an opponent's graveyard into your hand. It perpetually gains ""You may spend mana as though it were mana of any color to cast this spell.""
-If there are five or more mana values among cards in your graveyard, draft a card from Bind to Secrecy's spellbook.",U/B,counterspell; graveyard; ramp; draft from a spellbook; conjure,YSNC,19,Rare,historic;timeless;brawl,2022-06-02,,
+• Conjure a duplicate of target creature card in an opponent's graveyard into your hand. It perpetually gains prismatic.
+If there are five or more mana values among cards in your graveyard, draft a card from Bind to Secrecy's spellbook.",U/B,counterspell; graveyard; draft from a spellbook; conjure,YSNC,19,Rare,historic;timeless;brawl,2022-06-02,,
 Brokers' Safeguard,Instant,"Exile target nonartifact creature you control. It perpetually gains ""This creature enters with an additional shield counter on it."" Then return that card to the battlefield under its owner's control. (If it would be dealt damage or destroyed, remove a shield counter from it instead.)",W/U,counters; blink,YSNC,20,Rare,historic;timeless;brawl,2022-06-02,,
 Cabaretti Revels,Enchantment,"Whenever you cast a creature spell, seek a creature card with lesser mana value, then put it onto the battlefield.",R/G,seek,YSNC,21,Rare,historic;timeless;brawl,2022-06-02,,
 Diviner of Fates,Creature — Octopus Wizard,"When this creature enters the battlefield, it connives. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on this creature.)

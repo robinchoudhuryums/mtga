@@ -2,8 +2,14 @@ Card Name,Type,Card Text,Color(s),Synergies,Set Code,Collector #,Rarity,Target,N
 "Brimaz, King of Oreskos",Legendary Creature — Cat Soldier,"Vigilance
 Whenever Brimaz attacks, create a 1/1 white Cat Soldier creature token with vigilance that's attacking.
 Whenever Brimaz blocks a creature, create a 1/1 white Cat Soldier creature token with vigilance that's blocking that creature.",W,Cat; Soldier; tokens; vigilance; combat,,,Mythic,78-historic-brawl,,7.0,seed
+"Chandra, Pyromaster",Legendary Planeswalker — Chandra,"+1: Chandra deals 1 damage to target player or planeswalker and 1 damage to up to one target creature that player or that planeswalker's controller controls. That creature can't block this turn.
+0: Exile the top card of your library. You may play it this turn.
+−7: Exile the top ten cards of your library. Choose an instant or sorcery card exiled this way and copy it three times. You may cast the copies without paying their mana costs.",R,Chandra; planeswalker; burn; impulse; noncombat damage,,,Mythic,85,,10.0,seed
 "Donatello, the Brains",Legendary Creature — Mutant Ninja Turtle,"If one or more tokens would be created under your control, those tokens plus a Mutagen token are created instead.
 Partner—Character select (You can have two commanders if both have this ability.)",U,Mutant; Ninja; Turtle; tokens; partner,,,Mythic,86,,5.0,seed
+Dragonlord Ojutai,Legendary Creature — Elder Dragon,"Flying
+Dragonlord Ojutai has hexproof as long as it's untapped.
+Whenever Dragonlord Ojutai deals combat damage to a player, look at the top three cards of your library. Put one of them into your hand and the rest on the bottom of your library in any order.",W/U,Elder; Dragon; selection; flying; evasion; hexproof; protection,,,Mythic,85,,5.0,seed
 Gandalf the White,Legendary Creature — Avatar Wizard,"Flash
 You may cast legendary spells and artifact spells as though they had flash.
 If a legendary permanent or an artifact entering or leaving the battlefield causes a triggered ability of a permanent you control to trigger, that ability triggers an additional time.",W,Avatar; Wizard; flash; tempo,,,Mythic,78-historic-brawl,,7.0,seed
@@ -34,6 +40,8 @@ As long as The Wandering Emperor entered this turn, you may activate her loyalty
 Whenever you attack, earthbend X, where X is the number of experience counters you have. (Target land you control becomes a 0/0 creature with haste that's still a land. Put X +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)",G,Human; Warrior; Ally; counters; landfall; earthbend; bending; lands,,,Mythic,78-historic-brawl,,7.0,seed
 "Giant-Man, Gargantuan Genius",Legendary Creature — Human Scientist Hero,"Reach
 At the beginning of your first main phase, add {G} for each creature you control with power 4 or greater.",G,Human; Scientist; Hero; reach; defense,,,Rare,86,,3.5,seed
+Insult // Injury,Sorcery // Sorcery,"Damage can't be prevented this turn. If a source you control would deal damage this turn, it deals double that damage instead. // Aftermath (Cast this spell only from your graveyard. Then exile it.)
+Injury deals 2 damage to target creature and 2 damage to target player or planeswalker.",R,graveyard; burn; double; aftermath; recursion,,,Rare,85,,6.0,seed
 "Lyra, Tolarian Archangel",Legendary Creature — Angel Wizard,"Flying
 At the beginning of each end step, if you've drawn three or more cards this turn, create a 3/3 blue Angel creature token with flying.
 {3}{U}{U}: Until end of turn, whenever Lyra deals combat damage to a player, draw two cards.",U,Angel; Wizard; card draw; tokens; flying; evasion,,,Rare,51a,,5.5,seed
@@ -46,6 +54,8 @@ Whenever a creature you control with a counter on it deals combat damage to a pl
 You have no maximum hand size.
 The first time you would draw a card each turn except the first card you draw during each of your draw steps, you draw four cards instead.",U,Human; Scientist; Hero; card draw; reach; defense,,,Rare,86,,5.5,seed
 Ajani's Welcome,Enchantment,"Whenever a creature you control enters, you gain 1 life.",W,lifegain,,,Uncommon,78-historic-brawl,,4.5,seed
+Asgardian Inspiration,Sorcery,"Exile the top card of your library. You may play it this turn.
+Whenever a source you control deals noncombat damage to an opponent, you may pay {2}. If you do, return this card from your graveyard to your hand.",R,graveyard; impulse; noncombat damage,,,Uncommon,85,,4.0,seed
 Campus Composer // Aqueous Aria,Creature — Merfolk Bard // Sorcery,"Ward {2}
 This creature enters prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.) // Create a 3/3 blue and red Elemental creature token with flying.",U,Merfolk; Bard; tokens; prepared; spellslinger; tempo; ward; protection,,,Uncommon,51a,,2.5,seed
 "Ms. Marvel, Elastic Ally",Legendary Creature — Mutant Inhuman Hero,"Reach

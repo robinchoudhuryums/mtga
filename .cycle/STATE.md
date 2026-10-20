@@ -28,7 +28,7 @@ Phase: implement — **Batches 1 (ingest), 2 (deck legality + parse gates) and 3
 Scope: broad
 Test Command: `python3 scripts/check_all.py`
 Subsystem cycles since last Seams audit: 3 (counter adopted 2026-09-08; no Seams audit has run)
-Updated: 2026-10-02 (Batch 1 — see Where I left off)
+Updated: 2026-10-20 (Brawl tooling plan Batch 7 — see Where I left off)
 
 ## In progress (facts to carry forward — NOT judgments)
 - **Broad scan #10 is fully implemented — nothing outstanding from the scan.** Four
@@ -44,6 +44,36 @@ Updated: 2026-10-02 (Batch 1 — see Where I left off)
 
 ## Completed this cycle
 
+- **2026-10-20 — speed-up batch + roster refiles** (block `tooling-speedup-broad-implement.md`):
+  four memos/rewrites from the Batch 6 profile, with every compared output byte-identical. check_all
+  77→36s, dashboard 217→80s, swap --apply 6.9→2.7s, postedit ~305→118s, pytest 345→181s. Also
+  35a/37a's four type misfiles were refiled with `deck.py move`. Net 0 − 0.
+- **2026-10-20 — Brawl tooling plan, Batch 7** (block `tooling-batch7-broad-implement.md`): swap
+  section placement is AUTOMATIC on an objective TYPE misfit, and a land always goes to the one land
+  header. Role misfits warn. `--keep-section` opts out. Header claims are read from the HEAD only
+  (260 → 57 flagged roster placements), and wrapped headers are one section. The first replay
+  would have moved 73 lands. The final replay moves 4 of 4 real misfiles. Net 2 − 0.
+- **2026-10-20 — Brawl tooling plan, Batch 6** (block `tooling-batch6-broad-implement.md`): PROFILE
+  only, no code. The per-swap cost is not `swap`. `swap --apply` takes 6.9s; the tail around it
+  does not: preflight (check_all) takes about 80s and `make postedit` about 305s, of which the dashboard is 227s. Hot
+  spots: `classify_roles` re-run about 39× per pool card (151s of the dashboard), and
+  `rationale_staleness`' shorthand genexpr (143s profiled of check_all). `load_legalities` and
+  `discover_decks` are not memoized. Four ranked fix candidates are in the block. Net 0 − 0.
+- **2026-10-20 — Brawl tooling plan, Batch 5** (block `tooling-batch5-broad-implement.md`):
+  `wildcards --by-set [--decks …]` (from the DECKS, not the wishlist — it held 35 of 96 missing cards)
+  and the `suggest --lands` owned-options footer; also fixed Batch 1's normaliser regression (SP//dr
+  keyed as "sp"). Net 3 − 0; Batch 1 amended to 2 − 1.
+- **2026-10-20 — Brawl tooling plan, Batch 4** (block `tooling-batch4-broad-implement.md`):
+  `swap <id> --package "cut=add" …` — a no-write preview of several swaps (combined vector, tier
+  floor, one legality check; per-pair identity ⛔ and section advisory). Net 1 − 0.
+- **2026-10-20 — Brawl tooling plan, Batch 3** (block `tooling-batch3-broad-implement.md`): one-step
+  `swap <id> --undo` — restores the swap's own backup (verified by re-applying the ledger swap to it)
+  and drops its ledger row; refuses after any other edit or an unrelated `move`. Net 1 − 0.
+- **2026-10-20 — Brawl tooling plan, Batches 1–2** (blocks `tooling-batch1-broad-implement.md`,
+  `tooling-batch2-broad-implement.md`): (1) `///` names normalised through `lib.normalize_card_name`;
+  a blank pool Legalities cell is UNVERIFIED, not illegal (Searing Soloist), pool rebuilt (31 blank
+  rows filled), soft `check_all` count of blank rows; (2) `swap` warns on and REFUSES an add outside
+  the commander's colour identity (Leonardo into deck 86). Net 2 − 0 and 1 − 0.
 - **2026-10-09 — deck-34-tune tool gaps #2/#4/#5** (block `2026-10-34-tune-tool-gaps-broad-implement.md`):
   Card-advantage patterns (typed cast-from-top, multi-chapter Saga draw) — 14 decks CA +1/+2, 0 floors
   moved, 10 tier figures re-grounded; Zookeeper protected in deck 34; G-26 `no longer` residual logged. Net 2 − 0 = 2.
@@ -233,6 +263,9 @@ Updated: 2026-10-02 (Batch 1 — see Where I left off)
   67/41/60% → 68/40/61% | scripts/deck.py, decks/47, decks/43, CLAUDE.md, docs/gotchas.md
 
 ## Pending / not yet done
+- **PLANNED 2026-10-20 — Brawl tooling plan (9 items from the decks 84–86 builds), 7 batches:**
+  Batches 1–7 DONE and docs SYNCED (plan complete). Plus Batch 1's open half: suggest/screen/cuts still exclude
+  a blank-Legalities row silently.
 - **PLANNED 2026-10-07 — deck-32 tooling follow-ons, four `/broad-implement` batches, in order:**
   - **Batch A — DONE 2026-10-07** (block `11-batchA-tune32-followons-broad-implement.md`; also fixed the name-only re-add DUPLICATE row it exposed): G-22 `figure_drift` — refresh the two ledger figures in CLAUDE.md and give ledger-count entries a relative tolerance (~10%) so a tune stops re-firing the warning; and `wishlist.py --add` APPENDS a `--target` token to an already-listed row (never replaces it, never touches Note; validates the id) instead of skipping it — G-82/G-19 text updated.
   - **Batch B — DONE 2026-10-07** (block `11-batchB-tune32-followons-broad-implement.md`; 8 tier floors moved down — owner to re-read 18/40a/47/51 and 22/22-brawl/67/68): classifier — steal Auras (`you control enchanted creature|permanent`, 9 pool cards) into `Removal (spot)`; token-copy / clone effects (≈95 zero-role cards) into `Payoff / engine`, excluding self-copies ("a copy of it"); a report-only **TEMPO** line beside interaction in `stats`/`tier`/`quality` (stuns, one-turn taps, BOUNCE) that never feeds `tier_band` (G-25's shape); and **BOUNCE MOVES OUT of interaction into tempo** (owner, 2026-10-07 — the permanence line applied consistently; 167 of 194 pool bounce cards scored `Removal (spot)`; simulated: 6 of 119 decks' tier floors drop, 13 decks run bounce-only interaction). Roster before/after diff that ASSERTS zero errors; re-ground every `#: tier:` figure the sweep names and report the floor moves (letters are the owner's call); `role_baseline` + `check_roles --tags` (K-09) + tests; CLAUDE.md rubric/G-24/G-25/K-12 text.
@@ -287,6 +320,9 @@ Updated: 2026-10-02 (Batch 1 — see Where I left off)
 - Regression scenarios 5–8 and 10–19 need a person at a browser; several never walked.
 
 ## Decisions made (so the next session doesn't re-litigate)
+- **Brawl tooling plan (owner, 2026-10-20):** an off-identity add is REFUSED on `swap --apply` and
+  warned in the dry run (no --force); section placement becomes AUTOMATIC by default, warning when
+  it cannot place the card; undo is ONE step, not a history.
 - **Same-named Arena decks: the NEWEST wins (owner, 2026-09-27).** An edited deck is
   re-imported as a new Arena deck and the old one deleted, so copies are expected and the
   latest `LastUpdated` is correct. Two DIFFERENTLY named claimants are still a conflict,
@@ -359,6 +395,23 @@ Updated: 2026-10-02 (Batch 1 — see Where I left off)
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
+**2026-10-20 (latest) — Brawl tooling plan, Batch 7 done; THE 9-ITEM PLAN IS COMPLETE**
+(block `tooling-batch7-broad-implement.md`). Suite 2186 passed, check_all OK. Docs SYNCED 2026-10-20 (G-05/G-77, README,
+/apply-changes, systems-map, gotchas G-05). The speed-up batch and the 35a/37a refiles are DONE too
+(block `tooling-speedup-broad-implement.md`). **Next:** the PR for the branch; then the remaining
+follow-ons (blank-Legalities exclusion in suggest/screen/cuts, apply-flex undo, systems-map timings).
+
+**2026-10-20 (latest) — Brawl tooling plan, Batch 6 done** (profile only; block
+`tooling-batch6-broad-implement.md`). **Next:** Batch 7 (automatic section placement). Then optionally
+a speed-up batch from the block's ranked candidates (classify_roles memo, rationale_staleness guard,
+load_legalities/discover_decks memo, `_power_seed` hoist), each needing a byte-identical diff.
+
+**2026-10-20 (latest) — Brawl tooling plan, Batch 5 done** (`wildcards --by-set`, lands owned
+footer, SP//dr normaliser regression; block `tooling-batch5-broad-implement.md`). Suite + check_all
+green. **Next:** Batch 6 (profile only), then 7 (auto section placement). Docs for Batches 4–5 SYNCED
+2026-10-20 (G-06, G-19, G-37, G-63, README, /tune-deck, /apply-changes; 0 drift). Docs for batches 1–3 SYNCED
+2026-10-20 (G-06/G-09/G-56/G-63, C-01, README, /apply-changes; 12 stale figures refreshed, 0 drift).
+
 **2026-10-09 (latest) — deck 34 (Zoologist) tuned across ten waves, then tool gaps #2/#4/#5
 implemented** (block `2026-10-34-tune-tool-gaps-broad-implement.md`). Suite + check_all green.
 **Next:** follow-ons #1 and #3 above (each needs a roster measurement), then the owner's open calls.

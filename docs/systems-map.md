@@ -113,7 +113,8 @@ The longest path, and the one that most needs a map.
 | `screen` / `flex` | candidate re-score / stale flex lines | ~1s |
 
 **Apply (`/apply-changes`)** — `quality --json` → `swap --apply` → `quality --vs` →
-`preflight` → `tier` → `tier --audit-rationale` → `arena`. A misfiled `# section` noticed
+`preflight` → `tier` → `tier --audit-rationale` → `arena`. `swap` places a type-misfit add
+(a land into the land section) itself since 2026-10-20 (G-05). A misfiled `# section` noticed
 after the write is repaired with **`deck.py move <id> "<card>" --section` — never a
 swap-out/swap-in pair**, which records both halves to recommendations.csv as decisions
 (`move` writes no ledger row; a relocation is not a decision).

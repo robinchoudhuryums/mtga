@@ -250,6 +250,32 @@ contradict — and a card the classifier gave NO role gets softer "verify" wordi
 than a mismatch claim, since a no-role read usually means a lexicon gap, not a weak card.
 Advisory: it never moves the line, because that's a human editorial call.
 
+**2026-10-20 (Brawl tooling Batch 7) — AUTOMATIC on a TYPE misfit, by the owner's call.**
+The 84–86 Brawl builds kept landing a land in a spells section on a land-for-spell swap,
+and the only repair was a second command. `auto_section` now moves the line, verbatim and
+in the same write, when the inherited header makes a TYPE claim the card fails (Lands /
+Nonland / Creatures / Noncreature / Planeswalkers) and exactly one other typed header fits.
+A LAND outside any land header goes to the deck's one land header, however the inherited
+header reads, because a role header like `# Ramp` also "fits" a land by role. A ROLE misfit
+stays a warning with candidates: the role classifier is K-12's heuristic, and a person may
+file protection under "Interaction" on purpose. `section_fit` is the one verdict behind both
+the warning and the move (G-40).
+Two measurements decided the shape, both replays over the roster's 5,439 existing card
+placements, which a person filed and which are therefore mostly right:
+- **Header text is prose.** Reading a type or role word anywhere in it flagged 260
+  placements, most of them the header's DESCRIPTION ("# Lands-from-graveyard engine",
+  "# Interaction / tricks", "# Planeswalkers and support"). So only the HEAD claims: the
+  text before a dash, paren or colon, every `/ + , & and` piece a known label. That
+  flags 57: 13 type misfits, every one a real misfile, plus 44 role misfits.
+- **Most headers WRAP onto several `#` lines.** Read line by line, a land sat "under" its
+  own header's second line, and the first replay planned to move **73** lands out of the
+  section they were already in. Adjacent comment lines are now one header, named by the
+  first line. That also fixed a latent `move --section` bug: a needle could match a
+  continuation line and insert the card mid-header.
+
+The final replay moves **4** lines, all objectively misfiled: 35a's two lands under a
+spells header and 37a's two creatures under `# Noncreature`. They were left for the owner.
+
 
 ## [G-06] Previewing and applying swaps
 
@@ -276,6 +302,28 @@ made stale by the swap** (a line proposing the card you just maindecked, or
 cutting a card you just removed) — replacing the first with an `applied` note.
 `deck.py apply-flex <id> <n>` promotes a `#~` flex line into the 60. Both
 default to a dry run.
+
+**The identity gate and `--undo` (2026-10-20, tooling batches 2–3).** Leonardo, the Balance has a
+`{W}{U}{B}{R}{G}` activated ability, so black is in its colour identity, and `swap --apply` wrote it into
+the G/R/U/W Fantastic Four Brawl deck (86) without a word; only `preflight` caught it, after the write.
+`_do_swap` now takes the same `commander_identity_lock` and the same `card_colors(colors) <= lock` test
+`legality_report` uses, so `swap` and `legal` cannot disagree: a `⛔ identity` line in the preview, and a
+refusal on `--apply` that happens before the ledger row and before any write (owner's call: refuse and
+warn, no `--force`). Measured before it landed: 8 commander-format decks, all 8 locks placeable, 0 holding
+an off-identity card — the gate cannot trap an existing deck. The round trip that followed (Leonardo in,
+then back out) left two ledger rows to prune by hand, which is what `swap <id> --undo` exists for: it
+re-applies the ledger's last cut/add to the newest backup, requires that to equal the current file as a
+multiset of lines (so `--section` and a `move` of the added card pass), restores the backup byte-for-byte
+through `_safe_write_lines`, and drops the row. It refuses after any other edit — including a `move` of an
+UNRELATED card, which restoring would have silently reverted (found in review, closed before commit).
+
+**`swap --package` (2026-10-20, tooling batch 4).** Every multi-swap proposal in the decks 84–86 builds was
+previewed with a hand-rolled scratch simulator, which crashed with a bare IndexError on a misspelled cut.
+`swap <id> --package "cut=add" …` applies the pairs IN ORDER with the same `_swap_edit_lines` an applied swap
+uses, grades a temp copy with `deck_quality_vector` (the `_quality_vector_at` pattern), runs one
+`legality_report`, and prints per pair the identity verdict `--apply` would give and the section advisory. It
+writes nothing and records no ledger row. A test pins that its printed figures equal the vector of the same
+pairs actually applied.
 
 
 ## [G-07] Triage the roster before full-tuning it
@@ -666,6 +714,17 @@ an EXACT size, and `legal` checked only the minimum, so a 107-card Historic Braw
 read clean. And the copy-count loop skipped basics before the identity check ran, so four
 Mountains in a G/W/U Katara deck passed; basics now go through the identity check while
 staying exempt from the copy limit. Roster sweep after the change: 0 decks with problems.
+
+**A BLANK legality cell is unverified too (2026-10-20, tooling batch 1).** `load_legalities` stored a blank
+`Legalities` cell as an empty set, and `legality_report` read an empty set as "legal in nothing", so
+`legal` reported Searing Soloist "not legal in historic brawl" — a false FAIL that also failed `preflight` —
+while Scryfall had it legal. 31 pool rows were blank, all from the 2026-10 release: the pool had been built
+before those sets' legality data existed, and `build_pool`'s 7-day freshness reuse kept it. The verdict now
+routes a falsy entry to the unverified list (the value stays an empty SET, not None, because
+`check_agreement` iterates every value — a None version was caught in review). `build_pool.py --all
+--refetch` filled all 31 (every one legal in Brawl), and `check_all.pool_legality_soft` counts blank rows
+from now on. Still open: `suggest` / `screen` / `cuts` read the column directly and EXCLUDE a blank row
+silently rather than labelling it unverified.
 
 ## [G-10] "Not in library" for a card you own is the deck-dump undercount symptom
 
@@ -1246,6 +1305,12 @@ a note is prose, and a word inside it is exactly what you are looking for.
 **Re-adding a listed card (2026-10-07).** A name-only line matches the listed row by NAME
 (it used to append a duplicate, because the dedupe key carried the input's set/collector),
 and `--target` on a re-add APPENDS the deck id rather than being dropped — see G-82.
+
+**The deck view of `--by-set` (2026-10-20, tooling batch 5).** Asked "which packs serve decks 84–86", the
+wishlist could answer for 35 of the 96 cards those decks were missing; the other 61 were never wishlisted.
+`deck.py wildcards --by-set [--decks …]` groups the shared-collection shortfall (a card short in several
+decks counts once, at the most any deck needs) by the set each deck line names. `wishlist --by-set` stays the
+view of the wishlist itself.
 
 ## [G-20] Auto-targeting a wishlist batch: trust STRONG, judge `review`
 
@@ -3189,6 +3254,11 @@ and false of a land.
 printed the bare `·tapped?`, whose legend says "scored as tapped" — the marker contradicted
 the score beside it. They print `·shock` now, and the legend names it.
 
+**Owned options are footnoted (2026-10-20, tooling batch 5).** The default view leads with craft targets,
+so on deck 85 all 50 owned qualifying lands sat below the 20-row window and the best of them (#28 of 247)
+surfaced only once `--owned` was added by hand. `suggest_lands` now counts owned picks before the window cuts
+the list, and the default view prints how many qualify, how many were shown, and where the best ranks.
+
 ## [G-38] `deck.py suggest --ramp / --interaction / --needs` are the NEEDS model — the structural axes the
 
 **`deck.py suggest --ramp / --interaction / --needs` are the NEEDS model — the structural
@@ -3939,6 +4009,11 @@ feed back into a ranking. Doing so would defeat the bounded-and-anchored propert
 ### 2026-09-06 — measuring on a scratch copy without a roster file
 
 Every scratch measurement on 2026-09-05/06 needed a throwaway `56z-scratch.txt` INSIDE `decks/56-boros-tall/`, because `find_deck` resolved ids only; while it existed, INV-04, `check_all` and every roster view counted it as a deck, and a `swap --apply` on it would have written the ledger row this rule warns about. `find_deck(deck_id, allow_path=True)` now accepts an existing `.txt` path for the 21 read-only commands; the writers (`swap`, `move`, `apply-flex`) and the roster-reasoning commands (`preflight`, `history`) keep the id-only form, pinned by a source test. A path that IS a roster file resolves to its real record so the printed id is the roster id.
+
+**Undo removes its own row (2026-10-20, tooling batch 3).** An undone swap was never a decision, so it
+must not survive in `feedback`: `swap <id> --undo` drops the row it reverses through
+`drop_recommendation`, the same atomic, backed-up rewrite as `append_recommendation`. One step only, by the
+owner's call — not a history. The deck 86 Leonardo round trip is the incident: two rows pruned by hand.
 
 
 ## [G-57] Match results are FREE from `Player.log` — the lines AROUND the result JSON are the load-bearing halves
@@ -5980,6 +6055,19 @@ bought in a live `--budget` — as a phantom manabase upgrade). The remaining st
 closure: `deck.load_card_meta` and `wishlist.load_pool_index` were the last two loaders
 aliasing IN-pass; both now use the second-pass `lib.alias_front` and are REGISTERED in
 `check_dfc._ALIASED_LOADERS`, so the behavioral anchor exercises every member.
+
+**Typed names normalise their separator first (2026-10-20, tooling batch 1).** `Insult /// Injury` — the
+three-slash spelling a paste or a hand-typed list often carries — matched no printing and kept the slashes
+in its `_ms_key`, so the front-face key never reached the pool. `lib.normalize_card_name` collapses any run
+of slashes to ` // ` (and extra whitespace), and `_ms_key`, `_printing_of`, `_resolve_card_name` and the
+`swap` inputs call it first.
+
+**A bare `//` inside a name is part of the name (2026-10-20, tooling batch 5).** Batch 1's first
+`normalize_card_name` collapsed EVERY run of two or more slashes, so the real card "SP//dr, Piloted by Peni"
+(decks 65 and 84) became "SP // dr…" and keyed as "sp" — its printing lookup failed and every `_ms_key` join
+mis-read it. Found because `wildcards --by-set`, which joins through `owned()`, disagreed with a direct
+`_ms_key` count by exactly that card. Only a run of three or more slashes, or a `//` already touching
+whitespace, is normalised now; a test pins SP//dr.
 
 ## [G-64] A reanimator's uncastable bombs are not a build error — `#: uncastable-ok:`
 

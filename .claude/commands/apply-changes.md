@@ -24,6 +24,10 @@ oracle text against THIS deck's engine, never a role/fit label).
 
 ## Stage 2 — Apply each swap (read both cards' full text first)
 
+With more than one swap, **preview the set as one change first**:
+`python3 scripts/deck.py swap <id> --package "<cut>=<add>" …` prints the combined vector,
+tier floor and legality, and flags an add outside a commander's identity, writing nothing.
+
 For each `−cut / +add`:
 
 2. **Preview it:** `python3 scripts/deck.py swap <id> --cut "<cut>" --add "<add>"`
@@ -37,7 +41,11 @@ For each `−cut / +add`:
    **auto-retires `#~` flex lines** the swap made stale (a line proposing the
    card you just maindecked, or cutting one you just removed).
 
-   If the add belongs under a different `# section` than the cut card's slot,
+   Section placement is AUTOMATIC when the card's TYPE settles it (a land
+   swapped in under `# Nonland`/`# Interaction` moves to the deck's land
+   header; the preview prints `↪ section: will place under …`), and
+   `--keep-section` opts out. When the preview instead prints `⚠ section
+   comment` (a role misfit or several candidate headers), decide the home and
    pass **`--section "<header substring>"`** in the SAME command. Never move the
    line by hand afterwards: relocating four lines that way in one session
    invented two collector numbers, because a hand edit retypes the `(SET)
@@ -52,6 +60,14 @@ For each `−cut / +add`:
    as if cutting the card you just added were a decision (four such rows had to
    be pruned from the ledger on 2026-08-27). `move` writes no ledger row,
    because a relocation is not a decision (G-56).
+
+   In a Brawl / Commander deck the preview flags an add outside the commander's
+   colour identity (`⛔ identity`) and `--apply` REFUSES it — pick another card.
+
+   If a swap was applied in error, **`python3 scripts/deck.py swap <id> --undo
+   --apply`** reverses the deck's LAST swap and removes its ledger row. Do it
+   BEFORE editing the notes: after any other change to the file it refuses, and
+   the remedy is then an ordinary reverse swap.
 
    It also appends a row to `recommendations.csv` scoring the recommenders against
    this decision — where `cuts` ranked the card you cut, and whether `suggest`
