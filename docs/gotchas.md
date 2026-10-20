@@ -291,6 +291,14 @@ multiset of lines (so `--section` and a `move` of the added card pass), restores
 through `_safe_write_lines`, and drops the row. It refuses after any other edit — including a `move` of an
 UNRELATED card, which restoring would have silently reverted (found in review, closed before commit).
 
+**`swap --package` (2026-10-20, tooling batch 4).** Every multi-swap proposal in the decks 84–86 builds was
+previewed with a hand-rolled scratch simulator, which crashed with a bare IndexError on a misspelled cut.
+`swap <id> --package "cut=add" …` applies the pairs IN ORDER with the same `_swap_edit_lines` an applied swap
+uses, grades a temp copy with `deck_quality_vector` (the `_quality_vector_at` pattern), runs one
+`legality_report`, and prints per pair the identity verdict `--apply` would give and the section advisory. It
+writes nothing and records no ledger row. A test pins that its printed figures equal the vector of the same
+pairs actually applied.
+
 
 ## [G-07] Triage the roster before full-tuning it
 
@@ -1271,6 +1279,12 @@ a note is prose, and a word inside it is exactly what you are looking for.
 **Re-adding a listed card (2026-10-07).** A name-only line matches the listed row by NAME
 (it used to append a duplicate, because the dedupe key carried the input's set/collector),
 and `--target` on a re-add APPENDS the deck id rather than being dropped — see G-82.
+
+**The deck view of `--by-set` (2026-10-20, tooling batch 5).** Asked "which packs serve decks 84–86", the
+wishlist could answer for 35 of the 96 cards those decks were missing; the other 61 were never wishlisted.
+`deck.py wildcards --by-set [--decks …]` groups the shared-collection shortfall (a card short in several
+decks counts once, at the most any deck needs) by the set each deck line names. `wishlist --by-set` stays the
+view of the wishlist itself.
 
 ## [G-20] Auto-targeting a wishlist batch: trust STRONG, judge `review`
 
@@ -3213,6 +3227,11 @@ and false of a land.
 **BS11-31 (2026-10-02).** Shocklands earned the untapped premium from 2026-09-04 but still
 printed the bare `·tapped?`, whose legend says "scored as tapped" — the marker contradicted
 the score beside it. They print `·shock` now, and the legend names it.
+
+**Owned options are footnoted (2026-10-20, tooling batch 5).** The default view leads with craft targets,
+so on deck 85 all 50 owned qualifying lands sat below the 20-row window and the best of them (#28 of 247)
+surfaced only once `--owned` was added by hand. `suggest_lands` now counts owned picks before the window cuts
+the list, and the default view prints how many qualify, how many were shown, and where the best ranks.
 
 ## [G-38] `deck.py suggest --ramp / --interaction / --needs` are the NEEDS model — the structural axes the
 
@@ -6016,6 +6035,13 @@ three-slash spelling a paste or a hand-typed list often carries — matched no p
 in its `_ms_key`, so the front-face key never reached the pool. `lib.normalize_card_name` collapses any run
 of slashes to ` // ` (and extra whitespace), and `_ms_key`, `_printing_of`, `_resolve_card_name` and the
 `swap` inputs call it first.
+
+**A bare `//` inside a name is part of the name (2026-10-20, tooling batch 5).** Batch 1's first
+`normalize_card_name` collapsed EVERY run of two or more slashes, so the real card "SP//dr, Piloted by Peni"
+(decks 65 and 84) became "SP // dr…" and keyed as "sp" — its printing lookup failed and every `_ms_key` join
+mis-read it. Found because `wildcards --by-set`, which joins through `owned()`, disagreed with a direct
+`_ms_key` count by exactly that card. Only a run of three or more slashes, or a `//` already touching
+whitespace, is normalised now; a test pins SP//dr.
 
 ## [G-64] A reanimator's uncastable bombs are not a build error — `#: uncastable-ok:`
 

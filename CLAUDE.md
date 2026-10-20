@@ -336,7 +336,8 @@ is protecting.
   identity is WARNED in the preview and REFUSED on `--apply` (the same lock and test as
   `legal`, before any write or ledger row); and **`swap <id> --undo`** reverses the deck's
   LAST swap — restores that swap's own backup, drops its ledger row — and refuses if
-  anything else changed since. [G-06]
+  anything else changed since. **`swap <id> --package "A=B" "C=D"`** previews a whole
+  set as one change (combined vector, floor, legality, per-pair identity) and writes nothing. [G-06]
 - **Triage the roster with `deck.py audit` before full-tuning it** — the cheap, offline
   funnel for "which decks actually need a tune", labelled ★ TUNE / craft / review / ok
   and sortable by `Tier`. It is a SHORTLIST SIGNAL: a flag says "look here", and a
@@ -486,7 +487,9 @@ is protecting.
   match 14/40a/54); `--note` alone stays a substring search.
   **The file's rows end in CRLF** (the `csv` default); a rewrite with `lineterminator='\n'` touches
   every row, so a one-cell edit reads as a 164-line diff. Write it through `wishlist.py`'s own
-  writer or the default terminator. [G-19]
+  writer or the default terminator. **`--by-set` covers WISHLISTED cards only** — for what
+  DECKS still need, use `deck.py wildcards --by-set [--decks …]` (the wishlist held 35 of
+  96 missing cards, 2026-10-20). [G-19]
 - **Auto-targeting a wishlist batch: trust STRONG, judge `review`.**
   `wishlist.py --suggest-targets` scores fit by theme rarity (idf) so broad decks stop
   acting as catch-alls — only a *specific* theme is a confident match. Workflow: `--add`
@@ -748,15 +751,15 @@ is protecting.
   and print `·shock` / `·fast` / `·check` (G-35, BS11-31). **The G-35 breadth credit re-ranks the #1 pick
   in 22 of 115 decks** — fetches beat untapped duals on FIXING; `_LAND_BREADTH_PER_COLOR`
   is the dial. **A LAND ALREADY IN THE DECK IS A PICK (2026-09-20)** — it had inherited
-  `suggest` proper's skip-what-you-run filter (right there, G-04's `+In` bug), so it could
-  not say the thing that fixes most manabases: play a SECOND copy of the untapped dual you
-  already run. Only the format copy limit and basics exclude now, and an `In` column labels
+  `suggest`'s skip-what-you-run filter (G-04's `+In` bug), so it could not propose a SECOND
+  copy of an untapped dual you already run. Only the format copy limit and basics exclude now, and an `In` column labels
   the duplicate. Roster: **58 of 112 decks' #1 pick is now another copy**, all singleton
   untapped duals. **The RIDER breaks ties, and only ties (2026-09-06)**: four Boros taplands
   tied at 10.9 (a scry, nothing, a draw sink, a life point). `_land_utility` (creature /
   draw / scry / surveil / sink / ping / life; `sink~` = one creature type) is a SORT KEY
   after the score, never a score term — the smallest fixing step is 0.1, so any additive
-  nudge would re-rank lands on something other than fixing. Scores pinned unchanged.
+  nudge would re-rank lands on something other than fixing. The default view footnotes
+  the OWNED lands its craft-led window hid (2026-10-20).
   **`/tune-deck` runs this EVERY run since 2026-09-23** — it was gated on a scorecard mana
   deficit, which is the one deck this list has nothing to say to. [G-37]
 - **`suggest --ramp / --interaction / --needs` are the NEEDS model** — the structural
@@ -1089,7 +1092,8 @@ is protecting.
   RESPONSES and so invisible to the pool-reading scan) — key every name JOIN, a writer's
   too, on `_ms_key`, and read a `#:` header's card names through
   `deck._header_card_keys`.** Typed input passes through `lib.normalize_card_name` first,
-  so `A /// B` reaches the same key as `A // B`. Gated by `check_dfc`'s registry, its AST scan for name-index
+  so `A /// B` reaches the same key as `A // B` — and a bare `//` inside a name (SP//dr)
+  is left alone. Gated by `check_dfc`'s registry, its AST scan for name-index
   BUILDERS and its editor-payload scan. That scan was POOL-scoped — hiding FOUR
   library-side indexes from a gate built for its own bug class (BS6-01) — and now covers
   both files; **a gate whose scope excludes the file the bug lives in is absent, not

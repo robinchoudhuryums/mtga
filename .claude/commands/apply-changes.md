@@ -24,6 +24,10 @@ oracle text against THIS deck's engine, never a role/fit label).
 
 ## Stage 2 — Apply each swap (read both cards' full text first)
 
+With more than one swap, **preview the set as one change first**:
+`python3 scripts/deck.py swap <id> --package "<cut>=<add>" …` prints the combined vector,
+tier floor and legality, and flags an add outside a commander's identity, writing nothing.
+
 For each `−cut / +add`:
 
 2. **Preview it:** `python3 scripts/deck.py swap <id> --cut "<cut>" --add "<add>"`

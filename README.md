@@ -491,6 +491,7 @@ breaks no invariant, which is exactly why `verify_ingest.py` exists (see below).
 python3 scripts/deck.py list          # every deck + variant, with buildable status
 python3 scripts/deck.py wildcards     # roster-wide crafting plan (wildcards to finish decks)
 python3 scripts/deck.py wildcards --dedup   # cross-deck union of craft targets, best value-per-copy first
+python3 scripts/deck.py wildcards --by-set --decks 84 85 86   # pack planning: what these decks still need, grouped by set
 python3 scripts/deck.py audit         # roster triage: one line per deck — which decks need a tune
                                       #   (incl. Pld = matches played, report-only)
 python3 scripts/deck.py similar 40    # decks most alike by central-theme overlap (is it distinct?)
@@ -517,6 +518,7 @@ python3 scripts/deck.py flex 20a       # suggested swaps (#~ lines) + stale ones
 python3 scripts/deck.py swap 20a --cut A --add B   # preview deltas + FULL oracle text of both; --apply writes (.bak) + auto-retires stale #~ flex lines
 python3 scripts/deck.py swap 20a --cut A --add B --apply --section Removal   # ...and file the new line under `# Removal` (verbatim; never hand-move a card line)
 python3 scripts/deck.py swap 20a --undo --apply   # reverse this deck's LAST swap and drop its ledger row; refuses if the file changed since
+python3 scripts/deck.py swap 20a --package "A=B" "C=D"   # preview several swaps as ONE change: combined vector, floor, legality; writes nothing
 python3 scripts/deck.py apply-flex 20a 2      # promote flex swap #2 into the 60 (--apply writes)
 python3 scripts/deck.py feedback             # how cuts/suggest scored against the swaps you applied (report-only)
 pbpaste | python3 scripts/deck.py verify 20a  # diff a pasted Arena export against the stored deck

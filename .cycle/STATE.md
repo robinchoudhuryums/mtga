@@ -384,8 +384,8 @@ Updated: 2026-10-20 (Brawl tooling plan Batch 5 — see Where I left off)
 ## Where I left off
 **2026-10-20 (latest) — Brawl tooling plan, Batch 5 done** (`wildcards --by-set`, lands owned
 footer, SP//dr normaliser regression; block `tooling-batch5-broad-implement.md`). Suite + check_all
-green. **Next:** Batch 6 (profile only), then 7 (auto section placement). Docs owed for Batches 4–5
-(G-06, G-19, G-37, README, /tune-deck, /apply-changes). Docs for batches 1–3 SYNCED
+green. **Next:** Batch 6 (profile only), then 7 (auto section placement). Docs for Batches 4–5 SYNCED
+2026-10-20 (G-06, G-19, G-37, G-63, README, /tune-deck, /apply-changes; 0 drift). Docs for batches 1–3 SYNCED
 2026-10-20 (G-06/G-09/G-56/G-63, C-01, README, /apply-changes; 12 stale figures refreshed, 0 drift).
 
 **2026-10-09 (latest) — deck 34 (Zoologist) tuned across ten waves, then tool gaps #2/#4/#5
