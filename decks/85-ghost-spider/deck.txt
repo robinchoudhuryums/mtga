@@ -7,7 +7,7 @@
 #: archetype: EXILE around Gwen Stacy // Ghost-Spider: Gwen exiles a card to play on entering, and
 #: archetype: Ghost-Spider grows on every land played or spell cast from exile and spends counters to
 #: archetype: exile more. Three engines feed each other. IMPULSE: Daredevil, Chandra, Charred Foyer,
-#: archetype: Jessica Jones, Wiccan and The Legend of Roku play cards off the top. CAST-FROM-EXILE
+#: archetype: Jessica Jones, Asgardian Inspiration and The Legend of Roku play cards off the top. CAST-FROM-EXILE
 #: archetype: PAYOFFS turn each of those plays into damage: Nico Minoru, Quintorius Kand, Shadow of the
 #: archetype: Goblin and Spider-Man 2099, with Spider-Verse copying one a turn and Appa,
 #: archetype: Steadfast Guardian exiling your own permanents to be recast from exile for {2}.
@@ -25,8 +25,10 @@
 #: notes: for Murdock's Crusade (a 4/5 flyer that copies a cheap spell from the graveyard); Longhorn
 #: notes: Sharpshooter for Talisman of Creativity (2 damage to any target when plotted); Chandra,
 #: notes: Pyromaster for Arcane Signet (ping plus impulse). Protection 6 -> 7, board power 107 -> 119.
-#: notes: PENDING OWNER: Bilbo, Thief in the Night, Asgardian Inspiration, Goliath Daydreamer.
-#: notes: Searing Soloist and Insult // Injury weighed, not yet applied (see chat).
+#: notes: SPIDER-VERSE KEPT, 2026-10-20 (owner's picks): Goliath Daydreamer for Virtue of Courage,
+#: notes: Asgardian Inspiration for Crossover Collaboration, Bilbo, Thief in the Night for Talisman of
+#: notes: Conviction, Insult // Injury for Wiccan, Young Avenger. Searing Soloist was weighed and NOT
+#: notes: taken: its Aria of Flame gives each opponent 10 life, a large cost to a racing burn plan.
 #: notes: DRAFTED 2026-10-19 from the deck 85 set-aside pile (.cycle/85-hero-damage-pile.md)
 #: notes: plus owned impulse, damage and interaction. Hawkeye, Avenging Archer from the owner's
 #: notes: list is NOT in the card pool (not yet indexed, or a different name); add it when found.
@@ -64,11 +66,11 @@
 1 Ojer Axonil, Deepest Might (LCI) 158
 1 Artist's Talent (BLB) 124
 1 Solphim, Mayhem Dominus (ONE) 150
+1 Insult // Injury (AKR) 162
 
 # Damage into cards — noncombat damage to an opponent digs or draws
 1 Thor, Guardian of Midgard (MSC) 503
 1 Niv-Mizzet, Visionary (FDN) 123
-1 Virtue of Courage // Embereth Blaze (WOE) 157
 1 Sword of Fire and Ice (MAR) 100
 
 # Cast-from-exile payoffs
@@ -77,6 +79,8 @@
 1 Spider-Man 2099 (SPM) 150
 1 Shadow of the Goblin (SPM) 87
 1 Spider-Verse (SPM) 93
+1 Goliath Daydreamer (ECL) 143
+1 Bilbo, Thief in the Night (HOB) 33
 
 # Impulse engines — exile the top card and play it
 1 Daredevil, Fearless Fighter (MSC) 685
@@ -86,10 +90,9 @@
 1 Interdimensional Web Watch (SPM) 165
 1 The Legend of Roku (TLA) 145
 1 Jessica Jones, Private Eye (MSH) 139
-1 Wiccan, Young Avenger (MSC) 557
 1 Stick, Fearless Mentor (MSC) 706
 1 Season of the Bold (BLB) 152
-1 Crossover Collaboration (MSC) 684
+1 Asgardian Inspiration (MSC) 678
 1 Chandra, Pyromaster (AKR) 146
 
 # Pingers and Hero bodies
@@ -136,7 +139,6 @@
 1 Airbender's Reversal (TLA) 7
 
 # Ramp — the Talismans' 1 damage to you feeds Daredevil, Fearless Fighter and Stick
-1 Talisman of Conviction (AA1) 17
 
 # Lands (36)
 1 Steam Vents (ECL) 267
