@@ -50,6 +50,7 @@ import csv
 import functools
 import json
 import math
+import io
 import os
 import re
 import shutil
@@ -167,16 +168,40 @@ FORMAT_VARIANT_RE = re.compile(r"^(\d+)-(" + "|".join(_FORMAT_SLUGS) + r")(?:[-.
 # --------------------------------------------------------------------------- #
 # Deck discovery + parsing
 # --------------------------------------------------------------------------- #
+# path -> (file bytes, (meta, cards)). Keyed on the BYTES, not the mtime: Linux file
+# timestamps tick at ~4ms and a `deck.py move` rewrites a deck at the SAME size, so a
+# (mtime, size) key could serve a stale parse inside one process (swap → undo, the
+# editor). Reading a deck file is cheap; parsing it 87,429 times was 70s of a dashboard
+# build (Batch 6 profile).
+_PARSE_MEMO = {}
+
+
 def parse_deck_file(path):
     """Return (meta_dict, [(qty, name, set, collector), ...]).
 
     A repeated `#:` key (notably a multi-line `#: notes:` block) is concatenated
     in order rather than overwritten, so the FULL note survives — previously only
     the last `#: notes:` line was kept, which truncated a deck's documented intent
-    to a mid-sentence fragment in every tool that reads it."""
+    to a mid-sentence fragment in every tool that reads it.
+
+    Memoized on the file's exact bytes; every call gets its OWN dict and list, so a
+    caller that edits the result cannot change what the next caller sees (G-71)."""
+    with open(path, "rb") as fh:
+        data = fh.read()
+    hit = _PARSE_MEMO.get(path)
+    if hit is None or hit[0] != data:
+        hit = (data, _parse_deck_bytes(data))
+        _PARSE_MEMO[path] = hit
+    meta, cards = hit[1]
+    return dict(meta), list(cards)
+
+
+def _parse_deck_bytes(data):
     meta, cards = {}, []
     in_board = False
-    with open(path, encoding="utf-8") as fh:
+    # A TextIOWrapper reads exactly as `open(path, encoding="utf-8")` did — universal
+    # newlines and the same decode errors — so the memo cannot change a parse.
+    with io.TextIOWrapper(io.BytesIO(data), encoding="utf-8") as fh:
         for raw in fh:
             m = META_RE.match(raw.strip())
             if m:
@@ -3449,8 +3474,28 @@ def _norm_role_text(text):
     return _REMINDER_RE.sub(" ", (text or "").lower().replace("−", "-"))
 
 
+# text -> frozenset(roles), valid for one identity of the tables the classifier reads.
+# 16,653 calls per `swap --apply` and 620,483 per dashboard build re-classified the same
+# ~16k pool texts (Batch 6 profile: 151s of the dashboard). Keyed on the tables' IDENTITY
+# so a test that monkeypatches `_ROLE_COMPILED` (test_gates_fire) gets a fresh cache.
+_ROLE_MEMO = {"tables": None, "hits": {}}
+
+
 def classify_roles(text):
-    """Return the set of functional-role labels a card's oracle text matches."""
+    """Return the set of functional-role labels a card's oracle text matches.
+    Memoized per text; each call returns a NEW set, so callers may mutate it."""
+    tables = (_ROLE_COMPILED, _ROLE_COMPILED_MAP, _LOOT_RE, _REMINDER_RE)
+    memo = _ROLE_MEMO
+    if memo["tables"] is None or any(a is not b for a, b in zip(memo["tables"], tables)):
+        memo["tables"], memo["hits"] = tables, {}
+    hit = memo["hits"].get(text)
+    if hit is None:
+        hit = frozenset(_classify_roles_uncached(text))
+        memo["hits"][text] = hit
+    return set(hit)
+
+
+def _classify_roles_uncached(text):
     t = _norm_role_text(text)
     roles = {label for label, pats in _ROLE_COMPILED if any(p.search(t) for p in pats)}
     if "Card advantage" in roles and _LOOT_RE.search(t):
@@ -9737,7 +9782,14 @@ def load_match_counts():
 
 def load_legalities():
     """name_lower -> set(formats the card is legal in), from card-pool.csv's
-    Legalities column. Empty if the pool is missing or predates the column."""
+    Legalities column. Empty if the pool is missing or predates the column.
+    Memoized on the pool file (it was re-read 122 times per dashboard build, 45s); the
+    dict is a fresh shallow copy per call, and no caller mutates the sets."""
+    return dict(_load_legalities_cached())
+
+
+@_file_memo("POOL_CSV")
+def _load_legalities_cached():
     out = {}
     if not os.path.exists(POOL_CSV):
         return out
@@ -15361,6 +15413,11 @@ def rationale_staleness(d, carddata=None):
     meta, cards = parse_deck_file(d["path"])
     in_deck = {n for _q, n, _s, _c in cards}
     in_deck |= {n.split(" // ")[0] for n in list(in_deck)}
+    # Every text before a space in an in-deck name: `disp in word_prefixes` is exactly
+    # `any(other.startswith(disp + " ") for other in in_deck)`, the SHORTHAND guard
+    # below, as one set lookup. That generator ran 188M steps per check_all — 143s of a
+    # 233s profile (Batch 6) — because it ran for every pool card in every deck.
+    word_prefixes = {o[:i] for o in in_deck for i, ch in enumerate(o) if ch == " "}
     stale_cards, stale_figures = [], []
     # `#: archetype:` is scanned alongside `#: tier:` because it is equally a CLAIM
     # about the current deck — "these cards push your life total up" is false once those
@@ -15396,7 +15453,7 @@ def rationale_staleness(d, carddata=None):
             # prose never meant. Masking cannot help: the full name is not in the text.
             # A citation that is a strict word-prefix of a card the deck DOES run is an
             # abbreviation of that card, not a reference to a different one.
-            if any(other.startswith(disp + " ") for other in in_deck):
+            if disp in word_prefixes:
                 continue
             # CASE-SENSITIVE: prose capitalizes a card citation, so this is what keeps
             # ordinary vocabulary out. A lowercase "counterspell"/"food"/"negate" in a

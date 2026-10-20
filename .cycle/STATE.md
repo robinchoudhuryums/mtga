@@ -44,6 +44,10 @@ Updated: 2026-10-20 (Brawl tooling plan Batch 7 — see Where I left off)
 
 ## Completed this cycle
 
+- **2026-10-20 — speed-up batch + roster refiles** (block `tooling-speedup-broad-implement.md`):
+  four memos/rewrites from the Batch 6 profile, with every compared output byte-identical. check_all
+  77→36s, dashboard 217→80s, swap --apply 6.9→2.7s, postedit ~305→118s, pytest 345→181s. Also
+  35a/37a's four type misfiles were refiled with `deck.py move`. Net 0 − 0.
 - **2026-10-20 — Brawl tooling plan, Batch 7** (block `tooling-batch7-broad-implement.md`): swap
   section placement is AUTOMATIC on an objective TYPE misfit, and a land always goes to the one land
   header. Role misfits warn. `--keep-section` opts out. Header claims are read from the HEAD only
@@ -393,8 +397,9 @@ Updated: 2026-10-20 (Brawl tooling plan Batch 7 — see Where I left off)
 ## Where I left off
 **2026-10-20 (latest) — Brawl tooling plan, Batch 7 done; THE 9-ITEM PLAN IS COMPLETE**
 (block `tooling-batch7-broad-implement.md`). Suite 2186 passed, check_all OK. Docs SYNCED 2026-10-20 (G-05/G-77, README,
-/apply-changes, systems-map, gotchas G-05). **Next:** optionally the
-Batch 6 speed-up batch, and the owner's call on 4 auto-movable roster misfiles (35a, 37a).
+/apply-changes, systems-map, gotchas G-05). The speed-up batch and the 35a/37a refiles are DONE too
+(block `tooling-speedup-broad-implement.md`). **Next:** the PR for the branch; then the remaining
+follow-ons (blank-Legalities exclusion in suggest/screen/cuts, apply-flex undo, systems-map timings).
 
 **2026-10-20 (latest) — Brawl tooling plan, Batch 6 done** (profile only; block
 `tooling-batch6-broad-implement.md`). **Next:** Batch 7 (automatic section placement). Then optionally

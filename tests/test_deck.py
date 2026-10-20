@@ -7998,3 +7998,52 @@ class TestLandsOwnedFooter:
         deck.cmd_suggest_lands(NS(unowned=False, owned=True, limit=1, fmt=None,
                                   any_format=False), d)
         assert "owned land(s) qualify" not in capsys.readouterr().out
+
+
+class TestHotPathMemos:
+    """The 2026-10-20 speed-up (Batch 6 profile → check_all 77s → 36s, dashboard 217s →
+    80s, swap --apply 6.9s → 2.7s). Every memo here must be invisible: same answers,
+    fresh objects, and no staleness inside one process."""
+
+    def test_a_SAME_SIZE_rewrite_is_reparsed(self, tmp_path):
+        # A `deck.py move` reorders lines at identical size within one timestamp tick;
+        # the parse memo is keyed on the BYTES so it cannot serve the old order.
+        p = tmp_path / "d.txt"
+        p.write_text("1 Shock (M21) 159\n1 Murder (M21) 109\n")
+        assert [n for _q, n, _s, _c in deck.parse_deck_file(str(p))[1]] == ["Shock", "Murder"]
+        p.write_text("1 Murder (M21) 109\n1 Shock (M21) 159\n")
+        assert [n for _q, n, _s, _c in deck.parse_deck_file(str(p))[1]] == ["Murder", "Shock"]
+
+    def test_parse_results_are_independent_copies(self, tmp_path):
+        p = tmp_path / "d.txt"
+        p.write_text("#: name: T\n1 Shock (M21) 159\n")
+        meta, cards = deck.parse_deck_file(str(p))
+        meta["name"] = "mutated"
+        cards.append((9, "X", "", ""))
+        meta2, cards2 = deck.parse_deck_file(str(p))
+        assert meta2["name"] == "T" and len(cards2) == 1
+
+    def test_the_parse_memo_reads_newlines_like_open_did(self, tmp_path):
+        p = tmp_path / "d.txt"
+        p.write_bytes(b"#: name: T\r\n1 Shock (M21) 159\r\n")
+        meta, cards = deck.parse_deck_file(str(p))
+        assert meta["name"] == "T" and cards == [(1, "Shock", "M21", "159")]
+
+    def test_classify_roles_returns_a_fresh_set(self):
+        text = "Draw two cards."
+        first = deck.classify_roles(text)
+        first.add("bogus")
+        assert "bogus" not in deck.classify_roles(text)
+
+    def test_classify_roles_cache_resets_when_a_table_is_swapped(self, monkeypatch):
+        text = "Destroy target creature."
+        assert "Removal (spot)" in deck.classify_roles(text)
+        monkeypatch.setattr(deck, "_ROLE_COMPILED",
+                            [(lab, pats) for lab, pats in deck._ROLE_COMPILED
+                             if lab != "Removal (spot)"])
+        assert "Removal (spot)" not in deck.classify_roles(text)
+
+    def test_load_legalities_hands_out_a_fresh_dict(self):
+        a = deck.load_legalities()
+        a["__probe__"] = {"standard"}
+        assert "__probe__" not in deck.load_legalities()

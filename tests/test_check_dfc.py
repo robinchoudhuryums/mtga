@@ -27,7 +27,7 @@ class TestLiveRepo:
         letting guard (4) quietly pass by finding nothing at all."""
         found = {(m, f) for m, f, _fn, _ln in cd._pool_index_builders()}
         for expected in (("deck", "load_card_data"), ("deck", "load_rarities"),
-                         ("deck", "load_legalities"), ("deck", "_legality_of"),
+                         ("deck", "_load_legalities_cached"), ("deck", "_legality_of"),
                          ("wishlist", "load_pool_index")):
             assert expected in found, f"{expected} no longer detected as a pool index"
 
