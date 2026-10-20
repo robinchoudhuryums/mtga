@@ -40,7 +40,6 @@ Ball Lightning
 Bandit's Talent
 Baxter Stockman
 Bejeweled Warg
-Big Bertha
 Billowing Shriekmass
 Bioengineered Future
 Biogenic Upgrade
@@ -162,6 +161,7 @@ Ghalta, Primal Hunger
 Ghost, Spectral Saboteur
 Ghostly Keybearer
 Giant Cindermaw
+Giant-Man, Gargantuan Genius
 Gilgamesh, Master-at-Arms
 Glarb, Calamity's Augur
 Glider Kids

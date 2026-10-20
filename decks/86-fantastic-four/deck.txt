@@ -30,9 +30,14 @@
 #: notes: Earth's Mightiest Heroes for Proctor's Gaze (teamwork puts every creature in the top
 #: notes: eight onto the battlefield), Venus for Namor, Scourge of the Seas, Moon Girl and Devil
 #: notes: Dinosaur for Beast (draws off Mutagen tokens entering).
+#: notes: MUTANT/FOUR PASS, 2026-10-20: X-23 for Peter Parker, Black Tom Cassidy for Big
+#: notes: Bertha, Sally Pride for Ajani, Mentor of Heroes, Giant-Man for Hulk, Gamma Goliath,
+#: notes: Raph & Mikey for Ms. Marvel, Elastic Ally, Black Panther, Wakandan King for Mona Lisa.
+#: notes: Reed Richards, Smartest Man is the open add; Sigarda was weighed as its cut and KEPT —
+#: notes: it gives you and 15 Humans hexproof, the commander and all four members among them.
 #: notes: TIER UNSET pending the owner's call. The measurable floor reads A at 100 cards
 #: notes: (interaction 13 and card advantage 8, against an A line of 12 and a sum of 19);
-#: notes: protection 7, board power 138. The tools undercount card flow here: the commander's
+#: notes: protection 7, board power 149. The tools undercount card flow here: the commander's
 #: notes: draw mode, Mister Fantastic, Goliath and Ms. Marvel are triggers, not draw spells.
 #: notes: THE COST is four colours: 18 W, 18 U, 16 R, 20 G land sources and the commander's
 #: notes: {G}{R}{U}{W} at 58% on turn four. The draft swapped the Temples for tri-lands, two
@@ -57,6 +62,7 @@
 1 She-Hulk, Attorney-at-Law (MSC) 745
 1 The Earth Crystal (FIN) 184
 1 Loading Zone (EOE) 196
+1 X-23, Deadly Weapon (MSC) 738
 
 # Four-power bodies — each one a commander trigger (power, toughness or mana value 4)
 1 Hulk, Brutal Brawler (MSC) 833
@@ -78,20 +84,19 @@
 1 Ms. Marvel, Kamala Khan (MSH) 67
 1 Venus, Torn Between Worlds (TMT) 136
 1 Wiccan, Rising Magician (MSH) 83
-1 Big Bertha (MSC) 714
 1 Mutagen Man, Living Ooze (TMT) 124
 1 Storm, Force of Nature (MAR) 94
 1 Colossus, Steel Stalwart (MSC) 717
+1 Sally Pride, Lioness Leader (TMT) 24
+1 Giant-Man, Gargantuan Genius (MSC) 722
+1 Raph & Mikey, Troublemakers (TMT) 167
 
 # Support Heroes — card flow, mana and protection
-1 Peter Parker (SPM) 10
 1 Bruce Banner (MSH) 49
 1 Jennifer Walters (MSH) 18
 1 Goliath, Mass Manipulator (MSC) 766
 1 Shang-Chi, Master of Kung Fu (MSH) 187
-1 Hulk, Gamma Goliath (MSH) 215
-1 Ms. Marvel, Elastic Ally (MSC) 744
-1 Mona Lisa, Science Geek (TMT) 123
+1 Black Panther, Wakandan King (MAR) 87
 1 Mikey & Leo, Chaos & Order (TMT) 158
 1 Mikey & Don, Party Planners (TMT) 157
 1 Genghis Frog (TMT) 148
@@ -101,7 +106,6 @@
 
 # Noncreature spells — mana value 4 where possible, so each one triggers the commander AND the members
 1 Annie Joins Up (OTJ) 191
-1 Ajani, Mentor of Heroes (PIO) 351
 1 Terrific Team-Up (MSC) 819
 1 Polliwallop (BLB) 189
 1 Troll Negotiations (HOB) 138
@@ -116,6 +120,7 @@
 
 # Ramp and fixing
 1 Arcane Signet (FRC) 20
+1 Black Tom Cassidy (MSC) 715
 
 # Lands (37)
 1 Steam Vents (ECL) 267
