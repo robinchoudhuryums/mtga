@@ -41,7 +41,11 @@ For each `−cut / +add`:
    **auto-retires `#~` flex lines** the swap made stale (a line proposing the
    card you just maindecked, or cutting one you just removed).
 
-   If the add belongs under a different `# section` than the cut card's slot,
+   Section placement is AUTOMATIC when the card's TYPE settles it (a land
+   swapped in under `# Nonland`/`# Interaction` moves to the deck's land
+   header; the preview prints `↪ section: will place under …`), and
+   `--keep-section` opts out. When the preview instead prints `⚠ section
+   comment` (a role misfit or several candidate headers), decide the home and
    pass **`--section "<header substring>"`** in the SAME command. Never move the
    line by hand afterwards: relocating four lines that way in one session
    invented two collector numbers, because a hand edit retypes the `(SET)

@@ -316,10 +316,15 @@ is protecting.
   all of it; sometimes the fix is to RETIRE the line, not retarget it. Advisory — a flex
   line is a human note, so nothing edits one. [G-04]
 - **A swap inherits the cut card's `# section` comment**, so the file then lies to the
-  next reader. `swap --apply` warns via `section_mismatch`, on UNAMBIGUOUS headers only.
-  The WARNING is advisory (where a line belongs is editorial) but the REMEDY is
-  mechanical since G-77: pass **`--section "<header>"`** in the same command and never
-  hand-move a card line, which retypes the printing fields G-65 governs. [G-05]
+  next reader. **Since 2026-10-20 placement is AUTOMATIC on an objective TYPE misfit**
+  (owner's call): a land under `# Nonland` / `# Interaction`, a spell under `# Lands`,
+  moves verbatim to the ONE header that fits, and a land always goes to the deck's one land
+  header; dry run and `--package` preview it. A ROLE misfit (K-12 heuristic) or an
+  ambiguous target only WARNS, naming candidates. `--keep-section` opts out; `--section
+  "<header>"` overrides. Header claims are read from the HEAD only (before a dash or
+  paren, every piece a known label), and a wrapped multi-line header is ONE section —
+  read line by line, the first replay would have moved 73 lands out of their own section.
+  Never hand-move a card line: it retypes the printing fields G-65 governs. [G-05]
 - **Preview every swap with `deck.py swap <id> --cut A --add B`** — it prints the FULL
   oracle text of BOTH cards plus the deltas. **Always grade a cut from that text, never
   from a role or fit label, and grade it against THIS deck's engine**: a cost that reads
@@ -1203,7 +1208,8 @@ is protecting.
   standalone form** — relocating an ALREADY-written line used to take a swap-out/swap-in
   pair, which polluted recommendations.csv with rows that were relocations, not decisions.
   **When a warning's only remedy is a manual edit of a file the rules say never to edit
-  manually, the tool owes you the mechanical form of that edit.** [G-77]
+  manually, the tool owes you the mechanical form of that edit** — and since 2026-10-20
+  (G-05) `swap` makes it itself when the misfit is an objective type fact. [G-77]
 
 - **A SHARING CLAIM IS NOT A COMPARISON, and the citation audit suppressed it as one.**
   `_cites_as_history` treats any clause naming another deck as comparison context, which

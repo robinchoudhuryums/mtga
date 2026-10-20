@@ -250,6 +250,32 @@ contradict — and a card the classifier gave NO role gets softer "verify" wordi
 than a mismatch claim, since a no-role read usually means a lexicon gap, not a weak card.
 Advisory: it never moves the line, because that's a human editorial call.
 
+**2026-10-20 (Brawl tooling Batch 7) — AUTOMATIC on a TYPE misfit, by the owner's call.**
+The 84–86 Brawl builds kept landing a land in a spells section on a land-for-spell swap,
+and the only repair was a second command. `auto_section` now moves the line, verbatim and
+in the same write, when the inherited header makes a TYPE claim the card fails (Lands /
+Nonland / Creatures / Noncreature / Planeswalkers) and exactly one other typed header fits.
+A LAND outside any land header goes to the deck's one land header, however the inherited
+header reads, because a role header like `# Ramp` also "fits" a land by role. A ROLE misfit
+stays a warning with candidates: the role classifier is K-12's heuristic, and a person may
+file protection under "Interaction" on purpose. `section_fit` is the one verdict behind both
+the warning and the move (G-40).
+Two measurements decided the shape, both replays over the roster's 5,439 existing card
+placements, which a person filed and which are therefore mostly right:
+- **Header text is prose.** Reading a type or role word anywhere in it flagged 260
+  placements, most of them the header's DESCRIPTION ("# Lands-from-graveyard engine",
+  "# Interaction / tricks", "# Planeswalkers and support"). So only the HEAD claims: the
+  text before a dash, paren or colon, every `/ + , & and` piece a known label. That
+  flags 57: 13 type misfits, every one a real misfile, plus 44 role misfits.
+- **Most headers WRAP onto several `#` lines.** Read line by line, a land sat "under" its
+  own header's second line, and the first replay planned to move **73** lands out of the
+  section they were already in. Adjacent comment lines are now one header, named by the
+  first line. That also fixed a latent `move --section` bug: a needle could match a
+  continuation line and insert the card mid-header.
+
+The final replay moves **4** lines, all objectively misfiled: 35a's two lands under a
+spells header and 37a's two creatures under `# Noncreature`. They were left for the owner.
+
 
 ## [G-06] Previewing and applying swaps
 

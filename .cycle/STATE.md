@@ -260,7 +260,7 @@ Updated: 2026-10-20 (Brawl tooling plan Batch 7 — see Where I left off)
 
 ## Pending / not yet done
 - **PLANNED 2026-10-20 — Brawl tooling plan (9 items from the decks 84–86 builds), 7 batches:**
-  Batches 1–7 DONE (plan complete; docs for 6–7 pending /sync-docs). Plus Batch 1's open half: suggest/screen/cuts still exclude
+  Batches 1–7 DONE and docs SYNCED (plan complete). Plus Batch 1's open half: suggest/screen/cuts still exclude
   a blank-Legalities row silently.
 - **PLANNED 2026-10-07 — deck-32 tooling follow-ons, four `/broad-implement` batches, in order:**
   - **Batch A — DONE 2026-10-07** (block `11-batchA-tune32-followons-broad-implement.md`; also fixed the name-only re-add DUPLICATE row it exposed): G-22 `figure_drift` — refresh the two ledger figures in CLAUDE.md and give ledger-count entries a relative tolerance (~10%) so a tune stops re-firing the warning; and `wishlist.py --add` APPENDS a `--target` token to an already-listed row (never replaces it, never touches Note; validates the id) instead of skipping it — G-82/G-19 text updated.
@@ -392,8 +392,8 @@ Updated: 2026-10-20 (Brawl tooling plan Batch 7 — see Where I left off)
 
 ## Where I left off
 **2026-10-20 (latest) — Brawl tooling plan, Batch 7 done; THE 9-ITEM PLAN IS COMPLETE**
-(block `tooling-batch7-broad-implement.md`). Suite 2186 passed, check_all OK. **Next:** `/sync-docs`
-for Batches 6–7 (G-05/G-77 text, README `--keep-section`, /apply-changes Stage 2). Then optionally the
+(block `tooling-batch7-broad-implement.md`). Suite 2186 passed, check_all OK. Docs SYNCED 2026-10-20 (G-05/G-77, README,
+/apply-changes, systems-map, gotchas G-05). **Next:** optionally the
 Batch 6 speed-up batch, and the owner's call on 4 auto-movable roster misfiles (35a, 37a).
 
 **2026-10-20 (latest) — Brawl tooling plan, Batch 6 done** (profile only; block

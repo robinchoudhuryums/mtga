@@ -670,8 +670,19 @@ is usually two decks run together — is flagged **OVERSIZED?** and skipped too.
 Before this, spotting drift and repairing it were separate jobs: you read a diff, then
 hand-edited each file.
 
+**Placement is automatic when the type settles it.** An added card that inherits a
+section its TYPE contradicts — a land under `# Nonland` or `# Interaction`, a spell under
+`# Lands` — is moved, verbatim and in the same write, to the one header that fits; a land
+always goes to the deck's one land header. The dry run and `--package` say where it will
+land (`↪ section: will place under …`). When the mismatch is about what the card DOES
+(protection under `# Interaction`), or two headers fit, it only warns and names them,
+because a person may have filed it there on purpose. `--keep-section` leaves the line in
+the cut card's slot. Only a header's leading label counts (`# Lands (24) — duals…` claims
+lands; `# Interaction / tricks` claims nothing), and a header that wraps onto several `#`
+lines is one section.
+
 **`swap --section "<header substring>"`** places the added line under a named
-`# section` instead of inheriting the cut card's slot. Use it whenever the swap's
+`# section` and overrides the automatic placement. Use it whenever the swap's
 section-mismatch warning fires, and **never move the line by hand**: relocating four
 lines that way in one session invented two collector numbers, because a hand edit
 retypes the `(SET) COLLECTOR#` fields that only `resolve` is allowed to produce. The
