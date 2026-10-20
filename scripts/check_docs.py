@@ -528,7 +528,7 @@ def _live_figures():
         # kill another's pattern, since a dead pattern is reported but a wrong-but-live
         # one is not.
         ("G-86 roster median board power",
-         r"p10 37 / \*\*p50 (\d+)\*\*", lambda: _board_counts()[0]),
+         r"p10 \d+ / \*\*p50 (\d+)\*\*", lambda: _board_counts()[0]),
         # The DENOMINATORS are wildcards in the numerator patterns and registered as their
         # own figures (BS11-59) — G-85's lesson, unapplied here: a literal `of 112` meant the
         # numerators could match while the roster they were counted over had grown to 114,

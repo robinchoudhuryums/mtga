@@ -172,7 +172,7 @@ castability · curve · central-theme density), with the intangibles moving a de
   model can't see those), so it **under-rates by design.** An uncastable stray CAPS the floor at C
   rather than SETTING it, so a dead card can no longer RAISE a D-floor deck, and a card
   the deck's `#: uncastable-ok:` header declares intentional is not counted at all.
-- **A GOOD DECK CAN SIT AT A LOW FLOOR, AND THAT IS THE MODEL WORKING (investigated 2026-09-03, prompted by deck 78 playing above its B).** The floor reads TWO of the eleven terms `deck_quality_vector` produces; **21 of deck 78's 36 nonland cards contribute nothing to it** — 11 payoff/engine plus 10 with no role at all, Doubling Season / Starfield Vocalist / Katara among them, i.e. the entire trigger-doubling thesis. That is not deck-78-specific: the roster's MEDIAN deck has 71% of its nonland cards invisible to the floor (78 is 75%, rank 42 of 115). **A payoff-density term was simulated and DECLINED**: +1 per 4 payoff cards capped at +3 moved 16 decks, cut the C band 9→1 and pushed A to 62% — re-starting the saturation BS8-06 had just fixed — **and left deck 78 at B anyway.** So the answer to "does a well-playing deck mean the rubric is wrong" is no on both halves: the intended remedy is the human letter, which the rubric already lets sit ONE band above the floor. Three things say leave the table alone: the spread is healthy (A 71 / B 43 / C 3, the C band, empty since deck 73 left it, refilled on 2026-10-07 when single-target bounce moved from interaction to the report-only tempo line and took decks 22, 22-brawl, 67 and 68 there — top band 61% against the 85% alarm; the 2026-09-22 plan-header pass moved four decks A→B and widened it further, and the 2026-09-29 per-60 scaling moved one more, the 100-card 78-historic-brawl, which a removal add took back to A on 2026-09-30, and deck 55, whose 2026-10-01 swaps raised its curve and moved it A→B until a card-advantage add and a 25th land took it back to A the same day), the record cannot arbitrate (**79 matches, and int+ca correlates with winning at r = −0.03**; nothing clears the ±0.22 noise band, so this is not evidence the floor is wrong, it is evidence the sample sees nothing), and deck 78's 5-2 is one win above the 54% pooled baseline at n=7 against a 20-match floor. **Re-derive the table when `tier_floor_spread` says so; do not re-derive it because a deck outperformed its letter.**
+- **A GOOD DECK CAN SIT AT A LOW FLOOR, AND THAT IS THE MODEL WORKING (investigated 2026-09-03, prompted by deck 78 playing above its B).** The floor reads TWO of the eleven terms `deck_quality_vector` produces; **21 of deck 78's 36 nonland cards contribute nothing to it** — 11 payoff/engine plus 10 with no role at all, Doubling Season / Starfield Vocalist / Katara among them, i.e. the entire trigger-doubling thesis. That is not deck-78-specific: the roster's MEDIAN deck has 71% of its nonland cards invisible to the floor (78 is 75%, rank 42 of 115). **A payoff-density term was simulated and DECLINED**: +1 per 4 payoff cards capped at +3 moved 16 decks, cut the C band 9→1 and pushed A to 62% — re-starting the saturation BS8-06 had just fixed — **and left deck 78 at B anyway.** So the answer to "does a well-playing deck mean the rubric is wrong" is no on both halves: the intended remedy is the human letter, which the rubric already lets sit ONE band above the floor. Three things say leave the table alone: the spread is healthy (A 78 / B 40 / C 3, the C band, empty since deck 73 left it, refilled on 2026-10-07 when single-target bounce moved from interaction to the report-only tempo line and took decks 22, 22-brawl, 67 and 68 there — top band 64% against the 85% alarm; the 2026-09-22 plan-header pass moved four decks A→B and widened it further, and the 2026-09-29 per-60 scaling moved one more, the 100-card 78-historic-brawl, which a removal add took back to A on 2026-09-30, and deck 55, whose 2026-10-01 swaps raised its curve and moved it A→B until a card-advantage add and a 25th land took it back to A the same day), the record cannot arbitrate (**79 matches, and int+ca correlates with winning at r = −0.03**; nothing clears the ±0.22 noise band, so this is not evidence the floor is wrong, it is evidence the sample sees nothing), and deck 78's 5-2 is one win above the 54% pooled baseline at n=7 against a 20-match floor. **Re-derive the table when `tier_floor_spread` says so; do not re-derive it because a deck outperformed its letter.**
 - **The floor is ARCHETYPE-aware** (#4): an aggro deck closes on a fast clock, not an
   interaction suite, so for an **aggro** plan a bounded `_clock_score` (low curve +
   cheap threats + reach, 0–7) SUBSTITUTES for the interaction the resilience floor
@@ -331,7 +331,12 @@ is protecting.
   this deck` — and the probe is built from the POST-CUT list, because the card being cut may
   be the only thing satisfying the add's gate; asking the pre-swap deck answers the wrong
   question. Measured DEFENSIVE at the time it landed: replaying all 805 `recommendations.csv`
-  rows since 2026-08, **0 of 805** adds brought a gate their deck could not satisfy. [G-06]
+  rows since 2026-08, **0 of 805** adds brought a gate their deck could not satisfy. **Two
+  more since 2026-10-20:** in a Brawl/Commander deck an add outside the commander's colour
+  identity is WARNED in the preview and REFUSED on `--apply` (the same lock and test as
+  `legal`, before any write or ledger row); and **`swap <id> --undo`** reverses the deck's
+  LAST swap — restores that swap's own backup, drops its ledger row — and refuses if
+  anything else changed since. [G-06]
 - **Triage the roster with `deck.py audit` before full-tuning it** — the cheap, offline
   funnel for "which decks actually need a tune", labelled ★ TUNE / craft / review / ok
   and sortable by `Tier`. It is a SHORTLIST SIGNAL: a flag says "look here", and a
@@ -365,12 +370,12 @@ is protecting.
   **ARENA'S BRAWL LABELS ARE INVERTED HERE**: Arena's "Brawl" is
   100-card = `#: format: Historic Brawl`; Arena's "Standard Brawl" is 60-card =
   `#: format: Brawl` (`normalize_format` aliases the spellings — `historic-brawl` once
-  matched NEITHER set). A pool-absent card is *unverified*, not illegal. `deck.py brawl` is
+  matched NEITHER set). A pool-absent card, or a BLANK legality cell (`check_all` counts
+  them), is *unverified*, not illegal. `deck.py brawl` is
   the roster-wide counterpart. **`deck.py cuts <id>` ranks weakest-fit cards and is a
   SHORTLIST, not a GRADE** — it cannot see raw power or spice, and on a creature-heavy deck
-  it is close to a coin flip. **Three fixes were pre-registered and REFUTED** (body quality,
-  tag-count normalization, role-credit reweighting — the worst offenders are ZERO-role cards
-  a weight cannot help) — don't derive a fourth. Read the oracle text, preview with `swap`,
+  it is close to a coin flip. **Three fixes were pre-registered and REFUTED** (long form) —
+  don't derive a fourth. Read the oracle text, preview with `swap`,
   and hard-protect signature cards via `#: protect:`. `cuts` prints the axis the deck is
   SHORT on and flags `⌁scales w/ <axis>`. REPORT-only. **A CARD WHOSE POWER OR EFFECT IS A
   COUNT is graded at its FLOOR by every model here, and `_deck_state_axis` is the flag that
@@ -503,8 +508,8 @@ is protecting.
   **THE LIST IS A WINDOW AND THE RANKING IS THEME FIT, so read a card's ABSENCE as neither
   (BS10-05).** The footer counted the TRUNCATION, so it read "20 suggestion(s)" whether the
   ranking held 20 candidates or 958; it now prints "top N of M ranked candidate(s)"
-  (`--limit 0` for all). Why it matters is measured, not asserted: across **1135 applied swaps
-  that recorded a rank for the card ADDED, the MEDIAN rank is 387** and only **10%** fell
+  (`--limit 0` for all). Why it matters is measured, not asserted: across **1597 applied swaps
+  that recorded a rank for the card ADDED, the MEDIAN rank is 420** and only **9%** fell
   inside the default top 20. `deck.py feedback` reports that distribution. A card chosen for
   a mechanical interaction the tags do not encode ranks far down BY CONSTRUCTION — a
   different problem from the theme gate G-38 describes, and K-15 was its largest single
@@ -713,7 +718,7 @@ is protecting.
   `basic_types`, or it reads `check` for a deck that can never meet it.** Test
   `TAPLAND_CONDITIONAL_KINDS`, not a string.
   **NONLAND sources are DISCLOSED since 2026-09-18, never counted**: `consistency` prints
-  `ⓘ N NONLAND mana source(s) are NOT in the counts above` (**79 of 117 decks**). The
+  `ⓘ N NONLAND mana source(s) are NOT in the counts above` (**83 of 121 decks**). The
   exclusion is right (a rock is not a land drop); its SILENCE was not. BOARD-dependent colour
   (Vivid — `land_production`'s `board`, never `free`) and mana GRANTED to creatures are
   disclosed with a label since 2026-10-06.
@@ -924,7 +929,9 @@ is protecting.
   agreement is contaminated by the shortlist's own influence. REPORT-ONLY, and it must stay
   so: `tests/test_recommendations.py` forbids a scoring function reading the ledger — 7
   functions scanned, the DELEGATES (`cut_keep_score`, `_weakest_cut`) included. Recording
-  never blocks a swap (any exception is caught AFTER the deck file is written). **A swap
+  never blocks a swap (any exception is caught AFTER the deck file is written). An UNDONE
+  swap is not a decision either: `swap --undo` removes its own row (one step — after any
+  other edit it refuses, and the remedy is an ordinary reverse swap). **A swap
   applied only to MEASURE something still leaves a row** — use a dry run or a scratch copy,
   which since 2026-09-06 can live OUTSIDE decks/: `find_deck(id, allow_path=True)` lets the
   21 read-only commands take an existing `.txt` path, so a measurement needs no temporary
@@ -1000,9 +1007,9 @@ is protecting.
   two primitives the ◊ list and the effective figure already use so the three cannot
   disagree (G-40). **DISCLOSURE, never pricing** — report-only for G-25/G-60's reason, and do
   not "finish" it by feeding `tier_band`. **`_UNPRICED_DISCLOSE_FLOOR = 3` is p75 of its own
-  axis, not 1**: across the **63 decks that print an effective figure** the unpriced count
+  axis, not 1**: across the **64 decks that print an effective figure** the unpriced count
   runs p25 1 / p50 2 / p75 3 / p90 5 / max 11, so a floor of 1 fires on 83% (the G-07
-  saturation shape) against **21 of 63 (33%)** at 3. BOTH figures are registered in
+  saturation shape) against **20 of 64 (31%)** at 3. BOTH figures are registered in
   `figure_drift`, which is what caught the population move when impending joined. [G-85]
 - **BOARD PRESENCE IS AN AXIS AND NOTHING HERE MEASURED IT until 2026-09-18.** The tier
   floor reads interaction + card advantage, `cuts` reads theme fit and role credit, and
@@ -1010,15 +1017,15 @@ is protecting.
   A floor on resilience while fielding nothing that ends a game, and the only way to see
   that was to hand-roll the sum, done six times in one session before `board_power`
   existed. It is a SEPARATE axis, not a restatement of the floor: **r = −0.147 against a
-  ±0.188 noise band at n=112**. Roster distribution min 23 / p10 37 / **p50 57** / p90 73
-  / max 120. **REPORT-ONLY, and it must stay so** — a new `tier_band` term silently
+  ±0.188 noise band at n=112**. Roster distribution min 23 / p10 41 / **p50 58** / p90 80
+  / max 139 (n=121, 2026-10-20). **REPORT-ONLY, and it must stay so** — a new `tier_band` term silently
   re-grades the roster, the reason the protection axis (G-25) and the X-cost advisory
   (G-60) are kept out and the reason the payoff-density term was simulated and DECLINED
   2026-09-03. `deck_quality_vector` publishes it, `tier_band` ignores it, and a test pins
   that two decks differing only in creature SIZE land in the same band. **THREE THINGS IT
   CANNOT SEE, disclosed rather than guessed at:** a printed `*`/X power is counted APART
-  and never coerced to 0 (G-16), which is no corner case — **71 of 117 decks** hold one,
-  so a bare sum would under-report on 61% of the roster; TOKENS and other created bodies
+  and never coerced to 0 (G-16), which is no corner case — **72 of 121 decks** hold one,
+  so a bare sum would under-report on 60% of the roster; TOKENS and other created bodies
   read ZERO, so a card making two 3/3s contributes nothing; and VEHICLES are counted
   apart, not being creatures until crewed. Read the figure as a FLOOR on what the deck can
   present, never a ceiling. [G-86]
@@ -1081,7 +1088,8 @@ is protecting.
   key a distinct card owns (BS4-18 closed the last four, three of them indexing Scryfall
   RESPONSES and so invisible to the pool-reading scan) — key every name JOIN, a writer's
   too, on `_ms_key`, and read a `#:` header's card names through
-  `deck._header_card_keys`.** Gated by `check_dfc`'s registry, its AST scan for name-index
+  `deck._header_card_keys`.** Typed input passes through `lib.normalize_card_name` first,
+  so `A /// B` reaches the same key as `A // B`. Gated by `check_dfc`'s registry, its AST scan for name-index
   BUILDERS and its editor-payload scan. That scan was POOL-scoped — hiding FOUR
   library-side indexes from a gate built for its own bug class (BS6-01) — and now covers
   both files; **a gate whose scope excludes the file the bug lives in is absent, not
@@ -1167,7 +1175,7 @@ is protecting.
 - **A CARD THAT GRANTS A KEYWORD IS A CARD ABOUT THAT KEYWORD, and the tagger only read
   what a card HAS.** Keyword tags came from Scryfall's `keywords` field, so a lord handing
   the team deathtouch carried no `deathtouch` tag and looked like a card with nothing to do
-  with the deck built on it. **1,953 pool cards grant one of the twelve evergreens**, and
+  with the deck built on it. **1,955 pool cards grant one of the twelve evergreens**, and
   for FOUR the granted case is the MAJORITY, so the tag tracked the exception (haste has since crossed to a FIFTH at 366 grant vs 359 have — a 7-card margin that can flip on any pool rebuild, so do not harden the count). `tags_for`
   reads grants from TEXT now (`granted_keywords`, reminder text stripped, opponent- and
   loss-scoped clauses excluded). Tags feed `cuts` / `suggest` / centrality (deck 31's Venom
@@ -1611,7 +1619,9 @@ as its evidence that no longer matches the data — it lived inside a gate that 
 itself reached by nothing but a hand run), and (2026-09-20) an ELEVENTH, the G-10
 collection-freshness sweep (`check_all.collection_freshness_soft`: are the repo's OWNED
 counts trustworthy — `lib.collection_stamp_note` had three states and three consumers and
-this gate, the one that runs every session, was not one of them). Two things to know
+this gate, the one that runs every session, was not one of them), and (2026-10-20) a TWELFTH,
+the blank-legality count (`check_all.pool_legality_soft`: a pool row with no Legalities reads
+as unverified, so a stale pool hides behind the honest verdict). Two things to know
 before touching it: it imports `deck` as a MODULE and calls its MODEL functions (no
 `cmd_*` at all), so it never
 builds an argparse tree — the CLI surface is covered by `tests/test_cli.py` and a CI smoke
@@ -1632,12 +1642,12 @@ earned it: [C-01]
 
 **Subsystems:**
 - Data: card-library.csv, card-pool.csv, card-mana.csv, card-wishlist.csv, matches.csv
-  (LIVE since 2026-08-10 — 228 matches, 225 attributed across 55 decks, pooled 115-111-1 plus
-  1 voided; the best per-deck row is n=16 (deck 79) against the 20-match floor after nine
+  (LIVE since 2026-08-10 — 254 matches, 251 attributed across 60 decks, pooled 130-122-1 plus
+  1 voided; the best per-deck row is n=16 (deck 79) against the 20-match floor after ten
   weeks, which is why `--report` also POOLS, and why the four HAND columns exist at all —
-  G-74; Opponent Archetype and Loss Reason are still EMPTY in all 228 rows (Note holds only
-  the one void reason), so scenario 11 remains the only thing that can prove that loop
-  closes, while On Play is filled on 46 from the play-by-play, which reached its first real
+  G-74; Opponent Archetype is still EMPTY in all 254 rows and Loss Reason holds only 2
+  (hand-annotated 2026-10-16), so scenario 11 remains the only thing that can prove that loop
+  closes, while On Play is filled on 71 from the play-by-play, which reached its first real
   rows 2026-09-27), recommendations.csv,
   collection-stamp.json (written only by `import_collection.py --apply` — the date owned
   counts were last EXACT; absent until the first run, and since 2026-09-20 `check_all`

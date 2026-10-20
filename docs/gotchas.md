@@ -277,6 +277,20 @@ cutting a card you just removed) — replacing the first with an `applied` note.
 `deck.py apply-flex <id> <n>` promotes a `#~` flex line into the 60. Both
 default to a dry run.
 
+**The identity gate and `--undo` (2026-10-20, tooling batches 2–3).** Leonardo, the Balance has a
+`{W}{U}{B}{R}{G}` activated ability, so black is in its colour identity, and `swap --apply` wrote it into
+the G/R/U/W Fantastic Four Brawl deck (86) without a word; only `preflight` caught it, after the write.
+`_do_swap` now takes the same `commander_identity_lock` and the same `card_colors(colors) <= lock` test
+`legality_report` uses, so `swap` and `legal` cannot disagree: a `⛔ identity` line in the preview, and a
+refusal on `--apply` that happens before the ledger row and before any write (owner's call: refuse and
+warn, no `--force`). Measured before it landed: 8 commander-format decks, all 8 locks placeable, 0 holding
+an off-identity card — the gate cannot trap an existing deck. The round trip that followed (Leonardo in,
+then back out) left two ledger rows to prune by hand, which is what `swap <id> --undo` exists for: it
+re-applies the ledger's last cut/add to the newest backup, requires that to equal the current file as a
+multiset of lines (so `--section` and a `move` of the added card pass), restores the backup byte-for-byte
+through `_safe_write_lines`, and drops the row. It refuses after any other edit — including a `move` of an
+UNRELATED card, which restoring would have silently reverted (found in review, closed before commit).
+
 
 ## [G-07] Triage the roster before full-tuning it
 
@@ -666,6 +680,17 @@ an EXACT size, and `legal` checked only the minimum, so a 107-card Historic Braw
 read clean. And the copy-count loop skipped basics before the identity check ran, so four
 Mountains in a G/W/U Katara deck passed; basics now go through the identity check while
 staying exempt from the copy limit. Roster sweep after the change: 0 decks with problems.
+
+**A BLANK legality cell is unverified too (2026-10-20, tooling batch 1).** `load_legalities` stored a blank
+`Legalities` cell as an empty set, and `legality_report` read an empty set as "legal in nothing", so
+`legal` reported Searing Soloist "not legal in historic brawl" — a false FAIL that also failed `preflight` —
+while Scryfall had it legal. 31 pool rows were blank, all from the 2026-10 release: the pool had been built
+before those sets' legality data existed, and `build_pool`'s 7-day freshness reuse kept it. The verdict now
+routes a falsy entry to the unverified list (the value stays an empty SET, not None, because
+`check_agreement` iterates every value — a None version was caught in review). `build_pool.py --all
+--refetch` filled all 31 (every one legal in Brawl), and `check_all.pool_legality_soft` counts blank rows
+from now on. Still open: `suggest` / `screen` / `cuts` read the column directly and EXCLUDE a blank row
+silently rather than labelling it unverified.
 
 ## [G-10] "Not in library" for a card you own is the deck-dump undercount symptom
 
@@ -3940,6 +3965,11 @@ feed back into a ranking. Doing so would defeat the bounded-and-anchored propert
 
 Every scratch measurement on 2026-09-05/06 needed a throwaway `56z-scratch.txt` INSIDE `decks/56-boros-tall/`, because `find_deck` resolved ids only; while it existed, INV-04, `check_all` and every roster view counted it as a deck, and a `swap --apply` on it would have written the ledger row this rule warns about. `find_deck(deck_id, allow_path=True)` now accepts an existing `.txt` path for the 21 read-only commands; the writers (`swap`, `move`, `apply-flex`) and the roster-reasoning commands (`preflight`, `history`) keep the id-only form, pinned by a source test. A path that IS a roster file resolves to its real record so the printed id is the roster id.
 
+**Undo removes its own row (2026-10-20, tooling batch 3).** An undone swap was never a decision, so it
+must not survive in `feedback`: `swap <id> --undo` drops the row it reverses through
+`drop_recommendation`, the same atomic, backed-up rewrite as `append_recommendation`. One step only, by the
+owner's call — not a history. The deck 86 Leonardo round trip is the incident: two rows pruned by hand.
+
 
 ## [G-57] Match results are FREE from `Player.log` — the lines AROUND the result JSON are the load-bearing halves
 
@@ -5980,6 +6010,12 @@ bought in a live `--budget` — as a phantom manabase upgrade). The remaining st
 closure: `deck.load_card_meta` and `wishlist.load_pool_index` were the last two loaders
 aliasing IN-pass; both now use the second-pass `lib.alias_front` and are REGISTERED in
 `check_dfc._ALIASED_LOADERS`, so the behavioral anchor exercises every member.
+
+**Typed names normalise their separator first (2026-10-20, tooling batch 1).** `Insult /// Injury` — the
+three-slash spelling a paste or a hand-typed list often carries — matched no printing and kept the slashes
+in its `_ms_key`, so the front-face key never reached the pool. `lib.normalize_card_name` collapses any run
+of slashes to ` // ` (and extra whitespace), and `_ms_key`, `_printing_of`, `_resolve_card_name` and the
+`swap` inputs call it first.
 
 ## [G-64] A reanimator's uncastable bombs are not a build error — `#: uncastable-ok:`
 

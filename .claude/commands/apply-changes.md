@@ -53,6 +53,14 @@ For each `−cut / +add`:
    be pruned from the ledger on 2026-08-27). `move` writes no ledger row,
    because a relocation is not a decision (G-56).
 
+   In a Brawl / Commander deck the preview flags an add outside the commander's
+   colour identity (`⛔ identity`) and `--apply` REFUSES it — pick another card.
+
+   If a swap was applied in error, **`python3 scripts/deck.py swap <id> --undo
+   --apply`** reverses the deck's LAST swap and removes its ledger row. Do it
+   BEFORE editing the notes: after any other change to the file it refuses, and
+   the remedy is then an ordinary reverse swap.
+
    It also appends a row to `recommendations.csv` scoring the recommenders against
    this decision — where `cuts` ranked the card you cut, and whether `suggest`
    surfaced the card you added. **Report the line it prints** when the models

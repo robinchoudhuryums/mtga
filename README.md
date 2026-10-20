@@ -516,6 +516,7 @@ python3 scripts/deck.py screen 20a <names>    # re-score candidate cards against
 python3 scripts/deck.py flex 20a       # suggested swaps (#~ lines) + stale ones: dead -Out, already-run +In, contradicted note figures
 python3 scripts/deck.py swap 20a --cut A --add B   # preview deltas + FULL oracle text of both; --apply writes (.bak) + auto-retires stale #~ flex lines
 python3 scripts/deck.py swap 20a --cut A --add B --apply --section Removal   # ...and file the new line under `# Removal` (verbatim; never hand-move a card line)
+python3 scripts/deck.py swap 20a --undo --apply   # reverse this deck's LAST swap and drop its ledger row; refuses if the file changed since
 python3 scripts/deck.py apply-flex 20a 2      # promote flex swap #2 into the 60 (--apply writes)
 python3 scripts/deck.py feedback             # how cuts/suggest scored against the swaps you applied (report-only)
 pbpaste | python3 scripts/deck.py verify 20a  # diff a pasted Arena export against the stored deck

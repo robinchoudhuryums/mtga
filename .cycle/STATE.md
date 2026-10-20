@@ -379,8 +379,8 @@ Updated: 2026-10-20 (Brawl tooling plan Batch 3 — see Where I left off)
 ## Where I left off
 **2026-10-20 (latest) — Brawl tooling plan, Batch 3 done** (`swap --undo`; block
 `tooling-batch3-broad-implement.md`). Batches 1–2 done the same day. Suite + check_all green.
-**Next:** Batch 4 (`swap --package` preview), then 5–7 per Pending. Docs owed: G-06/G-56 for
-batches 2–3 (`/sync-docs`).
+**Next:** Batch 4 (`swap --package` preview), then 5–7 per Pending. Docs for batches 1–3 SYNCED
+2026-10-20 (G-06/G-09/G-56/G-63, C-01, README, /apply-changes; 12 stale figures refreshed, 0 drift).
 
 **2026-10-09 (latest) — deck 34 (Zoologist) tuned across ten waves, then tool gaps #2/#4/#5
 implemented** (block `2026-10-34-tune-tool-gaps-broad-implement.md`). Suite + check_all green.
