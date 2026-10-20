@@ -8413,6 +8413,25 @@ def append_recommendation(row, path=None):
     return len(rows)
 
 
+def drop_recommendation(index, path=None):
+    """Remove ONE ledger row by position, through the same atomic, backed-up rewrite as
+    `append_recommendation` (its own DictWriter on RECS_HEADER, never `lib.write_rows`).
+    Used only by `swap --undo`: an undone swap was never a decision, so its row would
+    otherwise sit in `feedback` as one (the Leonardo round trip had to be pruned by hand,
+    2026-10-20). Returns the remaining row count."""
+    path = path or RECS_CSV
+    rows = load_recommendations(path)
+    del rows[index]
+
+    def _w(fh):
+        w = csv.DictWriter(fh, fieldnames=RECS_HEADER, quoting=csv.QUOTE_MINIMAL)
+        w.writeheader()
+        for r in rows:
+            w.writerow({c: r.get(c, "") for c in RECS_HEADER})
+    atomic_write(path, _w)
+    return len(rows)
+
+
 def _rec_percentile(row):
     """Where the cut sat in the cut list, 0.0 = the model's top cut candidate and 1.0 =
     the card it most wanted kept. None when unrankable."""
@@ -9083,11 +9102,108 @@ def _do_swap(d, cut, add, apply, flex_entry=None, section=None):
     return 0
 
 
+def _deck_backups_newest_first(path):
+    """Every stamped `.bak` of `path`, newest CREATION stamp first (never mtime — see
+    `lib.latest_backup`). Unstamped hand-made backups are ignored: undo must know order."""
+    folder, base = os.path.split(os.path.abspath(path))
+    baks = [os.path.join(folder, f) for f in os.listdir(folder)
+            if f.startswith(base + ".") and f.endswith(".bak")]
+    return sorted((b for b in baks if lib.backup_stamp(b)), key=lib.backup_stamp, reverse=True)
+
+
+def _undo_last_swap(d, apply):
+    """`swap <id> --undo`: reverse the deck's most recent `swap --apply` and remove its
+    ledger row. ONE step, by the owner's decision (2026-10-20) — not a history.
+
+    It restores the backup that swap wrote, so the result is byte-identical to the
+    pre-swap file, and it proves first that the backup really is that pre-swap file:
+    re-applying the ledger's cut/add to it must reproduce the CURRENT file, compared as a
+    multiset of lines because `--section` and `deck.py move` only reorder. Backups that
+    are mere reorders of the current file (a `move` after the swap) are stepped over.
+    Anything else changed since the swap — a header or notes edit, another card — and it
+    REFUSES rather than discard that work: reverse it with an ordinary swap instead.
+    `apply-flex` rows are refused too (the consumed flex line is not reproducible here)."""
+    did = str(d["id"])
+    rows = load_recommendations()
+    idx = next((i for i in range(len(rows) - 1, -1, -1)
+                if str(rows[i].get("Deck", "")).strip() == did), None)
+    if idx is None:
+        eprint(f"No recorded swap for deck {did} — nothing to undo.")
+        return 1
+    last = rows[idx]
+    cut, add, src = last.get("Cut", ""), last.get("Add", ""), last.get("Source", "")
+    if src != "swap":
+        eprint(f"Deck {did}'s last recorded change is `{src}` (−{cut} +{add}); "
+               "--undo reverses `swap` only.")
+        return 1
+    path = d["path"]
+    with open(path, encoding="utf-8") as fh:
+        cur = fh.read().rstrip("\n").split("\n")
+    _, cur_cards = parse_deck_file(path)
+    pr = next(((s, c) for _q, n, s, c in cur_cards if _ms_key(n) == _ms_key(add)), ("", ""))
+    def _others(lines):  # every line except the added card's, in order
+        return [ln for ln in lines if _ms_key(_card_line_name(ln) or "") != _ms_key(add)]
+
+    target = None
+    for bak in _deck_backups_newest_first(path):
+        with open(bak, encoding="utf-8") as fh:
+            bl = fh.read().rstrip("\n").split("\n")
+        if sorted(bl) == sorted(cur):
+            # A reorder-only predecessor. Step over it only if what moved was the ADDED
+            # card (a `move` fixing its section); restoring past a reorder of any OTHER
+            # line would silently revert that unrelated `move` too.
+            if _others(bl) != _others(cur):
+                break
+            continue
+        try:
+            expected = _swap_edit_lines(bl, cut, add, pr)
+        except ValueError:
+            expected = None
+        if expected is not None and sorted(expected) == sorted(cur):
+            target = (bak, bl)
+        break                             # only the newest real change may be undone
+    if target is None:
+        eprint(f"Not undone: deck {did} has changed since its last swap (−{cut} +{add}) "
+               "beyond that swap — a header, note or other card edit. Undo restores only "
+               "an unchanged swap; reverse it with `deck.py swap` instead.")
+        return 1
+    bak, bl = target
+    print(f"Deck {did}: undo the last swap  −{cut}  +{add}")
+    print(f"  restores {os.path.basename(bak)} (the pre-swap file) and removes that swap's "
+          "row from recommendations.csv.")
+    if not apply:
+        print("\n(dry run — pass --apply to undo)")
+        return 0
+    try:
+        new_bak = _safe_write_lines(path, bl, sum(q for q, *_ in cur_cards))
+    except ValueError as e:
+        eprint(f"Not undone: {e}")
+        return 1
+    print(f"\nUndone. Wrote {os.path.relpath(path, REPO_ROOT)} "
+          f"(backup of the swapped file: {os.path.basename(new_bak)}).")
+    try:
+        drop_recommendation(idx)
+        print(f"  · removed the ledger row (−{cut} +{add}) — an undone swap is not a decision.")
+    except Exception as e:  # the deck is already restored; never report it as failed
+        eprint(f"  · could not remove the ledger row ({type(e).__name__}: {e}) — "
+               "the deck itself is restored.")
+    return 0
+
+
 def cmd_swap(args):
-    """Preview (or --apply) a single -cut/+add swap with before/after deltas."""
+    """Preview (or --apply) a single -cut/+add swap with before/after deltas, or
+    `--undo` the deck's most recent swap."""
     d = find_deck(args.id)
     if not d:
         eprint(f"No deck with id {args.id!r}. Try: deck.py list")
+        return 1
+    if getattr(args, "undo", False):
+        if args.cut or args.add or getattr(args, "section", None):
+            eprint("--undo takes no --cut / --add / --section: it reverses the last swap.")
+            return 1
+        return _undo_last_swap(d, args.apply)
+    if not args.cut or not args.add:
+        eprint("swap needs --cut and --add (or --undo to reverse the last swap).")
         return 1
     return _do_swap(d, args.cut, args.add, args.apply,
                     section=getattr(args, "section", None))
@@ -16625,10 +16741,14 @@ def main():
     p.add_argument("id")
     p = sub.add_parser("swap", help="preview/apply a single -cut/+add swap with deltas")
     p.add_argument("id")
-    p.add_argument("--cut", required=True, help="card to remove")
-    p.add_argument("--add", required=True, help="card to add")
+    p.add_argument("--cut", help="card to remove (required unless --undo)")
+    p.add_argument("--add", help="card to add (required unless --undo)")
     p.add_argument("--apply", action="store_true",
                    help="write the change (with a .bak); default is a dry-run preview")
+    p.add_argument("--undo", action="store_true",
+                   help="reverse this deck's most recent `swap --apply` (one step) and "
+                        "remove its recommendations.csv row; refuses if the file changed "
+                        "since beyond that swap. Dry run unless --apply.")
     p.add_argument("--section", metavar="HEADER",
                    help="place the added line under the `# section` whose header "
                         "contains this substring, instead of inheriting the cut card's "

@@ -7636,3 +7636,97 @@ class TestSwapIdentityGate:
         assert rc == 0
         names = {n for _q, n, _s, _c in deck.parse_deck_file(str(path))[1]}
         assert "Domri, Anarch of Bolas" in names and "Storm, Windrider" not in names
+
+
+class TestSwapUndo:
+    """Batch 3 of the 2026-10-20 tooling plan: `swap <id> --undo` reverses the deck's most
+    recent swap (one step) and removes its ledger row. The Leonardo round trip in deck 86
+    left two ledger rows that had to be pruned by hand."""
+
+    LINES = ["#: name: T", "#: colors: R", "", "# Spells", "4 Shock (M21) 159",
+             "2 Lightning Strike (MSH) 142", "", "# Burn", "1 Lava Coil (M21) 152",
+             "", "# Lands", "53 Mountain"]
+
+    def _setup(self, tmp_path, monkeypatch):
+        from types import SimpleNamespace as NS
+        d = tmp_path / "decks" / "99-t"
+        d.mkdir(parents=True)
+        path = d / "deck.txt"
+        path.write_text("\n".join(self.LINES) + "\n")
+        monkeypatch.setattr(deck, "DECKS_DIR", str(tmp_path / "decks"))
+        monkeypatch.setattr(deck, "RECS_CSV", str(tmp_path / "recs.csv"))
+        # A fixed ledger row: the real recommendation_row runs the cut/suggest rankers.
+        monkeypatch.setattr(deck, "recommendation_row",
+                            lambda d, cut, add, source, today=None:
+                            {"Date": "2026-10-20", "Deck": d["id"], "Source": source,
+                             "Cut": cut, "Add": add})
+        return path, NS
+
+    def _swap(self, NS, **kw):
+        return deck.cmd_swap(NS(id="99", apply=True, undo=False, section=None, **kw))
+
+    def _undo(self, NS, apply=True):
+        return deck.cmd_swap(NS(id="99", cut=None, add=None, section=None, undo=True,
+                                apply=apply))
+
+    def test_undo_restores_the_file_byte_for_byte_and_drops_the_row(self, tmp_path, monkeypatch):
+        path, NS = self._setup(tmp_path, monkeypatch)
+        original = path.read_text()
+        assert self._swap(NS, cut="Shock", add="Lava Coil") == 0
+        assert len(deck.load_recommendations()) == 1
+        assert self._undo(NS) == 0
+        assert path.read_text() == original
+        assert deck.load_recommendations() == []
+
+    def test_dry_run_changes_nothing(self, tmp_path, monkeypatch):
+        path, NS = self._setup(tmp_path, monkeypatch)
+        self._swap(NS, cut="Shock", add="Lava Coil")
+        swapped = path.read_text()
+        assert self._undo(NS, apply=False) == 0
+        assert path.read_text() == swapped
+        assert len(deck.load_recommendations()) == 1
+
+    def test_undo_survives_a_section_move(self, tmp_path, monkeypatch):
+        path, NS = self._setup(tmp_path, monkeypatch)
+        original = path.read_text()
+        self._swap(NS, cut="Shock", add="Lava Coil")
+        assert deck.cmd_move(NS(id="99", card="Lava Coil", section="Spells", apply=True)) == 0
+        assert self._undo(NS) == 0
+        assert path.read_text() == original
+
+    def test_an_unrelated_move_after_the_swap_refuses_the_undo(self, tmp_path, monkeypatch):
+        path, NS = self._setup(tmp_path, monkeypatch)
+        self._swap(NS, cut="Shock", add="Lava Coil")
+        assert deck.cmd_move(NS(id="99", card="Lightning Strike", section="Burn",
+                                apply=True)) == 0
+        moved = path.read_text()
+        assert self._undo(NS) == 1, "restoring would silently revert the unrelated move"
+        assert path.read_text() == moved
+
+    def test_a_later_edit_refuses_the_undo(self, tmp_path, monkeypatch):
+        path, NS = self._setup(tmp_path, monkeypatch)
+        self._swap(NS, cut="Shock", add="Lava Coil")
+        edited = path.read_text().replace("#: colors: R", "#: colors: R\n#: notes: later edit")
+        path.write_text(edited)
+        assert self._undo(NS) == 1
+        assert path.read_text() == edited
+        assert len(deck.load_recommendations()) == 1, "a refused undo keeps the ledger row"
+
+    def test_no_recorded_swap_refuses(self, tmp_path, monkeypatch):
+        path, NS = self._setup(tmp_path, monkeypatch)
+        before = path.read_text()
+        assert self._undo(NS) == 1
+        assert path.read_text() == before
+
+    def test_flex_row_is_refused(self, tmp_path, monkeypatch):
+        path, NS = self._setup(tmp_path, monkeypatch)
+        deck.append_recommendation({"Date": "2026-10-20", "Deck": "99", "Source": "flex",
+                                    "Cut": "Shock", "Add": "Lava Coil"})
+        before = path.read_text()
+        assert self._undo(NS) == 1
+        assert path.read_text() == before
+
+    def test_undo_rejects_cut_and_add(self, tmp_path, monkeypatch):
+        _path, NS = self._setup(tmp_path, monkeypatch)
+        assert deck.cmd_swap(NS(id="99", cut="Shock", add=None, section=None, undo=True,
+                                apply=True)) == 1
