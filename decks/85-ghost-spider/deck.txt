@@ -20,6 +20,13 @@
 #: archetype: (Standard Boros impulse, 60 cards) and deck 2 (Standard mono-red burn): this one is
 #: archetype: the noncombat-damage loop, in Brawl.
 #: protect: Gwen Stacy // Ghost-Spider; Thor, Guardian of Midgard; Nico Minoru, Runaway; Thor, Asgard's Avenger; Hawkeye, Young Avenger
+#: notes: FOUR-SWAP PASS, 2026-10-20 (owner's picks): Dragonlord Ojutai for Fractured Identity
+#: notes: (protection: hexproof while untapped, card draw on combat damage); Shiko, Paragon of the Way
+#: notes: for Murdock's Crusade (a 4/5 flyer that copies a cheap spell from the graveyard); Longhorn
+#: notes: Sharpshooter for Talisman of Creativity (2 damage to any target when plotted); Chandra,
+#: notes: Pyromaster for Arcane Signet (ping plus impulse). Protection 6 -> 7, board power 107 -> 119.
+#: notes: PENDING OWNER: Bilbo, Thief in the Night, Asgardian Inspiration, Goliath Daydreamer.
+#: notes: Searing Soloist and Insult // Injury weighed, not yet applied (see chat).
 #: notes: DRAFTED 2026-10-19 from the deck 85 set-aside pile (.cycle/85-hero-damage-pile.md)
 #: notes: plus owned impulse, damage and interaction. Hawkeye, Avenging Archer from the owner's
 #: notes: list is NOT in the card pool (not yet indexed, or a different name); add it when found.
@@ -83,6 +90,7 @@
 1 Stick, Fearless Mentor (MSC) 706
 1 Season of the Bold (BLB) 152
 1 Crossover Collaboration (MSC) 684
+1 Chandra, Pyromaster (AKR) 146
 
 # Pingers and Hero bodies
 1 Hawkeye, Trick Shot (MSC) 506
@@ -104,6 +112,9 @@
 1 Echo, Perceptive Prodigy (MSH) 51
 1 Kumano Faces Kakkazan // Etching of Kumano (NEO) 152
 1 Captain Marvel, Shooting Star (MSC) 589
+1 Dragonlord Ojutai (PIO) 219
+1 Shiko, Paragon of the Way (TDM) 223
+1 Longhorn Sharpshooter (OTJ) 132
 
 # Discard and loot — Spider-Man, New Champion turns each discard into damage
 1 Astonishing Spider-Man (MSC) 740
@@ -117,19 +128,15 @@
 1 Appa, Steadfast Guardian (TLA) 10
 
 # Interaction
-1 Fractured Identity (OTP) 45
 1 Elektra, Femme Fatale (MSC) 687
 1 Glassworks // Shattered Yard (DSK) 137
 1 Mjölnir, Hammer of Thor (MSH) 146
-1 Murdock's Crusade (MSH) 24
 1 Boros Charm (FDN) 721
 1 Spider-Sense (SPM) 46
 1 Airbender's Reversal (TLA) 7
 
 # Ramp — the Talismans' 1 damage to you feeds Daredevil, Fearless Fighter and Stick
-1 Arcane Signet (FRC) 20
 1 Talisman of Conviction (AA1) 17
-1 Talisman of Creativity (AA1) 18
 
 # Lands (36)
 1 Steam Vents (ECL) 267

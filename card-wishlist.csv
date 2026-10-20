@@ -2,8 +2,14 @@ Card Name,Type,Card Text,Color(s),Synergies,Set Code,Collector #,Rarity,Target,N
 "Brimaz, King of Oreskos",Legendary Creature — Cat Soldier,"Vigilance
 Whenever Brimaz attacks, create a 1/1 white Cat Soldier creature token with vigilance that's attacking.
 Whenever Brimaz blocks a creature, create a 1/1 white Cat Soldier creature token with vigilance that's blocking that creature.",W,Cat; Soldier; tokens; vigilance; combat,,,Mythic,78-historic-brawl,,7.0,seed
+"Chandra, Pyromaster",Legendary Planeswalker — Chandra,"+1: Chandra deals 1 damage to target player or planeswalker and 1 damage to up to one target creature that player or that planeswalker's controller controls. That creature can't block this turn.
+0: Exile the top card of your library. You may play it this turn.
+−7: Exile the top ten cards of your library. Choose an instant or sorcery card exiled this way and copy it three times. You may cast the copies without paying their mana costs.",R,Chandra; planeswalker; burn; impulse; noncombat damage,,,Mythic,85,,10.0,seed
 "Donatello, the Brains",Legendary Creature — Mutant Ninja Turtle,"If one or more tokens would be created under your control, those tokens plus a Mutagen token are created instead.
 Partner—Character select (You can have two commanders if both have this ability.)",U,Mutant; Ninja; Turtle; tokens; partner,,,Mythic,86,,5.0,seed
+Dragonlord Ojutai,Legendary Creature — Elder Dragon,"Flying
+Dragonlord Ojutai has hexproof as long as it's untapped.
+Whenever Dragonlord Ojutai deals combat damage to a player, look at the top three cards of your library. Put one of them into your hand and the rest on the bottom of your library in any order.",W/U,Elder; Dragon; selection; flying; evasion; hexproof; protection,,,Mythic,85,,5.0,seed
 Gandalf the White,Legendary Creature — Avatar Wizard,"Flash
 You may cast legendary spells and artifact spells as though they had flash.
 If a legendary permanent or an artifact entering or leaving the battlefield causes a triggered ability of a permanent you control to trigger, that ability triggers an additional time.",W,Avatar; Wizard; flash; tempo,,,Mythic,78-historic-brawl,,7.0,seed
