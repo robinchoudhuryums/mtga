@@ -46,9 +46,13 @@
 #: notes: Woman), and Great Divide Guide for Arcane Signet (every land taps for any colour).
 #: notes: Leyline of the Guildpact was weighed for that slot and is ILLEGAL: its {B/G} hybrid
 #: notes: puts black in its colour identity.
+#: notes: Then Parallel Lives for Wiccan, Rising Magician (doubles every token, and Donatello's
+#: notes: Mutagen with them), The Wandering Emperor for Trickster's Stratagem and Origin of
+#: notes: Metalbending for Sandbenders' Storm (cheap noncreature spells that answer artifacts and
+#: notes: enchantments or protect a creature). Shuri was weighed for Moon Girl and passed on.
 #: notes: TIER UNSET pending the owner's call. The measurable floor reads A at 100 cards
 #: notes: (interaction 12 and card advantage 9, against an A line of 12 and a sum of 19);
-#: notes: protection 7, board power 147. The tools undercount card flow here: the commander's
+#: notes: protection 8, board power 143. The tools undercount card flow here: the commander's
 #: notes: draw mode, Mister Fantastic, Goliath and Reed Richards are triggers, not draw spells.
 #: notes: THE COST is four colours: 18 W, 18 U, 16 R, 20 G land sources and the commander's
 #: notes: {G}{R}{U}{W} at 58% on turn four. The draft swapped the Temples for tri-lands, two
@@ -92,7 +96,6 @@
 1 Leatherhead, Swamp Stalker (TMT) 117
 1 Roalesk, Apex Hybrid (WAR) 213
 1 Venus, Torn Between Worlds (TMT) 136
-1 Wiccan, Rising Magician (MSH) 83
 1 Mutagen Man, Living Ooze (TMT) 124
 1 Storm, Force of Nature (MAR) 94
 1 Colossus, Steel Stalwart (MSC) 717
@@ -123,11 +126,12 @@
 1 Prayer of Binding (FDN) 739
 1 Vigorbloom Charm (FRA) 160
 1 World War Hulk (MSH) 197
-1 Sandbenders' Storm (TLA) 34
+1 Origin of Metalbending (TLA) 187
 1 Rally the Monastery (TDM) 19
 1 Heroic Intervention (M21) 188
 1 Earth's Mightiest Heroes (MSH) 165
-1 Trickster's Stratagem (MSH) 81
+1 The Wandering Emperor (NEO) 42
+1 Parallel Lives (MAR) 36
 
 # Ramp and fixing
 1 Great Divide Guide (TLA) 181

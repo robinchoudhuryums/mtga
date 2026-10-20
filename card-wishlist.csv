@@ -17,6 +17,12 @@ Whenever you gain life, put a +1/+1 counter on target creature or enchantment yo
 {1}{W}: Another target creature gains lifelink until end of turn.",W,God; counters; lifegain; indestructible; resilience; lifelink,,,Mythic,78-historic-brawl,,7.5,seed
 In the Trenches,Enchantment,"Creatures you control get +1/+1.
 {5}{W}: Exile target nonland permanent you don't control until this enchantment leaves the battlefield. Activate only as a sorcery and only once.",W,removal; pump,,,Mythic,78-historic-brawl,,7.5,seed
+Parallel Lives,Enchantment,"If an effect would create one or more tokens under your control, it creates twice that many of those tokens instead.",G,tokens,,,Mythic,86,,4.5,seed
+The Wandering Emperor,Legendary Planeswalker,"Flash
+As long as The Wandering Emperor entered this turn, you may activate her loyalty abilities any time you could cast an instant.
++1: Put a +1/+1 counter on up to one target creature. It gains first strike until end of turn.
+−1: Create a 2/2 white Samurai creature token with vigilance.
+−2: Exile target tapped creature. You gain 2 life.",W,planeswalker; counters; lifegain; tokens; removal; flash; tempo; first strike; combat,,,Mythic,86,,9.0,seed
 "Toph, Earthbending Master",Legendary Creature — Human Warrior Ally,"Landfall — Whenever a land you control enters, you get an experience counter.
 Whenever you attack, earthbend X, where X is the number of experience counters you have. (Target land you control becomes a 0/0 creature with haste that's still a land. Put X +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)",G,Human; Warrior; Ally; counters; landfall; earthbend; bending; lands,,,Mythic,78-historic-brawl,,7.0,seed
 "Giant-Man, Gargantuan Genius",Legendary Creature — Human Scientist Hero,"Reach
