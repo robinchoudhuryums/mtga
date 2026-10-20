@@ -283,6 +283,17 @@ def card_colors(colstr):
     return {ch for ch in s.upper() if ch in "WUBRG"}
 
 
+def normalize_card_name(name):
+    """Canonical spelling of a card NAME for lookups: stripped, with the split/DFC separator
+    written as `" // "`. Scryfall and Arena both spell `Insult // Injury` with two slashes, but
+    a hand-typed or pasted name often arrives as `Insult /// Injury`, and no lookup keyed on the
+    two-slash form matched it (2026-10-20: `_printing_of` returned no printing and `_ms_key`
+    kept the three slashes, so the bare front key never reached the pool). Every name-facing
+    lookup that accepts typed input routes through here, so the separator is fixed once."""
+    s = " ".join((name or "").split())
+    return re.sub(r"\s*/{2,}\s*", " // ", s)
+
+
 def alias_front(index):
     """SECOND-PASS front-face aliasing for a name-keyed index over pool-shaped data:
     every `Front // Back` key gets its FRONT aliased to the same value — but only

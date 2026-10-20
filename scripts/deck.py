@@ -1146,7 +1146,7 @@ def _ms_key(name):
     un-importable line P8 fixed `_printing_of` to stop writing, re-introduced from the
     other side, past a green INV-04 check (the copy count is unchanged). 14 deck files
     carry a `Front // Back` line. Fifth member of the G-63 class (broad-scan F-02)."""
-    return (name or "").strip().lower().split(" // ")[0]
+    return lib.normalize_card_name(name).lower().split(" // ")[0]
 
 
 def _ms_display(existing, incoming):
@@ -5597,7 +5597,7 @@ def brawl_readiness(fmt_filter="standard"):
             disp.setdefault(nl, n)
         dup = sum(1 for nl, q in tot.items() if q > 1)
         notlegal = sum(1 for nl in tot
-                       if leg.get(nl) is not None
+                       if leg.get(nl)
                        and pool_format_key("brawl") not in leg[nl])
         idents = {nl: card_colors((carddata.get(nl) or carddata.get(nl.split(" // ")[0])
                                    or {}).get("colors", "")) for nl in tot}
@@ -7794,8 +7794,9 @@ def _printing_of(name):
     bare line parses — but the line is not a valid Arena import, so the failure surfaced
     only when a human tried to paste the deck. Returning the display name as well is what
     stops the file recording the front-face shorthand instead of the real card name."""
-    nl = name.strip().lower()
-    best = (name.strip(), "", "")
+    name = lib.normalize_card_name(name)
+    nl = name.lower()
+    best = (name, "", "")
     # The CANONICAL display is the full `Front // Back`, and it must survive an OWNED
     # printing that is filed under the bare front name. reconcile_crafts.py stores a
     # crafted DFC front-name-only BY DESIGN (G-10/G-63), so the moment you own one the
@@ -8884,6 +8885,8 @@ def cmd_feedback(args):
 def _do_swap(d, cut, add, apply, flex_entry=None, section=None):
     """Shared engine for `swap` and `apply-flex`: preview deltas, and on --apply
     perform the edit with a .bak + INV-04 re-check."""
+    cut = lib.normalize_card_name(cut)
+    add = lib.normalize_card_name(add)
     add_disp, add_set, add_cn = _printing_of(add)
     # Write the CANONICAL name, not the front-face shorthand the caller typed.
     # Resolved BEFORE the self-swap guard, and the guard compares `_ms_key` (front
@@ -9227,6 +9230,11 @@ def load_legalities():
                 continue
             legs = {x.strip().lower() for x in (r.get("Legalities") or "").split(";")
                     if x.strip()}
+            # A BLANK cell is stored as an EMPTY set and read as UNVERIFIED by the verdict
+            # (`legality_report` treats a falsy entry as unknown). It must not read as
+            # "legal in nothing": `legal` reported Searing Soloist "not legal in historic
+            # brawl" while Scryfall had it legal (2026-10-20). Kept a set, not None, because
+            # check_agreement iterates every value.
             out.setdefault(n, legs)
     return alias_front(out)
 
@@ -9328,7 +9336,7 @@ def legality_report(meta, cards, fmt, leg, carddata=None):
         illegal, rebalanced = [], []
         for nl in order:
             card_leg = leg.get(nl)
-            if card_leg is None:
+            if not card_leg:  # None (no row) or None/empty (blank legality cell)
                 unknown.append(disp[nl])
             elif lkey not in card_leg:
                 # A Standard card that isn't Alchemy-legal is rebalanced (A- version),
@@ -11606,6 +11614,7 @@ def _resolve_card_name(query, table, display, squashed):
     the fifth of the pile that most needed it, and those cards got graded by hand instead.
     Ambiguity is still reported rather than guessed at (G-47: a shortlist that guesses is
     worse than one that admits it doesn't know)."""
+    query = lib.normalize_card_name(query)
     ql = _name_query(query).lower()
     if ql in table:
         return ql, []

@@ -7553,3 +7553,36 @@ class TestCastabilitySweep:
         import inspect
         assert "castability_shortfalls" not in inspect.getsource(deck.tier_band)
         assert "castability_shortfalls" not in inspect.getsource(deck.deck_quality_vector)
+
+
+class TestBatch1NameAndLegality:
+    """Batch 1 of the 2026-10-20 tooling plan: triple-slash names, and blank legality
+    read as unverified rather than illegal (Searing Soloist, Insult /// Injury)."""
+
+    def test_normalize_card_name_fixes_the_separator(self):
+        assert lib.normalize_card_name("Insult /// Injury") == "Insult // Injury"
+        assert lib.normalize_card_name("insult///injury") == "insult // injury"
+        assert lib.normalize_card_name("Ojer Axonil,  Deepest Might ///Temple of Power") == \
+            "Ojer Axonil, Deepest Might // Temple of Power"
+        assert lib.normalize_card_name("Sol Ring") == "Sol Ring"
+
+    def test_triple_slash_name_resolves_to_its_printing(self):
+        name, _set, _cn = deck._printing_of("Insult /// Injury")
+        assert name == "Insult // Injury"
+
+    def test_triple_slash_name_keys_on_the_front_face(self):
+        assert deck._ms_key("Insult /// Injury") == "insult"
+
+    def test_blank_legality_is_unverified_not_illegal(self):
+        # load_legalities stores a blank cell as an empty set; the verdict must not call it illegal.
+        leg = {"searing soloist": set()}
+        rep = deck.legality_report({"commander": ""}, [(1, "Searing Soloist", "", "")],
+                                   "historic-brawl", leg)
+        assert not any("not legal" in p for p in rep["problems"])
+        assert "Searing Soloist" in rep["unknown"]
+
+    def test_real_legality_still_reports_illegal(self):
+        leg = {"sol ring": {"standard"}}
+        rep = deck.legality_report({"commander": ""}, [(1, "Sol Ring", "", "")],
+                                   "historic-brawl", leg)
+        assert any("not legal" in p for p in rep["problems"])

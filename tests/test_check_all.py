@@ -290,3 +290,27 @@ class TestCollectionFreshnessReachesTheGate:
         out = ca.collection_freshness_soft()
         assert len(out) == 1 and "skipped" in out[0]
 
+
+
+class TestPoolLegalitySoft:
+    """`pool_legality_soft` counts blank Legalities rows and says how to clear them."""
+
+    def _pool(self, tmp_path, rows):
+        path = tmp_path / "card-pool.csv"
+        path.write_text("Card Name,Legalities\n" + "".join(f"{n},{l}\n" for n, l in rows),
+                        encoding="utf-8")
+
+    def test_counts_blank_rows_and_names_the_remedy(self, tmp_path, monkeypatch):
+        import check_all as ca
+        self._pool(tmp_path, [("Sol Ring", "standard;brawl"), ("Searing Soloist", ""),
+                              ("Oko", "")])
+        monkeypatch.setattr(ca, "REPO_ROOT", str(tmp_path))
+        out = ca.pool_legality_soft()
+        assert len(out) == 1 and out[0].startswith("2 pool row(s)")
+        assert "build_pool.py --all --refetch" in out[0]
+
+    def test_clean_pool_is_silent(self, tmp_path, monkeypatch):
+        import check_all as ca
+        self._pool(tmp_path, [("Sol Ring", "standard;brawl")])
+        monkeypatch.setattr(ca, "REPO_ROOT", str(tmp_path))
+        assert ca.pool_legality_soft() == []

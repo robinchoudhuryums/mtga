@@ -229,6 +229,34 @@ def check_library_printings():
             for sc, names in sorted(bad.items())]
 
 
+def pool_legality_soft():
+    """[] or one soft line: how many pool rows carry NO legality data?
+
+    A blank `Legalities` cell is unverified, not illegal (deck.legality_report reads it that
+    way since 2026-10-20). That keeps the verdict honest, but it hides a stale pool: 31 rows
+    from the 2026-10 release were blank while Scryfall had every one legal in Brawl, so `legal`
+    reported a legal card as unverified until the pool was rebuilt. This line makes the stale
+    state visible at the session gate, with the one-command remedy.
+
+    Soft, and a count rather than a per-row list: the remedy (build_pool.py --all --refetch)
+    clears the whole set at once. A function rather than an inline block, so it can be
+    watched failing (BS2-29).
+    """
+    try:
+        import csv as _csv
+        with open(os.path.join(REPO_ROOT, "card-pool.csv"), newline="", encoding="utf-8") as fh:
+            rows = list(_csv.DictReader(fh))
+    except OSError as e:
+        return [f"pool legality check skipped ({e})"]
+    if not rows or "Legalities" not in rows[0]:
+        return []  # a pool without the column is INV-03's finding, not this one
+    blank = [r["Card Name"] for r in rows if not (r.get("Legalities") or "").strip()]
+    if not blank:
+        return []
+    return [f"{len(blank)} pool row(s) carry no legality data — `legal` reports them as "
+            f"unverified, not illegal; rebuild with `python3 scripts/build_pool.py --all --refetch`"]
+
+
 def collection_freshness_soft():
     """[] or one soft line: are the repo's OWNED COUNTS trustworthy?
 
@@ -452,6 +480,7 @@ def main():
     # permanently, not a per-row verdict, so it is not the G-07 saturation shape even
     # though it stays on until someone acts.
     soft.extend(collection_freshness_soft())
+    soft.extend(pool_legality_soft())
 
     try:
         import wishlist as wl
