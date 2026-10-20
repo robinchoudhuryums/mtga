@@ -7730,3 +7730,76 @@ class TestSwapUndo:
         _path, NS = self._setup(tmp_path, monkeypatch)
         assert deck.cmd_swap(NS(id="99", cut="Shock", add=None, section=None, undo=True,
                                 apply=True)) == 1
+
+
+class TestSwapPackage:
+    """Batch 4 of the 2026-10-20 tooling plan: `swap <id> --package "cut=add" …` previews
+    several swaps as one change and writes nothing. It replaces a hand-rolled simulator
+    that crashed on a misspelled cut."""
+
+    LINES = ["#: name: T", "#: colors: R", "", "# Spells", "4 Shock (M21) 159",
+             "2 Lightning Strike (MSH) 142", "", "# Burn", "1 Lava Coil (M21) 152",
+             "", "# Lands", "53 Mountain"]
+
+    def _setup(self, tmp_path, monkeypatch, lines=None):
+        from types import SimpleNamespace as NS
+        d = tmp_path / "decks" / "99-t"
+        d.mkdir(parents=True)
+        path = d / "deck.txt"
+        path.write_text("\n".join(lines or self.LINES) + "\n")
+        monkeypatch.setattr(deck, "DECKS_DIR", str(tmp_path / "decks"))
+        monkeypatch.setattr(deck, "RECS_CSV", str(tmp_path / "recs.csv"))
+        monkeypatch.setattr(deck, "recommendation_row",
+                            lambda d, cut, add, source, today=None:
+                            {"Date": "2026-10-20", "Deck": d["id"], "Source": source,
+                             "Cut": cut, "Add": add})
+        return path, NS
+
+    def _pkg(self, NS, pairs, **kw):
+        base = dict(id="99", cut=None, add=None, undo=False, section=None, apply=False)
+        base.update(kw)
+        return deck.cmd_swap(NS(package=pairs, **base))
+
+    def test_preview_writes_nothing(self, tmp_path, monkeypatch, capsys):
+        path, NS = self._setup(tmp_path, monkeypatch)
+        before = path.read_text()
+        rc = self._pkg(NS, ["Shock=Lava Coil", "Lightning Strike=Lava Coil"])
+        assert rc == 0
+        assert path.read_text() == before
+        assert not (tmp_path / "recs.csv").exists()
+        assert not list(path.parent.glob("*.bak"))
+        assert "combined result:" in capsys.readouterr().out
+
+    def test_preview_matches_the_applied_swaps(self, tmp_path, monkeypatch, capsys):
+        path, NS = self._setup(tmp_path, monkeypatch)
+        pairs = [("Shock", "Lava Coil"), ("Lightning Strike", "Lava Coil")]
+        assert self._pkg(NS, [f"{c}={a}" for c, a in pairs]) == 0
+        out = capsys.readouterr().out
+        for cut, add in pairs:
+            assert deck.cmd_swap(NS(id="99", cut=cut, add=add, apply=True, undo=False,
+                                    section=None, package=None)) == 0
+        vec = deck.deck_quality_vector(deck.find_deck("99"))
+        assert f"avg MV          {vec['avg_mv']:.2f}" in out
+        assert f"interaction     {vec['interaction']}" in out
+        assert f"tier floor      {deck.tier_band(vec)}" in out
+
+    def test_a_cut_not_in_the_deck_stops_the_preview(self, tmp_path, monkeypatch, capsys):
+        _path, NS = self._setup(tmp_path, monkeypatch)
+        assert self._pkg(NS, ["Glassworks=Lava Coil"]) == 1
+        assert "'Glassworks' is not a card line" in capsys.readouterr().out
+
+    def test_a_pair_without_equals_is_refused(self, tmp_path, monkeypatch):
+        _path, NS = self._setup(tmp_path, monkeypatch)
+        assert self._pkg(NS, ["Shock"]) == 1
+
+    def test_package_refuses_apply(self, tmp_path, monkeypatch):
+        path, NS = self._setup(tmp_path, monkeypatch)
+        before = path.read_text()
+        assert self._pkg(NS, ["Shock=Lava Coil"], apply=True) == 1
+        assert path.read_text() == before
+
+    def test_identity_verdict_per_pair(self, tmp_path, monkeypatch, capsys):
+        _path, NS = self._setup(tmp_path, monkeypatch, TestSwapIdentityGate.LINES)
+        assert self._pkg(NS, ["Storm, Windrider=Leonardo, the Balance"]) == 0
+        out = capsys.readouterr().out
+        assert "⛔ identity WUBRG is outside the commander's WURG" in out

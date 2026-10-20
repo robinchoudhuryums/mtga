@@ -9190,6 +9190,110 @@ def _undo_last_swap(d, apply):
     return 0
 
 
+def _package_preview(d, raw_pairs):
+    """`swap <id> --package "cut=add" …`: preview SEVERAL swaps as one change — the
+    combined quality vector and tier floor, before → after; one legality check on the
+    resulting list; and, per pair, the identity verdict `--apply` would give (G-06) and
+    the section advisory (G-05). Writes NOTHING and records no ledger row: it is a
+    measurement, and G-56 keeps measurements out of the ledger.
+
+    Built from the SAME primitives an applied swap uses — `_swap_edit_lines` in sequence
+    on the raw lines, `commander_identity_lock`, `section_mismatch`, `deck_quality_vector`
+    on a temp copy (as `_quality_vector_at` does), `legality_report` — so the preview and
+    the real swaps cannot disagree. Replaces the hand-rolled package simulator the
+    2026-10-20 Brawl builds used, which crashed on a misspelled cut with a bare
+    IndexError. A pair whose cut is not in the deck (after the earlier pairs) is named
+    and the preview stops with exit 1."""
+    import tempfile
+    pairs = []
+    for raw in raw_pairs:
+        if "=" not in raw:
+            eprint(f"--package pair {raw!r} is not `cut=add`.")
+            return 1
+        cut, add = (lib.normalize_card_name(x) for x in raw.split("=", 1))
+        if not cut or not add:
+            eprint(f"--package pair {raw!r} needs a card on both sides of `=`.")
+            return 1
+        add_disp, add_set, add_cn = _printing_of(add)
+        pairs.append((cut, add_disp, (add_set, add_cn)))
+    dmeta, _cards = parse_deck_file(d["path"])
+    with open(d["path"], encoding="utf-8") as fh:
+        lines = fh.read().rstrip("\n").split("\n")
+    carddata = load_card_data()
+    lock = commander_identity_lock(dmeta, carddata)
+    print(f"Deck {d['id']}: {d.get('name') or d['id']} — package preview "
+          f"({len(pairs)} swap(s), nothing is written)\n")
+    bad, off = 0, 0
+    for i, (cut, add, pr) in enumerate(pairs, 1):
+        print(f"  {i}. −{cut}  +{add}")
+        if _ms_key(cut) == _ms_key(add):
+            print("       ✗ cut and add are the same card")
+            bad += 1
+            continue
+        try:
+            lines = _swap_edit_lines(lines, cut, add, pr)
+        except ValueError:
+            print(f"       ✗ {cut!r} is not a card line in the deck"
+                  + (" (after the earlier pairs)" if i > 1 else ""))
+            bad += 1
+            continue
+        add_cd = carddata.get(add.lower())
+        if not add_cd:
+            print(f"       ⚠ {add!r} not found in library or pool — check spelling")
+        elif lock is not None and not card_colors(add_cd.get("colors", "")) <= lock:
+            ident = "".join(c for c in "WUBRG" if c in card_colors(add_cd.get("colors", "")))
+            print(f"       ⛔ identity {ident or 'C'} is outside the commander's "
+                  f"{''.join(c for c in 'WUBRG' if c in lock) or 'C'} — `--apply` will refuse it")
+            off += 1
+        ai = next((j for j, ln in enumerate(lines)
+                   if _ms_key(_card_line_name(ln) or "") == _ms_key(add)), None)
+        if ai is not None:
+            warn = section_mismatch(lines, ai, add, carddata)
+            if warn:
+                print(f"       ⚠ section: {warn}")
+    if bad:
+        eprint(f"\n{bad} pair(s) could not be applied — fix them and preview again.")
+        return 1
+    fd, tmp = tempfile.mkstemp(suffix=".txt")
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as fh:
+            fh.write("\n".join(lines).rstrip("\n") + "\n")
+        before = deck_quality_vector(d)
+        after = deck_quality_vector({"id": d["id"], "path": tmp, "name": d.get("name")})
+        _, after_cards = parse_deck_file(tmp)
+    finally:
+        os.remove(tmp)
+
+    def _row(label, key, fmt="{}"):
+        b, a = before[key], after[key]
+        tail = "" if b == a else f"   ({fmt.format(b)} → {fmt.format(a)})"
+        print(f"    {label:15} {fmt.format(a)}{tail}")
+    print("\n  combined result:")
+    fb, fa = tier_band(before), tier_band(after)
+    print(f"    {'tier floor':15} {fa}" + ("" if fb == fa else f"   ({fb} → {fa})"))
+    for label, key in (("interaction", "interaction"), ("card advantage", "card_advantage"),
+                       ("protection", "protection"), ("board power", "board_power"),
+                       ("early drops", "early_drops"), ("central themes", "central_themes"),
+                       ("uncastable", "uncastable")):
+        _row(label, key)
+    _row("avg MV", "avg_mv", "{:.2f}")
+    rep = legality_report(dmeta, after_cards, dmeta.get("format") or "", load_legalities(),
+                          carddata=carddata)
+    if rep["problems"]:
+        print(f"\n  ✗ legality after the package ({len(rep['problems'])} issue(s)):")
+        for prob in rep["problems"]:
+            print(f"      {prob}")
+    else:
+        print(f"\n  ✓ legal after the package ({dmeta.get('format') or 'no format header'})")
+    if rep["unknown"]:
+        print(f"    unverified (no pool legality data): {', '.join(rep['unknown'][:8])}")
+    if off:
+        print(f"\n  ⛔ {off} add(s) are outside the commander's identity — swap them out first.")
+    print("\n(preview only — nothing written, no ledger row. Apply each pair with "
+          "`swap <id> --cut A --add B --apply`; reverse a mistaken one with `--undo`.)")
+    return 0
+
+
 def cmd_swap(args):
     """Preview (or --apply) a single -cut/+add swap with before/after deltas, or
     `--undo` the deck's most recent swap."""
@@ -9197,6 +9301,16 @@ def cmd_swap(args):
     if not d:
         eprint(f"No deck with id {args.id!r}. Try: deck.py list")
         return 1
+    if getattr(args, "package", None):
+        clash = [f for f, v in (("--cut", args.cut), ("--add", args.add),
+                                ("--undo", getattr(args, "undo", False)),
+                                ("--section", getattr(args, "section", None)),
+                                ("--apply", args.apply)) if v]
+        if clash:
+            eprint(f"--package is a preview and takes no {', '.join(clash)}: apply the "
+                   "pairs one at a time with --cut/--add --apply.")
+            return 1
+        return _package_preview(d, args.package)
     if getattr(args, "undo", False):
         if args.cut or args.add or getattr(args, "section", None):
             eprint("--undo takes no --cut / --add / --section: it reverses the last swap.")
@@ -16745,6 +16859,10 @@ def main():
     p.add_argument("--add", help="card to add (required unless --undo)")
     p.add_argument("--apply", action="store_true",
                    help="write the change (with a .bak); default is a dry-run preview")
+    p.add_argument("--package", nargs="+", metavar="CUT=ADD",
+                   help="preview SEVERAL swaps as one change: the combined vector, tier "
+                        "floor and legality, plus each pair's identity and section "
+                        "verdict. Writes nothing and records no ledger row.")
     p.add_argument("--undo", action="store_true",
                    help="reverse this deck's most recent `swap --apply` (one step) and "
                         "remove its recommendations.csv row; refuses if the file changed "

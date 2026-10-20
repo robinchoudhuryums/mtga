@@ -28,7 +28,7 @@ Phase: implement — **Batches 1 (ingest), 2 (deck legality + parse gates) and 3
 Scope: broad
 Test Command: `python3 scripts/check_all.py`
 Subsystem cycles since last Seams audit: 3 (counter adopted 2026-09-08; no Seams audit has run)
-Updated: 2026-10-20 (Brawl tooling plan Batch 3 — see Where I left off)
+Updated: 2026-10-20 (Brawl tooling plan Batch 4 — see Where I left off)
 
 ## In progress (facts to carry forward — NOT judgments)
 - **Broad scan #10 is fully implemented — nothing outstanding from the scan.** Four
@@ -44,6 +44,9 @@ Updated: 2026-10-20 (Brawl tooling plan Batch 3 — see Where I left off)
 
 ## Completed this cycle
 
+- **2026-10-20 — Brawl tooling plan, Batch 4** (block `tooling-batch4-broad-implement.md`):
+  `swap <id> --package "cut=add" …` — a no-write preview of several swaps (combined vector, tier
+  floor, one legality check; per-pair identity ⛔ and section advisory). Net 1 − 0.
 - **2026-10-20 — Brawl tooling plan, Batch 3** (block `tooling-batch3-broad-implement.md`): one-step
   `swap <id> --undo` — restores the swap's own backup (verified by re-applying the ledger swap to it)
   and drops its ledger row; refuses after any other edit or an unrelated `move`. Net 1 − 0.
@@ -242,8 +245,7 @@ Updated: 2026-10-20 (Brawl tooling plan Batch 3 — see Where I left off)
 
 ## Pending / not yet done
 - **PLANNED 2026-10-20 — Brawl tooling plan (9 items from the decks 84–86 builds), 7 batches:**
-  Batches 1–3 DONE. Remaining, in order: **4** `swap --package "cut=add" …` dry-run preview (one vector, legality,
-  identity ⛔, section moves; writes nothing) — needs Batch 2; **5** `wishlist --by-set --decks` +
+  Batches 1–4 DONE. Remaining, in order: **5** `wishlist --by-set --decks` +
   `suggest --lands` owned-options footer; **6** profile `consistency` / `swap --apply` /
   `make postedit` (measure, no behaviour change); **7** section placement automatic by default with a
   warning when ambiguous (changes G-05). Plus Batch 1's open half: suggest/screen/cuts still exclude
@@ -377,9 +379,10 @@ Updated: 2026-10-20 (Brawl tooling plan Batch 3 — see Where I left off)
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
-**2026-10-20 (latest) — Brawl tooling plan, Batch 3 done** (`swap --undo`; block
-`tooling-batch3-broad-implement.md`). Batches 1–2 done the same day. Suite + check_all green.
-**Next:** Batch 4 (`swap --package` preview), then 5–7 per Pending. Docs for batches 1–3 SYNCED
+**2026-10-20 (latest) — Brawl tooling plan, Batch 4 done** (`swap --package` preview; block
+`tooling-batch4-broad-implement.md`). Batches 1–3 done the same day. Suite + check_all green.
+**Next:** Batch 5 (`wishlist --by-set --decks`, `suggest --lands` owned footer), then 6–7. Docs owed
+for Batch 4 (G-06, README, /tune-deck, /apply-changes). Docs for batches 1–3 SYNCED
 2026-10-20 (G-06/G-09/G-56/G-63, C-01, README, /apply-changes; 12 stale figures refreshed, 0 drift).
 
 **2026-10-09 (latest) — deck 34 (Zoologist) tuned across ten waves, then tool gaps #2/#4/#5
