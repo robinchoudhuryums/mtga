@@ -51,6 +51,14 @@
 #: notes: Mountain and a Swamp became Sunken Hollow and Seething Landscape: sources U 18 / B 25 / R 14,
 #: notes: Kang the Conqueror 50.0% → 57.2% on turn 4, Loki and Doctor Doom, King of Latveria 63.2% →
 #: notes: 66.4%, nothing worse. Moving basics alone only traded red odds for blue (six variants tried).
+#: notes: OWNED MANABASE 2026-10-21 (owner's call, to cut the rare land crafts): twelve unowned rare
+#: notes: lands (the pathways, fastlands, checklands, Spirebluff Canal, Oscorp Industries, Xander's
+#: notes: Lounge, and the Sunken Hollow added earlier that day) became owned duals: Undercity Sewers,
+#: notes: Serpent's Pass, Treno, Soured Springs, Dismal Backwater (U/B), Temple of Malice, Boiling Rock
+#: notes: Prison, Razortrap Gorge (B/R), Temple of Epiphany, Riverpyre Verge (U/R), Starting Town,
+#: notes: Evolving Wilds. Colour access held (U 18 / B 24 / R 14, Kang the Conqueror still 57.2% on
+#: notes: turn 4, Loki 65.9%); the price is tempo, P(an always-tapped land in the first three drops)
+#: notes: 16% → 54%. Crafts to restore first: Drowned Catacomb and Darkslick Shores (blue is tightest).
 
 # Commander (leads from the command zone; also one of the 100)
 1 Loki, the Deceiver (MSC) 86
@@ -125,29 +133,29 @@
 1 Origin of Black Widow (MSC) 664
 
 # Lands (36)
-1 Blackcleave Cliffs (ONE) 248
+1 Temple of Malice (FDN) 701
 1 Blazemire Verge (DSK) 256
-1 Blightstep Pathway // Searstep Pathway (KHM) 252
+1 Boiling Rock Prison (TLA) 267
 1 Blood Crypt (ECL) 262
 1 Castle Doom (MSH) 263
-1 Clearwater Pathway // Murkwater Pathway (ZNR) 260
+1 Undercity Sewers (PZA) 0
 1 Command Tower (FRC) 22
 1 Dark Fortress (MSH) 264
-1 Darkslick Shores (ONE) 250
-1 Dragonskull Summit (XLN) 252
-1 Drowned Catacomb (XLN) 253
+1 Serpent's Pass (TLA) 279
+1 Razortrap Gorge (DSK) 267
+1 Treno, Dark City (FIN) 290
 1 Gloomlake Verge (DSK) 260
 1 Hidden Lair (MSH) 269
-1 Oscorp Industries (SPM) 182
-1 Spirebluff Canal (OTJ) 270
+1 Evolving Wilds (ECL) 264
+1 Riverpyre Verge (DFT) 260
 1 Steam Vents (ECL) 267
-1 Sulfurous Springs (DMU) 256
-1 Underground River (BRO) 267
+1 Temple of Epiphany (FDN) 699
+1 Soured Springs (OTJ) 264
 1 Villainous Hideout (MSH) 276
 1 Watery Grave (EOE) 261
-1 Xander's Lounge (SNC) 260
+1 Starting Town (FIN) 289
 7 Swamp (FRA) 285
 1 Seething Landscape (MH3) 225
 4 Island (FRA) 283
 2 Mountain (FRA) 287
-1 Sunken Hollow (EA3) 23
+1 Dismal Backwater (FDN) 261
