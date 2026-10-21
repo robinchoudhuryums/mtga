@@ -42,6 +42,11 @@
 #: notes: Then Hulk, Strongest There Is for Garruk, Unleashed, Abomination for Hazoret, Godseeker
 #: notes: (speed starters are now Samut, Point the Way and Amonkhet Raceway), and Black Panther,
 #: notes: Wakandan King for Samut, Vizier of Naktamun (card draw for card draw).
+#: notes: Then Inspiring Call for Mightform Harmonizer (the deck had NO team protection: draws per
+#: notes: countered creature and makes them indestructible), Toph, Earthbending Master for Annie Flash,
+#: notes: The Earth King for Huntmaster of the Fells (Huntmaster rarely transforms in a deck that casts
+#: notes: spells every turn) and Sledge-Class Seedship for Hugs. Seedship is the deck's one nontoken
+#: notes: artifact, so Toph, the First Metalbender makes it a land (a landfall trigger as it enters).
 
 # Commander (leads from the command zone; also one of the 100)
 1 Samut, the Driving Force (DFT) 222
@@ -59,18 +64,17 @@
 1 Tifa Lockhart (FIN) 206
 1 Grand Warlord Radha (DOM) 195
 
-# Creatures — threats, power payoffs and removal bodies (30)
+# Creatures — threats, power payoffs and removal bodies (28)
 1 Samut, Hazoret's Champion (FRA) 251
 1 Black Panther, Wakandan King (MAR) 87
 1 Roxanne, Starfall Savant (OTJ) 228
 1 Ravenous Tyrannosaurus (MAR) 93
 1 Zacama, Primal Calamity (RIX) 174
-1 Huntmaster of the Fells // Ravager of the Fells (SIS) 64
+1 The Earth King (TLA) 172
 1 Red Hulk (MSH) 149
-1 Hugs, Grisly Guardian (BLB) 218
 1 Beorn the Fierce (HOB) 119
 1 Emperor Apatzec Intli IV (YOTJ) 21
-1 Annie Flash, the Veteran (OTJ) 190
+1 Toph, Earthbending Master (TLE) 145
 1 She-Hulk, Attorney-at-Law (MSC) 745
 1 Absorbing Man and Titania (MSC) 510
 1 Tifa, Martial Artist (FIC) 6
@@ -82,7 +86,6 @@
 1 Miles Morales (SPM) 108
 1 Jennifer Walters (MSH) 18
 1 Ancient Greenwarden (ZNR) 178
-1 Mightform Harmonizer (EOE) 200
 1 Hexhaven Invigorator (FRA) 106
 1 She-Hulk, Jade Defender (MSH) 188
 1 Gamma Grotesque (MSC) 562
@@ -91,7 +94,7 @@
 1 Hulk, Strongest There Is (MSC) 724
 1 Abomination, Irradiated Brute (MSC) 511
 
-# Noncreature — removal, planeswalkers, engines and finishers (21)
+# Noncreature — removal, planeswalkers, engines and finishers (23)
 1 Swords to Plowshares (SPG) 54
 1 Ram Through (IKO) 170
 1 Minsc & Boo, Timeless Heroes (HBG) 243
@@ -113,6 +116,8 @@
 1 Nissa, Voice of Zendikar (PIO) 188
 1 Arlinn, the Pack's Hope // Arlinn, the Moon's Fury (MID) 211
 1 Beorn's Hospitality (HOB) 120
+1 Inspiring Call (TLE) 168
+1 Sledge-Class Seedship (EOE) 208
 
 # Lands (37)
 1 Amonkhet Raceway (DFT) 248
