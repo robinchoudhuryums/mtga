@@ -5,8 +5,8 @@
 #: plan: midrange
 #: archetype: Naya power ramp around Samut, the Driving Force. Samut gives every other creature
 #: archetype: +X/+0 and makes noncreature spells cost X less, X = speed (max 4) — but speed only
-#: archetype: starts when a "Start your engines!" permanent arrives, so Point the Way, Hazoret,
-#: archetype: Godseeker and Amonkhet Raceway start it early and Samut lands at speed 3–4. Twelve
+#: archetype: starts when a "Start your engines!" permanent arrives, so Point the Way and
+#: archetype: Amonkhet Raceway start it early and Samut can land at speed 3–4. Twelve
 #: archetype: mana creatures and land ramp put her down on turn 4–5; then every card that READS
 #: archetype: power scales: Selvala, Doc Samson and Giant-Man make huge mana, Master's Guidance
 #: archetype: draws each end step, Emperor Apatzec gives the team haste, Tifa, Martial Artist
@@ -20,7 +20,7 @@
 #: archetype: Raising speed needs opponent life loss every turn: team haste (Samut, Hazoret's Champion),
 #: archetype: Alien Invasion's forced attacker, Roxanne's Meteorites and two ping lands. Distinct
 #: archetype: from every deck on file (≤3 shared cards; deck 73a runs Samut in Standard).
-#: protect: Samut, the Driving Force; Point the Way; Hazoret, Godseeker; Selvala, Heart of the Wilds; Doc Samson, Super Psychiatrist; Giant-Man, Gargantuan Genius; Master's Guidance; Tifa, Martial Artist; Emperor Apatzec Intli IV; Unnatural Growth; Tifa's Limit Break
+#: protect: Samut, the Driving Force; Point the Way; Selvala, Heart of the Wilds; Doc Samson, Super Psychiatrist; Giant-Man, Gargantuan Genius; Master's Guidance; Tifa, Martial Artist; Emperor Apatzec Intli IV; Unnatural Growth; Tifa's Limit Break
 #: notes: Drafted 2026-10-21 from the owner's 104-card Samut pile (/pile-analysis, working doc
 #: notes: .cycle/88-samut-pile-analysis.md): 55 pile cards plus Point the Way, Hazoret,
 #: notes: Godseeker, Amonkhet Raceway (speed starters), Swords to Plowshares, Ram Through, Rabid
@@ -39,12 +39,14 @@
 #: notes: Is, plus second-tier Toph, Earthbending Master, Ayula, Murasa Rootgrazer, Abomination and
 #: notes: Sledge-Class Seedship. With Twitching Doll and the Velocipede gone the deck holds NO
 #: notes: artifacts, so Toph, the First Metalbender's artifacts-are-lands clause is idle.
+#: notes: Then Hulk, Strongest There Is for Garruk, Unleashed, Abomination for Hazoret, Godseeker
+#: notes: (speed starters are now Samut, Point the Way and Amonkhet Raceway), and Black Panther,
+#: notes: Wakandan King for Samut, Vizier of Naktamun (card draw for card draw).
 
 # Commander (leads from the command zone; also one of the 100)
 1 Samut, the Driving Force (DFT) 222
 
-# Creatures — mana and ramp (12)
-1 Hazoret, Godseeker (DFT) 133
+# Creatures — mana and ramp (11)
 1 Badgermole Cub (TLA) 167
 1 Great Divide Guide (TLA) 181
 1 Torgal, A Fine Hound (FIN) 208
@@ -57,9 +59,9 @@
 1 Tifa Lockhart (FIN) 206
 1 Grand Warlord Radha (DOM) 195
 
-# Creatures — threats, power payoffs and removal bodies (28)
+# Creatures — threats, power payoffs and removal bodies (30)
 1 Samut, Hazoret's Champion (FRA) 251
-1 Samut, Vizier of Naktamun (MAT) 45
+1 Black Panther, Wakandan King (MAR) 87
 1 Roxanne, Starfall Savant (OTJ) 228
 1 Ravenous Tyrannosaurus (MAR) 93
 1 Zacama, Primal Calamity (RIX) 174
@@ -86,8 +88,10 @@
 1 Gamma Grotesque (MSC) 562
 1 Omnath, Locus of Rage (EA3) 17
 1 Ghired, Mirror of the Wilds (OTJ) 205
+1 Hulk, Strongest There Is (MSC) 724
+1 Abomination, Irradiated Brute (MSC) 511
 
-# Noncreature — removal, planeswalkers, engines and finishers (22)
+# Noncreature — removal, planeswalkers, engines and finishers (21)
 1 Swords to Plowshares (SPG) 54
 1 Ram Through (IKO) 170
 1 Minsc & Boo, Timeless Heroes (HBG) 243
@@ -104,7 +108,6 @@
 1 Samut, the Tested (AKR) 257
 1 Master's Guidance (TLE) 141
 1 Unnatural Growth (MID) 206
-1 Garruk, Unleashed (M21) 183
 1 Tifa's Limit Break (FIN) 207
 1 Dancing from Dark to Dawn (HOB) 123
 1 Nissa, Voice of Zendikar (PIO) 188

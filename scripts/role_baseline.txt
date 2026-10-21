@@ -157,7 +157,6 @@ Frontier Seeker
 Fynn, the Fangbearer
 Galuf's Final Act
 Gangly Stompling
-Garruk, Unleashed
 Gas Guzzler
 Gastal Raider
 Germinate Recruits
@@ -199,6 +198,7 @@ Honored Knight-Captain
 Hop to It
 Hour of Victory
 How to Start a Riot
+Hulk, Strongest There Is
 Human Torch
 HYDRA Troopers
 Hymn of the Faller
