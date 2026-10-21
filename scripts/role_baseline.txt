@@ -45,6 +45,7 @@ Bioengineered Future
 Biogenic Upgrade
 Biotech Specialist
 Black Cat, Cunning Thief
+Black Market Connections
 Black Widow, Super Spy
 Blasphemous Edict
 Blitzball Shot
@@ -341,7 +342,6 @@ Savage Ventmaw
 Scarlet Spider, Ben Reilly
 Scarlet Spider, Kaine
 Scientist Supreme of A.I.M.
-Scorpion, Seething Striker
 Season of Weaving
 Secret of Bloodbending
 Seedglaive Mentor

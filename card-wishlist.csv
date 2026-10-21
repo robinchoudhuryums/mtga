@@ -106,6 +106,9 @@ Cursecloth Wrappings,Artifact,"Zombies you control get +1/+1.
 Unstoppable Plan,Enchantment,"At the beginning of your end step, untap all nonland permanents you control.",U,,DFT,72,Rare,16,deck 16 waterbend rebuild 2026-09-19,3.0,seed
 Adrenaline Jockey,Creature — Minotaur Pilot,"Whenever a player casts a spell, if it's not their turn, this creature deals 4 damage to them.
 Whenever you activate an exhaust ability, put a +1/+1 counter on this creature.",R,Minotaur; Pilot; counters; burn,DFT,112,Uncommon,60,speed aggro 3-drop (deck 60 round-2 pile swap); pings us for off-turn spells,4.0,seed
+"Sheoldred, the Apocalypse",Legendary Creature — Phyrexian Praetor,"Deathtouch
+Whenever you draw a card, you gain 2 life.
+Whenever an opponent draws a card, they lose 2 life.",B,Phyrexian; Praetor; lifegain; card draw; deathtouch; combat; removal,DMU,107,Mythic,87,,7.0,seed
 Plaza of Heroes,Land,"{T}: Add {C}.
 {T}: Add one mana of any color. Spend this mana only to cast a legendary spell.
 {T}: Add one mana of any color among legendary permanents you control.
@@ -277,6 +280,10 @@ Other creatures you control have trample.",G,Elder; Dinosaur; cost-reduction; tr
 Primal Witchstalker,Creature — Wolf,"Menace (This creature can't be blocked except by two or more creatures.)
 When this creature enters, mill four cards. When you do, return target land card from your graveyard to the battlefield tapped. (To mill four cards, put the top four cards of your library into your graveyard.)",B/G,Wolf; reanimator; graveyard; mill; etb; menace; evasion,FRA,144,Uncommon,83a,,5.0,seed
 Reflecting Pool,Land,{T}: Add one mana of any type that a land you control could produce.,Colorless,mana,FRC,23,Rare,84,,4.0,seed
+Black Market Connections,Enchantment,"At the beginning of your first main phase, choose one or more —
+• Sell Contraband — Create a Treasure token. You lose 1 life.
+• Buy Information — Draw a card. You lose 2 life.
+• Hire a Mercenary — Create a 3/2 colorless Shapeshifter creature token with changeling. You lose 3 life. (It is every creature type.)",B,pay life; card draw; tokens; treasure,HBG,145,Rare,87,,3.0,seed
 Two-Handed Axe // Sweeping Cleave,Artifact — Equipment // Instant — Adventure,"Whenever equipped creature attacks, double its power until end of turn.
 Equip {1}{R} // Target creature you control gains double strike until end of turn. (Then exile this card. You may cast the artifact later from exile.)",R,equipment; Adventure; exile cast; equip; double; double strike; combat; aggro,HBG,191,Uncommon,84,,2.0,seed
 Inside Information,Sorcery,"Exile the top X cards of target opponent's library. You may play those cards this turn. If you cast a spell this way, pay life equal to its mana value rather than pay its mana cost.",B,pay life; heist; impulse,HOB,76,Mythic,41,"drain/value package: unconditional removal + life-to-mana, refunded by the Mister Negative swap",4.5,seed
@@ -353,6 +360,8 @@ Novice Inspector,Creature — Human Detective,"When this creature enters, invest
 "Captain Marvel, Shooting Star",Legendary Creature — Human Kree Hero,"Flying
 Whenever Captain Marvel enters or attacks, exile up to one target creature. That creature's controller gains life equal to its power.
 Whenever a creature other than Captain Marvel is exiled from the battlefield, you gain life equal to its power.",W,Human; Kree; Hero; lifegain; flying; evasion,MSC,589,Mythic,85,,7.0,seed
+"Doctor Doom, King of Latveria",Legendary Creature — Human Noble Villain,"Whenever you discard one or more land cards, each opponent loses 2 life.
+At the beginning of combat on your turn, target Villain you control gains menace until end of turn. It connives. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on that creature.)",U/B/R,Human; Noble; Villain; counters; card draw; connive; graveyard,MSC,6,Mythic,87,,8.0,seed
 Origin of Iron Man,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
 I — Tap up to one target creature. It doesn't untap during its controller's untap step for as long as this Saga remains on the battlefield.
 II — Draw two cards.

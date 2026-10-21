@@ -36,6 +36,10 @@
 #: notes: attacks" trigger does not fire; a token cannot be exiled from the graveyard as a card, so
 #: notes: Doombot Harbinger's death rider fails on a copy; Thunderbolts Conspiracy returns real
 #: notes: Villains only, which also makes Villainous Wrath nearly one-sided.
+#: notes: SWAPS 2026-10-21: Doctor Doom, King of Latveria for Taskmaster (menace + a connive on
+#: notes: Loki every combat — the evasion his draw needs); Sheoldred, the Apocalypse for Scorpion
+#: notes: (Scorpion's end-step connive never saw Loki's copy die); Black Market Connections for
+#: notes: Decoy Ploy. Quality guard: net improvement; floor A.
 
 # Commander (leads from the command zone; also one of the 100)
 1 Loki, the Deceiver (MSC) 86
@@ -69,8 +73,8 @@
 1 Madame Hydra, Reanimated (MSC) 538
 1 Morbius the Living Vampire (SPM) 137
 1 Mysterio, Master of Illusion (SPM) 37
-1 Scorpion, Seething Striker (SPM) 64
-1 Taskmaster, Mercenary Mimic (MSH) 232
+1 Sheoldred, the Apocalypse (DMU) 107
+1 Doctor Doom, King of Latveria (MSC) 6
 1 Thanos, Death's Consort (MSC) 508
 1 Tiger Shark, Abyssal Hunter (MSC) 747
 1 Vulture, Feathered Fiend (MSC) 645
@@ -96,7 +100,7 @@
 1 Gwenom, Remorseless (SPM) 56
 
 # Noncreature — removal, Plans and engines
-1 Decoy Ploy (MSH) 94
+1 Black Market Connections (HBG) 145
 1 Doom Reigns Supreme (MSH) 96
 1 Heartless Act (TLA) 103
 1 Infernal Grasp (MID) 107
