@@ -1,7 +1,8 @@
 # Samut Brawl pile (deck 88) — analysis (TEMPORARY working doc)
 
-**Status: IN PROGRESS.** Delete once deck 88 is drafted, the owner signs off, and these
-findings are folded into its `#: notes:`. A scratchpad, not a source of truth — decks/ are.
+**Status: DRAFTED as decks/88-full-throttle (2026-10-21; Amonkhet Raceway replaced Loxodon
+Surveyor at draft time). Keep until the owner has finished bringing left-out pile cards back
+in and signs off, then fold into its `#: notes:` and delete.** A scratchpad, not a source of truth — decks/ are.
 
 **Source list:** the owner's 104-card pile (2026-10-21), commander Samut, the Driving Force
 (DFT 222). Every card is inside the W/R/G identity and Historic Brawl-legal (checked in the

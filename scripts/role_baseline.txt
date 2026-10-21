@@ -8,6 +8,7 @@
 # `check_roles.py --update-baseline` to acknowledge the current set.
 Aang, at the Crossroads
 Aang, at the Crossroads // Aang, Destined Savior
+Absorbing Man and Titania
 Accumulate Wisdom
 Aerial Doombot
 Aerid Konstrari
@@ -35,7 +36,9 @@ Aurora Awakener
 Avenger of the Fallen
 Avengers: Under Siege
 Azula, Cunning Usurper
+Back-Alley Gardener
 Badgermole
+Badgermole Cub
 Ball Lightning
 Bandit's Talent
 Baxter Stockman
@@ -154,6 +157,7 @@ Frontier Seeker
 Fynn, the Fangbearer
 Galuf's Final Act
 Gangly Stompling
+Garruk, Unleashed
 Gas Guzzler
 Gastal Raider
 Germinate Recruits
@@ -320,6 +324,7 @@ Raph & Leo, Sibling Rivals
 Raph & Mikey, Troublemakers
 Raphael, the Muscle
 Raphael, the Nightwatcher
+Ravenous Tyrannosaurus
 Reckless Velocitaur
 Reno and Rude
 Resentful Revelation
@@ -331,6 +336,7 @@ Rise of the Dark Realms
 Rise of the Varmints
 Riverchurn Monument
 Roalesk, Apex Hybrid
+Rocco, Cabaretti Caterer
 Rockalanche
 Rustler Rampage
 Salvation Swan
@@ -414,11 +420,14 @@ Thor, Guardian of Midgard
 Three Tree Scribe
 Thunderous Velocipede
 Tidings of War
+Tifa, Martial Artist
 Tiger Shark, Abyssal Hunter
 Tiger-Dillo
 Time Stop
 Tomik, Izzet Sparkmage
+Toph, Greatest Earthbender
 Toph, the Blind Bandit
+Toph, the First Metalbender
 Topiary Lecturer
 Treasure Dredger
 Treeguard Duo
@@ -429,6 +438,7 @@ Ultron Drone
 Umbral Collar Zealot
 Underwater Tunnel // Slimy Aquarium
 United Front
+Unnatural Growth
 Unstable Experiment
 Unstoppable Plan
 Unstoppable Slasher
@@ -446,6 +456,7 @@ Vulture, Scheming Scavenger
 War Balloon
 War Machine, Legacy of Iron
 War Squeak
+Warden of the Chained
 Wargling
 Waterbender Ascension
 Way of the Healer

@@ -106,6 +106,9 @@ Cursecloth Wrappings,Artifact,"Zombies you control get +1/+1.
 Unstoppable Plan,Enchantment,"At the beginning of your end step, untap all nonland permanents you control.",U,,DFT,72,Rare,16,deck 16 waterbend rebuild 2026-09-19,3.0,seed
 Adrenaline Jockey,Creature — Minotaur Pilot,"Whenever a player casts a spell, if it's not their turn, this creature deals 4 damage to them.
 Whenever you activate an exhaust ability, put a +1/+1 counter on this creature.",R,Minotaur; Pilot; counters; burn,DFT,112,Uncommon,60,speed aggro 3-drop (deck 60 round-2 pile swap); pings us for off-turn spells,4.0,seed
+Amonkhet Raceway,Land,"Start your engines! (If you have no speed, it starts at 1. It increases once on each of your turns when an opponent loses life. Max speed is 4.)
+{T}: Add {C}.
+Max speed — {T}: Target creature gains haste until end of turn.",Colorless,mana; max speed; speed; aggro; start your engines!; haste,DFT,248,Uncommon,88,,2.5,seed
 "Sheoldred, the Apocalypse",Legendary Creature — Phyrexian Praetor,"Deathtouch
 Whenever you draw a card, you gain 2 life.
 Whenever an opponent draws a card, they lose 2 life.",B,Phyrexian; Praetor; lifegain; card draw; deathtouch; combat; removal,DMU,107,Mythic,87,,7.0,seed
@@ -280,6 +283,10 @@ Other creatures you control have trample.",G,Elder; Dinosaur; cost-reduction; tr
 Primal Witchstalker,Creature — Wolf,"Menace (This creature can't be blocked except by two or more creatures.)
 When this creature enters, mill four cards. When you do, return target land card from your graveyard to the battlefield tapped. (To mill four cards, put the top four cards of your library into your graveyard.)",B/G,Wolf; reanimator; graveyard; mill; etb; menace; evasion,FRA,144,Uncommon,83a,,5.0,seed
 Reflecting Pool,Land,{T}: Add one mana of any type that a land you control could produce.,Colorless,mana,FRC,23,Rare,84,,4.0,seed
+"Minsc & Boo, Timeless Heroes",Legendary Planeswalker — Minsc,"When Minsc & Boo enters and at the beginning of your upkeep, you may create Boo, a legendary 1/1 red Hamster creature token with trample and haste.
++1: Put three +1/+1 counters on up to one target creature with trample or haste.
+−2: Sacrifice a creature. When you do, Minsc & Boo deals X damage to any target, where X is that creature's power. If the sacrificed creature was a Hamster, draw X cards.
+Minsc & Boo, Timeless Heroes can be your commander.",R/G,Minsc; planeswalker; counters; card draw; sacrifice; tokens; burn; etb; noncombat damage,HBG,243,Mythic,88,,10.0,seed
 Black Market Connections,Enchantment,"At the beginning of your first main phase, choose one or more —
 • Sell Contraband — Create a Treasure token. You lose 1 life.
 • Buy Information — Draw a card. You lose 2 life.
@@ -293,6 +300,7 @@ Whenever you draw your second card each turn, target player mills three cards. (
 "Andúril, Narsil Reforged",Legendary Artifact — Equipment,"Ascend (If you control ten or more permanents, you get the city's blessing for the rest of the game.)
 Whenever equipped creature attacks, put a +1/+1 counter on each creature you control. If you have the city's blessing, put two +1/+1 counters on each creature you control instead.
 Equip {3}",Colorless,equipment; counters; ascend; equip,HOC,40,Mythic,84,,7.0,seed
+Ram Through,Instant,"Target creature you control deals damage equal to its power to target creature you don't control. If the creature you control has trample, excess damage is dealt to that creature's controller instead.",G,removal; trample; evasion,IKO,170,Common,88,,2.0,seed
 Bonehoard Dracosaur,Creature — Dinosaur Dragon,"Flying, first strike
 At the beginning of your upkeep, exile the top two cards of your library. You may play them this turn. If you exiled a land card this way, create a 3/1 red Dinosaur creature token. If you exiled a nonland card this way, create a Treasure token.",R,Dinosaur; Dragon; tokens; treasure; impulse; flying; evasion; first strike; combat,LCI,134,Mythic,49,,7.5,hand
 The Ancient One,Legendary Creature — Spirit God,"Descend 8 — The Ancient One can't attack or block unless there are eight or more permanent cards in your graveyard.
@@ -445,6 +453,7 @@ Traumatic Critique,Instant,"Traumatic Critique deals X damage to any target. Dra
 Foolish Fate,Instant,"Destroy target creature.
 Infusion — If you gained life this turn, that creature's controller loses 3 life.",B,lifegain; removal; infusion; payoff,SOS,83,Uncommon,41,"drain/value package: unconditional removal + life-to-mana, refunded by the Mister Negative swap",3.0,seed
 Send in the Pest,Sorcery,"Each opponent discards a card. You create a 1/1 black and green Pest creature token with ""Whenever this token attacks, you gain 1 life.""",B,lifegain; tokens; discard,SOS,100,Common,70,,1.5,seed
+Swords to Plowshares,Instant,Exile target creature. Its controller gains life equal to its power.,W,lifegain; removal,SPG,54,Mythic,88,,6.0,seed
 "Hydro-Man, Fluid Felon",Legendary Creature — Elemental Villain,"Whenever you cast a blue spell, if Hydro-Man is a creature, he gets +1/+1 until end of turn.
 At the beginning of your end step, untap Hydro-Man. Until your next turn, he becomes a land and gains ""{T}: Add {U}."" (He's not a creature during that time.)",U,Elemental; Villain; mana; pump,SPM,33,Rare,16,deck 16 waterbend rebuild 2026-09-19,6.5,seed
 Multiversal Passage,Land,"As this land enters, choose a basic land type. Then you may pay 2 life. If you don't, it enters tapped.
