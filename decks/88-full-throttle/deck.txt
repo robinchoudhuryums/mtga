@@ -47,6 +47,8 @@
 #: notes: The Earth King for Huntmaster of the Fells (Huntmaster rarely transforms in a deck that casts
 #: notes: spells every turn) and Sledge-Class Seedship for Hugs. Seedship is the deck's one nontoken
 #: notes: artifact, so Toph, the First Metalbender makes it a land (a landfall trigger as it enters).
+#: notes: Then Inscription of Abundance for Pitiless Fists (instant fight plus two +1/+1 counters;
+#: notes: kicked, all three modes, with the kicker discounted by Samut).
 
 # Commander (leads from the command zone; also one of the 100)
 1 Samut, the Driving Force (DFT) 222
@@ -105,7 +107,7 @@
 1 Punishing Punch (MSH) 180
 1 Hulk's Thunderclap (MSC) 725
 1 Epic Fight (MSH) 166
-1 Pitiless Fists (ECL) 187
+1 Inscription of Abundance (ZNR) 186
 1 Cabaretti Charm (SNC) 173
 1 Annie Joins Up (OTJ) 191
 1 Samut, the Tested (AKR) 257

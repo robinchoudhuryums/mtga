@@ -594,3 +594,8 @@ Stormkeld Prowler,Creature — Human Rogue,"Whenever you cast a spell with mana 
 Ancient Greenwarden,Creature — Elemental,"Reach (This creature can block creatures with flying.)
 You may play lands from your graveyard.
 If a land entering causes a triggered ability of a permanent you control to trigger, that ability triggers an additional time.",G,Elemental; graveyard; reach; defense,ZNR,178,Mythic,88,,7.5,seed
+Inscription of Abundance,Instant,"Kicker {2}{G}
+Choose one. If this spell was kicked, choose any number instead.
+• Put two +1/+1 counters on target creature.
+• Target player gains X life, where X is the greatest power among creatures they control.
+• Target creature you control fights target creature you don't control.",G,counters; fight; removal; combat; kicker; value,ZNR,186,Rare,88,,4.5,seed
