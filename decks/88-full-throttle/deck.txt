@@ -53,6 +53,8 @@
 #: notes: instant) and Smuggler's Surprise for Swords to Plowshares (owner's call: card advantage and
 #: notes: team hexproof/indestructible for power-4+ creatures over the deck's one clean exile answer;
 #: notes: interaction 14 -> 13, still above the A floor's 12).
+#: notes: Then Arlinn Kord for Arlinn, the Pack's Hope (a Wolf every other turn, haste for speed, a team
+#: notes: pump with trample, or 3 damage to any target).
 
 # Commander (leads from the command zone; also one of the 100)
 1 Samut, the Driving Force (DFT) 222
@@ -120,7 +122,7 @@
 1 Tifa's Limit Break (FIN) 207
 1 Dancing from Dark to Dawn (HOB) 123
 1 Nissa, Voice of Zendikar (PIO) 188
-1 Arlinn, the Pack's Hope // Arlinn, the Moon's Fury (MID) 211
+1 Arlinn Kord // Arlinn, Embraced by the Moon (SIR) 230
 1 Beorn's Hospitality (HOB) 120
 1 Inspiring Call (TLE) 168
 1 Sledge-Class Seedship (EOE) 208
