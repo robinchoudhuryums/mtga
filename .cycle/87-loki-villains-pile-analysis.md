@@ -56,6 +56,11 @@ Villains you control deal combat damage to a player, draw a card."
   gone). It returns REAL Villains, Loki included, which is its point (L4).
 - E5 (rules): Minotaur, Roxxon CEO counts NONTOKEN deaths, so the copy token does not feed
   it. Thanos, Death's Consort counts any creature, so it does.
+- E6 (rules): a copy of Mysterio, Master of Illusion counts NONTOKEN Villains and its 3/3s are
+  exiled when the copy is sacrificed — a temporary blocker wall, not lasting value. A copy of
+  Morlun enters with X = 0. Grade both on the original.
+- E7: Chameleon, Master of Disguise and Superior Spider-Man copy a creature WHOLESALE (only
+  the name is kept), so a copy of a Villain IS a Villain — they are not off-tribe.
 
 ## 3. Cross-batch observations
 - O1: the copy token is a VILLAIN ENTERING every attack, so every "whenever a Villain enters"
@@ -81,6 +86,20 @@ Villains you control deal combat damage to a player, draw a card."
   Hydra; Bullseye is {B/R} hybrid. Red is a light third colour so far.
 - O8: anthems for the Villain team: The Masters of Evil (+2/+1, or tutor a Plan),
   Doctor Octopus (+2/+2 and refill to eight).
+- O9: the pile's last seven (Black Widow ×3, Agent Venom, Gwenom, Symbiote Spider-Man,
+  Superior Spider-Man) are HEROES, not Villains: no copy target, no draw trigger (L6). Only
+  Gwenom earns a look on raw power; Superior Spider-Man becomes a Villain if it copies one
+  (E7).
+- O10: CONNIVE is a second engine. Eleven pile cards connive (Norman, Baron Strucker, Baron
+  Helmut Zemo, Valentina, Scorpion, M.O.D.O.K., Madame Masque, Prowler, Kang, Temporal
+  Tyrant, Tiger Shark, Leader). Leader, Super-Genius adds a card to EVERY connive, and its
+  beginning-of-combat connive makes the second draw happen BEFORE combat, so the O6 family
+  fires even when no Villain connects. Connive's DISCARDS also feed Mysterio's Mirage (a 3/3
+  Villain), Chameleon's mayhem and Living Laser.
+- O11: interaction in the pile is THIN: The Spot's Portal, M.O.D.O.K., Evil Intellect,
+  Avengers: Under Siege, Bullseye, Shocker, M.O.D.O.K.'s −1/−1, Villainous Wrath (symmetric).
+  At 100 cards the A floor wants interaction 12, so most removal must come from OUTSIDE the
+  pile (L7).
 
 ## 4. Running verdicts
 Legend: ★★★ take · ★★ strong · ★ real · ◇ situational · △ marginal · ✗ out
@@ -141,6 +160,34 @@ Legend: ★★★ take · ★★ strong · ★ real · ◇ situational · △ ma
 | 47 | Bullseye, Death Dealer | ★★ | enters: 2 damage (pay with a Treasure); a copy target for repeat shots |
 | 48 | Madame Hydra | ★★ | every Villain spell cast makes a menace Villain token |
 | 49 | Loki, God of Mischief | ★★ | Loki's attack trigger TARGETS — draws a card every turn |
+
+### Batch 3 (50–73)
+| # | Card | Verdict | Note |
+|---|---|---|---|
+| 50 | Graviton, Fundamental Force | ★★ | second draw → flying for an attacker, or tap a blocker (O6) |
+| 51 | Mysterio's Mirage | ★★ | a 3/3 Illusion Villain any turn you discarded — every connive turn (O10) |
+| 52 | Chameleon, Master of Disguise | ★★ | enters as a copy of your best creature (a Villain copy stays a Villain, E7); mayhem off a connive discard |
+| 53 | Immortus, Master of Eternity | ◇ | mana for noncreature spells only; a 7-mana wheel |
+| 54 | Leader, Super-Genius | ★★★ | +1 card on EVERY connive, and a connive each combat (O10) |
+| 55 | Kang the Conqueror | ★★★ | 4-mana 4/5 FLYING Villain (L3); late power-up is an extra turn |
+| 56 | Mysterio, Master of Illusion | ★★ | a 3/3 Villain per nontoken Villain on entry (original only — E6) |
+| 57 | Vulture, Feathered Fiend | ★★ | flying; fliers connecting draw a card and grow — stacks with Loki's draw |
+| 58 | Victor Timely, Wily Tycoon | ★★ | copy target: recast a removal spell from the yard free each attack (needs ≥4 such spells) |
+| 59 | Loki Laufeyson | ◇ | copies cheap instants/sorceries; the pile has few |
+| 60 | Electro, Assaulting Battery | ★ | 3-mana flying red Villain (L3); the rest needs spells |
+| 61 | Loki, God of Lies | ◇ | needs single-target creature SPELLS; Loki's trigger is an ability |
+| 62 | Living Laser | ◇ | copies per card discarded this turn — real only with Leader |
+| 63 | Red Hulk | ★ | 6/7 reach trample, enrage pings — red top end |
+| 64 | Shocker, Unshakable | ★★ | enters: 2 to a creature and its controller — a copy target that is REMOVAL every attack |
+| 65 | Scientist Supreme of A.I.M. | ★ | copies an artifact source's trigger — M.O.D.O.K., Evil Intellect's sacrifice, a Doombot |
+| 66 | Black Widow, Super Spy | ◇ | Hero (O9) |
+| 67 | Black Widow, Deadly Hunter | ◇ | Hero; deathtouch draw (O9) |
+| 68 | Agent Venom | ◇ | Hero; flash menace, draws on nontoken deaths (O9) |
+| 69 | Black Widow, Daring Operative | ◇ | Hero (O9) |
+| 70 | Gwenom, Remorseless | ★ | Hero, but deathtouch lifelink + play from the top on attack — raw power (O9) |
+| 71 | Symbiote Spider-Man | ◇ | Hero (O9) |
+| 72 | Superior Spider-Man | ★ | copies a creature card in ANY graveyard; a Villain copy counts (E7) |
+| 73 | Morlun, Devourer of Spiders | ★ | X-burn lifelink Villain, scales late (copy is X=0, E6) |
 
 ## 5. Consolidated plan (live)
 (after batch 3)
