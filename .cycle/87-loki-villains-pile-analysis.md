@@ -100,6 +100,17 @@ Villains you control deal combat damage to a player, draw a card."
   Avengers: Under Siege, Bullseye, Shocker, M.O.D.O.K.'s −1/−1, Villainous Wrath (symmetric).
   At 100 cards the A floor wants interaction 12, so most removal must come from OUTSIDE the
   pile (L7).
+- O12 (outside the pile, the biggest find): VILLAINS WITH ENTERS-REMOVAL are the best copy
+  targets in the format, because Loki copies their enters trigger on EVERY attack.
+  Ultimo, Civilization's End (each opponent sacrifices a creature), Elektra, Daughter of the
+  Hand (destroy power 3 or less, owned), Shocker (2 to a creature and its controller) — a
+  removal spell every turn from one card. Liliana, Dreadhorde General (owned) draws off the
+  copy's death every turn (L5).
+- O13 (G-67 holes, record only — fix in a later batch): Leader, Super-Genius and Black Cat,
+  Cunning Thief score NO role, though both are card advantage; connive engines read only as
+  "Payoff / engine". The proposal's card-advantage 8 under-counts the real card flow.
+- O14: distinct from deck 11 (Villainous — a 60-card mono-black Standard deck). Twelve
+  shared cards; different format, colours and engine (G-47: some overlap is fine).
 
 ## 4. Running verdicts
 Legend: ★★★ take · ★★ strong · ★ real · ◇ situational · △ marginal · ✗ out
@@ -190,4 +201,48 @@ Legend: ★★★ take · ★★ strong · ★ real · ◇ situational · △ ma
 | 73 | Morlun, Devourer of Spiders | ★ | X-burn lifelink Villain, scales late (copy is X=0, E6) |
 
 ## 5. Consolidated plan (live)
-(after batch 3)
+
+Measured on a scratch 100 (`deck.py tier/legal/consistency` on a path; placeholder basics
+for the 37 lands): **Historic Brawl-legal, floor A — interaction 17, card advantage 8 (an
+under-count, O13), sum 25 against an A line of 12 and 19.** Avg MV 3.7.
+
+### Core — the 40 ★★/★★★ pile cards
+★★★: Norman Osborn; Baron Strucker; Crimson Cowl; The Spot's Portal; Tombstone; Doctor Doom,
+Unrivaled; Kingpin, Wilson Fisk; Black Cat; M.O.D.O.K.; M.O.D.O.K., Evil Intellect; Doctor
+Doom; Prowler; Doctor Octopus; Avengers: Under Siege; Leader, Super-Genius; Kang the
+Conqueror.
+★★: Doom Reigns Supreme; Construct a Cosmic Cube; Citizen V; Criminal Enterprise; Doombot
+Harbinger; Crossbones; Thunderbolts Conspiracy; Madame Masque; Radioactive Man; The Masters of
+Evil; Kang, Temporal Tyrant; Morbius; Vulture, Scheming Scavenger; Tiger Shark; Bullseye;
+Madame Hydra; Loki, God of Mischief; Graviton; Mysterio's Mirage; Chameleon; Mysterio, Master
+of Illusion; Vulture, Feathered Fiend; Victor Timely; Shocker.
+
+### From outside the pile (12)
+- Engine (O12): Ultimo, Civilization's End; Elektra, Daughter of the Hand (owned); Liliana,
+  Dreadhorde General (owned).
+- Removal, all mana value ≤4 so Victor Timely can recast them: Infernal Grasp, Go for the
+  Throat, Heartless Act (owned), Hero's Downfall (owned), Bitter Triumph (owned), Feed the
+  Swarm (owned), Kolaghan's Command.
+- Rocks: Arcane Signet, Talisman of Dominance, Talisman of Indulgence.
+
+### The ★ fill (8 of 13)
+Hammerhead (sac outlet), Madame Hydra, Reanimated, Thanos, Taskmaster, Scientist Supreme of
+A.I.M., Superior Spider-Man, Morlun, Valentina Allegra de Fontaine.
+**Left out on castability:** Baron Helmut Zemo ({B}{B}{B}, 13% on turn 3), Electro ({R}{R},
+26% turn 3), Red Hulk ({R}{R}, 35% turn 5) — red is a light third colour (O7). Shocker is
+also {R}{R} but kept: as a copy target it is removal every attack.
+**Out:** Bob, Viper (attack alone, O3); the Heroes except Superior Spider-Man (O9);
+Villainous Syndication, Villainous Wrath, Minotaur, Count Nefaria, Titanium Man, Boomerang,
+Immortus, Loki Laufeyson, Loki, God of Lies, Living Laser, Decoy Ploy, Undead Hand Ninja,
+White Widow, Scorpion, Gwenom, Electro, Red Hulk, Baron Helmut Zemo.
+
+### Lands (37, decided in /draft-deck with `suggest --lands`)
+Black is the main colour (most double pips); blue second; red light. Owned fixing to
+start from: Watery Grave, Blood Crypt, Steam Vents, Villainous Hideout, Castle Doom. Crafts to
+weigh: Command Tower, Xander's Lounge (the U/B/R triome), Sulfurous Springs.
+
+### Protect list (what `cuts` cannot see)
+Tombstone, Black Cat, Elektra, Ultimo, Shocker, Doombot Harbinger, Madame Masque, Tiger
+Shark — their value is the COPY of their enters trigger every attack (L1/O2/O12), which no
+ranking models. Kingpin, Criminal Enterprise, Liliana, Thanos — they cash the copy's death
+every turn (L5). Leader, Super-Genius and Black Cat score no role at all (O13).
