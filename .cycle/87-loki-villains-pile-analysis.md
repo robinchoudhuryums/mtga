@@ -59,6 +59,14 @@ Villains you control deal combat damage to a player, draw a card."
 - E6 (rules): a copy of Mysterio, Master of Illusion counts NONTOKEN Villains and its 3/3s are
   exiled when the copy is sacrificed — a temporary blocker wall, not lasting value. A copy of
   Morlun enters with X = 0. Grade both on the original.
+- E8 (re-grade, owner's pushback 2026-10-21): Villainous Wrath is NOT a symmetric wipe here.
+  With Thunderbolts Conspiracy out, every real Villain you lose comes back (finality
+  counter), so it is one-sided against a Villain board. ◇ → ★★.
+- E9 (re-grade): the deathtouch cards are a PACKAGE, not singles. Black Widow, Deadly Hunter
+  draws whenever a deathtouch creature connects, and the pile holds seven (Undead Hand Ninja,
+  White Widow, Crossbones, Scorpion, Radioactive Man, Gwenom, Black Widow, Deadly Hunter),
+  plus any Loki copy of one. The Heroes were graded as off-tribe singles; as a group they are
+  the deck's second draw engine.
 - E7: Chameleon, Master of Disguise and Superior Spider-Man copy a creature WHOLESALE (only
   the name is kept), so a copy of a Villain IS a Villain — they are not off-tribe.
 
@@ -240,6 +248,20 @@ White Widow, Scorpion, Gwenom, Electro, Red Hulk, Baron Helmut Zemo.
 Black is the main colour (most double pips); blue second; red light. Owned fixing to
 start from: Watery Grave, Blood Crypt, Steam Vents, Villainous Hideout, Castle Doom. Crafts to
 weigh: Command Tower, Xander's Lounge (the U/B/R triome), Sulfurous Springs.
+
+### REVISED 2026-10-21 — pile-first (owner: every pile card was added for a reason)
+The arithmetic: 99 slots, 36 lands, so 63 nonland, and the pile alone is 73. Measured on a
+scratch 100: **58 pile cards + Ultimo, Elektra, Liliana + Infernal Grasp, Heartless Act =
+63 nonland, 36 lands — Historic Brawl-legal, floor A at exactly interaction 12** (card
+advantage 11, an under-count). With 60 pile cards and no removal spells the floor reads B
+(interaction 10). No rocks; Kingpin and Avengers: Under Siege make Treasures.
+**The 15 pile cards that do not fit**, weakest first, each returnable at the cost of a kept
+card: Bob, Viper (attack alone — Loki never does), Boomerang, Villainous Syndication, Titanium
+Man, Minotaur, Count Nefaria, Immortus, Loki, God of Lies, Living Laser, Electro, Red Hulk,
+Baron Helmut Zemo (colour-hungry), Symbiote Spider-Man, Loki Laufeyson.
+Kept from the original "out" list: all four Black Widow/Agent Venom Heroes, Gwenom, Superior
+Spider-Man, Villainous Wrath (E8), Decoy Ploy, Undead Hand Ninja, White Widow, Scorpion (E9).
+The five other outside removal spells and the three rocks are dropped to make room.
 
 ### Protect list (what `cuts` cannot see)
 Tombstone, Black Cat, Elektra, Ultimo, Shocker, Doombot Harbinger, Madame Masque, Tiger
