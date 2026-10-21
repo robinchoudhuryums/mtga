@@ -10,15 +10,15 @@
 #: archetype: Tombstone (regrow a Villain), Black Cat, Cunning Thief (two of their cards), Elektra and Ultimo
 #: archetype: (removal every attack), Doctor Doom (two Doombots), Shocker. The copy's death pays
 #: archetype: Kingpin (Treasures), Criminal Enterprise, Liliana and Thanos. Loki's draw is the
-#: archetype: turn's SECOND card, so the second-draw family (Construct a Cosmic Cube, both
+#: archetype: turn's SECOND card, so the second-draw family (both
 #: archetype: M.O.D.O.K.s, Madame Masque, Kang, Graviton) fires every turn a Villain connects, and
 #: archetype: connive (Leader, Super-Genius adds a card to each) is the second engine; the
 #: archetype: deathtouch Heroes (Black Widow, Deadly Hunter draws per deathtouch hit) a third.
 #: archetype: DISTINCT from deck 11 (Villainous: 60-card mono-black Standard): three colours,
 #: archetype: Historic Brawl, and the Loki copy engine.
 #: tier: A — set by the owner 2026-10-21. The measurable floor reads A at 100 cards: interaction
-#: tier: 12 and card advantage 11 against an A line of 12 and a sum of 19 — interaction sits exactly
-#: tier: on the line, and card advantage under-counts (Leader, Super-Genius and Black Cat, Cunning
+#: tier: 13 and card advantage 11 against an A line of 12 and a sum of 19 — interaction one above
+#: tier: the line, and card advantage under-counts (Leader, Super-Genius and Black Cat, Cunning
 #: tier: Thief score no role). The engine is layered: copy targets with enters removal (Elektra,
 #: tier: Ultimo, Shocker), death payoffs for the copy (Kingpin, Liliana, Criminal Enterprise), the
 #: tier: second-draw family and connive. Weaknesses: three colours with several double pips, and
@@ -40,6 +40,13 @@
 #: notes: Loki every combat — the evasion his draw needs); Sheoldred, the Apocalypse for Scorpion
 #: notes: (Scorpion's end-step connive never saw Loki's copy die); Black Market Connections for
 #: notes: Decoy Ploy. Quality guard: net improvement; floor A.
+#: notes: SWAPS 2026-10-21 (second wave): Origin of Black Widow for Victor Timely (Victor had three
+#: notes: recastable targets here; Origin is an edict, a team-deathtouch turn for Black Widow, Deadly
+#: notes: Hunter, and a drain); Loki, Lord of Misrule for Scientist Supreme (the finisher: make every
+#: notes: other creature a non-legendary Loki, the Deceiver); Drivnod, Carnage Dominus for Construct a
+#: notes: Cosmic Cube (Loki's copy dies every turn, so Liliana, Criminal Enterprise and Thanos trigger
+#: notes: twice). Kept on purpose: Crimson Cowl (a menace Villain every attack) and Elektra (cutting her
+#: notes: drops the floor to B).
 
 # Commander (leads from the command zone; also one of the 100)
 1 Loki, the Deceiver (MSC) 86
@@ -49,7 +56,7 @@
 1 Loki, God of Mischief (MSH) 65
 1 Morlun, Devourer of Spiders (SPM) 59
 1 Norman Osborn (SPM) 39
-1 Scientist Supreme of A.I.M. (MSH) 225
+1 Loki, Lord of Misrule (MSC) 628
 1 Undead Hand Ninja (MSC) 670
 1 White Widow, Yelena Belova (MSC) 676
 1 Baron Strucker, HYDRA Overlord (MSH) 88
@@ -83,13 +90,13 @@
 1 M.O.D.O.K., Evil Intellect (MSC) 509
 1 Madame Masque (MSH) 104
 1 Radioactive Man (MSC) 665
-1 Victor Timely, Wily Tycoon (MSC) 642
 1 Doctor Doom (MSH) 95
 1 Shocker, Unshakable (SPM) 89
 1 The Masters of Evil (MSH) 105
 1 Ultimo, Civilization's End (MSC) 540
 1 Vulture, Scheming Scavenger (SPM) 158
 1 Doctor Octopus, Master Planner (SPM) 128
+1 Drivnod, Carnage Dominus (ONE) 90
 
 # Creatures — Heroes (the deathtouch draw package and Superior Spider-Man)
 1 Black Widow, Super Spy (MSH) 89
@@ -104,7 +111,6 @@
 1 Doom Reigns Supreme (MSH) 96
 1 Heartless Act (TLA) 103
 1 Infernal Grasp (MID) 107
-1 Construct a Cosmic Cube (MSH) 90
 1 Criminal Enterprise (MSC) 652
 1 Mysterio's Mirage (MSC) 630
 1 The Spot's Portal (MSC) 798
@@ -112,6 +118,7 @@
 1 Thunderbolts Conspiracy (MSH) 117
 1 Villainous Wrath (SPM) 74
 1 Liliana, Dreadhorde General (FDN) 176
+1 Origin of Black Widow (MSC) 664
 
 # Lands (36)
 1 Blackcleave Cliffs (ONE) 248
