@@ -417,7 +417,7 @@ Whenever you cast your second spell each turn, investigate. (Create a Clue token
 Smuggler's Surprise,Instant,"Spree (Choose one or more additional costs.)
 + {2} — Mill four cards. You may put up to two creature and/or land cards from among the milled cards into your hand.
 + {4}{G} — You may put up to two creature cards from your hand onto the battlefield.
-+ {1} — Creatures you control with power 4 or greater gain hexproof and indestructible until end of turn.",G,mill; spree; value; graveyard; hexproof; protection; indestructible; resilience,OTJ,180,Rare,83,,3.5,seed
++ {1} — Creatures you control with power 4 or greater gain hexproof and indestructible until end of turn.",G,mill; spree; value; graveyard; hexproof; protection; indestructible; resilience,OTJ,180,Rare,83; 88,,3.5,seed
 The Key to the Vault,Legendary Artifact — Equipment,"Whenever equipped creature deals combat damage to a player, look at that many cards from the top of your library. You may exile a nonland card from among them. Put the rest on the bottom of your library in a random order. You may cast the exiled card without paying its mana cost.
 Equip {2}{U}",U,equipment; card advantage; equip,OTJ,54,Rare,84,,5.5,seed
 Lassoed by the Law,Enchantment,"When this enchantment enters, exile target nonland permanent an opponent controls until this enchantment leaves the battlefield.

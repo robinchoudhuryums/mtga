@@ -49,6 +49,10 @@
 #: notes: artifact, so Toph, the First Metalbender makes it a land (a landfall trigger as it enters).
 #: notes: Then Inscription of Abundance for Pitiless Fists (instant fight plus two +1/+1 counters;
 #: notes: kicked, all three modes, with the kicker discounted by Samut).
+#: notes: Then Vigorbloom Charm for Cabaretti Charm (protection, draw or a counter-plus-fight in one
+#: notes: instant) and Smuggler's Surprise for Swords to Plowshares (owner's call: card advantage and
+#: notes: team hexproof/indestructible for power-4+ creatures over the deck's one clean exile answer;
+#: notes: interaction 14 -> 13, still above the A floor's 12).
 
 # Commander (leads from the command zone; also one of the 100)
 1 Samut, the Driving Force (DFT) 222
@@ -97,7 +101,7 @@
 1 Abomination, Irradiated Brute (MSC) 511
 
 # Noncreature — removal, planeswalkers, engines and finishers (23)
-1 Swords to Plowshares (SPG) 54
+1 Smuggler's Surprise (OTJ) 180
 1 Ram Through (IKO) 170
 1 Minsc & Boo, Timeless Heroes (HBG) 243
 1 Point the Way (DFT) 175
@@ -108,7 +112,7 @@
 1 Hulk's Thunderclap (MSC) 725
 1 Epic Fight (MSH) 166
 1 Inscription of Abundance (ZNR) 186
-1 Cabaretti Charm (SNC) 173
+1 Vigorbloom Charm (FRA) 160
 1 Annie Joins Up (OTJ) 191
 1 Samut, the Tested (AKR) 257
 1 Master's Guidance (TLE) 141
