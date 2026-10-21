@@ -52,6 +52,10 @@ Villains you control deal combat damage to a player, draw a card."
 - E3 (timing): Scorpion's "at the beginning of your end step, if a creature died this turn"
   checks as the end step BEGINS. Loki's copy is sacrificed by a trigger at that same moment,
   so the copy's death does not turn Scorpion on that turn.
+- E4 (rules): Thunderbolts Conspiracy cannot return the copy token (a token that died is
+  gone). It returns REAL Villains, Loki included, which is its point (L4).
+- E5 (rules): Minotaur, Roxxon CEO counts NONTOKEN deaths, so the copy token does not feed
+  it. Thanos, Death's Consort counts any creature, so it does.
 
 ## 3. Cross-batch observations
 - O1: the copy token is a VILLAIN ENTERING every attack, so every "whenever a Villain enters"
@@ -66,6 +70,17 @@ Villains you control deal combat damage to a player, draw a card."
   later batches; check the pip balance at consolidation.
 - O5: a DEATHTOUCH cluster (Undead Hand Ninja, White Widow, Crossbones, Scorpion) makes Loki
   attacks hard to block profitably (L4).
+- O6 (the strongest pattern): the turn's normal draw is the first card, so Loki's
+  combat-damage draw is the SECOND card every turn a Villain connects. That turns on the
+  whole "whenever you draw your second card each turn" family each turn: Construct a Cosmic
+  Cube (menace Villain), M.O.D.O.K., Evil Intellect (opponent sacrifices a nontoken
+  creature — repeatable removal), Madame Masque (menace Villain), Kang, Temporal Tyrant
+  (drain). Connive engines (Prowler, Baron Strucker, Tiger Shark) add more draws.
+- O7: colour balance — black is the core. Blue: Norman, Prowler, Kang, Morbius, Taskmaster,
+  Tiger Shark, Doctor Octopus, Loki, God of Mischief. Red: Avengers: Under Siege, Madame
+  Hydra; Bullseye is {B/R} hybrid. Red is a light third colour so far.
+- O8: anthems for the Villain team: The Masters of Evil (+2/+1, or tutor a Plan),
+  Doctor Octopus (+2/+2 and refill to eight).
 
 ## 4. Running verdicts
 Legend: ★★★ take · ★★ strong · ★ real · ◇ situational · △ marginal · ✗ out
@@ -98,6 +113,34 @@ Legend: ★★★ take · ★★ strong · ★ real · ◇ situational · △ ma
 | 23 | Kingpin, Wilson Fisk | ★★★ | copy token sacrificed each turn → 2 Treasures (O1); menace 3/6 |
 | 24 | Madame Hydra, Reanimated | ★ | menace grower; copy target for mill 2 |
 | 25 | Scorpion, Seething Striker | ◇ | deathtouch; its connive does not see the copy's death (E3) |
+
+### Batch 2 (26–49)
+| # | Card | Verdict | Note |
+|---|---|---|---|
+| 26 | Thanos, Death's Consort | ★ | lifelink grower; the copy's death feeds it every turn (E5) |
+| 27 | Thunderbolts Conspiracy | ★★ | flash; every real Villain — Loki too — comes back once (E4, L4) |
+| 28 | Titanium Man | ◇ | attack trigger is the original's only (E1) |
+| 29 | Black Cat, Cunning Thief | ★★★ | copy target: two of their top nine, castable, EVERY attack (O2) |
+| 30 | M.O.D.O.K. | ★★★ | flying lifelink; −1/−1 to their creatures stacks with a copy during combat; connive for life |
+| 31 | M.O.D.O.K., Evil Intellect | ★★★ | flying; the second draw each turn makes them sacrifice a nontoken creature (O6) |
+| 32 | Madame Masque | ★★ | enters connive (copy target) + a menace Villain on the second draw (O6) |
+| 33 | Radioactive Man | ★★ | deathtouch 3/5; a connecting hit halves their life; a copy can do it too |
+| 34 | Villainous Wrath | ◇ | symmetric wipe — emergency only, kills your Villains |
+| 35 | Doctor Doom | ★★★ | two 3/3 Doombot Villains on entry (a copy makes two more each attack); draws each end step |
+| 36 | Minotaur, Roxxon CEO | ◇ | nontoken deaths only — the copy never feeds it (E5) |
+| 37 | The Masters of Evil | ★★ | Villains +2/+1, or {1}{B} discard: tutor a Plan |
+| 38 | Count Nefaria | ◇ | 6/6 flier, {3} cheaper after a sacrifice (Kingpin, Hammerhead) |
+| 39 | Prowler, Clawed Thief | ★★★ | menace; connives on EVERY Villain entering, no once-per-turn cap |
+| 40 | Kang, Temporal Tyrant | ★★ | attack connive + drain on the second draw (O6) |
+| 41 | Morbius the Living Vampire | ★★ | flying vigilance lifelink Villain — a reliable draw trigger (L3) |
+| 42 | Taskmaster, Mercenary Mimic | ★ | copies the best creature each turn |
+| 43 | Vulture, Scheming Scavenger | ★★ | when it attacks, every other Villain — the copy too — gains flying (L3) |
+| 44 | Tiger Shark, Abyssal Hunter | ★★ | connives on entry (copy target) and attack; {4}{U/B} unblockable |
+| 45 | Doctor Octopus, Master Planner | ★★★ | Villains +2/+2, refill to eight at end step — the top end |
+| 46 | Avengers: Under Siege | ★★★ | two menace Villains, a one-sided sweep of non-Villains + 2 to each opponent, Treasures per Villain |
+| 47 | Bullseye, Death Dealer | ★★ | enters: 2 damage (pay with a Treasure); a copy target for repeat shots |
+| 48 | Madame Hydra | ★★ | every Villain spell cast makes a menace Villain token |
+| 49 | Loki, God of Mischief | ★★ | Loki's attack trigger TARGETS — draws a card every turn |
 
 ## 5. Consolidated plan (live)
 (after batch 3)
