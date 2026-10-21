@@ -123,3 +123,82 @@ Legend: ★★★ take · ★★ strong · ★ real · ◇ situational · △ ma
 | Traveling Chocobo | ◇ | Lands from the top and doubled land triggers; card advantage in a landfall build. |
 | Way of the Paradox | ✗ | A blue Jace token and an extra land drop; off plan. |
 | Worldweave | ★★ | Every creature spell puts a land onto the battlefield (ramp + landfall), Alchemy, Brawl-legal. |
+
+### Batch 2 (cards 36–70)
+
+| Card | Verdict | Note |
+|---|---|---|
+| Wrenn and Realmbreaker | ★★★ | Lands tap for any colour; +1 makes a hasty hexproof 3/3 land (7/3 with Samut — a speed source every turn, S4); −2 card. {G}{G} after the discount. |
+| Abomination, Irradiated Brute | ◇ | Grows off Gamma/Villain combat damage; depends on the Gamma count. |
+| Crystalline Armor | ◇ | +1/+1 per land, trample; fine, not needed. |
+| Dionus, Elvish Archdruid | ✗ | Elves only; four in the pile. |
+| Garruk, Unleashed | ★★ | +3/+3 trample on a +X creature, −2 Beast; {G}{G} after the discount. |
+| Hexhaven Invigorator | ★ | {G}{G}{G}{G} 6/6 vigilance; damage to it fetches lands, so a fight ramps. |
+| Hulk, Brutal Brawler | ★★ | Every attack puts a counter on each other creature. Must attack — fine in this deck. |
+| Hulk, Strongest There Is | ◇ | Doubles counters on Gamma creatures each upkeep; worth it only with a Gamma spine. |
+| Icetill Explorer | ◇ | Extra land drop and lands from the graveyard; landfall build. |
+| Mightform Harmonizer | ★ | Landfall doubles a creature's power (with +X, a big number); Warp is cheap. |
+| Nylea, God of the Hunt | ★★ | Team trample — the +X power gets through (S4); a pump sink; indestructible. |
+| Obstinate Baloth | △ | A 4/4 that gains 4. |
+| Pitiless Fists | ★ | An aura that fights (two-way, S3); discounted to {G}. |
+| Radagast of Rhosgobel | ★ | First creature each turn costs {2} less and has flash. |
+| Titanbones, Towering Heart | ✗ | Lifegain payoff, no lifegain (O4). |
+| Toph, Earthbending Master | ◇ | Landfall experience → earthbend X on every attack. Landfall build. |
+| Beorn the Fierce | ★★ | 6/6 trample; each combat makes a creature a Bear with trample, and at three Bears draws two. Two turns in, a draw-two every turn. |
+| Dancing from Dark to Dawn | ★★ | Every creature cast puts counters equal to its MV; landfall Bears (feed Beorn). |
+| Giant-Man, Gargantuan Genius | ★★ | 6/6 reach; adds {G} per creature with power 4+ each main phase — with Samut that is every creature (S3, S8). |
+| Keeper of Fables | ★ | Draws when non-Humans connect; many of the deck's creatures are Human. |
+| Unnatural Growth | ★★★ | Doubles power and toughness at EVERY combat (yours and theirs). {G}{G}{G}{G} after the discount; the deck's best finisher with +X. |
+| Scarlet Spider, Ben Reilly | ◇ | 4/3 trample for 3. |
+| Warden of the Chained | ★ | 4/4 trample for 3; the attack gate is trivial here (S3). |
+| Alien Invasion | ★★ | A hasty, growing attacker every combat — guaranteed life loss for speed (S4). |
+| Arlinn, the Pack's Hope | ★ | Flash creatures with counters, two Wolves, or {R}{G}. |
+| Grand Warlord Radha | ★ | Haste; attacking adds mana that lasts the turn (post-combat casting). |
+| Huntmaster of the Fells | ★ | A Wolf and life now; transforms into 2 to a creature and 2 to the opponent. |
+| Toph, Greatest Earthbender | ★★ | Earthbend X (mana spent) and land creatures have double strike: a hasty land creature with +X power and double strike. |
+| Zendikar Incarnate | ◇ | */4 = lands; fine body, nothing special. |
+| Absorbing Man and Titania | ★★ | Doubles all damage your creatures deal, combat and fight both. A finisher and a removal multiplier. |
+| Bumi, Unleashed | ★★ | Earthbend 4 on entry; connecting untaps lands and adds a land-creature combat. |
+| Hulk, Gamma Goliath | ◇ | 6/5 reach trample; cheapens other power-ups (only three others). |
+| Roxanne, Starfall Savant | ★★ | Each enter/attack: a Meteorite that deals 2 to any target and taps for mana. Removal + speed (S4) + ramp. |
+| Ravenous Tyrannosaurus | ★★ | Each attack deals its power to a creature, excess to the player — a bite every turn (S3). |
+| Omnath, Locus of Rage | ★ | Landfall 5/5s, death pings; 7 mana. |
+
+### Batch 3 (cards 71–104)
+
+| Card | Verdict | Note |
+|---|---|---|
+| Raph & Mikey, Troublemakers | ★ | 7/7 trample haste; each attack puts the next creature from the library onto the battlefield attacking. |
+| Hugs, Grisly Guardian | ★★ | X cards to play, plus an extra land drop each turn. Card advantage that scales with ramp. |
+| Dina, Flesh Sower | ✗ | Lifegain (O4). |
+| Murasa Rootgrazer | ◇ | Basic-land ramp/landfall engine; landfall build. |
+| Storm, Windrider | ★ | Flying; opposing fliers can't attack you or block; every targeted pump/fight grants flying. |
+| Baylen, the Haymaker | △ | Needs tokens; few. |
+| Back-Alley Gardener | ★★ | Once a turn when creatures enter, puts a land onto the battlefield (ramp + landfall). |
+| Cabaretti Charm | ★★ | Instant: damage = creature count, or team +1/+1 trample, or two tokens. |
+| Ghired, Mirror of the Wilds | △ | Token copies; few tokens. |
+| Emperor Apatzec Intli IV | ★★★ | Each creature entering with power 4+ perpetually gains haste — with Samut, every creature (S3, S4); toughness 4+ gains 4 life; MV 4+ seeks a creature card. |
+| Incandescent Aria | ◇ | Sweeper that kills our dorks too (S6); a reset when behind. |
+| Minsc, Beloved Ranger | ★ | Hasty Boo; {X}: base X/X on a creature (Samut adds +X on top). Mana sink. |
+| Annie Joins Up | ★★★ | 5 damage on entry (removal), then doubles every legendary creature's triggers — roughly half the pile is legendary. |
+| Jetmir, Nexus of Revels | ★ | Anthem at 3/6/9 creatures; double strike at nine is a stretch. |
+| Tifa, Martial Artist | ★★ | Power 7+ connecting untaps the team and adds a combat: a 3-power creature plus Samut's +4 qualifies (S3). |
+| Toph, the First Metalbender | ★★ | Earthbend 2 every end step — a hasty land creature each turn. |
+| Annie Flash, the Veteran | ★★ | Flash; returns a ≤3-MV permanent card; tapping (attacking) exiles two to play. |
+| Voja, Jaws of the Conclave | ◇ | 5/5 vigilance trample ward 3; the Elf/Wolf payoff barely fires. |
+| Yuma, Proud Protector | △ | Wants lands in the graveyard and Deserts. |
+| Rocco, Cabaretti Caterer | ★★ | Tutors a creature with MV ≤ X onto the battlefield. |
+| Zacama, Primal Calamity | ★ | 9 mana, but untaps lands; repeatable 3-damage removal. Power-mana (S8) reaches it. |
+| Miles Morales | ★★ | 2-drop: counters on two creatures; late transform doubles counters on legends every attack. |
+| Doc Samson, Super Psychiatrist | ★★ | Taps for X = its power (3 + speed = up to 7); +1 to every counter placement. |
+| Earth's Mightiest Heroes | ★★ | Creatures from the top eight; {G}{G} after the discount (S2). |
+| Shuri, the Black Panther | ✗ | Wants artifacts. |
+| Black Panther, Wakandan King | ◇ | Counters on lands, then moves them for a card. |
+| Black Panther, Vanguard | ◇ | Hero ETB tokens/pumps. |
+| Hulk's Thunderclap | ★★★ | Sorcery BITE for {1}{G} ({G} after the discount); beholding a Gamma also destroys an artifact or enchantment. |
+| Gamma Grotesque | ★ | 3/3 vigilance; power-up draws per countered creature. |
+| She-Hulk, Jade Defender | ★ | 4/4 reach trample; power-up kills an artifact or enchantment. |
+| She-Hulk, Attorney-at-Law | ◇ | Power-up doubles counters; only with counters. |
+| She-Hulk, Jennifer Walters | △ | Sac lands to draw; costs board in a deck that wants lands. |
+| Red Hulk | ★ | Enrage: grows and pings whenever damaged — fights feed it. 6 mana. |
+| Hulk, Always Angry | ✗ | Destroys all artifacts, ours included (S6). |
