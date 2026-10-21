@@ -7,7 +7,7 @@
 #: archetype: Loki, the Deceiver: every attack makes a copy of another Villain that ENTERS (its
 #: archetype: enters trigger fires), deals combat damage, and is SACRIFICED at end step (death
 #: archetype: payoffs fire); a Villain connecting draws a card. The copy targets are the plan:
-#: archetype: Tombstone (regrow a Villain), Black Cat (two of their cards), Elektra and Ultimo
+#: archetype: Tombstone (regrow a Villain), Black Cat, Cunning Thief (two of their cards), Elektra and Ultimo
 #: archetype: (removal every attack), Doctor Doom (two Doombots), Shocker. The copy's death pays
 #: archetype: Kingpin (Treasures), Criminal Enterprise, Liliana and Thanos. Loki's draw is the
 #: archetype: turn's SECOND card, so the second-draw family (Construct a Cosmic Cube, both
