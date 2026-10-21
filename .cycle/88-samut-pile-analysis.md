@@ -83,3 +83,43 @@ is your speed (max 4).
 ## 4. Running verdicts
 
 Legend: ★★★ take · ★★ strong · ★ real · ◇ situational · △ marginal · ✗ out
+
+### Batch 1 (cards 1–35)
+
+| Card | Verdict | Note |
+|---|---|---|
+| Samut, the Driving Force | commander | The payoff (S1–S3). |
+| Samut, Vizier of Naktamun | ★★ | 3-mana first strike/haste attacker; draws whenever a creature that entered THIS turn connects. With team haste (Hazoret's Champion) every new creature draws on contact (S4). |
+| Samut, the Tested | ★★ | +1 double strike on a +X creature; −2 is 2 damage split (removal). Noncreature, so discounted to {R}{G} (S2). |
+| Samut, Hazoret's Champion | ★★★ | {1}{R}: creatures you control have haste. Every creature hits the turn it lands, which is what keeps speed rising (S4) and turns on Vizier's draw. |
+| Jennifer Walters | ★★ | 2-drop that stops opponents casting on your turn — protects the alpha strike and the fights. Late transform to a damage-redirect She-Hulk. |
+| Tifa's Limit Break | ★★ | {G} instant: +2/+2, or double, or triple power. Tiered cost is discounted (S2), so doubling is free at speed 2+. A finisher on a +4 creature. |
+| Badgermole Cub | ★★ | Earthbend 1 (a hasty land creature) and +{G} whenever you tap a creature for mana — doubles every dork (S8). |
+| Ayula, Queen Among Bears | ✗ | Needs Bears ENTERING (E3). Two real Bear sources in the pile. |
+| Beast Mode | △ | +2/+2 trample pump; filler next to the better pumps. |
+| Beorn's Hospitality | ◇ | Landfall counters; only if landfall becomes the spine. |
+| Eumidian Terrabotanist | ✗ | Landfall life gain, no payoff (O4). |
+| Feral Ferocity | △ | +4/+4 for {G} after the discount; a combat trick, not removal. |
+| Great Divide Guide | ★★ | Lands and Allies tap for any colour — fixing in three colours; Toph ×3 and Bumi are Allies. |
+| Tangle | △ | A fog; only on an opponent's turn (S6). |
+| Tifa Lockhart | ◇ | Landfall doubles power; strong only in a landfall build. |
+| Torgal, A Fine Hound | ★ | Any-colour dork; the Human bonus is small (one Dog/Wolf). |
+| Twitching Doll | ★ | Any-colour dork that becomes Spiders late. An artifact (S6 vs Hulk, Always Angry). |
+| Advancing the Spirit | ◇ | Cantrip + one free power-up per turn; only four power-up cards in the pile. |
+| Beastmaster Ascension | ★ | Seven attacks → +5/+5 team. Easy in a hasty attacking deck; a second finisher. |
+| Blanchwood Armor | △ | Counts Forests only; a three-colour manabase holds maybe 8–10. |
+| Epic Fight | ★★ | Double and/or fight; at {G} after the discount, removal plus a finisher mode (S3: a fight, not a bite). |
+| Enduring Vitality | ★★★ | Every creature taps for any colour, and it comes back as an enchantment. The fixing engine of a three-colour creature deck (S8). |
+| Greenhouse Propagator | ★ | {G} dork; the life gain is incidental (O4). |
+| Jiang Yanggu, Wildcrafter | ◇ | Countered creatures tap for any colour; only with a counters spine. |
+| Master's Guidance | ★★★ | End step: draw if you control a creature with power 4+ — every turn once Samut lands (S3), and the 4-power bodies do it alone. Two legends attacking adds counters. Card advantage the deck otherwise lacks. |
+| Mole Man, Moloid Master | ◇ | Landfall tokens, lands from the graveyard; landfall build only. |
+| Nissa, Voice of Zendikar | ★ | +1 chump Plant, −2 counter on each creature; {G}{G} after the discount. |
+| Origin of the Hulk | △ | A token, two counters, a pump; slow. |
+| Punishing Punch | ★★★ | Instant bite for twice power (one-sided, S3). {G} with two creature cards in the graveyard. The best removal in the pile. |
+| Selvala, Heart of the Wilds | ★★ | {G},{T}: X mana where X = greatest power. With Samut out, X is 8+ (S8). The draw is symmetric but rarely the opponent's. |
+| Sledge-Class Seedship | ◇ | Stations off a creature's power (+X fast); at 7 a 4/5 flier that cheats creatures in. A slow artifact (S6). |
+| Thunderous Velocipede | ★ | Every creature enters with +1 or +3 counters; a 5/5 trample vehicle. |
+| Traveling Chocobo | ◇ | Lands from the top and doubled land triggers; card advantage in a landfall build. |
+| Way of the Paradox | ✗ | A blue Jace token and an extra land drop; off plan. |
+| Worldweave | ★★ | Every creature spell puts a land onto the battlefield (ramp + landfall), Alchemy, Brawl-legal. |
