@@ -33,9 +33,12 @@
 #: notes: for Radagast, Beorn's Hospitality for Greenhouse Propagator, Ancient Greenwarden for
 #: notes: Warden of the Chained (chosen over Mole Man: lands from the graveyard AND doubled land
 #: notes: triggers), Hexhaven Invigorator for Raph & Mikey, She-Hulk, Attorney-at-Law for Rocco,
-#: notes: Gamma Grotesque for Beastmaster Ascension, Grand Warlord Radha for Rabid Bite. Still open:
-#: notes: Icetill Explorer, Omnath, Locus of Rage, The Earth King, Hulk, Strongest There Is and
-#: notes: Ghired, pending cuts other than Nissa, Zacama, Torgal, Jennifer Walters and Arlinn.
+#: notes: Gamma Grotesque for Beastmaster Ascension, Grand Warlord Radha for Rabid Bite; then
+#: notes: Icetill Explorer for Twitching Doll, Omnath, Locus of Rage for Thunderous Velocipede and
+#: notes: Ghired for Earth's Mightiest Heroes. Still open: The Earth King and Hulk, Strongest There
+#: notes: Is, plus second-tier Toph, Earthbending Master, Ayula, Murasa Rootgrazer, Abomination and
+#: notes: Sledge-Class Seedship. With Twitching Doll and the Velocipede gone the deck holds NO
+#: notes: artifacts, so Toph, the First Metalbender's artifacts-are-lands clause is idle.
 
 # Commander (leads from the command zone; also one of the 100)
 1 Samut, the Driving Force (DFT) 222
@@ -45,7 +48,7 @@
 1 Badgermole Cub (TLA) 167
 1 Great Divide Guide (TLA) 181
 1 Torgal, A Fine Hound (FIN) 208
-1 Twitching Doll (DSK) 201
+1 Icetill Explorer (EOE) 192
 1 Enduring Vitality (DSK) 176
 1 Selvala, Heart of the Wilds (JMP) 429
 1 Back-Alley Gardener (YSNC) 17
@@ -54,7 +57,7 @@
 1 Tifa Lockhart (FIN) 206
 1 Grand Warlord Radha (DOM) 195
 
-# Creatures — threats, power payoffs and removal bodies (26)
+# Creatures — threats, power payoffs and removal bodies (28)
 1 Samut, Hazoret's Champion (FRA) 251
 1 Samut, Vizier of Naktamun (MAT) 45
 1 Roxanne, Starfall Savant (OTJ) 228
@@ -81,8 +84,10 @@
 1 Hexhaven Invigorator (FRA) 106
 1 She-Hulk, Jade Defender (MSH) 188
 1 Gamma Grotesque (MSC) 562
+1 Omnath, Locus of Rage (EA3) 17
+1 Ghired, Mirror of the Wilds (OTJ) 205
 
-# Noncreature — removal, planeswalkers, engines and finishers (24)
+# Noncreature — removal, planeswalkers, engines and finishers (22)
 1 Swords to Plowshares (SPG) 54
 1 Ram Through (IKO) 170
 1 Minsc & Boo, Timeless Heroes (HBG) 243
@@ -98,12 +103,10 @@
 1 Annie Joins Up (OTJ) 191
 1 Samut, the Tested (AKR) 257
 1 Master's Guidance (TLE) 141
-1 Earth's Mightiest Heroes (MSH) 165
 1 Unnatural Growth (MID) 206
 1 Garruk, Unleashed (M21) 183
 1 Tifa's Limit Break (FIN) 207
 1 Dancing from Dark to Dawn (HOB) 123
-1 Thunderous Velocipede (DFT) 183
 1 Nissa, Voice of Zendikar (PIO) 188
 1 Arlinn, the Pack's Hope // Arlinn, the Moon's Fury (MID) 211
 1 Beorn's Hospitality (HOB) 120
