@@ -11,8 +11,12 @@
 #: archetype: power scales: Selvala, Doc Samson and Giant-Man make huge mana, Master's Guidance
 #: archetype: draws each end step, Emperor Apatzec gives the team haste, Tifa, Martial Artist
 #: archetype: takes extra combats, Unnatural Growth and Tifa's Limit Break multiply it.
-#: archetype: Interaction is bites (Punishing Punch, Hulk's Thunderclap, Ram Through, Rabid
-#: archetype: Bite, Ravenous Tyrannosaurus) that hit harder with the +X and risk nothing back.
+#: archetype: Interaction is bites (Punishing Punch, Hulk's Thunderclap, Ram Through, Ravenous
+#: archetype: Tyrannosaurus) that hit harder with the +X and risk nothing back. A landfall layer
+#: archetype: rides on the ramp: Worldweave, the fetch lands and Ancient Greenwarden (doubled
+#: archetype: land triggers, lands from the graveyard) feed Tifa Lockhart, Beorn's Hospitality and
+#: archetype: Dancing from Dark to Dawn; a Gamma counters layer (Hulk, Brutal Brawler, She-Hulk,
+#: archetype: Attorney-at-Law, Gamma Grotesque) turns +1/+1 counters into cards.
 #: archetype: Raising speed needs opponent life loss every turn: team haste (Samut, Hazoret's Champion),
 #: archetype: Alien Invasion's forced attacker, Roxanne's Meteorites and two ping lands. Distinct
 #: archetype: from every deck on file (≤3 shared cards; deck 73a runs Samut in Standard).
@@ -25,6 +29,13 @@
 #: notes: mulligan). The manabase is all owned at the owner's request. No tool models speed or
 #: notes: Samut's +X/+0, so every power gate here is graded on PRINTED power (the protect list
 #: notes: names the cards whose value that hides).
+#: notes: PUSHBACK WAVE 2026-10-21 (owner's picks from the left-out pile cards): Tifa Lockhart
+#: notes: for Radagast, Beorn's Hospitality for Greenhouse Propagator, Ancient Greenwarden for
+#: notes: Warden of the Chained (chosen over Mole Man: lands from the graveyard AND doubled land
+#: notes: triggers), Hexhaven Invigorator for Raph & Mikey, She-Hulk, Attorney-at-Law for Rocco,
+#: notes: Gamma Grotesque for Beastmaster Ascension, Grand Warlord Radha for Rabid Bite. Still open:
+#: notes: Icetill Explorer, Omnath, Locus of Rage, The Earth King, Hulk, Strongest There Is and
+#: notes: Ghired, pending cuts other than Nissa, Zacama, Torgal, Jennifer Walters and Arlinn.
 
 # Commander (leads from the command zone; also one of the 100)
 1 Samut, the Driving Force (DFT) 222
@@ -36,14 +47,14 @@
 1 Torgal, A Fine Hound (FIN) 208
 1 Twitching Doll (DSK) 201
 1 Enduring Vitality (DSK) 176
-1 Greenhouse Propagator (FRA) 104
 1 Selvala, Heart of the Wilds (JMP) 429
 1 Back-Alley Gardener (YSNC) 17
 1 Doc Samson, Super Psychiatrist (MSH) 164
 1 Giant-Man, Gargantuan Genius (MSC) 722
-1 Radagast of Rhosgobel (HOB) 136
+1 Tifa Lockhart (FIN) 206
+1 Grand Warlord Radha (DOM) 195
 
-# Creatures — threats, power payoffs and removal bodies (25)
+# Creatures — threats, power payoffs and removal bodies (26)
 1 Samut, Hazoret's Champion (FRA) 251
 1 Samut, Vizier of Naktamun (MAT) 45
 1 Roxanne, Starfall Savant (OTJ) 228
@@ -55,7 +66,7 @@
 1 Beorn the Fierce (HOB) 119
 1 Emperor Apatzec Intli IV (YOTJ) 21
 1 Annie Flash, the Veteran (OTJ) 190
-1 Rocco, Cabaretti Caterer (SNC) 218
+1 She-Hulk, Attorney-at-Law (MSC) 745
 1 Absorbing Man and Titania (MSC) 510
 1 Tifa, Martial Artist (FIC) 6
 1 Nylea, God of the Hunt (PIO) 300
@@ -65,15 +76,15 @@
 1 Toph, the First Metalbender (TLA) 247
 1 Miles Morales (SPM) 108
 1 Jennifer Walters (MSH) 18
-1 Warden of the Chained (THB) 230
+1 Ancient Greenwarden (ZNR) 178
 1 Mightform Harmonizer (EOE) 200
-1 Raph & Mikey, Troublemakers (TMT) 167
+1 Hexhaven Invigorator (FRA) 106
 1 She-Hulk, Jade Defender (MSH) 188
+1 Gamma Grotesque (MSC) 562
 
-# Noncreature — removal, planeswalkers, engines and finishers (25)
+# Noncreature — removal, planeswalkers, engines and finishers (24)
 1 Swords to Plowshares (SPG) 54
 1 Ram Through (IKO) 170
-1 Rabid Bite (ANB) 101
 1 Minsc & Boo, Timeless Heroes (HBG) 243
 1 Point the Way (DFT) 175
 1 Worldweave (YEOE) 21
@@ -90,12 +101,12 @@
 1 Earth's Mightiest Heroes (MSH) 165
 1 Unnatural Growth (MID) 206
 1 Garruk, Unleashed (M21) 183
-1 Beastmaster Ascension (TLE) 39
 1 Tifa's Limit Break (FIN) 207
 1 Dancing from Dark to Dawn (HOB) 123
 1 Thunderous Velocipede (DFT) 183
 1 Nissa, Voice of Zendikar (PIO) 188
 1 Arlinn, the Pack's Hope // Arlinn, the Moon's Fury (MID) 211
+1 Beorn's Hospitality (HOB) 120
 
 # Lands (37)
 1 Amonkhet Raceway (DFT) 248

@@ -591,3 +591,6 @@ Picklock Prankster // Free the Fae,Creature — Faerie Rogue // Instant — Adve
 Rootrider Faun,Creature — Satyr Scout,"{T}: Add {G}.
 {1}, {T}: Add one mana of any color.",G,Satyr; Scout; mana,WOE,182,Common,50,,1.5,seed
 Stormkeld Prowler,Creature — Human Rogue,"Whenever you cast a spell with mana value 5 or greater, put two +1/+1 counters on this creature.",U,Human; Rogue; counters,WOE,71,Common,51,Deck 51: two-drop that gets +2/+2 whenever you cast MV>=5 - the deck runs 11 such. Cheap clock that scales with the top end it already had.,6.2,hand
+Ancient Greenwarden,Creature — Elemental,"Reach (This creature can block creatures with flying.)
+You may play lands from your graveyard.
+If a land entering causes a triggered ability of a permanent you control to trigger, that ability triggers an additional time.",G,Elemental; graveyard; reach; defense,ZNR,178,Mythic,88,,7.5,seed

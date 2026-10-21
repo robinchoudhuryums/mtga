@@ -247,3 +247,16 @@ Emperor Apatzec's "seek a creature card" and Earth's Mightiest Heroes' "put crea
 onto the battlefield" score no card advantage; Wrenn and Realmbreaker's −2 reads as
 recursion only. No model reads speed or Samut's +X/+0, so every power gate here is graded
 on printed power.
+
+## 6. Pushback wave (2026-10-21, owner's picks)
+
+Applied: Tifa Lockhart (−Radagast), Beorn's Hospitality (−Greenhouse Propagator), Ancient
+Greenwarden (−Warden of the Chained; chosen over Mole Man — graveyard lands AND doubled land
+triggers, replacing Traveling Chocobo's doubling), Hexhaven Invigorator (−Raph & Mikey),
+She-Hulk, Attorney-at-Law (−Rocco), Gamma Grotesque (−Beastmaster Ascension), Grand Warlord
+Radha (−Rabid Bite). Floor stays A (interaction 15 → 14, card advantage 8 → 9).
+Open: Icetill Explorer, Omnath, Locus of Rage, The Earth King, Hulk, Strongest There Is and
+Ghired — the owner may keep Nissa, Zacama, Torgal, Jennifer Walters and Arlinn, so each needs
+a different cut. Greenwarden doubles every land-entering trigger (Dancing's Bears, Tifa,
+Beorn's Hospitality, Omnath, the ping lands' speed damage), which re-rates Toph, Earthbending
+Master, Omnath, Ayula (Dancing makes two Bears per land) and Yuma upward.

@@ -336,7 +336,6 @@ Rise of the Dark Realms
 Rise of the Varmints
 Riverchurn Monument
 Roalesk, Apex Hybrid
-Rocco, Cabaretti Caterer
 Rockalanche
 Rustler Rampage
 Salvation Swan
@@ -456,7 +455,6 @@ Vulture, Scheming Scavenger
 War Balloon
 War Machine, Legacy of Iron
 War Squeak
-Warden of the Chained
 Wargling
 Waterbender Ascension
 Way of the Healer
