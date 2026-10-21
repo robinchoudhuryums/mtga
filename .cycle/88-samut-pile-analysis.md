@@ -202,3 +202,47 @@ Legend: ★★★ take · ★★ strong · ★ real · ◇ situational · △ ma
 | She-Hulk, Jennifer Walters | △ | Sac lands to draw; costs board in a deck that wants lands. |
 | Red Hulk | ★ | Enrage: grows and pings whenever damaged — fights feed it. 6 mana. |
 | Hulk, Always Angry | ✗ | Destroys all artifacts, ours included (S6). |
+
+## 5. Consolidated plan (live)
+
+Spine (S7): **Naya power ramp.** Mana creatures and land ramp land Samut on turn 4–5;
+engine starters put speed on the board earlier, so she arrives at speed 3–4; every
+power-reading card then scales off +X. Interaction is bites and fights, which also scale.
+Drafted on a scratch file (not yet in decks/): 63 nonland + 36 lands + commander = 100,
+`legal` clean, metrics floor **A** (interaction 15, card advantage 8 → sum 23 against 12/19;
+the counter misses Ravenous Tyrannosaurus, Emperor Apatzec's seek, Earth's Mightiest Heroes
+and Wrenn's −2, so the real figures are higher). `similar` overlap ≤3 cards with any deck.
+
+**From outside the pile (7 nonland):** Point the Way, Hazoret, Godseeker, Loxodon Surveyor
+(all owned — S1, O1: the only way speed starts before Samut); Swords to Plowshares, Ram
+Through, Rabid Bite (owned), Minsc & Boo, Timeless Heroes (S5: cheap one-sided removal and a
+removal planeswalker the discount makes {R}{G}).
+
+**Manabase (36, all owned):** Gathering Place, Training Compound, Thornspire Verge,
+Hushwood Verge, Sunbillow Verge, Sacred Foundry (untapped); Evolving Wilds, Terramorphic
+Expanse, Hobbit Hole, Vibrant Cityscape, Elven Passage (fetch basics); Starting Town; Ba Sing
+Se (earthbend sink); Temple of Abandon, Temple of Plenty, Commercial District, Bristling
+Backwoods and Abraded Bluffs (the two pingers advance speed, S4); 10 Forest, 5 Mountain,
+3 Plains. Sources G 24 / R 18 / W 14, plus 10 nonland mana sources (four any-colour).
+Weak spots: Unnatural Growth {G}{G}{G}{G} 25% on turn 5 (a late finisher, fine), Hugs and
+Alien Invasion's {R}{R} near 50–54% on curve.
+
+**Left out of the pile (47):** every ✗/△ plus the ◇ landfall-only and counters-only cards.
+Nearest misses, in order, if the owner wants more pile cards in: Storm, Windrider (cut for
+{W}{W} — W is the thinnest colour), Hexhaven Invigorator ({G}{G}{G}{G}), Keeper of Fables,
+Jetmir, Minsc, Beloved Ranger, Grand Warlord Radha, Traveling Chocobo, Incandescent Aria (a
+sweeper the deck can rebuild from), Gamma Grotesque.
+
+**Protect list (what `cuts` cannot see):** Point the Way, Hazoret, Godseeker, Loxodon
+Surveyor (their value is WHEN speed starts — no tool models speed); Selvala, Doc Samson,
+Giant-Man (mana scales with Samut's +X, read as printed power); Master's Guidance, Tifa,
+Martial Artist, Emperor Apatzec Intli IV (power gates that +X turns on; `stats` already
+warns Tifa looks "conditional" off printed power, G-16); Unnatural Growth, Tifa's Limit
+Break (multipliers).
+
+**Tool holes found (G-67, record only):** Ravenous Tyrannosaurus's attack trigger (its power
+to a creature) scores no role; Red Hulk's enrage ping reads Burn only, not removal;
+Emperor Apatzec's "seek a creature card" and Earth's Mightiest Heroes' "put creature cards
+onto the battlefield" score no card advantage; Wrenn and Realmbreaker's −2 reads as
+recursion only. No model reads speed or Samut's +X/+0, so every power gate here is graded
+on printed power.
