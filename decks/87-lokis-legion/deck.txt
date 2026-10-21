@@ -16,6 +16,13 @@
 #: archetype: deathtouch Heroes (Black Widow, Deadly Hunter draws per deathtouch hit) a third.
 #: archetype: DISTINCT from deck 11 (Villainous: 60-card mono-black Standard): three colours,
 #: archetype: Historic Brawl, and the Loki copy engine.
+#: tier: A — set by the owner 2026-10-21. The measurable floor reads A at 100 cards: interaction
+#: tier: 12 and card advantage 11 against an A line of 12 and a sum of 19 — interaction sits exactly
+#: tier: on the line, and card advantage under-counts (Leader, Super-Genius and Black Cat, Cunning
+#: tier: Thief score no role). The engine is layered: copy targets with enters removal (Elektra,
+#: tier: Ultimo, Shocker), death payoffs for the copy (Kingpin, Liliana, Criminal Enterprise), the
+#: tier: second-draw family and connive. Weaknesses: three colours with several double pips, and
+#: tier: Loki is a 4/4 with no evasion that must attack every turn.
 #: protect: Loki, the Deceiver; Tombstone, Career Criminal; Black Cat, Cunning Thief; Elektra, Daughter of the Hand; Ultimo, Civilization's End; Kingpin, Wilson Fisk; Leader, Super-Genius; Thunderbolts Conspiracy
 #: notes: DRAFTED 2026-10-21 from the owner's 73-card villains pile
 #: notes: (.cycle/87-loki-villains-pile-analysis.md), pile-first at the owner's direction: 58 of
