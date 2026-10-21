@@ -179,6 +179,7 @@ Growth Curve
 Guidelight Matrix
 Guiding Hydra
 Hama, the Bloodbender
+Hammerhead, Maggia Boss
 Hauntwoods Shrieker
 Hawkeye, Master Marksman
 Hawkeye, Young Avenger
@@ -270,6 +271,7 @@ Morningtide's Light
 Most Decrepit Old Bird
 Most Decrepit Old Bird // Speak Secrets
 Mutable Explorer
+Mysterio, Master of Illusion
 Namazu Trader
 Nashi, Searcher in the Dark
 Neriv, Heart of the Storm
@@ -308,6 +310,7 @@ Quaketusk Boar
 Quicksilver, Brash Blur
 Quina, Qu Gourmet
 Radiant Lotus
+Radioactive Man
 Rage into the Valley
 Raging Goblinoids
 Rainveil Rejuvenator
@@ -337,6 +340,8 @@ Savage Land Dinosaur
 Savage Ventmaw
 Scarlet Spider, Ben Reilly
 Scarlet Spider, Kaine
+Scientist Supreme of A.I.M.
+Scorpion, Seething Striker
 Season of Weaving
 Secret of Bloodbending
 Seedglaive Mentor
@@ -410,6 +415,7 @@ Thor, Guardian of Midgard
 Three Tree Scribe
 Thunderous Velocipede
 Tidings of War
+Tiger Shark, Abyssal Hunter
 Tiger-Dillo
 Time Stop
 Tomik, Izzet Sparkmage
@@ -427,6 +433,7 @@ United Front
 Unstable Experiment
 Unstoppable Plan
 Unstoppable Slasher
+Valentina Allegra de Fontaine
 Vastlands Scavenger // Bind to Life
 Venomized Cat
 Verdant Kraken
@@ -436,6 +443,7 @@ Virus Beetle
 Vision Quest
 Vito's Inquisitor
 Voyager Glidecar
+Vulture, Scheming Scavenger
 War Balloon
 War Machine, Legacy of Iron
 War Squeak

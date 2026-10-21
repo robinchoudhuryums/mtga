@@ -1,7 +1,7 @@
 # Loki villains pile (new deck 87) — analysis (TEMPORARY working doc)
 
-**Status: IN PROGRESS.** Delete once deck 87 is drafted and these findings are folded into its
-`#: notes:`. A scratchpad, not a source of truth — decks/ are.
+**Status: DRAFTED as decks/87-lokis-legion (2026-10-21); keep until the owner signs off on the
+list and the tier letter, then fold into its notes and delete.** A scratchpad, not a source of truth — decks/ are.
 
 **Source list:** the owner's 73-card pile (2026-10-21), commander **Loki, the Deceiver**
 (MSC 86), Historic Brawl. All 73 are legal in Historic Brawl and inside Loki's {U}{B}{R}
@@ -117,6 +117,9 @@ Villains you control deal combat damage to a player, draw a card."
 - O13 (G-67 holes, record only — fix in a later batch): Leader, Super-Genius and Black Cat,
   Cunning Thief score NO role, though both are card advantage; connive engines read only as
   "Payoff / engine". The proposal's card-advantage 8 under-counts the real card flow.
+- O15 (G-67, record only): Avengers: Under Siege scores no interaction role, though chapter II
+  is a one-sided sweep (2 damage to each non-Villain creature and each opponent).
+  Duskmantle, House of Shadow showed as a U/B producer in `suggest --lands` but makes only {C}.
 - O14: distinct from deck 11 (Villainous — a 60-card mono-black Standard deck). Twelve
   shared cards; different format, colours and engine (G-47: some overlap is fine).
 
