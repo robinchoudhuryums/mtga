@@ -47,6 +47,10 @@
 #: notes: Cosmic Cube (Loki's copy dies every turn, so Liliana, Criminal Enterprise and Thanos trigger
 #: notes: twice). Kept on purpose: Crimson Cowl (a menace Villain every attack) and Elektra (cutting her
 #: notes: drops the floor to B).
+#: notes: MANABASE 2026-10-21: pips run B 64 / U 20 / R 6 against sources B 24 / U 16 / R 14, so a
+#: notes: Mountain and a Swamp became Sunken Hollow and Seething Landscape: sources U 18 / B 25 / R 14,
+#: notes: Kang the Conqueror 50.0% → 57.2% on turn 4, Loki and Doctor Doom, King of Latveria 63.2% →
+#: notes: 66.4%, nothing worse. Moving basics alone only traded red odds for blue (six variants tried).
 
 # Commander (leads from the command zone; also one of the 100)
 1 Loki, the Deceiver (MSC) 86
@@ -142,6 +146,8 @@
 1 Villainous Hideout (MSH) 276
 1 Watery Grave (EOE) 261
 1 Xander's Lounge (SNC) 260
-8 Swamp (FRA) 285
+7 Swamp (FRA) 285
+1 Seething Landscape (MH3) 225
 4 Island (FRA) 283
-3 Mountain (FRA) 287
+2 Mountain (FRA) 287
+1 Sunken Hollow (EA3) 23
