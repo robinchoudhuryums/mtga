@@ -80,11 +80,54 @@ of +1/+1 counters equal to Szarel's power on up to one other target creature.*
 
 ## 3. Cross-batch observations
 
-- (filled per batch)
+- **B1:** the pile's best cards are the ones that bridge two engines — Killmonger (sacrifice +
+  removal), Origin of Black Widow (edict + deathtouch turn + a Saga sacrifice), Vraska,
+  Betrayal's Sting (draw + proliferate + removal + finisher). Pure poison cards (Venerated
+  Rotpriest, Viral Spawning, Interrogators) grade low under S5.
+- **B1:** the pile has almost NO land cards (Mirrex only), yet S2 says lands are the engine.
+  The manabase will be built from outside the pile — self-sacrificing lands first.
 
 ## 4. Running verdicts
 
 Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ marginal · ✗ out`.
+
+### Batch 1 — cards 1–33
+
+| # | Card | Verdict | Note |
+|---|------|---------|------|
+| 1 | The Serpent Society | ★★ | 3/4 deathtouch for 3; *another deathtouch creature dies → each opponent sacrifices a nontoken creature*. Sacrificing one of our deathtouchers to an outlet on our turn is an edict AND a Szarel trigger. The ward-five-poison is the opponent's cost. |
+| 2 | Kraven the Hunter | △ | Draws only when THEIR biggest creature dies; a deathtouch blocker does that, but it is a 4/3 trample with no other link. |
+| 3 | Atlas, Sizable Stooge | ✗ | Life on attack per power-4 creature; nothing the engine asks for. |
+| 4 | Kraven, Proud Predator | △ | Power = greatest MV we control (~6–7 late); a vigilant beater, no engine link. |
+| 5 | Absorbing Man and Titania | △ | Doubles DAMAGE; toxic and Fynn's poison are fixed counts, so it does not double the poison clock. |
+| 6 | Killmonger, Scourge of Wakanda | ★★★ | ETB: sacrifice another creature → destroy target nonland permanent. Removal, an S1 trigger (nontoken fodder), and +2/+1 once two creature cards are in the yard. |
+| 7 | Titania, Rugged Rumbler | ★ | 5/5 ward for 3. Its additional cost is upside here (G-41): discard a LAND and Szarel replays it from the graveyard. |
+| 8 | Rhino, Barreling Brute | ✗ | {3}{R}{R}{G}{G}: double red for a beater in a red-splash deck (S8). |
+| 9 | Abomination, Terrifying Titan | △ | A 7-mana fight. Removal of last resort. |
+| 10 | Super-Adaptoid | △ | Power = legendary creatures; copies keywords. Cute, no engine. |
+| 11 | Mister Hyde, Monster Within | ★ | Upkeep: remove a counter from a creature you control → draw. Szarel hands out counters every turn, so this is a card a turn for a 3-drop. |
+| 12 | Undercover Skrull | ★ | {T}: any colour — turn-2 fixing toward {B}{R}{G}; grows with two creature cards in the yard. |
+| 13 | Eddie Brock // Venom | ◇ | ETB returns an MV≤1 creature (Elvish Reclaimer, Grist, Emissary); Venom sacrifices a creature on attack (an S1 trigger) to draw X and cheat. The flip costs 6. |
+| 14 | Lord Dregg, Insect Invader | ◇ | Disappear fires on ANY permanent leaving — every land sacrifice — so a 1/1 flier each end step; its draw sacrifices TOKENS (no Szarel). |
+| 15 | Lukka, Bound to Ruin | ★ | +1 creature mana, −1 a toxic 3/3, −4 damage equal to our greatest power — Szarel's counters make that a board wipe. |
+| 16 | Mirrex | ◇ | Toxic Mites for {3}; colourless otherwise. A mana sink, not a clock. |
+| 17 | Vraska, Betrayal's Sting | ★★★ | 0: draw + PROLIFERATE (poison AND +1/+1 counters), −2 removal, −9 poison to nine. With Vorinclex it enters at 12 and −9 is 18 poison: the S5 finisher. |
+| 18 | Persuasive Interrogators | ◇ | 6-drop: Clue → 2 poison when cracked. Clues are tokens (S1). |
+| 19 | Fynn, the Fangbearer | ★★★ | The poison converter (S4): every deathtouch hit is 2 poison. A 2-drop. |
+| 20 | Venerated Rotpriest | △ | Poisons when OUR spell targets our creature; the deck has ~3 such spells. |
+| 21 | Infectious Bite | ★★ | {1}{G} instant bite — damage equal to power, and Szarel's counters make power large — plus a poison. Cheap interaction. |
+| 22 | Viral Spawning | ◇ | A toxic 3/3 with corrupted flashback. Poison-only (S5). |
+| 23 | Hapatra, Vizier of Poisons | ◇ | Snakes whenever WE place −1/−1 counters; needs combat damage first. |
+| 24 | Necrogen Rotpriest | ◇ | Toxic payoff in a deck with ~4 toxic creatures; its deathtouch grant is the useful half. |
+| 25 | Phyrexian Atlas | ◇ | A 3-mana any-colour rock; corrupted drain is a bonus. |
+| 26 | White Widow, Yelena Belova | ★ | 2-drop deathtouch; counters on deathtouch hitters. Feeds Fynn. |
+| 27 | Ammit Eternal | ✗ | Shrinks every time they cast a spell. |
+| 28 | Origin of Black Widow | ★★ | I edict, II team deathtouch (a Fynn turn), III drain — and the Saga's own sacrifice after III is an S1 trigger. |
+| 29 | Overkill | ★ | Instant hard removal (−0/−9999), 3 mana. |
+| 30 | Ozai's Cruelty | ✗ | 2 damage and a 2-card discard; no engine role. |
+| 31 | Rattleback Apothecary | ◇ | Deathtouch; a crime grants MENACE (S6 — evasion for Fynn). Crimes come from targeting their side. |
+| 32 | Hidetsugu, Devouring Chaos | ★ | {B}, sacrifice a creature: scry 2 — a 1-mana nontoken outlet (S1); red impulse + damage late. |
+| 33 | Pillage the Bog | △ | Selection scaled by lands; we would rather be playing a land. |
 
 ## 5. Consolidated plan (live)
 
