@@ -86,6 +86,10 @@ of +1/+1 counters equal to Szarel's power on up to one other target creature.*
   Rotpriest, Viral Spawning, Interrogators) grade low under S5.
 - **B1:** the pile has almost NO land cards (Mirrex only), yet S2 says lands are the engine.
   The manabase will be built from outside the pile — self-sacrificing lands first.
+- **B2:** Long Feng, Jenova and Vorinclex are the Szarel-power layer (S3). With all three, a
+  single fetch can put 5+ counters somewhere — the engine is power growth, not trigger count.
+- **B2:** the planeswalkers (four Vraskas, two Garruks, Nissa, Tyvar, Lukka) are where the
+  pile's removal lives, and Vorinclex doubles their loyalty — a planeswalker sub-package.
 
 ## 4. Running verdicts
 
@@ -128,6 +132,44 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | 31 | Rattleback Apothecary | ◇ | Deathtouch; a crime grants MENACE (S6 — evasion for Fynn). Crimes come from targeting their side. |
 | 32 | Hidetsugu, Devouring Chaos | ★ | {B}, sacrifice a creature: scry 2 — a 1-mana nontoken outlet (S1); red impulse + damage late. |
 | 33 | Pillage the Bog | △ | Selection scaled by lands; we would rather be playing a land. |
+
+### Batch 2 — cards 34–66
+
+| # | Card | Verdict | Note |
+|---|------|---------|------|
+| 34 | Seedship Broodtender | ★★ | ETB mill 3 (lands milled are playable, S2); sacrifice ITSELF → reanimate a creature: a nontoken self-sacrifice on our turn. |
+| 35 | Vraska Joins Up | ★ | Deathtouch counters on the whole board (every attacker carries Fynn's poison) and a draw per legendary hitter — Szarel, Fynn and most of the pile are legendary. |
+| 36 | Witherbloom Command | ★ | Two of: mill 3 + return a land, −3/−1, a small artifact/enchantment kill, drain 2. Flexible cheap interaction. |
+| 37 | Dina, Essence Brewer | ★★ | Draw on the first creature sacrifice each turn; {2},{T}, sacrifice another creature → life and counters equal to its power. An outlet that pays twice. |
+| 38 | Gorma, the Gullet | ◇ | Grows on deaths; nontoken creatures enter with counters per death. Good with an aristocrats turn, quiet otherwise. |
+| 39 | Honest Rutstein | ★ | Regrowth on entry; creature spells cost {1} less. |
+| 40 | Long Feng, Grand Secretariat | ★★★ | Every land or creature we sacrifice → a +1/+1 counter on any creature we control — **including Szarel** (S3). Order it above her trigger and each fetch grows her power before she resolves. |
+| 41 | Pharika, God of Affliction | △ | Exiles creature cards from a graveyard and gives the owner a deathtouch Snake; rarely a creature here. |
+| 42 | Sarulf, Realm Eater | △ | The exile wipe is symmetric over nonland permanents of MV ≤ counters (S9): it takes our cheap engine pieces. |
+| 43 | Tyvar, Jubilant Brawler | ◇ | Creature abilities ignore summoning sickness (Elvish Reclaimer, Sprouting Goblin, Dina tap the turn they land); −2 reanimates an MV≤2 creature (Fynn, Bushmaster). |
+| 44 | Uurg, Spawn of Turg | ★★ | {B}{G}, sacrifice a land: gain 2 — an on-demand land outlet (S2); power = lands in the yard; upkeep surveil fills it. |
+| 45 | Vraska, the Cutting Glare | ★★ | 4/4 deathtouch for 3; with six lands, destroy any permanent. Easy to hit in a land deck. |
+| 46 | Boneyard Lurker | ◇ | Mutate returns a permanent card (a land, or a dead engine piece) to hand. |
+| 47 | Binding the Old Gods | ★★★ | I removal, II a Forest onto the battlefield, III team deathtouch, then the Saga's sacrifice — an S1 trigger. Four jobs. |
+| 48 | Culling Ritual | ✗ | S9: destroys every MV ≤2 nonland permanent, ours included — Fynn, Bushmaster, White Widow, Elvish Reclaimer. |
+| 49 | Daemogoth Titan | ★ | 11/10 for four hybrid pips; attack or block → sacrifice a creature (a nontoken one is an S1 trigger). |
+| 50 | Jenova, Ancient Calamity | ★★★ | Each combat, counters equal to Jenova's power on another creature — Szarel's counters on Jenova raise that, and Jenova can target Szarel back (S3 loop). A Mutant dying on our turn draws its power: sacrificing a pumped Mutant to Dina/Hidetsugu is a big draw. |
+| 51 | Nissa of Shadowed Boughs | ★ | Landfall loyalty (a fetch is two), +1 untaps a land, −5 reanimates with counters. |
+| 52 | Back for More | ◇ | 6-mana reanimate + fight. |
+| 53 | Garruk, Cursed Huntsman | ★★ | Wolves, −3 removal + draw, a +3/+3 trample emblem. |
+| 54 | Casualties of War | ★★ | Up to five removal targets for 6. |
+| 55 | Izoni, Thousand-Eyed | ◇ | Insects per creature card in the yard; its outlet draws, but its fodder is tokens (no S1). |
+| 56 | Vraska, Relic Seeker | ★★ | +2 menace Pirates, −3 removal. |
+| 57 | Beledros Witherbloom | ◇ | A Pest every upkeep; untaps lands for 10 life. Slow. |
+| 58 | Vraska, Regal Gorgon | ★ | +2 a counter and menace — on Szarel, that grows her (S3) — −3 removal. 7 mana. |
+| 59 | Pathbreaker Ibex | ★ | Attack: team +X/+X and trample where X is our greatest power. Szarel's counters make X big; a finisher. |
+| 60 | Swampbenders | △ | Makes every land a Swamp; P/T = Swamps. No link to the plan. |
+| 61 | Tectonic Split | ★ | Sacrifice half our lands as a COST — that is N Szarel and Long Feng triggers at once — then replay them one per turn while every land taps for three. Hexproof. A combo-ish payoff of S2. |
+| 62 | Vorinclex, Monstrous Raider | ★★★ | Doubles every counter we place: Szarel's, Long Feng's, loyalty, poison. Enables the S5 finisher. |
+| 63 | Flora Colossus | △ | */* lands, hexproof; a big body only. |
+| 64 | Ferrafor, Young Yew | ★ | {T}: double each counter on a creature — on a Szarel-pumped creature that is a lot. 7 mana. |
+| 65 | Glacier Godmaw | ◇ | Landfall team pump + haste; its Lander is a token. |
+| 66 | Nyxbloom Ancient | △ | Tripled mana; this deck is limited by triggers, not mana. |
 
 ## 5. Consolidated plan (live)
 
