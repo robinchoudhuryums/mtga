@@ -90,6 +90,13 @@ of +1/+1 counters equal to Szarel's power on up to one other target creature.*
   single fetch can put 5+ counters somewhere — the engine is power growth, not trigger count.
 - **B2:** the planeswalkers (four Vraskas, two Garruks, Nissa, Tyvar, Lukka) are where the
   pile's removal lives, and Vorinclex doubles their loyalty — a planeswalker sub-package.
+- **B3:** the deathtouch-evasion count (S6) inside the pile: Szarel (flying), Kura, Glissa
+  Sunslayer (first strike), Rhonas's trample, Hunter's Axe, Vraska Regal Gorgon/Relic Seeker
+  menace, Rattleback menace. Enough that Fynn connects, not so many that poison is the main
+  clock.
+- **B3:** TWO variant-deck signals, neither strong enough to split off: a Jund landfall build
+  (Omnath, Phylath, Glacier Godmaw — red-heavy, S8 says no) and a pure poison build (toxic
+  creatures from ONE — the pile holds five; the pool holds ~40, below).
 
 ## 4. Running verdicts
 
@@ -170,6 +177,44 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | 64 | Ferrafor, Young Yew | ★ | {T}: double each counter on a creature — on a Szarel-pumped creature that is a lot. 7 mana. |
 | 65 | Glacier Godmaw | ◇ | Landfall team pump + haste; its Lander is a token. |
 | 66 | Nyxbloom Ancient | △ | Tripled mana; this deck is limited by triggers, not mana. |
+
+### Batch 3 — cards 67–99
+
+| # | Card | Verdict | Note |
+|---|------|---------|------|
+| 67 | Avatar Kyoshi, Earthbender | ◇ | 8 mana: an 8/8 land-creature every combat that returns if it dies. Strong, slow. |
+| 68 | Zopandrel, Hunger Dominus | ★ | Doubles the team's P/T each combat; sacrifice two other creatures for indestructible — two S1 triggers if both are nontoken. |
+| 69 | Last March of the Ents | ◇ | 8 mana: draw equal to our greatest toughness and dump creatures. |
+| 70 | Baba Lysaga, Night Witch | ★★★ | {T}, sacrifice up to three permanents: with three card types among them, drain 3 and draw 3. A land + a creature + a Saga/artifact is three S1 triggers and three Long Feng counters in one activation. |
+| 71 | Bebop & Rocksteady | ★★ | 7/5 for 3; on attack or block sacrifice a permanent — sacrifice a LAND, an S1 trigger, and replay it. A Mutant for Jenova. |
+| 72 | Exdeath, Void Warlock | ◇ | Transforms at six permanent cards in the yard (lands count); Neo Exdeath's power is that count. |
+| 73 | Roxanne, Starfall Savant | △ | Meteorite tokens; no link. |
+| 74 | Phylath, World Sculptor | ◇ | Plants per basic; landfall puts four counters on a Plant — a fetch is two landfall. Red. |
+| 75 | Dragonlord Atarka | ★ | 7 mana 8/8 flier, 5 damage divided on entry. |
+| 76 | Omnath, Locus of Rage | ★ | A 5/5 per landfall; two per fetch. {R}{R} is the cost (S8). |
+| 77 | Slimefoot and Squee | ◇ | Recursion; its Saprolings are tokens (S1). |
+| 78 | Noxious Assault | △ | Team +2/+2 and poison per blocker. Poison-only finisher (S5). |
+| 79 | Virulent Silencer | ✗ | Needs nontoken ARTIFACT creatures; the pile has one. |
+| 80 | Aphelia, Viper Whisperer | ◇ | Deathtouch 2-drop that makes deathtouch Snakes; the half-life ability wants Gorgons/Snakes (Serpent Society, Vraska the Cutting Glare). |
+| 81 | Gilt-Leaf Alchemist | △ | Needs two Elf cards in the graveyard. |
+| 82 | Grist, Voracious Larva | ◇ | 1-drop deathtouch; flips only when a creature enters from the graveyard (Broodtender, Eddie Brock, Back for More). The walker side is removal and tokens. |
+| 83 | Hunter's Axe | ◇ | +2/+0 and trample or deathtouch on attack: a Fynn carrier (S6). Equip 2. |
+| 84 | Virulent Emissary | △ | 1-drop deathtouch. Filler. |
+| 85 | Bushmaster, Coiled Henchman | ★★★ | Every other creature with a +1/+1 counter has deathtouch. The S4 bridge: Szarel's counters become deathtouch, Fynn turns it into poison. |
+| 86 | Kappa Tech-Wrecker | ◇ | Deathtouch counter; on hit, exile an artifact or enchantment. |
+| 87 | Noxious Newt | ★ | A deathtouch mana dork for 2. |
+| 88 | Serpent-Blade Assailant | ◇ | Backup a counter + deathtouch for a turn. |
+| 89 | Rhonas the Indomitable | ★★ | 5/5 deathtouch indestructible for 3 that attacks once we have power 4+ (Szarel's counters make that early); {2}{G} gives +2/+0 and TRAMPLE — a deathtouch trampler deals almost all its damage to the player (S6). |
+| 90 | Garruk Relentless | ★★ | 0: 3 damage to a creature; wolves; the flip side sacrifices a creature to TUTOR (an S1 trigger) and makes deathtouch Wolves. |
+| 91 | Hit-Monkey | ★ | Hexproof deathtouch haste reach — the safe place to put Szarel's counters. |
+| 92 | Tyvar Kell | △ | Elves; the pile has three. |
+| 93 | Kura, the Boundless Sky | ★ | Flying deathtouch 4/4 (an evasive Fynn carrier); on death, three lands to hand. |
+| 94 | God-Eternal Rhonas | ★ | Deathtouch; doubles the team's power on entry. |
+| 95 | Majestic Myriarch | ◇ | */* = 2× creatures; copies keywords. |
+| 96 | Glissa Sunslayer | ★★ | First strike + deathtouch; on hit, draw or removal. Hard to block, carries Fynn's poison. |
+| 97 | Vraska, Swarm's Eminence | ★ | Counters on deathtouch hitters; −2 deathtouch Assassins. |
+| 98 | Glissa, Herald of Predation | ◇ | Incubator counters and Phyrexian deathtouch; slow. |
+| 99 | The Gitrog Monster | ★★★ | Upkeep land sacrifice (an S1 trigger, on our turn), an extra land drop (doubles S2 throughput), and a draw each time a land card hits the graveyard. The engine's second half. |
 
 ## 5. Consolidated plan (live)
 
