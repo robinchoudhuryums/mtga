@@ -301,6 +301,9 @@ Whenever you draw your second card each turn, target player mills three cards. (
 Whenever equipped creature attacks, put a +1/+1 counter on each creature you control. If you have the city's blessing, put two +1/+1 counters on each creature you control instead.
 Equip {3}",Colorless,equipment; counters; ascend; equip,HOC,40,Mythic,84,,7.0,seed
 Ram Through,Instant,"Target creature you control deals damage equal to its power to target creature you don't control. If the creature you control has trample, excess damage is dealt to that creature's controller instead.",G,removal; trample; evasion,IKO,170,Common,88,,2.0,seed
+"Ayula, Queen Among Bears",Legendary Creature — Bear,"Whenever another Bear you control enters, choose one —
+• Put two +1/+1 counters on target Bear.
+• Target Bear you control fights target creature you don't control.",G,Bear; counters; fight; removal; combat,J21,543,Rare,88,,6.5,seed
 Bonehoard Dracosaur,Creature — Dinosaur Dragon,"Flying, first strike
 At the beginning of your upkeep, exile the top two cards of your library. You may play them this turn. If you exiled a land card this way, create a 3/1 red Dinosaur creature token. If you exiled a nonland card this way, create a Treasure token.",R,Dinosaur; Dragon; tokens; treasure; impulse; flying; evasion; first strike; combat,LCI,134,Mythic,49,,7.5,hand
 The Ancient One,Legendary Creature — Spirit God,"Descend 8 — The Ancient One can't attack or block unless there are eight or more permanent cards in your graveyard.
@@ -333,6 +336,8 @@ Cycling {U}{B}{R} ({U}{B}{R}, Discard this card: Draw a card.)",U/B/R,card draw;
 "Etrata, Deadly Fugitive",Legendary Creature — Vampire Assassin,"Deathtouch
 Face-down creatures you control have ""{2}{U}{B}: Turn this creature face up. If you can't, exile it, then you may cast the exiled card without paying its mana cost.""
 Whenever an Assassin you control deals combat damage to an opponent, cloak the top card of that player's library.",U/B,Vampire; Assassin; heist; cloak; deathtouch; combat; removal,MKM,200,Mythic,83,,7.0,seed
+"Voja, Jaws of the Conclave",Legendary Creature — Wolf,"Vigilance, trample, ward {3}
+Whenever Voja attacks, put X +1/+1 counters on each creature you control, where X is the number of Elves you control. Draw a card for each Wolf you control.",W/R/G,Wolf; Elf; counters; card draw; vigilance; combat; trample; evasion; ward; protection,MKM,432,Mythic,88,,8.5,seed
 Ill-Timed Explosion,Sorcery,"Draw two cards. Then you may discard two cards. When you do, Ill-Timed Explosion deals X damage to each creature, where X is the greatest mana value among cards discarded this way.",U/R,card draw; burn,MKM,207,Rare,25,draw two + scalable board sweep/burn,7.0,hand
 "Izoni, Center of the Web",Legendary Creature — Elf Detective,"Menace
 Whenever Izoni enters or attacks, you may collect evidence 4. If you do, create two 2/1 black and green Spider creature tokens with menace and reach.
@@ -528,6 +533,8 @@ Runescale Stormbrood // Chilling Screech,Creature — Dragon // Instant — Omen
 Whenever you cast a noncreature spell or a Dragon spell, this creature gets +2/+0 until end of turn. // Counter target spell with mana value 2 or less. (Then shuffle this card into its owner's library.)",U/R,Dragon; Omen; counterspell; pump; flying; evasion,TDM,221,Uncommon,49,Deck 49: a 4-drop DRAGON that is also a Dragon payoff (+2/+0 on every noncreature or Dragon spell). Hidden from every red filter because its identity is U/R from the {1}{U} Omen half - the FRONT face is {3}{R} and mono-red castable (G-58 bulk-triage variant).,7.2,hand
 Venerated Stormsinger,Creature — Orc Cleric,"Mobilize 1 (Whenever this creature attacks, create a tapped and attacking 1/1 red Warrior creature token. Sacrifice it at the beginning of the next end step.)
 Whenever this creature or another creature you control dies, each opponent loses 1 life and you gain 1 life.",B,Orc; Cleric; lifegain; tokens; mobilize; go-wide; aggro,TDM,97,Uncommon,55,"Mobilize 1 + drains 1 per creature death, i.e. per end-step token sacrifice",5.5,seed
+Nyxbloom Ancient,Enchantment Creature — Elemental,"Trample
+If you tap a permanent for mana, it produces three times as much of that mana instead.",G,Elemental; trample; evasion,THB,190,Mythic,88,,4.5,seed
 Boiling Rock Rioter,Creature — Human Rogue Ally,"Firebending 1 (Whenever this creature attacks, add {R}. This mana lasts until end of combat.)
 Tap an untapped Ally you control: Exile target card from a graveyard.
 Whenever this creature attacks, you may cast an Ally spell from among cards you own exiled with this creature.",B,Human; Rogue; Ally; graveyard; firebending; bending,TLA,87,Rare,55b,,3.0,seed
@@ -553,6 +560,8 @@ Geyser Leaper,Creature — Human Warrior Ally,"Flying
 Waterbend {4}: Draw a card, then discard a card. (While paying a waterbend cost, you can tap your artifacts and creatures to help. Each one pays for {1}.)",U,Human; Warrior; Ally; card draw; flying; evasion; waterbend; bending,TLA,52,Common,16,waterbend {4} loot on a flier; the 2026-09-18 waterbend rebuild's one craft,1.0,seed
 Beastmaster Ascension,Enchantment,"Whenever a creature you control attacks, you may put a quest counter on this enchantment.
 As long as this enchantment has seven or more quest counters on it, creatures you control get +5/+5.",G,counters; pump,TLE,39,Mythic,78-historic-brawl,78-historic-brawl swap for Hermitic Herbalist: +5/+5 team finisher; Doubling Season doubles its quest counters,5.0,seed
+Rhys the Redeemed,Legendary Creature — Elf Warrior,"{2}{G/W}, {T}: Create a 1/1 green and white Elf Warrior creature token.
+{4}{G/W}{G/W}, {T}: For each creature token you control, create a token that's a copy of that creature.",W/G,Elf; Warrior; tokens,TLE,52,Mythic,88,,7.0,seed
 "Wan Shi Tong, All-Knowing",Legendary Creature — Bird Spirit,"Flying
 When Wan Shi Tong enters, target nonland permanent's owner puts it into their library second from the top or on the bottom.
 Whenever one or more cards are put into a library from anywhere, create two 1/1 colorless Spirit creature tokens with ""This token can't block or be blocked by non-Spirit creatures.""",U,Bird; Spirit; tokens; etb; flying; evasion,TLE,98,Mythic,78-historic-brawl,78-historic-brawl swap for The Millennium Calendar: enters tuck of any nonland permanent plus two Spirit tokens; interaction 12 -> 13 (A floor),8.0,seed

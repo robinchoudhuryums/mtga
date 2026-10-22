@@ -38,7 +38,6 @@ Avengers: Under Siege
 Azula, Cunning Usurper
 Back-Alley Gardener
 Badgermole
-Badgermole Cub
 Ball Lightning
 Bandit's Talent
 Baxter Stockman
@@ -285,6 +284,7 @@ Nighthowl Pursuer
 Nightwhorl Hermit
 Niko, Light of Hope
 Ninja of the Hand
+Nyxbloom Ancient
 Okoye, Dora Milaje Leader
 Omnipresence
 Omniscience

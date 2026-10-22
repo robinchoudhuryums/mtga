@@ -55,12 +55,17 @@
 #: notes: interaction 14 -> 13, still above the A floor's 12).
 #: notes: Then Arlinn Kord for Arlinn, the Pack's Hope (a Wolf every other turn, haste for speed, a team
 #: notes: pump with trample, or 3 damage to any target).
+#: notes: Then She-Hulk, Jennifer Walters for She-Hulk, Jade Defender (repeatable draw; the sacrificed
+#: notes: lands come back through Icetill Explorer and Ancient Greenwarden), Voja for The Earth King, Rhys the
+#: notes: Redeemed for Nissa (Elves for Voja; copies every creature token), Nyxbloom Ancient for Bumi (triples
+#: notes: the mana that Rhys, the power-ups and Jennifer Walters spend) and Ayula for Badgermole Cub. Beorn's
+#: notes: "becomes a Bear" does NOT trigger Ayula (it is not an enter); Dancing's Bear tokens, Rhys's copies
+#: notes: of them and Beorn himself do, and Beorn widens which big creature can be the one that fights.
 
 # Commander (leads from the command zone; also one of the 100)
 1 Samut, the Driving Force (DFT) 222
 
-# Creatures — mana and ramp (11)
-1 Badgermole Cub (TLA) 167
+# Creatures — mana and ramp (10)
 1 Great Divide Guide (TLA) 181
 1 Torgal, A Fine Hound (FIN) 208
 1 Icetill Explorer (EOE) 192
@@ -72,13 +77,13 @@
 1 Tifa Lockhart (FIN) 206
 1 Grand Warlord Radha (DOM) 195
 
-# Creatures — threats, power payoffs and removal bodies (28)
+# Creatures — threats, power payoffs and removal bodies (30)
 1 Samut, Hazoret's Champion (FRA) 251
 1 Black Panther, Wakandan King (MAR) 87
 1 Roxanne, Starfall Savant (OTJ) 228
 1 Ravenous Tyrannosaurus (MAR) 93
 1 Zacama, Primal Calamity (RIX) 174
-1 The Earth King (TLA) 172
+1 Voja, Jaws of the Conclave (MKM) 432
 1 Red Hulk (MSH) 149
 1 Beorn the Fierce (HOB) 119
 1 Emperor Apatzec Intli IV (YOTJ) 21
@@ -89,20 +94,22 @@
 1 Nylea, God of the Hunt (PIO) 300
 1 Hulk, Brutal Brawler (MSC) 833
 1 Toph, Greatest Earthbender (TLE) 70
-1 Bumi, Unleashed (TLA) 211
+1 Nyxbloom Ancient (THB) 190
 1 Toph, the First Metalbender (TLA) 247
 1 Miles Morales (SPM) 108
 1 Jennifer Walters (MSH) 18
 1 Ancient Greenwarden (ZNR) 178
 1 Hexhaven Invigorator (FRA) 106
-1 She-Hulk, Jade Defender (MSH) 188
+1 She-Hulk, Jennifer Walters (MSC) 554
 1 Gamma Grotesque (MSC) 562
 1 Omnath, Locus of Rage (EA3) 17
 1 Ghired, Mirror of the Wilds (OTJ) 205
 1 Hulk, Strongest There Is (MSC) 724
 1 Abomination, Irradiated Brute (MSC) 511
+1 Rhys the Redeemed (TLE) 52
+1 Ayula, Queen Among Bears (J21) 543
 
-# Noncreature — removal, planeswalkers, engines and finishers (23)
+# Noncreature — removal, planeswalkers, engines and finishers (22)
 1 Smuggler's Surprise (OTJ) 180
 1 Ram Through (IKO) 170
 1 Minsc & Boo, Timeless Heroes (HBG) 243
@@ -121,7 +128,6 @@
 1 Unnatural Growth (MID) 206
 1 Tifa's Limit Break (FIN) 207
 1 Dancing from Dark to Dawn (HOB) 123
-1 Nissa, Voice of Zendikar (PIO) 188
 1 Arlinn Kord // Arlinn, Embraced by the Moon (SIR) 230
 1 Beorn's Hospitality (HOB) 120
 1 Inspiring Call (TLE) 168
