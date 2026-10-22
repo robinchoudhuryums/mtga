@@ -1,0 +1,151 @@
+#: name: Genesis Cycle — Brawl
+#: format: Historic Brawl
+#: colors: BRG
+#: commander: Szarel, Genesis Shepherd
+#: plan: midrange
+#: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool), JUND LAND SACRIFICE
+#: archetype: around Szarel, Genesis Shepherd: she lets us play lands from the graveyard and puts
+#: archetype: counters equal to her power on another creature whenever we sacrifice a nontoken
+#: archetype: permanent on our turn. So every land that sacrifices itself (14 fetches, the
+#: archetype: Memorials, Hidden caves, Skemfar Elderhall, Nurturing Peatland, Ifnir Deadlands) is a
+#: archetype: spell we replay every turn, and the land outlets (Gitrog, Uurg, Zuran Orb, Elvish
+#: archetype: Reclaimer, Sprouting Goblin, Baba Lysaga, Hearthhull) turn spare land drops into
+#: archetype: triggers. Long Feng, Jenova and Vorinclex grow Szarel's power so each trigger is bigger.
+#: archetype: The second clock is POISON: Bushmaster gives every creature with a +1/+1 counter
+#: archetype: deathtouch and Fynn makes each deathtouch hit 2 poison; Vorinclex with Vraska,
+#: archetype: Betrayal's Sting is 18 poison from her -9, and Triumph of the Hordes finishes a
+#: archetype: countered board. DISTINCT from deck 31 (Pox, BG Standard elves-and-poison) and deck 88
+#: archetype: (RGW landfall): the engine here is sacrifice and graveyard lands, not landfall.
+#: protect: Szarel, Genesis Shepherd; Azusa, Lost but Seeking; Zuran Orb; Long Feng, Grand Secretariat; The Gitrog Monster; Bushmaster, Coiled Henchman; Fynn, the Fangbearer; Vorinclex, Monstrous Raider; Jenova, Ancient Calamity; Lotus Field; Tectonic Split; Elvish Reclaimer
+#: notes: DRAFTED 2026-10-22 from the owner's 99-card Szarel pile
+#: notes: (.cycle/89-szarel-pile-analysis.md): 44 pile cards plus 17 outside nonland cards (the
+#: notes: land-sacrifice outlets, Evolution Sage, Bloated Contaminator, Triumph of the Hordes,
+#: notes: Yawgmoth, Lotus Cobra, Tireless Provisioner, Infernal Grasp, Heartless Act, Ancient
+#: notes: Greenwarden) and a 38-land base that is mostly self-sacrificing lands.
+#: notes: RULES READ ON SZAREL: tokens (Treasure, Clue, Lander, Wolves) feed costs but never
+#: notes: trigger her; an opponent's edict is not OUR sacrifice; a Saga's sacrifice after its
+#: notes: last chapter counts; Gitrog's upkeep land sacrifice counts. Order Long Feng's trigger
+#: notes: above Szarel's and she counts the counter it gives her.
+#: notes: BASICS ARE A FINITE FETCH POOL: 11 basics against 11 basic fetchers that replay. A
+#: notes: failed search still sacrifices, so Szarel still triggers after the basics run out.
+#: notes: OPEN: a louder poison build swaps Daemogoth Titan, Squirrel Wrangler, Dragonlord Atarka,
+#: notes: Lord Dregg and Honest Rutstein for Necrogen Rotpriest, Venerated Rotpriest, Persuasive
+#: notes: Interrogators, Venomous Brutalizer and Skithiryx. The rare fetches (Fabled Passage,
+#: notes: Prismatic Vista, Misty Rainforest, Polluted Delta, Scalding Tarn) can drop to common
+#: notes: Promising Vein / Shire Terrace a turn slower.
+#: notes: OWNED CANDIDATES not yet tried (suggest --owned, 2026-10-22): Liliana, Dreadhorde
+#: notes: General (a draw per creature death; her -4 edict makes US sacrifice two as well, each a
+#: notes: Szarel trigger) and Scavenger's Talent (sacrifice a permanent: mill two, ours or theirs).
+#: notes: The rejected-pile re-screen found no strict upgrade; its five KEY cards (Eddie Brock,
+#: notes: Izoni, Persuasive Interrogators, Slimefoot and Squee, Zopandrel) were left out because
+#: notes: their sacrifices are of TOKENS, which never trigger Szarel (Zopandrel: the 7-drop slot).
+
+# Commander (leads from the command zone; also one of the 100)
+1 Szarel, Genesis Shepherd (EOC) 4
+
+# Creatures — land-sacrifice engine (every land Szarel replays is a trigger)
+1 The Gitrog Monster (BLC) 88
+1 Uurg, Spawn of Turg (DMU) 225
+1 Baba Lysaga, Night Witch (HBG) 232
+1 Elvish Reclaimer (M20) 169
+1 Sprouting Goblin (DMU) 145
+1 Titania, Protector of Argoth (MH2) 287
+1 Azusa, Lost but Seeking (M21) 173
+1 Squirrel Wrangler (J21) 647
+1 Seedship Broodtender (EOE) 227
+1 Lord Dregg, Insect Invader (TMT) 65
+1 Ancient Greenwarden (ZNR) 178
+
+# Creatures — counters and Szarel's power
+1 Long Feng, Grand Secretariat (TLA) 233
+1 Jenova, Ancient Calamity (FIN) 228
+1 Vorinclex, Monstrous Raider (KHM) 199
+1 Bushmaster, Coiled Henchman (MSC) 716
+1 Mister Hyde, Monster Within (MSH) 176
+1 Evolution Sage (WAR) 159
+1 White Widow, Yelena Belova (MSC) 676
+
+# Creatures — deathtouch and poison (Fynn turns each deathtouch hit into 2 poison)
+1 Fynn, the Fangbearer (FCA) 46
+1 The Serpent Society (MSH) 226
+1 Glissa Sunslayer (ONE) 202
+1 Vraska, the Cutting Glare (FRA) 278
+1 Rhonas the Indomitable (AKR) 213
+1 Kura, the Boundless Sky (NEO) 200
+1 Hit-Monkey (MSC) 723
+1 Bloated Contaminator (ONE) 159
+
+# Creatures — sacrifice outlets and bodies
+1 Dina, Essence Brewer (SOC) 1
+1 Killmonger, Scourge of Wakanda (MSH) 218
+1 Hidetsugu, Devouring Chaos (NEO) 99
+1 Bebop & Rocksteady (TMT) 140
+1 Daemogoth Titan (STX) 174
+1 Yawgmoth, Thran Physician (FCA) 11
+1 Titania, Rugged Rumbler (MSH) 235
+1 Honest Rutstein (OTJ) 207
+1 Dragonlord Atarka (PIO) 216
+
+# Creatures — ramp
+1 Undercover Skrull (MSH) 194
+1 Noxious Newt (SOS) 155
+1 Lotus Cobra (ZNR) 193
+1 Tireless Provisioner (J25) 728
+
+# Planeswalkers
+1 Vraska, Betrayal's Sting (ONE) 115
+1 Vraska, Swarm's Eminence (WAR) 236
+1 Vraska, Relic Seeker (XLN) 232
+1 Vraska, Regal Gorgon (GRN) 269
+1 Garruk Relentless // Garruk, the Veil-Cursed (SIS) 49
+1 Garruk, Cursed Huntsman (ELD) 191
+1 Lukka, Bound to Ruin (ONE) 207
+1 Nissa of Shadowed Boughs (ZNR) 231
+
+# Noncreature — removal, Sagas and engines
+1 Infectious Bite (ONE) 172
+1 Overkill (FIN) 109
+1 Infernal Grasp (MID) 107
+1 Heartless Act (TLA) 103
+1 Witherbloom Command (STX) 248
+1 Casualties of War (WAR) 187
+1 Origin of Black Widow (MSC) 664
+1 Binding the Old Gods (KHM) 206
+1 Vraska Joins Up (OTJ) 236
+1 Triumph of the Hordes (SOA) 59
+1 Tectonic Split (TLE) 144
+1 Crop Rotation (SOA) 51
+1 Zuran Orb (MH2) 300
+1 Hearthhull, the Worldseed (EOC) 1
+
+# Lands (38)
+1 Evolving Wilds (ECL) 264
+1 Terramorphic Expanse (MSC) 828
+1 Vibrant Cityscape (SPM) 188
+1 Hobbit Hole (HOB) 184
+1 Elven Passage (HOB) 181
+1 Twisted Landscape (MH3) 232
+1 Riveteers Overlook (SNC) 255
+1 Escape Tunnel (TMT) 184
+1 Promising Vein (LCI) 279
+1 Fabled Passage (BLB) 252
+1 Prismatic Vista (SPG) 38
+1 Misty Rainforest (MH2) 250
+1 Polluted Delta (MH3) 224
+1 Scalding Tarn (MH2) 254
+1 Memorial to Folly (DOM) 242
+1 Memorial to Unity (DOM) 245
+1 Hidden Necropolis (LCI) 275
+1 Hidden Nursery (LCI) 276
+1 Skemfar Elderhall (KHM) 268
+1 Nurturing Peatland (HA7) 23
+1 Ifnir Deadlands (AKR) 302
+1 Overgrown Tomb (ECL) 266
+1 Blood Crypt (ECL) 262
+1 Stomping Ground (EOE) 258
+1 Command Tower (FRC) 22
+1 Ziatora's Proving Ground (SNC) 261
+1 Lotus Field (M20) 249
+4 Swamp (FRA) 285
+4 Forest (FRA) 289
+3 Mountain (FRA) 287

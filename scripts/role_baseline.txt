@@ -36,11 +36,13 @@ Aurora Awakener
 Avenger of the Fallen
 Avengers: Under Siege
 Azula, Cunning Usurper
+Azusa, Lost but Seeking
 Back-Alley Gardener
 Badgermole
 Ball Lightning
 Bandit's Talent
 Baxter Stockman
+Bebop & Rocksteady
 Bejeweled Warg
 Billowing Shriekmass
 Bioengineered Future
@@ -51,6 +53,7 @@ Black Market Connections
 Black Widow, Super Spy
 Blasphemous Edict
 Blitzball Shot
+Bloated Contaminator
 Bloodthirsty Conqueror
 Boiling Rock Rioter
 Bolg's Company
@@ -64,6 +67,7 @@ Bulk Up
 Bumi, Unleashed
 Burnout Bashtronaut
 Burrowguard Mentor
+Bushmaster, Coiled Henchman
 Buzz Bots
 Bygone Colossus
 Byrke, Long Ear of the Law
@@ -90,6 +94,7 @@ Crustacean Commando
 Cryogen Relic
 Crypt Feaster
 Cuboid Colony
+Daemogoth Titan
 Daggerfang Duo
 Dalkovan Packbeasts
 Daredevil, Fearless Fighter
@@ -248,6 +253,7 @@ Loki Laufeyson
 Long Feng, Grand Secretariat
 Loot, Exuberant Explorer
 Lorehold, the Historian
+Lukka, Bound to Ruin
 Magic Pot
 Magitek Armor
 Mai, Jaded Edge
@@ -373,6 +379,7 @@ Spider-Man, Web-Slinger
 Spider-Man, Web-Spinner
 Spider-Punk
 Splash Portal
+Squirrel Wrangler
 Stalwart Successor
 Starfield Shepherd
 Stargaze
@@ -450,7 +457,9 @@ Virulent Silencer
 Virus Beetle
 Vision Quest
 Vito's Inquisitor
+Vorinclex, Monstrous Raider
 Voyager Glidecar
+Vraska, Swarm's Eminence
 Vulture, Scheming Scavenger
 War Balloon
 War Machine, Legacy of Iron
