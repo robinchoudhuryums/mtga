@@ -49,8 +49,13 @@
 #: notes: intentional trade (Regal Gorgon's -3 was removal); card advantage 12 -> 14; floor A.
 #: notes: HELD by the owner: Doubling Season, Aftermath Analyst and Korvold were proposed for
 #: notes: Daemogoth Titan, Honest Rutstein and Lord Dregg, which the owner wants to keep; Lukka,
-#: notes: Overkill and Vraska, Swarm's Eminence are kept too. Pending: Tyvar, Jubilant Brawler,
-#: notes: Cankerbloom, Annihilating Glare, Six, The Ozolith, Ziatora, and the Mutant layer.
+#: notes: Overkill, Nissa of Shadowed Boughs, Garruk, Cursed Huntsman, Evolution Sage and Seedship
+#: notes: Broodtender are kept too. Pending: Tyvar, Jubilant Brawler, Cankerbloom, Annihilating
+#: notes: Glare, Drown in Ichor, Venomous Brutalizer, Bontu, Sylvan Safekeeper, Snakeskin Veil,
+#: notes: Toxic Deluge, Six, The Ozolith, Ziatora, and the Mutant layer.
+#: notes: SWAP 2026-10-22: Tyrranax Rex for Vraska, Relic Seeker (toxic 4, haste, trample, ward 4;
+#: notes: interaction 18 -> 17, the -3 was removal). DEATHTOUCH IS A THIN CENTRAL THEME: cutting
+#: notes: two of White Widow / Hit-Monkey / Noxious Newt drops it from the deck's central themes.
 #: notes: OWNED CANDIDATES not yet tried (suggest --owned, 2026-10-22): Liliana, Dreadhorde
 #: notes: General (a draw per creature death; her -4 edict makes US sacrifice two as well, each a
 #: notes: Szarel trigger) and Scavenger's Talent (sacrifice a permanent: mill two, ours or theirs).
@@ -94,6 +99,7 @@
 1 Hit-Monkey (MSC) 723
 1 Bloated Contaminator (ONE) 159
 1 Hornet Queen (AKR) 196
+1 Tyrranax Rex (ONE) 189
 
 # Creatures — sacrifice outlets and bodies
 1 Dina, Essence Brewer (SOC) 1
@@ -113,7 +119,6 @@
 # Planeswalkers
 1 Vraska, Betrayal's Sting (ONE) 115
 1 Vraska, Swarm's Eminence (WAR) 236
-1 Vraska, Relic Seeker (XLN) 232
 1 Garruk Relentless // Garruk, the Veil-Cursed (SIS) 49
 1 Garruk, Cursed Huntsman (ELD) 191
 1 Lukka, Bound to Ruin (ONE) 207
