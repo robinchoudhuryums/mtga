@@ -3,6 +3,11 @@
 #: colors: RGW
 #: commander: Samut, the Driving Force
 #: plan: midrange
+#: tier: A — set by the owner 2026-10-22. Metrics floor A (interaction 14, card advantage 8, sum
+#: tier: 22 against the 12/19 a 100-card deck needs). The counters under-read it: Inspiring Call, Black
+#: tier: Panther, Wakandan King, Emperor Apatzec's seek and Ravenous Tyrannosaurus's attack trigger all
+#: tier: score no role. One clear weakness: green-hungry costs (Hexhaven and Unnatural Growth need
+#: tier: {G}{G}{G}{G}), softened by seven nonland mana sources.
 #: archetype: Naya power ramp around Samut, the Driving Force. Samut gives every other creature
 #: archetype: +X/+0 and makes noncreature spells cost X less, X = speed (max 4) — but speed only
 #: archetype: starts when a "Start your engines!" permanent arrives, so Point the Way and
@@ -65,6 +70,12 @@
 #: notes: Command Tower took Sunbillow Verge (a W/R land) and Sheltering Landscape took Commercial
 #: notes: District (a tapped R/G land; Landscape fetches a basic, two landfall triggers). Sources W 15 /
 #: notes: R 19 / G 25; Samut 71.5% -> 75.0% on turn 5, Omnath 50.2% -> 54.3%, nothing worse.
+#: notes: FROM THE PILE ANALYSIS (doc deleted 2026-10-22): speed starts only when a Start-your-engines
+#: notes: permanent arrives, so the early starters matter more than their text; Samut's discount is
+#: notes: generic-only and reaches SPELLS (kickers, tiers and spree costs included) but never activated
+#: notes: abilities (power-ups, Rhys, Beorn's Hospitality, Jennifer Walters); power, not toughness, is the
+#: notes: deciding number, so prefer bites (one-way) over fights. No tool models speed or +X/+0, so every
+#: notes: power gate here is graded on printed power.
 
 # Commander (leads from the command zone; also one of the 100)
 1 Samut, the Driving Force (DFT) 222
