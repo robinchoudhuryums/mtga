@@ -76,7 +76,9 @@ of +1/+1 counters equal to Szarel's power on up to one other target creature.*
 
 ## 2. Standing error list
 
-- (none yet)
+- `pool.py --legal brawl` is the 60-card format (G-08); every Historic Brawl search here must
+  say `--legal "historic brawl"`. The first fetch-land sweep used the wrong one and showed 9
+  of the 21 fetches.
 
 ## 3. Cross-batch observations
 
@@ -218,4 +220,103 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 
 ## 5. Consolidated plan (live)
 
-- (after batch 3)
+**Scratch draft v1** (scratchpad `d89-v1.txt`, 100 cards, every line from `deck.py resolve`):
+45 pile cards + 16 outside nonland + 38 lands. Measured 2026-10-22: **legal** in Historic
+Brawl; floor **A** (interaction 18 +1?, card advantage 11, sum 29 against A's 12 / 19);
+protection 6; avg MV 3.53; curve 1/2/13/18/14/5/7/2 (0–7+); 40 creatures; keepable 81.2%
+(96.5% within two sevens); sources B 25 / R 19 / G 24, Szarel 84.7% on turn 5. Shape WIDE.
+`similar`: closest is deck 8 at 74% on generic themes only; deck 31 (Pox, BG Standard
+poison) 73% sharing 3 cards — distinct deck.
+
+### The list, by job
+
+- **Commander:** Szarel, Genesis Shepherd.
+- **Land-sacrifice engine (S2), nonland — 12:** The Gitrog Monster, Uurg, Baba Lysaga,
+  Elvish Reclaimer*, Sprouting Goblin*, Zuran Orb*, Hearthhull, the Worldseed*, Titania,
+  Protector of Argoth*, Azusa*, Crop Rotation*, Squirrel Wrangler*, Tectonic Split.
+  (*outside the pile)
+- **Szarel's power / counters (S3) — 9:** Long Feng, Jenova, Vorinclex, Bushmaster, Mister
+  Hyde, Evolution Sage*, Vraska, Swarm's Eminence, White Widow, Ancient Greenwarden* (doubles
+  landfall; a second "lands from graveyard" for when Szarel is in the command zone).
+- **Deathtouch → poison (S4–S6) — 11:** Fynn, The Serpent Society, Glissa Sunslayer, Vraska,
+  the Cutting Glare, Rhonas the Indomitable, Kura, Hit-Monkey, Vraska Joins Up, Vraska,
+  Betrayal's Sting, Bloated Contaminator*, Triumph of the Hordes* (team infect + trample for a
+  turn: the poison finisher on a countered board).
+- **Nontoken creature outlets (S1) — 7:** Dina, Killmonger, Hidetsugu, Bebop & Rocksteady,
+  Daemogoth Titan, Yawgmoth* (also proliferate and draw), Garruk Relentless, Seedship
+  Broodtender (sacrifices itself).
+- **Ramp — 5:** Undercover Skrull, Noxious Newt, Lotus Cobra*, Tireless Provisioner*,
+  Titania, Rugged Rumbler (a 5/5 whose discard cost feeds lands back).
+- **Removal — 13:** Infectious Bite, Overkill, Infernal Grasp*, Heartless Act*, Witherbloom
+  Command, Origin of Black Widow, Binding the Old Gods, Lukka, Garruk, Cursed Huntsman,
+  Casualties of War, Vraska, Relic Seeker, Vraska, Regal Gorgon, Dragonlord Atarka.
+- **Value:** Nissa of Shadowed Boughs, Honest Rutstein, Lord Dregg (a flier every turn a land
+  is sacrificed).
+- **Lands — 38 (21 sacrifice themselves, S2):** fetches Evolving Wilds, Terramorphic Expanse,
+  Vibrant Cityscape, Hobbit Hole, Elven Passage, Twisted Landscape, Riveteers Overlook, Escape
+  Tunnel (or: a power-≤2 creature is unblockable — Fynn), Promising Vein, Fabled Passage,
+  Prismatic Vista, Misty Rainforest, Polluted Delta, Scalding Tarn; repeatable spells Memorial
+  to Folly, Memorial to Unity, Hidden Necropolis, Hidden Nursery, Skemfar Elderhall,
+  Nurturing Peatland, Ifnir Deadlands; Lotus Field (sacrifices two lands on entry); duals
+  Overgrown Tomb, Blood Crypt, Stomping Ground, Command Tower, Ziatora's Proving Ground;
+  4 Swamp, 4 Forest, 3 Mountain.
+
+### Hand counts the tools cannot make (S10)
+
+- **Nontoken sacrifice sources:** 21 self-sacrificing lands + Lotus Field, 12 land outlets,
+  8 creature outlets, 2 Sagas. Szarel fires on most turns from a land drop alone.
+- **Basics are a finite fetch pool:** 11 basics against 11 basic-fetchers that REPLAY. A long
+  game empties the basics; after that a fetch still sacrifices (a failed search is legal), so
+  Szarel still fires — only the ramp stops.
+- **Things that grow Szarel:** Long Feng (per land/creature to the graveyard), Jenova (each
+  combat), Vraska, Regal Gorgon +2, Vorinclex (doubles all of it).
+
+### Protect list — what `cuts` cannot see
+
+`cuts` ranked Azusa and Lotus Cobra as the two weakest cards (fit 14 and 11). Both are S2
+multipliers. Protect: **Azusa, Zuran Orb, Long Feng, Gitrog, Bushmaster, Fynn, Vorinclex,
+Jenova, Lotus Field, Tectonic Split, Elvish Reclaimer** — each one's value is in the rest of
+the deck (land-drop count, counter count, deathtouch count), which no ranking term reads.
+`engines` also reports "counters: no payoff" — Bushmaster, Vorinclex and Rhonas are the
+payoffs it does not recognise.
+
+### Open decisions for the owner
+
+1. **How much poison?** v1 runs poison as the second clock: Fynn + Bushmaster + deathtouch,
+   proliferate (Vraska, Evolution Sage, Bloated Contaminator, Yawgmoth), two finishers
+   (Triumph; Vraska −9, 18 poison with Vorinclex). A poison-FORWARD swap set is available:
+   Necrogen Rotpriest, Venerated Rotpriest, Persuasive Interrogators, Venomous Brutalizer
+   (toxic 3 + proliferate), Skithiryx (flying infect) for Daemogoth Titan, Squirrel Wrangler,
+   Dragonlord Atarka, Lord Dregg, Honest Rutstein.
+2. **Rare fetches.** Fabled Passage, Prismatic Vista, Misty Rainforest, Polluted Delta and
+   Scalding Tarn are the untapped fetches; commons (Promising Vein, Shire Terrace) do the
+   same job a turn slower.
+
+### Pile cards left out (54), by reason
+
+- **Red-heavy (S8):** Rhino, Omnath, Phylath, Roxanne, Kraven Proud Predator, Absorbing Man
+  and Titania, Abomination.
+- **Poison-only, below S5:** Venerated Rotpriest, Viral Spawning, Necrogen Rotpriest,
+  Persuasive Interrogators, Mirrex, Noxious Assault, Virulent Silencer, Phyrexian Atlas,
+  Hapatra. (Option 1 above brings some back.)
+- **G-42 conflicts (S9):** Culling Ritual, Sarulf, Pharika.
+- **Tokens, not nontoken sacrifices (S1):** Izoni, Slimefoot and Squee, Beledros.
+- **7–8 mana, outclassed by the kept top end:** Ferrafor, Zopandrel, Avatar Kyoshi, Last
+  March, Flora Colossus, Nyxbloom, Glacier Godmaw, Pathbreaker Ibex (cut for Greenwarden).
+- **Filler deathtouch the list has enough of:** Aphelia, Virulent Emissary, Grist, Kappa
+  Tech-Wrecker, Serpent-Blade Assailant, Gilt-Leaf Alchemist, God-Eternal Rhonas, Hunter's
+  Axe, Rattleback Apothecary.
+- **No engine link:** Kraven the Hunter, Atlas, Super-Adaptoid, Eddie Brock, Ammit Eternal,
+  Ozai's Cruelty, Pillage the Bog, Gorma, Tyvar Jubilant Brawler, Boneyard Lurker, Back for
+  More, Swampbenders, Exdeath, Majestic Myriarch, Glissa Herald, Tyvar Kell.
+
+### Tool holes found (record only, G-67)
+
+- Azusa and Lukka score no role (extra land drops; Lukka's −4 is removal).
+- `engines` does not read Bushmaster / Vorinclex / Rhonas as counters payoffs.
+- No surface counts nontoken sacrifices or a commander's trigger (S10).
+
+### Craft cost (information only)
+
+67 of the 100 read unowned (owned counts are stale lower bounds): 20 mythic, 25 rare,
+15 uncommon, 7 common.
