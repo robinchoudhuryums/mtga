@@ -221,7 +221,7 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 ## 5. Consolidated plan (live)
 
 **Scratch draft v1** (scratchpad `d89-v1.txt`, 100 cards, every line from `deck.py resolve`):
-45 pile cards + 16 outside nonland + 38 lands. Measured 2026-10-22: **legal** in Historic
+44 pile cards + the commander + 17 outside nonland + 38 lands. Measured 2026-10-22: **legal** in Historic
 Brawl; floor **A** (interaction 18 +1?, card advantage 11, sum 29 against A's 12 / 19);
 protection 6; avg MV 3.53; curve 1/2/13/18/14/5/7/2 (0–7+); 40 creatures; keepable 81.2%
 (96.5% within two sevens); sources B 25 / R 19 / G 24, Szarel 84.7% on turn 5. Shape WIDE.
@@ -242,7 +242,7 @@ poison) 73% sharing 3 cards — distinct deck.
   the Cutting Glare, Rhonas the Indomitable, Kura, Hit-Monkey, Vraska Joins Up, Vraska,
   Betrayal's Sting, Bloated Contaminator*, Triumph of the Hordes* (team infect + trample for a
   turn: the poison finisher on a countered board).
-- **Nontoken creature outlets (S1) — 7:** Dina, Killmonger, Hidetsugu, Bebop & Rocksteady,
+- **Nontoken creature outlets (S1) — 8:** Dina, Killmonger, Hidetsugu, Bebop & Rocksteady,
   Daemogoth Titan, Yawgmoth* (also proliferate and draw), Garruk Relentless, Seedship
   Broodtender (sacrifices itself).
 - **Ramp — 5:** Undercover Skrull, Noxious Newt, Lotus Cobra*, Tireless Provisioner*,
@@ -292,7 +292,7 @@ payoffs it does not recognise.
    Scalding Tarn are the untapped fetches; commons (Promising Vein, Shire Terrace) do the
    same job a turn slower.
 
-### Pile cards left out (54), by reason
+### Pile cards left out (55), by reason
 
 - **Red-heavy (S8):** Rhino, Omnath, Phylath, Roxanne, Kraven Proud Predator, Absorbing Man
   and Titania, Abomination.
