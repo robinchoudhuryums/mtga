@@ -188,6 +188,7 @@ Guidelight Matrix
 Guiding Hydra
 Hama, the Bloodbender
 Hammerhead, Maggia Boss
+Hardened Scales
 Hauntwoods Shrieker
 Hawkeye, Master Marksman
 Hawkeye, Young Avenger
@@ -379,7 +380,6 @@ Spider-Man, Web-Slinger
 Spider-Man, Web-Spinner
 Spider-Punk
 Splash Portal
-Squirrel Wrangler
 Stalwart Successor
 Starfield Shepherd
 Stargaze

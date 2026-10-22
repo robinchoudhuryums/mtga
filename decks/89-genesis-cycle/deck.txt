@@ -28,11 +28,21 @@
 #: notes: above Szarel's and she counts the counter it gives her.
 #: notes: BASICS ARE A FINITE FETCH POOL: 11 basics against 11 basic fetchers that replay. A
 #: notes: failed search still sacrifices, so Szarel still triggers after the basics run out.
-#: notes: OPEN: a louder poison build swaps Daemogoth Titan, Squirrel Wrangler, Dragonlord Atarka,
-#: notes: Lord Dregg and Honest Rutstein for Necrogen Rotpriest, Venerated Rotpriest, Persuasive
-#: notes: Interrogators, Venomous Brutalizer and Skithiryx. The rare fetches (Fabled Passage,
-#: notes: Prismatic Vista, Misty Rainforest, Polluted Delta, Scalding Tarn) can drop to common
-#: notes: Promising Vein / Shire Terrace a turn slower.
+#: notes: OPEN: a louder poison build swaps Daemogoth Titan, Lord Dregg, Honest Rutstein and two
+#: notes: flex slots for Necrogen Rotpriest, Venerated Rotpriest, Persuasive Interrogators,
+#: notes: Venomous Brutalizer and Skithiryx. The rare fetches (Fabled Passage, Prismatic Vista,
+#: notes: Misty Rainforest, Polluted Delta, Scalding Tarn) can drop to common Shire Terrace or a
+#: notes: Strixhaven-style self-sacrificing land a turn slower.
+#: notes: SWAPS 2026-10-22 (tune): Bristly Bill for Squirrel Wrangler (a landfall counter on Szarel,
+#: notes: two per fetch; the Wrangler was a 12th land outlet making tokens); Vraska, Golgari Queen
+#: notes: for Titania, Rugged Rumbler (+2 sacrifices a land for a card each turn, -3 removal);
+#: notes: Mayhem Devil for Dragonlord Atarka (a ping per sacrifice by either player, a 3-drop for a
+#: notes: 7-drop); Hardened Scales for Undercover Skrull (+1 on every counter placement, so a Long
+#: notes: Feng trigger grows Szarel by 2); Maestros Theater for Promising Vein (sacrifices itself on
+#: notes: entry, a Szarel trigger with no {1} to pay). Quality guard: net improvement; floor A.
+#: notes: HELD by the owner: Doubling Season, Aftermath Analyst and Korvold were proposed for
+#: notes: Daemogoth Titan, Honest Rutstein and Lord Dregg, which the owner wants to keep. Also in
+#: notes: consideration: Six, The Ozolith, Ziatora.
 #: notes: OWNED CANDIDATES not yet tried (suggest --owned, 2026-10-22): Liliana, Dreadhorde
 #: notes: General (a draw per creature death; her -4 edict makes US sacrifice two as well, each a
 #: notes: Szarel trigger) and Scavenger's Talent (sacrifice a permanent: mill two, ours or theirs).
@@ -51,7 +61,6 @@
 1 Sprouting Goblin (DMU) 145
 1 Titania, Protector of Argoth (MH2) 287
 1 Azusa, Lost but Seeking (M21) 173
-1 Squirrel Wrangler (J21) 647
 1 Seedship Broodtender (EOE) 227
 1 Lord Dregg, Insect Invader (TMT) 65
 1 Ancient Greenwarden (ZNR) 178
@@ -64,6 +73,7 @@
 1 Mister Hyde, Monster Within (MSH) 176
 1 Evolution Sage (WAR) 159
 1 White Widow, Yelena Belova (MSC) 676
+1 Bristly Bill, Spine Sower (OTJ) 157
 
 # Creatures — deathtouch and poison (Fynn turns each deathtouch hit into 2 poison)
 1 Fynn, the Fangbearer (FCA) 46
@@ -82,12 +92,10 @@
 1 Bebop & Rocksteady (TMT) 140
 1 Daemogoth Titan (STX) 174
 1 Yawgmoth, Thran Physician (FCA) 11
-1 Titania, Rugged Rumbler (MSH) 235
 1 Honest Rutstein (OTJ) 207
-1 Dragonlord Atarka (PIO) 216
+1 Mayhem Devil (WAR) 204
 
 # Creatures — ramp
-1 Undercover Skrull (MSH) 194
 1 Noxious Newt (SOS) 155
 1 Lotus Cobra (ZNR) 193
 1 Tireless Provisioner (J25) 728
@@ -101,6 +109,7 @@
 1 Garruk, Cursed Huntsman (ELD) 191
 1 Lukka, Bound to Ruin (ONE) 207
 1 Nissa of Shadowed Boughs (ZNR) 231
+1 Vraska, Golgari Queen (GRN) 213
 
 # Noncreature — removal, Sagas and engines
 1 Infectious Bite (ONE) 172
@@ -117,6 +126,7 @@
 1 Crop Rotation (SOA) 51
 1 Zuran Orb (MH2) 300
 1 Hearthhull, the Worldseed (EOC) 1
+1 Hardened Scales (KTK) 133
 
 # Lands (38)
 1 Evolving Wilds (ECL) 264
@@ -127,7 +137,7 @@
 1 Twisted Landscape (MH3) 232
 1 Riveteers Overlook (SNC) 255
 1 Escape Tunnel (TMT) 184
-1 Promising Vein (LCI) 279
+1 Maestros Theater (SNC) 251
 1 Fabled Passage (BLB) 252
 1 Prismatic Vista (SPG) 38
 1 Misty Rainforest (MH2) 250

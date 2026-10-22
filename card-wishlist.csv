@@ -284,6 +284,9 @@ Primal Witchstalker,Creature — Wolf,"Menace (This creature can't be blocked ex
 When this creature enters, mill four cards. When you do, return target land card from your graveyard to the battlefield tapped. (To mill four cards, put the top four cards of your library into your graveyard.)",B/G,Wolf; reanimator; graveyard; mill; etb; menace; evasion,FRA,144,Uncommon,83a,,5.0,seed
 Reflecting Pool,Land,{T}: Add one mana of any type that a land you control could produce.,Colorless,mana,FRC,23,Rare,84,,4.0,seed
 Command Tower,Land,{T}: Add one mana of any color in your commander's color identity.,Colorless,mana,FRC,22,Common,88,,1.5,seed
+"Vraska, Golgari Queen",Legendary Planeswalker — Vraska,"+2: You may sacrifice another permanent. If you do, you gain 1 life and draw a card.
+−3: Destroy target nonland permanent with mana value 3 or less.
+−9: You get an emblem with ""Whenever a creature you control deals combat damage to a player, that player loses the game.""",B/G,Vraska; planeswalker; lifegain; card draw; sacrifice; removal,GRN,213,Mythic,89,deck 89 tune 2026-10-22,10.0,seed
 "Minsc & Boo, Timeless Heroes",Legendary Planeswalker — Minsc,"When Minsc & Boo enters and at the beginning of your upkeep, you may create Boo, a legendary 1/1 red Hamster creature token with trample and haste.
 +1: Put three +1/+1 counters on up to one target creature with trample or haste.
 −2: Sacrifice a creature. When you do, Minsc & Boo deals X damage to any target, where X is that creature's power. If the sacrificed creature was a Hamster, draw X cards.
@@ -305,6 +308,7 @@ Ram Through,Instant,"Target creature you control deals damage equal to its power
 "Ayula, Queen Among Bears",Legendary Creature — Bear,"Whenever another Bear you control enters, choose one —
 • Put two +1/+1 counters on target Bear.
 • Target Bear you control fights target creature you don't control.",G,Bear; counters; fight; removal; combat,J21,543,Rare,88,,6.5,seed
+Hardened Scales,Enchantment,"If one or more +1/+1 counters would be put on a creature you control, that many plus one +1/+1 counters are put on it instead.",G,counters,KTK,133,Rare,89,deck 89 tune 2026-10-22,3.0,seed
 Bonehoard Dracosaur,Creature — Dinosaur Dragon,"Flying, first strike
 At the beginning of your upkeep, exile the top two cards of your library. You may play them this turn. If you exiled a land card this way, create a 3/1 red Dinosaur creature token. If you exiled a nonland card this way, create a Treasure token.",R,Dinosaur; Dragon; tokens; treasure; impulse; flying; evasion; first strike; combat,LCI,134,Mythic,49,,7.5,hand
 The Ancient One,Legendary Creature — Spirit God,"Descend 8 — The Ancient One can't attack or block unless there are eight or more permanent cards in your graveyard.
@@ -436,6 +440,7 @@ Make Your Own Luck,Sorcery,"Look at the top three cards of your library. You may
 0: Create a 2/2 green Wolf creature token. Transform Arlinn Kord. // +1: Creatures you control get +1/+1 and gain trample until end of turn.
 −1: Arlinn deals 3 damage to any target. Transform Arlinn.
 −6: You get an emblem with ""Creatures you control have haste and '{T}: This creature deals damage equal to its power to any target.'""",R/G,Arlinn; planeswalker; tokens; burn; pump; noncombat damage; transform; trample; evasion; vigilance; combat; haste; aggro,SIR,230,Mythic,88,,10.0,seed
+Maestros Theater,Land,"When this land enters, sacrifice it. When you do, search your library for a basic Island, Swamp, or Mountain card, put it onto the battlefield tapped, then shuffle and you gain 1 life.",Colorless,lifegain; sacrifice; ramp; etb,SNC,251,Common,89,deck 89 tune 2026-10-22,1.5,seed
 Decorum Dissertation,Sorcery — Lesson,"Target player draws two cards and loses 2 life.
 Paradigm (Then exile this spell. After you first resolve a spell with this name, you may cast a copy of it from exile without paying its mana cost at the beginning of each of your first main phases.)",B,Lesson; paradigm; exile cast; card advantage,SOS,78,Mythic,41; 22,Paradigm: a free draw-2 each main phase once resolved; the life is refunded by the Negative swap,6.0,seed
 Comforting Counsel,Enchantment,"Whenever you gain life, put a growth counter on this enchantment.
@@ -595,6 +600,7 @@ Draw two cards.",U,card draw; sneak; tempo; cost-reduction,TMT,39,Uncommon,54b,,
 Foot Headquarters,Land,"This land enters tapped.
 When this land enters, you gain 1 life.
 {T}: Add {W} or {B}.",W/B,lifegain; mana; etb,TMT,185,Common,41,"manabase: WB dual for a basic — +1 source to the off-colour, gain 1 life",2.0,seed
+Mayhem Devil,Creature — Devil,"Whenever a player sacrifices a permanent, this creature deals 1 damage to any target.",B/R,Devil; sacrifice; burn; noncombat damage,WAR,204,Uncommon,89,deck 89 tune 2026-10-22,3.5,seed
 Blossoming Tortoise,Creature — Turtle,"Whenever this creature enters or attacks, mill three cards, then return a land card from your graveyard to the battlefield tapped.
 Activated abilities of lands you control cost {1} less to activate.
 Land creatures you control get +1/+1.",G,Turtle; reanimator; graveyard; mill; cost-reduction; pump,WOE,163,Mythic,83a,,9.5,seed
