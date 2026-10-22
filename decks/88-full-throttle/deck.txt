@@ -61,6 +61,10 @@
 #: notes: the mana that Rhys, the power-ups and Jennifer Walters spend) and Ayula for Badgermole Cub. Beorn's
 #: notes: "becomes a Bear" does NOT trigger Ayula (it is not an enter); Dancing's Bear tokens, Rhys's copies
 #: notes: of them and Beorn himself do, and Beorn widens which big creature can be the one that fights.
+#: notes: MANABASE 2026-10-22: green is 68% of the pips (77 of 114) against 24 green sources, so
+#: notes: Command Tower took Sunbillow Verge (a W/R land) and Sheltering Landscape took Commercial
+#: notes: District (a tapped R/G land; Landscape fetches a basic, two landfall triggers). Sources W 15 /
+#: notes: R 19 / G 25; Samut 71.5% -> 75.0% on turn 5, Omnath 50.2% -> 54.3%, nothing worse.
 
 # Commander (leads from the command zone; also one of the 100)
 1 Samut, the Driving Force (DFT) 222
@@ -140,7 +144,7 @@
 1 Thornspire Verge (DSK) 270
 1 Hushwood Verge (DSK) 261
 1 Sacred Foundry (EOE) 256
-1 Sunbillow Verge (DFT) 264
+1 Command Tower (FRC) 22
 1 Evolving Wilds (ECL) 264
 1 Terramorphic Expanse (MSC) 828
 1 Hobbit Hole (HOB) 184
@@ -150,7 +154,7 @@
 1 Temple of Abandon (FDN) 696
 1 Temple of Plenty (FDN) 703
 1 Bristling Backwoods (OTJ) 253
-1 Commercial District (MKM) 259
+1 Sheltering Landscape (MH3) 227
 1 Abraded Bluffs (OTJ) 251
 1 Ba Sing Se (TLA) 266
 10 Forest (FRA) 289

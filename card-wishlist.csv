@@ -283,6 +283,7 @@ Other creatures you control have trample.",G,Elder; Dinosaur; cost-reduction; tr
 Primal Witchstalker,Creature — Wolf,"Menace (This creature can't be blocked except by two or more creatures.)
 When this creature enters, mill four cards. When you do, return target land card from your graveyard to the battlefield tapped. (To mill four cards, put the top four cards of your library into your graveyard.)",B/G,Wolf; reanimator; graveyard; mill; etb; menace; evasion,FRA,144,Uncommon,83a,,5.0,seed
 Reflecting Pool,Land,{T}: Add one mana of any type that a land you control could produce.,Colorless,mana,FRC,23,Rare,84,,4.0,seed
+Command Tower,Land,{T}: Add one mana of any color in your commander's color identity.,Colorless,mana,FRC,22,Common,88,,1.5,seed
 "Minsc & Boo, Timeless Heroes",Legendary Planeswalker — Minsc,"When Minsc & Boo enters and at the beginning of your upkeep, you may create Boo, a legendary 1/1 red Hamster creature token with trample and haste.
 +1: Put three +1/+1 counters on up to one target creature with trample or haste.
 −2: Sacrifice a creature. When you do, Minsc & Boo deals X damage to any target, where X is that creature's power. If the sacrificed creature was a Hamster, draw X cards.
@@ -333,6 +334,9 @@ Equip {2}",Colorless,equipment; card draw; burn; pump; noncombat damage; equip,M
 Seething Landscape,Land,"{T}: Add {C}.
 {T}, Sacrifice this land: Search your library for a basic Island, Swamp, or Mountain card, put it onto the battlefield tapped, then shuffle.
 Cycling {U}{B}{R} ({U}{B}{R}, Discard this card: Draw a card.)",U/B/R,card draw; sacrifice; ramp; mana; cycling,MH3,225,Common,87,,1.5,seed
+Sheltering Landscape,Land,"{T}: Add {C}.
+{T}, Sacrifice this land: Search your library for a basic Mountain, Forest, or Plains card, put it onto the battlefield tapped, then shuffle.
+Cycling {R}{G}{W} ({R}{G}{W}, Discard this card: Draw a card.)",W/R/G,card draw; sacrifice; ramp; mana; cycling,MH3,227,Common,88,,1.5,seed
 "Etrata, Deadly Fugitive",Legendary Creature — Vampire Assassin,"Deathtouch
 Face-down creatures you control have ""{2}{U}{B}: Turn this creature face up. If you can't, exile it, then you may cast the exiled card without paying its mana cost.""
 Whenever an Assassin you control deals combat damage to an opponent, cloak the top card of that player's library.",U/B,Vampire; Assassin; heist; cloak; deathtouch; combat; removal,MKM,200,Mythic,83,,7.0,seed
