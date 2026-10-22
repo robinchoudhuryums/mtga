@@ -40,9 +40,17 @@
 #: notes: 7-drop); Hardened Scales for Undercover Skrull (+1 on every counter placement, so a Long
 #: notes: Feng trigger grows Szarel by 2); Maestros Theater for Promising Vein (sacrifices itself on
 #: notes: entry, a Szarel trigger with no {1} to pay). Quality guard: net improvement; floor A.
+#: notes: SWAPS 2026-10-22 (second wave): Eddie Brock for Tireless Provisioner (its Food and
+#: notes: Treasure are tokens, which never trigger Szarel; Venom sacrifices on attack); She-Hulk for
+#: notes: Crop Rotation (a repeatable land outlet that draws); Dryad of the Ilysian Grove for Lotus
+#: notes: Cobra (every land is every basic type, plus an extra land drop); The Dross Pits for Ziatora's
+#: notes: Proving Ground (sacrifices itself to draw, replayed every turn); Hornet Queen for Vraska,
+#: notes: Regal Gorgon (five flying deathtouchers, five Fynn carriers). Interaction 19 -> 18, an
+#: notes: intentional trade (Regal Gorgon's -3 was removal); card advantage 12 -> 14; floor A.
 #: notes: HELD by the owner: Doubling Season, Aftermath Analyst and Korvold were proposed for
-#: notes: Daemogoth Titan, Honest Rutstein and Lord Dregg, which the owner wants to keep. Also in
-#: notes: consideration: Six, The Ozolith, Ziatora.
+#: notes: Daemogoth Titan, Honest Rutstein and Lord Dregg, which the owner wants to keep; Lukka,
+#: notes: Overkill and Vraska, Swarm's Eminence are kept too. Pending: Tyvar, Jubilant Brawler,
+#: notes: Cankerbloom, Annihilating Glare, Six, The Ozolith, Ziatora, and the Mutant layer.
 #: notes: OWNED CANDIDATES not yet tried (suggest --owned, 2026-10-22): Liliana, Dreadhorde
 #: notes: General (a draw per creature death; her -4 edict makes US sacrifice two as well, each a
 #: notes: Szarel trigger) and Scavenger's Talent (sacrifice a permanent: mill two, ours or theirs).
@@ -64,6 +72,7 @@
 1 Seedship Broodtender (EOE) 227
 1 Lord Dregg, Insect Invader (TMT) 65
 1 Ancient Greenwarden (ZNR) 178
+1 She-Hulk, Jennifer Walters (MSC) 554
 
 # Creatures — counters and Szarel's power
 1 Long Feng, Grand Secretariat (TLA) 233
@@ -84,6 +93,7 @@
 1 Kura, the Boundless Sky (NEO) 200
 1 Hit-Monkey (MSC) 723
 1 Bloated Contaminator (ONE) 159
+1 Hornet Queen (AKR) 196
 
 # Creatures — sacrifice outlets and bodies
 1 Dina, Essence Brewer (SOC) 1
@@ -94,17 +104,16 @@
 1 Yawgmoth, Thran Physician (FCA) 11
 1 Honest Rutstein (OTJ) 207
 1 Mayhem Devil (WAR) 204
+1 Eddie Brock // Venom, Lethal Protector (SPM) 55
 
 # Creatures — ramp
 1 Noxious Newt (SOS) 155
-1 Lotus Cobra (ZNR) 193
-1 Tireless Provisioner (J25) 728
+1 Dryad of the Ilysian Grove (THB) 169
 
 # Planeswalkers
 1 Vraska, Betrayal's Sting (ONE) 115
 1 Vraska, Swarm's Eminence (WAR) 236
 1 Vraska, Relic Seeker (XLN) 232
-1 Vraska, Regal Gorgon (GRN) 269
 1 Garruk Relentless // Garruk, the Veil-Cursed (SIS) 49
 1 Garruk, Cursed Huntsman (ELD) 191
 1 Lukka, Bound to Ruin (ONE) 207
@@ -123,7 +132,6 @@
 1 Vraska Joins Up (OTJ) 236
 1 Triumph of the Hordes (SOA) 59
 1 Tectonic Split (TLE) 144
-1 Crop Rotation (SOA) 51
 1 Zuran Orb (MH2) 300
 1 Hearthhull, the Worldseed (EOC) 1
 1 Hardened Scales (KTK) 133
@@ -154,7 +162,7 @@
 1 Blood Crypt (ECL) 262
 1 Stomping Ground (EOE) 258
 1 Command Tower (FRC) 22
-1 Ziatora's Proving Ground (SNC) 261
+1 The Dross Pits (ONE) 251
 1 Lotus Field (M20) 249
 4 Swamp (FRA) 285
 4 Forest (FRA) 289
