@@ -51,7 +51,12 @@
 #: notes: Daemogoth Titan, Honest Rutstein and Lord Dregg, which the owner wants to keep; Lukka,
 #: notes: Overkill, Nissa of Shadowed Boughs, Garruk, Cursed Huntsman, Evolution Sage and Seedship
 #: notes: Broodtender are kept too. Pending: Annihilating Glare, Sylvan Safekeeper, Snakeskin Veil,
-#: notes: Toxic Deluge, Way of the Paradox, Fanatic of Rhonas, Six, The Ozolith, Ziatora, and the rest of the Mutant layer.
+#: notes: Toxic Deluge, Arcane Amphisbaena, Six, The Ozolith, Ziatora, and the rest of the Mutant layer.
+#: notes: SWAPS 2026-10-23: Fanatic of Rhonas for a Swamp (37 lands: a {1}{G} dork whose Ferocious
+#: notes: {G}{G}{G}{G} needs one power-4 creature; keepable 81.2% -> 79.9%, the dork itself not counted);
+#: notes: Way of the Paradox for Vraska, the Cutting Glare (an extra land drop per loyalty activation
+#: notes: across seven planeswalkers). Interaction 17 -> 16. Cutting Vraska took deathtouch OUT of the
+#: notes: central themes; Arcane Amphisbaena (deathtouch, empower Jace 2) restores it.
 #: notes: SWAPS 2026-10-23: Rhonas's Monument for Heartless Act (green creature spells, 34 of the
 #: notes: 40 creatures and Szarel, cost {1} less; every creature cast gives +2/+2 and trample, so a
 #: notes: deathtoucher assigns 1 to a blocker and the rest becomes Fynn poison); Way of the
@@ -105,7 +110,6 @@
 1 Fynn, the Fangbearer (FCA) 46
 1 The Serpent Society (MSH) 226
 1 Glissa Sunslayer (ONE) 202
-1 Vraska, the Cutting Glare (FRA) 278
 1 Rhonas the Indomitable (AKR) 213
 1 Kura, the Boundless Sky (NEO) 200
 1 Venomous Brutalizer (ONE) 193
@@ -126,6 +130,7 @@
 
 # Creatures — ramp
 1 Dryad of the Ilysian Grove (THB) 169
+1 Fanatic of Rhonas (MH3) 152
 
 # Planeswalkers
 1 Vraska, Betrayal's Sting (ONE) 115
@@ -153,8 +158,9 @@
 1 Hardened Scales (KTK) 133
 1 Doubling Season (FDN) 216
 1 Way of the Necromancer (FRA) 239
+1 Way of the Paradox (FRA) 267
 
-# Lands (38)
+# Lands (37)
 1 Evolving Wilds (ECL) 264
 1 Terramorphic Expanse (MSC) 828
 1 Vibrant Cityscape (SPM) 188
@@ -182,6 +188,6 @@
 1 Command Tower (FRC) 22
 1 The Dross Pits (ONE) 251
 1 Lotus Field (M20) 249
-4 Swamp (FRA) 285
+3 Swamp (FRA) 285
 4 Forest (FRA) 289
 3 Mountain (FRA) 287
