@@ -2111,8 +2111,8 @@ is invisible, and a handoff nobody is told to read is the same failure one layer
   **SEVEN are live as of 2026-10-23**, each awaiting owner picks or sign-off:
   `78-brawl-pile-analysis.md` (Tier 2/3 waves open), `54-from-54b-`, `84-marvel-`,
   `86-fantastic-four-`, `fra-bant-`, `fra-bur-` and `fra-rgu-pile-analysis.md`; read each
-  one's `Status:` line. **`deck89-tooling-plan.md`** is a live batch PLAN (Batches 1–3 done, 4
-  open), deleted when Batch 4 lands. `89-szarel-` was folded into deck 89 and deleted
+  one's `Status:` line. `deck89-tooling-plan.md` (a four-batch tooling plan) was completed and
+  deleted 2026-10-23; its record is `.cycle/blocks/deck89-batch*.md`. `89-szarel-` was folded into deck 89 and deleted
   2026-10-23. `60-redline-pile-analysis.md`
   was deleted 2026-10-02 when its ten Reality Fracture swaps landed (findings folded into
   deck 60's `#: notes:`). The

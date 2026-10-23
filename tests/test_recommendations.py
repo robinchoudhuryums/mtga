@@ -634,3 +634,13 @@ class TestAddRankStatsIsOneDefinition:
 
     def test_an_empty_ledger_has_no_stats(self, tmp_path):
         assert deck.add_rank_stats([]) is None
+
+    def test_median_pct_normalises_by_the_candidate_pool(self):
+        """A raw rank is not comparable across decks (2026-10-23): deck 89's "median 1678"
+        read four times the roster's 433 while both sat ~20.7% down their own lists. Rows
+        without `Add Of` are left out of the percentile, never counted as zero."""
+        rows = [{"Add Rank": "1600", "Add Of": "8000"}, {"Add Rank": "400", "Add Of": "2000"},
+                {"Add Rank": "100", "Add Of": ""}]
+        rs = deck.add_rank_stats(rows)
+        assert rs["median"] == 400 and abs(rs["median_pct"] - 0.20) < 1e-9
+        assert deck.add_rank_stats([{"Add Rank": "5", "Add Of": ""}])["median_pct"] is None

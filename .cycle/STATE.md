@@ -44,6 +44,9 @@ Updated: 2026-10-20 (Brawl tooling plan Batch 7 — see Where I left off)
 
 ## Completed this cycle
 
+- **2026-10-23 — deck-89 tooling plan, Batch 4 — PLAN COMPLETE** (block `deck89-batch4-broad-implement.md`):
+  token-vs-nontoken sacrifice flag measured and DECLINED (~5% precision; recorded in G-42's long form); deck 89's
+  "4× worse" add ranks were pool size — `feedback` now prints the percentile. Plan doc deleted. Net 1 − 0.
 - **2026-10-23 — deck-89 tooling plan, Batch 3** (block `deck89-batch3-broad-implement.md`):
   extra land drops → Ramp, replacement multipliers → Payoff, X-divided damage → Removal, engines counters
   payoffs. 0 tier floors; interaction +1 in decks 76/89; cuts #1 changed in deck 89 only. Net 4 − 0.
@@ -406,6 +409,10 @@ Updated: 2026-10-20 (Brawl tooling plan Batch 7 — see Where I left off)
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
+**2026-10-23 (latest) — deck-89 tooling plan COMPLETE** (blocks `deck89-batch1..4-broad-implement.md`).
+Suite 2211 passed, check_all OK. Docs for Batch 4 NOT yet synced (G-42, G-22 one clause each). **Open for
+the owner:** deck 89's notes wrongly call Izoni and Zopandrel token-only sacrificers.
+
 **2026-10-23 (latest) — deck-89 tooling plan, Batch 3 done** (block `deck89-batch3-broad-implement.md`).
 Suite 2210 passed, check_all OK. Docs SYNCED 2026-10-23 (K-12, G-23 + long forms). **Next:** Batch 4 (measure-first:
 nontoken sacrifice; central-theme count vs chosen-add rank).

@@ -3602,6 +3602,20 @@ separated by the deck's PLAN, which no text model here holds. That is why G-42's
 instances are found by COUNTING what the deck depends on — the human read G-61 already
 mandates — and never by reading the card.
 
+**A TOKEN-VS-NONTOKEN SACRIFICE FLAG WAS MEASURED AND DECLINED (2026-10-23, deck-89 tooling Batch 4) — do not
+restart it.** Deck 89's commander (Szarel) triggers only on NONTOKEN sacrifices, and its pile analysis excluded three
+cards as token-sacrificers. The proposal: flag a card whose every sacrifice is of a token when the deck's payoff is
+nontoken-gated. Measured: 66 pool cards carry a nontoken-gated payoff and 17 roster decks run one, but in 16 of them
+it is ONE incidental card (8 of those also run token-inclusive payoffs, where a token sacrifice still pays; 8 have no
+sacrifice engine at all) — only deck 89 has the gate as its always-on engine (3 gated payoffs, the commander one of
+them). Over 129 Historic-Brawl-legal token-only sacrificers, `suggest-homes` gave 20 KEY verdicts in those 17 decks;
+19 are KEY for a Food / Treasure / tokens theme the nontoken card has nothing to do with, and 1 (Peregrin Took in 89)
+is the case the flag targets — ~5% precision. Same verdict as the 2026-09-09 flag above: whether a sacrifice counts
+is the deck's PLAN. **The measurement also overturned the motivating read:** of the three cards excluded as
+"token-only", Izoni, Thousand-Eyed ("Sacrifice another creature") and Zopandrel ("Sacrifice two other creatures")
+are OUTLETS that sacrifice nontoken creatures too — only Slimefoot and Squee ("Sacrifice a Saproling") was right.
+Read the cost's OBJECT, not the card's token output.
+
 ## [G-43] Grade a modal / split / adventure card by the FACE YOU CAST, not the half you want
 
 **Grade a modal / split / adventure card by the FACE YOU CAST, not the half you want.**

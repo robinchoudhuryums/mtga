@@ -8779,7 +8779,25 @@ def add_rank_stats(rows=None):
         "worst": ranked[-1],
         "in_window": in_window,
         "in_window_pct": int(math.floor(100 * in_window / n + 0.5)),
+        # The rank as a share of the candidates it was ranked AMONG (`Add Of`), for the
+        # rows that recorded both. A raw rank is not comparable across decks: a 100-card
+        # Historic Brawl deck ranks its adds against ~8,100 candidates where a Standard
+        # deck ranks against ~2,000, and raw rank tracks pool size at r = 0.585 over 79
+        # decks. Deck 89 read "median 1678, four times the roster's 433" on 2026-10-23 and
+        # its median percentile was 0.206 against the roster's 0.208 — the same.
+        "median_pct": _median_add_pct(rows),
     }
+
+
+def _median_add_pct(rows):
+    """Median of Add Rank / Add Of over rows carrying both, or None (see add_rank_stats)."""
+    import statistics
+    pcts = []
+    for r in rows:
+        rk, of = str(r.get("Add Rank") or "").strip(), str(r.get("Add Of") or "").strip()
+        if rk.isdigit() and of.isdigit() and int(of) > 0:
+            pcts.append(int(rk) / int(of))
+    return statistics.median(pcts) if pcts else None
 
 
 def recent_ledger_adds(deck_id, days=14, path=None):
@@ -9293,6 +9311,10 @@ def cmd_feedback(args):
                   f"median {_rs['median']} · p25 {_rs['p25']} · p75 {_rs['p75']} "
                   f"· worst {_rs['worst']}. {_rs['in_window']} ({_rs['in_window_pct']}%) "
                   f"ranked inside the default top {_RECS_SUGGEST_WINDOW}.")
+            if _rs.get("median_pct") is not None:
+                print(f"    As a share of the candidates ranked: median {100 * _rs['median_pct']:.1f}% "
+                      "down the list. Compare DECKS on this, not the raw rank — a 100-card "
+                      "Brawl deck ranks against about four times as many cards as a Standard one.")
         print()
 
     if n < _RECS_MIN_SAMPLE:
