@@ -8,7 +8,7 @@
 #: archetype: counters equal to her power on another creature whenever we sacrifice a nontoken
 #: archetype: permanent on our turn. So every land that sacrifices itself (14 fetches, the
 #: archetype: Memorials, Hidden caves, Skemfar Elderhall, Nurturing Peatland, Ifnir Deadlands) is a
-#: archetype: spell we replay every turn, and the land outlets (Gitrog, Uurg, Zuran Orb, Elvish
+#: archetype: spell we replay every turn, and the land outlets (Gitrog, Zuran Orb, Elvish
 #: archetype: Reclaimer, She-Hulk, Baba Lysaga, Hearthhull) turn spare land drops into
 #: archetype: triggers. Long Feng, Jenova and Vorinclex grow Szarel's power so each trigger is bigger.
 #: archetype: The second clock is POISON: Bushmaster gives every creature with a +1/+1 counter
