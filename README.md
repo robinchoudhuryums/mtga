@@ -877,6 +877,16 @@ two decks had hand-written the workaround into their own notes before the tool s
 Nothing about the numbers changes; the line tells you every cast-on-curve figure below it
 is a floor for that deck.
 
+Two more notes appear only when they apply. When the deck's **basic fetches outnumber its
+basics**, it says so and names any card that replays lands from the graveyard, because every
+count prices a fetch's *first* search, not a library that has run out of basics. And a
+**basic rebalance** line proposes the one basic swap between colours you already run (say a
+Mountain for a Forest) that most lowers the deck's summed cast-on-curve shortfall, printing
+the cards it helps beside the cards it costs. It is calibrated to speak on roughly one deck
+in seven, and it moves a *source*, not a land type, so checklands and Verges are not
+re-priced. Fetch lands that can only find certain basics (the SNC hideouts, the Landscapes,
+Maestros Theater) count only for the basic types they name.
+
 **`deck.py targets <id>`** answers a question every other model here is structurally
 blind to: a card whose text names a RESOURCE — "return target creature card with mana
 value 4 or less", "sacrifice an artifact or creature", "eight or more permanent cards in

@@ -718,7 +718,9 @@ is protecting.
   `pip_depth_warning`, `suggest --lands`/`--needs`/`--ramp` and the rationale audit's
   colour figures.**
   An extra-cost any-colour land IS counted and labelled; spend-only mana is NOT; a basic
-  fetch counts for each colour the deck runs a basic of. **`free` MEANT FOUR THINGS
+  fetch counts for each basic the deck runs that it can FIND — a TYPED one ("a basic Forest,
+  Plains, or Island") only for those types, since 2026-10-23 (`fetch_types`); residual: a
+  NONBASIC typed fetch ("a Forest or Island card") counts as nothing. **`free` MEANT FOUR THINGS
   until 2026-09-04**:
   choose-ONCE-on-entry now sets `chosen` (counted for ACCESS, denied BREADTH);
   transform-gated, GRANTED and extra-tap-cost clauses are excluded. **`lib.tapland_kind` is the ONE tapping predicate** (the tempo
@@ -730,12 +732,10 @@ is protecting.
   `basic_types`, or it reads `check` for a deck that can never meet it.** Test
   `TAPLAND_CONDITIONAL_KINDS`, not a string.
   **NONLAND sources are DISCLOSED since 2026-09-18, never counted**: `consistency` prints
-  `ⓘ N NONLAND mana source(s) are NOT in the counts above` (**85 of 124 decks**). The
-  exclusion is right (a rock is not a land drop); its SILENCE was not. BOARD-dependent colour
-  (Vivid — `land_production`'s `board`, never `free`) and mana GRANTED to creatures are
+  `ⓘ N NONLAND mana source(s) are NOT in the counts above` (**85 of 124 decks**). BOARD-dependent colour
+  (Vivid) and mana GRANTED to creatures are
   disclosed with a label since 2026-10-06.
-  `uncounted_mana_sources` runs `land_production` on a NONLAND's text, so the spend-only
-  and granted-ability exclusions are the same ones and the two cannot drift. [G-35]
+  `uncounted_mana_sources` reuses `land_production`, so the two cannot drift. [G-35]
 - **`deck.py consistency <id>` is the PROBABILITY layer `mana` lacks** — keepable %,
   screw/flood, land-drop consistency and per-card P(cast on curve), with a Karsten-style
   source recommendation. Run it whenever a splash, a double pip or a top-end bomb is in
@@ -750,7 +750,12 @@ is protecting.
   that colour rather than skipped (G-32). **Its → note is a JOINT plan** (`joint_source_plan`,
   BS11-68): the probability multiplies across colours, so per-colour advice left a
   two-colour card below target, and 136 below-target rows printed no note at all. An
-  empty deck file is refused, not priced as 60 cards. [G-36]
+  empty deck file is refused, not priced as 60 cards. **Two ⓘ lines since 2026-10-23:**
+  basic fetches outnumbering basics (naming land-replay cards — the counts price only the
+  FIRST search), and `basic_rebalance_hint`, the ONE basic swap between colours the deck
+  already runs that most lowers summed cast-on-curve shortfall, gains printed beside costs.
+  Its floor (16 points) is p75 of the roster's gains, so it fires on 17 of 124; it moves a
+  SOURCE, not a land TYPE, and is a hint, never an edit. [G-36]
 - **`deck.py suggest --lands <id>` is the manabase RECOMMENDER** — plain `suggest` is
   structurally blind to lands (it filters to cards sharing a synergy theme). Scored on
   FIXING value plus bounded synergy/scarce-colour nudges, and it applies the deck's
@@ -759,16 +764,16 @@ is protecting.
   for SHOCKLANDS until 2026-09-04, and for FASTLANDS and met CHECKLANDS until 2026-09-20 — all three earn the premium
   and print `·shock` / `·fast` / `·check` (G-35, BS11-31). **The G-35 breadth credit re-ranks the #1 pick
   in 22 of 115 decks** — fetches beat untapped duals on FIXING; `_LAND_BREADTH_PER_COLOR`
-  is the dial. **A LAND ALREADY IN THE DECK IS A PICK (2026-09-20)** — it had inherited
+  is the dial; a TYPED fetch is priced only on the colours it reaches (three SNC hideouts
+  read as BRG tri-lands in deck 89 until 2026-10-23). **A LAND ALREADY IN THE DECK IS A PICK (2026-09-20)** — it had inherited
   `suggest`'s skip-what-you-run filter (G-04's `+In` bug), so it could not propose a SECOND
   copy of an untapped dual you already run. Only the format copy limit and basics exclude now, and an `In` column labels
   the duplicate. Roster: **58 of 112 decks' #1 pick is now another copy**, all singleton
-  untapped duals. **The RIDER breaks ties, and only ties (2026-09-06)**: four Boros taplands
-  tied at 10.9 (a scry, nothing, a draw sink, a life point). `_land_utility` (creature /
+  untapped duals. **The RIDER breaks ties, and only ties (2026-09-06)**: `_land_utility` (creature /
   draw / scry / surveil / sink / ping / life; `sink~` = one creature type) is a SORT KEY
   after the score, never a score term — the smallest fixing step is 0.1, so any additive
   nudge would re-rank lands on something other than fixing. The default view footnotes
-  the OWNED lands its craft-led window hid (2026-10-20).
+  the OWNED lands its window hid.
   **`/tune-deck` runs this EVERY run since 2026-09-23** — it was gated on a scorecard mana
   deficit, which is the one deck this list has nothing to say to. [G-37]
 - **`suggest --ramp / --interaction / --needs` are the NEEDS model** — the structural

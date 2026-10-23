@@ -3028,6 +3028,22 @@ disclose; Bloom Tender appears in 10, Enduring Vitality in 10. Nine decks' SOURC
 rose, every one from Baxter Building or Three Tree City now counting as a {4}/{2} filter,
 the existing `conditional` convention; 0 tier floors moved (the floor reads no sources).
 
+**Typed basic fetches (2026-10-23, deck-89 tooling Batch 2).** `land_production` reported only THAT a
+land fetches a basic, and every consumer credited it with every colour the deck runs a basic of. That is
+true of Evolving Wilds ("a basic land card") and false of a fetch that names its types — the SNC
+hideouts ("a basic Forest, Plains, or Island card"), Maestros Theater, the Landscapes. Deck 89 read
+Maestros Theater (Island / Swamp / Mountain) as a green source. `fetch_types` now carries the named
+types (None = any basic) and `deck_source_profile` counts the intersection with the deck's basics. Pool:
+146 untyped, 45 typed, none misread. Roster diff: ONE deck's sources moved (89: G 25 → 24), 0 tier floors.
+**Residual, measured and left:** a NONBASIC typed fetch (Misty Rainforest, Polluted Delta, Scalding
+Tarn — "a Forest or Island card") does not match `_FETCH_BASIC_RE` at all and counts as NO source; its
+real reach is the deck's basics AND typed duals of those types. Only deck 89 runs them (3 cards).
+
+Moved here from the rule to keep it under the word cap: the nonland exclusion is right (a rock is not a
+land drop) and its SILENCE was not; Vivid-style colour is `land_production`'s `board` bucket, never
+`free`; and `uncounted_mana_sources` runs `land_production` on a NONLAND's text, so the spend-only and
+granted-ability exclusions are literally the same ones.
+
 ## [G-36] `deck.py consistency <id>` is the PROBABILITY layer `mana` lacks
 
 **`deck.py consistency <id>` is the PROBABILITY layer `mana` lacks.** `mana` diagnoses
@@ -3066,6 +3082,21 @@ line: hypergeometric over the deck's lands (`deck.tapped_in_first_drops`), uncon
 taplands first and "if every conditional one enters tapped" beside it. A CEILING on the
 tempo cost — you choose which land to play, and a turn-1 tapland usually costs nothing.
 REPORT-ONLY, like `tapland_profile`, for G-25/G-60/G-86's reason.
+
+**Fetch pressure and the basic rebalance (2026-10-23, deck-89 tooling Batch 2).** Two report-only
+lines. `fetch_pool_pressure` fires when basic fetches number at least the deck's basics and names any
+card that "plays lands from your graveyard" — deck 89 ran 11 against 10 with Szarel and Ancient
+Greenwarden replaying them, and every count prices only the first search (a failed search still
+sacrifices, so a sacrifice payoff still fires; the land drop is what is lost). 1 of 124 decks at landing;
+69b next at 6 against 8. `basic_rebalance_hint` answers a question no surface asked — whether the
+EXISTING basics sit in the right colours. Deck 89's Forest-for-Mountain fix (18 red sources for 6 red
+cards, 23 green for 47) was found by hand-building scratch variants; the hint is that search, through
+`cast_on_curve_rows`, for each pair of basic types the deck runs (never moving the last basic of a
+colour, never proposing a colour with no basic). Calibration: 69 of 124 decks show SOME gain; nonzero
+gains run p25 4.6 / p50 8.6 / p75 16.0 / p90 25.3 / max 45.8 summed points, so a floor of 0 would fire on
+56% for a point or two (the G-07 shape) and p75 (the G-85 rule) fires on 17. It sums shortfall over every
+card equally, so it prints the costs beside the gains: a key card in the losing colour is the reader's
+call. It moves a SOURCE, not a land TYPE — checklands, Verges and typed fetches are not re-priced.
 
 ## [G-37] `deck.py suggest --lands <id>` is the manabase RECOMMENDER `consistency` was missing
 
@@ -3269,6 +3300,16 @@ the score beside it. They print `·shock` now, and the legend names it.
 so on deck 85 all 50 owned qualifying lands sat below the 20-row window and the best of them (#28 of 247)
 surfaced only once `--owned` was added by hand. `suggest_lands` now counts owned picks before the window cuts
 the list, and the default view prints how many qualify, how many were shown, and where the best ranks.
+
+**Typed fetches in the recommender (2026-10-23).** `suggest --lands 89` ranked Brokers Hideout,
+Cabaretti Courtyard and Obscura Storefront in its top six as `Prod BRG`, score 12.3, above every
+untapped dual — `_land_value` and `suggest_lands` both credited a fetch with every deck colour. They
+read `fetch_types` now; deck 89's #1 pick moved to Demolition Field, the only #1 change on the roster.
+Open question, not built: a `{1}`-to-sacrifice untyped fetch (Demolition Field, Promising Vein, Shire
+Terrace) is priced like any fetch, with no tempo discount for the activation.
+
+Moved here from the rule (word cap): the rider-tiebreak case was four Boros taplands tied at 10.9 — a
+scry, nothing, a draw sink, a life point; and the owned-lands footnote landed 2026-10-20.
 
 ## [G-38] `deck.py suggest --ramp / --interaction / --needs` are the NEEDS model — the structural axes the
 

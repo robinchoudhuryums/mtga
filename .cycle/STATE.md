@@ -404,7 +404,7 @@ Updated: 2026-10-20 (Brawl tooling plan Batch 7 — see Where I left off)
 
 ## Where I left off
 **2026-10-23 (latest) — deck-89 tooling plan, Batch 2 done** (block `deck89-batch2-broad-implement.md`).
-Suite 2205 passed, check_all OK. Docs NOT yet synced (G-35/G-36/G-37). **Next:** Batch 3 (role + engine
+Suite 2205 passed, check_all OK. Docs SYNCED 2026-10-23 (G-35/G-36/G-37 + long forms, README consistency). **Next:** Batch 3 (role + engine
 patterns), then Batch 4 (measure-first).
 
 **2026-10-23 (latest) — deck-89 tooling plan (`.cycle/deck89-tooling-plan.md`), Batch 1 done**
