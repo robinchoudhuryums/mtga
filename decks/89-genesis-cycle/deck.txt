@@ -8,15 +8,15 @@
 #: archetype: counters equal to her power on another creature whenever we sacrifice a nontoken
 #: archetype: permanent on our turn. So every land that sacrifices itself (14 fetches, the
 #: archetype: Memorials, Hidden caves, Skemfar Elderhall, Nurturing Peatland, Ifnir Deadlands) is a
-#: archetype: spell we replay every turn, and the land outlets (Gitrog, Zuran Orb, Elvish
-#: archetype: Reclaimer, She-Hulk, Baba Lysaga, Hearthhull) turn spare land drops into
+#: archetype: spell we replay every turn, and the land outlets (Gitrog, Zuran Orb, Korvold,
+#: archetype: She-Hulk, Baba Lysaga, Hearthhull) turn spare land drops into
 #: archetype: triggers. Long Feng, Jenova and Vorinclex grow Szarel's power so each trigger is bigger.
 #: archetype: The second clock is POISON: Bushmaster gives every creature with a +1/+1 counter
 #: archetype: deathtouch and Fynn makes each deathtouch hit 2 poison; Vorinclex with Vraska,
 #: archetype: Betrayal's Sting is 18 poison from her -9, and Triumph of the Hordes finishes a
 #: archetype: countered board. DISTINCT from deck 31 (Pox, BG Standard elves-and-poison) and deck 88
 #: archetype: (RGW landfall): the engine here is sacrifice and graveyard lands, not landfall.
-#: protect: Szarel, Genesis Shepherd; Azusa, Lost but Seeking; Zuran Orb; Long Feng, Grand Secretariat; The Gitrog Monster; Bushmaster, Coiled Henchman; Fynn, the Fangbearer; Vorinclex, Monstrous Raider; Jenova, Ancient Calamity; Lotus Field; Tectonic Split; Elvish Reclaimer
+#: protect: Szarel, Genesis Shepherd; Azusa, Lost but Seeking; Zuran Orb; Long Feng, Grand Secretariat; The Gitrog Monster; Bushmaster, Coiled Henchman; Fynn, the Fangbearer; Vorinclex, Monstrous Raider; Jenova, Ancient Calamity; Lotus Field; Tectonic Split
 #: notes: DRAFTED 2026-10-22 from the owner's 99-card Szarel pile
 #: notes: (.cycle/89-szarel-pile-analysis.md): 44 pile cards plus 17 outside nonland cards (the
 #: notes: land-sacrifice outlets, Evolution Sage, Bloated Contaminator, Triumph of the Hordes,
@@ -51,7 +51,15 @@
 #: notes: Daemogoth Titan, Honest Rutstein and Lord Dregg, which the owner wants to keep; Lukka,
 #: notes: Overkill, Nissa of Shadowed Boughs, Garruk, Cursed Huntsman, Evolution Sage and Seedship
 #: notes: Broodtender are kept too. Pending: Annihilating Glare, Sylvan Safekeeper, Snakeskin Veil,
-#: notes: Toxic Deluge, Arcane Amphisbaena or Grist, Voracious Larva, Six, The Ozolith, Ziatora, and the rest of the Mutant layer.
+#: notes: Toxic Deluge, Six, The Ozolith, Ziatora, and the rest of the Mutant layer.
+#: notes: SWAPS 2026-10-23: Grist, Voracious Larva for Lord Dregg (a deathtouch 1-drop that flips
+#: notes: into a planeswalker when a creature enters from the graveyard; puts deathtouch back among
+#: notes: the central themes); Kodama of the West Tree for Drown in Ichor (every creature with a
+#: notes: counter has trample, so deathtouch damage reaches the player as Fynn poison, and each hit
+#: notes: fetches a basic); Unforgiving One for Elvish Reclaimer (menace; each attack reanimates a
+#: notes: creature card of MV up to the number of modified creatures, which also flips Grist). The
+#: notes: deck lost its only land TUTOR with Reclaimer; fetches, Binding and Kodama still find basics.
+#: notes: Interaction 15, card advantage 13 -> 12 (Dregg's draw), floor A.
 #: notes: SWAP 2026-10-23: Korvold, Fae-Cursed King for Vraska, Golgari Queen (the owner found
 #: notes: Vraska cannot be crafted on Arena). Korvold draws a card and grows on every sacrifice,
 #: notes: and sacrifices a permanent itself on entry and attack. Interaction 16 -> 15 (Vraska's -3);
@@ -93,11 +101,9 @@
 # Creatures — land-sacrifice engine (every land Szarel replays is a trigger)
 1 The Gitrog Monster (BLC) 88
 1 Baba Lysaga, Night Witch (HBG) 232
-1 Elvish Reclaimer (M20) 169
 1 Titania, Protector of Argoth (MH2) 287
 1 Azusa, Lost but Seeking (M21) 173
 1 Seedship Broodtender (EOE) 227
-1 Lord Dregg, Insect Invader (TMT) 65
 1 Ancient Greenwarden (ZNR) 178
 1 She-Hulk, Jennifer Walters (MSC) 554
 
@@ -123,6 +129,8 @@
 1 Hornet Queen (AKR) 196
 1 Tyrranax Rex (ONE) 189
 1 Necrogen Rotpriest (ONE) 212
+1 Grist, Voracious Larva // Grist, the Plague Swarm (MH3) 251
+1 Kodama of the West Tree (NEO) 199
 
 # Creatures — sacrifice outlets and bodies
 1 Dina, Essence Brewer (SOC) 1
@@ -134,6 +142,7 @@
 1 Eddie Brock // Venom, Lethal Protector (SPM) 55
 1 Bontu the Glorified (AKR) 95
 1 Korvold, Fae-Cursed King (ELD) 329
+1 Unforgiving One (NEO) 127
 
 # Creatures — ramp
 1 Dryad of the Ilysian Grove (THB) 169
@@ -152,7 +161,6 @@
 1 Overkill (FIN) 109
 1 Infernal Grasp (MID) 107
 1 Rhonas's Monument (AKR) 279
-1 Drown in Ichor (ONE) 91
 1 Casualties of War (WAR) 187
 1 Origin of Black Widow (MSC) 664
 1 Binding the Old Gods (KHM) 206

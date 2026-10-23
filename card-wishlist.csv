@@ -344,6 +344,10 @@ Mine Vibranium — {3}: Move all +1/+1 counters from target land you control ont
 Sword of Fire and Ice,Artifact — Equipment,"Equipped creature gets +2/+2 and has protection from red and from blue.
 Whenever equipped creature deals combat damage to a player, this Equipment deals 2 damage to any target and you draw a card.
 Equip {2}",Colorless,equipment; card draw; burn; pump; noncombat damage; equip,MAR,100,Mythic,85,,8.0,seed
+"Grist, Voracious Larva // Grist, the Plague Swarm",Legendary Creature — Insect // Legendary Planeswalker — Grist,"Deathtouch
+Whenever Grist or another creature you control enters, if it entered from your graveyard or you cast it from your graveyard, you may pay {G}. If you do, exile Grist, then return it to the battlefield transformed under its owner's control. // +1: Create a 1/1 black and green Insect creature token, then mill two cards. Put a deathtouch counter on the token if a black card was milled this way.
+−2: Destroy target artifact or enchantment.
+−6: For each creature card in your graveyard, create a token that's a copy of it, except it's a 1/1 black and green Insect.",B/G,Insect; Grist; planeswalker; counters; graveyard; mill; tokens; removal; transform; deathtouch; combat,MH3,251,Mythic,89,deck 89 tune 2026-10-23,8.0,seed
 Fanatic of Rhonas,Creature — Snake Druid,"{T}: Add {G}.
 Ferocious — {T}: Add {G}{G}{G}{G}. Activate only if you control a creature with power 4 or greater.
 Eternalize {2}{G}{G} ({2}{G}{G}, Exile this card from your graveyard: Create a token that's a copy of it, except it's a 4/4 black Zombie Snake Druid with no mana cost. Eternalize only as a sorcery.)",G,Snake; Druid; reanimator; graveyard; tokens; mana; ferocious; eternalize,MH3,152,Rare,89,deck 89 tune 2026-10-23,6.0,seed
@@ -416,11 +420,16 @@ Exile the top two cards of your library. Until the end of your next turn, you ma
 Fisk Tower,Land,"This land enters tapped.
 When this land enters, you gain 1 life.
 {T}: Add {W} or {B}.",W/B,lifegain; mana; etb,MSH,265,Common,41,"manabase: WB dual for a basic — +1 source to the off-colour, gain 1 life",2.0,seed
+Kodama of the West Tree,Legendary Creature — Spirit,"Reach
+Modified creatures you control have trample. (Equipment, Auras you control, and counters are modifications.)
+Whenever a modified creature you control deals combat damage to a player, search your library for a basic land card, put it onto the battlefield tapped, then shuffle.",G,Spirit; ramp; reach; defense; trample; evasion,NEO,199,Mythic,89,deck 89 tune 2026-10-23,5.5,seed
 Kumano Faces Kakkazan // Etching of Kumano,Enchantment — Saga // Enchantment Creature — Human Shaman,"(As this Saga enters and after your draw step, add a lore counter.)
 I — This Saga deals 1 damage to each opponent and each planeswalker they control.
 II — When you next cast a creature spell this turn, that creature enters with an additional +1/+1 counter on it.
 III — Exile this Saga, then return it to the battlefield transformed under your control. // Haste
 If a creature dealt damage this turn by a source you controlled would die, exile it instead.",R,saga; Human; Shaman; counters; burn; etb; noncombat damage; transform; haste; aggro,NEO,152,Uncommon,85,,3.0,seed
+Unforgiving One,Creature — Spirit,"Menace (This creature can't be blocked except by two or more creatures.)
+Whenever this creature attacks, return target creature card with mana value X or less from your graveyard to the battlefield, where X is the number of modified creatures you control. (Equipment, Auras you control, and counters are modifications.)",B,Spirit; reanimator; graveyard; menace; evasion,NEO,127,Uncommon,89,deck 89 tune 2026-10-23,5.0,seed
 "Drivnod, Carnage Dominus",Legendary Creature — Phyrexian Horror,"If a creature dying causes a triggered ability of a permanent you control to trigger, that ability triggers an additional time.
 {B/P}{B/P}, Exile three creature cards from your graveyard: Put an indestructible counter on Drivnod. ({B/P} can be paid with either {B} or 2 life.)",B,Phyrexian; Horror; counters; graveyard,ONE,90,Mythic,87,,8.0,seed
 "Solphim, Mayhem Dominus",Legendary Creature — Phyrexian Horror,"If a source you control would deal noncombat damage to an opponent or a permanent an opponent controls, it deals double that damage to that player or permanent instead.
