@@ -67,6 +67,9 @@ Brokers Hideout,Land,"When this land enters, sacrifice it. When you do, search y
 Tranquil Landscape,Land,"{T}: Add {C}.
 {T}, Sacrifice this land: Search your library for a basic Forest, Plains, or Island card, put it onto the battlefield tapped, then shuffle.
 Cycling {G}{W}{U} ({G}{W}{U}, Discard this card: Draw a card.)",W/U/G,card draw; sacrifice; ramp; mana; cycling,,,Common,78-historic-brawl,,1.5,seed
+Bontu the Glorified,Legendary Creature — God,"Menace, indestructible
+Bontu can't attack or block unless a creature died under your control this turn.
+{1}{B}, Sacrifice another creature: Scry 1. Each opponent loses 1 life and you gain 1 life.",B,God; lifegain; sacrifice; scry; indestructible; resilience; menace; evasion; selection,AKR,95,Mythic,89,deck 89 tune 2026-10-23,6.5,seed
 Hornet Queen,Creature — Insect,"Flying, deathtouch
 When this creature enters, create four 1/1 green Insect creature tokens with flying and deathtouch.",G,Insect; tokens; etb; deathtouch; combat; removal; flying; evasion,AKR,196,Mythic,89,deck 89 tune 2026-10-22,4.5,seed
 "Alania, Divergent Storm",Legendary Creature — Otter Wizard,"Whenever you cast a spell, if it's the first instant spell, the first sorcery spell, or the first Otter spell other than Alania you've cast this turn, you may have target opponent draw a card. If you do, copy that spell. You may choose new targets for the copy.",U/R,Otter; Wizard; card draw,BLB,204,Rare,25,copy your first spell of each type each turn,6.0,hand
@@ -418,6 +421,19 @@ If a creature dealt damage this turn by a source you controlled would die, exile
 Tyrranax Rex,Creature — Phyrexian Dinosaur,"This spell can't be countered.
 Trample, ward {4}, haste
 Toxic 4 (Players dealt combat damage by this creature also get four poison counters.)",G,Phyrexian; Dinosaur; toxic; haste; aggro; trample; evasion; ward; protection,ONE,189,Mythic,89,deck 89 tune 2026-10-22,5.0,seed
+"Tyvar, Jubilant Brawler",Legendary Planeswalker — Tyvar,"You may activate abilities of creatures you control as though those creatures had haste.
++1: Untap up to one target creature.
+−2: Mill three cards, then you may return a creature card with mana value 2 or less from your graveyard to the battlefield.",B/G,Tyvar; planeswalker; reanimator; graveyard; mill,ONE,218,Rare,89,deck 89 tune 2026-10-23,8.5,seed
+Cankerbloom,Creature — Phyrexian Fungus,"{1}, Sacrifice this creature: Choose one —
+• Destroy target artifact.
+• Destroy target enchantment.
+• Proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)",G,Phyrexian; Fungus; sacrifice; removal; proliferate; counters,ONE,161,Uncommon,89,deck 89 tune 2026-10-23,3.5,seed
+Drown in Ichor,Sorcery,"Target creature gets -4/-4 until end of turn. Proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)",B,removal; proliferate; counters,ONE,91,Uncommon,89,deck 89 tune 2026-10-23,3.0,seed
+Necrogen Rotpriest,Creature — Phyrexian Zombie Cleric,"Toxic 2 (Players dealt combat damage by this creature also get two poison counters.)
+Whenever a creature you control with toxic deals combat damage to a player, that player gets an additional poison counter.
+{1}{B}{G}: Target creature you control with toxic gains deathtouch until end of turn.",B/G,Phyrexian; Zombie; Cleric; toxic; deathtouch; combat; removal,ONE,212,Uncommon,89,deck 89 tune 2026-10-23,2.0,seed
+Venomous Brutalizer,Creature — Phyrexian Knight,"Toxic 3 (Players dealt combat damage by this creature also get three poison counters.)
+When this creature enters, you may pay {1}{G}. If you do, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)",G,Phyrexian; Knight; etb; toxic; proliferate; counters,ONE,193,Uncommon,89,deck 89 tune 2026-10-23,2.0,seed
 The Dross Pits,Land — Sphere,"This land enters tapped.
 {T}: Add {B}.
 {1}{B}, {T}, Sacrifice this land: Draw a card.",B,Sphere; card draw; sacrifice; mana,ONE,251,Common,89,deck 89 tune 2026-10-22,1.5,seed

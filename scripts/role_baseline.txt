@@ -42,7 +42,6 @@ Badgermole
 Ball Lightning
 Bandit's Talent
 Baxter Stockman
-Bebop & Rocksteady
 Bejeweled Warg
 Billowing Shriekmass
 Bioengineered Future
@@ -287,6 +286,7 @@ Mutable Explorer
 Mysterio, Master of Illusion
 Namazu Trader
 Nashi, Searcher in the Dark
+Necrogen Rotpriest
 Neriv, Heart of the Storm
 Nick Fury, Agent of S.H.I.E.L.D.
 Nighthowl Pursuer
@@ -453,6 +453,7 @@ Unstoppable Slasher
 Valentina Allegra de Fontaine
 Vastlands Scavenger // Bind to Life
 Venomized Cat
+Venomous Brutalizer
 Verdant Kraken
 Veteran Ice Climber
 Virulent Silencer
@@ -461,7 +462,6 @@ Vision Quest
 Vito's Inquisitor
 Vorinclex, Monstrous Raider
 Voyager Glidecar
-Vraska, Swarm's Eminence
 Vulture, Scheming Scavenger
 War Balloon
 War Machine, Legacy of Iron

@@ -9,7 +9,7 @@
 #: archetype: permanent on our turn. So every land that sacrifices itself (14 fetches, the
 #: archetype: Memorials, Hidden caves, Skemfar Elderhall, Nurturing Peatland, Ifnir Deadlands) is a
 #: archetype: spell we replay every turn, and the land outlets (Gitrog, Uurg, Zuran Orb, Elvish
-#: archetype: Reclaimer, Sprouting Goblin, Baba Lysaga, Hearthhull) turn spare land drops into
+#: archetype: Reclaimer, She-Hulk, Baba Lysaga, Hearthhull) turn spare land drops into
 #: archetype: triggers. Long Feng, Jenova and Vorinclex grow Szarel's power so each trigger is bigger.
 #: archetype: The second clock is POISON: Bushmaster gives every creature with a +1/+1 counter
 #: archetype: deathtouch and Fynn makes each deathtouch hit 2 poison; Vorinclex with Vraska,
@@ -50,9 +50,14 @@
 #: notes: HELD by the owner: Doubling Season, Aftermath Analyst and Korvold were proposed for
 #: notes: Daemogoth Titan, Honest Rutstein and Lord Dregg, which the owner wants to keep; Lukka,
 #: notes: Overkill, Nissa of Shadowed Boughs, Garruk, Cursed Huntsman, Evolution Sage and Seedship
-#: notes: Broodtender are kept too. Pending: Tyvar, Jubilant Brawler, Cankerbloom, Annihilating
-#: notes: Glare, Drown in Ichor, Venomous Brutalizer, Bontu, Sylvan Safekeeper, Snakeskin Veil,
-#: notes: Toxic Deluge, Six, The Ozolith, Ziatora, and the Mutant layer.
+#: notes: Broodtender are kept too. Pending: Annihilating Glare, Sylvan Safekeeper, Snakeskin Veil,
+#: notes: Toxic Deluge, Doubling Season, Six, The Ozolith, Ziatora, and the rest of the Mutant layer.
+#: notes: SWAPS 2026-10-23 (third wave): Tyvar, Jubilant Brawler for Sprouting Goblin (She-Hulk does
+#: notes: the land-for-a-card job without tapping); Cankerbloom for Mister Hyde; Drown in Ichor for
+#: notes: Witherbloom Command; Venomous Brutalizer for Hit-Monkey; Bontu the Glorified for Vraska,
+#: notes: Swarm's Eminence; Pizza Face for Bebop & Rocksteady (+3 counters on Szarel each end step
+#: notes: after a land sacrifice); Necrogen Rotpriest for Noxious Newt (a second poison amplifier
+#: notes: beside Fynn). Interaction 17 -> 18, card advantage 14 -> 13; deathtouch still central.
 #: notes: SWAP 2026-10-22: Tyrranax Rex for Vraska, Relic Seeker (toxic 4, haste, trample, ward 4;
 #: notes: interaction 18 -> 17, the -3 was removal). DEATHTOUCH IS A THIN CENTRAL THEME: cutting
 #: notes: two of White Widow / Hit-Monkey / Noxious Newt drops it from the deck's central themes.
@@ -71,7 +76,6 @@
 1 Uurg, Spawn of Turg (DMU) 225
 1 Baba Lysaga, Night Witch (HBG) 232
 1 Elvish Reclaimer (M20) 169
-1 Sprouting Goblin (DMU) 145
 1 Titania, Protector of Argoth (MH2) 287
 1 Azusa, Lost but Seeking (M21) 173
 1 Seedship Broodtender (EOE) 227
@@ -84,10 +88,11 @@
 1 Jenova, Ancient Calamity (FIN) 228
 1 Vorinclex, Monstrous Raider (KHM) 199
 1 Bushmaster, Coiled Henchman (MSC) 716
-1 Mister Hyde, Monster Within (MSH) 176
+1 Cankerbloom (ONE) 161
 1 Evolution Sage (WAR) 159
 1 White Widow, Yelena Belova (MSC) 676
 1 Bristly Bill, Spine Sower (OTJ) 157
+1 Pizza Face, Gastromancer (TMT) 163
 
 # Creatures — deathtouch and poison (Fynn turns each deathtouch hit into 2 poison)
 1 Fynn, the Fangbearer (FCA) 46
@@ -96,41 +101,41 @@
 1 Vraska, the Cutting Glare (FRA) 278
 1 Rhonas the Indomitable (AKR) 213
 1 Kura, the Boundless Sky (NEO) 200
-1 Hit-Monkey (MSC) 723
+1 Venomous Brutalizer (ONE) 193
 1 Bloated Contaminator (ONE) 159
 1 Hornet Queen (AKR) 196
 1 Tyrranax Rex (ONE) 189
+1 Necrogen Rotpriest (ONE) 212
 
 # Creatures — sacrifice outlets and bodies
 1 Dina, Essence Brewer (SOC) 1
 1 Killmonger, Scourge of Wakanda (MSH) 218
 1 Hidetsugu, Devouring Chaos (NEO) 99
-1 Bebop & Rocksteady (TMT) 140
 1 Daemogoth Titan (STX) 174
 1 Yawgmoth, Thran Physician (FCA) 11
 1 Honest Rutstein (OTJ) 207
 1 Mayhem Devil (WAR) 204
 1 Eddie Brock // Venom, Lethal Protector (SPM) 55
+1 Bontu the Glorified (AKR) 95
 
 # Creatures — ramp
-1 Noxious Newt (SOS) 155
 1 Dryad of the Ilysian Grove (THB) 169
 
 # Planeswalkers
 1 Vraska, Betrayal's Sting (ONE) 115
-1 Vraska, Swarm's Eminence (WAR) 236
 1 Garruk Relentless // Garruk, the Veil-Cursed (SIS) 49
 1 Garruk, Cursed Huntsman (ELD) 191
 1 Lukka, Bound to Ruin (ONE) 207
 1 Nissa of Shadowed Boughs (ZNR) 231
 1 Vraska, Golgari Queen (GRN) 213
+1 Tyvar, Jubilant Brawler (ONE) 218
 
 # Noncreature — removal, Sagas and engines
 1 Infectious Bite (ONE) 172
 1 Overkill (FIN) 109
 1 Infernal Grasp (MID) 107
 1 Heartless Act (TLA) 103
-1 Witherbloom Command (STX) 248
+1 Drown in Ichor (ONE) 91
 1 Casualties of War (WAR) 187
 1 Origin of Black Widow (MSC) 664
 1 Binding the Old Gods (KHM) 206
