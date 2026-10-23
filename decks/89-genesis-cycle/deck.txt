@@ -63,8 +63,8 @@
 #: notes: SWAP 2026-10-23: Polukranos, Unchained for Cankerbloom (a {1}{B}{G} fight every turn
 #: notes: that costs no card; enters with 6 counters, 12+ under Doubling Season / Vorinclex, Szarel
 #: notes: refills what damage removes, Bushmaster makes each fight a kill). Escape exiles six
-#: notes: graveyard cards, i.e. the lands Szarel replays: a late-game option, not the plan. The
-#: notes: deck lost its only artifact/enchantment answer besides Casualties of War. Interaction 15.
+#: notes: graveyard cards, i.e. the lands Szarel replays: a late-game option, not the plan. Other
+#: notes: artifact/enchantment answers remain: Casualties, Binding, Killmonger, Glissa, Grist. Int 15.
 #: notes: SWAP 2026-10-23: Korvold, Fae-Cursed King for Vraska, Golgari Queen (the owner found
 #: notes: Vraska cannot be crafted on Arena). Korvold draws a card and grows on every sacrifice,
 #: notes: and sacrifices a permanent itself on entry and attack. Interaction 16 -> 15 (Vraska's -3);
