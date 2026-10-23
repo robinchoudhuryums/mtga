@@ -51,7 +51,10 @@
 #: notes: Daemogoth Titan, Honest Rutstein and Lord Dregg, which the owner wants to keep; Lukka,
 #: notes: Overkill, Nissa of Shadowed Boughs, Garruk, Cursed Huntsman, Evolution Sage and Seedship
 #: notes: Broodtender are kept too. Pending: Annihilating Glare, Sylvan Safekeeper, Snakeskin Veil,
-#: notes: Toxic Deluge, Doubling Season, Six, The Ozolith, Ziatora, and the rest of the Mutant layer.
+#: notes: Toxic Deluge, Way of the Paradox, Way of the Necromancer, Six, The Ozolith, Ziatora, and the rest of the Mutant layer.
+#: notes: SWAP 2026-10-23: Doubling Season for Uurg (Uurg was the 12th land outlet, {B}{G} to
+#: notes: gain 2; Doubling Season doubles Szarel's counters, tokens and every planeswalker's
+#: notes: loyalty, though not poison on a player). Quality guard: net improvement.
 #: notes: SWAPS 2026-10-23 (third wave): Tyvar, Jubilant Brawler for Sprouting Goblin (She-Hulk does
 #: notes: the land-for-a-card job without tapping); Cankerbloom for Mister Hyde; Drown in Ichor for
 #: notes: Witherbloom Command; Venomous Brutalizer for Hit-Monkey; Bontu the Glorified for Vraska,
@@ -73,7 +76,6 @@
 
 # Creatures — land-sacrifice engine (every land Szarel replays is a trigger)
 1 The Gitrog Monster (BLC) 88
-1 Uurg, Spawn of Turg (DMU) 225
 1 Baba Lysaga, Night Witch (HBG) 232
 1 Elvish Reclaimer (M20) 169
 1 Titania, Protector of Argoth (MH2) 287
@@ -145,6 +147,7 @@
 1 Zuran Orb (MH2) 300
 1 Hearthhull, the Worldseed (EOC) 1
 1 Hardened Scales (KTK) 133
+1 Doubling Season (FDN) 216
 
 # Lands (38)
 1 Evolving Wilds (ECL) 264
