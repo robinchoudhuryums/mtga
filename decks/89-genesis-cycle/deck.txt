@@ -51,7 +51,12 @@
 #: notes: Daemogoth Titan, Honest Rutstein and Lord Dregg, which the owner wants to keep; Lukka,
 #: notes: Overkill, Nissa of Shadowed Boughs, Garruk, Cursed Huntsman, Evolution Sage and Seedship
 #: notes: Broodtender are kept too. Pending: Annihilating Glare, Sylvan Safekeeper, Snakeskin Veil,
-#: notes: Toxic Deluge, Way of the Paradox, Way of the Necromancer, Six, The Ozolith, Ziatora, and the rest of the Mutant layer.
+#: notes: Toxic Deluge, Way of the Paradox, Fanatic of Rhonas, Six, The Ozolith, Ziatora, and the rest of the Mutant layer.
+#: notes: SWAPS 2026-10-23: Rhonas's Monument for Heartless Act (green creature spells, 34 of the
+#: notes: 40 creatures and Szarel, cost {1} less; every creature cast gives +2/+2 and trample, so a
+#: notes: deathtoucher assigns 1 to a blocker and the rest becomes Fynn poison); Way of the
+#: notes: Necromancer for Yawgmoth (each creature death puts loyalty on every planeswalker).
+#: notes: Interaction 18 -> 17 with 3 instants left: removal is now the axis not to cut further.
 #: notes: SWAP 2026-10-23: Doubling Season for Uurg (Uurg was the 12th land outlet, {B}{G} to
 #: notes: gain 2; Doubling Season doubles Szarel's counters, tokens and every planeswalker's
 #: notes: loyalty, though not poison on a player). Quality guard: net improvement.
@@ -114,7 +119,6 @@
 1 Killmonger, Scourge of Wakanda (MSH) 218
 1 Hidetsugu, Devouring Chaos (NEO) 99
 1 Daemogoth Titan (STX) 174
-1 Yawgmoth, Thran Physician (FCA) 11
 1 Honest Rutstein (OTJ) 207
 1 Mayhem Devil (WAR) 204
 1 Eddie Brock // Venom, Lethal Protector (SPM) 55
@@ -136,7 +140,7 @@
 1 Infectious Bite (ONE) 172
 1 Overkill (FIN) 109
 1 Infernal Grasp (MID) 107
-1 Heartless Act (TLA) 103
+1 Rhonas's Monument (AKR) 279
 1 Drown in Ichor (ONE) 91
 1 Casualties of War (WAR) 187
 1 Origin of Black Widow (MSC) 664
@@ -148,6 +152,7 @@
 1 Hearthhull, the Worldseed (EOC) 1
 1 Hardened Scales (KTK) 133
 1 Doubling Season (FDN) 216
+1 Way of the Necromancer (FRA) 239
 
 # Lands (38)
 1 Evolving Wilds (ECL) 264

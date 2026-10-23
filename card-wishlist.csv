@@ -72,6 +72,8 @@ Bontu can't attack or block unless a creature died under your control this turn.
 {1}{B}, Sacrifice another creature: Scry 1. Each opponent loses 1 life and you gain 1 life.",B,God; lifegain; sacrifice; scry; indestructible; resilience; menace; evasion; selection,AKR,95,Mythic,89,deck 89 tune 2026-10-23,6.5,seed
 Hornet Queen,Creature — Insect,"Flying, deathtouch
 When this creature enters, create four 1/1 green Insect creature tokens with flying and deathtouch.",G,Insect; tokens; etb; deathtouch; combat; removal; flying; evasion,AKR,196,Mythic,89,deck 89 tune 2026-10-22,4.5,seed
+Rhonas's Monument,Legendary Artifact,"Green creature spells you cast cost {1} less to cast.
+Whenever you cast a creature spell, target creature you control gets +2/+2 and gains trample until end of turn.",Colorless,cost-reduction; pump; trample; evasion,AKR,279,Uncommon,89,deck 89 tune 2026-10-23,6.0,seed
 "Alania, Divergent Storm",Legendary Creature — Otter Wizard,"Whenever you cast a spell, if it's the first instant spell, the first sorcery spell, or the first Otter spell other than Alania you've cast this turn, you may have target opponent draw a card. If you do, copy that spell. You may choose new targets for the copy.",U/R,Otter; Wizard; card draw,BLB,204,Rare,25,copy your first spell of each type each turn,6.0,hand
 Essence Channeler,Creature — Bat Cleric,"As long as you've lost life this turn, this creature has flying and vigilance.
 Whenever you gain life, put a +1/+1 counter on this creature.
@@ -287,6 +289,8 @@ Trample
 Other creatures you control have trample.",G,Elder; Dinosaur; cost-reduction; trample; evasion,FRA,260,Uncommon,50,,2.5,seed
 Primal Witchstalker,Creature — Wolf,"Menace (This creature can't be blocked except by two or more creatures.)
 When this creature enters, mill four cards. When you do, return target land card from your graveyard to the battlefield tapped. (To mill four cards, put the top four cards of your library into your graveyard.)",B/G,Wolf; reanimator; graveyard; mill; etb; menace; evasion,FRA,144,Uncommon,83a,,5.0,seed
+Way of the Necromancer,Legendary Enchantment,"When Way of the Necromancer enters, empower Jace 2. (Put two loyalty counters on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with ""[−1]: Surveil 1"" and ""[−3]: Draw a card."")
+Whenever a creature you control dies, put a loyalty counter on each planeswalker you control.",B,counters; card draw; tokens; etb; surveil; graveyard; empower jace,FRA,239,Uncommon,89,deck 89 tune 2026-10-23,4.5,seed
 Reflecting Pool,Land,{T}: Add one mana of any type that a land you control could produce.,Colorless,mana,FRC,23,Rare,84,,4.0,seed
 Command Tower,Land,{T}: Add one mana of any color in your commander's color identity.,Colorless,mana,FRC,22,Common,88,,1.5,seed
 "Vraska, Golgari Queen",Legendary Planeswalker — Vraska,"+2: You may sacrifice another permanent. If you do, you gain 1 life and draw a card.
