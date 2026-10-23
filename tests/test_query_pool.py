@@ -103,6 +103,17 @@ class TestPoolFilters:
         assert deck.pool_format_key("historic brawl") == "brawl"
         assert deck.pool_format_key("brawl") == "standard"
 
+    def test_legal_brawl_says_it_is_the_60_card_format(self, monkeypatch, capsys):
+        # The deck-89 pile sweep (2026-10-23) ran `--legal brawl` for a 100-card deck
+        # with only the pool-key note on screen; the note must name the other format.
+        monkeypatch.setattr(sys, "argv", ["pool.py", "--legal", "brawl", "--count"])
+        assert pool.main() == 0
+        err = capsys.readouterr().err
+        assert "60-card" in err and '--legal "historic brawl"' in err
+        monkeypatch.setattr(sys, "argv", ["pool.py", "--legal", "historic brawl", "--count"])
+        assert pool.main() == 0
+        assert "60-card" not in capsys.readouterr().err
+
     def test_role_filter_routes_through_the_lazy_deck_proxy(self):
         """pool.classify_roles is a lazy import proxy (batch 5) — --role must
         still classify through the real deck.classify_roles."""

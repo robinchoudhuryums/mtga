@@ -44,6 +44,9 @@ Updated: 2026-10-20 (Brawl tooling plan Batch 7 — see Where I left off)
 
 ## Completed this cycle
 
+- **2026-10-23 — deck-89 tooling plan, Batch 1** (block `deck89-batch1-broad-implement.md`):
+  `wishlist --add` corrects an unheld printing to the pool's + a soft check_all sweep (1 live row);
+  `pool.py --legal brawl` names the 60/100-card split. Net 3 − 1.
 - **2026-10-20 — speed-up batch + roster refiles** (block `tooling-speedup-broad-implement.md`):
   four memos/rewrites from the Batch 6 profile, with every compared output byte-identical. check_all
   77→36s, dashboard 217→80s, swap --apply 6.9→2.7s, postedit ~305→118s, pytest 345→181s. Also
@@ -397,6 +400,10 @@ Updated: 2026-10-20 (Brawl tooling plan Batch 7 — see Where I left off)
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
+**2026-10-23 (latest) — deck-89 tooling plan (`.cycle/deck89-tooling-plan.md`), Batch 1 done**
+(block `deck89-batch1-broad-implement.md`). Suite + check_all green. Docs NOT yet synced (G-19, G-08,
+C-01). **Next:** Batch 2 (typed basic-fetch colours, basics-vs-fetchers disclosure, basic-rebalance hint).
+
 **2026-10-20 (latest) — Brawl tooling plan, Batch 7 done; THE 9-ITEM PLAN IS COMPLETE**
 (block `tooling-batch7-broad-implement.md`). Suite 2186 passed, check_all OK. Docs SYNCED 2026-10-20 (G-05/G-77, README,
 /apply-changes, systems-map, gotchas G-05). The speed-up batch and the 35a/37a refiles are DONE too

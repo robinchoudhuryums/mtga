@@ -488,6 +488,21 @@ def main():
             soft.append(f"wishlist target drift: {name} — {msg}")
     except Exception as e:
         soft.append(f"wishlist target audit skipped ({e})")
+    # Soft: wishlist PRINTINGS — the wishlist twin of INV-04's unverified-printing line.
+    # `wishlist.py --add` stored a pasted `(SET) COLLECTOR#` verbatim until 2026-10-23, so
+    # a hand-typed number became a row for a printing that does not exist. Soft for
+    # INV-04's reason: the pool keys one printing per card, so an alternate art lands
+    # here too. Named, not just counted (K-01).
+    try:
+        import wishlist as wl
+        _wp = wl.printing_issues()
+        if _wp:
+            ex = "; ".join(f"{n} ({s}) {c}" for n, s, c, _h in _wp[:3])
+            soft.append(f"wishlist printing(s): {len(_wp)} row(s) name a (SET) COLLECTOR# "
+                        f"this repo does not hold — {ex}" + ("; …" if len(_wp) > 3 else "")
+                        + " (use the printing `deck.py resolve <name>` prints)")
+    except Exception as e:
+        soft.append(f"wishlist printing check skipped ({e})")
 
     # Soft: NEW unindexed card mechanics (a new set's keyword not yet in the synergy
     # map). Baselined, so it stays quiet until something genuinely new appears.

@@ -416,6 +416,71 @@ class TestOutageReseed:
             "G-17: a hand grade is trusted; re-enrich must never overwrite it"
 
 
+class TestAddValidatesThePrinting:
+    """`--add` stored a pasted `(SET) COLLECTOR#` verbatim, so a hand-typed
+    `(THB) 226` became a row for a printing that does not exist (real: 224) — found
+    2026-10-23 wishlisting Polukranos, Unchained for deck 89. A printing nothing holds is
+    replaced by the pool's; `printing_issues` is the read-side sweep check_all runs."""
+
+    _POOL_HDR = ("Card Name,Type,Card Text,Color(s),Synergies,Set Code,Collector #,"
+                 "Rarity\n")
+
+    def _world(self, tmp_path, monkeypatch, lib_rows=""):
+        import deck
+        pool = tmp_path / "pool.csv"
+        pool.write_text(self._POOL_HDR + '"Polukranos, Unchained",Legendary Creature — '
+                        'Zombie Hydra,Fights.,B/G,counters,THB,224,Mythic\n', encoding="utf-8")
+        lib = tmp_path / "lib.csv"
+        lib.write_text("Card Name,Type,Card Text,Color(s),Synergies,Set Code,Collector #,"
+                       "Quantity Owned\n" + lib_rows, encoding="utf-8")
+        monkeypatch.setattr(wishlist, "WISHLIST_CSV", str(tmp_path / "wl.csv"))
+        monkeypatch.setattr(wishlist, "POOL_CSV", str(pool))
+        monkeypatch.setattr(wishlist, "DEFAULT_CSV", str(lib))
+        monkeypatch.setattr(deck, "POOL_CSV", str(pool))
+        monkeypatch.setattr(deck, "DEFAULT_CSV", str(lib))
+
+    def _add(self, tmp_path, line):
+        batch = tmp_path / "batch.txt"
+        batch.write_text(line + "\n", encoding="utf-8")
+        assert wishlist.cmd_add(str(batch)) == 0
+        return wishlist.load_wishlist()[0]
+
+    def test_an_unheld_collector_number_is_replaced_by_the_pools(self, tmp_path,
+                                                                 monkeypatch, capsys):
+        self._world(tmp_path, monkeypatch)
+        row = self._add(tmp_path, "1 Polukranos, Unchained (THB) 226")
+        assert (row["Set Code"], row["Collector #"]) == ("THB", "224")
+        assert "(THB) 226 -> (THB) 224" in capsys.readouterr().out
+
+    def test_a_fabricated_set_code_is_replaced_too(self, tmp_path, monkeypatch):
+        self._world(tmp_path, monkeypatch)
+        row = self._add(tmp_path, "1 Polukranos, Unchained (ZZZ) 999")
+        assert (row["Set Code"], row["Collector #"]) == ("THB", "224")
+
+    def test_a_held_printing_is_kept(self, tmp_path, monkeypatch, capsys):
+        # An owned alternate art the LIBRARY holds is a real printing — keep it.
+        self._world(tmp_path, monkeypatch,
+                    lib_rows='"Polukranos, Unchained",x,x,B/G,,PTHB,224p,1\n')
+        row = self._add(tmp_path, "1 Polukranos, Unchained (PTHB) 224p")
+        assert (row["Set Code"], row["Collector #"]) == ("PTHB", "224p")
+        assert "Corrected" not in capsys.readouterr().out
+
+    def test_a_name_only_line_stays_blank(self, tmp_path, monkeypatch):
+        self._world(tmp_path, monkeypatch)
+        row = self._add(tmp_path, "1 Polukranos, Unchained")
+        assert (row["Set Code"], row["Collector #"]) == ("", "")
+
+    def test_printing_issues_names_an_unheld_row_and_skips_the_rest(self, tmp_path,
+                                                                    monkeypatch):
+        self._world(tmp_path, monkeypatch)
+        rows = [{"Card Name": "Polukranos, Unchained", "Set Code": "THB", "Collector #": "226"},
+                {"Card Name": "Polukranos, Unchained", "Set Code": "THB", "Collector #": "224"},
+                {"Card Name": "Polukranos, Unchained", "Set Code": "", "Collector #": ""},
+                {"Card Name": "Not In Pool", "Set Code": "ZZZ", "Collector #": "1"}]
+        issues = wishlist.printing_issues(rows)
+        assert [(n, s, c) for n, s, c, _h in issues] == [("Polukranos, Unchained", "THB", "226")]
+
+
 class TestPowerRangeFlag:
     def test_out_of_range_power_is_flagged_and_scored_zero(self):
         """The Pensive Professor class (batch 6): a finite 78.0 passed the NaN and

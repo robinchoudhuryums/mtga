@@ -276,6 +276,65 @@ def _try_seed_power(row, _warned=[]):
         return None
 
 
+def _held_printings(name, by_name):
+    """The (set_lower, collector_lower) pairs this repo holds for `name` (full or front)."""
+    nl = (name or "").strip().lower()
+    return by_name.get(nl) or by_name.get(nl.split(" // ")[0], set())
+
+
+def _printing_held(setc, cn, held):
+    """Is the pasted printing one we hold? A set with no collector matches on the set."""
+    s, c = (setc or "").strip().lower(), (cn or "").strip().lower()
+    return (s, c) in held if c else any(hs == s for hs, _ in held)
+
+
+def _corrected_printing(name, setc, cn, pool, by_name):
+    """(set, collector) to store instead of a pasted printing nothing holds, else None.
+
+    `--add` used to store the line's `(SET) COLLECTOR#` verbatim, so a hand-typed
+    `1 Polukranos, Unchained (THB) 226` became a wishlist row for a printing that does
+    not exist (the real number is 224) — G-65's never-hand-write rule, with no check
+    behind it on this one writer (found 2026-10-23 tuning deck 89). Validation uses
+    `deck.known_printings`, the index INV-04's printing check reads, so a deck line and a
+    wishlist row cannot disagree about which printings are real. The replacement is the
+    POOL's printing, which is what `deck.py resolve` emits. A printing the library holds
+    (an owned alternate art) is kept; a card the pool does not know is left alone.
+    """
+    if not (setc or cn):
+        return None
+    held = _held_printings(name, by_name)
+    if not held or _printing_held(setc, cn, held):
+        return None
+    p = pool.get((name or "").strip().lower())
+    ps = ((p or {}).get("Set Code") or "").strip()
+    if not ps:
+        return None
+    return ps, ((p or {}).get("Collector #") or "").strip()
+
+
+def printing_issues(rows=None):
+    """[(name, set, collector, held)] — wishlist rows whose printing nothing holds.
+
+    The read-side twin of `_corrected_printing`, for the rows written before `--add`
+    checked (and for hand edits). SOFT in check_all: the pool keys one printing per card,
+    so a legitimate alternate art the library does not hold lands here too — the same
+    reason INV-04 keeps an unheld collector number soft. Blank printings are skipped.
+    """
+    import deck as dk
+    by_name, _sets = dk.known_printings()
+    out = []
+    for r in (load_wishlist() if rows is None else rows):
+        name = (r.get("Card Name") or "").strip()
+        setc = (r.get("Set Code") or "").strip()
+        cn = (r.get("Collector #") or "").strip()
+        if not name or not (setc or cn):
+            continue
+        held = _held_printings(name, by_name)
+        if held and not _printing_held(setc, cn, held):
+            out.append((name, setc, cn, sorted(held)))
+    return out
+
+
 def _append_target(row, target):
     """Add each deck id in `target` (canonical, `; `-joined) that `row`'s Target lacks.
 
@@ -383,8 +442,19 @@ def cmd_add(path, target=None, note=None):
     retargeted = []
     unenriched_miss, unenriched_err = [], []
     new_rows = []
+    corrections = []
+    _printings = []          # lazy: deck.known_printings() reads pool + library once
     for name, setc, cn in entries:
         row, status = enrich(name, setc, cn, pool)
+        if status == "pool" and (setc or cn):
+            if not _printings:
+                import deck as dk
+                _printings.append(dk.known_printings()[0])
+            fixed = _corrected_printing(row["Card Name"], setc, cn, pool, _printings[0])
+            if fixed:
+                corrections.append((row["Card Name"], setc, cn) + fixed)
+                setc, cn = fixed
+                row["Set Code"], row["Collector #"] = fixed
         key = (row["Card Name"].strip().lower(), setc.lower(), cn.lower())
         listed = [by_key[key]] if key in by_key else (
             by_name.get(key[0], []) if not setc and not cn else [])
@@ -462,6 +532,13 @@ def cmd_add(path, target=None, note=None):
     write_wishlist(existing)
     print(f"Added {added} card(s) to the wishlist ({dupes} already listed). "
           f"Wishlist now has {len(existing)} card(s). Wrote {os.path.basename(WISHLIST_CSV)}.")
+    if corrections:
+        # Narrated AFTER the write (G-10: a script that writes and narrates must write
+        # first, or a broken pipe reports success over nothing).
+        print(f"Corrected {len(corrections)} printing(s) nothing in this repo holds to the "
+              "pool's printing (the one `deck.py resolve` emits, G-65):")
+        for n, s0, c0, s1, c1 in corrections:
+            print(f"  {n}: ({s0}) {c0} -> ({s1}) {c1}")
     if reenriched:
         print(f"Re-enriched {reenriched} previously name-only row(s) (added during an "
               "earlier Scryfall outage) now that their details resolved.")
