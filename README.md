@@ -566,7 +566,10 @@ re-weighted: **on a creature-heavy deck, treat the cut ranking as a shortlist ra
 than a signal** and grade from the printed oracle text. It is **report-only and never feeds back
 into a score** — the scoring terms are bounded and gated by `check_suggest` so they
 can't silently reorder a tuned deck, and an automatic re-weighting would defeat that
-invisibly. Note that "add not surfaced" is expected to be common: `suggest` filters to
+invisibly. The rank of each chosen add is also printed as a **percentile** of the candidates it was
+ranked among: a 100-card Historic Brawl deck ranks against about four times as many cards as
+a Standard deck, so its raw ranks run about four times higher for the same quality of pick —
+compare decks on the percentile. Note that "add not surfaced" is expected to be common: `suggest` filters to
 cards sharing a synergy theme, so it is structurally blind to lands and off-theme
 removal (that's what `--lands` / `--interaction` / `--ramp` are for).
 

@@ -1370,6 +1370,13 @@ owned/craftable BOMB with only modest theme overlap without pulling in off-theme
 dominant theme-fit signal, gated by `check_suggest.py` so they can't silently reorder a
 tuned deck.
 
+**Raw rank is not comparable across decks (2026-10-23, deck-89 tooling Batch 4).** Deck 89's chosen adds read
+"median 1678, four times the roster's 433", which was taken as a ranking failure and planned as a fix. Normalised
+by the candidates each add was ranked among (`Add Of`), deck 89 sits at a median 0.206 against the roster's
+0.208 — the same. Raw rank tracks candidate-pool size at r = 0.585 over 79 decks with n ≥ 8 (a Historic Brawl
+deck ranks against ~8,100 candidates, a Standard deck ~2,000); the hypothesis that many generic central themes
+dilute fit measured r = 0.136 against a ±0.225 noise band. `add_rank_stats` gained `median_pct` and `feedback`
+prints it; the raw figures this rule cites are unchanged, so the G-22 figure gate is untouched.
 
 ## [G-23] `deck.py engines <id>` grades a deck's two-sided ENGINES
 
@@ -3615,6 +3622,9 @@ is the deck's PLAN. **The measurement also overturned the motivating read:** of 
 "token-only", Izoni, Thousand-Eyed ("Sacrifice another creature") and Zopandrel ("Sacrifice two other creatures")
 are OUTLETS that sacrifice nontoken creatures too — only Slimefoot and Squee ("Sacrifice a Saproling") was right.
 Read the cost's OBJECT, not the card's token output.
+
+Moved from the rule (word cap, 2026-10-23): the deck-78 land trade of 2026-09-02 was still the right
+call — the blindness to the lost ETB triggers was the problem, not the trade.
 
 ## [G-43] Grade a modal / split / adventure card by the FACE YOU CAST, not the half you want
 

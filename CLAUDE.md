@@ -522,7 +522,9 @@ is protecting.
   ranking held 20 candidates or 958; it now prints "top N of M ranked candidate(s)"
   (`--limit 0` for all). Why it matters is measured, not asserted: across **1597 applied swaps
   that recorded a rank for the card ADDED, the MEDIAN rank is 420** and only **9%** fell
-  inside the default top 20. `deck.py feedback` reports that distribution. A card chosen for
+  inside the default top 20. `deck.py feedback` reports that distribution, and since
+  2026-10-23 its PERCENTILE (rank ÷ candidates): raw rank tracks pool size (r 0.585), so a
+  100-card Brawl deck's "median 1678" was the roster's ~21% — compare decks on the percentile. A card chosen for
   a mechanical interaction the tags do not encode ranks far down BY CONSTRUCTION — a
   different problem from the theme gate G-38 describes, and K-15 was its largest single
   cause. [G-22]
@@ -832,10 +834,10 @@ is protecting.
   investment it is meant to protect — the question was asked of deck 63 and the answer
   came from measuring ETB density (7 of 35 nonland cards) against the erasure, not from
   the cards' own text. Before adding blink, count what the blink would DISCARD.
-  **A MANABASE SWAP IS THE SAME SHAPE AND LOOKS LIKE PURE UPSIDE**: deck 78's green rebuild traded two lands with enters triggers (gain 1 life; scry 1) for two with NO triggered ability at all, halving what Starfield Vocalist could double in a deck whose thesis IS trigger multiplication — 2026-09-02, and the trade was still right; the blindness was the problem.
+  **A MANABASE SWAP IS THE SAME SHAPE AND LOOKS LIKE PURE UPSIDE**: deck 78's green rebuild traded two lands with enters triggers (gain 1 life; scry 1) for two with NO triggered ability at all, halving what Starfield Vocalist could double in a deck whose thesis IS trigger multiplication (2026-09-02).
   Every tool here scores a land on FIXING and none asks what trigger it was carrying, so **before a land swap in a doubler deck, diff the ETB text of both sides**. Nothing catches this: G-27 keeps `#: notes:` out of the staleness scan on purpose.
-  **A FLAG WAS BUILT, MEASURED AND DECLINED (2026-09-09) — do not restart it:** 44 hits, **23
-  BACKWARDS**, ≤14% precision, 0 live instances of the narrow form. **A sacrifice is a
+  **TWO FLAGS WERE MEASURED AND DECLINED — do not restart either:** 2026-09-09, 44 hits, **23
+  BACKWARDS**, ≤14% precision; 2026-10-23, token-vs-NONTOKEN sacrifice, ~5% (1 of 20 KEY verdicts). **A sacrifice is a
   CHOICE, and the identical text is upside in one deck and a conflict in another — separated
   by the deck's PLAN, which no text model here holds.** [G-42]
 - **Grade a modal / split / adventure card by the FACE YOU CAST, not the half you want.**
