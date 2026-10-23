@@ -584,6 +584,10 @@ Venerated Stormsinger,Creature — Orc Cleric,"Mobilize 1 (Whenever this creatur
 Whenever this creature or another creature you control dies, each opponent loses 1 life and you gain 1 life.",B,Orc; Cleric; lifegain; tokens; mobilize; go-wide; aggro,TDM,97,Uncommon,55,"Mobilize 1 + drains 1 per creature death, i.e. per end-step token sacrifice",5.5,seed
 Nyxbloom Ancient,Enchantment Creature — Elemental,"Trample
 If you tap a permanent for mana, it produces three times as much of that mana instead.",G,Elemental; trample; evasion,THB,190,Mythic,88,,4.5,seed
+"Polukranos, Unchained",Legendary Creature — Zombie Hydra,"Polukranos enters with six +1/+1 counters on it. It escapes with twelve +1/+1 counters on it instead.
+If damage would be dealt to Polukranos while it has a +1/+1 counter on it, prevent that damage and remove that many +1/+1 counters from it.
+{1}{B}{G}: Polukranos fights another target creature.
+Escape—{4}{B}{G}, Exile six other cards from your graveyard.",B/G,Zombie; Hydra; counters; graveyard; fight; removal; combat; escape; recursion,THB,224,Mythic,89,,7.0,seed
 Dryad of the Ilysian Grove,Enchantment Creature — Nymph Dryad,"You may play an additional land on each of your turns.
 Lands you control are every basic land type in addition to their other types.",G,Nymph; Dryad; mana,THB,169,Rare,89,deck 89 tune 2026-10-22,3.0,seed
 Boiling Rock Rioter,Creature — Human Rogue Ally,"Firebending 1 (Whenever this creature attacks, add {R}. This mana lasts until end of combat.)

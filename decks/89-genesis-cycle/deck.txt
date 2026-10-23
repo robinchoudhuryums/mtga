@@ -60,6 +60,11 @@
 #: notes: creature card of MV up to the number of modified creatures, which also flips Grist). The
 #: notes: deck lost its only land TUTOR with Reclaimer; fetches, Binding and Kodama still find basics.
 #: notes: Interaction 15, card advantage 13 -> 12 (Dregg's draw), floor A.
+#: notes: SWAP 2026-10-23: Polukranos, Unchained for Cankerbloom (a {1}{B}{G} fight every turn
+#: notes: that costs no card; enters with 6 counters, 12+ under Doubling Season / Vorinclex, Szarel
+#: notes: refills what damage removes, Bushmaster makes each fight a kill). Escape exiles six
+#: notes: graveyard cards, i.e. the lands Szarel replays: a late-game option, not the plan. The
+#: notes: deck lost its only artifact/enchantment answer besides Casualties of War. Interaction 15.
 #: notes: SWAP 2026-10-23: Korvold, Fae-Cursed King for Vraska, Golgari Queen (the owner found
 #: notes: Vraska cannot be crafted on Arena). Korvold draws a card and grows on every sacrifice,
 #: notes: and sacrifices a permanent itself on entry and attack. Interaction 16 -> 15 (Vraska's -3);
@@ -112,7 +117,7 @@
 1 Jenova, Ancient Calamity (FIN) 228
 1 Vorinclex, Monstrous Raider (KHM) 199
 1 Bushmaster, Coiled Henchman (MSC) 716
-1 Cankerbloom (ONE) 161
+1 Polukranos, Unchained (THB) 224
 1 Evolution Sage (WAR) 159
 1 White Widow, Yelena Belova (MSC) 676
 1 Bristly Bill, Spine Sower (OTJ) 157
