@@ -386,8 +386,15 @@ def _pattern_groups():
                  # board-dependent colour (Vivid, Chrome Mox). Dead, the first drops
                  # Nykthos-style sources back to nothing and the second hides Bloom
                  # Tender from the nonland disclosure again.
-                 "_CHOOSE_THEN_THAT_COLOR_RE", "_BOARD_COLOR_RE"):
+                 "_CHOOSE_THEN_THAT_COLOR_RE", "_BOARD_COLOR_RE",
+                 # 2026-10-23: the basic TYPES a fetch names. Dead, every typed fetch (the
+                 # hideouts, the Landscapes) is back to a source of every colour the deck
+                 # runs a basic of — the over-count `fetch_types` removed.
+                 "_FETCH_TYPES_RE"):
         out.append((f"lib.{name}", getattr(lib, name), "raw"))
+    # `deck.fetch_pool_pressure` (2026-10-23): a card that replays lands from the
+    # graveyard. Dead, the disclosure stops naming the cards that deepen the pressure.
+    out.append(("deck._LAND_REPLAY_RE", deck._LAND_REPLAY_RE, "raw"))
     # `deck.uncounted_mana_sources` (2026-10-06): the creature-GRANT disclosure and the
     # enters-trigger exclusion. Dead, Enduring Vitality vanishes from the disclosure again
     # (the deck-21 silence) or every ETB mana burst reads as a recurring source.

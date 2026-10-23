@@ -601,6 +601,19 @@ _GRANTED_ABILITY_RE = re.compile(
 _FETCH_BASIC_RE = re.compile(
     r"search your library for (?:a|an|up to \w+|one or more) basic "
     r"(?:land|plains|island|swamp|mountain|forest)\b", re.I)
+# The basic TYPES a fetch may name, for `fetch_types` (2026-10-23). `_FETCH_BASIC_RE` above
+# says only THAT a land fetches a basic, and every consumer then credited it with every
+# colour the deck runs a basic of — right for Evolving Wilds ("a basic land card"), wrong
+# for a TYPED fetch: the SNC hideouts ("a basic Forest, Plains, or Island card"), Maestros
+# Theater, the Landscapes. Deck 89 read Maestros Theater (Island/Swamp/Mountain) as a green
+# source, and `suggest --lands 89` priced three hideouts as BRG tri-lands above every
+# untapped dual. The list runs from "basic" to "card"; "land" anywhere in it means any basic.
+_FETCH_TYPES_RE = re.compile(
+    r"search your library for (?:a|an|up to \w+|one or more) basic "
+    r"((?:land|plains|island|swamp|mountain|forest)"
+    r"(?:,?\s+(?:or\s+|and/or\s+)?(?:land|plains|island|swamp|mountain|forest))*)", re.I)
+_BASIC_TYPE_COLOR = {"plains": "W", "island": "U", "swamp": "B", "mountain": "R",
+                     "forest": "G"}
 # A mana ability that works only while you control a land of a named TYPE. Two templatings
 # exist in the pool, and they are the only two (surveyed 2026-09-26 over every pool land
 # with an "activate only if" mana line — 15 of 17 are these two; the other two are an
@@ -755,6 +768,10 @@ def land_production(text, colors_cell=None, commander=None):
       fetch        True when it searches for a BASIC land (Evolving Wilds, Fabled
                    Passage, the Halflingcycling-style riders excluded because they need
                    a creature type)
+      fetch_types  None when the fetch may find ANY basic ("a basic land card"); else a
+                   frozenset of WUBRG letters for the basic types it names ("a basic
+                   Forest, Plains, or Island card" -> {"G", "W", "U"}). Callers credit a
+                   fetch only with the deck's basics of those types (2026-10-23).
       gated        {colour: frozenset of WUBRG letters} for a colour in `free` that the
                    land adds ONLY while you control a land of a named basic TYPE — the
                    Verge cycle's second colour ("Activate only if you control a Mountain
@@ -837,8 +854,18 @@ def land_production(text, colors_cell=None, commander=None):
                     gated[col] = need
             if line_chosen:
                 chosen |= cols
+    fetch_types = None
     if _FETCH_BASIC_RE.search(txt):
         fetch = True
+        named, anybasic = set(), False
+        for m in _FETCH_TYPES_RE.finditer(txt):
+            for w in re.findall(r"land|plains|island|swamp|mountain|forest", m.group(1), re.I):
+                if w.lower() == "land":
+                    anybasic = True
+                else:
+                    named.add(_BASIC_TYPE_COLOR[w.lower()])
+        if named and not anybasic:
+            fetch_types = frozenset(named)
     restricted -= free
     conditional -= free | restricted
     # Identity LAST, and only where the text did not already file the colour under a
@@ -851,7 +878,8 @@ def land_production(text, colors_cell=None, commander=None):
     chosen &= free - (ident - restricted - conditional)
     gated = {c: need for c, need in gated.items() if c in free and c not in ungated}
     return {"free": free, "restricted": restricted, "conditional": conditional,
-            "chosen": chosen, "any": any_color, "fetch": fetch, "gated": gated,
+            "chosen": chosen, "any": any_color, "fetch": fetch,
+            "fetch_types": fetch_types, "gated": gated,
             "board": board - free - restricted - conditional}
 
 

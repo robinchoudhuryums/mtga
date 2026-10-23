@@ -904,7 +904,11 @@ def _land_value(row, deck_colors, basics=None, basic_types=None, gate_credit=Non
     restricted_only = (set(lp["restricted"]) | set(lp["conditional"])) - free
     fetch = bool(lp["fetch"])
     if fetch and deck_colors:
-        free |= set(deck_colors)
+        # A TYPED fetch reaches only the basics it names (`fetch_types`, 2026-10-23): a
+        # hideout's "basic Forest, Plains, or Island" is a green source in a BRG deck,
+        # not a tri-land. None means any basic, the old full credit.
+        _ft = lp.get("fetch_types")
+        free |= set(deck_colors) if _ft is None else set(deck_colors) & _ft
     prod = free | restricted_only
     if not prod or not deck_colors:
         return 3.5  # colorless/utility land, or no known target — neutral

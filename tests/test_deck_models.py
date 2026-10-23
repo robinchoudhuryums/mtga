@@ -1742,3 +1742,99 @@ class TestTappedInFirstDrops:
         assert abs(deck.tapped_in_first_drops(24, 1) - 3 / 24) < 1e-9
         assert deck.tapped_in_first_drops(24, 24) == 1.0
         assert 0.6 < deck.tapped_in_first_drops(24, 7) < 0.7      # 1 - C(17,3)/C(24,3)
+
+
+class TestTypedBasicFetches:
+    """2026-10-23 (deck-89 tooling Batch 2): a TYPED basic fetch — a hideout's "basic
+    Forest, Plains, or Island card", Maestros Theater, the Landscapes — was credited with
+    every colour the deck runs a basic of. Deck 89 read Maestros Theater (Island / Swamp /
+    Mountain) as a green source, and `suggest --lands 89` priced three hideouts as BRG
+    tri-lands above every untapped dual."""
+
+    HIDEOUT = ("When this land enters, sacrifice it. When you do, search your library for a "
+               "basic Forest, Plains, or Island card, put it onto the battlefield tapped, then "
+               "shuffle and you gain 1 life.")
+    WILDS = ("{T}, Sacrifice this land: Search your library for a basic land card, put it "
+             "onto the battlefield tapped, then shuffle.")
+
+    def _cd(self):
+        return {"brokers hideout": {"name": "Brokers Hideout", "type": "Land",
+                                    "text": self.HIDEOUT, "colors": ""},
+                "evolving wilds": {"name": "Evolving Wilds", "type": "Land",
+                                   "text": self.WILDS, "colors": ""}}
+
+    def test_land_production_names_the_types(self):
+        import lib
+        assert lib.land_production(self.HIDEOUT)["fetch_types"] == frozenset("GWU")
+        assert lib.land_production(self.WILDS)["fetch_types"] is None
+        mixed = ("Search your library for a basic land card or a basic Plains card, put it "
+                 "onto the battlefield tapped, then shuffle.")
+        assert lib.land_production(mixed)["fetch_types"] is None     # "land" = any basic
+
+    def test_a_typed_fetch_counts_only_the_basics_it_can_find(self):
+        cards = [(1, "Brokers Hideout", "", ""), (1, "Evolving Wilds", "", ""),
+                 (5, "Swamp", "", ""), (5, "Mountain", "", ""), (5, "Forest", "", "")]
+        src, _nl, _t, notes = deck.deck_source_profile(cards, {}, {}, self._cd())
+        assert src["G"] == 5 + 2            # both fetches reach a Forest
+        assert src["B"] == 5 + 1 and src["R"] == 5 + 1   # only the untyped one
+        assert (1, "Brokers Hideout") in notes["fetch"]
+
+    def test_land_value_prices_the_hideout_as_one_colour_in_brg(self):
+        import wishlist
+        hide = wishlist._land_value({"Card Text": self.HIDEOUT, "Color(s)": ""}, set("BRG"))
+        wilds = wishlist._land_value({"Card Text": self.WILDS, "Color(s)": ""}, set("BRG"))
+        assert hide < wilds
+
+
+class TestFetchPoolPressure:
+    """A basic fetch is priced on its FIRST search; deck 89 ran 11 basic fetches against 10
+    basics with a commander that replays them, and nothing said the basics run out."""
+
+    WILDS = TestTypedBasicFetches.WILDS
+
+    def _cd(self):
+        return {"evolving wilds": {"name": "Evolving Wilds", "type": "Land",
+                                   "text": self.WILDS, "colors": ""},
+                "replayer": {"name": "Replayer", "type": "Creature",
+                             "text": "You may play lands from your graveyard.", "colors": "G"}}
+
+    def _notes(self, cards, cd):
+        return deck.deck_source_profile(cards, {}, {}, cd)[3]
+
+    def test_fires_when_fetches_reach_the_basic_count_and_names_a_replayer(self):
+        cd = self._cd()
+        cards = [(4, "Evolving Wilds", "", ""), (4, "Forest", "", ""), (1, "Replayer", "", "")]
+        assert deck.fetch_pool_pressure(cards, self._notes(cards, cd), cd) == (
+            4, 4, ["Replayer"])
+
+    def test_silent_when_basics_outnumber_fetches_or_there_are_none(self):
+        cd = self._cd()
+        cards = [(3, "Evolving Wilds", "", ""), (8, "Forest", "", "")]
+        assert deck.fetch_pool_pressure(cards, self._notes(cards, cd), cd) is None
+        cards = [(8, "Forest", "", "")]
+        assert deck.fetch_pool_pressure(cards, self._notes(cards, cd), cd) is None
+
+
+class TestBasicRebalanceHint:
+    """No surface asked whether a deck's EXISTING basics sit in the right colours; deck 89's
+    Forest-for-Mountain fix was found by hand-built scratch variants (2026-10-23)."""
+
+    def _deck(self, mountains, forests):
+        cards = [(1, f"Green {i}", "", "") for i in range(20)]
+        cards += [(1, "Red One", "", ""), (mountains, "Mountain", "", ""),
+                  (forests, "Forest", "", "")]
+        mana = {f"green {i}": ("{1}{G}{G}", 3) for i in range(20)}
+        mana["red one"] = ("{2}{R}", 3)
+        sources = {"W": 0, "U": 0, "B": 0, "R": mountains, "G": forests}
+        return cards, mana, sources
+
+    def test_proposes_moving_a_basic_from_the_over_served_colour(self):
+        cards, mana, src = self._deck(mountains=10, forests=7)
+        hint = deck.basic_rebalance_hint(cards, mana, src, 60, {}, {})
+        assert hint and hint[:2] == ("R", "G") and hint[2] > deck._REBALANCE_MIN_GAIN
+        # the cost to the colour losing a basic is reported, not hidden
+        assert any(n == "Red One" and after < before for n, before, after in hint[3])
+
+    def test_silent_below_the_floor_and_never_moves_the_last_basic(self):
+        cards, mana, src = self._deck(mountains=1, forests=16)
+        assert deck.basic_rebalance_hint(cards, mana, src, 60, {}, {}) is None

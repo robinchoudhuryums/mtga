@@ -67,7 +67,8 @@
 #: notes: artifact/enchantment answers remain: Casualties, Binding, Killmonger, Glissa, Grist. Int 15.
 #: notes: LANDS 2026-10-23: a Forest for a Mountain and The Hunter Maze for The Dross Pits (the same
 #: notes: tapped Sphere that sacrifices to draw, in green). Green carries 59 strict pips across 47
-#: notes: cards against red's 6; sources B 24 / R 18 / G 23 -> B 23 / R 17 / G 25. Measured on curve:
+#: notes: cards against red's 6; sources B 24 / R 18 / G 23 -> B 23 / R 17 / G 25 (G 24 once typed
+#: notes: fetches were read correctly, same day: Maestros Theater cannot find a Forest). On curve:
 #: notes: Hornet Queen 48.6 -> 55.3%, Triumph 72.2 -> 77.1%, Szarel 82.4 -> 81.5%, Mayhem Devil 78.3 ->
 #: notes: 75.7%. Parked: Woodland Cemetery for a Swamp (G 26) at the cost of a basic fetch target.
 #: notes: HAND COUNTS no tool makes (from the pile analysis, 2026-10-23): basics are a FINITE fetch

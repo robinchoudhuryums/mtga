@@ -44,6 +44,9 @@ Updated: 2026-10-20 (Brawl tooling plan Batch 7 — see Where I left off)
 
 ## Completed this cycle
 
+- **2026-10-23 — deck-89 tooling plan, Batch 2** (block `deck89-batch2-broad-implement.md`):
+  typed basic fetches count only the basics they name; `consistency` discloses fetch pressure and
+  proposes a basic rebalance (p75-calibrated, 17 of 124). Roster: 1 source count, 1 #1 land pick. Net 3 − 0.
 - **2026-10-23 — deck-89 tooling plan, Batch 1** (block `deck89-batch1-broad-implement.md`):
   `wishlist --add` corrects an unheld printing to the pool's + a soft check_all sweep (1 live row);
   `pool.py --legal brawl` names the 60/100-card split. Net 3 − 1.
@@ -400,6 +403,10 @@ Updated: 2026-10-20 (Brawl tooling plan Batch 7 — see Where I left off)
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
+**2026-10-23 (latest) — deck-89 tooling plan, Batch 2 done** (block `deck89-batch2-broad-implement.md`).
+Suite 2205 passed, check_all OK. Docs NOT yet synced (G-35/G-36/G-37). **Next:** Batch 3 (role + engine
+patterns), then Batch 4 (measure-first).
+
 **2026-10-23 (latest) — deck-89 tooling plan (`.cycle/deck89-tooling-plan.md`), Batch 1 done**
 (block `deck89-batch1-broad-implement.md`). Suite + check_all green. Docs SYNCED 2026-10-23 (G-19, G-08,
 C-01, README, gotchas G-19; CLAUDE.md's live-analysis list corrected from one to seven). **Next:** Batch 2 (typed basic-fetch colours, basics-vs-fetchers disclosure, basic-rebalance hint).

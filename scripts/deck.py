@@ -6144,7 +6144,8 @@ def suggest_lands(d, unowned=False, owned=False, limit=20, fmt=None, any_format=
         lp = land_production(txt, r.get("Color(s)"))
         prod = set(lp["free"]) | set(lp["restricted"]) | set(lp["conditional"])
         if lp["fetch"]:
-            prod |= set(deck_colors)
+            _ft = lp.get("fetch_types")
+            prod |= set(deck_colors) if _ft is None else set(deck_colors) & _ft
         on_color = prod & deck_colors
         if not on_color:
             continue  # off-color / colorless-only: doesn't fix THIS deck's manabase
@@ -7078,7 +7079,7 @@ def _commitment(n):
 # Labels `deck_source_profile` files a nonbasic land under, in the order they print.
 _SOURCE_KINDS = (("any", "any colour, no extra cost"),
                  ("any-cost", "any colour for an extra mana (counted — a real source from the turn after it lands, a filter on curve)"),
-                 ("fetch", "basic-land fetch (counted for each colour the deck runs a basic of)"),
+                 ("fetch", "basic-land fetch (counted for each colour the deck runs a basic of that it can find)"),
                  ("restricted", "spend-only mana (NOT counted — read the restriction)"),
                  ("gated", "colour gated on a land TYPE (counted by the chance a land of that type is out by turn three — G-87)"))
 
@@ -7093,7 +7094,9 @@ def deck_source_profile(cards, by_key, by_name, carddata, meta=None, deck_meta=N
     (`lib.land_production`): colours it adds freely, colours it adds for an extra mana
     ("{1}, {T}: Add one mana of any color" — counted, since the land IS a source of that
     colour from the turn after it lands, and labelled so a reader can discount it on
-    curve), and a basic-land fetch, counted for each colour the deck runs a basic of.
+    curve), and a basic-land fetch, counted for each colour the deck runs a basic of — only
+    the basic TYPES a typed fetch names (`fetch_types`: a hideout's "basic Forest, Plains, or
+    Island"), every basic for an untyped one (2026-10-23).
     Spend-only mana ("Spend this mana only to cast a creature spell") is NOT counted and
     is reported instead — whether it is a source depends on what you are casting. Mana
     dorks are not lands and are never counted.
@@ -7165,7 +7168,10 @@ def deck_source_profile(cards, by_key, by_name, carddata, meta=None, deck_meta=N
                 shares.append(f"{col} {round(share * 100)}%")
             notes["gated"].append((q, f"{n} ({', '.join(shares)})"))
         if prod["fetch"]:
-            counted |= basics_present
+            # A TYPED fetch (a hideout's "basic Forest, Plains, or Island") reaches only
+            # the basics it names — `fetch_types` None means any basic (2026-10-23).
+            ft = prod.get("fetch_types")
+            counted |= basics_present if ft is None else basics_present & ft
             notes["fetch"].append((q, n))
         if prod["any"]:
             if set("WUBRG") <= prod["free"]:
@@ -7217,6 +7223,44 @@ def deck_commander_colors(deck_meta, carddata=None):
     if normalize_format(deck_meta.get("format")) not in _COMMANDER_FORMATS:
         return set()
     return commander_identity_lock(deck_meta, carddata)
+
+
+# A card that lets you REPLAY a land from the graveyard (Szarel, Ramunap Excavator,
+# Crucible of Worlds' "play lands from your graveyard") — each replayed fetch is another
+# search against the same finite basics.
+_LAND_REPLAY_RE = re.compile(r"\bplay (?:lands|land cards) from your graveyard", re.I)
+
+
+def fetch_pool_pressure(cards, source_notes, carddata, deck_meta=None):
+    """(fetchers, basics, replayers) when the deck's basic-land fetches number at least
+    its basics, else None.
+
+    `deck_source_profile` counts each basic fetch as a source of every colour the deck
+    runs a basic of, which is true of the FIRST search and silent about the rest: deck 89
+    (2026-10-23) ran 11 basic fetches against 10 basics, with a commander that replays
+    fetches from the graveyard, so a long game runs the basics out — a failed search still
+    sacrifices the fetch, so a sacrifice payoff still triggers, but the land is lost. No
+    count here models depletion; this DISCLOSES it. `replayers` names the deck's cards
+    (commander included) that let it replay lands from the graveyard, which makes the
+    pressure worse. Fires on 1 of 124 decks at landing (fetchers >= basics; the next
+    closest, 69b, is 6 against 8).
+    """
+    fetchers = sum(q for q, _n in (source_notes or {}).get("fetch", []))
+    if not fetchers:
+        return None
+    basics = sum(q for q, n, _s, _c in cards
+                 if n.lower().removeprefix("snow-covered ") in BASICS)
+    if fetchers < basics:
+        return None
+    names = [n for _q, n, _s, _c in cards]
+    names += [k for k in _header_card_keys(deck_meta or {}, "commander")]
+    seen, replayers = set(), []
+    for n in names:
+        cd = carddata.get(n.lower()) or {}
+        if n.lower() not in seen and _LAND_REPLAY_RE.search(cd.get("text") or ""):
+            seen.add(n.lower())
+            replayers.append(cd.get("name") or n)
+    return fetchers, basics, replayers
 
 
 _NONLAND_COND_LABEL = {True: ", extra cost", "board": ", board-dependent",
@@ -7470,6 +7514,69 @@ def cast_on_curve_rows(cards, mana, sources, N, by_key, by_name, on_play=True, t
     return rows
 
 
+# The smallest total cast-on-curve shortfall a basic swap must recover before
+# `basic_rebalance_hint` speaks, in summed percentage points across the deck's cards.
+# Calibrated on the roster (2026-10-23): see the docstring.
+# Measured over the 124-deck roster: 69 decks have SOME positive single-swap gain, nonzero
+# gains run p25 4.6 / p50 8.6 / p75 16.0 / p90 25.3 / max 45.8 points. A floor of 0 would
+# fire on 56% of the roster for gains of a point or two (the G-07 saturation shape); p75
+# of its own axis, the G-85 rule, fires on about 14%.
+_REBALANCE_MIN_GAIN = 16.0
+
+
+def basic_rebalance_hint(cards, mana, sources, N, by_key, by_name, on_play=True,
+                         target=0.90):
+    """(from_colour, to_colour, gain, moved) for the ONE basic swap that most lowers the
+    deck's cast-on-curve shortfall, or None when no swap clears `_REBALANCE_MIN_GAIN`.
+
+    Every surface here prices sources and recommends LANDS to add; none ever asked whether
+    the deck's existing basics sit in the right colours. Deck 89 (2026-10-23) ran 18 red
+    sources for 6 red-pip cards against 23 green for 47, and the fix — a Forest for a
+    Mountain — was found by hand-building scratch variants. This is that search: for each
+    pair of basic types the deck already runs (X with at least two basics, so the last one
+    is never moved and the fetches keep every colour they reach), move one X basic to Y and
+    re-price every card through `cast_on_curve_rows`, the table `consistency` prints.
+    `gain` is the summed shortfall below `target` the swap recovers (in points, net of
+    what the colour losing a source gives up); `moved`
+    lists [(name, before, after)] for the cards whose probability moved most, worst-hit
+    first, so the cost on the colour losing a source is printed beside the gain.
+
+    APPROXIMATION, disclosed: it moves one SOURCE, so a basic's land TYPE (which also
+    enables checklands and Verges, G-87) is not re-priced, and a swap into a colour with no
+    basic yet is not proposed. A hint, never an edit.
+    """
+    basics = {}
+    for q, n, _s, _c in cards:
+        col = BASIC_COLOR.get(n.lower().removeprefix("snow-covered "))
+        if col and n.lower().removeprefix("snow-covered ") in BASICS:
+            basics[col] = basics.get(col, 0) + q
+
+    def _shortfall(rows):
+        return sum(max(0.0, target - r[0]) for r in rows) * 100
+
+    base_rows = cast_on_curve_rows(cards, mana, sources, N, by_key, by_name, on_play, target)
+    base = _shortfall(base_rows)
+    if base <= 0:
+        return None
+    best = None
+    for x in sorted(c for c, k in basics.items() if k >= 2):
+        for y in sorted(c for c in basics if c != x):
+            alt = dict(sources)
+            alt[x] = alt.get(x, 0) - 1
+            alt[y] = alt.get(y, 0) + 1
+            rows = cast_on_curve_rows(cards, mana, alt, N, by_key, by_name, on_play, target)
+            gain = base - _shortfall(rows)
+            if best is None or gain > best[2] + 1e-9:
+                before = {r[1]: r[0] for r in base_rows}
+                moved = sorted(((r[1], before.get(r[1], r[0]), r[0]) for r in rows
+                                if abs(r[0] - before.get(r[1], r[0])) >= 0.005),
+                               key=lambda t: (t[2] - t[1], t[0]))
+                best = (x, y, gain, moved)
+    if best is None or best[2] <= _REBALANCE_MIN_GAIN:
+        return None
+    return best
+
+
 # Roster castability sweep (Batch E, 2026-10-08). Calibrated on the roster: see
 # `castability_shortfalls`.
 CURVE_SWEEP_FLOOR = 0.50
@@ -7648,6 +7755,16 @@ def cmd_consistency(args):
                   + ", ".join(f"{c} ({sources[c]})" for c in splash)
                   + " — a card needing one of these on curve reads low below; treat it as a "
                     "late-game splash (cast when you've drawn the source), not a curve play.")
+    _fpp = fetch_pool_pressure(cards, source_notes, carddata, deck_meta=meta)
+    if _fpp:
+        _f, _b, _rep = _fpp
+        print(f"\n  ⓘ {_f} basic-land fetch(es) against {_b} basic(s)"
+              + (f", and {', '.join(_rep)} replay{'s' if len(_rep) == 1 else ''} lands from the "
+                 "graveyard" if _rep else "")
+              + ": the counts above price the FIRST search, not a library that runs out of "
+                "basics.\n    A search that finds nothing still sacrifices the fetch (a "
+                "sacrifice payoff still triggers), but the land drop is lost. More basics, "
+                "or fetches that also find typed duals, ease it.")
     # The heading above says "lands producing each color" and means it — so say what that
     # EXCLUDES. Every figure on this page is priced off the land count (G-35), while
     # `suggest --ramp` recommends the nonland sources that count cannot see; the two
@@ -7719,6 +7836,20 @@ def cmd_consistency(args):
             print(f"\n  {len(below)} card(s) below {100*target:.0f}% on curve — the → note is the "
                   f"Karsten source count to reach target, a splash flag for a thin (≤{SPLASH_MAX}-source) "
                   "color (cast late or cut), or a color-hungry flag for an early double pip.")
+    _reb = basic_rebalance_hint(cards, mana, sources, N, by_key, by_name, on_play, target)
+    if _reb:
+        _x, _y, _gain, _moved = _reb
+        _bn = {"W": "Plains", "U": "Island", "B": "Swamp", "R": "Mountain", "G": "Forest"}
+        _fmt = lambda ts: ", ".join(f"{n[:28]} {100*a:.0f}→{100*z:.0f}%" for n, a, z in ts)
+        _hurt = [t for t in _moved if t[2] < t[1]][:3]
+        _help = [t for t in reversed(_moved) if t[2] > t[1]][:3]
+        print(f"\n  ⓘ basic rebalance: one {_bn[_x]} → {_bn[_y]} recovers {_gain:.0f} points of "
+              f"cast-on-curve shortfall summed over the deck"
+              + (f" — gains {_fmt(_help)}" if _help else "")
+              + (f"; costs {_fmt(_hurt)}" if _hurt else "") + ".")
+        print("    Same model as the table above, moving one SOURCE (a basic's land TYPE, which "
+              "checklands and Verges read, is not re-priced). A hint, not a verdict: weigh "
+              "which cards matter.")
     print("\nModel: hypergeometric (exact); per-color independence for multi-color costs "
           "(a mild over-estimate); a hybrid binds only when the deck has sources for just ONE "
           "of its halves, in which case it IS that colour. A planning aid, not a "
