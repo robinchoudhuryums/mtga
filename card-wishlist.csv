@@ -171,6 +171,9 @@ Delirium — This creature gets +1/+2 and has vigilance as long as there are fou
 End-Blaze Epiphany,Instant,"End-Blaze Epiphany deals X damage to target creature. When that creature dies this turn, exile a number of cards from the top of your library equal to its power, then choose a card exiled this way. Until the end of your next turn, you may play that card.",R,burn,ECL,134,Rare,24,X-burn removal + impulse; Quintorius/exile payoff,6.0,hand
 Iron-Shield Elf,Creature — Elf Warrior,"Discard a card: This creature gains indestructible until end of turn. Tap it. (Damage and effects that say ""destroy"" don't destroy it. If its toughness is 0 or less, it still dies.)",B,Elf; Warrior,ECL,108,Uncommon,52a,,2.5,seed
 Spell Snare,Instant,Counter target spell with mana value 2.,U,counterspell,ECL,71,Uncommon,51,,3.0,seed
+"Korvold, Fae-Cursed King",Legendary Creature — Dragon Noble,"Flying
+Whenever Korvold enters or attacks, sacrifice another permanent.
+Whenever you sacrifice a permanent, put a +1/+1 counter on Korvold and draw a card.",B/R/G,Dragon; Noble; counters; card draw; sacrifice; flying; evasion,ELD,329,Mythic,89,deck 89 tune 2026-10-23,8.0,seed
 Archenemy's Charm,Instant,"Choose one —
 • Exile target creature or planeswalker.
 • Return one or two target creature and/or planeswalker cards from your graveyard to your hand.
@@ -293,9 +296,6 @@ Way of the Necromancer,Legendary Enchantment,"When Way of the Necromancer enters
 Whenever a creature you control dies, put a loyalty counter on each planeswalker you control.",B,counters; card draw; tokens; etb; surveil; graveyard; empower jace,FRA,239,Uncommon,89,deck 89 tune 2026-10-23,4.5,seed
 Reflecting Pool,Land,{T}: Add one mana of any type that a land you control could produce.,Colorless,mana,FRC,23,Rare,84,,4.0,seed
 Command Tower,Land,{T}: Add one mana of any color in your commander's color identity.,Colorless,mana,FRC,22,Common,88,,1.5,seed
-"Vraska, Golgari Queen",Legendary Planeswalker — Vraska,"+2: You may sacrifice another permanent. If you do, you gain 1 life and draw a card.
-−3: Destroy target nonland permanent with mana value 3 or less.
-−9: You get an emblem with ""Whenever a creature you control deals combat damage to a player, that player loses the game.""",B/G,Vraska; planeswalker; lifegain; card draw; sacrifice; removal,GRN,213,Mythic,89,deck 89 tune 2026-10-22,10.0,seed
 "Minsc & Boo, Timeless Heroes",Legendary Planeswalker — Minsc,"When Minsc & Boo enters and at the beginning of your upkeep, you may create Boo, a legendary 1/1 red Hamster creature token with trample and haste.
 +1: Put three +1/+1 counters on up to one target creature with trample or haste.
 −2: Sacrifice a creature. When you do, Minsc & Boo deals X damage to any target, where X is that creature's power. If the sacrificed creature was a Hamster, draw X cards.

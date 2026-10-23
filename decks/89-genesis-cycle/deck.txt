@@ -51,7 +51,13 @@
 #: notes: Daemogoth Titan, Honest Rutstein and Lord Dregg, which the owner wants to keep; Lukka,
 #: notes: Overkill, Nissa of Shadowed Boughs, Garruk, Cursed Huntsman, Evolution Sage and Seedship
 #: notes: Broodtender are kept too. Pending: Annihilating Glare, Sylvan Safekeeper, Snakeskin Veil,
-#: notes: Toxic Deluge, Arcane Amphisbaena, Six, The Ozolith, Ziatora, and the rest of the Mutant layer.
+#: notes: Toxic Deluge, Arcane Amphisbaena or Grist, Voracious Larva, Six, The Ozolith, Ziatora, and the rest of the Mutant layer.
+#: notes: SWAP 2026-10-23: Korvold, Fae-Cursed King for Vraska, Golgari Queen (the owner found
+#: notes: Vraska cannot be crafted on Arena). Korvold draws a card and grows on every sacrifice,
+#: notes: and sacrifices a permanent itself on entry and attack. Interaction 16 -> 15 (Vraska's -3);
+#: notes: the deck now runs 6 planeswalkers. Grist, Voracious Larva was weighed for the slot and
+#: notes: parked as a deathtouch add instead: its flip needs a creature entering from the graveyard
+#: notes: (Seedship Broodtender, Eddie Brock, Tyvar's -2, Nissa's -5).
 #: notes: SWAPS 2026-10-23: Fanatic of Rhonas for a Swamp (37 lands: a {1}{G} dork whose Ferocious
 #: notes: {G}{G}{G}{G} needs one power-4 creature; keepable 81.2% -> 79.9%, the dork itself not counted);
 #: notes: Way of the Paradox for Vraska, the Cutting Glare (an extra land drop per loyalty activation
@@ -127,6 +133,7 @@
 1 Mayhem Devil (WAR) 204
 1 Eddie Brock // Venom, Lethal Protector (SPM) 55
 1 Bontu the Glorified (AKR) 95
+1 Korvold, Fae-Cursed King (ELD) 329
 
 # Creatures — ramp
 1 Dryad of the Ilysian Grove (THB) 169
@@ -138,7 +145,6 @@
 1 Garruk, Cursed Huntsman (ELD) 191
 1 Lukka, Bound to Ruin (ONE) 207
 1 Nissa of Shadowed Boughs (ZNR) 231
-1 Vraska, Golgari Queen (GRN) 213
 1 Tyvar, Jubilant Brawler (ONE) 218
 
 # Noncreature — removal, Sagas and engines
