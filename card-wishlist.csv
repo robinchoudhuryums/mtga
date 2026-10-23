@@ -453,6 +453,9 @@ When this creature enters, you may pay {1}{G}. If you do, proliferate. (Choose a
 The Dross Pits,Land — Sphere,"This land enters tapped.
 {T}: Add {B}.
 {1}{B}, {T}, Sacrifice this land: Draw a card.",B,Sphere; card draw; sacrifice; mana,ONE,251,Common,89,deck 89 tune 2026-10-22,1.5,seed
+The Hunter Maze,Land — Sphere,"This land enters tapped.
+{T}: Add {G}.
+{1}{G}, {T}, Sacrifice this land: Draw a card.",G,Sphere; card draw; sacrifice; mana,ONE,253,Common,89,,1.5,seed
 Blooming Marsh,Land,"This land enters tapped unless you control two or fewer other lands.
 {T}: Add {B} or {G}.",B/G,mana,OTJ,266,Rare,21; 6,Manabase upgrade: de-tapland Gastromancer (21) B->A; reusable across WB/BG/GW decks. Also firms deck 8's thin green (Killmonger/Ygra) — fungible. | Also Abzan reanimator deck 6 (Dead or Alive) — same WBG fixing; fungible craft.,6.5,hand
 Concealed Courtyard,Land,"This land enters tapped unless you control two or fewer other lands.

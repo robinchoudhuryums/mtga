@@ -65,6 +65,17 @@
 #: notes: refills what damage removes, Bushmaster makes each fight a kill). Escape exiles six
 #: notes: graveyard cards, i.e. the lands Szarel replays: a late-game option, not the plan. Other
 #: notes: artifact/enchantment answers remain: Casualties, Binding, Killmonger, Glissa, Grist. Int 15.
+#: notes: LANDS 2026-10-23: a Forest for a Mountain and The Hunter Maze for The Dross Pits (the same
+#: notes: tapped Sphere that sacrifices to draw, in green). Green carries 59 strict pips across 47
+#: notes: cards against red's 6; sources B 24 / R 18 / G 23 -> B 23 / R 17 / G 25. Measured on curve:
+#: notes: Hornet Queen 48.6 -> 55.3%, Triumph 72.2 -> 77.1%, Szarel 82.4 -> 81.5%, Mayhem Devil 78.3 ->
+#: notes: 75.7%. Parked: Woodland Cemetery for a Swamp (G 26) at the cost of a basic fetch target.
+#: notes: HAND COUNTS no tool makes (from the pile analysis, 2026-10-23): basics are a FINITE fetch
+#: notes: pool (10 against 11 basic fetchers that Szarel REPLAYS); a failed search still sacrifices,
+#: notes: so Szarel still fires and only the ramp stops. Nothing counts nontoken sacrifices per turn
+#: notes: or Szarel's power. `cuts` reads extra-land-drop cards (Azusa, Dryad), Hardened Scales and
+#: notes: Doubling Season as roleless, and `engines` sees 1 counters payoff where Bushmaster,
+#: notes: Vorinclex and Rhonas are payoffs: that is what the #: protect: list covers.
 #: notes: SWAP 2026-10-23: Korvold, Fae-Cursed King for Vraska, Golgari Queen (the owner found
 #: notes: Vraska cannot be crafted on Arena). Korvold draws a card and grows on every sacrifice,
 #: notes: and sacrifices a permanent itself on entry and attack. Interaction 16 -> 15 (Vraska's -3);
@@ -205,8 +216,8 @@
 1 Blood Crypt (ECL) 262
 1 Stomping Ground (EOE) 258
 1 Command Tower (FRC) 22
-1 The Dross Pits (ONE) 251
+1 The Hunter Maze (ONE) 253
 1 Lotus Field (M20) 249
 3 Swamp (FRA) 285
-4 Forest (FRA) 289
-3 Mountain (FRA) 287
+5 Forest (FRA) 289
+2 Mountain (FRA) 287
