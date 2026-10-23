@@ -2083,7 +2083,9 @@ _ROLE_PATTERNS = {
         # DIVIDED damage — the Fiery Confluence / Death to Our Enemies template. Every
         # fixed-damage pattern above expects "to target"/"to any target" immediately after
         # the number, and this one says "divided as you choose among …" instead.
-        r"deals? \d+ damage divided as you choose among",
+        r"deals? (?:\d+|x) damage divided as you choose among",
+        # (`x` since 2026-10-23: Lukka, Bound to Ruin's −4, Fire Covenant, Huatli and seven
+        # more say "X damage divided" and scored no Removal — 10 pool cards, all removal.)
         # -N/-N or -X/-X shrink on a targeted creature (incl. "creature an opponent
         # controls gets -X/-X" — Cloud of Darkness, Wick's Patrol).
         r"target creature (?:an opponent controls )?gets -[0-9x]",
@@ -2565,7 +2567,14 @@ _ROLE_PATTERNS = {
                       r"you can spend mana of any type",
                       # All-basic-land-types (K-03 names this shape as a fixer the tagger
                       # could not see); Energybending and friends.
-                      r"lands? you control (?:gain|have) all basic land types"],
+                      r"lands? you control (?:gain|have) all basic land types",
+                      # EXTRA LAND DROPS (2026-10-23). Azusa and Dryad of the Ilysian Grove
+                      # scored NO role, so `cuts` ranked Dryad deck 89's #1 cut in a deck
+                      # built on playing lands; Exploration, Oracle of Mul Daya, The Gitrog
+                      # Monster and 29 more are the same shape. An extra land a turn is
+                      # acceleration by definition. 32 pool cards; Ramp is not a
+                      # `tier_band` term.
+                      r"play (?:an|one|two|three|up to (?:one|two|three)|x) additional lands?"],
     # KNOWN RESIDUAL on the any-colour patterns above: they match the REMINDER TEXT of a
     # Treasure token, including on cards that hand the Treasure to someone else ("Exile
     # target nonland permanent. ITS CONTROLLER creates a Treasure token"). Those pick up a
@@ -2602,6 +2611,12 @@ _ROLE_PATTERNS = {
         # is what the REST of the deck does is a payoff by definition; the doubler AXIS
         # (`doubler_support`) is a separate, deliberately untaken question.
         r"triggers an additional time",
+        # REPLACEMENT MULTIPLIERS (2026-10-23): "twice that many … instead" / "that many plus
+        # one … instead" — Doubling Season, Hardened Scales, Vorinclex, Parallel Lives,
+        # Anointed Procession, Branching Evolution, Ozolith. The same argument as the trigger
+        # doubler above: the card's value is the rest of the deck. 32 pool cards, all
+        # multipliers (an opponent HALVING clause reads "half", which this does not match).
+        r"(?:twice that many|that many plus (?:one|two|\d))[^.]{0,80}?instead",
         # COPY EFFECTS (2026-10-07), the same argument as the multipliers above: a clone or
         # a token copy is worth exactly what it copies, so its value is the REST of the
         # deck. ~130 pool cards scored no role at all — Echocasting Symposium, Multiversal
@@ -4026,6 +4041,12 @@ ENGINE_THEMES = {
             # saying 'counter' in the clause.
             r"greater than (its|that creature's) base power",
             r"if[^.]*would[^.]*\+1/\+1 counter[^.]*instead", r"twice that many \+1/\+1",
+            # 2026-10-23: deck 89 read "counters: 15 enablers / 1 payoff" through three real
+            # payoffs. Bushmaster's "each other creature you control WITH a +1/+1 counter on
+            # it has deathtouch" names creatures-with-counters, not the counter going on; and
+            # Doubling Season / Vorinclex double "counters", never saying "+1/+1".
+            r"creatures? you control with (?:a|one or more) \+1/\+1 counters?",
+            r"twice that many of (?:those|each of those kinds of) counters",
             r"remove (a|one|x|\d+)[^.]*\+1/\+1 counter", r"move (a|one|any number of)[^.]*\+1/\+1 counter",
         ],
     },

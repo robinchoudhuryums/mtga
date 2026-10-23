@@ -8,7 +8,7 @@ Each batch is one `/broad-implement` run. Delete this file once Batch 4 lands; t
 |---|---|
 | 1 — ingest/CLI correctness (B1-1, B1-2) | DONE 2026-10-23 (block `deck89-batch1-broad-implement.md`; B1-2's `--within` half not applicable — it takes colours) |
 | 2 — manabase sources (B2-1..3) | DONE 2026-10-23 (block `deck89-batch2-broad-implement.md`) |
-| 3 — role + engine patterns (B3-1..4) | open |
+| 3 — role + engine patterns (B3-1..4) | DONE 2026-10-23 (block `deck89-batch3-broad-implement.md`) |
 | 4 — measure-first (B4-1, B4-2) | open |
 
 Two corrections were made while scoping: Rhonas the Indomitable is NOT a counters payoff (its

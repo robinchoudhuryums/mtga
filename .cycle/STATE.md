@@ -44,6 +44,9 @@ Updated: 2026-10-20 (Brawl tooling plan Batch 7 — see Where I left off)
 
 ## Completed this cycle
 
+- **2026-10-23 — deck-89 tooling plan, Batch 3** (block `deck89-batch3-broad-implement.md`):
+  extra land drops → Ramp, replacement multipliers → Payoff, X-divided damage → Removal, engines counters
+  payoffs. 0 tier floors; interaction +1 in decks 76/89; cuts #1 changed in deck 89 only. Net 4 − 0.
 - **2026-10-23 — deck-89 tooling plan, Batch 2** (block `deck89-batch2-broad-implement.md`):
   typed basic fetches count only the basics they name; `consistency` discloses fetch pressure and
   proposes a basic rebalance (p75-calibrated, 17 of 124). Roster: 1 source count, 1 #1 land pick. Net 3 − 0.
@@ -403,6 +406,10 @@ Updated: 2026-10-20 (Brawl tooling plan Batch 7 — see Where I left off)
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
+**2026-10-23 (latest) — deck-89 tooling plan, Batch 3 done** (block `deck89-batch3-broad-implement.md`).
+Suite 2210 passed, check_all OK. Docs NOT yet synced (K-12, G-23). **Next:** Batch 4 (measure-first:
+nontoken sacrifice; central-theme count vs chosen-add rank).
+
 **2026-10-23 (latest) — deck-89 tooling plan, Batch 2 done** (block `deck89-batch2-broad-implement.md`).
 Suite 2205 passed, check_all OK. Docs SYNCED 2026-10-23 (G-35/G-36/G-37 + long forms, README consistency). **Next:** Batch 3 (role + engine
 patterns), then Batch 4 (measure-first).

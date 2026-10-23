@@ -36,7 +36,6 @@ Aurora Awakener
 Avenger of the Fallen
 Avengers: Under Siege
 Azula, Cunning Usurper
-Azusa, Lost but Seeking
 Back-Alley Gardener
 Badgermole
 Ball Lightning
@@ -75,7 +74,6 @@ Caparocti Sunborn
 Captain America, First Avenger
 Captain America, Living Legend
 Captain Mar-Vell, Space-Born
-Caradora, Heart of Alacria
 Casey Jones, Jury-Rig Justiciar
 Central Elevator // Promising Stairs
 Cephalid Inkmage
@@ -111,7 +109,6 @@ Don & Leo, Problem Solvers
 Donatello, Mutant Mechanic
 Donatello, the Brains
 Dori, Bearer of Friends
-Doubling Season
 Dracogenesis
 Draconautics Engineer
 Draconic Visitor
@@ -124,7 +121,6 @@ Dreaded Bat-Cloud
 Dream Harvest
 Dreams of Laguna
 Drix Fatemaker
-Dryad of the Ilysian Grove
 Dwalin, Weaponmaster
 Earth Kingdom Soldier
 Earth's Mightiest Heroes
@@ -188,7 +184,6 @@ Guidelight Matrix
 Guiding Hydra
 Hama, the Bloodbender
 Hammerhead, Maggia Boss
-Hardened Scales
 Hauntwoods Shrieker
 Hawkeye, Master Marksman
 Hawkeye, Young Avenger
@@ -250,12 +245,9 @@ Lifecraft Engine
 Lilysplash Mentor
 Little Bear
 Living Brain, Mechanical Marvel
-Loading Zone
 Loki Laufeyson
 Long Feng, Grand Secretariat
-Loot, Exuberant Explorer
 Lorehold, the Historian
-Lukka, Bound to Ruin
 Magic Pot
 Magitek Armor
 Mai, Jaded Edge
@@ -266,7 +258,6 @@ Masked Meower
 Master Pakku
 Master's Councillors
 Mechanical Mobster
-Michelangelo, Weirdness to 11
 Mind Transfer Protocol
 Miner's Guidewing
 Mirkwood Pathmaker
@@ -307,7 +298,6 @@ Outrageous Robbery
 Ozai's Cruelty
 Pain 101
 Paradox Surveyor
-Parallel Lives
 Paranormal Analyst
 Perigee Beckoner
 Personify
@@ -360,7 +350,6 @@ Secret of Bloodbending
 Seedglaive Mentor
 Seismic Sense
 Servant of the Stinger
-Shang-Chi, Martial Mentor
 Shark Shredder, Killer Clone
 She-Hulk, Attorney-at-Law
 Sheriff of Safe Passage
@@ -460,7 +449,6 @@ Virulent Silencer
 Virus Beetle
 Vision Quest
 Vito's Inquisitor
-Vorinclex, Monstrous Raider
 Voyager Glidecar
 Vulture, Scheming Scavenger
 War Balloon
@@ -483,6 +471,5 @@ Wolverine, Claws Out
 Wonder Man, Hollywood Hero
 Woodwork Prodigy // Soul Tether
 Y'shtola Rhul
-Yoshimaru, Beloved Companion
 Zog, Triceraton Castaway
 Zurgo, Thunder's Decree

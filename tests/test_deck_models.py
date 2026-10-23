@@ -1838,3 +1838,47 @@ class TestBasicRebalanceHint:
     def test_silent_below_the_floor_and_never_moves_the_last_basic(self):
         cards, mana, src = self._deck(mountains=1, forests=16)
         assert deck.basic_rebalance_hint(cards, mana, src, 60, {}, {}) is None
+
+
+class TestDeck89RolePatternHoles:
+    """2026-10-23 (deck-89 tooling Batch 3): four cards that drive deck 89 scored no role
+    (or no engine side), so `cuts` offered Dryad of the Ilysian Grove as the deck's #1 cut
+    and `engines` read "counters: 15 enablers / 1 payoff". Printed text, per G-67."""
+
+    AZUSA = "You may play two additional lands on each of your turns."
+    DRYAD = ("You may play an additional land on each of your turns.\n"
+             "Lands you control are every basic land type in addition to their other types.")
+    SCALES = ("If one or more +1/+1 counters would be put on a creature you control, that "
+              "many plus one +1/+1 counters are put on it instead.")
+    SEASON = ("If an effect would create one or more tokens under your control, it creates "
+              "twice that many of those tokens instead.\nIf an effect would put one or more "
+              "counters on a permanent you control, it puts twice that many of those "
+              "counters on that permanent instead.")
+    LUKKA_M4 = ("−4: Lukka deals X damage divided as you choose among any number of target "
+                "creatures and/or planeswalkers, where X is the greatest power among "
+                "creatures you control as you activate this ability.")
+    BUSHMASTER = ("Deathtouch\nEach other creature you control with a +1/+1 counter on it "
+                  "has deathtouch.")
+    HALVER = ("If an opponent would put one or more counters on a permanent or player, they "
+              "put half that many of each of those kinds of counters on that permanent or "
+              "player instead, rounded down.")
+
+    def test_extra_land_drops_are_ramp(self):
+        assert "Ramp / fixing" in deck.classify_roles(self.AZUSA)
+        assert "Ramp / fixing" in deck.classify_roles(self.DRYAD)
+
+    def test_replacement_multipliers_are_payoffs(self):
+        assert "Payoff / engine" in deck.classify_roles(self.SCALES)
+        assert "Payoff / engine" in deck.classify_roles(self.SEASON)
+
+    def test_an_opponent_halving_clause_is_not_a_payoff(self):
+        # NEGATIVE assertion (G-67's mass-bounce lesson): a pattern made broader by
+        # accident passes every positive test.
+        assert "Payoff / engine" not in deck.classify_roles(self.HALVER)
+
+    def test_divided_x_damage_is_removal(self):
+        assert "Removal (spot)" in deck.classify_roles(self.LUKKA_M4)
+
+    def test_counters_engine_reads_creatures_with_counters_and_counter_doublers(self):
+        assert "payoff" in deck.engine_roles(self.BUSHMASTER).get("counters", set())
+        assert "payoff" in deck.engine_roles(self.SEASON).get("counters", set())
