@@ -368,7 +368,8 @@ is protecting.
   `Historic Brawl` → `brawl`), never the raw string: until BS8-04 a Historic-only card
   passed `legal` in 3-brawl and `suggest` on it returned 2,238 non-Standard picks.** `pool.py
   --legal` and the rotation views read it too since BS11-06/40, so `--legal brawl` is the
-  60-card format and an unknown name is refused. [G-08]
+  60-card format and an unknown name is refused — and since 2026-10-23 it SAYS so and names
+  `--legal "historic brawl"`, because the pool-key note alone was read past in a 100-card sweep. [G-08]
 - **`check` answers "do I own this deck"; `legal <id>` answers "is it a LEGAL deck"** —
   size, copy limit and each nonbasic's legality in the deck's `#: format:`, format-aware
   for Alchemy and Brawl (a Brawl deck also validates `#: commander:`, every card's colour
@@ -490,6 +491,9 @@ is protecting.
   LEADING `--rank`/`--budget` until the flag landed (batch 6).
   **`--target` matches deck-id TOKENS and `--set` is exact** (BS11-34: `--target 4` used to
   match 14/40a/54); `--note` alone stays a substring search.
+  **`--add` corrects a pasted printing nothing holds to the pool's** (2026-10-23: a hand-typed
+  `(THB) 226` was stored verbatim for a real 224) and prints the change; `check_all` soft-sweeps
+  the rest (`wishlist.printing_issues`, read through `deck.known_printings` like INV-04).
   **The file's rows end in CRLF** (the `csv` default); a rewrite with `lineterminator='\n'` touches
   every row, so a one-cell edit reads as a 164-line diff. Write it through `wishlist.py`'s own
   writer or the default terminator. **`--by-set` covers WISHLISTED cards only** — for what
@@ -1631,7 +1635,9 @@ collection-freshness sweep (`check_all.collection_freshness_soft`: are the repo'
 counts trustworthy — `lib.collection_stamp_note` had three states and three consumers and
 this gate, the one that runs every session, was not one of them), and (2026-10-20) a TWELFTH,
 the blank-legality count (`check_all.pool_legality_soft`: a pool row with no Legalities reads
-as unverified, so a stale pool hides behind the honest verdict). Two things to know
+as unverified, so a stale pool hides behind the honest verdict), and (2026-10-23) a THIRTEENTH,
+the wishlist-printing sweep (`wishlist.printing_issues`: a row naming a `(SET) COLLECTOR#` no
+pool or library row holds — the wishlist twin of INV-04's unverified-printing line). Two things to know
 before touching it: it imports `deck` as a MODULE and calls its MODEL functions (no
 `cmd_*` at all), so it never
 builds an argparse tree — the CLI surface is covered by `tests/test_cli.py` and a CI smoke
@@ -2095,8 +2101,12 @@ is invisible, and a handoff nobody is told to read is the same failure one layer
   consolidated swap plan; it is TEMPORARY and says so, and it is deleted once the
   swaps land. Named here because a fresh session loads nothing else, and the whole
   point of committing it per batch is that it outlives one context window.
-  **ONE is live as of 2026-10-02**: `78-brawl-pile-analysis.md` (78-historic-brawl —
-  Tier 1 applied, the Tier 2 and Tier 3 waves still open). `60-redline-pile-analysis.md`
+  **SEVEN are live as of 2026-10-23**, each awaiting owner picks or sign-off:
+  `78-brawl-pile-analysis.md` (Tier 2/3 waves open), `54-from-54b-`, `84-marvel-`,
+  `86-fantastic-four-`, `fra-bant-`, `fra-bur-` and `fra-rgu-pile-analysis.md`; read each
+  one's `Status:` line. **`deck89-tooling-plan.md`** is a live batch PLAN (Batch 1 done, 2–4
+  open), deleted when Batch 4 lands. `89-szarel-` was folded into deck 89 and deleted
+  2026-10-23. `60-redline-pile-analysis.md`
   was deleted 2026-10-02 when its ten Reality Fracture swaps landed (findings folded into
   deck 60's `#: notes:`). The
   four before them (`prune-analysis.md`, `wylie-tap-analysis.md`,

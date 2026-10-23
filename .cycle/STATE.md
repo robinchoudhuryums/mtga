@@ -401,8 +401,8 @@ Updated: 2026-10-20 (Brawl tooling plan Batch 7 — see Where I left off)
 
 ## Where I left off
 **2026-10-23 (latest) — deck-89 tooling plan (`.cycle/deck89-tooling-plan.md`), Batch 1 done**
-(block `deck89-batch1-broad-implement.md`). Suite + check_all green. Docs NOT yet synced (G-19, G-08,
-C-01). **Next:** Batch 2 (typed basic-fetch colours, basics-vs-fetchers disclosure, basic-rebalance hint).
+(block `deck89-batch1-broad-implement.md`). Suite + check_all green. Docs SYNCED 2026-10-23 (G-19, G-08,
+C-01, README, gotchas G-19; CLAUDE.md's live-analysis list corrected from one to seven). **Next:** Batch 2 (typed basic-fetch colours, basics-vs-fetchers disclosure, basic-rebalance hint).
 
 **2026-10-20 (latest) — Brawl tooling plan, Batch 7 done; THE 9-ITEM PLAN IS COMPLETE**
 (block `tooling-batch7-broad-implement.md`). Suite 2186 passed, check_all OK. Docs SYNCED 2026-10-20 (G-05/G-77, README,

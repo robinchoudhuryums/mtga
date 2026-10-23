@@ -1312,6 +1312,17 @@ wishlist could answer for 35 of the 96 cards those decks were missing; the other
 decks counts once, at the most any deck needs) by the set each deck line names. `wishlist --by-set` stays the
 view of the wishlist itself.
 
+**A pasted printing is validated (2026-10-23, deck-89 tooling Batch 1).** `--add` stored the line's
+`(SET) COLLECTOR#` verbatim, so a hand-typed `1 Polukranos, Unchained (THB) 226` became a row for a
+printing that does not exist (real: 224) — G-65's never-hand-write rule with no check behind it on
+this writer, caught only by reading the row back. A pool-enriched add whose printing neither the pool
+nor the library holds now stores the pool's printing (what `deck.py resolve` emits) and prints the
+change after the write; an owned alternate art the library holds is kept. Validation reads
+`deck.known_printings`, the index INV-04's printing check uses, so a deck line and a wishlist row
+cannot disagree. `check_all` soft-sweeps older rows (`wishlist.printing_issues`): 1 live hit at
+landing, Pinnacle Starcage (EOE) 33 against a resolved 27. Known edge: re-adding a line with the
+same wrong printing as a stale row dedupes on the CORRECTED key, so it appends beside it.
+
 ## [G-20] Auto-targeting a wishlist batch: trust STRONG, judge `review`
 
 **Auto-targeting a wishlist batch: trust STRONG, judge `review`.** `wishlist.py

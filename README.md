@@ -319,7 +319,8 @@ python3 scripts/pool.py --regex 'exchange control of|gain control of target' --u
 
 `--legal` takes the repo's format names and reads them the way `deck.py legal` does:
 `brawl` is the 60-card Standard Brawl and `historic brawl` the 100-card format (Scryfall's
-`brawl` key), with a one-line note when the two spellings differ. An unknown format is
+`brawl` key), with a one-line note when the two spellings differ (and, for `brawl`, a second line pointing a
+100-card search at `--legal "historic brawl"`). An unknown format is
 refused with the list, rather than silently matching nothing.
 
 `--color` matches the identity set, as in `query.py` (`--color R` excludes
@@ -349,7 +350,7 @@ below, which blends it with theme fit).
 
 ```
 python3 scripts/wishlist.py --add batch.txt   # append a batch (enriches + AUTO-seeds a Power estimate)
-python3 scripts/wishlist.py --add batch.txt --target 6 --note "why"   # ...stamping the home deck + note onto the NEW rows (an unknown deck id is refused before any Scryfall work); re-adding a listed card with --target APPENDS that deck to its Target
+python3 scripts/wishlist.py --add batch.txt --target 6 --note "why"   # ...stamping the home deck + note onto the NEW rows (an unknown deck id is refused before any Scryfall work); re-adding a listed card with --target APPENDS that deck to its Target; a pasted (SET) COLLECTOR# no pool/library row holds is replaced by the pool's printing, and the change is printed
 python3 scripts/wishlist.py                    # browse the whole wishlist
 python3 scripts/wishlist.py --set SOS --rarity rare,mythic   # filter (AND-ed; --set exact, --target per deck id, --note substring)
 python3 scripts/wishlist.py --color R --synergy firebending  # by color/theme (--color is set-matched, like query.py)
