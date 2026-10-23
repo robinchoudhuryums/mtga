@@ -538,7 +538,10 @@ is protecting.
   "cards in their graveyards is a crime" made every crime card read as yard-dependent.
   **Nothing gate-checked a PROPOSED add either** — `unmet_gate_note` runs `targets`
   against a recommendation now (partial: an opponent-BOARD condition is outside that
-  model). [G-23]
+  model). **The counters PAYOFF side read only counters GOING ON** until 2026-10-23, so
+  deck 89 printed "15 enablers / 1 payoff" through Bushmaster ("creature you control WITH a
+  +1/+1 counter") and Doubling Season / Vorinclex ("twice that many of those counters");
+  both shapes are cues now (25 decks' payoff counts rose, 0 flags changed). [G-23]
 - **`deck.py stats` prints an INTERACTION PROFILE** — the raw count treats all removal
   alike, so it splits by SPEED and by whether anything answers a NONCREATURE permanent,
   flagging "all sorcery-speed" or "no noncreature answer". [G-24]
@@ -1537,13 +1540,12 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   all. The castability lint reads the deck's `#: colors:` header, so a stale header
   manufactures phantom strays — a flag is a review signal, not a hard failure.
   **CONNIVE is an unread keyword here**, so a FLAT metric after a tune is not proof the
-  tune failed. **The ONE-SIDED sweep hole is CLOSED (2026-10-01)**: "deals X damage to each
-  opponent and each creature they control" (Soul Immolation) scored zero roles while the
-  weaker symmetric sweep scored Sweeper — 15 pool cards, interaction +1 in decks 30 and
-  56a, 0 tier floors moved. Balefire Dragon's on-hit sweep stays out on purpose.
-  **2026-10-07:** steal AURAS ("You control enchanted creature" — Control Magic, Kitnap)
+  tune failed. The one-sided sweep (2026-10-01) is closed. **2026-10-07:** steal AURAS ("You control enchanted creature" — Control Magic, Kitnap)
   joined `Removal (spot)` and COPY effects (token copies, clones, becomes-a-copy) joined
-  `Payoff / engine`; bounce left interaction for the tempo line (G-25). [K-12]
+  `Payoff / engine`; bounce left interaction for the tempo line (G-25). **2026-10-23:**
+  EXTRA LAND DROPS → Ramp (Azusa, Dryad), "twice that many / that many plus one … instead"
+  → Payoff (Doubling Season, Hardened Scales), "X damage divided" → Removal (Lukka); 0 tier
+  floors, interaction +1 in two decks. [K-12]
 - **A LITERAL TYPE-NAME SEARCH CANNOT SEE THE CHOOSE-A-TYPE CATEGORY, and a false negative
   there reads as a finished answer.** A sweep for "Robots you control get" / "for each
   Robot" returned zero and an archetype was declined in writing as "bodies without a
@@ -2109,7 +2111,7 @@ is invisible, and a handoff nobody is told to read is the same failure one layer
   **SEVEN are live as of 2026-10-23**, each awaiting owner picks or sign-off:
   `78-brawl-pile-analysis.md` (Tier 2/3 waves open), `54-from-54b-`, `84-marvel-`,
   `86-fantastic-four-`, `fra-bant-`, `fra-bur-` and `fra-rgu-pile-analysis.md`; read each
-  one's `Status:` line. **`deck89-tooling-plan.md`** is a live batch PLAN (Batch 1 done, 2–4
+  one's `Status:` line. **`deck89-tooling-plan.md`** is a live batch PLAN (Batches 1–3 done, 4
   open), deleted when Batch 4 lands. `89-szarel-` was folded into deck 89 and deleted
   2026-10-23. `60-redline-pile-analysis.md`
   was deleted 2026-10-02 when its ten Reality Fracture swaps landed (findings folded into

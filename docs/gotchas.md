@@ -1450,6 +1450,13 @@ deck-content gate can answer — it is outside `target_counts`' model, not a hol
 wiring was verified live rather than left as dead code (G-53): it reports Hobbit Hole's
 Halfling gate as 0 against deck 6.
 
+**Counters payoffs that never say a counter is going ON (2026-10-23, deck-89 tooling Batch 3).** Every payoff cue
+read the act of placing a counter, so a card that rewards a creature for HAVING one — Bushmaster's "each other
+creature you control with a +1/+1 counter on it has deathtouch" — and the doublers that say "counters" without
+"+1/+1" (Doubling Season, Vorinclex) were enablers or nothing. Deck 89 read 15 enablers / 1 payoff; now 15 / 4.
+Roster: 25 decks' counters payoff counts rose, 0 flags changed. These strings live in `ENGINE_THEMES`, which the
+pool build stamp hashes by VALUE (G-18), so the next `make refresh` rebuilds the pool once; the tagger extracts only
+`\b`-wrapped literals from these patterns and the new ones carry none, so no pool tag changes.
 
 ## [G-24] `deck.py stats` also prints an INTERACTION PROFILE
 
@@ -5526,6 +5533,21 @@ rummage chapter ("you may discard a card. If you do, draw", Summon: G.F. Ifrit),
 rule already removes a draw-then-discard chapter (The Modern Age). 6 pool cards match, 4 real.
 Roster diff: **14 decks' card advantage +1 or +2, interaction unchanged, 0 of 117 tier floors
 moved**; ten `#: tier:` figures and one `#~ note:` were re-grounded in the same change.
+
+**Moved from the rule (word cap), 2026-10-23:** the ONE-SIDED sweep hole closed 2026-10-01 — "deals X
+damage to each opponent and each creature they control" (Soul Immolation) scored zero roles while the weaker
+symmetric sweep scored Sweeper; 15 pool cards, interaction +1 in decks 30 and 56a, 0 tier floors moved. Balefire
+Dragon's on-hit sweep stays out on purpose.
+
+**Three pattern holes from the deck-89 build (2026-10-23, tooling Batch 3).** `cuts` offered Dryad of the
+Ilysian Grove as deck 89's #1 cut in a deck built on playing lands, because an extra land drop scored no role;
+Hardened Scales and Doubling Season scored none either; and Lukka, Bound to Ruin's −4 ("X damage divided as you
+choose") missed Removal because the divided-damage clause required a digit. Fixes: `play (an|one|two|three|up
+to N|x) additional lands?` → Ramp (32 pool cards); `(twice that many|that many plus N)…instead` → Payoff (32 pool
+cards, all multipliers — an opponent HALVING clause says "half" and is pinned by a NEGATIVE test); `(\d+|x) damage
+divided` → Removal (+10, all removal). Roster diff over 124 decks: Ramp up in 17, Payoff up in 31, interaction +1
+in 76 (Ureni) and 89, card advantage 0, tier floors 0, `cuts` top-3 changed only in 89. Role baseline 480 → 467.
+Residual: Bushmaster (a deathtouch lord) still scores no role — a taxonomy question, not a phrasing hole.
 
 ## [K-13] A literal type-name search cannot see the choose-a-type category — and the false negative reads as an answer
 

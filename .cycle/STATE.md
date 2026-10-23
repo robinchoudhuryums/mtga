@@ -407,7 +407,7 @@ Updated: 2026-10-20 (Brawl tooling plan Batch 7 — see Where I left off)
 
 ## Where I left off
 **2026-10-23 (latest) — deck-89 tooling plan, Batch 3 done** (block `deck89-batch3-broad-implement.md`).
-Suite 2210 passed, check_all OK. Docs NOT yet synced (K-12, G-23). **Next:** Batch 4 (measure-first:
+Suite 2210 passed, check_all OK. Docs SYNCED 2026-10-23 (K-12, G-23 + long forms). **Next:** Batch 4 (measure-first:
 nontoken sacrifice; central-theme count vs chosen-add rank).
 
 **2026-10-23 (latest) — deck-89 tooling plan, Batch 2 done** (block `deck89-batch2-broad-implement.md`).
