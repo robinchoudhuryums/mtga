@@ -54,11 +54,17 @@
 #: notes: Protection. Card advantage 12 -> 10 is the accepted trade: the walkers' draw abilities count
 #: notes: once each but fire every turn. Aragorn STAYS: each colour of a multicoloured spell is its own
 #: notes: trigger, so a five-colour spell gives the token, scry 2, 3 damage and +4/+4 together.
-#: notes: PENDING (owner): Annie Joins Up and Way of the Mentor are wanted but need cuts other than
-#: notes: Aragorn and Elesh Norn (and not the Hondens or Jodah). BENCH for
+#: notes: SWAPS 2026-10-24 (pass 3): Annie Joins Up for Farewell (its exile-creatures mode mostly hit
+#: notes: our own board; Annie's 5 damage replaces the removal and doubles every legendary
+#: notes: creature's triggers, Hei Bai's Shrine reveal included); Way of the Mentor for Sanctum of
+#: notes: Fruitful Harvest (every life gain, the Hondens' and Sanctums' included, is loyalty on every
+#: notes: walker). PENDING (owner): Nissa, Leyline Tamer back in, Way of the Paradox, Brokers
+#: notes: Ascendancy and Avatar of Burgeoning Echoes, cuts to be chosen; Chandra, Chill of Compliance
+#: notes: held. BENCH for
 #: notes: later passes: Insidious Roots, Selvala, Mogis, Satsuki, Garnet, The Legend of Roku, The
 #: notes: Legend of Kyoshi, Rydia, Jin-Gitaxias, Sab-Sunen, Athreos, Karolina Dean, Kyodai, Greenhouse,
-#: notes: Djeru and Hazoret, Oketra the True.
+#: notes: Djeru and Hazoret, Oketra the True, Elspeth, Storm Slayer, Kaito, Dancing Shadow, Marina
+#: notes: Vendrell, Insidious Roots.
 
 # Commander (leads from the command zone; also one of the 100)
 1 Hei Bai, Forest Guardian (TLE) 139
@@ -66,7 +72,6 @@
 # Shrines (each one raises every other Shrine's X)
 1 Go-Shintai of Life's Origin (HA6) 6
 1 Sanctum of All (M21) 225
-1 Sanctum of Fruitful Harvest (M21) 203
 1 Sanctum of Stone Fangs (M21) 120
 1 Sanctum of Shattered Heights (M21) 157
 1 Go-Shintai of Hidden Cruelty (NEO) 97
@@ -91,6 +96,7 @@
 1 Elesh Norn, Mother of Machines (ONE) 10
 1 Jodah, the Unifier (DMU) 203
 1 Doubling Season (FDN) 216
+1 Annie Joins Up (OTJ) 191
 
 # Card draw and value engines
 1 Setessan Champion (THB) 198
@@ -125,6 +131,7 @@
 1 Kiora of Salt and Sand (FRA) 273
 1 Narset of the Ancient Way (IKO) 195
 1 Entrust the Spark (FRA) 131
+1 Way of the Mentor (FRA) 208
 
 # Sagas
 1 The Kami War // O-Kagachi Made Manifest (NEO) 227
@@ -142,7 +149,6 @@
 # Interaction
 1 Leyline Binding (DMU) 24
 1 Assassin's Trophy (MKM) 187
-1 Farewell (NEO) 13
 
 # Lands
 1 Command Tower (FRC) 22
