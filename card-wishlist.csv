@@ -28,9 +28,6 @@ In the Trenches,Enchantment,"Creatures you control get +1/+1.
 −2: Sacrifice a creature. When you do, Minsc & Boo deals X damage to any target, where X is that creature's power. If the sacrificed creature was a Hamster, draw X cards.
 Minsc & Boo, Timeless Heroes can be your commander.",R/G,Minsc; planeswalker; counters; card draw; sacrifice; tokens; burn; etb; noncombat damage,,,Mythic,86,,10.0,seed
 Parallel Lives,Enchantment,"If an effect would create one or more tokens under your control, it creates twice that many of those tokens instead.",G,tokens,,,Mythic,86,,4.5,seed
-"Teferi, Hero of Dominaria",Legendary Planeswalker — Teferi,"+1: Draw a card. At the beginning of the next end step, untap up to two lands.
-−3: Put target nonland permanent into its owner's library third from the top.
-−8: You get an emblem with ""Whenever you draw a card, exile target permanent an opponent controls.""",W/U,Teferi; planeswalker; card draw,,,Mythic,86,,10.0,seed
 The Wandering Emperor,Legendary Planeswalker,"Flash
 As long as The Wandering Emperor entered this turn, you may activate her loyalty abilities any time you could cast an instant.
 +1: Put a +1/+1 counter on up to one target creature. It gains first strike until end of turn.
@@ -123,6 +120,11 @@ Plaza of Heroes,Land,"{T}: Add {C}.
 {T}: Add one mana of any color. Spend this mana only to cast a legendary spell.
 {T}: Add one mana of any color among legendary permanents you control.
 {3}, {T}, Exile this land: Target legendary creature gains hexproof and indestructible until end of turn.",Colorless,mana; hexproof; protection; indestructible; resilience,DMU,252,Rare,84,,4.0,seed
+"Teferi, Hero of Dominaria",Legendary Planeswalker — Teferi,"+1: Draw a card. At the beginning of the next end step, untap up to two lands.
+−3: Put target nonland permanent into its owner's library third from the top.
+−8: You get an emblem with ""Whenever you draw a card, exile target permanent an opponent controls.""",W/U,Teferi; planeswalker; card draw,DOM,207,Mythic,86; 90,,10.0,seed
+Oath of Teferi,Legendary Enchantment,"When Oath of Teferi enters, exile another target permanent you control. Return it to the battlefield under its owner's control at the beginning of the next end step.
+You may activate the loyalty abilities of planeswalkers you control twice each turn rather than only once.",W/U,etb; blink,DOM,200,Rare,90,,3.5,seed
 Central Elevator // Promising Stairs,Enchantment — Room // Enchantment — Room,"When you unlock this door, search your library for a Room card that doesn't have the same name as a Room you control, reveal it, put it into your hand, then shuffle.
 (You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.) // At the beginning of your upkeep, surveil 1. You win the game if there are eight or more different names among unlocked doors of Rooms you control.
 (You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",U,Room; surveil; graveyard,DSK,44,Rare,51,,5.5,hand
@@ -232,6 +234,8 @@ Crow of Dark Tidings,Creature — Zombie Bird,"Flying
 When this creature enters or dies, mill two cards. (Put the top two cards of your library into your graveyard.)",B,Zombie; Bird; graveyard; mill; etb; flying; evasion,FDN,519,Common,,,1.0,seed
 Tolarian Terror,Creature — Serpent,"This spell costs {1} less to cast for each instant and sorcery card in your graveyard.
 Ward {2} (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {2}.)",U,Serpent; graveyard; cost-reduction; ward; protection,FDN,167,Common,51,,7.0,hand
+"Yuna, Grand Summoner",Legendary Creature — Human Cleric,"Grand Summon — {T}: Add one mana of any color. When you next cast a creature spell this turn, that creature enters with two additional +1/+1 counters on it.
+Whenever another permanent you control is put into a graveyard from the battlefield, if it had one or more counters on it, you may put that number of +1/+1 counters on target creature.",W/U/G,Human; Cleric; counters; graveyard; mana; etb,FIC,8,Mythic,90,,5.5,seed
 Esper Origins // Summon: Esper Maduin,Sorcery // Enchantment Creature — Saga Elemental,"Surveil 2. You gain 2 life. If this spell was cast from a graveyard, exile it, then put it onto the battlefield transformed under its owner's control with a finality counter on it. (If a creature with a finality counter on it would die, exile it instead.)
 Flashback {3}{G} (You may cast this card from your graveyard for its flashback cost. Then exile it.) // (As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
 I — Reveal the top card of your library. If it's a permanent card, put it into your hand.
@@ -250,7 +254,7 @@ If an opponent would mill one or more cards, they mill that many cards plus four
 {4}{U}{U}, {T}: Each opponent mills cards equal to the number of cards in your hand.",U,mill; cost-reduction; graveyard,FIN,85,Rare,51; 22,,5.5,seed
 "Venat, Heart of Hydaelyn // Hydaelyn, the Mothercrystal",Legendary Creature — Elder Wizard // Legendary Creature — God,"Whenever you cast a legendary spell, draw a card. This ability triggers only once each turn.
 Hero's Sundering — {7}, {T}: Exile target nonland permanent. Transform Venat. Activate only as a sorcery. // Indestructible
-Blessing of Light — At the beginning of combat on your turn, put a +1/+1 counter on another target creature you control. Until your next turn, it gains indestructible. If that creature is legendary, draw a card.",W,Elder; Wizard; God; counters; card draw; removal; indestructible; resilience; transform,FIN,39,Rare,55b,,9.0,seed
+Blessing of Light — At the beginning of combat on your turn, put a +1/+1 counter on another target creature you control. Until your next turn, it gains indestructible. If that creature is legendary, draw a card.",W,Elder; Wizard; God; counters; card draw; removal; indestructible; resilience; transform,FIN,39,Rare,55b; 90,,9.0,seed
 Dark Knight's Greatsword,Artifact — Equipment,"Job select (When this Equipment enters, create a 1/1 colorless Hero creature token, then attach this to it.)
 Equipped creature gets +3/+0 and is a Knight in addition to its other types.
 Chaosbringer — Equip—Pay 3 life. Activate only once each turn.",B,Equipment; tokens; etb; equipment; pump; chaosbringer; job select; equip,FIN,95,Uncommon,38,,4.0,hand
@@ -278,6 +282,8 @@ Cruel Calculations,Sorcery,"Draw X cards, where X is the number of cards that we
 Lich's Relic,Artifact — Equipment,"When this Equipment enters, you may pay {2}. When you do, for each opponent, destroy up to one target creature or planeswalker that player controls.
 Equipped creature gets +2/+1.
 Equip {2}",B,equipment; etb; pump; equip,FRA,57,Rare,52,,5.5,seed
+"Tam, the Possibility",Legendary Creature — Gorgon Wizard,"Planeswalker spells you cast cost {1} less to cast.
+{W}{U}{B}{R}{G}, {T}: Proliferate X times, where X is the number of planeswalker types among planeswalkers you control. (To proliferate, choose any number of permanents and/or players, then give each another counter of each kind already there.)",W/U/B/R/G,Gorgon; Wizard; cost-reduction; proliferate; counters,FRA,276,Rare,90,,5.5,seed
 Vraska's Final Mercy,Sorcery,"Choose one —
 • You lose 2 life. Destroy target creature or planeswalker.
 • You lose 2 life. Empower Jace 6. (Put six loyalty counters on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with ""[−1]: Surveil 1"" and ""[−3]: Draw a card."")",B,pay life; card draw; tokens; removal; surveil; graveyard; empower jace,FRA,71,Rare,70,,5.0,seed
@@ -294,6 +300,12 @@ Primal Witchstalker,Creature — Wolf,"Menace (This creature can't be blocked ex
 When this creature enters, mill four cards. When you do, return target land card from your graveyard to the battlefield tapped. (To mill four cards, put the top four cards of your library into your graveyard.)",B/G,Wolf; reanimator; graveyard; mill; etb; menace; evasion,FRA,144,Uncommon,83a,,5.0,seed
 Way of the Necromancer,Legendary Enchantment,"When Way of the Necromancer enters, empower Jace 2. (Put two loyalty counters on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with ""[−1]: Surveil 1"" and ""[−3]: Draw a card."")
 Whenever a creature you control dies, put a loyalty counter on each planeswalker you control.",B,counters; card draw; tokens; etb; surveil; graveyard; empower jace,FRA,239,Uncommon,89,deck 89 tune 2026-10-23,4.5,seed
+"Jace, Multiverse Architect",Legendary Planeswalker — Jace,"At the beginning of combat on each opponent's turn, they may pay {2}. If they don't, creatures they control can't attack Jaces you control this turn.
++1: Draw two cards, then put a card from your hand on the bottom of your library.
+−3: Exile another target planeswalker or creature you control. Reveal cards from the top of your library until you reveal a creature or planeswalker card. Put that card onto the battlefield and the rest on the bottom of your library in a random order.
+Jace, Multiverse Architect can be your commander.",W/U/B/R,Jace; planeswalker; card draw,FRC,1,Mythic,90,,8.5,seed
+"Nissa, Leyline Tamer",Legendary Creature — Elf Wizard,"Deathtouch, vigilance
+Landfall — Whenever a land you control enters, draw a card. Then if this is the first time this ability has resolved this turn, reveal cards from the top of your library until you reveal a creature card. Put that card onto the battlefield and the rest on the bottom of your library in a random order.",W/U/B/R,Elf; Wizard; card draw; landfall; vigilance; combat; deathtouch; removal; lands,FRC,2,Mythic,90,,8.0,seed
 Reflecting Pool,Land,{T}: Add one mana of any type that a land you control could produce.,Colorless,mana,FRC,23,Rare,84,,4.0,seed
 Command Tower,Land,{T}: Add one mana of any color in your commander's color identity.,Colorless,mana,FRC,22,Common,88,,1.5,seed
 "Minsc & Boo, Timeless Heroes",Legendary Planeswalker — Minsc,"When Minsc & Boo enters and at the beginning of your upkeep, you may create Boo, a legendary 1/1 red Hamster creature token with trample and haste.
@@ -336,6 +348,10 @@ Ixalli's Lorekeeper,Creature — Human Druid,{T}: Add one mana of any color. Spe
 Poison Dart Frog,Creature — Frog,"Reach
 {T}: Add one mana of any color.
 {2}: This creature gains deathtouch until end of turn.",G,Frog; mana; reach; defense,LCI,207,Common,50,,1.5,seed
+"Aragorn, the Uniter",Legendary Creature — Human Noble,"Whenever you cast a white spell, create a 1/1 white Human Soldier creature token.
+Whenever you cast a blue spell, scry 2.
+Whenever you cast a red spell, Aragorn deals 3 damage to target opponent.
+Whenever you cast a green spell, target creature gets +4/+4 until end of turn.",W/U/R/G,Human; Noble; tokens; burn; scry; pump; noncombat damage; selection,LTR,192,Mythic,90,,7.5,seed
 "Alibou, Ancient Witness",Legendary Artifact Creature — Golem,"Other artifact creatures you control have haste.
 Whenever one or more artifact creatures you control attack, Alibou deals X damage to any target and you scry X, where X is the number of tapped artifacts you control.",W/R,Golem; burn; scry; artifacts; noncombat damage; selection; haste; aggro,MAR,39,Mythic,84,,7.5,seed
 "Black Panther, Wakandan King",Legendary Creature — Human Noble Hero,"First strike
@@ -397,6 +413,12 @@ When this creature dies, investigate. (Create a Clue token. It's an artifact wit
 Loxodon Eavesdropper,Creature — Elephant Detective,"When this creature enters, investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")
 Whenever you draw your second card each turn, this creature gets +1/+1 and gains vigilance until end of turn.",G,Elephant; Detective; card draw; sacrifice; tokens; etb; clue; pump; investigate,MKM,168,Common,34,,2.5,hand
 Novice Inspector,Creature — Human Detective,"When this creature enters, investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",W,Human; Detective; card draw; sacrifice; tokens; etb; clue; investigate,MKM,29,Common,36a,,3.5,hand
+Wrenn and Realmbreaker,Legendary Planeswalker — Wrenn,"Lands you control have ""{T}: Add one mana of any color.""
++1: Up to one target land you control becomes a 3/3 Elemental creature with vigilance, hexproof, and haste until your next turn. It's still a land.
+−2: Mill three cards. You may put a permanent card from among the milled cards into your hand.
+−7: You get an emblem with ""You may play lands and cast permanent spells from your graveyard.""",G,Wrenn; planeswalker; graveyard; mill; mana,MOM,217,Mythic,90,,8.5,seed
+"Omnath, Locus of All",Legendary Creature — Phyrexian Elemental,"If you would lose unspent mana, that mana becomes black instead.
+At the beginning of your first main phase, look at the top card of your library. You may reveal that card if it has three or more colored mana symbols in its mana cost. If you do, add three mana in any combination of its colors and put it into your hand. If you don't reveal it, put it into your hand.",W/U/B/R/G,Phyrexian; Elemental; selection,MOM,249,Rare,90,,6.0,seed
 "Captain Marvel, Shooting Star",Legendary Creature — Human Kree Hero,"Flying
 Whenever Captain Marvel enters or attacks, exile up to one target creature. That creature's controller gains life equal to its power.
 Whenever a creature other than Captain Marvel is exiled from the battlefield, you gain life equal to its power.",W,Human; Kree; Hero; lifegain; flying; evasion,MSC,589,Mythic,85,,7.0,seed
@@ -420,9 +442,17 @@ Exile the top two cards of your library. Until the end of your next turn, you ma
 Fisk Tower,Land,"This land enters tapped.
 When this land enters, you gain 1 life.
 {T}: Add {W} or {B}.",W/B,lifegain; mana; etb,MSH,265,Common,41,"manabase: WB dual for a basic — +1 source to the off-colour, gain 1 life",2.0,seed
+"Atraxa, Praetors' Voice",Legendary Creature — Phyrexian Angel Horror,"Flying, vigilance, deathtouch, lifelink
+At the beginning of your end step, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)",W/U/B/G,Phyrexian; Angel; Horror; lifegain; deathtouch; combat; removal; flying; evasion; lifelink; vigilance; proliferate; counters,MUL,33,Mythic,90,,5.0,seed
 Kodama of the West Tree,Legendary Creature — Spirit,"Reach
 Modified creatures you control have trample. (Equipment, Auras you control, and counters are modifications.)
 Whenever a modified creature you control deals combat damage to a player, search your library for a basic land card, put it onto the battlefield tapped, then shuffle.",G,Spirit; ramp; reach; defense; trample; evasion,NEO,199,Mythic,89,deck 89 tune 2026-10-23,5.5,seed
+The Kami War // O-Kagachi Made Manifest,Enchantment — Saga // Enchantment Creature — Dragon Spirit,"(As this Saga enters and after your draw step, add a lore counter.)
+I — Exile target nonland permanent an opponent controls.
+II — Return up to one other target nonland permanent to its owner's hand. Then each opponent discards a card.
+III — Exile this Saga, then return it to the battlefield transformed under your control. // O-Kagachi Made Manifest is all colors.
+Flying, trample
+Whenever this creature attacks, defending player chooses a nonland card in your graveyard. Return that card to your hand. This creature gets +X/+0 until end of turn, where X is the mana value of that card.",W/U/B/R/G,saga; Dragon; Spirit; graveyard; removal; pump; bounce; discard; flying; evasion; transform; trample,NEO,227,Mythic,90,,7.5,seed
 Kumano Faces Kakkazan // Etching of Kumano,Enchantment — Saga // Enchantment Creature — Human Shaman,"(As this Saga enters and after your draw step, add a lore counter.)
 I — This Saga deals 1 damage to each opponent and each planeswalker they control.
 II — When you next cast a creature spell this turn, that creature enters with an additional +1/+1 counter on it.
@@ -479,6 +509,10 @@ Equip {2}{U}",U,equipment; card advantage; equip,OTJ,54,Rare,84,,5.5,seed
 Lassoed by the Law,Enchantment,"When this enchantment enters, exile target nonland permanent an opponent controls until this enchantment leaves the battlefield.
 When this enchantment enters, create a 1/1 red Mercenary creature token with ""{T}: Target creature you control gets +1/+0 until end of turn. Activate only as a sorcery.""",W,tokens; removal; etb; pump,OTJ,18,Uncommon,3; 36a,,5.5,hand
 Make Your Own Luck,Sorcery,"Look at the top three cards of your library. You may exile a nonland card from among them. If you do, it becomes plotted. Put the rest into your hand. (You may cast it as a sorcery on a later turn without paying its mana cost.)",U/G,selection; plot; tempo; cost-reduction,OTJ,218,Uncommon,,,3.5,seed
+"Heliod, God of the Sun",Legendary Enchantment Creature — God,"Indestructible
+As long as your devotion to white is less than five, Heliod isn't a creature. (Each {W} in the mana costs of permanents you control counts toward your devotion to white.)
+Other creatures you control have vigilance.
+{2}{W}{W}: Create a 2/1 white Cleric enchantment creature token.",W,God; tokens; indestructible; resilience; vigilance; combat,PIO,282,Mythic,90,,5.0,seed
 "Arlinn Kord // Arlinn, Embraced by the Moon",Legendary Planeswalker — Arlinn // Legendary Planeswalker — Arlinn,"+1: Until end of turn, up to one target creature gets +2/+2 and gains vigilance and haste.
 0: Create a 2/2 green Wolf creature token. Transform Arlinn Kord. // +1: Creatures you control get +1/+1 and gain trample until end of turn.
 −1: Arlinn deals 3 damage to any target. Transform Arlinn.
@@ -585,6 +619,10 @@ Runescale Stormbrood // Chilling Screech,Creature — Dragon // Instant — Omen
 Whenever you cast a noncreature spell or a Dragon spell, this creature gets +2/+0 until end of turn. // Counter target spell with mana value 2 or less. (Then shuffle this card into its owner's library.)",U/R,Dragon; Omen; counterspell; pump; flying; evasion,TDM,221,Uncommon,49,Deck 49: a 4-drop DRAGON that is also a Dragon payoff (+2/+0 on every noncreature or Dragon spell). Hidden from every red filter because its identity is U/R from the {1}{U} Omen half - the FRONT face is {3}{R} and mono-red castable (G-58 bulk-triage variant).,7.2,hand
 Venerated Stormsinger,Creature — Orc Cleric,"Mobilize 1 (Whenever this creature attacks, create a tapped and attacking 1/1 red Warrior creature token. Sacrifice it at the beginning of the next end step.)
 Whenever this creature or another creature you control dies, each opponent loses 1 life and you gain 1 life.",B,Orc; Cleric; lifegain; tokens; mobilize; go-wide; aggro,TDM,97,Uncommon,55,"Mobilize 1 + drains 1 per creature death, i.e. per end-step token sacrifice",5.5,seed
+Kiora Bests the Sea God,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
+I — Create an 8/8 blue Kraken creature token with hexproof.
+II — Tap all nonland permanents target opponent controls. They don't untap during their controller's next untap step.
+III — Gain control of target permanent an opponent controls. Untap it.",U,saga; tokens; theft,THB,52,Mythic,90,,6.5,seed
 Nyxbloom Ancient,Enchantment Creature — Elemental,"Trample
 If you tap a permanent for mana, it produces three times as much of that mana instead.",G,Elemental; trample; evasion,THB,190,Mythic,88,,4.5,seed
 "Polukranos, Unchained",Legendary Creature — Zombie Hydra,"Polukranos enters with six +1/+1 counters on it. It escapes with twelve +1/+1 counters on it instead.

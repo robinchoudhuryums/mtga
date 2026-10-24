@@ -3,49 +3,63 @@
 #: colors: WUBRG
 #: commander: Hei Bai, Forest Guardian
 #: plan: midrange
-#: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool), FIVE-COLOUR SHRINES around
-#: archetype: Hei Bai, Forest Guardian: on entering it reveals cards until a Shrine and puts that
-#: archetype: Shrine onto the battlefield, so every cast and recast of the commander is a free
-#: archetype: Shrine; its {W}{U}{B}{R}{G} activation makes a Spirit per legendary enchantment, and
-#: archetype: those Spirits can't be blocked by non-Spirits. All 22 Historic-legal Shrines are in the
-#: archetype: list, and every one scales with the Shrine count (Hondens on upkeep, Sanctums on the main
-#: archetype: phase, Go-Shintai on the end step, the Avatar temples on each other Shrine entering).
-#: archetype: Go-Shintai of Life's Origin makes a Shrine token for every nontoken Shrine, which the
-#: archetype: temples also see; Sanctum of All tutors one each upkeep and doubles Shrine triggers at
-#: archetype: six. Yarok, Elesh Norn and Doubling Season double the enters triggers and tokens, and
-#: archetype: Jodah turns each legendary Shrine cast into a free legendary spell. DISTINCT from deck 29
-#: archetype: (Enchantress, GWR 60-card Auras/enchantments): the axis here is SHRINE COUNT, not
-#: archetype: enchantment count, and the clock is Hondens, Sanctum drains and unblockable Spirits.
+#: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool), a FIVE-COLOUR SHRINE, GOD,
+#: archetype: ENCHANTMENT AND SAGA hybrid around Hei Bai, Forest Guardian: on entering it reveals cards
+#: archetype: until a Shrine and puts that Shrine onto the battlefield, so every cast and recast of the
+#: archetype: commander is a free Shrine; its {W}{U}{B}{R}{G} activation makes a Spirit per legendary
+#: archetype: enchantment (Shrines, Gods, Oath of Teferi), and those Spirits can't be blocked by
+#: archetype: non-Spirits. Twenty Shrines scale with the Shrine count (Hondens on upkeep, Sanctums on the
+#: archetype: main phase, Go-Shintai on the end step, the Avatar temples on each other Shrine entering);
+#: archetype: Go-Shintai of Life's Origin makes a Shrine token for every nontoken Shrine and Sanctum of
+#: archetype: All tutors one each upkeep. Around that: Yuna, Hope of Spira returns an enchantment
+#: archetype: every end step, so a Saga that has finished (Kiora Bests the Sea God, Elspeth
+#: archetype: Conquers Death, World War Hulk) runs again; Nicol Bolas, Dragon-God copies the other
+#: archetype: planeswalkers' loyalty abilities, with Oath of Teferi for two activations and Tam and
+#: archetype: Atraxa to proliferate; Yarok, Elesh Norn and Doubling Season double enters triggers and
+#: archetype: tokens. Castability comes from cards that make every land or creature tap for any colour
+#: archetype: (Great Divide Guide, Wrenn and Realmbreaker, Enduring Vitality, Leyline of the Guildpact).
+#: archetype: DISTINCT from deck 29 (Enchantress, GWR 60-card Auras): the axis is legendary enchantments
+#: archetype: and Shrine count, and the clock is Hondens, Sanctum drains and unblockable Spirits.
 #: protect: Hei Bai, Forest Guardian; Go-Shintai of Life's Origin; Sanctum of All; Leyline of the Guildpact; Southern Air Temple; The Spirit Oasis; Northern Air Temple; Crescent Island Temple; Kyoshi Island Plaza
 #: notes: DRAFTED 2026-10-24 (/draft-deck) from the owner's 5-colour Shrine concept, with Nicol Bolas,
 #: notes: Dragon-God as a named must-include. RULES READ: a Shrine token from Life's Origin is a
 #: notes: Shrine for every count and triggers the temples ("another Shrine you control enters", no
-#: notes: nontoken clause), but not Life's Origin itself (nontoken only). Sterling Grove gives OUR
-#: notes: other enchantments shroud, which blocks Boundless Vigor's "target Shrine", Calix's -3 and
-#: notes: Kyodai's target: cast Kyodai first, or sacrifice the Grove to tutor before you need them.
-#: notes: Leyline of the Guildpact makes every land every basic type, so Leyline Binding costs {W}
-#: notes: and Farseek finds any triome or shockland.
+#: notes: nontoken clause), but not Life's Origin itself (nontoken only). Bolas copies LOYALTY
+#: notes: abilities only, never a planeswalker's static text. Oath of Teferi's blink can target Hei
+#: notes: Bai (another Shrine) or a Shrine (the temples and Life's Origin trigger again). Leyline of
+#: notes: the Guildpact makes every land every basic type, so Leyline Binding costs {W}.
 #: notes: FAREWELL is modal ("choose one or more"): `cuts` flags it as fighting the graveyard
 #: notes: engine, but only the exile-graveyards mode does that; pick creatures and leave the yards.
-#: notes: MANABASE READ: `consistency` prices 16 sources per colour because it counts the six
-#: notes: two-type fetches (Misty, Polluted, Scalding, Flooded, Windswept, Verdant) as nothing
-#: notes: (G-35's typed-fetch residual). Each one finds a triome or shockland, so each is a source
-#: notes: of every colour while those last: about 22 per colour, plus 8 nonland sources and the
-#: notes: Leyline. Nicol Bolas's {B}{B}{B} is the one cost that still asks for a later turn.
+#: notes: MANABASE READ: `consistency` counts the six two-type fetches (Misty, Polluted, Scalding,
+#: notes: Flooded, Windswept, Verdant) as nothing (G-35's typed-fetch residual); each finds a triome or
+#: notes: shockland, so each is a source of every colour while those last. It also prices no nonland
+#: notes: fixer, and Great Divide Guide or Wrenn and Realmbreaker makes every land a five-colour source.
+#: notes: SWAPS 2026-10-24 (pass 1 of a hybrid rebuild, 18 swaps): Tam, The Kami War, Teferi, Hero of
+#: notes: Dominaria, Oath of Teferi, Jace, Multiverse Architect, Atraxa, Omnath, Locus of All, Nissa,
+#: notes: Leyline Tamer, Aragorn, Great Divide Guide, Yuna, Grand Summoner, Wrenn and Realmbreaker,
+#: notes: Enduring Vitality, Venat, Yuna, Hope of Spira, Kiora Bests the Sea God, World War Hulk and
+#: notes: Heliod, God of the Sun IN for Enlightened Tutor, Sterling Grove (its shroud blocked Oath,
+#: notes: Calix and Boundless Vigor), Enchantress's Presence, Farseek, Destiny Spinner, Paradise
+#: notes: Druid, Infernal Grasp, Sythis, Prismatic Ending, Arcane Signet, Chronicler of Worship, Karolina
+#: notes: Dean, Aang's Journey, Sanctum of Tranquil Light, Go-Shintai of Lost Wisdom, Anguished
+#: notes: Unmaking, Kyodai and Archon of Sun's Grace. The curve got heavier on purpose.
+#: notes: PENDING (owner): Heliod, the Radiant Dawn, Klothys and Terra, Magical Adept are wanted but
+#: notes: need cuts OTHER than Honden of Cleansing Fire, Honden of Night's Reach and Jodah. BENCH for
+#: notes: later passes: Insidious Roots, Selvala, Mogis, Satsuki, Garnet, The Legend of Roku, The
+#: notes: Legend of Kyoshi, Rydia, Jin-Gitaxias, Sab-Sunen, Athreos, Karolina Dean, Kyodai, Greenhouse,
+#: notes: Djeru and Hazoret, Oketra the True.
 
 # Commander (leads from the command zone; also one of the 100)
 1 Hei Bai, Forest Guardian (TLE) 139
 
-# Shrines — all 22 (each one raises every other Shrine's X)
+# Shrines (each one raises every other Shrine's X)
 1 Go-Shintai of Life's Origin (HA6) 6
 1 Sanctum of All (M21) 225
 1 Sanctum of Fruitful Harvest (M21) 203
 1 Sanctum of Stone Fangs (M21) 120
 1 Sanctum of Calm Waters (M21) 68
 1 Sanctum of Shattered Heights (M21) 157
-1 Sanctum of Tranquil Light (M21) 33
 1 Go-Shintai of Shared Purpose (NEO) 14
-1 Go-Shintai of Lost Wisdom (NEO) 55
 1 Go-Shintai of Hidden Cruelty (NEO) 97
 1 Go-Shintai of Ancient Wars (NEO) 144
 1 Go-Shintai of Boundless Vigor (NEO) 187
@@ -62,10 +76,7 @@
 
 # Shrine finders
 1 Guru Pathik (TLA) 223
-1 Aang's Journey (TLA) 1
-1 Chronicler of Worship (YNEO) 25
 1 Idyllic Tutor (THB) 24
-1 Enlightened Tutor (MIR) 14
 1 Calix, Destiny's Hand (THB) 211
 
 # Trigger and token doublers
@@ -74,18 +85,16 @@
 1 Jodah, the Unifier (DMU) 203
 1 Doubling Season (FDN) 216
 
-# Card draw off enchantments
+# Card draw and value engines
 1 Setessan Champion (THB) 198
-1 Archon of Sun's Grace (THB) 3
 1 Eidolon of Blossoms (EA3) 5
-1 Sythis, Harvest's Hand (J21) 722
-1 Enchantress's Presence (HA3) 19
+1 Nissa, Leyline Tamer (FRC) 2
 1 Rhystic Study (FCA) 31
+1 Omnath, Locus of All (MOM) 249
+1 Aragorn, the Uniter (LTR) 192
+1 Venat, Heart of Hydaelyn // Hydaelyn, the Mothercrystal (FIN) 39
 
 # Protection
-1 Sterling Grove (J21) 720
-1 Destiny Spinner (THB) 168
-1 Kyodai, Soul of Kamigawa (NEO) 23
 1 Heroic Intervention (M21) 188
 1 Teferi's Protection (MAR) 51
 
@@ -93,23 +102,36 @@
 1 Leyline of the Guildpact (MKM) 217
 1 Sanctum Weaver (J21) 627
 1 Birds of Paradise (BLC) 81
-1 Paradise Druid (WAR) 171
-1 Arcane Signet (FRC) 20
+1 Great Divide Guide (TLA) 181
 1 Esika, God of the Tree // The Prismatic Bridge (KHM) 168
-1 Karolina Dean, Runaway (MSC) 694
-1 Farseek (MSC) 815
+1 Yuna, Grand Summoner (FIC) 8
+1 Enduring Vitality (DSK) 176
+
+# Planeswalkers and their support
+1 Tam, the Possibility (FRA) 276
+1 Teferi, Hero of Dominaria (DOM) 207
+1 Oath of Teferi (DOM) 200
+1 Jace, Multiverse Architect (FRC) 1
+1 Atraxa, Praetors' Voice (MUL) 33
+1 Wrenn and Realmbreaker (MOM) 217
+1 Nicol Bolas, Dragon-God (WAR) 207
+
+# Sagas
+1 The Kami War // O-Kagachi Made Manifest (NEO) 227
+1 Kiora Bests the Sea God (THB) 52
+1 World War Hulk (MSH) 197
+1 Elspeth Conquers Death (THB) 13
+
+# Gods and enchantment recursion
+1 Yuna, Hope of Spira (FIN) 250
+1 Heliod, God of the Sun (PIO) 282
 
 # Interaction
-1 Nicol Bolas, Dragon-God (WAR) 207
 1 Leyline Binding (DMU) 24
 1 Assassin's Trophy (MKM) 187
 1 Despark (WAR) 190
-1 Prismatic Ending (SOA) 7
 1 Swords to Plowshares (SPG) 54
-1 Infernal Grasp (MID) 107
-1 Anguished Unmaking (OTP) 35
 1 Farewell (NEO) 13
-1 Elspeth Conquers Death (THB) 13
 
 # Lands
 1 Command Tower (FRC) 22

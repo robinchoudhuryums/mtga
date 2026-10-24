@@ -104,7 +104,6 @@ Deepway Navigator
 Defiant Survivor
 Demonic Ruckus
 Desert Were-Worm
-Destiny Spinner
 Diligent Zookeeper
 Don & Leo, Problem Solvers
 Donatello, Mutant Mechanic
@@ -137,9 +136,7 @@ Emil, Vastlands Roamer
 Encumbered Reejerey
 End of the Hunt
 Enigma Drake
-Enlightened Tutor
 Entropic Battlecruiser
-Farseek
 Fated Firepower
 Fear of Isolation
 Fearsome Goblin Pair
@@ -174,7 +171,6 @@ Gilgamesh, Master-at-Arms
 Glarb, Calamity's Augur
 Glider Kids
 Go-Shintai of Boundless Vigor
-Go-Shintai of Lost Wisdom
 Go-Shintai of Shared Purpose
 Goblin-town Flunkies
 Gogo, Master of Mimicry
@@ -229,7 +225,6 @@ Jeskai Brushmaster
 Joo Dee, One of Many
 K'un-Lun Warrior
 Kang the Conqueror
-Karolina Dean, Runaway
 Kastral, the Windcrested
 Katara, Water Tribe's Hope
 Kav Landseeker
@@ -295,6 +290,7 @@ Nightwhorl Hermit
 Niko, Light of Hope
 Ninja of the Hand
 Nyxbloom Ancient
+Oath of Teferi
 Okoye, Dora Milaje Leader
 Omnipresence
 Omniscience
@@ -388,7 +384,6 @@ Stargaze
 Stark Industries Executive
 Starry-Eyed Skyrider
 Stegron the Dinosaur Man
-Sterling Grove
 Stickytongue Sentinel
 Stingerback Terror
 Stingerquill Voxmancer // Vicious Verse
