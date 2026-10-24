@@ -137,6 +137,7 @@ Encumbered Reejerey
 End of the Hunt
 Enigma Drake
 Entropic Battlecruiser
+Entrust the Spark
 Fated Firepower
 Fear of Isolation
 Fearsome Goblin Pair
@@ -170,8 +171,6 @@ Giant-Man, Gargantuan Genius
 Gilgamesh, Master-at-Arms
 Glarb, Calamity's Augur
 Glider Kids
-Go-Shintai of Boundless Vigor
-Go-Shintai of Shared Purpose
 Goblin-town Flunkies
 Gogo, Master of Mimicry
 Gold Rush
@@ -210,7 +209,6 @@ Hymn of the Faller
 Hyperion, Supreme Hero
 I Am Iron Man
 Identity Echo
-Idyllic Tutor
 Improvisation Capstone
 Ingenious Leonin
 Insatiable Skittermaw
@@ -314,6 +312,7 @@ Picklock Prankster // Free the Fae
 Pond Prophet
 Pride of the Road
 Prideful Parent
+Prophet of the Planeswalker
 Psychic Whorl
 Pym Particles
 Quaketusk Boar

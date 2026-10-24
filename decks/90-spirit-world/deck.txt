@@ -8,15 +8,17 @@
 #: archetype: until a Shrine and puts that Shrine onto the battlefield, so every cast and recast of the
 #: archetype: commander is a free Shrine; its {W}{U}{B}{R}{G} activation makes a Spirit per legendary
 #: archetype: enchantment (Shrines, Gods, Oath of Teferi), and those Spirits can't be blocked by
-#: archetype: non-Spirits. Twenty Shrines scale with the Shrine count (Hondens on upkeep, Sanctums on the
+#: archetype: non-Spirits. Seventeen Shrines scale with the Shrine count (Hondens on upkeep, Sanctums on the
 #: archetype: main phase, Go-Shintai on the end step, the Avatar temples on each other Shrine entering);
 #: archetype: Go-Shintai of Life's Origin makes a Shrine token for every nontoken Shrine and Sanctum of
 #: archetype: All tutors one each upkeep. Around that: Yuna, Hope of Spira returns an enchantment
 #: archetype: every end step, so a Saga that has finished (Kiora Bests the Sea God, Elspeth
 #: archetype: Conquers Death, World War Hulk) runs again; Nicol Bolas, Dragon-God copies the other
-#: archetype: planeswalkers' loyalty abilities, with Oath of Teferi for two activations and Tam and
-#: archetype: Atraxa to proliferate; Yarok, Elesh Norn and Doubling Season double enters triggers and
-#: archetype: tokens. Castability comes from cards that make every land or creature tap for any colour
+#: archetype: planeswalkers' loyalty abilities, with Oath of Teferi and Quintorius for two activations,
+#: archetype: Tam, Atraxa and Ichormoon Gauntlet to proliferate, Sanctum Lurker giving every walker a +2
+#: archetype: and keeping it alive at 0, and Prophet of the Planeswalker making one walker's abilities
+#: archetype: cost [+1] more; Entrust the Spark trades a spare walker for the best one in the library.
+#: archetype: Yarok, Elesh Norn and Doubling Season double enters triggers and tokens. Castability comes from cards that make every land or creature tap for any colour
 #: archetype: (Great Divide Guide, Wrenn and Realmbreaker, Enduring Vitality, Leyline of the Guildpact).
 #: archetype: DISTINCT from deck 29 (Enchantress, GWR 60-card Auras): the axis is legendary enchantments
 #: archetype: and Shrine count, and the clock is Hondens, Sanctum drains and unblockable Spirits.
@@ -43,8 +45,17 @@
 #: notes: Druid, Infernal Grasp, Sythis, Prismatic Ending, Arcane Signet, Chronicler of Worship, Karolina
 #: notes: Dean, Aang's Journey, Sanctum of Tranquil Light, Go-Shintai of Lost Wisdom, Anguished
 #: notes: Unmaking, Kyodai and Archon of Sun's Grace. The curve got heavier on purpose.
-#: notes: PENDING (owner): Heliod, the Radiant Dawn, Klothys and Terra, Magical Adept are wanted but
-#: notes: need cuts OTHER than Honden of Cleansing Fire, Honden of Night's Reach and Jodah. BENCH for
+#: notes: SWAPS 2026-10-24 (pass 2, 12 swaps, the loyalty engine): Heliod, the Radiant Dawn, Klothys,
+#: notes: Terra, Sanctum Lurker, Ichormoon Gauntlet, Quintorius, Professor Dellian Fel, Ajani Resolute,
+#: notes: Prophet of the Planeswalker, Kiora of Salt and Sand, Narset of the Ancient Way and Entrust the
+#: notes: Spark IN for Heroic Intervention, Despark, Go-Shintai of Boundless Vigor, Idyllic Tutor, Rhystic
+#: notes: Study (a 1v1 opponent pays the {1}), Sanctum of Calm Waters, Go-Shintai of Shared Purpose,
+#: notes: Esika, Nissa, Leyline Tamer, Eidolon of Blossoms, Swords to Plowshares and Teferi's
+#: notes: Protection. Card advantage 12 -> 10 is the accepted trade: the walkers' draw abilities count
+#: notes: once each but fire every turn. Aragorn STAYS: each colour of a multicoloured spell is its own
+#: notes: trigger, so a five-colour spell gives the token, scry 2, 3 damage and +4/+4 together.
+#: notes: PENDING (owner): Annie Joins Up and Way of the Mentor are wanted but need cuts other than
+#: notes: Aragorn and Elesh Norn (and not the Hondens or Jodah). BENCH for
 #: notes: later passes: Insidious Roots, Selvala, Mogis, Satsuki, Garnet, The Legend of Roku, The
 #: notes: Legend of Kyoshi, Rydia, Jin-Gitaxias, Sab-Sunen, Athreos, Karolina Dean, Kyodai, Greenhouse,
 #: notes: Djeru and Hazoret, Oketra the True.
@@ -57,12 +68,9 @@
 1 Sanctum of All (M21) 225
 1 Sanctum of Fruitful Harvest (M21) 203
 1 Sanctum of Stone Fangs (M21) 120
-1 Sanctum of Calm Waters (M21) 68
 1 Sanctum of Shattered Heights (M21) 157
-1 Go-Shintai of Shared Purpose (NEO) 14
 1 Go-Shintai of Hidden Cruelty (NEO) 97
 1 Go-Shintai of Ancient Wars (NEO) 144
-1 Go-Shintai of Boundless Vigor (NEO) 187
 1 Honden of Cleansing Fire (HA3) 2
 1 Honden of Seeing Winds (HA3) 7
 1 Honden of Night's Reach (HA3) 12
@@ -76,7 +84,6 @@
 
 # Shrine finders
 1 Guru Pathik (TLA) 223
-1 Idyllic Tutor (THB) 24
 1 Calix, Destiny's Hand (THB) 211
 
 # Trigger and token doublers
@@ -87,23 +94,17 @@
 
 # Card draw and value engines
 1 Setessan Champion (THB) 198
-1 Eidolon of Blossoms (EA3) 5
-1 Nissa, Leyline Tamer (FRC) 2
-1 Rhystic Study (FCA) 31
 1 Omnath, Locus of All (MOM) 249
 1 Aragorn, the Uniter (LTR) 192
 1 Venat, Heart of Hydaelyn // Hydaelyn, the Mothercrystal (FIN) 39
 
 # Protection
-1 Heroic Intervention (M21) 188
-1 Teferi's Protection (MAR) 51
 
 # Mana and fixing
 1 Leyline of the Guildpact (MKM) 217
 1 Sanctum Weaver (J21) 627
 1 Birds of Paradise (BLC) 81
 1 Great Divide Guide (TLA) 181
-1 Esika, God of the Tree // The Prismatic Bridge (KHM) 168
 1 Yuna, Grand Summoner (FIC) 8
 1 Enduring Vitality (DSK) 176
 
@@ -115,22 +116,32 @@
 1 Atraxa, Praetors' Voice (MUL) 33
 1 Wrenn and Realmbreaker (MOM) 217
 1 Nicol Bolas, Dragon-God (WAR) 207
+1 Sanctum Lurker (FRA) 64
+1 Ichormoon Gauntlet (ONE) 56
+1 Quintorius, Fate Splitter (YFRA) 26
+1 Professor Dellian Fel (SOS) 214
+1 Ajani Resolute (FRA) 195
+1 Prophet of the Planeswalker (YFRA) 2
+1 Kiora of Salt and Sand (FRA) 273
+1 Narset of the Ancient Way (IKO) 195
+1 Entrust the Spark (FRA) 131
 
 # Sagas
 1 The Kami War // O-Kagachi Made Manifest (NEO) 227
 1 Kiora Bests the Sea God (THB) 52
 1 World War Hulk (MSH) 197
 1 Elspeth Conquers Death (THB) 13
+1 Terra, Magical Adept // Esper Terra (FIN) 245
 
 # Gods and enchantment recursion
 1 Yuna, Hope of Spira (FIN) 250
 1 Heliod, God of the Sun (PIO) 282
+1 Heliod, the Radiant Dawn // Heliod, the Warped Eclipse (MOM) 17
+1 Klothys, God of Destiny (THB) 220
 
 # Interaction
 1 Leyline Binding (DMU) 24
 1 Assassin's Trophy (MKM) 187
-1 Despark (WAR) 190
-1 Swords to Plowshares (SPG) 54
 1 Farewell (NEO) 13
 
 # Lands
