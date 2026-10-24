@@ -104,6 +104,7 @@ Deepway Navigator
 Defiant Survivor
 Demonic Ruckus
 Desert Were-Worm
+Destiny Spinner
 Diligent Zookeeper
 Don & Leo, Problem Solvers
 Donatello, Mutant Mechanic
@@ -136,7 +137,9 @@ Emil, Vastlands Roamer
 Encumbered Reejerey
 End of the Hunt
 Enigma Drake
+Enlightened Tutor
 Entropic Battlecruiser
+Farseek
 Fated Firepower
 Fear of Isolation
 Fearsome Goblin Pair
@@ -170,6 +173,9 @@ Giant-Man, Gargantuan Genius
 Gilgamesh, Master-at-Arms
 Glarb, Calamity's Augur
 Glider Kids
+Go-Shintai of Boundless Vigor
+Go-Shintai of Lost Wisdom
+Go-Shintai of Shared Purpose
 Goblin-town Flunkies
 Gogo, Master of Mimicry
 Gold Rush
@@ -190,10 +196,12 @@ Hawkeye, Young Avenger
 Head of the Hunt
 Hecteyes
 Hedge Shredder
+Hei Bai, Forest Guardian
 Hei Bai, Spirit of Balance
 Herald of Eternal Dawn
 High Fae Trickster
 High Perfect Morcant
+Honden of Night's Reach
 Honored Knight-Captain
 Hop to It
 Hornet Queen
@@ -206,6 +214,7 @@ Hymn of the Faller
 Hyperion, Supreme Hero
 I Am Iron Man
 Identity Echo
+Idyllic Tutor
 Improvisation Capstone
 Ingenious Leonin
 Insatiable Skittermaw
@@ -220,6 +229,7 @@ Jeskai Brushmaster
 Joo Dee, One of Many
 K'un-Lun Warrior
 Kang the Conqueror
+Karolina Dean, Runaway
 Kastral, the Windcrested
 Katara, Water Tribe's Hope
 Kav Landseeker
@@ -340,6 +350,7 @@ Rustler Rampage
 Salvation Swan
 Samut, Hazoret's Champion
 Sanar, Innovative First-Year
+Sanctum of Stone Fangs
 Sandstorm Salvager
 Savage Land Dinosaur
 Savage Ventmaw
@@ -377,6 +388,7 @@ Stargaze
 Stark Industries Executive
 Starry-Eyed Skyrider
 Stegron the Dinosaur Man
+Sterling Grove
 Stickytongue Sentinel
 Stingerback Terror
 Stingerquill Voxmancer // Vicious Verse

@@ -1,0 +1,152 @@
+#: name: Spirit World — Brawl
+#: format: Historic Brawl
+#: colors: WUBRG
+#: commander: Hei Bai, Forest Guardian
+#: plan: midrange
+#: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool), FIVE-COLOUR SHRINES around
+#: archetype: Hei Bai, Forest Guardian: on entering it reveals cards until a Shrine and puts that
+#: archetype: Shrine onto the battlefield, so every cast and recast of the commander is a free
+#: archetype: Shrine; its {W}{U}{B}{R}{G} activation makes a Spirit per legendary enchantment, and
+#: archetype: those Spirits can't be blocked by non-Spirits. All 22 Historic-legal Shrines are in the
+#: archetype: list, and every one scales with the Shrine count (Hondens on upkeep, Sanctums on the main
+#: archetype: phase, Go-Shintai on the end step, the Avatar temples on each other Shrine entering).
+#: archetype: Go-Shintai of Life's Origin makes a Shrine token for every nontoken Shrine, which the
+#: archetype: temples also see; Sanctum of All tutors one each upkeep and doubles Shrine triggers at
+#: archetype: six. Yarok, Elesh Norn and Doubling Season double the enters triggers and tokens, and
+#: archetype: Jodah turns each legendary Shrine cast into a free legendary spell. DISTINCT from deck 29
+#: archetype: (Enchantress, GWR 60-card Auras/enchantments): the axis here is SHRINE COUNT, not
+#: archetype: enchantment count, and the clock is Hondens, Sanctum drains and unblockable Spirits.
+#: protect: Hei Bai, Forest Guardian; Go-Shintai of Life's Origin; Sanctum of All; Leyline of the Guildpact; Southern Air Temple; The Spirit Oasis; Northern Air Temple; Crescent Island Temple; Kyoshi Island Plaza
+#: notes: DRAFTED 2026-10-24 (/draft-deck) from the owner's 5-colour Shrine concept, with Nicol Bolas,
+#: notes: Dragon-God as a named must-include. RULES READ: a Shrine token from Life's Origin is a
+#: notes: Shrine for every count and triggers the temples ("another Shrine you control enters", no
+#: notes: nontoken clause), but not Life's Origin itself (nontoken only). Sterling Grove gives OUR
+#: notes: other enchantments shroud, which blocks Boundless Vigor's "target Shrine", Calix's -3 and
+#: notes: Kyodai's target: cast Kyodai first, or sacrifice the Grove to tutor before you need them.
+#: notes: Leyline of the Guildpact makes every land every basic type, so Leyline Binding costs {W}
+#: notes: and Farseek finds any triome or shockland.
+#: notes: FAREWELL is modal ("choose one or more"): `cuts` flags it as fighting the graveyard
+#: notes: engine, but only the exile-graveyards mode does that; pick creatures and leave the yards.
+#: notes: MANABASE READ: `consistency` prices 16 sources per colour because it counts the six
+#: notes: two-type fetches (Misty, Polluted, Scalding, Flooded, Windswept, Verdant) as nothing
+#: notes: (G-35's typed-fetch residual). Each one finds a triome or shockland, so each is a source
+#: notes: of every colour while those last: about 22 per colour, plus 8 nonland sources and the
+#: notes: Leyline. Nicol Bolas's {B}{B}{B} is the one cost that still asks for a later turn.
+
+# Commander (leads from the command zone; also one of the 100)
+1 Hei Bai, Forest Guardian (TLE) 139
+
+# Shrines — all 22 (each one raises every other Shrine's X)
+1 Go-Shintai of Life's Origin (HA6) 6
+1 Sanctum of All (M21) 225
+1 Sanctum of Fruitful Harvest (M21) 203
+1 Sanctum of Stone Fangs (M21) 120
+1 Sanctum of Calm Waters (M21) 68
+1 Sanctum of Shattered Heights (M21) 157
+1 Sanctum of Tranquil Light (M21) 33
+1 Go-Shintai of Shared Purpose (NEO) 14
+1 Go-Shintai of Lost Wisdom (NEO) 55
+1 Go-Shintai of Hidden Cruelty (NEO) 97
+1 Go-Shintai of Ancient Wars (NEO) 144
+1 Go-Shintai of Boundless Vigor (NEO) 187
+1 Honden of Cleansing Fire (HA3) 2
+1 Honden of Seeing Winds (HA3) 7
+1 Honden of Night's Reach (HA3) 12
+1 Honden of Infinite Rage (HA3) 17
+1 Honden of Life's Web (HA3) 20
+1 Southern Air Temple (TLA) 36
+1 The Spirit Oasis (TLA) 72
+1 Northern Air Temple (TLA) 111
+1 Crescent Island Temple (TLA) 129
+1 Kyoshi Island Plaza (TLA) 184
+
+# Shrine finders
+1 Guru Pathik (TLA) 223
+1 Aang's Journey (TLA) 1
+1 Chronicler of Worship (YNEO) 25
+1 Idyllic Tutor (THB) 24
+1 Enlightened Tutor (MIR) 14
+1 Calix, Destiny's Hand (THB) 211
+
+# Trigger and token doublers
+1 Yarok, the Desecrated (M20) 220
+1 Elesh Norn, Mother of Machines (ONE) 10
+1 Jodah, the Unifier (DMU) 203
+1 Doubling Season (FDN) 216
+
+# Card draw off enchantments
+1 Setessan Champion (THB) 198
+1 Archon of Sun's Grace (THB) 3
+1 Eidolon of Blossoms (EA3) 5
+1 Sythis, Harvest's Hand (J21) 722
+1 Enchantress's Presence (HA3) 19
+1 Rhystic Study (FCA) 31
+
+# Protection
+1 Sterling Grove (J21) 720
+1 Destiny Spinner (THB) 168
+1 Kyodai, Soul of Kamigawa (NEO) 23
+1 Heroic Intervention (M21) 188
+1 Teferi's Protection (MAR) 51
+
+# Mana and fixing
+1 Leyline of the Guildpact (MKM) 217
+1 Sanctum Weaver (J21) 627
+1 Birds of Paradise (BLC) 81
+1 Paradise Druid (WAR) 171
+1 Arcane Signet (FRC) 20
+1 Esika, God of the Tree // The Prismatic Bridge (KHM) 168
+1 Karolina Dean, Runaway (MSC) 694
+1 Farseek (MSC) 815
+
+# Interaction
+1 Nicol Bolas, Dragon-God (WAR) 207
+1 Leyline Binding (DMU) 24
+1 Assassin's Trophy (MKM) 187
+1 Despark (WAR) 190
+1 Prismatic Ending (SOA) 7
+1 Swords to Plowshares (SPG) 54
+1 Infernal Grasp (MID) 107
+1 Anguished Unmaking (OTP) 35
+1 Farewell (NEO) 13
+1 Elspeth Conquers Death (THB) 13
+
+# Lands
+1 Command Tower (FRC) 22
+1 Plaza of Heroes (DMU) 252
+1 White Lotus Hideout (TLA) 281
+1 Mana Confluence (EOS) 25
+1 The World Tree (KHM) 275
+1 Ziatora's Proving Ground (SNC) 261
+1 Raffine's Tower (SNC) 254
+1 Spara's Headquarters (SNC) 257
+1 Xander's Lounge (SNC) 260
+1 Jetmir's Garden (SNC) 250
+1 Savai Triome (IKO) 253
+1 Indatha Triome (IKO) 248
+1 Ketria Triome (IKO) 250
+1 Raugrin Triome (IKO) 251
+1 Zagoth Triome (IKO) 259
+1 Hallowed Fountain (ECL) 265
+1 Watery Grave (EOE) 261
+1 Blood Crypt (ECL) 262
+1 Stomping Ground (EOE) 258
+1 Temple Garden (ECL) 268
+1 Godless Shrine (EOE) 254
+1 Steam Vents (ECL) 267
+1 Overgrown Tomb (ECL) 266
+1 Sacred Foundry (EOE) 256
+1 Breeding Pool (EOE) 251
+1 Misty Rainforest (MH2) 250
+1 Polluted Delta (MH3) 224
+1 Scalding Tarn (MH2) 254
+1 Flooded Strand (MH3) 220
+1 Windswept Heath (MH3) 235
+1 Verdant Catacombs (MH2) 260
+1 Fabled Passage (BLB) 252
+1 Prismatic Vista (SPG) 38
+1 Plains (FRA) 281
+1 Island (FRA) 283
+1 Swamp (FRA) 285
+1 Mountain (FRA) 287
+1 Forest (FRA) 289
