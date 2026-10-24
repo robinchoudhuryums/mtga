@@ -70,7 +70,8 @@
 #: notes: Way of the Mentor turns into loyalty on every walker); Brokers Ascendancy for Sanctum of
 #: notes: Shattered Heights (interaction 16 -> 15, accepted); Avatar of Burgeoning Echoes for Guru
 #: notes: Pathik (landfall grows a Jace token for Entrust the Spark). HELD: Chandra, Chill of
-#: notes: Compliance for World War Hulk. BENCH for
+#: notes: Compliance for World War Hulk. Golos, Tireless Pilgrim for Teferi, Hero of Dominaria, which
+#: notes: cannot be crafted on Arena (owner); interaction 15 -> 14. BENCH for
 #: notes: later passes: Insidious Roots, Selvala, Mogis, Satsuki, Garnet, The Legend of Roku, The
 #: notes: Legend of Kyoshi, Rydia, Jin-Gitaxias, Sab-Sunen, Athreos, Karolina Dean, Kyodai, Greenhouse,
 #: notes: Djeru and Hazoret, Oketra the True, Elspeth, Storm Slayer, Kaito, Dancing Shadow, Marina
@@ -121,10 +122,10 @@
 1 Great Divide Guide (TLA) 181
 1 Yuna, Grand Summoner (FIC) 8
 1 Enduring Vitality (DSK) 176
+1 Golos, Tireless Pilgrim (M20) 226
 
 # Planeswalkers and their support
 1 Tam, the Possibility (FRA) 276
-1 Teferi, Hero of Dominaria (DOM) 207
 1 Oath of Teferi (DOM) 200
 1 Jace, Multiverse Architect (FRC) 1
 1 Atraxa, Praetors' Voice (MUL) 33

@@ -122,7 +122,7 @@ Plaza of Heroes,Land,"{T}: Add {C}.
 {3}, {T}, Exile this land: Target legendary creature gains hexproof and indestructible until end of turn.",Colorless,mana; hexproof; protection; indestructible; resilience,DMU,252,Rare,84,,4.0,seed
 "Teferi, Hero of Dominaria",Legendary Planeswalker — Teferi,"+1: Draw a card. At the beginning of the next end step, untap up to two lands.
 −3: Put target nonland permanent into its owner's library third from the top.
-−8: You get an emblem with ""Whenever you draw a card, exile target permanent an opponent controls.""",W/U,Teferi; planeswalker; card draw,DOM,207,Mythic,86; 90,,10.0,seed
+−8: You get an emblem with ""Whenever you draw a card, exile target permanent an opponent controls.""",W/U,Teferi; planeswalker; card draw,DOM,207,Mythic,86,"Not craftable on Arena (owner, 2026-10-24); dropped from deck 90 for Golos.",10.0,seed
 Oath of Teferi,Legendary Enchantment,"When Oath of Teferi enters, exile another target permanent you control. Return it to the battlefield under its owner's control at the beginning of the next end step.
 You may activate the loyalty abilities of planeswalkers you control twice each turn rather than only once.",W/U,etb; blink,DOM,200,Rare,90,,3.5,seed
 Central Elevator // Promising Stairs,Enchantment — Room // Enchantment — Room,"When you unlock this door, search your library for a Room card that doesn't have the same name as a Room you control, reveal it, put it into your hand, then shuffle.
@@ -363,6 +363,8 @@ Poison Dart Frog,Creature — Frog,"Reach
 Whenever you cast a blue spell, scry 2.
 Whenever you cast a red spell, Aragorn deals 3 damage to target opponent.
 Whenever you cast a green spell, target creature gets +4/+4 until end of turn.",W/U/R/G,Human; Noble; tokens; burn; scry; pump; noncombat damage; selection,LTR,192,Mythic,90,,7.5,seed
+"Golos, Tireless Pilgrim",Legendary Artifact Creature — Scout,"When Golos enters, you may search your library for a land card, put that card onto the battlefield tapped, then shuffle.
+{2}{W}{U}{B}{R}{G}: Exile the top three cards of your library. You may play them this turn without paying their mana costs.",W/U/B/R/G,Scout; ramp; etb; impulse,M20,226,Rare,90,,6.0,seed
 "Alibou, Ancient Witness",Legendary Artifact Creature — Golem,"Other artifact creatures you control have haste.
 Whenever one or more artifact creatures you control attack, Alibou deals X damage to any target and you scry X, where X is the number of tapped artifacts you control.",W/R,Golem; burn; scry; artifacts; noncombat damage; selection; haste; aggro,MAR,39,Mythic,84,,7.5,seed
 "Black Panther, Wakandan King",Legendary Creature — Human Noble Hero,"First strike
