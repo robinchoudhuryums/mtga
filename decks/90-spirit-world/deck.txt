@@ -24,7 +24,7 @@
 #: archetype: (Great Divide Guide, Wrenn and Realmbreaker, Enduring Vitality, Leyline of the Guildpact).
 #: archetype: DISTINCT from deck 29 (Enchantress, GWR 60-card Auras): the axis is legendary enchantments
 #: archetype: and Shrine count, and the clock is Hondens, Sanctum drains and unblockable Spirits.
-#: protect: Hei Bai, Forest Guardian; Go-Shintai of Life's Origin; Sanctum of All; Leyline of the Guildpact; Southern Air Temple; The Spirit Oasis; Northern Air Temple; Crescent Island Temple; Kyoshi Island Plaza
+#: protect: Hei Bai, Forest Guardian; Go-Shintai of Life's Origin; Sanctum of All; Leyline of the Guildpact; Southern Air Temple; The Spirit Oasis; Northern Air Temple; Crescent Island Temple; Kyoshi Island Plaza; The World Tree
 #: notes: DRAFTED 2026-10-24 (/draft-deck) from the owner's 5-colour Shrine concept, with Nicol Bolas,
 #: notes: Dragon-God as a named must-include. RULES READ: a Shrine token from Life's Origin is a
 #: notes: Shrine for every count and triggers the temples ("another Shrine you control enters", no
@@ -34,10 +34,14 @@
 #: notes: the Guildpact makes every land every basic type, so Leyline Binding costs {W}.
 #: notes: FAREWELL is modal ("choose one or more"): `cuts` flags it as fighting the graveyard
 #: notes: engine, but only the exile-graveyards mode does that; pick creatures and leave the yards.
-#: notes: MANABASE READ: `consistency` counts the six two-type fetches (Misty, Polluted, Scalding,
-#: notes: Flooded, Windswept, Verdant) as nothing (G-35's typed-fetch residual); each finds a triome or
-#: notes: shockland, so each is a source of every colour while those last. It also prices no nonland
-#: notes: fixer, and Great Divide Guide or Wrenn and Realmbreaker makes every land a five-colour source.
+#: notes: MANABASE (2026-10-24, owner's budget pass): the rare fetches and seven triomes were replaced
+#: notes: with owned or common/uncommon lands: the Khans tri-lands, Savage Lands, Contaminated
+#: notes: Landscape, the four owned Verges, Starting Town, Evolving Wilds, Terramorphic Expanse and two
+#: notes: more basics (seven, which the basic searches and Kyoshi Island Plaza need). The second basic
+#: notes: is a Plains, not a Swamp: `consistency`'s rebalance hint measured it as the larger gain
+#: notes: (Venat, both Heliods, Elspeth Conquers Death) against Bolas's {B}{B}{B}. The World Tree is
+#: notes: protected (owner). `consistency` prices no nonland fixer, and Great Divide Guide or Wrenn and
+#: notes: Realmbreaker makes every land a five-colour source.
 #: notes: SWAPS 2026-10-24 (pass 1 of a hybrid rebuild, 18 swaps): Tam, The Kami War, Teferi, Hero of
 #: notes: Dominaria, Oath of Teferi, Jace, Multiverse Architect, Atraxa, Omnath, Locus of All, Nissa,
 #: notes: Leyline Tamer, Aragorn, Great Divide Guide, Yuna, Grand Summoner, Wrenn and Realmbreaker,
@@ -162,16 +166,15 @@
 1 Plaza of Heroes (DMU) 252
 1 White Lotus Hideout (TLA) 281
 1 The World Tree (KHM) 275
-1 Ziatora's Proving Ground (SNC) 261
-1 Raffine's Tower (SNC) 254
+1 Savage Lands (MSC) 827
+1 Contaminated Landscape (MH3) 218
 1 Spara's Headquarters (SNC) 257
-1 Xander's Lounge (SNC) 260
 1 Jetmir's Garden (SNC) 250
-1 Savai Triome (IKO) 253
-1 Indatha Triome (IKO) 248
+1 Nomad Outpost (TDM) 263
+1 Sandsteppe Citadel (TDM) 266
 1 Ketria Triome (IKO) 250
-1 Raugrin Triome (IKO) 251
-1 Zagoth Triome (IKO) 259
+1 Mystic Monastery (TDM) 262
+1 Opulent Palace (TDM) 264
 1 Hallowed Fountain (ECL) 265
 1 Watery Grave (EOE) 261
 1 Blood Crypt (ECL) 262
@@ -182,16 +185,15 @@
 1 Overgrown Tomb (ECL) 266
 1 Sacred Foundry (EOE) 256
 1 Breeding Pool (EOE) 251
-1 Misty Rainforest (MH2) 250
-1 Polluted Delta (MH3) 224
-1 Scalding Tarn (MH2) 254
-1 Flooded Strand (MH3) 220
-1 Windswept Heath (MH3) 235
-1 Verdant Catacombs (MH2) 260
-1 Fabled Passage (BLB) 252
-1 Prismatic Vista (SPG) 38
-1 Plains (FRA) 281
+1 Terramorphic Expanse (MSC) 828
+1 Wastewood Verge (DFT) 268
+1 Thornspire Verge (DSK) 270
+1 Willowrush Verge (DFT) 270
+1 Hushwood Verge (DSK) 261
+1 Evolving Wilds (ECL) 264
+1 Starting Town (FIN) 289
+2 Plains (FRA) 281
 1 Island (FRA) 283
 1 Swamp (FRA) 285
 1 Mountain (FRA) 287
-1 Forest (FRA) 289
+2 Forest (FRA) 289

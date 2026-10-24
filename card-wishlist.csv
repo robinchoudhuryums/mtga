@@ -378,6 +378,9 @@ Whenever Grist or another creature you control enters, if it entered from your g
 Fanatic of Rhonas,Creature — Snake Druid,"{T}: Add {G}.
 Ferocious — {T}: Add {G}{G}{G}{G}. Activate only if you control a creature with power 4 or greater.
 Eternalize {2}{G}{G} ({2}{G}{G}, Exile this card from your graveyard: Create a token that's a copy of it, except it's a 4/4 black Zombie Snake Druid with no mana cost. Eternalize only as a sorcery.)",G,Snake; Druid; reanimator; graveyard; tokens; mana; ferocious; eternalize,MH3,152,Rare,89,deck 89 tune 2026-10-23,6.0,seed
+Contaminated Landscape,Land,"{T}: Add {C}.
+{T}, Sacrifice this land: Search your library for a basic Plains, Island, or Swamp card, put it onto the battlefield tapped, then shuffle.
+Cycling {W}{U}{B} ({W}{U}{B}, Discard this card: Draw a card.)",W/U/B,card draw; sacrifice; ramp; mana; cycling,MH3,218,Common,90,,1.5,seed
 Seething Landscape,Land,"{T}: Add {C}.
 {T}, Sacrifice this land: Search your library for a basic Island, Swamp, or Mountain card, put it onto the battlefield tapped, then shuffle.
 Cycling {U}{B}{R} ({U}{B}{R}, Discard this card: Draw a card.)",U/B/R,card draw; sacrifice; ramp; mana; cycling,MH3,225,Common,87,,1.5,seed
@@ -447,6 +450,8 @@ Origin of Iron Man,Enchantment — Saga,"(As this Saga enters and after your dra
 I — Tap up to one target creature. It doesn't untap during its controller's untap step for as long as this Saga remains on the battlefield.
 II — Draw two cards.
 III — You may put an artifact card with mana value 5 or less from your hand onto the battlefield.",U,saga; card draw,MSC,633,Uncommon,84,,5.0,seed
+Savage Lands,Land,"This land enters tapped.
+{T}: Add {B}, {R}, or {G}.",B/R/G,mana,MSC,827,Uncommon,90,,2.5,seed
 Team Transmitter,Artifact,"Whenever a Hero you control enters, you gain 1 life.
 {T}: Add one mana of any color.",Colorless,lifegain; mana,MSC,573,Uncommon,84,,5.0,seed
 Vault Guardsman,Artifact Creature — Human Advisor,"Convoke (Your creatures can help cast this spell. Each creature you tap while casting this spell pays for {1} or one mana of that creature's color.)
