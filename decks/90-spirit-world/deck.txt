@@ -18,7 +18,9 @@
 #: archetype: Tam, Atraxa and Ichormoon Gauntlet to proliferate, Sanctum Lurker giving every walker a +2
 #: archetype: and keeping it alive at 0, and Prophet of the Planeswalker making one walker's abilities
 #: archetype: cost [+1] more; Entrust the Spark trades a spare walker for the best one in the library.
-#: archetype: Yarok, Elesh Norn and Doubling Season double enters triggers and tokens. Castability comes from cards that make every land or creature tap for any colour
+#: archetype: Elesh Norn and Doubling Season double enters triggers and tokens, and Annie Joins Up
+#: archetype: doubles every legendary creature's triggers. Castability comes from cards that make
+#: archetype: every land or creature tap for any colour
 #: archetype: (Great Divide Guide, Wrenn and Realmbreaker, Enduring Vitality, Leyline of the Guildpact).
 #: archetype: DISTINCT from deck 29 (Enchantress, GWR 60-card Auras): the axis is legendary enchantments
 #: archetype: and Shrine count, and the clock is Hondens, Sanctum drains and unblockable Spirits.
@@ -58,9 +60,13 @@
 #: notes: our own board; Annie's 5 damage replaces the removal and doubles every legendary
 #: notes: creature's triggers, Hei Bai's Shrine reveal included); Way of the Mentor for Sanctum of
 #: notes: Fruitful Harvest (every life gain, the Hondens' and Sanctums' included, is loyalty on every
-#: notes: walker). PENDING (owner): Nissa, Leyline Tamer back in, Way of the Paradox, Brokers
-#: notes: Ascendancy and Avatar of Burgeoning Echoes, cuts to be chosen; Chandra, Chill of Compliance
-#: notes: held. BENCH for
+#: notes: walker). SWAPS 2026-10-24 (pass 4): Nissa, Leyline Tamer for Yarok (Elesh Norn carries the
+#: notes: same doubling text); Way of the Paradox for Mana Confluence (37 lands: Paradox's extra land
+#: notes: drop and eight nonland mana sources cover it; each loyalty activation now gains 1 life, which
+#: notes: Way of the Mentor turns into loyalty on every walker); Brokers Ascendancy for Sanctum of
+#: notes: Shattered Heights (interaction 16 -> 15, accepted); Avatar of Burgeoning Echoes for Guru
+#: notes: Pathik (landfall grows a Jace token for Entrust the Spark). HELD: Chandra, Chill of
+#: notes: Compliance for World War Hulk. BENCH for
 #: notes: later passes: Insidious Roots, Selvala, Mogis, Satsuki, Garnet, The Legend of Roku, The
 #: notes: Legend of Kyoshi, Rydia, Jin-Gitaxias, Sab-Sunen, Athreos, Karolina Dean, Kyodai, Greenhouse,
 #: notes: Djeru and Hazoret, Oketra the True, Elspeth, Storm Slayer, Kaito, Dancing Shadow, Marina
@@ -73,7 +79,6 @@
 1 Go-Shintai of Life's Origin (HA6) 6
 1 Sanctum of All (M21) 225
 1 Sanctum of Stone Fangs (M21) 120
-1 Sanctum of Shattered Heights (M21) 157
 1 Go-Shintai of Hidden Cruelty (NEO) 97
 1 Go-Shintai of Ancient Wars (NEO) 144
 1 Honden of Cleansing Fire (HA3) 2
@@ -88,11 +93,9 @@
 1 Kyoshi Island Plaza (TLA) 184
 
 # Shrine finders
-1 Guru Pathik (TLA) 223
 1 Calix, Destiny's Hand (THB) 211
 
 # Trigger and token doublers
-1 Yarok, the Desecrated (M20) 220
 1 Elesh Norn, Mother of Machines (ONE) 10
 1 Jodah, the Unifier (DMU) 203
 1 Doubling Season (FDN) 216
@@ -103,6 +106,7 @@
 1 Omnath, Locus of All (MOM) 249
 1 Aragorn, the Uniter (LTR) 192
 1 Venat, Heart of Hydaelyn // Hydaelyn, the Mothercrystal (FIN) 39
+1 Nissa, Leyline Tamer (FRC) 2
 
 # Protection
 
@@ -132,6 +136,9 @@
 1 Narset of the Ancient Way (IKO) 195
 1 Entrust the Spark (FRA) 131
 1 Way of the Mentor (FRA) 208
+1 Way of the Paradox (FRA) 267
+1 Brokers Ascendancy (SNC) 170
+1 Avatar of Burgeoning Echoes (FRA) 122
 
 # Sagas
 1 The Kami War // O-Kagachi Made Manifest (NEO) 227
@@ -154,7 +161,6 @@
 1 Command Tower (FRC) 22
 1 Plaza of Heroes (DMU) 252
 1 White Lotus Hideout (TLA) 281
-1 Mana Confluence (EOS) 25
 1 The World Tree (KHM) 275
 1 Ziatora's Proving Ground (SNC) 261
 1 Raffine's Tower (SNC) 254

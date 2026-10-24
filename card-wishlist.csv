@@ -270,6 +270,8 @@ Summon — {X}, {T}: Return target Saga card with mana value X from your graveya
 Balamb T-Rexaur,Creature — Dinosaur,"Trample
 When this creature enters, you gain 3 life.
 Forestcycling {2} ({2}, Discard this card: Search your library for a Forest card, reveal it, put it into your hand, then shuffle.)",G,Dinosaur; lifegain; etb; landcycling; card draw; lands; trample; evasion; forestcycling; typecycling; cycling,FIN,173,Common,28,,2.0,hand
+Avatar of Burgeoning Echoes,Creature — Avatar,"Landfall — Whenever a land you control enters, empower Jace 2. (Put two loyalty counters on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with ""[−1]: Surveil 1"" and ""[−3]: Draw a card."")
+Planeswalkers you control have ""[−10]: Put a +1/+1 counter on target creature for each land you control.""",U/G,Avatar; planeswalker; counters; card draw; tokens; landfall; surveil; graveyard; empower jace; lands,FRA,122,Mythic,90,,6.5,seed
 Bloodline Recollector // Ancestral Craving,Creature — Vampire Warlock // Instant,"At the beginning of each end step, if three or more creatures died this turn, this creature becomes prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.) // Target player draws three cards and loses 3 life.",B,Vampire; Warlock; prepared; spellslinger; tempo,FRA,49,Mythic,52,,6.5,seed
 Omnipresence,Enchantment,You may cast spells with mana value less than or equal to the number of creatures you control from your hand without paying their mana costs.,G,,FRA,110,Mythic,50,,4.5,seed
 Carnivorous Cultivator // Enroot,Creature — Elf Warlock // Sorcery,"Deathtouch
@@ -531,6 +533,7 @@ Other creatures you control have vigilance.
 0: Create a 2/2 green Wolf creature token. Transform Arlinn Kord. // +1: Creatures you control get +1/+1 and gain trample until end of turn.
 −1: Arlinn deals 3 damage to any target. Transform Arlinn.
 −6: You get an emblem with ""Creatures you control have haste and '{T}: This creature deals damage equal to its power to any target.'""",R/G,Arlinn; planeswalker; tokens; burn; pump; noncombat damage; transform; trample; evasion; vigilance; combat; haste; aggro,SIR,230,Mythic,88,,10.0,seed
+Brokers Ascendancy,Enchantment,"At the beginning of your end step, put a +1/+1 counter on each creature you control and a loyalty counter on each planeswalker you control.",W/U/G,counters,SNC,170,Rare,90,,5.5,seed
 Maestros Theater,Land,"When this land enters, sacrifice it. When you do, search your library for a basic Island, Swamp, or Mountain card, put it onto the battlefield tapped, then shuffle and you gain 1 life.",Colorless,lifegain; sacrifice; ramp; etb,SNC,251,Common,89,deck 89 tune 2026-10-22,1.5,seed
 Decorum Dissertation,Sorcery — Lesson,"Target player draws two cards and loses 2 life.
 Paradigm (Then exile this spell. After you first resolve a spell with this name, you may cast a copy of it from exile without paying its mana cost at the beginning of each of your first main phases.)",B,Lesson; paradigm; exile cast; card advantage,SOS,78,Mythic,41; 22,Paradigm: a free draw-2 each main phase once resolved; the life is refunded by the Negative swap,6.0,seed
