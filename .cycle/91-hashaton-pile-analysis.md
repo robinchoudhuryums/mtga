@@ -1,6 +1,6 @@
 # Hashaton pile (from deck 53) — analysis (TEMPORARY working doc)
 
-**Status: PLAN REVISED (§5a), awaiting owner picks** (started 2026-10-25; all 118 graded). Delete once the new deck is drafted and the
+**Status: SECOND REVISION (§5b) — awaiting the owner's engine choice** (started 2026-10-25; all 118 graded). Delete once the new deck is drafted and the
 findings are folded into its `#: notes:` block. A scratchpad, not a source of truth —
 decks/ are.
 
@@ -57,6 +57,7 @@ tapped token that's a copy of that card, except it's a 4/4 black Zombie."*
 
 - E1: The Sibsig Ceremony destroys every creature we CAST — grade it against the cast half of R9, not against deck 53.
 - E3: A discard PAYOFF (Bone Miser, Chariot, Chancellor) is not an OUTLET; count the two separately (O1).
+- E8: see §5b — a card graded against one engine when the pile has several.
 - E4–E7: see §5a (speed, Sibsig, copy-makers, token-count payoffs).
 - E2: "Whenever another NONTOKEN creature dies" (Agent Venom) misses the engine: Hashaton's copies are tokens.
 
@@ -294,6 +295,64 @@ Dreadhorde Invasion; out Chronicle of Victory, Liliana's Mastery, Dread Summons,
 Gisa, Grim Reaper's Scythe, Assemble from Parts, Havengul Runebinder, Geralf. Scratch
 measurement: interaction 14, card advantage 9 → 8, floor A. The Sibsig engine is a further
 decision, not in this count.
+
+## 5b. Second revision (2026-10-25, owner pushback on 19 cards; owner KEEPS Ghoulcaller Gisa,
+Grim Reaper's Scythe, Assemble from Parts, Havengul Runebinder, Geralf)
+
+Every card was read in full both times; the error was grading each one ALONE (E8, below).
+
+- **E8 — the pile holds more than one engine, and a card was graded only against Hashaton's.**
+  Three sub-engines run beside the discard engine:
+  1. **Sibsig cast-and-die** — The Sibsig Ceremony + Necroduality (order Necroduality's
+     trigger first: its token copy of the cast Zombie was never cast, so it survives) +
+     Sothera (EVERY Sibsig death makes each opponent exile a creature) + the nontoken-death
+     payoffs (Zahur's max-speed tokens, Embalmed Ascendant's max-speed drain, Genku, Headless
+     Rider, Midnight Reaper, Agent Venom, Liliana Heretical Healer's flip) + God-Eternal Oketra
+     (every cast also makes a 4/4). Doctor Doom survives it: order his trigger first and the
+     Doombots make him indestructible before the destroy resolves, and the 2/2 still comes.
+     Unstoppable Slasher returns with stun counters and stays. **THE COST: Sibsig destroys
+     HASHATON whenever it is recast.** Cast the commander before Sibsig; if Hashaton dies while
+     Sibsig is out, the commander is locked until Sibsig leaves.
+  2. **Counters → cards** — Soul Diviner draws by removing ANY counter: Army counters (amass
+     on Lazotep Chancellor, Vizier, Dreadhorde Invasion, Enter the God-Eternals, Commence),
+     loyalty on four Lilianas and Ral, +1/+1s (Psychic Frog, Runebinder, Geralf, Outlaw
+     Stitcher), Slasher's stun counters and Ammit Eternal's −1/−1 counters (both good to
+     remove). Inexorable Tide proliferates all of it on every spell — and lore counters on The
+     Cloning of Shredder and plan counters on Robot Domination, which fire chapters and Robots
+     early. Card advantage is this list's thinnest axis (8–9), so Diviner matters.
+  3. **Symmetric discard** — answers O1. "Each player discards" is a Hashaton outlet AND a
+     Waste Not trigger at once, so Waste Not is Bone Miser's mirror: our discard → Hashaton +
+     Bone Miser, theirs → Waste Not. Outside the pile (read in full): **Miasmic Mummy** (a
+     2-drop Zombie whose copy discards AGAIN — a self-chaining outlet), **Fanatic of the
+     Harrowing** (owned; discard then draw), **Liliana of the Veil** (+1 each turn), **Liliana,
+     Waker of the Dead**, **Rankle, Master of Pranks**; inside it, Liliana Heretical Healer +2
+     and Ral −1.
+
+| Card | Was | Now | What the first pass missed |
+|---|---|---|---|
+| The Sibsig Ceremony | ✗/★ | ★★ (engine) | Sub-engine 1; the commander-lock cost above is the price. |
+| Necroduality | ◇ | ★★ with Sibsig, ★ without | Copies every CAST or RECAST Zombie (Zul Ashur, Gisa and Geralf, Havengul Lich, Liliana DM −3, Funeral Room's mass return); with Sibsig the copy is the one that stays. |
+| Soul Diviner | ◇ | ★★ | Sub-engine 2: a repeatable draw on the deck's thinnest axis. |
+| Waste Not | △ | ★★ with the symmetric package | Sub-engine 3. |
+| Aven Wind Guide | ◇ | ★★ | ALL creature tokens fly AND have vigilance — Hashaton copies, Doombots, Army, Chariot tokens. Vigilance answers R5 (copies enter tapped). Its embalm is a card leaving the yard (Scythe, Undead Hand Ninja, Essence Anchor). Mostly a discard target, so {W}{U} rarely matters. |
+| Pride of the Road | △ | ★ | Max speed is near-automatic (E4); double strike on Unstoppable Slasher halves their life TWICE in one combat. |
+| Risen Necroregent | ◇ | ★ | E4 again: a Zombie every end step, on a 4/4 copy for {2}{U}. |
+| Embalmed Ascendant | ◇ | ★ | Two bodies for three; max speed drains on EVERY death, tokens included. |
+| Zahur, Glory's Past | ◇ | ★ | A once-a-turn sacrifice outlet (surveil → Denzilore); max speed, a 2/2 per nontoken death — every Sibsig death. |
+| Genku, Future Shaper | ◇ | ★ (★★ with Sibsig) | Up to three tokens a turn off nontoken permanents leaving (Sibsig deaths, sacrificed Sagas, Hour of Victory); a mana sink that puts counters on everything (Diviner). |
+| Wight | ◇ | ★ | Death Baron gives it deathtouch, so every creature it touches dies, becomes OUR 2/2 and is exiled. |
+| Ammit Eternal | ◇ | ★ | A 5/5 afflict 3 for three; Soul Diviner turns its −1/−1 counters into cards. |
+| Eternal of Harsh Truths | △ | ★ | Its COPY is a token, so Eternal Skylord / Aven Wind Guide give it flying: a 4/4 flier that draws every attack, or drains 2 (speed) when blocked. |
+| Commence the Endgame | ◇ | ★ | Instant: draw two (card advantage) and a Zombie Army the size of your hand. |
+| The Final Days | ★ | ★★ | Discard IT to an outlet (Bone Miser draws on a noncreature discard) and flash it back for one Horror per creature card in the yard — 8+ late. |
+| Fallen Shinobi | ◇ | ★ | Two free cards per hit; Key to the City / flying copies make the hit happen. |
+| Zareth San, the Trickster | ◇ | ★ | Rogues exist: Gisa's, Geralf's and Outlaw Stitcher's Zombie Rogue tokens pay its cost; each hit steals a permanent from THEIR yard — which the symmetric discard fills. |
+| Inexorable Tide | △ | ★ | Sub-engine 2's accelerator. |
+| Outlaw Stitcher | △ | ◇/★ | Zombie Rogue token (Zareth San) with counters (Diviner); its multi-spell clause rarely fires on a copy. |
+
+**Slot math.** Owner keeps 5 of the 8 proposed cuts, so only Chronicle of Victory, Liliana's
+Mastery and Dread Summons leave — 3 slots for the 8 §5a adds, before any of the above. The
+list can hold the Hashaton engine plus ONE or TWO sub-engines, not all three at full depth.
 
 ## 5. Consolidated plan (live — after batch 4)
 
