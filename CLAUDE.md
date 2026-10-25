@@ -556,7 +556,11 @@ is protecting.
   cards with no interaction role, reported in `stats`/`tier`/`quality` and kept out of
   `tier_band` the same way. **Single-target BOUNCE moved there OUT of interaction**
   (owner's call — the permanence line BS10-02 drew for stuns, applied to bounce); mass
-  bounce stays a Sweeper. 17 decks' interaction fell, 8 tier floors moved down. [G-25]
+  bounce stays a Sweeper. 17 decks' interaction fell, 8 tier floors moved down. **HAND
+  ATTACK is the second sibling since 2026-10-25** (`hand_attack_effects` — an opponent
+  discards or exiles from hand): printed in the same three views, never in `tier_band`.
+  14 of 127 decks run any; counting it as interaction would raise 9 decks and move 0
+  floors, and whether it should count is the owner's call. [G-25]
 - **`tier --audit-rationale`'s SUPPRESSION RULES are the delicate part** — a citation is
   often legitimately not a claim about the current list. Keep the cue lists NARROW and
   **let a roster-wide sweep be the check**: a false positive is noisy and gets noticed, a
@@ -722,25 +726,26 @@ is protecting.
   `deck.deck_source_profile`, behind `mana`, `consistency`, `deck_color_sources`,
   `pip_depth_warning`, `suggest --lands`/`--needs`/`--ramp` and the rationale audit's
   colour figures.**
-  An extra-cost any-colour land IS counted and labelled; spend-only mana is NOT; a basic
+  An extra-cost any-colour land IS counted and labelled (energy/counter costs too; a
+  Gate-only colour is `board`); spend-only mana is NOT; a basic
   fetch counts for each basic the deck runs that it can FIND — a TYPED one ("a basic Forest,
-  Plains, or Island") only for those types, since 2026-10-23 (`fetch_types`); residual: a
+  Plains, or Island") only for those types (`fetch_types`); residual: a
   NONBASIC typed fetch ("a Forest or Island card") counts as nothing. **`free` MEANT FOUR THINGS
   until 2026-09-04**:
   choose-ONCE-on-entry now sets `chosen` (counted for ACCESS, denied BREADTH);
-  transform-gated, GRANTED and extra-tap-cost clauses are excluded. **`lib.tapland_kind` is the ONE tapping predicate** (the tempo
+  transform-gated, GRANTED and extra-tap clauses are out. **`lib.tapland_kind` is the ONE tapping predicate** (the tempo
   line, `·tapped?`, `_land_value`'s premium), and its `conditional` bucket merged FOUR
   opposite behaviours until 2026-09-20: `fast` and `check` (a basic gate, floor 12) now earn
-  the premium a shockland already had, while a SLOWLAND and a board state stay conservative —
-  false exactly when tempo matters. **A TYPE-NAMED gate ('a Plains or an Island') is read
+  the premium a shockland already had, while a SLOWLAND and a board state stay conservative. **A TYPE-NAMED gate ('a Plains or an Island') is read
   against the deck's OWN lands' types (basics and typed nonbasics) since 2026-09-23 — pass
-  `basic_types`, or it reads `check` for a deck that can never meet it.** Test
+  `basic_types`, or it reads `check` for a deck that cannot meet it.** Test
   `TAPLAND_CONDITIONAL_KINDS`, not a string.
   **NONLAND sources are DISCLOSED since 2026-09-18, never counted**: `consistency` prints
   `ⓘ N NONLAND mana source(s) are NOT in the counts above` (**86 of 125 decks**). BOARD-dependent colour
   (Vivid) and mana GRANTED to creatures are
-  disclosed with a label since 2026-10-06.
-  `uncounted_mana_sources` reuses `land_production`, so the two cannot drift. [G-35]
+  disclosed and labelled since 2026-10-06, as is a permanent making EVERY land any colour
+  (`land_rainbow_enablers`, 2026-10-25).
+  `uncounted_mana_sources` reuses `land_production`, so they cannot drift. [G-35]
 - **`deck.py consistency <id>` is the PROBABILITY layer `mana` lacks** — keepable %,
   screw/flood, land-drop consistency and per-card P(cast on curve), with a Karsten-style
   source recommendation. Run it whenever a splash, a double pip or a top-end bomb is in
@@ -1070,8 +1075,8 @@ is protecting.
   a Verge that had tied an ungated untapped dual. The checkland gate reads typed nonbasics
   too now, one answer to "do I control a land of type X" (0 roster changes). **Residuals:**
   board-state gates (Spire of
-  Industry's artifact, Mirrex's entered-this-turn) and Leyline of the Guildpact are
-  unmodelled; and a per-card "N% on curve" in deck prose is unaudited (G-26), so a figure
+  Industry's artifact, Mirrex's entered-this-turn, Gemstone Caverns' luck counter) are
+  unmodelled and Leyline of the Guildpact is only disclosed (G-35); and a per-card "N% on curve" in deck prose is unaudited (G-26), so a figure
   quoted before this change may be stale without a warning. [G-87]
 - **BEFORE DISMISSING A CARD, COUNT THE DECK PROPERTY ITS VALUE DEPENDS ON.** Four
   dismissals were overturned in one cycle, all the same shape — a card judged on its own
@@ -1270,7 +1275,8 @@ is protecting.
   it into your hand* — the DESTINATION clause discriminates, the window was innocent. **Run the SUITE after a
   role-pattern change, not just `check_all`**: the roster figure sweep names every deck whose
   `#: tier:` prose still cites the old number (eight, that day). `check_roles.py` makes holes
-  visible: read `role_baseline.txt` and `--tags` as a DELTA. Real-text fixtures. [G-67]
+  visible: read `role_baseline.txt` and `--tags` as a DELTA. Real-text fixtures. Hand attack
+  left that hole list 2026-10-25 as a report-only line (G-25), not a role. [G-67]
 - **A TOOL THAT REJECTS THE FORM THE PROJECT ITSELF WRITES DOWN.** Two bugs an hour apart on
   2026-09-01, one shape: the interface disagreed with an artifact the repo produces, and
   REPORTED SUCCESS. `wishlist.py --add` silently dropped `--target`/`--note` — they are
@@ -1545,9 +1551,11 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   tune failed. The one-sided sweep (2026-10-01) is closed. **2026-10-07:** steal AURAS ("You control enchanted creature" — Control Magic, Kitnap)
   joined `Removal (spot)` and COPY effects (token copies, clones, becomes-a-copy) joined
   `Payoff / engine`; bounce left interaction for the tempo line (G-25). **2026-10-23:**
-  EXTRA LAND DROPS → Ramp (Azusa, Dryad), "twice that many / that many plus one … instead"
-  → Payoff (Doubling Season, Hardened Scales), "X damage divided" → Removal (Lukka); 0 tier
-  floors, interaction +1 in two decks. [K-12]
+  EXTRA LAND DROPS → Ramp, "twice that many … instead" → Payoff, "X damage divided" →
+  Removal; 0 tier floors. **2026-10-25:** X-scaled drain and lifegain, "lands … are every
+  basic land type" → Ramp, SEEK → Card advantage (onto the battlefield is Ramp), and an
+  empowered Jace's −3 draw when the empower is 3+ or repeatable; card advantage rose in 11
+  decks, 0 tier floors moved. [K-12]
 - **A LITERAL TYPE-NAME SEARCH CANNOT SEE THE CHOOSE-A-TYPE CATEGORY, and a false negative
   there reads as a finished answer.** A sweep for "Robots you control get" / "for each
   Robot" returned zero and an archetype was declined in writing as "bodies without a

@@ -1510,6 +1510,17 @@ The bounce cue also left `_INT_CUES`, so a bounce card is not reported as an int
 under-read; `check_roles.zero_role_cards` and the `unclassified` list skip a tempo card, which
 is seen, just not as a role.
 
+**Hand attack, 2026-10-25 — the tempo line's second sibling.** `hand_attack_effects` reads
+`_HAND_ATTACK_RE` on reminder-stripped text: an opponent or each player discards, a card is exiled
+from an opponent's hand, and the reveal/look-then-take forms (Thought Rattle's discard sits a
+sentence after the reveal, so that branch allows up to 120 characters on one line). `role_tally`
+publishes `per_role["hand_attack"]`, `deck_quality_vector` carries `hand_attack`, and `stats`,
+`quality` and the `tier` vector line print it; a test pins that `tier_band` ignores it. Measured:
+236 pool cards, a 15-card sample all genuine; 14 of 127 decks run any (p50 0, p90 1, max 19, deck 70).
+Counting a hand-attack card with no other interaction role AS interaction would raise interaction in
+9 decks and move **0** tier floors. It stays report-only as the owner's call, not because the number
+forbids it.
+
 
 ## [G-26] `deck.py tier <id> --audit-rationale` catches a STALE tier argument
 
@@ -3058,6 +3069,18 @@ land drop) and its SILENCE was not; Vivid-style colour is `land_production`'s `b
 `free`; and `uncounted_mana_sources` runs `land_production` on a NONLAND's text, so the spend-only and
 granted-ability exclusions are literally the same ones.
 
+**2026-10-25, two narrowings and a disclosure.** `lib._EXTRA_RESOURCE_COST_RE` (`{E}`, "remove a …
+counter from") files an any-colour ability behind energy or counters as `conditional`, labelled
+the way an extra mana cost already was (Aether Hub, Mirrodin's Core). `lib._GATE_ONLY_RE` ("a Gate
+you control could produce") files Plaza of Harmony's colour under `board`, since what it makes
+depends on the Gates you hold. Reflecting Pool and pay-life lands are unchanged. Roster: 0 decks'
+source counts moved, because no deck ran these lands. Separately, `deck.land_rainbow_enablers`
+(`_LAND_RAINBOW_RE`) names the nonland PERMANENTS that make every land any colour or every basic
+type (Leyline of the Guildpact, Chromatic Lantern style), and `consistency` prints them as an ⓘ
+line. Instants and sorceries are excluded, because a one-turn effect is not a manabase. The line
+is disclosure only, and no count reads it: the source figures stay what the lands make with the
+permanent absent.
+
 ## [G-36] `deck.py consistency <id>` is the PROBABILITY layer `mana` lacks
 
 **`deck.py consistency <id>` is the PROBABILITY layer `mana` lacks.** `mana` diagnoses
@@ -3324,6 +3347,10 @@ Terrace) is priced like any fetch, with no tempo discount for the activation.
 
 Moved here from the rule (word cap): the rider-tiebreak case was four Boros taplands tied at 10.9 — a
 scry, nothing, a draw sink, a life point; and the owned-lands footnote landed 2026-10-20.
+
+**2026-10-25:** the G-35 narrowing reaches `suggest --lands` through `land_production`, so Aether
+Hub, Mirrodin's Core and Plaza of Harmony no longer price as free five-colour lands. They fell out
+of deck 90's top picks, and no other deck's #1 pick changed.
 
 ## [G-38] `deck.py suggest --ramp / --interaction / --needs` are the NEEDS model — the structural axes the
 
@@ -4843,6 +4870,16 @@ exclude Threatens. A scan that files both as holes has found one hole and one de
 A measured gap is evidence that a pattern does not match something. It is not evidence that
 it should.
 
+**Hand attack left the taxonomy-hole list on 2026-10-25**, and not by becoming a role. The
+taxonomy line held: making it a role would re-score the roster. So it is reported beside the tempo
+line instead (G-25), and the measurement of what counting it would do (9 decks, 0 floors) is on
+record for the owner's call. The same batch fixed four PATTERN holes, each found by reading deck
+90's cards against figures that did not match (K-12): X-scaled drain, "are every basic land type",
+seek, and the empowered Jace's −3. The drain diagnosis is the worked case for "check the
+phrasing before the trigger". Sanctum of Stone Fangs was first suspected of an unmatched trigger
+wording. The actual hole was the `X` in "loses X life", and Northern Air Temple had only ever
+matched through its second, literal "loses 1 life" clause.
+
 ## [K-01] A handful of recurring Universe-Beyond flavor *mechanics* (Vivid, Job select, Opus, Increment, I
 
 A handful of recurring Universe-Beyond flavor *mechanics* (Vivid, Job select,
@@ -5572,6 +5609,19 @@ cards, all multipliers — an opponent HALVING clause says "half" and is pinned 
 divided` → Removal (+10, all removal). Roster diff over 124 decks: Ramp up in 17, Payoff up in 31, interaction +1
 in 76 (Ureni) and 89, card advantage 0, tier floors 0, `cuts` top-3 changed only in 89. Role baseline 480 → 467.
 Residual: Bushmaster (a deathtouch lord) still scores no role — a taxonomy question, not a phrasing hole.
+
+**2026-10-25 (deck 90 batches).** Burn/drain `… loses (?:\d|x life)` and Lifegain `you gain x life`
+(Sanctum of Stone Fangs); Ramp `(lands? you control|enchanted land) (are|is) every basic land type`
+(Leyline of the Guildpact: the "gain/have all basic land types" twin never matched "are every");
+Card advantage `seeks? (a|an|one|…|that many|up to N)` with a lookahead excluding "onto the
+battlefield", and a twin Ramp pattern for a land seek onto the battlefield (without it, deck 88 read
+8 → 11 on land seeks); Card advantage for an empowered Jace token's "−3: Draw a card", which lives in
+REMINDER text the role reader strips, so the trigger is the EMPOWER: `empower jace [3-9]`, or any
+empower inside a `whenever`/landfall clause or an activated ability, while a one-off empower 1–2
+stays uncounted. Pool: Card advantage +116, Lifegain +42, Burn/drain +22, Ramp +11, nothing lost.
+Roster: card advantage up in 11 decks (88 8→9; 22 7→8, 24 12→14, 51 10→11, 70 6→7,
+78-historic-brawl 6→7, 80 3→7, 82 12→15, 89 12→13, 90 to 16), interaction unchanged, **0 tier
+floors moved**. The six decks whose prose quoted the old figure were re-grounded the same day.
 
 ## [K-13] A literal type-name search cannot see the choose-a-type category — and the false negative reads as an answer
 
@@ -8480,6 +8530,10 @@ that had tied an untapped ungated dual on score and won the tiebreak now sits ju
 it (deck 1: Blood Crypt 11.84 over Blazemire Verge 11.54). The `tapland_kind` caller sets
 (`suggest_lands`, `tapland_profile`) now include typed nonbasics' types, so a shockland
 satisfies "unless you control a Plains" as G-87's gate already said; 0 roster changes.
+
+**2026-10-25:** Gemstone Caverns (a luck counter) joins Mirrex and Spire of Industry as a
+board-state gate scored as a free rainbow land. Leyline of the Guildpact is no longer silent: it is
+disclosed by `consistency`'s every-land-any-colour line (G-35), though still not counted.
 
 ## [K-16] `deck.py tribes` reads a card's OWN NAME as a tribal reference
 
