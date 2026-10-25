@@ -64,6 +64,8 @@ Brokers Hideout,Land,"When this land enters, sacrifice it. When you do, search y
 Tranquil Landscape,Land,"{T}: Add {C}.
 {T}, Sacrifice this land: Search your library for a basic Forest, Plains, or Island card, put it onto the battlefield tapped, then shuffle.
 Cycling {G}{W}{U} ({G}{W}{U}, Discard this card: Draw a card.)",W/U/G,card draw; sacrifice; ramp; mana; cycling,,,Common,78-historic-brawl,,1.5,seed
+Fallen Shinobi,Creature — Zombie Ninja,"Ninjutsu {2}{U}{B} ({2}{U}{B}, Return an unblocked attacker you control to hand: Put this card onto the battlefield from your hand tapped and attacking.)
+Whenever this creature deals combat damage to a player, that player exiles the top two cards of their library. Until end of turn, you may play those cards without paying their mana costs.",U/B,Zombie; Ninja; heist; ninjutsu; evasion; tempo,AA3,19,Rare,91,,3.0,seed
 Bontu the Glorified,Legendary Creature — God,"Menace, indestructible
 Bontu can't attack or block unless a creature died under your control this turn.
 {1}{B}, Sacrifice another creature: Scry 1. Each opponent loses 1 life and you gain 1 life.",B,God; lifegain; sacrifice; scry; indestructible; resilience; menace; evasion; selection,AKR,95,Mythic,89,deck 89 tune 2026-10-23,6.5,seed
@@ -81,6 +83,8 @@ Exile target card from a graveyard. Create a 2/2 black Zombie creature token.",B
 Aven Wind Guide,Creature — Bird Warrior,"Flying, vigilance
 Creature tokens you control have flying and vigilance.
 Embalm {4}{W}{U} ({4}{W}{U}, Exile this card from your graveyard: Create a token that's a copy of it, except it's a white Zombie Bird Warrior with no mana cost. Embalm only as a sorcery.)",W/U,Bird; Warrior; reanimator; graveyard; tokens; flying; evasion; vigilance; combat; embalm,AKR,228,Uncommon,91,,4.0,seed
+Eternal of Harsh Truths,Creature — Zombie Cleric,"Afflict 2 (Whenever this creature becomes blocked, defending player loses 2 life.)
+Whenever this creature attacks and isn't blocked, draw a card.",U,Zombie; Cleric; card draw; afflict,AKR,61,Uncommon,91,,5.5,seed
 Rhonas's Monument,Legendary Artifact,"Green creature spells you cast cost {1} less to cast.
 Whenever you cast a creature spell, target creature you control gets +2/+2 and gains trample until end of turn.",Colorless,cost-reduction; pump; trample; evasion,AKR,279,Uncommon,89,deck 89 tune 2026-10-23,6.0,seed
 Wayward Servant,Creature — Zombie,"Whenever another Zombie you control enters, each opponent loses 1 life and you gain 1 life.",W/B,Zombie; lifegain,AKR,267,Uncommon,91,,5.5,seed
@@ -126,6 +130,9 @@ Crew 2",B,vehicle; tokens; crew; vehicles; menace; evasion,DFT,80,Rare,91,,5.5,s
 Cursecloth Wrappings,Artifact,"Zombies you control get +1/+1.
 {T}: Target creature card in your graveyard gains embalm until end of turn. The embalm cost is equal to its mana cost. (Exile that card and pay its embalm cost: Create a token that's a copy of it, except it's a white Zombie in addition to its other types and has no mana cost. Embalm only as a sorcery.)",B,Zombie; reanimator; graveyard; tokens; pump,DFT,81,Rare,53; 91,,6.5,seed
 Unstoppable Plan,Enchantment,"At the beginning of your end step, untap all nonland permanents you control.",U,,DFT,72,Rare,16,deck 16 waterbend rebuild 2026-09-19,3.0,seed
+"Zahur, Glory's Past",Legendary Creature — Zombie Cat Warrior,"Start your engines! (If you have no speed, it starts at 1. It increases once on each of your turns when an opponent loses life. Max speed is 4.)
+Sacrifice another creature: Surveil 1. Activate only once each turn.
+Max speed — Whenever a nontoken creature you control dies, create a tapped 2/2 black Zombie creature token.",W/B,Zombie; Cat; Warrior; sacrifice; tokens; surveil; graveyard; max speed; speed; aggro; start your engines!,DFT,229,Rare,91,,5.5,seed
 Adrenaline Jockey,Creature — Minotaur Pilot,"Whenever a player casts a spell, if it's not their turn, this creature deals 4 damage to them.
 Whenever you activate an exhaust ability, put a +1/+1 counter on this creature.",R,Minotaur; Pilot; counters; burn,DFT,112,Uncommon,60,speed aggro 3-drop (deck 60 round-2 pile swap); pings us for off-turn spells,4.0,seed
 Amonkhet Raceway,Land,"Start your engines! (If you have no speed, it starts at 1. It increases once on each of your turns when an opponent loses life. Max speed is 4.)
@@ -432,6 +439,9 @@ Shire Terrace,Land,"{T}: Add {C}.
 Tomebound Lich,Creature — Zombie Wizard,"Deathtouch (Any amount of damage this deals to a creature is enough to destroy it.)
 Lifelink (Damage dealt by this creature also causes you to gain that much life.)
 Whenever this creature enters or deals combat damage to a player, draw a card, then discard a card.",U/B,Zombie; Wizard; lifegain; card draw; lifelink; deathtouch; combat; removal,M20,219,Uncommon,91,,4.5,seed
+"Liliana, Waker of the Dead",Legendary Planeswalker — Liliana,"+1: Each player discards a card. Each opponent who can't loses 3 life.
+−3: Target creature gets -X/-X until end of turn, where X is the number of cards in your graveyard.
+−7: You get an emblem with ""At the beginning of combat on your turn, put target creature card from a graveyard onto the battlefield under your control. It gains haste.""",B,Liliana; planeswalker; reanimator; graveyard; removal; discard; haste; aggro,M21,108,Mythic,91,,10.0,seed
 "Alibou, Ancient Witness",Legendary Artifact Creature — Golem,"Other artifact creatures you control have haste.
 Whenever one or more artifact creatures you control attack, Alibou deals X damage to any target and you scry X, where X is the number of tapped artifacts you control.",W/R,Golem; burn; scry; artifacts; noncombat damage; selection; haste; aggro,MAR,39,Mythic,84,,7.5,seed
 "Black Panther, Wakandan King",Legendary Creature — Human Noble Hero,"First strike
@@ -516,8 +526,6 @@ Spells you cast cost {1} less to cast for each card your opponents have drawn th
 At the beginning of your first main phase, look at the top card of your library. You may reveal that card if it has three or more colored mana symbols in its mana cost. If you do, add three mana in any combination of its colors and put it into your hand. If you don't reveal it, put it into your hand.",W/U/B/R/G,Phyrexian; Elemental; selection,MOM,249,Rare,90,,6.0,seed
 Invasion of Amonkhet // Lazotep Convert,Battle — Siege // Creature — Zombie,"(As a Siege enters, choose an opponent to protect it. You and others can attack it. When it's defeated, exile it, then cast it transformed.)
 When this Siege enters, each player mills three cards, then each opponent discards a card and you draw a card. (To mill three cards, a player puts the top three cards of their library into their graveyard.) // You may have this creature enter as a copy of any creature card in a graveyard, except it's a 4/4 black Zombie in addition to its other colors and types.",U/B,Siege; Zombie; Battle; graveyard; mill; card draw; etb; discard; transform,MOM,231,Uncommon,91,,4.0,seed
-Alabaster Host Intercessor,Creature — Phyrexian Samurai,"When this creature enters, exile target creature an opponent controls until this creature leaves the battlefield.
-Plainscycling {2} ({2}, Discard this card: Search your library for a Plains card, reveal it, put it into your hand, then shuffle.)",W,Phyrexian; Samurai; removal; etb; plainscycling; card draw; lands; landcycling; typecycling; cycling,MOM,3,Common,91,,2.5,seed
 "Captain Marvel, Shooting Star",Legendary Creature — Human Kree Hero,"Flying
 Whenever Captain Marvel enters or attacks, exile up to one target creature. That creature's controller gains life equal to its power.
 Whenever a creature other than Captain Marvel is exiled from the battlefield, you gain life equal to its power.",W,Human; Kree; Hero; lifegain; flying; evasion,MSC,589,Mythic,85,,7.0,seed
@@ -622,6 +630,7 @@ Equip {2}{U}",U,equipment; card advantage; equip,OTJ,54,Rare,84,,5.5,seed
 Lassoed by the Law,Enchantment,"When this enchantment enters, exile target nonland permanent an opponent controls until this enchantment leaves the battlefield.
 When this enchantment enters, create a 1/1 red Mercenary creature token with ""{T}: Target creature you control gets +1/+0 until end of turn. Activate only as a sorcery.""",W,tokens; removal; etb; pump,OTJ,18,Uncommon,3; 36a,,5.5,hand
 Make Your Own Luck,Sorcery,"Look at the top three cards of your library. You may exile a nonland card from among them. If you do, it becomes plotted. Put the rest into your hand. (You may cast it as a sorcery on a later turn without paying its mana cost.)",U/G,selection; plot; tempo; cost-reduction,OTJ,218,Uncommon,,,3.5,seed
+Anguished Unmaking,Instant,Exile target nonland permanent. You lose 3 life.,W/B,pay life; removal,OTP,35,Mythic,91,,6.5,seed
 "Heliod, God of the Sun",Legendary Enchantment Creature — God,"Indestructible
 As long as your devotion to white is less than five, Heliod isn't a creature. (Each {W} in the mana costs of permanents you control counts toward your devotion to white.)
 Other creatures you control have vigilance.
@@ -834,13 +843,14 @@ Foot Headquarters,Land,"This land enters tapped.
 When this land enters, you gain 1 life.
 {T}: Add {W} or {B}.",W/B,lifegain; mana; etb,TMT,185,Common,41,"manabase: WB dual for a basic — +1 source to the off-colour, gain 1 life",2.0,seed
 Necroduality,Enchantment,"Whenever a nontoken Zombie you control enters, create a token that's a copy of that creature.",U,tokens,VOW,70,Mythic,91,,6.5,seed
-Selhoff Entomber,Creature — Zombie,"{T}, Discard a creature card: Draw a card.",U,Zombie; card draw,VOW,76,Common,91,,1.0,seed
 God-Eternal Oketra,Legendary Creature — Zombie God,"Double strike
 Whenever you cast a creature spell, create a 4/4 black Zombie Warrior creature token with vigilance.
 When God-Eternal Oketra dies or is put into exile from the battlefield, you may put it into its owner's library third from the top.",W,Zombie; God; tokens; double strike; combat; aggro,WAR,16,Mythic,91,,7.0,seed
 Bioessence Hydra,Creature — Hydra Mutant,"Trample
 This creature enters with a +1/+1 counter on it for each loyalty counter on planeswalkers you control.
 Whenever one or more loyalty counters are put on planeswalkers you control, put that many +1/+1 counters on this creature.",U/G,Hydra; Mutant; counters; trample; evasion,WAR,186,Rare,90,,5.5,seed
+Commence the Endgame,Instant,"This spell can't be countered.
+Draw two cards, then amass Zombies X, where X is the number of cards in your hand. (Put X +1/+1 counters on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)",U,counters; card draw; tokens; amass; go-wide,WAR,45,Rare,91,,4.5,seed
 Enter the God-Eternals,Sorcery,"Enter the God-Eternals deals 4 damage to target creature and you gain life equal to the damage dealt this way. Target player mills four cards. Amass Zombies 4. (Put four +1/+1 counters on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)",U/B,counters; mill; lifegain; tokens; burn; amass; go-wide; graveyard,WAR,196,Rare,91,,4.5,seed
 Soul Diviner,Creature — Zombie Wizard,"{T}, Remove a counter from an artifact, creature, land, or planeswalker you control: Draw a card.",U/B,Zombie; Wizard; card draw,WAR,218,Rare,91,,3.0,seed
 Gleaming Overseer,Creature — Zombie Wizard,"When this creature enters, amass Zombies 1. (Put a +1/+1 counter on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)

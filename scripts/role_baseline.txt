@@ -140,7 +140,7 @@ End of the Hunt
 Enigma Drake
 Entropic Battlecruiser
 Entrust the Spark
-Fanatic of the Harrowing
+Fallen Shinobi
 Fated Firepower
 Fear of Isolation
 Fearsome Goblin Pair
@@ -359,7 +359,6 @@ Season of Weaving
 Secret of Bloodbending
 Seedglaive Mentor
 Seismic Sense
-Selhoff Entomber
 Servant of the Stinger
 Shark Shredder, Killer Clone
 She-Hulk, Attorney-at-Law
