@@ -2118,9 +2118,10 @@ is invisible, and a handoff nobody is told to read is the same failure one layer
   consolidated swap plan; it is TEMPORARY and says so, and it is deleted once the
   swaps land. Named here because a fresh session loads nothing else, and the whole
   point of committing it per batch is that it outlives one context window.
-  **SEVEN are live as of 2026-10-23**, each awaiting owner picks or sign-off:
+  **EIGHT are live as of 2026-10-25**, each awaiting owner picks or sign-off:
   `78-brawl-pile-analysis.md` (Tier 2/3 waves open), `54-from-54b-`, `84-marvel-`,
-  `86-fantastic-four-`, `fra-bant-`, `fra-bur-` and `fra-rgu-pile-analysis.md`; read each
+  `86-fantastic-four-`, `fra-bant-`, `fra-bur-`, `fra-rgu-pile-analysis.md` and
+  `91-hashaton-pile-analysis.md` (a new Brawl deck from deck 53's pile); read each
   one's `Status:` line. `deck89-tooling-plan.md` (a four-batch tooling plan) was completed and
   deleted 2026-10-23; its record is `.cycle/blocks/deck89-batch*.md`. `89-szarel-` was folded into deck 89 and deleted
   2026-10-23. `60-redline-pile-analysis.md`
