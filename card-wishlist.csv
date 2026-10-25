@@ -433,6 +433,12 @@ When this creature dies, investigate. (Create a Clue token. It's an artifact wit
 Loxodon Eavesdropper,Creature — Elephant Detective,"When this creature enters, investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")
 Whenever you draw your second card each turn, this creature gets +1/+1 and gains vigilance until end of turn.",G,Elephant; Detective; card draw; sacrifice; tokens; etb; clue; pump; investigate,MKM,168,Common,34,,2.5,hand
 Novice Inspector,Creature — Human Detective,"When this creature enters, investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",W,Human; Detective; card draw; sacrifice; tokens; etb; clue; investigate,MKM,29,Common,36a,,3.5,hand
+Jin-Gitaxias // The Great Synthesis,Legendary Creature — Phyrexian Praetor // Enchantment — Saga,"Ward {2}
+Whenever you cast a noncreature spell with mana value 3 or greater, draw a card.
+{3}{U}: Exile Jin-Gitaxias, then return it to the battlefield transformed under its owner's control. Activate only as a sorcery and only if you have seven or more cards in hand. // (As this Saga enters and after your draw step, add a lore counter.)
+I — Draw cards equal to the number of cards in your hand. You have no maximum hand size for as long as you control this Saga.
+II — Return all non-Phyrexian creatures to their owners' hands.
+III — You may cast any number of spells from your hand without paying their mana costs. Exile this Saga, then return it to the battlefield (front face up).",U,Phyrexian; Praetor; saga; card draw; bounce; blink; spellslinger; transform; ward; protection,MOM,65,Mythic,90,,10.0,seed
 Wrenn and Realmbreaker,Legendary Planeswalker — Wrenn,"Lands you control have ""{T}: Add one mana of any color.""
 +1: Up to one target land you control becomes a 3/3 Elemental creature with vigilance, hexproof, and haste until your next turn. It's still a land.
 −2: Mill three cards. You may put a permanent card from among the milled cards into your hand.
@@ -478,6 +484,11 @@ II — Return up to one other target nonland permanent to its owner's hand. Then
 III — Exile this Saga, then return it to the battlefield transformed under your control. // O-Kagachi Made Manifest is all colors.
 Flying, trample
 Whenever this creature attacks, defending player chooses a nonland card in your graveyard. Return that card to your hand. This creature gets +X/+0 until end of turn, where X is the mana value of that card.",W/U/B/R/G,saga; Dragon; Spirit; graveyard; removal; pump; bounce; discard; flying; evasion; transform; trample,NEO,227,Mythic,90,,7.5,seed
+The Wandering Emperor,Legendary Planeswalker,"Flash
+As long as The Wandering Emperor entered this turn, you may activate her loyalty abilities any time you could cast an instant.
++1: Put a +1/+1 counter on up to one target creature. It gains first strike until end of turn.
+−1: Create a 2/2 white Samurai creature token with vigilance.
+−2: Exile target tapped creature. You gain 2 life.",W,planeswalker; counters; lifegain; tokens; removal; flash; tempo; first strike; combat,NEO,42,Mythic,90,,9.0,seed
 Kumano Faces Kakkazan // Etching of Kumano,Enchantment — Saga // Enchantment Creature — Human Shaman,"(As this Saga enters and after your draw step, add a lore counter.)
 I — This Saga deals 1 damage to each opponent and each planeswalker they control.
 II — When you next cast a creature spell this turn, that creature enters with an additional +1/+1 counter on it.

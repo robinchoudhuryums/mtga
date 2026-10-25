@@ -74,7 +74,12 @@
 #: notes: cannot be crafted on Arena (owner); interaction 15 -> 14. SWAPS 2026-10-25: Bioessence Hydra
 #: notes: for Crescent Island Temple (14 Shrines), Sythis for Birds of Paradise, Kaya the
 #: notes: Inexorable for Assassin's Trophy, Mogis for Professor Dellian Fel; interaction 14 -> 13,
-#: notes: one above the scaled A floor's 12. BENCH for
+#: notes: one above the scaled A floor's 12. Then Inspired Tethermage for Sanctum Weaver, Jin-Gitaxias
+#: notes: for Honden of Seeing Winds (13 Shrines) and The Wandering Emperor for Leyline Binding;
+#: notes: interaction back to 14. HIDDEN VALUE the role counts miss (2026-10-25 audit): Honden of
+#: notes: Night's Reach (hand attack) and Mogis (edict-or-2) are interaction; Hei Bai, Sanctum of All,
+#: notes: Entrust the Spark, Calix's +1, Quintorius's seek, Terra's mill and the empowered Jace tokens'
+#: notes: '-3: Draw a card' are card advantage; Bolas copies every other walker's minus. BENCH for
 #: notes: later passes: Insidious Roots, Selvala, Mogis, Satsuki, Garnet, The Legend of Roku, The
 #: notes: Legend of Kyoshi, Rydia, Jin-Gitaxias, Sab-Sunen, Athreos, Karolina Dean, Kyodai, Greenhouse,
 #: notes: Djeru and Hazoret, Oketra the True, Elspeth, Storm Slayer, Kaito, Dancing Shadow, Marina
@@ -90,7 +95,6 @@
 1 Go-Shintai of Hidden Cruelty (NEO) 97
 1 Go-Shintai of Ancient Wars (NEO) 144
 1 Honden of Cleansing Fire (HA3) 2
-1 Honden of Seeing Winds (HA3) 7
 1 Honden of Night's Reach (HA3) 12
 1 Honden of Infinite Rage (HA3) 17
 1 Honden of Life's Web (HA3) 20
@@ -115,12 +119,12 @@
 1 Venat, Heart of Hydaelyn // Hydaelyn, the Mothercrystal (FIN) 39
 1 Nissa, Leyline Tamer (FRC) 2
 1 Sythis, Harvest's Hand (J21) 722
+1 Jin-Gitaxias // The Great Synthesis (MOM) 65
 
 # Protection
 
 # Mana and fixing
 1 Leyline of the Guildpact (MKM) 217
-1 Sanctum Weaver (J21) 627
 1 Great Divide Guide (TLA) 181
 1 Yuna, Grand Summoner (FIC) 8
 1 Enduring Vitality (DSK) 176
@@ -147,6 +151,8 @@
 1 Avatar of Burgeoning Echoes (FRA) 122
 1 Bioessence Hydra (WAR) 186
 1 Kaya the Inexorable (KHM) 218
+1 Inspired Tethermage (FRA) 109
+1 The Wandering Emperor (NEO) 42
 
 # Sagas
 1 The Kami War // O-Kagachi Made Manifest (NEO) 227
@@ -163,7 +169,6 @@
 1 Mogis, God of Slaughter (PIO) 313
 
 # Interaction
-1 Leyline Binding (DMU) 24
 
 # Lands
 1 Command Tower (FRC) 22
