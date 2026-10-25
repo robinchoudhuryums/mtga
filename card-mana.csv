@@ -3494,6 +3494,7 @@ Scattered Groves,,0,Cycling
 Shefet Dunes,,0,
 Sheltered Thicket,,0,Cycling
 Sunscorched Desert,,0,
+Tidehollow Sculler,{W}{B},2,
 Urza's Bauble,{0},0,
 Hallowed Priest,{1}{W},2,
 Armored Whirl Turtle,{2}{U},3,
@@ -3522,6 +3523,7 @@ Epic Proportions,{4}{G}{G},6,Enchant;Flash
 Sentinel Spider,{3}{G}{G},5,Reach;Vigilance
 Putrid Warrior,{W}{B},2,
 Enlisted Wurm,{4}{G}{W},6,Cascade
+Qasali Pridemage,{G}{W},2,Exalted
 Sanctum of Ugin,,0,
 Worldwalker Helm,{2}{U},3,Explore
 Greed's Gambit,{3}{B},4,
@@ -3652,7 +3654,6 @@ Charmed Sleep,{1}{U}{U},3,Enchant
 Thieving Otter,{2}{U},3,
 Flame Lash,{3}{R},4,
 Sword of Vengeance,{3},3,Equip
-"Jace, the Mind Sculptor",{2}{U}{U},4,
 "Ink-Eyes, Servant of Oni",{4}{B}{B},6,Regenerate;Ninjutsu
 Marrow-Gnawer,{3}{B}{B},5,
 Ant Queen,{3}{G}{G},5,
@@ -3983,6 +3984,9 @@ Treacherous Terrain,{6}{R}{G},8,Landcycling;Basic landcycling;Typecycling;Cyclin
 Rakdos Charm,{B}{R},2,
 Coveted Jewel,{6},6,
 Monologue Tax,{2}{W},3,Treasure
+Pest Infestation,{X}{X}{G},1,
+"Kiki-Jiki, Mirror Breaker",{2}{R}{R}{R},5,Haste
+Through the Breach,{4}{R},5,Splice
 Mystery Key,{1}{U},2,Equip
 Carnage Interpreter,{1}{B/R}{B/R},3,Investigate
 Fierce Guardianship,{2}{U},3,
@@ -4113,8 +4117,10 @@ Foul Roads,,0,
 Muraganda Raceway,,0,Max speed;Start your engines!
 Night Market,,0,Cycling
 Possibility Storm,{3}{R}{R},5,
+Utopia Sprawl,{G},1,Enchant
 Ghost Quarter,,0,
 Burden of Guilt,{W},1,Enchant
+Gravecrawler,{B},1,
 Stromkirk Captain,{1}{B}{R},3,First strike
 "Greensleeves, Maro-Sorcerer",{3}{G}{G},5,Protection;Landfall
 "Torsten, Founder of Benalia",{5}{G}{W},7,
@@ -6806,6 +6812,7 @@ Savai Triome,,0,Cycling
 Zagoth Triome,,0,Cycling
 "Zilortha, Strength Incarnate",{3}{R}{G},5,Trample
 Cryptic Command,{1}{U}{U}{U},4,
+Mana Drain,{U}{U},2,
 Gnaw to the Bone,{2}{G},3,Flashback
 Faceless Agent,{3},3,Seek;Changeling
 Baffling Defenses,{1}{W},2,
@@ -8986,6 +8993,7 @@ Warg Rider,{4}{B},5,Amass;Menace
 Riders of the Mark,{6}{R},7,Affinity;Haste;Trample
 Mirkwood Channeler,{3}{G},4,
 Preordain,{U},1,Scry
+Phantasmal Image,{1}{U},2,
 Sorin Markov,{3}{B}{B}{B},6,
 Disciple of Bolas,{3}{B},4,
 Aethershield Artificer,{3}{W},4,
@@ -9772,6 +9780,9 @@ Rebuild the City,{3}{B}{R}{G},6,
 Tyvar the Bellicose,{2}{B}{G},4,
 "Karn, Legacy Reforged",{5},5,
 Drannith Ruins,,0,
+Case of the Lost Witness,{1}{U},2,Solved;Conjure
+Oracle of the Alpha,{2}{U},3,Scry;Flying;Conjure
+Perforator Crocodile,{3}{B}{B}{B},6,Cycling;Conjure
 Leonin Relic-Warder,{W}{W},2,
 Green Sun's Zenith,{X}{G},1,
 Ranger-Captain of Eos,{1}{W}{W},3,
@@ -9780,6 +9791,8 @@ Force of Negation,{1}{U}{U},3,
 Timeless Dragon,{3}{W}{W},5,Flying;Plainscycling;Landcycling;Typecycling;Cycling;Eternalize
 Dress Down,{1}{U},2,Flash
 Hard Evidence,{U},1,Investigate
+Lose Focus,{1}{U},2,Replicate
+Persist,{1}{B},2,
 "Tourach, Dread Cantor",{1}{B},2,Protection;Kicker
 Unmarked Grave,{1}{B},2,
 Mine Collapse,{3}{R},4,
@@ -10571,6 +10584,7 @@ Thundering Falls,,0,Surveil
 Underground Mortuary,,0,Surveil
 "Tomik, Wielder of Law",{1}{W}{B},3,Flying;Affinity;Vigilance
 "Voja, Jaws of the Conclave",{2}{R}{G}{W},5,Vigilance;Trample;Ward
+Guardian Scalelord,{4}{W},5,Flying;Backup
 Death-Greeter's Champion,{2}{R},3,Backup;Double strike;Dash
 Goro-Goro and Satoru,{U}{B}{R},3,
 Katilda and Lier,{G}{W}{U},3,
@@ -11466,6 +11480,7 @@ Mech Hangar,,0,
 Roadside Reliquary,,0,
 "Sokenzan, Crucible of Defiance",,0,Channel
 "Takenuma, Abandoned Mire",,0,Mill;Channel
+Deceiver Exarch,{2}{U},3,Flash
 Angelic Reward,{3}{W}{W},5,Enchant
 Confront the Assault,{4}{W},5,
 Inspiring Commander,{4}{W}{W},6,
@@ -11866,14 +11881,12 @@ Pariah,{2}{W},3,Enchant
 Archive Trap,{3}{U}{U},5,Mill
 Archmage's Charm,{U}{U}{U},3,
 Commandeer,{5}{U}{U},7,
-Mana Drain,{U}{U},2,
 Repulse,{2}{U},3,
 Imp's Mischief,{1}{B},2,
 Surgical Extraction,{B/P},1,
 Collective Defiance,{1}{R}{R},3,Escalate
 Indomitable Creativity,{X}{R}{R}{R},3,
 Skullcrack,{1}{R},2,
-Pest Infestation,{X}{X}{G},1,
 Abrupt Decay,{B}{G},2,
 Anguished Unmaking,{1}{W}{B},3,
 Crime // Punishment,{3}{W}{B} // {X}{B}{G},7,
@@ -11886,6 +11899,7 @@ Voidslime,{G}{U}{U},3,
 Contagion Engine,{6},6,Proliferate
 Grindstone,{1},1,Mill
 Mindslaver,{6},6,
+Nature's Lore,{1}{G},2,
 Kazuul's Toll Collector,{2}{R},3,
 Encroaching Wastes,,0,
 Bladewing the Risen,{3}{B}{B}{R}{R},7,Flying
@@ -12200,6 +12214,7 @@ Toil // Trouble,{2}{B} // {2}{R},6,Fuse
 Turn // Burn,{2}{U} // {1}{R},5,Fuse
 Unexpected Results,{2}{G}{U},4,
 Wear // Tear,{1}{R} // {W},3,Fuse
+Flametongue Kavu,{3}{R},4,
 Echo of Eons,{4}{U}{U},6,Flashback
 Trouble in Pairs,{2}{W}{W},4,
 Cytoplast Manipulator,{2}{U}{U},4,Graft
@@ -13190,6 +13205,7 @@ Bring to Light,{3}{G}{U},5,Converge
 "Zimone, Infinite Analyst",{1}{G}{U},3,
 Shard of Broken Glass,{1},1,Equip;Mill
 One with Nothing,{B},1,
+Galvanic Blast,{R},1,Metalcraft
 Kuldotha Rebirth,{R},1,
 Molten Psyche,{1}{R}{R},3,Metalcraft
 Myr Battlesphere,{7},7,
@@ -13299,14 +13315,12 @@ Titan's Grave,,0,Surveil
 Ghostly Prison,{2}{W},3,
 Fabricate,{2}{U},3,
 Crashing Footfalls,,0,Suspend
-Stoneforge Mystic,{1}{W},2,
 Desertion,{3}{U}{U},5,
 Port Razer,{3}{R}{R},5,
 Mystic Snake,{1}{G}{U}{U},4,Flash
 Desert,,0,
 Prismatic Vista,,0,
 Thought-Knot Seer,{3}{C},4,
-Persist,{1}{B},2,
 Solitude,{3}{W}{W},5,Lifelink;Evoke;Flash
 Subtlety,{2}{U}{U},4,Flying;Evoke;Flash
 Grief,{2}{B}{B},4,Evoke;Menace
@@ -13319,7 +13333,6 @@ Sylvan Tutor,{G},1,
 Frogmite,{4},4,Affinity
 Soul Warden,{W},1,
 Expropriate,{7}{U}{U},9,Council's dilemma
-Phantasmal Image,{1}{U},2,
 Damnation,{2}{B}{B},4,
 Sacrifice,{B},1,
 Maddening Hex,{1}{R}{R},3,Enchant
@@ -13335,7 +13348,6 @@ Whir of Invention,{X}{U}{U}{U},3,Improvise
 Bone Miser,{4}{B},5,
 Lord of the Undead,{1}{B}{B},3,
 Chandra's Ignition,{3}{R}{R},5,
-Galvanic Blast,{R},1,Metalcraft
 Pathbreaker Ibex,{4}{G}{G},6,
 "Skysovereign, Consul Flagship",{5},5,Flying;Crew
 Robe of Stars,{1}{W},2,Equip
@@ -13707,6 +13719,7 @@ Felothar the Steadfast,{1}{W}{B}{G},4,
 "Teval, the Balanced Scale",{1}{B}{G}{U},4,Flying;Mill
 Ureni of the Unwritten,{4}{G}{U}{R},7,Flying;Trample
 Zurgo Stormrender,{R}{W}{B},3,Mobilize
+Hero of Bladehold,{2}{W}{W},4,Battle Cry
 Arashin Sunshield,{3}{W},4,
 Bearer of Glory,{1}{W},2,
 Clarion Conqueror,{2}{W},3,Flying
@@ -14381,6 +14394,7 @@ Ancient Tomb,,0,
 Dark Depths,,0,
 Mistveil Plains,,0,
 "Comet, Stellar Pup",{2}{R}{W},4,
+Sneak Attack,{3}{R},4,
 Hymn to Tourach,{B}{B},2,
 Fireblast,{4}{R}{R},6,
 Dack Fayden,{1}{U}{R},3,
@@ -15132,10 +15146,10 @@ Leyline of Lightning,{2}{R}{R},4,
 Mana Flare,{2}{R},3,
 Raid Bombardment,{2}{R},3,
 Repercussion,{1}{R}{R},3,
-Sneak Attack,{3}{R},4,
 Ground Seal,{1}{G},2,
 Nature's Will,{2}{G}{G},4,
-Utopia Sprawl,{G},1,Enchant
+Stoneforge Mystic,{1}{W},2,
+"Jace, the Mind Sculptor",{2}{U}{U},4,
 Leatherback Baloth,{G}{G}{G},3,
 Celestial Colonnade,,0,
 Creeping Tar Pit,,0,
@@ -15459,7 +15473,6 @@ Rising Chicane,,0,Max speed;Start your engines!
 Benalish Knight-Counselor,{W},1,Enlist
 Priest of Possibility,{1}{W},2,
 Pull of the Mist Moon,{1}{W}{W},3,Kicker
-Oracle of the Alpha,{2}{U},3,Scry;Flying;Conjure
 Skywriter Djinn,{3}{U},4,Flying;Domain;Conjure
 Trove Mage,{2}{U},3,Seek
 Vesuvan Mist,{1}{U},2,Conjure;Kicker
@@ -15703,14 +15716,12 @@ Forsaken Crossroads,,0,Scry
 Scrutiny of the Guildpact,{1}{W},2,Incorporate
 Sleuth Instructor,{1}{W},2,Seek;Cloak;Disguise
 Spotlight Falcon,{2}{W}{W},4,Flying;Collect evidence;Conjure
-Case of the Lost Witness,{1}{U},2,Solved;Conjure
 Emporium Thopterist,{1}{U},2,Conjure
 Excogitator Sphinx,{2}{U}{U},4,Flying;Investigate;Seek
 Mapping the Maze,{1}{U},2,Incorporate
 Ominous Lockbox,{1}{U},2,
 Cackling Observer,{1}{B}{B},3,Flying;Seek
 Lurking Spinecrawler,{3}{B},4,Incorporate
-Perforator Crocodile,{3}{B}{B}{B},6,Cycling;Conjure
 Snarlfang Vermin,{B},1,Suspect
 Case of the Market Melee,{1}{R},2,Solved
 Concert Kaboomist,{1}{R}{R},3,Trample;Disguise
