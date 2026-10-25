@@ -55,7 +55,8 @@ tapped token that's a copy of that card, except it's a 4/4 black Zombie."*
 
 ## 2. Standing error list
 
-(none yet)
+- E1: The Sibsig Ceremony destroys every creature we CAST — grade it against the cast half of R9, not against deck 53.
+- E2: "Whenever another NONTOKEN creature dies" (Agent Venom) misses the engine: Hashaton's copies are tokens.
 
 ## 3. Cross-batch observations
 
@@ -64,6 +65,45 @@ tapped token that's a copy of that card, except it's a 4/4 black Zombie."*
 ## 4. Running verdicts
 
 Legend: ★★★ take · ★★ strong · ★ real · ◇ situational · △ marginal · ✗ out
+
+### Batch 1 (cards 1–30)
+
+| # | Card | Verdict | Note |
+|---|---|---|---|
+| 1 | Sothera, the Supervoid | ★ | Every creature of ours that dies = each opponent exiles one of theirs. A repeatable edict, but only with deaths; the deck is not a sacrifice deck by default. |
+| 2 | Death Baron | ★★★ | R4: every Hashaton copy gets +1/+1 and deathtouch. As a discarded copy the lord still works (it pumps OTHER Zombies). |
+| 3 | Hour of Victory | △ | 2/2 now; the tutor needs max speed (an opponent losing life on four of our turns). |
+| 4 | The Sibsig Ceremony | ✗ | G-42: destroys every creature we CAST, including the lords we want to keep. Deck 53's engine, not this one's. Copies are not cast, so it does not kill them, but the cast half of R9 dies. |
+| 5 | Cryptcaller Chariot | ★★★ | R2 payoff: each discard makes that many 2/2 Zombies, on top of Hashaton's copy. Crewed by any 4/4 copy. |
+| 6 | Lifecraft Engine | ★ | A 3-mana colourless Zombie lord (+1/+1) that is itself a Zombie when crewed. |
+| 7 | Dread Summons | ★ | Mill both players for X, a 2/2 per creature milled; fills our yard for R3. |
+| 8 | Gisa, the Hellraiser | ★★ | Zombie lord (+1/+1, menace) plus two 2/2s on any crime each turn — targeting an opponent with removal or Ral is a crime. |
+| 9 | Unstoppable Slasher | ★★ | Deathtouch Zombie; combat damage halves their life; returns once. A 4/4 copy of it is a real clock. |
+| 10 | Soul-Shackled Zombie | ★ | R1: {2}{U} for a 4/4 that exiles two cards from a graveyard and drains 2. Graveyard hate that points at THEIR yard (G-42 check: choose their yard, not ours). |
+| 11 | Cursecloth Wrappings | ★★ | Zombie anthem plus a per-turn embalm grant at the card's mana cost — R3 recursion for everything discarded. |
+| 12 | Risen Necroregent | △ | 5/4 for five; the token needs max speed. |
+| 13 | Avenger of the Fallen | ◇ | Mobilize X = creature cards in our yard, which discarding grows. Not a Zombie (its copy is). |
+| 14 | Deathless Pilot | ★ | R2 loop: discard it (copy), return it to hand for {3}{B}, discard again — a creature card that comes back to feed every outlet. |
+| 15 | Zul Ashur, Lich Lord | ★★ | {T}: cast a Zombie creature card from the graveyard. R3 for every discarded Zombie. |
+| 16 | Ninja Teen | ◇ | Drain on leave; level 3 lets graveyard creatures be cast with sneak. Slow. |
+| 17 | Agent Venom | △ | Draws only on NONTOKEN deaths, and the engine's bodies are tokens. |
+| 18 | Doctor Doom | ★★ | R1: for {2}{U}, a 4/4 plus two 3/3 Doombots, indestructible while they live, and a draw every end step. A top discard target. |
+| 19 | Chronicle of Victory | ★ | Zombies +2/+2, first strike, trample for six; the draw-on-cast half misses copies (R9). |
+| 20 | Winter, Tormented Loner | ★ | R1: an edict on entry for {2}{U}, sacrificing a token. |
+| 21 | Collector's Vault | ★★ | R2 outlet: {2},{T} loot plus a Treasure, every turn. |
+| 22 | Bitterbloom Bearer | ◇ | Upkeep 1/1 fliers for 1 life; not a Zombie. |
+| 23 | Ral Zarek, Guest Lecturer | ★★ | R2: −1 lets US discard (and the opponent); −2 reanimates MV 3 or less; +1 surveil. |
+| 24 | Deadly Precision | ★ | One-mana kill spell, a token pays the cost. |
+| 25 | Eaten Alive | ★ | One-mana exile for a creature or planeswalker. |
+| 26 | Robot Domination | ★★ | Draws whenever a creature card hits our graveyard from ANYWHERE — every discard of a creature refills the hand. |
+| 27 | Funeral Room // Awakening Hall | ★ | Drain per death; the back door returns every creature card in the yard. A finisher after a long discard game. |
+| 28 | Sidequest: Hunt the Mark | ★ | Removal on entry; the Treasures and transform are a bonus. |
+| 29 | Withering Torment | ★ | Instant removal for a creature or enchantment. |
+| 30 | The Cloning of Shredder | ◇ | Six mana for three copies of one graveyard creature, over three turns. |
+
+Outlets this batch (R2): Collector's Vault, Ral Zarek. Discard payoffs: Cryptcaller Chariot,
+Robot Domination. Zombie lords: Death Baron, Gisa, Lifecraft Engine, Cursecloth Wrappings,
+Chronicle of Victory. Recursion: Zul Ashur, Cursecloth, Ral −2, Funeral Room, Deathless Pilot.
 
 ## 5. Consolidated plan (live)
 
