@@ -71,7 +71,10 @@
 #: notes: Shattered Heights (interaction 16 -> 15, accepted); Avatar of Burgeoning Echoes for Guru
 #: notes: Pathik (landfall grows a Jace token for Entrust the Spark). HELD: Chandra, Chill of
 #: notes: Compliance for World War Hulk. Golos, Tireless Pilgrim for Teferi, Hero of Dominaria, which
-#: notes: cannot be crafted on Arena (owner); interaction 15 -> 14. BENCH for
+#: notes: cannot be crafted on Arena (owner); interaction 15 -> 14. SWAPS 2026-10-25: Bioessence Hydra
+#: notes: for Crescent Island Temple (14 Shrines), Sythis for Birds of Paradise, Kaya the
+#: notes: Inexorable for Assassin's Trophy, Mogis for Professor Dellian Fel; interaction 14 -> 13,
+#: notes: one above the scaled A floor's 12. BENCH for
 #: notes: later passes: Insidious Roots, Selvala, Mogis, Satsuki, Garnet, The Legend of Roku, The
 #: notes: Legend of Kyoshi, Rydia, Jin-Gitaxias, Sab-Sunen, Athreos, Karolina Dean, Kyodai, Greenhouse,
 #: notes: Djeru and Hazoret, Oketra the True, Elspeth, Storm Slayer, Kaito, Dancing Shadow, Marina
@@ -94,7 +97,6 @@
 1 Southern Air Temple (TLA) 36
 1 The Spirit Oasis (TLA) 72
 1 Northern Air Temple (TLA) 111
-1 Crescent Island Temple (TLA) 129
 1 Kyoshi Island Plaza (TLA) 184
 
 # Shrine finders
@@ -112,13 +114,13 @@
 1 Aragorn, the Uniter (LTR) 192
 1 Venat, Heart of Hydaelyn // Hydaelyn, the Mothercrystal (FIN) 39
 1 Nissa, Leyline Tamer (FRC) 2
+1 Sythis, Harvest's Hand (J21) 722
 
 # Protection
 
 # Mana and fixing
 1 Leyline of the Guildpact (MKM) 217
 1 Sanctum Weaver (J21) 627
-1 Birds of Paradise (BLC) 81
 1 Great Divide Guide (TLA) 181
 1 Yuna, Grand Summoner (FIC) 8
 1 Enduring Vitality (DSK) 176
@@ -134,7 +136,6 @@
 1 Sanctum Lurker (FRA) 64
 1 Ichormoon Gauntlet (ONE) 56
 1 Quintorius, Fate Splitter (YFRA) 26
-1 Professor Dellian Fel (SOS) 214
 1 Ajani Resolute (FRA) 195
 1 Prophet of the Planeswalker (YFRA) 2
 1 Kiora of Salt and Sand (FRA) 273
@@ -144,6 +145,8 @@
 1 Way of the Paradox (FRA) 267
 1 Brokers Ascendancy (SNC) 170
 1 Avatar of Burgeoning Echoes (FRA) 122
+1 Bioessence Hydra (WAR) 186
+1 Kaya the Inexorable (KHM) 218
 
 # Sagas
 1 The Kami War // O-Kagachi Made Manifest (NEO) 227
@@ -157,10 +160,10 @@
 1 Heliod, God of the Sun (PIO) 282
 1 Heliod, the Radiant Dawn // Heliod, the Warped Eclipse (MOM) 17
 1 Klothys, God of Destiny (THB) 220
+1 Mogis, God of Slaughter (PIO) 313
 
 # Interaction
 1 Leyline Binding (DMU) 24
-1 Assassin's Trophy (MKM) 187
 
 # Lands
 1 Command Tower (FRC) 22
