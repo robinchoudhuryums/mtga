@@ -7513,6 +7513,17 @@ class TestDeck90ToolingBatch:
                                    "and put it onto the battlefield tapped.")
         assert "Ramp / fixing" in ramp and "Card advantage" not in ramp
 
+    def test_a_draw_offered_as_a_recurring_mode_is_card_advantage(self):
+        bmc = ("At the beginning of your first main phase, choose one or more —\n"
+               "• Sell Contraband — Create a Treasure token. You lose 1 life.\n"
+               "• Buy Information — Draw a card. You lose 2 life.\n"
+               "• Hire a Mercenary — Create a 3/2 colorless Shapeshifter creature token "
+               "with changeling. You lose 3 life.")
+        assert "Card advantage" in deck.classify_roles(bmc)
+        once = ("At the beginning of your first main phase, choose one that hasn't been "
+                "chosen and you lose 2 life —\n• Draw a card.\n• Put a +1/+1 counter on Zuko.")
+        assert "Card advantage" not in deck.classify_roles(once)
+
     def test_hand_attack_positives_and_negatives(self):
         for text in ("At the beginning of your upkeep, target opponent discards a card for "
                      "each Shrine you control.",
@@ -7520,11 +7531,14 @@ class TestDeck90ToolingBatch:
                      "+1: Each opponent exiles a card from their hand or a permanent they "
                      "control.",
                      "Target opponent reveals each nonland card in their hand. You choose one "
-                     "of those cards. Exile that card."):
+                     "of those cards. Exile that card.",
+                     "Target opponent sacrifices a creature of their choice, discards a card, "
+                     "and loses 3 life."):
             assert deck.hand_attack_effects(text), text
         for text in ("Discard a card: Draw a card.",
                      "You may discard a card. If you do, draw a card.",
-                     "Target player draws two cards."):
+                     "Target player draws two cards.",
+                     "Target opponent loses 2 life. Then you may discard a card."):
             assert not deck.hand_attack_effects(text), text
 
     def test_role_tally_reports_hand_attack_and_it_never_moves_the_floor(self):

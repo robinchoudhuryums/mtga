@@ -409,6 +409,8 @@ Updated: 2026-10-20 (Brawl tooling plan Batch 7 — see Where I left off)
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
+**2026-10-25 (latest) — Ozai-pile tooling fixes done** (block `ozai-tooling-broad-implement.md`): identity-as-production fallback (Duskmantle), compound hand-attack clause, modal-bullet card advantage (Black Market Connections), firebending as a combat-only nonland disclosure. Suite green, check_all OK, 0 tier floors moved; G-35/K-12 + long forms updated. **Next:** the owner's picks on `.cycle/ozai-pile-analysis.md`, then /draft-deck.
+
 **2026-10-25 (latest) — deck-90 follow-on batch done** (block `deck90-followon-broad-implement.md`): empower-Jace card advantage, energy/counter/Gate-bounded lands, card.py broken pipe, deck 89's Izoni/Zopandrel note, CLAUDE.md figure drift. Hand attack as interaction MEASURED (9 decks, 0 floors) and left report-only for the owner. Suite 2222 passed, check_all OK. **Next:** /sync-docs for both deck-90 batches.
 
 **2026-10-25 (latest) — deck-90 tooling batch done** (block `deck90-tooling-broad-implement.md`): X-drain and every-basic-type fixer pattern holes, seek as card advantage (battlefield seeks are ramp), a report-only HAND ATTACK line, and the every-land-a-five-colour-source disclosure. Suite 2217 passed, check_all OK, 0 tier floors moved. **Next:** /sync-docs (K-12, G-25, G-35, G-67, figure drift from deck 90's addition). Deck 90 (Spirit World) is mid-tune with the owner; its notes carry the bench.

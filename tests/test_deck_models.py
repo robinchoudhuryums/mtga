@@ -82,6 +82,10 @@ UNIVERSE = {
                        "colors.", "R", "4", "4"),
     "attack battery": _card("Attack Battery", "Creature — Human",
                             "Whenever this creature attacks, add {R}.", "R", "2", "2"),
+    # Firebending's mana is ALL in reminder text, which every reader strips (2026-10-25).
+    "firebender": _card("Firebender", "Creature — Human Soldier",
+                        "Menace\nFirebending 1 (Whenever this creature attacks, add {R}. "
+                        "This mana lasts until end of combat.)", "R", "2", "3"),
     "swamp": _card("Swamp", "Basic Land — Swamp", "", ""),
     # An any-colour land has COLOURLESS identity, so a count that sums land identity reads
     # it as no source at all — the G-38 holdout in `deck_needs`. Only `deck_source_profile`
@@ -1560,6 +1564,11 @@ class TestUncountedManaSources:
         by_name = {n: cond for _q, n, _c, cond in deck.uncounted_mana_sources(cards, UNIVERSE)}
         assert by_name == {"Vivid Dork": "board", "Dork Lord": "granted"}   # land grant silent
 
+    def test_firebending_is_disclosed_as_combat_only_mana(self, synth):
+        d = synth(["1 Firebender", "20 Swamp"])
+        _m, cards = deck.parse_deck_file(d["path"])
+        assert deck.uncounted_mana_sources(cards, UNIVERSE) == [(1, "Firebender", "R", "combat")]
+
     def test_an_enters_trigger_is_one_shot_but_an_attack_trigger_recurs(self, synth):
         assert self._names(synth, ["1 Etb Burst", "1 Attack Battery", "20 Swamp"]) == {
             "Attack Battery"}
@@ -1727,6 +1736,24 @@ class TestScan11Batch6FormatDrift:
         assert lib.land_production(t, commander={"G", "W", "U"})["free"] == {"G", "W", "U"}
         assert lib.land_production(t, commander=set())["free"] == set()
         assert lib.land_production(t)["free"] == set("WUBRG")          # unknown: unchanged
+
+    def test_identity_from_an_activation_cost_is_not_production(self):
+        # Duskmantle, House of Shadow: identity U/B comes from its mill ability's cost.
+        import lib
+        dusk = "{T}: Add {C}.\n{U}{B}, {T}: Target player mills a card."
+        assert lib.land_production(dusk, "U/B")["free"] == set()
+        # A Kaldheim uncommon land: only its tap ability's colour, not the sac cost's.
+        hall = ("This land enters tapped.\n{T}: Add {B}.\n{W}{W}{B}, {T}, Sacrifice this land "
+                "and a creature you control: Create a 4/4 white Angel Warrior token.")
+        assert lib.land_production(hall, "W/B")["free"] == {"B"}
+        # A reminder-only dual still falls back to identity (its Add clause is reminder).
+        crypt = "({T}: Add {B} or {R}.)\nAs this land enters, you may pay 2 life."
+        assert lib.land_production(crypt, "B/R")["free"] == {"B", "R"}
+        # A Thriving land's printed colour stays fixed, not choose-once.
+        moor = ("This land enters tapped. As it enters, choose a color other than black.\n"
+                "{T}: Add {B} or one mana of the chosen color.")
+        lp = lib.land_production(moor, "B")
+        assert "B" in lp["free"] and "B" not in lp["chosen"]
 
     def test_an_unplaceable_commander_says_the_lock_is_off(self, capsys):
         meta = {"format": "Brawl", "commander": "Zzz Not A Card Batch Six"}

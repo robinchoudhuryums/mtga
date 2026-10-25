@@ -51,7 +51,7 @@ lose unspent mana, that mana becomes red instead"; flying + indestructible while
 
 ## 2. Standing error list
 
-- (none yet — first pass)
+- E1: graded a land from a truncated text slice (Demolition Field) — always read the full card.
 
 ## 3. Cross-batch observations
 
@@ -80,19 +80,15 @@ lose unspent mana, that mana becomes red instead"; flying + indestructible while
   tapped unconditionally (two Thriving lands, Valakut). The draft adds six untapped Rakdos
   duals from outside the pile (§5).
 
-### Tooling holes found (record; fix in a batch at the end, Stage 4)
-- **T1 — Firebending is not Ramp.** The classifier counts 4 ramp pieces in the draft; with
-  Ozai out, Vindictive Warden, Fire Sages, Loyal Fire Sage, Cruel Administrator's tokens,
-  Iroh, Ran and Shaw, Avatar Roku and Fire Lord Ozai are all mana. Commander-dependent, so
-  probably a disclosure line, not a role.
-- **T2 — Scarring Memories reads 0 hand attack** ("Target opponent sacrifices a creature of
-  their choice, discards a card, and loses 3 life" — a compound clause).
-- **T3 — `suggest --lands` mis-reads two lands** (also seen on deck 91): Duskmantle, House
-  of Shadow scores as a U/B producer though it only taps for {C} (`land_production` falls
-  back to colour identity, which comes from its {U}{B} activation cost); Demolition Field
-  scores as a basic fetch for YOU though the search is the opponent's.
-- **T4 — Black Market Connections scores no role** (deck 91): "Buy Information — Draw a
-  card" inside a modal bullet at the start of each main phase is repeatable card advantage.
+### Tooling holes found — all closed 2026-10-25 (`/broad-implement tooling fixes`)
+- **T1 — Firebending** is now disclosed in `consistency`'s nonland line as `combat-only` mana
+  (its mana lives in stripped reminder text). Not a role, not a count.
+- **T2 — Scarring Memories** reads as hand attack (compound "sacrifices …, discards" clause).
+- **T3 — Duskmantle** no longer reads as a U/B producer (identity is a fallback only for a
+  text with no mana ability). **Demolition Field was a MISREAD, not a bug** — its full text
+  ends "You may search your library for a basic land card"; a 200-character slice hid it
+  (standing error, G-01).
+- **T4 — Black Market Connections** scores card advantage (a draw offered as a recurring mode).
 
 ## 4. Running verdicts
 

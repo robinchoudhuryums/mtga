@@ -408,6 +408,9 @@ def _pattern_groups():
     # (the deck-21 silence) or every ETB mana burst reads as a recurring source.
     for name in ("_GRANTED_MANA_RE", "_GRANTED_NOT_CREATURE_RE", "_TRIGGERED_LINE_RE"):
         out.append((f"deck.{name}", getattr(deck, name), "raw"))
+    # 2026-10-25: the firebending disclosure. Dead, every firebender's combat mana vanishes
+    # from the nonland line again (its mana lives in stripped reminder text).
+    out.append(("deck._FIREBENDING_RE", deck._FIREBENDING_RE, "raw"))
     out += [("tag_synergies._TRIBAL_PAYOFF_RES", p, "raw")
             for p in tag_synergies._TRIBAL_PAYOFF_RES]
     # Same corpus form and the same reason: a card TYPE the text builds around is

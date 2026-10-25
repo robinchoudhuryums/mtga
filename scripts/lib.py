@@ -813,6 +813,7 @@ def land_production(text, colors_cell=None, commander=None):
     free, restricted, conditional, chosen, board = set(), set(), set(), set(), set()
     gated, ungated = {}, set()
     any_color = fetch = False
+    saw_mana_ability = False
     for line in txt.splitlines():
         # Production you can only reach by transforming the card is not production you
         # have as a LAND. Skipped whole: the clause is inside a triggered ability whose
@@ -827,6 +828,7 @@ def land_production(text, colors_cell=None, commander=None):
                       or "sacrifice" in cost.lower())
         limited = "spend this mana only" in low
         cols = set()
+        printed = set()     # colours this line names as a mana SYMBOL — fixed, never chosen
         line_chosen = False
         if ((_BOARD_COLOR_RE.search(line) or _GATE_ONLY_RE.search(line))
                 and _ADD_CLAUSE_RE.search(line)):
@@ -838,6 +840,8 @@ def land_production(text, colors_cell=None, commander=None):
             cols |= set("WUBRG")
         for m in _ADD_CLAUSE_RE.finditer(line):
             clause = m.group(0)
+            if "{" in clause or re.search(r"\bmana\b", clause, re.I):
+                saw_mana_ability = True
             if _COMMANDER_IDENTITY_RE.search(clause):
                 if commander is None:
                     any_color = True
@@ -845,7 +849,8 @@ def land_production(text, colors_cell=None, commander=None):
                 else:
                     cols |= set(commander) & set("WUBRG")
                 continue
-            cols |= {c for c in "WUBRG" if "{" + c + "}" in clause}
+            printed |= {c for c in "WUBRG" if "{" + c + "}" in clause}
+            cols |= printed
             if _ANY_COLOR_RE.search(clause):
                 any_color = True
                 cols |= set("WUBRG")
@@ -866,7 +871,10 @@ def land_production(text, colors_cell=None, commander=None):
                 for col in cols:
                     gated[col] = need
             if line_chosen:
-                chosen |= cols
+                # A Thriving land's "Add {B} or one mana of the chosen color": the {B} is
+                # fixed. Identity used to strip it back out below; now that identity is
+                # only a fallback for a text with no mana ability, the line says so itself.
+                chosen |= cols - printed
     fetch_types = None
     if _FETCH_BASIC_RE.search(txt):
         fetch = True
@@ -885,7 +893,11 @@ def land_production(text, colors_cell=None, commander=None):
     # restriction: a land's identity is its mana symbols, so it is the right fallback for
     # a row whose text is blank (K-11) or unusual, but Mudflat Village's {B} is
     # "spend only to cast a creature spell" and identity must not launder it into free.
-    ident = card_colors(colors_cell) if colors_cell else set()
+    # And only where the text printed NO mana ability at all: a land whose own Add clause
+    # makes {C} has told us what it makes, and identity from an ACTIVATION cost is not
+    # production — Duskmantle, House of Shadow ("{T}: Add {C}." / "{U}{B}, {T}: … mills")
+    # read as an untapped U/B dual and topped `suggest --lands` (2026-10-25).
+    ident = card_colors(colors_cell) if colors_cell and not saw_mana_ability else set()
     free |= ident - restricted - conditional
     # A colour reachable by a route OTHER than the choose-once clause is not choose-once.
     chosen &= free - (ident - restricted - conditional)

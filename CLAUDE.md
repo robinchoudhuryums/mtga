@@ -172,7 +172,7 @@ castability · curve · central-theme density), with the intangibles moving a de
   model can't see those), so it **under-rates by design.** An uncastable stray CAPS the floor at C
   rather than SETTING it, so a dead card can no longer RAISE a D-floor deck, and a card
   the deck's `#: uncastable-ok:` header declares intentional is not counted at all.
-- **A GOOD DECK CAN SIT AT A LOW FLOOR, AND THAT IS THE MODEL WORKING (investigated 2026-09-03, prompted by deck 78 playing above its B).** The floor reads TWO of the eleven terms `deck_quality_vector` produces; **21 of deck 78's 36 nonland cards contribute nothing to it** — 11 payoff/engine plus 10 with no role at all, Doubling Season / Starfield Vocalist / Katara among them, i.e. the entire trigger-doubling thesis. That is not deck-78-specific: the roster's MEDIAN deck has 71% of its nonland cards invisible to the floor (78 is 75%, rank 42 of 115). **A payoff-density term was simulated and DECLINED**: +1 per 4 payoff cards capped at +3 moved 16 decks, cut the C band 9→1 and pushed A to 62% — re-starting the saturation BS8-06 had just fixed — **and left deck 78 at B anyway.** So the answer to "does a well-playing deck mean the rubric is wrong" is no on both halves: the intended remedy is the human letter, which the rubric already lets sit ONE band above the floor. Three things say leave the table alone: the spread is healthy (A 83 / B 40 / C 3, the C band, empty since deck 73 left it, refilled on 2026-10-07 when single-target bounce moved from interaction to the report-only tempo line and took decks 22, 22-brawl, 67 and 68 there — top band 66% against the 85% alarm; the 2026-09-22 plan-header pass moved four decks A→B and widened it further, and the 2026-09-29 per-60 scaling moved one more, the 100-card 78-historic-brawl, which a removal add took back to A on 2026-09-30, and deck 55, whose 2026-10-01 swaps raised its curve and moved it A→B until a card-advantage add and a 25th land took it back to A the same day), the record cannot arbitrate (**79 matches, and int+ca correlates with winning at r = −0.03**; nothing clears the ±0.22 noise band, so this is not evidence the floor is wrong, it is evidence the sample sees nothing), and deck 78's 5-2 is one win above the 54% pooled baseline at n=7 against a 20-match floor. **Re-derive the table when `tier_floor_spread` says so; do not re-derive it because a deck outperformed its letter.**
+- **A GOOD DECK CAN SIT AT A LOW FLOOR, AND THAT IS THE MODEL WORKING (investigated 2026-09-03, prompted by deck 78 playing above its B).** The floor reads TWO of the eleven terms `deck_quality_vector` produces; **21 of deck 78's 36 nonland cards contribute nothing to it** — 11 payoff/engine plus 10 with no role at all, Doubling Season / Starfield Vocalist / Katara among them, i.e. the entire trigger-doubling thesis. That is not deck-78-specific: the roster's MEDIAN deck has 71% of its nonland cards invisible to the floor (78 is 75%, rank 42 of 115). **A payoff-density term was simulated and DECLINED**: +1 per 4 payoff cards capped at +3 moved 16 decks, cut the C band 9→1 and pushed A to 62% — re-starting the saturation BS8-06 had just fixed — **and left deck 78 at B anyway.** So the answer to "does a well-playing deck mean the rubric is wrong" is no on both halves: the intended remedy is the human letter, which the rubric already lets sit ONE band above the floor. Three things say leave the table alone: the spread is healthy (A 82 / B 41 / C 3, the C band, empty since deck 73 left it, refilled on 2026-10-07 when single-target bounce moved from interaction to the report-only tempo line and took decks 22, 22-brawl, 67 and 68 there — top band 65% against the 85% alarm; the 2026-09-22 plan-header pass moved four decks A→B and widened it further, and the 2026-09-29 per-60 scaling moved one more, the 100-card 78-historic-brawl, which a removal add took back to A on 2026-09-30, and deck 55, whose 2026-10-01 swaps raised its curve and moved it A→B until a card-advantage add and a 25th land took it back to A the same day), the record cannot arbitrate (**79 matches, and int+ca correlates with winning at r = −0.03**; nothing clears the ±0.22 noise band, so this is not evidence the floor is wrong, it is evidence the sample sees nothing), and deck 78's 5-2 is one win above the 54% pooled baseline at n=7 against a 20-match floor. **Re-derive the table when `tier_floor_spread` says so; do not re-derive it because a deck outperformed its letter.**
 - **The floor is ARCHETYPE-aware** (#4): an aggro deck closes on a fast clock, not an
   interaction suite, so for an **aggro** plan a bounded `_clock_score` (low curve +
   cheap threats + reach, 0–7) SUBSTITUTES for the interaction the resilience floor
@@ -721,13 +721,12 @@ is protecting.
   intentional trade is fine. [G-34]
 - **`deck.py mana` also lints color SOURCES, not just pip demand** — it flags cards whose
   strict pips look thin against the deck's actual sources (`△ Pip-intensive`) — the
-  "wants UU but is really a U-splash" problem. A review signal, not a gate. **Sources are read
+  "wants UU but is really a U-splash" problem. **Sources are read
   from the land's TEXT through `lib.land_production` (BS8-01) — ONE count,
-  `deck.deck_source_profile`, behind `mana`, `consistency`, `deck_color_sources`,
-  `pip_depth_warning`, `suggest --lands`/`--needs`/`--ramp` and the rationale audit's
-  colour figures.**
-  An extra-cost any-colour land IS counted and labelled (energy/counter costs too; a
-  Gate-only colour is `board`); spend-only mana is NOT; a basic
+  `deck.deck_source_profile`, behind every source figure (`mana`, `consistency`, the
+  recommenders, the rationale audit).**
+  An extra-cost any-colour land IS counted and labelled (a Gate-only colour is `board`);
+  spend-only mana is NOT; a basic
   fetch counts for each basic the deck runs that it can FIND — a TYPED one ("a basic Forest,
   Plains, or Island") only for those types (`fetch_types`); residual: a
   NONBASIC typed fetch ("a Forest or Island card") counts as nothing. **`free` MEANT FOUR THINGS
@@ -736,15 +735,14 @@ is protecting.
   transform-gated, GRANTED and extra-tap clauses are out. **`lib.tapland_kind` is the ONE tapping predicate** (the tempo
   line, `·tapped?`, `_land_value`'s premium), and its `conditional` bucket merged FOUR
   opposite behaviours until 2026-09-20: `fast` and `check` (a basic gate, floor 12) now earn
-  the premium a shockland already had, while a SLOWLAND and a board state stay conservative. **A TYPE-NAMED gate ('a Plains or an Island') is read
+  the shockland premium; a SLOWLAND and a board state stay conservative. **A TYPE-NAMED gate ('a Plains or an Island') is read
   against the deck's OWN lands' types (basics and typed nonbasics) since 2026-09-23 — pass
-  `basic_types`, or it reads `check` for a deck that cannot meet it.** Test
-  `TAPLAND_CONDITIONAL_KINDS`, not a string.
+  `basic_types`, or it reads `check` for a deck that cannot meet it.**
   **NONLAND sources are DISCLOSED since 2026-09-18, never counted**: `consistency` prints
-  `ⓘ N NONLAND mana source(s) are NOT in the counts above` (**87 of 126 decks**). BOARD-dependent colour
-  (Vivid) and mana GRANTED to creatures are
-  disclosed and labelled since 2026-10-06, as is a permanent making EVERY land any colour
-  (`land_rainbow_enablers`, 2026-10-25).
+  `ⓘ N NONLAND mana source(s) are NOT in the counts above` (**93 of 126 decks**). BOARD-dependent
+  colour (Vivid) and creature-GRANTED mana are labelled since 2026-10-06, as is a permanent making EVERY land any colour
+  (`land_rainbow_enablers`) and firebending (`combat-only`), both 2026-10-25. IDENTITY is a
+  fallback ONLY for a text printing no mana ability (Duskmantle's U/B is an activation COST).
   `uncounted_mana_sources` reuses `land_production`, so they cannot drift. [G-35]
 - **`deck.py consistency <id>` is the PROBABILITY layer `mana` lacks** — keepable %,
   screw/flood, land-drop consistency and per-card P(cast on curve), with a Karsten-style
@@ -1537,25 +1535,24 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
 - **The functional-role breakdown and the castability lint are HEURISTIC, and they
   silently UNDER-count.** So every count carries its own uncertainty: `stats`/`tier`
   print `7`, `3 +2?`, or `8 +4? (3 unclassified)` plus a "⚠ Possible UNDER-COUNT" list,
-  and card advantage splits `(N repeatable, M one-shot)` — a 1-3 quality SCALE was
-  DECLINED, report-only; the split skips lands by FRONT face like `role_tally`, so it sums
-  to the total (BS11-69). **Read the uncertainty, not just the number** — deck 40a was
-  once graded on interaction
-  3 against a hand count of 7. `role_tally` is the ONE canonical counter, so the number
+  and card advantage splits `(N repeatable, M one-shot)` (a 1-3 quality SCALE was
+  DECLINED). **Read the uncertainty, not just the number** — deck 40a was once graded on
+  interaction 3 against a hand count of 7. `role_tally` is the ONE canonical counter, so the number
   `stats` shows is the number the tier floor grades on. **When editing a role pattern,
   run a roster-wide before/after diff**: three sweeps found large silent under-counts,
   and a card sorted into the WRONG bucket is harder to detect than one in no bucket at
   all. The castability lint reads the deck's `#: colors:` header, so a stale header
   manufactures phantom strays — a flag is a review signal, not a hard failure.
   **CONNIVE is an unread keyword here**, so a FLAT metric after a tune is not proof the
-  tune failed. The one-sided sweep (2026-10-01) is closed. **2026-10-07:** steal AURAS ("You control enchanted creature" — Control Magic, Kitnap)
+  tune failed. **2026-10-07:** steal AURAS ("You control enchanted creature" — Control Magic, Kitnap)
   joined `Removal (spot)` and COPY effects (token copies, clones, becomes-a-copy) joined
   `Payoff / engine`; bounce left interaction for the tempo line (G-25). **2026-10-23:**
   EXTRA LAND DROPS → Ramp, "twice that many … instead" → Payoff, "X damage divided" →
   Removal; 0 tier floors. **2026-10-25:** X-scaled drain and lifegain, "lands … are every
   basic land type" → Ramp, SEEK → Card advantage (onto the battlefield is Ramp), and an
   empowered Jace's −3 draw when the empower is 3+ or repeatable; card advantage rose in 11
-  decks, 0 tier floors moved. [K-12]
+  decks, 0 tier floors moved; then a draw offered as a MODE of a recurring trigger (Black
+  Market Connections), 5 decks, 0 floors. [K-12]
 - **A LITERAL TYPE-NAME SEARCH CANNOT SEE THE CHOOSE-A-TYPE CATEGORY, and a false negative
   there reads as a finished answer.** A sweep for "Robots you control get" / "for each
   Robot" returned zero and an archetype was declined in writing as "bodies without a

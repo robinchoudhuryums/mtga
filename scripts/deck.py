@@ -2280,7 +2280,7 @@ _ROLE_PATTERNS = {
                        # "draw a card" would have swept every cantrip in the format into
                        # card advantage and inverted the rule this pattern implements.
                        r"at the beginning of (?:your|each|the) "
-                       r"(?:upkeep|end step|draw step|combat|precombat main phase)"
+                       r"(?:upkeep|end step|draw step|combat|(?:precombat|first) main phase)"
                        r"[^.]{0,60}?draws? a card",
                        # The phase-trigger pattern above puts the possessive FIRST
                        # ("at the beginning of YOUR combat"), but Magic templates the
@@ -2293,13 +2293,25 @@ _ROLE_PATTERNS = {
                        # pool cards, both true positives.
                        r"at the beginning of combat on your turn"
                        r"[^.]{0,60}?draws? a card",
+                       # A PHASE TRIGGER THAT OFFERS A DRAW AS A MODE (2026-10-25): Black
+                       # Market Connections' "At the beginning of your first main phase,
+                       # choose one or more —" puts "• Buy Information — Draw a card" on a
+                       # BULLET line, which the sentence windows above cannot reach. The mode
+                       # recurs with the trigger, so it is repeatable card advantage. The
+                       # bullet anchor keeps it to the modes of THIS trigger; a mode that
+                       # "hasn't been chosen" is usable once a game (Zuko, Conflicted) and
+                       # is not repeatable, so it stays out. Measured: 3 pool cards gained.
+                       r"at the beginning of (?:your|each|the) "
+                       r"(?:upkeep|end step|draw step|combat|(?:precombat|first) main phase)"
+                       r"[^\n]{0,80}?\bchoose\b(?![^\n]*hasn't been chosen)[^\n]*(?:\n[^\n]*){0,4}?"
+                       r"\n• [^\n]*?\bdraws? a card",
                        # REMOVE A COUNTER, THEN DRAW (2026-09-29): Dawn of a New Age's "At the
                        # beginning of your end step, remove a hope counter from this
                        # enchantment. If you do, draw a card." The sentence break stopped the
                        # pattern above short of the draw; per G-67 the fix is this CLAUSE,
                        # not a wider window. The counter supply is what repeats it.
                        r"at the beginning of (?:your|each|the) "
-                       r"(?:upkeep|end step|draw step|combat|precombat main phase)"
+                       r"(?:upkeep|end step|draw step|combat|(?:precombat|first) main phase)"
                        r"[^.]{0,60}?\bremove an? [a-z-]+ counters? from (?:this|it)\b"
                        r"[^.]{0,30}\.\s*if you do, (?:you )?draws? a card",
                        # The draw must fall AFTER the trigger's comma. Magic templates a
@@ -2347,7 +2359,7 @@ _ROLE_PATTERNS = {
                        #     the pattern. "When this creature enters, if X, draw a card" is
                        #     a one-shot cantrip and stays out, same as the plain ETB form.
                        r"(?:at the beginning of (?:your|each|the) "
-                       r"(?:upkeep|end step|draw step|combat|precombat main phase)"
+                       r"(?:upkeep|end step|draw step|combat|(?:precombat|first) main phase)"
                        r"|\bwhenever\b[^.,]{0,80})"
                        r", if [^.]{0,140}?, (?:you )?draws? a card",
                        r"\binvestigate\b",
@@ -3112,7 +3124,11 @@ _HAND_ATTACK_RE = re.compile(
     # nonland card in their hand. You choose one of those cards. Exile that card.").
     r"|(?:target|each) opponent reveals [^.]{0,40}?hand[^\n]{0,120}?(?:discards?|exile)"
     r"|look at target (?:opponent|player)'s hand[^\n]{0,120}?(?:discards?|exile)"
-    r"|each player discards", re.I)
+    r"|each player discards"
+    # A COMPOUND verb list puts the discard after another verb in the same sentence:
+    # Scarring Memories' "Target opponent sacrifices a creature of their choice, discards
+    # a card, and loses 3 life" read as no hand attack (2026-10-25).
+    r"|(?:target|each) (?:opponent|player)s? [^.;]{0,60}?,\s*(?:and )?discards?", re.I)
 
 
 def hand_attack_effects(text):
@@ -7343,7 +7359,15 @@ def fetch_pool_pressure(cards, source_notes, carddata, deck_meta=None):
 
 
 _NONLAND_COND_LABEL = {True: ", extra cost", "board": ", board-dependent",
-                       "granted": ", granted to creatures"}
+                       "granted": ", granted to creatures", "combat": ", combat-only"}
+
+# FIREBENDING (2026-10-25): "Firebending N (Whenever this creature attacks, add N {R}. This
+# mana lasts until end of combat.)" — the mana lives in the reminder text, which every
+# reader here strips, so a deck of firebenders disclosed no nonland mana at all. It is real
+# mana that empties at end of combat, except under a "you don't lose unspent mana" effect
+# (Ozai, the Phoenix King; Electro), where it becomes permanent ramp. Own keyword and a
+# grant ("gains firebending 4") both count; disclosure only, like every label above.
+_FIREBENDING_RE = re.compile(r"\bfirebending (?:\d+|x)\b", re.I)
 
 
 # EVERY LAND A FIVE-COLOUR SOURCE (2026-10-25). Great Divide Guide ("Each land and Ally
@@ -7476,6 +7500,9 @@ def uncounted_mana_sources(cards, carddata, deck_meta=None):
             granted |= gp["free"] | gp["conditional"]
         if granted:
             out.append((q, cd.get("name") or n, "".join(sorted(granted)), "granted"))
+            continue
+        if _FIREBENDING_RE.search(_REMINDER_RE.sub(" ", text)):
+            out.append((q, cd.get("name") or n, "R", "combat"))
     return sorted(out, key=lambda r: (-r[0], r[1]))
 
 

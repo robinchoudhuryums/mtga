@@ -3081,6 +3081,22 @@ line. Instants and sorceries are excluded, because a one-turn effect is not a ma
 is disclosure only, and no count reads it: the source figures stay what the lands make with the
 permanent absent.
 
+**Identity is a FALLBACK, not a source (2026-10-25).** `land_production` folded a card's colour
+identity into `free` unconditionally, on the ground that a land's identity IS its mana symbols.
+That is true of a dual whose text is only reminder (Blood Crypt) and false of a land whose
+identity comes from an activation COST: Duskmantle, House of Shadow ("{T}: Add {C}." /
+"{U}{B}, {T}: … mills") read as an untapped U/B dual and topped `suggest --lands` for deck 91.
+Identity now applies only when the reminder-stripped text prints no mana ability at all. Pool:
+87 rows changed, all identity-from-cost corrections (the Kaldheim sac-uncommons now make one
+colour, the Landscapes keep only their fetch, The World Tree is a G land, Skemfar Elderhall
+stops being a B source); the Thriving lands needed one guard, since identity had been what kept
+their printed colour out of `chosen`, and the line now says so itself (`printed`). Roster: 2 of
+126 decks' source counts moved (89: B 24→23; 90: −1 each of B/R/U/W), 0 tier floors.
+**Firebending joined the nonland disclosure the same day** (`combat-only`): its mana lives in
+reminder text every reader strips, so a deck of firebenders disclosed nothing; 21 roster decks.
+Mis-flag to avoid when grading this area: Demolition Field IS a basic fetch for you (its full text
+ends "You may search your library for a basic land card") — a 200-character slice hid that.
+
 ## [G-36] `deck.py consistency <id>` is the PROBABILITY layer `mana` lacks
 
 **`deck.py consistency <id>` is the PROBABILITY layer `mana` lacks.** `mana` diagnoses
@@ -5622,6 +5638,18 @@ stays uncounted. Pool: Card advantage +116, Lifegain +42, Burn/drain +22, Ramp +
 Roster: card advantage up in 11 decks (88 8→9; 22 7→8, 24 12→14, 51 10→11, 70 6→7,
 78-historic-brawl 6→7, 80 3→7, 82 12→15, 89 12→13, 90 to 16), interaction unchanged, **0 tier
 floors moved**. The six decks whose prose quoted the old figure were re-grounded the same day.
+
+**A draw offered as a MODE of a recurring trigger (later on 2026-10-25).** Black Market
+Connections' "At the beginning of your first main phase, choose one or more —" puts "• Buy
+Information — Draw a card" on a bullet line the sentence windows cannot reach, so the card scored
+no role. New Card-advantage pattern: phase trigger → `choose` → a `•` mode that draws, with
+"hasn't been chosen" excluded (Zuko, Conflicted draws once a game). The three phase alternations
+also gained the modern `first main phase` templating beside `precombat main phase` (0 cards on its
+own). Pool +3 (Black Market Connections, Wardens of the Cycle, Mister Hyde, Monster Within);
+roster card advantage up in 5 decks (4, 7, 69, 87, 91), **0 tier floors moved**; the three
+`#: tier:` blocks quoting the old figure were re-grounded. Hand attack gained the COMPOUND clause
+the same day ("Target opponent sacrifices …, discards a card, and loses 3 life" — Scarring
+Memories, Cruel Ultimatum, Dusk Mangler, Smallpox; pool +4, report-only).
 
 ## [K-13] A literal type-name search cannot see the choose-a-type category — and the false negative reads as an answer
 

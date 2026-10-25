@@ -56,9 +56,8 @@
 #: notes: exactly the scaled minimum.
 #: notes: Then Grimgrin for Massacre Wurm (owner's pick; Wurm off #: protect:) and Black Market
 #: notes: Connections for Archfiend of Ifnir. Wurm counted as interaction, so Grimgrin only REPLACES it:
-#: notes: interaction stays 11, card advantage 7, floor B (one interaction short of A). Black Market's
-#: notes: Buy Information is a draw every turn the role classifier does not read (a modal-bullet
-#: notes: pattern hole), so card advantage under-reads by one.
+#: notes: interaction stays 11, floor B (one interaction short of A). Black Market's Buy
+#: notes: Information draw is counted since the 2026-10-25 modal-bullet fix: card advantage 8.
 #: notes: BENCH (graded in the pile doc): Liliana Waker of the Dead, Rankle Master of Pranks,
 #: notes: Inexorable Tide, Pride of the Road, Zahur, Embalmed Ascendant, Genku, Risen Necroregent,
 #: notes: Wight, Ammit Eternal, Eternal of Harsh Truths, Commence the Endgame, Fallen Shinobi,
