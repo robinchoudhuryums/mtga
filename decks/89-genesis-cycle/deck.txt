@@ -108,9 +108,12 @@
 #: notes: OWNED CANDIDATES not yet tried (suggest --owned, 2026-10-22): Liliana, Dreadhorde
 #: notes: General (a draw per creature death; her -4 edict makes US sacrifice two as well, each a
 #: notes: Szarel trigger) and Scavenger's Talent (sacrifice a permanent: mill two, ours or theirs).
-#: notes: The rejected-pile re-screen found no strict upgrade; its five KEY cards (Eddie Brock,
-#: notes: Izoni, Persuasive Interrogators, Slimefoot and Squee, Zopandrel) were left out because
-#: notes: their sacrifices are of TOKENS, which never trigger Szarel (Zopandrel: the 7-drop slot).
+#: notes: The rejected-pile re-screen found no strict upgrade among its five KEY cards (Eddie Brock,
+#: notes: Izoni, Persuasive Interrogators, Slimefoot and Squee, Zopandrel). Only two of them sacrifice
+#: notes: TOKENS alone, which never trigger Szarel: Persuasive Interrogators (Clues) and Slimefoot and
+#: notes: Squee (Saprolings). Izoni ("Sacrifice another creature") and Zopandrel ("Sacrifice two other
+#: notes: creatures") take NONTOKEN creatures too, so each is a Szarel trigger on our turn (corrected
+#: notes: 2026-10-25); Eddie Brock has since joined the list, and Zopandrel is still under consideration.
 
 # Commander (leads from the command zone; also one of the 100)
 1 Szarel, Genesis Shepherd (EOC) 4

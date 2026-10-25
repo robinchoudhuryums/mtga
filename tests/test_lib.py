@@ -620,6 +620,30 @@ class TestLandProduction:
     def test_identity_is_the_fallback_for_blank_text(self):
         assert lib.land_production("", "R/G")["free"] == {"R", "G"}
 
+class TestResourceCostAndGateBoundLands:
+    """2026-10-25: three lands `suggest --lands` ranked as free rainbow sources. Energy
+    and counter costs are extra costs (conditional); a Gate-bounded colour is board."""
+
+    def test_energy_and_counter_costs_are_conditional(self):
+        for text in ("When this land enters, you get {E} (an energy counter).\n{T}: Add {C}.\n"
+                     "{T}, Pay {E}: Add one mana of any color.",
+                     "{T}: Add {C}.\n{T}: Put a charge counter on this land.\n"
+                     "{T}, Remove a charge counter from this land: Add one mana of any color."):
+            p = lib.land_production(text, "Colorless")
+            assert p["free"] == set() and p["conditional"] == set("WUBRG"), text
+
+    def test_gate_bounded_colour_is_board_not_free(self):
+        p = lib.land_production("{T}: Add {C}.\n{T}: Add one mana of any type that a Gate "
+                                "you control could produce.", "Colorless")
+        assert p["free"] == set() and p["board"] == set("WUBRG")
+
+    def test_reflecting_pool_and_a_life_cost_stay_free(self):
+        assert lib.land_production("{T}: Add one mana of any type that a land you control "
+                                   "could produce.", "Colorless")["free"] == set("WUBRG")
+        assert lib.land_production("{T}, Pay 1 life: Add one mana of any color.",
+                                   "Colorless")["free"] == set("WUBRG")
+
+
 class TestLandProductionExclusions:
     """Four shapes that reported FIVE FREE COLOURS for a land producing little or nothing.
     All four surfaced on 2026-09-04 when a breadth-aware term was added to

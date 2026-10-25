@@ -216,7 +216,6 @@ Involuntary Employment
 Iron Hills Stalwart
 Iron Lad, Diverging Destiny
 Ironpaw Aspirant
-Jace's Machinations
 Jeong Jeong, the Deserter
 Jeskai Brushmaster
 Joo Dee, One of Many
@@ -459,9 +458,7 @@ War Machine, Legacy of Iron
 War Squeak
 Wargling
 Waterbender Ascension
-Way of the Healer
 Way of the Pyromancer
-Way of the Wildspeaker
 Weapons Vendor
 Web-Warriors
 Welcome to Sweettooth

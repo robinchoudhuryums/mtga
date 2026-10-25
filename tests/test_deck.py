@@ -7537,6 +7537,15 @@ class TestDeck90ToolingBatch:
         for n in (0, 3, 19):
             assert deck.tier_band(dict(base, hand_attack=n)) == deck.tier_band(base)
 
+    def test_empower_jace_is_card_advantage_when_a_burst_or_repeatable(self):
+        for text in ("When this enchantment enters, empower Jace 5.",
+                     "Landfall — Whenever a land you control enters, empower Jace 2.",
+                     "{6}: Empower Jace 2."):
+            assert "Card advantage" in deck.classify_roles(text), text
+        # a one-off 1–2 is not yet a draw
+        assert "Card advantage" not in deck.classify_roles(
+            "When this creature enters, empower Jace 2.")
+
     def test_land_rainbow_enablers(self):
         data = {
             "guide": {"type": "Creature — Human Scout Ally",

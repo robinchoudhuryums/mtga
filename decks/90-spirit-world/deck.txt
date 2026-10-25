@@ -78,9 +78,9 @@
 #: notes: for Honden of Seeing Winds (13 Shrines) and The Wandering Emperor for Leyline Binding;
 #: notes: interaction back to 14. HIDDEN VALUE the role counts miss (2026-10-25 audit): Mogis
 #: notes: (edict-or-2) is interaction, and Honden of Night's Reach now shows on the report-only hand
-#: notes: attack line; Hei Bai, Sanctum of All, Entrust the Spark, Calix's +1, Terra's mill and the
-#: notes: empowered Jace tokens' '-3: Draw a card' are card advantage (Quintorius's seek is counted
-#: notes: since the same day's tooling batch); Bolas copies every other walker's minus.
+#: notes: attack line; Hei Bai, Sanctum of All, Entrust the Spark, Calix's +1 and Terra's mill are
+#: notes: card advantage (Quintorius's seek and the empowered Jace tokens' '-3: Draw a card' are
+#: notes: counted since the same day's tooling batches); Bolas copies every other walker's minus.
 #: notes: LANDS 2026-10-25: Stingerquill Annex for Savage Lands and Theorix Annex for Opulent Palace
 #: notes: (Reality Fracture lands enter untapped once a planeswalker is out, so from the midgame);
 #: notes: Interplanar Beacon for Terramorphic Expanse (every planeswalker cast is 1 life, which Way

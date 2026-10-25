@@ -577,6 +577,17 @@ _EXTRA_MANA_COST_RE = re.compile(r"\{[0-9XC]\}|\{[WUBRG]\}|\{[WUBRG]/[WUBRG]\}")
 _EXTRA_TAP_COST_RE = re.compile(
     r"\btap (?:an|another|two|three|four|\w+) (?:untapped )?"
     r"(?:creature|artifact|permanent|land|token)", re.I)
+# Two more non-mana extra costs that the two patterns above could not see, so the land
+# read as a FREE five-colour source and `suggest --lands` ranked it beside an untapped
+# rainbow land (deck-90 manabase pass, 2026-10-25): an ENERGY payment (Aether Hub,
+# "{T}, Pay {E}: Add one mana of any color") and a COUNTER spent from the land
+# (Mirrodin's Core, "{T}, Remove a charge counter from this land: Add …").
+_EXTRA_RESOURCE_COST_RE = re.compile(
+    r"\{e\}|\bremove (?:a|an|one|two|three|\w+) [a-z-]+ counters? from", re.I)
+# A colour bounded by the GATES you control (Plaza of Harmony: "Add one mana of any type
+# that a Gate you control could produce") depends on the board, like Vivid — in a deck
+# with no Gates it adds nothing, so it must not read as a five-colour free source.
+_GATE_ONLY_RE = re.compile(r"\ba gate you control could produce\b", re.I)
 # Production reachable ONLY by turning the permanent face up or transforming it. Branch of
 # Vitu-Ghazi taps for {C} as a land; its "When this land is turned face up, add two mana of
 # any one color" line needs it cast face down for {3} via Disguise first, so as a LAND it
@@ -812,11 +823,13 @@ def land_production(text, colors_cell=None, commander=None):
         cost = line.split(":", 1)[0] if ":" in line else ""
         extra_cost = (bool(_EXTRA_MANA_COST_RE.search(cost))
                       or bool(_EXTRA_TAP_COST_RE.search(cost))
+                      or bool(_EXTRA_RESOURCE_COST_RE.search(cost))
                       or "sacrifice" in cost.lower())
         limited = "spend this mana only" in low
         cols = set()
         line_chosen = False
-        if _BOARD_COLOR_RE.search(line) and _ADD_CLAUSE_RE.search(line):
+        if ((_BOARD_COLOR_RE.search(line) or _GATE_ONLY_RE.search(line))
+                and _ADD_CLAUSE_RE.search(line)):
             if not limited:
                 board |= set("WUBRG")
             continue

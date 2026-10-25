@@ -330,4 +330,14 @@ def main():
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    try:
+        sys.exit(main())
+    except BrokenPipeError:
+        # A READ-ONLY report whose reader closed the pipe early (`card.py X | grep -m1`,
+        # `| head`): there is nothing to lose, so exit quietly instead of printing a
+        # traceback to stderr. Point stdout at devnull first, or the interpreter's own
+        # flush at exit raises a second BrokenPipeError. (A WRITER must write before it
+        # narrates instead — G-10; this is not that case.)
+        devnull = os.open(os.devnull, os.O_WRONLY)
+        os.dup2(devnull, sys.stdout.fileno())
+        sys.exit(0)

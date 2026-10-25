@@ -390,7 +390,10 @@ def _pattern_groups():
                  # 2026-10-23: the basic TYPES a fetch names. Dead, every typed fetch (the
                  # hideouts, the Landscapes) is back to a source of every colour the deck
                  # runs a basic of — the over-count `fetch_types` removed.
-                 "_FETCH_TYPES_RE"):
+                 "_FETCH_TYPES_RE",
+                 # 2026-10-25: energy / counter costs and Gate-bounded colour. Dead, Aether
+                 # Hub, Mirrodin's Core and Plaza of Harmony read as free rainbow lands again.
+                 "_EXTRA_RESOURCE_COST_RE", "_GATE_ONLY_RE"):
         out.append((f"lib.{name}", getattr(lib, name), "raw"))
     # `deck.fetch_pool_pressure` (2026-10-23): a card that replays lands from the
     # graveyard. Dead, the disclosure stops naming the cards that deepen the pressure.

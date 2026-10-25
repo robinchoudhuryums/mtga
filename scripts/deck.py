@@ -2550,7 +2550,15 @@ _ROLE_PATTERNS = {
                        # A seek that puts the card ONTO THE BATTLEFIELD is ramp (Worldweave,
                        # Back-Alley Gardener), matched by the Ramp / fixing seek pattern.
                        r"\bseeks? (?:a|an|one|two|three|four|x|that many|up to \w+)\b"
-                       r"(?![^.]{0,60}?onto the battlefield)"],
+                       r"(?![^.]{0,60}?onto the battlefield)",
+                       # EMPOWER JACE (2026-10-25). The Jace token it makes carries
+                       # "[−3]: Draw a card" — in REMINDER text, which this reader strips,
+                       # so every empower card scored no card advantage. Counted when the
+                       # empower is 3+ at once (a draw now) or repeatable (a trigger or an
+                       # activated ability, which accrues to one), never a one-off 1–2.
+                       r"\bempower jace (?:[3-9]|\d{2})\b",
+                       r"\b(?:whenever|landfall)\b[^.\n]{0,80}?empower jace (?:\d+|x)\b",
+                       r"(?m)^[^\n:]{0,40}:[^.\n]{0,40}?empower jace (?:\d+|x)\b"],
     "Ramp / fixing": [r"search your library for .{0,30}?\bland",
                       r"\{t\}: add \{",
                       r"put (?:a|that|those|up to \w+).{0,40}?land.{0,40}?onto the battlefield",
