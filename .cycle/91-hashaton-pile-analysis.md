@@ -1,6 +1,6 @@
 # Hashaton pile (from deck 53) — analysis (TEMPORARY working doc)
 
-**Status: PLAN READY, awaiting owner picks** (started 2026-10-25; all 118 graded). Delete once the new deck is drafted and the
+**Status: PLAN REVISED (§5a), awaiting owner picks** (started 2026-10-25; all 118 graded). Delete once the new deck is drafted and the
 findings are folded into its `#: notes:` block. A scratchpad, not a source of truth —
 decks/ are.
 
@@ -57,6 +57,7 @@ tapped token that's a copy of that card, except it's a 4/4 black Zombie."*
 
 - E1: The Sibsig Ceremony destroys every creature we CAST — grade it against the cast half of R9, not against deck 53.
 - E3: A discard PAYOFF (Bone Miser, Chariot, Chancellor) is not an OUTLET; count the two separately (O1).
+- E4–E7: see §5a (speed, Sibsig, copy-makers, token-count payoffs).
 - E2: "Whenever another NONTOKEN creature dies" (Agent Venom) misses the engine: Hashaton's copies are tokens.
 
 ## 3. Cross-batch observations
@@ -251,6 +252,48 @@ Creatures with CYCLING discard themselves — a self-contained Hashaton trigger:
 | Malboro (owned) | ★ | Swampcycling; its copy makes them discard, lose 2 and exile three. |
 | Angel of the Ruins | ◇ | Plainscycling; the copy exiles two artifacts/enchantments. |
 | Timeless Dragon | ◇ | Plainscycling plus eternalize (a second Zombie copy). |
+
+## 5a. Revision pass (2026-10-25, owner pushback on the left-out cards)
+
+All 64 left-out cards re-read in full. Four first-pass errors, now on the standing list:
+
+- **E4 — Speed is nearly automatic here.** "Start your engines" rises once on each of OUR
+  turns when an opponent loses life, and ANY combat damage is life loss — plus Wayward
+  Servant, Diregraf Captain, Undead Hand Ninja, The Scarab God's upkeep and Massacre Wurm
+  all drain. Max speed is a few attacking turns away, so every speed card was under-graded:
+  Hour of Victory (a max-speed TUTOR for any card) △→★, Risen Necroregent △→◇, Pride of
+  the Road △→◇, Embalmed Ascendant and Zahur ◇ (live).
+- **E5 — The Sibsig Ceremony was graded against the wrong half.** It destroys a creature
+  we CAST, after its enters trigger, and the card lands in the graveyard. With Zul Ashur /
+  Gisa and Geralf / Havengul Lich (all CAST from the yard, at {2} less) that is a loop:
+  recast, enters trigger, die, a 2/2, back in the yard, again next turn — and every death
+  feeds Robot Domination, Liliana Dreadhorde General, and the NONTOKEN-death cards E2 had
+  ruled out (Midnight Reaper, Agent Venom, Headless Rider, Liliana Heretical Healer's flip).
+  Hashaton's copies are never cast, so they stay. The cost is real: a lord we hard-cast
+  dies — so lords go in through Hashaton, not the stack. ✗→★ as a SECOND ENGINE; an owner
+  decision, because it pulls the list toward cast-and-die.
+- **E6 — A copy-maker multiplies R1.** The Cloning of Shredder makes THREE non-legendary
+  copies of one graveyard creature (three Massacre Wurm sweeps, six Doombots, three Scarab
+  Gods) for six mana. ◇→★★.
+- **E7 — Token-count payoffs were read in isolation.** Army of the Damned is thirteen
+  Zombies ENTERING: with Kindred Discovery that is thirteen cards, with Wayward Servant
+  thirteen drain, with Binding Mummy thirteen tap-downs. ◇→★★. Dreadhorde Invasion's
+  lifelink line reads 6 power, which a 4/4 copy reaches with two lords ◇→★.
+- Also up: **God-Eternal Oketra** ★→★★ (discarding it dodges its {W}{W} — R1 beats R6 — and
+  every Zombie we recast from the yard makes a 4/4); **Liliana, Heretical Healer** ★→★★ once
+  flipped her +2 is a per-turn R2 OUTLET, the scarce resource; **Ninja Teen** ◇→★ (level 2
+  is a team menace anthem, level 3 casts graveyard creatures); **Vizier of the Scorpion** ★
+  (redundant deathtouch in a singleton deck is the point, G-46); **Avenger of the Fallen**,
+  **Essence Anchor**, **Inniaz** (Eternal Skylord's flying Zombie tokens reach its
+  three-flier steal), **Denzilore Fatehold** (Scarab God's upkeep scry), **Soul Diviner**
+  (Army and loyalty counters), **Necroduality** (nontoken Zombies we recast) ◇→★.
+
+**Revised core: 8 swaps** — in The Cloning of Shredder, Army of the Damned, God-Eternal
+Oketra, Hour of Victory, Liliana Heretical Healer, Ninja Teen, Vizier of the Scorpion,
+Dreadhorde Invasion; out Chronicle of Victory, Liliana's Mastery, Dread Summons, Ghoulcaller
+Gisa, Grim Reaper's Scythe, Assemble from Parts, Havengul Runebinder, Geralf. Scratch
+measurement: interaction 14, card advantage 9 → 8, floor A. The Sibsig engine is a further
+decision, not in this count.
 
 ## 5. Consolidated plan (live — after batch 4)
 
