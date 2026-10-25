@@ -1,6 +1,6 @@
 # Hashaton pile (from deck 53) — analysis (TEMPORARY working doc)
 
-**Status: SECOND REVISION (§5b) — awaiting the owner's engine choice** (started 2026-10-25; all 118 graded). Delete once the new deck is drafted and the
+**Status: PACKAGE PROPOSED (§5c) — awaiting owner sign-off, then /draft-deck as deck 91** (started 2026-10-25; all 118 graded). Delete once the new deck is drafted and the
 findings are folded into its `#: notes:` block. A scratchpad, not a source of truth —
 decks/ are.
 
@@ -57,6 +57,7 @@ tapped token that's a copy of that card, except it's a 4/4 black Zombie."*
 
 - E1: The Sibsig Ceremony destroys every creature we CAST — grade it against the cast half of R9, not against deck 53.
 - E3: A discard PAYOFF (Bone Miser, Chariot, Chancellor) is not an OUTLET; count the two separately (O1).
+- E9: Sibsig kills our own outlet creatures and the commander when CAST — see §5c's sequencing rule.
 - E8: see §5b — a card graded against one engine when the pile has several.
 - E4–E7: see §5a (speed, Sibsig, copy-makers, token-count payoffs).
 - E2: "Whenever another NONTOKEN creature dies" (Agent Venom) misses the engine: Hashaton's copies are tokens.
@@ -353,6 +354,42 @@ Every card was read in full both times; the error was grading each one ALONE (E8
 **Slot math.** Owner keeps 5 of the 8 proposed cuts, so only Chronicle of Victory, Liliana's
 Mastery and Dread Summons leave — 3 slots for the 8 §5a adds, before any of the above. The
 list can hold the Hashaton engine plus ONE or TWO sub-engines, not all three at full depth.
+
+## 5c. PROPOSED PACKAGE (owner chose the §5b direction, 2026-10-25)
+
+Hashaton engine + symmetric discard + Soul Diviner + the Sibsig sub-engine; the counters
+accelerator (Inexorable Tide) stays benched. Owner keeps honoured (Ghoulcaller Gisa, Grim
+Reaper's Scythe, Assemble from Parts, Havengul Runebinder, Geralf).
+
+**Changes against the §5 core 62:**
+- In (13): Waste Not, Miasmic Mummy*, Liliana of the Veil*, Fanatic of the Harrowing* (owned),
+  Soul Diviner, The Sibsig Ceremony, Necroduality, Aven Wind Guide, The Final Days, and from
+  §5a The Cloning of Shredder, Army of the Damned, God-Eternal Oketra, Liliana Heretical Healer.
+- Out (13): Chronicle of Victory, Liliana's Mastery, Dread Summons (§5a), Malboro, Key to the
+  City, Cemetery Recruitment, Grimgrin, Abyssal Harvester, Undead Hand Ninja, Soul-Shackled
+  Zombie, Blessed Ghoul, Dreadwing Scavenger, Eternal Skylord.
+- Withdrawn §5a adds (never entered): Hour of Victory, Ninja Teen, Dreadhorde Invasion,
+  Vizier of the Scorpion.
+
+**Measured (scratch build, placeholder lands):** interaction 13 (+3 under-read: Scarab God,
+Cloning of Shredder, Sibsig), card advantage 8, hand attack 5, protection 5 — floor A
+(needs 12 / sum 19; this is 13 + 8 = 21). 34 creature cards, 17 Zombie-typed. A first cut
+of Alabaster Host as well read interaction 12, the bare minimum, so it stayed and Eternal
+Skylord (redundant with Aven Wind Guide's token flying) went instead.
+
+**SEQUENCING RULE the package depends on (E9):** Sibsig destroys EVERY creature we cast —
+including the outlet creatures (Cryptbreaker, Psychic Frog, Selhoff Entomber, Tomebound Lich,
+Temmet, Miasmic Mummy, Fanatic) and Hashaton itself. Enters triggers still fire (Mummy's
+discard, Fanatic's discard-draw, Tomebound's loot). Necroduality's token copy of a cast ZOMBIE
+survives, so with it out, Cryptbreaker / Selhoff / Tomebound / Temmet / Mummy stay as tokens;
+Psychic Frog and Fanatic (not Zombies) do not. Noncreature outlets are untouched (Collector's
+Vault, Ral, Liliana of the Veil, Liliana Heretical Healer's walker side, Waste Not). So:
+**cast Hashaton and the key outlet creatures BEFORE Sibsig**, and treat Sibsig as a mid-game
+switch, not a turn-3 play.
+
+**Mana note for the build:** Sibsig and Massacre Wurm / Army of the Damned are {B}{B}{B},
+Oketra {W}{W}; Wurm and Oketra are mostly DISCARD targets (R1), but Sibsig must be cast —
+black sources need to be deep. The manabase is the `/draft-deck` step.
 
 ## 5. Consolidated plan (live — after batch 4)
 
