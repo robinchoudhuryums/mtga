@@ -308,6 +308,8 @@ Primal Witchstalker,Creature — Wolf,"Menace (This creature can't be blocked ex
 When this creature enters, mill four cards. When you do, return target land card from your graveyard to the battlefield tapped. (To mill four cards, put the top four cards of your library into your graveyard.)",B/G,Wolf; reanimator; graveyard; mill; etb; menace; evasion,FRA,144,Uncommon,83a,,5.0,seed
 Way of the Necromancer,Legendary Enchantment,"When Way of the Necromancer enters, empower Jace 2. (Put two loyalty counters on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with ""[−1]: Surveil 1"" and ""[−3]: Draw a card."")
 Whenever a creature you control dies, put a loyalty counter on each planeswalker you control.",B,counters; card draw; tokens; etb; surveil; graveyard; empower jace,FRA,239,Uncommon,89,deck 89 tune 2026-10-23,4.5,seed
+Stingerquill Annex,Land,"This land enters tapped unless you control a planeswalker.
+{T}: Add {B} or {R}.",B/R,mana,FRA,190,Common,90,,1.5,seed
 "Jace, Multiverse Architect",Legendary Planeswalker — Jace,"At the beginning of combat on each opponent's turn, they may pay {2}. If they don't, creatures they control can't attack Jaces you control this turn.
 +1: Draw two cards, then put a card from your hand on the bottom of your library.
 −3: Exile another target planeswalker or creature you control. Reveal cards from the top of your library until you reveal a creature or planeswalker card. Put that card onto the battlefield and the rest on the bottom of your library in a random order.
@@ -462,8 +464,6 @@ Origin of Iron Man,Enchantment — Saga,"(As this Saga enters and after your dra
 I — Tap up to one target creature. It doesn't untap during its controller's untap step for as long as this Saga remains on the battlefield.
 II — Draw two cards.
 III — You may put an artifact card with mana value 5 or less from your hand onto the battlefield.",U,saga; card draw,MSC,633,Uncommon,84,,5.0,seed
-Savage Lands,Land,"This land enters tapped.
-{T}: Add {B}, {R}, or {G}.",B/R/G,mana,MSC,827,Uncommon,90,,2.5,seed
 Team Transmitter,Artifact,"Whenever a Hero you control enters, you gain 1 life.
 {T}: Add one mana of any color.",Colorless,lifegain; mana,MSC,573,Uncommon,84,,5.0,seed
 Vault Guardsman,Artifact Creature — Human Advisor,"Convoke (Your creatures can help cast this spell. Each creature you tap while casting this spell pays for {1} or one mana of that creature's color.)
@@ -735,6 +735,9 @@ When this land enters, you gain 1 life.
 Bioessence Hydra,Creature — Hydra Mutant,"Trample
 This creature enters with a +1/+1 counter on it for each loyalty counter on planeswalkers you control.
 Whenever one or more loyalty counters are put on planeswalkers you control, put that many +1/+1 counters on this creature.",U/G,Hydra; Mutant; counters; trample; evasion,WAR,186,Rare,90,,5.5,seed
+Interplanar Beacon,Land,"Whenever you cast a planeswalker spell, you gain 1 life.
+{T}: Add {C}.
+{1}, {T}: Add two mana of different colors. Spend this mana only to cast planeswalker spells.",Colorless,lifegain; mana,WAR,247,Uncommon,90,,5.0,seed
 Mayhem Devil,Creature — Devil,"Whenever a player sacrifices a permanent, this creature deals 1 damage to any target.",B/R,Devil; sacrifice; burn; noncombat damage,WAR,204,Uncommon,89,deck 89 tune 2026-10-22,3.5,seed
 Blossoming Tortoise,Creature — Turtle,"Whenever this creature enters or attacks, mill three cards, then return a land card from your graveyard to the battlefield tapped.
 Activated abilities of lands you control cost {1} less to activate.

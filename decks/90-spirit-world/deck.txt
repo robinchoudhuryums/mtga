@@ -79,7 +79,12 @@
 #: notes: interaction back to 14. HIDDEN VALUE the role counts miss (2026-10-25 audit): Honden of
 #: notes: Night's Reach (hand attack) and Mogis (edict-or-2) are interaction; Hei Bai, Sanctum of All,
 #: notes: Entrust the Spark, Calix's +1, Quintorius's seek, Terra's mill and the empowered Jace tokens'
-#: notes: '-3: Draw a card' are card advantage; Bolas copies every other walker's minus. BENCH for
+#: notes: '-3: Draw a card' are card advantage; Bolas copies every other walker's minus.
+#: notes: LANDS 2026-10-25: Stingerquill Annex for Savage Lands and Theorix Annex for Opulent Palace
+#: notes: (Reality Fracture lands enter untapped once a planeswalker is out, so from the midgame);
+#: notes: Interplanar Beacon for Terramorphic Expanse (every planeswalker cast is 1 life, which Way
+#: notes: of the Mentor turns into loyalty; its two colours are planeswalker-only, so `consistency`
+#: notes: does not count it). Taplands in the first three drops 57.8% -> 47.7%. BENCH for
 #: notes: later passes: Insidious Roots, Selvala, Mogis, Satsuki, Garnet, The Legend of Roku, The
 #: notes: Legend of Kyoshi, Rydia, Jin-Gitaxias, Sab-Sunen, Athreos, Karolina Dean, Kyodai, Greenhouse,
 #: notes: Djeru and Hazoret, Oketra the True, Elspeth, Storm Slayer, Kaito, Dancing Shadow, Marina
@@ -175,7 +180,7 @@
 1 Plaza of Heroes (DMU) 252
 1 White Lotus Hideout (TLA) 281
 1 The World Tree (KHM) 275
-1 Savage Lands (MSC) 827
+1 Stingerquill Annex (FRA) 190
 1 Contaminated Landscape (MH3) 218
 1 Spara's Headquarters (SNC) 257
 1 Jetmir's Garden (SNC) 250
@@ -183,7 +188,7 @@
 1 Sandsteppe Citadel (TDM) 266
 1 Ketria Triome (IKO) 250
 1 Mystic Monastery (TDM) 262
-1 Opulent Palace (TDM) 264
+1 Theorix Annex (FRA) 192
 1 Hallowed Fountain (ECL) 265
 1 Watery Grave (EOE) 261
 1 Blood Crypt (ECL) 262
@@ -194,7 +199,7 @@
 1 Overgrown Tomb (ECL) 266
 1 Sacred Foundry (EOE) 256
 1 Breeding Pool (EOE) 251
-1 Terramorphic Expanse (MSC) 828
+1 Interplanar Beacon (WAR) 247
 1 Wastewood Verge (DFT) 268
 1 Thornspire Verge (DSK) 270
 1 Willowrush Verge (DFT) 270
