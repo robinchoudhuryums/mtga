@@ -60,7 +60,15 @@ tapped token that's a copy of that card, except it's a 4/4 black Zombie."*
 
 ## 3. Cross-batch observations
 
-(none yet)
+- O1 (after batch 2): **discard OUTLETS are the scarce resource.** In 60 cards only three are
+  true outlets (Cryptbreaker, Collector's Vault, Ral −1), against ~35 creatures worth
+  copying. R2 says Hashaton does nothing without them, so expect to fetch outlets from
+  OUTSIDE the pile (UB looters/rummagers, cycling, discard-as-cost) — run
+  `pool.py --regex` for the discard shape before the final plan.
+- O2: **Zombie lords are plentiful** (Death Baron, Gisa, Lifecraft Engine, Cursecloth,
+  Chronicle, Eternal Skylord's flying grant). Pick the 4–5 best, not all.
+- O3: **two cards want the same graveyard creature**: Abyssal Harvester (this turn), Patchwork
+  Crawler and Havengul Runebinder (exile it) compete with R3 recursion. Fine in moderation.
 
 ## 4. Running verdicts
 
@@ -104,6 +112,41 @@ Legend: ★★★ take · ★★ strong · ★ real · ◇ situational · △ ma
 Outlets this batch (R2): Collector's Vault, Ral Zarek. Discard payoffs: Cryptcaller Chariot,
 Robot Domination. Zombie lords: Death Baron, Gisa, Lifecraft Engine, Cursecloth Wrappings,
 Chronicle of Victory. Recursion: Zul Ashur, Cursecloth, Ral −2, Funeral Room, Deathless Pilot.
+
+### Batch 2 (cards 31–60)
+
+| # | Card | Verdict | Note |
+|---|---|---|---|
+| 31 | The Final Days | ★ | Two 2/2 Horrors now; flashback makes one per creature card in our yard, which discarding grows (R3). |
+| 32 | Liliana, Dreadhorde General | ★★★ | Draws on ANY creature death (tokens count); +1 Zombie; −4 double edict. |
+| 33 | Massacre Wurm | ★★★ | R1 headline: {2}{U} for −2/−2 on their whole board plus 2 life per creature of theirs that dies. |
+| 34 | Blasphemous Edict | △ | Symmetric 13-creature sacrifice; it wipes the token army this deck builds. |
+| 35 | Midnight Reaper | △ | E2: nontoken deaths only. |
+| 36 | Abyssal Harvester | ★★ | Exiles a creature card put in a graveyard THIS turn for a token copy: a discarded creature becomes TWO copies (Hashaton's and this). Competes with yard recursion for the same card. |
+| 37 | Realm of Koh | ★ | Land: untapped B with a basic, a late token sink. |
+| 38 | Binding Mummy | ★ | Every other Zombie entering taps an artifact or creature — every Hashaton copy is a tap-down. White 2-drop. |
+| 39 | Pride of the Road | △ | Speed-gated double strike. |
+| 40 | God-Eternal Oketra | ★ | Double strike; every creature we CAST makes a 4/4 Zombie. {3}{W}{W} is heavy for light white (R6); as a discarded copy it keeps the cast trigger. |
+| 41 | Patchwork Crawler | ◇ | Eats graveyard creatures for their activated abilities; competes with R3 recursion. |
+| 42 | Oglor, Devoted Assistant | ★★ | Upkeep self-mill; every creature card put in our yard from HAND or library perpetually gains "leaves the graveyard: a 2/2 Zombie" — every discard plus every later recursion is a token. |
+| 43 | Aven Eternal | △ | Amass 1 flier. |
+| 44 | Essence Anchor | ◇ | Upkeep surveil; a 2/2 on a turn a card left our yard — real only with embalm/recursion density. |
+| 45 | Eternal of Harsh Truths | △ | Afflict/unblocked draw on a 1/3. |
+| 46 | Geralf, the Fleshwright | ★ | Zombies entering grow per other Zombie that entered this turn (a Hashaton copy plus Chariot tokens); second spell each turn makes a 2/2. |
+| 47 | Crush Dissent | ◇ | Soft counter plus amass 2. |
+| 48 | Havengul Runebinder | ★ | Exile a graveyard creature: a 2/2 and +1/+1 on EVERY Zombie. Its {2}{U} competes with Hashaton's {2}{U} each turn. |
+| 49 | God-Eternal Kefnet | ★ | 4/5 flier that copies a drawn instant or sorcery; fine as a 4/4 flying copy. |
+| 50 | Necroduality | ◇ | Copies NONTOKEN Zombies entering, so it misses every Hashaton copy (E2's shape); only cast or recast Zombies. |
+| 51 | Outlaw Stitcher | △ | A 2/2 Zombie plus counters only on multi-spell turns. |
+| 52 | Eternal Skylord | ★★ | "Zombie tokens you control have flying" — every Hashaton copy is a Zombie token (R4), so the whole army flies. |
+| 53 | Commence the Endgame | ◇ | Six-mana instant: draw two, amass hand size. |
+| 54 | Assemble from Parts | ★ | One mana: a graveyard creature gets a perpetual "make a 4/4 Zombie copy of me" — Hashaton's effect from the yard. |
+| 55 | Dreadmalkin | △ | A sacrifice outlet that grows itself. |
+| 56 | Dread Wanderer | ◇ | Returns itself from the yard with ≤1 card in hand; discard fodder that comes back, but hand-size-gated. |
+| 57 | Cryptbreaker | ★★★ | R2: {1}{B},{T}, discard a card: a 2/2 Zombie — a ONE-mana repeatable outlet. Tapping three Zombies draws a card. |
+| 58 | Aphemia, the Cacophony | △ | Needs enchantment cards in the yard. |
+| 59 | Cemetery Recruitment | ★ | Return a creature card (draw if Zombie) — the discarded card comes back to be discarded again. |
+| 60 | Dreadhorde Invasion | ★ | Upkeep amass 1; power-6 Zombie tokens gain lifelink (the 4/4 copies reach 6 with two lords). |
 
 ## 5. Consolidated plan (live)
 
