@@ -51,13 +51,17 @@
 #: notes: speed is the PLAYER's, so a Hashaton copy of Necroregent or Ascendant runs its max-speed
 #: notes: ability too. Discard outlets 9 -> 7 (Cryptbreaker and Stitchwing out). Winter's cut took
 #: notes: interaction 12 -> 11, below the scaled A minimum, pending Grimgrin.
+#: notes: Then Eternal Skylord for Kindred Discovery (every Zombie TOKEN flies — each Hashaton
+#: notes: copy, the Army, every 2/2): card advantage 8 -> 7, so Grimgrin's A floor is 12 + 7 = 19,
+#: notes: exactly the scaled minimum.
 #: notes: BENCH (graded in the pile doc): Liliana Waker of the Dead, Rankle Master of Pranks,
 #: notes: Inexorable Tide, Pride of the Road, Zahur, Embalmed Ascendant, Genku, Risen Necroregent,
 #: notes: Wight, Ammit Eternal, Eternal of Harsh Truths, Commence the Endgame, Fallen Shinobi,
 #: notes: Zareth San, Outlaw Stitcher, Eternal Skylord, Hour of Victory, Ninja Teen, Vizier of the
 #: notes: Scorpion, Deathless Pilot, Malboro, Key to the City. (Liliana Waker of the Dead, Zahur,
 #: notes: Embalmed Ascendant, Risen Necroregent, Eternal of Harsh Truths, Commence the Endgame,
-#: notes: Fallen Shinobi, Outlaw Stitcher and Vizier of the Scorpion have since come off this list.
+#: notes: Fallen Shinobi, Outlaw Stitcher, Vizier of the Scorpion and Eternal Skylord have since
+#: notes: come off this list.
 #: notes: Pride of the Road and Wight were re-graded 2026-10-25 and held: Pride is a {3}{W} that does
 #: notes: nothing below max speed; Wight needs deathtouch it no longer gets without Death Baron.)
 
@@ -94,7 +98,7 @@
 1 Gisa, the Hellraiser (OTJ) 89
 1 Gleaming Overseer (WAR) 198
 1 Cursecloth Wrappings (DFT) 81
-1 Kindred Discovery (WOT) 22
+1 Eternal Skylord (WAR) 49
 1 Aven Wind Guide (AKR) 228
 1 Unstoppable Slasher (DSK) 119
 1 Wayward Servant (AKR) 267

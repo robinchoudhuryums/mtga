@@ -851,6 +851,8 @@ Dreadhorde Invasion,Enchantment,"At the beginning of your upkeep, you lose 1 lif
 Whenever a Zombie token you control with power 6 or greater attacks, it gains lifelink until end of turn.",B,counters; lifegain; pay life; tokens; amass; go-wide; lifelink,WAR,86,Rare,91,,3.5,seed
 Enter the God-Eternals,Sorcery,"Enter the God-Eternals deals 4 damage to target creature and you gain life equal to the damage dealt this way. Target player mills four cards. Amass Zombies 4. (Put four +1/+1 counters on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)",U/B,counters; mill; lifegain; tokens; burn; amass; go-wide; graveyard,WAR,196,Rare,91,,4.5,seed
 Soul Diviner,Creature — Zombie Wizard,"{T}, Remove a counter from an artifact, creature, land, or planeswalker you control: Draw a card.",U/B,Zombie; Wizard; card draw,WAR,218,Rare,91,,3.0,seed
+Eternal Skylord,Creature — Zombie Wizard,"When this creature enters, amass Zombies 2. (Put two +1/+1 counters on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)
+Zombie tokens you control have flying.",U,Zombie; Wizard; counters; tokens; etb; amass; go-wide; flying; evasion,WAR,49,Uncommon,91,,2.0,seed
 Gleaming Overseer,Creature — Zombie Wizard,"When this creature enters, amass Zombies 1. (Put a +1/+1 counter on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)
 Zombie tokens you control have hexproof and menace.",U/B,Zombie; Wizard; counters; tokens; etb; amass; go-wide; menace; evasion; hexproof; protection,WAR,198,Uncommon,91,,2.5,seed
 Interplanar Beacon,Land,"Whenever you cast a planeswalker spell, you gain 1 life.
@@ -872,8 +874,6 @@ Picklock Prankster // Free the Fae,Creature — Faerie Rogue // Instant — Adve
 Rootrider Faun,Creature — Satyr Scout,"{T}: Add {G}.
 {1}, {T}: Add one mana of any color.",G,Satyr; Scout; mana,WOE,182,Common,50,,1.5,seed
 Stormkeld Prowler,Creature — Human Rogue,"Whenever you cast a spell with mana value 5 or greater, put two +1/+1 counters on this creature.",U,Human; Rogue; counters,WOE,71,Common,51,Deck 51: two-drop that gets +2/+2 whenever you cast MV>=5 - the deck runs 11 such. Cheap clock that scales with the top end it already had.,6.2,hand
-Kindred Discovery,Enchantment,"As this enchantment enters, choose a creature type.
-Whenever a creature you control of the chosen type enters or attacks, draw a card.",U,card draw,WOT,22,Mythic,91,,8.0,seed
 Drowned Catacomb,Land,"This land enters tapped unless you control an Island or a Swamp.
 {T}: Add {U} or {B}.",U/B,mana,XLN,253,Rare,91,,4.0,seed
 Glacial Fortress,Land,"This land enters tapped unless you control a Plains or an Island.
