@@ -1,0 +1,142 @@
+#: name: Phoenix King
+#: format: Historic Brawl
+#: colors: BR
+#: commander: Ozai, the Phoenix King
+#: plan: midrange
+#: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool), RAKDOS FIREBENDING
+#: archetype: around Ozai, the Phoenix King, built out of deck 1 Black Sun's sacrifice-and-drain
+#: archetype: list. Ozai says "If you would lose unspent mana, that mana becomes red instead": while
+#: archetype: he is out, mana never empties, so every firebending trigger, Treasure and spare land drop
+#: archetype: is permanent RED mana. With six or more unspent, Ozai has flying and indestructible —
+#: archetype: holding mana is his protection, and a "destroy all creatures" wrath is one-sided. The
+#: archetype: plan: ramp to Ozai on turns 4-5, attack with firebenders (Avatar Roku adds six on ANY
+#: archetype: player's attack), and spend the pile through red sinks — Fire Nation Turret's fifty
+#: archetype: charge counters, Fated Firepower, Hell to Pay, Insurrection — while deck 1's tokens and
+#: archetype: drain (Slash, Raphael, Perforating Artist) pressure on the side. DISTINCT from deck 1
+#: archetype: (a 60-card Standard aggro-sacrifice list): this one is a mana-accumulation deck.
+#: protect: Ozai, the Phoenix King; Fire Nation Turret; Avatar Roku, Firebender; Fire Lord Ozai; The Legend of Roku; Sozin's Comet; Firebender Ascension; Fated Firepower; Slash, Reptile Rampager; Smellerbee, Rebel Fighter
+#: notes: DRAFTED 2026-10-25 from the owner's 116-card pile (.cycle/ozai-pile-analysis.md, four batches)
+#: notes: plus Arcane Signet and six untapped Rakdos duals from outside the pile (Mount Doom,
+#: notes: Blightstep Pathway, Sulfurous Springs, Dragonskull Summit, Smoldering Marsh, Blackcleave
+#: notes: Cliffs). FLOATING MANA IS RED: it pays red pips and generic costs (X, activations), never a
+#: notes: black pip — so the {B}{B}{B} cards (Massacre Wurm) get nothing from it. Day of Black Sun
+#: notes: strips abilities, so it kills Ozai too unless X < 6. Without Ozai, firebending mana empties
+#: notes: at end of combat — spend it on instant-speed sinks (Turret, Fire Sages, Vindictive Warden,
+#: notes: Fire Nation Archers). Electro is the backup "keep red mana" piece for the turns Ozai is off.
+#: notes: OPEN for the owner: more ramp (Talisman of Indulgence, Mind Stone)? Keep Massacre Wurm at
+#: notes: {B}{B}{B}? The Rise of Sozin over Blasphemous Act or Day of Black Sun? Replace the tapped
+#: notes: Thriving lands and Valakut with more untapped duals?
+#: notes: BENCH (graded in the pile doc, now deleted): Hazoret, Krenko, Gisa the Hellraiser, Red
+#: notes: Hulk, Sporogenic Infection, Robot Domination, Dragon Fodder, Reckless Ransacking, Magic Pot,
+#: notes: Goblin Surprise, Rat King, Callous Inspector, The Rise of Sozin, Firebending Student, Azula,
+#: notes: Zuko Firebending Master, Iroh Firebending Instructor, Zuko Seeking Honor, Ozai's Cruelty,
+#: notes: Fire Nation Salvagers, Fire Nation Sentinels, Nyla, Black Sun's Zenith, Combustion
+#: notes: Technique, Fists of Flame, Freedom Fighter Recruit, Lost in Memories, The Last Agni Kai,
+#: notes: Bolt Bend, Longshot, Wartime Protestors, Mirrorwing Dragon, Storm of Memories, Volcanic
+#: notes: Torrent, Warstorm Surge, Ashling, Pyromancer's Goggles, The Bloodsky Massacre, Siege Dragon,
+#: notes: Shivan Branch-Burner, Silverclad Ferocidons, Explosive Singularity, Smaug. OUT: Hulk, Always
+#: notes: Angry ("destroy all artifacts" kills our Signets, Locket, Turret, Treasures and Doombots).
+#: notes: `screen` rates thirteen of the bench KEY on theme; the ones worth a second look under the
+#: notes: floating-mana rule are Explosive Singularity (all-generic {8}{R}{R}, a 10-damage finisher),
+#: notes: Longshot (noncreature spells cost {1} less, 2 to each opponent per one) and Smaug.
+
+# Commander (leads from the command zone; also one of the 100)
+1 Ozai, the Phoenix King (TLA) 235
+
+# Mana — rocks and Treasure (Ozai at 6, recast at 8)
+1 Arcane Signet (FRC) 20
+1 Rakdos Signet (AA1) 10
+1 Rakdos Locket (RNA) 237
+1 Namazu Trader (FIN) 107
+1 The Legend of Roku (TLA) 145
+
+# Firebending engine — mana that never empties while Ozai is out
+1 Vindictive Warden (TLA) 249
+1 Fire Sages (TLA) 136
+1 Loyal Fire Sage (TLE) 242
+1 Firebender Ascension (TLA) 137
+1 Cruel Administrator (TLA) 213
+1 Iroh, Dragon of the West (TLE) 119
+1 Ran and Shaw (TLA) 150
+1 Avatar Roku, Firebender (TLE) 112
+1 Fire Lord Ozai (TLE) 104
+1 Sozin's Comet (TLA) 154
+1 Fury of the Horde (MAR) 71
+1 Electro, Assaulting Battery (SPM) 76
+
+# Red sinks and finishers
+1 Fire Nation Turret (TLE) 64
+1 Fated Firepower (TLA) 132
+1 Fire Nation Archers (TLE) 237
+1 Frantic Confrontation (TLE) 117
+1 Insurrection (TLE) 31
+1 Improvisation Capstone (SOS) 120
+1 Fang, Roku's Companion (TLE) 115
+
+# Tokens, sacrifice and drain (deck 1's spine)
+1 Slash, Reptile Rampager (TMT) 108
+1 Raphael, Tough Turtle (TMT) 104
+1 Perforating Artist (FDN) 124
+1 Searslicer Goblin (FDN) 93
+1 Avengers: Under Siege (MSH) 205
+1 Sawblade Skinripper (DSK) 231
+1 June, Bounty Hunter (TLA) 106
+1 Rakdos, the Muscle (OTJ) 226
+1 Smellerbee, Rebel Fighter (TLE) 125
+1 Zuko, Avatar Hunter (TLE) 246
+1 Fire Nation Occupation (TLE) 105
+
+# Card advantage and tutors
+1 Doctor Doom (MSH) 95
+1 High-Society Hunter (FDN) 61
+1 Lion Vulture (TLE) 232
+1 Rakdos, Patron of Chaos (MKM) 224
+1 Raven Eagle (TLA) 116
+1 Lo and Li, Twin Tutors (TLA) 108
+
+# Recursion
+1 Alesha, Who Laughs at Fate (FDN) 115
+1 Rakdos Joins Up (OTJ) 225
+1 Zuko's Conviction (TLA) 123
+
+# Interaction
+1 Hell to Pay (OTJ) 126
+1 Burst Lightning (FDN) 192
+1 Firebending Lesson (TLA) 138
+1 Iroh's Demonstration (TLA) 141
+1 Blood Spatter Analysis (MKM) 189
+1 Epic Downfall (TLA) 96
+1 Bot Bashing Time (TMT) 85
+1 Fiery Confluence (TLE) 165
+1 Noxious Gearhulk (TLE) 25
+1 Scarring Memories (TLE) 111
+1 Desperate Plea (TLE) 103
+1 Combustion Man (TLA) 127
+1 Sarkhan, the Dragonspeaker (KTK) 119
+1 Overwhelming Victory (TLE) 123
+1 Redirect Lightning (TLA) 151
+
+# Sweepers — hold six mana and Ozai survives the wrath
+1 Day of Black Sun (TLA) 94
+1 Blasphemous Act (TLE) 26
+1 Massacre Wurm (FDN) 714
+
+# Lands (37)
+1 Mount Doom (LTR) 258
+1 Blightstep Pathway // Searstep Pathway (KHM) 252
+1 Sulfurous Springs (DMU) 256
+1 Dragonskull Summit (XLN) 252
+1 Smoldering Marsh (EA3) 22
+1 Blackcleave Cliffs (ONE) 248
+1 Fire Nation Palace (TLA) 268
+1 Blazemire Verge (DSK) 256
+1 Razortrap Gorge (DSK) 267
+1 Blood Crypt (ECL) 262
+1 Dark Fortress (MSH) 264
+1 Realm of Koh (TLA) 276
+1 Thriving Moor (MSC) 582
+1 Thriving Bluff (MSC) 578
+1 Valakut, the Molten Pinnacle (TLE) 61
+1 White Lotus Hideout (TLA) 281
+11 Mountain (MSH) 294
+10 Swamp (MSH) 292

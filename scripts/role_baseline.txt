@@ -139,6 +139,7 @@ Entropic Battlecruiser
 Entrust the Spark
 Eternal Skylord
 Fallen Shinobi
+Fang, Roku's Companion
 Fated Firepower
 Fear of Isolation
 Fearsome Goblin Pair
@@ -154,8 +155,10 @@ Fog Bank
 Foggy Swamp Vinebender
 Foggy Swamp Visions
 Fortune, Loyal Steed
+Frantic Confrontation
 Frantic Strength
 Frontier Seeker
+Fury of the Horde
 Fynn, the Fangbearer
 Galuf's Final Act
 Gangly Stompling
@@ -214,8 +217,10 @@ Identity Echo
 Improvisation Capstone
 Ingenious Leonin
 Insatiable Skittermaw
+Insurrection
 Interface Ace
 Involuntary Employment
+Iroh, Dragon of the West
 Iron Hills Stalwart
 Iron Lad, Diverging Destiny
 Ironpaw Aspirant
@@ -252,6 +257,7 @@ Living Brain, Mechanical Marvel
 Loki Laufeyson
 Long Feng, Grand Secretariat
 Lorehold, the Historian
+Loyal Fire Sage
 Magic Pot
 Magitek Armor
 Mai, Jaded Edge
