@@ -6,10 +6,10 @@
 #: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool), JUND LAND SACRIFICE
 #: archetype: around Szarel, Genesis Shepherd: she lets us play lands from the graveyard and puts
 #: archetype: counters equal to her power on another creature whenever we sacrifice a nontoken
-#: archetype: permanent on our turn. So every land that sacrifices itself (14 fetches, the
-#: archetype: Memorials, Hidden caves, Skemfar Elderhall, Nurturing Peatland, Ifnir Deadlands) is a
-#: archetype: spell we replay every turn, and the land outlets (Gitrog, Zuran Orb, Korvold,
-#: archetype: She-Hulk, Baba Lysaga, Hearthhull) turn spare land drops into
+#: archetype: permanent on our turn. So every land that sacrifices itself (11 basic fetches, the
+#: archetype: Memorials, Hidden caves, the sacrifice-to-draw duals, Skemfar Elderhall, Ghost Quarter,
+#: archetype: Ifnir Deadlands) is a spell we replay every turn, and the land outlets (Gitrog, Zuran Orb,
+#: archetype: Korvold, She-Hulk, Hearthhull) turn spare land drops into
 #: archetype: triggers. Long Feng, Jenova and Vorinclex grow Szarel's power so each trigger is bigger.
 #: archetype: The second clock is POISON: Bushmaster gives every creature with a +1/+1 counter
 #: archetype: deathtouch and Fynn makes each deathtouch hit 2 poison; Vorinclex with Vraska,
@@ -32,7 +32,7 @@
 #: notes: flex slots for Necrogen Rotpriest, Venerated Rotpriest, Persuasive Interrogators,
 #: notes: Venomous Brutalizer and Skithiryx. The rare fetches (Fabled Passage, Prismatic Vista,
 #: notes: Misty Rainforest, Polluted Delta, Scalding Tarn) can drop to common Shire Terrace or a
-#: notes: Strixhaven-style self-sacrificing land a turn slower.
+#: notes: Strixhaven-style self-sacrificing land a turn slower. (Done 2026-10-25, see LANDS below.)
 #: notes: SWAPS 2026-10-22 (tune): Bristly Bill for Squirrel Wrangler (a landfall counter on Szarel,
 #: notes: two per fetch; the Wrangler was a 12th land outlet making tokens); Vraska, Golgari Queen
 #: notes: for Titania, Rugged Rumbler (+2 sacrifices a land for a card each turn, -3 removal);
@@ -113,14 +113,26 @@
 #: notes: TOKENS alone, which never trigger Szarel: Persuasive Interrogators (Clues) and Slimefoot and
 #: notes: Squee (Saprolings). Izoni ("Sacrifice another creature") and Zopandrel ("Sacrifice two other
 #: notes: creatures") take NONTOKEN creatures too, so each is a Szarel trigger on our turn (corrected
-#: notes: 2026-10-25); Eddie Brock has since joined the list, and Zopandrel is still under consideration.
+#: notes: 2026-10-25); Eddie Brock has since joined the list, and Zopandrel went in for Baba Lysaga below.
+#: notes: SWAP 2026-10-25: Zopandrel, Hunger Dominus for Baba Lysaga. Zopandrel doubles power at the
+#: notes: start of each combat, so a land sacrificed through Zuran Orb after that trigger puts twice
+#: notes: the counters, and its indestructible cost sacrifices two nontoken creatures (two Szarel
+#: notes: triggers). The cost: Baba turned three permanents into three Szarel triggers and three
+#: notes: cards each turn; card advantage 13 -> 12.
+#: notes: LANDS 2026-10-25 (owner's call, rarity): Fabled Passage, Prismatic Vista, Misty Rainforest,
+#: notes: Polluted Delta, Scalding Tarn and Nurturing Peatland went to Shire Terrace, Promising Vein,
+#: notes: Omashu City, Ghost Quarter, Boiling Rock Prison and Foggy Bottom Swamp. Every one still
+#: notes: sacrifices itself, so the Szarel replay loop is intact; Ghost Quarter replayed every turn is
+#: notes: a land kill per turn. Sources B 23 -> 24, R 17 -> 19, G 24 -> 25 (overstated: the tool
+#: notes: counted the typed fetches as no source); taplands 10 -> 13 of 27; on curve Szarel 81.0 ->
+#: notes: 84.7%, Mayhem Devil 75.7 -> 79.8%, Hornet Queen 52.0 -> 55.3%. Upgrade path if crafting:
+#: notes: Wooded Foothills, Verdant Catacombs and Bloodstained Mire for the three {4} draw duals.
 
 # Commander (leads from the command zone; also one of the 100)
 1 Szarel, Genesis Shepherd (EOC) 4
 
 # Creatures — land-sacrifice engine (every land Szarel replays is a trigger)
 1 The Gitrog Monster (BLC) 88
-1 Baba Lysaga, Night Witch (HBG) 232
 1 Titania, Protector of Argoth (MH2) 287
 1 Azusa, Lost but Seeking (M21) 173
 1 Seedship Broodtender (EOE) 227
@@ -137,6 +149,7 @@
 1 White Widow, Yelena Belova (MSC) 676
 1 Bristly Bill, Spine Sower (OTJ) 157
 1 Pizza Face, Gastromancer (TMT) 163
+1 Zopandrel, Hunger Dominus (ONE) 195
 
 # Creatures — deathtouch and poison (Fynn turns each deathtouch hit into 2 poison)
 1 Fynn, the Fangbearer (FCA) 46
@@ -204,17 +217,17 @@
 1 Riveteers Overlook (SNC) 255
 1 Escape Tunnel (TMT) 184
 1 Maestros Theater (SNC) 251
-1 Fabled Passage (BLB) 252
-1 Prismatic Vista (SPG) 38
-1 Misty Rainforest (MH2) 250
-1 Polluted Delta (MH3) 224
-1 Scalding Tarn (MH2) 254
+1 Shire Terrace (LTR) 261
+1 Promising Vein (LCI) 279
+1 Omashu City (TLA) 275
+1 Ghost Quarter (DIS) 173
+1 Boiling Rock Prison (TLA) 267
 1 Memorial to Folly (DOM) 242
 1 Memorial to Unity (DOM) 245
 1 Hidden Necropolis (LCI) 275
 1 Hidden Nursery (LCI) 276
 1 Skemfar Elderhall (KHM) 268
-1 Nurturing Peatland (HA7) 23
+1 Foggy Bottom Swamp (TLA) 269
 1 Ifnir Deadlands (AKR) 302
 1 Overgrown Tomb (ECL) 266
 1 Blood Crypt (ECL) 262

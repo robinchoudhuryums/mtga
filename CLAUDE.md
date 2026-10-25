@@ -1203,7 +1203,7 @@ is protecting.
 - **A CARD THAT GRANTS A KEYWORD IS A CARD ABOUT THAT KEYWORD, and the tagger only read
   what a card HAS.** Keyword tags came from Scryfall's `keywords` field, so a lord handing
   the team deathtouch carried no `deathtouch` tag and looked like a card with nothing to do
-  with the deck built on it. **1,955 pool cards grant one of the twelve evergreens**, and
+  with the deck built on it. **1,957 pool cards grant one of the twelve evergreens**, and
   for FOUR the granted case is the MAJORITY, so the tag tracked the exception (haste has since crossed to a FIFTH at 366 grant vs 359 have — a 7-card margin that can flip on any pool rebuild, so do not harden the count). `tags_for`
   reads grants from TEXT now (`granted_keywords`, reminder text stripped, opponent- and
   loss-scoped clauses excluded). Tags feed `cuts` / `suggest` / centrality (deck 31's Venom
@@ -1501,7 +1501,7 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   gallery (`load_pool_tags`) read pool-first now, and `load_card_meta`'s correction reaches a
   library row stored under a DFC FRONT name (10 cards, 8 decks had missed it);
   `check_agreement._agree_card_synergies` holds `card.py` to the model.
-  **Residual: 350 pool blanks — a new theme for four cards is not the fix.** [K-09]
+  **Residual: 351 pool blanks — a new theme for four cards is not the fix.** [K-09]
 - **THE TAGGER HAD NO `artifacts` RULE AT ALL, the largest single cause of the median-rank
   finding G-22 records (added 2026-09-14).** Every `artifacts` tag came from the KEYWORD map (affinity /
   improvise / modular / craft…), so a card whose whole text is "artifacts you control get

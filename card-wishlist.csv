@@ -113,6 +113,8 @@ Whenever you activate an exhaust ability, put a +1/+1 counter on this creature."
 Amonkhet Raceway,Land,"Start your engines! (If you have no speed, it starts at 1. It increases once on each of your turns when an opponent loses life. Max speed is 4.)
 {T}: Add {C}.
 Max speed — {T}: Target creature gains haste until end of turn.",Colorless,mana; max speed; speed; aggro; start your engines!; haste,DFT,248,Uncommon,88,,2.5,seed
+Ghost Quarter,Land,"{T}: Add {C}.
+{T}, Sacrifice this land: Destroy target land. Its controller may search their library for a basic land card, put it onto the battlefield, then shuffle.",Colorless,sacrifice; removal; mana,DIS,173,Uncommon,89,,4.5,seed
 "Sheoldred, the Apocalypse",Legendary Creature — Phyrexian Praetor,"Deathtouch
 Whenever you draw a card, you gain 2 life.
 Whenever an opponent draws a card, they lose 2 life.",B,Phyrexian; Praetor; lifegain; card draw; deathtouch; combat; removal,DMU,107,Mythic,87,,7.0,seed
@@ -365,10 +367,14 @@ Ixalli's Lorekeeper,Creature — Human Druid,{T}: Add one mana of any color. Spe
 Poison Dart Frog,Creature — Frog,"Reach
 {T}: Add one mana of any color.
 {2}: This creature gains deathtouch until end of turn.",G,Frog; mana; reach; defense,LCI,207,Common,50,,1.5,seed
+Promising Vein,Land — Cave,"{T}: Add {C}.
+{1}, {T}, Sacrifice this land: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.",Colorless,Cave; sacrifice; ramp; mana,LCI,279,Common,89,,1.5,seed
 "Aragorn, the Uniter",Legendary Creature — Human Noble,"Whenever you cast a white spell, create a 1/1 white Human Soldier creature token.
 Whenever you cast a blue spell, scry 2.
 Whenever you cast a red spell, Aragorn deals 3 damage to target opponent.
 Whenever you cast a green spell, target creature gets +4/+4 until end of turn.",W/U/R/G,Human; Noble; tokens; burn; scry; pump; noncombat damage; selection,LTR,192,Mythic,90,,7.5,seed
+Shire Terrace,Land,"{T}: Add {C}.
+{1}, {T}, Sacrifice this land: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.",Colorless,sacrifice; ramp; mana,LTR,261,Common,89,,1.5,seed
 "Golos, Tireless Pilgrim",Legendary Artifact Creature — Scout,"When Golos enters, you may search your library for a land card, put that card onto the battlefield tapped, then shuffle.
 {2}{W}{U}{B}{R}{G}: Exile the top three cards of your library. You may play them this turn without paying their mana costs.",W/U/B/R/G,Scout; ramp; etb; impulse,M20,226,Rare,90,,6.0,seed
 "Alibou, Ancient Witness",Legendary Artifact Creature — Golem,"Other artifact creatures you control have haste.
@@ -505,6 +511,9 @@ Whenever you cast a noncreature spell, choose a counter on target permanent. Put
 Tyrranax Rex,Creature — Phyrexian Dinosaur,"This spell can't be countered.
 Trample, ward {4}, haste
 Toxic 4 (Players dealt combat damage by this creature also get four poison counters.)",G,Phyrexian; Dinosaur; toxic; haste; aggro; trample; evasion; ward; protection,ONE,189,Mythic,89,deck 89 tune 2026-10-22,5.0,seed
+"Zopandrel, Hunger Dominus",Legendary Creature — Phyrexian Horror,"Reach
+At the beginning of each combat, double the power and toughness of each creature you control until end of turn.
+{G/P}{G/P}, Sacrifice two other creatures: Put an indestructible counter on Zopandrel. ({G/P} can be paid with either {G} or 2 life.)",G,Phyrexian; Horror; counters; sacrifice; reach; defense; double,ONE,195,Mythic,89,,5.0,seed
 "Tyvar, Jubilant Brawler",Legendary Planeswalker — Tyvar,"You may activate abilities of creatures you control as though those creatures had haste.
 +1: Untap up to one target creature.
 −2: Mill three cards, then you may return a creature card with mana value 2 or less from your graveyard to the battlefield.",B/G,Tyvar; planeswalker; reanimator; graveyard; mill,ONE,218,Rare,89,deck 89 tune 2026-10-23,8.5,seed
