@@ -395,6 +395,11 @@ def _pattern_groups():
     # `deck.fetch_pool_pressure` (2026-10-23): a card that replays lands from the
     # graveyard. Dead, the disclosure stops naming the cards that deepen the pressure.
     out.append(("deck._LAND_REPLAY_RE", deck._LAND_REPLAY_RE, "raw"))
+    # 2026-10-25 (deck-90 tooling batch): the report-only HAND ATTACK line and the
+    # every-land-a-five-colour-source disclosure. Dead, either line silently reads 0 /
+    # disappears, which looks exactly like a deck that has none.
+    out.append(("deck._HAND_ATTACK_RE", deck._HAND_ATTACK_RE, "norm"))
+    out.append(("deck._LAND_RAINBOW_RE", deck._LAND_RAINBOW_RE, "norm"))
     # `deck.uncounted_mana_sources` (2026-10-06): the creature-GRANT disclosure and the
     # enters-trigger exclusion. Dead, Enduring Vitality vanishes from the disclosure again
     # (the deck-21 silence) or every ETB mana burst reads as a recurring source.

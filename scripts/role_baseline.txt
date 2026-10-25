@@ -36,7 +36,6 @@ Aurora Awakener
 Avenger of the Fallen
 Avengers: Under Siege
 Azula, Cunning Usurper
-Back-Alley Gardener
 Badgermole
 Ball Lightning
 Bandit's Talent
@@ -242,7 +241,6 @@ Large Bear
 Leader, Super-Genius
 Leonardo, Big Brother
 Leyline of Mutation
-Leyline of the Guildpact
 Leyline of Transformation
 Lifecraft Engine
 Lilysplash Mentor
@@ -345,7 +343,6 @@ Rustler Rampage
 Salvation Swan
 Samut, Hazoret's Champion
 Sanar, Innovative First-Year
-Sanctum of Stone Fangs
 Sandstorm Salvager
 Savage Land Dinosaur
 Savage Ventmaw

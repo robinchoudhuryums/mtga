@@ -2541,7 +2541,16 @@ _ROLE_PATTERNS = {
                        # span is the only thing either pattern can see, and hers is `+2`.
                        r"(?m)^(?:[a-z][a-z']{2,14}(?: \d+)? [-—] )?"
                        r"(?:[+-]?\d+|\{[^}]+\})(?:(?!discard|sacrifice this)[^.:\n])"
-                       r"{0,60}:[^.\n]{0,90}\.\s*(?:if|when) you do[^.\n]{0,40}?draws? a card"],
+                       r"{0,60}:[^.\n]{0,90}\.\s*(?:if|when) you do[^.\n]{0,40}?draws? a card"
+                       ,
+                       # SEEK (Alchemy): "put one at random from your library into your
+                       # hand" is a draw that also filters, and no pattern above read the
+                       # keyword, so Quintorius's "−1: Seek a non-Quintorius planeswalker
+                       # card" scored no card advantage (deck 90 audit, 2026-10-25).
+                       # A seek that puts the card ONTO THE BATTLEFIELD is ramp (Worldweave,
+                       # Back-Alley Gardener), matched by the Ramp / fixing seek pattern.
+                       r"\bseeks? (?:a|an|one|two|three|four|x|that many|up to \w+)\b"
+                       r"(?![^.]{0,60}?onto the battlefield)"],
     "Ramp / fixing": [r"search your library for .{0,30}?\bland",
                       r"\{t\}: add \{",
                       r"put (?:a|that|those|up to \w+).{0,40}?land.{0,40}?onto the battlefield",
@@ -2568,6 +2577,12 @@ _ROLE_PATTERNS = {
                       # All-basic-land-types (K-03 names this shape as a fixer the tagger
                       # could not see); Energybending and friends.
                       r"lands? you control (?:gain|have) all basic land types",
+                      # ...and the "ARE every basic land type" templating, which that
+                      # pattern never matched: Leyline of the Guildpact scored NO role
+                      # in the deck it fixes (deck 90 audit, 2026-10-25).
+                      r"(?:lands? you control|enchanted land) (?:are|is) every basic land type",
+                      # Seeking a land straight onto the battlefield (Worldweave).
+                      r"seeks? an? (?:basic )?land card[^.]{0,40}?onto the battlefield",
                       # EXTRA LAND DROPS (2026-10-23). Azusa and Dryad of the Ilysian Grove
                       # scored NO role, so `cuts` ranked Dryad deck 89's #1 cut in a deck
                       # built on playing lands; Exploration, Oracle of Mul Daya, The Gitrog
@@ -2675,7 +2690,11 @@ _ROLE_PATTERNS = {
         r"deals? damage equal to .{0,60}?(?:any (?:other )?target|a player|target player|each opponent|that player)",
         r"deals? x damage to any (?:other )?target",
         r"deals? that much damage to (?:each opponent|any (?:other )?target|target player)",
-        r"(?:each opponent|target opponent|any opponent|that player|each player) loses \d",
+        # `\d` alone missed the X-scaled drain: Sanctum of Stone Fangs ("each opponent
+        # loses X life and you gain X life, where X is the number of Shrines") scored NO
+        # role while Northern Air Temple, the same drain text, matched only through its
+        # second "loses 1 life" clause (deck 90 audit, 2026-10-25).
+        r"(?:each opponent|target opponent|any opponent|that player|each player) loses (?:\d|x life)",
         r"deals? \d+ damage to each opponent",
         r"loses life equal to",
     ],
@@ -2683,7 +2702,9 @@ _ROLE_PATTERNS = {
     # was in neither this pattern nor the tag model; the tag half was fixed with the
     # `pay life` work and this is the role half, so the two agree on the phrase.
     "Lifegain": [r"\blifelink\b", r"you gain \d+ life", r"gain \d+ life",
-                 r"gains? life equal to"],
+                 r"gains? life equal to",
+                 # The X-scaled twin, same hole as the drain pattern above.
+                 r"you gain x life"],
     # Cost reducers / free-cast enablers — the value that makes a nominally
     # expensive card cheap (Diamond Weapon, affinity/convoke, cascade cheats).
     "Cost reduction / cheat": [
@@ -3067,6 +3088,29 @@ def tempo_effects(text):
         if rx.search(t):
             return kind
     return None
+
+
+# HAND ATTACK (2026-10-25). Discard and hand-exile aimed at an opponent were a TAXONOMY
+# hole (G-67): Honden of Night's Reach ("target opponent discards a card for each Shrine")
+# scored NO role, so it read as doing nothing. Reported like tempo — a separate line in
+# stats / tier / quality — and NEVER a `tier_band` term: counting discard as interaction
+# would re-grade the roster, which is the owner's call after a measurement, not a pattern
+# edit. The subject must be an OPPONENT or a player you target; "discard a card" as your
+# own cost or rummage never matches.
+_HAND_ATTACK_RE = re.compile(
+    r"(?:target|each|that|any) (?:opponent|player)s? discards?"
+    r"|(?:target|each) (?:opponent|player) exiles? [^.]{0,30}?from (?:their|his or her) hand"
+    # The reveal/look forms put the discard or exile one sentence LATER ("…reveals each
+    # nonland card in their hand. You choose one of those cards. Exile that card.").
+    r"|(?:target|each) opponent reveals [^.]{0,40}?hand[^\n]{0,120}?(?:discards?|exile)"
+    r"|look at target (?:opponent|player)'s hand[^\n]{0,120}?(?:discards?|exile)"
+    r"|each player discards", re.I)
+
+
+def hand_attack_effects(text):
+    """True if the card makes an opponent discard or exile from hand (reminder-stripped,
+    the way `classify_roles` reads it). Report-only — see `_HAND_ATTACK_RE`."""
+    return bool(_HAND_ATTACK_RE.search(_norm_role_text(text)))
 
 
 def protection_effects(text):
@@ -4507,6 +4551,8 @@ def cmd_stats(args):
     print(f"  {'tempo':20} {_tempo_note(role_counts):>3}  (one-turn answers — bounce, stun, "
           "tap-down — on cards with no interaction role; report-only, never in the tier "
           "floor)")
+    print(f"  {'hand attack':20} {role_counts.get('hand_attack', 0):3}  (opponent discards or "
+          "exiles from hand; report-only, never in the tier floor)")
     if not prot:
         signature = _protected(meta)
         if signature:
@@ -4891,7 +4937,7 @@ def role_tally(cards, carddata):
     union of Removal/Sweeper/Counter), 'card_advantage', and 'protection' (real
     ward/hexproof/indestructible-class effects — see `protection_effects`)."""
     per_role = {}
-    interaction = ca = prot = tempo = 0
+    interaction = ca = prot = tempo = hand = 0
     tempo_kinds = {}
     for q, n, s, c in cards:
         if n.lower() in BASICS:
@@ -4908,6 +4954,8 @@ def role_tally(cards, carddata):
             ca += q
         if protection_effects(cd["text"]):
             prot += q
+        if hand_attack_effects(cd["text"]):
+            hand += q
         if not roles & _INTERACTION_ROLES:
             kind = tempo_effects(cd["text"])
             if kind:
@@ -4919,6 +4967,8 @@ def role_tally(cards, carddata):
     # Report-only TEMPO (see `tempo_effects`): never read by `tier_band`.
     per_role["tempo"] = tempo
     per_role["tempo_kinds"] = tempo_kinds
+    # Report-only HAND ATTACK (see `hand_attack_effects`): never read by `tier_band`.
+    per_role["hand_attack"] = hand
     # CONFIDENCE, carried WITH the count. The classifier reports a false negative as a
     # fact: a card it can't parse contributes 0, and `0` reads as "none" rather than
     # "not detected". That is the single most damaging failure this toolkit has had — a
@@ -7288,6 +7338,39 @@ _NONLAND_COND_LABEL = {True: ", extra cost", "board": ", board-dependent",
                        "granted": ", granted to creatures"}
 
 
+# EVERY LAND A FIVE-COLOUR SOURCE (2026-10-25). Great Divide Guide ("Each land and Ally
+# you control has '{T}: Add one mana of any color'"), Wrenn and Realmbreaker, A Realm
+# Reborn and the all-basic-types family (Leyline of the Guildpact, Prismatic Omen) turn
+# the colour question into a land-count question while they are out — which no figure on
+# the `consistency` page can price, and which `uncounted_mana_sources` deliberately skips
+# (a GRANTED ability is a land upgrade, not a new source). DISCLOSURE ONLY.
+_LAND_RAINBOW_RE = re.compile(
+    r"(?:lands?|permanents)(?: and [a-z]+s?)? you control (?:has|have) [\"'“”]?\{t\}: add one "
+    r"mana of any colou?r"
+    r"|lands? you control (?:are|is) every basic land type"
+    r"|lands? you control (?:gain|have) all basic land types", re.I)
+
+
+def land_rainbow_enablers(cards, carddata):
+    """[(qty, name)] — NONLAND cards whose text makes every land you control produce any
+    colour (granted any-colour mana or every basic land type). Report-only."""
+    out = []
+    for q, n, _s, _c in cards:
+        nl = n.lower()
+        if nl in BASICS:
+            continue
+        cd = carddata.get(nl)
+        tline = (cd.get("type") or "") if cd else ""
+        if not cd or "Land" in _primary_type(tline):
+            continue
+        # A one-shot (Energybending: "until end of turn") is not a standing enabler.
+        if any(t in tline.split("//")[0] for t in ("Instant", "Sorcery")):
+            continue
+        if _LAND_RAINBOW_RE.search(_norm_role_text(cd.get("text") or "")):
+            out.append((q, cd.get("name") or n))
+    return out
+
+
 def uncounted_mana_sources(cards, carddata, deck_meta=None):
     """[(qty, name, colours, conditional)] — NONLAND permanents that produce mana.
 
@@ -7803,6 +7886,12 @@ def cmd_consistency(args):
                 "a land drop and must not inflate a land count. But it does mean every "
                 "cast-on-curve figure below is a FLOOR for this deck, and that "
                 "`suggest --ramp` can recommend acceleration this page will never price.")
+    _rainbow = land_rainbow_enablers(cards, carddata)
+    if _rainbow:
+        print(f"\n  ⓘ {sum(q for q, _n in _rainbow)} card(s) make EVERY land a five-colour "
+              "source while they are out: " + ", ".join(n for _q, n in _rainbow)
+              + ".\n    With one in play, a coloured cost below is a land-count question; "
+                "the figures here do not assume one is out (disclosure only).")
 
     # #1 — per-card cast probability on curve, from the ONE row builder the roster
     # castability sweep (`check_all`, `audit`) reads too, so the two cannot disagree.
@@ -13580,6 +13669,8 @@ def deck_quality_vector(d):
         # Report-only TEMPO (bounce / stun / one-turn tap, cards with no interaction
         # role) — the protection axis's sibling, and like it NEVER a `tier_band` term.
         "tempo": _tally["tempo"], "tempo_kinds": dict(sorted(_tally["tempo_kinds"].items())),
+        # Report-only HAND ATTACK, the same posture as tempo: never a `tier_band` term.
+        "hand_attack": _tally["hand_attack"],
         # The counts again, rendered WITH their uncertainty (see count_conf). The bare
         # ints stay for the tier floor and the F10 guard, which need numbers to compare;
         # these are what a human should read.
@@ -13688,6 +13779,7 @@ def cmd_quality(args):
         print(f"  {k:15}: {_early_drops_note(vec) if k == 'early_drops' else vec[k]}")
         if k == "card_advantage":
             print(f"  {'tempo':15}: {_tempo_note(vec)}   (report-only — not in the tier floor)")
+            print(f"  {'hand attack':15}: {vec.get('hand_attack', 0)}   (report-only — not in the tier floor)")
 
     regressions = []
     if getattr(args, "vs", None):
@@ -16024,6 +16116,7 @@ def cmd_tier(args):
           f"card-adv {vec.get('card_advantage_conf') or vec['card_advantage']} · "
           f"protection {vec.get('protection', 0)} · "
           f"tempo {vec.get('tempo', 0)} · "
+          f"hand attack {vec.get('hand_attack', 0)} · "
           f"board power {vec.get('board_power', 0)} · "
           f"avg MV {vec['avg_mv']} · central themes {vec['central_themes']}")
     # An {X} spell is priced with X = 0 (its rules MV off the stack), so the avg MV printed

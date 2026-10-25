@@ -7487,6 +7487,75 @@ class TestBatchBRolesAndTempo:
             assert deck.tier_band(dict(base, tempo=tempo)) == deck.tier_band(base)
 
 
+class TestDeck90ToolingBatch:
+    """2026-10-25 (deck-90 audit): the X-scaled drain, the "are every basic land type"
+    fixer, SEEK as card advantage, a report-only HAND ATTACK line, and the
+    every-land-a-five-colour-source disclosure."""
+
+    STONE_FANGS = ("At the beginning of your first main phase, each opponent loses X life "
+                   "and you gain X life, where X is the number of Shrines you control.")
+
+    def test_x_scaled_drain_is_drain_and_lifegain(self):
+        roles = deck.classify_roles(self.STONE_FANGS)
+        assert {"Burn / drain", "Lifegain"} <= roles
+
+    def test_every_basic_land_type_is_fixing(self):
+        for text in ("Lands you control are every basic land type in addition to their "
+                     "other types.",
+                     "Enchant land\nEnchanted land is every basic land type in addition to "
+                     "its other types."):
+            assert "Ramp / fixing" in deck.classify_roles(text), text
+
+    def test_seek_is_card_advantage_but_a_seek_onto_the_battlefield_is_ramp(self):
+        assert "Card advantage" in deck.classify_roles(
+            "−1: Seek a non-Quintorius planeswalker card.")
+        ramp = deck.classify_roles("Whenever you cast a creature spell, seek a land card "
+                                   "and put it onto the battlefield tapped.")
+        assert "Ramp / fixing" in ramp and "Card advantage" not in ramp
+
+    def test_hand_attack_positives_and_negatives(self):
+        for text in ("At the beginning of your upkeep, target opponent discards a card for "
+                     "each Shrine you control.",
+                     "+1: Each player discards a card.",
+                     "+1: Each opponent exiles a card from their hand or a permanent they "
+                     "control.",
+                     "Target opponent reveals each nonland card in their hand. You choose one "
+                     "of those cards. Exile that card."):
+            assert deck.hand_attack_effects(text), text
+        for text in ("Discard a card: Draw a card.",
+                     "You may discard a card. If you do, draw a card.",
+                     "Target player draws two cards."):
+            assert not deck.hand_attack_effects(text), text
+
+    def test_role_tally_reports_hand_attack_and_it_never_moves_the_floor(self):
+        data = {"honden": {"type": "Legendary Enchantment — Shrine",
+                           "text": "At the beginning of your upkeep, target opponent "
+                                   "discards a card for each Shrine you control."}}
+        assert deck.role_tally([(1, "honden", "", "")], data)["hand_attack"] == 1
+        base = {"interaction": 6, "card_advantage": 6, "uncastable": 0, "plan": "midrange",
+                "buildable": True, "avg_mv": 3.0, "early_drops": 8, "central_themes": 10}
+        for n in (0, 3, 19):
+            assert deck.tier_band(dict(base, hand_attack=n)) == deck.tier_band(base)
+
+    def test_land_rainbow_enablers(self):
+        data = {
+            "guide": {"type": "Creature — Human Scout Ally",
+                      "text": "Each land and Ally you control has \"{T}: Add one mana of any "
+                              "color.\""},
+            "leyline": {"type": "Enchantment",
+                        "text": "Lands you control are every basic land type in addition to "
+                                "their other types."},
+            "oneshot": {"type": "Instant",
+                        "text": "Until end of turn, lands you control gain all basic land "
+                                "types."},
+            "tree": {"type": "Land",
+                     "text": "As long as you control six or more lands, lands you control "
+                             "have \"{T}: Add one mana of any color.\""},
+        }
+        cards = [(1, n, "", "") for n in data]
+        assert [n for _q, n in deck.land_rainbow_enablers(cards, data)] == ["guide", "leyline"]
+
+
 class TestCastabilitySweep:
     """Batch E (2026-10-08): a maindecked card that cannot be cast on time is swept
     roster-wide, and an {X} spell is judged at X=2 rather than the X=0 its MV books."""

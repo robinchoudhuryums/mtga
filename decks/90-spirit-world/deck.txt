@@ -24,7 +24,7 @@
 #: archetype: (Great Divide Guide, Wrenn and Realmbreaker, Enduring Vitality, Leyline of the Guildpact).
 #: archetype: DISTINCT from deck 29 (Enchantress, GWR 60-card Auras): the axis is legendary enchantments
 #: archetype: and Shrine count, and the clock is Hondens, Sanctum drains and unblockable Spirits.
-#: protect: Hei Bai, Forest Guardian; Go-Shintai of Life's Origin; Sanctum of All; Leyline of the Guildpact; Southern Air Temple; The Spirit Oasis; Northern Air Temple; Crescent Island Temple; Kyoshi Island Plaza; The World Tree
+#: protect: Hei Bai, Forest Guardian; Go-Shintai of Life's Origin; Sanctum of All; Leyline of the Guildpact; Southern Air Temple; The Spirit Oasis; Northern Air Temple; Kyoshi Island Plaza; The World Tree
 #: notes: DRAFTED 2026-10-24 (/draft-deck) from the owner's 5-colour Shrine concept, with Nicol Bolas,
 #: notes: Dragon-God as a named must-include. RULES READ: a Shrine token from Life's Origin is a
 #: notes: Shrine for every count and triggers the temples ("another Shrine you control enters", no
@@ -76,10 +76,11 @@
 #: notes: Inexorable for Assassin's Trophy, Mogis for Professor Dellian Fel; interaction 14 -> 13,
 #: notes: one above the scaled A floor's 12. Then Inspired Tethermage for Sanctum Weaver, Jin-Gitaxias
 #: notes: for Honden of Seeing Winds (13 Shrines) and The Wandering Emperor for Leyline Binding;
-#: notes: interaction back to 14. HIDDEN VALUE the role counts miss (2026-10-25 audit): Honden of
-#: notes: Night's Reach (hand attack) and Mogis (edict-or-2) are interaction; Hei Bai, Sanctum of All,
-#: notes: Entrust the Spark, Calix's +1, Quintorius's seek, Terra's mill and the empowered Jace tokens'
-#: notes: '-3: Draw a card' are card advantage; Bolas copies every other walker's minus.
+#: notes: interaction back to 14. HIDDEN VALUE the role counts miss (2026-10-25 audit): Mogis
+#: notes: (edict-or-2) is interaction, and Honden of Night's Reach now shows on the report-only hand
+#: notes: attack line; Hei Bai, Sanctum of All, Entrust the Spark, Calix's +1, Terra's mill and the
+#: notes: empowered Jace tokens' '-3: Draw a card' are card advantage (Quintorius's seek is counted
+#: notes: since the same day's tooling batch); Bolas copies every other walker's minus.
 #: notes: LANDS 2026-10-25: Stingerquill Annex for Savage Lands and Theorix Annex for Opulent Palace
 #: notes: (Reality Fracture lands enter untapped once a planeswalker is out, so from the midgame);
 #: notes: Interplanar Beacon for Terramorphic Expanse (every planeswalker cast is 1 life, which Way

@@ -3,10 +3,10 @@
 #: colors: RGW
 #: commander: Samut, the Driving Force
 #: plan: midrange
-#: tier: A — set by the owner 2026-10-22. Metrics floor A (interaction 14, card advantage 8, sum
-#: tier: 22 against the 12/19 a 100-card deck needs). The counters under-read it: Inspiring Call, Black
-#: tier: Panther, Wakandan King, Emperor Apatzec's seek and Ravenous Tyrannosaurus's attack trigger all
-#: tier: score no role. One clear weakness: green-hungry costs (Hexhaven and Unnatural Growth need
+#: tier: A — set by the owner 2026-10-22. Metrics floor A (interaction 14, card advantage 9, sum
+#: tier: 23 against the 12/19 a 100-card deck needs). The counters under-read it: Inspiring Call, Black
+#: tier: Panther, Wakandan King and Ravenous Tyrannosaurus's attack trigger all score no role (Emperor
+#: tier: Apatzec's seek has counted since 2026-10-25). One clear weakness: green-hungry costs (Hexhaven and Unnatural Growth need
 #: tier: {G}{G}{G}{G}), softened by seven nonland mana sources.
 #: archetype: Naya power ramp around Samut, the Driving Force. Samut gives every other creature
 #: archetype: +X/+0 and makes noncreature spells cost X less, X = speed (max 4) — but speed only
