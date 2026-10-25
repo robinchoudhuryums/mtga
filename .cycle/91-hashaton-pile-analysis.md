@@ -1,6 +1,6 @@
 # Hashaton pile (from deck 53) — analysis (TEMPORARY working doc)
 
-**Status: IN PROGRESS** (started 2026-10-25). Delete once the new deck is drafted and the
+**Status: PLAN READY, awaiting owner picks** (started 2026-10-25; all 118 graded). Delete once the new deck is drafted and the
 findings are folded into its `#: notes:` block. A scratchpad, not a source of truth —
 decks/ are.
 
@@ -68,6 +68,9 @@ tapped token that's a copy of that card, except it's a 4/4 black Zombie."*
   `pool.py --regex` for the discard shape before the final plan.
 - O2: **Zombie lords are plentiful** (Death Baron, Gisa, Lifecraft Engine, Cursecloth,
   Chronicle, Eternal Skylord's flying grant). Pick the 4–5 best, not all.
+- O4 (after batch 4): the pile holds only 7 outlets; the outside search adds the four best
+  (Psychic Frog, Selhoff Entomber, Dreadwing Scavenger, Key to the City) plus cycling
+  creatures, which are outlet and discard target in one card.
 - O3: **two cards want the same graveyard creature**: Abyssal Harvester (this turn), Patchwork
   Crawler and Havengul Runebinder (exile it) compete with R3 recursion. Fine in moderation.
 
@@ -188,6 +191,125 @@ Outlets running count: Cryptbreaker, Collector's Vault, Ral −1, Tomebound Lich
 (flipped) +2 = 5. Discard payoffs: Cryptcaller Chariot, Robot Domination, Bone Miser,
 Lazotep Chancellor, Oglor.
 
-## 5. Consolidated plan (live)
+### Batch 4 (cards 91–118)
 
-(after the last batch)
+| # | Card | Verdict | Note |
+|---|---|---|---|
+| 91 | Gisa and Geralf | ★★ | Mills four on entry; once each turn cast a Zombie creature from the yard — R3 for everything discarded. |
+| 92 | Enter the God-Eternals | ★★ | 4 damage, gain 4, mill four, amass 4 — removal that builds a Zombie. {U}{U} heavy. |
+| 93 | Fallen Shinobi | ◇ | Ninjutsu value; its copy enters tapped (R5), so the hit is a turn late. |
+| 94 | Grimgrin, Corpse-Born | ★ | Each attack destroys a creature; untaps by sacrificing a token. Its copy is already tapped, as the card wants. |
+| 95 | Havengul Lich | ★ | {1}: cast a creature card from ANY graveyard this turn. |
+| 96 | The Scarab God | ★★★ | Upkeep drain and scry per Zombie; {2}{U}{B} makes 4/4 Zombie copies from any yard; returns to hand when it dies. Hashaton's ability on a second body. |
+| 97 | Temmet, Naktamun's Will | ★★★ | R2 OUTLET every attack (loot), and every draw pumps all Zombies. W/U/B — it needs the white. |
+| 98 | God-Pharaoh's Gift | ★★ | Each combat, a hasty 4/4 Zombie copy from our yard; the haste fixes R5 for its own copies. |
+| 99 | Visage Bandit | ◇ | Clones our best creature. |
+| 100 | Zephyr Singer | △ | Convoke flier. |
+| 101 | Advanced Stitchwing | ★★ | R2 OUTLET: {2}{U}, discard TWO cards to return it — two creature discards are two Hashaton triggers. Flying Zombie. |
+| 102 | Defiler of Dreams | ◇ | Draws on blue permanents; most of the engine is black. |
+| 103 | Desertion | ◇ | Five-mana counter that steals a creature. |
+| 104 | Fear of Failed Tests | ◇ | Draws on damage from a 2/7. |
+| 105 | Inniaz, the Gale Force | ◇ | Flier swap engine; Eternal Skylord makes the Zombie tokens fly, which reaches its three-flier trigger. |
+| 106 | Inexorable Tide | △ | Proliferate on each spell: Army counters and loyalty, but no counter theme. |
+| 107 | Kindred Discovery | ★★ | Name Zombie: every Hashaton copy, token and Zombie entering or attacking draws a card. |
+| 108 | Lier, Disciple of the Drowned | ◇ | Flashback for instants and sorceries; the deck is creature-led. |
+| 109 | Ojutai's Summons | △ | A 2/2 flier twice for five. |
+| 110 | Clone Legion | ◇ | Nine mana. |
+| 111 | Aven Wind Guide | ◇ | Token flying/vigilance overlaps Eternal Skylord at more colours. |
+| 112 | Denzilore Fatehold | ◇ | Scry/surveil counters; {W}{U}{U}. |
+| 113 | Genku, Future Shaper | ◇ | Nontoken leaves → small tokens. |
+| 114 | Ephara, God of the Polis | ◇ | Draws on each upkeep after a creature entered — tokens count — but {2}{W}{U} on light white. |
+| 115 | Ultimecia, Time Sorceress | ★ | Surveil 2 on entry and attack; a late extra turn. |
+| 116 | Zareth San, the Trickster | ◇ | Rogue ninjutsu; few Rogues. |
+| 117 | Ashiok, Sculptor of Fears | ★ | +2 draw and mill both; −5 steals a creature from any yard. |
+| 118 | Uldaros Theorix | ◇ | R9: "if you cast him" — its copy does nothing on entry. A six-drop to cast. |
+
+Outlets in the pile, final count (O1): **7** — Cryptbreaker, Collector's Vault, Ral −1,
+Tomebound Lich, Liliana (flipped) +2, Temmet, Advanced Stitchwing.
+
+### Outside the pile — outlets and self-discarding creatures (O1's search)
+
+`pool.py --regex` over WUB, Historic Brawl, permanents with a discard cost or a recurring
+loot trigger found 73; the best, all read in full:
+
+| Card | Verdict | Why |
+|---|---|---|
+| Psychic Frog | ★★★ | "Discard a card: +1/+1 counter" — a FREE, instant-speed, repeatable outlet; draws on hits. {U}{B}. |
+| Selhoff Entomber | ★★★ | Zombie: {T}, discard a CREATURE card: draw. Card-neutral, exactly R2. |
+| Dreadwing Scavenger | ★★ | Loots on entry and attack; flier; deathtouch at threshold. |
+| Key to the City | ★★ | {T}, discard: a creature is unblockable; pay {2} on untap to draw. |
+| Overlord of the Floodpits (owned) | ★★ | Draw two, discard one on entry and attack; impending lets it arrive for {1}{U}{U}. |
+| Emet-Selch, Unsundered (owned) | ◇ | Loots on entry/attack; the flip EXILES what would hit our yard (G-42) — keep it unflipped. |
+| Locke Cole (owned) | ◇ | Loots on combat damage; deathtouch, lifelink. |
+
+Creatures with CYCLING discard themselves — a self-contained Hashaton trigger:
+
+| Card | Verdict | Why |
+|---|---|---|
+| Archfiend of Ifnir | ★★★ | Every cycle or discard puts −1/−1 on each opposing creature; cycles itself, and its copy keeps the ability. |
+| Alabaster Host Intercessor | ★★ | Plainscycling {2} (finds a W source, R6) and its copy exiles a creature on entry. |
+| Malboro (owned) | ★ | Swampcycling; its copy makes them discard, lose 2 and exile three. |
+| Angel of the Ruins | ◇ | Plainscycling; the copy exiles two artifacts/enchantments. |
+| Timeless Dragon | ◇ | Plainscycling plus eternalize (a second Zombie copy). |
+
+## 5. Consolidated plan (live — after batch 4)
+
+**Measured on a scratch build** of the 62 below plus a placeholder manabase (94 cards):
+interaction **14**, card advantage **9**, protection 5, hand attack 2 — floor **A** (at
+100 cards A needs interaction 12 and a sum of 19; this is 14 + 9 = 23). 36 of the 62 are
+creature cards, 19 Zombie-typed. Untiered; the letter is the owner's.
+
+### Core 62 (proposed)
+
+- **Outlets (11)** — R2, the scarce half: Cryptbreaker, Psychic Frog*, Selhoff Entomber*,
+  Tomebound Lich, Temmet, Collector's Vault, Dreadwing Scavenger*, Advanced Stitchwing,
+  Ral Zarek, Key to the City*, Overlord of the Floodpits* (owned).
+- **Self-discarding creatures (3)**: Archfiend of Ifnir*, Alabaster Host Intercessor*,
+  Malboro* (owned).
+- **Discard payoffs (5)**: Bone Miser, Cryptcaller Chariot, Lazotep Chancellor, Robot
+  Domination, Oglor.
+- **Discard targets — R1 (7)**: Massacre Wurm, Doctor Doom, Kalitas, Winter, Soul-Shackled
+  Zombie, The Scarab God, Gisa and Geralf.
+- **Zombie lords and tribal (9)**: Death Baron, Diregraf Captain, Gisa the Hellraiser,
+  Eternal Skylord, Gleaming Overseer, Cursecloth Wrappings, Kindred Discovery, Unstoppable
+  Slasher, Wayward Servant.
+- **Recursion (8)**: Zul Ashur, God-Pharaoh's Gift, Liliana Death's Majesty, Liliana the
+  Last Hope, Cemetery Recruitment, Abyssal Harvester, Assemble from Parts, Blessed Ghoul.
+- **Interaction (10)**: Never // Return, Withering Torment, Deadly Precision, Eaten Alive,
+  Sidequest: Hunt the Mark, Enter the God-Eternals, Liliana Dreadhorde General, Sothera,
+  Grimgrin, Invasion of Amonkhet.
+- **Value / flex (9)**: Undead Hand Ninja, Grim Reaper's Scythe, Funeral Room, Dread
+  Summons, Liliana's Mastery, Ghoulcaller Gisa, Geralf, Havengul Runebinder, Chronicle of
+  Victory.
+
+\* = from outside the pile.
+
+### Bench (from the pile, left out — in rough order of what comes back first)
+
+Deathless Pilot (a second discard loop), Vizier of the Scorpion, Ashiok, Ultimecia, Havengul
+Lich, God-Eternal Oketra, God-Eternal Kefnet, Binding Mummy, Dreadhorde Invasion, The Final
+Days, Lifecraft Engine, Avenger of the Fallen, Army of the Damned, Ephara, Liliana Heretical
+Healer, Patchwork Crawler, Essence Anchor, Dread Wanderer, Ninja Teen, Cloning of Shredder,
+Fallen Shinobi, Uldaros Theorix. Out: The Sibsig Ceremony (E1), Venser (no proliferate),
+Blasphemous Edict, Agent Venom / Midnight Reaper / Headless Rider (E2), Waste Not, and the
+low-impact remainder (△).
+
+### Protect list — what `cuts` cannot see
+
+- The OUTLETS (Cryptbreaker, Psychic Frog, Selhoff Entomber, Collector's Vault, Key to the
+  City): their worth is Hashaton's trigger, which no role pattern credits.
+- Discard targets bought for their ENTERS text as a 4/4 (Massacre Wurm, Doctor Doom, Winter,
+  Soul-Shackled Zombie): `cuts` grades their printed cost, R1 says that cost is {2}{U}.
+- Eternal Skylord and Gleaming Overseer: their text affects Zombie TOKENS, the engine's
+  output, so tag fit under-reads them.
+
+### Open questions for the owner
+
+1. **White (R6).** Only Hashaton, Temmet, Wayward Servant and Alabaster Host need {W}; the
+   commander needs it EVERY recast. Proposal: ~9–10 W sources through duals/tri-lands and
+   Plainscycling, not Plains-heavy basics.
+2. **Creature density.** 36 creature cards is enough to feed Hashaton most turns; swapping
+   flex noncreatures (Chronicle, Liliana's Mastery, Dread Summons) for bench creatures
+   raises it if games stall with outlets and nothing to discard.
+3. **Craft information** (owned counts are stale): of the 62, 44 read unowned — 11
+   mythic, 18 rare, 10 uncommon, 5 common.
