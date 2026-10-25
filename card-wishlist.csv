@@ -244,7 +244,7 @@ This creature is the chosen type in addition to its other types.
 Other creatures you control of the chosen type get +1/+1.",Colorless,Construct; pump,FDN,723,Rare,48,FLEX in 48: swap back for Mm'menon when a Rare wildcard is free. One of only 5 choose-a-type anthems in Standard; no cheaper substitute exists.,6.0,hand
 Aggressive Mammoth,Creature — Elephant,"Trample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)
 Other creatures you control have trample.",G,Elephant; trample; evasion,FDN,551,Rare,50,,6.0,hand
-Death Baron,Creature — Zombie Wizard,Skeletons you control and other Zombies you control get +1/+1 and have deathtouch. (Any amount of damage they deal to a creature is enough to destroy it.),B,Zombie; Wizard; Skeleton; pump; deathtouch; combat; removal,FDN,521,Rare,91,,4.0,seed
+Death Baron,Creature — Zombie Wizard,Skeletons you control and other Zombies you control get +1/+1 and have deathtouch. (Any amount of damage they deal to a creature is enough to destroy it.),B,Zombie; Wizard; Skeleton; pump; deathtouch; combat; removal,FDN,521,Rare,53,,4.0,seed
 Desecration Demon,Creature — Demon,"Flying
 At the beginning of each combat, any opponent may sacrifice a creature of their choice. If a player does, tap this creature and put a +1/+1 counter on it.",B,Demon; counters; sacrifice; flying; evasion,FDN,603,Rare,general,efficient 6/6 flying B beater (opp-sac edict) — any black midrange,5.5,hand
 Dread Summons,Sorcery,"Each player mills X cards. For each creature card put into a graveyard this way, you create a tapped 2/2 black Zombie creature token. (To mill a card, a player puts the top card of their library into their graveyard.)",B,graveyard; mill; tokens,FDN,604,Rare,,,3.0,seed
@@ -356,7 +356,7 @@ Planeswalkers you control have ""[−8]: Create an 8/8 blue Leviathan creature t
 Primal Witchstalker,Creature — Wolf,"Menace (This creature can't be blocked except by two or more creatures.)
 When this creature enters, mill four cards. When you do, return target land card from your graveyard to the battlefield tapped. (To mill four cards, put the top four cards of your library into your graveyard.)",B/G,Wolf; reanimator; graveyard; mill; etb; menace; evasion,FRA,144,Uncommon,83a,,5.0,seed
 Way of the Necromancer,Legendary Enchantment,"When Way of the Necromancer enters, empower Jace 2. (Put two loyalty counters on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with ""[−1]: Surveil 1"" and ""[−3]: Draw a card."")
-Whenever a creature you control dies, put a loyalty counter on each planeswalker you control.",B,counters; card draw; tokens; etb; surveil; graveyard; empower jace,FRA,239,Uncommon,89,deck 89 tune 2026-10-23,4.5,seed
+Whenever a creature you control dies, put a loyalty counter on each planeswalker you control.",B,counters; card draw; tokens; etb; surveil; graveyard; empower jace,FRA,239,Uncommon,89; 91,deck 89 tune 2026-10-23,4.5,seed
 Stingerquill Annex,Land,"This land enters tapped unless you control a planeswalker.
 {T}: Add {B} or {R}.",B/R,mana,FRA,190,Common,90,,1.5,seed
 "Jace, Multiverse Architect",Legendary Planeswalker — Jace,"At the beginning of combat on each opponent's turn, they may pay {2}. If they don't, creatures they control can't attack Jaces you control this turn.
@@ -367,8 +367,6 @@ Jace, Multiverse Architect can be your commander.",W/U/B/R,Jace; planeswalker; c
 Landfall — Whenever a land you control enters, draw a card. Then if this is the first time this ability has resolved this turn, reveal cards from the top of your library until you reveal a creature card. Put that card onto the battlefield and the rest on the bottom of your library in a random order.",W/U/B/R,Elf; Wizard; card draw; landfall; vigilance; combat; deathtouch; removal; lands,FRC,2,Mythic,90,,8.0,seed
 Reflecting Pool,Land,{T}: Add one mana of any type that a land you control could produce.,Colorless,mana,FRC,23,Rare,84,,4.0,seed
 Command Tower,Land,{T}: Add one mana of any color in your commander's color identity.,Colorless,mana,FRC,22,Common,88; 91,,1.5,seed
-Cryptbreaker,Creature — Zombie,"{1}{B}, {T}, Discard a card: Create a 2/2 black Zombie creature token.
-Tap three untapped Zombies you control: You draw a card and lose 1 life.",B,Zombie; pay life; card draw; tokens,HA1,6,Rare,91,,3.0,seed
 Silent Clearing,Land,"{T}, Pay 1 life: Add {W} or {B}.
 {1}, {T}, Sacrifice this land: Draw a card.",W/B,pay life; card draw; sacrifice,HA7,24,Rare,91,,3.0,seed
 "Minsc & Boo, Timeless Heroes",Legendary Planeswalker — Minsc,"When Minsc & Boo enters and at the beginning of your upkeep, you may create Boo, a legendary 1/1 red Hamster creature token with trample and haste.
@@ -651,8 +649,6 @@ Once during each of your turns, you may cast a Zombie creature spell from your g
 "Liliana, the Last Hope",Legendary Planeswalker — Liliana,"+1: Up to one target creature gets -2/-1 until your next turn.
 −2: Mill two cards, then you may return a creature card from your graveyard to your hand.
 −7: You get an emblem with ""At the beginning of your end step, create X 2/2 black Zombie creature tokens, where X is two plus the number of Zombies you control.""",B,Liliana; Zombie; planeswalker; graveyard; mill; tokens; removal,SIR,119,Mythic,91,,10.0,seed
-Advanced Stitchwing,Creature — Zombie Horror,"Flying
-{2}{U}, Discard two cards: Return this card from your graveyard to the battlefield tapped.",U,Zombie; Horror; reanimator; graveyard; flying; evasion,SIR,54,Uncommon,91,,5.0,seed
 Havengul Runebinder,Creature — Human Wizard,"{2}{U}, {T}, Exile a creature card from your graveyard: Create a 2/2 black Zombie creature token, then put a +1/+1 counter on each Zombie creature you control.",U,Human; Wizard; counters; graveyard; tokens,SIS,16,Rare,91,,4.0,seed
 Diregraf Captain,Creature — Zombie Soldier,"Deathtouch
 Other Zombie creatures you control get +1/+1.
@@ -851,6 +847,8 @@ This creature enters with a +1/+1 counter on it for each loyalty counter on plan
 Whenever one or more loyalty counters are put on planeswalkers you control, put that many +1/+1 counters on this creature.",U/G,Hydra; Mutant; counters; trample; evasion,WAR,186,Rare,90,,5.5,seed
 Commence the Endgame,Instant,"This spell can't be countered.
 Draw two cards, then amass Zombies X, where X is the number of cards in your hand. (Put X +1/+1 counters on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)",U,counters; card draw; tokens; amass; go-wide,WAR,45,Rare,91,,4.5,seed
+Dreadhorde Invasion,Enchantment,"At the beginning of your upkeep, you lose 1 life and amass Zombies 1. (Put a +1/+1 counter on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)
+Whenever a Zombie token you control with power 6 or greater attacks, it gains lifelink until end of turn.",B,counters; lifegain; pay life; tokens; amass; go-wide; lifelink,WAR,86,Rare,91,,3.5,seed
 Enter the God-Eternals,Sorcery,"Enter the God-Eternals deals 4 damage to target creature and you gain life equal to the damage dealt this way. Target player mills four cards. Amass Zombies 4. (Put four +1/+1 counters on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)",U/B,counters; mill; lifegain; tokens; burn; amass; go-wide; graveyard,WAR,196,Rare,91,,4.5,seed
 Soul Diviner,Creature — Zombie Wizard,"{T}, Remove a counter from an artifact, creature, land, or planeswalker you control: Draw a card.",U/B,Zombie; Wizard; card draw,WAR,218,Rare,91,,3.0,seed
 Gleaming Overseer,Creature — Zombie Wizard,"When this creature enters, amass Zombies 1. (Put a +1/+1 counter on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)
@@ -859,6 +857,8 @@ Interplanar Beacon,Land,"Whenever you cast a planeswalker spell, you gain 1 life
 {T}: Add {C}.
 {1}, {T}: Add two mana of different colors. Spend this mana only to cast planeswalker spells.",Colorless,lifegain; mana,WAR,247,Uncommon,90,,5.0,seed
 Mayhem Devil,Creature — Devil,"Whenever a player sacrifices a permanent, this creature deals 1 damage to any target.",B/R,Devil; sacrifice; burn; noncombat damage,WAR,204,Uncommon,89,deck 89 tune 2026-10-22,3.5,seed
+Vizier of the Scorpion,Creature — Zombie Wizard,"When this creature enters, amass Zombies 1. (Put a +1/+1 counter on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)
+Zombie tokens you control have deathtouch.",B,Zombie; Wizard; counters; tokens; etb; amass; go-wide; deathtouch; combat; removal,WAR,111,Uncommon,91,,2.0,seed
 Blossoming Tortoise,Creature — Turtle,"Whenever this creature enters or attacks, mill three cards, then return a land card from your graveyard to the battlefield tapped.
 Activated abilities of lands you control cost {1} less to activate.
 Land creatures you control get +1/+1.",G,Turtle; reanimator; graveyard; mill; cost-reduction; pump,WOE,163,Mythic,83a,,9.5,seed

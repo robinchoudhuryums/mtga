@@ -91,7 +91,6 @@ Cruelclaw's Heist
 Crustacean Commando
 Cryogen Relic
 Crypt Feaster
-Cryptbreaker
 Cuboid Colony
 Daemogoth Titan
 Daggerfang Duo
@@ -460,6 +459,7 @@ Virulent Silencer
 Virus Beetle
 Vision Quest
 Vito's Inquisitor
+Vizier of the Scorpion
 Voyager Glidecar
 Vulture, Scheming Scavenger
 War Balloon

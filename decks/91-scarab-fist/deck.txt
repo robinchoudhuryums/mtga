@@ -16,7 +16,7 @@
 #: archetype: Sothera turns each of those deaths into an exile for the opponent. DISTINCT from deck 53
 #: archetype: (mono-B Standard Sibsig zombies, which this pile grew out of): the engine here is
 #: archetype: Hashaton's discard-to-copy, and Sibsig is the secondary switch, not the plan.
-#: protect: Hashaton, Scarab's Fist; Cryptbreaker; Psychic Frog; Miasmic Mummy; Liliana of the Veil; Bone Miser; Massacre Wurm; Doctor Doom; The Sibsig Ceremony; Necroduality; Waste Not; Aven Wind Guide; Soul Diviner
+#: protect: Hashaton, Scarab's Fist; Psychic Frog; Miasmic Mummy; Liliana of the Veil; Bone Miser; Massacre Wurm; Doctor Doom; The Sibsig Ceremony; Necroduality; Waste Not; Aven Wind Guide; Soul Diviner
 #: notes: DRAFTED 2026-10-25 from the owner's 118-card pile out of deck 53
 #: notes: (.cycle/91-hashaton-pile-analysis.md, four batches and two revision passes) plus outside
 #: notes: outlets: Psychic Frog, Archfiend of Ifnir, Miasmic Mummy, Liliana of the Veil (and, at
@@ -25,7 +25,7 @@
 #: notes: SEQUENCING RULE: Sibsig destroys EVERY creature we cast, our outlet creatures and HASHATON
 #: notes: included (enters triggers still fire first). Cast the commander and the key outlet creatures
 #: notes: BEFORE Sibsig; with Necroduality out, a cast ZOMBIE leaves a surviving token copy
-#: notes: (Cryptbreaker, Tomebound, Temmet, Mummy, Zahur), while Psychic Frog does not.
+#: notes: (Tomebound, Temmet, Mummy, Zahur), while Psychic Frog does not.
 #: notes: If Hashaton dies while Sibsig is out, the commander is locked until Sibsig leaves. Doctor
 #: notes: Doom survives it: order his trigger first and the Doombots make him indestructible.
 #: notes: WHITE IS NOT A SPLASH: Hashaton costs {W}{B} on every recast and every copy costs {2}{U},
@@ -40,23 +40,35 @@
 #: notes: Vault. Interaction 13 -> 12 (the scaled A minimum — no margin), card advantage 8, outlets 12 ->
 #: notes: 9. OPEN: a third mana source for a Swamp (Talisman of Dominance declined), and Black Market
 #: notes: Connections / Urza's Incubator under consideration.
+#: notes: SWAPS 2026-10-25, second pass (owner's picks): Dreadhorde Invasion for a Swamp (37 -> 36
+#: notes: lands; the Army is a Zombie token, so every lord and token grant reaches it); Way of the
+#: notes: Necromancer for Patchwork Banner (six Lilianas + Ral: every Sibsig death is a loyalty counter
+#: notes: on each); Vizier of the Scorpion for Death Baron (owner's call on the rare craft — Vizier
+#: notes: grants deathtouch to Zombie TOKENS only and no +1/+1, so it is a downgrade on the numbers);
+#: notes: Embalmed Ascendant for Advanced Stitchwing; Risen Necroregent for Winter; Outlaw Stitcher for
+#: notes: Cryptbreaker. SPEED is reliable here: Sibsig kills each creature we cast on our turn and
+#: notes: Diregraf Captain drains on every Zombie death, Wayward Servant on every Zombie entering — and
+#: notes: speed is the PLAYER's, so a Hashaton copy of Necroregent or Ascendant runs its max-speed
+#: notes: ability too. Discard outlets 9 -> 7 (Cryptbreaker and Stitchwing out). Winter's cut took
+#: notes: interaction 12 -> 11, below the scaled A minimum, pending Grimgrin.
 #: notes: BENCH (graded in the pile doc): Liliana Waker of the Dead, Rankle Master of Pranks,
 #: notes: Inexorable Tide, Pride of the Road, Zahur, Embalmed Ascendant, Genku, Risen Necroregent,
 #: notes: Wight, Ammit Eternal, Eternal of Harsh Truths, Commence the Endgame, Fallen Shinobi,
 #: notes: Zareth San, Outlaw Stitcher, Eternal Skylord, Hour of Victory, Ninja Teen, Vizier of the
-#: notes: Scorpion, Deathless Pilot, Malboro, Key to the City. (Zahur, Commence the Endgame, Eternal
-#: notes: of Harsh Truths and Fallen Shinobi have since come off this list.)
+#: notes: Scorpion, Deathless Pilot, Malboro, Key to the City. (Liliana Waker of the Dead, Zahur,
+#: notes: Embalmed Ascendant, Risen Necroregent, Eternal of Harsh Truths, Commence the Endgame,
+#: notes: Fallen Shinobi, Outlaw Stitcher and Vizier of the Scorpion have since come off this list.
+#: notes: Pride of the Road and Wight were re-graded 2026-10-25 and held: Pride is a {3}{W} that does
+#: notes: nothing below max speed; Wight needs deathtouch it no longer gets without Death Baron.)
 
 # Commander (leads from the command zone; also one of the 100)
 1 Hashaton, Scarab's Fist (DRC) 1
 
 # Discard outlets — every creature card discarded is a {2}{U} Hashaton copy
-1 Cryptbreaker (HA1) 6
 1 Psychic Frog (MH3) 199
 1 Liliana, Waker of the Dead (M21) 108
 1 Tomebound Lich (M20) 219
 1 Temmet, Naktamun's Will (DRC) 4
-1 Advanced Stitchwing (SIR) 54
 1 Ral Zarek, Guest Lecturer (SOS) 97
 1 Miasmic Mummy (JMP) 256
 1 Liliana of the Veil (DMU) 97
@@ -73,12 +85,11 @@
 1 Massacre Wurm (FDN) 714
 1 Doctor Doom (MSH) 95
 1 Kalitas, Traitor of Ghet (EA1) 5
-1 Winter, Tormented Loner (FRA) 240
 1 The Scarab God (AKR) 259
 1 Gisa and Geralf (SIR) 233
 
 # Zombie lords and token support
-1 Death Baron (FDN) 521
+1 Vizier of the Scorpion (WAR) 111
 1 Diregraf Captain (SIS) 59
 1 Gisa, the Hellraiser (OTJ) 89
 1 Gleaming Overseer (WAR) 198
@@ -87,6 +98,7 @@
 1 Aven Wind Guide (AKR) 228
 1 Unstoppable Slasher (DSK) 119
 1 Wayward Servant (AKR) 267
+1 Dreadhorde Invasion (WAR) 86
 
 # Sibsig engine — cast it, it dies, it comes back
 1 The Sibsig Ceremony (TDM) 91
@@ -95,6 +107,8 @@
 1 God-Eternal Oketra (WAR) 16
 1 Liliana, Heretical Healer // Liliana, Defiant Necromancer (PIO) 96
 1 Zahur, Glory's Past (DFT) 229
+1 Way of the Necromancer (FRA) 239
+1 Embalmed Ascendant (DFT) 201
 
 # Recursion and copies
 1 Zul Ashur, Lich Lord (FDN) 77
@@ -125,12 +139,13 @@
 1 Commence the Endgame (WAR) 45
 1 Eternal of Harsh Truths (AKR) 61
 1 Fallen Shinobi (AA3) 19
+1 Risen Necroregent (DFT) 102
+1 Outlaw Stitcher (OTJ) 59
 
 # Mana — rocks
-1 Patchwork Banner (BLB) 247
 1 The Soul Stone (SPM) 66
 
-# Lands (37)
+# Lands (36)
 1 Command Tower (FRC) 22
 1 Raffine's Tower (SNC) 254
 1 Watery Grave (EOE) 261
@@ -153,6 +168,6 @@
 1 Realm of Koh (TLA) 276
 1 Adarkar Wastes (DMU) 243
 1 Contaminated Landscape (MH3) 218
-8 Swamp (FRA) 285
+7 Swamp (FRA) 285
 5 Island (FRA) 283
 2 Plains (FRA) 281
