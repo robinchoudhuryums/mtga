@@ -56,6 +56,7 @@ tapped token that's a copy of that card, except it's a 4/4 black Zombie."*
 ## 2. Standing error list
 
 - E1: The Sibsig Ceremony destroys every creature we CAST — grade it against the cast half of R9, not against deck 53.
+- E3: A discard PAYOFF (Bone Miser, Chariot, Chancellor) is not an OUTLET; count the two separately (O1).
 - E2: "Whenever another NONTOKEN creature dies" (Agent Venom) misses the engine: Hashaton's copies are tokens.
 
 ## 3. Cross-batch observations
@@ -147,6 +148,45 @@ Chronicle of Victory. Recursion: Zul Ashur, Cursecloth, Ral −2, Funeral Room, 
 | 58 | Aphemia, the Cacophony | △ | Needs enchantment cards in the yard. |
 | 59 | Cemetery Recruitment | ★ | Return a creature card (draw if Zombie) — the discarded card comes back to be discarded again. |
 | 60 | Dreadhorde Invasion | ★ | Upkeep amass 1; power-6 Zombie tokens gain lifelink (the 4/4 copies reach 6 with two lords). |
+
+### Batch 3 (cards 61–90)
+
+| # | Card | Verdict | Note |
+|---|---|---|---|
+| 61 | Undead Hand Ninja | ★ | Deathtouch 2-drop Zombie; drains on every creature card leaving our yard (embalm, Zul Ashur, recursion). |
+| 62 | Waste Not | △ | Triggers on OPPONENT discards only; the pile has three such effects (Ral −1, Liliana +2, Invasion of Amonkhet). |
+| 63 | Wight | ◇ | Tapped 3/2; tokens off creatures it damaged and killed. |
+| 64 | Ammit Eternal | ◇ | 5/5 for three that shrinks per opponent spell. |
+| 65 | Headless Rider | △ | E2: nontoken Zombie deaths only. |
+| 66 | Grim Reaper's Scythe | ★ | A 2/2 whenever creature cards leave our yard; sorcery reanimation for two creatures. |
+| 67 | Liliana, Heretical Healer | ★ | Flips on a nontoken death; the walker's +2 makes EACH player discard — an R2 outlet — and −X reanimates. |
+| 68 | Liliana, the Last Hope | ★★ | +1 shrinks a creature; −2 mills two and regrows a creature; the emblem is a Zombie army. |
+| 69 | Never // Return | ★★ | Three-mana creature/planeswalker kill; the aftermath half casts from the yard for a 2/2 and graveyard hate. |
+| 70 | Vizier of the Scorpion | ★ | Zombie tokens have deathtouch (every copy); overlaps Death Baron. |
+| 71 | Boneyard Desecrator | △ | A sacrifice outlet on a 3/4 menace. |
+| 72 | Kalitas, Traitor of Ghet | ★★ | Their dying nontoken creatures become OUR 2/2 Zombies; lifelink. Not a Zombie itself. |
+| 73 | Bone Miser | ★★★ | R2 payoff: discard a creature → 2/2, a land → {B}{B}, anything else → draw. Every outlet use pays twice with Hashaton. |
+| 74 | Ghoulcaller Gisa | ★ | {B}, sacrifice a 4/4 copy → four 2/2s. A token multiplier and a sacrifice outlet. |
+| 75 | Liliana, Death's Majesty | ★★ | +1 a 2/2 and mill two; −3 reanimates as a Zombie; −7 destroys all non-Zombies. |
+| 76 | Liliana's Mastery | ★ | Anthem plus two 2/2s. |
+| 77 | Army of the Damned | ◇ | Eight mana for thirteen 2/2s, with flashback. The top-end finisher if any. |
+| 78 | Blessed Ghoul | ★ | One-drop that returns to hand for {2}{W/B} (hybrid, payable with B) — Deathless Pilot's loop at half the price. |
+| 79 | Wayward Servant | ★ | Drain 1 per other Zombie entering — every copy and token. |
+| 80 | Zahur, Glory's Past | ◇ | Once-a-turn sacrifice-to-surveil; the token half needs max speed. |
+| 81 | Embalmed Ascendant | ◇ | 1/2 plus a 2/2; drain at max speed. |
+| 82 | Lazotep Chancellor | ★★ | R2 payoff: pay {1} per discard to amass 2. Two-mana Zombie. |
+| 83 | Ludevic, Necrogenius | ◇ | Self-mill on entry and attack; the transform is a big late sink. |
+| 84 | Soul Diviner | ◇ | Draws by removing counters (the amass Army carries many). |
+| 85 | Skull Skaab | △ | Exploit payoff off nontoken creatures. |
+| 86 | Venser, Corpse Puppet | ✗ | Needs proliferate; the pile has none. |
+| 87 | Diregraf Captain | ★★ | Lord (+1/+1), deathtouch, and a drain per Zombie death. |
+| 88 | Gleaming Overseer | ★★ | Zombie tokens have hexproof AND menace — protects every Hashaton copy. |
+| 89 | Invasion of Amonkhet // Lazotep Convert | ★ | Mill three each, they discard, we draw; flips into a 4/4 Zombie copy of any graveyard creature. |
+| 90 | Tomebound Lich | ★★★ | R2 OUTLET on a body: loot on entry and on each hit; deathtouch, lifelink. Its copy loots again. |
+
+Outlets running count: Cryptbreaker, Collector's Vault, Ral −1, Tomebound Lich, Liliana
+(flipped) +2 = 5. Discard payoffs: Cryptcaller Chariot, Robot Domination, Bone Miser,
+Lazotep Chancellor, Oglor.
 
 ## 5. Consolidated plan (live)
 
