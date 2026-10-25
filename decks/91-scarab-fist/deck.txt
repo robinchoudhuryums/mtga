@@ -6,9 +6,9 @@
 #: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool), ESPER DISCARD ZOMBIES
 #: archetype: around Hashaton, Scarab's Fist: whenever we discard a creature card, {2}{U} makes a
 #: archetype: tapped 4/4 black Zombie token copy of it, abilities and enters triggers included. So a
-#: archetype: discarded creature is priced at {2}{U}, not its printed cost — Massacre Wurm is a
-#: archetype: three-mana sweep, Doctor Doom three bodies and a card a turn. The engine is DISCARD
-#: archetype: OUTLETS (nine, including the each-player-discards cards, which also fire Waste Not),
+#: archetype: discarded creature is priced at {2}{U}, not its printed cost — Grimgrin is a
+#: archetype: three-mana removal engine, Doctor Doom three bodies and a card a turn. The engine is
+#: archetype: DISCARD OUTLETS (seven, including the each-player-discards cards, which also fire Waste Not),
 #: archetype: discard payoffs (Bone Miser, Cryptcaller Chariot, Lazotep Chancellor), Zombie lords
 #: archetype: that read the copies, and graveyard recursion for every card discarded. A second
 #: archetype: engine, The Sibsig Ceremony, turns every creature we CAST into enters trigger + death +
@@ -16,10 +16,10 @@
 #: archetype: Sothera turns each of those deaths into an exile for the opponent. DISTINCT from deck 53
 #: archetype: (mono-B Standard Sibsig zombies, which this pile grew out of): the engine here is
 #: archetype: Hashaton's discard-to-copy, and Sibsig is the secondary switch, not the plan.
-#: protect: Hashaton, Scarab's Fist; Psychic Frog; Miasmic Mummy; Liliana of the Veil; Bone Miser; Massacre Wurm; Doctor Doom; The Sibsig Ceremony; Necroduality; Waste Not; Aven Wind Guide; Soul Diviner
+#: protect: Hashaton, Scarab's Fist; Psychic Frog; Miasmic Mummy; Liliana of the Veil; Bone Miser; Doctor Doom; The Sibsig Ceremony; Necroduality; Waste Not; Aven Wind Guide; Soul Diviner
 #: notes: DRAFTED 2026-10-25 from the owner's 118-card pile out of deck 53
 #: notes: (.cycle/91-hashaton-pile-analysis.md, four batches and two revision passes) plus outside
-#: notes: outlets: Psychic Frog, Archfiend of Ifnir, Miasmic Mummy, Liliana of the Veil (and, at
+#: notes: outlets: Psychic Frog, Archfiend of Ifnir (since cut), Miasmic Mummy, Liliana of the Veil (and, at
 #: notes: the draft, Selhoff Entomber, Overlord of the Floodpits, Alabaster Host Intercessor and Fanatic
 #: notes: of the Harrowing, swapped out 2026-10-25 — see SWAPS below).
 #: notes: SEQUENCING RULE: Sibsig destroys EVERY creature we cast, our outlet creatures and HASHATON
@@ -38,8 +38,8 @@
 #: notes: deck's noncreature answer); Eternal of Harsh Truths for Robot Domination (its token copies get
 #: notes: flying from Aven Wind Guide and draw on every unblocked attack); Fallen Shinobi for Collector's
 #: notes: Vault. Interaction 13 -> 12 (the scaled A minimum — no margin), card advantage 8, outlets 12 ->
-#: notes: 9. OPEN: a third mana source for a Swamp (Talisman of Dominance declined), and Black Market
-#: notes: Connections / Urza's Incubator under consideration.
+#: notes: 9. Talisman of Dominance was declined for the mana slot; Black Market Connections landed
+#: notes: later (below); Urza's Incubator was not taken.
 #: notes: SWAPS 2026-10-25, second pass (owner's picks): Dreadhorde Invasion for a Swamp (37 -> 36
 #: notes: lands; the Army is a Zombie token, so every lord and token grant reaches it); Way of the
 #: notes: Necromancer for Patchwork Banner (six Lilianas + Ral: every Sibsig death is a loyalty counter
@@ -54,6 +54,11 @@
 #: notes: Then Eternal Skylord for Kindred Discovery (every Zombie TOKEN flies — each Hashaton
 #: notes: copy, the Army, every 2/2): card advantage 8 -> 7, so Grimgrin's A floor is 12 + 7 = 19,
 #: notes: exactly the scaled minimum.
+#: notes: Then Grimgrin for Massacre Wurm (owner's pick; Wurm off #: protect:) and Black Market
+#: notes: Connections for Archfiend of Ifnir. Wurm counted as interaction, so Grimgrin only REPLACES it:
+#: notes: interaction stays 11, card advantage 7, floor B (one interaction short of A). Black Market's
+#: notes: Buy Information is a draw every turn the role classifier does not read (a modal-bullet
+#: notes: pattern hole), so card advantage under-reads by one.
 #: notes: BENCH (graded in the pile doc): Liliana Waker of the Dead, Rankle Master of Pranks,
 #: notes: Inexorable Tide, Pride of the Road, Zahur, Embalmed Ascendant, Genku, Risen Necroregent,
 #: notes: Wight, Ammit Eternal, Eternal of Harsh Truths, Commence the Endgame, Fallen Shinobi,
@@ -83,10 +88,9 @@
 1 Lazotep Chancellor (J21) 702
 1 Oglor, Devoted Assistant (YMID) 20
 1 Waste Not (TMC) 132
-1 Archfiend of Ifnir (AKR) 91
 
 # Discard targets — bought for their text on a 4/4 copy
-1 Massacre Wurm (FDN) 714
+1 Grimgrin, Corpse-Born (MUL) 41
 1 Doctor Doom (MSH) 95
 1 Kalitas, Traitor of Ghet (EA1) 5
 1 The Scarab God (AKR) 259
@@ -148,6 +152,7 @@
 
 # Mana — rocks
 1 The Soul Stone (SPM) 66
+1 Black Market Connections (HBG) 145
 
 # Lands (36)
 1 Command Tower (FRC) 22

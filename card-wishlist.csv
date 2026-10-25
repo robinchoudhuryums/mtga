@@ -74,9 +74,6 @@ When this creature enters, create four 1/1 green Insect creature tokens with fly
 The Scarab God,Legendary Creature — God,"At the beginning of your upkeep, each opponent loses X life and you scry X, where X is the number of Zombies you control.
 {2}{U}{B}: Exile target creature card from a graveyard. Create a token that's a copy of it, except it's a 4/4 black Zombie.
 When The Scarab God dies, return it to its owner's hand at the beginning of the next end step.",U/B,God; Zombie; graveyard; tokens; scry; bounce; selection,AKR,259,Mythic,91,,8.0,seed
-Archfiend of Ifnir,Creature — Demon,"Flying
-Whenever you cycle or discard another card, put a -1/-1 counter on each creature your opponents control.
-Cycling {2} ({2}, Discard this card: Draw a card.)",B,Demon; counters; card draw; flying; evasion; cycling,AKR,91,Rare,91,,3.0,seed
 God-Pharaoh's Gift,Artifact,"At the beginning of combat on your turn, you may exile a creature card from your graveyard. If you do, create a token that's a copy of that card, except it's a 4/4 black Zombie. It gains haste until end of turn.",Colorless,graveyard; tokens; haste; aggro,AKR,272,Rare,91,,6.0,seed
 Never // Return,Sorcery // Sorcery,"Destroy target creature or planeswalker. // Aftermath (Cast this spell only from your graveyard. Then exile it.)
 Exile target card from a graveyard. Create a 2/2 black Zombie creature token.",B,graveyard; tokens; removal; aftermath; recursion,AKR,118,Rare,91,,5.0,seed
@@ -376,7 +373,7 @@ Minsc & Boo, Timeless Heroes can be your commander.",R/G,Minsc; planeswalker; co
 Black Market Connections,Enchantment,"At the beginning of your first main phase, choose one or more —
 • Sell Contraband — Create a Treasure token. You lose 1 life.
 • Buy Information — Draw a card. You lose 2 life.
-• Hire a Mercenary — Create a 3/2 colorless Shapeshifter creature token with changeling. You lose 3 life. (It is every creature type.)",B,pay life; card draw; tokens; treasure,HBG,145,Rare,87,,3.0,seed
+• Hire a Mercenary — Create a 3/2 colorless Shapeshifter creature token with changeling. You lose 3 life. (It is every creature type.)",B,pay life; card draw; tokens; treasure,HBG,145,Rare,87; 91,,3.0,seed
 Two-Handed Axe // Sweeping Cleave,Artifact — Equipment // Instant — Adventure,"Whenever equipped creature attacks, double its power until end of turn.
 Equip {1}{R} // Target creature you control gains double strike until end of turn. (Then exile this card. You may cast the artifact later from exile.)",R,equipment; Adventure; exile cast; equip; double; double strike; combat; aggro,HBG,191,Uncommon,84,,2.0,seed
 Inside Information,Sorcery,"Exile the top X cards of target opponent's library. You may play those cards this turn. If you cast a spell this way, pay life equal to its mana value rather than pay its mana cost.",B,pay life; heist; impulse,HOB,76,Mythic,41,"drain/value package: unconditional removal + life-to-mana, refunded by the Mister Negative swap",4.5,seed
@@ -551,6 +548,9 @@ When this land enters, you gain 1 life.
 {T}: Add {W} or {B}.",W/B,lifegain; mana; etb,MSH,265,Common,41,"manabase: WB dual for a basic — +1 source to the off-colour, gain 1 life",2.0,seed
 "Atraxa, Praetors' Voice",Legendary Creature — Phyrexian Angel Horror,"Flying, vigilance, deathtouch, lifelink
 At the beginning of your end step, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)",W/U/B/G,Phyrexian; Angel; Horror; lifegain; deathtouch; combat; removal; flying; evasion; lifelink; vigilance; proliferate; counters,MUL,33,Mythic,90,,5.0,seed
+"Grimgrin, Corpse-Born",Legendary Creature — Zombie Warrior,"Grimgrin enters tapped and doesn't untap during your untap step.
+Sacrifice another creature: Untap Grimgrin and put a +1/+1 counter on it.
+Whenever Grimgrin attacks, destroy target creature defending player controls, then put a +1/+1 counter on Grimgrin.",U/B,Zombie; Warrior; counters; sacrifice; removal,MUL,41,Mythic,91,,8.0,seed
 Kodama of the West Tree,Legendary Creature — Spirit,"Reach
 Modified creatures you control have trample. (Equipment, Auras you control, and counters are modifications.)
 Whenever a modified creature you control deals combat damage to a player, search your library for a basic land card, put it onto the battlefield tapped, then shuffle.",G,Spirit; ramp; reach; defense; trample; evasion,NEO,199,Mythic,89,deck 89 tune 2026-10-23,5.5,seed
