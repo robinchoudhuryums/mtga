@@ -3,6 +3,11 @@
 #: colors: BR
 #: commander: Ozai, the Phoenix King
 #: plan: midrange
+#: tier: A — graded by the owner 2026-10-26. A-floor on the scaled Brawl table (interaction 15
+#: tier: against a needed 12, card advantage 9, a sum of 24 against 19), a coherent engine (Ozai keeps
+#: tier: firebending and Treasure mana, which feeds extra combats and the red sinks), and protection 5.
+#: tier: The one clear weakness is the manabase: owned taplands replaced the rare duals, so Ozai on
+#: tier: turn 5 is 61.8% and the deck is a turn slower than its curve when it draws them.
 #: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool), RAKDOS FIREBENDING
 #: archetype: around Ozai, the Phoenix King, built out of deck 1 Black Sun's sacrifice-and-drain
 #: archetype: list. Ozai says "If you would lose unspent mana, that mana becomes red instead": while
