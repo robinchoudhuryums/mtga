@@ -11,12 +11,18 @@
 #: archetype: Effort, Fire Navy Trebuchet, Stormforged Armor) go wide on every attack, attack-trigger
 #: archetype: payoffs deal damage (Far Fortune, Combustion Man, Overlord of the Boilerbilges,
 #: archetype: Drakuseth, Arabella, Alpharael) and draw (Djeru and Hazoret, Locke, Cosmic Cube,
-#: archetype: Daredevil, Etali), and the extra-combat cards — Aurelia, Raph & Leo, Genji Glove,
+#: archetype: Daredevil, Laughing Jasper Flint), and the extra-combat cards — Aurelia, Raph & Leo, Genji Glove,
 #: archetype: Raiyuu — each give TWO extra combats under Isshin, re-firing all of it. Raiyuu's line:
-#: archetype: attack ALONE with a Samurai (Isshin, Raiyuu, Imperial Blademaster) first, then go
-#: archetype: wide in the extra combats. DISTINCT from deck 55 (Standard Mardu spells-velocity):
+#: archetype: attack ALONE with a Samurai (Isshin or Raiyuu) first, then go
+#: archetype: wide in the extra combats. SECOND ENGINE (owner's 2026-10-26 re-read): mobilize and
+#: archetype: attack tokens are SACRIFICED every end step, so they feed sacrifice and death payoffs —
+#: archetype: Sothera (each death: they exile a creature), Pyre-Sledge Arsonist (X = permanents
+#: archetype: sacrificed this turn, copied by Ertha Jo), Massacre Girl, Most Wanted, Morbid
+#: archetype: Opportunist, Pirate Peddlers, and Akul (sacrifice three in main phase 2 to cheat a
+#: archetype: creature in). Zurgo stops Warrior tokens being sacrificed in YOUR end step, so on Zurgo
+#: archetype: turns sacrifice them to an outlet instead. DISTINCT from deck 55 (Standard Mardu spells-velocity):
 #: archetype: this deck's engine is the attack step, not the cast count.
-#: protect: Isshin, Two Heavens as One; Aurelia, the Warleader; Raph & Leo, Sibling Rivals; Genji Glove; Raiyuu, Storm's Edge; Zurgo, Thunder's Decree; Voice of Victory; Djeru and Hazoret; Stormforged Armor
+#: protect: Isshin, Two Heavens as One; Sothera, the Supervoid; Pyre-Sledge Arsonist; Aurelia, the Warleader; Raph & Leo, Sibling Rivals; Genji Glove; Raiyuu, Storm's Edge; Zurgo, Thunder's Decree; Voice of Victory; Djeru and Hazoret; Stormforged Armor
 #: notes: DRAFTED 2026-10-26 from the owner's 130-card pile (.cycle/isshin-pile-analysis.md) plus
 #: notes: owned attack-trigger cards from outside it. The pile held 12 cards Isshin doubles; the
 #: notes: owned Mardu Historic-Brawl pool holds ~160. What Isshin does NOT double: combat-DAMAGE
@@ -27,7 +33,18 @@
 #: notes: BENCH (pile): the theft / hand-attack shell (Tinybones x2, Reno and Rude, Vaan, Laughing
 #: notes: Jasper Flint, Psychic Whorl, Ozai's Cruelty, Virus Beetle, Corrupt Court Official,
 #: notes: Cruelclaw's Heist, Oona's Blackguard) — a separate Rakdos deck; Hama and Dream Harvest are
-#: notes: ILLEGAL here (U/B hybrid has blue identity); Silver Sable (doubled lifelink adds nothing).
+#: notes: ILLEGAL here (U/B hybrid has blue identity).
+#: notes: 2026-10-26 package (15 swaps, owner's picks after the sacrifice re-read): -Imperial
+#: notes: Blademaster +Sothera, -Scalestorm Summoner +Pyre-Sledge Arsonist, -Overlord of the Balemurk
+#: notes: +Massacre Girl Most Wanted, -Terra +Professional Face-Breaker, -Deep-Cavern Bat +Zagras,
+#: notes: -Outrageous Robbery +Akul, -Black Cat +Morbid Opportunist, -Loyal Fire Sage +Laughing
+#: notes: Jasper Flint, -Etali +Pirate Peddlers, -Death in the Family +Skewer the Critics, -Sun Warriors
+#: notes: +Hellspur Posse Boss, -Jecht +At Knifepoint, -Tamiyo +Ertha Jo, -Syr Vondam +Nico Minoru,
+#: notes: -Raven Eagle +Angrath the Flame-Chained. Kept on the owner's call: Kinscaer Sentry (order
+#: notes: mobilize triggers first so X counts the new attackers), Crucias, Seismic Wave. Mobilize
+#: notes: Warriors are NOT outlaws; Mercenary tokens are. NEXT-TIER bench from the re-read: Silver
+#: notes: Sable (two doubled lifelink targets), Panicked Bystander, Chandra's Spitfire, Cruel
+#: notes: Alliance, Molten Lavamancer, Massacre Girl Known Killer, Vial Smasher, Omenport Vigilante.
 
 # Commander (leads from the command zone; also one of the 100)
 1 Isshin, Two Heavens as One (NEO) 224
@@ -51,55 +68,58 @@
 1 Form a Posse (OTJ) 204
 1 Outlaws' Merriment (ELD) 198
 1 Kinscaer Sentry (ECL) 22
-1 Scalestorm Summoner (OTJ) 144
 
-# Attack-trigger damage
+# Damage engines — attack triggers and noncombat pings
 1 Far Fortune, End Boss (DFT) 203
 1 Combustion Man (TLA) 127
 1 Overlord of the Boilerbilges (DSK) 146
 1 Drakuseth, Maw of Flames (FDN) 760
 1 Arabella, Abandoned Doll (DSK) 208
 1 Alpharael, Stonechosen (EOE) 87
+1 Nico Minoru, Runaway (MSC) 700
 
 # Attack-trigger card advantage
 1 Djeru and Hazoret (MOM) 221
 1 Locke, Treasure Hunter (FIC) 87
-1 Raven Eagle (TLA) 116
 1 Cosmic Cube (MSH) 245
 1 Daredevil, Man Without Fear (MSH) 213
-1 Etali, Primal Storm (FDN) 194
-1 Overlord of the Balemurk (DSK) 113
 
 # Attack mana and team boosts
 1 Fire Lord Zuko (TLA) 221
-1 Sun Warriors (TLA) 244
-1 Loyal Fire Sage (TLE) 242
-1 Syr Vondam, the Lucent (EOE) 232
 1 Cecil, Dark Knight (FIN) 91
-1 Imperial Blademaster (YNEO) 30
 
-# Card advantage
+# Card draw and impulse
 1 Phyrexian Arena (FDN) 180
-1 Black Cat, Cunning Thief (SPM) 52
-1 Tamiyo, Upriser Crowned (FRC) 11
 1 Celes, Rune Knight (FIC) 1
-1 Outrageous Robbery (MKM) 97
 1 Crucias, Titan of the Waves (YBRO) 18
+1 Professional Face-Breaker (SNC) 116
+1 Laughing Jasper Flint (OTJ) 215
 
 # Evasive bodies
 1 Olivia, Opulent Outlaw (OTC) 2
 1 Rakdos, the Muscle (OTJ) 226
-1 Deep-Cavern Bat (LCI) 102
-1 Jecht, Reluctant Guardian (FIN) 104
+1 Zagras, Thief of Heartbeats (ZNR) 241
 1 The Infamous Cruelclaw (BLB) 219
 1 Black Widow, Super Spy (MSH) 89
-1 Terra, Herald of Hope (FIC) 4
+
+# Sacrifice and death payoffs — mobilize tokens are sacrificed every end step
+1 Sothera, the Supervoid (EOE) 115
+1 Pyre-Sledge Arsonist (SNC) 118
+1 Massacre Girl, Most Wanted (FRA) 234
+1 Akul the Unrepentant (OTJ) 189
+1 Morbid Opportunist (MID) 113
+1 Pirate Peddlers (TLA) 115
+
+# Outlaw support — Mercenary tokens, haste, first strike
+1 Hellspur Posse Boss (OTJ) 128
+1 At Knifepoint (OTJ) 193
+1 Ertha Jo, Frontier Mentor (OTJ) 203
 
 # Interaction
 1 Bitter Triumph (SOA) 26
 1 Hero's Downfall (FDN) 175
 1 Long Goodbye (MKM) 92
-1 Death in the Family (TMT) 61
+1 Skewer the Critics (RNA) 115
 1 Epic Downfall (TLA) 96
 1 Feed the Swarm (SOA) 29
 1 Nowhere to Run (DSK) 111
@@ -109,6 +129,7 @@
 1 All-Fates Stalker (EOE) 3
 1 Murderous Redcap (SHM) 192
 1 Agrus Kos, Spirit of Justice (MKM) 184
+1 Angrath, the Flame-Chained (RIX) 152
 
 # Lands (37)
 1 Command Tower (FRC) 22

@@ -298,8 +298,6 @@ Tolarian Terror,Creature — Serpent,"This spell costs {1} less to cast for each
 Ward {2} (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {2}.)",U,Serpent; graveyard; cost-reduction; ward; protection,FDN,167,Common,51,,7.0,hand
 "Celes, Rune Knight",Legendary Creature — Human Wizard Knight,"When Celes enters, discard any number of cards, then draw that many cards plus one.
 Whenever one or more other creatures you control enter, if one or more of them entered from a graveyard or was cast from a graveyard, put a +1/+1 counter on each creature you control.",W/B/R,Human; Wizard; Knight; counters; graveyard; card draw; etb,FIC,1,Mythic,93,,6.5,seed
-"Terra, Herald of Hope",Legendary Creature — Human Wizard Warrior,"Trance — At the beginning of combat on your turn, mill two cards. Terra gains flying until end of turn.
-Whenever Terra deals combat damage to a player, you may pay {2}. When you do, return target creature card with power 3 or less from your graveyard to the battlefield tapped.",W/B/R,Human; Wizard; Warrior; reanimator; graveyard; mill; flying; evasion,FIC,4,Mythic,93,,7.5,seed
 "Yuna, Grand Summoner",Legendary Creature — Human Cleric,"Grand Summon — {T}: Add one mana of any color. When you next cast a creature spell this turn, that creature enters with two additional +1/+1 counters on it.
 Whenever another permanent you control is put into a graveyard from the battlefield, if it had one or more counters on it, you may put that number of +1/+1 counters on target creature.",W/U/G,Human; Cleric; counters; graveyard; mana; etb,FIC,8,Mythic,90,,5.5,seed
 "Locke, Treasure Hunter",Legendary Creature — Human Rogue,"Locke can't be blocked by creatures with greater power.
@@ -385,9 +383,6 @@ Jace, Multiverse Architect can be your commander.",W/U/B/R,Jace; planeswalker; c
 "Nissa, Leyline Tamer",Legendary Creature — Elf Wizard,"Deathtouch, vigilance
 Landfall — Whenever a land you control enters, draw a card. Then if this is the first time this ability has resolved this turn, reveal cards from the top of your library until you reveal a creature card. Put that card onto the battlefield and the rest on the bottom of your library in a random order.",W/U/B/R,Elf; Wizard; card draw; landfall; vigilance; combat; deathtouch; removal; lands,FRC,2,Mythic,90,,8.0,seed
 Reflecting Pool,Land,{T}: Add one mana of any type that a land you control could produce.,Colorless,mana,FRC,23,Rare,84,,4.0,seed
-"Tamiyo, Upriser Crowned",Legendary Creature — Moonfolk Warrior,"Flying, double strike, haste
-When Tamiyo enters, you become the monarch.
-Whenever one or more creatures deal combat damage to you while you're the monarch, tap those creatures and put a stun counter on each of them.",W/R,Moonfolk; Warrior; counters; etb; flying; evasion; haste; aggro; double strike; combat,FRC,11,Rare,93,,3.5,seed
 Command Tower,Land,{T}: Add one mana of any color in your commander's color identity.,Colorless,mana,FRC,22,Common,88; 91; 93,,1.5,seed
 Silent Clearing,Land,"{T}, Pay 1 life: Add {W} or {B}.
 {1}, {T}, Sacrifice this land: Draw a card.",W/B,pay life; card draw; sacrifice,HA7,24,Rare,91,,3.0,seed
@@ -504,6 +499,7 @@ Cycling {U}{B}{R} ({U}{B}{R}, Discard this card: Draw a card.)",U/B/R,card draw;
 Sheltering Landscape,Land,"{T}: Add {C}.
 {T}, Sacrifice this land: Search your library for a basic Mountain, Forest, or Plains card, put it onto the battlefield tapped, then shuffle.
 Cycling {R}{G}{W} ({R}{G}{W}, Discard this card: Draw a card.)",W/R/G,card draw; sacrifice; ramp; mana; cycling,MH3,227,Common,88,,1.5,seed
+Morbid Opportunist,Creature — Human Rogue,"Whenever one or more other creatures die, draw a card. This ability triggers only once each turn.",B,Human; Rogue; card draw,MID,113,Uncommon,93,,5.5,seed
 "Etrata, Deadly Fugitive",Legendary Creature — Vampire Assassin,"Deathtouch
 Face-down creatures you control have ""{2}{U}{B}: Turn this creature face up. If you can't, exile it, then you may cast the exiled card without paying its mana cost.""
 Whenever an Assassin you control deals combat damage to an opponent, cloak the top card of that player's library.",U/B,Vampire; Assassin; heist; cloak; deathtouch; combat; removal,MKM,200,Mythic,83,,7.0,seed
@@ -581,6 +577,8 @@ Whenever a creature other than Captain Marvel is exiled from the battlefield, yo
 "Doctor Doom, King of Latveria",Legendary Creature — Human Noble Villain,"Whenever you discard one or more land cards, each opponent loses 2 life.
 At the beginning of combat on your turn, target Villain you control gains menace until end of turn. It connives. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on that creature.)",U/B/R,Human; Noble; Villain; counters; card draw; connive; graveyard,MSC,6,Mythic,87,,8.0,seed
 "Loki, Lord of Misrule",Legendary Creature — God Sorcerer Villain,"{U}, {T}: Choose target creature you control. Each creature you control other than the chosen creature becomes a copy of that creature until end of turn, except it isn't legendary. Activate only as a sorcery.",U,God; Sorcerer; Villain,MSC,628,Mythic,87,,7.0,seed
+"Nico Minoru, Runaway",Legendary Creature — Human Warlock Hero,"Whenever you cast a spell from anywhere other than your hand, Nico Minoru deals 2 damage to each opponent.
+{2}{R}, {T}, Discard a card: Exile cards from the top of your library until you exile a nonland card. You may cast that card without paying its mana cost.",R,Human; Warlock; Hero; exile cast; card advantage; burn; noncombat damage,MSC,700,Mythic,93,,9.5,seed
 Grim Reaper's Scythe,Legendary Artifact,"Whenever one or more creature cards leave your graveyard, create a 2/2 black Zombie creature token.
 {3}{B}, {T}, Sacrifice two creatures: Return target creature card from your graveyard to the battlefield with a finality counter on it. Activate only as a sorcery. (If a creature with a finality counter on it would die, exile it instead.)",B,counters; reanimator; graveyard; sacrifice; tokens,MSC,658,Rare,91,,8.0,seed
 "Photon, Mighty Marvel",Legendary Creature — Human Hero,"Flying
@@ -679,6 +677,8 @@ Whenever one or more outlaws you control deal combat damage to a player, create 
 "Rakdos, the Muscle",Legendary Creature — Demon Mercenary,"Flying, trample
 Whenever you sacrifice another creature, exile cards equal to its mana value from the top of target player's library. Until your next end step, you may play those cards, and mana of any type can be spent to cast those spells.
 Sacrifice another creature: Rakdos gains indestructible until end of turn. Tap it. Activate only once each turn.",B/R,Demon; Mercenary; heist; sacrifice; flying; evasion; trample; indestructible; resilience,OTJ,226,Mythic,92; 93,,5.0,seed
+Akul the Unrepentant,Legendary Creature — Scorpion Dragon Rogue,"Flying, trample
+Sacrifice three other creatures: You may put a creature card from your hand onto the battlefield. Activate only as a sorcery and only once each turn.",B/R,Scorpion; Dragon; Rogue; sacrifice; flying; evasion; trample,OTJ,189,Rare,93,,3.5,seed
 Blooming Marsh,Land,"This land enters tapped unless you control two or fewer other lands.
 {T}: Add {B} or {G}.",B/G,mana,OTJ,266,Rare,21; 6,Manabase upgrade: de-tapland Gastromancer (21) B->A; reusable across WB/BG/GW decks. Also firms deck 8's thin green (Killmonger/Ygra) — fungible. | Also Abzan reanimator deck 6 (Dead or Alive) — same WBG fixing; fungible craft.,6.5,hand
 Concealed Courtyard,Land,"This land enters tapped unless you control two or fewer other lands.
@@ -687,8 +687,12 @@ Concealed Courtyard,Land,"This land enters tapped unless you control two or fewe
 You may look at the top card of your library any time.
 The top card of your library has plot. The plot cost is equal to its mana cost.
 You may plot nonland cards from the top of your library.",U,Homunculus; exile cast; selection; plot; tempo; cost-reduction; ward; protection,OTJ,48,Rare,,,3.5,seed
+Hellspur Posse Boss,Creature — Lizard Rogue,"Other outlaws you control have haste. (Assassins, Mercenaries, Pirates, Rogues, and Warlocks are outlaws.)
+When this creature enters, create two 1/1 red Mercenary creature tokens with ""{T}: Target creature you control gets +1/+0 until end of turn. Activate only as a sorcery.""",R,Lizard; Rogue; tokens; etb; pump; haste; aggro,OTJ,128,Rare,93,,3.5,seed
 Kellan Joins Up,Legendary Enchantment,"When Kellan Joins Up enters, you may exile a nonland card with mana value 3 or less from your hand. If you do, it becomes plotted. (You may cast it as a sorcery on a later turn without paying its mana cost.)
 Whenever a legendary creature you control enters, put a +1/+1 counter on each creature you control.",W/U/G,counters; etb; plot; tempo; cost-reduction,OTJ,212,Rare,,,7.0,seed
+Laughing Jasper Flint,Legendary Creature — Lizard Rogue,"Creatures you control but don't own are Mercenaries in addition to their other types.
+At the beginning of your upkeep, exile the top X cards of target opponent's library, where X is the number of outlaws you control. Until end of turn, you may cast spells from among those cards, and mana of any type can be spent to cast those spells.",B/R,Lizard; Rogue; heist,OTJ,215,Rare,93,,5.5,seed
 "Lilah, Undefeated Slickshot",Legendary Creature — Human Rogue,"Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
 Whenever you cast a multicolored instant or sorcery spell from your hand, exile that spell instead of putting it into your graveyard as it resolves. If you do, it becomes plotted. (You may cast it as a sorcery on a later turn without paying its mana cost.)",U/R,Human; Rogue; graveyard; pump; plot; tempo; cost-reduction; prowess; spellslinger,OTJ,217,Rare,25,prowess 3-drop that impulses off your spells,6.5,hand
 "Malcolm, the Eyes",Legendary Creature — Siren Pirate,"Flying, haste
@@ -699,6 +703,8 @@ Smuggler's Surprise,Instant,"Spree (Choose one or more additional costs.)
 + {1} — Creatures you control with power 4 or greater gain hexproof and indestructible until end of turn.",G,mill; spree; value; graveyard; hexproof; protection; indestructible; resilience,OTJ,180,Rare,83; 88,,3.5,seed
 The Key to the Vault,Legendary Artifact — Equipment,"Whenever equipped creature deals combat damage to a player, look at that many cards from the top of your library. You may exile a nonland card from among them. Put the rest on the bottom of your library in a random order. You may cast the exiled card without paying its mana cost.
 Equip {2}{U}",U,equipment; card advantage; equip,OTJ,54,Rare,84,,5.5,seed
+At Knifepoint,Enchantment,"During your turn, outlaws you control have first strike. (Assassins, Mercenaries, Pirates, Rogues, and Warlocks are outlaws.)
+Whenever you commit a crime, create a 1/1 red Mercenary creature token with ""{T}: Target creature you control gets +1/+0 until end of turn. Activate only as a sorcery."" This ability triggers only once each turn.",B/R,tokens; pump; first strike; combat,OTJ,193,Uncommon,93,,4.5,seed
 Form a Posse,Sorcery,"Create X 1/1 red Mercenary creature tokens with ""{T}: Target creature you control gets +1/+0 until end of turn. Activate only as a sorcery.""",W/R,tokens; pump,OTJ,204,Uncommon,93,,2.5,seed
 Lassoed by the Law,Enchantment,"When this enchantment enters, exile target nonland permanent an opponent controls until this enchantment leaves the battlefield.
 When this enchantment enters, create a 1/1 red Mercenary creature token with ""{T}: Target creature you control gets +1/+0 until end of turn. Activate only as a sorcery.""",W,tokens; removal; etb; pump,OTJ,18,Uncommon,3; 36a,,5.5,hand
@@ -715,6 +721,11 @@ Whenever another nontoken creature you control dies, exile Liliana, Heretical He
 "Mogis, God of Slaughter",Legendary Enchantment Creature — God,"Indestructible
 As long as your devotion to black and red is less than seven, Mogis isn't a creature.
 At the beginning of each opponent's upkeep, Mogis deals 2 damage to that player unless they sacrifice a creature of their choice.",B/R,God; sacrifice; burn; noncombat damage; indestructible; resilience,PIO,313,Mythic,90,,5.0,seed
+"Angrath, the Flame-Chained",Legendary Planeswalker — Angrath,"+1: Each opponent discards a card and loses 2 life.
+−3: Gain control of target creature until end of turn. Untap it. It gains haste until end of turn. Sacrifice it at the beginning of the next end step if it has mana value 3 or less.
+−8: Each opponent loses life equal to the number of cards in their graveyard.",B/R,Angrath; planeswalker; graveyard; sacrifice; discard; theft,RIX,152,Mythic,93,,8.0,seed
+Skewer the Critics,Sorcery,"Spectacle {R} (You may cast this spell for its spectacle cost rather than its mana cost if an opponent lost life this turn.)
+Skewer the Critics deals 3 damage to any target.",R,burn; spectacle,RNA,115,Common,93,,2.0,seed
 Murderous Redcap,Creature — Goblin Assassin,"When this creature enters, it deals damage equal to its power to any target.
 Persist (When this creature dies, if it had no -1/-1 counters on it, return it to the battlefield under its owner's control with a -1/-1 counter on it.)",B/R,Goblin; Assassin; counters; etb; persist,SHM,192,Uncommon,93,,6.5,seed
 "Arlinn Kord // Arlinn, Embraced by the Moon",Legendary Planeswalker — Arlinn // Legendary Planeswalker — Arlinn,"+1: Until end of turn, up to one target creature gets +2/+2 and gains vigilance and haste.
@@ -733,10 +744,11 @@ Whenever another Zombie you control dies, target opponent loses 1 life.",U/B,Zom
 Brokers Ascendancy,Enchantment,"At the beginning of your end step, put a +1/+1 counter on each creature you control and a loyalty counter on each planeswalker you control.",W/U/G,counters,SNC,170,Rare,90,,5.5,seed
 Professional Face-Breaker,Creature — Human Warrior,"Menace
 Whenever one or more creatures you control deal combat damage to a player, create a Treasure token.
-Sacrifice a Treasure: Exile the top card of your library. You may play that card this turn.",R,Human; Warrior; sacrifice; tokens; treasure; impulse; menace; evasion,SNC,116,Rare,92,,6.5,seed
+Sacrifice a Treasure: Exile the top card of your library. You may play that card this turn.",R,Human; Warrior; sacrifice; tokens; treasure; impulse; menace; evasion,SNC,116,Rare,92; 93,,6.5,seed
 Raffine's Tower,Land — Plains Island Swamp,"({T}: Add {W}, {U}, or {B}.)
 This land enters tapped.
 Cycling {3} ({3}, Discard this card: Draw a card.)",W/U/B,Plains; Island; Swamp; card draw; mana; cycling,SNC,254,Rare,91,,3.0,seed
+Pyre-Sledge Arsonist,Creature — Lizard Shaman,"{1}, {T}: This creature deals X damage to any target, where X is the number of permanents you've sacrificed this turn.",R,Lizard; Shaman; sacrifice; burn; noncombat damage,SNC,118,Uncommon,93,,5.0,seed
 Maestros Theater,Land,"When this land enters, sacrifice it. When you do, search your library for a basic Island, Swamp, or Mountain card, put it onto the battlefield tapped, then shuffle and you gain 1 life.",Colorless,lifegain; sacrifice; ramp; etb,SNC,251,Common,89,deck 89 tune 2026-10-22,1.5,seed
 Decorum Dissertation,Sorcery — Lesson,"Target player draws two cards and loses 2 life.
 Paradigm (Then exile this spell. After you first resolve a spell with this name, you may cast a copy of it from exile without paying its mana cost at the beginning of each of your first main phases.)",B,Lesson; paradigm; exile cast; card advantage,SOS,78,Mythic,41; 22,Paradigm: a free draw-2 each main phase once resolved; the life is refunded by the Negative swap,6.0,seed
@@ -936,8 +948,6 @@ Frantic Confrontation,Instant,Target creature you control gets +X/+0 and gains f
 "Longshot, Rebel Bowman",Legendary Creature — Human Rebel Ally,"Reach (This creature can block creatures with flying.)
 Noncreature spells you cast cost {1} less to cast.
 Whenever you cast a noncreature spell, Longshot deals 2 damage to each opponent.",R,Human; Rebel; Ally; cost-reduction; burn; spellslinger; noncombat damage; reach; defense,TLE,120,Uncommon,92,,7.0,seed
-Loyal Fire Sage,Creature — Human Cleric Ally,"Firebending 1 (Whenever this creature attacks, add {R}. This mana lasts until end of combat.)
-{5}: Create a 1/1 white Ally creature token.",R,Human; Cleric; Ally; tokens; firebending; bending,TLE,242,Uncommon,93,,2.0,seed
 "Zuko, Seeking Honor",Legendary Creature — Human Noble,"Firebending 1 (Whenever this creature attacks, add {R}. This mana lasts until end of combat.)
 Whenever you cast a noncreature spell, Zuko gains first strike until end of turn.
 Whenever Zuko deals combat damage to a player, put a +1/+1 counter on him.",B/R,Human; Noble; counters; spellslinger; firebending; bending; first strike; combat,TLE,150,Uncommon,92,,4.5,seed
@@ -1022,8 +1032,6 @@ Prophet of the Planeswalker,Creature — Human Cleric,"When this creature enters
 "Oglor, Devoted Assistant",Legendary Creature — Homunculus,"At the beginning of your upkeep, look at the top two cards of your library, then put one of them into your graveyard.
 Whenever a creature card is put into your graveyard from your library or hand, it perpetually gains ""When this card leaves your graveyard, create a tapped 2/2 black Zombie creature token.""",U,Homunculus; graveyard; tokens; selection,YMID,20,Mythic,91,,5.0,seed
 Assemble from Parts,Instant,"Target creature card in your graveyard perpetually gains ""{1}{B}{B}, Exile this card from your graveyard: Shuffle it into its owner's library. Create a token that's a copy of it, except it's a 4/4 black Zombie in addition to its other types. Activate only as a sorcery.""",B,graveyard; tokens,YMID,25,Rare,91,,4.0,seed
-Imperial Blademaster,Creature — Human Samurai,"Double strike
-Whenever a Samurai or Warrior you control attacks alone, draft a card from Imperial Blademaster's spellbook.",W/R,Human; Samurai; draft from a spellbook; double strike; combat; aggro,YNEO,30,Rare,93,,3.0,seed
 Stormforged Armor,Legendary Artifact — Equipment,"Equipped creature has ""Whenever this creature attacks, conjure a card named Ball Lightning onto the battlefield tapped and attacking.""
 Equip—Pay 3 life.",R,equipment; equip; conjure,YTDM,13,Rare,93,,3.5,seed
 Ancient Greenwarden,Creature — Elemental,"Reach (This creature can block creatures with flying.)
@@ -1037,3 +1045,7 @@ Choose one. If this spell was kicked, choose any number instead.
 • Put two +1/+1 counters on target creature.
 • Target player gains X life, where X is the greatest power among creatures they control.
 • Target creature you control fights target creature you don't control.",G,counters; fight; removal; combat; kicker; value,ZNR,186,Rare,88,,4.5,seed
+"Zagras, Thief of Heartbeats",Legendary Creature — Vampire Rogue,"This spell costs {1} less to cast for each creature in your party.
+Flying, deathtouch, haste
+Other creatures you control have deathtouch.
+Whenever a creature you control deals combat damage to a planeswalker, destroy that planeswalker.",B/R,Vampire; Rogue; cost-reduction; deathtouch; combat; removal; flying; evasion; haste; aggro,ZNR,241,Rare,93,,3.5,seed

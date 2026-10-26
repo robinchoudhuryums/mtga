@@ -19,6 +19,7 @@ Agrus Kos, Spirit of Justice
 Ainok Wayfarer
 Airbending Lesson
 Ajani, Caller of the Pride
+Akul the Unrepentant
 Ambitious Augmenter
 Angel of Vitality
 Angelic Destiny
@@ -214,7 +215,6 @@ Hymn of the Faller
 Hyperion, Supreme Hero
 I Am Iron Man
 Identity Echo
-Imperial Blademaster
 Improvisation Capstone
 Ingenious Leonin
 Insatiable Skittermaw
@@ -258,7 +258,6 @@ Living Brain, Mechanical Marvel
 Loki Laufeyson
 Long Feng, Grand Secretariat
 Lorehold, the Historian
-Loyal Fire Sage
 Magic Pot
 Magitek Armor
 Mai, Jaded Edge
@@ -408,7 +407,6 @@ Super-Soldier Serum
 Surrak, Elusive Hunter
 Sweettooth Witch
 Swiftblade Vindicator
-Tamiyo, Upriser Crowned
 Tangle Tumbler
 Tannuk, Steadfast Second
 Tapestry Warden
@@ -489,5 +487,6 @@ Wolverine, Claws Out
 Wonder Man, Hollywood Hero
 Woodwork Prodigy // Soul Tether
 Y'shtola Rhul
+Zagras, Thief of Heartbeats
 Zog, Triceraton Castaway
 Zurgo, Thunder's Decree
