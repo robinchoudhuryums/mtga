@@ -68,11 +68,16 @@ trigger, that ability triggers an additional time."
 - **E3 — A doubled trigger is only worth twice when its effect STACKS.** Silver Sable's
   "gains lifelink" twice is lifelink once; Terra's trance is "at the beginning of combat",
   not an attack trigger. Count what the second resolution adds.
+- **E4 — Keyword attack triggers live in REMINDER text.** Firebending ("whenever this creature
+  attacks, add {R}"), exalted, battle cry, mobilize, melee, myriad, mentor, training are all
+  attack triggers Isshin doubles, and a reminder-stripped sweep misses them (it missed Loyal
+  Fire Sage). Sweep with `--regex-raw` or name the keywords. Corrected counts: pile **12**,
+  owned Mardu Historic-Brawl pool **166**.
 
 ## 3. Cross-batch observations
 
 - **O1 — The pile is not an Isshin pile yet (measured before batch 1).** A text sweep of all
-  106 nonland cards finds **11** that Isshin doubles (Raven Eagle, Djeru and Hazoret, Locke,
+  106 nonland cards finds **11** (12 after E4) that Isshin doubles (Raven Eagle, Djeru and Hazoret, Locke,
   Silver Sable, Far Fortune, Combustion Man, Stormforged Armor, Toralf's Disciple,
   Scalestorm Summoner, Imperial Blademaster, Raiyuu). Most of the rest is a black THEFT /
   HAND-ATTACK / outlaw shell. But the owned pool holds **137** Mardu Historic-Brawl cards with
@@ -155,6 +160,38 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | Zagras, Thief of Heartbeats | ◇ | 6-mana team deathtouch |
 | Annex Sentry | ★ | removal on a body (W) |
 | Silver Sable | ◇ | attack trigger doubles to nothing (E3) |
+
+### Batch 3 (27)
+
+| Card | Verdict | Note |
+|---|---|---|
+| Omenport Vigilante | ◇ | double strike after a crime (any targeted attack trigger counts) |
+| Wild Pack Squad | △ | beginning-of-combat, not doubled |
+| Boneyard Desecrator | △ | sac outlet body |
+| Brimstone Roundup | △ | second-spell tokens — a spells-deck card |
+| At Knifepoint | ◇ | outlaw first strike + a token per crime turn |
+| Vial Smasher | ◇ | outlaw-ETB pings |
+| Ertha Jo | △ | copies ACTIVATED abilities, not triggers |
+| Far Fortune, End Boss | ★★ | "whenever you attack" doubled: 2 damage a combat, fills speed; max speed +1 to every hit |
+| Form a Posse | ★ | X tokens = width for per-attacker triggers (R2) |
+| All-Fates Stalker | ★ | O-ring on a body; warp |
+| Olivia, Opulent Outlaw | ★★ | Mardu flying lifelink; Treasures on outlaw damage; team counters |
+| Murderous Redcap | ★ | ETB 2 damage, persists for another |
+| Combustion Man | ★★ | ATTACK trigger doubled: two "destroy a permanent or take 4" |
+| Shoot the Sheriff | ◇ | 2-mana instant, non-outlaws only |
+| Caught in the Crossfire | ◇ | modal sweeper; the outlaw half hits your own |
+| Hellspur Posse Boss | ★ | outlaws gain haste; two tokens |
+| Hellspur Brute | ◇ | outlaw affinity trampler |
+| Outlaws' Merriment | ★ | a hasty attacker every upkeep (WW) |
+| Ahn-Crop Invader | △ | |
+| Chandra's Spitfire | △ | |
+| Longhorn Sharpshooter | ◇ | plot for 2 damage |
+| Loyal Fire Sage | ★ | firebending doubled = {R}{R} per attack (E4) |
+| Molecular Modifier | △ | beginning-of-combat |
+| Nahiri's Wrath | ◇ | discard-cost removal |
+| Professional Face-Breaker | ★ | Treasures on damage + impulse sink |
+| Pyre-Sledge Arsonist | △ | |
+| Repercussion | ◇ | combo-ish damage redirect |
 
 ## 5. Consolidated plan (live)
 
