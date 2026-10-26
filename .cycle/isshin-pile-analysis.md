@@ -89,6 +89,14 @@ trigger, that ability triggers an additional time."
   Reno and Rude, Cruelclaw, Jasper Flint, Shark Shredder, Jecht, Black Cat, Rakdos, Celes,
   Terra, Rankle, Akul, Locke, Zagras, Silver Sable…). Count legendary creatures at draft; at
   ~25 of 99 a twelve-card look finds ~3.
+- **O4 — An "ATTACKS ALONE" line exists, and Isshin is a Samurai.** Raiyuu ("whenever a Samurai
+  or Warrior you control attacks alone, untap it; if it's the first combat, an additional
+  combat") doubled gives TWO extra combats off one lone attack; Imperial Blademaster (Samurai,
+  double strike) drafts two spellbook cards per lone attack; exalted is the same shape. That
+  pulls against R2's go-wide per-attacker triggers (Form a Posse, Hellspur Posse Boss,
+  Outlaws' Merriment). The two lines are a PLAN decision — decide at draft, not mid-batch.
+- **O5 — Equipment that grants an attack trigger is doubled too.** Stormforged Armor's
+  conjured Ball Lightning arrives twice: two 6/1 tramplers per attack for an equip of 3 life.
 - **O2 — Hand attack is a real sub-theme** (Virus Beetle, Corrupt Court Official, Psychic
   Whorl, Ozai's Cruelty, Auntie's Sentence, Cruelclaw's Heist, Jecht's saga, Ninja of the
   Hand), and Tinybones, Bauble Burglar is its payoff. Report-only in the floor (G-25).
@@ -192,6 +200,36 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | Professional Face-Breaker | ★ | Treasures on damage + impulse sink |
 | Pyre-Sledge Arsonist | △ | |
 | Repercussion | ◇ | combo-ish damage redirect |
+
+### Batch 4 (25)
+
+| Card | Verdict | Note |
+|---|---|---|
+| Scarlet Witch (MSC) | ✗ | vanilla menace 2/3 |
+| Seismic Wave | ★ | instant 2 to any target + 1 to their board |
+| Skewer the Critics | ◇ | 3 damage, spectacle {R} after an attack |
+| Smelt-Ward Minotaur | △ | spells deck |
+| Spider-Man, New Champion | ◇ | discard → damage; needs outlets |
+| Steal the Show | ◇ | rummage / spell-count burn; few spells here |
+| Stormforged Armor | ★★★ | equip 3 life; attack trigger doubled = two Ball Lightnings a combat (O5) |
+| Tibalt, Rakish Instigator | ◇ | no lifegain for them; two Devils |
+| Toralf's Disciple | ★ | haste; doubled = eight Lightning Bolts shuffled in |
+| Vaan, Street Thief | ◇ | Rogue/Pirate damage impulse |
+| Stoke the Flames | ★ | instant 4 damage, convoke |
+| Urabrask // The Great Work | ✗ | needs three instants/sorceries a turn |
+| Lecturing Scornmage | △ | |
+| Scalestorm Summoner | ★ | doubled = two 3/1s per attack while you control power 4+ |
+| Molten Lavamancer | △ | |
+| Nico Minoru, Runaway | ◇ | free-cast engine, discard cost |
+| Pirate Peddlers | △ | |
+| Marauding Mako | △ | |
+| Ragavan, Nimble Pilferer | ★ | 1-drop, damage Treasure + impulse; dash |
+| Crucias, Titan of the Waves | ★ | end-step loot + Treasure + seek — card quality every turn |
+| Angrath, Minotaur Pirate | ◇ | 6-mana walker; +2 pings their board |
+| Mog, Moogle Warrior | △ | |
+| Imperial Blademaster | ★★ | Samurai double strike; lone attack doubled = two drafted cards (O4) |
+| Raiyuu, Storm's Edge | ★★★ | lone Samurai attack doubled = untap ×2 and TWO extra combats (O4) |
+| Tamiyo, Upriser Crowned | ★★ | 6-mana flying double strike haste; monarch = a card every end step |
 
 ## 5. Consolidated plan (live)
 
