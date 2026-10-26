@@ -158,7 +158,6 @@ Fortune, Loyal Steed
 Frantic Confrontation
 Frantic Strength
 Frontier Seeker
-Fury of the Horde
 Fynn, the Fangbearer
 Galuf's Final Act
 Gangly Stompling
@@ -221,6 +220,7 @@ Insurrection
 Interface Ace
 Involuntary Employment
 Iroh, Dragon of the West
+Iroh, Firebending Instructor
 Iron Hills Stalwart
 Iron Lad, Diverging Destiny
 Ironpaw Aspirant
@@ -339,6 +339,7 @@ Raphael, the Muscle
 Raphael, the Nightwatcher
 Ravenous Tyrannosaurus
 Reckless Velocitaur
+Relentless Assault
 Reno and Rude
 Resentful Revelation
 Resolute Reinforcements
@@ -355,6 +356,7 @@ Salvation Swan
 Samut, Hazoret's Champion
 Sanar, Innovative First-Year
 Sandstorm Salvager
+Savage Beating
 Savage Land Dinosaur
 Savage Ventmaw
 Scarlet Spider, Ben Reilly
