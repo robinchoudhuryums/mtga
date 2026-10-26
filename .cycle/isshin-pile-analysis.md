@@ -68,6 +68,18 @@ trigger, that ability triggers an additional time."
 - **E3 — A doubled trigger is only worth twice when its effect STACKS.** Silver Sable's
   "gains lifelink" twice is lifelink once; Terra's trance is "at the beginning of combat",
   not an attack trigger. Count what the second resolution adds.
+- **E3 CORRECTED (owner, 2026-10-26).** Silver Sable's doubled trigger CAN target two different
+  modified creatures — the second resolution is not wasted. E3 holds for a fixed-subject grant.
+- **E5 — Mobilize tokens are SACRIFICE FODDER, and the draft benched the sacrifice package as
+  "no outlets" (owner's pushback, 2026-10-26).** Seven deck-93 cards make tokens that are
+  sacrificed at end step (Zurgo, Voice, Packbeasts, Siegebreaker, War Effort, Trebuchet,
+  Stormforged Armor), doubled — typically 4–10 forced sacrifices a turn. That IS the outlet:
+  "whenever you sacrifice" (Pirate Peddlers), "permanents you've sacrificed this turn"
+  (Pyre-Sledge Arsonist) and every death trigger (Sothera, Massacre Girl Most Wanted, Morbid
+  Opportunist, Panicked Bystander) read it. Count the deck property before benching (G-61).
+  Two limits: mobilize Warriors are NOT outlaws (Boneyard Desecrator's Treasure, Vial Smasher
+  miss them; Mercenary tokens count), and Zurgo makes Warrior tokens unsacrificeable during
+  YOUR end step — with Zurgo out the army stays and the end-step deaths do not happen.
 - **E4 — Keyword attack triggers live in REMINDER text.** Firebending ("whenever this creature
   attacks, add {R}"), exalted, battle cry, mobilize, melee, myriad, mentor, training are all
   attack triggers Isshin doubles, and a reminder-stripped sweep misses them (it missed Loyal
@@ -327,6 +339,15 @@ milled cards), Daredevil and Cosmic Cube (attack-trigger impulse / free cast), T
 monarch). Deck 93 reads card advantage 6; a hand count is ~13. Same family as the Dragonhawk
 impulse hole noted for deck 92. `screen` also returned 0 KEY verdicts for the 94 unused cards —
 it cannot see Isshin's doubling, so its silence is not a verdict here.
+
+**Re-read 2026-10-26 (E5) — proposed 10-for-10 package, previewed with `swap --package`:**
+−Imperial Blademaster +Sothera · −Scalestorm Summoner +Pyre-Sledge Arsonist · −Kinscaer Sentry
++Massacre Girl, Most Wanted · −Terra +Professional Face-Breaker · −Black Widow +Zagras ·
+−Crucias +Akul · −Deep-Cavern Bat +Morbid Opportunist · −Loyal Fire Sage +Laughing Jasper Flint ·
+−Etali +Pirate Peddlers · −Seismic Wave +Skewer the Critics. Result: floor A, interaction 17→18,
+card advantage 6→7, central themes 18→21, early drops 14→11, avg MV 3.60→3.71. Second tier:
+Hellspur Posse Boss, At Knifepoint, Ertha Jo (copies Arsonist), Nico Minoru, Angrath the
+Flame-Chained, Cruel Alliance, Silver Sable, Panicked Bystander, Chandra's Spitfire.
 
 **Open for the owner:** Imperial Blademaster's draft trigger needs a LONE attack, and
 `targets` flags it (with Raiyuu) as a CONFLICT with 11 go-wide cards. Raiyuu earns it (the
