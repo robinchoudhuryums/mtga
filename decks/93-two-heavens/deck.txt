@@ -58,6 +58,13 @@
 #: notes: Mog, Celes, Nico, Steal the Show, Dragon Engine's unearth and Bitter Triumph add more;
 #: notes: Spider-Man, Living Laser and Inti's impulse pay it off. Mishra needs no Phyrexian Dragon
 #: notes: Engine — the meld is an optional bonus. Interaction by hand count ~15 (the tool reads 13).
+#: notes: MANABASE 2026-10-26: basics 6/6/6 -> 3 Plains / 8 Mountain / 7 Swamp after package 2 made
+#: notes: the deck red-heavy (strict pips R 50 / B 41 / W 23). Sources W 20->17, B 20->21, R 19->21; mean
+#: notes: cast-on-curve 74.3->75.0 (Ingris 48->54, Hellrider 60->67, Akul 38->44; Aurelia 46->43,
+#: notes: Outlaws' Merriment 57->49). Swapping white duals for owned B/R taplands measured WORSE (73.5):
+#: notes: the three-colour cards still need white. UPGRADE (wishlisted): Concealed Courtyard, Inspiring
+#: notes: Vantage and Blackcleave Cliffs for the three Temples — same colour access, chance of an
+#: notes: always-tapped land in the first three drops 42% -> 23%.
 
 # Commander (leads from the command zone; also one of the 100)
 1 Isshin, Two Heavens as One (NEO) 224
@@ -166,8 +173,8 @@
 1 Temple of Malice (FDN) 701
 1 Sun-Blessed Peak (TLA) 280
 1 Evolving Wilds (ECL) 264
-6 Plains (FRA) 281
-6 Mountain (FRA) 287
-6 Swamp (FRA) 285
+3 Plains (FRA) 281
+8 Mountain (FRA) 287
+7 Swamp (FRA) 285
 
 #~ -Olivia, Opulent Outlaw | +Morbid Opportunist | CRAFT (U): 3-mana once-a-turn draw on any creature death — cheap insurance for games where Liliana is late
