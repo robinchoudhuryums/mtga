@@ -7,18 +7,19 @@
 #: archetype: TRIGGERS around Isshin, Two Heavens as One: "If a creature attacking causes a
 #: archetype: triggered ability of a permanent you control to trigger, that ability triggers an
 #: archetype: additional time." The plan: attackers that MAKE attackers (mobilize, "whenever you
-#: archetype: attack" tokens — Zurgo, Voice of Victory, Dalkovan Packbeasts, Warren Warleader, War
-#: archetype: Effort, Fire Navy Trebuchet, Stormforged Armor) go wide on every attack, attack-trigger
-#: archetype: payoffs deal damage (Far Fortune, Combustion Man, Overlord of the Boilerbilges,
-#: archetype: Drakuseth, Arabella, Alpharael) and draw (Djeru and Hazoret, Locke, Cosmic Cube,
-#: archetype: Daredevil, Laughing Jasper Flint), and the extra-combat cards — Aurelia, Raph & Leo, Genji Glove,
+#: archetype: attack" tokens — Zurgo, Thunder's Decree, Voice of Victory, Dalkovan Packbeasts, Bone-Cairn
+#: archetype: Butcher, War Effort, Stormforged Armor) go wide on every attack; attack-trigger payoffs deal
+#: archetype: damage (Hellrider and Ingris Stingerquill per attacker, Far Fortune, Combustion Man, Mishra,
+#: archetype: Overlord of the Boilerbilges, Arabella, Alpharael) and draw (Djeru and Hazoret, Smellerbee,
+#: archetype: Laughing Jasper Flint), and the extra-combat cards — Aurelia, Raph & Leo, Genji Glove,
 #: archetype: Raiyuu — each give TWO extra combats under Isshin, re-firing all of it. Raiyuu's line:
 #: archetype: attack ALONE with a Samurai (Isshin or Raiyuu) first, then go
 #: archetype: wide in the extra combats. SECOND ENGINE (owner's 2026-10-26 re-read): mobilize and
 #: archetype: attack tokens are SACRIFICED every end step, so they feed sacrifice and death payoffs —
-#: archetype: Sothera (each death: they exile a creature), Pyre-Sledge Arsonist (X = permanents
-#: archetype: sacrificed this turn, copied by Ertha Jo), Massacre Girl, Most Wanted, Morbid
-#: archetype: Opportunist, Pirate Peddlers, and Akul (sacrifice three in main phase 2 to cheat a
+#: archetype: Sothera and Dictate of Erebos (each death costs them a creature), Pyre-Sledge Arsonist
+#: archetype: (X = permanents sacrificed this turn, copied by Ertha Jo), Liliana Dreadhorde General
+#: archetype: (a card per death), Zurgo Stormrender, Vraan, Nadier's Nightblade and Massacre Girl, Most Wanted
+#: archetype: (drains), Pirate Peddlers, Kingpin, and Akul (sacrifice three in main phase 2 to cheat a
 #: archetype: creature in). Zurgo stops Warrior tokens being sacrificed in YOUR end step, so on Zurgo
 #: archetype: turns sacrifice them to an outlet instead. DISTINCT from deck 55 (Standard Mardu spells-velocity):
 #: archetype: this deck's engine is the attack step, not the cast count.
@@ -45,6 +46,18 @@
 #: notes: Warriors are NOT outlaws; Mercenary tokens are. NEXT-TIER bench from the re-read: Silver
 #: notes: Sable (two doubled lifelink targets), Panicked Bystander, Chandra's Spitfire, Cruel
 #: notes: Alliance, Molten Lavamancer, Massacre Girl Known Killer, Vial Smasher, Omenport Vigilante.
+#: notes: 2026-10-26 package 2 (19 swaps, owner's picks): -Cecil +Hellrider, -Black Widow +Ingris
+#: notes: Stingerquill, -Annex Sentry +Zurgo Stormrender, -Drakuseth +Liliana Dreadhorde General,
+#: notes: -Feed the Swarm +Dictate of Erebos, -Overlord of the Mistmoors +Mishra Claimed by Gix,
+#: notes: -Warren Warleader +Bone-Cairn Butcher, -Epic Downfall +Vraan, -Murderous Redcap +Nadier's
+#: notes: Nightblade, -Stoke the Flames +Kingpin Wilson Fisk, -Form a Posse +Mardu Thunderkite,
+#: notes: -Hellspur Posse Boss +Inti, -Morbid Opportunist +Living Laser, -Seismic Wave +Steal the
+#: notes: Show, -Cosmic Cube +Phyrexian Dragon Engine, -Daredevil +Smellerbee, -Fire Navy Trebuchet
+#: notes: +Boneyard Desecrator, -Phyrexian Arena +Mog, -Locke +Spider-Man New Champion. DISCARD is
+#: notes: now an engine: Isshin doubles the attack-trigger discards (Smellerbee, Inti), and Crucias,
+#: notes: Mog, Celes, Nico, Steal the Show, Dragon Engine's unearth and Bitter Triumph add more;
+#: notes: Spider-Man, Living Laser and Inti's impulse pay it off. Mishra needs no Phyrexian Dragon
+#: notes: Engine — the meld is an optional bonus. Interaction by hand count ~15 (the tool reads 13).
 
 # Commander (leads from the command zone; also one of the 100)
 1 Isshin, Two Heavens as One (NEO) 224
@@ -59,37 +72,34 @@
 1 Zurgo, Thunder's Decree (TDM) 237
 1 Voice of Victory (TDM) 33
 1 Dalkovan Packbeasts (TDM) 7
-1 Warren Warleader (BLB) 38
+1 Bone-Cairn Butcher (TDM) 173
 1 War Effort (TDM) 131
-1 Fire Navy Trebuchet (TLA) 100
 1 Mardu Siegebreaker (TDM) 206
-1 Overlord of the Mistmoors (DSK) 23
 1 Stormforged Armor (YTDM) 13
-1 Form a Posse (OTJ) 204
+1 Mardu Thunderkite (YTDM) 23
 1 Outlaws' Merriment (ELD) 198
 1 Kinscaer Sentry (ECL) 22
+1 Zurgo Stormrender (TDC) 10
 
 # Damage engines — attack triggers and noncombat pings
 1 Far Fortune, End Boss (DFT) 203
 1 Combustion Man (TLA) 127
 1 Overlord of the Boilerbilges (DSK) 146
-1 Drakuseth, Maw of Flames (FDN) 760
 1 Arabella, Abandoned Doll (DSK) 208
 1 Alpharael, Stonechosen (EOE) 87
 1 Nico Minoru, Runaway (MSC) 700
+1 Hellrider (JMP) 334
+1 Ingris Stingerquill (FRA) 137
+1 Mishra, Claimed by Gix (BRO) 216
 
 # Attack-trigger card advantage
 1 Djeru and Hazoret (MOM) 221
-1 Locke, Treasure Hunter (FIC) 87
-1 Cosmic Cube (MSH) 245
-1 Daredevil, Man Without Fear (MSH) 213
+1 Smellerbee, Rebel Fighter (TLE) 125
 
-# Attack mana and team boosts
+# Attack mana and team counters
 1 Fire Lord Zuko (TLA) 221
-1 Cecil, Dark Knight (FIN) 91
 
 # Card draw and impulse
-1 Phyrexian Arena (FDN) 180
 1 Celes, Rune Knight (FIC) 1
 1 Crucias, Titan of the Waves (YBRO) 18
 1 Professional Face-Breaker (SNC) 116
@@ -100,34 +110,39 @@
 1 Rakdos, the Muscle (OTJ) 226
 1 Zagras, Thief of Heartbeats (ZNR) 241
 1 The Infamous Cruelclaw (BLB) 219
-1 Black Widow, Super Spy (MSH) 89
 
 # Sacrifice and death payoffs — mobilize tokens are sacrificed every end step
 1 Sothera, the Supervoid (EOE) 115
 1 Pyre-Sledge Arsonist (SNC) 118
 1 Massacre Girl, Most Wanted (FRA) 234
 1 Akul the Unrepentant (OTJ) 189
-1 Morbid Opportunist (MID) 113
 1 Pirate Peddlers (TLA) 115
+1 Liliana, Dreadhorde General (FDN) 176
+1 Vraan, Executioner Thane (ONE) 114
+1 Nadier's Nightblade (MH3) 275
+1 Kingpin, Wilson Fisk (MSC) 661
+1 Boneyard Desecrator (OTJ) 81
 
 # Outlaw support — Mercenary tokens, haste, first strike
-1 Hellspur Posse Boss (OTJ) 128
 1 At Knifepoint (OTJ) 193
 1 Ertha Jo, Frontier Mentor (OTJ) 203
+
+# Discard engine — attack-trigger discards feed Spider-Man, Living Laser and Inti
+1 Inti, Seneschal of the Sun (LCI) 156
+1 Living Laser (MSC) 55
+1 Steal the Show (SOS) 130
+1 Phyrexian Dragon Engine (BRO) 163
+1 Mog, Moogle Warrior (FIC) 89
+1 Spider-Man, New Champion (MSC) 705
 
 # Interaction
 1 Bitter Triumph (SOA) 26
 1 Hero's Downfall (FDN) 175
 1 Long Goodbye (MKM) 92
 1 Skewer the Critics (RNA) 115
-1 Epic Downfall (TLA) 96
-1 Feed the Swarm (SOA) 29
+1 Dictate of Erebos (PIO) 91
 1 Nowhere to Run (DSK) 111
-1 Seismic Wave (NEO) 161
-1 Stoke the Flames (MOM) 166
-1 Annex Sentry (ONE) 2
 1 All-Fates Stalker (EOE) 3
-1 Murderous Redcap (SHM) 192
 1 Agrus Kos, Spirit of Justice (MKM) 184
 1 Angrath, the Flame-Chained (RIX) 152
 
@@ -154,3 +169,5 @@
 6 Plains (FRA) 281
 6 Mountain (FRA) 287
 6 Swamp (FRA) 285
+
+#~ -Olivia, Opulent Outlaw | +Morbid Opportunist | CRAFT (U): 3-mana once-a-turn draw on any creature death — cheap insurance for games where Liliana is late
