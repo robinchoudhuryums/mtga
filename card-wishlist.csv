@@ -153,8 +153,6 @@ Plaza of Heroes,Land,"{T}: Add {C}.
 {T}: Add one mana of any color. Spend this mana only to cast a legendary spell.
 {T}: Add one mana of any color among legendary permanents you control.
 {3}, {T}, Exile this land: Target legendary creature gains hexproof and indestructible until end of turn.",Colorless,mana; hexproof; protection; indestructible; resilience,DMU,252,Rare,84,,4.0,seed
-Sulfurous Springs,Land,"{T}: Add {C}.
-{T}: Add {B} or {R}. This land deals 1 damage to you.",B/R,mana,DMU,256,Rare,92,,4.0,seed
 "Teferi, Hero of Dominaria",Legendary Planeswalker — Teferi,"+1: Draw a card. At the beginning of the next end step, untap up to two lands.
 −3: Put target nonland permanent into its owner's library third from the top.
 −8: You get an emblem with ""Whenever you draw a card, exile target permanent an opponent controls.""",W/U,Teferi; planeswalker; card draw,DOM,207,Mythic,86,"Not craftable on Arena (owner, 2026-10-24); dropped from deck 90 for Golos.",10.0,seed
@@ -217,8 +215,6 @@ Delirium — This creature gets +1/+2 and has vigilance as long as there are fou
 "Kalitas, Traitor of Ghet",Legendary Creature — Vampire Warrior,"Lifelink
 If a nontoken creature an opponent controls would die, instead exile that card and create a 2/2 black Zombie creature token.
 {2}{B}, Sacrifice another Vampire or Zombie: Put two +1/+1 counters on Kalitas.",B,Vampire; Warrior; counters; lifegain; sacrifice; tokens; lifelink,EA1,5,Mythic,91,,5.0,seed
-Smoldering Marsh,Land — Swamp Mountain,"({T}: Add {B} or {R}.)
-This land enters tapped unless you control two or more basic lands.",B/R,Swamp; Mountain; mana,EA3,22,Rare,92,,3.0,seed
 Sunken Hollow,Land — Island Swamp,"({T}: Add {U} or {B}.)
 This land enters tapped unless you control two or more basic lands.",U/B,Island; Swamp; mana,EA3,23,Rare,91,,3.0,seed
 End-Blaze Epiphany,Instant,"End-Blaze Epiphany deals X damage to target creature. When that creature dies this turn, exile a number of cards from the top of your library equal to its power, then choose a card exiled this way. Until the end of your next turn, you may play that card.",R,burn,ECL,134,Rare,24,X-burn removal + impulse; Quintorius/exile payoff,6.0,hand
@@ -422,7 +418,6 @@ Treasures you control have ""{T}, Sacrifice this artifact: Add two mana of any o
 Kaya the Inexorable,Legendary Planeswalker — Kaya,"+1: Put a ghostform counter on up to one target nontoken creature. It gains ""When this creature dies or is put into exile, return it to its owner's hand and create a 1/1 white Spirit creature token with flying.""
 −3: Exile target nonland permanent.
 −7: You get an emblem with ""At the beginning of your upkeep, you may cast a legendary spell from your hand, from your graveyard, or from among cards you own in exile without paying its mana cost.""",W/B,Kaya; planeswalker; counters; graveyard; tokens; removal; bounce,KHM,218,Mythic,90,,10.0,seed
-Blightstep Pathway // Searstep Pathway,Land // Land,{T}: Add {B}. // {T}: Add {R}.,B/R,mana,KHM,252,Rare,92,,4.0,seed
 "Sarkhan, the Dragonspeaker",Legendary Planeswalker — Sarkhan,"+1: Until end of turn, Sarkhan becomes a legendary 4/4 red Dragon creature with flying, indestructible, and haste. (He doesn't lose loyalty while he's not a planeswalker.)
 −3: Sarkhan deals 4 damage to target creature.
 −6: You get an emblem with ""At the beginning of your draw step, draw two additional cards"" and ""At the beginning of your end step, discard your hand.""",R,Sarkhan; planeswalker; burn,KTK,119,Mythic,92,,9.0,seed
@@ -451,9 +446,6 @@ Promising Vein,Land — Cave,"{T}: Add {C}.
 Whenever you cast a blue spell, scry 2.
 Whenever you cast a red spell, Aragorn deals 3 damage to target opponent.
 Whenever you cast a green spell, target creature gets +4/+4 until end of turn.",W/U/R/G,Human; Noble; tokens; burn; scry; pump; noncombat damage; selection,LTR,192,Mythic,90,,7.5,seed
-Mount Doom,Legendary Land,"{T}, Pay 1 life: Add {B} or {R}.
-{1}{B}{R}, {T}: Mount Doom deals 1 damage to each opponent.
-{5}{B}{R}, {T}, Sacrifice Mount Doom and a legendary artifact: Choose up to two creatures, then destroy the rest. Activate only as a sorcery.",B/R,pay life; sacrifice; burn; noncombat damage,LTR,258,Mythic,92,,6.0,seed
 Shire Terrace,Land,"{T}: Add {C}.
 {1}, {T}, Sacrifice this land: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.",Colorless,sacrifice; ramp; mana,LTR,261,Common,89,,1.5,seed
 "Golos, Tireless Pilgrim",Legendary Artifact Creature — Scout,"When Golos enters, you may search your library for a land card, put that card onto the battlefield tapped, then shuffle.
@@ -633,8 +625,6 @@ Toxic 4 (Players dealt combat damage by this creature also get four poison count
 "Zopandrel, Hunger Dominus",Legendary Creature — Phyrexian Horror,"Reach
 At the beginning of each combat, double the power and toughness of each creature you control until end of turn.
 {G/P}{G/P}, Sacrifice two other creatures: Put an indestructible counter on Zopandrel. ({G/P} can be paid with either {G} or 2 life.)",G,Phyrexian; Horror; counters; sacrifice; reach; defense; double,ONE,195,Mythic,89,,5.0,seed
-Blackcleave Cliffs,Land,"This land enters tapped unless you control two or fewer other lands.
-{T}: Add {B} or {R}.",B/R,mana,ONE,248,Rare,92,,4.0,seed
 Darkslick Shores,Land,"This land enters tapped unless you control two or fewer other lands.
 {T}: Add {U} or {B}.",U/B,mana,ONE,250,Rare,91,,4.0,seed
 "Tyvar, Jubilant Brawler",Legendary Planeswalker — Tyvar,"You may activate abilities of creatures you control as though those creatures had haste.
@@ -984,8 +974,6 @@ Rootrider Faun,Creature — Satyr Scout,"{T}: Add {G}.
 {1}, {T}: Add one mana of any color.",G,Satyr; Scout; mana,WOE,182,Common,50,,1.5,seed
 Stormkeld Prowler,Creature — Human Rogue,"Whenever you cast a spell with mana value 5 or greater, put two +1/+1 counters on this creature.",U,Human; Rogue; counters,WOE,71,Common,51,Deck 51: two-drop that gets +2/+2 whenever you cast MV>=5 - the deck runs 11 such. Cheap clock that scales with the top end it already had.,6.2,hand
 Aggravated Assault,Enchantment,"{3}{R}{R}: Untap all creatures you control. After this main phase, there is an additional combat phase followed by an additional main phase. Activate only as a sorcery.",R,,WOT,39,Rare,92,,3.0,seed
-Dragonskull Summit,Land,"This land enters tapped unless you control a Swamp or a Mountain.
-{T}: Add {B} or {R}.",B/R,mana,XLN,252,Rare,92,,4.0,seed
 Drowned Catacomb,Land,"This land enters tapped unless you control an Island or a Swamp.
 {T}: Add {U} or {B}.",U/B,mana,XLN,253,Rare,91,,4.0,seed
 Glacial Fortress,Land,"This land enters tapped unless you control a Plains or an Island.

@@ -18,9 +18,14 @@
 #: archetype: 1 (a 60-card Standard aggro-sacrifice list): this one is a mana-accumulation deck.
 #: protect: Ozai, the Phoenix King; Fire Nation Turret; Avatar Roku, Firebender; Fire Lord Ozai; The Legend of Roku; Sozin's Comet; Firebender Ascension; Fated Firepower; Smellerbee, Rebel Fighter
 #: notes: DRAFTED 2026-10-25 from the owner's 116-card pile (.cycle/ozai-pile-analysis.md, four batches)
-#: notes: plus Arcane Signet and six untapped Rakdos duals from outside the pile (Mount Doom,
-#: notes: Blightstep Pathway, Sulfurous Springs, Dragonskull Summit, Smoldering Marsh, Blackcleave
-#: notes: Cliffs). FLOATING MANA IS RED: it pays red pips and generic costs (X, activations), never a
+#: notes: plus Arcane Signet and six untapped Rakdos duals from outside the pile. 2026-10-26 the six
+#: notes: unowned rare duals were REPLACED with owned lands (owner's call): Starting Town, Temple of
+#: notes: Malice, Boiling Rock Prison, Ominous Asylum, Evolving Wilds (two landfall triggers for
+#: notes: Moraug) and an 11th Swamp. Measured: B/R sources 23/25 -> 23/24, Ozai T5 63.5% -> 61.8%,
+#: notes: Drana T3 unchanged at 66.1%, Avatar Roku T5 55.3% -> 52.0%; the real cost is TEMPO (P of a
+#: notes: tapped land in the first three drops ~23% -> ~48%). Upgrade path when wildcards allow: the
+#: notes: any of the six rare duals cut that day (Blackcleave Cliffs first: it is the fastland), or
+#: notes: Foreboding Ruins (uncommon, untapped with a basic in hand) over Temple of Malice. FLOATING MANA IS RED: it pays red pips and generic costs (X, activations), never a
 #: notes: black pip. Without Ozai, firebending mana empties at end of combat — spend it on
 #: notes: instant-speed sinks and combat-only spells (Turret, Fire Sages, Fire Nation Archers, Savage
 #: notes: Beating, Embercleave). Electro is the backup "keep red mana" piece for the turns Ozai is off.
@@ -52,6 +57,7 @@
 #: notes: AGGRAVATED ASSAULT + OZAI: Ozai's 4 red plus any other firebender pays {3}{R}{R} each
 #: notes: combat, so the extra combats are unbounded while Ozai keeps the mana.
 #: notes: OPEN for the owner: replace the tapped Thriving lands and Valakut with untapped duals?
+#: notes: (Passed 2026-10-26; with five owned taplands now in, this matters more than it did.)
 #: notes: BENCH (pile): Hazoret, Krenko, Gisa the Hellraiser, Red Hulk, Sporogenic Infection, Robot
 #: notes: Domination, Dragon Fodder, Reckless Ransacking, Magic Pot, Goblin Surprise, Rat King, Callous
 #: notes: Inspector, Azula, Ozai's Cruelty, Fire Nation Salvagers, Nyla, Black Sun's Zenith, Combustion Technique, Fists of
@@ -146,12 +152,11 @@
 1 Day of Black Sun (TLA) 94
 
 # Lands (37)
-1 Mount Doom (LTR) 258
-1 Blightstep Pathway // Searstep Pathway (KHM) 252
-1 Sulfurous Springs (DMU) 256
-1 Dragonskull Summit (XLN) 252
-1 Smoldering Marsh (EA3) 22
-1 Blackcleave Cliffs (ONE) 248
+1 Ominous Asylum (SPM) 181
+1 Temple of Malice (FDN) 701
+1 Boiling Rock Prison (TLA) 267
+1 Evolving Wilds (ECL) 264
+1 Starting Town (FIN) 289
 1 Fire Nation Palace (TLA) 268
 1 Blazemire Verge (DSK) 256
 1 Razortrap Gorge (DSK) 267
@@ -163,4 +168,4 @@
 1 Valakut, the Molten Pinnacle (TLE) 61
 1 White Lotus Hideout (TLA) 281
 11 Mountain (MSH) 294
-10 Swamp (MSH) 292
+11 Swamp (MSH) 292
