@@ -97,6 +97,15 @@ trigger, that ability triggers an additional time."
   Outlaws' Merriment). The two lines are a PLAN decision — decide at draft, not mid-batch.
 - **O5 — Equipment that grants an attack trigger is doubled too.** Stormforged Armor's
   conjured Ball Lightning arrives twice: two 6/1 tramplers per attack for an equip of 3 life.
+- **O6 — Isshin turns every "additional combat" trigger into TWO.** Aurelia ("attacks for the
+  first time each turn"), Raph & Leo, Genji Glove and Raiyuu each create an extra combat from
+  an attack trigger, so each one doubled is two extra combats. Mobilize tokens are doubled
+  too (Dalkovan Packbeasts makes six, Voice of Victory and Zurgo four), and Zurgo keeps
+  Warrior tokens from being sacrificed in your end step — the mobilize army STAYS.
+- **O7 — The theft / hand-attack shell is a different deck.** Tinybones ×2, Reno and Rude,
+  Vaan, Psychic Whorl, Ozai's Cruelty, Virus Beetle, Corrupt Court Official, Cruelclaw's
+  Heist, Oona's Blackguard, Laughing Jasper Flint: a black-red "play their cards" list with
+  no attack triggers. It is benched here; it could be its own Rakdos Brawl deck.
 - **O2 — Hand attack is a real sub-theme** (Virus Beetle, Corrupt Court Official, Psychic
   Whorl, Ozai's Cruelty, Auntie's Sentence, Cruelclaw's Heist, Jecht's saga, Ninja of the
   Hand), and Tinybones, Bauble Burglar is its payoff. Report-only in the floor (G-25).
@@ -231,6 +240,86 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | Raiyuu, Storm's Edge | ★★★ | lone Samurai attack doubled = untap ×2 and TWO extra combats (O4) |
 | Tamiyo, Upriser Crowned | ★★ | 6-mana flying double strike haste; monarch = a card every end step |
 
+### Outside the pile (owned, Mardu, Historic-Brawl legal; full text read)
+
+| Card | Verdict | Note |
+|---|---|---|
+| Aurelia, the Warleader | ★★★ | doubled = untap all twice, TWO extra combats (O6) |
+| Raph & Leo, Sibling Rivals | ★★★ | 3-mana: doubled = two extra combats |
+| Genji Glove | ★★★ | double strike; doubled = two extra combats |
+| Zurgo, Thunder's Decree | ★★★ | Mardu 3-drop; mobilize doubled = four Warriors that are NOT sacrificed |
+| Voice of Victory | ★★★ | 2-drop; four Warriors an attack; they can't cast spells on your turn |
+| Dalkovan Packbeasts | ★★ | six Warriors an attack (vigilance 0/4) |
+| Warren Warleader | ★★ | two modes an attack: Rabbits or +1/+1 team |
+| War Effort | ★★ | anthem + two attacking Warriors a combat |
+| Fire Navy Trebuchet | ★★ | two 2/1 flying attackers a combat off a 0/4 wall |
+| Mardu Siegebreaker | ★★ | two attacking token copies of the creature it exiles |
+| Overlord of the Mistmoors | ★★ | four 2/1 fliers an attack; impending {2}{W}{W} |
+| Overlord of the Boilerbilges | ★★ | 4 damage twice an attack; impending {2}{R}{R} |
+| Overlord of the Balemurk | ★ | mill 4 + regrow twice an attack; impending {1}{B} |
+| Far Fortune (pile) / Combustion Man (pile) | ★★ | see batch 3 |
+| Drakuseth, Maw of Flames | ★★ | 7-drop; 4+3+3 damage twice an attack |
+| Alpharael, Stonechosen | ★★ | void doubled: they lose half, then half again |
+| Arabella, Abandoned Doll | ★ | drain X twice, X = your power-2-or-less creatures (tokens count) |
+| Cosmic Cube | ★★ | two free casts from the top six an attack |
+| Daredevil, Man Without Fear | ★ | two impulse cards an attack |
+| Etali, Primal Storm | ★ | two free casts per player an attack |
+| Fire Lord Zuko | ★ | Mardu; firebending X doubled |
+| Sun Warriors | ◇ | firebending X = creature count, doubled |
+| Kinscaer Sentry | ★ | cheats two creatures in attacking |
+| Syr Vondam, the Lucent | ★ | team deathtouch +1/+0 on attack |
+| Cecil, Dark Knight | ★ | 1-drop; flipped side gives attackers indestructible |
+| Agrus Kos | ★ | double strike; suspect then exile a creature |
+| Gilgamesh, Raiyuu, Imperial Blademaster | ◇–★★★ | the Samurai / attacks-alone line (O4) |
+| Desert Were-Worm | ◇ | extra combat at 12 attacking power |
+| Seifer Almasy, Team Avatar, S.H.I.E.L.D. Spy Kit | ◇ | attacks-alone support |
+| Leader's Talent, The Kingpin of Crime, Smaug | ◇ | |
+
 ## 5. Consolidated plan (live)
 
-- (after batch 4)
+**Recommended plan: GO WIDE AND TAKE EXTRA COMBATS.** Attack triggers that make attackers
+(mobilize, "whenever you attack" tokens) feed per-attacker and damage triggers, and four
+doubled extra-combat cards re-fire all of it. Raiyuu still fits: the first combat can be a
+lone Samurai attack (Isshin or Raiyuu) for two extra combats, then go wide. The alternative —
+an attacks-alone Samurai Voltron (Raiyuu, Blademaster, Seifer, Team Avatar, Genji Glove,
+Gilgamesh, Spy Kit) — is a narrower deck; noted as a variant, not recommended.
+
+Draft target: 37 lands + 62 nonland + Isshin.
+
+**Core (62 nonland, P = from the pile, O = owned outside it):**
+- Extra combats (4): Aurelia O, Raph & Leo O, Genji Glove O, Raiyuu P
+- Attackers that make attackers (9): Zurgo O, Voice of Victory O, Dalkovan Packbeasts O,
+  Warren Warleader O, War Effort O, Fire Navy Trebuchet O, Mardu Siegebreaker O,
+  Overlord of the Mistmoors O, Stormforged Armor P
+- Attack-trigger damage (6): Far Fortune P, Combustion Man P, Overlord of the Boilerbilges O,
+  Drakuseth O, Arabella O, Alpharael O
+- Attack-trigger card advantage (7): Djeru and Hazoret P, Locke P, Raven Eagle P, Cosmic
+  Cube O, Daredevil O, Etali O, Overlord of the Balemurk O
+- Attack mana (2): Fire Lord Zuko O, Sun Warriors O
+- Team pump / protection (3): Syr Vondam O, Cecil O, Imperial Blademaster P
+- Interaction (13): Bitter Triumph, Hero's Downfall, Long Goodbye, Death in the Family,
+  Epic Downfall, Feed the Swarm, Nowhere to Run, Seismic Wave, Stoke the Flames, Annex
+  Sentry, All-Fates Stalker, Murderous Redcap (all P), Agrus Kos O
+- Card advantage (5): Phyrexian Arena, Black Cat, Tamiyo, Celes, Outrageous Robbery (all P)
+- Bodies (5): Olivia, Rakdos the Muscle, Deep-Cavern Bat, Jecht, The Infamous Cruelclaw (P)
+- Fill (8): Kinscaer Sentry O, Terra P, Form a Posse P, Outlaws' Merriment P, Black Widow P,
+  Crucias P, Scalestorm Summoner P, Loyal Fire Sage P
+
+**Protect (the ranking cannot see doubled triggers):** Isshin, Aurelia, Raph & Leo, Genji
+Glove, Raiyuu, Zurgo, Voice of Victory, Djeru and Hazoret, Stormforged Armor.
+
+**Bench (pile, not in the core):** the O7 theft / hand-attack shell; Hama and Dream Harvest
+(illegal, E2); Silver Sable (E3); Cruel Alliance; Urabrask; Scarlet Witch (MSC); the
+sacrifice-outlet cards (Umbral Collar Zealot, Sawblade Skinripper, Boneyard Desecrator,
+Pirate Peddlers, Pyre-Sledge Arsonist, Sothera, Akul, Rakdos's sac half); spells-deck cards
+(Brimstone Roundup, Smelt-Ward Minotaur, Steal the Show, Lecturing Scornmage, Molten
+Lavamancer, Nico Minoru); the Hazoret trio; Toralf's Disciple, Angrath, Tibalt, Korvold
+saga, Web Watch, Hellspur Posse Boss/Brute, At Knifepoint, Vial Smasher, Ertha Jo,
+Omenport Vigilante, Wild Pack Squad, Caught in the Crossfire, Shoot the Sheriff, Ragavan,
+Mabel, Mog, Spider-Man, Repercussion, Skewer, Nahiri's Wrath, Chandra's Spitfire,
+Professional Face-Breaker, Ahn-Crop Invader, Molecular Modifier, Archon's Glory, Panicked
+Bystander, Morbid Opportunist, Rankle, Zagras, Ninja of the Hand, Marauding Mako.
+
+**Manabase (R6):** the pile's lands make no white. Draft with Nomad Outpost, Godless Shrine,
+Sacred Foundry, Blood Crypt, the W/B and R/W Verges, Temples, Scoured Barrens, Shattered
+Sanctum, Starting Town, Plains/Mountain/Swamp, and measure with `consistency`.
