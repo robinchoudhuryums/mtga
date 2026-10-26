@@ -367,6 +367,17 @@ Regex sweeps over the Mardu Historic-Brawl pool for extra combats, per-attacker 
 - Rules flag: Combat Celebrant's extra combat is a reflexive trigger off EXERT — whether Isshin
   doubles it is unconfirmed; do not count on two.
 
+
+**Discard re-check (2026-10-26).** Deck 93 has exactly FIVE discard outlets of its own (Nico,
+Celes, Crucias, Cruelclaw, Bitter Triumph); Alpharael's ward and Angrath's +1 make the
+OPPONENT discard, which Spider-Man / Mako do not read. The engine that would make discard real
+is ATTACK-TRIGGERED discard, doubled by Isshin: Cool but Rude (owned; loot ×2 per attack, level 2
+= 2 damage per discard), Inti (owned), Null Group Biological Assets (owned), Adventurer's Airship
+(owned), Smellerbee (craft; discard hand, draw = attackers, twice), Green Goblin Revenant,
+Azula Ruthless Firebender, Burning-Tree Vandal, Reckless Detective, Contract Hero, Living Laser.
+Of the fits sweep only Fear of Missing Out (enter: discard then draw) and Gideon's Memorial
+(discard itself for 4 damage) discard.
+
 **Open for the owner:** Imperial Blademaster's draft trigger needs a LONE attack, and
 `targets` flags it (with Raiyuu) as a CONFLICT with 11 go-wide cards. Raiyuu earns it (the
 first combat alone buys two extra combats); Blademaster does not — Dauntless Veteran (team
