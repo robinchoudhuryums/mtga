@@ -1,6 +1,6 @@
 # Isshin pile — analysis (TEMPORARY working doc)
 
-**Status: IN PROGRESS.** Delete once the deck is drafted and the findings are folded into
+**Status: DRAFTED as deck 93 (Two Heavens) 2026-10-26, go-wide + extra combats (owner's pick); tier letter and the open notes below await the owner.** Delete once the deck is drafted and the findings are folded into
 the deck file's `#: notes:` block. A scratchpad, not a source of truth — decks/ are.
 
 **Source list:** the owner's 116-line pile, pasted 2026-10-26 (130 cards: 106 distinct
@@ -319,6 +319,19 @@ Omenport Vigilante, Wild Pack Squad, Caught in the Crossfire, Shoot the Sheriff,
 Mabel, Mog, Spider-Man, Repercussion, Skewer, Nahiri's Wrath, Chandra's Spitfire,
 Professional Face-Breaker, Ahn-Crop Invader, Molecular Modifier, Archon's Glory, Panicked
 Bystander, Morbid Opportunist, Rankle, Zagras, Ninja of the Hand, Marauding Mako.
+
+**Tooling holes found at draft (G-67, not yet fixed):** `classify_roles` scores NO card
+advantage for impulse from an OPPONENT'S library or a free cast off the top: Black Cat (exile
+two of their top nine, play them), Outrageous Robbery (their top X), Locke (cast from the
+milled cards), Daredevil and Cosmic Cube (attack-trigger impulse / free cast), Tamiyo (the
+monarch). Deck 93 reads card advantage 6; a hand count is ~13. Same family as the Dragonhawk
+impulse hole noted for deck 92. `screen` also returned 0 KEY verdicts for the 94 unused cards —
+it cannot see Isshin's doubling, so its silence is not a verdict here.
+
+**Open for the owner:** Imperial Blademaster's draft trigger needs a LONE attack, and
+`targets` flags it (with Raiyuu) as a CONFLICT with 11 go-wide cards. Raiyuu earns it (the
+first combat alone buys two extra combats); Blademaster does not — Dauntless Veteran (team
++1/+1 on attack, doubled) is the go-wide replacement.
 
 **Manabase (R6):** the pile's lands make no white. Draft with Nomad Outpost, Godless Shrine,
 Sacred Foundry, Blood Crypt, the W/B and R/W Verges, Temples, Scoured Barrens, Shattered

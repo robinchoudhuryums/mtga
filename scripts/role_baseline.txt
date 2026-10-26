@@ -214,6 +214,7 @@ Hymn of the Faller
 Hyperion, Supreme Hero
 I Am Iron Man
 Identity Echo
+Imperial Blademaster
 Improvisation Capstone
 Ingenious Leonin
 Insatiable Skittermaw
@@ -257,6 +258,7 @@ Living Brain, Mechanical Marvel
 Loki Laufeyson
 Long Feng, Grand Secretariat
 Lorehold, the Historian
+Loyal Fire Sage
 Magic Pot
 Magitek Armor
 Mai, Jaded Edge
@@ -331,6 +333,7 @@ Radioactive Man
 Rage into the Valley
 Raging Goblinoids
 Rainveil Rejuvenator
+Raiyuu, Storm's Edge
 Rapacious Dragon
 Raph & Leo, Sibling Rivals
 Raph & Mikey, Troublemakers
@@ -405,6 +408,7 @@ Super-Soldier Serum
 Surrak, Elusive Hunter
 Sweettooth Witch
 Swiftblade Vindicator
+Tamiyo, Upriser Crowned
 Tangle Tumbler
 Tannuk, Steadfast Second
 Tapestry Warden
