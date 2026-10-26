@@ -59,15 +59,62 @@ trigger, that ability triggers an additional time."
 
 ## 2. Standing error list
 
-- (none yet)
+- **E1 — "Deals combat damage" is not "attacks" (R3).** Most of the pile's black creatures
+  (Tinybones, Black Widow, Reno and Rude, Cruelclaw, Shark Shredder, Jecht) pay on combat
+  DAMAGE. Isshin does not double those. Grade them as ordinary evasive creatures.
+- **E2 — A U/B HYBRID has blue identity.** Hama and Dream Harvest are payable with black
+  mana but are ILLEGAL under an R/W/B commander (R7). Hybrid castability (G-58) is a 60-card
+  rule; in Brawl, identity wins.
 
 ## 3. Cross-batch observations
 
-- (none yet)
+- **O1 — The pile is not an Isshin pile yet (measured before batch 1).** A text sweep of all
+  106 nonland cards finds **11** that Isshin doubles (Raven Eagle, Djeru and Hazoret, Locke,
+  Silver Sable, Far Fortune, Combustion Man, Stormforged Armor, Toralf's Disciple,
+  Scalestorm Summoner, Imperial Blademaster, Raiyuu). Most of the rest is a black THEFT /
+  HAND-ATTACK / outlaw shell. But the owned pool holds **137** Mardu Historic-Brawl cards with
+  an attack trigger (`pool.py --regex 'whenever [^.]*attacks?|whenever you attack' --within
+  RWB --legal "historic brawl" --owned`), so the commander's engine is buildable — the plan
+  must pull those in from outside the pile, as the Ozai draft did with its duals.
+- **O2 — Hand attack is a real sub-theme** (Virus Beetle, Corrupt Court Official, Psychic
+  Whorl, Ozai's Cruelty, Auntie's Sentence, Cruelclaw's Heist, Jecht's saga, Ninja of the
+  Hand), and Tinybones, Bauble Burglar is its payoff. Report-only in the floor (G-25).
 
 ## 4. Running verdicts
 
 Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ marginal · ✗ out`.
+
+### Batch 1 (27)
+
+| Card | Verdict | Note |
+|---|---|---|
+| Isshin | commander | — |
+| Tinybones, the Pickpocket | ◇ | 1-drop deathtouch; combat-damage recast (E1) |
+| Black Widow, Super Spy | ★ | menace 2-drop; combat-damage card advantage, not doubled |
+| Reno and Rude | ◇ | menace 2-drop; damage impulse needs a sacrifice |
+| Tinybones, Bauble Burglar | ◇ | payoff for the hand-attack sub-theme (O2) only |
+| Deep-Cavern Bat | ★ | evasive lifelink 2-drop + hand disruption |
+| Virus Beetle | △ | ETB discard body |
+| Corrupt Court Official | △ | ETB discard body |
+| Umbral Collar Zealot | △ | sac outlet, surveil |
+| Sawblade Skinripper | △ | sacrifice deck card |
+| Raven Eagle | ★★ | flier; ATTACK trigger doubled — two graveyard exiles, two Clues off creatures |
+| Ninja of the Hand | △ | deathtouch 3-drop, late discard |
+| The Infamous Cruelclaw | ★ | menace; free cast on damage (not doubled) — strong anyway |
+| Laughing Jasper Flint | ★ | upkeep impulse X = outlaws; count outlaws at draft |
+| Shark Shredder | ★ | first strike 4/4; reanimates on damage (enters attacking — no trigger) |
+| Jecht // Braska's Final Aeon | ★ | menace 4/3; flips to a discard+draw ×2 / double-edict saga |
+| Sothera, the Supervoid | ◇ | each of YOUR creatures dying = an edict; needs sac outlets |
+| Black Cat, Cunning Thief | ★ | ETB: two cards from their top nine — card advantage 2 |
+| Rakdos, the Muscle | ★★ | 6/5 flying trample for 5; sac → impulse; self-indestructible |
+| Hama, the Bloodbender | ✗ | U/B hybrid — blue identity (E2) |
+| Cruelclaw's Heist | ◇ | hand attack + steal; gift costs a card |
+| Outrageous Robbery | ★ | instant X impulse from their library |
+| Dream Harvest | ✗ | U/B hybrid — blue identity (E2) |
+| Korvold and the Noble Thief | ◇ | two Treasures then impulse 3 |
+| Auntie's Sentence | ◇ | cheap modal discard / -2/-2 |
+| Psychic Whorl | △ | discard two; no Rats |
+| Ozai's Cruelty | △ | discard two + 2 damage |
 
 ## 5. Consolidated plan (live)
 
