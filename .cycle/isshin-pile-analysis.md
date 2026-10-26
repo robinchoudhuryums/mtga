@@ -65,6 +65,9 @@ trigger, that ability triggers an additional time."
 - **E2 — A U/B HYBRID has blue identity.** Hama and Dream Harvest are payable with black
   mana but are ILLEGAL under an R/W/B commander (R7). Hybrid castability (G-58) is a 60-card
   rule; in Brawl, identity wins.
+- **E3 — A doubled trigger is only worth twice when its effect STACKS.** Silver Sable's
+  "gains lifelink" twice is lifelink once; Terra's trance is "at the beginning of combat",
+  not an attack trigger. Count what the second resolution adds.
 
 ## 3. Cross-batch observations
 
@@ -76,6 +79,11 @@ trigger, that ability triggers an additional time."
   an attack trigger (`pool.py --regex 'whenever [^.]*attacks?|whenever you attack' --within
   RWB --legal "historic brawl" --owned`), so the commander's engine is buildable — the plan
   must pull those in from outside the pile, as the Ozai draft did with its duals.
+- **O3 — Djeru and Hazoret wants LEGENDS.** Doubled, its attack looks at twelve cards and casts
+  up to two legendary creatures free. The pile is legend-dense (Tinybones ×2, Black Widow,
+  Reno and Rude, Cruelclaw, Jasper Flint, Shark Shredder, Jecht, Black Cat, Rakdos, Celes,
+  Terra, Rankle, Akul, Locke, Zagras, Silver Sable…). Count legendary creatures at draft; at
+  ~25 of 99 a twelve-card look finds ~3.
 - **O2 — Hand attack is a real sub-theme** (Virus Beetle, Corrupt Court Official, Psychic
   Whorl, Ozai's Cruelty, Auntie's Sentence, Cruelclaw's Heist, Jecht's saga, Ninja of the
   Hand), and Tinybones, Bauble Burglar is its payoff. Report-only in the floor (G-25).
@@ -115,6 +123,38 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | Auntie's Sentence | ◇ | cheap modal discard / -2/-2 |
 | Psychic Whorl | △ | discard two; no Rats |
 | Ozai's Cruelty | △ | discard two + 2 damage |
+
+### Batch 2 (27)
+
+| Card | Verdict | Note |
+|---|---|---|
+| Death in the Family | ★ | 2-mana instant exile, MV ≤3 |
+| Epic Downfall | ★ | 2-mana exile, MV ≥3 (sorcery) |
+| Long Goodbye | ★ | 2-mana instant, uncounterable, MV ≤3, hits walkers |
+| Bitter Triumph | ★★ | 2-mana instant, unconditional creature/walker |
+| Feed the Swarm | ★ | creature OR enchantment answer |
+| Hero's Downfall | ★★ | 3-mana instant, unconditional creature/walker |
+| Cruel Alliance | ◇ | teamwork taps your own attackers — fights the plan |
+| Nowhere to Run | ★ | flash -3/-3; strips hexproof/ward |
+| Phyrexian Arena | ★★ | a card every upkeep |
+| Interdimensional Web Watch | ◇ | 2 impulse + exile-only mana |
+| Celes, Rune Knight | ★★ | Mardu 4/4; ETB rummage-plus-one; team counters on graveyard entries |
+| Terra, Herald of Hope | ★ | Mardu 3/3; flies each combat; reanimates on damage (beginning-of-combat, not doubled) |
+| Djeru and Hazoret | ★★★ | ATTACK trigger doubled: two looks at six, up to two free legendary creatures (O3) |
+| Hazoret's Monument | ◇ | red creature reducer + loot per creature cast |
+| Hazoret the Fervent | ◇ | hellbent gate; discard ping |
+| Hazoret, Godseeker | ◇ | makes a power-2 attacker unblockable; max-speed gate |
+| Archon's Glory | △ | pump |
+| Mabel, Valley Hero | ◇ | ETB counters |
+| Panicked Bystander | △ | death lifegain |
+| Oona's Blackguard | ◇ | Rogue counters + damage discard |
+| Morbid Opportunist | ★ | draw on a death each turn |
+| Rankle, Pitiless Trickster | ◇ | symmetric discard + edict ETB |
+| Akul the Unrepentant | ★ | 5/5 flying trample for 4 |
+| Locke, Treasure Hunter | ★★ | ATTACK trigger doubled: four mills, Treasures off lands, cast up to two spells |
+| Zagras, Thief of Heartbeats | ◇ | 6-mana team deathtouch |
+| Annex Sentry | ★ | removal on a body (W) |
+| Silver Sable | ◇ | attack trigger doubles to nothing (E3) |
 
 ## 5. Consolidated plan (live)
 
