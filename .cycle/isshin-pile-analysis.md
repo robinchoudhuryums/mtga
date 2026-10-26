@@ -349,6 +349,24 @@ card advantage 6→7, central themes 18→21, early drops 14→11, avg MV 3.60�
 Hellspur Posse Boss, At Knifepoint, Ertha Jo (copies Arsonist), Nico Minoru, Angrath the
 Flame-Chained, Cruel Alliance, Silver Sable, Panicked Bystander, Chandra's Spitfire.
 
+
+**Fits / upgrades / spice sweep (2026-10-26, after the 15-swap package; full text read).**
+Regex sweeps over the Mardu Historic-Brawl pool for extra combats, per-attacker triggers,
+"whenever you attack", death/sacrifice payoffs, mobilize and team haste.
+- Upgrades: Hellrider, Ingris Stingerquill (2 damage per attacker each, doubled), Mardu
+  Ascendancy (two permanent Goblins per nontoken attacker), Zurgo Stormrender (every end-step
+  mobilize sacrifice drains 1; an attacking token that dies draws), Liliana, Dreadhorde General
+  (owned; a card per death), Dictate of Erebos (flash; each death = they sacrifice), Mishra,
+  Claimed by Gix (drain = attackers, twice).
+- Fits: Popular Egotist, Funeral Room, Tannuk, Full Throttle (all owned); Bone-Cairn Butcher,
+  Dalkovan Outrider, Venerated Stormsinger (mobilize); Vraan, Nadier's Nightblade, Pitiless
+  Plunderer, Havoc Jester (sacrifice payoffs); Adeline, Anim Pakal (attack-token makers).
+- Spice: Fear of Missing Out (doubled "first attack each turn" = two extra combats at
+  delirium), Dawnsire (owned; two 100-damage kills an attack once stationed), Mardu Thunderkite,
+  Rabble Rousing, The Meathook Massacre, Stadium Headliner (owned), Kingpin Wilson Fisk.
+- Rules flag: Combat Celebrant's extra combat is a reflexive trigger off EXERT — whether Isshin
+  doubles it is unconfirmed; do not count on two.
+
 **Open for the owner:** Imperial Blademaster's draft trigger needs a LONE attack, and
 `targets` flags it (with Raiyuu) as a CONFLICT with 11 go-wide cards. Raiyuu earns it (the
 first combat alone buys two extra combats); Blademaster does not — Dauntless Veteran (team
