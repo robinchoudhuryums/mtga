@@ -10,13 +10,13 @@
 #: archetype: is permanent RED mana. With six or more unspent, Ozai has flying and indestructible —
 #: archetype: holding mana is his protection, and a "destroy all creatures" wrath is one-sided. The
 #: archetype: plan: ramp to Ozai on turns 4-5, attack with firebenders (Avatar Roku adds six on ANY
-#: archetype: player's attack), take EXTRA COMBATS (Moraug's landfall, Relentless Assault, Savage
-#: archetype: Beating) so every firebending trigger and combat-damage payoff (Gix, Photon, Neheb,
+#: archetype: player's attack), take EXTRA COMBATS (Moraug's landfall, Aggravated Assault, Savage
+#: archetype: Beating, Great Train Heist) so every firebending trigger and combat-damage payoff (Gix, Photon, Neheb,
 #: archetype: Efreet Flamepainter, Ancient Copper Dragon, Black Widow) fires again, and spend the pile
 #: archetype: through red sinks — Fire Nation Turret's fifty charge counters, Fated Firepower, Hell to
 #: archetype: Pay, Explosive Singularity, Insurrection, Embercleave cast mid-combat. DISTINCT from deck
 #: archetype: 1 (a 60-card Standard aggro-sacrifice list): this one is a mana-accumulation deck.
-#: protect: Ozai, the Phoenix King; Fire Nation Turret; Avatar Roku, Firebender; Fire Lord Ozai; The Legend of Roku; Sozin's Comet; Firebender Ascension; Fated Firepower; Slash, Reptile Rampager; Smellerbee, Rebel Fighter
+#: protect: Ozai, the Phoenix King; Fire Nation Turret; Avatar Roku, Firebender; Fire Lord Ozai; The Legend of Roku; Sozin's Comet; Firebender Ascension; Fated Firepower; Smellerbee, Rebel Fighter
 #: notes: DRAFTED 2026-10-25 from the owner's 116-card pile (.cycle/ozai-pile-analysis.md, four batches)
 #: notes: plus Arcane Signet and six untapped Rakdos duals from outside the pile (Mount Doom,
 #: notes: Blightstep Pathway, Sulfurous Springs, Dragonskull Summit, Smoldering Marsh, Blackcleave
@@ -33,37 +33,50 @@
 #: notes: Skinripper, Longshot for Avengers: Under Siege, Zuko Firebending Master for Alesha, Smaug for
 #: notes: Massacre Wurm, Iroh Firebending Instructor for Lo and Li, Embercleave for Fury of the Horde,
 #: notes: Black Widow for June. EXTRA COMBATS held to three (Moraug, Relentless Assault, Savage
-#: notes: Beating): each is dead without a board, so Seize the Day was benched. Neheb Dreadhorde
+#: notes: Beating; later Aggravated Assault for Relentless, and Great Train Heist made four): each
+#: notes: is dead without a board, so Seize the Day was benched. Neheb Dreadhorde
 #: notes: Champion over Neheb the Eternal: cheaper, card selection, and its mana arrives IN combat.
-#: notes: OPEN for the owner: more ramp (Talisman of Indulgence, Mind Stone)? Replace the tapped
-#: notes: Thriving lands and Valakut with more untapped duals?
+#: notes: SWAPS 2026-10-26, third pass (owner's picks): Drana for Epic Downfall, Zuko Seeking Honor
+#: notes: for Loyal Fire Sage, Fire Nation Sentinels for Slash (off #: protect:), Archpriest of
+#: notes: Shadows for Ayara, Firebending Student for Scarring Memories, Day of Black Sun for
+#: notes: Blasphemous Act (abilities lost first, so indestructible dies; at X <= 5 every 6+ drop we
+#: notes: run survives), Yathan Tombguard for Doctor Doom, Barbed Servitor for Arcane Signet, Return
+#: notes: the Favor for Rakdos Signet, Great Train Heist for Rakdos Locket, Aggravated Assault for
+#: notes: Relentless Assault, Professional Face-Breaker for Perforating Artist, Goldspan Dragon for
+#: notes: Iroh Firebending Instructor. COUNTERS PACKAGE: Drana, Sentinels, Zuko Seeking Honor,
+#: notes: Archpriest's backup, Fire Sages and Iroh's mentor put counters out; Iroh Dragon of the West
+#: notes: gives every countered creature firebending 2 and Yathan draws off them. FIREBENDING
+#: notes: STUDENT's X is its power on resolution: order pumps first, and Frantic Confrontation in
+#: notes: response to its trigger pays for itself. NO ROCKS: ramp is Treasure (Goldspan doubles it),
+#: notes: Legend of Roku, Neheb and firebending; add a 38th land before a rock if Ozai is slow.
+#: notes: AGGRAVATED ASSAULT + OZAI: Ozai's 4 red plus any other firebender pays {3}{R}{R} each
+#: notes: combat, so the extra combats are unbounded while Ozai keeps the mana.
+#: notes: OPEN for the owner: replace the tapped Thriving lands and Valakut with untapped duals?
 #: notes: BENCH (pile): Hazoret, Krenko, Gisa the Hellraiser, Red Hulk, Sporogenic Infection, Robot
 #: notes: Domination, Dragon Fodder, Reckless Ransacking, Magic Pot, Goblin Surprise, Rat King, Callous
-#: notes: Inspector, Firebending Student, Azula, Zuko Seeking Honor, Ozai's Cruelty, Fire Nation
-#: notes: Salvagers, Fire Nation Sentinels, Nyla, Black Sun's Zenith, Combustion Technique, Fists of
+#: notes: Inspector, Azula, Ozai's Cruelty, Fire Nation Salvagers, Nyla, Black Sun's Zenith, Combustion Technique, Fists of
 #: notes: Flame, Freedom Fighter Recruit, Lost in Memories, Bolt Bend, Wartime Protestors, Mirrorwing
 #: notes: Dragon, Storm of Memories, Volcanic Torrent, Warstorm Surge, Ashling, Pyromancer's Goggles,
 #: notes: The Bloodsky Massacre, Siege Dragon, Shivan Branch-Burner, Silverclad Ferocidons. OUT: Hulk,
 #: notes: Always Angry ("destroy all artifacts" kills our Signets, Locket, Turret and Treasures).
-#: notes: BENCH (owner's 2026-10-26 list): Neheb the Eternal, Seize the Day, Drana, Archpriest of
-#: notes: Shadows, Ancient Brass Dragon, Increasing Vengeance, Fire Nation Attacks, Seething Song,
-#: notes: Barbed Servitor, Yathan Tombguard, Tinybones; skipped: Necropolis Regent (BBB), Urgoros,
+#: notes: BENCH (owner's 2026-10-26 list): Neheb the Eternal, Seize the Day, Ancient Brass Dragon, Increasing Vengeance, Fire Nation Attacks, Seething Song,
+#: notes: Tinybones, Zuko Exiled Prince, Azula On the Hunt, Sword of Fire and Ice, Swiftfoot Boots,
+#: notes: Fable of the Mirror-Breaker, Increasing Vengeance; skipped: Necropolis Regent (BBB), Urgoros,
 #: notes: Falkenrath Marauders, Etched Slith, Darkness.
 
 # Commander (leads from the command zone; also one of the 100)
 1 Ozai, the Phoenix King (TLA) 235
 
-# Mana — rocks and Treasure (Ozai at 6, recast at 8)
-1 Arcane Signet (FRC) 20
-1 Rakdos Signet (AA1) 10
-1 Rakdos Locket (RNA) 237
+# Mana — Treasure and ramp (Ozai at 6, recast at 8)
 1 Ancient Copper Dragon (FCA) 12
 1 The Legend of Roku (TLA) 145
+1 Professional Face-Breaker (SNC) 116
+1 Goldspan Dragon (KHM) 139
 
 # Firebending engine and extra combats — mana that never empties while Ozai is out
 1 Photon, Mighty Marvel (MSC) 58
 1 Fire Sages (TLA) 136
-1 Loyal Fire Sage (TLE) 242
+1 Zuko, Seeking Honor (TLE) 150
 1 Firebender Ascension (TLA) 137
 1 Cruel Administrator (TLA) 213
 1 Iroh, Dragon of the West (TLE) 119
@@ -74,9 +87,12 @@
 1 Electro, Assaulting Battery (SPM) 76
 1 Savage Beating (MAR) 26
 1 Moraug, Fury of Akoum (ZNR) 150
-1 Relentless Assault (MAR) 25
+1 Aggravated Assault (WOT) 39
 1 Zuko, Firebending Master (TLE) 127
-1 Iroh, Firebending Instructor (TLE) 240
+1 Drana, Liberator of Malakir (JMP) 225
+1 Fire Nation Sentinels (TLE) 230
+1 Firebending Student (TLA) 139
+1 Great Train Heist (OTJ) 125
 
 # Red sinks and finishers
 1 Fire Nation Turret (TLE) 64
@@ -92,25 +108,24 @@
 1 Embercleave (ELD) 120
 
 # Tokens, sacrifice and drain (deck 1's spine)
-1 Slash, Reptile Rampager (TMT) 108
-1 Perforating Artist (FDN) 124
-1 Ayara, Widow of the Realm // Ayara, Furnace Queen (MOM) 90
 1 Rakdos, the Muscle (OTJ) 226
 1 Smellerbee, Rebel Fighter (TLE) 125
 1 Zuko, Avatar Hunter (TLE) 246
 1 Fire Nation Occupation (TLE) 105
 
 # Card advantage and tutors
-1 Doctor Doom (MSH) 95
+1 Yathan Tombguard (TDM) 100
 1 Gix, Yawgmoth Praetor (BRO) 95
 1 Lion Vulture (TLE) 232
 1 Rakdos, Patron of Chaos (MKM) 224
 1 Raven Eagle (TLA) 116
 1 Efreet Flamepainter (STX) 98
 1 Black Widow, Super Spy (MSH) 89
+1 Barbed Servitor (MKM) 77
 
 # Recursion
 1 Rakdos Joins Up (OTJ) 225
+1 Archpriest of Shadows (MOM) 89
 
 # Interaction
 1 Hell to Pay (OTJ) 126
@@ -118,18 +133,17 @@
 1 Firebending Lesson (TLA) 138
 1 Iroh's Demonstration (TLA) 141
 1 The Last Agni Kai (TLA) 144
-1 Epic Downfall (TLA) 96
 1 Fiery Confluence (TLE) 165
 1 Noxious Gearhulk (TLE) 25
-1 Scarring Memories (TLE) 111
 1 Combustion Man (TLA) 127
 1 Sarkhan, the Dragonspeaker (KTK) 119
 1 Overwhelming Victory (TLE) 123
 1 Redirect Lightning (TLA) 151
+1 Return the Favor (SOA) 47
 
 # Sweepers — hold six mana and Ozai survives the wrath
 1 The Rise of Sozin // Fire Lord Sozin (TLA) 117
-1 Blasphemous Act (TLE) 26
+1 Day of Black Sun (TLA) 94
 
 # Lands (37)
 1 Mount Doom (LTR) 258

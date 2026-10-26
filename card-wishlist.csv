@@ -64,7 +64,6 @@ Brokers Hideout,Land,"When this land enters, sacrifice it. When you do, search y
 Tranquil Landscape,Land,"{T}: Add {C}.
 {T}, Sacrifice this land: Search your library for a basic Forest, Plains, or Island card, put it onto the battlefield tapped, then shuffle.
 Cycling {G}{W}{U} ({G}{W}{U}, Discard this card: Draw a card.)",W/U/G,card draw; sacrifice; ramp; mana; cycling,,,Common,78-historic-brawl,,1.5,seed
-Rakdos Signet,Artifact,"{1}, {T}: Add {B}{R}.",B/R,mana,AA1,10,Uncommon,92,,2.5,seed
 Fallen Shinobi,Creature — Zombie Ninja,"Ninjutsu {2}{U}{B} ({2}{U}{B}, Return an unblocked attacker you control to hand: Put this card onto the battlefield from your hand tapped and attacking.)
 Whenever this creature deals combat damage to a player, that player exiles the top two cards of their library. Until end of turn, you may play those cards without paying their mana costs.",U/B,Zombie; Ninja; heist; ninjutsu; evasion; tempo,AA3,19,Rare,91,,3.0,seed
 Bontu the Glorified,Legendary Creature — God,"Menace, indestructible
@@ -377,7 +376,6 @@ Jace, Multiverse Architect can be your commander.",W/U/B/R,Jace; planeswalker; c
 "Nissa, Leyline Tamer",Legendary Creature — Elf Wizard,"Deathtouch, vigilance
 Landfall — Whenever a land you control enters, draw a card. Then if this is the first time this ability has resolved this turn, reveal cards from the top of your library until you reveal a creature card. Put that card onto the battlefield and the rest on the bottom of your library in a random order.",W/U/B/R,Elf; Wizard; card draw; landfall; vigilance; combat; deathtouch; removal; lands,FRC,2,Mythic,90,,8.0,seed
 Reflecting Pool,Land,{T}: Add one mana of any type that a land you control could produce.,Colorless,mana,FRC,23,Rare,84,,4.0,seed
-Arcane Signet,Artifact,{T}: Add one mana of any color in your commander's color identity.,Colorless,mana,FRC,20,Uncommon,92,,2.5,seed
 Command Tower,Land,{T}: Add one mana of any color in your commander's color identity.,Colorless,mana,FRC,22,Common,88; 91,,1.5,seed
 Silent Clearing,Land,"{T}, Pay 1 life: Add {W} or {B}.
 {1}, {T}, Sacrifice this land: Draw a card.",W/B,pay life; card draw; sacrifice,HA7,24,Rare,91,,3.0,seed
@@ -414,8 +412,13 @@ Flashback {7}{B}{B}{B} (You may cast this card from your graveyard for its flash
 "Liliana, Death's Majesty",Legendary Planeswalker — Liliana,"+1: Create a 2/2 black Zombie creature token. Mill two cards.
 −3: Return target creature card from your graveyard to the battlefield. That creature is a black Zombie in addition to its other colors and types.
 −7: Destroy all non-Zombie creatures.",B,Liliana; planeswalker; reanimator; graveyard; mill; tokens,J25,458,Mythic,91,,10.0,seed
+"Drana, Liberator of Malakir",Legendary Creature — Vampire Ally,"Flying, first strike
+Whenever Drana deals combat damage to a player, put a +1/+1 counter on each attacking creature you control.",B,Vampire; Ally; counters; flying; evasion; first strike; combat,JMP,225,Mythic,92,,7.0,seed
 Ghoulcaller Gisa,Legendary Creature — Human Wizard,"{B}, {T}, Sacrifice another creature: Create X 2/2 black Zombie creature tokens, where X is the sacrificed creature's power.",B,Human; Wizard; sacrifice; tokens,JMP,236,Mythic,91,,5.0,seed
 Miasmic Mummy,Creature — Zombie Jackal,"When this creature enters, each player discards a card.",B,Zombie; Jackal; etb; discard,JMP,256,Common,91,,1.0,seed
+Goldspan Dragon,Creature — Dragon,"Flying, haste
+Whenever this creature attacks or becomes the target of a spell, create a Treasure token.
+Treasures you control have ""{T}, Sacrifice this artifact: Add two mana of any one color.""",R,Dragon; treasure; tokens; flying; evasion; haste; aggro,KHM,139,Mythic,92,,7.0,seed
 Kaya the Inexorable,Legendary Planeswalker — Kaya,"+1: Put a ghostform counter on up to one target nontoken creature. It gains ""When this creature dies or is put into exile, return it to its owner's hand and create a 1/1 white Spirit creature token with flying.""
 −3: Exile target nonland permanent.
 −7: You get an emblem with ""At the beginning of your upkeep, you may cast a legendary spell from your hand, from your graveyard, or from among cards you own in exile without paying its mana cost.""",W/B,Kaya; planeswalker; counters; graveyard; tokens; removal; bounce,KHM,218,Mythic,90,,10.0,seed
@@ -466,7 +469,6 @@ Whenever one or more artifact creatures you control attack, Alibou deals X damag
 "Black Panther, Wakandan King",Legendary Creature — Human Noble Hero,"First strike
 Survey the Realm — Whenever Black Panther or another creature you control enters, put a +1/+1 counter on target land you control.
 Mine Vibranium — {3}: Move all +1/+1 counters from target land you control onto target creature. If one or more +1/+1 counters are moved this way, you gain that much life and draw a card.",W/G,Human; Noble; Hero; counters; lifegain; card draw; first strike; combat,MAR,87,Mythic,78-historic-brawl; 86,78-historic-brawl craft-list swap for Arcane Signet: enters trigger feeds land counters (Toph) and a {3} draw sink,7.0,seed
-Relentless Assault,Sorcery,"Untap all creatures that attacked this turn. After this main phase, there is an additional combat phase followed by an additional main phase.",R,,MAR,25,Mythic,92,,4.5,seed
 Savage Beating,Instant,"Cast this spell only during combat on your turn.
 Choose one —
 • Creatures you control gain double strike until end of turn.
@@ -501,6 +503,10 @@ Whenever an Assassin you control deals combat damage to an opponent, cloak the t
 At the beginning of your end step, target opponent may sacrifice two nonland, nontoken permanents of their choice. If they don't, you draw two cards.",B/R,Demon; card draw; sacrifice; flying; evasion; trample,MKM,224,Mythic,92,,6.5,seed
 "Voja, Jaws of the Conclave",Legendary Creature — Wolf,"Vigilance, trample, ward {3}
 Whenever Voja attacks, put X +1/+1 counters on each creature you control, where X is the number of Elves you control. Draw a card for each Wolf you control.",W/R/G,Wolf; Elf; counters; card draw; vigilance; combat; trample; evasion; ward; protection,MKM,432,Mythic,88,,8.5,seed
+Barbed Servitor,Artifact Creature — Construct,"Indestructible
+When this creature enters, suspect it. (It has menace and can't block.)
+Whenever this creature deals combat damage to a player, you draw a card and you lose 1 life.
+Whenever this creature is dealt damage, target opponent loses that much life.",B,Construct; pay life; card draw; etb; indestructible; resilience; suspect; aristocrats,MKM,77,Rare,92,,7.0,seed
 Ill-Timed Explosion,Sorcery,"Draw two cards. Then you may discard two cards. When you do, Ill-Timed Explosion deals X damage to each creature, where X is the greatest mana value among cards discarded this way.",U/R,card draw; burn,MKM,207,Rare,25,draw two + scalable board sweep/burn,7.0,hand
 "Izoni, Center of the Web",Legendary Creature — Elf Detective,"Menace
 Whenever Izoni enters or attacks, you may collect evidence 4. If you do, create two 2/1 black and green Spider creature tokens with menace and reach.
@@ -546,8 +552,9 @@ Wrenn and Realmbreaker,Legendary Planeswalker — Wrenn,"Lands you control have 
 +1: Up to one target land you control becomes a 3/3 Elemental creature with vigilance, hexproof, and haste until your next turn. It's still a land.
 −2: Mill three cards. You may put a permanent card from among the milled cards into your hand.
 −7: You get an emblem with ""You may play lands and cast permanent spells from your graveyard.""",G,Wrenn; planeswalker; graveyard; mill; mana,MOM,217,Mythic,90,,8.5,seed
-"Ayara, Widow of the Realm // Ayara, Furnace Queen",Legendary Creature — Elf Noble // Legendary Creature — Phyrexian Elf Noble,"{T}, Sacrifice another creature or artifact: Ayara deals X damage to target opponent or battle and you gain X life, where X is the sacrificed permanent's mana value.
-{5}{R/P}: Transform Ayara. Activate only as a sorcery. ({R/P} can be paid with either {R} or 2 life.) // At the beginning of combat on your turn, return up to one target artifact or creature card from your graveyard to the battlefield. It gains haste. Exile it at the beginning of the next end step.",B/R,Elf; Noble; Phyrexian; reanimator; graveyard; lifegain; sacrifice; burn; noncombat damage; transform; haste; aggro,MOM,90,Rare,92,,8.0,seed
+Archpriest of Shadows,Creature — Human Warlock,"Backup 1 (When this creature enters, put a +1/+1 counter on target creature. If that's another creature, it gains the following abilities until end of turn.)
+Deathtouch
+Whenever this creature deals combat damage to a player or battle, return target creature card from your graveyard to the battlefield.",B,Human; Warlock; counters; reanimator; graveyard; etb; backup; deathtouch; combat; removal,MOM,89,Rare,92,,6.0,seed
 "Heliod, the Radiant Dawn // Heliod, the Warped Eclipse",Legendary Enchantment Creature — God // Legendary Enchantment Creature — Phyrexian God,"When Heliod enters, return target enchantment card that isn't a God from your graveyard to your hand.
 {3}{U/P}: Transform Heliod. Activate only as a sorcery. ({U/P} can be paid with either {U} or 2 life.) // You may cast spells as though they had flash.
 Spells you cast cost {1} less to cast for each card your opponents have drawn this turn.",W/U,God; Phyrexian; graveyard; cost-reduction; etb; transform,MOM,17,Rare,90,,6.5,seed
@@ -687,8 +694,6 @@ Whenever another nontoken creature you control dies, exile Liliana, Heretical He
 "Mogis, God of Slaughter",Legendary Enchantment Creature — God,"Indestructible
 As long as your devotion to black and red is less than seven, Mogis isn't a creature.
 At the beginning of each opponent's upkeep, Mogis deals 2 damage to that player unless they sacrifice a creature of their choice.",B/R,God; sacrifice; burn; noncombat damage; indestructible; resilience,PIO,313,Mythic,90,,5.0,seed
-Rakdos Locket,Artifact,"{T}: Add {B} or {R}.
-{B/R}{B/R}{B/R}{B/R}, {T}, Sacrifice this artifact: Draw two cards.",B/R,card draw; sacrifice; mana,RNA,237,Common,92,,3.5,seed
 "Arlinn Kord // Arlinn, Embraced by the Moon",Legendary Planeswalker — Arlinn // Legendary Planeswalker — Arlinn,"+1: Until end of turn, up to one target creature gets +2/+2 and gains vigilance and haste.
 0: Create a 2/2 green Wolf creature token. Transform Arlinn Kord. // +1: Creatures you control get +1/+1 and gain trample until end of turn.
 −1: Arlinn deals 3 damage to any target. Transform Arlinn.
@@ -703,6 +708,9 @@ Diregraf Captain,Creature — Zombie Soldier,"Deathtouch
 Other Zombie creatures you control get +1/+1.
 Whenever another Zombie you control dies, target opponent loses 1 life.",U/B,Zombie; Soldier; pump; deathtouch; combat; removal,SIS,59,Uncommon,91,,6.0,seed
 Brokers Ascendancy,Enchantment,"At the beginning of your end step, put a +1/+1 counter on each creature you control and a loyalty counter on each planeswalker you control.",W/U/G,counters,SNC,170,Rare,90,,5.5,seed
+Professional Face-Breaker,Creature — Human Warrior,"Menace
+Whenever one or more creatures you control deal combat damage to a player, create a Treasure token.
+Sacrifice a Treasure: Exile the top card of your library. You may play that card this turn.",R,Human; Warrior; sacrifice; tokens; treasure; impulse; menace; evasion,SNC,116,Rare,92,,6.5,seed
 Raffine's Tower,Land — Plains Island Swamp,"({T}: Add {W}, {U}, or {B}.)
 This land enters tapped.
 Cycling {3} ({3}, Discard this card: Draw a card.)",W/U/B,Plains; Island; Swamp; card draw; mana; cycling,SNC,254,Rare,91,,3.0,seed
@@ -815,6 +823,8 @@ Runescale Stormbrood // Chilling Screech,Creature — Dragon // Instant — Omen
 Whenever you cast a noncreature spell or a Dragon spell, this creature gets +2/+0 until end of turn. // Counter target spell with mana value 2 or less. (Then shuffle this card into its owner's library.)",U/R,Dragon; Omen; counterspell; pump; flying; evasion,TDM,221,Uncommon,49,Deck 49: a 4-drop DRAGON that is also a Dragon payoff (+2/+0 on every noncreature or Dragon spell). Hidden from every red filter because its identity is U/R from the {1}{U} Omen half - the FRONT face is {3}{R} and mono-red castable (G-58 bulk-triage variant).,7.2,hand
 Venerated Stormsinger,Creature — Orc Cleric,"Mobilize 1 (Whenever this creature attacks, create a tapped and attacking 1/1 red Warrior creature token. Sacrifice it at the beginning of the next end step.)
 Whenever this creature or another creature you control dies, each opponent loses 1 life and you gain 1 life.",B,Orc; Cleric; lifegain; tokens; mobilize; go-wide; aggro,TDM,97,Uncommon,55,"Mobilize 1 + drains 1 per creature death, i.e. per end-step token sacrifice",5.5,seed
+Yathan Tombguard,Creature — Human Warrior,"Menace (This creature can't be blocked except by two or more creatures.)
+Whenever a creature you control with a counter on it deals combat damage to a player, you draw a card and you lose 1 life.",B,Human; Warrior; counters; pay life; card draw; menace; evasion,TDM,100,Uncommon,92,,4.0,seed
 Kiora Bests the Sea God,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
 I — Create an 8/8 blue Kraken creature token with hexproof.
 II — Tap all nonland permanents target opponent controls. They don't untap during their controller's next untap step.
@@ -857,8 +867,6 @@ Waterbend {4}: Draw a card, then discard a card. (While paying a waterbend cost,
 {R}{R}{R}: Target creature gets +3/+0 until end of turn.",R,Human; Avatar; pump,TLE,112,Mythic,92,,5.0,seed
 Beastmaster Ascension,Enchantment,"Whenever a creature you control attacks, you may put a quest counter on this enchantment.
 As long as this enchantment has seven or more quest counters on it, creatures you control get +5/+5.",G,counters; pump,TLE,39,Mythic,78-historic-brawl,78-historic-brawl swap for Hermitic Herbalist: +5/+5 team finisher; Doubling Season doubles its quest counters,5.0,seed
-Blasphemous Act,Sorcery,"This spell costs {1} less to cast for each creature on the battlefield.
-Blasphemous Act deals 13 damage to each creature.",R,cost-reduction; burn,TLE,26,Mythic,92,,6.5,seed
 Fire Lord Ozai,Legendary Creature — Human Noble,"Whenever Fire Lord Ozai attacks, you may sacrifice another creature. If you do, add an amount of {R} equal to the sacrificed creature's power. Until end of combat, you don't lose this mana as steps end.
 {6}: Exile the top card of each opponent's library. Until end of turn, you may play one of those cards without paying its mana cost.",B/R,Human; Noble; sacrifice; impulse,TLE,104,Mythic,92,,7.0,seed
 Insurrection,Sorcery,Untap all creatures and gain control of them until end of turn. They gain haste until end of turn.,R,theft; haste; aggro,TLE,31,Mythic,92,,4.5,seed
@@ -886,6 +894,7 @@ Fire Nation Archers,Creature — Human Archer,"Reach (This creature can block cr
 {5}: This creature deals 2 damage to each opponent. Create a 2/2 red Soldier creature token.",R,Human; Archer; tokens; burn; noncombat damage; reach; defense,TLE,237,Rare,92,,4.5,seed
 Fire Nation Occupation,Enchantment,"When this enchantment enters, create a 2/2 red Soldier creature token with firebending 1. (Whenever it attacks, add {R}. This mana lasts until end of combat.)
 Whenever you cast a spell during an opponent's turn, create a 2/2 red Soldier creature token with firebending 1.",B,tokens; etb,TLE,105,Rare,92,,5.5,seed
+Fire Nation Sentinels,Creature — Human Soldier,"Whenever a nontoken creature an opponent controls dies, put a +1/+1 counter on each creature you control.",B,Human; Soldier; counters,TLE,230,Rare,92,,5.5,seed
 Fire Nation Turret,Artifact,"At the beginning of combat on your turn, up to one target creature gets +2/+0 and gains firebending 2 until end of turn.
 {R}: Put a charge counter on this artifact.
 Remove fifty charge counters from this artifact: It deals 50 damage to any target.",R,counters; burn; pump; noncombat damage,TLE,64,Rare,92,,5.0,seed
@@ -901,14 +910,12 @@ Whenever Smellerbee attacks, you may discard your hand. If you do, draw cards eq
 "Zuko, Avatar Hunter",Legendary Creature — Human Noble,"Reach (This creature can block creatures with flying.)
 Whenever you cast a red spell, create a 2/2 red Soldier creature token.",R,Human; Noble; tokens; reach; defense,TLE,246,Rare,92,,5.5,seed
 Frantic Confrontation,Instant,Target creature you control gets +X/+0 and gains first strike and trample until end of turn.,R,pump; trample; evasion; first strike; combat,TLE,117,Uncommon,92,,2.0,seed
-"Iroh, Firebending Instructor",Legendary Creature — Human Noble Ally,"Whenever Iroh attacks, attacking creatures get +1/+1 until end of turn.",R,Human; Noble; Ally; pump,TLE,240,Uncommon,92,,2.5,seed
 "Longshot, Rebel Bowman",Legendary Creature — Human Rebel Ally,"Reach (This creature can block creatures with flying.)
 Noncreature spells you cast cost {1} less to cast.
 Whenever you cast a noncreature spell, Longshot deals 2 damage to each opponent.",R,Human; Rebel; Ally; cost-reduction; burn; spellslinger; noncombat damage; reach; defense,TLE,120,Uncommon,92,,7.0,seed
-Loyal Fire Sage,Creature — Human Cleric Ally,"Firebending 1 (Whenever this creature attacks, add {R}. This mana lasts until end of combat.)
-{5}: Create a 1/1 white Ally creature token.",R,Human; Cleric; Ally; tokens; firebending; bending,TLE,242,Uncommon,92,,2.0,seed
-Scarring Memories,Sorcery — Lesson,"You may cast this spell as though it had flash if you control an attacking legendary creature.
-Target opponent sacrifices a creature of their choice, discards a card, and loses 3 life.",B,Lesson; sacrifice; discard,TLE,111,Uncommon,92,,3.0,seed
+"Zuko, Seeking Honor",Legendary Creature — Human Noble,"Firebending 1 (Whenever this creature attacks, add {R}. This mana lasts until end of combat.)
+Whenever you cast a noncreature spell, Zuko gains first strike until end of turn.
+Whenever Zuko deals combat damage to a player, put a +1/+1 counter on him.",B/R,Human; Noble; counters; spellslinger; firebending; bending; first strike; combat,TLE,150,Uncommon,92,,4.5,seed
 Waste Not,Enchantment,"Whenever an opponent discards a creature card, create a 2/2 black Zombie creature token.
 Whenever an opponent discards a land card, add {B}{B}.
 Whenever an opponent discards a noncreature, nonland card, draw a card.",B,card draw; tokens; discard,TMC,132,Mythic,91,,8.0,seed
@@ -925,7 +932,7 @@ Each player may discard their hand and draw seven cards.",R,card draw; sneak; te
 "Rat King, Verminister",Legendary Creature — Rat Avatar,"Disappear — At the beginning of your end step, if a permanent left the battlefield under your control this turn, create a 1/1 black Rat creature token and put a +1/+1 counter on Rat King.
 {T}, Sacrifice three Rats: Return target creature card and all other cards with the same name as that card from your graveyard to the battlefield tapped.",B,Rat; Avatar; counters; reanimator; graveyard; sacrifice; tokens; disappear,TMT,71,Rare,11,Rat Avatar — reanimator/sacrifice payoff; grindy mono-black value,5.0,hand
 "Slash, Reptile Rampager",Legendary Creature — Mutant Berserker Turtle,"Alliance — Whenever another creature you control enters, Slash deals 2 damage to each opponent.
-Whenever Slash attacks, create a 2/2 red Mutant creature token.",R,Mutant; Berserker; Turtle; tokens; burn; alliance; aggro; value,TMT,108,Rare,1; 92,"Rakdos aggro/burn/tokens; also 10 | fits: 10,9",6.0,hand
+Whenever Slash attacks, create a 2/2 red Mutant creature token.",R,Mutant; Berserker; Turtle; tokens; burn; alliance; aggro; value,TMT,108,Rare,1,"Rakdos aggro/burn/tokens; also 10 | fits: 10,9",6.0,hand
 Splinter's Technique,Sorcery,"Sneak {1}{B} (You may cast this spell for {1}{B} if you also return an unblocked attacker you control to hand during the declare blockers step.)
 Search your library for a card, put that card into your hand, then shuffle.",B,sneak; tempo; cost-reduction,TMT,80,Rare,20,Ninja sneak tempo,5.0,hand
 Turtle Power!,Enchantment,"Flash
@@ -976,6 +983,7 @@ Picklock Prankster // Free the Fae,Creature — Faerie Rogue // Instant — Adve
 Rootrider Faun,Creature — Satyr Scout,"{T}: Add {G}.
 {1}, {T}: Add one mana of any color.",G,Satyr; Scout; mana,WOE,182,Common,50,,1.5,seed
 Stormkeld Prowler,Creature — Human Rogue,"Whenever you cast a spell with mana value 5 or greater, put two +1/+1 counters on this creature.",U,Human; Rogue; counters,WOE,71,Common,51,Deck 51: two-drop that gets +2/+2 whenever you cast MV>=5 - the deck runs 11 such. Cheap clock that scales with the top end it already had.,6.2,hand
+Aggravated Assault,Enchantment,"{3}{R}{R}: Untap all creatures you control. After this main phase, there is an additional combat phase followed by an additional main phase. Activate only as a sorcery.",R,,WOT,39,Rare,92,,3.0,seed
 Dragonskull Summit,Land,"This land enters tapped unless you control a Swamp or a Mountain.
 {T}: Add {B} or {R}.",B/R,mana,XLN,252,Rare,92,,4.0,seed
 Drowned Catacomb,Land,"This land enters tapped unless you control an Island or a Swamp.

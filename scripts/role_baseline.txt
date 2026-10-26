@@ -14,6 +14,7 @@ Aerial Doombot
 Aerid Konstrari
 Agent Phil Coulson
 Agents of HYDRA
+Aggravated Assault
 Agrus Kos, Spirit of Justice
 Ainok Wayfarer
 Airbending Lesson
@@ -220,7 +221,6 @@ Insurrection
 Interface Ace
 Involuntary Employment
 Iroh, Dragon of the West
-Iroh, Firebending Instructor
 Iron Hills Stalwart
 Iron Lad, Diverging Destiny
 Ironpaw Aspirant
@@ -257,7 +257,6 @@ Living Brain, Mechanical Marvel
 Loki Laufeyson
 Long Feng, Grand Secretariat
 Lorehold, the Historian
-Loyal Fire Sage
 Magic Pot
 Magitek Armor
 Mai, Jaded Edge
@@ -339,7 +338,6 @@ Raphael, the Muscle
 Raphael, the Nightwatcher
 Ravenous Tyrannosaurus
 Reckless Velocitaur
-Relentless Assault
 Reno and Rude
 Resentful Revelation
 Resolute Reinforcements
