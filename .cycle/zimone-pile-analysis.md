@@ -82,6 +82,17 @@ two target creatures and/or artifacts you control."
   Guildmage, Merfolk Skydiver, Mindspring Merfolk, Svyelun, Namor, Scourge.
 - **O9 — Copying a SPELL keeps X (unlike E1).** Double Major copies a creature spell on the
   stack, so a copied Hydra or Krasis keeps its X — the reverse of a token copy of a permanent.
+- **O10 — Elves are thin on PAYOFFS (G-59).** Elf bodies are plentiful but the tribal payoffs
+  are Imperious Perfect, Thranduil, Dionus and Thranduil's Company (needs another Elf). The
+  Elves that matter here are MANA (Selvala, Topiary Lecturer) and counter cards that happen
+  to be Elves (Arwen, Fractal Tender, Elrond, Ezuri ×2, Evolution Sage) — play them for their
+  text, not their type.
+- **O11 — Interaction lives OUTSIDE the pile.** In-pile answers: Sublime Epiphany, Repulsive
+  Mutation, Inscription of Abundance, Commit // Memory, Voracious Hydra, Chandra's −X. Owned
+  Simic answers that scale with big creatures: Felling Blow, Bite Down, Rabid Bite, Hunter's
+  Talent; counterspells Essence Capture (+1 counter), Quandrix Charm, Three Steps Ahead, Mana
+  Sculpt (Zimone is a Wizard — the mana refund turns on); Season of Gathering, Pawpatch
+  Formation, Glen Elendra's Answer, Vivien Reid.
 
 ## 4. Running verdicts
 
@@ -219,6 +230,80 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | Thrasios, Triton Hero | ★ | mana sink: land or card |
 | Kiora of Salt and Sand | ◇ | walker support |
 
+### Batch 5 (28, Merfolk + Elves)
+
+| Card | Verdict | Note |
+|---|---|---|
+| Quandrix Pledgemage | △ | magecraft counters |
+| Kumena, Tyrant of Orazca | ◇ | Merfolk tap engine |
+| Adrix and Nev, Twincasters | ★★ | token doubler — every Fractal maker makes two |
+| Vodalian Tide Mage | ◇ | conjures duplicates on damage |
+| Zegana, Utopian Speaker | ★★ | draw on entry; every countered creature has trample |
+| Tatyova, Benthic Druid | ★ | landfall draw |
+| Kiora, Sovereign of the Deep | ◇ | sea-monster cascade |
+| Tishana, Voice of Thunder | ★ | 7 mana: draw per creature |
+| Kiora, the Tide's Fury | ◇ | untap / prevent; walker |
+| Nadir Kraken | ★ | every draw buys a counter and a Tentacle |
+| Reef Worm | △ | |
+| Verdant Kraken | ◇ | 7 mana; land creatures every upkeep |
+| Kiora, the Crashing Wave | ◇ | |
+| Pelt Collector | ◇ | 1-drop grower |
+| Virulent Emissary | △ | |
+| Aftermath Analyst | ◇ | |
+| Eladamri, Korvecdal | ★ | cast creatures off the top |
+| Elvish Hydromancer | ◇ | kicked copy (E1) |
+| Evolution Sage | ★★ | landfall proliferate |
+| Imperious Perfect | ◇ | Elf lord (O10) |
+| Nissa, Vastwood Seer | ◇ | fetches a Forest; flips late |
+| Selvala, Heart of the Wilds | ★★ | {G},{T}: mana equal to your greatest power — explosive here |
+| Topiary Lecturer | ★★ | taps for {G} equal to its power; increment grows it |
+| Dionus, Elvish Archdruid | ◇ | Elf untap + counters |
+| Elrond, Master of Healing | ★ | scry → counters; draws when countered creatures are targeted |
+| Ezuri, Stalker of Spheres | ★ | proliferate twice on entry; draw per proliferate |
+| Legolas, Counter of Kills | ◇ | |
+| Thranduil, Sindarin Liege | ◇ | Elf lord + landfall Elves |
+
 ## 5. Consolidated plan (live)
 
-- (after the last batch)
+**Recommended plan: COUNTER ENGINE.** Zimone + replacement doublers + X-bodies, cashed in
+through unblockability (Herald), trample (Zegana), an alternate win (Simic Ascendancy) and
+mana that scales with power (Selvala, Topiary Lecturer). Merfolk and Elves are played for
+their TEXT; the tribal shells are benched (O8, O10). Draft target: 36 lands + 63 nonland +
+Zimone. P = from the pile, O = owned outside it.
+
+- Engine (9): Branching Evolution, The Earth Crystal, Innkeeper's Talent, Shang-Chi,
+  Michelangelo, Bristly Bill, Applied Geometry, Xolatoyac, Tanazir Quandrix (all P)
+- Payoffs (7): Inexorable Tide, Evolution Sage, Simic Ascendancy, Herald of Secret Streams,
+  Zegana Utopian Speaker, Herd Baloth, Primo (P)
+- X bodies (7): Hydroid Krasis, Voracious Hydra, Goldvein Hydra, Mistcutter Hydra, Hungering
+  Hydra, Double Major, Zimone Infinite Analyst (P)
+- Counter makers (8): Fractal Tender, Jadzi, Berta, Additive Evolution, Hadana's Climb,
+  Railway Brawler, Arwen, Germination Practicum (P)
+- Cheap counter support (4): Growth Curve, Merfolk Skydiver, Ambitious Augmenter, Combine
+  Guildmage (P)
+- Card advantage (8): Pensive Professor, Prime Speaker Zegana, Sab-Sunen, Give // Take, The
+  Astonishing Ant-Man, Ezuri Stalker of Spheres, Tatyova, Thrasios (P)
+- Ramp (4): Topiary Lecturer, Selvala, Arixmethes, Thranduil's Company (P)
+- Untap / protection (3): Jace Ingenious Mind-Mage, Smuggler's Surprise, Oko the Trickster (P)
+- Interaction (13): Sublime Epiphany, Repulsive Mutation, Inscription of Abundance, Commit //
+  Memory (P); Felling Blow, Bite Down, Hunter's Talent, Essence Capture, Quandrix Charm, Three
+  Steps Ahead, Mana Sculpt, Season of Gathering, Pawpatch Formation (O)
+
+**Protect:** Zimone, Branching Evolution, The Earth Crystal, Innkeeper's Talent, Applied
+Geometry, Xolatoyac, Simic Ascendancy, Herald of Secret Streams — their value is in the rest
+of the deck.
+
+**Variant signal:** a MERFOLK Brawl deck (O8) — Lord of Atlantis, Vodalian Hexcatcher,
+Svyelun, both Namors, Kumena, Deeproot Elite/Pilgrimage/Waters, Daughter of the Deep,
+Mindspring Merfolk, Tunnel-Guide, Nicanzil, Tishana, Kiora of Salt and Sand. Not built here.
+
+**Bench (pile, not in the core):** the Merfolk shell above; Elf lords (O10); clone/copy cards
+(Irma, Undercover Operative, Mockingbird, Echocasting Symposium, Elvish Hydromancer — E1);
+Watcher in the Water (E2); spells-matter (Eluge, Orvar, Vesuvan Duplimancy, Serpentine Curve,
+Quandrix Pledgemage, Umara Wizard); 7–8 drops (One with the Multiverse, Verdant Kraken,
+Ancient Bronze Dragon, Body of Research, Tishana); walkers Zimone cannot grow (Teferi,
+Chandra, Kiora ×3, Nissa ×2, The Theorist); draw-trigger extras (Krang, Baxter, Stark's
+Ingenuity, Tui and La, Nadir Kraken, Atlantean Cavalry, Vulture); and the remaining
+situational cards. Next in line: Adrix and Nev, Tekuthal, Elrond, Eladamri, Seismic
+Tutelage, Ichormoon Gauntlet, Baxter, Nadir Kraken, Tishana, God-Eternal Rhonas, Exponential
+Growth.
