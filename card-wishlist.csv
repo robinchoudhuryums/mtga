@@ -76,8 +76,6 @@ At the beginning of each combat, this creature gains flying until end of turn if
 The Scarab God,Legendary Creature — God,"At the beginning of your upkeep, each opponent loses X life and you scry X, where X is the number of Zombies you control.
 {2}{U}{B}: Exile target creature card from a graveyard. Create a token that's a copy of it, except it's a 4/4 black Zombie.
 When The Scarab God dies, return it to its owner's hand at the beginning of the next end step.",U/B,God; Zombie; graveyard; tokens; scry; bounce; selection,AKR,259,Mythic,91,,8.0,seed
-Commit // Memory,Instant // Sorcery,"Put target spell or nonland permanent into its owner's library second from the top. // Aftermath (Cast this spell only from your graveyard. Then exile it.)
-Each player shuffles their hand and graveyard into their library, then draws seven cards.",U,graveyard; aftermath; recursion,AKR,54,Rare,94,,3.0,seed
 God-Pharaoh's Gift,Artifact,"At the beginning of combat on your turn, you may exile a creature card from your graveyard. If you do, create a token that's a copy of that card, except it's a 4/4 black Zombie. It gains haste until end of turn.",Colorless,graveyard; tokens; haste; aggro,AKR,272,Rare,91,,6.0,seed
 Never // Return,Sorcery // Sorcery,"Destroy target creature or planeswalker. // Aftermath (Cast this spell only from your graveyard. Then exile it.)
 Exile target card from a graveyard. Create a 2/2 black Zombie creature token.",B,graveyard; tokens; removal; aftermath; recursion,AKR,118,Rare,91,,5.0,seed
@@ -399,8 +397,6 @@ Landfall — Whenever a land you control enters, draw a card. Then if this is th
 Reflecting Pool,Land,{T}: Add one mana of any type that a land you control could produce.,Colorless,mana,FRC,23,Rare,84,,4.0,seed
 Command Tower,Land,{T}: Add one mana of any color in your commander's color identity.,Colorless,mana,FRC,22,Common,88; 91; 93; 94,,1.5,seed
 Inexorable Tide,Enchantment,"Whenever you cast a spell, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)",U,proliferate; counters,HA2,6,Rare,94,,5.5,seed
-Merrow Reejerey,Creature — Merfolk Soldier,"Other Merfolk creatures you control get +1/+1.
-Whenever you cast a Merfolk spell, you may tap or untap target permanent.",U,Merfolk; Soldier; pump,HA2,5,Uncommon,94,,4.5,seed
 Silent Clearing,Land,"{T}, Pay 1 life: Add {W} or {B}.
 {1}, {T}, Sacrifice this land: Draw a card.",W/B,pay life; card draw; sacrifice,HA7,24,Rare,91,,3.0,seed
 Ancient Bronze Dragon,Creature — Elder Dragon,"Flying
