@@ -46,6 +46,8 @@
 #: notes: Epiphany +Song of Freyalise, -Season of Gathering +Jiang Yanggu (creatures with a +1/+1 counter tap
 #: notes: for any colour; proliferate — Inexorable Tide, Evolution Sage, Skydiver, x2 with Tekuthal —
 #: notes: refills her loyalty). Interaction is now 11, UNDER the A floor of 12 (metrics floor B).
+#: notes: Then -Essence Capture +Reject Imperfection (counters ANY spell, not just creatures;
+#: notes: proliferates off an MV-3-or-less target, which grows Jiang). Interaction unchanged at 11.
 
 # Commander (leads from the command zone; also one of the 100)
 1 Zimone, Paradox Sculptor (FDN) 126
@@ -128,7 +130,7 @@
 1 Felling Blow (FDN) 105
 1 Signature Slam (MH3) 168
 1 Hunter's Talent (BLB) 179
-1 Essence Capture (NEO) 52
+1 Reject Imperfection (ONE) 67
 1 Quandrix Charm (SOS) 217
 1 Three Steps Ahead (OTJ) 75
 1 Origin of Metalbending (TLA) 187

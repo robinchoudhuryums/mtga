@@ -729,6 +729,7 @@ Drown in Ichor,Sorcery,"Target creature gets -4/-4 until end of turn. Proliferat
 Necrogen Rotpriest,Creature — Phyrexian Zombie Cleric,"Toxic 2 (Players dealt combat damage by this creature also get two poison counters.)
 Whenever a creature you control with toxic deals combat damage to a player, that player gets an additional poison counter.
 {1}{B}{G}: Target creature you control with toxic gains deathtouch until end of turn.",B/G,Phyrexian; Zombie; Cleric; toxic; deathtouch; combat; removal,ONE,212,Uncommon,89,deck 89 tune 2026-10-23,2.0,seed
+Reject Imperfection,Instant,"Counter target spell. If that spell's mana value was 3 or less, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)",U,counterspell; proliferate; counters,ONE,67,Uncommon,94,,3.0,seed
 Venomous Brutalizer,Creature — Phyrexian Knight,"Toxic 3 (Players dealt combat damage by this creature also get three poison counters.)
 When this creature enters, you may pay {1}{G}. If you do, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)",G,Phyrexian; Knight; etb; toxic; proliferate; counters,ONE,193,Uncommon,89,deck 89 tune 2026-10-23,2.0,seed
 The Dross Pits,Land — Sphere,"This land enters tapped.
