@@ -10,10 +10,10 @@
 #: archetype: +1 multiply every placement; Bristly Bill doubles what is already there; Adrix and Nev
 #: archetype: doubles every token; Applied Geometry copies a doubler as a 6-counter creature. Zimone
 #: archetype: doubles more than once a turn: Xolatoyac untaps everything with a counter at end step,
-#: archetype: and Kiora's Follower and Jace untap her. MERFOLK (owner's lean, 2026-10-27)
+#: archetype: and Kiora's Follower untaps her. MERFOLK (owner's lean, 2026-10-27)
 #: archetype: are the second axis — lords Lord of Atlantis, Attuma and Svyelun; token
-#: archetype: engines Deeproot Pilgrimage, Deeproot Waters, Daughter of the Deep and both Namors; Deeproot
-#: archetype: Elite and Kumena turn the tribe into counters. Eladamri cheats the top end (Verdant
+#: archetype: engines Deeproot Pilgrimage, Deeproot Waters, Daughter of the Deep and both Namors; Kumena
+#: archetype: turns the tribe into counters. Eladamri cheats the top end (Verdant
 #: archetype: Kraken, Ancient Bronze Dragon, Body of Research, Majestic Myriarch, Roalesk, The Skullspore
 #: archetype: Nexus). It wins through Herald of Secret Streams (countered creatures are unblockable),
 #: archetype: Zegana (trample), Simic Ascendancy (alternate win) and mana that scales with power
@@ -48,6 +48,13 @@
 #: notes: refills her loyalty). Interaction is now 11, UNDER the A floor of 12 (metrics floor B).
 #: notes: Then -Essence Capture +Reject Imperfection (counters ANY spell, not just creatures;
 #: notes: proliferates off an MV-3-or-less target, which grows Jiang). Interaction unchanged at 11.
+#: notes: Then (owner's picks) -Jace Ingenious Mind-Mage +Teferi Temporal Pilgrim (loyalty on every
+#: notes: draw, doubled by Innkeeper's Talent; proliferate grows him), -Deeproot Elite +Yue the Moon
+#: notes: Spirit (waterbend free-casts a noncreature spell), -Ezuri Stalker of Spheres +The Watcher
+#: notes: in the Water (Verdant and Nadir Kraken feed it Tentacles; each death stuns a nonland
+#: notes: permanent), -Arixmethes +Eluge (a flood counter on an OPPONENT's land makes it an Island,
+#: notes: so Lord of Atlantis's islandwalk makes the Merfolk unblockable). Jace was interaction and
+#: notes: Ezuri a proliferate source: interaction 10, card advantage 9, metrics floor B.
 
 # Commander (leads from the command zone; also one of the 100)
 1 Zimone, Paradox Sculptor (FDN) 126
@@ -87,26 +94,25 @@
 # Card draw
 1 Prime Speaker Zegana (FDN) 664
 1 Nadir Kraken (THB) 55
-1 Ezuri, Stalker of Spheres (ONE) 201
 1 Krang, the All-Powerful (TMC) 13
 1 Baxter, Fly in the Ointment (TMC) 10
 1 Vulture, Feathered Fiend (MSC) 645
+1 Teferi, Temporal Pilgrim (BRO) 66
 
 # Ramp and cheats — mana that scales with power
 1 Topiary Lecturer (SOS) 165
 1 Selvala, Heart of the Wilds (JMP) 429
-1 Arixmethes, Slumbering Isle (MUL) 32
+1 Eluge, the Shoreless Sea (BLB) 49
 1 Eladamri, Korvecdal (MH3) 149
 1 Song of Freyalise (DOM) 179
 1 Jiang Yanggu, Wildcrafter (WAR) 164
+1 Yue, the Moon Spirit (TLA) 83
 
 # Untap and protection
-1 Jace, Ingenious Mind-Mage (XLN) 280
 1 Smuggler's Surprise (OTJ) 180
 
 # Merfolk — lords, token engines and untap payoffs
 1 Namor, Scourge of the Seas (MSC) 631
-1 Deeproot Elite (RIX) 127
 1 Daughter of the Deep (MSC) 618
 1 Kumena, Tyrant of Orazca (RIX) 162
 1 Svyelun of Sea and Sky (J21) 259
@@ -123,6 +129,7 @@
 1 Roalesk, Apex Hybrid (WAR) 213
 1 Verdant Kraken (FRA) 118
 1 Ancient Bronze Dragon (HBG) 199
+1 The Watcher in the Water (LTR) 75
 
 # Interaction
 1 Repulsive Mutation (MKM) 227

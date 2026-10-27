@@ -124,6 +124,10 @@ When this creature enters, you may mill two cards. (You may put the top two card
 "Gix, Yawgmoth Praetor",Legendary Creature — Phyrexian Praetor,"Whenever a creature deals combat damage to one of your opponents, its controller may pay 1 life. If they do, they draw a card.
 {4}{B}{B}{B}, Discard X cards: Exile the top X cards of target opponent's library. You may play lands and cast spells from among cards exiled this way without paying their mana costs.",B,Phyrexian; Praetor; heist; card draw; impulse,BRO,95,Mythic,92,,6.5,seed
 "Mishra, Claimed by Gix",Legendary Creature — Phyrexian Human Artificer,"Whenever you attack, each opponent loses X life and you gain X life, where X is the number of attacking creatures. If Mishra, Claimed by Gix and a creature named Phyrexian Dragon Engine are attacking, and you both own and control them, exile them, then meld them into Mishra, Lost to Phyrexia. It enters tapped and attacking.",B/R,Phyrexian; Human; Artificer; lifegain; meld,BRO,216,Mythic,93,,8.5,seed
+"Teferi, Temporal Pilgrim",Legendary Planeswalker — Teferi,"Whenever you draw a card, put a loyalty counter on Teferi.
+0: Draw a card.
+−2: Create a 2/2 blue Spirit creature token with vigilance and ""Whenever you draw a card, put a +1/+1 counter on this token.""
+−12: Target opponent chooses a permanent they control and returns it to its owner's hand. Then they shuffle each nonland permanent they control into its owner's library.",U,Teferi; planeswalker; counters; card draw; tokens,BRO,66,Mythic,94,,10.0,seed
 Phyrexian Dragon Engine,Artifact Creature — Phyrexian Dragon,"Double strike
 When this creature enters from your graveyard, you may discard your hand. If you do, draw three cards.
 Unearth {3}{R}{R}
@@ -485,6 +489,9 @@ Promising Vein,Land — Cave,"{T}: Add {C}.
 Whenever you cast a blue spell, scry 2.
 Whenever you cast a red spell, Aragorn deals 3 damage to target opponent.
 Whenever you cast a green spell, target creature gets +4/+4 until end of turn.",W/U/R/G,Human; Noble; tokens; burn; scry; pump; noncombat damage; selection,LTR,192,Mythic,90,,7.5,seed
+The Watcher in the Water,Legendary Creature — Kraken,"The Watcher in the Water enters tapped with nine stun counters on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)
+Whenever you draw a card during an opponent's turn, create a 1/1 blue Tentacle creature token.
+Whenever a Tentacle you control dies, untap up to one target Kraken and put a stun counter on up to one target nonland permanent.",U,Kraken; counters; card draw; tokens,LTR,75,Mythic,94,,7.0,seed
 Shire Terrace,Land,"{T}: Add {C}.
 {1}, {T}, Sacrifice this land: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.",Colorless,sacrifice; ramp; mana,LTR,261,Common,89,,1.5,seed
 "Golos, Tireless Pilgrim",Legendary Artifact Creature — Scout,"When Golos enters, you may search your library for a land card, put that card onto the battlefield tapped, then shuffle.
@@ -666,10 +673,6 @@ At the beginning of combat on your turn, put X +1/+1 counters on another target 
 "Grimgrin, Corpse-Born",Legendary Creature — Zombie Warrior,"Grimgrin enters tapped and doesn't untap during your untap step.
 Sacrifice another creature: Untap Grimgrin and put a +1/+1 counter on it.
 Whenever Grimgrin attacks, destroy target creature defending player controls, then put a +1/+1 counter on Grimgrin.",U/B,Zombie; Warrior; counters; sacrifice; removal,MUL,41,Mythic,91,,8.0,seed
-"Arixmethes, Slumbering Isle",Legendary Creature — Kraken,"Arixmethes enters tapped with five slumber counters on it.
-As long as Arixmethes has a slumber counter on it, it's a land. (It's not a creature.)
-Whenever you cast a spell, you may remove a slumber counter from Arixmethes.
-{T}: Add {G}{U}.",U/G,Kraken; counters; mana,MUL,32,Rare,94,,6.0,seed
 Explosive Singularity,Sorcery,"As an additional cost to cast this spell, you may tap any number of untapped creatures you control. This spell costs {1} less to cast for each creature tapped this way.
 Explosive Singularity deals 10 damage to any target.",R,cost-reduction; burn,NEO,140,Mythic,92,,5.5,seed
 Kodama of the West Tree,Legendary Creature — Spirit,"Reach
@@ -715,8 +718,6 @@ Blackcleave Cliffs,Land,"This land enters tapped unless you control two or fewer
 {T}: Add {B} or {R}.",B/R,mana,ONE,248,Rare,93,,4.0,seed
 Darkslick Shores,Land,"This land enters tapped unless you control two or fewer other lands.
 {T}: Add {U} or {B}.",U/B,mana,ONE,250,Rare,91,,4.0,seed
-"Ezuri, Stalker of Spheres",Legendary Creature — Phyrexian Elf Warrior,"When Ezuri enters, you may pay {3}. If you do, proliferate twice.
-Whenever you proliferate, draw a card.",U/G,Phyrexian; Elf; Warrior; card draw; etb; proliferate; counters,ONE,201,Rare,94,,7.0,seed
 "Tyvar, Jubilant Brawler",Legendary Planeswalker — Tyvar,"You may activate abilities of creatures you control as though those creatures had haste.
 +1: Untap up to one target creature.
 −2: Mill three cards, then you may return a creature card with mana value 2 or less from your graveyard to the battlefield.",B/G,Tyvar; planeswalker; reanimator; graveyard; mill,ONE,218,Rare,89,deck 89 tune 2026-10-23,8.5,seed
@@ -799,7 +800,6 @@ Kiora's Follower,Creature — Merfolk,{T}: Untap another target permanent.,U/G,M
 "Kumena, Tyrant of Orazca",Legendary Creature — Merfolk Shaman,"Tap another untapped Merfolk you control: Kumena can't be blocked this turn.
 Tap three untapped Merfolk you control: Draw a card.
 Tap five untapped Merfolk you control: Put a +1/+1 counter on each Merfolk you control.",U/G,Merfolk; Shaman; counters; card draw,RIX,162,Mythic,94,,5.0,seed
-Deeproot Elite,Creature — Merfolk Warrior,"Whenever another Merfolk you control enters, put a +1/+1 counter on target Merfolk you control.",G,Merfolk; Warrior; counters,RIX,127,Rare,94,,5.5,seed
 Simic Ascendancy,Enchantment,"{1}{G}{U}: Put a +1/+1 counter on target creature you control.
 Whenever one or more +1/+1 counters are put on a creature you control, put that many growth counters on this enchantment.
 At the beginning of your upkeep, if this enchantment has twenty or more growth counters on it, you win the game.",U/G,counters,RNA,207,Rare,94,,3.0,seed
@@ -1124,9 +1124,6 @@ Rootrider Faun,Creature — Satyr Scout,"{T}: Add {G}.
 {1}, {T}: Add one mana of any color.",G,Satyr; Scout; mana,WOE,182,Common,50,,1.5,seed
 Stormkeld Prowler,Creature — Human Rogue,"Whenever you cast a spell with mana value 5 or greater, put two +1/+1 counters on this creature.",U,Human; Rogue; counters,WOE,71,Common,51,Deck 51: two-drop that gets +2/+2 whenever you cast MV>=5 - the deck runs 11 such. Cheap clock that scales with the top end it already had.,6.2,hand
 Aggravated Assault,Enchantment,"{3}{R}{R}: Untap all creatures you control. After this main phase, there is an additional combat phase followed by an additional main phase. Activate only as a sorcery.",R,,WOT,39,Rare,92,,3.0,seed
-"Jace, Ingenious Mind-Mage",Legendary Planeswalker — Jace,"+1: Draw a card.
-+1: Untap all creatures you control.
-−9: Gain control of up to three target creatures.",U,Jace; planeswalker; card draw; theft,XLN,280,Mythic,94,,10.0,seed
 Drowned Catacomb,Land,"This land enters tapped unless you control an Island or a Swamp.
 {T}: Add {U} or {B}.",U/B,mana,XLN,253,Rare,91,,4.0,seed
 Glacial Fortress,Land,"This land enters tapped unless you control a Plains or an Island.
