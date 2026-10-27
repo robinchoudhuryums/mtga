@@ -43,15 +43,61 @@ two target creatures and/or artifacts you control."
 
 ## 2. Standing error list
 
-- (none yet)
+- **E1 — A token COPY of an X-counter creature enters with no counters.** Hydras and Fractals
+  are 0/0 bodies that ENTER with X counters; Echocasting Symposium, Irma, Undercover Operative
+  and other copy effects copy the card, not the counters, so a copied Hydra dies on entry.
+  Copy the creature that carries static value, never the X-body.
+- **E2 — Doubling a BAD counter is bad.** Zimone doubles every kind of counter, so stun
+  counters (The Watcher in the Water) and -1/-1 counters on your own creatures double too.
 
 ## 3. Cross-batch observations
 
-- (none yet)
+- **O1 — Xolatoyac untaps every permanent with a counter at YOUR end step.** Give Zimone one
+  of her own combat counters and she doubles twice per turn cycle (main phase, then again
+  after the end-step untap, on the opponent's turn). Jace, Ingenious Mind-Mage's +1 (untap
+  all creatures) does the same. Untap effects are an engine axis here.
+- **O2 — A blue DRAW → COUNTERS sub-theme:** Pensive Professor (counters → draw), Baxter and
+  Stark's Ingenuity (draw → counters), Tui and La, Krang (draw triggers twice), Teferi.
+- **O3 — A PROLIFERATE sub-theme:** Inexorable Tide (proliferate per spell), Tekuthal
+  (proliferate twice), Ichormoon Gauntlet (walkers proliferate; extra counter per
+  noncreature spell). Proliferate is the only thing that grows planeswalker loyalty (R2).
 
 ## 4. Running verdicts
 
 Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ marginal · ✗ out`.
+
+### Batch 1 (28, blue)
+
+| Card | Verdict | Note |
+|---|---|---|
+| Xolatoyac, the Smiling Flood | ★★★ | end-step untap of everything with a counter = Zimone doubles twice a cycle (O1) |
+| Eluge, the Shoreless Sea | △ | UUU; Island-count body; flood counters sit on LANDS (R2) |
+| Ichormoon Gauntlet | ★ | +1 counter per noncreature spell; walkers proliferate (O3) |
+| Irma, Part-Time Mutant | ◇ | copies a creature each combat + a counter (E1: never a Hydra) |
+| Namor the Sub-Mariner | ◇ | Merfolk payoff; tokens off blue noncreature spells |
+| Pensive Professor | ★★ | every counter placement draws; Zimone feeds it each combat (O2) |
+| Stark's Ingenuity | ★ | draw X, then a counter per draw |
+| Commit // Memory | ★ | instant answer to a spell or permanent (interaction) |
+| Baxter, Fly in the Ointment | ★ | grows on draws; team with counters flies on enter/attack |
+| Orvar, the All-Form | △ | needs targeted instants/sorceries on your own permanents |
+| Tekuthal, Inquiry Dominus | ★ | proliferate twice; 3/5 flier |
+| Tui and La, Moon and Ocean | ★ | draw when tapped, counter when untapped — pairs with O1 untaps |
+| Undercover Operative | ★ | clone; its shield counter doubles under Zimone |
+| Vesuvan Duplimancy | △ | needs single-target spells on your own creatures |
+| Vulture, Feathered Fiend | ◇ | flying-damage draw |
+| Yue, the Moon Spirit | ◇ | free noncreature spell from hand |
+| Bribery | ◇ | steal their best creature; off-theme |
+| Inexorable Tide | ★★ | proliferate on every spell (O3) |
+| Krang, the All-Powerful | ◇ | doubles draw triggers (O2) |
+| Mesmerizing Benthid | ◇ | defensive hexproof body |
+| Namor, Scourge of the Seas | ★ | connive each combat; Merfolk with counters fly |
+| Teferi, Temporal Pilgrim | ◇ | loyalty per draw; walkers get nothing from Zimone (R2) |
+| Thryx, the Sudden Storm | ◇ | flash flier; MV 5+ discount |
+| The Watcher in the Water | ✗ | stun counters (E2) |
+| Echocasting Symposium | ◇ | free copy every main phase; copy a static creature, not a Hydra (E1) |
+| Jace, Ingenious Mind-Mage | ★ | +1 untaps all creatures — a second Zimone activation (O1) |
+| Sublime Epiphany | ★★ | modal counter / bounce / copy / draw — real interaction |
+| One with the Multiverse | ◇ | 8 mana |
 
 ## 5. Consolidated plan (live)
 
