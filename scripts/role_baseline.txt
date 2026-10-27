@@ -33,6 +33,7 @@ Archangel of Tithes
 Armament Dragon
 Army of the Damned
 Arnim Zola, Bio-Fanatic
+Arwen, Weaver of Hope
 Ashroot Animist
 Aurelia, the Warleader
 Aurora Awakener
@@ -83,6 +84,8 @@ Cheering Crowd
 Claim Jumper
 Collector's Vault
 Colossification
+Combine Guildmage
+Commit // Memory
 Corrupt Court Official
 Craterclaw Colossus
 Craterhoof Behemoth
@@ -201,6 +204,7 @@ Hei Bai, Forest Guardian
 Hei Bai, Spirit of Balance
 Hellrider
 Herald of Eternal Dawn
+Herald of Secret Streams
 High Fae Trickster
 High Perfect Morcant
 Honden of Night's Reach
@@ -226,6 +230,7 @@ Iroh, Dragon of the West
 Iron Hills Stalwart
 Iron Lad, Diverging Destiny
 Ironpaw Aspirant
+Jadzi, Steward of Fate // Oracle's Gift
 Jeong Jeong, the Deserter
 Jeskai Brushmaster
 Joo Dee, One of Many
@@ -269,6 +274,7 @@ Masked Meower
 Master Pakku
 Master's Councillors
 Mechanical Mobster
+Merfolk Skydiver
 Miasmic Mummy
 Mind Transfer Protocol
 Miner's Guidewing
@@ -322,6 +328,7 @@ Picklock Prankster // Free the Fae
 Pond Prophet
 Pride of the Road
 Prideful Parent
+Primo, the Unbounded
 Prophet of the Planeswalker
 Psychic Whorl
 Pym Particles
@@ -375,6 +382,7 @@ Shrike Force
 Silver Surfer, Cosmic Voyager
 Silvergill Mentor
 Silverquill, the Disputant
+Simic Ascendancy
 Skyskipper Duo
 Sledge-Class Seedship
 Slick Imitator
@@ -408,6 +416,7 @@ Super-Soldier Serum
 Surrak, Elusive Hunter
 Sweettooth Witch
 Swiftblade Vindicator
+Tanazir Quandrix
 Tangle Tumbler
 Tannuk, Steadfast Second
 Tapestry Warden
@@ -432,6 +441,7 @@ Think Twice
 Thor Odinson
 Thor, Asgard's Avenger
 Thor, Guardian of Midgard
+Thrasios, Triton Hero
 Three Tree Scribe
 Thunderous Velocipede
 Tidings of War
@@ -487,7 +497,9 @@ Wisecrack
 Wolverine, Claws Out
 Wonder Man, Hollywood Hero
 Woodwork Prodigy // Soul Tether
+Xolatoyac, the Smiling Flood
 Y'shtola Rhul
 Zagras, Thief of Heartbeats
+Zegana, Utopian Speaker
 Zog, Triceraton Castaway
 Zurgo, Thunder's Decree
