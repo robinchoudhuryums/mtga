@@ -66,6 +66,15 @@ two target creatures and/or artifacts you control."
   (+1 per placement) and Bristly Bill / Seismic Tutelage (double existing). Order matters:
   apply +1 replacements before doublers when you choose the order (you do, as the
   affected creature's controller). Five-plus doublers is a real engine, not filler.
+- **O5 — Applied Geometry copies a NONCREATURE permanent as a 6-counter Fractal.** Copy a
+  doubler (Branching Evolution, The Earth Crystal, Innkeeper's Talent) and you have a second
+  doubler that is also a creature Zimone can target. Highest-ceiling card in the pile.
+- **O6 — Simic Ascendancy is an alternate win.** Growth counters equal to every +1/+1 counter
+  placed on your creatures; with two doublers, twenty arrives in a few turns. Note Zimone does
+  NOT double the growth counters (it is an enchantment, R2) — the doublers do the work.
+- **O7 — Card draw from counters is plentiful:** Prime Speaker Zegana, Take (Give // Take),
+  Pensive Professor, Hydroid Krasis, Sab-Sunen (draw 2 on odd, Zimone's doubling makes it
+  even again so it can attack).
 
 ## 4. Running verdicts
 
@@ -136,6 +145,39 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | Ancient Bronze Dragon | ◇ | 7-mana flier, random d20 counters |
 | Feral Hydra | ◇ | plain X Hydra |
 | Goldvein Hydra | ★ | X Hydra with haste and trample; Treasures on death |
+
+### Batch 3 (28, green-blue)
+
+| Card | Verdict | Note |
+|---|---|---|
+| Ivy Elemental | ◇ | plain X body |
+| Mistcutter Hydra | ★ | uncounterable, haste, protection from blue |
+| Hungering Hydra | ★ | grows from damage; one blocker max |
+| Voracious Hydra | ★★ | X body that fights (interaction) or doubles itself |
+| Biomancer's Familiar | ◇ | cuts generic costs only — Zimone's {G}{U} gets nothing; Bristly Bill, Ant-Man do |
+| Growth Curve | ★ | 2 mana: +1 then double |
+| Simic Ascendancy | ★★ | alternate win (O6) |
+| Sita Varma, Masked Racer | ◇ | one-shot X counters + team base P/T |
+| The Astonishing Ant-Man | ★ | grows on draws; cashes counters into Insects |
+| Give // Take | ★ | Take draws a card per counter removed — card advantage after a doubling |
+| Hadana's Climb | ★★ | combat counter; flips into a land that doubles a creature's power and gives flying |
+| Zimone, Infinite Analyst | ★ | X-spell discount per counter on her; grows on the first X spell |
+| Applied Geometry | ★★★ | copy a doubler as a 6-counter Fractal (O5) |
+| Arixmethes, Slumbering Isle | ★ | ramp land that wakes into a 12/12 |
+| Berta, Wise Extrapolator | ★★ | mana on every counter placement; X Fractal maker |
+| Ezuri, Claw of Progress | ★ | Elf; experience-scaled combat counters |
+| Manifestation Sage | ◇ | Fractal = hand size |
+| Thranduil's Company | ★ | Elf; extra land with another Elf; landfall +2 counters |
+| Fractal Tender | ★★ | ward 2; a 3-counter Fractal every end step it grew |
+| Roalesk, Apex Hybrid | ★ | flier; +2 on entry; proliferate twice on death |
+| Sab-Sunen, Luxa Embodied | ★ | indestructible 6/6; draws 2 on odd counts, Zimone evens it (O7) |
+| Tanazir Quandrix | ★★ | doubles counters on entry; team base P/T on attack |
+| Body of Research | ◇ | GGGUUU spice: a Fractal the size of your library |
+| Prime Speaker Zegana | ★★ | draws cards equal to its power (O7) |
+| Oko, the Trickster | ★ | +2 counters per turn; −7 makes the team 10/10 |
+| Hydroid Krasis | ★★ | X flier that draws and gains on cast |
+| Repulsive Mutation | ★★ | instant counters + soft counterspell (interaction) |
+| Nissa, Steward of Elements | ◇ | X walker; free lands/creatures off the top |
 
 ## 5. Consolidated plan (live)
 
