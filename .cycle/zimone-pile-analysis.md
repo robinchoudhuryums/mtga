@@ -345,3 +345,18 @@ Take +Deeproot Pilgrimage, -Additive Evolution +Deeproot Waters, -Double Major +
 -Mistcutter Hydra +Baxter, -Arixmethes +Stark's Ingenuity, -Primo +Tui and La, -Smuggler's
 Surprise +God-Eternal Rhonas, -Oko the Trickster +Ezuri Claw of Progress, -Bite Down (8 decks)
 +Rabid Bite (0). Preview: floor A, interaction 14, card advantage 12->14, Merfolk 7->16.
+
+### Package v2 (2026-10-27, owner's keeps restored; not applied)
+
+Owner keeps Germination Practicum, Double Major, Arixmethes, Primo and Smuggler's Surprise, so
+Namor the Sub-Mariner, Tekuthal, Stark's Ingenuity, Tui and La and God-Eternal Rhonas need other
+cut targets. Bite Down is replaced by an instant that ADDS a counter (Signature Slam: +1, then
+every modified creature you control hits one target). Better-than replacements found by a GU
+Merfolk sweep: Kiora's Follower (Merfolk, {T}: untap another permanent — a second Zimone
+activation each turn), Merrow Reejerey (lord; untaps a permanent whenever you cast a Merfolk),
+Attuma (owned lord; draws when Merfolk attack), Merfolk Mistbinder (2-mana lord); Kami of Whispered
+Hopes over Michelangelo (+1 on any permanent, taps for mana = power, used in 0 other decks vs 6).
+Correction: Orvar does NOT copy off Germination Practicum (it targets nothing); Applied Geometry,
+Felling Blow, Inscription, Repulsive Mutation, Signature Slam and the copy modes of Sublime
+Epiphany / Three Steps Ahead are the targeting spells (token copies lose counters, E1).
+20 swaps previewed: floor A, interaction 14->13, card advantage 12->13, avg MV 3.44.
