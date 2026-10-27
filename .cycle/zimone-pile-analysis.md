@@ -327,3 +327,21 @@ untap effects and team protection.
   Ground).
 - **Spice:** Cytoplast Manipulator (steal a creature with a counter), Contagion Engine,
   Paradox Engine, Intruder Alarm.
+
+## 7. Merfolk-lean add-back package (proposed 2026-10-27, not applied)
+
+Owner: lean further into Merfolk; between roughly equivalent cards prefer the one used in FEWER
+other decks. Measured other-deck usage: Bite Down 8, Goldvein Hydra 6, Germination Practicum 6,
+Michelangelo 6, Railway Brawler 5, Three Steps Ahead 5, The Earth Crystal 5, Bristly Bill 5,
+Sab-Sunen 4, Topiary Lecturer 4, Mana Sculpt 4, Applied Geometry 4; every proposed add is used
+in 0-3 other decks. Engine pieces stay even when shared (Earth Crystal, Bristly Bill,
+Michelangelo, Applied Geometry) — no roughly-equivalent unshared replacement exists.
+22 swaps: -Goldvein Hydra +Adrix and Nev, -Germination Practicum +Namor the Sub-Mariner,
+-Railway Brawler +Namor Scourge of the Seas, -Growth Curve +Deeproot Elite, -Sab-Sunen +Tishana,
+-Ambitious Augmenter +Daughter of the Deep, -Thranduil's Company +Kumena, -Herd Baloth +Svyelun,
+-Zimone Infinite Analyst +Lord of Atlantis, -Pawpatch Formation +Vodalian Hexcatcher, -Give //
+Take +Deeproot Pilgrimage, -Additive Evolution +Deeproot Waters, -Double Major +Tekuthal,
+-Thrasios +Elrond, -Astonishing Ant-Man +Nadir Kraken, -Hungering Hydra +Seismic Tutelage,
+-Mistcutter Hydra +Baxter, -Arixmethes +Stark's Ingenuity, -Primo +Tui and La, -Smuggler's
+Surprise +God-Eternal Rhonas, -Oko the Trickster +Ezuri Claw of Progress, -Bite Down (8 decks)
++Rabid Bite (0). Preview: floor A, interaction 14, card advantage 12->14, Merfolk 7->16.
