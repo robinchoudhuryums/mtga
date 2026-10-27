@@ -55,6 +55,9 @@
 #: notes: permanent), -Arixmethes +Eluge (a flood counter on an OPPONENT's land makes it an Island,
 #: notes: so Lord of Atlantis's islandwalk makes the Merfolk unblockable). Jace was interaction and
 #: notes: Ezuri a proliferate source: interaction 10, card advantage 9, metrics floor B.
+#: notes: Then -Eluge +Silverback Elder: measured, Eluge's late flood-counter fixing moved mean
+#: notes: cast-on-curve 74.3% -> 74.6% when swapped out; Silverback gives a land from the top five or an
+#: notes: artifact/enchantment kill on every creature spell. Interaction 11, metrics floor B.
 
 # Commander (leads from the command zone; also one of the 100)
 1 Zimone, Paradox Sculptor (FDN) 126
@@ -102,7 +105,7 @@
 # Ramp and cheats — mana that scales with power
 1 Topiary Lecturer (SOS) 165
 1 Selvala, Heart of the Wilds (JMP) 429
-1 Eluge, the Shoreless Sea (BLB) 49
+1 Silverback Elder (DMU) 177
 1 Eladamri, Korvecdal (MH3) 149
 1 Song of Freyalise (DOM) 179
 1 Jiang Yanggu, Wildcrafter (WAR) 164

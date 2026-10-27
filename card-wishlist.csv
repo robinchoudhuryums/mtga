@@ -159,6 +159,10 @@ Liliana of the Veil,Legendary Planeswalker — Liliana,"+1: Each player discards
 "Sheoldred, the Apocalypse",Legendary Creature — Phyrexian Praetor,"Deathtouch
 Whenever you draw a card, you gain 2 life.
 Whenever an opponent draws a card, they lose 2 life.",B,Phyrexian; Praetor; lifegain; card draw; deathtouch; combat; removal,DMU,107,Mythic,87,,7.0,seed
+Silverback Elder,Creature — Ape Shaman,"Whenever you cast a creature spell, choose one —
+• Destroy target artifact or enchantment.
+• Look at the top five cards of your library. You may put a land card from among them onto the battlefield tapped. Put the rest on the bottom of your library in a random order.
+• You gain 4 life.",G,Ape; Shaman; lifegain; removal; selection,DMU,177,Mythic,94,,9.5,seed
 Adarkar Wastes,Land,"{T}: Add {C}.
 {T}: Add {W} or {U}. This land deals 1 damage to you.",W/U,mana,DMU,243,Rare,91,,4.0,seed
 Caves of Koilos,Land,"{T}: Add {C}.
