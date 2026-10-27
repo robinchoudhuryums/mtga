@@ -1,6 +1,6 @@
 # Zimone pile — analysis (TEMPORARY working doc)
 
-**Status: IN PROGRESS.** Delete once the deck is drafted and the findings are folded into
+**Status: DRAFTED as deck 94 (Paradox Sculptor) 2026-10-27; owner is choosing add-backs and the fits sweep below.** Delete once the deck is drafted and the findings are folded into
 the deck file's `#: notes:` block. A scratchpad, not a source of truth — decks/ are.
 
 **Source list:** the owner's 141-card pile, pasted 2026-10-27, aimed at a NEW **Historic
@@ -307,3 +307,23 @@ Ingenuity, Tui and La, Nadir Kraken, Atlantean Cavalry, Vulture); and the remain
 situational cards. Next in line: Adrix and Nev, Tekuthal, Elrond, Eladamri, Seismic
 Tutelage, Ichormoon Gauntlet, Baxter, Nadir Kraken, Tishana, God-Eternal Rhonas, Exponential
 Growth.
+
+## 6. Fits / upgrades / spice sweep for deck 94 (2026-10-27; full text read)
+
+Regex sweeps over the Simic Historic-Brawl pool for doublers, proliferate, counter payoffs,
+untap effects and team protection.
+- **Owned upgrades:** Swiftfoot Boots (haste lets Zimone tap the turn she lands; hexproof),
+  Doubling Season (tokens AND counters), Loading Zone (all counter kinds on creatures; warp {G}),
+  Doc Samson (+1 of every counter kind; taps for mana = power), Inspiring Call (instant draw per
+  countered creature + indestructible), Sazh Katzroy (attack: +1 then double), Mossborn Hydra
+  (landfall doubles), Tezzeret, Cruel Captain (0: untap a creature — a second Zimone activation).
+- **Craft upgrades:** Vorinclex (doubles ALL counters, loyalty included), Unstoppable Plan
+  (end-step untap of all nonland permanents — Zimone twice a turn cycle, like Xolatoyac),
+  Hardened Scales, Katara's Reversal (counter four things + untap four), Heroic Intervention,
+  Simic Charm.
+- **Fits:** Thunderous Velocipede, Biogenic Upgrade, Marketback Walker (an artifact — Zimone
+  doubles it; draws a card per counter on death), Armorcraft Judge, Bred for the Hunt, Benthic
+  Biomancer, Dramatic Reversal, the +1 replacements (Ozolith, Kami of Whispered Hopes, Solid
+  Ground).
+- **Spice:** Cytoplast Manipulator (steal a creature with a counter), Contagion Engine,
+  Paradox Engine, Intruder Alarm.
