@@ -61,6 +61,11 @@ two target creatures and/or artifacts you control."
 - **O3 — A PROLIFERATE sub-theme:** Inexorable Tide (proliferate per spell), Tekuthal
   (proliferate twice), Ichormoon Gauntlet (walkers proliferate; extra counter per
   noncreature spell). Proliferate is the only thing that grows planeswalker loyalty (R2).
+- **O4 — Counter REPLACEMENT doublers are deep in green.** Branching Evolution, The Earth
+  Crystal, Shang-Chi, Innkeeper's Talent (level 3, ALL counter kinds), plus Michelangelo
+  (+1 per placement) and Bristly Bill / Seismic Tutelage (double existing). Order matters:
+  apply +1 replacements before doublers when you choose the order (you do, as the
+  affected creature's controller). Five-plus doublers is a real engine, not filler.
 
 ## 4. Running verdicts
 
@@ -98,6 +103,39 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | Jace, Ingenious Mind-Mage | ★ | +1 untaps all creatures — a second Zimone activation (O1) |
 | Sublime Epiphany | ★★ | modal counter / bounce / copy / draw — real interaction |
 | One with the Multiverse | ◇ | 8 mana |
+
+### Batch 2 (28, green + blue)
+
+| Card | Verdict | Note |
+|---|---|---|
+| Mockingbird | ◇ | X clone with flying |
+| Ambitious Augmenter | ★ | 1-drop increment; dies into a Fractal carrying its counters |
+| Burgeoning | ◇ | ramp in 1v1, one extra land per opposing land |
+| Smuggler's Surprise | ★ | modal: dig, cheat two creatures, or hexproof+indestructible for power 4+ |
+| Bristly Bill, Spine Sower | ★★★ | landfall counters; {3}{G}{G} doubles every creature's +1/+1 counters |
+| Fractal Anomaly | ◇ | instant Fractal = cards drawn this turn |
+| As Foretold | ◇ | free spells as time counters build |
+| Chandra, Chill of Compliance | ◇ | −X stun is real interaction; walker gets nothing from Zimone |
+| Imperial Cosmographer | △ | needs blink/bounce of your own creatures |
+| Jadzi // Oracle's Gift | ★ | loot 2 on entry; prepared copy makes X Fractals with X counters EACH |
+| Herald of Secret Streams | ★★ | every creature with a +1/+1 counter is unblockable — the finisher |
+| Serpentine Curve | △ | few instants/sorceries to scale it |
+| The Theorist, Jace Beleren | ★ | draw on their draw step; −2 bounces (tempo) |
+| Innkeeper's Talent | ★★★ | combat counter; ward 1 on countered permanents; L3 doubles ALL counter kinds |
+| Inscription of Abundance | ★★ | instant fight + counters (interaction) |
+| Michelangelo, Weirdness to 11 | ★★ | +1 on every counter placement (O4) |
+| Arwen, Weaver of Hope | ★ | Elf; others enter with counters = her toughness, which grows |
+| Branching Evolution | ★★★ | doubler (O4) |
+| Seismic Tutelage | ★ | doubles counters on each attack |
+| The Earth Crystal | ★★★ | doubler + green discount |
+| Germination Practicum | ★★ | +2 to the team, and free again every first main phase (paradigm) |
+| Herd Baloth | ★★ | a 4/4 every time counters land on it — Zimone's combat counter included |
+| Nissa, Who Shakes the World | ★ | Forest mana doubling; animated lands carry counters |
+| Railway Brawler | ★★ | others enter with counters = their power |
+| Shang-Chi, Martial Mentor | ★★ | doubler on a 4/4 body |
+| Ancient Bronze Dragon | ◇ | 7-mana flier, random d20 counters |
+| Feral Hydra | ◇ | plain X Hydra |
+| Goldvein Hydra | ★ | X Hydra with haste and trample; Treasures on death |
 
 ## 5. Consolidated plan (live)
 
