@@ -75,6 +75,13 @@ two target creatures and/or artifacts you control."
 - **O7 — Card draw from counters is plentiful:** Prime Speaker Zegana, Take (Give // Take),
   Pensive Professor, Hydroid Krasis, Sab-Sunen (draw 2 on odd, Zimone's doubling makes it
   even again so it can attack).
+- **O8 — Merfolk is dense enough to be its own deck (variant signal, decide at the end).**
+  Batch 4 alone has ~20 Merfolk cards, many of them small tribal payoffs (Lord of Atlantis,
+  Vodalian Hexcatcher, Deeproot Pilgrimage/Waters, Daughter of the Deep, Tunnel-Guide) that
+  do little for COUNTERS. The counter-relevant Merfolk are the bridge: Deeproot Elite, Combine
+  Guildmage, Merfolk Skydiver, Mindspring Merfolk, Svyelun, Namor, Scourge.
+- **O9 — Copying a SPELL keeps X (unlike E1).** Double Major copies a creature spell on the
+  stack, so a copied Hydra or Krasis keeps its X — the reverse of a token copy of a permanent.
 
 ## 4. Running verdicts
 
@@ -178,6 +185,39 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | Hydroid Krasis | ★★ | X flier that draws and gains on cast |
 | Repulsive Mutation | ★★ | instant counters + soft counterspell (interaction) |
 | Nissa, Steward of Elements | ◇ | X walker; free lands/creatures off the top |
+
+### Batch 4 (28, mostly Merfolk)
+
+| Card | Verdict | Note |
+|---|---|---|
+| Primo, the Unbounded | ★★ | twice-X counters, trample; base-0 Fractals that connect make more Fractals |
+| Wolverine, Claws Out | △ | Mutant power doubling; few Mutants |
+| God-Eternal Rhonas | ★ | doubles the team's power for a turn — a finisher |
+| Majestic Myriarch | ◇ | creature-count body |
+| The Skullspore Nexus | ◇ | death-to-token; power doubler |
+| Double Major | ★★ | copies a creature SPELL, X kept (O9) |
+| Exponential Growth | ★ | one-shot finisher |
+| Additive Evolution | ★ | 3-counter Fractal + a combat counter every turn |
+| Preponderant Pearl | △ | Merfolk cantrip |
+| Mindspring Merfolk | ★ | draw X + a counter on each Merfolk, once |
+| Deeproot Pilgrimage | ◇ | Merfolk tokens when Merfolk tap |
+| Daughter of the Deep | ◇ | Merfolk token on second draw; unblockable Merfolk |
+| Lord of Atlantis | ◇ | Merfolk lord |
+| Skyclave Aerialist | ◇ | 2-drop flier |
+| Thassa's Oracle | ◇ | devotion dig |
+| Vodalian Hexcatcher | ◇ | Merfolk lord; sac-a-Merfolk soft counterspell |
+| Atlantean Cavalry | △ | second-draw counter |
+| Deeproot Waters | ◇ | Merfolk spell → hexproof token |
+| Svyelun of Sea and Sky | ★ | Merfolk ward; draws on attack |
+| Umara Wizard // Umara Skyfalls | △ | MDFC land |
+| Deeproot Elite | ★ | Merfolk enter → a counter |
+| World Shaper | ◇ | lands back on death |
+| Combine Guildmage | ★ | team enters with +1; moves counters |
+| Merfolk Skydiver | ★ | flier; +1 counter; proliferate sink |
+| Merfolk Tunnel-Guide | ◇ | explore boon |
+| Nicanzil, Current Conductor | ◇ | explore payoff |
+| Thrasios, Triton Hero | ★ | mana sink: land or card |
+| Kiora of Salt and Sand | ◇ | walker support |
 
 ## 5. Consolidated plan (live)
 
