@@ -55,6 +55,7 @@ Blasphemous Edict
 Blitzball Shot
 Bloated Contaminator
 Bloodthirsty Conqueror
+Body of Research
 Boiling Rock Rioter
 Bolg's Company
 Bone-Cairn Butcher
@@ -84,8 +85,8 @@ Cheering Crowd
 Claim Jumper
 Collector's Vault
 Colossification
-Combine Guildmage
 Commit // Memory
+Contagion Dispenser
 Corrupt Court Official
 Craterclaw Colossus
 Craterhoof Behemoth
@@ -230,7 +231,6 @@ Iroh, Dragon of the West
 Iron Hills Stalwart
 Iron Lad, Diverging Destiny
 Ironpaw Aspirant
-Jadzi, Steward of Fate // Oracle's Gift
 Jeong Jeong, the Deserter
 Jeskai Brushmaster
 Joo Dee, One of Many
@@ -240,6 +240,7 @@ Kastral, the Windcrested
 Katara, Water Tribe's Hope
 Kav Landseeker
 Kavaron Skywarden
+Kiora's Follower
 Kirol, Attentive First-Year
 Kitsune's Technique
 Klaw, Sonic Subjugator
@@ -249,6 +250,7 @@ Kraven the Hunter
 Kraven, Proud Predator
 Krenko, Mob Boss
 Krumar Initiate
+Kumena, Tyrant of Orazca
 Kyoshi Warriors
 Lake-town Toymaker
 Large Bear
@@ -263,6 +265,7 @@ Little Bear
 Living Brain, Mechanical Marvel
 Loki Laufeyson
 Long Feng, Grand Secretariat
+Lord of Atlantis
 Lorehold, the Historian
 Magic Pot
 Magitek Armor
@@ -294,6 +297,7 @@ Most Decrepit Old Bird // Speak Secrets
 Mutable Explorer
 Mysterio, Master of Illusion
 Namazu Trader
+Namor, Scourge of the Seas
 Nashi, Searcher in the Dark
 Necrogen Rotpriest
 Neriv, Heart of the Storm
@@ -416,7 +420,6 @@ Super-Soldier Serum
 Surrak, Elusive Hunter
 Sweettooth Witch
 Swiftblade Vindicator
-Tanazir Quandrix
 Tangle Tumbler
 Tannuk, Steadfast Second
 Tapestry Warden
@@ -441,7 +444,6 @@ Think Twice
 Thor Odinson
 Thor, Asgard's Avenger
 Thor, Guardian of Midgard
-Thrasios, Triton Hero
 Three Tree Scribe
 Thunderous Velocipede
 Tidings of War

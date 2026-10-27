@@ -3,20 +3,23 @@
 #: colors: GU
 #: commander: Zimone, Paradox Sculptor
 #: plan: midrange
-#: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool), SIMIC COUNTER ENGINE around
-#: archetype: Zimone, Paradox Sculptor: two +1/+1 counters every combat, and {G}{U},{T}: double every
-#: archetype: kind of counter on two creatures and/or artifacts. Replacement doublers (Branching
-#: archetype: Evolution, The Earth Crystal, Shang-Chi, Innkeeper's Talent level 3) and Michelangelo's
-#: archetype: +1 multiply every placement; Bristly Bill and Tanazir double what is already there;
-#: archetype: Applied Geometry copies a doubler as a 6-counter creature; Xolatoyac untaps everything
-#: archetype: with a counter at your end step, so Zimone doubles twice a turn cycle. X bodies and
-#: archetype: Fractal makers supply the counters; it wins through Herald of Secret Streams
-#: archetype: (countered creatures are unblockable), Zegana (trample), Simic Ascendancy (alternate
-#: archetype: win) and mana that scales with power (Selvala, Topiary Lecturer). Merfolk and Elves are
-#: archetype: here for their text; a tribal overlap is a bonus, not the plan. DISTINCT from decks 4
-#: archetype: (Quantum Realm) and 30 (Fractalandtastic), the roster's 60-card Standard counters decks
-#: archetype: (11 and 13 shared nonland cards): this is a commander-driven 100-card list built on
-#: archetype: Zimone's doubling, end-step untaps and an alternate win.
+#: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool), SIMIC MERFOLK COUNTER ENGINE
+#: archetype: around Zimone, Paradox Sculptor: two +1/+1 counters every combat, and {G}{U},{T}: double
+#: archetype: every kind of counter on two creatures and/or artifacts. Replacement doublers (Branching
+#: archetype: Evolution, The Earth Crystal, Innkeeper's Talent level 3) and Kami of Whispered Hopes'
+#: archetype: +1 multiply every placement; Bristly Bill doubles what is already there; Adrix and Nev
+#: archetype: doubles every token; Applied Geometry copies a doubler as a 6-counter creature. Zimone
+#: archetype: doubles more than once a turn: Xolatoyac untaps everything with a counter at end step,
+#: archetype: and Kiora's Follower, Merrow Reejerey and Jace untap her. MERFOLK (owner's lean, 2026-10-27)
+#: archetype: are the second axis — lords Lord of Atlantis, Attuma, Merrow Reejerey and Svyelun; token
+#: archetype: engines Deeproot Pilgrimage, Deeproot Waters, Daughter of the Deep and both Namors; Deeproot
+#: archetype: Elite and Kumena turn the tribe into counters. Eladamri cheats the top end (Verdant
+#: archetype: Kraken, Ancient Bronze Dragon, Body of Research, Majestic Myriarch, Roalesk, The Skullspore
+#: archetype: Nexus). It wins through Herald of Secret Streams (countered creatures are unblockable),
+#: archetype: Zegana (trample), Simic Ascendancy (alternate win) and mana that scales with power
+#: archetype: (Selvala, Topiary Lecturer, Kami). DISTINCT from decks 4 (Quantum Realm) and 30
+#: archetype: (Fractalandtastic), the roster's 60-card Standard counters decks: this is a
+#: archetype: commander-driven 100-card list built on Zimone's repeated doubling and Merfolk.
 #: protect: Zimone, Paradox Sculptor; Branching Evolution; The Earth Crystal; Innkeeper's Talent; Applied Geometry; Xolatoyac, the Smiling Flood; Simic Ascendancy; Herald of Secret Streams
 #: notes: DRAFTED 2026-10-27 from the owner's 141-card pile (.cycle/zimone-pile-analysis.md) plus
 #: notes: owned Simic interaction from outside it (Felling Blow, Bite Down, Hunter's Talent,
@@ -26,10 +29,20 @@
 #: notes: a token COPY of a Hydra or Fractal enters with no counters (copy a static creature or a
 #: notes: doubler instead), while Double Major copies the SPELL and keeps X; stun and -1/-1 counters
 #: notes: double too. Mana Sculpt's refund is on — Zimone is a Wizard.
-#: notes: NEXT IN LINE (owner plans to add several back): Adrix and Nev, Tekuthal, Elrond, Eladamri,
-#: notes: Namor Scourge of the Seas, Svyelun, Deeproot Elite, Mindspring Merfolk, Nadir Kraken,
-#: notes: Seismic Tutelage, Ichormoon Gauntlet, Baxter, Stark's Ingenuity, Tishana, God-Eternal
-#: notes: Rhonas, Exponential Growth.
+#: notes: 2026-10-27 MERFOLK-LEAN PACKAGE (27 swaps, owner's picks; between equivalent cards the one
+#: notes: used in FEWER other decks): -Goldvein Hydra +Adrix and Nev, -Railway Brawler +Namor Scourge
+#: notes: of the Seas, -Growth Curve +Deeproot Elite, -Sab-Sunen +Body of Research, -Ambitious
+#: notes: Augmenter +Daughter of the Deep, -Thranduil's Company +Kumena, -Herd Baloth +Svyelun,
+#: notes: -Zimone Infinite Analyst +Lord of Atlantis, -Pawpatch Formation +Attuma, -Give // Take
+#: notes: +Deeproot Pilgrimage, -Additive Evolution +Deeproot Waters, -Thrasios +Contagion
+#: notes: Dispenser, -Astonishing Ant-Man +Nadir Kraken, -Hungering Hydra +Namor the Sub-Mariner,
+#: notes: -Mistcutter Hydra +Baxter, -Oko the Trickster +Ezuri Claw of Progress, -Bite Down
+#: notes: (8 other decks) +Signature Slam (an instant that adds a counter), -Combine Guildmage +Merrow
+#: notes: Reejerey, -Michelangelo (6 other decks) +Kami of Whispered Hopes, -Hadana's Climb +Kiora's
+#: notes: Follower, -Pensive Professor +Eladamri, -Tatyova +Krang, -Shang-Chi +Majestic Myriarch,
+#: notes: -Jadzi +The Skullspore Nexus, -Tanazir Quandrix +Roalesk, -Hydroid Krasis +Verdant Kraken,
+#: notes: -Fractal Tender +Ancient Bronze Dragon. PENDING (owner choosing cuts): Vulture, Tekuthal.
+#: notes: Interaction sits at 13 against an A floor of 12 — cut no more of it.
 
 # Commander (leads from the command zone; also one of the 100)
 1 Zimone, Paradox Sculptor (FDN) 126
@@ -38,12 +51,11 @@
 1 Branching Evolution (MH3) 285
 1 The Earth Crystal (FIN) 184
 1 Innkeeper's Talent (BLB) 180
-1 Shang-Chi, Martial Mentor (MSC) 732
-1 Michelangelo, Weirdness to 11 (TMT) 121
+1 Kami of Whispered Hopes (MOM) 196
 1 Bristly Bill, Spine Sower (OTJ) 157
 1 Applied Geometry (SOS) 172
 1 Xolatoyac, the Smiling Flood (LCC) 8
-1 Tanazir Quandrix (STX) 240
+1 Adrix and Nev, Twincasters (SPG) 156
 
 # Payoffs — proliferate, alternate win, evasion
 1 Inexorable Tide (HA2) 6
@@ -51,52 +63,58 @@
 1 Simic Ascendancy (RNA) 207
 1 Herald of Secret Streams (XLN) 59
 1 Zegana, Utopian Speaker (RNA) 214
-1 Herd Baloth (J21) 584
 1 Primo, the Unbounded (SOC) 6
+1 Contagion Dispenser (YONE) 19
 
 # X bodies
-1 Hydroid Krasis (RNA) 183
 1 Voracious Hydra (M20) 200
-1 Goldvein Hydra (OTJ) 167
-1 Mistcutter Hydra (PIO) 184
-1 Hungering Hydra (M19) 189
 1 Double Major (STX) 179
-1 Zimone, Infinite Analyst (SOC) 10
 
 # Counter makers and Fractals
-1 Fractal Tender (SOS) 190
-1 Jadzi, Steward of Fate // Oracle's Gift (SOS) 55
 1 Berta, Wise Extrapolator (SOS) 175
-1 Additive Evolution (SOS) 139
-1 Hadana's Climb // Winged Temple of Orazca (RIX) 158
-1 Railway Brawler (OTJ) 175
 1 Arwen, Weaver of Hope (LTC) 35
 1 Germination Practicum (SOS) 149
-1 Growth Curve (SOS) 193
 1 Merfolk Skydiver (WAR) 205
-1 Ambitious Augmenter (SOS) 140
-1 Combine Guildmage (RNA) 163
+1 Body of Research (STX) 168
+1 Ezuri, Claw of Progress (MUL) 38
 
 # Card draw
-1 Pensive Professor (SOS) 63
 1 Prime Speaker Zegana (FDN) 664
-1 Sab-Sunen, Luxa Embodied (DFT) 221
-1 Give // Take (PIO) 389
-1 The Astonishing Ant-Man (MSH) 204
+1 Nadir Kraken (THB) 55
 1 Ezuri, Stalker of Spheres (ONE) 201
-1 Tatyova, Benthic Druid (FDN) 247
-1 Thrasios, Triton Hero (FCA) 58
+1 Krang, the All-Powerful (TMC) 13
+1 Baxter, Fly in the Ointment (TMC) 10
 
-# Ramp — mana that scales with power
+# Ramp and cheats — mana that scales with power
 1 Topiary Lecturer (SOS) 165
 1 Selvala, Heart of the Wilds (JMP) 429
 1 Arixmethes, Slumbering Isle (MUL) 32
-1 Thranduil's Company (HOB) 168
+1 Eladamri, Korvecdal (MH3) 149
 
 # Untap and protection
 1 Jace, Ingenious Mind-Mage (XLN) 280
 1 Smuggler's Surprise (OTJ) 180
-1 Oko, the Trickster (ELD) 309
+
+# Merfolk — lords, token engines and untap payoffs
+1 Namor, Scourge of the Seas (MSC) 631
+1 Deeproot Elite (RIX) 127
+1 Daughter of the Deep (MSC) 618
+1 Kumena, Tyrant of Orazca (RIX) 162
+1 Svyelun of Sea and Sky (J21) 259
+1 Lord of Atlantis (MAR) 56
+1 Attuma, Atlantean Warlord (MSH) 47
+1 Deeproot Pilgrimage (LCI) 52
+1 Deeproot Waters (XLN) 51
+1 Namor the Sub-Mariner (MSH) 69
+1 Merrow Reejerey (HA2) 5
+1 Kiora's Follower (PIO) 228
+
+# Top end — finishers (Eladamri cheats them in)
+1 Majestic Myriarch (AKR) 200
+1 The Skullspore Nexus (LCI) 212
+1 Roalesk, Apex Hybrid (WAR) 213
+1 Verdant Kraken (FRA) 118
+1 Ancient Bronze Dragon (HBG) 199
 
 # Interaction
 1 Sublime Epiphany (M21) 74
@@ -104,14 +122,13 @@
 1 Inscription of Abundance (ZNR) 186
 1 Commit // Memory (AKR) 54
 1 Felling Blow (FDN) 105
-1 Bite Down (FDN) 212
+1 Signature Slam (MH3) 168
 1 Hunter's Talent (BLB) 179
 1 Essence Capture (NEO) 52
 1 Quandrix Charm (SOS) 217
 1 Three Steps Ahead (OTJ) 75
 1 Mana Sculpt (SOS) 57
 1 Season of Gathering (BLB) 192
-1 Pawpatch Formation (BLB) 186
 
 # Lands (36)
 1 Command Tower (FRC) 22
