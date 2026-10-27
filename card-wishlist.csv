@@ -641,6 +641,8 @@ Whenever Photon deals combat damage to a player, add that much mana of any one c
 Power-up — {5}{G}{G}: Put three +1/+1 counters on Shang-Chi. (Activate each power-up ability only once. Reduce the cost by his mana cost if he entered this turn.)",G,Human; Warrior; Hero; counters; power-up; payoff,MSC,732,Rare,94,,5.5,seed
 "Spider-Man, New Champion",Legendary Creature — Spider Human Hero,"Reach
 Whenever you discard one or more cards, Spider-Man deals that much damage to any target.",R,Spider; Human; Hero; noncombat damage; reach; defense,MSC,705,Rare,93,,4.5,seed
+"Vulture, Feathered Fiend",Legendary Creature — Human Artificer Villain,"Flying
+Whenever one or more creatures you control with flying deal combat damage to a player, put a +1/+1 counter on each of those creatures and draw a card.",U,Human; Artificer; Villain; counters; card draw; flying; evasion,MSC,645,Rare,94,,7.0,seed
 Daughter of the Deep,Creature — Merfolk Noble,"Whenever you draw your second card each turn, create a 1/1 blue Merfolk creature token.
 {U}, {T}: Target Merfolk can't be blocked this turn.",U,Merfolk; Noble; tokens,MSC,618,Uncommon,94,,4.0,seed
 Origin of Black Widow,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
@@ -707,6 +709,9 @@ Ichormoon Gauntlet,Artifact,"Planeswalkers you control have ""[0]: Proliferate""
 Whenever you cast a noncreature spell, choose a counter on target permanent. Put an additional counter of that kind on that permanent.",U,planeswalker; counters; spellslinger; proliferate,ONE,56,Mythic,90,,6.5,seed
 "Solphim, Mayhem Dominus",Legendary Creature — Phyrexian Horror,"If a source you control would deal noncombat damage to an opponent or a permanent an opponent controls, it deals double that damage to that player or permanent instead.
 {1}{R/P}{R/P}, Discard two cards: Put an indestructible counter on Solphim. ({R/P} can be paid with either {R} or 2 life.)",R,Phyrexian; Horror; counters; noncombat damage; double,ONE,150,Mythic,85,,7.5,seed
+"Tekuthal, Inquiry Dominus",Legendary Creature — Phyrexian Horror,"Flying
+If you would proliferate, proliferate twice instead.
+{1}{U/P}{U/P}, Remove three counters from among other artifacts, creatures, and planeswalkers you control: Put an indestructible counter on Tekuthal. ({U/P} can be paid with either {U} or 2 life.)",U,Phyrexian; Horror; counters; flying; evasion; proliferate,ONE,71,Mythic,94,,5.0,seed
 Tyrranax Rex,Creature — Phyrexian Dinosaur,"This spell can't be countered.
 Trample, ward {4}, haste
 Toxic 4 (Players dealt combat damage by this creature also get four poison counters.)",G,Phyrexian; Dinosaur; toxic; haste; aggro; trample; evasion; ward; protection,ONE,189,Mythic,89,deck 89 tune 2026-10-22,5.0,seed

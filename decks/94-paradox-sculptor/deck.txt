@@ -10,8 +10,8 @@
 #: archetype: +1 multiply every placement; Bristly Bill doubles what is already there; Adrix and Nev
 #: archetype: doubles every token; Applied Geometry copies a doubler as a 6-counter creature. Zimone
 #: archetype: doubles more than once a turn: Xolatoyac untaps everything with a counter at end step,
-#: archetype: and Kiora's Follower, Merrow Reejerey and Jace untap her. MERFOLK (owner's lean, 2026-10-27)
-#: archetype: are the second axis — lords Lord of Atlantis, Attuma, Merrow Reejerey and Svyelun; token
+#: archetype: and Kiora's Follower and Jace untap her. MERFOLK (owner's lean, 2026-10-27)
+#: archetype: are the second axis — lords Lord of Atlantis, Attuma and Svyelun; token
 #: archetype: engines Deeproot Pilgrimage, Deeproot Waters, Daughter of the Deep and both Namors; Deeproot
 #: archetype: Elite and Kumena turn the tribe into counters. Eladamri cheats the top end (Verdant
 #: archetype: Kraken, Ancient Bronze Dragon, Body of Research, Majestic Myriarch, Roalesk, The Skullspore
@@ -41,7 +41,7 @@
 #: notes: Reejerey, -Michelangelo (6 other decks) +Kami of Whispered Hopes, -Hadana's Climb +Kiora's
 #: notes: Follower, -Pensive Professor +Eladamri, -Tatyova +Krang, -Shang-Chi +Majestic Myriarch,
 #: notes: -Jadzi +The Skullspore Nexus, -Tanazir Quandrix +Roalesk, -Hydroid Krasis +Verdant Kraken,
-#: notes: -Fractal Tender +Ancient Bronze Dragon. PENDING (owner choosing cuts): Vulture, Tekuthal.
+#: notes: -Fractal Tender +Ancient Bronze Dragon. Then -Commit // Memory +Tekuthal, -Merrow Reejerey +Vulture.
 #: notes: Interaction sits at 13 against an A floor of 12 — cut no more of it.
 
 # Commander (leads from the command zone; also one of the 100)
@@ -65,6 +65,7 @@
 1 Zegana, Utopian Speaker (RNA) 214
 1 Primo, the Unbounded (SOC) 6
 1 Contagion Dispenser (YONE) 19
+1 Tekuthal, Inquiry Dominus (ONE) 71
 
 # X bodies
 1 Voracious Hydra (M20) 200
@@ -84,6 +85,7 @@
 1 Ezuri, Stalker of Spheres (ONE) 201
 1 Krang, the All-Powerful (TMC) 13
 1 Baxter, Fly in the Ointment (TMC) 10
+1 Vulture, Feathered Fiend (MSC) 645
 
 # Ramp and cheats — mana that scales with power
 1 Topiary Lecturer (SOS) 165
@@ -106,7 +108,6 @@
 1 Deeproot Pilgrimage (LCI) 52
 1 Deeproot Waters (XLN) 51
 1 Namor the Sub-Mariner (MSH) 69
-1 Merrow Reejerey (HA2) 5
 1 Kiora's Follower (PIO) 228
 
 # Top end — finishers (Eladamri cheats them in)
@@ -120,7 +121,6 @@
 1 Sublime Epiphany (M21) 74
 1 Repulsive Mutation (MKM) 227
 1 Inscription of Abundance (ZNR) 186
-1 Commit // Memory (AKR) 54
 1 Felling Blow (FDN) 105
 1 Signature Slam (MH3) 168
 1 Hunter's Talent (BLB) 179
