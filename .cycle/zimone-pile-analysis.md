@@ -372,3 +372,7 @@ Climb +Kiora's Follower, -Pensive Professor +Eladamri, -Tatyova +Krang, -Jace In
 -Tanazir +Roalesk, -Hydroid Krasis +Verdant Kraken, -Fractal Tender +Ancient Bronze Dragon,
 -Seismic Tutelage (a v2 add) +Namor the Sub-Mariner, -Ezuri Claw of Progress (a v2 add)
 +Tekuthal. 32 swaps total: floor A, interaction 12, card advantage 10, avg MV 3.58.
+
+v3 revision (owner keeps Arwen, Jace Ingenious Mind-Mage, Prime Speaker Zegana, Ezuri Claw of
+Progress, Kumena): Dispenser now cuts Elrond, Vulture cuts Deeproot Pilgrimage, Body of Research
+cuts Tishana, Tekuthal cuts Berta. Preview: floor A, interaction 13, card advantage 11, avg MV 3.61.
