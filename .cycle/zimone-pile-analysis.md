@@ -360,3 +360,15 @@ Correction: Orvar does NOT copy off Germination Practicum (it targets nothing); 
 Felling Blow, Inscription, Repulsive Mutation, Signature Slam and the copy modes of Sublime
 Epiphany / Three Steps Ahead are the targeting spells (token copies lose counters, E1).
 20 swaps previewed: floor A, interaction 14->13, card advantage 12->13, avg MV 3.44.
+
+### Package v3 (2026-10-27, not applied) = v2 minus Skydiver->Kiora's Follower, plus 13
+
+Owner keeps Merfolk Skydiver and adds Contagion Dispenser, Eladamri, Krang, Vulture, Majestic
+Myriarch, The Skullspore Nexus, Body of Research, Roalesk, Verdant Kraken, Ancient Bronze Dragon,
+Namor the Sub-Mariner, Tekuthal; Kiora's Follower re-homed. New cuts come from the ORIGINAL list
+first, interaction untouched (it sits on the floor of 12): -Arwen +Contagion Dispenser, -Hadana's
+Climb +Kiora's Follower, -Pensive Professor +Eladamri, -Tatyova +Krang, -Jace Ingenious +Vulture,
+-Shang-Chi +Majestic Myriarch, -Jadzi +Skullspore Nexus, -Prime Speaker Zegana +Body of Research,
+-Tanazir +Roalesk, -Hydroid Krasis +Verdant Kraken, -Fractal Tender +Ancient Bronze Dragon,
+-Seismic Tutelage (a v2 add) +Namor the Sub-Mariner, -Ezuri Claw of Progress (a v2 add)
++Tekuthal. 32 swaps total: floor A, interaction 12, card advantage 10, avg MV 3.58.
