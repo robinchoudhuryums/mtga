@@ -42,8 +42,10 @@
 #: notes: Follower, -Pensive Professor +Eladamri, -Tatyova +Krang, -Shang-Chi +Majestic Myriarch,
 #: notes: -Jadzi +The Skullspore Nexus, -Tanazir Quandrix +Roalesk, -Hydroid Krasis +Verdant Kraken,
 #: notes: -Fractal Tender +Ancient Bronze Dragon. Then -Commit // Memory +Tekuthal, -Merrow Reejerey +Vulture, -Mana Sculpt
-#: notes: +Origin of Metalbending (artifact/enchantment removal or counter + indestructible).
-#: notes: Interaction sits at 13 against an A floor of 12 — cut no more of it.
+#: notes: +Origin of Metalbending (artifact/enchantment removal or counter + indestructible); -Sublime
+#: notes: Epiphany +Song of Freyalise, -Season of Gathering +Jiang Yanggu (creatures with a +1/+1 counter tap
+#: notes: for any colour; proliferate — Inexorable Tide, Evolution Sage, Skydiver, x2 with Tekuthal —
+#: notes: refills her loyalty). Interaction is now 11, UNDER the A floor of 12 (metrics floor B).
 
 # Commander (leads from the command zone; also one of the 100)
 1 Zimone, Paradox Sculptor (FDN) 126
@@ -93,6 +95,8 @@
 1 Selvala, Heart of the Wilds (JMP) 429
 1 Arixmethes, Slumbering Isle (MUL) 32
 1 Eladamri, Korvecdal (MH3) 149
+1 Song of Freyalise (DOM) 179
+1 Jiang Yanggu, Wildcrafter (WAR) 164
 
 # Untap and protection
 1 Jace, Ingenious Mind-Mage (XLN) 280
@@ -119,7 +123,6 @@
 1 Ancient Bronze Dragon (HBG) 199
 
 # Interaction
-1 Sublime Epiphany (M21) 74
 1 Repulsive Mutation (MKM) 227
 1 Inscription of Abundance (ZNR) 186
 1 Felling Blow (FDN) 105
@@ -129,7 +132,6 @@
 1 Quandrix Charm (SOS) 217
 1 Three Steps Ahead (OTJ) 75
 1 Origin of Metalbending (TLA) 187
-1 Season of Gathering (BLB) 192
 
 # Lands (36)
 1 Command Tower (FRC) 22

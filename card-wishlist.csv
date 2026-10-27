@@ -170,6 +170,9 @@ Isolated Chapel,Land,"This land enters tapped unless you control a Plains or a S
 {T}: Add {W} or {B}.",W/B,mana,DOM,241,Rare,91,,4.0,seed
 Oath of Teferi,Legendary Enchantment,"When Oath of Teferi enters, exile another target permanent you control. Return it to the battlefield under its owner's control at the beginning of the next end step.
 You may activate the loyalty abilities of planeswalkers you control twice each turn rather than only once.",W/U,etb; blink,DOM,200,Rare,90,,3.5,seed
+Song of Freyalise,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
+I, II — Until your next turn, creatures you control gain ""{T}: Add one mana of any color.""
+III — Put a +1/+1 counter on each creature you control. Those creatures gain vigilance, trample, and indestructible until end of turn.",G,saga; counters; mana; trample; evasion; vigilance; combat; indestructible; resilience,DOM,179,Uncommon,94,,3.0,seed
 "Hashaton, Scarab's Fist",Legendary Creature — Zombie Wizard,"Whenever you discard a creature card, you may pay {2}{U}. If you do, create a tapped token that's a copy of that card, except it's a 4/4 black Zombie.",W/U/B,Zombie; Wizard; tokens,DRC,1,Mythic,91,,7.0,seed
 "Temmet, Naktamun's Will",Legendary Creature — Zombie Wizard,"Vigilance, menace
 Whenever you attack, draw a card, then discard a card.
@@ -497,12 +500,6 @@ Whenever this creature enters or deals combat damage to a player, draw a card, t
 "Liliana, Waker of the Dead",Legendary Planeswalker — Liliana,"+1: Each player discards a card. Each opponent who can't loses 3 life.
 −3: Target creature gets -X/-X until end of turn, where X is the number of cards in your graveyard.
 −7: You get an emblem with ""At the beginning of combat on your turn, put target creature card from a graveyard onto the battlefield under your control. It gains haste.""",B,Liliana; planeswalker; reanimator; graveyard; removal; discard; haste; aggro,M21,108,Mythic,91,,10.0,seed
-Sublime Epiphany,Instant,"Choose one or more —
-• Counter target spell.
-• Counter target activated or triggered ability.
-• Return target nonland permanent to its owner's hand.
-• Create a token that's a copy of target creature you control.
-• Target player draws a card.",U,counterspell; tokens; bounce,M21,74,Rare,94,,5.5,seed
 "Alibou, Ancient Witness",Legendary Artifact Creature — Golem,"Other artifact creatures you control have haste.
 Whenever one or more artifact creatures you control attack, Alibou deals X damage to any target and you scry X, where X is the number of tapped artifacts you control.",W/R,Golem; burn; scry; artifacts; noncombat damage; selection; haste; aggro,MAR,39,Mythic,84,,7.5,seed
 "Black Panther, Wakandan King",Legendary Creature — Human Noble Hero,"First strike
@@ -1104,6 +1101,8 @@ Zombie tokens you control have hexproof and menace.",U/B,Zombie; Wizard; counter
 Interplanar Beacon,Land,"Whenever you cast a planeswalker spell, you gain 1 life.
 {T}: Add {C}.
 {1}, {T}: Add two mana of different colors. Spend this mana only to cast planeswalker spells.",Colorless,lifegain; mana,WAR,247,Uncommon,90,,5.0,seed
+"Jiang Yanggu, Wildcrafter",Legendary Planeswalker — Yanggu,"Each creature you control with a +1/+1 counter on it has ""{T}: Add one mana of any color.""
+−1: Put a +1/+1 counter on target creature.",G,Yanggu; planeswalker; counters; mana,WAR,164,Uncommon,94,,5.0,seed
 Mayhem Devil,Creature — Devil,"Whenever a player sacrifices a permanent, this creature deals 1 damage to any target.",B/R,Devil; sacrifice; burn; noncombat damage,WAR,204,Uncommon,89,deck 89 tune 2026-10-22,3.5,seed
 Merfolk Skydiver,Creature — Merfolk Mutant,"Flying
 When this creature enters, put a +1/+1 counter on target creature you control.
