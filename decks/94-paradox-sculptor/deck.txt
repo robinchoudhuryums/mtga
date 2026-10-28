@@ -3,6 +3,11 @@
 #: colors: GU
 #: commander: Zimone, Paradox Sculptor
 #: plan: midrange
+#: tier: A — graded by the owner 2026-10-28. A-floor on the scaled Brawl table (interaction 12
+#: tier: against a needed 12, card advantage 12, a sum of 24 against 19), a coherent engine (Zimone
+#: tier: doubles counters, the replacement doublers multiply every placement, proliferate grows the
+#: tier: planeswalkers) and protection 9. The one clear weakness is the manabase: no untapped rare
+#: tier: duals yet, so the {G}{G}{G} cards (Vivien, Silverback Elder) cast late.
 #: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool), SIMIC MERFOLK COUNTER ENGINE
 #: archetype: around Zimone, Paradox Sculptor: two +1/+1 counters every combat, and {G}{U},{T}: double
 #: archetype: every kind of counter on two creatures and/or artifacts. Replacement doublers (Branching
