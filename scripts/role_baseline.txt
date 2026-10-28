@@ -264,7 +264,6 @@ Little Bear
 Living Brain, Mechanical Marvel
 Loki Laufeyson
 Long Feng, Grand Secretariat
-Lord of Atlantis
 Lorehold, the Historian
 Magic Pot
 Magitek Armor
@@ -501,6 +500,5 @@ Woodwork Prodigy // Soul Tether
 Xolatoyac, the Smiling Flood
 Y'shtola Rhul
 Zagras, Thief of Heartbeats
-Zegana, Utopian Speaker
 Zog, Triceraton Castaway
 Zurgo, Thunder's Decree

@@ -71,8 +71,6 @@ Bontu can't attack or block unless a creature died under your control this turn.
 {1}{B}, Sacrifice another creature: Scry 1. Each opponent loses 1 life and you gain 1 life.",B,God; lifegain; sacrifice; scry; indestructible; resilience; menace; evasion; selection,AKR,95,Mythic,89,deck 89 tune 2026-10-23,6.5,seed
 Hornet Queen,Creature — Insect,"Flying, deathtouch
 When this creature enters, create four 1/1 green Insect creature tokens with flying and deathtouch.",G,Insect; tokens; etb; deathtouch; combat; removal; flying; evasion,AKR,196,Mythic,89,deck 89 tune 2026-10-22,4.5,seed
-Majestic Myriarch,Creature — Chimera,"Majestic Myriarch's power and toughness are each equal to twice the number of creatures you control.
-At the beginning of each combat, this creature gains flying until end of turn if you control a creature with flying. The same is true for first strike, double strike, deathtouch, haste, hexproof, indestructible, lifelink, menace, reach, trample, and vigilance.",G,Chimera; lifegain; flying; evasion,AKR,200,Mythic,94,,5.0,seed
 The Scarab God,Legendary Creature — God,"At the beginning of your upkeep, each opponent loses X life and you scry X, where X is the number of Zombies you control.
 {2}{U}{B}: Exile target creature card from a graveyard. Create a token that's a copy of it, except it's a 4/4 black Zombie.
 When The Scarab God dies, return it to its owner's hand at the beginning of the next end step.",U/B,God; Zombie; graveyard; tokens; scry; bounce; selection,AKR,259,Mythic,91,,8.0,seed
@@ -294,8 +292,6 @@ Nullpriest of Oblivion,Creature — Vampire Cleric,"Kicker {3}{B} (You may pay a
 Lifelink
 Menace (This creature can't be blocked except by two or more creatures.)
 When this creature enters, if it was kicked, return target creature card from your graveyard to the battlefield.",B,Vampire; Cleric; reanimator; graveyard; lifegain; etb; lifelink; menace; evasion; kicker; value,FDN,611,Rare,11,,6.0,hand
-Prime Speaker Zegana,Legendary Creature — Merfolk Wizard,"Prime Speaker Zegana enters with X +1/+1 counters on it, where X is the greatest power among other creatures you control.
-When Prime Speaker Zegana enters, draw cards equal to its power.",U/G,Merfolk; Wizard; counters; card draw; etb,FDN,664,Rare,94,,5.5,seed
 Rite of Replication,Sorcery,"Kicker {5} (You may pay an additional {5} as you cast this spell.)
 Create a token that's a copy of target creature. If this spell was kicked, create five of those tokens instead.",U,tokens; kicker; value,FDN,711,Rare,25,Copy engine for Spellstorm (25): clone your best creature (kicker = 5 copies) — payoff redundancy,6.5,hand
 "Zul Ashur, Lich Lord",Legendary Creature — Zombie Warlock,"Ward—Pay 2 life. (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays 2 life.)
@@ -516,7 +512,6 @@ Whenever one or more artifact creatures you control attack, Alibou deals X damag
 "Black Panther, Wakandan King",Legendary Creature — Human Noble Hero,"First strike
 Survey the Realm — Whenever Black Panther or another creature you control enters, put a +1/+1 counter on target land you control.
 Mine Vibranium — {3}: Move all +1/+1 counters from target land you control onto target creature. If one or more +1/+1 counters are moved this way, you gain that much life and draw a card.",W/G,Human; Noble; Hero; counters; lifegain; card draw; first strike; combat,MAR,87,Mythic,78-historic-brawl; 86,78-historic-brawl craft-list swap for Arcane Signet: enters trigger feeds land counters (Toph) and a {3} draw sink,7.0,seed
-Lord of Atlantis,Creature — Merfolk,Other Merfolk get +1/+1 and have islandwalk. (They can't be blocked as long as defending player controls an Island.),U,Merfolk; pump,MAR,56,Mythic,94,,4.5,seed
 Savage Beating,Instant,"Cast this spell only during combat on your turn.
 Choose one —
 • Creatures you control gain double strike until end of turn.
@@ -788,6 +783,9 @@ Anguished Unmaking,Instant,Exile target nonland permanent. You lose 3 life.,W/B,
 As long as your devotion to white is less than five, Heliod isn't a creature. (Each {W} in the mana costs of permanents you control counts toward your devotion to white.)
 Other creatures you control have vigilance.
 {2}{W}{W}: Create a 2/1 white Cleric enchantment creature token.",W,God; tokens; indestructible; resilience; vigilance; combat,PIO,282,Mythic,90,,5.0,seed
+"Kiora, the Crashing Wave",Legendary Planeswalker — Kiora,"+1: Until your next turn, prevent all damage that would be dealt to and dealt by target permanent an opponent controls.
+−1: Draw a card. You may play an additional land this turn.
+−5: You get an emblem with ""At the beginning of your end step, create a 9/9 blue Kraken creature token.""",U/G,Kiora; planeswalker; card draw; tokens,PIO,354,Mythic,94,,10.0,seed
 "Liliana, Heretical Healer // Liliana, Defiant Necromancer",Legendary Creature — Human Cleric // Legendary Planeswalker — Liliana,"Lifelink
 Whenever another nontoken creature you control dies, exile Liliana, Heretical Healer, then return her to the battlefield transformed under her owner's control. If you do, create a 2/2 black Zombie creature token. // +2: Each player discards a card.
 −X: Return target nonlegendary creature card with mana value X from your graveyard to the battlefield.
@@ -807,9 +805,6 @@ Tap five untapped Merfolk you control: Put a +1/+1 counter on each Merfolk you c
 Simic Ascendancy,Enchantment,"{1}{G}{U}: Put a +1/+1 counter on target creature you control.
 Whenever one or more +1/+1 counters are put on a creature you control, put that many growth counters on this enchantment.
 At the beginning of your upkeep, if this enchantment has twenty or more growth counters on it, you win the game.",U/G,counters,RNA,207,Rare,94,,3.0,seed
-"Zegana, Utopian Speaker",Legendary Creature — Merfolk Wizard,"When Zegana enters, if you control another creature with a +1/+1 counter on it, draw a card.
-{4}{G}{U}: Adapt 4. (If this creature has no +1/+1 counters on it, put four +1/+1 counters on it.)
-Each creature you control with a +1/+1 counter on it has trample.",U/G,Merfolk; Wizard; counters; card draw; etb; adapt; trample; evasion,RNA,214,Rare,94,,3.5,seed
 Skewer the Critics,Sorcery,"Spectacle {R} (You may cast this spell for its spectacle cost rather than its mana cost if an opponent lost life this turn.)
 Skewer the Critics deals 3 damage to any target.",R,burn; spectacle,RNA,115,Common,93,,2.0,seed
 "Arlinn Kord // Arlinn, Embraced by the Moon",Legendary Planeswalker — Arlinn // Legendary Planeswalker — Arlinn,"+1: Until end of turn, up to one target creature gets +2/+2 and gains vigilance and haste.
@@ -896,6 +891,8 @@ Body of Research,Sorcery,"Create a 0/0 green and blue Fractal creature token. Pu
 Double Major,Instant,"Copy target creature spell you control, except it isn't legendary if the spell is legendary. (A copy of a creature spell becomes a token.)",U/G,,STX,179,Rare,94,,4.5,seed
 Efreet Flamepainter,Creature — Efreet Shaman,"Double strike
 Whenever this creature deals combat damage to a player, you may cast target instant or sorcery card from your graveyard without paying its mana cost. If that spell would be put into your graveyard, exile it instead.",R,Efreet; Shaman; graveyard; double strike; combat; aggro,STX,98,Rare,92,,6.0,seed
+"Zimone, Quandrix Prodigy",Legendary Creature — Human Wizard,"{1}, {T}: You may put a land card from your hand onto the battlefield tapped.
+{4}, {T}: Draw a card. If you control eight or more lands, draw two cards instead.",U/G,Human; Wizard; card draw,STX,250,Uncommon,94,,5.0,seed
 Zurgo Stormrender,Legendary Creature — Orc Warrior,"Mobilize 1 (Whenever this creature attacks, create a tapped and attacking 1/1 red Warrior creature token. Sacrifice it at the beginning of the next end step.)
 Whenever a creature token you control leaves the battlefield, draw a card if it was attacking. Otherwise, each opponent loses 1 life.",W/B/R,Orc; Warrior; card draw; tokens; mobilize; go-wide; aggro,TDC,10,Mythic,93,,9.5,seed
 Dragonback Assault,Enchantment,"When this enchantment enters, it deals 3 damage to each creature and each planeswalker.
@@ -1128,6 +1125,9 @@ Rootrider Faun,Creature — Satyr Scout,"{T}: Add {G}.
 {1}, {T}: Add one mana of any color.",G,Satyr; Scout; mana,WOE,182,Common,50,,1.5,seed
 Stormkeld Prowler,Creature — Human Rogue,"Whenever you cast a spell with mana value 5 or greater, put two +1/+1 counters on this creature.",U,Human; Rogue; counters,WOE,71,Common,51,Deck 51: two-drop that gets +2/+2 whenever you cast MV>=5 - the deck runs 11 such. Cheap clock that scales with the top end it already had.,6.2,hand
 Aggravated Assault,Enchantment,"{3}{R}{R}: Untap all creatures you control. After this main phase, there is an additional combat phase followed by an additional main phase. Activate only as a sorcery.",R,,WOT,39,Rare,92,,3.0,seed
+"Tishana, Voice of Thunder",Legendary Creature — Merfolk Shaman,"Tishana's power and toughness are each equal to the number of cards in your hand.
+You have no maximum hand size.
+When Tishana enters, draw a card for each creature you control.",U/G,Merfolk; Shaman; card draw; etb,XLN,230,Mythic,94,,6.5,seed
 Drowned Catacomb,Land,"This land enters tapped unless you control an Island or a Swamp.
 {T}: Add {U} or {B}.",U/B,mana,XLN,253,Rare,91,,4.0,seed
 Glacial Fortress,Land,"This land enters tapped unless you control a Plains or an Island.
