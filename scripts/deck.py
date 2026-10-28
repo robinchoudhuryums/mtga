@@ -7756,6 +7756,19 @@ _SIM_REVEAL_RE = re.compile(
     r"enters(?: the battlefield)? tapped", re.I)
 _SIM_CHECK_COUNT_RE = re.compile(r"unless you control (two|2|three|3) or more basic lands", re.I)
 _SIM_FETCH_TAPPED_RE = re.compile(r"onto the battlefield tapped", re.I)
+# A fetch that also taps for mana itself (Shire Terrace, Promising Vein, Twisted Landscape:
+# "{T}: Add {C}.") is an UNTAPPED land the turn it lands — you tap it for mana and crack it
+# later — so it costs no tempo. Read off the text: `land_production` reports no colour for
+# {C}, so its `free` set alone cannot tell these apart from Evolving Wilds (2026-10-28).
+# A TYPED fetch ("Search your library for a Swamp or Forest card, put it onto the
+# battlefield") finds any land of those TYPES — a shockland as well as a basic — and the
+# Onslaught/Zendikar cycle puts it in UNTAPPED. `land_production` reads only basic fetches
+# (the G-35 residual), so the simulation reads this one itself.
+_SIM_TYPED_FETCH_RE = re.compile(
+    r"search your library for an? (?P<t1>Plains|Island|Swamp|Mountain|Forest) or (?:an? )?"
+    r"(?P<t2>Plains|Island|Swamp|Mountain|Forest) card, put it onto the battlefield"
+    r"(?P<tapped> tapped)?", re.I)
+_SIM_OWN_MANA_RE = re.compile(r"^\{T\}(?:, Pay \d+ life)?: Add \{", re.I | re.M)
 
 
 def _mask(cols):
@@ -7793,10 +7806,14 @@ def sim_land_model(name, text, type_line, colors_cell=None, commander=None):
     free = _mask(set(prod["free"]) - set(gated))
     gated_l = sorted((_COLOR_BIT[c], _mask(need)) for c, need in gated.items()
                      if c in _COLOR_BIT)
-    fetch = None
+    fetch, typed = None, False
     if prod["fetch"]:
         ft = prod.get("fetch_types")
         fetch = 31 if ft is None else _mask(ft)
+    tf = _SIM_TYPED_FETCH_RE.search(text)
+    if fetch is None and tf:
+        fetch, typed = _mask(BASIC_TYPE_COLORS[g.lower()] for g in (tf.group("t1"),
+                                                                   tf.group("t2"))), True
     kind = tapland_kind(text)
     need, need_n = 0, 1
     rv = _SIM_REVEAL_RE.search(text)
@@ -7827,13 +7844,18 @@ def sim_land_model(name, text, type_line, colors_cell=None, commander=None):
             "types": _mask(land_basic_types(type_line)), "basic": "Basic" in _primary_type(
                 type_line or "") or False, "enter": enter, "need": need,
             "need_n": need_n, "fetch": fetch,
-            "fetch_tapped": bool(_SIM_FETCH_TAPPED_RE.search(text)) if fetch else False}
+            "fetch_typed": typed,
+            "fetch_tapped": (bool(tf.group("tapped")) if typed else
+                             bool(_SIM_FETCH_TAPPED_RE.search(text))) if fetch else False,
+            "own_mana": bool(_SIM_OWN_MANA_RE.search(text)) if fetch else False}
 
 
 def _sim_enters_untapped(m, in_play, turn, hand_lands):
     """Would land model `m` enter untapped NOW? `in_play` is the list of models already on
     the battlefield, `hand_lands` the other land models in hand (a snarl reveals one)."""
     e = m["enter"]
+    if m.get("fetch") is not None and m.get("own_mana"):
+        return True             # tap it for its own mana now, crack it later
     if m.get("fetch") is not None and m.get("fetch_tapped"):
         return False            # it untaps, but the mana comes from a basic that does not
     if e in ("untapped", "shock"):
@@ -7926,7 +7948,26 @@ def simulate_tempo(deck, reqs, *, games=TEMPO_GAMES, seed=TEMPO_SEED, on_play=Tr
         n_open = 7 if on_play else 8
         hand, lib_ = lib_[:n_open], lib_[n_open:]
         in_play, tapped_now = [], False
+
+        def fetch_basic(m, covered):
+            best, best_i = None, None
+            for j, c in enumerate(lib_):
+                if c is not None and ((c["types"] if m.get("fetch_typed") else
+                                       (c["free"] if c["basic"] else 0)) & m["fetch"]):
+                    v = (wanted(c["free"], covered), -j)
+                    if best is None or v > best:
+                        best, best_i = v, j
+            return lib_.pop(best_i) if best_i is not None else dict(m, free=0, fetch=None)
+
         for turn in range(1, target + 1):
+            # An own-mana fetch played last turn was cracked at the end of it: its basic
+            # entered tapped then and is untapped now.
+            for k, x in enumerate(in_play):
+                if x.get("fetch") is not None and x.get("own_mana"):
+                    cov = 0
+                    for mk in _sim_mana_masks(in_play):
+                        cov |= mk
+                    in_play[k] = fetch_basic(x, cov)
             if turn > 1 and lib_:
                 hand.append(lib_.pop(0))
             lands = [i for i, c in enumerate(hand) if c is not None]
@@ -7953,17 +7994,10 @@ def simulate_tempo(deck, reqs, *, games=TEMPO_GAMES, seed=TEMPO_SEED, on_play=Tr
             pick = max(lands, key=score)
             m = hand.pop(pick)
             up = up_of(m)
-            if m.get("fetch") is not None:
-                best, best_i = None, None
-                for j, c in enumerate(lib_):
-                    if c is not None and c["basic"] and (c["free"] & m["fetch"]):
-                        v = (wanted(c["free"], covered), -j)
-                        if best is None or v > best:
-                            best, best_i = v, j
-                if best_i is not None:
-                    m = lib_.pop(best_i)
-                else:
-                    m = dict(m, free=0)         # a fetch that finds nothing
+            # With every land untapped, any fetch's basic is live at once; honouring enter
+            # clauses, an own-mana fetch taps for its own mana now and converts next turn.
+            if m.get("fetch") is not None and (not m.get("own_mana") or not honour):
+                m = fetch_basic(m, covered)     # finds nothing -> a land with no colour
             in_play.append(m)
             tapped_now = not up
         masks = _sim_mana_masks(in_play)

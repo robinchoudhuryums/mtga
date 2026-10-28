@@ -301,7 +301,7 @@ def _pattern_groups():
     # The land-entry readers behind `consistency --tempo` (2026-10-28). Dead, a slowland,
     # Starting Town or a snarl silently reads as an always-TAPPED land and the simulation
     # over-charges the deck for tempo it does not lose.
-    for name in ("_SIM_SLOW_RE", "_SIM_EARLY_RE", "_SIM_REVEAL_RE", "_SIM_CHECK_COUNT_RE",
+    for name in ("_SIM_SLOW_RE", "_SIM_EARLY_RE", "_SIM_REVEAL_RE", "_SIM_CHECK_COUNT_RE", "_SIM_OWN_MANA_RE", "_SIM_TYPED_FETCH_RE",
                  "_SIM_FETCH_TAPPED_RE"):
         out.append((f"deck.{name}", getattr(deck, name), "norm"))
     # The typed-sink qualifier reads ORIGINAL case (Magic capitalizes creature types).

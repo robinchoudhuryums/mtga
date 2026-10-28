@@ -25,6 +25,8 @@ DRAGONSKULL = ("This land enters tapped unless you control a Swamp or a Mountain
                "{T}: Add {B} or {R}.")
 DREAMROOT = ("This land enters tapped unless you control two or more other lands.\n"
              "{T}: Add {G} or {U}.")
+SHIRE_TERRACE = ("{T}: Add {C}.\n{1}, {T}, Sacrifice this land: Search your library for a "
+                 "basic land card, put it onto the battlefield tapped, then shuffle.")
 SNARL = ("As this land enters, you may reveal a Forest or Island card from your hand. If you "
          "don't, this land enters tapped.\n{T}: Add {G} or {U}.")
 
@@ -67,6 +69,42 @@ class TestLandModel:
         m = D.sim_land_model("Evolving Wilds", WILDS, "Land")
         assert m["fetch"] == 31 and m["fetch_tapped"]
         assert not D._sim_enters_untapped(m, [], 3, [])
+
+
+class TestOwnManaFetch:
+    def test_a_fetch_that_taps_for_mana_is_untapped_now(self):
+        # Shire Terrace taps for {C} the turn it lands and is cracked later; Evolving Wilds
+        # makes nothing until its basic untaps. Reading both as tapped over-charged deck 89.
+        shire = D.sim_land_model("Shire Terrace", SHIRE_TERRACE, "Land")
+        wilds = D.sim_land_model("Evolving Wilds", WILDS, "Land")
+        assert shire["own_mana"] and not wilds["own_mana"]
+        assert D._sim_enters_untapped(shire, [], 1, [])
+        assert not D._sim_enters_untapped(wilds, [], 1, [])
+
+    def test_it_becomes_its_basic_next_turn(self):
+        shire = D.sim_land_model("Shire Terrace", SHIRE_TERRACE, "Land")
+        deck = [shire] * 36 + [_basic("Swamp")] * 24 + [None] * 40
+        res = D.simulate_tempo(deck, {"b2": (2, 2, ((B, 2),))}, games=400, seed=3)
+        assert res["tempo"]["b2"] > 0      # the turn-1 Terrace is a Swamp by turn 2
+
+
+class TestTypedFetch:
+    CATACOMBS = ("{T}, Pay 1 life, Sacrifice this land: Search your library for a Swamp or "
+                 "Forest card, put it onto the battlefield, then shuffle.")
+
+    def test_reads_types_and_untapped(self):
+        m = D.sim_land_model("Verdant Catacombs", self.CATACOMBS, "Land")
+        assert m["fetch"] == B | G and m["fetch_typed"] and not m["fetch_tapped"]
+        assert D._sim_enters_untapped(m, [], 1, [])
+
+    def test_finds_a_typed_dual_not_only_a_basic(self):
+        # The only Swamp/Forest in the library is a shockland: a basic-only fetch would whiff.
+        cat = D.sim_land_model("Verdant Catacombs", self.CATACOMBS, "Land")
+        tomb = D.sim_land_model("Overgrown Tomb", BLOOD_CRYPT.replace("{R}", "{G}"),
+                                "Land — Swamp Forest", "B/G")
+        deck = [cat] * 40 + [tomb] * 20 + [None] * 40
+        res = D.simulate_tempo(deck, {"g1": (1, 1, ((G, 1),))}, games=300, seed=2)
+        assert res["tempo"]["g1"] > 0.5
 
 
 class TestEntryConditions:
