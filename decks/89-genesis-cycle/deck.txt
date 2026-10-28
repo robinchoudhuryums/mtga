@@ -127,6 +127,11 @@
 #: notes: counted the typed fetches as no source); taplands 10 -> 13 of 27; on curve Szarel 81.0 ->
 #: notes: 84.7%, Mayhem Devil 75.7 -> 79.8%, Hornet Queen 52.0 -> 55.3%. Upgrade path if crafting:
 #: notes: Wooded Foothills, Verdant Catacombs and Bloodstained Mire for the three {4} draw duals.
+#: notes: TEMPO 2026-10-28 (`consistency --tempo`): tapped lands cost 11.3 points of on-curve
+#: notes: chance per card (roster median 2.7). The rare path above measured +5.3 (43.7% -> 49.0%):
+#: notes: Verdant Catacombs, Wooded Foothills, Bloodstained Mire for the three basic fetches, Nurturing
+#: notes: Peatland for Foggy Bottom Swamp, Prismatic Vista for Hobbit Hole; every common swap was <=+0.7.
+#: notes: Owner kept the commons; the five are wishlisted for 89.
 
 # Commander (leads from the command zone; also one of the 100)
 1 Szarel, Genesis Shepherd (EOC) 4
