@@ -298,6 +298,12 @@ def _pattern_groups():
     # 10-Slime deck "max 4" again — or passes an eighth Seven Dwarves.
     out.append(("deck._ANY_NUMBER_NAMED_RE", deck._ANY_NUMBER_NAMED_RE, "norm"))
     out.append(("deck._UP_TO_N_NAMED_RE", deck._UP_TO_N_NAMED_RE, "norm"))
+    # The land-entry readers behind `consistency --tempo` (2026-10-28). Dead, a slowland,
+    # Starting Town or a snarl silently reads as an always-TAPPED land and the simulation
+    # over-charges the deck for tempo it does not lose.
+    for name in ("_SIM_SLOW_RE", "_SIM_EARLY_RE", "_SIM_REVEAL_RE", "_SIM_CHECK_COUNT_RE",
+                 "_SIM_FETCH_TAPPED_RE"):
+        out.append((f"deck.{name}", getattr(deck, name), "norm"))
     # The typed-sink qualifier reads ORIGINAL case (Magic capitalizes creature types).
     out.append(("deck._LAND_SINK_TYPED_RE", deck._LAND_SINK_TYPED_RE, "raw"))
     # `suggest --lands`' rider tie-break. Each cue must still match a real land, else the

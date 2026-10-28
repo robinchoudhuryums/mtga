@@ -7722,6 +7722,312 @@ CURVE_SWEEP_FLOOR = 0.50
 CURVE_SWEEP_MAX_TURN = 4
 
 
+# --- tempo: a simulated land-drop model ------------------------------------- #
+# Every cast-on-curve figure above prices colour ACCESS — "are the right sources among the
+# cards seen by turn N" — and is blind to two things that decide whether a spell actually
+# resolves on its turn: you play ONE land a turn, and a land that enters tapped makes no
+# mana the turn it lands. Asked 2026-10-28 when Dragonskull Summit (untapped when you
+# control a Swamp or a Mountain) had to be weighed against Thriving Moor (always tapped)
+# in deck 92: both make {B}/{R}, so the access model priced the swap at exactly zero and
+# the only answer it could give was a guess. `simulate_tempo` deals the deck out, plays
+# one land a turn with a simple sequencing rule, and records how often a card's cost is
+# payable from UNTAPPED lands on its own turn — twice, on the SAME shuffles: once honouring
+# how each land enters, and once pretending every land enters untapped. The gap between
+# the two is the tempo the tapped lands cost; it is paired, so the noise largely cancels.
+#
+# REPORT-ONLY, like the tempo line for spells (G-25), protection, board power and the X-cost
+# advisory: a new `tier_band` term would silently re-grade the roster. Nothing reads it but
+# `consistency --tempo`.
+_COLOR_BIT = {"W": 1, "U": 2, "B": 4, "R": 8, "G": 16}
+TEMPO_GAMES = 4000
+TEMPO_SEED = 20261028
+# Enter-state kinds a simulated land can carry. `board` is every condition this model does
+# not track (a player at 13 or less life, a planeswalker, an Equipment or a Mount/Vehicle
+# in play) and is scored TAPPED — the conservative reading `tapland_kind` already takes.
+_SIM_SLOW_RE = re.compile(
+    r"enters(?: the battlefield)? tapped unless you control (?:two|2) or more other lands",
+    re.I)
+_SIM_EARLY_RE = re.compile(
+    r"enters(?: the battlefield)? tapped unless it'?s your first, second, or third turn",
+    re.I)
+_SIM_REVEAL_RE = re.compile(
+    r"you may reveal an? (?P<t1>Plains|Island|Swamp|Mountain|Forest) or (?:an? )?"
+    r"(?P<t2>Plains|Island|Swamp|Mountain|Forest) card from your hand[\s\S]{0,60}?"
+    r"enters(?: the battlefield)? tapped", re.I)
+_SIM_CHECK_COUNT_RE = re.compile(r"unless you control (two|2|three|3) or more basic lands", re.I)
+_SIM_FETCH_TAPPED_RE = re.compile(r"onto the battlefield tapped", re.I)
+
+
+def _mask(cols):
+    m = 0
+    for c in cols or ():
+        m |= _COLOR_BIT.get(c, 0)
+    return m
+
+
+def sim_land_model(name, text, type_line, colors_cell=None, commander=None):
+    """How one LAND behaves in `simulate_tempo`, read from its oracle text.
+
+    Returns a dict: `free` (bitmask of colours it adds with no extra mana and no spending
+    restriction, gated colours excluded), `gated` [(bit, need_mask)] — a colour it adds only
+    while you control a land of a named type (need 0 = any basic, G-87), `types` (basic land
+    types it carries), `basic`, `enter` (one of `untapped`, `tapped`, `shock`, `fast`,
+    `slow`, `early`, `check`, `reveal`, `board`), `need` (the type mask a checkland or snarl
+    asks for; 0 = any basic), `need_n` (how many basics a "two or more basic lands" gate
+    wants), and `fetch` (None, or the bitmask of basic colours it can find).
+
+    Production comes from `lib.land_production` and entry from `lib.tapland_kind`, so this
+    reads a land the way `consistency`'s source count and `suggest --lands` do. Colours
+    behind an extra mana cost (`{1}, {T}: Add one mana of any color`) or a spending
+    restriction are left out: on curve they make no extra mana."""
+    nl = (name or "").lower()
+    base = nl[len("snow-covered "):] if nl.startswith("snow-covered ") else nl
+    if base in BASICS:
+        col = BASIC_COLOR.get(base)
+        bit = _COLOR_BIT.get(col, 0) if col else 0
+        return {"name": name, "free": bit, "gated": [], "types": bit, "basic": True,
+                "enter": "untapped", "need": 0, "need_n": 1, "fetch": None}
+    text = text or ""
+    prod = land_production(text, colors_cell, commander=commander)
+    gated = prod.get("gated") or {}
+    free = _mask(set(prod["free"]) - set(gated))
+    gated_l = sorted((_COLOR_BIT[c], _mask(need)) for c, need in gated.items()
+                     if c in _COLOR_BIT)
+    fetch = None
+    if prod["fetch"]:
+        ft = prod.get("fetch_types")
+        fetch = 31 if ft is None else _mask(ft)
+    kind = tapland_kind(text)
+    need, need_n = 0, 1
+    rv = _SIM_REVEAL_RE.search(text)
+    if rv:
+        enter = "reveal"
+        need = _mask(BASIC_TYPE_COLORS[g.lower()] for g in (rv.group("t1"), rv.group("t2")))
+    elif kind is None:
+        enter = "untapped"
+    elif kind == "shock":
+        enter = "shock"
+    elif kind == "fast":
+        enter = "fast"
+    elif kind == "check":
+        enter = "check"
+        need = _mask(lib.tapland_check_types(text) or ())
+        m = _SIM_CHECK_COUNT_RE.search(text)
+        if m:
+            need_n = 3 if m.group(1).lower() in ("three", "3") else 2
+    elif _SIM_SLOW_RE.search(text):
+        enter = "slow"
+    elif _SIM_EARLY_RE.search(text):
+        enter = "early"
+    elif kind == "conditional":
+        enter = "board"
+    else:
+        enter = "tapped"
+    return {"name": name, "free": free, "gated": gated_l,
+            "types": _mask(land_basic_types(type_line)), "basic": "Basic" in _primary_type(
+                type_line or "") or False, "enter": enter, "need": need,
+            "need_n": need_n, "fetch": fetch,
+            "fetch_tapped": bool(_SIM_FETCH_TAPPED_RE.search(text)) if fetch else False}
+
+
+def _sim_enters_untapped(m, in_play, turn, hand_lands):
+    """Would land model `m` enter untapped NOW? `in_play` is the list of models already on
+    the battlefield, `hand_lands` the other land models in hand (a snarl reveals one)."""
+    e = m["enter"]
+    if m.get("fetch") is not None and m.get("fetch_tapped"):
+        return False            # it untaps, but the mana comes from a basic that does not
+    if e in ("untapped", "shock"):
+        return True
+    if e == "fast":
+        return len(in_play) <= 2
+    if e == "slow":
+        return len(in_play) >= 2
+    if e == "early":
+        return turn <= 3
+    if e == "check":
+        if m["need"]:
+            return any(x["types"] & m["need"] for x in in_play)
+        return sum(1 for x in in_play if x["basic"]) >= m["need_n"]
+    if e == "reveal":
+        return any(x["types"] & m["need"] for x in hand_lands)
+    return False                # tapped, board
+
+
+def _sim_mana_masks(in_play):
+    """One colour bitmask per land on the battlefield — a gated colour counts only while
+    ANOTHER land in play carries a type its gate names (or any basic, for need 0)."""
+    out = []
+    for i, x in enumerate(in_play):
+        m = x["free"]
+        for bit, need in x["gated"]:
+            if any((y["types"] & need) if need else y["basic"]
+                   for j, y in enumerate(in_play) if j != i):
+                m |= bit
+        out.append(m)
+    return out
+
+
+def _sim_payable(masks, total, demand):
+    """Can these lands pay `total` mana including `demand` [(bit, count)]? Hall's
+    condition over every subset of the demanded colours — one land makes ONE mana, so a
+    dual cannot pay both halves of {B}{R} the way the per-colour access model lets it."""
+    if len(masks) < total:
+        return False
+    bits = [b for b, _n in demand]
+    k = len(bits)
+    for sub in range(1, 1 << k):
+        smask, need = 0, 0
+        for i in range(k):
+            if sub >> i & 1:
+                smask |= bits[i]
+                need += demand[i][1]
+        if sum(1 for m in masks if m & smask) < need:
+            return False
+    return True
+
+
+def simulate_tempo(deck, reqs, *, games=TEMPO_GAMES, seed=TEMPO_SEED, on_play=True,
+                   max_turn=CAST_CAP):
+    """Paired land-drop simulation. `deck` is a list with one entry per card copy — a land
+    model dict (`sim_land_model`) or None for a nonland. `reqs` maps a key to
+    (turn, total_mana, demand[(bit, count)]). Returns {"tempo": {key: p}, "untapped":
+    {key: p}, "mana_tempo": {turn: p}, "mana_untapped": {turn: p}} where `mana_*` is
+    P(at least `turn` untapped mana on turn `turn`).
+
+    Each game deals ONE shuffle and plays it twice: honouring each land's enter clause,
+    and with every land entering untapped. Every target turn T is played out on its own,
+    with the sequencing a player aiming at T would use, which is how the hypergeometric
+    table already judges each card: before T, play a land that enters TAPPED if there is
+    one (it untaps in time), then one whose untapped window is closing (a fastland,
+    Starting Town); ON turn T, play one that enters untapped. Within those, the land adding
+    the colour turn T's cards want most. A fetch takes the most-wanted basic still in the
+    library. No mulligans and no draw beyond the draw step — the simplifications the
+    hypergeometric table also makes. Deterministic for a given seed (G-54)."""
+    import random
+    rng = random.Random(seed)
+    by_turn, weights = {}, {}
+    for key, (t, total, demand) in reqs.items():
+        by_turn.setdefault(t, []).append((key, total, demand))
+        w = weights.setdefault(t, {})
+        for bit, k in demand:
+            w[bit] = w.get(bit, 0) + k
+    turns = sorted(t for t in by_turn if 1 <= t <= max_turn)
+    hit = {"tempo": {k: 0 for k in reqs}, "untapped": {k: 0 for k in reqs}}
+    mana_hit = {"tempo": {t: 0 for t in turns}, "untapped": {t: 0 for t in turns}}
+    _lapses = ("fast", "early")
+
+    def play_to(order, honour, target):
+        w = weights.get(target, {})
+
+        def wanted(mask, covered):
+            return sum(v for bit, v in w.items() if (bit & mask) and not (bit & covered))
+
+        lib_ = list(order)
+        n_open = 7 if on_play else 8
+        hand, lib_ = lib_[:n_open], lib_[n_open:]
+        in_play, tapped_now = [], False
+        for turn in range(1, target + 1):
+            if turn > 1 and lib_:
+                hand.append(lib_.pop(0))
+            lands = [i for i, c in enumerate(hand) if c is not None]
+            tapped_now = False
+            if not lands:
+                continue
+            covered = 0
+            for m in _sim_mana_masks(in_play):
+                covered |= m
+            others = [hand[i] for i in lands]
+
+            def up_of(m):
+                if not honour:
+                    return True
+                return _sim_enters_untapped(m, in_play, turn,
+                                            [x for x in others if x is not m])
+
+            def score(i):
+                m = hand[i]
+                val = wanted(m["free"] | (m["fetch"] or 0), covered)
+                if turn < target:
+                    return (not up_of(m), m["enter"] in _lapses, val, m["name"])
+                return (up_of(m), val, m["name"])
+            pick = max(lands, key=score)
+            m = hand.pop(pick)
+            up = up_of(m)
+            if m.get("fetch") is not None:
+                best, best_i = None, None
+                for j, c in enumerate(lib_):
+                    if c is not None and c["basic"] and (c["free"] & m["fetch"]):
+                        v = (wanted(c["free"], covered), -j)
+                        if best is None or v > best:
+                            best, best_i = v, j
+                if best_i is not None:
+                    m = lib_.pop(best_i)
+                else:
+                    m = dict(m, free=0)         # a fetch that finds nothing
+            in_play.append(m)
+            tapped_now = not up
+        masks = _sim_mana_masks(in_play)
+        if tapped_now:
+            masks = masks[:-1]
+        return masks
+
+    for _g in range(games):
+        order = list(deck)
+        rng.shuffle(order)
+        for honour, res in ((True, "tempo"), (False, "untapped")):
+            for t in turns:
+                masks = play_to(order, honour, t)
+                if len(masks) >= t:
+                    mana_hit[res][t] += 1
+                for key, total, demand in by_turn[t]:
+                    if _sim_payable(masks, total, demand):
+                        hit[res][key] += 1
+    return {"tempo": {k: v / games for k, v in hit["tempo"].items()},
+            "untapped": {k: v / games for k, v in hit["untapped"].items()},
+            "mana_tempo": {t: v / games for t, v in mana_hit["tempo"].items()},
+            "mana_untapped": {t: v / games for t, v in mana_hit["untapped"].items()}}
+
+
+def tempo_cast_rows(cards, mana, sources, N, by_key, by_name, carddata, *, deck_meta=None,
+                    on_play=True, games=TEMPO_GAMES, seed=TEMPO_SEED):
+    """(rows, mana_tempo, mana_untapped) — `cast_on_curve_rows`' cards re-priced by
+    `simulate_tempo`. Each row is (name, turn, p_access, p_untapped, p_tempo): the access
+    figure `consistency` already prints, then the chance the cost is payable from untapped
+    lands on that turn with one land drop a turn, first if every land entered untapped and
+    then honouring how each one enters. `p_untapped - p_tempo` is what the tapped lands
+    cost that card. Sorted by that cost, then name."""
+    cmdr = deck_commander_colors(deck_meta, carddata)
+    deck = []
+    for q, n, s, c in cards:
+        nl = n.lower()
+        base = nl[len("snow-covered "):] if nl.startswith("snow-covered ") else nl
+        if base in BASICS:
+            deck.extend([sim_land_model(n, "", "Basic Land")] * q)
+            continue
+        row = by_key.get((nl, s.lower(), c.lower())) or by_name.get(nl)
+        cd = carddata.get(nl)
+        tline = (row.get("Type") if row else "") or (cd["type"] if cd else "")
+        if "Land" not in _primary_type(tline):
+            deck.extend([None] * q)
+            continue
+        colid = (row.get("Color(s)") if row else "") or (cd.get("colors") if cd else "")
+        text = (cd.get("text") if cd else "") or (row.get("Card Text") if row else "") or ""
+        deck.extend([sim_land_model(n, text, tline, colid, cmdr)] * q)
+    base_rows = cast_on_curve_rows(cards, mana, sources, N, by_key, by_name, on_play)
+    reqs = {}
+    for p, n, turn, strict, _w, _need, _x in base_rows:
+        demand = tuple(sorted((_COLOR_BIT[c], k) for c, k in strict.items()
+                              if c in _COLOR_BIT and k > 0))
+        reqs[n] = (turn, turn, demand)
+    if not reqs:
+        return [], {}, {}
+    res = simulate_tempo(deck, reqs, games=games, seed=seed, on_play=on_play)
+    rows = [(n, turn, p, res["untapped"][n], res["tempo"][n])
+            for p, n, turn, *_rest in base_rows]
+    rows.sort(key=lambda r: (-(r[3] - r[4]), r[0]))
+    return rows, res["mana_tempo"], res["mana_untapped"]
+
+
 def castability_shortfalls(meta, cards, *, by_key=None, by_name=None, carddata=None,
                            mana=None, on_play=True):
     """[(p, name, turn, worst_col, sources_of_it, x_priced)] — MAINDECKED cards that cast
@@ -7756,6 +8062,42 @@ def castability_shortfalls(meta, cards, *, by_key=None, by_name=None, carddata=N
             continue
         out.append((p, n, turn, worst_col, have, x_priced))
     return out
+
+
+def _print_tempo_section(cards, mana, sources, N, by_key, by_name, carddata, meta,
+                         on_play, games):
+    """`consistency --tempo`: what the deck's tapped lands cost, from `tempo_cast_rows`."""
+    rows, m_tempo, m_up = tempo_cast_rows(cards, mana, sources, N, by_key, by_name,
+                                          carddata, deck_meta=meta, on_play=on_play,
+                                          games=games)
+    if not rows:
+        return
+    print(f"\nTempo — simulated ({games} games, one land a turn; report-only, never a grade):")
+    turns = sorted(m_up)
+    print("  P(at least T untapped mana on turn T):  " + "  ".join(f"  T{t}" for t in turns))
+    print("    every land untapped               :  "
+          + "  ".join(f"{100*m_up[t]:4.0f}%" for t in turns))
+    print("    as built (enter clauses honoured) :  "
+          + "  ".join(f"{100*m_tempo[t]:4.0f}%" for t in turns))
+    n = len(rows)
+    acc = sum(r[2] for r in rows) / n
+    up = sum(r[3] for r in rows) / n
+    tm = sum(r[4] for r in rows) / n
+    print(f"  Mean over {n} priced card(s): colour access {100*acc:.1f}% (the table above) → "
+          f"with one land a turn {100*up:.1f}% → as built {100*tm:.1f}%. "
+          f"Tapped lands cost {100*(up-tm):.1f} point(s) a card.")
+    worst = [r for r in rows if r[3] - r[4] >= 0.005][:8]
+    if worst:
+        print("  Cards losing the most to tapped lands (access → one land a turn → as built):")
+        for name, turn, p_acc, p_up, p_tm in worst:
+            print(f"    {name[:34]:34} T{turn}  {100*p_acc:3.0f}% → {100*p_up:3.0f}% → "
+                  f"{100*p_tm:3.0f}%  (−{100*(p_up-p_tm):.0f})")
+    print("  Each turn is played toward that turn: taplands go down early, an untapped land "
+          "on the turn itself.\n  Checklands, fastlands, slowlands, snarls and Verge gates "
+          "are read against the lands actually in play;\n  a shockland is paid for; a board "
+          "condition (13 life, a planeswalker, an Equipment) counts as tapped.\n  Compare two "
+          "manabases with a scratch copy: `consistency <path> --tempo` on each. "
+          f"Sampling noise is about ±{100*0.5/games**0.5:.1f} points on a single figure.")
 
 
 def cmd_consistency(args):
@@ -7995,6 +8337,9 @@ def cmd_consistency(args):
         print("    Same model as the table above, moving one SOURCE (a basic's land TYPE, which "
               "checklands and Verges read, is not re-priced). A hint, not a verdict: weigh "
               "which cards matter.")
+    if getattr(args, "tempo", False):
+        _print_tempo_section(cards, mana, sources, N, by_key, by_name, carddata, meta,
+                             on_play, getattr(args, "games", None) or TEMPO_GAMES)
     print("\nModel: hypergeometric (exact); per-color independence for multi-color costs "
           "(a mild over-estimate); a hybrid binds only when the deck has sources for just ONE "
           "of its halves, in which case it IS that colour. A planning aid, not a "
@@ -17396,6 +17741,11 @@ def main():
                    help="model on the draw (extra card) instead of on the play")
     p.add_argument("--target", type=float, metavar="P",
                    help="cast-probability target as a fraction (default 0.90)")
+    p.add_argument("--tempo", action="store_true",
+                   help="also simulate one land a turn and tapped lands: what the "
+                        "deck's taplands cost on curve (report-only)")
+    p.add_argument("--games", type=int, metavar="N",
+                   help=f"games for --tempo (default {TEMPO_GAMES})")
     p = sub.add_parser("tribes", help="creature-subtype breakdown + type-matters synergies")
     p.add_argument("id")
     p = sub.add_parser("engines", help="enabler vs payoff balance for the deck's engine themes")
