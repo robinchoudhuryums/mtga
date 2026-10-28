@@ -494,6 +494,9 @@ Whenever you draw a card during an opponent's turn, create a 1/1 blue Tentacle c
 Whenever a Tentacle you control dies, untap up to one target Kraken and put a stun counter on up to one target nonland permanent.",U,Kraken; counters; card draw; tokens,LTR,75,Mythic,94,,7.0,seed
 Shire Terrace,Land,"{T}: Add {C}.
 {1}, {T}, Sacrifice this land: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.",Colorless,sacrifice; ramp; mana,LTR,261,Common,89,,1.5,seed
+"Vivien, Arkbow Ranger",Legendary Planeswalker — Vivien,"+1: Distribute two +1/+1 counters among up to two target creatures. They gain trample until end of turn.
+−3: Target creature you control deals damage equal to its power to target creature or planeswalker.
+−5: You may reveal a creature card you own from outside the game and put it into your hand.",G,Vivien; planeswalker; counters; removal; trample; evasion,M20,199,Mythic,94,,8.5,seed
 "Golos, Tireless Pilgrim",Legendary Artifact Creature — Scout,"When Golos enters, you may search your library for a land card, put that card onto the battlefield tapped, then shuffle.
 {2}{W}{U}{B}{R}{G}: Exile the top three cards of your library. You may play them this turn without paying their mana costs.",W/U/B/R/G,Scout; ramp; etb; impulse,M20,226,Rare,90,,6.0,seed
 Voracious Hydra,Creature — Hydra,"Trample
@@ -1103,8 +1106,6 @@ Zombie tokens you control have hexproof and menace.",U/B,Zombie; Wizard; counter
 Interplanar Beacon,Land,"Whenever you cast a planeswalker spell, you gain 1 life.
 {T}: Add {C}.
 {1}, {T}: Add two mana of different colors. Spend this mana only to cast planeswalker spells.",Colorless,lifegain; mana,WAR,247,Uncommon,90,,5.0,seed
-"Jiang Yanggu, Wildcrafter",Legendary Planeswalker — Yanggu,"Each creature you control with a +1/+1 counter on it has ""{T}: Add one mana of any color.""
-−1: Put a +1/+1 counter on target creature.",G,Yanggu; planeswalker; counters; mana,WAR,164,Uncommon,94,,5.0,seed
 Mayhem Devil,Creature — Devil,"Whenever a player sacrifices a permanent, this creature deals 1 damage to any target.",B/R,Devil; sacrifice; burn; noncombat damage,WAR,204,Uncommon,89,deck 89 tune 2026-10-22,3.5,seed
 Merfolk Skydiver,Creature — Merfolk Mutant,"Flying
 When this creature enters, put a +1/+1 counter on target creature you control.

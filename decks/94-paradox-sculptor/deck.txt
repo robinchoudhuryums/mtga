@@ -64,6 +64,9 @@
 #: notes: dies), -Zegana Utopian Speaker +Tishana Voice of Thunder (draw one per creature), and
 #: notes: -Lord of Atlantis +Zimone Quandrix Prodigy (land from hand; late-game draw). Lord of Atlantis
 #: notes: was CUT, so the Eluge islandwalk note above is history. Card advantage 9 -> 12, interaction 11.
+#: notes: Then -Jiang Yanggu +Vivien Arkbow Ranger (+1 two counters with trample, -3 bite that also
+#: notes: hits a planeswalker; loyalty grows off proliferate). Jiang's any-colour mana left with him.
+#: notes: Interaction 11 -> 12: metrics floor A.
 
 # Commander (leads from the command zone; also one of the 100)
 1 Zimone, Paradox Sculptor (FDN) 126
@@ -115,7 +118,6 @@
 1 Silverback Elder (DMU) 177
 1 Eladamri, Korvecdal (MH3) 149
 1 Song of Freyalise (DOM) 179
-1 Jiang Yanggu, Wildcrafter (WAR) 164
 1 Yue, the Moon Spirit (TLA) 83
 1 Zimone, Quandrix Prodigy (STX) 250
 
@@ -150,6 +152,7 @@
 1 Quandrix Charm (SOS) 217
 1 Three Steps Ahead (OTJ) 75
 1 Origin of Metalbending (TLA) 187
+1 Vivien, Arkbow Ranger (M20) 199
 
 # Lands (36)
 1 Command Tower (FRC) 22
