@@ -59,6 +59,8 @@
 #: notes: Evolving Wilds. Colour access held (U 18 / B 24 / R 14, Kang the Conqueror still 57.2% on
 #: notes: turn 4, Loki 65.9%); the price is tempo, P(an always-tapped land in the first three drops)
 #: notes: 16% → 54%. Crafts to restore first: Drowned Catacomb and Darkslick Shores (blue is tightest).
+#: notes: 2026-10-28 -Temple of Malice +Dragonskull Summit (owned): same colours, untapped
+#: notes: with a Swamp or Mountain out; `consistency --tempo` mean on-curve 48.9% -> 49.1%.
 
 # Commander (leads from the command zone; also one of the 100)
 1 Loki, the Deceiver (MSC) 86
@@ -133,7 +135,7 @@
 1 Origin of Black Widow (MSC) 664
 
 # Lands (36)
-1 Temple of Malice (FDN) 701
+1 Dragonskull Summit (XLN) 252
 1 Blazemire Verge (DSK) 256
 1 Boiling Rock Prison (TLA) 267
 1 Blood Crypt (ECL) 262

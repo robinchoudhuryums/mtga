@@ -74,6 +74,8 @@
 #: notes: Tinybones, Zuko Exiled Prince, Azula On the Hunt, Sword of Fire and Ice, Swiftfoot Boots,
 #: notes: Fable of the Mirror-Breaker, Increasing Vengeance; skipped: Necropolis Regent (BBB), Urgoros,
 #: notes: Falkenrath Marauders, Etched Slith, Darkness.
+#: notes: 2026-10-28 -1 Swamp +Dragonskull Summit (owned): `consistency --tempo` measured it
+#: notes: best here (mean on-curve 47.8% -> 48.2%); a tapland swap gained less colour access.
 
 # Commander (leads from the command zone; also one of the 100)
 1 Ozai, the Phoenix King (TLA) 235
@@ -173,4 +175,5 @@
 1 Valakut, the Molten Pinnacle (TLE) 61
 1 White Lotus Hideout (TLA) 281
 11 Mountain (MSH) 294
-11 Swamp (MSH) 292
+10 Swamp (MSH) 292
+1 Dragonskull Summit (XLN) 252
