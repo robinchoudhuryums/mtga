@@ -10,7 +10,9 @@
 > **Keep this file to the seven sections below.** `/cycle-status` and
 > `/cycle-resume` read the FIRST match of each heading, so a second
 > `## Where I left off` silently shadows the real one. Narrative belongs in
-**2026-10-08 (latest) — Batch E implemented** (block `11-batchE-castability-sweep-broad-implement.md`): `castability_shortfalls` soft sweep + `audit` Crv column; {X} spells priced at X=2 in `consistency`. Suite + check_all green. **Next:** `/sync-docs` for E, then Batch F (targets gate families), then G.
+**2026-10-28 (latest) — `consistency --tempo` implemented** (block `tempo-sim-broad-implement.md`): paired land-drop simulation, report-only; validated on 87/92/93. Suite + check_all green. **Next:** `/sync-docs` (G-36 + systems map), optional `swap --tempo`.
+
+**2026-10-08 — Batch E implemented** (block `11-batchE-castability-sweep-broad-implement.md`): `castability_shortfalls` soft sweep + `audit` Crv column; {X} spells priced at X=2 in `consistency`. Suite + check_all green. **Next:** `/sync-docs` for E, then Batch F (targets gate families), then G.
 
 - 2026-10-07: Batch B landed (steal Auras → removal, copy effects → payoff, report-only tempo line, single-target bounce moved out of interaction; 8 floors moved down, prose re-grounded in 15 decks). Next: Batch C (legend-rule advisory), then D (Suggested Why).
 - 2026-10-07: Batch A of the deck-32 tooling plan landed (figure-drift tolerance for G-22's ledger counts; wishlist `--add --target` appends to listed rows + name-only re-add no longer duplicates). Next: Batch B (steal Auras + copy effects + tempo line + bounce out of interaction), then C, then D.
