@@ -3151,6 +3151,28 @@ gains run p25 4.6 / p50 8.6 / p75 16.0 / p90 25.3 / max 45.8 summed points, so a
 card equally, so it prints the costs beside the gains: a key card in the losing colour is the reader's
 call. It moves a SOURCE, not a land TYPE — checklands, Verges and typed fetches are not re-priced.
 
+**`--tempo` (2026-10-28) is the half the closed form cannot price.** The table above asks
+whether the right SOURCES are among the cards seen by turn N, so a tapland and an untapped
+dual of the same colours score identically — Dragonskull Summit against Thriving Moor in
+deck 92 priced at exactly zero, and the decision could only be guessed. `simulate_tempo`
+deals the deck and plays one land a turn, reading each land's enter clause through
+`lib.tapland_kind` against the lands actually in play (checkland types and typed duals,
+fast/slow windows, Starting Town's first three turns, snarls revealing from hand, shocks
+paid, Verge gates, fetches finding a tapped basic; a BOARD condition — 13 life, a
+planeswalker, an Equipment — counts as tapped). Each target turn is played toward that
+turn (taplands early, an untapped land on the turn), a cost is payable only by Hall's
+condition (one land makes ONE mana — the access model lets a dual pay both halves of
+{B}{R}), and each shuffle is played twice, honouring enter clauses and with every land
+untapped, so the gap is the tempo cost with the sampling noise largely cancelled.
+Validated: with every land untapped the "N lands by turn N" figure matches the closed form
+within ~2 points (the residual is fetch thinning). Measured over all 131 deck files at the
+time: tapped lands cost a median **2.7** points of on-curve chance per card (p25 1.0 / p75
+4.0 / p90 5.3; worst 45a at 14.5, 89 at 12.9). A SINGLE land swap moves a deck ≤0.4
+points: Summit for a basic gained colour access but lost ~0.5 points of turn-2 mana (it can
+enter tapped before a Swamp or Mountain), Summit for a tapland gained ~0.3 points a turn.
+REPORT-ONLY for G-25's reason — it never reaches `tier_band`. Not modelled: mulligans,
+card draw, a shock's life, colours behind an extra mana cost.
+
 ## [G-37] `deck.py suggest --lands <id>` is the manabase RECOMMENDER `consistency` was missing
 
 **`deck.py suggest --lands <id>` is the manabase RECOMMENDER `consistency` was missing.**

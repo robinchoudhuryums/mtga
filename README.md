@@ -505,6 +505,7 @@ python3 scripts/deck.py arena 20a      # emit an Arena-importable decklist to pa
 python3 scripts/deck.py stats 20a      # curve, colors, types, cost flags, roles + interaction profile + protection / tempo / hand-attack lines
 python3 scripts/deck.py mana 20a       # hybrid-aware color requirements + castability lint
 python3 scripts/deck.py consistency 20a # opening-hand keepable %, land drops, P(cast on curve) + source fix
+python3 scripts/deck.py consistency 20a --tempo # + a simulation of one land a turn and TAPPED lands: what the taplands cost on curve, per card and per turn (report-only; compare two manabases on scratch copies)
 python3 scripts/deck.py tribes 20a     # creature-subtype breakdown + type-matters synergies
 python3 scripts/deck.py engines 20a    # enabler ↔ payoff balance for the deck's engine themes
 python3 scripts/deck.py targets 20a    # TARGETS for its own gated effects (MV caps, sac costs) + STATE gates (dead / free / CONFLICT — an attacks-alone card in a go-wide deck)
