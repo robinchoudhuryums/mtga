@@ -114,3 +114,18 @@ class TestDecksUsing:
         self._decks(tmp_path, monkeypatch, "1 Cecil, Dark Knight (FIN) 99")
         assert card._decks_using(
             "Cecil, Dark Knight // Cecil, Redeemed Paladin") == ["42-blood-price"]
+
+
+class TestClosedPipeIsQuiet:
+    """2026-10-25: `card.py X | grep -m1 …` printed a BrokenPipeError traceback once grep
+    closed the pipe. card.py only reads, so a closed pipe must exit quietly."""
+
+    def test_reader_closing_the_pipe_early_leaves_no_traceback(self):
+        import os
+        import subprocess
+        import sys
+        script = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                              "scripts", "card.py")
+        p = subprocess.run(f'"{sys.executable}" "{script}" "Shock" | head -c 1 > /dev/null',
+                           shell=True, capture_output=True, text=True, timeout=120)
+        assert "Traceback" not in p.stderr and "BrokenPipeError" not in p.stderr, p.stderr

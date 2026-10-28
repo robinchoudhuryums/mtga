@@ -206,7 +206,11 @@ found by mutating the code and watching the check stay green, never by reading i
 pair is only covered on the axes you ask about, and a truncated view is not the set.**
 It also emits **soft, non-gating warnings**:
 wishlist target drift — a card whose Target deck can no longer cast it
-after a retune — via `wishlist.py --audit-targets`; and **new unindexed mechanics**
+after a retune — via `wishlist.py --audit-targets`; **wishlist printings** (2026-10-23) —
+`wishlist.printing_issues()` names a row whose `(SET) COLLECTOR#` no pool or library row holds,
+through the same `deck.known_printings` index INV-04 reads (soft for INV-04's reason: the pool
+keys one printing per card, so an alternate art lands there too; `--add` now corrects such a
+printing on the way in, so this catches older rows and hand edits); and **new unindexed mechanics**
 — `check_keywords.py` flags a keyword on an owned card that isn't in
 `tag_synergies.py`'s map yet (a new set's mechanic), baselined in
 `keyword_baseline.txt` so it stays quiet until something genuinely new appears

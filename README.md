@@ -319,7 +319,8 @@ python3 scripts/pool.py --regex 'exchange control of|gain control of target' --u
 
 `--legal` takes the repo's format names and reads them the way `deck.py legal` does:
 `brawl` is the 60-card Standard Brawl and `historic brawl` the 100-card format (Scryfall's
-`brawl` key), with a one-line note when the two spellings differ. An unknown format is
+`brawl` key), with a one-line note when the two spellings differ (and, for `brawl`, a second line pointing a
+100-card search at `--legal "historic brawl"`). An unknown format is
 refused with the list, rather than silently matching nothing.
 
 `--color` matches the identity set, as in `query.py` (`--color R` excludes
@@ -349,7 +350,7 @@ below, which blends it with theme fit).
 
 ```
 python3 scripts/wishlist.py --add batch.txt   # append a batch (enriches + AUTO-seeds a Power estimate)
-python3 scripts/wishlist.py --add batch.txt --target 6 --note "why"   # ...stamping the home deck + note onto the NEW rows (an unknown deck id is refused before any Scryfall work); re-adding a listed card with --target APPENDS that deck to its Target
+python3 scripts/wishlist.py --add batch.txt --target 6 --note "why"   # ...stamping the home deck + note onto the NEW rows (an unknown deck id is refused before any Scryfall work); re-adding a listed card with --target APPENDS that deck to its Target; a pasted (SET) COLLECTOR# no pool/library row holds is replaced by the pool's printing, and the change is printed
 python3 scripts/wishlist.py                    # browse the whole wishlist
 python3 scripts/wishlist.py --set SOS --rarity rare,mythic   # filter (AND-ed; --set exact, --target per deck id, --note substring)
 python3 scripts/wishlist.py --color R --synergy firebending  # by color/theme (--color is set-matched, like query.py)
@@ -501,9 +502,10 @@ python3 scripts/deck.py resolve --fix 76 --apply   # ...and REPAIR the bad ones 
 python3 scripts/deck.py check 20a      # owned vs needed + a castability lint (off-color cards)
 python3 scripts/deck.py diff 20 20a   # what variant 20a changes vs base deck 20
 python3 scripts/deck.py arena 20a      # emit an Arena-importable decklist to paste back (a Brawl deck's commander goes under its own Commander heading, as Arena exports it)
-python3 scripts/deck.py stats 20a      # curve, colors, types, cost flags, roles + interaction profile + protection / tempo lines
+python3 scripts/deck.py stats 20a      # curve, colors, types, cost flags, roles + interaction profile + protection / tempo / hand-attack lines
 python3 scripts/deck.py mana 20a       # hybrid-aware color requirements + castability lint
 python3 scripts/deck.py consistency 20a # opening-hand keepable %, land drops, P(cast on curve) + source fix
+python3 scripts/deck.py consistency 20a --tempo # + a simulation of one land a turn and TAPPED lands: what the taplands cost on curve, per card and per turn (report-only; compare two manabases on scratch copies)
 python3 scripts/deck.py tribes 20a     # creature-subtype breakdown + type-matters synergies
 python3 scripts/deck.py engines 20a    # enabler ↔ payoff balance for the deck's engine themes
 python3 scripts/deck.py targets 20a    # TARGETS for its own gated effects (MV caps, sac costs) + STATE gates (dead / free / CONFLICT — an attacks-alone card in a go-wide deck)
@@ -565,7 +567,10 @@ re-weighted: **on a creature-heavy deck, treat the cut ranking as a shortlist ra
 than a signal** and grade from the printed oracle text. It is **report-only and never feeds back
 into a score** — the scoring terms are bounded and gated by `check_suggest` so they
 can't silently reorder a tuned deck, and an automatic re-weighting would defeat that
-invisibly. Note that "add not surfaced" is expected to be common: `suggest` filters to
+invisibly. The rank of each chosen add is also printed as a **percentile** of the candidates it was
+ranked among: a 100-card Historic Brawl deck ranks against about four times as many cards as
+a Standard deck, so its raw ranks run about four times higher for the same quality of pick —
+compare decks on the percentile. Note that "add not surfaced" is expected to be common: `suggest` filters to
 cards sharing a synergy theme, so it is structurally blind to lands and off-theme
 removal (that's what `--lands` / `--interaction` / `--ramp` are for).
 
@@ -834,6 +839,14 @@ tier floor. Mass bounce still counts as a sweeper. The same pass made **steal Au
 ("You control enchanted creature" — Control Magic, Kitnap) count as removal and **copy
 effects** (token copies, clones, "becomes a copy") count as payoffs.
 
+**Since 2026-10-25 hand attack has its own report-only line too** — `hand attack N` in
+`stats`, `tier` and `quality`, for cards that make an opponent discard or exile from their
+hand. It never feeds the tier floor: counting it as interaction would move no deck's floor
+today, and whether it should count is an open owner's call. In the same pass,
+`consistency` gained an ⓘ line naming any permanent that makes **every land any colour**
+(Leyline of the Guildpact). The source counts still exclude it, since they price the lands
+without it in play.
+
 Every role **count carries its own uncertainty**. A heuristic classifier reports a
 false negative as a fact — a card it can't parse contributes 0, and `0` reads as
 "none" rather than "not detected". So counts render as `7`, `3 +2?` (two more cards
@@ -875,6 +888,16 @@ inflate a land count. But the *silence* meant two surfaces disagreed by construc
 two decks had hand-written the workaround into their own notes before the tool said it.
 Nothing about the numbers changes; the line tells you every cast-on-curve figure below it
 is a floor for that deck.
+
+Two more notes appear only when they apply. When the deck's **basic fetches outnumber its
+basics**, it says so and names any card that replays lands from the graveyard, because every
+count prices a fetch's *first* search, not a library that has run out of basics. And a
+**basic rebalance** line proposes the one basic swap between colours you already run (say a
+Mountain for a Forest) that most lowers the deck's summed cast-on-curve shortfall, printing
+the cards it helps beside the cards it costs. It is calibrated to speak on roughly one deck
+in seven, and it moves a *source*, not a land type, so checklands and Verges are not
+re-priced. Fetch lands that can only find certain basics (the SNC hideouts, the Landscapes,
+Maestros Theater) count only for the basic types they name.
 
 **`deck.py targets <id>`** answers a question every other model here is structurally
 blind to: a card whose text names a RESOURCE — "return target creature card with mana

@@ -82,6 +82,10 @@ UNIVERSE = {
                        "colors.", "R", "4", "4"),
     "attack battery": _card("Attack Battery", "Creature — Human",
                             "Whenever this creature attacks, add {R}.", "R", "2", "2"),
+    # Firebending's mana is ALL in reminder text, which every reader strips (2026-10-25).
+    "firebender": _card("Firebender", "Creature — Human Soldier",
+                        "Menace\nFirebending 1 (Whenever this creature attacks, add {R}. "
+                        "This mana lasts until end of combat.)", "R", "2", "3"),
     "swamp": _card("Swamp", "Basic Land — Swamp", "", ""),
     # An any-colour land has COLOURLESS identity, so a count that sums land identity reads
     # it as no source at all — the G-38 holdout in `deck_needs`. Only `deck_source_profile`
@@ -1560,6 +1564,11 @@ class TestUncountedManaSources:
         by_name = {n: cond for _q, n, _c, cond in deck.uncounted_mana_sources(cards, UNIVERSE)}
         assert by_name == {"Vivid Dork": "board", "Dork Lord": "granted"}   # land grant silent
 
+    def test_firebending_is_disclosed_as_combat_only_mana(self, synth):
+        d = synth(["1 Firebender", "20 Swamp"])
+        _m, cards = deck.parse_deck_file(d["path"])
+        assert deck.uncounted_mana_sources(cards, UNIVERSE) == [(1, "Firebender", "R", "combat")]
+
     def test_an_enters_trigger_is_one_shot_but_an_attack_trigger_recurs(self, synth):
         assert self._names(synth, ["1 Etb Burst", "1 Attack Battery", "20 Swamp"]) == {
             "Attack Battery"}
@@ -1728,6 +1737,24 @@ class TestScan11Batch6FormatDrift:
         assert lib.land_production(t, commander=set())["free"] == set()
         assert lib.land_production(t)["free"] == set("WUBRG")          # unknown: unchanged
 
+    def test_identity_from_an_activation_cost_is_not_production(self):
+        # Duskmantle, House of Shadow: identity U/B comes from its mill ability's cost.
+        import lib
+        dusk = "{T}: Add {C}.\n{U}{B}, {T}: Target player mills a card."
+        assert lib.land_production(dusk, "U/B")["free"] == set()
+        # A Kaldheim uncommon land: only its tap ability's colour, not the sac cost's.
+        hall = ("This land enters tapped.\n{T}: Add {B}.\n{W}{W}{B}, {T}, Sacrifice this land "
+                "and a creature you control: Create a 4/4 white Angel Warrior token.")
+        assert lib.land_production(hall, "W/B")["free"] == {"B"}
+        # A reminder-only dual still falls back to identity (its Add clause is reminder).
+        crypt = "({T}: Add {B} or {R}.)\nAs this land enters, you may pay 2 life."
+        assert lib.land_production(crypt, "B/R")["free"] == {"B", "R"}
+        # A Thriving land's printed colour stays fixed, not choose-once.
+        moor = ("This land enters tapped. As it enters, choose a color other than black.\n"
+                "{T}: Add {B} or one mana of the chosen color.")
+        lp = lib.land_production(moor, "B")
+        assert "B" in lp["free"] and "B" not in lp["chosen"]
+
     def test_an_unplaceable_commander_says_the_lock_is_off(self, capsys):
         meta = {"format": "Brawl", "commander": "Zzz Not A Card Batch Six"}
         assert deck.commander_identity_lock(meta, {}) is None
@@ -1742,3 +1769,143 @@ class TestTappedInFirstDrops:
         assert abs(deck.tapped_in_first_drops(24, 1) - 3 / 24) < 1e-9
         assert deck.tapped_in_first_drops(24, 24) == 1.0
         assert 0.6 < deck.tapped_in_first_drops(24, 7) < 0.7      # 1 - C(17,3)/C(24,3)
+
+
+class TestTypedBasicFetches:
+    """2026-10-23 (deck-89 tooling Batch 2): a TYPED basic fetch — a hideout's "basic
+    Forest, Plains, or Island card", Maestros Theater, the Landscapes — was credited with
+    every colour the deck runs a basic of. Deck 89 read Maestros Theater (Island / Swamp /
+    Mountain) as a green source, and `suggest --lands 89` priced three hideouts as BRG
+    tri-lands above every untapped dual."""
+
+    HIDEOUT = ("When this land enters, sacrifice it. When you do, search your library for a "
+               "basic Forest, Plains, or Island card, put it onto the battlefield tapped, then "
+               "shuffle and you gain 1 life.")
+    WILDS = ("{T}, Sacrifice this land: Search your library for a basic land card, put it "
+             "onto the battlefield tapped, then shuffle.")
+
+    def _cd(self):
+        return {"brokers hideout": {"name": "Brokers Hideout", "type": "Land",
+                                    "text": self.HIDEOUT, "colors": ""},
+                "evolving wilds": {"name": "Evolving Wilds", "type": "Land",
+                                   "text": self.WILDS, "colors": ""}}
+
+    def test_land_production_names_the_types(self):
+        import lib
+        assert lib.land_production(self.HIDEOUT)["fetch_types"] == frozenset("GWU")
+        assert lib.land_production(self.WILDS)["fetch_types"] is None
+        mixed = ("Search your library for a basic land card or a basic Plains card, put it "
+                 "onto the battlefield tapped, then shuffle.")
+        assert lib.land_production(mixed)["fetch_types"] is None     # "land" = any basic
+
+    def test_a_typed_fetch_counts_only_the_basics_it_can_find(self):
+        cards = [(1, "Brokers Hideout", "", ""), (1, "Evolving Wilds", "", ""),
+                 (5, "Swamp", "", ""), (5, "Mountain", "", ""), (5, "Forest", "", "")]
+        src, _nl, _t, notes = deck.deck_source_profile(cards, {}, {}, self._cd())
+        assert src["G"] == 5 + 2            # both fetches reach a Forest
+        assert src["B"] == 5 + 1 and src["R"] == 5 + 1   # only the untyped one
+        assert (1, "Brokers Hideout") in notes["fetch"]
+
+    def test_land_value_prices_the_hideout_as_one_colour_in_brg(self):
+        import wishlist
+        hide = wishlist._land_value({"Card Text": self.HIDEOUT, "Color(s)": ""}, set("BRG"))
+        wilds = wishlist._land_value({"Card Text": self.WILDS, "Color(s)": ""}, set("BRG"))
+        assert hide < wilds
+
+
+class TestFetchPoolPressure:
+    """A basic fetch is priced on its FIRST search; deck 89 ran 11 basic fetches against 10
+    basics with a commander that replays them, and nothing said the basics run out."""
+
+    WILDS = TestTypedBasicFetches.WILDS
+
+    def _cd(self):
+        return {"evolving wilds": {"name": "Evolving Wilds", "type": "Land",
+                                   "text": self.WILDS, "colors": ""},
+                "replayer": {"name": "Replayer", "type": "Creature",
+                             "text": "You may play lands from your graveyard.", "colors": "G"}}
+
+    def _notes(self, cards, cd):
+        return deck.deck_source_profile(cards, {}, {}, cd)[3]
+
+    def test_fires_when_fetches_reach_the_basic_count_and_names_a_replayer(self):
+        cd = self._cd()
+        cards = [(4, "Evolving Wilds", "", ""), (4, "Forest", "", ""), (1, "Replayer", "", "")]
+        assert deck.fetch_pool_pressure(cards, self._notes(cards, cd), cd) == (
+            4, 4, ["Replayer"])
+
+    def test_silent_when_basics_outnumber_fetches_or_there_are_none(self):
+        cd = self._cd()
+        cards = [(3, "Evolving Wilds", "", ""), (8, "Forest", "", "")]
+        assert deck.fetch_pool_pressure(cards, self._notes(cards, cd), cd) is None
+        cards = [(8, "Forest", "", "")]
+        assert deck.fetch_pool_pressure(cards, self._notes(cards, cd), cd) is None
+
+
+class TestBasicRebalanceHint:
+    """No surface asked whether a deck's EXISTING basics sit in the right colours; deck 89's
+    Forest-for-Mountain fix was found by hand-built scratch variants (2026-10-23)."""
+
+    def _deck(self, mountains, forests):
+        cards = [(1, f"Green {i}", "", "") for i in range(20)]
+        cards += [(1, "Red One", "", ""), (mountains, "Mountain", "", ""),
+                  (forests, "Forest", "", "")]
+        mana = {f"green {i}": ("{1}{G}{G}", 3) for i in range(20)}
+        mana["red one"] = ("{2}{R}", 3)
+        sources = {"W": 0, "U": 0, "B": 0, "R": mountains, "G": forests}
+        return cards, mana, sources
+
+    def test_proposes_moving_a_basic_from_the_over_served_colour(self):
+        cards, mana, src = self._deck(mountains=10, forests=7)
+        hint = deck.basic_rebalance_hint(cards, mana, src, 60, {}, {})
+        assert hint and hint[:2] == ("R", "G") and hint[2] > deck._REBALANCE_MIN_GAIN
+        # the cost to the colour losing a basic is reported, not hidden
+        assert any(n == "Red One" and after < before for n, before, after in hint[3])
+
+    def test_silent_below_the_floor_and_never_moves_the_last_basic(self):
+        cards, mana, src = self._deck(mountains=1, forests=16)
+        assert deck.basic_rebalance_hint(cards, mana, src, 60, {}, {}) is None
+
+
+class TestDeck89RolePatternHoles:
+    """2026-10-23 (deck-89 tooling Batch 3): four cards that drive deck 89 scored no role
+    (or no engine side), so `cuts` offered Dryad of the Ilysian Grove as the deck's #1 cut
+    and `engines` read "counters: 15 enablers / 1 payoff". Printed text, per G-67."""
+
+    AZUSA = "You may play two additional lands on each of your turns."
+    DRYAD = ("You may play an additional land on each of your turns.\n"
+             "Lands you control are every basic land type in addition to their other types.")
+    SCALES = ("If one or more +1/+1 counters would be put on a creature you control, that "
+              "many plus one +1/+1 counters are put on it instead.")
+    SEASON = ("If an effect would create one or more tokens under your control, it creates "
+              "twice that many of those tokens instead.\nIf an effect would put one or more "
+              "counters on a permanent you control, it puts twice that many of those "
+              "counters on that permanent instead.")
+    LUKKA_M4 = ("−4: Lukka deals X damage divided as you choose among any number of target "
+                "creatures and/or planeswalkers, where X is the greatest power among "
+                "creatures you control as you activate this ability.")
+    BUSHMASTER = ("Deathtouch\nEach other creature you control with a +1/+1 counter on it "
+                  "has deathtouch.")
+    HALVER = ("If an opponent would put one or more counters on a permanent or player, they "
+              "put half that many of each of those kinds of counters on that permanent or "
+              "player instead, rounded down.")
+
+    def test_extra_land_drops_are_ramp(self):
+        assert "Ramp / fixing" in deck.classify_roles(self.AZUSA)
+        assert "Ramp / fixing" in deck.classify_roles(self.DRYAD)
+
+    def test_replacement_multipliers_are_payoffs(self):
+        assert "Payoff / engine" in deck.classify_roles(self.SCALES)
+        assert "Payoff / engine" in deck.classify_roles(self.SEASON)
+
+    def test_an_opponent_halving_clause_is_not_a_payoff(self):
+        # NEGATIVE assertion (G-67's mass-bounce lesson): a pattern made broader by
+        # accident passes every positive test.
+        assert "Payoff / engine" not in deck.classify_roles(self.HALVER)
+
+    def test_divided_x_damage_is_removal(self):
+        assert "Removal (spot)" in deck.classify_roles(self.LUKKA_M4)
+
+    def test_counters_engine_reads_creatures_with_counters_and_counter_doublers(self):
+        assert "payoff" in deck.engine_roles(self.BUSHMASTER).get("counters", set())
+        assert "payoff" in deck.engine_roles(self.SEASON).get("counters", set())

@@ -2083,7 +2083,9 @@ _ROLE_PATTERNS = {
         # DIVIDED damage — the Fiery Confluence / Death to Our Enemies template. Every
         # fixed-damage pattern above expects "to target"/"to any target" immediately after
         # the number, and this one says "divided as you choose among …" instead.
-        r"deals? \d+ damage divided as you choose among",
+        r"deals? (?:\d+|x) damage divided as you choose among",
+        # (`x` since 2026-10-23: Lukka, Bound to Ruin's −4, Fire Covenant, Huatli and seven
+        # more say "X damage divided" and scored no Removal — 10 pool cards, all removal.)
         # -N/-N or -X/-X shrink on a targeted creature (incl. "creature an opponent
         # controls gets -X/-X" — Cloud of Darkness, Wick's Patrol).
         r"target creature (?:an opponent controls )?gets -[0-9x]",
@@ -2278,7 +2280,7 @@ _ROLE_PATTERNS = {
                        # "draw a card" would have swept every cantrip in the format into
                        # card advantage and inverted the rule this pattern implements.
                        r"at the beginning of (?:your|each|the) "
-                       r"(?:upkeep|end step|draw step|combat|precombat main phase)"
+                       r"(?:upkeep|end step|draw step|combat|(?:precombat|first) main phase)"
                        r"[^.]{0,60}?draws? a card",
                        # The phase-trigger pattern above puts the possessive FIRST
                        # ("at the beginning of YOUR combat"), but Magic templates the
@@ -2291,13 +2293,25 @@ _ROLE_PATTERNS = {
                        # pool cards, both true positives.
                        r"at the beginning of combat on your turn"
                        r"[^.]{0,60}?draws? a card",
+                       # A PHASE TRIGGER THAT OFFERS A DRAW AS A MODE (2026-10-25): Black
+                       # Market Connections' "At the beginning of your first main phase,
+                       # choose one or more —" puts "• Buy Information — Draw a card" on a
+                       # BULLET line, which the sentence windows above cannot reach. The mode
+                       # recurs with the trigger, so it is repeatable card advantage. The
+                       # bullet anchor keeps it to the modes of THIS trigger; a mode that
+                       # "hasn't been chosen" is usable once a game (Zuko, Conflicted) and
+                       # is not repeatable, so it stays out. Measured: 3 pool cards gained.
+                       r"at the beginning of (?:your|each|the) "
+                       r"(?:upkeep|end step|draw step|combat|(?:precombat|first) main phase)"
+                       r"[^\n]{0,80}?\bchoose\b(?![^\n]*hasn't been chosen)[^\n]*(?:\n[^\n]*){0,4}?"
+                       r"\n• [^\n]*?\bdraws? a card",
                        # REMOVE A COUNTER, THEN DRAW (2026-09-29): Dawn of a New Age's "At the
                        # beginning of your end step, remove a hope counter from this
                        # enchantment. If you do, draw a card." The sentence break stopped the
                        # pattern above short of the draw; per G-67 the fix is this CLAUSE,
                        # not a wider window. The counter supply is what repeats it.
                        r"at the beginning of (?:your|each|the) "
-                       r"(?:upkeep|end step|draw step|combat|precombat main phase)"
+                       r"(?:upkeep|end step|draw step|combat|(?:precombat|first) main phase)"
                        r"[^.]{0,60}?\bremove an? [a-z-]+ counters? from (?:this|it)\b"
                        r"[^.]{0,30}\.\s*if you do, (?:you )?draws? a card",
                        # The draw must fall AFTER the trigger's comma. Magic templates a
@@ -2345,7 +2359,7 @@ _ROLE_PATTERNS = {
                        #     the pattern. "When this creature enters, if X, draw a card" is
                        #     a one-shot cantrip and stays out, same as the plain ETB form.
                        r"(?:at the beginning of (?:your|each|the) "
-                       r"(?:upkeep|end step|draw step|combat|precombat main phase)"
+                       r"(?:upkeep|end step|draw step|combat|(?:precombat|first) main phase)"
                        r"|\bwhenever\b[^.,]{0,80})"
                        r", if [^.]{0,140}?, (?:you )?draws? a card",
                        r"\binvestigate\b",
@@ -2539,7 +2553,24 @@ _ROLE_PATTERNS = {
                        # span is the only thing either pattern can see, and hers is `+2`.
                        r"(?m)^(?:[a-z][a-z']{2,14}(?: \d+)? [-—] )?"
                        r"(?:[+-]?\d+|\{[^}]+\})(?:(?!discard|sacrifice this)[^.:\n])"
-                       r"{0,60}:[^.\n]{0,90}\.\s*(?:if|when) you do[^.\n]{0,40}?draws? a card"],
+                       r"{0,60}:[^.\n]{0,90}\.\s*(?:if|when) you do[^.\n]{0,40}?draws? a card"
+                       ,
+                       # SEEK (Alchemy): "put one at random from your library into your
+                       # hand" is a draw that also filters, and no pattern above read the
+                       # keyword, so Quintorius's "−1: Seek a non-Quintorius planeswalker
+                       # card" scored no card advantage (deck 90 audit, 2026-10-25).
+                       # A seek that puts the card ONTO THE BATTLEFIELD is ramp (Worldweave,
+                       # Back-Alley Gardener), matched by the Ramp / fixing seek pattern.
+                       r"\bseeks? (?:a|an|one|two|three|four|x|that many|up to \w+)\b"
+                       r"(?![^.]{0,60}?onto the battlefield)",
+                       # EMPOWER JACE (2026-10-25). The Jace token it makes carries
+                       # "[−3]: Draw a card" — in REMINDER text, which this reader strips,
+                       # so every empower card scored no card advantage. Counted when the
+                       # empower is 3+ at once (a draw now) or repeatable (a trigger or an
+                       # activated ability, which accrues to one), never a one-off 1–2.
+                       r"\bempower jace (?:[3-9]|\d{2})\b",
+                       r"\b(?:whenever|landfall)\b[^.\n]{0,80}?empower jace (?:\d+|x)\b",
+                       r"(?m)^[^\n:]{0,40}:[^.\n]{0,40}?empower jace (?:\d+|x)\b"],
     "Ramp / fixing": [r"search your library for .{0,30}?\bland",
                       r"\{t\}: add \{",
                       r"put (?:a|that|those|up to \w+).{0,40}?land.{0,40}?onto the battlefield",
@@ -2565,7 +2596,20 @@ _ROLE_PATTERNS = {
                       r"you can spend mana of any type",
                       # All-basic-land-types (K-03 names this shape as a fixer the tagger
                       # could not see); Energybending and friends.
-                      r"lands? you control (?:gain|have) all basic land types"],
+                      r"lands? you control (?:gain|have) all basic land types",
+                      # ...and the "ARE every basic land type" templating, which that
+                      # pattern never matched: Leyline of the Guildpact scored NO role
+                      # in the deck it fixes (deck 90 audit, 2026-10-25).
+                      r"(?:lands? you control|enchanted land) (?:are|is) every basic land type",
+                      # Seeking a land straight onto the battlefield (Worldweave).
+                      r"seeks? an? (?:basic )?land card[^.]{0,40}?onto the battlefield",
+                      # EXTRA LAND DROPS (2026-10-23). Azusa and Dryad of the Ilysian Grove
+                      # scored NO role, so `cuts` ranked Dryad deck 89's #1 cut in a deck
+                      # built on playing lands; Exploration, Oracle of Mul Daya, The Gitrog
+                      # Monster and 29 more are the same shape. An extra land a turn is
+                      # acceleration by definition. 32 pool cards; Ramp is not a
+                      # `tier_band` term.
+                      r"play (?:an|one|two|three|up to (?:one|two|three)|x) additional lands?"],
     # KNOWN RESIDUAL on the any-colour patterns above: they match the REMINDER TEXT of a
     # Treasure token, including on cards that hand the Treasure to someone else ("Exile
     # target nonland permanent. ITS CONTROLLER creates a Treasure token"). Those pick up a
@@ -2602,6 +2646,12 @@ _ROLE_PATTERNS = {
         # is what the REST of the deck does is a payoff by definition; the doubler AXIS
         # (`doubler_support`) is a separate, deliberately untaken question.
         r"triggers an additional time",
+        # REPLACEMENT MULTIPLIERS (2026-10-23): "twice that many … instead" / "that many plus
+        # one … instead" — Doubling Season, Hardened Scales, Vorinclex, Parallel Lives,
+        # Anointed Procession, Branching Evolution, Ozolith. The same argument as the trigger
+        # doubler above: the card's value is the rest of the deck. 32 pool cards, all
+        # multipliers (an opponent HALVING clause reads "half", which this does not match).
+        r"(?:twice that many|that many plus (?:one|two|\d))[^.]{0,80}?instead",
         # COPY EFFECTS (2026-10-07), the same argument as the multipliers above: a clone or
         # a token copy is worth exactly what it copies, so its value is the REST of the
         # deck. ~130 pool cards scored no role at all — Echocasting Symposium, Multiversal
@@ -2660,7 +2710,11 @@ _ROLE_PATTERNS = {
         r"deals? damage equal to .{0,60}?(?:any (?:other )?target|a player|target player|each opponent|that player)",
         r"deals? x damage to any (?:other )?target",
         r"deals? that much damage to (?:each opponent|any (?:other )?target|target player)",
-        r"(?:each opponent|target opponent|any opponent|that player|each player) loses \d",
+        # `\d` alone missed the X-scaled drain: Sanctum of Stone Fangs ("each opponent
+        # loses X life and you gain X life, where X is the number of Shrines") scored NO
+        # role while Northern Air Temple, the same drain text, matched only through its
+        # second "loses 1 life" clause (deck 90 audit, 2026-10-25).
+        r"(?:each opponent|target opponent|any opponent|that player|each player) loses (?:\d|x life)",
         r"deals? \d+ damage to each opponent",
         r"loses life equal to",
     ],
@@ -2668,7 +2722,9 @@ _ROLE_PATTERNS = {
     # was in neither this pattern nor the tag model; the tag half was fixed with the
     # `pay life` work and this is the role half, so the two agree on the phrase.
     "Lifegain": [r"\blifelink\b", r"you gain \d+ life", r"gain \d+ life",
-                 r"gains? life equal to"],
+                 r"gains? life equal to",
+                 # The X-scaled twin, same hole as the drain pattern above.
+                 r"you gain x life"],
     # Cost reducers / free-cast enablers — the value that makes a nominally
     # expensive card cheap (Diamond Weapon, affinity/convoke, cascade cheats).
     "Cost reduction / cheat": [
@@ -3052,6 +3108,33 @@ def tempo_effects(text):
         if rx.search(t):
             return kind
     return None
+
+
+# HAND ATTACK (2026-10-25). Discard and hand-exile aimed at an opponent were a TAXONOMY
+# hole (G-67): Honden of Night's Reach ("target opponent discards a card for each Shrine")
+# scored NO role, so it read as doing nothing. Reported like tempo — a separate line in
+# stats / tier / quality — and NEVER a `tier_band` term: counting discard as interaction
+# would re-grade the roster, which is the owner's call after a measurement, not a pattern
+# edit. The subject must be an OPPONENT or a player you target; "discard a card" as your
+# own cost or rummage never matches.
+_HAND_ATTACK_RE = re.compile(
+    r"(?:target|each|that|any) (?:opponent|player)s? discards?"
+    r"|(?:target|each) (?:opponent|player) exiles? [^.]{0,30}?from (?:their|his or her) hand"
+    # The reveal/look forms put the discard or exile one sentence LATER ("…reveals each
+    # nonland card in their hand. You choose one of those cards. Exile that card.").
+    r"|(?:target|each) opponent reveals [^.]{0,40}?hand[^\n]{0,120}?(?:discards?|exile)"
+    r"|look at target (?:opponent|player)'s hand[^\n]{0,120}?(?:discards?|exile)"
+    r"|each player discards"
+    # A COMPOUND verb list puts the discard after another verb in the same sentence:
+    # Scarring Memories' "Target opponent sacrifices a creature of their choice, discards
+    # a card, and loses 3 life" read as no hand attack (2026-10-25).
+    r"|(?:target|each) (?:opponent|player)s? [^.;]{0,60}?,\s*(?:and )?discards?", re.I)
+
+
+def hand_attack_effects(text):
+    """True if the card makes an opponent discard or exile from hand (reminder-stripped,
+    the way `classify_roles` reads it). Report-only — see `_HAND_ATTACK_RE`."""
+    return bool(_HAND_ATTACK_RE.search(_norm_role_text(text)))
 
 
 def protection_effects(text):
@@ -4026,6 +4109,12 @@ ENGINE_THEMES = {
             # saying 'counter' in the clause.
             r"greater than (its|that creature's) base power",
             r"if[^.]*would[^.]*\+1/\+1 counter[^.]*instead", r"twice that many \+1/\+1",
+            # 2026-10-23: deck 89 read "counters: 15 enablers / 1 payoff" through three real
+            # payoffs. Bushmaster's "each other creature you control WITH a +1/+1 counter on
+            # it has deathtouch" names creatures-with-counters, not the counter going on; and
+            # Doubling Season / Vorinclex double "counters", never saying "+1/+1".
+            r"creatures? you control with (?:a|one or more) \+1/\+1 counters?",
+            r"twice that many of (?:those|each of those kinds of) counters",
             r"remove (a|one|x|\d+)[^.]*\+1/\+1 counter", r"move (a|one|any number of)[^.]*\+1/\+1 counter",
         ],
     },
@@ -4486,6 +4575,8 @@ def cmd_stats(args):
     print(f"  {'tempo':20} {_tempo_note(role_counts):>3}  (one-turn answers — bounce, stun, "
           "tap-down — on cards with no interaction role; report-only, never in the tier "
           "floor)")
+    print(f"  {'hand attack':20} {role_counts.get('hand_attack', 0):3}  (opponent discards or "
+          "exiles from hand; report-only, never in the tier floor)")
     if not prot:
         signature = _protected(meta)
         if signature:
@@ -4870,7 +4961,7 @@ def role_tally(cards, carddata):
     union of Removal/Sweeper/Counter), 'card_advantage', and 'protection' (real
     ward/hexproof/indestructible-class effects — see `protection_effects`)."""
     per_role = {}
-    interaction = ca = prot = tempo = 0
+    interaction = ca = prot = tempo = hand = 0
     tempo_kinds = {}
     for q, n, s, c in cards:
         if n.lower() in BASICS:
@@ -4887,6 +4978,8 @@ def role_tally(cards, carddata):
             ca += q
         if protection_effects(cd["text"]):
             prot += q
+        if hand_attack_effects(cd["text"]):
+            hand += q
         if not roles & _INTERACTION_ROLES:
             kind = tempo_effects(cd["text"])
             if kind:
@@ -4898,6 +4991,8 @@ def role_tally(cards, carddata):
     # Report-only TEMPO (see `tempo_effects`): never read by `tier_band`.
     per_role["tempo"] = tempo
     per_role["tempo_kinds"] = tempo_kinds
+    # Report-only HAND ATTACK (see `hand_attack_effects`): never read by `tier_band`.
+    per_role["hand_attack"] = hand
     # CONFIDENCE, carried WITH the count. The classifier reports a false negative as a
     # fact: a card it can't parse contributes 0, and `0` reads as "none" rather than
     # "not detected". That is the single most damaging failure this toolkit has had — a
@@ -6144,7 +6239,8 @@ def suggest_lands(d, unowned=False, owned=False, limit=20, fmt=None, any_format=
         lp = land_production(txt, r.get("Color(s)"))
         prod = set(lp["free"]) | set(lp["restricted"]) | set(lp["conditional"])
         if lp["fetch"]:
-            prod |= set(deck_colors)
+            _ft = lp.get("fetch_types")
+            prod |= set(deck_colors) if _ft is None else set(deck_colors) & _ft
         on_color = prod & deck_colors
         if not on_color:
             continue  # off-color / colorless-only: doesn't fix THIS deck's manabase
@@ -7078,7 +7174,7 @@ def _commitment(n):
 # Labels `deck_source_profile` files a nonbasic land under, in the order they print.
 _SOURCE_KINDS = (("any", "any colour, no extra cost"),
                  ("any-cost", "any colour for an extra mana (counted — a real source from the turn after it lands, a filter on curve)"),
-                 ("fetch", "basic-land fetch (counted for each colour the deck runs a basic of)"),
+                 ("fetch", "basic-land fetch (counted for each colour the deck runs a basic of that it can find)"),
                  ("restricted", "spend-only mana (NOT counted — read the restriction)"),
                  ("gated", "colour gated on a land TYPE (counted by the chance a land of that type is out by turn three — G-87)"))
 
@@ -7093,7 +7189,9 @@ def deck_source_profile(cards, by_key, by_name, carddata, meta=None, deck_meta=N
     (`lib.land_production`): colours it adds freely, colours it adds for an extra mana
     ("{1}, {T}: Add one mana of any color" — counted, since the land IS a source of that
     colour from the turn after it lands, and labelled so a reader can discount it on
-    curve), and a basic-land fetch, counted for each colour the deck runs a basic of.
+    curve), and a basic-land fetch, counted for each colour the deck runs a basic of — only
+    the basic TYPES a typed fetch names (`fetch_types`: a hideout's "basic Forest, Plains, or
+    Island"), every basic for an untyped one (2026-10-23).
     Spend-only mana ("Spend this mana only to cast a creature spell") is NOT counted and
     is reported instead — whether it is a source depends on what you are casting. Mana
     dorks are not lands and are never counted.
@@ -7165,7 +7263,10 @@ def deck_source_profile(cards, by_key, by_name, carddata, meta=None, deck_meta=N
                 shares.append(f"{col} {round(share * 100)}%")
             notes["gated"].append((q, f"{n} ({', '.join(shares)})"))
         if prod["fetch"]:
-            counted |= basics_present
+            # A TYPED fetch (a hideout's "basic Forest, Plains, or Island") reaches only
+            # the basics it names — `fetch_types` None means any basic (2026-10-23).
+            ft = prod.get("fetch_types")
+            counted |= basics_present if ft is None else basics_present & ft
             notes["fetch"].append((q, n))
         if prod["any"]:
             if set("WUBRG") <= prod["free"]:
@@ -7219,8 +7320,87 @@ def deck_commander_colors(deck_meta, carddata=None):
     return commander_identity_lock(deck_meta, carddata)
 
 
+# A card that lets you REPLAY a land from the graveyard (Szarel, Ramunap Excavator,
+# Crucible of Worlds' "play lands from your graveyard") — each replayed fetch is another
+# search against the same finite basics.
+_LAND_REPLAY_RE = re.compile(r"\bplay (?:lands|land cards) from your graveyard", re.I)
+
+
+def fetch_pool_pressure(cards, source_notes, carddata, deck_meta=None):
+    """(fetchers, basics, replayers) when the deck's basic-land fetches number at least
+    its basics, else None.
+
+    `deck_source_profile` counts each basic fetch as a source of every colour the deck
+    runs a basic of, which is true of the FIRST search and silent about the rest: deck 89
+    (2026-10-23) ran 11 basic fetches against 10 basics, with a commander that replays
+    fetches from the graveyard, so a long game runs the basics out — a failed search still
+    sacrifices the fetch, so a sacrifice payoff still triggers, but the land is lost. No
+    count here models depletion; this DISCLOSES it. `replayers` names the deck's cards
+    (commander included) that let it replay lands from the graveyard, which makes the
+    pressure worse. Fires on 1 of 124 decks at landing (fetchers >= basics; the next
+    closest, 69b, is 6 against 8).
+    """
+    fetchers = sum(q for q, _n in (source_notes or {}).get("fetch", []))
+    if not fetchers:
+        return None
+    basics = sum(q for q, n, _s, _c in cards
+                 if n.lower().removeprefix("snow-covered ") in BASICS)
+    if fetchers < basics:
+        return None
+    names = [n for _q, n, _s, _c in cards]
+    names += [k for k in _header_card_keys(deck_meta or {}, "commander")]
+    seen, replayers = set(), []
+    for n in names:
+        cd = carddata.get(n.lower()) or {}
+        if n.lower() not in seen and _LAND_REPLAY_RE.search(cd.get("text") or ""):
+            seen.add(n.lower())
+            replayers.append(cd.get("name") or n)
+    return fetchers, basics, replayers
+
+
 _NONLAND_COND_LABEL = {True: ", extra cost", "board": ", board-dependent",
-                       "granted": ", granted to creatures"}
+                       "granted": ", granted to creatures", "combat": ", combat-only"}
+
+# FIREBENDING (2026-10-25): "Firebending N (Whenever this creature attacks, add N {R}. This
+# mana lasts until end of combat.)" — the mana lives in the reminder text, which every
+# reader here strips, so a deck of firebenders disclosed no nonland mana at all. It is real
+# mana that empties at end of combat, except under a "you don't lose unspent mana" effect
+# (Ozai, the Phoenix King; Electro), where it becomes permanent ramp. Own keyword and a
+# grant ("gains firebending 4") both count; disclosure only, like every label above.
+_FIREBENDING_RE = re.compile(r"\bfirebending (?:\d+|x)\b", re.I)
+
+
+# EVERY LAND A FIVE-COLOUR SOURCE (2026-10-25). Great Divide Guide ("Each land and Ally
+# you control has '{T}: Add one mana of any color'"), Wrenn and Realmbreaker, A Realm
+# Reborn and the all-basic-types family (Leyline of the Guildpact, Prismatic Omen) turn
+# the colour question into a land-count question while they are out — which no figure on
+# the `consistency` page can price, and which `uncounted_mana_sources` deliberately skips
+# (a GRANTED ability is a land upgrade, not a new source). DISCLOSURE ONLY.
+_LAND_RAINBOW_RE = re.compile(
+    r"(?:lands?|permanents)(?: and [a-z]+s?)? you control (?:has|have) [\"'“”]?\{t\}: add one "
+    r"mana of any colou?r"
+    r"|lands? you control (?:are|is) every basic land type"
+    r"|lands? you control (?:gain|have) all basic land types", re.I)
+
+
+def land_rainbow_enablers(cards, carddata):
+    """[(qty, name)] — NONLAND cards whose text makes every land you control produce any
+    colour (granted any-colour mana or every basic land type). Report-only."""
+    out = []
+    for q, n, _s, _c in cards:
+        nl = n.lower()
+        if nl in BASICS:
+            continue
+        cd = carddata.get(nl)
+        tline = (cd.get("type") or "") if cd else ""
+        if not cd or "Land" in _primary_type(tline):
+            continue
+        # A one-shot (Energybending: "until end of turn") is not a standing enabler.
+        if any(t in tline.split("//")[0] for t in ("Instant", "Sorcery")):
+            continue
+        if _LAND_RAINBOW_RE.search(_norm_role_text(cd.get("text") or "")):
+            out.append((q, cd.get("name") or n))
+    return out
 
 
 def uncounted_mana_sources(cards, carddata, deck_meta=None):
@@ -7320,6 +7500,9 @@ def uncounted_mana_sources(cards, carddata, deck_meta=None):
             granted |= gp["free"] | gp["conditional"]
         if granted:
             out.append((q, cd.get("name") or n, "".join(sorted(granted)), "granted"))
+            continue
+        if _FIREBENDING_RE.search(_REMINDER_RE.sub(" ", text)):
+            out.append((q, cd.get("name") or n, "R", "combat"))
     return sorted(out, key=lambda r: (-r[0], r[1]))
 
 
@@ -7470,10 +7653,413 @@ def cast_on_curve_rows(cards, mana, sources, N, by_key, by_name, on_play=True, t
     return rows
 
 
+# The smallest total cast-on-curve shortfall a basic swap must recover before
+# `basic_rebalance_hint` speaks, in summed percentage points across the deck's cards.
+# Calibrated on the roster (2026-10-23): see the docstring.
+# Measured over the 124-deck roster: 69 decks have SOME positive single-swap gain, nonzero
+# gains run p25 4.6 / p50 8.6 / p75 16.0 / p90 25.3 / max 45.8 points. A floor of 0 would
+# fire on 56% of the roster for gains of a point or two (the G-07 saturation shape); p75
+# of its own axis, the G-85 rule, fires on about 14%.
+_REBALANCE_MIN_GAIN = 16.0
+
+
+def basic_rebalance_hint(cards, mana, sources, N, by_key, by_name, on_play=True,
+                         target=0.90):
+    """(from_colour, to_colour, gain, moved) for the ONE basic swap that most lowers the
+    deck's cast-on-curve shortfall, or None when no swap clears `_REBALANCE_MIN_GAIN`.
+
+    Every surface here prices sources and recommends LANDS to add; none ever asked whether
+    the deck's existing basics sit in the right colours. Deck 89 (2026-10-23) ran 18 red
+    sources for 6 red-pip cards against 23 green for 47, and the fix — a Forest for a
+    Mountain — was found by hand-building scratch variants. This is that search: for each
+    pair of basic types the deck already runs (X with at least two basics, so the last one
+    is never moved and the fetches keep every colour they reach), move one X basic to Y and
+    re-price every card through `cast_on_curve_rows`, the table `consistency` prints.
+    `gain` is the summed shortfall below `target` the swap recovers (in points, net of
+    what the colour losing a source gives up); `moved`
+    lists [(name, before, after)] for the cards whose probability moved most, worst-hit
+    first, so the cost on the colour losing a source is printed beside the gain.
+
+    APPROXIMATION, disclosed: it moves one SOURCE, so a basic's land TYPE (which also
+    enables checklands and Verges, G-87) is not re-priced, and a swap into a colour with no
+    basic yet is not proposed. A hint, never an edit.
+    """
+    basics = {}
+    for q, n, _s, _c in cards:
+        col = BASIC_COLOR.get(n.lower().removeprefix("snow-covered "))
+        if col and n.lower().removeprefix("snow-covered ") in BASICS:
+            basics[col] = basics.get(col, 0) + q
+
+    def _shortfall(rows):
+        return sum(max(0.0, target - r[0]) for r in rows) * 100
+
+    base_rows = cast_on_curve_rows(cards, mana, sources, N, by_key, by_name, on_play, target)
+    base = _shortfall(base_rows)
+    if base <= 0:
+        return None
+    best = None
+    for x in sorted(c for c, k in basics.items() if k >= 2):
+        for y in sorted(c for c in basics if c != x):
+            alt = dict(sources)
+            alt[x] = alt.get(x, 0) - 1
+            alt[y] = alt.get(y, 0) + 1
+            rows = cast_on_curve_rows(cards, mana, alt, N, by_key, by_name, on_play, target)
+            gain = base - _shortfall(rows)
+            if best is None or gain > best[2] + 1e-9:
+                before = {r[1]: r[0] for r in base_rows}
+                moved = sorted(((r[1], before.get(r[1], r[0]), r[0]) for r in rows
+                                if abs(r[0] - before.get(r[1], r[0])) >= 0.005),
+                               key=lambda t: (t[2] - t[1], t[0]))
+                best = (x, y, gain, moved)
+    if best is None or best[2] <= _REBALANCE_MIN_GAIN:
+        return None
+    return best
+
+
 # Roster castability sweep (Batch E, 2026-10-08). Calibrated on the roster: see
 # `castability_shortfalls`.
 CURVE_SWEEP_FLOOR = 0.50
 CURVE_SWEEP_MAX_TURN = 4
+
+
+# --- tempo: a simulated land-drop model ------------------------------------- #
+# Every cast-on-curve figure above prices colour ACCESS — "are the right sources among the
+# cards seen by turn N" — and is blind to two things that decide whether a spell actually
+# resolves on its turn: you play ONE land a turn, and a land that enters tapped makes no
+# mana the turn it lands. Asked 2026-10-28 when Dragonskull Summit (untapped when you
+# control a Swamp or a Mountain) had to be weighed against Thriving Moor (always tapped)
+# in deck 92: both make {B}/{R}, so the access model priced the swap at exactly zero and
+# the only answer it could give was a guess. `simulate_tempo` deals the deck out, plays
+# one land a turn with a simple sequencing rule, and records how often a card's cost is
+# payable from UNTAPPED lands on its own turn — twice, on the SAME shuffles: once honouring
+# how each land enters, and once pretending every land enters untapped. The gap between
+# the two is the tempo the tapped lands cost; it is paired, so the noise largely cancels.
+#
+# REPORT-ONLY, like the tempo line for spells (G-25), protection, board power and the X-cost
+# advisory: a new `tier_band` term would silently re-grade the roster. Nothing reads it but
+# `consistency --tempo`.
+_COLOR_BIT = {"W": 1, "U": 2, "B": 4, "R": 8, "G": 16}
+TEMPO_GAMES = 4000
+TEMPO_SEED = 20261028
+# Enter-state kinds a simulated land can carry. `board` is every condition this model does
+# not track (a player at 13 or less life, a planeswalker, an Equipment or a Mount/Vehicle
+# in play) and is scored TAPPED — the conservative reading `tapland_kind` already takes.
+_SIM_SLOW_RE = re.compile(
+    r"enters(?: the battlefield)? tapped unless you control (?:two|2) or more other lands",
+    re.I)
+_SIM_EARLY_RE = re.compile(
+    r"enters(?: the battlefield)? tapped unless it'?s your first, second, or third turn",
+    re.I)
+_SIM_REVEAL_RE = re.compile(
+    r"you may reveal an? (?P<t1>Plains|Island|Swamp|Mountain|Forest) or (?:an? )?"
+    r"(?P<t2>Plains|Island|Swamp|Mountain|Forest) card from your hand[\s\S]{0,60}?"
+    r"enters(?: the battlefield)? tapped", re.I)
+_SIM_CHECK_COUNT_RE = re.compile(r"unless you control (two|2|three|3) or more basic lands", re.I)
+_SIM_FETCH_TAPPED_RE = re.compile(r"onto the battlefield tapped", re.I)
+# A fetch that also taps for mana itself (Shire Terrace, Promising Vein, Twisted Landscape:
+# "{T}: Add {C}.") is an UNTAPPED land the turn it lands — you tap it for mana and crack it
+# later — so it costs no tempo. Read off the text: `land_production` reports no colour for
+# {C}, so its `free` set alone cannot tell these apart from Evolving Wilds (2026-10-28).
+# A TYPED fetch ("Search your library for a Swamp or Forest card, put it onto the
+# battlefield") finds any land of those TYPES — a shockland as well as a basic — and the
+# Onslaught/Zendikar cycle puts it in UNTAPPED. `land_production` reads only basic fetches
+# (the G-35 residual), so the simulation reads this one itself.
+_SIM_TYPED_FETCH_RE = re.compile(
+    r"search your library for an? (?P<t1>Plains|Island|Swamp|Mountain|Forest) or (?:an? )?"
+    r"(?P<t2>Plains|Island|Swamp|Mountain|Forest) card, put it onto the battlefield"
+    r"(?P<tapped> tapped)?", re.I)
+_SIM_OWN_MANA_RE = re.compile(r"^\{T\}(?:, Pay \d+ life)?: Add \{", re.I | re.M)
+
+
+def _mask(cols):
+    m = 0
+    for c in cols or ():
+        m |= _COLOR_BIT.get(c, 0)
+    return m
+
+
+def sim_land_model(name, text, type_line, colors_cell=None, commander=None):
+    """How one LAND behaves in `simulate_tempo`, read from its oracle text.
+
+    Returns a dict: `free` (bitmask of colours it adds with no extra mana and no spending
+    restriction, gated colours excluded), `gated` [(bit, need_mask)] — a colour it adds only
+    while you control a land of a named type (need 0 = any basic, G-87), `types` (basic land
+    types it carries), `basic`, `enter` (one of `untapped`, `tapped`, `shock`, `fast`,
+    `slow`, `early`, `check`, `reveal`, `board`), `need` (the type mask a checkland or snarl
+    asks for; 0 = any basic), `need_n` (how many basics a "two or more basic lands" gate
+    wants), and `fetch` (None, or the bitmask of basic colours it can find).
+
+    Production comes from `lib.land_production` and entry from `lib.tapland_kind`, so this
+    reads a land the way `consistency`'s source count and `suggest --lands` do. Colours
+    behind an extra mana cost (`{1}, {T}: Add one mana of any color`) or a spending
+    restriction are left out: on curve they make no extra mana."""
+    nl = (name or "").lower()
+    base = nl[len("snow-covered "):] if nl.startswith("snow-covered ") else nl
+    if base in BASICS:
+        col = BASIC_COLOR.get(base)
+        bit = _COLOR_BIT.get(col, 0) if col else 0
+        return {"name": name, "free": bit, "gated": [], "types": bit, "basic": True,
+                "enter": "untapped", "need": 0, "need_n": 1, "fetch": None}
+    text = text or ""
+    prod = land_production(text, colors_cell, commander=commander)
+    gated = prod.get("gated") or {}
+    free = _mask(set(prod["free"]) - set(gated))
+    gated_l = sorted((_COLOR_BIT[c], _mask(need)) for c, need in gated.items()
+                     if c in _COLOR_BIT)
+    fetch, typed = None, False
+    if prod["fetch"]:
+        ft = prod.get("fetch_types")
+        fetch = 31 if ft is None else _mask(ft)
+    tf = _SIM_TYPED_FETCH_RE.search(text)
+    if fetch is None and tf:
+        fetch, typed = _mask(BASIC_TYPE_COLORS[g.lower()] for g in (tf.group("t1"),
+                                                                   tf.group("t2"))), True
+    kind = tapland_kind(text)
+    need, need_n = 0, 1
+    rv = _SIM_REVEAL_RE.search(text)
+    if rv:
+        enter = "reveal"
+        need = _mask(BASIC_TYPE_COLORS[g.lower()] for g in (rv.group("t1"), rv.group("t2")))
+    elif kind is None:
+        enter = "untapped"
+    elif kind == "shock":
+        enter = "shock"
+    elif kind == "fast":
+        enter = "fast"
+    elif kind == "check":
+        enter = "check"
+        need = _mask(lib.tapland_check_types(text) or ())
+        m = _SIM_CHECK_COUNT_RE.search(text)
+        if m:
+            need_n = 3 if m.group(1).lower() in ("three", "3") else 2
+    elif _SIM_SLOW_RE.search(text):
+        enter = "slow"
+    elif _SIM_EARLY_RE.search(text):
+        enter = "early"
+    elif kind == "conditional":
+        enter = "board"
+    else:
+        enter = "tapped"
+    return {"name": name, "free": free, "gated": gated_l,
+            "types": _mask(land_basic_types(type_line)), "basic": "Basic" in _primary_type(
+                type_line or "") or False, "enter": enter, "need": need,
+            "need_n": need_n, "fetch": fetch,
+            "fetch_typed": typed,
+            "fetch_tapped": (bool(tf.group("tapped")) if typed else
+                             bool(_SIM_FETCH_TAPPED_RE.search(text))) if fetch else False,
+            "own_mana": bool(_SIM_OWN_MANA_RE.search(text)) if fetch else False}
+
+
+def _sim_enters_untapped(m, in_play, turn, hand_lands):
+    """Would land model `m` enter untapped NOW? `in_play` is the list of models already on
+    the battlefield, `hand_lands` the other land models in hand (a snarl reveals one)."""
+    e = m["enter"]
+    if m.get("fetch") is not None and m.get("own_mana"):
+        return True             # tap it for its own mana now, crack it later
+    if m.get("fetch") is not None and m.get("fetch_tapped"):
+        return False            # it untaps, but the mana comes from a basic that does not
+    if e in ("untapped", "shock"):
+        return True
+    if e == "fast":
+        return len(in_play) <= 2
+    if e == "slow":
+        return len(in_play) >= 2
+    if e == "early":
+        return turn <= 3
+    if e == "check":
+        if m["need"]:
+            return any(x["types"] & m["need"] for x in in_play)
+        return sum(1 for x in in_play if x["basic"]) >= m["need_n"]
+    if e == "reveal":
+        return any(x["types"] & m["need"] for x in hand_lands)
+    return False                # tapped, board
+
+
+def _sim_mana_masks(in_play):
+    """One colour bitmask per land on the battlefield — a gated colour counts only while
+    ANOTHER land in play carries a type its gate names (or any basic, for need 0)."""
+    out = []
+    for i, x in enumerate(in_play):
+        m = x["free"]
+        for bit, need in x["gated"]:
+            if any((y["types"] & need) if need else y["basic"]
+                   for j, y in enumerate(in_play) if j != i):
+                m |= bit
+        out.append(m)
+    return out
+
+
+def _sim_payable(masks, total, demand):
+    """Can these lands pay `total` mana including `demand` [(bit, count)]? Hall's
+    condition over every subset of the demanded colours — one land makes ONE mana, so a
+    dual cannot pay both halves of {B}{R} the way the per-colour access model lets it."""
+    if len(masks) < total:
+        return False
+    bits = [b for b, _n in demand]
+    k = len(bits)
+    for sub in range(1, 1 << k):
+        smask, need = 0, 0
+        for i in range(k):
+            if sub >> i & 1:
+                smask |= bits[i]
+                need += demand[i][1]
+        if sum(1 for m in masks if m & smask) < need:
+            return False
+    return True
+
+
+def simulate_tempo(deck, reqs, *, games=TEMPO_GAMES, seed=TEMPO_SEED, on_play=True,
+                   max_turn=CAST_CAP):
+    """Paired land-drop simulation. `deck` is a list with one entry per card copy — a land
+    model dict (`sim_land_model`) or None for a nonland. `reqs` maps a key to
+    (turn, total_mana, demand[(bit, count)]). Returns {"tempo": {key: p}, "untapped":
+    {key: p}, "mana_tempo": {turn: p}, "mana_untapped": {turn: p}} where `mana_*` is
+    P(at least `turn` untapped mana on turn `turn`).
+
+    Each game deals ONE shuffle and plays it twice: honouring each land's enter clause,
+    and with every land entering untapped. Every target turn T is played out on its own,
+    with the sequencing a player aiming at T would use, which is how the hypergeometric
+    table already judges each card: before T, play a land that enters TAPPED if there is
+    one (it untaps in time), then one whose untapped window is closing (a fastland,
+    Starting Town); ON turn T, play one that enters untapped. Within those, the land adding
+    the colour turn T's cards want most. A fetch takes the most-wanted basic still in the
+    library. No mulligans and no draw beyond the draw step — the simplifications the
+    hypergeometric table also makes. Deterministic for a given seed (G-54)."""
+    import random
+    rng = random.Random(seed)
+    by_turn, weights = {}, {}
+    for key, (t, total, demand) in reqs.items():
+        by_turn.setdefault(t, []).append((key, total, demand))
+        w = weights.setdefault(t, {})
+        for bit, k in demand:
+            w[bit] = w.get(bit, 0) + k
+    turns = sorted(t for t in by_turn if 1 <= t <= max_turn)
+    hit = {"tempo": {k: 0 for k in reqs}, "untapped": {k: 0 for k in reqs}}
+    mana_hit = {"tempo": {t: 0 for t in turns}, "untapped": {t: 0 for t in turns}}
+    _lapses = ("fast", "early")
+
+    def play_to(order, honour, target):
+        w = weights.get(target, {})
+
+        def wanted(mask, covered):
+            return sum(v for bit, v in w.items() if (bit & mask) and not (bit & covered))
+
+        lib_ = list(order)
+        n_open = 7 if on_play else 8
+        hand, lib_ = lib_[:n_open], lib_[n_open:]
+        in_play, tapped_now = [], False
+
+        def fetch_basic(m, covered):
+            best, best_i = None, None
+            for j, c in enumerate(lib_):
+                if c is not None and ((c["types"] if m.get("fetch_typed") else
+                                       (c["free"] if c["basic"] else 0)) & m["fetch"]):
+                    v = (wanted(c["free"], covered), -j)
+                    if best is None or v > best:
+                        best, best_i = v, j
+            return lib_.pop(best_i) if best_i is not None else dict(m, free=0, fetch=None)
+
+        for turn in range(1, target + 1):
+            # An own-mana fetch played last turn was cracked at the end of it: its basic
+            # entered tapped then and is untapped now.
+            for k, x in enumerate(in_play):
+                if x.get("fetch") is not None and x.get("own_mana"):
+                    cov = 0
+                    for mk in _sim_mana_masks(in_play):
+                        cov |= mk
+                    in_play[k] = fetch_basic(x, cov)
+            if turn > 1 and lib_:
+                hand.append(lib_.pop(0))
+            lands = [i for i, c in enumerate(hand) if c is not None]
+            tapped_now = False
+            if not lands:
+                continue
+            covered = 0
+            for m in _sim_mana_masks(in_play):
+                covered |= m
+            others = [hand[i] for i in lands]
+
+            def up_of(m):
+                if not honour:
+                    return True
+                return _sim_enters_untapped(m, in_play, turn,
+                                            [x for x in others if x is not m])
+
+            def score(i):
+                m = hand[i]
+                val = wanted(m["free"] | (m["fetch"] or 0), covered)
+                if turn < target:
+                    return (not up_of(m), m["enter"] in _lapses, val, m["name"])
+                return (up_of(m), val, m["name"])
+            pick = max(lands, key=score)
+            m = hand.pop(pick)
+            up = up_of(m)
+            # With every land untapped, any fetch's basic is live at once; honouring enter
+            # clauses, an own-mana fetch taps for its own mana now and converts next turn.
+            if m.get("fetch") is not None and (not m.get("own_mana") or not honour):
+                m = fetch_basic(m, covered)     # finds nothing -> a land with no colour
+            in_play.append(m)
+            tapped_now = not up
+        masks = _sim_mana_masks(in_play)
+        if tapped_now:
+            masks = masks[:-1]
+        return masks
+
+    for _g in range(games):
+        order = list(deck)
+        rng.shuffle(order)
+        for honour, res in ((True, "tempo"), (False, "untapped")):
+            for t in turns:
+                masks = play_to(order, honour, t)
+                if len(masks) >= t:
+                    mana_hit[res][t] += 1
+                for key, total, demand in by_turn[t]:
+                    if _sim_payable(masks, total, demand):
+                        hit[res][key] += 1
+    return {"tempo": {k: v / games for k, v in hit["tempo"].items()},
+            "untapped": {k: v / games for k, v in hit["untapped"].items()},
+            "mana_tempo": {t: v / games for t, v in mana_hit["tempo"].items()},
+            "mana_untapped": {t: v / games for t, v in mana_hit["untapped"].items()}}
+
+
+def tempo_cast_rows(cards, mana, sources, N, by_key, by_name, carddata, *, deck_meta=None,
+                    on_play=True, games=TEMPO_GAMES, seed=TEMPO_SEED):
+    """(rows, mana_tempo, mana_untapped) — `cast_on_curve_rows`' cards re-priced by
+    `simulate_tempo`. Each row is (name, turn, p_access, p_untapped, p_tempo): the access
+    figure `consistency` already prints, then the chance the cost is payable from untapped
+    lands on that turn with one land drop a turn, first if every land entered untapped and
+    then honouring how each one enters. `p_untapped - p_tempo` is what the tapped lands
+    cost that card. Sorted by that cost, then name."""
+    cmdr = deck_commander_colors(deck_meta, carddata)
+    deck = []
+    for q, n, s, c in cards:
+        nl = n.lower()
+        base = nl[len("snow-covered "):] if nl.startswith("snow-covered ") else nl
+        if base in BASICS:
+            deck.extend([sim_land_model(n, "", "Basic Land")] * q)
+            continue
+        row = by_key.get((nl, s.lower(), c.lower())) or by_name.get(nl)
+        cd = carddata.get(nl)
+        tline = (row.get("Type") if row else "") or (cd["type"] if cd else "")
+        if "Land" not in _primary_type(tline):
+            deck.extend([None] * q)
+            continue
+        colid = (row.get("Color(s)") if row else "") or (cd.get("colors") if cd else "")
+        text = (cd.get("text") if cd else "") or (row.get("Card Text") if row else "") or ""
+        deck.extend([sim_land_model(n, text, tline, colid, cmdr)] * q)
+    base_rows = cast_on_curve_rows(cards, mana, sources, N, by_key, by_name, on_play)
+    reqs = {}
+    for p, n, turn, strict, _w, _need, _x in base_rows:
+        demand = tuple(sorted((_COLOR_BIT[c], k) for c, k in strict.items()
+                              if c in _COLOR_BIT and k > 0))
+        reqs[n] = (turn, turn, demand)
+    if not reqs:
+        return [], {}, {}
+    res = simulate_tempo(deck, reqs, games=games, seed=seed, on_play=on_play)
+    rows = [(n, turn, p, res["untapped"][n], res["tempo"][n])
+            for p, n, turn, *_rest in base_rows]
+    rows.sort(key=lambda r: (-(r[3] - r[4]), r[0]))
+    return rows, res["mana_tempo"], res["mana_untapped"]
 
 
 def castability_shortfalls(meta, cards, *, by_key=None, by_name=None, carddata=None,
@@ -7510,6 +8096,42 @@ def castability_shortfalls(meta, cards, *, by_key=None, by_name=None, carddata=N
             continue
         out.append((p, n, turn, worst_col, have, x_priced))
     return out
+
+
+def _print_tempo_section(cards, mana, sources, N, by_key, by_name, carddata, meta,
+                         on_play, games):
+    """`consistency --tempo`: what the deck's tapped lands cost, from `tempo_cast_rows`."""
+    rows, m_tempo, m_up = tempo_cast_rows(cards, mana, sources, N, by_key, by_name,
+                                          carddata, deck_meta=meta, on_play=on_play,
+                                          games=games)
+    if not rows:
+        return
+    print(f"\nTempo — simulated ({games} games, one land a turn; report-only, never a grade):")
+    turns = sorted(m_up)
+    print("  P(at least T untapped mana on turn T):  " + "  ".join(f"  T{t}" for t in turns))
+    print("    every land untapped               :  "
+          + "  ".join(f"{100*m_up[t]:4.0f}%" for t in turns))
+    print("    as built (enter clauses honoured) :  "
+          + "  ".join(f"{100*m_tempo[t]:4.0f}%" for t in turns))
+    n = len(rows)
+    acc = sum(r[2] for r in rows) / n
+    up = sum(r[3] for r in rows) / n
+    tm = sum(r[4] for r in rows) / n
+    print(f"  Mean over {n} priced card(s): colour access {100*acc:.1f}% (the table above) → "
+          f"with one land a turn {100*up:.1f}% → as built {100*tm:.1f}%. "
+          f"Tapped lands cost {100*(up-tm):.1f} point(s) a card.")
+    worst = [r for r in rows if r[3] - r[4] >= 0.005][:8]
+    if worst:
+        print("  Cards losing the most to tapped lands (access → one land a turn → as built):")
+        for name, turn, p_acc, p_up, p_tm in worst:
+            print(f"    {name[:34]:34} T{turn}  {100*p_acc:3.0f}% → {100*p_up:3.0f}% → "
+                  f"{100*p_tm:3.0f}%  (−{100*(p_up-p_tm):.0f})")
+    print("  Each turn is played toward that turn: taplands go down early, an untapped land "
+          "on the turn itself.\n  Checklands, fastlands, slowlands, snarls and Verge gates "
+          "are read against the lands actually in play;\n  a shockland is paid for; a board "
+          "condition (13 life, a planeswalker, an Equipment) counts as tapped.\n  Compare two "
+          "manabases with a scratch copy: `consistency <path> --tempo` on each. "
+          f"Sampling noise is about ±{100*0.5/games**0.5:.1f} points on a single figure.")
 
 
 def cmd_consistency(args):
@@ -7648,6 +8270,16 @@ def cmd_consistency(args):
                   + ", ".join(f"{c} ({sources[c]})" for c in splash)
                   + " — a card needing one of these on curve reads low below; treat it as a "
                     "late-game splash (cast when you've drawn the source), not a curve play.")
+    _fpp = fetch_pool_pressure(cards, source_notes, carddata, deck_meta=meta)
+    if _fpp:
+        _f, _b, _rep = _fpp
+        print(f"\n  ⓘ {_f} basic-land fetch(es) against {_b} basic(s)"
+              + (f", and {', '.join(_rep)} replay{'s' if len(_rep) == 1 else ''} lands from the "
+                 "graveyard" if _rep else "")
+              + ": the counts above price the FIRST search, not a library that runs out of "
+                "basics.\n    A search that finds nothing still sacrifices the fetch (a "
+                "sacrifice payoff still triggers), but the land drop is lost. More basics, "
+                "or fetches that also find typed duals, ease it.")
     # The heading above says "lands producing each color" and means it — so say what that
     # EXCLUDES. Every figure on this page is priced off the land count (G-35), while
     # `suggest --ramp` recommends the nonland sources that count cannot see; the two
@@ -7665,6 +8297,12 @@ def cmd_consistency(args):
                 "a land drop and must not inflate a land count. But it does mean every "
                 "cast-on-curve figure below is a FLOOR for this deck, and that "
                 "`suggest --ramp` can recommend acceleration this page will never price.")
+    _rainbow = land_rainbow_enablers(cards, carddata)
+    if _rainbow:
+        print(f"\n  ⓘ {sum(q for q, _n in _rainbow)} card(s) make EVERY land a five-colour "
+              "source while they are out: " + ", ".join(n for _q, n in _rainbow)
+              + ".\n    With one in play, a coloured cost below is a land-count question; "
+                "the figures here do not assume one is out (disclosure only).")
 
     # #1 — per-card cast probability on curve, from the ONE row builder the roster
     # castability sweep (`check_all`, `audit`) reads too, so the two cannot disagree.
@@ -7719,6 +8357,23 @@ def cmd_consistency(args):
             print(f"\n  {len(below)} card(s) below {100*target:.0f}% on curve — the → note is the "
                   f"Karsten source count to reach target, a splash flag for a thin (≤{SPLASH_MAX}-source) "
                   "color (cast late or cut), or a color-hungry flag for an early double pip.")
+    _reb = basic_rebalance_hint(cards, mana, sources, N, by_key, by_name, on_play, target)
+    if _reb:
+        _x, _y, _gain, _moved = _reb
+        _bn = {"W": "Plains", "U": "Island", "B": "Swamp", "R": "Mountain", "G": "Forest"}
+        _fmt = lambda ts: ", ".join(f"{n[:28]} {100*a:.0f}→{100*z:.0f}%" for n, a, z in ts)
+        _hurt = [t for t in _moved if t[2] < t[1]][:3]
+        _help = [t for t in reversed(_moved) if t[2] > t[1]][:3]
+        print(f"\n  ⓘ basic rebalance: one {_bn[_x]} → {_bn[_y]} recovers {_gain:.0f} points of "
+              f"cast-on-curve shortfall summed over the deck"
+              + (f" — gains {_fmt(_help)}" if _help else "")
+              + (f"; costs {_fmt(_hurt)}" if _hurt else "") + ".")
+        print("    Same model as the table above, moving one SOURCE (a basic's land TYPE, which "
+              "checklands and Verges read, is not re-priced). A hint, not a verdict: weigh "
+              "which cards matter.")
+    if getattr(args, "tempo", False):
+        _print_tempo_section(cards, mana, sources, N, by_key, by_name, carddata, meta,
+                             on_play, getattr(args, "games", None) or TEMPO_GAMES)
     print("\nModel: hypergeometric (exact); per-color independence for multi-color costs "
           "(a mild over-estimate); a hybrid binds only when the deck has sources for just ONE "
           "of its halves, in which case it IS that colour. A planning aid, not a "
@@ -8627,7 +9282,25 @@ def add_rank_stats(rows=None):
         "worst": ranked[-1],
         "in_window": in_window,
         "in_window_pct": int(math.floor(100 * in_window / n + 0.5)),
+        # The rank as a share of the candidates it was ranked AMONG (`Add Of`), for the
+        # rows that recorded both. A raw rank is not comparable across decks: a 100-card
+        # Historic Brawl deck ranks its adds against ~8,100 candidates where a Standard
+        # deck ranks against ~2,000, and raw rank tracks pool size at r = 0.585 over 79
+        # decks. Deck 89 read "median 1678, four times the roster's 433" on 2026-10-23 and
+        # its median percentile was 0.206 against the roster's 0.208 — the same.
+        "median_pct": _median_add_pct(rows),
     }
+
+
+def _median_add_pct(rows):
+    """Median of Add Rank / Add Of over rows carrying both, or None (see add_rank_stats)."""
+    import statistics
+    pcts = []
+    for r in rows:
+        rk, of = str(r.get("Add Rank") or "").strip(), str(r.get("Add Of") or "").strip()
+        if rk.isdigit() and of.isdigit() and int(of) > 0:
+            pcts.append(int(rk) / int(of))
+    return statistics.median(pcts) if pcts else None
 
 
 def recent_ledger_adds(deck_id, days=14, path=None):
@@ -9141,6 +9814,10 @@ def cmd_feedback(args):
                   f"median {_rs['median']} · p25 {_rs['p25']} · p75 {_rs['p75']} "
                   f"· worst {_rs['worst']}. {_rs['in_window']} ({_rs['in_window_pct']}%) "
                   f"ranked inside the default top {_RECS_SUGGEST_WINDOW}.")
+            if _rs.get("median_pct") is not None:
+                print(f"    As a share of the candidates ranked: median {100 * _rs['median_pct']:.1f}% "
+                      "down the list. Compare DECKS on this, not the raw rank — a 100-card "
+                      "Brawl deck ranks against about four times as many cards as a Standard one.")
         print()
 
     if n < _RECS_MIN_SAMPLE:
@@ -13406,6 +14083,8 @@ def deck_quality_vector(d):
         # Report-only TEMPO (bounce / stun / one-turn tap, cards with no interaction
         # role) — the protection axis's sibling, and like it NEVER a `tier_band` term.
         "tempo": _tally["tempo"], "tempo_kinds": dict(sorted(_tally["tempo_kinds"].items())),
+        # Report-only HAND ATTACK, the same posture as tempo: never a `tier_band` term.
+        "hand_attack": _tally["hand_attack"],
         # The counts again, rendered WITH their uncertainty (see count_conf). The bare
         # ints stay for the tier floor and the F10 guard, which need numbers to compare;
         # these are what a human should read.
@@ -13514,6 +14193,7 @@ def cmd_quality(args):
         print(f"  {k:15}: {_early_drops_note(vec) if k == 'early_drops' else vec[k]}")
         if k == "card_advantage":
             print(f"  {'tempo':15}: {_tempo_note(vec)}   (report-only — not in the tier floor)")
+            print(f"  {'hand attack':15}: {vec.get('hand_attack', 0)}   (report-only — not in the tier floor)")
 
     regressions = []
     if getattr(args, "vs", None):
@@ -15850,6 +16530,7 @@ def cmd_tier(args):
           f"card-adv {vec.get('card_advantage_conf') or vec['card_advantage']} · "
           f"protection {vec.get('protection', 0)} · "
           f"tempo {vec.get('tempo', 0)} · "
+          f"hand attack {vec.get('hand_attack', 0)} · "
           f"board power {vec.get('board_power', 0)} · "
           f"avg MV {vec['avg_mv']} · central themes {vec['central_themes']}")
     # An {X} spell is priced with X = 0 (its rules MV off the stack), so the avg MV printed
@@ -17094,6 +17775,11 @@ def main():
                    help="model on the draw (extra card) instead of on the play")
     p.add_argument("--target", type=float, metavar="P",
                    help="cast-probability target as a fraction (default 0.90)")
+    p.add_argument("--tempo", action="store_true",
+                   help="also simulate one land a turn and tapped lands: what the "
+                        "deck's taplands cost on curve (report-only)")
+    p.add_argument("--games", type=int, metavar="N",
+                   help=f"games for --tempo (default {TEMPO_GAMES})")
     p = sub.add_parser("tribes", help="creature-subtype breakdown + type-matters synergies")
     p.add_argument("id")
     p = sub.add_parser("engines", help="enabler vs payoff balance for the deck's engine themes")

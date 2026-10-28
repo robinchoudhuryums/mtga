@@ -1312,6 +1312,17 @@ wishlist could answer for 35 of the 96 cards those decks were missing; the other
 decks counts once, at the most any deck needs) by the set each deck line names. `wishlist --by-set` stays the
 view of the wishlist itself.
 
+**A pasted printing is validated (2026-10-23, deck-89 tooling Batch 1).** `--add` stored the line's
+`(SET) COLLECTOR#` verbatim, so a hand-typed `1 Polukranos, Unchained (THB) 226` became a row for a
+printing that does not exist (real: 224) — G-65's never-hand-write rule with no check behind it on
+this writer, caught only by reading the row back. A pool-enriched add whose printing neither the pool
+nor the library holds now stores the pool's printing (what `deck.py resolve` emits) and prints the
+change after the write; an owned alternate art the library holds is kept. Validation reads
+`deck.known_printings`, the index INV-04's printing check uses, so a deck line and a wishlist row
+cannot disagree. `check_all` soft-sweeps older rows (`wishlist.printing_issues`): 1 live hit at
+landing, Pinnacle Starcage (EOE) 33 against a resolved 27. Known edge: re-adding a line with the
+same wrong printing as a stale row dedupes on the CORRECTED key, so it appends beside it.
+
 ## [G-20] Auto-targeting a wishlist batch: trust STRONG, judge `review`
 
 **Auto-targeting a wishlist batch: trust STRONG, judge `review`.** `wishlist.py
@@ -1359,6 +1370,13 @@ owned/craftable BOMB with only modest theme overlap without pulling in off-theme
 dominant theme-fit signal, gated by `check_suggest.py` so they can't silently reorder a
 tuned deck.
 
+**Raw rank is not comparable across decks (2026-10-23, deck-89 tooling Batch 4).** Deck 89's chosen adds read
+"median 1678, four times the roster's 433", which was taken as a ranking failure and planned as a fix. Normalised
+by the candidates each add was ranked among (`Add Of`), deck 89 sits at a median 0.206 against the roster's
+0.208 — the same. Raw rank tracks candidate-pool size at r = 0.585 over 79 decks with n ≥ 8 (a Historic Brawl
+deck ranks against ~8,100 candidates, a Standard deck ~2,000); the hypothesis that many generic central themes
+dilute fit measured r = 0.136 against a ±0.225 noise band. `add_rank_stats` gained `median_pct` and `feedback`
+prints it; the raw figures this rule cites are unchanged, so the G-22 figure gate is untouched.
 
 ## [G-23] `deck.py engines <id>` grades a deck's two-sided ENGINES
 
@@ -1439,6 +1457,13 @@ deck-content gate can answer — it is outside `target_counts`' model, not a hol
 wiring was verified live rather than left as dead code (G-53): it reports Hobbit Hole's
 Halfling gate as 0 against deck 6.
 
+**Counters payoffs that never say a counter is going ON (2026-10-23, deck-89 tooling Batch 3).** Every payoff cue
+read the act of placing a counter, so a card that rewards a creature for HAVING one — Bushmaster's "each other
+creature you control with a +1/+1 counter on it has deathtouch" — and the doublers that say "counters" without
+"+1/+1" (Doubling Season, Vorinclex) were enablers or nothing. Deck 89 read 15 enablers / 1 payoff; now 15 / 4.
+Roster: 25 decks' counters payoff counts rose, 0 flags changed. These strings live in `ENGINE_THEMES`, which the
+pool build stamp hashes by VALUE (G-18), so the next `make refresh` rebuilds the pool once; the tagger extracts only
+`\b`-wrapped literals from these patterns and the new ones carry none, so no pool tag changes.
 
 ## [G-24] `deck.py stats` also prints an INTERACTION PROFILE
 
@@ -1484,6 +1509,17 @@ whole board returned is not a one-card tempo play, and that call was the owner's
 The bounce cue also left `_INT_CUES`, so a bounce card is not reported as an interaction
 under-read; `check_roles.zero_role_cards` and the `unclassified` list skip a tempo card, which
 is seen, just not as a role.
+
+**Hand attack, 2026-10-25 — the tempo line's second sibling.** `hand_attack_effects` reads
+`_HAND_ATTACK_RE` on reminder-stripped text: an opponent or each player discards, a card is exiled
+from an opponent's hand, and the reveal/look-then-take forms (Thought Rattle's discard sits a
+sentence after the reveal, so that branch allows up to 120 characters on one line). `role_tally`
+publishes `per_role["hand_attack"]`, `deck_quality_vector` carries `hand_attack`, and `stats`,
+`quality` and the `tier` vector line print it; a test pins that `tier_band` ignores it. Measured:
+236 pool cards, a 15-card sample all genuine; 14 of 127 decks run any (p50 0, p90 1, max 19, deck 70).
+Counting a hand-attack card with no other interaction role AS interaction would raise interaction in
+9 decks and move **0** tier floors. It stays report-only as the owner's call, not because the number
+forbids it.
 
 
 ## [G-26] `deck.py tier <id> --audit-rationale` catches a STALE tier argument
@@ -3017,6 +3053,50 @@ disclose; Bloom Tender appears in 10, Enduring Vitality in 10. Nine decks' SOURC
 rose, every one from Baxter Building or Three Tree City now counting as a {4}/{2} filter,
 the existing `conditional` convention; 0 tier floors moved (the floor reads no sources).
 
+**Typed basic fetches (2026-10-23, deck-89 tooling Batch 2).** `land_production` reported only THAT a
+land fetches a basic, and every consumer credited it with every colour the deck runs a basic of. That is
+true of Evolving Wilds ("a basic land card") and false of a fetch that names its types — the SNC
+hideouts ("a basic Forest, Plains, or Island card"), Maestros Theater, the Landscapes. Deck 89 read
+Maestros Theater (Island / Swamp / Mountain) as a green source. `fetch_types` now carries the named
+types (None = any basic) and `deck_source_profile` counts the intersection with the deck's basics. Pool:
+146 untyped, 45 typed, none misread. Roster diff: ONE deck's sources moved (89: G 25 → 24), 0 tier floors.
+**Residual, measured and left:** a NONBASIC typed fetch (Misty Rainforest, Polluted Delta, Scalding
+Tarn — "a Forest or Island card") does not match `_FETCH_BASIC_RE` at all and counts as NO source; its
+real reach is the deck's basics AND typed duals of those types. Only deck 89 runs them (3 cards).
+
+Moved here from the rule to keep it under the word cap: the nonland exclusion is right (a rock is not a
+land drop) and its SILENCE was not; Vivid-style colour is `land_production`'s `board` bucket, never
+`free`; and `uncounted_mana_sources` runs `land_production` on a NONLAND's text, so the spend-only and
+granted-ability exclusions are literally the same ones.
+
+**2026-10-25, two narrowings and a disclosure.** `lib._EXTRA_RESOURCE_COST_RE` (`{E}`, "remove a …
+counter from") files an any-colour ability behind energy or counters as `conditional`, labelled
+the way an extra mana cost already was (Aether Hub, Mirrodin's Core). `lib._GATE_ONLY_RE` ("a Gate
+you control could produce") files Plaza of Harmony's colour under `board`, since what it makes
+depends on the Gates you hold. Reflecting Pool and pay-life lands are unchanged. Roster: 0 decks'
+source counts moved, because no deck ran these lands. Separately, `deck.land_rainbow_enablers`
+(`_LAND_RAINBOW_RE`) names the nonland PERMANENTS that make every land any colour or every basic
+type (Leyline of the Guildpact, Chromatic Lantern style), and `consistency` prints them as an ⓘ
+line. Instants and sorceries are excluded, because a one-turn effect is not a manabase. The line
+is disclosure only, and no count reads it: the source figures stay what the lands make with the
+permanent absent.
+
+**Identity is a FALLBACK, not a source (2026-10-25).** `land_production` folded a card's colour
+identity into `free` unconditionally, on the ground that a land's identity IS its mana symbols.
+That is true of a dual whose text is only reminder (Blood Crypt) and false of a land whose
+identity comes from an activation COST: Duskmantle, House of Shadow ("{T}: Add {C}." /
+"{U}{B}, {T}: … mills") read as an untapped U/B dual and topped `suggest --lands` for deck 91.
+Identity now applies only when the reminder-stripped text prints no mana ability at all. Pool:
+87 rows changed, all identity-from-cost corrections (the Kaldheim sac-uncommons now make one
+colour, the Landscapes keep only their fetch, The World Tree is a G land, Skemfar Elderhall
+stops being a B source); the Thriving lands needed one guard, since identity had been what kept
+their printed colour out of `chosen`, and the line now says so itself (`printed`). Roster: 2 of
+126 decks' source counts moved (89: B 24→23; 90: −1 each of B/R/U/W), 0 tier floors.
+**Firebending joined the nonland disclosure the same day** (`combat-only`): its mana lives in
+reminder text every reader strips, so a deck of firebenders disclosed nothing; 21 roster decks.
+Mis-flag to avoid when grading this area: Demolition Field IS a basic fetch for you (its full text
+ends "You may search your library for a basic land card") — a 200-character slice hid that.
+
 ## [G-36] `deck.py consistency <id>` is the PROBABILITY layer `mana` lacks
 
 **`deck.py consistency <id>` is the PROBABILITY layer `mana` lacks.** `mana` diagnoses
@@ -3055,6 +3135,43 @@ line: hypergeometric over the deck's lands (`deck.tapped_in_first_drops`), uncon
 taplands first and "if every conditional one enters tapped" beside it. A CEILING on the
 tempo cost — you choose which land to play, and a turn-1 tapland usually costs nothing.
 REPORT-ONLY, like `tapland_profile`, for G-25/G-60/G-86's reason.
+
+**Fetch pressure and the basic rebalance (2026-10-23, deck-89 tooling Batch 2).** Two report-only
+lines. `fetch_pool_pressure` fires when basic fetches number at least the deck's basics and names any
+card that "plays lands from your graveyard" — deck 89 ran 11 against 10 with Szarel and Ancient
+Greenwarden replaying them, and every count prices only the first search (a failed search still
+sacrifices, so a sacrifice payoff still fires; the land drop is what is lost). 1 of 124 decks at landing;
+69b next at 6 against 8. `basic_rebalance_hint` answers a question no surface asked — whether the
+EXISTING basics sit in the right colours. Deck 89's Forest-for-Mountain fix (18 red sources for 6 red
+cards, 23 green for 47) was found by hand-building scratch variants; the hint is that search, through
+`cast_on_curve_rows`, for each pair of basic types the deck runs (never moving the last basic of a
+colour, never proposing a colour with no basic). Calibration: 69 of 124 decks show SOME gain; nonzero
+gains run p25 4.6 / p50 8.6 / p75 16.0 / p90 25.3 / max 45.8 summed points, so a floor of 0 would fire on
+56% for a point or two (the G-07 shape) and p75 (the G-85 rule) fires on 17. It sums shortfall over every
+card equally, so it prints the costs beside the gains: a key card in the losing colour is the reader's
+call. It moves a SOURCE, not a land TYPE — checklands, Verges and typed fetches are not re-priced.
+
+**`--tempo` (2026-10-28) is the half the closed form cannot price.** The table above asks
+whether the right SOURCES are among the cards seen by turn N, so a tapland and an untapped
+dual of the same colours score identically — Dragonskull Summit against Thriving Moor in
+deck 92 priced at exactly zero, and the decision could only be guessed. `simulate_tempo`
+deals the deck and plays one land a turn, reading each land's enter clause through
+`lib.tapland_kind` against the lands actually in play (checkland types and typed duals,
+fast/slow windows, Starting Town's first three turns, snarls revealing from hand, shocks
+paid, Verge gates, fetches finding a tapped basic; a BOARD condition — 13 life, a
+planeswalker, an Equipment — counts as tapped). Each target turn is played toward that
+turn (taplands early, an untapped land on the turn), a cost is payable only by Hall's
+condition (one land makes ONE mana — the access model lets a dual pay both halves of
+{B}{R}), and each shuffle is played twice, honouring enter clauses and with every land
+untapped, so the gap is the tempo cost with the sampling noise largely cancelled.
+Validated: with every land untapped the "N lands by turn N" figure matches the closed form
+within ~2 points (the residual is fetch thinning). Measured over all 131 deck files at the
+time: tapped lands cost a median **2.7** points of on-curve chance per card (p25 1.0 / p75
+4.0 / p90 5.3; worst 45a at 14.5, 89 at 12.9). A SINGLE land swap moves a deck ≤0.4
+points: Summit for a basic gained colour access but lost ~0.5 points of turn-2 mana (it can
+enter tapped before a Swamp or Mountain), Summit for a tapland gained ~0.3 points a turn.
+REPORT-ONLY for G-25's reason — it never reaches `tier_band`. Not modelled: mulligans,
+card draw, a shock's life, colours behind an extra mana cost.
 
 ## [G-37] `deck.py suggest --lands <id>` is the manabase RECOMMENDER `consistency` was missing
 
@@ -3258,6 +3375,20 @@ the score beside it. They print `·shock` now, and the legend names it.
 so on deck 85 all 50 owned qualifying lands sat below the 20-row window and the best of them (#28 of 247)
 surfaced only once `--owned` was added by hand. `suggest_lands` now counts owned picks before the window cuts
 the list, and the default view prints how many qualify, how many were shown, and where the best ranks.
+
+**Typed fetches in the recommender (2026-10-23).** `suggest --lands 89` ranked Brokers Hideout,
+Cabaretti Courtyard and Obscura Storefront in its top six as `Prod BRG`, score 12.3, above every
+untapped dual — `_land_value` and `suggest_lands` both credited a fetch with every deck colour. They
+read `fetch_types` now; deck 89's #1 pick moved to Demolition Field, the only #1 change on the roster.
+Open question, not built: a `{1}`-to-sacrifice untyped fetch (Demolition Field, Promising Vein, Shire
+Terrace) is priced like any fetch, with no tempo discount for the activation.
+
+Moved here from the rule (word cap): the rider-tiebreak case was four Boros taplands tied at 10.9 — a
+scry, nothing, a draw sink, a life point; and the owned-lands footnote landed 2026-10-20.
+
+**2026-10-25:** the G-35 narrowing reaches `suggest --lands` through `land_production`, so Aether
+Hub, Mirrodin's Core and Plaza of Harmony no longer price as free five-colour lands. They fell out
+of deck 90's top picks, and no other deck's #1 pick changed.
 
 ## [G-38] `deck.py suggest --ramp / --interaction / --needs` are the NEEDS model — the structural axes the
 
@@ -3542,6 +3673,23 @@ identical text is cost-as-upside in one deck and a conflict in another. The two 
 separated by the deck's PLAN, which no text model here holds. That is why G-42's genuine
 instances are found by COUNTING what the deck depends on — the human read G-61 already
 mandates — and never by reading the card.
+
+**A TOKEN-VS-NONTOKEN SACRIFICE FLAG WAS MEASURED AND DECLINED (2026-10-23, deck-89 tooling Batch 4) — do not
+restart it.** Deck 89's commander (Szarel) triggers only on NONTOKEN sacrifices, and its pile analysis excluded three
+cards as token-sacrificers. The proposal: flag a card whose every sacrifice is of a token when the deck's payoff is
+nontoken-gated. Measured: 66 pool cards carry a nontoken-gated payoff and 17 roster decks run one, but in 16 of them
+it is ONE incidental card (8 of those also run token-inclusive payoffs, where a token sacrifice still pays; 8 have no
+sacrifice engine at all) — only deck 89 has the gate as its always-on engine (3 gated payoffs, the commander one of
+them). Over 129 Historic-Brawl-legal token-only sacrificers, `suggest-homes` gave 20 KEY verdicts in those 17 decks;
+19 are KEY for a Food / Treasure / tokens theme the nontoken card has nothing to do with, and 1 (Peregrin Took in 89)
+is the case the flag targets — ~5% precision. Same verdict as the 2026-09-09 flag above: whether a sacrifice counts
+is the deck's PLAN. **The measurement also overturned the motivating read:** of the three cards excluded as
+"token-only", Izoni, Thousand-Eyed ("Sacrifice another creature") and Zopandrel ("Sacrifice two other creatures")
+are OUTLETS that sacrifice nontoken creatures too — only Slimefoot and Squee ("Sacrifice a Saproling") was right.
+Read the cost's OBJECT, not the card's token output.
+
+Moved from the rule (word cap, 2026-10-23): the deck-78 land trade of 2026-09-02 was still the right
+call — the blindness to the lost ETB triggers was the problem, not the trade.
 
 ## [G-43] Grade a modal / split / adventure card by the FACE YOU CAST, not the half you want
 
@@ -4760,6 +4908,16 @@ exclude Threatens. A scan that files both as holes has found one hole and one de
 A measured gap is evidence that a pattern does not match something. It is not evidence that
 it should.
 
+**Hand attack left the taxonomy-hole list on 2026-10-25**, and not by becoming a role. The
+taxonomy line held: making it a role would re-score the roster. So it is reported beside the tempo
+line instead (G-25), and the measurement of what counting it would do (9 decks, 0 floors) is on
+record for the owner's call. The same batch fixed four PATTERN holes, each found by reading deck
+90's cards against figures that did not match (K-12): X-scaled drain, "are every basic land type",
+seek, and the empowered Jace's −3. The drain diagnosis is the worked case for "check the
+phrasing before the trigger". Sanctum of Stone Fangs was first suspected of an unmatched trigger
+wording. The actual hole was the `X` in "loses X life", and Northern Air Temple had only ever
+matched through its second, literal "loses 1 life" clause.
+
 ## [K-01] A handful of recurring Universe-Beyond flavor *mechanics* (Vivid, Job select, Opus, Increment, I
 
 A handful of recurring Universe-Beyond flavor *mechanics* (Vivid, Job select,
@@ -5474,6 +5632,46 @@ rummage chapter ("you may discard a card. If you do, draw", Summon: G.F. Ifrit),
 rule already removes a draw-then-discard chapter (The Modern Age). 6 pool cards match, 4 real.
 Roster diff: **14 decks' card advantage +1 or +2, interaction unchanged, 0 of 117 tier floors
 moved**; ten `#: tier:` figures and one `#~ note:` were re-grounded in the same change.
+
+**Moved from the rule (word cap), 2026-10-23:** the ONE-SIDED sweep hole closed 2026-10-01 — "deals X
+damage to each opponent and each creature they control" (Soul Immolation) scored zero roles while the weaker
+symmetric sweep scored Sweeper; 15 pool cards, interaction +1 in decks 30 and 56a, 0 tier floors moved. Balefire
+Dragon's on-hit sweep stays out on purpose.
+
+**Three pattern holes from the deck-89 build (2026-10-23, tooling Batch 3).** `cuts` offered Dryad of the
+Ilysian Grove as deck 89's #1 cut in a deck built on playing lands, because an extra land drop scored no role;
+Hardened Scales and Doubling Season scored none either; and Lukka, Bound to Ruin's −4 ("X damage divided as you
+choose") missed Removal because the divided-damage clause required a digit. Fixes: `play (an|one|two|three|up
+to N|x) additional lands?` → Ramp (32 pool cards); `(twice that many|that many plus N)…instead` → Payoff (32 pool
+cards, all multipliers — an opponent HALVING clause says "half" and is pinned by a NEGATIVE test); `(\d+|x) damage
+divided` → Removal (+10, all removal). Roster diff over 124 decks: Ramp up in 17, Payoff up in 31, interaction +1
+in 76 (Ureni) and 89, card advantage 0, tier floors 0, `cuts` top-3 changed only in 89. Role baseline 480 → 467.
+Residual: Bushmaster (a deathtouch lord) still scores no role — a taxonomy question, not a phrasing hole.
+
+**2026-10-25 (deck 90 batches).** Burn/drain `… loses (?:\d|x life)` and Lifegain `you gain x life`
+(Sanctum of Stone Fangs); Ramp `(lands? you control|enchanted land) (are|is) every basic land type`
+(Leyline of the Guildpact: the "gain/have all basic land types" twin never matched "are every");
+Card advantage `seeks? (a|an|one|…|that many|up to N)` with a lookahead excluding "onto the
+battlefield", and a twin Ramp pattern for a land seek onto the battlefield (without it, deck 88 read
+8 → 11 on land seeks); Card advantage for an empowered Jace token's "−3: Draw a card", which lives in
+REMINDER text the role reader strips, so the trigger is the EMPOWER: `empower jace [3-9]`, or any
+empower inside a `whenever`/landfall clause or an activated ability, while a one-off empower 1–2
+stays uncounted. Pool: Card advantage +116, Lifegain +42, Burn/drain +22, Ramp +11, nothing lost.
+Roster: card advantage up in 11 decks (88 8→9; 22 7→8, 24 12→14, 51 10→11, 70 6→7,
+78-historic-brawl 6→7, 80 3→7, 82 12→15, 89 12→13, 90 to 16), interaction unchanged, **0 tier
+floors moved**. The six decks whose prose quoted the old figure were re-grounded the same day.
+
+**A draw offered as a MODE of a recurring trigger (later on 2026-10-25).** Black Market
+Connections' "At the beginning of your first main phase, choose one or more —" puts "• Buy
+Information — Draw a card" on a bullet line the sentence windows cannot reach, so the card scored
+no role. New Card-advantage pattern: phase trigger → `choose` → a `•` mode that draws, with
+"hasn't been chosen" excluded (Zuko, Conflicted draws once a game). The three phase alternations
+also gained the modern `first main phase` templating beside `precombat main phase` (0 cards on its
+own). Pool +3 (Black Market Connections, Wardens of the Cycle, Mister Hyde, Monster Within);
+roster card advantage up in 5 decks (4, 7, 69, 87, 91), **0 tier floors moved**; the three
+`#: tier:` blocks quoting the old figure were re-grounded. Hand attack gained the COMPOUND clause
+the same day ("Target opponent sacrifices …, discards a card, and loses 3 life" — Scarring
+Memories, Cruel Ultimatum, Dusk Mangler, Smallpox; pool +4, report-only).
 
 ## [K-13] A literal type-name search cannot see the choose-a-type category — and the false negative reads as an answer
 
@@ -8382,6 +8580,10 @@ that had tied an untapped ungated dual on score and won the tiebreak now sits ju
 it (deck 1: Blood Crypt 11.84 over Blazemire Verge 11.54). The `tapland_kind` caller sets
 (`suggest_lands`, `tapland_profile`) now include typed nonbasics' types, so a shockland
 satisfies "unless you control a Plains" as G-87's gate already said; 0 roster changes.
+
+**2026-10-25:** Gemstone Caverns (a luck counter) joins Mirrex and Spire of Industry as a
+board-state gate scored as a free rainbow land. Leyline of the Guildpact is no longer silent: it is
+disclosed by `consistency`'s every-land-any-colour line (G-35), though still not counted.
 
 ## [K-16] `deck.py tribes` reads a card's OWN NAME as a tribal reference
 

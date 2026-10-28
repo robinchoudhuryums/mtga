@@ -10,7 +10,9 @@
 > **Keep this file to the seven sections below.** `/cycle-status` and
 > `/cycle-resume` read the FIRST match of each heading, so a second
 > `## Where I left off` silently shadows the real one. Narrative belongs in
-**2026-10-08 (latest) — Batch E implemented** (block `11-batchE-castability-sweep-broad-implement.md`): `castability_shortfalls` soft sweep + `audit` Crv column; {X} spells priced at X=2 in `consistency`. Suite + check_all green. **Next:** `/sync-docs` for E, then Batch F (targets gate families), then G.
+**2026-10-28 (latest) — `consistency --tempo` implemented** (block `tempo-sim-broad-implement.md`): paired land-drop simulation, report-only; validated on 87/92/93. Suite + check_all green. **Next:** `/sync-docs` (G-36 + systems map), optional `swap --tempo`.
+
+**2026-10-08 — Batch E implemented** (block `11-batchE-castability-sweep-broad-implement.md`): `castability_shortfalls` soft sweep + `audit` Crv column; {X} spells priced at X=2 in `consistency`. Suite + check_all green. **Next:** `/sync-docs` for E, then Batch F (targets gate families), then G.
 
 - 2026-10-07: Batch B landed (steal Auras → removal, copy effects → payoff, report-only tempo line, single-target bounce moved out of interaction; 8 floors moved down, prose re-grounded in 15 decks). Next: Batch C (legend-rule advisory), then D (Suggested Why).
 - 2026-10-07: Batch A of the deck-32 tooling plan landed (figure-drift tolerance for G-22's ledger counts; wishlist `--add --target` appends to listed rows + name-only re-add no longer duplicates). Next: Batch B (steal Auras + copy effects + tempo line + bounce out of interaction), then C, then D.
@@ -44,6 +46,18 @@ Updated: 2026-10-20 (Brawl tooling plan Batch 7 — see Where I left off)
 
 ## Completed this cycle
 
+- **2026-10-23 — deck-89 tooling plan, Batch 4 — PLAN COMPLETE** (block `deck89-batch4-broad-implement.md`):
+  token-vs-nontoken sacrifice flag measured and DECLINED (~5% precision; recorded in G-42's long form); deck 89's
+  "4× worse" add ranks were pool size — `feedback` now prints the percentile. Plan doc deleted. Net 1 − 0.
+- **2026-10-23 — deck-89 tooling plan, Batch 3** (block `deck89-batch3-broad-implement.md`):
+  extra land drops → Ramp, replacement multipliers → Payoff, X-divided damage → Removal, engines counters
+  payoffs. 0 tier floors; interaction +1 in decks 76/89; cuts #1 changed in deck 89 only. Net 4 − 0.
+- **2026-10-23 — deck-89 tooling plan, Batch 2** (block `deck89-batch2-broad-implement.md`):
+  typed basic fetches count only the basics they name; `consistency` discloses fetch pressure and
+  proposes a basic rebalance (p75-calibrated, 17 of 124). Roster: 1 source count, 1 #1 land pick. Net 3 − 0.
+- **2026-10-23 — deck-89 tooling plan, Batch 1** (block `deck89-batch1-broad-implement.md`):
+  `wishlist --add` corrects an unheld printing to the pool's + a soft check_all sweep (1 live row);
+  `pool.py --legal brawl` names the 60/100-card split. Net 3 − 1.
 - **2026-10-20 — speed-up batch + roster refiles** (block `tooling-speedup-broad-implement.md`):
   four memos/rewrites from the Batch 6 profile, with every compared output byte-identical. check_all
   77→36s, dashboard 217→80s, swap --apply 6.9→2.7s, postedit ~305→118s, pytest 345→181s. Also
@@ -281,6 +295,8 @@ Updated: 2026-10-20 (Brawl tooling plan Batch 7 — see Where I left off)
   (conditional mana) — K-12's long form has the probe. (Soul Immolation closed 2026-10-01.)
 
 ## Open follow-on items
+- **Surfaced by the 2026-10-21/22 deck-88 (Samut) pile analysis (record only, G-67):** no role for Ravenous Tyrannosaurus's attack trigger (its power to a creature), Emperor Apatzec Intli IV's "seek a creature card", Earth's Mightiest Heroes' creatures-onto-the-battlefield, Inspiring Call's "draw a card for each creature with a +1/+1 counter", or Black Panther, Wakandan King's {3} move-counters-and-draw; Red Hulk's enrage ping reads Burn, not removal. And nothing models Start-your-engines speed or Samut's +X/+0, so `stats` warns Tifa, Martial Artist's power-7 gate is "conditional" off printed power. The working doc `.cycle/88-samut-pile-analysis.md` was deleted on owner sign-off; `git show` it for the batch verdicts.
+- **Surfaced by the 2026-10-21 deck-87 (Loki) pile analysis (record only, G-67):** Leader, Super-Genius and Black Cat, Cunning Thief score NO role though both are card advantage (connive engines read only as `Payoff / engine`); Avengers: Under Siege scores no interaction though chapter II is a one-sided sweep (2 damage to each non-Villain creature and each opponent); and `suggest --lands` lists Duskmantle, House of Shadow as a U/B producer while it makes only {C} (the `{U}{B}, {T}: mill` cost read as production — a `land_production` bug). The working doc `.cycle/87-loki-villains-pile-analysis.md` was deleted on owner sign-off; `git show` it for the rest.
 - **Also from 2026-10-09 (small, unfiled):** Oko, Lorwyn Liege's "+1: -2/-0" scores `Removal (spot)` — a false positive (measure roster-wide before narrowing); `deck.py check` labels a hybrid (Gangly Stompling `{2}{R/G}`) an off-colour stray "(cost unknown)" while `mana` reads it as hybrid; deck 33's Kitsa flex note says "if crafted" though Kitsa is owned.
 - **Surfaced by the 2026-10-09 deck-34 tune (not yet built):** (1) named-type payoffs satisfied by changelings are invisible to `suggest`/`screen` (G-84's NAMED half — measure first); (3) `early_drops` counts X spells at X=0 (96 cards / 62 decks; `consistency` prices X=2) — needs a tier-floor diff.
 - **CLOSED 2026-10-06 (`/broad-implement` of these follow-ons, block `11-followons-broad-implement.md`):** the KEY-saturation misattribution, the arena-header-moves-back case, the nonland disclosure's Vivid/granted silence (plus three any-colour spellings), the 42a `replace` cue, the comparison-cue blind spot inside a `Measured:` listing, the G-87 recommender half and the checkland type gate, P(tapland in the first three drops), the G-02 loader sweep (no live instance), the `unmet_gate`-at-`redundancy` re-measure (it found the MV-gate bug below), and the `tier_floor_spread` memo. Found already closed: the overlay power restriction (BS11-16), `doubler_axis` and `deck_needs` (2026-10-01). Re-measured, still nothing to build: the BS10-01 Threaten residual (0 live) and wishlist checklands (0 rows).
@@ -395,6 +411,28 @@ Updated: 2026-10-20 (Brawl tooling plan Batch 7 — see Where I left off)
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
+**2026-10-25 (latest) — Ozai-pile tooling fixes done** (block `ozai-tooling-broad-implement.md`): identity-as-production fallback (Duskmantle), compound hand-attack clause, modal-bullet card advantage (Black Market Connections), firebending as a combat-only nonland disclosure. Suite green, check_all OK, 0 tier floors moved; G-35/K-12 + long forms updated. Ozai deck then DRAFTED as deck 92 (Phoenix King), pile doc deleted. **Next:** owner answers deck 92's four open questions and sets its tier.
+
+**2026-10-25 (latest) — deck-90 follow-on batch done** (block `deck90-followon-broad-implement.md`): empower-Jace card advantage, energy/counter/Gate-bounded lands, card.py broken pipe, deck 89's Izoni/Zopandrel note, CLAUDE.md figure drift. Hand attack as interaction MEASURED (9 decks, 0 floors) and left report-only for the owner. Suite 2222 passed, check_all OK. **Next:** /sync-docs for both deck-90 batches.
+
+**2026-10-25 (latest) — deck-90 tooling batch done** (block `deck90-tooling-broad-implement.md`): X-drain and every-basic-type fixer pattern holes, seek as card advantage (battlefield seeks are ramp), a report-only HAND ATTACK line, and the every-land-a-five-colour-source disclosure. Suite 2217 passed, check_all OK, 0 tier floors moved. **Next:** /sync-docs (K-12, G-25, G-35, G-67, figure drift from deck 90's addition). Deck 90 (Spirit World) is mid-tune with the owner; its notes carry the bench.
+
+**2026-10-23 (latest) — deck-89 tooling plan COMPLETE** (blocks `deck89-batch1..4-broad-implement.md`).
+Suite 2211 passed, check_all OK. Docs SYNCED 2026-10-23 (G-42, G-22 + long forms, README feedback). **Open for
+the owner:** deck 89's notes wrongly call Izoni and Zopandrel token-only sacrificers.
+
+**2026-10-23 (latest) — deck-89 tooling plan, Batch 3 done** (block `deck89-batch3-broad-implement.md`).
+Suite 2210 passed, check_all OK. Docs SYNCED 2026-10-23 (K-12, G-23 + long forms). **Next:** Batch 4 (measure-first:
+nontoken sacrifice; central-theme count vs chosen-add rank).
+
+**2026-10-23 (latest) — deck-89 tooling plan, Batch 2 done** (block `deck89-batch2-broad-implement.md`).
+Suite 2205 passed, check_all OK. Docs SYNCED 2026-10-23 (G-35/G-36/G-37 + long forms, README consistency). **Next:** Batch 3 (role + engine
+patterns), then Batch 4 (measure-first).
+
+**2026-10-23 (latest) — deck-89 tooling plan (`.cycle/deck89-tooling-plan.md`), Batch 1 done**
+(block `deck89-batch1-broad-implement.md`). Suite + check_all green. Docs SYNCED 2026-10-23 (G-19, G-08,
+C-01, README, gotchas G-19; CLAUDE.md's live-analysis list corrected from one to seven). **Next:** Batch 2 (typed basic-fetch colours, basics-vs-fetchers disclosure, basic-rebalance hint).
+
 **2026-10-20 (latest) — Brawl tooling plan, Batch 7 done; THE 9-ITEM PLAN IS COMPLETE**
 (block `tooling-batch7-broad-implement.md`). Suite 2186 passed, check_all OK. Docs SYNCED 2026-10-20 (G-05/G-77, README,
 /apply-changes, systems-map, gotchas G-05). The speed-up batch and the 35a/37a refiles are DONE too

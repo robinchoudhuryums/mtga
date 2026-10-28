@@ -18,9 +18,9 @@
 #: tier: B — PROVISIONAL and a RE-GRADE CANDIDATE: the metrics floor reads A since Wan
 #: tier: Shi Tong came in, one band above this letter, pending the owner's call. A
 #: tier: 100-card deck is graded per 60 cards (the floor's thresholds scale ×1.67), so
-#: tier: interaction 13 and card advantage 6 read as about 7.8 and 3.6 per 60, which clears
-#: tier: the A line (A wants 7 and a sum of 11 in a 60) with nothing to spare: losing one
-#: tier: interaction or card-advantage card puts the floor back at B.
+#: tier: interaction 13 and card advantage 7 read as about 7.8 and 4.2 per 60, which clears
+#: tier: the A line (A wants 7 and a sum of 11 in a 60) with one card to spare: losing two
+#: tier: interaction or card-advantage cards puts the floor back at B.
 #: tier: It is ahead of deck 78 on the engine, on cheap answers and on card advantage:
 #: tier: five trigger multipliers where deck 78 has two, Swords to Plowshares, Fractured
 #: tier: Identity, Leyline Binding and Buried in the Garden on top of deck 78's tricks, and
@@ -60,8 +60,8 @@
 #: notes: Way of the Mentor turns each into loyalty on every planeswalker, so its Jace token
 #: notes: (-3: draw a card) and Elspeth's -3 removal come round again. Final Showdown is the
 #: notes: protection Flowering's ward and Throne's ward {2} took out: {1}{W} makes Katara
-#: notes: indestructible, and {3}{W}{W} more is a board wipe. Interaction held at 13, the
-#: notes: A line exactly (13 + card advantage 6 = 19); cut no answer without a replacement.
+#: notes: indestructible, and {3}{W}{W} more is a board wipe. Interaction held at 13 (13 +
+#: notes: card advantage 7 = 20, one above the A line's 19); cut no answer without a replacement.
 #: notes: ARENA'S BRAWL QUEUE (100 cards, Historic card pool). The 60-card version
 #: notes: for Arena's Standard Brawl queue is 78-brawl-team-avatar.txt; this list is
 #: notes: that 60 plus 40 cards the Standard pool does not have.

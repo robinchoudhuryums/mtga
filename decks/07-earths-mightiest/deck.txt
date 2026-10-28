@@ -2,8 +2,8 @@
 #: format: Standard
 #: arena: 07 Earth's Mightiest, e14b11b7-c30e-4567-8519-5fe03e4d1e6f
 #: tier: A — Selesnya go-wide heroes (counters + tokens). Re-graded B -> A on 2026-09-12, when it sat
-#: tier: exactly AT its metrics floor. Live after the 2026-09-25 tune: interaction 7, card advantage 5,
-#: tier: sum 12 against the 11 an A floor wants, protection 5, curve 3.72.
+#: tier: exactly AT its metrics floor. Live after the 2026-09-25 tune: interaction 7, card advantage 6
+#: tier: (Mister Hyde's upkeep draw counted since 2026-10-25), sum 13 against the 11 an A floor wants, protection 5, curve 3.72.
 #: tier: THE CAP THIS DECK CARRIED WAS NAMED, AND IT IS THE THING THAT WENT AWAY. The B rested on
 #: tier: "NO REPEATABLE REFUEL, so a go-wide board folded to a single sweeper", and the stated path to
 #: tier: A was "a repeatable draw engine that scales off the wide board, not more interaction". The

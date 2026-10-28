@@ -1,0 +1,181 @@
+#: name: Scarab's Fist
+#: format: Historic Brawl
+#: colors: WUB
+#: commander: Hashaton, Scarab's Fist
+#: plan: midrange
+#: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool), ESPER DISCARD ZOMBIES
+#: archetype: around Hashaton, Scarab's Fist: whenever we discard a creature card, {2}{U} makes a
+#: archetype: tapped 4/4 black Zombie token copy of it, abilities and enters triggers included. So a
+#: archetype: discarded creature is priced at {2}{U}, not its printed cost — Grimgrin is a
+#: archetype: three-mana removal engine, Doctor Doom three bodies and a card a turn. The engine is
+#: archetype: DISCARD OUTLETS (seven, including the each-player-discards cards, which also fire Waste Not),
+#: archetype: discard payoffs (Bone Miser, Cryptcaller Chariot, Lazotep Chancellor), Zombie lords
+#: archetype: that read the copies, and graveyard recursion for every card discarded. A second
+#: archetype: engine, The Sibsig Ceremony, turns every creature we CAST into enters trigger + death +
+#: archetype: a 2/2 + a card back in the yard; Necroduality's copy of a cast Zombie survives it, and
+#: archetype: Sothera turns each of those deaths into an exile for the opponent. DISTINCT from deck 53
+#: archetype: (mono-B Standard Sibsig zombies, which this pile grew out of): the engine here is
+#: archetype: Hashaton's discard-to-copy, and Sibsig is the secondary switch, not the plan.
+#: protect: Hashaton, Scarab's Fist; Psychic Frog; Miasmic Mummy; Liliana of the Veil; Bone Miser; Doctor Doom; The Sibsig Ceremony; Necroduality; Waste Not; Aven Wind Guide; Soul Diviner
+#: notes: DRAFTED 2026-10-25 from the owner's 118-card pile out of deck 53
+#: notes: (.cycle/91-hashaton-pile-analysis.md, four batches and two revision passes) plus outside
+#: notes: outlets: Psychic Frog, Archfiend of Ifnir (since cut), Miasmic Mummy, Liliana of the Veil (and, at
+#: notes: the draft, Selhoff Entomber, Overlord of the Floodpits, Alabaster Host Intercessor and Fanatic
+#: notes: of the Harrowing, swapped out 2026-10-25 — see SWAPS below).
+#: notes: SEQUENCING RULE: Sibsig destroys EVERY creature we cast, our outlet creatures and HASHATON
+#: notes: included (enters triggers still fire first). Cast the commander and the key outlet creatures
+#: notes: BEFORE Sibsig; with Necroduality out, a cast ZOMBIE leaves a surviving token copy
+#: notes: (Tomebound, Temmet, Mummy, Zahur), while Psychic Frog does not.
+#: notes: If Hashaton dies while Sibsig is out, the commander is locked until Sibsig leaves. Doctor
+#: notes: Doom survives it: order his trigger first and the Doombots make him indestructible.
+#: notes: WHITE IS NOT A SPLASH: Hashaton costs {W}{B} on every recast and every copy costs {2}{U},
+#: notes: so B is the main colour, U the repeated activation colour, W light but required.
+#: notes: SWAPS 2026-10-25 (owner's picks): Liliana, Waker of the Dead for Selhoff Entomber (+1 is an
+#: notes: each-player-discards outlet, -3 removal that grows with the yard); Commence the Endgame for
+#: notes: Overlord; Zahur for Fanatic; Patchwork Banner for Alabaster Host (a Zombie lord that taps for
+#: notes: any colour); The Soul Stone for Sidequest (indestructible {B} rock; harnessed, a reanimation
+#: notes: every upkeep); Anguished Unmaking for Withering Torment (instant, any nonland permanent — the
+#: notes: deck's noncreature answer); Eternal of Harsh Truths for Robot Domination (its token copies get
+#: notes: flying from Aven Wind Guide and draw on every unblocked attack); Fallen Shinobi for Collector's
+#: notes: Vault. Interaction 13 -> 12 (the scaled A minimum — no margin), card advantage 8, outlets 12 ->
+#: notes: 9. Talisman of Dominance was declined for the mana slot; Black Market Connections landed
+#: notes: later (below); Urza's Incubator was not taken.
+#: notes: SWAPS 2026-10-25, second pass (owner's picks): Dreadhorde Invasion for a Swamp (37 -> 36
+#: notes: lands; the Army is a Zombie token, so every lord and token grant reaches it); Way of the
+#: notes: Necromancer for Patchwork Banner (six Lilianas + Ral: every Sibsig death is a loyalty counter
+#: notes: on each); Vizier of the Scorpion for Death Baron (owner's call on the rare craft — Vizier
+#: notes: grants deathtouch to Zombie TOKENS only and no +1/+1, so it is a downgrade on the numbers);
+#: notes: Embalmed Ascendant for Advanced Stitchwing; Risen Necroregent for Winter; Outlaw Stitcher for
+#: notes: Cryptbreaker. SPEED is reliable here: Sibsig kills each creature we cast on our turn and
+#: notes: Diregraf Captain drains on every Zombie death, Wayward Servant on every Zombie entering — and
+#: notes: speed is the PLAYER's, so a Hashaton copy of Necroregent or Ascendant runs its max-speed
+#: notes: ability too. Discard outlets 9 -> 7 (Cryptbreaker and Stitchwing out). Winter's cut took
+#: notes: interaction 12 -> 11, below the scaled A minimum, pending Grimgrin.
+#: notes: Then Eternal Skylord for Kindred Discovery (every Zombie TOKEN flies — each Hashaton
+#: notes: copy, the Army, every 2/2): card advantage 8 -> 7, so Grimgrin's A floor is 12 + 7 = 19,
+#: notes: exactly the scaled minimum.
+#: notes: Then Grimgrin for Massacre Wurm (owner's pick; Wurm off #: protect:) and Black Market
+#: notes: Connections for Archfiend of Ifnir. Wurm counted as interaction, so Grimgrin only REPLACES it:
+#: notes: interaction stays 11, floor B (one interaction short of A). Black Market's Buy
+#: notes: Information draw is counted since the 2026-10-25 modal-bullet fix: card advantage 8.
+#: notes: BENCH (graded in the pile doc): Liliana Waker of the Dead, Rankle Master of Pranks,
+#: notes: Inexorable Tide, Pride of the Road, Zahur, Embalmed Ascendant, Genku, Risen Necroregent,
+#: notes: Wight, Ammit Eternal, Eternal of Harsh Truths, Commence the Endgame, Fallen Shinobi,
+#: notes: Zareth San, Outlaw Stitcher, Eternal Skylord, Hour of Victory, Ninja Teen, Vizier of the
+#: notes: Scorpion, Deathless Pilot, Malboro, Key to the City. (Liliana Waker of the Dead, Zahur,
+#: notes: Embalmed Ascendant, Risen Necroregent, Eternal of Harsh Truths, Commence the Endgame,
+#: notes: Fallen Shinobi, Outlaw Stitcher, Vizier of the Scorpion and Eternal Skylord have since
+#: notes: come off this list.
+#: notes: Pride of the Road and Wight were re-graded 2026-10-25 and held: Pride is a {3}{W} that does
+#: notes: nothing below max speed; Wight needs deathtouch it no longer gets without Death Baron.)
+
+# Commander (leads from the command zone; also one of the 100)
+1 Hashaton, Scarab's Fist (DRC) 1
+
+# Discard outlets — every creature card discarded is a {2}{U} Hashaton copy
+1 Psychic Frog (MH3) 199
+1 Liliana, Waker of the Dead (M21) 108
+1 Tomebound Lich (M20) 219
+1 Temmet, Naktamun's Will (DRC) 4
+1 Ral Zarek, Guest Lecturer (SOS) 97
+1 Miasmic Mummy (JMP) 256
+1 Liliana of the Veil (DMU) 97
+
+# Discard payoffs
+1 Bone Miser (SPG) 87
+1 Cryptcaller Chariot (DFT) 80
+1 Lazotep Chancellor (J21) 702
+1 Oglor, Devoted Assistant (YMID) 20
+1 Waste Not (TMC) 132
+
+# Discard targets — bought for their text on a 4/4 copy
+1 Grimgrin, Corpse-Born (MUL) 41
+1 Doctor Doom (MSH) 95
+1 Kalitas, Traitor of Ghet (EA1) 5
+1 The Scarab God (AKR) 259
+1 Gisa and Geralf (SIR) 233
+
+# Zombie lords and token support
+1 Vizier of the Scorpion (WAR) 111
+1 Diregraf Captain (SIS) 59
+1 Gisa, the Hellraiser (OTJ) 89
+1 Gleaming Overseer (WAR) 198
+1 Cursecloth Wrappings (DFT) 81
+1 Eternal Skylord (WAR) 49
+1 Aven Wind Guide (AKR) 228
+1 Unstoppable Slasher (DSK) 119
+1 Wayward Servant (AKR) 267
+1 Dreadhorde Invasion (WAR) 86
+
+# Sibsig engine — cast it, it dies, it comes back
+1 The Sibsig Ceremony (TDM) 91
+1 Necroduality (VOW) 70
+1 Sothera, the Supervoid (EOE) 115
+1 God-Eternal Oketra (WAR) 16
+1 Liliana, Heretical Healer // Liliana, Defiant Necromancer (PIO) 96
+1 Zahur, Glory's Past (DFT) 229
+1 Way of the Necromancer (FRA) 239
+1 Embalmed Ascendant (DFT) 201
+
+# Recursion and copies
+1 Zul Ashur, Lich Lord (FDN) 77
+1 God-Pharaoh's Gift (AKR) 272
+1 Liliana, Death's Majesty (J25) 458
+1 Liliana, the Last Hope (SIR) 119
+1 Assemble from Parts (YMID) 25
+1 The Cloning of Shredder (TMT) 60
+1 Funeral Room // Awakening Hall (DSK) 100
+1 Havengul Runebinder (SIS) 16
+1 Grim Reaper's Scythe (MSC) 658
+
+# Interaction
+1 Never // Return (AKR) 118
+1 Anguished Unmaking (OTP) 35
+1 Deadly Precision (TLA) 95
+1 Eaten Alive (FDN) 172
+1 Enter the God-Eternals (WAR) 196
+1 Liliana, Dreadhorde General (FDN) 176
+1 Invasion of Amonkhet // Lazotep Convert (MOM) 231
+
+# Tokens and card flow
+1 Ghoulcaller Gisa (JMP) 236
+1 Geralf, the Fleshwright (OTJ) 50
+1 Soul Diviner (WAR) 218
+1 Army of the Damned (J25) 399
+1 The Final Days (FIN) 101
+1 Commence the Endgame (WAR) 45
+1 Eternal of Harsh Truths (AKR) 61
+1 Fallen Shinobi (AA3) 19
+1 Risen Necroregent (DFT) 102
+1 Outlaw Stitcher (OTJ) 59
+
+# Mana — rocks
+1 The Soul Stone (SPM) 66
+1 Black Market Connections (HBG) 145
+
+# Lands (36)
+1 Command Tower (FRC) 22
+1 Raffine's Tower (SNC) 254
+1 Watery Grave (EOE) 261
+1 Godless Shrine (EOE) 254
+1 Hallowed Fountain (ECL) 265
+1 Underground River (BRO) 267
+1 Drowned Catacomb (XLN) 253
+1 Darkslick Shores (ONE) 250
+1 Sunken Hollow (EA3) 23
+1 Clearwater Pathway // Murkwater Pathway (ZNR) 260
+1 Gloomlake Verge (DSK) 260
+1 Undercity Sewers (PZA) 0
+1 Hidden Lair (MSH) 269
+1 Caves of Koilos (DMU) 244
+1 Concealed Courtyard (OTJ) 268
+1 Isolated Chapel (DOM) 241
+1 Silent Clearing (HA7) 24
+1 Bleachbone Verge (DFT) 250
+1 Glacial Fortress (XLN) 255
+1 Realm of Koh (TLA) 276
+1 Adarkar Wastes (DMU) 243
+1 Contaminated Landscape (MH3) 218
+7 Swamp (FRA) 285
+5 Island (FRA) 283
+2 Plains (FRA) 281

@@ -577,6 +577,17 @@ _EXTRA_MANA_COST_RE = re.compile(r"\{[0-9XC]\}|\{[WUBRG]\}|\{[WUBRG]/[WUBRG]\}")
 _EXTRA_TAP_COST_RE = re.compile(
     r"\btap (?:an|another|two|three|four|\w+) (?:untapped )?"
     r"(?:creature|artifact|permanent|land|token)", re.I)
+# Two more non-mana extra costs that the two patterns above could not see, so the land
+# read as a FREE five-colour source and `suggest --lands` ranked it beside an untapped
+# rainbow land (deck-90 manabase pass, 2026-10-25): an ENERGY payment (Aether Hub,
+# "{T}, Pay {E}: Add one mana of any color") and a COUNTER spent from the land
+# (Mirrodin's Core, "{T}, Remove a charge counter from this land: Add …").
+_EXTRA_RESOURCE_COST_RE = re.compile(
+    r"\{e\}|\bremove (?:a|an|one|two|three|\w+) [a-z-]+ counters? from", re.I)
+# A colour bounded by the GATES you control (Plaza of Harmony: "Add one mana of any type
+# that a Gate you control could produce") depends on the board, like Vivid — in a deck
+# with no Gates it adds nothing, so it must not read as a five-colour free source.
+_GATE_ONLY_RE = re.compile(r"\ba gate you control could produce\b", re.I)
 # Production reachable ONLY by turning the permanent face up or transforming it. Branch of
 # Vitu-Ghazi taps for {C} as a land; its "When this land is turned face up, add two mana of
 # any one color" line needs it cast face down for {3} via Disguise first, so as a LAND it
@@ -601,6 +612,19 @@ _GRANTED_ABILITY_RE = re.compile(
 _FETCH_BASIC_RE = re.compile(
     r"search your library for (?:a|an|up to \w+|one or more) basic "
     r"(?:land|plains|island|swamp|mountain|forest)\b", re.I)
+# The basic TYPES a fetch may name, for `fetch_types` (2026-10-23). `_FETCH_BASIC_RE` above
+# says only THAT a land fetches a basic, and every consumer then credited it with every
+# colour the deck runs a basic of — right for Evolving Wilds ("a basic land card"), wrong
+# for a TYPED fetch: the SNC hideouts ("a basic Forest, Plains, or Island card"), Maestros
+# Theater, the Landscapes. Deck 89 read Maestros Theater (Island/Swamp/Mountain) as a green
+# source, and `suggest --lands 89` priced three hideouts as BRG tri-lands above every
+# untapped dual. The list runs from "basic" to "card"; "land" anywhere in it means any basic.
+_FETCH_TYPES_RE = re.compile(
+    r"search your library for (?:a|an|up to \w+|one or more) basic "
+    r"((?:land|plains|island|swamp|mountain|forest)"
+    r"(?:,?\s+(?:or\s+|and/or\s+)?(?:land|plains|island|swamp|mountain|forest))*)", re.I)
+_BASIC_TYPE_COLOR = {"plains": "W", "island": "U", "swamp": "B", "mountain": "R",
+                     "forest": "G"}
 # A mana ability that works only while you control a land of a named TYPE. Two templatings
 # exist in the pool, and they are the only two (surveyed 2026-09-26 over every pool land
 # with an "activate only if" mana line — 15 of 17 are these two; the other two are an
@@ -755,6 +779,10 @@ def land_production(text, colors_cell=None, commander=None):
       fetch        True when it searches for a BASIC land (Evolving Wilds, Fabled
                    Passage, the Halflingcycling-style riders excluded because they need
                    a creature type)
+      fetch_types  None when the fetch may find ANY basic ("a basic land card"); else a
+                   frozenset of WUBRG letters for the basic types it names ("a basic
+                   Forest, Plains, or Island card" -> {"G", "W", "U"}). Callers credit a
+                   fetch only with the deck's basics of those types (2026-10-23).
       gated        {colour: frozenset of WUBRG letters} for a colour in `free` that the
                    land adds ONLY while you control a land of a named basic TYPE — the
                    Verge cycle's second colour ("Activate only if you control a Mountain
@@ -785,6 +813,7 @@ def land_production(text, colors_cell=None, commander=None):
     free, restricted, conditional, chosen, board = set(), set(), set(), set(), set()
     gated, ungated = {}, set()
     any_color = fetch = False
+    saw_mana_ability = False
     for line in txt.splitlines():
         # Production you can only reach by transforming the card is not production you
         # have as a LAND. Skipped whole: the clause is inside a triggered ability whose
@@ -795,11 +824,14 @@ def land_production(text, colors_cell=None, commander=None):
         cost = line.split(":", 1)[0] if ":" in line else ""
         extra_cost = (bool(_EXTRA_MANA_COST_RE.search(cost))
                       or bool(_EXTRA_TAP_COST_RE.search(cost))
+                      or bool(_EXTRA_RESOURCE_COST_RE.search(cost))
                       or "sacrifice" in cost.lower())
         limited = "spend this mana only" in low
         cols = set()
+        printed = set()     # colours this line names as a mana SYMBOL — fixed, never chosen
         line_chosen = False
-        if _BOARD_COLOR_RE.search(line) and _ADD_CLAUSE_RE.search(line):
+        if ((_BOARD_COLOR_RE.search(line) or _GATE_ONLY_RE.search(line))
+                and _ADD_CLAUSE_RE.search(line)):
             if not limited:
                 board |= set("WUBRG")
             continue
@@ -808,6 +840,8 @@ def land_production(text, colors_cell=None, commander=None):
             cols |= set("WUBRG")
         for m in _ADD_CLAUSE_RE.finditer(line):
             clause = m.group(0)
+            if "{" in clause or re.search(r"\bmana\b", clause, re.I):
+                saw_mana_ability = True
             if _COMMANDER_IDENTITY_RE.search(clause):
                 if commander is None:
                     any_color = True
@@ -815,7 +849,8 @@ def land_production(text, colors_cell=None, commander=None):
                 else:
                     cols |= set(commander) & set("WUBRG")
                 continue
-            cols |= {c for c in "WUBRG" if "{" + c + "}" in clause}
+            printed |= {c for c in "WUBRG" if "{" + c + "}" in clause}
+            cols |= printed
             if _ANY_COLOR_RE.search(clause):
                 any_color = True
                 cols |= set("WUBRG")
@@ -836,22 +871,40 @@ def land_production(text, colors_cell=None, commander=None):
                 for col in cols:
                     gated[col] = need
             if line_chosen:
-                chosen |= cols
+                # A Thriving land's "Add {B} or one mana of the chosen color": the {B} is
+                # fixed. Identity used to strip it back out below; now that identity is
+                # only a fallback for a text with no mana ability, the line says so itself.
+                chosen |= cols - printed
+    fetch_types = None
     if _FETCH_BASIC_RE.search(txt):
         fetch = True
+        named, anybasic = set(), False
+        for m in _FETCH_TYPES_RE.finditer(txt):
+            for w in re.findall(r"land|plains|island|swamp|mountain|forest", m.group(1), re.I):
+                if w.lower() == "land":
+                    anybasic = True
+                else:
+                    named.add(_BASIC_TYPE_COLOR[w.lower()])
+        if named and not anybasic:
+            fetch_types = frozenset(named)
     restricted -= free
     conditional -= free | restricted
     # Identity LAST, and only where the text did not already file the colour under a
     # restriction: a land's identity is its mana symbols, so it is the right fallback for
     # a row whose text is blank (K-11) or unusual, but Mudflat Village's {B} is
     # "spend only to cast a creature spell" and identity must not launder it into free.
-    ident = card_colors(colors_cell) if colors_cell else set()
+    # And only where the text printed NO mana ability at all: a land whose own Add clause
+    # makes {C} has told us what it makes, and identity from an ACTIVATION cost is not
+    # production — Duskmantle, House of Shadow ("{T}: Add {C}." / "{U}{B}, {T}: … mills")
+    # read as an untapped U/B dual and topped `suggest --lands` (2026-10-25).
+    ident = card_colors(colors_cell) if colors_cell and not saw_mana_ability else set()
     free |= ident - restricted - conditional
     # A colour reachable by a route OTHER than the choose-once clause is not choose-once.
     chosen &= free - (ident - restricted - conditional)
     gated = {c: need for c, need in gated.items() if c in free and c not in ungated}
     return {"free": free, "restricted": restricted, "conditional": conditional,
-            "chosen": chosen, "any": any_color, "fetch": fetch, "gated": gated,
+            "chosen": chosen, "any": any_color, "fetch": fetch,
+            "fetch_types": fetch_types, "gated": gated,
             "board": board - free - restricted - conditional}
 
 

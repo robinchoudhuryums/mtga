@@ -1,0 +1,173 @@
+#: name: Full Throttle
+#: format: Historic Brawl
+#: colors: RGW
+#: commander: Samut, the Driving Force
+#: plan: midrange
+#: tier: A — set by the owner 2026-10-22. Metrics floor A (interaction 14, card advantage 9, sum
+#: tier: 23 against the 12/19 a 100-card deck needs). The counters under-read it: Inspiring Call, Black
+#: tier: Panther, Wakandan King and Ravenous Tyrannosaurus's attack trigger all score no role (Emperor
+#: tier: Apatzec's seek has counted since 2026-10-25). One clear weakness: green-hungry costs (Hexhaven and Unnatural Growth need
+#: tier: {G}{G}{G}{G}), softened by seven nonland mana sources.
+#: archetype: Naya power ramp around Samut, the Driving Force. Samut gives every other creature
+#: archetype: +X/+0 and makes noncreature spells cost X less, X = speed (max 4) — but speed only
+#: archetype: starts when a "Start your engines!" permanent arrives, so Point the Way and
+#: archetype: Amonkhet Raceway start it early and Samut can land at speed 3–4. Twelve
+#: archetype: mana creatures and land ramp put her down on turn 4–5; then every card that READS
+#: archetype: power scales: Selvala, Doc Samson and Giant-Man make huge mana, Master's Guidance
+#: archetype: draws each end step, Emperor Apatzec gives the team haste, Tifa, Martial Artist
+#: archetype: takes extra combats, Unnatural Growth and Tifa's Limit Break multiply it.
+#: archetype: Interaction is bites (Punishing Punch, Hulk's Thunderclap, Ram Through, Ravenous
+#: archetype: Tyrannosaurus) that hit harder with the +X and risk nothing back. A landfall layer
+#: archetype: rides on the ramp: Worldweave, the fetch lands and Ancient Greenwarden (doubled
+#: archetype: land triggers, lands from the graveyard) feed Tifa Lockhart, Beorn's Hospitality and
+#: archetype: Dancing from Dark to Dawn; a Gamma counters layer (Hulk, Brutal Brawler, She-Hulk,
+#: archetype: Attorney-at-Law, Gamma Grotesque) turns +1/+1 counters into cards.
+#: archetype: Raising speed needs opponent life loss every turn: team haste (Samut, Hazoret's Champion),
+#: archetype: Alien Invasion's forced attacker, Roxanne's Meteorites and two ping lands. Distinct
+#: archetype: from every deck on file (≤3 shared cards; deck 73a runs Samut in Standard).
+#: protect: Samut, the Driving Force; Point the Way; Selvala, Heart of the Wilds; Doc Samson, Super Psychiatrist; Giant-Man, Gargantuan Genius; Master's Guidance; Tifa, Martial Artist; Emperor Apatzec Intli IV; Unnatural Growth; Tifa's Limit Break
+#: notes: Drafted 2026-10-21 from the owner's 104-card Samut pile (/pile-analysis, working doc
+#: notes: .cycle/88-samut-pile-analysis.md): 55 pile cards plus Point the Way, Hazoret,
+#: notes: Godseeker, Amonkhet Raceway (speed starters), Swords to Plowshares, Ram Through, Rabid
+#: notes: Bite and Minsc & Boo (removal). Amonkhet Raceway took Loxodon Surveyor's slot: a
+#: notes: turn-1 speed starter that costs no spell slot (37 lands, keepable 95.9% after the free
+#: notes: mulligan). The manabase is all owned at the owner's request. No tool models speed or
+#: notes: Samut's +X/+0, so every power gate here is graded on PRINTED power (the protect list
+#: notes: names the cards whose value that hides).
+#: notes: PUSHBACK WAVE 2026-10-21 (owner's picks from the left-out pile cards): Tifa Lockhart
+#: notes: for Radagast, Beorn's Hospitality for Greenhouse Propagator, Ancient Greenwarden for
+#: notes: Warden of the Chained (chosen over Mole Man: lands from the graveyard AND doubled land
+#: notes: triggers), Hexhaven Invigorator for Raph & Mikey, She-Hulk, Attorney-at-Law for Rocco,
+#: notes: Gamma Grotesque for Beastmaster Ascension, Grand Warlord Radha for Rabid Bite; then
+#: notes: Icetill Explorer for Twitching Doll, Omnath, Locus of Rage for Thunderous Velocipede and
+#: notes: Ghired for Earth's Mightiest Heroes. Still open: The Earth King and Hulk, Strongest There
+#: notes: Is, plus second-tier Toph, Earthbending Master, Ayula, Murasa Rootgrazer, Abomination and
+#: notes: Sledge-Class Seedship. With Twitching Doll and the Velocipede gone the deck holds NO
+#: notes: artifacts, so Toph, the First Metalbender's artifacts-are-lands clause is idle.
+#: notes: Then Hulk, Strongest There Is for Garruk, Unleashed, Abomination for Hazoret, Godseeker
+#: notes: (speed starters are now Samut, Point the Way and Amonkhet Raceway), and Black Panther,
+#: notes: Wakandan King for Samut, Vizier of Naktamun (card draw for card draw).
+#: notes: Then Inspiring Call for Mightform Harmonizer (the deck had NO team protection: draws per
+#: notes: countered creature and makes them indestructible), Toph, Earthbending Master for Annie Flash,
+#: notes: The Earth King for Huntmaster of the Fells (Huntmaster rarely transforms in a deck that casts
+#: notes: spells every turn) and Sledge-Class Seedship for Hugs. Seedship is the deck's one nontoken
+#: notes: artifact, so Toph, the First Metalbender makes it a land (a landfall trigger as it enters).
+#: notes: Then Inscription of Abundance for Pitiless Fists (instant fight plus two +1/+1 counters;
+#: notes: kicked, all three modes, with the kicker discounted by Samut).
+#: notes: Then Vigorbloom Charm for Cabaretti Charm (protection, draw or a counter-plus-fight in one
+#: notes: instant) and Smuggler's Surprise for Swords to Plowshares (owner's call: card advantage and
+#: notes: team hexproof/indestructible for power-4+ creatures over the deck's one clean exile answer;
+#: notes: interaction 14 -> 13, still above the A floor's 12).
+#: notes: Then Arlinn Kord for Arlinn, the Pack's Hope (a Wolf every other turn, haste for speed, a team
+#: notes: pump with trample, or 3 damage to any target).
+#: notes: Then She-Hulk, Jennifer Walters for She-Hulk, Jade Defender (repeatable draw; the sacrificed
+#: notes: lands come back through Icetill Explorer and Ancient Greenwarden), Voja for The Earth King, Rhys the
+#: notes: Redeemed for Nissa (Elves for Voja; copies every creature token), Nyxbloom Ancient for Bumi (triples
+#: notes: the mana that Rhys, the power-ups and Jennifer Walters spend) and Ayula for Badgermole Cub. Beorn's
+#: notes: "becomes a Bear" does NOT trigger Ayula (it is not an enter); Dancing's Bear tokens, Rhys's copies
+#: notes: of them and Beorn himself do, and Beorn widens which big creature can be the one that fights.
+#: notes: MANABASE 2026-10-22: green is 68% of the pips (77 of 114) against 24 green sources, so
+#: notes: Command Tower took Sunbillow Verge (a W/R land) and Sheltering Landscape took Commercial
+#: notes: District (a tapped R/G land; Landscape fetches a basic, two landfall triggers). Sources W 15 /
+#: notes: R 19 / G 25; Samut 71.5% -> 75.0% on turn 5, Omnath 50.2% -> 54.3%, nothing worse.
+#: notes: FROM THE PILE ANALYSIS (doc deleted 2026-10-22): speed starts only when a Start-your-engines
+#: notes: permanent arrives, so the early starters matter more than their text; Samut's discount is
+#: notes: generic-only and reaches SPELLS (kickers, tiers and spree costs included) but never activated
+#: notes: abilities (power-ups, Rhys, Beorn's Hospitality, Jennifer Walters); power, not toughness, is the
+#: notes: deciding number, so prefer bites (one-way) over fights. No tool models speed or +X/+0, so every
+#: notes: power gate here is graded on printed power.
+
+# Commander (leads from the command zone; also one of the 100)
+1 Samut, the Driving Force (DFT) 222
+
+# Creatures — mana and ramp (10)
+1 Great Divide Guide (TLA) 181
+1 Torgal, A Fine Hound (FIN) 208
+1 Icetill Explorer (EOE) 192
+1 Enduring Vitality (DSK) 176
+1 Selvala, Heart of the Wilds (JMP) 429
+1 Back-Alley Gardener (YSNC) 17
+1 Doc Samson, Super Psychiatrist (MSH) 164
+1 Giant-Man, Gargantuan Genius (MSC) 722
+1 Tifa Lockhart (FIN) 206
+1 Grand Warlord Radha (DOM) 195
+
+# Creatures — threats, power payoffs and removal bodies (30)
+1 Samut, Hazoret's Champion (FRA) 251
+1 Black Panther, Wakandan King (MAR) 87
+1 Roxanne, Starfall Savant (OTJ) 228
+1 Ravenous Tyrannosaurus (MAR) 93
+1 Zacama, Primal Calamity (RIX) 174
+1 Voja, Jaws of the Conclave (MKM) 432
+1 Red Hulk (MSH) 149
+1 Beorn the Fierce (HOB) 119
+1 Emperor Apatzec Intli IV (YOTJ) 21
+1 Toph, Earthbending Master (TLE) 145
+1 She-Hulk, Attorney-at-Law (MSC) 745
+1 Absorbing Man and Titania (MSC) 510
+1 Tifa, Martial Artist (FIC) 6
+1 Nylea, God of the Hunt (PIO) 300
+1 Hulk, Brutal Brawler (MSC) 833
+1 Toph, Greatest Earthbender (TLE) 70
+1 Nyxbloom Ancient (THB) 190
+1 Toph, the First Metalbender (TLA) 247
+1 Miles Morales (SPM) 108
+1 Jennifer Walters (MSH) 18
+1 Ancient Greenwarden (ZNR) 178
+1 Hexhaven Invigorator (FRA) 106
+1 She-Hulk, Jennifer Walters (MSC) 554
+1 Gamma Grotesque (MSC) 562
+1 Omnath, Locus of Rage (EA3) 17
+1 Ghired, Mirror of the Wilds (OTJ) 205
+1 Hulk, Strongest There Is (MSC) 724
+1 Abomination, Irradiated Brute (MSC) 511
+1 Rhys the Redeemed (TLE) 52
+1 Ayula, Queen Among Bears (J21) 543
+
+# Noncreature — removal, planeswalkers, engines and finishers (22)
+1 Smuggler's Surprise (OTJ) 180
+1 Ram Through (IKO) 170
+1 Minsc & Boo, Timeless Heroes (HBG) 243
+1 Point the Way (DFT) 175
+1 Worldweave (YEOE) 21
+1 Wrenn and Realmbreaker (MOM) 217
+1 Alien Invasion (MSH) 200
+1 Punishing Punch (MSH) 180
+1 Hulk's Thunderclap (MSC) 725
+1 Epic Fight (MSH) 166
+1 Inscription of Abundance (ZNR) 186
+1 Vigorbloom Charm (FRA) 160
+1 Annie Joins Up (OTJ) 191
+1 Samut, the Tested (AKR) 257
+1 Master's Guidance (TLE) 141
+1 Unnatural Growth (MID) 206
+1 Tifa's Limit Break (FIN) 207
+1 Dancing from Dark to Dawn (HOB) 123
+1 Arlinn Kord // Arlinn, Embraced by the Moon (SIR) 230
+1 Beorn's Hospitality (HOB) 120
+1 Inspiring Call (TLE) 168
+1 Sledge-Class Seedship (EOE) 208
+
+# Lands (37)
+1 Amonkhet Raceway (DFT) 248
+1 Gathering Place (MSH) 266
+1 Training Compound (MSH) 275
+1 Thornspire Verge (DSK) 270
+1 Hushwood Verge (DSK) 261
+1 Sacred Foundry (EOE) 256
+1 Command Tower (FRC) 22
+1 Evolving Wilds (ECL) 264
+1 Terramorphic Expanse (MSC) 828
+1 Hobbit Hole (HOB) 184
+1 Vibrant Cityscape (SPM) 188
+1 Elven Passage (HOB) 181
+1 Starting Town (FIN) 289
+1 Temple of Abandon (FDN) 696
+1 Temple of Plenty (FDN) 703
+1 Bristling Backwoods (OTJ) 253
+1 Sheltering Landscape (MH3) 227
+1 Abraded Bluffs (OTJ) 251
+1 Ba Sing Se (TLA) 266
+10 Forest (FRA) 289
+5 Mountain (FRA) 287
+3 Plains (FRA) 281

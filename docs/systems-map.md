@@ -99,7 +99,7 @@ The longest path, and the one that most needs a map.
 | `text` | the full oracle text (read FIRST, always) | 0.3s |
 | `check` | do I own it | 0.3s |
 | `stats` | curve, roles, interaction profile, protection, count uncertainty | 0.7s |
-| `consistency` | keepable %, land drops, P(cast on curve) | 0.6s |
+| `consistency` | keepable %, land drops, P(cast on curve); `--tempo` adds what tapped lands cost on curve (simulated) | 0.6s (`--tempo` ~2s) |
 | `engines` | enabler ↔ payoff balance | 0.5s |
 | `shape` | wide vs tall | 0.3s |
 | `targets` | does the deck hold what its gated cards need; state gates met for free | 0.5s |

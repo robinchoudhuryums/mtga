@@ -1,0 +1,214 @@
+#: name: Spirit World — Brawl
+#: format: Historic Brawl
+#: colors: WUBRG
+#: commander: Hei Bai, Forest Guardian
+#: plan: midrange
+#: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool), a FIVE-COLOUR SHRINE, GOD,
+#: archetype: ENCHANTMENT AND SAGA hybrid around Hei Bai, Forest Guardian: on entering it reveals cards
+#: archetype: until a Shrine and puts that Shrine onto the battlefield, so every cast and recast of the
+#: archetype: commander is a free Shrine; its {W}{U}{B}{R}{G} activation makes a Spirit per legendary
+#: archetype: enchantment (Shrines, Gods, Oath of Teferi), and those Spirits can't be blocked by
+#: archetype: non-Spirits. Seventeen Shrines scale with the Shrine count (Hondens on upkeep, Sanctums on the
+#: archetype: main phase, Go-Shintai on the end step, the Avatar temples on each other Shrine entering);
+#: archetype: Go-Shintai of Life's Origin makes a Shrine token for every nontoken Shrine and Sanctum of
+#: archetype: All tutors one each upkeep. Around that: Yuna, Hope of Spira returns an enchantment
+#: archetype: every end step, so a Saga that has finished (Kiora Bests the Sea God, Elspeth
+#: archetype: Conquers Death, World War Hulk) runs again; Nicol Bolas, Dragon-God copies the other
+#: archetype: planeswalkers' loyalty abilities, with Oath of Teferi and Quintorius for two activations,
+#: archetype: Tam, Atraxa and Ichormoon Gauntlet to proliferate, Sanctum Lurker giving every walker a +2
+#: archetype: and keeping it alive at 0, and Prophet of the Planeswalker making one walker's abilities
+#: archetype: cost [+1] more; Entrust the Spark trades a spare walker for the best one in the library.
+#: archetype: Elesh Norn and Doubling Season double enters triggers and tokens, and Annie Joins Up
+#: archetype: doubles every legendary creature's triggers. Castability comes from cards that make
+#: archetype: every land or creature tap for any colour
+#: archetype: (Great Divide Guide, Wrenn and Realmbreaker, Enduring Vitality, Leyline of the Guildpact).
+#: archetype: DISTINCT from deck 29 (Enchantress, GWR 60-card Auras): the axis is legendary enchantments
+#: archetype: and Shrine count, and the clock is Hondens, Sanctum drains and unblockable Spirits.
+#: protect: Hei Bai, Forest Guardian; Go-Shintai of Life's Origin; Sanctum of All; Leyline of the Guildpact; Southern Air Temple; The Spirit Oasis; Northern Air Temple; Kyoshi Island Plaza; The World Tree
+#: notes: DRAFTED 2026-10-24 (/draft-deck) from the owner's 5-colour Shrine concept, with Nicol Bolas,
+#: notes: Dragon-God as a named must-include. RULES READ: a Shrine token from Life's Origin is a
+#: notes: Shrine for every count and triggers the temples ("another Shrine you control enters", no
+#: notes: nontoken clause), but not Life's Origin itself (nontoken only). Bolas copies LOYALTY
+#: notes: abilities only, never a planeswalker's static text. Oath of Teferi's blink can target Hei
+#: notes: Bai (another Shrine) or a Shrine (the temples and Life's Origin trigger again). Leyline of
+#: notes: the Guildpact makes every land every basic type, so Leyline Binding costs {W}.
+#: notes: FAREWELL is modal ("choose one or more"): `cuts` flags it as fighting the graveyard
+#: notes: engine, but only the exile-graveyards mode does that; pick creatures and leave the yards.
+#: notes: MANABASE (2026-10-24, owner's budget pass): the rare fetches and seven triomes were replaced
+#: notes: with owned or common/uncommon lands: the Khans tri-lands, Savage Lands, Contaminated
+#: notes: Landscape, the four owned Verges, Starting Town, Evolving Wilds, Terramorphic Expanse and two
+#: notes: more basics (seven, which the basic searches and Kyoshi Island Plaza need). The second basic
+#: notes: is a Plains, not a Swamp: `consistency`'s rebalance hint measured it as the larger gain
+#: notes: (Venat, both Heliods, Elspeth Conquers Death) against Bolas's {B}{B}{B}. The World Tree is
+#: notes: protected (owner). `consistency` prices no nonland fixer, and Great Divide Guide or Wrenn and
+#: notes: Realmbreaker makes every land a five-colour source.
+#: notes: SWAPS 2026-10-24 (pass 1 of a hybrid rebuild, 18 swaps): Tam, The Kami War, Teferi, Hero of
+#: notes: Dominaria, Oath of Teferi, Jace, Multiverse Architect, Atraxa, Omnath, Locus of All, Nissa,
+#: notes: Leyline Tamer, Aragorn, Great Divide Guide, Yuna, Grand Summoner, Wrenn and Realmbreaker,
+#: notes: Enduring Vitality, Venat, Yuna, Hope of Spira, Kiora Bests the Sea God, World War Hulk and
+#: notes: Heliod, God of the Sun IN for Enlightened Tutor, Sterling Grove (its shroud blocked Oath,
+#: notes: Calix and Boundless Vigor), Enchantress's Presence, Farseek, Destiny Spinner, Paradise
+#: notes: Druid, Infernal Grasp, Sythis, Prismatic Ending, Arcane Signet, Chronicler of Worship, Karolina
+#: notes: Dean, Aang's Journey, Sanctum of Tranquil Light, Go-Shintai of Lost Wisdom, Anguished
+#: notes: Unmaking, Kyodai and Archon of Sun's Grace. The curve got heavier on purpose.
+#: notes: SWAPS 2026-10-24 (pass 2, 12 swaps, the loyalty engine): Heliod, the Radiant Dawn, Klothys,
+#: notes: Terra, Sanctum Lurker, Ichormoon Gauntlet, Quintorius, Professor Dellian Fel, Ajani Resolute,
+#: notes: Prophet of the Planeswalker, Kiora of Salt and Sand, Narset of the Ancient Way and Entrust the
+#: notes: Spark IN for Heroic Intervention, Despark, Go-Shintai of Boundless Vigor, Idyllic Tutor, Rhystic
+#: notes: Study (a 1v1 opponent pays the {1}), Sanctum of Calm Waters, Go-Shintai of Shared Purpose,
+#: notes: Esika, Nissa, Leyline Tamer, Eidolon of Blossoms, Swords to Plowshares and Teferi's
+#: notes: Protection. Card advantage 12 -> 10 is the accepted trade: the walkers' draw abilities count
+#: notes: once each but fire every turn. Aragorn STAYS: each colour of a multicoloured spell is its own
+#: notes: trigger, so a five-colour spell gives the token, scry 2, 3 damage and +4/+4 together.
+#: notes: SWAPS 2026-10-24 (pass 3): Annie Joins Up for Farewell (its exile-creatures mode mostly hit
+#: notes: our own board; Annie's 5 damage replaces the removal and doubles every legendary
+#: notes: creature's triggers, Hei Bai's Shrine reveal included); Way of the Mentor for Sanctum of
+#: notes: Fruitful Harvest (every life gain, the Hondens' and Sanctums' included, is loyalty on every
+#: notes: walker). SWAPS 2026-10-24 (pass 4): Nissa, Leyline Tamer for Yarok (Elesh Norn carries the
+#: notes: same doubling text); Way of the Paradox for Mana Confluence (37 lands: Paradox's extra land
+#: notes: drop and eight nonland mana sources cover it; each loyalty activation now gains 1 life, which
+#: notes: Way of the Mentor turns into loyalty on every walker); Brokers Ascendancy for Sanctum of
+#: notes: Shattered Heights (interaction 16 -> 15, accepted); Avatar of Burgeoning Echoes for Guru
+#: notes: Pathik (landfall grows a Jace token for Entrust the Spark). HELD: Chandra, Chill of
+#: notes: Compliance for World War Hulk. Golos, Tireless Pilgrim for Teferi, Hero of Dominaria, which
+#: notes: cannot be crafted on Arena (owner); interaction 15 -> 14. SWAPS 2026-10-25: Bioessence Hydra
+#: notes: for Crescent Island Temple (14 Shrines), Sythis for Birds of Paradise, Kaya the
+#: notes: Inexorable for Assassin's Trophy, Mogis for Professor Dellian Fel; interaction 14 -> 13,
+#: notes: one above the scaled A floor's 12. Then Inspired Tethermage for Sanctum Weaver, Jin-Gitaxias
+#: notes: for Honden of Seeing Winds (13 Shrines) and The Wandering Emperor for Leyline Binding;
+#: notes: interaction back to 14. HIDDEN VALUE the role counts miss (2026-10-25 audit): Mogis
+#: notes: (edict-or-2) is interaction, and Honden of Night's Reach now shows on the report-only hand
+#: notes: attack line; Hei Bai, Sanctum of All, Entrust the Spark, Calix's +1 and Terra's mill are
+#: notes: card advantage (Quintorius's seek and the empowered Jace tokens' '-3: Draw a card' are
+#: notes: counted since the same day's tooling batches); Bolas copies every other walker's minus.
+#: notes: LANDS 2026-10-25: Stingerquill Annex for Savage Lands and Theorix Annex for Opulent Palace
+#: notes: (Reality Fracture lands enter untapped once a planeswalker is out, so from the midgame);
+#: notes: Interplanar Beacon for Terramorphic Expanse (every planeswalker cast is 1 life, which Way
+#: notes: of the Mentor turns into loyalty; its two colours are planeswalker-only, so `consistency`
+#: notes: does not count it). Taplands in the first three drops 57.8% -> 47.7%. BENCH for
+#: notes: later passes: Insidious Roots, Selvala, Mogis, Satsuki, Garnet, The Legend of Roku, The
+#: notes: Legend of Kyoshi, Rydia, Jin-Gitaxias, Sab-Sunen, Athreos, Karolina Dean, Kyodai, Greenhouse,
+#: notes: Djeru and Hazoret, Oketra the True, Elspeth, Storm Slayer, Kaito, Dancing Shadow, Marina
+#: notes: Vendrell, Insidious Roots.
+
+# Commander (leads from the command zone; also one of the 100)
+1 Hei Bai, Forest Guardian (TLE) 139
+
+# Shrines (each one raises every other Shrine's X)
+1 Go-Shintai of Life's Origin (HA6) 6
+1 Sanctum of All (M21) 225
+1 Sanctum of Stone Fangs (M21) 120
+1 Go-Shintai of Hidden Cruelty (NEO) 97
+1 Go-Shintai of Ancient Wars (NEO) 144
+1 Honden of Cleansing Fire (HA3) 2
+1 Honden of Night's Reach (HA3) 12
+1 Honden of Infinite Rage (HA3) 17
+1 Honden of Life's Web (HA3) 20
+1 Southern Air Temple (TLA) 36
+1 The Spirit Oasis (TLA) 72
+1 Northern Air Temple (TLA) 111
+1 Kyoshi Island Plaza (TLA) 184
+
+# Shrine finders
+1 Calix, Destiny's Hand (THB) 211
+
+# Trigger and token doublers
+1 Elesh Norn, Mother of Machines (ONE) 10
+1 Jodah, the Unifier (DMU) 203
+1 Doubling Season (FDN) 216
+1 Annie Joins Up (OTJ) 191
+
+# Card draw and value engines
+1 Setessan Champion (THB) 198
+1 Omnath, Locus of All (MOM) 249
+1 Aragorn, the Uniter (LTR) 192
+1 Venat, Heart of Hydaelyn // Hydaelyn, the Mothercrystal (FIN) 39
+1 Nissa, Leyline Tamer (FRC) 2
+1 Sythis, Harvest's Hand (J21) 722
+1 Jin-Gitaxias // The Great Synthesis (MOM) 65
+
+# Protection
+
+# Mana and fixing
+1 Leyline of the Guildpact (MKM) 217
+1 Great Divide Guide (TLA) 181
+1 Yuna, Grand Summoner (FIC) 8
+1 Enduring Vitality (DSK) 176
+1 Golos, Tireless Pilgrim (M20) 226
+
+# Planeswalkers and their support
+1 Tam, the Possibility (FRA) 276
+1 Oath of Teferi (DOM) 200
+1 Jace, Multiverse Architect (FRC) 1
+1 Atraxa, Praetors' Voice (MUL) 33
+1 Wrenn and Realmbreaker (MOM) 217
+1 Nicol Bolas, Dragon-God (WAR) 207
+1 Sanctum Lurker (FRA) 64
+1 Ichormoon Gauntlet (ONE) 56
+1 Quintorius, Fate Splitter (YFRA) 26
+1 Ajani Resolute (FRA) 195
+1 Prophet of the Planeswalker (YFRA) 2
+1 Kiora of Salt and Sand (FRA) 273
+1 Narset of the Ancient Way (IKO) 195
+1 Entrust the Spark (FRA) 131
+1 Way of the Mentor (FRA) 208
+1 Way of the Paradox (FRA) 267
+1 Brokers Ascendancy (SNC) 170
+1 Avatar of Burgeoning Echoes (FRA) 122
+1 Bioessence Hydra (WAR) 186
+1 Kaya the Inexorable (KHM) 218
+1 Inspired Tethermage (FRA) 109
+1 The Wandering Emperor (NEO) 42
+
+# Sagas
+1 The Kami War // O-Kagachi Made Manifest (NEO) 227
+1 Kiora Bests the Sea God (THB) 52
+1 World War Hulk (MSH) 197
+1 Elspeth Conquers Death (THB) 13
+1 Terra, Magical Adept // Esper Terra (FIN) 245
+
+# Gods and enchantment recursion
+1 Yuna, Hope of Spira (FIN) 250
+1 Heliod, God of the Sun (PIO) 282
+1 Heliod, the Radiant Dawn // Heliod, the Warped Eclipse (MOM) 17
+1 Klothys, God of Destiny (THB) 220
+1 Mogis, God of Slaughter (PIO) 313
+
+# Interaction
+
+# Lands
+1 Command Tower (FRC) 22
+1 Plaza of Heroes (DMU) 252
+1 White Lotus Hideout (TLA) 281
+1 The World Tree (KHM) 275
+1 Stingerquill Annex (FRA) 190
+1 Contaminated Landscape (MH3) 218
+1 Spara's Headquarters (SNC) 257
+1 Jetmir's Garden (SNC) 250
+1 Nomad Outpost (TDM) 263
+1 Sandsteppe Citadel (TDM) 266
+1 Ketria Triome (IKO) 250
+1 Mystic Monastery (TDM) 262
+1 Theorix Annex (FRA) 192
+1 Hallowed Fountain (ECL) 265
+1 Watery Grave (EOE) 261
+1 Blood Crypt (ECL) 262
+1 Stomping Ground (EOE) 258
+1 Temple Garden (ECL) 268
+1 Godless Shrine (EOE) 254
+1 Steam Vents (ECL) 267
+1 Overgrown Tomb (ECL) 266
+1 Sacred Foundry (EOE) 256
+1 Breeding Pool (EOE) 251
+1 Interplanar Beacon (WAR) 247
+1 Wastewood Verge (DFT) 268
+1 Thornspire Verge (DSK) 270
+1 Willowrush Verge (DFT) 270
+1 Hushwood Verge (DSK) 261
+1 Evolving Wilds (ECL) 264
+1 Starting Town (FIN) 289
+2 Plains (FRA) 281
+1 Island (FRA) 283
+1 Swamp (FRA) 285
+1 Mountain (FRA) 287
+2 Forest (FRA) 289

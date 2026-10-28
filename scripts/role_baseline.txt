@@ -8,15 +8,18 @@
 # `check_roles.py --update-baseline` to acknowledge the current set.
 Aang, at the Crossroads
 Aang, at the Crossroads // Aang, Destined Savior
+Absorbing Man and Titania
 Accumulate Wisdom
 Aerial Doombot
 Aerid Konstrari
 Agent Phil Coulson
 Agents of HYDRA
+Aggravated Assault
 Agrus Kos, Spirit of Justice
 Ainok Wayfarer
 Airbending Lesson
 Ajani, Caller of the Pride
+Akul the Unrepentant
 Ambitious Augmenter
 Angel of Vitality
 Angelic Destiny
@@ -28,7 +31,9 @@ Anzrag, the Quake-Mole
 Appa, Loyal Sky Bison
 Archangel of Tithes
 Armament Dragon
+Army of the Damned
 Arnim Zola, Bio-Fanatic
+Arwen, Weaver of Hope
 Ashroot Animist
 Aurelia, the Warleader
 Aurora Awakener
@@ -48,7 +53,9 @@ Black Cat, Cunning Thief
 Black Widow, Super Spy
 Blasphemous Edict
 Blitzball Shot
+Bloated Contaminator
 Bloodthirsty Conqueror
+Body of Research
 Boiling Rock Rioter
 Bolg's Company
 Bone-Cairn Butcher
@@ -61,6 +68,7 @@ Bulk Up
 Bumi, Unleashed
 Burnout Bashtronaut
 Burrowguard Mentor
+Bushmaster, Coiled Henchman
 Buzz Bots
 Bygone Colossus
 Byrke, Long Ear of the Law
@@ -69,7 +77,6 @@ Caparocti Sunborn
 Captain America, First Avenger
 Captain America, Living Legend
 Captain Mar-Vell, Space-Born
-Caradora, Heart of Alacria
 Casey Jones, Jury-Rig Justiciar
 Central Elevator // Promising Stairs
 Cephalid Inkmage
@@ -78,6 +85,7 @@ Cheering Crowd
 Claim Jumper
 Collector's Vault
 Colossification
+Contagion Dispenser
 Corrupt Court Official
 Craterclaw Colossus
 Craterhoof Behemoth
@@ -87,6 +95,7 @@ Crustacean Commando
 Cryogen Relic
 Crypt Feaster
 Cuboid Colony
+Daemogoth Titan
 Daggerfang Duo
 Dalkovan Packbeasts
 Daredevil, Fearless Fighter
@@ -104,7 +113,6 @@ Don & Leo, Problem Solvers
 Donatello, Mutant Mechanic
 Donatello, the Brains
 Dori, Bearer of Friends
-Doubling Season
 Dracogenesis
 Draconautics Engineer
 Draconic Visitor
@@ -133,6 +141,10 @@ Encumbered Reejerey
 End of the Hunt
 Enigma Drake
 Entropic Battlecruiser
+Entrust the Spark
+Eternal Skylord
+Fallen Shinobi
+Fang, Roku's Companion
 Fated Firepower
 Fear of Isolation
 Fearsome Goblin Pair
@@ -148,6 +160,7 @@ Fog Bank
 Foggy Swamp Vinebender
 Foggy Swamp Visions
 Fortune, Loyal Steed
+Frantic Confrontation
 Frantic Strength
 Frontier Seeker
 Fynn, the Fangbearer
@@ -161,6 +174,7 @@ Ghalta the Unstoppable
 Ghalta, Primal Hunger
 Ghost, Spectral Saboteur
 Ghostly Keybearer
+Ghoulcaller Gisa
 Giant Cindermaw
 Giant-Man, Gargantuan Genius
 Gilgamesh, Master-at-Arms
@@ -179,20 +193,27 @@ Growth Curve
 Guidelight Matrix
 Guiding Hydra
 Hama, the Bloodbender
+Hammerhead, Maggia Boss
 Hauntwoods Shrieker
 Hawkeye, Master Marksman
 Hawkeye, Young Avenger
 Head of the Hunt
 Hecteyes
 Hedge Shredder
+Hei Bai, Forest Guardian
 Hei Bai, Spirit of Balance
+Hellrider
 Herald of Eternal Dawn
+Herald of Secret Streams
 High Fae Trickster
 High Perfect Morcant
+Honden of Night's Reach
 Honored Knight-Captain
 Hop to It
+Hornet Queen
 Hour of Victory
 How to Start a Riot
+Hulk, Strongest There Is
 Human Torch
 HYDRA Troopers
 Hymn of the Faller
@@ -202,12 +223,13 @@ Identity Echo
 Improvisation Capstone
 Ingenious Leonin
 Insatiable Skittermaw
+Insurrection
 Interface Ace
 Involuntary Employment
+Iroh, Dragon of the West
 Iron Hills Stalwart
 Iron Lad, Diverging Destiny
 Ironpaw Aspirant
-Jace's Machinations
 Jeong Jeong, the Deserter
 Jeskai Brushmaster
 Joo Dee, One of Many
@@ -217,6 +239,7 @@ Kastral, the Windcrested
 Katara, Water Tribe's Hope
 Kav Landseeker
 Kavaron Skywarden
+Kiora's Follower
 Kirol, Attentive First-Year
 Kitsune's Technique
 Klaw, Sonic Subjugator
@@ -226,22 +249,21 @@ Kraven the Hunter
 Kraven, Proud Predator
 Krenko, Mob Boss
 Krumar Initiate
+Kumena, Tyrant of Orazca
 Kyoshi Warriors
 Lake-town Toymaker
 Large Bear
+Lazotep Chancellor
 Leader, Super-Genius
 Leonardo, Big Brother
 Leyline of Mutation
-Leyline of the Guildpact
 Leyline of Transformation
 Lifecraft Engine
 Lilysplash Mentor
 Little Bear
 Living Brain, Mechanical Marvel
-Loading Zone
 Loki Laufeyson
 Long Feng, Grand Secretariat
-Loot, Exuberant Explorer
 Lorehold, the Historian
 Magic Pot
 Magitek Armor
@@ -253,7 +275,8 @@ Masked Meower
 Master Pakku
 Master's Councillors
 Mechanical Mobster
-Michelangelo, Weirdness to 11
+Merfolk Skydiver
+Miasmic Mummy
 Mind Transfer Protocol
 Miner's Guidewing
 Mirkwood Pathmaker
@@ -270,14 +293,20 @@ Morningtide's Light
 Most Decrepit Old Bird
 Most Decrepit Old Bird // Speak Secrets
 Mutable Explorer
+Mysterio, Master of Illusion
 Namazu Trader
+Namor, Scourge of the Seas
 Nashi, Searcher in the Dark
+Necrogen Rotpriest
 Neriv, Heart of the Storm
 Nick Fury, Agent of S.H.I.E.L.D.
 Nighthowl Pursuer
 Nightwhorl Hermit
 Niko, Light of Hope
 Ninja of the Hand
+Nyxbloom Ancient
+Oath of Teferi
+Oglor, Devoted Assistant
 Okoye, Dora Milaje Leader
 Omnipresence
 Omniscience
@@ -291,7 +320,6 @@ Outrageous Robbery
 Ozai's Cruelty
 Pain 101
 Paradox Surveyor
-Parallel Lives
 Paranormal Analyst
 Perigee Beckoner
 Personify
@@ -302,20 +330,25 @@ Picklock Prankster // Free the Fae
 Pond Prophet
 Pride of the Road
 Prideful Parent
+Primo, the Unbounded
+Prophet of the Planeswalker
 Psychic Whorl
 Pym Particles
 Quaketusk Boar
 Quicksilver, Brash Blur
 Quina, Qu Gourmet
 Radiant Lotus
+Radioactive Man
 Rage into the Valley
 Raging Goblinoids
 Rainveil Rejuvenator
+Raiyuu, Storm's Edge
 Rapacious Dragon
 Raph & Leo, Sibling Rivals
 Raph & Mikey, Troublemakers
 Raphael, the Muscle
 Raphael, the Nightwatcher
+Ravenous Tyrannosaurus
 Reckless Velocitaur
 Reno and Rude
 Resentful Revelation
@@ -333,6 +366,7 @@ Salvation Swan
 Samut, Hazoret's Champion
 Sanar, Innovative First-Year
 Sandstorm Salvager
+Savage Beating
 Savage Land Dinosaur
 Savage Ventmaw
 Scarlet Spider, Ben Reilly
@@ -342,7 +376,6 @@ Secret of Bloodbending
 Seedglaive Mentor
 Seismic Sense
 Servant of the Stinger
-Shang-Chi, Martial Mentor
 Shark Shredder, Killer Clone
 She-Hulk, Attorney-at-Law
 Sheriff of Safe Passage
@@ -351,12 +384,14 @@ Shrike Force
 Silver Surfer, Cosmic Voyager
 Silvergill Mentor
 Silverquill, the Disputant
+Simic Ascendancy
 Skyskipper Duo
 Sledge-Class Seedship
 Slick Imitator
 Slime Against Humanity
 Slumbering Keepguard
 Song of Stupefaction
+Soul Diviner
 Souls of the Lost
 Sozin's Comet
 Spider-Islanders
@@ -410,10 +445,14 @@ Thor, Guardian of Midgard
 Three Tree Scribe
 Thunderous Velocipede
 Tidings of War
+Tifa, Martial Artist
+Tiger Shark, Abyssal Hunter
 Tiger-Dillo
 Time Stop
 Tomik, Izzet Sparkmage
+Toph, Greatest Earthbender
 Toph, the Blind Bandit
+Toph, the First Metalbender
 Topiary Lecturer
 Treasure Dredger
 Treeguard Duo
@@ -424,26 +463,29 @@ Ultron Drone
 Umbral Collar Zealot
 Underwater Tunnel // Slimy Aquarium
 United Front
+Unnatural Growth
 Unstable Experiment
 Unstoppable Plan
 Unstoppable Slasher
+Valentina Allegra de Fontaine
 Vastlands Scavenger // Bind to Life
 Venomized Cat
+Venomous Brutalizer
 Verdant Kraken
 Veteran Ice Climber
 Virulent Silencer
 Virus Beetle
 Vision Quest
 Vito's Inquisitor
+Vizier of the Scorpion
 Voyager Glidecar
+Vulture, Scheming Scavenger
 War Balloon
 War Machine, Legacy of Iron
 War Squeak
 Wargling
 Waterbender Ascension
-Way of the Healer
 Way of the Pyromancer
-Way of the Wildspeaker
 Weapons Vendor
 Web-Warriors
 Welcome to Sweettooth
@@ -455,7 +497,8 @@ Wisecrack
 Wolverine, Claws Out
 Wonder Man, Hollywood Hero
 Woodwork Prodigy // Soul Tether
+Xolatoyac, the Smiling Flood
 Y'shtola Rhul
-Yoshimaru, Beloved Companion
+Zagras, Thief of Heartbeats
 Zog, Triceraton Castaway
 Zurgo, Thunder's Decree

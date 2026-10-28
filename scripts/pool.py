@@ -287,6 +287,13 @@ def main():
         if args._legal_key != _deck.normalize_format(args.legal):
             eprint(f"(--legal {args.legal!r} checks the pool's {args._legal_key!r} legality — "
                    "the repo's format names, G-08.)")
+        # `brawl` is the 60-card format here, which is Arena's "Standard Brawl" — and the
+        # mapping note above names a pool KEY ('standard'), which does not say "you may
+        # have meant the 100-card format". The deck-89 pile sweep (2026-10-23) searched
+        # `--legal brawl` for a Historic Brawl deck with that note on screen. Say it.
+        if _deck.normalize_format(args.legal) == "brawl":
+            eprint("(`brawl` is the 60-card format — Arena's \"Standard Brawl\". For a "
+                   "100-card deck use --legal \"historic brawl\".)")
 
     # Resolve --role names case-insensitively against the canonical labels AND the
     # aliases, and REJECT anything that matches neither (BS2-35): `--role recursion`

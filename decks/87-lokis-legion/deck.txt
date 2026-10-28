@@ -1,0 +1,163 @@
+#: name: Loki's Legion — Brawl
+#: format: Historic Brawl
+#: colors: UBR
+#: commander: Loki, the Deceiver
+#: plan: midrange
+#: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool), GRIXIS VILLAINS around
+#: archetype: Loki, the Deceiver: every attack makes a copy of another Villain that ENTERS (its
+#: archetype: enters trigger fires), deals combat damage, and is SACRIFICED at end step (death
+#: archetype: payoffs fire); a Villain connecting draws a card. The copy targets are the plan:
+#: archetype: Tombstone (regrow a Villain), Black Cat, Cunning Thief (two of their cards), Elektra and Ultimo
+#: archetype: (removal every attack), Doctor Doom (two Doombots), Shocker. The copy's death pays
+#: archetype: Kingpin (Treasures), Criminal Enterprise, Liliana and Thanos. Loki's draw is the
+#: archetype: turn's SECOND card, so the second-draw family (both
+#: archetype: M.O.D.O.K.s, Madame Masque, Kang, Graviton) fires every turn a Villain connects, and
+#: archetype: connive (Leader, Super-Genius adds a card to each) is the second engine; the
+#: archetype: deathtouch Heroes (Black Widow, Deadly Hunter draws per deathtouch hit) a third.
+#: archetype: DISTINCT from deck 11 (Villainous: 60-card mono-black Standard): three colours,
+#: archetype: Historic Brawl, and the Loki copy engine.
+#: tier: A — set by the owner 2026-10-21. The measurable floor reads A at 100 cards: interaction
+#: tier: 13 and card advantage 12 against an A line of 12 and a sum of 19 — interaction one above
+#: tier: the line, and card advantage under-counts (Leader, Super-Genius and Black Cat, Cunning
+#: tier: Thief score no role). The engine is layered: copy targets with enters removal (Elektra,
+#: tier: Ultimo, Shocker), death payoffs for the copy (Kingpin, Liliana, Criminal Enterprise), the
+#: tier: second-draw family and connive. Weaknesses: three colours with several double pips, and
+#: tier: Loki is a 4/4 with no evasion that must attack every turn.
+#: protect: Loki, the Deceiver; Tombstone, Career Criminal; Black Cat, Cunning Thief; Elektra, Daughter of the Hand; Ultimo, Civilization's End; Kingpin, Wilson Fisk; Leader, Super-Genius; Thunderbolts Conspiracy
+#: notes: DRAFTED 2026-10-21 from the owner's 73-card villains pile
+#: notes: (.cycle/87-loki-villains-pile-analysis.md), pile-first at the owner's direction: 58 of
+#: notes: the 73 plus Ultimo, Elektra and Liliana (enters/death engines) and Infernal Grasp and
+#: notes: Heartless Act. The 15 pile cards that did not fit, each returnable for a kept card:
+#: notes: Bob and Viper (they attack alone; Loki never does), Boomerang, Villainous
+#: notes: Syndication, Titanium Man, Minotaur, Count Nefaria, Immortus, Loki, God of Lies,
+#: notes: Living Laser, Electro, Red Hulk, Baron Helmut Zemo ({R}{R}/{B}{B}{B} in a deck whose red
+#: notes: is light), Symbiote Spider-Man, Loki Laufeyson.
+#: notes: RULES READ ON LOKI'S COPY: it enters already attacking, so its own "whenever this
+#: notes: attacks" trigger does not fire; a token cannot be exiled from the graveyard as a card, so
+#: notes: Doombot Harbinger's death rider fails on a copy; Thunderbolts Conspiracy returns real
+#: notes: Villains only, which also makes Villainous Wrath nearly one-sided.
+#: notes: SWAPS 2026-10-21: Doctor Doom, King of Latveria for Taskmaster (menace + a connive on
+#: notes: Loki every combat — the evasion his draw needs); Sheoldred, the Apocalypse for Scorpion
+#: notes: (Scorpion's end-step connive never saw Loki's copy die); Black Market Connections for
+#: notes: Decoy Ploy. Quality guard: net improvement; floor A.
+#: notes: SWAPS 2026-10-21 (second wave): Origin of Black Widow for Victor Timely (Victor had three
+#: notes: recastable targets here; Origin is an edict, a team-deathtouch turn for Black Widow, Deadly
+#: notes: Hunter, and a drain); Loki, Lord of Misrule for Scientist Supreme (the finisher: make every
+#: notes: other creature a non-legendary Loki, the Deceiver); Drivnod, Carnage Dominus for Construct a
+#: notes: Cosmic Cube (Loki's copy dies every turn, so Liliana, Criminal Enterprise and Thanos trigger
+#: notes: twice). Kept on purpose: Crimson Cowl (a menace Villain every attack) and Elektra (cutting her
+#: notes: drops the floor to B).
+#: notes: MANABASE 2026-10-21: pips run B 64 / U 20 / R 6 against sources B 24 / U 16 / R 14, so a
+#: notes: Mountain and a Swamp became Sunken Hollow and Seething Landscape: sources U 18 / B 25 / R 14,
+#: notes: Kang the Conqueror 50.0% → 57.2% on turn 4, Loki and Doctor Doom, King of Latveria 63.2% →
+#: notes: 66.4%, nothing worse. Moving basics alone only traded red odds for blue (six variants tried).
+#: notes: OWNED MANABASE 2026-10-21 (owner's call, to cut the rare land crafts): twelve unowned rare
+#: notes: lands (the pathways, fastlands, checklands, Spirebluff Canal, Oscorp Industries, Xander's
+#: notes: Lounge, and the Sunken Hollow added earlier that day) became owned duals: Undercity Sewers,
+#: notes: Serpent's Pass, Treno, Soured Springs, Dismal Backwater (U/B), Temple of Malice, Boiling Rock
+#: notes: Prison, Razortrap Gorge (B/R), Temple of Epiphany, Riverpyre Verge (U/R), Starting Town,
+#: notes: Evolving Wilds. Colour access held (U 18 / B 24 / R 14, Kang the Conqueror still 57.2% on
+#: notes: turn 4, Loki 65.9%); the price is tempo, P(an always-tapped land in the first three drops)
+#: notes: 16% → 54%. Crafts to restore first: Drowned Catacomb and Darkslick Shores (blue is tightest).
+#: notes: 2026-10-28 -Temple of Malice +Dragonskull Summit (owned): same colours, untapped
+#: notes: with a Swamp or Mountain out; `consistency --tempo` mean on-curve 48.9% -> 49.1%.
+
+# Commander (leads from the command zone; also one of the 100)
+1 Loki, the Deceiver (MSC) 86
+
+# Creatures — Villains (Loki copies one each attack; a Villain connecting draws)
+1 Hammerhead, Maggia Boss (MSC) 659
+1 Loki, God of Mischief (MSH) 65
+1 Morlun, Devourer of Spiders (SPM) 59
+1 Norman Osborn (SPM) 39
+1 Loki, Lord of Misrule (MSC) 628
+1 Undead Hand Ninja (MSC) 670
+1 White Widow, Yelena Belova (MSC) 676
+1 Baron Strucker, HYDRA Overlord (MSH) 88
+1 Bullseye, Death Dealer (MSH) 209
+1 Citizen V, Helmut Zemo (MSC) 650
+1 Crimson Cowl, Master of Evil (MSC) 653
+1 Doombot Harbinger (MSC) 655
+1 Graviton, Fundamental Force (MSC) 531
+1 Prowler, Clawed Thief (SPM) 138
+1 Tombstone, Career Criminal (SPM) 70
+1 Valentina Allegra de Fontaine (MSC) 671
+1 Chameleon, Master of Disguise (SPM) 27
+1 Crossbones, Malicious Mercenary (MSH) 91
+1 Doctor Doom, Unrivaled (MSC) 654
+1 Elektra, Daughter of the Hand (MSH) 97
+1 Kang the Conqueror (MSH) 62
+1 Kang, Temporal Tyrant (MSH) 217
+1 Kingpin, Wilson Fisk (MSC) 661
+1 Leader, Super-Genius (MSH) 64
+1 Madame Hydra (MSH) 221
+1 Madame Hydra, Reanimated (MSC) 538
+1 Morbius the Living Vampire (SPM) 137
+1 Mysterio, Master of Illusion (SPM) 37
+1 Sheoldred, the Apocalypse (DMU) 107
+1 Doctor Doom, King of Latveria (MSC) 6
+1 Thanos, Death's Consort (MSC) 508
+1 Tiger Shark, Abyssal Hunter (MSC) 747
+1 Vulture, Feathered Fiend (MSC) 645
+1 Black Cat, Cunning Thief (SPM) 52
+1 M.O.D.O.K. (MSH) 106
+1 M.O.D.O.K., Evil Intellect (MSC) 509
+1 Madame Masque (MSH) 104
+1 Radioactive Man (MSC) 665
+1 Doctor Doom (MSH) 95
+1 Shocker, Unshakable (SPM) 89
+1 The Masters of Evil (MSH) 105
+1 Ultimo, Civilization's End (MSC) 540
+1 Vulture, Scheming Scavenger (SPM) 158
+1 Doctor Octopus, Master Planner (SPM) 128
+1 Drivnod, Carnage Dominus (ONE) 90
+
+# Creatures — Heroes (the deathtouch draw package and Superior Spider-Man)
+1 Black Widow, Super Spy (MSH) 89
+1 Agent Venom (SPM) 49
+1 Black Widow, Deadly Hunter (MSC) 648
+1 Superior Spider-Man (SPM) 155
+1 Black Widow, Daring Operative (MSC) 831
+1 Gwenom, Remorseless (SPM) 56
+
+# Noncreature — removal, Plans and engines
+1 Black Market Connections (HBG) 145
+1 Doom Reigns Supreme (MSH) 96
+1 Heartless Act (TLA) 103
+1 Infernal Grasp (MID) 107
+1 Criminal Enterprise (MSC) 652
+1 Mysterio's Mirage (MSC) 630
+1 The Spot's Portal (MSC) 798
+1 Avengers: Under Siege (MSH) 205
+1 Thunderbolts Conspiracy (MSH) 117
+1 Villainous Wrath (SPM) 74
+1 Liliana, Dreadhorde General (FDN) 176
+1 Origin of Black Widow (MSC) 664
+
+# Lands (36)
+1 Dragonskull Summit (XLN) 252
+1 Blazemire Verge (DSK) 256
+1 Boiling Rock Prison (TLA) 267
+1 Blood Crypt (ECL) 262
+1 Castle Doom (MSH) 263
+1 Undercity Sewers (PZA) 0
+1 Command Tower (FRC) 22
+1 Dark Fortress (MSH) 264
+1 Serpent's Pass (TLA) 279
+1 Razortrap Gorge (DSK) 267
+1 Treno, Dark City (FIN) 290
+1 Gloomlake Verge (DSK) 260
+1 Hidden Lair (MSH) 269
+1 Evolving Wilds (ECL) 264
+1 Riverpyre Verge (DFT) 260
+1 Steam Vents (ECL) 267
+1 Temple of Epiphany (FDN) 699
+1 Soured Springs (OTJ) 264
+1 Villainous Hideout (MSH) 276
+1 Watery Grave (EOE) 261
+1 Starting Town (FIN) 289
+7 Swamp (FRA) 285
+1 Seething Landscape (MH3) 225
+4 Island (FRA) 283
+2 Mountain (FRA) 287
+1 Dismal Backwater (FDN) 261

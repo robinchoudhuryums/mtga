@@ -298,6 +298,12 @@ def _pattern_groups():
     # 10-Slime deck "max 4" again — or passes an eighth Seven Dwarves.
     out.append(("deck._ANY_NUMBER_NAMED_RE", deck._ANY_NUMBER_NAMED_RE, "norm"))
     out.append(("deck._UP_TO_N_NAMED_RE", deck._UP_TO_N_NAMED_RE, "norm"))
+    # The land-entry readers behind `consistency --tempo` (2026-10-28). Dead, a slowland,
+    # Starting Town or a snarl silently reads as an always-TAPPED land and the simulation
+    # over-charges the deck for tempo it does not lose.
+    for name in ("_SIM_SLOW_RE", "_SIM_EARLY_RE", "_SIM_REVEAL_RE", "_SIM_CHECK_COUNT_RE", "_SIM_OWN_MANA_RE", "_SIM_TYPED_FETCH_RE",
+                 "_SIM_FETCH_TAPPED_RE"):
+        out.append((f"deck.{name}", getattr(deck, name), "norm"))
     # The typed-sink qualifier reads ORIGINAL case (Magic capitalizes creature types).
     out.append(("deck._LAND_SINK_TYPED_RE", deck._LAND_SINK_TYPED_RE, "raw"))
     # `suggest --lands`' rider tie-break. Each cue must still match a real land, else the
@@ -386,13 +392,31 @@ def _pattern_groups():
                  # board-dependent colour (Vivid, Chrome Mox). Dead, the first drops
                  # Nykthos-style sources back to nothing and the second hides Bloom
                  # Tender from the nonland disclosure again.
-                 "_CHOOSE_THEN_THAT_COLOR_RE", "_BOARD_COLOR_RE"):
+                 "_CHOOSE_THEN_THAT_COLOR_RE", "_BOARD_COLOR_RE",
+                 # 2026-10-23: the basic TYPES a fetch names. Dead, every typed fetch (the
+                 # hideouts, the Landscapes) is back to a source of every colour the deck
+                 # runs a basic of — the over-count `fetch_types` removed.
+                 "_FETCH_TYPES_RE",
+                 # 2026-10-25: energy / counter costs and Gate-bounded colour. Dead, Aether
+                 # Hub, Mirrodin's Core and Plaza of Harmony read as free rainbow lands again.
+                 "_EXTRA_RESOURCE_COST_RE", "_GATE_ONLY_RE"):
         out.append((f"lib.{name}", getattr(lib, name), "raw"))
+    # `deck.fetch_pool_pressure` (2026-10-23): a card that replays lands from the
+    # graveyard. Dead, the disclosure stops naming the cards that deepen the pressure.
+    out.append(("deck._LAND_REPLAY_RE", deck._LAND_REPLAY_RE, "raw"))
+    # 2026-10-25 (deck-90 tooling batch): the report-only HAND ATTACK line and the
+    # every-land-a-five-colour-source disclosure. Dead, either line silently reads 0 /
+    # disappears, which looks exactly like a deck that has none.
+    out.append(("deck._HAND_ATTACK_RE", deck._HAND_ATTACK_RE, "norm"))
+    out.append(("deck._LAND_RAINBOW_RE", deck._LAND_RAINBOW_RE, "norm"))
     # `deck.uncounted_mana_sources` (2026-10-06): the creature-GRANT disclosure and the
     # enters-trigger exclusion. Dead, Enduring Vitality vanishes from the disclosure again
     # (the deck-21 silence) or every ETB mana burst reads as a recurring source.
     for name in ("_GRANTED_MANA_RE", "_GRANTED_NOT_CREATURE_RE", "_TRIGGERED_LINE_RE"):
         out.append((f"deck.{name}", getattr(deck, name), "raw"))
+    # 2026-10-25: the firebending disclosure. Dead, every firebender's combat mana vanishes
+    # from the nonland line again (its mana lives in stripped reminder text).
+    out.append(("deck._FIREBENDING_RE", deck._FIREBENDING_RE, "raw"))
     out += [("tag_synergies._TRIBAL_PAYOFF_RES", p, "raw")
             for p in tag_synergies._TRIBAL_PAYOFF_RES]
     # Same corpus form and the same reason: a card TYPE the text builds around is

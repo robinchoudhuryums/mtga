@@ -1,0 +1,245 @@
+#: name: Genesis Cycle — Brawl
+#: format: Historic Brawl
+#: colors: BRG
+#: commander: Szarel, Genesis Shepherd
+#: plan: midrange
+#: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool), JUND LAND SACRIFICE
+#: archetype: around Szarel, Genesis Shepherd: she lets us play lands from the graveyard and puts
+#: archetype: counters equal to her power on another creature whenever we sacrifice a nontoken
+#: archetype: permanent on our turn. So every land that sacrifices itself (11 basic fetches, the
+#: archetype: Memorials, Hidden caves, the sacrifice-to-draw duals, Skemfar Elderhall, Ghost Quarter,
+#: archetype: Ifnir Deadlands) is a spell we replay every turn, and the land outlets (Gitrog, Zuran Orb,
+#: archetype: Korvold, She-Hulk, Hearthhull) turn spare land drops into
+#: archetype: triggers. Long Feng, Jenova and Vorinclex grow Szarel's power so each trigger is bigger.
+#: archetype: The second clock is POISON: Bushmaster gives every creature with a +1/+1 counter
+#: archetype: deathtouch and Fynn makes each deathtouch hit 2 poison; Vorinclex with Vraska,
+#: archetype: Betrayal's Sting is 18 poison from her -9, and Triumph of the Hordes finishes a
+#: archetype: countered board. DISTINCT from deck 31 (Pox, BG Standard elves-and-poison) and deck 88
+#: archetype: (RGW landfall): the engine here is sacrifice and graveyard lands, not landfall.
+#: protect: Szarel, Genesis Shepherd; Azusa, Lost but Seeking; Zuran Orb; Long Feng, Grand Secretariat; The Gitrog Monster; Bushmaster, Coiled Henchman; Fynn, the Fangbearer; Vorinclex, Monstrous Raider; Jenova, Ancient Calamity; Lotus Field; Tectonic Split
+#: notes: DRAFTED 2026-10-22 from the owner's 99-card Szarel pile
+#: notes: (.cycle/89-szarel-pile-analysis.md): 44 pile cards plus 17 outside nonland cards (the
+#: notes: land-sacrifice outlets, Evolution Sage, Bloated Contaminator, Triumph of the Hordes,
+#: notes: Yawgmoth, Lotus Cobra, Tireless Provisioner, Infernal Grasp, Heartless Act, Ancient
+#: notes: Greenwarden) and a 38-land base that is mostly self-sacrificing lands.
+#: notes: RULES READ ON SZAREL: tokens (Treasure, Clue, Lander, Wolves) feed costs but never
+#: notes: trigger her; an opponent's edict is not OUR sacrifice; a Saga's sacrifice after its
+#: notes: last chapter counts; Gitrog's upkeep land sacrifice counts. Order Long Feng's trigger
+#: notes: above Szarel's and she counts the counter it gives her.
+#: notes: BASICS ARE A FINITE FETCH POOL: 11 basics against 11 basic fetchers that replay. A
+#: notes: failed search still sacrifices, so Szarel still triggers after the basics run out.
+#: notes: OPEN: a louder poison build swaps Daemogoth Titan, Lord Dregg, Honest Rutstein and two
+#: notes: flex slots for Necrogen Rotpriest, Venerated Rotpriest, Persuasive Interrogators,
+#: notes: Venomous Brutalizer and Skithiryx. The rare fetches (Fabled Passage, Prismatic Vista,
+#: notes: Misty Rainforest, Polluted Delta, Scalding Tarn) can drop to common Shire Terrace or a
+#: notes: Strixhaven-style self-sacrificing land a turn slower. (Done 2026-10-25, see LANDS below.)
+#: notes: SWAPS 2026-10-22 (tune): Bristly Bill for Squirrel Wrangler (a landfall counter on Szarel,
+#: notes: two per fetch; the Wrangler was a 12th land outlet making tokens); Vraska, Golgari Queen
+#: notes: for Titania, Rugged Rumbler (+2 sacrifices a land for a card each turn, -3 removal);
+#: notes: Mayhem Devil for Dragonlord Atarka (a ping per sacrifice by either player, a 3-drop for a
+#: notes: 7-drop); Hardened Scales for Undercover Skrull (+1 on every counter placement, so a Long
+#: notes: Feng trigger grows Szarel by 2); Maestros Theater for Promising Vein (sacrifices itself on
+#: notes: entry, a Szarel trigger with no {1} to pay). Quality guard: net improvement; floor A.
+#: notes: SWAPS 2026-10-22 (second wave): Eddie Brock for Tireless Provisioner (its Food and
+#: notes: Treasure are tokens, which never trigger Szarel; Venom sacrifices on attack); She-Hulk for
+#: notes: Crop Rotation (a repeatable land outlet that draws); Dryad of the Ilysian Grove for Lotus
+#: notes: Cobra (every land is every basic type, plus an extra land drop); The Dross Pits for Ziatora's
+#: notes: Proving Ground (sacrifices itself to draw, replayed every turn); Hornet Queen for Vraska,
+#: notes: Regal Gorgon (five flying deathtouchers, five Fynn carriers). Interaction 19 -> 18, an
+#: notes: intentional trade (Regal Gorgon's -3 was removal); card advantage 12 -> 14; floor A.
+#: notes: HELD by the owner: Doubling Season, Aftermath Analyst and Korvold were proposed for
+#: notes: Daemogoth Titan, Honest Rutstein and Lord Dregg, which the owner wants to keep; Lukka,
+#: notes: Overkill, Nissa of Shadowed Boughs, Garruk, Cursed Huntsman, Evolution Sage and Seedship
+#: notes: Broodtender are kept too. Pending: Annihilating Glare, Sylvan Safekeeper, Snakeskin Veil,
+#: notes: Toxic Deluge, Six, The Ozolith, Ziatora, and the rest of the Mutant layer.
+#: notes: SWAPS 2026-10-23: Grist, Voracious Larva for Lord Dregg (a deathtouch 1-drop that flips
+#: notes: into a planeswalker when a creature enters from the graveyard; puts deathtouch back among
+#: notes: the central themes); Kodama of the West Tree for Drown in Ichor (every creature with a
+#: notes: counter has trample, so deathtouch damage reaches the player as Fynn poison, and each hit
+#: notes: fetches a basic); Unforgiving One for Elvish Reclaimer (menace; each attack reanimates a
+#: notes: creature card of MV up to the number of modified creatures, which also flips Grist). The
+#: notes: deck lost its only land TUTOR with Reclaimer; fetches, Binding and Kodama still find basics.
+#: notes: Interaction 15, card advantage 13 -> 12 (Dregg's draw), floor A.
+#: notes: SWAP 2026-10-23: Polukranos, Unchained for Cankerbloom (a {1}{B}{G} fight every turn
+#: notes: that costs no card; enters with 6 counters, 12+ under Doubling Season / Vorinclex, Szarel
+#: notes: refills what damage removes, Bushmaster makes each fight a kill). Escape exiles six
+#: notes: graveyard cards, i.e. the lands Szarel replays: a late-game option, not the plan. Other
+#: notes: artifact/enchantment answers remain: Casualties, Binding, Killmonger, Glissa, Grist. Int 15.
+#: notes: LANDS 2026-10-23: a Forest for a Mountain and The Hunter Maze for The Dross Pits (the same
+#: notes: tapped Sphere that sacrifices to draw, in green). Green carries 59 strict pips across 47
+#: notes: cards against red's 6; sources B 24 / R 18 / G 23 -> B 23 / R 17 / G 25 (G 24 once typed
+#: notes: fetches were read correctly, same day: Maestros Theater cannot find a Forest). On curve:
+#: notes: Hornet Queen 48.6 -> 55.3%, Triumph 72.2 -> 77.1%, Szarel 82.4 -> 81.5%, Mayhem Devil 78.3 ->
+#: notes: 75.7%. Parked: Woodland Cemetery for a Swamp (G 26) at the cost of a basic fetch target.
+#: notes: HAND COUNTS no tool makes (from the pile analysis, 2026-10-23): basics are a FINITE fetch
+#: notes: pool (10 against 11 basic fetchers that Szarel REPLAYS); a failed search still sacrifices,
+#: notes: so Szarel still fires and only the ramp stops. Nothing counts nontoken sacrifices per turn
+#: notes: or Szarel's power. `cuts` reads extra-land-drop cards (Azusa, Dryad), Hardened Scales and
+#: notes: Doubling Season as roleless, and `engines` sees 1 counters payoff where Bushmaster,
+#: notes: Vorinclex and Rhonas are payoffs: that is what the #: protect: list covers.
+#: notes: SWAP 2026-10-23: Korvold, Fae-Cursed King for Vraska, Golgari Queen (the owner found
+#: notes: Vraska cannot be crafted on Arena). Korvold draws a card and grows on every sacrifice,
+#: notes: and sacrifices a permanent itself on entry and attack. Interaction 16 -> 15 (Vraska's -3);
+#: notes: the deck now runs 6 planeswalkers. Grist, Voracious Larva was weighed for the slot and
+#: notes: parked as a deathtouch add instead: its flip needs a creature entering from the graveyard
+#: notes: (Seedship Broodtender, Eddie Brock, Tyvar's -2, Nissa's -5).
+#: notes: SWAPS 2026-10-23: Fanatic of Rhonas for a Swamp (37 lands: a {1}{G} dork whose Ferocious
+#: notes: {G}{G}{G}{G} needs one power-4 creature; keepable 81.2% -> 79.9%, the dork itself not counted);
+#: notes: Way of the Paradox for Vraska, the Cutting Glare (an extra land drop per loyalty activation
+#: notes: across seven planeswalkers). Interaction 17 -> 16. Cutting Vraska took deathtouch OUT of the
+#: notes: central themes; Arcane Amphisbaena (deathtouch, empower Jace 2) restores it.
+#: notes: SWAPS 2026-10-23: Rhonas's Monument for Heartless Act (green creature spells, 34 of the
+#: notes: 40 creatures and Szarel, cost {1} less; every creature cast gives +2/+2 and trample, so a
+#: notes: deathtoucher assigns 1 to a blocker and the rest becomes Fynn poison); Way of the
+#: notes: Necromancer for Yawgmoth (each creature death puts loyalty on every planeswalker).
+#: notes: Interaction 18 -> 17 with 3 instants left: removal is now the axis not to cut further.
+#: notes: SWAP 2026-10-23: Doubling Season for Uurg (Uurg was the 12th land outlet, {B}{G} to
+#: notes: gain 2; Doubling Season doubles Szarel's counters, tokens and every planeswalker's
+#: notes: loyalty, though not poison on a player). Quality guard: net improvement.
+#: notes: SWAPS 2026-10-23 (third wave): Tyvar, Jubilant Brawler for Sprouting Goblin (She-Hulk does
+#: notes: the land-for-a-card job without tapping); Cankerbloom for Mister Hyde; Drown in Ichor for
+#: notes: Witherbloom Command; Venomous Brutalizer for Hit-Monkey; Bontu the Glorified for Vraska,
+#: notes: Swarm's Eminence; Pizza Face for Bebop & Rocksteady (+3 counters on Szarel each end step
+#: notes: after a land sacrifice); Necrogen Rotpriest for Noxious Newt (a second poison amplifier
+#: notes: beside Fynn). Interaction 17 -> 18, card advantage 14 -> 13; deathtouch still central.
+#: notes: SWAP 2026-10-22: Tyrranax Rex for Vraska, Relic Seeker (toxic 4, haste, trample, ward 4;
+#: notes: interaction 18 -> 17, the -3 was removal). DEATHTOUCH IS A THIN CENTRAL THEME: cutting
+#: notes: two of White Widow / Hit-Monkey / Noxious Newt drops it from the deck's central themes.
+#: notes: OWNED CANDIDATES not yet tried (suggest --owned, 2026-10-22): Liliana, Dreadhorde
+#: notes: General (a draw per creature death; her -4 edict makes US sacrifice two as well, each a
+#: notes: Szarel trigger) and Scavenger's Talent (sacrifice a permanent: mill two, ours or theirs).
+#: notes: The rejected-pile re-screen found no strict upgrade among its five KEY cards (Eddie Brock,
+#: notes: Izoni, Persuasive Interrogators, Slimefoot and Squee, Zopandrel). Only two of them sacrifice
+#: notes: TOKENS alone, which never trigger Szarel: Persuasive Interrogators (Clues) and Slimefoot and
+#: notes: Squee (Saprolings). Izoni ("Sacrifice another creature") and Zopandrel ("Sacrifice two other
+#: notes: creatures") take NONTOKEN creatures too, so each is a Szarel trigger on our turn (corrected
+#: notes: 2026-10-25); Eddie Brock has since joined the list, and Zopandrel went in for Baba Lysaga below.
+#: notes: SWAP 2026-10-25: Zopandrel, Hunger Dominus for Baba Lysaga. Zopandrel doubles power at the
+#: notes: start of each combat, so a land sacrificed through Zuran Orb after that trigger puts twice
+#: notes: the counters, and its indestructible cost sacrifices two nontoken creatures (two Szarel
+#: notes: triggers). The cost: Baba turned three permanents into three Szarel triggers and three
+#: notes: cards each turn; card advantage 13 -> 12.
+#: notes: LANDS 2026-10-25 (owner's call, rarity): Fabled Passage, Prismatic Vista, Misty Rainforest,
+#: notes: Polluted Delta, Scalding Tarn and Nurturing Peatland went to Shire Terrace, Promising Vein,
+#: notes: Omashu City, Ghost Quarter, Boiling Rock Prison and Foggy Bottom Swamp. Every one still
+#: notes: sacrifices itself, so the Szarel replay loop is intact; Ghost Quarter replayed every turn is
+#: notes: a land kill per turn. Sources B 23 -> 24, R 17 -> 19, G 24 -> 25 (overstated: the tool
+#: notes: counted the typed fetches as no source); taplands 10 -> 13 of 27; on curve Szarel 81.0 ->
+#: notes: 84.7%, Mayhem Devil 75.7 -> 79.8%, Hornet Queen 52.0 -> 55.3%. Upgrade path if crafting:
+#: notes: Wooded Foothills, Verdant Catacombs and Bloodstained Mire for the three {4} draw duals.
+#: notes: TEMPO 2026-10-28 (`consistency --tempo`): tapped lands cost 11.3 points of on-curve
+#: notes: chance per card (roster median 2.7). The rare path above measured +5.3 (43.7% -> 49.0%):
+#: notes: Verdant Catacombs, Wooded Foothills, Bloodstained Mire for the three basic fetches, Nurturing
+#: notes: Peatland for Foggy Bottom Swamp, Prismatic Vista for Hobbit Hole; every common swap was <=+0.7.
+#: notes: Owner kept the commons; the five are wishlisted for 89.
+
+# Commander (leads from the command zone; also one of the 100)
+1 Szarel, Genesis Shepherd (EOC) 4
+
+# Creatures — land-sacrifice engine (every land Szarel replays is a trigger)
+1 The Gitrog Monster (BLC) 88
+1 Titania, Protector of Argoth (MH2) 287
+1 Azusa, Lost but Seeking (M21) 173
+1 Seedship Broodtender (EOE) 227
+1 Ancient Greenwarden (ZNR) 178
+1 She-Hulk, Jennifer Walters (MSC) 554
+
+# Creatures — counters and Szarel's power
+1 Long Feng, Grand Secretariat (TLA) 233
+1 Jenova, Ancient Calamity (FIN) 228
+1 Vorinclex, Monstrous Raider (KHM) 199
+1 Bushmaster, Coiled Henchman (MSC) 716
+1 Polukranos, Unchained (THB) 224
+1 Evolution Sage (WAR) 159
+1 White Widow, Yelena Belova (MSC) 676
+1 Bristly Bill, Spine Sower (OTJ) 157
+1 Pizza Face, Gastromancer (TMT) 163
+1 Zopandrel, Hunger Dominus (ONE) 195
+
+# Creatures — deathtouch and poison (Fynn turns each deathtouch hit into 2 poison)
+1 Fynn, the Fangbearer (FCA) 46
+1 The Serpent Society (MSH) 226
+1 Glissa Sunslayer (ONE) 202
+1 Rhonas the Indomitable (AKR) 213
+1 Kura, the Boundless Sky (NEO) 200
+1 Venomous Brutalizer (ONE) 193
+1 Bloated Contaminator (ONE) 159
+1 Hornet Queen (AKR) 196
+1 Tyrranax Rex (ONE) 189
+1 Necrogen Rotpriest (ONE) 212
+1 Grist, Voracious Larva // Grist, the Plague Swarm (MH3) 251
+1 Kodama of the West Tree (NEO) 199
+
+# Creatures — sacrifice outlets and bodies
+1 Dina, Essence Brewer (SOC) 1
+1 Killmonger, Scourge of Wakanda (MSH) 218
+1 Hidetsugu, Devouring Chaos (NEO) 99
+1 Daemogoth Titan (STX) 174
+1 Honest Rutstein (OTJ) 207
+1 Mayhem Devil (WAR) 204
+1 Eddie Brock // Venom, Lethal Protector (SPM) 55
+1 Bontu the Glorified (AKR) 95
+1 Korvold, Fae-Cursed King (ELD) 329
+1 Unforgiving One (NEO) 127
+
+# Creatures — ramp
+1 Dryad of the Ilysian Grove (THB) 169
+1 Fanatic of Rhonas (MH3) 152
+
+# Planeswalkers
+1 Vraska, Betrayal's Sting (ONE) 115
+1 Garruk Relentless // Garruk, the Veil-Cursed (SIS) 49
+1 Garruk, Cursed Huntsman (ELD) 191
+1 Lukka, Bound to Ruin (ONE) 207
+1 Nissa of Shadowed Boughs (ZNR) 231
+1 Tyvar, Jubilant Brawler (ONE) 218
+
+# Noncreature — removal, Sagas and engines
+1 Infectious Bite (ONE) 172
+1 Overkill (FIN) 109
+1 Infernal Grasp (MID) 107
+1 Rhonas's Monument (AKR) 279
+1 Casualties of War (WAR) 187
+1 Origin of Black Widow (MSC) 664
+1 Binding the Old Gods (KHM) 206
+1 Vraska Joins Up (OTJ) 236
+1 Triumph of the Hordes (SOA) 59
+1 Tectonic Split (TLE) 144
+1 Zuran Orb (MH2) 300
+1 Hearthhull, the Worldseed (EOC) 1
+1 Hardened Scales (KTK) 133
+1 Doubling Season (FDN) 216
+1 Way of the Necromancer (FRA) 239
+1 Way of the Paradox (FRA) 267
+
+# Lands (37)
+1 Evolving Wilds (ECL) 264
+1 Terramorphic Expanse (MSC) 828
+1 Vibrant Cityscape (SPM) 188
+1 Hobbit Hole (HOB) 184
+1 Elven Passage (HOB) 181
+1 Twisted Landscape (MH3) 232
+1 Riveteers Overlook (SNC) 255
+1 Escape Tunnel (TMT) 184
+1 Maestros Theater (SNC) 251
+1 Shire Terrace (LTR) 261
+1 Promising Vein (LCI) 279
+1 Omashu City (TLA) 275
+1 Ghost Quarter (DIS) 173
+1 Boiling Rock Prison (TLA) 267
+1 Memorial to Folly (DOM) 242
+1 Memorial to Unity (DOM) 245
+1 Hidden Necropolis (LCI) 275
+1 Hidden Nursery (LCI) 276
+1 Skemfar Elderhall (KHM) 268
+1 Foggy Bottom Swamp (TLA) 269
+1 Ifnir Deadlands (AKR) 302
+1 Overgrown Tomb (ECL) 266
+1 Blood Crypt (ECL) 262
+1 Stomping Ground (EOE) 258
+1 Command Tower (FRC) 22
+1 The Hunter Maze (ONE) 253
+1 Lotus Field (M20) 249
+3 Swamp (FRA) 285
+5 Forest (FRA) 289
+2 Mountain (FRA) 287

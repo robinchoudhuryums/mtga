@@ -16,7 +16,7 @@
 #: archetype: triggers the commander and the members at once. Annie Joins Up makes the
 #: archetype: commander's trigger happen twice. DISTINCT from the other Brawl decks (78 Bant
 #: archetype: tokens, 84 Jeskai Iron Legion, 85 Jeskai damage): green counters, four colours.
-#: tier: A — set by the owner 2026-10-20. The measurable floor reads A at 100 cards: interaction 13
+#: tier: A — set by the owner 2026-10-20. The measurable floor reads A at 100 cards: interaction 12
 #: tier: and card advantage 11 against an A line of 12 and a sum of 19, protection 8. The engine is
 #: tier: layered: counter multipliers, two token doublers (Parallel Lives and Donatello's Mutagen),
 #: tier: and Reed Richards turning each turn's first extra draw into four. Weaknesses: four colours
@@ -71,6 +71,10 @@
 #: notes: Forests for Stomping Ground and Temple Garden, and the double-pip Thorin's Last Stand,
 #: notes: Tractor Beam and Slash, Reptile Rampager for single-pip Kraven's Last Hunt (since cut),
 #: notes: Trickster's Stratagem and Storm, Force of Nature.
+#: notes: TAMIYO FOR TEFERI, 2026-10-21: Arena refused to craft Teferi, Hero of Dominaria from this
+#: notes: list (its (DOM) line is Scryfall's code; Arena's is DAR). Tamiyo, Field Researcher is mana
+#: notes: value 4, so unlike Teferi she triggers the commander and the members; she draws through
+#: notes: combat damage and her −2 taps two permanents. Interaction 13 → 12, still on the A line.
 
 # Commander (leads from the command zone; also one of the 100)
 1 The Fantastic Four (MSC) 741
@@ -143,7 +147,7 @@
 1 Earth's Mightiest Heroes (MSH) 165
 1 The Wandering Emperor (NEO) 42
 1 Parallel Lives (MAR) 36
-1 Teferi, Hero of Dominaria (DOM) 207
+1 Tamiyo, Field Researcher (BLC) 100
 
 # Ramp and fixing
 1 Great Divide Guide (TLA) 181

@@ -4,7 +4,7 @@
 #: colors: U
 #: plan: control
 #: tier: B — GRADED 2026-07, held one band UNDER the measurable floor since the 2026-10-11 tune,
-#: tier: which reads A on interaction 7 plus card advantage 10 at a 4.0 curve. RE-GRADE PENDING
+#: tier: which reads A on interaction 7 plus card advantage 11 at a 4.0 curve. RE-GRADE PENDING
 #: tier: the owner's call. Against the rubric an A needs four things:
 #: tier:   A-FLOOR — yes since 2026-10-11, but at the EDGE: interaction 7 exactly meets the (re-derived, 2026-09-02)
 #: tier:     threshold of seven (Ugin, Mana Sculpt, Three Steps Ahead, Get Out came in).
