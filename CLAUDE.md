@@ -739,7 +739,7 @@ is protecting.
   against the deck's OWN lands' types (basics and typed nonbasics) since 2026-09-23 — pass
   `basic_types`, or it reads `check` for a deck that cannot meet it.**
   **NONLAND sources are DISCLOSED since 2026-09-18, never counted**: `consistency` prints
-  `ⓘ N NONLAND mana source(s) are NOT in the counts above` (**94 of 127 decks**). BOARD-dependent
+  `ⓘ N NONLAND mana source(s) are NOT in the counts above` (**96 of 127 decks**). BOARD-dependent
   colour (Vivid) and creature-GRANTED mana are labelled since 2026-10-06, as is a permanent making EVERY land any colour
   (`land_rainbow_enablers`) and firebending (`combat-only`), both 2026-10-25. IDENTITY is a
   fallback ONLY for a text printing no mana ability (Duskmantle's U/B is an activation COST).
