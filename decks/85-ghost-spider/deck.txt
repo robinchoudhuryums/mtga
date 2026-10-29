@@ -7,7 +7,7 @@
 #: archetype: EXILE around Gwen Stacy // Ghost-Spider: Gwen exiles a card to play on entering, and
 #: archetype: Ghost-Spider grows on every land played or spell cast from exile and spends counters to
 #: archetype: exile more. Three engines feed each other. IMPULSE: Daredevil, Chandra, Charred Foyer,
-#: archetype: Jessica Jones, Asgardian Inspiration, The Legend of Roku, Party Thrasher and Valakut
+#: archetype: Jessica Jones, The Legend of Roku, Party Thrasher and Valakut
 #: archetype: Exploration play cards off the top, and Gandalf and Heartflame Duelist are Adventures,
 #: archetype: whose creature half is itself cast from exile. CAST-FROM-EXILE PAYOFFS turn each of
 #: archetype: those plays into damage: Nico Minoru, Quintorius Kand and Spider-Man 2099, with
@@ -23,6 +23,8 @@
 #: archetype: (Standard Boros impulse, 60 cards) and deck 2 (Standard mono-red burn): this one is
 #: archetype: the noncombat-damage loop, in Brawl.
 #: protect: Gwen Stacy // Ghost-Spider; Thor, Guardian of Midgard; Nico Minoru, Runaway; Thor, Asgard's Avenger; Hawkeye, Young Avenger
+#: notes: Spider-Sense back in for Asgardian Inspiration, 2026-10-29 (owner's pick): an instant
+#: notes: answer to a spell or triggered ability over a one-card {R} impulse; card advantage 15 -> 14.
 #: notes: Lady Spider, Maybelle Reilly for Spider-Sense, 2026-10-29 (owner's pick): every discard
 #: notes: (Party Thrasher, Artist's Talent, Hawkeye, Nico, Origin of Thor, Solphim) grows a Spider —
 #: notes: herself from turn 2, the double-striking Spider-Men, or Ghost-Spider's exile counters.
@@ -118,7 +120,6 @@
 1 Interdimensional Web Watch (SPM) 165
 1 The Legend of Roku (TLA) 145
 1 Jessica Jones, Private Eye (MSH) 139
-1 Asgardian Inspiration (MSC) 678
 1 Chandra, Pyromaster (AKR) 146
 1 Valakut Exploration (ZNR) 175
 1 Party Thrasher (MH3) 129
@@ -156,6 +157,7 @@
 1 Airbender's Reversal (TLA) 7
 1 Heartflame Duelist // Heartflame Slash (WOE) 228
 1 Fury (SPG) 47
+1 Spider-Sense (SPM) 46
 
 # Ramp and land drops — the painlands' 1 damage to you feeds Daredevil, Fearless Fighter
 1 Koth, Fire of Resistance (ONE) 138
