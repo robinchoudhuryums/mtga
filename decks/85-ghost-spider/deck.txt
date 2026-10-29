@@ -23,6 +23,9 @@
 #: archetype: (Standard Boros impulse, 60 cards) and deck 2 (Standard mono-red burn): this one is
 #: archetype: the noncombat-damage loop, in Brawl.
 #: protect: Gwen Stacy // Ghost-Spider; Thor, Guardian of Midgard; Nico Minoru, Runaway; Thor, Asgard's Avenger; Hawkeye, Young Avenger
+#: notes: City on Fire for Fury, 2026-10-29 (owner's pick): every source deals triple damage; convoke
+#: notes: taps creatures that Captain America then untaps. Cast it with convoke while Tellah is out —
+#: notes: 8 mana spent would sacrifice Tellah on cast, before City resolves.
 #: notes: FOUR SWAPS, 2026-10-29 (owner's picks): Captain America, Living Legend for Chandra,
 #: notes: Pyromaster (untaps Nico, Taii, Echo and Jessica Jones once a turn, so each taps twice, and
 #: notes: the team attacks without tapping), Mog, Moogle Warrior for Pia Nalaar (an end-step loot that
@@ -101,6 +104,7 @@
 1 Insult // Injury (AKR) 162
 1 Torbran, Thane of Red Fell (ELD) 147
 1 Taii Wakeen, Perfect Shot (OTJ) 234
+1 City on Fire (MOM) 135
 
 # Damage into cards — noncombat damage to an opponent digs or draws
 1 Thor, Guardian of Midgard (MSC) 503
@@ -162,7 +166,6 @@
 1 Boros Charm (FDN) 721
 1 Airbender's Reversal (TLA) 7
 1 Heartflame Duelist // Heartflame Slash (WOE) 228
-1 Fury (SPG) 47
 1 Spider-Sense (SPM) 46
 
 # Ramp and land drops — the painlands' 1 damage to you feeds Daredevil, Fearless Fighter
