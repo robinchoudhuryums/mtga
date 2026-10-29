@@ -663,6 +663,8 @@ Whenever you discard one or more cards, Spider-Man deals that much damage to any
 Whenever one or more creatures you control with flying deal combat damage to a player, put a +1/+1 counter on each of those creatures and draw a card.",U,Human; Artificer; Villain; counters; card draw; flying; evasion,MSC,645,Rare,94,,7.0,seed
 Daughter of the Deep,Creature — Merfolk Noble,"Whenever you draw your second card each turn, create a 1/1 blue Merfolk creature token.
 {U}, {T}: Target Merfolk can't be blocked this turn.",U,Merfolk; Noble; tokens,MSC,618,Uncommon,94,,4.0,seed
+"Lady Spider, Maybelle Reilly",Legendary Creature — Spider Human Hero,"Reach
+Whenever you discard a card, put a +1/+1 counter on target Spider you control.",R,Spider; Human; Hero; counters; reach; defense,MSC,695,Uncommon,85,,4.5,seed
 Origin of Black Widow,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
 I — Each opponent sacrifices a creature of their choice.
 II — Creatures you control gain deathtouch until end of turn.

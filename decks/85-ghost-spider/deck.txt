@@ -23,6 +23,9 @@
 #: archetype: (Standard Boros impulse, 60 cards) and deck 2 (Standard mono-red burn): this one is
 #: archetype: the noncombat-damage loop, in Brawl.
 #: protect: Gwen Stacy // Ghost-Spider; Thor, Guardian of Midgard; Nico Minoru, Runaway; Thor, Asgard's Avenger; Hawkeye, Young Avenger
+#: notes: Lady Spider, Maybelle Reilly for Spider-Sense, 2026-10-29 (owner's pick): every discard
+#: notes: (Party Thrasher, Artist's Talent, Hawkeye, Nico, Origin of Thor, Solphim) grows a Spider —
+#: notes: herself from turn 2, the double-striking Spider-Men, or Ghost-Spider's exile counters.
 #: notes: NINETEEN SWAPS, 2026-10-29 (owner's picks, package B of the slow-start tune): 37 lands
 #: notes: (Photon, Lady of Light for a Mountain) and eight always-tapped duals for untapped ones:
 #: notes: painlands Shivan Reef, Battlefield Forge, Adarkar Wastes (their 1 damage to you feeds
@@ -138,6 +141,7 @@
 1 Shiko and Narset, Unified (TDC) 7
 1 Longhorn Sharpshooter (OTJ) 132
 1 Gandalf, Goblins' Bane // Flameshape (HOB) 96
+1 Lady Spider, Maybelle Reilly (MSC) 695
 
 # Discard and loot — Spider-Man, New Champion turns each discard into damage
 1 Origin of Thor (MSC) 701
@@ -149,7 +153,6 @@
 # Interaction
 1 Mjölnir, Hammer of Thor (MSH) 146
 1 Boros Charm (FDN) 721
-1 Spider-Sense (SPM) 46
 1 Airbender's Reversal (TLA) 7
 1 Heartflame Duelist // Heartflame Slash (WOE) 228
 1 Fury (SPG) 47
