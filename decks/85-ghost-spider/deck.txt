@@ -23,6 +23,12 @@
 #: archetype: (Standard Boros impulse, 60 cards) and deck 2 (Standard mono-red burn): this one is
 #: archetype: the noncombat-damage loop, in Brawl.
 #: protect: Gwen Stacy // Ghost-Spider; Thor, Guardian of Midgard; Nico Minoru, Runaway; Thor, Asgard's Avenger; Hawkeye, Young Avenger
+#: notes: BUDGET LANDS, 2026-10-29 (owner's pick, variant C): the seven unowned rare lands are
+#: notes: stood in by owned or common ones until crafted — Adarkar Wastes -> Avengers Hangar,
+#: notes: Glacial Fortress -> Island, Shivan Reef -> Stark Industries, Sulfur Falls -> Command Tower,
+#: notes: Battlefield Forge -> Asgardian Citadel, Arid Mesa -> Fire Nation Palace, Scalding Tarn ->
+#: notes: Mountain. Tempo sim 55.7 -> 53.8 on curve (tapped-land cost 1.4 -> 2.2); the rares stay
+#: notes: wishlisted for 85 and swap back one for one as they are crafted.
 #: notes: City on Fire for Fury, 2026-10-29 (owner's pick): every source deals triple damage; convoke
 #: notes: taps creatures that Captain America then untaps. Cast it with convoke while Tellah is out —
 #: notes: 8 mana spent would sacrifice Tellah on cast, before City resolves.
@@ -185,18 +191,16 @@
 1 Starting Town (FIN) 289
 1 Evolving Wilds (ECL) 264
 1 Daily Bugle Building (SPM) 179
-1 Scalding Tarn (MH2) 254
-1 Arid Mesa (MH2) 244
-1 Shivan Reef (DMU) 255
-1 Battlefield Forge (BRO) 257
+1 Fire Nation Palace (TLA) 268
+1 Stark Industries (MSH) 272
+1 Asgardian Citadel (MSH) 258
 1 Avengers Tower (MSH) 260
 1 Secluded Courtyard (FDN) 267
-1 Sulfur Falls (DOM) 247
+1 Command Tower (FRC) 22
 1 Clifftop Retreat (DOM) 239
 1 Spirebluff Canal (OTJ) 270
 1 Reflecting Pool (FRC) 23
-1 Adarkar Wastes (DMU) 243
-9 Mountain (FRA) 287
-1 Glacial Fortress (XLN) 255
-3 Island (FRA) 283
+1 Avengers Hangar (MSH) 259
+10 Mountain (FRA) 287
+4 Island (FRA) 283
 3 Plains (FRA) 281

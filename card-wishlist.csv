@@ -401,7 +401,7 @@ Jace, Multiverse Architect can be your commander.",W/U/B/R,Jace; planeswalker; c
 "Nissa, Leyline Tamer",Legendary Creature — Elf Wizard,"Deathtouch, vigilance
 Landfall — Whenever a land you control enters, draw a card. Then if this is the first time this ability has resolved this turn, reveal cards from the top of your library until you reveal a creature card. Put that card onto the battlefield and the rest on the bottom of your library in a random order.",W/U/B/R,Elf; Wizard; card draw; landfall; vigilance; combat; deathtouch; removal; lands,FRC,2,Mythic,90,,8.0,seed
 Reflecting Pool,Land,{T}: Add one mana of any type that a land you control could produce.,Colorless,mana,FRC,23,Rare,84,,4.0,seed
-Command Tower,Land,{T}: Add one mana of any color in your commander's color identity.,Colorless,mana,FRC,22,Common,88; 91; 93; 94,,1.5,seed
+Command Tower,Land,{T}: Add one mana of any color in your commander's color identity.,Colorless,mana,FRC,22,Common,88; 91; 93; 94; 85,,1.5,seed
 Inexorable Tide,Enchantment,"Whenever you cast a spell, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)",U,proliferate; counters,HA2,6,Rare,94,,5.5,seed
 Nurturing Peatland,Land,"{T}, Pay 1 life: Add {B} or {G}.
 {1}, {T}, Sacrifice this land: Draw a card.",B/G,pay life; card draw; sacrifice,HA7,23,Rare,89,,3.0,seed
