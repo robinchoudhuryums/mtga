@@ -2,9 +2,6 @@ Card Name,Type,Card Text,Color(s),Synergies,Set Code,Collector #,Rarity,Target,N
 "Brimaz, King of Oreskos",Legendary Creature — Cat Soldier,"Vigilance
 Whenever Brimaz attacks, create a 1/1 white Cat Soldier creature token with vigilance that's attacking.
 Whenever Brimaz blocks a creature, create a 1/1 white Cat Soldier creature token with vigilance that's blocking that creature.",W,Cat; Soldier; tokens; vigilance; combat,,,Mythic,78-historic-brawl,,7.0,seed
-"Chandra, Pyromaster",Legendary Planeswalker — Chandra,"+1: Chandra deals 1 damage to target player or planeswalker and 1 damage to up to one target creature that player or that planeswalker's controller controls. That creature can't block this turn.
-0: Exile the top card of your library. You may play it this turn.
-−7: Exile the top ten cards of your library. Choose an instant or sorcery card exiled this way and copy it three times. You may cast the copies without paying their mana costs.",R,Chandra; planeswalker; burn; impulse; noncombat damage,,,Mythic,85,,10.0,seed
 "Donatello, the Brains",Legendary Creature — Mutant Ninja Turtle,"If one or more tokens would be created under your control, those tokens plus a Mutagen token are created instead.
 Partner—Character select (You can have two commanders if both have this ability.)",U,Mutant; Ninja; Turtle; tokens; partner,,,Mythic,86,,5.0,seed
 Gandalf the White,Legendary Creature — Avatar Wizard,"Flash
@@ -321,7 +318,7 @@ Whenever one or more other creatures you control enter, if one or more of them e
 "Yuna, Grand Summoner",Legendary Creature — Human Cleric,"Grand Summon — {T}: Add one mana of any color. When you next cast a creature spell this turn, that creature enters with two additional +1/+1 counters on it.
 Whenever another permanent you control is put into a graveyard from the battlefield, if it had one or more counters on it, you may put that number of +1/+1 counters on target creature.",W/U/G,Human; Cleric; counters; graveyard; mana; etb,FIC,8,Mythic,90,,5.5,seed
 "Mog, Moogle Warrior",Legendary Creature — Moogle Warrior,"Lifelink
-Dance — At the beginning of your end step, each player may discard a card. Each player who discarded a card this way draws a card. If a creature card was discarded this way, you create a 1/2 white Moogle creature token with lifelink. Then if a noncreature card was discarded this way, put a +1/+1 counter on each Moogle you control.",W/R,Moogle; Warrior; counters; lifegain; tokens; lifelink,FIC,89,Rare,93,,4.0,seed
+Dance — At the beginning of your end step, each player may discard a card. Each player who discarded a card this way draws a card. If a creature card was discarded this way, you create a 1/2 white Moogle creature token with lifelink. Then if a noncreature card was discarded this way, put a +1/+1 counter on each Moogle you control.",W/R,Moogle; Warrior; counters; lifegain; tokens; lifelink,FIC,89,Rare,93; 85,,4.0,seed
 Esper Origins // Summon: Esper Maduin,Sorcery // Enchantment Creature — Saga Elemental,"Surveil 2. You gain 2 life. If this spell was cast from a graveyard, exile it, then put it onto the battlefield transformed under its owner's control with a finality counter on it. (If a creature with a finality counter on it would die, exile it instead.)
 Flashback {3}{G} (You may cast this card from your graveyard for its flashback cost. Then exile it.) // (As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
 I — Reveal the top card of your library. If it's a permanent card, put it into your hand.
@@ -531,8 +528,6 @@ Entwine {1}{R} (Choose both if you pay the entwine cost.)",R,entwine; double str
 Sword of Fire and Ice,Artifact — Equipment,"Equipped creature gets +2/+2 and has protection from red and from blue.
 Whenever equipped creature deals combat damage to a player, this Equipment deals 2 damage to any target and you draw a card.
 Equip {2}",Colorless,equipment; card draw; burn; pump; noncombat damage; equip,MAR,100,Mythic,85,,8.0,seed
-"Pia Nalaar, Consul of Revival",Legendary Creature — Human Artificer,"Thopters you control have haste.
-Whenever you play a land from exile or cast a spell from exile, create a 1/1 colorless Thopter artifact creature token with flying.",W/R,Human; Artificer; Thopter; tokens; haste; aggro,MAT,42,Rare,85,,5.5,seed
 Arid Mesa,Land,"{T}, Pay 1 life, Sacrifice this land: Search your library for a Mountain or Plains card, put it onto the battlefield, then shuffle.",Colorless,pay life; sacrifice; ramp,MH2,244,Rare,85,,3.0,seed
 Scalding Tarn,Land,"{T}, Pay 1 life, Sacrifice this land: Search your library for an Island or Mountain card, put it onto the battlefield, then shuffle.",Colorless,pay life; sacrifice; ramp,MH2,254,Rare,85,,3.0,seed
 Verdant Catacombs,Land,"{T}, Pay 1 life, Sacrifice this land: Search your library for a Swamp or Forest card, put it onto the battlefield, then shuffle.",Colorless,pay life; sacrifice; ramp,MH2,260,Rare,89,,3.0,seed
@@ -548,6 +543,9 @@ Branching Evolution,Enchantment,"If one or more +1/+1 counters would be put on a
 Fanatic of Rhonas,Creature — Snake Druid,"{T}: Add {G}.
 Ferocious — {T}: Add {G}{G}{G}{G}. Activate only if you control a creature with power 4 or greater.
 Eternalize {2}{G}{G} ({2}{G}{G}, Exile this card from your graveyard: Create a token that's a copy of it, except it's a 4/4 black Zombie Snake Druid with no mana cost. Eternalize only as a sorcery.)",G,Snake; Druid; reanimator; graveyard; tokens; mana; ferocious; eternalize,MH3,152,Rare,89,deck 89 tune 2026-10-23,6.0,seed
+"Laelia, the Blade Reforged",Legendary Creature — Spirit Warrior,"Haste
+Whenever Laelia attacks, exile the top card of your library. You may play that card this turn.
+Whenever one or more cards are put into exile from your library and/or your graveyard, put a +1/+1 counter on Laelia.",R,Spirit; Warrior; counters; graveyard; impulse; haste; aggro,MH3,281,Rare,85,,7.0,seed
 Party Thrasher,Creature — Lizard Wizard,"Noncreature spells you cast from exile have convoke. (Each creature you tap while casting a noncreature spell from exile pays for {1} or one mana of that creature's color.)
 At the beginning of your first main phase, you may discard a card. If you do, exile the top two cards of your library, then choose one of them. You may play that card this turn.",R,Lizard; Wizard; impulse; convoke; go-wide,MH3,129,Rare,85,,6.5,seed
 Psychic Frog,Creature — Frog,"Whenever this creature deals combat damage to a player or planeswalker, draw a card.
@@ -661,6 +659,8 @@ Whenever you discard one or more cards, Spider-Man deals that much damage to any
 Whenever one or more creatures you control with flying deal combat damage to a player, put a +1/+1 counter on each of those creatures and draw a card.",U,Human; Artificer; Villain; counters; card draw; flying; evasion,MSC,645,Rare,94,,7.0,seed
 Daughter of the Deep,Creature — Merfolk Noble,"Whenever you draw your second card each turn, create a 1/1 blue Merfolk creature token.
 {U}, {T}: Target Merfolk can't be blocked this turn.",U,Merfolk; Noble; tokens,MSC,618,Uncommon,94,,4.0,seed
+"Iron Lad, Young Avenger",Legendary Artifact Creature — Human Hero,"Flying (This creature can't be blocked except by creatures with flying or reach.)
+Noncreature spells you cast cost {1} less to cast.",U/R,Human; Hero; cost-reduction; flying; evasion,MSC,569,Uncommon,85,,4.5,seed
 "Lady Spider, Maybelle Reilly",Legendary Creature — Spider Human Hero,"Reach
 Whenever you discard a card, put a +1/+1 counter on target Spider you control.",R,Spider; Human; Hero; counters; reach; defense,MSC,695,Uncommon,85,,4.5,seed
 Origin of Black Widow,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)

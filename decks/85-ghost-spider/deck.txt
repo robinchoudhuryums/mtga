@@ -23,6 +23,13 @@
 #: archetype: (Standard Boros impulse, 60 cards) and deck 2 (Standard mono-red burn): this one is
 #: archetype: the noncombat-damage loop, in Brawl.
 #: protect: Gwen Stacy // Ghost-Spider; Thor, Guardian of Midgard; Nico Minoru, Runaway; Thor, Asgard's Avenger; Hawkeye, Young Avenger
+#: notes: FOUR SWAPS, 2026-10-29 (owner's picks): Captain America, Living Legend for Chandra,
+#: notes: Pyromaster (untaps Nico, Taii, Echo and Jessica Jones once a turn, so each taps twice, and
+#: notes: the team attacks without tapping), Mog, Moogle Warrior for Pia Nalaar (an end-step loot that
+#: notes: feeds Lady Spider and Spider-Man, New Champion), Iron Lad, Young Avenger for Daredevil's
+#: notes: Billy Club (noncreature spells cost {1} less), Laelia, the Blade Reforged for
+#: notes: Interdimensional Web Watch (impulse on attack; grows on every exile from the library).
+#: notes: Interaction 19 -> 17, card advantage 14 -> 13 — accepted.
 #: notes: Spider-Sense back in for Asgardian Inspiration, 2026-10-29 (owner's pick): an instant
 #: notes: answer to a spell or triggered ability over a one-card {R} impulse; card advantage 15 -> 14.
 #: notes: Lady Spider, Maybelle Reilly for Spider-Sense, 2026-10-29 (owner's pick): every discard
@@ -109,7 +116,6 @@
 1 Spider-Verse (SPM) 93
 1 Goliath Daydreamer (ECL) 143
 1 Bilbo, Thief in the Night (HOB) 33
-1 Pia Nalaar, Consul of Revival (MAT) 42
 1 Scalesoul Gnome (YLCI) 28
 
 # Impulse engines — exile the top card and play it
@@ -117,10 +123,9 @@
 1 Daredevil, Man Without Fear (MSH) 213
 1 Chandra, Torch of Defiance (FRA) 244
 1 Charred Foyer (DSK) 129
-1 Interdimensional Web Watch (SPM) 165
+1 Laelia, the Blade Reforged (MH3) 281
 1 The Legend of Roku (TLA) 145
 1 Jessica Jones, Private Eye (MSH) 139
-1 Chandra, Pyromaster (AKR) 146
 1 Valakut Exploration (ZNR) 175
 1 Party Thrasher (MH3) 129
 
@@ -136,16 +141,17 @@
 1 Monica Rambeau (MSH) 23
 1 Thor, God of Thunder (MSH) 156
 1 Tellah, Great Sage (FIN) 244
-1 Daredevil's Billy Club (MSC) 686
 1 Spider-Man, Web-Spinner (MSC) 832
 1 Echo, Perceptive Prodigy (MSH) 51
 1 Shiko and Narset, Unified (TDC) 7
 1 Longhorn Sharpshooter (OTJ) 132
 1 Gandalf, Goblins' Bane // Flameshape (HOB) 96
 1 Lady Spider, Maybelle Reilly (MSC) 695
+1 Captain America, Living Legend (MSH) 210
 
 # Discard and loot — Spider-Man, New Champion turns each discard into damage
 1 Origin of Thor (MSC) 701
+1 Mog, Moogle Warrior (FIC) 89
 
 # Protection — ward, and airbending a threat out of a removal spell
 1 Thorin Oakenshield (HOB) 165
@@ -163,6 +169,7 @@
 1 Koth, Fire of Resistance (ONE) 138
 1 Glóin the Mighty // Easy Pickings (HOB) 99
 1 Chandra, Dressed to Kill (VOW) 149
+1 Iron Lad, Young Avenger (MSC) 569
 
 # Lands (37)
 1 Steam Vents (ECL) 267
