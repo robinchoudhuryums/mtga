@@ -95,6 +95,7 @@ Crustacean Commando
 Cryogen Relic
 Crypt Feaster
 Cuboid Colony
+Curator of Destinies
 Daemogoth Titan
 Daggerfang Duo
 Dalkovan Packbeasts
@@ -134,6 +135,7 @@ Echo, Perceptive Prodigy
 Eclipsed Merrow
 Eerie Gravestone
 Effortless Master
+Elite Spellbinder
 Eluge, the Shoreless Sea
 Emeritus of Woe
 Emil, Vastlands Roamer
@@ -142,6 +144,7 @@ End of the Hunt
 Enigma Drake
 Entropic Battlecruiser
 Entrust the Spark
+Ephemerate
 Eternal Skylord
 Fallen Shinobi
 Fang, Roku's Companion
@@ -180,6 +183,7 @@ Giant-Man, Gargantuan Genius
 Gilgamesh, Master-at-Arms
 Glarb, Calamity's Augur
 Glider Kids
+Glorious Protector
 Goblin-town Flunkies
 Gogo, Master of Mimicry
 Gold Rush
@@ -308,6 +312,7 @@ Nyxbloom Ancient
 Oath of Teferi
 Oglor, Devoted Assistant
 Okoye, Dora Milaje Leader
+Omen of the Sea
 Omnipresence
 Omniscience
 Omnivorous Flytrap
@@ -352,6 +357,7 @@ Reckless Velocitaur
 Reno and Rude
 Resentful Revelation
 Resolute Reinforcements
+Restoration Angel
 Restorative Technique
 Retrieve the Esper
 Rhovanion Rampager
@@ -381,6 +387,7 @@ She-Hulk, Attorney-at-Law
 Sheriff of Safe Passage
 Shredder, Unrelenting
 Shrike Force
+Silver Surfer, Cosmic Voyager
 Silvergill Mentor
 Silverquill, the Disputant
 Simic Ascendancy
@@ -422,6 +429,7 @@ Tangle Tumbler
 Tannuk, Steadfast Second
 Tapestry Warden
 Team Tactics
+Teleportation Circle
 Tenured Tethermage
 Terrapact Intimidator
 Tetsuko Umezawa, Pursuer
@@ -481,6 +489,7 @@ Vito's Inquisitor
 Vizier of the Scorpion
 Voyager Glidecar
 Vulture, Scheming Scavenger
+Wall of Omens
 War Balloon
 War Machine, Legacy of Iron
 War Squeak
@@ -497,9 +506,11 @@ White Tiger, Ava Ayala
 Wisecrack
 Wolverine, Claws Out
 Wonder Man, Hollywood Hero
+Wood Elves
 Woodwork Prodigy // Soul Tether
 Xolatoyac, the Smiling Flood
 Y'shtola Rhul
+Yorion, Sky Nomad
 Zagras, Thief of Heartbeats
 Zog, Triceraton Castaway
 Zurgo, Thunder's Decree
