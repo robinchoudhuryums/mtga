@@ -325,7 +325,6 @@ Perigee Beckoner
 Personify
 Peter Parker
 Peter Parker // Amazing Spider-Man
-Photon, Lady of Light
 Picklock Prankster // Free the Fae
 Pond Prophet
 Pride of the Road
@@ -369,6 +368,7 @@ Sandstorm Salvager
 Savage Beating
 Savage Land Dinosaur
 Savage Ventmaw
+Scalesoul Gnome
 Scarlet Spider, Ben Reilly
 Scarlet Spider, Kaine
 Season of Weaving
@@ -381,7 +381,6 @@ She-Hulk, Attorney-at-Law
 Sheriff of Safe Passage
 Shredder, Unrelenting
 Shrike Force
-Silver Surfer, Cosmic Voyager
 Silvergill Mentor
 Silverquill, the Disputant
 Simic Ascendancy
@@ -418,6 +417,7 @@ Super-Soldier Serum
 Surrak, Elusive Hunter
 Sweettooth Witch
 Swiftblade Vindicator
+Taii Wakeen, Perfect Shot
 Tangle Tumbler
 Tannuk, Steadfast Second
 Tapestry Warden
@@ -454,6 +454,7 @@ Toph, Greatest Earthbender
 Toph, the Blind Bandit
 Toph, the First Metalbender
 Topiary Lecturer
+Torbran, Thane of Red Fell
 Treasure Dredger
 Treeguard Duo
 Treetop Snarespinner
