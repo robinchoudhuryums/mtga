@@ -17,6 +17,14 @@
 #: archetype: (mono-B Standard Sibsig zombies, which this pile grew out of): the engine here is
 #: archetype: Hashaton's discard-to-copy, and Sibsig is the secondary switch, not the plan.
 #: protect: Hashaton, Scarab's Fist; Psychic Frog; Miasmic Mummy; Liliana of the Veil; Bone Miser; Doctor Doom; The Sibsig Ceremony; Necroduality; Waste Not; Aven Wind Guide; Soul Diviner
+#: notes: BUDGET LANDS, 2026-10-29 (owner's pick, variant B — all owned): the twelve unowned rare
+#: notes: lands are stood in until crafted — Adarkar Wastes -> Floodfarm Verge, Glacial Fortress ->
+#: notes: Tranquil Cove, Caves of Koilos -> Shattered Sanctum, Concealed Courtyard -> Starting Town,
+#: notes: Isolated Chapel -> Dalkovan Encampment, Silent Clearing -> Temple of Silence, Clearwater
+#: notes: Pathway -> Soured Springs, Darkslick Shores -> Dismal Backwater, Drowned Catacomb -> Swamp,
+#: notes: Sunken Hollow -> Island, Underground River -> Swamp, Raffine's Tower -> Scoured Barrens.
+#: notes: Tempo sim 51.5 -> 47.8 on curve (tapped-land cost 2.5 -> 3.5); Great Arashin City was left
+#: notes: out (it exiles creature cards from the graveyard). The rares stay wishlisted for 91.
 #: notes: DRAFTED 2026-10-25 from the owner's 118-card pile out of deck 53
 #: notes: (.cycle/91-hashaton-pile-analysis.md, four batches and two revision passes) plus outside
 #: notes: outlets: Psychic Frog, Archfiend of Ifnir (since cut), Miasmic Mummy, Liliana of the Veil (and, at
@@ -155,27 +163,24 @@
 
 # Lands (36)
 1 Command Tower (FRC) 22
-1 Raffine's Tower (SNC) 254
+1 Scoured Barrens (M21) 250
 1 Watery Grave (EOE) 261
 1 Godless Shrine (EOE) 254
 1 Hallowed Fountain (ECL) 265
-1 Underground River (BRO) 267
-1 Drowned Catacomb (XLN) 253
-1 Darkslick Shores (ONE) 250
-1 Sunken Hollow (EA3) 23
-1 Clearwater Pathway // Murkwater Pathway (ZNR) 260
+1 Dismal Backwater (FDN) 261
+1 Soured Springs (OTJ) 264
 1 Gloomlake Verge (DSK) 260
 1 Undercity Sewers (PZA) 0
 1 Hidden Lair (MSH) 269
-1 Caves of Koilos (DMU) 244
-1 Concealed Courtyard (OTJ) 268
-1 Isolated Chapel (DOM) 241
-1 Silent Clearing (HA7) 24
+1 Shattered Sanctum (SOS) 260
+1 Starting Town (FIN) 289
+1 Dalkovan Encampment (TDM) 253
+1 Temple of Silence (FDN) 704
 1 Bleachbone Verge (DFT) 250
-1 Glacial Fortress (XLN) 255
+1 Tranquil Cove (TDM) 270
 1 Realm of Koh (TLA) 276
-1 Adarkar Wastes (DMU) 243
+1 Floodfarm Verge (DSK) 259
 1 Contaminated Landscape (MH3) 218
-7 Swamp (FRA) 285
-5 Island (FRA) 283
+9 Swamp (FRA) 285
+6 Island (FRA) 283
 2 Plains (FRA) 281
