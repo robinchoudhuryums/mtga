@@ -6223,3 +6223,5 @@ Flying
 Whenever you scry or surveil, put a +1/+1 counter on each creature you control.",W/U,Elder; Sphinx; counters; scry; flying; evasion; flash; tempo,FRA,128,1
 Dragonskull Summit,Land,"This land enters tapped unless you control a Swamp or a Mountain.
 {T}: Add {B} or {R}.",B/R,mana,XLN,252,1
+Clifftop Retreat,Land,"This land enters tapped unless you control a Mountain or a Plains.
+{T}: Add {R} or {W}.",W/R,mana,DOM,239,1
