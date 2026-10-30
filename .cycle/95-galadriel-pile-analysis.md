@@ -61,6 +61,10 @@ tokens 7 / 7.
 - **"Exile until this leaves" cards** (Prison Realm, Detention Sphere) are fine removal,
   but a blink of them by Silver Surfer or Yorion RETURNS the exiled card before the new
   copy re-exiles (Rule 5). Teleportation Circle cannot target them (creature/artifact only).
+- **Protection cluster**: Shalai and Sigarda (hexproof for everything else), Sephara,
+  Avacyn — the deck's protection is 6; one hexproof lord is probably enough.
+- **Counters payoffs arrive** (R7 gap): Metropolis Angel (draw), Elrond, Master of Healing,
+  Metastatic Evangel (proliferate). Metastatic + Flux Channeler are multipliers, not payoffs.
 - **Tocasia, Dig Site Mentor turns every creature into a surveil engine** — the single
   biggest scry-sub-theme card in the pile; Denzilore, Matoya, Planetarium and Elrond,
   Master of Healing all pay per surveil.
@@ -98,6 +102,36 @@ Legend: ★★★ take · ★★ strong · ★ real · ◇ situational · △ ma
 | 23 | Tocasia, Dig Site Mentor | — | ★★★ | Creatures have vigilance and "{T}: Surveil 1" — every creature is a surveil engine for Denzilore, Matoya, Planetarium (R9). |
 | 24 | Chulane, Teller of Tales | — | ★★★ | Every creature CAST draws a card and puts a land; "{3}, {T}: Return target creature you control to its owner's hand" re-buys an enters trigger. |
 | 25 | Speaker of the Heavens | — | ★★ | 1-drop lifelink; at 32+ life taps for a 4/4 Angel each turn (R2). Early play (R6). |
+
+### Batch 2 (cards 26–50)
+
+| # | Card | Own | Verdict | Note (rule) |
+|---|---|---|---|---|
+| 26 | Metastatic Evangel | — | ★★ | {1}{W}: every nontoken creature entering proliferates — Galadriel/Archangel/Heliod counters, planeswalker loyalty, verse counters. Blink feeds it each time (R1, R7). |
+| 27 | Angelheart Protector | — | ◇ | Enters: one creature indestructible this turn — a blink in response is a save. |
+| 28 | Metropolis Reformer | — | ★ | 3-mana Angel flier; "You have hexproof"; damage dealt to it gains life. |
+| 29 | Righteous Valkyrie | — | ★★ | Angel or Cleric entering gains life = its toughness (blink repeats it); at 32+ life every creature gets +2/+2. |
+| 30 | Valgavoth, the Lifeline | — | ★★ | 3-mana Angel; each gain grows creature cards in hand and yard perpetually; having gained life lets you CAST creatures from the graveyard — recursion every turn the lifegain engine runs. |
+| 31 | Archangel of Tithes | own | ★ | {1}{W}{W}{W}; attackers cost {1} each — a defensive tax. Owned. |
+| 32 | Champions of Tyr | — | ◇ | Boon: next creature cast enters with a keyword counter. Small. |
+| 33 | Serra the Benevolent | — | ◇ | −3: a 4/4 Angel; +2 pumps fliers. |
+| 34 | Shalai, Voice of Plenty | — | ★★ | You, your planeswalkers and other creatures have hexproof (protection, R7); {4}{G}{G}: a counter on each creature. |
+| 35 | Angel of Destiny | — | ◇ | Alt-win at 40 needs combat damage and symmetric gains. Felidar does it without combat. |
+| 36 | Angel of Sanctions | — | ★★ | Enters: exile a nonland permanent until it leaves — a blink re-targets (R5 is harmless here); embalm gives a second copy. |
+| 37 | Elspeth Resplendent | — | ★★ | +1 counter and keyword; −3 puts a ≤3 MV permanent from the top 7 onto the battlefield (a free enters, R1); −7 five Angels. |
+| 38 | Divine Visitation | — | ◇ | Creature tokens become 4/4 flying Angels. ~7 token makers today (count before adding, G-61). |
+| 39 | Herald of War | — | △ | Attack-only value (R1). |
+| 40 | Light of the Legion | — | △ | 6 MV; mentor/death counters. |
+| 41 | Valkyrie Harbinger | — | ★ | 6-mana lifelink Angel; each end step with 4+ life gained makes a 4/4 Angel (doubled, R4). Resplendent Angel does it for 3. |
+| 42 | Ob Nixilis, the Ascended | — | ★★ | 7-mana Angel: enters destroying all their TAPPED creatures (blink after they attack = another wipe); end step Angel if you gained life (R4). |
+| 43 | Sephara, Sky's Blade | — | ★ | Your other fliers are indestructible; alt cost tap four fliers + {W}. ~19 evasive bodies. |
+| 44 | Avacyn, Angel of Hope | — | ★ | 8 MV; everything you control indestructible. Late protection. |
+| 45 | Parhelion II | — | ◇ | 8-mana vehicle, crew 4, attacking Angels. |
+| 46 | Orvar, the All-Form | — | ◇ | Instant/sorcery targeting your permanent → token copy. Ephemerate is the only targeted blink spell left. |
+| 47 | Seraphic Steed | — | ◇ | {G}{W} lifelink first striker; saddled attack → Angel. Early drop. |
+| 48 | Metropolis Angel | — | ★★ | Attack with any creature with counters → draw. A counters PAYOFF (R7) on a flier. |
+| 49 | Torens, Fist of the Angels | — | ★★ | Every creature cast makes a 1/1 token that enters (R2). |
+| 50 | Sigarda, Font of Blessings | — | ★★★ | Other permanents hexproof (protection), and cast Angels and Humans from the top of your library (Humans 14 + the Angel sub-theme) — card advantage every turn. |
 
 ## 5. Consolidated plan (live)
 
