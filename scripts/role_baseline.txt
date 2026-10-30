@@ -95,7 +95,6 @@ Crustacean Commando
 Cryogen Relic
 Crypt Feaster
 Cuboid Colony
-Curator of Destinies
 Daemogoth Titan
 Daggerfang Duo
 Dalkovan Packbeasts
@@ -502,11 +501,9 @@ White Tiger, Ava Ayala
 Wisecrack
 Wolverine, Claws Out
 Wonder Man, Hollywood Hero
-Wood Elves
 Woodwork Prodigy // Soul Tether
 Xolatoyac, the Smiling Flood
 Y'shtola Rhul
-Yorion, Sky Nomad
 Zagras, Thief of Heartbeats
 Zog, Triceraton Castaway
 Zurgo, Thunder's Decree
