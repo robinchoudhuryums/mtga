@@ -264,43 +264,47 @@ Legend: ★★★ take · ★★ strong · ★ real · ◇ situational · △ ma
 
 ## 5. Consolidated plan (live)
 
-**FINAL PROPOSAL (2026-10-30, revised after part 3)** — 19 swaps, chosen for how the cards work together.
-Preview: legal; floor B; card advantage 6 → 9; interaction 9 (reads 9 but is ~11 by hand —
-Yangchen and Aang are classifier holes); avg MV 3.75 → 3.84; tempo-sim on-curve 49.9%
-with one Forest → Plains.
+**FINAL PROPOSAL v3 (2026-10-30, owner's additions)** — 26 swaps + one Forest → Plains.
+Bloombrute kept (Chulane now cuts Charming Prince); owner adds Ajani (Strength of the
+Pride), Righteous Valkyrie, Felidar Sovereign, Valgavoth, Elspeth Resplendent, Quintorius
+(Fate Splitter), King T'Challa. "Tolsimir" is already in as Friend to Wolves; Midnight's
+Light (owned) is the optional extra.
 
-| Out | In | Why together |
-|---|---|---|
-| Spark Double | Sakashima of a Thousand Faces | Same copy job + legend rule off (double Y'shtola / Soul Warden / Archangel). |
-| Getaway Glamer | Flickering Hound | A blink on every creature cast. |
-| Rumor Gatherer | Tocasia, Dig Site Mentor | Every creature surveils → Denzilore, Matoya, Planetarium. |
-| Political Triumph | Cleric Class | Every gain +1; level 2 a counter per gain. |
-| Eternal Witness | Serra Paragon (owner *) | Recasts a ≤3 MV permanent from the yard each turn. |
-| Ephara, God of the Polis | Huatli, Radiant Champion | Ultimate in ~2 turns on a wide board → draw on every creature entering. |
-| Curator of Destinies | Drogskol Reaver | A card per gain = per creature entering. |
-| Venser, Shaper Savant | The Wandering Emperor | Instant-speed exile + tokens. |
-| Sundering Archaic | The Legend of Yangchen (own) | Exiles two of their permanents; draws 3. |
-| Another Round | Emiel the Blessed | Repeatable "{3}: blink". |
-| Palantír of Orthanc | Detention Sphere | Removal for any nonland permanent. |
-| Vanguard Seraph | Sigarda, Font of Blessings | Hexproof for the board; Angels/Humans from the top. |
-| Holy Cow | Resplendent Angel (own) | 4/4 Angel per end step, two with Y'shtola. |
-| Bloombrute | Chulane, Teller of Tales | A card + a land per creature cast; re-buy ability. |
-| Salvation Swan | Aang, Swift Savior (own) | Flash protection/interaction. |
-| Ignis Scientia | Arwen, Weaver of Hope | Every blinked creature returns with 3+ counters. |
-| Aang, at the Crossroads | Tolsimir, Friend to Wolves | Blink = fight removal + 3 life + a token. |
-| Wood Elves | The Book of Exalted Deeds (owner *) | Angel each end step with 3+ gained; two with Y'shtola. |
-| Enlightened Confidant | Shanna, Purifying Blade | Same end-step lifegain hook, but draws X cards (twice with Y'shtola). |
+Preview: legal; floor B; card advantage 6 → 11; interaction 9 by the tool (~11 by hand —
+Yangchen and Aang are classifier holes); protection 6 → 5; early drops 12 → 9; avg MV 3.84;
+tempo-sim on-curve 49.9%. Angels 7 (+ tokens from the Book, Resplendent, Elspeth), Clerics 4,
+planeswalkers 5 (Quintorius doubles their activations the turn it enters).
 
-Kept on purpose: Lilysplash Mentor and Saheeli (owner keeps), every multiplier (protect list).
-Next in line (★★ not taken): Sylvan Library, Tranquil Frillback, Flare of Fortitude, Kellan (the Kid, own), Elesh Norn (Grand Cenobite), Ajani (Strength of the Pride), Prison Realm, Elrond (Master of
-Healing), Nissa (Steward of Elements), Oracle of the Alpha, Stenn, Ojutai's Command, Speaker
-of the Heavens, Metastatic Evangel, Righteous Valkyrie, Valgavoth, Shalai, Angel of
-Sanctions, Elspeth Resplendent, Ob Nixilis, Metropolis Angel, Torens, Soul of Emancipation,
-Voice of the Blessed, Rescue Girl, Teshar, Saint Elenda, Conclave Mentor, Arwen (Mortal
-Queen), Arwen Undómiel, Virulent Emissary (own), Accomplished Alchemist, Felidar Sovereign,
-Greenhouse Propagator (own), Daxos, King T'Challa (own), Tolsimir (Midnight's Light, own),
-Disciple of Freyalise, Huatli's Raptor, Quintorius (Fate Splitter), Tainted Observer,
-Contagion Dispenser, Roalesk (Apex Hybrid).
+| Out | In |
+|---|---|
+| Spark Double | Sakashima of a Thousand Faces |
+| Getaway Glamer | Flickering Hound |
+| Rumor Gatherer | Tocasia, Dig Site Mentor |
+| Political Triumph | Cleric Class |
+| Eternal Witness | Serra Paragon |
+| Ephara, God of the Polis | Huatli, Radiant Champion |
+| Curator of Destinies | Drogskol Reaver |
+| Venser, Shaper Savant | The Wandering Emperor |
+| Sundering Archaic | The Legend of Yangchen |
+| Another Round | Emiel the Blessed |
+| Palantír of Orthanc | Detention Sphere |
+| Vanguard Seraph | Sigarda, Font of Blessings |
+| Holy Cow | Resplendent Angel |
+| Charming Prince | Chulane, Teller of Tales |
+| Salvation Swan | Aang, Swift Savior |
+| Ignis Scientia | Arwen, Weaver of Hope |
+| Aang, at the Crossroads | Tolsimir, Friend to Wolves |
+| Wood Elves | The Book of Exalted Deeds |
+| Enlightened Confidant | Shanna, Purifying Blade |
+| Morningtide's Light | Ajani, Strength of the Pride |
+| Crested Sunmare | Righteous Valkyrie |
+| Yorion, Sky Nomad | Felidar Sovereign |
+| Lathiel, the Bounteous Dawn | Valgavoth, the Lifeline |
+| Solemn Simulacrum | Elspeth Resplendent |
+| Mulldrifter | Quintorius, Fate Splitter |
+| Overlord of the Floodpits | King T'Challa |
+
+Kept on purpose: Bloombrute, Lilysplash Mentor, Saheeli (owner keeps); every multiplier.
 
 **Protect (the ranking cannot see their value):** Y'shtola, Silver Surfer, Thassa, Don &
 Leo, Teleportation Circle, Elesh Norn, Panharmonicon — every enters/end-step multiplier.
