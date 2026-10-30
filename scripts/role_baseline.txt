@@ -135,7 +135,6 @@ Echo, Perceptive Prodigy
 Eclipsed Merrow
 Eerie Gravestone
 Effortless Master
-Elite Spellbinder
 Eluge, the Shoreless Sea
 Emeritus of Woe
 Emil, Vastlands Roamer
@@ -183,7 +182,6 @@ Giant-Man, Gargantuan Genius
 Gilgamesh, Master-at-Arms
 Glarb, Calamity's Augur
 Glider Kids
-Glorious Protector
 Goblin-town Flunkies
 Gogo, Master of Mimicry
 Gold Rush
@@ -312,7 +310,6 @@ Nyxbloom Ancient
 Oath of Teferi
 Oglor, Devoted Assistant
 Okoye, Dora Milaje Leader
-Omen of the Sea
 Omnipresence
 Omniscience
 Omnivorous Flytrap
@@ -489,7 +486,6 @@ Vito's Inquisitor
 Vizier of the Scorpion
 Voyager Glidecar
 Vulture, Scheming Scavenger
-Wall of Omens
 War Balloon
 War Machine, Legacy of Iron
 War Squeak

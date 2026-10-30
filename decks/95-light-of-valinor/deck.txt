@@ -14,7 +14,12 @@
 #: archetype: enters and gains life whenever any other creature is exiled, so every blink of your own
 #: archetype: creatures gains life. SCRY SUB-THEME: Galadriel, Gossip's Talent, Political Triumph, Rumor
 #: archetype: Gatherer and Palantir look at the top every turn; Denzilore Fatehold, Matoya, Planetarium
-#: archetype: of Wan Shi Tong and Saheeli pay off each look. DISTINCT from deck 78 (Bant, but Ally
+#: archetype: of Wan Shi Tong and Saheeli pay off each look. LIFEGAIN SUB-THEME: Soul Warden, Ajani's
+#: archetype: Welcome and Distinguished Conjurer gain life on every creature entering, so each blink also
+#: archetype: feeds Archangel of Thune and Heliod (counters), Bloombrute (cards), Kwia Vigorbloom (Lotus
+#: archetype: mana) and Trelasarra and Vanguard Seraph (scry and surveil); Crested Sunmare, Lathiel,
+#: archetype: Aerith and Enlightened Confidant pay off at end step, twice with Y'shtola. Oji gains, scries
+#: archetype: and blinks. DISTINCT from deck 78 (Bant, but Ally
 #: archetype: trigger-doubling in combat) and deck 94 (Simic counters): this one is a value-blink engine.
 #: protect: Galadriel, Light of Valinor; Y'shtola Rhul; Silver Surfer, Cosmic Voyager; Captain Marvel, Shooting Star
 #: notes: DRAFTED 2026-10-29 with /draft-deck from the owner's brief (Galadriel commander, blink + scry,
@@ -24,9 +29,16 @@
 #: notes: 11 +6 unread, card advantage 6 +3 unread) — the classifier counts each enters trigger once,
 #: notes: and this deck's whole plan is re-using them, so it under-reads by design. Closest deck is 27
 #: notes: (W/U blink, Standard 60-card); this one is the Bant Brawl version with Galadriel and scry.
-#: notes: Bench from the draft screen: Oji, the Exquisite Blade; Kykar, Zephyr Awakener; Ennis, Debate
-#: notes: Moderator; Wiccan, Rising Magician; The Mighty Thor, Jane Foster; Fortune, Loyal Steed;
-#: notes: Flicker of Fate; Eerie Interlude; Semester's End; Proft, Consulting Detective.
+#: notes: Bench from the draft screen: Kykar, Zephyr Awakener; Ennis, Debate Moderator; Wiccan, Rising
+#: notes: Magician; The Mighty Thor, Jane Foster; Fortune, Loyal Steed; Flicker of Fate; Eerie
+#: notes: Interlude; Semester's End; Proft, Consulting Detective.
+#: notes: LIFEGAIN PACKAGE, 2026-10-30 (owner's picks, 15 swaps + Forest -> Plains): Oji for Omen of the
+#: notes: Sea, Distinguished Conjurer for Wall of Omens, Trelasarra for Glorious Protector, Vanguard
+#: notes: Seraph for Seasoned Cryomancer, Holy Cow for Daydream, Enlightened Confidant for Paradox
+#: notes: Surveyor, Soul Warden for Elvish Rejuvenator, Ajani's Welcome for Arcane Signet, Bloombrute for
+#: notes: Brazen Borrower, Archangel of Thune for Elite Spellbinder, Heliod for Absorb, Kwia Vigorbloom
+#: notes: for Cultivator Colossus, Crested Sunmare for Exclusion Mage, Lathiel for Supreme Verdict,
+#: notes: Aerith, Last Ancient for Niko. No sweeper now (the plan is a wide board).
 
 # Commander (leads from the command zone; also one of the 100)
 1 Galadriel, Light of Valinor (HOC) 32
@@ -42,9 +54,8 @@
 1 Teleportation Circle (AFR) 39
 1 Salvation Swan (BLB) 28
 1 Restoration Angel (J21) 117
-1 Niko, Light of Hope (DSK) 224
-1 Glorious Protector (KHM) 12
 1 Abuelo, Ancestral Echo (LCI) 219
+1 Oji, the Exquisite Blade (HBG) 246
 
 # Trigger doublers and draw engines
 1 Elesh Norn, Mother of Machines (ONE) 10
@@ -54,7 +65,6 @@
 # Blink spells
 1 Ephemerate (MAR) 44
 1 Getaway Glamer (OTJ) 14
-1 Daydream (SOS) 9
 1 Morningtide's Light (ECL) 27
 1 Another Round (OTJ) 1
 
@@ -63,13 +73,12 @@
 1 Mulldrifter (J21) 221
 1 Overlord of the Floodpits (DSK) 68
 1 Curator of Destinies (FDN) 34
-1 Seasoned Cryomancer (FRA) 38
 1 Eternal Witness (AA2) 13
 1 Aang, at the Crossroads (TLA) 203
 1 Spark Double (WAR) 68
-1 Wall of Omens (FCA) 27
 1 Thragtusk (JMP) 436
 1 Charming Prince (FDN) 568
+1 Holy Cow (OTJ) 16
 
 # Enters-the-battlefield interaction
 1 Captain Marvel, Shooting Star (MSC) 589
@@ -77,10 +86,7 @@
 1 Skyclave Apparition (ZNR) 39
 1 Solitude (SPG) 44
 1 Sundering Archaic (SOS) 3
-1 Exclusion Mage (FDN) 508
 1 Venser, Shaper Savant (FCA) 6
-1 Brazen Borrower // Petty Theft (ELD) 39
-1 Elite Spellbinder (STX) 17
 
 # Scry and surveil — every look at the top of the library pays
 1 Denzilore Fatehold (FRA) 128
@@ -90,24 +96,32 @@
 1 Political Triumph (MSH) 31
 1 Rumor Gatherer (SNC) 29
 1 Palantír of Orthanc (LTR) 247
-1 Omen of the Sea (THB) 58
 1 Saheeli, Consul of Oversight (FRA) 203
 
-# Ramp — creatures that fetch lands re-fetch when blinked
+# Ramp — creatures that fetch lands re-fetch when blinked (Kwia's Lotus and Galadriel's {G}{G}{G} add more)
 1 Wood Elves (HOB) 142
 1 Solemn Simulacrum (M21) 239
-1 Elvish Rejuvenator (M19) 180
 1 Ignis Scientia (FIN) 227
-1 Paradox Surveyor (SOS) 208
-1 Cultivator Colossus (VOW) 195
-1 Arcane Signet (FRC) 20
+
+# Lifegain — creatures entering gain life, and every gain pays off
+1 Aerith, Last Ancient (FIC) 76
+1 Trelasarra, Moon Dancer (AFR) 236
+1 Vanguard Seraph (FDN) 28
+1 Distinguished Conjurer (MH3) 264
+1 Crested Sunmare (AKR) 11
+1 Bloombrute (FRA) 124
+1 Archangel of Thune (MAR) 41
+1 Soul Warden (SPG) 65
+1 Enlightened Confidant (FRA) 5
+1 Ajani's Welcome (M19) 6
+1 Heliod, Sun-Crowned (THB) 18
+1 Lathiel, the Bounteous Dawn (MUL) 50
+1 Kwia Vigorbloom (FRA) 140
 
 # Other interaction
 1 Swords to Plowshares (SPG) 54
 1 Fateful Absence (MID) 18
 1 Aang's Iceberg (TLA) 5
-1 Absorb (RNA) 151
-1 Supreme Verdict (TMC) 134
 
 # Lands (37)
 1 Command Tower (FRC) 22
@@ -134,6 +148,6 @@
 1 Deserted Beach (FRA) 176
 1 Hengegate Pathway // Mistgate Pathway (KHM) 260
 1 Barkchannel Pathway // Tidechannel Pathway (KHM) 251
-5 Forest (FRA) 289
+4 Forest (FRA) 289
 4 Island (FRA) 283
-4 Plains (FRA) 281
+5 Plains (FRA) 281
