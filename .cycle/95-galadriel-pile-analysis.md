@@ -53,11 +53,51 @@ tokens 7 / 7.
 
 ## 3. Cross-batch observations
 
-(none yet)
+- **An ANGEL sub-theme is forming** in the pile: The Book of Exalted Deeds and Speaker of
+  the Heavens make Angel tokens off lifegain; Resplendent Angel, Lyra (Archangel of Dawn),
+  Serra Paragon, Boon-Bringer Valkyrie are Angels. The deck already runs 4 Angels
+  (Restoration Angel, Archangel of Thune, Holy Cow, Lyra-less). Watch the count — an Angel
+  payoff is only as good as the Angels it can reach (G-59).
+- **"Exile until this leaves" cards** (Prison Realm, Detention Sphere) are fine removal,
+  but a blink of them by Silver Surfer or Yorion RETURNS the exiled card before the new
+  copy re-exiles (Rule 5). Teleportation Circle cannot target them (creature/artifact only).
+- **Tocasia, Dig Site Mentor turns every creature into a surveil engine** — the single
+  biggest scry-sub-theme card in the pile; Denzilore, Matoya, Planetarium and Elrond,
+  Master of Healing all pay per surveil.
 
 ## 4. Running verdicts
 
 Legend: ★★★ take · ★★ strong · ★ real · ◇ situational · △ marginal · ✗ out
+
+### Batch 1 (cards 1–25)
+
+| # | Card | Own | Verdict | Note (rule) |
+|---|---|---|---|---|
+| 1 | Ajani, Strength of the Pride | — | ★★ | +1 gains life = creatures + planeswalkers (wide deck, one big gain); −2 Pridemate; 0 at 40 life exiles ALL their creatures and artifacts — pairs with Felidar Sovereign's 40. |
+| 2 | The Wandering Emperor | — | ★★★ | Flash; −2 exiles a tapped creature and gains 2; −1 makes a 2/2 that enters (R2). Instant-speed interaction the deck lacks (R7). |
+| 3 | Syr Vondam, Sunstar Exemplar | — | ✗ | {W}{B} — off colour. |
+| 4 | The Book of Exalted Deeds* | — | ★★ | End step: gained 3+ life → 3/3 Angel; Y'shtola makes it two (R4); tokens enter (R2). {W}{W}{W} is the cost (R6). |
+| 5 | Ojutai Exemplars | — | △ | Only blinks ITSELF on a noncreature spell; no enters trigger of its own. |
+| 6 | Serra Paragon* | — | ★★ | Once a turn cast a ≤3 MV permanent (or a land) from the graveyard — re-buys Soul Warden, Reflector Mage, Skyclave Apparition; each re-cast enters (R1/R2). Flying Angel. |
+| 7 | Prison Realm | — | ★★ | 3-mana creature/planeswalker exile + scry 1 (R7). Caution R5 with Surfer/Yorion. |
+| 8 | Lost Isle Calling | — | ★ | Verse counter per scry; 7+ = draw 7 and an extra turn. Scry events are frequent here; spice. |
+| 9 | Elrond, Master of Healing | — | ★★ | Every scry puts counters on X creatures (X = cards looked at) — Galadriel's scry 2 = two counters a turn; draws when they're targeted. A counters payoff (R7). |
+| 10 | Nissa, Steward of Elements | — | ★★ | +2 scry 2 every turn; 0 puts a land or a creature (MV ≤ loyalty) onto the battlefield — a free enters (R1). |
+| 11 | Legolas, Counter of Kills | — | △ | Untap on scry; counters when their creatures die. Little for this deck. |
+| 12 | Flickering Hound | — | ★★★ | "Whenever you cast a creature spell, exile up to one other target creature… return it." ~45 creatures: a blink every creature cast (R1). |
+| 13 | Photon, Lady of Light | — | ★ | Blink only on ATTACK (R1 grades attack triggers down). |
+| 14 | The Legend of Yangchen | own | ★★★ | I: each player picks one of THEIR permanents MV ≥3 to exile — in 1v1 that's two of the opponent's; II: both draw 3; III flips to a flier that airbends on your second spell. Owned interaction + cards; Yorion/Surfer restart the Saga. |
+| 15 | Jill, Shiva's Dominant | — | ★ | Enters: return any nonland permanent to hand — tempo, or re-buy your own enters trigger. |
+| 16 | Oracle of the Alpha | — | ★★ | Enters: conjure the Power Nine into your library. Every blink adds another nine (Ancestral Recall, Time Walk, Black Lotus, Moxen). Spice with real power. |
+| 17 | Wakandan Tusker | — | ◇ | Gain 1 + scry 1 whenever it taps; needs a tap outlet (Tocasia gives one). |
+| 18 | Flux Channeler | — | ◇ | Proliferate on noncreature spells — counters, loyalty, verse. A multiplier, not a payoff. |
+| 19 | Meandering Towershell | — | ✗ | Attack-exile, no enters value (R1). |
+| 20 | Stenn, Paranoid Partisan | — | ★★ | {W}{U} 2-drop; "{1}{W}{U}: Exile Stenn. Return it at the next end step" — a guaranteed creature entering every turn (R2: Galadriel + lifegain triggers) plus a cost reducer. |
+| 21 | Detention Sphere | — | ★★ | Exiles any nonland permanent (and all same-named). R5 caution. |
+| 22 | Ojutai's Command | — | ★★ | Instant: two of reanimate ≤2 MV / gain 4 / counter a creature spell / draw. Instant interaction (R7). |
+| 23 | Tocasia, Dig Site Mentor | — | ★★★ | Creatures have vigilance and "{T}: Surveil 1" — every creature is a surveil engine for Denzilore, Matoya, Planetarium (R9). |
+| 24 | Chulane, Teller of Tales | — | ★★★ | Every creature CAST draws a card and puts a land; "{3}, {T}: Return target creature you control to its owner's hand" re-buys an enters trigger. |
+| 25 | Speaker of the Heavens | — | ★★ | 1-drop lifelink; at 32+ life taps for a 4/4 Angel each turn (R2). Early play (R6). |
 
 ## 5. Consolidated plan (live)
 
