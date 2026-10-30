@@ -65,6 +65,11 @@ tokens 7 / 7.
   Avacyn — the deck's protection is 6; one hexproof lord is probably enough.
 - **Counters payoffs arrive** (R7 gap): Metropolis Angel (draw), Elrond, Master of Healing,
   Metastatic Evangel (proliferate). Metastatic + Flux Channeler are multipliers, not payoffs.
+- **A CLERIC sub-theme is mostly incidental**: many pile cards are Clerics (Minwu, Righteous
+  Valkyrie, Cleric Class) but the deck runs ~4 Clerics; treat Cleric payoffs as filler unless
+  several land together (G-59).
+- **Counter multipliers** (Conclave Mentor, Metastatic Evangel, Cleric Class level 2) pair
+  with the counters engine; a payoff (Metropolis Angel, Elrond) is still the missing half.
 - **Tocasia, Dig Site Mentor turns every creature into a surveil engine** — the single
   biggest scry-sub-theme card in the pile; Denzilore, Matoya, Planetarium and Elrond,
   Master of Healing all pay per surveil.
@@ -132,6 +137,36 @@ Legend: ★★★ take · ★★ strong · ★ real · ◇ situational · △ ma
 | 48 | Metropolis Angel | — | ★★ | Attack with any creature with counters → draw. A counters PAYOFF (R7) on a flier. |
 | 49 | Torens, Fist of the Angels | — | ★★ | Every creature cast makes a 1/1 token that enters (R2). |
 | 50 | Sigarda, Font of Blessings | — | ★★★ | Other permanents hexproof (protection), and cast Angels and Humans from the top of your library (Humans 14 + the Angel sub-theme) — card advantage every turn. |
+
+### Batch 3 (cards 51–75)
+
+| # | Card | Own | Verdict | Note (rule) |
+|---|---|---|---|---|
+| 51 | Soul of Emancipation | — | ★★ | 7 MV Bant: enters destroying up to three nonland permanents (their owners get 3/3 Angels). A blink repeats a three-for-one (R1, R7). |
+| 52 | Cleric Class | — | ★★★ | {W}: every gain is +1; level 2: every gain puts a +1/+1 counter on a creature; level 3 reanimates. Turns each per-entry gain into a counter (R3) and gives the counters theme a source. |
+| 53 | Essence Channeler | — | ★ | 2-drop that grows per gain; passes counters on death. Redundant with Voice of the Blessed. |
+| 54 | Priest of Possibility | — | △ | Perpetual keywords from the top 7; small. |
+| 55 | Prophet of the Planeswalker | — | △ | Needs planeswalkers to behold (deck runs 0 today). |
+| 56 | Unflinching Hortimancer | own | ◇ | 2-drop gain → counter, ward 1. Filler-tier payoff. |
+| 57 | Voice of the Blessed | — | ★★ | {W}{W} 2-drop: a counter per gain — with per-entry gains it flies by turn 4–5, indestructible at 10. |
+| 58 | Aerith Gainsborough | own | ★ | Owned 3-drop lifelink that grows per gain; death spreads counters to legends. |
+| 59 | Rescue Girl, First Responder | — | ★★ | Flier; "{T}: Return another target permanent you control to its owner's hand" every turn — re-buys an enters trigger (or saves a creature). |
+| 60 | Hallowed Haunting | — | △ | Enchantment-cast payoff; ~6 enchantments. |
+| 61 | Rosa, Resolute White Mage | own | ◇ | Combat-step counter + lifelink. Owned. |
+| 62 | Teshar, Ancestor's Apostle | — | ★★ | Every historic spell (legendaries are ~20 of the deck, plus Panharmonicon, Sagas) reanimates a ≤3 MV creature — Soul Warden, Reflector Mage, Skyclave come back and re-trigger. |
+| 63 | Bishop of Rebirth | — | ◇ | Same recursion on ATTACK only (R1). |
+| 64 | Minwu, White Mage | — | ◇ | Counters on Clerics per gain; ~4 Clerics in the deck. |
+| 65 | Victory's Envoy | — | ★ | Upkeep: a counter on each other creature. 5 MV. |
+| 66 | Saint Elenda | — | ★★ | 7 MV lifelink; enters: conjure and cast free from its spellbook (a blink repeats it); end step: an X/X where X = life gained this turn — doubled by Y'shtola (R4). |
+| 67 | Mikaeus, the Lunarch | — | ◇ | X counters; a blink returns it at X = 0 (R5). |
+| 68 | Quicksilver Servitor | — | ◇ | Proliferate on cards drawn this turn. |
+| 69 | Arcus Acolyte | — | △ | Outlast counters; sorcery-speed taps. |
+| 70 | Conclave Guildmage | — | △ | Late token sink. |
+| 71 | Conclave Mentor | — | ★★ | {G}{W}: every counter placement gets +1 — Galadriel's counter mode, Archangel, Heliod, Cleric Class. |
+| 72 | Dina, Flesh Sower | — | ◇ | Lifelink 2-drop that grows perpetually. |
+| 73 | Emmara, Soul of the Accord | — | ◇ | Lifelink token when tapped (needs a tap outlet — Tocasia). |
+| 74 | Emmara, Voice of the Conclave | — | ★ | Enters: draft a card from its spellbook — a blink drafts another. Convoke. |
+| 75 | Yuna, Grand Summoner | — | ★ | Mana creature (any colour) that adds counters to the next creature. |
 
 ## 5. Consolidated plan (live)
 
