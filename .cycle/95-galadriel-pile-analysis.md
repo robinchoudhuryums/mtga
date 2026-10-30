@@ -49,7 +49,10 @@ tokens 7 / 7.
 
 ## 2. Standing error list
 
-(none yet)
+- **Role classifier holes (G-67), recorded, not fixed**: The Legend of Yangchen's chapter I
+  ("each player chooses… Exile those permanents") and Aang, Swift Savior's airbend of a
+  creature or spell score as no interaction, so the package preview under-reads
+  interaction by about 2. Grade them by hand.
 
 ## 3. Cross-batch observations
 
@@ -70,6 +73,11 @@ tokens 7 / 7.
   several land together (G-59).
 - **Counter multipliers** (Conclave Mentor, Metastatic Evangel, Cleric Class level 2) pair
   with the counters engine; a payoff (Metropolis Angel, Elrond) is still the missing half.
+- **VARIANT SIGNAL (part 2): a PROLIFERATE cluster** — Huatli's Raptor, Bloom Hulk, Gitaxian
+  Anatomist, Tainted Observer, Contagion Dispenser, Ezuri, Tekuthal, Inexorable Tide,
+  Quintorius (Fate Splitter), Roalesk. Coherent, but a fourth theme on top of blink, scry and
+  lifegain would thin all three. Left out of the package; a counters/proliferate deck is a
+  candidate for its own build.
 - **Tocasia, Dig Site Mentor turns every creature into a surveil engine** — the single
   biggest scry-sub-theme card in the pile; Denzilore, Matoya, Planetarium and Elrond,
   Master of Healing all pay per surveil.
@@ -198,29 +206,83 @@ Legend: ★★★ take · ★★ strong · ★ real · ◇ situational · △ ma
 | 99 | Black Panther, Claws of Bast | — | ✗ | Attacks-alone payoff. |
 | 100 | Lyra, Archangel of Dawn | — | ★ | Counters on every Angel per gain; good only with 8+ Angels. |
 
+### Batch 5 — pile part 2 (37 cards)
+
+| Card | Own | Verdict | Note (rule) |
+|---|---|---|---|
+| Dwynen, Gilt-Leaf Daen | own | △ | Elf lord; ~1 Elf in the deck. |
+| Disciple of Freyalise // Garden of Freyalise | — | ★★ | Modal DFC: a land slot (untapped for 3 life) or a 6-drop that sacrifices a creature to gain X and draw X. |
+| Ledev Champion | — | △ | Attack-only. |
+| Tolsimir, Friend to Wolves | — | ★★★ | Enters → Voja (3/3 Wolf) → "gain 3 life and that creature fights up to one target creature you don't control." Every blink: removal + 3 life + a token entering (R1/R2/R7). |
+| Tolsimir, Midnight's Light | own | ★★ | Enters → a 5/5 trample Wolf token; lifelink. Owned. |
+| Ezuri, Stalker of Spheres | — | ★ | Draw per proliferate; only with a proliferate package. |
+| Elven Passage | own | ◇ | Tapped basic fetch (no Elves to untap it). |
+| Song of Freyalise | — | ◇ | Saga ramp then a counter on everything. |
+| Freyalise, Skyshroud Partisan | — | △ | Elf walker. |
+| Grateful Apparition / Guildpact Informant | — | △ | Combat proliferate. |
+| Dreamtide Whale | — | ◇ | Vanishing; proliferate on the second spell. |
+| Lulu, Stern Guardian | — | ★ | Stuns an attacker every attack; {3}{U} proliferate. Defensive. |
+| Ichormoon Gauntlet | — | ◇ | Needs planeswalkers. |
+| Mesmerizing Dose | — | ★ | Lock-down Aura + proliferate. |
+| Gitaxian Anatomist / Bloom Hulk | — | ★ | Proliferate on entering — blinkable, but only with counters worth growing. |
+| Tezzeret's Gambit | — | ★ | Draw 2 + proliferate. |
+| Tekuthal, Inquiry Dominus | — | ◇ | Proliferate doubler; needs density. |
+| Inexorable Tide | — | ★ | Every spell proliferates. 5 MV. |
+| Unnatural Restoration / Planewide Celebration | — | ◇ | Recursion + proliferate. |
+| Expand the Sphere | — | ★ | Two lands or proliferate. |
+| Venomous Brutalizer | — | △ | Toxic. |
+| Huatli's Raptor | — | ★★ | {G}{W} 2-drop: proliferate on entering (R1). |
+| Quintorius, Fate Splitter | — | ★★ | 0: proliferate + gain 3 every turn; −3 token + a counter on each creature. |
+| Tainted Observer | — | ★★ | Flier; pay {2} on each creature entering to proliferate (R2). |
+| Merfolk Skydiver | — | ★ | Enters with a counter on a creature; late proliferate. |
+| Contagion Dispenser | — | ★★ | Proliferating on your turn drafts a card. |
+| Tidus, Yuna's Guardian | — | ★ | Combat-only payoff. |
+| Roalesk, Apex Hybrid | — | ★★ | Enters: two counters on another creature (R1); dies: proliferate twice. |
+| Roalesk, Prime Specimen | — | △ | Disguise/cloak; little here. |
+| Staff of Compleation | — | ★ | Life into cards ("Pay 4 life: Draw a card"), mana, proliferate. |
+| Karn's Bastion | — | ◇ | Colourless proliferate land; the deck needs coloured sources. |
+| Sword of Truth and Justice | — | ◇ | Combat-gated. |
+| Huatli, Radiant Champion | — | ★★★ | +1 = a loyalty per creature (wide deck, R2); −8 emblem: "Whenever a creature you control enters, you may draw a card." Every blink after that draws. |
+| Huatli, the Sun's Heart | — | △ | Toughness damage. |
+
 ## 5. Consolidated plan (live)
 
-**PROVISIONAL — part 2 of the pile is still to come; nothing is final.** 47 cards graded
-★★ or better against ~63 spell slots; the final package has to choose by interaction.
+**FINAL PROPOSAL (2026-10-30)** — 18 swaps, chosen for how the cards work together.
+Preview: legal; floor B; card advantage 6 → 9; interaction 9 (reads 9 but is ~11 by hand —
+Yangchen and Aang are classifier holes); avg MV 3.75 → 3.84; tempo-sim on-curve 49.9%
+with one Forest → Plains.
 
-**Tier 1 (★★★, 13):** The Wandering Emperor, Flickering Hound, The Legend of Yangchen (own),
-Tocasia, Chulane, Sigarda (Font of Blessings), Cleric Class, Arwen (Weaver of Hope),
-Sakashima, Resplendent Angel (own), Aang (Swift Savior, own), Emiel, Drogskol Reaver.
+| Out | In | Why together |
+|---|---|---|
+| Spark Double | Sakashima of a Thousand Faces | Same copy job + legend rule off (double Y'shtola / Soul Warden / Archangel). |
+| Getaway Glamer | Flickering Hound | A blink on every creature cast. |
+| Rumor Gatherer | Tocasia, Dig Site Mentor | Every creature surveils → Denzilore, Matoya, Planetarium. |
+| Political Triumph | Cleric Class | Every gain +1; level 2 a counter per gain. |
+| Eternal Witness | Serra Paragon (owner *) | Recasts a ≤3 MV permanent from the yard each turn. |
+| Ephara, God of the Polis | Huatli, Radiant Champion | Ultimate in ~2 turns on a wide board → draw on every creature entering. |
+| Curator of Destinies | Drogskol Reaver | A card per gain = per creature entering. |
+| Venser, Shaper Savant | The Wandering Emperor | Instant-speed exile + tokens. |
+| Sundering Archaic | The Legend of Yangchen (own) | Exiles two of their permanents; draws 3. |
+| Another Round | Emiel the Blessed | Repeatable "{3}: blink". |
+| Palantír of Orthanc | Detention Sphere | Removal for any nonland permanent. |
+| Vanguard Seraph | Sigarda, Font of Blessings | Hexproof for the board; Angels/Humans from the top. |
+| Holy Cow | Resplendent Angel (own) | 4/4 Angel per end step, two with Y'shtola. |
+| Bloombrute | Chulane, Teller of Tales | A card + a land per creature cast; re-buy ability. |
+| Salvation Swan | Aang, Swift Savior (own) | Flash protection/interaction. |
+| Ignis Scientia | Arwen, Weaver of Hope | Every blinked creature returns with 3+ counters. |
+| Aang, at the Crossroads | Tolsimir, Friend to Wolves | Blink = fight removal + 3 life + a token. |
+| Wood Elves | The Book of Exalted Deeds (owner *) | Angel each end step with 3+ gained; two with Y'shtola. |
 
-**Tier 2 (★★, 34):** Ajani (Strength of the Pride), The Book of Exalted Deeds, Serra Paragon,
-Prison Realm, Elrond (Master of Healing), Nissa (Steward of Elements), Oracle of the Alpha,
-Stenn, Detention Sphere, Ojutai's Command, Speaker of the Heavens, Metastatic Evangel,
-Righteous Valkyrie, Valgavoth, Shalai, Angel of Sanctions, Elspeth Resplendent, Ob Nixilis
-(the Ascended), Metropolis Angel, Torens, Soul of Emancipation, Voice of the Blessed, Rescue
-Girl, Teshar, Saint Elenda, Conclave Mentor, Arwen (Mortal Queen), Arwen Undómiel, Virulent
-Emissary (own), Accomplished Alchemist, Felidar Sovereign, Greenhouse Propagator (own),
-Daxos (Blessed by the Sun), King T'Challa (own).
-
-**Open decisions for the final pass:** how far to lean into Angels (Lyra and Righteous
-Valkyrie only pay off past ~8 Angels); one hexproof lord (Sigarda or Shalai) not both;
-the counters payoff (Arwen Weaver, Metropolis Angel, Elrond); which interaction pieces
-(Wandering Emperor, Prison Realm, Detention Sphere, Ojutai's Command, Angel of Sanctions,
-Soul of Emancipation) bring interaction back toward the A line of 12.
+Kept on purpose: Lilysplash Mentor and Saheeli (owner keeps), every multiplier (protect list).
+Next in line (★★ not taken): Ajani (Strength of the Pride), Prison Realm, Elrond (Master of
+Healing), Nissa (Steward of Elements), Oracle of the Alpha, Stenn, Ojutai's Command, Speaker
+of the Heavens, Metastatic Evangel, Righteous Valkyrie, Valgavoth, Shalai, Angel of
+Sanctions, Elspeth Resplendent, Ob Nixilis, Metropolis Angel, Torens, Soul of Emancipation,
+Voice of the Blessed, Rescue Girl, Teshar, Saint Elenda, Conclave Mentor, Arwen (Mortal
+Queen), Arwen Undómiel, Virulent Emissary (own), Accomplished Alchemist, Felidar Sovereign,
+Greenhouse Propagator (own), Daxos, King T'Challa (own), Tolsimir (Midnight's Light, own),
+Disciple of Freyalise, Huatli's Raptor, Quintorius (Fate Splitter), Tainted Observer,
+Contagion Dispenser, Roalesk (Apex Hybrid).
 
 **Protect (the ranking cannot see their value):** Y'shtola, Silver Surfer, Thassa, Don &
 Leo, Teleportation Circle, Elesh Norn, Panharmonicon — every enters/end-step multiplier.
