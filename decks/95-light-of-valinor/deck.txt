@@ -3,24 +3,26 @@
 #: colors: GWU
 #: commander: Galadriel, Light of Valinor
 #: plan: midrange
-#: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool), BANT BLINK AND SCRY around
-#: archetype: Galadriel, Light of Valinor: whenever another creature enters, choose a mode not yet
+#: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool), BANT BLINK, SCRY AND LIFEGAIN
+#: archetype: around Galadriel, Light of Valinor: whenever another creature enters, choose a mode not yet
 #: archetype: chosen this turn — {G}{G}{G}, a +1/+1 counter on each creature, or scry 2 then draw. Every
 #: archetype: blink is a creature entering, so each one is ramp, a team pump or a card. BLINK ENGINES
 #: archetype: re-use enters triggers every turn: Y'shtola Rhul (an extra end step, so every end-step
-#: archetype: blink fires twice — Thassa, Don & Leo, Teleportation Circle, Palantir), Silver Surfer
-#: archetype: (flash, blinks the whole board), Yorion, Soulherder, Restoration Angel; Elesh Norn and
-#: archetype: Panharmonicon double every enters trigger. Captain Marvel exiles a creature each time she
-#: archetype: enters and gains life whenever any other creature is exiled, so every blink of your own
-#: archetype: creatures gains life. SCRY SUB-THEME: Galadriel, Gossip's Talent, Political Triumph, Rumor
-#: archetype: Gatherer and Palantir look at the top every turn; Denzilore Fatehold, Matoya, Planetarium
-#: archetype: of Wan Shi Tong and Saheeli pay off each look. LIFEGAIN SUB-THEME: Soul Warden, Ajani's
-#: archetype: Welcome and Distinguished Conjurer gain life on every creature entering, so each blink also
-#: archetype: feeds Archangel of Thune and Heliod (counters), Bloombrute (cards), Kwia Vigorbloom (Lotus
-#: archetype: mana) and Trelasarra and Vanguard Seraph (scry and surveil); Crested Sunmare, Lathiel,
-#: archetype: Aerith and Enlightened Confidant pay off at end step, twice with Y'shtola. Oji gains, scries
-#: archetype: and blinks. DISTINCT from deck 78 (Bant, but Ally
-#: archetype: trigger-doubling in combat) and deck 94 (Simic counters): this one is a value-blink engine.
+#: archetype: trigger fires twice — Thassa, Don & Leo, Teleportation Circle, Shanna, Lathiel), Silver
+#: archetype: Surfer (flash, blinks the whole board), Flickering Hound (a blink per creature cast), Emiel,
+#: archetype: Abuelo, Soulherder, Restoration Angel; Elesh Norn and Panharmonicon double every enters
+#: archetype: trigger, and Sakashima copies the best one. Captain Marvel exiles a creature each time she
+#: archetype: enters and gains life whenever any other creature is exiled. SCRY: Galadriel, Tocasia (every
+#: archetype: creature taps to surveil) and Gossip's Talent feed Denzilore Fatehold, Matoya, Planetarium of
+#: archetype: Wan Shi Tong and Saheeli. LIFEGAIN: Soul Warden, Ajani's Welcome, Distinguished Conjurer and
+#: archetype: Righteous Valkyrie gain on creatures entering, Cleric Class adds 1 to each gain, and each gain
+#: archetype: feeds Archangel of Thune and Heliod (counters), Drogskol Reaver and Bloombrute (cards),
+#: archetype: Kwia Vigorbloom (Lotus mana), Valgavoth (cast creatures from the graveyard) and Trelasarra;
+#: archetype: Resplendent Angel, The Book of Exalted Deeds, Shanna, Lathiel and Aerith pay off at end step.
+#: archetype: The race to 40 life is a second win: Felidar Sovereign, and Ajani's 0 exiles their board.
+#: archetype: Huatli, Radiant Champion's emblem draws on every creature entering. DISTINCT from deck 78 (Bant,
+#: archetype: but Ally trigger-doubling in combat) and deck 94 (Simic counters): this one is a value-blink
+#: archetype: engine.
 #: protect: Galadriel, Light of Valinor; Y'shtola Rhul; Silver Surfer, Cosmic Voyager; Captain Marvel, Shooting Star
 #: notes: DRAFTED 2026-10-29 with /draft-deck from the owner's brief (Galadriel commander, blink + scry,
 #: notes: must-include Y'shtola Rhul, Silver Surfer and Captain Marvel). The optimal list, crafts
@@ -32,6 +34,24 @@
 #: notes: Bench from the draft screen: Kykar, Zephyr Awakener; Ennis, Debate Moderator; Wiccan, Rising
 #: notes: Magician; The Mighty Thor, Jane Foster; Fortune, Loyal Steed; Flicker of Fate; Eerie
 #: notes: Interlude; Semester's End; Proft, Consulting Detective.
+#: notes: PILE PACKAGE, 2026-10-30 (owner's picks from a 148-card pile, 26 swaps + Forest -> Plains):
+#: notes: Sakashima for Spark Double, Flickering Hound for Getaway Glamer, Tocasia for Rumor Gatherer,
+#: notes: Cleric Class for Political Triumph, Serra Paragon for Eternal Witness, Huatli (Radiant Champion)
+#: notes: for Ephara, Drogskol Reaver for Curator of Destinies, The Wandering Emperor for Venser, The
+#: notes: Legend of Yangchen for Sundering Archaic, Emiel for Another Round, Detention Sphere for
+#: notes: Palantir, Sigarda (Font of Blessings) for Vanguard Seraph, Resplendent Angel for Holy Cow,
+#: notes: Chulane for Charming Prince, Aang (Swift Savior) for Salvation Swan, Arwen (Weaver of Hope) for
+#: notes: Ignis Scientia, Tolsimir (Friend to Wolves) for Aang (at the Crossroads), The Book of Exalted
+#: notes: Deeds for Wood Elves, Shanna for Enlightened Confidant, Ajani (Strength of the Pride) for
+#: notes: Morningtide's Light, Righteous Valkyrie for Crested Sunmare, Felidar Sovereign for Yorion,
+#: notes: Valgavoth for Solitude (it handed the opponent life), Elspeth Resplendent for Solemn Simulacrum,
+#: notes: Quintorius (Fate Splitter) for Mulldrifter, King T'Challa for Overlord of the Floodpits.
+#: notes: Pile findings worth keeping: a PROLIFERATE cluster (Huatli's Raptor, Tainted Observer,
+#: notes: Contagion Dispenser, Ezuri, Inexorable Tide, Quintorius, Roalesk) is coherent enough for its own
+#: notes: deck; the role classifier does not count The Legend of Yangchen's exile or Aang's airbend as
+#: notes: interaction (true interaction is ~2 higher than reported). Bench: Sylvan Library, Tranquil
+#: notes: Frillback, Flare of Fortitude, Kellan (the Kid), Speaker of the Heavens, Voice of the Blessed,
+#: notes: Prison Realm, Ojutai's Command, Metropolis Angel, Tolsimir (Midnight's Light).
 #: notes: LIFEGAIN PACKAGE, 2026-10-30 (owner's picks, 15 swaps + Forest -> Plains): Oji for Omen of the
 #: notes: Sea, Distinguished Conjurer for Wall of Omens, Trelasarra for Glorious Protector, Vanguard
 #: notes: Seraph for Seasoned Cryomancer, Holy Cow for Daydream, Enlightened Confidant for Paradox
@@ -47,81 +67,83 @@
 1 Y'shtola Rhul (FIN) 86
 1 Silver Surfer, Cosmic Voyager (MSC) 639
 1 Thassa, Deep-Dwelling (THB) 71
-1 Yorion, Sky Nomad (IKO) 232
 1 Soulherder (J21) 718
 1 Don & Leo, Problem Solvers (TMT) 143
 1 Lilysplash Mentor (BLB) 222
 1 Teleportation Circle (AFR) 39
-1 Salvation Swan (BLB) 28
+1 Aang, Swift Savior // Aang and La, Ocean's Fury (TLA) 204
 1 Restoration Angel (J21) 117
 1 Abuelo, Ancestral Echo (LCI) 219
 1 Oji, the Exquisite Blade (HBG) 246
+1 Flickering Hound (FRA) 7
+1 Emiel the Blessed (JMP) 3
 
 # Trigger doublers and draw engines
 1 Elesh Norn, Mother of Machines (ONE) 10
 1 Panharmonicon (KLR) 258
-1 Ephara, God of the Polis (PIO) 305
+1 King T'Challa // Black Panther, Hope Enduring (MSH) 219
+1 Chulane, Teller of Tales (ELD) 326
+1 Sigarda, Font of Blessings (MAT) 47
+1 Drogskol Reaver (FDN) 655
 
 # Blink spells
 1 Ephemerate (MAR) 44
-1 Getaway Glamer (OTJ) 14
-1 Morningtide's Light (ECL) 27
-1 Another Round (OTJ) 1
 
 # Enters-the-battlefield card advantage
 1 Cloudblazer (FDN) 653
-1 Mulldrifter (J21) 221
-1 Overlord of the Floodpits (DSK) 68
-1 Curator of Destinies (FDN) 34
-1 Eternal Witness (AA2) 13
-1 Aang, at the Crossroads (TLA) 203
-1 Spark Double (WAR) 68
+1 Serra Paragon (DMU) 32
+1 Tolsimir, Friend to Wolves (WAR) 224
+1 Sakashima of a Thousand Faces (TLE) 18
 1 Thragtusk (JMP) 436
-1 Charming Prince (FDN) 568
-1 Holy Cow (OTJ) 16
 
 # Enters-the-battlefield interaction
 1 Captain Marvel, Shooting Star (MSC) 589
 1 Reflector Mage (EA2) 19
 1 Skyclave Apparition (ZNR) 39
-1 Solitude (SPG) 44
-1 Sundering Archaic (SOS) 3
-1 Venser, Shaper Savant (FCA) 6
+1 The Legend of Yangchen // Avatar Yangchen (TLA) 27
 
 # Scry and surveil — every look at the top of the library pays
 1 Denzilore Fatehold (FRA) 128
 1 Planetarium of Wan Shi Tong (TLA) 259
 1 Matoya, Archon Elder (FIN) 62
 1 Gossip's Talent (BLB) 51
-1 Political Triumph (MSH) 31
-1 Rumor Gatherer (SNC) 29
-1 Palantír of Orthanc (LTR) 247
+1 Tocasia, Dig Site Mentor (BRO) 224
 1 Saheeli, Consul of Oversight (FRA) 203
 
-# Ramp — creatures that fetch lands re-fetch when blinked (Kwia's Lotus and Galadriel's {G}{G}{G} add more)
-1 Wood Elves (HOB) 142
-1 Solemn Simulacrum (M21) 239
-1 Ignis Scientia (FIN) 227
+# Counters — every creature that enters comes back bigger
+1 Arwen, Weaver of Hope (LTC) 35
 
 # Lifegain — creatures entering gain life, and every gain pays off
 1 Aerith, Last Ancient (FIC) 76
 1 Trelasarra, Moon Dancer (AFR) 236
-1 Vanguard Seraph (FDN) 28
 1 Distinguished Conjurer (MH3) 264
-1 Crested Sunmare (AKR) 11
+1 Righteous Valkyrie (KHM) 24
 1 Bloombrute (FRA) 124
 1 Archangel of Thune (MAR) 41
 1 Soul Warden (SPG) 65
-1 Enlightened Confidant (FRA) 5
+1 Shanna, Purifying Blade (DMU) 218
 1 Ajani's Welcome (M19) 6
 1 Heliod, Sun-Crowned (THB) 18
 1 Lathiel, the Bounteous Dawn (MUL) 50
 1 Kwia Vigorbloom (FRA) 140
+1 Felidar Sovereign (J25) 198
+1 Valgavoth, the Lifeline (YFRA) 3
+1 Cleric Class (AFR) 6
+1 Resplendent Angel (LCI) 32
+1 The Book of Exalted Deeds (AFR) 4
+
+# Planeswalkers — loyalty engines; Quintorius doubles their activations the turn it enters
+1 Ajani, Strength of the Pride (M20) 2
+1 Huatli, Radiant Champion (RIX) 159
+1 Quintorius, Fate Splitter (YFRA) 26
+1 The Wandering Emperor (NEO) 42
+1 Elspeth Resplendent (SNC) 11
 
 # Other interaction
 1 Swords to Plowshares (SPG) 54
 1 Fateful Absence (MID) 18
 1 Aang's Iceberg (TLA) 5
+1 Detention Sphere (OTP) 43
 
 # Lands (37)
 1 Command Tower (FRC) 22
@@ -148,6 +170,6 @@
 1 Deserted Beach (FRA) 176
 1 Hengegate Pathway // Mistgate Pathway (KHM) 260
 1 Barkchannel Pathway // Tidechannel Pathway (KHM) 251
-4 Forest (FRA) 289
+3 Forest (FRA) 289
 4 Island (FRA) 283
-5 Plains (FRA) 281
+6 Plains (FRA) 281
