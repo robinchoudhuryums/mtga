@@ -168,6 +168,59 @@ Legend: ★★★ take · ★★ strong · ★ real · ◇ situational · △ ma
 | 74 | Emmara, Voice of the Conclave | — | ★ | Enters: draft a card from its spellbook — a blink drafts another. Convoke. |
 | 75 | Yuna, Grand Summoner | — | ★ | Mana creature (any colour) that adds counters to the next creature. |
 
+### Batch 4 (cards 76–100, incl. the earlier consideration list)
+
+| # | Card | Own | Verdict | Note (rule) |
+|---|---|---|---|---|
+| 76 | Queen Allenal of Ruadach | — | ★ | P/T = your creature count (wide deck); every token batch adds a 1/1. |
+| 77 | Arwen's Gift | — | ★ | Scry 2 + draw 2 for {2}{U} with two legends (the deck runs ~20). |
+| 78 | Arwen, Mortal Queen | — | ★★ | Indestructible counter she can hand out with +1/+1 and a LIFELINK counter (a permanent lifelinker); a blink refreshes her indestructible counter (R5 as an upside). |
+| 79 | Arwen, Weaver of Hope | — | ★★★ | "Each other creature you control enters with additional +1/+1 counters equal to Arwen's toughness" — every blink returns a creature with 3+ counters (R1), and counters on Arwen raise the number. |
+| 80 | Arwen Undómiel | — | ★★ | {G}{U}: every scry puts a counter on a creature; a cheap scry payoff (R7). |
+| 81 | Selfless Samurai | — | △ | Sacrifice to protect; Samurai/Warrior clause is dead here. |
+| 82 | Virulent Emissary | own | ★★ | {G} 1-drop deathtouch; gains 1 per creature entering (R2/R3). Owned. |
+| 83 | Evolution Sage | — | ◇ | Landfall proliferate. |
+| 84 | Accomplished Alchemist | — | ★★ | Taps for X of one colour, X = life gained this turn — the lifegain engine becomes ramp. |
+| 85 | Felidar Sovereign | — | ★★ | Alt-win at 40 life in your upkeep. |
+| 86 | Sakashima of a Thousand Faces | — | ★★★ | Copy your best creature, legend rule off — a second Y'shtola, Soul Warden, Archangel. |
+| 87 | Resplendent Angel | own | ★★★ | 4/4 Angel each end step with 5+ gained; two with Y'shtola (R4). |
+| 88 | Aang, Swift Savior | own | ★★★ | Flash; airbend a creature OR SPELL — protection and interaction in one. |
+| 89 | Wan Shi Tong, Librarian | own | ◇ | A blink returns it with X = 0 (R5). |
+| 90 | Greenhouse Propagator | own | ★★ | Gain 1 per creature entering + {T}: Add {G}. |
+| 91 | Daxos, Blessed by the Sun | — | ★★ | Gain on enter AND die; {W}{W}. |
+| 92 | Ojer Taq, Deepest Foundation | — | ◇ | Triples creature tokens; ~7 token makers. |
+| 93 | Anointed Procession | — | ◇ | Doubles all tokens (incl. Kwia's Lotus). |
+| 94 | Emiel the Blessed | — | ★★★ | "{3}: blink another creature" repeatable + counters on entry. |
+| 95 | Drogskol Reaver | — | ★★★ | "Whenever you gain life, draw a card" — one card per creature entering with Soul Warden effects out (R3). |
+| 96 | Smothering Tithe | — | ◇ | Treasure off their draws; off-theme ramp. |
+| 97 | Boon-Bringer Valkyrie | — | ★ | Backup grants lifelink/flying/first strike and a counter. |
+| 98 | King T'Challa | own | ★★ | Flash; draws whenever a player draws their second card each turn. |
+| 99 | Black Panther, Claws of Bast | — | ✗ | Attacks-alone payoff. |
+| 100 | Lyra, Archangel of Dawn | — | ★ | Counters on every Angel per gain; good only with 8+ Angels. |
+
 ## 5. Consolidated plan (live)
 
-(after the last batch)
+**PROVISIONAL — part 2 of the pile is still to come; nothing is final.** 47 cards graded
+★★ or better against ~63 spell slots; the final package has to choose by interaction.
+
+**Tier 1 (★★★, 13):** The Wandering Emperor, Flickering Hound, The Legend of Yangchen (own),
+Tocasia, Chulane, Sigarda (Font of Blessings), Cleric Class, Arwen (Weaver of Hope),
+Sakashima, Resplendent Angel (own), Aang (Swift Savior, own), Emiel, Drogskol Reaver.
+
+**Tier 2 (★★, 34):** Ajani (Strength of the Pride), The Book of Exalted Deeds, Serra Paragon,
+Prison Realm, Elrond (Master of Healing), Nissa (Steward of Elements), Oracle of the Alpha,
+Stenn, Detention Sphere, Ojutai's Command, Speaker of the Heavens, Metastatic Evangel,
+Righteous Valkyrie, Valgavoth, Shalai, Angel of Sanctions, Elspeth Resplendent, Ob Nixilis
+(the Ascended), Metropolis Angel, Torens, Soul of Emancipation, Voice of the Blessed, Rescue
+Girl, Teshar, Saint Elenda, Conclave Mentor, Arwen (Mortal Queen), Arwen Undómiel, Virulent
+Emissary (own), Accomplished Alchemist, Felidar Sovereign, Greenhouse Propagator (own),
+Daxos (Blessed by the Sun), King T'Challa (own).
+
+**Open decisions for the final pass:** how far to lean into Angels (Lyra and Righteous
+Valkyrie only pay off past ~8 Angels); one hexproof lord (Sigarda or Shalai) not both;
+the counters payoff (Arwen Weaver, Metropolis Angel, Elrond); which interaction pieces
+(Wandering Emperor, Prison Realm, Detention Sphere, Ojutai's Command, Angel of Sanctions,
+Soul of Emancipation) bring interaction back toward the A line of 12.
+
+**Protect (the ranking cannot see their value):** Y'shtola, Silver Surfer, Thassa, Don &
+Leo, Teleportation Circle, Elesh Norn, Panharmonicon — every enters/end-step multiplier.
