@@ -245,9 +245,26 @@ Legend: ★★★ take · ★★ strong · ★ real · ◇ situational · △ ma
 | Huatli, Radiant Champion | — | ★★★ | +1 = a loyalty per creature (wide deck, R2); −8 emblem: "Whenever a creature you control enters, you may draw a card." Every blink after that draws. |
 | Huatli, the Sun's Heart | — | △ | Toughness damage. |
 
+### Batch 6 — pile part 3 (11 cards; "Elesh Norn" read as all three)
+
+| Card | Own | Verdict | Note (rule) |
+|---|---|---|---|
+| Flare of Fortitude | — | ★★ | Free (sacrifice a nontoken white creature): your life can't change, your permanents gain hexproof and indestructible — a sweeper answer (R7). |
+| Elesh Norn // The Argent Etchings | — | ◇ | Punisher; its Saga destroys your own non-Phyrexian board. |
+| Elesh Norn, Grand Cenobite | — | ★★ | 7 MV: your creatures +2/+2, theirs −2/−2 — a one-sided wipe of small creatures. |
+| Elesh Norn, Mother of Machines | — | (in deck) | |
+| Defiler of Dreams | — | ★ | Draw on every blue permanent cast (~15 blue permanents). |
+| Sylvan Library | — | ★★ | {1}{G}: see two extra cards a turn; pay 4 life each to keep them — the lifegain engine turns into cards (R3). |
+| Hurska Sweet-Tooth | — | ◇ | Per-gain pump for {G/W}. |
+| Tranquil Frillback | — | ★★ | Enters: pay {G} up to three times for artifact/enchantment removal, graveyard exile, 4 life — a blink repeats it (R1, R7). |
+| Defiler of Vigor | — | ★ | A counter on every creature per green permanent cast (~12 green permanents). |
+| Azor, the Lawbringer | — | ★ | 6 MV; attack to gain X and draw X. |
+| Kellan, the Kid | own | ★★ | Flying lifelink 3-drop; a spell cast from anywhere but your hand (Serra Paragon, Sigarda) casts a permanent from hand free. Owned. |
+| Shanna, Purifying Blade | — | ★★★ | {G}{W}{U} lifelink: "At the beginning of your end step, you may pay {X}. If you do, draw X cards. X can't be greater than the amount of life you gained this turn." Y'shtola's extra end step = a second draw (R3, R4). |
+
 ## 5. Consolidated plan (live)
 
-**FINAL PROPOSAL (2026-10-30)** — 18 swaps, chosen for how the cards work together.
+**FINAL PROPOSAL (2026-10-30, revised after part 3)** — 19 swaps, chosen for how the cards work together.
 Preview: legal; floor B; card advantage 6 → 9; interaction 9 (reads 9 but is ~11 by hand —
 Yangchen and Aang are classifier holes); avg MV 3.75 → 3.84; tempo-sim on-curve 49.9%
 with one Forest → Plains.
@@ -272,9 +289,10 @@ with one Forest → Plains.
 | Ignis Scientia | Arwen, Weaver of Hope | Every blinked creature returns with 3+ counters. |
 | Aang, at the Crossroads | Tolsimir, Friend to Wolves | Blink = fight removal + 3 life + a token. |
 | Wood Elves | The Book of Exalted Deeds (owner *) | Angel each end step with 3+ gained; two with Y'shtola. |
+| Enlightened Confidant | Shanna, Purifying Blade | Same end-step lifegain hook, but draws X cards (twice with Y'shtola). |
 
 Kept on purpose: Lilysplash Mentor and Saheeli (owner keeps), every multiplier (protect list).
-Next in line (★★ not taken): Ajani (Strength of the Pride), Prison Realm, Elrond (Master of
+Next in line (★★ not taken): Sylvan Library, Tranquil Frillback, Flare of Fortitude, Kellan (the Kid, own), Elesh Norn (Grand Cenobite), Ajani (Strength of the Pride), Prison Realm, Elrond (Master of
 Healing), Nissa (Steward of Elements), Oracle of the Alpha, Stenn, Ojutai's Command, Speaker
 of the Heavens, Metastatic Evangel, Righteous Valkyrie, Valgavoth, Shalai, Angel of
 Sanctions, Elspeth Resplendent, Ob Nixilis, Metropolis Angel, Torens, Soul of Emancipation,
