@@ -34,6 +34,10 @@
 #: notes: Bench from the draft screen: Kykar, Zephyr Awakener; Ennis, Debate Moderator; Wiccan, Rising
 #: notes: Magician; The Mighty Thor, Jane Foster; Fortune, Loyal Steed; Flicker of Fate; Eerie
 #: notes: Interlude; Semester's End; Proft, Consulting Detective.
+#: notes: LANDS, 2026-10-31 (owner's pick): the three always-tapped Temples became Starting Town,
+#: notes: Reflecting Pool and Mana Confluence. Tempo sim 50.1 -> 52.2 on curve, tapped-land cost 2.7 -> 1.6;
+#: notes: the 1-drops (Soul Warden, Cleric Class, Ajani's Welcome, Swords, Ephemerate) had lost 12 points
+#: notes: each. Next land step if wanted: a 38th land (measured 54.4).
 #: notes: PILE PACKAGE, 2026-10-30 (owner's picks from a 148-card pile, 26 swaps + Forest -> Plains):
 #: notes: Sakashima for Spark Double, Flickering Hound for Getaway Glamer, Tocasia for Rumor Gatherer,
 #: notes: Cleric Class for Political Triumph, Serra Paragon for Eternal Witness, Huatli (Radiant Champion)
@@ -161,9 +165,9 @@
 1 Adarkar Wastes (DMU) 243
 1 Willowrush Verge (DFT) 270
 1 Floodfarm Verge (DSK) 259
-1 Temple of Plenty (FDN) 703
-1 Temple of Mystery (FDN) 702
-1 Temple of Enlightenment (FDN) 698
+1 Mana Confluence (EOS) 25
+1 Reflecting Pool (FRC) 23
+1 Starting Town (FIN) 289
 1 Branchloft Pathway // Boulderloft Pathway (ZNR) 258
 1 Overgrown Farmland (FRA) 185
 1 Dreamroot Cascade (SOS) 254

@@ -291,6 +291,7 @@ Scour for Scrap,Instant,"Choose one or both —
 • Return target artifact card from your graveyard to your hand.",U,graveyard,EOE,73,Uncommon,51a,,2.5,seed
 Sunstar Expansionist,Creature — Human Knight,"When this creature enters, if an opponent controls more lands than you, create a Lander token. (It's an artifact with ""{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."")
 Landfall — Whenever a land you control enters, this creature gets +1/+0 until end of turn.",W,Human; Knight; sacrifice; tokens; ramp; etb; landfall; pump; lands,EOE,41,Uncommon,36,,3.0,hand
+Mana Confluence,Land,"{T}, Pay 1 life: Add one mana of any color.",Colorless,pay life,EOS,25,Mythic,95,,5.0,seed
 Ancient Copper Dragon,Creature — Elder Dragon,"Flying
 Whenever this creature deals combat damage to a player, roll a d20. You create a number of Treasure tokens equal to the result.",R,Elder; Dragon; tokens; treasure; flying; evasion,FCA,12,Mythic,92,,6.5,seed
 "Muldrotha, the Gravetide",Legendary Creature — Elemental Avatar,"During each of your turns, you may play a land and cast a permanent spell of each permanent type from your graveyard. (If a card has multiple permanent types, choose one as you play it.)",U/B/G,Elemental; Avatar; graveyard,FDN,243,Mythic,83; 83a,,5.5,seed
