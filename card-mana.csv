@@ -3109,6 +3109,37 @@ The World Tree,,0,
 Stingerquill Annex,,0,
 Contaminated Landscape,,0,Cycling
 Interplanar Beacon,,0,
+Gandalf the White,{3}{W}{W},5,Flash
+"Ms. Marvel, Elastic Ally",{2}{G/W},3,Reach
+"Galadriel, Light of Valinor",{2}{G}{W}{U},5,Alliance;Scry
+The Great Henge,{7}{G}{G},9,
+Tribute to the World Tree,{G}{G}{G},3,
+Kellan Joins Up,{G}{W}{U},3,Plot
+Ajani's Welcome,{W},1,
+Beastmaster Ascension,{2}{G},3,
+"Brimaz, King of Oreskos",{1}{W}{W},3,Vigilance
+Aang and Katara,{3}{G}{W}{U},6,
+"Toph, Earthbending Master",{3}{G},4,Earthbend;Landfall
+"Aang, Airbending Master",{4}{W},5,Airbend
+"Katara, Heroic Healer",{4}{W},5,Lifelink
+The Blue Spirit,{3}{U},4,
+Gideon Blackblade,{1}{W}{W},3,
+Buried in the Garden,{2}{G}{W},4,Enchant
+Leyline Binding,{5}{W},6,Domain;Flash
+"Wan Shi Tong, All-Knowing",{3}{U}{U},5,Flying
+In the Trenches,{1}{W}{W},3,
+"Heliod, Sun-Crowned",{2}{W},3,Indestructible
+Tranquil Landscape,,0,Cycling
+Brokers Hideout,,0,
+Ingris Stingerquill,{B}{R}{R},3,Flying
+Venerated Stormsinger,{3}{B},4,Mobilize
+Bone-Cairn Butcher,{1}{R}{W}{B},4,Mobilize
+Sonic Shrieker,{2}{R}{W}{B},5,Flying
+The Jolly Balloon Man,{1}{R}{W},3,Haste
+Hardened Tactician,{1}{W}{B},3,
+"Slash, Reptile Rampager",{3}{R}{R},5,Alliance
+"Garna, Bloodfist of Keld",{1}{B}{R}{R},4,
+Boiling Rock Rioter,{2}{B},3,Firebending
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -3892,7 +3923,6 @@ Airlift Chaplain,{2}{W},3,Flying;Mill
 Ambush Paratrooper,{1}{W},2,Flying;Flash
 Calamity's Wake,{1}{W},2,
 Great Desert Prospector,{4}{W},5,
-In the Trenches,{1}{W}{W},3,
 Kayla's Command,{1}{W}{W},3,Scry
 Kayla's Reconstruction,{X}{W}{W}{W},3,
 Lay Down Arms,{W},1,
@@ -4362,7 +4392,6 @@ Heroic Charge,{2}{W}{W},4,Kicker
 Join Forces,{2}{W},3,
 Juniper Order Rootweaver,{1}{W},2,Kicker
 Knight of Dawn's Light,{1}{W},2,First strike
-Leyline Binding,{5}{W},6,Domain;Flash
 Love Song of Night and Day,{2}{W},3,Read Ahead
 Mesa Cavalier,{2}{W},3,Flying
 Phyrexian Missionary,{1}{W},2,Lifelink;Kicker
@@ -4946,7 +4975,6 @@ Fear of Infinity,{1}{U}{B},3,Flying;Lifelink;Eerie
 Gremlin Tamer,{W}{U},2,Eerie
 Growing Dread,{G}{U},2,Manifest;Manifest dread;Flash
 Intruding Soulrager,{U}{R},2,Vigilance
-The Jolly Balloon Man,{1}{R}{W},3,Haste
 Midnight Mayhem,{2}{R}{W},4,
 Oblivious Bookworm,{G}{U},2,
 Peer Past the Veil,{2}{R}{G},4,
@@ -5282,7 +5310,6 @@ Garenbrig Paladin,{4}{G},5,Adamant
 Garenbrig Squire,{1}{G},2,
 Giant Opportunity,{2}{G},3,Food
 Gilded Goose,{G},1,Flying;Food
-The Great Henge,{7}{G}{G},9,
 Insatiable Appetite,{1}{G},2,
 Kenrith's Transformation,{1}{G},2,Enchant
 Lovestruck Beast // Heart's Desire,{2}{G} // {G},3,
@@ -5699,7 +5726,6 @@ Mold Adder,{G},1,
 Predator Ooze,{G}{G}{G},3,Indestructible
 Drogskol Reaver,{5}{W}{U},7,Flying;Lifelink;Double strike
 Dryad Militant,{G/W},1,
-"Garna, Bloodfist of Keld",{1}{B}{R}{R},4,
 Immersturm Predator,{2}{B}{R},4,Flying
 Maelstrom Pulse,{1}{B}{G},3,
 Mortify,{1}{W}{B},3,
@@ -5990,7 +6016,6 @@ Fatehold Charm,{W}{U},2,Empower Jace
 Fatehold Chronologist // Peer Review,{1}{W/U} // {2}{W/U},2,Flying;Surveil;Prepared
 Ferocity of the Hunt,{1}{B/G},2,Enchant;Flash
 Frostbite Pyromental,{U}{R}{R},3,Haste;Trample
-Ingris Stingerquill,{B}{R}{R},3,Flying
 Konstrari Charm,{R}{G},2,
 Konstrari Improviser // Soul Tether,{1}{R/G} // {2}{R/G},2,Prepared
 Mind Meanderer,{3}{G}{U}{U},6,Flying;Fight
@@ -6676,7 +6701,6 @@ Galadriel's Dismissal,{W},1,Kicker
 Raise the Palisade,{4}{U},5,
 Call Forth the Tempest,{5}{R}{R}{R},8,Cascade
 Cavern-Hoard Dragon,{7}{R}{R},9,Flying;Treasure;Haste;Trample
-"Galadriel, Light of Valinor",{2}{G}{W}{U},5,Alliance;Scry
 "Gríma, Saruman's Footman",{2}{U}{B},4,
 The Black Gate,,0,
 "Minas Morgul, Dark Fortress",,0,
@@ -7321,7 +7345,6 @@ Hurska Sweet-Tooth,{2}{G},3,Food
 Shroofus Sproutsire,{2}{G},3,Trample
 "Slinza, the Spiked Stampede",{4}{G},5,Fight
 "Sutina, Speaker of the Tajuru",{2}{G},3,
-"Brimaz, King of Oreskos",{1}{W}{W},3,Vigilance
 "Padeem, Consul of Innovation",{3}{U},4,
 "Gorex, the Tombshell",{6}{B}{B},8,Deathtouch
 Brothers Yamazaki,{2}{R},3,Bushido
@@ -8906,7 +8929,6 @@ Escape from Orthanc,{W},1,
 Flowering of the White Tree,{W}{W},2,
 Forge Anew,{2}{W},3,
 "Frodo, Sauron's Bane",{W},1,
-Gandalf the White,{3}{W}{W},5,Flash
 Hobbit's Sting,{1}{W},2,
 Lost to Legend,{W}{W},2,
 Nimble Hobbit,{1}{W},2,
@@ -9146,7 +9168,6 @@ Disciple of Bolas,{3}{B},4,
 Aethershield Artificer,{3}{W},4,
 "Ajani, Adversary of Tyrants",{2}{W}{W},4,
 Ajani's Last Stand,{2}{W}{W},4,
-Ajani's Welcome,{W},1,
 Angel of the Dawn,{4}{W},5,Flying
 Cavalry Drillmaster,{1}{W},2,
 Cleansing Nova,{3}{W}{W},5,
@@ -10170,7 +10191,6 @@ Sheltering Landscape,,0,Cycling
 Shifting Woodland,,0,Delirium
 Snow-Covered Wastes,,0,
 Spymaster's Vault,,0,Connive
-Tranquil Landscape,,0,Cycling
 Twisted Landscape,,0,Cycling
 Ugin's Labyrinth,,0,Imprint
 Urza's Cave,,0,
@@ -10646,7 +10666,6 @@ Vitu-Ghazi Inspector,{1}{G},2,Collect evidence;Reach
 Assassin's Trophy,{B}{G},2,
 "Aurelia, the Law Above",{3}{R}{W},5,Flying;Vigilance;Haste
 Break Out,{R}{G},2,
-Buried in the Garden,{2}{G}{W},4,Enchant
 Coerced to Kill,{3}{U}{B},5,Enchant
 Crowd-Control Warden,{3}{G}{W},5,Disguise
 Curious Cadaver,{2}{U}{B},4,Flying
@@ -10926,7 +10945,6 @@ Streetwise Negotiator,{1}{G},2,Backup
 Tandem Takedown,{1}{G}{G},3,
 Tangled Skyline,{4}{G},5,Incubate;Transform
 Timberland Ancient,{4}{G}{G},6,Reach;Landcycling;Trample;Forestcycling;Typecycling;Cycling
-Tribute to the World Tree,{G}{G}{G},3,
 Vengeant Earth,{1}{G},2,
 Vorinclex // The Grand Evolution,{3}{G}{G},5,Reach;Transform;Trample;Fight;Mill
 War Historian,{2}{G},3,Reach
@@ -11181,7 +11199,6 @@ Voracious Brood,{2}{G},3,
 Astonishing Spider-Man,{2}{U/R}{U/R},4,Reach
 Iceman and Firestar,{2}{U/R}{U/R},4,Flying
 "Marvel Boy, Noh-Varr",{1}{R/W},2,
-"Ms. Marvel, Elastic Ally",{2}{G/W},3,Reach
 "Shuri, Vibranium Technologist",{2}{W/U},3,Vigilance
 Wakandan Tusker,{1}{G/W},2,Scry
 Daily Bugle Newspaper,{2},2,Treasure
@@ -11890,7 +11907,6 @@ At Knifepoint,{1}{B}{R},3,
 "Eriette, the Beguiler",{1}{W}{U}{B},4,Lifelink
 Form a Posse,{X}{R}{W},2,
 "Kambal, Profiteering Mayor",{1}{W}{B},3,
-Kellan Joins Up,{G}{W}{U},3,Plot
 Laughing Jasper Flint,{1}{B}{R},3,
 "Lazav, Familiar Stranger",{1}{U}{B},3,
 "Lilah, Undefeated Slickshot",{1}{U}{R},3,Plot;Prowess
@@ -13199,7 +13215,6 @@ Quick-Draw Dagger,{3},3,Equip;Flash
 Scuttling Butler,{3},3,
 Unlicensed Hearse,{2},2,Crew
 Botanical Plaza,,0,
-Brokers Hideout,,0,
 Cabaretti Courtyard,,0,
 Maestros Theater,,0,
 Obscura Storefront,,0,
@@ -13807,7 +13822,6 @@ The Sibsig Ceremony,{B}{B}{B},3,
 Sinkhole Surveyor,{1}{B},2,Endure;Flying
 Strategic Betrayal,{1}{B},2,
 Unrooted Ancestor,{2}{B},3,Flash
-Venerated Stormsinger,{3}{B},4,Mobilize
 Wail of War,{2}{B},3,
 Yathan Tombguard,{2}{B},3,Menace
 Channeled Dragonfire,{R},1,Harmonize
@@ -13837,7 +13851,6 @@ Undergrowth Leopard,{1}{G},2,Vigilance
 All-Out Assault,{2}{R}{W}{B},5,
 Awaken the Honored Dead,{B}{G}{U},3,Mill
 Barrensteppe Siege,{2}{W}{B},4,
-Bone-Cairn Butcher,{1}{R}{W}{B},4,Mobilize
 Disruptive Stormbrood // Petty Revenge,{4}{G} // {1}{B},5,Flying
 Eshki Dragonclaw,{1}{G}{U}{R},4,Vigilance;Trample;Ward
 Fangkeeper's Familiar,{1}{B}{G}{U},4,Surveil;Flash
@@ -13845,7 +13858,6 @@ Fangkeeper's Familiar,{1}{B}{G}{U},4,Surveil;Flash
 Frostcliff Siege,{1}{U}{R},3,
 Glacial Dragonhunt,{U}{R},2,Harmonize
 Glacierwood Siege,{1}{G}{U},3,Mill
-Hardened Tactician,{1}{W}{B},3,
 Hollowmurk Siege,{B}{G},2,
 Inevitable Defeat,{1}{R}{W}{B},4,
 Kheru Goldkeeper,{1}{B}{G}{U},4,Flying;Renew;Treasure
@@ -13863,7 +13875,6 @@ Roar of Endless Song,{2}{G}{U}{R},5,Double
 Runescale Stormbrood // Chilling Screech,{3}{R} // {1}{U},4,Flying
 Severance Priest,{W}{B}{G},3,Deathtouch
 Songcrafter Mage,{G}{U}{R},3,Flash
-Sonic Shrieker,{2}{R}{W}{B},5,Flying
 Temur Battlecrier,{G}{U}{R},3,
 "Teval, Arbiter of Virtue",{2}{B}{G}{U},5,Flying;Lifelink
 Thunder of Unity,{R}{W}{B},3,
@@ -13896,7 +13907,6 @@ Eidolon of Obstruction,{1}{W},2,First strike
 Favored of Iroas,{2}{W},3,Constellation
 Flicker of Fate,{1}{W},2,
 Glory Bearers,{3}{W},4,
-"Heliod, Sun-Crowned",{2}{W},3,Indestructible
 Heliod's Intervention,{X}{W}{W},2,
 Heliod's Pilgrim,{2}{W},3,
 Heliod's Punishment,{1}{W},2,Enchant
@@ -14132,7 +14142,6 @@ Geyser Leaper,{4}{U},5,Flying;Waterbend
 The Legend of Kuruk // Avatar Kuruk,{2}{U}{U},4,Transform;Exhaust;Waterbend;Scry
 Tiger-Seal,{U},1,Vigilance
 "Azula, On the Hunt",{3}{B},4,Firebending
-Boiling Rock Rioter,{2}{B},3,Firebending
 Dai Li Indoctrination,{1}{B},2,Earthbend
 The Fire Nation Drill,{2}{B}{B},4,Crew;Trample
 Fire Nation Engineer,{2}{B},3,Raid
@@ -14181,7 +14190,6 @@ Searing Blood,{R}{R},2,
 Shattering Spree,{R},1,Replicate
 Volcanic Torrent,{4}{R},5,Cascade
 Warstorm Surge,{5}{R},6,
-Beastmaster Ascension,{2}{G},3,
 Elemental Bond,{2}{G},3,
 Heartbeat of Spring,{2}{G},3,
 Rites of Flourishing,{2}{G},3,
@@ -14202,12 +14210,10 @@ Swampbenders,{4}{G}{G},6,
 Sokka's Charge,{3}{W},4,
 Earthshape,{2}{W},3,Earthbend
 Mai and Zuko,{1}{U}{B}{R},4,Firebending
-Aang and Katara,{3}{G}{W}{U},6,
 "Toph, Greatest Earthbender",{2}{R}{G},4,Earthbend
 Sokka and Suki,{U}{R}{W},3,
 Momo's Heist,{2}{R},3,
 Uncle's Musings,{2}{G}{G},4,Converge
-"Aang, Airbending Master",{4}{W},5,Airbend
 Air Nomad Student,{3}{W},4,Flying
 "The Duke, Rebel Sentry",{W},1,
 Inspired Insurgent,{1}{W},2,
@@ -14223,7 +14229,6 @@ Tale of Momo,{2}{W},3,
 That's Rough Buddy,{1}{W},2,
 Toucan-Puffin,{2}{W},3,Flying
 Baboon Spirit,{2}{U},3,
-The Blue Spirit,{3}{U},4,
 Chakra Meditation,{2}{U},3,
 Dutiful Knowledge Seeker,{2}{U},3,
 "Katara, Waterbending Master",{1}{U},2,
@@ -14231,7 +14236,6 @@ Nightmares and Daydreams,{2}{U},3,Mill
 Princess Yue,{2}{U},3,Scry
 "Tui and La, Moon and Ocean",{3}{U},4,
 Unagi's Spray,{U},1,
-"Wan Shi Tong, All-Knowing",{3}{U}{U},5,Flying
 Waterbender's Restoration,{U}{U},2,Waterbend
 Whirlwind Technique,{4}{U}{U},6,Airbend
 "Azula, Ruthless Firebender",{2}{B},3,Firebending
@@ -14277,7 +14281,6 @@ Master's Guidance,{2}{G},3,
 Solid Ground,{3}{G},4,Earthbend
 Tale of Katara and Toph,{2}{G},3,
 Tectonic Split,{4}{G}{G},6,Hexproof
-"Toph, Earthbending Master",{3}{G},4,Earthbend;Landfall
 "Aang, A Lot to Learn",{2}{G/W},3,
 Hook Swords,{2}{R/W},3,Equip
 "Katara, Seeking Revenge",{3}{U/B},4,Waterbend
@@ -14304,7 +14307,6 @@ Aang's Defense,{W},1,
 Aardvark Sloth,{3}{W},4,Lifelink
 Allied Teamwork,{2}{W},3,
 "Appa, Aang's Companion",{3}{W},4,Flying
-"Katara, Heroic Healer",{4}{W},5,Lifelink
 Kyoshi Warrior Guard,{1}{W},2,
 "Momo, Rambunctious Rascal",{2}{W},3,Flying
 Sledding Otter-Penguin,{2}{W},3,
@@ -14396,7 +14398,6 @@ Squirrelanoids,{B},1,Deathtouch
 Mouser Attack!,{1}{R},2,
 Raphael's Technique,{4}{R}{R},6,Sneak
 Ravenous Robots,{1}{R},2,
-"Slash, Reptile Rampager",{3}{R}{R},5,Alliance
 Michelangelo's Technique,{4}{G},5,Sneak
 Saved by the Shell,{1}{G},2,
 Turtle Power!,{2}{G},3,Flash
@@ -14679,7 +14680,6 @@ Bond of Discipline,{4}{W},5,
 Charmed Stray,{W},1,Lifelink
 Enforcer Griffin,{4}{W},5,Flying
 Finale of Glory,{X}{W}{W},2,
-Gideon Blackblade,{1}{W}{W},3,
 Gideon's Sacrifice,{W},1,
 Gideon's Triumph,{1}{W},2,
 God-Eternal Oketra,{3}{W}{W},5,Double strike
