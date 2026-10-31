@@ -22,11 +22,11 @@
 #: archetype: Book of Exalted Deeds, Ob Nixilis, Shanna, Lathiel and Aerith pay off at end step. Helga draws and
 #: archetype: grows on every creature with mana value 4 or more and taps for that mana in any colour. Heliod, God
 #: archetype: of the Sun and Ajani, the Greathearted give the team vigilance for Heedbonder; Huatli's Raptor and
-#: archetype: Tidus proliferate. SCRY: Galadriel, Oji, Trelasarra and Your Fate Ends Here feed Matoya and
-#: archetype: Planetarium of Wan Shi Tong. The race to 40 life is a second win: Felidar Sovereign, and Ajani's 0
-#: archetype: exiles their board. Huatli, Radiant Champion's emblem draws on every creature entering. DISTINCT
-#: archetype: from deck 78 (Bant, but Ally trigger-doubling in combat) and deck 94 (Simic counters): this one is a
-#: archetype: value-blink engine.
+#: archetype: Tidus proliferate. SCRY: Galadriel, Oji, Trelasarra and Your Fate Ends Here feed Denzilore Fatehold
+#: archetype: (a counter on each creature), Matoya and Planetarium of Wan Shi Tong. The race to 40 life is a
+#: archetype: second win: Felidar Sovereign, and Ajani's 0 exiles their board. Huatli, Radiant Champion's emblem
+#: archetype: draws on every creature entering. DISTINCT from deck 78 (Bant, but Ally trigger-doubling in combat)
+#: archetype: and deck 94 (Simic counters): this one is a value-blink engine.
 #: protect: Galadriel, Light of Valinor; Y'shtola Rhul; Silver Surfer, Cosmic Voyager; Captain Marvel, Shooting Star
 #: notes: DRAFTED 2026-10-29 with /draft-deck from the owner's brief (Galadriel commander, blink + scry,
 #: notes: must-include Y'shtola Rhul, Silver Surfer and Captain Marvel). The optimal list, crafts
@@ -77,16 +77,17 @@
 #: notes: Golem or seek): Obscura Polymorphist, Get Lost and Cavalier of Dawn were declined for that.
 #: notes: SHELTERED BY GHOSTS: put it on a creature you will not blink — the Aura falls off and the exiled
 #: notes: card returns. Titan's {G}{G}{G} casts on turn 5 only ~35%; Galadriel's mana mode is the fix.
-#: notes: A-FLOOR PACKAGE, 2026-10-31 (owner's picks, 10 swaps): Wan Shi Tong (All-Knowing) for Shamanic
+#: notes: A-FLOOR PACKAGE, 2026-10-31 (owner's picks, 9 swaps): Wan Shi Tong (All-Knowing) for Shamanic
 #: notes: Revelation, Collective Effort for Pledge of Unity, Your Fate Ends Here for Cleric Class, Ob Nixilis
 #: notes: (the Ascended) for Heliod (Sun-Crowned), Tidus for Gossip's Talent, Helga for Emiel, Dawn of Hope
-#: notes: for The Legend of Yangchen, Airbender Ascension for Abuelo, Curious Farm Animals for Denzilore,
-#: notes: Arwen (Mortal Queen) for Sakashima. Measured floor B -> A (interaction 13, card advantage 10).
-#: notes: Uncounted by the tool and real: Ajani (Strength of the Pride)'s 0 one-sided wipe, Aang's airbend;
-#: notes: card advantage from Galadriel's draw mode, Planetarium's free casts, Serra Paragon, Valgavoth,
-#: notes: Aerith, Elspeth's -3 and Tidus. LANDS re-checked after the package: tapped-land cost 1.3 (roster
-#: notes: median 2.7), tempo sim 52.9 on curve; Island -> Plains measured +0.3 and Prairie Stream / Canopy
-#: notes: Vista -0.2, both inside noise — left as is.
+#: notes: for The Legend of Yangchen, Airbender Ascension for Abuelo, Arwen (Mortal Queen) for Sakashima.
+#: notes: Measured floor B -> A at interaction 12, card advantage 10 — exactly on the A line, so any cut of an
+#: notes: interaction piece drops the floor to B. Curious Farm Animals for Denzilore was applied and reversed
+#: notes: the same day (owner kept Denzilore). Uncounted by the tool and real: Ajani (Strength of the Pride)'s
+#: notes: 0 one-sided wipe, Aang's airbend; card advantage from Galadriel's draw mode, Planetarium's free
+#: notes: casts, Serra Paragon, Valgavoth, Aerith, Elspeth's -3 and Tidus. LANDS re-checked after the package:
+#: notes: tapped-land cost 1.3 (roster median 2.7), tempo sim 52.9 on curve; Island -> Plains measured +0.3
+#: notes: and Prairie Stream / Canopy Vista -0.2, both inside noise — left as is.
 
 # Commander (leads from the command zone; also one of the 100)
 1 Galadriel, Light of Valinor (HOC) 32
@@ -130,6 +131,7 @@
 # Scry and surveil — every look at the top of the library pays
 1 Planetarium of Wan Shi Tong (TLA) 259
 1 Matoya, Archon Elder (FIN) 62
+1 Denzilore Fatehold (FRA) 128
 
 # Counters — every creature that enters comes back bigger
 1 Arwen, Weaver of Hope (LTC) 35
@@ -171,7 +173,6 @@
 1 Detention Sphere (OTP) 43
 1 Collective Effort (SIR) 19
 1 Your Fate Ends Here (FRA) 24
-1 Curious Farm Animals (TLA) 14
 
 # Lands (37)
 1 Command Tower (FRC) 22
