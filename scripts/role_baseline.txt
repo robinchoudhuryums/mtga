@@ -214,6 +214,7 @@ Hop to It
 Hornet Queen
 Hour of Victory
 How to Start a Riot
+Huatli's Raptor
 Hulk, Strongest There Is
 Human Torch
 HYDRA Troopers
@@ -353,7 +354,6 @@ Reckless Velocitaur
 Reno and Rude
 Resentful Revelation
 Resolute Reinforcements
-Restoration Angel
 Restorative Technique
 Retrieve the Esper
 Rhovanion Rampager
@@ -425,7 +425,6 @@ Tangle Tumbler
 Tannuk, Steadfast Second
 Tapestry Warden
 Team Tactics
-Teleportation Circle
 Tenured Tethermage
 Terrapact Intimidator
 Tetsuko Umezawa, Pursuer
