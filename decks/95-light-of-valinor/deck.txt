@@ -3,24 +3,27 @@
 #: colors: GWU
 #: commander: Galadriel, Light of Valinor
 #: plan: midrange
-#: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool), BANT BLINK, SCRY AND LIFEGAIN around
+#: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool), BANT BLINK, LIFEGAIN AND COUNTERS around
 #: archetype: Galadriel, Light of Valinor: whenever another creature enters, choose a mode not yet chosen this
 #: archetype: turn — {G}{G}{G}, a +1/+1 counter on each creature, or scry 2 then draw. Every blink is a creature
 #: archetype: entering, so each one is ramp, a team pump or a card. BLINK ENGINES re-use enters triggers every
 #: archetype: turn: Y'shtola Rhul (an extra end step, so every end-step trigger fires twice — Thassa, Don & Leo,
-#: archetype: Soulherder, Shanna, Lathiel, Alert Heedbonder), Silver Surfer (flash, blinks the whole board),
-#: archetype: Flickering Hound (a blink per creature cast), Emiel, Abuelo, Oji, Lilysplash Mentor; Elesh Norn and
-#: archetype: Panharmonicon double every enters trigger, Sakashima copies the best one, and Genku makes a token
-#: archetype: each time a blink exiles one of your permanents. Repeatable enters interaction: Captain Marvel
-#: archetype: exiles a creature each time she enters, Titan of Industry and Knight of Autumn choose their modes
-#: archetype: again on every blink, and Huatli's Raptor proliferates. SCRY: Galadriel, Oji and Gossip's Talent
-#: archetype: feed Denzilore Fatehold, Matoya and Planetarium of Wan Shi Tong. LIFEGAIN: Soul Warden and Righteous
-#: archetype: Valkyrie gain on creatures entering, Cleric Class adds 1 to each gain, Gold-Forged Thopteryx and
-#: archetype: Sheltered by Ghosts add lifelink, and each gain feeds Archangel of Thune, Heliod (Sun-Crowned) and
-#: archetype: Titanbones (counters), Bloombrute (cards), Kwia Vigorbloom (Lotus mana), Valgavoth (cast creatures
-#: archetype: from the graveyard) and Trelasarra; Resplendent Angel, The Book of Exalted Deeds, Shanna, Lathiel
-#: archetype: and Aerith pay off at end step. Heliod, God of the Sun and Ajani, the Greathearted give the team
-#: archetype: vigilance for Heedbonder. The race to 40 life is a second win: Felidar Sovereign, and Ajani's 0
+#: archetype: Soulherder, Airbender Ascension, Shanna, Lathiel, Alert Heedbonder), Silver Surfer (flash, blinks
+#: archetype: the whole board), Flickering Hound (a blink per creature cast), Oji, Lilysplash Mentor, Ephemerate;
+#: archetype: Elesh Norn and Panharmonicon double every enters trigger, and Genku makes a token each time a blink
+#: archetype: exiles one of your permanents. REPEATABLE INTERACTION: Captain Marvel exiles a creature each time
+#: archetype: she enters, Wan Shi Tong tucks a nonland permanent and makes two Spirits, Titan of Industry and
+#: archetype: Knight of Autumn choose their modes again, and Ob Nixilis destroys every tapped creature an opponent
+#: archetype: controls — blink him after they attack. Arwen, Mortal Queen returns with a fresh indestructible
+#: archetype: counter to hand out with a lifelink counter. LIFEGAIN: Soul Warden and Righteous Valkyrie gain on
+#: archetype: creatures entering, Gold-Forged Thopteryx and Sheltered by Ghosts add lifelink, and each gain feeds
+#: archetype: Archangel of Thune and Titanbones (counters), Bloombrute and Dawn of Hope (cards), Kwia Vigorbloom
+#: archetype: (Lotus mana), Valgavoth (cast creatures from the graveyard) and Trelasarra; Resplendent Angel, The
+#: archetype: Book of Exalted Deeds, Ob Nixilis, Shanna, Lathiel and Aerith pay off at end step. Helga draws and
+#: archetype: grows on every creature with mana value 4 or more and taps for that mana in any colour. Heliod, God
+#: archetype: of the Sun and Ajani, the Greathearted give the team vigilance for Heedbonder; Huatli's Raptor and
+#: archetype: Tidus proliferate. SCRY: Galadriel, Oji, Trelasarra and Your Fate Ends Here feed Matoya and
+#: archetype: Planetarium of Wan Shi Tong. The race to 40 life is a second win: Felidar Sovereign, and Ajani's 0
 #: archetype: exiles their board. Huatli, Radiant Champion's emblem draws on every creature entering. DISTINCT
 #: archetype: from deck 78 (Bant, but Ally trigger-doubling in combat) and deck 94 (Simic counters): this one is a
 #: archetype: value-blink engine.
@@ -74,6 +77,16 @@
 #: notes: Golem or seek): Obscura Polymorphist, Get Lost and Cavalier of Dawn were declined for that.
 #: notes: SHELTERED BY GHOSTS: put it on a creature you will not blink — the Aura falls off and the exiled
 #: notes: card returns. Titan's {G}{G}{G} casts on turn 5 only ~35%; Galadriel's mana mode is the fix.
+#: notes: A-FLOOR PACKAGE, 2026-10-31 (owner's picks, 10 swaps): Wan Shi Tong (All-Knowing) for Shamanic
+#: notes: Revelation, Collective Effort for Pledge of Unity, Your Fate Ends Here for Cleric Class, Ob Nixilis
+#: notes: (the Ascended) for Heliod (Sun-Crowned), Tidus for Gossip's Talent, Helga for Emiel, Dawn of Hope
+#: notes: for The Legend of Yangchen, Airbender Ascension for Abuelo, Curious Farm Animals for Denzilore,
+#: notes: Arwen (Mortal Queen) for Sakashima. Measured floor B -> A (interaction 13, card advantage 10).
+#: notes: Uncounted by the tool and real: Ajani (Strength of the Pride)'s 0 one-sided wipe, Aang's airbend;
+#: notes: card advantage from Galadriel's draw mode, Planetarium's free casts, Serra Paragon, Valgavoth,
+#: notes: Aerith, Elspeth's -3 and Tidus. LANDS re-checked after the package: tapped-land cost 1.3 (roster
+#: notes: median 2.7), tempo sim 52.9 on curve; Island -> Plains measured +0.3 and Prairie Stream / Canopy
+#: notes: Vista -0.2, both inside noise — left as is.
 
 # Commander (leads from the command zone; also one of the 100)
 1 Galadriel, Light of Valinor (HOC) 32
@@ -86,16 +99,16 @@
 1 Don & Leo, Problem Solvers (TMT) 143
 1 Lilysplash Mentor (BLB) 222
 1 Aang, Swift Savior // Aang and La, Ocean's Fury (TLA) 204
-1 Abuelo, Ancestral Echo (LCI) 219
+1 Airbender Ascension (TLA) 6
 1 Oji, the Exquisite Blade (HBG) 246
 1 Flickering Hound (FRA) 7
-1 Emiel the Blessed (JMP) 3
 
 # Trigger doublers and draw engines
 1 Elesh Norn, Mother of Machines (ONE) 10
 1 Panharmonicon (KLR) 258
 1 King T'Challa // Black Panther, Hope Enduring (MSH) 219
 1 Sigarda, Font of Blessings (MAT) 47
+1 Helga, Skittish Seer (BLB) 217
 
 # Blink spells
 1 Ephemerate (MAR) 44
@@ -104,27 +117,25 @@
 1 Cloudblazer (FDN) 653
 1 Serra Paragon (DMU) 32
 1 Heliod, God of the Sun (PIO) 282
-1 Sakashima of a Thousand Faces (TLE) 18
 1 Thragtusk (JMP) 436
 1 Genku, Future Shaper (MH3) 186
 
 # Enters-the-battlefield interaction
 1 Captain Marvel, Shooting Star (MSC) 589
 1 Knight of Autumn (GRN) 183
-1 The Legend of Yangchen // Avatar Yangchen (TLA) 27
 1 Titan of Industry (SNC) 159
 1 Wan Shi Tong, All-Knowing (TLE) 98
+1 Ob Nixilis, the Ascended (FRC) 5
 
 # Scry and surveil — every look at the top of the library pays
-1 Denzilore Fatehold (FRA) 128
 1 Planetarium of Wan Shi Tong (TLA) 259
 1 Matoya, Archon Elder (FIN) 62
-1 Gossip's Talent (BLB) 51
 
 # Counters — every creature that enters comes back bigger
 1 Arwen, Weaver of Hope (LTC) 35
-1 Pledge of Unity (WAR) 210
 1 Huatli's Raptor (WAR) 200
+1 Tidus, Yuna's Guardian (FIC) 5
+1 Arwen, Mortal Queen (LTR) 193
 
 # Lifegain — creatures entering gain life, and every gain pays off
 1 Aerith, Last Ancient (FIC) 76
@@ -135,16 +146,15 @@
 1 Soul Warden (SPG) 65
 1 Shanna, Purifying Blade (DMU) 218
 1 Gold-Forged Thopteryx (MAT) 31
-1 Heliod, Sun-Crowned (THB) 18
 1 Lathiel, the Bounteous Dawn (MUL) 50
 1 Kwia Vigorbloom (FRA) 140
 1 Felidar Sovereign (J25) 198
 1 Valgavoth, the Lifeline (YFRA) 3
-1 Cleric Class (AFR) 6
 1 Resplendent Angel (LCI) 32
 1 The Book of Exalted Deeds (AFR) 4
 1 Titanbones, Towering Heart (FRA) 266
 1 Alert Heedbonder (IKO) 218
+1 Dawn of Hope (GRN) 8
 
 # Planeswalkers — loyalty engines; Quintorius doubles their activations the turn it enters
 1 Ajani, Strength of the Pride (M20) 2
@@ -159,6 +169,9 @@
 1 Sheltered by Ghosts (DSK) 30
 1 Aang's Iceberg (TLA) 5
 1 Detention Sphere (OTP) 43
+1 Collective Effort (SIR) 19
+1 Your Fate Ends Here (FRA) 24
+1 Curious Farm Animals (TLA) 14
 
 # Lands (37)
 1 Command Tower (FRC) 22
