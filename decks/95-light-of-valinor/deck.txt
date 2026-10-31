@@ -95,7 +95,6 @@
 1 Elesh Norn, Mother of Machines (ONE) 10
 1 Panharmonicon (KLR) 258
 1 King T'Challa // Black Panther, Hope Enduring (MSH) 219
-1 Shamanic Revelation (SOA) 57
 1 Sigarda, Font of Blessings (MAT) 47
 
 # Blink spells
@@ -114,6 +113,7 @@
 1 Knight of Autumn (GRN) 183
 1 The Legend of Yangchen // Avatar Yangchen (TLA) 27
 1 Titan of Industry (SNC) 159
+1 Wan Shi Tong, All-Knowing (TLE) 98
 
 # Scry and surveil — every look at the top of the library pays
 1 Denzilore Fatehold (FRA) 128

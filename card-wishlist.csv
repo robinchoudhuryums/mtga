@@ -961,8 +961,6 @@ This land enters tapped.
 Cycling {3} ({3}, Discard this card: Draw a card.)",W/U/B,Plains; Island; Swamp; card draw; mana; cycling,SNC,254,Rare,91,,3.0,seed
 Pyre-Sledge Arsonist,Creature — Lizard Shaman,"{1}, {T}: This creature deals X damage to any target, where X is the number of permanents you've sacrificed this turn.",R,Lizard; Shaman; sacrifice; burn; noncombat damage,SNC,118,Uncommon,93,,5.0,seed
 Maestros Theater,Land,"When this land enters, sacrifice it. When you do, search your library for a basic Island, Swamp, or Mountain card, put it onto the battlefield tapped, then shuffle and you gain 1 life.",Colorless,lifegain; sacrifice; ramp; etb,SNC,251,Common,89,deck 89 tune 2026-10-22,1.5,seed
-Shamanic Revelation,Sorcery,"Draw a card for each creature you control.
-Ferocious — You gain 4 life for each creature you control with power 4 or greater.",G,lifegain; card draw; ferocious,SOA,57,Rare,95,,5.0,seed
 "Primo, the Unbounded",Legendary Creature — Fractal Wolf,"Trample
 Primo enters with twice X +1/+1 counters on it.
 Whenever one or more creatures you control with base power 0 deal combat damage to a player, create a 0/0 green and blue Fractal creature token. Put a number of +1/+1 counters on it equal to the damage dealt.",U/G,Fractal; Wolf; counters; tokens; trample; evasion,SOC,6,Mythic,94,,5.0,seed
@@ -1152,7 +1150,7 @@ Whenever a Mountain you control enters, if you control at least five other Mount
 {T}: Add {R}.",R,Mountain; burn; mana; noncombat damage,TLE,61,Mythic,92,,8.5,seed
 "Wan Shi Tong, All-Knowing",Legendary Creature — Bird Spirit,"Flying
 When Wan Shi Tong enters, target nonland permanent's owner puts it into their library second from the top or on the bottom.
-Whenever one or more cards are put into a library from anywhere, create two 1/1 colorless Spirit creature tokens with ""This token can't block or be blocked by non-Spirit creatures.""",U,Bird; Spirit; tokens; etb; flying; evasion,TLE,98,Mythic,78-historic-brawl,78-historic-brawl swap for The Millennium Calendar: enters tuck of any nonland permanent plus two Spirit tokens; interaction 12 -> 13 (A floor),8.0,seed
+Whenever one or more cards are put into a library from anywhere, create two 1/1 colorless Spirit creature tokens with ""This token can't block or be blocked by non-Spirit creatures.""",U,Bird; Spirit; tokens; etb; flying; evasion,TLE,98,Mythic,78-historic-brawl; 95,78-historic-brawl swap for The Millennium Calendar: enters tuck of any nonland permanent plus two Spirit tokens; interaction 12 -> 13 (A floor),8.0,seed
 "Zuko, Firebending Master",Legendary Creature — Human Noble Ally,"First strike
 Firebending X, where X is the number of experience counters you have. (Whenever this creature attacks, add X {R}. This mana lasts until end of combat.)
 Whenever you cast a spell during combat, you get an experience counter.",R,Human; Noble; Ally; first strike; combat; firebending; bending,TLE,127,Mythic,92,,7.0,seed
