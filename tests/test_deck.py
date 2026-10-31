@@ -3701,6 +3701,26 @@ class TestRationaleStaleness:
         cards, _figs = deck.rationale_staleness(d)
         assert any("Okinec Ahau" in c for c, _h in cards)
 
+    def test_comma_less_legend_title_head_is_flagged(self, tmp_path):
+        # Deck 95 (2026-10-31): "Sakashima copies the best one" survived a clean audit
+        # after Sakashima of a Thousand Faces was cut — only COMMA heads were fragments.
+        d = self._deck(tmp_path, ["A — Sakashima copies the best enters trigger."])
+        cards, _figs = deck.rationale_staleness(d)
+        assert "Sakashima of a Thousand Faces" in [c for c, _h in cards]
+
+    def test_comma_less_head_of_in_deck_legend_stays_suppressed(self, tmp_path):
+        d = self._deck(tmp_path, ["A — Sakashima copies the best enters trigger."],
+                       cards=("1 Sakashima of a Thousand Faces (TLE) 18",))
+        cards, _figs = deck.rationale_staleness(d)
+        assert cards == []
+
+    def test_comma_less_head_of_a_legendary_artifact_is_not_a_fragment(self, tmp_path):
+        # Scoped to creatures and planeswalkers: "Mask of …" / "Throne of …" legends
+        # head on a common noun that prose capitalizes at a sentence start.
+        idx = deck._shorthand_index(deck.load_card_data())
+        assert "Sakashima" in idx
+        assert "Throne" not in idx and "Mask" not in idx
+
     def test_shorthand_of_in_deck_card_stays_suppressed(self, tmp_path):
         d = self._deck(tmp_path, ["B — Gishath is the top end."],
                        cards=("1 Gishath, Sun's Avatar (LCI) 229",))

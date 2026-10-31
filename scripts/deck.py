@@ -15979,6 +15979,26 @@ def _shorthand_index(carddata, _cache={}):
         head = front.split(",")[0].strip()
         if "," in front and len(head) >= 4 and head[0].isupper():
             cands.add(head)
+        # The comma-less legend title, "Head of …" / "Head the …": "Sakashima copies the
+        # best one" cited Sakashima of a Thousand Faces after it was cut and the audit
+        # read it clean, because only the COMMA head was a fragment (2026-10-31, deck 95).
+        # Scoped to legendary CREATURES and PLANESWALKERS — the people prose calls by
+        # first name. A legendary artifact or land in the same shape heads on a common
+        # noun ("Mask of …", "Throne of …", "Ring of …"), which prose capitalizes at a
+        # sentence start; the roster sweep measured those as noise.
+        elif "," not in front:
+            # FRONT face's type (G-63): "Throne of the Grim Captain" is a legendary
+            # ARTIFACT whose back face is the creature, and reading the whole DFC line
+            # admitted "Throne" as a person's name.
+            tline = (row.get("type") or "").split(" // ")[0]
+            if "Legendary" in tline and ("Creature" in tline or "Planeswalker" in tline):
+                ws = front.split()
+                for j in range(1, len(ws)):
+                    if ws[j] in ("of", "the"):
+                        h = ws[0]
+                        if j == 1 and len(h) >= 4 and h[0].isupper():
+                            cands.add(h)
+                        break
         words = front.replace(",", "").split()
         for i in range(1, max(0, len(words) - 1)):
             tail = " ".join(words[i:])
@@ -16597,26 +16617,31 @@ def cmd_tier(args):
         print(f"  ⚠ {len(_nodata)} card(s) have no oracle text on file — the floor grades on a "
               f"partial count; enrich via build_pool.py ({', '.join(_nodata[:4])}"
               + ("…" if len(_nodata) > 4 else "") + ")")
+    # The verdict's exit code is HELD, not returned: both the untiered branch and the
+    # mismatch branch used to `return` here, so `--to` was silently skipped on exactly
+    # the decks that ask "what would it take" — a freshly drafted (untiered) deck, and
+    # one whose letter the guard just called stale.
+    rc = 0
     if not claimed:
         print("\n  (untiered — add a `#: tier: X — rationale` header; see the tier rubric in CLAUDE.md)")
-        return 0
-    gap = TIER_RANK.get(claimed, 0) - TIER_RANK.get(implied, 0)
-    if gap >= 2:
-        print(f"\n⚠ TIER MISMATCH: {claimed} sits {gap} bands above the metrics floor ({implied}).")
-        print("  Either the letter is inflated/stale (re-grade from the CLAUDE.md rubric), or it")
-        print("  genuinely rests on bombs/meta the metrics can't see — state which in the")
-        print("  `#: tier:` rationale so the call is auditable.")
-        return 1 if getattr(args, "strict", False) else 0
-    if gap <= -1 and _argues_below_floor(meta):
-        print(f"\n  ✓ deliberately conservative — {claimed} sits below the {implied} floor and "
-              "the rationale argues why. Not flagged.")
-    elif gap <= -1:
-        print(f"\n  ↑ possibly UNDER-graded: even the (under-rating) metrics floor is {implied}. "
-              "Consider re-grading up.")
-    elif gap == 1:
-        print(f"\n  ✓ defensible — {claimed} is one band above the floor (intangibles credit).")
     else:
-        print(f"\n  ✓ consistent — {claimed} matches the metrics floor.")
+        gap = TIER_RANK.get(claimed, 0) - TIER_RANK.get(implied, 0)
+        if gap >= 2:
+            print(f"\n⚠ TIER MISMATCH: {claimed} sits {gap} bands above the metrics floor ({implied}).")
+            print("  Either the letter is inflated/stale (re-grade from the CLAUDE.md rubric), or it")
+            print("  genuinely rests on bombs/meta the metrics can't see — state which in the")
+            print("  `#: tier:` rationale so the call is auditable.")
+            rc = 1 if getattr(args, "strict", False) else 0
+        elif gap <= -1 and _argues_below_floor(meta):
+            print(f"\n  ✓ deliberately conservative — {claimed} sits below the {implied} floor and "
+                  "the rationale argues why. Not flagged.")
+        elif gap <= -1:
+            print(f"\n  ↑ possibly UNDER-graded: even the (under-rating) metrics floor is {implied}. "
+                  "Consider re-grading up.")
+        elif gap == 1:
+            print(f"\n  ✓ defensible — {claimed} is one band above the floor (intangibles credit).")
+        else:
+            print(f"\n  ✓ consistent — {claimed} matches the metrics floor.")
 
     # F14 — tier-gap diagnostic: the MEASURABLE work to reach a target band's floor,
     # plus the owned (0-wildcard) on-color cards that fill the short axis. The
@@ -16632,7 +16657,7 @@ def cmd_tier(args):
             print(f"  ✓ already meets the {gapinfo['target']} floor "
                   f"(interaction {vec['interaction']}, card-adv {vec['card_advantage']}) — "
                   "the letter is a human call from here (bombs/meta).")
-            return 0
+            return rc
         print("  measurable gap: " + "; ".join(gapinfo["summary"]))
 
         # `adds` accumulates the fillers that close the gap, in the order we'll pair
@@ -16733,7 +16758,7 @@ def cmd_tier(args):
             print("\n  → make room with `deck.py cuts %s` (grade cuts from full text); the card"
                   " SELECTION\n    is a judgment call — protect signature/spice (that's /tune-deck)."
                   % d["id"])
-    return 0
+    return rc
 
 
 def deck_git_history(path, limit=None):

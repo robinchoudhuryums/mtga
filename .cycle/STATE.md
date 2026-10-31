@@ -30,7 +30,7 @@ Phase: implement — **Batches 1 (ingest), 2 (deck legality + parse gates) and 3
 Scope: broad
 Test Command: `python3 scripts/check_all.py`
 Subsystem cycles since last Seams audit: 3 (counter adopted 2026-09-08; no Seams audit has run)
-Updated: 2026-10-20 (Brawl tooling plan Batch 7 — see Where I left off)
+Updated: 2026-10-31 (deck-95 session tooling fixes — see Where I left off)
 
 ## In progress (facts to carry forward — NOT judgments)
 - **Broad scan #10 is fully implemented — nothing outstanding from the scan.** Four
@@ -46,6 +46,10 @@ Updated: 2026-10-20 (Brawl tooling plan Batch 7 — see Where I left off)
 
 ## Completed this cycle
 
+- **2026-10-31 — deck-95 session tooling fixes 1–3** (block `deck95-tooling-broad-implement.md`): `tier --to` now
+  runs on untiered and ≥2-band-mismatch decks (exit code held, not returned); the rationale audit's shorthand index
+  derives the head of a comma-less legendary creature/planeswalker title (Sakashima, Emiel), front-face typed —
+  roster diff 0; 78-historic-brawl's three unheld printings repaired via `resolve --fix`. Net 3 − 0.
 - **2026-10-23 — deck-89 tooling plan, Batch 4 — PLAN COMPLETE** (block `deck89-batch4-broad-implement.md`):
   token-vs-nontoken sacrifice flag measured and DECLINED (~5% precision; recorded in G-42's long form); deck 89's
   "4× worse" add ranks were pool size — `feedback` now prints the percentile. Plan doc deleted. Net 1 − 0.
@@ -295,6 +299,12 @@ Updated: 2026-10-20 (Brawl tooling plan Batch 7 — see Where I left off)
   (conditional mana) — K-12's long form has the probe. (Soul Immolation closed 2026-10-01.)
 
 ## Open follow-on items
+- **CI RED from the 2026-10-31 ingests (fix first):** six unindexed keywords on newly-owned cards (ascend, battalion,
+  conjure, constellation, partner, seek) fail `test_gates_fire::test_soft_gates_are_clean` — a K-01 per-keyword call
+  (theme it or baseline it). Also from that session (record, measure first): conditional/modal card draw unread
+  (Galadriel's mode, Glorious Sunrise, Elder Gargaroth, Tidus, Ajani Unyielding +2); Ajani, Strength of the Pride's 0
+  not a Sweeper; Yangchen's chapter-I exile; proliferate has no role; no pack-availability signal for
+  `wildcards --by-set`; no `reconcile_crafts --from-deck`; check_all now 2–5 min.
 - **Surfaced by the 2026-10-21/22 deck-88 (Samut) pile analysis (record only, G-67):** no role for Ravenous Tyrannosaurus's attack trigger (its power to a creature), Emperor Apatzec Intli IV's "seek a creature card", Earth's Mightiest Heroes' creatures-onto-the-battlefield, Inspiring Call's "draw a card for each creature with a +1/+1 counter", or Black Panther, Wakandan King's {3} move-counters-and-draw; Red Hulk's enrage ping reads Burn, not removal. And nothing models Start-your-engines speed or Samut's +X/+0, so `stats` warns Tifa, Martial Artist's power-7 gate is "conditional" off printed power. The working doc `.cycle/88-samut-pile-analysis.md` was deleted on owner sign-off; `git show` it for the batch verdicts.
 - **Surfaced by the 2026-10-21 deck-87 (Loki) pile analysis (record only, G-67):** Leader, Super-Genius and Black Cat, Cunning Thief score NO role though both are card advantage (connive engines read only as `Payoff / engine`); Avengers: Under Siege scores no interaction though chapter II is a one-sided sweep (2 damage to each non-Villain creature and each opponent); and `suggest --lands` lists Duskmantle, House of Shadow as a U/B producer while it makes only {C} (the `{U}{B}, {T}: mill` cost read as production — a `land_production` bug). The working doc `.cycle/87-loki-villains-pile-analysis.md` was deleted on owner sign-off; `git show` it for the rest.
 - **Also from 2026-10-09 (small, unfiled):** Oko, Lorwyn Liege's "+1: -2/-0" scores `Removal (spot)` — a false positive (measure roster-wide before narrowing); `deck.py check` labels a hybrid (Gangly Stompling `{2}{R/G}`) an off-colour stray "(cost unknown)" while `mana` reads it as hybrid; deck 33's Kitsa flex note says "if crafted" though Kitsa is owned.
@@ -411,6 +421,10 @@ Updated: 2026-10-20 (Brawl tooling plan Batch 7 — see Where I left off)
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
+**2026-10-31 (latest) — deck-95 session tooling fixes 1–3 done** (block `deck95-tooling-broad-implement.md`).
+check_all OK; pytest 1 FAILED, pre-existing (the six unindexed keywords from today's ingests — see Open follow-on).
+**Next:** the keyword triage to turn CI green, then /sync-docs (G-26, `tier --to`).
+
 **2026-10-25 (latest) — Ozai-pile tooling fixes done** (block `ozai-tooling-broad-implement.md`): identity-as-production fallback (Duskmantle), compound hand-attack clause, modal-bullet card advantage (Black Market Connections), firebending as a combat-only nonland disclosure. Suite green, check_all OK, 0 tier floors moved; G-35/K-12 + long forms updated. Ozai deck then DRAFTED as deck 92 (Phoenix King), pile doc deleted. **Next:** owner answers deck 92's four open questions and sets its tier.
 
 **2026-10-25 (latest) — deck-90 follow-on batch done** (block `deck90-followon-broad-implement.md`): empower-Jace card advantage, energy/counter/Gate-bounded lands, card.py broken pipe, deck 89's Izoni/Zopandrel note, CLAUDE.md figure drift. Hand attack as interaction MEASURED (9 decks, 0 floors) and left report-only for the owner. Suite 2222 passed, check_all OK. **Next:** /sync-docs for both deck-90 batches.
