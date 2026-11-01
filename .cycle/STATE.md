@@ -46,6 +46,11 @@ Updated: 2026-10-31 (deck-95 session tooling fixes — see Where I left off)
 
 ## Completed this cycle
 
+- **2026-11-01 — Builder batch 1** (block `builder-batch1-broad-implement.md`): `scripts/builder.py` (new/add/place/
+  reason/check/picks/derive) with `builds/<slug>/build.json` holding only hand-made content; derivation moved out of the
+  Sultai board's refresh.py; `builds/sultai/` migrated (426 cards, 292 reasons, graded_at hashes); 14 tests + CLI help
+  test; `check_all` soft sweep for reasons written against an older deck list; `/pile-analysis` Stage 6 keeps a pile as
+  a build. Font pairing 1 recorded in `.cycle/builder-scope.md`.
 - **2026-10-31 — deck-95 session tooling fixes 1–3** (block `deck95-tooling-broad-implement.md`): `tier --to` now
   runs on untiered and ≥2-band-mismatch decks (exit code held, not returned); the rationale audit's shorthand index
   derives the head of a comma-less legendary creature/planeswalker title (Sakashima, Emiel), front-face typed —
@@ -425,6 +430,9 @@ Updated: 2026-10-31 (deck-95 session tooling fixes — see Where I left off)
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
+**2026-11-01 (latest) — Builder batch 1 done** (block `builder-batch1-broad-implement.md`). check_all OK, suite green.
+**Next:** Builder batch 2 (generic template + `builder.py render`), per `.cycle/builder-scope.md`.
+
 **2026-10-31 (latest) — deck-95 session tooling fixes 1–3 done** (block `deck95-tooling-broad-implement.md`).
 check_all OK; pytest 1 FAILED, pre-existing (the six unindexed keywords from today's ingests — see Open follow-on).
 **Next:** the keyword triage to turn CI green, then /sync-docs (G-26, `tier --to`).

@@ -1,6 +1,6 @@
 # Builder — implementation plan (2026-11-01)
 
-**Status: PLANNED, awaiting the owner's go on batch 1.** Grew out of the Sultai pile board
+**Status: batch 1 DONE 2026-11-01 (`scripts/builder.py`, `builds/sultai/`, tests, soft sweep); batch 2 next.** Grew out of the Sultai pile board
 (https://claude.ai/artifact/RfDuwKXX3WmTHYcUrLTgAR, source `.cycle/board/`), which the owner called
 "basically what I wanted as a deck building tool for the GitHub Pages deployment". Four
 `/broad-implement`-sized batches below. Delete this file, or fold it into `.cycle/blocks/`, once
@@ -16,9 +16,10 @@ batch 4 ships.
   a condensed UI face with mono numerals, brass hairlines, seal labels, ringed commander portraits.
   Neutral light AND dark palettes. **Each deck's accent comes from its own main colour** (most
   sources), so nothing is tied to one clan; card rows carry a colour-identity stripe.
-- **Fonts: owner to choose** from the specimen sheet (https://claude.ai/artifact/XHSGYFVeu2bWT5gHr6jJg7).
-  The template keeps them as four tokens (`--display --read --ui --mono`), so the choice is a
-  one-line change.
+- **Fonts: DECIDED 2026-11-01 — pairing 1 ("Current")**: Marcellus SC (headings) · Spectral
+  (reading) · IBM Plex Sans Condensed (interface) · IBM Plex Mono (numbers), chosen from the
+  specimen sheet (https://claude.ai/artifact/XHSGYFVeu2bWT5gHr6jJg7). The template keeps them as
+  four tokens (`--display --read --ui --mono`).
 - **Features that must carry over:** picks + per-deck pairing ("this replaces"), notes on any card,
   review progress per pile + hide-marked, swap-candidates filter, role/MV/owned/rarity filters,
   before→after projection (interaction and card advantage are additive per card in `role_tally`,
@@ -102,6 +103,6 @@ batch 4 ships.
   version; the theme-fit grade is not a verdict), word-capped per `check_docs.WORD_CAP`.
 
 ## Open decisions for the owner
-1. Font pairing (specimen sheet above).
+1. (decided) Font pairing 1.
 2. Should the Pages builder show picks from the claude.ai board? (It cannot read the artifact
    store; the answer today is copy-out → paste. Keep it that way unless asked.)

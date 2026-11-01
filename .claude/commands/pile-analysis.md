@@ -230,6 +230,13 @@ the ranking cannot see it.
 2. Applying is `/apply-changes`; drafting a variant the pile surfaced is `/draft-deck`.
 3. Once the swaps land, fold the durable findings into the deck files' `#: notes:` and
    **delete the working doc** — a temporary file left behind reads as live guidance.
+4. **Keep the pile as a Builder project** so its placements and reasons outlive the doc:
+   `python3 scripts/builder.py new <slug> --decks <id> [<id> …]`, then
+   `python3 scripts/builder.py add <slug> --file <pile file> --pile <key>` per pile,
+   `python3 scripts/builder.py reason <slug> "<card>" --group "<group>" --text "<reason>"`
+   for each graded card, and `python3 scripts/builder.py check <slug>` to confirm every
+   card resolves and sits on a pile. A reason records the deck lists it was written
+   against, so `check` (and `check_all`'s soft sweep) flags it once a deck changes.
 
 Every commit this skill makes carries the shared verify + commit tail in
 `docs/verify-commit-tail.md` — `check_all.py` first, the session's own trailer, no model

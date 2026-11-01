@@ -288,6 +288,23 @@ def collection_freshness_soft():
             + " \u2014 every craft cost this repo prints is built on those counts"]
 
 
+def builder_soft():
+    """[] or one soft line per Builder project whose reasons have DRIFTED.
+
+    A reason in `builds/<slug>/build.json` records the deck lists it was written against
+    (`graded_at`). When a deck changes, the reasons for that project may no longer hold —
+    three "fits neither" cards on the Sultai board had been graded for a plan the deck no
+    longer had, and nothing noticed. Soft: re-reading a reason is editorial, and a project
+    mid-review legitimately carries cards with no reason yet (those are not reported here).
+    A function, so it can be watched failing (BS2-29).
+    """
+    try:
+        import builder
+        return [line for line in (builder.stale_summary(s) for s in builder.all_builds()) if line]
+    except Exception as e:                       # a broken project file must never gate
+        return [f"builder check skipped ({e})"]
+
+
 def main():
     ap = argparse.ArgumentParser(description="Card-library integrity check.")
     ap.add_argument("--quiet", action="store_true", help="one-line summary only")
@@ -481,6 +498,7 @@ def main():
     # though it stays on until someone acts.
     soft.extend(collection_freshness_soft())
     soft.extend(pool_legality_soft())
+    soft.extend(builder_soft())
 
     try:
         import wishlist as wl
