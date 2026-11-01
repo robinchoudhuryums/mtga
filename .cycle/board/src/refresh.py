@@ -1,5 +1,6 @@
 """Recompute the Sultai board's LIVE data from the repo and rewrite the page's data island.
 Run from the repo root after any change to either deck:  python3 .cycle/board/src/refresh.py
+(`--build-only` re-renders the page from template + data without recomputing.)
 Refreshes: each deck's header stats, its current nonland list with `cuts` rank, every card's
 in-list flags, roles and mana value. Reasons and pile placement are left as written."""
 import json, re, subprocess, sys, datetime
@@ -7,6 +8,14 @@ sys.path.insert(0, "scripts")
 import deck as D
 
 PAGE = ".cycle/board/index.html"
+DATA = ".cycle/board/src/data.json"
+TEMPLATE = ".cycle/board/src/template.html"
+
+def build():
+    """Render the page: the template with the data island filled in. Styling lives only in the template,
+    so a restyle never touches card data or reasons."""
+    t = open(TEMPLATE).read()
+    open(PAGE, "w").write(t.replace("__DATA__", json.dumps(json.load(open(DATA))).replace("</", "<\\/"), 1))
 DECKS = {"T": "75-historic-brawl", "G": "96"}
 ROLE_GROUP = [("Interaction", ("Removal", "Sweeper", "Counter")), ("Card advantage", ("Card advantage",)),
               ("Ramp", ("Ramp",)), ("Recursion", ("Recursion", "Reanimation")), ("Payoff / engine", ("Payoff",))]
@@ -21,11 +30,11 @@ def tapped_cost(did):
     m = re.search(r"Tapped lands cost ([\d.]+) point", o)
     return m.group(1) if m else "?"
 
+if "--build-only" in sys.argv:
+    build(); sys.exit(0)
 carddata = D.load_card_data()
 mana = D.load_mana()
-s = open(PAGE).read()
-m = re.search(r'<script type="application/json" id="data">(.*?)</script>', s, re.S)
-data = json.loads(m.group(1).replace("<\\/", "</"))
+data = json.load(open(DATA))
 live = {}
 for k, did in DECKS.items():
     d = D.find_deck(did); meta, cards = D.parse_deck_file(d["path"])
@@ -64,7 +73,7 @@ for c in data["cards"]:
 for v in live.values(): v.pop("keys")
 data["meta"]["live"] = live
 data["meta"]["refreshed"] = datetime.date.today().isoformat()
-s = s[:m.start(1)] + json.dumps(data).replace("</", "<\\/") + s[m.end(1):]
-open(PAGE, "w").write(s)
+json.dump(data, open(DATA, "w"))
+build()
 print({k: {x: v[x] for x in ("floor", "interaction", "ca", "sources", "tapped", "crafts")} for k, v in live.items()},
       sum(1 for c in data["cards"] if c["iT"]), sum(1 for c in data["cards"] if c["iG"]))
