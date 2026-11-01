@@ -5,6 +5,7 @@ repo's own builds and decks are never written (G-88). Deck 96 is used as the sou
 because it is a real, legal 100-card list; only the copy is edited.
 """
 import json
+import re
 import os
 import shutil
 import subprocess
@@ -255,3 +256,47 @@ class TestRender:
         _new(deck_path)
         with pytest.raises(B.BuildError, match="unknown target"):
             B.render("t", "pdf", str(tmp / "out"), tempo=False, images=False)
+
+
+class TestBatch2b:
+    def test_hidden_roles_are_recorded_validated_and_removable(self, scratch):
+        deck_path, _ = scratch
+        b = _new(deck_path)
+        B.add_cards(b, ["Opt"], pile="G")
+        B.set_hidden(b, "opt", "card-advantage")
+        assert b["hidden"] == {"Opt": ["card advantage"]}
+        with pytest.raises(B.BuildError, match="unknown role"):
+            B.set_hidden(b, "Opt", "ramp")
+        with pytest.raises(B.BuildError, match="not in this build"):
+            B.set_hidden(b, "Counterspell", "interaction")
+        B.set_hidden(b, "Opt", "card advantage", remove=True)
+        assert b["hidden"] == {}
+
+    def test_derive_adds_deck_only_cards_and_the_2b_fields(self, scratch):
+        deck_path, _ = scratch
+        b = _new(deck_path)
+        B.add_cards(b, ["Opt"], pile="G")
+        B.set_hidden(b, "Opt", "card advantage")
+        data = B.derive(b, tempo=False)
+        opt = next(c for c in data["cards"] if c["n"] == "Opt")
+        assert opt["hc"] == ["card advantage"] and isinstance(opt["hr"], list)
+        assert re.fullmatch(r"[A-Z0-9]{2,6} \S+", opt["pr"])            # a printing for /ingest
+        listed = {x["n"] for x in data["meta"]["live"]["G"]["list"]}
+        deck_only = [c for c in data["cards"] if c["p"] is None]
+        assert {c["n"] for c in deck_only} == listed - {"Opt"}          # every list card has a record
+        assert all(c["iG"] for c in deck_only)
+
+    def test_ownership_and_hidden_lines_round_trip_through_picks(self, scratch):
+        deck_path, _ = scratch
+        b = _new(deck_path)
+        text = ("Ownership (I own exactly — /ingest it with reconcile_crafts --set-exact):\n"
+                "  3 Deathrite Shaman (EA3) 15\n  0 Opt\n"
+                "Counts as interaction:\n  - Deathrite Shaman\n")
+        p = B.parse_picks(text)
+        assert p["own"] == [(3, "Deathrite Shaman", "EA3", "15"), (0, "Opt", None, None)]
+        assert p["hidden"] == [("Deathrite Shaman", "interaction")]
+        lines = B.picks_report(b, text, "t")
+        assert "3 Deathrite Shaman (EA3) 15" in lines
+        assert any(ln.startswith("0 Opt") and "no printing" in ln for ln in lines)
+        assert any("reconcile_crafts.py <file> --set-exact" in ln for ln in lines)
+        assert 'python3 scripts/builder.py hidden t "Deathrite Shaman" --role interaction' in lines

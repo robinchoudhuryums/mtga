@@ -26,6 +26,8 @@ Subcommands:
   add <slug> NAME … [--file F] [--pile P] [--src S]
   place <slug> CARD PILE
   reason <slug> CARD --text "…" [--group G]
+  hidden <slug> CARD --role interaction|card-advantage [--remove]
+                                     a role the classifier misses but the card really plays
   check <slug>                       stale reasons, unresolved names, unplaced cards
   picks <slug> [FILE|-]              the board's "Copy as text" block → swap --package lines
   derive <slug> [--out FILE] [--no-tempo]   the page's data (cards + live deck stats)
@@ -47,7 +49,7 @@ import subprocess
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from lib import REPO_ROOT, atomic_write  # noqa: E402
+from lib import REPO_ROOT, alias_front, atomic_write  # noqa: E402
 
 BUILDS_DIR = os.path.join(REPO_ROOT, "builds")
 SCHEMA = 1
@@ -223,6 +225,30 @@ def set_reason(build, name, text, group=None):
     return n
 
 
+HIDDEN_ROLES = ("interaction", "card advantage")
+
+
+def set_hidden(build, name, role, remove=False):
+    """Record (or drop) a role the card really plays that the role classifier does not
+    count. Report-only: it feeds the page's "incl. hidden roles" line and is a lead for a
+    pattern fix (G-67), never a change to deck.py's counts or the tier floor."""
+    role = role.replace("-", " ").lower()
+    if role not in HIDDEN_ROLES:
+        raise BuildError(f"unknown role {role!r} — use interaction or card-advantage")
+    n = resolve_name(name)
+    if not _card_entry(build, n):
+        raise BuildError(f"{n!r} is not in this build; add it first")
+    h = build.setdefault("hidden", {})
+    cur = [r for r in h.get(n, []) if r != role]
+    if not remove:
+        cur.append(role)
+    if cur:
+        h[n] = sorted(cur)
+    else:
+        h.pop(n, None)
+    return n
+
+
 # ---------------------------------------------------------------- check
 def check_build(build):
     """[(severity, message)] — 'stale' (a deck changed since the reason was written),
@@ -298,9 +324,11 @@ def _empty_deck_picks():
 
 def parse_picks(text):
     """Read the board's "Copy as text" block. Returns {deck_id: {"pairs": [(cut, add)],
-    "adds": [...], "cuts": [...], "protect": [...], "unprotect": [...]}} plus a "notes"
-    list. Unknown lines are ignored."""
+    "adds": [...], "cuts": [...], "protect": [...], "unprotect": [...]}} plus "notes",
+    "own" [(qty, name, set, collector)] and "hidden" [(name, role)]. Unknown lines are
+    ignored."""
     out, notes, cur, section = {}, [], None, None
+    own, hidden = [], []
     for raw in (text or "").splitlines():
         line = raw.strip()
         if not line:
@@ -330,15 +358,30 @@ def parse_picks(text):
         if line == "Notes:":
             section = "notes"
             continue
+        if line.startswith("Ownership (I own exactly"):
+            section = "own"
+            continue
+        m = re.match(r"^Counts as (interaction|card advantage):$", line)
+        if m:
+            section = "hid:" + m.group(1)
+            continue
+        if section == "own":
+            m = re.match(r"^(\d+)\s+(.+?)(?:\s+\(([A-Z0-9]{2,6})\)\s*(\S+))?$", line)
+            if m:
+                own.append((int(m.group(1)), m.group(2), m.group(3), m.group(4)))
+                continue
+        if section and section.startswith("hid:") and line.startswith("- "):
+            hidden.append((line[2:], section[4:]))
+            continue
         if line.endswith(":"):
             section = None
             continue
         if section == "notes" and line.startswith("- "):
             notes.append(line[2:])
-    return {"decks": out, "notes": notes}
+    return {"decks": out, "notes": notes, "own": own, "hidden": hidden}
 
 
-def picks_report(build, text):
+def picks_report(build, text, slug=None):
     """Validated `swap --package` commands for each deck in the build, plus warnings."""
     parsed = parse_picks(text)
     D = _deck()
@@ -394,6 +437,17 @@ def picks_report(build, text):
             if ok:
                 lines.append(f"#   {kind} (header edit): {'; '.join(ok)}")
             lines += [f"#   skipped {kind}: {b}" for b in bad]
+    if parsed["own"]:
+        # Ownership corrections are an /ingest batch, never applied from here: an exact
+        # count goes through reconcile_crafts --set-exact (it can LOWER a count), and a
+        # card owned across two printings sums them — read the dry run (G-10).
+        lines.append("# ownership — save these lines to a file, then /ingest (dry run first):")
+        for q, n, st, cn in parsed["own"]:
+            lines.append(f"{q} {n}" + (f" ({st}) {cn}" if st else "") + ("" if st else "   # no printing: add (SET) #"))
+        lines.append("#   python3 scripts/reconcile_crafts.py <file> --set-exact      # then --apply")
+    for n, role in parsed["hidden"]:
+        lines.append(f"python3 scripts/builder.py hidden {slug or '<slug>'} "
+                     f"\"{n}\" --role {role.replace(' ', '-')}")
     if parsed["notes"]:
         lines.append("# notes:")
         lines += [f"#   {n}" for n in parsed["notes"]]
@@ -447,6 +501,23 @@ def deck_live(did, tempo=True):
             "keys": sorted({D._ms_key(n) for _q, n, _s, _c in cards})}
 
 
+def _printings():
+    """{lowercased name: "SET CN"} — the printing an ownership correction names. An owned
+    card uses a library row (the printing you hold); otherwise the pool's one printing."""
+    import csv
+    out = {}
+    for path in ("card-pool.csv", "card-library.csv"):          # library last: it wins
+        try:
+            with open(os.path.join(REPO_ROOT, path), encoding="utf-8") as fh:
+                for r in csv.DictReader(fh):
+                    if r.get("Set Code") and r.get("Collector #"):
+                        out[r["Card Name"].lower()] = f"{r['Set Code'].upper()} {r['Collector #']}"
+        except OSError:
+            pass
+    alias_front(out)            # second pass, never in-pass setdefault (G-63)
+    return out
+
+
 def derive(build, tempo=True):
     """The page's data: one record per card (facts, flags, reason) and `meta.live` per deck.
     Field names match the board template (n, c, mv, t, r, o, p, x, ro, ri, rc, mf, land,
@@ -458,8 +529,16 @@ def derive(build, tempo=True):
     live = {d["key"]: deck_live(d["id"], tempo=tempo) for d in build["decks"]}
     keysets = {k: set(v.pop("keys")) for k, v in live.items()}
     prots = {k: set(v["protect"]) for k, v in live.items()}
+    printing = _printings()
+    hidden = build.get("hidden", {})
+    on_board = {c["name"] for c in build["cards"]}
+    # Deck-list cards that are on no pile still get a record (pile None), so the page can
+    # show them in the Compare view and the card pane like any other card.
+    extra = [{"name": x["n"], "pile": None, "src": "deck"} for v in live.values() for x in v["list"]
+             if x["n"] not in on_board]
+    extra = list({e["name"]: e for e in extra}.values())
     out = []
-    for c in build["cards"]:
+    for c in build["cards"] + extra:
         n = c["name"]
         nl = n.lower()
         cd = carddata.get(nl) or carddata.get(nl.split(" // ")[0]) or {}
@@ -472,6 +551,10 @@ def derive(build, tempo=True):
                "ro": role_groups(sorted(D.classify_roles(text))),
                "land": "Land" in (cd.get("type") or "").split(" // ")[0]}
         rec["ri"], rec["rc"] = D.deck_role_counts([(1, n, None, None)], carddata)
+        _u, under, _nd = D.role_coverage_flags([(1, n, None, None)], carddata)
+        rec["hr"] = under[0][1].split("/") if under else []      # suspected: the classifier missed it
+        rec["hc"] = list(hidden.get(n, []))                       # confirmed by hand (build.json)
+        rec["pr"] = printing.get(nl) or printing.get(nl.split(" // ")[0]) or ""
         for k in live:
             rec["i" + k] = D._ms_key(n) in keysets[k]
             rec["p" + k] = n in prots[k]
@@ -664,6 +747,10 @@ def main(argv=None):
     p = sub.add_parser("reason", help="record why a card is or is not in a deck")
     p.add_argument("slug"); p.add_argument("card"); p.add_argument("--text", required=True)
     p.add_argument("--group", default="")
+    p = sub.add_parser("hidden", help="record a role the card plays that the classifier does not count")
+    p.add_argument("slug"); p.add_argument("card")
+    p.add_argument("--role", required=True, choices=["interaction", "card-advantage"])
+    p.add_argument("--remove", action="store_true")
     p = sub.add_parser("check", help="stale reasons, unresolved names, unplaced cards")
     p.add_argument("slug"); p.add_argument("--strict", action="store_true",
                                            help="exit 1 when anything is stale or unresolved")
@@ -697,6 +784,10 @@ def main(argv=None):
             n = set_reason(b, args.card, args.text, args.group)
             save_build(args.slug, b)
             print(f"Reason recorded for {n}")
+        elif args.cmd == "hidden":
+            n = set_hidden(b, args.card, args.role, args.remove)
+            save_build(args.slug, b)
+            print(f"{n}: hidden roles now {', '.join(b.get('hidden', {}).get(n, [])) or 'none'}")
         elif args.cmd == "check":
             issues = check_build(b)
             if not issues:
@@ -707,7 +798,7 @@ def main(argv=None):
             return 1 if (args.strict and bad) else 0
         elif args.cmd == "picks":
             text = sys.stdin.read() if args.file == "-" else open(args.file, encoding="utf-8").read()
-            for line in picks_report(b, text):
+            for line in picks_report(b, text, args.slug):
                 print(line)
         elif args.cmd == "render":
             r = render(args.slug, args.target, args.out, tempo=not args.no_tempo,

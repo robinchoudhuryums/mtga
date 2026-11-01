@@ -119,7 +119,7 @@ class TestPageArithmeticMatchesTheModel:
         fx.write_text(json.dumps({"live": data["meta"]["live"], "cards": data["cards"], "picks": picks,
                                   "key": "G", "paste": paste}))
         js = tmp_path / "fns.js"
-        js.write_text(_extract(["bandOf", "project", "parseNames"]))
+        js.write_text(_extract_consts(["hidOf", "hidBonus"]) + "\n" + _extract(["bandOf", "project", "parseNames"]))
         h = tmp_path / "h.js"
         h.write_text(_HARNESS)
         out = json.loads(subprocess.run([_NODE, str(h), str(js), str(fx)], capture_output=True,
@@ -139,3 +139,63 @@ class TestPageArithmeticMatchesTheModel:
         args = type("A", (), {"names": [], "file": str(tmp_path / "paste.txt")})
         (tmp_path / "paste.txt").write_text(paste)
         assert out["names"] == list(dict.fromkeys(B._read_names(args)))
+
+
+def _extract_consts(names):
+    """One-line `const NAME = …;` helpers, lifted like the functions above."""
+    out = []
+    for name in names:
+        m = re.search(rf"^const {name} = .*$", SRC, re.M)
+        assert m, f"const {name} is no longer in the template"
+        out.append(m.group(0))
+    return "\n".join(out)
+
+
+_HARNESS_2B = """
+const fs = require('fs');
+const input = JSON.parse(fs.readFileSync(process.argv[3], 'utf8'));
+const slug = n => String(n||"").toLowerCase().normalize("NFKD").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,180) || "card";
+const LIVE = input.live, CARDS = input.cards; CARDS.forEach(c => c.id = slug(c.n));
+const BYID = Object.fromEntries(CARDS.map(c => [c.id, c]));
+const DK = Object.keys(LIVE), DECKS = Object.fromEntries(DK.map(k=>[k,{label:k, list:LIVE[k].list}]));
+const PROT = Object.fromEntries(DK.map(k=>[k,new Set(LIVE[k].protect||[])]));
+const nameOf = id => (BYID[id]&&BYID[id].n) || "";
+let picks = input.picks;
+eval(fs.readFileSync(process.argv[2], 'utf8'));
+console.log(JSON.stringify({
+  applied: input.ask.map(([id,v]) => isApplied(id,v)),
+  conflicts: conflicts().map(x => x.msg),
+  next: nextBand("G", 3, 2), top: nextBand("G", 99, 99)}));
+"""
+
+
+@pytest.mark.skipif(not _NODE, reason="node not installed (CI sets PYTEST_NO_SKIPS, so CI cannot skip)")
+class TestAppliedAndConflicts:
+    def test_applied_conflicts_and_next_band(self, tmp_path):
+        """Synthetic deck G: In1 and In2 are in it, In2 protected; Out is not. The page must
+        call an add of a card now IN the deck applied, a cut of a card now OUT applied, and
+        flag a cut chosen twice, a protected cut, and a cut that has left the deck."""
+        cards = [{"n": "In1", "iG": True, "pG": False}, {"n": "In2", "iG": True, "pG": True},
+                 {"n": "Out", "iG": False, "pG": False}, {"n": "A1", "iG": False}, {"n": "A2", "iG": False},
+                 {"n": "A3", "iG": False}]
+        live = {"G": {"list": [{"n": "In1"}, {"n": "In2", "prot": True}], "protect": ["In2"],
+                      "req": {"A": [7, 11], "B": [4, 7], "C": [0, 2]}}}
+        picks = {"in1": {"picks": ["addG"]}, "out": {"picks": ["cutG"]},
+                 "a1": {"picks": ["addG"], "pair": {"G": "In1"}}, "a2": {"picks": ["addG"], "pair": {"G": "In1"}},
+                 "a3": {"picks": ["addG"], "pair": {"G": "In2"}}, "a1x": {"picks": []}}
+        picks["out2"] = {"picks": []}
+        fx = tmp_path / "in.json"
+        fx.write_text(json.dumps({"live": live, "cards": cards, "picks": picks,
+                                  "ask": [["in1", "addG"], ["out", "cutG"], ["a1", "addG"], ["in1", "cutG"]]}))
+        js = tmp_path / "fns.js"
+        js.write_text(_extract_consts(["deckOfPick", "hasPick"]) + "\n"
+                      + _extract(["isApplied", "conflicts", "bandOf", "nextBand"]))
+        h = tmp_path / "h.js"
+        h.write_text(_HARNESS_2B)
+        out = json.loads(subprocess.run([_NODE, str(h), str(js), str(fx)], capture_output=True,
+                                        text=True, check=True).stdout)
+        assert out["applied"] == [True, True, False, False]
+        assert any("In1 is the cut for 2 adds" in m for m in out["conflicts"])
+        assert any("In2, a protected card" in m for m in out["conflicts"])
+        assert out["next"] == {"b": "B", "parts": ["+1 interaction", "+1 more interaction or card advantage"]}  # the +1 interaction also counts toward the sum
+        assert out["top"] is None

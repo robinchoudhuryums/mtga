@@ -46,6 +46,9 @@ Updated: 2026-10-31 (deck-95 session tooling fixes — see Where I left off)
 
 ## Completed this cycle
 
+- **2026-11-01 — Builder batch 2b** (block `builder-batch2b-broad-implement.md`): Compare view with ⇄ pairing and
+  mana curve now/after; hidden-role markers (`builder.py hidden`); ownership tag + "I own exactly" queue → /ingest
+  block; applied state; conflict warnings; undo (`u`); next-band hint. Board republished.
 - **2026-11-01 — Builder batch 2 + 2a** (block `builder-batch2a-broad-implement.md`): generic `scripts/builder_template.html`;
   `builder.py render --target pages|artifact`; theme toggle, 2×2 row picks, inline note row, collapsible pane + hover
   preview, Protect/Unprotect requests, 672 px images with a thumbnail sprite (artifact versions cap at 511 files);
@@ -434,6 +437,9 @@ Updated: 2026-10-31 (deck-95 session tooling fixes — see Where I left off)
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
+**2026-11-01 (latest) — Builder batch 2b done** (block `builder-batch2b-broad-implement.md`). check_all OK.
+**Next:** Builder batch 3 (Pages integration: builder.html, dashboard link/section, deploy check, scenario 25).
+
 **2026-11-01 (latest) — Builder batch 2 + 2a done** (block `builder-batch2a-broad-implement.md`). check_all OK, suite green.
 Re-render the board with `python3 scripts/builder.py render sultai --target artifact --out .cycle/board` after any deck swap.
 **Next:** Builder batch 2b (compare view, hidden roles, ownership queue, applied state, conflicts, undo, floor, curve).
