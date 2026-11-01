@@ -1,6 +1,6 @@
 # Sultai legends pile (250 cards) — analysis (TEMPORARY working doc)
 
-**Status: RE-OPENED — measuring the pool outside the pile in phases (section 6) before the commanders are fixed.** Delete once the deck(s) are drafted and the findings are folded into
+**Status: DIRECTION CHOSEN (section 7) — next: per-deck outside-the-pile shortlists, then /draft-deck.** Delete once the deck(s) are drafted and the findings are folded into
 their `#: notes:` blocks. A scratchpad, not a source of truth — decks/ are.
 
 **Source list:** `.cycle/sultai-pile-source.txt` (250 names; all resolve, all castable in UBG,
@@ -563,3 +563,29 @@ Measured over the 8,956 Historic-Brawl-legal cards castable in UBG (`/tmp/sultai
   UB-artifact build outside this pile's colour identity.
 - Scry payoffs and leave-library triggers do NOT deepen outside the pile — the pile already holds
   most of what exists.
+
+### Phase 3 — leave-graveyard triggers (owner's addition)
+| Theme | Pool (UBG) | In pile | Owned |
+|---|---|---|---|
+| Leave-graveyard trigger payoffs (whenever cards leave / are exiled from your graveyard) | 22 | 3 (Teval, Oasis of Renewal, Syr Konrad) | 5 |
+| Graveyard-exile as a cost or fuel (delve, escape, collect evidence, "exile N cards from your graveyard:") | 158 | 6 | 28 |
+
+Outside the pile: Insidious Roots, Desecrated Tomb, Chalk Outline, Attuned Hunter, Kishla Skimmer,
+Rot Farm Mortipede, Undead Hand Ninja, Dredger's Insight, Along the Crooked Way, Willow Geist.
+
+**What it changes:** rule 6 treated exiling your own graveyard as a COST. With ~20 leave-graveyard
+payoffs it becomes a second engine: delve/escape/Kotis-style costs, recasting and reanimation all
+make tokens, cards or damage. **Caveat for a Thranduil deck (G-42):** Thranduil only has the
+abilities of Elf cards that STAY in the graveyard, so exile-from-graveyard costs should spend
+non-Elf cards; reanimating an Elf trades its borrowed ability for the body.
+
+## 7. Owner's decision (2026-11-01)
+Two decks:
+1. **Graveyard & Elves** — commander **Thranduil, the Elvenking**: legendary Elves loot cards into
+   the graveyard; Elves with activated abilities there become Thranduil's; reanimation, recasting,
+   self-mill and leave-graveyard payoffs from deck A's list; landfall Elves and Elf mana.
+2. **Draw + mill/exile** — commander **Glarb, Calamity's Augur**: draw-trigger engines that mill
+   (Psychic Corrosion, Tutelages), mill doublers (Bruvac, Fraying Sanity), half-library mills,
+   repeated library exile (Ulamog, Tasha's, three Ashioks), scry payoffs, top-of-library, hand size,
+   Clue/Thopter artifacts.
+Next: outside-the-pile shortlists per deck, then `/draft-deck` each.
