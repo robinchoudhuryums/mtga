@@ -88,6 +88,18 @@
 #: notes: casts, Serra Paragon, Valgavoth, Aerith, Elspeth's -3 and Tidus. LANDS re-checked after the package:
 #: notes: tapped-land cost 1.3 (roster median 2.7), tempo sim 52.9 on curve; Island -> Plains measured +0.3
 #: notes: and Prairie Stream / Canopy Vista -0.2, both inside noise — left as is.
+#: notes: LANDS, 2026-11-01 — BUDGET STAND-INS (owner's pick, variant E, all owned, 0 crafts) for twelve
+#: notes: unowned rare duals. The rares stay on the wishlist as the upgrade path; swap each back when crafted:
+#: notes: Adarkar Wastes -> Gleaming Bastion; Glacial Fortress -> Avengers Hangar; Hengegate Pathway ->
+#: notes: Tranquil Cove; Seachrome Coast -> 5th Island; Branchloft Pathway -> Gathering Place; Brushland ->
+#: notes: Hushwood Verge; Razorverge Thicket -> Birnin Zana Plaza; Sunpetal Grove -> Blossoming Sands;
+#: notes: Barkchannel Pathway -> Thornwood Falls; Botanical Sanctum -> Pym Technologies; Hinterland Harbor ->
+#: notes: Spara's Headquarters; Yavimaya Coast -> 4th Forest. Measured: tempo sim 52.2 -> 49.3 on curve,
+#: notes: tapped-land cost 1.2 -> 2.7, sources W 23 -> 22, U 22 -> 20, G 19 -> 19. Five of the taplands gain 1
+#: notes: life on entering, which Trelasarra, Archangel of Thune, Bloombrute and Dawn of Hope all read, and
+#: notes: Silver Surfer's whole-board blink re-triggers them. Mana Confluence is the one unowned land left
+#: notes: (stand-in if wanted: Urban Retreat). Variants measured and passed over: basics-heavy (48.5, G 16),
+#: notes: lifegain only (48.9), an Annex in place of the basics (49.3, tapped cost 3.4).
 
 # Commander (leads from the command zone; also one of the 100)
 1 Galadriel, Light of Valinor (HOC) 32
@@ -179,26 +191,24 @@
 1 Breeding Pool (EOE) 251
 1 Hallowed Fountain (ECL) 265
 1 Temple Garden (ECL) 268
-1 Sunpetal Grove (XLN) 257
-1 Hinterland Harbor (DOM) 240
-1 Glacial Fortress (XLN) 255
-1 Botanical Sanctum (OTJ) 267
-1 Razorverge Thicket (ONE) 257
-1 Seachrome Coast (ONE) 258
-1 Brushland (BRO) 259
-1 Yavimaya Coast (DMU) 261
-1 Adarkar Wastes (DMU) 243
+1 Blossoming Sands (M21) 244
+1 Spara's Headquarters (SNC) 257
+1 Avengers Hangar (MSH) 259
+1 Pym Technologies (MSH) 271
+1 Birnin Zana Plaza (MSH) 262
+1 Hushwood Verge (DSK) 261
+1 Gleaming Bastion (MSH) 267
 1 Willowrush Verge (DFT) 270
 1 Floodfarm Verge (DSK) 259
 1 Mana Confluence (EOS) 25
 1 Reflecting Pool (FRC) 23
 1 Starting Town (FIN) 289
-1 Branchloft Pathway // Boulderloft Pathway (ZNR) 258
+1 Gathering Place (MSH) 266
 1 Overgrown Farmland (FRA) 185
 1 Dreamroot Cascade (SOS) 254
 1 Deserted Beach (FRA) 176
-1 Hengegate Pathway // Mistgate Pathway (KHM) 260
-1 Barkchannel Pathway // Tidechannel Pathway (KHM) 251
-3 Forest (FRA) 289
-4 Island (FRA) 283
+1 Tranquil Cove (TDM) 270
+1 Thornwood Falls (FDN) 269
+4 Forest (FRA) 289
+5 Island (FRA) 283
 6 Plains (FRA) 281
