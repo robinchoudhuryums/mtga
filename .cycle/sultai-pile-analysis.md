@@ -532,7 +532,34 @@ Measured over the 8,956 Historic-Brawl-legal cards castable in UBG (`/tmp/sultai
   Psychic Corrosion / the Tutelages, and the pile's Ashiok exile cards plus Ulamog / Tasha's finish.
 - Wizards and Mutate stay out of the two main decks.
 
-### Phase 2 — still to measure
-Graveyard (reanimation, cast from graveyard, descend, discard), library interaction (scry
-triggers, cards leaving/entering libraries, casting from opponents' libraries), draw triggers and
-hand size, land-fetch/landfall.
+### Phase 2 — graveyard, library, draw/hand, lands, artifacts (`.cycle/sultai-measure2.py`)
+| Theme | Pool (UBG) | In pile | Owned | Verdict |
+|---|---|---|---|---|
+| Reanimation (graveyard → battlefield) | 194 | 10 | 32 | Deep |
+| Cast/play from your graveyard | 197 | 7 | 29 | Deep |
+| Graveyard-size payoffs (threshold, delirium, "cards in your graveyard") | 296 | 16 | 64 | Deep |
+| Self-mill enablers | 256 | 15 | 77 | Deep |
+| Descend payoffs | 23 | 3 | 2 | A seasoning inside the graveyard deck, not a deck |
+| Discard payoffs (whenever you discard, madness) | 29 | 1 | 3 | Thin; discard stays an ENABLER (loot → graveyard), not a payoff theme |
+| Scry/surveil payoffs | 20 | **7** | 2 | The pile already holds a third of the pool's payoffs; it does not grow much outside |
+| Cards-leave-your-library triggers | 9 | 2 | 0 | Too narrow to build on |
+| Play/cast from the top of your library | 32 | 3 | 7 | Real sub-theme (Courser, Augur of Autumn, Oracle of Mul Daya, Precognition Field, Vivien Monsters' Advocate, Eladamri) |
+| Cast from an opponent's library | ≈17 (phase 1 exile list) | 5 | 3 | Sub-theme; most are combat-gated |
+| Draw-trigger payoffs | **71** | 6 | **30** | Deep — and it feeds the draw→mill bridges |
+| Hand-size payoffs | 60 | 12 | 11 | Sub-theme of a draw deck |
+| Landfall payoffs | 88 | 4 | **39** | Deep, mostly green; lands-from-graveyard (Muldrotha, Teval, Wrenn) and fetches (226) feed it |
+| Artifact payoffs | 137 | 5 | 31 | A real theme in U/B, light in the pile (12 artifacts, 6 payoff texts) |
+| Artifact token makers (Treasure/Clue/Food/Thopter…) | 274 | 6 | 72 | Deep; pairs with artifact payoffs and with draw (Clues) |
+
+**What phase 2 changes:**
+- The GRAVEYARD deck is the deepest theme in the whole pool, not just the pile — reanimation,
+  recasting and self-mill each run ~200 cards. Muldrotha stays its commander; descend, discard,
+  landfall-from-graveyard and artifact recasting (Muldrotha replays an artifact each turn) all fold in.
+- Draw triggers are deep (71, 30 owned) and are the bridge to opponent mill (Psychic Corrosion, the
+  Tutelages) — so the LIBRARY deck is really a DRAW + MILL/EXILE deck under Glarb, with scry payoffs
+  (mostly already in the pile) and top-of-library as seasoning.
+- Artifacts are real in the pool but have no Sultai commander that rewards them; they belong as a
+  sub-theme (Clue/Thopter makers for the draw deck, recast artifacts for Muldrotha), or as a
+  UB-artifact build outside this pile's colour identity.
+- Scry payoffs and leave-library triggers do NOT deepen outside the pile — the pile already holds
+  most of what exists.
