@@ -144,6 +144,14 @@ dialog#cmp::backdrop{background:rgba(0,0,0,.6)}
 .cmplab{font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-size:.78rem;color:var(--muted);margin:0 0 4px}
 .cmpside .name{margin:6px 0 0}
 .filtbtn{display:none}
+.notebtn{font:inherit;font-size:.82rem;padding:3px 9px;border-radius:999px;border:1px dashed var(--line);background:none;color:var(--muted);cursor:pointer}
+.notebtn[aria-expanded="true"]{border-style:solid;color:var(--ink)}
+textarea.note{resize:vertical;min-height:2.6em}
+.addcard{display:block}
+.addcard .note{margin-bottom:8px}
+.addrow{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:6px 0}
+.addrow select{font:inherit;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:7px;padding:6px 9px}
+.reqs{padding-left:18px;margin:6px 0 10px} .reqs li{margin-bottom:6px}
 @media (max-width:600px){ .filtbtn{display:inline-block} .tools:not(.open) > label:not(:first-child){display:none} .tools{grid-template-columns:1fr 1fr} .tools > label:first-child{grid-column:1/-1} }
 @media (max-width:600px){ .decks{gap:8px} details.deck{padding:10px 12px} .deck h2{font-size:1.05rem} }
 @media (prefers-reduced-motion:no-preference){.card{transition:border-color .15s}}
@@ -193,6 +201,7 @@ const PILES = [
   {k:"B", hash:"pile3", label:"Pile 3 · Either", intro:"Cards that work in both decks: shared removal, ramp and fixing, scry Elves, planeswalkers. Copies are shared in Arena, so one card can sit in both lists at once."},
   {k:"N", hash:"neither", label:"Fits neither", intro:"Cards that fit neither deck, each with the reason; three are off colour identity. Listed so nothing is silently dropped."},
   {k:"lists", hash:"lists", label:"Deck lists", intro:"Each deck's current nonland cards, weakest fit first by deck.py cuts (1 = most cuttable). The ranking is a shortlist: it cannot see spice or signature cards, and the protected cards are listed last. Mark a cut here, or pick it as the card an add replaces."},
+  {k:"add", hash:"add-cards", label:"Add cards", intro:"Paste card names (one per line; Arena export lines work too) and choose where they go. The board cannot look cards up itself, so this queues a request: when you tell Claude to process the board's requests, Claude reads each card, places and grades it, adds its image and reason, and republishes."},
   {k:"picks", hash:"picks", label:"Your picks", intro:"Everything you have marked, grouped by what you asked for. Claude reads this list back when you say so."}
 ];
 const GROUP = META.groups;
@@ -204,6 +213,8 @@ let reasons = {};    // id -> {group, text} from the shared store (later phases)
 let db = null, canWrite = true;
 let view = "T";
 let VISIBLE = [];
+const NOTEOPEN = new Set();
+let requests = {};
 
 function esc(s){return String(s??"").replace(/[&<>"]/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[ch]));}
 function fmt(s){return esc(s).replace(/`([^`]+)`/g,"<code>$1</code>").replace(/\*\*([^*]+)\*\*/g,"<b>$1</b>");}
@@ -244,6 +255,7 @@ function pickButtons(c){
   return [ c.iT ? b("cutT","− Thranduil","t") : b("addT","+ Thranduil","t"),
            c.iG ? b("cutG","− Glarb","g") : b("addG","+ Glarb","g"),
            b("bench","Bench",""), b("out","Keep out","") ].join("")
+         + `<button type="button" class="notebtn" data-note="${c.id}" aria-expanded="${NOTEOPEN.has(c.id)||!!((picks[c.id]||{}).note)}">${(picks[c.id]||{}).note?"Note ✎":"Note"}</button>`
          + `<span class="saved" id="saved-${c.id}" aria-live="polite"></span>`;
 }
 function pairSelects(c){
@@ -273,7 +285,7 @@ function cardHTML(c){
     <details><summary>Oracle text</summary><p class="oracle">${esc(c.x||"(no rules text)")}</p></details>
     <div class="pick" role="group" aria-label="Your pick for ${esc(c.n)}">${pickButtons(c)}</div>
     ${pairSelects(c)}${compareBtns(c)}
-    ${p&&p.picks&&p.picks.length?`<label class="status" for="n-${c.id}">Note for Claude</label><input class="note" id="n-${c.id}" data-id="${c.id}" value="${esc(p.note||"")}" placeholder="optional — e.g. cut Bounty of Skemfar for it">`:""}
+    ${(p&&p.note)||NOTEOPEN.has(c.id)?`<label class="status" for="n-${c.id}">Note for Claude</label><textarea class="note" id="n-${c.id}" data-id="${c.id}" rows="2" placeholder="Anything about this card: a question, a hunch, a combo to check">${esc((p&&p.note)||"")}</textarea>`:""}
     </div>
   </article>`;
 }
@@ -281,13 +293,16 @@ const PICKLAB={addT:"Add to Thranduil",cutT:"Cut from Thranduil",addG:"Add to Gl
 function picksHTML(){
   const groups={}; Object.entries(picks).forEach(([id,p])=>(p.picks||[]).forEach(v=>(groups[v]=groups[v]||[]).push(id)));
   const order=["addT","cutT","addG","cutG","bench","out"];
-  if(!Object.keys(groups).length) return `<div class="empty">No picks yet. Mark cards in any pile and they gather here.</div>`;
-  return `<div class="picks card" style="grid-column:1/-1">${order.filter(v=>groups[v]).map(v=>`<h3>${PICKLAB[v]} (${groups[v].length})</h3><ul>${groups[v].sort().map(id=>{const c=BYID[id],n=(picks[id]||{}).note,pr=((picks[id]||{}).pair||{})[v.slice(-1)];return `<li><a href="#${PILES.find(p=>p.k===c.p).hash}" data-jump="${id}">${esc(c?c.n:id)}</a>${n?` — ${esc(n)}`:""}${(v==="addT"||v==="addG")?(pr?` <span class="status">replaces ${esc(pr)}</span>`:` <span class="status">no cut chosen</span>`):""}</li>`;}).join("")}</ul>`).join("")}
+  const noted=Object.keys(picks).filter(id=>(picks[id].note||"").trim()&&BYID[id]).sort();
+  if(!Object.keys(groups).length&&!noted.length) return `<div class="empty">No picks or notes yet. Mark cards in any pile and they gather here.</div>`;
+  const notesBlock = noted.length?`<h3>Notes (${noted.length})</h3><ul>${noted.map(id=>`<li><a href="#${PILES.find(p=>p.k===BYID[id].p).hash}" data-jump="${id}">${esc(BYID[id].n)}</a> — ${esc(picks[id].note)}</li>`).join("")}</ul>`:"";
+  return `<div class="picks card" style="grid-column:1/-1">${notesBlock}${order.filter(v=>groups[v]).map(v=>`<h3>${PICKLAB[v]} (${groups[v].length})</h3><ul>${groups[v].sort().map(id=>{const c=BYID[id],n=(picks[id]||{}).note,pr=((picks[id]||{}).pair||{})[v.slice(-1)];return `<li><a href="#${PILES.find(p=>p.k===c.p).hash}" data-jump="${id}">${esc(c?c.n:id)}</a>${n?` — ${esc(n)}`:""}${(v==="addT"||v==="addG")?(pr?` <span class="status">replaces ${esc(pr)}</span>`:` <span class="status">no cut chosen</span>`):""}</li>`;}).join("")}</ul>`).join("")}
     <button type="button" class="btn" id="copy">Copy as text</button> <span class="status" id="copied" aria-live="polite"></span></div>`;
 }
 function marked(id){ return ((picks[id]||{}).picks||[]).length>0; }
 function updateTabCounts(){ PILES.forEach(p=>{ const el=document.querySelector(`.tab[data-k="${p.k}"] .n`); if(!el) return;
   if(p.k==="lists"){ el.textContent=""; return; }
+  if(p.k==="add"){ const n=Object.values(requests).filter(r=>r.status!=="done").length; el.textContent=n?n:""; return; }
   if(p.k==="picks"){ el.textContent=Object.values(picks).filter(x=>(x.picks||[]).length).length; return; }
   const xs=CARDS.filter(c=>c.p===p.k); el.textContent=`${xs.filter(c=>marked(c.id)).length}/${xs.length}`;
   el.parentElement.setAttribute("aria-label",`${p.label}: ${xs.filter(c=>marked(c.id)).length} of ${xs.length} marked`); }); }
@@ -315,6 +330,35 @@ function projHTML(k){
     ${row("Tier floor",pr.f0,pr.f1)}${row("Interaction",pr.i0,pr.i1)}${row("Card advantage",pr.c0,pr.c1)}${row("Avg mana value",pr.mv0,pr.mv1)}${row("Cards to craft",pr.cr0,pr.cr1)}${row("Deck size",pr.size0,pr.size1)}
     </tbody></table>${warn}<p class="status">Interaction and card advantage add up card by card, so these match deck.py; run the copied swap --package line to confirm before applying.</p></div>`;
 }
+const DESTS={T:"Pile 1 · Thranduil",G:"Pile 2 · Glarb",B:"Pile 3 · Either",N:"Fits neither",auto:"Let Claude decide the pile",addT:"Add to Thranduil's deck",addG:"Add to Glarb's deck"};
+function parseNames(txt){ const out=[]; (txt||"").split(/\r?\n/).forEach(l=>{ l=l.trim(); if(!l||/^(deck|commander|sideboard|companion|maybeboard)$/i.test(l)) return;
+  l=l.replace(/^\d+x?\s+/i,"").replace(/\s+\([A-Z0-9]{2,6}\)\s*\S*\s*$/,"").replace(/\s+\*F\*$/,"").trim(); if(l&&!out.includes(l)) out.push(l); }); return out; }
+function addHTML(){
+  const reqs=Object.entries(requests).sort((a,b)=>(b[1].at||"").localeCompare(a[1].at||""));
+  return `<section class="card addcard" style="grid-column:1/-1;display:block">
+    <label class="status" for="addnames">Card names</label>
+    <textarea id="addnames" rows="6" class="note field" placeholder="One per line, e.g.\nKrang, the All-Powerful\n1 Deathrite Shaman (MH1) 198"></textarea>
+    <div class="addrow"><label class="status" for="adddest">Where</label><select id="adddest">${Object.entries(DESTS).map(([k,v])=>`<option value="${k}">${esc(v)}</option>`).join("")}</select></div>
+    <label class="status" for="addnote">Note for Claude (optional)</label><input id="addnote" class="note field" placeholder="e.g. found these in a draft, check them for Glarb">
+    <div class="addrow"><button type="button" class="btn" id="addsubmit">Queue for Claude</button><span class="status" id="addstatus" aria-live="polite"></span></div>
+    <p class="status" id="addpreview"></p>
+  </section>
+  <section class="card" style="grid-column:1/-1;display:block"><h3>Requests (${reqs.length})</h3>
+    ${reqs.length?`<ul class="reqs">${reqs.map(([id,r])=>`<li><b>${esc(r.status==="done"?"Done":"Waiting for Claude")}</b> · ${esc(DESTS[r.dest]||r.dest)} · ${r.names.map(esc).join("; ")}${r.note?` — ${esc(r.note)}`:""}${r.reply?`<br><span class="status">Claude: ${esc(r.reply)}</span>`:""}</li>`).join("")}</ul>
+      <button type="button" class="ghost" id="addcopy">Copy requests as text</button>`:`<p class="status">No requests yet.</p>`}</section>`;
+}
+function setAddStatus(t){ const el=document.getElementById("addstatus"); if(el) el.textContent=t; }
+async function submitRequest(){
+  const names=parseNames(document.getElementById("addnames").value), dest=document.getElementById("adddest").value, note=document.getElementById("addnote").value.trim();
+  if(!names.length){ setAddStatus("Paste at least one card name."); return; }
+  const on=names.filter(n=>BYID[slug(n)]);
+  const id="r-"+Date.now(), r={names, dest, note, at:new Date().toISOString(), status:"pending"};
+  if(db && canWrite){ try{ await db.collection("requests").doc(id).set(r); }catch(e){ setAddStatus("The request could not be saved. Try again."); return; } }
+  else { requests[id]=r; try{localStorage.setItem("sultai-board-requests",JSON.stringify(requests));}catch(e){} }
+  render(); setAddStatus(`Queued ${names.length} card(s).`+(on.length?` Already on the board: ${on.join("; ")} — Claude will move them instead.`:"")+(db?"":" This browser can't share it with Claude: copy the requests below."));
+}
+document.addEventListener("input",e=>{ if(e.target.id==="addnames"){ const n=parseNames(e.target.value), on=n.filter(x=>BYID[slug(x)]); const pv=document.getElementById("addpreview");
+  if(pv) pv.textContent = n.length?`${n.length} name(s) read${on.length?`; already on the board: ${on.join("; ")}`:""}.`:""; } });
 function listsHTML(){
   return Object.entries(DECKS).map(([k,d])=>`<section class="card dlist" style="--c:${d.c}" aria-label="${esc(d.label)} list">
     <h3>${esc(d.label)} · ${d.list.length} nonland cards + ${d.lands} lands</h3>
@@ -331,10 +375,11 @@ function render(){
   document.getElementById("intro").innerHTML=`<p>${esc(pile.intro)}</p>`;
   document.querySelectorAll(".tab").forEach(t=>t.setAttribute("aria-selected",t.dataset.k===view));
   updateTabCounts();
-  const tools=document.querySelector(".tools"); tools.style.display=(view==="picks"||view==="lists")?"none":""; document.getElementById("filtbtn").style.visibility=(view==="picks"||view==="lists")?"hidden":"";
+  const tools=document.querySelector(".tools"); const noTools=["picks","lists","add"].includes(view); tools.style.display=noTools?"none":""; document.getElementById("filtbtn").style.visibility=noTools?"hidden":"";
   const list=document.getElementById("list");
   if(view==="picks"){ list.innerHTML=picksHTML(); document.getElementById("count").textContent=""; return; }
   list.style.gridTemplateColumns = view==="lists" ? "repeat(auto-fit,minmax(min(100%,440px),1fr))" : "";
+  if(view==="add"){ list.innerHTML=addHTML(); document.getElementById("count").textContent=""; return; }
   if(view==="lists"){ list.innerHTML=listsHTML(); document.getElementById("count").textContent=""; return; }
   const q=document.getElementById("q").value.trim().toLowerCase(), mem=document.getElementById("mem").value,
         grp=document.getElementById("grp").value, sort=document.getElementById("sort").value;
@@ -418,6 +463,10 @@ async function persist(id){
 }
 document.addEventListener("click",e=>{
   const z=e.target.closest("[data-zoom]"); if(z){ openZoom(z.dataset.zoom, z.closest("#list .dlist")?null:VISIBLE); return; }
+  const nb=e.target.closest("[data-note]"); if(nb){ const id=nb.dataset.note; if(NOTEOPEN.has(id)&&!((picks[id]||{}).note)) NOTEOPEN.delete(id); else NOTEOPEN.add(id); render(); const t=document.getElementById("n-"+id); if(t) t.focus(); return; }
+  if(e.target.id==="addsubmit"){ submitRequest(); return; }
+  if(e.target.id==="addcopy"){ const txt=Object.values(requests).map(r=>`${r.dest}: ${r.names.join("; ")}${r.note?" — "+r.note:""}`).join("\n");
+    (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(()=>setAddStatus("Copied."),()=>setAddStatus("Copy was blocked; select the list instead.")); return; }
   if(e.target.id==="filtbtn"){ const t=document.getElementById("tools"), o=t.classList.toggle("open"); e.target.setAttribute("aria-expanded",o); e.target.textContent=o?"Hide filters":"Show filters"; return; }
   if(e.target.id==="zoomprev"||e.target.id==="zoomnext"){ stepZoom(e.target.id==="zoomnext"?1:-1); return; }
   const cm=e.target.closest("[data-cmp]"); if(cm){ openCompare(cm.dataset.cmp, cm.dataset.cut, cm); return; }
@@ -429,6 +478,8 @@ document.addEventListener("click",e=>{
   if(e.target.id==="copy"){
     const lines=[]; ["addT","cutT","addG","cutG","bench","out"].forEach(v=>{const ids=Object.keys(picks).filter(id=>(picks[id].picks||[]).includes(v));
       if(ids.length){lines.push(PICKLAB[v]+":");ids.sort().forEach(id=>lines.push("  - "+BYID[id].n+(picks[id].note?" — "+picks[id].note:"")));}});
+    const noted=Object.keys(picks).filter(id=>(picks[id].note||"").trim()&&BYID[id]).sort();
+    if(noted.length){ lines.push("Notes:"); noted.forEach(id=>lines.push("  - "+BYID[id].n+" — "+picks[id].note)); }
     lines.push("");
     ["T","G"].forEach(k=>{ const d=DECKS[k], pairs=[], loose=[];
       Object.keys(picks).sort().forEach(id=>{ const p=picks[id]; if(!(p.picks||[]).includes("add"+k)) return; const cut=(p.pair||{})[k];
@@ -453,7 +504,7 @@ document.addEventListener("click",e=>{
 });
 let noteTimer={};
 document.addEventListener("input",e=>{
-  if(e.target.classList.contains("note")){ const id=e.target.dataset.id; (picks[id]=picks[id]||{picks:[]}).note=e.target.value;
+  if(e.target.classList.contains("note") && !e.target.classList.contains("field")){ const id=e.target.dataset.id; (picks[id]=picks[id]||{picks:[]}).note=e.target.value;
     clearTimeout(noteTimer[id]); noteTimer[id]=setTimeout(()=>persist(id),700); return; }
   if(["q"].includes(e.target.id)) render();
 });
@@ -469,7 +520,7 @@ document.getElementById("tabs").addEventListener("keydown",e=>{
 });
 window.addEventListener("hashchange",fromHash);
 
-renderTabs(); picks=loadLocal(); renderDecks(); fromHash();
+renderTabs(); picks=loadLocal(); try{ requests=JSON.parse(localStorage.getItem("sultai-board-requests")||"{}")||{}; }catch(e){ requests={}; } renderDecks(); fromHash();
 
 (async()=>{
   let api=null;
@@ -486,6 +537,10 @@ renderTabs(); picks=loadLocal(); renderDecks(); fromHash();
     picks=next; render(); renderDecks();
     if(migrate.length){ try{localStorage.removeItem(LS);}catch(e){} migrate.forEach(persist); }
   },err=>{clearTimeout(timer); banner("Saved picks could not be loaded. Reload the page to try again.");});
+  db.collection("requests").onSnapshot(snap=>{
+    const next={}; snap.docs.forEach(d=>{ const x=d.data()||{}; if(Array.isArray(x.names)) next[d.id]={names:x.names.filter(n=>typeof n==="string").slice(0,300),dest:String(x.dest||""),note:typeof x.note==="string"?x.note:"",at:String(x.at||""),status:String(x.status||"pending"),reply:typeof x.reply==="string"?x.reply:""}; });
+    requests=next; updateTabCounts(); if(view==="add") render();
+  },()=>{});
   db.collection("reasons").onSnapshot(snap=>{
     const next={}; snap.docs.forEach(d=>{const x=d.data()||{}; if(BYID[d.id] && typeof x.text==="string") next[d.id]={group:typeof x.group==="string"?x.group:"",text:x.text};});
     reasons=next; if(view!=="picks") render();
