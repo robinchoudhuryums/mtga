@@ -1,90 +1,107 @@
-# Builder tab — scope (2026-11-01, not started)
+# Builder — implementation plan (2026-11-01)
 
-**Status: PROPOSED, awaiting the owner's go.** Grew out of the Sultai pile board
-(https://claude.ai/artifact/RfDuwKXX3WmTHYcUrLTgAR, source `.cycle/board/`), which the owner
-called "basically what I wanted as a deck building tool for the GitHub Pages deployment".
-Delete or fold into `.cycle/blocks/` once it ships.
+**Status: PLANNED, awaiting the owner's go on batch 1.** Grew out of the Sultai pile board
+(https://claude.ai/artifact/RfDuwKXX3WmTHYcUrLTgAR, source `.cycle/board/`), which the owner called
+"basically what I wanted as a deck building tool for the GitHub Pages deployment". Four
+`/broad-implement`-sized batches below. Delete this file, or fold it into `.cycle/blocks/`, once
+batch 4 ships.
 
-## What the board taught us (keep these)
-- One page holding BOTH decks and every pile beat chat lists: card art, oracle text, the reason,
-  and a per-card pick, with filters for "in neither list" / reason group / swap candidates first.
-- The REASON is the valuable part and the expensive part — it is written by Claude from full text
-  against the deck as it stands. Everything else is derivable.
-- The theme-fit grade misleads in exactly the documented ways (G-42 polarity: Glarb's mill fills
-  THEIR yard, so own-graveyard recursion read KEY there; removal reads tangential everywhere). It
-  was dropped from the page; it should not come back as a verdict.
-- Placement goes stale when a deck's plan changes: three "fits neither" cards (Tyvar Kell, Kinnan,
-  Pol Jamaar) were graded for a plan Thranduil's deck no longer had. A reason needs to know which
-  version of the deck it was written against.
+## What the session board settled (design inputs, all owner-approved)
+- **Layout (hybrid of mocks B + C):** one row per card (thumbnail, cost pips, swap seal, role tag,
+  in/protected tag per deck, one-line reason, quick per-deck toggles) beside a sticky DETAIL pane
+  that shows the FULL card image, the full reason, rules text, pick buttons, add↔cut pairing,
+  compare, and an always-open note. Phone: the detail opens as a bottom sheet. Keyboard: j/k or
+  arrows, 1..N toggles deck N, b bench, o keep out, n note, / search, z zoom.
+- **Polish (mock A, theme-agnostic):** engraved small-cap headings, a reading serif for reasons,
+  a condensed UI face with mono numerals, brass hairlines, seal labels, ringed commander portraits.
+  Neutral light AND dark palettes. **Each deck's accent comes from its own main colour** (most
+  sources), so nothing is tied to one clan; card rows carry a colour-identity stripe.
+- **Fonts: owner to choose** from the specimen sheet (https://claude.ai/artifact/XHSGYFVeu2bWT5gHr6jJg7).
+  The template keeps them as four tokens (`--display --read --ui --mono`), so the choice is a
+  one-line change.
+- **Features that must carry over:** picks + per-deck pairing ("this replaces"), notes on any card,
+  review progress per pile + hide-marked, swap-candidates filter, role/MV/owned/rarity filters,
+  before→after projection (interaction and card advantage are additive per card in `role_tally`,
+  so the page's arithmetic is exact), compare add-vs-cut, zoom with prev/next, Deck lists with
+  `cuts` ranks and protected group, Add-cards request queue, "Copy as text" ending in
+  `deck.py swap <id> --package "CUT=ADD" …` lines.
+- **PAGE = TEMPLATE + DATA** (already true of the board): styling never touches card data.
 
-## What is wrong with the session board today
-1. Built from session scratch files; only `.cycle/board/src/` keeps the inputs. Not reproducible
-   by a command.
-2. Deck stats in the header are HARD-CODED strings (floor, interaction, sources, tapped cost) —
-   they are already stale the moment a swap lands.
-3. Picks are per card with no pairing: "add Krang" says nothing about what it replaces, which is
-   the decision `/apply-changes` actually needs.
-4. Neither deck's current list is on the page, so a cut cannot be chosen there.
-5. No filters by role (interaction / card advantage / ramp), cost, rarity or owned.
-6. Reasons carry no "graded against" marker, so nothing flags a reason a later swap invalidated.
-7. 17 MB of images had to be uploaded as artifact files (the artifact sandbox blocks remote images).
+## Lessons the plan must respect
+- The REASON is the only expensive, hand-written part. Everything else is derived at build time.
+- The theme-fit grade misleads in documented ways (G-42 polarity; removal reads tangential) — it is
+  NOT shown as a verdict.
+- Placement goes stale when a deck changes plan (three "fits neither" cards were graded for an old
+  plan). A reason records which deck version it was written against, and a check flags drift.
+- Stats typed into a page go stale at the first swap: derive them.
 
-## Proposed shape
-### Data (in the repo, reviewed like any other file)
-`builds/<slug>/build.json` — one per deck-building project:
-```
-{ "title": "Sultai pile", "decks": ["75-historic-brawl", "96"],
-  "cards": [{"name": ..., "pile": "T|G|B|N", "src": "pile|search"}],
-  "reasons": {"<card>": {"group": ..., "75-historic-brawl": "...", "96": "...",
-                         "graded_at": {"75-historic-brawl": "<deck file sha>", "96": "<sha>"}}},
-  "pile_labels": {"T": "Thranduil", "G": "Glarb", "B": "Either", "N": "Fits neither"} }
-```
-Everything else (cost, type, text, rarity, owned, in-list, image URL) is derived at build time from
-card-pool / card-library / the deck files, so it never goes stale in the file.
+## Architecture
+- **Delivery:** a separate page `builder.html` on the Pages site, linked from the dashboard header
+  and a small "Builder" section listing projects. Not a section INSIDE the 3.5 MB dashboard: the
+  console needs the full width and a sticky pane, its keyboard map would collide with the
+  dashboard's (`t`, `g`, `/`), and a separate page keeps the dashboard's tests untouched. It reads
+  the dashboard's stored theme preference (`mtga-prefs`) so the two pages agree on light/dark.
+- **Two targets, one template:** (1) Pages — picks and requests live in the browser with
+  copy-out, images hot-linked from Scryfall (no CSP on Pages); (2) a claude.ai artifact per project
+  — picks/notes/requests in the artifact's store so Claude reads them directly, images uploaded as
+  artifact files. The template already branches on `window.claude`.
+- **Data:** `builds/<slug>/build.json`, curated and reviewed like any repo file:
+  `title`, `decks` (ids, in display order), `piles` (key, label, intro, which deck it favours),
+  `cards` [{name, pile, src}], `reasons` {card: {group, text | per-deck texts, graded_at: {deck: sha}}}.
+  Derived at render: oracle text, cost, type, rarity, owned, roles, ri/rc/mf/land, in-list and
+  protected flags, live deck stats, nonland lists with `cuts` rank, floor thresholds
+  (`floor_requirements`), image URL.
 
-### CLI (`scripts/build.py`, name TBD — must not collide with the Makefile/`build_*` scripts)
-`new <slug> --decks A B`, `add <slug> <names…|file>`, `place <slug> <card> <pile>`,
-`reason <slug> <card> --deck <id> "<text>"`, `check <slug>` (lists reasons whose deck changed
-since `graded_at`, and cards now in a list that the build still calls "not in"),
-`picks <slug> <pasted block>` → prints a `deck.py swap <id> --package "A=B" …` preview line per deck.
-Migration: the Sultai doc §8–9 becomes `builds/sultai/build.json` (the data already exists in
-`.cycle/board/index.html`'s data island and `.cycle/board/src/`).
+## Batches
 
-### Dashboard section `sec-build` ("Builder")
-- Loaded lazily from a sidecar `_site/builder.json` (same pattern as `collection.json`, so the
-  3.5 MB dashboard does not grow), written by `build_dashboard.py --builder-out`; `pages.yml`
-  publishes it and its deploy check reads it like it reads `collection.json`.
-- Project picker → deck strip with LIVE stats from the model functions (`tier_band` floor,
-  interaction / card advantage, `deck_source_profile`, crafts) — never typed in.
-- Pile tabs + filters (search, in-which-list, reason group, role, cost, owned/craft, rarity),
-  swap candidates first. "Graded against an older list" badge from `graded_at`.
-- Card art hot-linked from Scryfall (Pages has no image CSP): `image-manifest.json` for owned
-  cards, Scryfall's `cards/named?format=image` redirect for the rest; lazy-loaded.
-- Each deck's current list in a side panel with its `cuts` rank, so an add is PAIRED with a cut
-  on the page. Picks queue in `localStorage` (like Log-a-match) and "Copy picks" emits the
-  `--package` lines `/apply-changes` previews. Nothing is written to the repo from the page.
+### Batch 1 — Data model, derivation and CLI (no UI)
+- `scripts/builder.py` (name checked against the Makefile and `build_*` scripts):
+  `new <slug> --decks A B`, `add <slug> <names|file> [--pile P]` (resolves against card-pool,
+  refuses names not on Arena), `place`, `reason <slug> <card> [--deck id] --group G "text"`,
+  `check <slug>` (reasons whose deck file changed since `graded_at`; cards the build calls
+  "not in" that a deck now runs; cards on no pile), `picks <slug> <pasted block>` (parses the
+  page's copy-out → per-deck `swap --package` preview command), `derive <slug> --json`.
+- Move the derivation now in `.cycle/board/src/refresh.py` (live stats, lists, cut ranks, roles,
+  ri/rc/mf, protect, req) into `builder.py` as functions that call the model, never re-implement it.
+- Migrate the Sultai project: `.cycle/board/src/data.json` + §8–9 → `builds/sultai/build.json`.
+- Tests: `tests/test_builder.py` (derive on a scratch build, check catches a changed deck, picks
+  parser round-trips the copy-out format, unknown names refused) — scratch dirs only (G-88);
+  `tests/test_cli.py` entries; `check_commands.py` reachability.
+- `check_all`: a SOFT sweep over `builds/*` reporting stale reasons (drift), not a gate.
 
-### Gates it must pass (project rules)
-- G-72: every control through `a11y()`; tablist arrows; focus after re-render; token gate
-  (every `var(--x)` defined) — `tests/test_templates.py`.
-- G-53: the new CLI reached by a skill (`/pile-analysis` and `/draft-deck` should end by writing
-  a build file) or exempted with a reason — `check_commands.py`.
-- G-55: CLI covered in `tests/test_cli.py`; any JS logic shared with Python pinned under Node
-  like `test_dashboard_js.py`.
-- G-88: tests use scratch build files, never `builds/` itself.
-- A regression scenario (phone width, both themes, keyboard) added to the Cycle Workflow Config.
+### Batch 2 — Generic template and renderer
+- `scripts/builder_template.html`, generalised from `.cycle/board/src/template.html`: N decks
+  (1–4) with keys from `build.json`, piles from data, pick verbs and pairing per deck, keyboard
+  1..N, font tokens set to the owner's chosen pairing, deck accent from main colour.
+- `builder.py render <slug> --target pages|artifact --out DIR` — Pages: Scryfall image URLs;
+  artifact: downloads and resizes images (the current `fetch_images.py`) into `DIR/img/`.
+- Regenerate the Sultai board from `builds/sultai/` and republish it to the SAME artifact URL;
+  retire `.cycle/board/src/`.
+- Tests: template token gate and a11y markup pins in `tests/test_templates.py` (every control a
+  real button/select, focus ring, `var(--x)` defined in both themes); the page's projection and
+  name parser run under Node against Python's numbers, like `test_dashboard_js.py`.
 
-## Phases (one `/broad-implement` each)
-1. Data format + CLI (`new/add/place/reason/check/picks`) + migrate the Sultai build + tests.
-2. `build_dashboard.py --builder-out` + read-only `sec-build` (piles, filters, art, live stats) +
-   `pages.yml` + template/token tests.
-3. Cut pairing panel + picks queue + "Copy picks" → `--package` lines; `/pile-analysis` and
-   `/draft-deck` write a build file; scenario walk.
+### Batch 3 — Pages integration
+- `build_dashboard.py` (or a sibling call in `pages.yml`) renders every `builds/*` project to
+  `_site/builder.html` + `_site/builds/<slug>.json` (lazy-loaded per project; a project picker
+  when there are several).
+- Dashboard: a header link and a "Builder" section listing projects (title, decks, card count).
+- `pages.yml` deploy check reads the builder page like it reads `collection.json` (non-trivial
+  size, data present) and annotates failures.
+- Regression scenario 25 (Builder walk: phone width, both themes, keyboard, copy-out, Scryfall
+  images load) in the Cycle Workflow Config; README section; `docs/systems-map.md` entry.
 
-## The claude.ai board meanwhile
-**DONE 2026-11-01:** the four cheap upgrades below shipped (live stats via `.cycle/board/src/refresh.py`, Deck lists tab with cut ranks, add↔cut pairing + `--package` copy-out, role/MV/owned/rarity filters).
+### Batch 4 — Workflow wiring
+- `/pile-analysis` Stage 5 and `/draft-deck` Stage 6 write or update `builds/<slug>/build.json`
+  (so every future pile ends up as a board), and say how to render/publish it.
+- `/apply-changes` accepts a pasted Builder picks block: `builder.py picks` prints the `--package`
+  preview, then the normal swap/quality/preflight flow runs.
+- Request processing for the claude.ai target documented as a skill step: read `requests` from
+  the artifact store, `builder.py add` + reasons, re-render, republish, mark done.
+- CLAUDE.md: one Common Gotchas entry (PAGE = TEMPLATE + DATA; reasons are graded against a deck
+  version; the theme-fit grade is not a verdict), word-capped per `check_docs.WORD_CAP`.
 
-Keep it for THIS project (it is the only version whose picks Claude can read directly). Cheap
-improvements worth doing now, before the Pages version exists: derived deck stats (2), both decks'
-current lists with cut ranks (3–4), add↔cut pairing on picks (3), role/cost/owned filters (5).
-Once phase 2 ships, the board can be regenerated from `builds/sultai/build.json` by the same code.
+## Open decisions for the owner
+1. Font pairing (specimen sheet above).
+2. Should the Pages builder show picks from the claude.ai board? (It cannot read the artifact
+   store; the answer today is copy-out → paste. Keep it that way unless asked.)
