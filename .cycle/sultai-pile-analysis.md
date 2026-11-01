@@ -818,3 +818,97 @@ and little else:
 |---|---|
 | Ashiok, Dream Render | Cut at draft: its −1 "exile each opponent's graveyard" empties the yard Consuming Aberration, Drown in the Loch and Sheoldred's transform count. |
 | Ashiok, Wicked Manipulator | "If you would pay life … exile that many cards from the top of your library instead" — Phyrexian Arena, Doctor Doom and Infernal Grasp would exile YOUR library in a deck that already draws hard. Its −7 is a real finisher; the static is the problem. |
+
+### 9.3 Pile 3 → either deck: the 62 cards not in both lists
+
+**How to read it.** Both decks are Historic Brawl Sultai, so every card here is castable and legal in both; the question is which deck's ENGINE it feeds. Thranduil's engine is legendary Elves entering (a loot) and Elf cards in the graveyard; Glarb's is drawing (each draw mills two) and casting mana value 4+ off the top. Both decks already sit at the A floor (interaction 15 and 16), so removal here is interchangeable rather than missing. Copies are shared in Arena, so a card can go in both.
+
+**Swap candidate (9).**
+| Card | Thranduil (75-historic-brawl) | Glarb (96) |
+|---|---|---|
+| Yarok, the Desecrated | If a permanent entering causes a trigger "that ability triggers an additional time" — Thranduil's legendary-Elf loot becomes draw 4, discard 2, and every Elf ETB doubles. **Strong add.** | Doubles Sphinx Mindbreaker (mill 20) and Sheoldred's edict, but few ETBs here. |
+| Ioreth of the Healing House | `{T}: Untap two other target legendary creatures` — untap Thranduil for a second borrowed {T} ability each turn (Dionus's job, again). **Strong add.** | Untaps Glarb for a second surveil 2, which Matoya turns into a second draw. Real, smaller. |
+| One Ring to Rule Them All | Chapter II "Destroy all nonlegendary creatures" kills most of the Elves. | II is nearly one-sided here (6 nonlegendary creatures), I mills each player by your Ring-bearer's power, and III drains for each creature card in THEIR graveyard — which the mill fills. **Strong add.** |
+| Multiversal Recruitment | Copy Priest of Titania or Voice of the Woods, flashback later. Fine. | "Create a token that's a copy of target creature you control, except it isn't legendary" — a second Bruvac quadruples every mill. **Spicy add.** |
+| Tamiyo, Inquisitive Student // Tamiyo, Seasoned Scholar | Flips on the third draw in a turn — Thranduil's loot gets there; the walker's −3 regrows instants/sorceries (8 here). | Flips on your third draw — routine here — and her −7 draws half your library: through Psychic Corrosion that mills them for about twice as many. Spicy, risky. |
+| Garruk, Caller of Beasts | +1: reveal five, all creature cards to hand — about 2 a turn with 45 creatures in 99 cards. A real card-advantage engine for the Elf deck. | 20 creatures, so +1 finds about one. |
+| Wizard's Retort | No Wizards; a plain 3-mana counter. | Glarb is a Frog Wizard, so it costs `{U}{U}` with Glarb out. The best counter left out. |
+| Tear Asunder | Kicked, it exiles any nonland permanent — the deck answers few noncreature permanents (4 of 15 pieces). Good add. | Same: kicked, a 4-mana exile-anything; the deck has Assassin's Trophy and Cyclonic Rift already. |
+| The Everflowing Well // The Myriad Pools | Mill two, draw two — the mill feeds Thranduil. | Draw two mills four through Corrosion. Owned. Either is fine. |
+
+**Removal (interchangeable) (13).**
+| Card | Thranduil (75-historic-brawl) | Glarb (96) |
+|---|---|---|
+| Murderous Rider // Swift End | Instant kill + a lifelink body. Interchangeable with Go for the Throat. | Same. |
+| Sheoldred's Edict | Instant edict that also hits planeswalkers or a token. Interchangeable. | Same. |
+| Bloodchief's Thirst | Sorcery; 1 mana early, 4 kicked for anything. Interchangeable. | Same. |
+| Fatal Push | Mana value 2 or less without revolt — narrow in Brawl's bigger threats. | Same. |
+| Feed the Swarm | Also kills an enchantment — one of the few noncreature answers; you lose life equal to its mana value. | Same. |
+| Bitter Triumph | Discard a card — fuel here — or pay 3 life: instant kill of a creature or planeswalker. Good fit. | Discarding costs a card in a draw deck; pay 3 life instead. |
+| Anoint with Affliction | Mana value 3 or less only. | Same. |
+| Pongify | 1 mana but gives them a 3/3. | Same. |
+| Toxic Deluge | A sweeper that kills your own Elves. | A sweeper; the deck already runs Damnation. |
+| Kenrith's Transformation | Turns a threat into a 3/3 and draws a card. | Same, and the draw mills two. |
+| Davriel, Soul Broker | −3 perpetual −3/−3; +1 taxes attackers. Real removal the classifier misses. | Same. |
+| Kitsune, Dragon's Daughter | 6 mana: swap a weak creature of yours for their best. | Same; mana value 6, so Glarb can cast it off the top. |
+| Sarulf, Realm Eater | Slow, conditional sweeper. | Same. |
+
+**Counterspell (3).**
+| Card | Thranduil (75-historic-brawl) | Glarb (96) |
+|---|---|---|
+| Memory Lapse | Counters are off-plan in a tap-out Elf deck. | Counter that puts the spell back on top of their library — it delays, and it undoes a mill. |
+| Saw It Coming | Off-plan here. | A 3-mana counter (foretell 2); outranked by Wizard's Retort. |
+| Mystic Snake | Off-plan here. | Flash counter on a body; `{1}{G}{U}{U}` on 15 green sources. |
+
+**Ramp (6).**
+| Card | Thranduil (75-historic-brawl) | Glarb (96) |
+|---|---|---|
+| Nature's Lore | Fetches any Forest-typed land untapped — Overgrown Tomb, Breeding Pool, Zagoth Triome. The deck already has 11 mana Elves. | Same; 8 ramp pieces already. |
+| Cultivate | Two basics; the deck ramps on Elves. | Slower than the rocks in the list. |
+| Farseek | Finds Watery Grave / Overgrown Tomb tapped. Fine. | Same. |
+| Talisman of Resilience | Elves are better ramp here. | Cut at draft for Kaito, Bane of Nightmares. |
+| Delighted Halfling | Any colour for legendary spells, uncounterable — good with 17 legendary Elves, but not an Elf. | Fewer legends here. |
+| Oracle of Mul Daya | An Elf: extra land drop and lands from the top. Good. | Extra land drop plus Ruin Crab's landfall; Glarb already plays lands from the top. |
+
+**Scry Elf (6).**
+| Card | Thranduil (75-historic-brawl) | Glarb (96) |
+|---|---|---|
+| Arwen Undómiel | A legendary Elf (a loot trigger), but its payoff is scry, which the deck barely does. | Scry payoff with Matoya; small. |
+| Elrond, Lord of Rivendell | Legendary Elf; scry 1 per creature entering — modest. | Each scry triggers Matoya — a draw per creature entering. Close. |
+| Elrond, Master of Healing | Legendary Elf; counters on scry, draws when targeted. | Few creatures to put counters on. |
+| Galadriel of Lothlórien | Legendary Elf; scry ramp needs the Ring. | Lands onto the battlefield on scry — ramp plus Matoya draws. |
+| Legolas, Counter of Kills | Legendary Elf body; minor text. | Minor. |
+| Rashmi, Eternities Crafter | Legendary Elf; a free spell off the top each turn. Bench in both. | Same, and the top card is visible under Glarb, so you know when it hits. |
+
+**Value card (15).**
+| Card | Thranduil (75-historic-brawl) | Glarb (96) |
+|---|---|---|
+| Albiorix, Goose Tyrant // Wild Goose Chase | The adventure draws two, discards two — fuel. Flier body after. | Draw two mills four. |
+| Doctor Doom | Two 3/3 Doombots and a draw each end step for 6. | The end-step draw mills two. |
+| Erebos, God of the Dead | `{1}{B}, Pay 2 life: Draw a card`. | Same, and each draw mills two. |
+| Fblthp, Impossibly Lost | Draw two on combat damage. | Rarely attacks. |
+| Gisa, the Hellraiser | Zombies on crimes (any removal you aim at them) — off-tribe. | Same. |
+| Jace Reawakened | Loot every turn — feeds the yard. | Loot draws mill two. |
+| Kiora, the Crashing Wave | −1 draw + extra land; +1 fogs one threat. | Same. |
+| Leyline Immersion | On Thranduil: ward 2 and `{T}`: five mana for spells — but it spends the {T} he uses for borrowed abilities. | Same on Glarb: it spends his surveil tap. |
+| Maha, Its Feathers Night | Their creatures have base toughness 1 — pairs with Gloom Ripper. Flier. | A big flier. |
+| Mu Yanling, Sky Dancer | −3: a 4/4 flier. | Same. |
+| Ringsight | Tutor a card sharing a colour with a legendary creature. | Same. |
+| The Clone Saga | Surveil 3 fills the yard; II copies a creature spell. | Surveil 3 triggers Matoya and Proft. |
+| Thought Scour | Target yourself: mill two, draw one. | Cut at draft for Theorix Charm; target them: mill two, and the draw mills two more. |
+| Consider | Surveil 1 + draw. | Surveil triggers Matoya: two draws for 1 mana. |
+| Vraska Joins Up | Deathtouch counters; draw when a legend deals combat damage — the Elves do attack. | Rarely attacks. |
+
+**In one list only (10).**
+| Card | Thranduil (75-historic-brawl) | Glarb (96) |
+|---|---|---|
+| Ashiok, Sculptor of Fears | +2 draws and mills BOTH players two — your two feed Thranduil; −5 reanimates from any yard. **Good add here too.** | *in the list* |
+| Doctor Doom, Unrivaled | `{T}: draw a card` on a 4-mana lifelink body — fine; non-Elf. | *in the list* |
+| Jace, Memory Adept | Its 0 "Target player mills ten cards" can target YOU — ten cards of Elves for Thranduil. **Good add here too.** | *in the list* |
+| Jace, the Perfected Mind | −X mills yourself 3X — self-mill on demand; `{2}{U}{U/P}`. | *in the list* |
+| Elrond, Moon-Reader | *in the list* | "Whenever you activate an ability of a creature, draw a card" (once a turn) — Glarb's own surveil tap triggers it, so every turn is a draw that mills two. **Good add here too.** |
+| Garruk, Veiled Butcher | *in the list* | Interaction (+2 shrink, −2 edict) and −3 card advantage; the deck's interaction is already 16. |
+| Leovold, Emissary of Trest | *in the list* | "Each opponent can't draw more than one card each turn" switches off Dictate of Kruphix and Seizan's extra draws for them — it fights this deck's mill. |
+| Maralen, Fae Ascendant | *in the list* | Exiles two of their library per Elf or Faerie entering — this deck has almost none. |
+| Vraska, Betrayal's Sting | *in the list* | 0: draw (mills two) and proliferate; −2 neutralises a creature. A fine add; 6 mana. |
+| Vraska, Golgari Queen | *in the list* | +2 needs a permanent to sacrifice; −3 kills mana value 3 or less. Fine. |
