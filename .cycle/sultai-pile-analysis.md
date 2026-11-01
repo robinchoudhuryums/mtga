@@ -1,6 +1,6 @@
 # Sultai legends pile (250 cards) — analysis (TEMPORARY working doc)
 
-**Status: CONSOLIDATED — awaiting the owner's pick of shells/commanders.** Delete once the deck(s) are drafted and the findings are folded into
+**Status: RE-OPENED — measuring the pool outside the pile in phases (section 6) before the commanders are fixed.** Delete once the deck(s) are drafted and the findings are folded into
 their `#: notes:` blocks. A scratchpad, not a source of truth — decks/ are.
 
 **Source list:** `.cycle/sultai-pile-source.txt` (250 names; all resolve, all castable in UBG,
@@ -504,3 +504,35 @@ Callaphe; Invasion of Segovia; Lulu; Mindlink Mech; Alora; Charix; Orvar; Vesuva
 Zahid; Aphelia; Tatsunari; Liliana of the Dark Realms; Shredder; Skithiryx; Lich's Mastery; Count
 Nefaria; Mythweaver Poq; Oyaminartok; Ashaya; Bosco; Mitotic Ultimus; Tezzeret, Master of the
 Bridge; Dina, Soul Steeper; Yargle and Multani; Absorbing Man.
+
+## 6. Outside-the-pile search (owner's clarification, 2026-11-01)
+
+The pile is capped at 250 by Arena, so a light theme IN the pile may be deep in the POOL. "Win
+from exile" means self-/opponent-mill plus cards that exile libraries heavily or repeatedly.
+Measured over the 8,956 Historic-Brawl-legal cards castable in UBG (`/tmp/sultai/measure.py`).
+
+### Phase 1 — the themes rule 3 had ruled out, plus mill/exile
+| Theme | Pool (UBG) | In pile | Owned | Verdict |
+|---|---|---|---|---|
+| Elf bodies | 282 | 22 | 57 | — |
+| Elf payoffs (text rewards Elves) | **56** | 9 | 24 | **A full tribe** (deck 49 was built on Dragon 71/20). Rule 3 REVERSED. |
+| Elf creatures with an ACTIVATED ability | **95** (34 mana) | 4 | — | **Thranduil's graveyard half is real**: Priest of Titania, Elvish Archdruid, Imperious Perfect, Fauna Shaman, Elvish Warmaster, Deathrite Shaman, Lathril… in the yard, all on Thranduil. His loot puts them there. |
+| Wizard bodies | 373 | 20 | 63 | — |
+| Wizard payoffs | 13 (+3 Wizard-conditional spells) | 1 | 1 | Still NOT a deck. Wizard's Retort / Arcane Epiphany are a cheap-counter rider for a blue deck that happens to hold Wizards (Glarb is one). |
+| Mutate creatures (each with a "whenever this mutates" trigger) | 17 | 1 | 0 | A narrow third option under Brokkos; not part of the two main decks. |
+| Opponent mill | **122** | 10 | 10 | **A real win plan.** Doublers: Bruvac the Grandiloquent, Fraying Sanity. Half-library: Traumatize, Fleet Swallower, kicked Maddening Cacophony. Draw→mill bridges: Psychic Corrosion, Teferi's Tutelage, Sphinx's Tutelage. Landfall→mill: Ruin Crab. |
+| Repeated library EXILE | 17 | 5 | 3 | Ulamog, the Ceaseless Hunger (20 per attack), Tasha's Hideous Laughter, Ashiok, Nightmare Weaver / Dream Render, Villainous Wealth, Mind's Dilation, Inside Information. |
+| Payoffs on their graveyard size | few | 0 | 1 | Consuming Aberration (owned), Visions of Beyond, Syr Konrad. |
+| Empty-library win (self-mill) | 4 | 3 | 2 | Laboratory Maniac (owned) joins Doctor Doom, Fblthp, Jace. |
+
+**What phase 1 changes:**
+- Elves graduate from "variant" to a full deck. Thranduil becomes a strong commander once the
+  OUTSIDE Elves with activated abilities are counted; Maralen stays the steal-flavoured alternative.
+- Deck B can be a MILL-OUT deck, not just a library-value deck: Glarb's draw engines feed
+  Psychic Corrosion / the Tutelages, and the pile's Ashiok exile cards plus Ulamog / Tasha's finish.
+- Wizards and Mutate stay out of the two main decks.
+
+### Phase 2 — still to measure
+Graveyard (reanimation, cast from graveyard, descend, discard), library interaction (scry
+triggers, cards leaving/entering libraries, casting from opponents' libraries), draw triggers and
+hand size, land-fetch/landfall.
