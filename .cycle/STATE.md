@@ -299,9 +299,12 @@ Updated: 2026-10-31 (deck-95 session tooling fixes — see Where I left off)
   (conditional mana) — K-12's long form has the probe. (Soul Immolation closed 2026-10-01.)
 
 ## Open follow-on items
-- **CI RED from the 2026-10-31 ingests (fix first):** six unindexed keywords on newly-owned cards (ascend, battalion,
-  conjure, constellation, partner, seek) fail `test_gates_fire::test_soft_gates_are_clean` — a K-01 per-keyword call
-  (theme it or baseline it). Also from that session (record, measure first): conditional/modal card draw unread
+- **2026-11-01 — the six keywords from the 2026-10-31 ingests are BASELINED, not themed** (ascend, battalion,
+  conjure, constellation, partner, seek) so CI could go green for the PR. Baselining is the reversible half of K-01;
+  the per-keyword THEME call is still open (constellation → enchantments and battalion → go-wide/attack look like
+  real synergies; partner is deckbuilding-only; seek is already read as card advantage by the role classifier).
+  Re-run `check_keywords.py --all` and triage one at a time, with a pool rebuild + roster diff per K-10.
+  Also from that session (record, measure first): conditional/modal card draw unread
   (Galadriel's mode, Glorious Sunrise, Elder Gargaroth, Tidus, Ajani Unyielding +2); Ajani, Strength of the Pride's 0
   not a Sweeper; Yangchen's chapter-I exile; proliferate has no role; no pack-availability signal for
   `wildcards --by-set`; no `reconcile_crafts --from-deck`; check_all now 2–5 min.

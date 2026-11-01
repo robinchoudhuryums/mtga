@@ -1643,6 +1643,19 @@ contrast with an absent card, suppressed positionally like the simile rule
 (`_NEGATION_AFTER`). The sweep's single surviving flag was a TRUE positive — deck 21's
 archetype still claimed Ragost as its core after Ragost moved to variant 21a.
 
+**2026-10-31 — the comma-LESS legend title.** Only COMMA heads were fragments, so a legend
+titled "X of …" / "X the …" had no short form at all: deck 95's archetype said "Sakashima
+copies the best one" after *Sakashima of a Thousand Faces* was cut (and "Emiel" after *Emiel
+the Blessed*), and the audit read it clean. `_shorthand_index` now adds the single-word head
+of a comma-less title, under the comma-head's ≥4-char floor, ≤3-name cap and in-deck
+suppression, scoped to legendary CREATURES and PLANESWALKERS — a legendary artifact in the
+same shape heads on a common noun ("Mask of …", "Throne of …", "Ring of …") that prose
+capitalizes at a sentence start. **The type is read from the FRONT face (G-63)**: *Throne of
+the Grim Captain* is an artifact on its front and a creature on its back, and the first draft,
+reading the whole `A // B` type line, admitted "Throne" as a person's name — caught by its own
+test. Roster sweep of `rationale_staleness` before/after across 130 decks: **0 findings added,
+0 lost**, so the change bought detection without moving any live verdict.
+
 **2026-08-11, a PREFIX COLLISION the epithet cap structurally could not see.** The
 shorthand pass scanned `masked`, which blanks only the cards the deck RUNS. So an
 ABSENT card's full name was still sitting in the text when the fragment pass ran, and a
@@ -3763,6 +3776,17 @@ older bug underneath: `load_card_data` keys a DFC under BOTH `Front // Back` and
 front face, and both rows carry the same display name, so a double-faced filler printed
 **twice**, wasting a line of a six-line list. Deduped on the display name. Both are
 pinned in `tests/test_deck_models.py` (verified to fail on the un-fixed code).
+
+**2026-10-31 — `--to` was unreachable on the decks that most need it.** `cmd_tier` printed its
+claim verdict and RETURNED in two branches — the untiered note and the ≥2-band mismatch —
+both before the gap block, so `tier <id> --to A` printed the vector and nothing else on a
+freshly drafted deck (no letter yet) and on one whose letter the guard had just called
+stale. Found asking deck 95, a new 100-card draft, for its path to A; the workaround was a
+scratch copy carrying a placeholder `#: tier:`. The verdict's exit code is now HELD in `rc`
+and returned after `--to`, so every pre-existing path keeps its exit status (`--strict` on a
+mismatch still exits 1, after printing the path). `TestTierToReachesEveryVerdict` pins both
+branches, choosing a roster deck that floors at B or below rather than hardcoding one (BS8-24),
+and the roster-wide plan test now reaches untiered decks too.
 
 
 ## [G-46] `deck.py redundancy <id>` plans competitive CONSISTENCY the "virtual copies first" way
