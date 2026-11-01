@@ -1,6 +1,6 @@
 # Sultai legends pile (250 cards) — analysis (TEMPORARY working doc)
 
-**Status: REOPENED 2026-11-01 for the three-pile split (section 8).** Both decks are drafted (75-historic-brawl Thranduil, 96 Glarb). Phase 1 = the split; phase 2+ = why each card is or is not in each deck. Delete once the owner has the answers.
+**Status: REOPENED 2026-11-01 for the three-pile split (section 8).** Both decks are drafted (75-historic-brawl Thranduil, 96 Glarb). Phases 1–4 DONE (§8 split, §9.1–9.4 reasons). Next: the owner marks picks on the board; then apply them via /apply-changes. Delete once the picks land.
 
 **Board:** https://claude.ai/artifact/RfDuwKXX3WmTHYcUrLTgAR (slug `c7b18c80-55b2-42c0-93ae-ea36e2fa15be`, source `.cycle/board/index.html`; card images in `.cycle/board/img/` are gitignored — regenerate with `python3 .cycle/board/fetch_images.py`). The owner's picks live in its db collection `picks` (doc id = card-name slug; fields `card`, `picks` ⊂ {addT, cutT, addG, cutG, bench, out}, `note`) — read them with db_list. Per-card reasons are embedded in the page data and republished from `.cycle/board/index.html` each phase (the page also overlays any `reasons` docs from its db, unused so far).
 their `#: notes:` blocks. A scratchpad, not a source of truth — decks/ are.
@@ -600,9 +600,9 @@ Next: outside-the-pile shortlists per deck, then `/draft-deck` each.
 
 Marks: **[T]** in Thranduil's list · **[G]** in Glarb's list · **[T+G]** in both. Unmarked = in neither (Phase 2 explains why).
 
-### Pile 1 — better in THRANDUIL (75-historic-brawl) — 113 cards
+### Pile 1 — better in THRANDUIL (75-historic-brawl) — 116 cards
 - *In Thranduil's list (52):* Abomination of Llanowar; Bounty of Skemfar; Cantankerous Keepers; Circle of Dreams Druid; Cloud of Darkness; Dawnhand Eulogist; Deathbloom Ritualist; Dionus, Elvish Archdruid; Dwynen, Gilt-Leaf Daen; Eclipsed Realms; Elderfang Ritualist; Elvish Archdruid; Elvish Mystic; Elvish Warmaster; Fauna Shaman; Gloom Ripper; Harald Unites the Elves; Harald, King of Skemfar; Heartless Act; High Perfect Morcant; Imperious Perfect; Insidious Roots; Izoni, Thousand-Eyed; Journey to Eternity // Atzal, Cave of Eternity; Kagha, Shadow Archdruid; Kamahl's Druidic Vow; Lathril, Blade of the Elves; Leaf-Crowned Visionary; Liliana, Death Mage; Llanowar Elves; Lluwen, Imperfect Naturalist; Lys Alana Dignitary; Marwyn, the Nurturer; Morcant's Eyes; Morcant's Loyalist; Muldrotha, the Gravetide; Oasis of Renewal; Overlord of the Balemurk; Priest of Titania; Selvala, Heart of the Wilds; Shaman of the Pack; Sheoldred, Whispering One; Skemfar Avenger; Teval, the Balanced Scale; Thranduil, Sindarin Liege; Thranduil, the Elvenking; Trystan's Command; Trystan, Callous Cultivator; Voice of the Woods; Wastewood Verge; Woodland Weavemaster; Wrenn and Realmbreaker
-- *In neither list (61):* Aclazotz, Deepest Betrayal // Temple of the Dead; Along the Crooked Way; Arni, Humble Scribe; Attuned Hunter; Beledros Witherbloom; Black Widow, Daring Operative; Bonny Pall, Clearcutter; Brokkos, Apex of Forever; Celeborn the Wise; Chalk Outline; Deathrite Shaman; Desecrated Tomb; Drana, the Last Bloodchief; Dredger's Insight; Eladamri, Korvecdal; Emet-Selch of the Third Seat; Ezuri, Stalker of Spheres; Furgul, Quag Nurturer; Ghoulcaller Gisa; Gisa, Glorious Resurrector; Invasion of Ikoria // Zilortha, Apex of Ikoria; Isareth the Awakener; Junji, the Midnight Sky; Kaervek, the Punisher; Kels, Fight Fixer; Kishla Skimmer; Kotis, Sibsig Champion; Krydle of Baldur's Gate; Laboratory Maniac; Lazav, the Multifarious; Leader, Super-Genius; Madame Hydra, Reanimated; Malcolm, Alluring Scoundrel; Mimeoplasm, Revered One; Moonstone, Harsh Mistress; Nael, Avizoa Aeronaut; Nashi, Illusion Gadgeteer; Nashi, Moon's Legacy; Nissa of Shadowed Boughs; Pharaoh Rama-Tut; Prototype X-8; Reezug, the Bonecobbler; Rona, Herald of Invasion // Rona, Tolarian Obliterator; Rot Farm Mortipede; Sauron, the Necromancer; Scavenger's Talent; Sidisi, Brood Tyrant; Sin, Spira's Punishment; Syr Konrad, the Grim; Tamiyo, Compleated Sage; The Ancient One; The Cloning of Shredder; The Mycotyrant; Tyvar the Bellicose; Uchbenbak, the Great Mistake; Ultimecia, Time Sorceress; Undead Hand Ninja; Willow Geist; Wrenn and Seven; Yawgmoth, Thran Physician; Zimone the Calculating // Simple Subtraction
+- *In neither list (64; Kinnan, Pol Jamaar and Tyvar Kell moved here from "fits neither" in phase 4):* Aclazotz, Deepest Betrayal // Temple of the Dead; Kinnan, Bonder Prodigy (moved); Pol Jamaar, Illusionist (moved); Tyvar Kell (moved); Along the Crooked Way; Arni, Humble Scribe; Attuned Hunter; Beledros Witherbloom; Black Widow, Daring Operative; Bonny Pall, Clearcutter; Brokkos, Apex of Forever; Celeborn the Wise; Chalk Outline; Deathrite Shaman; Desecrated Tomb; Drana, the Last Bloodchief; Dredger's Insight; Eladamri, Korvecdal; Emet-Selch of the Third Seat; Ezuri, Stalker of Spheres; Furgul, Quag Nurturer; Ghoulcaller Gisa; Gisa, Glorious Resurrector; Invasion of Ikoria // Zilortha, Apex of Ikoria; Isareth the Awakener; Junji, the Midnight Sky; Kaervek, the Punisher; Kels, Fight Fixer; Kishla Skimmer; Kotis, Sibsig Champion; Krydle of Baldur's Gate; Laboratory Maniac; Lazav, the Multifarious; Leader, Super-Genius; Madame Hydra, Reanimated; Malcolm, Alluring Scoundrel; Mimeoplasm, Revered One; Moonstone, Harsh Mistress; Nael, Avizoa Aeronaut; Nashi, Illusion Gadgeteer; Nashi, Moon's Legacy; Nissa of Shadowed Boughs; Pharaoh Rama-Tut; Prototype X-8; Reezug, the Bonecobbler; Rona, Herald of Invasion // Rona, Tolarian Obliterator; Rot Farm Mortipede; Sauron, the Necromancer; Scavenger's Talent; Sidisi, Brood Tyrant; Sin, Spira's Punishment; Syr Konrad, the Grim; Tamiyo, Compleated Sage; The Ancient One; The Cloning of Shredder; The Mycotyrant; Tyvar the Bellicose; Uchbenbak, the Great Mistake; Ultimecia, Time Sorceress; Undead Hand Ninja; Willow Geist; Wrenn and Seven; Yawgmoth, Thran Physician; Zimone the Calculating // Simple Subtraction
 
 ### Pile 2 — better in GLARB (96) — 126 cards
 - *In Glarb's list (55):* Arcane Signet; Archive Trap; Ashiok, Nightmare Muse; Ashiok, Nightmare Weaver; Assassin's Trophy; Birds of Paradise; Brainstorm; Breach the Multiverse; Bruvac the Grandiloquent; Consuming Aberration; Counterspell; Cyclonic Rift; Damnation; Dictate of Kruphix; Drown in the Loch; Fraying Sanity; Glarb, Calamity's Augur; Glimpse the Unthinkable; Growth Spiral; Hero's Downfall; Jidoor, Aristocratic Capital // Overture; Jin-Gitaxias, Core Augur; Kaito, Bane of Nightmares; M.O.D.O.K., Evil Intellect; Maddening Cacophony; Matoya, Archon Elder; Mind Stone; Mystic Remora; Notion Thief; Phyrexian Arena; Princess Yue; Proft, Consulting Detective; Psychic Corrosion; Reed Richards, Smartest Man; Restless Reef; Rhystic Study; Ruin Crab; Sheoldred, the Apocalypse; Sphinx Mindbreaker; Sphinx's Tutelage; Startled Awake // Persistent Nightmare; Sunken Hollow; Talisman of Curiosity; Talisman of Dominance; Tasha's Hideous Laughter; Teferi's Ageless Insight; Teferi's Tutelage; Teferi, Temporal Pilgrim; The Master of Lake-town; The Theorist, Jace Beleren; The Water Crystal; Theorix Charm; Thought Collapse; Traumatize; Ulamog, the Ceaseless Hunger
@@ -614,8 +614,8 @@ Marks: **[T]** in Thranduil's list · **[G]** in Glarb's list · **[T+G]** in bo
 - *In Glarb's list (4):* Ashiok, Sculptor of Fears; Doctor Doom, Unrivaled; Jace, Memory Adept; Jace, the Perfected Mind
 - *In neither list (52):* Albiorix, Goose Tyrant // Wild Goose Chase; Anoint with Affliction; Arwen Undómiel; Bitter Triumph; Bloodchief's Thirst; Consider; Cultivate; Davriel, Soul Broker; Delighted Halfling; Doctor Doom; Elrond, Lord of Rivendell; Elrond, Master of Healing; Erebos, God of the Dead; Farseek; Fatal Push; Fblthp, Impossibly Lost; Feed the Swarm; Galadriel of Lothlórien; Garruk, Caller of Beasts; Gisa, the Hellraiser; Ioreth of the Healing House; Jace Reawakened; Kenrith's Transformation; Kiora, the Crashing Wave; Kitsune, Dragon's Daughter; Legolas, Counter of Kills; Leyline Immersion; Maha, Its Feathers Night; Memory Lapse; Mu Yanling, Sky Dancer; Multiversal Recruitment; Murderous Rider // Swift End; Mystic Snake; Nature's Lore; One Ring to Rule Them All; Oracle of Mul Daya; Pongify; Rashmi, Eternities Crafter; Ringsight; Sarulf, Realm Eater; Saw It Coming; Sheoldred's Edict; Talisman of Resilience; Tamiyo, Inquisitive Student // Tamiyo, Seasoned Scholar; Tear Asunder; The Clone Saga; The Everflowing Well // The Myriad Pools; Thought Scour; Toxic Deluge; Vraska Joins Up; Wizard's Retort; Yarok, the Desecrated
 
-### Not a fit for either (listed so nothing is silently dropped) — 98 cards
-- *In neither list (98):* Absorbing Man; Alora, Rogue Companion; Aphelia, Viper Whisperer; Ashaya, Soul of the Wild; Azula, Ruthless Firebender; Bosco, Just a Bear; Callaphe, Beloved of the Sea; Charix, the Raging Isle; Chevill, Bane of Monsters; Chulane, Teller of Tales; Count Nefaria; Dina, Essence Brewer; Dina, Soul Steeper; Gadwick, the Wizened; Gale, Conduit of the Arcane; Gandalf, Friend of the Shire; Geralf, the Fleshwright; Glamdring, Foe-hammer // Gleam of Death; God-Eternal Kefnet; Golbez, Crystal Collector; Goldberry, River-Daughter; Goreclaw, Terror of Qal Sisma; Graviton, Fundamental Force; Greensleeves, Maro-Sorcerer; Impossible Man; Ink-Eyes, Servant of Oni; Invasion of Segovia // Caetus, Sea Tyrant of Segovia; Irenicus's Vile Duplication; Irma, Part-Time Mutant; Jadzi, Oracle of Arcavios // Journey to the Oracle; Jyoti, Moag Ancient; K'rrik, Son of Yawgmoth; Katara, Bending Prodigy; Katara, Waterbending Master; Kingpin, Wilson Fisk; Kinnan, Bonder Prodigy; Kiora of Salt and Sand; Kira, Great Glass-Spinner; Kogla and Yidaro; Kona, Rescue Beastie; Kruphix, God of Horizons; Lazav, Familiar Stranger; Lich's Mastery; Liliana of the Dark Realms; Lo and Li, Twin Tutors; Locke Cole; Long Feng, Grand Secretariat; Lord Dregg, Insect Invader; Lulu, Stern Guardian; Marit Lage's Slumber; Massacre Girl, Known Killer; Mindlink Mech; Mitotic Ultimus; Morlun, Devourer of Spiders; Mystic Reflection; Mythweaver Poq; Naban, Dean of Iteration; Niv-Mizzet, Visionary; Oko, the Trickster; Omega, Heartless Evolution; Orvar, the All-Form; Oyaminartok, Polar Werebear; Pharika, God of Affliction; Pol Jamaar, Illusionist; Roalesk, Apex Hybrid; Ruric Thar, Biomagus; Sarevok the Usurper; Shredder, Shadow Master; Skithiryx, the Blight Dragon; Slimefoot, Thallid Transplant; Splinter, the Mentor; Syr Elenora, the Discerning; Taeko, the Patient Avalanche; Tatsunari, Toad Rider; Tawnos, the Toymaker; Tergrid, God of Fright // Tergrid's Lantern; Tetzimoc, Primal Death; Tezzeret, Betrayer of Flesh; Tezzeret, Master of the Bridge; The Magic Mirror; Tome of the Infinite; Tui and La, Moon and Ocean; Tyvar Kell; Unctus, Grand Metatect; Urza, Lord High Artificer; Vesuvan Duplimancy; Victor Timely, Wily Tycoon; Vnwxt, Verbose Host; Wasp, Shrinking Savior; Whisper, Blood Liturgist; Witch-king of Angmar; Witherbloom, the Balancer; Xande, Dark Mage; Yahenni, Undying Partisan; Yargle and Multani; Ygra, Eater of All; Yue, the Moon Spirit; Zahid, Djinn of the Lamp
+### Not a fit for either (listed so nothing is silently dropped) — 95 cards
+- *In neither list (95):* Absorbing Man; Alora, Rogue Companion; Aphelia, Viper Whisperer; Ashaya, Soul of the Wild; Azula, Ruthless Firebender; Bosco, Just a Bear; Callaphe, Beloved of the Sea; Charix, the Raging Isle; Chevill, Bane of Monsters; Chulane, Teller of Tales; Count Nefaria; Dina, Essence Brewer; Dina, Soul Steeper; Gadwick, the Wizened; Gale, Conduit of the Arcane; Gandalf, Friend of the Shire; Geralf, the Fleshwright; Glamdring, Foe-hammer // Gleam of Death; God-Eternal Kefnet; Golbez, Crystal Collector; Goldberry, River-Daughter; Goreclaw, Terror of Qal Sisma; Graviton, Fundamental Force; Greensleeves, Maro-Sorcerer; Impossible Man; Ink-Eyes, Servant of Oni; Invasion of Segovia // Caetus, Sea Tyrant of Segovia; Irenicus's Vile Duplication; Irma, Part-Time Mutant; Jadzi, Oracle of Arcavios // Journey to the Oracle; Jyoti, Moag Ancient; K'rrik, Son of Yawgmoth; Katara, Bending Prodigy; Katara, Waterbending Master; Kingpin, Wilson Fisk; Kiora of Salt and Sand; Kira, Great Glass-Spinner; Kogla and Yidaro; Kona, Rescue Beastie; Kruphix, God of Horizons; Lazav, Familiar Stranger; Lich's Mastery; Liliana of the Dark Realms; Lo and Li, Twin Tutors; Locke Cole; Long Feng, Grand Secretariat; Lord Dregg, Insect Invader; Lulu, Stern Guardian; Marit Lage's Slumber; Massacre Girl, Known Killer; Mindlink Mech; Mitotic Ultimus; Morlun, Devourer of Spiders; Mystic Reflection; Mythweaver Poq; Naban, Dean of Iteration; Niv-Mizzet, Visionary; Oko, the Trickster; Omega, Heartless Evolution; Orvar, the All-Form; Oyaminartok, Polar Werebear; Pharika, God of Affliction; Roalesk, Apex Hybrid; Ruric Thar, Biomagus; Sarevok the Usurper; Shredder, Shadow Master; Skithiryx, the Blight Dragon; Slimefoot, Thallid Transplant; Splinter, the Mentor; Syr Elenora, the Discerning; Taeko, the Patient Avalanche; Tatsunari, Toad Rider; Tawnos, the Toymaker; Tergrid, God of Fright // Tergrid's Lantern; Tetzimoc, Primal Death; Tezzeret, Betrayer of Flesh; Tezzeret, Master of the Bridge; The Magic Mirror; Tome of the Infinite; Tui and La, Moon and Ocean; Unctus, Grand Metatect; Urza, Lord High Artificer; Vesuvan Duplimancy; Victor Timely, Wily Tycoon; Vnwxt, Verbose Host; Wasp, Shrinking Savior; Whisper, Blood Liturgist; Witch-king of Angmar; Witherbloom, the Balancer; Xande, Dark Mage; Yahenni, Undying Partisan; Yargle and Multani; Ygra, Eater of All; Yue, the Moon Spirit; Zahid, Djinn of the Lamp
 
 ## 9. Phase 2 — why each card is NOT in its pile's deck
 
@@ -912,3 +912,110 @@ and little else:
 | Maralen, Fae Ascendant | *in the list* | Exiles two of their library per Elf or Faerie entering — this deck has almost none. |
 | Vraska, Betrayal's Sting | *in the list* | 0: draw (mills two) and proliferate; −2 neutralises a creature. A fine add; 6 mana. |
 | Vraska, Golgari Queen | *in the list* | +2 needs a permanent to sacrifice; −3 kills mana value 3 or less. Fine. |
+
+### 9.4 The fits-neither pile: 95 cards, plus three moved to Pile 1
+
+**Re-placed on a text re-check.** Section 8 sent a card to "fits neither" when the pile analysis graded it ◇ or worse for both of the ORIGINAL decks — and the original deck A was the Muldrotha graveyard plan, not the Elf deck that Thranduil's list became. Re-reading the Elf-relevant ones against the real list moved three into Pile 1 as swap candidates:
+
+- **Tyvar Kell** — Missed by the pile pass (graded for the old graveyard plan). "Elves you control have `{T}: Add {B}`" fixes black on all 11 mana Elves, 0 makes an Elf every turn, +1 untaps one, and the −6 emblem draws two per Elf spell. **Strong add.**
+- **Kinnan, Bonder Prodigy** — Missed by the pile pass. "Whenever you tap a nonland permanent for mana, add one mana of any type that permanent produced" doubles all 11 mana Elves, and `{5}{G}{U}` puts a non-Human creature (any Elf) from the top five onto the battlefield. **Strong add.**
+- **Pol Jamaar, Illusionist** — Missed by the pile pass. "Choose a creature type. Draw a card for each creature you control of that type" — name Elf, usually 4–6 cards. A 6-mana flier, so a bench-level add.
+
+**The other 95, one line each.**
+| Card | Why it fits neither deck |
+|---|---|
+| Absorbing Man | A gimmick with no tie to either engine. |
+| Alora, Rogue Companion | Evasion that returns the creature to hand — tempo only. |
+| Aphelia, Viper Whisperer | An attack-for-value 2-drop; neither deck is an attacking deck. |
+| Ashaya, Soul of the Wild | Makes your creatures lands — no landfall payoff to cash it in. |
+| Azula, Ruthless Firebender | A discard-on-attack outlet; Thranduil already loots, Glarb rarely attacks. |
+| Bosco, Just a Bear | Food with no Food payoff in either deck. |
+| Callaphe, Beloved of the Sea | A mild ward tax; no engine. |
+| Charix, the Raging Isle | Counts Islands; three-colour decks run only a few. |
+| Chevill, Bane of Monsters | Bounty card advantage needs repeat removal to cash in. |
+| Chulane, Teller of Tales | Off colour identity: needs {W}. |
+| Count Nefaria | A 7-mana flier with nothing else. |
+| Dina, Essence Brewer | Sacrifice payoff; neither deck has a sacrifice outlet. |
+| Dina, Soul Steeper | Lifegain payoff; no lifegain plan. |
+| Gadwick, the Wizened | Draw X for `{X}{U}{U}{U}` — triple blue in a three-colour deck. |
+| Gale, Conduit of the Arcane | Pays off instants/sorceries; Thranduil runs 8, and Glarb's 21 already have better payoffs. |
+| Gandalf, Friend of the Shire | Ring-tempt payoff; neither deck tempts the Ring. |
+| Geralf, the Fleshwright | Needs several cheap spells a turn. |
+| Glamdring, Foe-hammer // Gleam of Death | An Equipment for an instants deck. |
+| God-Eternal Kefnet | Copies instants/sorceries drawn — Glarb sees the top, but Kefnet wants them first-drawn each turn; minor. |
+| Golbez, Crystal Collector | Needs artifacts; neither deck has many. |
+| Goldberry, River-Daughter | Counter-shuffling with no counters plan. |
+| Goreclaw, Terror of Qal Sisma | Generic big-creature support. |
+| Graviton, Fundamental Force | Draw-trigger tapper — minor in Glarb's deck. |
+| Greensleeves, Maro-Sorcerer | Landfall threat; neither deck plays extra lands often. |
+| Impossible Man | Clone utility without a target worth copying every turn. |
+| Ink-Eyes, Servant of Oni | Reanimates THEIR creature on combat damage — both decks rarely connect. |
+| Invasion of Segovia // Caetus, Sea Tyrant of Segovia | A Kraken-token siege; no payoff. |
+| Irenicus's Vile Duplication | Clones a legend — strong only with one ETB engine to copy. |
+| Irma, Part-Time Mutant | Clone; same problem. |
+| Jadzi, Oracle of Arcavios // Journey to the Oracle | An 8-mana spells-matter card. |
+| Jyoti, Moag Ancient | Needs commander recasts and land creatures. |
+| K'rrik, Son of Yawgmoth | Life-for-mana with no black-pip payoff worth it. |
+| Katara, Bending Prodigy | A weak body for either deck. |
+| Katara, Waterbending Master | Instants-matter; off-plan. |
+| Kingpin, Wilson Fisk | Sacrifice payoff; no outlets. |
+| Kiora of Salt and Sand | Superfriends support; neither deck runs enough walkers. |
+| Kira, Great Glass-Spinner | Counters the first targeting of each creature — including your own pump or untap (Ioreth, Dionus). |
+| Kogla and Yidaro | Off colour identity: needs {R}{R}. |
+| Kona, Rescue Beastie | Needs a tapping plan. |
+| Kruphix, God of Horizons | Hand-size enabler only; rarely a creature in three colours. |
+| Lazav, Familiar Stranger | Can exile your own yard — a cost in Thranduil's deck; little in Glarb's. |
+| Lich's Mastery | Losing life exiles your own permanents; too risky in both. |
+| Liliana of the Dark Realms | Counts Swamps; three-colour decks run few. |
+| Lo and Li, Twin Tutors | Tutors a Noble: Thranduil's deck has Elrond, Moon-Reader and Maralen, Glarb's has Princess Yue. Thin targets. |
+| Locke Cole | Small evasive looter. |
+| Long Feng, Grand Secretariat | Counters payoff; neither deck stacks counters. |
+| Lord Dregg, Insect Invader | Generic Insect-token engine. |
+| Lulu, Stern Guardian | Defensive; proliferate idles without counters. |
+| Marit Lage's Slumber | Needs snow permanents; neither deck has any. |
+| Massacre Girl, Known Killer | Wither plus draw — good against go-wide, off-plan for both. |
+| Mindlink Mech | Copies a nonlegendary creature; both decks are mostly legends. |
+| Mitotic Ultimus | A 9-mana conjure gimmick. |
+| Morlun, Devourer of Spiders | An X-cost beater; its drain hits only opponents. |
+| Mystic Reflection | Copies a nonlegendary creature; same problem as Mindlink Mech. |
+| Mythweaver Poq | Land ramp off a narrow trigger. |
+| Naban, Dean of Iteration | Doubles Wizard ETBs; neither deck is Wizards. |
+| Niv-Mizzet, Visionary | Off colour identity: needs {R}. |
+| Oko, the Trickster | Six mana for counters; weak here. |
+| Omega, Heartless Evolution | Tempo, not removal; 7 mana. |
+| Orvar, the All-Form | Needs instants that target your own permanents. |
+| Oyaminartok, Polar Werebear | Off-plan beater. |
+| Pharika, God of Affliction | Exiles creature cards from graveyards — fights Thranduil's yard; gives the card's owner a token. |
+| Roalesk, Apex Hybrid | A counters-deck card (deck 94's ground). |
+| Ruric Thar, Biomagus | Mostly a 6-mana flier here. |
+| Sarevok the Usurper | Weak scaler. |
+| Shredder, Shadow Master | A combat finisher with no synergy. |
+| Skithiryx, the Blight Dragon | A lone infect threat. |
+| Slimefoot, Thallid Transplant | Card advantage off basics entering; few basics, no Fungus plan. |
+| Splinter, the Mentor | Its partner text does nothing in Brawl. |
+| Syr Elenora, the Discerning | A hand-size body; Glarb's deck has better. |
+| Taeko, the Patient Avalanche | A blink/bounce payoff; no blink in either deck. |
+| Tatsunari, Toad Rider | Needs enchantments cast. |
+| Tawnos, the Toymaker | Copies Beasts/Birds; neither deck has them. |
+| Tergrid, God of Fright // Tergrid's Lantern | Needs the opponent to sacrifice or discard; neither deck forces it often. |
+| Tetzimoc, Primal Death | A slow, conditional sweeper. |
+| Tezzeret, Betrayer of Flesh | Artifact looting; few artifacts. |
+| Tezzeret, Master of the Bridge | An artifact-deck walker. |
+| The Magic Mirror | `{6}{U}{U}{U}` and wants instants/sorceries in the yard. |
+| Tome of the Infinite | Slow random value. |
+| Tui and La, Moon and Ocean | An attacker draw engine; neither deck attacks enough. |
+| Unctus, Grand Metatect | Rummage on blue artifact creatures; few here. |
+| Urza, Lord High Artificer | Needs artifacts. |
+| Vesuvan Duplimancy | Needs spells that target your creatures. |
+| Victor Timely, Wily Tycoon | Few targets for its recursion. |
+| Vnwxt, Verbose Host | Speed needs opponent life loss; slow in both. |
+| Wasp, Shrinking Savior | Needs creatures with power below 0. |
+| Whisper, Blood Liturgist | Sacrifice two to reanimate — costly without tokens. |
+| Witch-king of Angmar | A defensive edict against attackers; Ring tempt unused. |
+| Witherbloom, the Balancer | An instants/sorceries deck card. |
+| Xande, Dark Mage | A beater. |
+| Yahenni, Undying Partisan | A sac outlet with nothing to sacrifice for value. |
+| Yargle and Multani | A big vanilla reanimation target. |
+| Ygra, Eater of All | A Food/lifegain deck card. |
+| Yue, the Moon Spirit | A noncreature-spells payoff; both decks are creature-heavy or draw-heavy. |
+| Zahid, Djinn of the Lamp | A 5/6 flier with nothing else. |
