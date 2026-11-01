@@ -47,10 +47,12 @@ for k, did in DECKS.items():
                    floor=D.tier_band(vec), interaction=vec["interaction"], ca=vec["card_advantage"],
                    sources=" · ".join(f"{c}{src.get(c, 0)}" for c in "UBG"), tapped=tapped_cost(did),
                    crafts=vec.get("missing", 0), avg_mv=vec.get("avg_mv"), lands=lands, list=nonland,
+                   protect=sorted(prot),
                    keys=sorted({D._ms_key(n) for q, n, _s, _c in cards}))
 for c in data["cards"]:
     k = D._ms_key(c["n"])
     c["iT"] = k in set(live["T"]["keys"]); c["iG"] = k in set(live["G"]["keys"])
+    c["pT"] = c["n"] in live["T"]["protect"]; c["pG"] = c["n"] in live["G"]["protect"]
     cd = carddata.get(c["n"].lower()) or carddata.get(c["n"].lower().split(" // ")[0]) or {}
     c["ro"] = role_groups(sorted(D.classify_roles(cd.get("text") or c.get("x") or "")))
 for v in live.values(): v.pop("keys")

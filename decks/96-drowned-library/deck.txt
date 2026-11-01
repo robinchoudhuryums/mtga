@@ -17,7 +17,7 @@
 #: archetype: Drown in the Loch scales with it, Yawgmoth's Vile Offering and Breach the Multiverse reanimate from it,
 #: archetype: Consuming Aberration grows with it. DISTINCT from deck 22 (Dimir Standard mill-control, Hama + the
 #: archetype: Water Crystal): this is a 100-card Sultai draw engine whose mill is a by-product of drawing.
-#: protect: Glarb, Calamity's Augur; Psychic Corrosion; Bruvac the Grandiloquent; Matoya, Archon Elder; Teferi's Tutelage; Sphinx's Tutelage
+#: protect: Glarb, Calamity's Augur; Psychic Corrosion; Bruvac the Grandiloquent; Matoya, Archon Elder; Teferi's Tutelage; Sphinx's Tutelage; Tasha's Hideous Laughter
 #: notes: DRAFTED 2026-11-01 with /draft-deck from the Sultai pile analysis (owner's pick 2 of 2: draw + mill/exile
 #: notes: under Glarb; pick 1 is 75-historic-brawl). The optimal list, crafts included. Brawl is 1v1 at 25 life with
 #: notes: a ~92-card library after the opening hand, so mill needs ~90 cards: a doubler plus one big mill does it.
