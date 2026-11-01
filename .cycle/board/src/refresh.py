@@ -22,6 +22,7 @@ def tapped_cost(did):
     return m.group(1) if m else "?"
 
 carddata = D.load_card_data()
+mana = D.load_mana()
 s = open(PAGE).read()
 m = re.search(r'<script type="application/json" id="data">(.*?)</script>', s, re.S)
 data = json.loads(m.group(1).replace("<\\/", "</"))
@@ -47,7 +48,8 @@ for k, did in DECKS.items():
                    floor=D.tier_band(vec), interaction=vec["interaction"], ca=vec["card_advantage"],
                    sources=" · ".join(f"{c}{src.get(c, 0)}" for c in "UBG"), tapped=tapped_cost(did),
                    crafts=vec.get("missing", 0), avg_mv=vec.get("avg_mv"), lands=lands, list=nonland,
-                   protect=sorted(prot),
+                   protect=sorted(prot), avg_mv_n=vec.get("avg_mv_n"),
+                   req={b: list(D.floor_requirements(vec, b)) for b in ("A", "B", "C")},
                    keys=sorted({D._ms_key(n) for q, n, _s, _c in cards}))
 for c in data["cards"]:
     k = D._ms_key(c["n"])
@@ -55,6 +57,10 @@ for c in data["cards"]:
     c["pT"] = c["n"] in live["T"]["protect"]; c["pG"] = c["n"] in live["G"]["protect"]
     cd = carddata.get(c["n"].lower()) or carddata.get(c["n"].lower().split(" // ")[0]) or {}
     c["ro"] = role_groups(sorted(D.classify_roles(cd.get("text") or c.get("x") or "")))
+    c["ri"], c["rc"] = D.deck_role_counts([(1, c["n"], None, None)], carddata)
+    me = mana.get(c["n"].lower()) or mana.get(c["n"].lower().split(" // ")[0])
+    c["mf"] = me[1] if me else None
+    c["land"] = "Land" in (cd.get("type") or c.get("t") or "").split(" // ")[0]
 for v in live.values(): v.pop("keys")
 data["meta"]["live"] = live
 data["meta"]["refreshed"] = datetime.date.today().isoformat()
