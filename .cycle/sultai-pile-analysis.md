@@ -673,7 +673,7 @@ deck's leave-graveyard events are occasional (Muldrotha recasts, reanimation, Jo
 | Isareth the Awakener | Reanimates on attack for {X}, but the returned creature is exiled if it leaves — and the reanimated Elf no longer lends Thranduil its ability. |
 | Junji, the Midnight Sky | A 5-mana flier whose value is its death trigger; the deck wants Elves in the yard, not Dragons. |
 | Drana, the Last Bloodchief | "defending player chooses a nonlegendary creature card" — the OPPONENT picks, so they give you a mana Elf. |
-| Uchbenbak, the Great Mistake | Descend 8 recursion for a vanilla 6/4-ish body; nothing Elf. |
+| Uchbenbak, the Great Mistake | Descend 8 recursion for a 6/4 vigilance-menace body; nothing Elf. |
 | Beledros Witherbloom | Pest each upkeep; 7 mana and "Pay 10 life" untap — no Elf payoff for Pests. |
 | Ghoulcaller Gisa | Sac outlet that makes Zombies = power; Elves are small, so X is 1–2. |
 | Gisa, Glorious Resurrector | Steals THEIR dead creatures for a turn; off-plan here (a better fit for a removal-heavy deck). |
@@ -686,7 +686,7 @@ deck's leave-graveyard events are occasional (Muldrotha recasts, reanimation, Jo
 Every legendary Elf entering draws two and discards one, so a non-Elf looter duplicates the commander:
 Arni, Humble Scribe (`{T}: Draw a card, then discard a card`); Rona, Herald of Invasion (same, untaps on legendary
 spells — the closest of these, since most of the deck is legendary); Leader, Super-Genius (connive each combat);
-Malcolm, Alluring Scoundrel (combat-gated loot); Pharaoh Rama-Tut (connives on noncreature spells — ~15 here);
+Malcolm, Alluring Scoundrel (combat-gated loot); Pharaoh Rama-Tut (connives on noncreature spells — 19 here);
 The Ancient One (loot that mills a player; descend 8 to attack). None is bad; each lost to an Elf.
 
 **F. Legendary Elves that are only a loot trigger.** The deck already has 17 legendary Elves; these add the trigger
@@ -703,7 +703,7 @@ and little else:
 | Card | Why not |
 |---|---|
 | Laboratory Maniac | Self-mill alt-win; a 100-card deck never empties its own library on purpose. |
-| Emet-Selch of the Third Seat | Pays off instants/sorceries from the yard; the deck runs ~7. |
+| Emet-Selch of the Third Seat | Pays off instants/sorceries from the yard; the deck runs 8. |
 | Kels, Fight Fixer | Sacrifice payoff; the deck has no sacrifice engine (Yawgmoth would be the outlet, see A). |
 | Scavenger's Talent | Same — Food and "whenever you sacrifice" need an outlet the deck lacks. |
 | The Mycotyrant | Counts Fungi/Saprolings; descend tokens only. |
