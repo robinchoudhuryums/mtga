@@ -46,6 +46,10 @@ Updated: 2026-10-31 (deck-95 session tooling fixes — see Where I left off)
 
 ## Completed this cycle
 
+- **2026-11-01 — Builder batch 2 + 2a** (block `builder-batch2a-broad-implement.md`): generic `scripts/builder_template.html`;
+  `builder.py render --target pages|artifact`; theme toggle, 2×2 row picks, inline note row, collapsible pane + hover
+  preview, Protect/Unprotect requests, 672 px images with a thumbnail sprite (artifact versions cap at 511 files);
+  Sultai board republished (v14–17) from `builds/sultai`; `.cycle/board/src/` retired.
 - **2026-11-01 — Builder batch 1** (block `builder-batch1-broad-implement.md`): `scripts/builder.py` (new/add/place/
   reason/check/picks/derive) with `builds/<slug>/build.json` holding only hand-made content; derivation moved out of the
   Sultai board's refresh.py; `builds/sultai/` migrated (426 cards, 292 reasons, graded_at hashes); 14 tests + CLI help
@@ -430,6 +434,10 @@ Updated: 2026-10-31 (deck-95 session tooling fixes — see Where I left off)
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
+**2026-11-01 (latest) — Builder batch 2 + 2a done** (block `builder-batch2a-broad-implement.md`). check_all OK, suite green.
+Re-render the board with `python3 scripts/builder.py render sultai --target artifact --out .cycle/board` after any deck swap.
+**Next:** Builder batch 2b (compare view, hidden roles, ownership queue, applied state, conflicts, undo, floor, curve).
+
 **2026-11-01 (latest) — Builder batch 1 done** (block `builder-batch1-broad-implement.md`). check_all OK, suite green.
 **Next:** Builder batch 2 (generic template + `builder.py render`), per `.cycle/builder-scope.md`.
 

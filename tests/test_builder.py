@@ -192,3 +192,66 @@ class TestCli:
     def test_bad_build_name_is_refused(self):
         rc, out = self._run("check", "Bad Name")
         assert rc == 2 and "bad build name" in out
+
+
+class TestProtectPicks:
+    COPY = ("Glarb ({deck}):\n"
+            "  protect: Counterspell; Murder\n"
+            "  unprotect: Counterspell\n")
+
+    def test_parse_reads_protect_and_unprotect(self):
+        p = B.parse_picks(self.COPY.format(deck="96"))["decks"]["96"]
+        assert p["protect"] == ["Counterspell", "Murder"] and p["unprotect"] == ["Counterspell"]
+
+    def test_report_checks_requests_against_the_header(self, scratch):
+        deck_path, _ = scratch
+        b = _new(deck_path)
+        lines = B.picks_report(b, self.COPY.format(deck=deck_path))
+        assert any(ln.startswith("#   protect (header edit): Counterspell") for ln in lines)
+        assert any("Murder is not in" in ln for ln in lines)               # not run by the deck
+        assert any("Counterspell is not protected" in ln for ln in lines)  # cannot unprotect it
+
+
+class TestRender:
+    URL = "https://cards.scryfall.io/normal/front/a/b/{}.jpg"
+
+    def _fake_urls(self, monkeypatch):
+        monkeypatch.setattr(B, "image_urls",
+                            lambda slug, names, fetch=True: {n: self.URL.format(i) for i, n in enumerate(names)})
+
+    def _data(self, path):
+        import re
+        s = open(path, encoding="utf-8").read()
+        m = re.search(r'<script type="application/json" id="data">(.*?)</script>', s, re.S)
+        return s, json.loads(m.group(1).replace("<\\/", "</"))
+
+    def test_pages_render_is_a_whole_document_with_remote_images(self, scratch, monkeypatch):
+        deck_path, tmp = scratch
+        self._fake_urls(monkeypatch)
+        b = B.new_build("t", [deck_path], keys=["G"], title="Test <&> build")
+        B.add_cards(b, ["Counterspell"], pile="G")
+        B.save_build("t", b)
+        r = B.render("t", "pages", str(tmp / "out"), tempo=False)
+        s, data = self._data(r["page"])
+        assert s.startswith("<!doctype html>") and "__DATA__" not in s and "__TITLE__" not in s
+        assert "<title>Test &lt;&amp;&gt; build</title>" in s
+        assert data["meta"]["img"] == "remote" and data["meta"]["target"] == "pages"
+        assert data["cards"][0]["im"].startswith("https://cards.scryfall.io/normal/")
+
+    def test_artifact_render_uses_local_files(self, scratch, monkeypatch):
+        deck_path, tmp = scratch
+        self._fake_urls(monkeypatch)
+        b = _new(deck_path)
+        B.add_cards(b, ["Counterspell"], pile="G")
+        B.save_build("t", b)
+        r = B.render("t", "artifact", str(tmp / "out"), tempo=False, images=False)
+        s, data = self._data(r["page"])
+        assert not s.startswith("<!doctype") and data["meta"]["img"] == "local"
+        assert "im" not in data["cards"][0]
+        assert not os.path.exists(tmp / "out" / "img")                   # images=False fetches nothing
+
+    def test_unknown_target_is_refused(self, scratch):
+        deck_path, tmp = scratch
+        _new(deck_path)
+        with pytest.raises(B.BuildError, match="unknown target"):
+            B.render("t", "pdf", str(tmp / "out"), tempo=False, images=False)

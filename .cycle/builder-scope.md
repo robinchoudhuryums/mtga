@@ -1,6 +1,6 @@
 # Builder — implementation plan (2026-11-01)
 
-**Status: batch 1 DONE 2026-11-01 (`scripts/builder.py`, `builds/sultai/`, tests, soft sweep); batch 2 next.** Grew out of the Sultai pile board
+**Status: batch 1 DONE 2026-11-01; batch 2 + 2a DONE 2026-11-01 (`scripts/builder_template.html`, `builder.py render`, Sultai board republished, `.cycle/board/src/` retired); next 2b, then 3, 4, alternate printings.** Grew out of the Sultai pile board
 (https://claude.ai/artifact/RfDuwKXX3WmTHYcUrLTgAR, source `.cycle/board/`), which the owner called
 "basically what I wanted as a deck building tool for the GitHub Pages deployment". Four
 `/broad-implement`-sized batches below. Delete this file, or fold it into `.cycle/blocks/`, once
@@ -81,6 +81,42 @@ batch 4 ships.
 - Tests: template token gate and a11y markup pins in `tests/test_templates.py` (every control a
   real button/select, focus ring, `var(--x)` defined in both themes); the page's projection and
   name parser run under Node against Python's numbers, like `test_dashboard_js.py`.
+
+### Batch 2a — owner notes folded in (approved 2026-11-01)
+Goes with batch 2, since that batch rebuilds the page anyway:
+- Theme toggle (header button + `t`), remembered; on Pages it shares the dashboard's `mtga-prefs`.
+- Row buttons as a 2×2 block: deck toggles on top, Bench / Keep out (icons + tooltips) below.
+- Clicking an already-selected row opens a one-line comment row under it — the SAME note as
+  the pane's; `n` opens it. The detail pane is collapsible (open by default, remembered), and
+  while it is collapsed the full card appears beside a row on hover or focus.
+- Deck-list rows: Protect / Unprotect REQUESTS (not edits), emitted in "Copy as text"; Claude
+  applies them as a `#: protect:` header edit.
+- Sharper images: small row thumbnails stay; detail pane and zoom use 672 px (Scryfall
+  `large`). Pages hot-links Scryfall; the artifact uploads both sizes.
+
+### Batch 2b — Compare and review aids (approved 2026-11-01)
+- **Compare view**: pile on the left, the chosen deck's current list on the right (same rows,
+  thumbnails, roles, cut rank, same detail pane). A selected pile card highlights the deck card
+  it replaces; clicking a pile card then a deck card sets the pairing. Phone: two tabs.
+- **Hidden-role markers**: dotted "Interaction?" / "Card advantage?" tags from
+  `role_coverage_flags` (suspected), plus hand-confirmed hidden roles stored with the reason;
+  the projection shows counted and with-hidden figures. Confirmed tags are G-67 pattern leads.
+- **Ownership**: owned/craft on the row; an "I own this many" control in the pane that queues
+  corrections; the queue copies out as an `/ingest` batch (reconcile_crafts `--set-exact`).
+  Ownership stays information only.
+- **Applied state**: cards whose swap landed show "applied ✓" and fold away.
+- **Conflict warnings**: one deck card chosen as the cut for two adds; a card picked for both
+  decks when that is not intended.
+- **Undo** the last pick (`u`).
+- **Floor letter in the projection** (before → after), not only the counts.
+- **Mana curve before/after** in the Compare view.
+
+### Later — alternate printings, view only (approved 2026-11-01)
+- List each card's other Arena printings (art, set, rarity — rarity can differ between
+  printings) from Scryfall, view only; the owner picks the art in Arena. Exclude the generic
+  borderless "semi-transparent text box" variant most cards have. No deck-file change: the
+  project keys one printing per card and an unknown set code is a hard INV-04 failure.
+  Artifact target: limit images to cards marked to add or in a deck.
 
 ### Batch 3 — Pages integration
 - `build_dashboard.py` (or a sibling call in `pages.yml`) renders every `builds/*` project to

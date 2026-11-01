@@ -29,6 +29,11 @@ Subcommands:
   check <slug>                       stale reasons, unresolved names, unplaced cards
   picks <slug> [FILE|-]              the board's "Copy as text" block → swap --package lines
   derive <slug> [--out FILE] [--no-tempo]   the page's data (cards + live deck stats)
+  render <slug> --target pages|artifact --out DIR [--no-tempo] [--no-images]
+                                     the page: scripts/builder_template.html + the derived
+                                     data (PAGE = TEMPLATE + DATA). `artifact` also writes
+                                     img/lg/ (672 px) and img/thumbs.jpg next to it; `pages`
+                                     hot-links Scryfall and needs no image files.
 
 Run from the repo root, e.g. `python3 scripts/builder.py check sultai`.
 """
@@ -287,9 +292,14 @@ _SWAP_LINE = re.compile(r"deck\.py swap\s+(\S+)\s+--package\s+(.+)$")
 _PAIR = re.compile(r'"([^"=]+)=([^"]+)"')
 
 
+def _empty_deck_picks():
+    return {"pairs": [], "adds": [], "cuts": [], "protect": [], "unprotect": []}
+
+
 def parse_picks(text):
     """Read the board's "Copy as text" block. Returns {deck_id: {"pairs": [(cut, add)],
-    "adds": [...], "cuts": [...]}} plus a "notes" list. Unknown lines are ignored."""
+    "adds": [...], "cuts": [...], "protect": [...], "unprotect": [...]}} plus a "notes"
+    list. Unknown lines are ignored."""
     out, notes, cur, section = {}, [], None, None
     for raw in (text or "").splitlines():
         line = raw.strip()
@@ -297,14 +307,14 @@ def parse_picks(text):
             continue
         m = _SWAP_LINE.search(line)
         if m:
-            d = out.setdefault(m.group(1), {"pairs": [], "adds": [], "cuts": []})
+            d = out.setdefault(m.group(1), _empty_deck_picks())
             d["pairs"].extend(_PAIR.findall(m.group(2)))
             cur = m.group(1)
             continue
         m = re.match(r"^.+\((\S+)\):$", line)
         if m and not line.startswith("-"):
             cur = m.group(1)
-            out.setdefault(cur, {"pairs": [], "adds": [], "cuts": []})
+            out.setdefault(cur, _empty_deck_picks())
             section = None
             continue
         if line.startswith("adds with no cut chosen:") and cur:
@@ -312,6 +322,10 @@ def parse_picks(text):
             continue
         if line.startswith("cuts with no add:") and cur:
             out[cur]["cuts"] += [x.strip() for x in line.split(":", 1)[1].split(";") if x.strip()]
+            continue
+        m = re.match(r"^(protect|unprotect):\s*(.*)$", line)
+        if m and cur:
+            out[cur][m.group(1)] += [x.strip() for x in m.group(2).split(";") if x.strip()]
             continue
         if line == "Notes:":
             section = "notes"
@@ -358,6 +372,28 @@ def picks_report(build, text):
             lines.append(f"#   adds with no cut chosen: {'; '.join(p['adds'])}")
         if p["cuts"]:
             lines.append(f"#   cuts with no add: {'; '.join(p['cuts'])}")
+        # protect requests are a `#: protect:` HEADER edit, not a swap: report them checked
+        # against the deck's current header so a stale request (already protected, or no
+        # longer in the deck) is named rather than applied.
+        protected = D._protected(_m)
+        for kind in ("protect", "unprotect"):
+            ok, bad = [], []
+            for n in p[kind]:
+                try:
+                    rn = resolve_name(n, idx)
+                except BuildError as e:
+                    bad.append(str(e))
+                    continue
+                k = D._ms_key(rn)
+                if k not in runs:
+                    bad.append(f"{rn} is not in {did}")
+                elif (kind == "protect") == (k in protected):
+                    bad.append(f"{rn} is {'already' if kind == 'protect' else 'not'} protected in {did}")
+                else:
+                    ok.append(rn)
+            if ok:
+                lines.append(f"#   {kind} (header edit): {'; '.join(ok)}")
+            lines += [f"#   skipped {kind}: {b}" for b in bad]
     if parsed["notes"]:
         lines.append("# notes:")
         lines += [f"#   {n}" for n in parsed["notes"]]
@@ -449,6 +485,156 @@ def derive(build, tempo=True):
                      "live": live, "refreshed": datetime.date.today().isoformat()}}
 
 
+# ---------------------------------------------------------------- render
+TEMPLATE = os.path.join(REPO_ROOT, "scripts", "builder_template.html")
+TARGETS = ("pages", "artifact")
+LARGE = (672, 940)
+
+
+def image_slug(name):
+    """The file name the page uses for a card's image (mirrors the template's slug())."""
+    import unicodedata
+    n = unicodedata.normalize("NFKD", (name or "").lower())
+    n = re.sub(r"[^a-z0-9]+", "-", n).strip("-")
+    return n[:180] or "card"
+
+
+def image_urls(slug, names, fetch=True):
+    """{name: Scryfall `normal` image URL} for `names`. Reads, in order, the build's own
+    cache (`builds/<slug>/images.json`, committed so an offline Pages build has them),
+    the gallery's image-manifest.json, then Scryfall for whatever is still missing, and
+    writes any new URLs back to the cache. A name with no image is simply absent."""
+    cache_path = os.path.join(os.path.dirname(build_path(slug)), "images.json")
+    try:
+        cache = json.load(open(cache_path, encoding="utf-8"))
+    except (OSError, ValueError):
+        cache = {}
+    try:
+        man = json.load(open(os.path.join(REPO_ROOT, "image-manifest.json"), encoding="utf-8"))
+    except (OSError, ValueError):
+        man = {}
+    out, need = {}, []
+    for n in dict.fromkeys(names):
+        k = n.lower()
+        u = cache.get(n) or man.get(k) or man.get(k.split(" // ")[0])
+        if u:
+            out[n] = u
+        else:
+            need.append(n)
+    if need and fetch:
+        try:
+            import scryfall
+            for i in range(0, len(need), 70):
+                batch = need[i:i + 70]
+                res = scryfall.post_collection([n.split(" // ")[0] for n in batch])
+                got = {}
+                for d in res.get("data", []):
+                    iu = d.get("image_uris") or ((d.get("card_faces") or [{}])[0].get("image_uris")) or {}
+                    if iu.get("normal"):
+                        got[d["name"].lower()] = got[d["name"].lower().split(" // ")[0]] = iu["normal"]
+                for n in batch:
+                    u = got.get(n.lower()) or got.get(n.lower().split(" // ")[0])
+                    if u:
+                        out[n] = u
+        except Exception as e:  # an outage degrades to missing images, never a failed render
+            print(f"builder: Scryfall image lookup skipped ({e})", file=sys.stderr)
+    new = {n: u for n, u in out.items() if cache.get(n) != u}
+    if new:
+        cache.update(new)
+        atomic_write(cache_path, lambda fh: fh.write(json.dumps(cache, indent=1, sort_keys=True) + "\n"),
+                     backup=False)
+    return out
+
+
+def _fetch_image(url, out, size):
+    """Download one image, shrink it to `size`, save a JPEG. Existing files are kept."""
+    if os.path.exists(out):
+        return True
+    import io
+    import urllib.request
+    from PIL import Image
+    req = urllib.request.Request(url, headers={"User-Agent": "mtga-card-library/1.0", "Accept": "image/*"})
+    raw = urllib.request.urlopen(req, timeout=30).read()
+    im = Image.open(io.BytesIO(raw)).convert("RGB")
+    im.thumbnail(size)
+    os.makedirs(os.path.dirname(out), exist_ok=True)
+    im.save(out, "JPEG", quality=80 if size == LARGE else 78, optimize=True, progressive=True)
+    return True
+
+
+SPRITE_CELL, SPRITE_COLS = (68, 94), 20     # 2x the row thumbnail (34 x 47 css px)
+
+
+def _sprite(out_dir, slugs):
+    """All row thumbnails in ONE image, `img/thumbs.jpg`. An artifact version holds at most
+    511 files, so a small AND a large file per card stops fitting at ~250 cards; one sprite
+    plus one 672 px file per card fits ~500. Returns {"src", "cols", "rows", "w", "h", "i"}
+    (`i`: slug → cell index) or None when no large image is on disk yet."""
+    from PIL import Image
+    have = [s for s in dict.fromkeys(slugs) if os.path.exists(os.path.join(out_dir, "img", "lg", s + ".jpg"))]
+    if not have:
+        return None
+    w, h = SPRITE_CELL
+    rows = -(-len(have) // SPRITE_COLS)
+    sheet = Image.new("RGB", (w * SPRITE_COLS, h * rows), (40, 40, 40))
+    for i, s in enumerate(have):
+        im = Image.open(os.path.join(out_dir, "img", "lg", s + ".jpg")).convert("RGB")
+        im = im.resize((w, h), Image.LANCZOS)
+        sheet.paste(im, ((i % SPRITE_COLS) * w, (i // SPRITE_COLS) * h))
+    sheet.save(os.path.join(out_dir, "img", "thumbs.jpg"), "JPEG", quality=82, optimize=True, progressive=True)
+    return {"src": "img/thumbs.jpg", "cols": SPRITE_COLS, "rows": rows, "i": {s: i for i, s in enumerate(have)}}
+
+
+def render(slug, target, out_dir, tempo=True, images=True, data=None):
+    """Write `out_dir/index.html` for a build: the template with the derived data inlined.
+
+    `artifact`: images are files next to the page — img/lg/<slug>.jpg (672 px, downloaded
+    once and reused) and one thumbnail sprite, img/thumbs.jpg. `pages`: each card carries its Scryfall URL and the
+    page hot-links it (small = `normal`, large = `large`). Returns a summary dict."""
+    if target not in TARGETS:
+        raise BuildError(f"unknown target {target!r} — use one of {', '.join(TARGETS)}")
+    b = load_build(slug)
+    data = data or derive(b, tempo=tempo)
+    meta = data["meta"]
+    meta["slug"], meta["target"] = slug, target
+    meta["img"] = "remote" if target == "pages" else "local"
+    cmds = {k: v.get("cmd") for k, v in meta["live"].items() if v.get("cmd")}
+    urls = image_urls(slug, [c["n"] for c in data["cards"]] + list(cmds.values()),
+                      fetch=images or target == "pages")
+    if target == "pages":
+        for c in data["cards"]:
+            if urls.get(c["n"]):
+                c["im"] = urls[c["n"]]
+        meta["portraits"] = {k: urls.get(n, "") for k, n in cmds.items()}
+    os.makedirs(out_dir, exist_ok=True)
+    got = missing = 0
+    if target == "artifact" and images:
+        for n, u in urls.items():
+            base = image_slug(n) + ".jpg"
+            try:
+                _fetch_image(u.replace("/normal/", "/large/"), os.path.join(out_dir, "img", "lg", base), LARGE)
+                got += 1
+            except Exception as e:
+                missing += 1
+                print(f"builder: image for {n} not fetched ({e})", file=sys.stderr)
+    if target == "artifact":
+        meta["sprite"] = _sprite(out_dir, [image_slug(n) for n in urls]) if images else None
+    import html as _html
+    title = meta.get("title") or slug
+    blob = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
+    page = open(TEMPLATE, encoding="utf-8").read()
+    page = page.replace("__TITLE__", _html.escape(title), 1).replace("__DATA__", blob, 1)
+    if target == "pages":
+        page = ('<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
+                '<meta name="viewport" content="width=device-width, initial-scale=1">\n'
+                + page + "\n</html>\n")
+    out = os.path.join(out_dir, "index.html")
+    atomic_write(out, lambda fh: fh.write(page), backup=False)
+    return {"page": out, "cards": len(data["cards"]), "images": len(urls),
+            "fetched": got, "image_errors": missing,
+            "no_image": sorted(set(c["n"] for c in data["cards"]) - set(urls))}
+
+
 # ---------------------------------------------------------------- CLI
 def _read_names(args):
     names = list(args.names or [])
@@ -486,6 +672,11 @@ def main(argv=None):
     p = sub.add_parser("derive", help="print the page data (cards + live deck stats) as JSON")
     p.add_argument("slug"); p.add_argument("--out")
     p.add_argument("--no-tempo", action="store_true", help="skip the tapped-land simulation (faster)")
+    p = sub.add_parser("render", help="write the page (template + derived data) for pages or a claude.ai artifact")
+    p.add_argument("slug"); p.add_argument("--target", choices=TARGETS, required=True)
+    p.add_argument("--out", required=True, help="output directory (index.html, and img/ for artifact)")
+    p.add_argument("--no-tempo", action="store_true", help="skip the tapped-land simulation (faster)")
+    p.add_argument("--no-images", action="store_true", help="artifact: do not download images")
     args = ap.parse_args(argv)
     try:
         if args.cmd == "new":
@@ -518,6 +709,16 @@ def main(argv=None):
             text = sys.stdin.read() if args.file == "-" else open(args.file, encoding="utf-8").read()
             for line in picks_report(b, text):
                 print(line)
+        elif args.cmd == "render":
+            r = render(args.slug, args.target, args.out, tempo=not args.no_tempo,
+                       images=not args.no_images)
+            shown = os.path.relpath(r["page"], REPO_ROOT)
+            print(f"Wrote {r['page'] if shown.startswith('..') else shown}: {r['cards']} cards, "
+                  f"{r['images']} image URLs" + (f", {r['fetched']} images on disk" if args.target == "artifact" and not args.no_images else ""))
+            if r["no_image"]:
+                print(f"  no image found for: {'; '.join(r['no_image'])}")
+            if r["image_errors"]:
+                print(f"  {r['image_errors']} image download(s) failed (see above)")
         elif args.cmd == "derive":
             data = derive(b, tempo=not args.no_tempo)
             s = json.dumps(data, ensure_ascii=False)
