@@ -142,6 +142,7 @@ End of the Hunt
 Enigma Drake
 Entropic Battlecruiser
 Entrust the Spark
+Ephemerate
 Eternal Skylord
 Fallen Shinobi
 Fang, Roku's Companion
@@ -213,6 +214,7 @@ Hop to It
 Hornet Queen
 Hour of Victory
 How to Start a Riot
+Huatli's Raptor
 Hulk, Strongest There Is
 Human Torch
 HYDRA Troopers
@@ -325,7 +327,6 @@ Perigee Beckoner
 Personify
 Peter Parker
 Peter Parker // Amazing Spider-Man
-Photon, Lady of Light
 Picklock Prankster // Free the Fae
 Pond Prophet
 Pride of the Road
@@ -369,6 +370,7 @@ Sandstorm Salvager
 Savage Beating
 Savage Land Dinosaur
 Savage Ventmaw
+Scalesoul Gnome
 Scarlet Spider, Ben Reilly
 Scarlet Spider, Kaine
 Season of Weaving
@@ -418,6 +420,7 @@ Super-Soldier Serum
 Surrak, Elusive Hunter
 Sweettooth Witch
 Swiftblade Vindicator
+Taii Wakeen, Perfect Shot
 Tangle Tumbler
 Tannuk, Steadfast Second
 Tapestry Warden
@@ -445,6 +448,7 @@ Thor, Guardian of Midgard
 Three Tree Scribe
 Thunderous Velocipede
 Tidings of War
+Tidus, Yuna's Guardian
 Tifa, Martial Artist
 Tiger Shark, Abyssal Hunter
 Tiger-Dillo
@@ -454,6 +458,7 @@ Toph, Greatest Earthbender
 Toph, the Blind Bandit
 Toph, the First Metalbender
 Topiary Lecturer
+Torbran, Thane of Red Fell
 Treasure Dredger
 Treeguard Duo
 Treetop Snarespinner

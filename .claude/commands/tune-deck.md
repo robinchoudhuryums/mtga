@@ -9,6 +9,31 @@ creative ↔ competitive dial, and honor any per-run override in $ARGUMENTS
 (e.g. `19 competitive`, `19 creative`). The style changes how you weight cuts and
 swaps (see "Play-style weighting" below) — not the data-gathering.
 
+## Stage 0b — Ask how the deck has been LOSING (before any analysis)
+
+The tools grade a list in isolation; the owner's games are the one input that says what
+the list actually fails against. Run `python3 scripts/parse_matches.py --report --deck <id>`
+and, **whenever the record is empty, thin, or the owner mentions games it cannot hold**,
+ask for them in one short question before Stage 1. **Phone games never reach the desktop
+`Player.log`** (G-74), so "I played five games on my phone" always means an empty record.
+Ask, per loss: what the opponent was on (colours, key cards or archetype) and why it was
+lost, in the closed vocabulary `flood · screw · slow · answer · removed · keep · misplay ·
+outclassed` (G-74) — "slow" = out-tempoed, "answer" = had no answer to a threat,
+"removed" = the key piece was killed.
+
+Then:
+- **Offer to log them** as hand rows, so the next tune can read them: one line each,
+  `<deck> L opp=<archetype> why=<word> note=<free text>`, through
+  `python3 scripts/parse_matches.py <file> --add` (dry run) then `--add --apply`
+  (`/log-matches` Stage 1b owns the details). Never invent an `opp` or `why` the owner
+  did not give.
+- **Turn the answers into QUESTIONS for Stage 1, never into verdicts.** Five games is a
+  sample that says what the deck has MET, not how good it is (G-57). "Lost to fliers"
+  asks "does the list hold any answer to a flier?"; "slow" asks the early-game and tempo
+  questions in Stages 2c-tempo and the scorecard; "screw/flood" asks `consistency`. The
+  card text and the tools settle each one, and the report says which loss each finding
+  answers.
+
 ## Stage 1 — Gather the full picture (before recommending anything)
 
 Read the actual card text — never judge by mana value or a single subtype:
@@ -142,6 +167,18 @@ Read the actual card text — never judge by mana value or a single subtype:
    A `·check` rider is deck-aware since 2026-09-22 — it is only credited as untapped
    when the deck actually runs a basic of the type the gate NAMES — so trust the
    marker, but read `·tapped?` as the human call G-37 says it is.
+5d. **`python3 scripts/deck.py consistency <id> --tempo` — what the tapped lands cost
+   (2026-10-28).** The access table above cannot see the turn a tapland costs; `--tempo`
+   simulates one land a turn with each land's enter clause read against the lands in
+   play, twice per shuffle (as built, and every land untapped), and prints the gap per
+   card and per turn. The roster median is **2.7** points of on-curve chance per card
+   (p90 5.3) — a deck above ~5 has a manabase that is costing it games, which is the
+   first thing to check when the owner reports losing to faster decks. **Judge a land swap
+   by its measured gain**: build a scratch copy (`consistency <path> --tempo` takes a
+   path) and compare; a single land moves a deck ≤0.5 points, so a land plan is a
+   package, not one card. Read the land TEXT before swapping — a tapland often carries the
+   deck's engine (a self-sacrificing land in a Szarel deck), and the rarer untapped land
+   that keeps the engine is the real alternative.
 6. `python3 scripts/deck.py cuts <id>` — the ranked weakest-fit shortlist, with the
    full oracle text of the top candidates, a `⚠ context` flag on deck-dependent
    mechanics, `⚠interaction` on removal rows (with the deck's interaction count),
@@ -208,7 +245,10 @@ cost-reducers) · synergy density (theme/tribal count, payoff-to-enabler ratio f
 and by whether anything answers a NONCREATURE permanent) · card advantage / reach ·
 **protection** (can the deck defend the permanent it wins with? a ZERO against a
 `#: protect:` card is a real finding) · consistency (redundancy vs. singleton
-context). **Carry the count uncertainty into the rating** — write "interaction 6
+context) · **early game** — count from the Stage 1.0 text dump the interaction that
+costs **2 or less** (the profile splits speed, not cost) and the plays that affect the
+board by turn 2–3, and read the `--tempo` turn-2/3 rows beside them. A deck that loses
+"slow" is usually short here, and no other line of the scorecard shows it. **Carry the count uncertainty into the rating** — write "interaction 6
 (+2 unread)", never a bare 6, when `stats` flagged unclassified cards.
 
 **3. Keep — validated strengths + signature/spice** — engines/cards that are
@@ -281,6 +321,22 @@ them, don't decide unilaterally.
   does not rotate, so no ⚠rot flag appears there (CLAUDE.md, Competitive Tiering). Count
   the commander as a card the deck always has, taxed {2} per recast, and build
   consistency from virtual copies only, since every card is a singleton.
+  Four Brawl reads every tune makes, whatever the play-style dial:
+  - **Run `deck.py redundancy <id>` every time.** A singleton draws a random slice of its
+    plan, so the "virtual copies" pass is not a competitive-only luxury here — it is how
+    the deck finds its engine in a 100-card library.
+  - **Commander dependence.** Count the cards whose text needs the commander on the
+    battlefield (or reads its type/name) and say what the deck does on the turns she is
+    dead or taxed out. A list that is mostly dead cards without its commander has a single
+    point of failure the tier floor cannot see.
+  - **Commander protection.** The `protection` axis counts the deck; ask specifically
+    what keeps the COMMANDER alive (ward, hexproof, indestructible, counter magic, a
+    sacrifice outlet's recursion) — removal on her every turn is the commonest way a
+    commander deck loses.
+  - **The format is 1v1 at 25 life, and every opponent has a commander they can recast.**
+    Answers that remove a threat permanently and cheaply matter more than in 60-card
+    Standard, and a deck with no instant-speed answer to a recurring commander will meet
+    one in nearly every game.
 
 ## Play-style weighting (creative ↔ competitive)
 

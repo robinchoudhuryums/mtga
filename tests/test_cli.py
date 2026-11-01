@@ -378,6 +378,49 @@ class TestTunePlanOutputContract:
         assert checked, "no roster deck assembled a tune plan — the planner is unreachable"
 
 
+class TestTierToReachesEveryVerdict:
+    """`tier --to` used to sit BELOW two early returns in `cmd_tier` — the untiered
+    branch and the ≥2-band mismatch branch — so it printed nothing at all on exactly the
+    decks that ask "what would it take": a freshly drafted deck has no letter yet, and a
+    stale letter is the one the guard just flagged. Found 2026-10-31 asking deck 95 (a new
+    100-card Brawl draft) for its gap to A and getting only the vector back."""
+
+    @staticmethod
+    def _with_tier(tmp_path, tier_line, deck_id=_DECK):
+        import deck                                   # sys.path is set by _pick_deck
+        src = deck.find_deck(deck_id)["path"]
+        lines = [ln for ln in open(src, encoding="utf-8").read().splitlines()
+                 if not ln.startswith("#: tier:")]
+        if tier_line:
+            lines.insert(1, tier_line)
+        p = tmp_path / "scratch.txt"
+        p.write_text("\n".join(lines) + "\n", encoding="utf-8")
+        return str(p)
+
+    def test_an_untiered_deck_still_gets_its_path(self, tmp_path):
+        rc, out = _run(["scripts/deck.py", "tier", self._with_tier(tmp_path, None),
+                        "--to", "S"])
+        assert rc == 0 and TRACEBACK not in out
+        assert "(untiered" in out
+        assert "Path to the S floor" in out, out[-400:]
+
+    def test_a_mismatched_letter_still_gets_its_path_and_keeps_its_exit_code(self, tmp_path):
+        """The verdict's exit code is held, not dropped: `--strict` on a ≥2-band
+        mismatch must still exit 1 AFTER printing the path."""
+        import deck
+        # CHOSEN, not hardcoded (BS8-24): any roster deck flooring at B or below makes a
+        # claimed S a ≥2-band mismatch, so the property survives a legitimate tune.
+        did = next((d["id"] for d in deck.roster_decks()
+                    if deck.TIER_RANK["S"] - deck.TIER_RANK[
+                        deck.tier_band(deck.deck_quality_vector(d))] >= 2), None)
+        assert did, "no roster deck floors at B or below — cannot build a ≥2-band mismatch"
+        p = self._with_tier(tmp_path, "#: tier: S — scratch, deliberately inflated", did)
+        rc, out = _run(["scripts/deck.py", "tier", p, "--strict", "--to", "S"])
+        assert TRACEBACK not in out
+        assert "TIER MISMATCH" in out and "Path to the S floor" in out, out[-400:]
+        assert rc == 1, out[-400:]
+
+
 class TestRotationTakesADeckId:
     """`rotation <id>` is the per-deck view (owned rotating cards included). The roster
     sweep still runs with no argument — `_ARGS` covers that shape."""

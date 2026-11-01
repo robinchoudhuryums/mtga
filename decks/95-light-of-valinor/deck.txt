@@ -1,0 +1,204 @@
+#: name: Light of Valinor
+#: format: Historic Brawl
+#: colors: GWU
+#: commander: Galadriel, Light of Valinor
+#: plan: midrange
+#: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool), BANT BLINK, LIFEGAIN AND COUNTERS around
+#: archetype: Galadriel, Light of Valinor: whenever another creature enters, choose a mode not yet chosen this
+#: archetype: turn — {G}{G}{G}, a +1/+1 counter on each creature, or scry 2 then draw. Every blink is a creature
+#: archetype: entering, so each one is ramp, a team pump or a card. BLINK ENGINES re-use enters triggers every
+#: archetype: turn: Y'shtola Rhul (an extra end step, so every end-step trigger fires twice — Thassa, Don & Leo,
+#: archetype: Soulherder, Airbender Ascension, Shanna, Lathiel, Alert Heedbonder), Silver Surfer (flash, blinks
+#: archetype: the whole board), Flickering Hound (a blink per creature cast), Oji, Lilysplash Mentor, Ephemerate;
+#: archetype: Elesh Norn and Panharmonicon double every enters trigger, and Genku makes a token each time a blink
+#: archetype: exiles one of your permanents. REPEATABLE INTERACTION: Captain Marvel exiles a creature each time
+#: archetype: she enters, Wan Shi Tong tucks a nonland permanent and makes two Spirits, Titan of Industry and
+#: archetype: Knight of Autumn choose their modes again, and Ob Nixilis destroys every tapped creature an opponent
+#: archetype: controls — blink him after they attack. Arwen, Mortal Queen returns with a fresh indestructible
+#: archetype: counter to hand out with a lifelink counter. LIFEGAIN: Soul Warden and Righteous Valkyrie gain on
+#: archetype: creatures entering, Gold-Forged Thopteryx and Sheltered by Ghosts add lifelink, and each gain feeds
+#: archetype: Archangel of Thune and Titanbones (counters), Bloombrute and Dawn of Hope (cards), Kwia Vigorbloom
+#: archetype: (Lotus mana), Valgavoth (cast creatures from the graveyard) and Trelasarra; Resplendent Angel, The
+#: archetype: Book of Exalted Deeds, Ob Nixilis, Shanna, Lathiel and Aerith pay off at end step. Helga draws and
+#: archetype: grows on every creature with mana value 4 or more and taps for that mana in any colour. Heliod, God
+#: archetype: of the Sun and Ajani, the Greathearted give the team vigilance for Heedbonder; Huatli's Raptor and
+#: archetype: Tidus proliferate. SCRY: Galadriel, Oji, Trelasarra and Your Fate Ends Here feed Denzilore Fatehold
+#: archetype: (a counter on each creature), Matoya and Planetarium of Wan Shi Tong. The race to 40 life is a
+#: archetype: second win: Felidar Sovereign, and Ajani's 0 exiles their board. Huatli, Radiant Champion's emblem
+#: archetype: draws on every creature entering. DISTINCT from deck 78 (Bant, but Ally trigger-doubling in combat)
+#: archetype: and deck 94 (Simic counters): this one is a value-blink engine.
+#: protect: Galadriel, Light of Valinor; Y'shtola Rhul; Silver Surfer, Cosmic Voyager; Captain Marvel, Shooting Star
+#: notes: DRAFTED 2026-10-29 with /draft-deck from the owner's brief (Galadriel commander, blink + scry,
+#: notes: must-include Y'shtola Rhul, Silver Surfer and Captain Marvel). The optimal list, crafts
+#: notes: included; 37 lands, mostly untapped, per the deck 85 slow-start lesson.
+#: notes: TIER UNSET pending the owner's call. The measurable floor reads B at 100 cards (interaction
+#: notes: 11 +6 unread, card advantage 6 +3 unread) — the classifier counts each enters trigger once,
+#: notes: and this deck's whole plan is re-using them, so it under-reads by design. Closest deck is 27
+#: notes: (W/U blink, Standard 60-card); this one is the Bant Brawl version with Galadriel and scry.
+#: notes: Bench from the draft screen: Kykar, Zephyr Awakener; Ennis, Debate Moderator; Wiccan, Rising
+#: notes: Magician; The Mighty Thor, Jane Foster; Fortune, Loyal Steed; Flicker of Fate; Eerie
+#: notes: Interlude; Semester's End; Proft, Consulting Detective.
+#: notes: LANDS, 2026-10-31 (owner's pick): the three always-tapped Temples became Starting Town,
+#: notes: Reflecting Pool and Mana Confluence. Tempo sim 50.1 -> 52.2 on curve, tapped-land cost 2.7 -> 1.6;
+#: notes: the 1-drops (Soul Warden, Cleric Class, Ajani's Welcome, Swords, Ephemerate) had lost 12 points
+#: notes: each. Next land step if wanted: a 38th land (measured 54.4).
+#: notes: PILE PACKAGE, 2026-10-30 (owner's picks from a 148-card pile, 26 swaps + Forest -> Plains):
+#: notes: Sakashima for Spark Double, Flickering Hound for Getaway Glamer, Tocasia for Rumor Gatherer,
+#: notes: Cleric Class for Political Triumph, Serra Paragon for Eternal Witness, Huatli (Radiant Champion)
+#: notes: for Ephara, Drogskol Reaver for Curator of Destinies, The Wandering Emperor for Venser, The
+#: notes: Legend of Yangchen for Sundering Archaic, Emiel for Another Round, Detention Sphere for
+#: notes: Palantir, Sigarda (Font of Blessings) for Vanguard Seraph, Resplendent Angel for Holy Cow,
+#: notes: Chulane for Charming Prince, Aang (Swift Savior) for Salvation Swan, Arwen (Weaver of Hope) for
+#: notes: Ignis Scientia, Tolsimir (Friend to Wolves) for Aang (at the Crossroads), The Book of Exalted
+#: notes: Deeds for Wood Elves, Shanna for Enlightened Confidant, Ajani (Strength of the Pride) for
+#: notes: Morningtide's Light, Righteous Valkyrie for Crested Sunmare, Felidar Sovereign for Yorion,
+#: notes: Valgavoth for Solitude (it handed the opponent life), Elspeth Resplendent for Solemn Simulacrum,
+#: notes: Quintorius (Fate Splitter) for Mulldrifter, King T'Challa for Overlord of the Floodpits.
+#: notes: Pile findings worth keeping: a PROLIFERATE cluster (Huatli's Raptor, Tainted Observer,
+#: notes: Contagion Dispenser, Ezuri, Inexorable Tide, Quintorius, Roalesk) is coherent enough for its own
+#: notes: deck; the role classifier does not count The Legend of Yangchen's exile or Aang's airbend as
+#: notes: interaction (true interaction is ~2 higher than reported). Bench: Sylvan Library, Tranquil
+#: notes: Frillback, Flare of Fortitude, Kellan (the Kid), Speaker of the Heavens, Voice of the Blessed,
+#: notes: Prison Realm, Ojutai's Command, Metropolis Angel, Tolsimir (Midnight's Light).
+#: notes: LIFEGAIN PACKAGE, 2026-10-30 (owner's picks, 15 swaps + Forest -> Plains): Oji for Omen of the
+#: notes: Sea, Distinguished Conjurer for Wall of Omens, Trelasarra for Glorious Protector, Vanguard
+#: notes: Seraph for Seasoned Cryomancer, Holy Cow for Daydream, Enlightened Confidant for Paradox
+#: notes: Surveyor, Soul Warden for Elvish Rejuvenator, Ajani's Welcome for Arcane Signet, Bloombrute for
+#: notes: Brazen Borrower, Archangel of Thune for Elite Spellbinder, Heliod for Absorb, Kwia Vigorbloom
+#: notes: for Cultivator Colossus, Crested Sunmare for Exclusion Mage, Lathiel for Supreme Verdict,
+#: notes: Aerith, Last Ancient for Niko. No sweeper now (the plan is a wide board).
+#: notes: SECOND PACKAGE, 2026-10-31 (owner's picks, 13 swaps): Gold-Forged Thopteryx for Ajani's Welcome,
+#: notes: Titan of Industry for Drogskol Reaver, Ajani (the Greathearted) for Teleportation Circle, Pledge of
+#: notes: Unity for Saheeli, Titanbones for Restoration Angel, Shamanic Revelation for Chulane, Alert
+#: notes: Heedbonder for Reflector Mage, Genku for Distinguished Conjurer, March of Otherworldly Light for
+#: notes: Swords to Plowshares, Sheltered by Ghosts for Fateful Absence, Knight of Autumn for Skyclave
+#: notes: Apparition, Heliod (God of the Sun) for Tolsimir, Huatli's Raptor for Tocasia. The interaction was
+#: notes: replaced on the owner's rule that an answer must not hand the opponent anything (no life, Clue, Map,
+#: notes: Golem or seek): Obscura Polymorphist, Get Lost and Cavalier of Dawn were declined for that.
+#: notes: SHELTERED BY GHOSTS: put it on a creature you will not blink — the Aura falls off and the exiled
+#: notes: card returns. Titan's {G}{G}{G} casts on turn 5 only ~35%; Galadriel's mana mode is the fix.
+#: notes: A-FLOOR PACKAGE, 2026-10-31 (owner's picks, 9 swaps): Wan Shi Tong (All-Knowing) for Shamanic
+#: notes: Revelation, Collective Effort for Pledge of Unity, Your Fate Ends Here for Cleric Class, Ob Nixilis
+#: notes: (the Ascended) for Heliod (Sun-Crowned), Tidus for Gossip's Talent, Helga for Emiel, Dawn of Hope
+#: notes: for The Legend of Yangchen, Airbender Ascension for Abuelo, Arwen (Mortal Queen) for Sakashima.
+#: notes: Measured floor B -> A at interaction 12, card advantage 10 — exactly on the A line, so any cut of an
+#: notes: interaction piece drops the floor to B. Curious Farm Animals for Denzilore was applied and reversed
+#: notes: the same day (owner kept Denzilore). Uncounted by the tool and real: Ajani (Strength of the Pride)'s
+#: notes: 0 one-sided wipe, Aang's airbend; card advantage from Galadriel's draw mode, Planetarium's free
+#: notes: casts, Serra Paragon, Valgavoth, Aerith, Elspeth's -3 and Tidus. LANDS re-checked after the package:
+#: notes: tapped-land cost 1.3 (roster median 2.7), tempo sim 52.9 on curve; Island -> Plains measured +0.3
+#: notes: and Prairie Stream / Canopy Vista -0.2, both inside noise — left as is.
+
+# Commander (leads from the command zone; also one of the 100)
+1 Galadriel, Light of Valinor (HOC) 32
+
+# Blink engines — exile and return, again and again
+1 Y'shtola Rhul (FIN) 86
+1 Silver Surfer, Cosmic Voyager (MSC) 639
+1 Thassa, Deep-Dwelling (THB) 71
+1 Soulherder (J21) 718
+1 Don & Leo, Problem Solvers (TMT) 143
+1 Lilysplash Mentor (BLB) 222
+1 Aang, Swift Savior // Aang and La, Ocean's Fury (TLA) 204
+1 Airbender Ascension (TLA) 6
+1 Oji, the Exquisite Blade (HBG) 246
+1 Flickering Hound (FRA) 7
+
+# Trigger doublers and draw engines
+1 Elesh Norn, Mother of Machines (ONE) 10
+1 Panharmonicon (KLR) 258
+1 King T'Challa // Black Panther, Hope Enduring (MSH) 219
+1 Sigarda, Font of Blessings (MAT) 47
+1 Helga, Skittish Seer (BLB) 217
+
+# Blink spells
+1 Ephemerate (MAR) 44
+
+# Enters-the-battlefield card advantage
+1 Cloudblazer (FDN) 653
+1 Serra Paragon (DMU) 32
+1 Heliod, God of the Sun (PIO) 282
+1 Thragtusk (JMP) 436
+1 Genku, Future Shaper (MH3) 186
+
+# Enters-the-battlefield interaction
+1 Captain Marvel, Shooting Star (MSC) 589
+1 Knight of Autumn (GRN) 183
+1 Titan of Industry (SNC) 159
+1 Wan Shi Tong, All-Knowing (TLE) 98
+1 Ob Nixilis, the Ascended (FRC) 5
+
+# Scry and surveil — every look at the top of the library pays
+1 Planetarium of Wan Shi Tong (TLA) 259
+1 Matoya, Archon Elder (FIN) 62
+1 Denzilore Fatehold (FRA) 128
+
+# Counters — every creature that enters comes back bigger
+1 Arwen, Weaver of Hope (LTC) 35
+1 Huatli's Raptor (WAR) 200
+1 Tidus, Yuna's Guardian (FIC) 5
+1 Arwen, Mortal Queen (LTR) 193
+
+# Lifegain — creatures entering gain life, and every gain pays off
+1 Aerith, Last Ancient (FIC) 76
+1 Trelasarra, Moon Dancer (AFR) 236
+1 Righteous Valkyrie (KHM) 24
+1 Bloombrute (FRA) 124
+1 Archangel of Thune (MAR) 41
+1 Soul Warden (SPG) 65
+1 Shanna, Purifying Blade (DMU) 218
+1 Gold-Forged Thopteryx (MAT) 31
+1 Lathiel, the Bounteous Dawn (MUL) 50
+1 Kwia Vigorbloom (FRA) 140
+1 Felidar Sovereign (J25) 198
+1 Valgavoth, the Lifeline (YFRA) 3
+1 Resplendent Angel (LCI) 32
+1 The Book of Exalted Deeds (AFR) 4
+1 Titanbones, Towering Heart (FRA) 266
+1 Alert Heedbonder (IKO) 218
+1 Dawn of Hope (GRN) 8
+
+# Planeswalkers — loyalty engines; Quintorius doubles their activations the turn it enters
+1 Ajani, Strength of the Pride (M20) 2
+1 Huatli, Radiant Champion (RIX) 159
+1 Quintorius, Fate Splitter (YFRA) 26
+1 The Wandering Emperor (NEO) 42
+1 Elspeth Resplendent (SNC) 11
+1 Ajani, the Greathearted (WAR) 184
+
+# Other interaction
+1 March of Otherworldly Light (NEO) 28
+1 Sheltered by Ghosts (DSK) 30
+1 Aang's Iceberg (TLA) 5
+1 Detention Sphere (OTP) 43
+1 Collective Effort (SIR) 19
+1 Your Fate Ends Here (FRA) 24
+
+# Lands (37)
+1 Command Tower (FRC) 22
+1 Breeding Pool (EOE) 251
+1 Hallowed Fountain (ECL) 265
+1 Temple Garden (ECL) 268
+1 Sunpetal Grove (XLN) 257
+1 Hinterland Harbor (DOM) 240
+1 Glacial Fortress (XLN) 255
+1 Botanical Sanctum (OTJ) 267
+1 Razorverge Thicket (ONE) 257
+1 Seachrome Coast (ONE) 258
+1 Brushland (BRO) 259
+1 Yavimaya Coast (DMU) 261
+1 Adarkar Wastes (DMU) 243
+1 Willowrush Verge (DFT) 270
+1 Floodfarm Verge (DSK) 259
+1 Mana Confluence (EOS) 25
+1 Reflecting Pool (FRC) 23
+1 Starting Town (FIN) 289
+1 Branchloft Pathway // Boulderloft Pathway (ZNR) 258
+1 Overgrown Farmland (FRA) 185
+1 Dreamroot Cascade (SOS) 254
+1 Deserted Beach (FRA) 176
+1 Hengegate Pathway // Mistgate Pathway (KHM) 260
+1 Barkchannel Pathway // Tidechannel Pathway (KHM) 251
+3 Forest (FRA) 289
+4 Island (FRA) 283
+6 Plains (FRA) 281

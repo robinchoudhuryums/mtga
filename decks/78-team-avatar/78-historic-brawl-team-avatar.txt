@@ -267,7 +267,7 @@
 1 Starting Town (FIN) 289
 1 Secluded Courtyard (FDN) 267
 1 Three Tree City (BLB) 260
-1 Command Tower (ELD) 333
+1 Command Tower (FRC) 22
 1 Evolving Wilds (ECL) 264
 1 Blossoming Sands (M21) 244
 1 North Pole Gates (TLA) 274
@@ -278,9 +278,9 @@
 1 Tranquil Landscape (MH3) 231
 1 Tranquil Cove (TDM) 270
 1 Thornwood Falls (FDN) 269
-1 Deserted Beach (MID) 260
+1 Deserted Beach (FRA) 176
 1 Dreamroot Cascade (SOS) 254
-1 Overgrown Farmland (MID) 265
+1 Overgrown Farmland (FRA) 185
 5 Plains (HOB) 189
 2 Forest (HOB) 193
 1 Brokers Hideout (SNC) 248
