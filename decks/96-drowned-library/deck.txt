@@ -1,0 +1,137 @@
+#: name: Drowned Library
+#: format: Historic Brawl
+#: colors: BGU
+#: commander: Glarb, Calamity's Augur
+#: plan: control
+#: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool), SULTAI DRAW-TO-MILL CONTROL around
+#: archetype: Glarb, Calamity's Augur: "you may look at the top card of your library any time", "you may play lands
+#: archetype: and cast spells with mana value 4 or greater from the top of your library" and "{T}: Surveil 2". The
+#: archetype: deck wins by emptying the opponent's library. Every card we DRAW mills them: Psychic Corrosion and the
+#: archetype: two Tutelages turn draws into mill 2, Bruvac doubles any mill, The Water Crystal adds four, Fraying
+#: archetype: Sanity repeats a turn's graveyard total at end step. Glarb's surveil is the draw engine's spark —
+#: archetype: Matoya draws on every surveil/scry, Proft pays {2} to draw on it — and Rhystic Study, Mystic Remora,
+#: archetype: Dictate of Kruphix, The Theorist and Jin-Gitaxias, Core Augur keep the draws coming. The finishers are big mills
+#: archetype: (Traumatize, Maddening Cacophony kicked, Startled Awake, Archive Trap, Sphinx Mindbreaker) and
+#: archetype: repeated library EXILE (Tasha's Hideous Laughter, three Ashioks, Ulamog's twenty per attack); most
+#: archetype: are mana value 4+, so Glarb casts them straight off the top. Their milled graveyard is a resource:
+#: archetype: Drown in the Loch scales with it, Yawgmoth's Vile Offering and Breach the Multiverse reanimate from it,
+#: archetype: Consuming Aberration grows with it. DISTINCT from deck 22 (Dimir Standard mill-control, Hama + the
+#: archetype: Water Crystal): this is a 100-card Sultai draw engine whose mill is a by-product of drawing.
+#: protect: Glarb, Calamity's Augur; Psychic Corrosion; Bruvac the Grandiloquent; Matoya, Archon Elder; Teferi's Tutelage; Sphinx's Tutelage
+#: notes: DRAFTED 2026-11-01 with /draft-deck from the Sultai pile analysis (owner's pick 2 of 2: draw + mill/exile
+#: notes: under Glarb; pick 1 is 75-historic-brawl). The optimal list, crafts included. Brawl is 1v1 at 25 life with
+#: notes: a ~92-card library after the opening hand, so mill needs ~90 cards: a doubler plus one big mill does it.
+#: notes: Symmetric draw (Dictate of Kruphix) is deliberate — every card the opponent draws is a card off the clock.
+#: notes: DRAFT SWAPS: Ashiok, Dream Render was CUT before commit — its −1 exiles the opponent's graveyard, which
+#: notes: Consuming Aberration and Sheoldred's transform need full (G-42); The Master of Lake-town took the slot
+#: notes: (with Sheoldred, the Apocalypse every opposing draw mills two). Kaito, Bane of Nightmares and Theorix Charm
+#: notes: replaced Talisman of Resilience and Thought Scour. Lands kept as drafted: swapping the unconditional
+#: notes: taplands for basics left as-built on-curve flat (48.6% → 48.5%); only cutting Jidoor gained (+1.2), and
+#: notes: Jidoor's Overture mills half a library from a land slot. The surveil lands feed Matoya and Proft.
+#: notes: BENCH (screened KEY against this list, not in it): Chandra, Chill of Compliance (owned), Memory Deluge,
+#: notes: Jace, Wielder of Mysteries, Visions of Beyond, Cut Your Losses, Fleet Swallower, Phenax. PARKED VARIANT from
+#: notes: the pile analysis: Maralen, Fae Ascendant + Elves + theft (every Elf entering exiles two of their library;
+#: notes: the free cast is capped by the Elf/Faerie count, so it needs 8–10 cheap nonlegendary Elves from outside).
+
+# Commander
+1 Glarb, Calamity's Augur (BLB) 215
+
+# Mill engines — draw → mill bridges and multipliers
+1 Psychic Corrosion (M19) 68
+1 Teferi's Tutelage (M21) 78
+1 Sphinx's Tutelage (PIO) 287
+1 Bruvac the Grandiloquent (JMP) 10
+1 Fraying Sanity (WOT) 19
+1 The Water Crystal (FIN) 85
+1 Ruin Crab (ZNR) 75
+
+# Big mill and library exile — the finishers
+1 Traumatize (MAR) 15
+1 Maddening Cacophony (ZNR) 67
+1 Startled Awake // Persistent Nightmare (SIR) 90
+1 Archive Trap (OTP) 7
+1 Glimpse the Unthinkable (HA6) 8
+1 Sphinx Mindbreaker (THB) 290
+1 Jace, Memory Adept (PIO) 330
+1 Jace, the Perfected Mind (ONE) 57
+1 Tasha's Hideous Laughter (AFR) 78
+1 Ulamog, the Ceaseless Hunger (HA3) 1
+1 Ashiok, Nightmare Muse (THB) 208
+1 Ashiok, Sculptor of Fears (THB) 274
+1 The Master of Lake-town (HOB) 77
+1 Ashiok, Nightmare Weaver (PIO) 352
+1 Consuming Aberration (FDN) 238
+
+# Card draw — every draw is two milled
+1 Rhystic Study (FCA) 31
+1 Mystic Remora (TLE) 16
+1 Phyrexian Arena (FDN) 180
+1 Dictate of Kruphix (FDN) 587
+1 Matoya, Archon Elder (FIN) 62
+1 Proft, Consulting Detective (FRA) 218
+1 Princess Yue (TLE) 95
+1 The Theorist, Jace Beleren (FRA) 43
+1 Teferi, Temporal Pilgrim (BRO) 66
+1 Reed Richards, Smartest Man (MSC) 636
+1 Teferi's Ageless Insight (M21) 76
+1 Jin-Gitaxias, Core Augur (MUL) 11
+1 Doctor Doom, Unrivaled (MSC) 654
+1 Sheoldred, the Apocalypse (DMU) 107
+1 Notion Thief (PIO) 235
+1 Brainstorm (TLE) 155
+1 Kaito, Bane of Nightmares (DSK) 220
+
+# Interaction
+1 Drown in the Loch (ELD) 188
+1 Counterspell (MAR) 52
+1 Thought Collapse (JMP) 184
+1 Infernal Grasp (MID) 107
+1 Go for the Throat (BRO) 102
+1 Hero's Downfall (FDN) 175
+1 Price of Fame (GRN) 83
+1 Assassin's Trophy (MKM) 187
+1 Cyclonic Rift (SOA) 14
+1 Yawgmoth's Vile Offering (DOM) 114
+1 Ob Nixilis Reignited (PIO) 99
+1 Dragonlord Silumgar (PIO) 220
+1 Sheoldred // The True Scriptures (MOM) 125
+1 M.O.D.O.K., Evil Intellect (MSC) 509
+1 Damnation (SPG) 68
+1 Breach the Multiverse (MOM) 94
+1 Theorix Charm (FRA) 155
+
+# Ramp
+1 Arcane Signet (FRC) 20
+1 Talisman of Dominance (AA1) 20
+1 Talisman of Curiosity (AA1) 19
+1 Mind Stone (HA1) 19
+1 Paradise Druid (WAR) 171
+1 Birds of Paradise (BLC) 81
+1 Growth Spiral (RNA) 178
+
+# Lands
+1 Command Tower (FRC) 22
+1 Watery Grave (EOE) 261
+1 Overgrown Tomb (ECL) 266
+1 Breeding Pool (EOE) 251
+1 Drowned Catacomb (XLN) 253
+1 Woodland Cemetery (DOM) 248
+1 Hinterland Harbor (DOM) 240
+1 Darkslick Shores (ONE) 250
+1 Blooming Marsh (OTJ) 266
+1 Botanical Sanctum (OTJ) 267
+1 Underground River (BRO) 267
+1 Llanowar Wastes (BRO) 264
+1 Yavimaya Coast (DMU) 261
+1 Zagoth Triome (IKO) 259
+1 Clearwater Pathway // Murkwater Pathway (ZNR) 260
+1 Darkbore Pathway // Slitherbore Pathway (KHM) 254
+1 Undercity Sewers (PZA) 0
+1 Underground Mortuary (MKM) 271
+1 Hedge Maze (MKM) 262
+1 Jidoor, Aristocratic Capital // Overture (FIN) 284
+1 Restless Reef (LCI) 282
+1 Sunken Hollow (EA3) 23
+8 Island (FRA) 283
+4 Swamp (FRA) 285
+2 Forest (FRA) 289

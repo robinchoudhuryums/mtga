@@ -299,6 +299,7 @@ Updated: 2026-10-31 (deck-95 session tooling fixes — see Where I left off)
   (conditional mana) — K-12's long form has the probe. (Soul Immolation closed 2026-10-01.)
 
 ## Open follow-on items
+- **Classifier holes surfaced by deck 96's draft (2026-11-01), acknowledged in role_baseline.txt by postedit:** Jin-Gitaxias, Core Augur ("draw seven cards" at end step) and Dictate of Kruphix ("draws an additional card") score NO card-advantage role — both are pattern holes (G-67). Notion Thief (draw replacement) likewise. The mill cards (Archive Trap, Glimpse, Maddening Cacophony, Fraying Sanity, Sphinx Mindbreaker, Ashiok Nightmare Weaver) score zero because opponent mill is a clock with no role by design (G-62) — not holes. Measure before widening (K-14: diff the floors).
 - **2026-11-01 — the six keywords from the 2026-10-31 ingests are BASELINED, not themed** (ascend, battalion,
   conjure, constellation, partner, seek) so CI could go green for the PR. Baselining is the reversible half of K-01;
   the per-keyword THEME call is still open (constellation → enchantments and battalion → go-wide/attack look like

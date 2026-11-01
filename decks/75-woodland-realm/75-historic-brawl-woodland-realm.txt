@@ -18,7 +18,7 @@
 #: archetype: here, always available, and the Historic pool adds the mana Elves (Priest of Titania, Circle of
 #: archetype: Dreams Druid, Marwyn) Standard lacks. Distinct from deck 31 (Golgari go-wide drain): this is an
 #: archetype: engine deck where the graveyard is the second hand. Built from the owner's 250-card Sultai pile
-#: archetype: plus the pool (.cycle/sultai-pile-analysis.md).
+#: archetype: plus the pool (the Sultai pile analysis, deleted 2026-11-01 — `git log --diff-filter=D -- .cycle/`).
 #: protect: Thranduil, the Elvenking; Dionus, Elvish Archdruid; Priest of Titania; Lathril, Blade of the Elves; Voice of the Woods; Fauna Shaman
 #: notes: DRAFTED 2026-11-01 with /draft-deck from the Sultai pile analysis (owner's pick: Graveyard & Elves
 #: notes: under Thranduil; the draw/mill/exile deck under Glarb is next). The optimal list, crafts included.
