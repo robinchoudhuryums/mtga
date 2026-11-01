@@ -1,6 +1,8 @@
 # Sultai legends pile (250 cards) — analysis (TEMPORARY working doc)
 
 **Status: REOPENED 2026-11-01 for the three-pile split (section 8).** Both decks are drafted (75-historic-brawl Thranduil, 96 Glarb). Phase 1 = the split; phase 2+ = why each card is or is not in each deck. Delete once the owner has the answers.
+
+**Board:** https://claude.ai/artifact/RfDuwKXX3WmTHYcUrLTgAR (slug `c7b18c80-55b2-42c0-93ae-ea36e2fa15be`, source `.cycle/board/index.html`). The owner's picks live in its db collection `picks` (doc id = card-name slug; fields `card`, `picks` ⊂ {addT, cutT, addG, cutG, bench, out}, `note`) — read them with db_list. Later phases write their per-card reasons to collection `reasons` (`group`, `text`), which the page overlays without a republish.
 their `#: notes:` blocks. A scratchpad, not a source of truth — decks/ are.
 
 **Source list:** `.cycle/sultai-pile-source.txt` (250 names; all resolve, all castable in UBG,
