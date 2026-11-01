@@ -614,3 +614,102 @@ Marks: **[T]** in Thranduil's list · **[G]** in Glarb's list · **[T+G]** in bo
 
 ### Not a fit for either (listed so nothing is silently dropped) — 98 cards
 - *In neither list (98):* Absorbing Man; Alora, Rogue Companion; Aphelia, Viper Whisperer; Ashaya, Soul of the Wild; Azula, Ruthless Firebender; Bosco, Just a Bear; Callaphe, Beloved of the Sea; Charix, the Raging Isle; Chevill, Bane of Monsters; Chulane, Teller of Tales; Count Nefaria; Dina, Essence Brewer; Dina, Soul Steeper; Gadwick, the Wizened; Gale, Conduit of the Arcane; Gandalf, Friend of the Shire; Geralf, the Fleshwright; Glamdring, Foe-hammer // Gleam of Death; God-Eternal Kefnet; Golbez, Crystal Collector; Goldberry, River-Daughter; Goreclaw, Terror of Qal Sisma; Graviton, Fundamental Force; Greensleeves, Maro-Sorcerer; Impossible Man; Ink-Eyes, Servant of Oni; Invasion of Segovia // Caetus, Sea Tyrant of Segovia; Irenicus's Vile Duplication; Irma, Part-Time Mutant; Jadzi, Oracle of Arcavios // Journey to the Oracle; Jyoti, Moag Ancient; K'rrik, Son of Yawgmoth; Katara, Bending Prodigy; Katara, Waterbending Master; Kingpin, Wilson Fisk; Kinnan, Bonder Prodigy; Kiora of Salt and Sand; Kira, Great Glass-Spinner; Kogla and Yidaro; Kona, Rescue Beastie; Kruphix, God of Horizons; Lazav, Familiar Stranger; Lich's Mastery; Liliana of the Dark Realms; Lo and Li, Twin Tutors; Locke Cole; Long Feng, Grand Secretariat; Lord Dregg, Insect Invader; Lulu, Stern Guardian; Marit Lage's Slumber; Massacre Girl, Known Killer; Mindlink Mech; Mitotic Ultimus; Morlun, Devourer of Spiders; Mystic Reflection; Mythweaver Poq; Naban, Dean of Iteration; Niv-Mizzet, Visionary; Oko, the Trickster; Omega, Heartless Evolution; Orvar, the All-Form; Oyaminartok, Polar Werebear; Pharika, God of Affliction; Pol Jamaar, Illusionist; Roalesk, Apex Hybrid; Ruric Thar, Biomagus; Sarevok the Usurper; Shredder, Shadow Master; Skithiryx, the Blight Dragon; Slimefoot, Thallid Transplant; Splinter, the Mentor; Syr Elenora, the Discerning; Taeko, the Patient Avalanche; Tatsunari, Toad Rider; Tawnos, the Toymaker; Tergrid, God of Fright // Tergrid's Lantern; Tetzimoc, Primal Death; Tezzeret, Betrayer of Flesh; Tezzeret, Master of the Bridge; The Magic Mirror; Tome of the Infinite; Tui and La, Moon and Ocean; Tyvar Kell; Unctus, Grand Metatect; Urza, Lord High Artificer; Vesuvan Duplimancy; Victor Timely, Wily Tycoon; Vnwxt, Verbose Host; Wasp, Shrinking Savior; Whisper, Blood Liturgist; Witch-king of Angmar; Witherbloom, the Balancer; Xande, Dark Mage; Yahenni, Undying Partisan; Yargle and Multani; Ygra, Eater of All; Yue, the Moon Spirit; Zahid, Djinn of the Lamp
+
+## 9. Phase 2 — why each card is NOT in its pile's deck
+
+### 9.1 Pile 1 → Thranduil (75-historic-brawl): the 61 cards not in the list
+
+**The test every card had to pass.** The deck is Elf-first: 40 of its 63 nonland cards are Elves (17 legendary),
+and 38 of its 45 creatures are. Thranduil pays twice for that density — a legendary Elf entering loots, and an
+Elf CARD in the yard lends him its activated abilities. So a graveyard card that is NOT an Elf has to beat an Elf
+for the slot, and the yard is mostly Elves, which turns any "exile cards from your graveyard" cost into a tax on
+Thranduil's toolbox (G-42). The graveyard package already holds Teval, Muldrotha, Oasis of Renewal, Insidious
+Roots, Overlord of the Balemurk, Kamahl's Druidic Vow, Journey to Eternity, Sheoldred, Whispering One and Wrenn
+and Realmbreaker.
+
+**A. Real swap candidates — left out on slot pressure, not on merit (propose, don't apply).**
+| Card | Why it was not in the draft | What it would do here |
+|---|---|---|
+| Deathrite Shaman | Missed at draft time — it surfaced in the phase-1 Elf search but never reached the list | A 1-mana Elf with THREE activated abilities, so it is a Thranduil card twice: in play, and in the yard (`{T}: Exile target land card from a graveyard. Add one mana of any color`; `{B}`: drain 2; `{G}`: gain 2). Can target the OPPONENT'S graveyard, so it need not eat Elves. **Strongest add on this list.** |
+| Eladamri, Korvecdal | Missed at draft time | Legendary Elf (a loot); "You may cast creature spells from the top of your library" with 45 creatures; from the yard Thranduil gets `{G}, {T}, Tap two untapped creatures: … put it onto the battlefield` — a free creature cheat every turn. |
+| Tyvar the Bellicose | Missed at draft time | Legendary Elf; "Whenever a mana ability of this creature resolves, put +1/+1 counters equal to the mana produced" turns the 11 mana Elves into growing bodies; Elves attacking gain deathtouch. |
+| Yawgmoth, Thran Physician | Not an Elf; the deck runs no dedicated sacrifice outlet | `Pay 1 life, Sacrifice another creature: -1/-1 counter … and draw a card` is repeatable removal plus card draw off the Elf tokens (Imperious Perfect, Elvish Warmaster, Voice of the Woods, Lathril). |
+| Wrenn and Seven | Not an Elf; Wrenn and Realmbreaker took the green-walker slot | +1 reveals four, lands to hand and "the rest into your graveyard" — a self-mill that never misses a land drop; −3 is a huge reach body. A real upgrade for any non-Elf slot. |
+| Sidisi, Brood Tyrant | Not an Elf, and its mill is random where Thranduil's loot chooses | Mills three on entry and attack; with 45 creatures most mills make a 2/2 Zombie. Strong, just not Elf-synergistic (the Zombies feed nothing Elf-gated). |
+| Invasion of Ikoria | Not an Elf; competes with Kamahl's Druidic Vow and Journey as a cheat | `search your library and/or graveyard for a non-Human creature card with mana value X or less and put it onto the battlefield` — a tutor that also reanimates; finds Priest of Titania at X=2. |
+| Moonstone, Harsh Mistress | Not an Elf | "Whenever you discard a card, you may exile that card … you may play that card" — every Thranduil loot becomes card-neutral. But it EXILES the discard, which removes an Elf's ability from Thranduil (G-42), so it is best with non-Elf discards. ◇ |
+
+**B. Exile your own graveyard as the cost or the effect — fights Thranduil's toolbox (G-42).**
+| Card | Operative clause | Why not |
+|---|---|---|
+| Kotis, Sibsig Champion | "cast a creature spell from your graveyard by exiling three other cards from your graveyard" | Three cards a turn, in a yard that is mostly Elves; Muldrotha recasts without exiling anything. |
+| Mimeoplasm, Revered One | "exile up to X creature cards from your graveyard" | Eats exactly the Elf creature cards Thranduil borrows from. |
+| Sin, Spira's Punishment | "exile a permanent card from your graveyard at random" | Random — will hit Elves; 7 mana. |
+| Sauron, the Necromancer | "Whenever Sauron attacks, exile target creature card from your graveyard" | Same tax each attack; the token is temporary. |
+| The Cloning of Shredder | "Exile target creature card from your graveyard" | Six mana for copies of a card Thranduil was already using. |
+| Nashi, Moon's Legacy | "exile up to one target legendary or Rat card from your graveyard and copy it" | Can target a non-Elf legend, but the deck's legends ARE mostly Elves; menace 3-drop otherwise. |
+| Tamiyo, Compleated Sage | "−X: Exile target nonland permanent card with mana value X from your graveyard" | Same; the +1 tap is tempo, not removal. |
+| Kaervek, the Punisher | "exile up to one target black card from your graveyard and copy it" | Needs crimes; few black cards to copy outside the Elf core. |
+| Ultimecia, Time Sorceress | Transform: "exile eight cards from your graveyard" | Eight cards is most of Thranduil's toolbox; the extra turn costs nine mana. |
+
+**C. Leave-the-graveyard payoffs (the phase-3 search) — the deck already runs the best three.**
+Teval, Oasis of Renewal and Insidious Roots are in. The rest are smaller, non-Elf versions of the same payoff, and the
+deck's leave-graveyard events are occasional (Muldrotha recasts, reanimation, Journey) rather than every turn:
+| Card | Operative clause | Why not |
+|---|---|---|
+| Chalk Outline | "Whenever one or more creature cards leave your graveyard, create a 2/2 … then investigate" | Best of the rest; 4-mana do-nothing until a recast. First reserve if the recursion count grows. |
+| Desecrated Tomb | "…leave your graveyard, create a 1/1 black Bat" | Weaker Chalk Outline. |
+| Along the Crooked Way | ETB "return target creature card … to your hand"; leave → amass Goblins | The Goblin army is off-tribe. |
+| Attuned Hunter / Willow Geist / Rot Farm Mortipede | +1/+1 counters or menace/lifelink when cards leave | Vanilla-ish bodies that need the event every turn. |
+| Kishla Skimmer | "Whenever a card leaves your graveyard during your turn, draw a card" (once a turn) | Fine card draw, but a 2-mana non-Elf; Elrond, Moon-Reader is the draw engine here. |
+| Undead Hand Ninja | drain 1 when creature cards leave | Too small. |
+| Dredger's Insight | ETB mill four, take an artifact/creature/land | A one-shot dig; the deck has better self-mill on Elf bodies. |
+
+**D. Non-Elf graveyard bodies — good cards, outranked by an Elf in the same job.**
+| Card | Why not |
+|---|---|
+| Madame Hydra, Reanimated | Self-mill 2 per attack and grows with creature cards; a non-Elf 4-drop beater in a deck whose bodies want to be Elves. |
+| Black Widow, Daring Operative | Mill 3 then drains = creature cards in yard on combat damage — combat-gated, 5 mana. |
+| Isareth the Awakener | Reanimates on attack for {X}, but the returned creature is exiled if it leaves — and the reanimated Elf no longer lends Thranduil its ability. |
+| Junji, the Midnight Sky | A 5-mana flier whose value is its death trigger; the deck wants Elves in the yard, not Dragons. |
+| Drana, the Last Bloodchief | "defending player chooses a nonlegendary creature card" — the OPPONENT picks, so they give you a mana Elf. |
+| Uchbenbak, the Great Mistake | Descend 8 recursion for a vanilla 6/4-ish body; nothing Elf. |
+| Beledros Witherbloom | Pest each upkeep; 7 mana and "Pay 10 life" untap — no Elf payoff for Pests. |
+| Ghoulcaller Gisa | Sac outlet that makes Zombies = power; Elves are small, so X is 1–2. |
+| Gisa, Glorious Resurrector | Steals THEIR dead creatures for a turn; off-plan here (a better fit for a removal-heavy deck). |
+| Nissa of Shadowed Boughs | −5 reanimates; landfall loyalty — the deck plays ~1 land a turn, so −5 is slow. |
+| Brokkos, Apex of Forever | Recursive mutate threat; Elves are non-Human so it can mutate, but it adds a body, not an engine. |
+| Bonny Pall, Clearcutter | 6 mana; "Whenever you attack, draw a card, then … put a land card from your hand or graveyard onto the battlefield" — real value, wrong curve slot beside Selvala/Kamahl's Vow. |
+| Aclazotz, Deepest Betrayal | A 5-mana flier with hand attack; strong card, no Elf or graveyard tie. |
+
+**E. Looters and discard engines — Thranduil already IS the looter.**
+Every legendary Elf entering draws two and discards one, so a non-Elf looter duplicates the commander:
+Arni, Humble Scribe (`{T}: Draw a card, then discard a card`); Rona, Herald of Invasion (same, untaps on legendary
+spells — the closest of these, since most of the deck is legendary); Leader, Super-Genius (connive each combat);
+Malcolm, Alluring Scoundrel (combat-gated loot); Pharaoh Rama-Tut (connives on noncreature spells — ~15 here);
+The Ancient One (loot that mills a player; descend 8 to attack). None is bad; each lost to an Elf.
+
+**F. Legendary Elves that are only a loot trigger.** The deck already has 17 legendary Elves; these add the trigger
+and little else:
+| Card | Why not |
+|---|---|
+| Celeborn the Wise | "Whenever you attack with one or more Elves, scry 1" and a pump — combat-only, minor. |
+| Ezuri, Stalker of Spheres | "Whenever you proliferate, draw a card" — the deck has one proliferate source (Vraska, Betrayal's Sting). |
+| Furgul, Quag Nurturer | `{T}, Sacrifice a creature: Add {G}` equal to power — a sac outlet Thranduil can borrow, plus a free Leech each turn. The closest of these to a swap; Alchemy (conjure). ◇ |
+| Krydle of Baldur's Gate | Combat trigger mills 1 / scry 1 — negligible. |
+| Nael, Avizoa Aeronaut | Domain: Sultai lands give at most 3 basic types, so "if there are five … draw a card" never happens. |
+
+**G. Plan mismatches.**
+| Card | Why not |
+|---|---|
+| Laboratory Maniac | Self-mill alt-win; a 100-card deck never empties its own library on purpose. |
+| Emet-Selch of the Third Seat | Pays off instants/sorceries from the yard; the deck runs ~7. |
+| Kels, Fight Fixer | Sacrifice payoff; the deck has no sacrifice engine (Yawgmoth would be the outlet, see A). |
+| Scavenger's Talent | Same — Food and "whenever you sacrifice" need an outlet the deck lacks. |
+| The Mycotyrant | Counts Fungi/Saprolings; descend tokens only. |
+| Prototype X-8 | 10 mana minus 2 per creature card in the yard; its "sacrifice it, conjure a duplicate" line is a gimmick here. |
+| Lazav, the Multifarious | Copies a creature card in the yard for {X} — mostly copying an Elf Thranduil already has. |
+| Reezug, the Bonecobbler | Casts a creature card from the yard as an artifact; recasting an Elf takes its ability off Thranduil. |
+| Nashi, Illusion Gadgeteer | Conjures a copy of a yard card into hand (keeps the original — no G-42 cost); a 4-mana non-Elf. ◇ |
+| Zimone the Calculating | Prepared on self-mill; the adventure is a −3/−0. Minor. |
+| Syr Konrad, the Grim | Pings on every creature death, mill and leave-graveyard; strong in a self-mill deck, but 5 mana for 1-point pings. Bench. |
