@@ -82,6 +82,8 @@ Migration: the Sultai doc §8–9 becomes `builds/sultai/build.json` (the data a
    `/draft-deck` write a build file; scenario walk.
 
 ## The claude.ai board meanwhile
+**DONE 2026-11-01:** the four cheap upgrades below shipped (live stats via `.cycle/board/src/refresh.py`, Deck lists tab with cut ranks, add↔cut pairing + `--package` copy-out, role/MV/owned/rarity filters).
+
 Keep it for THIS project (it is the only version whose picks Claude can read directly). Cheap
 improvements worth doing now, before the Pages version exists: derived deck stats (2), both decks'
 current lists with cut ranks (3–4), add↔cut pairing on picks (3), role/cost/owned filters (5).
