@@ -1,0 +1,137 @@
+#: name: Woodland Realm — Brawl
+#: format: Historic Brawl
+#: colors: BGU
+#: commander: Thranduil, the Elvenking
+#: plan: midrange
+#: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool), SULTAI ELVES AND GRAVEYARD around
+#: archetype: Thranduil, the Elvenking: "Thranduil has all activated abilities of all Elf cards in your graveyard"
+#: archetype: and "whenever another legendary Elf you control enters, draw two cards, then discard a card". The
+#: archetype: loot is how Elves reach the graveyard, and the graveyard is Thranduil's toolbox: Priest of Titania,
+#: archetype: Elvish Archdruid, Circle of Dreams Druid and Marwyn make him a mana engine; Voice of the Woods (tap
+#: archetype: five Elves: a 7/7), Lathril (tap ten Elves: drain 10), Imperious Perfect, Fauna Shaman and Morcant
+#: archetype: give him a token maker, a tutor and a win condition. Dionus untaps each Elf the first time it taps
+#: archetype: on our turn, so Thranduil uses two of those abilities a turn, and Elrond, Moon-Reader draws whenever
+#: archetype: he activates one. Self-mill Elves (Cantankerous Keepers, Lluwen, Trystan, Dawnhand Eulogist,
+#: archetype: Thranduil, Sindarin Liege's adventure) and Fauna Shaman's discard stock the yard; Teval, Muldrotha,
+#: archetype: Oasis of Renewal and Insidious Roots turn graveyard recasting into tokens and cards. The 100-card
+#: archetype: Historic Brawl sibling of deck 75 (the 60-card Standard Elvenking list): Thranduil is the COMMANDER
+#: archetype: here, always available, and the Historic pool adds the mana Elves (Priest of Titania, Circle of
+#: archetype: Dreams Druid, Marwyn) Standard lacks. Distinct from deck 31 (Golgari go-wide drain): this is an
+#: archetype: engine deck where the graveyard is the second hand. Built from the owner's 250-card Sultai pile
+#: archetype: plus the pool (.cycle/sultai-pile-analysis.md).
+#: protect: Thranduil, the Elvenking; Dionus, Elvish Archdruid; Priest of Titania; Lathril, Blade of the Elves; Voice of the Woods; Fauna Shaman
+#: notes: DRAFTED 2026-11-01 with /draft-deck from the Sultai pile analysis (owner's pick: Graveyard & Elves
+#: notes: under Thranduil; the draw/mill/exile deck under Glarb is next). The optimal list, crafts included.
+#: notes: ENGINE CAVEAT (G-42): Thranduil only has the abilities of Elf cards that STAY in the graveyard, so
+#: notes: exile-from-graveyard costs and reanimation should spend non-Elf cards first; reanimating an Elf
+#: notes: trades its borrowed ability for the body. Avoid Elves whose ability says "sacrifice this creature"
+#: notes: or "exile this card" — on Thranduil that line sacrifices or exiles Thranduil.
+#: notes: LANDS (draft, 2026-11-01): Opulent Palace, 2 Forest and an Island became Clearwater Pathway,
+#: notes: Darkbore Pathway, Wastewood Verge and a Swamp — B sources 17→20 for the eight {B}{B} cards (59%→66% on
+#: notes: curve at T5), mean colour access 76.2→78.3%, tapped-land cost 2.4→2.0 points a card (`consistency --tempo`).
+#: notes: The surveil taplands (Hedge Maze, Underground Mortuary, Undercity Sewers) STAY: they bin Elves for Thranduil.
+
+
+# Commander (leads from the command zone; also one of the 100)
+1 Thranduil, the Elvenking (HOB) 167
+
+# Elf mana — on the battlefield they ramp; in the graveyard Thranduil taps for them
+1 Llanowar Elves (FDN) 227
+1 Elvish Mystic (HOC) 205
+1 Paradise Druid (WAR) 171
+1 Priest of Titania (MH3) 286
+1 Elvish Archdruid (FDN) 219
+1 Circle of Dreams Druid (AFR) 176
+1 Marwyn, the Nurturer (DOM) 172
+1 Lys Alana Dignitary (ECL) 180
+1 Deathbloom Ritualist (BRO) 208
+1 Woodland Weavemaster (HOB) 143
+1 Selvala, Heart of the Wilds (JMP) 429
+
+# Elf engines — activated abilities Thranduil borrows from the graveyard
+1 Fauna Shaman (BRO) 179
+1 Imperious Perfect (FDN) 719
+1 Elvish Warmaster (KHM) 167
+1 Voice of the Woods (J25) 738
+1 Dionus, Elvish Archdruid (J25) 52
+1 Lathril, Blade of the Elves (FDN) 242
+1 High Perfect Morcant (ECL) 229
+1 Elrond, Moon-Reader (HOB) 36
+
+# Legendary Elves — each one entering is Thranduil's draw two, discard one
+1 Maralen, Fae Ascendant (ECL) 233
+1 Leovold, Emissary of Trest (UMA) 202
+1 Thranduil, Sindarin Liege (HOB) 166
+1 Kagha, Shadow Archdruid (HBG) 236
+1 Trystan, Callous Cultivator (ECL) 199
+1 Lluwen, Imperfect Naturalist (ECL) 232
+1 Dwynen, Gilt-Leaf Daen (FDN) 217
+1 Izoni, Thousand-Eyed (GRN) 180
+1 Harald, King of Skemfar (KHM) 212
+
+# Elf support — lords, self-mill and Elf-card recursion
+1 Cantankerous Keepers (HOB) 122
+1 Dawnhand Eulogist (ECL) 99
+1 Elderfang Ritualist (KHM) 385
+1 Skemfar Avenger (KHM) 109
+1 Morcant's Loyalist (ECL) 236
+1 Gloom Ripper (ECL) 102
+1 Abomination of Llanowar (HA4) 20
+1 Leaf-Crowned Visionary (DMU) 167
+1 Shaman of the Pack (EA2) 20
+1 Morcant's Eyes (ECL) 185
+1 Bounty of Skemfar (J25) 638
+1 Harald Unites the Elves (KHM) 213
+
+# Graveyard engine — recast, reanimate, and payoffs for cards leaving the graveyard
+1 Teval, the Balanced Scale (TDC) 8
+1 Muldrotha, the Gravetide (FDN) 243
+1 Oasis of Renewal (YTDM) 24
+1 Insidious Roots (MKM) 208
+1 Overlord of the Balemurk (DSK) 113
+1 Kamahl's Druidic Vow (DOM) 166
+1 Journey to Eternity // Atzal, Cave of Eternity (RIX) 160
+1 Sheoldred, Whispering One (MUL) 16
+1 Wrenn and Realmbreaker (MOM) 217
+
+# Interaction
+1 Price of Fame (GRN) 83
+1 Yawgmoth's Vile Offering (DOM) 114
+1 Sheoldred // The True Scriptures (MOM) 125
+1 Garruk, Veiled Butcher (FRA) 229
+1 Ob Nixilis Reignited (PIO) 99
+1 Vraska, Golgari Queen (GRN) 213
+1 Vraska, Betrayal's Sting (ONE) 115
+1 Cloud of Darkness (FIN) 217
+1 Trystan's Command (ECL) 247
+1 Dragonlord Silumgar (PIO) 220
+1 Liliana, Death Mage (M21) 328
+1 Heartless Act (TLA) 103
+1 Go for the Throat (BRO) 102
+1 Infernal Grasp (MID) 107
+
+# Lands (36)
+1 Command Tower (FRC) 22
+1 Eclipsed Realms (ECL) 263
+1 Overgrown Tomb (ECL) 266
+1 Breeding Pool (EOE) 251
+1 Watery Grave (EOE) 261
+1 Woodland Cemetery (DOM) 248
+1 Hinterland Harbor (DOM) 240
+1 Drowned Catacomb (XLN) 253
+1 Llanowar Wastes (BRO) 264
+1 Yavimaya Coast (DMU) 261
+1 Underground River (BRO) 267
+1 Clearwater Pathway // Murkwater Pathway (ZNR) 260
+1 Zagoth Triome (IKO) 259
+1 Underground Mortuary (MKM) 271
+1 Hedge Maze (MKM) 262
+1 Undercity Sewers (PZA) 0
+1 Darkslick Shores (ONE) 250
+1 Blooming Marsh (OTJ) 266
+1 Botanical Sanctum (OTJ) 267
+8 Forest (FRA) 289
+1 Wastewood Verge (DFT) 268
+1 Darkbore Pathway // Slitherbore Pathway (KHM) 254
+5 Swamp (FRA) 285
+2 Island (FRA) 283

@@ -1,6 +1,6 @@
 # Sultai legends pile (250 cards) — analysis (TEMPORARY working doc)
 
-**Status: DIRECTION CHOSEN (section 7) — next: per-deck outside-the-pile shortlists, then /draft-deck.** Delete once the deck(s) are drafted and the findings are folded into
+**Status: DECK 1 DRAFTED (2026-11-01) as variant `75-historic-brawl` (Woodland Realm — Brawl, Thranduil); next: deck 2, Glarb draw + mill/exile, via /draft-deck.** Delete once the deck(s) are drafted and the findings are folded into
 their `#: notes:` blocks. A scratchpad, not a source of truth — decks/ are.
 
 **Source list:** `.cycle/sultai-pile-source.txt` (250 names; all resolve, all castable in UBG,

@@ -8,6 +8,7 @@
 # `check_roles.py --update-baseline` to acknowledge the current set.
 Aang, at the Crossroads
 Aang, at the Crossroads // Aang, Destined Savior
+Abomination of Llanowar
 Absorbing Man and Titania
 Accumulate Wisdom
 Aerial Doombot
@@ -147,6 +148,7 @@ Eternal Skylord
 Fallen Shinobi
 Fang, Roku's Companion
 Fated Firepower
+Fauna Shaman
 Fear of Isolation
 Fearsome Goblin Pair
 Felonious Rage
@@ -195,6 +197,7 @@ Guidelight Matrix
 Guiding Hydra
 Hama, the Bloodbender
 Hammerhead, Maggia Boss
+Harald, King of Skemfar
 Hauntwoods Shrieker
 Hawkeye, Master Marksman
 Hawkeye, Young Avenger
@@ -236,6 +239,8 @@ Jeong Jeong, the Deserter
 Jeskai Brushmaster
 Joo Dee, One of Many
 K'un-Lun Warrior
+Kagha, Shadow Archdruid
+Kamahl's Druidic Vow
 Kang the Conqueror
 Kastral, the Windcrested
 Katara, Water Tribe's Hope
@@ -258,6 +263,7 @@ Large Bear
 Lazotep Chancellor
 Leader, Super-Genius
 Leonardo, Big Brother
+Leovold, Emissary of Trest
 Leyline of Mutation
 Leyline of Transformation
 Lifecraft Engine
@@ -483,6 +489,7 @@ Virus Beetle
 Vision Quest
 Vito's Inquisitor
 Vizier of the Scorpion
+Voice of the Woods
 Voyager Glidecar
 Vulture, Scheming Scavenger
 War Balloon
