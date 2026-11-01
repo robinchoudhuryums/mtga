@@ -2,7 +2,7 @@
 
 **Status: REOPENED 2026-11-01 for the three-pile split (section 8).** Both decks are drafted (75-historic-brawl Thranduil, 96 Glarb). Phase 1 = the split; phase 2+ = why each card is or is not in each deck. Delete once the owner has the answers.
 
-**Board:** https://claude.ai/artifact/RfDuwKXX3WmTHYcUrLTgAR (slug `c7b18c80-55b2-42c0-93ae-ea36e2fa15be`, source `.cycle/board/index.html`). The owner's picks live in its db collection `picks` (doc id = card-name slug; fields `card`, `picks` ⊂ {addT, cutT, addG, cutG, bench, out}, `note`) — read them with db_list. Per-card reasons are embedded in the page data and republished from `.cycle/board/index.html` each phase (the page also overlays any `reasons` docs from its db, unused so far).
+**Board:** https://claude.ai/artifact/RfDuwKXX3WmTHYcUrLTgAR (slug `c7b18c80-55b2-42c0-93ae-ea36e2fa15be`, source `.cycle/board/index.html`; card images in `.cycle/board/img/` are gitignored — regenerate with `python3 .cycle/board/fetch_images.py`). The owner's picks live in its db collection `picks` (doc id = card-name slug; fields `card`, `picks` ⊂ {addT, cutT, addG, cutG, bench, out}, `note`) — read them with db_list. Per-card reasons are embedded in the page data and republished from `.cycle/board/index.html` each phase (the page also overlays any `reasons` docs from its db, unused so far).
 their `#: notes:` blocks. A scratchpad, not a source of truth — decks/ are.
 
 **Source list:** `.cycle/sultai-pile-source.txt` (250 names; all resolve, all castable in UBG,
