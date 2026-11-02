@@ -1297,3 +1297,371 @@ Legend as §4. Five parallel readers; the tables below are their output, verbati
 | Wrenn and Seven | ★★★ | — | +1: Reveal the top four cards of your library. Put all land cards revealed this way into your hand and the rest into your graveyard. | Up from ★★ (now in the list): "not an Elf" is void. +1 is self-mill plus land draw every turn, 0 is a land-drop burst for landfall, −3 is a huge body and −8 rebuys the yard: graveyard, mana and card advantage on one card. | — |
 | Yawgmoth, Thran Physician | ★★★ | — | Pay 1 life, Sacrifice another creature: Put a -1/-1 counter on up to one target creature and draw a card. {B}{B}, Discard a card: Proliferate. | Up from ★★ (now in the list): "not an Elf" is void. A free repeatable sac-draw (fodder from Imperious Perfect, Sidisi, Liege, Morcant's Eyes, Izoni) puts nontoken Elves into Thranduil's yard, and the discard-proliferate bins cards and ticks 7 walkers. | — |
 | Sin, Spira's Punishment | ★★ | — | exile a permanent card from your graveyard at random, then create a tapped token that's a copy of that card. If the exiled card is a land card, repeat this process. | Holds at ★★, but the G-42 objection is replaced by the owner's exception: an exiled Elf's ability moves to the token. A land hit is upside (a free tapped land, then repeat). The real costs are 7 mana and randomly stealing a Kotis/Muldrotha recast target. | — |
+
+## 12. Full re-grade against the live lists, 2026-11-02
+
+Every stale reason (259, all Thranduil-side, from the nine synergy-first swaps) and every pre-draft
+verdict (217 Thranduil, 250 Glarb) — 325 cards — re-read from full oracle text against both live
+lists by seven parallel readers. Each card got both verdicts and a rewritten reason; group labels
+that argued Elf-first were replaced. 203 verdicts moved (75 up, 128 down). Pile moves were only
+NOTED, not made. The readers' tables below are verbatim (Changed from = the old marks).
+
+### 12.1
+
+| Card | T | G | Changed from | Pile note |
+|---|---|---|---|---|
+| Abomination of Llanowar | △ | ✗ | T ★ (pre-draft); G ◇ (pre-draft) |  |
+| Anoint with Affliction | ◇ | ◇ |  |  |
+| Ashiok, Dream Render | ★ | △ |  |  |
+| Beledros Witherbloom | ★ | △ | G ◇ (pre-draft) |  |
+| Brain Freeze | △ | △ |  |  |
+| Chevill, Bane of Monsters | ◇ | ◇ |  |  |
+| Cultivate | △ | △ |  |  |
+| Dina, Essence Brewer | ★ | △ | T ◇ (pre-draft) | Fits neither → ★ for Thranduil (outlets arrived with Yawgmoth/Izoni) |
+| Dredger's Insight | ★ | △ |  |  |
+| Emet-Selch of the Third Seat | ◇ | ◇ | T ★ (pre-draft); G △ (pre-draft) |  |
+| Feed the Swarm | ★ | ★ |  |  |
+| Gandalf, Friend of the Shire | △ | ◇ |  |  |
+| Gix, Yawgmoth Praetor | ★ | ★ | G ★★ (pre-draft) |  |
+| Goreclaw, Terror of Qal Sisma | △ | △ | T ◇ (pre-draft); G ◇ (pre-draft) |  |
+| Howling Mine | △ | ★★ |  |  |
+| Invasion of Segovia // Caetus, Sea Tyrant of Segovia | △ | △ |  |  |
+| Jace, Arcane Strategist | △ | ★ | T ◇ (pre-draft) |  |
+| Jin-Gitaxias, Core Augur | ◇ | ★★ | G ★ (pre-draft) |  |
+| Kagha, Shadow Archdruid | ★★ | △ | G ◇ (pre-draft) |  |
+| Kels, Fight Fixer | ★ | △ |  |  |
+| Kishla Skimmer | ★★ | ✗ |  |  |
+| Krang, the All-Powerful | △ | ★★★ | T ◇ (pre-draft); G ★ (pre-draft) |  |
+| Leader, Super-Genius | ★★★ | ★★ | G ◇ (pre-draft) | Also ★★ for Glarb |
+| Lo and Li, Royal Advisors | ◇ | ★★ | T △ (pre-draft); G ★ (pre-draft) |  |
+| Lyra, Tolarian Archangel | ◇ | ★ | G ★★ (pre-draft) |  |
+| Massacre Girl, Known Killer | ★ | △ | T ◇ (pre-draft); G ◇ (pre-draft) | Fits neither → ★ for Thranduil |
+| Mitotic Ultimus | △ | △ |  |  |
+| Mystic Reflection | ✗ | ✗ |  |  |
+| Nature's Lore | ★ | ★ |  |  |
+| Ob Nixilis Reignited | ★★ | ★★ |  |  |
+| Oyaminartok, Polar Werebear | △ | △ |  |  |
+| Precognition Field | △ | ★ |  |  |
+| Radagast of Rhosgobel | ★ | ◇ | T ◇ (pre-draft); G ★ (pre-draft) |  |
+| Roalesk, Apex Hybrid | ◇ | △ | G ◇ (pre-draft) |  |
+| Sauron, the Necromancer | ★ | ✗ | T ★★ (pre-draft) |  |
+| Sheoldred, Whispering One | ★★★ | ★ | G ◇ (pre-draft) |  |
+| Sméagol, Helpful Guide | ◇ | ◇ | G ★★ (pre-draft) |  |
+| Tam, Observant Sequencer // Deep Sight | △ | ★ |  |  |
+| Tergrid, God of Fright // Tergrid's Lantern | ★ | ★ | T ◇ (pre-draft); G ◇ (pre-draft) | Fits neither → ★ for both |
+| The Clone Saga | ★ | ★ |  |  |
+| The Water Crystal | ✗ | ★★★ | G ★★ (pre-draft) |  |
+| Toxic Deluge | △ | ★★ |  |  |
+| Undead Hand Ninja | △ | ✗ |  |  |
+| Vnwxt, Verbose Host | ◇ | ◇ | T △ (pre-draft) |  |
+| Willow Geist | ◇ | ✗ |  |  |
+| Xande, Dark Mage | △ | △ | T ◇ (pre-draft) |  |
+| Yue, the Moon Spirit | ◇ | ◇ |  |  |
+
+### 12.2
+
+| Card | T | G | Changed from | Pile note |
+|---|---|---|---|---|
+| Absorbing Man | △ | ★ | G △ (pre-draft) | Fits neither → Glarb candidate at ★ (not ★★) |
+| Aphelia, Viper Whisperer | △ | △ |  |  |
+| Ashiok, Nightmare Muse | △ | ★★ | T ★ / G ★★★ (pre-draft) |  |
+| Bitter Triumph | ★★ | ★★ |  |  |
+| Brokkos, Apex of Forever | ★ | △ | G ◇ (pre-draft) |  |
+| Chulane, Teller of Tales | ✗ | ✗ |  |  |
+| Cut Your Losses | △ | ★★ | T ✗ |  |
+| Dina, Soul Steeper | △ | △ |  |  |
+| Drowned Secrets | ✗ | ★★ |  |  |
+| Erebos, God of the Dead | ★ | ★ |  |  |
+| Fleet Swallower | ✗ | ★ |  |  |
+| Garruk, Caller of Beasts | ★★ | △ | T ★ / G ★ (pre-draft) | T pile (G △) |
+| Glamdring, Foe-hammer // Gleam of Death | △ | △ | T ◇ (pre-draft) |  |
+| Graviton, Fundamental Force | △ | ◇ |  |  |
+| Hullbreaker Horror | △ | ◇ |  |  |
+| Ioreth of the Healing House | ★★ | ★★ | T ★ / G ★ (pre-draft) |  |
+| Jace, Memory Adept | ★ | ★★★ | T ★★ / G ★★ (pre-draft) |  |
+| Jin-Gitaxias, Progress Tyrant | △ | ★ | T ◇ / G ◇ (pre-draft) |  |
+| Kamahl's Druidic Vow | ★★★ | ◇ | T ★★ / G ★ (pre-draft) |  |
+| Kenrith's Transformation | ★ | ★ |  |  |
+| Kitsune, Dragon's Daughter | ★ | ★ | T ◇ / G ◇ (pre-draft) |  |
+| Kruphix, God of Horizons | △ | ◇ |  |  |
+| Legolas, Counter of Kills | △ | △ | T ◇ / G ★ (pre-draft) | Fits neither now (△/△) |
+| Lo and Li, Twin Tutors | ◇ | △ | G ◇ (pre-draft) |  |
+| M.O.D.O.K., Evil Intellect | ★ | ★★ | T ◇ (pre-draft) |  |
+| Matoya, Archon Elder | ◇ | ★★★ | T ★ (pre-draft) |  |
+| Moonstone, Harsh Mistress | ★★ | △ | G ◇ (pre-draft) |  |
+| Mystic Snake | ★ | ★ |  |  |
+| Navigator's Ruin | ✗ | ◇ |  |  |
+| Oko, the Trickster | △ | △ | T ◇ / G ◇ (pre-draft) |  |
+| Persistent Petitioners | ✗ | △ |  |  |
+| Preordain | △ | ★ |  |  |
+| Rashmi, Eternities Crafter | ★ | ★ | T ◇ / G ★★ (pre-draft) |  |
+| Rona, Disciple of Gix | ◇ | ◇ | G ★ (pre-draft) |  |
+| Saw It Coming | △ | ★ |  |  |
+| Sheoldred, the Apocalypse | ★★ | ★★★ |  |  |
+| Sokka's Haiku | ◇ | ★ |  |  |
+| Tamiyo, Compleated Sage | ★★ | △ | G ★ (pre-draft) |  |
+| Terisian Mindbreaker | ✗ | ★ |  |  |
+| The Cloning of Shredder | ★★ | ◇ | G ✗ (pre-draft) |  |
+| Thought Scour | ★ | ★ |  |  |
+| Tui and La, Moon and Ocean | ◇ | △ | G ◇ (pre-draft) |  |
+| Urza, Lord High Artificer | △ | △ | G ◇ (pre-draft) |  |
+| Vraska Joins Up | ★ | △ | G ★ (pre-draft) | T pile (G △) |
+| Witch-king of Angmar | ◇ | ◇ |  |  |
+| Yahenni, Undying Partisan | ◇ | △ | G ◇ (pre-draft) |  |
+| Zahid, Djinn of the Lamp | △ | △ |  |  |
+
+### 12.3
+
+| Card | T | G | Changed from | Pile note |
+|---|---|---|---|---|
+| Aclazotz, Deepest Betrayal // Temple of the Dead | ★ | ◇ | G ★ (pre-draft) |  |
+| Arcane Epiphany | △ | ★ |  |  |
+| Ashiok, Sculptor of Fears | ★ | ★★ | T ★★ (pre-draft) |  |
+| Black Widow, Daring Operative | ★ | ✗ |  |  |
+| Callaphe, Beloved of the Sea | △ | △ |  |  |
+| Cloud of Darkness | ★★★ | ◇ |  |  |
+| Davriel, Soul Broker | ◇ | ◇ |  |  |
+| Dionus, Elvish Archdruid | ★★ | ✗ | T ◇ (pre-draft); G ◇ (pre-draft) |  |
+| Duskmantle, House of Shadow | △ | ★ |  |  |
+| Ezuri, Stalker of Spheres | ★ | ◇ |  |  |
+| Folio of Fancies | △ | ★ |  |  |
+| Garruk, Veiled Butcher | ★★ | ◇ | G ★★ (pre-draft) |  |
+| Glarb, Calamity's Augur | ★★ | ★★★ |  |  |
+| Greensleeves, Maro-Sorcerer | ◇ | △ | G ◇ (pre-draft) |  |
+| Imoti, Celebrant of Bounty | ◇ | ◇ | G ★ (pre-draft) |  |
+| Irenicus's Vile Duplication | ◇ | ◇ |  |  |
+| Jace, Unraveler of Secrets | △ | ★ | T ◇ (pre-draft) |  |
+| Journey to Eternity // Atzal, Cave of Eternity | ★★ | △ | G ◇ (pre-draft) |  |
+| Kasmina, Enigma Sage | △ | ★ |  |  |
+| Kingpin, Wilson Fisk | ◇ | △ |  |  |
+| Kogla and Yidaro | ✗ | ✗ |  |  |
+| Krydle of Baldur's Gate | ◇ | △ | G ◇ (pre-draft) |  |
+| Leovold, Emissary of Trest | ★ | ◇ | G ★★ (pre-draft) |  |
+| Locke Cole | △ | ◇ |  |  |
+| Madame Hydra, Reanimated | ★★ | ✗ |  |  |
+| Memory Deluge | △ | ★ |  |  |
+| Morlun, Devourer of Spiders | ◇ | △ | G ◇ (pre-draft) |  |
+| Mythweaver Poq | ◇ | ◇ | T △ (pre-draft); G △ (pre-draft) |  |
+| Nemata, Primeval Warden | △ | △ | T ✗ (pre-draft); G ★ (pre-draft) | Now fits neither (△ both; G-42 exile conflict for Glarb). |
+| Omega, Heartless Evolution | ◇ | ◇ |  |  |
+| Pharaoh Rama-Tut | ◇ | ★ | G ◇ (pre-draft) | Better in Glarb's pile (G ★ vs T ◇). |
+| Price of Fame | ★★★ | ★★★ |  |  |
+| Reed Richards, Smartest Man | ★ | ★★★ | T ◇ (pre-draft); G ★★ (pre-draft) |  |
+| Rona, Herald of Invasion // Rona, Tolarian Obliterator | ★★ | ★★ | G ★ (pre-draft) | Fits both piles (★★ each). |
+| Scavenger's Talent | ◇ | ✗ |  |  |
+| Shredder, Shadow Master | △ | △ |  |  |
+| Splinter, the Mentor | ◇ | △ |  |  |
+| Tamiyo, Inquisitive Student // Tamiyo, Seasoned Scholar | △ | ★ |  |  |
+| Tetzimoc, Primal Death | ◇ | ◇ |  |  |
+| The Everflowing Well // The Myriad Pools | ★ | ★ |  |  |
+| Thranduil, Sindarin Liege | ★★ | △ | G ★ (pre-draft) |  |
+| Tyvar Kell | ★ | ✗ | T ◇ (pre-draft); G ◇ (pre-draft) |  |
+| Vesuvan Duplimancy | △ | △ |  |  |
+| Vraska, Betrayal's Sting | ★ | ★★ |  |  |
+| Witherbloom, the Balancer | ◇ | △ | G ◇ (pre-draft) |  |
+| Yargle and Multani | △ | △ |  |  |
+| Zimone the Calculating // Simple Subtraction | ◇ | ◇ | T ★ (pre-draft); G △ (pre-draft) |  |
+
+### 12.4
+
+| Card | T | G | Changed from | Pile note |
+|---|---|---|---|---|
+| Albiorix, Goose Tyrant // Wild Goose Chase | ★ | ◇ |  |  |
+| Arni, Humble Scribe | ★★ | ★ |  | Not in T's list — T add candidate. |
+| Ashiok, Wicked Manipulator | △ | ◇ | T ✗(pre) G ★★★(pre) |  |
+| Bloodchief's Thirst | ★ | ★ |  |  |
+| Celeborn the Wise | △ | △ | G ◇(pre) |  |
+| Consider | △ | ★★ |  | Not in G's list — G add candidate. |
+| Deathrite Shaman | ★★ | ★ |  |  |
+| Doctor Doom | ★ | ★ |  |  |
+| Eladamri, Korvecdal | ★★ | △ |  |  |
+| Farseek | △ | ★ |  |  |
+| Furgul, Quag Nurturer | ★ | ✗ | G △(pre) |  |
+| Geralf, the Fleshwright | ◇ | △ | G ◇(pre) |  |
+| God-Eternal Kefnet | △ | ◇ |  |  |
+| Grindstone | ✗ | ◇ |  |  |
+| Impossible Man | ◇ | ◇ |  |  |
+| Irma, Part-Time Mutant | ◇ | ◇ |  |  |
+| Jace, Wielder of Mysteries | ◇ | ★ | T ★(pre) G ◇(pre) |  |
+| Junji, the Midnight Sky | ★★ | ◇ |  | Not in T's list — T swap candidate. |
+| Katara, Bending Prodigy | △ | △ |  |  |
+| Kinnan, Bonder Prodigy | ★★ | ◇ | T ◇(pre) |  |
+| Kona, Rescue Beastie | ◇ | △ |  |  |
+| Laboratory Maniac | ✗ | △ |  |  |
+| Leyline Immersion | ◇ | ◇ | T ★(pre) G ★(pre) |  |
+| Long Feng, Grand Secretariat | ◇ | △ |  |  |
+| Maha, Its Feathers Night | ★★ | ◇ | T ★(pre) G ★(pre) | Not in T's list — T add candidate. |
+| Memory Lapse | △ | ◇ |  |  |
+| Mu Yanling, Sky Dancer | △ | ◇ | T ★(pre) G ★(pre) |  |
+| Naban, Dean of Iteration | ✗ | ✗ | T △(pre) G △(pre) |  |
+| Nissa of Shadowed Boughs | ★★ | △ | G ◇(pre) | Not in T's list — T swap candidate. |
+| One Ring to Rule Them All | △ | ★★ | T ★(pre) G ◇(pre) | G add candidate (pile B). |
+| Pharika, God of Affliction | ◇ | ✗ | T ✗(pre) G ◇(pre) |  |
+| Princess Yue | △ | ★★ | T ★(pre) |  |
+| Reezug, the Bonecobbler | ★ | △ | T ★★(pre) G ◇(pre) |  |
+| Rot Farm Mortipede | △ | ✗ |  |  |
+| Seizan, Perverter of Truth | ◇ | ★ |  |  |
+| Sidisi, Brood Tyrant | ★★★ | ✗ |  |  |
+| Syr Elenora, the Discerning | △ | △ | G ◇(pre) |  |
+| Tatsunari, Toad Rider | △ | △ |  |  |
+| Teval, the Balanced Scale | ★★★ | △ | G ◇(pre) |  |
+| The Key to the Vault | ◇ | ◇ | G ★(pre) |  |
+| Thranduil, the Elvenking | ★★★ | ✗ | G ★★(pre) |  |
+| Tyvar the Bellicose | ◇ | ✗ | G △(pre) |  |
+| Victor Timely, Wily Tycoon | ◇ | ★ | G △(pre) |  |
+| Vraska, Golgari Queen | ★★ | ★ | G ★★(pre) |  |
+| Wizard's Retort | △ | ★ |  |  |
+| Yarok, the Desecrated | ★★★ | ★ | T ★(pre) |  |
+
+### 12.5
+
+| Card | T | G | Changed from | Pile note |
+|---|---|---|---|---|
+| Along the Crooked Way | ◇ | ✗ |  |  |
+| Arwen Undómiel | ◇ | △ | G ★ (pre-draft) |  |
+| Attuned Hunter | △ | ✗ |  |  |
+| Bolas's Citadel | ★ | ★★ | T ◇ (pre-draft); G ★★★ (pre-draft) |  |
+| Chalk Outline | ★ | ✗ |  |  |
+| Count Nefaria | △ | ✗ |  |  |
+| Delighted Halfling | ★ | △ |  |  |
+| Doctor Doom, Unrivaled | ★★ | ★★ |  |  |
+| Elrond, Lord of Rivendell | ◇ | ◇ | G ★★ (pre-draft) |  |
+| Fatal Push | ◇ | ◇ |  |  |
+| Gadwick, the Wizened | △ | ★ | T ◇ (pre-draft); G ◇ (pre-draft) | Fits neither, but ★ for Glarb |
+| Ghoulcaller Gisa | ★ | △ |  |  |
+| Golbez, Crystal Collector | △ | △ | T ◇ (pre-draft) |  |
+| Gyruda, Doom of Depths | ★ | ◇ |  |  |
+| Ink-Eyes, Servant of Oni | △ | △ | G ◇ (pre-draft) |  |
+| Isareth the Awakener | ★★ | △ | G ◇ (pre-draft) |  |
+| Jace, the Perfected Mind | ★★ | ★★ |  |  |
+| Jyoti, Moag Ancient | ✗ | ✗ |  |  |
+| Katara, Waterbending Master | △ | △ |  |  |
+| Kiora of Salt and Sand | △ | ◇ |  |  |
+| Kotis, Sibsig Champion | ★★ | ✗ | T ★★★ (pre-draft) |  |
+| Lathril, Blade of the Elves | ★ | ✗ | G ◇ (pre-draft) |  |
+| Lich's Mastery | △ | ◇ | G △ (pre-draft) | Fits neither → Glarb candidate (combo with Sheoldred, the Apocalypse + Doctor Doom), ◇ only |
+| Lord Dregg, Insect Invader | ◇ | △ |  |  |
+| Malcolm, Alluring Scoundrel | ◇ | ◇ |  |  |
+| Mimeoplasm, Revered One | ◇ | ✗ | T ★★ (pre-draft) |  |
+| Muldrotha, the Gravetide | ★★★ | △ | G ✗ (pre-draft) |  |
+| Nael, Avizoa Aeronaut | △ | △ |  |  |
+| Nissa, Steward of Elements | ◇ | ★ |  |  |
+| Opt | △ | ★ |  |  |
+| Phenax, God of Deception | ◇ | ★★ |  |  |
+| Proft's Eidetic Memory | △ | ◇ | G ★ (pre-draft) |  |
+| Rev, Tithe Extractor | ◇ | △ | T △ (pre-draft); G ★★ (pre-draft) |  |
+| Ruric Thar, Biomagus | △ | ◇ |  |  |
+| Seymour Flux | ◇ | ★ |  |  |
+| Sin, Spira's Punishment | ★★ | ◇ |  |  |
+| Syr Konrad, the Grim | ★ | ★ | T ★★ (pre-draft) |  |
+| Tawnos, the Toymaker | ✗ | ✗ |  |  |
+| Tezzeret, Betrayer of Flesh | ◇ | ◇ |  |  |
+| The Magic Mirror | △ | ◇ |  |  |
+| Thryx, the Sudden Storm | ◇ | ★ |  |  |
+| Uchbenbak, the Great Mistake | ★ | △ |  |  |
+| Villainous Wealth | ★ | ★★ |  |  |
+| Wan Shi Tong, Librarian | △ | ◇ | T ◇ (pre-draft) |  |
+| Wrenn and Realmbreaker | ★★ | ◇ | G ★ (pre-draft) |  |
+| Yawgmoth's Vile Offering | ★★★ | ★★ |  |  |
+
+### 12.6
+
+| Card | T | G | Changed from | Pile note |
+|---|---|---|---|---|
+| Alora, Rogue Companion | ◇ | △ | T △ (pre-draft) |  |
+| Arwen's Gift | △ | ★ | T ★ (pre-draft); G ★★ (pre-draft) |  |
+| Augur of Autumn | ★ | △ |  | Grades better for T than G |
+| Bonny Pall, Clearcutter | ★★ | ★ |  |  |
+| Chandra, Chill of Compliance | ◇ | ★★ | T ★ (pre-draft) |  |
+| Courser of Kruphix | ★ | △ |  | Grades better for T than G |
+| Desecrated Tomb | ◇ | ✗ |  |  |
+| Dragonlord Silumgar | ★★ | ★★ |  |  |
+| Elrond, Master of Healing | △ | △ | T ◇ (pre-draft); G ★★ (pre-draft) | Fits neither now (was B) |
+| Fblthp, Impossibly Lost | ◇ | △ | T ★ (pre-draft); G ◇ (pre-draft) | Fits neither well (was B) |
+| Galadriel of Lothlórien | △ | △ | T ◇ (pre-draft); G ★★ (pre-draft) | Fits neither now (was B) |
+| Gisa, Glorious Resurrector | ◇ | ◇ |  |  |
+| Goldberry, River-Daughter | △ | △ |  |  |
+| Hama, the Bloodbender | △ | ★ |  |  |
+| Inside Information | △ | ★ |  |  |
+| Iymrith, Desert Doom | ◇ | ◇ |  |  |
+| Jadzi, Oracle of Arcavios // Journey to the Oracle | △ | ◇ | T ◇ (pre-draft) |  |
+| K'rrik, Son of Yawgmoth | △ | △ | T ◇ (pre-draft); G ◇ (pre-draft) |  |
+| Keening Stone | ✗ | ◇ |  |  |
+| Kiora, the Crashing Wave | ◇ | ★ | T ★ (pre-draft) |  |
+| Kotis, the Fangkeeper | △ | ◇ | T ◇ (pre-draft); G ★★ (pre-draft) |  |
+| Lazav, Familiar Stranger | △ | ◇ | T ◇ (pre-draft) |  |
+| Liliana of the Dark Realms | ◇ | △ | T △ (pre-draft) |  |
+| Lord of the Forsaken | ★ | ◇ |  | Grades better for T than G |
+| Maralen, Fae Ascendant | ★★ | △ | T ◇ (pre-draft); G ★★★ (pre-draft) |  |
+| Mind's Dilation | △ | ◇ |  |  |
+| Multiversal Recruitment | ★ | ★ | G ◇ (pre-draft) |  |
+| Nashi, Illusion Gadgeteer | ★★ | ★ | G ◇ (pre-draft) | Also real for G |
+| Niv-Mizzet, Visionary | ✗ | ✗ |  |  |
+| Oracle of Mul Daya | ★★ | ◇ |  |  |
+| Pol Jamaar, Illusionist | ★ | ◇ | T ◇ (pre-draft) |  |
+| Proft, Consulting Detective | ◇ | ★★ | T ★ (pre-draft) |  |
+| Ringsight | ★ | ★★ | G ★ (pre-draft) |  |
+| Sarevok the Usurper | △ | △ | T ◇ (pre-draft); G ✗ (pre-draft) |  |
+| Sheoldred // The True Scriptures | ★★ | ★★★ | T ★★★ (pre-draft); G ★★ (pre-draft) |  |
+| Skithiryx, the Blight Dragon | △ | △ |  |  |
+| Taeko, the Patient Avalanche | △ | △ | G ◇ (pre-draft) |  |
+| Tear Asunder | ★★ | ★ |  |  |
+| Tezzeret, Master of the Bridge | △ | △ |  |  |
+| The Mycotyrant | ★ | △ | T ★★ (pre-draft) |  |
+| Tishana, Voice of Thunder | ★★ | ★ | T ★ (pre-draft); G ★★ (pre-draft) | Grades better for T than G |
+| Ultimecia, Time Sorceress | ★ | ★ | T ★★ (pre-draft); G ◇ (pre-draft) | Real for both |
+| Visions of Beyond | ★ | ★★ |  |  |
+| Wasp, Shrinking Savior | △ | ◇ | T ◇ (pre-draft) |  |
+| Wrenn and Seven | ★★★ | ◇ |  |  |
+| Yawgmoth, Thran Physician | ★★★ | ◇ |  |  |
+
+### 12.7
+
+| Card | T | G | Changed from | Pile note |
+|---|---|---|---|---|
+| Altar of Dementia | ★ | ◇ |  |  |
+| Ashaya, Soul of the Wild | ◇ | △ | T △, G △ (pre-draft) |  |
+| Azula, Ruthless Firebender | ◇ | △ |  |  |
+| Bosco, Just a Bear | △ | △ |  |  |
+| Charix, the Raging Isle | △ | △ |  |  |
+| Cruel Somnophage // Can't Wake Up | ★ | ★ |  |  |
+| Didn't Say Please | △ | ★ |  |  |
+| Drana, the Last Bloodchief | ★ | ✗ |  |  |
+| Elrond, Moon-Reader | ★★★ | ★★ | T ★, G ★★ (pre-draft) | Strong Glarb add as well (★★); pile B is right. |
+| Fblthp, Lost on the Range | ◇ | ★ | G ★★ (pre-draft) |  |
+| Gale, Conduit of the Arcane | ◇ | ◇ |  |  |
+| Gisa, the Hellraiser | ★ | ★ |  |  |
+| Gonti, Canny Acquisitor | ◇ | ◇ | G ★★ (pre-draft) | Now ◇ for both — reads as Fits neither. |
+| High Perfect Morcant | ★★ | △ | T ★, G ◇ (pre-draft) |  |
+| Invasion of Ikoria // Zilortha, Apex of Ikoria | ★★ | ◇ | G ★ (pre-draft) |  |
+| Jace Reawakened | ★ | ★ | T ◇, G ★ (pre-draft) |  |
+| Jin-Gitaxias // The Great Synthesis | ◇ | ★★ |  |  |
+| Kaervek, the Punisher | ★ | ★ | G ◇ (pre-draft) | ★ in both — could sit in pile B. |
+| Kefnet the Mindful | ◇ | ★ |  |  |
+| Kira, Great Glass-Spinner | ◇ | ◇ |  |  |
+| Krang & Shredder | ◇ | ★ | G ★★ (pre-draft) |  |
+| Lazav, the Multifarious | ★★ | ◇ |  |  |
+| Liliana, Death Mage | ★★ | ★ |  |  |
+| Lulu, Stern Guardian | ◇ | ◇ | T △, G △ (pre-draft) |  |
+| Marit Lage's Slumber | ✗ | ✗ |  |  |
+| Mindlink Mech | △ | ✗ | T ✗ (pre-draft) |  |
+| Murderous Rider // Swift End | ★★ | ★★ |  |  |
+| Nashi, Moon's Legacy | ★★★ | ◇ |  |  |
+| Oasis of Renewal | ★★★ | ◇ | T ★★, G ◇ (pre-draft) |  |
+| Orvar, the All-Form | △ | △ |  |  |
+| Pongify | ★ | ★ |  |  |
+| Prototype X-8 | ★★ | △ | T ★ (pre-draft) | Swap candidate for Thranduil. |
+| Riverchurn Monument | ◇ | ★★ |  |  |
+| Sarulf, Realm Eater | △ | ◇ | T ◇, G ★ (pre-draft) | Now △/◇ — reads as Fits neither. |
+| Sheoldred's Edict | ★ | ★ |  |  |
+| Slimefoot, Thallid Transplant | ★ | ◇ | T ◇ (pre-draft) |  |
+| Talisman of Resilience | △ | △ |  |  |
+| Teferi, Temporal Pilgrim | ◇ | ★★ | G ★ (pre-draft) |  |
+| The Ancient One | ★★ | ★ |  |  |
+| The Theorist, Jace Beleren | ★ | ★★ |  |  |
+| Tome of the Infinite | △ | ◇ |  |  |
+| Unctus, Grand Metatect | ◇ | ★ | G ◇ (pre-draft) |  |
+| Vivien, Monsters' Advocate | ★★ | △ |  | Graded ★★ T vs △ G — belongs in Thranduil's pile. |
+| Whisper, Blood Liturgist | ★ | ✗ | T ◇ (pre-draft) |  |
+| Xanathar, Guild Kingpin | ◇ | ★ | G ★★ (pre-draft) |  |
+| Ygra, Eater of All | ◇ | △ | G ◇ (pre-draft) |  |
