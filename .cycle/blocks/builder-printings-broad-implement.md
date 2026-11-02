@@ -9,7 +9,7 @@ CHANGES:
 - The owner's exclusion (the borderless "see-through text box" treatment of the same art) is satisfied by `unique:art`: same illustration collapses to one entry. Checked on the Sultai pile: every remaining borderless print is a different illustration by a different artist.
 
 MEASURED: 111 of 426 Sultai cards have alternate artworks; 261 artworks in all; max 6 for one card. Fetch ~20 s once, then cached.
-TEST RESULTS: builder tests pass (new: fetched once and cached, one-art cards dropped, treatments filtered, unique:art in the query; offline render reads the cache and attaches `al` without network); check_all OK; check_docs OK; full suite — see the commit. Chromium walk: ⧉3 row tag, 3 thumbnails, enlarge dialog with caption, Escape closes, no script errors.
+TEST RESULTS: builder tests pass (new: fetched once and cached, one-art cards dropped, treatments filtered, unique:art in the query; offline render reads the cache and attaches `al` without network); check_all OK; check_docs OK; full pytest suite passed (rc=0). Chromium walk: ⧉3 row tag, 3 thumbnails, enlarge dialog with caption, Escape closes, no script errors.
 REGRESSION RISKS: a new set adds artworks the cache does not know until the next online render (`builder.py render <slug> --target pages|artifact` without --no-images) refreshes missing names; existing names are not re-queried — delete printings.json to force a full refresh.
 NET SCORE: 0 − 0 = 0 (new capability).
 DEPLOY: claude.ai board republished (v19). Pages picks it up on the next merge to main.
