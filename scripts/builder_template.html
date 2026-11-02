@@ -191,6 +191,12 @@ dialog#artzoom::backdrop{background:rgba(0,0,0,.72)}
 .cmpcol{min-width:0;display:flex;flex-direction:column;gap:8px}
 .cmpcol h3{margin:0;font-family:var(--display);font-weight:400;font-size:1.05rem;letter-spacing:.03em;color:var(--dc,var(--ink))}
 .cmpcol .rows{max-height:calc(100vh - 230px);overflow:auto}
+/* one deck: verdict sections in the candidate column, the header pinned while its cards scroll */
+.vsec{position:sticky;top:0;z-index:2;background:var(--raise);border-bottom:1px solid var(--line)}
+.vsechd{all:unset;box-sizing:border-box;display:flex;align-items:center;gap:8px;width:100%;padding:6px 10px;cursor:pointer;font:600 .8rem/1.3 var(--ui);letter-spacing:.04em;color:var(--ink)}
+.vsechd .n{margin-left:auto;font:500 .74rem/1 var(--mono);color:var(--muted)}
+.vsechd .caret{width:1em;color:var(--muted)}
+.vsechd:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
 @media (max-width:1000px){ .seg{display:inline-flex} .cmpcols{grid-template-columns:minmax(0,1fr)} .cmpcols[data-side="L"] .cmpcol[data-side="R"],.cmpcols[data-side="R"] .cmpcol[data-side="L"]{display:none} .cmpcol .rows{max-height:none} }
 /* mana curve, now vs after */
 .curve{background:var(--raise);border-left:2px solid var(--dc);border-radius:4px;padding:8px 10px}
@@ -491,7 +497,7 @@ document.getElementById("vf").innerHTML = `<option value="all">Any</option>`+(ON
     return `<optgroup label="${l}">${VFOPTS.map(([w,t])=>`<option value="${esc(k)}|${w}">${l}: ${t}</option>`).join("")}</optgroup>`; }).join(""));
 document.getElementById("df").innerHTML = `<option value="all">Any</option>`+(ONE ? `<option value="${esc(K1)}">Undecided</option>`
   : DK.map(k=>`<option value="${esc(k)}">Undecided for ${esc(DECKS[k].label)}</option>`).join("")+`<option value="any">Undecided for any deck</option>`);
-document.getElementById("sort").insertAdjacentHTML("beforeend", DK.map(k=>`<option value="v:${esc(k)}">${ONE?"Verdict":`Verdict — ${esc(DECKS[k].label)}`}</option>`).join(""));
+if(!ONE) document.getElementById("sort").insertAdjacentHTML("beforeend", DK.map(k=>`<option value="v:${esc(k)}">Verdict — ${esc(DECKS[k].label)}</option>`).join(""));   // one deck: the verdict sections order it
 let picks = {}, reasons = {}, requests = {};
 let db = null, canWrite = true, view = PILEKEYS[0]||"lists", VISIBLE = [], SEL = null, NOTEOPEN = null, NOTECOL = "";
 /* Choosing cuts: CUTOPEN = "<card id>|<deck>" whose cut list is open in the pane; CUTQ its search.
@@ -511,7 +517,17 @@ function toggleTheme(){ const next=effectiveTheme()==="dark"?"light":"dark"; doc
   const p=readJSON("mtga-prefs"); p.theme=next; try{ localStorage.setItem("mtga-prefs",JSON.stringify(p)); }catch(e){} paintThemeBtn(); }
 const PREFS = readJSON("builder-prefs");
 let PANE = PREFS.pane!=="closed";
-function savePrefs(){ try{ localStorage.setItem("builder-prefs",JSON.stringify({pane:PANE?"open":"closed"})); }catch(e){} }
+/* One deck: Compare's candidate column is grouped by the deck's verdict, best first, ungraded
+   cards before ✗, and ✗ starts collapsed — the reject pile is there when you open it. */
+const VNONE = "–";
+let VCOLL = new Set(Array.isArray(PREFS.vcoll) ? PREFS.vcoll : ["✗"]);
+function savePrefs(){ try{ localStorage.setItem("builder-prefs",JSON.stringify({pane:PANE?"open":"closed", vcoll:[...VCOLL]})); }catch(e){} }
+const vBand = (c,k) => { const m=(c.vd||{})[k]; return VORDER.includes(m) ? m : VNONE; };
+function verdictSections(xs, k){ const order=[...VORDER.filter(m=>m!=="✗"), VNONE, ...VORDER.filter(m=>m==="✗")], by={};
+  xs.forEach(c=>{ const b=vBand(c,k); (by[b]=by[b]||[]).push(c); });
+  return order.filter(m=>by[m]).map(m=>({m, cards:by[m]})); }
+/* Open the section a card sits in, so a jump to it can land. */
+function revealCand(id){ const c=BYID[id]; if(c&&VCOLL.delete(vBand(c,K1))) savePrefs(); }
 function applyPane(){ const con=document.getElementById("console"), b=document.getElementById("panebtn");
   con.classList.toggle("nopane",!PANE); b.setAttribute("aria-expanded",String(PANE)); b.textContent=PANE?"Hide card pane":"Show card pane"; b.title=(PANE?"Hide":"Show")+" the card pane (p)"; if(PANE) hidePeek(); }
 function togglePane(){ PANE=!PANE; savePrefs(); applyPane(); }
@@ -907,9 +923,10 @@ function updateTabCounts(){
 const hideApplied = c => document.getElementById("hideapplied").checked && hasApplied(c.id) && !pending(c.id).some(v=>deckOfPick(v)) && c.id!==SEL;
 const cmpPileOk = (c,k) => CMP.pile==="all" ? true : CMP.pile==="need" ? needsCut(c.id,k) : c.p===CMP.pile;
 function cmpLists(){ const k=CMP.deck, d=DECKS[k];
-  if(ONE){ const q=toolbarQ(), L=toolbarFilter(CARDS.filter(c=>c.p&&cmpPileOk(c,k)&&!c["i"+k]));
+  if(ONE){ const q=toolbarQ(), all=toolbarFilter(CARDS.filter(c=>c.p&&cmpPileOk(c,k)&&!c["i"+k]));
+    const secs=verdictSections(all,k), grouped=secs.length>1, L=grouped?secs.flatMap(s=>VCOLL.has(s.m)?[]:s.cards):all;
     const R=[...d.list.filter(x=>!x.prot),...d.list.filter(x=>x.prot)].map(x=>BYID[slug(x.n)]).filter(c=>c&&textHit(c,q));
-    COLIDS={L:L.map(c=>c.id),R:R.map(c=>c.id)}; return {L,R}; }
+    COLIDS={L:L.map(c=>c.id),R:R.map(c=>c.id)}; return {L,R,all,secs:grouped?secs:null}; }
   const q=CMP.q.trim().toLowerCase(), pileOk = c => cmpPileOk(c,k);
   const L=CARDS.filter(c=>c.p&&pileOk(c)&&!c["i"+k]&&!hideApplied(c)&&(!q||c.n.toLowerCase().includes(q)||(c.x||"").toLowerCase().includes(q)||(c.t||"").toLowerCase().includes(q)))
     .sort((a,b)=>gk(a).localeCompare(gk(b))||a.n.localeCompare(b.n));
@@ -939,15 +956,17 @@ function compareHTML(){ const k=CMP.deck, d=DECKS[k];
   <div class="cmpcols" id="cmpcols" data-side="${CMP.side}">
     <section class="cmpcol" data-side="L" aria-label="Pile cards not in ${esc(d.label)}"><h3 id="cmph-L"></h3><div class="rows" id="cmprows-L" role="list" aria-labelledby="cmph-L"></div></section>
     <section class="cmpcol" data-side="R" style="--dc:${d.dc}" aria-label="${esc(d.label)}'s current list"><h3 id="cmph-R"></h3><div id="cmpsum"></div><div class="rows" id="cmprows-R" role="list" aria-labelledby="cmph-R"></div></section></div>`; }
-function paintCompareRows(){ if(view!=="compare") return; const {L,R}=cmpLists(), k=CMP.deck, d=DECKS[k], had=document.activeElement&&document.activeElement.closest&&document.activeElement.closest(".cmpcol .rw");
+function vsecHTML(s){ const open=!VCOLL.has(s.m), lab=s.m===VNONE?"No verdict yet":`${s.m} ${VLAB[s.m]||""}`;
+  return `<div class="vsec" role="listitem"><button type="button" class="vsechd" data-vsec="${esc(s.m)}" aria-expanded="${open}"><span class="caret" aria-hidden="true">${open?"▾":"▸"}</span>${esc(lab)}<span class="n">${s.cards.length}</span></button></div>${open?s.cards.map(c=>rowHTML(c,"L")).join(""):""}`; }
+function paintCompareRows(){ if(view!=="compare") return; const {L,R,all,secs}=cmpLists(), k=CMP.deck, d=DECKS[k], had=document.activeElement&&document.activeElement.closest&&document.activeElement.closest(".cmpcol .rw");
   const hl=document.getElementById("cmph-L"), hr=document.getElementById("cmph-R"); if(!hl) return;
-  hl.textContent=`${CMP.pile==="all"?"All piles":CMP.pile==="need"?"Adds with no cut yet":(PILEDEFS.find(p=>p.k===CMP.pile)||{}).label} · ${L.length} not in ${d.label}`;
+  hl.textContent=`${CMP.pile==="all"?"All piles":CMP.pile==="need"?"Adds with no cut yet":(PILEDEFS.find(p=>p.k===CMP.pile)||{}).label} · ${(all||L).length} not in ${d.label}`;
   hr.textContent=`${d.label} · ${d.list.length} nonland cards, weakest fit first`;
   [["L",L],["R",R]].forEach(([col,xs])=>{ const el=document.getElementById("cmprows-"+col), st=el.scrollTop;
-    el.innerHTML=xs.length?xs.map(c=>rowHTML(c,col)).join(""):`<p class="empty">No cards match.</p>`; el.scrollTop=st; });
+    el.innerHTML = col==="L"&&secs ? secs.map(vsecHTML).join("") : xs.length?xs.map(c=>rowHTML(c,col)).join(""):`<p class="empty">No cards match.</p>`; el.scrollTop=st; });
   document.getElementById("cmpsum").innerHTML=cmpSummaryHTML(k);
   if(ONE){ const pool=CARDS.filter(c=>c.p&&cmpPileOk(c,k)&&!c["i"+k]), dn=pool.filter(decidedInPile).length;
-    document.getElementById("count").textContent=`${L.length} shown · ${dn}/${pool.length} decided`; }
+    const hid=(all||L).length-L.length; document.getElementById("count").textContent=`${L.length} shown${hid?` (+${hid} collapsed)`:""} · ${dn}/${pool.length} decided`; }
   const fid=ACTIVECOL==="R"&&INSPECT?INSPECT:SEL; if(had&&fid){ const m=mainEl(fid,ACTIVECOL); if(m) m.focus({preventScroll:true}); } }
 function refreshView(id){ if(isPileView(view)) refreshRow(id); else if(view==="compare"){ paintCompareRows(); updateTabCounts(); renderDetail(); renderDecks(); } else { render(); renderDecks(); } }
 function filtered(){ return toolbarFilter(CARDS.filter(c=>c.p===view)); }
@@ -1079,7 +1098,9 @@ document.addEventListener("click",e=>{
   const cs=e.target.closest("[data-cutset]"); if(cs){ const [id,k]=cs.dataset.cutset.split("|"), inSheet=!!cs.closest("#sheet"); if(cs.dataset.cut) CUTOPEN=null; setPair(id,k,cs.dataset.cut);
     const again=document.querySelector(`${inSheet?"#sheetbody":"#detail"} [data-cutopen="${id}|${k}"]`); if(again) again.focus(); return; }
   if(e.target.closest("[data-inspclose]")){ INSPECT=null; if(ACTIVECOL==="R") ACTIVECOL="L"; paintCompareRows(); renderDetail(); const m=mainEl(SEL,"L"); if(m) m.focus(); return; }
-  const pk=e.target.closest("[data-pkgsel]"); if(pk){ const id=pk.dataset.pkgsel; if(!COLIDS.L.includes(id)){ CMP.pile="all"; CMP.q=""; render(); } select(id,true,"L"); const m=mainEl(id,"L"); if(m) m.focus(); return; }
+  const vs=e.target.closest("[data-vsec]"); if(vs){ const m=vs.dataset.vsec; if(VCOLL.has(m)) VCOLL.delete(m); else VCOLL.add(m); savePrefs();
+    paintCompareRows(); if(ACTIVECOL!=="R") VISIBLE=COLIDS.L; const again=document.querySelector(`[data-vsec="${CSS.escape(m)}"]`); if(again) again.focus(); return; }
+  const pk=e.target.closest("[data-pkgsel]"); if(pk){ const id=pk.dataset.pkgsel; if(ONE) revealCand(id); if(!COLIDS.L.includes(id)){ CMP.pile="all"; CMP.q=""; render(); } select(id,true,"L"); const m=mainEl(id,"L"); if(m) m.focus(); return; }
   const pi=e.target.closest("[data-pkginsp]"); if(pi){ const id=pi.dataset.pkginsp; if(!COLIDS.R.includes(id)){ CMP.q=""; paintCompareRows(); } inspect(id,true); const m=mainEl(id,"R"); if(m) m.focus(); return; }
   const ab=e.target.closest("[data-art]"); if(ab){ openArt(ab.dataset.art, +ab.dataset.ai, ab); return; }
   if(e.target.id==="artclose"||e.target.id==="artzoom"){ const d=document.getElementById("artzoom"); d.close(); if(d._from&&document.contains(d._from)) d._from.focus(); return; }
@@ -1115,7 +1136,7 @@ document.addEventListener("click",e=>{
   if(e.target.id==="addcopy"){ const txt=Object.values(requests).map(r=>`${r.dest}: ${r.names.join("; ")}${r.note?" — "+r.note:""}`).join("\n");
     (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(()=>setAddStatus("Copied."),()=>setAddStatus("Copy was blocked; select the list instead.")); return; }
   const j=e.target.closest("[data-jump]"); if(j){ e.preventDefault(); const c=BYID[j.dataset.jump];
-    if(ONE){ CMP.pile="all"; if(c["i"+K1]){ setView("compare",true); inspect(c.id,true); } else { SEL=c.id; ACTIVECOL="L"; setView("compare",true); select(c.id,true,"L"); } return; }
+    if(ONE){ CMP.pile="all"; revealCand(c.id); if(c["i"+K1]){ setView("compare",true); inspect(c.id,true); } else { SEL=c.id; ACTIVECOL="L"; setView("compare",true); select(c.id,true,"L"); } return; }
     SEL=c.id; setView(c.p,true); select(c.id,true); return; }
   if(e.target.id==="copy"){ (navigator.clipboard?navigator.clipboard.writeText(copyText()):Promise.reject()).then(()=>document.getElementById("copied").textContent="Copied.",()=>document.getElementById("copied").textContent="Copy was blocked here; select the list above instead."); return; }
 });

@@ -526,3 +526,47 @@ class TestOneDeckMarkup:
         fn = SRC[SRC.index("function cmpSummaryHTML"):SRC.index("function cmpSummaryHTML") + 300]
         assert "if(ONE) return `${packageHTML(k)}${confHTML(k)}`" in fn
         assert "${ONE?`</div>${curveHTML(k)}</div>`" in SRC
+
+
+_HARNESS_SECTIONS = """
+const fs = require('fs');
+const VORDER = ["★★★","★★","★","◇","△","✗"];
+eval(fs.readFileSync(process.argv[2], 'utf8'));
+const xs = [{n:"a", vd:{G:"✗"}}, {n:"b"}, {n:"c", vd:{G:"★★"}}, {n:"d", vd:{G:"★★★"}},
+            {n:"e", vd:{G:"★★"}}, {n:"f", vd:{T:"★★★"}}, {n:"g", vd:{G:"?"}}];
+console.log(JSON.stringify(verdictSections(xs, "G").map(s => [s.m, s.cards.map(c => c.n)])));
+"""
+
+
+@pytest.mark.skipif(not _NODE, reason="node not installed (CI sets PYTEST_NO_SKIPS, so CI cannot skip)")
+class TestVerdictSections:
+    def test_best_first_ungraded_before_out_and_order_kept_inside(self):
+        """One deck: the candidate column is grouped by THIS deck's verdict, best first. A card
+        with no verdict (or another deck's, or an unknown mark) sits before ✗, so the reject
+        pile is last; inside a section the toolbar's sort order is kept; empty sections are
+        dropped."""
+        import tempfile
+        with tempfile.TemporaryDirectory() as td:
+            js = os.path.join(td, "fns.js")
+            with open(js, "w", encoding="utf-8") as f:
+                f.write(_extract_consts(["VNONE", "vBand"]) + "\n" + _extract(["verdictSections"]))
+            h = os.path.join(td, "h.js")
+            with open(h, "w", encoding="utf-8") as f:
+                f.write(_HARNESS_SECTIONS)
+            out = json.loads(subprocess.run([_NODE, h, js], capture_output=True, text=True,
+                                            check=True).stdout)
+        assert out == [["★★★", ["d"]], ["★★", ["c", "e"]], ["–", ["b", "f", "g"]], ["✗", ["a"]]]
+
+
+class TestVerdictSectionMarkup:
+    def test_out_starts_collapsed_and_the_choice_is_remembered(self):
+        assert 'let VCOLL = new Set(Array.isArray(PREFS.vcoll) ? PREFS.vcoll : ["✗"]);' in SRC
+        fn = SRC[SRC.index("function savePrefs"):SRC.index("function savePrefs") + 200]
+        assert "vcoll:[...VCOLL]" in fn
+
+    def test_a_collapsed_section_is_not_shown_so_keys_and_bulk_marks_skip_it(self):
+        # COLIDS.L is what j/k walk and what a bulk mark covers; it must leave collapsed cards out
+        assert "L=grouped?secs.flatMap(s=>VCOLL.has(s.m)?[]:s.cards):all" in SRC
+
+    def test_jumps_open_the_section_first(self):
+        assert SRC.count("revealCand(") >= 3      # the definition, the package link, Your picks
