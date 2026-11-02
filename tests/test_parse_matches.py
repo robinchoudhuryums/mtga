@@ -2471,3 +2471,169 @@ class TestBatch7MatchRecordFixes:
         rec = {"name": "Bear-Wolf — x", "variant": "a"}
         assert (pm._adopted_name("69a Bear-Wolf: Ursa Major", rec, "Bear-Wolf")
                 == "Bear-Wolf — Ursa Major")
+
+
+# ── Suggested loss reasons (Batch D, 2026-11-02) ─────────────────────────────────────
+#
+# Match-digest decision 2: a heuristic `Suggested Why` that reaches `Loss Reason` only
+# when the owner accepts it. The three rules were registered on 2026-09-25, before any
+# data, and each is pinned at, under and over its threshold.
+
+def _zone(zid, ty, ids, owner=None):
+    z = {"zoneId": zid, "type": ty, "visibility": "Visibility_Public"}
+    if owner:
+        z["ownerSeatId"] = owner
+    if ids:
+        z["objectInstanceIds"] = list(ids)
+    z["viewers"] = [1, 2]
+    return z
+
+
+def _land_game(mid="m-z", plays=(2, 4), last_turn=8, winner=1):
+    """Seat 2 on the draw (seat 1 first), 4 lands and 3 spells in hand. `plays` names the
+    global turn numbers on which seat 2 plays its next land. Returns the log lines."""
+    me, opp = 2, 1
+    land = lambda i: _obj(i, 105179, me, ["CardType_Land"])          # noqa: E731
+    spell = lambda i: _obj(i, 97950, me, ["CardType_Creature"], RED_GREEN)  # noqa: E731
+    hand = [100, 101, 102, 103, 104, 105, 106]
+    lands = [100, 101, 102, 103]
+    lines = [_header(date="9/27/2026", time="9:50:18 AM"),
+             _gre([me], {"type": "GameStateType_Full", "gameInfo": _ginfo(mid),
+                         "players": _players(), "turnInfo": {"decisionPlayer": 1},
+                         "zones": [_zone(28, "ZoneType_Battlefield", []),
+                                   _zone(31, "ZoneType_Hand", hand, me)],
+                         "gameObjects": [land(i) for i in lands]
+                         + [spell(i) for i in (104, 105, 106)]})]
+    bf = []
+    for n in range(1, last_turn + 1):
+        zones = []
+        if n in plays and lands:
+            nxt = lands.pop(0)
+            bf.append(nxt)
+            hand.remove(nxt)
+            zones = [_zone(28, "ZoneType_Battlefield", bf), _zone(31, "ZoneType_Hand", hand, me)]
+        lines.append(_gre([me], {"type": "GameStateType_Diff", "players": _players(),
+                                 "turnInfo": {"turnNumber": n,
+                                              "activePlayer": opp if n % 2 else me},
+                                 "zones": zones}))
+    res = [{"scope": "MatchScope_Game", "result": "ResultType_WinLoss",
+            "winningTeamId": winner, "reason": "ResultReason_Concede"}]
+    lines.append(_gre([me], {"type": "GameStateType_Full", "gameInfo": _ginfo(mid, res),
+                             "players": _players(None, (7, 20)),
+                             "turnInfo": {"turnNumber": last_turn, "activePlayer": me}}))
+    return lines
+
+
+class TestTheExtractorCountsLands:
+    def test_lands_per_turn_and_cards_seen_read_zone_membership(self, tmp_path):
+        """Four copies of one land are four lands here, where the card list keeps one
+        entry per grpId — which is why the land counts cannot come from "cards"."""
+        fact = pm.parse_game_facts(_extract(tmp_path, _land_game()))[0]["m-z"][0]
+        assert fact["lands"]["2"] == "0,1,1,2,2,2,2,2"
+        assert fact["seen"]["2"] == "4/7"
+        assert fact["cards"] == ["2:105179:L", "2:97950:RG"]   # still one per grpId
+
+
+def _g(seat=2, first=1, turns=8, winner=1, mull=0, lands="0,1,1,2,2,2,2,2", seen="4/7"):
+    g = {"matchId": "m-1", "game": 1, "seat": seat, "first": first, "turns": turns,
+         "winner": winner, "mulligans": {"1": 0, str(seat): mull},
+         "teams": {"1": 1, "2": 2}, "cards": []}
+    if lands is not None:
+        g["lands"] = {str(seat): lands}
+    if seen is not None:
+        g["seen"] = {str(seat): seen}
+    return g
+
+
+class TestSuggestionRules:
+    def test_keep_fires_at_five_cards_and_not_at_six(self):
+        assert pm.suggest_loss_reason([_g(mull=2, lands=None, seen=None)]).startswith(
+            "keep (mulliganed to 5")
+        assert pm.suggested_word(pm.suggest_loss_reason(
+            [_g(mull=1, lands=None, seen=None)])) == "none"
+
+    def test_screw_reads_my_fourth_turn_on_the_draw_and_on_the_play(self):
+        # On the draw my 4th turn is global turn 8: 2 lands there is screw, 3 is not.
+        assert pm.suggest_loss_reason([_g()]).startswith("screw (2 land(s)")
+        assert pm.suggested_word(pm.suggest_loss_reason(
+            [_g(lands="0,1,1,2,2,2,2,3")])) == "none"
+        # On the play it is global turn 7.
+        assert pm.suggested_word(pm.suggest_loss_reason(
+            [_g(first=2, lands="1,1,2,2,2,2,2,3")])) == "screw"
+
+    def test_screw_needs_the_game_to_reach_my_fourth_turn(self):
+        assert pm.suggested_word(pm.suggest_loss_reason(
+            [_g(turns=7, lands="0,1,1,2,2,2,2")])) == "none"
+
+    def test_flood_at_sixty_percent_over_seven_of_my_turns(self):
+        lands = ",".join(str(min(n, 9)) for n in range(1, 17))
+        assert pm.suggest_loss_reason([_g(turns=16, lands=lands, seen="9/15")]).startswith(
+            "flood (9 of 15")
+        assert pm.suggested_word(pm.suggest_loss_reason(
+            [_g(turns=16, lands=lands, seen="8/15")])) == "none"       # 53%
+        assert pm.suggested_word(pm.suggest_loss_reason(
+            [_g(turns=13, lands=lands[:26], seen="9/15")])) == "none"  # 6 of my turns
+
+    def test_a_win_gets_no_suggestion(self):
+        assert pm.suggest_loss_reason([_g(winner=2)]) == ""
+
+    def test_an_old_game_line_says_what_it_could_not_read(self):
+        cell = pm.suggest_loss_reason([_g(lands=None, seen=None)])
+        assert cell.startswith("none (") and "screw and flood not readable" in cell
+
+
+class TestSuggestionsAreWrittenButNeverConfirmed:
+    def _row(self, result="L", why="", sug=""):
+        r = {c: "" for c in pm.HEADER}
+        r.update({"Date": "2026-11-01", "Match ID": "m-1", "Deck": "7", "Result": result,
+                  "Loss Reason": why, "Suggested Why": sug})
+        return r
+
+    def test_a_loss_gets_a_suggestion_and_its_loss_reason_stays_blank(self):
+        row = self._row()
+        pm.apply_game_details({"m-1": row}, {"m-1": [_g()]}, {})
+        assert pm.suggested_word(row["Suggested Why"]) == "screw"
+        assert row["Loss Reason"] == ""
+
+    def test_a_win_and_an_existing_suggestion_are_left_alone(self):
+        win, kept = self._row(result="W"), self._row(sug="flood (by hand)")
+        pm.apply_game_details({"m-1": win}, {"m-1": [_g(winner=2)]}, {})
+        pm.apply_game_details({"m-1": kept}, {"m-1": [_g()]}, {})
+        assert win["Suggested Why"] == "" and kept["Suggested Why"] == "flood (by hand)"
+
+    def test_accept_is_a_dry_run_then_writes_through_annotate(self, tmp_path):
+        csvp = str(tmp_path / "m.csv")
+        rows = [self._row(sug="screw (2 land(s) in play at the end of my turn 4)")]
+        rows.append(dict(self._row(sug="none (no rule fired)"), **{"Match ID": "m-2"}))
+        pm.write_matches(rows, csvp)
+        pm.accept([], csvp, apply=False)
+        assert pm.load_matches(csvp)[0]["Loss Reason"] == ""
+        pm.accept([], csvp, apply=True)
+        got = {r["Match ID"]: r["Loss Reason"] for r in pm.load_matches(csvp)}
+        assert got == {"m-1": "screw", "m-2": ""}       # "none" is never accepted
+
+    def test_agreement_counts_hits_and_misses(self):
+        rows = [self._row(why="screw", sug="screw (x)"),
+                self._row(why="flood", sug="screw (x)"),
+                self._row(why="keep", sug="none (no rule fired)"),
+                self._row(why="screw")]                       # never evaluated: excluded
+        stats, n = pm.suggestion_agreement(rows)
+        assert n == 3
+        assert stats["screw"] == (2, 1, 0) and stats["keep"] == (0, 0, 1)
+
+    def test_an_earlier_matches_csv_without_the_column_still_writes(self, tmp_path):
+        csvp = tmp_path / "m.csv"
+        old = [c for c in pm.HEADER if c != "Suggested Why"]
+        csvp.write_text(",".join(old) + "\n", encoding="utf-8")
+        pm.write_matches([self._row()], str(csvp))
+        assert csvp.read_text(encoding="utf-8").splitlines()[0].endswith("Suggested Why")
+
+
+class TestNoZonesMeansNoLandCounts:
+    def test_a_log_without_zone_lists_records_blanks_not_zeroes(self, tmp_path):
+        """If Arena's zone lists ever stop parsing, a 0 would make every loss read as
+        `screw`; a blank reads as "not recorded" and the rule stays silent."""
+        fact = pm.parse_game_facts(_extract(tmp_path, _played(mull={2: 0})))[0]["m-1"][0]
+        assert set(fact["lands"]["2"]) <= {","} and fact["seen"]["2"] == ""
+        cell = pm.suggest_loss_reason([dict(fact, winner=1)])
+        assert cell.startswith("none (") and "not readable" in cell

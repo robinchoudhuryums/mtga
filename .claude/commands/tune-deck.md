@@ -82,6 +82,10 @@ Read the actual card text — never judge by mana value or a single subtype:
    confirmation from being cut as conditional while scoring fit 17 / power 2 / no
    detected role — its whole value was an interaction between three other cards. When
    a row says `free`, re-grade the card as if the clause were not there.
+   Its third block, LEGEND RULE, lists copy effects that keep legendary status: a
+   `⚠ legend rule` row copies from a pool that is mostly your own legends, so each copy
+   of one costs you a permanent. Read whether the card has other modes or targets before
+   treating that as a cut.
 
 2d. `python3 scripts/deck.py engines <id>` — enabler ↔ payoff balance (dead
    payoffs / under-enabled engine), and `python3 scripts/deck.py shape <id>` for

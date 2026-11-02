@@ -584,3 +584,52 @@ class TestSharedPileKeys:
             B.add_deck(one, "d2", key="B")                  # reserved even before the pile exists
         k = B.add_deck(one, "d2")
         assert k not in ("B", "N") and "B" in [p["key"] for p in one["piles"]]
+
+
+class TestBackFaces:
+    """A transform or modal DFC keeps each face's image under `card_faces`; the board
+    used to show only the front (2026-11-02)."""
+
+    def _fake(self, monkeypatch, calls):
+        import scryfall
+
+        def post_collection(names, **kw):
+            calls.append(list(names))
+            return {"data": [
+                {"name": "Rona, Herald of Invasion // Rona, Tolarian Obliterator",
+                 "card_faces": [{"image_uris": {"normal": "https://x/normal/front/r.jpg"}},
+                                {"image_uris": {"normal": "https://x/normal/back/r.jpg"}}]},
+                {"name": "Failure // Comply", "image_uris": {"normal": "https://x/normal/front/f.jpg"},
+                 "card_faces": [{}, {}]}]}
+        monkeypatch.setattr(scryfall, "post_collection", post_collection)
+
+    NAMES = ["Rona, Herald of Invasion // Rona, Tolarian Obliterator", "Failure // Comply", "Opt"]
+
+    def test_a_dfc_gets_its_back_and_a_split_card_is_cached_as_none(self, scratch, monkeypatch):
+        deck_path, _ = scratch
+        _new(deck_path)
+        calls = []
+        self._fake(monkeypatch, calls)
+        got = B.back_image_urls("t", self.NAMES)
+        assert got == {self.NAMES[0]: "https://x/normal/back/r.jpg"}
+        assert calls == [["Rona, Herald of Invasion", "Failure"]]      # "Opt" is not a candidate
+        cache = json.load(open(os.path.join(B.BUILDS_DIR, "t", "images.json")))
+        assert cache["back:Failure // Comply"] == ""                    # one image, both halves
+        calls.clear()
+        assert B.back_image_urls("t", self.NAMES) == got and calls == []   # cache only
+
+    def test_a_pages_render_carries_the_back_url(self, scratch, monkeypatch):
+        deck_path, tmp = scratch
+        b = _new(deck_path)
+        B.add_cards(b, [self.NAMES[0], "Opt"], pile="G")
+        B.save_build("t", b)
+        self._fake(monkeypatch, [])
+        B.back_image_urls("t", self.NAMES)
+        monkeypatch.setattr(B, "image_urls", lambda slug, names, fetch=True: {})
+        r = B.render("t", "pages", str(tmp / "out"), tempo=False, fetch=False)
+        import re as _re
+        s = open(r["page"], encoding="utf-8").read()
+        data = json.loads(_re.search(r'id="data">(.*?)</script>', s, _re.S).group(1).replace("<\\/", "</"))
+        by = {c["n"]: c for c in data["cards"]}
+        assert by[self.NAMES[0]]["im2"] == "https://x/normal/back/r.jpg"
+        assert "im2" not in by["Opt"]

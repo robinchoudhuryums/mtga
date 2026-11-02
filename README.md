@@ -504,11 +504,11 @@ python3 scripts/deck.py diff 20 20a   # what variant 20a changes vs base deck 20
 python3 scripts/deck.py arena 20a      # emit an Arena-importable decklist to paste back (a Brawl deck's commander goes under its own Commander heading, as Arena exports it)
 python3 scripts/deck.py stats 20a      # curve, colors, types, cost flags, roles + interaction profile + protection / tempo / hand-attack lines
 python3 scripts/deck.py mana 20a       # hybrid-aware color requirements + castability lint
-python3 scripts/deck.py consistency 20a # opening-hand keepable %, land drops, P(cast on curve) + source fix
+python3 scripts/deck.py consistency 20a # opening-hand keepable %, land drops, P(cast on curve) + source fix; a ◊ row's discount (convoke, affinity, "costs less") is not priced — it books the printed cost
 python3 scripts/deck.py consistency 20a --tempo # + a simulation of one land a turn and TAPPED lands: what the taplands cost on curve, per card and per turn (report-only; compare two manabases on scratch copies)
 python3 scripts/deck.py tribes 20a     # creature-subtype breakdown + type-matters synergies
 python3 scripts/deck.py engines 20a    # enabler ↔ payoff balance for the deck's engine themes
-python3 scripts/deck.py targets 20a    # TARGETS for its own gated effects (MV caps, sac costs) + STATE gates (dead / free / CONFLICT — an attacks-alone card in a go-wide deck)
+python3 scripts/deck.py targets 20a    # TARGETS for its own gated effects (MV caps, sac costs) + STATE gates (dead / free / CONFLICT — an attacks-alone card in a go-wide deck) + LEGEND RULE (copy effects vs a legend-heavy list)
 python3 scripts/deck.py suggest 20a --owned   # pool cards that fit; --owned = 0-wildcard upgrades
 python3 scripts/deck.py suggest 20a --lands --owned  # MANABASE recommender: owned lands that fix your colors (fixing + synergy + scarce-color nudges; any-colour lands and basic fetches included). A land ALREADY in the deck is a candidate — an `In` column shows the copies you run, since "play a second one of that untapped dual" is the commonest real manabase fix; only the format copy limit and basics are excluded.
 python3 scripts/deck.py suggest 20a --needs   # STRUCTURAL needs the theme model can't see: fixing · acceleration (--ramp) · interaction (--interaction, board-scalers flagged); its colour sources are the same count `consistency` prints
@@ -933,6 +933,26 @@ information. Delirium was worse than saturated: its proxy counted card types in 
 *deck* when the card asks about the *graveyard*, a bound any 60-card list clears. Lowering
 a band until a saturated family varies manufactures a signal rather than finding one, so
 those families were dropped instead.
+
+**Three more gate shapes are counted since 2026-11-02:**
+- "if at least N mana was spent to cast it": the deck's spells of that kind at mana value
+  N or more, with X spells listed beside the count;
+- "if you control a <creature type>": creatures of that type plus changelings;
+- "if it wasn't cast": cards that reanimate, cheat in, blink or cast for free, including a
+  card's own plot.
+
+The type-presence count is shown here only. On the recommenders (`swap`, `suggest`,
+`screen`) it mostly flagged cost reductions and riders, so it is left out there.
+
+**A third section reports the LEGEND RULE.** A copy of a legendary permanent you control is
+a second permanent of that name, and the legend rule makes you put one into the graveyard.
+So `targets` lists each copy effect that keeps legendary status, with how many of the
+other cards of the types it can copy are legendary, and flags `⚠ legend rule` at two in
+three or more. Copy effects that cannot collide (the copy is not legendary or takes
+another name, copies only nonlegendary creatures, copies tokens or a card off the
+battlefield, or copies only what an opponent controls) are listed on a "Not counted" line
+with the reason, and a card that turns the legend rule off for the whole deck (Sakashima)
+silences the flag. Across the roster it flags 8 of the 37 decks that run such an effect.
 
 **A deck line's printing is now checked.** `(SET)` and `COLLECTOR #` used to be read by
 nothing — a line naming a set code that does not exist passed `legal`, passed `check`
@@ -1695,7 +1715,20 @@ make log-match DECK=49 R=W APPLY=1                       # …and write it
 
 python3 scripts/parse_matches.py lines.txt --add --apply       # a whole session
 python3 scripts/parse_matches.py notes.txt --annotate --apply  # matches already logged
+python3 scripts/parse_matches.py --review                      # losses still without a reason
+python3 scripts/parse_matches.py --accept 1a2b3c4d --apply     # confirm a suggested reason
 ```
+
+**Suggested loss reasons.** A loss with game details gets a `Suggested Why` from three
+rules fixed before any data existed. `keep` fires when you mulliganed to 5 or fewer.
+`screw` fires when you had 2 or fewer lands in play at the end of your 4th turn. `flood`
+fires when lands were 60% or more of the cards you saw, over 7 or more of your turns. The
+suggestion never fills `Loss Reason` on its own. `--accept` (all suggestions, or the ids
+you name; dry run until `--apply`) confirms it through the `--annotate` writer, and a
+wrong one is corrected with `--annotate`. `--review` lists the unconfirmed losses and how
+often each rule has matched your own reason, and gives percentages only from 20 confirmed
+losses. `screw` and `flood` need the extractor from 2026-11-02, so re-install
+`extract.sh` from `/log-matches` Stage 0.
 
 `--add` takes `<deck> <W|L|D>` plus `opp= why= play= event= date= note=` and **appends**.
 `--annotate` takes `<matchId> opp= why= play= note=` and **updates in place**. Use the

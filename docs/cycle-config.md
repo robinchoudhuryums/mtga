@@ -475,6 +475,8 @@ data through it, never by a test.
   - `python3 scripts/parse_matches.py --report`
   - Re-run the same paste — nothing may change
   - Rename a deck in the Arena client, play one match, re-extract, re-run
+  - After a loss, `python3 scripts/parse_matches.py --review`: read its `Suggested Why`
+    against what you remember of the game (`--accept <id>` only if it is right)
 
 **Expected**
   - The dry run prints a `Deck attribution` block: every Arena deck name, the repo deck

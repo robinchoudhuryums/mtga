@@ -931,3 +931,27 @@ class TestTaplandKindSplitsByWhenTheConditionIsMet:
                   self.CHECK_TWO, self.LIFE, self.TYPE_GATE, self.SHOCK, self.FLAT):
             assert lib.tapland_kind(t) == lib.tapland_kind(t, None), t
 
+
+
+class TestFetchesWithNoManaOfTheirOwnReadTapped:
+    """Batch G (2026-11-02): a land whose only job is to fetch a basic that enters TAPPED
+    delivers its mana a turn late, like a tapland. Hobbit Hole scored as an untapped dual
+    in `suggest --lands` (11.5, no `·tapped`). Real oracle texts."""
+
+    EVOLVING = ("{T}, Sacrifice this land: Search your library for a basic land card, put it "
+                "onto the battlefield tapped, then shuffle.")
+    HOBBIT = ("{T}, Sacrifice this land: Search your library for a basic land card, put it "
+              "onto the battlefield tapped, then shuffle.\nHalflingcycling {4}")
+    FABLED = ("{T}, Sacrifice this land: Search your library for a basic land card, put it "
+              "onto the battlefield tapped, then shuffle. Then if you control four or more "
+              "lands, untap that land.")
+    LANDSCAPE = ("{T}: Add {C}.\n{1}, {T}, Sacrifice this land: Search your library for a "
+                 "basic Forest, Plains, or Island card, put it onto the battlefield tapped, "
+                 "then shuffle.")
+
+    def test_kinds(self):
+        from lib import tapland_kind
+        assert tapland_kind(self.EVOLVING) == "unconditional"
+        assert tapland_kind(self.HOBBIT) == "unconditional"
+        assert tapland_kind(self.FABLED) == "conditional"      # untaps with four lands
+        assert tapland_kind(self.LANDSCAPE) is None              # it taps for {C} now

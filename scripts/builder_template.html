@@ -208,6 +208,7 @@ dialog#artzoom::backdrop{background:rgba(0,0,0,.72)}
 .dimg{display:flex;align-items:center;gap:6px;justify-content:center}
 .dimg button.big{all:unset;cursor:zoom-in;display:block;max-width:320px;width:100%}
 .dimg button.big:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:12px}
+.flipline{display:flex;justify-content:center;margin:6px 0 0}
 .dimg img{width:100%;border-radius:12px;display:block;box-shadow:0 2px 10px rgba(0,0,0,.25)}
 .step{background:none;border:1px solid var(--line);border-radius:999px;width:30px;height:30px;cursor:pointer;color:var(--muted);flex:none;font-size:1.1rem;line-height:1}
 .dname{margin:0;font-family:var(--display);font-weight:400;font-size:1.3rem;letter-spacing:.03em;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
@@ -358,7 +359,7 @@ dialog#cmp::backdrop{background:rgba(0,0,0,.6)}
 <div id="peek" hidden aria-hidden="true"><img alt=""></div>
 <div id="toast" role="status" aria-live="polite" hidden></div>
 <dialog id="sheet" aria-label="Card detail"><div class="sheetbar"><span class="status">Card detail</span><button type="button" class="ghost" id="sheetclose">Close</button></div><div id="sheetbody"></div></dialog>
-<dialog id="zoom" aria-labelledby="zoomcap"><img id="zoomimg" alt=""><div class="zoombar"><button type="button" id="zoomprev" aria-label="Previous card">‹</button><span id="zoomcap"></span><button type="button" id="zoomnext" aria-label="Next card">›</button><button type="button" id="zoomclose">Close</button></div></dialog>
+<dialog id="zoom" aria-labelledby="zoomcap"><img id="zoomimg" alt=""><div class="zoombar"><button type="button" id="zoomprev" aria-label="Previous card">‹</button><span id="zoomcap"></span><button type="button" id="zoomnext" aria-label="Next card">›</button><button type="button" id="zoomflip" hidden aria-pressed="false">⟲ Flip</button><button type="button" id="zoomclose">Close</button></div></dialog>
 <dialog id="artzoom" aria-labelledby="artcap"><div id="artbig" role="img"></div><div class="zoombar"><span id="artcap"></span><button type="button" id="artclose">Close</button></div></dialog>
 <dialog id="cmp" aria-labelledby="cmptitle"><h3 id="cmptitle" class="cmplab" style="font-size:.8rem">Add vs cut</h3><div class="cmpgrid" id="cmpgrid"></div><button type="button" id="cmpclose" class="btn">Close</button></dialog>
 
@@ -376,10 +377,23 @@ const fmt = s => sym(esc(s).replace(/`([^`]+)`/g,"<code>$1</code>").replace(/\*\
 const plain = s => String(s||"").replace(/\*\*|`/g,"");
 
 /* Images: the artifact target ships files (img/ small, img/lg/ large); the Pages target hot-links Scryfall. */
-function imgSrc(c, size){ if(!c) return "";
-  if(META.img==="remote"){ const u=c.im||""; return size==="l"?u.replace("/normal/","/large/"):u; }
-  return "img/lg/"+c.id+".jpg"; }
-const fallbackOf = c => META.img==="remote" ? (c.im||"") : "";
+/* A two-faced card (transform / modal DFC) carries its BACK face too: `im2` on Pages,
+   `b2` when img/lg/<id>--back.jpg was shipped. FLIP holds the cards turned over; the pane
+   and the zoom view read it, every thumbnail stays on the front. */
+const FLIP = new Set();
+const hasBack = c => !!(c && (META.img==="remote" ? c.im2 : c.b2));
+const showBack = c => hasBack(c) && FLIP.has(c.id);
+function imgSrc(c, size, back){ if(!c) return "";
+  if(META.img==="remote"){ const u=(back&&c.im2)||c.im||""; return size==="l"?u.replace("/normal/","/large/"):u; }
+  return "img/lg/"+c.id+(back&&c.b2?"--back":"")+".jpg"; }
+const fallbackOf = (c, back) => META.img==="remote" ? ((back&&c.im2)||c.im||"") : "";
+const flipBtn = c => hasBack(c) ? `<button type="button" class="pb flip" data-flip="${c.id}" aria-pressed="${showBack(c)}">⟲ ${showBack(c)?"Show front face":"Show back face"}</button>` : "";
+/* Turn one card over everywhere it is showing large, without re-rendering anything. */
+function flipCard(id){ const c=BYID[id]; if(!hasBack(c)) return;
+  if(FLIP.has(id)) FLIP.delete(id); else FLIP.add(id); const b=showBack(c);
+  document.querySelectorAll(`img[data-face="${id}"]`).forEach(im=>{ im.dataset.fb=fallbackOf(c,b); im.src=imgSrc(c,"l",b); im.alt=c.n+(b?" (back face)":""); });
+  document.querySelectorAll(`[data-flip="${id}"]`).forEach(x=>{ x.setAttribute("aria-pressed",String(b)); x.textContent="⟲ "+(b?"Show front face":"Show back face"); });
+  const z=document.getElementById("zoom"); if(z.open&&z.dataset.from===id) showZoom(); }
 /* Row thumbnails: one sprite sheet on the artifact (a version holds at most 511 files), an <img> otherwise. */
 function thumb(c){ const S=META.sprite, i=S&&S.i?S.i[c.id]:undefined;
   if(i===undefined) return `<img src="${esc(imgSrc(c,"s"))}" alt="" loading="lazy" width="34" height="47">`;
@@ -610,8 +624,9 @@ function detailHTML(c, inSheet){
     return `<button type="button" class="pb" data-hid="${c.id}" data-role="${role}" aria-pressed="${on}" ${fromBuild?`disabled title="Recorded in the build"`:""}>Counts as ${role}${fromBuild?" ✓":""}</button>`; };
   const keys = DK.length>1 ? `<span>1</span>–<span>${DK.length}</span> decks` : `<span>1</span> deck`;
   return `<div class="dimg">${idx>-1&&VISIBLE.length>1?`<button type="button" class="step" data-step="-1" aria-label="Previous card">‹</button>`:""}
-      <button type="button" class="big" data-zoom="${c.id}" aria-label="Show ${esc(c.n)} full screen"><img src="${esc(imgSrc(c,"l"))}" data-fb="${esc(fallbackOf(c))}" alt="${esc(c.n)}"></button>
+      <button type="button" class="big" data-zoom="${c.id}" aria-label="Show ${esc(c.n)} full screen"><img src="${esc(imgSrc(c,"l",showBack(c)))}" data-face="${c.id}" data-fb="${esc(fallbackOf(c,showBack(c)))}" alt="${esc(c.n)}${showBack(c)?" (back face)":""}"></button>
       ${idx>-1&&VISIBLE.length>1?`<button type="button" class="step" data-step="1" aria-label="Next card">›</button>`:""}</div>
+    ${hasBack(c)?`<p class="flipline">${flipBtn(c)}</p>`:""}
     <h2 class="dname">${esc(c.n)} <span class="cost">${pips(c.c)}</span></h2>
     <p class="dtype">${esc(c.t)}${idx>-1?` · ${idx+1} of ${VISIBLE.length}`:""}</p>
     <div class="chips">${chips}</div>
@@ -635,7 +650,7 @@ function detailHTML(c, inSheet){
     <label class="field-l" for="n-${c.id}${sfx}">Note for Claude</label>
     <textarea class="note" id="n-${c.id}${sfx}" data-id="${c.id}" rows="2" placeholder="A question, a hunch, a combo to check">${esc(p.note||"")}</textarea>
     <span class="saved" data-saved="${c.id}" aria-live="polite"></span>
-    ${inSheet?"":`<p class="kbd"><span>j</span><span>k</span> move · ${keys} · <span>b</span> bench · <span>o</span> keep out (this pile's deck; every deck on a shared pile) · <span>n</span> note · <span>p</span> pane · <span>u</span> undo · <span>t</span> theme · <span>/</span> search · <span>z</span> zoom</p>`}`;
+    ${inSheet?"":`<p class="kbd"><span>j</span><span>k</span> move · ${keys} · <span>b</span> bench · <span>o</span> keep out (this pile's deck; every deck on a shared pile) · <span>n</span> note · <span>p</span> pane · <span>u</span> undo · <span>t</span> theme · <span>/</span> search · <span>z</span> zoom${hasBack(c)?` · <span>f</span> flip`:""}</p>`}`;
 }
 function renderDetail(){ const c=BYID[SEL], x=view==="compare"&&INSPECT?BYID[INSPECT]:null;
   document.getElementById("detail").innerHTML=detailHTML(c,false)+(x?inspectHTML(x):"");
@@ -676,7 +691,7 @@ function artsHTML(c){ const al=c.al||[]; if(al.length<2) return "";
     <div class="artgrid">${al.map((p,i)=>`<button type="button" class="artbtn" data-art="${c.id}" data-ai="${i}" aria-label="Enlarge: ${esc(artLabel(p))}">${artThumb(c,p)}<span><b>${esc(p.set)} #${esc(p.cn)}</b> · ${esc(p.r)}${p.y?` · ${esc(p.y)}`:""}${(p.fx||[]).length?`<br>${esc(p.fx.join(", "))}`:""}</span></button>`).join("")}</div></details>`; }
 function openArt(id,i,from){ const c=BYID[id], p=(c&&c.al||[])[i]; if(!p) return;
   if(META.img==="remote"){ const im=document.getElementById("zoomimg"); ZLIST=[id]; ZI=0; im.dataset.fb=p.im; im.src=(p.im||"").replace("/normal/","/large/"); im.alt=`${c.n} — ${artLabel(p)}`;
-    document.getElementById("zoomcap").textContent=`${c.n} · ${artLabel(p)}`; document.getElementById("zoomprev").hidden=document.getElementById("zoomnext").hidden=true;
+    document.getElementById("zoomcap").textContent=`${c.n} · ${artLabel(p)}`; document.getElementById("zoomprev").hidden=document.getElementById("zoomnext").hidden=true; document.getElementById("zoomflip").hidden=true;
     const d=document.getElementById("zoom"); d._from=from; if(!d.open&&d.showModal) d.showModal(); return; }
   const big=document.getElementById("artbig");
   big.setAttribute("aria-label",`${c.n} — ${artLabel(p)}`); document.getElementById("artcap").textContent=`${c.n} · ${artLabel(p)}`;
@@ -931,7 +946,8 @@ function fromHash(){ const p=PILES.find(p=>"#"+p.hash===location.hash); setView(
 
 /* ---------- zoom, compare, sheet ---------- */
 let ZLIST=[], ZI=0;
-function showZoom(){ const c=BYID[ZLIST[ZI]], im=document.getElementById("zoomimg"); im.dataset.fb=fallbackOf(c); im.src=imgSrc(c,"l"); im.alt=c.n;
+function showZoom(){ const c=BYID[ZLIST[ZI]], im=document.getElementById("zoomimg"), b=showBack(c); im.dataset.fb=fallbackOf(c,b); im.src=imgSrc(c,"l",b); im.alt=c.n+(b?" (back face)":"");
+  const fb=document.getElementById("zoomflip"); fb.hidden=!hasBack(c); fb.setAttribute("aria-pressed",String(b)); fb.textContent=b?"⟲ Front face":"⟲ Back face";
   document.getElementById("zoomcap").textContent=c.n+(ZLIST.length>1?` · ${ZI+1} of ${ZLIST.length}`:"");
   document.getElementById("zoomprev").hidden=document.getElementById("zoomnext").hidden=ZLIST.length<2; document.getElementById("zoom").dataset.from=c.id; }
 function openZoom(id,list){ ZLIST=(list&&list.includes(id))?list.slice():[id]; ZI=ZLIST.indexOf(id); showZoom(); const d=document.getElementById("zoom"); if(!d.open&&d.showModal) d.showModal(); }
@@ -1033,6 +1049,8 @@ document.addEventListener("click",e=>{
   const st=e.target.closest("[data-step]"); if(st){ const i=VISIBLE.indexOf(SEL), n=VISIBLE[(i+ +st.dataset.step+VISIBLE.length)%VISIBLE.length]; if(n){ select(n,true); const s2=document.querySelector(`#detail [data-step="${st.dataset.step}"]`); if(s2) s2.focus(); } return; }
   const z=e.target.closest("[data-zoom]"); if(z){ openZoom(z.dataset.zoom, z.closest(".dlist")?null:VISIBLE); return; }
   if(e.target.id==="zoomprev"||e.target.id==="zoomnext"){ stepZoom(e.target.id==="zoomnext"?1:-1); return; }
+  if(e.target.id==="zoomflip"){ flipCard(document.getElementById("zoom").dataset.from); return; }
+  const fl=e.target.closest("[data-flip]"); if(fl){ flipCard(fl.dataset.flip); return; }
   if(e.target.id==="zoomclose"||e.target.id==="zoom"){ const d=document.getElementById("zoom"); d.close(); if(d._from&&document.contains(d._from)){ d._from.focus(); d._from=null; } return; }
   const cm=e.target.closest("[data-cmp]"); if(cm){ openCompare(cm.dataset.cmp,cm.dataset.cut,cm); return; }
   if(e.target.id==="cmpclose"||e.target.id==="cmp"){ const d=document.getElementById("cmp"); d.close(); if(d._from&&document.contains(d._from)) d._from.focus(); return; }
@@ -1080,7 +1098,8 @@ rowsEl.addEventListener("focusout",e=>{ if(!rowsEl.contains(e.relatedTarget)) hi
 window.addEventListener("scroll",hidePeek,{passive:true});
 rowsEl.addEventListener("scroll",hidePeek,{passive:true,capture:true});
 document.addEventListener("keydown",e=>{
-  if(document.getElementById("zoom").open){ if(e.key==="ArrowRight"||e.key==="ArrowLeft"){ e.preventDefault(); stepZoom(e.key==="ArrowRight"?1:-1); } return; }
+  if(document.getElementById("zoom").open){ if(e.key==="ArrowRight"||e.key==="ArrowLeft"){ e.preventDefault(); stepZoom(e.key==="ArrowRight"?1:-1); }
+    else if(e.key==="f"){ flipCard(document.getElementById("zoom").dataset.from); } return; }
   const cp=e.target.closest&&e.target.closest(".cutpanel");
   if(cp){ if(e.key==="ArrowDown"||e.key==="ArrowUp"){ e.preventDefault(); const os=[...cp.querySelectorAll(".cutopt")].filter(o=>!o.hidden), i=os.indexOf(document.activeElement);
       const n=os[e.key==="ArrowDown"?Math.min(os.length-1,i+1):Math.max(0,i-1)]; if(n) n.focus(); return; }
@@ -1104,7 +1123,8 @@ document.addEventListener("keydown",e=>{
   else if(e.key==="o"&&SEL){ toggleScoped(SEL,"out"); refreshView(SEL); }
   else if(e.key==="n"&&SEL){ e.preventDefault(); if(narrow()) openSheet(SEL); else setNoteOpen(SEL,true,col); }
   else if(e.key==="/"){ e.preventDefault(); const q=document.getElementById(view==="compare"?"cmpq":"q"); if(q) q.focus(); }
-  else if(e.key==="z"&&SEL){ openZoom(SEL,VISIBLE); } });
+  else if(e.key==="z"&&SEL){ openZoom(SEL,VISIBLE); }
+  else if(e.key==="f"&&SEL){ flipCard(SEL); } });
 window.addEventListener("hashchange",fromHash);
 window.matchMedia("(max-width: 1000px)").addEventListener("change",()=>{ renderDecks(); hidePeek(); });
 if(window.matchMedia) window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",paintThemeBtn);

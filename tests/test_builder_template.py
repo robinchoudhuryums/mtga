@@ -435,3 +435,35 @@ class TestManyDecks:
         assert out["ownBench"] == 1 and out["sharedBench"] == out["sharedOut"] == len(keys)
         assert out["menu"] is menu
         assert out["colours"] == ["U", "G", "U"]          # deck 2 avoids U; deck 3 has only U
+
+
+_HARNESS_FACE = """
+const fs = require('fs');
+let META = {img: "remote"};
+eval(fs.readFileSync(process.argv[2], 'utf8'));
+const dfc = {id: "rona", im: "https://x/normal/front/r.jpg", im2: "https://x/normal/back/r.jpg", b2: 1};
+const one = {id: "opt", im: "https://x/normal/front/o.jpg"};
+const out = {};
+out.remote = [imgSrc(dfc, "l", true), imgSrc(dfc, "l", false), imgSrc(one, "l", true), hasBack(one)];
+META = {img: "local"};
+out.local = [imgSrc(dfc, "l", true), imgSrc(one, "l", true), hasBack(dfc), showBack(dfc)];
+FLIP.add("rona");
+out.flipped = showBack(dfc);
+console.log(JSON.stringify(out));
+"""
+
+
+@pytest.mark.skipif(not _NODE, reason="node not installed (CI sets PYTEST_NO_SKIPS, so CI cannot skip)")
+class TestBackFaces:
+    def test_the_back_face_source_and_the_flip_state(self, tmp_path):
+        js = tmp_path / "fns.js"
+        js.write_text(_extract_consts(["FLIP", "hasBack", "showBack"]) + "\n" + _extract(["imgSrc"])
+                      + "\nglobalThis.FLIP = FLIP; globalThis.hasBack = hasBack; globalThis.showBack = showBack;")
+        h = tmp_path / "h.js"
+        h.write_text(_HARNESS_FACE)
+        out = json.loads(subprocess.run([_NODE, str(h), str(js)], capture_output=True,
+                                        text=True, check=True).stdout)
+        assert out["remote"] == ["https://x/large/back/r.jpg", "https://x/large/front/r.jpg",
+                                 "https://x/large/front/o.jpg", False]
+        assert out["local"] == ["img/lg/rona--back.jpg", "img/lg/opt.jpg", True, False]
+        assert out["flipped"] is True

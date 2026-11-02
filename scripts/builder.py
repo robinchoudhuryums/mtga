@@ -809,6 +809,48 @@ def image_urls(slug, names, fetch=True):
     return out
 
 
+BACK_KEY = "back:"   # images.json key prefix for a two-faced card's back face
+
+
+def back_image_urls(slug, names, fetch=True):
+    """{name: Scryfall `normal` URL of the BACK face} for the two-faced cards among `names`.
+
+    `image_urls` keeps only the front face: Scryfall puts a transform or modal DFC's
+    images under `card_faces`, and the front is all a row thumbnail needs. The back is
+    a different card face, so the pane and the zoom view need it too. A split, Adventure
+    or Room card shares one image with both halves on it, and is cached as "" (no separate
+    back) so it is not looked up again. Only names with " // " are candidates. Cached in
+    the same images.json under `back:<name>`; an outage leaves the cache as it was."""
+    cache_path = os.path.join(os.path.dirname(build_path(slug)), "images.json")
+    try:
+        cache = json.load(open(cache_path, encoding="utf-8"))
+    except (OSError, ValueError):
+        cache = {}
+    cand = [n for n in dict.fromkeys(names) if " // " in n]
+    need = [n for n in cand if BACK_KEY + n not in cache]
+    if need and fetch:
+        try:
+            import scryfall
+            for i in range(0, len(need), 70):
+                batch = need[i:i + 70]
+                got = {}
+                for d in scryfall.post_collection([n.split(" // ")[0] for n in batch]).get("data", []):
+                    faces = d.get("card_faces") or []
+                    back = ""
+                    if not d.get("image_uris") and len(faces) > 1:
+                        back = (faces[1].get("image_uris") or {}).get("normal", "")
+                    got[d["name"].lower()] = got[d["name"].lower().split(" // ")[0]] = back
+                for n in batch:
+                    k = n.lower()
+                    if k in got or k.split(" // ")[0] in got:
+                        cache[BACK_KEY + n] = got.get(k, got.get(k.split(" // ")[0], ""))
+            atomic_write(cache_path, lambda fh: fh.write(json.dumps(cache, indent=1, sort_keys=True) + "\n"),
+                         backup=False)
+        except Exception as e:  # an outage degrades to a front-only card, never a failed render
+            print(f"builder: Scryfall back-face lookup skipped ({e})", file=sys.stderr)
+    return {n: cache[BACK_KEY + n] for n in cand if cache.get(BACK_KEY + n)}
+
+
 _ART_FX = {"showcase": "showcase", "extendedart": "extended art", "etched": "etched",
            "textless": "textless"}   # the treatments a reader would call a different look
 ART = (366, 267)            # an art-crop cell: 3x the pane's 122 x 89 thumbnail, 1x when enlarged
@@ -963,6 +1005,8 @@ def render(slug, target, out_dir, tempo=True, images=True, data=None, page_name=
     urls = image_urls(slug, [c["n"] for c in data["cards"]] + list(cmds.values()),
                       fetch=fetch and (images or target == "pages"))
     arts = printing_arts(slug, [c["n"] for c in data["cards"]], fetch=fetch)
+    backs = back_image_urls(slug, [c["n"] for c in data["cards"]],
+                            fetch=fetch and (images or target == "pages"))
     for c in data["cards"]:
         if arts.get(c["n"]):
             c["al"] = arts[c["n"]]          # alternate Arena printings (view-only)
@@ -970,6 +1014,8 @@ def render(slug, target, out_dir, tempo=True, images=True, data=None, page_name=
         for c in data["cards"]:
             if urls.get(c["n"]):
                 c["im"] = urls[c["n"]]
+            if backs.get(c["n"]):
+                c["im2"] = backs[c["n"]]        # the back face of a two-faced card
         meta["portraits"] = {k: urls.get(n, "") for k, n in cmds.items()}
     os.makedirs(out_dir, exist_ok=True)
     got = missing = 0
@@ -982,6 +1028,16 @@ def render(slug, target, out_dir, tempo=True, images=True, data=None, page_name=
             except Exception as e:
                 missing += 1
                 print(f"builder: image for {n} not fetched ({e})", file=sys.stderr)
+        for c in data["cards"]:
+            u = backs.get(c["n"])
+            if not u:
+                continue
+            try:
+                _fetch_image(u.replace("/normal/", "/large/"),
+                             os.path.join(out_dir, "img", "lg", image_slug(c["n"]) + "--back.jpg"), LARGE)
+                c["b2"] = 1                     # img/lg/<id>--back.jpg is on disk
+            except Exception as e:
+                print(f"builder: back face for {c['n']} not fetched ({e})", file=sys.stderr)
     if target == "artifact":
         meta["sprite"] = _sprite(out_dir, [image_slug(n) for n in urls]) if images else None
         meta["arts"] = _art_sprites(out_dir, arts) if images and arts else None

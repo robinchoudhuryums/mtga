@@ -734,9 +734,9 @@ is protecting.
   until 2026-09-04**:
   choose-ONCE-on-entry now sets `chosen` (counted for ACCESS, denied BREADTH);
   transform-gated, GRANTED and extra-tap clauses are out. **`lib.tapland_kind` is the ONE tapping predicate** (the tempo
-  line, `·tapped?`, `_land_value`'s premium), and its `conditional` bucket merged FOUR
-  opposite behaviours until 2026-09-20: `fast` and `check` (a basic gate, floor 12) now earn
-  the shockland premium; a SLOWLAND and a board state stay conservative. **A TYPE-NAMED gate ('a Plains or an Island') is read
+  line, `·tapped?`, `_land_value`'s premium): `fast` and `check` (a basic gate, floor 12)
+  earn the shockland premium; a SLOWLAND and a board state stay conservative; a fetch with
+  no mana of its own (Evolving Wilds) reads tapped (2026-11-02). **A TYPE-NAMED gate ('a Plains or an Island') is read
   against the deck's OWN lands' types (basics and typed nonbasics) since 2026-09-23 — pass
   `basic_types`, or it reads `check` for a deck that cannot meet it.**
   **NONLAND sources are DISCLOSED since 2026-09-18, never counted**: `consistency` prints
@@ -1037,9 +1037,14 @@ is protecting.
   disagree (G-40). **DISCLOSURE, never pricing** — report-only for G-25/G-60's reason, and do
   not "finish" it by feeding `tier_band`. **`_UNPRICED_DISCLOSE_FLOOR = 3` is p75 of its own
   axis, not 1**: across the **68 decks that print an effective figure** the unpriced count
-  runs p25 1 / p50 2 / p75 3 / p90 5 / max 11, so a floor of 1 fires on 83% (the G-07
-  saturation shape) against **24 of 68 (35%)** at 3. BOTH figures are registered in
-  `figure_drift`, which is what caught the population move when impending joined. [G-85]
+  runs p25 1 / p50 2 / p75 3 / p90 5 / max 12, so a floor of 1 fires on 93% (the G-07
+  saturation shape) against **27 of 68 (40%)** at 3. BOTH figures are registered in
+  `figure_drift`, which is what caught the population move when impending joined.
+  **Until 2026-11-02 it read keywords from a field `load_card_data` never carries**, so
+  every KEYWORD discount (convoke, affinity, improvise, delve) was invisible to it while the
+  ◊ list beside it named the same cards; it reads `load_keywords()` now (31 decks' counts
+  rose). Its fourth reader since that day is `consistency`, which marks a cast-on-curve
+  row `◊` and names the discount it books at the printed cost. [G-85]
 - **BOARD PRESENCE IS AN AXIS AND NOTHING HERE MEASURED IT until 2026-09-18.** The tier
   floor reads interaction + card advantage, `cuts` reads theme fit and role credit, and
   `stats` counted creatures without ever asking how big they are — so a deck can clear an
@@ -1150,13 +1155,11 @@ is protecting.
 - **`deck.py targets <id>` answers whether the deck holds TARGETS for its own gated
   effects** — MV caps ("reanimate a creature MV 4 or less"), sacrifice costs, count
   thresholds. Every other model here grades a card in ISOLATION, so a gate with nothing
-  behind it is invisible: deck 52's concept pile held 24 ways to return a creature against
-  8 worth returning, a number that had to be derived by hand. This is the automated half of
+  behind it is invisible (deck 52: 24 ways to return a creature, 8 worth returning, counted
+  by hand). This is the automated half of
   G-61's "state the count, then decide". `✗ NOTHING` is a dead card; `⚠ thin` (≤3) is the
-  shape to read. Counts exclude the card itself. Heuristic and report-only — read the list,
-  not just the number. **The TOKEN residual is CLOSED (2026-09-09)** — `_makes_token` counts
-  a token PRODUCER as fodder, so deck 58's gates read **17**, not 1, and its `#: notes:`
-  workaround is retired. The rule it earned: **a report-only residual is priced at the
+  shape to read. Counts exclude the card itself. Heuristic and report-only. **The TOKEN residual is CLOSED (2026-09-09)** — `_makes_token` counts
+  a token PRODUCER as fodder (deck 58: 17, not 1). The rule it earned: **a report-only residual is priced at the
   surface that reads it, so wiring a primitive to a RANKING surface re-prices every residual
   it carries.** **Live residuals:** gates match reminder-STRIPPED text except the
   library-search family (`_TARGET_KEEP_REM`, where G-75's riders live), and a generic
@@ -1165,7 +1168,11 @@ is protecting.
   dropped `Artifact // Land`). **The MV-cap gate reads YOUR creature CARDS since
   2026-10-06** — a bare "mana value N or less" read removal as a reanimation gate. Residual:
   a typed non-creature card gate ("permanent card with mana value N or less") is unbuilt.
-  [G-66]
+  **Third section since 2026-11-02, the LEGEND RULE**: copy effects that keep legendary
+  status vs the legendary share of what they copy (`⚠` at ≥67%, 8 of 37 decks).
+  **Also since 2026-11-02: mana-spent, "if you control a <creature type>" and "if it wasn't
+  cast" gates**; type presence stays OFF `unmet_gate`, where it doubled `suggest`'s "needs"
+  rows with riders (G-40). [G-66]
 
 - **A GATE THE DECK MEETS FOR FREE IS NOT A COST, AND EVERY MODEL HERE READ IT AS ONE.**
   G-66's `targets` counts CARDS IN THE LIST, so a card gated on a GAME STATE was invisible
@@ -1380,23 +1387,24 @@ is protecting.
   not stripped from a variant (BS11-37/38). [G-73]
 
 - **THE RESULT LINES CANNOT SEE WHAT YOU FACED OR WHY YOU LOST; THE PLAY-BY-PLAY SEES MOST
-  OF IT; a PHONE GAME never reaches the desktop log at all** (`Player.log` is written by
-  the install that played the match). This rule said "the log cannot see" for a month —
-  true of the three line shapes being grepped, not of the log. Since 2026-09-27
+  OF IT; a PHONE GAME never reaches the desktop log at all.** Since 2026-09-27
   `scripts/mtga_extract.sh` (the Mac's `~/mtga-logs/extract.sh`, embedded VERBATIM in
-  `/log-matches` and pinned by a test) reduces each game's game-state stream — 1.0–2.4 MB
-  per match — to one `[MTGA-GAME]` line, and the parser fills On Play (BLANK cells only; a
+  `/log-matches` and pinned by a test) reduces each game's game-state stream to one
+  `[MTGA-GAME]` line, and the parser fills On Play (BLANK cells only; a
   typed value wins and a disagreement is reported), mulligans, Turns (Arena counts BOTH
-  players' turns), opponent colours and cards, named through Scryfall's Arena-id lookup
-  and cached in `arena-cards.csv`. Opponent ARCHETYPE and why you lost stay hand-only —
+  players' turns), opponent colours and cards (names cached in `arena-cards.csv`).
+  Opponent ARCHETYPE and why you lost stay hand-only —
   so `--apply` prints a ready `--annotate` line per new loss and `/log-matches` Stage 1d
-  asks for the word; never fill one in yourself. The paste is anonymised (`ME`/`OPP`). A match to throw out is `void=<why>`, never a deleted row — the next paste re-adds it.
+  asks for the word; never fill one in yourself. **`Suggested Why` (2026-11-02)** is a
+  guess from three rules registered before any data (keep / screw / flood, the last two
+  from per-turn land counts); only `--accept` after the owner confirms moves it into Loss
+  Reason, and `--review` rates each rule from 20 confirmed losses. The paste is anonymised (`ME`/`OPP`). A match to throw out is `void=<why>`, never a deleted row — the next paste re-adds it.
   **Which writer depends on whether Arena logged the match**: `--add` for one it never
   saw; **`--annotate` (`<matchId> …`) for one it DID** — it UPDATES, where `--add` would
   append a SECOND row, since a hand row has no matchId to dedupe on. The **loss vocabulary
   is CLOSED so it can be COUNTED** (`flood screw slow answer removed keep misplay
   outclassed`). Validation is asymmetric: an unknown DECK or matchId is REFUSED, an
-  unknown `why` is warned about and RECORDED. The dashboard's **"Log a match"** panel does
+  unknown `why` is warned and RECORDED. The dashboard's **"Log a match"** panel does
   both from a phone — it is STATIC, queues in `localStorage` and hands back lines, and
   emits only the id, so a misparse there cannot corrupt a stored W/L. [G-74]
 
@@ -1446,7 +1454,7 @@ is protecting.
   (G-25). Restyle the TEMPLATE, never a rendered page — `.cycle/board*/index.html` is
   regenerated. An artifact version holds at most **511 files**, so the claude.ai board
   ships one thumbnail sprite plus a 672 px image per card (~500 cards); Pages hot-links
-  Scryfall. **Alternate printings are VIEW-ONLY** (`printings.json`, Scryfall `unique:art`, so a
+  Scryfall. A two-faced card ships its BACK too (`back:` in `images.json`; the pane and zoom flip with `f`). **Alternate printings are VIEW-ONLY** (`printings.json`, Scryfall `unique:art`, so a
   frame-only variant of the same art is never listed): a deck line keeps the pool's one printing
   (G-65). A deck key is never `B`/`N`, the shared piles' keys. `/pile-analysis` Stage 6 owns
   publishing and the request queue. [G-89]
@@ -1887,7 +1895,9 @@ format.
    match whose play-by-play was captured also gets a `Game details` line — check its
    play/draw against what you remember, since an inverted seat read would flip every row
    the same way (first real paste, 9 games, confirmed correct by the owner 2026-09-27;
-   still unchecked on a best-of-three). Full steps + the launchd archive setup:
+   still unchecked on a best-of-three). A loss with game details carries a `Suggested
+   Why`; the first one after re-installing the 2026-11-02 extractor is the first real
+   check of its land counts, so compare it with what you remember. Full steps + the launchd archive setup:
    `.claude/commands/log-matches.md`. [C-12]
 10. Log-a-match panel — selected state and focus ring | Subsystem: Presentation & Interface
     Steps: open `dashboard.html`, expand "Log a match" (starts collapsed); click W, L, D

@@ -6092,6 +6092,97 @@ class TestProposedAddGateCheck:
         assert "Halfling" in note and "0 in this deck" in note, note
 
 
+class TestLegendCopyConflicts:
+    """Batch C (2026-11-02): copy effects that KEEP legendary status against how much of
+    what they could copy is legendary. Real oracle texts throughout; each class below was
+    a misread on the first roster run, so each is pinned."""
+
+    HALLCREEPER = ("Enchantment Creature — Horror",
+                   "This creature can't be blocked.\nWhenever this creature deals combat "
+                   "damage to a player, choose one that hasn't been chosen —\n• Put two "
+                   "+1/+1 counters on this creature.\n• Draw a card.\n• This creature "
+                   "becomes a copy of another target creature you control.")
+    CHAMELEON = ("Legendary Creature — Human Shapeshifter Villain",
+                 "You may have Chameleon enter as a copy of a creature you control, except "
+                 "his name is Chameleon, Master of Disguise.")
+    KIKI = ("Legendary Creature — Goblin Shaman",
+            "Haste\n{T}: Create a token that's a copy of target nonlegendary creature you "
+            "control, except it has haste. Sacrifice it at the beginning of the next end "
+            "step.")
+    SAKASHIMA = ("Legendary Creature — Human Rogue",
+                 "You may have Sakashima enter as a copy of another creature you control, "
+                 "except it has Sakashima's other abilities.\nThe \"legend rule\" doesn't "
+                 "apply to permanents you control.")
+    GHIRED = ("Legendary Creature — Human Shaman",
+              "Haste\nNontoken creatures you control have \"{T}: Create a token that's a "
+              "copy of target token you control that entered this turn.\"")
+    ARDYN = ("Legendary Creature — Elder Human Noble",
+             "Starscourge — At the beginning of combat on your turn, exile up to one target "
+             "creature card from a graveyard. If you exiled a card this way, create a token "
+             "that's a copy of that card, except it's a 5/5 black Demon.")
+    CROWN = ("Artifact — Equipment",
+             "As long as this Equipment is attached to a creature, the first time you would "
+             "create one or more tokens each turn, you may instead create that many tokens "
+             "that are copies of equipped creature.\nEquip {2}")
+    BRIGID = ("Kindred Sorcery — Kithkin",
+              "Choose two —\n• Create a token that's a copy of target Kithkin you control.\n"
+              "• Target creature you control fights target creature an opponent controls.")
+    LEGEND = ("Legendary Creature — Elf", "Flying")
+    PLAIN = ("Creature — Elf", "Reach")
+
+    def _cd(self, **cards):
+        return {n.lower(): {"name": n, "type": ty, "text": tx}
+                for n, (ty, tx) in cards.items()}
+
+    def _kind(self, card):
+        return deck._copy_effect_kind(card[1])[0]
+
+    def test_the_copy_predicate_is_the_role_classifiers_own(self):
+        # G-40: one predicate, two readers. If the role table stops spreading the shared
+        # tuple, the advisory and `Payoff / engine` would drift apart silently.
+        for pat in deck._COPY_EFFECT_PATTERNS:
+            assert pat in deck._ROLE_PATTERNS["Payoff / engine"]
+        assert "Payoff / engine" in deck.classify_roles(self.HALLCREEPER[1])
+
+    def test_kinds(self):
+        assert self._kind(self.HALLCREEPER) == "keeps"
+        assert self._kind(self.BRIGID) == "keeps"   # its "opponent controls" is a
+        # different mode; only the copy clause is read
+        assert self._kind(self.CROWN) == "keeps"    # "copies of", not "copy of"
+        assert self._kind(self.CHAMELEON) == "strips"   # "except HIS name is"
+        assert self._kind(self.KIKI) == "nonlegendary"
+        assert self._kind(self.SAKASHIMA) == "self-safe"
+        assert self._kind(self.GHIRED) == "token"
+        assert self._kind(self.ARDYN) == "card"
+        assert deck._copy_effect_kind(self.PLAIN[1]) is None
+
+    def test_a_legend_heavy_pool_flags_and_a_nonlegendary_one_does_not(self):
+        cd = self._cd(Hallcreeper=self.HALLCREEPER, Legend=self.LEGEND, Plain=self.PLAIN)
+        heavy = deck.legend_copy_conflicts(
+            [(1, "Hallcreeper", "", ""), (3, "Legend", "", ""), (1, "Plain", "", "")], cd)
+        name, kind, _types, leg, pool, flag = heavy["rows"][0]
+        # The card itself is not its own target: 3 of the 4 OTHER creatures are legends.
+        assert (name, kind, leg, pool, flag) == ("Hallcreeper", "keeps", 3, 4, True)
+        light = deck.legend_copy_conflicts(
+            [(1, "Hallcreeper", "", ""), (1, "Legend", "", ""), (3, "Plain", "", "")], cd)
+        assert light["rows"][0][5] is False
+
+    def test_a_deck_wide_legend_rule_switch_silences_the_flag(self):
+        cd = self._cd(Hallcreeper=self.HALLCREEPER, Legend=self.LEGEND,
+                      Sakashima=self.SAKASHIMA)
+        res = deck.legend_copy_conflicts(
+            [(1, "Hallcreeper", "", ""), (4, "Legend", "", ""), (1, "Sakashima", "", "")], cd)
+        assert res["off"] == ["Sakashima"]
+        assert not any(r[5] for r in res["rows"])
+
+    def test_only_keeps_rows_can_flag(self):
+        cd = self._cd(Chameleon=self.CHAMELEON, Kiki=self.KIKI, Legend=self.LEGEND)
+        res = deck.legend_copy_conflicts(
+            [(1, "Chameleon", "", ""), (1, "Kiki", "", ""), (4, "Legend", "", "")], cd)
+        assert {r[1] for r in res["rows"]} == {"strips", "nonlegendary"}
+        assert not any(r[5] for r in res["rows"])
+
+
 class TestStateGateCounts:
     """The gate family `_TARGET_GATES` structurally could not answer: a card gated on a
     GAME STATE rather than on cards in the list.
@@ -8201,3 +8292,108 @@ class TestFlexAdd:
         assert deck.cmd_flex(self._args("+Shock | x", True)) == 1                  # on a #~ line
         assert deck.cmd_flex(self._args("no card field", True)) == 1
         assert path.read_text(encoding="utf-8") == self.BODY
+
+
+class TestBatchFGateFamilies:
+    """Batch F (2026-11-02): three gate families `targets` could not see, each found by a
+    hand count in a tune. Real oracle texts."""
+
+    def _cd(self, **cards):
+        return {n.lower(): {"name": n, "type": ty, "text": tx, "colors": ""}
+                for n, (ty, tx, _c) in cards.items()}
+
+    def _mana(self, **cards):
+        return {n.lower(): (c, "") for n, (_t, _x, c) in cards.items()}
+
+    def _rows(self, cards, deck_cards, who):
+        rows = deck.target_counts(deck_cards, self._cd(**cards), self._mana(**cards))
+        return [r for r in rows if r[0] == who]
+
+    ULTROS = ("Legendary Creature — Octopus",
+              "Whenever you cast a noncreature spell, if at least four mana was spent to "
+              "cast it, tap target creature an opponent controls and put a stun counter on it.",
+              "{2}{U}")
+    BIG = ("Sorcery", "Draw three cards.", "{3}{U}")
+    SMALL = ("Instant", "Draw a card.", "{U}")
+    XSPELL = ("Sorcery", "Draw X cards.", "{X}{U}")
+    FATTY = ("Creature — Giant", "", "{5}{G}")
+
+    def test_mana_spent_counts_noncreature_spells_at_the_threshold(self):
+        cards = dict(Ultros=self.ULTROS, Big=self.BIG, Small=self.SMALL, Xs=self.XSPELL,
+                     Fatty=self.FATTY)
+        dc = [(1, "Ultros", "", ""), (2, "Big", "", ""), (3, "Small", "", ""),
+              (1, "Xs", "", ""), (2, "Fatty", "", "")]
+        (_n, label, count, _need), = self._rows(cards, dc, "Ultros")
+        # The creature at MV 6 is out of scope; the X spell is disclosed, not counted.
+        assert count == 2 and label == "noncreature spells at MV ≥4 (+1 X spell)"
+
+    WHORL = ("Sorcery", "Target opponent discards two cards. Then if you control a Rat, "
+                        "surveil 2.", "{2}{B}{B}")
+    RAT = ("Creature — Rat Rogue", "", "{1}{B}")
+    CHANGELING = ("Creature — Shapeshifter", "Changeling (This card is every creature type.)",
+                  "{2}")
+    BEORN = ("Legendary Creature — Human Bear", "Then if you control three or more Bears, "
+                                                 "draw two cards.", "{2}{G}{G}")
+
+    def test_type_presence_counts_the_subtype_and_changelings(self):
+        cards = dict(Whorl=self.WHORL, Rat=self.RAT, Shifter=self.CHANGELING)
+        rows = self._rows(cards, [(1, "Whorl", "", ""), (2, "Rat", "", ""),
+                                  (1, "Shifter", "", "")], "Whorl")
+        assert rows == [("Whorl", "Rat creatures you control (needs 1)", 3, 1)]
+        assert self._rows(cards, [(1, "Whorl", "", "")], "Whorl")[0][2] == 0
+
+    def test_type_presence_reads_the_stated_number_and_skips_non_types(self):
+        cards = dict(Beorn=self.BEORN)
+        assert self._rows(cards, [(1, "Beorn", "", "")], "Beorn")[0][1] == \
+            "Bear creatures you control (needs 3)"
+        verge = dict(Verge=("Land", "{T}: Add {G}. Activate only if you control a Forest.", ""))
+        assert self._rows(verge, [(1, "Verge", "", "")], "Verge") == []
+
+    def test_type_presence_stays_off_the_recommendation_surfaces(self):
+        """Measured at `suggest` per G-40: it doubled the "needs" rows, mostly riders."""
+        cards = dict(Whorl=self.WHORL, Small=self.SMALL)
+        assert deck.unmet_gate("Whorl", [(1, "Small", "", "")], self._cd(**cards),
+                               self._mana(**cards)) == ""
+
+    SATORU = ("Legendary Creature — Human Ninja Rogue",
+              "Whenever Satoru and/or one or more other nontoken creatures you control enter, "
+              "if none of them were cast or no mana was spent to cast them, draw a card.",
+              "{U}{B}")
+    BLINK = ("Instant", "Exile target creature you control, then return it to the "
+                        "battlefield under its owner's control.", "{1}{W}")
+    FREESTRIDER = ("Creature — Lizard Mercenary",
+                   "This creature enters with two +1/+1 counters on it if it wasn't cast or no "
+                   "mana was spent to cast it.\nPlot {3}{G} (You may pay {3}{G} and exile this "
+                   "card from your hand. Cast it as a sorcery on a later turn without paying "
+                   "its mana cost.)", "{2}{G}")
+    BESEECH = ("Sorcery", "Search your library for a card, exile it face down, then shuffle. "
+                          "Put the exiled card into your hand if it wasn't cast this way.",
+               "{1}{B}{B}{B}")
+
+    def test_not_cast_counts_cheat_and_blink_and_a_cards_own_plot(self):
+        cards = dict(Satoru=self.SATORU, Blink=self.BLINK, Free=self.FREESTRIDER,
+                     Small=self.SMALL)
+        dc = [(1, "Satoru", "", ""), (2, "Blink", "", ""), (1, "Free", "", ""),
+              (1, "Small", "", "")]
+        assert self._rows(cards, dc, "Satoru")[0][2] == 3      # 2 Blink + Freestrider's plot
+        assert self._rows(cards, dc, "Free")[0][2] == 3        # 2 Blink + its own plot
+        beseech = dict(Beseech=self.BESEECH)
+        assert self._rows(beseech, [(1, "Beseech", "", "")], "Beseech") == []
+
+
+class TestConsistencyDisclosesUnpricedDiscounts:
+    """Batch G (2026-11-02): the cast-on-curve table books the PRINTED cost, so a convoke
+    spell read 59% on curve (Winnowing, deck 18). It now marks such a row ◊ and names the
+    discount, from the same list `stats` and `tier` print (G-85)."""
+
+    def test_a_convoke_row_is_marked_and_named(self, tmp_path):
+        import os, subprocess, sys as _sys
+        scripts = os.path.dirname(deck.__file__)
+        p = tmp_path / "convoke.txt"
+        p.write_text("#: name: Convoke probe\n#: format: Standard\n#: colors: W\n"
+                     "4 Winnowing (ECL) 39\n20 Plains (FDN) 272\n36 Plains (FDN) 272\n",
+                     encoding="utf-8")
+        out = subprocess.run([_sys.executable, os.path.join(scripts, "deck.py"),
+                              "consistency", str(p)], capture_output=True, text=True).stdout
+        assert "Winnowing ◊" in out
+        assert "◊ a discount this table does not price" in out and "convoke" in out.lower()

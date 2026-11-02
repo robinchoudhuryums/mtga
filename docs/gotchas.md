@@ -3110,6 +3110,26 @@ reminder text every reader strips, so a deck of firebenders disclosed nothing; 2
 Mis-flag to avoid when grading this area: Demolition Field IS a basic fetch for you (its full text
 ends "You may search your library for a basic land card") — a 200-character slice hid that.
 
+**2026-11-02 — moved here from the rule to make room.** The rule used to say that
+`tapland_kind`'s `conditional` bucket **merged FOUR opposite behaviours until
+2026-09-20**: a fastland, a met checkland, a slowland and a board-state condition all read
+as one "maybe tapped". `fast` and `check` now earn the shockland premium, and the other two
+stay conservative.
+
+**Same day (tooling Batch G): a fetch with no mana of its own reads TAPPED.** Evolving
+Wilds, Terramorphic Expanse, Hobbit Hole, the five SNC hideouts and Escape Tunnel enter
+untapped but make no mana themselves; they fetch a basic that "enters the battlefield
+tapped", so the mana arrives a turn late, exactly as from a tapland. `tapland_kind` read
+them as None (untapped), so `suggest --lands` printed no `·tapped` and `consistency`'s
+tapped-land count missed them. They read "unconditional" now, and Fabled / Elven Passage,
+which untap the fetched land with enough lands, read "conditional". A fetch land that also
+taps for mana itself (the Landscapes, Promising Vein, Urza's Cave) stays None.
+- 28 of 134 decks' tapped-land counts rose.
+- No score moved: `_land_value` already withheld the untapped premium from any fetch.
+- The tempo simulation was unchanged: it checks the fetch before the enter clause.
+- Hobbit Hole's 11.5 in deck 40, filed as an untapped-dual score, was fixing 8.0 + synergy
+  2.0 + scarce-colour 1.5 all along. The real defect was the missing marker.
+
 ## [G-36] `deck.py consistency <id>` is the PROBABILITY layer `mana` lacks
 
 **`deck.py consistency <id>` is the PROBABILITY layer `mana` lacks.** `mana` diagnoses
@@ -6828,6 +6848,84 @@ way a swap does. Second, **when a pattern family has several members, diff them 
 each other** — the sibling that already handled `another` is the evidence the other two
 were incomplete, and it had been sitting three lines away for as long as they had.
 
+### Three more gate families (2026-11-02, tooling Batch F)
+
+Each was found by a hand count in the 2026-10-08 tuning pass, the G-66 failure this table
+exists to remove.
+
+- **Mana spent** (`spent`): "whenever you cast a noncreature spell, if at least four mana
+  was spent to cast it". It counts the other cards of the trigger's scope at front-face
+  MV ≥ N. X spells count as 0 there, so they are listed beside the count rather than in it.
+  Pool 7 cards, roster 5 rows. Deck 18's cut Ultros and Sahagin, re-probed against the
+  current list, read 3.
+- **Type presence** (`control`): "if you control a/another/two or more <word>". The raw
+  shape matched **292 pool cards**, nearly all noise (Verges and basic-type gates, which
+  G-87 owns; "a creature"; "two or more other lands"). So it counts only when the word is
+  a creature subtype in the tagger's own vocabulary (K-17), Human excepted, and counts
+  creatures of that type plus changelings against the stated need. Roster: 24 rows, all
+  real on a spot-read. Psychic Whorl's Rat rider reads 0 in decks 44 and 44a; Beorn holds
+  1 of 3 Bears in deck 88.
+- **Not cast** (`notcast`): "if none of them were cast" / "enters … if it wasn't cast".
+  "…cast this way" (Beseech the Mirror) is excluded. Enablers are `_UNCAST_RE` (put or
+  return a creature card onto the battlefield, exile-then-return blink, a free cast,
+  plot), and a card whose own text is an enabler counts itself, since Freestrider's plot
+  satisfies it. **The proxy is about 3 in 4 genuine** on a 30-card sample of its 398 pool
+  matches (misses: noncreature free casts, a Saga returning itself). No roster deck runs
+  one today.
+
+**Measured at the caller (G-40), and one family stopped there.** `unmet_gate` feeds
+`swap`, `suggest`, `screen` and `redundancy`. With type presence included, `suggest
+--unowned`'s "needs" rows on ten decks went **67 → 132**, mostly riders and cost
+reductions ("costs {1} less if you control a Wizard"), where "needs" overstates a card
+that still works. That family is skipped there (`_CONTROL_LABEL_MARK`) and stays in
+`targets`, where the card is read beside the count. The two narrow families reach the
+recommenders.
+
+Residuals: `targets` prints counts, not the cards behind them; only the first match of a
+gate per card is read (Ultros's "eight mana" clause is not reported).
+
+### The legend-rule section (2026-11-02, tooling Batch C)
+
+Deck 32 ran 17 legendary creatures of 24 against five copy effects that keep legendary
+status, and nothing said so. A copy of your own legend is a second permanent of that name,
+so the legend rule takes one of them. `targets` now prints a third section for this.
+`_copy_effect_kind` reads each copy clause through `_COPY_EFFECT_PATTERNS`, the same
+three templatings the `Payoff / engine` role uses (named and shared at this change, G-40).
+It sorts the clause into one of seven kinds:
+
+- keeps
+- strips (the copy isn't legendary, or takes another name)
+- nonlegendary-only
+- self-safe (Hall of Echoes)
+- card off the battlefield
+- token
+- opponent-only
+
+`legend_copy_conflicts` then counts, for each keeps row, the other cards of the copyable
+types in the list and how many are legendary.
+
+**The first roster run misread four cards, all now pinned by tests:**
+- Chameleon's "except **his** name is" was read as keeping the name. That false flag was deck 87's only one.
+- Mirrormind Crown's "tokens that are **copies** of" skipped the object.
+- Ghired and Rhys copy TOKENS, the second through the anaphor "for each creature token
+  you control … a copy of that creature". They were counted against deck cards.
+
+Two of the first ten flagged decks were false for these reasons, and the fix came before
+the threshold was set.
+
+**Calibration (134 deck files):** 37 decks run a keep-legendary copy effect (68 rows). The
+legendary share of the copyable pool runs p25 0.35 / p50 0.51 / p75 0.59. A threshold of
+0.67 flags 8 decks (22%): 12, 22-brawl, 38, 54, 71, 78-historic-brawl, 84 and 94. Deck 32
+itself now reads 55% after its tune and is not flagged.
+
+**Residuals:**
+- A card with two copy clauses is classified by its first. None on the roster today.
+- A clause naming only a creature type (Brigid's Command, a Kithkin) is counted against
+  every creature.
+
+The flag says the POOL is legend-heavy. It does not say the card is bad: Three Steps Ahead
+in 84/94 is a modal spell whose copy is one of three modes.
+
 ## [G-82] A tool that rejects the form the project itself writes down
 
 Two independent bugs found within an hour of each other on 2026-09-01, both the same
@@ -7609,6 +7707,43 @@ Residual: a paste restricted to a period when only an OLD copy was played would 
 header back to that copy. Attribution is unaffected, because every copy resolves by name.
 
 **2026-10-02 (BS11-32/35/36) — the void round-trip.** `void=no` restored a result GUESSED from the game score (W if more game wins, else L), which inverts a match conceded in game one of a best-of-three and cannot read a blank score at all; it also silently accepted `void=no` on a row that was never voided. The void now writes the result it replaces into the note (`void (was L): <why>`), restores exactly that, keeps the ORIGINAL on a re-void, and refuses — with a warning, the row's other fields still applied — a never-voided row or a legacy `void: ` note whose score is tied. Voided rows also left three tallies: `--report` created the per-deck bucket before skipping them (a voided-only deck read 0-0-0), the loss-reason tally counted a voided loss's `why=`, and `deck.swap_outcomes` counted it as a game, so deck 17's `feedback` read 3 games against `audit`'s 2 — the one instance live in the record. The post-ingest prompt had said a blank value "records nothing"; the tested contract is that it CLEARS, and the prompt and `/log-matches` say so now.
+
+
+**2026-11-02 (tooling Batch D) — suggested loss reasons, and the extractor counts lands.**
+Match-digest decision 2 asked for a `Suggested Why` column that reaches `Loss Reason` only
+when the owner confirms it. Its three rules were registered on 2026-09-25, before any
+data, and ship as registered:
+- `keep`: mulliganed to 5 or fewer;
+- `screw`: 2 or fewer lands in play at the end of my 4th turn;
+- `flood`: lands were at least 60% of the cards I saw, over 7 or more of my turns.
+
+**The plan assumed facts the game line did not carry.** `cards` keeps one entry per
+grpId, so four Islands read as one land, and nothing recorded a per-turn count. Only `keep`
+was computable, and on the 34 recorded losses with game facts no mulligans were recorded,
+so it would have suggested nothing. The owner chose to extend the extractor.
+`mtga_extract.sh` now tracks zone MEMBERSHIP: Arena re-sends every changed zone with its
+full `objectInstanceIds`, so the latest list per zone says who is in it. It writes
+`"lands"`, each seat's lands in play at the end of every turn, and `"seen"`, the lands
+and cards each seat had in hand, battlefield, graveyard and exile at game end. Two
+guards:
+- **A blank, never a zero, when no battlefield zone was read.** A zero would make every
+  loss read as `screw`, so a parse failure must show up as "not recorded".
+- **A game line from before the change reads `keep` only.** Its cell says which rules
+  were not readable, which is a different fact from "none fired".
+
+**Confirmation is the owner's.** `--accept` writes the suggested word through the
+`--annotate` writer (dry run, prefix ids, a `none` is never accepted). `--review` reports
+fired / agreed / named-but-silent per rule, with rates only from 20 confirmed losses. An
+acceptance counts as agreement, so accepting an unread suggestion flatters the rule it is
+meant to test; Stage 1d says so.
+
+**Unverified on real data at landing:**
+- the zone field names come from fixtures modelled on 17Lands' parser;
+- the Mac's BSD awk could not be run in the build container (mawk only, POSIX constructs
+  kept).
+
+The first paste after the owner re-installs `extract.sh` is the test. Check one suggestion
+against memory.
 
 ## [G-75] A tutor is worth the number of things it can find in THIS deck
 
@@ -8422,6 +8557,26 @@ discriminating if the distribution moves. The 14-of-43 figure is registered in
 the same treatment `tier_floor_spread` gets for `TIER_FLOOR_REQ` and G-84's population gets
 for its floor/key.
 
+**2026-11-02 (tooling Batch G) — the helper was blind to every KEYWORD discount.**
+`unpriced_discount_cards` built its keyword map from `carddata[name]["keywords"]`. That is
+a field `load_card_data` never carries, so it only ever saw the TEXT discounts ("costs {N}
+less"): convoke, affinity, improvise and delve were invisible. Meanwhile the `stats` ◊ list
+printed beside it reads `load_keywords()` (card-mana.csv) and named the same cards. The
+docstring's "the three surfaces cannot disagree" was false the whole time, and nothing
+noticed: the disclosure fired on enough decks through text discounts alone that its
+silence on convoke never stood out.
+
+It surfaced when the cast-on-curve table in `consistency` was made to disclose the
+discounts it does not price. The new test (a Winnowing deck, convoke) could not pass while
+the helper missed keywords. The fix reads `load_keywords()`, front-face aliased, and a
+carddata entry that carries its own keywords still wins, which test fixtures use.
+Measured:
+- **31 of 134 decks' unpriced counts rose.**
+- The disclosure population (decks printing an effective figure) is unchanged at **68**.
+- p75 is still **3**, so the floor stands; it now fires on **27 of 68** (was 24).
+- The floor-of-1 rate is now **93%** (was 83%); max 12 (was 11).
+
+`figure_drift` caught the moved figures, and they were updated the same day.
 
 ## [G-86] Board presence is an axis, and nothing here measured it
 
@@ -8885,3 +9040,12 @@ render, site, add-deck) and `tests/test_builder_template.py`, which runs the pag
 `project()`, `isApplied`, `conflicts` and `nextBand` under Node and compares the projection
 with `deck_quality_vector` on a scratch copy of a real deck after the same swap.
 
+**2026-11-02 — back faces.** The page showed only the FRONT of a transform or modal DFC.
+`image_urls` took `card_faces[0]`, which is all a row thumbnail needs, but a reader
+deciding on Rona or Tamiyo needs the other face. `back_image_urls` asks Scryfall only for
+names with " // " and caches each answer in the same `images.json` under `back:<name>`.
+A split, Adventure or Room card has one image showing both halves, so it is cached as ""
+and never asked again: of the Sultai build's 21 split-name cards, 14 have a separate
+back. The artifact target ships `img/lg/<id>--back.jpg` (14 more files, well inside the
+511 cap), and Pages hot-links the URL. The pane and the zoom view have a ⟲ Flip button
+and `f`. Row thumbnails, the hover peek and the sprite stay on the front.
