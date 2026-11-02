@@ -358,3 +358,21 @@ class TestDashboardAndDeploy:
         y = open(os.path.join(REPO, ".github", "workflows", "pages.yml"), encoding="utf-8").read()
         assert "python3 scripts/builder.py site --out _site" in y
         assert "_site/builder.html is missing" in y and "has no data island" in y
+
+
+class TestAddDeck:
+    def test_a_deck_joins_with_its_own_pile_before_the_shared_ones(self, scratch):
+        deck_path, tmp = scratch
+        other = tmp / "deck75.txt"
+        shutil.copy(D.find_deck("75-historic-brawl")["path"], other)
+        b = _new(deck_path)
+        B.add_cards(b, ["Opt"], pile="G")
+        B.set_reason(b, "Opt", "fine")
+        k = B.add_deck(b, str(other), key="T", label="Thranduil")
+        assert k == "T" and [d["key"] for d in b["decks"]] == ["G", "T"]
+        assert [p["key"] for p in b["piles"]] == ["G", "T", "N"]
+        assert set(b["reasons"]["Opt"]["graded_at"]) == {deck_path}       # not re-stamped
+        with pytest.raises(B.BuildError, match="already in this build"):
+            B.add_deck(b, str(other))
+        with pytest.raises(B.BuildError, match="already used"):
+            B.add_deck(b, D.find_deck("96")["path"], key="N")

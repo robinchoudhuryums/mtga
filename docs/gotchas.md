@@ -8811,3 +8811,51 @@ attacks", "a Samurai or Warrior you control" — is not captured. Widening the f
 to singulars adds 492 pool tags across ~100 types, 59 of them `Army` from the amass reminder
 alone; that is a G-67 widening needing its own measured pass, not a follow-on fix.
 
+## [G-89] A Builder page is template + data, and the reason is the only thing stored
+
+**Where it came from (2026-11-01).** The Sultai pile (426 cards for decks 75-historic-brawl
+and 96) was first reviewed on a hand-built claude.ai board whose page held every figure
+directly: each deck's interaction, card advantage, sources, crafts and the `cuts` ranks of
+its list. The first swap made them wrong, and nothing could tell — the page had no link back
+to the deck files. The owner then asked for the board as a standing tool on the GitHub
+Pages site, which made "how does this stay true" the design question.
+
+**The split.** `builds/<slug>/build.json` stores only what a person decided: which decks,
+which piles, where each card sits, and the reason written for it. `builder.derive` reads
+everything else from the deck model at render time (`deck_quality_vector`, `tier_band`,
+`deck_color_sources` limited to the declared colours, `rank_cut_candidates`,
+`deck_role_counts`, `role_coverage_flags`, `owned_qty`, `consistency --tempo`). Migrating the
+Sultai board onto this produced field-identical data on all 426 cards except one line: the
+sources string, where `deck_color_sources` padded a UBG deck with "W1 · R1" from a
+commander-identity land (the G-37/BS11-17 residual) — fixed for display by reading only the
+deck's declared colours.
+
+**Reasons go stale with the deck, not with time.** A reason carries `graded_at`, a 12-char
+hash of each deck's card multiset (quantity + `_ms_key`), so a swap marks it stale and a
+`#: notes:` edit does not. Three "fits neither" cards on the Sultai board had been graded for
+a plan the deck no longer had; the check exists for exactly that. `add-deck` deliberately
+does NOT re-stamp existing reasons — a reason must not claim to have been graded against a
+list it predates.
+
+**What the page must not show or do.** The theme-fit grade is left off: in the Sultai pass it
+read graveyard hate as on-theme in a graveyard deck (G-42) and rated removal tangential,
+and a number on a card row reads as a verdict. Picks never write: `builder.py picks`
+validates a copied block against the CURRENT deck (a cut must be in it, an add must not, a
+protect request must change the header) and names everything it drops. Hidden roles
+("counts as interaction") are shown as "incl. hidden" beside the counted figure and never
+reach the floor letter, for the reason every report-only axis stays out of `tier_band`
+(G-25, G-60, G-86). Ownership corrections become an `/ingest` batch (`reconcile_crafts
+--set-exact`), because they can lower a count.
+
+**The 511-file ceiling.** The first republish with a small and a large image per card was
+refused at 640 entries: an artifact version holds at most 511 files, and one publish at most
+255 files / 64 MB. The claude.ai board now ships one thumbnail sprite (`img/thumbs.jpg`) plus
+one 672 px image per card, which fits about 500 cards. The Pages build hot-links Scryfall and
+has no such limit; its image URLs are cached in `builds/<slug>/images.json` so the offline
+Pages job needs no network.
+
+**Tests that hold it.** `tests/test_builder.py` (data model, staleness, picks parsing,
+render, site, add-deck) and `tests/test_builder_template.py`, which runs the page's own
+`project()`, `isApplied`, `conflicts` and `nextBand` under Node and compares the projection
+with `deck_quality_vector` on a scratch copy of a real deck after the same swap.
+

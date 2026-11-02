@@ -24,6 +24,7 @@ verdict here — it misreads graveyard polarity and interaction (G-42).
 Subcommands:
   new <slug> --decks ID [ID …] [--keys K …] [--title T]
   add <slug> NAME … [--file F] [--pile P] [--src S]
+  add-deck <slug> ID [--key K] [--label L]   a deck joins an existing build, with its own pile
   place <slug> CARD PILE
   reason <slug> CARD --text "…" [--group G]
   hidden <slug> CARD --role interaction|card-advantage [--remove]
@@ -186,6 +187,28 @@ def new_build(slug, deck_ids, keys=None, title=None):
              "cards": [], "reasons": {}}
     save_build(slug, build)
     return build
+
+
+def add_deck(build, did, key=None, label=None):
+    """Add a deck to an existing build (a variant drafted from the pile, say), with its own
+    pile. Existing reasons keep their `graded_at`, so `check` reads them as written before
+    this deck joined — a reason never claims to have been graded against a list it predates."""
+    d = deck_ref(did)
+    if any(x["id"] == d["id"] for x in build["decks"]):
+        raise BuildError(f"deck {did!r} is already in this build")
+    meta, _ = _deck().parse_deck_file(d["path"])
+    label = label or (meta.get("commander") or d.get("name") or did).split(",")[0].split(" ")[0]
+    used = set(_deck_keys(build)) | set(_pile_keys(build))
+    k = key or label[:1].upper() or "D"
+    if k in used:
+        if key:
+            raise BuildError(f"key {k!r} is already used by a deck or pile")
+        k = next(f"{k}{i}" for i in range(2, 99) if f"{k}{i}" not in used)
+    build["decks"].append({"key": k, "id": d["id"], "label": label})
+    piles = build.setdefault("piles", [])
+    at = next((i for i, p in enumerate(piles) if p.get("deck") is None), len(piles))
+    piles.insert(at, {"key": k, "label": f"{label}'s pile", "deck": k, "intro": ""})
+    return k
 
 
 def add_cards(build, names, pile=None, src="added"):
@@ -839,6 +862,8 @@ def main(argv=None):
     p.add_argument("slug"); p.add_argument("names", nargs="*")
     p.add_argument("--file", help="a file of names, one per line (Arena export lines work); - for stdin")
     p.add_argument("--pile"); p.add_argument("--src", default="added")
+    p = sub.add_parser("add-deck", help="add a deck (and its pile) to an existing build")
+    p.add_argument("slug"); p.add_argument("id"); p.add_argument("--key"); p.add_argument("--label")
     p = sub.add_parser("place", help="move a card to a pile")
     p.add_argument("slug"); p.add_argument("card"); p.add_argument("pile")
     p = sub.add_parser("reason", help="record why a card is or is not in a deck")
@@ -888,6 +913,10 @@ def main(argv=None):
             added, present = add_cards(b, _read_names(args), args.pile, args.src)
             save_build(args.slug, b)
             print(f"Added {len(added)} card(s)" + (f"; already present: {', '.join(present)}" if present else ""))
+        elif args.cmd == "add-deck":
+            k = add_deck(b, args.id, args.key, args.label)
+            save_build(args.slug, b)
+            print(f"Added deck {args.id} as {k} (pile {k})")
         elif args.cmd == "place":
             n = place_card(b, args.card, args.pile)
             save_build(args.slug, b)

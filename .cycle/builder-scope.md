@@ -1,6 +1,6 @@
 # Builder — implementation plan (2026-11-01)
 
-**Status: batch 1 DONE 2026-11-01; batch 2 + 2a DONE 2026-11-01 (`scripts/builder_template.html`, `builder.py render`, Sultai board republished, `.cycle/board/src/` retired); batch 2b DONE 2026-11-01 (compare view, hidden roles, ownership queue, applied, conflicts, undo, next band, curve); batch 3 DONE 2026-11-02 (`builder.py site`, dashboard link + section, pages.yml build + verify, scenario 25); next 4, then alternate printings.** Grew out of the Sultai pile board
+**Status: batch 1 DONE 2026-11-01; batch 2 + 2a DONE 2026-11-01 (`scripts/builder_template.html`, `builder.py render`, Sultai board republished, `.cycle/board/src/` retired); batch 2b DONE 2026-11-01 (compare view, hidden roles, ownership queue, applied, conflicts, undo, next band, curve); batch 3 DONE 2026-11-02 (`builder.py site`, dashboard link + section, pages.yml build + verify, scenario 25); batch 4 DONE 2026-11-02 (skills wired, `add-deck`, CLAUDE.md G-89); next and last: view-only alternate printings, then delete this file.** Grew out of the Sultai pile board
 (https://claude.ai/artifact/RfDuwKXX3WmTHYcUrLTgAR, source `.cycle/board/`), which the owner called
 "basically what I wanted as a deck building tool for the GitHub Pages deployment". Four
 `/broad-implement`-sized batches below. Delete this file, or fold it into `.cycle/blocks/`, once

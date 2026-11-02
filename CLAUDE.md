@@ -1427,6 +1427,23 @@ is protecting.
   files while a suite runs** (the guard fails it, correctly); if it fires, `git checkout
   -- <file>`, delete the new `.bak`, and give the offending test a path fixture. [G-88]
 
+- **A BUILDER PAGE IS TEMPLATE + DATA, AND THE REASON IS THE ONLY THING STORED.** A pile
+  graded against decks lives in `builds/<slug>/build.json` (decks, piles, placements,
+  reasons) and is rendered by `scripts/builder.py` through `scripts/builder_template.html`;
+  oracle text, owned counts, roles, each deck's floor / interaction / sources and `cuts`
+  ranks are DERIVED at render from the deck model. The first board typed those figures into
+  the page and they went stale at the first swap. **A reason is graded against a deck
+  VERSION** (`graded_at`, a hash of each list), so `builder.py check` and a soft `check_all`
+  line name it once a deck changes — re-read it, do not re-stamp it blindly. **The
+  theme-fit grade is NOT shown as a verdict**: it misreads graveyard polarity (G-42) and
+  rates removal tangential. **The page edits nothing**: a pick is a request that
+  `builder.py picks` turns into checked `swap --package` / protect / `/ingest` lines for
+  `/apply-changes`, and hidden roles sit beside the counted figures, never in the floor
+  (G-25). Restyle the TEMPLATE, never a rendered page — `.cycle/board*/index.html` is
+  regenerated. An artifact version holds at most **511 files**, so the claude.ai board
+  ships one thumbnail sprite plus a 672 px image per card (~500 cards); Pages hot-links
+  Scryfall. `/pile-analysis` Stage 6 owns publishing and the request queue. [G-89]
+
 ## Known Issues
 
 Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
@@ -1705,7 +1722,8 @@ earned it: [C-01]
   (signature in the gitignored `.cycle/.tests-green-sig`; `rm` it to force) [C-05]
 - Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json,
   scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml,
-  scripts/app.py, templates/, Makefile [C-06]
+  scripts/app.py, templates/, Makefile, scripts/builder.py + scripts/builder_template.html
+  + builds/ (the Builder, G-89) [C-06]
 - Testing: tests/ (35 test files + conftest: the markup-contract, CLI-entry-point and
   command-output, analysis-model, gate-pinning, shared-primitive and ingest layers, the
   2026-08 ingest-writer / sync-guard / resilience-layer / CLI-filter coverage of the

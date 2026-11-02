@@ -46,6 +46,8 @@ Updated: 2026-10-31 (deck-95 session tooling fixes — see Where I left off)
 
 ## Completed this cycle
 
+- **2026-11-02 — Builder batch 4** (block `builder-batch4-broad-implement.md`): /pile-analysis, /draft-deck and
+  /apply-changes wired to Builder projects (incl. request processing); `builder.py add-deck`; CLAUDE.md G-89.
 - **2026-11-02 — Builder batch 3** (block `builder-batch3-broad-implement.md`): `builder.py site` (Pages, offline):
   builder.html picker + builds/<slug>.html; dashboard ⚒ link + Builder section; pages.yml build + verify;
   scenario 25, README, systems-map §5c.
@@ -440,6 +442,9 @@ Updated: 2026-10-31 (deck-95 session tooling fixes — see Where I left off)
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
+**2026-11-02 (latest) — Builder batch 4 done** (block `builder-batch4-broad-implement.md`). Suite green, check_all OK.
+**Next:** the last approved Builder item — view-only alternate Arena printings; /sync-docs for two G-35 figures.
+
 **2026-11-02 (latest) — Builder batch 3 done** (block `builder-batch3-broad-implement.md`). Publishes on the next merge to main.
 **Next:** Builder batch 4 (skills wiring, request processing, CLAUDE.md entry), then alternate printings.
 
