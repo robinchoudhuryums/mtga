@@ -1452,11 +1452,11 @@ is protecting.
   `builder.py picks` turns into checked `swap --package` / protect / `flex --add` / `/ingest`
   lines for `/apply-changes` (a pile move is a request too), and hidden roles sit beside the counted figures, never in the floor
   (G-25). Restyle the TEMPLATE, never a rendered page — `.cycle/board*/index.html` is
-  regenerated. An artifact version holds at most **511 files**, so the claude.ai board
-  ships one thumbnail sprite plus a 672 px image per card (~500 cards); Pages hot-links
-  Scryfall. A two-faced card ships its BACK too (`back:` in `images.json`; the pane and zoom flip with `f`). **Alternate printings are VIEW-ONLY** (`printings.json`, Scryfall `unique:art`, so a
+  regenerated (the 511-file artifact limit: long form). **A ONE-DECK build drops what only tells decks apart**: it opens on Compare, piles
+  become a filter, candidates sit in verdict sections (✗ collapsed), the deck panel carries
+  the live curve; Copy as text stays deck-named (`FULLLAB`). A two-faced card ships its BACK too (the pane and zoom flip with `f`). **Alternate printings are VIEW-ONLY** (`printings.json`, Scryfall `unique:art`, so a
   frame-only variant of the same art is never listed): a deck line keeps the pool's one printing
-  (G-65). A deck key is never `B`/`N`, the shared piles' keys. `/pile-analysis` Stage 6 owns
+  (G-65). `/pile-analysis` Stage 6 owns
   publishing and the request queue. [G-89]
 
 ## Known Issues
@@ -2023,13 +2023,18 @@ format.
     filters and sort by verdict; on an added card open "Choose a cut", hover and arrow
     through it (the preview follows) and pick one; in Compare click a deck card (the pile
     card must stay selected); bulk-mark the shown cards, then press `u` once; queue a pile
-    move from the pane; on a build of four or more decks open a row's ⋯ menu.
+    move from the pane; on a build of four or more decks open a row's ⋯ menu. Then a ONE-DECK
+    build (`builder.py new <slug> --decks <id>`, rendered with `site` or `render`): open
+    and collapse a verdict section, change the Pile menu, mark an add and watch the deck
+    panel's curve, reload.
     Expected: card images load (hot-linked from Scryfall); ← Dashboard returns; the theme
     matches the dashboard's; the curve and conflict box update; undo reverses the last
     change; the copied block holds `swap --package`, ownership and hidden-role lines that
     `python3 scripts/builder.py picks <slug> -` reads back; no sideways body scroll on a phone.
     The cut list does not jitter under the pointer; one `u` reverses a whole bulk mark; the
-    move shows "queued for Claude" and counts on the Add cards tab.
+    move shows "queued for Claude" and counts on the Add cards tab. The one-deck page opens
+    on Compare with no pile tabs and no deck letters on its buttons; ✗ starts collapsed and
+    a collapsed section stays collapsed after the reload; the curve moves with each pick.
     The Pages job refuses a listed project page with no data island, but how the page
     looks and feels is perceptual and unverified.
 

@@ -9049,3 +9049,25 @@ and never asked again: of the Sultai build's 21 split-name cards, 14 have a sepa
 back. The artifact target ships `img/lg/<id>--back.jpg` (14 more files, well inside the
 511 cap), and Pages hot-links the URL. The pane and the zoom view have a ⟲ Flip button
 and `f`. Row thumbnails, the hover peek and the sprite stay on the front.
+
+**2026-11-02 — one-deck builds.** The owner said most builds will be for one deck, and a walk
+of a one-deck copy of the Sultai board showed a page still laid out to compare decks: a `+G`
+`⏸G` `⊘G` button triple on every row, verdict tags reading `G ★★`, a Compare tab that opened
+on a one-option deck picker, the curve two tabs away, and an "In list" filter with nothing to
+choose between. `ONE = DK.length===1` now gates five changes, and every two-deck path is
+untouched:
+- Compare is the home view, and the pile tabs become a Pile menu in the toolbar. The menu
+  shows each pile's decided count, and the toolbar's filters, sort and bulk marks apply to
+  Compare's candidate column (`toolbarFilter`, split out of `filtered`). The "In list"
+  filter is HIDDEN rather than narrowed to In deck / Not in deck: the left column already
+  excludes the deck's cards and the right column IS the deck, so it would filter nothing.
+- The deck panel carries the live curve and the next-band line.
+- Buttons read `+ Add` / `Bench` / `Keep out` / `− Cut`.
+- Verdict and Decision lose their per-deck options.
+- The candidates are grouped into verdict sections (`verdictSections`): ★★★…△, then
+  ungraded, then ✗. ✗ starts collapsed and the choice is kept in `builder-prefs`. A
+  collapsed section is out of `COLIDS.L`, so j/k and bulk marks skip it, and a jump to a
+  card in it opens the section first (`revealCand`).
+
+The shown labels (`PICKLAB`) leave the deck out, but Copy as text reads `FULLLAB`, so the
+block `builder.py picks` parses is the same on one deck as on two.
