@@ -1843,6 +1843,17 @@ _PERM_TYPE_LIST = rf"{_PERM_TYPE}s?(?:,? (?:or |and )?{_PERM_TYPE}s?)*"
 # control/own (blink, self-sacrifice tricks) and not a CARD (graveyard hate).
 _NOT_OWN_OR_CARD = r"(?! cards?\b)(?![^.]{0,25}?\byou (?:control|own)\b)"
 
+# COPY EFFECTS — the three templatings the `Payoff / engine` role reads (2026-10-07), named
+# so `legend_copy_conflicts` asks the SAME question rather than a drifting copy (G-40).
+_COPY_EFFECT_PATTERNS = (
+    r"tokens? (?:that'?s|that are) (?:a )?cop(?:y|ies) of (?:target|another target"
+    r"|up to \w+ (?:other )?target|each|that|those|the chosen|the exiled|enchanted"
+    r"|equipped|a creature|another)",
+    r"enters? as a copy of",
+    r"becomes? a copy of (?:another|target|that|the exiled|up to)",
+)
+_COPY_EFFECT_RES = tuple(re.compile(p) for p in _COPY_EFFECT_PATTERNS)
+
 _ROLE_PATTERNS = {
     "Removal (spot)": [
         # destroy / exile a targeted permanent, including a comma-or list of types, and
@@ -2663,11 +2674,9 @@ _ROLE_PATTERNS = {
         # self-recursion like Sphinx of False Conclusions' death trigger off this list),
         # "enter as a copy of", and "becomes a copy of". Payoff is NOT a `tier_band` term,
         # so this moves `cuts` / `suggest-homes` credit and no tier floor.
-        r"tokens? (?:that'?s|that are) (?:a )?cop(?:y|ies) of (?:target|another target"
-        r"|up to \w+ (?:other )?target|each|that|those|the chosen|the exiled|enchanted"
-        r"|equipped|a creature|another)",
-        r"enters? as a copy of",
-        r"becomes? a copy of (?:another|target|that|the exiled|up to)",
+        # The three templatings live in `_COPY_EFFECT_PATTERNS` (Batch C, 2026-11-02) so the
+        # legend-rule advisory in `deck.py targets` reads the SAME predicate (G-40).
+        *_COPY_EFFECT_PATTERNS,
         r"deals? double that damage",
         r"double all damage that sources you control",
         r"copy target (?:instant|sorcery|creature)[^\n.]{0,25}?spell",
@@ -17549,6 +17558,129 @@ def state_gate_counts(cards, carddata, mana):
     return out
 
 
+# ── LEGEND RULE vs COPY EFFECTS (Batch C, 2026-11-02) ────────────────────────────────
+#
+# A copy of a LEGENDARY permanent you control is a second permanent with the same name,
+# so the legend rule makes you put one of them into the graveyard. A copy effect is
+# worth what it copies (the `Payoff / engine` argument, 2026-10-07), and in a deck whose
+# creatures are mostly legendary a copy that KEEPS legendary status has few good targets
+# of your own. Deck 32 ran 17 legendary creatures of 24 against five such effects and
+# nothing said so. This reads the copy cards through `_COPY_EFFECT_RES`, the SAME
+# predicate the role classifier uses (G-40), then sorts each by what it does to the
+# legend rule. Report-only.
+_LEGEND_RULE_OFF_RE = re.compile(r"legend rule\"? doesn'?t apply to permanents you control"
+                                 r"(?! this turn)")
+_LEGEND_RULE_ANY_OFF_RE = re.compile(r"legend rule\"? doesn'?t apply")
+# "except it isn't legendary" / "except its name is Lazav" — the copy cannot collide.
+_COPY_STRIPS_RE = re.compile(r"except\b[^.]{0,120}?(?:\b(?:isn'?t|aren'?t|is not|are not|"
+                             r"it'?s not|they'?re not) legendary|(?:its|his|her|their) name is)")
+_COPY_TYPE_WORDS = ("creature", "artifact", "enchantment", "planeswalker", "land")
+# "permanent" in a copy clause means any of these (a land copy is a different question,
+# and no roster copy effect targets lands alone).
+_COPY_PERMANENT_TYPES = ("creature", "artifact", "enchantment", "planeswalker")
+# Share of the copyable pool that is legendary at which a keep-legendary copy effect is
+# flagged. Calibrated on the 2026-11-02 roster (134 deck files): 37 run a keep-legendary
+# copy effect, and across their 68 rows the copyable pool's legendary share runs p25 0.35
+# / p50 0.51 / p75 0.59. "Two in three" fires on 8 of those 37 decks (22%), under the top
+# quartile, so a legend-heavy Brawl list is not flagged for being one (G-07).
+_LEGEND_COPY_FLAG_SHARE = 0.67
+
+
+def _copy_effect_kind(text):
+    """(kind, types) for one card's copy clause, or None when the text holds no copy
+    effect. `kind` is "keeps" (the copy stays legendary), "strips" (except it isn't
+    legendary / takes another name), "nonlegendary" (it can only copy a nonlegendary
+    permanent), "self-safe" (the card switches the legend rule off for its own turn),
+    "card" (copies a CARD in a graveyard, hand or exile, which is not on the battlefield
+    to collide with), "token" (copies tokens, which are not deck cards and so cannot be
+    counted from the list) or "opponent" (copies only what an opponent controls). `types` is the set of permanent
+    types it can copy."""
+    t = _norm_role_text(text)
+    m = None
+    for rx in _COPY_EFFECT_RES:
+        m = rx.search(t)
+        if m:
+            break
+    if not m:
+        return None
+    lo = t.rfind("\n", 0, m.start()) + 1
+    hi = t.find("\n", m.end())
+    line = t[lo:] if hi < 0 else t[lo:hi]
+    before = t[lo:m.start()]
+    tail = t[m.start():] if hi < 0 else t[m.start():hi]
+    # What it copies: from "copy of" up to the `except` rider or the sentence end. The
+    # match itself is left out, since "create a TOKEN that's a copy of" names the result,
+    # not the thing copied.
+    om = re.search(r"cop(?:y|ies) of", tail)
+    obj = tail[om.end():] if om else tail
+    phrase = re.split(r"\bexcept\b|[.;]", obj, maxsplit=1)[0][:140]
+    words = [w for w in _COPY_TYPE_WORDS if re.search(rf"\b{w}s?\b", phrase)]
+    if re.search(r"\bpermanents?\b", phrase):
+        words = sorted(set(words) | set(_COPY_PERMANENT_TYPES))
+    if not words:
+        words = [w for w in _COPY_TYPE_WORDS if re.search(rf"\b{w}s?\b", line)] or ["creature"]
+    types = frozenset(words)
+    if _LEGEND_RULE_ANY_OFF_RE.search(t):
+        return "self-safe", types
+    if _COPY_STRIPS_RE.search(tail):
+        return "strips", types
+    if "nonlegendary" in phrase or re.search(r"\bif\b[^.]{0,80}?isn'?t legendary", before):
+        return "nonlegendary", types
+    # "for each creature token you control, create a token that's a copy of that
+    # creature" (Rhys the Redeemed) copies tokens through an anaphor.
+    if re.search(r"\btokens?\b", phrase) or re.search(r"for each [^,]{0,30}\btokens?\b", before):
+        return "token", types
+    if (re.search(r"\bcards?\b|graveyard|the exiled", phrase)
+            and not re.search(r"on the battlefield|you control", phrase)):
+        return "card", types
+    if re.search(r"opponent controls|you don'?t control|an opponent", phrase):
+        return "opponent", types
+    return "keeps", types
+
+
+def legend_copy_conflicts(cards, carddata):
+    """{"rows": [(card, kind, types, legendary, pool, flag)], "off": [card…]}.
+
+    One row per copy effect in the list (`_copy_effect_kind`). For a "keeps" row,
+    `legendary` / `pool` count the OTHER permanents in the deck it could copy, and
+    `flag` is True when the legendary share reaches `_LEGEND_COPY_FLAG_SHARE` and
+    nothing in the deck switches the legend rule off (`off` names any card that does,
+    e.g. Sakashima of a Thousand Faces). Quantity-weighted, front-face types (G-63).
+    Report-only and heuristic: it cannot see WHICH target you will pick."""
+    entries = []
+    for q, n, _s, _c in cards:
+        nl = n.lower()
+        if nl in BASICS:
+            continue
+        cd = carddata.get(nl) or carddata.get(nl.split(" // ")[0]) or {}
+        entries.append((q, n, (cd.get("type") or "").split("//")[0].strip().lower(),
+                        cd.get("text") or ""))
+    off = sorted({n for _q, n, _ty, text in entries
+                  if _LEGEND_RULE_OFF_RE.search(_norm_role_text(text))})
+    rows, seen = [], set()
+    for _q, n, _ty, text in entries:
+        if n in seen:
+            continue
+        seen.add(n)
+        hit = _copy_effect_kind(text)
+        if not hit:
+            continue
+        kind, types = hit
+        pool = leg = 0
+        for q2, n2, ty2, _t2 in entries:
+            if n2 == n or not any(w in ty2 for w in types):
+                continue
+            if "land" in ty2 and "land" not in types and "creature" not in ty2:
+                continue
+            pool += q2
+            if "legendary" in ty2:
+                leg += q2
+        flag = (kind == "keeps" and not off and pool > 0
+                and leg / pool >= _LEGEND_COPY_FLAG_SHARE)
+        rows.append((n, kind, types, leg, pool, flag))
+    return {"rows": rows, "off": off}
+
+
 def dead_library_searches(cards, carddata, mana):
     """[(card, gate_label)] for library SEARCHES in this deck that can find NOTHING —
     the deck 76 bug class (G-61).
@@ -17579,6 +17711,7 @@ def cmd_targets(args):
         print("  No gated effects detected (no MV cap, sacrifice cost or count threshold "
               "in this list's text).")
         _print_state_gates(cards)
+        _print_legend_copies(cards)
         return 0
     print(f"  {'Card':32} {'What its text needs':42} {'in deck':>7}")
     print("  " + "-" * 84)
@@ -17599,7 +17732,51 @@ def cmd_targets(args):
           "behind it is a dead card, and a card graded in isolation cannot show you that "
           "(G-61). Counts exclude the card itself; read the list, not just the number.")
     _print_state_gates(cards)
+    _print_legend_copies(cards)
     return 0
+
+
+_LEGEND_KIND_NOTE = {
+    "strips": "the copy isn't legendary / takes another name",
+    "nonlegendary": "can copy only a nonlegendary permanent",
+    "self-safe": "switches the legend rule off for its own copy",
+    "card": "copies a CARD off the battlefield",
+    "token": "copies tokens (not countable from the list)",
+    "opponent": "copies only what an opponent controls",
+}
+
+
+def _print_legend_copies(cards):
+    """The third half of the targets report (Batch C): copy effects that KEEP legendary
+    status, against how much of what they could copy is legendary. A copy of your own
+    legend is a second permanent of that name, and the legend rule takes one."""
+    res = legend_copy_conflicts(cards, load_card_data())
+    rows = res["rows"]
+    if not rows:
+        return
+    keeps = [r for r in rows if r[1] == "keeps"]
+    if keeps:
+        print(f"\n  {'Copy effect (stays legendary)':32} {'Copies':26} {'legendary':>15}")
+        print("  " + "-" * 84)
+        for name, _kind, types, leg, pool, flag in sorted(
+                keeps, key=lambda r: (-(r[3] / r[4]) if r[4] else 0, r[0])):
+            share = f"{leg} of {pool}" + (f" ({leg / pool:.0%})" if pool else "")
+            mark = "  ⚠ legend rule" if flag else ""
+            print(f"  {name[:32]:32} {', '.join(sorted(types))[:26]:26} {share:>15}{mark}")
+    others = [r for r in rows if r[1] != "keeps"]
+    if others:
+        print("  Not counted: " + "; ".join(
+            f"{r[0]} ({_LEGEND_KIND_NOTE[r[1]]})" for r in sorted(others)))
+    if res["off"]:
+        print("  The legend rule is OFF in this deck (" + ", ".join(res["off"]) + "), so "
+              "nothing is flagged.")
+    nflag = sum(1 for r in keeps if r[5])
+    if keeps:
+        print(f"\n  {len(keeps)} copy effect(s) keep legendary status; {nflag} copy from a "
+              f"pool at least {_LEGEND_COPY_FLAG_SHARE:.0%} legendary. Copying one of your "
+              "own legends makes a second permanent of that name, and the legend rule makes "
+              "you put one into the graveyard. Counts are the OTHER cards of the copyable "
+              "types in this list. Report-only: it cannot see which target you will pick.")
 
 
 _STATE_FLAG = {"dead": "  ✗ CANNOT turn on", "thin": "  ⚠ thin",

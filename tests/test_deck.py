@@ -6092,6 +6092,97 @@ class TestProposedAddGateCheck:
         assert "Halfling" in note and "0 in this deck" in note, note
 
 
+class TestLegendCopyConflicts:
+    """Batch C (2026-11-02): copy effects that KEEP legendary status against how much of
+    what they could copy is legendary. Real oracle texts throughout; each class below was
+    a misread on the first roster run, so each is pinned."""
+
+    HALLCREEPER = ("Enchantment Creature — Horror",
+                   "This creature can't be blocked.\nWhenever this creature deals combat "
+                   "damage to a player, choose one that hasn't been chosen —\n• Put two "
+                   "+1/+1 counters on this creature.\n• Draw a card.\n• This creature "
+                   "becomes a copy of another target creature you control.")
+    CHAMELEON = ("Legendary Creature — Human Shapeshifter Villain",
+                 "You may have Chameleon enter as a copy of a creature you control, except "
+                 "his name is Chameleon, Master of Disguise.")
+    KIKI = ("Legendary Creature — Goblin Shaman",
+            "Haste\n{T}: Create a token that's a copy of target nonlegendary creature you "
+            "control, except it has haste. Sacrifice it at the beginning of the next end "
+            "step.")
+    SAKASHIMA = ("Legendary Creature — Human Rogue",
+                 "You may have Sakashima enter as a copy of another creature you control, "
+                 "except it has Sakashima's other abilities.\nThe \"legend rule\" doesn't "
+                 "apply to permanents you control.")
+    GHIRED = ("Legendary Creature — Human Shaman",
+              "Haste\nNontoken creatures you control have \"{T}: Create a token that's a "
+              "copy of target token you control that entered this turn.\"")
+    ARDYN = ("Legendary Creature — Elder Human Noble",
+             "Starscourge — At the beginning of combat on your turn, exile up to one target "
+             "creature card from a graveyard. If you exiled a card this way, create a token "
+             "that's a copy of that card, except it's a 5/5 black Demon.")
+    CROWN = ("Artifact — Equipment",
+             "As long as this Equipment is attached to a creature, the first time you would "
+             "create one or more tokens each turn, you may instead create that many tokens "
+             "that are copies of equipped creature.\nEquip {2}")
+    BRIGID = ("Kindred Sorcery — Kithkin",
+              "Choose two —\n• Create a token that's a copy of target Kithkin you control.\n"
+              "• Target creature you control fights target creature an opponent controls.")
+    LEGEND = ("Legendary Creature — Elf", "Flying")
+    PLAIN = ("Creature — Elf", "Reach")
+
+    def _cd(self, **cards):
+        return {n.lower(): {"name": n, "type": ty, "text": tx}
+                for n, (ty, tx) in cards.items()}
+
+    def _kind(self, card):
+        return deck._copy_effect_kind(card[1])[0]
+
+    def test_the_copy_predicate_is_the_role_classifiers_own(self):
+        # G-40: one predicate, two readers. If the role table stops spreading the shared
+        # tuple, the advisory and `Payoff / engine` would drift apart silently.
+        for pat in deck._COPY_EFFECT_PATTERNS:
+            assert pat in deck._ROLE_PATTERNS["Payoff / engine"]
+        assert "Payoff / engine" in deck.classify_roles(self.HALLCREEPER[1])
+
+    def test_kinds(self):
+        assert self._kind(self.HALLCREEPER) == "keeps"
+        assert self._kind(self.BRIGID) == "keeps"   # its "opponent controls" is a
+        # different mode; only the copy clause is read
+        assert self._kind(self.CROWN) == "keeps"    # "copies of", not "copy of"
+        assert self._kind(self.CHAMELEON) == "strips"   # "except HIS name is"
+        assert self._kind(self.KIKI) == "nonlegendary"
+        assert self._kind(self.SAKASHIMA) == "self-safe"
+        assert self._kind(self.GHIRED) == "token"
+        assert self._kind(self.ARDYN) == "card"
+        assert deck._copy_effect_kind(self.PLAIN[1]) is None
+
+    def test_a_legend_heavy_pool_flags_and_a_nonlegendary_one_does_not(self):
+        cd = self._cd(Hallcreeper=self.HALLCREEPER, Legend=self.LEGEND, Plain=self.PLAIN)
+        heavy = deck.legend_copy_conflicts(
+            [(1, "Hallcreeper", "", ""), (3, "Legend", "", ""), (1, "Plain", "", "")], cd)
+        name, kind, _types, leg, pool, flag = heavy["rows"][0]
+        # The card itself is not its own target: 3 of the 4 OTHER creatures are legends.
+        assert (name, kind, leg, pool, flag) == ("Hallcreeper", "keeps", 3, 4, True)
+        light = deck.legend_copy_conflicts(
+            [(1, "Hallcreeper", "", ""), (1, "Legend", "", ""), (3, "Plain", "", "")], cd)
+        assert light["rows"][0][5] is False
+
+    def test_a_deck_wide_legend_rule_switch_silences_the_flag(self):
+        cd = self._cd(Hallcreeper=self.HALLCREEPER, Legend=self.LEGEND,
+                      Sakashima=self.SAKASHIMA)
+        res = deck.legend_copy_conflicts(
+            [(1, "Hallcreeper", "", ""), (4, "Legend", "", ""), (1, "Sakashima", "", "")], cd)
+        assert res["off"] == ["Sakashima"]
+        assert not any(r[5] for r in res["rows"])
+
+    def test_only_keeps_rows_can_flag(self):
+        cd = self._cd(Chameleon=self.CHAMELEON, Kiki=self.KIKI, Legend=self.LEGEND)
+        res = deck.legend_copy_conflicts(
+            [(1, "Chameleon", "", ""), (1, "Kiki", "", ""), (4, "Legend", "", "")], cd)
+        assert {r[1] for r in res["rows"]} == {"strips", "nonlegendary"}
+        assert not any(r[5] for r in res["rows"])
+
+
 class TestStateGateCounts:
     """The gate family `_TARGET_GATES` structurally could not answer: a card gated on a
     GAME STATE rather than on cards in the list.

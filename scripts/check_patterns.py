@@ -257,6 +257,10 @@ def _pattern_groups():
                  # value is a COUNT in the deck ("damage equal to the number of
                  # Swamps you control") reads at its floor in every model here.
                  "_DECK_STATE_AXIS_RE",
+                 # Batch C (2026-11-02): the legend-rule advisory's own sorters. They
+                 # read `_norm_role_text`, so a dead one would silently move every copy
+                 # effect into "keeps" (or out of it).
+                 "_LEGEND_RULE_OFF_RE", "_LEGEND_RULE_ANY_OFF_RE", "_COPY_STRIPS_RE",
                  # Added by broad-scan F-04 — live, but previously uncovered.
                  # (`_REMINDER_RE` moved to the RAW group below at BS8-30: the norm
                  # corpus is now reminder-stripped, so it matches nothing there BY DESIGN.)
