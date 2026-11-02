@@ -30,12 +30,19 @@
 #: notes: Darkbore Pathway, Wastewood Verge and a Swamp — B sources 17→20 for the eight {B}{B} cards (59%→66% on
 #: notes: curve at T5), mean colour access 76.2→78.3%, tapped-land cost 2.4→2.0 points a card (`consistency --tempo`).
 #: notes: The surveil taplands (Hedge Maze, Underground Mortuary, Undercity Sewers) STAY: they bin Elves for Thranduil.
+#: notes: SYNERGY FIRST (owner, 2026-11-02): graveyard / recursion / mana / card-advantage synergies come first and
+#: notes: being an Elf is the TIEBREAKER — an Elf whose only value is Elf count or a lord bonus is a cut candidate.
+#: notes: Thranduil's own loot and borrowed abilities count as synergy. Nine Elf-only cards went out (Dwynen, Shaman of
+#: notes: the Pack, Abomination of Llanowar, Elvish Warmaster, Skemfar Avenger, Elderfang Ritualist, Morcant's Loyalist,
+#: notes: Bounty of Skemfar, Harald, King of Skemfar) for Yarok, Sidisi, Wrenn and Seven, Deathrite Shaman, Eladamri,
+#: notes: Kinnan, Yawgmoth, Kotis and Ioreth; Elves 39→33. Lathril and Voice stay protected: Imperious Perfect,
+#: notes: Thranduil, Sindarin Liege's landfall and Morcant's Eyes make Elf tokens. Kotis's exile cost spends non-Elf cards.
 
 
 # Commander (leads from the command zone; also one of the 100)
 1 Thranduil, the Elvenking (HOB) 167
 
-# Elf mana — on the battlefield they ramp; in the graveyard Thranduil taps for them
+# Elf mana — on the battlefield they ramp; in the graveyard Thranduil taps for them; Kinnan doubles them
 1 Llanowar Elves (FDN) 227
 1 Elvish Mystic (HOC) 205
 1 Paradise Druid (WAR) 171
@@ -47,16 +54,18 @@
 1 Deathbloom Ritualist (BRO) 208
 1 Woodland Weavemaster (HOB) 143
 1 Selvala, Heart of the Wilds (JMP) 429
+1 Kinnan, Bonder Prodigy (IKO) 192
 
-# Elf engines — activated abilities Thranduil borrows from the graveyard
+# Elf engines — activated abilities Thranduil borrows from the graveyard; Ioreth untaps him for a second use
 1 Fauna Shaman (BRO) 179
 1 Imperious Perfect (FDN) 719
-1 Elvish Warmaster (KHM) 167
+1 Deathrite Shaman (EA3) 15
 1 Voice of the Woods (J25) 738
 1 Dionus, Elvish Archdruid (J25) 52
 1 Lathril, Blade of the Elves (FDN) 242
 1 High Perfect Morcant (ECL) 229
 1 Elrond, Moon-Reader (HOB) 36
+1 Ioreth of the Healing House (LTR) 56
 
 # Legendary Elves — each one entering is Thranduil's draw two, discard one
 1 Maralen, Fae Ascendant (ECL) 233
@@ -65,22 +74,15 @@
 1 Kagha, Shadow Archdruid (HBG) 236
 1 Trystan, Callous Cultivator (ECL) 199
 1 Lluwen, Imperfect Naturalist (ECL) 232
-1 Dwynen, Gilt-Leaf Daen (FDN) 217
 1 Izoni, Thousand-Eyed (GRN) 180
-1 Harald, King of Skemfar (KHM) 212
+1 Eladamri, Korvecdal (MH3) 149
 
-# Elf support — lords, self-mill and Elf-card recursion
+# Elf support — self-mill and Elf-card payoffs
 1 Cantankerous Keepers (HOB) 122
 1 Dawnhand Eulogist (ECL) 99
-1 Elderfang Ritualist (KHM) 385
-1 Skemfar Avenger (KHM) 109
-1 Morcant's Loyalist (ECL) 236
 1 Gloom Ripper (ECL) 102
-1 Abomination of Llanowar (HA4) 20
 1 Leaf-Crowned Visionary (DMU) 167
-1 Shaman of the Pack (EA2) 20
 1 Morcant's Eyes (ECL) 185
-1 Bounty of Skemfar (J25) 638
 1 Harald Unites the Elves (KHM) 213
 
 # Graveyard engine — recast, reanimate, and payoffs for cards leaving the graveyard
@@ -93,6 +95,11 @@
 1 Journey to Eternity // Atzal, Cave of Eternity (RIX) 160
 1 Sheoldred, Whispering One (MUL) 16
 1 Wrenn and Realmbreaker (MOM) 217
+1 Yarok, the Desecrated (M20) 220
+1 Sidisi, Brood Tyrant (KTK) 199y
+1 Wrenn and Seven (MID) 208
+1 Yawgmoth, Thran Physician (FCA) 11
+1 Kotis, Sibsig Champion (TDC) 5
 
 # Interaction
 1 Price of Fame (GRN) 83

@@ -201,7 +201,9 @@ Delirium — This creature gets +1/+2 and has vigilance as long as there are fou
 "Kalitas, Traitor of Ghet",Legendary Creature — Vampire Warrior,"Lifelink
 If a nontoken creature an opponent controls would die, instead exile that card and create a 2/2 black Zombie creature token.
 {2}{B}, Sacrifice another Vampire or Zombie: Put two +1/+1 counters on Kalitas.",B,Vampire; Warrior; counters; lifegain; sacrifice; tokens; lifelink,EA1,5,Mythic,91,,5.0,seed
-Shaman of the Pack,Creature — Elf Shaman,"When this creature enters, target opponent loses life equal to the number of Elves you control.",B/G,Elf; Shaman; etb,EA2,20,Uncommon,75-historic-brawl,,3.0,seed
+Deathrite Shaman,Creature — Elf Shaman,"{T}: Exile target land card from a graveyard. Add one mana of any color. (Activate only as an instant.)
+{B}, {T}: Exile target instant or sorcery card from a graveyard. Each opponent loses 2 life.
+{G}, {T}: Exile target creature card from a graveyard. You gain 2 life.",B/G,Elf; Shaman; graveyard; lifegain,EA3,15,Rare,75-historic-brawl,,5.0,seed
 Sunken Hollow,Land — Island Swamp,"({T}: Add {U} or {B}.)
 This land enters tapped unless you control two or more basic lands.",U/B,Island; Swamp; mana,EA3,23,Rare,91; 96,,3.0,seed
 End-Blaze Epiphany,Instant,"End-Blaze Epiphany deals X damage to target creature. When that creature dies this turn, exile a number of cards from the top of your library equal to its power, then choose a card exiled this way. Until the end of your next turn, you may play that card.",R,burn,ECL,134,Rare,24,X-burn removal + impulse; Quintorius/exile payoff,6.0,hand
@@ -238,6 +240,9 @@ Landfall — Whenever a land you control enters, this creature gets +1/+0 until 
 Mana Confluence,Land,"{T}, Pay 1 life: Add one mana of any color.",Colorless,pay life,EOS,25,Mythic,95,,5.0,seed
 Ancient Copper Dragon,Creature — Elder Dragon,"Flying
 Whenever this creature deals combat damage to a player, roll a d20. You create a number of Treasure tokens equal to the result.",R,Elder; Dragon; tokens; treasure; flying; evasion,FCA,12,Mythic,92,,6.5,seed
+"Yawgmoth, Thran Physician",Legendary Creature — Human Cleric,"Protection from Humans
+Pay 1 life, Sacrifice another creature: Put a -1/-1 counter on up to one target creature and draw a card.
+{B}{B}, Discard a card: Proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)",B,Human; Cleric; counters; card draw; sacrifice; protection; proliferate,FCA,11,Mythic,75-historic-brawl,,5.0,seed
 "Muldrotha, the Gravetide",Legendary Creature — Elemental Avatar,"During each of your turns, you may play a land and cast a permanent spell of each permanent type from your graveyard. (If a card has multiple permanent types, choose one as you play it.)",U/B/G,Elemental; Avatar; graveyard,FDN,243,Mythic,83; 83a; 75-historic-brawl,,5.5,seed
 Abyssal Harvester,Creature — Demon Warlock,"{T}: Exile target creature card from a graveyard that was put there this turn. Create a token that's a copy of it, except it's a Nightmare in addition to its other types. Then exile all other Nightmare tokens you control.",B,Demon; Warlock; Nightmare; graveyard; tokens; removal,FDN,54,Rare,52a,,7.0,seed
 Adaptive Automaton,Artifact Creature — Construct,"As this creature enters, choose a creature type.
@@ -367,8 +372,6 @@ Inexorable Tide,Enchantment,"Whenever you cast a spell, proliferate. (Choose any
 "Ulamog, the Ceaseless Hunger",Legendary Creature — Eldrazi,"When you cast this spell, exile two target permanents.
 Indestructible
 Whenever Ulamog attacks, defending player exiles the top twenty cards of their library.",Colorless,Eldrazi; indestructible; resilience,HA3,1,Mythic,96,,5.0,seed
-Abomination of Llanowar,Legendary Creature — Elf Horror,"Vigilance; menace (This creature can't be blocked except by two or more creatures.)
-Abomination of Llanowar's power and toughness are each equal to the number of Elves you control plus the number of Elf cards in your graveyard.",B/G,Elf; Horror; graveyard; vigilance; combat; menace; evasion,HA4,20,Uncommon,75-historic-brawl,,2.5,seed
 Glimpse the Unthinkable,Sorcery,Target player mills ten cards.,U/B,mill; graveyard,HA6,8,Rare,96,,3.0,seed
 Nurturing Peatland,Land,"{T}, Pay 1 life: Add {B} or {G}.
 {1}, {T}, Sacrifice this land: Draw a card.",B/G,pay life; card draw; sacrifice,HA7,23,Rare,89,,3.0,seed
@@ -387,6 +390,8 @@ Whenever you draw your second card each turn, target player mills three cards. (
 Smaug the Impenetrable,Legendary Creature — Dragon,"Flying, indestructible, haste
 Whenever Smaug is dealt noncombat damage, create that many Treasure tokens.",B/R,Dragon; tokens; treasure; noncombat damage; flying; evasion; indestructible; resilience; haste; aggro,HOC,9,Rare,92,,6.0,seed
 Elvish Mystic,Creature — Elf Druid,{T}: Add {G}.,G,Elf; Druid; mana,HOC,205,Common,75-historic-brawl,,1.5,seed
+"Kinnan, Bonder Prodigy",Legendary Creature — Human Druid,"Whenever you tap a nonland permanent for mana, add one mana of any type that permanent produced.
+{5}{G}{U}: Look at the top five cards of your library. You may put a non-Human creature card from among them onto the battlefield. Put the rest on the bottom of your library in a random order.",U/G,Human; Druid; selection,IKO,192,Mythic,75-historic-brawl,,5.5,seed
 Zagoth Triome,Land — Swamp Forest Island,"({T}: Add {B}, {G}, or {U}.)
 This land enters tapped.
 Cycling {3} ({3}, Discard this card: Draw a card.)",U/B/G,Swamp; Forest; Island; card draw; mana; cycling,IKO,259,Rare,75-historic-brawl; 96,,3.0,seed
@@ -411,7 +416,6 @@ At the beginning of your upkeep, if you have 40 or more life, you win the game."
 −3: Return target creature card from your graveyard to the battlefield. That creature is a black Zombie in addition to its other colors and types.
 −7: Destroy all non-Zombie creatures.",B,Liliana; planeswalker; reanimator; graveyard; mill; tokens,J25,458,Mythic,91,,10.0,seed
 Voice of the Woods,Creature — Elf,Tap five untapped Elves you control: Create a 7/7 green Elemental creature token with trample. (It can deal excess combat damage to the player or planeswalker it's attacking.),G,Elf; tokens,J25,738,Rare,75-historic-brawl,,3.0,seed
-Bounty of Skemfar,Sorcery,Reveal the top six cards of your library. You may put up to one land card from among them onto the battlefield tapped and up to one Elf card from among them into your hand. Put the rest on the bottom of your library in a random order.,G,,J25,638,Uncommon,75-historic-brawl,,2.5,seed
 "Dionus, Elvish Archdruid",Legendary Creature — Elf Druid,"Elves you control have ""Whenever this creature becomes tapped during your turn, untap it and put a +1/+1 counter on it. This ability triggers only once each turn.""",G,Elf; Druid; counters,J25,52,Uncommon,75-historic-brawl,,4.5,seed
 Bruvac the Grandiloquent,Legendary Creature — Human Advisor,"If an opponent would mill one or more cards, they mill twice that many cards instead. (To mill a card, a player puts the top card of their library into their graveyard.)",U,Human; Advisor; graveyard; mill,JMP,10,Mythic,96,,7.0,seed
 "Drana, Liberator of Malakir",Legendary Creature — Vampire Ally,"Flying, first strike
@@ -430,8 +434,6 @@ Whenever this creature attacks or becomes the target of a spell, create a Treasu
 Treasures you control have ""{T}, Sacrifice this artifact: Add two mana of any one color.""",R,Dragon; treasure; tokens; flying; evasion; haste; aggro,KHM,139,Mythic,92,,7.0,seed
 Barkchannel Pathway // Tidechannel Pathway,Land // Land,{T}: Add {G}. // {T}: Add {U}.,U/G,mana,KHM,251,Rare,95,,4.0,seed
 Darkbore Pathway // Slitherbore Pathway,Land // Land,{T}: Add {B}. // {T}: Add {G}.,B/G,mana,KHM,254,Rare,75-historic-brawl; 96,,4.0,seed
-Elvish Warmaster,Creature — Elf Warrior,"Whenever one or more other Elves you control enter, create a 1/1 green Elf Warrior creature token. This ability triggers only once each turn.
-{5}{G}{G}: Elves you control get +2/+2 and gain deathtouch until end of turn.",G,Elf; Warrior; tokens; pump; deathtouch; combat; removal,KHM,167,Rare,75-historic-brawl,,6.0,seed
 Harald Unites the Elves,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
 I — Mill three cards. You may put an Elf or Tyvar card from your graveyard onto the battlefield.
 II — Put a +1/+1 counter on each Elf you control.
@@ -440,14 +442,12 @@ Hengegate Pathway // Mistgate Pathway,Land // Land,{T}: Add {W}. // {T}: Add {U}
 Righteous Valkyrie,Creature — Angel Cleric,"Flying
 Whenever another Angel or Cleric you control enters, you gain life equal to that creature's toughness.
 As long as you have at least 7 life more than your starting life total, creatures you control get +2/+2.",W,Angel; Cleric; lifegain; pump; flying; evasion,KHM,24,Rare,95,,6.0,seed
-Skemfar Avenger,Creature — Elf Berserker,"Whenever another nontoken Elf or Berserker you control dies, you draw a card and you lose 1 life.",B,Elf; Berserker; pay life; card draw,KHM,109,Rare,75-historic-brawl,,6.5,seed
-Elderfang Ritualist,Creature — Elf Cleric,"When this creature dies, return another target Elf card from your graveyard to your hand.",B,Elf; Cleric; graveyard,KHM,385,Uncommon,75-historic-brawl,,2.5,seed
-"Harald, King of Skemfar",Legendary Creature — Elf Warrior,"Menace (This creature can't be blocked except by two or more creatures.)
-When Harald enters, look at the top five cards of your library. You may reveal an Elf, Warrior, or Tyvar card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.",B/G,Elf; Warrior; etb; selection; menace; evasion,KHM,212,Uncommon,75-historic-brawl,,2.5,seed
 Panharmonicon,Artifact,"If an artifact or creature entering causes a triggered ability of a permanent you control to trigger, that ability triggers an additional time.",Colorless,,KLR,258,Rare,95,,5.5,seed
 "Sarkhan, the Dragonspeaker",Legendary Planeswalker — Sarkhan,"+1: Until end of turn, Sarkhan becomes a legendary 4/4 red Dragon creature with flying, indestructible, and haste. (He doesn't lose loyalty while he's not a planeswalker.)
 −3: Sarkhan deals 4 damage to target creature.
 −6: You get an emblem with ""At the beginning of your draw step, draw two additional cards"" and ""At the beginning of your end step, discard your hand.""",R,Sarkhan; planeswalker; burn,KTK,119,Mythic,92,,9.0,seed
+"Sidisi, Brood Tyrant",Legendary Creature — Snake Shaman,"Whenever Sidisi enters or attacks, mill three cards.
+Whenever one or more creature cards are put into your graveyard from your library, create a 2/2 black Zombie creature token.",U/B/G,Snake; Shaman; graveyard; mill; tokens,KTK,199y,Mythic,75-historic-brawl,,7.0,seed
 Hardened Scales,Enchantment,"If one or more +1/+1 counters would be put on a creature you control, that many plus one +1/+1 counters are put on it instead.",G,counters,KTK,133,Rare,89,deck 89 tune 2026-10-22,3.0,seed
 "Xolatoyac, the Smiling Flood",Legendary Creature — Salamander Serpent,"Whenever Xolatoyac enters or attacks, put a flood counter on target land. That land is an Island in addition to its other types for as long as it has a flood counter on it.
 At the beginning of your end step, untap each permanent you control with a counter on it.",U/G,Salamander; Serpent; counters,LCC,8,Mythic,94,,5.0,seed
@@ -481,6 +481,8 @@ Promising Vein,Land — Cave,"{T}: Add {C}.
 The Watcher in the Water,Legendary Creature — Kraken,"The Watcher in the Water enters tapped with nine stun counters on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)
 Whenever you draw a card during an opponent's turn, create a 1/1 blue Tentacle creature token.
 Whenever a Tentacle you control dies, untap up to one target Kraken and put a stun counter on up to one target nonland permanent.",U,Kraken; counters; card draw; tokens,LTR,75,Mythic,94,,7.0,seed
+Ioreth of the Healing House,Legendary Creature — Human Cleric,"{T}: Untap another target permanent.
+{T}: Untap two other target legendary creatures.",U,Human; Cleric,LTR,56,Uncommon,75-historic-brawl,,2.5,seed
 Shire Terrace,Land,"{T}: Add {C}.
 {1}, {T}, Sacrifice this land: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.",Colorless,sacrifice; ramp; mana,LTR,261,Common,89,,1.5,seed
 Psychic Corrosion,Enchantment,"Whenever you draw a card, each opponent mills two cards.",U,mill; card draw; graveyard,M19,68,Uncommon,96,,4.0,seed
@@ -490,6 +492,8 @@ Psychic Corrosion,Enchantment,"Whenever you draw a card, each opponent mills two
 "Vivien, Arkbow Ranger",Legendary Planeswalker — Vivien,"+1: Distribute two +1/+1 counters among up to two target creatures. They gain trample until end of turn.
 −3: Target creature you control deals damage equal to its power to target creature or planeswalker.
 −5: You may reveal a creature card you own from outside the game and put it into your hand.",G,Vivien; planeswalker; counters; removal; trample; evasion,M20,199,Mythic,94,,8.5,seed
+"Yarok, the Desecrated",Legendary Creature — Elemental Horror,"Deathtouch, lifelink
+If a permanent entering causes a triggered ability of a permanent you control to trigger, that ability triggers an additional time.",U/B/G,Elemental; Horror; lifegain; lifelink; deathtouch; combat; removal,M20,220,Mythic,75-historic-brawl,,7.0,seed
 Voracious Hydra,Creature — Hydra,"Trample
 This creature enters with X +1/+1 counters on it.
 When this creature enters, choose one —
@@ -530,7 +534,7 @@ Scalding Tarn,Land,"{T}, Pay 1 life, Sacrifice this land: Search your library fo
 Verdant Catacombs,Land,"{T}, Pay 1 life, Sacrifice this land: Search your library for a Swamp or Forest card, put it onto the battlefield, then shuffle.",Colorless,pay life; sacrifice; ramp,MH2,260,Rare,89,,3.0,seed
 "Eladamri, Korvecdal",Legendary Creature — Elf Warrior,"You may look at the top card of your library any time.
 You may cast creature spells from the top of your library.
-{G}, {T}, Tap two untapped creatures you control: Reveal a card from your hand or the top card of your library. If you reveal a creature card this way, put it onto the battlefield. Activate only during your turn.",G,Elf; Warrior; card advantage; selection,MH3,149,Mythic,94,,6.5,seed
+{G}, {T}, Tap two untapped creatures you control: Reveal a card from your hand or the top card of your library. If you reveal a creature card this way, put it onto the battlefield. Activate only during your turn.",G,Elf; Warrior; card advantage; selection,MH3,149,Mythic,94; 75-historic-brawl,,6.5,seed
 "Grist, Voracious Larva // Grist, the Plague Swarm",Legendary Creature — Insect // Legendary Planeswalker — Grist,"Deathtouch
 Whenever Grist or another creature you control enters, if it entered from your graveyard or you cast it from your graveyard, you may pay {G}. If you do, exile Grist, then return it to the battlefield transformed under its owner's control. // +1: Create a 1/1 black and green Insect creature token, then mill two cards. Put a deathtouch counter on the token if a black card was milled this way.
 −2: Destroy target artifact or enchantment.
@@ -555,6 +559,10 @@ Signature Slam,Instant,"Put a +1/+1 counter on target creature you control, then
 Sheltering Landscape,Land,"{T}: Add {C}.
 {T}, Sacrifice this land: Search your library for a basic Mountain, Forest, or Plains card, put it onto the battlefield tapped, then shuffle.
 Cycling {R}{G}{W} ({R}{G}{W}, Discard this card: Draw a card.)",W/R/G,card draw; sacrifice; ramp; mana; cycling,MH3,227,Common,88,,1.5,seed
+Wrenn and Seven,Legendary Planeswalker — Wrenn,"+1: Reveal the top four cards of your library. Put all land cards revealed this way into your hand and the rest into your graveyard.
+0: Put any number of land cards from your hand onto the battlefield tapped.
+−3: Create a green Treefolk creature token with reach and ""This token's power and toughness are each equal to the number of lands you control.""
+−8: Return all permanent cards from your graveyard to your hand. You get an emblem with ""You have no maximum hand size.""",G,Wrenn; planeswalker; graveyard; tokens,MID,208,Mythic,75-historic-brawl,,8.0,seed
 Morbid Opportunist,Creature — Human Rogue,"Whenever one or more other creatures die, draw a card. This ability triggers only once each turn.",B,Human; Rogue; card draw,MID,113,Uncommon,93,,5.5,seed
 "Etrata, Deadly Fugitive",Legendary Creature — Vampire Assassin,"Deathtouch
 Face-down creatures you control have ""{2}{U}{B}: Turn this creature face up. If you can't, exile it, then you may cast the exiled card without paying its mana cost.""
@@ -909,6 +917,8 @@ Efreet Flamepainter,Creature — Efreet Shaman,"Double strike
 Whenever this creature deals combat damage to a player, you may cast target instant or sorcery card from your graveyard without paying its mana cost. If that spell would be put into your graveyard, exile it instead.",R,Efreet; Shaman; graveyard; double strike; combat; aggro,STX,98,Rare,92,,6.0,seed
 "Zimone, Quandrix Prodigy",Legendary Creature — Human Wizard,"{1}, {T}: You may put a land card from your hand onto the battlefield tapped.
 {4}, {T}: Draw a card. If you control eight or more lands, draw two cards instead.",U/G,Human; Wizard; card draw,STX,250,Uncommon,94,,5.0,seed
+"Kotis, Sibsig Champion",Legendary Creature — Zombie Warrior,"Once during each of your turns, you may cast a creature spell from your graveyard by exiling three other cards from your graveyard in addition to paying its other costs.
+Whenever one or more creatures you control enter, if one or more of them entered from a graveyard or was cast from a graveyard, put two +1/+1 counters on Kotis.",U/B/G,Zombie; Warrior; counters; graveyard,TDC,5,Mythic,75-historic-brawl,,5.5,seed
 "Teval, the Balanced Scale",Legendary Creature — Spirit Dragon,"Flying
 Whenever Teval attacks, mill three cards. Then you may return a land card from your graveyard to the battlefield tapped.
 Whenever one or more cards leave your graveyard, create a 2/2 black Zombie Druid creature token.",U/B/G,Spirit; Dragon; reanimator; graveyard; mill; tokens; flying; evasion,TDC,8,Mythic,75-historic-brawl,,9.0,seed

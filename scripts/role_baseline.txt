@@ -8,7 +8,6 @@
 # `check_roles.py --update-baseline` to acknowledge the current set.
 Aang, at the Crossroads
 Aang, at the Crossroads // Aang, Destined Savior
-Abomination of Llanowar
 Absorbing Man and Titania
 Accumulate Wisdom
 Aerial Doombot
@@ -203,7 +202,6 @@ Guidelight Matrix
 Guiding Hydra
 Hama, the Bloodbender
 Hammerhead, Maggia Boss
-Harald, King of Skemfar
 Hauntwoods Shrieker
 Hawkeye, Master Marksman
 Hawkeye, Young Avenger
@@ -237,6 +235,7 @@ Insatiable Skittermaw
 Insurrection
 Interface Ace
 Involuntary Employment
+Ioreth of the Healing House
 Iroh, Dragon of the West
 Iron Hills Stalwart
 Iron Lad, Diverging Destiny
