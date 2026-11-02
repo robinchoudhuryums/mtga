@@ -300,3 +300,61 @@ class TestBatch2b:
         assert any(ln.startswith("0 Opt") and "no printing" in ln for ln in lines)
         assert any("reconcile_crafts.py <file> --set-exact" in ln for ln in lines)
         assert 'python3 scripts/builder.py hidden t "Deathrite Shaman" --role interaction' in lines
+
+
+class TestSite:
+    """Batch 3: every build rendered for GitHub Pages, plus the picker and the index."""
+
+    def test_site_writes_picker_index_and_one_page_per_build(self, scratch, monkeypatch):
+        deck_path, tmp = scratch
+        monkeypatch.setattr(B, "image_urls", lambda slug, names, fetch=True: {
+            n: f"https://cards.scryfall.io/normal/front/a/b/{i}.jpg" for i, n in enumerate(names)})
+        b = B.new_build("t", [deck_path], keys=["G"], title="Test <pile>")
+        B.add_cards(b, ["Opt"], pile="G")
+        B.save_build("t", b)
+        out = tmp / "site"
+        projects, failures = B.site(str(out), tempo=False)
+        assert failures == [] and [p["slug"] for p in projects] == ["t"]
+        idx = json.load(open(out / "builds" / "index.json"))
+        assert idx["projects"][0]["page"] == "builds/t.html" and idx["projects"][0]["cards"] == 1
+        picker = (out / "builder.html").read_text()
+        assert 'href="builds/t.html"' in picker and "Test &lt;pile&gt;" in picker
+        assert picker.startswith("<!doctype html>") and 'href="index.html"' in picker
+        page = (out / "builds" / "t.html").read_text()
+        import re as _re
+        data = json.loads(_re.search(r'id="data">(.*?)</script>', page, _re.S).group(1).replace("<\\/", "</"))
+        assert data["meta"]["target"] == "pages" and data["meta"]["home"] == "../index.html"
+
+    def test_one_broken_build_is_reported_not_fatal(self, scratch, monkeypatch):
+        deck_path, tmp = scratch
+        monkeypatch.setattr(B, "image_urls", lambda slug, names, fetch=True: {})
+        B.save_build("good", {**B.new_build("good", [deck_path], keys=["G"])})
+        os.makedirs(os.path.join(B.BUILDS_DIR, "bad"))
+        with open(os.path.join(B.BUILDS_DIR, "bad", "build.json"), "w") as fh:
+            fh.write('{"decks": [{"key": "G", "id": "no-such-deck"}], "cards": [], "reasons": {}}')
+        projects, failures = B.site(str(tmp / "site"), tempo=False)
+        assert [p["slug"] for p in projects] == ["good"]
+        assert len(failures) == 1 and failures[0].startswith("bad:")
+
+    def test_summaries_feed_the_dashboard(self, scratch):
+        deck_path, _ = scratch
+        b = _new(deck_path)
+        B.add_cards(b, ["Opt", "Counterspell"], pile="G")
+        B.save_build("t", b)
+        s = B.summaries()
+        assert s == [{"slug": "t", "title": "Test", "decks": [{"id": deck_path, "label": b["decks"][0]["label"]}],
+                      "cards": 2, "reasons": 0, "page": "builds/t.html"}]
+
+
+class TestDashboardAndDeploy:
+    def test_dashboard_has_the_builder_link_section_and_payload(self):
+        import build_dashboard as bd
+        t = bd.TEMPLATE
+        assert 'id="btnbuilder"' in t and 'id="sec-builder"' in t and "['sec-builder','Builder'" in t
+        assert "renderBuilder()" in t
+        assert set(bd._builds()) >= {"projects"}
+
+    def test_pages_workflow_builds_and_verifies_the_builder(self):
+        y = open(os.path.join(REPO, ".github", "workflows", "pages.yml"), encoding="utf-8").read()
+        assert "python3 scripts/builder.py site --out _site" in y
+        assert "_site/builder.html is missing" in y and "has no data island" in y

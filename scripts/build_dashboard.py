@@ -135,6 +135,16 @@ def _known_archetypes():
         return []
 
 
+def _builds():
+    """Builder projects for the dashboard's Builder section (title, decks, counts — no
+    derivation; the pages themselves are built by `builder.py site` in the Pages job)."""
+    try:
+        import builder
+        return {"projects": builder.summaries()}
+    except Exception as e:  # one bad build file must not take the dashboard down
+        return {"projects": [], "error": f"{type(e).__name__}: {e}"}
+
+
 def _no_network():
     """Neutralize deck.py's live-Scryfall fallbacks so the build stays offline
     and can't hang/crash on a slow or blocked Scryfall (the audit's F1)."""
@@ -546,6 +556,7 @@ def collect():
         "wishlist_error": wishlist_error,
         "wishlist_rollup": rollup,
         "rotation": rotation,
+        "builds": _builds(),
         # NOT rendered — build-time diagnostics main()'s self-check reads (BS5-05). Kept
         # in the payload rather than in a module global so the check grades the artifact
         # it is about to publish, the way the `[analysis error` scan already does.
@@ -678,6 +689,12 @@ TEMPLATE = r"""<!DOCTYPE html>
   .iconbtn { align-self:stretch; width:42px; border-radius:12px; border:1px solid var(--line); background:var(--fill);
     color:var(--ink2); font-size:15px; cursor:pointer; transition:all .15s; }
   .iconbtn:hover { color:var(--accent-ink); border-color:var(--accent-line); }
+  a.iconbtn { display:inline-flex; align-items:center; justify-content:center; text-decoration:none; }
+  .buildgrid { display:grid; grid-template-columns:repeat(auto-fill, minmax(min(100%, 280px), 1fr)); gap:12px; margin-top:10px; }
+  .buildcard { display:block; text-decoration:none; color:var(--ink); background:var(--fill); border:1px solid var(--line); border-radius:12px; padding:12px 14px; }
+  .buildcard:hover, .buildcard:focus-visible { border-color:var(--accent-line); }
+  .buildcard b { display:block; font-family:var(--font-display); font-size:15px; color:var(--ink-bright); }
+  .buildcard span { display:block; font-size:12px; color:var(--ink2); margin-top:3px; }
   .kpi { background:var(--fill); border:1px solid var(--line); border-radius:12px; padding:9px 16px; min-width:90px; }
   .kpi.hot { background:var(--accent-bg); border-color:var(--accent-line); box-shadow:0 0 22px -8px var(--accent-line); }
   .kpi .n { font-family:var(--font-display); font-size:24px; font-weight:600; color:var(--ink-bright); line-height:1.1; font-variant-numeric:tabular-nums; }
@@ -1167,6 +1184,7 @@ TEMPLATE = r"""<!DOCTYPE html>
       <button class="iconbtn" id="btnsync" title="Sync live from GitHub Pages">⟳</button>
       <button class="iconbtn" id="btnshare" title="Copy shareable link to this view">🔗</button>
       <button class="iconbtn" id="btntheme" title="Toggle light / dark">◐</button>
+      <a class="iconbtn" id="btnbuilder" href="builder.html" title="Deck builder — piles of candidate cards beside the decks they are for" aria-label="Deck builder">⚒</a>
       <div class="kpi"><div class="n" id="kpiPrint">0</div><div class="lbl">printings</div></div>
       <div class="kpi"><div class="n" id="kpiDecks">0</div><div class="lbl">decks</div></div>
       <div class="kpi hot"><div class="n" id="kpiBuild">0</div><div class="lbl">buildable now</div></div>
@@ -1265,6 +1283,12 @@ TEMPLATE = r"""<!DOCTYPE html>
     <div class="staleactions"><button class="cta" id="annogo">Find matches</button><button class="ghostbtn" id="annocopy">Copy annotations</button><button class="ghostbtn" id="annoclear">Clear</button></div>
     <div id="annoout"></div>
     <textarea id="annoline" class="staletext logout" readonly aria-label="Annotation lines, ready to copy"></textarea>
+  </section>
+
+  <section id="sec-builder">
+    <h2 class="sec"><span class="tick"></span>Builder — candidate piles beside the decks they are for</h2>
+    <p class="auditnote">Each project is a pile of cards graded against one or more decks (<code>builds/&lt;slug&gt;/build.json</code>), published as its own page. Mark adds, cuts and notes there; they stay in that browser, and <b>Copy as text</b> hands them to Claude. Rebuilt from the deck files on every deploy, so the deck figures are current.</p>
+    <div id="builderout"></div>
   </section>
 
   <section id="sec-rotation">
@@ -2130,6 +2154,26 @@ function renderRecent(){
     host.appendChild(t);
   }
 }
+// The builder pages live beside the dashboard on Pages; a copy opened from disk links there.
+const SITE_BASE = location.protocol === 'file:' ? LIVE_URL : '';
+function renderBuilder(){
+  const host = $('builderout'); if (!host) return; host.innerHTML = '';
+  const B = D.builds || {projects: []};
+  if (B.error){ host.appendChild(el('p','auditnote','Builder projects could not be read: ' + B.error + ' — run `python3 scripts/builder.py check <slug>`.')); return; }
+  if (!B.projects.length){ host.appendChild(el('p','auditnote','No builder projects yet — `/pile-analysis` keeps a finished pile as one (`python3 scripts/builder.py new`).')); return; }
+  const grid = el('div','buildgrid');
+  B.projects.forEach(p => {
+    const a = el('a','buildcard'); a.href = SITE_BASE + p.page;
+    a.appendChild(el('b', null, p.title));
+    a.appendChild(el('span', null, p.decks.map(d => d.label + ' (deck ' + d.id + ')').join(' · ')));
+    a.appendChild(el('span', null, p.cards + ' cards · ' + p.reasons + ' reasons'));
+    grid.appendChild(a);
+  });
+  host.appendChild(grid);
+  const all = el('a', null, 'All builder projects →'); all.href = SITE_BASE + 'builder.html';
+  const pp = el('p','auditnote'); pp.appendChild(all); host.appendChild(pp);
+}
+{ const bb = $('btnbuilder'); if (bb) bb.href = SITE_BASE + 'builder.html'; }
 function renderRotation(){
   const host = $('rotationout'); if (!host) return; host.innerHTML = '';
   const R = D.rotation || {available:false};
@@ -2157,7 +2201,7 @@ function renderRotation(){
     host.appendChild(card);
   });
 }
-renderRecent(); renderRotation();
+renderRecent(); renderBuilder(); renderRotation();
 
 // ---------- leverage ----------
 (function(){
@@ -3063,7 +3107,7 @@ function secOpened(id){ if (id === 'sec-coll') collLoad(); }
 // the page opens on the planning views, not a wall of every tool at once.
 const SECTIONS = [
   ['sec-find','Finder',true], ['sec-coll','Collection',true], ['sec-triage','Triage',false], ['sec-recent','Recent',true],
-  ['sec-stale','Stale',true], ['sec-log','Log match',true], ['sec-rotation','Rotation',true], ['sec-decks','Decks',false],
+  ['sec-stale','Stale',true], ['sec-log','Log match',true], ['sec-builder','Builder',false], ['sec-rotation','Rotation',true], ['sec-decks','Decks',false],
   ['sec-leverage','Leverage',false], ['sec-wishlist','Wishlist',false], ['sec-plan','Craft plan',false],
 ];
 function secIsCollapsed(id, def){ return (STATE.secCollapsed && id in STATE.secCollapsed) ? !!STATE.secCollapsed[id] : def; }

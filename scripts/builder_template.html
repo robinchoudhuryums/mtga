@@ -46,6 +46,8 @@ button,select,input,textarea{font:inherit;color:inherit}
 .mast{display:flex;flex-wrap:wrap;align-items:flex-end;gap:6px 18px;padding-bottom:10px;border-bottom:1px solid color-mix(in srgb,var(--brass) 45%,transparent)}
 .mast h1{margin:0;font-family:var(--display);font-weight:400;font-size:2rem;letter-spacing:.05em;color:var(--ink);text-wrap:balance;overflow-wrap:anywhere;min-width:0}
 .mast p{margin:0;font-family:var(--read);font-style:italic;color:var(--muted);max-width:68ch;flex:1 1 30ch}
+.mast .homelink{margin-left:auto;color:var(--accent);font-size:.88rem;align-self:center}
+.mast .homelink:not([hidden]) ~ .undobtn{margin-left:0}
 .mast .undobtn{margin-left:auto}
 .themebtn{background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:4px 12px;cursor:pointer;color:var(--muted);font-size:.84rem;white-space:nowrap}
 .themebtn:hover{color:var(--ink);border-color:var(--brass)}
@@ -262,6 +264,7 @@ dialog#cmp::backdrop{background:rgba(0,0,0,.6)}
   <header class="mast">
     <h1 id="title"></h1>
     <p id="subtitle"></p>
+    <a class="homelink" id="homelink" hidden>← Dashboard</a>
     <button type="button" class="undobtn" id="undobtn" disabled>↶ Undo</button>
     <button type="button" class="themebtn" id="themebtn"></button>
   </header>
@@ -349,6 +352,7 @@ const ICON = {bench:`<svg viewBox="0 0 12 12" aria-hidden="true"><rect x="2.5" y
   out:`<svg viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="4.6" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M2.8 9.2 9.2 2.8" stroke="currentColor" stroke-width="1.5"/></svg>`};
 
 document.getElementById("title").textContent = META.title || "Builder";
+if(META.home){ const h=document.getElementById("homelink"); h.href=META.home; h.hidden=false; }
 const BOARD = CARDS.filter(c=>c.p);
 document.getElementById("subtitle").textContent = `${BOARD.length} cards for ${DK.map(k=>`${DECKS[k].label} (${DECKS[k].full})`).join(" and ")}. Mark a card and Claude reads your picks back.`;
 document.getElementById("mem").innerHTML = `<option value="all">Any</option><option value="neither">In no deck</option>`+DK.map(k=>`<option value="${esc(k)}">In ${esc(DECKS[k].label)}</option>`).join("")+(DK.length>1?`<option value="every">In every deck</option>`:"");

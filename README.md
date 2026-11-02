@@ -1342,6 +1342,33 @@ and stays light even with JavaScript disabled. Section headers collapse from a b
 inside the heading, so they answer Enter/Space and announce their open/closed state while
 staying reachable by heading-jump navigation.
 
+### Builder — piles of candidate cards beside the decks they are for
+
+`scripts/builder.py` keeps a deck-building pile as data: `builds/<slug>/build.json` holds
+only what was decided by hand (the decks, the piles, where each card sits, and the reason
+written for it). Everything else — oracle text, cost, roles, owned count, each deck's live
+floor, interaction, card advantage, sources and `cuts` ranks — is derived from the repo
+when the page is built, so a page can never show stale deck figures.
+
+```bash
+python3 scripts/builder.py new sultai --decks 75-historic-brawl 96 --keys T G
+python3 scripts/builder.py add sultai --file pile.txt --pile B     # Arena export lines work
+python3 scripts/builder.py reason sultai "Opt" --text "Scry, then draw" --group Draw
+python3 scripts/builder.py check sultai        # reasons written before a deck changed
+python3 scripts/builder.py site --out _site     # every project for GitHub Pages (offline)
+python3 scripts/builder.py render sultai --target artifact --out .cycle/board   # a claude.ai board
+python3 scripts/builder.py picks sultai copied.txt   # the page's Copy-as-text → swap --package lines
+```
+
+On GitHub Pages the dashboard links to `builder.html`, a list of projects, and each
+project is its own page (`builds/<slug>.html`). On a project page you can mark adds, cuts,
+Bench and Keep out, pair an add with the card it replaces (the **Compare** tab puts a pile
+beside a deck's list, with its mana curve now and after), write notes, flag a role the
+tools miss ("counts as interaction") and queue an ownership correction. Picks stay in that
+browser; **Your picks → Copy as text** gives Claude `swap --package` lines, protect
+requests, and an `/ingest` block for the ownership corrections. The projection's tier floor
+uses only the counted figures — hidden roles are shown beside it, never inside it.
+
 ### Editing app — edit the collection in your browser (optional)
 
 ```

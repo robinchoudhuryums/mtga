@@ -46,6 +46,9 @@ Updated: 2026-10-31 (deck-95 session tooling fixes — see Where I left off)
 
 ## Completed this cycle
 
+- **2026-11-02 — Builder batch 3** (block `builder-batch3-broad-implement.md`): `builder.py site` (Pages, offline):
+  builder.html picker + builds/<slug>.html; dashboard ⚒ link + Builder section; pages.yml build + verify;
+  scenario 25, README, systems-map §5c.
 - **2026-11-01 — Builder batch 2b** (block `builder-batch2b-broad-implement.md`): Compare view with ⇄ pairing and
   mana curve now/after; hidden-role markers (`builder.py hidden`); ownership tag + "I own exactly" queue → /ingest
   block; applied state; conflict warnings; undo (`u`); next-band hint. Board republished.
@@ -437,6 +440,9 @@ Updated: 2026-10-31 (deck-95 session tooling fixes — see Where I left off)
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
+**2026-11-02 (latest) — Builder batch 3 done** (block `builder-batch3-broad-implement.md`). Publishes on the next merge to main.
+**Next:** Builder batch 4 (skills wiring, request processing, CLAUDE.md entry), then alternate printings.
+
 **2026-11-01 (latest) — Builder batch 2b done** (block `builder-batch2b-broad-implement.md`). check_all OK.
 **Next:** Builder batch 3 (Pages integration: builder.html, dashboard link/section, deploy check, scenario 25).
 

@@ -221,6 +221,32 @@ header sync that used to be step `--map-decks`, so routine logging has no upkeep
 
 ---
 
+## 5c. Work a pile on a page — the Builder
+
+Added 2026-11-01. A large pile graded against one or more decks (`/pile-analysis`) is kept
+as a Builder project, so the owner can review it on a page instead of in chat.
+
+| # | Command | Returns | Cost |
+|---|---|---|---|
+| 1 | `builder.py new <slug> --decks …` / `add` / `reason` | `builds/<slug>/build.json` | <1s |
+| 2 | `builder.py render <slug> --target artifact --out .cycle/board` | a claude.ai board (picks shared with Claude) | ~5s + first-time images |
+| 2b | `builder.py site --out _site` (Pages job, every push to main) | `builder.html` + `builds/<slug>.html` | ~5s per project |
+| 3 | `builder.py picks <slug> <copied>` | checked `swap --package`, protect, ownership and hidden-role lines | <1s |
+| 4 | `builder.py check <slug>` (also a soft `check_all` line) | reasons written against an older deck list | ~1s |
+
+**Reconciliation points**
+
+- ⚖ **A pick is a request, never an edit.** The page cannot write deck files; step 3 turns
+  the copied block into the `/apply-changes` input, and a pick whose cut has left the deck
+  is named, not applied.
+- ⚖ **A reason is graded against a deck version.** `check` flags it after a swap; the
+  owner decides whether the reason still holds.
+- ⚖ **An ownership correction is an `/ingest` batch.** It can LOWER a count
+  (`reconcile_crafts --set-exact`), and a card owned across two printings sums them — read
+  the dry run.
+
+---
+
 ## 6. Overlapping answers — the inventory
 
 Every place two implementations answer one question. Measured, not asserted.

@@ -31,6 +31,8 @@ Subcommands:
   check <slug>                       stale reasons, unresolved names, unplaced cards
   picks <slug> [FILE|-]              the board's "Copy as text" block → swap --package lines
   derive <slug> [--out FILE] [--no-tempo]   the page's data (cards + live deck stats)
+  site --out DIR [--no-tempo]       every build for GitHub Pages, offline: DIR/builder.html,
+                                     DIR/builds/<slug>.html and DIR/builds/index.json
   render <slug> --target pages|artifact --out DIR [--no-tempo] [--no-images]
                                      the page: scripts/builder_template.html + the derived
                                      data (PAGE = TEMPLATE + DATA). `artifact` also writes
@@ -668,7 +670,8 @@ def _sprite(out_dir, slugs):
     return {"src": "img/thumbs.jpg", "cols": SPRITE_COLS, "rows": rows, "i": {s: i for i, s in enumerate(have)}}
 
 
-def render(slug, target, out_dir, tempo=True, images=True, data=None):
+def render(slug, target, out_dir, tempo=True, images=True, data=None, page_name="index.html",
+           fetch=True, home=None):
     """Write `out_dir/index.html` for a build: the template with the derived data inlined.
 
     `artifact`: images are files next to the page — img/lg/<slug>.jpg (672 px, downloaded
@@ -681,9 +684,11 @@ def render(slug, target, out_dir, tempo=True, images=True, data=None):
     meta = data["meta"]
     meta["slug"], meta["target"] = slug, target
     meta["img"] = "remote" if target == "pages" else "local"
+    if home:
+        meta["home"] = home              # the page's link back (the dashboard, on Pages)
     cmds = {k: v.get("cmd") for k, v in meta["live"].items() if v.get("cmd")}
     urls = image_urls(slug, [c["n"] for c in data["cards"]] + list(cmds.values()),
-                      fetch=images or target == "pages")
+                      fetch=fetch and (images or target == "pages"))
     if target == "pages":
         for c in data["cards"]:
             if urls.get(c["n"]):
@@ -711,11 +716,103 @@ def render(slug, target, out_dir, tempo=True, images=True, data=None):
         page = ('<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
                 '<meta name="viewport" content="width=device-width, initial-scale=1">\n'
                 + page + "\n</html>\n")
-    out = os.path.join(out_dir, "index.html")
+    out = os.path.join(out_dir, page_name)
     atomic_write(out, lambda fh: fh.write(page), backup=False)
     return {"page": out, "cards": len(data["cards"]), "images": len(urls),
             "fetched": got, "image_errors": missing,
             "no_image": sorted(set(c["n"] for c in data["cards"]) - set(urls))}
+
+
+# ---------------------------------------------------------------- Pages site
+def _offline():
+    """No network during a site build: the Pages job runs offline (like build_dashboard's
+    `_no_network`), so deck.py's live-Scryfall fallbacks are neutralised and image URLs
+    come from each build's committed images.json cache only."""
+    D = _deck()
+    D.fetch_missing_mana = lambda names, mana: mana
+    D.fetch_missing_rarities = lambda names, rar: rar
+
+
+PICKER = """<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deck Builder</title>
+<script>(function(){ try{ var p=JSON.parse(localStorage.getItem("mtga-prefs")||"{}")||{}; if(p.theme==="light"||p.theme==="dark") document.documentElement.setAttribute("data-theme",p.theme); }catch(e){} })();</script>
+<style>
+:root{ --bg:#f2f3f1; --panel:#ffffff; --ink:#161a18; --muted:#5b6660; --line:#dce1dd; --accent:#0e6b62; --brass:#8f7034; color-scheme: light; }
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --bg:#0e1211; --panel:#151b19; --ink:#e5eae7; --muted:#93a099; --line:#26302c; --accent:#45bcae; --brass:#c8a35a; color-scheme: dark; } }
+:root[data-theme="dark"]{ --bg:#0e1211; --panel:#151b19; --ink:#e5eae7; --muted:#93a099; --line:#26302c; --accent:#45bcae; --brass:#c8a35a; color-scheme: dark; }
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:860px;margin:0 auto;padding:24px 16px 48px}
+h1{font:400 1.9rem/1.2 Georgia,serif;letter-spacing:.04em;margin:0 0 4px}
+p.sub{color:var(--muted);margin:0 0 18px}
+a{color:var(--accent)} a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+ul{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+li{background:var(--panel);border:1px solid var(--line);border-top:2px solid var(--brass);border-radius:6px;padding:12px 14px}
+li a.t{font:600 1.1rem/1.3 Georgia,serif;text-decoration:none}
+li .m{color:var(--muted);font-size:.9rem;margin-top:2px}
+.empty{color:var(--muted);font-style:italic}
+</style>
+</head>
+<body>
+<main>
+<p><a href="__HOME__">← Dashboard</a></p>
+<h1>Deck Builder</h1>
+<p class="sub">Each project is a pile of candidate cards beside the decks it is for. Picks and notes stay in this browser; copy them out from <b>Your picks</b> and paste them to Claude.</p>
+__LIST__
+</main>
+</body>
+</html>
+"""
+
+
+def site(out_dir, tempo=True, home="index.html"):
+    """Render every build for GitHub Pages: `<out>/builds/<slug>.html` (self-contained, data
+    inline, images hot-linked from Scryfall), `<out>/builds/index.json` (the project list)
+    and `<out>/builder.html` (the picker). Offline. A build that fails to render is left
+    out of the index and reported; returns (projects, failures)."""
+    import html as _html
+    _offline()
+    projects, failures = [], []
+    bdir = os.path.join(out_dir, "builds")
+    for slug in all_builds():
+        try:
+            b = load_build(slug)
+            r = render(slug, "pages", bdir, tempo=tempo, page_name=f"{slug}.html", fetch=False,
+                       home="../" + home)
+            projects.append({"slug": slug, "title": b.get("title") or slug,
+                             "decks": [{"id": d["id"], "label": d.get("label") or d["id"]} for d in b["decks"]],
+                             "cards": len(b["cards"]), "reasons": len(b.get("reasons", {})),
+                             "page": f"builds/{slug}.html", "no_image": len(r["no_image"]),
+                             "refreshed": datetime.date.today().isoformat()})
+        except Exception as e:  # one bad project must not take the others down
+            failures.append(f"{slug}: {type(e).__name__}: {e}")
+    os.makedirs(bdir, exist_ok=True)
+    atomic_write(os.path.join(bdir, "index.json"),
+                 lambda fh: fh.write(json.dumps({"projects": projects}, indent=1) + "\n"), backup=False)
+    items = "".join(
+        f'<li><a class="t" href="{_html.escape(p["page"])}">{_html.escape(p["title"])}</a>'
+        f'<div class="m">{" · ".join(_html.escape(d["label"]) + " (deck " + _html.escape(d["id"]) + ")" for d in p["decks"])}'
+        f' · {p["cards"]} cards · {p["reasons"]} reasons</div></li>' for p in projects)
+    page = PICKER.replace("__HOME__", _html.escape(home)).replace(
+        "__LIST__", f"<ul>{items}</ul>" if items else '<p class="empty">No builder projects yet.</p>')
+    atomic_write(os.path.join(out_dir, "builder.html"), lambda fh: fh.write(page), backup=False)
+    return projects, failures
+
+
+def summaries():
+    """Light per-project facts for the dashboard (no derivation): title, decks, counts."""
+    out = []
+    for slug in all_builds():
+        b = load_build(slug)
+        out.append({"slug": slug, "title": b.get("title") or slug,
+                    "decks": [{"id": d["id"], "label": d.get("label") or d["id"]} for d in b["decks"]],
+                    "cards": len(b["cards"]), "reasons": len(b.get("reasons", {})),
+                    "page": f"builds/{slug}.html"})
+    return out
 
 
 # ---------------------------------------------------------------- CLI
@@ -764,7 +861,22 @@ def main(argv=None):
     p.add_argument("--out", required=True, help="output directory (index.html, and img/ for artifact)")
     p.add_argument("--no-tempo", action="store_true", help="skip the tapped-land simulation (faster)")
     p.add_argument("--no-images", action="store_true", help="artifact: do not download images")
+    p = sub.add_parser("site", help="render every build for GitHub Pages (offline): builder.html + builds/")
+    p.add_argument("--out", required=True, help="the site directory (e.g. _site)")
+    p.add_argument("--no-tempo", action="store_true", help="skip the tapped-land simulation (faster)")
     args = ap.parse_args(argv)
+    if args.cmd == "site":
+        projects, failures = site(args.out, tempo=not args.no_tempo)
+        print(f"Wrote {args.out}/builder.html and {len(projects)} project page(s): "
+              + ", ".join(p["slug"] for p in projects))
+        for p in projects:
+            if p["no_image"]:
+                print(f"WARN: builder {p['slug']}: {p['no_image']} card(s) have no cached image URL "
+                      f"(run `builder.py render {p['slug']} --target pages` online to fill images.json)",
+                      file=sys.stderr)
+        for f in failures:
+            print(f"WARN: builder project failed to render — {f}", file=sys.stderr)
+        return 1 if failures else 0
     try:
         if args.cmd == "new":
             b = new_build(args.slug, args.decks, args.keys, args.title)

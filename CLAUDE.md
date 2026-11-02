@@ -1706,7 +1706,7 @@ earned it: [C-01]
 - Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json,
   scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml,
   scripts/app.py, templates/, Makefile [C-06]
-- Testing: tests/ (33 test files + conftest: the markup-contract, CLI-entry-point and
+- Testing: tests/ (35 test files + conftest: the markup-contract, CLI-entry-point and
   command-output, analysis-model, gate-pinning, shared-primitive and ingest layers, the
   2026-08 ingest-writer / sync-guard / resilience-layer / CLI-filter coverage of the
   formerly untested scripts, plus test_check_all.py, the gate runner's own mutation layer;
@@ -1716,7 +1716,7 @@ earned it: [C-01]
   mutant writer so the property is proven load-bearing; and test_gates_fire.py, the
   watched-it-fail layer for the seven gates that had none — so all thirteen model-sanity
   gates now have one; and test_dashboard_js.py, the CROSS-LANGUAGE layer running the dashboard's JS
-  matcher under Node against `match_paste`); and test_tempo_sim.py, the `consistency --tempo` land-drop simulation (enter clauses on real text, closed-form agreement), requirements-dev.txt + requirements-app.txt
+  matcher under Node against `match_paste`); and test_tempo_sim.py, the `consistency --tempo` land-drop simulation (enter clauses on real text, closed-form agreement), and test_builder.py + test_builder_template.py, the Builder's data model, render/site and the page's own JS under Node against the deck model, requirements-dev.txt + requirements-app.txt
   (CI installs BOTH, and sets PYTEST_NO_SKIPS so a skip FAILS, at collection too since BS8-07 — installing only -dev
   silently skipped the editor's six write-safety pins on every run),
   pytest.ini, .github/workflows/tests.yml, + test_templates.py's TOKEN gate (a GENERATED
@@ -1978,6 +1978,19 @@ format.
     body never scrolls sideways, and a dashboard opened from disk still loads the data (it
     falls back to the published `collection.json`). The match logic is pinned under Node
     (`test_dashboard_js.py`); what needs a person is the controls and the phone layout.
+
+25. Builder pages on Pages | Subsystem: Presentation & Interface
+    Steps: open the deployed dashboard; follow the ⚒ header link and the Builder section's
+    project card; on the project page switch theme (`t`), collapse the card pane (`p`) and
+    hover a row; open Compare, select a pile card and press ⇄ on a deck card; mark one
+    ownership correction and one "counts as interaction"; press `u`; open Your picks and
+    Copy as text; repeat at 390×844 and keyboard-only.
+    Expected: card images load (hot-linked from Scryfall); ← Dashboard returns; the theme
+    matches the dashboard's; the curve and conflict box update; undo reverses the last
+    change; the copied block holds `swap --package`, ownership and hidden-role lines that
+    `python3 scripts/builder.py picks <slug> -` reads back; no sideways body scroll on a phone.
+    The Pages job refuses a listed project page with no data island, but how the page
+    looks and feels is perceptual and unverified.
 
 **Frozen Subsystems:** none.
 
