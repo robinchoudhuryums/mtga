@@ -6828,6 +6828,42 @@ way a swap does. Second, **when a pattern family has several members, diff them 
 each other** — the sibling that already handled `another` is the evidence the other two
 were incomplete, and it had been sitting three lines away for as long as they had.
 
+### Three more gate families (2026-11-02, tooling Batch F)
+
+Each was found by a hand count in the 2026-10-08 tuning pass, the G-66 failure this table
+exists to remove.
+
+- **Mana spent** (`spent`): "whenever you cast a noncreature spell, if at least four mana
+  was spent to cast it". It counts the other cards of the trigger's scope at front-face
+  MV ≥ N. X spells count as 0 there, so they are listed beside the count rather than in it.
+  Pool 7 cards, roster 5 rows. Deck 18's cut Ultros and Sahagin, re-probed against the
+  current list, read 3.
+- **Type presence** (`control`): "if you control a/another/two or more <word>". The raw
+  shape matched **292 pool cards**, nearly all noise (Verges and basic-type gates, which
+  G-87 owns; "a creature"; "two or more other lands"). So it counts only when the word is
+  a creature subtype in the tagger's own vocabulary (K-17), Human excepted, and counts
+  creatures of that type plus changelings against the stated need. Roster: 24 rows, all
+  real on a spot-read. Psychic Whorl's Rat rider reads 0 in decks 44 and 44a; Beorn holds
+  1 of 3 Bears in deck 88.
+- **Not cast** (`notcast`): "if none of them were cast" / "enters … if it wasn't cast".
+  "…cast this way" (Beseech the Mirror) is excluded. Enablers are `_UNCAST_RE` (put or
+  return a creature card onto the battlefield, exile-then-return blink, a free cast,
+  plot), and a card whose own text is an enabler counts itself, since Freestrider's plot
+  satisfies it. **The proxy is about 3 in 4 genuine** on a 30-card sample of its 398 pool
+  matches (misses: noncreature free casts, a Saga returning itself). No roster deck runs
+  one today.
+
+**Measured at the caller (G-40), and one family stopped there.** `unmet_gate` feeds
+`swap`, `suggest`, `screen` and `redundancy`. With type presence included, `suggest
+--unowned`'s "needs" rows on ten decks went **67 → 132**, mostly riders and cost
+reductions ("costs {1} less if you control a Wizard"), where "needs" overstates a card
+that still works. That family is skipped there (`_CONTROL_LABEL_MARK`) and stays in
+`targets`, where the card is read beside the count. The two narrow families reach the
+recommenders.
+
+Residuals: `targets` prints counts, not the cards behind them; only the first match of a
+gate per card is read (Ultros's "eight mana" clause is not reported).
+
 ### The legend-rule section (2026-11-02, tooling Batch C)
 
 Deck 32 ran 17 legendary creatures of 24 against five copy effects that keep legendary

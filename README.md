@@ -934,6 +934,16 @@ information. Delirium was worse than saturated: its proxy counted card types in 
 a band until a saturated family varies manufactures a signal rather than finding one, so
 those families were dropped instead.
 
+**Three more gate shapes are counted since 2026-11-02:**
+- "if at least N mana was spent to cast it": the deck's spells of that kind at mana value
+  N or more, with X spells listed beside the count;
+- "if you control a <creature type>": creatures of that type plus changelings;
+- "if it wasn't cast": cards that reanimate, cheat in, blink or cast for free, including a
+  card's own plot.
+
+The type-presence count is shown here only. On the recommenders (`swap`, `suggest`,
+`screen`) it mostly flagged cost reductions and riders, so it is left out there.
+
 **A third section reports the LEGEND RULE.** A copy of a legendary permanent you control is
 a second permanent of that name, and the legend rule makes you put one into the graveyard.
 So `targets` lists each copy effect that keeps legendary status, with how many of the

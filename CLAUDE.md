@@ -1150,13 +1150,11 @@ is protecting.
 - **`deck.py targets <id>` answers whether the deck holds TARGETS for its own gated
   effects** — MV caps ("reanimate a creature MV 4 or less"), sacrifice costs, count
   thresholds. Every other model here grades a card in ISOLATION, so a gate with nothing
-  behind it is invisible: deck 52's concept pile held 24 ways to return a creature against
-  8 worth returning, a number that had to be derived by hand. This is the automated half of
+  behind it is invisible (deck 52: 24 ways to return a creature, 8 worth returning, counted
+  by hand). This is the automated half of
   G-61's "state the count, then decide". `✗ NOTHING` is a dead card; `⚠ thin` (≤3) is the
-  shape to read. Counts exclude the card itself. Heuristic and report-only — read the list,
-  not just the number. **The TOKEN residual is CLOSED (2026-09-09)** — `_makes_token` counts
-  a token PRODUCER as fodder, so deck 58's gates read **17**, not 1, and its `#: notes:`
-  workaround is retired. The rule it earned: **a report-only residual is priced at the
+  shape to read. Counts exclude the card itself. Heuristic and report-only. **The TOKEN residual is CLOSED (2026-09-09)** — `_makes_token` counts
+  a token PRODUCER as fodder (deck 58: 17, not 1). The rule it earned: **a report-only residual is priced at the
   surface that reads it, so wiring a primitive to a RANKING surface re-prices every residual
   it carries.** **Live residuals:** gates match reminder-STRIPPED text except the
   library-search family (`_TARGET_KEEP_REM`, where G-75's riders live), and a generic
@@ -1166,7 +1164,10 @@ is protecting.
   2026-10-06** — a bare "mana value N or less" read removal as a reanimation gate. Residual:
   a typed non-creature card gate ("permanent card with mana value N or less") is unbuilt.
   **Third section since 2026-11-02, the LEGEND RULE**: copy effects that keep legendary
-  status vs the legendary share of what they copy (`⚠` at ≥67%, 8 of 37 decks). [G-66]
+  status vs the legendary share of what they copy (`⚠` at ≥67%, 8 of 37 decks).
+  **Also since 2026-11-02: mana-spent, "if you control a <creature type>" and "if it wasn't
+  cast" gates**; type presence stays OFF `unmet_gate`, where it doubled `suggest`'s "needs"
+  rows with riders (G-40). [G-66]
 
 - **A GATE THE DECK MEETS FOR FREE IS NOT A COST, AND EVERY MODEL HERE READ IT AS ONE.**
   G-66's `targets` counts CARDS IN THE LIST, so a card gated on a GAME STATE was invisible
