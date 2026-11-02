@@ -3110,6 +3110,26 @@ reminder text every reader strips, so a deck of firebenders disclosed nothing; 2
 Mis-flag to avoid when grading this area: Demolition Field IS a basic fetch for you (its full text
 ends "You may search your library for a basic land card") — a 200-character slice hid that.
 
+**2026-11-02 — moved here from the rule to make room.** The rule used to say that
+`tapland_kind`'s `conditional` bucket **merged FOUR opposite behaviours until
+2026-09-20**: a fastland, a met checkland, a slowland and a board-state condition all read
+as one "maybe tapped". `fast` and `check` now earn the shockland premium, and the other two
+stay conservative.
+
+**Same day (tooling Batch G): a fetch with no mana of its own reads TAPPED.** Evolving
+Wilds, Terramorphic Expanse, Hobbit Hole, the five SNC hideouts and Escape Tunnel enter
+untapped but make no mana themselves; they fetch a basic that "enters the battlefield
+tapped", so the mana arrives a turn late, exactly as from a tapland. `tapland_kind` read
+them as None (untapped), so `suggest --lands` printed no `·tapped` and `consistency`'s
+tapped-land count missed them. They read "unconditional" now, and Fabled / Elven Passage,
+which untap the fetched land with enough lands, read "conditional". A fetch land that also
+taps for mana itself (the Landscapes, Promising Vein, Urza's Cave) stays None.
+- 28 of 134 decks' tapped-land counts rose.
+- No score moved: `_land_value` already withheld the untapped premium from any fetch.
+- The tempo simulation was unchanged: it checks the fetch before the enter clause.
+- Hobbit Hole's 11.5 in deck 40, filed as an untapped-dual score, was fixing 8.0 + synergy
+  2.0 + scarce-colour 1.5 all along. The real defect was the missing marker.
+
 ## [G-36] `deck.py consistency <id>` is the PROBABILITY layer `mana` lacks
 
 **`deck.py consistency <id>` is the PROBABILITY layer `mana` lacks.** `mana` diagnoses
@@ -8537,6 +8557,26 @@ discriminating if the distribution moves. The 14-of-43 figure is registered in
 the same treatment `tier_floor_spread` gets for `TIER_FLOOR_REQ` and G-84's population gets
 for its floor/key.
 
+**2026-11-02 (tooling Batch G) — the helper was blind to every KEYWORD discount.**
+`unpriced_discount_cards` built its keyword map from `carddata[name]["keywords"]`. That is
+a field `load_card_data` never carries, so it only ever saw the TEXT discounts ("costs {N}
+less"): convoke, affinity, improvise and delve were invisible. Meanwhile the `stats` ◊ list
+printed beside it reads `load_keywords()` (card-mana.csv) and named the same cards. The
+docstring's "the three surfaces cannot disagree" was false the whole time, and nothing
+noticed: the disclosure fired on enough decks through text discounts alone that its
+silence on convoke never stood out.
+
+It surfaced when the cast-on-curve table in `consistency` was made to disclose the
+discounts it does not price. The new test (a Winnowing deck, convoke) could not pass while
+the helper missed keywords. The fix reads `load_keywords()`, front-face aliased, and a
+carddata entry that carries its own keywords still wins, which test fixtures use.
+Measured:
+- **31 of 134 decks' unpriced counts rose.**
+- The disclosure population (decks printing an effective figure) is unchanged at **68**.
+- p75 is still **3**, so the floor stands; it now fires on **27 of 68** (was 24).
+- The floor-of-1 rate is now **93%** (was 83%); max 12 (was 11).
+
+`figure_drift` caught the moved figures, and they were updated the same day.
 
 ## [G-86] Board presence is an axis, and nothing here measured it
 

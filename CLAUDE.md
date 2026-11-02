@@ -734,9 +734,9 @@ is protecting.
   until 2026-09-04**:
   choose-ONCE-on-entry now sets `chosen` (counted for ACCESS, denied BREADTH);
   transform-gated, GRANTED and extra-tap clauses are out. **`lib.tapland_kind` is the ONE tapping predicate** (the tempo
-  line, `·tapped?`, `_land_value`'s premium), and its `conditional` bucket merged FOUR
-  opposite behaviours until 2026-09-20: `fast` and `check` (a basic gate, floor 12) now earn
-  the shockland premium; a SLOWLAND and a board state stay conservative. **A TYPE-NAMED gate ('a Plains or an Island') is read
+  line, `·tapped?`, `_land_value`'s premium): `fast` and `check` (a basic gate, floor 12)
+  earn the shockland premium; a SLOWLAND and a board state stay conservative; a fetch with
+  no mana of its own (Evolving Wilds) reads tapped (2026-11-02). **A TYPE-NAMED gate ('a Plains or an Island') is read
   against the deck's OWN lands' types (basics and typed nonbasics) since 2026-09-23 — pass
   `basic_types`, or it reads `check` for a deck that cannot meet it.**
   **NONLAND sources are DISCLOSED since 2026-09-18, never counted**: `consistency` prints
@@ -1039,7 +1039,12 @@ is protecting.
   axis, not 1**: across the **68 decks that print an effective figure** the unpriced count
   runs p25 1 / p50 2 / p75 3 / p90 5 / max 12, so a floor of 1 fires on 93% (the G-07
   saturation shape) against **27 of 68 (40%)** at 3. BOTH figures are registered in
-  `figure_drift`, which is what caught the population move when impending joined. [G-85]
+  `figure_drift`, which is what caught the population move when impending joined.
+  **Until 2026-11-02 it read keywords from a field `load_card_data` never carries**, so
+  every KEYWORD discount (convoke, affinity, improvise, delve) was invisible to it while the
+  ◊ list beside it named the same cards; it reads `load_keywords()` now (31 decks' counts
+  rose). Its fourth reader since that day is `consistency`, which marks a cast-on-curve
+  row `◊` and names the discount it books at the printed cost. [G-85]
 - **BOARD PRESENCE IS AN AXIS AND NOTHING HERE MEASURED IT until 2026-09-18.** The tier
   floor reads interaction + card advantage, `cuts` reads theme fit and role credit, and
   `stats` counted creatures without ever asking how big they are — so a deck can clear an
