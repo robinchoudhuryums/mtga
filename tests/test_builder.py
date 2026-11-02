@@ -213,6 +213,57 @@ class TestProtectPicks:
         assert any("Counterspell is not protected" in ln for ln in lines)  # cannot unprotect it
 
 
+class TestVerdicts:
+    """A verdict is one card's hand grade for one deck, stamped with that deck's list hash."""
+
+    def test_aliases_normalise_and_unknown_marks_are_refused(self):
+        assert [B.norm_verdict(x) for x in ("3", "strong", "*", "s", "m", "out")] == \
+            ["★★★", "★★", "★", "◇", "△", "✗"]
+        with pytest.raises(B.BuildError):
+            B.norm_verdict("A+")
+
+    def test_set_clear_and_pre_draft(self, scratch):
+        deck_path, _ = scratch
+        b = _new(deck_path)
+        B.add_cards(b, ["Opt", "Murder"], pile="G")
+        B.set_verdict(b, "Opt", "G", "2")
+        B.set_verdict(b, "Murder", "g", "◇", pre=True)                 # key match is case-insensitive
+        assert b["verdicts"]["Opt"]["G"]["m"] == "★★" and b["verdicts"]["Opt"]["G"]["graded_at"]
+        assert b["verdicts"]["Murder"]["G"]["graded_at"] is None
+        B.set_verdict(b, "Murder", "G", "-")
+        assert "Murder" not in b["verdicts"]
+        with pytest.raises(B.BuildError):
+            B.set_verdict(b, "Opt", "Nope", "★")
+
+    def test_derive_and_check_report_pre_draft_and_stale(self, scratch):
+        deck_path, _ = scratch
+        b = _new(deck_path)
+        B.add_cards(b, ["Opt", "Murder", "Counterspell"], pile="G")
+        B.set_verdict(b, "Opt", "G", "★★")
+        B.set_verdict(b, "Murder", "G", "★", pre=True)
+        text = open(deck_path, encoding="utf-8").read()
+        open(deck_path, "w", encoding="utf-8").write(text.replace("8 Island", "7 Island", 1))
+        cards = {c["n"]: c for c in B.derive(b, tempo=False)["cards"]}
+        assert cards["Opt"]["vd"] == {"G": "★★"} and cards["Opt"]["vs"] == {"G": "stale"}
+        assert cards["Murder"]["vs"] == {"G": "pre"} and cards["Counterspell"]["vd"] == {}
+        line = next(m for s, m in B.check_build(b) if s == "verdicts")
+        assert "1 with no verdict" in line and "1 pre-draft" in line and "1 graded before" in line
+
+    def test_cli_file_validates_every_line_before_writing(self, scratch):
+        deck_path, tmp = scratch
+        B.save_build("t", _new(deck_path))
+        b = B.load_build("t")
+        B.add_cards(b, ["Opt"], pile="G")
+        B.save_build("t", b)
+        bad = tmp / "v.tsv"
+        bad.write_text("Opt\tG\t★★\nOpt\tG\tA+\n", encoding="utf-8")
+        assert B.main(["verdict", "t", "--file", str(bad)]) == 2
+        assert "verdicts" not in B.load_build("t")                       # nothing half-written
+        bad.write_text("# a comment\nOpt\tG\tstrong\n", encoding="utf-8")
+        assert B.main(["verdict", "t", "--file", str(bad)]) == 0
+        assert B.load_build("t")["verdicts"]["Opt"]["G"]["m"] == "★★"
+
+
 class TestBenchAndKeepOutPicks:
     """Bench and Keep out are per deck: they sit in that deck's block of the copied text and
     are reported, checked against the deck, but never turned into an edit."""

@@ -274,6 +274,89 @@ def set_hidden(build, name, role, remove=False):
     return n
 
 
+# The pile-analysis legend, best first. A verdict is a hand grade of one card for one deck.
+VERDICTS = ("★★★", "★★", "★", "◇", "△", "✗")
+VERDICT_LABEL = {"★★★": "take", "★★": "strong", "★": "real", "◇": "situational",
+                 "△": "marginal", "✗": "out"}
+_VERDICT_ALIAS = {"3": "★★★", "2": "★★", "1": "★", "s": "◇", "m": "△", "x": "✗",
+                  **{v: k for k, v in VERDICT_LABEL.items()}}
+
+
+def norm_verdict(mark):
+    m = (mark or "").strip()
+    m = _VERDICT_ALIAS.get(m.lower(), m).replace("*", "★")
+    if m not in VERDICTS:
+        raise BuildError(f"unknown verdict {mark!r} — use one of {' '.join(VERDICTS)} "
+                         f"(or 3/2/1/s/m/x, or take/strong/real/situational/marginal/out)")
+    return m
+
+
+def deck_key_of(build, ref):
+    """A deck of the build by key, label or id (case-insensitive)."""
+    r = (ref or "").strip().lower()
+    for d in build["decks"]:
+        if r in (d["key"].lower(), (d.get("label") or "").lower(), str(d["id"]).lower()):
+            return d["key"]
+    raise BuildError(f"{ref!r} is not a deck of this build "
+                     f"({', '.join(d['key'] + '=' + (d.get('label') or d['id']) for d in build['decks'])})")
+
+
+def set_verdict(build, name, deck, mark, pre=False, _idx=None, _hashes=None):
+    """Record (or, with mark '-', drop) one card's verdict for one deck. `graded_at` is that
+    deck's list hash, so a swap marks the verdict stale; `pre` records a grade written before
+    the deck existed in its current form (an import from an analysis doc) — graded_at None,
+    which the page shows as "pre-draft" until someone re-grades it."""
+    n = resolve_name(name, _idx)
+    if not _card_entry(build, n):
+        raise BuildError(f"{n!r} is not in this build; add it first")
+    k = deck_key_of(build, deck)
+    allv = build.setdefault("verdicts", {})
+    cur = allv.setdefault(n, {})
+    if (mark or "").strip() in ("-", ""):
+        cur.pop(k, None)
+    else:
+        did = next(d["id"] for d in build["decks"] if d["key"] == k)
+        h = (_hashes or {}).get(did) or deck_hash(did)
+        cur[k] = {"m": norm_verdict(mark), "graded_at": None if pre else h}
+    if not cur:
+        allv.pop(n, None)
+    return n, k
+
+
+def read_verdict_file(text):
+    """Lines of `card<TAB>deck<TAB>mark` (blank lines and # comments skipped)."""
+    out = []
+    for i, raw in enumerate((text or "").splitlines(), 1):
+        line = raw.rstrip("\n")
+        if not line.strip() or line.lstrip().startswith("#"):
+            continue
+        parts = line.split("\t")
+        if len(parts) != 3:
+            raise BuildError(f"line {i}: expected card<TAB>deck<TAB>mark, got {line!r}")
+        out.append(tuple(p.strip() for p in parts))
+    return out
+
+
+def verdict_status(build, hashes=None):
+    """{deck_key: {"missing": [...], "pre": [...], "stale": [...]}} over the build's cards."""
+    hashes = hashes or current_hashes(build)
+    out = {}
+    allv = build.get("verdicts", {})
+    for d in build["decks"]:
+        k, did = d["key"], d["id"]
+        st = {"missing": [], "pre": [], "stale": []}
+        for c in build["cards"]:
+            v = allv.get(c["name"], {}).get(k)
+            if not v:
+                st["missing"].append(c["name"])
+            elif v.get("graded_at") is None:
+                st["pre"].append(c["name"])
+            elif hashes.get(did) != v["graded_at"]:
+                st["stale"].append(c["name"])
+        out[k] = st
+    return out
+
+
 # ---------------------------------------------------------------- check
 def check_build(build):
     """[(severity, message)] — 'stale' (a deck changed since the reason was written),
@@ -312,6 +395,16 @@ def check_build(build):
     for n in build["reasons"]:
         if not _card_entry(build, n):
             out.append(("orphan", f"reason for {n}, which is not in the build"))
+    for n in build.get("verdicts", {}):
+        if not _card_entry(build, n):
+            out.append(("orphan", f"verdict for {n}, which is not in the build"))
+    # Verdicts are work in progress, so one summary line per deck, never a strict failure.
+    for k, st in verdict_status(build, hashes).items():
+        parts = [f"{len(st[x])} {lab}" for x, lab in (("missing", "with no verdict"),
+                 ("pre", "pre-draft"), ("stale", "graded before the list changed")) if st[x]]
+        if parts:
+            lab = next(d.get("label") or d["id"] for d in build["decks"] if d["key"] == k)
+            out.append(("verdicts", f"{lab}: " + ", ".join(parts)))
     return out
 
 
@@ -572,6 +665,8 @@ def derive(build, tempo=True):
     prots = {k: set(v["protect"]) for k, v in live.items()}
     printing = _printings()
     hidden = build.get("hidden", {})
+    verdicts, hashes = build.get("verdicts", {}), current_hashes(build)
+    ids = {d["key"]: d["id"] for d in build["decks"]}
     on_board = {c["name"] for c in build["cards"]}
     # Deck-list cards that are on no pile still get a record (pile None), so the page can
     # show them in the Compare view and the card pane like any other card.
@@ -602,9 +697,15 @@ def derive(build, tempo=True):
         r = build["reasons"].get(n)
         if r:
             rec["g"], rec["w"] = r.get("group", ""), r.get("text", "")
+        vv = verdicts.get(n, {})
+        rec["vd"] = {k: x["m"] for k, x in vv.items() if k in live}
+        rec["vs"] = {k: ("pre" if x.get("graded_at") is None else
+                         "stale" if x["graded_at"] != hashes.get(ids[k]) else "")
+                     for k, x in vv.items() if k in live}
         out.append(rec)
     return {"cards": out,
             "meta": {"title": build.get("title"), "groups": build.get("groups", {}),
+                     "verdicts": [[m, VERDICT_LABEL[m]] for m in VERDICTS],
                      "decks": build["decks"], "piles": build.get("piles", []),
                      "live": live, "refreshed": datetime.date.today().isoformat()}}
 
@@ -989,6 +1090,12 @@ def main(argv=None):
     p.add_argument("slug"); p.add_argument("card")
     p.add_argument("--role", required=True, choices=["interaction", "card-advantage"])
     p.add_argument("--remove", action="store_true")
+    p = sub.add_parser("verdict", help="record a card's verdict for one deck (★★★ ★★ ★ ◇ △ ✗), or many with --file")
+    p.add_argument("slug"); p.add_argument("card", nargs="?"); p.add_argument("deck", nargs="?")
+    p.add_argument("mark", nargs="?", help="★★★ ★★ ★ ◇ △ ✗ (or 3 2 1 s m x); - clears it")
+    p.add_argument("--file", help="lines of card<TAB>deck<TAB>mark; - for stdin")
+    p.add_argument("--pre", action="store_true",
+                   help="graded before the deck existed in its current form (an import): shown as pre-draft")
     p = sub.add_parser("check", help="stale reasons, unresolved names, unplaced cards")
     p.add_argument("slug"); p.add_argument("--strict", action="store_true",
                                            help="exit 1 when anything is stale or unresolved")
@@ -1045,6 +1152,24 @@ def main(argv=None):
             n = set_hidden(b, args.card, args.role, args.remove)
             save_build(args.slug, b)
             print(f"{n}: hidden roles now {', '.join(b.get('hidden', {}).get(n, [])) or 'none'}")
+        elif args.cmd == "verdict":
+            if args.file:
+                text = sys.stdin.read() if args.file == "-" else open(args.file, encoding="utf-8").read()
+                rows = read_verdict_file(text)
+            elif args.card and args.deck and args.mark:
+                rows = [(args.card, args.deck, args.mark)]
+            else:
+                raise BuildError("give CARD DECK MARK, or --file")
+            idx, hashes = _name_index(), current_hashes(b)
+            for card, deck, mark in rows:          # validate everything before writing anything
+                norm_verdict(mark) if mark.strip() not in ("-", "") else None
+                deck_key_of(b, deck)
+                if not _card_entry(b, resolve_name(card, idx)):
+                    raise BuildError(f"{card!r} is not in this build; add it first")
+            for card, deck, mark in rows:
+                set_verdict(b, card, deck, mark, pre=args.pre, _idx=idx, _hashes=hashes)
+            save_build(args.slug, b)
+            print(f"Recorded {len(rows)} verdict(s)" + (" (pre-draft)" if args.pre else ""))
         elif args.cmd == "check":
             issues = check_build(b)
             if not issues:

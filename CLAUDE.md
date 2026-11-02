@@ -1434,7 +1434,9 @@ is protecting.
   ranks are DERIVED at render from the deck model. The first board typed those figures into
   the page and they went stale at the first swap. **A reason is graded against a deck
   VERSION** (`graded_at`, a hash of each list), so `builder.py check` and a soft `check_all`
-  line name it once a deck changes — re-read it, do not re-stamp it blindly. **The
+  line name it once a deck changes — re-read it, do not re-stamp it blindly. Per-deck
+  VERDICT stars (`builder.py verdict`, ★★★…✗) are stamped the same way; an imported grade
+  reads pre-draft until re-graded. **The
   theme-fit grade is NOT shown as a verdict**: it misreads graveyard polarity (G-42) and
   rates removal tangential. **The page edits nothing**: a pick is a request that
   `builder.py picks` turns into checked `swap --package` / protect / `/ingest` lines for

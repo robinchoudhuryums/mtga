@@ -250,3 +250,36 @@ class TestPerDeckBenchAndKeepOut:
         assert out["afterBench"] == ["benchG", "benchT"]      # Bench in T cleared Keep out of T
         assert out["scopedOn"] == ["outG", "outT"] and out["scopedOff"] == []
         assert out["toasts"] == 2                              # each clearing said so
+
+
+_HARNESS_VERDICT = """
+const fs = require('fs');
+const input = JSON.parse(fs.readFileSync(process.argv[3], 'utf8'));
+const META = {verdicts: input.legend};
+eval(fs.readFileSync(process.argv[2], 'utf8'));
+console.log(JSON.stringify({
+  ranks: input.cards.map(c => vrank(c, "T")),
+  match: input.filters.map(f => input.cards.filter(c => vfMatch(c, f)).map(c => c.n))}));
+"""
+
+
+@pytest.mark.skipif(not _NODE, reason="node not installed (CI sets PYTEST_NO_SKIPS, so CI cannot skip)")
+class TestVerdictFilter:
+    def test_rank_and_filter_bands(self, tmp_path):
+        """The page's verdict filter reads the same legend builder.py writes (best first), and an
+        ungraded card sorts after every graded one."""
+        legend = [[m, B.VERDICT_LABEL[m]] for m in B.VERDICTS]
+        cards = [{"n": n, "vd": ({"T": m} if m else {})} for n, m in
+                 (("a", "★★★"), ("b", "★★"), ("c", "★"), ("d", "◇"), ("e", "✗"), ("f", None))]
+        fx = tmp_path / "in.json"
+        fx.write_text(json.dumps({"legend": legend, "cards": cards,
+                                  "filters": ["T|top2", "T|top3", "T|low", "T|none", "all"]}))
+        js = tmp_path / "fns.js"
+        js.write_text(_extract_consts(["VORDER", "vrank"]) + "\n" + _extract(["vfMatch"])
+                      + "\nglobalThis.vrank = vrank;")        # an eval'd const is not visible outside it
+        h = tmp_path / "h.js"
+        h.write_text(_HARNESS_VERDICT)
+        out = json.loads(subprocess.run([_NODE, str(h), str(js), str(fx)], capture_output=True,
+                                        text=True, check=True).stdout)
+        assert out["ranks"] == [0, 1, 2, 3, 5, 99]
+        assert out["match"] == [["a", "b"], ["a", "b", "c"], ["d", "e"], ["f"], list("abcdef")]

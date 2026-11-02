@@ -130,6 +130,11 @@ details.deck h2{margin:0;font-family:var(--display);font-weight:400;font-size:1.
 .tag.own{font-family:var(--mono)}
 .tag.sus{border-style:dotted;color:var(--warn);border-color:var(--warn)}
 .tag.hid{border-style:dashed;color:var(--accent);border-color:var(--accent)}
+.tag.vd{color:var(--dc);border-color:color-mix(in srgb,var(--dc) 55%,transparent);font-family:var(--mono)}
+.tag.vd.pre,.dpv.pre{border-style:dotted}
+.tag.vd.stale,.dpv.stale{border-style:dashed}
+.dpv{flex:0 0 auto;font:600 .8rem/1.2 var(--mono);color:var(--dc);border:1px solid color-mix(in srgb,var(--dc) 45%,transparent);border-radius:3px;padding:1px 6px;min-width:2.6em;text-align:center}
+.vlegend{font-size:.78rem;color:var(--muted);margin:2px 0 8px}
 .tag.done{color:var(--accent);border-color:var(--accent);font-weight:600}
 .rw.applied .row{opacity:.62}
 .row .rank{font:500 .72rem/1 var(--mono);color:var(--muted);min-width:2.2em;text-align:right;flex:none}
@@ -290,6 +295,7 @@ dialog#cmp::backdrop{background:rgba(0,0,0,.6)}
     <label for="q">Search<input type="search" id="q" placeholder="Name, type or rules text"></label>
     <label for="mem">In list<select id="mem"></select></label>
     <label for="grp">Reason<select id="grp"><option value="all">Any</option></select></label>
+    <label for="vf">Verdict<select id="vf"></select></label>
     <label for="role">Role<select id="role"><option value="all">Any</option><option>Interaction</option><option>Card advantage</option><option>Ramp</option><option>Recursion</option><option>Payoff / engine</option><option value="none">No detected role</option></select></label>
     <label for="mvf">Mana value<select id="mvf"><option value="all">Any</option><option value="lo">0–2</option><option value="mid">3–4</option><option value="hi">5+</option></select></label>
     <label for="ownf">Owned<select id="ownf"><option value="all">Any</option><option value="own">Owned</option><option value="craft">To craft</option></select></label>
@@ -384,6 +390,17 @@ const BOARD = CARDS.filter(c=>c.p);
 document.getElementById("subtitle").textContent = `${BOARD.length} cards for ${DK.map(k=>`${DECKS[k].label} (${DECKS[k].full})`).join(" and ")}. Mark a card and Claude reads your picks back.`;
 document.getElementById("mem").innerHTML = `<option value="all">Any</option><option value="neither">In no deck</option>`+DK.map(k=>`<option value="${esc(k)}">In ${esc(DECKS[k].label)}</option>`).join("")+(DK.length>1?`<option value="every">In every deck</option>`:"");
 
+/* Verdict stars: a hand grade per card per deck (builder.py verdict). VORDER is best first. */
+const VORDER = (META.verdicts||[]).map(x=>x[0]), VLAB = Object.fromEntries((META.verdicts||[]).map(x=>[x[0],x[1]]));
+const vrank = (c,k) => { const m=(c.vd||{})[k]; const i=VORDER.indexOf(m); return i<0?99:i; };
+const VSTATE = {pre:"graded before this deck was drafted", stale:"graded before the list last changed"};
+function vTitle(c,k){ const m=(c.vd||{})[k], st=(c.vs||{})[k]; return m?`${DECKS[k].label}: ${m} ${VLAB[m]||""}${st?` — ${VSTATE[st]}`:""}`:`${DECKS[k].label}: no verdict yet`; }
+/* filter value "K|top2" (★★ or better), "K|top3" (★ or better), "K|low" (◇ or worse), "K|none" */
+function vfMatch(c,val){ if(!val||val==="all") return true; const [k,w]=val.split("|"), r=vrank(c,k);
+  return w==="top2"?r<=1: w==="top3"?r<=2: w==="low"?(r>=3&&r<99): w==="none"?r===99: true; }
+document.getElementById("vf").innerHTML = `<option value="all">Any</option>`+DK.map(k=>{ const l=esc(DECKS[k].label);
+  return `<optgroup label="${l}"><option value="${esc(k)}|top2">${l}: ★★ or better</option><option value="${esc(k)}|top3">${l}: ★ or better</option><option value="${esc(k)}|low">${l}: ◇ or worse</option><option value="${esc(k)}|none">${l}: no verdict</option></optgroup>`; }).join("");
+document.getElementById("sort").insertAdjacentHTML("beforeend", DK.map(k=>`<option value="v:${esc(k)}">Verdict — ${esc(DECKS[k].label)}</option>`).join(""));
 let picks = {}, reasons = {}, requests = {};
 let db = null, canWrite = true, view = PILEKEYS[0]||"lists", VISIBLE = [], SEL = null, NOTEOPEN = null, NOTECOL = "";
 const CMP = {pile:"all", deck:DK[0], side:"L", q:""}; let ACTIVECOL = "", COLIDS = {L:[], R:[]};
@@ -468,7 +485,8 @@ function noteRowHTML(c,col){ const p=picks[c.id]||{};
 /* A row. `col` is "" in a pile view, "L"/"R" in the Compare view (a card can be in both columns,
    so rows are found by data attributes, never by id). The deck column adds the cut rank and ⇄. */
 function rowHTML(c, col=""){
-  const tags = DK.filter(k=>c["i"+k]).map(k=>`<span class="tag ${c["p"+k]?"prot":"in"}" style="--dc:${DECKS[k].dc}">${c["p"+k]?"Protected":"In"} ${esc(DECKS[k].label)}</span>`).join("");
+  const tags = DK.filter(k=>c["i"+k]).map(k=>`<span class="tag ${c["p"+k]?"prot":"in"}" style="--dc:${DECKS[k].dc}">${c["p"+k]?"Protected":"In"} ${esc(DECKS[k].label)}</span>`).join("")
+    + DK.filter(k=>(c.vd||{})[k]).map(k=>`<span class="tag vd ${(c.vs||{})[k]||""}" style="--dc:${DECKS[k].dc}" title="${esc(vTitle(c,k))}">${esc(DECKS[k].label[0])} ${esc(c.vd[k])}</span>`).join("");
   const ap = hasApplied(c.id), k=CMP.deck, d=DECKS[k];
   let extra="", cls="", lead="";
   if(col==="R"){ const x=d.list.find(x=>x.n===c.n)||{}, s=BYID[SEL], cutBy=pairedTo(k,c.n);
@@ -516,7 +534,9 @@ function detailHTML(c, inSheet){
     <details class="rules"><summary>Rules text</summary><p>${esc(c.x||"(no rules text)")}</p></details>
     ${artsHTML(c)}
     ${[...pileScope(c),...DK.filter(k=>!pileScope(c).includes(k))].map(k=>{ const l=esc(DECKS[k].label);
-      return `<div class="picks dp" role="group" aria-label="${l}: your pick for ${esc(c.n)}"><span class="dpl" style="--dc:${DECKS[k].dc}" aria-hidden="true">${l}</span>${c["i"+k]?pb("cut"+k,"− Cut"):pb("add"+k,"+ Add")+pb("bench"+k,"Bench")+pb("out"+k,"Keep out")}</div>`; }).join("")}
+      const vm=(c.vd||{})[k], vst=(c.vs||{})[k]||"";
+      return `<div class="picks dp" role="group" aria-label="${l}: your pick for ${esc(c.n)}"><span class="dpl" style="--dc:${DECKS[k].dc}" aria-hidden="true">${l}</span><span class="dpv ${vst}" style="--dc:${DECKS[k].dc}" title="${esc(vTitle(c,k))}" aria-label="${esc(vTitle(c,k))}">${vm?esc(vm):"–"}</span>${c["i"+k]?pb("cut"+k,"− Cut"):pb("add"+k,"+ Add")+pb("bench"+k,"Bench")+pb("out"+k,"Keep out")}</div>`; }).join("")}
+    <p class="vlegend">Verdicts: ${VORDER.map(m=>`${esc(m)} ${esc(VLAB[m])}`).join(" · ")} — dotted: graded before the deck was drafted; dashed: before its list last changed.</p>
     ${DK.some(k=>!c["i"+k])?`<p class="status">For each deck, Add, Bench and Keep out exclude each other: choosing one clears the other two.</p>`:""}
     ${pairSelects(c)}${compareBtns(c)}
     ${c.land?"":`<div class="picks" role="group" aria-label="Roles the tools do not count">${HROLES.map(hb).join("")}</div>`}
@@ -742,12 +762,14 @@ function filtered(){ const q=document.getElementById("q").value.trim().toLowerCa
   xs=xs.filter(c=>{ if(q&&!(c.n.toLowerCase().includes(q)||(c.x||"").toLowerCase().includes(q)||(c.t||"").toLowerCase().includes(q))) return false;
     if(mem==="neither"&&inAny(c)) return false; if(mem==="every"&&!DK.every(k=>c["i"+k])) return false; if(DECKS[mem]&&!c["i"+mem]) return false;
     if(grpSel.value!=="all"&&(reasonOf(c)||{}).g!==grpSel.value) return false;
+    if(!vfMatch(c,document.getElementById("vf").value)) return false;
     const ro=c.ro||[]; if(role==="none"?ro.length:(role!=="all"&&!ro.includes(role))) return false;
     const mv=c.mv??0; if((mvf==="lo"&&mv>2)||(mvf==="mid"&&(mv<3||mv>4))||(mvf==="hi"&&mv<5)) return false;
     if((ownf==="own"&&!c.o)||(ownf==="craft"&&c.o)) return false; if(rar!=="all"&&c.r!==rar) return false;
     if(document.getElementById("hidemarked").checked&&marked(c.id)&&c.id!==SEL) return false;
     if(hideApplied(c)) return false;
     if(document.getElementById("swaponly").checked&&!isSwap(c)) return false; return true; });
+  if(sort.startsWith("v:")){ const k=sort.slice(2); return xs.sort((a,b)=>vrank(a,k)-vrank(b,k)||a.n.localeCompare(b.n)); }
   return xs.sort((a,b)=> sort==="mv"?(a.mv??99)-(b.mv??99)||a.n.localeCompare(b.n) : sort==="group"?gk(a).localeCompare(gk(b))||a.n.localeCompare(b.n) : a.n.localeCompare(b.n)); }
 function render(){
   const pile=PILES.find(p=>p.k===view); document.getElementById("intro").textContent=pile.intro;
@@ -868,7 +890,7 @@ document.addEventListener("input",e=>{
   if(e.target.id==="addnames"){ const n=parseNames(e.target.value), on=n.filter(x=>BYID[slug(x)]), pv=document.getElementById("addpreview"); if(pv) pv.textContent=n.length?`${n.length} name(s) read${on.length?`; already on the board: ${on.join("; ")}`:""}.`:""; return; }
   if(e.target.id==="cmpq"){ CMP.q=e.target.value; paintCompareRows(); return; }
   if(e.target.id==="q") render(); });
-["mem","grp","sort","role","mvf","ownf","rar","hidemarked","swaponly","hideapplied"].forEach(id=>document.getElementById(id).addEventListener("change",render));
+["mem","grp","vf","sort","role","mvf","ownf","rar","hidemarked","swaponly","hideapplied"].forEach(id=>document.getElementById(id).addEventListener("change",render));
 document.addEventListener("change",e=>{
   if(e.target.id==="cmppile"){ CMP.pile=e.target.value; render(); document.getElementById("cmppile").focus(); return; }
   if(e.target.id==="cmpdeck"){ CMP.deck=e.target.value; render(); document.getElementById("cmpdeck").focus(); return; }

@@ -2207,9 +2207,9 @@
   },
   "Ezuri, Stalker of Spheres": {
    "group": "F",
-   "text": "\"Whenever you proliferate, draw a card\" — the deck has one proliferate source (Vraska, Betrayal's Sting).",
+   "text": "**Re-graded 2026-11-02 (synergy first):** Up from ◇: proliferate sources went 1→3 (High Perfect Morcant, Vraska, Yawgmoth's discard: proliferate). It proliferates twice on ETB across 7 planeswalkers, and as a legendary Elf it is also a Thranduil loot. **Earlier:** \"Whenever you proliferate, draw a card\" — the deck has one proliferate source (Vraska, Betrayal's Sting).",
    "graded_at": {
-    "75-historic-brawl": "3a89a91d2b4e",
+    "75-historic-brawl": "abfe943277aa",
     "96": "f86da0733f29"
    }
   },
@@ -2231,9 +2231,9 @@
   },
   "Nael, Avizoa Aeronaut": {
    "group": "F",
-   "text": "Domain: Sultai lands give at most 3 basic types, so \"if there are five … draw a card\" never happens.",
+   "text": "**Re-graded 2026-11-02 (synergy first):** Up from ✗: the draw is still dead (Sultai lands reach 3 types). But as a legendary Elf it is a Thranduil loot on a 4-mana flier with combat card selection, so it is below the bar, not off-plan. **Earlier:** Domain: Sultai lands give at most 3 basic types, so \"if there are five … draw a card\" never happens.",
    "graded_at": {
-    "75-historic-brawl": "3a89a91d2b4e",
+    "75-historic-brawl": "abfe943277aa",
     "96": "f86da0733f29"
    }
   },
@@ -2295,9 +2295,9 @@
   },
   "Bonny Pall, Clearcutter": {
    "group": "D",
-   "text": "6 mana; \"Whenever you attack, draw a card, then … put a land card from your hand or graveyard onto the battlefield\" — real value, wrong curve slot beside Selvala/Kamahl's Vow.",
+   "text": "**Re-graded 2026-11-02 (synergy first):** Unchanged at ★★. Repeatable draw plus lands back from the yard (milled by Wrenn and Seven, Wrenn and Realmbreaker, Sidisi), and landfall feeds Sindarin Liege tokens. Only the 6-mana UU cost holds it back. **Earlier:** 6 mana; \"Whenever you attack, draw a card, then … put a land card from your hand or graveyard onto the battlefield\" — real value, wrong curve slot beside Selvala/Kamahl's Vow.",
    "graded_at": {
-    "75-historic-brawl": "3a89a91d2b4e",
+    "75-historic-brawl": "abfe943277aa",
     "96": "f86da0733f29"
    }
   },
@@ -2335,17 +2335,17 @@
   },
   "Nashi, Moon's Legacy": {
    "group": "B",
-   "text": "\"exile up to one target legendary or Rat card from your graveyard and copy it\" — Can target a non-Elf legend, but the deck's legends ARE mostly Elves; menace 3-drop otherwise.",
+   "text": "**Re-graded 2026-11-02 (synergy first):** Holds at ★★★, and \"legends are mostly Elves\" is now false: 23 non-Elf legendary nonland cards against 15 Elves (Vile Offering, Kamahl's Vow, the walkers, Yarok, Sidisi). The G-42 cost is avoidable, and the exile triggers Teval, Oasis and Roots. **Earlier:** \"exile up to one target legendary or Rat card from your graveyard and copy it\" — Can target a non-Elf legend, but the deck's legends ARE mostly Elves; menace 3-drop otherwise.",
    "graded_at": {
-    "75-historic-brawl": "3a89a91d2b4e",
+    "75-historic-brawl": "abfe943277aa",
     "96": "f86da0733f29"
    }
   },
   "Nashi, Illusion Gadgeteer": {
    "group": "G",
-   "text": "Conjures a copy of a yard card into hand (keeps the original — no G-42 cost); a 4-mana non-Elf. ◇",
+   "text": "**Re-graded 2026-11-02 (synergy first):** Holds at ★★ (drops the ◇ hedge). It is recursion that leaves the original in Thranduil's yard, with no G-42 cost. Yarok (new) doubles the ETB into two cards. **Earlier:** Conjures a copy of a yard card into hand (keeps the original — no G-42 cost); a 4-mana non-Elf. ◇",
    "graded_at": {
-    "75-historic-brawl": "3a89a91d2b4e",
+    "75-historic-brawl": "abfe943277aa",
     "96": "f86da0733f29"
    }
   },
@@ -2359,9 +2359,9 @@
   },
   "Sidisi, Brood Tyrant": {
    "group": "A",
-   "text": "Not an Elf, and its mill is random where Thranduil's loot chooses — Mills three on entry and attack; with 45 creatures most mills make a 2/2 Zombie. Strong, just not Elf-synergistic (the Zombies feed nothing Elf-gated).",
+   "text": "**Re-graded 2026-11-02 (synergy first):** Holds at ★★★, and \"the Zombies feed nothing Elf-gated\" is void. The Zombies now feed Yawgmoth's sac-draw, Insidious Roots mana, Eladamri and Circle of Dreams, and Yarok doubles the ETB mill. **Earlier:** Not an Elf, and its mill is random where Thranduil's loot chooses — Mills three on entry and attack; with 45 creatures most mills make a 2/2 Zombie. Strong, just not Elf-synergistic (the Zombies feed nothing Elf-gated).",
    "graded_at": {
-    "75-historic-brawl": "3a89a91d2b4e",
+    "75-historic-brawl": "abfe943277aa",
     "96": "f86da0733f29"
    }
   },
@@ -2375,9 +2375,9 @@
   },
   "Brokkos, Apex of Forever": {
    "group": "D",
-   "text": "Recursive mutate threat; Elves are non-Human so it can mutate, but it adds a body, not an engine.",
+   "text": "**Re-graded 2026-11-02 (synergy first):** Unchanged at ★, with a better reason than \"adds a body\". Each recast from the yard triggers Teval, Oasis of Renewal and Insidious Roots, plus Kotis (new) for a graveyard cast, and mutate keeps an Elf's tap ability. The payoffs must already be on board. **Earlier:** Recursive mutate threat; Elves are non-Human so it can mutate, but it adds a body, not an engine.",
    "graded_at": {
-    "75-historic-brawl": "3a89a91d2b4e",
+    "75-historic-brawl": "abfe943277aa",
     "96": "f86da0733f29"
    }
   },
@@ -2399,9 +2399,9 @@
   },
   "Sin, Spira's Punishment": {
    "group": "B",
-   "text": "\"exile a permanent card from your graveyard at random\" — Random — will hit Elves; 7 mana.",
+   "text": "**Re-graded 2026-11-02 (synergy first):** Holds at ★★, but the G-42 objection is replaced by the owner's exception: an exiled Elf's ability moves to the token. A land hit is upside (a free tapped land, then repeat). The real costs are 7 mana and randomly stealing a Kotis/Muldrotha recast target. **Earlier:** \"exile a permanent card from your graveyard at random\" — Random — will hit Elves; 7 mana.",
    "graded_at": {
-    "75-historic-brawl": "3a89a91d2b4e",
+    "75-historic-brawl": "abfe943277aa",
     "96": "f86da0733f29"
    }
   },
@@ -2471,9 +2471,9 @@
   },
   "Malcolm, Alluring Scoundrel": {
    "group": "E",
-   "text": "Combat-gated loot on a non-Elf flier.",
+   "text": "**Re-graded 2026-11-02 (synergy first):** Down from ★. The non-Elf objection is void, but on a 2-power flier the loot is combat-gated, so it is situational. **Earlier:** Combat-gated loot on a non-Elf flier.",
    "graded_at": {
-    "75-historic-brawl": "3a89a91d2b4e",
+    "75-historic-brawl": "abfe943277aa",
     "96": "f86da0733f29"
    }
   },
@@ -2495,9 +2495,9 @@
   },
   "Rona, Herald of Invasion // Rona, Tolarian Obliterator": {
    "group": "E",
-   "text": "Loot that untaps on legendary spells — the closest of the looters, since most of the deck is legendary.",
+   "text": "**Re-graded 2026-11-02 (synergy first):** Unchanged at ★★, now judged on synergy, not \"closest to an Elf\". A 2-mana loot that untaps off 38 legendary spells fills Thranduil's yard several times a turn, plus Elrond draws and Ioreth untaps. Card-neutral, so not ★★★. **Earlier:** Loot that untaps on legendary spells — the closest of the looters, since most of the deck is legendary.",
    "graded_at": {
-    "75-historic-brawl": "3a89a91d2b4e",
+    "75-historic-brawl": "abfe943277aa",
     "96": "f86da0733f29"
    }
   },
@@ -2519,9 +2519,9 @@
   },
   "Arni, Humble Scribe": {
    "group": "E",
-   "text": "`{T}: Draw a card, then discard a card` duplicates Thranduil's own loot; lost to an Elf.",
+   "text": "**Re-graded 2026-11-02 (synergy first):** Grade holds, but \"lost to an Elf\" is void. It is a 3-mana loot that untaps off 45 creatures, so it bins Elves for Thranduil, and its tap ability triggers Elrond. A real add candidate. **Earlier:** `{T}: Draw a card, then discard a card` duplicates Thranduil's own loot; lost to an Elf.",
    "graded_at": {
-    "75-historic-brawl": "3a89a91d2b4e",
+    "75-historic-brawl": "abfe943277aa",
     "96": "f86da0733f29"
    }
   },
@@ -2767,9 +2767,9 @@
   },
   "Leader, Super-Genius": {
    "group": "E",
-   "text": "Connive each combat; duplicates Thranduil's loot on a non-Elf body.",
+   "text": "**Re-graded 2026-11-02 (synergy first):** Up from ★★: \"duplicates Thranduil's loot on a non-Elf\" is void. Draw two, discard one every turn, from the turn it lands, is net card advantage plus a discard into the yard, the engine synergy-first ranks first. **Earlier:** Connive each combat; duplicates Thranduil's loot on a non-Elf body.",
    "graded_at": {
-    "75-historic-brawl": "3a89a91d2b4e",
+    "75-historic-brawl": "abfe943277aa",
     "96": "f86da0733f29"
    }
   },
@@ -2879,9 +2879,9 @@
   },
   "Pharaoh Rama-Tut": {
    "group": "E",
-   "text": "Connives on noncreature spells — 19 here; a non-Elf looter.",
+   "text": "**Re-graded 2026-11-02 (synergy first):** Down from ★. The non-Elf objection is void, but only 19 of 64 nonland cards trigger it, so it is a 5-mana card-neutral loot that fires about once a turn at best. **Earlier:** Connives on noncreature spells — 19 here; a non-Elf looter.",
    "graded_at": {
-    "75-historic-brawl": "3a89a91d2b4e",
+    "75-historic-brawl": "abfe943277aa",
     "96": "f86da0733f29"
    }
   },
@@ -3031,9 +3031,9 @@
   },
   "Isareth the Awakener": {
    "group": "D",
-   "text": "Reanimates on attack for {X}, but the returned creature is exiled if it leaves — and the reanimated Elf no longer lends Thranduil its ability.",
+   "text": "**Re-graded 2026-11-02 (synergy first):** Unchanged at ★★. The G-42 cost now applies only by choice: the yard holds non-Elf ETB targets (Cloud of Darkness, Silumgar, Sheoldred, Overlord) and Yarok doubles their triggers. **Earlier:** Reanimates on attack for {X}, but the returned creature is exiled if it leaves — and the reanimated Elf no longer lends Thranduil its ability.",
    "graded_at": {
-    "75-historic-brawl": "3a89a91d2b4e",
+    "75-historic-brawl": "abfe943277aa",
     "96": "f86da0733f29"
    }
   },
@@ -3071,9 +3071,9 @@
   },
   "Doctor Doom, Unrivaled": {
    "group": "In one list only",
-   "text": "In Glarb's list. **Why not Thranduil's:** `{T}: draw a card` on a 4-mana lifelink body — fine; non-Elf.",
+   "text": "**Re-graded 2026-11-02 (synergy first):** Holds at ★★; the \"non-Elf\" note is void. A repeatable tap-draw is first-priority card advantage, and it triggers Elrond. Ioreth (new) untaps it for a second draw. **Earlier:** In Glarb's list. **Why not Thranduil's:** `{T}: draw a card` on a 4-mana lifelink body — fine; non-Elf.",
    "graded_at": {
-    "75-historic-brawl": "3a89a91d2b4e",
+    "75-historic-brawl": "abfe943277aa",
     "96": "f86da0733f29"
    }
   },
@@ -3087,9 +3087,9 @@
   },
   "Gisa, Glorious Resurrector": {
    "group": "D",
-   "text": "Steals THEIR dead creatures for a turn; off-plan here (a better fit for a removal-heavy deck).",
+   "text": "**Re-graded 2026-11-02 (synergy first):** Down from ★. It touches nothing in our yard and only fires after removal; the decayed bodies feed Yawgmoth, but that is a board-state payoff. **Earlier:** Steals THEIR dead creatures for a turn; off-plan here (a better fit for a removal-heavy deck).",
    "graded_at": {
-    "75-historic-brawl": "3a89a91d2b4e",
+    "75-historic-brawl": "abfe943277aa",
     "96": "f86da0733f29"
    }
   },
@@ -3135,9 +3135,9 @@
   },
   "Madame Hydra, Reanimated": {
    "group": "D",
-   "text": "Self-mill 2 per attack and grows with creature cards; a non-Elf 4-drop beater in a deck whose bodies want to be Elves.",
+   "text": "**Re-graded 2026-11-02 (synergy first):** Unchanged at ★★, and \"bodies want to be Elves\" is void. Repeatable self-mill (doubled on ETB by Yarok, Sidisi Zombies off creature mills) on a body that grows with a 45-creature deck's yard. **Earlier:** Self-mill 2 per attack and grows with creature cards; a non-Elf 4-drop beater in a deck whose bodies want to be Elves.",
    "graded_at": {
-    "75-historic-brawl": "3a89a91d2b4e",
+    "75-historic-brawl": "abfe943277aa",
     "96": "f86da0733f29"
    }
   },
@@ -3151,9 +3151,9 @@
   },
   "Moonstone, Harsh Mistress": {
    "group": "A",
-   "text": "Not an Elf — \"Whenever you discard a card, you may exile that card … you may play that card\" — every Thranduil loot becomes card-neutral. But it EXILES the discard, which removes an Elf's ability from Thranduil (G-42), so it is best with non-Elf discards. ◇",
+   "text": "**Re-graded 2026-11-02 (synergy first):** Holds at ★★ (drops the ◇ hedge). The exile is a \"may\": keep Elf discards for Thranduil and replay non-Elf ones. That makes Thranduil's loot, Fauna Shaman and Yawgmoth's discard (new) card-positive. **Earlier:** Not an Elf — \"Whenever you discard a card, you may exile that card … you may play that card\" — every Thranduil loot becomes card-neutral. But it EXILES the discard, which removes an Elf's ability from Thranduil (G-42), so it is best with non-Elf discards. ◇",
    "graded_at": {
-    "75-historic-brawl": "3a89a91d2b4e",
+    "75-historic-brawl": "abfe943277aa",
     "96": "f86da0733f29"
    }
   },
@@ -3183,9 +3183,9 @@
   },
   "Yawgmoth, Thran Physician": {
    "group": "A",
-   "text": "Not an Elf; the deck runs no dedicated sacrifice outlet — `Pay 1 life, Sacrifice another creature: -1/-1 counter … and draw a card` is repeatable removal plus card draw off the Elf tokens (Imperious Perfect, Elvish Warmaster, Voice of the Woods, Lathril).",
+   "text": "**Re-graded 2026-11-02 (synergy first):** Up from ★★ (now in the list): \"not an Elf\" is void. A free repeatable sac-draw (fodder from Imperious Perfect, Sidisi, Liege, Morcant's Eyes, Izoni) puts nontoken Elves into Thranduil's yard, and the discard-proliferate bins cards and ticks 7 walkers. **Earlier:** Not an Elf; the deck runs no dedicated sacrifice outlet — `Pay 1 life, Sacrifice another creature: -1/-1 counter … and draw a card` is repeatable removal plus card draw off the Elf tokens (Imperious Perfect, Elvish Warmaster, Voice of the Woods, Lathril).",
    "graded_at": {
-    "75-historic-brawl": "3a89a91d2b4e",
+    "75-historic-brawl": "abfe943277aa",
     "96": "f86da0733f29"
    }
   },
@@ -3199,9 +3199,9 @@
   },
   "Aclazotz, Deepest Betrayal // Temple of the Dead": {
    "group": "D",
-   "text": "A 5-mana flier with hand attack; strong card, no Elf or graveyard tie.",
+   "text": "**Re-graded 2026-11-02 (synergy first):** Down from ★★: the \"no Elf\" half is void, but synergy-first puts off-engine power behind engine cards. It feeds no graveyard, makes no mana and draws only off an empty hand, in a crowded 5-drop slot. **Earlier:** A 5-mana flier with hand attack; strong card, no Elf or graveyard tie.",
    "graded_at": {
-    "75-historic-brawl": "3a89a91d2b4e",
+    "75-historic-brawl": "abfe943277aa",
     "96": "f86da0733f29"
    }
   },
@@ -3215,17 +3215,17 @@
   },
   "Black Widow, Daring Operative": {
    "group": "D",
-   "text": "Mill 3 then drains = creature cards in yard on combat damage — combat-gated, 5 mana.",
+   "text": "**Re-graded 2026-11-02 (synergy first):** Down from ★★: the ETB mill 3 is real fuel and Yarok doubles it. But the payoff is combat-gated on a 5-drop, and Dawnhand Eulogist already does this for 4. **Earlier:** Mill 3 then drains = creature cards in yard on combat damage — combat-gated, 5 mana.",
    "graded_at": {
-    "75-historic-brawl": "3a89a91d2b4e",
+    "75-historic-brawl": "abfe943277aa",
     "96": "f86da0733f29"
    }
   },
   "Drana, the Last Bloodchief": {
    "group": "D",
-   "text": "\"defending player chooses a nonlegendary creature card\" — the OPPONENT picks, so they give you a mana Elf.",
+   "text": "**Re-graded 2026-11-02 (synergy first):** Unchanged at ★. Recursion every attack now also triggers the leave-the-yard payoffs and Kotis. The opponent still picks (the worst of ~18 nonlegendary creatures, usually an Elf whose ability Thranduil was using). **Earlier:** \"defending player chooses a nonlegendary creature card\" — the OPPONENT picks, so they give you a mana Elf.",
    "graded_at": {
-    "75-historic-brawl": "3a89a91d2b4e",
+    "75-historic-brawl": "abfe943277aa",
     "96": "f86da0733f29"
    }
   },
@@ -3239,9 +3239,9 @@
   },
   "Ghoulcaller Gisa": {
    "group": "D",
-   "text": "Sac outlet that makes Zombies = power; Elves are small, so X is 1–2.",
+   "text": "**Re-graded 2026-11-02 (synergy first):** Unchanged at ★. Sacrificing a nontoken Elf moves its ability into Thranduil's yard, and the tap ability triggers Elrond. Yawgmoth (new) now does the sac-outlet job better, with a card drawn. **Earlier:** Sac outlet that makes Zombies = power; Elves are small, so X is 1–2.",
    "graded_at": {
-    "75-historic-brawl": "3a89a91d2b4e",
+    "75-historic-brawl": "abfe943277aa",
     "96": "f86da0733f29"
    }
   },
@@ -3255,9 +3255,9 @@
   },
   "Junji, the Midnight Sky": {
    "group": "D",
-   "text": "A 5-mana flier whose value is its death trigger; the deck wants Elves in the yard, not Dragons.",
+   "text": "**Re-graded 2026-11-02 (synergy first):** Unchanged at ★★; \"wants Elves in the yard, not Dragons\" is void. Its death trigger reanimates, sac outlets (Yawgmoth new, Izoni, Vraska +2) make it fire on demand, and Kotis or Muldrotha can recast it. **Earlier:** A 5-mana flier whose value is its death trigger; the deck wants Elves in the yard, not Dragons.",
    "graded_at": {
-    "75-historic-brawl": "3a89a91d2b4e",
+    "75-historic-brawl": "abfe943277aa",
     "96": "f86da0733f29"
    }
   },
@@ -3423,9 +3423,9 @@
   },
   "Celeborn the Wise": {
    "group": "F",
-   "text": "\"Whenever you attack with one or more Elves, scry 1\" and a pump — combat-only, minor.",
+   "text": "**Re-graded 2026-11-02 (synergy first):** Down from ◇: synergy-first demotes Elf-only text. Its one real contribution is the Thranduil loot as a legendary Elf entering; it has no activated ability for the yard. **Earlier:** \"Whenever you attack with one or more Elves, scry 1\" and a pump — combat-only, minor.",
    "graded_at": {
-    "75-historic-brawl": "3a89a91d2b4e",
+    "75-historic-brawl": "abfe943277aa",
     "96": "f86da0733f29"
    }
   },
@@ -3511,9 +3511,9 @@
   },
   "Wrenn and Seven": {
    "group": "A",
-   "text": "Not an Elf; Wrenn and Realmbreaker took the green-walker slot — +1 reveals four, lands to hand and \"the rest into your graveyard\" — a self-mill that never misses a land drop; −3 is a huge reach body. A real upgrade for any non-Elf slot.",
+   "text": "**Re-graded 2026-11-02 (synergy first):** Up from ★★ (now in the list): \"not an Elf\" is void. +1 is self-mill plus land draw every turn, 0 is a land-drop burst for landfall, −3 is a huge body and −8 rebuys the yard: graveyard, mana and card advantage on one card. **Earlier:** Not an Elf; Wrenn and Realmbreaker took the green-walker slot — +1 reveals four, lands to hand and \"the rest into your graveyard\" — a self-mill that never misses a land drop; −3 is a huge reach body. A real upgrade for any non-Elf slot.",
    "graded_at": {
-    "75-historic-brawl": "3a89a91d2b4e",
+    "75-historic-brawl": "abfe943277aa",
     "96": "f86da0733f29"
    }
   },
@@ -3535,9 +3535,9 @@
   },
   "Invasion of Ikoria // Zilortha, Apex of Ikoria": {
    "group": "A",
-   "text": "Not an Elf; competes with Kamahl's Druidic Vow and Journey as a cheat — `search your library and/or graveyard for a non-Human creature card with mana value X or less and put it onto the battlefield` — a tutor that also reanimates; finds Priest of Titania at X=2.",
+   "text": "**Re-graded 2026-11-02 (synergy first):** Unchanged at ★★, and \"not an Elf\" is void. It is a flexible tutor or reanimation; nearly every creature is non-Human (Kinnan, Ioreth and Yawgmoth are not). **Earlier:** Not an Elf; competes with Kamahl's Druidic Vow and Journey as a cheat — `search your library and/or graveyard for a non-Human creature card with mana value X or less and put it onto the battlefield` — a tutor that also reanimates; finds Priest of Titania at X=2.",
    "graded_at": {
-    "75-historic-brawl": "3a89a91d2b4e",
+    "75-historic-brawl": "abfe943277aa",
     "96": "f86da0733f29"
    }
   },
@@ -3559,17 +3559,17 @@
   },
   "Krydle of Baldur's Gate": {
    "group": "F",
-   "text": "Combat trigger mills 1 / scry 1 — negligible.",
+   "text": "**Re-graded 2026-11-02 (synergy first):** Up from △: a 2-mana legendary Elf is a cheap Thranduil loot (commander synergy). The unblockable grant lets Lathril connect. Its own mill 1 / scry 1 is still negligible. **Earlier:** Combat trigger mills 1 / scry 1 — negligible.",
    "graded_at": {
-    "75-historic-brawl": "3a89a91d2b4e",
+    "75-historic-brawl": "abfe943277aa",
     "96": "f86da0733f29"
    }
   },
   "The Ancient One": {
    "group": "E",
-   "text": "Loot that mills a player; descend 8 to attack; non-Elf.",
+   "text": "**Re-graded 2026-11-02 (synergy first):** Unchanged at ★★; \"non-Elf\" is void. It is a repeatable loot that can mill YOU by the discard's MV (yard fuel), triggers Elrond, and becomes an 8/8 for 2 once descend 8 is met. **Earlier:** Loot that mills a player; descend 8 to attack; non-Elf.",
    "graded_at": {
-    "75-historic-brawl": "3a89a91d2b4e",
+    "75-historic-brawl": "abfe943277aa",
     "96": "f86da0733f29"
    }
   },
@@ -3639,9 +3639,9 @@
   },
   "Uchbenbak, the Great Mistake": {
    "group": "D",
-   "text": "Descend 8 recursion for a 6/4 vigilance-menace body; nothing Elf.",
+   "text": "**Re-graded 2026-11-02 (synergy first):** Down from ★★: \"nothing Elf\" is void, but synergy-first ranks a self-recurring beater behind engines. Its only tie is one return that triggers Teval, Roots and Kotis. **Earlier:** Descend 8 recursion for a 6/4 vigilance-menace body; nothing Elf.",
    "graded_at": {
-    "75-historic-brawl": "3a89a91d2b4e",
+    "75-historic-brawl": "abfe943277aa",
     "96": "f86da0733f29"
    }
   },
@@ -3775,17 +3775,17 @@
   },
   "Furgul, Quag Nurturer": {
    "group": "F",
-   "text": "`{T}, Sacrifice a creature: Add {G}` equal to power — a sac outlet Thranduil can borrow, plus a free Leech each turn. The closest of these to a swap; Alchemy (conjure). ◇",
+   "text": "**Re-graded 2026-11-02 (synergy first):** Up from ◇. A legendary Elf (Thranduil loot) whose activated mana-sac ability is worth borrowing from the yard (it sacs ANY creature, not \"this\"). It adds a free Leech body each turn. Yawgmoth competes for the sac slot. **Earlier:** `{T}, Sacrifice a creature: Add {G}` equal to power — a sac outlet Thranduil can borrow, plus a free Leech each turn. The closest of these to a swap; Alchemy (conjure). ◇",
    "graded_at": {
-    "75-historic-brawl": "3a89a91d2b4e",
+    "75-historic-brawl": "abfe943277aa",
     "96": "f86da0733f29"
    }
   },
   "Nissa of Shadowed Boughs": {
    "group": "D",
-   "text": "−5 reanimates; landfall loyalty — the deck plays ~1 land a turn, so −5 is slow.",
+   "text": "**Re-graded 2026-11-02 (synergy first):** Unchanged at ★★. The \"~1 land a turn\" premise is weaker now: Wrenn and Seven's 0 (new), Kamahl's Vow, Teval, Kagha and Muldrotha all add land drops. A cheap non-Elf reanimation target is in reach. **Earlier:** −5 reanimates; landfall loyalty — the deck plays ~1 land a turn, so −5 is slow.",
    "graded_at": {
-    "75-historic-brawl": "3a89a91d2b4e",
+    "75-historic-brawl": "abfe943277aa",
     "96": "f86da0733f29"
    }
   },
@@ -3831,9 +3831,9 @@
   },
   "Beledros Witherbloom": {
    "group": "D",
-   "text": "Pest each upkeep; 7 mana and \"Pay 10 life\" untap — no Elf payoff for Pests.",
+   "text": "**Re-graded 2026-11-02 (synergy first):** Unchanged at ★. The Pests now have homes, Yawgmoth (sac: draw), Izoni, Insidious Roots mana and Eladamri, which replace the \"no Elf payoff\" objection. It is still a 7-drop with no graveyard tie. **Earlier:** Pest each upkeep; 7 mana and \"Pay 10 life\" untap — no Elf payoff for Pests.",
    "graded_at": {
-    "75-historic-brawl": "3a89a91d2b4e",
+    "75-historic-brawl": "abfe943277aa",
     "96": "f86da0733f29"
    }
   },
@@ -4515,6 +4515,5076 @@
    "graded_at": {
     "75-historic-brawl": "3a89a91d2b4e",
     "96": "f86da0733f29"
+   }
+  },
+  "Llanowar Elves": {
+   "group": "",
+   "text": "\"{T}: Add {G}.\" — **Thranduil:** In-list 1-drop accelerant feeding the Elf/mana engine; an Elf whose ability Thranduil keeps from the yard. **Glarb:** A green-only dork in a U-heavy control list that already has Birds and Paradise Druid.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Elvish Mystic": {
+   "group": "",
+   "text": "\"{T}: Add {G}.\" — **Thranduil:** In list: turn-one ramp, and in the yard Thranduil borrows the mana tap. **Glarb:** A green-only dork in a U/B-heavy list that already runs Birds, Paradise Druid and four rocks.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Paradise Druid": {
+   "group": "",
+   "text": "\"{T}: Add one mana of any color. / hexproof while untapped\" — **Thranduil:** Elf mana fixer whose any-colour tap ability Thranduil borrows from the yard (doubled by Dionus); core keep. **Glarb:** Resilient two-mana fixer that ramps to Glarb's MV4+ top-casts; real, competes with Birds/rocks.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Priest of Titania": {
+   "group": "",
+   "text": "\"{T}: Add {G} for each Elf on the battlefield.\" — **Thranduil:** Elf-count mana engine with ~33 Elves, and in the yard Thranduil taps for it too. **Glarb:** With only Paradise Druid as another Elf it is a 2-mana mono-G dork.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Elvish Archdruid": {
+   "group": "",
+   "text": "\"{T}: Add {G} for each Elf you control.\" — **Thranduil:** Core mana engine at 33 Elves, and Thranduil taps for the same amount once it is in the yard. **Glarb:** Glarb's list holds one Elf (Paradise Druid), so it is a 3-mana single-G dork.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Circle of Dreams Druid": {
+   "group": "",
+   "text": "\"{T}: Add {G} for each creature you control.\" — **Thranduil:** In list: a go-wide mana engine, and a borrowed creature-count mana ability once it's binned. **Glarb:** Only 20 creatures and {G}{G}{G}; gives little mana here.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Marwyn, the Nurturer": {
+   "group": "",
+   "text": "\"{T}: Add an amount of {G} equal to Marwyn's power.\" — **Thranduil:** Legendary Elf (loot) and mana engine; from the yard Thranduil taps for {G} equal to HIS own power (5+). **Glarb:** One Elf in the deck: grows never and taps for 1; off-plan.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Lys Alana Dignitary": {
+   "group": "",
+   "text": "\"{T}: Add {G}{G}. Activate only if there is an Elf card in your graveyard.\" — **Thranduil:** Self-mill keeps an Elf in the yard so it is a 2-for-1 ramp dork, and Thranduil borrows it; the deck is already deep in mana Elves. **Glarb:** No Elf cards in the yard, so its mana never turns on, and behold costs {2} more.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Deathbloom Ritualist": {
+   "group": "",
+   "text": "\"{T}: Add X mana of any one color, where X is the number of creature cards in your graveyard.\" — **Thranduil:** Self-mill creature deck grows X quickly, and in the yard it is a borrowed any-colour mana ability for Thranduil. **Glarb:** Glarb mills the opponent, so its own yard holds few creature cards; off-plan.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Woodland Weavemaster": {
+   "group": "",
+   "text": "\"Spend this mana only to cast Elf spells and activate abilities of Elf sources.\" — **Thranduil:** In list: restricted mana, but it does pay for Thranduil's borrowed Elf-source abilities; a real slot, not a core one. **Glarb:** The only Elf in G is Paradise Druid, so the restricted mana is dead.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Selvala, Heart of the Wilds": {
+   "group": "",
+   "text": "\"{G}, {T}: Add X mana in any combination of colors, where X is the greatest power among creatures you control.\" — **Thranduil:** Legendary Elf (loot) whose any-colour burst mana Thranduil can borrow; the draw half is symmetric but minor. **Glarb:** Small-creature control deck: X is low and the enters draw is symmetric; below the bar.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Fauna Shaman": {
+   "group": "",
+   "text": "\"{G}, {T}, Discard a creature card: Search your library for a creature card\" — **Thranduil:** Discarding an Elf stocks Thranduil and tutors any creature; in the yard he gains the tutor. **Glarb:** A creature tutor in a ~20-creature control deck, and the discard feeds nothing.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Imperious Perfect": {
+   "group": "",
+   "text": "\"{G}, {T}: Create a 1/1 green Elf Warrior creature token.\" — **Thranduil:** Repeatable token maker (Voice/Lathril fodder, Insidious Roots mana) that Thranduil borrows from the yard; the lord half is incidental. **Glarb:** Elf token maker with no draw, mill or interaction text.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Elvish Warmaster": {
+   "group": "",
+   "text": "\"Whenever one or more other Elves you control enter, create a 1/1 … Elf Warrior token.\" — **Thranduil:** Elf-count only; its borrowed pump costs {5}{G}{G}. Cut under the synergy-first rule. **Glarb:** Elf payoff with no Elves.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Voice of the Woods": {
+   "group": "",
+   "text": "\"Tap five untapped Elves you control: Create a 7/7 green Elemental creature token with trample.\" — **Thranduil:** Elf-count engine (33 Elves + token makers) and a borrowable ability; density-dependent, competes for a slot. **Glarb:** No Elves to tap; off-plan.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Trystan, Callous Cultivator": {
+   "group": "",
+   "text": "\"Whenever this creature enters or transforms into Trystan, Callous Cultivator, mill three cards\" — **Thranduil:** Repeatable mill 3 every turn plus drain/lifegain off Elf cards is core yard fuel (the exile is optional). **Glarb:** Self-mill only, which shortens your own library in a draw-heavy deck.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Lluwen, Imperfect Naturalist": {
+   "group": "",
+   "text": "\"When Lluwen enters, mill four cards, then you may put a creature or land card from among the milled cards on top of your library.\" — **Thranduil:** 2-mana legendary Elf: Thranduil loot trigger, mills four, sets up the top, and leaves a borrowed Worm-token ability in the yard. **Glarb:** Mills its own library, and recursion of its own yard is not Glarb's plan.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Dwynen, Gilt-Leaf Daen": {
+   "group": "",
+   "text": "\"Other Elf creatures you control get +1/+1. … gain 1 life for each attacking Elf.\" — **Thranduil:** Only a lord bonus and life, with no ability to borrow. Cut under the synergy-first rule. **Glarb:** Elf lord with no Elves.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Izoni, Thousand-Eyed": {
+   "group": "",
+   "text": "\"Undergrowth — create a 1/1 … for each creature card in your graveyard. / {B}{G}, Sacrifice another creature: You gain 1 life and draw a card.\" — **Thranduil:** Legendary Elf (loot), self-mill payoff that floods the board, and a sac-draw outlet Thranduil borrows from the yard. **Glarb:** Its draws do mill via Corrosion, but G neither fills its own yard nor has creatures to sacrifice.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Harald, King of Skemfar": {
+   "group": "",
+   "text": "\"look at the top five cards … reveal an Elf, Warrior, or Tyvar card\" — **Thranduil:** Legendary Elf loot for Thranduil, but its own value is digging for an Elf (owner cut it as Elf-only). **Glarb:** Digs for Elves the deck does not run.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Cantankerous Keepers": {
+   "group": "",
+   "text": "\"When this creature enters, mill four cards, then put all Elf cards from among them into your hand.\" — **Thranduil:** Cheap via affinity at 33 Elves and nets ~1–2 cards, but milled Elves go to hand instead of staying as Thranduil's tools. **Glarb:** An Elf-affinity body with own-library mill; off-plan.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Dawnhand Eulogist": {
+   "group": "",
+   "text": "\"When this creature enters, mill three cards. Then if there is an Elf card in your graveyard, each opponent loses 2 life…\" — **Thranduil:** In list: self-mill 3 fills the toolbox, and the drain is near-guaranteed. **Glarb:** Self-mill does nothing for opponent mill; the 2 life loss is only a 2-card mill through Master of Lake-town.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Elderfang Ritualist": {
+   "group": "",
+   "text": "\"When this creature dies, return another target Elf card from your graveyard to your hand.\" — **Thranduil:** Owner's cut: Elf-only value that pulls a tool OUT of Thranduil's yard (G-42 shape). **Glarb:** Elf recursion in a deck with one Elf; off-plan.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Skemfar Avenger": {
+   "group": "",
+   "text": "\"Whenever another nontoken Elf or Berserker you control dies, you draw a card\" — **Thranduil:** Only draws on a nontoken Elf dying, and the deck has 2 sac outlets (owner cut it). **Glarb:** No Elves, so it is off-plan.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Morcant's Loyalist": {
+   "group": "",
+   "text": "\"When this creature dies, return another target Elf card from your graveyard to your hand.\" — **Thranduil:** Lord plus a death trigger that pulls an Elf tool OUT of Thranduil's yard; cut 2026-11-02 as Elf-only. **Glarb:** Elf lord with no draw, mill or interaction text.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Gloom Ripper": {
+   "group": "",
+   "text": "\"…gets -0/-X … where X is the number of Elves you control plus the number of Elf cards in your graveyard.\" — **Thranduil:** In list: X runs large with 33 Elves plus the yard, so it's real removal on a body; 5 mana keeps it from ★★. **Glarb:** X is about 1 here, so it's dead.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Leaf-Crowned Visionary": {
+   "group": "",
+   "text": "\"Whenever you cast an Elf spell, you may pay {G}. If you do, draw a card.\" — **Thranduil:** Repeatable card draw off 33 Elf spells is real CA; the lord half is tiebreaker value only. **Glarb:** No Elf spells to trigger it; off-plan.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Shaman of the Pack": {
+   "group": "",
+   "text": "\"target opponent loses life equal to the number of Elves you control\" — **Thranduil:** A one-shot drain sized by Elf count with no graveyard, mana or card synergy (owner cut it). **Glarb:** Drains about 1 with no Elves.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Morcant's Eyes": {
+   "group": "",
+   "text": "\"At the beginning of your upkeep, surveil 1. … Create X 2/2 black and green Elf creature tokens, where X is the number of Elf cards in your graveyard.\" — **Thranduil:** Bins an Elf every upkeep, then cashes the full Elf yard into tokens. **Glarb:** The upkeep surveil triggers Matoya and Proft for a draw; the token half is dead here.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Bounty of Skemfar": {
+   "group": "",
+   "text": "\"…up to one land card … onto the battlefield tapped and up to one Elf card … into your hand.\" — **Thranduil:** A land and an Elf only; the owner cut it as Elf-only value. **Glarb:** The Elf half is dead and the rest goes to the bottom.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Harald Unites the Elves": {
+   "group": "",
+   "text": "\"I — Mill three cards. You may put an Elf or Tyvar card from your graveyard onto the battlefield.\" — **Thranduil:** Self-mill plus a free Elf reanimation (a legendary one loots); trades that Elf's borrowed ability for the body. **Glarb:** Elf saga with nothing to reanimate or pump; off-plan.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Insidious Roots": {
+   "group": "",
+   "text": "\"Whenever one or more creature cards leave your graveyard, create a 0/1 green Plant\" — **Thranduil:** Muldrotha, Kotis, reanimation, Deathrite and Overlord all trigger it, and Elf/Zombie tokens tap for any colour. **Glarb:** Creature cards rarely leave its own yard and it makes few tokens.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Overlord of the Balemurk": {
+   "group": "",
+   "text": "\"Whenever this permanent enters or attacks, mill four cards, then you may return a non-Avatar creature card or a planeswalker card from your graveyard to your hand.\" — **Thranduil:** Two-mana impending self-mill plus recursion, repeated on attacks: the deck's exact engine. **Glarb:** Own-yard mill and recursion isn't the plan; at most it returns one threat.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Trystan's Command": {
+   "group": "",
+   "text": "\"Return one or two target permanent cards from your graveyard to your hand. • Destroy target creature or enchantment.\" — **Thranduil:** In list: recursion plus removal in one card; core keep. **Glarb:** Castable, but a 6-mana sorcery removal spell in a deck already deep in cheaper answers; the recursion and Elf modes do little.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Heartless Act": {
+   "group": "",
+   "text": "\"Destroy target creature with no counters on it.\" — **Thranduil:** Two-mana instant removal for a deck that needs interaction; a core keep. **Glarb:** Premium cheap instant removal; would make most versions of the control list.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Go for the Throat": {
+   "group": "",
+   "text": "\"Destroy target nonartifact creature.\" — **Thranduil:** Cheap instant removal in a deck that needs interaction. **Glarb:** Cheap instant removal for a control deck.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Infernal Grasp": {
+   "group": "",
+   "text": "\"Destroy target creature. You lose 2 life.\" — **Thranduil:** Two-mana instant unconditional removal in a list whose interaction comes from outside the pile. **Glarb:** Same: cheap instant removal is a core keep in a control deck.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Command Tower": {
+   "group": "",
+   "text": "\"{T}: Add one mana of any color in your commander's color identity.\" — **Thranduil:** Untapped three-colour land; core. **Glarb:** Untapped three-colour land; core.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Eclipsed Realms": {
+   "group": "",
+   "text": "\"{T}: Add one mana of any color. Spend this mana only to cast a spell of the chosen type or activate an ability of a source of the chosen type.\" — **Thranduil:** Naming Elf, its colour pays for 33 Elves and Thranduil's borrowed Elf abilities; colourless otherwise. **Glarb:** No creature of a listed type to name, so it taps for {C} in a three-colour pip deck.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Overgrown Tomb": {
+   "group": "",
+   "text": "\"({T}: Add {B} or {G}.) … you may pay 2 life\" — **Thranduil:** An untapped typed B/G dual that enables Woodland Cemetery and Wastewood Verge. **Glarb:** An untapped typed dual that enables the checklands.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Breeding Pool": {
+   "group": "",
+   "text": "\"({T}: Add {G} or {U}.) As this land enters, you may pay 2 life.\" — **Thranduil:** Untapped typed dual; enables Hinterland Harbor and Wastewood Verge. **Glarb:** Untapped G/U dual covering the green splash and blue core.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Watery Grave": {
+   "group": "",
+   "text": "\"({T}: Add {U} or {B}.) …you may pay 2 life.\" — **Thranduil:** In list: an untapped dual, though the off-pair for a G/B-heavy list. **Glarb:** In list: untapped U/B, this deck's main pair.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Woodland Cemetery": {
+   "group": "",
+   "text": "\"This land enters tapped unless you control a Swamp or a Forest. {T}: Add {B} or {G}.\" — **Thranduil:** Usually-untapped B/G dual for the {B}{B} cards; a strong manabase keep. **Glarb:** Usually-untapped B/G dual; a strong manabase keep.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Hinterland Harbor": {
+   "group": "",
+   "text": "\"enters tapped unless you control a Forest or an Island\" — **Thranduil:** A G/U checkland that is usually untapped with the deck's typed lands. **Glarb:** Usually untapped, but G/U is the less important pair here.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Drowned Catacomb": {
+   "group": "",
+   "text": "\"This land enters tapped unless you control an Island or a Swamp. {T}: Add {U} or {B}.\" — **Thranduil:** U/B is the list's lightest pair; a fine but replaceable dual. **Glarb:** U/B is this deck's core pair and 12 basic Islands/Swamps keep it untapped.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Llanowar Wastes": {
+   "group": "",
+   "text": "\"{T}: Add {B} or {G}. This land deals 1 damage to you.\" — **Thranduil:** In list: untapped B/G, the deck's main pair. **Glarb:** In list: untapped, but B/G is the minor pair here.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Yavimaya Coast": {
+   "group": "",
+   "text": "\"{T}: Add {G} or {U}. This land deals 1 damage to you.\" — **Thranduil:** Always-untapped G/U source; ping is minor at 25 life. **Glarb:** Always-untapped G/U source; strong manabase keep.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Underground River": {
+   "group": "",
+   "text": "\"{T}: Add {U} or {B}. This land deals 1 damage to you.\" — **Thranduil:** An untapped U/B painland, U being the deck's lightest colour. **Glarb:** U/B is the deck's core pair and this land is always untapped.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Clearwater Pathway // Murkwater Pathway": {
+   "group": "",
+   "text": "\"{T}: Add {U}. // {T}: Add {B}.\" — **Thranduil:** Untapped, chosen for B sources in the draft; one colour once played. **Glarb:** Untapped U or B, but only one of them per game.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Zagoth Triome": {
+   "group": "",
+   "text": "\"({T}: Add {B}, {G}, or {U}.) This land enters tapped. Cycling {3}\" — **Thranduil:** In list: all three colours and three basic types (turns on the checklands and the Verge). **Glarb:** In list: all three colours with cycling; the tapped entry is fine in control.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Underground Mortuary": {
+   "group": "",
+   "text": "\"This land enters tapped. When this land enters, surveil 1.\" — **Thranduil:** Surveil bins an Elf for Thranduil; owner kept the surveil lands for exactly that. **Glarb:** Surveil triggers Matoya and Proft (a draw, which mills); worth the tapped entry.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Hedge Maze": {
+   "group": "",
+   "text": "\"This land enters tapped. When this land enters, surveil 1.\" — **Thranduil:** A tapped surveil land that bins an Elf for Thranduil (the notes keep it). **Glarb:** Its surveil triggers Matoya and Proft, but it enters tapped.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Undercity Sewers": {
+   "group": "",
+   "text": "\"This land enters tapped. When this land enters, surveil 1.\" — **Thranduil:** Tapped, but the surveil bins an Elf for Thranduil (the notes keep it for that). **Glarb:** Tapped, but the surveil triggers Matoya/Proft.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Darkslick Shores": {
+   "group": "",
+   "text": "\"This land enters tapped unless you control two or fewer other lands.\" — **Thranduil:** In list: U/B is the minor pair, and it's usually tapped late in 100 cards. **Glarb:** In list: U/B, the main pair.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Blooming Marsh": {
+   "group": "",
+   "text": "\"This land enters tapped unless you control two or fewer other lands.\" — **Thranduil:** B/G dual that is untapped only early; real but a tier below the check/shock lands. **Glarb:** Untapped only early in a long control game; a real but replaceable dual.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Botanical Sanctum": {
+   "group": "",
+   "text": "\"enters tapped unless you control two or fewer other lands\" — **Thranduil:** An untapped G/U land early; G is the main colour. **Glarb:** A late-tapped G/U fastland in a deck whose core pair is U/B.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Wastewood Verge": {
+   "group": "",
+   "text": "\"{T}: Add {G}. {T}: Add {B}. Activate only if you control a Swamp or a Forest.\" — **Thranduil:** Untapped G with gated B; added in the draft for B sources. **Glarb:** No blue, and green is this list's splash (2 Forests).",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Darkbore Pathway // Slitherbore Pathway": {
+   "group": "",
+   "text": "\"{T}: Add {B}. // {T}: Add {G}.\" — **Thranduil:** In list: an untapped B or G source for the {B}{B} cards. **Glarb:** In list: untapped but one colour only, from the minor pair.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Psychic Corrosion": {
+   "group": "",
+   "text": "\"Whenever you draw a card, each opponent mills two cards.\" — **Thranduil:** Opponent mill is off-plan for a self-graveyard deck. **Glarb:** The deck's core draw-to-mill engine (protected).",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Teferi's Tutelage": {
+   "group": "",
+   "text": "\"Whenever you draw a card, target opponent mills two cards.\" — **Thranduil:** Opponent-only mill is off-plan. **Glarb:** A core draw-to-mill engine.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Sphinx's Tutelage": {
+   "group": "",
+   "text": "\"Whenever you draw a card, target opponent mills two cards. If two nonland cards that share a color were milled this way, repeat this process.\" — **Thranduil:** Opponent mill is off-plan for a graveyard-recursion deck. **Glarb:** A core draw-to-mill engine (on `#: protect:`).",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Bruvac the Grandiloquent": {
+   "group": "",
+   "text": "\"If an opponent would mill one or more cards, they mill twice that many cards instead.\" — **Thranduil:** Doubles opponent mill only; T mills itself. **Glarb:** In list: the mill doubler that halves the clock; core.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Fraying Sanity": {
+   "group": "",
+   "text": "\"At the beginning of each end step, enchanted player mills X cards, where X is the number of cards put into their graveyard from anywhere this turn.\" — **Thranduil:** Opponent-mill curse; nothing in T fills their yard. **Glarb:** Repeats every turn's mill total and stacks with Bruvac/Water Crystal; a core finisher.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Ruin Crab": {
+   "group": "",
+   "text": "\"Landfall — Whenever a land you control enters, each opponent mills three cards.\" — **Thranduil:** Opponent mill is off-plan. **Glarb:** A 1-drop that mills about 3 per land drop (6 with Bruvac), with no draw needed.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Traumatize": {
+   "group": "",
+   "text": "\"Target player mills half their library, rounded down.\" — **Thranduil:** Can self-target for ~45 cards of fuel (Muldrotha, Izoni, Morcant's Eyes), but it's a 5-mana UU sorcery that does nothing on its own. **Glarb:** A big mill that Bruvac doubles into the whole library, and Glarb can cast it from the top.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Maddening Cacophony": {
+   "group": "",
+   "text": "\"Each opponent mills eight cards. If this spell was kicked, instead each opponent mills half their library…\" — **Thranduil:** Opponent mill is off-plan. **Glarb:** In list: a kicked finisher, and with Bruvac it mills the whole library.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Startled Awake // Persistent Nightmare": {
+   "group": "",
+   "text": "\"Target opponent mills thirteen cards. / {3}{U}{U}: Put this card from your graveyard onto the battlefield transformed.\" — **Thranduil:** Opponent-only mill; off-plan. **Glarb:** Big mill (26 with Bruvac) that Glarb casts off the top, with a recursion body.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Archive Trap": {
+   "group": "",
+   "text": "\"Target opponent mills thirteen cards.\" — **Thranduil:** Opponent mill is off-plan. **Glarb:** A 13-card mill that Glarb can cast from the top, and it is free after their Assassin's Trophy fetch.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Glimpse the Unthinkable": {
+   "group": "",
+   "text": "\"Target player mills ten cards.\" — **Thranduil:** A cheap self-mill of ten for fuel, but card disadvantage with no body or recursion. **Glarb:** Two-mana mill of ten that Bruvac and the Water Crystal scale.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Sphinx Mindbreaker": {
+   "group": "",
+   "text": "\"When this creature enters, each opponent mills ten cards.\" — **Thranduil:** Opponent mill is off-plan. **Glarb:** In list: mill 10 (20 with Bruvac); 7 mana but castable off the top.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Tasha's Hideous Laughter": {
+   "group": "",
+   "text": "\"Each opponent exiles cards from the top of their library until … total mana value 20 or greater.\" — **Thranduil:** Library exile has no role in T. **Glarb:** Cheap library-exile finisher (protected); core keep.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Ulamog, the Ceaseless Hunger": {
+   "group": "",
+   "text": "\"When you cast this spell, exile two target permanents. … defending player exiles the top twenty cards\" — **Thranduil:** Elf mana can cast it but it is off-plan, and Kinnan's put skips the cast trigger. **Glarb:** A 10-mana finisher; the library exile wins, but it needs ramp or Glarb's top.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "The Master of Lake-town": {
+   "group": "",
+   "text": "\"Whenever a player loses life, that player mills that many cards.\" — **Thranduil:** Self-mill from shocks and Yawgmoth life payments is incidental; the opponent-side mill is off-plan. **Glarb:** Turns damage, drains and Sheoldred's draw tax into mill; a deathtouch blocker.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Ashiok, Nightmare Weaver": {
+   "group": "",
+   "text": "\"+2: Exile the top three cards of target opponent's library. −X: Put a creature card … exiled with Ashiok onto the battlefield…\" — **Thranduil:** Castable, but library exile and theft do nothing for the graveyard engine. **Glarb:** In list: 3 mana for repeated library exile plus a stolen creature.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Consuming Aberration": {
+   "group": "",
+   "text": "\"power and toughness are each equal to the number of cards in your opponents' graveyards. / Whenever you cast a spell, each opponent reveals … puts those cards into …\" — **Thranduil:** T never fills the opponent's yard, so it is a mid-sized body; below the bar. **Glarb:** Every spell mills them and it grows with the milled yard; strong keep.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Rhystic Study": {
+   "group": "",
+   "text": "\"Whenever an opponent casts a spell, you may draw a card unless that player pays {1}.\" — **Thranduil:** Card advantage, but in 1v1 the tax is often paid, and draws are not its engine. **Glarb:** Every draw it forces also mills through the Tutelages and Corrosion.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Mystic Remora": {
+   "group": "",
+   "text": "\"Whenever an opponent casts a noncreature spell, you may draw a card unless that player pays {4}.\" — **Thranduil:** Blue card flow with upkeep tax in a creature-mana list; no synergy. **Glarb:** Cheap early draw engine, and each draw mills via the Tutelages/Corrosion.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Phyrexian Arena": {
+   "group": "",
+   "text": "\"At the beginning of your upkeep, you draw a card and lose 1 life.\" — **Thranduil:** Steady card advantage (the first axis under the synergy-first rule), but plain, with no graveyard tie-in. **Glarb:** In list: an extra draw every turn means an extra mill trigger every turn.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Dictate of Kruphix": {
+   "group": "",
+   "text": "\"At the beginning of each player's draw step, that player draws an additional card.\" — **Thranduil:** Symmetric draw hands the opponent cards with no payoff for T. **Glarb:** Each of our draws mills via Corrosion and their extra draw shortens their library; deliberate keep.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Teferi's Ageless Insight": {
+   "group": "",
+   "text": "\"If you would draw a card except the first one … draw two cards instead.\" — **Thranduil:** Doubles Thranduil's loot (4 drawn, 1 discarded), but it is a 4-mana do-nothing alone. **Glarb:** Doubles every extra draw, so it doubles every mill trigger.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Notion Thief": {
+   "group": "",
+   "text": "\"If an opponent would draw a card except the first one they draw in each of their draw steps, instead that player skips that draw and you draw a card.\" — **Thranduil:** A 4-mana U/B flash body with no graveyard or Elf synergy. **Glarb:** Turns Dictate of Kruphix's symmetric draw one-sided: every extra draw is ours and mills them.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Brainstorm": {
+   "group": "",
+   "text": "\"Draw three cards, then put two cards from your hand on top of your library…\" — **Thranduil:** Weak without shuffles; it puts cards back instead of binning them. **Glarb:** In list: three draws are three Corrosion or Tutelage triggers, and it feeds Reed Richards.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Kaito, Bane of Nightmares": {
+   "group": "",
+   "text": "\"0: Surveil 2. Then draw a card for each opponent who lost life this turn. / −2: Tap target creature. Put two stun counters on it.\" — **Thranduil:** Surveil 2 a turn bins Elves and the stun is interaction; competes for a slot. **Glarb:** Surveil feeds Matoya/Proft draws, plus stun interaction and a hexproof body; strong keep.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Drown in the Loch": {
+   "group": "",
+   "text": "\"mana value less than or equal to the number of cards in its controller's graveyard\" — **Thranduil:** Scales off the opponent's yard, which this deck does not fill. **Glarb:** The opponent's milled yard makes it an unconditional counter or kill for 2.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Counterspell": {
+   "group": "",
+   "text": "\"Counter target spell.\" — **Thranduil:** UU is hard on ~2 Islands plus the U duals; this mana is better spent on B/G removal. **Glarb:** Hard counter in a control list.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Thought Collapse": {
+   "group": "",
+   "text": "\"Counter target spell. Its controller mills three cards.\" — **Thranduil:** A {U}{U} counter in a G/B-weighted list; interaction, but off-colour-weight. **Glarb:** In list: a counter plus mill 3 (6 with Bruvac).",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Hero's Downfall": {
+   "group": "",
+   "text": "\"Destroy target creature or planeswalker.\" — **Thranduil:** Instant creature/planeswalker removal; a strong add to T's interaction. **Glarb:** Flexible instant removal; strong keep.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Assassin's Trophy": {
+   "group": "",
+   "text": "\"Destroy target permanent an opponent controls.\" — **Thranduil:** A 2-mana answer to any permanent. **Glarb:** A 2-mana answer to anything, and the fetch it gives turns on Archive Trap.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Cyclonic Rift": {
+   "group": "",
+   "text": "\"Return target nonland permanent you don't control to its owner's hand. Overload {6}{U}\" — **Thranduil:** The Elf mana engines make the 7-mana one-sided overload realistic; the cheap mode is only tempo. **Glarb:** Flexible one-sided bounce, and the overload is a reset.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Damnation": {
+   "group": "",
+   "text": "\"Destroy all creatures.\" — **Thranduil:** Kills the deck's own Elf mana base and Thranduil; the reanimation to rebuild exists, but it fights the go-wide board. **Glarb:** In list: a board wipe for a control deck with few creatures that matter.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Breach the Multiverse": {
+   "group": "",
+   "text": "\"Each player mills ten cards. For each player, choose a creature or planeswalker card in that player's graveyard. Put those cards onto the battlefield under your control.\" — **Thranduil:** Self-mill 10 plus two reanimations (pick a non-Elf from our yard); a big graveyard payoff the mana Elves reach. **Glarb:** Mills them 10 (doubled) and steals their best; but mills our own library 10 in a mill race; real.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Theorix Charm": {
+   "group": "",
+   "text": "\"Counter … unless its controller pays {2} / -2/-2 / Mill three cards, then draw a card\" — **Thranduil:** A flexible instant whose mill-3-draw mode stocks the yard. **Glarb:** Flexible interaction; the draw mode triggers mill but self-mills 3.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Arcane Signet": {
+   "group": "",
+   "text": "\"{T}: Add one mana of any color in your commander's color identity.\" — **Thranduil:** Plain rock in a list with ~12 creature mana sources that do more. **Glarb:** Fixing ramp toward Glarb's MV 4+ top-deck casts.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Talisman of Dominance": {
+   "group": "",
+   "text": "\"{T}: Add {U} or {B}. This artifact deals 1 damage to you.\" — **Thranduil:** T's ramp comes from Elves; a rock is below the bar. **Glarb:** In list: a 2-mana rock towards the MV 4+ top-deck casts.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Talisman of Curiosity": {
+   "group": "",
+   "text": "\"{T}: Add {G} or {U}. This artifact deals 1 damage to you.\" — **Thranduil:** T ramps with mana Elves that Thranduil borrows; a rock is below the bar. **Glarb:** Two-mana ramp/fixing toward MV4+ casts; a real slot-competitor.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Mind Stone": {
+   "group": "",
+   "text": "\"{T}: Add {C}. {1}, {T}, Sacrifice this artifact: Draw a card.\" — **Thranduil:** The deck's Elf mana makes a colourless rock redundant. **Glarb:** Ramp toward Glarb's 4+ casts that later cycles into a draw.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Birds of Paradise": {
+   "group": "",
+   "text": "\"{T}: Add one mana of any color.\" — **Thranduil:** A 1-drop that fixes all three colours (Kinnan adds); not an Elf, but mana is synergy. **Glarb:** A 1-drop fixer, though green is the splash.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Growth Spiral": {
+   "group": "",
+   "text": "\"Draw a card. You may put a land card from your hand onto the battlefield.\" — **Thranduil:** Instant ramp plus a cantrip that turns on Sindarin Liege's landfall; a real playable. **Glarb:** In list: a draw trigger plus ramp at instant speed.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Jidoor, Aristocratic Capital // Overture": {
+   "group": "",
+   "text": "\"Target opponent mills half their library, rounded down. / This land enters tapped. {T}: Add {U}.\" — **Thranduil:** Tapped mono-U land whose spell is opponent mill; below the bar. **Glarb:** A land slot that mills half a library (all of it with Bruvac); strong keep.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Restless Reef": {
+   "group": "",
+   "text": "\"Whenever this land attacks, target player mills four cards.\" — **Thranduil:** A tapped U/B land whose attack mill is mostly off-plan. **Glarb:** A tapped U/B land that becomes a mill-4 deathtouch attacker (8 with Bruvac).",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  },
+  "Sunken Hollow": {
+   "group": "",
+   "text": "\"This land enters tapped unless you control two or more basic lands.\" — **Thranduil:** U/B is the lightest pair, and it is usually untapped (15 basics) but adds nothing. **Glarb:** Usually untapped with 14 basics; the pair is fine.",
+   "graded_at": {
+    "75-historic-brawl": "abfe943277aa",
+    "96": "f86da0733f29"
+   }
+  }
+ },
+ "verdicts": {
+  "Thranduil, the Elvenking": {
+   "T": {
+    "m": "★★★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": null
+   }
+  },
+  "Legolas, Counter of Kills": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Tam, Observant Sequencer // Deep Sight": {
+   "T": {
+    "m": "△",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Thranduil, Sindarin Liege": {
+   "T": {
+    "m": "★★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Elrond, Master of Healing": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": null
+   }
+  },
+  "Ezuri, Stalker of Spheres": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Jyoti, Moag Ancient": {
+   "T": {
+    "m": "✗",
+    "graded_at": null
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": null
+   }
+  },
+  "Kiora, the Crashing Wave": {
+   "T": {
+    "m": "★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Nael, Avizoa Aeronaut": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Rashmi, Eternities Crafter": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": null
+   }
+  },
+  "Imoti, Celebrant of Bounty": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Kruphix, God of Horizons": {
+   "T": {
+    "m": "△",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Roalesk, Apex Hybrid": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Tamiyo, Compleated Sage": {
+   "T": {
+    "m": "★★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Tawnos, the Toymaker": {
+   "T": {
+    "m": "✗",
+    "graded_at": null
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": null
+   }
+  },
+  "Oko, the Trickster": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Bonny Pall, Clearcutter": {
+   "T": {
+    "m": "★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Omega, Heartless Evolution": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Tishana, Voice of Thunder": {
+   "T": {
+    "m": "★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": null
+   }
+  },
+  "Glarb, Calamity's Augur": {
+   "T": {
+    "m": "★★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★★★",
+    "graded_at": null
+   }
+  },
+  "Kotis, Sibsig Champion": {
+   "T": {
+    "m": "★★★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": null
+   }
+  },
+  "Leovold, Emissary of Trest": {
+   "T": {
+    "m": "★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": null
+   }
+  },
+  "Nashi, Moon's Legacy": {
+   "T": {
+    "m": "★★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Nashi, Illusion Gadgeteer": {
+   "T": {
+    "m": "★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Kotis, the Fangkeeper": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": null
+   }
+  },
+  "Sidisi, Brood Tyrant": {
+   "T": {
+    "m": "★★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": null
+   }
+  },
+  "Teval, the Balanced Scale": {
+   "T": {
+    "m": "★★★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Gonti, Canny Acquisitor": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": null
+   }
+  },
+  "Brokkos, Apex of Forever": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Oasis of Renewal": {
+   "T": {
+    "m": "★★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Maralen, Fae Ascendant": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★★★",
+    "graded_at": null
+   }
+  },
+  "Yarok, the Desecrated": {
+   "T": {
+    "m": "★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Sin, Spira's Punishment": {
+   "T": {
+    "m": "★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Muldrotha, the Gravetide": {
+   "T": {
+    "m": "★★★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": null
+   }
+  },
+  "Mimeoplasm, Revered One": {
+   "T": {
+    "m": "★★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": null
+   }
+  },
+  "Glamdring, Foe-hammer // Gleam of Death": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Fblthp, Impossibly Lost": {
+   "T": {
+    "m": "★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Goldberry, River-Daughter": {
+   "T": {
+    "m": "△",
+    "graded_at": null
+   },
+   "G": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Jace Reawakened": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Katara, Waterbending Master": {
+   "T": {
+    "m": "△",
+    "graded_at": null
+   },
+   "G": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Marit Lage's Slumber": {
+   "T": {
+    "m": "✗",
+    "graded_at": null
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": null
+   }
+  },
+  "Mystic Reflection": {
+   "T": {
+    "m": "✗",
+    "graded_at": null
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": null
+   }
+  },
+  "Malcolm, Alluring Scoundrel": {
+   "T": {
+    "m": "◇",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Naban, Dean of Iteration": {
+   "T": {
+    "m": "△",
+    "graded_at": null
+   },
+   "G": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Proft, Consulting Detective": {
+   "T": {
+    "m": "★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": null
+   }
+  },
+  "Proft's Eidetic Memory": {
+   "T": {
+    "m": "△",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Rona, Herald of Invasion // Rona, Tolarian Obliterator": {
+   "T": {
+    "m": "★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "The Key to the Vault": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Vnwxt, Verbose Host": {
+   "T": {
+    "m": "△",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Arni, Humble Scribe": {
+   "T": {
+    "m": "★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Chandra, Chill of Compliance": {
+   "T": {
+    "m": "★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": null
+   }
+  },
+  "Callaphe, Beloved of the Sea": {
+   "T": {
+    "m": "△",
+    "graded_at": null
+   },
+   "G": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Elrond, Lord of Rivendell": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": null
+   }
+  },
+  "Elrond, Moon-Reader": {
+   "T": {
+    "m": "★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": null
+   }
+  },
+  "Fblthp, Lost on the Range": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": null
+   }
+  },
+  "Geralf, the Fleshwright": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Graviton, Fundamental Force": {
+   "T": {
+    "m": "△",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Impossible Man": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Invasion of Segovia // Caetus, Sea Tyrant of Segovia": {
+   "T": {
+    "m": "△",
+    "graded_at": null
+   },
+   "G": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Ioreth of the Healing House": {
+   "T": {
+    "m": "★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Irma, Part-Time Mutant": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Katara, Bending Prodigy": {
+   "T": {
+    "m": "△",
+    "graded_at": null
+   },
+   "G": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Kefnet the Mindful": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Kira, Great Glass-Spinner": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Lulu, Stern Guardian": {
+   "T": {
+    "m": "△",
+    "graded_at": null
+   },
+   "G": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Matoya, Archon Elder": {
+   "T": {
+    "m": "★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★★★",
+    "graded_at": null
+   }
+  },
+  "Lyra, Tolarian Archangel": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": null
+   }
+  },
+  "Mindlink Mech": {
+   "T": {
+    "m": "✗",
+    "graded_at": null
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": null
+   }
+  },
+  "Mu Yanling, Sky Dancer": {
+   "T": {
+    "m": "★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Princess Yue": {
+   "T": {
+    "m": "★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": null
+   }
+  },
+  "Tome of the Infinite": {
+   "T": {
+    "m": "△",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Unctus, Grand Metatect": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Wasp, Shrinking Savior": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Alora, Rogue Companion": {
+   "T": {
+    "m": "△",
+    "graded_at": null
+   },
+   "G": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Arwen's Gift": {
+   "T": {
+    "m": "★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": null
+   }
+  },
+  "Charix, the Raging Isle": {
+   "T": {
+    "m": "△",
+    "graded_at": null
+   },
+   "G": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Gale, Conduit of the Arcane": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "God-Eternal Kefnet": {
+   "T": {
+    "m": "△",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Gandalf, Friend of the Shire": {
+   "T": {
+    "m": "△",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Irenicus's Vile Duplication": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Jace, the Perfected Mind": {
+   "T": {
+    "m": "★★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": null
+   }
+  },
+  "Jace, Wielder of Mysteries": {
+   "T": {
+    "m": "★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Leader, Super-Genius": {
+   "T": {
+    "m": "★★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Multiversal Recruitment": {
+   "T": {
+    "m": "★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Orvar, the All-Form": {
+   "T": {
+    "m": "△",
+    "graded_at": null
+   },
+   "G": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Taeko, the Patient Avalanche": {
+   "T": {
+    "m": "△",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Tezzeret, Betrayer of Flesh": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "The Clone Saga": {
+   "T": {
+    "m": "★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "The Water Crystal": {
+   "T": {
+    "m": "✗",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": null
+   }
+  },
+  "The Theorist, Jace Beleren": {
+   "T": {
+    "m": "★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": null
+   }
+  },
+  "Tui and La, Moon and Ocean": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Urza, Lord High Artificer": {
+   "T": {
+    "m": "△",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Vesuvan Duplimancy": {
+   "T": {
+    "m": "△",
+    "graded_at": null
+   },
+   "G": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Yue, the Moon Spirit": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Iymrith, Desert Doom": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Jace, Memory Adept": {
+   "T": {
+    "m": "★★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": null
+   }
+  },
+  "Jace, Unraveler of Secrets": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Jin-Gitaxias // The Great Synthesis": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": null
+   }
+  },
+  "Krang, the All-Powerful": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Pharaoh Rama-Tut": {
+   "T": {
+    "m": "◇",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Syr Elenora, the Discerning": {
+   "T": {
+    "m": "△",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Teferi, Temporal Pilgrim": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Thryx, the Sudden Storm": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Victor Timely, Wily Tycoon": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Jace, Arcane Strategist": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Kitsune, Dragon's Daughter": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Pol Jamaar, Illusionist": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Reed Richards, Smartest Man": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": null
+   }
+  },
+  "Ruric Thar, Biomagus": {
+   "T": {
+    "m": "△",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Zahid, Djinn of the Lamp": {
+   "T": {
+    "m": "△",
+    "graded_at": null
+   },
+   "G": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Jin-Gitaxias, Progress Tyrant": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Jadzi, Oracle of Arcavios // Journey to the Oracle": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Jin-Gitaxias, Core Augur": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "The Magic Mirror": {
+   "T": {
+    "m": "△",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Wan Shi Tong, Librarian": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Gadwick, the Wizened": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Aphelia, Viper Whisperer": {
+   "T": {
+    "m": "△",
+    "graded_at": null
+   },
+   "G": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Reezug, the Bonecobbler": {
+   "T": {
+    "m": "★★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Splinter, the Mentor": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Azula, Ruthless Firebender": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Gix, Yawgmoth Praetor": {
+   "T": {
+    "m": "★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": null
+   }
+  },
+  "Isareth the Awakener": {
+   "T": {
+    "m": "★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Kaervek, the Punisher": {
+   "T": {
+    "m": "★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Tatsunari, Toad Rider": {
+   "T": {
+    "m": "△",
+    "graded_at": null
+   },
+   "G": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Yahenni, Undying Partisan": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Davriel, Soul Broker": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Doctor Doom, Unrivaled": {
+   "T": {
+    "m": "★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": null
+   }
+  },
+  "Erebos, God of the Dead": {
+   "T": {
+    "m": "★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Gisa, Glorious Resurrector": {
+   "T": {
+    "m": "◇",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Kels, Fight Fixer": {
+   "T": {
+    "m": "★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Liliana of the Dark Realms": {
+   "T": {
+    "m": "△",
+    "graded_at": null
+   },
+   "G": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Kingpin, Wilson Fisk": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Lo and Li, Royal Advisors": {
+   "T": {
+    "m": "△",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Lord Dregg, Insect Invader": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Madame Hydra, Reanimated": {
+   "T": {
+    "m": "★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": null
+   }
+  },
+  "Massacre Girl, Known Killer": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Moonstone, Harsh Mistress": {
+   "T": {
+    "m": "★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "One Ring to Rule Them All": {
+   "T": {
+    "m": "★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Price of Fame": {
+   "T": {
+    "m": "★★★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★★★",
+    "graded_at": null
+   }
+  },
+  "Rev, Tithe Extractor": {
+   "T": {
+    "m": "△",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": null
+   }
+  },
+  "Sarevok the Usurper": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": null
+   }
+  },
+  "Sheoldred, the Apocalypse": {
+   "T": {
+    "m": "★★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★★★",
+    "graded_at": null
+   }
+  },
+  "Yawgmoth, Thran Physician": {
+   "T": {
+    "m": "★★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Whisper, Blood Liturgist": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": null
+   }
+  },
+  "Aclazotz, Deepest Betrayal // Temple of the Dead": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Ashiok, Wicked Manipulator": {
+   "T": {
+    "m": "✗",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★★★",
+    "graded_at": null
+   }
+  },
+  "Black Widow, Daring Operative": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": null
+   }
+  },
+  "Drana, the Last Bloodchief": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": null
+   }
+  },
+  "Garruk, Veiled Butcher": {
+   "T": {
+    "m": "★★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": null
+   }
+  },
+  "Ghoulcaller Gisa": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Gisa, the Hellraiser": {
+   "T": {
+    "m": "★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Junji, the Midnight Sky": {
+   "T": {
+    "m": "★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Lo and Li, Twin Tutors": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "M.O.D.O.K., Evil Intellect": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": null
+   }
+  },
+  "Maha, Its Feathers Night": {
+   "T": {
+    "m": "★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Ob Nixilis Reignited": {
+   "T": {
+    "m": "★★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": null
+   }
+  },
+  "Sauron, the Necromancer": {
+   "T": {
+    "m": "★★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": null
+   }
+  },
+  "Seizan, Perverter of Truth": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Seymour Flux": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Shredder, Shadow Master": {
+   "T": {
+    "m": "△",
+    "graded_at": null
+   },
+   "G": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Sheoldred // The True Scriptures": {
+   "T": {
+    "m": "★★★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": null
+   }
+  },
+  "Skithiryx, the Blight Dragon": {
+   "T": {
+    "m": "△",
+    "graded_at": null
+   },
+   "G": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Syr Konrad, the Grim": {
+   "T": {
+    "m": "★★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Tergrid, God of Fright // Tergrid's Lantern": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Witch-king of Angmar": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Yawgmoth's Vile Offering": {
+   "T": {
+    "m": "★★★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": null
+   }
+  },
+  "Doctor Doom": {
+   "T": {
+    "m": "★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Bolas's Citadel": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★★★",
+    "graded_at": null
+   }
+  },
+  "Ink-Eyes, Servant of Oni": {
+   "T": {
+    "m": "△",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Lich's Mastery": {
+   "T": {
+    "m": "△",
+    "graded_at": null
+   },
+   "G": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Liliana, Death Mage": {
+   "T": {
+    "m": "★★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Tetzimoc, Primal Death": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "The Cloning of Shredder": {
+   "T": {
+    "m": "★★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": null
+   }
+  },
+  "Vraska, Betrayal's Sting": {
+   "T": {
+    "m": "★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": null
+   }
+  },
+  "K'rrik, Son of Yawgmoth": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Count Nefaria": {
+   "T": {
+    "m": "△",
+    "graded_at": null
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": null
+   }
+  },
+  "Sheoldred, Whispering One": {
+   "T": {
+    "m": "★★★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Morlun, Devourer of Spiders": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Dionus, Elvish Archdruid": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Celeborn the Wise": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Wrenn and Realmbreaker": {
+   "T": {
+    "m": "★★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Goreclaw, Terror of Qal Sisma": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Kona, Rescue Beastie": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Leyline Immersion": {
+   "T": {
+    "m": "★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Mythweaver Poq": {
+   "T": {
+    "m": "△",
+    "graded_at": null
+   },
+   "G": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Oyaminartok, Polar Werebear": {
+   "T": {
+    "m": "△",
+    "graded_at": null
+   },
+   "G": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Radagast of Rhosgobel": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Tyvar Kell": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Ashaya, Soul of the Wild": {
+   "T": {
+    "m": "△",
+    "graded_at": null
+   },
+   "G": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Bosco, Just a Bear": {
+   "T": {
+    "m": "△",
+    "graded_at": null
+   },
+   "G": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Greensleeves, Maro-Sorcerer": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Wrenn and Seven": {
+   "T": {
+    "m": "★★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Garruk, Caller of Beasts": {
+   "T": {
+    "m": "★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Mitotic Ultimus": {
+   "T": {
+    "m": "△",
+    "graded_at": null
+   },
+   "G": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Invasion of Ikoria // Zilortha, Apex of Ikoria": {
+   "T": {
+    "m": "★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Kamahl's Druidic Vow": {
+   "T": {
+    "m": "★★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Golbez, Crystal Collector": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Lazav, the Multifarious": {
+   "T": {
+    "m": "★★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Krydle of Baldur's Gate": {
+   "T": {
+    "m": "◇",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "The Ancient One": {
+   "T": {
+    "m": "★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Zimone the Calculating // Simple Subtraction": {
+   "T": {
+    "m": "★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Lazav, Familiar Stranger": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Locke Cole": {
+   "T": {
+    "m": "△",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Ringsight": {
+   "T": {
+    "m": "★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Rona, Disciple of Gix": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Emet-Selch of the Third Seat": {
+   "T": {
+    "m": "★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Xande, Dark Mage": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Ashiok, Nightmare Muse": {
+   "T": {
+    "m": "★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★★★",
+    "graded_at": null
+   }
+  },
+  "Phenax, God of Deception": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": null
+   }
+  },
+  "Uchbenbak, the Great Mistake": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Ultimecia, Time Sorceress": {
+   "T": {
+    "m": "★★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Ashiok, Sculptor of Fears": {
+   "T": {
+    "m": "★★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": null
+   }
+  },
+  "Dragonlord Silumgar": {
+   "T": {
+    "m": "★★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": null
+   }
+  },
+  "Tezzeret, Master of the Bridge": {
+   "T": {
+    "m": "△",
+    "graded_at": null
+   },
+   "G": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Krang & Shredder": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": null
+   }
+  },
+  "Xanathar, Guild Kingpin": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": null
+   }
+  },
+  "Prototype X-8": {
+   "T": {
+    "m": "★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Chevill, Bane of Monsters": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Dina, Soul Steeper": {
+   "T": {
+    "m": "△",
+    "graded_at": null
+   },
+   "G": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Slimefoot, Thallid Transplant": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Vraska Joins Up": {
+   "T": {
+    "m": "★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Abomination of Llanowar": {
+   "T": {
+    "m": "★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Dina, Essence Brewer": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Journey to Eternity // Atzal, Cave of Eternity": {
+   "T": {
+    "m": "★★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Long Feng, Grand Secretariat": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Pharika, God of Affliction": {
+   "T": {
+    "m": "✗",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Sarulf, Realm Eater": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Sméagol, Helpful Guide": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": null
+   }
+  },
+  "The Mycotyrant": {
+   "T": {
+    "m": "★★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Furgul, Quag Nurturer": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "High Perfect Morcant": {
+   "T": {
+    "m": "★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Kagha, Shadow Archdruid": {
+   "T": {
+    "m": "★★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Lathril, Blade of the Elves": {
+   "T": {
+    "m": "★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Nissa of Shadowed Boughs": {
+   "T": {
+    "m": "★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Nemata, Primeval Warden": {
+   "T": {
+    "m": "✗",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Tyvar the Bellicose": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Vraska, Golgari Queen": {
+   "T": {
+    "m": "★★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": null
+   }
+  },
+  "Cloud of Darkness": {
+   "T": {
+    "m": "★★★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Ygra, Eater of All": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Yargle and Multani": {
+   "T": {
+    "m": "△",
+    "graded_at": null
+   },
+   "G": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Beledros Witherbloom": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Witherbloom, the Balancer": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Arwen Undómiel": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Kinnan, Bonder Prodigy": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Absorbing Man": {
+   "T": {
+    "m": "△",
+    "graded_at": null
+   },
+   "G": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Albiorix, Goose Tyrant // Wild Goose Chase": {
+   "T": {
+    "m": "★",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Galadriel of Lothlórien": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": null
+   }
+  },
+  "Kiora of Salt and Sand": {
+   "T": {
+    "m": "△",
+    "graded_at": null
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Kasmina, Enigma Sage": {
+   "T": {
+    "m": "△",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Nissa, Steward of Elements": {
+   "T": {
+    "m": "◇",
+    "graded_at": null
+   },
+   "G": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Llanowar Elves": {
+   "T": {
+    "m": "★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "△",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Elvish Archdruid": {
+   "T": {
+    "m": "★★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Deathbloom Ritualist": {
+   "T": {
+    "m": "★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Imperious Perfect": {
+   "T": {
+    "m": "★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Lluwen, Imperfect Naturalist": {
+   "T": {
+    "m": "★★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Cantankerous Keepers": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Morcant's Loyalist": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Morcant's Eyes": {
+   "T": {
+    "m": "★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Overlord of the Balemurk": {
+   "T": {
+    "m": "★★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "△",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Infernal Grasp": {
+   "T": {
+    "m": "★★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Breeding Pool": {
+   "T": {
+    "m": "★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Drowned Catacomb": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Clearwater Pathway // Murkwater Pathway": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Undercity Sewers": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Wastewood Verge": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "△",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Sphinx's Tutelage": {
+   "T": {
+    "m": "✗",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Traumatize": {
+   "T": {
+    "m": "◇",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Glimpse the Unthinkable": {
+   "T": {
+    "m": "◇",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "The Master of Lake-town": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Mystic Remora": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Notion Thief": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Counterspell": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Cyclonic Rift": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Arcane Signet": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Birds of Paradise": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Sunken Hollow": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Ashiok, Dream Render": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "△",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Villainous Wealth": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Lord of the Forsaken": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Duskmantle, House of Shadow": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Keening Stone": {
+   "T": {
+    "m": "✗",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Brain Freeze": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "△",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Niv-Mizzet, Visionary": {
+   "T": {
+    "m": "✗",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Murderous Rider // Swift End": {
+   "T": {
+    "m": "★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Tear Asunder": {
+   "T": {
+    "m": "★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Sheoldred's Edict": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Talisman of Resilience": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "△",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Delighted Halfling": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "△",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Consider": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Arcane Epiphany": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Desecrated Tomb": {
+   "T": {
+    "m": "◇",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Undead Hand Ninja": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Courser of Kruphix": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "△",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Vivien, Monsters' Advocate": {
+   "T": {
+    "m": "★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "△",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Elvish Mystic": {
+   "T": {
+    "m": "★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "△",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Circle of Dreams Druid": {
+   "T": {
+    "m": "★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "△",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Woodland Weavemaster": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Elvish Warmaster": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Dwynen, Gilt-Leaf Daen": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Dawnhand Eulogist": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "△",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Gloom Ripper": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Bounty of Skemfar": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Trystan's Command": {
+   "T": {
+    "m": "★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "△",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Command Tower": {
+   "T": {
+    "m": "★★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Watery Grave": {
+   "T": {
+    "m": "★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Llanowar Wastes": {
+   "T": {
+    "m": "★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Zagoth Triome": {
+   "T": {
+    "m": "★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Darkslick Shores": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Darkbore Pathway // Slitherbore Pathway": {
+   "T": {
+    "m": "★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Bruvac the Grandiloquent": {
+   "T": {
+    "m": "✗",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Maddening Cacophony": {
+   "T": {
+    "m": "✗",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Sphinx Mindbreaker": {
+   "T": {
+    "m": "✗",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Ashiok, Nightmare Weaver": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Phyrexian Arena": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Brainstorm": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Thought Collapse": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Damnation": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Talisman of Dominance": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Growth Spiral": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Drowned Secrets": {
+   "T": {
+    "m": "✗",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Cut Your Losses": {
+   "T": {
+    "m": "✗",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Mind's Dilation": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Persistent Petitioners": {
+   "T": {
+    "m": "✗",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "△",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Hama, the Bloodbender": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Riverchurn Monument": {
+   "T": {
+    "m": "◇",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Howling Mine": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Chulane, Teller of Tales": {
+   "T": {
+    "m": "✗",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Saw It Coming": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Anoint with Affliction": {
+   "T": {
+    "m": "◇",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Mystic Snake": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Cultivate": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "△",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Thought Scour": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Memory Deluge": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Laboratory Maniac": {
+   "T": {
+    "m": "✗",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "△",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Chalk Outline": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Dredger's Insight": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "△",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Augur of Autumn": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "△",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Eladamri, Korvecdal": {
+   "T": {
+    "m": "★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "△",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Paradise Druid": {
+   "T": {
+    "m": "★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Marwyn, the Nurturer": {
+   "T": {
+    "m": "★★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Selvala, Heart of the Wilds": {
+   "T": {
+    "m": "★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "△",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Voice of the Woods": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Izoni, Thousand-Eyed": {
+   "T": {
+    "m": "★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "△",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Elderfang Ritualist": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Leaf-Crowned Visionary": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Harald Unites the Elves": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Heartless Act": {
+   "T": {
+    "m": "★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Eclipsed Realms": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Woodland Cemetery": {
+   "T": {
+    "m": "★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Yavimaya Coast": {
+   "T": {
+    "m": "★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Underground Mortuary": {
+   "T": {
+    "m": "★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Blooming Marsh": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Psychic Corrosion": {
+   "T": {
+    "m": "✗",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Fraying Sanity": {
+   "T": {
+    "m": "✗",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Startled Awake // Persistent Nightmare": {
+   "T": {
+    "m": "✗",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Tasha's Hideous Laughter": {
+   "T": {
+    "m": "✗",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Consuming Aberration": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Dictate of Kruphix": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Kaito, Bane of Nightmares": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Hero's Downfall": {
+   "T": {
+    "m": "★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Breach the Multiverse": {
+   "T": {
+    "m": "★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Talisman of Curiosity": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Jidoor, Aristocratic Capital // Overture": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Navigator's Ruin": {
+   "T": {
+    "m": "✗",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Altar of Dementia": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Visions of Beyond": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Cruel Somnophage // Can't Wake Up": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Didn't Say Please": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Terisian Mindbreaker": {
+   "T": {
+    "m": "✗",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Hullbreaker Horror": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Kenrith's Transformation": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Memory Lapse": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Fatal Push": {
+   "T": {
+    "m": "◇",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Pongify": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Nature's Lore": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Opt": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "The Everflowing Well // The Myriad Pools": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Rot Farm Mortipede": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Attuned Hunter": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Along the Crooked Way": {
+   "T": {
+    "m": "◇",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Oracle of Mul Daya": {
+   "T": {
+    "m": "★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Inside Information": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Priest of Titania": {
+   "T": {
+    "m": "★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "△",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Lys Alana Dignitary": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Fauna Shaman": {
+   "T": {
+    "m": "★★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "△",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Trystan, Callous Cultivator": {
+   "T": {
+    "m": "★★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Harald, King of Skemfar": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Skemfar Avenger": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Shaman of the Pack": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Insidious Roots": {
+   "T": {
+    "m": "★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Go for the Throat": {
+   "T": {
+    "m": "★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Overgrown Tomb": {
+   "T": {
+    "m": "★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Hinterland Harbor": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Underground River": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Hedge Maze": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Botanical Sanctum": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "△",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Teferi's Tutelage": {
+   "T": {
+    "m": "✗",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Ruin Crab": {
+   "T": {
+    "m": "✗",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Archive Trap": {
+   "T": {
+    "m": "✗",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Ulamog, the Ceaseless Hunger": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Rhystic Study": {
+   "T": {
+    "m": "◇",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Teferi's Ageless Insight": {
+   "T": {
+    "m": "◇",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Drown in the Loch": {
+   "T": {
+    "m": "◇",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Assassin's Trophy": {
+   "T": {
+    "m": "★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Theorix Charm": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Mind Stone": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Restless Reef": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Fleet Swallower": {
+   "T": {
+    "m": "✗",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Grindstone": {
+   "T": {
+    "m": "✗",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Folio of Fancies": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Gyruda, Doom of Depths": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "◇",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Bloodchief's Thirst": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Scavenger's Talent": {
+   "T": {
+    "m": "◇",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Tamiyo, Inquisitive Student // Tamiyo, Seasoned Scholar": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Toxic Deluge": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Feed the Swarm": {
+   "T": {
+    "m": "★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Bitter Triumph": {
+   "T": {
+    "m": "★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Kogla and Yidaro": {
+   "T": {
+    "m": "✗",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Farseek": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Preordain": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Sokka's Haiku": {
+   "T": {
+    "m": "◇",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Wizard's Retort": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Kishla Skimmer": {
+   "T": {
+    "m": "★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Willow Geist": {
+   "T": {
+    "m": "◇",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "✗",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Precognition Field": {
+   "T": {
+    "m": "△",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": "f86da0733f29"
+   }
+  },
+  "Deathrite Shaman": {
+   "T": {
+    "m": "★★",
+    "graded_at": "abfe943277aa"
+   },
+   "G": {
+    "m": "★",
+    "graded_at": "f86da0733f29"
    }
   }
  }

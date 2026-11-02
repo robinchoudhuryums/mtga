@@ -1354,7 +1354,8 @@ when the page is built, so a page can never show stale deck figures.
 python3 scripts/builder.py new sultai --decks 75-historic-brawl 96 --keys T G
 python3 scripts/builder.py add sultai --file pile.txt --pile B     # Arena export lines work
 python3 scripts/builder.py reason sultai "Opt" --text "Scry, then draw" --group Draw
-python3 scripts/builder.py check sultai        # reasons written before a deck changed
+python3 scripts/builder.py verdict sultai "Opt" G strong   # a per-deck star (★★★ ★★ ★ ◇ △ ✗); --file for many
+python3 scripts/builder.py check sultai        # reasons and verdicts written before a deck changed
 python3 scripts/builder.py site --out _site     # every project for GitHub Pages (offline)
 python3 scripts/builder.py render sultai --target artifact --out .cycle/board   # a claude.ai board
 python3 scripts/builder.py picks sultai copied.txt   # the page's Copy-as-text → swap --package lines
