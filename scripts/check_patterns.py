@@ -475,8 +475,12 @@ def _pattern_groups():
     # the expensive direction here rather than the cheap one: a fastland or a met
     # checkland silently reverts to being scored as a flat tapland, which is the same
     # class of miss the shockland defect was.
+    # Batch G (2026-11-02): a fetch with no mana of its own reads tapped. If
+    # `_FETCH_TAPPED_RE` died, Evolving Wilds and Hobbit Hole would silently score as
+    # untapped duals again; `_OWN_MANA_RE` keeps the Landscapes out of that bucket.
     for name in ("_TAPLAND_RE", "_TAPLAND_COND_RE", "_TAPLAND_SHOCK_RE",
-                 "_TAPLAND_FAST_RE", "_TAPLAND_CHECK_RE"):
+                 "_TAPLAND_FAST_RE", "_TAPLAND_CHECK_RE",
+                 "_FETCH_TAPPED_RE", "_OWN_MANA_RE", "_FETCH_UNTAP_RE"):
         out.append((f"lib.{name}", getattr(lib, name), "norm"))
     # wishlist's oracle-text classifiers (BS-04): the flex-removal seed bonus and the
     # G-19 conditional-power (`pow~`) flag. If _FLEX_REMOVAL_RE goes dead, the seed

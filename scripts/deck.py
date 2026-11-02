@@ -1719,9 +1719,22 @@ def unpriced_discount_cards(cards, carddata, mana):
     Derived from the same two primitives the ◊ list and the effective figure already use,
     so the three surfaces cannot disagree (G-40)."""
     priced = {n.lower() for n, _c, _kw, _a, _amv in cheat_cost_cards(cards, carddata, mana)}
-    kw_by = {n.lower(): (d.get("keywords") or "").split(";") if isinstance(d.get("keywords"), str)
-             else (d.get("keywords") or [])
-             for n, d in (carddata or {}).items()}
+    # KEYWORDS FROM `load_keywords`, the source the ◊ list in `stats` reads (Batch G,
+    # 2026-11-02). This read `carddata[...]["keywords"]`, a field `load_card_data` never
+    # carries, so every keyword-only discount (convoke, affinity, improvise, delve) was
+    # invisible here while the ◊ list beside it named the same card — the two surfaces the
+    # docstring says cannot disagree, disagreeing. A carddata entry that does carry its own
+    # keywords (a test fixture) still wins.
+    _kw_file = load_keywords()
+    kw_by = {}
+    for n, d in (carddata or {}).items():
+        own = d.get("keywords")
+        if own:
+            kw_by[n.lower()] = own.split(";") if isinstance(own, str) else list(own)
+    for _q, n, _s, _c in cards:
+        nl = n.lower()
+        if nl not in kw_by:
+            kw_by[nl] = _kw_file.get(nl) or _kw_file.get(nl.split(" // ")[0]) or []
     out, seen = [], set()
     for _q, n, _s, _c in cards:
         nl = n.lower()
@@ -8317,6 +8330,12 @@ def cmd_consistency(args):
     # castability sweep (`check_all`, `audit`) reads too, so the two cannot disagree.
     rows = cast_on_curve_rows(cards, mana, sources, N, by_key, by_name, on_play, target)
     _x_rows = {r[1] for r in rows if r[6]}
+    # BOARD-PAID DISCOUNTS (Batch G, 2026-11-02). Convoke, affinity, improvise, delve and
+    # "costs {N} less" shrink the cost by a board state this table does not have, so it
+    # books the printed cost: Winnowing read 59% on curve in deck 18 for a {4}{W}{W} that
+    # convoke routinely pays with creatures. DISCLOSED, never priced — the same list
+    # `stats` and `tier` print, so the three cannot disagree (G-85).
+    _disc = dict(unpriced_discount_cards(cards, carddata, mana))
     rows.sort(key=lambda r: r[0])
     below = [r for r in rows if r[0] < target]
     print(f"\nCast-on-curve probability (turn = mana value, capped at {CAST_CAP}; "
@@ -8361,7 +8380,14 @@ def cmd_consistency(args):
                     flag = "   → want " + ", ".join(
                         f"{w} {c} sources (have {w - a}, +{a})" for c, w, a in adds)
             _tcell = f"T{turn}" + ("ˣ" if _xs else " ")
-            print(f"  {100*p:5.1f}%  {_tcell} {pipstr:10} {n[:30]:30}{flag}")
+            _ncell = (n[:28] + " ◊") if n in _disc else n[:30]
+            print(f"  {100*p:5.1f}%  {_tcell} {pipstr:10} {_ncell:30}{flag}")
+        _disc_shown = [(n, _disc[n]) for _p, n, *_r in show if n in _disc]
+        if _disc_shown:
+            print("  ◊ a discount this table does not price — it books the PRINTED cost, so "
+                  "the card is often cast earlier than its row says: "
+                  + "; ".join(f"{n} ({why})" for n, why in _disc_shown[:5])
+                  + ("…" if len(_disc_shown) > 5 else "") + ".")
         if below:
             print(f"\n  {len(below)} card(s) below {100*target:.0f}% on curve — the → note is the "
                   f"Karsten source count to reach target, a splash flag for a thin (≤{SPLASH_MAX}-source) "

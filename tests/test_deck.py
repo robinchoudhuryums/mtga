@@ -8379,3 +8379,21 @@ class TestBatchFGateFamilies:
         assert self._rows(cards, dc, "Free")[0][2] == 3        # 2 Blink + its own plot
         beseech = dict(Beseech=self.BESEECH)
         assert self._rows(beseech, [(1, "Beseech", "", "")], "Beseech") == []
+
+
+class TestConsistencyDisclosesUnpricedDiscounts:
+    """Batch G (2026-11-02): the cast-on-curve table books the PRINTED cost, so a convoke
+    spell read 59% on curve (Winnowing, deck 18). It now marks such a row ◊ and names the
+    discount, from the same list `stats` and `tier` print (G-85)."""
+
+    def test_a_convoke_row_is_marked_and_named(self, tmp_path):
+        import os, subprocess, sys as _sys
+        scripts = os.path.dirname(deck.__file__)
+        p = tmp_path / "convoke.txt"
+        p.write_text("#: name: Convoke probe\n#: format: Standard\n#: colors: W\n"
+                     "4 Winnowing (ECL) 39\n20 Plains (FDN) 272\n36 Plains (FDN) 272\n",
+                     encoding="utf-8")
+        out = subprocess.run([_sys.executable, os.path.join(scripts, "deck.py"),
+                              "consistency", str(p)], capture_output=True, text=True).stdout
+        assert "Winnowing ◊" in out
+        assert "◊ a discount this table does not price" in out and "convoke" in out.lower()

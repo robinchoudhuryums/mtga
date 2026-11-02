@@ -645,6 +645,12 @@ _LAND_GATE_RE = re.compile(
 
 
 _TAPLAND_RE = re.compile(r"enters(?: the battlefield)? tapped", re.I)
+# A land that fetches a basic onto the battlefield TAPPED, and whether it has a mana
+# ability of its own ({T}: Add …) — see `tapland_kind`'s first branch.
+_FETCH_TAPPED_RE = re.compile(r"search your library for [^.]{0,80}?onto the battlefield tapped",
+                              re.I)
+_OWN_MANA_RE = re.compile(r"\{T\}(?:, [^:]{0,40})?: Add\b", re.I)
+_FETCH_UNTAP_RE = re.compile(r"untap that land", re.I)
 # A SHOCKLAND states its condition BEFORE the tap clause — "As this land enters, you may
 # pay 2 life. If you don't, it enters tapped." — so a cue required AFTER "enters tapped"
 # misses all ten Standard-legal ones. Kept as its own alternative, not folded into the
@@ -744,6 +750,16 @@ def tapland_kind(text, basic_types=None):
     for a human to judge (G-37).
     """
     if not _TAPLAND_RE.search(text or ""):
+        # A FETCH WITH NO MANA OF ITS OWN (Batch G, 2026-11-02). Evolving Wilds, Hobbit
+        # Hole, the SNC hideouts: the land itself enters untapped, but it makes no mana —
+        # its only job is to fetch a basic that "enters the battlefield tapped", so the
+        # mana arrives a turn later exactly as from a tapland. Read as untapped, Hobbit Hole
+        # scored like an untapped dual in `suggest --lands` (11.5, no `·tapped`). A fetch
+        # land that ALSO taps for mana (the Landscapes, Urza's Cave) keeps its own untapped
+        # mana and stays None; Fabled Passage's "untap that land" if you control four
+        # lands is a board condition, so it reads "conditional".
+        if (_FETCH_TAPPED_RE.search(text or "") and not _OWN_MANA_RE.search(text or "")):
+            return "conditional" if _FETCH_UNTAP_RE.search(text) else "unconditional"
         return None
     if _TAPLAND_SHOCK_RE.search(text):
         return "shock"
