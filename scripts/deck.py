@@ -17199,12 +17199,71 @@ _TARGET_GATES = [
                 r"([A-Za-z]{3,}) cards?", re.I),
      "{0} cards in the deck", "lib_type"),
 
+    # ── Batch F (2026-11-02): three families the table could not see. Each was found by
+    # hand in a tune, which is the G-66 failure this table exists to remove.
+    # MANA SPENT. "Whenever you cast a noncreature spell, if at least four mana was spent
+    # to cast it" (Ultros, Sahagin, The Prima Vista, Blazing Bomb, Prompto — 7 pool cards)
+    # is worth the number of spells of that kind at MV ≥ N in THIS list; deck 18 held one
+    # or two and only a hand count said so. The trigger's own scope is captured, so a
+    # "noncreature spell" gate does not count creatures.
+    (re.compile(r"whenever you cast an? (noncreature |creature |)spell, if at least "
+                r"(\w+) mana was spent", re.I),
+     "{0}spells at MV ≥{1}", "spent"),
+    # TYPE PRESENCE. "If you control a Wizard" (Mana Sculpt; deck 40 ran two Wizards).
+    # The raw shape matches 292 pool cards, nearly all noise — Verges and basic-type
+    # gates (G-87 owns those), "a creature", "two or more other lands" — so only a
+    # CREATURE SUBTYPE from the tagger's vocabulary counts; any other word is skipped
+    # at count time, not reported.
+    (re.compile(r"\bif you control (a|an|another|two or more|three or more) "
+                r"(?:other )?([a-z]+)\b", re.I),
+     "{1} creatures you control (needs {0})", "control"),
+    # NOT CAST. "if none of them were cast" (Satoru) and "enters … if it wasn't cast"
+    # (Freestrider Commando): worth the cards that put a creature onto the battlefield
+    # without casting it, or cast it for free. "…if it wasn't cast THIS WAY" (Beseech the
+    # Mirror's leftover card) is a different clause and is excluded.
+    (re.compile(r"if (?:none of them were|it wasn'?t|it was not) cast(?! this way)", re.I),
+     "ways to bring creatures in uncast (cheat / reanimate / blink / free cast)", "notcast"),
+
     # NO generic "cards to discard" rule. It was written, and it reported 35 for every
     # discard outlet in a 60-card deck — i.e. "you have a hand", which is true of every
     # deck and decides nothing. Same saturation failure this file already documents for
     # `suggest`'s Decks column and `cuts`' protect boost: a signal that fires on
     # everything is not a signal. A gate earns a row only when the resource can be SHORT.
 ]
+
+
+# Creature subtypes a "control" gate may name; read from the tagger's vocabulary so the
+# two cannot disagree about what a tribe is (K-17). Lazy: tag_synergies is heavy to import.
+_TRIBE_VOCAB_CACHE = []
+
+
+def _TRIBE_VOCAB_DECK():
+    if not _TRIBE_VOCAB_CACHE:
+        from tag_synergies import _CREATURE_TYPES
+        _TRIBE_VOCAB_CACHE.append(frozenset(_CREATURE_TYPES))
+    return _TRIBE_VOCAB_CACHE[0]
+
+
+# Words the "control" pattern captures that are creature types only by accident of
+# spelling, or that say nothing about the deck ("a Human" is half of every white deck).
+_CONTROL_SKIP = {"Human"}
+# The type-presence family's label marker — `unmet_gate` keeps that family off the
+# recommendation surfaces (see there), and matches it by this exact phrase.
+_CONTROL_LABEL_MARK = " creatures you control (needs "
+
+_UNCAST_RE = re.compile(
+    r"(?:put|return)s? [^.]{0,60}?creature cards? [^.]{0,60}?onto the battlefield"
+    r"|(?:put|return)s? [^.]{0,40}?onto the battlefield[^.]{0,40}?creature"
+    r"|exile [^.]{0,60}?, then return (?:it|them|that card|those cards) to the battlefield"
+    r"|without paying (?:its|their) mana costs?"
+    r"|\bplot\b", re.I)
+
+
+def _brings_in_uncast(entry):
+    """Does this deck card put a creature onto the battlefield WITHOUT casting it, or
+    cast one for no mana (reanimation, cheat, blink, a free or plotted cast)? The
+    enabler side of the "if it wasn't cast" gate family (Batch F)."""
+    return bool(_UNCAST_RE.search(entry.get("no_rem") or ""))
 
 
 def unmet_gate(cand_name, cards, carddata, mana):
@@ -17238,6 +17297,12 @@ def unmet_gate(cand_name, cards, carddata, mana):
         return ""
     for card, label, count, need in rows:
         if card != cand_name:
+            continue
+        # TYPE PRESENCE stays in `targets` and off the recommendation surfaces (Batch F,
+        # measured at `suggest` per G-40): it doubled the "needs" rows on ten decks
+        # (67 → 132), and most were riders and cost reductions ("costs {1} less if you
+        # control a Wizard"), where "needs" overstates a card that still works.
+        if _CONTROL_LABEL_MARK in label:
             continue
         if count == 0 and not _supplies_own_gate(label, cd.get("text") or ""):
             return label
@@ -17312,7 +17377,8 @@ def target_counts(cards, carddata, mana):
         # the half you cast — the same reason `mv` above is front-faced.
         pool.append({"n": n, "q": q,
                      "type": (cd.get("type") or "").split("//")[0].strip().lower(),
-                     "text": raw, "no_rem": _REMINDER_RE.sub(" ", raw), "mv": mv})
+                     "text": raw, "no_rem": _REMINDER_RE.sub(" ", raw), "mv": mv,
+                     "cost": (front_face_cost(entry[0]) if entry and entry[0] else "").lower()})
     out, seen = [], set()
     for c in pool:
         # Lands are skipped as GATE SOURCES (a sacrifice outlet is not its own fodder,
@@ -17348,6 +17414,42 @@ def target_counts(cards, carddata, mana):
             elif kind == "sac_a":
                 hits = [o for o in others
                         if "artifact" in o["type"] or _makes_token(o, "artifact")]
+            elif kind == "spent":
+                scope = (groups[0] or "").strip().lower()
+                num = _TARGET_WORD_NUM.get(groups[1].lower()) or (
+                    int(groups[1]) if groups[1].isdigit() else None)
+                if num is None:
+                    continue
+                spells = [o for o in others if "land" not in o["type"]
+                          and (scope != "noncreature" or "creature" not in o["type"])
+                          and (scope != "creature" or "creature" in o["type"])]
+                hits = [o for o in spells if o["mv"] is not None and o["mv"] >= num]
+                xs = sum(o["q"] for o in spells if o not in hits and "{x}" in o["cost"])
+                shown = label.format(f"{scope} " if scope else "", num)
+                out.append((c["n"], shown + (f" (+{xs} X spell{'s' if xs != 1 else ''})"
+                                             if xs else ""),
+                            sum(o["q"] for o in hits), None))
+                continue
+            elif kind == "control":
+                want = groups[1].capitalize()
+                if want.endswith("s") and want[:-1] in _TRIBE_VOCAB_DECK():
+                    want = want[:-1]
+                if want not in _TRIBE_VOCAB_DECK() or want in _CONTROL_SKIP:
+                    continue
+                need = 2 if groups[0].lower().startswith("two") else (
+                    3 if groups[0].lower().startswith("three") else 1)
+                hits = [o for o in others if "creature" in o["type"]
+                        and (lib.type_matches(o["type"], want)
+                             or "changeling" in o["no_rem"].lower())]
+                out.append((c["n"], f"{want} creatures you control (needs {need})",
+                            sum(o["q"] for o in hits), need))
+                continue
+            elif kind == "notcast":
+                hits = [o for o in others if _brings_in_uncast(o)]
+                if _brings_in_uncast(c):
+                    hits.append(c)              # its own plot / free cast satisfies it
+                out.append((c["n"], label, sum(o["q"] for o in hits), None))
+                continue
             elif kind == "creat":
                 hits = [o for o in others if "creature" in o["type"]]
                 # The count that actually decided something on deck 52: not "how many

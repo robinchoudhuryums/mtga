@@ -8292,3 +8292,90 @@ class TestFlexAdd:
         assert deck.cmd_flex(self._args("+Shock | x", True)) == 1                  # on a #~ line
         assert deck.cmd_flex(self._args("no card field", True)) == 1
         assert path.read_text(encoding="utf-8") == self.BODY
+
+
+class TestBatchFGateFamilies:
+    """Batch F (2026-11-02): three gate families `targets` could not see, each found by a
+    hand count in a tune. Real oracle texts."""
+
+    def _cd(self, **cards):
+        return {n.lower(): {"name": n, "type": ty, "text": tx, "colors": ""}
+                for n, (ty, tx, _c) in cards.items()}
+
+    def _mana(self, **cards):
+        return {n.lower(): (c, "") for n, (_t, _x, c) in cards.items()}
+
+    def _rows(self, cards, deck_cards, who):
+        rows = deck.target_counts(deck_cards, self._cd(**cards), self._mana(**cards))
+        return [r for r in rows if r[0] == who]
+
+    ULTROS = ("Legendary Creature — Octopus",
+              "Whenever you cast a noncreature spell, if at least four mana was spent to "
+              "cast it, tap target creature an opponent controls and put a stun counter on it.",
+              "{2}{U}")
+    BIG = ("Sorcery", "Draw three cards.", "{3}{U}")
+    SMALL = ("Instant", "Draw a card.", "{U}")
+    XSPELL = ("Sorcery", "Draw X cards.", "{X}{U}")
+    FATTY = ("Creature — Giant", "", "{5}{G}")
+
+    def test_mana_spent_counts_noncreature_spells_at_the_threshold(self):
+        cards = dict(Ultros=self.ULTROS, Big=self.BIG, Small=self.SMALL, Xs=self.XSPELL,
+                     Fatty=self.FATTY)
+        dc = [(1, "Ultros", "", ""), (2, "Big", "", ""), (3, "Small", "", ""),
+              (1, "Xs", "", ""), (2, "Fatty", "", "")]
+        (_n, label, count, _need), = self._rows(cards, dc, "Ultros")
+        # The creature at MV 6 is out of scope; the X spell is disclosed, not counted.
+        assert count == 2 and label == "noncreature spells at MV ≥4 (+1 X spell)"
+
+    WHORL = ("Sorcery", "Target opponent discards two cards. Then if you control a Rat, "
+                        "surveil 2.", "{2}{B}{B}")
+    RAT = ("Creature — Rat Rogue", "", "{1}{B}")
+    CHANGELING = ("Creature — Shapeshifter", "Changeling (This card is every creature type.)",
+                  "{2}")
+    BEORN = ("Legendary Creature — Human Bear", "Then if you control three or more Bears, "
+                                                 "draw two cards.", "{2}{G}{G}")
+
+    def test_type_presence_counts_the_subtype_and_changelings(self):
+        cards = dict(Whorl=self.WHORL, Rat=self.RAT, Shifter=self.CHANGELING)
+        rows = self._rows(cards, [(1, "Whorl", "", ""), (2, "Rat", "", ""),
+                                  (1, "Shifter", "", "")], "Whorl")
+        assert rows == [("Whorl", "Rat creatures you control (needs 1)", 3, 1)]
+        assert self._rows(cards, [(1, "Whorl", "", "")], "Whorl")[0][2] == 0
+
+    def test_type_presence_reads_the_stated_number_and_skips_non_types(self):
+        cards = dict(Beorn=self.BEORN)
+        assert self._rows(cards, [(1, "Beorn", "", "")], "Beorn")[0][1] == \
+            "Bear creatures you control (needs 3)"
+        verge = dict(Verge=("Land", "{T}: Add {G}. Activate only if you control a Forest.", ""))
+        assert self._rows(verge, [(1, "Verge", "", "")], "Verge") == []
+
+    def test_type_presence_stays_off_the_recommendation_surfaces(self):
+        """Measured at `suggest` per G-40: it doubled the "needs" rows, mostly riders."""
+        cards = dict(Whorl=self.WHORL, Small=self.SMALL)
+        assert deck.unmet_gate("Whorl", [(1, "Small", "", "")], self._cd(**cards),
+                               self._mana(**cards)) == ""
+
+    SATORU = ("Legendary Creature — Human Ninja Rogue",
+              "Whenever Satoru and/or one or more other nontoken creatures you control enter, "
+              "if none of them were cast or no mana was spent to cast them, draw a card.",
+              "{U}{B}")
+    BLINK = ("Instant", "Exile target creature you control, then return it to the "
+                        "battlefield under its owner's control.", "{1}{W}")
+    FREESTRIDER = ("Creature — Lizard Mercenary",
+                   "This creature enters with two +1/+1 counters on it if it wasn't cast or no "
+                   "mana was spent to cast it.\nPlot {3}{G} (You may pay {3}{G} and exile this "
+                   "card from your hand. Cast it as a sorcery on a later turn without paying "
+                   "its mana cost.)", "{2}{G}")
+    BESEECH = ("Sorcery", "Search your library for a card, exile it face down, then shuffle. "
+                          "Put the exiled card into your hand if it wasn't cast this way.",
+               "{1}{B}{B}{B}")
+
+    def test_not_cast_counts_cheat_and_blink_and_a_cards_own_plot(self):
+        cards = dict(Satoru=self.SATORU, Blink=self.BLINK, Free=self.FREESTRIDER,
+                     Small=self.SMALL)
+        dc = [(1, "Satoru", "", ""), (2, "Blink", "", ""), (1, "Free", "", ""),
+              (1, "Small", "", "")]
+        assert self._rows(cards, dc, "Satoru")[0][2] == 3      # 2 Blink + Freestrider's plot
+        assert self._rows(cards, dc, "Free")[0][2] == 3        # 2 Blink + its own plot
+        beseech = dict(Beseech=self.BESEECH)
+        assert self._rows(beseech, [(1, "Beseech", "", "")], "Beseech") == []

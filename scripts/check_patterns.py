@@ -261,6 +261,8 @@ def _pattern_groups():
                  # read `_norm_role_text`, so a dead one would silently move every copy
                  # effect into "keeps" (or out of it).
                  "_LEGEND_RULE_OFF_RE", "_LEGEND_RULE_ANY_OFF_RE", "_COPY_STRIPS_RE",
+                 # Batch F (2026-11-02): the not-cast gate's enabler side.
+                 "_UNCAST_RE",
                  # Added by broad-scan F-04 — live, but previously uncovered.
                  # (`_REMINDER_RE` moved to the RAW group below at BS8-30: the norm
                  # corpus is now reminder-stripped, so it matches nothing there BY DESIGN.)
