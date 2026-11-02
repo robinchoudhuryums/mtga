@@ -1391,6 +1391,9 @@ pair an add with the card it replaces — the card pane's cut list shows the dec
 in cut order with a full preview on hover or focus, and an add with no cut yet is labelled
 "needs a cut" (the **Compare** tab puts a pile beside a deck's list, with its mana curve now
 and after, the deck's swap package, and a deck card opened beside the selected pile card),
+on a one-deck build the page opens on **Compare**: the piles become a Pile menu, the
+candidates are grouped by your verdict (★★★ first, ✗ collapsed), the deck panel shows the curve
+now and after your picks, and the buttons read + Add / Bench / Keep out with no deck letter;
 filter to cards still undecided for a deck, mark every shown undecided card at once (one undo
 reverses it), ask Claude to move a card to another pile, write notes, flag a role the
 tools miss ("counts as interaction") and queue an ownership correction. Picks stay in that

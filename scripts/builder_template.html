@@ -70,6 +70,12 @@ details.deck h2{margin:0;font-family:var(--display);font-weight:400;font-size:1.
 .chg{color:var(--accent)}
 .protlist{font-size:.82rem;color:var(--muted);margin-top:6px} .protlist summary{cursor:pointer;color:var(--accent);width:max-content}
 .protlist p{margin:4px 0 0}
+/* one deck: the panel carries the live curve beside the figures */
+.onegrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,440px);gap:8px 18px;align-items:start}
+.onestat > .status{margin:6px 0 0}
+.onegrid .curve .bars{height:60px;margin-top:6px}
+.onegrid .curve figcaption{font-size:.74rem}
+@media (max-width:760px){ .onegrid{grid-template-columns:minmax(0,1fr)} }
 
 .banner{border:1px solid var(--warn);color:var(--warn);background:var(--panel);border-radius:6px;padding:7px 12px;font-size:.88rem}
 
@@ -92,7 +98,7 @@ details.deck h2{margin:0;font-family:var(--display);font-weight:400;font-size:1.
 .panebtn:hover{color:var(--ink);border-color:var(--accent)}
 .filtbtn{display:none;background:none;border:1px dashed var(--accent);color:var(--accent);border-radius:999px;padding:3px 12px;cursor:pointer;width:max-content}
 @media (max-width:1000px){ .panebtn{display:none} }
-@media (max-width:760px){ .filtbtn{display:inline-block} .toolbar:not(.open) > label:not(:first-child){display:none} .toolbar > label:first-child{flex:1 1 100%} .toolbar input[type=search]{width:100%} }
+@media (max-width:760px){ .filtbtn{display:inline-block} .toolbar:not(.open) > label:not(:first-child){display:none} .toolbar > label:first-child{flex:1 1 100%} .toolbar input[type=search]{width:100%} .toolbar:not(.open) > label.keep{display:flex} }
 
 /* console */
 .console{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:14px;align-items:start}
@@ -126,6 +132,11 @@ details.deck h2{margin:0;font-family:var(--display);font-weight:400;font-size:1.
 .qb{display:inline-grid;place-items:center;border:1px solid var(--line);background:var(--panel);border-radius:4px;padding:2px 6px;min-height:22px;font:500 .74rem/1.3 var(--mono);cursor:pointer;color:var(--muted)}
 .qb svg{width:12px;height:12px;display:block}
 .qb .qi{display:inline-flex;align-items:center;gap:2px}
+/* one deck: Add (or Cut) on top, Bench and Keep out in words underneath; icons only on a phone */
+.q.one{grid-template-columns:repeat(2,auto)}
+.q.one > .qb:first-child{grid-column:1/-1}
+.qb .qw{font-family:var(--ui)}
+@media (max-width:520px){ .qb .qw{display:none} }
 /* more than three decks: Bench / Keep out live in a per-row menu so the row keeps its width */
 .qmore{grid-column:1/-1;position:relative}
 .qmore summary{list-style:none}
@@ -180,6 +191,12 @@ dialog#artzoom::backdrop{background:rgba(0,0,0,.72)}
 .cmpcol{min-width:0;display:flex;flex-direction:column;gap:8px}
 .cmpcol h3{margin:0;font-family:var(--display);font-weight:400;font-size:1.05rem;letter-spacing:.03em;color:var(--dc,var(--ink))}
 .cmpcol .rows{max-height:calc(100vh - 230px);overflow:auto}
+/* one deck: verdict sections in the candidate column, the header pinned while its cards scroll */
+.vsec{position:sticky;top:0;z-index:2;background:var(--raise);border-bottom:1px solid var(--line)}
+.vsechd{all:unset;box-sizing:border-box;display:flex;align-items:center;gap:8px;width:100%;padding:6px 10px;cursor:pointer;font:600 .8rem/1.3 var(--ui);letter-spacing:.04em;color:var(--ink)}
+.vsechd .n{margin-left:auto;font:500 .74rem/1 var(--mono);color:var(--muted)}
+.vsechd .caret{width:1em;color:var(--muted)}
+.vsechd:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
 @media (max-width:1000px){ .seg{display:inline-flex} .cmpcols{grid-template-columns:minmax(0,1fr)} .cmpcols[data-side="L"] .cmpcol[data-side="R"],.cmpcols[data-side="R"] .cmpcol[data-side="L"]{display:none} .cmpcol .rows{max-height:none} }
 /* mana curve, now vs after */
 .curve{background:var(--raise);border-left:2px solid var(--dc);border-radius:4px;padding:8px 10px}
@@ -415,21 +432,30 @@ DDEFS.forEach((dd,di)=>{ const k=dd.key, L=LIVE[k]||{};
     size:L.size||0, lands:L.lands||0, list:L.list||[], dc:`var(--id${DCOL[di]})`,
     portrait:{id:slug(L.cmd||""), im:(META.portraits||{})[k]||""} }; });
 const DK = Object.keys(DECKS);
+/* A one-deck build drops everything that only tells decks apart: the deck letter on every
+   control, the per-deck filter options, the deck picker. Compare (pile beside the list) is its
+   home view, the piles become a filter there, and the deck panel carries the live curve. */
+const ONE = DK.length===1, K1 = DK[0];
 const DLNAME = {}; DK.forEach(k=>DECKS[k].list.forEach(x=>{ DLNAME[slug(x.n)]=x.n; }));
 const nameOf = id => (BYID[id]&&BYID[id].n) || DLNAME[id] || "";
 const PILEDEFS = (META.piles||[]).map((p,i,a)=>({k:p.key, hash:"pile-"+String(p.key).toLowerCase(), label:p.label||p.key, intro:p.intro||"", deck:p.deck||null,
   tone: p.deck&&DECKS[p.deck] ? DECKS[p.deck].dc : (p.key==="N" ? "var(--muted)" : "var(--accent)")}));
 const PILEKEYS = PILEDEFS.map(p=>p.k);
-const PILES = [...PILEDEFS,
-  {k:"compare", hash:"compare", label:"Compare", intro:"A pile beside one deck's current list. Select a pile card, then press ⇄ on the deck card it should replace. The curve shows the deck now and after your picks."},
+const CMPTAB = {k:"compare", hash:"compare", label:"Compare", intro: ONE
+  ? `Candidates on the left, ${DECKS[K1].label}'s list on the right with the weakest fit first. Mark + Add on a candidate, then press ⇄ on the card it replaces; the panel above shows what your picks do to the deck. Pile switches between piles.`
+  : "A pile beside one deck's current list. Select a pile card, then press ⇄ on the deck card it should replace. The curve shows the deck now and after your picks."};
+const PILES = [...(ONE?[]:PILEDEFS), CMPTAB,
   {k:"lists", hash:"lists", label:"Deck lists", intro:"Each deck's current nonland cards, weakest fit first by deck.py cuts (1 = most cuttable). It is a shortlist: it cannot see spice or signature cards. Protected cards are listed last; Protect and Unprotect are requests Claude applies to the deck's protect list."},
   {k:"add", hash:"add-cards", label:"Add cards", intro:"Paste card names and choose where they go. This queues a request; when you tell Claude to process the board's requests, Claude reads, grades and adds each card."},
   {k:"picks", hash:"picks", label:"Your picks", intro:"Everything you have marked or noted. Claude reads this back when you ask."}];
 const isPileView = k => PILEKEYS.includes(k);
 /* Every pick names one deck. Bench ("maybe later") and Keep out are per deck, and within one
    deck Add, Bench and Keep out exclude each other: choosing one clears the other two. */
-const PICKLAB = {};
-DK.forEach(k=>{ const l=DECKS[k].label; PICKLAB["add"+k]=`Add to ${l}`; PICKLAB["cut"+k]=`Cut from ${l}`; PICKLAB["bench"+k]=`Bench in ${l}`; PICKLAB["out"+k]=`Keep out of ${l}`; PICKLAB["prot"+k]=`Protect in ${l}`; PICKLAB["unprot"+k]=`Unprotect in ${l}`; });
+/* FULLLAB names the deck and is what Copy as text writes; PICKLAB is what the page shows,
+   which on a one-deck build leaves the deck out. */
+const FULLLAB = {};
+DK.forEach(k=>{ const l=DECKS[k].label; FULLLAB["add"+k]=`Add to ${l}`; FULLLAB["cut"+k]=`Cut from ${l}`; FULLLAB["bench"+k]=`Bench in ${l}`; FULLLAB["out"+k]=`Keep out of ${l}`; FULLLAB["prot"+k]=`Protect in ${l}`; FULLLAB["unprot"+k]=`Unprotect in ${l}`; });
+const PICKLAB = ONE ? {["add"+K1]:"Add to the deck", ["cut"+K1]:"Cut from the deck", ["bench"+K1]:"Bench", ["out"+K1]:"Keep out", ["prot"+K1]:"Protect", ["unprot"+K1]:"Unprotect"} : FULLLAB;
 const PICKORDER = [...DK.flatMap(k=>["add"+k,"cut"+k,"bench"+k,"out"+k]), ...DK.flatMap(k=>["prot"+k,"unprot"+k])];
 const KINDS = ["add","cut","bench","out","prot","unprot"], EXCL = ["add","bench","out"];
 const deckOfPick = v => DK.find(k=>KINDS.some(x=>v===x+k));
@@ -451,7 +477,10 @@ document.getElementById("title").textContent = META.title || "Builder";
 if(META.home){ const h=document.getElementById("homelink"); h.href=META.home; h.hidden=false; }
 const BOARD = CARDS.filter(c=>c.p);
 document.getElementById("subtitle").textContent = `${BOARD.length} cards for ${DK.map(k=>`${DECKS[k].label} (${DECKS[k].full})`).join(" and ")}. Mark a card and Claude reads your picks back.`;
-document.getElementById("mem").innerHTML = `<option value="all">Any</option><option value="neither">In no deck</option>`+DK.map(k=>`<option value="${esc(k)}">In ${esc(DECKS[k].label)}</option>`).join("")+(DK.length>1?`<option value="every">In every deck</option>`:"");
+/* One deck: Compare already splits candidates (left) from the list (right), so "in the deck"
+   filters nothing there and the control is dropped. */
+if(ONE) document.querySelector('label[for="mem"]').classList.add("hidden");
+document.getElementById("mem").innerHTML =`<option value="all">Any</option><option value="neither">In no deck</option>`+DK.map(k=>`<option value="${esc(k)}">In ${esc(DECKS[k].label)}</option>`).join("")+(DK.length>1?`<option value="every">In every deck</option>`:"");
 
 /* Verdict stars: a hand grade per card per deck (builder.py verdict). VORDER is best first. */
 const VORDER = (META.verdicts||[]).map(x=>x[0]), VLAB = Object.fromEntries((META.verdicts||[]).map(x=>[x[0],x[1]]));
@@ -461,10 +490,14 @@ function vTitle(c,k){ const m=(c.vd||{})[k], st=(c.vs||{})[k]; return m?`${DECKS
 /* filter value "K|top2" (★★ or better), "K|top3" (★ or better), "K|low" (◇ or worse), "K|none" */
 function vfMatch(c,val){ if(!val||val==="all") return true; const [k,w]=val.split("|"), r=vrank(c,k);
   return w==="top2"?r<=1: w==="top3"?r<=2: w==="low"?(r>=3&&r<99): w==="none"?r===99: true; }
-document.getElementById("vf").innerHTML = `<option value="all">Any</option>`+DK.map(k=>{ const l=esc(DECKS[k].label);
-  return `<optgroup label="${l}"><option value="${esc(k)}|top2">${l}: ★★ or better</option><option value="${esc(k)}|top3">${l}: ★ or better</option><option value="${esc(k)}|low">${l}: ◇ or worse</option><option value="${esc(k)}|none">${l}: no verdict</option></optgroup>`; }).join("");
-document.getElementById("df").innerHTML = `<option value="all">Any</option>`+DK.map(k=>`<option value="${esc(k)}">Undecided for ${esc(DECKS[k].label)}</option>`).join("")+(DK.length>1?`<option value="any">Undecided for any deck</option>`:"");
-document.getElementById("sort").insertAdjacentHTML("beforeend", DK.map(k=>`<option value="v:${esc(k)}">Verdict — ${esc(DECKS[k].label)}</option>`).join(""));
+const VFOPTS = [["top2","★★ or better"],["top3","★ or better"],["low","◇ or worse"],["none","no verdict"]];
+document.getElementById("vf").innerHTML = `<option value="all">Any</option>`+(ONE
+  ? VFOPTS.map(([w,t])=>`<option value="${esc(K1)}|${w}">${t[0].toUpperCase()+t.slice(1)}</option>`).join("")
+  : DK.map(k=>{ const l=esc(DECKS[k].label);
+    return `<optgroup label="${l}">${VFOPTS.map(([w,t])=>`<option value="${esc(k)}|${w}">${l}: ${t}</option>`).join("")}</optgroup>`; }).join(""));
+document.getElementById("df").innerHTML = `<option value="all">Any</option>`+(ONE ? `<option value="${esc(K1)}">Undecided</option>`
+  : DK.map(k=>`<option value="${esc(k)}">Undecided for ${esc(DECKS[k].label)}</option>`).join("")+`<option value="any">Undecided for any deck</option>`);
+if(!ONE) document.getElementById("sort").insertAdjacentHTML("beforeend", DK.map(k=>`<option value="v:${esc(k)}">Verdict — ${esc(DECKS[k].label)}</option>`).join(""));   // one deck: the verdict sections order it
 let picks = {}, reasons = {}, requests = {};
 let db = null, canWrite = true, view = PILEKEYS[0]||"lists", VISIBLE = [], SEL = null, NOTEOPEN = null, NOTECOL = "";
 /* Choosing cuts: CUTOPEN = "<card id>|<deck>" whose cut list is open in the pane; CUTQ its search.
@@ -484,7 +517,17 @@ function toggleTheme(){ const next=effectiveTheme()==="dark"?"light":"dark"; doc
   const p=readJSON("mtga-prefs"); p.theme=next; try{ localStorage.setItem("mtga-prefs",JSON.stringify(p)); }catch(e){} paintThemeBtn(); }
 const PREFS = readJSON("builder-prefs");
 let PANE = PREFS.pane!=="closed";
-function savePrefs(){ try{ localStorage.setItem("builder-prefs",JSON.stringify({pane:PANE?"open":"closed"})); }catch(e){} }
+/* One deck: Compare's candidate column is grouped by the deck's verdict, best first, ungraded
+   cards before ✗, and ✗ starts collapsed — the reject pile is there when you open it. */
+const VNONE = "–";
+let VCOLL = new Set(Array.isArray(PREFS.vcoll) ? PREFS.vcoll : ["✗"]);
+function savePrefs(){ try{ localStorage.setItem("builder-prefs",JSON.stringify({pane:PANE?"open":"closed", vcoll:[...VCOLL]})); }catch(e){} }
+const vBand = (c,k) => { const m=(c.vd||{})[k]; return VORDER.includes(m) ? m : VNONE; };
+function verdictSections(xs, k){ const order=[...VORDER.filter(m=>m!=="✗"), VNONE, ...VORDER.filter(m=>m==="✗")], by={};
+  xs.forEach(c=>{ const b=vBand(c,k); (by[b]=by[b]||[]).push(c); });
+  return order.filter(m=>by[m]).map(m=>({m, cards:by[m]})); }
+/* Open the section a card sits in, so a jump to it can land. */
+function revealCand(id){ const c=BYID[id]; if(c&&VCOLL.delete(vBand(c,K1))) savePrefs(); }
 function applyPane(){ const con=document.getElementById("console"), b=document.getElementById("panebtn");
   con.classList.toggle("nopane",!PANE); b.setAttribute("aria-expanded",String(PANE)); b.textContent=PANE?"Hide card pane":"Show card pane"; b.title=(PANE?"Hide":"Show")+" the card pane (p)"; if(PANE) hidePeek(); }
 function togglePane(){ PANE=!PANE; savePrefs(); applyPane(); }
@@ -550,6 +593,9 @@ function roleTags(c, all){ const hid=hidOf(c), sus=(c.hr||[]).filter(r=>!hid.inc
 
 /* ---------- rows ---------- */
 function quick(c){ const p=(picks[c.id]||{}).picks||[];
+  if(ONE){ const k=K1, btn=(v,label)=>`<button type="button" class="qb" style="--qc:${pickColour(v)}" data-id="${c.id}" data-v="${v}" aria-pressed="${p.includes(v)}" aria-label="${esc(PICKLAB[v])}: ${esc(c.n)}" title="${esc(PICKLAB[v])}">${label}</button>`;
+    if(c["i"+k]) return `<span class="q one">${btn("cut"+k,"− Cut")}</span>`;
+    return `<span class="q one">${btn("add"+k,"+ Add")}${btn("bench"+k,`<span class="qi">${ICON.bench}<span class="qw">Bench</span></span>`)}${btn("out"+k,`<span class="qi">${ICON.out}<span class="qw">Keep out</span></span>`)}</span>`; }
   const dbtn = DK.map(k=>{ const inK=c["i"+k], v=(inK?"cut":"add")+k; return `<button type="button" class="qb" style="--qc:${DECKS[k].dc}" data-id="${c.id}" data-v="${v}" aria-pressed="${p.includes(v)}" aria-label="${esc(PICKLAB[v])}: ${esc(c.n)}" title="${esc(PICKLAB[v])}">${inK?"−":"+"}${esc(k)}</button>`; }).join("");
   const many=DK.length>3, n=many?2:Math.max(2,DK.length), pad=(xs)=>xs.concat(Array(Math.max(0,n-xs.length)).fill("<span></span>")).join(""), scope=pileScope(c);
   const xb=(kind,k)=>{ if(c["i"+k]) return "<span></span>"; const v=kind+k;
@@ -563,8 +609,8 @@ function noteRowHTML(c,col){ const p=picks[c.id]||{};
 /* A row. `col` is "" in a pile view, "L"/"R" in the Compare view (a card can be in both columns,
    so rows are found by data attributes, never by id). The deck column adds the cut rank and ⇄. */
 function rowHTML(c, col=""){
-  const tags = DK.filter(k=>c["i"+k]).map(k=>`<span class="tag ${c["p"+k]?"prot":"in"}" style="--dc:${DECKS[k].dc}">${c["p"+k]?"Protected":"In"} ${esc(DECKS[k].label)}</span>`).join("")
-    + DK.filter(k=>(c.vd||{})[k]).map(k=>`<span class="tag vd ${(c.vs||{})[k]||""}" style="--dc:${DECKS[k].dc}" title="${esc(vTitle(c,k))}">${esc(k)} ${esc(c.vd[k])}</span>`).join("");
+  const tags = DK.filter(k=>c["i"+k]).map(k=>`<span class="tag ${c["p"+k]?"prot":"in"}" style="--dc:${DECKS[k].dc}">${c["p"+k]?"Protected":"In"}${ONE?(c["p"+k]?"":" the deck"):" "+esc(DECKS[k].label)}</span>`).join("")
+    + DK.filter(k=>(c.vd||{})[k]).map(k=>`<span class="tag vd ${(c.vs||{})[k]||""}" style="--dc:${DECKS[k].dc}" title="${esc(vTitle(c,k))}">${ONE?"":esc(k)+" "}${esc(c.vd[k])}</span>`).join("");
   const ap = hasApplied(c.id), k=CMP.deck, d=DECKS[k];
   let extra="", cls="", lead="";
   if(col==="R"){ const x=d.list.find(x=>x.n===c.n)||{}, s=BYID[SEL], cutBy=pairedTo(k,c.n);
@@ -579,7 +625,7 @@ function rowHTML(c, col=""){
     <span class="th">${thumb(c)}</span>
     <button type="button" class="main" data-sel="${c.id}" aria-current="${col==="R"?c.id===INSPECT:c.id===SEL}" aria-expanded="${NOTEOPEN===c.id&&NOTECOL===col}" title="Click again to write a note">
       <span class="l1"><span class="nm">${esc(c.n)}</span><span class="cost">${pips(c.c)}</span><span class="noteDot" title="Has a note"${hasNote(c.id)?"":" hidden"}>✎</span></span>
-      <span class="l2">${lead}${ap?`<span class="tag done">Applied ✓</span>`:""}${isSwap(c)?`<span class="seal">Swap</span>`:""}${col==="R"?"":tags}${ownTag(c)}${(c.al||[]).length>1?`<span class="tag" title="${c.al.length} artworks on Arena — see the card pane">⧉${c.al.length}</span>`:""}${DK.filter(k=>needsCut(c.id,k)).map(k=>`<span class="tag need" title="Added to ${esc(DECKS[k].label)} with no cut chosen yet">needs a cut · ${esc(k)}</span>`).join("")}${roleTags(c,false)}<span class="why1">${sym(esc(firstLine(c)))}</span></span>
+      <span class="l2">${lead}${ap?`<span class="tag done">Applied ✓</span>`:""}${isSwap(c)?`<span class="seal">Swap</span>`:""}${col==="R"?"":tags}${ownTag(c)}${(c.al||[]).length>1?`<span class="tag" title="${c.al.length} artworks on Arena — see the card pane">⧉${c.al.length}</span>`:""}${DK.filter(k=>needsCut(c.id,k)).map(k=>`<span class="tag need" title="Added to ${esc(DECKS[k].label)} with no cut chosen yet">needs a cut${ONE?"":` · ${esc(k)}`}</span>`).join("")}${roleTags(c,false)}<span class="why1">${sym(esc(firstLine(c)))}</span></span>
     </button>
     ${extra}${quick(c)}
   </div>${NOTEOPEN===c.id&&NOTECOL===col?noteRowHTML(c,col):""}</div>`;
@@ -617,12 +663,12 @@ function detailHTML(c, inSheet){
   if(!c) return `<p class="empty">Choose a card from the list.</p>`;
   const p=picks[c.id]||{}, v=p.picks||[], r=reasonOf(c), idx=VISIBLE.indexOf(c.id), sfx=inSheet?"-s":"";
   const pb=(val,label)=>`<button type="button" class="pb" style="--qc:${pickColour(val)}" data-id="${c.id}" data-v="${val}" aria-pressed="${v.includes(val)}" aria-label="${esc(PICKLAB[val]||label)}: ${esc(c.n)}">${label}</button>`;
-  const chips=[...DK.filter(k=>c["i"+k]).map(k=>`<span class="tag ${c["p"+k]?"prot":"in"}" style="--dc:${DECKS[k].dc}">${c["p"+k]?"Protected in":"In"} ${esc(DECKS[k].label)}</span>`), `<span class="tag">${esc(own(c))}</span>`, roleTags(c,true)].join("");
+  const chips=[...DK.filter(k=>c["i"+k]).map(k=>`<span class="tag ${c["p"+k]?"prot":"in"}" style="--dc:${DECKS[k].dc}">${ONE?(c["p"+k]?"Protected":"In the deck"):`${c["p"+k]?"Protected in":"In"} ${esc(DECKS[k].label)}`}</span>`), `<span class="tag">${esc(own(c))}</span>`, roleTags(c,true)].join("");
   const applied=v.filter(x=>isApplied(c.id,x)), conf=conflicts().filter(x=>x.ids.includes(c.id));
   const oq=p.own, hid=hidOf(c);
   const hb=role=>{ const fromBuild=(c.hc||[]).includes(role), on=hid.includes(role);
     return `<button type="button" class="pb" data-hid="${c.id}" data-role="${role}" aria-pressed="${on}" ${fromBuild?`disabled title="Recorded in the build"`:""}>Counts as ${role}${fromBuild?" ✓":""}</button>`; };
-  const keys = DK.length>1 ? `<span>1</span>–<span>${DK.length}</span> decks` : `<span>1</span> deck`;
+  const keys = DK.length>1 ? `<span>1</span>–<span>${DK.length}</span> decks` : `<span>1</span> add / cut`;
   return `<div class="dimg">${idx>-1&&VISIBLE.length>1?`<button type="button" class="step" data-step="-1" aria-label="Previous card">‹</button>`:""}
       <button type="button" class="big" data-zoom="${c.id}" aria-label="Show ${esc(c.n)} full screen"><img src="${esc(imgSrc(c,"l",showBack(c)))}" data-face="${c.id}" data-fb="${esc(fallbackOf(c,showBack(c)))}" alt="${esc(c.n)}${showBack(c)?" (back face)":""}"></button>
       ${idx>-1&&VISIBLE.length>1?`<button type="button" class="step" data-step="1" aria-label="Next card">›</button>`:""}</div>
@@ -637,9 +683,9 @@ function detailHTML(c, inSheet){
     ${artsHTML(c)}
     ${[...pileScope(c),...DK.filter(k=>!pileScope(c).includes(k))].map(k=>{ const l=esc(DECKS[k].label);
       const vm=(c.vd||{})[k], vst=(c.vs||{})[k]||"";
-      return `<div class="picks dp" role="group" aria-label="${l}: your pick for ${esc(c.n)}"><span class="dpl" style="--dc:${DECKS[k].dc}" aria-hidden="true">${l}</span><span class="dpv ${vst}" style="--dc:${DECKS[k].dc}" title="${esc(vTitle(c,k))}" aria-label="${esc(vTitle(c,k))}">${vm?esc(vm):"–"}</span>${c["i"+k]?pb("cut"+k,"− Cut"):pb("add"+k,"+ Add")+pb("bench"+k,"Bench")+pb("out"+k,"Keep out")}</div>`; }).join("")}
+      return `<div class="picks dp" role="group" aria-label="${ONE?"Your pick":l+": your pick"} for ${esc(c.n)}">${ONE?"":`<span class="dpl" style="--dc:${DECKS[k].dc}" aria-hidden="true">${l}</span>`}<span class="dpv ${vst}" style="--dc:${DECKS[k].dc}" title="${esc(vTitle(c,k))}" aria-label="${esc(vTitle(c,k))}">${vm?esc(vm):"–"}</span>${c["i"+k]?pb("cut"+k,"− Cut"):pb("add"+k,"+ Add")+pb("bench"+k,"Bench")+pb("out"+k,"Keep out")}</div>`; }).join("")}
     <p class="vlegend">Verdicts: ${VORDER.map(m=>`${esc(m)} ${esc(VLAB[m])}`).join(" · ")} — dotted: graded before the deck was drafted; dashed: before its list last changed.</p>
-    ${DK.some(k=>!c["i"+k])?`<p class="status">For each deck, Add, Bench and Keep out exclude each other: choosing one clears the other two.</p>`:""}
+    ${DK.some(k=>!c["i"+k])?`<p class="status">${ONE?"Add":"For each deck, Add"}, Bench and Keep out exclude each other: choosing one clears the other two.</p>`:""}
     ${cutPickerHTML(c)}
     ${c.land?"":`<div class="picks" role="group" aria-label="Roles the tools do not count">${HROLES.map(hb).join("")}</div>`}
     ${c.p?(()=>{ const mr=moveRequest(c), cur=(PILEDEFS.find(q=>q.k===c.p)||{}).label||c.p;
@@ -650,7 +696,7 @@ function detailHTML(c, inSheet){
     <label class="field-l" for="n-${c.id}${sfx}">Note for Claude</label>
     <textarea class="note" id="n-${c.id}${sfx}" data-id="${c.id}" rows="2" placeholder="A question, a hunch, a combo to check">${esc(p.note||"")}</textarea>
     <span class="saved" data-saved="${c.id}" aria-live="polite"></span>
-    ${inSheet?"":`<p class="kbd"><span>j</span><span>k</span> move · ${keys} · <span>b</span> bench · <span>o</span> keep out (this pile's deck; every deck on a shared pile) · <span>n</span> note · <span>p</span> pane · <span>u</span> undo · <span>t</span> theme · <span>/</span> search · <span>z</span> zoom${hasBack(c)?` · <span>f</span> flip`:""}</p>`}`;
+    ${inSheet?"":`<p class="kbd"><span>j</span><span>k</span> move · ${keys} · <span>b</span> bench · <span>o</span> keep out${ONE?"":" (this pile's deck; every deck on a shared pile)"} · <span>n</span> note · <span>p</span> pane · <span>u</span> undo · <span>t</span> theme · <span>/</span> search · <span>z</span> zoom${hasBack(c)?` · <span>f</span> flip`:""}</p>`}`;
 }
 function renderDetail(){ const c=BYID[SEL], x=view==="compare"&&INSPECT?BYID[INSPECT]:null;
   document.getElementById("detail").innerHTML=detailHTML(c,false)+(x?inspectHTML(x):"");
@@ -666,11 +712,11 @@ function inspectHTML(x){ const k=CMP.deck, d=DECKS[k], li=d.list.find(y=>y.n===x
   const can=s&&!s["i"+k]&&s.id!==x.id, cutBy=pairedTo(k,x.n);
   return `<section class="inspect" style="--dc:${d.dc}" aria-label="Cut candidate in ${esc(d.label)}"><div class="ihead"><h3 class="dname" style="font-size:1.05rem">${esc(x.n)} <span class="cost">${pips(x.c)}</span></h3>
     <button type="button" class="mini" data-inspclose="1" aria-label="Close the cut candidate">✕</button></div>
-    <p class="status">In ${esc(d.label)} · ${li.prot?"protected":`cut rank #${li.r??"–"} (1 = most cuttable)`}${DK.filter(q=>(x.vd||{})[q]).map(q=>` · ${esc(DECKS[q].label)} ${esc(x.vd[q])}`).join("")}${cutBy.length?` · chosen as the cut for ${esc(cutBy.join(", "))}`:""}</p>
+    <p class="status">In ${esc(d.label)} · ${li.prot?"protected":`cut rank #${li.r??"–"} (1 = most cuttable)`}${DK.filter(q=>(x.vd||{})[q]).map(q=>` · ${ONE?"":esc(DECKS[q].label)+" "}${esc(x.vd[q])}`).join("")}${cutBy.length?` · chosen as the cut for ${esc(cutBy.join(", "))}`:""}</p>
     <div class="ibody"><button type="button" class="big" data-zoom="${x.id}" aria-label="Show ${esc(x.n)} full screen"><img src="${esc(imgSrc(x,"l"))}" data-fb="${esc(fallbackOf(x))}" alt="${esc(x.n)}" loading="lazy"></button>
       <div><p class="dtype">${esc(x.t)}</p><p class="cpx">${sym(esc(x.x||""))}</p>${r?`<p class="reason" style="font-size:.86rem">${fmt(r.w)}</p>`:""}</div></div>
     <div class="picks">${can?`<button type="button" class="pb" data-pair="${x.id}">⇄ ${esc(s.n)} replaces this</button><button type="button" class="ghost" data-cmp="${s.id}" data-cut="${x.id}">Compare side by side</button>`:`<span class="status">Select a pile card on the left to pair it with this one.</span>`}
-      <button type="button" class="pb" style="--qc:${d.dc}" data-id="${x.id}" data-v="cut${k}" aria-pressed="${p.includes("cut"+k)}">− Cut from ${esc(d.label)}</button></div></section>`; }
+      <button type="button" class="pb" style="--qc:${d.dc}" data-id="${x.id}" data-v="cut${k}" aria-pressed="${p.includes("cut"+k)}">− Cut${ONE?"":` from ${esc(d.label)}`}</button></div></section>`; }
 function select(id, scroll, col){ SEL=id; if(col!=null) ACTIVECOL=col;
   if(view==="compare"){ VISIBLE=COLIDS[ACTIVECOL]||[]; paintCompareRows(); }
   document.querySelectorAll(".row.sel").forEach(r=>{r.classList.remove("sel"); r.querySelector(".main").setAttribute("aria-current","false");});
@@ -788,7 +834,7 @@ function listsHTML(){ return `<div class="lists">`+DK.map(k=>{ const d=DECKS[k];
     return `<tr class="${p.includes("cut"+k)?"cutrow":""}"><td>${c.prot?"—":(c.r??"–")}</td><td>${have?`<button type="button" class="linkish" data-zoom="${id}">${esc(c.n)}</button>`:esc(c.n)}</td><td>${c.mv??""}</td><td>${esc((c.roles||[]).join(", "))}</td>
     <td class="marks">${cutBtn}${protBtn}${adds.length?` <span class="status">replaced by ${esc(adds.join(", "))}</span>`:""}</td></tr>`; }).join("")}
   </tbody></table></div></section>`; }).join("")+`</div>`; }
-function pileHashOf(id){ const c=BYID[id], p=c&&PILES.find(x=>x.k===c.p); return p?p.hash:"lists"; }
+function pileHashOf(id){ const c=BYID[id], p=c&&PILES.find(x=>x.k===c.p); return p?p.hash:ONE&&c&&c.p?"compare":"lists"; }
 const ownIds = () => Object.keys(picks).filter(id=>picks[id].own!=null&&picks[id].own!==""&&BYID[id]).sort((a,b)=>nameOf(a).localeCompare(nameOf(b)));
 const hidPicks = role => Object.keys(picks).filter(id=>BYID[id]&&(picks[id].hid||[]).includes(role)&&!(BYID[id].hc||[]).includes(role)).sort();
 function picksHTML(){ const groups={}, done=[];
@@ -805,7 +851,7 @@ function picksHTML(){ const groups={}, done=[];
   <p><button type="button" class="btn" id="copy">Copy as text</button> <span class="status" id="copied" aria-live="polite"></span></p></div>`; }
 function copyText(){ const lines=[], has=(id,v)=>pending(id).includes(v)&&nameOf(id);
   const noted=Object.keys(picks).filter(id=>hasNote(id)&&nameOf(id)).sort(); if(noted.length){ lines.push("Notes:"); noted.forEach(id=>lines.push("  - "+nameOf(id)+" — "+picks[id].note)); }
-  PICKORDER.filter(v=>!["bench","out"].includes(kindOf(v))).forEach(v=>{ const ids=Object.keys(picks).filter(id=>has(id,v)); if(ids.length){ lines.push(PICKLAB[v]+":"); ids.sort().forEach(id=>lines.push("  - "+nameOf(id))); } });
+  PICKORDER.filter(v=>!["bench","out"].includes(kindOf(v))).forEach(v=>{ const ids=Object.keys(picks).filter(id=>has(id,v)); if(ids.length){ lines.push(FULLLAB[v]+":"); ids.sort().forEach(id=>lines.push("  - "+nameOf(id))); } });
   const owns=ownIds(); if(owns.length){ lines.push("Ownership (I own exactly — /ingest it with reconcile_crafts --set-exact):"); owns.forEach(id=>{ const c=BYID[id]; lines.push(`  ${picks[id].own} ${c.n}${c.pr?` (${c.pr.split(" ")[0]}) ${c.pr.split(" ").slice(1).join(" ")}`:""}`); }); }
   HROLES.forEach(r=>{ const ids=hidPicks(r); if(ids.length){ lines.push(`Counts as ${r}:`); ids.forEach(id=>lines.push("  - "+nameOf(id))); } });
   lines.push(""); DK.forEach(k=>{ const d=DECKS[k], pairs=[], loose=[];
@@ -859,10 +905,13 @@ function renderDecks(){ const compact=narrow();
       <summary><span class="portrait"><img src="${esc(imgSrc(d.portrait,"s"))}" alt="" loading="lazy"></span><h2>${esc(d.full)}</h2>
       <span class="sumline">${esc(d.label)} · floor ${esc(pr.f1)} · int ${pr.i1} · ca ${pr.c1}${(a||c)?` · +${a}/−${c}`:""}${nc?` · ${nc} need a cut`:""}</span></summary>
       <div class="dmeta">Deck ${esc(d.id)} · commander ${esc(d.cmd)} · ${d.size} cards · read from the deck file ${esc(META.refreshed||"")}</div>
-      <div class="kv"><span>Floor <b>${delta(pr.f0,pr.f1)}</b></span><span>Interaction <b>${delta(pr.i0,pr.i1)}</b>${hidI}</span><span>Card adv. <b>${delta(pr.c0,pr.c1)}</b>${hidC}</span><span>Sources <b>${esc(L.sources)}</b></span><span>Tapped-land cost <b>${esc(L.tapped)}</b></span><span>Avg MV <b>${delta(pr.mv0,pr.mv1)}</b></span><span>Crafts <b>${delta(pr.cr0,pr.cr1)}</b></span><span>Your marks <b>+${a} / −${c}</b></span>${nc?`<span style="color:var(--warn)"><b style="color:var(--warn)">${nc}</b> need${nc>1?"":"s"} a cut</span>`:""}${nconf?`<span style="color:var(--warn)">⚠ <b style="color:var(--warn)">${nconf}</b> conflict${nconf>1?"s":""}</span>`:""}</div>
-      <details class="protlist"><summary>Protected cards (${(L.protect||[]).length})</summary><p>${(L.protect||[]).map(esc).join(" · ")}</p></details></details>`; }).join(""); }
+      ${ONE?`<div class="onegrid"><div class="onestat">`:""}<div class="kv"><span>Floor <b>${delta(pr.f0,pr.f1)}</b></span><span>Interaction <b>${delta(pr.i0,pr.i1)}</b>${hidI}</span><span>Card adv. <b>${delta(pr.c0,pr.c1)}</b>${hidC}</span><span>Sources <b>${esc(L.sources)}</b></span><span>Tapped-land cost <b>${esc(L.tapped)}</b></span><span>Avg MV <b>${delta(pr.mv0,pr.mv1)}</b></span><span>Crafts <b>${delta(pr.cr0,pr.cr1)}</b></span><span>Your marks <b>+${a} / −${c}</b></span>${nc?`<span style="color:var(--warn)"><b style="color:var(--warn)">${nc}</b> need${nc>1?"":"s"} a cut</span>`:""}${nconf?`<span style="color:var(--warn)">⚠ <b style="color:var(--warn)">${nconf}</b> conflict${nconf>1?"s":""}</span>`:""}</div>
+      ${ONE?nextBandHTML(k,pr.i1,pr.c1):""}
+      <details class="protlist"><summary>Protected cards (${(L.protect||[]).length})</summary><p>${(L.protect||[]).map(esc).join(" · ")}</p></details>${ONE?`</div>${curveHTML(k)}</div>`:""}</details>`; }).join(""); }
 function renderTabs(){ document.getElementById("tabs").innerHTML=PILES.map(p=>`<button class="tab ${p.tone?"pile":""}" role="tab" type="button" data-k="${esc(p.k)}" id="tab-${p.hash}" aria-selected="false" style="--tc:${p.tone||"var(--ink)"}">${esc(p.label)}<span class="n"></span></button>`).join(""); }
-function updateTabCounts(){ PILES.forEach(p=>{ const t=document.querySelector(`.tab[data-k="${p.k}"]`), el=t&&t.querySelector(".n"); if(!el) return;
+function updateTabCounts(){
+  if(ONE){ const sel=document.getElementById("cmppile"); if(sel) [...sel.options].forEach(o=>{ const p=PILEDEFS.find(x=>x.k===o.value); if(p) o.textContent=pileOptLabel(p); }); }
+  PILES.forEach(p=>{ const t=document.querySelector(`.tab[data-k="${p.k}"]`), el=t&&t.querySelector(".n"); if(!el) return;
   if(p.k==="lists"||p.k==="compare"){ el.textContent=""; return; }
   if(p.k==="add"){ const n=Object.values(requests).filter(r=>r.status!=="done").length; el.textContent=n||""; return; }
   if(p.k==="picks"){ el.textContent=Object.keys(picks).filter(id=>((picks[id].picks||[]).length||(picks[id].note||"").trim())&&nameOf(id)).length||""; return; }
@@ -872,8 +921,13 @@ function updateTabCounts(){ PILES.forEach(p=>{ const t=document.querySelector(`.
 /* ---------- main render ---------- */
 /* An applied card folds away: every deck pick it carries has landed and it is not selected. */
 const hideApplied = c => document.getElementById("hideapplied").checked && hasApplied(c.id) && !pending(c.id).some(v=>deckOfPick(v)) && c.id!==SEL;
-function cmpLists(){ const k=CMP.deck, d=DECKS[k], q=CMP.q.trim().toLowerCase();
-  const pileOk = c => CMP.pile==="all" ? true : CMP.pile==="need" ? needsCut(c.id,k) : c.p===CMP.pile;
+const cmpPileOk = (c,k) => CMP.pile==="all" ? true : CMP.pile==="need" ? needsCut(c.id,k) : c.p===CMP.pile;
+function cmpLists(){ const k=CMP.deck, d=DECKS[k];
+  if(ONE){ const q=toolbarQ(), all=toolbarFilter(CARDS.filter(c=>c.p&&cmpPileOk(c,k)&&!c["i"+k]));
+    const secs=verdictSections(all,k), grouped=secs.length>1, L=grouped?secs.flatMap(s=>VCOLL.has(s.m)?[]:s.cards):all;
+    const R=[...d.list.filter(x=>!x.prot),...d.list.filter(x=>x.prot)].map(x=>BYID[slug(x.n)]).filter(c=>c&&textHit(c,q));
+    COLIDS={L:L.map(c=>c.id),R:R.map(c=>c.id)}; return {L,R,all,secs:grouped?secs:null}; }
+  const q=CMP.q.trim().toLowerCase(), pileOk = c => cmpPileOk(c,k);
   const L=CARDS.filter(c=>c.p&&pileOk(c)&&!c["i"+k]&&!hideApplied(c)&&(!q||c.n.toLowerCase().includes(q)||(c.x||"").toLowerCase().includes(q)||(c.t||"").toLowerCase().includes(q)))
     .sort((a,b)=>gk(a).localeCompare(gk(b))||a.n.localeCompare(b.n));
   const R=[...d.list.filter(x=>!x.prot),...d.list.filter(x=>x.prot)].map(x=>BYID[slug(x.n)]).filter(Boolean)
@@ -887,30 +941,44 @@ function packageHTML(k){ const {paired,unpaired,cutsOnly}=packageOf(k), d=DECKS[
     ${unpaired.map(id=>`<li>+ ${addB(id)} <span class="tag need">needs a cut</span></li>`).join("")}
     ${cutsOnly.map(id=>`<li>− ${cutB(nameOf(id))} <span class="status">no add chosen</span></li>`).join("")}</ul></details>`; }
 function cmpSummaryHTML(k){ const pr=project(k), d=DECKS[k], delta=(x,y)=>x===y?`${x}`:`${x} → <span class="chg">${y}</span>`;
+  if(ONE) return `${packageHTML(k)}${confHTML(k)}`;           // the deck panel above carries the curve and the figures
   return `${packageHTML(k)}${curveHTML(k)}<p class="kv" style="margin:6px 0 0"><span>Floor <b>${delta(pr.f0,pr.f1)}</b></span><span>Interaction <b>${delta(pr.i0,pr.i1)}</b></span><span>Card adv. <b>${delta(pr.c0,pr.c1)}</b></span><span>Size <b>${delta(pr.size0,pr.size1)}</b></span></p>${nextBandHTML(k,pr.i1,pr.c1)}${confHTML(k)}`; }
+/* On a one-deck build the piles have no tabs, so the Pile menu carries each pile's progress. */
+function pileDone(pk){ const xs=CARDS.filter(c=>c.p===pk); return [xs.filter(decidedInPile).length, xs.length]; }
+function pileOptLabel(p){ if(!ONE) return p.label; const [dn,n]=pileDone(p.k); return `${p.label} · ${dn}/${n} decided`; }
+function pileSelHTML(){ const d=DECKS[CMP.deck];
+  return `<label for="cmppile"${ONE?' class="keep"':""}>Pile<select id="cmppile"><option value="all">All piles</option><option value="need" ${CMP.pile==="need"?"selected":""}>My adds${ONE?"":` for ${esc(d.label)}`} with no cut yet</option>${PILEDEFS.map(p=>`<option value="${esc(p.k)}" ${CMP.pile===p.k?"selected":""}>${esc(pileOptLabel(p))}</option>`).join("")}</select></label>`; }
 function compareHTML(){ const k=CMP.deck, d=DECKS[k];
-  return `<div class="cmphead"><label for="cmppile">Pile<select id="cmppile"><option value="all">All piles</option><option value="need" ${CMP.pile==="need"?"selected":""}>My adds for ${esc(d.label)} with no cut yet</option>${PILEDEFS.map(p=>`<option value="${esc(p.k)}" ${CMP.pile===p.k?"selected":""}>${esc(p.label)}</option>`).join("")}</select></label>
-    <label for="cmpdeck">Deck<select id="cmpdeck">${DK.map(x=>`<option value="${esc(x)}" ${x===k?"selected":""}>${esc(DECKS[x].label)} (${esc(DECKS[x].full)})</option>`).join("")}</select></label>
-    <label for="cmpq">Search both<input type="search" id="cmpq" value="${esc(CMP.q)}" placeholder="Name, type or rules text"></label>
+  return `<div class="cmphead">${ONE?"":pileSelHTML()}
+    ${ONE?"":`<label for="cmpdeck">Deck<select id="cmpdeck">${DK.map(x=>`<option value="${esc(x)}" ${x===k?"selected":""}>${esc(DECKS[x].label)} (${esc(DECKS[x].full)})</option>`).join("")}</select></label>
+    <label for="cmpq">Search both<input type="search" id="cmpq" value="${esc(CMP.q)}" placeholder="Name, type or rules text"></label>`}
     <span class="seg" role="group" aria-label="Show which list"><button type="button" data-side="L" aria-pressed="${CMP.side==="L"}">Pile</button><button type="button" data-side="R" aria-pressed="${CMP.side==="R"}">Deck</button></span></div>
   <div class="cmpcols" id="cmpcols" data-side="${CMP.side}">
     <section class="cmpcol" data-side="L" aria-label="Pile cards not in ${esc(d.label)}"><h3 id="cmph-L"></h3><div class="rows" id="cmprows-L" role="list" aria-labelledby="cmph-L"></div></section>
     <section class="cmpcol" data-side="R" style="--dc:${d.dc}" aria-label="${esc(d.label)}'s current list"><h3 id="cmph-R"></h3><div id="cmpsum"></div><div class="rows" id="cmprows-R" role="list" aria-labelledby="cmph-R"></div></section></div>`; }
-function paintCompareRows(){ if(view!=="compare") return; const {L,R}=cmpLists(), k=CMP.deck, d=DECKS[k], had=document.activeElement&&document.activeElement.closest&&document.activeElement.closest(".cmpcol .rw");
+function vsecHTML(s){ const open=!VCOLL.has(s.m), lab=s.m===VNONE?"No verdict yet":`${s.m} ${VLAB[s.m]||""}`;
+  return `<div class="vsec" role="listitem"><button type="button" class="vsechd" data-vsec="${esc(s.m)}" aria-expanded="${open}"><span class="caret" aria-hidden="true">${open?"▾":"▸"}</span>${esc(lab)}<span class="n">${s.cards.length}</span></button></div>${open?s.cards.map(c=>rowHTML(c,"L")).join(""):""}`; }
+function paintCompareRows(){ if(view!=="compare") return; const {L,R,all,secs}=cmpLists(), k=CMP.deck, d=DECKS[k], had=document.activeElement&&document.activeElement.closest&&document.activeElement.closest(".cmpcol .rw");
   const hl=document.getElementById("cmph-L"), hr=document.getElementById("cmph-R"); if(!hl) return;
-  hl.textContent=`${CMP.pile==="all"?"All piles":CMP.pile==="need"?"Adds with no cut yet":(PILEDEFS.find(p=>p.k===CMP.pile)||{}).label} · ${L.length} not in ${d.label}`;
+  hl.textContent=`${CMP.pile==="all"?"All piles":CMP.pile==="need"?"Adds with no cut yet":(PILEDEFS.find(p=>p.k===CMP.pile)||{}).label} · ${(all||L).length} not in ${d.label}`;
   hr.textContent=`${d.label} · ${d.list.length} nonland cards, weakest fit first`;
   [["L",L],["R",R]].forEach(([col,xs])=>{ const el=document.getElementById("cmprows-"+col), st=el.scrollTop;
-    el.innerHTML=xs.length?xs.map(c=>rowHTML(c,col)).join(""):`<p class="empty">No cards match.</p>`; el.scrollTop=st; });
+    el.innerHTML = col==="L"&&secs ? secs.map(vsecHTML).join("") : xs.length?xs.map(c=>rowHTML(c,col)).join(""):`<p class="empty">No cards match.</p>`; el.scrollTop=st; });
   document.getElementById("cmpsum").innerHTML=cmpSummaryHTML(k);
+  if(ONE){ const pool=CARDS.filter(c=>c.p&&cmpPileOk(c,k)&&!c["i"+k]), dn=pool.filter(decidedInPile).length;
+    const hid=(all||L).length-L.length; document.getElementById("count").textContent=`${L.length} shown${hid?` (+${hid} collapsed)`:""} · ${dn}/${pool.length} decided`; }
   const fid=ACTIVECOL==="R"&&INSPECT?INSPECT:SEL; if(had&&fid){ const m=mainEl(fid,ACTIVECOL); if(m) m.focus({preventScroll:true}); } }
 function refreshView(id){ if(isPileView(view)) refreshRow(id); else if(view==="compare"){ paintCompareRows(); updateTabCounts(); renderDetail(); renderDecks(); } else { render(); renderDecks(); } }
-function filtered(){ const q=document.getElementById("q").value.trim().toLowerCase(), mem=document.getElementById("mem").value, sort=document.getElementById("sort").value;
-  let xs=CARDS.filter(c=>c.p===view);
+function filtered(){ return toolbarFilter(CARDS.filter(c=>c.p===view)); }
+/* The toolbar's filters and sort over a set of board cards: a pile view's pile, or on a one-deck
+   build the Compare view's candidate column. The Reason menu lists the reasons present in it. */
+const toolbarQ = () => document.getElementById("q").value.trim().toLowerCase();
+const textHit = (c,q) => !q || c.n.toLowerCase().includes(q) || (c.x||"").toLowerCase().includes(q) || (c.t||"").toLowerCase().includes(q);
+function toolbarFilter(xs){ const q=toolbarQ(), mem=document.getElementById("mem").value, sort=document.getElementById("sort").value;
   const grpSel=document.getElementById("grp"), present=[...new Set(xs.map(c=>(reasonOf(c)||{}).g).filter(Boolean))].sort(), cur=grpSel.value;
   grpSel.innerHTML=`<option value="all">Any</option>`+present.map(g=>`<option value="${esc(g)}">${esc(groupLabel(g))}</option>`).join(""); grpSel.value=present.includes(cur)?cur:"all";
   const role=document.getElementById("role").value, mvf=document.getElementById("mvf").value, ownf=document.getElementById("ownf").value, rar=document.getElementById("rar").value;
-  xs=xs.filter(c=>{ if(q&&!(c.n.toLowerCase().includes(q)||(c.x||"").toLowerCase().includes(q)||(c.t||"").toLowerCase().includes(q))) return false;
+  xs=xs.filter(c=>{ if(!textHit(c,q)) return false;
     if(mem==="neither"&&inAny(c)) return false; if(mem==="every"&&!DK.every(k=>c["i"+k])) return false; if(DECKS[mem]&&!c["i"+mem]) return false;
     if(grpSel.value!=="all"&&(reasonOf(c)||{}).g!==grpSel.value) return false;
     if(!vfMatch(c,document.getElementById("vf").value)) return false;
@@ -927,10 +995,10 @@ function render(){
   const pile=PILES.find(p=>p.k===view); document.getElementById("intro").textContent=pile.intro;
   document.querySelectorAll(".tab").forEach(t=>t.setAttribute("aria-selected",t.dataset.k===view)); updateTabCounts();
   const isPile=isPileView(view), isCmp=view==="compare", con=document.getElementById("console"), rows=document.getElementById("rows");
-  document.getElementById("toolbar").classList.toggle("hidden",!isPile); document.getElementById("filtbtn").classList.toggle("hidden",!isPile);
+  const tb=isPile||(ONE&&isCmp); document.getElementById("toolbar").classList.toggle("hidden",!tb); document.getElementById("filtbtn").classList.toggle("hidden",!tb);
   con.classList.toggle("full",!(isPile||isCmp)); document.getElementById("detail").classList.toggle("hidden",!(isPile||isCmp)); hidePeek();
   rows.className = isPile ? "rows" : ""; rows.setAttribute("role", isPile?"list":"region"); if(!isPile) rows.removeAttribute("aria-label"); else rows.setAttribute("aria-label","Cards");
-  if(isCmp){ document.getElementById("count").textContent=""; rows.innerHTML=compareHTML(); if(!ACTIVECOL) ACTIVECOL="L"; paintCompareRows();
+  if(isCmp){ document.getElementById("count").textContent=""; rows.innerHTML=compareHTML(); if(ONE){ paintBulk(); document.getElementById("cmppile").value=CMP.pile; } if(!ACTIVECOL) ACTIVECOL="L"; paintCompareRows();
     let again=false; if(!COLIDS.L.includes(SEL)&&COLIDS.L.length){ SEL=COLIDS.L[0]; again=true; }
     if(INSPECT&&!COLIDS.R.includes(INSPECT)){ INSPECT=null; again=true; } if(ACTIVECOL==="R"&&!INSPECT) ACTIVECOL="L"; if(again) paintCompareRows();
     VISIBLE=COLIDS[ACTIVECOL]||[]; renderDetail(); return; }
@@ -942,7 +1010,9 @@ function render(){
   renderDetail(); }
 function refreshRow(id){ rerow(id); updateTabCounts(); renderDetail(); renderDecks(); }
 function setView(k,push){ view=k; if(push){ const h=PILES.find(p=>p.k===k).hash; if(location.hash!=="#"+h) history.replaceState(null,"","#"+h); } render(); }
-function fromHash(){ const p=PILES.find(p=>"#"+p.hash===location.hash); setView(p?p.k:PILES[0].k,false); }
+function fromHash(){ const p=PILES.find(p=>"#"+p.hash===location.hash);
+  if(!p&&ONE){ const pd=PILEDEFS.find(x=>"#"+x.hash===location.hash); if(pd) CMP.pile=pd.k; }
+  setView(p?p.k:PILES[0].k,false); }
 
 /* ---------- zoom, compare, sheet ---------- */
 let ZLIST=[], ZI=0;
@@ -962,7 +1032,7 @@ function paintBulk(){ const sel=document.getElementById("bulkv"); if(!sel) retur
   const ks=pile&&pile.deck&&DECKS[pile.deck]?[pile.deck]:DK;
   sel.innerHTML=ks.flatMap(k=>["bench","out"].map(x=>`<option value="${x+k}">${esc(PICKLAB[x+k])}</option>`)).join("");
   if([...sel.options].some(o=>o.value===cur)) sel.value=cur; document.getElementById("bulkask").innerHTML=""; }
-const bulkTargets = v => { const k=deckOfPick(v); return VISIBLE.filter(id=>{ const c=BYID[id]; return c&&!c["i"+k]&&!decided(c,k); }); };
+const bulkTargets = v => { const k=deckOfPick(v); return (view==="compare"?COLIDS.L:VISIBLE).filter(id=>{ const c=BYID[id]; return c&&!c["i"+k]&&!decided(c,k); }); };
 function askBulk(){ const v=document.getElementById("bulkv").value, ids=bulkTargets(v), box=document.getElementById("bulkask");
   if(!ids.length){ box.textContent=`No shown card is undecided for ${DECKS[deckOfPick(v)].label}.`; return; }
   box.innerHTML=`<span>${esc(PICKLAB[v])} for ${ids.length} card${ids.length>1?"s":""}?</span><button type="button" class="pb" id="bulkyes">Yes, mark ${ids.length}</button><button type="button" class="ghost" id="bulkno">Cancel</button>`;
@@ -1028,7 +1098,9 @@ document.addEventListener("click",e=>{
   const cs=e.target.closest("[data-cutset]"); if(cs){ const [id,k]=cs.dataset.cutset.split("|"), inSheet=!!cs.closest("#sheet"); if(cs.dataset.cut) CUTOPEN=null; setPair(id,k,cs.dataset.cut);
     const again=document.querySelector(`${inSheet?"#sheetbody":"#detail"} [data-cutopen="${id}|${k}"]`); if(again) again.focus(); return; }
   if(e.target.closest("[data-inspclose]")){ INSPECT=null; if(ACTIVECOL==="R") ACTIVECOL="L"; paintCompareRows(); renderDetail(); const m=mainEl(SEL,"L"); if(m) m.focus(); return; }
-  const pk=e.target.closest("[data-pkgsel]"); if(pk){ const id=pk.dataset.pkgsel; if(!COLIDS.L.includes(id)){ CMP.pile="all"; CMP.q=""; render(); } select(id,true,"L"); const m=mainEl(id,"L"); if(m) m.focus(); return; }
+  const vs=e.target.closest("[data-vsec]"); if(vs){ const m=vs.dataset.vsec; if(VCOLL.has(m)) VCOLL.delete(m); else VCOLL.add(m); savePrefs();
+    paintCompareRows(); if(ACTIVECOL!=="R") VISIBLE=COLIDS.L; const again=document.querySelector(`[data-vsec="${CSS.escape(m)}"]`); if(again) again.focus(); return; }
+  const pk=e.target.closest("[data-pkgsel]"); if(pk){ const id=pk.dataset.pkgsel; if(ONE) revealCand(id); if(!COLIDS.L.includes(id)){ CMP.pile="all"; CMP.q=""; render(); } select(id,true,"L"); const m=mainEl(id,"L"); if(m) m.focus(); return; }
   const pi=e.target.closest("[data-pkginsp]"); if(pi){ const id=pi.dataset.pkginsp; if(!COLIDS.R.includes(id)){ CMP.q=""; paintCompareRows(); } inspect(id,true); const m=mainEl(id,"R"); if(m) m.focus(); return; }
   const ab=e.target.closest("[data-art]"); if(ab){ openArt(ab.dataset.art, +ab.dataset.ai, ab); return; }
   if(e.target.id==="artclose"||e.target.id==="artzoom"){ const d=document.getElementById("artzoom"); d.close(); if(d._from&&document.contains(d._from)) d._from.focus(); return; }
@@ -1063,7 +1135,9 @@ document.addEventListener("click",e=>{
   if(e.target.id==="clearapplied"){ clearApplied(); return; }
   if(e.target.id==="addcopy"){ const txt=Object.values(requests).map(r=>`${r.dest}: ${r.names.join("; ")}${r.note?" — "+r.note:""}`).join("\n");
     (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(()=>setAddStatus("Copied."),()=>setAddStatus("Copy was blocked; select the list instead.")); return; }
-  const j=e.target.closest("[data-jump]"); if(j){ e.preventDefault(); const c=BYID[j.dataset.jump]; SEL=c.id; setView(c.p,true); select(c.id,true); return; }
+  const j=e.target.closest("[data-jump]"); if(j){ e.preventDefault(); const c=BYID[j.dataset.jump];
+    if(ONE){ CMP.pile="all"; revealCand(c.id); if(c["i"+K1]){ setView("compare",true); inspect(c.id,true); } else { SEL=c.id; ACTIVECOL="L"; setView("compare",true); select(c.id,true,"L"); } return; }
+    SEL=c.id; setView(c.p,true); select(c.id,true); return; }
   if(e.target.id==="copy"){ (navigator.clipboard?navigator.clipboard.writeText(copyText()):Promise.reject()).then(()=>document.getElementById("copied").textContent="Copied.",()=>document.getElementById("copied").textContent="Copy was blocked here; select the list above instead."); return; }
 });
 const noteTimer={};
@@ -1122,13 +1196,14 @@ document.addEventListener("keydown",e=>{
   else if(e.key==="b"&&SEL){ toggleScoped(SEL,"bench"); refreshView(SEL); }
   else if(e.key==="o"&&SEL){ toggleScoped(SEL,"out"); refreshView(SEL); }
   else if(e.key==="n"&&SEL){ e.preventDefault(); if(narrow()) openSheet(SEL); else setNoteOpen(SEL,true,col); }
-  else if(e.key==="/"){ e.preventDefault(); const q=document.getElementById(view==="compare"?"cmpq":"q"); if(q) q.focus(); }
+  else if(e.key==="/"){ e.preventDefault(); const q=document.getElementById(view==="compare"&&!ONE?"cmpq":"q"); if(q) q.focus(); }
   else if(e.key==="z"&&SEL){ openZoom(SEL,VISIBLE); }
   else if(e.key==="f"&&SEL){ flipCard(SEL); } });
 window.addEventListener("hashchange",fromHash);
 window.matchMedia("(max-width: 1000px)").addEventListener("change",()=>{ renderDecks(); hidePeek(); });
 if(window.matchMedia) window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",paintThemeBtn);
 
+if(ONE) document.querySelector('#toolbar > label[for="q"]').insertAdjacentHTML("afterend", pileSelHTML());
 paintThemeBtn(); paintUndo(); applyPane(); renderTabs(); picks=loadLocal(); requests=readJSON(LSR); renderDecks(); fromHash();
 
 (async()=>{ let api=null;

@@ -237,6 +237,10 @@ as a Builder project, so the owner can review it on a page instead of in chat.
 | 5 | `builder.py verdict <slug> <card> <deck> <mark>` / `--file` | a per-deck star (★★★ … ✗), stamped like a reason | <1s |
 | 6 | `deck.py flex <id> --add "+Card \| note" --apply` (from step 3's output, run by `/apply-changes`) | a benched card as a `#~` line in the deck file | <1s |
 
+A ONE-DECK build (the usual case) opens on Compare: the piles are a filter, the candidates
+are grouped by verdict with ✗ collapsed, and the deck panel shows the live curve. A two-deck
+build keeps the pile tabs.
+
 **Reconciliation points**
 
 - ⚖ **A pick is a request, never an edit.** The page cannot write deck files; step 3 turns
