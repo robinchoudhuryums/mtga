@@ -162,6 +162,9 @@ def current_hashes(build):
 
 
 # ---------------------------------------------------------------- mutations
+SHARED_PILE_KEYS = ("B", "N")         # the "more than one deck" and "no deck" piles
+
+
 def shared_pile_labels(n):
     """The default labels of the two deck-less piles for a build of `n` decks: (the "fits more
     than one deck" pile, or None when there is only one deck; the "fits no deck" pile)."""
@@ -175,7 +178,14 @@ def new_build(slug, deck_ids, keys=None, title=None):
         raise BuildError(f"build {slug!r} already exists")
     if not deck_ids:
         raise BuildError("a build needs at least one deck")
-    decks, used = [], set()
+    # A deck's key is also its pile's key, so it must not be one of the deck-less piles'
+    # keys: a Bruvac or Nashi deck used to get "B" / "N" and share a key with the shared or
+    # the no-fit pile. A derived key steps aside (B → B1); an explicit one is refused.
+    reserved = set(SHARED_PILE_KEYS)
+    bad = [x for x in (keys or []) if x in reserved]
+    if bad:
+        raise BuildError(f"deck key(s) {', '.join(bad)} are the shared piles' keys — pick others")
+    decks, used = [], set(reserved)
     for i, did in enumerate(deck_ids):
         d = deck_ref(did)
         meta, _ = _deck().parse_deck_file(d["path"])
@@ -207,7 +217,7 @@ def add_deck(build, did, key=None, label=None):
         raise BuildError(f"deck {did!r} is already in this build")
     meta, _ = _deck().parse_deck_file(d["path"])
     label = label or (meta.get("commander") or d.get("name") or did).split(",")[0].split(" ")[0]
-    used = set(_deck_keys(build)) | set(_pile_keys(build))
+    used = set(_deck_keys(build)) | set(_pile_keys(build)) | set(SHARED_PILE_KEYS)  # B/N even before they exist
     k = key or label[:1].upper() or "D"
     if k in used:
         if key:

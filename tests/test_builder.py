@@ -563,3 +563,24 @@ class TestDeckCount:
         assert [p["label"] for p in data["meta"]["piles"]][n:] == \
             ([B.shared_pile_labels(n)[0]] if n > 1 else []) + [B.shared_pile_labels(n)[1]]
         assert any(c["n"] == "Murder" for c in data["cards"])
+
+
+class TestSharedPileKeys:
+    """A deck key is its pile's key, so it can never be a shared pile's key: a Bruvac deck used to
+    get "B" and collide with the "Either deck" pile."""
+
+    def test_derived_key_steps_aside_and_explicit_one_is_refused(self, scratch, monkeypatch):
+        deck_path, tmp = scratch
+        monkeypatch.setattr(B, "deck_ref", lambda ref: {"id": ref, "path": deck_path, "name": ref})
+        monkeypatch.setattr(B._deck(), "parse_deck_file",
+                            lambda path: ({"commander": "Bruvac the Grandiloquent"}, []))
+        b = B.new_build("bb", ["d1", "d2"])
+        keys = [p["key"] for p in b["piles"]]
+        assert len(keys) == len(set(keys)) and b["decks"][0]["key"] != "B"
+        with pytest.raises(B.BuildError, match="shared piles' keys"):
+            B.new_build("bb2", ["d1", "d2"], keys=["B", "G"])
+        one = B.new_build("bb3", ["d1"])
+        with pytest.raises(B.BuildError, match="already used"):
+            B.add_deck(one, "d2", key="B")                  # reserved even before the pile exists
+        k = B.add_deck(one, "d2")
+        assert k not in ("B", "N") and "B" in [p["key"] for p in one["piles"]]
