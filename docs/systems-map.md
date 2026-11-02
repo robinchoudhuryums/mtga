@@ -185,10 +185,11 @@ from a file Arena overwrites on every launch.
 | # | Command | Returns | Cost |
 |---|---|---|---|
 | 0 | launchd `snapshot.sh` (one-time) | a rolling `~/mtga-logs/arena.log` | 15-min timer |
-| 0b | `extract.sh` (one-time, with the snapshot) | one `[MTGA-GAME]` line per game: play/draw, mulligans, turns, opponent cards | in the timer |
+| 0b | `extract.sh` (one-time, with the snapshot; re-install after 2026-11-02) | one `[MTGA-GAME]` line per game: play/draw, mulligans, turns, opponent cards, lands in play per turn, lands/cards seen | in the timer |
 | 1 | `parse_matches.py <file>` | dry run + the deck-attribution routes + game details | <1s |
 | 2 | `parse_matches.py <file> --apply` | matches.csv rows + refreshed `#: arena:` headers + one `--annotate` line per new loss | <1s |
 | 2b | `parse_matches.py <file> --annotate --apply` | the owner's loss reason / archetype per match, or `void=<why>` to throw one out | <1s |
+| 2c | `parse_matches.py --review` / `--accept [id…] --apply` | unconfirmed losses with their `Suggested Why` (keep / screw / flood) and per-rule agreement; accept writes the confirmed word through `--annotate` | <1s |
 | 3 | `parse_matches.py --report` | W/L per deck, or a refusal to read it | <1s |
 | 3b | `parse_matches.py --report --deck <id>` | one deck's matches with play/draw, turns, opponent colours and cards | <1s |
 | — | `parse_matches.py <file> --map-decks` | roster-wide header pass (rarely needed now) | <1s |

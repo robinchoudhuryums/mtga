@@ -1381,23 +1381,24 @@ is protecting.
   not stripped from a variant (BS11-37/38). [G-73]
 
 - **THE RESULT LINES CANNOT SEE WHAT YOU FACED OR WHY YOU LOST; THE PLAY-BY-PLAY SEES MOST
-  OF IT; a PHONE GAME never reaches the desktop log at all** (`Player.log` is written by
-  the install that played the match). This rule said "the log cannot see" for a month —
-  true of the three line shapes being grepped, not of the log. Since 2026-09-27
+  OF IT; a PHONE GAME never reaches the desktop log at all.** Since 2026-09-27
   `scripts/mtga_extract.sh` (the Mac's `~/mtga-logs/extract.sh`, embedded VERBATIM in
-  `/log-matches` and pinned by a test) reduces each game's game-state stream — 1.0–2.4 MB
-  per match — to one `[MTGA-GAME]` line, and the parser fills On Play (BLANK cells only; a
+  `/log-matches` and pinned by a test) reduces each game's game-state stream to one
+  `[MTGA-GAME]` line, and the parser fills On Play (BLANK cells only; a
   typed value wins and a disagreement is reported), mulligans, Turns (Arena counts BOTH
-  players' turns), opponent colours and cards, named through Scryfall's Arena-id lookup
-  and cached in `arena-cards.csv`. Opponent ARCHETYPE and why you lost stay hand-only —
+  players' turns), opponent colours and cards (names cached in `arena-cards.csv`).
+  Opponent ARCHETYPE and why you lost stay hand-only —
   so `--apply` prints a ready `--annotate` line per new loss and `/log-matches` Stage 1d
-  asks for the word; never fill one in yourself. The paste is anonymised (`ME`/`OPP`). A match to throw out is `void=<why>`, never a deleted row — the next paste re-adds it.
+  asks for the word; never fill one in yourself. **`Suggested Why` (2026-11-02)** is a
+  guess from three rules registered before any data (keep / screw / flood, the last two
+  from per-turn land counts); only `--accept` after the owner confirms moves it into Loss
+  Reason, and `--review` rates each rule from 20 confirmed losses. The paste is anonymised (`ME`/`OPP`). A match to throw out is `void=<why>`, never a deleted row — the next paste re-adds it.
   **Which writer depends on whether Arena logged the match**: `--add` for one it never
   saw; **`--annotate` (`<matchId> …`) for one it DID** — it UPDATES, where `--add` would
   append a SECOND row, since a hand row has no matchId to dedupe on. The **loss vocabulary
   is CLOSED so it can be COUNTED** (`flood screw slow answer removed keep misplay
   outclassed`). Validation is asymmetric: an unknown DECK or matchId is REFUSED, an
-  unknown `why` is warned about and RECORDED. The dashboard's **"Log a match"** panel does
+  unknown `why` is warned and RECORDED. The dashboard's **"Log a match"** panel does
   both from a phone — it is STATIC, queues in `localStorage` and hands back lines, and
   emits only the id, so a misparse there cannot corrupt a stored W/L. [G-74]
 
@@ -1888,7 +1889,9 @@ format.
    match whose play-by-play was captured also gets a `Game details` line — check its
    play/draw against what you remember, since an inverted seat read would flip every row
    the same way (first real paste, 9 games, confirmed correct by the owner 2026-09-27;
-   still unchecked on a best-of-three). Full steps + the launchd archive setup:
+   still unchecked on a best-of-three). A loss with game details carries a `Suggested
+   Why`; the first one after re-installing the 2026-11-02 extractor is the first real
+   check of its land counts, so compare it with what you remember. Full steps + the launchd archive setup:
    `.claude/commands/log-matches.md`. [C-12]
 10. Log-a-match panel — selected state and focus ring | Subsystem: Presentation & Interface
     Steps: open `dashboard.html`, expand "Log a match" (starts collapsed); click W, L, D

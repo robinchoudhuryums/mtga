@@ -7652,6 +7652,43 @@ header back to that copy. Attribution is unaffected, because every copy resolves
 
 **2026-10-02 (BS11-32/35/36) — the void round-trip.** `void=no` restored a result GUESSED from the game score (W if more game wins, else L), which inverts a match conceded in game one of a best-of-three and cannot read a blank score at all; it also silently accepted `void=no` on a row that was never voided. The void now writes the result it replaces into the note (`void (was L): <why>`), restores exactly that, keeps the ORIGINAL on a re-void, and refuses — with a warning, the row's other fields still applied — a never-voided row or a legacy `void: ` note whose score is tied. Voided rows also left three tallies: `--report` created the per-deck bucket before skipping them (a voided-only deck read 0-0-0), the loss-reason tally counted a voided loss's `why=`, and `deck.swap_outcomes` counted it as a game, so deck 17's `feedback` read 3 games against `audit`'s 2 — the one instance live in the record. The post-ingest prompt had said a blank value "records nothing"; the tested contract is that it CLEARS, and the prompt and `/log-matches` say so now.
 
+
+**2026-11-02 (tooling Batch D) — suggested loss reasons, and the extractor counts lands.**
+Match-digest decision 2 asked for a `Suggested Why` column that reaches `Loss Reason` only
+when the owner confirms it. Its three rules were registered on 2026-09-25, before any
+data, and ship as registered:
+- `keep`: mulliganed to 5 or fewer;
+- `screw`: 2 or fewer lands in play at the end of my 4th turn;
+- `flood`: lands were at least 60% of the cards I saw, over 7 or more of my turns.
+
+**The plan assumed facts the game line did not carry.** `cards` keeps one entry per
+grpId, so four Islands read as one land, and nothing recorded a per-turn count. Only `keep`
+was computable, and on the 34 recorded losses with game facts no mulligans were recorded,
+so it would have suggested nothing. The owner chose to extend the extractor.
+`mtga_extract.sh` now tracks zone MEMBERSHIP: Arena re-sends every changed zone with its
+full `objectInstanceIds`, so the latest list per zone says who is in it. It writes
+`"lands"`, each seat's lands in play at the end of every turn, and `"seen"`, the lands
+and cards each seat had in hand, battlefield, graveyard and exile at game end. Two
+guards:
+- **A blank, never a zero, when no battlefield zone was read.** A zero would make every
+  loss read as `screw`, so a parse failure must show up as "not recorded".
+- **A game line from before the change reads `keep` only.** Its cell says which rules
+  were not readable, which is a different fact from "none fired".
+
+**Confirmation is the owner's.** `--accept` writes the suggested word through the
+`--annotate` writer (dry run, prefix ids, a `none` is never accepted). `--review` reports
+fired / agreed / named-but-silent per rule, with rates only from 20 confirmed losses. An
+acceptance counts as agreement, so accepting an unread suggestion flatters the rule it is
+meant to test; Stage 1d says so.
+
+**Unverified on real data at landing:**
+- the zone field names come from fixtures modelled on 17Lands' parser;
+- the Mac's BSD awk could not be run in the build container (mawk only, POSIX constructs
+  kept).
+
+The first paste after the owner re-installs `extract.sh` is the test. Check one suggestion
+against memory.
+
 ## [G-75] A tutor is worth the number of things it can find in THIS deck
 
 **The incident.** Deck 76 (Spirit Call, five-colour Dragons) ran **zero basic lands**

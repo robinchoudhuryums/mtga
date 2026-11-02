@@ -1705,7 +1705,20 @@ make log-match DECK=49 R=W APPLY=1                       # …and write it
 
 python3 scripts/parse_matches.py lines.txt --add --apply       # a whole session
 python3 scripts/parse_matches.py notes.txt --annotate --apply  # matches already logged
+python3 scripts/parse_matches.py --review                      # losses still without a reason
+python3 scripts/parse_matches.py --accept 1a2b3c4d --apply     # confirm a suggested reason
 ```
+
+**Suggested loss reasons.** A loss with game details gets a `Suggested Why` from three
+rules fixed before any data existed. `keep` fires when you mulliganed to 5 or fewer.
+`screw` fires when you had 2 or fewer lands in play at the end of your 4th turn. `flood`
+fires when lands were 60% or more of the cards you saw, over 7 or more of your turns. The
+suggestion never fills `Loss Reason` on its own. `--accept` (all suggestions, or the ids
+you name; dry run until `--apply`) confirms it through the `--annotate` writer, and a
+wrong one is corrected with `--annotate`. `--review` lists the unconfirmed losses and how
+often each rule has matched your own reason, and gives percentages only from 20 confirmed
+losses. `screw` and `flood` need the extractor from 2026-11-02, so re-install
+`extract.sh` from `/log-matches` Stage 0.
 
 `--add` takes `<deck> <W|L|D>` plus `opp= why= play= event= date= note=` and **appends**.
 `--annotate` takes `<matchId> opp= why= play= note=` and **updates in place**. Use the
