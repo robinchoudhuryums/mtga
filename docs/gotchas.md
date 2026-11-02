@@ -8964,3 +8964,12 @@ render, site, add-deck) and `tests/test_builder_template.py`, which runs the pag
 `project()`, `isApplied`, `conflicts` and `nextBand` under Node and compares the projection
 with `deck_quality_vector` on a scratch copy of a real deck after the same swap.
 
+**2026-11-02 — back faces.** The page showed only the FRONT of a transform or modal DFC.
+`image_urls` took `card_faces[0]`, which is all a row thumbnail needs, but a reader
+deciding on Rona or Tamiyo needs the other face. `back_image_urls` asks Scryfall only for
+names with " // " and caches each answer in the same `images.json` under `back:<name>`.
+A split, Adventure or Room card has one image showing both halves, so it is cached as ""
+and never asked again: of the Sultai build's 21 split-name cards, 14 have a separate
+back. The artifact target ships `img/lg/<id>--back.jpg` (14 more files, well inside the
+511 cap), and Pages hot-links the URL. The pane and the zoom view have a ⟲ Flip button
+and `f`. Row thumbnails, the hover peek and the sprite stay on the front.
