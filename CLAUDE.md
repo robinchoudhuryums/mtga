@@ -1165,7 +1165,8 @@ is protecting.
   dropped `Artifact // Land`). **The MV-cap gate reads YOUR creature CARDS since
   2026-10-06** — a bare "mana value N or less" read removal as a reanimation gate. Residual:
   a typed non-creature card gate ("permanent card with mana value N or less") is unbuilt.
-  [G-66]
+  **Third section since 2026-11-02, the LEGEND RULE**: copy effects that keep legendary
+  status vs the legendary share of what they copy (`⚠` at ≥67%, 8 of 37 decks). [G-66]
 
 - **A GATE THE DECK MEETS FOR FREE IS NOT A COST, AND EVERY MODEL HERE READ IT AS ONE.**
   G-66's `targets` counts CARDS IN THE LIST, so a card gated on a GAME STATE was invisible

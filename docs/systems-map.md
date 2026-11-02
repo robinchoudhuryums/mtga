@@ -102,7 +102,7 @@ The longest path, and the one that most needs a map.
 | `consistency` | keepable %, land drops, P(cast on curve); `--tempo` adds what tapped lands cost on curve (simulated) | 0.6s (`--tempo` ~2s) |
 | `engines` | enabler ↔ payoff balance | 0.5s |
 | `shape` | wide vs tall | 0.3s |
-| `targets` | does the deck hold what its gated cards need; state gates met for free | 0.5s |
+| `targets` | does the deck hold what its gated cards need; state gates met for free; copy effects against a legend-heavy list | 0.5s |
 | `parse_matches.py --report --deck` | what the deck has met and lost to — context only, never a reason for a swap | <1s |
 | `tier` / `tier --to A` | claimed letter vs floor / the measurable gap | 0.6s |
 | `mana` | hybrid-aware pip demand + source lint | 0.3s |

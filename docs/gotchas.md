@@ -6828,6 +6828,48 @@ way a swap does. Second, **when a pattern family has several members, diff them 
 each other** — the sibling that already handled `another` is the evidence the other two
 were incomplete, and it had been sitting three lines away for as long as they had.
 
+### The legend-rule section (2026-11-02, tooling Batch C)
+
+Deck 32 ran 17 legendary creatures of 24 against five copy effects that keep legendary
+status, and nothing said so. A copy of your own legend is a second permanent of that name,
+so the legend rule takes one of them. `targets` now prints a third section for this.
+`_copy_effect_kind` reads each copy clause through `_COPY_EFFECT_PATTERNS`, the same
+three templatings the `Payoff / engine` role uses (named and shared at this change, G-40).
+It sorts the clause into one of seven kinds:
+
+- keeps
+- strips (the copy isn't legendary, or takes another name)
+- nonlegendary-only
+- self-safe (Hall of Echoes)
+- card off the battlefield
+- token
+- opponent-only
+
+`legend_copy_conflicts` then counts, for each keeps row, the other cards of the copyable
+types in the list and how many are legendary.
+
+**The first roster run misread four cards, all now pinned by tests:**
+- Chameleon's "except **his** name is" was read as keeping the name. That false flag was deck 87's only one.
+- Mirrormind Crown's "tokens that are **copies** of" skipped the object.
+- Ghired and Rhys copy TOKENS, the second through the anaphor "for each creature token
+  you control … a copy of that creature". They were counted against deck cards.
+
+Two of the first ten flagged decks were false for these reasons, and the fix came before
+the threshold was set.
+
+**Calibration (134 deck files):** 37 decks run a keep-legendary copy effect (68 rows). The
+legendary share of the copyable pool runs p25 0.35 / p50 0.51 / p75 0.59. A threshold of
+0.67 flags 8 decks (22%): 12, 22-brawl, 38, 54, 71, 78-historic-brawl, 84 and 94. Deck 32
+itself now reads 55% after its tune and is not flagged.
+
+**Residuals:**
+- A card with two copy clauses is classified by its first. None on the roster today.
+- A clause naming only a creature type (Brigid's Command, a Kithkin) is counted against
+  every creature.
+
+The flag says the POOL is legend-heavy. It does not say the card is bad: Three Steps Ahead
+in 84/94 is a modal spell whose copy is one of three modes.
+
 ## [G-82] A tool that rejects the form the project itself writes down
 
 Two independent bugs found within an hour of each other on 2026-09-01, both the same
