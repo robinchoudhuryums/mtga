@@ -445,6 +445,8 @@ Updated: 2026-10-31 (deck-95 session tooling fixes — see Where I left off)
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
+**2026-11-02 (latest) — Builder one-deck items 1–4 done** (block `11-builder-one-deck-broad-implement.md`). A one-deck build opens on Compare, with the piles as a toolbar filter, a live curve in the deck panel, and no deck letters or per-deck filter options; two-deck pages unchanged. PR #215 (batches C/D/F/G + back faces) merged; the branch restarted from main. Suite + check_all green. **Next:** item 5 (group the pile by verdict), then /sync-docs (G-89, README, systems map §5c, scenario 25).
+
 **2026-11-02 (latest) — tooling Batch G done; all planned tooling batches (A–G) are complete** (block `11-batchG-fetch-taplands-convoke-broad-implement.md`). Fetches with no own mana read tapped; consistency marks unpriced discounts ◊; `unpriced_discount_cards` now reads keywords (31 decks' counts rose, G-85 figures re-measured). Suite + check_all green. Docs synced (G-35, G-85 + long forms, README). **Next:** a PR for Batches C/D/F/G + back faces, not opened yet.
 
 **2026-11-02 — tooling Batch F done** (block `11-batchF-target-gate-families-broad-implement.md`): `targets` reads mana-spent, type-presence and not-cast gates; type presence stays off `unmet_gate` (it doubled suggest's 'needs' rows with riders). Suite + check_all green. Docs synced (G-66 + long form, README). **Next:** Batch G.

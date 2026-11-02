@@ -400,6 +400,7 @@ const fs = require('fs');
 const input = JSON.parse(fs.readFileSync(process.argv[3], 'utf8'));
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
 const DK = input.keys, DECKS = Object.fromEntries(DK.map(k => [k, {label: "Glarb", dc: "var(--idU)"}]));
+const ONE = DK.length === 1, K1 = DK[0];
 const PILEDEFS = [{k:"P", deck: DK[0]}, {k:"B", deck: null}];
 const PICKLAB = {}; DK.forEach(k=>["add","cut","bench","out","prot","unprot"].forEach(x=>PICKLAB[x+k]=x+k));
 const ICON = {bench: "|", out: "o"};
@@ -467,3 +468,61 @@ class TestBackFaces:
                                  "https://x/large/front/o.jpg", False]
         assert out["local"] == ["img/lg/rona--back.jpg", "img/lg/opt.jpg", True, False]
         assert out["flipped"] is True
+
+
+_HARNESS_ONE = """
+const fs = require('fs');
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
+const DK = ["G"], DECKS = {G: {label: "Glarb", dc: "var(--idU)"}}, ONE = true, K1 = "G";
+const PILEDEFS = [{k:"G", deck: "G"}, {k:"N", deck: null}];
+const PICKLAB = {addG:"Add to the deck", cutG:"Cut from the deck", benchG:"Bench", outG:"Keep out"};
+const ICON = {bench: "|", out: "o"};
+let picks = {};
+eval(fs.readFileSync(process.argv[2], 'utf8'));
+const cand = quick({id:"a", n:"A", p:"N"}), inDeck = quick({id:"b", n:"B", p:"G", iG: 1});
+const words = h => [...h.matchAll(/<button[^>]*>(.*?)<\\/button>/g)].map(m => m[1].replace(/<[^>]+>/g, "").replace(/[|o](?=Bench|Keep)/, "").trim());
+console.log(JSON.stringify({cand: words(cand), inDeck: words(inDeck),
+  values: [...cand.matchAll(/data-v="([^"]+)"/g)].map(m => m[1]),
+  labels: [...cand.matchAll(/aria-label="([^"]+)"/g)].map(m => m[1])}));
+"""
+
+
+@pytest.mark.skipif(not _NODE, reason="node not installed (CI sets PYTEST_NO_SKIPS, so CI cannot skip)")
+class TestOneDeck:
+    def test_row_buttons_say_what_they_do_without_a_deck_letter(self, tmp_path):
+        """A one-deck build has nothing to tell apart, so a candidate reads + Add / Bench /
+        Keep out and a card in the list reads − Cut — while the values stay per deck, so the
+        picks, the copy and builder.py picks read exactly what a two-deck board writes."""
+        js = tmp_path / "fns.js"
+        js.write_text(_extract_consts(["KINDS", "deckOfPick", "kindOf", "pileScope"]) + "\n"
+                      + _extract(["pickColour", "quick"]))
+        h = tmp_path / "h.js"
+        h.write_text(_HARNESS_ONE)
+        out = json.loads(subprocess.run([_NODE, str(h), str(js)], capture_output=True,
+                                        text=True, check=True).stdout)
+        assert out["cand"] == ["+ Add", "Bench", "Keep out"]
+        assert out["inDeck"] == ["− Cut"]
+        assert out["values"] == ["addG", "benchG", "outG"]
+        assert out["labels"] == ["Add to the deck: A", "Bench: A", "Keep out: A"]
+
+
+class TestOneDeckMarkup:
+    """The one-deck switches the browser walk exercises, pinned where a refactor would drop them."""
+
+    def test_copy_as_text_keeps_the_deck_named_labels(self):
+        # PICKLAB is the shown label and leaves the deck out on one deck; the copied block is
+        # read back by `builder.py picks` and by a person, so it keeps FULLLAB.
+        fn = SRC[SRC.index("function copyText"):SRC.index("function copyText") + 900]
+        assert "FULLLAB[v]" in fn and "PICKLAB[v]" not in fn
+
+    def test_compare_is_home_and_the_piles_lose_their_tabs(self):
+        assert "const PILES = [...(ONE?[]:PILEDEFS), CMPTAB," in SRC
+
+    def test_an_old_pile_link_lands_on_compare_with_that_pile(self):
+        fn = SRC[SRC.index("function fromHash"):SRC.index("function fromHash") + 300]
+        assert "if(!p&&ONE)" in fn and "CMP.pile=pd.k" in fn
+
+    def test_the_curve_moves_to_the_deck_panel(self):
+        fn = SRC[SRC.index("function cmpSummaryHTML"):SRC.index("function cmpSummaryHTML") + 300]
+        assert "if(ONE) return `${packageHTML(k)}${confHTML(k)}`" in fn
+        assert "${ONE?`</div>${curveHTML(k)}</div>`" in SRC
