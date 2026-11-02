@@ -281,6 +281,9 @@ the ranking cannot see it.
    - write each card's `reason`, grading it exactly like a batch card;
    - an `add<KEY>` dest means the owner wants it IN that deck: propose the swap with a cut,
      never apply it from here;
+   - a `move:<pile>` dest (the card pane's "Move to pile") is a re-filing: run
+     `python3 scripts/builder.py place <slug> "<name>" <pile>`, re-read the card's reason
+     and verdicts against the pile it now sits in, and rewrite whichever no longer holds;
    - re-render, republish (the new cards' images too), then set the request doc's
      `status: "done"` and a one-line `reply` with ArtifactData.
 

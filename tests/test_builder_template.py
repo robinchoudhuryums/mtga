@@ -211,6 +211,7 @@ const PICKLAB = {}; DK.forEach(k=>["add","cut","bench","out","prot","unprot"].fo
 const nameOf = id => (BYID[id]&&BYID[id].n) || "";
 let picks = {}, toasts = [];
 const canWrite = true, snapshot = () => {}, persist = () => {}, banner = () => {}, toast = m => toasts.push(m);
+let GESTURE = null; const gesture = (label, fn) => fn();       // toggleScoped's one-undo wrapper
 eval(fs.readFileSync(process.argv[2], 'utf8'));
 const res = {};
 res.legacy = input.legacy.map(([id, list]) => upgradeLegacy(id, list).sort());
@@ -347,3 +348,48 @@ class TestSwapPackage:
                                         text=True, check=True).stdout)
         assert out["pkg"] == {"paired": [["a1", "In1"]], "unpaired": ["a2"], "cutsOnly": ["in2"]}
         assert out["need"] == [False, True, False, False, False]
+
+
+_HARNESS_DECIDE = """
+const fs = require('fs');
+const input = JSON.parse(fs.readFileSync(process.argv[3], 'utf8'));
+const CARDS = input.cards, BYID = Object.fromEntries(CARDS.map(c => [c.id, c]));
+const DK = ["T","G"], DECKS = {T:{label:"Thranduil"}, G:{label:"Glarb"}};
+const PILEDEFS = [{k:"T",deck:"T"},{k:"G",deck:"G"},{k:"B",deck:null}];
+const PICKLAB = {}; DK.forEach(k=>["add","cut","bench","out","prot","unprot"].forEach(x=>PICKLAB[x+k]=x+k));
+const nameOf = id => (BYID[id]&&BYID[id].n) || "";
+let picks = input.picks, toasts = [], canWrite = true;
+const persist = () => {}, banner = () => {}, toast = m => toasts.push(m), paintUndo = () => {},
+      render = () => {}, renderDecks = () => {}, rerenderAfterPick = () => {};
+eval(fs.readFileSync(process.argv[2], 'utf8'));
+const res = {decided: CARDS.map(c => [decided(c,"T"), decided(c,"G"), decidedInPile(c)])};
+toggleScoped("b", "bench"); res.afterB = [...picks.b.picks].sort(); res.undoDepth = UNDO.length;
+undo(); res.afterU = picks.b ? picks.b.picks : null; res.toasts = toasts;
+console.log(JSON.stringify(res));
+"""
+
+
+@pytest.mark.skipif(not _NODE, reason="node not installed (CI sets PYTEST_NO_SKIPS, so CI cannot skip)")
+class TestDecidedAndGestureUndo:
+    def test_decided_rule_and_one_undo_per_gesture(self, tmp_path):
+        """Decided for a deck = in it, or Add/Cut/Bench/Keep out for it; a shared pile counts a
+        card decided only when every deck is. `b` on a shared pile marks both decks as ONE undo
+        entry, and one undo reverses both."""
+        cards = [{"id": "a", "n": "A", "p": "T", "iT": True}, {"id": "b", "n": "B", "p": "B"},
+                 {"id": "c", "n": "C", "p": "B"}]
+        picks = {"c": {"picks": ["outT", "benchG"]}}
+        fx = tmp_path / "in.json"
+        fx.write_text(json.dumps({"cards": cards, "picks": picks}))
+        js = tmp_path / "fns.js"
+        js.write_text(_extract_consts(["KINDS", "deckOfPick", "kindOf", "pileScope", "hasPick", "decided",
+                                       "decidedInPile", "pushUndo"]) + "\n"
+                      + "const UNDO=[]; let GESTURE=null;\n"
+                      + _extract(["snapshot", "gesture", "undo", "togglePick", "toggleScoped"])
+                      + "\nObject.assign(globalThis, {decided, decidedInPile, UNDO});")
+        h = tmp_path / "h.js"
+        h.write_text(_HARNESS_DECIDE)
+        out = json.loads(subprocess.run([_NODE, str(h), str(js), str(fx)], capture_output=True,
+                                        text=True, check=True).stdout)
+        assert out["decided"] == [[True, False, True], [False, False, False], [True, True, True]]
+        assert out["afterB"] == ["benchG", "benchT"] and out["undoDepth"] == 1
+        assert out["afterU"] is None and out["toasts"][-1].startswith("Undid: Bench: B")   # it had no picks before

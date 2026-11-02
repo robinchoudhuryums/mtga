@@ -557,9 +557,10 @@ def picks_report(build, text, slug=None):
             if ok:
                 lines.append(f"#   {kind} (header edit): {'; '.join(ok)}")
             lines += [f"#   skipped {kind}: {b}" for b in bad]
-        # Bench and Keep out change no file: they are decisions recorded for the next pass
-        # (a benched card is the first place to look when the deck wants a change).
-        for kind, label in (("bench", "bench (no edit — a maybe for later)"), ("out", "keep out (no edit)")):
+        # A benched card becomes a `#~` flex line in the deck file, so the next tune reads the
+        # bench (deck.py flex --add refuses a card the deck runs or another flex line names).
+        # Keep out changes no file: it is a decision recorded for the next pass.
+        for kind, label in (("bench", "bench"), ("out", "keep out (no edit)")):
             ok, bad = [], []
             for n in p[kind]:
                 try:
@@ -568,7 +569,11 @@ def picks_report(build, text, slug=None):
                     bad.append(str(e))
                     continue
                 (bad.append(f"{rn} is in {did} — cut it instead") if D._ms_key(rn) in runs else ok.append(rn))
-            if ok:
+            if ok and kind == "bench":
+                lines.append(f"#   bench → #~ flex lines (add --apply to write each):")
+                lines += [f'python3 scripts/deck.py flex {did} --add "+{n} | BENCH (builder {slug or "?"}): '
+                          f'benched on the board"' for n in ok]
+            elif ok:
                 lines.append(f"#   {label}: {'; '.join(ok)}")
             lines += [f"#   skipped {kind}: {b}" for b in bad]
     if parsed["own"]:

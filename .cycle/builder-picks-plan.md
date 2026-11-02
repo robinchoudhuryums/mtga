@@ -1,6 +1,6 @@
 # Builder — picks workflow plan (TEMPORARY working doc)
 
-**Status: Batch 0 and Batch A DONE (2026-11-02); B and C open.** Delete once the batches land (the record is
+**Status: Batches 0, A and B DONE (2026-11-02); C open.** Delete once the batches land (the record is
 `.cycle/blocks/`). Written 2026-11-02 after per-deck Bench / Keep out landed (commit 179b244).
 
 The owner's workflow, in their words: mark adds or bench, go to the deck's list and mark cuts,

@@ -29,7 +29,12 @@ commands first — never apply the block's lines by eye:
 - an ownership block (`reconcile_crafts --set-exact` lines) — that is an **/ingest** batch,
   run there as a dry run first, never from this skill;
 - `builder.py hidden …` commands for roles the owner says the tools miss — run them; they
-  change only the project, never a count.
+  change only the project, never a count;
+- one `deck.py flex <id> --add "+Card | BENCH (builder <slug>): …"` line per benched card —
+  run each with `--apply` in the same commit as the swaps, so the bench lands in the deck
+  file's `#~` block where the next `/tune-deck` reads it (`deck.py flex <id>` lists them).
+  It refuses a card the deck runs or another flex line already names — say which, never
+  hand-edit the line in. Keep out stays a note.
 
 Preview the package (`deck.py swap <id> --package …`), confirm with the owner, then run the
 stages below per swap. Adds with no cut chosen are a question for the owner, not a guess.

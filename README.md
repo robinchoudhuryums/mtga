@@ -1369,10 +1369,12 @@ pair an add with the card it replaces — the card pane's cut list shows the dec
 in cut order with a full preview on hover or focus, and an add with no cut yet is labelled
 "needs a cut" (the **Compare** tab puts a pile beside a deck's list, with its mana curve now
 and after, the deck's swap package, and a deck card opened beside the selected pile card),
-write notes, flag a role the
+filter to cards still undecided for a deck, mark every shown undecided card at once (one undo
+reverses it), ask Claude to move a card to another pile, write notes, flag a role the
 tools miss ("counts as interaction") and queue an ownership correction. Picks stay in that
 browser; **Your picks → Copy as text** gives Claude `swap --package` lines, protect
-requests, and an `/ingest` block for the ownership corrections. The projection's tier floor
+requests, a `deck.py flex --add` line per benched card (so the bench lands in the deck
+file's `#~` block), and an `/ingest` block for the ownership corrections. The projection's tier floor
 uses only the counted figures — hidden roles are shown beside it, never inside it.
 A card with more than one artwork on Arena shows **Arena printings** in its pane — every
 distinct illustration with its set, collector number, rarity and treatment (showcase,

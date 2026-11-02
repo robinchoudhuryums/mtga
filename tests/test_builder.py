@@ -266,7 +266,8 @@ class TestVerdicts:
 
 class TestBenchAndKeepOutPicks:
     """Bench and Keep out are per deck: they sit in that deck's block of the copied text and
-    are reported, checked against the deck, but never turned into an edit."""
+    are checked against the deck. A bench becomes a `deck.py flex --add` command (the deck
+    file's #~ block); Keep out stays a no-edit note."""
     COPY = ("Glarb ({deck}):\n"
             "  bench: Murder; Counterspell\n"
             "  keep out: Krang, the All-Powerful\n")
@@ -278,10 +279,11 @@ class TestBenchAndKeepOutPicks:
     def test_report_lists_them_without_an_edit(self, scratch):
         deck_path, _ = scratch
         lines = B.picks_report(_new(deck_path), self.COPY.format(deck=deck_path))
-        assert any(ln.startswith("#   bench (no edit") and "Murder" in ln for ln in lines)
+        assert any(ln.startswith('python3 scripts/deck.py flex') and '"+Murder | BENCH (builder' in ln
+                   and "--apply" not in ln for ln in lines)                # a dry-run command per card
         assert any(ln.startswith("#   keep out (no edit): Krang") for ln in lines)
         assert any("Counterspell is in" in ln and "cut it instead" in ln for ln in lines)
-        assert not any(ln.startswith("python3") for ln in lines)
+        assert not any(ln.startswith("python3 scripts/deck.py swap") for ln in lines)
 
 
 class TestRender:

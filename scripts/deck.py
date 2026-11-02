@@ -8504,9 +8504,58 @@ def header_card_staleness(path):
     return out
 
 
+def _flex_add(d, text, apply):
+    """Append ONE `#~` flex line to a deck file — the WRITE half of `flex`, so a bench list
+    (the Builder's per-deck "maybe later" marks) reaches the deck file the next tune reads
+    instead of living only on a page. `text` is the line's body (`+Card | note`, optionally
+    `-Cut | +Card | note`). Refuses an +In card that does not resolve, that the deck
+    already runs, or that another `#~` line already proposes — the G-04 `+In` rot this
+    file's staleness sweep exists to catch, never written in the first place. The line
+    goes after the deck's last `#~` line (else at the end); comments do not change the
+    copy count, which `_safe_write_lines` re-checks with the INV-04 parse."""
+    e = _parse_flex_line("#~ " + text.strip())
+    if not e or not e["in"]:
+        raise ValueError('a flex line to add needs a "+Card" field, e.g. "+Opt | BENCH (builder sultai): a maybe"')
+    idx = _printing_index()
+    key, cands = _resolve_card_name(e["in"], idx, lambda k: idx[k][0], _squash_index(idx, lambda k: idx[k][0]))
+    if not key:
+        raise ValueError(f"{e['in']!r} is {'ambiguous: ' + '; '.join(cands[:6]) if cands else 'not a card on Arena'}")
+    name = idx[key][0]
+    _meta, cards = parse_deck_file(d["path"])
+    if any(_ms_key(n) == _ms_key(name) for _q, n, _s, _c in cards):
+        raise ValueError(f"{name} is already in deck {d['id']} — a flex line proposes a card it does not run")
+    for f in parse_flex(d["path"]):
+        if f["in"] and _ms_key(f["in"]) == _ms_key(name):
+            raise ValueError(f"{name} is already on a #~ line in deck {d['id']}")
+    body = " | ".join(x for x in ((f"-{e['out']}" if e["out"] else ""), f"+{name}", e["note"]) if x)
+    line = "#~ " + body
+    with open(d["path"], encoding="utf-8") as fh:
+        lines = fh.read().rstrip("\n").split("\n")
+    last = max((i for i, ln in enumerate(lines) if ln.startswith("#~")), default=None)
+    new_lines = lines[:last + 1] + [line] + lines[last + 1:] if last is not None else lines + ["", line]
+    if not apply:
+        return line, None
+    return line, _safe_write_lines(d["path"], new_lines, sum(q for q, *_ in cards))
+
+
 def cmd_flex(args):
     """Show a deck's flex suggestions, enriching the +In card with cost / owned /
-    rarity so you can see what each swap would take."""
+    rarity so you can see what each swap would take. With --add, write one."""
+    if getattr(args, "add", None):
+        d = find_deck(args.id)                    # a WRITER never takes a path (G-56)
+        if not d:
+            eprint(f"No deck with id {args.id!r}. Try: deck.py list")
+            return 1
+        try:
+            line, bak = _flex_add(d, args.add, bool(args.apply))
+        except ValueError as e:
+            eprint(f"Not added: {e}")
+            return 1
+        if bak is None:
+            print(f"Would add to deck {d['id']}:\n  {line}\n(dry run — pass --apply to write it with a .bak)")
+        else:
+            print(f"Added to {os.path.relpath(d['path'], REPO_ROOT)} (backup: {os.path.basename(bak)}):\n  {line}")
+        return 0
     d = find_deck(args.id, allow_path=True)
     if not d:
         eprint(f"No deck with id {args.id!r}. Try: deck.py list")
@@ -17889,8 +17938,11 @@ def main():
     p.add_argument("id")
     p.add_argument("--limit", type=int, default=8,
                    help="how many cut candidates to show (default 8; 0 = all)")
-    p = sub.add_parser("flex", help="show a deck's flex / suggested swaps (#~ lines)")
+    p = sub.add_parser("flex", help="show a deck's flex / suggested swaps (#~ lines), or add one")
     p.add_argument("id")
+    p.add_argument("--add", metavar="LINE",
+                   help='write one #~ line, e.g. "+Opt | BENCH (builder sultai): a maybe" (dry run without --apply)')
+    p.add_argument("--apply", action="store_true", help="with --add: write the line (with a .bak)")
     p = sub.add_parser("swap", help="preview/apply a single -cut/+add swap with deltas")
     p.add_argument("id")
     p.add_argument("--cut", help="card to remove (required unless --undo)")
