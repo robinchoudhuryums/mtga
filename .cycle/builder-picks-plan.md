@@ -23,7 +23,9 @@ a trailing ◇) in ~15 of 292. The 176 outside-the-pile cards have no star at al
   graded against the graveyard shell, before Thranduil's "a non-Elf has to beat an Elf" rule),
   so the page marks them "pre-draft".
 - **0c Grade the rest.** Full-text grades for the 176 unstarred cards against the current
-  lists, and a re-check of Thranduil-pile non-Elves whose pre-draft A grade is ★★ or better.
+  lists, and a re-grade of every Thranduil grade whose reason leaned on Elf-ness — under the
+  owner's synergy-first rule (sultai-pile-analysis §10, 2026-11-02): synergies first, Elf as a
+  tiebreaker. Runs AFTER the owner settles the §10 list changes, so grades read the new list.
 - **0d Page.** A star badge beside each deck's button on the row and in the pane (with the
   legend); filter "verdict for <deck> at least …"; sort by verdict; the loose prose verdicts
   stay in the reason text.

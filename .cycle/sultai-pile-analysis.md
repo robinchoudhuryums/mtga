@@ -1019,3 +1019,40 @@ and little else:
 | Ygra, Eater of All | A Food/lifegain deck card. |
 | Yue, the Moon Spirit | A noncreature-spells payoff; both decks are creature-heavy or draw-heavy. |
 | Zahid, Djinn of the Lamp | A 5/6 flier with nothing else. |
+
+## 10. Synergy-first re-read of Thranduil's list (2026-11-02 — owner's clarification)
+
+**The owner's rule, replacing the Elf-first framing:** graveyard / recursion / mana / card-advantage
+synergies come first; being an Elf is a TIEBREAKER between otherwise-equal cards (an Elf that also
+feeds the other synergies is ideal). An Elf whose only value is Elf count or an Elf lord bonus is a
+cut candidate. Thranduil's own two abilities are the COMMANDER's engine, not "tribal": a legendary
+Elf entering is a loot (graveyard filling) and an Elf with an activated ability in the yard is a
+borrowed tool — those count as synergy. G-42 still holds on its own terms: exiling Elf cards from the
+yard removes Thranduil's tools, whatever the tribal priority.
+
+**Grades in §4 / §9.1 written on the old rule** ("non-Elf body", "lost to an Elf", "a deck whose
+bodies want to be Elves") are void as reasons and get re-graded in Batch 0c.
+
+**Elf-only cards in the list (value is Elf count or lord, nothing borrowed worth having):**
+Dwynen (lord + life per attacking Elf), Shaman of the Pack (one-shot drain = Elves), Abomination of
+Llanowar (P/T = Elves), Elvish Warmaster (Elf-ETB token; borrowed pump costs 7), Skemfar Avenger
+(draws only when a nontoken Elf dies; 2 sac outlets), Elderfang Ritualist and Morcant's Loyalist
+(on death return an Elf card to hand — takes a tool OUT of Thranduil's yard), Bounty of Skemfar
+(land + Elf only), Harald, King of Skemfar (digs for an Elf; legendary loot only).
+**Judgment calls kept for now:** Leaf-Crowned Visionary (repeatable draw, Elf-cast gated), Woodland
+Weavemaster (Elf-only mana — but Thranduil's borrowed abilities are Elf-source abilities, so it
+fuels him), Maralen (Elf-count-scaled free casts), High Perfect Morcant (proliferate reaches 5
+planeswalkers and Marwyn / Dionus counters).
+**Elf-COUNT engines (synergy power that needs density):** Priest of Titania, Elvish Archdruid,
+Marwyn (mana for X spells, Muldrotha, Vile Offering) — keep; Voice of the Woods (5 Elves) and
+Lathril (TEN untapped Elves) are the most density-dependent and are on `#: protect:` from the
+draft — owner's call whether they stay protected.
+
+**Proposed package (preview: floor A, int 15, CA 10, protection 2→3, avg MV 3.61→3.67; Elves 39→33):**
+Dwynen→Yarok, the Desecrated · Shaman of the Pack→Sidisi, Brood Tyrant · Abomination→Wrenn and
+Seven · Elvish Warmaster→Deathrite Shaman · Skemfar Avenger→Eladamri, Korvecdal · Elderfang
+Ritualist→Kinnan, Bonder Prodigy · Morcant's Loyalist→Yawgmoth, Thran Physician · Bounty of
+Skemfar→Kotis, Sibsig Champion · Harald, King of Skemfar→Ioreth of the Healing House.
+**Owner's board adds re-read under the rule:** Pol Jamaar, Tyvar Kell, Tyvar the Bellicose are
+Elf-count-scaled (lower); Sin (random yard exile, 7 mana) and Tamiyo (targeted −X yard exile) are
+G-42-shaped — Tamiyo workable on non-Elf targets, Sin not.
