@@ -8854,6 +8854,19 @@ one 672 px image per card, which fits about 500 cards. The Pages build hot-links
 has no such limit; its image URLs are cached in `builds/<slug>/images.json` so the offline
 Pages job needs no network.
 
+**Alternate printings (2026-11-02).** The last approved item: every Arena artwork of a card,
+view-only. One Scryfall search per 12 oracle ids with `game:arena unique:art` (a longer OR list
+returned HTTP 400 — the URL overflowed); `unique:art` keeps one printing per ILLUSTRATION, so
+the owner's "borderless, see-through text box" treatment of the same art collapses into the
+original and never appears. Measured on the Sultai pile: 111 of 426 cards have more than one
+artwork, 261 artworks in all, at most 6 for one card; every remaining "borderless" print checked
+was a different illustration by a different artist. Frame flags keep only what a reader would
+call a different look (showcase, borderless, full art, extended art, etched) — `legendary` and
+`inverted` are on most modern cards and said nothing. On the artifact the arts ship as 5 sheets
+of 60 cells (366×267 each, ~7 MB), not as files, for the 511-file reason above; on Pages they
+hot-link Scryfall and open the full card. A deck line never takes an alternate printing: the
+pool keys one printing per card and an unknown set code is a hard INV-04 failure (G-65).
+
 **Tests that hold it.** `tests/test_builder.py` (data model, staleness, picks parsing,
 render, site, add-deck) and `tests/test_builder_template.py`, which runs the page's own
 `project()`, `isApplied`, `conflicts` and `nextBand` under Node and compares the projection

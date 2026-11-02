@@ -654,6 +654,101 @@ def image_urls(slug, names, fetch=True):
     return out
 
 
+_ART_FX = {"showcase": "showcase", "extendedart": "extended art", "etched": "etched",
+           "textless": "textless"}   # the treatments a reader would call a different look
+ART = (366, 267)            # an art-crop cell: 3x the pane's 122 x 89 thumbnail, 1x when enlarged
+ART_COLS, ART_PER_SHEET = 6, 60
+
+
+def printing_arts(slug, names, fetch=True):
+    """{name: [printing, …]} — every Arena printing with a DIFFERENT illustration, oldest
+    first, for the cards that have more than one. View-only: the owner picks the art in
+    Arena; nothing here touches a deck line (the project keys one printing per card and an
+    unknown set code is a hard INV-04 failure).
+
+    Scryfall's `unique:art` keeps one printing per illustration, so a frame-only variant —
+    Arena's borderless "see-through text box" treatment of the same art — collapses into
+    the original and is never listed. Cached in `builds/<slug>/printings.json` (committed,
+    so the offline Pages job has it); a card with one art is cached as [] so it is not
+    looked up again. An outage leaves the cache as it was."""
+    path = os.path.join(os.path.dirname(build_path(slug)), "printings.json")
+    try:
+        cache = json.load(open(path, encoding="utf-8"))
+    except (OSError, ValueError):
+        cache = {}
+    need = [n for n in dict.fromkeys(names) if n not in cache]
+    if need and fetch:
+        try:
+            import urllib.parse
+            import scryfall
+            oid = {}
+            for i in range(0, len(need), 70):
+                for d in scryfall.post_collection([n.split(" // ")[0] for n in need[i:i + 70]]).get("data", []):
+                    oid[d["name"].lower()] = d["oracle_id"]
+            alias_front(oid)                       # second pass, never in-pass (G-63)
+            want = {n: oid.get(n.lower()) or oid.get(n.lower().split(" // ")[0]) for n in need}
+            ids = sorted({v for v in want.values() if v})
+            by_oid = {}
+            for i in range(0, len(ids), 12):       # a longer OR list overflows the URL (HTTP 400)
+                q = "game:arena unique:art (" + " or ".join(f"oracleid:{x}" for x in ids[i:i + 12]) + ")"
+                url = "https://api.scryfall.com/cards/search?" + urllib.parse.urlencode({"q": q, "order": "released", "dir": "asc"})
+                while url:
+                    r = scryfall.get_json(url)
+                    for d in r.get("data", []):
+                        iu = d.get("image_uris") or ((d.get("card_faces") or [{}])[0].get("image_uris")) or {}
+                        by_oid.setdefault(d["oracle_id"], []).append({
+                            "set": d["set"].upper(), "cn": d["collector_number"], "sn": d.get("set_name", ""),
+                            "r": (d.get("rarity") or "?")[:1].upper(), "y": (d.get("released_at") or "")[:4],
+                            "a": d.get("artist", ""), "art": iu.get("art_crop", ""), "im": iu.get("normal", ""),
+                            "fx": sorted((set(_ART_FX.get(x, "") for x in (d.get("frame_effects") or []))
+                                          | ({"borderless"} if d.get("border_color") == "borderless" else set())
+                                          | ({"full art"} if d.get("full_art") else set())) - {""})})
+                    url = r.get("next_page")
+            for n, o in want.items():
+                if o:
+                    arts = by_oid.get(o, [])
+                    cache[n] = arts if len(arts) > 1 else []
+        except Exception as e:  # an outage leaves the cache as it was
+            print(f"builder: Scryfall printings lookup skipped ({e})", file=sys.stderr)
+        atomic_write(path, lambda fh: fh.write(json.dumps(cache, indent=1, sort_keys=True, ensure_ascii=False) + "\n"),
+                     backup=False)
+    return {n: cache[n] for n in names if cache.get(n)}
+
+
+def _art_sprites(out_dir, arts):
+    """Every alternate art as a cell in a few sheets (`img/arts-<n>.jpg`), so the artifact
+    stays under its 511-file ceiling. Returns {"cols", "w", "h", "sheets", "i": {key: [sheet,
+    cell]}} with key = "<card slug>|<SET>|<cn>"."""
+    import io
+    import urllib.request
+    from PIL import Image
+    w, h = ART
+    cells = [(f"{image_slug(n)}|{p['set']}|{p['cn']}", p["art"]) for n, ps in arts.items() for p in ps if p.get("art")]
+    cache_dir = os.path.join(out_dir, "img", "art")
+    os.makedirs(cache_dir, exist_ok=True)
+    out = {"cols": ART_COLS, "w": w, "h": h, "sheets": [], "rows": [], "i": {}}
+    for s0 in range(0, len(cells), ART_PER_SHEET):
+        chunk = cells[s0:s0 + ART_PER_SHEET]
+        rows = -(-len(chunk) // ART_COLS)
+        sheet = Image.new("RGB", (w * ART_COLS, h * rows), (40, 40, 40))
+        for j, (key, url) in enumerate(chunk):
+            f = os.path.join(cache_dir, re.sub(r"[^A-Za-z0-9-]+", "_", key) + ".jpg")
+            try:
+                if not os.path.exists(f):
+                    req = urllib.request.Request(url, headers={"User-Agent": "mtga-card-library/1.0", "Accept": "image/*"})
+                    im = Image.open(io.BytesIO(urllib.request.urlopen(req, timeout=30).read())).convert("RGB")
+                    im.resize(ART, Image.LANCZOS).save(f, "JPEG", quality=82)
+                sheet.paste(Image.open(f).convert("RGB"), ((j % ART_COLS) * w, (j // ART_COLS) * h))
+                out["i"][key] = [len(out["sheets"]), j]
+            except Exception as e:
+                print(f"builder: art for {key} not fetched ({e})", file=sys.stderr)
+        name = f"img/arts-{len(out['sheets'])}.jpg"
+        sheet.save(os.path.join(out_dir, name), "JPEG", quality=82, optimize=True, progressive=True)
+        out["sheets"].append(name)
+        out["rows"].append(rows)
+    return out
+
+
 def _fetch_image(url, out, size):
     """Download one image, shrink it to `size`, save a JPEG. Existing files are kept."""
     if os.path.exists(out):
@@ -712,6 +807,10 @@ def render(slug, target, out_dir, tempo=True, images=True, data=None, page_name=
     cmds = {k: v.get("cmd") for k, v in meta["live"].items() if v.get("cmd")}
     urls = image_urls(slug, [c["n"] for c in data["cards"]] + list(cmds.values()),
                       fetch=fetch and (images or target == "pages"))
+    arts = printing_arts(slug, [c["n"] for c in data["cards"]], fetch=fetch)
+    for c in data["cards"]:
+        if arts.get(c["n"]):
+            c["al"] = arts[c["n"]]          # alternate Arena printings (view-only)
     if target == "pages":
         for c in data["cards"]:
             if urls.get(c["n"]):
@@ -730,6 +829,7 @@ def render(slug, target, out_dir, tempo=True, images=True, data=None, page_name=
                 print(f"builder: image for {n} not fetched ({e})", file=sys.stderr)
     if target == "artifact":
         meta["sprite"] = _sprite(out_dir, [image_slug(n) for n in urls]) if images else None
+        meta["arts"] = _art_sprites(out_dir, arts) if images and arts else None
     import html as _html
     title = meta.get("title") or slug
     blob = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")

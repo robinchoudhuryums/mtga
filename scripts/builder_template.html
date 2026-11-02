@@ -144,6 +144,16 @@ details.deck h2{margin:0;font-family:var(--display);font-weight:400;font-size:1.
 .undobtn:disabled{opacity:.45;cursor:default}
 .undobtn:hover:not(:disabled){color:var(--ink);border-color:var(--brass)}
 #toast{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:40;background:var(--ink);color:var(--panel);border-radius:999px;padding:7px 16px;font-size:.88rem;box-shadow:var(--shadow);max-width:calc(100vw - 32px)}
+/* alternate Arena printings (view-only) */
+details.arts summary{cursor:pointer;color:var(--accent);width:max-content;font-size:.86rem}
+.artgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(122px,1fr));gap:8px;margin-top:6px}
+.artbtn{all:unset;cursor:zoom-in;display:flex;flex-direction:column;gap:3px;font-size:.72rem;color:var(--muted);line-height:1.3}
+.artbtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+.artbtn img,.artbtn .artspr{width:122px;height:89px;border-radius:4px;display:block;object-fit:cover;background-repeat:no-repeat;background-color:var(--raise)}
+.artbtn b{color:var(--ink);font-weight:600}
+dialog#artzoom{border:none;padding:0;background:transparent;max-width:min(94vw,560px)}
+dialog#artzoom::backdrop{background:rgba(0,0,0,.72)}
+#artbig{width:min(90vw,366px);aspect-ratio:366/267;border-radius:10px;background-repeat:no-repeat;margin:0 auto}
 /* compare view */
 .cmphead{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:end;margin-bottom:10px}
 .cmphead label{display:flex;flex-direction:column;gap:2px;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
@@ -298,6 +308,7 @@ dialog#cmp::backdrop{background:rgba(0,0,0,.6)}
 <div id="toast" role="status" aria-live="polite" hidden></div>
 <dialog id="sheet" aria-label="Card detail"><div class="sheetbar"><span class="status">Card detail</span><button type="button" class="ghost" id="sheetclose">Close</button></div><div id="sheetbody"></div></dialog>
 <dialog id="zoom" aria-labelledby="zoomcap"><img id="zoomimg" alt=""><div class="zoombar"><button type="button" id="zoomprev" aria-label="Previous card">‹</button><span id="zoomcap"></span><button type="button" id="zoomnext" aria-label="Next card">›</button><button type="button" id="zoomclose">Close</button></div></dialog>
+<dialog id="artzoom" aria-labelledby="artcap"><div id="artbig" role="img"></div><div class="zoombar"><span id="artcap"></span><button type="button" id="artclose">Close</button></div></dialog>
 <dialog id="cmp" aria-labelledby="cmptitle"><h3 id="cmptitle" class="cmplab" style="font-size:.8rem">Add vs cut</h3><div class="cmpgrid" id="cmpgrid"></div><button type="button" id="cmpclose" class="btn">Close</button></dialog>
 
 <script type="application/json" id="data">__DATA__</script>
@@ -453,7 +464,7 @@ function rowHTML(c, col=""){
     <span class="th">${thumb(c)}</span>
     <button type="button" class="main" data-sel="${c.id}" aria-current="${c.id===SEL}" aria-expanded="${NOTEOPEN===c.id&&NOTECOL===col}" title="Click again to write a note">
       <span class="l1"><span class="nm">${esc(c.n)}</span><span class="cost">${pips(c.c)}</span><span class="noteDot" title="Has a note"${hasNote(c.id)?"":" hidden"}>✎</span></span>
-      <span class="l2">${lead}${ap?`<span class="tag done">Applied ✓</span>`:""}${isSwap(c)?`<span class="seal">Swap</span>`:""}${col==="R"?"":tags}${ownTag(c)}${roleTags(c,false)}<span class="why1">${esc(firstLine(c))}</span></span>
+      <span class="l2">${lead}${ap?`<span class="tag done">Applied ✓</span>`:""}${isSwap(c)?`<span class="seal">Swap</span>`:""}${col==="R"?"":tags}${ownTag(c)}${(c.al||[]).length>1?`<span class="tag" title="${c.al.length} artworks on Arena — see the card pane">⧉${c.al.length}</span>`:""}${roleTags(c,false)}<span class="why1">${esc(firstLine(c))}</span></span>
     </button>
     ${extra}${quick(c)}
   </div>${NOTEOPEN===c.id&&NOTECOL===col?noteRowHTML(c,col):""}</div>`;
@@ -484,6 +495,7 @@ function detailHTML(c, inSheet){
     ${conf.length?`<div class="conf" role="note"><b>⚠ Conflict</b><ul>${conf.map(x=>`<li>${esc(x.msg)}</li>`).join("")}</ul></div>`:""}
     ${r?`<p class="reason">${isSwap(c)?`<span class="seal">Swap candidate</span>`:`<span class="seal">${esc(groupLabel(r.g))}</span>`}${fmt(r.w)}</p>`:`<p class="reason pending">${inAny(c)?"In the list.":"No reason written yet."}</p>`}
     <details class="rules"><summary>Rules text</summary><p>${esc(c.x||"(no rules text)")}</p></details>
+    ${artsHTML(c)}
     <div class="picks" role="group" aria-label="Your pick for ${esc(c.n)}">${DK.map(k=>c["i"+k]?pb("cut"+k,`− ${esc(DECKS[k].label)}`):pb("add"+k,`+ ${esc(DECKS[k].label)}`)).join("")}${pb("bench","Bench")}${pb("out","Keep out")}</div>
     ${pairSelects(c)}${compareBtns(c)}
     ${c.land?"":`<div class="picks" role="group" aria-label="Roles the tools do not count">${HROLES.map(hb).join("")}</div>`}
@@ -505,6 +517,30 @@ function select(id, scroll, col){ SEL=id; if(col!=null) ACTIVECOL=col;
   rowEls(id).forEach(r=>{ r.classList.add("sel"); r.querySelector(".main").setAttribute("aria-current","true"); });
   if(scroll){ const m=mainEl(id,view==="compare"?ACTIVECOL:null); if(m) m.closest(".row").scrollIntoView({block:"nearest"}); }
   renderDetail(); }
+
+/* ---------- alternate Arena printings (view-only) ---------- */
+function artStyle(c,p,scale){ const A=META.arts, at=A&&A.i?A.i[`${c.id}|${p.set}|${p.cn}`]:null; if(!at) return null;
+  const [sh,j]=at, W=A.w/scale, H=A.h/scale;
+  return `background-image:url(${A.sheets[sh]});background-size:${A.cols*W}px ${A.rows[sh]*H}px;background-position:-${(j%A.cols)*W}px -${Math.floor(j/A.cols)*H}px`; }
+function artThumb(c,p){ if(META.img==="remote") return `<img src="${esc(p.art)}" alt="" loading="lazy" width="122" height="89">`;
+  const st=artStyle(c,p,3); return st?`<span class="artspr" style="${st}"></span>`:`<span class="artspr"></span>`; }
+const artLabel = p => `${p.sn||p.set} (${p.set}) #${p.cn} · ${RAR[p.r]||p.r}${p.y?` · ${p.y}`:""}${p.a?` · art by ${p.a}`:""}${(p.fx||[]).length?` · ${p.fx.join(", ")}`:""}`;
+function artsHTML(c){ const al=c.al||[]; if(al.length<2) return "";
+  return `<details class="arts"><summary>Arena printings · ${al.length} artworks</summary>
+    <p class="status">Every artwork of this card on Arena, oldest first. View only — pick the art in Arena (a borderless frame of the same art is not listed).</p>
+    <div class="artgrid">${al.map((p,i)=>`<button type="button" class="artbtn" data-art="${c.id}" data-ai="${i}" aria-label="Enlarge: ${esc(artLabel(p))}">${artThumb(c,p)}<span><b>${esc(p.set)} #${esc(p.cn)}</b> · ${esc(p.r)}${p.y?` · ${esc(p.y)}`:""}${(p.fx||[]).length?`<br>${esc(p.fx.join(", "))}`:""}</span></button>`).join("")}</div></details>`; }
+function openArt(id,i,from){ const c=BYID[id], p=(c&&c.al||[])[i]; if(!p) return;
+  if(META.img==="remote"){ const im=document.getElementById("zoomimg"); ZLIST=[id]; ZI=0; im.dataset.fb=p.im; im.src=(p.im||"").replace("/normal/","/large/"); im.alt=`${c.n} — ${artLabel(p)}`;
+    document.getElementById("zoomcap").textContent=`${c.n} · ${artLabel(p)}`; document.getElementById("zoomprev").hidden=document.getElementById("zoomnext").hidden=true;
+    const d=document.getElementById("zoom"); d._from=from; if(!d.open&&d.showModal) d.showModal(); return; }
+  const big=document.getElementById("artbig");
+  big.setAttribute("aria-label",`${c.n} — ${artLabel(p)}`); document.getElementById("artcap").textContent=`${c.n} · ${artLabel(p)}`;
+  const d=document.getElementById("artzoom"); d._from=from; if(!d.open&&d.showModal) d.showModal(); fitArt(c,p); }
+/* The enlarged art is the sprite cell at its own resolution, scaled to the box's width. */
+function fitArt(c,p){ const A=META.arts, at=A&&A.i?A.i[`${c.id}|${p.set}|${p.cn}`]:null, big=document.getElementById("artbig"); if(!at) return;
+  const k=big.clientWidth/A.w, [sh,j]=at;
+  big.style.backgroundImage=`url(${A.sheets[sh]})`; big.style.backgroundSize=`${A.cols*A.w*k}px ${A.rows[sh]*A.h*k}px`;
+  big.style.backgroundPosition=`-${(j%A.cols)*A.w*k}px -${Math.floor(j/A.cols)*A.h*k}px`; }
 
 /* ---------- inline note and hover preview ---------- */
 function rerow(id){ const c=BYID[id]; if(!c) return; document.querySelectorAll(`.rw[data-w="${id}"]`).forEach(w=>{ w.outerHTML=rowHTML(c, w.dataset.col||""); }); }
@@ -766,6 +802,8 @@ document.addEventListener("click",e=>{
   if(e.target.closest("#undobtn")){ undo(); return; }
   const t=e.target.closest(".tab"); if(t){ setView(t.dataset.k,true); return; }
   const pr=e.target.closest("[data-pair]"); if(pr){ pairWith(pr.dataset.pair); return; }
+  const ab=e.target.closest("[data-art]"); if(ab){ openArt(ab.dataset.art, +ab.dataset.ai, ab); return; }
+  if(e.target.id==="artclose"||e.target.id==="artzoom"){ const d=document.getElementById("artzoom"); d.close(); if(d._from&&document.contains(d._from)) d._from.focus(); return; }
   const sg=e.target.closest(".seg [data-side]"); if(sg){ CMP.side=sg.dataset.side; const cc=document.getElementById("cmpcols"); if(cc) cc.dataset.side=CMP.side;
     document.querySelectorAll(".seg [data-side]").forEach(x=>x.setAttribute("aria-pressed",String(x.dataset.side===CMP.side))); return; }
   const hb=e.target.closest("[data-hid]"); if(hb){ const id=hb.dataset.hid, role=hb.dataset.role, inSheet=!!hb.closest("#sheet"); toggleHidden(id,role); refreshView(id);
@@ -781,7 +819,7 @@ document.addEventListener("click",e=>{
   const st=e.target.closest("[data-step]"); if(st){ const i=VISIBLE.indexOf(SEL), n=VISIBLE[(i+ +st.dataset.step+VISIBLE.length)%VISIBLE.length]; if(n){ select(n,true); const s2=document.querySelector(`#detail [data-step="${st.dataset.step}"]`); if(s2) s2.focus(); } return; }
   const z=e.target.closest("[data-zoom]"); if(z){ openZoom(z.dataset.zoom, z.closest(".dlist")?null:VISIBLE); return; }
   if(e.target.id==="zoomprev"||e.target.id==="zoomnext"){ stepZoom(e.target.id==="zoomnext"?1:-1); return; }
-  if(e.target.id==="zoomclose"||e.target.id==="zoom"){ document.getElementById("zoom").close(); return; }
+  if(e.target.id==="zoomclose"||e.target.id==="zoom"){ const d=document.getElementById("zoom"); d.close(); if(d._from&&document.contains(d._from)){ d._from.focus(); d._from=null; } return; }
   const cm=e.target.closest("[data-cmp]"); if(cm){ openCompare(cm.dataset.cmp,cm.dataset.cut,cm); return; }
   if(e.target.id==="cmpclose"||e.target.id==="cmp"){ const d=document.getElementById("cmp"); d.close(); if(d._from&&document.contains(d._from)) d._from.focus(); return; }
   if(e.target.id==="sheetclose"||e.target.id==="sheet"){ document.getElementById("sheet").close(); const r=mainEl(SEL,view==="compare"?ACTIVECOL:null); if(r) r.focus(); return; }

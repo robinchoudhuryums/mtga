@@ -1442,7 +1442,9 @@ is protecting.
   (G-25). Restyle the TEMPLATE, never a rendered page — `.cycle/board*/index.html` is
   regenerated. An artifact version holds at most **511 files**, so the claude.ai board
   ships one thumbnail sprite plus a 672 px image per card (~500 cards); Pages hot-links
-  Scryfall. `/pile-analysis` Stage 6 owns publishing and the request queue. [G-89]
+  Scryfall. **Alternate printings are VIEW-ONLY** (`printings.json`, Scryfall `unique:art`, so a
+  frame-only variant of the same art is never listed): a deck line keeps the pool's one printing
+  (G-65). `/pile-analysis` Stage 6 owns publishing and the request queue. [G-89]
 
 ## Known Issues
 

@@ -1368,6 +1368,11 @@ tools miss ("counts as interaction") and queue an ownership correction. Picks st
 browser; **Your picks → Copy as text** gives Claude `swap --package` lines, protect
 requests, and an `/ingest` block for the ownership corrections. The projection's tier floor
 uses only the counted figures — hidden roles are shown beside it, never inside it.
+A card with more than one artwork on Arena shows **Arena printings** in its pane — every
+distinct illustration with its set, collector number, rarity and treatment (showcase,
+borderless …), oldest first. It is view-only: choose the art in Arena. A borderless frame of
+the same art is not listed, since Scryfall's `unique:art` keeps one printing per illustration.
+The list is cached in `builds/<slug>/printings.json`, so the offline Pages build has it.
 
 ### Editing app — edit the collection in your browser (optional)
 

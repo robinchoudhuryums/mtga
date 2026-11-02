@@ -376,3 +376,63 @@ class TestAddDeck:
             B.add_deck(b, str(other))
         with pytest.raises(B.BuildError, match="already used"):
             B.add_deck(b, D.find_deck("96")["path"], key="N")
+
+
+class TestPrintingArts:
+    """View-only alternate Arena printings: one entry per ILLUSTRATION (Scryfall unique:art),
+    cached per build; a card with one art is cached as [] and never returned."""
+
+    def _fake_scryfall(self, monkeypatch, calls):
+        import scryfall
+        def post_collection(names, **kw):
+            calls.append(("collection", tuple(names)))
+            return {"data": [{"name": n, "oracle_id": f"oid-{n}"} for n in names]}
+        def get_json(url, **kw):
+            calls.append(("search", url))
+            data = [{"oracle_id": "oid-Opt", "set": "xln", "collector_number": "65", "rarity": "common",
+                     "released_at": "2017-09-29", "artist": "A", "set_name": "Ixalan",
+                     "image_uris": {"art_crop": "https://x/art_crop/a.jpg", "normal": "https://x/normal/a.jpg"},
+                     "frame_effects": ["legendary"], "border_color": "black"},
+                    {"oracle_id": "oid-Opt", "set": "sta", "collector_number": "82", "rarity": "uncommon",
+                     "released_at": "2021-04-23", "artist": "B", "set_name": "Mystical Archive",
+                     "image_uris": {"art_crop": "https://x/art_crop/b.jpg", "normal": "https://x/normal/b.jpg"},
+                     "frame_effects": ["showcase"], "border_color": "borderless"},
+                    {"oracle_id": "oid-Counterspell", "set": "mar", "collector_number": "52", "rarity": "uncommon",
+                     "released_at": "2025-01-01", "artist": "C", "set_name": "X",
+                     "image_uris": {"art_crop": "https://x/art_crop/c.jpg", "normal": "https://x/normal/c.jpg"}}]
+            return {"data": data, "has_more": False}
+        monkeypatch.setattr(scryfall, "post_collection", post_collection)
+        monkeypatch.setattr(scryfall, "get_json", get_json)
+
+    def test_arts_are_fetched_once_cached_and_single_art_cards_dropped(self, scratch, monkeypatch):
+        deck_path, _ = scratch
+        _new(deck_path)
+        calls = []
+        self._fake_scryfall(monkeypatch, calls)
+        arts = B.printing_arts("t", ["Opt", "Counterspell"])
+        assert list(arts) == ["Opt"]                                  # Counterspell has one art
+        assert [p["set"] for p in arts["Opt"]] == ["XLN", "STA"]
+        assert arts["Opt"][0]["fx"] == [] and arts["Opt"][1]["fx"] == ["borderless", "showcase"]
+        assert "unique%3Aart" in next(u for k, u in calls if k == "search")
+        cache = json.load(open(os.path.join(B.BUILDS_DIR, "t", "printings.json")))
+        assert cache["Counterspell"] == [] and len(cache["Opt"]) == 2
+        calls.clear()
+        assert B.printing_arts("t", ["Opt", "Counterspell"]) == arts and calls == []   # cache only
+
+    def test_offline_render_reads_the_cache_and_attaches_al(self, scratch, monkeypatch):
+        deck_path, tmp = scratch
+        b = _new(deck_path)
+        B.add_cards(b, ["Opt", "Counterspell"], pile="G")
+        B.save_build("t", b)
+        calls = []
+        self._fake_scryfall(monkeypatch, calls)
+        B.printing_arts("t", ["Opt", "Counterspell"])
+        monkeypatch.setattr(B, "image_urls", lambda slug, names, fetch=True: {})
+        import scryfall
+        monkeypatch.setattr(scryfall, "get_json", lambda *a, **k: (_ for _ in ()).throw(AssertionError("network")))
+        r = B.render("t", "pages", str(tmp / "out"), tempo=False, fetch=False)
+        import re as _re
+        s = open(r["page"], encoding="utf-8").read()
+        data = json.loads(_re.search(r'id="data">(.*?)</script>', s, _re.S).group(1).replace("<\\/", "</"))
+        by = {c["n"]: c for c in data["cards"]}
+        assert len(by["Opt"]["al"]) == 2 and "al" not in by["Counterspell"]
