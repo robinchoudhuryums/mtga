@@ -233,6 +233,8 @@ as a Builder project, so the owner can review it on a page instead of in chat.
 | 2b | `builder.py site --out _site` (Pages job, every push to main) | `builder.html` + `builds/<slug>.html` | ~5s per project |
 | 3 | `builder.py picks <slug> <copied>` | checked `swap --package`, protect, ownership and hidden-role lines | <1s |
 | 4 | `builder.py check <slug>` (also a soft `check_all` line) | reasons written against an older deck list | ~1s |
+| 5 | `builder.py verdict <slug> <card> <deck> <mark>` / `--file` | a per-deck star (★★★ … ✗), stamped like a reason | <1s |
+| 6 | `deck.py flex <id> --add "+Card \| note" --apply` (from step 3's output, run by `/apply-changes`) | a benched card as a `#~` line in the deck file | <1s |
 
 **Reconciliation points**
 
@@ -241,6 +243,11 @@ as a Builder project, so the owner can review it on a page instead of in chat.
   is named, not applied.
 - ⚖ **A reason is graded against a deck version.** `check` flags it after a swap; the
   owner decides whether the reason still holds.
+- ⚖ **A bench reaches the deck file, a keep-out does not.** Step 3 prints one `flex --add`
+  per benched card; `/apply-changes` writes them with the swaps, so the next `/tune-deck`
+  reads the bench. It refuses a card the deck runs or another `#~` line names.
+- ⚖ **A pile move is a request.** The pane queues it; `/pile-analysis` Stage 6 re-files the
+  card with `builder.py place` and re-reads its reason and verdicts.
 - ⚖ **An ownership correction is an `/ingest` batch.** It can LOWER a count
   (`reconcile_crafts --set-exact`), and a card owned across two printings sums them — read
   the dry run.

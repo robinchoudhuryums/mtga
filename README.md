@@ -1345,8 +1345,10 @@ staying reachable by heading-jump navigation.
 ### Builder — piles of candidate cards beside the decks they are for
 
 `scripts/builder.py` keeps a deck-building pile as data: `builds/<slug>/build.json` holds
-only what was decided by hand (the decks, the piles, where each card sits, and the reason
-written for it). Everything else — oracle text, cost, roles, owned count, each deck's live
+only what was decided by hand (the decks, the piles, where each card sits, the reason
+written for it, and a verdict star per deck). Each deck gets its own pile, plus the deck-less
+ones named for the deck count: "Doesn't fit" for one deck; "Either deck" and "Fits neither"
+for two; "More than one deck" and "Fits none" for three or more. Everything else — oracle text, cost, roles, owned count, each deck's live
 floor, interaction, card advantage, sources and `cuts` ranks — is derived from the repo
 when the page is built, so a page can never show stale deck figures.
 

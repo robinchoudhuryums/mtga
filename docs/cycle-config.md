@@ -334,6 +334,10 @@ sprite plus 672 px files and art sheets — an artifact version holds at most 51
 `site --out _site` writes `builder.html` + `builds/<slug>.html` for Pages, hot-linking
 Scryfall. The dashboard's ⚒ header link and Builder section point at them. Picks stay in the
 browser (or the artifact's store) and leave only as a copied block `builder.py picks` checks.
+Per-deck verdict stars (`builder.py verdict`, stamped with each deck's list hash like a reason)
+drive the page's star chips, Verdict filter and sort; the card pane's cut list picks a swap's
+cut with a full preview; a benched card leaves as a `deck.py flex <id> --add` line that
+`/apply-changes` writes into the deck's `#~` block; a pile move is a request Claude re-files.
 Pinned by `tests/test_builder.py` and `tests/test_builder_template.py` (the page's own JS run
 under Node against the deck model); the perceptual half is Regression Scenario 25.
 

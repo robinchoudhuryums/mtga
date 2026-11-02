@@ -23,7 +23,21 @@ The heading used to read "THE 2026-08-24 SESSION" while the stamps under it ran 
 2026-10-01 (BS11-65). The NEWEST stamp is always the first one; each supersedes the
 stamps below it where they disagree.
 
-> **STATE STAMP, 2026-11-02 (NEWEST — supersedes the stamps below where they disagree).**
+> **STATE STAMP, 2026-11-02, late (NEWEST — supersedes the stamps below where they disagree).**
+> **The Builder picks workflow is done** — blocks `builder-batch0-verdicts`, `-batchA-cuts`,
+> `-batchB`, `-batchC-broad-implement.md`; the plan doc is retired. New since the stamp below:
+> per-deck verdict stars (`builder.py verdict`), the cut list with previews, the Compare inspect
+> slot and swap package, per-deck Bench / Keep out with a Decision filter and bulk marks (one
+> undo per gesture), pile-move requests, `deck.py flex <id> --add` (a bench → a `#~` line), pile
+> labels and keys for one or 3+ decks. **Sultai:** the owner's synergy-first rule (deck 75's
+> `#: notes:`; analysis §10) took nine Elf-only cards out of 75-historic-brawl; every reason and
+> verdict was re-graded against the live lists (§11–12) and `builder.py check sultai` is clean;
+> 60 cards moved to Fits neither. **Open:** the owner is still marking picks on the board
+> (artifact v26) — when they say so, read the `picks` and `requests` collections, run
+> `builder.py picks sultai -`, then `/apply-changes` (it runs the `flex --add` lines too).
+> Ulamog, the Ceaseless Hunger grades ◇ in Glarb's own list — a cut to raise.
+>
+> **STATE STAMP, 2026-11-02 (superseded by the late stamp above where they disagree).**
 > **The Builder is complete** (G-89; blocks `builder-batch1…4-broad-implement.md` and
 > `builder-printings-broad-implement.md`): `scripts/builder.py` + `scripts/builder_template.html`
 > keep a graded pile as `builds/<slug>/build.json` and render it as a claude.ai board
