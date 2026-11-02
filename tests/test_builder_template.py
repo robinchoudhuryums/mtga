@@ -283,3 +283,28 @@ class TestVerdictFilter:
                                         text=True, check=True).stdout)
         assert out["ranks"] == [0, 1, 2, 3, 5, 99]
         assert out["match"] == [["a", "b"], ["a", "b", "c"], ["d", "e"], ["f"], list("abcdef")]
+
+
+_HARNESS_SYM = """
+const fs = require('fs');
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
+eval(fs.readFileSync(process.argv[2], 'utf8'));
+const t = "{T}: Add {G}{G}. {2}{B/P}, {Q}: draw. Keep {braces} and {10} words {X}.";
+console.log(JSON.stringify({out: sym(esc(t))}));
+"""
+
+
+@pytest.mark.skipif(not _NODE, reason="node not installed (CI sets PYTEST_NO_SKIPS, so CI cannot skip)")
+class TestSymbolsInText:
+    def test_symbols_become_pips_and_prose_braces_stay(self, tmp_path):
+        js = tmp_path / "fns.js"
+        js.write_text(_extract_consts(["SYMWORD", "sym"]) + "\n" + _extract(["pip1"])
+                      + "\nglobalThis.sym = sym;")
+        h = tmp_path / "h.js"
+        h.write_text(_HARNESS_SYM)
+        out = json.loads(subprocess.run([_NODE, str(h), str(js), "-"], capture_output=True,
+                                        text=True, check=True).stdout)["out"]
+        assert out.count('class="pip in') == 8                  # T, G, G, 2, B/P, Q, 10, X
+        assert 'aria-label="tap"' in out and 'aria-label="untap"' in out
+        assert "{braces}" in out                                  # prose in braces is left alone
+        assert "{T}" not in out.replace('title="{T}', "")

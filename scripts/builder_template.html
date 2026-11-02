@@ -52,6 +52,8 @@ button,select,input,textarea{font:inherit;color:inherit}
 .themebtn{background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:4px 12px;cursor:pointer;color:var(--muted);font-size:.84rem;white-space:nowrap}
 .themebtn:hover{color:var(--ink);border-color:var(--brass)}
 .pip{display:inline-grid;place-items:center;min-width:1.3em;height:1.3em;padding:0 .2em;border-radius:999px;font:700 .72rem/1 var(--ui);color:var(--pip-ink);background:var(--pC);border:1px solid rgba(0,0,0,.22)}
+.pip.in{min-width:1.2em;height:1.2em;font-size:.68em;vertical-align:-.15em;margin:0 .06em}
+.pip.sym svg{width:.85em;height:.85em;display:block}
 
 /* deck strip */
 .decks{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:12px}
@@ -330,7 +332,7 @@ const slug = n => String(n||"").toLowerCase().normalize("NFKD").replace(/[^a-z0-
 CARDS.forEach(c => c.id = slug(c.n));
 const BYID = Object.fromEntries(CARDS.map(c => [c.id, c]));
 const esc = s => String(s??"").replace(/[&<>"]/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[ch]));
-const fmt = s => esc(s).replace(/`([^`]+)`/g,"<code>$1</code>").replace(/\*\*([^*]+)\*\*/g,"<b>$1</b>");
+const fmt = s => sym(esc(s).replace(/`([^`]+)`/g,"<code>$1</code>").replace(/\*\*([^*]+)\*\*/g,"<b>$1</b>"));
 const plain = s => String(s||"").replace(/\*\*|`/g,"");
 
 /* Images: the artifact target ships files (img/ small, img/lg/ large); the Pages target hot-links Scryfall. */
@@ -422,12 +424,17 @@ function applyPane(){ const con=document.getElementById("console"), b=document.g
   con.classList.toggle("nopane",!PANE); b.setAttribute("aria-expanded",String(PANE)); b.textContent=PANE?"Hide card pane":"Show card pane"; b.title=(PANE?"Hide":"Show")+" the card pane (p)"; if(PANE) hidePeek(); }
 function togglePane(){ PANE=!PANE; savePrefs(); applyPane(); }
 
-function pips(cost){
-  return (String(cost||"").split(" // ")[0].match(/\{[^}]+\}/g)||[]).map(t=>{
-    const s=t.slice(1,-1), parts=s.split("/"), col=x=>({W:"--pW",U:"--pU",B:"--pB",R:"--pR",G:"--pG"})[x];
-    const bg = parts.length===2&&col(parts[0])&&col(parts[1]) ? `linear-gradient(135deg,var(${col(parts[0])}) 50%,var(${col(parts[1])}) 50%)` : col(parts[0])?`var(${col(parts[0])})`:"var(--pC)";
-    return `<span class="pip" style="background:${bg}" title="${esc(t)}">${esc(parts.length===2&&parts[1]==="P"?parts[0]:s.length>2?s[0]:s)}</span>`; }).join("");
-}
+/* One mana / ability symbol as a pip. `cls` adds "in" for symbols set inside running text. */
+const SYMWORD = {T:"tap", Q:"untap", E:"energy", S:"snow"};
+function pip1(t, cls=""){ const s=t.slice(1,-1), k=` class="pip${cls?" "+cls:""}`;
+  if(s==="T"||s==="Q") return `<span${k} sym" role="img" aria-label="${SYMWORD[s]}" title="${esc(t)} — ${SYMWORD[s]}"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="${s==="T"?"M3.2 8.6A3.6 3.6 0 1 1 8.8 8.4":"M8.8 3.4A3.6 3.6 0 1 0 3.2 3.6"}" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="${s==="T"?"M8.9 5.9 8.8 8.6 6.2 8.2":"M3.1 6.1 3.2 3.4 5.8 3.8"}" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span>`;
+  const parts=s.split("/"), col=x=>({W:"--pW",U:"--pU",B:"--pB",R:"--pR",G:"--pG"})[x];
+  const bg = parts.length===2&&col(parts[0])&&col(parts[1]) ? `linear-gradient(135deg,var(${col(parts[0])}) 50%,var(${col(parts[1])}) 50%)` : col(parts[0])?`var(${col(parts[0])})`:"var(--pC)";
+  return `<span${k}" style="background:${bg}" title="${esc(t)}">${esc(parts.length===2&&parts[1]==="P"?parts[0]:s.length>2?s[0]:s)}</span>`; }
+function pips(cost){ return (String(cost||"").split(" // ")[0].match(/\{[^}]+\}/g)||[]).map(t=>pip1(t)).join(""); }
+/* Symbols inside already-escaped text: {T}, {G}, {2}, {B/P}… become pips; anything longer than a
+   symbol (a brace in prose) is left alone. */
+const sym = html => String(html).replace(/\{(?:[WUBRGCXYZSTQE]|\d{1,2}|[WUBRGC2]\/[WUBRGP])\}/g, t=>pip1(t,"in"));
 function stripe(c){ const cols=[...new Set(((c.c||"").split(" // ")[0].match(/[WUBRG]/g)||[]))].sort((a,b)=>"WUBRG".indexOf(a)-"WUBRG".indexOf(b));
   const v=(cols.length?cols:["C"]).map(x=>`var(--id${x})`); if(v.length===1) v.push(v[0]); return `linear-gradient(${v.join(",")})`; }
 function reasonOf(c){ const r=reasons[c.id]; if(r&&r.text) return {g:r.group||"",w:r.text}; return c.w?{g:c.g,w:c.w}:null; }
@@ -501,7 +508,7 @@ function rowHTML(c, col=""){
     <span class="th">${thumb(c)}</span>
     <button type="button" class="main" data-sel="${c.id}" aria-current="${c.id===SEL}" aria-expanded="${NOTEOPEN===c.id&&NOTECOL===col}" title="Click again to write a note">
       <span class="l1"><span class="nm">${esc(c.n)}</span><span class="cost">${pips(c.c)}</span><span class="noteDot" title="Has a note"${hasNote(c.id)?"":" hidden"}>✎</span></span>
-      <span class="l2">${lead}${ap?`<span class="tag done">Applied ✓</span>`:""}${isSwap(c)?`<span class="seal">Swap</span>`:""}${col==="R"?"":tags}${ownTag(c)}${(c.al||[]).length>1?`<span class="tag" title="${c.al.length} artworks on Arena — see the card pane">⧉${c.al.length}</span>`:""}${roleTags(c,false)}<span class="why1">${esc(firstLine(c))}</span></span>
+      <span class="l2">${lead}${ap?`<span class="tag done">Applied ✓</span>`:""}${isSwap(c)?`<span class="seal">Swap</span>`:""}${col==="R"?"":tags}${ownTag(c)}${(c.al||[]).length>1?`<span class="tag" title="${c.al.length} artworks on Arena — see the card pane">⧉${c.al.length}</span>`:""}${roleTags(c,false)}<span class="why1">${sym(esc(firstLine(c)))}</span></span>
     </button>
     ${extra}${quick(c)}
   </div>${NOTEOPEN===c.id&&NOTECOL===col?noteRowHTML(c,col):""}</div>`;
@@ -531,7 +538,7 @@ function detailHTML(c, inSheet){
     ${applied.length?`<p class="status"><span class="tag done">Applied ✓</span> ${esc(applied.map(x=>PICKLAB[x]).join("; "))} — the deck file already shows it.</p>`:""}
     ${conf.length?`<div class="conf" role="note"><b>⚠ Conflict</b><ul>${conf.map(x=>`<li>${esc(x.msg)}</li>`).join("")}</ul></div>`:""}
     ${r?`<p class="reason">${isSwap(c)?`<span class="seal">Swap candidate</span>`:`<span class="seal">${esc(groupLabel(r.g))}</span>`}${fmt(r.w)}</p>`:`<p class="reason pending">${inAny(c)?"In the list.":"No reason written yet."}</p>`}
-    <details class="rules"><summary>Rules text</summary><p>${esc(c.x||"(no rules text)")}</p></details>
+    <details class="rules"><summary>Rules text</summary><p>${sym(esc(c.x||"(no rules text)"))}</p></details>
     ${artsHTML(c)}
     ${[...pileScope(c),...DK.filter(k=>!pileScope(c).includes(k))].map(k=>{ const l=esc(DECKS[k].label);
       const vm=(c.vd||{})[k], vst=(c.vs||{})[k]||"";
@@ -799,7 +806,7 @@ function showZoom(){ const c=BYID[ZLIST[ZI]], im=document.getElementById("zoomim
 function openZoom(id,list){ ZLIST=(list&&list.includes(id))?list.slice():[id]; ZI=ZLIST.indexOf(id); showZoom(); const d=document.getElementById("zoom"); if(!d.open&&d.showModal) d.showModal(); }
 function stepZoom(n){ if(ZLIST.length<2) return; ZI=(ZI+n+ZLIST.length)%ZLIST.length; showZoom(); }
 function openCompare(addId,cutId,from){ const side=(c,label)=>{ const r=reasonOf(c); return `<div class="cmpside"><p class="cmplab">${label}</p><img src="${esc(imgSrc(c,"l"))}" data-fb="${esc(fallbackOf(c))}" alt="${esc(c.n)}" loading="lazy">
-  <h3 class="dname" style="font-size:1.1rem">${esc(c.n)} <span class="cost">${pips(c.c)}</span></h3><p class="dtype">${esc(c.t)}</p><div class="rules"><p>${esc(c.x||"")}</p></div>${r?`<p class="reason" style="font-size:.9rem"><span class="seal">${esc(groupLabel(r.g))}</span>${fmt(r.w)}</p>`:""}</div>`; };
+  <h3 class="dname" style="font-size:1.1rem">${esc(c.n)} <span class="cost">${pips(c.c)}</span></h3><p class="dtype">${esc(c.t)}</p><div class="rules"><p>${sym(esc(c.x||""))}</p></div>${r?`<p class="reason" style="font-size:.9rem"><span class="seal">${esc(groupLabel(r.g))}</span>${fmt(r.w)}</p>`:""}</div>`; };
   document.getElementById("cmpgrid").innerHTML=side(BYID[addId],"Add")+side(BYID[cutId],"Cut"); const d=document.getElementById("cmp"); d._from=from; if(d.showModal) d.showModal(); }
 function openSheet(id){ SEL=id; const sh=document.getElementById("sheet"); document.getElementById("sheetbody").innerHTML=`<div class="detail">${detailHTML(BYID[id],true)}</div>`; if(!sh.open&&sh.showModal) sh.showModal(); }
 

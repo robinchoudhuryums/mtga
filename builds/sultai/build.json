@@ -56,7 +56,7 @@
   },
   {
    "name": "Legolas, Counter of Kills",
-   "pile": "B",
+   "pile": "N",
    "src": "pile"
   },
   {
@@ -71,7 +71,7 @@
   },
   {
    "name": "Elrond, Master of Healing",
-   "pile": "B",
+   "pile": "N",
    "src": "pile"
   },
   {
@@ -91,7 +91,7 @@
   },
   {
    "name": "Nael, Avizoa Aeronaut",
-   "pile": "T",
+   "pile": "N",
    "src": "pile"
   },
   {
@@ -101,7 +101,7 @@
   },
   {
    "name": "Imoti, Celebrant of Bounty",
-   "pile": "G",
+   "pile": "N",
    "src": "pile"
   },
   {
@@ -171,7 +171,7 @@
   },
   {
    "name": "Kotis, the Fangkeeper",
-   "pile": "G",
+   "pile": "N",
    "src": "pile"
   },
   {
@@ -186,7 +186,7 @@
   },
   {
    "name": "Gonti, Canny Acquisitor",
-   "pile": "G",
+   "pile": "N",
    "src": "pile"
   },
   {
@@ -221,7 +221,7 @@
   },
   {
    "name": "Mimeoplasm, Revered One",
-   "pile": "T",
+   "pile": "N",
    "src": "pile"
   },
   {
@@ -231,7 +231,7 @@
   },
   {
    "name": "Fblthp, Impossibly Lost",
-   "pile": "B",
+   "pile": "N",
    "src": "pile"
   },
   {
@@ -261,7 +261,7 @@
   },
   {
    "name": "Malcolm, Alluring Scoundrel",
-   "pile": "T",
+   "pile": "N",
    "src": "pile"
   },
   {
@@ -276,7 +276,7 @@
   },
   {
    "name": "Proft's Eidetic Memory",
-   "pile": "G",
+   "pile": "N",
    "src": "pile"
   },
   {
@@ -286,7 +286,7 @@
   },
   {
    "name": "The Key to the Vault",
-   "pile": "G",
+   "pile": "N",
    "src": "pile"
   },
   {
@@ -311,7 +311,7 @@
   },
   {
    "name": "Elrond, Lord of Rivendell",
-   "pile": "B",
+   "pile": "N",
    "src": "pile"
   },
   {
@@ -391,7 +391,7 @@
   },
   {
    "name": "Mu Yanling, Sky Dancer",
-   "pile": "B",
+   "pile": "N",
    "src": "pile"
   },
   {
@@ -521,7 +521,7 @@
   },
   {
    "name": "Iymrith, Desert Doom",
-   "pile": "G",
+   "pile": "N",
    "src": "pile"
   },
   {
@@ -616,7 +616,7 @@
   },
   {
    "name": "Wan Shi Tong, Librarian",
-   "pile": "G",
+   "pile": "N",
    "src": "pile"
   },
   {
@@ -671,7 +671,7 @@
   },
   {
    "name": "Davriel, Soul Broker",
-   "pile": "B",
+   "pile": "N",
    "src": "pile"
   },
   {
@@ -686,7 +686,7 @@
   },
   {
    "name": "Gisa, Glorious Resurrector",
-   "pile": "T",
+   "pile": "N",
    "src": "pile"
   },
   {
@@ -741,7 +741,7 @@
   },
   {
    "name": "Rev, Tithe Extractor",
-   "pile": "G",
+   "pile": "N",
    "src": "pile"
   },
   {
@@ -771,7 +771,7 @@
   },
   {
    "name": "Ashiok, Wicked Manipulator",
-   "pile": "G",
+   "pile": "N",
    "src": "pile"
   },
   {
@@ -941,7 +941,7 @@
   },
   {
    "name": "Celeborn the Wise",
-   "pile": "T",
+   "pile": "N",
    "src": "pile"
   },
   {
@@ -961,7 +961,7 @@
   },
   {
    "name": "Leyline Immersion",
-   "pile": "B",
+   "pile": "N",
    "src": "pile"
   },
   {
@@ -1036,7 +1036,7 @@
   },
   {
    "name": "Krydle of Baldur's Gate",
-   "pile": "T",
+   "pile": "N",
    "src": "pile"
   },
   {
@@ -1046,7 +1046,7 @@
   },
   {
    "name": "Zimone the Calculating // Simple Subtraction",
-   "pile": "T",
+   "pile": "N",
    "src": "pile"
   },
   {
@@ -1066,12 +1066,12 @@
   },
   {
    "name": "Rona, Disciple of Gix",
-   "pile": "G",
+   "pile": "N",
    "src": "pile"
   },
   {
    "name": "Emet-Selch of the Third Seat",
-   "pile": "T",
+   "pile": "N",
    "src": "pile"
   },
   {
@@ -1151,7 +1151,7 @@
   },
   {
    "name": "Abomination of Llanowar",
-   "pile": "T",
+   "pile": "N",
    "src": "pile"
   },
   {
@@ -1176,12 +1176,12 @@
   },
   {
    "name": "Sarulf, Realm Eater",
-   "pile": "B",
+   "pile": "N",
    "src": "pile"
   },
   {
    "name": "Sméagol, Helpful Guide",
-   "pile": "G",
+   "pile": "N",
    "src": "pile"
   },
   {
@@ -1216,12 +1216,12 @@
   },
   {
    "name": "Nemata, Primeval Warden",
-   "pile": "G",
+   "pile": "N",
    "src": "pile"
   },
   {
    "name": "Tyvar the Bellicose",
-   "pile": "T",
+   "pile": "N",
    "src": "pile"
   },
   {
@@ -1256,7 +1256,7 @@
   },
   {
    "name": "Arwen Undómiel",
-   "pile": "B",
+   "pile": "N",
    "src": "pile"
   },
   {
@@ -1276,7 +1276,7 @@
   },
   {
    "name": "Galadriel of Lothlórien",
-   "pile": "B",
+   "pile": "N",
    "src": "pile"
   },
   {
@@ -1361,7 +1361,7 @@
   },
   {
    "name": "Elvish Warmaster",
-   "pile": "T",
+   "pile": "N",
    "src": "outside"
   },
   {
@@ -1381,7 +1381,7 @@
   },
   {
    "name": "Dwynen, Gilt-Leaf Daen",
-   "pile": "T",
+   "pile": "N",
    "src": "outside"
   },
   {
@@ -1391,7 +1391,7 @@
   },
   {
    "name": "Harald, King of Skemfar",
-   "pile": "T",
+   "pile": "N",
    "src": "outside"
   },
   {
@@ -1406,17 +1406,17 @@
   },
   {
    "name": "Elderfang Ritualist",
-   "pile": "T",
+   "pile": "N",
    "src": "outside"
   },
   {
    "name": "Skemfar Avenger",
-   "pile": "T",
+   "pile": "N",
    "src": "outside"
   },
   {
    "name": "Morcant's Loyalist",
-   "pile": "T",
+   "pile": "N",
    "src": "outside"
   },
   {
@@ -1431,7 +1431,7 @@
   },
   {
    "name": "Shaman of the Pack",
-   "pile": "T",
+   "pile": "N",
    "src": "outside"
   },
   {
@@ -1441,7 +1441,7 @@
   },
   {
    "name": "Bounty of Skemfar",
-   "pile": "T",
+   "pile": "N",
    "src": "outside"
   },
   {
@@ -1806,7 +1806,7 @@
   },
   {
    "name": "Navigator's Ruin",
-   "pile": "G",
+   "pile": "N",
    "src": "outside"
   },
   {
@@ -1831,7 +1831,7 @@
   },
   {
    "name": "Grindstone",
-   "pile": "G",
+   "pile": "N",
    "src": "outside"
   },
   {
@@ -1841,7 +1841,7 @@
   },
   {
    "name": "Mind's Dilation",
-   "pile": "G",
+   "pile": "N",
    "src": "outside"
   },
   {
@@ -1861,7 +1861,7 @@
   },
   {
    "name": "Persistent Petitioners",
-   "pile": "G",
+   "pile": "N",
    "src": "outside"
   },
   {
@@ -1896,7 +1896,7 @@
   },
   {
    "name": "Keening Stone",
-   "pile": "G",
+   "pile": "N",
    "src": "outside"
   },
   {
@@ -1911,12 +1911,12 @@
   },
   {
    "name": "Scavenger's Talent",
-   "pile": "T",
+   "pile": "N",
    "src": "outside"
   },
   {
    "name": "Brain Freeze",
-   "pile": "G",
+   "pile": "N",
    "src": "outside"
   },
   {
@@ -1931,7 +1931,7 @@
   },
   {
    "name": "Hullbreaker Horror",
-   "pile": "G",
+   "pile": "N",
    "src": "outside"
   },
   {
@@ -1971,7 +1971,7 @@
   },
   {
    "name": "Memory Lapse",
-   "pile": "B",
+   "pile": "N",
    "src": "outside"
   },
   {
@@ -1986,12 +1986,12 @@
   },
   {
    "name": "Anoint with Affliction",
-   "pile": "B",
+   "pile": "N",
    "src": "outside"
   },
   {
    "name": "Fatal Push",
-   "pile": "B",
+   "pile": "N",
    "src": "outside"
   },
   {
@@ -2021,12 +2021,12 @@
   },
   {
    "name": "Talisman of Resilience",
-   "pile": "B",
+   "pile": "N",
    "src": "outside"
   },
   {
    "name": "Cultivate",
-   "pile": "B",
+   "pile": "N",
    "src": "outside"
   },
   {
@@ -2086,12 +2086,12 @@
   },
   {
    "name": "Laboratory Maniac",
-   "pile": "T",
+   "pile": "N",
    "src": "outside"
   },
   {
    "name": "Rot Farm Mortipede",
-   "pile": "T",
+   "pile": "N",
    "src": "outside"
   },
   {
@@ -2101,7 +2101,7 @@
   },
   {
    "name": "Desecrated Tomb",
-   "pile": "T",
+   "pile": "N",
    "src": "outside"
   },
   {
@@ -2111,7 +2111,7 @@
   },
   {
    "name": "Attuned Hunter",
-   "pile": "T",
+   "pile": "N",
    "src": "outside"
   },
   {
@@ -2121,7 +2121,7 @@
   },
   {
    "name": "Undead Hand Ninja",
-   "pile": "T",
+   "pile": "N",
    "src": "outside"
   },
   {
@@ -2131,12 +2131,12 @@
   },
   {
    "name": "Along the Crooked Way",
-   "pile": "T",
+   "pile": "N",
    "src": "outside"
   },
   {
    "name": "Willow Geist",
-   "pile": "T",
+   "pile": "N",
    "src": "outside"
   },
   {
