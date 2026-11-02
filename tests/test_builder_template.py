@@ -308,3 +308,42 @@ class TestSymbolsInText:
         assert 'aria-label="tap"' in out and 'aria-label="untap"' in out
         assert "{braces}" in out                                  # prose in braces is left alone
         assert "{T}" not in out.replace('title="{T}', "")
+
+
+_HARNESS_PKG = """
+const fs = require('fs');
+const input = JSON.parse(fs.readFileSync(process.argv[3], 'utf8'));
+const slug = n => String(n||"").toLowerCase().normalize("NFKD").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,180) || "card";
+const CARDS = input.cards; CARDS.forEach(c => c.id = slug(c.n));
+const BYID = Object.fromEntries(CARDS.map(c => [c.id, c]));
+const DK = ["T"], PROT = {T: new Set()};
+const nameOf = id => (BYID[id]&&BYID[id].n) || "";
+let picks = input.picks;
+eval(fs.readFileSync(process.argv[2], 'utf8'));
+globalThis.r = {pkg: packageOf("T"), need: CARDS.map(c => needsCut(c.id, "T"))};
+console.log(JSON.stringify(globalThis.r));
+"""
+
+
+@pytest.mark.skipif(not _NODE, reason="node not installed (CI sets PYTEST_NO_SKIPS, so CI cannot skip)")
+class TestSwapPackage:
+    def test_package_splits_paired_unpaired_and_lone_cuts(self, tmp_path):
+        """One deck's pending package: an add with a cut is paired, an add without one needs a
+        cut, a marked cut nobody replaces is a lone cut — and an add that already landed (the card
+        is in the deck) is none of these."""
+        cards = [{"n": "A1", "iT": False}, {"n": "A2", "iT": False}, {"n": "In1", "iT": True},
+                 {"n": "In2", "iT": True}, {"n": "Landed", "iT": True}]
+        picks = {"a1": {"picks": ["addT"], "pair": {"T": "In1"}}, "a2": {"picks": ["addT", "benchT"]},
+                 "in2": {"picks": ["cutT"]}, "landed": {"picks": ["addT"]}}
+        fx = tmp_path / "in.json"
+        fx.write_text(json.dumps({"cards": cards, "picks": picks}))
+        js = tmp_path / "fns.js"
+        js.write_text(_extract_consts(["KINDS", "deckOfPick", "hasPick", "pending", "needsCut"]) + "\n"
+                      + _extract(["isApplied", "packageOf"])
+                      + "\nglobalThis.needsCut = needsCut;")      # an eval'd const is not visible outside it
+        h = tmp_path / "h.js"
+        h.write_text(_HARNESS_PKG)
+        out = json.loads(subprocess.run([_NODE, str(h), str(js), str(fx)], capture_output=True,
+                                        text=True, check=True).stdout)
+        assert out["pkg"] == {"paired": [["a1", "In1"]], "unpaired": ["a2"], "cutsOnly": ["in2"]}
+        assert out["need"] == [False, True, False, False, False]

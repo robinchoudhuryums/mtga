@@ -445,6 +445,8 @@ Updated: 2026-10-31 (deck-95 session tooling fixes — see Where I left off)
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
+**2026-11-02 (latest) — Builder Batch A done (choosing cuts)** (block `builder-batchA-cuts-broad-implement.md`); Option 2 pile moves (60 → Fits neither) and in-text mana symbols landed just before. **Next:** Batch B, then C.
+
 **2026-11-02 (latest) — Sultai board fully re-graded**: 259 stale reasons + 467 pre-draft verdicts (325 cards) refreshed against the live lists (analysis doc §12); `builder.py check sultai` clean. 104 pile moves suggested by the new grades, NOT made — awaiting the owner. **Next:** owner's pile-move call, then plan Batch A.
 
 **2026-11-02 (latest) — Builder Batch 0 done (verdict stars)** (block `builder-batch0-verdicts-broad-implement.md`); 75-historic-brawl got the owner's synergy-first package (9 swaps, commit 3218c87). Plan: `.cycle/builder-picks-plan.md`.

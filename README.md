@@ -1365,8 +1365,11 @@ On GitHub Pages the dashboard links to `builder.html`, a list of projects, and e
 project is its own page (`builds/<slug>.html`). On a project page you can mark adds, cuts,
 and, per deck, Bench (a maybe for later) and Keep out — a deck's own pile offers them for that
 deck, a shared pile for every deck, and for one deck Add, Bench and Keep out clear each other —
-pair an add with the card it replaces (the **Compare** tab puts a pile
-beside a deck's list, with its mana curve now and after), write notes, flag a role the
+pair an add with the card it replaces — the card pane's cut list shows the deck's cards
+in cut order with a full preview on hover or focus, and an add with no cut yet is labelled
+"needs a cut" (the **Compare** tab puts a pile beside a deck's list, with its mana curve now
+and after, the deck's swap package, and a deck card opened beside the selected pile card),
+write notes, flag a role the
 tools miss ("counts as interaction") and queue an ownership correction. Picks stay in that
 browser; **Your picks → Copy as text** gives Claude `swap --package` lines, protect
 requests, and an `/ingest` block for the ownership corrections. The projection's tier floor
