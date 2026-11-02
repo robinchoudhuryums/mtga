@@ -265,7 +265,9 @@ the ranking cannot see it.
      to `main` (`builder.py site`), and the dashboard's Builder section links to it.
 5. **Read the owner's picks.** On the claude.ai board, read the `picks` collection with the
    ArtifactData tool (doc id = card-name slug; `picks` ⊂ add<KEY> / cut<KEY> / prot<KEY> /
-   unprot<KEY> / bench / out, plus `pair`, `note`, `own`, `hid`); on Pages, ask the owner for
+   unprot<KEY> / bench<KEY> / out<KEY>, plus `pair`, `note`, `own`, `hid`; a legacy deck-less
+   `bench` / `out` from before 2026-11-02 is read as every deck the card is not in or being
+   added to); on Pages, ask the owner for
    **Your picks → Copy as text**. Either way, `python3 scripts/builder.py picks <slug> -`
    turns a copied block into checked `swap --package` lines — hand those to
    `/apply-changes`. A pick is a REQUEST: nothing on the page edits a deck file.

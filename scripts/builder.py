@@ -344,12 +344,13 @@ _PAIR = re.compile(r'"([^"=]+)=([^"]+)"')
 
 
 def _empty_deck_picks():
-    return {"pairs": [], "adds": [], "cuts": [], "protect": [], "unprotect": []}
+    return {"pairs": [], "adds": [], "cuts": [], "protect": [], "unprotect": [], "bench": [], "out": []}
 
 
 def parse_picks(text):
     """Read the board's "Copy as text" block. Returns {deck_id: {"pairs": [(cut, add)],
-    "adds": [...], "cuts": [...], "protect": [...], "unprotect": [...]}} plus "notes",
+    "adds": [...], "cuts": [...], "protect": [...], "unprotect": [...], "bench": [...],
+    "out": [...]}} plus "notes",
     "own" [(qty, name, set, collector)] and "hidden" [(name, role)]. Unknown lines are
     ignored."""
     out, notes, cur, section = {}, [], None, None
@@ -376,9 +377,10 @@ def parse_picks(text):
         if line.startswith("cuts with no add:") and cur:
             out[cur]["cuts"] += [x.strip() for x in line.split(":", 1)[1].split(";") if x.strip()]
             continue
-        m = re.match(r"^(protect|unprotect):\s*(.*)$", line)
+        m = re.match(r"^(protect|unprotect|bench|keep out):\s*(.*)$", line)
         if m and cur:
-            out[cur][m.group(1)] += [x.strip() for x in m.group(2).split(";") if x.strip()]
+            key = "out" if m.group(1) == "keep out" else m.group(1)
+            out[cur][key] += [x.strip() for x in m.group(2).split(";") if x.strip()]
             continue
         if line == "Notes:":
             section = "notes"
@@ -461,6 +463,20 @@ def picks_report(build, text, slug=None):
                     ok.append(rn)
             if ok:
                 lines.append(f"#   {kind} (header edit): {'; '.join(ok)}")
+            lines += [f"#   skipped {kind}: {b}" for b in bad]
+        # Bench and Keep out change no file: they are decisions recorded for the next pass
+        # (a benched card is the first place to look when the deck wants a change).
+        for kind, label in (("bench", "bench (no edit — a maybe for later)"), ("out", "keep out (no edit)")):
+            ok, bad = [], []
+            for n in p[kind]:
+                try:
+                    rn = resolve_name(n, idx)
+                except BuildError as e:
+                    bad.append(str(e))
+                    continue
+                (bad.append(f"{rn} is in {did} — cut it instead") if D._ms_key(rn) in runs else ok.append(rn))
+            if ok:
+                lines.append(f"#   {label}: {'; '.join(ok)}")
             lines += [f"#   skipped {kind}: {b}" for b in bad]
     if parsed["own"]:
         # Ownership corrections are an /ingest batch, never applied from here: an exact

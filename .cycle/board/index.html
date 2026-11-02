@@ -119,10 +119,11 @@ details.deck h2{margin:0;font-family:var(--display);font-weight:400;font-size:1.
 .tag{font-size:.7rem;padding:1px 6px;border-radius:3px;border:1px solid var(--line);color:var(--muted);flex:none;white-space:nowrap}
 .tag.in{color:var(--dc);border-color:color-mix(in srgb,var(--dc) 55%,transparent)}
 .tag.prot{color:var(--dc);border-color:var(--dc);font-weight:600}
-/* quick picks: deck toggles on the top row, Bench and Keep out underneath */
+/* quick picks: deck toggles on the top row; Bench and Keep out (per deck, scoped to the pile) underneath */
 .q{display:grid;grid-template-columns:repeat(var(--qn,2),minmax(30px,auto));gap:3px}
 .qb{display:inline-grid;place-items:center;border:1px solid var(--line);background:var(--panel);border-radius:4px;padding:2px 6px;min-height:22px;font:500 .74rem/1.3 var(--mono);cursor:pointer;color:var(--muted)}
 .qb svg{width:12px;height:12px;display:block}
+.qb .qi{display:inline-flex;align-items:center;gap:2px}
 .qb:hover{border-color:var(--qc);color:var(--ink)}
 .qb[aria-pressed="true"]{background:var(--qc);border-color:var(--qc);color:var(--panel)}
 .noteDot{font-size:.8rem;color:var(--accent)}
@@ -206,6 +207,8 @@ dialog#artzoom::backdrop{background:rgba(0,0,0,.72)}
 .rules summary{cursor:pointer;color:var(--accent);width:max-content}
 .rules p{white-space:pre-wrap;margin:6px 0 0;font-family:var(--read)}
 .picks{display:flex;flex-wrap:wrap;gap:6px}
+.picks.dp{align-items:center;margin-bottom:6px}
+.picks .dpl{flex:0 0 5.5em;font:600 .78rem/1.2 var(--ui);color:var(--dc);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .pb{border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:4px 11px;font-size:.84rem;cursor:pointer}
 .pb:hover{border-color:var(--qc,var(--accent))}
 .pb[aria-pressed="true"]{background:color-mix(in srgb,var(--qc,var(--accent)) 16%,var(--panel));border-color:var(--qc,var(--accent));font-weight:600}
@@ -354,11 +357,24 @@ const PILES = [...PILEDEFS,
   {k:"add", hash:"add-cards", label:"Add cards", intro:"Paste card names and choose where they go. This queues a request; when you tell Claude to process the board's requests, Claude reads, grades and adds each card."},
   {k:"picks", hash:"picks", label:"Your picks", intro:"Everything you have marked or noted. Claude reads this back when you ask."}];
 const isPileView = k => PILEKEYS.includes(k);
-const PICKLAB = {bench:"Bench", out:"Keep out"};
-DK.forEach(k=>{ const l=DECKS[k].label; PICKLAB["add"+k]=`Add to ${l}`; PICKLAB["cut"+k]=`Cut from ${l}`; PICKLAB["prot"+k]=`Protect in ${l}`; PICKLAB["unprot"+k]=`Unprotect in ${l}`; });
-const PICKORDER = [...DK.flatMap(k=>["add"+k,"cut"+k]), "bench", "out", ...DK.flatMap(k=>["prot"+k,"unprot"+k])];
-const deckOfPick = v => DK.find(k=>v===("add"+k)||v===("cut"+k)||v===("prot"+k)||v===("unprot"+k));
-function pickColour(v){ const k=deckOfPick(v); return k?DECKS[k].dc:v==="out"?"var(--bad)":"var(--accent)"; }
+/* Every pick names one deck. Bench ("maybe later") and Keep out are per deck, and within one
+   deck Add, Bench and Keep out exclude each other: choosing one clears the other two. */
+const PICKLAB = {};
+DK.forEach(k=>{ const l=DECKS[k].label; PICKLAB["add"+k]=`Add to ${l}`; PICKLAB["cut"+k]=`Cut from ${l}`; PICKLAB["bench"+k]=`Bench in ${l}`; PICKLAB["out"+k]=`Keep out of ${l}`; PICKLAB["prot"+k]=`Protect in ${l}`; PICKLAB["unprot"+k]=`Unprotect in ${l}`; });
+const PICKORDER = [...DK.flatMap(k=>["add"+k,"cut"+k,"bench"+k,"out"+k]), ...DK.flatMap(k=>["prot"+k,"unprot"+k])];
+const KINDS = ["add","cut","bench","out","prot","unprot"], EXCL = ["add","bench","out"];
+const deckOfPick = v => DK.find(k=>KINDS.some(x=>v===x+k));
+const kindOf = v => { const k=deckOfPick(v); return k?v.slice(0,v.length-k.length):""; };
+function pickColour(v){ const k=deckOfPick(v); return kindOf(v)==="out"?"var(--bad)":k?DECKS[k].dc:"var(--accent)"; }
+/* Which decks a pile's Bench / Keep out buttons speak for: a deck's own pile → that deck;
+   a shared pile (Either deck, Fits neither) → every deck. */
+const pileScope = c => { const p=PILEDEFS.find(x=>x.k===c.p); return p&&p.deck&&DECKS[p.deck]?[p.deck]:DK; };
+/* Before marks were per deck, Bench and Keep out covered every deck. Spread a legacy mark over
+   the decks it covered: each deck the card is not in and is not being added to. */
+function upgradeLegacy(id, list){ const c=BYID[id]; if(!c||!list.some(v=>v==="bench"||v==="out")) return list;
+  const s=new Set(list.filter(v=>v!=="bench"&&v!=="out"));
+  DK.forEach(k=>{ if(c["i"+k]||s.has("add"+k)) return; s.add((list.includes("out")?"out":"bench")+k); });
+  return [...s]; }
 const ICON = {bench:`<svg viewBox="0 0 12 12" aria-hidden="true"><rect x="2.5" y="2" width="2.5" height="8" rx=".6" fill="currentColor"/><rect x="7" y="2" width="2.5" height="8" rx=".6" fill="currentColor"/></svg>`,
   out:`<svg viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="4.6" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M2.8 9.2 9.2 2.8" stroke="currentColor" stroke-width="1.5"/></svg>`};
 
@@ -442,8 +458,11 @@ function roleTags(c, all){ const hid=hidOf(c), sus=(c.hr||[]).filter(r=>!hid.inc
 /* ---------- rows ---------- */
 function quick(c){ const p=(picks[c.id]||{}).picks||[];
   const dbtn = DK.map(k=>{ const inK=c["i"+k], v=(inK?"cut":"add")+k; return `<button type="button" class="qb" style="--qc:${DECKS[k].dc}" data-id="${c.id}" data-v="${v}" aria-pressed="${p.includes(v)}" aria-label="${esc(PICKLAB[v])}: ${esc(c.n)}" title="${esc(PICKLAB[v])}">${inK?"−":"+"}${esc(DECKS[k].label[0])}</button>`; }).join("");
-  const xbtn = ["bench","out"].map(v=>`<button type="button" class="qb" style="--qc:${pickColour(v)}" data-id="${c.id}" data-v="${v}" aria-pressed="${p.includes(v)}" aria-label="${esc(PICKLAB[v])}: ${esc(c.n)}" title="${esc(PICKLAB[v])}">${ICON[v]}</button>`).join("");
-  return `<span class="q" style="--qn:${Math.max(2,DK.length)}">${dbtn}${DK.length<2?"<span></span>":""}${xbtn}</span>`; }
+  const n=Math.max(2,DK.length), pad=(xs)=>xs.concat(Array(Math.max(0,n-xs.length)).fill("<span></span>")).join(""), scope=pileScope(c);
+  const xb=(kind,k)=>{ if(c["i"+k]) return "<span></span>"; const v=kind+k;
+    return `<button type="button" class="qb" style="--qc:${pickColour(v)}" data-id="${c.id}" data-v="${v}" aria-pressed="${p.includes(v)}" aria-label="${esc(PICKLAB[v])}: ${esc(c.n)}" title="${esc(PICKLAB[v])}"><span class="qi">${ICON[kind]}${esc(DECKS[k].label[0])}</span></button>`; };
+  const xbtn = scope.length===1 ? pad([xb("bench",scope[0]),xb("out",scope[0])]) : pad(scope.map(k=>xb("bench",k)))+pad(scope.map(k=>xb("out",k)));
+  return `<span class="q" style="--qn:${n}">${dbtn}${"<span></span>".repeat(n-DK.length)}${xbtn}</span>`; }
 function noteRowHTML(c,col){ const p=picks[c.id]||{};
   return `<div class="inote"><textarea class="note" id="ni-${col}${c.id}" data-id="${c.id}" rows="1" aria-label="Note for Claude on ${esc(c.n)}" placeholder="A note for Claude on ${esc(c.n)} (Esc to close)">${esc(p.note||"")}</textarea><span class="saved" data-saved="${c.id}" aria-live="polite"></span></div>`; }
 /* A row. `col` is "" in a pile view, "L"/"R" in the Compare view (a card can be in both columns,
@@ -478,7 +497,7 @@ function compareBtns(c){ const p=picks[c.id]||{}; return DK.filter(k=>(p.picks||
 function detailHTML(c, inSheet){
   if(!c) return `<p class="empty">Choose a card from the list.</p>`;
   const p=picks[c.id]||{}, v=p.picks||[], r=reasonOf(c), idx=VISIBLE.indexOf(c.id), sfx=inSheet?"-s":"";
-  const pb=(val,label)=>`<button type="button" class="pb" style="--qc:${pickColour(val)}" data-id="${c.id}" data-v="${val}" aria-pressed="${v.includes(val)}">${label}</button>`;
+  const pb=(val,label)=>`<button type="button" class="pb" style="--qc:${pickColour(val)}" data-id="${c.id}" data-v="${val}" aria-pressed="${v.includes(val)}" aria-label="${esc(PICKLAB[val]||label)}: ${esc(c.n)}">${label}</button>`;
   const chips=[...DK.filter(k=>c["i"+k]).map(k=>`<span class="tag ${c["p"+k]?"prot":"in"}" style="--dc:${DECKS[k].dc}">${c["p"+k]?"Protected in":"In"} ${esc(DECKS[k].label)}</span>`), `<span class="tag">${esc(own(c))}</span>`, roleTags(c,true)].join("");
   const applied=v.filter(x=>isApplied(c.id,x)), conf=conflicts().filter(x=>x.ids.includes(c.id));
   const oq=p.own, hid=hidOf(c);
@@ -496,7 +515,9 @@ function detailHTML(c, inSheet){
     ${r?`<p class="reason">${isSwap(c)?`<span class="seal">Swap candidate</span>`:`<span class="seal">${esc(groupLabel(r.g))}</span>`}${fmt(r.w)}</p>`:`<p class="reason pending">${inAny(c)?"In the list.":"No reason written yet."}</p>`}
     <details class="rules"><summary>Rules text</summary><p>${esc(c.x||"(no rules text)")}</p></details>
     ${artsHTML(c)}
-    <div class="picks" role="group" aria-label="Your pick for ${esc(c.n)}">${DK.map(k=>c["i"+k]?pb("cut"+k,`− ${esc(DECKS[k].label)}`):pb("add"+k,`+ ${esc(DECKS[k].label)}`)).join("")}${pb("bench","Bench")}${pb("out","Keep out")}</div>
+    ${[...pileScope(c),...DK.filter(k=>!pileScope(c).includes(k))].map(k=>{ const l=esc(DECKS[k].label);
+      return `<div class="picks dp" role="group" aria-label="${l}: your pick for ${esc(c.n)}"><span class="dpl" style="--dc:${DECKS[k].dc}" aria-hidden="true">${l}</span>${c["i"+k]?pb("cut"+k,"− Cut"):pb("add"+k,"+ Add")+pb("bench"+k,"Bench")+pb("out"+k,"Keep out")}</div>`; }).join("")}
+    ${DK.some(k=>!c["i"+k])?`<p class="status">For each deck, Add, Bench and Keep out exclude each other: choosing one clears the other two.</p>`:""}
     ${pairSelects(c)}${compareBtns(c)}
     ${c.land?"":`<div class="picks" role="group" aria-label="Roles the tools do not count">${HROLES.map(hb).join("")}</div>`}
     <div class="ownrow"><label class="field-l" for="own-${c.id}${sfx}">I own exactly</label><input type="number" min="0" max="99" inputmode="numeric" id="own-${c.id}${sfx}" data-own="${c.id}" value="${oq??""}" placeholder="${c.o||0}">
@@ -504,7 +525,7 @@ function detailHTML(c, inSheet){
     <label class="field-l" for="n-${c.id}${sfx}">Note for Claude</label>
     <textarea class="note" id="n-${c.id}${sfx}" data-id="${c.id}" rows="2" placeholder="A question, a hunch, a combo to check">${esc(p.note||"")}</textarea>
     <span class="saved" data-saved="${c.id}" aria-live="polite"></span>
-    ${inSheet?"":`<p class="kbd"><span>j</span><span>k</span> move · ${keys} · <span>b</span> bench · <span>o</span> keep out · <span>n</span> note · <span>p</span> pane · <span>u</span> undo · <span>t</span> theme · <span>/</span> search · <span>z</span> zoom</p>`}`;
+    ${inSheet?"":`<p class="kbd"><span>j</span><span>k</span> move · ${keys} · <span>b</span> bench · <span>o</span> keep out (this pile's deck; every deck on a shared pile) · <span>n</span> note · <span>p</span> pane · <span>u</span> undo · <span>t</span> theme · <span>/</span> search · <span>z</span> zoom</p>`}`;
 }
 function renderDetail(){ const c=BYID[SEL]; document.getElementById("detail").innerHTML=detailHTML(c,false);
   const sh=document.getElementById("sheet"); if(sh.open) document.getElementById("sheetbody").innerHTML=`<div class="detail">${detailHTML(c,true)}</div>`; }
@@ -630,7 +651,7 @@ function picksHTML(){ const groups={}, done=[];
   <p><button type="button" class="btn" id="copy">Copy as text</button> <span class="status" id="copied" aria-live="polite"></span></p></div>`; }
 function copyText(){ const lines=[], has=(id,v)=>pending(id).includes(v)&&nameOf(id);
   const noted=Object.keys(picks).filter(id=>hasNote(id)&&nameOf(id)).sort(); if(noted.length){ lines.push("Notes:"); noted.forEach(id=>lines.push("  - "+nameOf(id)+" — "+picks[id].note)); }
-  PICKORDER.forEach(v=>{ const ids=Object.keys(picks).filter(id=>has(id,v)); if(ids.length){ lines.push(PICKLAB[v]+":"); ids.sort().forEach(id=>lines.push("  - "+nameOf(id))); } });
+  PICKORDER.filter(v=>!["bench","out"].includes(kindOf(v))).forEach(v=>{ const ids=Object.keys(picks).filter(id=>has(id,v)); if(ids.length){ lines.push(PICKLAB[v]+":"); ids.sort().forEach(id=>lines.push("  - "+nameOf(id))); } });
   const owns=ownIds(); if(owns.length){ lines.push("Ownership (I own exactly — /ingest it with reconcile_crafts --set-exact):"); owns.forEach(id=>{ const c=BYID[id]; lines.push(`  ${picks[id].own} ${c.n}${c.pr?` (${c.pr.split(" ")[0]}) ${c.pr.split(" ").slice(1).join(" ")}`:""}`); }); }
   HROLES.forEach(r=>{ const ids=hidPicks(r); if(ids.length){ lines.push(`Counts as ${r}:`); ids.forEach(id=>lines.push("  - "+nameOf(id))); } });
   lines.push(""); DK.forEach(k=>{ const d=DECKS[k], pairs=[], loose=[];
@@ -638,10 +659,12 @@ function copyText(){ const lines=[], has=(id,v)=>pending(id).includes(v)&&nameOf
     const paired=new Set(Object.keys(picks).filter(id=>has(id,"add"+k)).map(id=>(picks[id].pair||{})[k]).filter(Boolean));
     const cutsOnly=Object.keys(picks).filter(id=>has(id,"cut"+k)&&!paired.has(nameOf(id))).map(nameOf);
     const prot=Object.keys(picks).filter(id=>has(id,"prot"+k)).map(nameOf).sort(), unprot=Object.keys(picks).filter(id=>has(id,"unprot"+k)).map(nameOf).sort();
-    if(!pairs.length&&!loose.length&&!cutsOnly.length&&!prot.length&&!unprot.length) return; lines.push(`${d.label} (${d.id}):`);
+    const bench=Object.keys(picks).filter(id=>has(id,"bench"+k)).map(nameOf).sort(), kept=Object.keys(picks).filter(id=>has(id,"out"+k)).map(nameOf).sort();
+    if(!pairs.length&&!loose.length&&!cutsOnly.length&&!prot.length&&!unprot.length&&!bench.length&&!kept.length) return; lines.push(`${d.label} (${d.id}):`);
     if(pairs.length) lines.push(`  python3 scripts/deck.py swap ${d.id} --package ${pairs.join(" ")}`);
     if(loose.length) lines.push(`  adds with no cut chosen: ${loose.join("; ")}`); if(cutsOnly.length) lines.push(`  cuts with no add: ${cutsOnly.join("; ")}`);
-    if(prot.length) lines.push(`  protect: ${prot.join("; ")}`); if(unprot.length) lines.push(`  unprotect: ${unprot.join("; ")}`); });
+    if(prot.length) lines.push(`  protect: ${prot.join("; ")}`); if(unprot.length) lines.push(`  unprotect: ${unprot.join("; ")}`);
+    if(bench.length) lines.push(`  bench: ${bench.join("; ")}`); if(kept.length) lines.push(`  keep out: ${kept.join("; ")}`); });
   const cf=conflicts(); if(cf.length){ lines.push("", "Conflicts to settle first:"); cf.forEach(x=>lines.push("  - "+x.msg)); }
   return lines.join("\n"); }
 const DESTS = Object.assign({}, ...PILEDEFS.map(p=>({[p.k]:p.label})), {auto:"Let Claude decide"}, ...DK.map(k=>({["add"+k]:`Add to ${DECKS[k].label}'s deck`})));
@@ -762,7 +785,7 @@ function openSheet(id){ SEL=id; const sh=document.getElementById("sheet"); docum
 function banner(msg){ const b=document.getElementById("banner"); if(msg){ b.textContent=msg; b.hidden=false; } else b.hidden=true; }
 const LS=`builder-${SLUG}-picks`;
 const saveLocal=()=>{ try{ localStorage.setItem(LS,JSON.stringify(picks)); }catch(e){} };
-const loadLocal=()=>readJSON(LS);
+const loadLocal=()=>{ const x=readJSON(LS); Object.keys(x).forEach(id=>{ if(x[id]&&Array.isArray(x[id].picks)) x[id].picks=upgradeLegacy(id,x[id].picks).filter(v=>PICKLAB[v]); }); return x; };
 const writing={};
 function flashSaved(id,local){ document.querySelectorAll(`[data-saved="${id}"]`).forEach(el=>{ el.textContent=local?"Saved in this browser":"Saved"; clearTimeout(el._t); el._t=setTimeout(()=>{el.textContent="";},2500); }); }
 async function persist(id){ const p=picks[id]||{picks:[],note:""};
@@ -777,8 +800,14 @@ async function persist(id){ const p=picks[id]||{picks:[],note:""};
 function togglePick(id,v){ if(!canWrite){ banner("You can view this board but not save picks on it."); return; }
   snapshot(id, `${hasPick(id,v)?"un-":""}${PICKLAB[v]||v}: ${nameOf(id)}`);
   const p=picks[id]||(picks[id]={picks:[],note:""}); const s=new Set(p.picks||[]);
-  if(s.has(v)) s.delete(v); else { s.add(v); if(v==="out") [...DK.map(k=>"add"+k),"bench"].forEach(x=>s.delete(x)); if(v.startsWith("add")||v==="bench") s.delete("out"); }
-  p.picks=[...s]; persist(id); }
+  const k=deckOfPick(v), kd=kindOf(v), cleared=[];
+  if(s.has(v)) s.delete(v); else { s.add(v); if(k&&EXCL.includes(kd)) EXCL.filter(x=>x!==kd).forEach(x=>{ if(s.delete(x+k)) cleared.push(PICKLAB[x+k]); }); }
+  p.picks=[...s]; persist(id);
+  if(cleared.length) toast(`${PICKLAB[v]} — cleared ${cleared.join(" and ")} for ${nameOf(id)}.`); }
+/* b / o: Bench or Keep out for the pile's decks the card is not in. All on → all off. */
+function toggleScoped(id,kind){ const c=BYID[id]; if(!c) return; const ks=pileScope(c).filter(k=>!c["i"+k]);
+  if(!ks.length){ toast(`${c.n} is already in ${pileScope(c).map(k=>DECKS[k].label).join(" and ")}.`); return; }
+  const on=ks.every(k=>hasPick(id,kind+k)); ks.forEach(k=>{ if(hasPick(id,kind+k)===on) togglePick(id,kind+k); }); }
 function toggleHidden(id,role){ if(!canWrite){ banner("You can view this board but not save picks on it."); return; }
   const p=picks[id]||(picks[id]={picks:[],note:""}), h=new Set(p.hid||[]); snapshot(id,`${h.has(role)?"un-":""}counts as ${role}: ${nameOf(id)}`);
   h.has(role)?h.delete(role):h.add(role); p.hid=[...h]; persist(id); }
@@ -789,7 +818,7 @@ function setOwn(id,val){ if(!canWrite){ banner("You can view this board but not 
 function pairWith(cutId){ const s=BYID[SEL], k=CMP.deck, cut=BYID[cutId]; if(!s||!cut||s["i"+k]){ toast("Select a pile card first."); return; }
   if(!canWrite){ banner("You can view this board but not save picks on it."); return; }
   snapshot(s.id,`${s.n} replaces ${cut.n}`); const p=picks[s.id]||(picks[s.id]={picks:[],note:""}), v=new Set(p.picks||[]);
-  v.add("add"+k); v.delete("out"); p.picks=[...v]; p.pair=Object.assign({},p.pair||{},{[k]:cut.n}); persist(s.id); render(); renderDecks(); toast(`${s.n} replaces ${cut.n} in ${DECKS[k].label}.`); }
+  v.add("add"+k); v.delete("bench"+k); v.delete("out"+k); p.picks=[...v]; p.pair=Object.assign({},p.pair||{},{[k]:cut.n}); persist(s.id); render(); renderDecks(); toast(`${s.n} replaces ${cut.n} in ${DECKS[k].label}.`); }
 function clearApplied(){ const ids=Object.keys(picks).filter(hasApplied); if(!ids.length) return;
   ids.forEach(id=>{ snapshot(id,`clear applied marks: ${nameOf(id)}`); const p=picks[id]; p.picks=(p.picks||[]).filter(v=>!isApplied(id,v)); persist(id); });
   render(); renderDecks(); toast(`Cleared applied marks on ${ids.length} card(s).`); }
@@ -870,8 +899,8 @@ document.addEventListener("keydown",e=>{
   if(e.key==="j"||e.key==="ArrowDown"){ e.preventDefault(); go(i+1); }
   else if(e.key==="k"||e.key==="ArrowUp"){ e.preventDefault(); go(i-1); }
   else if(dn&&dn<=DK.length){ const k=DK[dn-1], c=BYID[SEL]; if(c){ togglePick(SEL,(c["i"+k]?"cut":"add")+k); refreshView(SEL); } }
-  else if(e.key==="b"&&SEL){ togglePick(SEL,"bench"); refreshView(SEL); }
-  else if(e.key==="o"&&SEL){ togglePick(SEL,"out"); refreshView(SEL); }
+  else if(e.key==="b"&&SEL){ toggleScoped(SEL,"bench"); refreshView(SEL); }
+  else if(e.key==="o"&&SEL){ toggleScoped(SEL,"out"); refreshView(SEL); }
   else if(e.key==="n"&&SEL){ e.preventDefault(); if(narrow()) openSheet(SEL); else setNoteOpen(SEL,true,col); }
   else if(e.key==="/"){ e.preventDefault(); const q=document.getElementById(view==="compare"?"cmpq":"q"); if(q) q.focus(); }
   else if(e.key==="z"&&SEL){ openZoom(SEL,VISIBLE); } });
@@ -888,7 +917,8 @@ paintThemeBtn(); paintUndo(); applyPane(); renderTabs(); picks=loadLocal(); requ
   try{ const u=await window.claude.use("user"); if(u&&u.can){ const w=await u.can("data.write"); if(w===false){ canWrite=false; banner("You can view this board but not save picks on it."); } } }catch(e){}
   const timer=setTimeout(()=>banner("Saved picks have not loaded yet. Marks you make now still save."),10000);
   db.collection("picks").onSnapshot(snap=>{ if(!snap.metadata.fromCache){ clearTimeout(timer); if(canWrite) banner(""); }
-    const next={}; snap.docs.forEach(d=>{ const x=d.data()||{}; if(!nameOf(d.id)) return;
+    const next={}, upg=[]; snap.docs.forEach(d=>{ const x=d.data()||{}; if(!nameOf(d.id)) return;
+      if(Array.isArray(x.picks)){ const u=upgradeLegacy(d.id,x.picks); if(u!==x.picks){ x.picks=u; upg.push(d.id); } }
       const pair={}; if(x.pair&&typeof x.pair==="object") DK.forEach(k=>{ if(typeof x.pair[k]==="string") pair[k]=x.pair[k]; });
       next[d.id]={picks:Array.isArray(x.picks)?x.picks.filter(v=>PICKLAB[v]):[],note:typeof x.note==="string"?x.note:"",pair,
         own:Number.isInteger(x.own)&&x.own>=0?x.own:null, hid:Array.isArray(x.hid)?x.hid.filter(r=>HROLES.includes(r)):[]}; });
@@ -896,6 +926,7 @@ paintThemeBtn(); paintUndo(); applyPane(); renderTabs(); picks=loadLocal(); requ
     const focusedNote=document.activeElement&&document.activeElement.classList.contains("note");
     picks=next; if(!focusedNote){ render(); } else { updateTabCounts(); } renderDecks();
     if(migrate.length){ try{ localStorage.removeItem(LS); }catch(e){} migrate.forEach(persist); }
+    if(upg.length&&canWrite) upg.forEach(persist);
   },err=>{ clearTimeout(timer); banner("Saved picks could not be loaded. Reload the page to try again."); });
   db.collection("requests").onSnapshot(snap=>{ const next={}; snap.docs.forEach(d=>{ const x=d.data()||{}; if(Array.isArray(x.names)) next[d.id]={names:x.names.filter(n=>typeof n==="string").slice(0,300),dest:String(x.dest||""),note:typeof x.note==="string"?x.note:"",at:String(x.at||""),status:String(x.status||"pending"),reply:typeof x.reply==="string"?x.reply:""}; });
     requests=next; updateTabCounts(); if(view==="add") render(); },()=>{});

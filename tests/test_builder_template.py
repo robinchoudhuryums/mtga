@@ -188,7 +188,7 @@ class TestAppliedAndConflicts:
         fx.write_text(json.dumps({"live": live, "cards": cards, "picks": picks,
                                   "ask": [["in1", "addG"], ["out", "cutG"], ["a1", "addG"], ["in1", "cutG"]]}))
         js = tmp_path / "fns.js"
-        js.write_text(_extract_consts(["deckOfPick", "hasPick"]) + "\n"
+        js.write_text(_extract_consts(["KINDS", "deckOfPick", "hasPick"]) + "\n"
                       + _extract(["isApplied", "conflicts", "bandOf", "nextBand"]))
         h = tmp_path / "h.js"
         h.write_text(_HARNESS_2B)
@@ -199,3 +199,54 @@ class TestAppliedAndConflicts:
         assert any("In2, a protected card" in m for m in out["conflicts"])
         assert out["next"] == {"b": "B", "parts": ["+1 interaction", "+1 more interaction or card advantage"]}  # the +1 interaction also counts toward the sum
         assert out["top"] is None
+
+
+_HARNESS_BENCH = """
+const fs = require('fs');
+const input = JSON.parse(fs.readFileSync(process.argv[3], 'utf8'));
+const CARDS = input.cards, BYID = Object.fromEntries(CARDS.map(c => [c.id, c]));
+const DK = ["T","G"], DECKS = {T:{label:"Thranduil"}, G:{label:"Glarb"}};
+const PILEDEFS = [{k:"T",deck:"T"},{k:"G",deck:"G"},{k:"B",deck:null}];
+const PICKLAB = {}; DK.forEach(k=>["add","cut","bench","out","prot","unprot"].forEach(x=>PICKLAB[x+k]=x+k));
+const nameOf = id => (BYID[id]&&BYID[id].n) || "";
+let picks = {}, toasts = [];
+const canWrite = true, snapshot = () => {}, persist = () => {}, banner = () => {}, toast = m => toasts.push(m);
+eval(fs.readFileSync(process.argv[2], 'utf8'));
+const res = {};
+res.legacy = input.legacy.map(([id, list]) => upgradeLegacy(id, list).sort());
+res.scope = CARDS.map(c => pileScope(c));
+picks = {a: {picks: ["addT", "benchG"]}};
+togglePick("a", "outT"); res.afterOut = [...picks.a.picks].sort();
+togglePick("a", "benchT"); res.afterBench = [...picks.a.picks].sort();
+toggleScoped("b", "out"); res.scopedOn = [...picks.b.picks].sort();
+toggleScoped("b", "out"); res.scopedOff = [...picks.b.picks].sort();
+res.toasts = toasts.length;
+console.log(JSON.stringify(res));
+"""
+
+
+@pytest.mark.skipif(not _NODE, reason="node not installed (CI sets PYTEST_NO_SKIPS, so CI cannot skip)")
+class TestPerDeckBenchAndKeepOut:
+    def test_exclusion_scope_and_legacy_upgrade(self, tmp_path):
+        """Within one deck Add, Bench and Keep out exclude each other (and the page says what it
+        cleared); the other deck's mark is untouched; a deck's own pile scopes b/o to that deck,
+        a shared pile to every deck; a legacy deck-less mark spreads over the decks it covered."""
+        cards = [{"id": "a", "n": "A", "p": "T"}, {"id": "b", "n": "B", "p": "B"},
+                 {"id": "c", "n": "C", "p": "T", "iT": True}]
+        legacy = [["a", ["addT", "bench"]], ["b", ["out"]], ["c", ["bench"]], ["a", ["addG", "addT", "bench"]]]
+        fx = tmp_path / "in.json"
+        fx.write_text(json.dumps({"cards": cards, "legacy": legacy}))
+        js = tmp_path / "fns.js"
+        js.write_text(_extract_consts(["KINDS", "deckOfPick", "kindOf", "pileScope", "hasPick"]) + "\n"
+                      + _extract(["upgradeLegacy", "togglePick", "toggleScoped"])
+                      + "\nglobalThis.pileScope = pileScope;")   # an eval'd const is not visible outside it
+        h = tmp_path / "h.js"
+        h.write_text(_HARNESS_BENCH)
+        out = json.loads(subprocess.run([_NODE, str(h), str(js), str(fx)], capture_output=True,
+                                        text=True, check=True).stdout)
+        assert out["legacy"] == [["addT", "benchG"], ["outG", "outT"], ["benchG"], ["addG", "addT"]]
+        assert out["scope"] == [["T"], ["T", "G"], ["T"]]
+        assert out["afterOut"] == ["benchG", "outT"]          # Keep out of T cleared + T only
+        assert out["afterBench"] == ["benchG", "benchT"]      # Bench in T cleared Keep out of T
+        assert out["scopedOn"] == ["outG", "outT"] and out["scopedOff"] == []
+        assert out["toasts"] == 2                              # each clearing said so

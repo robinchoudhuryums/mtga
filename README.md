@@ -1362,7 +1362,9 @@ python3 scripts/builder.py picks sultai copied.txt   # the page's Copy-as-text �
 
 On GitHub Pages the dashboard links to `builder.html`, a list of projects, and each
 project is its own page (`builds/<slug>.html`). On a project page you can mark adds, cuts,
-Bench and Keep out, pair an add with the card it replaces (the **Compare** tab puts a pile
+and, per deck, Bench (a maybe for later) and Keep out — a deck's own pile offers them for that
+deck, a shared pile for every deck, and for one deck Add, Bench and Keep out clear each other —
+pair an add with the card it replaces (the **Compare** tab puts a pile
 beside a deck's list, with its mana curve now and after), write notes, flag a role the
 tools miss ("counts as interaction") and queue an ownership correction. Picks stay in that
 browser; **Your picks → Copy as text** gives Claude `swap --package` lines, protect
