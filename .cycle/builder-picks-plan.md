@@ -8,6 +8,26 @@ go back and forth until a swap package feels right. Today the cut step is a nati
 (no card text, no image), and in Compare, clicking a deck card to read it replaces the selected
 pile card, so reading a cut and pairing it fight each other. Batch A fixes that first.
 
+## Batch 0 — per-deck verdict stars (added 2026-11-02, before A)
+
+The pile-analysis legend (`★★★ take · ★★ strong · ★ real · ◇ situational · △ marginal ·
+✗ out`) exists per card per deck in `.cycle/sultai-pile-analysis.md` §4 for the 250 original
+pile cards (column A → Thranduil, B → Glarb) — it is what placed them in piles — but the board
+never received it. The board's reasons carry a verdict only as loose prose ("**Strong add.**",
+a trailing ◇) in ~15 of 292. The 176 outside-the-pile cards have no star at all.
+
+- **0a Data.** A per-deck verdict on each reason in build.json (`v: {T: "★★", G: "◇"}`, hand
+  content, stamped like the reason). `builder.py verdict <slug> <card> <deck> <mark>` sets one;
+  `check` reports a card with a reason but no verdict.
+- **0b Import.** The 250 from §4, recorded as graded before the decks were drafted (column A was
+  graded against the graveyard shell, before Thranduil's "a non-Elf has to beat an Elf" rule),
+  so the page marks them "pre-draft".
+- **0c Grade the rest.** Full-text grades for the 176 unstarred cards against the current
+  lists, and a re-check of Thranduil-pile non-Elves whose pre-draft A grade is ★★ or better.
+- **0d Page.** A star badge beside each deck's button on the row and in the pane (with the
+  legend); filter "verdict for <deck> at least …"; sort by verdict; the loose prose verdicts
+  stay in the reason text.
+
 ## Batch A — choosing cuts (the back-and-forth)
 
 - **A1 Cut picker with card previews.** Replace the pane's "this replaces" `<select>` with a
@@ -62,5 +82,5 @@ buttons, pane and Compare work. Gaps:
 
 ## Order and size
 
-A (largest, the owner's daily friction) → B → C. Each batch: tests, browser walk, render and
+0 (verdict stars — the owner is mid-review of the piles) → A (cut choosing, the daily friction) → B → C. Each batch: tests, browser walk, render and
 republish the board, block in `.cycle/blocks/`, commit.
