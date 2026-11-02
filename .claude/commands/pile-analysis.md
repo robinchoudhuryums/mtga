@@ -185,7 +185,9 @@ an append-only log.
 
 **Record the batch in the Builder project too**, in the same commit: for each card graded,
 `python3 scripts/builder.py place <slug> "<card>" <pile key>` and
-`python3 scripts/builder.py reason <slug> "<card>" --group "<group>" --text "<why>"`. The
+`python3 scripts/builder.py reason <slug> "<card>" --group "<group>" --text "<why>"`, and the
+batch's verdict per deck as `python3 scripts/builder.py verdict <slug> --file <tsv>` (lines of
+`card<TAB>deck<TAB>mark`, the §4 legend — the page shows them as stars and filters on them). The
 reason is the one thing the project stores by hand — everything else on the page is derived
 from the deck files when it is rendered — and it records the deck lists it was graded
 against, so `builder.py check <slug>` names it once a deck changes. Write it for a reader
@@ -265,7 +267,9 @@ the ranking cannot see it.
      to `main` (`builder.py site`), and the dashboard's Builder section links to it.
 5. **Read the owner's picks.** On the claude.ai board, read the `picks` collection with the
    ArtifactData tool (doc id = card-name slug; `picks` ⊂ add<KEY> / cut<KEY> / prot<KEY> /
-   unprot<KEY> / bench / out, plus `pair`, `note`, `own`, `hid`); on Pages, ask the owner for
+   unprot<KEY> / bench<KEY> / out<KEY>, plus `pair`, `note`, `own`, `hid`; a legacy deck-less
+   `bench` / `out` from before 2026-11-02 is read as every deck the card is not in or being
+   added to); on Pages, ask the owner for
    **Your picks → Copy as text**. Either way, `python3 scripts/builder.py picks <slug> -`
    turns a copied block into checked `swap --package` lines — hand those to
    `/apply-changes`. A pick is a REQUEST: nothing on the page edits a deck file.
@@ -277,6 +281,9 @@ the ranking cannot see it.
    - write each card's `reason`, grading it exactly like a batch card;
    - an `add<KEY>` dest means the owner wants it IN that deck: propose the swap with a cut,
      never apply it from here;
+   - a `move:<pile>` dest (the card pane's "Move to pile") is a re-filing: run
+     `python3 scripts/builder.py place <slug> "<name>" <pile>`, re-read the card's reason
+     and verdicts against the pile it now sits in, and rewrite whichever no longer holds;
    - re-render, republish (the new cards' images too), then set the request doc's
      `status: "done"` and a one-line `reply` with ArtifactData.
 

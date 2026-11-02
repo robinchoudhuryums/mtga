@@ -213,6 +213,79 @@ class TestProtectPicks:
         assert any("Counterspell is not protected" in ln for ln in lines)  # cannot unprotect it
 
 
+class TestVerdicts:
+    """A verdict is one card's hand grade for one deck, stamped with that deck's list hash."""
+
+    def test_aliases_normalise_and_unknown_marks_are_refused(self):
+        assert [B.norm_verdict(x) for x in ("3", "strong", "*", "s", "m", "out")] == \
+            ["★★★", "★★", "★", "◇", "△", "✗"]
+        with pytest.raises(B.BuildError):
+            B.norm_verdict("A+")
+
+    def test_set_clear_and_pre_draft(self, scratch):
+        deck_path, _ = scratch
+        b = _new(deck_path)
+        B.add_cards(b, ["Opt", "Murder"], pile="G")
+        B.set_verdict(b, "Opt", "G", "2")
+        B.set_verdict(b, "Murder", "g", "◇", pre=True)                 # key match is case-insensitive
+        assert b["verdicts"]["Opt"]["G"]["m"] == "★★" and b["verdicts"]["Opt"]["G"]["graded_at"]
+        assert b["verdicts"]["Murder"]["G"]["graded_at"] is None
+        B.set_verdict(b, "Murder", "G", "-")
+        assert "Murder" not in b["verdicts"]
+        with pytest.raises(B.BuildError):
+            B.set_verdict(b, "Opt", "Nope", "★")
+
+    def test_derive_and_check_report_pre_draft_and_stale(self, scratch):
+        deck_path, _ = scratch
+        b = _new(deck_path)
+        B.add_cards(b, ["Opt", "Murder", "Counterspell"], pile="G")
+        B.set_verdict(b, "Opt", "G", "★★")
+        B.set_verdict(b, "Murder", "G", "★", pre=True)
+        text = open(deck_path, encoding="utf-8").read()
+        open(deck_path, "w", encoding="utf-8").write(text.replace("8 Island", "7 Island", 1))
+        cards = {c["n"]: c for c in B.derive(b, tempo=False)["cards"]}
+        assert cards["Opt"]["vd"] == {"G": "★★"} and cards["Opt"]["vs"] == {"G": "stale"}
+        assert cards["Murder"]["vs"] == {"G": "pre"} and cards["Counterspell"]["vd"] == {}
+        line = next(m for s, m in B.check_build(b) if s == "verdicts")
+        assert "1 with no verdict" in line and "1 pre-draft" in line and "1 graded before" in line
+
+    def test_cli_file_validates_every_line_before_writing(self, scratch):
+        deck_path, tmp = scratch
+        B.save_build("t", _new(deck_path))
+        b = B.load_build("t")
+        B.add_cards(b, ["Opt"], pile="G")
+        B.save_build("t", b)
+        bad = tmp / "v.tsv"
+        bad.write_text("Opt\tG\t★★\nOpt\tG\tA+\n", encoding="utf-8")
+        assert B.main(["verdict", "t", "--file", str(bad)]) == 2
+        assert "verdicts" not in B.load_build("t")                       # nothing half-written
+        bad.write_text("# a comment\nOpt\tG\tstrong\n", encoding="utf-8")
+        assert B.main(["verdict", "t", "--file", str(bad)]) == 0
+        assert B.load_build("t")["verdicts"]["Opt"]["G"]["m"] == "★★"
+
+
+class TestBenchAndKeepOutPicks:
+    """Bench and Keep out are per deck: they sit in that deck's block of the copied text and
+    are checked against the deck. A bench becomes a `deck.py flex --add` command (the deck
+    file's #~ block); Keep out stays a no-edit note."""
+    COPY = ("Glarb ({deck}):\n"
+            "  bench: Murder; Counterspell\n"
+            "  keep out: Krang, the All-Powerful\n")
+
+    def test_parse_reads_bench_and_keep_out_per_deck(self):
+        p = B.parse_picks(self.COPY.format(deck="96"))["decks"]["96"]
+        assert p["bench"] == ["Murder", "Counterspell"] and p["out"] == ["Krang, the All-Powerful"]
+
+    def test_report_lists_them_without_an_edit(self, scratch):
+        deck_path, _ = scratch
+        lines = B.picks_report(_new(deck_path), self.COPY.format(deck=deck_path))
+        assert any(ln.startswith('python3 scripts/deck.py flex') and '"+Murder | BENCH (builder' in ln
+                   and "--apply" not in ln for ln in lines)                # a dry-run command per card
+        assert any(ln.startswith("#   keep out (no edit): Krang") for ln in lines)
+        assert any("Counterspell is in" in ln and "cut it instead" in ln for ln in lines)
+        assert not any(ln.startswith("python3 scripts/deck.py swap") for ln in lines)
+
+
 class TestRender:
     URL = "https://cards.scryfall.io/normal/front/a/b/{}.jpg"
 
@@ -370,7 +443,9 @@ class TestAddDeck:
         B.set_reason(b, "Opt", "fine")
         k = B.add_deck(b, str(other), key="T", label="Thranduil")
         assert k == "T" and [d["key"] for d in b["decks"]] == ["G", "T"]
-        assert [p["key"] for p in b["piles"]] == ["G", "T", "N"]
+        # a second deck brings the shared pile, and "Doesn't fit" (one deck) becomes "Fits neither"
+        assert [(p["key"], p["label"]) for p in b["piles"]][1:] == \
+            [("T", "Thranduil's pile"), ("B", "Either deck"), ("N", "Fits neither")]
         assert set(b["reasons"]["Opt"]["graded_at"]) == {deck_path}       # not re-stamped
         with pytest.raises(B.BuildError, match="already in this build"):
             B.add_deck(b, str(other))
@@ -436,3 +511,76 @@ class TestPrintingArts:
         data = json.loads(_re.search(r'id="data">(.*?)</script>', s, _re.S).group(1).replace("<\\/", "</"))
         by = {c["n"]: c for c in data["cards"]}
         assert len(by["Opt"]["al"]) == 2 and "al" not in by["Counterspell"]
+
+
+class TestDeckCount:
+    """The deck-less piles are named for the number of decks, and a build of one or of three
+    decks renders like a build of two (Batch C)."""
+
+    def _copies(self, tmp, deck_path, n):
+        out = []
+        for i in range(n):
+            p = tmp / f"copy{i}.txt"
+            shutil.copy(deck_path, p)
+            out.append(str(p))
+        return out
+
+    def test_pile_labels_follow_the_deck_count(self, scratch):
+        deck_path, tmp = scratch
+        paths = self._copies(tmp, deck_path, 3)
+        assert [p["label"] for p in B.new_build("one", paths[:1])["piles"]][1:] == ["Doesn't fit"]
+        assert [p["label"] for p in B.new_build("two", paths[:2])["piles"]][2:] == ["Either deck", "Fits neither"]
+        three = B.new_build("three", paths)
+        assert [p["label"] for p in three["piles"]][3:] == ["More than one deck", "Fits none"]
+        assert len({d["key"] for d in three["decks"]}) == 3            # three Glarbs, three keys
+
+    def test_add_deck_retitles_default_labels_and_keeps_renamed_ones(self, scratch):
+        deck_path, tmp = scratch
+        paths = self._copies(tmp, deck_path, 3)
+        b = B.new_build("grow", paths[:1])
+        B.add_deck(b, paths[1])                                         # 1 → 2: the shared pile appears
+        assert [(p["key"], p["label"]) for p in b["piles"] if p["deck"] is None] == \
+            [("B", "Either deck"), ("N", "Fits neither")]
+        next(p for p in b["piles"] if p["key"] == "N")["label"] = "Bin"  # the owner renamed it
+        B.add_deck(b, paths[2])                                         # 2 → 3
+        assert [(p["key"], p["label"]) for p in b["piles"] if p["deck"] is None] == \
+            [("B", "More than one deck"), ("N", "Bin")]
+
+    @pytest.mark.parametrize("n", [1, 3])
+    def test_one_and_three_deck_builds_render(self, scratch, monkeypatch, n):
+        deck_path, tmp = scratch
+        monkeypatch.setattr(B, "image_urls",
+                            lambda slug, names, fetch=True: {x: "https://cards.scryfall.io/normal/front/a/b/x.jpg" for x in names})
+        paths = self._copies(tmp, deck_path, n)
+        b = B.new_build(f"r{n}", paths)
+        B.add_cards(b, ["Murder"], pile=b["piles"][0]["key"])
+        B.save_build(f"r{n}", b)
+        r = B.render(f"r{n}", "pages", str(tmp / f"out{n}"), tempo=False, fetch=False)
+        s = open(r["page"], encoding="utf-8").read()
+        data = json.loads(re.search(r'<script type="application/json" id="data">(.*?)</script>', s, re.S)
+                          .group(1).replace("<\\/", "</"))
+        assert len(data["meta"]["decks"]) == n == len(data["meta"]["live"])
+        assert [p["label"] for p in data["meta"]["piles"]][n:] == \
+            ([B.shared_pile_labels(n)[0]] if n > 1 else []) + [B.shared_pile_labels(n)[1]]
+        assert any(c["n"] == "Murder" for c in data["cards"])
+
+
+class TestSharedPileKeys:
+    """A deck key is its pile's key, so it can never be a shared pile's key: a Bruvac deck used to
+    get "B" and collide with the "Either deck" pile."""
+
+    def test_derived_key_steps_aside_and_explicit_one_is_refused(self, scratch, monkeypatch):
+        deck_path, tmp = scratch
+        monkeypatch.setattr(B, "deck_ref", lambda ref: {"id": ref, "path": deck_path, "name": ref})
+        monkeypatch.setattr(B._deck(), "parse_deck_file",
+                            lambda path: ({"commander": "Bruvac the Grandiloquent"}, []))
+        b = B.new_build("bb", ["d1", "d2"])
+        keys = [p["key"] for p in b["piles"]]
+        assert len(keys) == len(set(keys)) and b["decks"][0]["key"] != "B"
+        with pytest.raises(B.BuildError, match="shared piles' keys"):
+            B.new_build("bb2", ["d1", "d2"], keys=["B", "G"])
+        one = B.new_build("bb3", ["d1"])
+        with pytest.raises(B.BuildError, match="already used"):
+            B.add_deck(one, "d2", key="B")                  # reserved even before the pile exists
+        k = B.add_deck(one, "d2")
+        assert k not in ("B", "N") and "B" in [p["key"] for p in one["piles"]]

@@ -188,7 +188,7 @@ class TestAppliedAndConflicts:
         fx.write_text(json.dumps({"live": live, "cards": cards, "picks": picks,
                                   "ask": [["in1", "addG"], ["out", "cutG"], ["a1", "addG"], ["in1", "cutG"]]}))
         js = tmp_path / "fns.js"
-        js.write_text(_extract_consts(["deckOfPick", "hasPick"]) + "\n"
+        js.write_text(_extract_consts(["KINDS", "deckOfPick", "hasPick"]) + "\n"
                       + _extract(["isApplied", "conflicts", "bandOf", "nextBand"]))
         h = tmp_path / "h.js"
         h.write_text(_HARNESS_2B)
@@ -199,3 +199,239 @@ class TestAppliedAndConflicts:
         assert any("In2, a protected card" in m for m in out["conflicts"])
         assert out["next"] == {"b": "B", "parts": ["+1 interaction", "+1 more interaction or card advantage"]}  # the +1 interaction also counts toward the sum
         assert out["top"] is None
+
+
+_HARNESS_BENCH = """
+const fs = require('fs');
+const input = JSON.parse(fs.readFileSync(process.argv[3], 'utf8'));
+const CARDS = input.cards, BYID = Object.fromEntries(CARDS.map(c => [c.id, c]));
+const DK = ["T","G"], DECKS = {T:{label:"Thranduil"}, G:{label:"Glarb"}};
+const PILEDEFS = [{k:"T",deck:"T"},{k:"G",deck:"G"},{k:"B",deck:null}];
+const PICKLAB = {}; DK.forEach(k=>["add","cut","bench","out","prot","unprot"].forEach(x=>PICKLAB[x+k]=x+k));
+const nameOf = id => (BYID[id]&&BYID[id].n) || "";
+let picks = {}, toasts = [];
+const canWrite = true, snapshot = () => {}, persist = () => {}, banner = () => {}, toast = m => toasts.push(m);
+let GESTURE = null; const gesture = (label, fn) => fn();       // toggleScoped's one-undo wrapper
+eval(fs.readFileSync(process.argv[2], 'utf8'));
+const res = {};
+res.legacy = input.legacy.map(([id, list]) => upgradeLegacy(id, list).sort());
+res.scope = CARDS.map(c => pileScope(c));
+picks = {a: {picks: ["addT", "benchG"]}};
+togglePick("a", "outT"); res.afterOut = [...picks.a.picks].sort();
+togglePick("a", "benchT"); res.afterBench = [...picks.a.picks].sort();
+toggleScoped("b", "out"); res.scopedOn = [...picks.b.picks].sort();
+toggleScoped("b", "out"); res.scopedOff = [...picks.b.picks].sort();
+res.toasts = toasts.length;
+console.log(JSON.stringify(res));
+"""
+
+
+@pytest.mark.skipif(not _NODE, reason="node not installed (CI sets PYTEST_NO_SKIPS, so CI cannot skip)")
+class TestPerDeckBenchAndKeepOut:
+    def test_exclusion_scope_and_legacy_upgrade(self, tmp_path):
+        """Within one deck Add, Bench and Keep out exclude each other (and the page says what it
+        cleared); the other deck's mark is untouched; a deck's own pile scopes b/o to that deck,
+        a shared pile to every deck; a legacy deck-less mark spreads over the decks it covered."""
+        cards = [{"id": "a", "n": "A", "p": "T"}, {"id": "b", "n": "B", "p": "B"},
+                 {"id": "c", "n": "C", "p": "T", "iT": True}]
+        legacy = [["a", ["addT", "bench"]], ["b", ["out"]], ["c", ["bench"]], ["a", ["addG", "addT", "bench"]]]
+        fx = tmp_path / "in.json"
+        fx.write_text(json.dumps({"cards": cards, "legacy": legacy}))
+        js = tmp_path / "fns.js"
+        js.write_text(_extract_consts(["KINDS", "deckOfPick", "kindOf", "pileScope", "hasPick"]) + "\n"
+                      + _extract(["upgradeLegacy", "togglePick", "toggleScoped"])
+                      + "\nglobalThis.pileScope = pileScope;")   # an eval'd const is not visible outside it
+        h = tmp_path / "h.js"
+        h.write_text(_HARNESS_BENCH)
+        out = json.loads(subprocess.run([_NODE, str(h), str(js), str(fx)], capture_output=True,
+                                        text=True, check=True).stdout)
+        assert out["legacy"] == [["addT", "benchG"], ["outG", "outT"], ["benchG"], ["addG", "addT"]]
+        assert out["scope"] == [["T"], ["T", "G"], ["T"]]
+        assert out["afterOut"] == ["benchG", "outT"]          # Keep out of T cleared + T only
+        assert out["afterBench"] == ["benchG", "benchT"]      # Bench in T cleared Keep out of T
+        assert out["scopedOn"] == ["outG", "outT"] and out["scopedOff"] == []
+        assert out["toasts"] == 2                              # each clearing said so
+
+
+_HARNESS_VERDICT = """
+const fs = require('fs');
+const input = JSON.parse(fs.readFileSync(process.argv[3], 'utf8'));
+const META = {verdicts: input.legend};
+eval(fs.readFileSync(process.argv[2], 'utf8'));
+console.log(JSON.stringify({
+  ranks: input.cards.map(c => vrank(c, "T")),
+  match: input.filters.map(f => input.cards.filter(c => vfMatch(c, f)).map(c => c.n))}));
+"""
+
+
+@pytest.mark.skipif(not _NODE, reason="node not installed (CI sets PYTEST_NO_SKIPS, so CI cannot skip)")
+class TestVerdictFilter:
+    def test_rank_and_filter_bands(self, tmp_path):
+        """The page's verdict filter reads the same legend builder.py writes (best first), and an
+        ungraded card sorts after every graded one."""
+        legend = [[m, B.VERDICT_LABEL[m]] for m in B.VERDICTS]
+        cards = [{"n": n, "vd": ({"T": m} if m else {})} for n, m in
+                 (("a", "★★★"), ("b", "★★"), ("c", "★"), ("d", "◇"), ("e", "✗"), ("f", None))]
+        fx = tmp_path / "in.json"
+        fx.write_text(json.dumps({"legend": legend, "cards": cards,
+                                  "filters": ["T|top2", "T|top3", "T|low", "T|none", "all"]}))
+        js = tmp_path / "fns.js"
+        js.write_text(_extract_consts(["VORDER", "vrank"]) + "\n" + _extract(["vfMatch"])
+                      + "\nglobalThis.vrank = vrank;")        # an eval'd const is not visible outside it
+        h = tmp_path / "h.js"
+        h.write_text(_HARNESS_VERDICT)
+        out = json.loads(subprocess.run([_NODE, str(h), str(js), str(fx)], capture_output=True,
+                                        text=True, check=True).stdout)
+        assert out["ranks"] == [0, 1, 2, 3, 5, 99]
+        assert out["match"] == [["a", "b"], ["a", "b", "c"], ["d", "e"], ["f"], list("abcdef")]
+
+
+_HARNESS_SYM = """
+const fs = require('fs');
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
+eval(fs.readFileSync(process.argv[2], 'utf8'));
+const t = "{T}: Add {G}{G}. {2}{B/P}, {Q}: draw. Keep {braces} and {10} words {X}.";
+console.log(JSON.stringify({out: sym(esc(t))}));
+"""
+
+
+@pytest.mark.skipif(not _NODE, reason="node not installed (CI sets PYTEST_NO_SKIPS, so CI cannot skip)")
+class TestSymbolsInText:
+    def test_symbols_become_pips_and_prose_braces_stay(self, tmp_path):
+        js = tmp_path / "fns.js"
+        js.write_text(_extract_consts(["SYMWORD", "sym"]) + "\n" + _extract(["pip1"])
+                      + "\nglobalThis.sym = sym;")
+        h = tmp_path / "h.js"
+        h.write_text(_HARNESS_SYM)
+        out = json.loads(subprocess.run([_NODE, str(h), str(js), "-"], capture_output=True,
+                                        text=True, check=True).stdout)["out"]
+        assert out.count('class="pip in') == 8                  # T, G, G, 2, B/P, Q, 10, X
+        assert 'aria-label="tap"' in out and 'aria-label="untap"' in out
+        assert "{braces}" in out                                  # prose in braces is left alone
+        assert "{T}" not in out.replace('title="{T}', "")
+
+
+_HARNESS_PKG = """
+const fs = require('fs');
+const input = JSON.parse(fs.readFileSync(process.argv[3], 'utf8'));
+const slug = n => String(n||"").toLowerCase().normalize("NFKD").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,180) || "card";
+const CARDS = input.cards; CARDS.forEach(c => c.id = slug(c.n));
+const BYID = Object.fromEntries(CARDS.map(c => [c.id, c]));
+const DK = ["T"], PROT = {T: new Set()};
+const nameOf = id => (BYID[id]&&BYID[id].n) || "";
+let picks = input.picks;
+eval(fs.readFileSync(process.argv[2], 'utf8'));
+globalThis.r = {pkg: packageOf("T"), need: CARDS.map(c => needsCut(c.id, "T"))};
+console.log(JSON.stringify(globalThis.r));
+"""
+
+
+@pytest.mark.skipif(not _NODE, reason="node not installed (CI sets PYTEST_NO_SKIPS, so CI cannot skip)")
+class TestSwapPackage:
+    def test_package_splits_paired_unpaired_and_lone_cuts(self, tmp_path):
+        """One deck's pending package: an add with a cut is paired, an add without one needs a
+        cut, a marked cut nobody replaces is a lone cut — and an add that already landed (the card
+        is in the deck) is none of these."""
+        cards = [{"n": "A1", "iT": False}, {"n": "A2", "iT": False}, {"n": "In1", "iT": True},
+                 {"n": "In2", "iT": True}, {"n": "Landed", "iT": True}]
+        picks = {"a1": {"picks": ["addT"], "pair": {"T": "In1"}}, "a2": {"picks": ["addT", "benchT"]},
+                 "in2": {"picks": ["cutT"]}, "landed": {"picks": ["addT"]}}
+        fx = tmp_path / "in.json"
+        fx.write_text(json.dumps({"cards": cards, "picks": picks}))
+        js = tmp_path / "fns.js"
+        js.write_text(_extract_consts(["KINDS", "deckOfPick", "hasPick", "pending", "needsCut"]) + "\n"
+                      + _extract(["isApplied", "packageOf"])
+                      + "\nglobalThis.needsCut = needsCut;")      # an eval'd const is not visible outside it
+        h = tmp_path / "h.js"
+        h.write_text(_HARNESS_PKG)
+        out = json.loads(subprocess.run([_NODE, str(h), str(js), str(fx)], capture_output=True,
+                                        text=True, check=True).stdout)
+        assert out["pkg"] == {"paired": [["a1", "In1"]], "unpaired": ["a2"], "cutsOnly": ["in2"]}
+        assert out["need"] == [False, True, False, False, False]
+
+
+_HARNESS_DECIDE = """
+const fs = require('fs');
+const input = JSON.parse(fs.readFileSync(process.argv[3], 'utf8'));
+const CARDS = input.cards, BYID = Object.fromEntries(CARDS.map(c => [c.id, c]));
+const DK = ["T","G"], DECKS = {T:{label:"Thranduil"}, G:{label:"Glarb"}};
+const PILEDEFS = [{k:"T",deck:"T"},{k:"G",deck:"G"},{k:"B",deck:null}];
+const PICKLAB = {}; DK.forEach(k=>["add","cut","bench","out","prot","unprot"].forEach(x=>PICKLAB[x+k]=x+k));
+const nameOf = id => (BYID[id]&&BYID[id].n) || "";
+let picks = input.picks, toasts = [], canWrite = true;
+const persist = () => {}, banner = () => {}, toast = m => toasts.push(m), paintUndo = () => {},
+      render = () => {}, renderDecks = () => {}, rerenderAfterPick = () => {};
+eval(fs.readFileSync(process.argv[2], 'utf8'));
+const res = {decided: CARDS.map(c => [decided(c,"T"), decided(c,"G"), decidedInPile(c)])};
+toggleScoped("b", "bench"); res.afterB = [...picks.b.picks].sort(); res.undoDepth = UNDO.length;
+undo(); res.afterU = picks.b ? picks.b.picks : null; res.toasts = toasts;
+console.log(JSON.stringify(res));
+"""
+
+
+@pytest.mark.skipif(not _NODE, reason="node not installed (CI sets PYTEST_NO_SKIPS, so CI cannot skip)")
+class TestDecidedAndGestureUndo:
+    def test_decided_rule_and_one_undo_per_gesture(self, tmp_path):
+        """Decided for a deck = in it, or Add/Cut/Bench/Keep out for it; a shared pile counts a
+        card decided only when every deck is. `b` on a shared pile marks both decks as ONE undo
+        entry, and one undo reverses both."""
+        cards = [{"id": "a", "n": "A", "p": "T", "iT": True}, {"id": "b", "n": "B", "p": "B"},
+                 {"id": "c", "n": "C", "p": "B"}]
+        picks = {"c": {"picks": ["outT", "benchG"]}}
+        fx = tmp_path / "in.json"
+        fx.write_text(json.dumps({"cards": cards, "picks": picks}))
+        js = tmp_path / "fns.js"
+        js.write_text(_extract_consts(["KINDS", "deckOfPick", "kindOf", "pileScope", "hasPick", "decided",
+                                       "decidedInPile", "pushUndo"]) + "\n"
+                      + "const UNDO=[]; let GESTURE=null;\n"
+                      + _extract(["snapshot", "gesture", "undo", "togglePick", "toggleScoped"])
+                      + "\nObject.assign(globalThis, {decided, decidedInPile, UNDO});")
+        h = tmp_path / "h.js"
+        h.write_text(_HARNESS_DECIDE)
+        out = json.loads(subprocess.run([_NODE, str(h), str(js), str(fx)], capture_output=True,
+                                        text=True, check=True).stdout)
+        assert out["decided"] == [[True, False, True], [False, False, False], [True, True, True]]
+        assert out["afterB"] == ["benchG", "benchT"] and out["undoDepth"] == 1
+        assert out["afterU"] is None and out["toasts"][-1].startswith("Undid: Bench: B")   # it had no picks before
+
+
+_HARNESS_QUICK = """
+const fs = require('fs');
+const input = JSON.parse(fs.readFileSync(process.argv[3], 'utf8'));
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
+const DK = input.keys, DECKS = Object.fromEntries(DK.map(k => [k, {label: "Glarb", dc: "var(--idU)"}]));
+const PILEDEFS = [{k:"P", deck: DK[0]}, {k:"B", deck: null}];
+const PICKLAB = {}; DK.forEach(k=>["add","cut","bench","out","prot","unprot"].forEach(x=>PICKLAB[x+k]=x+k));
+const ICON = {bench: "|", out: "o"};
+let picks = {};
+eval(fs.readFileSync(process.argv[2], 'utf8'));
+const own = quick({id:"a", n:"A", p:"P"}), shared = quick({id:"b", n:"B", p:"B"});
+const count = (h, re) => (h.match(re) || []).length;
+console.log(JSON.stringify({
+  ownBench: count(own, /data-v="bench/g), sharedBench: count(shared, /data-v="bench/g),
+  sharedOut: count(shared, /data-v="out/g), menu: shared.includes('class="qmore"'),
+  letters: [...shared.matchAll(/>\\+([^<]+)</g)].map(m => m[1]),
+  colours: assignColours(input.srcs)}));
+"""
+
+
+@pytest.mark.skipif(not _NODE, reason="node not installed (CI sets PYTEST_NO_SKIPS, so CI cannot skip)")
+class TestManyDecks:
+    @pytest.mark.parametrize("keys,menu", [(["G", "G2", "G3"], False), (["G", "G2", "G3", "G4", "G5"], True)])
+    def test_row_buttons_and_accents(self, tmp_path, keys, menu):
+        """Row buttons name decks by their unique KEY (three Glarbs read +G +G2 +G3, not +G +G +G);
+        a shared pile offers Bench and Keep out per deck, folded into a menu past three decks;
+        two decks of one colour identity get different accents."""
+        fx = tmp_path / "in.json"
+        fx.write_text(json.dumps({"keys": keys, "srcs": ["U24 · B20 · G15", "U22 · G15", "U10"]}))
+        js = tmp_path / "fns.js"
+        js.write_text(_extract_consts(["KINDS", "deckOfPick", "kindOf", "pileScope"]) + "\n"
+                      + _extract(["pickColour", "quick", "colourRank", "assignColours"]))
+        h = tmp_path / "h.js"
+        h.write_text(_HARNESS_QUICK)
+        out = json.loads(subprocess.run([_NODE, str(h), str(js), str(fx)], capture_output=True,
+                                        text=True, check=True).stdout)
+        assert out["letters"] == keys
+        assert out["ownBench"] == 1 and out["sharedBench"] == out["sharedOut"] == len(keys)
+        assert out["menu"] is menu
+        assert out["colours"] == ["U", "G", "U"]          # deck 2 avoids U; deck 3 has only U

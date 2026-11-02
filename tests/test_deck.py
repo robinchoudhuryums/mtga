@@ -8159,3 +8159,45 @@ class TestHotPathMemos:
         a = deck.load_legalities()
         a["__probe__"] = {"standard"}
         assert "__probe__" not in deck.load_legalities()
+
+
+class TestFlexAdd:
+    """`deck.py flex <id> --add` writes ONE `#~` line — the place a Builder bench list lands so
+    the next tune reads it. It refuses the +In rot G-04's sweep exists to catch (a card the deck
+    already runs, or one another flex line already proposes) instead of writing it."""
+
+    BODY = ("#: name: Flex Fixture\n#: format: Standard\n#: colors: R\n"
+            "# Spells\n1 Sunset Strikemaster (TDM) 126\n"
+            "#~ -Sunset Strikemaster | +Shock | cheaper\n")
+
+    def _deck(self, tmp_path, monkeypatch):
+        d = tmp_path / "decks" / "92-flex-fixture"
+        d.mkdir(parents=True)
+        (d / "deck.txt").write_text(self.BODY, encoding="utf-8")
+        monkeypatch.setattr(deck, "DECKS_DIR", str(tmp_path / "decks"))
+        return d / "deck.txt"
+
+    def _args(self, add, apply=False):
+        return type("A", (), {"id": "92", "add": add, "apply": apply})()
+
+    def test_dry_run_writes_nothing(self, tmp_path, monkeypatch, capsys):
+        path = self._deck(tmp_path, monkeypatch)
+        assert deck.cmd_flex(self._args("+Lathliss, Dragon Queen | BENCH (builder t): later")) == 0
+        assert "dry run" in capsys.readouterr().out
+        assert path.read_text(encoding="utf-8") == self.BODY
+
+    def test_apply_appends_after_the_last_flex_line_with_a_bak(self, tmp_path, monkeypatch):
+        path = self._deck(tmp_path, monkeypatch)
+        assert deck.cmd_flex(self._args("+lathliss, dragon queen | BENCH (builder t): later", True)) == 0
+        body = path.read_text(encoding="utf-8").splitlines()
+        assert body[-1] == "#~ +Lathliss, Dragon Queen | BENCH (builder t): later"   # resolved spelling
+        assert body[-2].startswith("#~ -Sunset Strikemaster")
+        assert list(path.parent.glob("*.bak"))
+        assert deck.parse_flex(str(path))[-1]["in"] == "Lathliss, Dragon Queen"
+
+    def test_refuses_a_card_in_the_deck_or_already_proposed(self, tmp_path, monkeypatch):
+        path = self._deck(tmp_path, monkeypatch)
+        assert deck.cmd_flex(self._args("+Sunset Strikemaster | x", True)) == 1   # runs it
+        assert deck.cmd_flex(self._args("+Shock | x", True)) == 1                  # on a #~ line
+        assert deck.cmd_flex(self._args("no card field", True)) == 1
+        assert path.read_text(encoding="utf-8") == self.BODY

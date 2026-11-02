@@ -8867,6 +8867,19 @@ of 60 cells (366×267 each, ~7 MB), not as files, for the 511-file reason above;
 hot-link Scryfall and open the full card. A deck line never takes an alternate printing: the
 pool keys one printing per card and an unknown set code is a hard INV-04 failure (G-65).
 
+**The picks workflow (2026-11-02, Batches 0/A/B/C).** Verdict stars are hand grades per card
+per deck, stored beside the reasons and stamped with that deck's list hash; an import from an
+analysis doc is stored with no stamp and reads *pre-draft* (dotted) until re-graded, a stamp
+that no longer matches reads *stale* (dashed). The cut list replaced a native `<select>` that
+could not show a card. Two bugs the browser walk caught are worth keeping: the hover preview
+first GREW with each card, so the list moved under the pointer and the hover hopped to the
+next card (a fixed height fixed it); and the arrow keys did nothing inside the phone card
+sheet, because the page's keyboard handler returns early while any `<dialog>` is open and the
+sheet IS one — keys a dialog must handle go before that guard. Per-deck Bench / Keep out made a
+card "decided" per deck (in it, or Add/Cut/Bench/Keep out for it); a shared pile counts a card
+decided only when every deck is, which is what the tab progress now reads. A deck key is its
+pile's key, so `B` and `N` (the shared piles) are reserved — a Bruvac deck used to take `B`.
+
 **Tests that hold it.** `tests/test_builder.py` (data model, staleness, picks parsing,
 render, site, add-deck) and `tests/test_builder_template.py`, which runs the page's own
 `project()`, `isApplied`, `conflicts` and `nextBand` under Node and compares the projection

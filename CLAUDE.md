@@ -314,7 +314,9 @@ is protecting.
   claim about the CURRENT list — deck 50 argued from "a 3.11 curve with 21 early drops"
   against a live 3.31/16. `deck.py flex <id>` and two soft `check_all` warnings surface
   all of it; sometimes the fix is to RETIRE the line, not retarget it. Advisory — a flex
-  line is a human note, so nothing edits one. [G-04]
+  line is a human note, so nothing EDITS one; **`deck.py flex <id> --add "+Card | note"`
+  WRITES a new one** (dry run without `--apply`, `.bak`; refuses a card the deck runs or one
+  another `#~` line names — the `+In` rot, never written). A Builder bench lands there. [G-04]
 - **A swap inherits the cut card's `# section` comment**, so the file then lies to the
   next reader. **Since 2026-10-20 placement is AUTOMATIC on an objective TYPE misfit**
   (owner's call): a land under `# Nonland` / `# Interaction`, a spell under `# Lands`,
@@ -1429,22 +1431,25 @@ is protecting.
 
 - **A BUILDER PAGE IS TEMPLATE + DATA, AND THE REASON IS THE ONLY THING STORED.** A pile
   graded against decks lives in `builds/<slug>/build.json` (decks, piles, placements,
-  reasons) and is rendered by `scripts/builder.py` through `scripts/builder_template.html`;
+  reasons, verdicts) and is rendered by `scripts/builder.py` through `scripts/builder_template.html`;
   oracle text, owned counts, roles, each deck's floor / interaction / sources and `cuts`
   ranks are DERIVED at render from the deck model. The first board typed those figures into
   the page and they went stale at the first swap. **A reason is graded against a deck
   VERSION** (`graded_at`, a hash of each list), so `builder.py check` and a soft `check_all`
-  line name it once a deck changes — re-read it, do not re-stamp it blindly. **The
+  line name it once a deck changes — re-read it, do not re-stamp it blindly. Per-deck
+  VERDICT stars (`builder.py verdict`, ★★★…✗) are stamped the same way; an imported grade
+  reads pre-draft until re-graded. **The
   theme-fit grade is NOT shown as a verdict**: it misreads graveyard polarity (G-42) and
   rates removal tangential. **The page edits nothing**: a pick is a request that
-  `builder.py picks` turns into checked `swap --package` / protect / `/ingest` lines for
-  `/apply-changes`, and hidden roles sit beside the counted figures, never in the floor
+  `builder.py picks` turns into checked `swap --package` / protect / `flex --add` / `/ingest`
+  lines for `/apply-changes` (a pile move is a request too), and hidden roles sit beside the counted figures, never in the floor
   (G-25). Restyle the TEMPLATE, never a rendered page — `.cycle/board*/index.html` is
   regenerated. An artifact version holds at most **511 files**, so the claude.ai board
   ships one thumbnail sprite plus a 672 px image per card (~500 cards); Pages hot-links
   Scryfall. **Alternate printings are VIEW-ONLY** (`printings.json`, Scryfall `unique:art`, so a
   frame-only variant of the same art is never listed): a deck line keeps the pool's one printing
-  (G-65). `/pile-analysis` Stage 6 owns publishing and the request queue. [G-89]
+  (G-65). A deck key is never `B`/`N`, the shared piles' keys. `/pile-analysis` Stage 6 owns
+  publishing and the request queue. [G-89]
 
 ## Known Issues
 
@@ -2004,11 +2009,17 @@ format.
     project card; on the project page switch theme (`t`), collapse the card pane (`p`) and
     hover a row; open Compare, select a pile card and press ⇄ on a deck card; mark one
     ownership correction and one "counts as interaction"; press `u`; open Your picks and
-    Copy as text; repeat at 390×844 and keyboard-only.
+    Copy as text; repeat at 390×844 and keyboard-only. Then: set Verdict and Decision
+    filters and sort by verdict; on an added card open "Choose a cut", hover and arrow
+    through it (the preview follows) and pick one; in Compare click a deck card (the pile
+    card must stay selected); bulk-mark the shown cards, then press `u` once; queue a pile
+    move from the pane; on a build of four or more decks open a row's ⋯ menu.
     Expected: card images load (hot-linked from Scryfall); ← Dashboard returns; the theme
     matches the dashboard's; the curve and conflict box update; undo reverses the last
     change; the copied block holds `swap --package`, ownership and hidden-role lines that
     `python3 scripts/builder.py picks <slug> -` reads back; no sideways body scroll on a phone.
+    The cut list does not jitter under the pointer; one `u` reverses a whole bulk mark; the
+    move shows "queued for Claude" and counts on the Add cards tab.
     The Pages job refuses a listed project page with no data island, but how the page
     looks and feels is perceptual and unverified.
 
@@ -2152,10 +2163,12 @@ is invisible, and a handoff nobody is told to read is the same failure one layer
   consolidated swap plan; it is TEMPORARY and says so, and it is deleted once the
   swaps land. Named here because a fresh session loads nothing else, and the whole
   point of committing it per batch is that it outlives one context window.
-  **SEVEN are live as of 2026-10-25**, each awaiting owner picks or sign-off:
+  **TEN are live as of 2026-11-02**, each awaiting owner picks or sign-off:
   `78-brawl-pile-analysis.md` (Tier 2/3 waves open), `54-from-54b-`, `84-marvel-`,
-  `86-fantastic-four-`, `fra-bant-`, `fra-bur-` and `fra-rgu-pile-analysis.md`; read each
-  one's `Status:` line. `91-hashaton-` and `ozai-` were drafted into decks 91 and 92 and deleted 2026-10-25
+  `86-fantastic-four-`, `fra-bant-`, `fra-bur-` and `fra-rgu-pile-analysis.md`, plus
+  `isshin-` (drafted as deck 93; the owner's open notes remain), `zimone-` (deck 94;
+  add-backs pending) and `sultai-pile-analysis.md` (decks 75-historic-brawl and 96 — its
+  Builder board `builds/sultai` is where the owner marks picks); read each one's `Status:` line. `91-hashaton-` and `ozai-` were drafted into decks 91 and 92 and deleted 2026-10-25
   (its bench and sequencing rule are in that deck's `#: notes:`; `git log` holds the rest). `deck89-tooling-plan.md` (a four-batch tooling plan) was completed and
   deleted 2026-10-23; its record is `.cycle/blocks/deck89-batch*.md`. `89-szarel-` was folded into deck 89 and deleted
   2026-10-23. `60-redline-pile-analysis.md`
