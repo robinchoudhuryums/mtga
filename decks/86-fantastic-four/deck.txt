@@ -17,7 +17,7 @@
 #: archetype: commander's trigger happen twice. DISTINCT from the other Brawl decks (78 Bant
 #: archetype: tokens, 84 Jeskai Iron Legion, 85 Jeskai damage): green counters, four colours.
 #: tier: A — set by the owner 2026-10-20. The measurable floor reads A at 100 cards: interaction 12
-#: tier: and card advantage 11 against an A line of 12 and a sum of 19, protection 8. The engine is
+#: tier: and card advantage 12 against an A line of 12 and a sum of 19, protection 8. The engine is
 #: tier: layered: counter multipliers, two token doublers (Parallel Lives and Donatello's Mutagen),
 #: tier: and Reed Richards turning each turn's first extra draw into four. Weaknesses: four colours
 #: tier: (the commander is 58% on turn four from lands alone), several double-pip cards, and removal

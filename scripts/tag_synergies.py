@@ -50,7 +50,10 @@ KEYWORD_THEMES = {
     # Aggro / tempo
     "haste": ["aggro"], "flash": ["tempo"], "prowess": ["spellslinger", "tempo"],
     "exalted": ["aggro"], "dash": ["aggro"], "riot": ["aggro"], "raid": ["aggro"],
-    "battle cry": ["go-wide", "aggro"], "training": ["counters", "aggro"],
+    "battle cry": ["go-wide", "aggro"],
+    # Battalion — "whenever this creature and at least two other creatures attack": a
+    # go-wide attack payoff, battle cry's shape (2026-11-02, K-01 triage; 2 pool cards).
+    "battalion": ["go-wide", "aggro"], "training": ["counters", "aggro"],
     "mobilize": ["go-wide", "aggro"], "alliance": ["aggro", "value"],
     # Speed (Aetherdrift)
     "start your engines!": ["speed"], "max speed": ["speed", "aggro"],
@@ -112,6 +115,13 @@ KEYWORD_THEMES = {
     "affinity": ["artifacts", "cost-reduction"], "improvise": ["artifacts", "ramp"],
     "station": ["counters", "artifacts"], "prototype": ["artifacts"],
     "craft": ["artifacts", "graveyard"], "reconfigure": ["equipment"],
+    # Constellation — "whenever an enchantment you control enters": an enchantments payoff
+    # (the theme `_ENCHANTMENT_MATTERS_RE` defines; 2026-11-02, K-01 triage).
+    "constellation": ["enchantments", "payoff"],
+    # Seek — put a random matching card from your library into your hand. The role
+    # classifier already reads it as card advantage (K-12, 2026-10-25); this is the tag
+    # side of the same fact, so the two agree (K-09). 54 pool cards.
+    "seek": ["card draw"],
     # Card advantage / selection
     "cycling": ["card draw"], "learn": ["card draw"], "channel": ["card advantage"],
     "investigate": ["tokens", "card draw"], "scry": ["selection"],
@@ -551,6 +561,7 @@ MECHANIC_RULES = [
     ("treasure", lambda t, x: "treasure" in x),
     ("clue", lambda t, x: "clue" in x or "investigate" in x),
     ("artifacts", lambda t, x: _ARTIFACT_MATTERS_RE.search(_clean_text(x)) is not None),
+    ("enchantments", lambda t, x: _ENCHANTMENT_MATTERS_RE.search(_clean_text(x)) is not None),
     ("equipment", lambda t, x: "equipment" in t or "equip " in x or "equip {" in x),
     ("aura", lambda t, x: "aura" in t or "enchant creature" in x),
     ("vehicle", lambda t, x: "vehicle" in t),
@@ -777,6 +788,27 @@ _ARTIFACT_MATTERS_RE = re.compile(
     r"|an artifact entered\b"
     # mana that can ONLY buy artifacts is an artifact-deck card by construction
     r"|only to cast (?:an )?artifact",
+    re.I)
+# ENCHANTMENTS AS A COUNTED RESOURCE (2026-11-02) — the artifacts rule above, one card type
+# over, and for the same reason. There was no enchantments theme at all, so constellation
+# (12 pool cards, keyword-baselined since 2026-11-01) had nothing to map onto, and an
+# enchantress card ("enchantment spells you cast cost {1} less", "whenever an enchantment
+# you control enters, draw a card") shared no theme with the deck built on it. Same guards
+# and the same reason for each: no "destroy target enchantment" (HATE, the G-42 shape),
+# `(?<!or )` / `(?! or creature)` against generic either-type text, and an
+# `an|another|one or more` anchor on the enters trigger so "when THIS enchantment enters"
+# — every enchantment with an ETB — stays out. The count gate's span cannot cross a comma:
+# without that, "if you control a Planet, this enchantment deals…" (Volatile Orbit) read as
+# a count of enchantments. Measured: 101 pool cards, 0.63% — specific, well under the 3.86%
+# cap `exile cast` was held to.
+_ENCHANTMENT_MATTERS_RE = re.compile(
+    r"(?:for each|number of) (?:other )?enchantments?\b"
+    r"|(?<!or )\benchantments?(?: creatures?)? you control\b(?! or creature)"
+    r"|(?:if|as long as|whenever) you control [^.,]{0,24}?\benchantments?\b"
+    r"|\b(?:two|three|four|five|\d+) or more enchantments\b"
+    r"|whenever you cast an enchantment|enchantment spells? you cast"
+    r"|whenever (?:an|another|one or more) enchantments?\b[^.]{0,40}?\benters?\b"
+    r"|only to cast (?:an )?enchantment",
     re.I)
 _TYPE_MATTERS_RES = [
     re.compile(r"\b(?:a|an|target|another|each|any) (%s)\b" % "|".join(_TYPE_MATTERS)),

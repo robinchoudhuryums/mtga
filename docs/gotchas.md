@@ -5052,6 +5052,16 @@ pattern edit, and the mechanism meant to enforce that turned out to be disarmed 
 [G-18]'s BS3-02 entry, which was found by this very edit coming back a no-op.
 
 
+**2026-11-02 — the six keywords baselined on 2026-11-01, triaged one at a time.** Three are themed:
+- constellation → enchantments·payoff. It needed the enchantments theme first (K-15's long form).
+- battalion → go-wide·aggro, battle cry's shape (6 pool cards).
+- seek → card draw (99 pool cards), the tag side of a fact the role classifier already read (K-09).
+
+Three stay baselined, for three different reasons:
+- ascend counts PERMANENTS, which no theme here measures.
+- conjure is Alchemy card creation whose effects vary card by card.
+- partner is a deckbuilding rule with no play effect.
+
 ## [K-02] `forage` was THEMED rather than baselined, and the 7-of-9 split is the lesson
 
 **`forage` was THEMED rather than baselined, and the 7-of-9 split is the lesson.**
@@ -5716,6 +5726,32 @@ roster card advantage up in 5 decks (4, 7, 69, 87, 91), **0 tier floors moved**;
 `#: tier:` blocks quoting the old figure were re-grounded. Hand attack gained the COMPOUND clause
 the same day ("Target opponent sacrifices …, discards a card, and loses 3 life" — Scarring
 Memories, Cruel Ultimatum, Dusk Mangler, Smallpox; pool +4, report-only).
+
+**The dated K-12 widenings, moved here from CLAUDE.md on 2026-11-02 to keep the rule under its
+word cap.** **2026-10-07:** steal AURAS ("You control enchanted creature" — Control Magic, Kitnap) joined `Removal (spot)` and COPY effects (token copies, clones, becomes-a-copy) joined `Payoff / engine`; bounce left interaction for the tempo line (G-25). **2026-10-23:** EXTRA LAND DROPS → Ramp, "twice that many … instead" → Payoff, "X damage divided" → Removal; 0 tier floors. **2026-10-25:** X-scaled drain and lifegain, "lands … are every basic land type" → Ramp, SEEK → Card advantage (onto the battlefield is Ramp), and an empowered Jace's −3 draw when the empower is 3+ or repeatable; card advantage rose in 11 decks, 0 tier floors moved; then a draw offered as a MODE of a recurring trigger (Black Market Connections), 5 decks, 0 floors.
+
+**2026-11-02 — seven card-draw shapes.** Each was found reading real cards, and each was measured
+on the pool before it landed (64 cards gained the role, none lost it; card advantage rose by 1–3 in
+37 roster decks; 0 tier floors moved, so no letter needs a re-read):
+- `draws? (six|seven|…|ten) cards`: the count list stopped at five, so Jin-Gitaxias, Core
+  Augur, Griselbrand and every "each player draws seven" wheel scored none (23 cards; a wheel
+  counts the way "each player draws three" already did).
+- `draws? an additional card`: Dictate of Kruphix, Howling Mine, Midnight Oil (8).
+- `instead … you draw a card`: Notion Thief and Leader, Super-Genius (2).
+- `you may play the exiled cards`: Black Cat, Cunning Thief (1).
+- The phase-trigger MODE pattern now reads "at the beginning of combat on your turn" and a
+  "hasn't been chosen THIS TURN" reset (Glorious Sunrise, Shadrix; 2). A bare "hasn't been
+  chosen" (Zuko, once a game) stays out.
+- The same draw mode on a WHENEVER trigger (Elder Gargaroth, Galadriel, Kastral, The Vision; 7).
+  It excludes a rummage mode (Territorial Kavu) and a trigger that sacrifices to choose (Gorbag).
+- The whenever pattern's CONDITION window went from 80 to 120 characters. A qualified
+  combat-damage condition runs past 80 (Tidus, Yuna's Guardian is 94; Haliya, Kutzil). The
+  condition cannot cross a period or comma, and the EFFECT window the if-clause note warns
+  about is unchanged (21).
+Eighteen decks' `#: tier:` prose quoted the old count and was re-grounded in the same change:
+deck 87's "Leader and Black Cat score no role" stopped being true, and 78-historic-brawl's
+"losing two interaction or card-advantage cards puts the floor back at B" became interaction
+only, since the sum now has three to spare.
 
 ## [K-13] A literal type-name search cannot see the choose-a-type category — and the false negative reads as an answer
 
@@ -8763,6 +8799,15 @@ satisfies "unless you control a Plains" as G-87's gate already said; 0 roster ch
 **2026-10-25:** Gemstone Caverns (a luck counter) joins Mirrex and Spire of Industry as a
 board-state gate scored as a free rainbow land. Leyline of the Guildpact is no longer silent: it is
 disclosed by `consistency`'s every-land-any-colour line (G-35), though still not counted.
+
+**2026-11-02 — the enchantments twin.** Constellation sat on the K-01 baseline because there was no
+enchantments theme to map it onto. `_ENCHANTMENT_MATTERS_RE` is this rule one card type over, with
+the same three guards: no hate templating, `(?<!or )`/`(?! or creature)`, and the
+`an|another|one or more` enters anchor. It adds one guard of its own: the count gate's span
+cannot cross a comma. The first draft read Volatile Orbit's "if you control a Planet, this
+enchantment deals 4 damage" as a count of enchantments, which a 40-card sample caught. It
+matches 101 pool cards (0.63%). In the roster, deck 90 (the enchantress Shrine deck) holds 6
+and decks 29/29a hold 3–4.
 
 ## [K-16] `deck.py tribes` reads a card's OWN NAME as a tribal reference
 

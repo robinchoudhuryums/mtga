@@ -3,9 +3,7 @@
 # new set's mechanic. Triage into tag_synergies, or re-run
 # `check_keywords.py --update-baseline` to acknowledge the current set.
 ascend
-battalion
 conjure
-constellation
 double
 eerie
 empower jace
@@ -18,7 +16,6 @@ hexproof from
 jump
 meld
 partner
-seek
 survival
 tiered
 transform

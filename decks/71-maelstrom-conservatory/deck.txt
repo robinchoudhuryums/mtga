@@ -4,7 +4,7 @@
 #: colors: UR
 #: plan: control
 #: tier: B (PROVISIONAL) — graded deliberately UNDER the A metrics floor (interaction
-#: tier: 13 since 2026-10-07 (Kitnap's steal now counts), card advantage 8 — a real control suite). Held at B because: UNTESTED
+#: tier: 13 since 2026-10-07 (Kitnap's steal now counts), card advantage 9 — a real control suite). Held at B because: UNTESTED
 #: tier: first draft; the engine has a real speed question the metrics cannot see
 #: tier: (nothing happens until turn 4-5, and an aggro start punishes a hand of 7-drops
 #: tier: — the keepable/mulligan texture of a 10-haymaker list only shows up in games);
@@ -138,7 +138,7 @@
 
 # Flex — options (comments; not part of the 60). See: deck.py flex 71
 #~ note: applied 2026-09-08 — Yue, the Moon Spirit in for River's Rebuke (as it was measured then: interaction 11,
-#~ note: card advantage 8, avg MV 4.29 → 4.15, spell count 16 → 15, quality guard clean).
+#~ note: card advantage 9 (re-measured 2026-11-02), avg MV 4.29 → 4.15, spell count 16 → 15, quality guard clean).
 #~ -Time Stop | +River's Rebuke | RARE craft (FDN, ~2029): the one-sided mass bounce the list gave up for
 #~   Yue — 6 mana, sorcery, returns every nonland permanent one player controls. Take it back if the
 #~   go-wide matchups need a full reset that Artistic Process (2 to each) and Kitnap (one steal) do

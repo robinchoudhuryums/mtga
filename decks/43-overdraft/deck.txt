@@ -50,9 +50,9 @@
 #: tier: noncreature permanent. The two refill engines were then RESTORED against
 #: tier: Deduce and Marauding Blight-Priest once their real role was understood (see
 #: tier: notes: they fix the hand, they do not merely cap it), so the axis held at 4
-#: tier: while card advantage came back to 16 on a 3.34 curve with 14 early drops.
+#: tier: while card advantage reads 17 (Ketramose's draw counted since 2026-11-02) on a 3.34 curve with 14 early drops.
 #: tier: Against the thin answer count stands card
-#: tier: advantage 16 on a 3.34 curve, a number that is real rather than a pile of
+#: tier: advantage 17 on a 3.34 curve, a number that is real rather than a pile of
 #: tier: cantrips — Cloudblazer draws two, School Daze draws three, Spirit Water Revival
 #: tier: draws seven when waterbent, the Grimoire draws five on cast, and Bard, King of
 #: tier: Dale doubles every one of them past the first each turn. B now MATCHES the
@@ -272,10 +272,10 @@ Deck
 #~   they are a per-turn hand RESET, which under the Grimoire is a per-turn life
 #~   reset. Blight-Priest is the redundant half of a pair with Starscape Cleric,
 #~   which drains identically at one mana less with flying and offspring. Final:
-#~   interaction 6, card advantage 16, avg MV 3.34 (re-grounded 2026-09-14: BS10-01 gave
+#~   interaction 6, card advantage 17, avg MV 3.34 (re-grounded 2026-09-14 and again 2026-11-02: BS10-01 gave
 #~   Bilbo's "exchange control of two target nonland permanents" Adventure half a removal
 #~   role, 5 -> 6), floor B = claimed B.
 #~ note: applied — Osseous Sticktwister in for Radiant Strike.
 #~ -The Queen of Dale | +Kid Loki | OWNED — PROPOSED 2026-09-10 (UW-pile option B, not applied): protection 2→3, which is this tier block's named PATH TO A. Bard the Bowman's per-turn counter gives that creature hexproof for the turn; Knowledge Seeker / Kang / Raven Eagle counters do the same. Queen's recruit is gated on the OPPONENT casting noncreature spells. 1 mana.
-#~ -Thirst for Knowledge | +The Unagi of Kyoshi Island | CRAFT (R) — PROPOSED 2026-09-10: flash ward body; "an opponent draws their second card → you draw two", which Gleaming Splendor's activation forces. protection 2→3, avg MV 3.34→3.40. PIPS: `consistency` reads its {U}{U} at 83.1% on T5 — IDENTICAL to School Daze and Overlord of the Floodpits already in the list — so the notes' "ONE double pip in the whole deck" rule is already stale (three {U}{U} cards today), not newly broken by this. Thirst is a one-shot draw in the deck's deepest axis (card-adv 16).
+#~ -Thirst for Knowledge | +The Unagi of Kyoshi Island | CRAFT (R) — PROPOSED 2026-09-10: flash ward body; "an opponent draws their second card → you draw two", which Gleaming Splendor's activation forces. protection 2→3, avg MV 3.34→3.40. PIPS: `consistency` reads its {U}{U} at 83.1% on T5 — IDENTICAL to School Daze and Overlord of the Floodpits already in the list — so the notes' "ONE double pip in the whole deck" rule is already stale (three {U}{U} cards today), not newly broken by this. Thirst is a one-shot draw in the deck's deepest axis (card-adv 17).
 #~ -Bilbo, Luckwearer | +Gleaming Splendor | OWNED — PROPOSED 2026-09-10: {2}{W}: two target players each draw — a repeatable draw outlet that turns on The Unagi and pays a Treasure on their second draw. Cost stated plainly: it hands the opponent cards. Bilbo is an unowned craft whose loot Kitsa's free {T} already provides. Vector flat.

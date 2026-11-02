@@ -1469,7 +1469,9 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   SEVEN were themed in 2026-08 (vivid→multicolor·payoff, job select→equipment·tokens,
   opus→spellslinger·payoff, increment→counters·spellslinger, infusion→lifegain·payoff,
   disappear→sacrifice·aristocrats, paradigm→exile cast·card advantage) and THREE were
-  deliberately left, for three different reasons. **A keyword's reported COUNT is not
+  deliberately left, for three different reasons. **2026-11-02:** constellation → enchantments·payoff (the
+  text-read enchantments theme, K-15's twin), battalion → go-wide·aggro, seek → card draw;
+  ascend, conjure and partner stay baselined (no shared theme; Alchemy creation; deckbuilding only). **A keyword's reported COUNT is not
   its population**: Scryfall lists `Jump` on all 11 `Jump-start` cards, so mapping it
   would have put `evasion` on 11 graveyard spells for the sake of 2 real ones — the same
   source artifact that emits `Triple`/`Double`/`Somersault` off Tiered's mode names —
@@ -1533,7 +1535,7 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   gallery (`load_pool_tags`) read pool-first now, and `load_card_meta`'s correction reaches a
   library row stored under a DFC FRONT name (10 cards, 8 decks had missed it);
   `check_agreement._agree_card_synergies` holds `card.py` to the model.
-  **Residual: 351 pool blanks — a new theme for four cards is not the fix.** [K-09]
+  **Residual: 349 pool blanks — a new theme for four cards is not the fix.** [K-09]
 - **THE TAGGER HAD NO `artifacts` RULE AT ALL, the largest single cause of the median-rank
   finding G-22 records (added 2026-09-14).** Every `artifacts` tag came from the KEYWORD map (affinity /
   improvise / modular / craft…), so a card whose whole text is "artifacts you control get
@@ -1547,7 +1549,8 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   the anchor it matches "when THIS artifact enters" (every artifact with an ETB), and `artifact
   or creature` is **236 cards** of generic either-type text. Reads `_clean_text` (K-09). Pool
   tag 158 → 415; **0 of 112 tier floors moved** (G-80: tags feed cuts/suggest, the floor reads
-  TEXT). Residual: BEING an artifact is deliberately untagged (~19% of the pool) — G-83's
+  TEXT). **Its twin `_ENCHANTMENT_MATTERS_RE` (2026-11-02)** carries the same
+  guards plus a count span that cannot cross a comma: 101 pool cards, 0.63%. Residual: BEING an artifact is deliberately untagged (~19% of the pool) — G-83's
   `cost_scale_resource` answers that from the TYPE LINE. [K-15]
 - **After editing a tag pattern, regenerate BOTH derived tag stores** —
   `tag_synergies.py --merge` for the LIBRARY and **`build_pool.py --all` for the pool**,
@@ -1578,15 +1581,10 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   all. The castability lint reads the deck's `#: colors:` header, so a stale header
   manufactures phantom strays — a flag is a review signal, not a hard failure.
   **CONNIVE is an unread keyword here**, so a FLAT metric after a tune is not proof the
-  tune failed. **2026-10-07:** steal AURAS ("You control enchanted creature" — Control Magic, Kitnap)
-  joined `Removal (spot)` and COPY effects (token copies, clones, becomes-a-copy) joined
-  `Payoff / engine`; bounce left interaction for the tempo line (G-25). **2026-10-23:**
-  EXTRA LAND DROPS → Ramp, "twice that many … instead" → Payoff, "X damage divided" →
-  Removal; 0 tier floors. **2026-10-25:** X-scaled drain and lifegain, "lands … are every
-  basic land type" → Ramp, SEEK → Card advantage (onto the battlefield is Ramp), and an
-  empowered Jace's −3 draw when the empower is 3+ or repeatable; card advantage rose in 11
-  decks, 0 tier floors moved; then a draw offered as a MODE of a recurring trigger (Black
-  Market Connections), 5 decks, 0 floors. [K-12]
+  tune failed. **The dated widenings since 2026-10-07 are in the long form; the latest, 2026-11-02:** draws of
+  seven or more, "draws an additional card", replacement draws (Notion Thief, Leader), a draw
+  MODE on a combat-on-your-turn or whenever trigger, and a 120-character whenever condition —
+  64 pool cards, card advantage up in 37 decks, 0 tier floors moved. [K-12]
 - **A LITERAL TYPE-NAME SEARCH CANNOT SEE THE CHOOSE-A-TYPE CATEGORY, and a false negative
   there reads as a finished answer.** A sweep for "Robots you control get" / "for each
   Robot" returned zero and an archetype was declined in writing as "bodies without a
